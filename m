@@ -4,61 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C97DBD58B18
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Mar 2026 10:27:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4889F30283
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Mar 2026 23:56:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=37qbiCfgULaxMIDmTk+aQ0jM/KcG5lwXx8oqPrFDCDs=; b=IRlz+afm1YxO96ldkzTUfumyqg
-	NDm2XlKriiiVc3XinYD4Rhz/cr2P7L7cNfCEmaJesWHu5lKUWOIRDrJwM3OeQckYZPFWXiA3ZpN8r
-	PK8I8Iyvwqo9q/2E03xQUmgObSAxqGKEBvHNwUoZm1zpHRINNJQEq6DmY18WfT2wtQI6VtUV1OaHs
-	y9XlhgdZRSO60ov9ef6e9oeiAsNFLyOcmkA3yzwmsbQk6xmqPu6BtKAOwW/SZ9f5x9KzWtCiltlhv
-	HRTGSETsy0k12vwxLrnza0+oD2cFtf41MprP3c0gsqMXzamppf3HYW40M04p05K1Vbs/2/D3cs1hq
-	ij7cEU1g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zfWc1PVuIaGjEj+v5aaxG4wWyzdFsgkmHQOoNbes2Uc=; b=2Af605aRGB6Gr7xHMp/CgrRfIW
+	175A9HodOmP5mjVfYm/L0zwqdOMmSDnzBC9fl/EtNNahmkYv40+8mNMbetvnz+H1lsT+Pr2+IBqNt
+	cxaKemY9MmAN6vGe38H3YNRfv6sTvmr1ZNOwUW7m6c17JTOEbWT5+XEqcxc9iCfUTNLOOhNyMjA3j
+	WbrWNkHK8k45wgW9YYtV+lTjWMMUywEhA3YLKxeoEzyC0kj2dgTRku/aL+gJ0buhsQxumYvS8VRCa
+	Iil3GV+zxnMp0S8EylJeHOY4LaFRxU1DAVb/RUDrDqLKVzCkrcXM0HQV0YFry66CsnrB9Vz/BIkUz
+	sKrfQmwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w1ih5-00000002Xdi-3bvL;
-	Sun, 15 Mar 2026 10:27:35 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1w1vKI-000000031tN-0yOE;
+	Sun, 15 Mar 2026 23:56:54 +0000
+Received: from mail-qt1-x830.google.com ([2607:f8b0:4864:20::830])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w1igy-00000002XVf-1tu6;
-	Sun, 15 Mar 2026 10:27:28 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2CA45600AD;
-	Sun, 15 Mar 2026 10:27:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8182AC19424;
-	Sun, 15 Mar 2026 10:27:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773570446;
-	bh=g6taqoJma99e09pGekb7abf4NFspxcrhz3CA76z5Rbg=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=FFLMAINdtlxIOL5aPjDYxk8K8LciA1vjxukSp9GR5DlAEifZUGqm83B+RkRx7mM8X
-	 VzxRYPx6yL5EaVR849FuTYZPLddXh20IPJKIEXUOv4Wi2yGg39phJ6eM30FraxPu/l
-	 bdQxv/i6Om8IWrLauDQaroLOJ8kgJoQCBU1VasyTNfysfan5LSl9iAUVsddRbX5XFf
-	 YTtlvaWBYuz9Q2r0t8hG/9KgY/8IsoHUn9YuaPsKzjRR7c5RQ0sb3yrmwF9v1kxvDK
-	 ZN7ivllmlybVHM71NhZHvHeB8hbmZG8IwI5M3d+irA/atoCQlxEojMCyDvERw7WtkA
-	 XUgItsCTm3Jmg==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Sun, 15 Mar 2026 11:26:29 +0100
-Subject: [PATCH mt76 6/6] wifi: mt76: mt7996: Destroy active sta links in
- mt7996_mac_sta_remove()
+	id 1w1vKF-000000031t0-0TaR
+	for linux-mediatek@lists.infradead.org;
+	Sun, 15 Mar 2026 23:56:52 +0000
+Received: by mail-qt1-x830.google.com with SMTP id d75a77b69052e-50912a097b0so22295171cf.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 15 Mar 2026 16:56:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1773619009; cv=none;
+        d=google.com; s=arc-20240605;
+        b=WaFMhirGb0GEgahQErU3usXIeGjFxN0EAHGPTnKa3URDA+7PUlpD9dT3GPAcgn0l7D
+         krGa4+hrr8pOELau3yNRuTUZ7766XDxIde2T2y7oV3DONuGdcrQK62kDO++dTrziqbm7
+         sfrpkRzzyGu3NPfJByGa0lqS7jpL+LzvDrR85jFv+vtE7NB9jkdQfabV5YDJkhz/Cy9M
+         jKORNxDWkkzAhzBbXHMSataA9/JI4orcnDoN2myI7XLOakW4WpIEOGzbfjTkAFLJe2wU
+         NPhblSUelMUGoy5O0fxDX8Q2/Web0G6OkCb2k+buvtOnrMkeXUHGlHBXGenCCWDUsM96
+         jyug==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=zfWc1PVuIaGjEj+v5aaxG4wWyzdFsgkmHQOoNbes2Uc=;
+        fh=B87EpcbaP+TlTi8YY1cg1doPXotDB92wJLdrfKxRed0=;
+        b=BHJqnMsaleMZJuABwvyiJlCmV7ZyIS6dfIyLtehpWXDmZZIg9gCN1cvfKKaURNO1vG
+         aNUypjYMB8iJUxJazdoEhENAraMSDhOsor9SrTV3mKyE57cjwzlbWEUFc78mnsu7jZtS
+         q76lX5O6H5QKafU9APwLEgue5D/2iw4r6jgoNcsg4poquLAaf15rirmkFuQ8an/dSTrW
+         ik4q0NQxdn+bTfo4qisRMCr2QVHYLkWLmHCfjP8lu90fg5BCx+MlXanujoDMGDt2/0fY
+         Mf5uFZVN2vmMDet2fNY+HQj19LMaupCTiJg9DveUYwIKScSwoKuGNZJVHlLrZmMgntkO
+         h2xg==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1773619009; x=1774223809; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=zfWc1PVuIaGjEj+v5aaxG4wWyzdFsgkmHQOoNbes2Uc=;
+        b=K55u8B7/1sqDmLRJ4nrrM7bV6AAlENYMjIaWU93JGABzJgrVhJORpi8Afx4crL2NVi
+         RXdyxvr135cIjKI4Y1S0K9utaS4VcnXL4zAFNCORmwBCqQCBgBiVFv6FQaB2kdMD7ouF
+         mqG08VnsK1nxvrhGgQvhKT23fmqYWxnHHmj3dEJ2Cz0wNunNxyBw06TPLa9vIJXysXYE
+         a6pSs1i6To6VhVIdjPc4z9nvrdW2rrKbZ76Upby9GgygS0uBDC5Ygmg7NeO0yyT/wIO/
+         /HsmqPNEKBwEOb81gCVr2siGxllYA1y64UdpKEptpwlJp7ob9PUI1j97hnFIckI4h7lX
+         iRJw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1773619009; x=1774223809;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=zfWc1PVuIaGjEj+v5aaxG4wWyzdFsgkmHQOoNbes2Uc=;
+        b=UCELlrIFFdzkFF1Mq89610F7eLOJmtm3Am0hYyaFfY2hUs9Q+EoBHpUCp5SXNOdES4
+         fa42xY7AyZeASmEMiCSzM2WMsYuMmP/6dxZffHNz8isirJPe7wZ+YLXyrBZlgP1YTT8B
+         yoHBXuxs9V00KpBo5EkSJHQsG3/GtaQBjJOnuALtXfcD/t+Nkl86nA4lFZlbzmSrQpB6
+         PtZc8xErg/kGUEXlwnIftmqojNAYnPKkI7DlDMbk0Rg/ZopYdTCnUCvWAQiM/3qTUka0
+         5xZGPtkJSa4hvNHcd0xoMwLz9pkCRphMRydf8eeEUUU+pE0bVmxXr4uCw7kYBpvq9EaU
+         mKPg==
+X-Forwarded-Encrypted: i=1; AJvYcCVMoammx6YMGnrj/ur/sE52OtrslQtfHJhPLjhz/vv2IepAyc0wflrXst3CKkKIncRVVTCeuLnjOUBubhIgEA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy3/TJ+syEeG8WFRl9FSWpErl+rVzH1J1VXztuViNod/SYf5Hq8
+	7d5w/RCYZSInc6xZrCso2dtKrN7g3b/YV1t2uNmpOTpn7XaChJcgH/aSHvYpoJzYuw6L2M+Dz56
+	cAkgyqNBouzxhIrWrVeSrQTM2JGqBtwoP
+X-Gm-Gg: ATEYQzyizvgQedXJRYxvK2pP9buI8qyLKTcwcTgwwZfLegPLHGR9poX37fOZcdBEIQT
+	E3IH/iwDY1n3c8BIuVhph9M3E+xev8BtxSOctuRHpguNSP1gT5HLDzBavGoxrd0yTvEKRCvSxDu
+	XlczNvnKLXFfUbJ9wpYCSs3NZ4l+1wNTL0j2wrcSvEwQA/VlqmysRfc9BCF/Z2wt3l5n7ec7Fjy
+	fSNzvfJql0NO4NxfFrllgHLtXssBvNGzSXURJkvPPQeZXNKbcZLfFBK9Dq+HNJV2bM3Za8IaNxw
+	3MZ0XKnbV8/AXjheow==
+X-Received: by 2002:a05:622a:1998:b0:509:1260:b138 with SMTP id
+ d75a77b69052e-50957e323c0mr131795091cf.58.1773619009394; Sun, 15 Mar 2026
+ 16:56:49 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260315-mt7996-mlo-link-reconf-v1-6-a8a634fbc927@kernel.org>
-References: <20260315-mt7996-mlo-link-reconf-v1-0-a8a634fbc927@kernel.org>
-In-Reply-To: <20260315-mt7996-mlo-link-reconf-v1-0-a8a634fbc927@kernel.org>
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-X-Mailer: b4 0.14.2
+References: <20260311002825.15502-1-sean.wang@kernel.org> <20260311002825.15502-2-sean.wang@kernel.org>
+ <CAFktD2cbFJrLS4ggc+yf582BYmw=jJsntfbDR65ssMpVGM2BKA@mail.gmail.com>
+ <CAFrh3J-PsVQ1u_hGFxTVKK0uOs6KxT=euK+jbGvWCueqvynAgw@mail.gmail.com> <CAFrh3J_4N5j9eZAgbP0gzj5gTGVABat9-4xWZBicKMfgL85LRA@mail.gmail.com>
+In-Reply-To: <CAFrh3J_4N5j9eZAgbP0gzj5gTGVABat9-4xWZBicKMfgL85LRA@mail.gmail.com>
+From: Nick <morrownr@gmail.com>
+Date: Sun, 15 Mar 2026 18:56:23 -0500
+X-Gm-Features: AaiRm51Qj5-6K1SxyXtVVXgAPeBMnSu9mdsfs7G65KWz5yr6fupz2hG1vMFQLVU
+Message-ID: <CAFktD2cot4QuVSs0_r2p0ajuRSDCL2u8d94Eq5vuVBfZxCsKzw@mail.gmail.com>
+Subject: Re: [PATCH 2/2] wifi: mt76: mt792x: fix mt7925u USB WFSYS reset handling
+To: Satadru Pramanik <satadru@gmail.com>
+Cc: Sean Wang <sean.wang@kernel.org>, nbd@nbd.name, lorenzo.bianconi@redhat.com, 
+	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	Sean Wang <sean.wang@mediatek.com>, stable@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260315_165651_194722_F68F7C62 
+X-CRM114-Status: GOOD (  16.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,217 +117,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Similar to vif link management, postpone sta link destuction in
-mt7996_mac_sta_remove() introducing mt7996_mac_sta_remove_link utility
-routine and just disable sta link running mt7996_mac_sta_remove_links
-routine.
-This is a preliminary patch in order to support MLO link reconfiguration
-in MT7996 driver.
+> >> > From: Sean Wang <sean.wang@mediatek.com>
+> >> >
+> >> > mt7925u uses different reset/status registers from mt7921u. Reusing the
+> >> > mt7921u register set causes the WFSYS reset to fail.
+> >> >
+> >> > Add a chip-specific descriptor in mt792xu_wfsys_reset() to select the
+> >> > correct registers and fix mt7925u failing to initialize after a warm
+> >> > reboot.
+> >> >
+> >> > Fixes: d28e1a48952e ("wifi: mt76: mt792x: introduce mt792x-usb module")
+> >> > Cc: stable@vger.kernel.org
+> >> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> >> > ---
+> >> >  drivers/net/wireless/mediatek/mt76/mt792x_regs.h |  4 ++++
+> >> >  drivers/net/wireless/mediatek/mt76/mt792x_usb.c  | 13 ++++++++++++-
+> >> >  2 files changed, 16 insertions(+), 1 deletion(-)
+> >> >
+> >> > diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_regs.h b/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
+> >> > index 7ddde9286861..d2a8b2b0df32 100644
+> >> > --- a/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
+> >> > +++ b/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
+> >> > @@ -392,6 +392,10 @@
+> >> >  #define MT_CBTOP_RGU_WF_SUBSYS_RST     MT_CBTOP_RGU(0x600)
+> >> >  #define MT_CBTOP_RGU_WF_SUBSYS_RST_WF_WHOLE_PATH BIT(0)
+> >> >
+> >> > +#define MT7925_CBTOP_RGU_WF_SUBSYS_RST 0x70028600
+> >> > +#define MT7925_WFSYS_INIT_DONE_ADDR    0x184c1604
+> >> > +#define MT7925_WFSYS_INIT_DONE         0x00001d1e
+> >> > +
+> >> >  #define MT_HW_BOUND                    0x70010020
+> >> >  #define MT_HW_CHIPID                   0x70010200
+> >> >  #define MT_HW_REV                      0x70010204
+> >> > diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_usb.c b/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
+> >> > index a92e872226cf..47827d1c5ccb 100644
+> >> > --- a/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
+> >> > +++ b/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
+> >> > @@ -224,6 +224,15 @@ static const struct mt792xu_wfsys_desc mt7921_wfsys_desc = {
+> >> >         .need_status_sel = true,
+> >> >  };
+> >> >
+> >> > +static const struct mt792xu_wfsys_desc mt7925_wfsys_desc = {
+> >> > +       .rst_reg = MT7925_CBTOP_RGU_WF_SUBSYS_RST,
+> >> > +       .done_reg = MT7925_WFSYS_INIT_DONE_ADDR,
+> >> > +       .done_mask = U32_MAX,
+> >> > +       .done_val = MT7925_WFSYS_INIT_DONE,
+> >> > +       .delay_ms = 20,
+> >> > +       .need_status_sel = false,
+> >> > +};
+> >> > +
+> >> >  int mt792xu_dma_init(struct mt792x_dev *dev, bool resume)
+> >> >  {
+> >> >         int err;
+> >> > @@ -254,7 +263,9 @@ EXPORT_SYMBOL_GPL(mt792xu_dma_init);
+> >> >
+> >> >  int mt792xu_wfsys_reset(struct mt792x_dev *dev)
+> >> >  {
+> >> > -       const struct mt792xu_wfsys_desc *desc = &mt7921_wfsys_desc;
+> >> > +       const struct mt792xu_wfsys_desc *desc = is_mt7925(&dev->mt76) ?
+> >> > +                                               &mt7925_wfsys_desc :
+> >> > +                                               &mt7921_wfsys_desc;
+> >> >         u32 val;
+> >> >         int i;
+> >> >
+> >> > --
+> >> > 2.43.0
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/mt7996/mac.c    | 22 +------
- drivers/net/wireless/mediatek/mt76/mt7996/main.c   | 67 +++++++++++++---------
- drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h |  5 +-
- 3 files changed, 45 insertions(+), 49 deletions(-)
+Sean, I have been testing this series of 2 patches for the last two days. I
+am no longer seeing problems with warm boot so:
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-index 5e5b6198f8be5707deb6746d2da899930e20da7b..bffcbfb0fa3ea6a8cc1c237039c0ecc70c2830f5 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-@@ -2372,26 +2372,8 @@ mt7996_mac_reset_sta_iter(void *data, struct ieee80211_sta *sta)
- 	struct mt7996_dev *dev = data;
- 	int i;
- 
--	for (i = 0; i < ARRAY_SIZE(msta->link); i++) {
--		struct mt7996_sta_link *msta_link = NULL;
--		struct mt7996_phy *phy;
--
--		msta_link = rcu_replace_pointer(msta->link[i], msta_link,
--						lockdep_is_held(&dev->mt76.mutex));
--		if (!msta_link)
--			continue;
--
--		mt7996_mac_sta_deinit_link(dev, msta_link);
--		phy = __mt7996_phy(dev, msta_link->wcid.phy_idx);
--		if (phy)
--			phy->mt76->num_sta--;
--
--		if (msta_link != &msta->deflink)
--			kfree_rcu(msta_link, rcu_head);
--	}
--
--	msta->deflink_id = IEEE80211_LINK_UNSPECIFIED;
--	msta->seclink_id = msta->deflink_id;
-+	for (i = 0; i < ARRAY_SIZE(msta->link); i++)
-+		mt7996_mac_sta_remove_link(dev, sta, i, true);
- }
- 
- static void
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index ac82ea3f066a618d4a91c0a88922cf77bd0533da..a8a6552d49f69a447eed8fc9c6620c43b0f868c8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -1179,9 +1179,17 @@ mt7996_mac_sta_init_link(struct mt7996_dev *dev,
- 	return 0;
- }
- 
--void mt7996_mac_sta_deinit_link(struct mt7996_dev *dev,
--				struct mt7996_sta_link *msta_link)
-+void mt7996_mac_sta_remove_link(struct mt7996_dev *dev,
-+				struct ieee80211_sta *sta,
-+				unsigned int link_id, bool flush)
- {
-+	struct mt7996_sta *msta = (struct mt7996_sta *)sta->drv_priv;
-+	struct mt7996_sta_link *msta_link;
-+
-+	msta_link = mt76_dereference(msta->link[link_id], &dev->mt76);
-+	if (!msta_link)
-+		return;
-+
- 	spin_lock_bh(&dev->mt76.sta_poll_lock);
- 	if (!list_empty(&msta_link->wcid.poll_list))
- 		list_del_init(&msta_link->wcid.poll_list);
-@@ -1189,31 +1197,13 @@ void mt7996_mac_sta_deinit_link(struct mt7996_dev *dev,
- 		list_del_init(&msta_link->rc_list);
- 	spin_unlock_bh(&dev->mt76.sta_poll_lock);
- 
--	rcu_assign_pointer(dev->mt76.wcid[msta_link->wcid.idx], NULL);
- 	mt76_wcid_cleanup(&dev->mt76, &msta_link->wcid);
--	mt76_wcid_mask_clear(dev->mt76.wcid_mask, msta_link->wcid.idx);
--}
--
--static void
--mt7996_mac_sta_remove_links(struct mt7996_dev *dev, struct ieee80211_vif *vif,
--			    struct ieee80211_sta *sta, unsigned long links)
--{
--	struct mt7996_sta *msta = (struct mt7996_sta *)sta->drv_priv;
--	struct mt76_dev *mdev = &dev->mt76;
--	unsigned int link_id;
- 
--	for_each_set_bit(link_id, &links, IEEE80211_MLD_MAX_NUM_LINKS) {
--		struct mt7996_sta_link *msta_link = NULL;
-+	if (msta_link->wcid.link_valid) {
- 		struct mt7996_phy *phy;
- 
--		msta_link = rcu_replace_pointer(msta->link[link_id], msta_link,
--						lockdep_is_held(&mdev->mutex));
--		if (!msta_link)
--			continue;
--
- 		mt7996_mac_wtbl_update(dev, msta_link->wcid.idx,
- 				       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
--		mt7996_mac_sta_deinit_link(dev, msta_link);
- 
- 		phy = __mt7996_phy(dev, msta_link->wcid.phy_idx);
- 		if (phy)
-@@ -1230,7 +1220,7 @@ mt7996_mac_sta_remove_links(struct mt7996_dev *dev, struct ieee80211_vif *vif,
- 				/* switch to the secondary link */
- 				msta_seclink = mt76_dereference(
- 						msta->link[msta->seclink_id],
--						mdev);
-+						&dev->mt76);
- 				if (msta_seclink) {
- 					msta->deflink_id = msta->seclink_id;
- 					mt7996_sta_init_txq_wcid(sta,
-@@ -1240,12 +1230,29 @@ mt7996_mac_sta_remove_links(struct mt7996_dev *dev, struct ieee80211_vif *vif,
- 		} else if (msta->seclink_id == link_id) {
- 			msta->seclink_id = msta->deflink_id;
- 		}
-+		msta_link->wcid.link_valid = false;
-+	}
- 
-+	if (flush) {
-+		rcu_assign_pointer(msta->link[link_id], NULL);
-+		rcu_assign_pointer(dev->mt76.wcid[msta_link->wcid.idx], NULL);
-+		mt76_wcid_mask_clear(dev->mt76.wcid_mask, msta_link->wcid.idx);
- 		if (msta_link != &msta->deflink)
- 			kfree_rcu(msta_link, rcu_head);
- 	}
- }
- 
-+static void
-+mt7996_mac_sta_remove_links(struct mt7996_dev *dev, struct ieee80211_vif *vif,
-+			    struct ieee80211_sta *sta, unsigned long links,
-+			    bool flush)
-+{
-+	unsigned int link_id;
-+
-+	for_each_set_bit(link_id, &links, IEEE80211_MLD_MAX_NUM_LINKS)
-+		mt7996_mac_sta_remove_link(dev, sta, link_id, flush);
-+}
-+
- static int
- mt7996_mac_sta_add_links(struct mt7996_dev *dev, struct ieee80211_vif *vif,
- 			 struct ieee80211_sta *sta, unsigned long new_links)
-@@ -1257,11 +1264,15 @@ mt7996_mac_sta_add_links(struct mt7996_dev *dev, struct ieee80211_vif *vif,
- 	for_each_set_bit(link_id, &new_links, IEEE80211_MLD_MAX_NUM_LINKS) {
- 		struct ieee80211_bss_conf *link_conf;
- 		struct ieee80211_link_sta *link_sta;
-+		struct mt7996_sta_link *msta_link;
- 		struct mt7996_vif_link *link;
- 		struct mt76_phy *mphy;
- 
--		if (rcu_access_pointer(msta->link[link_id]))
-+		msta_link = mt76_dereference(msta->link[link_id], &dev->mt76);
-+		if (msta_link) {
-+			msta_link->wcid.link_valid = true;
- 			continue;
-+		}
- 
- 		link_conf = link_conf_dereference_protected(vif, link_id);
- 		if (!link_conf) {
-@@ -1298,7 +1309,7 @@ mt7996_mac_sta_add_links(struct mt7996_dev *dev, struct ieee80211_vif *vif,
- 	return 0;
- 
- error_unlink:
--	mt7996_mac_sta_remove_links(dev, vif, sta, new_links);
-+	mt7996_mac_sta_remove_links(dev, vif, sta, new_links, true);
- 
- 	return err;
- }
-@@ -1315,7 +1326,7 @@ mt7996_mac_sta_change_links(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 
- 	mutex_lock(&dev->mt76.mutex);
- 
--	mt7996_mac_sta_remove_links(dev, vif, sta, rem);
-+	mt7996_mac_sta_remove_links(dev, vif, sta, rem, false);
- 	ret = mt7996_mac_sta_add_links(dev, vif, sta, add);
- 
- 	mutex_unlock(&dev->mt76.mutex);
-@@ -1424,10 +1435,12 @@ static void
- mt7996_mac_sta_remove(struct mt7996_dev *dev, struct ieee80211_vif *vif,
- 		      struct ieee80211_sta *sta)
- {
--	unsigned long links = sta->valid_links ? sta->valid_links : BIT(0);
-+	struct mt7996_sta *msta = (struct mt7996_sta *)sta->drv_priv;
-+	int i;
- 
- 	mutex_lock(&dev->mt76.mutex);
--	mt7996_mac_sta_remove_links(dev, vif, sta, links);
-+	for (i = 0; i < ARRAY_SIZE(msta->link); i++)
-+		mt7996_mac_sta_remove_link(dev, sta, i, true);
- 	mutex_unlock(&dev->mt76.mutex);
- }
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-index e0a5c4eeb5165f2b789bbbf7d731a8ff3aaab49f..bdcf7245795497655c3e49c72b522dd25db5a251 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-@@ -867,8 +867,9 @@ void mt7996_mac_twt_teardown_flow(struct mt7996_dev *dev,
- 				  struct mt7996_vif_link *link,
- 				  struct mt7996_sta_link *msta_link,
- 				  u8 flowid);
--void mt7996_mac_sta_deinit_link(struct mt7996_dev *dev,
--				struct mt7996_sta_link *msta_link);
-+void mt7996_mac_sta_remove_link(struct mt7996_dev *dev,
-+				struct ieee80211_sta *sta,
-+				unsigned int link_id, bool flush);
- void mt7996_mac_add_twt_setup(struct ieee80211_hw *hw,
- 			      struct ieee80211_sta *sta,
- 			      struct ieee80211_twt_setup *twt);
+Tested-by: Nick Morrow <morrownr@gmail.com>
 
--- 
-2.53.0
-
+Thanks.
 
