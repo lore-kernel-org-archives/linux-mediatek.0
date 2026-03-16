@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B63CFF46456
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Mar 2026 11:44:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A863EF53D69
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Mar 2026 15:52:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=I3aJbkE9iVAdWd8MpiNIvxHHpK8Oy6kuO4iwfu/G784=; b=IrDr24XhuP7KMHYe2D3lekc5Pf
-	f37MiSmOgwZjoG+GM5T3ZBpM6CE9cOfArOP2cAqoPqb54kCe5RgL7Yrf2gZPfUaPHEN0sUBY9+pRw
-	6ki+SKiVzQCPgnmh3wDLOPh8Lh58tzILZ2jWc8K9zKDzWR1hXUcewfiBZYE+aa3k/bqYAFUSHeQ/m
-	C2Bhej9fTOzIs88ZmYNJX8Qe8pZBMlDT8vg5ew46v6N94Vl2cBWJn03EeFmVdGm2NH/c4eBfIDhrt
-	mJvQLCSw8Y0xNAHrPUP936w/5KHDS+qOueC6de8HTAi0D5SnS7PwGTaJ/WOnWoEpCyIsSS2j7QI3v
-	0+Rjs+vQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Q11hnzTKrbJQfR59sChwy59iNTTXeocJ+Lmy3WVGuHU=; b=k89rpT68XWucU3n/QqcUi94XP0
+	GQ/mBHUWlAr+ayLad6Ttz1mIhSklvp4De77CT/s1R8dTcyavcuGc966GB6hcfLrntirqYCcgiohTA
+	X4wgLpcT5KL2F8VWNB134QB2z1/ohrjkBwo5sSarFcti3LIA8VGNPnd2wxPPbU2cOkVsjMqCIDjqa
+	78/fsltEzMjTTzF3cekzwIQIb7HO7IiLeJ4z2f4pALQ9pwHh/o7buzD8M2CCSeRaSpz8F8oxgr5gJ
+	8RWmQfBrJtb7ksML+vX+pDAf09xmEI5ErcJkYxUZWOzo1aw2uBMDWa9N5vr9EA4a2CDk8RFrGcbju
+	CajJd49g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w26NP-00000003qvV-0LX4;
-	Mon, 16 Mar 2026 11:44:51 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1w2AEv-00000004NUP-3fty;
+	Mon, 16 Mar 2026 15:52:21 +0000
+Received: from mail.cjdns.fr ([5.135.140.105])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w26NM-00000003quS-2E7F;
-	Mon, 16 Mar 2026 11:44:49 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 28A5542A0D;
-	Mon, 16 Mar 2026 11:44:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AAB61C19424;
-	Mon, 16 Mar 2026 11:44:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773661485;
-	bh=inHV9Ped4ZMhwGK3rfrUQhkpL5mQU4uwMhKJpzqlqNQ=;
-	h=From:Date:Subject:To:Cc:From;
-	b=pBoxM5mnt3SKQXoXnj1AUM3wwwa4VZhnSSvPQ4ilJDVxPPl1Lbr/3I7mX4sgVVYpB
-	 d4FfZ1sj+dYucs83o6kUYjQ8gtQJL+A3Za9AhJZaypiHijl8R4yTwIe/S/J3KUGP7P
-	 mE1lm5TGSp5W6JazCR19NsjDWqOQ1Bwh2giS2q7LsbFdaFg4UoUjVSDCX2AjslnsMe
-	 84w3C56kWv6FG9xv75PVK2/5PuZZtAbfo2QEKViYCrznx+VEjq8vvsrfPXw7hc7Q1J
-	 1iAEhnURDZOFWth+nz4dbEg9oCWMV7m8flWcgR9ekoIGVws63HRGQw5SlT4DhamGgV
-	 6qe1isiqgzQBw==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Mon, 16 Mar 2026 12:44:27 +0100
-Subject: [PATCH mt76] wifi: mt76: mt7996: fix frequency separation for
- station STR mode
+	id 1w2AEt-00000004NTE-2MuW
+	for linux-mediatek@lists.infradead.org;
+	Mon, 16 Mar 2026 15:52:20 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 2BADB302EB3;
+	Mon, 16 Mar 2026 16:52:08 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
+	t=1773676334; h=from:subject:date:message-id:to:cc:mime-version:
+	 content-transfer-encoding; bh=Q11hnzTKrbJQfR59sChwy59iNTTXeocJ+Lmy3WVGuHU=;
+	b=r8UOBjjDoVmxU+sPlo88yabF/Mg1DAzDSQHVocQGzeE1FKHIyY3uan5sdVc13u7FKMjQDO
+	cisBH+YubhmFq9UHP8YNddsBPAtUicq25lCqPoqnwlQc0N83uWY87IkKFelWWyuXs6+4rV
+	0HXANlpP9U1H+qEQC3cDfaSGBIp/CYHzV/Hr/rBeWdgv1NKG3J7+upIO+F3QVhw1F1ABri
+	0PegtrcI62pXDFtWq0lumkKHeeW5rntXJdYW/HuC1hjDNDy/bWYVksyghcDz8li+ObOZBs
+	9gXfRDUnBq9aqa19HaxYD+kI86NaLdjLal/96GzFgiSJi6LUkaEZ6r1fNwVrZg==
+From: Caleb James DeLisle <cjd@cjdns.fr>
+To: linux-pci@vger.kernel.org
+Cc: linux-mips@vger.kernel.org,
+	naseefkm@gmail.com,
+	ryder.lee@mediatek.com,
+	bhelgaas@google.com,
+	lpieralisi@kernel.org,
+	kwilczynski@kernel.org,
+	mani@kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	ansuelsmth@gmail.com,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Caleb James DeLisle <cjd@cjdns.fr>
+Subject: [PATCH v2 0/3] PCI: mediatek: Add support for EcoNet SoCs
+Date: Mon, 16 Mar 2026 15:51:54 +0000
+Message-Id: <20260316155157.679533-1-cjd@cjdns.fr>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260316-mt7996-sta-str-v1-1-666814e6ab2d@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MQQqAIBBFrxKzTtAUy64SLaymmkUWKhFId29o8
- RYP3v8FEkbCBH1VIOJNic7AouoK5t2HDQUt7NDIxkqtrDhy65wVKXsmCt2t7WS8cVpp4NEVcaX
- nPxyAWwvj+35Nw0zRZgAAAA==
-X-Change-ID: 20260316-mt7996-sta-str-38f7b4a49313
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Peter Chiu <chui-hao.chiu@mediatek.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Transfer-Encoding: 8bit
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260316_044448_598099_6342F5FD 
-X-CRM114-Status: UNSURE (   7.82  )
+X-CRM114-CacheID: sfid-20260316_085219_823235_369BAA19 
+X-CRM114-Status: UNSURE (   7.44  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,36 +80,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Chiu <chui-hao.chiu@mediatek.com>
+Add EcoNet EN7528 (and EN751221) PCIe support.
 
-Fix frequency separation field for STR in MLD capabilities
-to allow prpl get correct chip capability.
+Changes from v1:
+* mediatek-pcie.yaml slot0 needs device-type = "pci", fix dt_binding_check
+Link: https://lore.kernel.org/linux-mips/177334026016.3889069.9474337544951486443.robh@kernel.org
 
-Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/mt7996/init.c | 1 +
- 1 file changed, 1 insertion(+)
+This was split from a larger PCIe patchset which crossed multiple
+subsystems. I'm not labeling this a v3 because it's a new patchset, but
+I'm keeping the historical record anyway.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-index 8dfb81eabc9aef9b54fd3b34e13114a1d5214541..d6f9aa1ab52d1258e3923783c8eac2ad5daf2b90 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-@@ -99,6 +99,7 @@ static const struct wiphy_iftype_ext_capab iftypes_ext_capa[] = {
- 		.extended_capabilities_mask = if_types_ext_capa_ap,
- 		.extended_capabilities_len = sizeof(if_types_ext_capa_ap),
- 		.mld_capa_and_ops =
-+			FIELD_PREP_CONST(IEEE80211_MLD_CAP_OP_FREQ_SEP_TYPE_IND, 1) |
- 			FIELD_PREP_CONST(IEEE80211_MLD_CAP_OP_MAX_SIMUL_LINKS,
- 					 MT7996_MAX_RADIOS - 1),
- 	},
+Changes from econet-pcie v2:
+* mediatek-pcie.yaml add missing constraints to PCI node properties
+* econet-pcie v2: https://lore.kernel.org/linux-mips/20260309131818.74467-1-cjd@cjdns.fr
 
----
-base-commit: dab5edc5546c90674cfff033abc2b797b3ad4bf4
-change-id: 20260316-mt7996-sta-str-38f7b4a49313
+Changes from econet-pcie v1:
+* pcie-mediatek.c Exclude pcie_retrain_link() when building as a module
+* econet-pcie v1: https://lore.kernel.org/linux-mips/20260303190948.694783-1-cjd@cjdns.fr/
 
-Best regards,
+
+Caleb James DeLisle (3):
+  dt-bindings: PCI: mediatek: Add support for EcoNet EN7528
+  PCI: mediatek: Add support for EcoNet EN7528 SoC
+  PCI: Skip bridge window reads when window is not supported
+
+ .../bindings/pci/mediatek-pcie.yaml           |  82 ++++++++++++
+ drivers/pci/controller/Kconfig                |   2 +-
+ drivers/pci/controller/pcie-mediatek.c        | 118 ++++++++++++++++++
+ drivers/pci/probe.c                           |   6 +
+ 4 files changed, 207 insertions(+), 1 deletion(-)
+
+
+base-commit: 3fa5e5702a82d259897bd7e209469bc06368bf31
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.39.5
 
 
