@@ -4,105 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4889F30283
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Mar 2026 23:56:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00FA6F30296
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Mar 2026 01:41:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zfWc1PVuIaGjEj+v5aaxG4wWyzdFsgkmHQOoNbes2Uc=; b=2Af605aRGB6Gr7xHMp/CgrRfIW
-	175A9HodOmP5mjVfYm/L0zwqdOMmSDnzBC9fl/EtNNahmkYv40+8mNMbetvnz+H1lsT+Pr2+IBqNt
-	cxaKemY9MmAN6vGe38H3YNRfv6sTvmr1ZNOwUW7m6c17JTOEbWT5+XEqcxc9iCfUTNLOOhNyMjA3j
-	WbrWNkHK8k45wgW9YYtV+lTjWMMUywEhA3YLKxeoEzyC0kj2dgTRku/aL+gJ0buhsQxumYvS8VRCa
-	Iil3GV+zxnMp0S8EylJeHOY4LaFRxU1DAVb/RUDrDqLKVzCkrcXM0HQV0YFry66CsnrB9Vz/BIkUz
-	sKrfQmwg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oarZb00n8Rv6tqeaEbGkD+mE58hMyqk79HsWBx2gyFg=; b=wI8p/Q2AQJPDbd23CJVM6x1weY
+	FiNS+9Y1n6kBgrXA4m5Z0a3qX5zuw+uw5cCOR78lxafQQV0lFh/dHhRu3XnT27Db6drG2/GxRD7C6
+	jezduTlCaVbLsIyvuOB0Sfng+VgLoWyTE+p4lbA6gfqqix1EoSE02rgGOFjv5V6fIH8yyRigI6UgB
+	nezHF4fH2qPzHnXvNPZvsA4ayNIXq+9YpHL7ydag/RLR2cfoAeCYXyFvaQqxUba4nADb3lik2v9Zg
+	EerdlWRGG+LrViE7TjngUG5r0L5b6AhzvUybP0NjTQyBLLGdLgc8tK+ORmmliUwcyNYESnlnaQKVW
+	8dfaXShQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w1vKI-000000031tN-0yOE;
-	Sun, 15 Mar 2026 23:56:54 +0000
-Received: from mail-qt1-x830.google.com ([2607:f8b0:4864:20::830])
+	id 1w1wxl-00000003883-49Mb;
+	Mon, 16 Mar 2026 01:41:46 +0000
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w1vKF-000000031t0-0TaR
-	for linux-mediatek@lists.infradead.org;
-	Sun, 15 Mar 2026 23:56:52 +0000
-Received: by mail-qt1-x830.google.com with SMTP id d75a77b69052e-50912a097b0so22295171cf.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 15 Mar 2026 16:56:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1773619009; cv=none;
-        d=google.com; s=arc-20240605;
-        b=WaFMhirGb0GEgahQErU3usXIeGjFxN0EAHGPTnKa3URDA+7PUlpD9dT3GPAcgn0l7D
-         krGa4+hrr8pOELau3yNRuTUZ7766XDxIde2T2y7oV3DONuGdcrQK62kDO++dTrziqbm7
-         sfrpkRzzyGu3NPfJByGa0lqS7jpL+LzvDrR85jFv+vtE7NB9jkdQfabV5YDJkhz/Cy9M
-         jKORNxDWkkzAhzBbXHMSataA9/JI4orcnDoN2myI7XLOakW4WpIEOGzbfjTkAFLJe2wU
-         NPhblSUelMUGoy5O0fxDX8Q2/Web0G6OkCb2k+buvtOnrMkeXUHGlHBXGenCCWDUsM96
-         jyug==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=zfWc1PVuIaGjEj+v5aaxG4wWyzdFsgkmHQOoNbes2Uc=;
-        fh=B87EpcbaP+TlTi8YY1cg1doPXotDB92wJLdrfKxRed0=;
-        b=BHJqnMsaleMZJuABwvyiJlCmV7ZyIS6dfIyLtehpWXDmZZIg9gCN1cvfKKaURNO1vG
-         aNUypjYMB8iJUxJazdoEhENAraMSDhOsor9SrTV3mKyE57cjwzlbWEUFc78mnsu7jZtS
-         q76lX5O6H5QKafU9APwLEgue5D/2iw4r6jgoNcsg4poquLAaf15rirmkFuQ8an/dSTrW
-         ik4q0NQxdn+bTfo4qisRMCr2QVHYLkWLmHCfjP8lu90fg5BCx+MlXanujoDMGDt2/0fY
-         Mf5uFZVN2vmMDet2fNY+HQj19LMaupCTiJg9DveUYwIKScSwoKuGNZJVHlLrZmMgntkO
-         h2xg==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1773619009; x=1774223809; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=zfWc1PVuIaGjEj+v5aaxG4wWyzdFsgkmHQOoNbes2Uc=;
-        b=K55u8B7/1sqDmLRJ4nrrM7bV6AAlENYMjIaWU93JGABzJgrVhJORpi8Afx4crL2NVi
-         RXdyxvr135cIjKI4Y1S0K9utaS4VcnXL4zAFNCORmwBCqQCBgBiVFv6FQaB2kdMD7ouF
-         mqG08VnsK1nxvrhGgQvhKT23fmqYWxnHHmj3dEJ2Cz0wNunNxyBw06TPLa9vIJXysXYE
-         a6pSs1i6To6VhVIdjPc4z9nvrdW2rrKbZ76Upby9GgygS0uBDC5Ygmg7NeO0yyT/wIO/
-         /HsmqPNEKBwEOb81gCVr2siGxllYA1y64UdpKEptpwlJp7ob9PUI1j97hnFIckI4h7lX
-         iRJw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1773619009; x=1774223809;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=zfWc1PVuIaGjEj+v5aaxG4wWyzdFsgkmHQOoNbes2Uc=;
-        b=UCELlrIFFdzkFF1Mq89610F7eLOJmtm3Am0hYyaFfY2hUs9Q+EoBHpUCp5SXNOdES4
-         fa42xY7AyZeASmEMiCSzM2WMsYuMmP/6dxZffHNz8isirJPe7wZ+YLXyrBZlgP1YTT8B
-         yoHBXuxs9V00KpBo5EkSJHQsG3/GtaQBjJOnuALtXfcD/t+Nkl86nA4lFZlbzmSrQpB6
-         PtZc8xErg/kGUEXlwnIftmqojNAYnPKkI7DlDMbk0Rg/ZopYdTCnUCvWAQiM/3qTUka0
-         5xZGPtkJSa4hvNHcd0xoMwLz9pkCRphMRydf8eeEUUU+pE0bVmxXr4uCw7kYBpvq9EaU
-         mKPg==
-X-Forwarded-Encrypted: i=1; AJvYcCVMoammx6YMGnrj/ur/sE52OtrslQtfHJhPLjhz/vv2IepAyc0wflrXst3CKkKIncRVVTCeuLnjOUBubhIgEA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy3/TJ+syEeG8WFRl9FSWpErl+rVzH1J1VXztuViNod/SYf5Hq8
-	7d5w/RCYZSInc6xZrCso2dtKrN7g3b/YV1t2uNmpOTpn7XaChJcgH/aSHvYpoJzYuw6L2M+Dz56
-	cAkgyqNBouzxhIrWrVeSrQTM2JGqBtwoP
-X-Gm-Gg: ATEYQzyizvgQedXJRYxvK2pP9buI8qyLKTcwcTgwwZfLegPLHGR9poX37fOZcdBEIQT
-	E3IH/iwDY1n3c8BIuVhph9M3E+xev8BtxSOctuRHpguNSP1gT5HLDzBavGoxrd0yTvEKRCvSxDu
-	XlczNvnKLXFfUbJ9wpYCSs3NZ4l+1wNTL0j2wrcSvEwQA/VlqmysRfc9BCF/Z2wt3l5n7ec7Fjy
-	fSNzvfJql0NO4NxfFrllgHLtXssBvNGzSXURJkvPPQeZXNKbcZLfFBK9Dq+HNJV2bM3Za8IaNxw
-	3MZ0XKnbV8/AXjheow==
-X-Received: by 2002:a05:622a:1998:b0:509:1260:b138 with SMTP id
- d75a77b69052e-50957e323c0mr131795091cf.58.1773619009394; Sun, 15 Mar 2026
- 16:56:49 -0700 (PDT)
+	id 1w1wxi-00000003875-3Y8z;
+	Mon, 16 Mar 2026 01:41:44 +0000
+Received: from pps.filterd (m0333521.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 62FNxHDj898997;
+	Mon, 16 Mar 2026 01:41:36 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=
+	corp-2025-04-25; bh=oarZb00n8Rv6tqeaEbGkD+mE58hMyqk79HsWBx2gyFg=; b=
+	Cg2PsnbJuC+E1VjKP1TvXyowT8il5YCdkar/tznft5pLCQbBv6c9cm1Kl6R4/okw
+	n/tVxwm4edM9uZf4JmPJH1bfFEgILHncDthETnejmhcZe0GpO92cCfvE4r7pZ5O5
+	lhvyS3wPJ5IHbMwf/wJEYwHy/HqipTPT7rnsLv2EePxfUWzSAbMVz6JJXsG4aNEd
+	ubZm4/oC6IXpMFDheGEK78YGUUHYsJnv9f2YVJFoJRXKtwB+bfT8xZtRNLpWf8lV
+	6m6S7WTHIJIFqMz9qPZaQRvz/GztFY0dYcNoC3LupNO/EBnio1F1SEWM12RobJ6K
+	hEo3poHZxUFlfMEXQtFs9w==
+Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta01.appoci.oracle.com [130.35.100.223])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4cvxk89c9c-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Mon, 16 Mar 2026 01:41:35 +0000 (GMT)
+Received: from pps.filterd (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 62FKU9de002695;
+	Mon, 16 Mar 2026 01:41:34 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 4cvx4j86n3-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Mon, 16 Mar 2026 01:41:34 +0000
+Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 62G1fXhP032070;
+	Mon, 16 Mar 2026 01:41:34 GMT
+Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
+	by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id 4cvx4j86mp-3;
+	Mon, 16 Mar 2026 01:41:33 +0000
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+To: bvanassche@acm.org, Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        ed.tsai@mediatek.com
+Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
+        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com,
+        peter.wang@mediatek.com, alice.chao@mediatek.com,
+        naomi.chu@mediatek.com, chun-hung.wu@mediatek.com
+Subject: Re: [PATCH v2 0/2] ufs: add delay for VCC ramp-up stability
+Date: Sun, 15 Mar 2026 21:41:22 -0400
+Message-ID: <177362524498.2599440.10872001090323640042.b4-ty@oracle.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260310005230.4001904-2-ed.tsai@mediatek.com>
+References: <20260310005230.4001904-2-ed.tsai@mediatek.com>
 MIME-Version: 1.0
-References: <20260311002825.15502-1-sean.wang@kernel.org> <20260311002825.15502-2-sean.wang@kernel.org>
- <CAFktD2cbFJrLS4ggc+yf582BYmw=jJsntfbDR65ssMpVGM2BKA@mail.gmail.com>
- <CAFrh3J-PsVQ1u_hGFxTVKK0uOs6KxT=euK+jbGvWCueqvynAgw@mail.gmail.com> <CAFrh3J_4N5j9eZAgbP0gzj5gTGVABat9-4xWZBicKMfgL85LRA@mail.gmail.com>
-In-Reply-To: <CAFrh3J_4N5j9eZAgbP0gzj5gTGVABat9-4xWZBicKMfgL85LRA@mail.gmail.com>
-From: Nick <morrownr@gmail.com>
-Date: Sun, 15 Mar 2026 18:56:23 -0500
-X-Gm-Features: AaiRm51Qj5-6K1SxyXtVVXgAPeBMnSu9mdsfs7G65KWz5yr6fupz2hG1vMFQLVU
-Message-ID: <CAFktD2cot4QuVSs0_r2p0ajuRSDCL2u8d94Eq5vuVBfZxCsKzw@mail.gmail.com>
-Subject: Re: [PATCH 2/2] wifi: mt76: mt792x: fix mt7925u USB WFSYS reset handling
-To: Satadru Pramanik <satadru@gmail.com>
-Cc: Sean Wang <sean.wang@kernel.org>, nbd@nbd.name, lorenzo.bianconi@redhat.com, 
-	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	Sean Wang <sean.wang@mediatek.com>, stable@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-03-16_01,2026-03-13_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0 phishscore=0 spamscore=0
+ adultscore=0 malwarescore=0 mlxlogscore=999 suspectscore=0 bulkscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2603050001
+ definitions=main-2603160011
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzE2MDAxMSBTYWx0ZWRfXxHh6KOXCy7Hx
+ cyGueEH54jCVypm15Dv1agWgyW14fN3om2zWvsWnFSuhUUfFsWgfEul8Hr36V8pHgk5EMN9WUaF
+ Av5ed6tgb6E3Hv4sGhCNiug6EWxNSwjLGkNFHkOHTR0/JhmX9uGwsf76KjXLqGqf6mesbdpaSg9
+ 1ET88QwPtfmZhmrFRzVIbkpguJLRQOX0uvr5HAs7PWvK3fuSJRvoAWYZpPjDOLoeT3dd8MadZSM
+ O7JwxiY8sG0UGVm4zaF5YA6Ig8xVv6dDObBrVgyiyw3Tnrd44Mq+cFxaOK5HTK1oesMRZuLtJFL
+ W8nFD0FmTgrTucrePrQG9WwbjQT30vGmXZIuMUjmJZqmShG8//IL4DV+BQy4OBUZbUfvXIHFdiM
+ KB5ebbIo0xdtFfHYdNuC0V+zlSSLtvlmbPIdEZKYgN8FG7GJowq48foBInibyA6A3XIXYMg+KLW
+ NHfFOLtWrc53VhfjxG44lE4UNQXsURSZq6QhVIsQ=
+X-Authority-Analysis: v=2.4 cv=AI0/m/Lt c=1 sm=1 tr=0 ts=69b75fcf b=1 cx=c_pps
+ a=zPCbziy225d3KhSqZt3L1A==:117 a=zPCbziy225d3KhSqZt3L1A==:17
+ a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=jiCTI4zE5U7BLdzWsZGv:22 a=x0eKOSpe3m1H3M0S9YoZ:22 a=VwQbUJbxAAAA:8
+ a=mpaa-ttXAAAA:8 a=-pD3U8TwCSn0KAY3LIgA:9 a=QEXdDO2ut3YA:10 cc=ntf
+ awl=host:12271
+X-Proofpoint-GUID: oA-Vk6MhdX35m3IO0eKzr5xQxB74aqQn
+X-Proofpoint-ORIG-GUID: oA-Vk6MhdX35m3IO0eKzr5xQxB74aqQn
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260315_165651_194722_F68F7C62 
-X-CRM114-Status: GOOD (  16.89  )
+X-CRM114-CacheID: sfid-20260315_184142_886513_0184513B 
+X-CRM114-Status: GOOD (  14.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,76 +114,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> >> > From: Sean Wang <sean.wang@mediatek.com>
-> >> >
-> >> > mt7925u uses different reset/status registers from mt7921u. Reusing the
-> >> > mt7921u register set causes the WFSYS reset to fail.
-> >> >
-> >> > Add a chip-specific descriptor in mt792xu_wfsys_reset() to select the
-> >> > correct registers and fix mt7925u failing to initialize after a warm
-> >> > reboot.
-> >> >
-> >> > Fixes: d28e1a48952e ("wifi: mt76: mt792x: introduce mt792x-usb module")
-> >> > Cc: stable@vger.kernel.org
-> >> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> >> > ---
-> >> >  drivers/net/wireless/mediatek/mt76/mt792x_regs.h |  4 ++++
-> >> >  drivers/net/wireless/mediatek/mt76/mt792x_usb.c  | 13 ++++++++++++-
-> >> >  2 files changed, 16 insertions(+), 1 deletion(-)
-> >> >
-> >> > diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_regs.h b/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
-> >> > index 7ddde9286861..d2a8b2b0df32 100644
-> >> > --- a/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
-> >> > +++ b/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
-> >> > @@ -392,6 +392,10 @@
-> >> >  #define MT_CBTOP_RGU_WF_SUBSYS_RST     MT_CBTOP_RGU(0x600)
-> >> >  #define MT_CBTOP_RGU_WF_SUBSYS_RST_WF_WHOLE_PATH BIT(0)
-> >> >
-> >> > +#define MT7925_CBTOP_RGU_WF_SUBSYS_RST 0x70028600
-> >> > +#define MT7925_WFSYS_INIT_DONE_ADDR    0x184c1604
-> >> > +#define MT7925_WFSYS_INIT_DONE         0x00001d1e
-> >> > +
-> >> >  #define MT_HW_BOUND                    0x70010020
-> >> >  #define MT_HW_CHIPID                   0x70010200
-> >> >  #define MT_HW_REV                      0x70010204
-> >> > diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_usb.c b/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
-> >> > index a92e872226cf..47827d1c5ccb 100644
-> >> > --- a/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
-> >> > +++ b/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
-> >> > @@ -224,6 +224,15 @@ static const struct mt792xu_wfsys_desc mt7921_wfsys_desc = {
-> >> >         .need_status_sel = true,
-> >> >  };
-> >> >
-> >> > +static const struct mt792xu_wfsys_desc mt7925_wfsys_desc = {
-> >> > +       .rst_reg = MT7925_CBTOP_RGU_WF_SUBSYS_RST,
-> >> > +       .done_reg = MT7925_WFSYS_INIT_DONE_ADDR,
-> >> > +       .done_mask = U32_MAX,
-> >> > +       .done_val = MT7925_WFSYS_INIT_DONE,
-> >> > +       .delay_ms = 20,
-> >> > +       .need_status_sel = false,
-> >> > +};
-> >> > +
-> >> >  int mt792xu_dma_init(struct mt792x_dev *dev, bool resume)
-> >> >  {
-> >> >         int err;
-> >> > @@ -254,7 +263,9 @@ EXPORT_SYMBOL_GPL(mt792xu_dma_init);
-> >> >
-> >> >  int mt792xu_wfsys_reset(struct mt792x_dev *dev)
-> >> >  {
-> >> > -       const struct mt792xu_wfsys_desc *desc = &mt7921_wfsys_desc;
-> >> > +       const struct mt792xu_wfsys_desc *desc = is_mt7925(&dev->mt76) ?
-> >> > +                                               &mt7925_wfsys_desc :
-> >> > +                                               &mt7921_wfsys_desc;
-> >> >         u32 val;
-> >> >         int i;
-> >> >
-> >> > --
-> >> > 2.43.0
+On Tue, 10 Mar 2026 08:52:26 +0800, ed.tsai@mediatek.com wrote:
 
-Sean, I have been testing this series of 2 patches for the last two days. I
-am no longer seeing problems with warm boot so:
+> This patch series resolves a link stability issue found on our certain
+> platforms where the VCC regulator has a slow ramp-up time.
+> 
+> To fix this, a delay is needed after VCC is turned on. The solution is
+> implemented in two parts:
+> 
+> 1. Introduce the new host quirks, UFSHCD_QUIRK_VCC_ON_DELAY.
+> 2. Apply in our new platform with UFS5 device to ensure the VCC is
+>    ready before we enable the clocks.
+> 
+> [...]
 
-Tested-by: Nick Morrow <morrownr@gmail.com>
+Applied to 7.1/scsi-queue, thanks!
 
-Thanks.
+[1/2] ufs: core: Add quirks for VCC ramp-up delay
+      https://git.kernel.org/mkp/scsi/c/6ab94d0194dd
+[2/2] ufs: host: mediatek: Add VCC on delay for stability
+      https://git.kernel.org/mkp/scsi/c/20ca5460e5f9
+
+-- 
+Martin K. Petersen
 
