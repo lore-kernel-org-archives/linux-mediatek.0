@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48A37F53D6D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Mar 2026 15:52:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8058EF53D70
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Mar 2026 15:52:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nRiPz9a4SpQjGmlka47ayeQWMe+U7ftfbmH0XfIDxo4=; b=Q9g0h2e9jPnQyPxgFeI5dhQB3P
-	0ujq59QxPHbfl/6GVw/GdZ216TUzeVkO/5JHPpN74zSlz7f1kxjUX5t546ChBL2LLuuY+K3U3hbY+
-	tn9jpnuB2qMQPvRwJpJGSS9frkfZNmcf1zkhd5Quu5FZllpF21OazO/kzk+NySrKRhPAo4mIJgIRW
-	0wOgSvdrmiW+vsFPChw5U1rI/F0qFeREAYRdMWa8FZNoUkZLCvqKW3Nf2WqtWxi+dwAKPUcpnCZO/
-	k7Oh9/B2+YGzHubFkCy44eKbhvf7ejTbFxXUoKJeZF68pjHza3JTcILiJi1M7TF1ZDP2e54jqUBb6
-	OORUA8Sg==;
+	bh=Hun8qRSx+c81aOcVRS1X8gTZpBZdlow4lndHrL4U0TU=; b=PZhPSznrac6p6/l3m2Y8GukvsU
+	UdH6n2uQM+RgwgM+ItX68AYNmgUNkbuUSfvwm3T7VQWfUpWg6gPLY55pfZaaSz+FVmtBl9Y52oTjX
+	7mQEqDkJ7q93IrwmQxLEq21iPKOpa1tcK6EN7L2mJkUyhobeDmu8VkX96R6F7v/ky6VmX7v5py5cf
+	L/JW2nEWV8ZGgAO908yPQNTxIde8agjVDJkydIwVnyJwLYWr7IKj+ReFuWk08w1j6OVRstCXQ/Zwj
+	4nl4kR33d17fvVQoNF73lRBgqZLk9f65G7755JuYMlJaeOCmWkYHVnqgkufoyU6pgeOz1Qg+7AECa
+	hRxOhdIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2AEy-00000004NVa-0uEs;
-	Mon, 16 Mar 2026 15:52:24 +0000
+	id 1w2AEz-00000004NWQ-2BF5;
+	Mon, 16 Mar 2026 15:52:25 +0000
 Received: from mail.cjdns.fr ([5.135.140.105])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2AEv-00000004NTa-09Q8
+	id 1w2AEx-00000004NUT-2y7h
 	for linux-mediatek@lists.infradead.org;
-	Mon, 16 Mar 2026 15:52:22 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 828EA302833;
-	Mon, 16 Mar 2026 16:52:14 +0100 (CET)
+	Mon, 16 Mar 2026 15:52:25 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 542DE30F0CC;
+	Mon, 16 Mar 2026 16:52:19 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1773676336; h=from:subject:date:message-id:to:cc:mime-version:
+	t=1773676341; h=from:subject:date:message-id:to:cc:mime-version:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=nRiPz9a4SpQjGmlka47ayeQWMe+U7ftfbmH0XfIDxo4=;
-	b=HS7fPIfF82+G1igAcixBu+g4xNDb8ffUhwDVFYU1QUa0Ht3uSUUAe2pL4EbGO+heYRYqkh
-	gPctVN4dwUvmIGPl9HiOoroCWW7p2izAYD1ugu+oqlnFNSv416T780tqyWjnQFTBkbOMPr
-	xgKUdH9mYbHucRi/3kGbbgvOFYqm0N2aW2qO6/EA2oaVszRtC5XXzlJA6mLPFzfheLULX3
-	DkESfk7aC3/cXOO1oiGylbpkXi4UsBgAEp17+uWjv7/IYcitUWR+nhj3MZ5OdNLM37nEwo
-	c/V+W46BzF9ZWzJKP2sYm0qsJs4vmQPsP5F7c1o37V6Gf4U4WKDi3CsYkbL+eQ==
+	bh=Hun8qRSx+c81aOcVRS1X8gTZpBZdlow4lndHrL4U0TU=;
+	b=q/A5ph3MM9uSzYQm9BkrIumHH3kHt/FMfbt0/ehHjAsp21qISj19jYmGJC2OcNAnUnQq5G
+	lfiB/rd/jqqvHGuxy8ODpnfaBhAK5KDo0tiFUhBPmHaCEC6Ibj58xB7hyPgD+Xk3VNFzxn
+	YF5hq2TW/6SneNvGhQLFrPzpxeclppL933UhN/Mopz3aSnWB7Y+1sQuYWcHq+jVPv+S0pi
+	r3/5F2k1nZsDP+/Ch68X7LKDQtu5tjWgKQdbj8P7RMZDSteLQOhBKBGMAFzuoyPXekh526
+	h1YxU+6Oe9aMGOp6Vg/fX0NbIXMkNk2g0NyO/8Elk7bJZZQ/NAh6PzHcGMDykA==
 From: Caleb James DeLisle <cjd@cjdns.fr>
 To: linux-pci@vger.kernel.org
 Cc: linux-mips@vger.kernel.org,
@@ -56,18 +56,19 @@ Cc: linux-mips@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	Caleb James DeLisle <cjd@cjdns.fr>
-Subject: [PATCH v2 1/3] dt-bindings: PCI: mediatek: Add support for EcoNet EN7528
-Date: Mon, 16 Mar 2026 15:51:55 +0000
-Message-Id: <20260316155157.679533-2-cjd@cjdns.fr>
+	Caleb James DeLisle <cjd@cjdns.fr>,
+	Bjorn Helgaas <helgaas@kernel.org>
+Subject: [PATCH v2 3/3] PCI: Skip bridge window reads when window is not supported
+Date: Mon, 16 Mar 2026 15:51:57 +0000
+Message-Id: <20260316155157.679533-4-cjd@cjdns.fr>
 In-Reply-To: <20260316155157.679533-1-cjd@cjdns.fr>
 References: <20260316155157.679533-1-cjd@cjdns.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260316_085221_340944_CD4363F9 
-X-CRM114-Status: UNSURE (   8.32  )
+X-CRM114-CacheID: sfid-20260316_085223_996664_AEDFED9D 
+X-CRM114-Status: UNSURE (   8.34  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,122 +84,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce EcoNet EN7528 SoC compatible in MediaTek PCIe controller
-binding.
+pci_read_bridge_io() and pci_read_bridge_mmio_pref() read bridge window
+registers unconditionally. If the registers are hardwired to zero
+(not implemented), both base and limit will be 0. Since (0 <= 0) is
+true, a bogus window [mem 0x00000000-0x000fffff] or [io 0x0000-0x0fff]
+gets created.
 
-EcoNet PCIe controller has the same configuration model as
-Mediatek v2 but is initiallized more similarly to an MT7621
-PCIe.
+pci_read_bridge_windows() already detects unsupported windows by
+testing register writability and sets io_window/pref_window flags
+accordingly. Check these flags at the start of pci_read_bridge_io()
+and pci_read_bridge_mmio_pref() to skip reading registers when the
+window is not supported.
 
+Suggested-by: Bjorn Helgaas <helgaas@kernel.org>
+Link: https://lore.kernel.org/all/20260113210259.GA715789@bhelgaas/
+Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
 Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
 ---
- .../bindings/pci/mediatek-pcie.yaml           | 82 +++++++++++++++++++
- 1 file changed, 82 insertions(+)
+ drivers/pci/probe.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie.yaml
-index 0b8c78ec4f91..bac6e3c84752 100644
---- a/Documentation/devicetree/bindings/pci/mediatek-pcie.yaml
-+++ b/Documentation/devicetree/bindings/pci/mediatek-pcie.yaml
-@@ -14,6 +14,7 @@ properties:
-     oneOf:
-       - enum:
-           - airoha,an7583-pcie
-+          - econet,en7528-pcie
-           - mediatek,mt2712-pcie
-           - mediatek,mt7622-pcie
-           - mediatek,mt7629-pcie
-@@ -226,6 +227,31 @@ allOf:
+diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
+index bccc7a4bdd79..4eacb741b4ec 100644
+--- a/drivers/pci/probe.c
++++ b/drivers/pci/probe.c
+@@ -395,6 +395,9 @@ static void pci_read_bridge_io(struct pci_dev *dev, struct resource *res,
+ 	unsigned long io_mask, io_granularity, base, limit;
+ 	struct pci_bus_region region;
  
-         mediatek,pbus-csr: false
++	if (!dev->io_window)
++		return;
++
+ 	io_mask = PCI_IO_RANGE_MASK;
+ 	io_granularity = 0x1000;
+ 	if (dev->io_window_1k) {
+@@ -465,6 +468,9 @@ static void pci_read_bridge_mmio_pref(struct pci_dev *dev, struct resource *res,
+ 	pci_bus_addr_t base, limit;
+ 	struct pci_bus_region region;
  
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: econet,en7528-pcie
-+    then:
-+      properties:
-+        clocks:
-+          maxItems: 1
++	if (!dev->pref_window)
++		return;
 +
-+        clock-names:
-+          maxItems: 1
-+
-+        reset: false
-+
-+        reset-names: false
-+
-+        power-domain: false
-+
-+        mediatek,pbus-csr: false
-+
-+      required:
-+        - phys
-+        - phy-names
-+
- unevaluatedProperties: false
- 
- examples:
-@@ -436,3 +462,59 @@ examples:
-             };
-         };
-     };
-+
-+  # EN7528
-+  - |
-+    #include <dt-bindings/interrupt-controller/mips-gic.h>
-+    #include <dt-bindings/clock/en7523-clk.h>
-+    #include <dt-bindings/reset/airoha,en7523-reset.h>
-+
-+    soc_3 {
-+        #address-cells = <1>;
-+        #size-cells = <1>;
-+
-+        pcie@1fb81000 {
-+          compatible = "econet,en7528-pcie";
-+          device_type = "pci";
-+          linux,pci-domain = <0>;
-+          #address-cells = <3>;
-+          #size-cells = <2>;
-+
-+          reg = <0x1fb81000 0x1000>;
-+          reg-names = "port0";
-+
-+          clocks = <&scuclk EN7523_CLK_PCIE>;
-+          clock-names = "sys_ck0";
-+
-+          phys = <&pcie_phy0>;
-+          phy-names = "pcie-phy0";
-+
-+          ranges = <0x01000000 0 0x00000000 0x1f600000 0 0x00010000>,
-+                   <0x82000000 0 0x20000000 0x20000000 0 0x08000000>;
-+
-+          interrupt-parent = <&intc>;
-+          interrupts = <23>;
-+          interrupt-names = "pcie_irq";
-+          bus-range = <0x00 0xff>;
-+          #interrupt-cells = <1>;
-+          interrupt-map-mask = <0 0 0 7>;
-+          interrupt-map = <0 0 0 1 &pcie_intc 0>,
-+              <0 0 0 2 &pcie_intc 1>,
-+              <0 0 0 3 &pcie_intc 2>,
-+              <0 0 0 4 &pcie_intc 3>;
-+
-+          pcie_intc: interrupt-controller {
-+            interrupt-controller;
-+            #address-cells = <0>;
-+            #interrupt-cells = <1>;
-+          };
-+
-+          slot0: pcie@0,0 {
-+            device_type = "pci";
-+            reg = <0x0000 0 0 0 0>;
-+            #address-cells = <3>;
-+            #size-cells = <2>;
-+            ranges;
-+          };
-+        };
-+    };
+ 	pci_read_config_word(dev, PCI_PREF_MEMORY_BASE, &mem_base_lo);
+ 	pci_read_config_word(dev, PCI_PREF_MEMORY_LIMIT, &mem_limit_lo);
+ 	base64 = (mem_base_lo & PCI_PREF_RANGE_MASK) << 16;
 -- 
 2.39.5
 
