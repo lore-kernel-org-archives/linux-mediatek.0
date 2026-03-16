@@ -4,70 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B778F46449
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Mar 2026 10:28:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B63CFF46456
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Mar 2026 11:44:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PX6qY095QlTNqwLeoocvXN8eAxzBq3xaaHLPZo3Ea74=; b=XMAsbQkze0zYTqI8/mV4Re2mwO
-	AStpxGrItGnFp39004lDcK7JiKQUy5gN3JQYHRmzRpCom58p59xNtYkYtp9DEwh0B0VYpK8RXc6pK
-	t6Lu/kUK50P9yGlLiKWq98diQ4Z5973+jC0rKEf904x4HRAqVzPqNRGK5ih/BuNIqWAF3W1V/tXSs
-	Ci8ql/3qbt/PwZdJrWtprXOwzxjHx4D+PKvxYVRckXjw/N3gGn3y9AfIg/umZ+f5gKDfVaYk0DCmf
-	pKcEsz3+wMaitNAFv8XsQGegku2crt39a3C/8J/uZP0w9ky5iajSZNsz7tLa+CODf4YwaLYA9u/sb
-	TmGuRvBA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=I3aJbkE9iVAdWd8MpiNIvxHHpK8Oy6kuO4iwfu/G784=; b=IrDr24XhuP7KMHYe2D3lekc5Pf
+	f37MiSmOgwZjoG+GM5T3ZBpM6CE9cOfArOP2cAqoPqb54kCe5RgL7Yrf2gZPfUaPHEN0sUBY9+pRw
+	6ki+SKiVzQCPgnmh3wDLOPh8Lh58tzILZ2jWc8K9zKDzWR1hXUcewfiBZYE+aa3k/bqYAFUSHeQ/m
+	C2Bhej9fTOzIs88ZmYNJX8Qe8pZBMlDT8vg5ew46v6N94Vl2cBWJn03EeFmVdGm2NH/c4eBfIDhrt
+	mJvQLCSw8Y0xNAHrPUP936w/5KHDS+qOueC6de8HTAi0D5SnS7PwGTaJ/WOnWoEpCyIsSS2j7QI3v
+	0+Rjs+vQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w25Bv-00000003klA-2CbV;
-	Mon, 16 Mar 2026 10:28:55 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1w26NP-00000003qvV-0LX4;
+	Mon, 16 Mar 2026 11:44:51 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w25Bs-00000003kkG-1znM;
-	Mon, 16 Mar 2026 10:28:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1773656928;
-	bh=QYwmO8NObPWWLeffrDa8YFsO09Wgh7fqTWBwXEH+PSI=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=OZ3BjqEe1rjei+GfdHSX0scs+5S8pFy1YrfbCuLHXTxLeRjwkq3XqngZbLm/DvWXe
-	 4FunWfgIM/s8ASMzDBRWQoFeFUZGNJEhACPy5v0qthHuhlDJbSn3Z5WKKNVuZUlg1K
-	 YhG8STENM4V9vEpi70OIGX3agRXUSrlqyd7w/77sW/sy1bdIBOxdu9slnerUB/EHJs
-	 ny3rRT9a+BIdQgTDBBE9iDNIO3ymOVueXKq7wHLw8SYDXVbDBHyyjXu9YjOhRaXgxP
-	 R4f8B6GXp6+KMoitL1mzR1TJ+jNs6jsvUO1Rx5aJmRZRp1K2g3Ib1lXMBTBcMGsu1k
-	 4cCuVhUVOY+Bw==
-Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:1431:12f6:48c1:6267])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laura.nao)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id ED82817E0EFE;
-	Mon, 16 Mar 2026 11:28:47 +0100 (CET)
-From: Laura Nao <laura.nao@collabora.com>
-To: linux@fw-web.de
-Cc: angelogioacchino.delregno@collabora.com,
-	daniel.lezcano@linaro.org,
-	daniel@makrotopia.org,
-	laura.nao@collabora.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-pm@vger.kernel.org,
-	lukasz.luba@arm.com,
-	matthias.bgg@gmail.com,
-	rafael@kernel.org,
-	rui.zhang@intel.com
-Subject: Re: [PATCH v2] thermal/drivers/mediatek/lvts: add missing fields for mt7987
-Date: Mon, 16 Mar 2026 11:28:38 +0100
-Message-Id: <20260316102838.124163-1-laura.nao@collabora.com>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20260312202433.39092-1-linux@fw-web.de>
-References: <20260312202433.39092-1-linux@fw-web.de>
+	id 1w26NM-00000003quS-2E7F;
+	Mon, 16 Mar 2026 11:44:49 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 28A5542A0D;
+	Mon, 16 Mar 2026 11:44:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AAB61C19424;
+	Mon, 16 Mar 2026 11:44:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1773661485;
+	bh=inHV9Ped4ZMhwGK3rfrUQhkpL5mQU4uwMhKJpzqlqNQ=;
+	h=From:Date:Subject:To:Cc:From;
+	b=pBoxM5mnt3SKQXoXnj1AUM3wwwa4VZhnSSvPQ4ilJDVxPPl1Lbr/3I7mX4sgVVYpB
+	 d4FfZ1sj+dYucs83o6kUYjQ8gtQJL+A3Za9AhJZaypiHijl8R4yTwIe/S/J3KUGP7P
+	 mE1lm5TGSp5W6JazCR19NsjDWqOQ1Bwh2giS2q7LsbFdaFg4UoUjVSDCX2AjslnsMe
+	 84w3C56kWv6FG9xv75PVK2/5PuZZtAbfo2QEKViYCrznx+VEjq8vvsrfPXw7hc7Q1J
+	 1iAEhnURDZOFWth+nz4dbEg9oCWMV7m8flWcgR9ekoIGVws63HRGQw5SlT4DhamGgV
+	 6qe1isiqgzQBw==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Mon, 16 Mar 2026 12:44:27 +0100
+Subject: [PATCH mt76] wifi: mt76: mt7996: fix frequency separation for
+ station STR mode
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260316-mt7996-sta-str-v1-1-666814e6ab2d@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MQQqAIBBFrxKzTtAUy64SLaymmkUWKhFId29o8
+ RYP3v8FEkbCBH1VIOJNic7AouoK5t2HDQUt7NDIxkqtrDhy65wVKXsmCt2t7WS8cVpp4NEVcaX
+ nPxyAWwvj+35Nw0zRZgAAAA==
+X-Change-ID: 20260316-mt7996-sta-str-38f7b4a49313
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Peter Chiu <chui-hao.chiu@mediatek.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260316_032852_667823_D3388292 
-X-CRM114-Status: UNSURE (   8.64  )
+X-CRM114-CacheID: sfid-20260316_044448_598099_6342F5FD 
+X-CRM114-Status: UNSURE (   7.82  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,32 +79,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 3/12/26 21:24, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
->
-> Commit a4c40559499f ("thermal/drivers/mediatek/lvts: Add platform ops to
-> support alternative conversion logic") added new ops field which causes
-> crash on mt7987.
->
-> [    1.518540] Internal error: Oops: 0000000096000005 [#1]  SMP
-> ...
-> [    1.564481] pc : lvts_get_temp+0x84/0xc4
-> [    1.564492] lr : lvts_get_temp+0x60/0xc4
-> ...
-> [    1.620900] Call trace:
-> [    1.631753]  lvts_get_temp+0x84/0xc4 (P)
-> [    1.645471]  __thermal_zone_get_temp+0x24/0x11c
-> [    1.656502]  __thermal_zone_device_update+0x9c/0x52c
->
-> Add the new ops member added in 7.0-rc1 for mt7987 too.
->
-> Commit 6931d597c5ef ("thermal/drivers/mediatek/lvts: Make number of
-> calibration offsets configurable") introduced field num_cal_offsets
-> in lvts_data. Add this for mt7987 too.
->
-> Fixes: 78c24e67d6f8 ("thermal/drivers/mediatek/lvts_thermal: Add mt7987 support")
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+From: Peter Chiu <chui-hao.chiu@mediatek.com>
 
-Reviewed-by: Laura Nao <laura.nao@collabora.com>
+Fix frequency separation field for STR in MLD capabilities
+to allow prpl get correct chip capability.
+
+Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt7996/init.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+index 8dfb81eabc9aef9b54fd3b34e13114a1d5214541..d6f9aa1ab52d1258e3923783c8eac2ad5daf2b90 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+@@ -99,6 +99,7 @@ static const struct wiphy_iftype_ext_capab iftypes_ext_capa[] = {
+ 		.extended_capabilities_mask = if_types_ext_capa_ap,
+ 		.extended_capabilities_len = sizeof(if_types_ext_capa_ap),
+ 		.mld_capa_and_ops =
++			FIELD_PREP_CONST(IEEE80211_MLD_CAP_OP_FREQ_SEP_TYPE_IND, 1) |
+ 			FIELD_PREP_CONST(IEEE80211_MLD_CAP_OP_MAX_SIMUL_LINKS,
+ 					 MT7996_MAX_RADIOS - 1),
+ 	},
+
+---
+base-commit: dab5edc5546c90674cfff033abc2b797b3ad4bf4
+change-id: 20260316-mt7996-sta-str-38f7b4a49313
+
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
