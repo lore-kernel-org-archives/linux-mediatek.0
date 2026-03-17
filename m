@@ -4,62 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C977F33808
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Mar 2026 07:26:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29F5DF3380B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Mar 2026 07:42:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XxEzVTQ0/5YkEKxh4Slo4nsWqkIJV9PIHRwtvUEFrN4=; b=YffPAClCTJXPqS20JLlcpH7Wt1
-	wI5pFrjDSaebco8NwZvbSG0ibwbuKNKyfKdJj+cKd2qKUl4nM4Wo7BCglNmPgBEX4U9zL+PAaQX/e
-	M9iLb3Vejs/ZrupNKSNrj2iFTWEjs+oLOqOR1sPTy8hy/bScnxXPAJ9zIgxvfL27T9ofCE1/G9iIJ
-	3GYLph51Ufs+BV5j0jocfFnY/9o+jShuP74XoeHpoF97c7KhOZbuh382aIkHVAAxXvpzw4sFo7geW
-	Ie+lzFSxYH2q5ZJ4D7MxW4Y/n3MOOIoDOToq7628+OUxsW604rzSrMK0/cvbRRoeBd1ZOgwZwZqZw
-	2PKb5cUg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5L/oeA/2YcsmAjGJdXUeO+xFx2wstgeZ0oXrcmVk4HM=; b=Yya/MV0uHmyULJ/R7rQHGyx0nN
+	h8nTS9z+Ue0jgZwV6xBlKr/1CvUo9K4+T1bSinKhmZbsIeFtBaz67/UDdmSrbSr/2kNz0pOFz537w
+	2JYH3ZICp8qXzvxz8R7Iug/7yVSI/BPWtuERNNUIBE2xz2YcNaw+4RVVKWGYvO7RmgXpCjpYMGdfy
+	1z7teiwbg3FzcZ5qoWgrnbTwGGcyAuuhfUMwZvwgY0EUMrhDw6Zvm0RgLs1E1SqqrDOu5Jy4aa1o1
+	J5nVuiBPGTJ+CuEwSHvhEDTPiO5I0d7CUl2P7jSl5/0Ex5lEAn4kTcUnB9I4bizSk5UBjpDlwB1tb
+	xEzpIezg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2OoY-00000005ZHi-3IF3;
-	Tue, 17 Mar 2026 07:26:06 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1w2P4L-00000005b0U-2s66;
+	Tue, 17 Mar 2026 07:42:25 +0000
+Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2OoW-00000005ZHE-3o7i
-	for linux-mediatek@lists.infradead.org;
-	Tue, 17 Mar 2026 07:26:05 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1626960103;
-	Tue, 17 Mar 2026 07:26:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 39822C4CEF7;
-	Tue, 17 Mar 2026 07:26:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773732363;
-	bh=KMKAdvpD2asi94LOZ7jH4G+VPl2+Iliqwp2bhPbfUxg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=WpXz/bV4SdPFXXSpUQ05WRbcGKDUCY/81Laisbg4J3SllB96Cfg7GHRiV2025+ZYZ
-	 2y/yz1dgkT9xuXBNbevh1QEGyoX3C+cpFxuAhw4iNZnbDpdv6wP9bX4ldb76HMbskn
-	 pL/RhwY5WdLC4ElRsjBmvbjA01o2WhxA7XyjtbBUDjUfk4QmQc8uP1iDk6u0ZJ561P
-	 IVRurwb9po8NDG5e2ndDxn6DGDVpkzZCd1+xEB/p8n56YFD6vClOxDSCxiGnj31If+
-	 gtYwj6XEvwFyU7wo7W34/r/veDTz84QPc65ghTuk83N7Uj6dzOzG6zBzFFjqGOnf7X
-	 cBCVQ69c9GkZA==
-Date: Tue, 17 Mar 2026 08:26:01 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Caleb James DeLisle <cjd@cjdns.fr>
-Cc: linux-pci@vger.kernel.org, linux-mips@vger.kernel.org, 
-	naseefkm@gmail.com, ryder.lee@mediatek.com, bhelgaas@google.com, 
-	lpieralisi@kernel.org, kwilczynski@kernel.org, mani@kernel.org, robh@kernel.org, 
-	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, ansuelsmth@gmail.com, linux-mediatek@lists.infradead.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/3] dt-bindings: PCI: mediatek: Add support for
- EcoNet EN7528
-Message-ID: <20260317-feathered-cyber-snake-eb72fa@quoll>
-References: <20260316155157.679533-1-cjd@cjdns.fr>
- <20260316155157.679533-2-cjd@cjdns.fr>
+	id 1w2P4H-00000005atx-0wBz;
+	Tue, 17 Mar 2026 07:42:23 +0000
+X-UUID: cb0bbaee21d411f1a21c59e7364eecb8-20260317
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.11,REQID:8ed28783-528a-49b8-b422-9e532f0e4568,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:89c9d04,CLOUDID:d1496f212eed61f0c89101fc49fc3b6e,BulkI
+	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850|898,TC:nil,Content:0|15|50
+	,EDM:5,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: cb0bbaee21d411f1a21c59e7364eecb8-20260317
+X-User: xiaopei01@kylinos.cn
+Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
+	(envelope-from <xiaopei01@kylinos.cn>)
+	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
+	with ESMTP id 209579328; Tue, 17 Mar 2026 15:42:04 +0800
+From: Pei Xiao <xiaopei01@kylinos.cn>
+To: linux-spi@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	imx@lists.linux.dev,
+	openbmc@lists.ozlabs.org,
+	linux-rockchip@lists.infradead.org,
+	linux-riscv@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	broonie@kernel.org
+Cc: Pei Xiao <xiaopei01@kylinos.cn>
+Subject: [PATCH v3 02/17] spi: bcm63xx-hsspi: Use helper function devm_clk_get_enabled()
+Date: Tue, 17 Mar 2026 15:41:44 +0800
+Message-Id: <4edc7f6b63cc8b83b2185c398256234426a3d859.1773733017.git.xiaopei01@kylinos.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <cover.1773733017.git.xiaopei01@kylinos.cn>
+References: <cover.1773733017.git.xiaopei01@kylinos.cn>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20260316155157.679533-2-cjd@cjdns.fr>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260317_004221_575328_ABF01E01 
+X-CRM114-Status: GOOD (  10.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,110 +82,104 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 16, 2026 at 03:51:55PM +0000, Caleb James DeLisle wrote:
->  
->          mediatek,pbus-csr: false
->  
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: econet,en7528-pcie
-> +    then:
-> +      properties:
-> +        clocks:
-> +          maxItems: 1
-> +
-> +        clock-names:
-> +          maxItems: 1
-> +
-> +        reset: false
-> +
-> +        reset-names: false
-> +
-> +        power-domain: false
+devm_clk_get() and clk_prepare_enable() can now be replaced by
+devm_clk_get_enabled() when driver enables the clocks. Moreover, it is no
+longer necessary to unprepare and disable the clocks explicitly.
+Simplify code.
 
-Wrong property.
+Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
+---
+ drivers/spi/spi-bcm63xx-hsspi.c | 46 +++++++++------------------------
+ 1 file changed, 12 insertions(+), 34 deletions(-)
 
-> +
-> +        mediatek,pbus-csr: false
-> +
-> +      required:
-> +        - phys
-> +        - phy-names
-> +
->  unevaluatedProperties: false
->  
->  examples:
-> @@ -436,3 +462,59 @@ examples:
->              };
->          };
->      };
-> +
-> +  # EN7528
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/mips-gic.h>
-> +    #include <dt-bindings/clock/en7523-clk.h>
-> +    #include <dt-bindings/reset/airoha,en7523-reset.h>
-> +
-> +    soc_3 {
+diff --git a/drivers/spi/spi-bcm63xx-hsspi.c b/drivers/spi/spi-bcm63xx-hsspi.c
+index 612f8802e690..266eabd3715b 100644
+--- a/drivers/spi/spi-bcm63xx-hsspi.c
++++ b/drivers/spi/spi-bcm63xx-hsspi.c
+@@ -758,8 +758,7 @@ static int bcm63xx_hsspi_probe(struct platform_device *pdev)
+ 	if (IS_ERR(regs))
+ 		return PTR_ERR(regs);
+ 
+-	clk = devm_clk_get(dev, "hsspi");
+-
++	clk = devm_clk_get_enabled(dev, "hsspi");
+ 	if (IS_ERR(clk))
+ 		return PTR_ERR(clk);
+ 
+@@ -767,41 +766,26 @@ static int bcm63xx_hsspi_probe(struct platform_device *pdev)
+ 	if (IS_ERR(reset))
+ 		return PTR_ERR(reset);
+ 
+-	ret = clk_prepare_enable(clk);
+-	if (ret)
+-		return ret;
+-
+ 	ret = reset_control_reset(reset);
+-	if (ret) {
+-		dev_err(dev, "unable to reset device: %d\n", ret);
+-		goto out_disable_clk;
+-	}
++	if (ret)
++		return dev_err_probe(dev, ret, "unable to reset device: %d\n", ret);
+ 
+ 	rate = clk_get_rate(clk);
+ 	if (!rate) {
+-		pll_clk = devm_clk_get(dev, "pll");
+-
+-		if (IS_ERR(pll_clk)) {
+-			ret = PTR_ERR(pll_clk);
+-			goto out_disable_clk;
+-		}
+-
+-		ret = clk_prepare_enable(pll_clk);
+-		if (ret)
+-			goto out_disable_clk;
++		pll_clk = devm_clk_get_enabled(dev, "pll");
++		if (IS_ERR(pll_clk))
++			return dev_err_probe(dev, PTR_ERR(pll_clk),
++					     "failed enable pll clk\n");
+ 
+ 		rate = clk_get_rate(pll_clk);
+-		if (!rate) {
+-			ret = -EINVAL;
+-			goto out_disable_pll_clk;
+-		}
++		if (!rate)
++			return dev_err_probe(dev, -EINVAL,
++					     "failed get pll clk rate\n");
+ 	}
+ 
+ 	host = spi_alloc_host(&pdev->dev, sizeof(*bs));
+-	if (!host) {
+-		ret = -ENOMEM;
+-		goto out_disable_pll_clk;
+-	}
++	if (!host)
++		return dev_err_probe(dev, -ENOMEM, "alloc host no mem\n");
+ 
+ 	bs = spi_controller_get_devdata(host);
+ 	bs->pdev = pdev;
+@@ -887,10 +871,6 @@ static int bcm63xx_hsspi_probe(struct platform_device *pdev)
+ 	pm_runtime_disable(&pdev->dev);
+ out_put_host:
+ 	spi_controller_put(host);
+-out_disable_pll_clk:
+-	clk_disable_unprepare(pll_clk);
+-out_disable_clk:
+-	clk_disable_unprepare(clk);
+ 	return ret;
+ }
+ 
+@@ -902,8 +882,6 @@ static void bcm63xx_hsspi_remove(struct platform_device *pdev)
+ 
+ 	/* reset the hardware and block queue progress */
+ 	__raw_writel(0, bs->regs + HSSPI_INT_MASK_REG);
+-	clk_disable_unprepare(bs->pll_clk);
+-	clk_disable_unprepare(bs->clk);
+ 	sysfs_remove_group(&pdev->dev.kobj, &bcm63xx_hsspi_group);
+ }
+ 
+-- 
+2.25.1
 
-soc
-
-Underscores are not allowed, but honestly neither soc node is needed nor
-the example. There are already 3 examples, it's enough, especially that
-there are no new properties here.
-
-
-> +        #address-cells = <1>;
-> +        #size-cells = <1>;
-> +
-> +        pcie@1fb81000 {
-> +          compatible = "econet,en7528-pcie";
-> +          device_type = "pci";
-> +          linux,pci-domain = <0>;
-> +          #address-cells = <3>;
-> +          #size-cells = <2>;
-> +
-> +          reg = <0x1fb81000 0x1000>;
-> +          reg-names = "port0";
-> +
-> +          clocks = <&scuclk EN7523_CLK_PCIE>;
-> +          clock-names = "sys_ck0";
-> +
-> +          phys = <&pcie_phy0>;
-> +          phy-names = "pcie-phy0";
-> +
-> +          ranges = <0x01000000 0 0x00000000 0x1f600000 0 0x00010000>,
-> +                   <0x82000000 0 0x20000000 0x20000000 0 0x08000000>;
-> +
-> +          interrupt-parent = <&intc>;
-> +          interrupts = <23>;
-> +          interrupt-names = "pcie_irq";
-> +          bus-range = <0x00 0xff>;
-> +          #interrupt-cells = <1>;
-> +          interrupt-map-mask = <0 0 0 7>;
-> +          interrupt-map = <0 0 0 1 &pcie_intc 0>,
-> +              <0 0 0 2 &pcie_intc 1>,
-> +              <0 0 0 3 &pcie_intc 2>,
-> +              <0 0 0 4 &pcie_intc 3>;
-> +
-> +          pcie_intc: interrupt-controller {
-> +            interrupt-controller;
-> +            #address-cells = <0>;
-> +            #interrupt-cells = <1>;
-> +          };
-> +
-> +          slot0: pcie@0,0 {
-> +            device_type = "pci";
-> +            reg = <0x0000 0 0 0 0>;
-> +            #address-cells = <3>;
-> +            #size-cells = <2>;
-> +            ranges;
-> +          };
-> +        };
-> +    };
-> -- 
-> 2.39.5
-> 
 
