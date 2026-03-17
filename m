@@ -4,71 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DED70F3380E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Mar 2026 07:44:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24E24FD706C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Mar 2026 10:15:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FhRuJrxFlUx2IZNL/q6R+eVYlcPmJwhacTJAdR66t30=; b=xTcfc+apVUEU3usboyzet4CtU4
-	CdTwSmlyMUvg8l4hty9wmmIoUVTO+Te6XyMzukgQn977ek3bade9nF8LXGUq/7pXNQzGVm2fXc0W2
-	tsjAFA4ezbEnaIQTZdwJhy1SPnNfCvBoygzcVyYw+7H/waN1n8jG/RduSF74r2M0D3tKaeGhl8IPy
-	O51dPr2nqiY+ONUEDa/lW5G/5edjXpyawBQ6XiiyxGD5FAQVsmDu2f4KBzlGI2fPYOqkXy7ypEc2+
-	65RvlZjaDOt3ev2TTSoc3A3MQQp4FynOsTPGlaEjj45XWaFrkjOMHaTzplIIGZ6w7kEePeLj7kURL
-	/juxfO1w==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=iRfjqfC/TBsGVHqBrwzxSIT/mb5DrDQmAIZikbq0tmE=; b=MorYvuR5qxI/Uy7Nt9B86EPdD5
+	NOnuAHXG4kodx4w+dm/LuQnLwrRjQiotQ6JsPcB2Gxfo5YUrBv5TlWXp4WUn/+ORGK3iP469FMQty
+	cR2zPWADRTolXxVVivxWQ+hithGccyYyybG4KZWiAPfVrNaDk6J68Nbtr7Iy7X6mlaiPm8EXtHyKE
+	a2E1aVX+eINSomJPHCJMNbzNHOFu9y9xBFvNMjzSnpF827EdgKeJfuYX/3vzDJeJURKIylVFbu4la
+	1EWG9F4b7345mwZuq2I6UB/vzzQnjBJTLtSu6MxjhybZcIbz1uM9XJZTYHJMPI9Hjh4paSnTffCVk
+	ow/JEVJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2P5y-00000005dIt-0nEm;
-	Tue, 17 Mar 2026 07:44:06 +0000
-Received: from mailgw.kylinos.cn ([124.126.103.232])
+	id 1w2RSk-00000005y24-1uN6;
+	Tue, 17 Mar 2026 10:15:46 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2P4M-00000005axX-1Imr;
-	Tue, 17 Mar 2026 07:42:43 +0000
-X-UUID: cd8ae63c21d411f1a21c59e7364eecb8-20260317
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:ba1c14cf-3890-41f9-9129-f2279b57a204,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:89c9d04,CLOUDID:d042d1f9984bf1d3851bdf0c97f5e639,BulkI
-	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850|898,TC:nil,Content:0|15|50
-	,EDM:5,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
-	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: cd8ae63c21d411f1a21c59e7364eecb8-20260317
-X-User: xiaopei01@kylinos.cn
-Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
-	(envelope-from <xiaopei01@kylinos.cn>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 868909025; Tue, 17 Mar 2026 15:42:09 +0800
-From: Pei Xiao <xiaopei01@kylinos.cn>
-To: linux-spi@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	imx@lists.linux.dev,
-	openbmc@lists.ozlabs.org,
-	linux-rockchip@lists.infradead.org,
-	linux-riscv@lists.infradead.org,
+	id 1w2RSj-00000005y1R-00Aw
+	for linux-mediatek@bombadil.infradead.org;
+	Tue, 17 Mar 2026 10:15:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=iRfjqfC/TBsGVHqBrwzxSIT/mb5DrDQmAIZikbq0tmE=; b=TdJIbFWThRlXPthK7I2ICcKzpG
+	1fWQrwbd2jXh7SUvMSM1/JmV0bKPvt/wxw43ar6OkD29XVP9/9wAh9S2p8p8YbVzMBQxVfEmms11r
+	cT63ykavkErdldbGd9Z9Il5bwh3Dy5EymzBjHdfTNYFk3L+ZjnkQ2JSXvdZeJOdcKpMvRMTO+zbT7
+	L8olDVy/VnGsxXvZJr0UDAYQ93INu1MzTmBixNdvYrZGQvNEJsMTQIzdExUPJP12aUosSd4J48lOK
+	w7WaGUTX3kc0XW10OQy4D6YkeyNum8i/vgT8WKDQluZG3RsifAkpk9LPCrChmjvYHbwt+x1/g+uOW
+	JOaI0VUA==;
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1w2RSf-00000008fPR-3z2k
+	for linux-mediatek@lists.infradead.org;
+	Tue, 17 Mar 2026 10:15:43 +0000
+Received: by mail-ed1-x536.google.com with SMTP id 4fb4d7f45d1cf-6615c461d3fso7107967a12.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 17 Mar 2026 03:15:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1773742540; x=1774347340; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=iRfjqfC/TBsGVHqBrwzxSIT/mb5DrDQmAIZikbq0tmE=;
+        b=if7S/bQPqr9YcJ94zITIuFqF0nFrAVhfyaPyj7Fmp8R3tpiB0+CVsNA8RsaqxAQJG9
+         25UaHnqIFhFTkTwFYONLGmuktzn43If+gndS2G13JyjS8SfrzOyRG9pfhfQ1jYuM2PAi
+         VnM1VwVFfPrn/uk1tMbEV8SaEX/VLmxWyDmkEkINvcOXueS1ZxlmuzcYA40OaQrsJG2M
+         9/cz7xetDpgK4B1G3EfWZ3z5DVMKqcHCajTOMWGpkxFtVfUMAG56j9Ah10+VpIujgOq9
+         J0TNw4FgFzFXIEXNXDCL1zb1Hdlk4vvACS/ClSmyW5/yBuggtw/APyNxodver6Ij5z72
+         yjVQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1773742540; x=1774347340;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=iRfjqfC/TBsGVHqBrwzxSIT/mb5DrDQmAIZikbq0tmE=;
+        b=PbPEqvsuVHHaf00cyu4O/14qdqcTvM6LGZEPznFexGS2sLjVcWE+1ZE7VpwE7iFOAL
+         gdQ8AJK0xXx9tO3+V8Lcj6h+1VEWjBVIqPmMc5qAaPFYIfGs4wWxDK9a/D4dP+mh55gO
+         wNopd8vc8nPVRCl8cEa69pmKZxsn3JLHo4cg9u2lE2ZkrZ8rhXS3och1O9/ag//EbCTl
+         H8dtTpEIfcaLXUhqZJ60of8oS8OZ0AGo3JnOfP/O1SWUt/ZxknMrm8qHccPm8HUr9voT
+         bhmIPLVOw8tlKjRUiHZ5nf2k4kT9cwLz29xGrOhpJsgCC8UgeRnciEKuAtWMgq+4jV9a
+         uVKQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWSq4wSZrFfzUGLCrXKodkqlWiDD5JOyZFcTuk/xdZWLPupgRy+3Mu+V8MnNFF6A8M6ypwrZnjyHDhHKdZI8A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzkmxI8QA3y9dF+IzE79gfnSGGXtwybvVs1wqwHXkZzl5mHD50S
+	hLtv7zpVPBcs31OkoZSWx/Vx+efGlZEXhOaMVyR3b1dsNbwZN+EX5QHh
+X-Gm-Gg: ATEYQzxarKznO3hDf6cSwTCkitnsgFq7EzyidpYxtFvHN+RRw3n0YFjOd0eaeZ+JLZ7
+	DRxBtsneuLf/fuxJy23TglVd2mTtGL9VnXve3v1F0D4UWPJ2qA7vkVlHaj4nz4PF6mcZGrA2DIF
+	mOlfN9xo9ND22/mfuasb+ijf0iX4Pb6hfvLN1wFfE4cG0Cdp6TJBhkiwCdIJcKMM7heV+e2qA0X
+	B3R5AwD15SRn14IPezU+yAJ637IgZ4nyj7es7MgZ1y2RFO7ysq0Ah6txwe059RsXYVBh24aeF2a
+	fYhGg+gkV7Vd7+km9Ivm9xwB5UCTZJy2lEF+MI7AJpi5qBVztScZ72QZ3Jd9y8SzvD8KENkfb0D
+	UkejExlVS67TsWIG1FTp7YyC3B+7OnQTRejkhWr4dANt33n0iIMl80kBTK8RHozPjcQUAJtdJy5
+	kb4GVBlYuKoasZrCWOfApIewkR4nx4wP5ReQciGjI1kOzY2r+nteg1gTHFH6Pzh+Rsj5e66/mM4
+	hchLXeYJFKC0YEiPZ7qOwXZzFFyWTNfihOPSh0R6dpyHdzobC+bhpY=
+X-Received: by 2002:a17:907:9343:b0:b97:3bbe:e432 with SMTP id a640c23a62f3a-b97650e9a55mr945539466b.23.1773742539481;
+        Tue, 17 Mar 2026 03:15:39 -0700 (PDT)
+Received: from eric (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b9781914f96sm656674666b.47.2026.03.17.03.15.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 17 Mar 2026 03:15:39 -0700 (PDT)
+From: Eric Woudstra <ericwouds@gmail.com>
+To: Pablo Neira Ayuso <pablo@netfilter.org>,
+	Florian Westphal <fw@strlen.de>,
+	Phil Sutter <phil@nwl.cc>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Simon Horman <horms@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: netfilter-devel@vger.kernel.org,
+	netdev@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	broonie@kernel.org
-Cc: Pei Xiao <xiaopei01@kylinos.cn>
-Subject: [PATCH v3 12/17] spi: stm32-qspi: Use helper function devm_clk_get_enabled()
-Date: Tue, 17 Mar 2026 15:41:54 +0800
-Message-Id: <b887a25df30f38e1339f94ae464929e4e9f75f03.1773733017.git.xiaopei01@kylinos.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1773733017.git.xiaopei01@kylinos.cn>
-References: <cover.1773733017.git.xiaopei01@kylinos.cn>
+	Eric Woudstra <ericwouds@gmail.com>,
+	Nikolay Aleksandrov <razor@blackwall.org>
+Subject: [PATCH v12 nf-next] netfilter: nft_flow_offload: Add DEV_PATH_MTK_WDMA to nft_dev_path_info()
+Date: Tue, 17 Mar 2026 11:15:25 +0100
+Message-ID: <20260317101525.358016-1-ericwouds@gmail.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260317_004241_946490_D2052109 
-X-CRM114-Status: UNSURE (   9.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260317_101542_097848_DCA39033 
+X-CRM114-Status: GOOD (  12.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,69 +123,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-devm_clk_get() and clk_prepare_enable() can now be replaced by
-devm_clk_get_enabled() when driver enables the clocks. Moreover, it is no
-longer necessary to unprepare and disable the clocks explicitly.
-Simplify code.
+In case of using mediatek wireless, in nft_dev_fill_forward_path(), the
+forward path is filled, ending with mediatek wlan1.
 
-Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
+Because DEV_PATH_MTK_WDMA is unknown inside nft_dev_path_info() it returns
+with info.indev = NULL. Then nft_dev_forward_path() returns without
+setting the direct transmit parameters.
+
+This results in a neighbor transmit, and direct transmit not possible.
+
+So this patch adds DEV_PATH_MTK_WDMA to nft_dev_path_info() and makes
+direct transmission possible.
+
+(Also needed for flow between bridged interfaces, maybe implemented
+later.)
+
+Reviewed-by: Nikolay Aleksandrov <razor@blackwall.org>
+[ Rebased; moved to nf_flow_table_path.c ]
+
+Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
+
 ---
- drivers/spi/spi-stm32-qspi.c | 18 +++++-------------
- 1 file changed, 5 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/spi/spi-stm32-qspi.c b/drivers/spi/spi-stm32-qspi.c
-index df1bbacec90a..a8436f70fdfd 100644
---- a/drivers/spi/spi-stm32-qspi.c
-+++ b/drivers/spi/spi-stm32-qspi.c
-@@ -819,25 +819,19 @@ static int stm32_qspi_probe(struct platform_device *pdev)
+Changes in v12:
+ -Split from [PATCH v11 nf-next] netfilter: fastpath fixes
+
+Changes in v11: (results of testing with bridge_fastpath.sh)
+- Dropped "No ingress_vlan forward info for dsa user port" patch.
+- Added Introduce DEV_PATH_BR_VLAN_KEEP_HW, which changed from
+   applying only in the bridge-fastpath to all fastpaths. Added
+   a better explanation to the description.
+
+Changes in v10:
+- Split from patch-set: bridge-fastpath and related improvements v9
+
+ net/netfilter/nf_flow_table_path.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/net/netfilter/nf_flow_table_path.c b/net/netfilter/nf_flow_table_path.c
+index 6bb9579dcc2a..f2d7822824bc 100644
+--- a/net/netfilter/nf_flow_table_path.c
++++ b/net/netfilter/nf_flow_table_path.c
+@@ -103,6 +103,7 @@ static void nft_dev_path_info(const struct net_device_path_stack *stack,
+ 		switch (path->type) {
+ 		case DEV_PATH_ETHERNET:
+ 		case DEV_PATH_DSA:
++		case DEV_PATH_MTK_WDMA:
+ 		case DEV_PATH_VLAN:
+ 		case DEV_PATH_PPPOE:
+ 		case DEV_PATH_TUN:
+@@ -116,6 +117,10 @@ static void nft_dev_path_info(const struct net_device_path_stack *stack,
+ 				i = stack->num_paths;
+ 				break;
+ 			}
++			if (path->type == DEV_PATH_MTK_WDMA) {
++				i = stack->num_paths;
++				break;
++			}
  
- 	init_completion(&qspi->match_completion);
- 
--	qspi->clk = devm_clk_get(dev, NULL);
-+	qspi->clk = devm_clk_get_enabled(dev, NULL);
- 	if (IS_ERR(qspi->clk))
--		return PTR_ERR(qspi->clk);
--
-+		return dev_err_probe(dev, PTR_ERR(qspi->clk),
-+				     "can not enable the clock\n");
- 	qspi->clk_rate = clk_get_rate(qspi->clk);
- 	if (!qspi->clk_rate)
- 		return -EINVAL;
- 
--	ret = clk_prepare_enable(qspi->clk);
--	if (ret) {
--		dev_err(dev, "can not enable the clock\n");
--		return ret;
--	}
--
- 	rstc = devm_reset_control_get_exclusive(dev, NULL);
- 	if (IS_ERR(rstc)) {
- 		ret = PTR_ERR(rstc);
- 		if (ret == -EPROBE_DEFER)
--			goto err_clk_disable;
-+			goto err_defer;
- 	} else {
- 		reset_control_assert(rstc);
- 		udelay(2);
-@@ -886,8 +880,7 @@ static int stm32_qspi_probe(struct platform_device *pdev)
- 	pm_runtime_dont_use_autosuspend(qspi->dev);
- err_dma_free:
- 	stm32_qspi_dma_free(qspi);
--err_clk_disable:
--	clk_disable_unprepare(qspi->clk);
-+err_defer:
- 
- 	return ret;
- }
-@@ -906,7 +899,6 @@ static void stm32_qspi_remove(struct platform_device *pdev)
- 	pm_runtime_disable(qspi->dev);
- 	pm_runtime_set_suspended(qspi->dev);
- 	pm_runtime_dont_use_autosuspend(qspi->dev);
--	clk_disable_unprepare(qspi->clk);
- }
- 
- static int stm32_qspi_runtime_suspend(struct device *dev)
+ 			/* DEV_PATH_VLAN, DEV_PATH_PPPOE and DEV_PATH_TUN */
+ 			if (path->type == DEV_PATH_TUN) {
 -- 
-2.25.1
+2.53.0
 
 
