@@ -4,62 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30C93FD875E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Mar 2026 13:20:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 500FFFD877D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Mar 2026 14:20:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=17QQxtRUtaf7KEtmNuQbCZyqj8LsLetQhwKYrcsm9Tg=; b=Wu4v4VpXHr1/YoIpVE3kM4ldgq
-	Ur1jXEYwtyo5zqUx1bWc8SCDniiIDmoUEhBwv8yTMl4r9Qw17+zsKlWAFY2CY/vTvKqY6htqs8ahz
-	JP1uLO3n58S7PUqP5P5DGmk1u5DhmUDXSC2yar6XVrMQMovn9l+LaQpc3nLK1ufuMbF06zg38deOT
-	DEv89akNlCv8xMtH64++OSymAlX7bO4tkGn5Rj8PiOMcwHB1jI17uiFvc2svA6GGU1hnzF2Tk7Kc6
-	m7o1gijH+JH84K3BrUzl5Ku/2WDLY6VQi7uahqT3shkjLiBGAKEZbdemogg713I3ZLQXzjmlRK1qZ
-	clsFIabQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gloVP7W4XnzcaPKcQMq6SkAwd0uoliGoIUm/+/4vklQ=; b=OfSwNCMlrXCqmibQHToJZ8iQjN
+	QtOx3y5TCIXaL1LproWgZ1uaCeXwgRSMUV5uLkAN/dhEnjzGT97dfPLDIBf7oJ4+eblLvxOj9nQIT
+	kAbK9qIYBxKonUwFgT2rhZs3uf8l8feL6KpMBzwXKMZqT3riHWX17C6RgdOiZ+3NDQgnG0nTukpdt
+	CEJx4xlKLl4ZftYM7R6aZqj+Lx39Z7uR4jOs5alnp9ih+v7E7/jjS6LkL5HC/p6qG7272xP2P8W2l
+	J/V1U5PeAfkbLIurflWCrCAzppCpkUYkkSsXDqEVuwNp3QLjBVVBYE+lcHUOGGvojtwNyz7vy78Yl
+	Yjq5rUMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2UKz-00000006PNK-2P2R;
-	Tue, 17 Mar 2026 13:19:57 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1w2VHM-00000006YoG-1C1C;
+	Tue, 17 Mar 2026 14:20:16 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2UKx-00000006PMj-2nVj;
-	Tue, 17 Mar 2026 13:19:55 +0000
+	id 1w2VHJ-00000006Ym5-0HbT;
+	Tue, 17 Mar 2026 14:20:14 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E7BE660018;
-	Tue, 17 Mar 2026 13:19:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A61E9C4CEF7;
-	Tue, 17 Mar 2026 13:19:51 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 4F64E40A21;
+	Tue, 17 Mar 2026 14:20:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2DDE7C4CEF7;
+	Tue, 17 Mar 2026 14:20:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773753593;
-	bh=17QQxtRUtaf7KEtmNuQbCZyqj8LsLetQhwKYrcsm9Tg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ryqgogP1Js25YVHvobHnOKBl5MYdxOSD2aOiI1tf6rJQER5WihsK9Uq3jfo6Qlf2b
-	 BtONs2A6D54IA4DNEv1Sy0CY6z9gO4p20SThPPkHcwNdCWn5jr22BFpMDOYrAoLSbq
-	 sgZTC8u9xZQu4B/IWVM/GrLwf4dd+exti7RlPqEl4f4czsv51D3od0djhhjvtRmmTC
-	 WYdwB8SCN+QNUbefFUPZOXTmnR7msjPL2f9KXr88ikHvO9/N48Zi3PI1IevuuXxGuW
-	 Jg7rPyI7R0lNjmB0khjEhzaAAgXytb9Tc7RPeU0j3kdsOWVHghNIyu8gn0Kf3R8YE6
-	 65mGvnUDWFheQ==
-Date: Tue, 17 Mar 2026 13:19:48 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Pei Xiao <xiaopei01@kylinos.cn>
-Cc: linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, imx@lists.linux.dev,
-	openbmc@lists.ozlabs.org, linux-rockchip@lists.infradead.org,
-	linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH v3 01/17] spi: axiado: Use helper function
- devm_clk_get_enabled()
-Message-ID: <00540689-fbc5-49cf-b185-5af372f7ef0d@sirena.org.uk>
-References: <cover.1773733017.git.xiaopei01@kylinos.cn>
- <a78f25f1b15b90121e9723ecb5bd606bbb1868d4.1773733017.git.xiaopei01@kylinos.cn>
+	s=k20201202; t=1773757212;
+	bh=D2Aan5I7KojlHJH7qZQt//XX4gVyE0icMzOg2NEGLaM=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=gWL+w+xJlXiWCmAVanWn/LV8gq2BaExdXjjrGDliYxfj7NmvIr7uxUC0P9Y/1nXnV
+	 /+TDR7m/onBPIaQt+hmUUw8XogTkiCbq5kzSCiLK/HWHOS1FJbtvGwn5sAD/OkfDXH
+	 qfQt+EC1ydBEG0I+qvscm/khmZzg46jmmcl95XgULH7ATypgh9Ak+Wa5bF8b23Ti8T
+	 mOxxzDkIZoO+r2nOtfef3yPvsofVvDDolYXuCkbgEU8bz0EAHyhLWViuriYYD+Kxux
+	 FVDDcUjUwaVs2TF9Y/4lcAQha9nDOvg6WF6cutFQezqI17FFMy6XR6bybSC0FX9JEs
+	 dahZz2PWC2TRg==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id BA0483808200;
+	Tue, 17 Mar 2026 14:20:05 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="8+YRHFs8YF4SBCDe"
-Content-Disposition: inline
-In-Reply-To: <a78f25f1b15b90121e9723ecb5bd606bbb1868d4.1773733017.git.xiaopei01@kylinos.cn>
-X-Cookie: Must be over 18.
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next v2] net: airoha: select QDMA block according
+ LAN/WAN configuration
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <177375720454.3643902.13747371433230269339.git-patchwork-notify@kernel.org>
+Date: Tue, 17 Mar 2026 14:20:04 +0000
+References: <20260313-airoha-qdma-lan-wan-mode-v2-1-7d577db6e40c@kernel.org>
+In-Reply-To: <20260313-airoha-qdma-lan-wan-mode-v2-1-7d577db6e40c@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, horms@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260317_072013_136995_83ADFD0A 
+X-CRM114-Status: GOOD (  10.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,33 +76,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hello:
 
---8+YRHFs8YF4SBCDe
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+This patch was applied to netdev/net-next.git (main)
+by Paolo Abeni <pabeni@redhat.com>:
 
-On Tue, Mar 17, 2026 at 03:41:43PM +0800, Pei Xiao wrote:
-> devm_clk_get() and clk_prepare_enable() can now be replaced by
-> devm_clk_get_enabled() when driver enables the clocks. Moreover, it is no
-> longer necessary to unprepare and disable the clocks explicitly.
-> Simplify code.
+On Fri, 13 Mar 2026 17:28:36 +0100 you wrote:
+> Before this patch even GDM ports were assigned to QDMA0 while odd GDM
+> ports were using QDMA1, so, based on the DTS configuration, both QDMA0
+> and QDMA1 can theoretically receive traffic destinated to the host cpu
+> from LAN or WAN GDM ports.
+> Airoha folks reported the hw design assumes the LAN traffic destinated
+> to the host cpu is be forwarded to QDMA0 while traffic received on WAN
+> GDM port is managed by QDMA1. For this reason, select QDMA block according
+> to the GDM port LAN or WAN configuration:
+> - QDMA0 is used for GDM LAN devices
+> - QDMA1 is used for GDM WAN device
+> 
+> [...]
 
-This doens't apply against current code, please check and resend.
+Here is the summary with links:
+  - [net-next,v2] net: airoha: select QDMA block according LAN/WAN configuration
+    https://git.kernel.org/netdev/net-next/c/8737d7194d6d
 
---8+YRHFs8YF4SBCDe
-Content-Type: application/pgp-signature; name="signature.asc"
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
------BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmm5VPQACgkQJNaLcl1U
-h9BDXgf9F2bMcNxWFiGlImGG2lAZ6+rhIz0gb1xd8L/zXFcj49GbT66gTFF+vs6Z
-nJhYnwuUnf46hnhc583pZ39MeS/psE2kjIaTNiGva4NLDwWkiYkn79oJk9zepDF0
-9HRb3mjyaDDPQtfCgnrkTb2VZObD/41CWBtZ8x5JxjFwHkIG776RlhYJUU2y2myN
-oAvCWPJddLcAOZapamPyu/LZvMwFfhWgP4mAr81G/th9dO45ELAiKqMj33zN4VzV
-yJ4r0AY9ZSXuW+NmdztaukKEKWwKGDeT5I3vRWqSJ2EvkvODgAw209d76768VQ+G
-JJtidlXADpZe7vD4DCReLGZERU0QQw==
-=AabK
------END PGP SIGNATURE-----
-
---8+YRHFs8YF4SBCDe--
 
