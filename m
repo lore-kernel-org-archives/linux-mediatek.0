@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27ECDFD8763
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 527E5FD8764
 	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Mar 2026 12:37:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,106 +12,105 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dNKThL5ekX33vFhWbSIGnt3ouNCaPWeTpYi5NY9vXuo=; b=nXbPXD4ZsYPFzui6IMxSA+l1+/
-	B4UKQBBktjzLttkrelDctQNhJ2HF27jG7bi8mCoakJq1TYF/lu6ed07ZnL0WnZS+njv4ppNv/DSV2
-	3Q8odbqAZ51IEjG7dbF8niysMghANurRgZg7Vc4bQC8TJqURhveelzoPgifjJxMd2LNQ/538e93c+
-	nL2AagqULae529+QudGlesfaLNQUmYGHiT2sYsMZ4ximld+B43xCsFJNowviMYqEkdgk8fqDpPp3P
-	rcja1Ycf7rvE+W8T7N04GXFdDy8E7tv/dMO90pzId+EQ8cE4x8l9iPvXPZWbhpmqXn5m8lwAlW1uc
-	YykfDV4w==;
+	bh=BkZNNb+2TnjXOVXhkg3lk8FFLvFPiM6EXM36fB+6xUg=; b=auW1N2BzXEsMr8GmPCLUH3pX1P
+	MTyBTecRZVp2DXdXrXw5dPW64aFXIEAFsUZxaaiZ5hQoPjkLbN5xLabCZeG9fwaLGEU6OCQuhtgC6
+	fRbapI+pCuv/qDTfmfWpisfg4NXan1S85OPxlr265n3y4xa6O5gtS1lQzZI4+uByV81UMbFc8oJRv
+	JlHB/xOE1uZLdr4YaiAF7BQJpfTX+RorWNr+tWvRY+10fR2u+BilCe5wDJe7BocmxQ4dXRmOdc+5T
+	sFLAd3ZR0eCsAUVqH+etl1nXTG/lJY7MU7e2/Wj7VgldA6DbnJsNVVg0XPTaiqDs8UzRgSJTxmyLh
+	MUC7c+OA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2Tfg-00000006JEZ-4ArM;
-	Tue, 17 Mar 2026 12:37:16 +0000
+	id 1w2Tfh-00000006JEz-1CWh;
+	Tue, 17 Mar 2026 12:37:17 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2Tfd-00000006JAj-2fRN
+	id 1w2Tfg-00000006JCb-0DpH
 	for linux-mediatek@bombadil.infradead.org;
-	Tue, 17 Mar 2026 12:37:13 +0000
+	Tue, 17 Mar 2026 12:37:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=dNKThL5ekX33vFhWbSIGnt3ouNCaPWeTpYi5NY9vXuo=; b=PppFDmzq5cn6ElzkKv1V9EUC62
-	FdD7fiLgifhkwje9S1cVAEJjJVrkQ4wavh1PMtT0p6zyBrzfBZC66hD0itrZV9k7oMEl/pyRzV+2e
-	WbvDiz5ALv1mnUMv78eaETnC5DYT5wV4GLw+1sykF0S5DC/x4YBGpjGXM8oJT9VNLDzhWRfn2D/5A
-	gFUhESMEpcUM+uh4lyvUWCIUsywqR1VggXRMiG4+vlA0YQ7rY/boRQm3hCbT2W0Z8zQlsohLO3qs7
-	815SMx/Ag4j2HEI8sPYVnY5Hkm5jlOd5mZQdN6rcV6Iy6b3kPy96JwluFt4tP1/Jcuu5kSiXypgfi
-	bPaWU7sg==;
+	bh=BkZNNb+2TnjXOVXhkg3lk8FFLvFPiM6EXM36fB+6xUg=; b=Z6SjzQCIrlw2LKi+hz+mv9i0ra
+	8jENCCMYScYK3vBynDXSU84rBZvLV3Jog6UGg6IaF4Hri5OaXDOuPn2lVJ4vGllDadeG/ro+qzSO0
+	Ht0RipON2hvdtahzkfDoQvU6wwuRNhPZ7KqoOsG77RONtCpjaXdXcgy7XqFh+pV9ohCb5emYqDcyX
+	fkm9FdeM2R1SG8izRQ6S1HYB7rv3GC7WYLAKOduzAXZ9rSMA43FzjOnJfCQloqX52CEPmzTLvkiHV
+	Eifg3c9a+1GZ9K0LWHZljmobFGGJvdIG00VBRhDNrqLk5qyyKTdchOZZQ8qTgq4kUkujg8Mn+5fcH
+	tUF8GrCQ==;
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2Tfa-00000008yzU-03ZG
+	id 1w2Tfc-00000008z0Y-1wQd
 	for linux-mediatek@lists.infradead.org;
-	Tue, 17 Mar 2026 12:37:12 +0000
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 62HBluL81026609
-	for <linux-mediatek@lists.infradead.org>; Tue, 17 Mar 2026 12:37:08 GMT
+	Tue, 17 Mar 2026 12:37:14 +0000
+Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 62HAjwer254242
+	for <linux-mediatek@lists.infradead.org>; Tue, 17 Mar 2026 12:37:11 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-transfer-encoding:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	dNKThL5ekX33vFhWbSIGnt3ouNCaPWeTpYi5NY9vXuo=; b=XmO/sj3t3Y3Lk9eB
-	q3EfuwwWyzi7OEkdbG87Wn2GB1KSu5TYuX0k03qktPRxopfm3zmhxao/7ZIMwmn1
-	Pdcu/ajsEv8IDALv94CQKFzuwRHHt8Jtd2xG24EBUjbDqQEerzx4U/8MJRn3ws8K
-	tHrUQuBWudy5Hi/zV1M1Yn7GMVRQF8/4/LSwzWBOSzbBotYJS/4I1gYKm98x5Hng
-	PZBe3lXNqHfIlb5O0sDRmyptu12tm8Z0eSFCJXjoSPyoyg/1weNgksTJ/B27HFTu
-	AOPiIFQI1FIYfrg7HatQ5ajf4DeXDNdRjmov/baKi/uAR7CLIbj0djzmkPa0fT08
-	qJ9wFQ==
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com [209.85.222.200])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4cy6d6g57x-1
+	BkZNNb+2TnjXOVXhkg3lk8FFLvFPiM6EXM36fB+6xUg=; b=IuFx0XbLIaafjgGC
+	pw295rrrfdS5OH5aKEEU1VKL/w35VinC2WRVrpvmZqpYKkzn7xwyK1fhVjSsDxun
+	y2I2o+lu5f4HvEOvv39j6gNQIlPsSxPJXL4mf3ig39aT+4wgoQFGO9WoeNFWaUWQ
+	5FlVbb200FPhbw0cpj65+nLUiUUyefCPd3iWjCsPTqLKM9LYqqRJEtj4KZplqoYO
+	bXURt4K6NhU4S0NpdPws4NVcYD4B1djCNyMsuPn8fwe5kVoodLrMc4ZJkK0Vfpeu
+	qLi8wNv9zJEbx6itURcJ3TlNlmULmgFVutiaQRrceBg0APr89tAtFc/BzttInLuv
+	PrCd2w==
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com [209.85.222.198])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4cy5g8gb9r-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Tue, 17 Mar 2026 12:37:08 +0000 (GMT)
-Received: by mail-qk1-f200.google.com with SMTP id af79cd13be357-8cd781c0d90so381505485a.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 17 Mar 2026 05:37:08 -0700 (PDT)
+	for <linux-mediatek@lists.infradead.org>; Tue, 17 Mar 2026 12:37:10 +0000 (GMT)
+Received: by mail-qk1-f198.google.com with SMTP id af79cd13be357-8cd84943c76so489508785a.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 17 Mar 2026 05:37:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1773751027; x=1774355827; darn=lists.infradead.org;
+        d=oss.qualcomm.com; s=google; t=1773751029; x=1774355829; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=dNKThL5ekX33vFhWbSIGnt3ouNCaPWeTpYi5NY9vXuo=;
-        b=KVnJgpSCcbA1rDhgD3+gYjGeGrJsMUPMvKruy2kLtxadmgc0q5U9jiVsvtLnlLodPl
-         7QFmDqfMk8HHv5OwOVKVUuybZRZjMdW2uVlIs5cNWEO9b/whLmdUEQaIho37h5kLvKG5
-         hUjp/8qiC/Ju7lvg76jfDdyXdkgiBByr+jJrc4ZlH0mbpJ5BlYYM1fI4BaxW9VyYrSzr
-         POaTq8AvP3RNide5nRR9Qlmlp6G/DumgmwJ43D6N8HoEZKjSLPUyHkaMEz9UoAaKEmU0
-         7BTXKo6NpPq5PSC/XgRsjaOdnTDDWmhNLleqv664RD4/oBy+9BGgBVz/3KWinkk3lx56
-         dEIA==
+        bh=BkZNNb+2TnjXOVXhkg3lk8FFLvFPiM6EXM36fB+6xUg=;
+        b=YrK0nRKw2jcBMIah+BCC/Z6s7fUHntzASHNGWzwQJ/GsHfK5a9vCIue95l6/MZlmcQ
+         0gkpE6iwiBaslcWt4GuSdMa2whFDzQFCC94OhzZB4tHE05ceS/KQVAWaRU9a4CsMAtag
+         8/ZTWdgKfvLTBVpW5ETWWc31CS4dWDq+7zZsa3XRheh/37WlyO9wu1TJYIiZpyDhqXlw
+         RZD3kbnvhaay1wLtLK9imHwQoNqk23OI2VdY8FsJpKqiYkDJZ0PRUBYIpv664uv5qnwA
+         onNZKfIOr2u0dvkgAlsBQqNEj6qG7jnvPTJeE7DZKkNae1hlXsLcBuRcg+3y31zGwFBa
+         74Lw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1773751027; x=1774355827;
+        d=1e100.net; s=20251104; t=1773751029; x=1774355829;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=dNKThL5ekX33vFhWbSIGnt3ouNCaPWeTpYi5NY9vXuo=;
-        b=pOfZ3qcf2x07tHztiGRaJH+8g63LfolnfZd+XD97T4sl/+mEreqLW1e2mBCHdYdEq2
-         8llP3Ekk3jVP1nwB26kJAlSB6F78xer70TRFGplQO6Xpq+7hHVS8MsA9NIYODqeSxAv+
-         wI3VROR7yHbfPl7Qbbh1+/bGl25in0PsukcfV7pmEwPvBpcbkLZWVzq2WfDy+Fsc0Y1A
-         NiTdHqUoDmpbMPZXiErAXAc+JSDS0CGsR5QTUvFtSlNjIHK4FSwC1uIRJg1Jy8GNq4im
-         c4niz0Zwd2Pexz+aLbvs2QwZwf0NiZYvoUQm/XUbcl6h2ulCRtz464D2W1HljgrYtNT1
-         lZkA==
-X-Forwarded-Encrypted: i=1; AJvYcCU4ThbCNqi2Bvc8rE2HahjfX+ZUYfRjWX12M3o4cKFlGXyhxsi+rWVCSg+5b3t6CBOjlW5RRFR7LlX3TTi4Xg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwhC0+grrtDN94DKvNtLohYOtcZNUifduxF4h+Yj3sgtPSciWoT
-	g12yjjaOW8jUuuhwpnVl+sXav5CWsXc1bVS4iiX09jH029c8TX8C+uqS4mOCCs8lgY2Pdf/I/qs
-	iireAupPZILlWfsOPlWPRDD/zAaL11PwCSKRaYmWrbYm0JPCMN6kosREEwTwl/5r8+eSYwe4tpZ
-	SRbmddmas=
-X-Gm-Gg: ATEYQzyHl3yGTUG2yOXZt/930+DrnLkiigiSIcX03291giFQSxA/0ZATYUumGpa9cQU
-	1eLzWu8xJ3T5n/TX+5jerjixEu+wxSGIuK0AisHJFzt0bDlKmCHhSCoASdpEJWkw+Nunu03es+G
-	U4pOiUxMlrbG1XaEVone58SlDZxcfZC1eVpxOG6WqzdkPQ6xG3/NCZL+EPOIocyYxK6Xapufh56
-	z3K/rJBb9FiIL1vyZWTkwrk/xmzhYxcevOepm5VkYu5Mpr7hX70ipfzNpT3Lg/vY9GXbcrD1mPE
-	v2y4F/xggGPXiqGEDRbtcwV+xpf9JMU6wYSYCutPwYOUaxb/VeiHHUJSa8D4AdYzLTGmd35/ASh
-	LQQNdt8OveskjQVshmSDCAGeutHQUJmLf05w2MqqH0tNc
-X-Received: by 2002:a05:620a:488d:b0:8cd:8fb8:7ddf with SMTP id af79cd13be357-8cde13519c3mr367926585a.16.1773751026944;
-        Tue, 17 Mar 2026 05:37:06 -0700 (PDT)
-X-Received: by 2002:a05:620a:488d:b0:8cd:8fb8:7ddf with SMTP id af79cd13be357-8cde13519c3mr367920785a.16.1773751026419;
-        Tue, 17 Mar 2026 05:37:06 -0700 (PDT)
+        bh=BkZNNb+2TnjXOVXhkg3lk8FFLvFPiM6EXM36fB+6xUg=;
+        b=czKWNMuGu546ssu7M04HpOtKVhv1y/hb+M2g8KT6XP9woFoSpCZbrIom6Juh7QUjWn
+         HvhphxG2Ngm4il7NdDSQJnlqsezZAOpilWlrBZce6YXlDdlHdJtI91mYbOdnDTw5MLt0
+         NVF29GyOQRKdnpY1QJkW765MnsDYVPWCYefqoRMfo4qAgz1PPbAYgZHQLBBlim6xSNBm
+         WLssKWrPM0iZBlubDA+dNFzQOvN6KeDXLMIWSqXauBgMWElrsA5NYogPhZg4EesQ4LGj
+         HPb4PNFxbWwWGh0TOINZ0/ZpDKY9ND20GZ6od9KCXJxWCJwPbcAFMOvLdBcpx+fMys/z
+         RgBQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXoAtk6Vl5KAeToIkrzbYfoI810N39SK2+qKP3GLmzxuYRIusnE7KiSrZENDUW7QEZAJFl3psukads+x6raWg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YysY3gcVxnlLK3TuBWciKX03tlVT9PXJevD+9QNeJyZ3io7h2N0
+	gv41llALF/TvNBV5udTUGNkJV6d1jKq/MMbEfj98q70ZojoMMyDlUOxQ7I3cNbzhrofDfoLWP3a
+	NfQxm/58C70LP76b2Ai8IK5B/Ivsu10pktQG0FMelZb9qFQp6dT6i+PQpEmaUfRNIxkt5Qh11FL
+	GwEA0DP8s=
+X-Gm-Gg: ATEYQzw0vDMZ8ZX+histg/TQYPSuOutfatwrH5ppDYqtXE3WPn+3Jc45cyyCFK8XMqg
+	zsncWcFhSTCKZ0qHCTOng1M9jzbpGnWw8qF3udreOJCBnTzGfHi9R4kuSc/adwTtEUgKcCZXFn8
+	EBNjTGYZcPcze5OC5tIqweADjct+WkXhdRswX4db2pPcx0Z9UbX/yK/PDnmW6n0I+brWD1Pkb/I
+	HQFFnlslSIi/dfPRfKVz9f6aMlcirf3hnbkgcoBMzFMGC/PkUKXf9ZFYfITa3ttaJ4VYCzFqY2L
+	oJhacdBgGb2BLvEF+DU/dyyZ7Lhs/z3sbrfNbUjheKigz+VqkmMI6bEDQpNM8Y9NAZecXoQIpcy
+	jI5d/GLZn1CpJ3v8r1zlx/3CfFOitY8a2kgbOE/Y9d+o4
+X-Received: by 2002:a05:620a:298d:b0:8cd:9020:f041 with SMTP id af79cd13be357-8cde1512e14mr361288085a.34.1773751029376;
+        Tue, 17 Mar 2026 05:37:09 -0700 (PDT)
+X-Received: by 2002:a05:620a:298d:b0:8cd:9020:f041 with SMTP id af79cd13be357-8cde1512e14mr361282085a.34.1773751028718;
+        Tue, 17 Mar 2026 05:37:08 -0700 (PDT)
 Received: from [127.0.1.1] ([178.197.219.94])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-439fe1abf84sm45556443f8f.14.2026.03.17.05.37.04
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-439fe1abf84sm45556443f8f.14.2026.03.17.05.37.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Mar 2026 05:37:05 -0700 (PDT)
+        Tue, 17 Mar 2026 05:37:07 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Date: Tue, 17 Mar 2026 13:36:51 +0100
-Subject: [PATCH v3 2/5] remoteproc: mtk_scp: Constify buffer passed to
- scp_send_ipi()
+Date: Tue, 17 Mar 2026 13:36:52 +0100
+Subject: [PATCH v3 3/5] rpmsg: Constify buffer passed to send API
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260317-rpmsg-send-const-v3-2-4d7fd27f037f@oss.qualcomm.com>
+Message-Id: <20260317-rpmsg-send-const-v3-3-4d7fd27f037f@oss.qualcomm.com>
 References: <20260317-rpmsg-send-const-v3-0-4d7fd27f037f@oss.qualcomm.com>
 In-Reply-To: <20260317-rpmsg-send-const-v3-0-4d7fd27f037f@oss.qualcomm.com>
 To: Bjorn Andersson <andersson@kernel.org>,
@@ -129,52 +128,51 @@ Cc: linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
         linux-sound@vger.kernel.org, linux-media@vger.kernel.org,
         Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1697;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=13629;
  i=krzysztof.kozlowski@oss.qualcomm.com; h=from:subject:message-id;
- bh=nqRqIi+jvufKkw75OxFFSCYXELMLBnMO78Nq940C9n8=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBpuUroFKSbIBB5RlA3YpmmRSHYAPZ+GgxIjOsmC
- QsYaMdWGFWJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCablK6AAKCRDBN2bmhouD
- 12hlD/0YnDGdPlpE0996CUjdK6S6A5CItE03o44wrGUyTdx/aJRs22HNSeJ6/pyD/SmdfXhWvTB
- KLWAKrIHpmKelvllJxz33HEocqtPs5NwMHYWhvgc5mQyTMV1NHG8kLJtaWou8HjOLA2ACwlxUmA
- hBK/v12MZcH86zSZE8fTbI7d6JiJ/CmXZ+TQA1oYo1Hbw/1Vbhjcr1wFxfIlWW2lhyhcLYRpLSm
- eFnjaGHQB8dkSsgkc7TP1jIHbtzhbvG/IQSNct/hnN04YE0UDmSkQhus4GLBs4xq4uHoWcYocIW
- nPZ13IczlU8xGR/z+nyex6QI9+GeMW/luu2wlDj6fdva7aYkKboUXCf5YS8IzINRV/RNUBgVu1x
- Arpt/ozO6wmnbV/EH8tPZA/UqM3ALN3TALJzBcZDfwNgSvJFIVbKEwC7RGZVJ4lr90cql2RJx9h
- Ny6lZtwQh39CyomEJ1rudS6EzgzpOu+fOIYWFTQ6a9vEuySpjI7wMln+UjS1KKCirFKOIYML1Bi
- nwUtYVqJ0USwP/nrzswexqDRQzPQbKwX7n0s7kCaTL9Fs7o/L1nvbTwELOsC9i93GDUjiYHJdmb
- YNp5/JPGO6sst9r/IrxugsSGSqNfovrLb6XXM6hU8wFEtWwvatS44GStvbDGVDIsKACdfSXCPZq
- gQdux+rBFoXhBdw==
+ bh=Jasx6mrT3KTPv64fBNBn5bwZKlN7tZTYnUZJNQj/84k=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBpuUrp/30qzgAy8cOZXGTXGuGGDebqtfbDv2CNx
+ xX9zb1aj4yJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCablK6QAKCRDBN2bmhouD
+ 10ubD/9ja6JgtUxcfD1ZLzleawunPEH6dEaXI3hWiN+2fBnHnJOcaST7qigFlmUfyHaI514yuMy
+ jyFJrTOcN8S13Xc5lvrsLmNLCMzmzHcaaqf6g8z0maBu8sW9N0nWjA/MLS21Hb6NOkBG3oNKfQB
+ hVYxhOi8Eqq0nMKmXjeu+Znu21tBMOiPo3Ly1sCdPBe4XVnK4wuBXH6pRSNzz1QbeLiMDdpyMp3
+ qzO8dT3sNGYl8mEMs6XNAqHRnFNV6E4jxtvsEGZQZoUDNQX3Bai3PGyQsEeIens4c+eksrswKd4
+ h3r9IwuFEgBILpX4Zn4JzMMtCpMycD1axMoUEYqPQHbRaMWGuvqprzKtDwGABOBseOuQYQpHy12
+ AFav4g+BUL7bw+vJQxWm6s/+iYbwgFC0lHh55xt0VJ7FsEVTubwwSfnBMo/k0vPjYChFn2DbWhi
+ Mz/s0xVcZ6v9pE7toSJ1ZwUAkH48HbgBcu55y9Q91rMV+52foklaxAm9agrj8UA+E6kzGdWH3vU
+ WxVcwgClsuOdN9i6UIRf//FQQmQ9kMJ3SGvZPVSa0YaEcRSLwxYuS73Xooyt4Q8rT+dOw5nBcLq
+ dvO6VSOSZV7u4BGOuVqmukefchOLTuxpqCOr9JpaPMwB/MRKmEmJ9kK2gQc+rkJsEBOMgG4i4vy
+ es2RiiPMMveQq2g==
 X-Developer-Key: i=krzysztof.kozlowski@oss.qualcomm.com; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzE3MDExMSBTYWx0ZWRfX8jQ/bkaLrTof
- DU76HV45O1I9Xh63KC6TB+gIYKC8QbaOro5rs7bH+DJY4TbekduQ+S9BpHX+LxITdmvfa6N3uSS
- XSww4kJzpe4pY0yCDGfZGhy7zLUasuOXiVStfE2XaSYYKGaWXqjicDxMMHY2ddaHK/wd7QZ1lNt
- jslg+czr1EDEiv6SDUh+z7JHvV7Mi0C/frLZsNf1z3NUOybWOQKSGjkHMxxboHvfNdNWjPuvyNr
- ZvMDmuEatVNTAPQ/sF03igFnoQ4wgzz8+tnhTTei3nVNxI64AV6lqfiBrBRrfdv95T9Jbm++rCG
- M7uGGoQGTvsmlxWFHc/SCzA2pshr0kOu3Gb6ySnEdvtOCBYoW0bFzVXhP8eq6Qy7Opev01LHmKw
- /SBJKa8NDUnu3A3qc+YOWyfDUuwcphwFjeitvrIQXtECzvnyrPMMfNz1kvQlGSR7OJqNaiWBHeN
- gRhV0Ghqgf4H9Rfbt9w==
-X-Proofpoint-GUID: 0UYA4MDk0UY7Vwy5CBwhdSdkdZNEe208
-X-Authority-Analysis: v=2.4 cv=IqMTsb/g c=1 sm=1 tr=0 ts=69b94af4 cx=c_pps
- a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=gOEeR9iKwsj33Yj5oN/cWg==:17
+X-Proofpoint-GUID: rCgvdwzRsP7dwOxfYs2rK9onUEcHS6-a
+X-Authority-Analysis: v=2.4 cv=EeTFgfmC c=1 sm=1 tr=0 ts=69b94af6 cx=c_pps
+ a=qKBjSQ1v91RyAK45QCPf5w==:117 a=gOEeR9iKwsj33Yj5oN/cWg==:17
  a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
- a=KKAkSRfTAAAA:8 a=QX4gbG5DAAAA:8 a=EUspDBNiAAAA:8 a=aY2cFw3b1D9xo--RORcA:9
- a=QEXdDO2ut3YA:10 a=PEH46H7Ffwr30OY-TuGO:22 a=cvBusfyB2V15izCimMoJ:22
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yOCtJkima9RkubShWh1s:22
+ a=KKAkSRfTAAAA:8 a=QX4gbG5DAAAA:8 a=EUspDBNiAAAA:8 a=7kuhv_acGB6hOQYBqC0A:9
+ a=QEXdDO2ut3YA:10 a=NFOGd7dJGGMPyQGDc5-O:22 a=cvBusfyB2V15izCimMoJ:22
  a=AbAUZ8qAyYyZVLSsDulk:22
-X-Proofpoint-ORIG-GUID: 0UYA4MDk0UY7Vwy5CBwhdSdkdZNEe208
+X-Proofpoint-ORIG-GUID: rCgvdwzRsP7dwOxfYs2rK9onUEcHS6-a
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzE3MDExMSBTYWx0ZWRfX5KoBXrCRGozn
+ eeuwxgaEGqXSbI+nv2Dp635jZzWlic28nloUUqK+TiDtFcB1bAIgRCPn9ZzMRx0GTFRQ+Capd8A
+ f7FkdU8ODvIaEzMBNGU8EGKmMdCNXAx2qHZQ30MQBr+Mz+PdztxlNbrhlsYiHJWQtcVCCvTIquH
+ ZioJUx3TOXeMoof6Lnb1IR+tl7b0O3FYiKUHC2H1y0pQSnkXiOLu9sMq7vNnhowxnryVZmM122V
+ Uj0OboI4h/8W1AFNNO3mJ0VdObG5vOLF7AvcQSGxRvJrvWexru5InqrVFaDerfEUs4oyhA2cTbI
+ ljs3Vm82VPJDKTb+rDkBEeYAsbth0Y0hMk4CE6FiQIUiF126Aah37IdTFTiN9a76fkJbIKUFCKh
+ Q1JLjT+DVDonGgnffU2VE0YFTeyPJHRNZcEfFxlQznLWMjCmrOHIHGl/DwnXJAJIXugo/Ujx7EL
+ lUSGxCMyqGQB6B56wBg==
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-03-17_01,2026-03-17_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 spamscore=0 malwarescore=0 phishscore=0 impostorscore=0
- clxscore=1015 adultscore=0 priorityscore=1501 suspectscore=0
- lowpriorityscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2603050001
- definitions=main-2603170111
+ suspectscore=0 lowpriorityscore=0 bulkscore=0 adultscore=0 spamscore=0
+ phishscore=0 impostorscore=0 priorityscore=1501 malwarescore=0 clxscore=1015
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2603050001 definitions=main-2603170111
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260317_123710_669951_5A7B51CF 
-X-CRM114-Status: GOOD (  16.03  )
+X-CRM114-CacheID: sfid-20260317_123712_965980_0D6D881F 
+X-CRM114-Status: GOOD (  17.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -189,8 +187,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-scp_send_ipi() should only send the passed buffer, without modifying its
-contents, so mark pointer 'buf' as pointer to const.
+The rpmsg_send(), rpmsg_sendto() and other variants of sending
+interfaces should only send the passed data, without modifying its
+contents, so mark pointer 'data' as pointer to const.  All users of this
+interface already follow this approach, so only the function
+declarations have to be updated.
 
 Acked-by: Mathieu Poirier <mathieu.poirier@linaro.org>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
@@ -199,36 +200,312 @@ Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
 Patch necessary for the further patches, please keep with the rest.
 ---
- drivers/remoteproc/mtk_scp.c    | 2 +-
- include/linux/rpmsg/mtk_rpmsg.h | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ drivers/rpmsg/mtk_rpmsg.c         |  4 ++--
+ drivers/rpmsg/qcom_glink_native.c | 13 ++++++++-----
+ drivers/rpmsg/qcom_smd.c          | 10 ++++++----
+ drivers/rpmsg/rpmsg_core.c        |  8 ++++----
+ drivers/rpmsg/rpmsg_internal.h    |  8 ++++----
+ drivers/rpmsg/virtio_rpmsg_bus.c  | 24 +++++++++++++-----------
+ include/linux/rpmsg.h             | 17 +++++++++--------
+ 7 files changed, 46 insertions(+), 38 deletions(-)
 
-diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-index bb6f6a16d895..85a74c9ec521 100644
---- a/drivers/remoteproc/mtk_scp.c
-+++ b/drivers/remoteproc/mtk_scp.c
-@@ -1078,7 +1078,7 @@ static void scp_unregister_ipi(struct platform_device *pdev, u32 id)
- 	scp_ipi_unregister(scp, id);
+diff --git a/drivers/rpmsg/mtk_rpmsg.c b/drivers/rpmsg/mtk_rpmsg.c
+index 0e03c5336609..1b670ed54cfa 100644
+--- a/drivers/rpmsg/mtk_rpmsg.c
++++ b/drivers/rpmsg/mtk_rpmsg.c
+@@ -135,7 +135,7 @@ static void mtk_rpmsg_destroy_ept(struct rpmsg_endpoint *ept)
+ 	kref_put(&ept->refcount, __mtk_ept_release);
  }
  
--static int scp_send_ipi(struct platform_device *pdev, u32 id, void *buf,
-+static int scp_send_ipi(struct platform_device *pdev, u32 id, const void *buf,
- 			unsigned int len, unsigned int wait)
+-static int mtk_rpmsg_send(struct rpmsg_endpoint *ept, void *data, int len)
++static int mtk_rpmsg_send(struct rpmsg_endpoint *ept, const void *data, int len)
  {
- 	struct mtk_scp *scp = platform_get_drvdata(pdev);
-diff --git a/include/linux/rpmsg/mtk_rpmsg.h b/include/linux/rpmsg/mtk_rpmsg.h
-index 363b60178040..badcbc89917f 100644
---- a/include/linux/rpmsg/mtk_rpmsg.h
-+++ b/include/linux/rpmsg/mtk_rpmsg.h
-@@ -25,7 +25,7 @@ struct mtk_rpmsg_info {
- 			    ipi_handler_t handler, void *priv);
- 	void (*unregister_ipi)(struct platform_device *pdev, u32 id);
- 	int (*send_ipi)(struct platform_device *pdev, u32 id,
--			void *buf, unsigned int len, unsigned int wait);
-+			const void *buf, unsigned int len, unsigned int wait);
- 	int ns_ipi_id;
- };
+ 	struct mtk_rpmsg_rproc_subdev *mtk_subdev =
+ 		to_mtk_rpmsg_endpoint(ept)->mtk_subdev;
+@@ -144,7 +144,7 @@ static int mtk_rpmsg_send(struct rpmsg_endpoint *ept, void *data, int len)
+ 					  len, 0);
+ }
  
+-static int mtk_rpmsg_trysend(struct rpmsg_endpoint *ept, void *data, int len)
++static int mtk_rpmsg_trysend(struct rpmsg_endpoint *ept, const void *data, int len)
+ {
+ 	struct mtk_rpmsg_rproc_subdev *mtk_subdev =
+ 		to_mtk_rpmsg_endpoint(ept)->mtk_subdev;
+diff --git a/drivers/rpmsg/qcom_glink_native.c b/drivers/rpmsg/qcom_glink_native.c
+index 9ef17c2e45b0..401a4ece0c97 100644
+--- a/drivers/rpmsg/qcom_glink_native.c
++++ b/drivers/rpmsg/qcom_glink_native.c
+@@ -1474,7 +1474,7 @@ static int qcom_glink_request_intent(struct qcom_glink *glink,
+ }
+ 
+ static int __qcom_glink_send(struct glink_channel *channel,
+-			     void *data, int len, bool wait)
++			     const void *data, int len, bool wait)
+ {
+ 	struct qcom_glink *glink = channel->glink;
+ 	struct glink_core_rx_intent *intent = NULL;
+@@ -1553,28 +1553,31 @@ static int __qcom_glink_send(struct glink_channel *channel,
+ 	return 0;
+ }
+ 
+-static int qcom_glink_send(struct rpmsg_endpoint *ept, void *data, int len)
++static int qcom_glink_send(struct rpmsg_endpoint *ept, const void *data, int len)
+ {
+ 	struct glink_channel *channel = to_glink_channel(ept);
+ 
+ 	return __qcom_glink_send(channel, data, len, true);
+ }
+ 
+-static int qcom_glink_trysend(struct rpmsg_endpoint *ept, void *data, int len)
++static int qcom_glink_trysend(struct rpmsg_endpoint *ept, const void *data,
++			      int len)
+ {
+ 	struct glink_channel *channel = to_glink_channel(ept);
+ 
+ 	return __qcom_glink_send(channel, data, len, false);
+ }
+ 
+-static int qcom_glink_sendto(struct rpmsg_endpoint *ept, void *data, int len, u32 dst)
++static int qcom_glink_sendto(struct rpmsg_endpoint *ept, const void *data,
++			     int len, u32 dst)
+ {
+ 	struct glink_channel *channel = to_glink_channel(ept);
+ 
+ 	return __qcom_glink_send(channel, data, len, true);
+ }
+ 
+-static int qcom_glink_trysendto(struct rpmsg_endpoint *ept, void *data, int len, u32 dst)
++static int qcom_glink_trysendto(struct rpmsg_endpoint *ept, const void *data,
++				int len, u32 dst)
+ {
+ 	struct glink_channel *channel = to_glink_channel(ept);
+ 
+diff --git a/drivers/rpmsg/qcom_smd.c b/drivers/rpmsg/qcom_smd.c
+index e1eb450f4fea..3ac863f400ec 100644
+--- a/drivers/rpmsg/qcom_smd.c
++++ b/drivers/rpmsg/qcom_smd.c
+@@ -960,28 +960,30 @@ static void qcom_smd_destroy_ept(struct rpmsg_endpoint *ept)
+ 	kref_put(&ept->refcount, __ept_release);
+ }
+ 
+-static int qcom_smd_send(struct rpmsg_endpoint *ept, void *data, int len)
++static int qcom_smd_send(struct rpmsg_endpoint *ept, const void *data, int len)
+ {
+ 	struct qcom_smd_endpoint *qsept = to_smd_endpoint(ept);
+ 
+ 	return __qcom_smd_send(qsept->qsch, data, len, true);
+ }
+ 
+-static int qcom_smd_trysend(struct rpmsg_endpoint *ept, void *data, int len)
++static int qcom_smd_trysend(struct rpmsg_endpoint *ept, const void *data, int len)
+ {
+ 	struct qcom_smd_endpoint *qsept = to_smd_endpoint(ept);
+ 
+ 	return __qcom_smd_send(qsept->qsch, data, len, false);
+ }
+ 
+-static int qcom_smd_sendto(struct rpmsg_endpoint *ept, void *data, int len, u32 dst)
++static int qcom_smd_sendto(struct rpmsg_endpoint *ept, const void *data, int len,
++			   u32 dst)
+ {
+ 	struct qcom_smd_endpoint *qsept = to_smd_endpoint(ept);
+ 
+ 	return __qcom_smd_send(qsept->qsch, data, len, true);
+ }
+ 
+-static int qcom_smd_trysendto(struct rpmsg_endpoint *ept, void *data, int len, u32 dst)
++static int qcom_smd_trysendto(struct rpmsg_endpoint *ept, const void *data,
++			      int len, u32 dst)
+ {
+ 	struct qcom_smd_endpoint *qsept = to_smd_endpoint(ept);
+ 
+diff --git a/drivers/rpmsg/rpmsg_core.c b/drivers/rpmsg/rpmsg_core.c
+index 96964745065b..2f9444d1f194 100644
+--- a/drivers/rpmsg/rpmsg_core.c
++++ b/drivers/rpmsg/rpmsg_core.c
+@@ -153,7 +153,7 @@ EXPORT_SYMBOL(rpmsg_destroy_ept);
+  *
+  * Return: 0 on success and an appropriate error value on failure.
+  */
+-int rpmsg_send(struct rpmsg_endpoint *ept, void *data, int len)
++int rpmsg_send(struct rpmsg_endpoint *ept, const void *data, int len)
+ {
+ 	if (WARN_ON(!ept))
+ 		return -EINVAL;
+@@ -182,7 +182,7 @@ EXPORT_SYMBOL(rpmsg_send);
+  *
+  * Return: 0 on success and an appropriate error value on failure.
+  */
+-int rpmsg_sendto(struct rpmsg_endpoint *ept, void *data, int len, u32 dst)
++int rpmsg_sendto(struct rpmsg_endpoint *ept, const void *data, int len, u32 dst)
+ {
+ 	if (WARN_ON(!ept))
+ 		return -EINVAL;
+@@ -210,7 +210,7 @@ EXPORT_SYMBOL(rpmsg_sendto);
+  *
+  * Return: 0 on success and an appropriate error value on failure.
+  */
+-int rpmsg_trysend(struct rpmsg_endpoint *ept, void *data, int len)
++int rpmsg_trysend(struct rpmsg_endpoint *ept, const void *data, int len)
+ {
+ 	if (WARN_ON(!ept))
+ 		return -EINVAL;
+@@ -238,7 +238,7 @@ EXPORT_SYMBOL(rpmsg_trysend);
+  *
+  * Return: 0 on success and an appropriate error value on failure.
+  */
+-int rpmsg_trysendto(struct rpmsg_endpoint *ept, void *data, int len, u32 dst)
++int rpmsg_trysendto(struct rpmsg_endpoint *ept, const void *data, int len, u32 dst)
+ {
+ 	if (WARN_ON(!ept))
+ 		return -EINVAL;
+diff --git a/drivers/rpmsg/rpmsg_internal.h b/drivers/rpmsg/rpmsg_internal.h
+index 397e4926bd02..a8b7065fd165 100644
+--- a/drivers/rpmsg/rpmsg_internal.h
++++ b/drivers/rpmsg/rpmsg_internal.h
+@@ -63,11 +63,11 @@ struct rpmsg_device_ops {
+ struct rpmsg_endpoint_ops {
+ 	void (*destroy_ept)(struct rpmsg_endpoint *ept);
+ 
+-	int (*send)(struct rpmsg_endpoint *ept, void *data, int len);
+-	int (*sendto)(struct rpmsg_endpoint *ept, void *data, int len, u32 dst);
++	int (*send)(struct rpmsg_endpoint *ept, const void *data, int len);
++	int (*sendto)(struct rpmsg_endpoint *ept, const void *data, int len, u32 dst);
+ 
+-	int (*trysend)(struct rpmsg_endpoint *ept, void *data, int len);
+-	int (*trysendto)(struct rpmsg_endpoint *ept, void *data, int len, u32 dst);
++	int (*trysend)(struct rpmsg_endpoint *ept, const void *data, int len);
++	int (*trysendto)(struct rpmsg_endpoint *ept, const void *data, int len, u32 dst);
+ 	__poll_t (*poll)(struct rpmsg_endpoint *ept, struct file *filp,
+ 			     poll_table *wait);
+ 	int (*set_flow_control)(struct rpmsg_endpoint *ept, bool pause, u32 dst);
+diff --git a/drivers/rpmsg/virtio_rpmsg_bus.c b/drivers/rpmsg/virtio_rpmsg_bus.c
+index 8d9e2b4dc7c1..5ae15111fb4f 100644
+--- a/drivers/rpmsg/virtio_rpmsg_bus.c
++++ b/drivers/rpmsg/virtio_rpmsg_bus.c
+@@ -136,11 +136,12 @@ struct virtio_rpmsg_channel {
+ #define RPMSG_RESERVED_ADDRESSES	(1024)
+ 
+ static void virtio_rpmsg_destroy_ept(struct rpmsg_endpoint *ept);
+-static int virtio_rpmsg_send(struct rpmsg_endpoint *ept, void *data, int len);
+-static int virtio_rpmsg_sendto(struct rpmsg_endpoint *ept, void *data, int len,
+-			       u32 dst);
+-static int virtio_rpmsg_trysend(struct rpmsg_endpoint *ept, void *data, int len);
+-static int virtio_rpmsg_trysendto(struct rpmsg_endpoint *ept, void *data,
++static int virtio_rpmsg_send(struct rpmsg_endpoint *ept, const void *data, int len);
++static int virtio_rpmsg_sendto(struct rpmsg_endpoint *ept, const void *data,
++			       int len, u32 dst);
++static int virtio_rpmsg_trysend(struct rpmsg_endpoint *ept, const void *data,
++				int len);
++static int virtio_rpmsg_trysendto(struct rpmsg_endpoint *ept, const void *data,
+ 				  int len, u32 dst);
+ static __poll_t virtio_rpmsg_poll(struct rpmsg_endpoint *ept, struct file *filp,
+ 				  poll_table *wait);
+@@ -490,7 +491,7 @@ static void *get_a_tx_buf(struct virtproc_info *vrp)
+  */
+ static int rpmsg_send_offchannel_raw(struct rpmsg_device *rpdev,
+ 				     u32 src, u32 dst,
+-				     void *data, int len, bool wait)
++				     const void *data, int len, bool wait)
+ {
+ 	struct virtio_rpmsg_channel *vch = to_virtio_rpmsg_channel(rpdev);
+ 	struct virtproc_info *vrp = vch->vrp;
+@@ -580,7 +581,7 @@ static int rpmsg_send_offchannel_raw(struct rpmsg_device *rpdev,
+ 	return err;
+ }
+ 
+-static int virtio_rpmsg_send(struct rpmsg_endpoint *ept, void *data, int len)
++static int virtio_rpmsg_send(struct rpmsg_endpoint *ept, const void *data, int len)
+ {
+ 	struct rpmsg_device *rpdev = ept->rpdev;
+ 	u32 src = ept->addr, dst = rpdev->dst;
+@@ -588,8 +589,8 @@ static int virtio_rpmsg_send(struct rpmsg_endpoint *ept, void *data, int len)
+ 	return rpmsg_send_offchannel_raw(rpdev, src, dst, data, len, true);
+ }
+ 
+-static int virtio_rpmsg_sendto(struct rpmsg_endpoint *ept, void *data, int len,
+-			       u32 dst)
++static int virtio_rpmsg_sendto(struct rpmsg_endpoint *ept, const void *data,
++			       int len, u32 dst)
+ {
+ 	struct rpmsg_device *rpdev = ept->rpdev;
+ 	u32 src = ept->addr;
+@@ -597,7 +598,8 @@ static int virtio_rpmsg_sendto(struct rpmsg_endpoint *ept, void *data, int len,
+ 	return rpmsg_send_offchannel_raw(rpdev, src, dst, data, len, true);
+ }
+ 
+-static int virtio_rpmsg_trysend(struct rpmsg_endpoint *ept, void *data, int len)
++static int virtio_rpmsg_trysend(struct rpmsg_endpoint *ept, const void *data,
++				int len)
+ {
+ 	struct rpmsg_device *rpdev = ept->rpdev;
+ 	u32 src = ept->addr, dst = rpdev->dst;
+@@ -605,7 +607,7 @@ static int virtio_rpmsg_trysend(struct rpmsg_endpoint *ept, void *data, int len)
+ 	return rpmsg_send_offchannel_raw(rpdev, src, dst, data, len, false);
+ }
+ 
+-static int virtio_rpmsg_trysendto(struct rpmsg_endpoint *ept, void *data,
++static int virtio_rpmsg_trysendto(struct rpmsg_endpoint *ept, const void *data,
+ 				  int len, u32 dst)
+ {
+ 	struct rpmsg_device *rpdev = ept->rpdev;
+diff --git a/include/linux/rpmsg.h b/include/linux/rpmsg.h
+index fb7ab9165645..83266ce14642 100644
+--- a/include/linux/rpmsg.h
++++ b/include/linux/rpmsg.h
+@@ -182,11 +182,11 @@ struct rpmsg_endpoint *rpmsg_create_ept(struct rpmsg_device *,
+ 					rpmsg_rx_cb_t cb, void *priv,
+ 					struct rpmsg_channel_info chinfo);
+ 
+-int rpmsg_send(struct rpmsg_endpoint *ept, void *data, int len);
+-int rpmsg_sendto(struct rpmsg_endpoint *ept, void *data, int len, u32 dst);
++int rpmsg_send(struct rpmsg_endpoint *ept, const void *data, int len);
++int rpmsg_sendto(struct rpmsg_endpoint *ept, const void *data, int len, u32 dst);
+ 
+-int rpmsg_trysend(struct rpmsg_endpoint *ept, void *data, int len);
+-int rpmsg_trysendto(struct rpmsg_endpoint *ept, void *data, int len, u32 dst);
++int rpmsg_trysend(struct rpmsg_endpoint *ept, const void *data, int len);
++int rpmsg_trysendto(struct rpmsg_endpoint *ept, const void *data, int len, u32 dst);
+ 
+ __poll_t rpmsg_poll(struct rpmsg_endpoint *ept, struct file *filp,
+ 			poll_table *wait);
+@@ -249,7 +249,7 @@ static inline struct rpmsg_endpoint *rpmsg_create_ept(struct rpmsg_device *rpdev
+ 	return NULL;
+ }
+ 
+-static inline int rpmsg_send(struct rpmsg_endpoint *ept, void *data, int len)
++static inline int rpmsg_send(struct rpmsg_endpoint *ept, const void *data, int len)
+ {
+ 	/* This shouldn't be possible */
+ 	WARN_ON(1);
+@@ -257,7 +257,7 @@ static inline int rpmsg_send(struct rpmsg_endpoint *ept, void *data, int len)
+ 	return -ENXIO;
+ }
+ 
+-static inline int rpmsg_sendto(struct rpmsg_endpoint *ept, void *data, int len,
++static inline int rpmsg_sendto(struct rpmsg_endpoint *ept, const void *data, int len,
+ 			       u32 dst)
+ {
+ 	/* This shouldn't be possible */
+@@ -267,7 +267,8 @@ static inline int rpmsg_sendto(struct rpmsg_endpoint *ept, void *data, int len,
+ 
+ }
+ 
+-static inline int rpmsg_trysend(struct rpmsg_endpoint *ept, void *data, int len)
++static inline int rpmsg_trysend(struct rpmsg_endpoint *ept, const void *data,
++				int len)
+ {
+ 	/* This shouldn't be possible */
+ 	WARN_ON(1);
+@@ -275,7 +276,7 @@ static inline int rpmsg_trysend(struct rpmsg_endpoint *ept, void *data, int len)
+ 	return -ENXIO;
+ }
+ 
+-static inline int rpmsg_trysendto(struct rpmsg_endpoint *ept, void *data,
++static inline int rpmsg_trysendto(struct rpmsg_endpoint *ept, const void *data,
+ 				  int len, u32 dst)
+ {
+ 	/* This shouldn't be possible */
 
 -- 
 2.51.0
