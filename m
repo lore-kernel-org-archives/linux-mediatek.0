@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4719F3380D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Mar 2026 07:43:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D076F3380D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Mar 2026 07:43:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rAhVxta6V2SCbFoU96jfQLb5ZeKv/YN7RIFaGVx1brQ=; b=Exd3qgbp+CpBwV9R87ffRz7Tmh
-	WuRg+VADMH2tdzKFAiAEgBDZPvzSZmc0le3pw4xQaoeGrHDd3HWz/9/rSks1ASzwGjw9fUiYhBPNK
-	/Y1bghxtIDtOdE82sYvLRn722kEcp2mqjJa1Gyf6OqUneatcVczPge/5ooyExM/YB8+/sL8/+93hH
-	a57F62T5H+Dgg76Mqzau0SdzSAFgL3rFPQ9hsI8WVvoi5BegGqlQgikBWVDYD9eFOTDREH+sfR1Cv
-	yzWtMYTsyR987VG9NNJ1iT3XPt7fSbQ8gqYT2o+UUdvVS6DRYIyJz8jAqzcrBXTSIchMMBHWnnPxf
-	e8F7i9ww==;
+	bh=yAqhtKCxGiDUYfjYgiqbyOaLi8s18UY88eBNGWBw+v4=; b=fOaaN6wsF1vkipAazW6i9+CFGb
+	CE4nNi1mxCFBFpJBJAZsBaZ1QBUMCh6lD3jdIlHBLUQ188Z2Jq6QNBuJB+d4L8BAlekSN0WRcjuzK
+	6kmiErYhFA9WQ1DHpp+urXYVDhCUVLaQRSppM+HWQRJFMK/u1ZlNtnXXEELNz5QwFWcCwpyNabOoE
+	TJM0CQHQDjN6v+5nGL+0MSx0r/NGav+i1sal4T9SttfAjuzURYJic/JA3qprmGB5MlAuXAqbc7G25
+	fB/y2L0MrXqyB+8hV6jwyRId8zD0ldDk1dwUFjIC029pUDUKWiF03BWFnjDqFP9mlqqbV5kUKTGEl
+	ntr6a8mA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2P5D-00000005c8s-25R3;
-	Tue, 17 Mar 2026 07:43:19 +0000
+	id 1w2P5E-00000005cAk-1xCn;
+	Tue, 17 Mar 2026 07:43:20 +0000
 Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2P4L-00000005asb-1KuV;
-	Tue, 17 Mar 2026 07:42:26 +0000
-X-UUID: ce669e3e21d411f1a21c59e7364eecb8-20260317
+	id 1w2P4M-00000005atw-0IH3;
+	Tue, 17 Mar 2026 07:42:28 +0000
+X-UUID: cf093ab821d411f1a21c59e7364eecb8-20260317
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:0b5f35dc-abd0-4a95-b5c3-fdf9a15419d0,IP:0,U
+X-CID-O-INFO: VERSION:1.3.11,REQID:ea66e4d0-d4fa-4307-8624-59d5b774433a,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:89c9d04,CLOUDID:97d0cae223f660685a50af45bcee0765,BulkI
+X-CID-META: VersionHash:89c9d04,CLOUDID:7e65542d4423091f9b160c2d394aabc2,BulkI
 	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850|898,TC:nil,Content:0|15|50
 	,EDM:5,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
 	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -39,12 +39,12 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: ce669e3e21d411f1a21c59e7364eecb8-20260317
+X-UUID: cf093ab821d411f1a21c59e7364eecb8-20260317
 X-User: xiaopei01@kylinos.cn
 Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
 	(envelope-from <xiaopei01@kylinos.cn>)
 	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 1171231400; Tue, 17 Mar 2026 15:42:10 +0800
+	with ESMTP id 1892139141; Tue, 17 Mar 2026 15:42:11 +0800
 From: Pei Xiao <xiaopei01@kylinos.cn>
 To: linux-spi@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
@@ -57,18 +57,17 @@ To: linux-spi@vger.kernel.org,
 	linux-stm32@st-md-mailman.stormreply.com,
 	broonie@kernel.org
 Cc: Pei Xiao <xiaopei01@kylinos.cn>
-Subject: [PATCH v3 14/17] spi: sunplus-sp7021: Use helper function devm_clk_get_enabled()
-Date: Tue, 17 Mar 2026 15:41:56 +0800
-Message-Id: <1de37e735cf714ca96f05092415f9a396aa4c157.1773733017.git.xiaopei01@kylinos.cn>
+Subject: [PATCH v3 15/17] spi: uniphier: Use helper function devm_clk_get_enabled()
+Date: Tue, 17 Mar 2026 15:41:57 +0800
+Message-Id: <3556c4a42b4341823a0c56986126764c9f12682e.1773733017.git.xiaopei01@kylinos.cn>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1773733017.git.xiaopei01@kylinos.cn>
 References: <cover.1773733017.git.xiaopei01@kylinos.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260317_004225_715934_F6BCCECC 
-X-CRM114-Status: UNSURE (   9.15  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260317_004227_017891_6BC3A372 
+X-CRM114-Status: GOOD (  11.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,49 +89,73 @@ Simplify code.
 
 Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
 ---
- drivers/spi/spi-sunplus-sp7021.c | 15 +--------------
- 1 file changed, 1 insertion(+), 14 deletions(-)
+ drivers/spi/spi-uniphier.c | 17 ++++-------------
+ 1 file changed, 4 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/spi/spi-sunplus-sp7021.c b/drivers/spi/spi-sunplus-sp7021.c
-index 789b092fe8c0..35601212fb78 100644
---- a/drivers/spi/spi-sunplus-sp7021.c
-+++ b/drivers/spi/spi-sunplus-sp7021.c
-@@ -389,11 +389,6 @@ static int sp7021_spi_target_transfer_one(struct spi_controller *ctlr, struct sp
+diff --git a/drivers/spi/spi-uniphier.c b/drivers/spi/spi-uniphier.c
+index 9e1d364a6198..f975d0431e6f 100644
+--- a/drivers/spi/spi-uniphier.c
++++ b/drivers/spi/spi-uniphier.c
+@@ -666,28 +666,24 @@ static int uniphier_spi_probe(struct platform_device *pdev)
+ 	}
+ 	priv->base_dma_addr = res->start;
+ 
+-	priv->clk = devm_clk_get(&pdev->dev, NULL);
++	priv->clk = devm_clk_get_enabled(&pdev->dev, NULL);
+ 	if (IS_ERR(priv->clk)) {
+ 		dev_err(&pdev->dev, "failed to get clock\n");
+ 		ret = PTR_ERR(priv->clk);
+ 		goto out_host_put;
+ 	}
+ 
+-	ret = clk_prepare_enable(priv->clk);
+-	if (ret)
+-		goto out_host_put;
+-
+ 	irq = platform_get_irq(pdev, 0);
+ 	if (irq < 0) {
+ 		ret = irq;
+-		goto out_disable_clk;
++		goto out_host_put;
+ 	}
+ 
+ 	ret = devm_request_irq(&pdev->dev, irq, uniphier_spi_handler,
+ 			       0, "uniphier-spi", priv);
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "failed to request IRQ\n");
+-		goto out_disable_clk;
++		goto out_host_put;
+ 	}
+ 
+ 	init_completion(&priv->xfer_done);
+@@ -716,7 +712,7 @@ static int uniphier_spi_probe(struct platform_device *pdev)
+ 	if (IS_ERR_OR_NULL(host->dma_tx)) {
+ 		if (PTR_ERR(host->dma_tx) == -EPROBE_DEFER) {
+ 			ret = -EPROBE_DEFER;
+-			goto out_disable_clk;
++			goto out_host_put;
+ 		}
+ 		host->dma_tx = NULL;
+ 		dma_tx_burst = INT_MAX;
+@@ -766,9 +762,6 @@ static int uniphier_spi_probe(struct platform_device *pdev)
+ 		host->dma_tx = NULL;
+ 	}
+ 
+-out_disable_clk:
+-	clk_disable_unprepare(priv->clk);
+-
+ out_host_put:
+ 	spi_controller_put(host);
  	return ret;
+@@ -783,8 +776,6 @@ static void uniphier_spi_remove(struct platform_device *pdev)
+ 		dma_release_channel(host->dma_tx);
+ 	if (host->dma_rx)
+ 		dma_release_channel(host->dma_rx);
+-
+-	clk_disable_unprepare(priv->clk);
  }
  
--static void sp7021_spi_disable_unprepare(void *data)
--{
--	clk_disable_unprepare(data);
--}
--
- static void sp7021_spi_reset_control_assert(void *data)
- {
- 	reset_control_assert(data);
-@@ -460,7 +455,7 @@ static int sp7021_spi_controller_probe(struct platform_device *pdev)
- 	if (pspim->s_irq < 0)
- 		return pspim->s_irq;
- 
--	pspim->spi_clk = devm_clk_get(dev, NULL);
-+	pspim->spi_clk = devm_clk_get_enabled(dev, NULL);
- 	if (IS_ERR(pspim->spi_clk))
- 		return dev_err_probe(dev, PTR_ERR(pspim->spi_clk), "clk get fail\n");
- 
-@@ -468,14 +463,6 @@ static int sp7021_spi_controller_probe(struct platform_device *pdev)
- 	if (IS_ERR(pspim->rstc))
- 		return dev_err_probe(dev, PTR_ERR(pspim->rstc), "rst get fail\n");
- 
--	ret = clk_prepare_enable(pspim->spi_clk);
--	if (ret)
--		return dev_err_probe(dev, ret, "failed to enable clk\n");
--
--	ret = devm_add_action_or_reset(dev, sp7021_spi_disable_unprepare, pspim->spi_clk);
--	if (ret)
--		return ret;
--
- 	ret = reset_control_deassert(pspim->rstc);
- 	if (ret)
- 		return dev_err_probe(dev, ret, "failed to deassert reset\n");
+ static const struct of_device_id uniphier_spi_match[] = {
 -- 
 2.25.1
 
