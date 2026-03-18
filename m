@@ -4,67 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 150CA103E183
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 14:19:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1855103E198
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 15:06:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EjoyOHkKeAphkVr3xy66lZASob2HNzkrFl8r/4hjxWg=; b=SHogdb3ncSQOcURnFA9NVb61Zp
-	O4wsfCSzKHjrjOEUUoPVl5CLutKopDylk7Cyne2OTqcHt1VAPs39Zd/yxkN6M7cPtk7+zxe/BAttd
-	5ED2knZQ1GOfK+P6mzBYfD0lIcg3+tNIQwrQjSpmOBeviDP/FnlHorDHTpcyaRA7EOi0E95j4S6EY
-	m8EoeC2MP6157PLoymHTqWqlm/fREsuAgTCGCQmISweFkfRYBrAEriWYj39Eh2R9wVsj/l/RTc7bU
-	tXAK0CA968n4gfo6CRH9PMLItuq2OURg3Opr0nEWV5nEEnhbmspPtdDsrytMlJn2hvMG/geObXGHE
-	PeeItK8A==;
+	bh=T0CvuPfD7COIo+8HMLflUkIZ3jbTrFEH+1E4Pt2c8nQ=; b=3IsxA/X1aQDijZhO4H2RCwfuWi
+	l3dCOVgy+ZaFm0rIFvECA8/i+wf+iYuEn4ktLrHcTKVrxAxuMR/vl+AyJXgFFiiSmLXM4u0sw9yrR
+	w+pa1aFdTSN0vLkzzDArBvpcaVO5aIPQv1JrIbwjKfTO3Q3P/7jOcJmHpQHXneEZmOt1KqH6NSYUr
+	lhWSlXEfYRjkbuFUmvaCtrGAxFln4hpynzpBTTaW+kNHwi74478O66eSX+Zj/Q5MhLj9vZzd17CmG
+	fpK5Ln2ftpcn9v4Ml2U2j7wMW0QwWD/s6Z+Z5gyqpZa3B9veMzBnhNAxJnBjP/LEwdSBbEIYSUAb1
+	bQcmKwgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2rk4-00000008a6V-2hao;
-	Wed, 18 Mar 2026 14:19:24 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1w2sTR-00000008egq-3aya;
+	Wed, 18 Mar 2026 15:06:17 +0000
+Received: from mgamail.intel.com ([198.175.65.20])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2rk2-00000008a6D-2QaA;
-	Wed, 18 Mar 2026 14:19:22 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 48C4160053;
-	Wed, 18 Mar 2026 14:19:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D06A3C19421;
-	Wed, 18 Mar 2026 14:19:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1773843561;
-	bh=pL+9AgAL3F3wRdPCa1QHTuK609k/1f2ZWXG3gFuWVY4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ZhaMIifPFwUHxTAEClEjhWsFQcrgE2R4GXTqotwrcKE6CEPnVIq49gX8JLo3S9uSd
-	 J5/G1kwmw74trSok0ANAT/+34bMR/39Lcrnrq2f7xWnz93cezeKVnAMI2MYC4tqmaR
-	 nJg2BffI1I/l4lRG3IF639GaCiUERhKaKl3E72JY=
-Date: Wed, 18 Mar 2026 15:19:16 +0100
-From: "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>
-To: Zhiyong Tao =?utf-8?B?KOmZtuW/l+WLhyk=?= <Zhiyong.Tao@mediatek.com>
-Cc: Project_Global_Digits_Upstream_Group <Project_Global_Digits_Upstream_Group@mediatek.com>,
-	"fred2599@gmail.com" <fred2599@gmail.com>,
-	Yenchia Chen =?utf-8?B?KOmZs+W9peWYiSk=?= <Yenchia.Chen@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Vasanth Reddy <Vasanth.Reddy@mediatek.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	Liguo Zhang =?utf-8?B?KOW8oOeri+WbvSk=?= <Liguo.Zhang@mediatek.com>,
-	"jirislaby@kernel.org" <jirislaby@kernel.org>,
-	"linux-serial@vger.kernel.org" <linux-serial@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-Subject: Re: [PATCH] MEDIATEK: serial: 8250_mtk: Add ACPI support
-Message-ID: <2026031837-slimness-playset-a62b@gregkh>
-References: <20260105024103.2027085-1-zhiyong.tao@mediatek.com>
- <20260105024103.2027085-2-zhiyong.tao@mediatek.com>
- <2026010643-ladybug-tiring-7f3c@gregkh>
- <434e34f05bb5f87b59402811012e3a2f56f2182e.camel@mediatek.com>
- <6478a71ffca65e58fa19a5edbc25eb5f51a8cc12.camel@mediatek.com>
+	id 1w2sTN-00000008efv-43l9;
+	Wed, 18 Mar 2026 15:06:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1773846374; x=1805382374;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=4mKNZGsMnx96h+U53BOOHWYmauvrjAENdqFmFNmU85o=;
+  b=QX8BqEsoSg7/cWcxRA/J1PeInvxNe74oOXZ1XQHzpF23LDVWVc4lcy2O
+   aRP983VpaIa7zK8G87i6bcruWdbiM38B4vKfWKHPj0nUnUsHdb8FKEZ69
+   9rq2darau/tp7F83DsnAfrwtE9ivUAYEmHNRtTch70kCyHjWX15ujI4sx
+   0guK16mVDzGsXJ52h/GHHhSufS1YdT0KY7cT+nuHZGWZgNtoCOb8Mpawz
+   oBgQPIUfuLSEg/U3ADaVJRd7dc2n93hIgJYI0a7CAu+Ggk+WCsJSrTY8q
+   0spjIb9nyU92PY7rkLptN7WGcf2ZFlt0mqbfNIcVVBENH0ne77Gd/4TWS
+   Q==;
+X-CSE-ConnectionGUID: uCimlx0JTr2o2FlJnfAITQ==
+X-CSE-MsgGUID: 75dHdsk6R56fKf8pEQfVJA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11733"; a="74601746"
+X-IronPort-AV: E=Sophos;i="6.23,127,1770624000"; 
+   d="scan'208";a="74601746"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Mar 2026 08:06:08 -0700
+X-CSE-ConnectionGUID: 45FZNnEETzigI3hiwWOn+w==
+X-CSE-MsgGUID: 9Lplwp4OTDGMa1328tMtMg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,127,1770624000"; 
+   d="scan'208";a="227341270"
+Received: from lkp-server01.sh.intel.com (HELO 63737dd503cb) ([10.239.97.150])
+  by fmviesa005.fm.intel.com with ESMTP; 18 Mar 2026 08:06:04 -0700
+Received: from kbuild by 63737dd503cb with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1w2sTC-0000000031t-0fMK;
+	Wed, 18 Mar 2026 15:06:02 +0000
+Date: Wed, 18 Mar 2026 23:05:24 +0800
+From: kernel test robot <lkp@intel.com>
+To: Pei Xiao <xiaopei01@kylinos.cn>, linux-spi@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	imx@lists.linux.dev, openbmc@lists.ozlabs.org,
+	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com, broonie@kernel.org
+Cc: oe-kbuild-all@lists.linux.dev, Pei Xiao <xiaopei01@kylinos.cn>
+Subject: Re: [PATCH v3 01/17] spi: axiado: Use helper function
+ devm_clk_get_enabled()
+Message-ID: <202603182309.Rj2JxGYZ-lkp@intel.com>
+References: <a78f25f1b15b90121e9723ecb5bd606bbb1868d4.1773733017.git.xiaopei01@kylinos.cn>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <6478a71ffca65e58fa19a5edbc25eb5f51a8cc12.camel@mediatek.com>
+In-Reply-To: <a78f25f1b15b90121e9723ecb5bd606bbb1868d4.1773733017.git.xiaopei01@kylinos.cn>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260318_080614_089374_C502A756 
+X-CRM114-Status: GOOD (  13.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,51 +91,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 18, 2026 at 12:12:36PM +0000, Zhiyong Tao (陶志勇) wrote:
-> On Wed, 2026-01-21 at 14:23 +0800, Zhiyong Tao wrote:
-> > On Tue, 2026-01-06 at 11:02 +0100, Greg KH wrote:
-> > > On Mon, Jan 05, 2026 at 10:39:55AM +0800, Zhiyong Tao wrote:
-> > > > From: "Zhiyong.Tao" <zhiyong.tao@mediatek.com>
-> > > > 
-> > > > Add ACPI support to 8250_mtk driver. This makes it possible to
-> > > > use UART on ARM-based desktops with EDK2 UEFI firmware.
-> > > > 
-> > > > Signed-off-by: Yenchia Chen <yenchia.chen@mediatek.com>
-> > > > Signed-off-by: Zhiyong.Tao <zhiyong.tao@mediatek.com>
-> > > > ---
-> > > >  drivers/tty/serial/8250/8250_mtk.c | 23 +++++++++++++++++++----
-> > > >  1 file changed, 19 insertions(+), 4 deletions(-)
-> > > 
-> > > This is a resend of the previous version, right?  Or did something
-> > > change?
-> > > 
-> > > confused,
-> > > 
-> > > greg k-h
-> > 
-> > ==> Hi Greg,
-> > Yes, previously Yenchia Chen helped to send out a version. Currently,
-> > this solution is specifically for the GB10 project and was made to
-> > support Windows ACPI settings. 
-> > 
-> > In actual application scenarios, the apdma clk will not be turned off
-> > in normal mode. It is only turned off in the SSPM microprocessor
-> > after
-> > entering standby, and when resuming, the apdma clk is re-enabled by
-> > SSPM.
-> > 
-> > As for other Linux projects, apdma still uses the DTS node.
-> > 
-> > Thanks
-> > 
-> 
-> Hi Greg,
-> Do you have other suggestion for this?
+Hi Pei,
 
-You can't just resend something and not say why you are resending it.
-Also, the authorship information seems to be backwards.
+kernel test robot noticed the following build warnings:
 
-thanks,
+[auto build test WARNING on broonie-spi/for-next]
+[also build test WARNING on next-20260317]
+[cannot apply to atorgue-stm32/stm32-next rockchip/for-next xilinx-xlnx/master clk/clk-next shawnguo/for-next soc/for-next linus/master v7.0-rc4]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-greg k-h
+url:    https://github.com/intel-lab-lkp/linux/commits/Pei-Xiao/spi-axiado-Use-helper-function-devm_clk_get_enabled/20260318-110300
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+patch link:    https://lore.kernel.org/r/a78f25f1b15b90121e9723ecb5bd606bbb1868d4.1773733017.git.xiaopei01%40kylinos.cn
+patch subject: [PATCH v3 01/17] spi: axiado: Use helper function devm_clk_get_enabled()
+config: nios2-allmodconfig (https://download.01.org/0day-ci/archive/20260318/202603182309.Rj2JxGYZ-lkp@intel.com/config)
+compiler: nios2-linux-gcc (GCC) 11.5.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260318/202603182309.Rj2JxGYZ-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202603182309.Rj2JxGYZ-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+   drivers/spi/spi-axiado.c: In function 'ax_spi_remove':
+>> drivers/spi/spi-axiado.c:865:24: warning: unused variable 'xspi' [-Wunused-variable]
+     865 |         struct ax_spi *xspi = spi_controller_get_devdata(ctlr);
+         |                        ^~~~
+
+
+vim +/xspi +865 drivers/spi/spi-axiado.c
+
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  853  
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  854  /**
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  855   * ax_spi_remove - Remove method for the SPI driver
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  856   * @pdev:	Pointer to the platform_device structure
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  857   *
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  858   * This function is called if a device is physically removed from the system or
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  859   * if the driver module is being unloaded. It frees all resources allocated to
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  860   * the device.
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  861   */
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  862  static void ax_spi_remove(struct platform_device *pdev)
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  863  {
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  864  	struct spi_controller *ctlr = platform_get_drvdata(pdev);
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07 @865  	struct ax_spi *xspi = spi_controller_get_devdata(ctlr);
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  866  
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  867  	spi_unregister_controller(ctlr);
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  868  
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  869  	pm_runtime_set_suspended(&pdev->dev);
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  870  	pm_runtime_disable(&pdev->dev);
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  871  
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
