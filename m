@@ -4,76 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74D2A103E168
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 12:39:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29C90103E168
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 12:39:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K7tzq9lBciAdy6f/hSy8719VyAPgju0PFQXsawshgyc=; b=3ZFQtWha7PKtKMa+XRq4oRf6++
-	5XwSXG08L9ZX7OPZTWZnZBnIfB8W6bL7vkoCjp9Eh2A4swfoHfjt40p7ri35tAb4SFdCTquHGrAqN
-	PHHsTo2BJZGQvFFCNRYN+YKPbluuCsI7gmGBEAdhfHweU5S/2ES41ZcLZkLJYoFd8WKyOIT/8q9t0
-	VALA7nXrNYXyN5hgH2LwkIJq74cqO4E/WryYkgf1aRnbj0swWSvpq6F+0NVrGYeEtWRdNPkWsbvWZ
-	q+nBuTbhTmHa3d5WY6BgMhlj24av39q+Nwvd8EgPc6AxCVL0TbRRoCliWO+dcUpsXe0ZpzOi/jQVI
-	b2XR581w==;
+	bh=8AKdpx8PuslMX2EqG13+jX9PJ7O+IaDVJgy6GG66IX4=; b=0Sf+GOUpMjbpa2bFn/Z+g5ifCZ
+	3/J5m9PciLL4aJYfMX2udYpNeLpTfmlRAWPAJ6nzbP0yZLohDUkrv+5wNhtO0XcasIRJA4WwLqSbO
+	Gw3flwajKcvCJ5LZvHmenAM4L4ndwR91wByU4avUeu1X152w9d5mZ43gPky7nv9D46K28/2dyH7nv
+	2H2W+5IGovGTaanYV8jCEr2TP4+PMpg5g7M03Z578aWSM+6vYCfaRV1yHoVHqWQ7OAy88q6GT0X+d
+	lTzqCcZOD3wGoSD3BZZtrWxpPnuckJ/wmDuPL1FbjnB8NmdMKA9wbEfjQ0l5LOnLRLRtb7nlnBS6e
+	7YBUt4kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2qBO-00000008PI5-2UT5;
-	Wed, 18 Mar 2026 12:39:30 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1w2qBU-00000008PMW-37zi;
+	Wed, 18 Mar 2026 12:39:36 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2qB9-00000008P5h-3251;
-	Wed, 18 Mar 2026 12:39:17 +0000
+	id 1w2qBB-00000008P7J-1Ncp;
+	Wed, 18 Mar 2026 12:39:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1773837553;
-	bh=FfQ4tOXt11Yk5HfFk5OE4cgHfDhrZv/d754oPFniJ6A=;
+	s=mail; t=1773837555;
+	bh=RBuqnVZJEy7b5iSK48Q0ap0YOczP8iWoM+/YF46iV9U=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=jjzt62tuJz4fRatqiNKPesSPc1em2DH9FU25jAhpxaqsL78O4BJllZ49HL9aYzqPh
-	 zkYwfxR6Z42JBDyz19ttRbsqG8zMwBA53AVjfqC9ThYCwQOOBsZ/3aEGX0qwS9m4TA
-	 at8NiNjgWuePnR95UeKO3YPWmDKwPDiqfDV2Vz4Mp6WyHr967TjyPYjn5zS6GkIcBH
-	 XFtZ5CnxK7k86QMNSdr/dUpkjrc1ZpqGHLQXoRSbuvOfU1tUL0HJFmwWWHtC0NspyT
-	 NG6QVfWP+YQOKhnBtr0p12vz9CxibIlNHn5CE3GrfPnxJELQuD3BDNkgTquhdb+V3y
-	 xmgBcJtLdOTkw==
+	b=mnxz28RiDchaD+WKXdz42ZRrqmZbt3YNm0LrfuHQbCBHfT3eGvwEAgiHqzovfMPC5
+	 WI/wVfdCoNCibGl8iCCnua0DDfWy68ucTCTA1acHaQ1g14PHiyeWlwwT5rML3lby2l
+	 k+71Du17DZ4vz66j7kd/5rMRpZq4g6Z7mOtEpV37eEPLI807izbd9fkFRGgSelTp/4
+	 UQ/CcNBmW35c1WUV2j8vAI27EwZLk8JOiotIYGnfbwGjq+R0rV5iaB4ISNzEpG4HOu
+	 iBtGLH1z1HfcShn0NFsUp7Myld8KpdsQnfHl6tksSMMF3lDOAcNEjfpObG29k9j/bs
+	 jDByGaCI2HxSA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8EAF417E0FFA;
-	Wed, 18 Mar 2026 13:39:12 +0100 (CET)
-Message-ID: <c1a425ba-a4ca-49ea-9660-5de74bede124@collabora.com>
-Date: Wed, 18 Mar 2026 13:39:12 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9D4CD17E1355;
+	Wed, 18 Mar 2026 13:39:14 +0100 (CET)
+Message-ID: <62b1463b-3d32-4d5c-8af3-f09202f96fb5@collabora.com>
+Date: Wed, 18 Mar 2026 13:39:14 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 9/9] arm64: dts: mt6392: add mt6392 PMIC dtsi
+Subject: Re: [PATCH v3 3/9] dt-bindings: regulator: Document MediaTek MT6392
+ PMIC Regulators
 To: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
  linux-mediatek@lists.infradead.org
-Cc: Val Packett <val@packett.cool>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>,
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring
+ <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>,
  Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
  Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
  Linus Walleij <linusw@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
- Mark Brown <broonie@kernel.org>, Gary Bisson <bisson.gary@gmail.com>,
- Julien Massot <julien.massot@collabora.com>,
+ Mark Brown <broonie@kernel.org>, Julien Massot
+ <julien.massot@collabora.com>, Gary Bisson <bisson.gary@gmail.com>,
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
- Fabien Parent <parent.f@gmail.com>, Chen Zhong <chen.zhong@mediatek.com>,
- linux-input@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org
+ Val Packett <val@packett.cool>, Fabien Parent <parent.f@gmail.com>,
+ Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-gpio@vger.kernel.org
 References: <20260317184507.523060-1-l.scorcia@gmail.com>
- <20260317184507.523060-10-l.scorcia@gmail.com>
+ <20260317184507.523060-4-l.scorcia@gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20260317184507.523060-10-l.scorcia@gmail.com>
+In-Reply-To: <20260317184507.523060-4-l.scorcia@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260318_053915_941156_15659EB6 
-X-CRM114-Status: GOOD (  16.26  )
+X-CRM114-CacheID: sfid-20260318_053917_709998_CFAE6D25 
+X-CRM114-Status: GOOD (  18.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,178 +90,380 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 17/03/26 19:43, Luca Leonardo Scorcia ha scritto:
-> From: Val Packett <val@packett.cool>
+> Add bindings for the regulators found in the MediaTek MT6392 PMIC,
+> usually found in board designs using the MediaTek MT8516/MT8167 SoCs.
 > 
-> Add the dts to be included by all boards using the MT6392 PMIC.
-> 
-> Signed-off-by: Val Packett <val@packett.cool>
 > Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
 > ---
->   arch/arm64/boot/dts/mediatek/mt6392.dtsi | 141 +++++++++++++++++++++++
->   1 file changed, 141 insertions(+)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt6392.dtsi
+>   .../regulator/mediatek,mt6392-regulator.yaml  | 318 ++++++++++++++++++
+>   .../regulator/mediatek,mt6392-regulator.h     |  24 ++
+>   2 files changed, 342 insertions(+)
+>   create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6392-regulator.yaml
+>   create mode 100644 include/dt-bindings/regulator/mediatek,mt6392-regulator.h
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt6392.dtsi b/arch/arm64/boot/dts/mediatek/mt6392.dtsi
+> diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6392-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6392-regulator.yaml
 > new file mode 100644
-> index 000000000000..fbf6f671524c
+> index 000000000000..fa4aad2dcbe8
 > --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt6392.dtsi
-> @@ -0,0 +1,141 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2019 MediaTek Inc.
-> + * Copyright (c) 2024 Val Packett <val@packett.cool>
-> + */
+> +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6392-regulator.yaml
+> @@ -0,0 +1,318 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/regulator/mediatek,mt6392-regulator.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
-> +#include <dt-bindings/input/input.h>
+> +title: MediaTek MT6392 Regulator
 > +
-> +&pwrap {
-> +	pmic: pmic {
-> +		compatible = "mediatek,mt6392", "mediatek,mt6323";
-> +		interrupt-controller;
-> +		#interrupt-cells = <2>;
+> +description:
+> +  Regulator node of the PMIC. This node should under the PMIC's device node.
+> +  All voltage regulators provided by the PMIC are described as sub-nodes of
+> +  this node.
 > +
-> +		keys {
-> +			compatible = "mediatek,mt6392-keys";
+> +properties:
+> +  compatible:
+> +    items:
+> +      - const: mediatek,mt6392-regulator
 > +
-> +			key-power {
-> +				linux,keycodes = <KEY_POWER>;
-> +				wakeup-source;
-> +			};
+> +patternProperties:
+> +  "^(buck_)?v(core|proc|sys)$":
+> +    description: Buck regulators
+> +    type: object
+> +    $ref: regulator.yaml#
+> +    properties:
+> +      regulator-allowed-modes:
+> +        description: |
+> +          BUCK regulators can set regulator-initial-mode and regulator-allowed-modes to
+> +          values specified in dt-bindings/regulator/mediatek,mt6392-regulator.h
+> +        items:
+> +          enum: [0, 1]
+> +    unevaluatedProperties: false
 > +
-> +			key-home {
-> +				linux,keycodes = <KEY_HOME>;
-> +				wakeup-source;
-> +			};
-> +		};
-> +
-> +		pio6392: pinctrl {
-> +			compatible = "mediatek,mt6392-pinctrl";
-> +
-> +			gpio-controller;
-> +			#gpio-cells = <2>;
-> +		};
-> +
-> +		rtc {
-> +			compatible = "mediatek,mt6392-rtc",
-> +				"mediatek,mt6323-rtc";
-> +		};
-> +
-> +		regulators {
-> +			compatible = "mediatek,mt6392-regulator";
-> +
-> +			mt6392_vproc_reg: buck_vproc {
+> +  "^(ldo_)?v(adc18|camio|cn18|io18)$":
 
-s/buck//g
+There was a discussion a bit of time ago and we decided to drop the "ldo_" and
+"buck_" prefix from the regulators.
 
-Also, no min/max voltages?!
-
-> +				regulator-name = "vproc";
-> +			};
-> +
-> +			mt6392_vsys_reg: buck_vsys {
-> +				regulator-name = "vsys";
-> +			};
-> +
-> +			mt6392_vcore_reg: buck_vcore {
-> +				regulator-name = "vcore";
-> +			};
-> +
-> +			mt6392_vxo22_reg: ldo_vxo22 {
-
-s/ldo//g
-
-Also, same comment here, no min/max voltages?!
-
-Most of those are easy too, because the regulator name actually tells you
-the voltage it is supposed to output ;-)
+Can you please drop those?
 
 Cheers,
 Angelo
 
-> +				regulator-name = "vxo22";
-> +			};
+> +    description: LDOs with fixed 1.8V output
+> +    type: object
+> +    $ref: regulator.yaml#
+> +    properties:
+> +      regulator-allowed-modes:
+> +        description: |
+> +          LDO regulators can set regulator-initial-mode and regulator-allowed-modes to
+> +          values specified in dt-bindings/regulator/mediatek,mt6392-regulator.h
+> +        items:
+> +          enum: [0, 1]
+> +    unevaluatedProperties: false
 > +
-> +			mt6392_vaud22_reg: ldo_vaud22 {
-> +				regulator-name = "vaud22";
-> +			};
+> +  "^(ldo_)?v(xo22)$":
+> +    description: LDOs with fixed 2.2V output
+> +    type: object
+> +    $ref: regulator.yaml#
+> +    properties:
+> +      regulator-allowed-modes:
+> +        description: |
+> +          LDO regulators can set regulator-initial-mode and regulator-allowed-modes to
+> +          values specified in dt-bindings/regulator/mediatek,mt6392-regulator.h
+> +        items:
+> +          enum: [0, 1]
+> +    unevaluatedProperties: false
 > +
-> +			mt6392_vcama_reg: ldo_vcama {
-> +				regulator-name = "vcama";
-> +			};
+> +  "^(ldo_)?v(m25)$":
+> +    description: LDOs with fixed 2.5V output
+> +    type: object
+> +    $ref: regulator.yaml#
+> +    properties:
+> +      regulator-allowed-modes:
+> +        description: |
+> +          LDO regulators can set regulator-initial-mode and regulator-allowed-modes to
+> +          values specified in dt-bindings/regulator/mediatek,mt6392-regulator.h
+> +        items:
+> +          enum: [0, 1]
+> +    unevaluatedProperties: false
 > +
-> +			mt6392_vaud28_reg: ldo_vaud28 {
-> +				regulator-name = "vaud28";
-> +			};
+> +  "^(ldo_)?v(aud28|io28)$":
+> +    description: LDOs with fixed 2.8V output w/ mode
+> +    type: object
+> +    $ref: regulator.yaml#
+> +    properties:
+> +      regulator-allowed-modes:
+> +        description: |
+> +          LDO regulators can set regulator-initial-mode and regulator-allowed-modes to
+> +          values specified in dt-bindings/regulator/mediatek,mt6392-regulator.h
+> +        items:
+> +          enum: [0, 1]
+> +    unevaluatedProperties: false
 > +
-> +			mt6392_vadc18_reg: ldo_vadc18 {
-> +				regulator-name = "vadc18";
-> +			};
+> +  "^(ldo_)?v(cama)$":
+> +    description: LDOs with fixed 2.8V output w/o mode
+> +    type: object
+> +    $ref: regulator.yaml#
+> +    unevaluatedProperties: false
 > +
-> +			mt6392_vcn35_reg: ldo_vcn35 {
-> +				regulator-name = "vcn35";
-> +			};
+> +  "^(ldo_)?vusb$":
+> +    description: LDOs with fixed 3.3V output
+> +    type: object
+> +    $ref: regulator.yaml#
+> +    properties:
+> +      regulator-allowed-modes:
+> +        description: |
+> +          LDO regulators can set regulator-initial-mode and regulator-allowed-modes to
+> +          values specified in dt-bindings/regulator/mediatek,mt6392-regulator.h
+> +        items:
+> +          enum: [0, 1]
+> +    unevaluatedProperties: false
 > +
-> +			mt6392_vio28_reg: ldo_vio28 {
-> +				regulator-name = "vio28";
-> +			};
+> +  "^(ldo_)?v(aud22|camaf|camd|cn35|efuse|emc3v3|gp1|gp2|m|mc|mch)$":
+> +    description: LDOs with variable output
+> +    type: object
+> +    $ref: regulator.yaml#
+> +    properties:
+> +      regulator-allowed-modes: false
+> +    unevaluatedProperties: false
 > +
-> +			mt6392_vusb_reg: ldo_vusb {
-> +				regulator-name = "vusb";
-> +			};
+> +required:
+> +  - compatible
 > +
-> +			mt6392_vmc_reg: ldo_vmc {
-> +				regulator-name = "vmc";
-> +			};
+> +additionalProperties: false
 > +
-> +			mt6392_vmch_reg: ldo_vmch {
-> +				regulator-name = "vmch";
-> +			};
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
 > +
-> +			mt6392_vemc3v3_reg: ldo_vemc3v3 {
-> +				regulator-name = "vemc3v3";
-> +			};
+> +    mt6392_regulators: regulators {
+> +        compatible = "mediatek,mt6392-regulator";
 > +
-> +			mt6392_vgp1_reg: ldo_vgp1 {
-> +				regulator-name = "vgp1";
-> +			};
+> +        mt6392_vproc_reg: buck_vproc {
+> +            regulator-name = "vproc";
+> +            regulator-min-microvolt = <700000>;
+> +            regulator-max-microvolt = <1350000>;
+> +            regulator-ramp-delay = <12500>;
+> +            regulator-always-on;
+> +            regulator-boot-on;
+> +        };
 > +
-> +			mt6392_vgp2_reg: ldo_vgp2 {
-> +				regulator-name = "vgp2";
-> +			};
+> +        mt6392_vsys_reg: buck_vsys {
+> +            regulator-name = "vsys";
+> +            regulator-min-microvolt = <1400000>;
+> +            regulator-max-microvolt = <2987500>;
+> +            regulator-ramp-delay = <25000>;
+> +            regulator-always-on;
+> +            regulator-boot-on;
+> +        };
 > +
-> +			mt6392_vcn18_reg: ldo_vcn18 {
-> +				regulator-name = "vcn18";
-> +			};
+> +        mt6392_vcore_reg: buck_vcore {
+> +            regulator-name = "vcore";
+> +            regulator-min-microvolt = <700000>;
+> +            regulator-max-microvolt = <1350000>;
+> +            regulator-ramp-delay = <12500>;
+> +            regulator-always-on;
+> +            regulator-boot-on;
+> +        };
 > +
-> +			mt6392_vcamaf_reg: ldo_vcamaf {
-> +				regulator-name = "vcamaf";
-> +			};
+> +        mt6392_vxo22_reg: ldo_vxo22 {
+> +            regulator-name = "vxo22";
+> +            regulator-min-microvolt = <2200000>;
+> +            regulator-max-microvolt = <2200000>;
+> +            regulator-enable-ramp-delay = <110>;
+> +            regulator-always-on;
+> +            regulator-boot-on;
+> +        };
 > +
-> +			mt6392_vm_reg: ldo_vm {
-> +				regulator-name = "vm";
-> +			};
+> +        mt6392_vaud22_reg: ldo_vaud22 {
+> +            regulator-name = "vaud22";
+> +            regulator-min-microvolt = <1800000>;
+> +            regulator-max-microvolt = <2200000>;
+> +            regulator-enable-ramp-delay = <264>;
+> +            regulator-always-on;
+> +            regulator-boot-on;
+> +        };
 > +
-> +			mt6392_vio18_reg: ldo_vio18 {
-> +				regulator-name = "vio18";
-> +			};
+> +        mt6392_vcama_reg: ldo_vcama {
+> +            regulator-name = "vcama";
+> +            regulator-min-microvolt = <2800000>;
+> +            regulator-max-microvolt = <2800000>;
+> +            regulator-enable-ramp-delay = <264>;
+> +        };
 > +
-> +			mt6392_vcamd_reg: ldo_vcamd {
-> +				regulator-name = "vcamd";
-> +			};
+> +        mt6392_vaud28_reg: ldo_vaud28 {
+> +            regulator-name = "vaud28";
+> +            regulator-min-microvolt = <2800000>;
+> +            regulator-max-microvolt = <2800000>;
+> +            regulator-enable-ramp-delay = <264>;
+> +            regulator-always-on;
+> +            regulator-boot-on;
+> +        };
 > +
-> +			mt6392_vcamio_reg: ldo_vcamio {
-> +				regulator-name = "vcamio";
-> +			};
+> +        mt6392_vadc18_reg: ldo_vadc18 {
+> +            regulator-name = "vadc18";
+> +            regulator-min-microvolt = <1800000>;
+> +            regulator-max-microvolt = <1800000>;
+> +            regulator-enable-ramp-delay = <264>;
+> +            regulator-always-on;
+> +            regulator-boot-on;
+> +        };
 > +
-> +			mt6392_vm25_reg: ldo_vm25 {
-> +				regulator-name = "vm25";
-> +			};
+> +        mt6392_vcn35_reg: ldo_vcn35 {
+> +            regulator-name = "vcn35";
+> +            regulator-min-microvolt = <3300000>;
+> +            regulator-max-microvolt = <3600000>;
+> +            regulator-enable-ramp-delay = <264>;
+> +        };
 > +
-> +			mt6392_vefuse_reg: ldo_vefuse {
-> +				regulator-name = "vefuse";
-> +			};
-> +		};
-> +	};
-> +};
+> +        mt6392_vio28_reg: ldo_vio28 {
+> +            regulator-name = "vio28";
+> +            regulator-always-on;
+> +            regulator-boot-on;
+> +            regulator-min-microvolt = <2800000>;
+> +            regulator-max-microvolt = <2800000>;
+> +            regulator-enable-ramp-delay = <264>;
+> +            regulator-always-on;
+> +            regulator-boot-on;
+> +        };
+> +
+> +        mt6392_vusb_reg: ldo_vusb {
+> +            regulator-name = "vusb";
+> +            regulator-min-microvolt = <3300000>;
+> +            regulator-max-microvolt = <3300000>;
+> +            regulator-enable-ramp-delay = <264>;
+> +            regulator-always-on;
+> +            regulator-boot-on;
+> +        };
+> +
+> +        mt6392_vmc_reg: ldo_vmc {
+> +            regulator-name = "vmc";
+> +            regulator-min-microvolt = <1800000>;
+> +            regulator-max-microvolt = <3300000>;
+> +            regulator-enable-ramp-delay = <264>;
+> +            regulator-boot-on;
+> +        };
+> +
+> +        mt6392_vmch_reg: ldo_vmch {
+> +            regulator-name = "vmch";
+> +            regulator-min-microvolt = <3000000>;
+> +            regulator-max-microvolt = <3300000>;
+> +            regulator-enable-ramp-delay = <264>;
+> +            regulator-boot-on;
+> +        };
+> +
+> +        mt6392_vemc3v3_reg: ldo_vemc3v3 {
+> +            regulator-name = "vemc3v3";
+> +            regulator-min-microvolt = <3000000>;
+> +            regulator-max-microvolt = <3300000>;
+> +            regulator-enable-ramp-delay = <264>;
+> +            regulator-boot-on;
+> +        };
+> +
+> +        mt6392_vgp1_reg: ldo_vgp1 {
+> +            regulator-name = "vgp1";
+> +            regulator-min-microvolt = <1200000>;
+> +            regulator-max-microvolt = <3300000>;
+> +            regulator-enable-ramp-delay = <264>;
+> +        };
+> +
+> +        mt6392_vgp2_reg: ldo_vgp2 {
+> +            regulator-name = "vgp2";
+> +            regulator-min-microvolt = <1200000>;
+> +            regulator-max-microvolt = <3300000>;
+> +            regulator-enable-ramp-delay = <264>;
+> +        };
+> +
+> +        mt6392_vcn18_reg: ldo_vcn18 {
+> +            regulator-name = "vcn18";
+> +            regulator-min-microvolt = <1800000>;
+> +            regulator-max-microvolt = <1800000>;
+> +            regulator-enable-ramp-delay = <264>;
+> +        };
+> +
+> +        mt6392_vcamaf_reg: ldo_vcamaf {
+> +            regulator-name = "vcamaf";
+> +            regulator-min-microvolt = <1200000>;
+> +            regulator-max-microvolt = <3300000>;
+> +            regulator-enable-ramp-delay = <264>;
+> +        };
+> +
+> +        mt6392_vm_reg: ldo_vm {
+> +            regulator-name = "vm";
+> +            regulator-min-microvolt = <1240000>;
+> +            regulator-max-microvolt = <1390000>;
+> +            regulator-enable-ramp-delay = <264>;
+> +            regulator-always-on;
+> +            regulator-boot-on;
+> +        };
+> +
+> +        mt6392_vio18_reg: ldo_vio18 {
+> +            regulator-name = "vio18";
+> +            regulator-min-microvolt = <1800000>;
+> +            regulator-max-microvolt = <1800000>;
+> +            regulator-enable-ramp-delay = <264>;
+> +            regulator-always-on;
+> +            regulator-boot-on;
+> +        };
+> +
+> +        mt6392_vcamd_reg: ldo_vcamd {
+> +            regulator-name = "vcamd";
+> +            regulator-min-microvolt = <1200000>;
+> +            regulator-max-microvolt = <1800000>;
+> +            regulator-enable-ramp-delay = <264>;
+> +        };
+> +
+> +        mt6392_vcamio_reg: ldo_vcamio {
+> +            regulator-name = "vcamio";
+> +            regulator-min-microvolt = <1800000>;
+> +            regulator-max-microvolt = <1800000>;
+> +            regulator-enable-ramp-delay = <264>;
+> +        };
+> +
+> +        mt6392_vm25_reg: ldo_vm25 {
+> +            regulator-name = "vm25";
+> +            regulator-min-microvolt = <2500000>;
+> +            regulator-max-microvolt = <2500000>;
+> +            regulator-enable-ramp-delay = <264>;
+> +        };
+> +
+> +        mt6392_vefuse_reg: ldo_vefuse {
+> +            regulator-name = "vefuse";
+> +            regulator-min-microvolt = <1800000>;
+> +            regulator-max-microvolt = <2000000>;
+> +            regulator-enable-ramp-delay = <264>;
+> +        };
+> +    };
+> diff --git a/include/dt-bindings/regulator/mediatek,mt6392-regulator.h b/include/dt-bindings/regulator/mediatek,mt6392-regulator.h
+> new file mode 100644
+> index 000000000000..8bd1a13faad8
+> --- /dev/null
+> +++ b/include/dt-bindings/regulator/mediatek,mt6392-regulator.h
+> @@ -0,0 +1,24 @@
+> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
+> +
+> +#ifndef _DT_BINDINGS_REGULATOR_MEDIATEK_MT6392_H_
+> +#define _DT_BINDINGS_REGULATOR_MEDIATEK_MT6392_H_
+> +
+> +/*
+> + * Buck mode constants which may be used in devicetree properties (eg.
+> + * regulator-initial-mode, regulator-allowed-modes).
+> + * See the manufacturer's datasheet for more information on these modes.
+> + */
+> +
+> +#define MT6392_BUCK_MODE_AUTO		0
+> +#define MT6392_BUCK_MODE_FORCE_PWM	1
+> +
+> +/*
+> + * LDO mode constants which may be used in devicetree properties (eg.
+> + * regulator-initial-mode, regulator-allowed-modes).
+> + * See the manufacturer's datasheet for more information on these modes.
+> + */
+> +
+> +#define MT6392_LDO_MODE_NORMAL		0
+> +#define MT6392_LDO_MODE_LP		1
+> +
+> +#endif
+
+
 
