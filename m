@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6296810854D0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 02:41:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 828D910854D0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 02:41:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zCvG5YIQQsu1GQqt1WOxfUKgVrGd+jt/hHA/QIxIuKY=; b=1Z/4yiCJRY/5Ki9o/wZk1a3KyR
-	FCMctQMWcMqHKps178OK4i9pq9xEEDRi5TE3vC3J0sDQ0EiGHd5wQAU+TMazQMpy8Eh3+KmaSKgY8
-	uOzuK3qv+4kBO5ZjJuklZfgE+bLnfAktybZfdNSaRNrAZG8+W3euCR/fcYEdLWuIXycw2xhEP8TB0
-	k17I+4MyyhPawsFWa+ovti/meig4tx51f2036SwLAn4ChPECMQig8yfbZxMkRUxRc/DkRIxKUyP2Q
-	sey81hUczFpWICxfYp7qbKkRAiMWgb+JuktnFJiqt40rgrwAVIc0LQF/8PM0XvrI6BeJBbWAr80pI
-	SJRiJPeg==;
+	bh=50C97MrmxRYizVBIsWWTqviXJxkn2i99CFFIy3ghU9c=; b=Pxch35c911BVywg4dWq6qC15b5
+	X+phIrJSENGx8CLbJgVyRH1G/o2jzTFGSZwsN/y1tlTN78DKfbhRJ0nd45bQKI/RYbd28kiHVxKu6
+	PcXcx53X7aphk2e35OrI4ynhIEIwWCD4uy9tLC2vrVRaAXtPluUkMURYVdUxPWu1uiEw4jlsxUz/t
+	bQR18O7/072pB3F1ohT7aKt0kF3y4hAU+2PfTuo1O3OZ0D47SZ1Z3xQmsY+b9D3T/MSdSkm2RwMNQ
+	in4rqkICWLLnQBEG1581O15GM/RjCw+dOUESzM/7QOtUwifT6k6PY6RBUTfym3GF58/CH8idEuZ+W
+	A88WCJbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2gqd-00000007drX-1Gc0;
-	Wed, 18 Mar 2026 02:41:27 +0000
+	id 1w2gqw-00000007eBt-2iAe;
+	Wed, 18 Mar 2026 02:41:46 +0000
 Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2gpg-00000007cU8-1ImZ;
+	id 1w2gph-00000007cXE-0vGq;
 	Wed, 18 Mar 2026 02:40:30 +0000
-X-UUID: cb0a678a227311f1a21c59e7364eecb8-20260318
+X-UUID: cc9aa704227311f1a21c59e7364eecb8-20260318
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:000e921e-2f87-41e2-8867-c9a6e6fe2646,IP:0,U
+X-CID-O-INFO: VERSION:1.3.11,REQID:0cfe2427-3d59-4ad2-bf8a-2e540f18b346,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:89c9d04,CLOUDID:a707ad597b8477a42e67b3987547a093,BulkI
+X-CID-META: VersionHash:89c9d04,CLOUDID:5d417bfb0956acf9f04223ba2d7b9988,BulkI
 	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850|898,TC:nil,Content:0|15|50
 	,EDM:5,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
 	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -39,12 +39,12 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: cb0a678a227311f1a21c59e7364eecb8-20260318
+X-UUID: cc9aa704227311f1a21c59e7364eecb8-20260318
 X-User: xiaopei01@kylinos.cn
 Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
 	(envelope-from <xiaopei01@kylinos.cn>)
 	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 964902821; Wed, 18 Mar 2026 10:40:14 +0800
+	with ESMTP id 288843384; Wed, 18 Mar 2026 10:40:17 +0800
 From: Pei Xiao <xiaopei01@kylinos.cn>
 To: linux-spi@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
@@ -56,17 +56,17 @@ To: linux-spi@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-stm32@st-md-mailman.stormreply.com
 Cc: Pei Xiao <xiaopei01@kylinos.cn>
-Subject: [PATCH v4 09/17] spi: sifive: Simplify clock handling with devm_clk_get_enabled()
-Date: Wed, 18 Mar 2026 10:39:59 +0800
-Message-Id: <0a34faeb8d54f2bbbc907a04b2fe116e1d4f301f.1773801401.git.xiaopei01@kylinos.cn>
+Subject: [PATCH v4 16/17] spi: zynq-qspi: Simplify clock handling with devm_clk_get_enabled()
+Date: Wed, 18 Mar 2026 10:40:06 +0800
+Message-Id: <ddf33629a24d640b3c775cca35123ff051366648.1773801401.git.xiaopei01@kylinos.cn>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1773801401.git.xiaopei01@kylinos.cn>
 References: <cover.1773801401.git.xiaopei01@kylinos.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260317_194028_710227_221DB45C 
-X-CRM114-Status: GOOD (  15.03  )
+X-CRM114-CacheID: sfid-20260317_194029_660347_BBE14429 
+X-CRM114-Status: GOOD (  12.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,96 +82,109 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Replace devm_clk_get() followed by clk_prepare_enable() with
-devm_clk_get_enabled() for the bus clock. This reduces boilerplate code
-and error handling, as the managed API automatically disables the clock
-when the device is removed or if probe fails.
+devm_clk_get_enabled() for both "pclk" and "ref_clk". This removes
+the need for explicit clock enable and disable calls, as the managed
+API automatically disables the clocks on device removal or probe
+failure.
 
-Remove the now-unnecessary clk_disable_unprepare() calls from the probe
-error path and the remove callback. Adjust the error handling to use the
-existing put_host label.
+Remove the now-unnecessary clk_disable_unprepare() calls from the
+probe error paths and the remove callback. Simplify error handling
+by jumping directly to the remove_ctlr label.
 
 Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
 ---
- drivers/spi/spi-sifive.c | 21 ++++++---------------
- 1 file changed, 6 insertions(+), 15 deletions(-)
+ drivers/spi/spi-zynq-qspi.c | 31 ++++++-------------------------
+ 1 file changed, 6 insertions(+), 25 deletions(-)
 
-diff --git a/drivers/spi/spi-sifive.c b/drivers/spi/spi-sifive.c
-index 6c7aba8befa0..54adbc057af6 100644
---- a/drivers/spi/spi-sifive.c
-+++ b/drivers/spi/spi-sifive.c
-@@ -312,7 +312,8 @@ static int sifive_spi_probe(struct platform_device *pdev)
- 		goto put_host;
+diff --git a/drivers/spi/spi-zynq-qspi.c b/drivers/spi/spi-zynq-qspi.c
+index 5232483c4a3a..8c3975030d0a 100644
+--- a/drivers/spi/spi-zynq-qspi.c
++++ b/drivers/spi/spi-zynq-qspi.c
+@@ -661,7 +661,7 @@ static int zynq_qspi_probe(struct platform_device *pdev)
+ 		goto remove_ctlr;
  	}
  
--	spi->clk = devm_clk_get(&pdev->dev, NULL);
-+	/* Spin up the bus clock before hitting registers */
-+	spi->clk = devm_clk_get_enabled(&pdev->dev, NULL);
- 	if (IS_ERR(spi->clk)) {
- 		dev_err(&pdev->dev, "Unable to find bus clock\n");
- 		ret = PTR_ERR(spi->clk);
-@@ -342,13 +343,6 @@ static int sifive_spi_probe(struct platform_device *pdev)
- 		goto put_host;
+-	xqspi->pclk = devm_clk_get(&pdev->dev, "pclk");
++	xqspi->pclk = devm_clk_get_enabled(&pdev->dev, "pclk");
+ 	if (IS_ERR(xqspi->pclk)) {
+ 		dev_err(&pdev->dev, "pclk clock not found.\n");
+ 		ret = PTR_ERR(xqspi->pclk);
+@@ -670,36 +670,24 @@ static int zynq_qspi_probe(struct platform_device *pdev)
+ 
+ 	init_completion(&xqspi->data_completion);
+ 
+-	xqspi->refclk = devm_clk_get(&pdev->dev, "ref_clk");
++	xqspi->refclk = devm_clk_get_enabled(&pdev->dev, "ref_clk");
+ 	if (IS_ERR(xqspi->refclk)) {
+ 		dev_err(&pdev->dev, "ref_clk clock not found.\n");
+ 		ret = PTR_ERR(xqspi->refclk);
+ 		goto remove_ctlr;
  	}
  
--	/* Spin up the bus clock before hitting registers */
--	ret = clk_prepare_enable(spi->clk);
+-	ret = clk_prepare_enable(xqspi->pclk);
 -	if (ret) {
--		dev_err(&pdev->dev, "Unable to enable bus clock\n");
--		goto put_host;
+-		dev_err(&pdev->dev, "Unable to enable APB clock.\n");
+-		goto remove_ctlr;
 -	}
 -
- 	/* probe the number of CS lines */
- 	spi->cs_inactive = sifive_spi_read(spi, SIFIVE_SPI_REG_CSDEF);
- 	sifive_spi_write(spi, SIFIVE_SPI_REG_CSDEF, 0xffffffffU);
-@@ -357,14 +351,14 @@ static int sifive_spi_probe(struct platform_device *pdev)
- 	if (!cs_bits) {
- 		dev_err(&pdev->dev, "Could not auto probe CS lines\n");
- 		ret = -EINVAL;
--		goto disable_clk;
-+		goto put_host;
+-	ret = clk_prepare_enable(xqspi->refclk);
+-	if (ret) {
+-		dev_err(&pdev->dev, "Unable to enable device clock.\n");
+-		goto clk_dis_pclk;
+-	}
+-
+ 	xqspi->irq = platform_get_irq(pdev, 0);
+ 	if (xqspi->irq < 0) {
+ 		ret = xqspi->irq;
+-		goto clk_dis_all;
++		goto remove_ctlr;
+ 	}
+ 	ret = devm_request_irq(&pdev->dev, xqspi->irq, zynq_qspi_irq,
+ 			       0, pdev->name, xqspi);
+ 	if (ret != 0) {
+ 		ret = -ENXIO;
+ 		dev_err(&pdev->dev, "request_irq failed\n");
+-		goto clk_dis_all;
++		goto remove_ctlr;
  	}
  
- 	num_cs = ilog2(cs_bits) + 1;
- 	if (num_cs > SIFIVE_SPI_MAX_CS) {
- 		dev_err(&pdev->dev, "Invalid number of spi targets\n");
+ 	ret = of_property_read_u32(np, "num-cs",
+@@ -709,7 +697,7 @@ static int zynq_qspi_probe(struct platform_device *pdev)
+ 	} else if (num_cs > ZYNQ_QSPI_MAX_NUM_CS) {
  		ret = -EINVAL;
--		goto disable_clk;
-+		goto put_host;
+ 		dev_err(&pdev->dev, "only 2 chip selects are available\n");
+-		goto clk_dis_all;
++		goto remove_ctlr;
+ 	} else {
+ 		ctlr->num_chipselect = num_cs;
  	}
- 
- 	/* Define our host */
-@@ -392,7 +386,7 @@ static int sifive_spi_probe(struct platform_device *pdev)
- 			       dev_name(&pdev->dev), spi);
+@@ -728,15 +716,11 @@ static int zynq_qspi_probe(struct platform_device *pdev)
+ 	ret = devm_spi_register_controller(&pdev->dev, ctlr);
  	if (ret) {
- 		dev_err(&pdev->dev, "Unable to bind to interrupt\n");
--		goto disable_clk;
-+		goto put_host;
+ 		dev_err(&pdev->dev, "devm_spi_register_controller failed\n");
+-		goto clk_dis_all;
++		goto remove_ctlr;
  	}
  
- 	dev_info(&pdev->dev, "mapped; irq=%d, cs=%d\n",
-@@ -401,13 +395,11 @@ static int sifive_spi_probe(struct platform_device *pdev)
- 	ret = devm_spi_register_controller(&pdev->dev, host);
- 	if (ret < 0) {
- 		dev_err(&pdev->dev, "spi_register_host failed\n");
--		goto disable_clk;
-+		goto put_host;
- 	}
+ 	return ret;
  
- 	return 0;
+-clk_dis_all:
+-	clk_disable_unprepare(xqspi->refclk);
+-clk_dis_pclk:
+-	clk_disable_unprepare(xqspi->pclk);
+ remove_ctlr:
+ 	spi_controller_put(ctlr);
  
--disable_clk:
--	clk_disable_unprepare(spi->clk);
- put_host:
- 	spi_controller_put(host);
+@@ -758,9 +742,6 @@ static void zynq_qspi_remove(struct platform_device *pdev)
+ 	struct zynq_qspi *xqspi = platform_get_drvdata(pdev);
  
-@@ -421,7 +413,6 @@ static void sifive_spi_remove(struct platform_device *pdev)
- 
- 	/* Disable all the interrupts just in case */
- 	sifive_spi_write(spi, SIFIVE_SPI_REG_IE, 0);
--	clk_disable_unprepare(spi->clk);
+ 	zynq_qspi_write(xqspi, ZYNQ_QSPI_ENABLE_OFFSET, 0);
+-
+-	clk_disable_unprepare(xqspi->refclk);
+-	clk_disable_unprepare(xqspi->pclk);
  }
  
- static int sifive_spi_suspend(struct device *dev)
+ static const struct of_device_id zynq_qspi_of_match[] = {
 -- 
 2.25.1
 
