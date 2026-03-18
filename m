@@ -4,94 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B25021077608
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 19:02:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2CA31077609
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 19:32:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1G+0hc/VQL0gHqw5qxzFpOxuCLuK6qRVVjosnlUP3J8=; b=O68NogkcXZ4XJj39rPXp0fAwQi
-	e24BkDy+8sv6OSl7ZRjF96XPHZ9oeXClQ7g4W21a11o/eyD3uPq8czyOwUd52YZ78NARmJSu8tZsJ
-	IanHVVUollZHHCa4YPIvLIlCseY26TnJlxBC+PGO/r2Tkq6w5HwJb7QXuSor2HG9Nc4g+bxoQf6XL
-	n7EUtw73/CRpYhfDNnOjxegx1IMtNeGWs4Um5IYbS78f2sGCVvpmfqu5jTryfb6Y60QjeXfhrIs+V
-	K0tE/y5nZmzqBdA0kjGeKc3Zcwx/rQgAqsI9giPBKnUYDKrM+D0y3Dex/bN/m0BwQ1IzjjUhRFaWN
-	gHa1p2Kw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:Content-Type:
+	Content-Transfer-Encoding:In-Reply-To:From:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6IFXzogKubWdLI3XWVv4ALzt88W3L4Gj8JjMLCnR0Ro=; b=hsIPOqzrabwlsWxl/8qgUwV0L5
+	ErnaPHtLQMQpfahleFcAdYoeZgDkX6vWzilTr7+rs4s8zn74g6psnS4OTnuYabTo/2hsqjzfknvwK
+	9T39czbYLqXa6YYGbeHaDUvZcUeQUF+bStg/37wpGZ2NYGwOGnStj8Nry++SAacTF6maAAvDXKIya
+	VWoOB1mRfoea33ok6GPwa4sgCgY/IXtrh9D+grEmkhl+5LNZtjoVxaL5z3zTbfGuJRETXcEFIwX1E
+	sG5aVchdx9w3kyx73j2qKy63Bt1WqFFv572UAezJNKBwvcGbRmDcNJ+W68AZ5AXnTgHOqAxcMXyHL
+	d7kbZ4+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2wAH-00000009CXB-2iF4;
-	Wed, 18 Mar 2026 19:02:45 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1w2wcy-00000009Ey4-1G2a;
+	Wed, 18 Mar 2026 19:32:24 +0000
+Received: from mailout1.w1.samsung.com ([210.118.77.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2wAF-00000009CWW-1ny6;
-	Wed, 18 Mar 2026 19:02:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=1G+0hc/VQL0gHqw5qxzFpOxuCLuK6qRVVjosnlUP3J8=; b=DzlJ2/IDUIhFTnBN27PVjvGNrL
-	qLfghHevTo6FiLMF14q8bx3KvDHN8tcB4SfEf4KYGf1hneAbw391SDK12FYSZyeAhrWLHpiR20Y0Q
-	tyb1Dh3OBgRZLUYL8iAM5cqShXTtkXseO8p0SSm8JqiBQQVmoCgq7XXuw8kS5XU3bPjDwHVgtFTZK
-	L7ws/9sFEMlwgBoyl61lhswmzqUr2tUZ8EQhOpEJYQWjZIQy3m6bgoGNLig1HzOABGH1sYDejEP2Q
-	gKAVCMLG+KRb1qTOqgYJLVcVKgEM/OYGyelHGq2Wmte5lD9IbWR8Nc6U+M0URsdRGOZyBztFObdAg
-	7M5D5c3w==;
-Received: from mgamail.intel.com ([192.198.163.17])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2wAB-0000000C5qS-2O0p;
-	Wed, 18 Mar 2026 19:02:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1773860560; x=1805396560;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=XIwaunvaQN5MSz2DPfNECpeDO+PYa3DzRiYLu9KKQpA=;
-  b=XhhJqitLfPJ9k6nFJLynhw4G+TU+KFA/0e1hOatBl8N5+gGQ54Gb1IcZ
-   6zSXsnGDjfriLcQbLEW/hNN+r+z4oWSFI+sTFGltoavknf5vSmCZLcfv0
-   3/EClrYIvC2fmfRt81WJ6Rl8QBx9woE+PTd4bHF5+xU9+asZjDMwI3Wci
-   OgjnHGinfG5FqiuztKvHVnIey80+PRyYR8DJ4AXLZG8DcGP+tAhn10nom
-   7sEKtsXPdezikdUKXOqkKGKTTk1pOhhE45k94UUp09sgR+TMmEhWT7L9B
-   S+ved3Ov3FwbkSxUcSbRfAukaKvTkDGtxpSi1irCGTtolMbMI2CCvK9lM
-   A==;
-X-CSE-ConnectionGUID: 5fAptQjrRCmYJ3ignOADFw==
-X-CSE-MsgGUID: PCSONI4MTHWLk1PP4QmBZQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11733"; a="74839287"
-X-IronPort-AV: E=Sophos;i="6.23,127,1770624000"; 
-   d="scan'208";a="74839287"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
-  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Mar 2026 12:02:34 -0700
-X-CSE-ConnectionGUID: r+qX+cIKSd+zOG1mKDXMNQ==
-X-CSE-MsgGUID: rqrMMi0WQPux3KNMprNQCQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,127,1770624000"; 
-   d="scan'208";a="247147805"
-Received: from lkp-server01.sh.intel.com (HELO 63737dd503cb) ([10.239.97.150])
-  by fmviesa001.fm.intel.com with ESMTP; 18 Mar 2026 12:02:31 -0700
-Received: from kbuild by 63737dd503cb with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1w2wA0-000000003Hh-2Dvy;
-	Wed, 18 Mar 2026 19:02:28 +0000
-Date: Thu, 19 Mar 2026 03:02:20 +0800
-From: kernel test robot <lkp@intel.com>
-To: Pei Xiao <xiaopei01@kylinos.cn>, linux-spi@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	imx@lists.linux.dev, openbmc@lists.ozlabs.org,
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com, broonie@kernel.org
-Cc: oe-kbuild-all@lists.linux.dev, Pei Xiao <xiaopei01@kylinos.cn>
-Subject: Re: [PATCH v3 11/17] spi: st: Use helper function
- devm_clk_get_enabled()
-Message-ID: <202603190255.yJJehgKm-lkp@intel.com>
-References: <96c8fbf6840c71f29ebcf37d7ffc68f297601c8a.1773733017.git.xiaopei01@kylinos.cn>
+	id 1w2wct-00000009Exg-3tj9
+	for linux-mediatek@lists.infradead.org;
+	Wed, 18 Mar 2026 19:32:22 +0000
+Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
+	by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id 20260318193212euoutp01fd6959d0f8d3f4ddb415999024c11462~eBmScr2N80322203222euoutp01Y
+	for <linux-mediatek@lists.infradead.org>; Wed, 18 Mar 2026 19:32:12 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com 20260318193212euoutp01fd6959d0f8d3f4ddb415999024c11462~eBmScr2N80322203222euoutp01Y
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1773862332;
+	bh=6IFXzogKubWdLI3XWVv4ALzt88W3L4Gj8JjMLCnR0Ro=;
+	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
+	b=o1zs8GrKWY/zERyfeKXWrRacdfChFmR26NnCgvzDRgCbVVN5CovGgVq3jjMQKfxHR
+	 4FcIpuLIqLQMowGXvrTEdT+d0JdfJXgDuEdqN0ECHdzJzf7k+E1scI9Au0NomkgiAg
+	 EKn0TOW7J8HXXOlgw9DPJRrsIREXjz0A5qKGDHEA=
+Received: from eusmtip2.samsung.com (unknown [203.254.199.222]) by
+	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
+	20260318193211eucas1p15a3ea20acd532ad8553948323b0eb96c~eBmRmVbY71058410584eucas1p1e;
+	Wed, 18 Mar 2026 19:32:11 +0000 (GMT)
+Received: from [106.210.134.192] (unknown [106.210.134.192]) by
+	eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
+	20260318193210eusmtip2a4bf1016c544542de84a481a384d1e86~eBmQ2K1rY0576205762eusmtip2b;
+	Wed, 18 Mar 2026 19:32:10 +0000 (GMT)
+Message-ID: <c9b421aa-baa7-4609-b665-226f894f5114@samsung.com>
+Date: Wed, 18 Mar 2026 20:32:09 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+User-Agent: Betterbird (Windows)
+Subject: Re: [PATCH v2] ufs: core: Avoid IRQ thread wakeup during active UIC
+ command
+To: Bart Van Assche <bvanassche@acm.org>, peter.wang@mediatek.com,
+	linux-scsi@vger.kernel.org, martin.petersen@oracle.com,
+	avri.altman@sandisk.com, alim.akhtar@samsung.com, jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+	chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+	chaotian.jing@mediatek.com, tun-yu.yu@mediatek.com,
+	eddie.huang@mediatek.com, naomi.chu@mediatek.com, ed.tsai@mediatek.com
+Content-Language: en-US
+From: Marek Szyprowski <m.szyprowski@samsung.com>
+In-Reply-To: <364d15bf-8d11-46af-bbc6-b4ae45618bf5@acm.org>
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <96c8fbf6840c71f29ebcf37d7ffc68f297601c8a.1773733017.git.xiaopei01@kylinos.cn>
+X-CMS-MailID: 20260318193211eucas1p15a3ea20acd532ad8553948323b0eb96c
+X-Msg-Generator: CA
+Content-Type: text/plain; charset="utf-8"
+X-RootMTR: 20260317171131eucas1p25dd55bf1aad6d5b310526d51885b3b7a
+X-EPHeader: CA
+X-CMS-RootMailID: 20260317171131eucas1p25dd55bf1aad6d5b310526d51885b3b7a
+References: <20260306054419.3816557-1-peter.wang@mediatek.com>
+	<CGME20260317171131eucas1p25dd55bf1aad6d5b310526d51885b3b7a@eucas1p2.samsung.com>
+	<1f88b91c-59e6-4347-84c2-50b7cf106c47@samsung.com>
+	<df1d0b3f-6822-4c49-aeea-fc513e2b05cb@acm.org>
+	<1b9db59c-f736-4c59-b37a-15a60cfa4f3e@samsung.com>
+	<364d15bf-8d11-46af-bbc6-b4ae45618bf5@acm.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260318_190240_004477_CDCE487A 
-X-CRM114-Status: GOOD (  10.93  )
+X-CRM114-CacheID: sfid-20260318_123221_389076_7DDB7B80 
+X-CRM114-Status: GOOD (  15.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,53 +92,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Pei,
+On 18.03.2026 18:32, Bart Van Assche wrote:
+> On 3/18/26 10:13 AM, Marek Szyprowski wrote:
+>> On 18.03.2026 16:50, Bart Van Assche wrote:
+>>> On 3/17/26 10:11 AM, Marek Szyprowski wrote:
+>>>> This patch landed in linux-next as commit 6475cfb81fc4 ("scsi: ufs:
+>>>> core: Avoid IRQ thread wakeup during active UIC command"). In my 
+>>>> tests I
+>>>> found that it causes the following regression on QCom RB5 board
+>>>> (arch/arm64/boot/dts/qcom/qrb5165-rb5.dts):
+>>>>
+>>>> =============================
+>>>> [ BUG: Invalid wait context ]
+>>>> 7.0.0-rc4-next-20260316 #16535 Not tainted
+>>>> -----------------------------
+>>>> swapper/0/0 is trying to lock:
+>>>> ffff000089f58048 (shost->host_lock){....}-{3:3}, at:
+>>>
+>>> This line is a mystery to me. Are there perhaps any local changes in
+>>> your kernel tree on top of linux-next? I haven't been able to find the
+>>> text "shost->host_lock" in the UIC completion path.
+>>
+>> I don't have any local changes, code is at commit 6475cfb81fc4. After
+>> looking at the code this 'shost' indeed looks a bit mysterious, but
+>> maybe it got that name after some inlining or code optimization.
+>>
+>>> Instead, this is
+>>> what I found:
+>>>
+>>>      guard(spinlock_irqsave)(hba->host->host_lock);
+>>>
+>>>> ufshcd_sl_intr+0x3c0/0x6b4
+>>>
+>>> Can you please help with translating this information into a line
+>>> number? Tools like addr2line, llvm-addr2line or llvm-objdump -d -l -S
+>>> can be used to perform such a conversion.
+>>
+>> ufshcd_clk_scaling_allow() in drivers/ufs/core/ufshcd.c:6492 (code
+>> checkout at git commit 6475cfb81fc4)
+>
+> Hi Marek,
+>
+> I haven't been able to find any call chain from ufshcd_sl_intr() into
+> ufshcd_clk_scaling_allow(). Am I perhaps overlooking something?
 
-kernel test robot noticed the following build warnings:
+I must have mixed something while calculating offsets for addr2line. I 
+checked again and I found that there is already a script doing that. 
+I've recompiled kernel with -Os (assuming that this way less code will 
+be inlined) and this is the result:
 
-[auto build test WARNING on broonie-spi/for-next]
-[also build test WARNING on next-20260318]
-[cannot apply to atorgue-stm32/stm32-next rockchip/for-next xilinx-xlnx/master clk/clk-next shawnguo/for-next soc/for-next linus/master v7.0-rc4]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+=============================
+[ BUG: Invalid wait context ]
+7.0.0-rc1+ #16537 Not tainted
+-----------------------------
+swapper/0/0 is trying to lock:
+ffff000080a04048 (shost->host_lock){....}-{3:3}, at: 
+ufshcd_sl_intr+0x50/0x598
+other info that might help us debug this:
+context-{2:2}
+no locks held by swapper/0/0.
+stack backtrace:
+CPU: 0 UID: 0 PID: 0 Comm: swapper/0 Not tainted 7.0.0-rc1+ #16537 PREEMPT
+Hardware name: Qualcomm Technologies, Inc. Robotics RB5 (DT)
+Call trace:
+  show_stack+0x18/0x24 (C)
+  dump_stack_lvl+0x6c/0x94
+  dump_stack+0x18/0x24
+  __lock_acquire+0x3f8/0x10ac
+  lock_acquire+0x29c/0x2ec
+  _raw_spin_lock_irqsave+0x58/0x78
+  ufshcd_sl_intr+0x50/0x598
+  ufshcd_intr+0x64/0x78
+  __handle_irq_event_percpu+0x1d4/0x354
+  handle_irq_event_percpu+0x18/0x4c
+  handle_irq_event+0x48/0x90
+  handle_fasteoi_irq+0xc4/0xe8
+  handle_irq_desc+0x48/0x58
+  generic_handle_domain_irq+0x18/0x24
+  gic_handle_irq+0xa4/0x108
+  call_on_irq_stack+0x30/0x48
+  do_interrupt_handler+0x88/0x94
+  el1_interrupt+0x3c/0x60
+  el1h_64_irq_handler+0x18/0x24
+  el1h_64_irq+0x6c/0x70
+  cpuidle_enter_state+0x1c0/0x2f0 (P)
+  cpuidle_enter+0x38/0x50
+  do_idle+0x23c/0x260
+  cpu_startup_entry+0x34/0x38
+  kernel_init+0x0/0x12c
+  start_kernel+0x7e4/0x7f0
+  __primary_switched+0x88/0x90
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Pei-Xiao/spi-axiado-Use-helper-function-devm_clk_get_enabled/20260318-110300
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
-patch link:    https://lore.kernel.org/r/96c8fbf6840c71f29ebcf37d7ffc68f297601c8a.1773733017.git.xiaopei01%40kylinos.cn
-patch subject: [PATCH v3 11/17] spi: st: Use helper function devm_clk_get_enabled()
-config: nios2-allmodconfig (https://download.01.org/0day-ci/archive/20260319/202603190255.yJJehgKm-lkp@intel.com/config)
-compiler: nios2-linux-gcc (GCC) 11.5.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260319/202603190255.yJJehgKm-lkp@intel.com/reproduce)
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202603190255.yJJehgKm-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   drivers/spi/spi-st-ssc4.c: In function 'spi_st_remove':
->> drivers/spi/spi-st-ssc4.c:366:24: warning: unused variable 'spi_st' [-Wunused-variable]
-     366 |         struct spi_st *spi_st = spi_controller_get_devdata(host);
-         |                        ^~~~~~
+# ./scripts/faddr2line vmlinux "ufshcd_sl_intr+0x50/0x598"
+ufshcd_sl_intr+0x50/0x598:
+ufshcd_uic_cmd_compl at drivers/ufs/core/ufshcd.c:5570
+(inlined by) ufshcd_sl_intr at drivers/ufs/core/ufshcd.c:7144
 
 
-vim +/spi_st +366 drivers/spi/spi-st-ssc4.c
-
-9e862375c5420a Lee Jones        2014-12-09  362  
-2dd42da0b479ff Uwe Kleine-K�nig 2023-03-03  363  static void spi_st_remove(struct platform_device *pdev)
-9e862375c5420a Lee Jones        2014-12-09  364  {
-e6b7e64cb11966 Yang Yingliang   2023-11-28  365  	struct spi_controller *host = platform_get_drvdata(pdev);
-e6b7e64cb11966 Yang Yingliang   2023-11-28 @366  	struct spi_st *spi_st = spi_controller_get_devdata(host);
-9e862375c5420a Lee Jones        2014-12-09  367  
-cd050abeba2a95 Chuhong Yuan     2019-11-18  368  	pm_runtime_disable(&pdev->dev);
-cd050abeba2a95 Chuhong Yuan     2019-11-18  369  
-9e862375c5420a Lee Jones        2014-12-09  370  	pinctrl_pm_select_sleep_state(&pdev->dev);
-9e862375c5420a Lee Jones        2014-12-09  371  }
-9e862375c5420a Lee Jones        2014-12-09  372  
-
+Best regards
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Marek Szyprowski, PhD
+Samsung R&D Institute Poland
+
 
