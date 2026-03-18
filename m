@@ -4,98 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82010103E176
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 13:13:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE8B2103E173
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 13:18:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=a38AgtgrSL45qQSDWrOkOi7hxNfM+B9cZh1RZkzmCEM=; b=E0Gj2tNAMa++4t9fgrwz2NzPuz
-	hYKZIMz1v29N39ZyJztlmc97vfevCBuKYLSLIL1Ms6ILJK+Zy3sRS6rUu9qzSN8TmDgAarWCUzso2
-	TuxS8GVXWr5JLmIjcJdEEl2CL7I/0GaZirEdGVkGpprGBFSiUW78vkINnzG9v27mdrNzYpnLgr6Ez
-	XuQw9SE+X3sjr/+r7Vd8vp/Y1NKrf8zYihfAOZ3Kpi4NbJrrT8y82zSObUqzgHo3gkjDSg6ct8Ydu
-	SPUIICKz5VHyGyxkEF0FVPSnPtI8SHTisLrYtJXNPPSRqpuhQYusVBrawg9tzHOr6vLMHtbOSf5Zb
-	pR9zhmww==;
+	bh=F+UN9HIXOUxuFgcjf3rxpjrFOJaR3ROfCMIjHMDcM48=; b=Jo7ixeZAXnXga7bqvgbzUWsD6U
+	8DMEDwSHY2HuHQ5YJEs2RKSErq+f8N/h8sOcRH+xlCAYJMSzwtIXd6QxC8TvY0xFc6KnaRD+OVrth
+	GvknNHhamWkXOQqMNB3iOKyzEDjWiDUnc25daXIXXpCPkbC0V+YARTMdF8OzoyVLeJ+hPntVOegHf
+	nKwtPlPAjQt11myLRKyJdJ9JRW5Hi7cEGszG66RuqUJwFsXvBQ78uUm+STqOIgcGLJ0Bsc8DoO+js
+	ZO18kl1YxzOCAcDmU8k4RibRR5vxUyeW54e8Dt1SWhYKhAJABvYD1fPuvMU5Zt73ApbjPq9n7AwhD
+	RJ6PM8Ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2qhp-00000008SKU-1qL2;
-	Wed, 18 Mar 2026 13:13:01 +0000
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+	id 1w2qnU-00000008T38-1S9v;
+	Wed, 18 Mar 2026 13:18:52 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2qhn-00000008SJz-10n3
-	for linux-mediatek@lists.infradead.org;
-	Wed, 18 Mar 2026 13:13:00 +0000
-Received: by mail-pj1-x1033.google.com with SMTP id 98e67ed59e1d1-35b97ed057cso2208290a91.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 18 Mar 2026 06:12:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1773839578; x=1774444378; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=a38AgtgrSL45qQSDWrOkOi7hxNfM+B9cZh1RZkzmCEM=;
-        b=Bcc/tzRQf20H2JApn3idCESAQINQM0yPUQu0npgG8r4Rx5n/7zcoXwdth69DfZc/Gg
-         mXeeLJKdCUesrkohUOTr2lwMaOUa68/h362CuBLJo2fpZpGjBFjONmyV6Ec3erooVqoC
-         3vhM28AFPOzu1BKbRvv+sj6zxJi5n3asIFV0laYHI/MLnuClaNtGVCKCXrJC6LAQOCTs
-         di8IRi99TD5+Rib/CPPdx1wuQoSk0fkljdFihVe5Yv18sA7FYIXnBJJJx9fcvh0Mxwhs
-         HC/5Z6Yr5QMrjfOT2Zogx+NDJJk5u4WN7QOZrPrWrxtZUjDt1PNrb2QwNki7OT8KYXgg
-         WMhg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1773839578; x=1774444378;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=a38AgtgrSL45qQSDWrOkOi7hxNfM+B9cZh1RZkzmCEM=;
-        b=GxhnLV27z+W6Sx+jOBhHEtnr8YVfcmQoshLtVdVlXBqr9M3uEdiCoKsK2JVo+uqf+u
-         qYcRGtxK+EsA+MgsoFrJLYXVtancDcB/lojb3S8HTlggb6kfgG2OC7vfLyIIviAz7fME
-         Y/GqIYcou3bN8TlQamDyIC8RPyjM3qlm5gPktugLnRmtnpa9dG4qpOKYC2NAqUVw/r8z
-         x71XfbZ7VT/eqfp0V0AUgxMAD58Fk7x0Ij2GcCEK8EoxmLVBgyr7dga+RJuRRtTpi9YL
-         BglqnvI3msBXVxqlMXPjVW5yqeNlzKBWdzC9c7UyipyHBXltYx9t036QlIiMUSSK5KAo
-         GItQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUSkM2ts9aVOHRcPJC/41HBhmanyvoVm5A6H8bbXmFwL24Tdp7aUYjA0mpBhnJ2EGtRtHbcIKtL4tvD/mi8ZA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw4tMcY30EGjVm8rPxurYAMVvVqmy8FksrGqBAEQqoEA79rfzTO
-	z2ow/G1IWuZ/T+pnPKwLxWdFt65oEuFCLeIxEb7Wo2m3aRa8RLN/xA4d
-X-Gm-Gg: ATEYQzwDT3iryhakEuip5KhVvK68hb/MRUnf9QuJAC/3QzR3Sx8aeQ1URY4+HAuAHfF
-	VciZ2U3djPGThKjTEojAgPmVv0Y7NPHclWad0Mwvcz6uZ61fotdp2IiSKIuoYggii1aSxqAE7sY
-	CkRbpKfNFMsCffZooMVslAEpILunnLrBSLpTZClxx7H4e1vgsvxggHCRLi7fno0gr47YstxklFE
-	qslrVFheeq+OiA88NGh1VIcng+FyLkmM4dQCiJjtILn+TOrUXbnmVmjCMTGuIUbn7zj2CVfs1LM
-	m31oyYTIR/aSSLf4Qyrslui1vQ26bOcA8k1xEX8Mo5T9JWvdlHkk5DSkhznIhRACJWGXuhtsdwc
-	AuLpQBqAbXsL+2shxJnfxgeoQpASQJRD7OWMO5fPxKL5GDe/nGRnkcUaY9QUdxkl7SPfpecclGj
-	+Gpc3TmD+PtmKCSZE6gTaP2WlghGvDZIrYdH5voSo=
-X-Received: by 2002:a17:90b:1d52:b0:35b:982a:28c7 with SMTP id 98e67ed59e1d1-35bb9e3cf19mr3027930a91.5.1773839578116;
-        Wed, 18 Mar 2026 06:12:58 -0700 (PDT)
-Received: from DESKTOP-TIT0J8O.localdomain ([49.47.198.15])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-35bada5c760sm6280105a91.5.2026.03.18.06.12.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Mar 2026 06:12:57 -0700 (PDT)
-Date: Wed, 18 Mar 2026 17:12:49 +0400
-From: Ahmed Naseef <naseefkm@gmail.com>
-To: Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>
-Cc: Bjorn Helgaas <helgaas@kernel.org>, Caleb James DeLisle <cjd@cjdns.fr>,
-	linux-pci@vger.kernel.org, linux-mips@vger.kernel.org,
-	ryder.lee@mediatek.com, bhelgaas@google.com, lpieralisi@kernel.org,
-	kwilczynski@kernel.org, mani@kernel.org, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, ansuelsmth@gmail.com,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	LKML <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v2 3/3] PCI: Skip bridge window reads when window is not
- supported
-Message-ID: <abqk0VUyLF+iqVXw@DESKTOP-TIT0J8O.localdomain>
-References: <20260316155157.679533-4-cjd@cjdns.fr>
- <20260317212908.GA109023@bhelgaas>
- <abpFjQJ5RNcbzbmz@DESKTOP-TIT0J8O.localdomain>
- <fc927b7f-a820-d3c2-581c-ab6db562bcfb@linux.intel.com>
- <2d47f78f-22cf-78c8-8312-3ffb095d2693@linux.intel.com>
+	id 1w2qnR-00000008T2b-1Gtc;
+	Wed, 18 Mar 2026 13:18:51 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1773839912; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=YhujDzt/e0NjTtUyUXuzSY/Le6GvVrWdWeqnIEUxUBJVDHHqOaXNw/LA0j4X+MGOYYy1XcJU+TP0kHv5ptgGHGk2d5PJE+mgFzbWbVe0jPsqKfANd706ZoFimCYvPcRe8fl9dVKRoYd4xyhg1CrohfmvsTXdSjmVDpDONAB7Zv8=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1773839912; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=F+UN9HIXOUxuFgcjf3rxpjrFOJaR3ROfCMIjHMDcM48=; 
+	b=Xa/Osxjanr0Rbjzg0qLHSn0A5Kb3hT9Ks8/RM0xcqlD2QIbcG4+rAxu0K/Xy6hjBicA2WOyDwh0jBg7x06sNIguz2hrsi6s9k2MDhuEWBlcBGlQkdkcZYWwTItStCnoAXKs5/E8ukEjnuul8/FKbxhQhwkHNB5SgAd2CHego3wQ=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nfraprado@collabora.com;
+	dmarc=pass header.from=<nfraprado@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1773839912;
+	s=zohomail; d=collabora.com; i=nfraprado@collabora.com;
+	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
+	bh=F+UN9HIXOUxuFgcjf3rxpjrFOJaR3ROfCMIjHMDcM48=;
+	b=Bcv4TD5vTib4Vxi8AEOmlIrchwN8fxpCPAoBQ1/RGsAy8nFU3t1zZD98A+p69tPp
+	bUPND2gv/kXWT/VMfIMlEUxSpWeUmXon7kTsuI8JYtIGs08U6EQ6hMNZBQ+8JFPMxzZ
+	ZdNFMmPC6JGK/Df8lZYjKX1FuS7oQf8h3opycaPA=
+Received: by mx.zohomail.com with SMTPS id 1773839909989805.2310598881032;
+	Wed, 18 Mar 2026 06:18:29 -0700 (PDT)
+Message-ID: <698d1d3f41d7931e6447545394757f71b9ebc597.camel@collabora.com>
+Subject: Re: [PATCH 10/11] drm/mediatek: ovl: Enable support for R2R Color
+ Space Conversion
+From: =?ISO-8859-1?Q?N=EDcolas?= "F. R. A. Prado" <nfraprado@collabora.com>
+To: CK Hu =?UTF-8?Q?=28=E8=83=A1=E4=BF=8A=E5=85=89=29?=
+ <ck.hu@mediatek.com>,  "tzimmermann@suse.de"	 <tzimmermann@suse.de>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,  "simona@ffwll.ch"	
+ <simona@ffwll.ch>, AngeloGioacchino Del Regno	
+ <angelogioacchino.delregno@collabora.com>, "airlied@gmail.com"	
+ <airlied@gmail.com>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, 
+ "maarten.lankhorst@linux.intel.com"	 <maarten.lankhorst@linux.intel.com>,
+ "mripard@kernel.org" <mripard@kernel.org>,  "matthias.bgg@gmail.com"	
+ <matthias.bgg@gmail.com>
+Cc: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, 
+ "linux-mediatek@lists.infradead.org"	 <linux-mediatek@lists.infradead.org>,
+ Daniel Stone <daniels@collabora.com>, 
+ "linux-arm-kernel@lists.infradead.org"	
+ <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org"	
+ <linux-kernel@vger.kernel.org>, Ariel D'Alessandro	
+ <ariel.dalessandro@collabora.com>, "kernel@collabora.com"
+ <kernel@collabora.com>
+Date: Wed, 18 Mar 2026 09:18:28 -0400
+In-Reply-To: <2ce1ed408fd87366d3abc1e79bc3d1dc055af91b.camel@mediatek.com>
+References: <20251223-mtk-ovl-pre-blend-colorops-v1-0-0cb99bd0ab33@collabora.com>
+		 <20251223-mtk-ovl-pre-blend-colorops-v1-10-0cb99bd0ab33@collabora.com>
+	 <2ce1ed408fd87366d3abc1e79bc3d1dc055af91b.camel@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: base64
+User-Agent: Evolution 3.56.2-8 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <2d47f78f-22cf-78c8-8312-3ffb095d2693@linux.intel.com>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260318_061259_286823_E81F1FD0 
-X-CRM114-Status: GOOD (  37.99  )
+X-CRM114-CacheID: sfid-20260318_061849_406314_BD6E16C4 
+X-CRM114-Status: GOOD (  24.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,110 +94,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 18, 2026 at 02:18:22PM +0200, Ilpo Järvinen wrote:
-> On Wed, 18 Mar 2026, Ilpo Järvinen wrote:
-> 
-> > On Wed, 18 Mar 2026, Ahmed Naseef wrote:
-> > 
-> > > On Tue, Mar 17, 2026 at 04:29:08PM -0500, Bjorn Helgaas wrote:
-> > > > On Mon, Mar 16, 2026 at 03:51:57PM +0000, Caleb James DeLisle wrote:
-> > > > > pci_read_bridge_io() and pci_read_bridge_mmio_pref() read bridge window
-> > > > > registers unconditionally. If the registers are hardwired to zero
-> > > > > (not implemented), both base and limit will be 0. Since (0 <= 0) is
-> > > > > true, a bogus window [mem 0x00000000-0x000fffff] or [io 0x0000-0x0fff]
-> > > > > gets created.
-> > > > > 
-> > > > > pci_read_bridge_windows() already detects unsupported windows by
-> > > > > testing register writability and sets io_window/pref_window flags
-> > > > > accordingly. Check these flags at the start of pci_read_bridge_io()
-> > > > > and pci_read_bridge_mmio_pref() to skip reading registers when the
-> > > > > window is not supported.
-> > > > 
-> > > > The fundamental problem here is that assigned space to a bridge window
-> > > > that isn't implemented.  I wish we understood the connection between
-> > > > this "read window" path and the assignment path.
-> > > > 
-> > > > Maybe this patch fixes it because we enter pci_read_bridge_mmio_pref()
-> > > > with res->flags being NULL, and we set IORESOURCE_MEM |
-> > > > IORESOURCE_PREFETCH again, which makes it look like we can assign
-> > > > space for it?
-> > > 
-> > > Yes, that's exactly right.
-> > > 
-> > > > 
-> > > > If that's the case, I think it would improve the commit log to mention
-> > > > the actual mechanism by which we avoid assigning space.
-> > > > 
-> > > 
-> > > How about this:
-> > > 
-> > >   pci_read_bridge_io() and pci_read_bridge_mmio_pref() read
-> > >   bridge window registers unconditionally. If the registers
-> > >   are hardwired to zero (not implemented), both base and limit
-> > >   will be 0. Since (0 <= 0) is true, these functions set
-> > >   IORESOURCE_IO or IORESOURCE_MEM | IORESOURCE_PREFETCH on
-> > >   the bridge resource. This causes the allocator to assign
-> > >   space for the window even though the hardware can't
-> > >   implement it.
-> > > 
-> > >   pci_read_bridge_windows() already detects unsupported windows
-> > >   by testing register writability and sets io_window/pref_window
-> > >   flags accordingly. Check these flags at the start of
-> > >   pci_read_bridge_io() and pci_read_bridge_mmio_pref() to skip
-> > >   reading registers when the window is not supported, so the
-> > >   resource flags remain clear and the allocator does not assign
-> > >   space for non-existent windows.
-> > 
-> > At least to me the proposed text reads much better than the original.
-> > The original text required reading between the lines to connect the dots, 
-> > whereas this new one clearly explains what causes what.
-> 
-> Hi again,
-> 
-> Reading the code I think the entire 0 <= 0 part is a red herring 
-> when it comes to the current code, the flags are always set by the 
-> functions!
-> 
-> The code would only add IORESOURCE_UNSET | IORESOURCE_DISABLED if the 
-> base <= limit check fails but that's still wrong because it says to the 
-> resource allocation code that it can enable that bridge window if it needs 
-> to.
-> 
-> Prior to the commit 8278c6914306 ("PCI: Preserve bridge window resource 
-> type flags") the base <= limit check did play some role (maybe the 
-> original commit message was based on some older tree than the most current 
-> one).
-
-Thank you for catching that. We were testing on LTS kernel
-6.12 (downstream OpenWrt) where the commit 8278c6914306
-("PCI: Preserve bridge window resource type flags") is not
-present . In that tree the flags are still only set inside
-the base <= limit check, which is why the commit message
-focused on that path.
-  
-For current mainline, how about this for the commit message:
-
-  pci_read_bridge_io() and pci_read_bridge_mmio_pref()
-  unconditionally set resource type flags (IORESOURCE_IO
-  or IORESOURCE_MEM | IORESOURCE_PREFETCH) when reading
-  bridge window registers. For windows that are not
-  implemented in hardware, this causes the allocator to
-  assign space for a window that doesn't exist.
-
-  pci_read_bridge_windows() already detects unsupported
-  windows by testing register writability and sets
-  io_window/pref_window flags accordingly. Check these
-  flags at the start of pci_read_bridge_io() and
-  pci_read_bridge_mmio_pref() to skip them entirely when
-  the window is not supported, so the resource flags
-  remain clear and the allocator does not assign space
-  for non-existent windows.
-
-
-Ahmed Naseef
-
-> 
-> -- 
->  i.
+T24gVHVlLCAyMDI2LTAzLTAzIGF0IDA3OjE2ICswMDAwLCBDSyBIdSAo6IOh5L+K5YWJKSB3cm90
+ZToKPiBPbiBUdWUsIDIwMjUtMTItMjMgYXQgMTY6NDQgLTAzMDAsIE7DrWNvbGFzIEYuIFIuIEEu
+IFByYWRvIHdyb3RlOgo+ID4gRXh0ZXJuYWwgZW1haWwgOiBQbGVhc2UgZG8gbm90IGNsaWNrIGxp
+bmtzIG9yIG9wZW4gYXR0YWNobWVudHMKPiA+IHVudGlsIHlvdSBoYXZlIHZlcmlmaWVkIHRoZSBz
+ZW5kZXIgb3IgdGhlIGNvbnRlbnQuCj4gPiAKPiA+IAo+ID4gVGhlIE9WTCBoYXJkd2FyZSBhbGxv
+d3MgYXBwbHlpbmcgYSAzeDMgbWF0cml4IHRyYW5zZm9ybWF0aW9uIGZvcgo+ID4gZWFjaAo+ID4g
+bGF5ZXIgdGhyb3VnaCB0aGUgJ1JHQiB0byBSR0IgQ29sb3IgU3BhY2UgQ29udmVyc2lvbicgKFIy
+UiBDU0MpCj4gPiBzZXR0aW5nLgo+ID4gSW1wbGVtZW50IHN1cHBvcnQgZm9yIGl0IGFuZCBleHBv
+c2UgaXQgYXMgYSBjb2xvcm9wIHRocm91Z2ggdGhlIERSTQo+ID4gcGxhbmUgY29sb3IgcGlwZWxp
+bmUgdUFQSS4KPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogTsOtY29sYXMgRi4gUi4gQS4gUHJhZG8g
+PG5mcmFwcmFkb0Bjb2xsYWJvcmEuY29tPgo+ID4gLS0tCj4gPiDCoGRyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZGlzcF9vdmwuYyB8IDU1Cj4gPiArKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKysrKy0KPiA+IMKgMSBmaWxlIGNoYW5nZWQsIDU0IGluc2VydGlvbnMoKyksIDEgZGVsZXRp
+b24oLSkKPiA+IAo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+ZGlzcF9vdmwuYwo+ID4gYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmMK
+PiA+IGluZGV4IGE3MDA5MmM3OTJhOS4uYzhhMmIxYjEzMDM1IDEwMDY0NAo+ID4gLS0tIGEvZHJp
+dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bC5jCj4gPiArKysgYi9kcml2ZXJzL2dw
+dS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmMKPiA+IEBAIC00LDYgKzQsNyBAQAo+ID4gwqAg
+Ki8KPiA+IAo+ID4gwqAjaW5jbHVkZSA8ZHJtL2RybV9ibGVuZC5oPgo+ID4gKyNpbmNsdWRlIDxk
+cm0vZHJtX2NvbG9yX21nbXQuaD4KPiA+IMKgI2luY2x1ZGUgPGRybS9kcm1fY29sb3JvcC5oPgo+
+ID4gwqAjaW5jbHVkZSA8ZHJtL2RybV9mb3VyY2MuaD4KPiA+IMKgI2luY2x1ZGUgPGRybS9kcm1f
+ZnJhbWVidWZmZXIuaD4KPiA+IEBAIC01Miw2ICs1Myw3IEBACj4gPiDCoCNkZWZpbmUgT1ZMX0NP
+Tl9DTFJGTVRfMTBfQklUwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqAgKDEpCj4gPiDCoCNkZWZpbmUgRElTUF9SRUdfT1ZMX1dDR19DRkcxwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAweDJkOAo+ID4gwqAjZGVmaW5lIElHQU1NQV9FTihs
+YXllcinCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqAgQklUKDAgKyA0ICoKPiA+IChsYXllcikpCj4gPiArI2RlZmluZSBDU0NfRU4obGF5
+ZXIpwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgIEJJVCgxICsgNCAqCj4gPiAobGF5ZXIpKQo+ID4gwqAjZGVmaW5lIEdBTU1B
+X0VOKGxheWVyKcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoAo+ID4gQklUKDIgKyA0ICogKGxheWVyKSkK
+PiA+IMKgI2RlZmluZSBESVNQX1JFR19PVkxfV0NHX0NGRzLCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgIDB4MmRjCj4gPiDCoCNkZWZpbmUgSUdBTU1BX01BU0sobGF5ZXIpwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAKPiA+IEdF
+Tk1BU0soKGxheWVyKSAqIDQgKyAxLCAobGF5ZXIpICogNCkKPiA+IEBAIC02Miw2ICs2NCw3IEBA
+Cj4gPiDCoCNkZWZpbmUgR0FNTUFfQlQ3MDnCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDEKPiA+IMKgI2RlZmluZSBH
+QU1NQV9CVDIwMjDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAyCj4gPiDCoCNkZWZpbmUgR0FNTUFfSExHwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqAgMwo+ID4gKyNkZWZpbmUgRElTUF9SRUdfT1ZMX1IyUl9QQVJBKGxheWVyKcKgwqDC
+oMKgwqDCoMKgwqDCoMKgICgweDUwMCArIChsYXllcikgKgo+ID4gMHg0MCkKPiA+IMKgI2RlZmlu
+ZSBESVNQX1JFR19PVkxfQUREUl9NVDgxNzPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDB4
+MGY0MAo+ID4gwqAjZGVmaW5lIERJU1BfUkVHX09WTF9BRERSKG92bCwgbinCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoCAoKG92bCktPmRhdGEtPmFkZHIKPiA+ICsgMHgyMCAqIChuKSkKPiA+IMKg
+I2RlZmluZSBESVNQX1JFR19PVkxfSERSX0FERFIob3ZsLCBuKcKgwqDCoMKgwqDCoMKgwqDCoCAo
+KG92bCktPmRhdGEtPmFkZHIKPiA+ICsgMHgyMCAqIChuKSArIDB4MDQpCj4gPiBAQCAtNTc5LDEx
+ICs1ODIsNDQgQEAgc3RhdGljIHZvaWQgbXRrX292bF9hcHBseV9pZ2FtbWEoc3RydWN0Cj4gPiBt
+dGtfZGlzcF9vdmwgKm92bCwgdW5zaWduZWQgaW50IGlkeCwKPiA+IMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgSUdBTU1BX0VOKGlkeCkpOwo+ID4g
+wqB9Cj4gPiAKPiA+ICtzdGF0aWMgdm9pZCBtdGtfb3ZsX3dyaXRlX3Iycl9wYXJhKHN0cnVjdCBt
+dGtfZGlzcF9vdmwgKm92bCwKPiA+IHVuc2lnbmVkIGludCBpZHgsCj4gPiArwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHN0
+cnVjdCBkcm1fY29sb3JfY3RtICpjdG0sCj4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHN0cnVjdCBjbWRxX3BrdCAq
+Y21kcV9wa3QpCj4gPiArewo+ID4gK8KgwqDCoMKgwqDCoCB1bnNpZ25lZCBpbnQgaTsKPiA+ICvC
+oMKgwqDCoMKgwqAgdTY0IHZhbDsKPiA+ICsKPiA+ICvCoMKgwqDCoMKgwqAgZm9yIChpID0gMDsg
+aSA8IEFSUkFZX1NJWkUoY3RtLT5tYXRyaXgpOyBpKyspIHsKPiA+ICvCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgIHZhbCA9IGRybV9jb2xvcl9jdG1fczMxXzMyX3RvX3FtX24oY3RtLT5tYXRy
+aXhbaV0sCj4gPiA1LCAxOCk7Cj4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBtdGtf
+ZGRwX3dyaXRlKGNtZHFfcGt0LCB2YWwsICZvdmwtPmNtZHFfcmVnLCBvdmwtCj4gPiA+cmVncywK
+PiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoCBESVNQX1JFR19PVkxfUjJSX1BBUkEoaWR4KSArIGkgKiA0KTsKPiA+ICvCoMKgwqDCoMKg
+wqAgfQo+ID4gK30KPiA+ICsKPiA+ICtzdGF0aWMgdm9pZCBtdGtfb3ZsX2FwcGx5X3Iycl9jc2Mo
+c3RydWN0IG10a19kaXNwX292bCAqb3ZsLAo+ID4gdW5zaWduZWQgaW50IGlkeCwKPiA+ICvCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgIHN0cnVjdCBkcm1fY29sb3JvcCAqY29sb3JvcCwKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHN0cnVjdCBjbWRx
+X3BrdCAqY21kcV9wa3QpCj4gPiArewo+ID4gK8KgwqDCoMKgwqDCoCBzdHJ1Y3QgZHJtX2NvbG9y
+X2N0bSAqY3RtOwo+ID4gKwo+ID4gK8KgwqDCoMKgwqDCoCBpZiAoY29sb3JvcC0+c3RhdGUtPmRh
+dGEgJiYgY29sb3JvcC0+c3RhdGUtPmRhdGEtPmRhdGEpIHsKPiA+ICvCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgIGN0bSA9IChzdHJ1Y3QgZHJtX2NvbG9yX2N0bSAqKWNvbG9yb3AtPnN0YXRl
+LT5kYXRhLQo+ID4gPmRhdGE7Cj4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBtdGtf
+b3ZsX3dyaXRlX3Iycl9wYXJhKG92bCwgaWR4LCBjdG0sIGNtZHFfcGt0KTsKPiA+ICvCoMKgwqDC
+oMKgwqAgfQo+ID4gKwo+IAo+IElmIGJ5cGFzcyBpbXBseSBjb2xvcm9wLT5zdGF0ZS0+ZGF0YS0+
+ZGF0YSBpcyBOVUxMLCBub3RoaW5nIG5lZWQgdG8KPiBjaGFuZ2UuCj4gSWYgYnlwYXNzIGRvZXMg
+bm90IGltcGx5IGNvbG9yb3AtPnN0YXRlLT5kYXRhLT5kYXRhIGlzIE5VTEwsIEkgd291bGQKPiBs
+aWtlIHRvIGRpc2FibGUgQ1NDIGZpcnN0IHRoZW4gY2xlYXIgcjJyIHBhcmFtZXRlci4KCmJ5cGFz
+cyBkb2VzIG5vdCBpbXBseSBOVUxMIGRhdGEuIEJ1dCBldmVuIHdoZW4gc2V0dGluZyB0aGUgQ1ND
+IGJsb2NrIHRvCmJlIGJ5cGFzc2VkLCB3ZSBkb24ndCB3YW50IHRvIGNsZWFyIGl0cyBwYXJhbWV0
+ZXJzLCB3ZSB3YW50IHRvIHNldCB0aGUKcGFyYW1ldGVycyBwYXNzZWQgYnkgdXNlcnNwYWNlIGlu
+IHRoaXMgYXRvbWljIGNvbW1pdCwgaWYgYW55LCBhbmQgaWYKbm90IHdlIHdhbnQgdG8ga2VlcCB0
+aGUgY3VycmVudCBwYXJhbWV0ZXJzLCBpbiBjYXNlIHRoZXkgaGF2ZSBiZWVuIHNldAppbiBhIHBy
+ZXZpb3VzIGF0b21pYyBjb21taXQsIHNvIHRoYXQgYSBmdXR1cmUgY29tbWl0IHNldHRpbmcgYnlw
+YXNzPTAKd2lsbCBoYXZlIHRoZSBwYXJhbWV0ZXJzIHByZXZpb3VzbHkgc2V0LCB3aXRob3V0IGhh
+dmluZyB0byBwYXNzIHRoZW0KYWdhaW4uCgpUaGFua3MsCk7DrWNvbGFzCg==
 
 
