@@ -4,79 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1855103E198
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 15:06:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D7A5103E19D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 15:51:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T0CvuPfD7COIo+8HMLflUkIZ3jbTrFEH+1E4Pt2c8nQ=; b=3IsxA/X1aQDijZhO4H2RCwfuWi
-	l3dCOVgy+ZaFm0rIFvECA8/i+wf+iYuEn4ktLrHcTKVrxAxuMR/vl+AyJXgFFiiSmLXM4u0sw9yrR
-	w+pa1aFdTSN0vLkzzDArBvpcaVO5aIPQv1JrIbwjKfTO3Q3P/7jOcJmHpQHXneEZmOt1KqH6NSYUr
-	lhWSlXEfYRjkbuFUmvaCtrGAxFln4hpynzpBTTaW+kNHwi74478O66eSX+Zj/Q5MhLj9vZzd17CmG
-	fpK5Ln2ftpcn9v4Ml2U2j7wMW0QwWD/s6Z+Z5gyqpZa3B9veMzBnhNAxJnBjP/LEwdSBbEIYSUAb1
-	bQcmKwgg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ObCIHIt+y1waPC5OHqwhFDJKk36uZG6g9VeggOOMmyo=; b=WYB/+syaN2yK+qf6OAc3T9g4l3
+	Cd87PdXBo80cbwcqATVgHzVJVW6x4wjmjWptx3nBXwkpat8Upe5LWm6ngPnr6Etlm6+bbqdbmIB6F
+	aZfT7fk0iffJnTqQmJhoDNN9m9Q2y7vML9/+oZF7D4iOMiySNuGJhMHDYcapsuPa9FGkVs6cM+77e
+	6ecoMsFsn+igmZvejlZBejVbqagbPbXqi14UWve+SFRVpODe7smzhDjcFhbikgC00oRO/4D6a3hD+
+	7cSmMdf1QjHnQZZLEBTU155nr9GqD+8+uRhAF7+fHb2LOuIUiKafrC2WITFsGPTmkPBYVk88je8sW
+	Wt5niqeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2sTR-00000008egq-3aya;
-	Wed, 18 Mar 2026 15:06:17 +0000
-Received: from mgamail.intel.com ([198.175.65.20])
+	id 1w2tAr-00000008lVh-2VV3;
+	Wed, 18 Mar 2026 15:51:09 +0000
+Received: from 011.lax.mailroute.net ([199.89.1.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2sTN-00000008efv-43l9;
-	Wed, 18 Mar 2026 15:06:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1773846374; x=1805382374;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=4mKNZGsMnx96h+U53BOOHWYmauvrjAENdqFmFNmU85o=;
-  b=QX8BqEsoSg7/cWcxRA/J1PeInvxNe74oOXZ1XQHzpF23LDVWVc4lcy2O
-   aRP983VpaIa7zK8G87i6bcruWdbiM38B4vKfWKHPj0nUnUsHdb8FKEZ69
-   9rq2darau/tp7F83DsnAfrwtE9ivUAYEmHNRtTch70kCyHjWX15ujI4sx
-   0guK16mVDzGsXJ52h/GHHhSufS1YdT0KY7cT+nuHZGWZgNtoCOb8Mpawz
-   oBgQPIUfuLSEg/U3ADaVJRd7dc2n93hIgJYI0a7CAu+Ggk+WCsJSrTY8q
-   0spjIb9nyU92PY7rkLptN7WGcf2ZFlt0mqbfNIcVVBENH0ne77Gd/4TWS
-   Q==;
-X-CSE-ConnectionGUID: uCimlx0JTr2o2FlJnfAITQ==
-X-CSE-MsgGUID: 75dHdsk6R56fKf8pEQfVJA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11733"; a="74601746"
-X-IronPort-AV: E=Sophos;i="6.23,127,1770624000"; 
-   d="scan'208";a="74601746"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
-  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Mar 2026 08:06:08 -0700
-X-CSE-ConnectionGUID: 45FZNnEETzigI3hiwWOn+w==
-X-CSE-MsgGUID: 9Lplwp4OTDGMa1328tMtMg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,127,1770624000"; 
-   d="scan'208";a="227341270"
-Received: from lkp-server01.sh.intel.com (HELO 63737dd503cb) ([10.239.97.150])
-  by fmviesa005.fm.intel.com with ESMTP; 18 Mar 2026 08:06:04 -0700
-Received: from kbuild by 63737dd503cb with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1w2sTC-0000000031t-0fMK;
-	Wed, 18 Mar 2026 15:06:02 +0000
-Date: Wed, 18 Mar 2026 23:05:24 +0800
-From: kernel test robot <lkp@intel.com>
-To: Pei Xiao <xiaopei01@kylinos.cn>, linux-spi@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	imx@lists.linux.dev, openbmc@lists.ozlabs.org,
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com, broonie@kernel.org
-Cc: oe-kbuild-all@lists.linux.dev, Pei Xiao <xiaopei01@kylinos.cn>
-Subject: Re: [PATCH v3 01/17] spi: axiado: Use helper function
- devm_clk_get_enabled()
-Message-ID: <202603182309.Rj2JxGYZ-lkp@intel.com>
-References: <a78f25f1b15b90121e9723ecb5bd606bbb1868d4.1773733017.git.xiaopei01@kylinos.cn>
+	id 1w2tAn-00000008lMN-4ACk
+	for linux-mediatek@lists.infradead.org;
+	Wed, 18 Mar 2026 15:51:07 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 011.lax.mailroute.net (Postfix) with ESMTP id 4fbYFz2D2bz1XLyhK;
+	Wed, 18 Mar 2026 15:51:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1773849043; x=1776441044; bh=ObCIHIt+y1waPC5OHqwhFDJK
+	k36uZG6g9VeggOOMmyo=; b=phtHDDPAlPO0w3tQCoex29e6eplm/NbfToZxFsg9
+	qhAHTYduf98uq70MgDTUKP6aSu5ncicptLKzbPoyoASRTXVZ5b2VIPbnx+mxMPwK
+	gU4/GSVk6W9GiaxDKKkRfh7LpIGhohot2fTgRqsddT5ZtdWmuyYyCCAMcKli36KV
+	RJyyRawKojCcPbgd5TPoK45DvTQ6ZRzBIOKs3KGEgfr0NRiWQnYqp/gvNK5ZS0Gq
+	axy+SiVQt4s0b5ZxEGGIZJM2oht6Ti3jHia3YUXvQ5TkIyGRrI9xb3+nht7m3zJv
+	MPSBZJjtvSIES/v+haYEFxemqtlTUw50uY9Ihm+rUCfSKQ==
+X-Virus-Scanned: by MailRoute
+Received: from 011.lax.mailroute.net ([127.0.0.1])
+ by localhost (011.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id gpOWt2FBNAJu; Wed, 18 Mar 2026 15:50:43 +0000 (UTC)
+Received: from [100.119.48.131] (unknown [104.135.180.219])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 011.lax.mailroute.net (Postfix) with ESMTPSA id 4fbYFM4VsXz1XM6Ht;
+	Wed, 18 Mar 2026 15:50:30 +0000 (UTC)
+Message-ID: <df1d0b3f-6822-4c49-aeea-fc513e2b05cb@acm.org>
+Date: Wed, 18 Mar 2026 08:50:29 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <a78f25f1b15b90121e9723ecb5bd606bbb1868d4.1773733017.git.xiaopei01@kylinos.cn>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] ufs: core: Avoid IRQ thread wakeup during active UIC
+ command
+To: Marek Szyprowski <m.szyprowski@samsung.com>, peter.wang@mediatek.com,
+ linux-scsi@vger.kernel.org, martin.petersen@oracle.com,
+ avri.altman@sandisk.com, alim.akhtar@samsung.com, jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, tun-yu.yu@mediatek.com,
+ eddie.huang@mediatek.com, naomi.chu@mediatek.com, ed.tsai@mediatek.com
+References: <20260306054419.3816557-1-peter.wang@mediatek.com>
+ <CGME20260317171131eucas1p25dd55bf1aad6d5b310526d51885b3b7a@eucas1p2.samsung.com>
+ <1f88b91c-59e6-4347-84c2-50b7cf106c47@samsung.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <1f88b91c-59e6-4347-84c2-50b7cf106c47@samsung.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260318_080614_089374_C502A756 
-X-CRM114-Status: GOOD (  13.28  )
+X-CRM114-CacheID: sfid-20260318_085106_113411_CD9A8CF7 
+X-CRM114-Status: GOOD (  10.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,61 +90,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Pei,
+On 3/17/26 10:11 AM, Marek Szyprowski wrote:
+> This patch landed in linux-next as commit 6475cfb81fc4 ("scsi: ufs:
+> core: Avoid IRQ thread wakeup during active UIC command"). In my tests I
+> found that it causes the following regression on QCom RB5 board
+> (arch/arm64/boot/dts/qcom/qrb5165-rb5.dts):
+> 
+> =============================
+> [ BUG: Invalid wait context ]
+> 7.0.0-rc4-next-20260316 #16535 Not tainted
+> -----------------------------
+> swapper/0/0 is trying to lock:
+> ffff000089f58048 (shost->host_lock){....}-{3:3}, at:
 
-kernel test robot noticed the following build warnings:
+This line is a mystery to me. Are there perhaps any local changes in
+your kernel tree on top of linux-next? I haven't been able to find the
+text "shost->host_lock" in the UIC completion path. Instead, this is
+what I found:
 
-[auto build test WARNING on broonie-spi/for-next]
-[also build test WARNING on next-20260317]
-[cannot apply to atorgue-stm32/stm32-next rockchip/for-next xilinx-xlnx/master clk/clk-next shawnguo/for-next soc/for-next linus/master v7.0-rc4]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+	guard(spinlock_irqsave)(hba->host->host_lock);
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Pei-Xiao/spi-axiado-Use-helper-function-devm_clk_get_enabled/20260318-110300
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
-patch link:    https://lore.kernel.org/r/a78f25f1b15b90121e9723ecb5bd606bbb1868d4.1773733017.git.xiaopei01%40kylinos.cn
-patch subject: [PATCH v3 01/17] spi: axiado: Use helper function devm_clk_get_enabled()
-config: nios2-allmodconfig (https://download.01.org/0day-ci/archive/20260318/202603182309.Rj2JxGYZ-lkp@intel.com/config)
-compiler: nios2-linux-gcc (GCC) 11.5.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260318/202603182309.Rj2JxGYZ-lkp@intel.com/reproduce)
+> ufshcd_sl_intr+0x3c0/0x6b4
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202603182309.Rj2JxGYZ-lkp@intel.com/
+Can you please help with translating this information into a line
+number? Tools like addr2line, llvm-addr2line or llvm-objdump -d -l -S
+can be used to perform such a conversion.
 
-All warnings (new ones prefixed by >>):
+Thanks,
 
-   drivers/spi/spi-axiado.c: In function 'ax_spi_remove':
->> drivers/spi/spi-axiado.c:865:24: warning: unused variable 'xspi' [-Wunused-variable]
-     865 |         struct ax_spi *xspi = spi_controller_get_devdata(ctlr);
-         |                        ^~~~
-
-
-vim +/xspi +865 drivers/spi/spi-axiado.c
-
-e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  853  
-e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  854  /**
-e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  855   * ax_spi_remove - Remove method for the SPI driver
-e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  856   * @pdev:	Pointer to the platform_device structure
-e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  857   *
-e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  858   * This function is called if a device is physically removed from the system or
-e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  859   * if the driver module is being unloaded. It frees all resources allocated to
-e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  860   * the device.
-e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  861   */
-e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  862  static void ax_spi_remove(struct platform_device *pdev)
-e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  863  {
-e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  864  	struct spi_controller *ctlr = platform_get_drvdata(pdev);
-e75a6b00ad7962a Vladimir Moravcevic 2026-01-07 @865  	struct ax_spi *xspi = spi_controller_get_devdata(ctlr);
-e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  866  
-e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  867  	spi_unregister_controller(ctlr);
-e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  868  
-e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  869  	pm_runtime_set_suspended(&pdev->dev);
-e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  870  	pm_runtime_disable(&pdev->dev);
-e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  871  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Bart.
 
