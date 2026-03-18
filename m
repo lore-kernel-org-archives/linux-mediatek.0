@@ -4,77 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50F5B103E16B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 12:18:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86A0A103E170
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 12:30:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:Message-ID:In-Reply-To:Subject:cc:To:Date:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MCkisNku7jacA3sMKNA8TP6UM6cI9dgUNCy1+eoMhe4=; b=ac+7YdJ5THVhMEDmlGUeL6KI5o
-	zxBQrm5i2399yce0gTSxmcX5yiQYMvXoGDyKI2P+FzC4JhFs51HoGBL0RN//pjSIjgGwEXKgLbDJj
-	2PYBtOx/wrbrQlCyhaR2BP/kU9342HYP+Zlr2Du2DpeNyaxvvmhkrcRr/OC9NsgFy8/HBCcyn+WPZ
-	XQ6BEoTt8fUma/KbWsRARcGsChtBmn/CNBo+TEglfP0qKqJEQLio7juZlafeAKGtHU/AnzFXnplfP
-	Y9xkw78b821DE5de6aU2wYJbMCiKS4d9YpS6BOhDqsY0DLKfRn9vC7EtWjHfVtDYqsiRmYumgUTOz
-	VkGuzNTA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hP/rw8hSlAdGUj7ffcNAXTQEMrNqGOy1zArJH20VdTI=; b=5FTsax8ErIu4B2AjiFTIKuwcps
+	obm13Ma6E+Tr55u3jEBTPtwpwDsQf7wlgSnotCuw+M3fgkcAP0GB8C3wospQRyyiaSMv1V8qflOi7
+	PVTjfTW8Ovni5uQOJpJR6Y7xzAXkfjZOL6WXCByUk5UsA/Px4OeozbGRZBewFvK5nb30+Gke8DyGy
+	vw2orGS1sFeQCEO+iooburjI3gMZ0/dwufV01isUJ1m3oIZ4vhYGkSZQ53jReIkozHD46Doa1it85
+	E7v01ynimK6x9RI8469SbTy+Z0zDcR2BaAMIeBlD86V8p1JeJeY8BTqY480Ob5nilL7AfuRjez5Wm
+	xW6Xurnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2pr9-00000008NaI-29JK;
-	Wed, 18 Mar 2026 12:18:35 +0000
-Received: from mgamail.intel.com ([198.175.65.13])
+	id 1w2q2V-00000008OBo-216R;
+	Wed, 18 Mar 2026 12:30:19 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2pr7-00000008NXr-0Xnw
-	for linux-mediatek@lists.infradead.org;
-	Wed, 18 Mar 2026 12:18:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1773836313; x=1805372313;
-  h=from:date:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=fKlAMln5+eXtPqBPuI/T7U2v223nK0zolTnYCh7Gbgk=;
-  b=PwaOyCdlVCyUPTHjltH4PwPDoq6p+6MI/mLlaeZ5RO8k85pKwqlh8YUI
-   YghQA66AxUKsXuMYSOYcPWWKBmyyX0Dek2HzZa0R4+kKHd1tRan6ZBdck
-   JUULvHOhFkrdjs2PqVv/IzrUp3xExdRXTLVoJ2a+ZizMgDi2c2hlHFqS1
-   BOa7I1TCHul3dPzLhjrWchB5/wu7oyy8s6zXkgGkrDu7UGtVCe+q86KRz
-   aUjrlPVbydAMlUuSnwiSI2T2c9hpqU5N0y3TTqZKWr/vkVhp7p2tYm2FS
-   lGDM8eIo50O5gYnmDdcgv+lP76gEVseR5vhVl5eJYNxnhM9wkNDMeqFUG
-   w==;
-X-CSE-ConnectionGUID: iRKYVMFVTICRMmnv3iONJg==
-X-CSE-MsgGUID: 4oWZhOdoQtu0sLXWl6XfsQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11732"; a="85965483"
-X-IronPort-AV: E=Sophos;i="6.23,127,1770624000"; 
-   d="scan'208";a="85965483"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
-  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Mar 2026 05:18:31 -0700
-X-CSE-ConnectionGUID: P+Z6F1F5RT+Evho1irfuLQ==
-X-CSE-MsgGUID: Ista6+2aT3yV+XUX6UohtA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,127,1770624000"; 
-   d="scan'208";a="222822818"
-Received: from ijarvine-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.244.55])
-  by orviesa007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Mar 2026 05:18:24 -0700
-From: =?UTF-8?q?Ilpo=20J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>
-Date: Wed, 18 Mar 2026 14:18:22 +0200 (EET)
-To: Ahmed Naseef <naseefkm@gmail.com>
-cc: Bjorn Helgaas <helgaas@kernel.org>, Caleb James DeLisle <cjd@cjdns.fr>, 
-    linux-pci@vger.kernel.org, linux-mips@vger.kernel.org, 
-    ryder.lee@mediatek.com, bhelgaas@google.com, lpieralisi@kernel.org, 
-    kwilczynski@kernel.org, mani@kernel.org, robh@kernel.org, 
-    krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
-    angelogioacchino.delregno@collabora.com, ansuelsmth@gmail.com, 
-    linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
-    LKML <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v2 3/3] PCI: Skip bridge window reads when window is not
- supported
-In-Reply-To: <fc927b7f-a820-d3c2-581c-ab6db562bcfb@linux.intel.com>
-Message-ID: <2d47f78f-22cf-78c8-8312-3ffb095d2693@linux.intel.com>
-References: <20260316155157.679533-4-cjd@cjdns.fr> <20260317212908.GA109023@bhelgaas> <abpFjQJ5RNcbzbmz@DESKTOP-TIT0J8O.localdomain> <fc927b7f-a820-d3c2-581c-ab6db562bcfb@linux.intel.com>
+	id 1w2q2P-00000008OAn-0RhL;
+	Wed, 18 Mar 2026 12:30:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1773837010;
+	bh=iOulkhDoqNITbcvR7gTtzu3AHBi+cKQ21g+bnwKGJ64=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=A4uxB/0qxWOhi+l49UbCUHvGY/AqdbIZKCIC8nprEl8vrFJ4LT56pSrGF9BWPtvAw
+	 k+fzd/9pNHbsCZmK4ZEPqXz2OaNrBXW6N4xk0Y3ZCc4k7Aei5BVasz31Zs5mtwLyLy
+	 79xxD3rwLIHwxx7P2bTsy8/x8Mg42MFfpmE9ndoQUypSRIC0hAhriKMuc25Sc6XKD3
+	 cbhre8NlJrTnRPq7ulwRoDvfRHWTfG85iT9haXKYOSPTiqMtFMSBJCrTF5vFOLeD5p
+	 2PmPQ5AgY7vSHOsq53/O7IvjECh9kZwX0/9UN6nRtb8dtpTuen2929/oeoB0T0Y6Bf
+	 dSdnKvHQUJC0A==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 17EF117E0497;
+	Wed, 18 Mar 2026 13:30:10 +0100 (CET)
+Message-ID: <d466ee35-789a-4e2c-a040-f182083dd82e@collabora.com>
+Date: Wed, 18 Mar 2026 13:30:09 +0100
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323328-1311157423-1773836302=:971"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] clk: mediatek: mt7988: use MUX_CLR_SET_UPD for gate-less
+ muxes
+To: Daniel Golle <daniel@makrotopia.org>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Sam Shih <sam.shih@mediatek.com>, linux-clk@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <869a8a99bbde357fb4f2175f99e605c3e1597640.1773801987.git.daniel@makrotopia.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <869a8a99bbde357fb4f2175f99e605c3e1597640.1773801987.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260318_051833_244540_02C40FB1 
-X-CRM114-Status: GOOD (  30.01  )
+X-CRM114-CacheID: sfid-20260318_053013_305439_BE8EC7B1 
+X-CRM114-Status: GOOD (  19.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,98 +78,152 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+Il 18/03/26 03:48, Daniel Golle ha scritto:
+> All 18 muxes in the infra_muxes[] array are pure mux selectors without
+> a clock gate, yet they were defined using MUX_GATE_CLR_SET_UPD with
+> gate_shift = -1.
+> 
+> This macro assigns mtk_mux_gate_clr_set_upd_ops, whose
+> enable/disable/is_enabled callbacks perform BIT(gate_shift). Since
+> gate_shift is stored as u8, the -1 truncates to 255, causing a
+> shift-out-of-bounds at runtime:
+> 
+> UBSAN: shift-out-of-bounds in drivers/clk/mediatek/clk-mux.c:76:8
+> shift exponent 255 is too large for 64-bit type 'long unsigned int'
+> 
+> UBSAN: shift-out-of-bounds in drivers/clk/mediatek/clk-mux.c:102:4
+> shift exponent 255 is too large for 64-bit type 'long unsigned int'
+> 
+> UBSAN: shift-out-of-bounds in drivers/clk/mediatek/clk-mux.c:122:16
+> shift exponent 255 is too large for 64-bit type 'long unsigned int'
+> 
+> Switch these definitions to MUX_CLR_SET_UPD, which uses
+> mtk_mux_clr_set_upd_ops (no gate callbacks). The actual clock gating
+> for these peripherals is handled by the separate GATE_INFRA* definitions
+> further down.
+> 
+> Fixes: 4b4719437d85f ("clk: mediatek: add drivers for MT7988 SoC")
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
---8323328-1311157423-1773836302=:971
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+While this makes things to actually work, there's another problem, and that is
+that .upd_ofs is a u32 and is being set to -1.
 
-On Wed, 18 Mar 2026, Ilpo J=E4rvinen wrote:
+Since, as far as I remember, MT7988 is *not* the only one that is affected by the
+issue that you're fixing here...
 
-> On Wed, 18 Mar 2026, Ahmed Naseef wrote:
->=20
-> > On Tue, Mar 17, 2026 at 04:29:08PM -0500, Bjorn Helgaas wrote:
-> > > On Mon, Mar 16, 2026 at 03:51:57PM +0000, Caleb James DeLisle wrote:
-> > > > pci_read_bridge_io() and pci_read_bridge_mmio_pref() read bridge wi=
-ndow
-> > > > registers unconditionally. If the registers are hardwired to zero
-> > > > (not implemented), both base and limit will be 0. Since (0 <=3D 0) =
-is
-> > > > true, a bogus window [mem 0x00000000-0x000fffff] or [io 0x0000-0x0f=
-ff]
-> > > > gets created.
-> > > >=20
-> > > > pci_read_bridge_windows() already detects unsupported windows by
-> > > > testing register writability and sets io_window/pref_window flags
-> > > > accordingly. Check these flags at the start of pci_read_bridge_io()
-> > > > and pci_read_bridge_mmio_pref() to skip reading registers when the
-> > > > window is not supported.
-> > >=20
-> > > The fundamental problem here is that assigned space to a bridge windo=
-w
-> > > that isn't implemented.  I wish we understood the connection between
-> > > this "read window" path and the assignment path.
-> > >=20
-> > > Maybe this patch fixes it because we enter pci_read_bridge_mmio_pref(=
-)
-> > > with res->flags being NULL, and we set IORESOURCE_MEM |
-> > > IORESOURCE_PREFETCH again, which makes it look like we can assign
-> > > space for it?
-> >=20
-> > Yes, that's exactly right.
-> >=20
-> > >=20
-> > > If that's the case, I think it would improve the commit log to mentio=
-n
-> > > the actual mechanism by which we avoid assigning space.
-> > >=20
-> >=20
-> > How about this:
-> >=20
-> >   pci_read_bridge_io() and pci_read_bridge_mmio_pref() read
-> >   bridge window registers unconditionally. If the registers
-> >   are hardwired to zero (not implemented), both base and limit
-> >   will be 0. Since (0 <=3D 0) is true, these functions set
-> >   IORESOURCE_IO or IORESOURCE_MEM | IORESOURCE_PREFETCH on
-> >   the bridge resource. This causes the allocator to assign
-> >   space for the window even though the hardware can't
-> >   implement it.
-> >=20
-> >   pci_read_bridge_windows() already detects unsupported windows
-> >   by testing register writability and sets io_window/pref_window
-> >   flags accordingly. Check these flags at the start of
-> >   pci_read_bridge_io() and pci_read_bridge_mmio_pref() to skip
-> >   reading registers when the window is not supported, so the
-> >   resource flags remain clear and the allocator does not assign
-> >   space for non-existent windows.
->=20
-> At least to me the proposed text reads much better than the original.
-> The original text required reading between the lines to connect the dots,=
-=20
-> whereas this new one clearly explains what causes what.
+I would rather consider, instead, to add a new macro that is a bit more foolproof
+in clk-mux.h
 
-Hi again,
+#define MUX_CLR_SET(_id, _name, _parents, _mux_ofs,			\
+		    _mux_set_ofs, _mux_clr_ofs, _shift)
+	MUX_CLR_SET_UPD(_id, _name, _parents, _mux_ofs, _mux_set_ofs,	\
+			_mux_clr_ofs, _shift, 0, 0, -1)
 
-Reading the code I think the entire 0 <=3D 0 part is a red herring=20
-when it comes to the current code, the flags are always set by the=20
-functions!
+...and use it in this driver (and others, if you can..) instead.
 
-The code would only add IORESOURCE_UNSET | IORESOURCE_DISABLED if the=20
-base <=3D limit check fails but that's still wrong because it says to the=
-=20
-resource allocation code that it can enable that bridge window if it needs=
-=20
-to.
+Cheers,
+Angelo
 
-Prior to the commit 8278c6914306 ("PCI: Preserve bridge window resource=20
-type flags") the base <=3D limit check did play some role (maybe the=20
-original commit message was based on some older tree than the most current=
-=20
-one).
+> ---
+>   drivers/clk/mediatek/clk-mt7988-infracfg.c | 84 +++++++++++-----------
+>   1 file changed, 42 insertions(+), 42 deletions(-)
+> 
+> diff --git a/drivers/clk/mediatek/clk-mt7988-infracfg.c b/drivers/clk/mediatek/clk-mt7988-infracfg.c
+> index c40e18c27f12e..57203d08ac265 100644
+> --- a/drivers/clk/mediatek/clk-mt7988-infracfg.c
+> +++ b/drivers/clk/mediatek/clk-mt7988-infracfg.c
+> @@ -56,49 +56,49 @@ static const char *const infra_pcie_gfmux_tl_ck_o_p3_parents[] __initconst = {
+>   
+>   static const struct mtk_mux infra_muxes[] = {
+>   	/* MODULE_CLK_SEL_0 */
+> -	MUX_GATE_CLR_SET_UPD(CLK_INFRA_MUX_UART0_SEL, "infra_mux_uart0_sel",
+> -			     infra_mux_uart0_parents, 0x0018, 0x0010, 0x0014, 0, 1, -1, -1, -1),
+> -	MUX_GATE_CLR_SET_UPD(CLK_INFRA_MUX_UART1_SEL, "infra_mux_uart1_sel",
+> -			     infra_mux_uart1_parents, 0x0018, 0x0010, 0x0014, 1, 1, -1, -1, -1),
+> -	MUX_GATE_CLR_SET_UPD(CLK_INFRA_MUX_UART2_SEL, "infra_mux_uart2_sel",
+> -			     infra_mux_uart2_parents, 0x0018, 0x0010, 0x0014, 2, 1, -1, -1, -1),
+> -	MUX_GATE_CLR_SET_UPD(CLK_INFRA_MUX_SPI0_SEL, "infra_mux_spi0_sel", infra_mux_spi0_parents,
+> -			     0x0018, 0x0010, 0x0014, 4, 1, -1, -1, -1),
+> -	MUX_GATE_CLR_SET_UPD(CLK_INFRA_MUX_SPI1_SEL, "infra_mux_spi1_sel", infra_mux_spi1_parents,
+> -			     0x0018, 0x0010, 0x0014, 5, 1, -1, -1, -1),
+> -	MUX_GATE_CLR_SET_UPD(CLK_INFRA_MUX_SPI2_SEL, "infra_mux_spi2_sel", infra_mux_spi0_parents,
+> -			     0x0018, 0x0010, 0x0014, 6, 1, -1, -1, -1),
+> -	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PWM_SEL, "infra_pwm_sel", infra_pwm_bck_parents, 0x0018,
+> -			     0x0010, 0x0014, 14, 2, -1, -1, -1),
+> -	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PWM_CK1_SEL, "infra_pwm_ck1_sel", infra_pwm_bck_parents,
+> -			     0x0018, 0x0010, 0x0014, 16, 2, -1, -1, -1),
+> -	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PWM_CK2_SEL, "infra_pwm_ck2_sel", infra_pwm_bck_parents,
+> -			     0x0018, 0x0010, 0x0014, 18, 2, -1, -1, -1),
+> -	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PWM_CK3_SEL, "infra_pwm_ck3_sel", infra_pwm_bck_parents,
+> -			     0x0018, 0x0010, 0x0014, 20, 2, -1, -1, -1),
+> -	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PWM_CK4_SEL, "infra_pwm_ck4_sel", infra_pwm_bck_parents,
+> -			     0x0018, 0x0010, 0x0014, 22, 2, -1, -1, -1),
+> -	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PWM_CK5_SEL, "infra_pwm_ck5_sel", infra_pwm_bck_parents,
+> -			     0x0018, 0x0010, 0x0014, 24, 2, -1, -1, -1),
+> -	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PWM_CK6_SEL, "infra_pwm_ck6_sel", infra_pwm_bck_parents,
+> -			     0x0018, 0x0010, 0x0014, 26, 2, -1, -1, -1),
+> -	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PWM_CK7_SEL, "infra_pwm_ck7_sel", infra_pwm_bck_parents,
+> -			     0x0018, 0x0010, 0x0014, 28, 2, -1, -1, -1),
+> -	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PWM_CK8_SEL, "infra_pwm_ck8_sel", infra_pwm_bck_parents,
+> -			     0x0018, 0x0010, 0x0014, 30, 2, -1, -1, -1),
+> +	MUX_CLR_SET_UPD(CLK_INFRA_MUX_UART0_SEL, "infra_mux_uart0_sel",
+> +			infra_mux_uart0_parents, 0x0018, 0x0010, 0x0014, 0, 1, -1, -1),
+> +	MUX_CLR_SET_UPD(CLK_INFRA_MUX_UART1_SEL, "infra_mux_uart1_sel",
+> +			infra_mux_uart1_parents, 0x0018, 0x0010, 0x0014, 1, 1, -1, -1),
+> +	MUX_CLR_SET_UPD(CLK_INFRA_MUX_UART2_SEL, "infra_mux_uart2_sel",
+> +			infra_mux_uart2_parents, 0x0018, 0x0010, 0x0014, 2, 1, -1, -1),
+> +	MUX_CLR_SET_UPD(CLK_INFRA_MUX_SPI0_SEL, "infra_mux_spi0_sel",
+> +			infra_mux_spi0_parents, 0x0018, 0x0010, 0x0014, 4, 1, -1, -1),
+> +	MUX_CLR_SET_UPD(CLK_INFRA_MUX_SPI1_SEL, "infra_mux_spi1_sel",
+> +			infra_mux_spi1_parents, 0x0018, 0x0010, 0x0014, 5, 1, -1, -1),
+> +	MUX_CLR_SET_UPD(CLK_INFRA_MUX_SPI2_SEL, "infra_mux_spi2_sel",
+> +			infra_mux_spi0_parents, 0x0018, 0x0010, 0x0014, 6, 1, -1, -1),
+> +	MUX_CLR_SET_UPD(CLK_INFRA_PWM_SEL, "infra_pwm_sel",
+> +			infra_pwm_bck_parents, 0x0018, 0x0010, 0x0014, 14, 2, -1, -1),
+> +	MUX_CLR_SET_UPD(CLK_INFRA_PWM_CK1_SEL, "infra_pwm_ck1_sel",
+> +			infra_pwm_bck_parents, 0x0018, 0x0010, 0x0014, 16, 2, -1, -1),
+> +	MUX_CLR_SET_UPD(CLK_INFRA_PWM_CK2_SEL, "infra_pwm_ck2_sel",
+> +			infra_pwm_bck_parents, 0x0018, 0x0010, 0x0014, 18, 2, -1, -1),
+> +	MUX_CLR_SET_UPD(CLK_INFRA_PWM_CK3_SEL, "infra_pwm_ck3_sel",
+> +			infra_pwm_bck_parents, 0x0018, 0x0010, 0x0014, 20, 2, -1, -1),
+> +	MUX_CLR_SET_UPD(CLK_INFRA_PWM_CK4_SEL, "infra_pwm_ck4_sel",
+> +			infra_pwm_bck_parents, 0x0018, 0x0010, 0x0014, 22, 2, -1, -1),
+> +	MUX_CLR_SET_UPD(CLK_INFRA_PWM_CK5_SEL, "infra_pwm_ck5_sel",
+> +			infra_pwm_bck_parents, 0x0018, 0x0010, 0x0014, 24, 2, -1, -1),
+> +	MUX_CLR_SET_UPD(CLK_INFRA_PWM_CK6_SEL, "infra_pwm_ck6_sel",
+> +			infra_pwm_bck_parents, 0x0018, 0x0010, 0x0014, 26, 2, -1, -1),
+> +	MUX_CLR_SET_UPD(CLK_INFRA_PWM_CK7_SEL, "infra_pwm_ck7_sel",
+> +			infra_pwm_bck_parents, 0x0018, 0x0010, 0x0014, 28, 2, -1, -1),
+> +	MUX_CLR_SET_UPD(CLK_INFRA_PWM_CK8_SEL, "infra_pwm_ck8_sel",
+> +			infra_pwm_bck_parents, 0x0018, 0x0010, 0x0014, 30, 2, -1, -1),
+>   	/* MODULE_CLK_SEL_1 */
+> -	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PCIE_GFMUX_TL_O_P0_SEL, "infra_pcie_gfmux_tl_o_p0_sel",
+> -			     infra_pcie_gfmux_tl_ck_o_p0_parents, 0x0028, 0x0020, 0x0024, 0, 2, -1,
+> -			     -1, -1),
+> -	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PCIE_GFMUX_TL_O_P1_SEL, "infra_pcie_gfmux_tl_o_p1_sel",
+> -			     infra_pcie_gfmux_tl_ck_o_p1_parents, 0x0028, 0x0020, 0x0024, 2, 2, -1,
+> -			     -1, -1),
+> -	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PCIE_GFMUX_TL_O_P2_SEL, "infra_pcie_gfmux_tl_o_p2_sel",
+> -			     infra_pcie_gfmux_tl_ck_o_p2_parents, 0x0028, 0x0020, 0x0024, 4, 2, -1,
+> -			     -1, -1),
+> -	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PCIE_GFMUX_TL_O_P3_SEL, "infra_pcie_gfmux_tl_o_p3_sel",
+> -			     infra_pcie_gfmux_tl_ck_o_p3_parents, 0x0028, 0x0020, 0x0024, 6, 2, -1,
+> -			     -1, -1),
+> +	MUX_CLR_SET_UPD(CLK_INFRA_PCIE_GFMUX_TL_O_P0_SEL, "infra_pcie_gfmux_tl_o_p0_sel",
+> +			infra_pcie_gfmux_tl_ck_o_p0_parents, 0x0028, 0x0020, 0x0024, 0, 2,
+> +			-1, -1),
+> +	MUX_CLR_SET_UPD(CLK_INFRA_PCIE_GFMUX_TL_O_P1_SEL, "infra_pcie_gfmux_tl_o_p1_sel",
+> +			infra_pcie_gfmux_tl_ck_o_p1_parents, 0x0028, 0x0020, 0x0024, 2, 2,
+> +			-1, -1),
+> +	MUX_CLR_SET_UPD(CLK_INFRA_PCIE_GFMUX_TL_O_P2_SEL, "infra_pcie_gfmux_tl_o_p2_sel",
+> +			infra_pcie_gfmux_tl_ck_o_p2_parents, 0x0028, 0x0020, 0x0024, 4, 2,
+> +			-1, -1),
+> +	MUX_CLR_SET_UPD(CLK_INFRA_PCIE_GFMUX_TL_O_P3_SEL, "infra_pcie_gfmux_tl_o_p3_sel",
+> +			infra_pcie_gfmux_tl_ck_o_p3_parents, 0x0028, 0x0020, 0x0024, 6, 2,
+> +			-1, -1),
+>   };
+>   
+>   static const struct mtk_gate_regs infra0_cg_regs = {
 
---=20
- i.
 
---8323328-1311157423-1773836302=:971--
 
