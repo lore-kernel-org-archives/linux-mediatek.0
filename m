@@ -4,69 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 828D910854D0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 02:41:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E25E10854CF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 02:49:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=50C97MrmxRYizVBIsWWTqviXJxkn2i99CFFIy3ghU9c=; b=Pxch35c911BVywg4dWq6qC15b5
-	X+phIrJSENGx8CLbJgVyRH1G/o2jzTFGSZwsN/y1tlTN78DKfbhRJ0nd45bQKI/RYbd28kiHVxKu6
-	PcXcx53X7aphk2e35OrI4ynhIEIwWCD4uy9tLC2vrVRaAXtPluUkMURYVdUxPWu1uiEw4jlsxUz/t
-	bQR18O7/072pB3F1ohT7aKt0kF3y4hAU+2PfTuo1O3OZ0D47SZ1Z3xQmsY+b9D3T/MSdSkm2RwMNQ
-	in4rqkICWLLnQBEG1581O15GM/RjCw+dOUESzM/7QOtUwifT6k6PY6RBUTfym3GF58/CH8idEuZ+W
-	A88WCJbQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=kLI1oGyPeNgE8d0aFHOE+Ov9caa7NWvuHOYqj2tUfuU=; b=VzBlsZ4YBi+sCNVcYpDstO4sYM
+	hzsXZ9VnruVsDaTc6KOF5DvYp6kM0EiWLJsQYvQGuqlVRLAQeFmqft5HtPyl3auv7+Q4gIUjLeojv
+	0xShtn5/FQeWKRhDKdcHWDobUg9K54qccl97kzI/QyFn7FUrAYGFVcTqmy3bMeE9yhiBRwK3I5y22
+	8++497yiyGOfM4hWHckdwd8iD3Fqi5sJKEuSCg7taS8HmwNVaT4qL4Ml3oKOvHpqnIOsXmTkSPA3M
+	+Vc2QopISyZ2g8z7PUV1YUEc+suBwkovSL7d6F4tqvQGEuvSTUCKrw/8UyzrcPl1LS4wOxt37UjBu
+	F21w0hSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2gqw-00000007eBt-2iAe;
-	Wed, 18 Mar 2026 02:41:46 +0000
-Received: from mailgw.kylinos.cn ([124.126.103.232])
+	id 1w2gy0-00000007gTm-1Vwg;
+	Wed, 18 Mar 2026 02:49:04 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2gph-00000007cXE-0vGq;
-	Wed, 18 Mar 2026 02:40:30 +0000
-X-UUID: cc9aa704227311f1a21c59e7364eecb8-20260318
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:0cfe2427-3d59-4ad2-bf8a-2e540f18b346,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:89c9d04,CLOUDID:5d417bfb0956acf9f04223ba2d7b9988,BulkI
-	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850|898,TC:nil,Content:0|15|50
-	,EDM:5,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
-	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: cc9aa704227311f1a21c59e7364eecb8-20260318
-X-User: xiaopei01@kylinos.cn
-Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
-	(envelope-from <xiaopei01@kylinos.cn>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 288843384; Wed, 18 Mar 2026 10:40:17 +0800
-From: Pei Xiao <xiaopei01@kylinos.cn>
-To: linux-spi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	imx@lists.linux.dev,
-	openbmc@lists.ozlabs.org,
-	linux-rockchip@lists.infradead.org,
-	linux-riscv@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Cc: Pei Xiao <xiaopei01@kylinos.cn>
-Subject: [PATCH v4 16/17] spi: zynq-qspi: Simplify clock handling with devm_clk_get_enabled()
-Date: Wed, 18 Mar 2026 10:40:06 +0800
-Message-Id: <ddf33629a24d640b3c775cca35123ff051366648.1773801401.git.xiaopei01@kylinos.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1773801401.git.xiaopei01@kylinos.cn>
-References: <cover.1773801401.git.xiaopei01@kylinos.cn>
+	id 1w2gxx-00000007gT4-0eDn;
+	Wed, 18 Mar 2026 02:49:02 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.99)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1w2gxg-000000004CM-2SK6;
+	Wed, 18 Mar 2026 02:48:44 +0000
+Date: Wed, 18 Mar 2026 02:48:41 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Sam Shih <sam.shih@mediatek.com>, linux-clk@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] clk: mediatek: mt7988: use MUX_CLR_SET_UPD for gate-less
+ muxes
+Message-ID: <869a8a99bbde357fb4f2175f99e605c3e1597640.1773801987.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260317_194029_660347_BBE14429 
-X-CRM114-Status: GOOD (  12.30  )
+X-CRM114-CacheID: sfid-20260317_194901_397423_C328CEED 
+X-CRM114-Status: GOOD (  10.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,111 +65,131 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Replace devm_clk_get() followed by clk_prepare_enable() with
-devm_clk_get_enabled() for both "pclk" and "ref_clk". This removes
-the need for explicit clock enable and disable calls, as the managed
-API automatically disables the clocks on device removal or probe
-failure.
+All 18 muxes in the infra_muxes[] array are pure mux selectors without
+a clock gate, yet they were defined using MUX_GATE_CLR_SET_UPD with
+gate_shift = -1.
 
-Remove the now-unnecessary clk_disable_unprepare() calls from the
-probe error paths and the remove callback. Simplify error handling
-by jumping directly to the remove_ctlr label.
+This macro assigns mtk_mux_gate_clr_set_upd_ops, whose
+enable/disable/is_enabled callbacks perform BIT(gate_shift). Since
+gate_shift is stored as u8, the -1 truncates to 255, causing a
+shift-out-of-bounds at runtime:
 
-Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
+UBSAN: shift-out-of-bounds in drivers/clk/mediatek/clk-mux.c:76:8
+shift exponent 255 is too large for 64-bit type 'long unsigned int'
+
+UBSAN: shift-out-of-bounds in drivers/clk/mediatek/clk-mux.c:102:4
+shift exponent 255 is too large for 64-bit type 'long unsigned int'
+
+UBSAN: shift-out-of-bounds in drivers/clk/mediatek/clk-mux.c:122:16
+shift exponent 255 is too large for 64-bit type 'long unsigned int'
+
+Switch these definitions to MUX_CLR_SET_UPD, which uses
+mtk_mux_clr_set_upd_ops (no gate callbacks). The actual clock gating
+for these peripherals is handled by the separate GATE_INFRA* definitions
+further down.
+
+Fixes: 4b4719437d85f ("clk: mediatek: add drivers for MT7988 SoC")
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
- drivers/spi/spi-zynq-qspi.c | 31 ++++++-------------------------
- 1 file changed, 6 insertions(+), 25 deletions(-)
+ drivers/clk/mediatek/clk-mt7988-infracfg.c | 84 +++++++++++-----------
+ 1 file changed, 42 insertions(+), 42 deletions(-)
 
-diff --git a/drivers/spi/spi-zynq-qspi.c b/drivers/spi/spi-zynq-qspi.c
-index 5232483c4a3a..8c3975030d0a 100644
---- a/drivers/spi/spi-zynq-qspi.c
-+++ b/drivers/spi/spi-zynq-qspi.c
-@@ -661,7 +661,7 @@ static int zynq_qspi_probe(struct platform_device *pdev)
- 		goto remove_ctlr;
- 	}
+diff --git a/drivers/clk/mediatek/clk-mt7988-infracfg.c b/drivers/clk/mediatek/clk-mt7988-infracfg.c
+index c40e18c27f12e..57203d08ac265 100644
+--- a/drivers/clk/mediatek/clk-mt7988-infracfg.c
++++ b/drivers/clk/mediatek/clk-mt7988-infracfg.c
+@@ -56,49 +56,49 @@ static const char *const infra_pcie_gfmux_tl_ck_o_p3_parents[] __initconst = {
  
--	xqspi->pclk = devm_clk_get(&pdev->dev, "pclk");
-+	xqspi->pclk = devm_clk_get_enabled(&pdev->dev, "pclk");
- 	if (IS_ERR(xqspi->pclk)) {
- 		dev_err(&pdev->dev, "pclk clock not found.\n");
- 		ret = PTR_ERR(xqspi->pclk);
-@@ -670,36 +670,24 @@ static int zynq_qspi_probe(struct platform_device *pdev)
+ static const struct mtk_mux infra_muxes[] = {
+ 	/* MODULE_CLK_SEL_0 */
+-	MUX_GATE_CLR_SET_UPD(CLK_INFRA_MUX_UART0_SEL, "infra_mux_uart0_sel",
+-			     infra_mux_uart0_parents, 0x0018, 0x0010, 0x0014, 0, 1, -1, -1, -1),
+-	MUX_GATE_CLR_SET_UPD(CLK_INFRA_MUX_UART1_SEL, "infra_mux_uart1_sel",
+-			     infra_mux_uart1_parents, 0x0018, 0x0010, 0x0014, 1, 1, -1, -1, -1),
+-	MUX_GATE_CLR_SET_UPD(CLK_INFRA_MUX_UART2_SEL, "infra_mux_uart2_sel",
+-			     infra_mux_uart2_parents, 0x0018, 0x0010, 0x0014, 2, 1, -1, -1, -1),
+-	MUX_GATE_CLR_SET_UPD(CLK_INFRA_MUX_SPI0_SEL, "infra_mux_spi0_sel", infra_mux_spi0_parents,
+-			     0x0018, 0x0010, 0x0014, 4, 1, -1, -1, -1),
+-	MUX_GATE_CLR_SET_UPD(CLK_INFRA_MUX_SPI1_SEL, "infra_mux_spi1_sel", infra_mux_spi1_parents,
+-			     0x0018, 0x0010, 0x0014, 5, 1, -1, -1, -1),
+-	MUX_GATE_CLR_SET_UPD(CLK_INFRA_MUX_SPI2_SEL, "infra_mux_spi2_sel", infra_mux_spi0_parents,
+-			     0x0018, 0x0010, 0x0014, 6, 1, -1, -1, -1),
+-	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PWM_SEL, "infra_pwm_sel", infra_pwm_bck_parents, 0x0018,
+-			     0x0010, 0x0014, 14, 2, -1, -1, -1),
+-	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PWM_CK1_SEL, "infra_pwm_ck1_sel", infra_pwm_bck_parents,
+-			     0x0018, 0x0010, 0x0014, 16, 2, -1, -1, -1),
+-	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PWM_CK2_SEL, "infra_pwm_ck2_sel", infra_pwm_bck_parents,
+-			     0x0018, 0x0010, 0x0014, 18, 2, -1, -1, -1),
+-	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PWM_CK3_SEL, "infra_pwm_ck3_sel", infra_pwm_bck_parents,
+-			     0x0018, 0x0010, 0x0014, 20, 2, -1, -1, -1),
+-	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PWM_CK4_SEL, "infra_pwm_ck4_sel", infra_pwm_bck_parents,
+-			     0x0018, 0x0010, 0x0014, 22, 2, -1, -1, -1),
+-	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PWM_CK5_SEL, "infra_pwm_ck5_sel", infra_pwm_bck_parents,
+-			     0x0018, 0x0010, 0x0014, 24, 2, -1, -1, -1),
+-	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PWM_CK6_SEL, "infra_pwm_ck6_sel", infra_pwm_bck_parents,
+-			     0x0018, 0x0010, 0x0014, 26, 2, -1, -1, -1),
+-	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PWM_CK7_SEL, "infra_pwm_ck7_sel", infra_pwm_bck_parents,
+-			     0x0018, 0x0010, 0x0014, 28, 2, -1, -1, -1),
+-	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PWM_CK8_SEL, "infra_pwm_ck8_sel", infra_pwm_bck_parents,
+-			     0x0018, 0x0010, 0x0014, 30, 2, -1, -1, -1),
++	MUX_CLR_SET_UPD(CLK_INFRA_MUX_UART0_SEL, "infra_mux_uart0_sel",
++			infra_mux_uart0_parents, 0x0018, 0x0010, 0x0014, 0, 1, -1, -1),
++	MUX_CLR_SET_UPD(CLK_INFRA_MUX_UART1_SEL, "infra_mux_uart1_sel",
++			infra_mux_uart1_parents, 0x0018, 0x0010, 0x0014, 1, 1, -1, -1),
++	MUX_CLR_SET_UPD(CLK_INFRA_MUX_UART2_SEL, "infra_mux_uart2_sel",
++			infra_mux_uart2_parents, 0x0018, 0x0010, 0x0014, 2, 1, -1, -1),
++	MUX_CLR_SET_UPD(CLK_INFRA_MUX_SPI0_SEL, "infra_mux_spi0_sel",
++			infra_mux_spi0_parents, 0x0018, 0x0010, 0x0014, 4, 1, -1, -1),
++	MUX_CLR_SET_UPD(CLK_INFRA_MUX_SPI1_SEL, "infra_mux_spi1_sel",
++			infra_mux_spi1_parents, 0x0018, 0x0010, 0x0014, 5, 1, -1, -1),
++	MUX_CLR_SET_UPD(CLK_INFRA_MUX_SPI2_SEL, "infra_mux_spi2_sel",
++			infra_mux_spi0_parents, 0x0018, 0x0010, 0x0014, 6, 1, -1, -1),
++	MUX_CLR_SET_UPD(CLK_INFRA_PWM_SEL, "infra_pwm_sel",
++			infra_pwm_bck_parents, 0x0018, 0x0010, 0x0014, 14, 2, -1, -1),
++	MUX_CLR_SET_UPD(CLK_INFRA_PWM_CK1_SEL, "infra_pwm_ck1_sel",
++			infra_pwm_bck_parents, 0x0018, 0x0010, 0x0014, 16, 2, -1, -1),
++	MUX_CLR_SET_UPD(CLK_INFRA_PWM_CK2_SEL, "infra_pwm_ck2_sel",
++			infra_pwm_bck_parents, 0x0018, 0x0010, 0x0014, 18, 2, -1, -1),
++	MUX_CLR_SET_UPD(CLK_INFRA_PWM_CK3_SEL, "infra_pwm_ck3_sel",
++			infra_pwm_bck_parents, 0x0018, 0x0010, 0x0014, 20, 2, -1, -1),
++	MUX_CLR_SET_UPD(CLK_INFRA_PWM_CK4_SEL, "infra_pwm_ck4_sel",
++			infra_pwm_bck_parents, 0x0018, 0x0010, 0x0014, 22, 2, -1, -1),
++	MUX_CLR_SET_UPD(CLK_INFRA_PWM_CK5_SEL, "infra_pwm_ck5_sel",
++			infra_pwm_bck_parents, 0x0018, 0x0010, 0x0014, 24, 2, -1, -1),
++	MUX_CLR_SET_UPD(CLK_INFRA_PWM_CK6_SEL, "infra_pwm_ck6_sel",
++			infra_pwm_bck_parents, 0x0018, 0x0010, 0x0014, 26, 2, -1, -1),
++	MUX_CLR_SET_UPD(CLK_INFRA_PWM_CK7_SEL, "infra_pwm_ck7_sel",
++			infra_pwm_bck_parents, 0x0018, 0x0010, 0x0014, 28, 2, -1, -1),
++	MUX_CLR_SET_UPD(CLK_INFRA_PWM_CK8_SEL, "infra_pwm_ck8_sel",
++			infra_pwm_bck_parents, 0x0018, 0x0010, 0x0014, 30, 2, -1, -1),
+ 	/* MODULE_CLK_SEL_1 */
+-	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PCIE_GFMUX_TL_O_P0_SEL, "infra_pcie_gfmux_tl_o_p0_sel",
+-			     infra_pcie_gfmux_tl_ck_o_p0_parents, 0x0028, 0x0020, 0x0024, 0, 2, -1,
+-			     -1, -1),
+-	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PCIE_GFMUX_TL_O_P1_SEL, "infra_pcie_gfmux_tl_o_p1_sel",
+-			     infra_pcie_gfmux_tl_ck_o_p1_parents, 0x0028, 0x0020, 0x0024, 2, 2, -1,
+-			     -1, -1),
+-	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PCIE_GFMUX_TL_O_P2_SEL, "infra_pcie_gfmux_tl_o_p2_sel",
+-			     infra_pcie_gfmux_tl_ck_o_p2_parents, 0x0028, 0x0020, 0x0024, 4, 2, -1,
+-			     -1, -1),
+-	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PCIE_GFMUX_TL_O_P3_SEL, "infra_pcie_gfmux_tl_o_p3_sel",
+-			     infra_pcie_gfmux_tl_ck_o_p3_parents, 0x0028, 0x0020, 0x0024, 6, 2, -1,
+-			     -1, -1),
++	MUX_CLR_SET_UPD(CLK_INFRA_PCIE_GFMUX_TL_O_P0_SEL, "infra_pcie_gfmux_tl_o_p0_sel",
++			infra_pcie_gfmux_tl_ck_o_p0_parents, 0x0028, 0x0020, 0x0024, 0, 2,
++			-1, -1),
++	MUX_CLR_SET_UPD(CLK_INFRA_PCIE_GFMUX_TL_O_P1_SEL, "infra_pcie_gfmux_tl_o_p1_sel",
++			infra_pcie_gfmux_tl_ck_o_p1_parents, 0x0028, 0x0020, 0x0024, 2, 2,
++			-1, -1),
++	MUX_CLR_SET_UPD(CLK_INFRA_PCIE_GFMUX_TL_O_P2_SEL, "infra_pcie_gfmux_tl_o_p2_sel",
++			infra_pcie_gfmux_tl_ck_o_p2_parents, 0x0028, 0x0020, 0x0024, 4, 2,
++			-1, -1),
++	MUX_CLR_SET_UPD(CLK_INFRA_PCIE_GFMUX_TL_O_P3_SEL, "infra_pcie_gfmux_tl_o_p3_sel",
++			infra_pcie_gfmux_tl_ck_o_p3_parents, 0x0028, 0x0020, 0x0024, 6, 2,
++			-1, -1),
+ };
  
- 	init_completion(&xqspi->data_completion);
- 
--	xqspi->refclk = devm_clk_get(&pdev->dev, "ref_clk");
-+	xqspi->refclk = devm_clk_get_enabled(&pdev->dev, "ref_clk");
- 	if (IS_ERR(xqspi->refclk)) {
- 		dev_err(&pdev->dev, "ref_clk clock not found.\n");
- 		ret = PTR_ERR(xqspi->refclk);
- 		goto remove_ctlr;
- 	}
- 
--	ret = clk_prepare_enable(xqspi->pclk);
--	if (ret) {
--		dev_err(&pdev->dev, "Unable to enable APB clock.\n");
--		goto remove_ctlr;
--	}
--
--	ret = clk_prepare_enable(xqspi->refclk);
--	if (ret) {
--		dev_err(&pdev->dev, "Unable to enable device clock.\n");
--		goto clk_dis_pclk;
--	}
--
- 	xqspi->irq = platform_get_irq(pdev, 0);
- 	if (xqspi->irq < 0) {
- 		ret = xqspi->irq;
--		goto clk_dis_all;
-+		goto remove_ctlr;
- 	}
- 	ret = devm_request_irq(&pdev->dev, xqspi->irq, zynq_qspi_irq,
- 			       0, pdev->name, xqspi);
- 	if (ret != 0) {
- 		ret = -ENXIO;
- 		dev_err(&pdev->dev, "request_irq failed\n");
--		goto clk_dis_all;
-+		goto remove_ctlr;
- 	}
- 
- 	ret = of_property_read_u32(np, "num-cs",
-@@ -709,7 +697,7 @@ static int zynq_qspi_probe(struct platform_device *pdev)
- 	} else if (num_cs > ZYNQ_QSPI_MAX_NUM_CS) {
- 		ret = -EINVAL;
- 		dev_err(&pdev->dev, "only 2 chip selects are available\n");
--		goto clk_dis_all;
-+		goto remove_ctlr;
- 	} else {
- 		ctlr->num_chipselect = num_cs;
- 	}
-@@ -728,15 +716,11 @@ static int zynq_qspi_probe(struct platform_device *pdev)
- 	ret = devm_spi_register_controller(&pdev->dev, ctlr);
- 	if (ret) {
- 		dev_err(&pdev->dev, "devm_spi_register_controller failed\n");
--		goto clk_dis_all;
-+		goto remove_ctlr;
- 	}
- 
- 	return ret;
- 
--clk_dis_all:
--	clk_disable_unprepare(xqspi->refclk);
--clk_dis_pclk:
--	clk_disable_unprepare(xqspi->pclk);
- remove_ctlr:
- 	spi_controller_put(ctlr);
- 
-@@ -758,9 +742,6 @@ static void zynq_qspi_remove(struct platform_device *pdev)
- 	struct zynq_qspi *xqspi = platform_get_drvdata(pdev);
- 
- 	zynq_qspi_write(xqspi, ZYNQ_QSPI_ENABLE_OFFSET, 0);
--
--	clk_disable_unprepare(xqspi->refclk);
--	clk_disable_unprepare(xqspi->pclk);
- }
- 
- static const struct of_device_id zynq_qspi_of_match[] = {
+ static const struct mtk_gate_regs infra0_cg_regs = {
 -- 
-2.25.1
-
+2.53.0
 
