@@ -4,78 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D5A710854BE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 08:46:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41B56103E168
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 12:04:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:Message-ID:In-Reply-To:Subject:cc:To:Date:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jNAxvMlpKbnk3xa//SsNLWzTbu90yHBu0yVq6XBO01c=; b=po4wuOMU3qPNbKeX4hHR2R4BOx
-	761seY/IH0onMCpchKr3QK1R8tbOr/AmguoOTYQh2TMqp19jKydp3yM+21D/th88SLu0R4qw0yKRg
-	OpPB1VJnQ7bFPFzsA347nwJivhXQNObDwgRTjltkjmxw5GlqboYDa96sR3SWyDPWTK4rPapCY7swY
-	iTy6h4DoLbWSE/K+bB4CIijLXOrEPGJuXoqqYVnCSRtdJ0sUMCNtS0rCyXrByW4eDDn0AE7S/bDgh
-	NcNlP/Z5F/66KWvR3eZzBYa3AxflD3S6cc/oKIhBTyybXpG5SReVC2YuL4zG9JxNb+SOBejSQvnBk
-	Bln3LZ2w==;
+	bh=qRvHQEZfcTJ4fSbLUSx3I3QGK9o8cWO5LtYTIZ3jlWM=; b=WAzRfCGrP4kqqQnmtet0EiatJI
+	nysAj+bf4qCoXtCkOvKFxb55ko5kjB4SHDWGaGOiQIvBmmsBzV+brOLX8mY4vHf04Us/D4HZ6k7TN
+	myMwnfD9kYjQJuDRv9nJvKdbKJMoPtaVA+nF7kPn1RKmi//rMCkMc09js/gm8jv+BIzFkxcnbZidz
+	aozyF2E3bhh9Mm/dtn+Qq/01JA48sFqwsIYi3BNi+XuXCxphs9XY566yBiJ9Dl2RmoeA1tVPkxQ4y
+	vnOYVkPRAUEB8x71i8sm4FZbmw3CtExEyjhtkpzfUoAjKWbL4LfRGlUYPIBl6CKUf3fuyj5t3E8hk
+	brKHbmjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2mXy-000000084YD-1fC1;
-	Wed, 18 Mar 2026 08:46:34 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1w2pdM-00000008MOw-1Wuq;
+	Wed, 18 Mar 2026 12:04:20 +0000
+Received: from mgamail.intel.com ([198.175.65.19])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2mXv-000000084Wn-3YJf;
-	Wed, 18 Mar 2026 08:46:32 +0000
-X-UUID: f3a0c80a22a611f1a6de359d7043e138-20260318
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=jNAxvMlpKbnk3xa//SsNLWzTbu90yHBu0yVq6XBO01c=;
-	b=toI8xKgU2WD1t7OZU/WLbYxyU9Urz1RDYoaA9HO1DNvwkhLlP771UG/nPjdG5zJAZZZIwpHh4g0/KcxD4utzAW4rplZlgLY3+e5AqYD9lULknxZYNfsemt9KWKtoJwaXksWJ5MTWsTXp28461lEcoapikLOToe9D19f4ByWl8fE=;
-X-CID-CACHE: Type:Local,Time:202603180111-07,HitQuantity:5
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:beaefeb9-a3e9-45d3-90b4-ca5b60ec99f8,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:e7bac3a,CLOUDID:7179a24c-9183-487b-8624-e74f2dd98990,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
-	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: f3a0c80a22a611f1a6de359d7043e138-20260318
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <adlavinitha.reddy@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2041248436; Wed, 18 Mar 2026 01:46:27 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 18 Mar 2026 16:46:24 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 18 Mar 2026 16:46:24 +0800
-From: adlavinitha reddy <adlavinitha.reddy@mediatek.com>
-To: Qii Wang <qii.wang@mediatek.com>, Andi Shyti <andi.shyti@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <linux-i2c@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, adlavinitha reddy
-	<adlavinitha.reddy@mediatek.com>
-Subject: [v1,PATCH 1/1] i2c: mediatek: add bus regulator control for power saving
-Date: Wed, 18 Mar 2026 16:46:16 +0800
-Message-ID: <20260318084621.4127757-2-adlavinitha.reddy@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20260318084621.4127757-1-adlavinitha.reddy@mediatek.com>
-References: <20260318084621.4127757-1-adlavinitha.reddy@mediatek.com>
+	id 1w2pdJ-00000008MOC-19HR
+	for linux-mediatek@lists.infradead.org;
+	Wed, 18 Mar 2026 12:04:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1773835457; x=1805371457;
+  h=from:date:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=Xc1j0xbckMquE+7Oq8YBPSx/m+/CmsUtSO9wmdNglrk=;
+  b=e05Xubgv+8yknuXNW0AdNEtvLhGuo6hd4K+kPcxfcnf2RBtmKc6O7rwv
+   061Vi84+Oo4c7AGVSDRaqo6VFn1k3Oot2HmKSYlhgr/Gx+uVhNpoyd297
+   WTyP4TAYxRf+E5ItRp9oMaVO4rQoQrchN0G358BN1yujzPXLQwjOWctp/
+   tzd59CH2h7dCusnaD8VmHEvAvROC2x/EaJGiUMrsQCmscg0IMqvp0CzsD
+   7F1ZUzaP0LFd9F0bBVxjjxUfOJ1KTHUcWs73SvtAmrVVJylfsDCN4kswy
+   gMJEAiwLN6UdBaUmOhfgutRq11oIAxZinjfHHVAhA3J3ge0AlkebJRaUh
+   w==;
+X-CSE-ConnectionGUID: +GtM0KI+RpCASBsH80IVcg==
+X-CSE-MsgGUID: 9gCqHjGTTBm7JM5Fl9YDCw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11732"; a="74772567"
+X-IronPort-AV: E=Sophos;i="6.23,127,1770624000"; 
+   d="scan'208";a="74772567"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Mar 2026 05:04:16 -0700
+X-CSE-ConnectionGUID: 0e+BTQM+QiOAM98/VBXl7w==
+X-CSE-MsgGUID: Eyq3oyOITGu+yo1pzh9H9g==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,127,1770624000"; 
+   d="scan'208";a="245630682"
+Received: from ijarvine-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.244.55])
+  by fmviesa002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Mar 2026 05:04:09 -0700
+From: =?UTF-8?q?Ilpo=20J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>
+Date: Wed, 18 Mar 2026 14:04:06 +0200 (EET)
+To: Ahmed Naseef <naseefkm@gmail.com>
+cc: Bjorn Helgaas <helgaas@kernel.org>, Caleb James DeLisle <cjd@cjdns.fr>, 
+    linux-pci@vger.kernel.org, linux-mips@vger.kernel.org, 
+    ryder.lee@mediatek.com, bhelgaas@google.com, lpieralisi@kernel.org, 
+    kwilczynski@kernel.org, mani@kernel.org, robh@kernel.org, 
+    krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
+    angelogioacchino.delregno@collabora.com, ansuelsmth@gmail.com, 
+    linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+    LKML <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v2 3/3] PCI: Skip bridge window reads when window is not
+ supported
+In-Reply-To: <abpFjQJ5RNcbzbmz@DESKTOP-TIT0J8O.localdomain>
+Message-ID: <fc927b7f-a820-d3c2-581c-ab6db562bcfb@linux.intel.com>
+References: <20260316155157.679533-4-cjd@cjdns.fr> <20260317212908.GA109023@bhelgaas> <abpFjQJ5RNcbzbmz@DESKTOP-TIT0J8O.localdomain>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=US-ASCII
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260318_014631_882649_C8EA5B13 
-X-CRM114-Status: GOOD (  15.08  )
+X-CRM114-CacheID: sfid-20260318_050417_904790_8E8F9269 
+X-CRM114-Status: GOOD (  31.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,65 +89,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add conditional bus regulator enable/disable in mtk_i2c_transfer()
-to support I2C bus power gating for platforms that require it.
+On Wed, 18 Mar 2026, Ahmed Naseef wrote:
 
-This implementation:
-- Enables bus_regulator before clk_bulk_enable() if vbus-supply is defined
-- Disables bus_regulator after clk_bulk_disable()
-- Only activates when vbus-supply is provided in device tree
-- Has no impact on platforms without vbus-supply defined
+> On Tue, Mar 17, 2026 at 04:29:08PM -0500, Bjorn Helgaas wrote:
+> > On Mon, Mar 16, 2026 at 03:51:57PM +0000, Caleb James DeLisle wrote:
+> > > pci_read_bridge_io() and pci_read_bridge_mmio_pref() read bridge window
+> > > registers unconditionally. If the registers are hardwired to zero
+> > > (not implemented), both base and limit will be 0. Since (0 <= 0) is
+> > > true, a bogus window [mem 0x00000000-0x000fffff] or [io 0x0000-0x0fff]
+> > > gets created.
+> > > 
+> > > pci_read_bridge_windows() already detects unsupported windows by
+> > > testing register writability and sets io_window/pref_window flags
+> > > accordingly. Check these flags at the start of pci_read_bridge_io()
+> > > and pci_read_bridge_mmio_pref() to skip reading registers when the
+> > > window is not supported.
+> > 
+> > The fundamental problem here is that assigned space to a bridge window
+> > that isn't implemented.  I wish we understood the connection between
+> > this "read window" path and the assignment path.
+> > 
+> > Maybe this patch fixes it because we enter pci_read_bridge_mmio_pref()
+> > with res->flags being NULL, and we set IORESOURCE_MEM |
+> > IORESOURCE_PREFETCH again, which makes it look like we can assign
+> > space for it?
+> 
+> Yes, that's exactly right.
+> 
+> > 
+> > If that's the case, I think it would improve the commit log to mention
+> > the actual mechanism by which we avoid assigning space.
+> > 
+> 
+> How about this:
+> 
+>   pci_read_bridge_io() and pci_read_bridge_mmio_pref() read
+>   bridge window registers unconditionally. If the registers
+>   are hardwired to zero (not implemented), both base and limit
+>   will be 0. Since (0 <= 0) is true, these functions set
+>   IORESOURCE_IO or IORESOURCE_MEM | IORESOURCE_PREFETCH on
+>   the bridge resource. This causes the allocator to assign
+>   space for the window even though the hardware can't
+>   implement it.
+> 
+>   pci_read_bridge_windows() already detects unsupported windows
+>   by testing register writability and sets io_window/pref_window
+>   flags accordingly. Check these flags at the start of
+>   pci_read_bridge_io() and pci_read_bridge_mmio_pref() to skip
+>   reading registers when the window is not supported, so the
+>   resource flags remain clear and the allocator does not assign
+>   space for non-existent windows.
 
-This approach provides power savinggs for platforms with an extra I2C bus
-regulator, while avoiding runtime PM complexity.
-
-TEST= Build and boot on MT8188
-
-Signed-off-by: adlavinitha reddy <adlavinitha.reddy@mediatek.com>
----
- drivers/i2c/busses/i2c-mt65xx.c | 13 ++++++++++++-
- 1 file changed, 12 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index cb4d3aa709d0..126040ca05f1 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -21,6 +21,7 @@
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/platform_device.h>
-+#include <linux/regulator/consumer.h>
- #include <linux/scatterlist.h>
- #include <linux/sched.h>
- #include <linux/slab.h>
-@@ -1244,9 +1245,15 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
- 	bool write_then_read_en = false;
- 	struct mtk_i2c *i2c = i2c_get_adapdata(adap);
-
-+	if (i2c->adap.bus_regulator) {
-+		ret = regulator_enable(i2c->adap.bus_regulator);
-+		if (ret)
-+			return ret;
-+	}
-+
- 	ret = clk_bulk_enable(I2C_MT65XX_CLK_MAX, i2c->clocks);
- 	if (ret)
--		return ret;
-+		goto err_regulator;
-
- 	i2c->auto_restart = i2c->dev_comp->auto_restart;
-
-@@ -1301,6 +1308,10 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
-
- err_exit:
- 	clk_bulk_disable(I2C_MT65XX_CLK_MAX, i2c->clocks);
-+err_regulator:
-+	if (i2c->adap.bus_regulator)
-+		regulator_disable(i2c->adap.bus_regulator);
-+
- 	return ret;
- }
+At least to me the proposed text reads much better than the original.
+The original text required reading between the lines to connect the dots, 
+whereas this new one clearly explains what causes what.
 
 --
-2.45.2
+ i.
+
+> Ahmed Naseef
+> 
+> > > Suggested-by: Bjorn Helgaas <helgaas@kernel.org>
+> > > Link: https://lore.kernel.org/all/20260113210259.GA715789@bhelgaas/
+> > > Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
+> > > Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
+> > > ---
+> > >  drivers/pci/probe.c | 6 ++++++
+> > >  1 file changed, 6 insertions(+)
+> > > 
+> > > diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
+> > > index bccc7a4bdd79..4eacb741b4ec 100644
+> > > --- a/drivers/pci/probe.c
+> > > +++ b/drivers/pci/probe.c
+> > > @@ -395,6 +395,9 @@ static void pci_read_bridge_io(struct pci_dev *dev, struct resource *res,
+> > >  	unsigned long io_mask, io_granularity, base, limit;
+> > >  	struct pci_bus_region region;
+> > >  
+> > > +	if (!dev->io_window)
+> > > +		return;
+> > > +
+> > >  	io_mask = PCI_IO_RANGE_MASK;
+> > >  	io_granularity = 0x1000;
+> > >  	if (dev->io_window_1k) {
+> > > @@ -465,6 +468,9 @@ static void pci_read_bridge_mmio_pref(struct pci_dev *dev, struct resource *res,
+> > >  	pci_bus_addr_t base, limit;
+> > >  	struct pci_bus_region region;
+> > >  
+> > > +	if (!dev->pref_window)
+> > > +		return;
+> > > +
+> > >  	pci_read_config_word(dev, PCI_PREF_MEMORY_BASE, &mem_base_lo);
+> > >  	pci_read_config_word(dev, PCI_PREF_MEMORY_LIMIT, &mem_limit_lo);
+> > >  	base64 = (mem_base_lo & PCI_PREF_RANGE_MASK) << 16;
+> > > -- 
+> > > 2.39.5
+> > > 
+> 
 
