@@ -4,114 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12676107760E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 21:25:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59FD910854C9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 21:58:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K6f1m8W1umobQ+ktMqqvSwqw9J/2mgt2skFeEG9RxsI=; b=y8NIKjt4iRYB1g7/2pe4lhaphz
-	AE7Rxz8EsFIXD/kSnYcccdCHSk32wPy/wJmgm2VPfPL4FIunFS+CDIbs18L0yCN5u/021O3XSm7E3
-	iYNB5a4eDoDov8OFbKA4vZJgPwhPoK+BwYQ6nztQllE+Eco7lUe+TS2oQZN4aTaDZqkGbgXXtN6s+
-	IuqTwxYiNQFPJPxPA5+KbGNOFFQ9VGKW32bhRpZExlHzkow9dTZL3W0pbqeqenpcvi92zAbLQKPz9
-	btosgbQznDPCVp9w3crhJ963kcrCY+nVnkk6N6LhGeQv/DEbJTSX3JjzPdwSOmL7XCvG6VJeYbFXq
-	pgD9CAZA==;
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=CE6KgOI2vEguGeB+M7Uh12VIyNhU4sTJ+OZI1OSTF00=; b=0TcjldaDuIZBNm
+	SdDiDgsv9Y5U2pFWs/0TeFbrMrb9c1MtQQhehwfDGiOAgL1gqlTxqMADVF8hTFFeVMCHWdjqmo/Eb
+	wj+CQswdDDqEYblWLqTSjsNxUIYC6nG8E9bqYj/xXGAKBww8girx90eekSnvxf76SXLEzUG6VTGFJ
+	sAScaZbSWvwylvyKkJKj721EzfYGsEYCQbwM+FoSGKhnrFalnEPGbXwplFYK/LDvfH9/DS5LCgZVY
+	dNej65JHJn6vE/7GtfB06o3OXPuh7kl9d5LWvtGH4vi+jD/QwInG2Cq1OXkrxiOfIfqvN+/1o4Tcr
+	4NyDZik/aJ9cMAS7MAEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2yOe-00000009NVb-2SkV;
-	Wed, 18 Mar 2026 21:25:44 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1w2yuT-00000009Ost-2pIb;
+	Wed, 18 Mar 2026 21:58:37 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2yOb-00000009NUs-2HyI
+	id 1w2yuR-00000009OsY-0ZJn
 	for linux-mediatek@lists.infradead.org;
-	Wed, 18 Mar 2026 21:25:43 +0000
-Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-b79f8f7ea43so39469166b.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 18 Mar 2026 14:25:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1773869139; cv=none;
-        d=google.com; s=arc-20240605;
-        b=bIZ/Baa5jMp2MAcNEa2+IMUVWyw0uArpZvvjB+x8m923rao6pv/qZVqCaOXY7p+aLi
-         4n4RI5yLYJKfeW+vhcj9JIImAIqW3pEbL7laoPZi8dOXi1HzSMuNxecP8yozO3kmRcQ7
-         BgfOL30h2eAeWNeUTM9r5HUW0qcFDeJX7yiu93uu9+1gxPh+kyOjOdChem51Athc9Nn6
-         K+ITfY/0X6irwP2RkyGTgmiPzULu1T1beN2n47H78quawy2zdVV+APj6Y8bqnKpb7f2Z
-         7z4Gx5pmO8zz2oA5ZVrPdg1WkN0qibzry3kepiIJmub+y/troB3YPzSvBue72eav2y/+
-         qoFw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=K6f1m8W1umobQ+ktMqqvSwqw9J/2mgt2skFeEG9RxsI=;
-        fh=FNkxrngzHrwwFxxDLkZmhoK0A/EXIYkZyDRePBi2Pp4=;
-        b=EiDC407/Ln3ZCzx1XQJ5myjYN305WjQnGYuW0SMkAMzAWMg8ShBvTcuRLe5UYEaBCh
-         QK/tcZrMkRlMS1FtEhQWOxa0yCeIqr08w96PbE3TD/FjTIvqZPZL+7AYNPYEb5b4dXwX
-         RAeh2/3tdXJDVQYYnkLV0GJQo5iGT7P4AqgxUAx8dFfGJ/swk0iIW1fGdQ+y1TYPbaZc
-         SCVWTZRobGc7EcJKZ5Pr+O1bB8BAhlPQxtkB+hnr26pvYVCTXFU6PJEgu0/VJpLNLacu
-         QYUa5jIdJnhlDQeJ6pJm/EYM0gZs4UeeDhxhnT0eNlfKsvyiOPjN+UyzFs/CbcijTNAB
-         NDeQ==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1773869139; x=1774473939; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=K6f1m8W1umobQ+ktMqqvSwqw9J/2mgt2skFeEG9RxsI=;
-        b=DIGbegu3A9HzWPmO97IN7D9SrXS+bIFAnI9WntNUvChub4wASUMgGpCVE/dyFZuOEU
-         XLD9fl8kAo+Su9p12k2LBoNO0aHcD47wl77hdpqMZS6uwb2NLcE1/Um2t+/ywuwh8nTK
-         FCAs0jPVmf0RbF6wR9gm1b/wI0UEh18lflR6Jbl0Aak0mkgRnFvB+Wcg7Dg0SXjdc7ON
-         awBkVpKWrS6W02wo40F4Vntyt+PLqxI5EdShyJou0yUEzM677Dzp70CmH17M7WMr3dgm
-         JYoxc6zq5UWQUlV59d3eX9K96MGrVzggGw35efAVIWvT4UeySbHb23cIGi0ohhvvYAnJ
-         mA5A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1773869139; x=1774473939;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=K6f1m8W1umobQ+ktMqqvSwqw9J/2mgt2skFeEG9RxsI=;
-        b=ATaebhHShDzY1t9IG/fZvpVCByXcN6Z7NWgm//m3RIEqJQJ6toW4/dVc2KJTI+l2i6
-         4+h8RC5WXT8Vq2SAHfx2q69jFKv17k+zilIcj9DdQOxsj1xvM/hmSvXcawYMkwOQ/19u
-         zdNw9C0bcj1ASKHim6NrXs+R8xWGAJbsmu+3culNdR+Sino7kf1ik5nXHrpBMhyLNrG3
-         MnNGOzZylVLWWKIpI7AbJ3muVXMJ/JoWRURygMtkAO1lKRklDJn87hVfCAX6+VflaFde
-         1nYwpHbFcHPRku7rwxdVqlRrUfh7uAxoXVjgqe7c3u/kUc9nXzg0KX9EoQX5PsXPPMtG
-         LKSg==
-X-Gm-Message-State: AOJu0YzlcAGV0jlpyZje/UPfqKuk7d2/9OJzXlBIvJqfEdcx2myqaraK
-	wAyEP2sJS6MFG0qf9TsHXtlqA5JNm1CWKu+WTf3hT4ro8LU6JB5bAOtkoEfIqVdwXbgL/w4uEKk
-	UKCEfAx/7uzrqCqq5OPryirNYBXAMP35dtAb5Ku23iQ==
-X-Gm-Gg: ATEYQzy40ko5jajWzf8+YL1ATMidwMoYlE4iWUlKXotSXCIiEdfseFeK+Xxg6gbQ+D9
-	btc3jhaUQFyDDe+fXoaBFJ/P3+yJp0yukO5ZaIILKA8oJfuocnsHcGIlUR2/2dCcRNamEpUvX74
-	TTED9Agajcc0wdrvyI3zF/w/ZW/M3aQ9GA3VVkkmisepD+d1t4BELbrdKlXb5/sQJzMgJYddhXh
-	mg6zHSM84P3tC3UTmMjAGDFMX3SsAmLD5IwHrg18osKoE5oVaD9/iDhndgqmu+eHnzZ9UUtAZ7F
-	DBIv1g==
-X-Received: by 2002:a17:906:99c5:b0:b93:9407:ea5c with SMTP id
- a640c23a62f3a-b97f4b70e51mr342818966b.57.1773869138582; Wed, 18 Mar 2026
- 14:25:38 -0700 (PDT)
+	Wed, 18 Mar 2026 21:58:36 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 5C27B440BB;
+	Wed, 18 Mar 2026 21:58:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A9CEC19421;
+	Wed, 18 Mar 2026 21:58:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1773871114;
+	bh=g+UfRkP0ayM7nlit+xXvMF47RJk+YzbVbcsTEDZHgVA=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=bbINCqq+QGr4OWvGM+Asg8zE2iaZmTEvvOpUaWY1IeaK3ZsDKJm71QFgRR+VpJPSo
+	 LzzpRAQr+EsxbuZyal3Ew9cgEQfNQbF6Z7uxISaPB0df3VqX6kKQhcdULV8/ziy3Vs
+	 uYIo88kfuvE0WH6PN/3RzPVYhurGOkqoRxjr/Pwb89rOtmv7fPor972DZAkW0MapR9
+	 4NjJJHGj7j7wH3ZsK+KxlHopfyKqXw/mUnBL2Meyv94uWyzMfsfnN0ALQcY7fEk1by
+	 IEnr8DdjSDXXQe71Nhteew4nqipFCsZ73WwP/dp+z9i05PZSmjTOinRN7OYBV9eZvl
+	 W2oUEi1fTJyaA==
+Date: Wed, 18 Mar 2026 16:58:32 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Caleb James DeLisle <cjd@cjdns.fr>
+Cc: linux-pci@vger.kernel.org, linux-mips@vger.kernel.org,
+	naseefkm@gmail.com, ryder.lee@mediatek.com, bhelgaas@google.com,
+	lpieralisi@kernel.org, kwilczynski@kernel.org, mani@kernel.org,
+	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	ansuelsmth@gmail.com, linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 3/3] PCI: Skip bridge window reads when window is not
+ supported
+Message-ID: <20260318215832.GA476412@bhelgaas>
 MIME-Version: 1.0
-References: <20260317184507.523060-1-l.scorcia@gmail.com> <20260317184507.523060-4-l.scorcia@gmail.com>
- <20260318-nickel-serval-of-tolerance-621bad@quoll>
-In-Reply-To: <20260318-nickel-serval-of-tolerance-621bad@quoll>
-From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Date: Wed, 18 Mar 2026 22:25:26 +0100
-X-Gm-Features: AaiRm51yI9RGCvrRh7GVNMdJwfVjHSZ_bJ1ljw9KDUXHaZfxU7GvIWfUsRzyb80
-Message-ID: <CAORyz2Laoo4EiLcHZ-ygLiFGW_h8qV7QxqNsMbueM=nov5zH0A@mail.gmail.com>
-Subject: Re: [PATCH v3 3/9] dt-bindings: regulator: Document MediaTek MT6392
- PMIC Regulators
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: linux-mediatek@lists.infradead.org, 
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>, 
-	Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>, 
-	Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Linus Walleij <linusw@kernel.org>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Julien Massot <julien.massot@collabora.com>, Gary Bisson <bisson.gary@gmail.com>, 
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, Val Packett <val@packett.cool>, 
-	Fabien Parent <parent.f@gmail.com>, Chen Zhong <chen.zhong@mediatek.com>, 
-	linux-input@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260316155157.679533-4-cjd@cjdns.fr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260318_142541_601985_275BEBC4 
-X-CRM114-Status: GOOD (  19.13  )
+X-CRM114-CacheID: sfid-20260318_145835_218855_746D6B89 
+X-CRM114-Status: GOOD (  20.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,65 +76,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il giorno mer 18 mar 2026 alle ore 08:43 Krzysztof Kozlowski
-<krzk@kernel.org> ha scritto:
+On Mon, Mar 16, 2026 at 03:51:57PM +0000, Caleb James DeLisle wrote:
+> pci_read_bridge_io() and pci_read_bridge_mmio_pref() read bridge window
+> registers unconditionally. If the registers are hardwired to zero
+> (not implemented), both base and limit will be 0. Since (0 <= 0) is
+> true, a bogus window [mem 0x00000000-0x000fffff] or [io 0x0000-0x0fff]
+> gets created.
+> 
+> pci_read_bridge_windows() already detects unsupported windows by
+> testing register writability and sets io_window/pref_window flags
+> accordingly. Check these flags at the start of pci_read_bridge_io()
+> and pci_read_bridge_mmio_pref() to skip reading registers when the
+> window is not supported.
+> 
+> Suggested-by: Bjorn Helgaas <helgaas@kernel.org>
+> Link: https://lore.kernel.org/all/20260113210259.GA715789@bhelgaas/
+> Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
+> Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
 
-> Please use subject prefixes matching the subsystem. You can get them for
-> example with 'git log --oneline -- DIRECTORY_OR_FILE' on the directory
-> your patch is touching. For bindings, the preferred subjects are
-> explained here:
-> https://www.kernel.org/doc/html/latest/devicetree/bindings/submitting-patches.html#i-for-patch-submitters
->
-> You already received this feedback from Mark.
+I applied this to pci/resource for v7.1 with the following commit log:
 
-I am sorry I missed these. I will revise all of them in the next version.
+  PCI: Prevent assignment to unsupported bridge windows
 
-> > +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6392-regulator.yaml
-[...]
-> > +properties:
-> > +  compatible:
-> > +    items:
-> > +      - const: mediatek,mt6392-regulator
->
-> Drop compatible. Regulator nodes do not have compatibles.
+  Previously, pci_read_bridge_io() and pci_read_bridge_mmio_pref()
+  unconditionally set resource type flags (IORESOURCE_IO or IORESOURCE_MEM |
+  IORESOURCE_PREFETCH) when reading bridge window registers. For windows that
+  are not implemented in hardware, this may cause the allocator to assign
+  space for a window that doesn't exist.
 
-Thanks for this comment. It took me a while to understand what you
-meant as most of the MediaTek PMIC regulator drivers still require the
-compatible node to probe, including MT6397 that was the template for
-this patch. I compared the driver to MT6359 that does not use it and I
-am now working on the driver to not rely on it.
+  For example, the EcoNET EN7528 SoC Root Port doesn't support the
+  prefetchable window, but since a downstream device had a prefetchable BAR,
+  the allocator mistakenly assigned a prefetchable window:
 
-> With this, you can also drop example as it won't be used.
+    pci 0001:00:01.0: [14c3:0811] type 01 class 0x060400 PCIe Root Port
+    pci 0001:00:01.0: PCI bridge to [bus 01-ff]
+    pci 0001:00:01.0: bridge window [mem 0x28000000-0x280fffff]: assigned
+    pci 0001:00:01.0: bridge window [mem 0x28100000-0x282fffff pref]: assigned
+    pci 0001:01:00.0: BAR 0 [mem 0x28100000-0x281fffff 64bit pref]: assigned
 
-Just to be sure - do you mean remove the compatible attribute from the
-example, or the whole example section?
+  pci_read_bridge_windows() already detects unsupported windows by testing
+  register writability and sets dev->io_window/pref_window accordingly.
 
-> > +
-> > +patternProperties:
-> > +  "^(buck_)?v(core|proc|sys)$":
->
-> Nope, underscores are not allowed. Use only hyphens.
+  Check dev->io_window/pref_window so we don't set the resource flags for
+  unsupported windows, which prevents the allocator from assigning space to
+  them.
 
-Got it. I will actually completely remove the (buck_|ldo_) prefix
-altogether as suggested in another comment.
+  After this commit, the prefetchable BAR is correctly allocated from the
+  non-prefetchable window:
 
-> > +  "^(ldo_)?v(adc18|camio|cn18|io18)$":
-> > +    description: LDOs with fixed 1.8V output
->
-> If fixed, then encode it in the schema - min/max microvolt.
+    pci 0001:00:01.0: bridge window [mem 0x28000000-0x281fffff]: assigned
+    pci 0001:01:00.0: BAR 0 [mem 0x28000000-0x280fffff 64bit pref]: assigned
 
-If possible I'd like some clarification here. According to Chen-Yu
-Tsai comment [1], dtsi shouldn't contain voltage constraints. The way
-I understood this is that electrical constraints are a matter of the
-actual board layout, so if adjustments are needed they have to be in
-the board dts. But you also specify "If fixed", so maybe there's an
-exception to this rule when the constraint is "absolute" and boards
-can't actually set a different value?
+I also set the author to "Ahmed Naseef <naseefkm@gmail.com>" per
+https://lore.kernel.org/all/abRQYM1If/6Vv/tI@DESKTOP-TIT0J8O.localdomain
 
-[1] https://lore.kernel.org/linux-mediatek/28102417-4a2a-4e29-afbd-d0f2aa76074b@collabora.com/T/#mb1473bb5515f3e5a1bb3ff20c717b387c42373ef
+You can make this work correctly next time by including a
+"From: Ahmed Naseef <naseefkm@gmail.com>" line as the very first line
+in the message body; see
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/process/submitting-patches.rst?id=v6.19#n723
 
-Thank you for your help!
--- 
-Luca Leonardo Scorcia
-l.scorcia@gmail.com
+> ---
+>  drivers/pci/probe.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
+> diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
+> index bccc7a4bdd79..4eacb741b4ec 100644
+> --- a/drivers/pci/probe.c
+> +++ b/drivers/pci/probe.c
+> @@ -395,6 +395,9 @@ static void pci_read_bridge_io(struct pci_dev *dev, struct resource *res,
+>  	unsigned long io_mask, io_granularity, base, limit;
+>  	struct pci_bus_region region;
+>  
+> +	if (!dev->io_window)
+> +		return;
+> +
+>  	io_mask = PCI_IO_RANGE_MASK;
+>  	io_granularity = 0x1000;
+>  	if (dev->io_window_1k) {
+> @@ -465,6 +468,9 @@ static void pci_read_bridge_mmio_pref(struct pci_dev *dev, struct resource *res,
+>  	pci_bus_addr_t base, limit;
+>  	struct pci_bus_region region;
+>  
+> +	if (!dev->pref_window)
+> +		return;
+> +
+>  	pci_read_config_word(dev, PCI_PREF_MEMORY_BASE, &mem_base_lo);
+>  	pci_read_config_word(dev, PCI_PREF_MEMORY_LIMIT, &mem_limit_lo);
+>  	base64 = (mem_base_lo & PCI_PREF_RANGE_MASK) << 16;
+> -- 
+> 2.39.5
+> 
 
