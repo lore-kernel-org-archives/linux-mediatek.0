@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D2BF10854CD
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 02:40:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DF7710854CE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 02:40:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=caiXZSrvcswuLMsnUoevgcGtjd0NRYuEemTLkYFLTXE=; b=bgxbqYa28udD9a19drmmZ+/GxW
-	fQ4D7GmkJF/kRcnGjcgFn9jqYfjYPowB2SFJ9Dfv41MF5NpWbi4CtjsBlEZj1K8nuDPtTe5Zw/V/1
-	efR3X1p6msl5YFnLFW7hcODKS3a5tpV7Vatb0J8xB7ohYxlZhyRVoCXGYEqmgEC2zCGJ/BEWT5l/F
-	tRgZzjEMKKdfbpK9aRH98KGCJmE9UvV6zL5GVadMKnYnfqhgInpNkyzhyYkM7Ao+V9wo7gNNhGN3M
-	PiD+8Ctpgbb7/uw0PHdYKiCtXNDWdMqS4/6yVinnBZlWEeB2Uyjtz3N8wJHJGbzZX1lgYMxzJomGG
-	jRYrKwcA==;
+	bh=Yb8Iio/NDnqYEebuxQUc6olfEqXiKE/NJ9fHxR1UgVs=; b=dXYvthogxYafyyD+Srz8G0rWxM
+	GQU4HSBIByOYjRURFbYC2abUDCRMrLX1zTNYd9ZQ0Yhr76pbR02qL4LG7yH7Am4ZrpzyzLRGUp0QT
+	L8Yg9gTQqhsqf4UgXKvp+HEFN7+2KXEXEBFi3CmmxqlzP2jxk2tO2MIGzWiFHHkVeiwcTwgiJk0aN
+	UsrNEdx9/kqvBSE0Vhpx5E68Q+5vkhLsKKk5mTMv5N89EOI+n1zGp77M39WJfWKG1hu7+D7BqWSL8
+	pa5Cl0GIoH/3bYm9zfW+L9GisOu7bbR6+fdhWnFSs5YysFB6JpZ2lToacpEGoZzJ+L8ZSrR5WC53H
+	+NL6n61w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2gq4-00000007dBo-3TBn;
-	Wed, 18 Mar 2026 02:40:52 +0000
+	id 1w2gq5-00000007dD3-2YaM;
+	Wed, 18 Mar 2026 02:40:53 +0000
 Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2gpe-00000007cSC-2On6;
+	id 1w2gpe-00000007cS9-2Jer;
 	Wed, 18 Mar 2026 02:40:28 +0000
-X-UUID: cb44b41c227311f1a21c59e7364eecb8-20260318
+X-UUID: cbb7b502227311f1a21c59e7364eecb8-20260318
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:0203037e-adaf-4254-8911-c4acc1e35a6e,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:20
-X-CID-META: VersionHash:89c9d04,CLOUDID:d98bf1cde657b2071c1f6fc4533bc0bd,BulkI
+X-CID-O-INFO: VERSION:1.3.11,REQID:978c6859-ceed-4cb1-bc54-43ea149250e1,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:89c9d04,CLOUDID:e90d316a69b4551724c48877068f06c1,BulkI
 	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850|898,TC:nil,Content:0|15|50
 	,EDM:5,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
 	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -39,12 +39,12 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: cb44b41c227311f1a21c59e7364eecb8-20260318
+X-UUID: cbb7b502227311f1a21c59e7364eecb8-20260318
 X-User: xiaopei01@kylinos.cn
 Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
 	(envelope-from <xiaopei01@kylinos.cn>)
 	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 1294059975; Wed, 18 Mar 2026 10:40:15 +0800
+	with ESMTP id 90819857; Wed, 18 Mar 2026 10:40:15 +0800
 From: Pei Xiao <xiaopei01@kylinos.cn>
 To: linux-spi@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
@@ -56,17 +56,17 @@ To: linux-spi@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-stm32@st-md-mailman.stormreply.com
 Cc: Pei Xiao <xiaopei01@kylinos.cn>
-Subject: [PATCH v4 10/17] spi: slave-mt27xx: Simplify clock handling with devm_clk_get_enabled()
-Date: Wed, 18 Mar 2026 10:40:00 +0800
-Message-Id: <a0b2f699f352282ddd17953ae9dbe9c84877dfca.1773801401.git.xiaopei01@kylinos.cn>
+Subject: [PATCH v4 12/17] spi: stm32-qspi: Simplify clock handling with devm_clk_get_enabled()
+Date: Wed, 18 Mar 2026 10:40:02 +0800
+Message-Id: <35b4ff674610f77310e84815c15cd59e609c95db.1773801401.git.xiaopei01@kylinos.cn>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1773801401.git.xiaopei01@kylinos.cn>
 References: <cover.1773801401.git.xiaopei01@kylinos.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260317_194026_930166_C2B86EC3 
-X-CRM114-Status: GOOD (  10.29  )
+X-CRM114-CacheID: sfid-20260317_194026_926914_783F380E 
+X-CRM114-Status: GOOD (  10.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,40 +82,70 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Replace devm_clk_get() followed by clk_prepare_enable() with
-devm_clk_get_enabled() for the "spi" clock. This reduces boilerplate
-code and error handling, as the managed API automatically disables the
-clock when the device is removed or if probe fails.
+devm_clk_get_enabled() for the clock. This removes the need for
+explicit clock enable and disable calls, as the managed API automatically
+handles clock disabling on device removal or probe failure.
+
+Remove the now-unnecessary clk_disable_unprepare() calls from the probe
+error path and the remove callback. Adjust error labels accordingly.
 
 Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
 ---
- drivers/spi/spi-slave-mt27xx.c | 8 +-------
- 1 file changed, 1 insertion(+), 7 deletions(-)
+ drivers/spi/spi-stm32-qspi.c | 18 +++++-------------
+ 1 file changed, 5 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/spi/spi-slave-mt27xx.c b/drivers/spi/spi-slave-mt27xx.c
-index ce889cb33228..8ec886918165 100644
---- a/drivers/spi/spi-slave-mt27xx.c
-+++ b/drivers/spi/spi-slave-mt27xx.c
-@@ -438,19 +438,13 @@ static int mtk_spi_slave_probe(struct platform_device *pdev)
- 		goto err_put_ctlr;
- 	}
+diff --git a/drivers/spi/spi-stm32-qspi.c b/drivers/spi/spi-stm32-qspi.c
+index df1bbacec90a..a8436f70fdfd 100644
+--- a/drivers/spi/spi-stm32-qspi.c
++++ b/drivers/spi/spi-stm32-qspi.c
+@@ -819,25 +819,19 @@ static int stm32_qspi_probe(struct platform_device *pdev)
  
--	mdata->spi_clk = devm_clk_get(&pdev->dev, "spi");
-+	mdata->spi_clk = devm_clk_get_enabled(&pdev->dev, "spi");
- 	if (IS_ERR(mdata->spi_clk)) {
- 		ret = PTR_ERR(mdata->spi_clk);
- 		dev_err(&pdev->dev, "failed to get spi-clk: %d\n", ret);
- 		goto err_put_ctlr;
- 	}
+ 	init_completion(&qspi->match_completion);
  
--	ret = clk_prepare_enable(mdata->spi_clk);
--	if (ret < 0) {
--		dev_err(&pdev->dev, "failed to enable spi_clk (%d)\n", ret);
--		goto err_put_ctlr;
+-	qspi->clk = devm_clk_get(dev, NULL);
++	qspi->clk = devm_clk_get_enabled(dev, NULL);
+ 	if (IS_ERR(qspi->clk))
+-		return PTR_ERR(qspi->clk);
+-
++		return dev_err_probe(dev, PTR_ERR(qspi->clk),
++				     "can not enable the clock\n");
+ 	qspi->clk_rate = clk_get_rate(qspi->clk);
+ 	if (!qspi->clk_rate)
+ 		return -EINVAL;
+ 
+-	ret = clk_prepare_enable(qspi->clk);
+-	if (ret) {
+-		dev_err(dev, "can not enable the clock\n");
+-		return ret;
 -	}
 -
- 	pm_runtime_enable(&pdev->dev);
+ 	rstc = devm_reset_control_get_exclusive(dev, NULL);
+ 	if (IS_ERR(rstc)) {
+ 		ret = PTR_ERR(rstc);
+ 		if (ret == -EPROBE_DEFER)
+-			goto err_clk_disable;
++			goto err_defer;
+ 	} else {
+ 		reset_control_assert(rstc);
+ 		udelay(2);
+@@ -886,8 +880,7 @@ static int stm32_qspi_probe(struct platform_device *pdev)
+ 	pm_runtime_dont_use_autosuspend(qspi->dev);
+ err_dma_free:
+ 	stm32_qspi_dma_free(qspi);
+-err_clk_disable:
+-	clk_disable_unprepare(qspi->clk);
++err_defer:
  
- 	ret = devm_spi_register_controller(&pdev->dev, ctlr);
+ 	return ret;
+ }
+@@ -906,7 +899,6 @@ static void stm32_qspi_remove(struct platform_device *pdev)
+ 	pm_runtime_disable(qspi->dev);
+ 	pm_runtime_set_suspended(qspi->dev);
+ 	pm_runtime_dont_use_autosuspend(qspi->dev);
+-	clk_disable_unprepare(qspi->clk);
+ }
+ 
+ static int stm32_qspi_runtime_suspend(struct device *dev)
 -- 
 2.25.1
 
