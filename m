@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE918FCD0CB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 07:43:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26F10FCD0C5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 07:47:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zablY6ugffKFz9sA4EUoz2sz1VjYVeyw99d2asjcTsM=; b=LCJd0M6lQENP1D1Q1Y8s92VnkR
-	RuTaj306YE1BgkhrEC7tzOGgNFy5KQTJJK48tmi+pEHdkPYnd2ory/EyC+UexVXybmmKcz61eYEPd
-	hhlU9gveFrq0+BsX21Fa6K0vyH7+8JZd5OuZx7EQFxH1DMIS/nRXb9VnCwxWwWqqOwdkXYDk8G1Gs
-	c7gPWvB4Z02nU0X8zukpwO7FzLv+A2fRRtVZDdIbOpUao62+hhHG8/nLhhobPbBPs0yjc/9iDnGrC
-	naUnbnoPQRVIpwZgK3IuFm1K8tcaaeUYMvqUd5/n+VvutyurPuKBRZ/rqrh1Wazb6mFjf+HBAJleN
-	iP/jHghA==;
+	bh=W7okRwHbmOLYwcX9nZRHtRjeIdOYWsIJrwtONmfXo3Q=; b=A4mKlbnpwWOVzESOjREZxrYeHU
+	Bfs8IV+uR27mvTN2cELRVw1X/tYF7YIkoVZfN+PIT5c2m5RzEpbG7w0CdKAEHFKoYNquUwHtQQ95j
+	BFvVoZ2WMEL38fKFMBMCRzCKHcHkV+dztkpvp7ubxbjdmCS4TD4MC0lYECRqTyFp522aSiQ+rNPKj
+	m8/+9A8xXj2s/j/b5l7b3w1SmzglB0OF/AdxyspZX7UH1xB6AeaAVy2cTfc5fRftTPTnwpa4yALs6
+	gEMm63XXctE2W4/RKF/FYoGttR7voEZZHbwWt21O3eryA6tJmt0LUTLmNofIWfQoTjvQz3ESWl0Ab
+	Ct0KcrJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2lZB-00000007wbE-3kp2;
-	Wed, 18 Mar 2026 07:43:45 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1w2lcs-00000007x4a-0ei1;
+	Wed, 18 Mar 2026 07:47:34 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2lZ9-00000007wai-0fOy;
-	Wed, 18 Mar 2026 07:43:44 +0000
+	id 1w2lcp-00000007x3f-3OOT;
+	Wed, 18 Mar 2026 07:47:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5769E4322C;
-	Wed, 18 Mar 2026 07:43:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A71D5C2BC87;
-	Wed, 18 Mar 2026 07:43:41 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id B017F4345A;
+	Wed, 18 Mar 2026 07:47:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 06ECBC2BCAF;
+	Wed, 18 Mar 2026 07:47:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773819822;
-	bh=2w61jaemanYniJ5z43sVFgfleNvmAQFtWVHoLfwtBgE=;
+	s=k20201202; t=1773820050;
+	bh=VDiIhLFFonrPUteX43LY9+5XNgD2tV9IN6RK86KlBeE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LnHmL2+6oyLJywU4niLtDhchR53TnJcvi3YhDU7lA0wL9x86VDE1MzyyWABBenWxp
-	 1jBnli8V4Bgr2uXnhvTK/ANhpWoR8xTLBFXUkHB7p2DY0chrQvnAf3UzDOpWuMMRhx
-	 +IY90Ivlc3gw0WDk2QMrXDsy3db7gptKD7bJaz9Pu16ojbthflSulT9MzaQs/Yd2cq
-	 Xbv2w4AWHBsejf/xScBKqW5NGPIetQPsKSvtH6Ep3PPJtzI0yVmgHYQHzWMmf2BwYv
-	 ogeY8pM5ZVIW2W031GkxeKh8o0Q3/ffiKY6j5ZiKqFHxz5UmsRwqjGdOlCcFvZoRvI
-	 JnZ3rSneZdTTg==
-Date: Wed, 18 Mar 2026 08:43:39 +0100
+	b=TDz15YjXx23S4PukSS4zG1ixMHYOaF0o2HiXgBgyWaSJ1KiBKSJ0uUoLB4tF37Qvp
+	 IbynjUFxrG+U/quK/7jTBv2AfWXcVN5b3kZ5PmSIsgoPJttKoCrDVPM6yffQgVtCog
+	 n84PUu9HcvMBBcalXHeNSIk4eAZwXcNBHguMgFCX8z+w3218Dr9cZCKF7wFNuM9wrZ
+	 +s1Hk1mZSqigFCbgTu2QWBS39p8oErfj6L7Hz3IIURBLqyb1/bCLjBPEJaeR7bIbaD
+	 POLoSQrWMke1OYFSYAgDwK/NXr/h59ccz7Pw/PPRvCxjPfwFOCwRWFVZ3ySeOeEvuU
+	 ZuUMe4SXyU7fg==
+Date: Wed, 18 Mar 2026 08:47:28 +0100
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, 
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
-	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
+Cc: linux-mediatek@lists.infradead.org, Fabien Parent <parent.f@gmail.com>, 
+	Val Packett <val@packett.cool>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>, 
+	Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Linus Walleij <linusw@kernel.org>, 
 	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Julien Massot <julien.massot@collabora.com>, Gary Bisson <bisson.gary@gmail.com>, 
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, Val Packett <val@packett.cool>, 
-	Fabien Parent <parent.f@gmail.com>, Chen Zhong <chen.zhong@mediatek.com>, 
+	Gary Bisson <bisson.gary@gmail.com>, Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
+	Julien Massot <julien.massot@collabora.com>, Chen Zhong <chen.zhong@mediatek.com>, 
 	linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org
-Subject: Re: [PATCH v3 3/9] dt-bindings: regulator: Document MediaTek MT6392
- PMIC Regulators
-Message-ID: <20260318-nickel-serval-of-tolerance-621bad@quoll>
+Subject: Re: [PATCH v3 1/9] dt-bindings: mfd: mt6397: Add bindings for MT6392
+ PMIC
+Message-ID: <20260318-natural-hummingbird-from-sirius-ada960@quoll>
 References: <20260317184507.523060-1-l.scorcia@gmail.com>
- <20260317184507.523060-4-l.scorcia@gmail.com>
+ <20260317184507.523060-2-l.scorcia@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20260317184507.523060-4-l.scorcia@gmail.com>
+In-Reply-To: <20260317184507.523060-2-l.scorcia@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260318_004343_263164_356D5427 
-X-CRM114-Status: GOOD (  17.68  )
+X-CRM114-CacheID: sfid-20260318_004731_873405_D060BFDB 
+X-CRM114-Status: UNSURE (   8.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,87 +83,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 17, 2026 at 06:43:06PM +0000, Luca Leonardo Scorcia wrote:
-> Add bindings for the regulators found in the MediaTek MT6392 PMIC,
-> usually found in board designs using the MediaTek MT8516/MT8167 SoCs.
+On Tue, Mar 17, 2026 at 06:43:04PM +0000, Luca Leonardo Scorcia wrote:
+> @@ -92,6 +100,7 @@ properties:
+>                - mediatek,mt6328-regulator
+>                - mediatek,mt6358-regulator
+>                - mediatek,mt6359-regulator
+> +              - mediatek,mt6392-regulator
 
-Please use subject prefixes matching the subsystem. You can get them for
-example with 'git log --oneline -- DIRECTORY_OR_FILE' on the directory
-your patch is touching. For bindings, the preferred subjects are
-explained here:
-https://www.kernel.org/doc/html/latest/devicetree/bindings/submitting-patches.html#i-for-patch-submitters
+So this also should be dropped. I understand that we added compatibles
+to MFD device children 10-15 years ago, but what is the point of doing
+this still? What is the benefit? See also rules in overall-design in
+writing-bindings.
 
-You already received this feedback from Mark.
-
-> 
-> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-> ---
->  .../regulator/mediatek,mt6392-regulator.yaml  | 318 ++++++++++++++++++
->  .../regulator/mediatek,mt6392-regulator.h     |  24 ++
->  2 files changed, 342 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6392-regulator.yaml
->  create mode 100644 include/dt-bindings/regulator/mediatek,mt6392-regulator.h
-> 
-> diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6392-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6392-regulator.yaml
-> new file mode 100644
-> index 000000000000..fa4aad2dcbe8
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6392-regulator.yaml
-> @@ -0,0 +1,318 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/regulator/mediatek,mt6392-regulator.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek MT6392 Regulator
-> +
-> +description:
-> +  Regulator node of the PMIC. This node should under the PMIC's device node.
-> +  All voltage regulators provided by the PMIC are described as sub-nodes of
-> +  this node.
-> +
-> +properties:
-> +  compatible:
-> +    items:
-> +      - const: mediatek,mt6392-regulator
-
-Drop compatible. Regulator nodes do not have compatibles. With this, you
-can also drop example as it won't be used.
-
-> +
-> +patternProperties:
-> +  "^(buck_)?v(core|proc|sys)$":
-
-Nope, underscores are not allowed. Use only hyphens.
-
-> +    description: Buck regulators
-> +    type: object
-> +    $ref: regulator.yaml#
-> +    properties:
-> +      regulator-allowed-modes:
-> +        description: |
-> +          BUCK regulators can set regulator-initial-mode and regulator-allowed-modes to
-> +          values specified in dt-bindings/regulator/mediatek,mt6392-regulator.h
-> +        items:
-> +          enum: [0, 1]
-> +    unevaluatedProperties: false
-> +
-> +  "^(ldo_)?v(adc18|camio|cn18|io18)$":
-> +    description: LDOs with fixed 1.8V output
-
-If fixed, then encode it in the schema - min/max microvolt.
-
-> +    type: object
-> +    $ref: regulator.yaml#
-> +    properties:
-> +      regulator-allowed-modes:
-> +        description: |
-> +          LDO regulators can set regulator-initial-mode and regulator-allowed-modes to
-> +          values specified in dt-bindings/regulator/mediatek,mt6392-regulator.h
-> +        items:
-> +          enum: [0, 1]
-> +    unevaluatedProperties: false
+>                - mediatek,mt6397-regulator
+>            - items:
+>                - enum:
 
 Best regards,
 Krzysztof
