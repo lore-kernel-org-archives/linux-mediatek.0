@@ -4,77 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93259103E168
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 12:39:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2FF9103E168
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2026 12:44:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AG2Plse0/oVOXu1n86uPVAH1wWIxCEzbHrIuqXs3m6o=; b=q7Bp57kz0rI2/3QaIBgaz+EsKM
-	54fY3CGY8th4adc+HLpqbdXdI3qd2dVJrSleuRAQzKftPPPI8WwB9YKFZBgv4A+o5s6yNlatuMcug
-	NYayaA1nkRmMAe5WACDY4XHHkYoU8Sa4BxrbGRz7T7ulY+AyX5hxqfRgCJn/VTuu8k9Afr8CamR5p
-	09u/UsL0XfNjPuSCkywzzlQkvwXxdx5n7jgYcqAECR8tuSltAsM15zz7wCEO5mRXb37OrrOTmdob8
-	aQSUecdaPySe+ehIEDI//0DRb/PgKV4SsmOe1TfyK67cBNLBPR6c4ZwlW4aBOXPnVGMlyA5fgtyDK
-	seVEbsnw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EIzK+XJwL26FKWEfLAVTsG+0YLZHEvqVIhcFK4tOcqY=; b=rRZQ+A9CZPAZZ45tAkXVrMcQ8Y
+	/KD2kzl2fomOUzeHi5nMK6C4NQwme/WXSfGInc/mF97UDzxn+gJ6y2DKok/h/K/MCFjEvv22gIYIs
+	rpOYqE8CbmNZHqkqMiJ+e0/bmbnlJ51vcLc6UBgnW91PSK6A58t5fWABkuby/b9Gmz2Yu7QuvU+KV
+	f5p7g64/xlzdcUJTqO3Pnlm5+JLVfPKRr450DgcYlWbtN+QOpg1nyVuCkUPkRC8ikUyLzdYc5b3xr
+	PmNMER7R35i6G/GiHQZrI8wMjl9+IXeTf5CiHzzqqov8P9GNM3pIz9vfIBgGyjc8pHMUnjp1hFphd
+	l1GD96dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2qBb-00000008PSu-33kD;
-	Wed, 18 Mar 2026 12:39:43 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1w2qFt-00000008QEv-0YEk;
+	Wed, 18 Mar 2026 12:44:09 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2qBE-00000008PAg-3tQ5;
-	Wed, 18 Mar 2026 12:39:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1773837558;
-	bh=ajpz9j4PDIG86qR5i5L9xxin8pmlylEmgrk8Tz5D+Gs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=fcZEYG8DcYj6oZa2FU1hLemwGfXlzzSOLhaOu4FL4dcD0pP1vyJDPjwmT2xUj6Dxo
-	 eiPALZXG6fDTRTCjxTCt9h1U8g/rpO3uvkQL9ymjDrmBCrsTXLXZXmBb7DeC+tyRkc
-	 AtB2nsZ6T3rocTCu9/8jk6hwwmNo2XM+TAVEk97AUkrfNLNi9+01ONA/NJ1waMscex
-	 OI5JMjHlVHclezUwygGrLx1sSHGsW0yPGVMRLvObzbkWYp36nblk4J8+KkUJeDwDRa
-	 Ya/uYJQ24yinY2xXBSuwPJ4sY2qpGsm2CNHOmEjMJhagisZBFLeAcROz3G4iK6FUWt
-	 MSGaosIbMixFA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B6A8617E1380;
-	Wed, 18 Mar 2026 13:39:17 +0100 (CET)
-Message-ID: <8c73ca7d-254c-4b89-9b7a-d67afd6f909e@collabora.com>
-Date: Wed, 18 Mar 2026 13:39:17 +0100
+	id 1w2qFq-00000008QEE-04Mb;
+	Wed, 18 Mar 2026 12:44:07 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1773837818; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=Hcjl9+vzue7SzWhzftZD+XWtH9Yf8T288QTE9F2ExKhdct03dWuK/PHw2vPlDPIzC/C/Ou3YwsioE8jHWQLRZxIEMMwFWEMHnca3/Zez0hbi6UedZ7BQ7/JOvEIxjiq4v51bIv68KpkXYoxv4ffC42hDeR0UdzDc/Gu6MjoTieo=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1773837818; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=EIzK+XJwL26FKWEfLAVTsG+0YLZHEvqVIhcFK4tOcqY=; 
+	b=Y9p0I/mJr3WJ00wwmSz6u4dZaMRMhyxvuT1zoP0VWjF5ri6vaDUJP7SZD/T/qNpfs9vV0PNRlmUoo+dRC41HWivIVEo3l4LCqy0hrhGsoPUSe5N7YSK/JKsecxtMziOFayEYrobpY8FW8wKI8IzQAfy4aEUiDheXxIezNoStiuM=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nfraprado@collabora.com;
+	dmarc=pass header.from=<nfraprado@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1773837818;
+	s=zohomail; d=collabora.com; i=nfraprado@collabora.com;
+	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
+	bh=EIzK+XJwL26FKWEfLAVTsG+0YLZHEvqVIhcFK4tOcqY=;
+	b=cI5cy8WCw9aIJg3VyKe8Jth+80B0ZoaE+cQzwOqWzZNKd+A2yR5yYY0snnWPmsIZ
+	k1QMef+al2XTz2pAqdTOFyjuVqw9dU1+VQpYRVLjuioDCxki44ZYSg8gSCwLIrwXAUC
+	eAfV2FQmKwkhp24z5H6MKxBA4eCGArTQIZsOY/8g=
+Received: by mx.zohomail.com with SMTPS id 1773837815709511.22830844796204;
+	Wed, 18 Mar 2026 05:43:35 -0700 (PDT)
+Message-ID: <c1315144a464f8fee2d712d67f983ac0b3a94be8.camel@collabora.com>
+Subject: Re: [PATCH 00/11] Plane Color Pipeline support for MediaTek
+From: =?ISO-8859-1?Q?N=EDcolas?= "F. R. A. Prado" <nfraprado@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ CK Hu =?UTF-8?Q?=28=E8=83=A1=E4=BF=8A=E5=85=89=29?=
+	 <ck.hu@mediatek.com>, "pekka.paalanen@collabora.com"
+	 <pekka.paalanen@collabora.com>, "harry.wentland@amd.com"
+	 <harry.wentland@amd.com>
+Cc: "wiagn233@outlook.com" <wiagn233@outlook.com>, "tzimmermann@suse.de"	
+ <tzimmermann@suse.de>, "simona@ffwll.ch" <simona@ffwll.ch>, 
+ "mripard@kernel.org"	 <mripard@kernel.org>, Daniel Stone
+ <daniels@collabora.com>,  "linux-mediatek@lists.infradead.org"	
+ <linux-mediatek@lists.infradead.org>, "maarten.lankhorst@linux.intel.com"	
+ <maarten.lankhorst@linux.intel.com>, "dri-devel@lists.freedesktop.org"	
+ <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org"	
+ <linux-kernel@vger.kernel.org>, "chunkuang.hu@kernel.org"	
+ <chunkuang.hu@kernel.org>, "kernel@collabora.com" <kernel@collabora.com>, 
+ Ariel D'Alessandro <ariel.dalessandro@collabora.com>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,  "xaver.hugl@gmail.com"	
+ <xaver.hugl@gmail.com>, "linux-arm-kernel@lists.infradead.org"	
+ <linux-arm-kernel@lists.infradead.org>, "airlied@gmail.com"
+ <airlied@gmail.com>,  "matthias.bgg@gmail.com"	 <matthias.bgg@gmail.com>
+Date: Wed, 18 Mar 2026 08:43:32 -0400
+In-Reply-To: <67acc82d-e145-4f98-88b2-d30cc73f73a0@collabora.com>
+References: <20251223-mtk-ovl-pre-blend-colorops-v1-0-0cb99bd0ab33@collabora.com>
+	 <TY4PR01MB144323B0DDC18B05EE1472B5298BFA@TY4PR01MB14432.jpnprd01.prod.outlook.com>
+	 <TY4PR01MB14432E7601C0BE848D25E80C398BAA@TY4PR01MB14432.jpnprd01.prod.outlook.com>
+	 <cdf6a704-88f8-414a-adf1-65ea7237337f@amd.com>
+	 <20260206110901.660cf712@eldfell>
+	 <5963bca37996fa054ad75d4e5017d9c7e5158e9f.camel@collabora.com>
+	 <3efaa7ec40c68f0d463da00c3a57474a40d4fdae.camel@mediatek.com>
+	 <2e241629-2526-41c5-92fd-a0a0ec3ffc4e@collabora.com>
+	 <67acc82d-e145-4f98-88b2-d30cc73f73a0@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2-8 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 7/9] regulator: mt6392: Add support for MT6392
- regulator
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
- linux-mediatek@lists.infradead.org
-Cc: Fabien Parent <parent.f@gmail.com>, Val Packett <val@packett.cool>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
- Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Linus Walleij <linusw@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
- Mark Brown <broonie@kernel.org>, Gary Bisson <bisson.gary@gmail.com>,
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
- Julien Massot <julien.massot@collabora.com>,
- Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-gpio@vger.kernel.org
-References: <20260317184507.523060-1-l.scorcia@gmail.com>
- <20260317184507.523060-8-l.scorcia@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20260317184507.523060-8-l.scorcia@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260318_053921_163196_9F78A353 
-X-CRM114-Status: GOOD (  12.26  )
+X-CRM114-CacheID: sfid-20260318_054406_110854_84F7D831 
+X-CRM114-Status: GOOD (  48.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,40 +101,144 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/03/26 19:43, Luca Leonardo Scorcia ha scritto:
-> From: Fabien Parent <parent.f@gmail.com>
-> 
-> The MT6392 is a regulator found on boards based on the MediaTek
-> MT8167, MT8516, and probably other SoCs. It is a so called PMIC and
-> connects as a slave to a SoC using SPI, wrapped inside PWRAP.
-> 
-> Signed-off-by: Fabien Parent <parent.f@gmail.com>
-> Co-developed-by: Val Packett <val@packett.cool>
-> Signed-off-by: Val Packett <val@packett.cool>
-> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-> ---
->   drivers/regulator/Kconfig                  |   9 +
->   drivers/regulator/Makefile                 |   1 +
->   drivers/regulator/mt6392-regulator.c       | 487 +++++++++++++++++++++
->   include/linux/regulator/mt6392-regulator.h |  40 ++
->   4 files changed, 537 insertions(+)
->   create mode 100644 drivers/regulator/mt6392-regulator.c
->   create mode 100644 include/linux/regulator/mt6392-regulator.h
-> 
+On Thu, 2026-02-26 at 11:51 +0100, AngeloGioacchino Del Regno wrote:
+> Il 26/02/26 11:26, AngeloGioacchino Del Regno ha scritto:
+> > Il 26/02/26 07:24, CK Hu (=E8=83=A1=E4=BF=8A=E5=85=89) ha scritto:
+> > > On Fri, 2026-02-06 at 08:28 -0500, N=C3=ADcolas F. R. A. Prado wrote:
+> > > > On Fri, 2026-02-06 at 11:09 +0200, Pekka Paalanen wrote:
+> > > > > On Fri, 2 Jan 2026 13:40:21 -0500
+> > > > > Harry Wentland <harry.wentland@amd.com> wrote:
+> > > > >=20
+> > > > > > On 2026-01-01 07:37, Shengyu Qu wrote:
+> > > > > > >=20
+> > > > > > >=20
+> > > > > > > =E5=9C=A8 2025/12/30 02:53, Shengyu Qu =E5=86=99=E9=81=93:
+> > > > > > > >=20
+> > > > > > > >=20
+> > > > > > > > =E5=9C=A8 2025/12/24 3:44, N=C3=83 colas F. R. A. Prado =E5=
+=86=99=E9=81=93:
+> > > > >=20
+> > > > > > > > > Given the lack of support for writeback connectors on
+> > > > > > > > > the
+> > > > > > > > > MediaTek KMS driver, combined with limited hardware
+> > > > > > > > > documentation, I haven't been able to verify the
+> > > > > > > > > correctness
+> > > > > > > > > of
+> > > > > > > > > each curve, only that they were visually sane (gamma
+> > > > > > > > > curves
+> > > > > > > > > made
+> > > > > > > > > the image on the display brighter, while inverse
+> > > > > > > > > gamma made
+> > > > > > > > > it
+> > > > > > > > > darker).
+> > > > > > > >=20
+> > > > > > > > Hmmm I don't think this is acceptable. sRGB/scRGB has
+> > > > > > > > two
+> > > > > > > > transfer
+> > > > > > > > functions mentioned in original specification[1]. To
+> > > > > > > > keep color
+> > > > > > > > accuracy, we need someone from mediatek confirm whether
+> > > > > > > > this is
+> > > > > > > > piece- wise or pure power 2.2 transfer function, this
+> > > > > > > > is
+> > > > > > > > already
+> > > > > > > > done in original amdgpu color pipeline series, sRGB
+> > > > > > > > means
+> > > > > > > > piece-wise while also dedicated power 2.2 function
+> > > > > > > > exists.
+> > > > > >=20
+> > > > > > Not sure what you mean with this not being acceptable. This
+> > > > > > is
+> > > > > > about
+> > > > > > enabling HW support for this functionality. Not every HW
+> > > > > > has
+> > > > > > writeback for testing. At some point you'll have to trust
+> > > > > > the
+> > > > > > driver
+> > > > > > devs if you're going to use functionality of the driver.
+> > > > > > We're not
+> > > > > > always going to get everything perfect, but if that's
+> > > > > > really such a
+> > > > > > worry you can always use shaders to do precisely what you
+> > > > > > want.
+> > > > > >=20
+> > > > >=20
+> > > > > Hi Harry,
+> > > > >=20
+> > > > > yes, but I understood that in this case, the hardware
+> > > > > documentation
+> > > > > available is so vague that it's impossible to say what it
+> > > > > will
+> > > > > actually
+> > > > > do. There are no formulas given or referenced in the
+> > > > > documentation,
+> > > > > are
+> > > > > there, N=C3=ADcolas?
+> > > >=20
+> > > > No formulas at all, the only documentation I had available for
+> > > > the
+> > > > curves was the register definition, which simply lists the
+> > > > possible
+> > > > values: SCRGB, BT709, BT2020, HLG.
+> > >=20
+> > > Hi, Nicolas:
+> > >=20
+> > > In [1], it shows OVL could output data to WDMA which could write
+> > > data into DRAM.
+> > > Its control is similar to RDMA. RDMA read data from DRAM and WDMA
+> > > write data into=20
+> > > DRAM.
+> > > Do you have interest to implement WDMA?
+> >=20
+> > I wrote a WDMA driver a long ago, but I couldn't get it to work
+> > (though, I admit I
+> > didn't try hard to actually get it working).... if you want to take
+> > a look to check
+> > if anything obvious is missing, the driver is here:
+> >=20
+> > https://gitlab.collabora.com/mediatek/aiot/linux/-/blob/mediatek-dev/dr=
+ivers/gpu/
+> > =C2=A0
+> > drm/mediatek/mtk_disp_wdma.c?ref_type=3Dheads
+> >=20
+> > The driver I wrote was supposed to work on MT8781 Helio G99 (for a
+> > personal project
+>=20
+> Eh, sorry for the double email, I was meaning MT6789 Helio G99 - just
+> to be
+> extremely clear, though that wasn't much important (given that the
+> WDMA IP is
+> anyway practically the same between the two..).
+>=20
+> > as in upstreaming of the Xiaomi Poco M5 smartphone) and on MT8195
+> > as a PoC.
+> > I did test both platforms and this driver didn't work on both...
+> > not sure if that
+> > was because I misconfigured the MMSYS routing (on both) or if
+> > there's any actual
+> > issue with the driver I wrote.
+> >=20
+> > Again, didn't invest much time on this, anyway, so some obvious
+> > issue might be
+> > present.
 
-..snip..
+Hi,
 
-> +
-> +/* The array is indexed by id(MT6392_ID_XXX) */
-> +static struct mt6392_regulator_info mt6392_regulators[] = {
-> +	MT6392_BUCK("buck_vproc", VPROC, 700000, 1493750, 6250,
+Sorry for the delay.
 
-s/buck_//g
-s/ldo_//g
+Yes, I'm aware that the hardware supports writeback through the WDMA
+component, but as Angelo's implementation still seems to need some work
+(I quickly gave it a try but couldn't get it working), and I have very
+limited time to work on this, I'm first trying to reach out to MediaTek
+to see if more information can be obtained on this.
 
-after which
+(We also considered other options like routing the output of OVL to
+HDMI and capturing it from there, but again my time is the biggest
+limiter right now)
+>=20
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+--=20
+Thanks,
 
-
+N=C3=ADcolas
 
