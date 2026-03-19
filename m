@@ -4,108 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 788881091912
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2026 20:37:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E12C01091917
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2026 20:39:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=EvqUQZCqF37oJV9dJzcVxfSOLY81NlMRRK2XtKQH9vE=; b=cUENBio2p6hRLs/ffKWlZvUHXc
-	4fTQTVcIA8fbk16I8kQf0Z5Pobgb+riHOZ+Oi1FvSOK8wFekITWlN52MPFkFUt+t5agRQFHujhIfv
-	kFQpPQ4rzwiKMxH/nsOGdepMfPo/WqhoCp+nFXUZwKqOrmDAsoWM2GmpD/beHa04RgYbvvn0+PB/y
-	+PxKBOuhb6Y45cNlnkCAkGht7kYPkHcyclBwpjnGz83+9WdUpg9CtDuLHQK61YDAxngtOpsLH6x5k
-	mXVz2HtI/oFlYY3rXE+bJL9c5ACfkoHwCAGF4x9d9npPJ1hYqsURivM4cmSJcjs8YLpsTfKW2WN2M
-	CIY3igCg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eaWYm+Ogi+l2RIh2pnwzTgW1KAd3MUkqgb1vx7KhlRU=; b=k9gv+Q5V2s8xHYXSmeeONw0+mT
+	UjoiSBKkgjwL6BFzt/CMqvNQOcDm7BjHw/k5qb5t+iTfo1aucxVgaxm84F1rVOBQRjYRI9ZYJtAP4
+	MzjxcudxCGZnPGzfjfrAnTPs1EJAqdTCZrS/vF8s/nrCKz5AqrL/k098ozQHSml3kZyKHNkeeIax9
+	krqKKR37oOuLslXL33sifbBC8+8/uaxM+IeZECLHW3+w/npxNZKiKM8iz+fIjofQLkagkv3EBj7Ix
+	Q0sz+MntXpbdmKiEcdbCK6VPRUEoe/uuECaAgR86bS+wEP58/AG4zu21c8jowBG08JUnlBDiINK3y
+	+560GGzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3K75-0000000BXxF-2aHO;
-	Thu, 19 Mar 2026 20:37:03 +0000
-Received: from mail-oo1-xc33.google.com ([2607:f8b0:4864:20::c33])
+	id 1w3K9j-0000000BYEU-1dMh;
+	Thu, 19 Mar 2026 20:39:47 +0000
+Received: from out-189.mta0.migadu.com ([91.218.175.189])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3K72-0000000BXwN-1pUk
+	id 1w3K9g-0000000BYE7-2LDD
 	for linux-mediatek@lists.infradead.org;
-	Thu, 19 Mar 2026 20:37:02 +0000
-Received: by mail-oo1-xc33.google.com with SMTP id 006d021491bc7-67baf20e8c2so534914eaf.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 19 Mar 2026 13:37:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1773952619; x=1774557419; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=EvqUQZCqF37oJV9dJzcVxfSOLY81NlMRRK2XtKQH9vE=;
-        b=z9vdw0i5uw+aPzFPYqzaZBgD8X7K4DvfYtyg0HvrJzWfcQCQU3a0p2qE+lZ1Uo1HIE
-         IIXuiBEkgtUoWYgMDlFfm68KZYFEXX21204hw4/1CWmfS8oH1mHNZELsjNulwUgNkQOP
-         VGOwoNqJ4zH65Ebfg2k93xvDBMS5lHm5kDUCRIsnLUIMFcqgkBc3AbBS5LNJTVHgGegx
-         9qL8yTF4XMGHLXi2QajCzK+vUtoMrHiNRmGlM0eu0x3SKCjO2EWH2oRDpEN6SeV8MTKv
-         bUBcyjZcGoW4sxUXI5mCss9bWh6V4EwJ+kVE8xda5PWnN6LQr4BrgYTijFTtWVtlZXru
-         1XIQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1773952619; x=1774557419;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=EvqUQZCqF37oJV9dJzcVxfSOLY81NlMRRK2XtKQH9vE=;
-        b=aj75Oxfgh3QLgeqcptklHN8P2mxH9tHtGQEHQYF/4kgl18EiJf9Z2IuNeqKIStuOn4
-         5Ywc0YTOemsEgMzGtRoBSe2T8SXbEVzoed6NZkjgwyrtfJzzzpJald0BIAB+iLK16yK7
-         fUfErOVzKrivupQr4l+gCXwZ2Brs8sCVUvB0G/KSiCqtQ8j1QT5EOUATKjZWnje9GKBi
-         PeeCiuv/yGg5vQQK9PADswQihHmSXOlIkAmebOTs4dryEaAHIBI2ZEYiEchID54v1DgE
-         cOPRh84EVRSBTkL5hnTpAI1e4Y5ealCbmyoPrOOI5fYLBVVpWbVyZidHTunZPvCdPqN7
-         SxhQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU6jFcnEhkPo+/oWWadaZjFZUcKE6VnVMH47N1OwLDTCR16gJtvx40simQ0KXEjanaWMec/mMiK/gyg1C4ypQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzdiX3Z2QM7ixZTHvfrFvZRaYPdOyzVIVYbTXGa3XNeUg3CVFrj
-	HzvEfnyd/KEAkL4PgkYtP/h4vlExmjONG139l1nrKih1su3DTxdGoRzpphpB+hSMIfk=
-X-Gm-Gg: ATEYQzzlmyc8zK8YggQWBjcFtwG9CqX+ZbGSsC72p7Tm1+hHwqUDKZF6uDsdZHnQfJq
-	TFik5MG91Oyn40Bq00ElrNakra/Mik+5nYEebEl3MbVanIMkObHY2WOLHqnbRqP6TFnRICVC86w
-	ZxxwPsXvS4+zpelyXwj3tABAhyg11zgkEeXX/08U8aZfb1Dje79TZ3EWsf1j10s8VnVc3g5cI2q
-	u83nEstpmU/BiXJklK/hVWxjSQBkgKQm661VsTzT7STuQ8yPH8ry0PTdKl2ZkXLjXsB2xf8yrf2
-	3mtftc8NjUV/o48uh5QjQWfdUwR4g51KwV9Ih01mEBGxdvFvOLPHrxdGOrC27N3e9ft2HYhHd9t
-	ErHN9IOXH3GLnbNsv5j8fdgVpdolf18NCHDI8gh9B3uyd4ZsNNCEpU+p/xL35kCYQOQdiBfnX2c
-	1/Nyf7aEh2DKXdNCAqNfj94F9QC7iG
-X-Received: by 2002:a05:6820:1349:b0:67c:1deb:4f69 with SMTP id 006d021491bc7-67c22bb5697mr599850eaf.14.1773952619310;
-        Thu, 19 Mar 2026 13:36:59 -0700 (PDT)
-Received: from [127.0.1.1] ([2600:8803:e7e4:500:244c:fc8c:8216:1344])
-        by smtp.gmail.com with ESMTPSA id 006d021491bc7-67c252acd32sm52512eaf.3.2026.03.19.13.36.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Mar 2026 13:36:58 -0700 (PDT)
-From: David Lechner <dlechner@baylibre.com>
-Date: Thu, 19 Mar 2026 15:36:49 -0500
-Subject: [PATCH] dt-bindings: mmc: mtk-sd: add mediatek,mt8183-mmc fallback
- to mediatek,mt8189-mmc
+	Thu, 19 Mar 2026 20:39:46 +0000
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=justthetip.ca;
+	s=key1; t=1773952779;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=eaWYm+Ogi+l2RIh2pnwzTgW1KAd3MUkqgb1vx7KhlRU=;
+	b=w5aW9AldFPWHFL45KWDzamzXf7XNc5HY9Iqr2yV5WIzonrrcHpCd0wvlZvkeBH8atuJAfO
+	sNFNqIuw/FPBlUHmmKWX9WL5OWpmKGd9uAGvJ98jU52zhpJud7B335R5VBXy84/vvhQb/9
+	YitnH9sqS4z9R1gUY/lhm9OVLnOHSKh3jgkVII9Y9t4eotMED2T4oTJqzeGz5FEnTnjIQE
+	Ra/n+WL2Qh8AFOCigmxmOqteJPwD/rlFYWQhh8LIUb6TyIOqSRTcKbmS4wEBpqRdcolo2R
+	YWhO+8YaBOAYKHzuTXrX+9s+OihAXJl5zujEp5qSPyDeMLlNIQKJ40wU/Jb++Q==
+From: Lucid Duck <lucid_duck@justthetip.ca>
+To: Sean Wang <sean.wang@kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	morrownr@gmail.com,
+	Lucid Duck <lucid_duck@justthetip.ca>,
+	stable@vger.kernel.org
+Subject: [PATCH v4] wifi: mt76: mt7921: fix txpower reporting from rate power configuration
+Date: Thu, 19 Mar 2026 13:38:54 -0700
+Message-ID: <20260319203854.30479-1-lucid_duck@justthetip.ca>
+In-Reply-To: <CAGp9LzqLbdEb25ocObMMuFPZitrL-UnC7uhaLOkYQN=TgSTmnA@mail.gmail.com>
+References: <CAGp9LzqLbdEb25ocObMMuFPZitrL-UnC7uhaLOkYQN=TgSTmnA@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260319-mtk-mmc-mt8189-compatible-v1-1-fb7ef2186c92@baylibre.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMywqDMBCF4VeRWXfARLz1VYqLOBl12kYliaUgv
- rtpXR2+xfl3COyFA9yzHTx/JMgyJ6hbBjSZeWQUmww611VeqBZdfKFzlLZRTYu0uNVE6d+MptL
- W1FRaWzOk/+p5kO+//eguh61/MsVfEI7jBFHNVOd9AAAA
-X-Change-ID: 20260319-mtk-mmc-mt8189-compatible-a62da7c5dd7e
-To: Chaotian Jing <chaotian.jing@mediatek.com>, 
- Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Wenbin Mei <wenbin.mei@mediatek.com>
-Cc: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
- linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, David Lechner <dlechner@baylibre.com>
-X-Mailer: b4 0.15-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1519; i=dlechner@baylibre.com;
- h=from:subject:message-id; bh=5skePx64WNITX84S4NyRGOGsgVrQRd/nLA8489wbHmQ=;
- b=owEBbQGS/pANAwAKAcLMIAH/AY/AAcsmYgBpvF5i18RSPpFlTkJhXKuRHU1GKiogcHWVUfImk
- AchlfWq8pSJATMEAAEKAB0WIQTsGNmeYg6D1pzYaJjCzCAB/wGPwAUCabxeYgAKCRDCzCAB/wGP
- wNTrB/wJp0iLTjLMrEAxu7kkALAuENcVqHfsvkgUSrsHT0Wy0MeoXaG9Cp3UIlJ9gNCXOEoAXUR
- 3u/C1no4zCoDG0WMepZn6cHej94IB24DQZVNYdeDOl0OFtEDIuz902EinxNow8JfnAmLwX4w4aU
- RDSkC9kLidPbkFS7CsE4fLWlpRW0eY0OzpN55PuNEq+4jfPIYI+z5k3Qr99oTU+HCCCFVTC9j5d
- YdK7+xKXOz1AGfNSztdM7/NFqDtZPmR/8+baKRZQ01ZnuP85PSnqL5zO5rZ6OVqnVNcCv4ourPM
- WopQsPZ8TelzX2HGxM04ez5i53jSAozyu6LUB+V8ya9GVijk
-X-Developer-Key: i=dlechner@baylibre.com; a=openpgp;
- fpr=8A73D82A6A1F509907F373881F8AF88C82F77C03
+Content-Transfer-Encoding: 8bit
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260319_133700_730940_2C049DAE 
-X-CRM114-Status: GOOD (  12.39  )
+X-CRM114-CacheID: sfid-20260319_133945_237263_0D5227DC 
+X-CRM114-Status: GOOD (  13.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,46 +74,146 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change mediatek,mt8189-mmc to include mediatek,mt8183-mmc as a fallback
-compatible.
+The mt7921 driver never updates phy->txpower_cur from the rate power
+configuration sent to firmware, causing mt76_get_txpower() to report
+bogus values to userspace (typically 3 dBm) regardless of actual
+regulatory or SAR limits.
 
-This has been tested using U-Boot and the MMC is still working using the
-mediatek,mt8183-mmc fallback compatible, so they seem to be compatible
-enough. And there are no upstream users of mediatek,mt8189-mmc yet, so
-this should not be a breaking change.
+Two issues are addressed:
 
-Signed-off-by: David Lechner <dlechner@baylibre.com>
+1. The rate power loop in mt76_connac_mcu_rate_txpower_band() computes
+   the correct bounded TX power per channel via
+   mt76_get_rate_power_limits() but discards the return value. Capture
+   it and store to phy->txpower_cur when processing the current
+   channel, matching how mt7915 handles this in
+   mt7915_mcu_set_txpower_sku(). Subtract the multi-chain path delta
+   before storing, since mt76_get_txpower() adds it back when
+   reporting -- consistent with mt7915's use of mt76_get_power_bound()
+   which performs the same subtraction.
+
+2. mt7921 uses the chanctx model but its add_chanctx callback does not
+   update phy->chandef, leaving it stale after association. The rate
+   power loop's channel comparison then fails silently. Sync
+   phy->chandef from ctx->def in add_chanctx and change_chanctx, and
+   recompute txpower_cur via a lightweight helper that performs the
+   same bounded power calculation for the current channel without
+   reprogramming firmware rate tables.
+
+Tested on Alfa AWUS036AXML (MT7921AU), kernel 6.19.8, Canada:
+
+  Before: iw dev wlan0 info shows "txpower 3.00 dBm" (wrong)
+  After:  2.4GHz 36 dBm, 5GHz 23 dBm, 6GHz 12 dBm (match regulatory)
+
+Cc: stable@vger.kernel.org
+Fixes: 1c099ab44727 ("mt76: mt7921: add MAC support")
+Signed-off-by: Lucid Duck <lucid_duck@justthetip.ca>
 ---
- Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes since v3:
+- Removed mt7921_set_tx_sar_pwr() from add_chanctx and change_chanctx.
+  Channel transitions don't change underlying power constraints, so
+  reprogramming the full rate table is unnecessary. Replaced with a
+  lightweight helper that recomputes txpower_cur locally.
+- Removed IEEE80211_CONF_CHANGE_CHANNEL trigger from config().
+- Removed BSS_CHANGED_TXPOWER handler from bss_info_changed(). Writing
+  per-vif txpower into per-HW hw->conf.power_level breaks multi-vif
+  semantics. User txpower limits need a different approach (follow-up).
+- Subtracted path delta before storing txpower_cur. The connac rate
+  loop stores total bounded power, but mt76_get_txpower() adds the
+  multi-chain path delta when reporting. mt7915 accounts for this via
+  mt76_get_power_bound(), which subtracts the delta before storing.
+  Without the same subtraction, reported values were inflated by 3 dBm
+  on 2x2 devices.
 
-diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-index eb3755bdfdf7..9160e449aeb9 100644
---- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-+++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-@@ -25,7 +25,6 @@ properties:
-           - mediatek,mt8135-mmc
-           - mediatek,mt8173-mmc
-           - mediatek,mt8183-mmc
--          - mediatek,mt8189-mmc
-           - mediatek,mt8196-mmc
-           - mediatek,mt8516-mmc
-       - items:
-@@ -36,6 +35,7 @@ properties:
-               - mediatek,mt6893-mmc
-               - mediatek,mt8186-mmc
-               - mediatek,mt8188-mmc
-+              - mediatek,mt8189-mmc
-               - mediatek,mt8192-mmc
-               - mediatek,mt8195-mmc
-               - mediatek,mt8365-mmc
+ .../wireless/mediatek/mt76/mt76_connac_mcu.c  | 14 +++++++--
+ .../net/wireless/mediatek/mt76/mt7921/main.c  | 30 +++++++++++++++++++
+ 2 files changed, 41 insertions(+), 3 deletions(-)
 
----
-base-commit: b84a0ebe421ca56995ff78b66307667b62b3a900
-change-id: 20260319-mtk-mmc-mt8189-compatible-a62da7c5dd7e
-
-Best regards,
---  
-David Lechner <dlechner@baylibre.com>
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index 16db0f208..e26a2cb39 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -2193,14 +2193,22 @@ mt76_connac_mcu_rate_txpower_band(struct mt76_phy *phy,
+ 				.hw_value = ch_list[idx],
+ 				.band = band,
+ 			};
+-			s8 reg_power, sar_power;
++			s8 reg_power, sar_power, max_power;
+ 
+ 			reg_power = mt76_connac_get_ch_power(phy, &chan,
+ 							     tx_power);
+ 			sar_power = mt76_get_sar_power(phy, &chan, reg_power);
+ 
+-			mt76_get_rate_power_limits(phy, &chan, limits,
+-						   sar_power);
++			max_power = mt76_get_rate_power_limits(phy, &chan,
++							       limits,
++							       sar_power);
++
++			if (phy->chandef.chan &&
++			    phy->chandef.chan->hw_value == ch_list[idx] &&
++			    phy->chandef.chan->band == band)
++				phy->txpower_cur = max_power -
++					mt76_tx_power_path_delta(
++						hweight16(phy->chainmask));
+ 
+ 			tx_power_tlv.last_msg = ch_list[idx] == last_ch;
+ 			sku_tlbv.channel = ch_list[idx];
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index 5881040ac..a77ae5791 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -1355,13 +1355,39 @@ mt7921_stop_ap(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	mt792x_mutex_release(dev);
+ }
+ 
++static void mt7921_update_txpower_cur(struct mt76_phy *phy)
++{
++	struct mt76_power_limits limits;
++	struct ieee80211_channel *chan = phy->chandef.chan;
++	int n_chains = hweight16(phy->chainmask);
++	s8 reg_power, sar_power, max_power;
++	int tx_power;
++
++	if (!chan)
++		return;
++
++	tx_power = 2 * phy->hw->conf.power_level;
++	if (!tx_power)
++		tx_power = 127;
++
++	reg_power = mt76_connac_get_ch_power(phy, chan, tx_power);
++	sar_power = mt76_get_sar_power(phy, chan, reg_power);
++	max_power = mt76_get_rate_power_limits(phy, chan, &limits, sar_power);
++
++	phy->txpower_cur = max_power - mt76_tx_power_path_delta(n_chains);
++}
++
+ static int
+ mt7921_add_chanctx(struct ieee80211_hw *hw,
+ 		   struct ieee80211_chanctx_conf *ctx)
+ {
+ 	struct mt792x_dev *dev = mt792x_hw_dev(hw);
++	struct mt76_phy *mphy = hw->priv;
+ 
+ 	dev->new_ctx = ctx;
++	mphy->chandef = ctx->def;
++	mt7921_update_txpower_cur(mphy);
++
+ 	return 0;
+ }
+ 
+@@ -1396,6 +1422,10 @@ mt7921_change_chanctx(struct ieee80211_hw *hw,
+ 		mt7921_mcu_config_sniffer(mvif, ctx);
+ 	else
+ 		mt76_connac_mcu_uni_set_chctx(mvif->phy->mt76, &mvif->bss_conf.mt76, ctx);
++
++	phy->mt76->chandef = ctx->def;
++	mt7921_update_txpower_cur(phy->mt76);
++
+ 	mt792x_mutex_release(phy->dev);
+ }
+ 
+-- 
+2.53.0
 
 
