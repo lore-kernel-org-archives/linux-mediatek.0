@@ -4,119 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F26D107528B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2026 09:48:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2ED8108E1F3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2026 11:37:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F8irBykowPt+uvQoGdqM/C5yPJ/WiG3eDnhOjMuzfnU=; b=05qCXMMt0YYCYkpuG27p4IUjuG
-	5vzdGZ4MOKxb4E8snDbAp6vjR6ycep3uy9Xv+cOH1HToKH++THFqa5L4jEDgwgLYNFzqdAF2BZPH8
-	UTnCbYy6OnvitqXLpPJaKPlI1Z2JdWDvHn2S4s3Wbi7M671Rmstqk722iWYWHqQDuQNrT19CvveEt
-	1o4p3vlYsuah0TsV2g5DIRjE5edpO2JpowVLOYQ4YejTZrCi1HfdDr6liXcX/2N2gJ0qPVTovkPl8
-	MIP91Fis/YCW/lzhWjYRCLoN6yuEnC+CR3LUAqiIN0fzwOSzByvCBRI0MgDUdhrMu3RVkv9GePeds
-	SSeUnvow==;
+	Content-Type:MIME-Version:Message-ID:In-Reply-To:Date:From:Cc:To:Subject:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	bh=/zLqUX9638EjzCGbdeOMsCF1baOBDUrnDtEoZsS99Fk=; b=CjEsnGYH6o1CBX3hYK3W/YF9ns
+	w/KkSP5OGJXc0lv9vy5KVNh8KDHdUpO7Q3/VFkIeJIHe+7+11oVaYpS7QkolN4FdVv1bo8BHTcdNa
+	hlGuy7YITMjPyILtm5PwsMgd3+NG0ZslMGDRjLwounNsxsAQ7D7NY/psGj5Iq6J8NcAzHd114RhZy
+	uP0Ed/AJwCrl/X/fqh9xRfOz19fzBccf0eMdNYSNwZBT11QLiU12btonMnRcTOGGTFQ7YsXdjVtnh
+	huxaetlkDLTntDMgl+BbPUJPq3K+uUo6YIgsuwo3I7mkjzTByEKE7eNKZ3/BmKwtvkfXxjbJFpzdZ
+	i3tfvAzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w39zd-0000000AM9v-2PNN;
-	Thu, 19 Mar 2026 09:48:41 +0000
-Received: from mail-northeuropeazon11012064.outbound.protection.outlook.com ([52.101.66.64] helo=DUZPR83CU001.outbound.protection.outlook.com)
+	id 1w3Bh6-0000000AY56-0JFg;
+	Thu, 19 Mar 2026 11:37:40 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w39za-0000000AM8l-1eUA;
-	Thu, 19 Mar 2026 09:48:39 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Tr3m8jPs3G3KNhyzj8m5wUlO30XvHAHNy71ZerOnOtm9EdJrZFjQzN5x7Mf8uCEtQm/CFbh8QA0jwZ7FsntiwR734ZdwCJHcP6G+kOraGgtWYYyKGuxLLl9iX3TOMCLjxBFazP4COIT5nuWVNYKub69vkZ04Pv+H+Cr2MfEfOsh0mJKPXFuIHwvbnVbIjTOIlHXY71V16hAcyMAVsy++H6uavAVZLKD/K2aEL6jAS1M97h3Wex4IE+gmKm2q23LK7YTffhIb9aJ1ReJKlYjg3LAGOnu8GD6qEoIuN8YIafWMOZrln4rilGUjAMfHhvmeQpHQNrwYeybK3Iep8yjtZA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=F8irBykowPt+uvQoGdqM/C5yPJ/WiG3eDnhOjMuzfnU=;
- b=VQPOayFfVtzbkWmE1ZRqaZV/Ej3y2pVhGY0HyUYDhR9fP1yEaQwlkLVDEbuD+mIoi3hktlYMZyvI5alICDM6m8iJ/v/fYHeWZbPkrWUi7QO75AIzrJvNcmHuBRiMgSU3bXHtroQ185qfA9PDZqw+qtwq8dEQhcSg4AS4PKz8VTh9DMP7PX3e5iPF0UvlMMmRJvjwa4Us5NYj308wPpVAMprhxTDmJ8jDdava75FaAeiiuJUouKKPOFHAX+6KmqPYbFcO7zNcPSVS8mYeyF1bsLSyh3D5AvkhtgbJjjbGyT19OZ7T2hfWgorjT6r7XcnNmBL63lIlpFwRRgvH5nbwyw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=fail (sender ip is
- 164.130.1.60) smtp.rcpttodomain=kylinos.cn smtp.mailfrom=foss.st.com;
- dmarc=fail (p=none sp=none pct=100) action=none header.from=foss.st.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=F8irBykowPt+uvQoGdqM/C5yPJ/WiG3eDnhOjMuzfnU=;
- b=hDBfhb92AcbQH9dL47ruZVUQqjTu5mNw17TMz0ax31r3FW6OrJVUS7tx4lGYz7WzrgHyLDB3f40rtaHyQ8BWFvwf8bWTUTcnw7MgopGD7LVSTuCKS//fmsPp2uhD/NFxXZL/ELE8RjGHtGuw/4Mzvbs5GfvOAiOUbilaou0SGdAS/oNOkyMOeZEel5Wubi8PjBRIHfcbYpAy+JKHak64b7t3dxB2eRHRq2SQne384TVLADb4xvy6erqjOIDAEUDcIaoSermdKdOYWvSFR3TLFyzwih0rgN7Pg0ZbcFI7DoL6thVs4cMJpuvMRMGrdgVgsaN4KjnoYGaIyMfKuZC6Mg==
-Received: from AS9PR06CA0361.eurprd06.prod.outlook.com (2603:10a6:20b:460::13)
- by VI0PR10MB9075.EURPRD10.PROD.OUTLOOK.COM (2603:10a6:800:214::22) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9723.19; Thu, 19 Mar
- 2026 09:48:25 +0000
-Received: from AM1PEPF000252DA.eurprd07.prod.outlook.com
- (2603:10a6:20b:460:cafe::75) by AS9PR06CA0361.outlook.office365.com
- (2603:10a6:20b:460::13) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9723.19 via Frontend Transport; Thu,
- 19 Mar 2026 09:48:25 +0000
-X-MS-Exchange-Authentication-Results: spf=fail (sender IP is 164.130.1.60)
- smtp.mailfrom=foss.st.com; dkim=none (message not signed)
- header.d=none;dmarc=fail action=none header.from=foss.st.com;
-Received-SPF: Fail (protection.outlook.com: domain of foss.st.com does not
- designate 164.130.1.60 as permitted sender) receiver=protection.outlook.com;
- client-ip=164.130.1.60; helo=smtpO365.st.com;
-Received: from smtpO365.st.com (164.130.1.60) by
- AM1PEPF000252DA.mail.protection.outlook.com (10.167.16.52) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9723.19 via Frontend Transport; Thu, 19 Mar 2026 09:48:23 +0000
-Received: from STKDAG1NODE2.st.com (10.75.128.133) by smtpO365.st.com
- (10.250.44.72) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.29; Thu, 19 Mar
- 2026 10:50:42 +0100
-Received: from [10.252.1.11] (10.252.1.11) by STKDAG1NODE2.st.com
- (10.75.128.133) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.29; Thu, 19 Mar
- 2026 10:48:22 +0100
-Message-ID: <e0675843-19a1-42da-a784-c3364deac785@foss.st.com>
-Date: Thu, 19 Mar 2026 10:48:21 +0100
+	id 1w3Bh3-0000000AY4R-3JxO;
+	Thu, 19 Mar 2026 11:37:37 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 35DD060133;
+	Thu, 19 Mar 2026 11:37:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 539CBC19424;
+	Thu, 19 Mar 2026 11:37:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1773920256;
+	bh=lx3Y+gONMDNkZQlJ1Ecsu+oIAch8sjLVYDK451EVLAs=;
+	h=Subject:To:Cc:From:Date:In-Reply-To:From;
+	b=TIqMu0r8gWgNr4iiaObtgH4fXn3tc6ogxD13etxBoMy8tYq29d+gf8ccdQcdrn9Tf
+	 LX0Hw7LnW7+5GFOE6gwQ72W2DX60HazGw7hnqQ5jkAF1rWgc2kMcn3QvJulP0A6fxK
+	 gHyQVz/AGxNs5x/k68KYY8IbzGgxhqpObZgMlIVM=
+Subject: Patch "net: fix segmentation of forwarding fraglist GRO" has been added to the 6.6-stable tree
+To: 1468888505@139.com,andrii@kernel.org,ast@kernel.org,daniel@iogearbox.net,davem@davemloft.net,dsahern@kernel.org,edumazet@google.com,gregkh@linuxfoundation.org,haoluo@google.com,jibin.zhang@mediatek.com,john.fastabend@gmail.com,jolsa@kernel.org,kpsingh@kernel.org,kuba@kernel.org,linux-arm-kernel@lists.infradead.org,linux-mediatek@lists.infradead.org,martin.lau@linux.dev,matthias.bgg@gmail.com,pabeni@redhat.com,patches@lists.linux.dev,sdf@google.com,song@kernel.org,steffen.klassert@secunet.com,willemb@google.com,yhs@fb.com,yoshfuji@linux-ipv6.org
+Cc: <stable-commits@vger.kernel.org>
+From: <gregkh@linuxfoundation.org>
+Date: Thu, 19 Mar 2026 12:37:12 +0100
+In-Reply-To: <20260302065528.2695652-1-1468888505@139.com>
+Message-ID: <2026031912-depress-subsidy-9617@gregkh>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 13/17] spi: stm32: Simplify clock handling with
- devm_clk_get_enabled()
-To: Pei Xiao <xiaopei01@kylinos.cn>, <linux-spi@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<imx@lists.linux.dev>, <openbmc@lists.ozlabs.org>,
-	<linux-rockchip@lists.infradead.org>, <linux-riscv@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<linux-stm32@st-md-mailman.stormreply.com>, <broonie@kernel.org>,
-	<Frank.Li@nxp.com>
-References: <cover.1773885292.git.xiaopei01@kylinos.cn>
- <c8259f582596fd08541b94dce5dbb4cae513e295.1773885292.git.xiaopei01@kylinos.cn>
-Content-Language: en-US
-From: Amelie Delaunay <amelie.delaunay@foss.st.com>
-In-Reply-To: <c8259f582596fd08541b94dce5dbb4cae513e295.1773885292.git.xiaopei01@kylinos.cn>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.252.1.11]
-X-ClientProxiedBy: STKCAS1NODE1.st.com (10.75.128.134) To STKDAG1NODE2.st.com
- (10.75.128.133)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM1PEPF000252DA:EE_|VI0PR10MB9075:EE_
-X-MS-Office365-Filtering-Correlation-Id: 20481b7e-945b-46fc-10b8-08de859ca988
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|82310400026|376014|7416014|36860700016|1800799024|921020|22082099003|56012099003|18002099003|7053199007;
-X-Microsoft-Antispam-Message-Info: dXA8tdkTerByHge+1jzLn7mBEtACVp5VAwYVNtkOF/bCWL1Mp36dSDesSLfQ8XU/x2iORKECITkcCVB/l9TIc9WKkciAVdxhJb/xDjSm+X+WvFGg40fYKVxXK12p7+tPdW62FI09VKwt3JXHfHmRD+3O/A2GGgdJUOutlDWeRg1Kqa150tIYv4aP0mRwRxP03a3iLpTRlkJj1dSaKS2C8L7JHwmJOqbSibXMvRox7t56kxMrGzmEEA/q/zytFyHxcWZntCcKtvgtZkx2+Ji602A+Ds7PAz/YFFoNPZp77JUPGtVWPG+4n2n9U+/9N7yr6JaZ/D3hk5ai7FDbUQk2ATsI0DKSQVVMJkidNVIf512i7tuUkjI/6loQHfp8La8umcTwih1hfU9czc/3xA4XNRYwNzg7ZarpZfWpWPea1Ga9ZY+D+9bxY+cXyr7PPN4wsjvGFZYT4JDC3w9xyqlv+MIsM3+PSfQWbp1wMF0+2LaYhsRQ7tmuyloRiKnnCd1iCn2GM4S8rJJxjWyfFelAoR/QJ9JhceYzM67KjtZzF5YO1QZVB/CvbkpyKUaNsJLPclfuBlcmJPHeKHzqtGJPk/FQ4stXBdrqOPkCHLmBrnUV097arrwm6hlewWcl7vWF1VygqkVJ9tY9GYafh7fBM6ZToy/s6gLmUaLm/Jdk0oI5EyH3IKk7IeEpgYoFqOwJa5W/4OX/qALn9KOy/teQxqL3Cpb1OptGfARGg8WFaakTIY5MpYoQc+RT6lVgKhhghUYDggnX7HW4UhqgjiM/hYSyQwRI7uL2q7qWkTvVZPpga43oza27fG4WzFu/SR4y
-X-Forefront-Antispam-Report: CIP:164.130.1.60;CTRY:IT;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:smtpO365.st.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(82310400026)(376014)(7416014)(36860700016)(1800799024)(921020)(22082099003)(56012099003)(18002099003)(7053199007);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: iVPU4El0mriIi6rcadh4F+91RRV6u/zh1YZ+j/a4s82HKv8HXsUq3wQGPy+I5D7Vswet4sCVw3Uq9/AqCHA/BJDHepDqaCOhmceRdCUqun+VmGkB/JekN+fiK8g0bpIuPu3s0XvECKh14B8g9lrIDQeoZZBvKd2Bj3dUwTp90t3bFWyIqWTswDf4mBcSI7Tr14QfIhGxbH++gKGjkNnHQBH81yb1nfjx/EAETbxJ1KyiwejPLC3nnDQkFxu64EBU/idJWveyxOPTN0PPVsRsPhQ5qqxjK2Q9oPjhqeJLBdZycH6EZD/44S9ls2GVZEsUGtuXp1CHnXqTwE431Tg7M0bhgiOt5vPybKTd6FsjWkN47CPoT8HTOSApH8HNGyQridnMyIrDYZ/QszyRhJCAs2jjQvsFTeh/wTrHG0HOZM5PK75fi4Cr40u8NLR42/KR
-X-OriginatorOrg: foss.st.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Mar 2026 09:48:23.8001
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 20481b7e-945b-46fc-10b8-08de859ca988
-X-MS-Exchange-CrossTenant-Id: 75e027c9-20d5-47d5-b82f-77d7cd041e8f
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=75e027c9-20d5-47d5-b82f-77d7cd041e8f;Ip=[164.130.1.60];Helo=[smtpO365.st.com]
-X-MS-Exchange-CrossTenant-AuthSource: AM1PEPF000252DA.eurprd07.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI0PR10MB9075
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260319_024838_735902_0FF56FAA 
-X-CRM114-Status: GOOD (  17.59  )
+Content-Type: text/plain; charset=ANSI_X3.4-1968
+Content-Transfer-Encoding: 8bit
+X-stable: commit
+X-Patchwork-Hint: ignore 
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,144 +65,132 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
+This is a note to let you know that I've just added the patch titled
 
-On 3/19/26 03:04, Pei Xiao wrote:
-> Replace devm_clk_get() followed by clk_prepare_enable() with
-> devm_clk_get_enabled() for the clock. This removes the need for
-> explicit clock enable and disable calls, as the managed API automatically
-> handles clock disabling on device removal or probe failure.
-> 
-> Remove the now-unnecessary clk_disable_unprepare() calls from the probe
-> error paths and the remove callback. Also simplify error handling by
-> using dev_err_probe().
-> 
-> Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
+    net: fix segmentation of forwarding fraglist GRO
 
-Reviewed-by: Amelie Delaunay <amelie.delaunay@foss.st.com>
+to the 6.6-stable tree which can be found at:
+    http://www.kernel.org/git/?p=linux/kernel/git/stable/stable-queue.git;a=summary
 
-> ---
->   drivers/spi/spi-stm32.c | 62 +++++++++++------------------------------
->   1 file changed, 17 insertions(+), 45 deletions(-)
-> 
-> diff --git a/drivers/spi/spi-stm32.c b/drivers/spi/spi-stm32.c
-> index 8a7f5a10d4af..be88e62075af 100644
-> --- a/drivers/spi/spi-stm32.c
-> +++ b/drivers/spi/spi-stm32.c
-> @@ -2360,25 +2360,20 @@ static int stm32_spi_probe(struct platform_device *pdev)
->   	int ret;
->   
->   	cfg = of_device_get_match_data(&pdev->dev);
-> -	if (!cfg) {
-> -		dev_err(&pdev->dev, "Failed to get match data for platform\n");
-> -		return -ENODEV;
-> -	}
-> +	if (!cfg)
-> +		return dev_err_probe(&pdev->dev, -ENODEV,
-> +				     "Failed to get match data for platform\n");
->   
->   	device_mode = of_property_read_bool(np, "spi-slave");
-> -	if (!cfg->has_device_mode && device_mode) {
-> -		dev_err(&pdev->dev, "spi-slave not supported\n");
-> -		return -EPERM;
-> -	}
-> +	if (!cfg->has_device_mode && device_mode)
-> +		return dev_err_probe(&pdev->dev, -EPERM, "spi-slave not supported\n");
->   
->   	if (device_mode)
->   		ctrl = devm_spi_alloc_target(&pdev->dev, sizeof(struct stm32_spi));
->   	else
->   		ctrl = devm_spi_alloc_host(&pdev->dev, sizeof(struct stm32_spi));
-> -	if (!ctrl) {
-> -		dev_err(&pdev->dev, "spi controller allocation failed\n");
-> -		return -ENOMEM;
-> -	}
-> +	if (!ctrl)
-> +		return dev_err_probe(&pdev->dev, -ENOMEM, "spi controller allocation failed\n");
->   	platform_set_drvdata(pdev, ctrl);
->   
->   	spi = spi_controller_get_devdata(ctrl);
-> @@ -2409,32 +2404,18 @@ static int stm32_spi_probe(struct platform_device *pdev)
->   		return ret;
->   	}
->   
-> -	spi->clk = devm_clk_get(&pdev->dev, NULL);
-> -	if (IS_ERR(spi->clk)) {
-> -		ret = PTR_ERR(spi->clk);
-> -		dev_err(&pdev->dev, "clk get failed: %d\n", ret);
-> -		return ret;
-> -	}
-> +	spi->clk = devm_clk_get_enabled(&pdev->dev, NULL);
-> +	if (IS_ERR(spi->clk))
-> +		return dev_err_probe(&pdev->dev, PTR_ERR(spi->clk), "clk enabled failed\n");
->   
-> -	ret = clk_prepare_enable(spi->clk);
-> -	if (ret) {
-> -		dev_err(&pdev->dev, "clk enable failed: %d\n", ret);
-> -		return ret;
-> -	}
->   	spi->clk_rate = clk_get_rate(spi->clk);
-> -	if (!spi->clk_rate) {
-> -		dev_err(&pdev->dev, "clk rate = 0\n");
-> -		ret = -EINVAL;
-> -		goto err_clk_disable;
-> -	}
-> +	if (!spi->clk_rate)
-> +		return dev_err_probe(&pdev->dev, -EINVAL, "clk rate = 0\n");
->   
->   	rst = devm_reset_control_get_optional_exclusive(&pdev->dev, NULL);
->   	if (rst) {
-> -		if (IS_ERR(rst)) {
-> -			ret = dev_err_probe(&pdev->dev, PTR_ERR(rst),
-> -					    "failed to get reset\n");
-> -			goto err_clk_disable;
-> -		}
-> +		if (IS_ERR(rst))
-> +			return dev_err_probe(&pdev->dev, PTR_ERR(rst), "failed to get reset\n");
->   
->   		reset_control_assert(rst);
->   		udelay(2);
-> @@ -2461,11 +2442,8 @@ static int stm32_spi_probe(struct platform_device *pdev)
->   	dev_dbg(spi->dev, "one message max size %d\n", spi->t_size_max);
->   
->   	ret = spi->cfg->config(spi);
-> -	if (ret) {
-> -		dev_err(&pdev->dev, "controller configuration failed: %d\n",
-> -			ret);
-> -		goto err_clk_disable;
-> -	}
-> +	if (ret)
-> +		return dev_err_probe(&pdev->dev, ret, "controller configuration failed: %d\n", ret);
->   
->   	ctrl->auto_runtime_pm = true;
->   	ctrl->bus_num = pdev->id;
-> @@ -2490,8 +2468,7 @@ static int stm32_spi_probe(struct platform_device *pdev)
->   			dev_info(&pdev->dev, "tx dma disabled\n");
->   			spi->dma_tx = NULL;
->   		} else {
-> -			dev_err_probe(&pdev->dev, ret, "failed to request tx dma channel\n");
-> -			goto err_clk_disable;
-> +			return dev_err_probe(&pdev->dev, ret, "failed to request tx dma channel\n");
->   		}
->   	} else {
->   		ctrl->dma_tx = spi->dma_tx;
-> @@ -2579,8 +2556,6 @@ static int stm32_spi_probe(struct platform_device *pdev)
->   err_dma_tx_release:
->   	if (spi->dma_tx)
->   		dma_release_channel(spi->dma_tx);
-> -err_clk_disable:
-> -	clk_disable_unprepare(spi->clk);
->   
->   	return ret;
->   }
-> @@ -2610,9 +2585,6 @@ static void stm32_spi_remove(struct platform_device *pdev)
->   		gen_pool_free(spi->sram_pool, (unsigned long)spi->sram_rx_buf,
->   			      spi->sram_rx_buf_size);
->   
-> -	clk_disable_unprepare(spi->clk);
-> -
-> -
->   	pinctrl_pm_select_sleep_state(&pdev->dev);
->   }
->   
+The filename of the patch is:
+     net-fix-segmentation-of-forwarding-fraglist-gro.patch
+and it can be found in the queue-6.6 subdirectory.
 
+If you, or anyone else, feels it should not be added to the stable tree,
+please let <stable@vger.kernel.org> know about it.
+
+
+From stable+bounces-222525-greg=kroah.com@vger.kernel.org Mon Mar  2 07:56:28 2026
+From: Li hongliang <1468888505@139.com>
+Date: Mon,  2 Mar 2026 14:55:28 +0800
+Subject: net: fix segmentation of forwarding fraglist GRO
+To: gregkh@linuxfoundation.org, stable@vger.kernel.org, jibin.zhang@mediatek.com
+Cc: patches@lists.linux.dev, linux-kernel@vger.kernel.org, ast@kernel.org, daniel@iogearbox.net, andrii@kernel.org, martin.lau@linux.dev, song@kernel.org, yhs@fb.com, john.fastabend@gmail.com, kpsingh@kernel.org, sdf@google.com, haoluo@google.com, jolsa@kernel.org, davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, yoshfuji@linux-ipv6.org, dsahern@kernel.org, matthias.bgg@gmail.com, willemb@google.com, steffen.klassert@secunet.com, bpf@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Message-ID: <20260302065528.2695652-1-1468888505@139.com>
+
+From: Jibin Zhang <jibin.zhang@mediatek.com>
+
+[ Upstream commit 426ca15c7f6cb6562a081341ca88893a50c59fa2 ]
+
+This patch enhances GSO segment handling by properly checking
+the SKB_GSO_DODGY flag for frag_list GSO packets, addressing
+low throughput issues observed when a station accesses IPv4
+servers via hotspots with an IPv6-only upstream interface.
+
+Specifically, it fixes a bug in GSO segmentation when forwarding
+GRO packets containing a frag_list. The function skb_segment_list
+cannot correctly process GRO skbs that have been converted by XLAT,
+since XLAT only translates the header of the head skb. Consequently,
+skbs in the frag_list may remain untranslated, resulting in protocol
+inconsistencies and reduced throughput.
+
+To address this, the patch explicitly sets the SKB_GSO_DODGY flag
+for GSO packets in XLAT's IPv4/IPv6 protocol translation helpers
+(bpf_skb_proto_4_to_6 and bpf_skb_proto_6_to_4). This marks GSO
+packets as potentially modified after protocol translation. As a
+result, GSO segmentation will avoid using skb_segment_list and
+instead falls back to skb_segment for packets with the SKB_GSO_DODGY
+flag. This ensures that only safe and fully translated frag_list
+packets are processed by skb_segment_list, resolving protocol
+inconsistencies and improving throughput when forwarding GRO packets
+converted by XLAT.
+
+Signed-off-by: Jibin Zhang <jibin.zhang@mediatek.com>
+Fixes: 9fd1ff5d2ac7 ("udp: Support UDP fraglist GRO/GSO.")
+Cc: stable@vger.kernel.org
+Link: https://patch.msgid.link/20260126152114.1211-1-jibin.zhang@mediatek.com
+Signed-off-by: Paolo Abeni <pabeni@redhat.com>
+Signed-off-by: Li hongliang <1468888505@139.com>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ net/core/filter.c        |    2 ++
+ net/ipv4/tcp_offload.c   |    3 ++-
+ net/ipv4/udp_offload.c   |    3 ++-
+ net/ipv6/tcpv6_offload.c |    3 ++-
+ 4 files changed, 8 insertions(+), 3 deletions(-)
+
+--- a/net/core/filter.c
++++ b/net/core/filter.c
+@@ -3340,6 +3340,7 @@ static int bpf_skb_proto_4_to_6(struct s
+ 			shinfo->gso_type &= ~SKB_GSO_TCPV4;
+ 			shinfo->gso_type |=  SKB_GSO_TCPV6;
+ 		}
++		shinfo->gso_type |=  SKB_GSO_DODGY;
+ 	}
+ 
+ 	bpf_skb_change_protocol(skb, ETH_P_IPV6);
+@@ -3370,6 +3371,7 @@ static int bpf_skb_proto_6_to_4(struct s
+ 			shinfo->gso_type &= ~SKB_GSO_TCPV6;
+ 			shinfo->gso_type |=  SKB_GSO_TCPV4;
+ 		}
++		shinfo->gso_type |=  SKB_GSO_DODGY;
+ 	}
+ 
+ 	bpf_skb_change_protocol(skb, ETH_P_IP);
+--- a/net/ipv4/tcp_offload.c
++++ b/net/ipv4/tcp_offload.c
+@@ -107,7 +107,8 @@ static struct sk_buff *tcp4_gso_segment(
+ 	if (skb_shinfo(skb)->gso_type & SKB_GSO_FRAGLIST) {
+ 		struct tcphdr *th = tcp_hdr(skb);
+ 
+-		if (skb_pagelen(skb) - th->doff * 4 == skb_shinfo(skb)->gso_size)
++		if ((skb_pagelen(skb) - th->doff * 4 == skb_shinfo(skb)->gso_size) &&
++		    !(skb_shinfo(skb)->gso_type & SKB_GSO_DODGY))
+ 			return __tcp4_gso_segment_list(skb, features);
+ 
+ 		skb->ip_summed = CHECKSUM_NONE;
+--- a/net/ipv4/udp_offload.c
++++ b/net/ipv4/udp_offload.c
+@@ -352,7 +352,8 @@ struct sk_buff *__udp_gso_segment(struct
+ 
+ 	if (skb_shinfo(gso_skb)->gso_type & SKB_GSO_FRAGLIST) {
+ 		 /* Detect modified geometry and pass those to skb_segment. */
+-		if (skb_pagelen(gso_skb) - sizeof(*uh) == skb_shinfo(gso_skb)->gso_size)
++		if ((skb_pagelen(gso_skb) - sizeof(*uh) == skb_shinfo(gso_skb)->gso_size) &&
++		    !(skb_shinfo(gso_skb)->gso_type & SKB_GSO_DODGY))
+ 			return __udp_gso_segment_list(gso_skb, features, is_ipv6);
+ 
+ 		ret = __skb_linearize(gso_skb);
+--- a/net/ipv6/tcpv6_offload.c
++++ b/net/ipv6/tcpv6_offload.c
+@@ -109,7 +109,8 @@ static struct sk_buff *tcp6_gso_segment(
+ 	if (skb_shinfo(skb)->gso_type & SKB_GSO_FRAGLIST) {
+ 		struct tcphdr *th = tcp_hdr(skb);
+ 
+-		if (skb_pagelen(skb) - th->doff * 4 == skb_shinfo(skb)->gso_size)
++		if ((skb_pagelen(skb) - th->doff * 4 == skb_shinfo(skb)->gso_size) &&
++		    !(skb_shinfo(skb)->gso_type & SKB_GSO_DODGY))
+ 			return __tcp6_gso_segment_list(skb, features);
+ 
+ 		skb->ip_summed = CHECKSUM_NONE;
+
+
+Patches currently in stable-queue which might be from 1468888505@139.com are
+
+queue-6.6/pnfs-fix-a-deadlock-when-returning-a-delegation-during-open.patch
+queue-6.6/net-add-support-for-segmenting-tcp-fraglist-gso-packets.patch
+queue-6.6/net-fix-segmentation-of-forwarding-fraglist-gro.patch
+queue-6.6/nfs-pass-explicit-offset-count-to-trace-events.patch
+queue-6.6/net-gso-fix-tcp-fraglist-segmentation-after-pull-from-frag_list.patch
+queue-6.6/nfs-fix-a-deadlock-involving-nfs_release_folio.patch
 
