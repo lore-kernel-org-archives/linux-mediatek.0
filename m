@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88F8F1091916
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2026 20:26:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A8671091916
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2026 20:28:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
 	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0EG1mGn2kxG0H8cSWyUCSFvDfHZ0uJ0D9oamMM5Wir8=; b=x06zzMj/cvPb9FOi65K+OcBGne
-	PHAlvW6MgKqPShdEz3EfrQ80Dw8FZs8XfAWDGg9fadX74fY5TYWOGAxMj0VpvkXrpRqc0Xjc+cPer
-	TPX8l9lGmgJ0I/p7M+p7UGLSUt5dgn0vGkF4U39R+QZ4Wllob7kOMDhsydgevfED1nIx0FEcJxvUk
-	l9R81p/hT3erQToKngWmWU3KOzjW8Ce1rW9RD94MDevZ4rUbAn+7fD7svQFAPlJ0CZbbLH4mhUNfo
-	eKqHDQtqBDmZqYs/pIAVmKXk8iYm7f7yqjf6mXli+mRr1tSbWx4JFk3+x48EwC6fMIiadg7jKKtz8
-	fjWjHXTA==;
+	bh=ieXBhtwQioe8uOOGkxVAKRyCV34NjX4e7tdgyCREHoQ=; b=vcYyq0uxzWFjaREf8Nlxo3QkrJ
+	cpRh+QFDeOWHG8qgg4UZss9Forc/fyLvj50ASpLl4gEfCn1nohYyjiFfwuwjIZQWcSOTHozR3yLEm
+	HJhMoMqCRV03tdshtG6P9pBBN8yVP9/6EMwokGMQsfO/puCLiFL7KkZpbkTWjfBe/rZxfPa/Kuws5
+	A+RH6KavMzpSVSlJlnVH3BQrs2rzJCIXoWUmpeOjEJk/DzI5HnoWbTWsWPp+fqmVhmtDA3P7EL3iC
+	27k7zmrev3AzF9AlDgkXVH1svnrQYxWujyBs7e1Cx7lm4Uc6cCT48gFiWhLMbm/StlqoQpsGIqc+D
+	vYq4DLNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3JwP-0000000BWzd-1Ibu;
-	Thu, 19 Mar 2026 20:26:01 +0000
-Received: from mail-qk1-x72e.google.com ([2607:f8b0:4864:20::72e])
+	id 1w3JyL-0000000BXDy-3Zmn;
+	Thu, 19 Mar 2026 20:28:01 +0000
+Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3JwK-0000000BWyd-2PrD
+	id 1w3JyI-0000000BXCs-2Bhb
 	for linux-mediatek@lists.infradead.org;
-	Thu, 19 Mar 2026 20:26:00 +0000
-Received: by mail-qk1-x72e.google.com with SMTP id af79cd13be357-8c70b5594f4so162831385a.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 19 Mar 2026 13:25:56 -0700 (PDT)
+	Thu, 19 Mar 2026 20:28:00 +0000
+Received: by mail-qk1-x730.google.com with SMTP id af79cd13be357-8cd8dbf4f2eso146599585a.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 19 Mar 2026 13:27:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1773951955; x=1774556755; darn=lists.infradead.org;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1773952077; x=1774556877; darn=lists.infradead.org;
         h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
          :from:subject:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=0EG1mGn2kxG0H8cSWyUCSFvDfHZ0uJ0D9oamMM5Wir8=;
-        b=thmP9ZtdVAQnNjyclbCmGkT8fzqU68nJP/LS6JKq1F/z3523vLvjkXNK8xQrlMcO+E
-         wMwk21Ut58UejsSnmBUrcruA33zxPVl7Og1JIOuhO1LGWNqOqCsffX1NKmEoN0mSd1pZ
-         M0aNPElwAQ+y+GMD4u5tQtleSv/eznrP1NfbgIkeHIm+tUN5MLiuEdYptzbN8oVDWrn3
-         u2x6KGH58EkMieGcIc4d3FT1sen9XQA/VdyvFFcQY21eFIkbdL/9XAIOZOCMVBMgmdsS
-         +raa/+rs00v772XHBFz/1yWSgi1l8ODOOyQ5+RUmTyCMUiuvjNyp+CjrM3GdqRUNOWCe
-         ST4A==
+        bh=ieXBhtwQioe8uOOGkxVAKRyCV34NjX4e7tdgyCREHoQ=;
+        b=GHB4N23nA3edRF5gw8L+4gVJ54bpvPa0Bp4tuZlljXfSlImeJzGkIRWmYqwV+3Z1ZJ
+         2idj36zVLtr3kXcJHhMol4ojgCWFQAE110B2xdq02JgBxjb914Mbv/ab8lm1w2nhPHxH
+         6In7cstnXmm2jZVX1ouGrODHiciMw2R+UVptkV2CMSk2nPw4YxFKf608dsG+N2kVwzjn
+         aO0rEMA/roA3HtIJ8X/hBZQ0K6GEG9KokxIPiQ6FsUNTQ7+cEpPujJpelCo9GSLiHXad
+         JFMt5x8ieY1XLRB/gsQ2+lqKni9SK9FvGoAW3PKqVHe34LKbMgTLPNpL02AL/sCoHjzJ
+         AFSg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1773951955; x=1774556755;
+        d=1e100.net; s=20251104; t=1773952077; x=1774556877;
         h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
          :from:subject:message-id:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=0EG1mGn2kxG0H8cSWyUCSFvDfHZ0uJ0D9oamMM5Wir8=;
-        b=Dzsg4ItNenynU2YbZgN7TgL4upBTUxs022qrNBXxUYOfZJoUalF8zwII/Ur9tsCcv3
-         tTFHGU2Y42crV8OMiPNZ5JAjMcoS79AGQJ/547L/I1Zh+s70fTecRd4SEnlMU+zJ4ehr
-         S6WElSKHgIjVFms1onDUdKiWuvuJGjWFyObKFYAy+NrcXrT6+Oi3AHHddP0Li9mu+sAT
-         nAraeZdgUyiTZ10yeNmByYKHiBt/YQZDw3WrtEqRb53mPcZDBfW7f9yPU3Ki2NdmuZ+b
-         SgnbUhkdmeJD9mStr5pBubdppsjT2PPlRbVbhJi6LR+McbPoKHagwJqWbRLk8jynacWl
-         9h3w==
-X-Forwarded-Encrypted: i=1; AJvYcCVkA+Ji6SweYmxFo7+usPUJcr8fFePpahGz6hEHEI2GF/8LLXo3cO/CraCnIIs4PleLGDrdcHzmyifksCFRMw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzihLuLCpSsC9rdDCcb/s5pWKHxuIA9p6xS/LoqdSzMJfiXLv4E
-	0ZvusrtT/Gzl4DxAagGF8XeqBFtm0oN9OcyUswAzptIo1wbwOSwvzejZtBL2+PAQJHw=
-X-Gm-Gg: ATEYQzxTSp5ZvdtG2F7WtjzqFN9LAuG9WAvQetDQ82+7ekKx5XFnQ183Ztm6sbSZQZC
-	oT4ztR5wJBsYzYKiY9UfEZEQAExiHBDkRoX8O2lYgwHGX+JpLeNeQ9Vkl7LkiE1nBOZ0jgVdMfS
-	7lszQ7lwcNzDJ4qWkdcR3FSQiArvoY/JPF/eu+xQOdS2poLqqY8LhBFFq4nSI9LesiCaWBlPZE7
-	nPtCaj0oj0ouO9EPynEWhWsEtPqjS1+k1gDZ/tS6NcS5so8NruhnB5HXfwDAzHWPeiN5xoUXstW
-	2aptp+tVJscJ5PblA2ES/+ZTVps2PHItTTlV+JecqG78yNAGb59J/YEV7k/9WsuHVZyp42y1QyO
-	NNn4/fyOCatMNn3sdbC4fcKVXU+DLatX4WJB6iX7JAuoe3H0+4eZV3H7GK20DTSDKqfgMSoNloi
-	Ej6BKZh+8O9iqUIWyRKX5iKiUSePc+
-X-Received: by 2002:a05:620a:25cb:b0:8cd:9142:ed6c with SMTP id af79cd13be357-8cfc795a3aemr110705385a.1.1773951955162;
-        Thu, 19 Mar 2026 13:25:55 -0700 (PDT)
+        bh=ieXBhtwQioe8uOOGkxVAKRyCV34NjX4e7tdgyCREHoQ=;
+        b=qhZEx3vpXYNKmrRjM6GedM8oyKaDXe5eDnzHzSuIdtqJ0gyfj74oeaCjOnxvPpfHsm
+         KHHddEVCSewbrXOfis0694OLL4dnf42fT326Kbv3WvXV+Ar3yDcK8EuB1+XMc1oxjL9c
+         h83j5/AzZ5/3lblhhE2JS5SztCFAq5+Y1RS0LdXwM1ewMKsxLJYOlDPwHbaaC21tERe6
+         WH3eJNq+xnOfLdtW8EpXAwKeYhq/1UznE6LS8sYhDfxzP6xX3yMdMbFqBFj+rK4SLKPY
+         A2XdgVYCat4KHrXYoM0Vy+ftT8+iGs/AMCdpeBkX1QNGetUqZXiw78CtG2uBG5pDTy/6
+         vpYg==
+X-Forwarded-Encrypted: i=1; AJvYcCWzEJm54uhoDE4y8RtoDaz2NmyWLopxrqVqwAlLsuJIgND3uosP4Wkxc+p9zOWkQIHJegGq0Z65JVAQXnCvOQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyObCSjcYdCEcTi+6X23liO6N5vBY6WeE+A9ktfUsBputUjglYS
+	kNMxEN/NPzJpcDJrCc1ThwhOXGx4GuEHvWqJw/xJQE89rTRx2BpsbSv9z/Kk/ydxgFc=
+X-Gm-Gg: ATEYQzyTkVNWjEpwa6bpXdsKpMlppWDWDT4a5hEZuHbCn0uAJs5PhniQKRxZrOqedtL
+	xAZnMOucNjb7S8y6GkC6pOaFYBBU8GDZABuQcxrwpHX3PL9utB8IsyovebMzDsb0o36R2Tpjbo7
+	/snbdSifn4w0/1js6grtAKyDChMxhjKj1xAUHB+mn40XvioCoJ69USRYkPZPLUAT7/SWKDyvNOg
+	8xZci66Cgl4ywY0tEyguIqOpR53BQHmcn0CjNyjM9zX9C7DPjloBaDob510AUTqbhSHqbHoRm23
+	4KRtDEkUJwfXc7k5+O4T+gwCixzSqjIe0EtFNKymde5sT9bSCpsyxzbWUp45CN/hKXy36+WgPdS
+	oBITMwrsfd8j6PD/JaOkteo2mFcq35Un0gxzcnADLZIFv/i9zCjSikyDYiTDOUeqi0KTEd6gU0/
+	pSTg/6OqQmUC2NDvADb3CqjmCUbny+
+X-Received: by 2002:a05:620a:4489:b0:8cd:a801:cb1f with SMTP id af79cd13be357-8cfc7f48d36mr97810985a.35.1773952077194;
+        Thu, 19 Mar 2026 13:27:57 -0700 (PDT)
 Received: from ?IPv6:2606:6d00:11:b76d::5ac? ([2606:6d00:11:b76d::5ac])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-8cfc8fbe4edsm11003185a.20.2026.03.19.13.25.53
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-8cfc8fb9c10sm12702585a.19.2026.03.19.13.27.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Mar 2026 13:25:54 -0700 (PDT)
-Message-ID: <9816ad4b43c67b3e4dd779b44f5ee0d7d09d5ecd.camel@ndufresne.ca>
+        Thu, 19 Mar 2026 13:27:56 -0700 (PDT)
+Message-ID: <b6b9e336662fece0fc9e2aa132b7cbe02de38885.camel@ndufresne.ca>
 Subject: Re: [PATCH] media: mtk-jpeg: fix use-after-free in release path due
  to uncancelled work
 From: Nicolas Dufresne <nicolas@ndufresne.ca>
@@ -77,7 +77,7 @@ To: Fan Wu <fanwu01@zju.edu.cn>, bin.liu@mediatek.com, mchehab@kernel.org,
 Cc: irui.wang@mediatek.com, kyrie.wu@mediatek.com, hverkuil@kernel.org, 
 	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Date: Thu, 19 Mar 2026 16:25:52 -0400
+Date: Thu, 19 Mar 2026 16:27:54 -0400
 In-Reply-To: <20260304031934.147483-1-fanwu01@zju.edu.cn>
 References: <20260304031934.147483-1-fanwu01@zju.edu.cn>
 Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
@@ -94,11 +94,11 @@ Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
  ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
  bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-Fr5ososJn9zdO55z0gpD"
+	protocol="application/pgp-signature"; boundary="=-lxOLEeh3tHLuJ4rdm5bO"
 User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260319_132556_629606_A036FDC8 
+X-CRM114-CacheID: sfid-20260319_132758_590151_82359FAF 
 X-CRM114-Status: GOOD (  19.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -115,7 +115,7 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---=-Fr5ososJn9zdO55z0gpD
+--=-lxOLEeh3tHLuJ4rdm5bO
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: base64
 
@@ -167,17 +167,17 @@ IMKgCXY0bDJfbTJtX2N0eF9yZWxlYXNlKGN0eC0+ZmgubTJtX2N0eCk7Cj4gwqAJdjRsMl9jdHJs
 X2hhbmRsZXJfZnJlZSgmY3R4LT5jdHJsX2hkbCk7Cg==
 
 
---=-Fr5ososJn9zdO55z0gpD
+--=-lxOLEeh3tHLuJ4rdm5bO
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCabxb0QAKCRDZQZRRKWBy
-9MsFAQCQeJjdR5w3hB/AAU/cM8jUtrK2jP1cB1pJtx3YrdQDZgD+NwcbZU9Z0Exl
-7VAkWg98FEyqc9733fs0ajNBFsNqMgM=
-=Rhr7
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCabxcSwAKCRDZQZRRKWBy
+9Kv5AP4qHemcfNFtM1PoQcuuolb7kFnIioH+wVCWJdCrdmbLIAD+LYg4aFIcaLL2
+Nr2+VTGkn6ryMeS4088D/Kp/7VyN4wQ=
+=EhsS
 -----END PGP SIGNATURE-----
 
---=-Fr5ososJn9zdO55z0gpD--
+--=-lxOLEeh3tHLuJ4rdm5bO--
 
