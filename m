@@ -4,64 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53C7D1091912
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2026 20:23:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88F8F1091916
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2026 20:26:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
 	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lXgUNM1WqEBSYH5OPYMq15YhS42Y7xl69pcLMba5WGA=; b=xgYQCRmLlMRApb+YSUCdvbgWAv
-	c1E6mOgacRw7zmTUowSdbMaBBBfGySZOk0+MVGFwd3t5bzENAGdB9UumyZxw1+IwBjnPCmhb92xmO
-	btpBzmyCpBfuxxCDt7xWnvBYAc+1c88M6gFqBi6zQ3502m4tMfOdZPbQ66yz/d3HOrLdrGqeZAWT6
-	LJ6xIx3N1loVGPy1kq8vHIi0et77mHfiy/h4wnXWFBI9+4eypOwL8ZnIJdltFEhZxlvoyMExUVP9R
-	Rud4Uveqq1PeZPyZR0MGiBHHgn7VhgH6yQNbnkWdGgooUy9y1HbQlc2dH/FfOaWrcEQFFs/nwZFS5
-	wu5XKSPA==;
+	bh=0EG1mGn2kxG0H8cSWyUCSFvDfHZ0uJ0D9oamMM5Wir8=; b=x06zzMj/cvPb9FOi65K+OcBGne
+	PHAlvW6MgKqPShdEz3EfrQ80Dw8FZs8XfAWDGg9fadX74fY5TYWOGAxMj0VpvkXrpRqc0Xjc+cPer
+	TPX8l9lGmgJ0I/p7M+p7UGLSUt5dgn0vGkF4U39R+QZ4Wllob7kOMDhsydgevfED1nIx0FEcJxvUk
+	l9R81p/hT3erQToKngWmWU3KOzjW8Ce1rW9RD94MDevZ4rUbAn+7fD7svQFAPlJ0CZbbLH4mhUNfo
+	eKqHDQtqBDmZqYs/pIAVmKXk8iYm7f7yqjf6mXli+mRr1tSbWx4JFk3+x48EwC6fMIiadg7jKKtz8
+	fjWjHXTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3Jtg-0000000BWgG-0wO7;
-	Thu, 19 Mar 2026 20:23:12 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1w3JwP-0000000BWzd-1Ibu;
+	Thu, 19 Mar 2026 20:26:01 +0000
+Received: from mail-qk1-x72e.google.com ([2607:f8b0:4864:20::72e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3Jtd-0000000BWfX-2atY;
-	Thu, 19 Mar 2026 20:23:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1773951786;
-	bh=lXgUNM1WqEBSYH5OPYMq15YhS42Y7xl69pcLMba5WGA=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=pNcVqhTR1pAtk+qbMl4ay6KjAzaHftLZF5YUQxD9omsBpHQ9a4M/uDFWQfg3F9rpn
-	 pr+jBtHZLvESYB/2JiTtMM1UXGAMOugnZkT1GFnrMPqGojl+G6k0WzIUa6YBUelmlo
-	 9sdTyvUifG5xwkoprK7nX3PezKmcU2KoCPv0sLRGGdN7DugxgPxVMVTscPt3XvsoAT
-	 R639Hc53QY2QyBMhptm/ecaBYqgdnJAY5901IoYzioW18ielWKTPjqy5wMQg8w4yBg
-	 Bij3TqoZfuwf4D/MYUWmkSmnh1oijwC7H4K+JxslBQoaAS5SKDElIe6D6HuZoiFCXs
-	 ylP+rOAyYdI0g==
-Received: from [IPv6:2606:6d00:11:b76d::5ac] (unknown [IPv6:2606:6d00:11:b76d::5ac])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7689D17E0D91;
-	Thu, 19 Mar 2026 21:23:04 +0100 (CET)
-Message-ID: <8416ef57d9a8f40fabe3f759d5a25ed6aa9787fc.camel@collabora.com>
-Subject: Re: [PATCH v5 0/6] Add support for MT8196 video encoder
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Irui Wang <irui.wang@mediatek.com>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>,  Mauro Carvalho Chehab	 <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger	
- <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	wenst@chromium.org, angelogioacchino.delregno@collabora.com, Tiffany Lin	
- <tiffany.lin@mediatek.com>, kyrie wu <kyrie.wu@mediatek.com>
-Cc: Yunfei Dong <yunfei.dong@mediatek.com>, Maoguang Meng	
- <maoguang.meng@mediatek.com>, Longfei Wang <longfei.wang@mediatek.com>, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-media@vger.kernel.org, 	devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Date: Thu, 19 Mar 2026 16:23:02 -0400
-In-Reply-To: <20260302035244.8994-1-irui.wang@mediatek.com>
-References: <20260302035244.8994-1-irui.wang@mediatek.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+	id 1w3JwK-0000000BWyd-2PrD
+	for linux-mediatek@lists.infradead.org;
+	Thu, 19 Mar 2026 20:26:00 +0000
+Received: by mail-qk1-x72e.google.com with SMTP id af79cd13be357-8c70b5594f4so162831385a.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 19 Mar 2026 13:25:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1773951955; x=1774556755; darn=lists.infradead.org;
+        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
+         :from:subject:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=0EG1mGn2kxG0H8cSWyUCSFvDfHZ0uJ0D9oamMM5Wir8=;
+        b=thmP9ZtdVAQnNjyclbCmGkT8fzqU68nJP/LS6JKq1F/z3523vLvjkXNK8xQrlMcO+E
+         wMwk21Ut58UejsSnmBUrcruA33zxPVl7Og1JIOuhO1LGWNqOqCsffX1NKmEoN0mSd1pZ
+         M0aNPElwAQ+y+GMD4u5tQtleSv/eznrP1NfbgIkeHIm+tUN5MLiuEdYptzbN8oVDWrn3
+         u2x6KGH58EkMieGcIc4d3FT1sen9XQA/VdyvFFcQY21eFIkbdL/9XAIOZOCMVBMgmdsS
+         +raa/+rs00v772XHBFz/1yWSgi1l8ODOOyQ5+RUmTyCMUiuvjNyp+CjrM3GdqRUNOWCe
+         ST4A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1773951955; x=1774556755;
+        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
+         :from:subject:message-id:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=0EG1mGn2kxG0H8cSWyUCSFvDfHZ0uJ0D9oamMM5Wir8=;
+        b=Dzsg4ItNenynU2YbZgN7TgL4upBTUxs022qrNBXxUYOfZJoUalF8zwII/Ur9tsCcv3
+         tTFHGU2Y42crV8OMiPNZ5JAjMcoS79AGQJ/547L/I1Zh+s70fTecRd4SEnlMU+zJ4ehr
+         S6WElSKHgIjVFms1onDUdKiWuvuJGjWFyObKFYAy+NrcXrT6+Oi3AHHddP0Li9mu+sAT
+         nAraeZdgUyiTZ10yeNmByYKHiBt/YQZDw3WrtEqRb53mPcZDBfW7f9yPU3Ki2NdmuZ+b
+         SgnbUhkdmeJD9mStr5pBubdppsjT2PPlRbVbhJi6LR+McbPoKHagwJqWbRLk8jynacWl
+         9h3w==
+X-Forwarded-Encrypted: i=1; AJvYcCVkA+Ji6SweYmxFo7+usPUJcr8fFePpahGz6hEHEI2GF/8LLXo3cO/CraCnIIs4PleLGDrdcHzmyifksCFRMw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzihLuLCpSsC9rdDCcb/s5pWKHxuIA9p6xS/LoqdSzMJfiXLv4E
+	0ZvusrtT/Gzl4DxAagGF8XeqBFtm0oN9OcyUswAzptIo1wbwOSwvzejZtBL2+PAQJHw=
+X-Gm-Gg: ATEYQzxTSp5ZvdtG2F7WtjzqFN9LAuG9WAvQetDQ82+7ekKx5XFnQ183Ztm6sbSZQZC
+	oT4ztR5wJBsYzYKiY9UfEZEQAExiHBDkRoX8O2lYgwHGX+JpLeNeQ9Vkl7LkiE1nBOZ0jgVdMfS
+	7lszQ7lwcNzDJ4qWkdcR3FSQiArvoY/JPF/eu+xQOdS2poLqqY8LhBFFq4nSI9LesiCaWBlPZE7
+	nPtCaj0oj0ouO9EPynEWhWsEtPqjS1+k1gDZ/tS6NcS5so8NruhnB5HXfwDAzHWPeiN5xoUXstW
+	2aptp+tVJscJ5PblA2ES/+ZTVps2PHItTTlV+JecqG78yNAGb59J/YEV7k/9WsuHVZyp42y1QyO
+	NNn4/fyOCatMNn3sdbC4fcKVXU+DLatX4WJB6iX7JAuoe3H0+4eZV3H7GK20DTSDKqfgMSoNloi
+	Ej6BKZh+8O9iqUIWyRKX5iKiUSePc+
+X-Received: by 2002:a05:620a:25cb:b0:8cd:9142:ed6c with SMTP id af79cd13be357-8cfc795a3aemr110705385a.1.1773951955162;
+        Thu, 19 Mar 2026 13:25:55 -0700 (PDT)
+Received: from ?IPv6:2606:6d00:11:b76d::5ac? ([2606:6d00:11:b76d::5ac])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-8cfc8fbe4edsm11003185a.20.2026.03.19.13.25.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Mar 2026 13:25:54 -0700 (PDT)
+Message-ID: <9816ad4b43c67b3e4dd779b44f5ee0d7d09d5ecd.camel@ndufresne.ca>
+Subject: Re: [PATCH] media: mtk-jpeg: fix use-after-free in release path due
+ to uncancelled work
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Fan Wu <fanwu01@zju.edu.cn>, bin.liu@mediatek.com, mchehab@kernel.org, 
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com
+Cc: irui.wang@mediatek.com, kyrie.wu@mediatek.com, hverkuil@kernel.org, 
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Date: Thu, 19 Mar 2026 16:25:52 -0400
+In-Reply-To: <20260304031934.147483-1-fanwu01@zju.edu.cn>
+References: <20260304031934.147483-1-fanwu01@zju.edu.cn>
+Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
  cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
@@ -74,14 +93,13 @@ Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
  iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
  ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
  bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-QrVUnf/onkkIhx/f124c"
+	protocol="application/pgp-signature"; boundary="=-Fr5ososJn9zdO55z0gpD"
 User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260319_132310_049421_16167885 
-X-CRM114-Status: GOOD (  18.47  )
+X-CRM114-CacheID: sfid-20260319_132556_629606_A036FDC8 
+X-CRM114-Status: GOOD (  19.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,123 +115,69 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---=-QrVUnf/onkkIhx/f124c
+--=-Fr5ososJn9zdO55z0gpD
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: base64
 
-Hi,
+TGUgbWVyY3JlZGkgMDQgbWFycyAyMDI2IMOgIDAzOjE5ICswMDAwLCBGYW4gV3UgYSDDqWNyaXTC
+oDoKPiBUaGUgbXRrX2pwZWdfcmVsZWFzZSgpIGZ1bmN0aW9uIGZyZWVzIHRoZSBjb250ZXh0IHN0
+cnVjdHVyZSAoY3R4KSB3aXRob3V0Cj4gZmlyc3QgY2FuY2VsbGluZyBhbnkgcGVuZGluZyBvciBy
+dW5uaW5nIHdvcmsgaW4gY3R4LT5qcGVnX3dvcmsuIFRoaXMKPiBjcmVhdGVzIGEgcmFjZSB3aW5k
+b3cgd2hlcmUgdGhlIHdvcmtxdWV1ZSBjYWxsYmFjayBtYXkgc3RpbGwgYmUgYWNjZXNzaW5nCj4g
+dGhlIGNvbnRleHQgbWVtb3J5IGFmdGVyIGl0IGhhcyBiZWVuIGZyZWVkLgo+IAo+IFJhY2UgY29u
+ZGl0aW9uOgo+IAo+IMKgwqDCoCBDUFUgMCAocmVsZWFzZSnCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoCBDUFUgMSAod29ya3F1ZXVlKQo+IMKgwqDCoCAtLS0tLS0tLS0tLS0t
+LS0twqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIC0tLS0tLS0tLS0tLS0tLS0t
+LQo+IMKgwqDCoCBjbG9zZSgpCj4gwqDCoMKgwqDCoCBtdGtfanBlZ19yZWxlYXNlKCkKPiDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgIG10a19qcGVnZW5jX3dvcmtlcigpCj4gwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqAgY3R4ID0gd29yay0+ZGF0YQo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIC8vIGFjY2Vz
+c2luZyBjdHgKPiAKPiDCoMKgwqDCoMKgwqDCoCBrZnJlZShjdHgpwqAgLy8gZnJlZWQhCj4gwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqAgYWNjZXNzIGN0eMKgIC8vIFVBRiEKPiAKPiBUaGUgd29yayBp
+cyBxdWV1ZWQgdmlhIHF1ZXVlX3dvcmsoKSBkdXJpbmcgSlBFRyBlbmNvZGUvZGVjb2RlIG9wZXJh
+dGlvbnMKPiAodmlhIG10a19qcGVnX2RldmljZV9ydW4pLiBJZiB0aGUgZGV2aWNlIGlzIGNsb3Nl
+ZCB3aGlsZSB3b3JrIGlzIHBlbmRpbmcKPiBvciBydW5uaW5nLCB0aGUgd29yayBoYW5kbGVyIHdp
+bGwgYWNjZXNzIGZyZWVkIG1lbW9yeS4KPiAKPiBGaXggdGhpcyBieSBjYWxsaW5nIGNhbmNlbF93
+b3JrX3N5bmMoKSBCRUZPUkUgYWNxdWlyaW5nIHRoZSBtdXRleC4gVGhpcwo+IG9yZGVyaW5nIGlz
+IGNyaXRpY2FsOiBpZiBjYW5jZWxfd29ya19zeW5jKCkgaXMgY2FsbGVkIGFmdGVyIG11dGV4X2xv
+Y2soKSwKPiBhbmQgdGhlIHdvcmsgaGFuZGxlciBhbHNvIHRyaWVzIHRvIGFjcXVpcmUgdGhlIHNh
+bWUgbXV0ZXgsIGl0IHdvdWxkIGNhdXNlCj4gYSBkZWFkbG9jay4KPiAKPiBOb3RlOiBUaGUgb3Bl
+biBlcnJvciBwYXRoIGRvZXMgTk9UIG5lZWQgY2FuY2VsX3dvcmtfc3luYygpIGJlY2F1c2UKPiBJ
+TklUX1dPUksoKSBvbmx5IGluaXRpYWxpemVzIHRoZSB3b3JrIHN0cnVjdHVyZSAtIGl0IGRvZXMg
+bm90IHNjaGVkdWxlCj4gaXQuIFdvcmsgaXMgb25seSBzY2hlZHVsZWQgbGF0ZXIgZHVyaW5nIGlv
+Y3RsIG9wZXJhdGlvbnMuCj4gCj4gRml4ZXM6IDVmYjFjMjM2MWU1NiAoIm10ay1qcGVnZW5jOiBh
+ZGQganBlZyBlbmNvZGUgd29ya2VyIGludGVyZmFjZSIpCj4gU2lnbmVkLW9mZi1ieTogRmFuIFd1
+IDxmYW53dTAxQHpqdS5lZHUuY24+CgpSZXZpZXdlZC1ieTogTmljb2xhcyBEdWZyZXNuZSA8bmlj
+b2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY29tPgoKPiAtLS0KPiDCoGRyaXZlcnMvbWVkaWEvcGxh
+dGZvcm0vbWVkaWF0ZWsvanBlZy9tdGtfanBlZ19jb3JlLmMgfCAxICsKPiDCoDEgZmlsZSBjaGFu
+Z2VkLCAxIGluc2VydGlvbigrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3BsYXRm
+b3JtL21lZGlhdGVrL2pwZWcvbXRrX2pwZWdfY29yZS5jIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9y
+bS9tZWRpYXRlay9qcGVnL210a19qcGVnX2NvcmUuYwo+IGluZGV4IGMwMTEyNGEzNDlmNi4uOGM2
+ODQ3NTZkNWZjIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbWVkaWF0ZWsv
+anBlZy9tdGtfanBlZ19jb3JlLmMKPiArKysgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL21lZGlh
+dGVrL2pwZWcvbXRrX2pwZWdfY29yZS5jCj4gQEAgLTEyMDIsNiArMTIwMiw3IEBAIHN0YXRpYyBp
+bnQgbXRrX2pwZWdfcmVsZWFzZShzdHJ1Y3QgZmlsZSAqZmlsZSkKPiDCoAlzdHJ1Y3QgbXRrX2pw
+ZWdfZGV2ICpqcGVnID0gdmlkZW9fZHJ2ZGF0YShmaWxlKTsKPiDCoAlzdHJ1Y3QgbXRrX2pwZWdf
+Y3R4ICpjdHggPSBtdGtfanBlZ19maWxlX3RvX2N0eChmaWxlKTsKPiDCoAo+ICsJY2FuY2VsX3dv
+cmtfc3luYygmY3R4LT5qcGVnX3dvcmspOwo+IMKgCW11dGV4X2xvY2soJmpwZWctPmxvY2spOwo+
+IMKgCXY0bDJfbTJtX2N0eF9yZWxlYXNlKGN0eC0+ZmgubTJtX2N0eCk7Cj4gwqAJdjRsMl9jdHJs
+X2hhbmRsZXJfZnJlZSgmY3R4LT5jdHJsX2hkbCk7Cg==
 
-Le lundi 02 mars 2026 =C3=A0 11:52 +0800, Irui Wang a =C3=A9crit=C2=A0:
-> This patch series add support for MT8196 video encoder.
-> patch 1~3: Add a new encoder driver interface for new VCP firmware.
-> patch 4: Add new encoder driver platform data.
-> patch 5: Add dt-bindings.
-> patch 6: Add compatible data.
->=20
-> About adding new driver support, the v4l2-compliance report shows:
-> "Total for mtk-vcodec-enc device /dev/video3: 47, Succeeded: 46, Failed: =
-1, Warnings: 0"
-> The 1 Failed case is not caused by current patch set:
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0 fail: v4l2-test-controls.cpp(1171): node->codec_mask & S=
-TATEFUL_ENCODER
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 test VIDIOC_(UN)SUBSCRIBE_EVEN=
-T/DQEVENT: FAIL
->=20
-> This patch set depends on "media: mediatek: vcodec: support video decoder=
- in mt8196"[1]
->=20
-> [1] https://patchwork.linuxtv.org/project/linux-media/list/?series=3D2171=
-8
 
-This set obviously does not apply as it has this dependency. The dependency=
- had
-issues, and I just asked it to be rebased on the MT8189 series, which inclu=
-de
-the refactoring needed and common to both. Please coordinate, the faster I =
-get
-an update for MT8189, the faster these two MT8196 will be picked.
-
-regards,
-Nicolas
-
->=20
-> Change in v5:
-> =C2=A0- Rewrite patch5 commit subject.
-> =C2=A0- Add else statement in patch5.
-> =C2=A0- Link to v4: https://patchwork.linuxtv.org/project/linux-media/lis=
-t/?series=3D21757
->=20
-> Change in v4:
-> =C2=A0- Rework patch3 commit message.
-> =C2=A0- Rework patch5 commit with more details.
-> =C2=A0- Rebase patch onto decoder's patch set.
-> =C2=A0- Link to v3: https://patchwork.linuxtv.org/project/linux-media/cov=
-er/20250814085642.17343-1-kyrie.wu@mediatek.com/
->=20
-> Change in v3:
-> =C2=A0- Add venc rc buffer alloc failure error handling.
-> =C2=A0- Add mediatek,vcp property definition in dt-bindning.
->=20
-> Change in v2:
-> =C2=A0- Add support for VCP encode process.
-> =C2=A0- Add MT8196 encoder driver platform data.
-> =C2=A0- Rebase encoder patch onto decoder's patch set.
-> =C2=A0- Fix some review comments in v1.
->=20
-> Irui Wang (6):
-> =C2=A0 media: mediatek: encoder: Add a new encoder driver interface
-> =C2=A0 media: mediatek: encoder: Add support for common firmware interfac=
-e
-> =C2=A0 media: mediatek: encoder: Add support for VCP encode process
-> =C2=A0 media: mediatek: encoder: Add a new platform data member
-> =C2=A0 media: dt-bindings: mediatek,vcodec-encoder: Add MT8196
-> =C2=A0 media: mediatek: encoder: Add MT8196 encoder compatible data
->=20
-> =C2=A0.../media/mediatek,vcodec-encoder.yaml=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 |=C2=A0 22 +
-> =C2=A0.../mediatek/vcodec/common/mtk_vcodec_fw.c=C2=A0=C2=A0=C2=A0 |=C2=
-=A0 19 +
-> =C2=A0.../mediatek/vcodec/common/mtk_vcodec_fw.h=C2=A0=C2=A0=C2=A0 |=C2=
-=A0=C2=A0 2 +
-> =C2=A0.../vcodec/common/mtk_vcodec_fw_priv.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 |=C2=A0=C2=A0 1 +
-> =C2=A0.../vcodec/common/mtk_vcodec_fw_vcp.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0 6 +
-> =C2=A0.../platform/mediatek/vcodec/encoder/Makefile |=C2=A0=C2=A0 1 +
-> =C2=A0.../mediatek/vcodec/encoder/mtk_vcodec_enc.c=C2=A0 |=C2=A0 36 +-
-> =C2=A0.../vcodec/encoder/mtk_vcodec_enc_drv.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 |=C2=A0 28 +
-> =C2=A0.../vcodec/encoder/mtk_vcodec_enc_drv.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 |=C2=A0 15 +-
-> =C2=A0.../vcodec/encoder/venc/venc_common_if.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0 | 683 ++++++++++++++++++
-> =C2=A0.../vcodec/encoder/venc/venc_h264_if.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 |=C2=A0=C2=A0 8 +-
-> =C2=A0.../mediatek/vcodec/encoder/venc_drv_if.c=C2=A0=C2=A0=C2=A0=C2=A0 |=
-=C2=A0=C2=A0 3 +-
-> =C2=A0.../mediatek/vcodec/encoder/venc_drv_if.h=C2=A0=C2=A0=C2=A0=C2=A0 |=
-=C2=A0 11 +-
-> =C2=A0.../mediatek/vcodec/encoder/venc_ipi_msg.h=C2=A0=C2=A0=C2=A0 |=C2=
-=A0 26 +
-> =C2=A0.../mediatek/vcodec/encoder/venc_vpu_if.c=C2=A0=C2=A0=C2=A0=C2=A0 |=
-=C2=A0 47 +-
-> =C2=A015 files changed, 856 insertions(+), 52 deletions(-)
-> =C2=A0create mode 100644 drivers/media/platform/mediatek/vcodec/encoder/v=
-enc/venc_common_if.c
-
---=-QrVUnf/onkkIhx/f124c
+--=-Fr5ososJn9zdO55z0gpD
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCabxbJgAKCRDZQZRRKWBy
-9Ny3AP9I6hsSCVJlO+bf6OrzhNKjtfmLALku9xJh86MoZuZB7AEAr+WUUxTKphNL
-55+dMT8YC5gt6+wvoLENw7tP7DpAWgQ=
-=vWOZ
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCabxb0QAKCRDZQZRRKWBy
+9MsFAQCQeJjdR5w3hB/AAU/cM8jUtrK2jP1cB1pJtx3YrdQDZgD+NwcbZU9Z0Exl
+7VAkWg98FEyqc9733fs0ajNBFsNqMgM=
+=Rhr7
 -----END PGP SIGNATURE-----
 
---=-QrVUnf/onkkIhx/f124c--
+--=-Fr5ososJn9zdO55z0gpD--
 
