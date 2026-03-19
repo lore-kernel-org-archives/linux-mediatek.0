@@ -4,76 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FD7C1091917
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2026 20:03:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC0261091916
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2026 20:17:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
 	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Mwk77xis2n3Xi3SnteeL2ohG2orQmcxYOHvsRcbmRzo=; b=PG/4WKzB6bg9dVcU5xHGhuRmb6
-	uPPaaPBOZBb16ZiRVhJoZsdIl54pxTwCSgQznuGI8e6HsK/oyIU0RGwGcMXvOH3UR2WRM2cui0Rbr
-	WSTfwQ0CuDRqO/w1mvNnVX62PyIsaXRY71RM21zIOH3VjgA1opNI0J7UUxx2WH/W0Z4wBKjukUYZt
-	pbtsQ9eUYtfj8bXZOE89/5ceiOKU9jdEJcGPAHiF6h7I4xLsCttbJuetDCOK7DPhUZQBboAAtr55V
-	BQWi6sY22ycZhFCTOswZH/frlh8MFbCEgNffIYso7MNRR3lo6HQ1rxYpzYLtyNAVIxuIK/HvmSY75
-	Sb+oZwwQ==;
+	bh=SJc82/8eM3kVxshNmxbCcuC7mGyl2ALhI0FOpd/mDSk=; b=RuibkY44v08jKsFKaIGGEx2Hio
+	9CTjxh6Po3rvIjDC1lnBcoX9TQpAw6Zfgw4UX1sqpr3AUjlGDBoCl7GfyhYsz2G4Py4QqQxu/yoYG
+	sj/G5/B6EhJSc2rCLgoXTaWtONWbXTrg8WP2+naM4UsNMYD2n86smKdwYZKwn12lZfKpEbmfyRnFK
+	bHEze1JBZdpk3w/om+pLGa06TiJeJSAOLI78NNyIKCxvob6Vr0ROxEwhIO4rOcge+IGXfaVP0PYq9
+	EP2A9/yXkqidg5KpnMuJrRhhuRi0Jw3H2g5/VeXXMp/kz5Zp+af/6Ry+lLmYDEOkU8474N+okPYlv
+	2JJ3LFrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3Jai-0000000BUtk-2wIV;
-	Thu, 19 Mar 2026 20:03:36 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1w3JoA-0000000BWC0-1VcK;
+	Thu, 19 Mar 2026 20:17:30 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3Jae-0000000BUtE-3DQI;
-	Thu, 19 Mar 2026 20:03:34 +0000
+	id 1w3Jo7-0000000BW9K-0ECh;
+	Thu, 19 Mar 2026 20:17:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1773950609;
-	bh=Mwk77xis2n3Xi3SnteeL2ohG2orQmcxYOHvsRcbmRzo=;
+	s=mail; t=1773951444;
+	bh=SJc82/8eM3kVxshNmxbCcuC7mGyl2ALhI0FOpd/mDSk=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=GyK7utUdQY5E5LXqW5mcaITv5umgd4AWM1M+WPt8otL4ejjp4T4VXPXwc4YVUGBUZ
-	 2shvNNt9XtwjqfOhKiC9g2fj+jz7wspuKHJVd3AoAeRS3p8V1/uj9xcGfBGopWjPmZ
-	 eQgJE11omY1jXJeyo6t6KYy/48PfZ/kz5HHovR2WxQSdimiLphVDz01ZcSJrVxbQtP
-	 CaEev16x+bU7URDp/tjZSqrrwwcdzQ5HftZWNtpfXqyyPb4MGRCVT8HU2jGJLiPozw
-	 u0l0R9NMijyiEeKDmWOzmbv0pP6vEkkSWOW/MvMIAFDiibepTP5wpW8R5I1L0lbNjJ
-	 Y9Rmb+US9phNw==
+	b=XSn1UM0iMvGkIMuXoM2z3x7folqKQErwqtBMI9oBsak16upaIuzzNgOl6EzCBLAfH
+	 mpoPqZ7DjyK/cCE7f8F3bWTuJKhSYJ54UyhJgZaIem4fGZr/skHi72K31lXuDUQRPU
+	 BlOS+PeRcSfXDHRo+IIIZzuNSBf3zjRwJ9/bj2SeHFUtER+fIncBDlHJ6spw/6UmNY
+	 g6HS5JNO6R1SsSxzZcweXNy007VW/dP/GnIV6sL7NyDGnMbHl7RW3nCrtjfhlQ22/c
+	 0w9//wKoZYnDqJj4KnJJWmakHNSmLo4r6nHWtfnfmYm/RsberLWKd5VuTdMF0bIk5X
+	 +3hfjF+G2XJ9w==
 Received: from [IPv6:2606:6d00:11:b76d::5ac] (unknown [IPv6:2606:6d00:11:b76d::5ac])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 758BB17E0D91;
-	Thu, 19 Mar 2026 21:03:26 +0100 (CET)
-Message-ID: <996341171629763ec9ecc0db6da61319ee99a970.camel@collabora.com>
-Subject: Re: [PATCH v3 02/14] media: mediatek: vcodec: add decoder
- compatible to support mt8196
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1F7A517E0CF3;
+	Thu, 19 Mar 2026 21:17:20 +0100 (CET)
+Message-ID: <23f0c1f7a9656562d2be6c1ef3439f484ac76f92.camel@collabora.com>
+Subject: Re: [PATCH v5 5/6] media: dt-bindings: mediatek,vcodec-encoder: Add
+ MT8196
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Yunfei Dong =?UTF-8?Q?=28=E8=91=A3=E4=BA=91=E9=A3=9E=29?=
-	 <Yunfei.Dong@mediatek.com>, "linux-mediatek@lists.infradead.org"
-	 <linux-mediatek@lists.infradead.org>, "nhebert@chromium.org"
-	 <nhebert@chromium.org>, "nicolas.frattaroli@collabora.com"
-	 <nicolas.frattaroli@collabora.com>, "daniel.almeida@collabora.com"
-	 <daniel.almeida@collabora.com>, "benjamin.gaignard@collabora.com"
-	 <benjamin.gaignard@collabora.com>, "sebastian.fricke@collabora.com"
-	 <sebastian.fricke@collabora.com>, "hverkuil-cisco@xs4all.nl"
-	 <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	 <angelogioacchino.delregno@collabora.com>, Nicolas Prado
-	 <nfraprado@collabora.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
- "frkoenig@chromium.org"	 <frkoenig@chromium.org>, "stevecho@chromium.org"
- <stevecho@chromium.org>,  "linux-media@vger.kernel.org"	
- <linux-media@vger.kernel.org>, "devicetree@vger.kernel.org"	
- <devicetree@vger.kernel.org>, "daniel@ffwll.ch" <daniel@ffwll.ch>, 
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, "hsinyi@chromium.org"
- <hsinyi@chromium.org>,  "linux-arm-kernel@lists.infradead.org"	
- <linux-arm-kernel@lists.infradead.org>
-Date: Thu, 19 Mar 2026 16:03:24 -0400
-In-Reply-To: <44d55b13e2e9f8bbc57240c560eb5c70750e77fa.camel@mediatek.com>
-References: <20260211054149.27249-1-yunfei.dong@mediatek.com>
-		 <20260211054149.27249-3-yunfei.dong@mediatek.com>
-		 <6176231.DvuYhMxLoT@workhorse>
-		 <ce23bec1765032aad25e036b46cf45eb97764ea0.camel@collabora.com>
-	 <44d55b13e2e9f8bbc57240c560eb5c70750e77fa.camel@mediatek.com>
+To: Irui Wang <irui.wang@mediatek.com>, Hans Verkuil
+ <hverkuil-cisco@xs4all.nl>,  Mauro Carvalho Chehab	 <mchehab@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger	
+ <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	wenst@chromium.org, angelogioacchino.delregno@collabora.com, Tiffany Lin	
+ <tiffany.lin@mediatek.com>, kyrie wu <kyrie.wu@mediatek.com>
+Cc: Yunfei Dong <yunfei.dong@mediatek.com>, Maoguang Meng	
+ <maoguang.meng@mediatek.com>, Longfei Wang <longfei.wang@mediatek.com>, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-media@vger.kernel.org, 	devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Date: Thu, 19 Mar 2026 16:17:19 -0400
+In-Reply-To: <20260302035244.8994-6-irui.wang@mediatek.com>
+References: <20260302035244.8994-1-irui.wang@mediatek.com>
+	 <20260302035244.8994-6-irui.wang@mediatek.com>
 Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
@@ -89,12 +78,12 @@ Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
  bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
 Organization: Collabora Canada
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-FrnHTvwmYEsqtrvCIYp9"
+	protocol="application/pgp-signature"; boundary="=-bBjSb7ezX0aFK1Nuxe2Z"
 User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260319_130332_981761_74ABC0B1 
-X-CRM114-Status: GOOD (  10.89  )
+X-CRM114-CacheID: sfid-20260319_131727_250268_96468B5D 
+X-CRM114-Status: GOOD (  15.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,43 +99,112 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---=-FrnHTvwmYEsqtrvCIYp9
+--=-bBjSb7ezX0aFK1Nuxe2Z
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Le vendredi 13 f=C3=A9vrier 2026 =C3=A0 02:13 +0000, Yunfei Dong (=E8=91=A3=
-=E4=BA=91=E9=A3=9E) a =C3=A9crit=C2=A0:
-> I had already confirmed with kyrie, he had changed the compatible patch
-> in mt8189's patch set. So I just need to add mt8196's compatible.
+Le lundi 02 mars 2026 =C3=A0 11:52 +0800, Irui Wang a =C3=A9crit=C2=A0:
+> Add support for MT8196 video encoder which uses VCP (Video Co-Processor)
+> for firmware management. Unlike previous platforms that use SCP/VPU, MT81=
+96
+> requires VCP to load and execute the video encoding firmware, with the
+> encoder communicating through VCP to perform encoding operations.
 >=20
+> Add the "mediatek,mt8196-vcodec-enc" compatible string and introduce
+> the "mediatek,vcp" property to reference the VCP device, which is
+> required for MT8196 encoder operation.
 >=20
-> https://patchwork.linuxtv.org/project/linux-media/patch/20260127024248.18=
-406-3-kyrie.wu@mediatek.com/
->=20
-> mt8189's patch set is based on this patch set(8196's).
+> Signed-off-by: Irui Wang <irui.wang@mediatek.com>
 
-I will ask to work the other way around. Kiril patchset is very close to be
-ready, and once in, you should be able to rebase on top.
+Please, keep the bindings early in your future patchset. I need read the bi=
+nding
+first to understand what is the code pulling from the DT. I'll move when
+applying.
 
-Note that this patch is miss-ordered, you should implement all the VCP/firm=
-ware
-part before you modify the probe function.
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 
-regards,
 Nicolas
 
---=-FrnHTvwmYEsqtrvCIYp9
+> ---
+> =C2=A0.../media/mediatek,vcodec-encoder.yaml=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 | 22 +++++++++++++++++++
+> =C2=A01 file changed, 22 insertions(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-
+> encoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-
+> encoder.yaml
+> index ebc615584f92..72698456374a 100644
+> --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yam=
+l
+> +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yam=
+l
+> @@ -24,6 +24,7 @@ properties:
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 - mediatek,mt8188-vcodec-enc
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 - mediatek,mt8192-vcodec-enc
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 - mediatek,mt8195-vcodec-enc
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 - mediatek,mt8196-vcodec-enc
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - items:
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: med=
+iatek,mt8186-vcodec-enc
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: med=
+iatek,mt8183-vcodec-enc
+> @@ -58,6 +59,13 @@ properties:
+> =C2=A0=C2=A0=C2=A0=C2=A0 description:
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 Describes point to scp.
+> =C2=A0
+> +=C2=A0 mediatek,vcp:
+> +=C2=A0=C2=A0=C2=A0 $ref: /schemas/types.yaml#/definitions/phandle
+> +=C2=A0=C2=A0=C2=A0 description:
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 Reference to the VCP (Video Co-Processor)=
+ device that loads and
+> executes
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 the video encoding firmware. The encoder =
+communicates with the firmware
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 through VCP to perform encoding operation=
+s.
+> +
+> =C2=A0=C2=A0 power-domains:
+> =C2=A0=C2=A0=C2=A0=C2=A0 maxItems: 1
+> =C2=A0
+> @@ -76,6 +84,20 @@ required:
+> =C2=A0=C2=A0 - iommus
+> =C2=A0
+> =C2=A0allOf:
+> +=C2=A0 - if:
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 properties:
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 compatible:
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 contains:
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 enum:
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 - mediatek,mt8196-vcodec-enc
+> +
+> +=C2=A0=C2=A0=C2=A0 then:
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 required:
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - mediatek,vcp
+> +=C2=A0=C2=A0=C2=A0 else:
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 properties:
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 mediatek,vcp: false
+> +
+> =C2=A0=C2=A0 - if:
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 properties:
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 compatible:
+
+--=-bBjSb7ezX0aFK1Nuxe2Z
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCabxWjAAKCRDZQZRRKWBy
-9ArMAQDVgqfeQ32Oxh6+LvFyWrktt20lAWSdogk1BezddOC6mgD/cGIEIBvNjbWv
-b3JO84r1cAky7hZHLayboQFUjo4INg0=
-=J894
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCabxZzwAKCRDZQZRRKWBy
+9IqXAQDF76U2cvFTsz2ZaZxdPMcC9u+fE/gNu8I5yWnHNbtYIQD/WcXLJEafGTUM
+XIIWRgQEBp85aiMUpBpYHVj4Ms6qdwE=
+=NuJr
 -----END PGP SIGNATURE-----
 
---=-FrnHTvwmYEsqtrvCIYp9--
+--=-bBjSb7ezX0aFK1Nuxe2Z--
 
