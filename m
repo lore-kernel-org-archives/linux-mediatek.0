@@ -4,73 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BAD2109024C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2026 16:21:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C062D1091902
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2026 17:51:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FsHchTDD/FwvwORtEGwQTlj+76R1QQwuC5o9Ft5zrh4=; b=gLKKHuqHXO6CEW5CMPO/9pC+0E
-	eRYxMlnwwQSCLqmjmGIQ2J7oCc01aeujndPiS2a0SR7AC4JAHaVgAq8FJOPNRitMhGokXpA4MH84A
-	Gma3jsOdjYc/w4uWH9c5Wsp1nO1jm+kxuKvZJul0nNnIG8gWXxBu2iFMNkDxQKMW+ecC2nGoQrnZo
-	5chNets50z0XIgVEMitT53Jg7Vtf40keZChu/VdXlX24AcSG/JeOK3W7NveR2pOYGMlUHztCQ2cNX
-	Qatc3Y/f3urqcJyojvuTitYC4Xl1prSif6yBMfq7EYTvB9ZuYJQNLjIKNRa8wmxAVEtL/EIgCrMVO
-	e75Lz/SA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IfLACTZUZWtVGAw3TjaZzObr0eKRQqmLVP7qyYyiYwU=; b=bp245DsY0prk9rK/YPjB2r+liG
+	clwtJoc7q7nR0lAvD44XPIYso661soR9HfBYKvVJUldpxpHwfPsVLFVCfyqz8V8Q22QJh4jJt1dIw
+	bcDKicfHFsp9DZHkKl1gSr73S3vfArxuYUdVGLLHdTcvgtCwv1y2cUewAEd0nkri2BdEoyRIW+9nV
+	YlOvfrkcx+HhdUGBVkhA1TWC90HmUfvMsX/lnwE1Jv5NgUMEH4t6fBJipasXTUJp7NrqZ4RcfNIfx
+	4b2Lmig0girbp9Rbt6zFw0KwbwAqQzZZCFVJYEJr5F0EHX27D76UTXeywI09HRg+FMBLzksSZZQhx
+	66qHP9nA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3G7l-0000000B3x2-0Fs7;
-	Thu, 19 Mar 2026 16:21:29 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1w3HWl-0000000BF05-3koq;
+	Thu, 19 Mar 2026 17:51:23 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3G7j-0000000B3wb-2UQt;
-	Thu, 19 Mar 2026 16:21:27 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8BAA6600C4;
-	Thu, 19 Mar 2026 16:21:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D019C19424;
-	Thu, 19 Mar 2026 16:21:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773937286;
-	bh=SWuryUrLCruxqK7KPSnDrrfXYe0rzOzozifRFqJ4zdE=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=hef07MusVcnp2t8J564ll1u+wYC0m2OUObIg5bVNiRf0DMkXUITgxK/oFxN6BCiA1
-	 KgL3T6+GrWN7m+5EdnN330/a/SUiUC0toYsQTDELmz8a+x+BFVVyOZ1wEU1L2Nx02y
-	 OC89WGOTkdpT56I6GVHGalJrrrG9RzVPNuPEwWUCI5mE0LaTCAXMA3wFg3CFUg4qpI
-	 nsYY82XrC4O+8O/nIzZmXsLQF85C7HkdNDSDrE1EyX5fSW2JiQsbQGz3ReUvx4AZt7
-	 1XGKMnUIz98LHRjJQ2oe3WxafNmRsX9xEjxbl9ig7li33yzfu1aNhwdiM1DJnnbN8j
-	 MUDhGgNciC/Rg==
-From: Lee Jones <lee@kernel.org>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- "Rafael J. Wysocki" <rafael@kernel.org>, Danilo Krummrich <dakr@kernel.org>, 
- Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, 
- Tejun Heo <tj@kernel.org>, Lai Jiangshan <jiangshanlai@gmail.com>, 
- Tobias Schrammm <t.schramm@manjaro.org>, Sebastian Reichel <sre@kernel.org>, 
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
- Dan Carpenter <dan.carpenter@linaro.org>, 
- Krzysztof Kozlowski <krzk@kernel.org>, Lee Jones <lee@kernel.org>, 
- Dzmitry Sankouski <dsankouski@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Cc: Matti Vaittinen <mazziesaccount@gmail.com>, driver-core@lists.linux.dev, 
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev, 
- stable@vger.kernel.org
-In-Reply-To: <20260305-workqueue-devm-v2-0-66a38741c652@oss.qualcomm.com>
-References: <20260305-workqueue-devm-v2-0-66a38741c652@oss.qualcomm.com>
-Subject: Re: (subset) [PATCH v2 00/10] workqueue / drivers: Add
- device-managed allocate workqueue
-Message-Id: <177393728021.2870619.1816530869958472742.b4-ty@kernel.org>
-Date: Thu, 19 Mar 2026 16:21:20 +0000
+	id 1w3HWi-0000000BEzD-2mPd;
+	Thu, 19 Mar 2026 17:51:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1773942676;
+	bh=IfLACTZUZWtVGAw3TjaZzObr0eKRQqmLVP7qyYyiYwU=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=SNTVM6snbqholmWyT1SBVx/Zvo1taAER2T46QBpKkzHOcA1DXEVX4+rV2shBaarrS
+	 6Bkx0EqZjgkBLPPy8MezWstmUN84yp14b+WQO+uv0DI/knOpeJSxSXi6V41bM2cKCg
+	 sVyYxcQJncvrHc3Vo3eEWKud0LWLMkTJhcEH2fkVky4UhMbLl86WL+Mq7JOYdByGxO
+	 UunprJ7LYUp/2kSTeLWM3YVBWtUPOjNOUgvRdF1R/snfFNV3qx0+IPIVI+Cg05/oOp
+	 VYu3Gus0sKjswrK6AthXUVnWyTtwv7fB3g55wHXNpfhC7IyausNkTdT2VlHtRCoyzs
+	 c6vt4d29S1Iyg==
+Received: from [IPv6:2606:6d00:11:b76d::5ac] (unknown [IPv6:2606:6d00:11:b76d::5ac])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D529617E01B1;
+	Thu, 19 Mar 2026 18:51:13 +0100 (CET)
+Message-ID: <bfdb6cf4a4e201404deaf42e34fac731748d9aae.camel@collabora.com>
+Subject: Re: [PATCH v7 01/10] dt-bindings: media: mediatek: decoder: Add
+ MT8189 mediatek,vcodec-decoder
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Kyrie Wu <kyrie.wu@mediatek.com>, Tiffany Lin
+ <tiffany.lin@mediatek.com>,  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab	
+ <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski	
+ <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger	
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
+ <angelogioacchino.delregno@collabora.com>, Hans Verkuil
+ <hverkuil@xs4all.nl>,  Nathan Hebert <nhebert@chromium.org>, Arnd Bergmann
+ <arnd@arndb.de>, Irui Wang <irui.wang@mediatek.com>,  George Sun
+ <george.sun@mediatek.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, 	linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, 	linux-mediatek@lists.infradead.org
+Cc: Neil Armstrong <neil.armstrong@linaro.org>, Andrzej Pietrasiewicz
+	 <andrzejtp2010@gmail.com>, Yilong Zhou <yilong.zhou@mediatek.com>
+Date: Thu, 19 Mar 2026 13:51:12 -0400
+In-Reply-To: <20260127024248.18406-2-kyrie.wu@mediatek.com>
+References: <20260127024248.18406-1-kyrie.wu@mediatek.com>
+	 <20260127024248.18406-2-kyrie.wu@mediatek.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-AkToS706KozDmvsPAY7X"
+User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.15-dev-52d38
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260319_105120_874041_84B44768 
+X-CRM114-Status: GOOD (  15.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,26 +100,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 05 Mar 2026 22:45:39 +0100, Krzysztof Kozlowski wrote:
-> Merging / Dependency
-> ====================
-> All further patches depend on the first one, thus this probably should
-> go via one tree, e.g. power supply.  The first patch might be needed for
-> other trees as well, e.g. if more drivers are discovered, so the best if
-> it is on dedicated branch in case it has to be shared.
-> 
-> [...]
 
-Applied, thanks!
+--=-AkToS706KozDmvsPAY7X
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-[07/10] mfd: ezx-pcap: Drop memory allocation error message
-        commit: 33e0316783a205625b7c55a78041ddc0d5dce7c7
-[08/10] mfd: ezx-pcap: Return directly instead of empty gotos
-        commit: 444e11d9d9e56c994da8a253cdf7f33ac2eeb15b
-[09/10] mfd: ezx-pcap: Avoid rescheduling after destroying workqueue
-        commit: 356ee03f6ae7d04f90d8e2104660193c4f3a071c
+Le mardi 27 janvier 2026 =C3=A0 10:42 +0800, Kyrie Wu a =C3=A9crit=C2=A0:
+> Add compatible for video decoder on MT8189 platform. Compared with
+> former ICs, the MT8189 decoder use iommu to instead of smmu, and
+> use scp architecture, the frequency is only 406MHZ, and cannot reach
+> more than 700MHZ. It used only one clock. At the same time, the decoder
 
---
-Lee Jones [李琼斯]
+used -> uses
 
+I will edit while applying if no new version is needed.
+
+> supports the vp9 decoding protocol for the first time in single IC.
+>=20
+> Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
+> Acked-by: Rob Herring (Arm) <robh@kernel.org>
+
+
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+
+> ---
+> =C2=A0.../bindings/media/mediatek,vcodec-subdev-decoder.yaml=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0 | 5 +++--
+> =C2=A01 file changed, 3 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-subd=
+ev-
+> decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-su=
+bdev-
+> decoder.yaml
+> index 74e1d88d3056..ee2bbbdb2d50 100644
+> --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-
+> decoder.yaml
+> +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-
+> decoder.yaml
+> @@ -75,6 +75,7 @@ properties:
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - mediatek,mt8192-vcodec-dec
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - mediatek,mt8186-vcodec-dec
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - mediatek,mt8188-vcodec-dec
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - mediatek,mt8189-vcodec-dec
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - mediatek,mt8195-vcodec-dec
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - mediatek,mt8196-vcodec-dec
+> =C2=A0
+> @@ -132,11 +133,11 @@ patternProperties:
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 Refer to bin=
+dings/iommu/mediatek,iommu.yaml.
+> =C2=A0
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 clocks:
+> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 minItems: 4
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 minItems: 1
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 maxItems: 5
+> =C2=A0
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 clock-names:
+> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 minItems: 4
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 minItems: 1
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 maxItems: 5
+> =C2=A0
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 assigned-clocks:
+
+--=-AkToS706KozDmvsPAY7X
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCabw3kAAKCRDZQZRRKWBy
+9FOpAP98EeRzL7Xi7yjEibfNaBW5yZ2xRquWc/OBvRk/DEHAVAD9FTu7r6Dks46M
+/jxHcyeiE+SqfcGILdh/gknhFteu/Qo=
+=GmZQ
+-----END PGP SIGNATURE-----
+
+--=-AkToS706KozDmvsPAY7X--
 
