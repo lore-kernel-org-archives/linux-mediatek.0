@@ -4,73 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3337109190D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2026 18:53:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FD7C1091917
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2026 20:03:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hPCFRtgX3A3wlaUT/6rWyHaLSFxVZ51xuZ7BWdsOpu0=; b=MimQL/LIFCmSxYZH1rtkts0jsg
-	sdB6Cv393P7BqbEcS5eRyBvCXfiafdRhvx4LJrbXAXc3t3VXJZnsr/hCHBE//kxNT7Nm83ez4ZOzF
-	HUyIiGPOYJ4qic3o7pW1AHAmXXJiScxEUctfu6celw9SwxEvM0w+fJArFo4JeWrRjLtkuC8DmNJYt
-	K1we7tpUtt34ZmWVJwMKpa2Kt1yYGHLeElgWLqI6h2yIhPX9rNLkNLrp+JS3Wp+Urp9f9s+yBAMUl
-	0Qg3W5VDeVEPm3aAnfSiThDZ09AHPySbiTX9+OoipnDiEyeS3BAVZkD6lcBniDNVR7x427wJMUKpH
-	veoFqhRg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Mwk77xis2n3Xi3SnteeL2ohG2orQmcxYOHvsRcbmRzo=; b=PG/4WKzB6bg9dVcU5xHGhuRmb6
+	uPPaaPBOZBb16ZiRVhJoZsdIl54pxTwCSgQznuGI8e6HsK/oyIU0RGwGcMXvOH3UR2WRM2cui0Rbr
+	WSTfwQ0CuDRqO/w1mvNnVX62PyIsaXRY71RM21zIOH3VjgA1opNI0J7UUxx2WH/W0Z4wBKjukUYZt
+	pbtsQ9eUYtfj8bXZOE89/5ceiOKU9jdEJcGPAHiF6h7I4xLsCttbJuetDCOK7DPhUZQBboAAtr55V
+	BQWi6sY22ycZhFCTOswZH/frlh8MFbCEgNffIYso7MNRR3lo6HQ1rxYpzYLtyNAVIxuIK/HvmSY75
+	Sb+oZwwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3IUO-0000000BPMh-0vYA;
-	Thu, 19 Mar 2026 18:53:00 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1w3Jai-0000000BUtk-2wIV;
+	Thu, 19 Mar 2026 20:03:36 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3IUM-0000000BPM4-0yNQ
-	for linux-mediatek@lists.infradead.org;
-	Thu, 19 Mar 2026 18:52:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id DEE63406AD
-	for <linux-mediatek@lists.infradead.org>; Thu, 19 Mar 2026 18:52:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF210C19424
-	for <linux-mediatek@lists.infradead.org>; Thu, 19 Mar 2026 18:52:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773946377;
-	bh=hPCFRtgX3A3wlaUT/6rWyHaLSFxVZ51xuZ7BWdsOpu0=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=X+lEj5y0jCylLOuWl4R4Lgi9gOz3ujHDeWkRbyA62cN/P/51ZWHqxkKyROJOgPRZr
-	 XzY2xsXICfCJp19Ls99bCgdI+KQ9nZ2l6CXJ+JX+Vn5YnLoECxsdL07hXyVWMs2PTo
-	 o6qlXByurdwwt3ZfgzkKk6EWjsDl5uSgu1RpX2nosv3Z3pgIlDg6yPCySta5DngY1H
-	 P8s5+2UXTKYx06EuDQdcmlG/4uhFCrimZSlh2i5icRHFE2ZRqSNvRFqcg+gxTwFEsu
-	 NJaQDmnz3ZptDSrGPHcbOKMlSa89NYEhjkQdXjIdItif2xhZ8lRnAQIU4UfiyrZdOb
-	 +z+nTOo3TOXfw==
-Received: by mail-yw1-f181.google.com with SMTP id 00721157ae682-79a5a37113aso14484757b3.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 19 Mar 2026 11:52:57 -0700 (PDT)
-X-Gm-Message-State: AOJu0Yz9mVMpeB8ajP5otzZypYlU4d1FwttkFtfo8JBg9yUCqiV5VWFP
-	nTVmySsmY1PKUcV/BLkrly3pr7uJVcjps5yx0H70WYqYljA3AGCpEdHv8yyzqLQiCF0VniSj8TI
-	kfDjkCU4+mfChuZKbB+Jyl7bPTL0yyBs=
-X-Received: by 2002:a05:690c:6608:b0:79a:40fb:9339 with SMTP id
- 00721157ae682-79a90c01f52mr2050597b3.47.1773946377172; Thu, 19 Mar 2026
- 11:52:57 -0700 (PDT)
+	id 1w3Jae-0000000BUtE-3DQI;
+	Thu, 19 Mar 2026 20:03:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1773950609;
+	bh=Mwk77xis2n3Xi3SnteeL2ohG2orQmcxYOHvsRcbmRzo=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=GyK7utUdQY5E5LXqW5mcaITv5umgd4AWM1M+WPt8otL4ejjp4T4VXPXwc4YVUGBUZ
+	 2shvNNt9XtwjqfOhKiC9g2fj+jz7wspuKHJVd3AoAeRS3p8V1/uj9xcGfBGopWjPmZ
+	 eQgJE11omY1jXJeyo6t6KYy/48PfZ/kz5HHovR2WxQSdimiLphVDz01ZcSJrVxbQtP
+	 CaEev16x+bU7URDp/tjZSqrrwwcdzQ5HftZWNtpfXqyyPb4MGRCVT8HU2jGJLiPozw
+	 u0l0R9NMijyiEeKDmWOzmbv0pP6vEkkSWOW/MvMIAFDiibepTP5wpW8R5I1L0lbNjJ
+	 Y9Rmb+US9phNw==
+Received: from [IPv6:2606:6d00:11:b76d::5ac] (unknown [IPv6:2606:6d00:11:b76d::5ac])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 758BB17E0D91;
+	Thu, 19 Mar 2026 21:03:26 +0100 (CET)
+Message-ID: <996341171629763ec9ecc0db6da61319ee99a970.camel@collabora.com>
+Subject: Re: [PATCH v3 02/14] media: mediatek: vcodec: add decoder
+ compatible to support mt8196
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Yunfei Dong =?UTF-8?Q?=28=E8=91=A3=E4=BA=91=E9=A3=9E=29?=
+	 <Yunfei.Dong@mediatek.com>, "linux-mediatek@lists.infradead.org"
+	 <linux-mediatek@lists.infradead.org>, "nhebert@chromium.org"
+	 <nhebert@chromium.org>, "nicolas.frattaroli@collabora.com"
+	 <nicolas.frattaroli@collabora.com>, "daniel.almeida@collabora.com"
+	 <daniel.almeida@collabora.com>, "benjamin.gaignard@collabora.com"
+	 <benjamin.gaignard@collabora.com>, "sebastian.fricke@collabora.com"
+	 <sebastian.fricke@collabora.com>, "hverkuil-cisco@xs4all.nl"
+	 <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	 <angelogioacchino.delregno@collabora.com>, Nicolas Prado
+	 <nfraprado@collabora.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+ "frkoenig@chromium.org"	 <frkoenig@chromium.org>, "stevecho@chromium.org"
+ <stevecho@chromium.org>,  "linux-media@vger.kernel.org"	
+ <linux-media@vger.kernel.org>, "devicetree@vger.kernel.org"	
+ <devicetree@vger.kernel.org>, "daniel@ffwll.ch" <daniel@ffwll.ch>, 
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, "hsinyi@chromium.org"
+ <hsinyi@chromium.org>,  "linux-arm-kernel@lists.infradead.org"	
+ <linux-arm-kernel@lists.infradead.org>
+Date: Thu, 19 Mar 2026 16:03:24 -0400
+In-Reply-To: <44d55b13e2e9f8bbc57240c560eb5c70750e77fa.camel@mediatek.com>
+References: <20260211054149.27249-1-yunfei.dong@mediatek.com>
+		 <20260211054149.27249-3-yunfei.dong@mediatek.com>
+		 <6176231.DvuYhMxLoT@workhorse>
+		 <ce23bec1765032aad25e036b46cf45eb97764ea0.camel@collabora.com>
+	 <44d55b13e2e9f8bbc57240c560eb5c70750e77fa.camel@mediatek.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-FrnHTvwmYEsqtrvCIYp9"
+User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
-References: <20260317110249.391552-1-l.scorcia@gmail.com>
-In-Reply-To: <20260317110249.391552-1-l.scorcia@gmail.com>
-From: Linus Walleij <linusw@kernel.org>
-Date: Thu, 19 Mar 2026 19:52:46 +0100
-X-Gmail-Original-Message-ID: <CAD++jLnsyNHE48G-Y_Xm0+8qdPxFg_uLjmu-ECJ6WhyLic21Qg@mail.gmail.com>
-X-Gm-Features: AaiRm513TfYe7uCQq0CzURF2vQO5mlP7suiM71DI8BWW-DkDxWdNC_gZ2eSCMv4
-Message-ID: <CAD++jLnsyNHE48G-Y_Xm0+8qdPxFg_uLjmu-ECJ6WhyLic21Qg@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: mediatek: common: Fix probe failure for devices
- without EINT
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, Sean Wang <sean.wang@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260319_115258_313351_590CE19E 
-X-CRM114-Status: UNSURE (   9.59  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260319_130332_981761_74ABC0B1 
+X-CRM114-Status: GOOD (  10.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,23 +109,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 17, 2026 at 12:03=E2=80=AFPM Luca Leonardo Scorcia
-<l.scorcia@gmail.com> wrote:
 
-> Some pinctrl devices like mt6397 or mt6392 don't support EINT at all, but
-> the mtk_eint_init function is always called and returns -ENODEV, which
-> then bubbles up and causes probe failure.
->
-> To address this only call mtk_eint_init if EINT pins are present.
->
-> Tested on Xiaomi Mi Smart Clock x04g (mt6392).
->
-> Fixes: e46df235b4e6 ("pinctrl: mediatek: refactor EINT related code for a=
-ll MediaTek pinctrl can fit")
-> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+--=-FrnHTvwmYEsqtrvCIYp9
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Patch applied for fixes!
+Le vendredi 13 f=C3=A9vrier 2026 =C3=A0 02:13 +0000, Yunfei Dong (=E8=91=A3=
+=E4=BA=91=E9=A3=9E) a =C3=A9crit=C2=A0:
+> I had already confirmed with kyrie, he had changed the compatible patch
+> in mt8189's patch set. So I just need to add mt8196's compatible.
+>=20
+>=20
+> https://patchwork.linuxtv.org/project/linux-media/patch/20260127024248.18=
+406-3-kyrie.wu@mediatek.com/
+>=20
+> mt8189's patch set is based on this patch set(8196's).
 
-Yours,
-Linus Walleij
+I will ask to work the other way around. Kiril patchset is very close to be
+ready, and once in, you should be able to rebase on top.
+
+Note that this patch is miss-ordered, you should implement all the VCP/firm=
+ware
+part before you modify the probe function.
+
+regards,
+Nicolas
+
+--=-FrnHTvwmYEsqtrvCIYp9
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCabxWjAAKCRDZQZRRKWBy
+9ArMAQDVgqfeQ32Oxh6+LvFyWrktt20lAWSdogk1BezddOC6mgD/cGIEIBvNjbWv
+b3JO84r1cAky7hZHLayboQFUjo4INg0=
+=J894
+-----END PGP SIGNATURE-----
+
+--=-FrnHTvwmYEsqtrvCIYp9--
 
