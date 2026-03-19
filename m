@@ -4,63 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18429109190D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2026 18:30:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3337109190D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2026 18:53:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=39Cu39toy/8GhZJ1SgNYS+5TuFP8tJKlZwmBlPRVTyc=; b=RS5ZzeAJyKNWN1n7EA4IW2+RLK
-	av34k0QmUNMV+Wp//tivdxJs3BDFVlrVikjRzasuh+fJY4piiXHyb4AayZ2RjNshHP/nFEIKn/1hy
-	A0TCpBUkR4gagEiB8mNxZzNkMO3bGck/7qqxvknHvLXDiitc0md841YKBPL0eDOXisBGDwwkJYzHZ
-	/CM+DTKAXKEyUC5zb8MCXxiBodYsBE8oHW6Um+fJRLkiNOw6tpj916YS0rVyfkPkBUi1gqEWBL9lN
-	a7Nmv7sGoxvRpVKAwlBsHpUWaXJGPzl3Go4R2kCUAcNEzQ4E3j0p+dtsU9BBtB5Rv2f5Tz6rnG6Ab
-	vRQOBZCw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hPCFRtgX3A3wlaUT/6rWyHaLSFxVZ51xuZ7BWdsOpu0=; b=MimQL/LIFCmSxYZH1rtkts0jsg
+	sdB6Cv393P7BqbEcS5eRyBvCXfiafdRhvx4LJrbXAXc3t3VXJZnsr/hCHBE//kxNT7Nm83ez4ZOzF
+	HUyIiGPOYJ4qic3o7pW1AHAmXXJiScxEUctfu6celw9SwxEvM0w+fJArFo4JeWrRjLtkuC8DmNJYt
+	K1we7tpUtt34ZmWVJwMKpa2Kt1yYGHLeElgWLqI6h2yIhPX9rNLkNLrp+JS3Wp+Urp9f9s+yBAMUl
+	0Qg3W5VDeVEPm3aAnfSiThDZ09AHPySbiTX9+OoipnDiEyeS3BAVZkD6lcBniDNVR7x427wJMUKpH
+	veoFqhRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3I8T-0000000BLnT-27R1;
-	Thu, 19 Mar 2026 18:30:21 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1w3IUO-0000000BPMh-0vYA;
+	Thu, 19 Mar 2026 18:53:00 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3I8S-0000000BLma-11YX;
-	Thu, 19 Mar 2026 18:30:20 +0000
+	id 1w3IUM-0000000BPM4-0yNQ
+	for linux-mediatek@lists.infradead.org;
+	Thu, 19 Mar 2026 18:52:59 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 69C6660053;
-	Thu, 19 Mar 2026 18:30:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B3F1BC19424;
-	Thu, 19 Mar 2026 18:30:16 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id DEE63406AD
+	for <linux-mediatek@lists.infradead.org>; Thu, 19 Mar 2026 18:52:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF210C19424
+	for <linux-mediatek@lists.infradead.org>; Thu, 19 Mar 2026 18:52:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773945019;
-	bh=39Cu39toy/8GhZJ1SgNYS+5TuFP8tJKlZwmBlPRVTyc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=mH4ZE2RMd4lnRRky54nqLEeAMEN+ykwXu0nCF43Mkdsb6H7KxQTBoK9+gR7JwoL9v
-	 1nw9Od46tXH5FqN8/+h+LCOnjzj+IQTvZXUGONvamwRvFflqds+TQ/9P47olGMl832
-	 UR8YVXcNqB7Z//D3pEFc1UpZrfvx4zImqjtWp6EkBqD/LIYbnlcBSkRygZGFo0RnoQ
-	 l5ETfGl44nPTnZsu/NqTiHKWDdYUyVmT3zRMDKfvQMY4ca4bG1bRRNlggmJn//2hJO
-	 lz2SKFJPnDgD2JZvmRCDwLDgqjJSXM7rDmCL2Ts57rtqAVDyRS8a+BH5iJu+EEXeQt
-	 iDbynoypmOuPQ==
-Date: Thu, 19 Mar 2026 18:30:14 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Pei Xiao <xiaopei01@kylinos.cn>
-Cc: linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, imx@lists.linux.dev,
-	openbmc@lists.ozlabs.org, linux-rockchip@lists.infradead.org,
-	linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com, Frank.Li@nxp.com,
-	amelie.delaunay@foss.st.com
-Subject: Re: [PATCH v5 10/17] spi: slave-mt27xx: Simplify clock handling with
- devm_clk_get_enabled()
-Message-ID: <e9e26679-036f-4cfe-90b7-ec0ce57b5304@sirena.org.uk>
-References: <cover.1773885292.git.xiaopei01@kylinos.cn>
- <d8a7d6cd3c33419db98027b9346cf078a6b8b4c8.1773885292.git.xiaopei01@kylinos.cn>
+	s=k20201202; t=1773946377;
+	bh=hPCFRtgX3A3wlaUT/6rWyHaLSFxVZ51xuZ7BWdsOpu0=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=X+lEj5y0jCylLOuWl4R4Lgi9gOz3ujHDeWkRbyA62cN/P/51ZWHqxkKyROJOgPRZr
+	 XzY2xsXICfCJp19Ls99bCgdI+KQ9nZ2l6CXJ+JX+Vn5YnLoECxsdL07hXyVWMs2PTo
+	 o6qlXByurdwwt3ZfgzkKk6EWjsDl5uSgu1RpX2nosv3Z3pgIlDg6yPCySta5DngY1H
+	 P8s5+2UXTKYx06EuDQdcmlG/4uhFCrimZSlh2i5icRHFE2ZRqSNvRFqcg+gxTwFEsu
+	 NJaQDmnz3ZptDSrGPHcbOKMlSa89NYEhjkQdXjIdItif2xhZ8lRnAQIU4UfiyrZdOb
+	 +z+nTOo3TOXfw==
+Received: by mail-yw1-f181.google.com with SMTP id 00721157ae682-79a5a37113aso14484757b3.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 19 Mar 2026 11:52:57 -0700 (PDT)
+X-Gm-Message-State: AOJu0Yz9mVMpeB8ajP5otzZypYlU4d1FwttkFtfo8JBg9yUCqiV5VWFP
+	nTVmySsmY1PKUcV/BLkrly3pr7uJVcjps5yx0H70WYqYljA3AGCpEdHv8yyzqLQiCF0VniSj8TI
+	kfDjkCU4+mfChuZKbB+Jyl7bPTL0yyBs=
+X-Received: by 2002:a05:690c:6608:b0:79a:40fb:9339 with SMTP id
+ 00721157ae682-79a90c01f52mr2050597b3.47.1773946377172; Thu, 19 Mar 2026
+ 11:52:57 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="noPRvBXZlo6sTtNk"
-Content-Disposition: inline
-In-Reply-To: <d8a7d6cd3c33419db98027b9346cf078a6b8b4c8.1773885292.git.xiaopei01@kylinos.cn>
-X-Cookie: Given my druthers, I'd druther not.
+References: <20260317110249.391552-1-l.scorcia@gmail.com>
+In-Reply-To: <20260317110249.391552-1-l.scorcia@gmail.com>
+From: Linus Walleij <linusw@kernel.org>
+Date: Thu, 19 Mar 2026 19:52:46 +0100
+X-Gmail-Original-Message-ID: <CAD++jLnsyNHE48G-Y_Xm0+8qdPxFg_uLjmu-ECJ6WhyLic21Qg@mail.gmail.com>
+X-Gm-Features: AaiRm513TfYe7uCQq0CzURF2vQO5mlP7suiM71DI8BWW-DkDxWdNC_gZ2eSCMv4
+Message-ID: <CAD++jLnsyNHE48G-Y_Xm0+8qdPxFg_uLjmu-ECJ6WhyLic21Qg@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: mediatek: common: Fix probe failure for devices
+ without EINT
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, Sean Wang <sean.wang@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260319_115258_313351_590CE19E 
+X-CRM114-Status: UNSURE (   9.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,35 +85,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Mar 17, 2026 at 12:03=E2=80=AFPM Luca Leonardo Scorcia
+<l.scorcia@gmail.com> wrote:
 
---noPRvBXZlo6sTtNk
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+> Some pinctrl devices like mt6397 or mt6392 don't support EINT at all, but
+> the mtk_eint_init function is always called and returns -ENODEV, which
+> then bubbles up and causes probe failure.
+>
+> To address this only call mtk_eint_init if EINT pins are present.
+>
+> Tested on Xiaomi Mi Smart Clock x04g (mt6392).
+>
+> Fixes: e46df235b4e6 ("pinctrl: mediatek: refactor EINT related code for a=
+ll MediaTek pinctrl can fit")
+> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
 
-On Thu, Mar 19, 2026 at 10:04:06AM +0800, Pei Xiao wrote:
-> Replace devm_clk_get() followed by clk_prepare_enable() with
-> devm_clk_get_enabled() for the "spi" clock. This reduces boilerplate
-> code and error handling, as the managed API automatically disables the
-> clock when the device is removed or if probe fails.
+Patch applied for fixes!
 
-This driver is dynamically managing the clock so devm_clk_get_enabled()
-isn't a good conversion here, there's probably some bugs around runtime
-PM being disabled but this'll not help.
-
---noPRvBXZlo6sTtNk
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmm8QLUACgkQJNaLcl1U
-h9AlXwf+O/j4y9RCkRUATb7XdaYqoh/vDEx4mftt8jW3vU1SX0BXTm7XYbi1yLLO
-+EKgiIdTRsnLBX/qp3gOXWkQPLLXRuFjsE0bA3x2yXeTRhQcpAEDUB55LLzEGzmd
-79I+MlMlDSNmDhqsOT6/nyFYyP1HDQonwyMDlXc1Ec+qf39VS1Jf0I0jyttCAV2Z
-6tRuFSmQiY59a4QR8tXqIzpLB7yqhIqqIRonUA5zuOxdB6S1O9BTh5SCXTOVE6t/
-C58WLO0KgipP/jucVZUz4iCb94XRvzrRt+r9nTwbGgLxGPwbPgB12NPH/BbDwGdx
-if/9vikYeWfN8GP3BkZJSg6wWr/vHw==
-=JXnH
------END PGP SIGNATURE-----
-
---noPRvBXZlo6sTtNk--
+Yours,
+Linus Walleij
 
