@@ -4,185 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A362E10854D2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2026 12:40:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7FFA109023F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2026 15:52:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HbtZzbd6rsVafP5bXJ++xloXtmo4YptL5GLuqzHqKGM=; b=36hFluloQRfTEGHdEhdyrmj7zd
-	NcBqYJPvEvsnYqA1z2O31nYFwc68Vn8fBMnvGjbabCbctw3AfE31ewdGw3ujJ9RBLT9nLmelceMUa
-	BBrgru6ezsSq/HuWBPaf7qroMpF3EzZmxlBDoWfbsurEHa3oNLrE0Sg/k0oC0QvnN7eWI8p0ZIMoN
-	hHA2u0uUPzzPBNVUuu/o/3aXXmgjst08+7LKu094gE9TdPqdC/5h9qjnqFV27oGQDYRNq4KA+rFM1
-	PU9d/Mcvh4y/K2yn0pgmcBwQJhUQAZeCDpfEIHCTdD41o5Od/Hl2ioQ9SfHXlW0rI0UK0QESDnhHY
-	7mKU1TGQ==;
+	bh=PmgyijRcd4OmJG/9PnORXit59oxOF3CJelVTrd5+kIQ=; b=aUcSVYqCjLGV33b0jrYJiUZ6EQ
+	zsdlvFKhOi4Scc29nq4d6WPhWQjWvqKoZ4H43qI7HOZIoUHtMDa3AVPMK9h77qK6jPriAlw6W5zS9
+	4ak5H65htVf2w+j2GL0m6piqiaA5uAb0tXQPXdsESBHBNNKOICEghzkONwdvmWZw6r8FbkQW/Ik7k
+	fsREfhRkOhtze3dVJAndIfVsh1O7x/LnmcTOglUmM/cCPef7J3ewlVKW2C9TMkt6ivZWjv+6AolNM
+	/i+yXnTl4ElklpyT8t6KvXNsWZQoxBXwebmwcZFTyOZ2Z6vKx1zRUKP2i+/hyXmO6facqxMA1EM2l
+	yvqYAWFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3Cfe-0000000AcWp-2rXo;
-	Thu, 19 Mar 2026 12:40:14 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1w3Ffp-0000000AxRH-1RwC;
+	Thu, 19 Mar 2026 15:52:37 +0000
+Received: from mail-swedencentralazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c202::7] helo=GVXPR05CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3CfZ-0000000AcUr-3TkQ
-	for linux-mediatek@lists.infradead.org;
-	Thu, 19 Mar 2026 12:40:12 +0000
-X-UUID: c00343ac239011f1a6de359d7043e138-20260319
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=HbtZzbd6rsVafP5bXJ++xloXtmo4YptL5GLuqzHqKGM=;
-	b=F1SPiK3i2cFuMMxyaEQ9awWcyJB+VhsmMxaQJSdxDSkzxb38CdVYl2/XaS1MAwOvjPlEHg9nz4UZzIirU4BbleBDVzBFlQzuzFKG2Cqp5XN31Xe2cX0Tja4GX1tIt4HvY2st4fAJvt5NhnbCH5yjzybqJpNE5aa5LEDzpmJAJyw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:24bb40c6-de33-4ac8-82ee-9fc3bc4bc094,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:e7bac3a,CLOUDID:c7aaaf4c-9183-487b-8624-e74f2dd98990,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111|836|888|898,
-	TC:-5,Content:0|15|50,EDM:-3,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,QS:nil
-	,BEC:-1,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: c00343ac239011f1a6de359d7043e138-20260319
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2032658476; Thu, 19 Mar 2026 05:40:02 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Thu, 19 Mar 2026 20:40:00 +0800
-Received: from SG2PR04CU010.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Thu, 19 Mar 2026 20:40:00 +0800
+	id 1w3Ffl-0000000AxN8-2vtV;
+	Thu, 19 Mar 2026 15:52:35 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=k2hc7aoE2uBU5oo+bWghSfnZCqxEp7NYhuclplHXHoh3/eiSU7up0puEa/xCK1L1End9Wiitihr9KFMnUrU6loukpvwvcPwAOcwsCI4lpUb2FkCzhGS+1MdJgqutN6nl91NdI2xz1ssiLp/CN7I5/4qEAcc9ZJCc8/euHabGqgzSMlQGCZTWVAVDjmXygNA4KKtKxZYaVdjwuOckBvtKeLBEW0pbrif4rwdNRGcyDRkO4AdDe8I91Dd3BUjfMaPsdD4kmtkSoDj+Rul6+i7XMOeBPKAbtCyCh2EC2/xLFsQqzOwPWTqHyPbP1KQF9z9W9Fr3sNT2jExVN9heNitJ1A==
+ b=KB45WVRPD/YHpVDRB1Dwd/5KMpc6wZjbp21dITHPVl4GVAFPeoYTtCG+ua+QiU9vONGerdMQMDESe6kQ+z8xDRkNgI8KQUS5XfZDUY6RzhNhlSn1E875dl8W6b6+dLhpGpDu2RWIFGMtCTE25aysRQNf6zJTuIIhxaRQ/ncWIYCA99rS80G33ZHFuqGrI+pZr2bxib5e1TDWtfiWvfSWX8UI0h3M3B3gFVPj7FsI5xPLG4d3mW1yd+8Gw3FM3HbugX0zDv7qmL86X8u+MY1yiVmxyOmcMRJG9QsPQQMPTv6bsImQYEtz5CW0IVGHvZ9ubAxLsQJGZ6qBm5oZZm1Brw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=HbtZzbd6rsVafP5bXJ++xloXtmo4YptL5GLuqzHqKGM=;
- b=gDq+xHXY14JBoIO5CoCBmjVFuvNsUMTotYQui/4j1oPk/qNbHkItyouT2hPqwHp0vPFiIKHqhXNz0kUEWiRzQxERW9HP8IXmzNKaWuN3MxU+QrvwxOScUV7R2m8uyE67ST1fUaEg8wunRFRfqDr6VYlLYzm+EEs7Zck1jmqyR33Ov24cJGb+WkphcxuKILoDXfb1GS2pC2/skkDCj+ERIKLF+CQksexm0Q05G7ay+vtO653ksX43tcc75z1PdscEq3nf4rznmGPI7qTBokz2Sum+QIEiLRS1D6eOEK68P6XfvIHqMpFtXEeoyUpULkjC3nncITTXJCpYQwS2gGdoDQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ bh=PmgyijRcd4OmJG/9PnORXit59oxOF3CJelVTrd5+kIQ=;
+ b=RbDDlMRmUrAgX3L0qbeftOWPiG3CALw6/Wtyd9zwJM+7Em0wBCAOP1H4+8G4zFMEQCnX+WwZaQbXaQkFrKDMNKsm6HzUFGlRZREHDGQRmPnbu0toHA2Un9Xt++rr4P/YS6xEpjGKiml7MxXOIag9GdYw2SK9KrmhORtiFZa14OVaIJ4BC0CX/3yTa4So/3m1kIOJ4Nm2G1/B6BEHMYQdCrk5A9AqPeK20fEPRnpywr+aqyily17PBR7emMLIxos1TVn6XrrALaMksy4Myy6WT/5udIgKovgvCgQGQrUZzSGKKP77QotdW8fZKL1LFN8mrq93fT14xa2jMetpQr1A5g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=fail (sender ip is
+ 164.130.1.59) smtp.rcpttodomain=kylinos.cn smtp.mailfrom=foss.st.com;
+ dmarc=fail (p=none sp=none pct=100) action=none header.from=foss.st.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com;
+ s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=HbtZzbd6rsVafP5bXJ++xloXtmo4YptL5GLuqzHqKGM=;
- b=lPVw1HeJJkoODOk5l/FKufxXiv3urfkPBOF0aMZiG/Ta0MsLWzvCBuljOk9Rf5rbOgH4DUo/j72DuvZszhtNQWK3DQyD80Cugbk0R8wMwGN7Xq/SmibdNYT4TuzJEuX+i2ZxIkHvO6C8NOQJgyB2+b6JbtxGom+JyIwXWrydOzc=
-Received: from PSAPR03MB5605.apcprd03.prod.outlook.com (2603:1096:301:66::6)
- by TYZPR03MB8648.apcprd03.prod.outlook.com (2603:1096:405:b3::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9723.19; Thu, 19 Mar
- 2026 12:39:58 +0000
-Received: from PSAPR03MB5605.apcprd03.prod.outlook.com
- ([fe80::165:d36a:3f76:2925]) by PSAPR03MB5605.apcprd03.prod.outlook.com
- ([fe80::165:d36a:3f76:2925%4]) with mapi id 15.20.9723.018; Thu, 19 Mar 2026
- 12:39:57 +0000
-From: =?utf-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>
-To: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
-	"m.szyprowski@samsung.com" <m.szyprowski@samsung.com>, "jejb@linux.ibm.com"
-	<jejb@linux.ibm.com>, "avri.altman@sandisk.com" <avri.altman@sandisk.com>,
-	"alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
-	"martin.petersen@oracle.com" <martin.petersen@oracle.com>
-CC: =?utf-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
-	=?utf-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
-	=?utf-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
-	=?utf-8?B?RWQgVHNhaSAo6JSh5a6X6LuSKQ==?= <Ed.Tsai@mediatek.com>, wsd_upstream
-	<wsd_upstream@mediatek.com>, =?utf-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
-	<Chaotian.Jing@mediatek.com>, =?utf-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?=
-	<Chun-hung.Wu@mediatek.com>, "bvanassche@acm.org" <bvanassche@acm.org>,
-	=?utf-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?= <Naomi.Chu@mediatek.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	=?utf-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?= <Tun-yu.Yu@mediatek.com>
-Subject: Re: [PATCH v2] ufs: core: Avoid IRQ thread wakeup during active UIC
- command
-Thread-Topic: [PATCH v2] ufs: core: Avoid IRQ thread wakeup during active UIC
- command
-Thread-Index: AQHcrSxPGnfAtrpK0kOvBMCDgGF4JrWzB9eAgADmwACAABV/AIAB3IwA
-Date: Thu, 19 Mar 2026 12:39:57 +0000
-Message-ID: <273fe7ab805f050ca185aaa9c48da7995f7558ee.camel@mediatek.com>
-References: <20260306054419.3816557-1-peter.wang@mediatek.com>
-	 <CGME20260317171131eucas1p25dd55bf1aad6d5b310526d51885b3b7a@eucas1p2.samsung.com>
-	 <1f88b91c-59e6-4347-84c2-50b7cf106c47@samsung.com>
-	 <a341a70943ffb8b8c5bbc9b4e19c017fe664fdf1.camel@mediatek.com>
-	 <473ecf74-1907-42a2-a785-6164720cb641@samsung.com>
-In-Reply-To: <473ecf74-1907-42a2-a785-6164720cb641@samsung.com>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: PSAPR03MB5605:EE_|TYZPR03MB8648:EE_
-x-ms-office365-filtering-correlation-id: cd2c312c-82a0-4153-b7fa-08de85b4a0e8
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|366016|376014|1800799024|56012099003|18002099003|22082099003|38070700021;
-x-microsoft-antispam-message-info: w7vuMHWbGyx1TEOT0gmhL2xpqD2REmFjca4wkpjVUlx65MQxCUOQxUda3VWi7UAyl3FRUPfhgZ6c4WCYXQnjLeMZinhcPxQF4763Yobpj7KwahpWJsFNj4ZkmSxlGnwmfYf44veNk4x9tHeN3ChgnxuuGW+2oWcGjG0qRQfzy8AVHbsaFrVCXVhjNrzsLoFcH0/i9rd4lswXNuN69Jo1OFD6bl4LUv/8dWyYBy/yWy67IKvxff/uCpAVOTeVghV+TNCkJskH4VYuiCFGcJwXEHrONVFxCs0IoK+VFCcjlisfTQKu9olBkBThmPROywZm87dzc6WZDSRm/hqVoTrRkTX5fI6zpy0tqfd4gAAUw1H1LUD6+lX+lfKaoO08qoqNhfO1Ook/owbsD1dsiU7WTvCUFrGGJTOGebKKSPgXssNo3ihP4D75U5tX0gNzT5y7IqkUPwGMCG1NpslRtsRXLiV6Smr/6Qcn0x/RGX0+NXUPiBa53HoSIerYVtQfI35lM9ZlEEso0KLqnZSvXFd48QvtZmX18rmpMCSPGRvmoaiO5f7EfQNfST5HBzC+v/lsHiwVsTpfTh5bWMKbnlGX9wbmTrgaglgLIHBa8IhtAHyv+AvQlUzXK0mVQdt3agFhscfhuP3yleBrktd34ppHIRg6F6Qg9ChgRGo8zkLeb82dOIJyzm7P9aTIRoFgLIgnQphdlcVcU1xiVTaXOuYpDoqiU1YTeMEQP5QNK0gwPBdB7N1tQF9OQf9o/8PfU3QCvx+PTtTSpaN06auC0TFNvy2FNP2oyY/xGm9LqxWod9k=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PSAPR03MB5605.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(376014)(1800799024)(56012099003)(18002099003)(22082099003)(38070700021);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?Y2pZNDB1YU5YNFhLbXNlZDhCKzFSaFRNeFBINnYxbUpkaHEyV0dHazF4eWhp?=
- =?utf-8?B?SVZGR0RPQ2Q5SHlldWY3ZGpOdEduV3Bpa2IwbkJlSUZmb3VTMDlNOFRJOFdM?=
- =?utf-8?B?eW1RMTY2eXpDRDlEMHhuZzhXSGtEQ2dIdDM2QUxXT3g4bTdkMlphUFpVaHNR?=
- =?utf-8?B?M0VmbWNZaUZuaTJTZUlLL3VySFltRGoycXJqeFZJUFk4ZVY0Vno4cWhEWWkr?=
- =?utf-8?B?R2hJTUVKWExMT0Y1ZGs0SXRaT2FDeHU5Ym1icFhMRld6UmpsY2s2eUl3RkFq?=
- =?utf-8?B?b0VaRzFUbUVXa0NONlk5UVBuMm82cUpaMWNHSnpoVHN4Vk9FTUxiMGNxa3d6?=
- =?utf-8?B?aWx3QkVOYVVQZnJpckJwVkpaY1kxWUpKa3BLU3lJb05QY3VRZHo2UUNyMnJ5?=
- =?utf-8?B?SitxTTR4dGs1enI1Y1JJajB1OEZNaUpHYjVneEFKVDVKOVI0a3FZaktJYjY1?=
- =?utf-8?B?bXZoZVpQTWxFMDNYNGlLMUR3RnJJQnFHWm0yK1Z3a0lTd1FBWCtHTThQU253?=
- =?utf-8?B?MWFxNGhhVDBkMWxQSVZhWmMwdWROTmlGQUtFdWFKUEIxWFFXVUovQ1MwZkhD?=
- =?utf-8?B?eGxybUw3NmlGNk0vd0VZYklkaDBCOTB3Y015VnJmRHQwSENubGF0WENJWk9H?=
- =?utf-8?B?eEpXVmxOMk5KSUtmWVlMV003eGVSaG9xTERHbkRiVUdPUG1sQm05NU5VcE9a?=
- =?utf-8?B?L05YQXdReFhYYk0wbW56Sjg5T211b3U5d29POUV5bHRrNmZNOGl3c2NCbU9m?=
- =?utf-8?B?VzNmZkFNQ2ZtaUdKVjhaR2FMeTQ1V0YwcGZTclFmQ3lXd1pyYmVlOFZ0NGtR?=
- =?utf-8?B?RGc4ZGRkSHduMm5ucW5hWjdZWnVpalV0VE1qYkc1a1hCUjRLU3BVNGViTnZp?=
- =?utf-8?B?eVhnbW9jMzVhbzNtVFhORmo5ZldJU0dVQmFEN1gxRE1hOHdqZ3dEK0FrOVUr?=
- =?utf-8?B?ZmNjQnZLd2lDenJpWUs1b0N2R0xhT09vRmQ5YTRLcDRpa2Yzc0F5SUg3NGh1?=
- =?utf-8?B?V3pxWFRXVkFJMjYzSmxjb09hQlFxc1hOOVZKNWdLU0xBZTVtNk5DV0lxaUF2?=
- =?utf-8?B?VG5oNmxMV29UTnJTbWJCdS9DN1M0UXNxUW9jTDBNemlhWjJ0a0tJOTBTS2Nu?=
- =?utf-8?B?WkxuQVRqMmNDUStTUjFHbjU4VXVUQlY4TDNxamYvZnc1cUNyTGJEM1JOcDlZ?=
- =?utf-8?B?WmxZZmxiWmVqUklUQzJubTViVHgyM0pheW5OMTJVb0lLMGF4aE1WM1FBSmY4?=
- =?utf-8?B?eE5veDRNdjlsbFFhWUJwdHpCWTBQN3BlSWNKWGxSRE42cER6SUMzYlFiZjVJ?=
- =?utf-8?B?eWhqVk1ua0cySEhHVWh0TUJwNFNkc2o3ZDlrNklqcVFuelRWNEtQQ01KUnlw?=
- =?utf-8?B?cmR5cFM2NWphbDlzenBSdGdoUjZVSzFLUDc4enRiY3VST0ttaWs5bnE5WnVJ?=
- =?utf-8?B?eGlIZHg5bmVIQ0Rqc2tZNE1tWGYxa0d6eUNVUkttTGwyKzE3b1h3ZDNiQWFF?=
- =?utf-8?B?VUViaDFuMy9IL3RvMWVIWEd1SklBdUF2YkVZcm9LdnJsdjdkRFI4dHBoM0xF?=
- =?utf-8?B?L0M0SXh0VitlVklvbVJGTERONDc1ZUNGcU8yQ1RpbXI4cUNqTmg0NzRqQTk2?=
- =?utf-8?B?YWt5QXU0VHl5c2VZUFpNMitKNHRiZVJYWHF6SjgrbG9qMUJTdTQxTUlZcHFJ?=
- =?utf-8?B?R1FvZWJ6eXMrS1RxRytyenhQTmRSL0dHUFRlMkdLbnhmK3Q4R2grekZ0b0RE?=
- =?utf-8?B?MlJmM0RLcURTQVNQOEtjWUtoTDkrY1dlK0ZwU2hMcmZKdnpwN216VjZtMkZj?=
- =?utf-8?B?b2NCY2dtQnh6WS9JUXhWZHN0VDZXanZjcXBoenB0VUV5eGIxNmVKdjRyWmtV?=
- =?utf-8?B?Q201MFRZT0czN2hZMXhYbS9iL0xlNTZSUy9WazF4b08wZlN6RDc2djN4ZWZ4?=
- =?utf-8?B?bytHNFd4Rkh0RjV1SVJReFJEZ0JGbkRvdnRQR3A2VmtaRDQ5QW13QWxMaThr?=
- =?utf-8?B?UUhiamk5d1YxdmZmU3RMWDVRNko4WUJ1TXhLTGxYYVh5a3E5d2duamk0RHJX?=
- =?utf-8?B?SDR1aHpMbzVVdi83M1A5dis0R1ltbzNpOHdTWXZwODR4VnJEU1hrSzFQV21r?=
- =?utf-8?B?b2lkWDZZalJQN0tHbWVlNHVYYUlmZUk1aUhJVlhBdXVGK3VpcHpmMXd5cnRY?=
- =?utf-8?B?anB4ZldhOFI3dXZVVnpkdEtPdXFPTlFtbTI2VmVGL1RVVHh0cVYxVmR1K01u?=
- =?utf-8?B?UUEzM3JVTkFkWUg1eERRZlV5MFN0d3k5WEZ0V2t5Znc3cDhqa1VqNG1HUkYr?=
- =?utf-8?B?dEpkTG9VSGZJSGs5UE90WGtnVjRJdzlCZ3VibmFKcjFQVTdXaG1nczB6b0tw?=
- =?utf-8?Q?lnHycbL3j9Qx4eHk=3D?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <EC6446EC19B7AF448249E93804D6E62E@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ bh=PmgyijRcd4OmJG/9PnORXit59oxOF3CJelVTrd5+kIQ=;
+ b=jSyvClCrbBv2TQ4t2t90g/vNNcn42Xj8bhi5UEPDpNPAmF6JnQjYiMgsyxZKHKmIEKZVQYI9Frp3DKPh19nFNMHgGbMawlUreS76kYr2aU1snytDDGlf9LB5VBH8JTkhk54HpGwgWNnVri6kFCyNnWpncuSIejKBu1NDApA3FmBvD3sREn/77pc83HP5twjh974pHyUEvRxbnwEGae8m+nv7LYhiruT9V0/Rm8x+Q2x7zukcKDy2+hQlLzPB1AfR/b1ae5ifVtkHGXO9PwcDVQZTz+bTfBiT8yF6A5MrXxxosW5QaLTeScTYEZauIYnTj5BCcRJEcBDb0jgkuWXCEw==
+Received: from DB3PR08CA0014.eurprd08.prod.outlook.com (2603:10a6:8::27) by
+ DU0PR10MB7264.EURPRD10.PROD.OUTLOOK.COM (2603:10a6:10:447::17) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9723.19; Thu, 19 Mar 2026 15:52:26 +0000
+Received: from DB1PEPF000509E3.eurprd03.prod.outlook.com
+ (2603:10a6:8:0:cafe::ee) by DB3PR08CA0014.outlook.office365.com
+ (2603:10a6:8::27) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9700.27 via Frontend Transport; Thu,
+ 19 Mar 2026 15:52:25 +0000
+X-MS-Exchange-Authentication-Results: spf=fail (sender IP is 164.130.1.59)
+ smtp.mailfrom=foss.st.com; dkim=none (message not signed)
+ header.d=none;dmarc=fail action=none header.from=foss.st.com;
+Received-SPF: Fail (protection.outlook.com: domain of foss.st.com does not
+ designate 164.130.1.59 as permitted sender) receiver=protection.outlook.com;
+ client-ip=164.130.1.59; helo=smtpO365.st.com;
+Received: from smtpO365.st.com (164.130.1.59) by
+ DB1PEPF000509E3.mail.protection.outlook.com (10.167.242.53) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9723.19 via Frontend Transport; Thu, 19 Mar 2026 15:52:25 +0000
+Received: from STKDAG1NODE2.st.com (10.75.128.133) by smtpo365.st.com
+ (10.250.44.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.29; Thu, 19 Mar
+ 2026 16:55:00 +0100
+Received: from gnbcxd0016.gnb.st.com (10.130.77.119) by STKDAG1NODE2.st.com
+ (10.75.128.133) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.29; Thu, 19 Mar
+ 2026 16:52:24 +0100
+Date: Thu, 19 Mar 2026 16:52:17 +0100
+From: Alain Volmat <alain.volmat@foss.st.com>
+To: Pei Xiao <xiaopei01@kylinos.cn>
+CC: <linux-spi@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <imx@lists.linux.dev>,
+	<openbmc@lists.ozlabs.org>, <linux-rockchip@lists.infradead.org>,
+	<linux-riscv@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>, <broonie@kernel.org>,
+	<Frank.Li@nxp.com>, <amelie.delaunay@foss.st.com>
+Subject: Re: [Linux-stm32] [PATCH v5 13/17] spi: stm32: Simplify clock
+ handling with devm_clk_get_enabled()
+Message-ID: <abwbsdBCbNZniGPO@gnbcxd0016.gnb.st.com>
+References: <cover.1773885292.git.xiaopei01@kylinos.cn>
+ <c8259f582596fd08541b94dce5dbb4cae513e295.1773885292.git.xiaopei01@kylinos.cn>
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: sW1wyMoIURl1AzrY7gg3gT1YImh3FxmoQLixUXzGOCZIr9GLh8jgVJSGJaXAmqYkf7dOKUbqbDGflGkEVWusEO5AJVEinarA+482aEasgvRSIxDoKxZXL6yw5N6wV5CZ9FqHiA0iFkrKvh64iAd7c4tWqLvocl5HgCbXPjN0kLrtW48OtItTy7llSCCdJzsjEfnH6W1QLE+xsvrpgTkOL/6NQ2/o1VKR3JdEACpULznYiA9t9Gr3e+9oxf2ok3Wstp0YmpbW/BqcQe/oTTf0E+53aRo9faZWK1ca2xGWomuV6aFyfCGCt5BL4iFzoXOKLmkBYr60RbU7keO74UC1FA==
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PSAPR03MB5605.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: cd2c312c-82a0-4153-b7fa-08de85b4a0e8
-X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Mar 2026 12:39:57.2789
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <c8259f582596fd08541b94dce5dbb4cae513e295.1773885292.git.xiaopei01@kylinos.cn>
+X-Disclaimer: ce message est personnel / this message is private
+X-Originating-IP: [10.130.77.119]
+X-ClientProxiedBy: ENXCAS1NODE2.st.com (10.75.128.138) To STKDAG1NODE2.st.com
+ (10.75.128.133)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DB1PEPF000509E3:EE_|DU0PR10MB7264:EE_
+X-MS-Office365-Filtering-Correlation-Id: 26f4bb44-52c2-4323-b3ae-08de85cf83f3
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|36860700016|7416014|376014|1800799024|82310400026|18002099003|56012099003|22082099003|7053199007;
+X-Microsoft-Antispam-Message-Info: i790NmnyAze8L8ruj4DraySR3x2noY4HVobfFZ71eduo69J/CBZ19gmz5kiqg7mQ/+Fm6bHpxiRH29PU8N4MU/pAyxOXuvlBKhZ9Zqkkv4cqDeHhnsBKTGY0BI9ZlndodkR6AeGPS5eTRmtxqIolxDjk21FG1x+L9181Q26sJaqFLIS/Yus4pOJWUttYbX8YEs/jAZigMy9IlMwVl7IBMb9r5OdoQi5g/SDEGjXVRHg3V4r5YauwoVTUTb3IBoEbVWao2Zp6Ns1XdjFMlVT7YwPNvjaNMOk79u/e/wh+hrTWr44LOmp4UGDQ0y2aFZDnSJ/aV07Ln45je5VPDQOT5J4enIwt2+C90e/If/3Y3LdGBi/hVNnH5Skd+a0wVLO4Aoa23HT1fR+p/CyCY3aRNUdYvoGx2v7DBy4fbYCbKRGmHn7Fvk72fP1ISAajuoA05rCsYsd9+OoLw6OS204/o48Wcdpo5zx76xqAFHm6QUtx1MBBC++Y9lguY5s+lTD5+S2WcMcxlg+fSyn+n1HnQXOn1z6nUmucC6/GhMjSTyQmxh17XdPQorwQbR3P6cRAXbObZcUeHMAKULsGHIUEW5iGIapwW1pgAdebK7nTEIB6qNN1eHpfE2LA2pDErsWdZ/lvLHrkmXKFuBFTgRvoKs/zIU/3/062IQOT/xq2RB7Q4OYgv5+nU2z+IyDvcn+IZSNAIY8I6hoylkOC73j1V7rKpMU7F2vWZaREoih91f8=
+X-Forefront-Antispam-Report: CIP:164.130.1.59;CTRY:IT;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:smtpO365.st.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(36860700016)(7416014)(376014)(1800799024)(82310400026)(18002099003)(56012099003)(22082099003)(7053199007);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: TVXouk8Fa30YFfPqg/PB/cNdwlNnrIc58BlsYVyv1hQtynP8rMeuZOfnW5TDyQAHeR7zXxyCKrUW0qt44lpV6w78fID2zpFCzeL0KFt2qYYLHILZB3rdzDtnPtptXRGjbLO4LomkViIdEOBCtSy7S40eLEt5OIs2vOsJDLczQuB4+RcNjoDQP2WUDrpd6BGl8Mm1F8/3ZnVI33QIi0XplZYKfTVp3U4702JwNQdyeGtN5/rgJ6fsB4Niw1J/CZjlo0siAVpO6mKucCdVyr7ql1oxUhQfX2teXeifx18y9+kDs9PtVVuVoZCfxoW4kAvfKyPWQ7wW1MJg9eR5b83Su6e4G2Qg1lKqwhU0sv/Om+rnkVrqn3+0r/4o+NbWBxDKXCJHKxrDb5ZH8eWMygU+ls8JZ3mo3B2LxxdXuZwNYExzV6dVgIkrRPtTjy7d1DAy
+X-OriginatorOrg: foss.st.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Mar 2026 15:52:25.0594
  (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: wKiiKelf6ToQMu8aRRGGJIO0q2EKaanBPrpdDJ996IysBVMU8+5BxinLJ+ozzhmIVzx/aBajrrgpmp1lCeD0Hg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB8648
-X-MTK: N
+X-MS-Exchange-CrossTenant-Network-Message-Id: 26f4bb44-52c2-4323-b3ae-08de85cf83f3
+X-MS-Exchange-CrossTenant-Id: 75e027c9-20d5-47d5-b82f-77d7cd041e8f
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=75e027c9-20d5-47d5-b82f-77d7cd041e8f;Ip=[164.130.1.59];Helo=[smtpO365.st.com]
+X-MS-Exchange-CrossTenant-AuthSource: DB1PEPF000509E3.eurprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU0PR10MB7264
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260319_054009_888488_B6CB52BA 
-X-CRM114-Status: GOOD (  12.69  )
+X-CRM114-CacheID: sfid-20260319_085234_076480_DD0A891C 
+X-CRM114-Status: GOOD (  21.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -197,20 +129,156 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCAyMDI2LTAzLTE4IGF0IDA5OjE0ICswMTAwLCBNYXJlayBTenlwcm93c2tpIHdyb3Rl
-Og0KPiBDUFU6IDAgVUlEOiAwIFBJRDogMCBDb21tOiBzd2FwcGVyLzAgTm90IHRhaW50ZWQgNy4w
-LjAtcmMxKyAjMTY1MzYNCj4gUFJFRU1QVA0KPiANCg0KSGkgTWFyZWssDQoNCkkgc3RyZXNzZWQg
-dGhlIFVJQyBjb21tYW5kIGZvciAyNCBob3VycyBidXQgY291bGQgbm90IA0KcmVwcm9kdWNlIHRo
-ZSBpc3N1ZS4gSSBhbHNvIGZvdW5kIHRoYXQgdGhlIGxpbmUgY29udGFpbmluZw0KIlBSRUVNUFQi
-IG1pZ2h0IGJlIGEga2V5IHBvaW50Lg0KDQpTbyBJIHN1c3BlY3QgdGhhdCBsb2NrZGVwIG1pZ2h0
-IGJlIG1pc2p1ZGdpbmcgd2l0aCAiUFJFRU1QVCINCnNldHRpbmcuIEFmdGVyIGFsbCwgdXNpbmcg
-c3Bpbl9sb2NrX2lycXNhdmUgaW5zaWRlIHRoZQ0KSVNSIHNob3VsZCBiZSBmaW5lOg0KICAgIGd1
-YXJkKHNwaW5sb2NrX2lycXNhdmUpKGhiYS0+aG9zdC0+aG9zdF9sb2NrKTsNCg0KV291bGQgaXQg
-YmUgcG9zc2libGUgdG8gdHJ5IGRpc2FibGluZyBsb2NrZGVwIGFuZCBzZWUgd2hhdA0KaGFwcGVu
-cz8gSXQgc2VlbXMgbG9ja2RlcCBpcyBldmVuIGdldHRpbmcgdGhlIGxvY2sgd3JvbmcgDQooaGJh
-LT5ob3N0LT5ob3N0X2xvY2ssIG5vdCBzaG9zdC0+aG9zdF9sb2NrKS4NCg0KDQo+IA0KPiBZb3Ug
-aGF2ZSBwcm9iYWJseSBtaXhlZCBteSByZXBvcnQgd2l0aCB0aGlzIG9uZSANCj4gaHR0cHM6Ly9s
-b3JlLmtlcm5lbC5vcmcvYWxsL2FibU5rUkNfdlNWYVAyc0NAbWFpbC5pYW0udGovwqANCj4gDQo+
-IEJlc3QgcmVnYXJkcw0KDQoNClllcywgSSBtaXhlZCBpdCB1cCB3aXRoIHRoaXMgb25lIGJlY2F1
-c2UgdGhlIGNhbGwgdHJhY2UgDQpsb29rcyB0aGUgc2FtZS4NCg0KVGhhbmtzDQpQZXRlcg0K
+Hello,
+
+thanks for your patch.
+
+On Thu, Mar 19, 2026 at 10:04:09AM +0800, Pei Xiao wrote:
+> Replace devm_clk_get() followed by clk_prepare_enable() with
+> devm_clk_get_enabled() for the clock. This removes the need for
+> explicit clock enable and disable calls, as the managed API automatically
+> handles clock disabling on device removal or probe failure.
+> 
+> Remove the now-unnecessary clk_disable_unprepare() calls from the probe
+> error paths and the remove callback. Also simplify error handling by
+> using dev_err_probe().
+> 
+> Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
+
+Acked-by: Alain Volmat <alain.volmat@foss.st.com>
+
+> ---
+>  drivers/spi/spi-stm32.c | 62 +++++++++++------------------------------
+>  1 file changed, 17 insertions(+), 45 deletions(-)
+> 
+> diff --git a/drivers/spi/spi-stm32.c b/drivers/spi/spi-stm32.c
+> index 8a7f5a10d4af..be88e62075af 100644
+> --- a/drivers/spi/spi-stm32.c
+> +++ b/drivers/spi/spi-stm32.c
+> @@ -2360,25 +2360,20 @@ static int stm32_spi_probe(struct platform_device *pdev)
+>  	int ret;
+>  
+>  	cfg = of_device_get_match_data(&pdev->dev);
+> -	if (!cfg) {
+> -		dev_err(&pdev->dev, "Failed to get match data for platform\n");
+> -		return -ENODEV;
+> -	}
+> +	if (!cfg)
+> +		return dev_err_probe(&pdev->dev, -ENODEV,
+> +				     "Failed to get match data for platform\n");
+>  
+>  	device_mode = of_property_read_bool(np, "spi-slave");
+> -	if (!cfg->has_device_mode && device_mode) {
+> -		dev_err(&pdev->dev, "spi-slave not supported\n");
+> -		return -EPERM;
+> -	}
+> +	if (!cfg->has_device_mode && device_mode)
+> +		return dev_err_probe(&pdev->dev, -EPERM, "spi-slave not supported\n");
+>  
+>  	if (device_mode)
+>  		ctrl = devm_spi_alloc_target(&pdev->dev, sizeof(struct stm32_spi));
+>  	else
+>  		ctrl = devm_spi_alloc_host(&pdev->dev, sizeof(struct stm32_spi));
+> -	if (!ctrl) {
+> -		dev_err(&pdev->dev, "spi controller allocation failed\n");
+> -		return -ENOMEM;
+> -	}
+> +	if (!ctrl)
+> +		return dev_err_probe(&pdev->dev, -ENOMEM, "spi controller allocation failed\n");
+>  	platform_set_drvdata(pdev, ctrl);
+>  
+>  	spi = spi_controller_get_devdata(ctrl);
+> @@ -2409,32 +2404,18 @@ static int stm32_spi_probe(struct platform_device *pdev)
+>  		return ret;
+>  	}
+>  
+> -	spi->clk = devm_clk_get(&pdev->dev, NULL);
+> -	if (IS_ERR(spi->clk)) {
+> -		ret = PTR_ERR(spi->clk);
+> -		dev_err(&pdev->dev, "clk get failed: %d\n", ret);
+> -		return ret;
+> -	}
+> +	spi->clk = devm_clk_get_enabled(&pdev->dev, NULL);
+> +	if (IS_ERR(spi->clk))
+> +		return dev_err_probe(&pdev->dev, PTR_ERR(spi->clk), "clk enabled failed\n");
+>  
+> -	ret = clk_prepare_enable(spi->clk);
+> -	if (ret) {
+> -		dev_err(&pdev->dev, "clk enable failed: %d\n", ret);
+> -		return ret;
+> -	}
+>  	spi->clk_rate = clk_get_rate(spi->clk);
+> -	if (!spi->clk_rate) {
+> -		dev_err(&pdev->dev, "clk rate = 0\n");
+> -		ret = -EINVAL;
+> -		goto err_clk_disable;
+> -	}
+> +	if (!spi->clk_rate)
+> +		return dev_err_probe(&pdev->dev, -EINVAL, "clk rate = 0\n");
+>  
+>  	rst = devm_reset_control_get_optional_exclusive(&pdev->dev, NULL);
+>  	if (rst) {
+> -		if (IS_ERR(rst)) {
+> -			ret = dev_err_probe(&pdev->dev, PTR_ERR(rst),
+> -					    "failed to get reset\n");
+> -			goto err_clk_disable;
+> -		}
+> +		if (IS_ERR(rst))
+> +			return dev_err_probe(&pdev->dev, PTR_ERR(rst), "failed to get reset\n");
+>  
+>  		reset_control_assert(rst);
+>  		udelay(2);
+> @@ -2461,11 +2442,8 @@ static int stm32_spi_probe(struct platform_device *pdev)
+>  	dev_dbg(spi->dev, "one message max size %d\n", spi->t_size_max);
+>  
+>  	ret = spi->cfg->config(spi);
+> -	if (ret) {
+> -		dev_err(&pdev->dev, "controller configuration failed: %d\n",
+> -			ret);
+> -		goto err_clk_disable;
+> -	}
+> +	if (ret)
+> +		return dev_err_probe(&pdev->dev, ret, "controller configuration failed: %d\n", ret);
+>  
+>  	ctrl->auto_runtime_pm = true;
+>  	ctrl->bus_num = pdev->id;
+> @@ -2490,8 +2468,7 @@ static int stm32_spi_probe(struct platform_device *pdev)
+>  			dev_info(&pdev->dev, "tx dma disabled\n");
+>  			spi->dma_tx = NULL;
+>  		} else {
+> -			dev_err_probe(&pdev->dev, ret, "failed to request tx dma channel\n");
+> -			goto err_clk_disable;
+> +			return dev_err_probe(&pdev->dev, ret, "failed to request tx dma channel\n");
+>  		}
+>  	} else {
+>  		ctrl->dma_tx = spi->dma_tx;
+> @@ -2579,8 +2556,6 @@ static int stm32_spi_probe(struct platform_device *pdev)
+>  err_dma_tx_release:
+>  	if (spi->dma_tx)
+>  		dma_release_channel(spi->dma_tx);
+> -err_clk_disable:
+> -	clk_disable_unprepare(spi->clk);
+>  
+>  	return ret;
+>  }
+> @@ -2610,9 +2585,6 @@ static void stm32_spi_remove(struct platform_device *pdev)
+>  		gen_pool_free(spi->sram_pool, (unsigned long)spi->sram_rx_buf,
+>  			      spi->sram_rx_buf_size);
+>  
+> -	clk_disable_unprepare(spi->clk);
+> -
+> -
+>  	pinctrl_pm_select_sleep_state(&pdev->dev);
+>  }
+>  
+> -- 
+> 2.25.1
+> 
+> _______________________________________________
+> Linux-stm32 mailing list
+> Linux-stm32@st-md-mailman.stormreply.com
+> https://st-md-mailman.stormreply.com/mailman/listinfo/linux-stm32
+
+Regards,
+Alain
 
