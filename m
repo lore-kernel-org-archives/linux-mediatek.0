@@ -4,75 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B71281088E70
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2026 04:54:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF1101088E76
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2026 04:54:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=jfoPytrUz8jnu1QwEs3H3bRbE3lX1OzACwh2r6y3HCk=; b=JGV7a26maPzXwrxIsJ7/0VoEA5
-	qmQpnzr7zf481Wc+R4XiTdREhz0m31TQQmmqDcK73nCiG6K+vgnRQv1hscCTb3Cx+lC9D+BViv4mv
-	j0sFBU/RNV4eq9S6o8n5B33ntz/bUB/3j5kiuOGFsqTIqvReOCu0GDv0ARBbNWr49+oYKFKuOTc7t
-	bd1tGWQHID4vX4X9Xs0lQTNcLfcoEMqsUvL2k/1WD5KJi51YwQsocetWsCmU6aPe+rGkO7K8X/RNe
-	BMctEeSvtn76Bo49O62FUYZpaCFczxnHhP803wZ9MPyWc+6GJIOJXJd/8tVJWzSW4M4CZZvDIAAgX
-	UVD5HZGw==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=c4Eb1YOEfRdkAVtKY58j579uUe7kZ9Q7QVxwqWPHF3s=; b=pljZfduOQe3g1LQ//Orff3ocxr
+	d/7W5+LstcQH4Sp5Vdj7bbb7jp7G+wAiGwtCLbTNALHdpxa5OioopJvsw+uXZjAdTLH0TV592weOa
+	tzVo2YKAYKFBmx2/guZOG3cUyHxzI/TzLrjMtRE007fZtCuwO0Q7ZVGebB6kBye5dBCAulh809JFd
+	SOTuN6ZJyOOuaswe+EFCJZgr1AmaOafnHIUmevW81OSB3DO1fz0fwA/pxSeavmmsniaU56QK6G70M
+	jpvaMvZjwGvpT4Hu+HnSPo2GDzwmNZ20sgErVtqgcpKeomPGmsYRLR7P1YGeHSGa9AbQNLuNM4JD2
+	3wBN62ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w35Oc-00000009v3J-1kTq;
-	Thu, 19 Mar 2026 04:54:10 +0000
-Received: from mail-yw1-f182.google.com ([209.85.128.182])
+	id 1w35Oi-00000009v5A-2myV;
+	Thu, 19 Mar 2026 04:54:16 +0000
+Received: from mail-yw1-f170.google.com ([209.85.128.170])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w35OZ-00000009v1m-3zmP
+	id 1w35Og-00000009v4K-1FVY
 	for linux-mediatek@lists.infradead.org;
-	Thu, 19 Mar 2026 04:54:09 +0000
-Received: by mail-yw1-f182.google.com with SMTP id 00721157ae682-79800183233so6279757b3.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 18 Mar 2026 21:54:06 -0700 (PDT)
+	Thu, 19 Mar 2026 04:54:15 +0000
+Received: by mail-yw1-f170.google.com with SMTP id 00721157ae682-79495b1aaa7so1857557b3.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 18 Mar 2026 21:54:13 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1773896046; x=1774500846;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=jfoPytrUz8jnu1QwEs3H3bRbE3lX1OzACwh2r6y3HCk=;
-        b=Y2UyayA3Nc48IZsQGcHOXp3e/xlY7yJxpWTmvspg3m3LVLHFKBXKw6e9ai8KXBwt0c
-         sLOPg7Sjn46C278/WdTypMwm05Jf8xVeBcjEVTEABxUFFHFu5tBXbCe9WheaQAR5i/WB
-         s4qy9gkMx5xllXjYWOUZKRuo4yZuUa5UBS+NAbA8Pv2tW0caNLXFT/PncEAiOzu5eAwz
-         zsL3NNwh9WVN1jok4AcY+RiyC8wKmYuRJz11uVuDNWcvxQbnVCyCdDESSGHNvf3ibuHn
-         Sw+UkDJZ0kZZ0qK3ChnHwC7A9xsXV2xHkkge/VPauJAR8foXvaKxbQvCcnSTFiLLZHlm
-         ocAw==
-X-Forwarded-Encrypted: i=1; AJvYcCV23iKU09vWBFDi96OEchI23xQ58qsNwfyCeKOZNK2+kFep39di2sA7HM0OXRz8eejfwmCP7+0gc6zTMt8mfQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx5z5hBzbFCho2UXyA98YiEdosq3fTRgT3fEYuv1EiItQebXCZ5
-	FUEPHfdytL/UT0wdtxTCPSLQOERoNHVWyhtKCs10Ieyq1LHeQJb2X148
-X-Gm-Gg: ATEYQzyZjSzvZZOubC33xp3FzRSXhBCbM+ZD50oop/pfbJQ7e3rS1avqpCzMdLiZYQb
-	PS+HIIpNp0ZACrP6lCOBKnffKHVddMsyd4ClSZLDaaj73vxcaLMSQs9a8HVwqrgwC3OFyssHUiY
-	tM8PYElaXrJAVS1EsztnVTDote7zGBJ/LWA7+VucF3ifhtK5NvWm5THi8U6CXUAkqMIz1KOdXLu
-	Y3NIFcDuhbWXqy9cWqBtcNiqsZ7/Ei6dga+VeHDAtIGp0EyWXsbU2nm+LO/bE+5vAKKmlNry23m
-	9WwfnQsRWCbn3FoKb8hnPMs8AV68rqBq8u53WM7nuK6PcfLMfBexLVdNAoo4Q8/3YIwuBROVgwP
-	pDrYvc0H5au48UldqQKfhhiEmUn9JOoww2bzTPGUVZRp2LKrLtYsGRFeEDPhMdAPJNGpxuLY4tp
-	yjMUV3+NB1jDzWquWPAo5Gtm92/s/Y0Q4EQIoE/aVPVv6PO//JzGtHKCoqHCB8IWmcJH6yzLi9/
-	g==
-X-Received: by 2002:a05:690c:c247:b0:794:87bf:76ef with SMTP id 00721157ae682-79a81a7fa9fmr23274817b3.7.1773896044146;
-        Wed, 18 Mar 2026 21:54:04 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1773896053; x=1774500853;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=c4Eb1YOEfRdkAVtKY58j579uUe7kZ9Q7QVxwqWPHF3s=;
+        b=gb60xBCaKnPacZqmAwLFfyQahqjf/8/ActwPjElygKSFRk5ebc6Di7zd7nW3ZDNzVD
+         YEn9MinO4KopA46/lE7mfi8L+iFgeHEMVasgh3HPkHFNj+EeAvaquKN39fidaGK+o1mX
+         SmqH7Ydc5L801ORNxLa24nM6mZltIyvJGJvKwUGMGRyxT5CsJsvvZ8h3Q3frAei1K861
+         LCU/uviqgsGXp0a/d7cA4lc5Xampjx1Q/2I/vklhM3TXECrSP6l8ZBc5CYmWBCjW03Gn
+         caJZOXrDiNSAu5/MzKSCWJCAAzr0I3pzFa4e9yQpysCN4tvoUZWwF+CVxtRl84oAMekK
+         o7/A==
+X-Forwarded-Encrypted: i=1; AJvYcCXDfIvuOc6uQttRxoytPbxF4J89bHsnlGmymwi2sM1tAdm6fozrvP9GGqlna+revKGh2n74xvhT+EZx/9W45A==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxqna8Stu5FHbmPR9aZrx2JBheseHnFOxTY6nL2QJ+LX4MrWQSN
+	cOpOUrjGZMOLj5aGznUrdS3jw3wHLRFGWR/LjkMrPOxKsumV1ERZQwZN
+X-Gm-Gg: ATEYQzwdZgK8cCE2FCrIM3my5wZ7mA6xQDSbHtaI8avSdQXHux+TzJE14yEoKpeCOCh
+	OHLbP2IUSNfnd2QgghLbAZi+OupEHfkQsS7fPyol+leA9+U7bmN+swsbk+DNPBcGFUgRfpenqE9
+	u+4KFI3obUlSCrKZAo/bVlHVnD5ZHeFgVik+WYlfJ8zxSyXNNQSfVuSVyOlEM3TlD6A06AibiuR
+	kav8IldpLiYZwmR7jlqKY0gB8Jqe+kp++IBLENYCH5IEMXFrigUikL4v+CKPNJL3exyNYo1qFA4
+	awxSpo6qng4/ctg9ypFjfdPvmAbWYnLOQJGYCX/Z4Lt+XSsgLelc6yNYrDP24RjyB2EZjIAwebg
+	x9PQ4v1wJpNoUvvGaCgkYA9+gd4XGySI4u+/rkAb6niay6BRP+jTOZ9mPluh9AETCBUbLGTx5+H
+	rDRjB0N0samrXa/fOGZBV+bpB/QwIq7yU7/PT5h5hNzvxu1VU1b7yBPF3GQWwce6c1I2KmABUQ6
+	Q==
+X-Received: by 2002:a05:690c:85:b0:79a:40fb:933f with SMTP id 00721157ae682-79a71dbc38amr62618697b3.51.1773896052831;
+        Wed, 18 Mar 2026 21:54:12 -0700 (PDT)
 Received: from sean-HP-EliteBook-830-G6.attlocal.net ([2600:1702:5083:7610:95a7:adb9:1a5f:f78b])
-        by smtp.gmail.com with ESMTPSA id 00721157ae682-79a7136e513sm30231457b3.10.2026.03.18.21.54.02
+        by smtp.gmail.com with ESMTPSA id 00721157ae682-79a7136e513sm30231457b3.10.2026.03.18.21.54.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Mar 2026 21:54:03 -0700 (PDT)
+        Wed, 18 Mar 2026 21:54:11 -0700 (PDT)
 From: Sean Wang <sean.wang@kernel.org>
 To: nbd@nbd.name,
 	lorenzo.bianconi@redhat.com
 Cc: linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH 1/2] wifi: mt76: mt792x: add common USB transport reset helpers
-Date: Wed, 18 Mar 2026 23:53:56 -0500
-Message-ID: <20260319045357.13796-1-sean.wang@kernel.org>
+Subject: [PATCH 2/2] wifi: mt76: mt7921u: escalate broken USB transport to device reset
+Date: Wed, 18 Mar 2026 23:53:57 -0500
+Message-ID: <20260319045357.13796-2-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260319045357.13796-1-sean.wang@kernel.org>
+References: <20260319045357.13796-1-sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260318_215408_031674_DA226451 
-X-CRM114-Status: GOOD (  12.74  )
+X-CRM114-CacheID: sfid-20260318_215414_345670_51CA9C41 
+X-CRM114-Status: GOOD (  15.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,153 +91,111 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Add per-device USB reset work and a control-path access check helper
-for mt7921u and mt7925u.
+Check the USB control path before running the normal WFSYS reset flow.
 
-This prepares common infrastructure for transport-level recovery while
-keeping the reset state per-device for correct lifetime handling.
+If USB access is no longer reliable, stop the WFSYS-only reset path,
+mark the device as bus_hung, and queue a USB device reset instead.
 
-No functional change intended.
+Reuse the existing bus_hung state to represent transport-level failure,
+keeping the semantics consistent with the SDIO path.
+
+Also initialize bus_hung explicitly during probe for consistency.
 
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7921/usb.c   |  2 +
- .../net/wireless/mediatek/mt76/mt7925/usb.c   |  2 +
- drivers/net/wireless/mediatek/mt76/mt792x.h   |  5 ++
- .../net/wireless/mediatek/mt76/mt792x_usb.c   | 50 +++++++++++++++++++
- 4 files changed, 59 insertions(+)
+ .../net/wireless/mediatek/mt76/mt7921/mac.c   |  4 ++-
+ .../net/wireless/mediatek/mt76/mt7921/usb.c   |  5 ++++
+ drivers/net/wireless/mediatek/mt76/mt792x.h   |  1 +
+ .../net/wireless/mediatek/mt76/mt792x_usb.c   | 26 +++++++++++++++++++
+ 4 files changed, 35 insertions(+), 1 deletion(-)
 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+index 03b4960db73f..d27dbee8df1b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+@@ -675,7 +675,9 @@ void mt7921_mac_reset_work(struct work_struct *work)
+ 		if (!ret)
+ 			break;
+ 	}
+-	if (mt76_is_sdio(&dev->mt76) && atomic_read(&dev->mt76.bus_hung))
++
++	if ((mt76_is_sdio(&dev->mt76) || mt76_is_usb(&dev->mt76)) &&
++	    atomic_read(&dev->mt76.bus_hung))
+ 		return;
+ 
+ 	if (i == 10)
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
-index 17057e68bf21..6be28f4152ed 100644
+index 6be28f4152ed..8c0f0e4ef87b 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
-@@ -196,6 +196,7 @@ static int mt7921u_probe(struct usb_interface *usb_intf,
+@@ -88,6 +88,10 @@ static int mt7921u_mac_reset(struct mt792x_dev *dev)
+ {
+ 	int err;
+ 
++	mt792xu_reset_on_bus_error(dev);
++	if (atomic_read(&dev->mt76.bus_hung))
++		return 0;
++
+ 	mt76_txq_schedule_all(&dev->mphy);
+ 	mt76_worker_disable(&dev->mt76.tx_worker);
+ 
+@@ -196,6 +200,7 @@ static int mt7921u_probe(struct usb_interface *usb_intf,
  	dev = container_of(mdev, struct mt792x_dev, mt76);
  	dev->fw_features = features;
  	dev->hif_ops = &hif_ops;
-+	mt792xu_reset_work_init(dev);
++	atomic_set(&dev->mt76.bus_hung, false);
+ 	mt792xu_reset_work_init(dev);
  
  	udev = usb_get_dev(udev);
- 	usb_reset_device(udev);
-@@ -244,6 +245,7 @@ static int mt7921u_probe(struct usb_interface *usb_intf,
- 
- error:
- 	mt76u_queues_deinit(&dev->mt76);
-+	mt792xu_reset_work_cleanup(dev);
- 
- 	usb_set_intfdata(usb_intf, NULL);
- 	usb_put_dev(interface_to_usbdev(usb_intf));
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/usb.c b/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
-index d9968f03856d..8b5d58125352 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
-@@ -184,6 +184,7 @@ static int mt7925u_probe(struct usb_interface *usb_intf,
- 	dev = container_of(mdev, struct mt792x_dev, mt76);
- 	dev->fw_features = features;
- 	dev->hif_ops = &hif_ops;
-+	mt792xu_reset_work_init(dev);
- 
- 	udev = usb_get_dev(udev);
- 	usb_reset_device(udev);
-@@ -232,6 +233,7 @@ static int mt7925u_probe(struct usb_interface *usb_intf,
- 
- error:
- 	mt76u_queues_deinit(&dev->mt76);
-+	mt792xu_reset_work_cleanup(dev);
- 
- 	usb_set_intfdata(usb_intf, NULL);
- 	usb_put_dev(interface_to_usbdev(usb_intf));
 diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
-index 4ff93f2cd624..5f06074591ca 100644
+index 5f06074591ca..74222c507b81 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt792x.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
-@@ -243,6 +243,8 @@ struct mt792x_dev {
- 	wait_queue_head_t wait;
- 
- 	struct work_struct init_work;
-+	struct work_struct usb_reset_work;
-+	atomic_t usb_reset_pending;
- 
- 	u8 fw_debug;
- 	u8 fw_features;
-@@ -489,6 +491,9 @@ int mt792xu_dma_init(struct mt792x_dev *dev, bool resume);
- int mt792xu_mcu_power_on(struct mt792x_dev *dev);
- int mt792xu_wfsys_reset(struct mt792x_dev *dev);
- int mt792xu_init_reset(struct mt792x_dev *dev);
-+void mt792xu_reset_work_init(struct mt792x_dev *dev);
-+void mt792xu_reset_work_cleanup(struct mt792x_dev *dev);
-+int mt792xu_check_bus(struct mt792x_dev *dev);
+@@ -494,6 +494,7 @@ int mt792xu_init_reset(struct mt792x_dev *dev);
+ void mt792xu_reset_work_init(struct mt792x_dev *dev);
+ void mt792xu_reset_work_cleanup(struct mt792x_dev *dev);
+ int mt792xu_check_bus(struct mt792x_dev *dev);
++int mt792xu_reset_on_bus_error(struct mt792x_dev *dev);
  u32 mt792xu_rr(struct mt76_dev *dev, u32 addr);
  void mt792xu_wr(struct mt76_dev *dev, u32 addr, u32 val);
  u32 mt792xu_rmw(struct mt76_dev *dev, u32 addr, u32 mask, u32 val);
 diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_usb.c b/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
-index 47827d1c5ccb..2558d87b1e0f 100644
+index 2558d87b1e0f..6b10d035bcbc 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
-@@ -11,6 +11,55 @@
- #include "mt792x.h"
- #include "mt76_connac2_mac.h"
+@@ -60,6 +60,32 @@ int mt792xu_check_bus(struct mt792x_dev *dev)
+ }
+ EXPORT_SYMBOL_GPL(mt792xu_check_bus);
  
-+static int mt792xu_read32(struct mt76_dev *dev, u32 addr, void *buf)
++int mt792xu_reset_on_bus_error(struct mt792x_dev *dev)
 +{
-+	return __mt76u_vendor_request(dev, MT_VEND_READ_EXT,
-+				      USB_DIR_IN | MT_USB_TYPE_VENDOR,
-+				      (u16)(addr >> 16), (u16)addr,
-+				      buf, sizeof(__le32));
++	int err = 0;
++
++	if (!atomic_read(&dev->mt76.bus_hung))
++		err = mt792xu_check_bus(dev);
++
++	if (err) {
++		atomic_set(&dev->mt76.bus_hung, true);
++
++		if (!atomic_xchg(&dev->usb_reset_pending, 1)) {
++			dev_warn(dev->mt76.dev,
++				 "USB transport access failed (%d), queueing device reset\n",
++				 err);
++
++			schedule_work(&dev->usb_reset_work);
++		}
++
++		return err;
++	}
++
++	atomic_set(&dev->mt76.bus_hung, false);
++	return 0;
 +}
-+
-+static void mt792xu_reset_work(struct work_struct *work)
-+{
-+	struct mt792x_dev *dev =
-+		container_of(work, struct mt792x_dev, usb_reset_work);
-+	struct usb_interface *usb_intf = to_usb_interface(dev->mt76.dev);
-+
-+	if (usb_intf && usb_get_intfdata(usb_intf) == dev)
-+		usb_queue_reset_device(usb_intf);
-+
-+	atomic_set(&dev->usb_reset_pending, 0);
-+}
-+
-+void mt792xu_reset_work_init(struct mt792x_dev *dev)
-+{
-+	INIT_WORK(&dev->usb_reset_work, mt792xu_reset_work);
-+	atomic_set(&dev->usb_reset_pending, 0);
-+}
-+EXPORT_SYMBOL_GPL(mt792xu_reset_work_init);
-+
-+void mt792xu_reset_work_cleanup(struct mt792x_dev *dev)
-+{
-+	cancel_work_sync(&dev->usb_reset_work);
-+	atomic_set(&dev->usb_reset_pending, 0);
-+}
-+EXPORT_SYMBOL_GPL(mt792xu_reset_work_cleanup);
-+
-+int mt792xu_check_bus(struct mt792x_dev *dev)
-+{
-+	int ret;
-+
-+	mutex_lock(&dev->mt76.usb.usb_ctrl_mtx);
-+	ret = mt792xu_read32(&dev->mt76, MT_HW_CHIPID, dev->mt76.usb.data);
-+	mutex_unlock(&dev->mt76.usb.usb_ctrl_mtx);
-+
-+	if (ret == sizeof(__le32))
-+		return 0;
-+
-+	return ret < 0 ? ret : -EIO;
-+}
-+EXPORT_SYMBOL_GPL(mt792xu_check_bus);
++EXPORT_SYMBOL_GPL(mt792xu_reset_on_bus_error);
 +
  u32 mt792xu_rr(struct mt76_dev *dev, u32 addr)
  {
  	u32 ret;
-@@ -333,6 +382,7 @@ void mt792xu_disconnect(struct usb_interface *usb_intf)
- {
- 	struct mt792x_dev *dev = usb_get_intfdata(usb_intf);
- 
-+	mt792xu_reset_work_cleanup(dev);
- 	cancel_work_sync(&dev->init_work);
- 	if (!test_bit(MT76_STATE_INITIALIZED, &dev->mphy.state))
- 		return;
 -- 
 2.43.0
 
