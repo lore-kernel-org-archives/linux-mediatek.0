@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25AAC108B8E6
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2026 09:54:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50741108B8E3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2026 09:58:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YRX+OMldOdeMFpIvVXJBLmnyLP+fEiYih9EHDkj9U4g=; b=cWbu3bhshS6LZ97oT0dXhgbYJR
-	xDXnHhvdzwWpr3U2fMI9GsmbUpoh5PzeAcR//7i3Rdjr7s6NktGZ0kqzunsGVYUFFgrY76OYlqRFO
-	j8JDyUDiTu9dhhKGg3eyW1XC72BHGVdqSOsP+rApellKYCnhojuHmZnEvis+q6HNxYPKgbI4rhNZL
-	7m9qTP2T+cotbEMyURmSd7rIKsmiOufewD/HT8IbrwLH0aV9FNQmTij5vRSDap0ujgg64UfIrq1Sr
-	5RQRMb5nw8/RrwS7qrf/PSsptrp5jyD4+NVJipXf53pSvbMsknVblB5kFXWd7MpbgPFR/nA02xuhh
-	/b+ZEBoQ==;
+	bh=dJrxNw/+aL+0BuRjl1ACbObuyu1lSfs8wVzAXDxiQ1U=; b=wXphULk1gn0DON4zjjTz8hNXr7
+	720asLgg3onh7CbCUvTTnvIh6RpBI+xcUwTE4ReC9uGf/mbgmAxeU3G1/381j8lCHNtmnx1Hvz+Iw
+	w5kWlc2sDOg8P7lDRv1hr/PtsKW51OOleVb+9wW+HUfgLWWjpP45hEKNYivCB8TedC8e6gSs1xQVq
+	c+4PpQoxVWcWVIxOCDY0nOEsf+AHT7eYHn535dRHQEvDMVxjn5H54nGs/08zNTRMT4VBjun6ifcgu
+	uvwV1/GDWRDoRovwhz9wJKprH71S6S/ecRn1YpqLXQmhmhxu4UTJYDbyog4rNzl+G8hu2naVHyHLe
+	XsBt6gKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3WZF-0000000CWXL-1L9r;
-	Fri, 20 Mar 2026 09:54:57 +0000
+	id 1w3WcI-0000000CWzd-1r6Q;
+	Fri, 20 Mar 2026 09:58:06 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3WZD-0000000CWW1-0Wbm;
-	Fri, 20 Mar 2026 09:54:56 +0000
+	id 1w3WcF-0000000CWyd-3Gqz;
+	Fri, 20 Mar 2026 09:58:05 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5DB7D4365F;
-	Fri, 20 Mar 2026 09:54:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B1477C2BC9E;
-	Fri, 20 Mar 2026 09:54:53 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 5134643ADA;
+	Fri, 20 Mar 2026 09:58:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CA7F9C2BC9E;
+	Fri, 20 Mar 2026 09:58:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774000494;
-	bh=Q0aGbSl6B/lp07B37flZ6XciJQJYdWbJuRcU9X3peRs=;
+	s=k20201202; t=1774000683;
+	bh=1L6FaKlWVqiVcdwohVdMMFyon261Cjq3lHr3YKwAZ/E=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=h9ZxHjkNbgvQPzKPdfxZCK/22EIU9Lu33P3QuUFK/tCeAcPuL1VV2tkOnNYUd/Dx2
-	 TUeTd2CgfZIVLP+mvuZ5E48i6fOZtZwGnXKllLRa+hX84fo1GZ7zO64Pb2dSve/gNC
-	 4E1dLs51q20eKFHFDuu1xA2Qd/KBvwT4Yjjud9EfcmHWPw12EPJQFmajU5rfX07GuG
-	 UL4ICTPBTx04KW6U+sTTh7wmFZ6G7tKsJKKXl14axAbY1Qf9QHAf0BUlavAGVc5qjB
-	 w5P7naaClyT8WC0e2rydmo2ne4ZDiXOq5vXE7pgePa9YBmtZDInGvQ9m91xqXDtQke
-	 cdy8rP6YjAT9w==
-Date: Fri, 20 Mar 2026 10:54:51 +0100
+	b=FydBJHmkSOyYupNDmtQB1BqgwWfzi1oX8dSy8M5+py3QkaPDF3iIssauFFK5acpKL
+	 oJbh8JFgKWtY0jFtu2B1rfeeSK6flXe9qW53YYw7FgwhSabtGnOozhdWNpo9krtQ5z
+	 qbrNfwY4zrGO/MDfvKADE/KWKAWrRpJJklGJcK/KpqKqMsmaAd9XeM7TClcIcXd3K/
+	 F7kFnzPAK0Se/DXpD7YMHMPRwQ+tW8Zc+JkYUFYgQq4E3hgznc7EKuiVfBLepBGaRF
+	 Fig1NLeD2M28Gtz//3wyMvPpnMtVC6HA65YjLFXieLL/pcMKqeSFG4dV2sBXhtLc2p
+	 8cbB4R3yUxsIg==
+Date: Fri, 20 Mar 2026 10:58:00 +0100
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Chen-Yu Tsai <wenst@chromium.org>
 Cc: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
@@ -49,19 +49,18 @@ Cc: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
 	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-arm-kernel@lists.infradead.org, 
 	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH 2/5] regulator: dt-bindings: mt6359: Drop bogus
- vcn33_[12]_* split regulators
-Message-ID: <20260320-dashing-crocodile-of-emphasis-2cc43d@quoll>
+Subject: Re: [PATCH 3/5] regulator: dt-bindings: mt6359: Add regulator
+ supplies
+Message-ID: <20260320-masked-saffron-rottweiler-44b5ee@quoll>
 References: <20260320072440.2403318-1-wenst@chromium.org>
- <20260320072440.2403318-3-wenst@chromium.org>
+ <20260320072440.2403318-4-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20260320072440.2403318-3-wenst@chromium.org>
+In-Reply-To: <20260320072440.2403318-4-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260320_025455_198689_63C97E7C 
-X-CRM114-Status: UNSURE (   9.56  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260320_025804_179528_5F8006D7 
+X-CRM114-Status: GOOD (  10.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,21 +75,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 20, 2026 at 03:24:35PM +0800, Chen-Yu Tsai wrote:
-> vcn33_[12]_bt and vcn33_[12]_wifi refer to the same output. There are
-> two enable bits in the registers so that BT and WiFi drivers can toggle
-> them separately without any coordination. If either bit is set, then the
-> regulator output is enabled.
+On Fri, Mar 20, 2026 at 03:24:36PM +0800, Chen-Yu Tsai wrote:
+> On the MT6359 each buck regulator has a separate supply. LDOs are split
+> into 4 groups with independent supplies. There is also a supply for the
+> buck regulator control logic.
 > 
-> Unfortunately some of them are already referenced by in-tree device
-> trees. To keep backward compatibility with them, keep the vcn33_*_bt
+> Add descriptions for all of them.
+> 
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+>  .../bindings/regulator/mt6359-regulator.yaml  | 38 +++++++++++++++++++
+>  1 file changed, 38 insertions(+)
 
-So you drop "_wifi" regulators breaking the ABI, no?
-
-> regulator. Also combine them for a shorten regular expression pattern.
-
-Instead the duplicates should be deprecated and driver should still
-support the "_wifi" variants.
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
 Best regards,
 Krzysztof
