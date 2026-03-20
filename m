@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3670109318E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2026 08:44:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3514D1093190
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2026 08:44:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RRK5xBK6BAOpYcXqRcl+8YIfK5RsduYG9moVn3vQfqU=; b=UbXD0OxH2ORz7/zFZBipm6TW5+
-	0xL/h9Ez6sHqEZXLVsrmQH3XYIGSKNtCgAwx2TwLMxNjDLQHjX2BC/Bgv1IMKKd4VrcNGuERNqmWd
-	jCU79Sa7RuNHaxW9VYsAMhhO/xU16FuOYHavni7ScCsvajW7PlnpqIon1oz73j87n9P2YJC33DOPA
-	QENoACaFkKfm8xRm01f1uYnF5jVpFDebeC1Tpg2D9Si7oT6TQSBh7TBfIL5nkWOi30mRSo5rJVucQ
-	GcKZAanQTa15YQmkRoA7YZIyvXZh8MFclnvrTPpOQzxBc/WSXK20bP9hqDHJvRmcdqBG2GWpXrW2E
-	p5HqQixg==;
+	bh=dTU2TMlRUybrUic/FwbykBhoe+23VKaHqHh1ixkwW9M=; b=qzuepO0b3NG3roFkBS/qeCaysS
+	716hR/u12WrkXAzZLQe5K3wZ1pPAGc1pf4atV7RNZ8xEBlXO8I3hUm186I3S1em8suXruDu1Rkhlc
+	3kzAjcUY1YYfTAIY1D6MODhCppgqlJhbEzNa9EVfBbKi4FF+eLdLZluah/I9uSKDa4Mw6S2r3c6QA
+	Q20/s2nET71Qz7s0t1peEXDpKSNNkywLBqFxszcx74qzYRfsN9pYOK8EZ5ZQKwvgypm/WDE5jCUHB
+	xWNEvLEDZGjYrVNtmTSwhYakMUTbp7prp4ihzsDTX0uRbAzqweSBMIgZNoM9yaVU5+Ejd1qH0t0o7
+	ZoF+ir3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3VTM-0000000COMW-1EbO;
-	Fri, 20 Mar 2026 08:44:48 +0000
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+	id 1w3VTR-0000000COSc-1cv4;
+	Fri, 20 Mar 2026 08:44:53 +0000
+Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3VSz-0000000CNwJ-3ho8
+	id 1w3VT1-0000000CNyo-3OTV
 	for linux-mediatek@lists.infradead.org;
-	Fri, 20 Mar 2026 08:44:28 +0000
-Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-2b061b6cf36so2743875ad.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 20 Mar 2026 01:44:25 -0700 (PDT)
+	Fri, 20 Mar 2026 08:44:31 +0000
+Received: by mail-pg1-x52c.google.com with SMTP id 41be03b00d2f7-c742882d2a4so162159a12.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 20 Mar 2026 01:44:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1773996265; x=1774601065; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1773996267; x=1774601067; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=RRK5xBK6BAOpYcXqRcl+8YIfK5RsduYG9moVn3vQfqU=;
-        b=Lx4MxIRVBpSjKJLmbaHT+puHIhOKSI0I6Qg9vL0fDdapXpzMc9s2rlkKB75dQVUpl9
-         AvwtNQEN2PC2zADuUWQZJcsBpZQXNK/e9zPooRjLKp75j/KdsTENH0GgAvXsDNwohOWE
-         8sv5rWNFYZgPEPcpnF/8Bj/X0U67wGKXymOsE=
+        bh=dTU2TMlRUybrUic/FwbykBhoe+23VKaHqHh1ixkwW9M=;
+        b=CM/KzJpBQ+YuB6EFjpJ0m8QHRzEk3ipPAKT/V/wzgcYnLObb2dWngLlA8S61o4F/UZ
+         FEOKYbLFoGOtY2Sh7hENzFLMyYNw5107iZDY0X5fJ3TlLp92IB4GaLbsHqbqu27XRgs5
+         N+ex6lD2Ksgw/GQjx5HAgn9D0ILaaCXpcrRRQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1773996265; x=1774601065;
+        d=1e100.net; s=20251104; t=1773996267; x=1774601067;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=RRK5xBK6BAOpYcXqRcl+8YIfK5RsduYG9moVn3vQfqU=;
-        b=L5uzHjctjJsFoKWV3hViCku1pV73UMF0u1AGcFfzcPBrYZFGnZOtBOgRpGJS+RJQ+3
-         UpoyXSQlIhrvfE4cARr43nOxAr0UbNXjC7WMmmuUva0QjJgM5AnmxuRK6lSWE6oBQlMD
-         JZM7EZJMee+o8hNkcadSPVsAbu5JiI45YgNAk8c+s1aFc9XDoxFyz71MCvtA0fkcEUwW
-         NGNvL1QkoSp0lIkZxiSxgu85exPn+0AsBdyIV3LxwBygE4PeoBU5egWzy1SNss0gOD2i
-         zSk4Dpdvpo9Xk854JBJbqjC/vEEwS1RpT5/5l172CqociTPl5Ark/Z0CAqO7emN0gNnK
-         zH2g==
-X-Forwarded-Encrypted: i=1; AJvYcCUAhMb90HLj5AyNgcgOl/D4pX3Ijf/qnPPXmNFo1zeSwjOCcYlpSTVogZefrba1cGgZcSxw/WK2pyE+PIL0MQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzPeDgQiq73oWpc+WFjm4tPxA4wLtnFF5X6Gxa1uk5JJ24ojXlI
-	X8VORMCZ+a4xWN3wd8fox7CNIPnwqBBvbT2T7VjnvryxTXi4QtjLmIiryfwukIJohw==
-X-Gm-Gg: ATEYQzzTWuSBxU+9oC1QOf9bOnBboeUzH+qU3L596eh7mkTJJN1m9LA9sNbsxohFQzI
-	Kw9MytZxMdUHHBq2MM1ToGjncy03i7N/+kCLJo6ywK3X+Y6up3589MJMuZ1vHOyPh6VNfDWrDRU
-	rjdoQe+24QZKzcljXG10LvfxQaV11LusXkb6gSDrjbx2YoHfC2RkVdWrhtIp++EpFHUZWY2BgkB
-	tfKijRTSppABrYeXDKwUo3kdlr45afHA3OB+AWCHtFzLvOYzrEAJVj48Xqe51CgXqjznfY9ObeK
-	dlIs5LOKvxJSjbZdsJ9z/wzE0RYFa9o304SqaxgNWvRXGwrWDDBqzD1u19tU3SwOd6IDPyfAqzU
-	HaOeuMG2LHaMlcLizded/CXW9D6syg+qXPoKj7UGMan5T77CoLC0PYx8y0nJPSIhaw1qtxFplLz
-	sOzcIOSs2pyr3RdCYrZ4Cv9Eile+siUodI6aUjXJqeaza+L7KXnwFnREbYnWcoK+KxQZs2CRyna
-	HptogMz
-X-Received: by 2002:a17:903:f8e:b0:2b0:67fa:dbfb with SMTP id d9443c01a7336-2b0827dc4a1mr19058875ad.47.1773996264637;
-        Fri, 20 Mar 2026 01:44:24 -0700 (PDT)
+        bh=dTU2TMlRUybrUic/FwbykBhoe+23VKaHqHh1ixkwW9M=;
+        b=bgKmsrcX127cpRGJo6r/2/zuC2ZSY3mDx1klixz+4fVkM52w1PfrmxUSQbphRxOjaM
+         gf/52l3l8gMtdLUzc7X5HhKE800SnSOOj+Y+9jTOI6a5nGgd7fmT1azGlOfQLUTCgLZp
+         uGGf00JpTMD3wlEmoxqWDjGFuhEf3OqvlAo7vdhfAK2gyHCt4tKGkjswPtfbRuOvfCiL
+         KMT/4fZBaskCBLZXO6hAzOURVKdB1HvY2I9hfhPz1EzMB9+QwwujnEBHUJTiVlIIqYIg
+         m/OncI86jvEyk7uVJwnP2wfPWKaXPaTWywAKfeCgdKZ5xGiY2ZCPXYD08MpgQJD/OK3i
+         uj+w==
+X-Forwarded-Encrypted: i=1; AJvYcCWEuNjhR+iLwFt8ij8jWgPYWRli6qa2LRM7N1GO4ltVJ+abqWbo1XaCrLE8QKJOlcLXrLcrUO5eEE3GggUm5w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzA63agKaLKAOu/NNyw7gv+zzdZqgWj+ZAJbflqTpKVXEn+Q3jM
+	hcLF+npbJ6HLt2WKCrxlJjk4BoUGlLqb9nLM/FJ0MYug6ye2k37LPJ2vvbh5rSrsbA==
+X-Gm-Gg: ATEYQzx6J04aWdslSp3+mtjs23DAJFVyFg4g2L1nIUI/8cYJV6dgrWRRBbYU2evL6o/
+	TU0wW5s4IlFwWGOgAKHTg+9jyRExPZvGSejHOBulj1OCO0VCdAZ2ka7BC05L2oja2hhUtI3oRcM
+	KXA76U89qWQ4wlbM+geT4mXDYzwlkqFLqla86LJLWqA6KufCNAdoIv0DoPDBEQVkNxLop3w0BUJ
+	yHKeo1hCGncFjhllyZp5E2epRZhF6WaDkdOXQ7YuVsXUyuahcjmqXI/xyFA94g6M024rFVLylug
+	IynXUacBX1YKVGmkQSEy6waSLZtc/TQDwRxMn+wiYxA7lxBugJmcSl+qPcQbFeoOmHOKJr2bPig
+	zPbwF/Te/e0V159WNzeHIVI/BNU0o0A6IjCRZSx2hfUzImE3tPnfg1Y5r3TkQsVpWMoY4QjDy66
+	IIi5WNRQ2oEQCruM+U+4KhNbneYnGuGdKV/9QMJvr+tPxKirRnhLuAZpoiwPb0JUxQCc7paPh0I
+	JkKHrBN
+X-Received: by 2002:a17:902:ccd2:b0:2b0:5682:6973 with SMTP id d9443c01a7336-2b08273d0d4mr19970415ad.19.1773996266943;
+        Fri, 20 Mar 2026 01:44:26 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:9cdf:e932:6f2f:c654])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2b0836a3066sm14917905ad.75.2026.03.20.01.44.22
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2b0836a3066sm14917905ad.75.2026.03.20.01.44.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 20 Mar 2026 01:44:24 -0700 (PDT)
+        Fri, 20 Mar 2026 01:44:26 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
@@ -75,17 +75,18 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 11/13] arm64: dts: mediatek: mt8195-cherry: Fix VBUS regulator description
-Date: Fri, 20 Mar 2026 16:43:43 +0800
-Message-ID: <20260320084351.2461060-12-wenst@chromium.org>
+Subject: [PATCH 12/13] arm64: dts: mediatek: mt8188-geralt: Add MT6359 PMIC supplies
+Date: Fri, 20 Mar 2026 16:43:44 +0800
+Message-ID: <20260320084351.2461060-13-wenst@chromium.org>
 X-Mailer: git-send-email 2.53.0.959.g497ff81fa9-goog
 In-Reply-To: <20260320084351.2461060-1-wenst@chromium.org>
 References: <20260320084351.2461060-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260320_014426_009180_CAF7C7DA 
-X-CRM114-Status: GOOD (  10.57  )
+X-CRM114-CacheID: sfid-20260320_014430_017019_0AC167FD 
+X-CRM114-Status: UNSURE (   9.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,33 +101,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The VBUS regulator is a current-limiting switch. It does not have
-voltage regulation capabilities. The description is also missing a power
-input.
+The MT6359 PMIC has a number of power inputs for its various buck and
+LDO regulators. The binding recently gained property definitions for
+them.
 
-Drop the voltage constraints, and add a supply input.
+Add the supplies for the PMIC regulators to the common design dtsi file.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ .../boot/dts/mediatek/mt8188-geralt.dtsi      | 21 +++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-index ca747531629d..19a24380044d 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-@@ -212,10 +212,9 @@ tboard_thermistor2: thermal-sensor-t2 {
- 	usb_vbus: regulator-5v0-usb-vbus {
- 		compatible = "regulator-fixed";
- 		regulator-name = "usb-vbus";
--		regulator-min-microvolt = <5000000>;
--		regulator-max-microvolt = <5000000>;
- 		enable-active-high;
- 		regulator-always-on;
-+		vin-supply = <&pp5000_s5>;
- 	};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
+index 8e423504ec05..fc84dfedab03 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
+@@ -544,6 +544,27 @@ &mt6359codec {
+ 	mediatek,mic-type-2 = <2>; /* DMIC */
+ };
  
- 	reserved_memory: reserved-memory {
++&mt6359regulators {
++	vsys-smps-supply = <&pp4200_s5>;
++	vsys-vcore-supply = <&pp4200_s5>;
++	vsys-vgpu11-supply = <&pp4200_s5>;
++	vsys-vgpu12-supply = <&pp4200_s5>;
++	vsys-vpa-supply = <&pp4200_s5>;
++	vsys-vproc1-supply = <&pp4200_s5>;
++	vsys-vproc2-supply = <&pp4200_s5>;
++	vsys-vpu-supply = <&pp4200_s5>;
++	vsys-vs1-supply = <&pp4200_s5>;
++	vsys-vs2-supply = <&pp4200_s5>;
++	vsys-vmodem-supply = <&pp4200_s5>;
++	vsys-ldo1-supply = <&pp4200_s5>;
++	vsys-ldo2-supply = <&pp4200_s5>;
++	vs1-ldo1-supply = <&mt6359_vs1_buck_reg>;
++	vs1-ldo2-supply = <&mt6359_vs1_buck_reg>;
++	vs2-ldo1-supply = <&mt6359_vs2_buck_reg>;
++	vs2-ldo2-supply = <&mt6359_vs2_buck_reg>;
++	vio18-supply = <&mt6359_vio18_ldo_reg>;
++};
++
+ &mt6359_vcore_buck_reg {
+ 	regulator-always-on;
+ };
 -- 
 2.53.0.959.g497ff81fa9-goog
 
