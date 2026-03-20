@@ -4,81 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7FC9109318F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2026 08:40:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBDB5109318F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2026 08:42:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1ydh8PxVpe+klVza2cSSTt4oc+3JbY4tIItQxIxh/U4=; b=G1xV4zD2/vWRHsbryBLuEQ428d
-	fmX2XSzEhy1NOFqlJOD4+j7DPj0uMxXXdhcVAAhFtQ5df93vrBBO5nB6607D2MdUQgEPHePqnbL/c
-	LbKRjjRY+Z817yPis5rW+201YlTLSO3rMR1TAeX53WXRcyZFAFehKk5OmiubY+04QLlR58saEa9/C
-	qNAqnWvt/5y/kAHsCGawXyfCmW2GL50hTYLQrfkx2cuGYfO7vl2qqflTCB/s6tXgPGmkf2i2ikKa6
-	fFJLOH0CQ01EHgFuELQVDbHqeIUCC0LBl/DthI6j2zD8R+N1xcj11rBgI2GVwTKukHOeOksb+ZvGN
-	nDBp6OqA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+rj/cbUyvlyk+T5nRH8sV7NIh/OQxGqHsc2ssBdDOxE=; b=z1LxorawJR6PTPipOEbRHHTz8L
+	stG2Tfj9W+2meGiae6aKL8a/Kq1nwD9ibavTUwVvyEuExA5p3rVjNQ5DHpcPoPx4v15QY20YlT/ix
+	EBElK3firtzzgUE2hHnSKwB7/vESQMc6sY4lmJTQvA3NSPuD1DzGdI/lCywMG/orFK/psQcNoF89z
+	9vlZ4ofi9hf38LZq1lLY5pth+cp4zL5fqZn6/nU1+6ecayf3UsVVdnwAXvwV5L6g5Ahg7/5UeqZmb
+	axlSbNZET0Hm0+4ZpEpbTo8LRkXBDUseey0M5xGqjjGv9gicZyO9ODVoeqjQOVxnuJ6crGB7c11iD
+	oGneiRDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3VPW-0000000CMzO-0Rtj;
-	Fri, 20 Mar 2026 08:40:50 +0000
-Received: from mgamail.intel.com ([198.175.65.17])
+	id 1w3VRZ-0000000CNPn-00oG;
+	Fri, 20 Mar 2026 08:42:57 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3VPS-0000000CMyV-23Ly;
-	Fri, 20 Mar 2026 08:40:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1773996046; x=1805532046;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=pRoVm1uSlvFJ1DUaEsZAHIMkqpeZSr5DbQgK9V4VP1I=;
-  b=MzQtpvTjEa9O1z1g9Mj+QbRPBf1OedNo6s4xP5tFxQL2x+37i3RJ5qOu
-   bC5jIcVIekdar88i7n2BID98FjORI6+Y9pslJJvVUUJlSyGRqwSeL4QmG
-   pOEz8FDNCIPLP7u3cu6dok5LzxzQPizs5Kf86Z3QRLQXT5BOeFo8ZJS7J
-   t4yif1o5BmGH4dRkEnwIwVBAZAAuLsX/djBKN9VQY2JCJfgjIMKPhD34R
-   bWPKcVemumcndUhMEgzHhpan9S0ObspcKEBVeq9KtsdhBVnDrsG7z6kxt
-   p1Mx0YX4cOcgE95TcxxptsHaF5vRN+67yWQGds6S6BR/NvktiQ//44XcB
-   A==;
-X-CSE-ConnectionGUID: tOB+D8MyT3G/gTHGcXvkPg==
-X-CSE-MsgGUID: ipojR9vtQ4apoepJnWG9hg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11734"; a="75043703"
-X-IronPort-AV: E=Sophos;i="6.23,130,1770624000"; 
-   d="scan'208";a="75043703"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
-  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Mar 2026 01:40:45 -0700
-X-CSE-ConnectionGUID: UMl4ekA+SP2qinyxdLsYdQ==
-X-CSE-MsgGUID: oy8/u9TvR3Kup4Vvs0GRdw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,130,1770624000"; 
-   d="scan'208";a="223210435"
-Received: from lkp-server02.sh.intel.com (HELO a51c2a36b9df) ([10.239.97.151])
-  by orviesa009.jf.intel.com with ESMTP; 20 Mar 2026 01:40:41 -0700
-Received: from kbuild by a51c2a36b9df with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1w3VOw-0000000029V-0Dxy;
-	Fri, 20 Mar 2026 08:40:19 +0000
-Date: Fri, 20 Mar 2026 16:39:03 +0800
-From: kernel test robot <lkp@intel.com>
-To: Pei Xiao <xiaopei01@kylinos.cn>, linux-spi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	imx@lists.linux.dev, openbmc@lists.ozlabs.org,
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com, broonie@kernel.org,
-	Frank.Li@nxp.com, amelie.delaunay@foss.st.com
-Cc: oe-kbuild-all@lists.linux.dev, Pei Xiao <xiaopei01@kylinos.cn>
-Subject: Re: [PATCH v5 11/17] spi: st: Simplify clock handling with
- devm_clk_get_enabled()
-Message-ID: <202603201638.tsz5xX5N-lkp@intel.com>
-References: <383814750ad46181fd4199b3c6cec4767d480075.1773885292.git.xiaopei01@kylinos.cn>
+	id 1w3VRW-0000000CNOL-1NsQ;
+	Fri, 20 Mar 2026 08:42:55 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id E99FE41A0F;
+	Fri, 20 Mar 2026 08:42:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B84BC4CEF7;
+	Fri, 20 Mar 2026 08:42:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1773996172;
+	bh=IftfdfYj6xOLoTQ320B8JN0lhYVBzgNKhPmRTvF/cps=;
+	h=From:Date:Subject:To:Cc:From;
+	b=VmYBuxEVM321VPfsqQgzg+EuF/RDtIogR8Wq0NpFLv830DJfohD+hZsPmuad3k5Zn
+	 0ooCUo9KgCtYx7XkhxqqRCO93Z4h1MJgKEtun4rZyucYuaHSz6ZQ0k7fzhLdyUYHlZ
+	 0xnApmSWGawPyxuOotC/u9aU032yoS9zPHPdaSc0ZYzltEUxymHDZ6CpTZrBE7Embe
+	 MCtZp8bt2qHTVULBwTIShUyx4WuHBsjLaXSutR5WcwwfezJxRcGvI2E0Zw+qLQ/193
+	 4NRgRGVijIVFKepBMslRPirZr/aZkwmVU5nS9BKoxatffk972UJCJa/Ri8bmahsfR4
+	 pYWqmAmE2AhIw==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Fri, 20 Mar 2026 09:42:28 +0100
+Subject: [PATCH net-next] net: airoha: Rework the code flow in
+ airoha_remove() and in airoha_probe() error path
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <383814750ad46181fd4199b3c6cec4767d480075.1773885292.git.xiaopei01@kylinos.cn>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260320-airoha-remove-rework-v1-1-adeef7e3c01f@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MwQqDMBAFf0X23IU0URv8ldJDMK+6lCayESuI/
+ 27oaZjDzEEFKig0NAcpNimSU5X7raFxDmkCS6xO1tjeOGs4iOY5sOKbN1T8sn7YO++6to2Pzke
+ q6aJ4y/7fPilh5YR9pdd5Xn86C/hwAAAA
+X-Change-ID: 20260320-airoha-remove-rework-8383544d758d
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260320_014046_578236_5AEDC6D7 
-X-CRM114-Status: GOOD (  10.19  )
+X-CRM114-CacheID: sfid-20260320_014254_417572_D98D6966 
+X-CRM114-Status: GOOD (  15.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,52 +77,187 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Pei,
+As suggested by Simon in [0], rework the code flow in airoha_remove()
+and in the airoha_probe() error path in order to rely on a more common
+approach un-registering configured net-devices first and destroying the
+hw resources at the end of the code.
+Introduce airoha_qdma_cleanup routine to release QDMA resources.
 
-kernel test robot noticed the following build warnings:
+[0] https://lore.kernel.org/netdev/20251214-airoha-fix-dev-registration-v1-1-860e027ad4c6@kernel.org/
 
-[auto build test WARNING on broonie-spi/for-next]
-[also build test WARNING on next-20260319]
-[cannot apply to atorgue-stm32/stm32-next rockchip/for-next xilinx-xlnx/master clk/clk-next shawnguo/for-next soc/for-next linus/master v7.0-rc4]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Suggested-by: Simon Horman <horms@kernel.org>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/ethernet/airoha/airoha_eth.c | 82 ++++++++++++++++++--------------
+ 1 file changed, 47 insertions(+), 35 deletions(-)
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Pei-Xiao/spi-axiado-Simplify-clock-management-with-devm_clk_get_enabled/20260320-025630
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
-patch link:    https://lore.kernel.org/r/383814750ad46181fd4199b3c6cec4767d480075.1773885292.git.xiaopei01%40kylinos.cn
-patch subject: [PATCH v5 11/17] spi: st: Simplify clock handling with devm_clk_get_enabled()
-config: nios2-allmodconfig (https://download.01.org/0day-ci/archive/20260320/202603201638.tsz5xX5N-lkp@intel.com/config)
-compiler: nios2-linux-gcc (GCC) 11.5.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260320/202603201638.tsz5xX5N-lkp@intel.com/reproduce)
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index db9d9531711e3afc02095bb5fba983880c63ebf4..2caef0f74a3ee6c907ec000357d96422cbfee28b 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -1368,6 +1368,33 @@ static int airoha_qdma_init(struct platform_device *pdev,
+ 	return airoha_qdma_hw_init(qdma);
+ }
+ 
++static void airoha_qdma_cleanup(struct airoha_qdma *qdma)
++{
++	int i;
++
++	for (i = 0; i < ARRAY_SIZE(qdma->q_rx); i++) {
++		if (!qdma->q_rx[i].ndesc)
++			continue;
++
++		netif_napi_del(&qdma->q_rx[i].napi);
++		airoha_qdma_cleanup_rx_queue(&qdma->q_rx[i]);
++		if (qdma->q_rx[i].page_pool) {
++			page_pool_destroy(qdma->q_rx[i].page_pool);
++			qdma->q_rx[i].page_pool = NULL;
++		}
++	}
++
++	for (i = 0; i < ARRAY_SIZE(qdma->q_tx_irq); i++)
++		netif_napi_del(&qdma->q_tx_irq[i].napi);
++
++	for (i = 0; i < ARRAY_SIZE(qdma->q_tx); i++) {
++		if (!qdma->q_tx[i].ndesc)
++			continue;
++
++		airoha_qdma_cleanup_tx_queue(&qdma->q_tx[i]);
++	}
++}
++
+ static int airoha_hw_init(struct platform_device *pdev,
+ 			  struct airoha_eth *eth)
+ {
+@@ -1395,41 +1422,30 @@ static int airoha_hw_init(struct platform_device *pdev,
+ 	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++) {
+ 		err = airoha_qdma_init(pdev, eth, &eth->qdma[i]);
+ 		if (err)
+-			return err;
++			goto error;
+ 	}
+ 
+ 	err = airoha_ppe_init(eth);
+ 	if (err)
+-		return err;
++		goto error;
+ 
+ 	set_bit(DEV_STATE_INITIALIZED, &eth->state);
+ 
+ 	return 0;
++error:
++	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
++		airoha_qdma_cleanup(&eth->qdma[i]);
++
++	return err;
+ }
+ 
+-static void airoha_hw_cleanup(struct airoha_qdma *qdma)
++static void airoha_hw_cleanup(struct airoha_eth *eth)
+ {
+ 	int i;
+ 
+-	for (i = 0; i < ARRAY_SIZE(qdma->q_rx); i++) {
+-		if (!qdma->q_rx[i].ndesc)
+-			continue;
+-
+-		netif_napi_del(&qdma->q_rx[i].napi);
+-		airoha_qdma_cleanup_rx_queue(&qdma->q_rx[i]);
+-		if (qdma->q_rx[i].page_pool)
+-			page_pool_destroy(qdma->q_rx[i].page_pool);
+-	}
+-
+-	for (i = 0; i < ARRAY_SIZE(qdma->q_tx_irq); i++)
+-		netif_napi_del(&qdma->q_tx_irq[i].napi);
+-
+-	for (i = 0; i < ARRAY_SIZE(qdma->q_tx); i++) {
+-		if (!qdma->q_tx[i].ndesc)
+-			continue;
+-
+-		airoha_qdma_cleanup_tx_queue(&qdma->q_tx[i]);
+-	}
++	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
++		airoha_qdma_cleanup(&eth->qdma[i]);
++	airoha_ppe_deinit(eth);
+ }
+ 
+ static void airoha_qdma_start_napi(struct airoha_qdma *qdma)
+@@ -3028,7 +3044,7 @@ static int airoha_probe(struct platform_device *pdev)
+ 
+ 	err = airoha_hw_init(pdev, eth);
+ 	if (err)
+-		goto error_hw_cleanup;
++		return err;
+ 
+ 	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
+ 		airoha_qdma_start_napi(&eth->qdma[i]);
+@@ -3043,23 +3059,19 @@ static int airoha_probe(struct platform_device *pdev)
+ 		err = airoha_alloc_gdm_port(eth, np);
+ 		if (err) {
+ 			of_node_put(np);
+-			goto error_napi_stop;
++			goto error;
+ 		}
+ 	}
+ 
+ 	err = airoha_register_gdm_devices(eth);
+ 	if (err)
+-		goto error_napi_stop;
++		goto error;
+ 
+ 	return 0;
+ 
+-error_napi_stop:
++error:
+ 	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
+ 		airoha_qdma_stop_napi(&eth->qdma[i]);
+-	airoha_ppe_deinit(eth);
+-error_hw_cleanup:
+-	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
+-		airoha_hw_cleanup(&eth->qdma[i]);
+ 
+ 	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
+ 		struct airoha_gdm_port *port = eth->ports[i];
+@@ -3071,6 +3083,8 @@ static int airoha_probe(struct platform_device *pdev)
+ 			unregister_netdev(port->dev);
+ 		airoha_metadata_dst_free(port);
+ 	}
++	airoha_hw_cleanup(eth);
++
+ 	free_netdev(eth->napi_dev);
+ 	platform_set_drvdata(pdev, NULL);
+ 
+@@ -3082,10 +3096,8 @@ static void airoha_remove(struct platform_device *pdev)
+ 	struct airoha_eth *eth = platform_get_drvdata(pdev);
+ 	int i;
+ 
+-	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++) {
++	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
+ 		airoha_qdma_stop_napi(&eth->qdma[i]);
+-		airoha_hw_cleanup(&eth->qdma[i]);
+-	}
+ 
+ 	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
+ 		struct airoha_gdm_port *port = eth->ports[i];
+@@ -3096,9 +3108,9 @@ static void airoha_remove(struct platform_device *pdev)
+ 		unregister_netdev(port->dev);
+ 		airoha_metadata_dst_free(port);
+ 	}
+-	free_netdev(eth->napi_dev);
++	airoha_hw_cleanup(eth);
+ 
+-	airoha_ppe_deinit(eth);
++	free_netdev(eth->napi_dev);
+ 	platform_set_drvdata(pdev, NULL);
+ }
+ 
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202603201638.tsz5xX5N-lkp@intel.com/
+---
+base-commit: ca7e99335aea7c5977683624ba319157a4603f96
+change-id: 20260320-airoha-remove-rework-8383544d758d
 
-All warnings (new ones prefixed by >>):
-
-   drivers/spi/spi-st-ssc4.c: In function 'spi_st_remove':
->> drivers/spi/spi-st-ssc4.c:365:32: warning: unused variable 'host' [-Wunused-variable]
-     365 |         struct spi_controller *host = platform_get_drvdata(pdev);
-         |                                ^~~~
-
-
-vim +/host +365 drivers/spi/spi-st-ssc4.c
-
-9e862375c5420a Lee Jones        2014-12-09  362  
-2dd42da0b479ff Uwe Kleine-König 2023-03-03  363  static void spi_st_remove(struct platform_device *pdev)
-9e862375c5420a Lee Jones        2014-12-09  364  {
-e6b7e64cb11966 Yang Yingliang   2023-11-28 @365  	struct spi_controller *host = platform_get_drvdata(pdev);
-9e862375c5420a Lee Jones        2014-12-09  366  
-cd050abeba2a95 Chuhong Yuan     2019-11-18  367  	pm_runtime_disable(&pdev->dev);
-cd050abeba2a95 Chuhong Yuan     2019-11-18  368  
-9e862375c5420a Lee Jones        2014-12-09  369  	pinctrl_pm_select_sleep_state(&pdev->dev);
-9e862375c5420a Lee Jones        2014-12-09  370  }
-9e862375c5420a Lee Jones        2014-12-09  371  
-
+Best regards,
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
