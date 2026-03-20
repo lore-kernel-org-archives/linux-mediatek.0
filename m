@@ -4,75 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB87E1098787
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2026 14:06:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D37D109879B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2026 15:25:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hWgkyHieI+lx6uZjlbxnNfikaImkXlaHPtGyHRNFVhw=; b=DQB4BSdyuqD0oZYbwuAmTQSryp
-	V0osK18K3OxP+lWp3jAMyiFDuPG01WeqPykvuDJpzDEyEQNSPs1v579d+P90XnMxYKgOeyokr19lH
-	fvltHzA19+npWDD4qMS9wyLhT5bZnkuWrq7gCJaPkYxfkKoPsFI+xYckaKqSR50nN7LljeM1nc5DC
-	1i3xjcZ1KNGlmmGYcUTzi+vEezOZiLYSLrdo+xJz3ABdi/GzGNe0n7h+zQPUs+vyOc5ol2b5mmXwB
-	fb4gXijJIIbXJ0sRTgWorjLZUwHKzt+9BA1y+etunVkoFtyzKyxytPcHLVNKx53EzxjTetIqiF2uK
-	GiA2IVtw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XLXcqIVzc+TE7/RYP3TxhjZkuh5oaQY94C3LjN7BMto=; b=BctKUC6mjVQS2lS5x/2zWUPcmM
+	DM4FzXmktjw78lu2yKpRtwyLouXtbjZk+xRyvxloNQxoIHv9RkMqqM2XMRM3MNpFa41systlwFqS9
+	h+2J193mXrb8d6tygO2E3DUrud9ETldexsdBzkpO75aJZRnjvnGuBbsOKL6XcfieFTR1szdAw8pmE
+	8WVQhO+/q3XmNyAAqIatMREB2GRR6VakyjJdVKaYZqYG9mYpg55HDRVxWRF2wHA996P0btvKRquny
+	qmpIzRoYPVq1vR+7aU695a63t27qkY+Vd99gBocl/LUiGRpak0cb8fcdVVxRf8YakNL9DL/qs+j5A
+	ONOsmIOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3aUs-0000000CuJj-3WGP;
-	Fri, 20 Mar 2026 14:06:42 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1w3bic-0000000D2KP-2N4L;
+	Fri, 20 Mar 2026 15:24:59 +0000
+Received: from mail-vk1-xa29.google.com ([2607:f8b0:4864:20::a29])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3aUp-0000000CuJH-1Ye3;
-	Fri, 20 Mar 2026 14:06:40 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1774015588; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=Wr9FbiYdbxLUWCL9K7rYZTrOQKOpu9kK+amZrXcg3V/3dA7MhRwi4q1dMjrnhbO9vp/iDphZtG4QPo4ZSFQ4WPedmabCfwULB+KEu29IwZimOWorIWFqFBOgI/YbAxrtwFi4jbqkkkoTPkor7e+mZh90+AS548pTVG0fSxpeqCE=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1774015588; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=hWgkyHieI+lx6uZjlbxnNfikaImkXlaHPtGyHRNFVhw=; 
-	b=Up3hbl2VH50Vli4WhIUpalEprB++a4eLM18qmYa2MNfb03rVZHHVoaHqRh2nB9m688S1QWByjhR0Chot7vWBAsSgY9mjFFE54Yh+B9qXwUVTLrmjW6JPovTRxnAWX2w+JhoNW+GOYAN4KDthE5y5Y39OoStSjxsqh/TCYpCdVKQ=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
-	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1774015588;
-	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=hWgkyHieI+lx6uZjlbxnNfikaImkXlaHPtGyHRNFVhw=;
-	b=PvQmJThlSKXxXoG1gYCgwyJkw7EO+zihVPm2ShJ1cr5TIwG4J9X+MS8i7xC+VXJe
-	Rysi6qqqX55sU2Ko0WlJB5cz8Bp/TsX2GEYn76k7suOZ476X9SvrRVi981QUk5Ue/B8
-	XUVEz+j0SttDunBcKfkhFVt1iZq4hWEt00ubfBBU=
-Received: by mx.zohomail.com with SMTPS id 1774015585746684.6715664799156;
-	Fri, 20 Mar 2026 07:06:25 -0700 (PDT)
-Message-ID: <32a03f60a50fc0fc3e9a3b5bfb2c06ce694054cf.camel@collabora.com>
-Subject: Re: [PATCH 3/4] arm64: dts: mediatek: add device-tree for Genio
- 720-EVK board
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-To: David Lechner <dlechner@baylibre.com>, Greg Kroah-Hartman	
- <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, Rob
- Herring	 <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
- Dooley	 <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sean
- Wang <sean.wang@mediatek.com>
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
-	linux-serial@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Date: Fri, 20 Mar 2026 15:06:20 +0100
-In-Reply-To: <23778b52-9aa2-49fc-946b-e858b99fc3c9@baylibre.com>
-References: <20251203-add-mediatek-genio-520-720-evk-v1-0-df794b2a30ae@collabora.com>
-	 <20251203-add-mediatek-genio-520-720-evk-v1-3-df794b2a30ae@collabora.com>
-	 <23778b52-9aa2-49fc-946b-e858b99fc3c9@baylibre.com>
-Organization: Collabora Ltd
+	id 1w3biZ-0000000D2Jh-3DtG
+	for linux-mediatek@lists.infradead.org;
+	Fri, 20 Mar 2026 15:24:56 +0000
+Received: by mail-vk1-xa29.google.com with SMTP id 71dfb90a1353d-56ce07a54e8so483567e0c.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 20 Mar 2026 08:24:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1774020294; x=1774625094; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=XLXcqIVzc+TE7/RYP3TxhjZkuh5oaQY94C3LjN7BMto=;
+        b=BrXRh4sDIDlSwr/MCeySWjtzoeDITHVjg6C2UPf/h2O+0w2W5n/DOETwGi/yUqxlzX
+         6YFzlzB17NVYbRqeV/Lhk84+1XHtraDuJKvSqR2Q24cT7wf00t54XnzsWp2oi9YJh2Xs
+         uo12+hFnRBqnRLaze7dX6hB5d6NpbvaP0Yx3o=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1774020294; x=1774625094;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=XLXcqIVzc+TE7/RYP3TxhjZkuh5oaQY94C3LjN7BMto=;
+        b=YxUXkIK/mqxnhHHuHpdR2XDftAQorkOACmLvpEqMjL5AnnxZ8Hc1JGWTA9Pesopwsb
+         45oklYWJGHpibIkMzgn1TePEgWLIKqeW7foRKfgUh6OYQENQkOAHd59dM0DNoSeodmhB
+         5K3vbl8Ecy++GD6lOrV7grcpoWYKx6gPJV7sADqbj9bNqrkaeler/nxIilDXjRUmrfYG
+         eVkq2122rgcj5d+Rq9jTcix/c/u1qzOe5Yldy1mELVyn178AWWJdpvzRBJeEa4sAx5cz
+         gK4SpnI1SHuk8WmFEb/NtHqlZN/+6WHM8VRlMDye0lkzs0uM974wQhrSqarGKOQyTM6j
+         q3kA==
+X-Forwarded-Encrypted: i=1; AJvYcCUE8MeJwGmKGHYjEfby6sOuzdmyTBmeqLh3xN/bNKtpWhxall39uOmtFvcvOHY1+ndyHauaep1ptKnYoy8Q0A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxVI+DhGg2hFdyjuXAlULQaF95qKcVyjG+G0YqGmRAOBtT+K77O
+	2acq5wN0AJXqWEE0y2XHkT7mCS1kyQHQDITcr3HsUZhsOE+I8i5juc/POXfJkKB6nQ2Uw2qtQ1G
+	/+Wk=
+X-Gm-Gg: ATEYQzy6POQzCDW9I/fARoGbWKX/1qZoOcTfAZVZkMUTX8LWduFC/nxmNKLQUTBEKV2
+	wgTkRxLKNTBd61Us40gu5LZr3JCa94aGt8T3gcKxidUxZ8CHkpB5i2kKi/+E/6Rg+w6jxzAxM8a
+	DNu9K0sTI1UPwdtXkkBZ/eGo8MIA9i+avg+GqlvKF2ziaaXAlVA0hUpPvU8hO5/clT1S/vyaWVJ
+	zOeJQmdSx7kM+5tDOT4zl5uvk/q0IMCDcnOSIlwa1MB8hPhHm98a0Fn2WXfjIU1CZl1bJZE48qC
+	8xSmR78t/XUzNxbmLSapnEARsAjmPgV3TXZuSwLIxGcEHOu6M0A0zivJT9XSgdfa2dRVYjKv0o2
+	SreYF/HwhDxUn6KyjxC3BrHAMN2UktcJGJvw2JJGINfZClMppLmQwU+LuTTv4svqCTBhBlcn1cY
+	tTyo+6jZl0V6fT1oWXc2EeOpaNzdxUWKiqXx0db7Z9RWGQNPVlhfDb/4otpttaiA==
+X-Received: by 2002:a05:6122:d28:b0:55b:d85:5073 with SMTP id 71dfb90a1353d-56cde3aa17cmr1981192e0c.4.1774020293893;
+        Fri, 20 Mar 2026 08:24:53 -0700 (PDT)
+Received: from mail-vk1-f173.google.com (mail-vk1-f173.google.com. [209.85.221.173])
+        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-56cddcb1179sm1677919e0c.14.2026.03.20.08.24.53
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 20 Mar 2026 08:24:53 -0700 (PDT)
+Received: by mail-vk1-f173.google.com with SMTP id 71dfb90a1353d-56ce07a54e8so483547e0c.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 20 Mar 2026 08:24:53 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCVfrxTanSsytblvSFTpH/2+5MWhAvpAEL8QyceRErb/vTXsM/jaFRGW5PoWIUb7vjLRbS0EfLSw07IiH0h3/g==@lists.infradead.org
+X-Received: by 2002:a05:6102:2927:b0:5ef:a8da:8b26 with SMTP id
+ ada2fe7eead31-602aed346fbmr1801022137.27.1774020292428; Fri, 20 Mar 2026
+ 08:24:52 -0700 (PDT)
+MIME-Version: 1.0
+References: <20260320084351.2461060-1-wenst@chromium.org> <20260320084351.2461060-5-wenst@chromium.org>
+In-Reply-To: <20260320084351.2461060-5-wenst@chromium.org>
+From: Fei Shao <fshao@chromium.org>
+Date: Fri, 20 Mar 2026 23:24:16 +0800
+X-Gmail-Original-Message-ID: <CAC=S1nhBnhE2XJRaGfSOSutZGJXfHQujOd1rMbhOfAwGQa0ZrA@mail.gmail.com>
+X-Gm-Features: AaiRm52mZwCR4AEeTV_75B0alA5w3n6BBFefcUDCvgduPyrlTgwEFUngOeWKn9E
+Message-ID: <CAC=S1nhBnhE2XJRaGfSOSutZGJXfHQujOd1rMbhOfAwGQa0ZrA@mail.gmail.com>
+Subject: Re: [PATCH 04/13] arm64: dts: mediatek: mt8192-asurada: Add MT6315
+ PMIC supplies
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
-MIME-Version: 1.0
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260320_070639_460834_CBC49C8E 
-X-CRM114-Status: GOOD (  30.03  )
+X-CRM114-CacheID: sfid-20260320_082455_905068_193E1FB9 
+X-CRM114-Status: GOOD (  14.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,96 +108,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi David,
+On Fri, Mar 20, 2026 at 4:44=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org> w=
+rote:
+>
+> There are two MT6315 PMICs in the MT8192 Asurada design. One has two
+> outputs ganged together and two outputs unused. The other has three
+> outputs ganged together, and one left independent.
+>
+> Add supplies for all the used regulators. In the case of ganged outputs,
+> add the supply for just the first output.
+>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 16 ++++++++++++++++
+>  1 file changed, 16 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm6=
+4/boot/dts/mediatek/mt8192-asurada.dtsi
+> index d16634e9f342..318903b112a3 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+> @@ -175,6 +175,17 @@ pp3300_wlan: regulator-3v3-wlan {
+>                 gpio =3D <&pio 143 GPIO_ACTIVE_HIGH>;
+>         };
+>
+> +       /* system wide switching 4.2V power rail */
+> +       pp4200_g: regulator-4v2-g {
+> +               compatible =3D "regulator-fixed";
+> +               regulator-name =3D "pp5000_a";
 
-On Thu, 2026-02-19 at 18:09 -0600, David Lechner wrote:
-> On 12/3/25 7:59 AM, Louis-Alexis Eyraud wrote:
-> > Add support for MediaTek MT8189 SoC and its variants, and a device-
-> > tree
-> > for the basic hardware enablement of the Genio 720-EVK board, based
-> > on
-> > MT8391 SoC.
-> >=20
-> > MT8391 SoC is a variant of MT8189 SoC with a difference for the Arm
-> > Cortex-A78 CPU core maximum frequency (2.6 Ghz for MT8391, 3 Ghz
-> > for
-> > MT8189). MT8391 hardware register maps are identical to MT8189.
-> >=20
-> > The Genio 720-EVK board has following features:
-> > =C2=A0 - MT8391 SoC
-> > =C2=A0 - MT6365 PMIC
->=20
-> Is MT6365 PMIC ...
->=20
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8391-genio-common.dtsi
-> > b/arch/arm64/boot/dts/mediatek/mt8391-genio-common.dtsi
-> > new file mode 100644
-> > index
-> > 0000000000000000000000000000000000000000..744641916952111a4b389cf6a
-> > dbd27c429b6eff2
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8391-genio-common.dtsi
-> > @@ -0,0 +1,555 @@
-> > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> > +/*
-> > + * Copyright (c) 2025 Collabora Ltd.
-> > + * Author: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-> > + */
-> > +
-> > +#include "mt6359.dtsi"
->=20
-> ... really 100% identical to MT6359 PMIC?
->=20
-I did not find any info in the LKML archives if this topic was
-discussed in the past.
-
-The MT6365 PMIC seems to be more a rebranded MT6359P.
-They have the exact same buck converter and LDOs, and features.
-
-There are several boards based on MT8370, MT8390 and MT8395 SoC that
-integrate the MT6365 PMIC and whose devicetree, present in upstream,
-use the mt6359.dtsi for this PMIC support:
- - Mediatek Genio 1200 EVK
- - Mediatek Genio 700 EVK
- - Mediatek Genio 510 EVK
- - Radxa NIO-12L
-Probably a couple more.
-
-The Genio 1200 EVK board devicetree was the first one that used
-"mediatek,mt6359" compatible for this PMIC.
-
-As far as I know, there is no known compatibility issue.
-The MT6359 regulator kernel driver, in particular, does recognise it as
-MT6359P (same identifier) and the MT6365 datasheet shows it has the
-same register layout from what I compared for the buck and ldos.
-
-So 100% identical? I cannot say it for sure but I don't have any info
-telling otherwise.
-
-> Asking because I'm working on this in U-Boot and would be helpful
-> to know that this is correct. Would probably be a good idea to
-> mention
-> it in the commit message too to show this is intentional.
->=20
->=20
-> And I wonder if it would be a good idea to add a compatible with
-> fallback
-> just to be sure.
->=20
-> &pmic {
-> 	compatible =3D "mediatek,mt6365", "mediatek,mt6359";
-> };
-
-You're right.=C2=A0
-That's make sense to document a proper compatibility in the dt-bindings
-and use it the devicetree, not only for pmic node but also but its
-subdevices (auxadc, codec, regulator, rtc, pmic-keys).
-
-As the Genio 720 EVK is not the only board concerned,=C2=A0it would be
-better that I send another series to do such cleanup, for instance one
-that adds a new mt6365.dtsi before using it (instead of mt6359.dtsi) in
-the Genio 720 EVK devicetree.
+This should be pp4200_g.
 
 Regards,
-Louis-Alexis
+Fei
+
+> +               regulator-always-on;
+> +               regulator-boot-on;
+> +               regulator-min-microvolt =3D <4200000>;
+> +               regulator-max-microvolt =3D <4200000>;
+> +               vin-supply =3D <&ppvar_sys>;
+> +       };
+> +
+>         /* system wide switching 5.0V power rail */
+>         pp5000_a: regulator-5v0-a {
+>                 compatible =3D "regulator-fixed";
 
