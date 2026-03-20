@@ -4,65 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBDB5109318F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2026 08:42:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 879E7109318F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2026 08:44:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+rj/cbUyvlyk+T5nRH8sV7NIh/OQxGqHsc2ssBdDOxE=; b=z1LxorawJR6PTPipOEbRHHTz8L
-	stG2Tfj9W+2meGiae6aKL8a/Kq1nwD9ibavTUwVvyEuExA5p3rVjNQ5DHpcPoPx4v15QY20YlT/ix
-	EBElK3firtzzgUE2hHnSKwB7/vESQMc6sY4lmJTQvA3NSPuD1DzGdI/lCywMG/orFK/psQcNoF89z
-	9vlZ4ofi9hf38LZq1lLY5pth+cp4zL5fqZn6/nU1+6ecayf3UsVVdnwAXvwV5L6g5Ahg7/5UeqZmb
-	axlSbNZET0Hm0+4ZpEpbTo8LRkXBDUseey0M5xGqjjGv9gicZyO9ODVoeqjQOVxnuJ6crGB7c11iD
-	oGneiRDg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XLA7+O4naI3deHzrbL/7xXnsE7GTOurmxvnrea6kDcM=; b=yscyH6d1AdVhqMxfJ0uilyl4At
+	p3Ly9lTbsZfDWWKyqE8CUdT8yHlZ9lc7cmVQLRjIgy2wL1uVVWOAL3kRqiU7x+swsdnPO8jpB8j53
+	8VbgxwZw9Ie7BlTonadHdaErhx0ObGLuFwIR+tUeZFFHwMjq9i9vcagueEr8zZM+AewwJoYOcX9FV
+	b6bFRbSyBTLgWgCRM/akUQtSinnIWKzFWg5uG+XjkA4XSphMxikCKyez9EOt3EiHiD8AJXcZvBJB3
+	3qgKvdzApLah6vWwn5a/2eP6mvYWU2+1K5e/u3rr1YOdZFHoExz90gmd5offaonNqb+bhrrOQd77B
+	459oVjQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3VRZ-0000000CNPn-00oG;
-	Fri, 20 Mar 2026 08:42:57 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1w3VSd-0000000CNav-2tbQ;
+	Fri, 20 Mar 2026 08:44:03 +0000
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3VRW-0000000CNOL-1NsQ;
-	Fri, 20 Mar 2026 08:42:55 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E99FE41A0F;
-	Fri, 20 Mar 2026 08:42:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B84BC4CEF7;
-	Fri, 20 Mar 2026 08:42:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773996172;
-	bh=IftfdfYj6xOLoTQ320B8JN0lhYVBzgNKhPmRTvF/cps=;
-	h=From:Date:Subject:To:Cc:From;
-	b=VmYBuxEVM321VPfsqQgzg+EuF/RDtIogR8Wq0NpFLv830DJfohD+hZsPmuad3k5Zn
-	 0ooCUo9KgCtYx7XkhxqqRCO93Z4h1MJgKEtun4rZyucYuaHSz6ZQ0k7fzhLdyUYHlZ
-	 0xnApmSWGawPyxuOotC/u9aU032yoS9zPHPdaSc0ZYzltEUxymHDZ6CpTZrBE7Embe
-	 MCtZp8bt2qHTVULBwTIShUyx4WuHBsjLaXSutR5WcwwfezJxRcGvI2E0Zw+qLQ/193
-	 4NRgRGVijIVFKepBMslRPirZr/aZkwmVU5nS9BKoxatffk972UJCJa/Ri8bmahsfR4
-	 pYWqmAmE2AhIw==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 20 Mar 2026 09:42:28 +0100
-Subject: [PATCH net-next] net: airoha: Rework the code flow in
- airoha_remove() and in airoha_probe() error path
+	id 1w3VSa-0000000CNZH-1Qwx
+	for linux-mediatek@lists.infradead.org;
+	Fri, 20 Mar 2026 08:44:02 +0000
+Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-2b04fc8851cso17199035ad.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 20 Mar 2026 01:44:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1773996239; x=1774601039; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=XLA7+O4naI3deHzrbL/7xXnsE7GTOurmxvnrea6kDcM=;
+        b=CtxZc59OW6zIsaATtxp4E/6vPh/GZuM070MDXG6y4FbDj3PcutST9B6XpBdkEayIFy
+         +fAUbfus7lzYFrEO4v6xjyUPI+PUo/irWnRnQ9etFLA5WrSjzteKhQXpZHZR8wChlJ/K
+         CofFSUcJ6k5yP9UNzcigPar+Ui5hb7mvgmEZ4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1773996239; x=1774601039;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=XLA7+O4naI3deHzrbL/7xXnsE7GTOurmxvnrea6kDcM=;
+        b=F2HaMXiXDTLKceBPup+38A/nSAHiwg7tG4dSpd7uF8d5jLWAlVDKsfIccfLhTKI/2H
+         uTnwToEMSMLDIT4SVaSTHDJodkXGg2QHlbiGPTEIozxcODvBYHyyee+0+pXR6w4vWWfq
+         Fv7YiVJRDN1YwmrUPeMOX1RATp8XYigsCL7EhTHZEjw9XrQbQ5dWTXsqL5LKsHtXzBkr
+         DfC+dmL4IWGrxahwYVt2d8pT5oOptsX/YIYbhes63sh9EUkj7W1M7nB6iCc+rLN1MTmV
+         smSGMcNLr5ForV+kQdy//J6lBD4sRdEVJ8JKUfdXdbEPa7MzYBLnmQoCnEeB3MXBf5WA
+         Me2A==
+X-Forwarded-Encrypted: i=1; AJvYcCXu/iDK4Ckkx+TwQKPCH2e5rrCcTUAzuCH4kWpK40GAB8ReTGthnwjA1cBN+cPI1IW/1Ad6jtPI+xTr/DAvxA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzF+YrwsDKD3h3cWMZ9gLuS8+zCl/vWdujVwWC3wcV2UUvGEnJo
+	PfTyiFez+LmQqKNG1JLF3hPzQo/vOBRKmxE81q7QJ+PsuCBhnC3UOfBeFsTPPP8vmw==
+X-Gm-Gg: ATEYQzz5oU7cZ2RTbrmwFiOcJW5ePUn0PdHl7enCqKQSkKyFo+CJkisaEUsaOlNSZtf
+	rSlSlgC6s6k/j7xtgAOeXm0v6AJ/mZZjfjdRcQ+YpZikOAjf3GDjc2bU1MQgP5OtjOM6B4gj9lR
+	WNAI81XenSIX8OmcyBXuhquvcHtomiv1dTfPzLqHs9bi+FvljJnXGNdEH0MihCpkNGz8jv6wLw4
+	1v+84pW85rDBAnplKr65JbrKhBUdopVlmuS/lsOZ21eHbVIBbU/WXulDXB4nGs9EjMqGABOPYWE
+	CEYV2EBKqAmFC95eg9KKnYize2nkp1wqMVsdcY4pPrSOgHTUdyGU9Vw/a54Oucjn5ie8JOxQD11
+	zGPzrSNYQneMCr437gvCBEo51mRi3lyLKoAQgxW0Kj3Z8fodx4J2EWBiAaoanWkRlzXH8UWt7br
+	xzEB3lG6GNIV1WmkEhcOEBajTGBfI0+H2fDTdH7owGHD8FWMAiX1lLGZWsw7ToHTEYabhYdyzol
+	UsgVCXa
+X-Received: by 2002:a17:902:d541:b0:2b0:5cb3:e4bc with SMTP id d9443c01a7336-2b0826f6b0dmr20672295ad.16.1773996239541;
+        Fri, 20 Mar 2026 01:43:59 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:9cdf:e932:6f2f:c654])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2b0836a3066sm14917905ad.75.2026.03.20.01.43.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 20 Mar 2026 01:43:59 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: arm64: dts: mediatek: Regulator cleanup for Chromebooks
+Date: Fri, 20 Mar 2026 16:43:32 +0800
+Message-ID: <20260320084351.2461060-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.53.0.959.g497ff81fa9-goog
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260320-airoha-remove-rework-v1-1-adeef7e3c01f@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MwQqDMBAFf0X23IU0URv8ldJDMK+6lCayESuI/
- 27oaZjDzEEFKig0NAcpNimSU5X7raFxDmkCS6xO1tjeOGs4iOY5sOKbN1T8sn7YO++6to2Pzke
- q6aJ4y/7fPilh5YR9pdd5Xn86C/hwAAAA
-X-Change-ID: 20260320-airoha-remove-rework-8383544d758d
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-X-Mailer: b4 0.14.2
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260320_014254_417572_D98D6966 
-X-CRM114-Status: GOOD (  15.29  )
+X-CRM114-CacheID: sfid-20260320_014400_415401_3C15BE3B 
+X-CRM114-Status: GOOD (  12.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,187 +97,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-As suggested by Simon in [0], rework the code flow in airoha_remove()
-and in the airoha_probe() error path in order to rely on a more common
-approach un-registering configured net-devices first and destroying the
-hw resources at the end of the code.
-Introduce airoha_qdma_cleanup routine to release QDMA resources.
+Hi,
 
-[0] https://lore.kernel.org/netdev/20251214-airoha-fix-dev-registration-v1-1-860e027ad4c6@kernel.org/
+This series contains the device tree bits for the collection of regulator
+related cleanups for MediaTek Chromebooks. The device tree binding and
+driver changes are:
 
-Suggested-by: Simon Horman <horms@kernel.org>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c | 82 ++++++++++++++++++--------------
- 1 file changed, 47 insertions(+), 35 deletions(-)
+MT6315
+- https://lore.kernel.org/all/20260320072302.2402489-1-wenst@chromium.org/
+MT6359
+- https://lore.kernel.org/all/20260320072440.2403318-1-wenst@chromium.org/
+cros-ec-regulator
+- https://lore.kernel.org/all/20260320083135.2455444-1-wenst@chromium.org/
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index db9d9531711e3afc02095bb5fba983880c63ebf4..2caef0f74a3ee6c907ec000357d96422cbfee28b 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -1368,6 +1368,33 @@ static int airoha_qdma_init(struct platform_device *pdev,
- 	return airoha_qdma_hw_init(qdma);
- }
- 
-+static void airoha_qdma_cleanup(struct airoha_qdma *qdma)
-+{
-+	int i;
-+
-+	for (i = 0; i < ARRAY_SIZE(qdma->q_rx); i++) {
-+		if (!qdma->q_rx[i].ndesc)
-+			continue;
-+
-+		netif_napi_del(&qdma->q_rx[i].napi);
-+		airoha_qdma_cleanup_rx_queue(&qdma->q_rx[i]);
-+		if (qdma->q_rx[i].page_pool) {
-+			page_pool_destroy(qdma->q_rx[i].page_pool);
-+			qdma->q_rx[i].page_pool = NULL;
-+		}
-+	}
-+
-+	for (i = 0; i < ARRAY_SIZE(qdma->q_tx_irq); i++)
-+		netif_napi_del(&qdma->q_tx_irq[i].napi);
-+
-+	for (i = 0; i < ARRAY_SIZE(qdma->q_tx); i++) {
-+		if (!qdma->q_tx[i].ndesc)
-+			continue;
-+
-+		airoha_qdma_cleanup_tx_queue(&qdma->q_tx[i]);
-+	}
-+}
-+
- static int airoha_hw_init(struct platform_device *pdev,
- 			  struct airoha_eth *eth)
- {
-@@ -1395,41 +1422,30 @@ static int airoha_hw_init(struct platform_device *pdev,
- 	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++) {
- 		err = airoha_qdma_init(pdev, eth, &eth->qdma[i]);
- 		if (err)
--			return err;
-+			goto error;
- 	}
- 
- 	err = airoha_ppe_init(eth);
- 	if (err)
--		return err;
-+		goto error;
- 
- 	set_bit(DEV_STATE_INITIALIZED, &eth->state);
- 
- 	return 0;
-+error:
-+	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
-+		airoha_qdma_cleanup(&eth->qdma[i]);
-+
-+	return err;
- }
- 
--static void airoha_hw_cleanup(struct airoha_qdma *qdma)
-+static void airoha_hw_cleanup(struct airoha_eth *eth)
- {
- 	int i;
- 
--	for (i = 0; i < ARRAY_SIZE(qdma->q_rx); i++) {
--		if (!qdma->q_rx[i].ndesc)
--			continue;
--
--		netif_napi_del(&qdma->q_rx[i].napi);
--		airoha_qdma_cleanup_rx_queue(&qdma->q_rx[i]);
--		if (qdma->q_rx[i].page_pool)
--			page_pool_destroy(qdma->q_rx[i].page_pool);
--	}
--
--	for (i = 0; i < ARRAY_SIZE(qdma->q_tx_irq); i++)
--		netif_napi_del(&qdma->q_tx_irq[i].napi);
--
--	for (i = 0; i < ARRAY_SIZE(qdma->q_tx); i++) {
--		if (!qdma->q_tx[i].ndesc)
--			continue;
--
--		airoha_qdma_cleanup_tx_queue(&qdma->q_tx[i]);
--	}
-+	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
-+		airoha_qdma_cleanup(&eth->qdma[i]);
-+	airoha_ppe_deinit(eth);
- }
- 
- static void airoha_qdma_start_napi(struct airoha_qdma *qdma)
-@@ -3028,7 +3044,7 @@ static int airoha_probe(struct platform_device *pdev)
- 
- 	err = airoha_hw_init(pdev, eth);
- 	if (err)
--		goto error_hw_cleanup;
-+		return err;
- 
- 	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
- 		airoha_qdma_start_napi(&eth->qdma[i]);
-@@ -3043,23 +3059,19 @@ static int airoha_probe(struct platform_device *pdev)
- 		err = airoha_alloc_gdm_port(eth, np);
- 		if (err) {
- 			of_node_put(np);
--			goto error_napi_stop;
-+			goto error;
- 		}
- 	}
- 
- 	err = airoha_register_gdm_devices(eth);
- 	if (err)
--		goto error_napi_stop;
-+		goto error;
- 
- 	return 0;
- 
--error_napi_stop:
-+error:
- 	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
- 		airoha_qdma_stop_napi(&eth->qdma[i]);
--	airoha_ppe_deinit(eth);
--error_hw_cleanup:
--	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
--		airoha_hw_cleanup(&eth->qdma[i]);
- 
- 	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
- 		struct airoha_gdm_port *port = eth->ports[i];
-@@ -3071,6 +3083,8 @@ static int airoha_probe(struct platform_device *pdev)
- 			unregister_netdev(port->dev);
- 		airoha_metadata_dst_free(port);
- 	}
-+	airoha_hw_cleanup(eth);
-+
- 	free_netdev(eth->napi_dev);
- 	platform_set_drvdata(pdev, NULL);
- 
-@@ -3082,10 +3096,8 @@ static void airoha_remove(struct platform_device *pdev)
- 	struct airoha_eth *eth = platform_get_drvdata(pdev);
- 	int i;
- 
--	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++) {
-+	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
- 		airoha_qdma_stop_napi(&eth->qdma[i]);
--		airoha_hw_cleanup(&eth->qdma[i]);
--	}
- 
- 	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
- 		struct airoha_gdm_port *port = eth->ports[i];
-@@ -3096,9 +3108,9 @@ static void airoha_remove(struct platform_device *pdev)
- 		unregister_netdev(port->dev);
- 		airoha_metadata_dst_free(port);
- 	}
--	free_netdev(eth->napi_dev);
-+	airoha_hw_cleanup(eth);
- 
--	airoha_ppe_deinit(eth);
-+	free_netdev(eth->napi_dev);
- 	platform_set_drvdata(pdev, NULL);
- }
- 
+The goal is to complete the regulator tree so that there are no orphan
+regulators, and there are no devices that are missing supplies.
 
----
-base-commit: ca7e99335aea7c5977683624ba319157a4603f96
-change-id: 20260320-airoha-remove-rework-8383544d758d
+Patch 1 drops the bogus regulators from the mt6359 dtsi file.
 
-Best regards,
+Patch 2 adds a label for the mt6359 regulator sub-node. This is used in
+subsequent patches.
+
+Patch 3, 9, and 12 add supplies for the MT6359 PMIC in various
+Chromebook designs.
+
+Patch 4 and 10 add supplies for the MT6315 PMIC in various Chromebook
+designs.
+
+Patch 5 adds supplies for the ChromeOS EC controlled regulators in the
+Asurada design.
+
+Patch 6 and 13 add power supplies for the CPU cores.
+
+Patch 7 adds the power supply for the SPI NOR flash chip in the Asurada
+design.
+
+Patch 8 and 11 fix up load switch descriptions.
+
+Obviously the 3 dependency series need to be merged before this series,
+or we will get a bunch of new DT validation errors.
+
+Please have a look.
+
+
+Thanks
+ChenYu
+
+
+Chen-Yu Tsai (13):
+  arm64: dts: mediatek: mt6359: Drop ldo_vcn33_[12]_wifi regulators
+  arm64: dts: mediatek: mt6359: Add label for regulator sub-node
+  arm64: dts: mediatek: mt8192-asurada: Add MT6359 PMIC supplies
+  arm64: dts: mediatek: mt8192-asurada: Add MT6315 PMIC supplies
+  arm64: dts: mediatek: mt8192-asurada: Add supplies for ChromeOS EC
+    regulators
+  arm64: dts: mediatek: mt8192-asurada: Add CPU power supplies
+  arm64: dts: mediatek: mt8192-asurada: Add SPI NOR flash power supply
+  arm64: dts: mediatek: mt8192-asurada: Fix WiFi regulator description
+  arm64: dts: mediatek: mt8195-cherry: Add MT6359 PMIC supplies
+  arm64: dts: mediatek: mt8195-cherry: Add MT6315 PMIC supplies
+  arm64: dts: mediatek: mt8195-cherry: Fix VBUS regulator description
+  arm64: dts: mediatek: mt8188-geralt: Add MT6359 PMIC supplies
+  arm64: dts: mediatek: mt8188-geralt: Add little core CPU power
+    supplies
+
+ arch/arm64/boot/dts/mediatek/mt6359.dtsi      | 12 +--
+ .../boot/dts/mediatek/mt8188-geralt.dtsi      | 45 +++++++++++
+ .../boot/dts/mediatek/mt8192-asurada.dtsi     | 75 ++++++++++++++++++-
+ .../boot/dts/mediatek/mt8195-cherry.dtsi      | 28 ++++++-
+ 4 files changed, 145 insertions(+), 15 deletions(-)
+
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.53.0.959.g497ff81fa9-goog
 
 
