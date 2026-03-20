@@ -4,69 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DF441093178
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2026 05:25:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4E2A1093179
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2026 05:59:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yyqCuHeJ4yoYJ7QJNk7Gc77s/EmQgwDzAwFECpYA+P0=; b=jMd7ZB31w9b3MulUvIez3sPkgj
-	5RVpn1DsV+Vk7KZtU03T6J6QLLRfk17Bgso7uG9Q5uOOPCpxCxB3D/ckcDp6DvMKwjLoIq9hqZMH6
-	cKTfFOXCeXzaH+VyzOBC5+zQ6IDvprBtlKbfP+K0XK7xAp41vlzrg3TfkJ0pu+lrfpG2ea31P8bgk
-	8Q+YHHIVAszJt6/RWMa84vLhlUW0O+9qZxqG3sVXcowy7OUNaNy89Lb3ctqGs3y9s+QKE6evRi8Ea
-	cAFfof7nbmwqCoPAFBqARAxXRoihvzs3eAMa/5mTIX+hHHkq+x7yMHq2tf8+isxCxyIQct/HuJPp9
-	tZrkgzEA==;
+	bh=PYvG3A9bhcpcCBRSGioZeJBjwhbqKSxm5F0PwaNR9Wc=; b=wIF/GpqfB65bg/J66L5A/pNpop
+	3/ci5QyEMIAIcI24wkYw9jV8QYFrAY/Q31JQHiNBpIdUOIOpCpujGWRh8bepXZrOsufU0Ig8ViISz
+	L4pAQ55Qy1Q++wzYtQVZElzpB4ipSZwU5G61/k7d2EDCGnru0busjejZjRvGcZj1WT2ej4gc0QzD6
+	HQQflWhQ6BqZoD4JqcOuPMhiEgHJh5y5POJaluiuholoCbdLw9Z+SIz6iylr9DsgzqU5gyqR2cQAp
+	7/sWYQjER4mbu2+qTJK+xi3istIgXAsJN/Zf+KY5E/FpHERZXDy32nQRa4Y6lmxuAx0X24F41SrAs
+	coPjQrRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3SM9-0000000C6Og-3RiG;
-	Fri, 20 Mar 2026 05:25:09 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1w3Stm-0000000C7hr-2tp7;
+	Fri, 20 Mar 2026 05:59:54 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3SM7-0000000C6Nc-0gjU;
-	Fri, 20 Mar 2026 05:25:08 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 43EF341B34;
-	Fri, 20 Mar 2026 05:25:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EF02BC4CEF7;
-	Fri, 20 Mar 2026 05:25:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773984305;
-	bh=zaGWASU9+JAdJi4fUavTf9Khqp16CUkVbyblJANVq4s=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=XgJ4/xi591n6pjBVAauY6nfQ+8bDXa+YT7ICN+1HiuoTPZznzj7jHrkfdJWoiVCaq
-	 jwRc1YsTzudfLWScxQbeWsWVO0uMNun2ngs9u8KC2/kIz1kv/XHMD19H0xDX/6v9KI
-	 QfZnsWhwELFwoiiuzXhW+Yqxgkj1NRKi+vOCa8LqDFdsvGFfeN0CtRLEw9mVIGXHrp
-	 gCB05pIYSEtqvSmWi+O1hROa4Wy5YPRHhw9qFYiCouBqt/7AL5GGN5QqcX1sVnuHWD
-	 Wx1rxErjwOAyeIm2x/SUP2zIwsgVE9bp5pDysUNK+F+wFQp1OnXhFpzUlXGR1gZ4gM
-	 2vbFUmShVRQDg==
-Date: Fri, 20 Mar 2026 00:25:04 -0500
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1w3Stk-0000000C7gX-04bd;
+	Fri, 20 Mar 2026 05:59:53 +0000
+X-UUID: 007f79fa242211f1a6de359d7043e138-20260319
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=PYvG3A9bhcpcCBRSGioZeJBjwhbqKSxm5F0PwaNR9Wc=;
+	b=Qu18c3p50oU8iJ2uh0BSGXe1SmzE7ltaX6kSw9++82kMUaxpEPaYIHt4G5XuEn9jQgXkAv/ygpaXrsfva7GoSc0JuFzLKi984FoL7O3DZf5ens9RzOTsvI9i/aFYJ1VmqrKusclNQXZ07k9BPJ2ODWYWbgYtWL/h00Po/JFbss4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.12,REQID:e3a37cdd-715f-4957-b868-c0dd1a2c8a2b,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:e7bac3a,CLOUDID:bfd1efd4-060f-4ecc-9ee0-121eeeb4a682,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
+	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
+	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 007f79fa242211f1a6de359d7043e138-20260319
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <kyrie.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1929085951; Thu, 19 Mar 2026 22:59:48 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Fri, 20 Mar 2026 13:59:45 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Fri, 20 Mar 2026 13:59:44 +0800
+From: Kyrie Wu <kyrie.wu@mediatek.com>
+To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
+	<andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, Mauro
+ Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Kyrie Wu <kyrie.wu@mediatek.com>,
+	Hans Verkuil <hverkuil@xs4all.nl>, Nicolas Dufresne
+	<nicolas.dufresne@collabora.com>, Nathan Hebert <nhebert@chromium.org>, Arnd
+ Bergmann <arnd@arndb.de>, Irui Wang <irui.wang@mediatek.com>, George Sun
+	<george.sun@mediatek.com>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: Neil Armstrong <neil.armstrong@linaro.org>, Andrzej Pietrasiewicz
+	<andrzejtp2010@gmail.com>, Yilong Zhou <yilong.zhou@mediatek.com>
+Subject: [PATCH v8 1/9] dt-bindings: media: mediatek: decoder: Add MT8189 mediatek,vcodec-decoder
+Date: Fri, 20 Mar 2026 13:59:32 +0800
+Message-ID: <20260320055940.15961-2-kyrie.wu@mediatek.com>
+X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20260320055940.15961-1-kyrie.wu@mediatek.com>
+References: <20260320055940.15961-1-kyrie.wu@mediatek.com>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Mathieu Poirier <mathieu.poirier@linaro.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Bjorn Andersson <andersson@kernel.org>, linux-mediatek@lists.infradead.org, 
- Hailong Fan <Hailong.Fan@mediatek.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Xiangzhi Tang <Xiangzhi.Tang@mediatek.com>, 
- Huayu Zong <huayu.Zong@mediatek.com>, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-remoteproc@vger.kernel.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com, 
- linux-arm-kernel@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>
-To: Xiangzhi Tang <xiangzhi.tang@mediatek.com>
-In-Reply-To: <20260320032014.13608-2-xiangzhi.tang@mediatek.com>
-References: <20260320032014.13608-1-xiangzhi.tang@mediatek.com>
- <20260320032014.13608-2-xiangzhi.tang@mediatek.com>
-Message-Id: <177398430412.27959.15021574635894371072.robh@kernel.org>
-Subject: Re: [PATCH v3 1/6] dt-bindings: remoteproc: Add VCP support for
- mt8196
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260319_222507_267868_F6AD9A84 
-X-CRM114-Status: GOOD (  11.92  )
+X-CRM114-CacheID: sfid-20260319_225952_071465_B856AA9B 
+X-CRM114-Status: GOOD (  11.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,53 +96,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Add compatible for video decoder on MT8189 platform. Compared with
+former ICs, the MT8189 decoder use iommu to instead of smmu, and
+use scp architecture, the frequency is only 406MHZ, and cannot reach
+more than 700MHZ. It uses only one clock. At the same time, the decoder
+supports the vp9 decoding protocol for the first time in single IC.
 
-On Fri, 20 Mar 2026 11:18:03 +0800, Xiangzhi Tang wrote:
-> Add the new binding document for MediaTek Video Companion
-> Processor(VCP) on MediaTek mt8196.
-> 
-> Signed-off-by: Xiangzhi Tang <xiangzhi.tang@mediatek.com>
-> ---
->  .../remoteproc/mediatek,mt8196-vcp.yaml       | 161 ++++++++++++++++++
->  1 file changed, 161 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.yaml
-> 
+Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+---
+ .../bindings/media/mediatek,vcodec-subdev-decoder.yaml       | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-My bot found errors running 'make dt_binding_check' on your patch:
-
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.yaml: patternProperties:^vcp@[a-f0-9]+$:properties:mtk,vcp-core-twohart: 'anyOf' conditional failed, one must be fixed:
-	'description' is a dependency of '$ref'
-	'/schemas/types.yaml#/definitions/uint32' does not match '^#\\/(definitions|\\$defs)\\/'
-		hint: A vendor property can have a $ref to a a $defs schema
-	hint: Vendor specific properties must have a type and description unless they have a defined, common suffix.
-	from schema $id: http://devicetree.org/meta-schemas/vendor-props.yaml
-Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.example.dts:26:18: fatal error: dt-bindings/power/mt8196-power.h: No such file or directory
-   26 |         #include <dt-bindings/power/mt8196-power.h>
-      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-compilation terminated.
-make[2]: *** [scripts/Makefile.dtbs:140: Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.example.dtb] Error 1
-make[2]: *** Waiting for unfinished jobs....
-make[1]: *** [/builds/robherring/dt-review-ci/linux/Makefile:1614: dt_binding_check] Error 2
-make: *** [Makefile:248: __sub-make] Error 2
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.kernel.org/project/devicetree/patch/20260320032014.13608-2-xiangzhi.tang@mediatek.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
+index 74e1d88d3056..ee2bbbdb2d50 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
+@@ -75,6 +75,7 @@ properties:
+       - mediatek,mt8192-vcodec-dec
+       - mediatek,mt8186-vcodec-dec
+       - mediatek,mt8188-vcodec-dec
++      - mediatek,mt8189-vcodec-dec
+       - mediatek,mt8195-vcodec-dec
+       - mediatek,mt8196-vcodec-dec
+ 
+@@ -132,11 +133,11 @@ patternProperties:
+           Refer to bindings/iommu/mediatek,iommu.yaml.
+ 
+       clocks:
+-        minItems: 4
++        minItems: 1
+         maxItems: 5
+ 
+       clock-names:
+-        minItems: 4
++        minItems: 1
+         maxItems: 5
+ 
+       assigned-clocks:
+-- 
+2.45.2
 
 
