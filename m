@@ -4,95 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4023A108B8F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2026 10:58:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06221108B91B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2026 12:38:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hR/3Iy9Wlowf1KzCMFQLQDZRWz2rtZK8yylHv0B+bZY=; b=X8ya24rFoaUsN2s1VhxREcm4HS
-	ujPmgcxFVZU/uEWaQEbjtcZeYXvKgBrKyk4C6CroA7R92ojb6c/SKAI+jZWpUJa9aSsoeL8Ld7hjG
-	HF53Mxg6rXj/3C4/B3kHnyJccFNkMt4IXwP/hHV6JbIP9k3eYsoa4Vgf1YaXRQ/s7SIgX+ZCrEkPE
-	/Ig5J9pomAJnEzXI/FFDztWyUuj6RU6gRPdES2RSjpOoQa8PUDdS/OiieMQwQGdd7f3Ne4Bka0047
-	tymrRlgW8Tl15Tm+muUAxA1LTylG1rEsvy4T4xUaTSno++4PdNAPXr9+J6o2h5MWuREJCsetZ9sUM
-	2J7OGWUQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eqvJd/tLOchy3iTRcrdUAE7UOOBzOUBXPqr7730FrsU=; b=SY8i3YdpXpk4roI2LM2p3+3w2j
+	OWZz5tgPWep/b1wXobjx5jhp8Mhga719sgZznedl9DBsTkziUr/0cAxgYnNBuyYzoTQ2leSU5SKBq
+	P2TBiU2CLAXC+yRs4Lx0sKfnu380qi41Mjnqim4g9V5KL7HfwneGtW9pKDM0fp9UrUKJK5r1P/tGU
+	LypT0AVg/iXPwjI888cb6ECK5111mnf1yJFddwCh2Xjy1NAdgcGiYQpXp7X11GZNTsbfTOsPRogsy
+	5VLr773aBOUJIszqlivhC0ZE8EhUhDt/Ox7Jyh4Kd9YpPw2q32835o0NLFbSOKN2nxUqcDmFe3CTp
+	mGm8eLVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3XYw-0000000CezL-1DK8;
-	Fri, 20 Mar 2026 10:58:42 +0000
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+	id 1w3Z76-0000000CnU7-2tKG;
+	Fri, 20 Mar 2026 12:38:04 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3XYu-0000000Cexf-26cl
-	for linux-mediatek@lists.infradead.org;
-	Fri, 20 Mar 2026 10:58:41 +0000
-Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-2addb31945aso11555575ad.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 20 Mar 2026 03:58:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1774004320; x=1774609120; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=hR/3Iy9Wlowf1KzCMFQLQDZRWz2rtZK8yylHv0B+bZY=;
-        b=LyeL/ZWcaC9ErB5JvzLdhueHd7Nt1K8XRbxn+Ul3QakWSbRcrCWONbtfOiwh8cV8aA
-         06GoiehqsVTZNUFGM2b1Ce7WSGRfyycdv9DiaGxWdwcBN9RHeA24GFHcDUUZZb9jWWWg
-         /nwelk0OliBTP9tlG7SDJuR1hTzsivKJLZ+tqhsRE2IntUNeX6kHrdflZR9jYNJkptC9
-         8a274phbJEZ4NFq5+i26m20xKiFLgH4pTRy2WyNoev8symkraebUfGmIMkfLqRH2/JYt
-         KPs0DTFQgXRph/z5vNsviSJmZY7LngVuSnyEAhlrd/f9PY4V19WkTZPVzLZV6I68/wia
-         9Eow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1774004320; x=1774609120;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=hR/3Iy9Wlowf1KzCMFQLQDZRWz2rtZK8yylHv0B+bZY=;
-        b=RnIWD6M9ZSQwMKCxhEtl+mm9Pf3fWazf7UCcUpj/z1GNJy9fxcHeUe6lcBK62fo0ag
-         54/THIAdN/CkJvRi/kCX70ip7YyMh5tfFFYl9T5WqEyC1Do1oF6w4RsXiI/Ik2du57FG
-         jj8SAe3Kdrlen7Zr+3f0mYSavZ0tv9uKnzFWfEH19lLNC6bVFEau6Tj1g13tQy9uj6tv
-         NH+5tBOMtfZ6rOeJQiDq4sVelkCc/4HUZDk1l7DPuZKVW4qBdprmJQJk51xIG6zvR72v
-         TJ7rCTazjHSl129JURYo5L0f5pOn1/4STrGazSTcmwD/8G5L8yPg7GHGhdaeWeqJTbs5
-         PuIQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWJWZWcLwE2wGU7m9NUj9y8jkQtLDuHyPVt9nT1jimbXfSYcR4OF4S35s8Wa3Mo+SkKqXDG+dpXt1fq28DYXw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxN77TuGfLa5ytRsX/ubMzNFl+0Ia07Q6CTh8ZErrXGtJgZrL63
-	ml5wkOaSN60DQaKY5GAro6bFlBzyMTZjJ5WFk+M8UJmnIxKs9xpVprIX
-X-Gm-Gg: ATEYQzw61ysG1klHaQXvXWpd7uiYJBe5Eor/rq/Fq8Ocu3ZK8nUdiA+UtmGvv3iiQxG
-	vMUbxY3uWyDkBBwam5aod5KGofMC6avgEAKeWlsM7TigJbppek0ghBX4EwQ2sdMJIuMgaooO/wC
-	GriF5hBd3GnI327EvxoztfhGc2P25QSbu4jyQBaCDANSoh6vwC5YSleHGZ1vbQNdWdOAzu329HJ
-	VyRbfNc1AMmXeUDkhEdHorY90mYaSKRhpfbxgYx9aQxgfNuGTeDHYst4Aukjl8gnZfzCl5p2Zzd
-	2zzABcVTRXlF7DfVDeg/WXvK/fkYIaxNhK1GqoW+hdb7u/aDS2QCuK3j+uSKdlDn4MHv7jGF6DR
-	X/jMCsionNu2iU1GBtmf1u65kjA9NVl50EoPh6A/BmGYHY6821VY6NT/vWHnYSM90v0+CeJH7qo
-	B82c2MqSWJsxxH42z73bfre69o50i+ClERyW419jC0rZcChDUWC4WT3bTr7RuPmZvCtDSrOOy5c
-	D0MDho=
-X-Received: by 2002:a17:902:c950:b0:2b0:60f1:de58 with SMTP id d9443c01a7336-2b0827d1a18mr23865375ad.45.1774004319672;
-        Fri, 20 Mar 2026 03:58:39 -0700 (PDT)
-Received: from buffalo-ssd.taila54753.ts.net (M014013071096.v4.enabler.ne.jp. [14.13.71.96])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2b083516eacsm25636405ad.15.2026.03.20.03.58.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 20 Mar 2026 03:58:39 -0700 (PDT)
-From: Akari Tsuyukusa <akkun11.open@gmail.com>
-To: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	sean.wang@mediatek.com
-Cc: devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Akari Tsuyukusa <akkun11.open@gmail.com>
-Subject: [PATCH v3 2/2] arm: dts: mediatek: mt6589: add basic support for Lenovo B8000-F
-Date: Fri, 20 Mar 2026 19:58:22 +0900
-Message-ID: <20260320105822.447337-3-akkun11.open@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260320105822.447337-1-akkun11.open@gmail.com>
-References: <20260320105822.447337-1-akkun11.open@gmail.com>
+	id 1w3Z75-0000000CnTm-0Kaz;
+	Fri, 20 Mar 2026 12:38:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
+	:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=eqvJd/tLOchy3iTRcrdUAE7UOOBzOUBXPqr7730FrsU=; b=puhKdIlsS+hxV1GD5cRckAohUt
+	zrKLYUBSX0sUQtV7V3RvcqSKkutvhOwAK1T1FLC+iwo4kD3paVov1KenAY/7fBMcGFgNAK3kqIIYq
+	PvEvf5C8xaYsKhIIdw9Kg6R2zG7cnByjXQS3nDXJYo0Njer8piGmeFxA+iWdCkrJGNm8wa2oF1DnH
+	ORzbLL2UNrTH2vp25mdblhbCwJ484S8J5VP4HqNMmXkGhzbjdoiOeOcTboHC1TGiH3G+3BGJKFL9S
+	brl1DoJ34CF4IILzlqrM8JUCZRwjCwsBxS3/hFLRhK2i4KbCDrISCjUg4DJL6QNN/jWnQOK7YVYZD
+	9ZOCnMzQ==;
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1w3Z70-0000000FXX3-2kAW;
+	Fri, 20 Mar 2026 12:38:00 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1774010260; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=IT1X9lb4WgUGJ3f4XpNl+vAjgAOPfWmZtyaaQKBpOo2bNLHnO9li7xmwGPEbed71lTevrox//bZlixs9FBN984eFZczlLYEM4WIULVmra1p5kiJbeAzfeyaR3+9EpM0+dc1mexIHEIAzsE50Y8+8xHLrb5luj3cIqEG8eGjs9mI=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1774010260; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=eqvJd/tLOchy3iTRcrdUAE7UOOBzOUBXPqr7730FrsU=; 
+	b=Tsh96p4MSAWs8lU7Vew0vYe69xpMVDUqTfLNPkQxKXS7edfUihiwAkVxJsh6V2PjjTIFmHWRckkaLg3KPfr2zN/wj6TGiLnVmVVE3OEwGJpeGVr0bM3yUl2z+AMzLlmilxMkVicIdJ8D63CkdTyYkufWFK4xto01O3+6AAcgmkY=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
+	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1774010260;
+	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
+	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
+	bh=eqvJd/tLOchy3iTRcrdUAE7UOOBzOUBXPqr7730FrsU=;
+	b=RMZiiDIujKB48XWmRkT8/L3xbYeJXdVQivCo4d7Qs0QuywxwSHnMQR7y/b0N3xrR
+	b9y6YbIP2cjgyLxJurJpjJI/qT5PPCyiSKM9WMUe5/C1Pp8JlZ7laavjWFqnWiFkAab
+	CZPFmG7wrmgmXQjUjPqdC844jhQy+mmiq2f4tV/s=
+Received: by mx.zohomail.com with SMTPS id 1774010258810384.6051275065198;
+	Fri, 20 Mar 2026 05:37:38 -0700 (PDT)
+Message-ID: <7d1e52c0b9c3a6d30e9db617b9bcfa23ed9046b5.camel@collabora.com>
+Subject: Re: [PATCH 3/4] arm64: dts: mediatek: add device-tree for Genio
+ 720-EVK board
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+To: David Lechner <dlechner@baylibre.com>, Greg Kroah-Hartman	
+ <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, Rob
+ Herring	 <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
+ Dooley	 <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sean
+ Wang <sean.wang@mediatek.com>
+Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
+	linux-serial@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Date: Fri, 20 Mar 2026 13:37:33 +0100
+In-Reply-To: <c2618423-2466-47bb-a8cf-7c849e7e231e@baylibre.com>
+References: <20251203-add-mediatek-genio-520-720-evk-v1-0-df794b2a30ae@collabora.com>
+	 <20251203-add-mediatek-genio-520-720-evk-v1-3-df794b2a30ae@collabora.com>
+	 <c2618423-2466-47bb-a8cf-7c849e7e231e@baylibre.com>
+Organization: Collabora Ltd
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260320_035840_550195_8ED8E2F7 
-X-CRM114-Status: GOOD (  16.33  )
+X-CRM114-CacheID: sfid-20260320_123759_157154_00BEE683 
+X-CRM114-Status: GOOD (  22.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,98 +101,184 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Lenovo YOGA Tablet 10 (Wi-Fi) - B8000-F is a tablet from the "blade"
-product family. It is powered by MediaTek MT8125 SoC, (a tablet variant
-of MT6589), and features 1GB of RAM.
+Hi David,
 
-The "blade" family consists of several variants based on screen size
-and connectivity:
-- YOGA Tablet 8 (8"): B6000-F (Wi-Fi), B6000-H/HV (3G)
-- YOGA Tablet 10 (10"): B8000-F (Wi-Fi), B8000-H (3G)
+On Thu, 2026-03-12 at 19:26 -0500, David Lechner wrote:
+> On 12/3/25 7:59 AM, Louis-Alexis Eyraud wrote:
+> > Add support for MediaTek MT8189 SoC and its variants, and a device-
+> > tree
+> > for the basic hardware enablement of the Genio 720-EVK board, based
+> > on
+> > MT8391 SoC.
+> >=20
+>=20
+> ...
+>=20
+> > +	mmc0_default_pins: mmc0-default-pins {
+> > +		pins-clk {
+> > +			pinmux =3D <PINMUX_GPIO162__FUNC_MSDC0_CLK>;
+> > +			drive-strength =3D <6>;
+> > +			bias-pull-down =3D <MTK_PUPD_SET_R1R0_10>;
+> > +		};
+> > +
+> > +		pins-cmd-dat {
+> > +			pinmux =3D
+> > <PINMUX_GPIO166__FUNC_MSDC0_DAT0>,
+> > +			=09
+> > <PINMUX_GPIO165__FUNC_MSDC0_DAT1>,
+> > +			=09
+> > <PINMUX_GPIO164__FUNC_MSDC0_DAT2>,
+> > +			=09
+> > <PINMUX_GPIO163__FUNC_MSDC0_DAT3>,
+> > +			=09
+> > <PINMUX_GPIO159__FUNC_MSDC0_DAT4>,
+> > +			=09
+> > <PINMUX_GPIO158__FUNC_MSDC0_DAT5>,
+> > +			=09
+> > <PINMUX_GPIO157__FUNC_MSDC0_DAT6>,
+> > +			=09
+> > <PINMUX_GPIO156__FUNC_MSDC0_DAT7>,
+> > +				 <PINMUX_GPIO161__FUNC_MSDC0_CMD>;
+> > +			input-enable;
+> > +			drive-strength =3D <6>;
+> > +			bias-pull-up =3D <MTK_PUPD_SET_R1R0_01>;
+> > +		};
+>=20
+> Should we also have pins-ds here to match mmc0-uhs-pins?
+>=20
+The data strobe pin is only used for the HS modes, that is why it is
+only declared for uhs state.
+No other mediatek board devicetrees have it for default state too, so I
+don't think it is needed here.
 
-This patch adds basic support, including a simple-framebuffer that
-uses the panel already initialized by the bootloader.
+> > +
+> > +		pins-rst {
+> > +			pinmux =3D
+> > <PINMUX_GPIO160__FUNC_MSDC0_RSTB>;
+> > +			drive-strength =3D <6>;
+> > +			bias-pull-up =3D <MTK_PUPD_SET_R1R0_00>;
+> > +		};
+> > +	};
+> > +
+> > +	mmc0_uhs_pins: mmc0-uhs-pins {
+> > +		pins-clk {
+> > +			pinmux =3D <PINMUX_GPIO162__FUNC_MSDC0_CLK>;
+> > +			drive-strength =3D <8>;
+> > +			bias-pull-down =3D <MTK_PUPD_SET_R1R0_10>;
+> > +		};
+> > +
+> > +		pins-cmd-dat {
+> > +			pinmux =3D
+> > <PINMUX_GPIO166__FUNC_MSDC0_DAT0>,
+> > +			=09
+> > <PINMUX_GPIO165__FUNC_MSDC0_DAT1>,
+> > +			=09
+> > <PINMUX_GPIO164__FUNC_MSDC0_DAT2>,
+> > +			=09
+> > <PINMUX_GPIO163__FUNC_MSDC0_DAT3>,
+> > +			=09
+> > <PINMUX_GPIO159__FUNC_MSDC0_DAT4>,
+> > +			=09
+> > <PINMUX_GPIO158__FUNC_MSDC0_DAT5>,
+> > +			=09
+> > <PINMUX_GPIO157__FUNC_MSDC0_DAT6>,
+> > +			=09
+> > <PINMUX_GPIO156__FUNC_MSDC0_DAT7>,
+> > +				 <PINMUX_GPIO161__FUNC_MSDC0_CMD>;
+> > +			input-enable;
+> > +			drive-strength =3D <8>;
+> > +			bias-pull-up =3D <MTK_PUPD_SET_R1R0_01>;
+> > +		};
+> > +
+> > +		pins-ds {
+> > +			pinmux =3D <PINMUX_GPIO167__FUNC_MSDC0_DSL>;
+> > +			drive-strength =3D <8>;
+> > +			bias-pull-down =3D <MTK_PUPD_SET_R1R0_10>;
+> > +		};
+> > +
+> > +		pins-rst {
+> > +			pinmux =3D
+> > <PINMUX_GPIO160__FUNC_MSDC0_RSTB>;
+> > +			bias-pull-up =3D <MTK_PUPD_SET_R1R0_00>;
+> > +		};
+> > +	};
+> > +
+> > +	mmc1_default_pins: mmc1-default-pins {
+> > +		pins-clk {
+> > +			pinmux =3D <PINMUX_GPIO169__FUNC_MSDC1_CLK>;
+> > +			drive-strength =3D <6>;
+> > +			bias-pull-down =3D <MTK_PUPD_SET_R1R0_10>;
+> > +		};
+> > +
+> > +		pins-cmd-dat {
+> > +			pinmux =3D
+> > <PINMUX_GPIO170__FUNC_MSDC1_DAT0>,
+> > +			=09
+> > <PINMUX_GPIO171__FUNC_MSDC1_DAT1>,
+> > +			=09
+> > <PINMUX_GPIO172__FUNC_MSDC1_DAT2>,
+> > +			=09
+> > <PINMUX_GPIO173__FUNC_MSDC1_DAT3>,
+> > +				 <PINMUX_GPIO168__FUNC_MSDC1_CMD>;
+> > +			input-enable;
+> > +			drive-strength =3D <6>;
+> > +			bias-pull-up =3D <MTK_PUPD_SET_R1R0_01>;
+> > +		};
+> > +
+> > +		pins-insert {
+> > +			pinmux =3D <PINMUX_GPIO2__FUNC_GPIO2>;
+> > +			bias-pull-up;
+> > +		};
+> > +	};
+> > +
+> > +	mmc1_uhs_pins: mmc1-uhs-pins {
+> > +		pins-clk {
+> > +			pinmux =3D <PINMUX_GPIO169__FUNC_MSDC1_CLK>;
+> > +			drive-strength =3D <8>;
+> > +			bias-pull-down =3D <MTK_PUPD_SET_R1R0_10>;
+> > +		};
+> > +
+> > +		pins-cmd-dat {
+> > +			pinmux =3D
+> > <PINMUX_GPIO170__FUNC_MSDC1_DAT0>,
+> > +			=09
+> > <PINMUX_GPIO171__FUNC_MSDC1_DAT1>,
+> > +			=09
+> > <PINMUX_GPIO172__FUNC_MSDC1_DAT2>,
+> > +			=09
+> > <PINMUX_GPIO173__FUNC_MSDC1_DAT3>,
+> > +				 <PINMUX_GPIO168__FUNC_MSDC1_CMD>;
+> > +			input-enable;
+> > +			drive-strength =3D <8>;
+> > +			bias-pull-up =3D <MTK_PUPD_SET_R1R0_01>;
+> > +		};
+>=20
+> Don't we also need pins-insert here? (to match mmc1-default-pins)
+>=20
+From what I've found, it was done this way for other board devicetrees
+to avoid possible reconfiguration happen for the card detection pin
+while switching to UHS and causing a switch failure.
+Also, what you declare in pinmux nodes is how the pin configuration
+should change in a specific mode and you declare only what changes, and
+not what stay the same.
 
-While many parts of this Device Tree are expected to be common across
-other "blade" family boards, they are kept within the B8000-F specific
-file for now as it is the only supported device.
+> I was having trouble with the CD input pin not working in U-Boot
+> until I added it.
+I checked and debugged this on my board and did not get that kind of
+issue, whether this pin config is not present for uhs state or if I add
+it.=20
+When inserting my sd card or when I boot with it already inserted, the
+mtk-sd driver first sets the pinctrl state to default before switching
+to ufs. The GPIO02 pin config is also OK in both states.
+The mt8189 pinctrl driver seems to apply a default config for this pin
+that is the same as the one that is set here.
 
-Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
----
-Changes in v3
-- Drop UART node
-  It was probably correct, but I'm not sure and haven't tested it
-  so I removed it.
-- Remove "mt6589-lenovo-blade.dtsi"
-  There are currently no plans to add support for variants other
-  than b8000-f, and the Device Tree is also small and there is no point
-  in dividing it, so I deleted it and merged it
-  into "mt6589-lenovo-b8000-f.dts"
+There might be u-boot particularities that could explain it fixes your
+issue.
 
- arch/arm/boot/dts/mediatek/Makefile           |  1 +
- .../dts/mediatek/mt6589-lenovo-b8000-f.dts    | 40 +++++++++++++++++++
- 2 files changed, 41 insertions(+)
- create mode 100644 arch/arm/boot/dts/mediatek/mt6589-lenovo-b8000-f.dts
-
-diff --git a/arch/arm/boot/dts/mediatek/Makefile b/arch/arm/boot/dts/mediatek/Makefile
-index 37c4cded0eae..b67b94b7cbd0 100644
---- a/arch/arm/boot/dts/mediatek/Makefile
-+++ b/arch/arm/boot/dts/mediatek/Makefile
-@@ -8,6 +8,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += \
- 	mt6582-prestigio-pmt5008-3g.dtb \
- 	mt6589-aquaris5.dtb \
- 	mt6589-fairphone-fp1.dtb \
-+	mt6589-lenovo-b8000-f.dtb \
- 	mt6592-evb.dtb \
- 	mt7623a-rfb-emmc.dtb \
- 	mt7623a-rfb-nand.dtb \
-diff --git a/arch/arm/boot/dts/mediatek/mt6589-lenovo-b8000-f.dts b/arch/arm/boot/dts/mediatek/mt6589-lenovo-b8000-f.dts
-new file mode 100644
-index 000000000000..b1f622ecf6fd
---- /dev/null
-+++ b/arch/arm/boot/dts/mediatek/mt6589-lenovo-b8000-f.dts
-@@ -0,0 +1,40 @@
-+// SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+/*
-+ * Copyright (c) 2026 Akari Tsuyukusa <akkun11.open@gmail.com>
-+ */
-+
-+/dts-v1/;
-+#include "mt6589.dtsi"
-+
-+/ {
-+	model = "Lenovo YOGA Tablet 10 (Wi-Fi)";
-+	compatible = "lenovo,b8000-f", "mediatek,mt6589";
-+
-+	chosen {
-+		framebuffer0: framebuffer@bf600000 {
-+			compatible = "simple-framebuffer";
-+			memory-region = <&framebuffer_reserved>;
-+			width = <1280>;
-+			height = <800>;
-+			stride = <(1280 * 2)>;
-+			format = "r5g6b5";
-+		};
-+	};
-+
-+	memory@80000000 {
-+		device_type = "memory";
-+		reg = <0x80000000 0x40000000>;
-+	};
-+
-+	reserved-memory {
-+		#address-cells = <1>;
-+		#size-cells = <1>;
-+
-+		ranges;
-+
-+		framebuffer_reserved: memory@bf600000{
-+			reg = <0xbf600000 0xa00000>;
-+			no-map;
-+		};
-+	};
-+};
--- 
-2.53.0
-
+Regards,
+Louis-Alexis
+>=20
+> > +	};
+> > +
 
