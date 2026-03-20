@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC9821093181
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3AA71093180
 	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2026 07:25:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,61 +12,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rt3SxBW0V55mE3ZmJ8qpfzk3BnmJicdPxBkCzXkfF2Y=; b=01piKUyl5bqSyEsZQ5VV/uDVYI
-	m4Mwz/KAyCwEPwKgyz61eUkPA+yN4q9ZLy4dv7wpYFUcmMg9qynwLQW/W8+UftckCeXUVJPA6H609
-	W5G3up4EZ6cKF0jtbz1JqvqE0dMopqdiBOOjZ8Y5LFeJnIyzw9jHoNGee+iPHmFGZU5Ujjg7Ekzdo
-	gdoP9nXqE68LfO1nfIxrGBNljgpocbaQcxuyVlJcD+lU3rhaMXAD9dPxnWPVlVoczvzj6pjCcWQgt
-	urQL0J1lsumOyBZE1JXwUTCZhbNem19KWM75JskshVwwN/Tk1DHaaCb8lCBCdT/zQ3HZCF7IfF8dT
-	WiYDQAfQ==;
+	bh=dlrekApKlUbwDKtk7HfgXJbBOeV6ri8Bu8y2Agz6uwA=; b=qGcwImzAOLzklt0lemSe95gDCb
+	9dsgyIA4XC0UCWve63utHED4Ya8+lRjDIuSIu9/iqqzPcDuvJzVQDKGZIjUK92F+Vfe/5TfTMKDuN
+	bDZuXGEt6D9A1KIUzlhsND+C0l0XUhx8RKiOn4QLT8MA0kSgTsIq0L8YmcglcoOx0iwB5/tJxDh/I
+	BRd7Q2pJqgsc5vxnxfax5FAV2TnXUZmySqxYUA0LbZp2hLHNRYHY2sHxNGu1jK5PQivLqcPhyXJev
+	8hEGq+PBbU8fhgI/vNoH+5C53YATQ+PM40aKJFVgRt+sxnelaBXVr5/KNeIvr4X64ENDz+0nlXa/a
+	6c7jrxSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3UEM-0000000CFfP-3DZL;
-	Fri, 20 Mar 2026 07:25:14 +0000
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+	id 1w3UEN-0000000CFff-05qy;
+	Fri, 20 Mar 2026 07:25:15 +0000
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3UEB-0000000CFXJ-1ri8
+	id 1w3UED-0000000CFa8-2wKr
 	for linux-mediatek@lists.infradead.org;
-	Fri, 20 Mar 2026 07:25:04 +0000
-Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-8296dabef74so1286474b3a.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 20 Mar 2026 00:25:03 -0700 (PDT)
+	Fri, 20 Mar 2026 07:25:07 +0000
+Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-82c20b9fb16so15094b3a.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 20 Mar 2026 00:25:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1773991502; x=1774596302; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1773991505; x=1774596305; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=rt3SxBW0V55mE3ZmJ8qpfzk3BnmJicdPxBkCzXkfF2Y=;
-        b=LAryY/yPSK8PzQTuyrwcHPXliAr+t3sjgK56Mfdr9minwOVQXHXOk7hEmLCTQXtYSw
-         NzACVPZT4LXIc5T749Gm42HhgLjDrpztv4A5AS6g1HToSz5pg52jfc19eXGfYis7fhNL
-         8xSqc6zw2DDmef8+iafWbj3C4uD7vv2LkH+os=
+        bh=dlrekApKlUbwDKtk7HfgXJbBOeV6ri8Bu8y2Agz6uwA=;
+        b=RlbucYwVg92I5DAwf3SsauBJFKxwqs6jKaJrt5VuJjSgOjHgr/otSMmC+JoZC3eDrZ
+         M6bsKzCTo7AigCXOmLAvZzxQmY713PVjoon6Hgd8/0oclVV3MU3KZzNlaMZDyXtWQ5B7
+         iQ776HrfELKWsPCmUl/n0J2kJzH0Kp0kti8Js=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1773991502; x=1774596302;
+        d=1e100.net; s=20251104; t=1773991505; x=1774596305;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=rt3SxBW0V55mE3ZmJ8qpfzk3BnmJicdPxBkCzXkfF2Y=;
-        b=CDTRxrossMkHrsvTi0Nhrg3rZ0w+o2W8ii/mKDuWly3AeStSnfTa2xholb6Ay8wXsG
-         bnFOZn/40ae8h/fxl/sSn95qARWKuVIDRbI0c5vIOSagrSE49iNRC8LaSUBY57bjnqzX
-         dwHdixYbUSv3Nd3ABFoiu/Limpx4IIGesBE7Kfrxm5JBoiVQTZO6+sAekchB0XXNnKTC
-         TqYZmbKmV8ZFzB0Mw6b70flThTBT8LuhhxLg0LSJ0HZSkEXYrin0bRW2xvVATKbSa7U+
-         8wBcKyH4OFSGAOy/8aypE7dPUC/FgqfjkOUZnBq7pcN5rtn7D38DEZ9dTt+T1XDunL96
-         g3Eg==
-X-Forwarded-Encrypted: i=1; AJvYcCXMzSt2avSIzrgkp9eK5wwLGVsYZLEvu8FL3htEB3xpWchINDSzzWP7J/oEOUWzTSNW9UB2HcH8OM0tlS0adg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyKq+IRZtmLyKByVUSAyrV1gNgHcyYMHUD1DbzaFAVOoqdJt6xw
-	XAOOPn1lImlfYwlnOpRAXV75V0aRRuflbkotrpOI/ldK89LHJrXm6HaNp3kZBU1hFg==
-X-Gm-Gg: ATEYQzwR9I580CHtEkGVwDWlfAMGt6EDrAvneEmVhdZuRQ5hBooX3ILmti+Pj8YQdQ7
-	6uo90/f0fBnCtzWnqTVhC8YQoVf0/w0ZxWrkfaxDhB7mpxSA0VSE8U6f7zyKMnwrXkp/RX8rxiS
-	h4STYX4RGJrzJEEzc5avj/OMhU/ufI83XV3+wt+FYAYoT85jd5NVE+SSonpX2kyw/t4VfveHAPw
-	vsiPLzAeoDI8HzZpmqzDyJHeN0sYQNZPZodnOLtO/EukkVhtIpeb0ZgaAS15KZVb7ODLm1gNkRy
-	aNcvXso3uaU6htKa40Kpfs30QAXZJvMSBAG9YvifikuTdhsomGG470zLF7MccrV3zGruxRR2FGg
-	rkZeWD+A/B2Q11B6xfSU2RKnWzjZzCDN9tIHvdUw7NaWaPTMs6RESKzFL6W92ZOvEsvlQCdjZZF
-	TFKcX7qvMPWWj01NHVYcafc/Z2hyruFp+5Ll5XHToDeGZIc2bF2YdLOvKmf6omTqhwS2Cf5O51q
-	wkdXXZr
-X-Received: by 2002:a05:6a00:2c95:b0:829:924c:348b with SMTP id d2e1a72fcca58-82a8c337596mr1620097b3a.45.1773991502417;
-        Fri, 20 Mar 2026 00:25:02 -0700 (PDT)
+        bh=dlrekApKlUbwDKtk7HfgXJbBOeV6ri8Bu8y2Agz6uwA=;
+        b=J7iVvHCLLXQsspjT1bU+lCuSjyJLEbqbNfOJlJsZFF7IP+Gp9cjeNtnqnUmzStfLQ+
+         DIN/dPYDX6gnnf8yBF7TYWj9/+x8eCkQ2RU1DrbWaLlZqPFvbF8SofsBdtPZnKrr3gMm
+         zisyMWF63EzwUcwZygb4Eql9uYMgnInYu5AToJiAh2Xgdt/WAzsmy7EBav/csPQ+oF2d
+         8KrxQ+x/aS218poHasHqx/qOzsMdWqFOnj+4sWCvf0Bz0plKOgx/o7trOxa4gj5B55wg
+         oXMvnASSqynZN2o28+Cs4SZn1DlbZHc/top+bHz0IjxHMH0SdFwKw6zg0LrsG14WFv7Q
+         Fhtg==
+X-Forwarded-Encrypted: i=1; AJvYcCXPYgUq2vYtU9CKGy0Rnw265zknsmq8ZUD0YwuPRcaG/G/sLE/vFBv96WXpXqQSLoIkmH3M9RSOENYYZMuWDw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyPkXkscrPp0/yBfbouXnufOZSgvXISS1CbWNpiLKuHkkcze5z4
+	brppopXmNW9Ub4dQysfCgCm1CwNYCfq1eObQUWza65hgawM6CFv1vlsBjWqWTmphYA==
+X-Gm-Gg: ATEYQzyjIij7CGPji4Yog7ZWEnI5Eum8s7YFCrXMP9dNfWd0Mr7ThIY0M06Tk00TMGB
+	InAWPlpndWGRRZ1eVFYTgijNsR1Fd6brxxynC2V89tq+FlS4eRFSmuNyTzUxGC9eMiv/cWm3pw4
+	ytpkamRYTBp2QTJ6nbTOr7BJCohbC08Kff7eXt55gLuEkwvdyMR3DGxUvJoy/ve/61HVNrbHoL+
+	afPw5gOObkxUdCWNPK+om8yDmLFYwZ0Q/RhGN04vqQC3NLk1LngxsF74DsajLT2a6su4IGFtz9b
+	cBR0yfZLw84cCF0MIb0Gd6OXwCMiMn7Mrz4dTDaNGavqBR0SFkTHXQ2Em9qTl9rtwLWfABXAVEh
+	N/zT/q+kBbTG0pWaVBsRV5I8CAVxc+Lr+TrXg1MEsoy/dGpwTQ7u/+lp5Wa+6p0oQ5vVwbYikPG
+	o96boU0hkHelTGtIruR976mFtudCPRZ2jbMQU74eTFx+pF3IDFijfAdUqJpFPonIV9ojFaU8ZeF
+	areQW6Jhwp3ExByo+I=
+X-Received: by 2002:a05:6a00:440e:b0:82a:8163:4c00 with SMTP id d2e1a72fcca58-82a8c251943mr1530228b3a.2.1773991504904;
+        Fri, 20 Mar 2026 00:25:04 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:9cdf:e932:6f2f:c654])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-82b04222f42sm1452447b3a.61.2026.03.20.00.25.00
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-82b04222f42sm1452447b3a.61.2026.03.20.00.25.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 20 Mar 2026 00:25:01 -0700 (PDT)
+        Fri, 20 Mar 2026 00:25:04 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Mark Brown <broonie@kernel.org>,
 	Liam Girdwood <lgirdwood@gmail.com>,
@@ -79,18 +79,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	devicetree@vger.kernel.org
-Subject: [PATCH 3/5] regulator: dt-bindings: mt6359: Add regulator supplies
-Date: Fri, 20 Mar 2026 15:24:36 +0800
-Message-ID: <20260320072440.2403318-4-wenst@chromium.org>
+Subject: [PATCH 4/5] regulator: mt6359: Drop bogus vcn33_[12]_* split regulators
+Date: Fri, 20 Mar 2026 15:24:37 +0800
+Message-ID: <20260320072440.2403318-5-wenst@chromium.org>
 X-Mailer: git-send-email 2.53.0.959.g497ff81fa9-goog
 In-Reply-To: <20260320072440.2403318-1-wenst@chromium.org>
 References: <20260320072440.2403318-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260320_002503_483948_F59390FF 
-X-CRM114-Status: UNSURE (   9.76  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260320_002505_753320_9BE25C0E 
+X-CRM114-Status: GOOD (  20.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,66 +104,234 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On the MT6359 each buck regulator has a separate supply. LDOs are split
-into 4 groups with independent supplies. There is also a supply for the
-buck regulator control logic.
+vcn33_[12]_bt and vcn33_[12]_wifi refer to the same output. There are
+two enable bits in the registers so that BT and WiFi drivers can toggle
+them separately without any coordination. If either bit is set, then the
+regulator output is enabled.
 
-Add descriptions for all of them.
+Unfortunately some of them are already referenced by in-tree device
+trees. To keep backward compatibility with them, keep the vcn33_*_bt
+regulator, and drop vcn33_*_wifi. Sync the enable bit from vcn33_*_wifi
+to vcn33_*_bt at probe time, and clear the enable bit for vcn33_*_wifi.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- .../bindings/regulator/mt6359-regulator.yaml  | 38 +++++++++++++++++++
- 1 file changed, 38 insertions(+)
+ drivers/regulator/mt6359-regulator.c       | 120 +++++++++++++++------
+ include/linux/regulator/mt6359-regulator.h |   6 +-
+ 2 files changed, 92 insertions(+), 34 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml b/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml
-index f307a7ed30ac..faa0ccc9189d 100644
---- a/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml
-+++ b/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml
-@@ -14,6 +14,44 @@ description: |
-   according to its regulator type, buck_<name> and ldo_<name>.
-   MT6359 regulators node should be sub node of the MT6397 MFD node.
+diff --git a/drivers/regulator/mt6359-regulator.c b/drivers/regulator/mt6359-regulator.c
+index c8a788858824..dd3063949fb0 100644
+--- a/drivers/regulator/mt6359-regulator.c
++++ b/drivers/regulator/mt6359-regulator.c
+@@ -589,18 +589,13 @@ static struct mt6359_regulator_info mt6359_regulators[] = {
+ 		   MT6359_DA_VCN13_B_EN_ADDR, MT6359_RG_VCN13_VOSEL_ADDR,
+ 		   MT6359_RG_VCN13_VOSEL_MASK << MT6359_RG_VCN13_VOSEL_SHIFT,
+ 		   240),
+-	MT6359_LDO("ldo_vcn33_1_bt", VCN33_1_BT, vcn33_voltages,
++	/* name has "_bt" for backward compatibility */
++	MT6359_LDO("ldo_vcn33_1_bt", VCN33_1, vcn33_voltages,
+ 		   MT6359_RG_LDO_VCN33_1_EN_0_ADDR,
+ 		   MT6359_RG_LDO_VCN33_1_EN_0_SHIFT,
+ 		   MT6359_DA_VCN33_1_B_EN_ADDR, MT6359_RG_VCN33_1_VOSEL_ADDR,
+ 		   MT6359_RG_VCN33_1_VOSEL_MASK <<
+ 		   MT6359_RG_VCN33_1_VOSEL_SHIFT, 240),
+-	MT6359_LDO("ldo_vcn33_1_wifi", VCN33_1_WIFI, vcn33_voltages,
+-		   MT6359_RG_LDO_VCN33_1_EN_1_ADDR,
+-		   MT6359_RG_LDO_VCN33_1_EN_1_SHIFT,
+-		   MT6359_DA_VCN33_1_B_EN_ADDR, MT6359_RG_VCN33_1_VOSEL_ADDR,
+-		   MT6359_RG_VCN33_1_VOSEL_MASK <<
+-		   MT6359_RG_VCN33_1_VOSEL_SHIFT, 240),
+ 	MT6359_REG_FIXED("ldo_vaux18", VAUX18, MT6359_RG_LDO_VAUX18_EN_ADDR,
+ 			 MT6359_DA_VAUX18_B_EN_ADDR, 1800000),
+ 	MT6359_LDO_LINEAR("ldo_vsram_others", VSRAM_OTHERS, 500000, 1293750,
+@@ -637,18 +632,13 @@ static struct mt6359_regulator_info mt6359_regulators[] = {
+ 		   MT6359_DA_VEMC_B_EN_ADDR, MT6359_RG_VEMC_VOSEL_ADDR,
+ 		   MT6359_RG_VEMC_VOSEL_MASK << MT6359_RG_VEMC_VOSEL_SHIFT,
+ 		   240),
+-	MT6359_LDO("ldo_vcn33_2_bt", VCN33_2_BT, vcn33_voltages,
++	/* name has "_bt" for backward compatibility */
++	MT6359_LDO("ldo_vcn33_2_bt", VCN33_2, vcn33_voltages,
+ 		   MT6359_RG_LDO_VCN33_2_EN_0_ADDR,
+ 		   MT6359_RG_LDO_VCN33_2_EN_0_SHIFT,
+ 		   MT6359_DA_VCN33_2_B_EN_ADDR, MT6359_RG_VCN33_2_VOSEL_ADDR,
+ 		   MT6359_RG_VCN33_2_VOSEL_MASK <<
+ 		   MT6359_RG_VCN33_2_VOSEL_SHIFT, 240),
+-	MT6359_LDO("ldo_vcn33_2_wifi", VCN33_2_WIFI, vcn33_voltages,
+-		   MT6359_RG_LDO_VCN33_2_EN_1_ADDR,
+-		   MT6359_RG_LDO_VCN33_2_EN_1_SHIFT,
+-		   MT6359_DA_VCN33_2_B_EN_ADDR, MT6359_RG_VCN33_2_VOSEL_ADDR,
+-		   MT6359_RG_VCN33_2_VOSEL_MASK <<
+-		   MT6359_RG_VCN33_2_VOSEL_SHIFT, 240),
+ 	MT6359_LDO("ldo_va12", VA12, va12_voltages,
+ 		   MT6359_RG_LDO_VA12_EN_ADDR, MT6359_RG_LDO_VA12_EN_SHIFT,
+ 		   MT6359_DA_VA12_B_EN_ADDR, MT6359_RG_VA12_VOSEL_ADDR,
+@@ -827,18 +817,13 @@ static struct mt6359_regulator_info mt6359p_regulators[] = {
+ 		   MT6359P_DA_VCN13_B_EN_ADDR, MT6359P_RG_VCN13_VOSEL_ADDR,
+ 		   MT6359_RG_VCN13_VOSEL_MASK << MT6359_RG_VCN13_VOSEL_SHIFT,
+ 		   240),
+-	MT6359_LDO("ldo_vcn33_1_bt", VCN33_1_BT, vcn33_voltages,
++	/* name has "_bt" for backward compatibility */
++	MT6359_LDO("ldo_vcn33_1_bt", VCN33_1, vcn33_voltages,
+ 		   MT6359P_RG_LDO_VCN33_1_EN_0_ADDR,
+ 		   MT6359_RG_LDO_VCN33_1_EN_0_SHIFT,
+ 		   MT6359P_DA_VCN33_1_B_EN_ADDR, MT6359P_RG_VCN33_1_VOSEL_ADDR,
+ 		   MT6359_RG_VCN33_1_VOSEL_MASK <<
+ 		   MT6359_RG_VCN33_1_VOSEL_SHIFT, 240),
+-	MT6359_LDO("ldo_vcn33_1_wifi", VCN33_1_WIFI, vcn33_voltages,
+-		   MT6359P_RG_LDO_VCN33_1_EN_1_ADDR,
+-		   MT6359P_RG_LDO_VCN33_1_EN_1_SHIFT,
+-		   MT6359P_DA_VCN33_1_B_EN_ADDR, MT6359P_RG_VCN33_1_VOSEL_ADDR,
+-		   MT6359_RG_VCN33_1_VOSEL_MASK <<
+-		   MT6359_RG_VCN33_1_VOSEL_SHIFT, 240),
+ 	MT6359_REG_FIXED("ldo_vaux18", VAUX18, MT6359P_RG_LDO_VAUX18_EN_ADDR,
+ 			 MT6359P_DA_VAUX18_B_EN_ADDR, 1800000),
+ 	MT6359_LDO_LINEAR("ldo_vsram_others", VSRAM_OTHERS, 500000, 1293750,
+@@ -877,18 +862,13 @@ static struct mt6359_regulator_info mt6359p_regulators[] = {
+ 		     MT6359P_RG_LDO_VEMC_VOSEL_0_ADDR,
+ 		     MT6359P_RG_LDO_VEMC_VOSEL_0_MASK <<
+ 		     MT6359P_RG_LDO_VEMC_VOSEL_0_SHIFT),
+-	MT6359_LDO("ldo_vcn33_2_bt", VCN33_2_BT, vcn33_voltages,
++	/* name has "_bt" for backward compatibility */
++	MT6359_LDO("ldo_vcn33_2_bt", VCN33_2, vcn33_voltages,
+ 		   MT6359P_RG_LDO_VCN33_2_EN_0_ADDR,
+ 		   MT6359P_RG_LDO_VCN33_2_EN_0_SHIFT,
+ 		   MT6359P_DA_VCN33_2_B_EN_ADDR, MT6359P_RG_VCN33_2_VOSEL_ADDR,
+ 		   MT6359_RG_VCN33_2_VOSEL_MASK <<
+ 		   MT6359_RG_VCN33_2_VOSEL_SHIFT, 240),
+-	MT6359_LDO("ldo_vcn33_2_wifi", VCN33_2_WIFI, vcn33_voltages,
+-		   MT6359P_RG_LDO_VCN33_2_EN_1_ADDR,
+-		   MT6359_RG_LDO_VCN33_2_EN_1_SHIFT,
+-		   MT6359P_DA_VCN33_2_B_EN_ADDR, MT6359P_RG_VCN33_2_VOSEL_ADDR,
+-		   MT6359_RG_VCN33_2_VOSEL_MASK <<
+-		   MT6359_RG_VCN33_2_VOSEL_SHIFT, 240),
+ 	MT6359_LDO("ldo_va12", VA12, va12_voltages,
+ 		   MT6359P_RG_LDO_VA12_EN_ADDR, MT6359P_RG_LDO_VA12_EN_SHIFT,
+ 		   MT6359P_DA_VA12_B_EN_ADDR, MT6359P_RG_VA12_VOSEL_ADDR,
+@@ -945,6 +925,83 @@ static struct mt6359_regulator_info mt6359p_regulators[] = {
+ 			  MT6359_RG_LDO_VSRAM_OTHERS_SSHUB_VOSEL_SHIFT),
+ };
  
-+properties:
-+  vsmps-supply:
-+    description: Supply for buck regulator control logic
-+  vsys-ldo1-supply:
-+    description: Supply for LDOs vcn33_1_bt, vcn33_2_bt, vio28, vfe28, vibr
-+  vsys-ldo2-supply:
-+    description: Supply for LDOs va09, vaux18, vbif28, vxo22, vrfck, vrfck_1,
-+      vemc, vsim1, vsim2, vusb
-+  vsys-vcore-supply:
-+    description: Supply for buck regulator vcore
-+  vsys-vgpu11-supply:
-+    description: Supply for buck regulator vgpu11
-+  vsys-vmodem-supply:
-+    description: Supply for buck regulator vmodem
-+  vsys-vpa-supply:
-+    description: Supply for buck regulator vpa
-+  vsys-vproc1-supply:
-+    description: Supply for buck regulator vproc1
-+  vsys-vproc2-supply:
-+    description: Supply for buck regulator vproc2
-+  vsys-vpu-supply:
-+    description: Supply for buck regulator vpu
-+  vsys-vs1-supply:
-+    description: Supply for buck regulator vs1
-+  vsys-vs2-supply:
-+    description: Supply for buck regulator vs2
-+  vs1-ldo1-supply:
-+    description: Supply for LDOs vaud18, vcamio, vm18, vufs
-+  vs1-ldo2-supply:
-+    description: Supply for LDOs vcn18, vefuse, vio18, vrf18
-+  vs2-ldo1-supply:
-+    description:
-+      Supply for LDOs vsram_proc1, vsram_proc2, vsram_others, vsram_md
-+  vs2-ldo2-supply:
-+    description: Supply for LDOs va09, va12, vcn13, vrf12
-+  vio18-supply:
-+    description: Supply internally routed from LDO vio18 output
++struct mt6359_vcn33_regs {
++	u32 wifi_en_reg;
++	u32 wifi_en_mask;
++	u32 bt_en_reg;
++	u32 bt_en_mask;
++};
 +
- patternProperties:
-   "^buck_v(s1|gpu11|modem|pu|core|s2|pa|proc2|proc1|core_sshub)$":
-     type: object
++static const struct mt6359_vcn33_regs vcn33_regs[][2] = {
++	{ /* MT6359 */
++		{
++			.wifi_en_reg = MT6359_RG_LDO_VCN33_1_EN_1_ADDR,
++			.wifi_en_mask = BIT(MT6359_RG_LDO_VCN33_1_EN_1_SHIFT),
++			.bt_en_reg = MT6359_RG_LDO_VCN33_1_EN_0_ADDR,
++			.bt_en_mask = BIT(MT6359_RG_LDO_VCN33_1_EN_0_SHIFT),
++		}, {
++			.wifi_en_reg = MT6359_RG_LDO_VCN33_2_EN_1_ADDR,
++			.wifi_en_mask = BIT(MT6359_RG_LDO_VCN33_2_EN_1_SHIFT),
++			.bt_en_reg = MT6359_RG_LDO_VCN33_2_EN_0_ADDR,
++			.bt_en_mask = BIT(MT6359_RG_LDO_VCN33_2_EN_0_SHIFT),
++		}
++	}, { /* MT6359P */
++		{
++			.wifi_en_reg = MT6359P_RG_LDO_VCN33_1_EN_1_ADDR,
++			.wifi_en_mask = BIT(MT6359P_RG_LDO_VCN33_1_EN_1_SHIFT),
++			.bt_en_reg = MT6359P_RG_LDO_VCN33_1_EN_0_ADDR,
++			.bt_en_mask = BIT(MT6359_RG_LDO_VCN33_1_EN_0_SHIFT),
++		}, {
++			.wifi_en_reg = MT6359P_RG_LDO_VCN33_2_EN_1_ADDR,
++			.wifi_en_mask = BIT(MT6359_RG_LDO_VCN33_2_EN_1_SHIFT),
++			.bt_en_reg = MT6359P_RG_LDO_VCN33_2_EN_0_ADDR,
++			.bt_en_mask = BIT(MT6359P_RG_LDO_VCN33_2_EN_0_SHIFT),
++		}
++	}
++};
++
++static int mt6359_sync_vcn33_setting(struct device *dev, unsigned int idx)
++{
++	struct mt6397_chip *mt6397 = dev_get_drvdata(dev->parent);
++	unsigned int val;
++	int ret;
++
++	/*
++	 * VCN33_[12]_WIFI and VCN33_[12]_BT are two separate enable bits for
++	 * the same regulator. They share the same voltage setting and output
++	 * pin. Instead of having two potentially conflicting regulators, just
++	 * have one regulator. Sync the two enable bits and only use one in
++	 * the regulator device.
++	 */
++	for (unsigned int i = 0; i < ARRAY_SIZE(vcn33_regs[0]); i++) {
++		u32 bt_en_mask = vcn33_regs[idx][i].bt_en_mask;
++		u32 wifi_en_mask = vcn33_regs[idx][i].wifi_en_mask;
++
++		ret = regmap_read(mt6397->regmap, vcn33_regs[idx][i].wifi_en_reg, &val);
++		if (ret)
++			return dev_err_probe(dev, ret, "Failed to read VCN33_%u_WIFI setting\n", i);
++
++		if (!(val & wifi_en_mask))
++			continue;
++
++		/* Sync VCN33_[12]_WIFI enable status to VCN33_[12]_BT */
++		ret = regmap_update_bits(mt6397->regmap, vcn33_regs[idx][i].bt_en_reg,
++					 bt_en_mask, bt_en_mask);
++		if (ret)
++			return dev_err_probe(dev, ret,
++					     "Failed to sync VCN33_%u_WIFI setting to VCN33_%u_BT\n",
++					     i, i);
++
++		/* Disable VCN33_[12]_WIFI */
++		ret = regmap_update_bits(mt6397->regmap, vcn33_regs[idx][i].wifi_en_reg,
++					 wifi_en_mask, 0);
++		if (ret)
++			return dev_err_probe(dev, ret, "Failed to disable VCN33_%u_WIFI\n", i);
++	}
++
++	return 0;
++}
++
+ static int mt6359_regulator_probe(struct platform_device *pdev)
+ {
+ 	struct mt6397_chip *mt6397 = dev_get_drvdata(pdev->dev.parent);
+@@ -957,10 +1014,13 @@ static int mt6359_regulator_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		return ret;
+ 
+-	if (hw_ver >= MT6359P_CHIP_VER)
++	if (hw_ver >= MT6359P_CHIP_VER) {
+ 		mt6359_info = mt6359p_regulators;
+-	else
++		mt6359_sync_vcn33_setting(&pdev->dev, 1);
++	} else {
+ 		mt6359_info = mt6359_regulators;
++		mt6359_sync_vcn33_setting(&pdev->dev, 0);
++	}
+ 
+ 	config.dev = mt6397->dev;
+ 	config.regmap = mt6397->regmap;
+diff --git a/include/linux/regulator/mt6359-regulator.h b/include/linux/regulator/mt6359-regulator.h
+index 6d6e5a58f482..d78ff174761f 100644
+--- a/include/linux/regulator/mt6359-regulator.h
++++ b/include/linux/regulator/mt6359-regulator.h
+@@ -29,8 +29,7 @@ enum {
+ 	MT6359_ID_VCN18,
+ 	MT6359_ID_VFE28,
+ 	MT6359_ID_VCN13,
+-	MT6359_ID_VCN33_1_BT,
+-	MT6359_ID_VCN33_1_WIFI,
++	MT6359_ID_VCN33_1,
+ 	MT6359_ID_VAUX18,
+ 	MT6359_ID_VSRAM_OTHERS,
+ 	MT6359_ID_VEFUSE,
+@@ -39,8 +38,7 @@ enum {
+ 	MT6359_ID_VBIF28,
+ 	MT6359_ID_VIO28,
+ 	MT6359_ID_VEMC,
+-	MT6359_ID_VCN33_2_BT,
+-	MT6359_ID_VCN33_2_WIFI,
++	MT6359_ID_VCN33_2,
+ 	MT6359_ID_VA12,
+ 	MT6359_ID_VA09,
+ 	MT6359_ID_VRF18,
 -- 
 2.53.0.959.g497ff81fa9-goog
 
