@@ -4,89 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06221108B91B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2026 12:38:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47FEA1098782
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2026 13:10:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eqvJd/tLOchy3iTRcrdUAE7UOOBzOUBXPqr7730FrsU=; b=SY8i3YdpXpk4roI2LM2p3+3w2j
-	OWZz5tgPWep/b1wXobjx5jhp8Mhga719sgZznedl9DBsTkziUr/0cAxgYnNBuyYzoTQ2leSU5SKBq
-	P2TBiU2CLAXC+yRs4Lx0sKfnu380qi41Mjnqim4g9V5KL7HfwneGtW9pKDM0fp9UrUKJK5r1P/tGU
-	LypT0AVg/iXPwjI888cb6ECK5111mnf1yJFddwCh2Xjy1NAdgcGiYQpXp7X11GZNTsbfTOsPRogsy
-	5VLr773aBOUJIszqlivhC0ZE8EhUhDt/Ox7Jyh4Kd9YpPw2q32835o0NLFbSOKN2nxUqcDmFe3CTp
-	mGm8eLVQ==;
+	bh=ifATUcW7DWuBHecdArq6aT4AJccdVJ7KXJNjJs6AB/M=; b=tZvvztATPtTdWHIeQSigmUs+8P
+	M4WcaO3y3eP7lD2GNy07nvG4l9poM2u9z6pMQZgfXqUi7Iv8YoeXoC1LT9SMkQZeSINhd5Fz+R6If
+	zoYzY5IYRO0AWB/MlTmu6SYj4ergpFmsF8UDPWqxTUd2q5RKjM70ae4Du7u6cnIbs3tXTkkW9xSu/
+	5ZzqS1HODCbuUIjzdbsGxENlyVgPs3HRxJhPPanmRRhlYdS4LeA4zyPdpGawCrDEqZmGPSrTPC81R
+	ULtAWmxqDDSUZN1kTPFVdSnRyjG00VXWWSnThuh0VgsTLkUZT7ZgtJ5tXNTzUPc5l1r6pnjIJiLPT
+	8eBRhVAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3Z76-0000000CnU7-2tKG;
-	Fri, 20 Mar 2026 12:38:04 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1w3ZcV-0000000CpaF-3dkN;
+	Fri, 20 Mar 2026 13:10:31 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3Z75-0000000CnTm-0Kaz;
-	Fri, 20 Mar 2026 12:38:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
-	:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=eqvJd/tLOchy3iTRcrdUAE7UOOBzOUBXPqr7730FrsU=; b=puhKdIlsS+hxV1GD5cRckAohUt
-	zrKLYUBSX0sUQtV7V3RvcqSKkutvhOwAK1T1FLC+iwo4kD3paVov1KenAY/7fBMcGFgNAK3kqIIYq
-	PvEvf5C8xaYsKhIIdw9Kg6R2zG7cnByjXQS3nDXJYo0Njer8piGmeFxA+iWdCkrJGNm8wa2oF1DnH
-	ORzbLL2UNrTH2vp25mdblhbCwJ484S8J5VP4HqNMmXkGhzbjdoiOeOcTboHC1TGiH3G+3BGJKFL9S
-	brl1DoJ34CF4IILzlqrM8JUCZRwjCwsBxS3/hFLRhK2i4KbCDrISCjUg4DJL6QNN/jWnQOK7YVYZD
-	9ZOCnMzQ==;
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3Z70-0000000FXX3-2kAW;
-	Fri, 20 Mar 2026 12:38:00 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1774010260; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=IT1X9lb4WgUGJ3f4XpNl+vAjgAOPfWmZtyaaQKBpOo2bNLHnO9li7xmwGPEbed71lTevrox//bZlixs9FBN984eFZczlLYEM4WIULVmra1p5kiJbeAzfeyaR3+9EpM0+dc1mexIHEIAzsE50Y8+8xHLrb5luj3cIqEG8eGjs9mI=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1774010260; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=eqvJd/tLOchy3iTRcrdUAE7UOOBzOUBXPqr7730FrsU=; 
-	b=Tsh96p4MSAWs8lU7Vew0vYe69xpMVDUqTfLNPkQxKXS7edfUihiwAkVxJsh6V2PjjTIFmHWRckkaLg3KPfr2zN/wj6TGiLnVmVVE3OEwGJpeGVr0bM3yUl2z+AMzLlmilxMkVicIdJ8D63CkdTyYkufWFK4xto01O3+6AAcgmkY=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
-	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1774010260;
-	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=eqvJd/tLOchy3iTRcrdUAE7UOOBzOUBXPqr7730FrsU=;
-	b=RMZiiDIujKB48XWmRkT8/L3xbYeJXdVQivCo4d7Qs0QuywxwSHnMQR7y/b0N3xrR
-	b9y6YbIP2cjgyLxJurJpjJI/qT5PPCyiSKM9WMUe5/C1Pp8JlZ7laavjWFqnWiFkAab
-	CZPFmG7wrmgmXQjUjPqdC844jhQy+mmiq2f4tV/s=
-Received: by mx.zohomail.com with SMTPS id 1774010258810384.6051275065198;
-	Fri, 20 Mar 2026 05:37:38 -0700 (PDT)
-Message-ID: <7d1e52c0b9c3a6d30e9db617b9bcfa23ed9046b5.camel@collabora.com>
-Subject: Re: [PATCH 3/4] arm64: dts: mediatek: add device-tree for Genio
- 720-EVK board
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-To: David Lechner <dlechner@baylibre.com>, Greg Kroah-Hartman	
- <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, Rob
- Herring	 <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
- Dooley	 <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sean
- Wang <sean.wang@mediatek.com>
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
-	linux-serial@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Date: Fri, 20 Mar 2026 13:37:33 +0100
-In-Reply-To: <c2618423-2466-47bb-a8cf-7c849e7e231e@baylibre.com>
-References: <20251203-add-mediatek-genio-520-720-evk-v1-0-df794b2a30ae@collabora.com>
-	 <20251203-add-mediatek-genio-520-720-evk-v1-3-df794b2a30ae@collabora.com>
-	 <c2618423-2466-47bb-a8cf-7c849e7e231e@baylibre.com>
-Organization: Collabora Ltd
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+	id 1w3ZcR-0000000CpZO-0kTy;
+	Fri, 20 Mar 2026 13:10:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1774012223;
+	bh=ifATUcW7DWuBHecdArq6aT4AJccdVJ7KXJNjJs6AB/M=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=NYXT4OKDxR71XnYfyMTBSqcjqtlVrKQU/gxxxeVDFU/pOAT797efWm2A3UmvCHbyy
+	 oitbB5r1aRUey51OdrvwfhhGIoNgB/QaOT5ThKHY/Bo1aXjkUePb0PpnO0RZHqWFa8
+	 j5krSyz9N0rogyqUsguBnwFLHi+1ZnuDoplaxAtCNs8+M+01G+7ULGMcEmJhycoaur
+	 Nsh/Vr34voZFlJjpl7UmlU70cDJMOq6/X8Al1VNQ24k0glZCTcn5Y+tJarMf0PmHlf
+	 UOG/NXTAZQH721kEtgRWZXk8Hv3xdRzYWhxrk0pH7Eoix3f5WGxaYS1gnbS4Koihsx
+	 DNbAQyW+8Mn0Q==
+Received: from [IPv6:2606:6d00:11:b76d::5ac] (unknown [IPv6:2606:6d00:11:b76d::5ac])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 38B0117E0280;
+	Fri, 20 Mar 2026 14:10:20 +0100 (CET)
+Message-ID: <38e0241fe56f9d3af2de57b6380368fdcf5acc64.camel@collabora.com>
+Subject: Re: [PATCH v8 0/9] Enable video decoder & encoder for MT8189
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Kyrie Wu <kyrie.wu@mediatek.com>, Yunfei Dong
+ <yunfei.dong@mediatek.com>,  Irui Wang <irui.wang@mediatek.com>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>, Andrzej Pietrasiewicz	
+ <andrzejtp2010@gmail.com>, Yilong Zhou <yilong.zhou@mediatek.com>, Tiffany
+ Lin	 <tiffany.lin@mediatek.com>, Andrew-CT Chen
+ <andrew-ct.chen@mediatek.com>,  Mauro Carvalho Chehab	
+ <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski	
+ <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger	
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
+ <angelogioacchino.delregno@collabora.com>, Hans Verkuil
+ <hverkuil@xs4all.nl>,  Nathan Hebert <nhebert@chromium.org>, Arnd Bergmann
+ <arnd@arndb.de>, George Sun <george.sun@mediatek.com>, 
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel	
+ <linux-kernel@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Date: Fri, 20 Mar 2026 09:10:17 -0400
+In-Reply-To: <20260320055940.15961-1-kyrie.wu@mediatek.com>
+References: <20260320055940.15961-1-kyrie.wu@mediatek.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-67RujEEiCsWXeIp1gjT6"
 User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260320_123759_157154_00BEE683 
-X-CRM114-Status: GOOD (  22.52  )
+X-CRM114-CacheID: sfid-20260320_061028_027112_EAC486DE 
+X-CRM114-Status: GOOD (  14.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,184 +99,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi David,
 
-On Thu, 2026-03-12 at 19:26 -0500, David Lechner wrote:
-> On 12/3/25 7:59 AM, Louis-Alexis Eyraud wrote:
-> > Add support for MediaTek MT8189 SoC and its variants, and a device-
-> > tree
-> > for the basic hardware enablement of the Genio 720-EVK board, based
-> > on
-> > MT8391 SoC.
-> >=20
->=20
-> ...
->=20
-> > +	mmc0_default_pins: mmc0-default-pins {
-> > +		pins-clk {
-> > +			pinmux =3D <PINMUX_GPIO162__FUNC_MSDC0_CLK>;
-> > +			drive-strength =3D <6>;
-> > +			bias-pull-down =3D <MTK_PUPD_SET_R1R0_10>;
-> > +		};
-> > +
-> > +		pins-cmd-dat {
-> > +			pinmux =3D
-> > <PINMUX_GPIO166__FUNC_MSDC0_DAT0>,
-> > +			=09
-> > <PINMUX_GPIO165__FUNC_MSDC0_DAT1>,
-> > +			=09
-> > <PINMUX_GPIO164__FUNC_MSDC0_DAT2>,
-> > +			=09
-> > <PINMUX_GPIO163__FUNC_MSDC0_DAT3>,
-> > +			=09
-> > <PINMUX_GPIO159__FUNC_MSDC0_DAT4>,
-> > +			=09
-> > <PINMUX_GPIO158__FUNC_MSDC0_DAT5>,
-> > +			=09
-> > <PINMUX_GPIO157__FUNC_MSDC0_DAT6>,
-> > +			=09
-> > <PINMUX_GPIO156__FUNC_MSDC0_DAT7>,
-> > +				 <PINMUX_GPIO161__FUNC_MSDC0_CMD>;
-> > +			input-enable;
-> > +			drive-strength =3D <6>;
-> > +			bias-pull-up =3D <MTK_PUPD_SET_R1R0_01>;
-> > +		};
->=20
-> Should we also have pins-ds here to match mmc0-uhs-pins?
->=20
-The data strobe pin is only used for the HS modes, that is why it is
-only declared for uhs state.
-No other mediatek board devicetrees have it for default state too, so I
-don't think it is needed here.
+--=-67RujEEiCsWXeIp1gjT6
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-> > +
-> > +		pins-rst {
-> > +			pinmux =3D
-> > <PINMUX_GPIO160__FUNC_MSDC0_RSTB>;
-> > +			drive-strength =3D <6>;
-> > +			bias-pull-up =3D <MTK_PUPD_SET_R1R0_00>;
-> > +		};
-> > +	};
-> > +
-> > +	mmc0_uhs_pins: mmc0-uhs-pins {
-> > +		pins-clk {
-> > +			pinmux =3D <PINMUX_GPIO162__FUNC_MSDC0_CLK>;
-> > +			drive-strength =3D <8>;
-> > +			bias-pull-down =3D <MTK_PUPD_SET_R1R0_10>;
-> > +		};
-> > +
-> > +		pins-cmd-dat {
-> > +			pinmux =3D
-> > <PINMUX_GPIO166__FUNC_MSDC0_DAT0>,
-> > +			=09
-> > <PINMUX_GPIO165__FUNC_MSDC0_DAT1>,
-> > +			=09
-> > <PINMUX_GPIO164__FUNC_MSDC0_DAT2>,
-> > +			=09
-> > <PINMUX_GPIO163__FUNC_MSDC0_DAT3>,
-> > +			=09
-> > <PINMUX_GPIO159__FUNC_MSDC0_DAT4>,
-> > +			=09
-> > <PINMUX_GPIO158__FUNC_MSDC0_DAT5>,
-> > +			=09
-> > <PINMUX_GPIO157__FUNC_MSDC0_DAT6>,
-> > +			=09
-> > <PINMUX_GPIO156__FUNC_MSDC0_DAT7>,
-> > +				 <PINMUX_GPIO161__FUNC_MSDC0_CMD>;
-> > +			input-enable;
-> > +			drive-strength =3D <8>;
-> > +			bias-pull-up =3D <MTK_PUPD_SET_R1R0_01>;
-> > +		};
-> > +
-> > +		pins-ds {
-> > +			pinmux =3D <PINMUX_GPIO167__FUNC_MSDC0_DSL>;
-> > +			drive-strength =3D <8>;
-> > +			bias-pull-down =3D <MTK_PUPD_SET_R1R0_10>;
-> > +		};
-> > +
-> > +		pins-rst {
-> > +			pinmux =3D
-> > <PINMUX_GPIO160__FUNC_MSDC0_RSTB>;
-> > +			bias-pull-up =3D <MTK_PUPD_SET_R1R0_00>;
-> > +		};
-> > +	};
-> > +
-> > +	mmc1_default_pins: mmc1-default-pins {
-> > +		pins-clk {
-> > +			pinmux =3D <PINMUX_GPIO169__FUNC_MSDC1_CLK>;
-> > +			drive-strength =3D <6>;
-> > +			bias-pull-down =3D <MTK_PUPD_SET_R1R0_10>;
-> > +		};
-> > +
-> > +		pins-cmd-dat {
-> > +			pinmux =3D
-> > <PINMUX_GPIO170__FUNC_MSDC1_DAT0>,
-> > +			=09
-> > <PINMUX_GPIO171__FUNC_MSDC1_DAT1>,
-> > +			=09
-> > <PINMUX_GPIO172__FUNC_MSDC1_DAT2>,
-> > +			=09
-> > <PINMUX_GPIO173__FUNC_MSDC1_DAT3>,
-> > +				 <PINMUX_GPIO168__FUNC_MSDC1_CMD>;
-> > +			input-enable;
-> > +			drive-strength =3D <6>;
-> > +			bias-pull-up =3D <MTK_PUPD_SET_R1R0_01>;
-> > +		};
-> > +
-> > +		pins-insert {
-> > +			pinmux =3D <PINMUX_GPIO2__FUNC_GPIO2>;
-> > +			bias-pull-up;
-> > +		};
-> > +	};
-> > +
-> > +	mmc1_uhs_pins: mmc1-uhs-pins {
-> > +		pins-clk {
-> > +			pinmux =3D <PINMUX_GPIO169__FUNC_MSDC1_CLK>;
-> > +			drive-strength =3D <8>;
-> > +			bias-pull-down =3D <MTK_PUPD_SET_R1R0_10>;
-> > +		};
-> > +
-> > +		pins-cmd-dat {
-> > +			pinmux =3D
-> > <PINMUX_GPIO170__FUNC_MSDC1_DAT0>,
-> > +			=09
-> > <PINMUX_GPIO171__FUNC_MSDC1_DAT1>,
-> > +			=09
-> > <PINMUX_GPIO172__FUNC_MSDC1_DAT2>,
-> > +			=09
-> > <PINMUX_GPIO173__FUNC_MSDC1_DAT3>,
-> > +				 <PINMUX_GPIO168__FUNC_MSDC1_CMD>;
-> > +			input-enable;
-> > +			drive-strength =3D <8>;
-> > +			bias-pull-up =3D <MTK_PUPD_SET_R1R0_01>;
-> > +		};
->=20
-> Don't we also need pins-insert here? (to match mmc1-default-pins)
->=20
-From what I've found, it was done this way for other board devicetrees
-to avoid possible reconfiguration happen for the card detection pin
-while switching to UHS and causing a switch failure.
-Also, what you declare in pinmux nodes is how the pin configuration
-should change in a specific mode and you declare only what changes, and
-not what stay the same.
+Kyrie, Yunfei, Irui,
 
-> I was having trouble with the CD input pin not working in U-Boot
-> until I added it.
-I checked and debugged this on my board and did not get that kind of
-issue, whether this pin config is not present for uhs state or if I add
-it.=20
-When inserting my sd card or when I boot with it already inserted, the
-mtk-sd driver first sets the pinctrl state to default before switching
-to ufs. The GPIO02 pin config is also OK in both states.
-The mt8189 pinctrl driver seems to apply a default config for this pin
-that is the same as the one that is set here.
-
-There might be u-boot particularities that could explain it fixes your
-issue.
-
-Regards,
-Louis-Alexis
+Le vendredi 20 mars 2026 =C3=A0 13:59 +0800, Kyrie Wu a =C3=A9crit=C2=A0:
 >=20
-> > +	};
-> > +
+[...]
+> This series patches dependent on:
+> [1]
+> https://patchwork.linuxtv.org/project/linux-media/patch/20260211054149.27=
+249-2-yunfei.dong@mediatek.com/
+> [2]
+> https://patchwork.linuxtv.org/project/linux-media/patch/20260302035244.89=
+94-2-irui.wang@mediatek.com/
+
+While this one is now ready, it still can't be merge, because the other ser=
+ies
+it depends one have not been updated to use the pdata properly. In fact, it=
+s
+quite likely that some of the patches in this serie must be moved up the ch=
+ain.
+This type of linked submission is making my life extremely difficult, and c=
+auses
+massive delays.
+
+Basically, in a chain of 3 series (and probably 4 since the first one does =
+not
+apply), the refactoring that causes all the series to not be accepted is
+happening in the third one. Angelo and I have been clear for weeks, if you =
+need
+a constant value for a platform, it goes in the platform data. Don't do swi=
+tch
+of strcmp at runtime, these are constants and we already did string matchin=
+g to
+in the probe to find this pdata. Once the missing data is added, simply mak=
+e a
+final patch adding the pdata structure for the platform. Use this v8 of the
+MT8189 support as reference, it is as I said ready, but it does not apply d=
+ue to
+broken dependencies.
+
+I can't easily fix this, so please work together, synchronize your submissi=
+ons
+so that we can get the MT8196 and MT8189 support finally merged.
+
+regards,
+Nicolas
+
+--=-67RujEEiCsWXeIp1gjT6
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCab1HOQAKCRDZQZRRKWBy
+9FzIAP4oohtwocrtFhnn2WfKDHxvJ5uVcuOyFDF7hFnej0jx7wEAy97yTrE8Oj2B
+qJZbPwpS2fk4KcvWecW4UPbX07ZLIAE=
+=sleb
+-----END PGP SIGNATURE-----
+
+--=-67RujEEiCsWXeIp1gjT6--
 
