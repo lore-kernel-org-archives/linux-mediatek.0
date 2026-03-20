@@ -4,86 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AE47108B8E2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2026 09:42:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 783A6108B8E2
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2026 09:43:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=adEsW4WDO6/yYr4EE9AOtjTKebHalCyQ0oy6UHL4ksw=; b=4f2HDICW+3a0REteD/AYvNZaZL
-	5vwYRxZxuc/QkGfpnCx7dzja3T/7GzrZ6HYyTZPd6XfW7AFoTPODQMp3pnML4k5uKw1et64twgG+K
-	lxnwpskLt7rLX3iXx8R13uJUqes0SJxD/cOW2qpVVXaw5R9Ub+3fsQeYQVziA1XdoTU1MhJM+bAKD
-	NX8CXuWRQRTGZpSeH09vhq06eMZ6Cjfm6obfyrDy5AtD+MTWeWKPt6rafR+RNsjOK5G94/bzzZ4DC
-	FoK+rNglyVcBE47jK5Qxk4I1SxykMZijmxrnHStnJKaMaHrr9KVWY42rpETNFohKpX2xj/lVWCcZU
-	Vtq21SCA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=MeYQRWtpyoz4pJi30E77WFExzgm8N7NsrkcrHIJmdr4=; b=rezYG21a/ZnBXTelN6S8Usvmxc
+	vROKxLotAtPUnxlHZkWjwm8bfWf8L48mQ2ncznawqWIArGtKieUNt2bB79OZQljGzEWAtCLdLWwXg
+	VOGz7/mQe1sojIbfc5FdJjOms+xCXlrmmCMlMMrQaExpNw/IDyEnZrqMY0m5FdxwVveA+Zlqlzbu0
+	ubLT6sZkyt1XF3bGDacAidbD3pdJfuEz9rlkpk5sIiJfFjJ1SLhIE2Hc+od0MFkRPiIrMEngF2r17
+	lZm0MtKqCwxZmUY43jtl45NL/ISd2NMqreGmX5XNCCt/zGSOrZexD/C6aLOgEbniY9u5QL9nin8xF
+	B1Ck9GWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3WNS-0000000CVNi-33aE;
-	Fri, 20 Mar 2026 09:42:46 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1w3WO9-0000000CVWU-2XZT;
+	Fri, 20 Mar 2026 09:43:29 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3WNR-0000000CVNO-2hhm
-	for linux-mediatek@bombadil.infradead.org;
-	Fri, 20 Mar 2026 09:42:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=adEsW4WDO6/yYr4EE9AOtjTKebHalCyQ0oy6UHL4ksw=; b=K7nhhgGeWbEw66tfIYxvAArvB3
-	cUW0b8SPMoOUQMNg+/y929qmvX1N+coxT1DV3ePKED9M/tx0tRbhjoKwJr9TmdwDizXMSawcda01h
-	rxv7Lv4tJBnZnQq8/GK4LpVXAUuTn8pmQR1YoaJdurSfKfoWrya7kEGQjZZrk/ig6oBxZ0HgStY6g
-	YcCsRLt494YT/pIYvuNAeo9VuhRRPckf/mqQO+AuCJIM0OCzTXgbMY3xlT4bNnTyNwY83eQH9vQ6s
-	8bqQb0umPB7bkttALyRxYprK1G4+TmSdUkdFDsBNc4Oy8mvcSI1BeUdJXWZ5m2HOF5ZSGaudUqRGG
-	HBoWFYGQ==;
-Received: from mail.cjdns.fr ([5.135.140.105])
-	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3WNO-00000007Z3u-27qx
+	id 1w3WO6-0000000CVUJ-1N5s
 	for linux-mediatek@lists.infradead.org;
-	Fri, 20 Mar 2026 09:42:44 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 14831360312;
-	Fri, 20 Mar 2026 10:42:23 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1773999746; h=from:subject:date:message-id:to:cc:mime-version:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=adEsW4WDO6/yYr4EE9AOtjTKebHalCyQ0oy6UHL4ksw=;
-	b=WEv14gnEW+Iumxr6mJNRYe5NuD2hCFp73HrAK74QfYKcBoUxNfTrPRe5qp6J/vRimdOh/L
-	7MdArBoZuUFbJ6IM/3chA7Pfaz7Fo1HMQHn5JUw5odFs+voRzikvMRnNZnYAZvQX0MkhZO
-	RtxY/JZQ2l/3O16UQQmtGLv63usi7nPMjhvc10zJBALA+Ze5TvebGgtm3PvSpuEnlimgFJ
-	WVWCyKoDChXCu23MBiQr6VRXSpF/+FJpFhmYZnvo75F0uB0X63DjJsv7wnC4LZbywhgUSs
-	CuafUgEA1+rA52h2bNZiFN/TeGwEe7kZ54wxwIY5uXvhZHCnum0UIeJfiO7CnQ==
-From: Caleb James DeLisle <cjd@cjdns.fr>
-To: linux-pci@vger.kernel.org
-Cc: linux-mips@vger.kernel.org,
-	naseefkm@gmail.com,
-	ryder.lee@mediatek.com,
-	bhelgaas@google.com,
-	lpieralisi@kernel.org,
-	kwilczynski@kernel.org,
-	mani@kernel.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	ansuelsmth@gmail.com,
+	Fri, 20 Mar 2026 09:43:27 +0000
+Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-667cc4ec065so2710513a12.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 20 Mar 2026 02:43:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1773999804; x=1774604604; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=MeYQRWtpyoz4pJi30E77WFExzgm8N7NsrkcrHIJmdr4=;
+        b=miYWAArHo3rRHzFW9Sgo4Q2r/93GhGfvLkENDhLHN97Mdt3W5tSxOn5p3SppVMihSO
+         sxca83HPYiY/uA/h7SdWfzMEIoIWJ9el11XYE8x3N3p0cyLtOAWY7PEJaqPmUt/J9cFn
+         g7GZgZmBCPL/G5AJvUrE/ZOdKAx8DENLYf7fo2TEbMM6uPOk6dnEeuwWcBFz5VduqaQU
+         hZMI88sTRFR75/O0vMSL9xYp7Ja+fQWnny3wEo4sVpI0+M1RvoMgHla1WmNI0+t7VexV
+         pbfjfoVM6SHaQF/W2IVtRHo2HTScXkwcgbhRTpx3H7SwF9eU+oxlX4AKyRf3BS9FQQTs
+         4SnQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1773999804; x=1774604604;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=MeYQRWtpyoz4pJi30E77WFExzgm8N7NsrkcrHIJmdr4=;
+        b=ZTljhFik9V9hz+ORyxlAAQwblrQZ9/WblRwgfVplAnZo5Ylb3HVsxDRHR7l08A6u8Y
+         sFGpYrnu6AJgKH00NSrMwyB9KO+vWWHhp4AKNyGCrbvaWKoKKigfWkSF7KB9Kt8qH9Pk
+         1YhAQJFEZr6bhkPxwOIeVBBupV66NuqQbvax3E5riBLpqTZ7kpx0z+ayk9YtH35BhQuk
+         M1ctGN774gboqGjP8ZNk2pBB6tf5ZZo748+Drsn7ioBaQyKdD06/AUaz7MbPG5vG+3cW
+         OVvhloCoZ5fTP874U+bIsniI4Kk4WtA8kg3HgEYjnKOuAMVlIX3z5z9cB41RMKHDgajh
+         EGpQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWEc7jwjSERsZV7lIDTqnr+YfiIBEG4Fe4N/PqqsDiaghexNL9/Dx36M+NajUX0E+JSuhQbd0VGUJMXOcC5DQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzS8BBtvEeM6tOfa6dVnagauNZAEghwC0DCNrNCdgDQm1/Fl+i6
+	nYoN+BiFnruoMOLLYCRRMzDaXMHU6HO8tpJRAX1ChYJZuY/pXRYIW3XT
+X-Gm-Gg: ATEYQzxQnE6NfZ9Ffys+pqD4n1SOEolOuLpKac40soEvThFd27WlO+ytVXlpRLJ5Qz3
+	JZr72GvQDLWRxp2Gbh1kssFYbzhmRMeR5dwMbVCNLX/66QDR6RbNdnZgpQWDmsT8S+eyo93+T39
+	N3yvfwRjNJQW8+pjIRaDsmn+fI7+uJwnnqIZXm0ZphLmmO0kaJKTBXihuTHYZ43tKtzKSgobZBk
+	zW5cn5YqMIFQsErMSEVmsChdikepSY5SJuMRGS4Gi1wPt1OMZkvtcx5tZ2XN1fJb1KnkGZykAR/
+	tGqOK3Qfbve8B8eWdmyOkQiXclLRefqp6W8/1hq6ic0BwyuUQ94tjLZsUO4tTJQkH1HdJhjgIji
+	o9qNSTgcadjBUHkLuTmPeeefDKN0QAWP8/yO0XWsE+rph//CWRIn9aW0rMDG3+taS1NuoxlzOqt
+	wxmhWyDjoCBqG5zg==
+X-Received: by 2002:a17:906:7fd0:b0:b98:1425:2977 with SMTP id a640c23a62f3a-b982f39bba4mr150387866b.49.1773999803776;
+        Fri, 20 Mar 2026 02:43:23 -0700 (PDT)
+Received: from gmail.com ([2a09:bac5:4e21:2e3c::49b:47])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b9832f8dff5sm131318366b.24.2026.03.20.02.43.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 20 Mar 2026 02:43:23 -0700 (PDT)
+From: Qingfang Deng <dqfext@gmail.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Caleb James DeLisle <cjd@cjdns.fr>
-Subject: [PATCH v3 1/2] dt-bindings: PCI: mediatek: Add support for EcoNet EN7528
-Date: Fri, 20 Mar 2026 09:42:11 +0000
-Message-Id: <20260320094212.696671-2-cjd@cjdns.fr>
-In-Reply-To: <20260320094212.696671-1-cjd@cjdns.fr>
-References: <20260320094212.696671-1-cjd@cjdns.fr>
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Cc: Pablo Neira Ayuso <pablo@netfilter.org>,
+	Simon Horman <horms@kernel.org>
+Subject: [PATCH net v2] net: airoha: add RCU lock around dev_fill_forward_path
+Date: Fri, 20 Mar 2026 17:43:15 +0800
+Message-ID: <20260320094315.525126-1-dqfext@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260320_094242_654140_ECA11BD9 
-X-CRM114-Status: UNSURE (   6.45  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260320_024326_366849_9ADEE01D 
+X-CRM114-Status: GOOD (  10.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,63 +104,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce EcoNet EN7528 SoC compatible in MediaTek PCIe controller
-binding.
+Since 0417adf367a0 ("ppp: fix race conditions in ppp_fill_forward_path")
+dev_fill_forward_path() should be called with RCU read lock held. This
+fix was applied to net, while the Airoha flowtable commit was applied to
+net-next, so it hadn't been an issue until net was merged into net-next.
 
-EcoNet PCIe controller has the same configuration model as
-Mediatek v2 but is initiallized more similarly to an MT7621
-PCIe.
-
-Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
+Fixes: a8bdd935d1dd ("net: airoha: Add wlan flowtable TX offload")
+Signed-off-by: Qingfang Deng <dqfext@gmail.com>
 ---
- .../bindings/pci/mediatek-pcie.yaml           | 26 +++++++++++++++++++
- 1 file changed, 26 insertions(+)
+v2: update fixes tag to the flowtable commit
+  - https://lore.kernel.org/netdev/20260319032649.337812-1-dqfext@gmail.com/
 
-diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie.yaml
-index 0b8c78ec4f91..7e1b0876c291 100644
---- a/Documentation/devicetree/bindings/pci/mediatek-pcie.yaml
-+++ b/Documentation/devicetree/bindings/pci/mediatek-pcie.yaml
-@@ -14,6 +14,7 @@ properties:
-     oneOf:
-       - enum:
-           - airoha,an7583-pcie
-+          - econet,en7528-pcie
-           - mediatek,mt2712-pcie
-           - mediatek,mt7622-pcie
-           - mediatek,mt7629-pcie
-@@ -226,6 +227,31 @@ allOf:
+ drivers/net/ethernet/airoha/airoha_ppe.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
+index ec5ce41dad80..02deb739a1c7 100644
+--- a/drivers/net/ethernet/airoha/airoha_ppe.c
++++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+@@ -227,7 +227,9 @@ static int airoha_ppe_get_wdma_info(struct net_device *dev, const u8 *addr,
+ 	if (!dev)
+ 		return -ENODEV;
  
-         mediatek,pbus-csr: false
++	rcu_read_lock();
+ 	err = dev_fill_forward_path(dev, addr, &stack);
++	rcu_read_unlock();
+ 	if (err)
+ 		return err;
  
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: econet,en7528-pcie
-+    then:
-+      properties:
-+        clocks:
-+          maxItems: 1
-+
-+        clock-names:
-+          maxItems: 1
-+
-+        reset: false
-+
-+        reset-names: false
-+
-+        power-domains: false
-+
-+        mediatek,pbus-csr: false
-+
-+      required:
-+        - phys
-+        - phy-names
-+
- unevaluatedProperties: false
- 
- examples:
 -- 
-2.39.5
+2.43.0
 
 
