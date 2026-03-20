@@ -4,60 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65D11109318E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2026 08:36:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7FC9109318F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2026 08:40:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qXG8BAgH6blcllbAK08/5QVe84xrvs515ihEMjIbAPQ=; b=sgTrEAotzwssdYZZwUlCnK7FKh
-	GhtDDQf7vbM0qOEZB6V0b9wwOuLoDEJj8W3WouxW7e0bhobHxgPcHf7sUOlOxm9j0PWP5Vbc0OTpw
-	Ku7W1hDVQhdVFd9AKf9s5TjOmw0wN6Yt+YwJz7VkiNLY/7DR9OE+cH46gFUlHuSdzBgX2VWyE/Av4
-	DjGmILynDy7DcJ6ArfDP71p0F21MwOxsxHTmQosQWJSn+dgFTjCo3iIsE1wasfqXkIdZI32A9LaNi
-	u5f08xKROxxVZp+serGqOOa/e+/gV1EYQrGNmg6X59L/DonS9Is5RxH1Z8k0EeoYjp6X6yVvosfMS
-	hqth93Ag==;
+	bh=1ydh8PxVpe+klVza2cSSTt4oc+3JbY4tIItQxIxh/U4=; b=G1xV4zD2/vWRHsbryBLuEQ428d
+	fmX2XSzEhy1NOFqlJOD4+j7DPj0uMxXXdhcVAAhFtQ5df93vrBBO5nB6607D2MdUQgEPHePqnbL/c
+	LbKRjjRY+Z817yPis5rW+201YlTLSO3rMR1TAeX53WXRcyZFAFehKk5OmiubY+04QLlR58saEa9/C
+	qNAqnWvt/5y/kAHsCGawXyfCmW2GL50hTYLQrfkx2cuGYfO7vl2qqflTCB/s6tXgPGmkf2i2ikKa6
+	fFJLOH0CQ01EHgFuELQVDbHqeIUCC0LBl/DthI6j2zD8R+N1xcj11rBgI2GVwTKukHOeOksb+ZvGN
+	nDBp6OqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3VKs-0000000CMgx-1NQu;
-	Fri, 20 Mar 2026 08:36:02 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1w3VPW-0000000CMzO-0Rtj;
+	Fri, 20 Mar 2026 08:40:50 +0000
+Received: from mgamail.intel.com ([198.175.65.17])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3VKp-0000000CMgj-2xjb;
-	Fri, 20 Mar 2026 08:36:00 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id BF06F60121;
-	Fri, 20 Mar 2026 08:35:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A4C5BC2BCAF;
-	Fri, 20 Mar 2026 08:35:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773995758;
-	bh=EXYMoywbEg6I7ipMKu2B+8UWo6AsK3Ubq2SrweO67HA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=jvuq5Xp6UseMUOiaEpPby4k95jxighut/b4DZJTsuIwWnYgTLOvL0TQjn2MzwgcZF
-	 hX28dbGQb0hcuVyKHgoN3lb9yVlMlyxeVfuyOZhGBJb0OW5UGQ0clrbWZvBGLRDVt4
-	 OMtDfW3MNrO9ucsDZXekMlHrKzRvrMm6WPpfLRqSXAA4+wX0jWYNdYfHB6VBq1wqEE
-	 +RhpJ+UWkuKqYbwB7BlLYdt0Nx2PpmrFtFmUWJ0Pibig+cHLF6UXOWsWQ1r8DlSu2x
-	 x4+WIqhoOd+XXxTSlQNK89qR2ubrZyjMNx8G9f0lhyug9OANWpYKlKrv3dWWB6u41b
-	 rJx34QdM0kM7g==
-Date: Fri, 20 Mar 2026 08:35:54 +0000
-From: Simon Horman <horms@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net-next] net: airoha: Reset PPE cpu port configuration
- in airoha_ppe_hw_init()
-Message-ID: <20260320083554.GB1753385@horms.kernel.org>
-References: <20260317-airoha-fix-ppe-def-cpu-v1-1-338533d8e234@kernel.org>
+	id 1w3VPS-0000000CMyV-23Ly;
+	Fri, 20 Mar 2026 08:40:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1773996046; x=1805532046;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=pRoVm1uSlvFJ1DUaEsZAHIMkqpeZSr5DbQgK9V4VP1I=;
+  b=MzQtpvTjEa9O1z1g9Mj+QbRPBf1OedNo6s4xP5tFxQL2x+37i3RJ5qOu
+   bC5jIcVIekdar88i7n2BID98FjORI6+Y9pslJJvVUUJlSyGRqwSeL4QmG
+   pOEz8FDNCIPLP7u3cu6dok5LzxzQPizs5Kf86Z3QRLQXT5BOeFo8ZJS7J
+   t4yif1o5BmGH4dRkEnwIwVBAZAAuLsX/djBKN9VQY2JCJfgjIMKPhD34R
+   bWPKcVemumcndUhMEgzHhpan9S0ObspcKEBVeq9KtsdhBVnDrsG7z6kxt
+   p1Mx0YX4cOcgE95TcxxptsHaF5vRN+67yWQGds6S6BR/NvktiQ//44XcB
+   A==;
+X-CSE-ConnectionGUID: tOB+D8MyT3G/gTHGcXvkPg==
+X-CSE-MsgGUID: ipojR9vtQ4apoepJnWG9hg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11734"; a="75043703"
+X-IronPort-AV: E=Sophos;i="6.23,130,1770624000"; 
+   d="scan'208";a="75043703"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Mar 2026 01:40:45 -0700
+X-CSE-ConnectionGUID: UMl4ekA+SP2qinyxdLsYdQ==
+X-CSE-MsgGUID: oy8/u9TvR3Kup4Vvs0GRdw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,130,1770624000"; 
+   d="scan'208";a="223210435"
+Received: from lkp-server02.sh.intel.com (HELO a51c2a36b9df) ([10.239.97.151])
+  by orviesa009.jf.intel.com with ESMTP; 20 Mar 2026 01:40:41 -0700
+Received: from kbuild by a51c2a36b9df with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1w3VOw-0000000029V-0Dxy;
+	Fri, 20 Mar 2026 08:40:19 +0000
+Date: Fri, 20 Mar 2026 16:39:03 +0800
+From: kernel test robot <lkp@intel.com>
+To: Pei Xiao <xiaopei01@kylinos.cn>, linux-spi@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	imx@lists.linux.dev, openbmc@lists.ozlabs.org,
+	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com, broonie@kernel.org,
+	Frank.Li@nxp.com, amelie.delaunay@foss.st.com
+Cc: oe-kbuild-all@lists.linux.dev, Pei Xiao <xiaopei01@kylinos.cn>
+Subject: Re: [PATCH v5 11/17] spi: st: Simplify clock handling with
+ devm_clk_get_enabled()
+Message-ID: <202603201638.tsz5xX5N-lkp@intel.com>
+References: <383814750ad46181fd4199b3c6cec4767d480075.1773885292.git.xiaopei01@kylinos.cn>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <20260317-airoha-fix-ppe-def-cpu-v1-1-338533d8e234@kernel.org>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <383814750ad46181fd4199b3c6cec4767d480075.1773885292.git.xiaopei01@kylinos.cn>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260320_014046_578236_5AEDC6D7 
+X-CRM114-Status: GOOD (  10.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,32 +93,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 17, 2026 at 05:40:47PM +0100, Lorenzo Bianconi wrote:
-> Before this patch, the PPE cpu port configuration used for a specific GDM
-> device was set just running ndo_init() callback during the device
-> initialization. The selected PPE cpu port configuration depends on the QDMA
-> block assigned to the GDM port. The QDMA block is selected according to
-> the GDM port LAN/WAN configuration as specified in the commit
-> '8737d7194d6d ("net: airoha: select QDMA block according LAN/WAN
-> configuration"). However, the user selected PPE cpu port configuration can
-> be different with respect to the one hardcoded in the NPU firmware binary.
-> The hardcoded NPU PPE cpu port configuration is loaded initializing the PPE
-> engine running the NPU ops ppe_init() callback in airoha_ppe_offload_setup
-> routine (this is executed at runtime by the netfilter flowtable
-> infrastructure during flow offloading).
-> Reset the PPE cpu port configuration in airoha_ppe_hw_init routine in
-> order to apply the user requested setup according to the device DTS.
-> Please note this patch is fixing an issue not visible to the user (so we
-> do not need to backport it) since airoha_eth driver currently supports just
-> the internal phy available via the MT7530 DSA switch and there are no WAN
-> interfaces officially supported since PCS/external phy is not merged
-> mainline yet (it will be posted with following patches).
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Hi Pei,
 
-Hi Lorenzo,
+kernel test robot noticed the following build warnings:
 
-Thanks for the detailed commit message.
+[auto build test WARNING on broonie-spi/for-next]
+[also build test WARNING on next-20260319]
+[cannot apply to atorgue-stm32/stm32-next rockchip/for-next xilinx-xlnx/master clk/clk-next shawnguo/for-next soc/for-next linus/master v7.0-rc4]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+url:    https://github.com/intel-lab-lkp/linux/commits/Pei-Xiao/spi-axiado-Simplify-clock-management-with-devm_clk_get_enabled/20260320-025630
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+patch link:    https://lore.kernel.org/r/383814750ad46181fd4199b3c6cec4767d480075.1773885292.git.xiaopei01%40kylinos.cn
+patch subject: [PATCH v5 11/17] spi: st: Simplify clock handling with devm_clk_get_enabled()
+config: nios2-allmodconfig (https://download.01.org/0day-ci/archive/20260320/202603201638.tsz5xX5N-lkp@intel.com/config)
+compiler: nios2-linux-gcc (GCC) 11.5.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260320/202603201638.tsz5xX5N-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202603201638.tsz5xX5N-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+   drivers/spi/spi-st-ssc4.c: In function 'spi_st_remove':
+>> drivers/spi/spi-st-ssc4.c:365:32: warning: unused variable 'host' [-Wunused-variable]
+     365 |         struct spi_controller *host = platform_get_drvdata(pdev);
+         |                                ^~~~
+
+
+vim +/host +365 drivers/spi/spi-st-ssc4.c
+
+9e862375c5420a Lee Jones        2014-12-09  362  
+2dd42da0b479ff Uwe Kleine-König 2023-03-03  363  static void spi_st_remove(struct platform_device *pdev)
+9e862375c5420a Lee Jones        2014-12-09  364  {
+e6b7e64cb11966 Yang Yingliang   2023-11-28 @365  	struct spi_controller *host = platform_get_drvdata(pdev);
+9e862375c5420a Lee Jones        2014-12-09  366  
+cd050abeba2a95 Chuhong Yuan     2019-11-18  367  	pm_runtime_disable(&pdev->dev);
+cd050abeba2a95 Chuhong Yuan     2019-11-18  368  
+9e862375c5420a Lee Jones        2014-12-09  369  	pinctrl_pm_select_sleep_state(&pdev->dev);
+9e862375c5420a Lee Jones        2014-12-09  370  }
+9e862375c5420a Lee Jones        2014-12-09  371  
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
