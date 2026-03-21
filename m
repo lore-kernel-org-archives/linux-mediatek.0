@@ -4,136 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 781E11094472
-	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Mar 2026 12:25:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A5C51094471
+	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Mar 2026 12:41:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AhRJ0xP2d1r09SQ2I1AfF4h8fEo6qUqwvCbUvSQT8Fs=; b=hGTORqTAmODVZoba/Zvx5Zi8d3
-	h5nzdLU4ljNXirj3wJ5Z4dvNpXLPTJXEQDhiB6vqR1c4ga0RfUsE69HMp07UcXp6h2aSslyWFnCH2
-	/ZyO7jkt7QMhiYhK/yt0xZBkSdQAVH4XyqOsWogowShB1TVv+aoPdRi7H/j7WXnVipHmJd6Hq3waj
-	Czou0pfeAozXn0Symqowc18dTojt1sSTHYJr3HsmW+lGGJ5ZECdZOrPp95p/Tp/FqW+2hxVB7ziF7
-	A0cwM27zZhMNqyfErWiueQwb+CnK7FI3RetbYWqDJnpNkrb7swUrfGI2d2S4tyJ3u/d9rZanE61dX
-	Ki2DgCew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Gdw96O2s3CiuyvCHVeb+6oKXS/Dbg2GEk36YWsEx2Do=; b=cezwU1yey8YoKqOBLcEbij6voU
+	Np/wJTtEatJKEEqDsty7Yybhd2JlFAdhFII4RkwzCJffszQvDBjdYXXNm87hOQpeWdszc4k/cHN4h
+	6hUBvZ804OUuyEi1yweDpb0ryJXC/+irX+NoGgYeKtZ+qM3TTOcxYo6f1vQeUc6/MxHmrmaQ33Iyk
+	OuOK6vIGdy+a+JEaBMuoxrmhZfzYEaGyvYP6eIqwzeJDOzQQdIS1clA35Z3iSLNGW1k27+JFneiYl
+	+FOKc6ZEPmtoldgJMQRbd1pWdRRyE/kMVw09ODcWj6wMf5wE0PNQUAoRnRb+atTh/G1ypJ9j6B/GR
+	0ldHfT9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3vOA-0000000ERlF-2B1o;
-	Sat, 21 Mar 2026 12:25:10 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1w3vdg-0000000ESkk-2vLh;
+	Sat, 21 Mar 2026 12:41:12 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3vO7-0000000ERkw-1aiB
-	for linux-mediatek@lists.infradead.org;
-	Sat, 21 Mar 2026 12:25:08 +0000
-Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 62L4muHV1788139
-	for <linux-mediatek@lists.infradead.org>; Sat, 21 Mar 2026 12:25:04 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	AhRJ0xP2d1r09SQ2I1AfF4h8fEo6qUqwvCbUvSQT8Fs=; b=D6R0jnJulrKcNUt9
-	VCpl327Ed1QajXuNvwWSpp8T6UA4r8peFdn0W8LAtGyzHE8U4f9Yahhwi4oqx2Zh
-	Ilqy2/SrwdDWAasgihLns7D63mf3+4wE8MOQ/rG/Wr77wVnpjFfPEI3sGVAvN8Sl
-	QYNgJvxkNCH7cMNU9uEM/jilVXekHlPncO8mtC43Up+TpBfnpbF4jMCtQplj/rb5
-	hdYA4x8t2ndwFEkBSL3dxf5WKFngRCFEzvF8zHsZ6+smZQaBTA55esrxVhNZVGR2
-	ew5+MNK9BN7JiRT3zqW9kXSY5tVsEJwpBo0CegdwwbnRRwnm6XOMmJs7NL4zT2Hl
-	yCLdWA==
-Received: from mail-pj1-f69.google.com (mail-pj1-f69.google.com [209.85.216.69])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4d1jb5gr3f-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Sat, 21 Mar 2026 12:25:04 +0000 (GMT)
-Received: by mail-pj1-f69.google.com with SMTP id 98e67ed59e1d1-358e95e81aeso19103091a91.0
-        for <linux-mediatek@lists.infradead.org>; Sat, 21 Mar 2026 05:25:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1774095903; x=1774700703; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:date:message-id:subject
-         :references:in-reply-to:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=AhRJ0xP2d1r09SQ2I1AfF4h8fEo6qUqwvCbUvSQT8Fs=;
-        b=Y28lEw+UyW+sDKyRhEFgy/WHaUTvTgrZiscysZLiG49oKJZPV7TK5RChrPiIOuSwXs
-         kIDWIPJ/79XaQcxxFo2Zi3OEdadenSnW6OwmV6sAaPqtwlBupO22U5CENLm4Q/PC3BXi
-         5seRIS3eGq0jKwPQMi17kQUjOZfc34yo0aj/cKT0w4z9Kqtm2uhNccFBJKCxpGiB94iG
-         PD3OKkHD7E7I3i4wFv63XmmSJWgyzt3ur4/syIZR0T2HVVxkS6TSMo2tqtvTo8iB6Zci
-         E7OdxJwSC2j8iEDkdweOLoaJppr0JaXiUH3KwbnwWitpczrQSDFCfQB/0MqPh7J+8ny4
-         Ydmw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1774095903; x=1774700703;
-        h=content-transfer-encoding:mime-version:date:message-id:subject
-         :references:in-reply-to:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=AhRJ0xP2d1r09SQ2I1AfF4h8fEo6qUqwvCbUvSQT8Fs=;
-        b=m38cRtXx4wdN/yxkXRyPcVPzFkq2Gkp0qSqNN2VKhAA3yXinVIjwvgHJP22XLQumAw
-         SMKQ3QmRKyT85MW6HBDTrbn5SYPWrkTv8xvDK/vvM6loO+MerKMC2QHpBP1e3hoY9uM6
-         11YYueRGvyIbZ8sntMYp/hIFBnwJt47/2rgFDE3TVMOla2sW+XwSWcvVRI4ylBCR2Mdk
-         uAi1LlXxOn7air7zS2ht1jIEuZSWdyoOw6lh1p0IJkz4LE8H+mX3lk9bp6qQNvyqWnQ3
-         QaMeQHiZen2JzyrIQAx7x+3v6sfnLxEHpzXAjhDFvUPKRH29uhHKI3/ujRpR8tES54/Z
-         Tf1Q==
-X-Forwarded-Encrypted: i=1; AJvYcCWA2ej8r7Pyd7w9bJXLx6ezW/g9r+PCpU6DmCc10YWDkXa2qQ7wL8fDzvZ2HZbtrdkEz/K+3ELx7haSemRLBA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywdx/wTg848O/2t/OPD6GgaL5zgmrZjKCv3mtPPLTa/An9b8i7f
-	cBj+lNbqpBAV0R3mTpPKlKhzBejifJz3WNsopARIBFp6CNpty2FWKTYSB8O+rSLOuCa9RivcIQg
-	pb9K58nOFr1iC0MZLrcz7PUuTy/uDw9hLagmRRGKF805PwzLMdhCrNPrJKIsIxY20iFFXB4Eql3
-	fRW9kF25Y=
-X-Gm-Gg: ATEYQzyGjuAm5Zgc5cNxvNueuA5gZAaCXV1J0eQrHE2i6jT6/eCoOwYiJX4Q05/HVuR
-	Xt4eM4w8oso65Zs0x1dA1116R800MzuXgPln81y+6VfrJngo2jLVjwO8lPbVKn4kBQG1YSLvtyH
-	3bgKF+a338ARe+p1Rk72xUR3A/sZblwPYtXKSxwbf/UcgG//9yj4zd2i9f0vMRuU41Wih5CB7Sk
-	VhTD5pBIeaYmjOri3kH2gW+sbZQQgvF/Q2iXOi7JxkRaAQPZ9d9QEmk6XkK6UysG16JNfWNMiGm
-	LYThe3Ubi1vPbMe9dRS1gQ1DZ3xA4jRrIeKdwbfqEVgQ/0Swox7y5XhTpsDYiiYlYBejnV8jbo8
-	Zz0rNlLzqs4UFDX0j
-X-Received: by 2002:a05:6a20:9146:b0:398:8bd7:4f80 with SMTP id adf61e73a8af0-39bcec0692amr5686547637.46.1774095902359;
-        Sat, 21 Mar 2026 05:25:02 -0700 (PDT)
-X-Received: by 2002:a05:6a20:9146:b0:398:8bd7:4f80 with SMTP id adf61e73a8af0-39bcec0692amr5686524637.46.1774095901758;
-        Sat, 21 Mar 2026 05:25:01 -0700 (PDT)
-Received: from work.lan ([2409:4091:a0f4:6806:624d:fb0a:8444:1ee3])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-c74665ca206sm4391960a12.18.2026.03.21.05.24.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 21 Mar 2026 05:25:01 -0700 (PDT)
-From: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
-X-Google-Original-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh@kernel.org>,
-        Ryder Lee <ryder.lee@mediatek.com>
-Cc: Jianjun Wang <jianjun.wang@mediatek.com>,
-        =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-        Lorenzo Pieralisi <lpieralisi@kernel.org>,
-        linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org
-In-Reply-To: <b835e360b42c5e0994f9301a34dbdf140a8d3ef5.1772493898.git.ryder.lee@mediatek.com>
-References: <b835e360b42c5e0994f9301a34dbdf140a8d3ef5.1772493898.git.ryder.lee@mediatek.com>
-Subject: Re: [PATCH] PCI: mediatek: fix W=1 snpringf warnings
-Message-Id: <177409589820.12459.14613770488604261704.b4-ty@kernel.org>
-Date: Sat, 21 Mar 2026 17:54:58 +0530
+	id 1w3vde-0000000ESk8-20Fw;
+	Sat, 21 Mar 2026 12:41:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 64206600AE;
+	Sat, 21 Mar 2026 12:41:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 437D2C19421;
+	Sat, 21 Mar 2026 12:41:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1774096868;
+	bh=fxVoXze93TK9b7JkjLP3hYYoZwJ+sQWedrY/aS+Uubs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=rjUxIz20bGymV7Rs5Wvfoj/C3PHimtOj2oswMcvSb4/xuT2XsaNg2m8Au0INjBZ0e
+	 5NM8fJbWPfZsIZzcfUwGrKHNO4D9xBdzsH5kuHJwzsUfPhN2T4Ait6dR0XKwSm/Jvl
+	 urLpexwJz9ruvDCpqst42b6CcRcbz/39Xk3KYwNbDw3TywC7YsgMqpZEXXsjGYHalR
+	 FJznFWd8EFZ2wcIzrW7+Y0a7YFd1k6y7zbIvuglzgHWH/0trij0rO5Zvdvkos+R9QO
+	 VPp8eKim71vTs8gkcR0883dGJesTBzPct5hoGDaYrEMWMMVkdN679j0AE+938q7CQN
+	 9DS9D5pstZoTQ==
+Date: Sat, 21 Mar 2026 13:41:06 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+	Simon Horman <horms@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net-next] net: airoha: Reset PPE cpu port configuration
+ in airoha_ppe_hw_init()
+Message-ID: <ab6R4krBRy5dycb-@lore-desk>
+References: <20260317-airoha-fix-ppe-def-cpu-v1-1-338533d8e234@kernel.org>
+ <20260320183127.22b360be@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.14.3
-X-Authority-Analysis: v=2.4 cv=aJv9aL9m c=1 sm=1 tr=0 ts=69be8e20 cx=c_pps
- a=vVfyC5vLCtgYJKYeQD43oA==:117 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10
- a=Yq5XynenixoA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22 a=VwQbUJbxAAAA:8
- a=p3aDHK_ZBxqdTpKZ4NQA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=rl5im9kqc5Lf4LNbBjHf:22
-X-Proofpoint-GUID: 3SHrriEBZa3JGt6F-qABpA7RHEhN5aSa
-X-Proofpoint-ORIG-GUID: 3SHrriEBZa3JGt6F-qABpA7RHEhN5aSa
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzIxMDEwMSBTYWx0ZWRfX94R3EHJb2amX
- EyB5cRTrLwWzPqwFArY0Q+MU4AWky6Gr48MR9ap1iCCo3B9LqnW9cWYC3UDmIwHu1BQIvoaMMP+
- Ncc8lzRq6Bv/7PoVyFXXZCIh+vs+kvfwKMpICVzyolMJ/68i1CcfLX6K7Y7hxHWYMh3hCkeSOVD
- u5DTftW0Sb0tOa+eGJTzaEi0fRvJkwJOLGw029JCABaHyvehYBTIHPNqaIsXIkw+9VtogUW43tQ
- adizO+PaCGtEe8knkyWzZCXjso7p66n5tX0MAE6Qwlf9d8KgbPr8eGppw0JUGpBzhDIJXrL3ifF
- xWzDLsnETxgqAiFp9EhBVQ4d62l6h1vVMHWEIGBT0ba0WXoDn1+0520lGEs7U0rUsvhTe2KSx61
- ob+xrTukAkZXUpMJR+BNWDC6l5/Jf0v47UA2PfnND4rYxcx2RAzQYeL2gFRf7TFs/Mw/mPv4vHb
- QbUXmoUv7UP5xqA+KEQ==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-03-21_04,2026-03-20_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0 malwarescore=0 adultscore=0 priorityscore=1501 spamscore=0
- impostorscore=0 clxscore=1015 bulkscore=0 phishscore=0 suspectscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2603050001 definitions=main-2603210101
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260321_052507_578064_3C6FFA60 
-X-CRM114-Status: UNSURE (   8.44  )
-X-CRM114-Notice: Please train this message.
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="3sTRF6na1p3lBxUs"
+Content-Disposition: inline
+In-Reply-To: <20260320183127.22b360be@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,34 +75,148 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 02 Mar 2026 17:46:48 -0800, Ryder Lee wrote:
-> Fix the following errors in W=1 builds.
-> 
->   $ make W=1 drivers/pci/controller/pcie-mediatek.o
->     CALL    scripts/checksyscalls.sh
->     DESCEND objtool
->     INSTALL libsubcmd_headers
->     CC      drivers/pci/controller/pcie-mediatek.o
->   drivers/pci/controller/pcie-mediatek.c: In function ‘mtk_pcie_parse_port’:
->   drivers/pci/controller/pcie-mediatek.c:963:43: error: ‘%d’ directive output may be truncated writing between 1 and 10 bytes into a region of size 6 [-Werror=format-truncation=]
->     963 |         snprintf(name, sizeof(name), "port%d", slot);
-> 	|                                           ^~
->   drivers/pci/controller/pcie-mediatek.c:963:38: note: directive argument in the range [0, 2147483647]
->     963 |         snprintf(name, sizeof(name), "port%d", slot);
-> 	|                                      ^~~~~~~~
->   drivers/pci/controller/pcie-mediatek.c:963:9: note: ‘snprintf’ output between 6 and 15 bytes into a destination of size 10
->     963 |         snprintf(name, sizeof(name), "port%d", slot);
-> 	|         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> 
-> [...]
+--3sTRF6na1p3lBxUs
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Applied, thanks!
+> On Tue, 17 Mar 2026 17:40:47 +0100 Lorenzo Bianconi wrote:
+> > @@ -155,6 +171,11 @@ static void airoha_ppe_hw_init(struct airoha_ppe *=
+ppe)
+> >  						 AIROHA_MAX_MTU) |
+> >  				      FIELD_PREP(FP1_EGRESS_MTU_MASK,
+> >  						 AIROHA_MAX_MTU));
+> > +			if (!port)
+> > +				continue;
+> > +
+> > +			airoha_ppe_set_cpu_port(port, i);
+>=20
+> AI says:
+>=20
+> Can this lead to a NULL pointer dereference if a port is not fully
+> initialized?
+>=20
+> In airoha_probe(), all GDM ports defined in the device tree are allocated
+> and the eth->ports[] array is populated with pointers, but port->qdma is
+> left as NULL.
+>=20
+> During airoha_register_gdm_devices(), the ports are registered sequential=
+ly
+> with register_netdev(). Since register_netdev() drops the rtnl_lock(),
+> userspace could react to the RTM_NEWLINK event of the first registered po=
+rt
+> and apply a tc flow offload rule.
+>=20
+> This would trigger the following call chain:
+>   .ndo_setup_tc() -> airoha_ppe_setup_tc_block_cb() -> airoha_ppe_offload=
+_setup()=20
+>    -> airoha_ppe_hw_init()
+>=20
+> If airoha_ppe_hw_init() iterates over the array, it will find the subsequ=
+ent
+> port that has been allocated but not yet registered, meaning its port->qd=
+ma
+> is still NULL. The call to airoha_ppe_set_cpu_port(port, i) will then
+> dereference the NULL port->qdma.
+>=20
+> Would it be better to check if (!port || !port->qdma) before calling
+> airoha_ppe_set_cpu_port()?
 
-[1/1] PCI: mediatek: fix W=1 snpringf warnings
-      commit: ab4a4043db1fcc4fd4c5745c5be8caf053502e29
+Hi Jakub,
 
-Best regards,
--- 
-Manivannan Sadhasivam <mani@kernel.org>
+I agree there is a race between airoha_register_gdm_devices() and
+airoha_ppe_setup_tc_block_cb(). Instead of not running
+airoha_ppe_set_cpu_port() in airoha_ppe_hw_init() for a given port and not
+configuring the hw correctly, I guess it would be better to grab
+flow_offload_mutex mutex in airoha_register_gdm_devices routine and wait for
+all devices to be properly registered before executing
+airoha_ppe_setup_tc_block_cb(). Something like:
 
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/etherne=
+t/airoha/airoha_eth.c
+index 961325da833b..f5bb917f0f6e 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -2927,21 +2927,24 @@ static int airoha_alloc_gdm_port(struct airoha_eth =
+*eth,
+=20
+ static int airoha_register_gdm_devices(struct airoha_eth *eth)
+ {
+-	int i;
++	int i, err =3D 0;
++
++	mutex_lock(&flow_offload_mutex);
+=20
+ 	for (i =3D 0; i < ARRAY_SIZE(eth->ports); i++) {
+ 		struct airoha_gdm_port *port =3D eth->ports[i];
+-		int err;
+=20
+ 		if (!port)
+ 			continue;
+=20
+ 		err =3D register_netdev(port->dev);
+ 		if (err)
+-			return err;
++			break;
+ 	}
+=20
+-	return 0;
++	mutex_unlock(&flow_offload_mutex);
++
++	return err;
+ }
+=20
+ static int airoha_probe(struct platform_device *pdev)
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/etherne=
+t/airoha/airoha_eth.h
+index 7df4dbcd8861..3330ee54e20e 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.h
++++ b/drivers/net/ethernet/airoha/airoha_eth.h
+@@ -551,6 +551,8 @@ struct airoha_gdm_port {
+ #define AIROHA_RXD4_PPE_CPU_REASON	GENMASK(20, 16)
+ #define AIROHA_RXD4_FOE_ENTRY		GENMASK(15, 0)
+=20
++extern struct mutex flow_offload_mutex;
++
+ struct airoha_ppe {
+ 	struct airoha_ppe_dev dev;
+ 	struct airoha_eth *eth;
+diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/etherne=
+t/airoha/airoha_ppe.c
+index 7666b1d2f4f6..96d092f7214e 100644
+--- a/drivers/net/ethernet/airoha/airoha_ppe.c
++++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+@@ -15,7 +15,7 @@
+ #include "airoha_regs.h"
+ #include "airoha_eth.h"
+=20
+-static DEFINE_MUTEX(flow_offload_mutex);
++DEFINE_MUTEX(flow_offload_mutex);
+ static DEFINE_SPINLOCK(ppe_lock);
+=20
+ static const struct rhashtable_params airoha_flow_table_params =3D {
+
+
+What do you think?
+I noticed commit f44218cd5e6a is already applied to net-next. I will post a
+follow-up patch, agree?
+
+Regards,
+Lorenzo
+
+> --=20
+> pw-bot: cr
+
+--3sTRF6na1p3lBxUs
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCab6R4gAKCRA6cBh0uS2t
+rAo2AP0VgofFC019vKtsTfxIA2WGT+rQR//Zf0DpJyAuqtpUWAD9EsknoKEO2zlx
+9aN6ois6lbevq4CS+K7KKEGrqFIfAAs=
+=tUik
+-----END PGP SIGNATURE-----
+
+--3sTRF6na1p3lBxUs--
 
