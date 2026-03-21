@@ -4,73 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43C971094463
-	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Mar 2026 08:58:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A2661094463
+	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Mar 2026 09:44:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=66wFCcfL0O2CkOkKF1K4YbuLtJM9WzeUTscKxfOO7oY=; b=GISnd4kByFGtpZ+A6PURezXLNq
-	a+Z91qFwwDbKrkcA5eEuVK5nRlnUFxRhETdMl3Q5/VPZ2mJ/T6DoXczYssFyjQzM4YZwaie/W04RM
-	G3jEPHxo2BudwyK4qXV8Ug6nV3Zz+fd0v10s0YKAbczU0jYJlGHsQdoY4S5eks5AmMfiPoy6Tn7on
-	LaBC0ykLnt1d7YkQo6j0W6AuNwFaAW0KUzeKCrXXpKEbJnXmes2FOGl4bTO51nQtocFxyEvLqZPJP
-	Dw4+rVtlZdUei7W7lSISaxB1M9kOzQuELK6vNJfOVHl8GnZDwkWWlucgwjAF8zjVXRVKcmJy+h9Ig
-	VnicR66g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lMe5RCjjMGqOJUPF+lkMyEjZGgM4DLVRiFp4XoWGDyA=; b=AIRuoZ19clQkwvmnxWSZuBDLtd
+	zgVyTJohJc2d99H3U6lmJe6o4Yvkxn+creYQQc0CW3NHtfYSeBWpe0Tk7fe+n5TQ32NjbhOKjhjU+
+	+j/13/4VLWdTDsI4Ww7JLsahZ0t4DQLpKfMOBTkiABVi20mJAWkMMrEBFQr5vugKg+l/TWsLHa3QR
+	80XSrSl9Mgd9slUIRlEFQuPJvVIqXXQbYzPAkKWb1naYfwtbAb0MwVBgttEdB2q9EaF6xOeeq0hPi
+	Gf93w6UVzIpLyM9fKJLU2PiDh4oz9zsSFLUNcXlxjKgf5fpHEt5sCSsQb3vvXCpeJeRstqQTxxbax
+	XK6J18aw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3sAF-0000000EHiP-1UQr;
-	Sat, 21 Mar 2026 08:58:35 +0000
+	id 1w3sso-0000000EJlp-1C8t;
+	Sat, 21 Mar 2026 09:44:38 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3sAC-0000000EHi1-2DHF
-	for linux-mediatek@lists.infradead.org;
-	Sat, 21 Mar 2026 08:58:33 +0000
+	id 1w3ssl-0000000EJlM-2edT;
+	Sat, 21 Mar 2026 09:44:36 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9856640E19
-	for <linux-mediatek@lists.infradead.org>; Sat, 21 Mar 2026 08:58:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 79366C2BCB4
-	for <linux-mediatek@lists.infradead.org>; Sat, 21 Mar 2026 08:58:28 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 49712432B1;
+	Sat, 21 Mar 2026 09:44:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F7FBC19421;
+	Sat, 21 Mar 2026 09:44:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774083508;
-	bh=2XHxbPwnxKukyNT67I5mzcaAWXGuDcV1AruFyiB0Bd8=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=oQWM+2+0a1J0ixRPtxTmIis0R0JYOZWP3n3HX53iAsns6Xreszyeocic6+Og5dA8q
-	 +BzkRwqNK4th/1cnSrp2IfAfO6yfTt461eeP2KIABBn93jUh5gyDI+0osVbU6nFg6c
-	 +jYvDo35Bjm50kNARQNpaX0nmbYS7zx5oJeB/gI8VZGEhuEtchSeNbTzMYyjuMhL1U
-	 86OTRfeqxae7bXerF/ntdYbRqEcRFxixCU5VCj8kvoq2cduL1gBWVLXZAmMqapdMak
-	 WC+mrY6kn1iHoUbm/4lBCZKt2a/RdMTrvvSbWLs5aOSmi5VNwMmRnX5Cz6TD4gUUdS
-	 k5kTl0SyQjfyQ==
-Received: by mail-lf1-f41.google.com with SMTP id 2adb3069b0e04-59de8155501so2589491e87.3
-        for <linux-mediatek@lists.infradead.org>; Sat, 21 Mar 2026 01:58:28 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCVVLTio7ikg0LJsKq9aR0ylqBYmVc4GxeOhrc7BTDxcIS1cwXyaaU/W7WUT5wOqtho7bh1YdNzLn5AnVBVRBA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxuy6XSM5/SIAH3OPCb0KHOqftPRJ+qUa3z8yAcYy6fT6NQeK96
-	zSLBFoKfrYlAvVOuGdul22e2qMzFYT1edslecm8iyYJDtXJ7127Gqy1u85mxa8plKSJPE9LMoSK
-	aeWzu607ueaCQGTK+jQA7CKDifAVNzt8=
-X-Received: by 2002:a05:6512:3b0a:b0:5a1:d34e:25d with SMTP id
- 2adb3069b0e04-5a285b071camr1756554e87.18.1774083506738; Sat, 21 Mar 2026
- 01:58:26 -0700 (PDT)
+	s=k20201202; t=1774086274;
+	bh=+FyqSc/pT33KY//yXjdAJJt7KUdidRtWT5vfO6X7t40=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=C7MPmnONJGYhKLNLCg2y3r/vaAIZxMwCKMd6yxn0EDfWwdr+uWJtaJocW38EfJAOH
+	 qhNTELdffSsnTIgargdhVflFxFw04UupLpGb2xdtkax5SPmj19CQHFoZoUfXE+ZY3k
+	 LpzisNLS8QtRbkv8YJfFo01y/iwpv7fDmtfHLUY05x6j/kHRMOpZeFvvgcGF9UJou+
+	 W+tFhsZsjPrDCEgTeKcnaEw+PRG9WgdOO4hFZK7U/bQljZLoScC2Eo7NdY6PtU781E
+	 +cZMIR4bnOnOfvmo0KwJ9lcnDaxN4SUOVCKrHRvGzfPSnQtwPgKfuwoG/ihBH36iV+
+	 zaF5UMf0A1hMw==
+Date: Sat, 21 Mar 2026 09:44:29 +0000
+From: Simon Horman <horms@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net-next] net: airoha: Rework the code flow in
+ airoha_remove() and in airoha_probe() error path
+Message-ID: <20260321094429.GW74886@horms.kernel.org>
+References: <20260320-airoha-remove-rework-v1-1-adeef7e3c01f@kernel.org>
 MIME-Version: 1.0
-References: <CAGp9LzqLbdEb25ocObMMuFPZitrL-UnC7uhaLOkYQN=TgSTmnA@mail.gmail.com>
- <20260319203854.30479-1-lucid_duck@justthetip.ca>
-In-Reply-To: <20260319203854.30479-1-lucid_duck@justthetip.ca>
-From: Sean Wang <sean.wang@kernel.org>
-Date: Sat, 21 Mar 2026 03:58:15 -0500
-X-Gmail-Original-Message-ID: <CAGp9LzpVYj=FVyJX+mm0vSsJL52WEPi=L-6Ev3taViJZ+xL_vw@mail.gmail.com>
-X-Gm-Features: AaiRm52CEIxpNeBsnDo08uYM5XfWpwvzEeFcNwWJAwhqs_1O6X-L42sdV8KzR9E
-Message-ID: <CAGp9LzpVYj=FVyJX+mm0vSsJL52WEPi=L-6Ev3taViJZ+xL_vw@mail.gmail.com>
-Subject: Re: [PATCH v4] wifi: mt76: mt7921: fix txpower reporting from rate
- power configuration
-To: Lucid Duck <lucid_duck@justthetip.ca>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, linux-wireless@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, morrownr@gmail.com, 
-	stable@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260320-airoha-remove-rework-v1-1-adeef7e3c01f@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260321_015832_615959_A41631AC 
-X-CRM114-Status: GOOD (  30.88  )
+X-CRM114-CacheID: sfid-20260321_024435_695268_0D5FE571 
+X-CRM114-Status: GOOD (  16.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,183 +75,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Thu, Mar 19, 2026 at 3:39=E2=80=AFPM Lucid Duck <lucid_duck@justthetip.c=
-a> wrote:
->
-> The mt7921 driver never updates phy->txpower_cur from the rate power
-> configuration sent to firmware, causing mt76_get_txpower() to report
-> bogus values to userspace (typically 3 dBm) regardless of actual
-> regulatory or SAR limits.
->
-> Two issues are addressed:
->
-> 1. The rate power loop in mt76_connac_mcu_rate_txpower_band() computes
->    the correct bounded TX power per channel via
->    mt76_get_rate_power_limits() but discards the return value. Capture
->    it and store to phy->txpower_cur when processing the current
->    channel, matching how mt7915 handles this in
->    mt7915_mcu_set_txpower_sku(). Subtract the multi-chain path delta
->    before storing, since mt76_get_txpower() adds it back when
->    reporting -- consistent with mt7915's use of mt76_get_power_bound()
->    which performs the same subtraction.
->
-> 2. mt7921 uses the chanctx model but its add_chanctx callback does not
->    update phy->chandef, leaving it stale after association. The rate
->    power loop's channel comparison then fails silently. Sync
->    phy->chandef from ctx->def in add_chanctx and change_chanctx, and
->    recompute txpower_cur via a lightweight helper that performs the
->    same bounded power calculation for the current channel without
->    reprogramming firmware rate tables.
->
-> Tested on Alfa AWUS036AXML (MT7921AU), kernel 6.19.8, Canada:
->
->   Before: iw dev wlan0 info shows "txpower 3.00 dBm" (wrong)
->   After:  2.4GHz 36 dBm, 5GHz 23 dBm, 6GHz 12 dBm (match regulatory)
->
-> Cc: stable@vger.kernel.org
-> Fixes: 1c099ab44727 ("mt76: mt7921: add MAC support")
-> Signed-off-by: Lucid Duck <lucid_duck@justthetip.ca>
+On Fri, Mar 20, 2026 at 09:42:28AM +0100, Lorenzo Bianconi wrote:
+> As suggested by Simon in [0], rework the code flow in airoha_remove()
+> and in the airoha_probe() error path in order to rely on a more common
+> approach un-registering configured net-devices first and destroying the
+> hw resources at the end of the code.
+> Introduce airoha_qdma_cleanup routine to release QDMA resources.
+> 
+> [0] https://lore.kernel.org/netdev/20251214-airoha-fix-dev-registration-v1-1-860e027ad4c6@kernel.org/
+> 
+> Suggested-by: Simon Horman <horms@kernel.org>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > ---
-> Changes since v3:
-> - Removed mt7921_set_tx_sar_pwr() from add_chanctx and change_chanctx.
->   Channel transitions don't change underlying power constraints, so
->   reprogramming the full rate table is unnecessary. Replaced with a
->   lightweight helper that recomputes txpower_cur locally.
-> - Removed IEEE80211_CONF_CHANGE_CHANNEL trigger from config().
-> - Removed BSS_CHANGED_TXPOWER handler from bss_info_changed(). Writing
->   per-vif txpower into per-HW hw->conf.power_level breaks multi-vif
->   semantics. User txpower limits need a different approach (follow-up).
-> - Subtracted path delta before storing txpower_cur. The connac rate
->   loop stores total bounded power, but mt76_get_txpower() adds the
->   multi-chain path delta when reporting. mt7915 accounts for this via
->   mt76_get_power_bound(), which subtracts the delta before storing.
->   Without the same subtraction, reported values were inflated by 3 dBm
->   on 2x2 devices.
->
->  .../wireless/mediatek/mt76/mt76_connac_mcu.c  | 14 +++++++--
->  .../net/wireless/mediatek/mt76/mt7921/main.c  | 30 +++++++++++++++++++
->  2 files changed, 41 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drive=
-rs/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> index 16db0f208..e26a2cb39 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> @@ -2193,14 +2193,22 @@ mt76_connac_mcu_rate_txpower_band(struct mt76_phy=
- *phy,
->                                 .hw_value =3D ch_list[idx],
->                                 .band =3D band,
->                         };
-> -                       s8 reg_power, sar_power;
-> +                       s8 reg_power, sar_power, max_power;
->
->                         reg_power =3D mt76_connac_get_ch_power(phy, &chan=
-,
->                                                              tx_power);
->                         sar_power =3D mt76_get_sar_power(phy, &chan, reg_=
-power);
->
-> -                       mt76_get_rate_power_limits(phy, &chan, limits,
-> -                                                  sar_power);
-> +                       max_power =3D mt76_get_rate_power_limits(phy, &ch=
-an,
-> +                                                              limits,
-> +                                                              sar_power)=
-;
-> +
-> +                       if (phy->chandef.chan &&
-> +                           phy->chandef.chan->hw_value =3D=3D ch_list[id=
-x] &&
-> +                           phy->chandef.chan->band =3D=3D band)
-> +                               phy->txpower_cur =3D max_power -
-> +                                       mt76_tx_power_path_delta(
-> +                                               hweight16(phy->chainmask)=
-);
->
->                         tx_power_tlv.last_msg =3D ch_list[idx] =3D=3D las=
-t_ch;
->                         sku_tlbv.channel =3D ch_list[idx];
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/n=
-et/wireless/mediatek/mt76/mt7921/main.c
-> index 5881040ac..a77ae5791 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> @@ -1355,13 +1355,39 @@ mt7921_stop_ap(struct ieee80211_hw *hw, struct ie=
-ee80211_vif *vif,
->         mt792x_mutex_release(dev);
->  }
->
-> +static void mt7921_update_txpower_cur(struct mt76_phy *phy)
-> +{
-> +       struct mt76_power_limits limits;
-> +       struct ieee80211_channel *chan =3D phy->chandef.chan;
-> +       int n_chains =3D hweight16(phy->chainmask);
-> +       s8 reg_power, sar_power, max_power;
-> +       int tx_power;
-> +
-> +       if (!chan)
-> +               return;
-> +
-> +       tx_power =3D 2 * phy->hw->conf.power_level;
-> +       if (!tx_power)
-> +               tx_power =3D 127;
-> +
-> +       reg_power =3D mt76_connac_get_ch_power(phy, chan, tx_power);
-> +       sar_power =3D mt76_get_sar_power(phy, chan, reg_power);
-> +       max_power =3D mt76_get_rate_power_limits(phy, chan, &limits, sar_=
-power);
-> +
-> +       phy->txpower_cur =3D max_power - mt76_tx_power_path_delta(n_chain=
-s);
-> +}
-> +
->  static int
->  mt7921_add_chanctx(struct ieee80211_hw *hw,
->                    struct ieee80211_chanctx_conf *ctx)
->  {
->         struct mt792x_dev *dev =3D mt792x_hw_dev(hw);
-> +       struct mt76_phy *mphy =3D hw->priv;
->
->         dev->new_ctx =3D ctx;
-> +       mphy->chandef =3D ctx->def;
-> +       mt7921_update_txpower_cur(mphy);
-> +
+>  drivers/net/ethernet/airoha/airoha_eth.c | 82 ++++++++++++++++++--------------
+>  1 file changed, 47 insertions(+), 35 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
 
-I don't think this is the right fix.
+...
 
-This mixes multiple things in one patch and duplicates the same power
-limit calculation in shared connac code and mt7921-specific code.
+> @@ -3028,7 +3044,7 @@ static int airoha_probe(struct platform_device *pdev)
+>  
+>  	err = airoha_hw_init(pdev, eth);
+>  	if (err)
+> -		goto error_hw_cleanup;
+> +		return err;
 
-The issue is in txpower reporting. A channel context is just a view of
-the current PHY configuration and should not be used to overwrite PHY
-state.
+Hi Lorenzo,
 
-I think this needs to be reworked in a cleaner way, with the shared
-logic kept in shared code and the reporting side fixed in the common
-mt792x path so it can apply cleanly to both mt7921 and mt7925.
+AI generated review warns that eth->napi_dev is leaked here.
+And that does seem to be the case.
 
-Given the points above, I'd prefer not to keep iterating on the current
-approach for v5. I'll try to rework this along the lines above and send
-an updated version.
+>  
+>  	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
+>  		airoha_qdma_start_napi(&eth->qdma[i]);
 
->         return 0;
->  }
->
-> @@ -1396,6 +1422,10 @@ mt7921_change_chanctx(struct ieee80211_hw *hw,
->                 mt7921_mcu_config_sniffer(mvif, ctx);
->         else
->                 mt76_connac_mcu_uni_set_chctx(mvif->phy->mt76, &mvif->bss=
-_conf.mt76, ctx);
-> +
-> +       phy->mt76->chandef =3D ctx->def;
-> +       mt7921_update_txpower_cur(phy->mt76);
-> +
->         mt792x_mutex_release(phy->dev);
->  }
->
-> --
-> 2.53.0
->
+...
 
