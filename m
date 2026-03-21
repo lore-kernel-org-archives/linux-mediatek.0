@@ -4,122 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1933F108B8FF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Mar 2026 03:11:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43C971094463
+	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Mar 2026 08:58:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Lrf38SGeQgWRI8VBvILQ9iCq2EKMByfyij1bjFBr21s=; b=gPlLikX5/Gyb/5BxfQtzGy3FMM
-	TueGB6UgWj7uUdneb/k6Q/mdpmOyGMalYtWpmqW49UcgbRMKcLGXECZAdK3IUA+XZ9HLAS/scCUDs
-	DVbg/N2Glix2NuIXVYK02npLtspYzNOUX7Il9Tq+t1b1JpMjCgF7yUICzf6yX7XugWeuLVHWH0yy7
-	15vJM+UisWHltiVV9d4oTUIRuIopRUI2kowHe66JK8WYyav/Ja2BLWfVblEp5x/YyhSQMsxbTFmgt
-	ie+1PIbPaYbKvdlEdWaTsnXAxLaDLzpIUb3IJMlbnTeD4VfY0TNZ1ZfQhdmtcF7rNZ8VrW9+wFpZo
-	PM502n+Q==;
+	bh=66wFCcfL0O2CkOkKF1K4YbuLtJM9WzeUTscKxfOO7oY=; b=GISnd4kByFGtpZ+A6PURezXLNq
+	a+Z91qFwwDbKrkcA5eEuVK5nRlnUFxRhETdMl3Q5/VPZ2mJ/T6DoXczYssFyjQzM4YZwaie/W04RM
+	G3jEPHxo2BudwyK4qXV8Ug6nV3Zz+fd0v10s0YKAbczU0jYJlGHsQdoY4S5eks5AmMfiPoy6Tn7on
+	LaBC0ykLnt1d7YkQo6j0W6AuNwFaAW0KUzeKCrXXpKEbJnXmes2FOGl4bTO51nQtocFxyEvLqZPJP
+	Dw4+rVtlZdUei7W7lSISaxB1M9kOzQuELK6vNJfOVHl8GnZDwkWWlucgwjAF8zjVXRVKcmJy+h9Ig
+	VnicR66g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3mk2-0000000Dwv2-1A4a;
-	Sat, 21 Mar 2026 03:11:10 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1w3sAF-0000000EHiP-1UQr;
+	Sat, 21 Mar 2026 08:58:35 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3mjz-0000000DwuA-0iqj;
-	Sat, 21 Mar 2026 03:11:09 +0000
-Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 62L1Ggvn050675;
-	Sat, 21 Mar 2026 03:10:37 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:date:from:in-reply-to:message-id
-	:mime-version:references:subject:to; s=qcppdkim1; bh=Lrf38SGeQgW
-	RI8VBvILQ9iCq2EKMByfyij1bjFBr21s=; b=IWkC8bjFj4TrXyO+oDwNDXFH29/
-	fkFldMJdfpnaUbdGsuCqec2zzm7LzemmxSc8BEDTLIzJp547gi1NkquGYu9pMUMf
-	N9VlBMz59/t2utuXgJB0WcSvw4DgrV/6cyicQY1L0r4ITNffFuWnlf296/O3BtUZ
-	KWfKec191GOhqKvl7j8f8PyU2bJnJxq/Va0H7900pCKGw70PkkGvb0VGN7ZZ15/P
-	N/+8PcoDZURRXAcsZoINapA+vQVhBsa50fmc1irEASOMKMkbNpT5EiK6POWJBbUt
-	xB4KtuF9pscUOPmTx2DhDseF0V9NzrEI37Q0TSJVR9gykZkdF37YnzkzKpg==
-Received: from nalasppmta01.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4d1evr0cby-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Sat, 21 Mar 2026 03:10:37 +0000 (GMT)
-Received: from pps.filterd (NALASPPMTA01.qualcomm.com [127.0.0.1])
-	by NALASPPMTA01.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTP id 62L3AacW029147;
-	Sat, 21 Mar 2026 03:10:36 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
-	by NALASPPMTA01.qualcomm.com (PPS) with ESMTPS id 4d0tph0xwr-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Sat, 21 Mar 2026 03:10:36 +0000
-Received: from NALASPPMTA01.qualcomm.com (NALASPPMTA01.qualcomm.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 62L3AZux029139;
-	Sat, 21 Mar 2026 03:10:36 GMT
-Received: from hu-devc-lv-u22-c.qualcomm.com (hu-cang-lv.qualcomm.com [10.81.25.255])
-	by NALASPPMTA01.qualcomm.com (PPS) with ESMTPS id 62L3AZpv029135
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Sat, 21 Mar 2026 03:10:35 +0000
-Received: by hu-devc-lv-u22-c.qualcomm.com (Postfix, from userid 359480)
-	id 90C0B5A8; Fri, 20 Mar 2026 20:10:35 -0700 (PDT)
-From: Can Guo <can.guo@oss.qualcomm.com>
-To: avri.altman@wdc.com, bvanassche@acm.org, beanhuo@micron.com,
-        peter.wang@mediatek.com, martin.petersen@oracle.com, mani@kernel.org
-Cc: linux-scsi@vger.kernel.org, Can Guo <can.guo@oss.qualcomm.com>,
-        Alim Akhtar <alim.akhtar@samsung.com>,
-        "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
-        Sai Krishna Potthuri <sai.krishna.potthuri@amd.com>,
-        Ajay Neeli <ajay.neeli@amd.com>,
-        Peter Griffin <peter.griffin@linaro.org>,
-        Krzysztof Kozlowski <krzk@kernel.org>,
-        Chaotian Jing <chaotian.jing@mediatek.com>,
-        Stanley Jhu <chu.stanley@gmail.com>, Orson Zhai <orsonzhai@gmail.com>,
-        Baolin Wang <baolin.wang@linux.alibaba.com>,
-        Chunyan Zhang <zhang.lyra@gmail.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        "Bao D. Nguyen" <quic_nguyenb@quicinc.com>,
-        Adrian Hunter <adrian.hunter@intel.com>,
-        Archana Patni <archana.patni@intel.com>,
-        linux-kernel@vger.kernel.org (open list),
-        linux-samsung-soc@vger.kernel.org (open list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER...),
-        linux-arm-kernel@lists.infradead.org (moderated list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES),
-        linux-mediatek@lists.infradead.org (moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER...),
-        linux-arm-msm@vger.kernel.org (open list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER...)
-Subject: [PATCH v4 01/12] scsi: ufs: core: Introduce a new ufshcd vops negotiate_pwr_mode()
-Date: Fri, 20 Mar 2026 20:10:10 -0700
-Message-Id: <20260321031021.1722459-2-can.guo@oss.qualcomm.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260321031021.1722459-1-can.guo@oss.qualcomm.com>
-References: <20260321031021.1722459-1-can.guo@oss.qualcomm.com>
+	id 1w3sAC-0000000EHi1-2DHF
+	for linux-mediatek@lists.infradead.org;
+	Sat, 21 Mar 2026 08:58:33 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 9856640E19
+	for <linux-mediatek@lists.infradead.org>; Sat, 21 Mar 2026 08:58:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 79366C2BCB4
+	for <linux-mediatek@lists.infradead.org>; Sat, 21 Mar 2026 08:58:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1774083508;
+	bh=2XHxbPwnxKukyNT67I5mzcaAWXGuDcV1AruFyiB0Bd8=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=oQWM+2+0a1J0ixRPtxTmIis0R0JYOZWP3n3HX53iAsns6Xreszyeocic6+Og5dA8q
+	 +BzkRwqNK4th/1cnSrp2IfAfO6yfTt461eeP2KIABBn93jUh5gyDI+0osVbU6nFg6c
+	 +jYvDo35Bjm50kNARQNpaX0nmbYS7zx5oJeB/gI8VZGEhuEtchSeNbTzMYyjuMhL1U
+	 86OTRfeqxae7bXerF/ntdYbRqEcRFxixCU5VCj8kvoq2cduL1gBWVLXZAmMqapdMak
+	 WC+mrY6kn1iHoUbm/4lBCZKt2a/RdMTrvvSbWLs5aOSmi5VNwMmRnX5Cz6TD4gUUdS
+	 k5kTl0SyQjfyQ==
+Received: by mail-lf1-f41.google.com with SMTP id 2adb3069b0e04-59de8155501so2589491e87.3
+        for <linux-mediatek@lists.infradead.org>; Sat, 21 Mar 2026 01:58:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCVVLTio7ikg0LJsKq9aR0ylqBYmVc4GxeOhrc7BTDxcIS1cwXyaaU/W7WUT5wOqtho7bh1YdNzLn5AnVBVRBA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxuy6XSM5/SIAH3OPCb0KHOqftPRJ+qUa3z8yAcYy6fT6NQeK96
+	zSLBFoKfrYlAvVOuGdul22e2qMzFYT1edslecm8iyYJDtXJ7127Gqy1u85mxa8plKSJPE9LMoSK
+	aeWzu607ueaCQGTK+jQA7CKDifAVNzt8=
+X-Received: by 2002:a05:6512:3b0a:b0:5a1:d34e:25d with SMTP id
+ 2adb3069b0e04-5a285b071camr1756554e87.18.1774083506738; Sat, 21 Mar 2026
+ 01:58:26 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-QCInternal: smtphost
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: iRWD2egEx7r7PBfgORhlyCMt4Nkqx0Uv
-X-Authority-Analysis: v=2.4 cv=Xur3+FF9 c=1 sm=1 tr=0 ts=69be0c2d cx=c_pps
- a=ouPCqIW2jiPt+lZRy3xVPw==:117 a=ouPCqIW2jiPt+lZRy3xVPw==:17
- a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
- a=yx91gb_oNiZeI1HMLzn7:22 a=EUspDBNiAAAA:8 a=X2XqvsTP97Ls3wiON34A:9
-X-Proofpoint-GUID: iRWD2egEx7r7PBfgORhlyCMt4Nkqx0Uv
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzIxMDAyNCBTYWx0ZWRfX2Ji1DfzDJ9Su
- p/YPNFSbf6kADockxVNgRpBG76/L/BWYV2pvbSSHU35XyzmwFsUR1RwY28QAId4utqqRvlrvloh
- sJQG1pw+7g64fswx3/ch+r4I5v8ZW5LO6BTx+KWRPqoyd8suo5zkNxWo/4xJSCcUxRntMNbzMM4
- /UpEm4U0V9PSOCEEMmaK38fZSAxwuHBIGrgXMlUWYkuvidhwqc0SceTgxGZkQPQH3K/IcwH+VYV
- XzGjeWBSHnkKlZ78dtDDHBS8VmO3rAF/dBw1d72RmFtKl5YQ6oCVmR6TD2Qlf87siD0wOAXLH4Z
- E3jqViZwNAu1Bb0cF2YHzIcaiI5jHs8EBhN2S4qmqKN432x8Bj3tbfNGsOWf2KNLQ4n/SCB+K/E
- vCMv2bgWcqQ0sRLzmMiEQwx4n/40yd3XYFt2/0uQZDcm4XNgkxfo+/TzugGLFmFaSV+/FCuGZbh
- Ctj9HVlhd/jDNricl2A==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-03-21_01,2026-03-20_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 impostorscore=0 lowpriorityscore=0 clxscore=1015
- phishscore=0 malwarescore=0 bulkscore=0 spamscore=0 adultscore=0
- suspectscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2603050001
- definitions=main-2603210024
+References: <CAGp9LzqLbdEb25ocObMMuFPZitrL-UnC7uhaLOkYQN=TgSTmnA@mail.gmail.com>
+ <20260319203854.30479-1-lucid_duck@justthetip.ca>
+In-Reply-To: <20260319203854.30479-1-lucid_duck@justthetip.ca>
+From: Sean Wang <sean.wang@kernel.org>
+Date: Sat, 21 Mar 2026 03:58:15 -0500
+X-Gmail-Original-Message-ID: <CAGp9LzpVYj=FVyJX+mm0vSsJL52WEPi=L-6Ev3taViJZ+xL_vw@mail.gmail.com>
+X-Gm-Features: AaiRm52CEIxpNeBsnDo08uYM5XfWpwvzEeFcNwWJAwhqs_1O6X-L42sdV8KzR9E
+Message-ID: <CAGp9LzpVYj=FVyJX+mm0vSsJL52WEPi=L-6Ev3taViJZ+xL_vw@mail.gmail.com>
+Subject: Re: [PATCH v4] wifi: mt76: mt7921: fix txpower reporting from rate
+ power configuration
+To: Lucid Duck <lucid_duck@justthetip.ca>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, linux-wireless@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, morrownr@gmail.com, 
+	stable@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260320_201108_102508_E1F161F1 
-X-CRM114-Status: GOOD (  24.52  )
+X-CRM114-CacheID: sfid-20260321_015832_615959_A41631AC 
+X-CRM114-Status: GOOD (  30.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,572 +85,183 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Most vendor specific implemenations of vops pwr_change_notify(PRE_CHANGE)
-are fulfilling two things at once:
-- Vendor specific target power mode negotiation
-- Vendor specific power mode change preparation
+Hi,
 
-When TX Equalization is added into consideration, before power mode change
-to a target power mode, TX Equalization Training (EQTR) needs be done for
-that target power mode. In addition, UFSHCI spec requires to start TX EQTR
-from HS-G1 (the most reliable High Speed Gear).
+On Thu, Mar 19, 2026 at 3:39=E2=80=AFPM Lucid Duck <lucid_duck@justthetip.c=
+a> wrote:
+>
+> The mt7921 driver never updates phy->txpower_cur from the rate power
+> configuration sent to firmware, causing mt76_get_txpower() to report
+> bogus values to userspace (typically 3 dBm) regardless of actual
+> regulatory or SAR limits.
+>
+> Two issues are addressed:
+>
+> 1. The rate power loop in mt76_connac_mcu_rate_txpower_band() computes
+>    the correct bounded TX power per channel via
+>    mt76_get_rate_power_limits() but discards the return value. Capture
+>    it and store to phy->txpower_cur when processing the current
+>    channel, matching how mt7915 handles this in
+>    mt7915_mcu_set_txpower_sku(). Subtract the multi-chain path delta
+>    before storing, since mt76_get_txpower() adds it back when
+>    reporting -- consistent with mt7915's use of mt76_get_power_bound()
+>    which performs the same subtraction.
+>
+> 2. mt7921 uses the chanctx model but its add_chanctx callback does not
+>    update phy->chandef, leaving it stale after association. The rate
+>    power loop's channel comparison then fails silently. Sync
+>    phy->chandef from ctx->def in add_chanctx and change_chanctx, and
+>    recompute txpower_cur via a lightweight helper that performs the
+>    same bounded power calculation for the current channel without
+>    reprogramming firmware rate tables.
+>
+> Tested on Alfa AWUS036AXML (MT7921AU), kernel 6.19.8, Canada:
+>
+>   Before: iw dev wlan0 info shows "txpower 3.00 dBm" (wrong)
+>   After:  2.4GHz 36 dBm, 5GHz 23 dBm, 6GHz 12 dBm (match regulatory)
+>
+> Cc: stable@vger.kernel.org
+> Fixes: 1c099ab44727 ("mt76: mt7921: add MAC support")
+> Signed-off-by: Lucid Duck <lucid_duck@justthetip.ca>
+> ---
+> Changes since v3:
+> - Removed mt7921_set_tx_sar_pwr() from add_chanctx and change_chanctx.
+>   Channel transitions don't change underlying power constraints, so
+>   reprogramming the full rate table is unnecessary. Replaced with a
+>   lightweight helper that recomputes txpower_cur locally.
+> - Removed IEEE80211_CONF_CHANGE_CHANNEL trigger from config().
+> - Removed BSS_CHANGED_TXPOWER handler from bss_info_changed(). Writing
+>   per-vif txpower into per-HW hw->conf.power_level breaks multi-vif
+>   semantics. User txpower limits need a different approach (follow-up).
+> - Subtracted path delta before storing txpower_cur. The connac rate
+>   loop stores total bounded power, but mt76_get_txpower() adds the
+>   multi-chain path delta when reporting. mt7915 accounts for this via
+>   mt76_get_power_bound(), which subtracts the delta before storing.
+>   Without the same subtraction, reported values were inflated by 3 dBm
+>   on 2x2 devices.
+>
+>  .../wireless/mediatek/mt76/mt76_connac_mcu.c  | 14 +++++++--
+>  .../net/wireless/mediatek/mt76/mt7921/main.c  | 30 +++++++++++++++++++
+>  2 files changed, 41 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drive=
+rs/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+> index 16db0f208..e26a2cb39 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+> @@ -2193,14 +2193,22 @@ mt76_connac_mcu_rate_txpower_band(struct mt76_phy=
+ *phy,
+>                                 .hw_value =3D ch_list[idx],
+>                                 .band =3D band,
+>                         };
+> -                       s8 reg_power, sar_power;
+> +                       s8 reg_power, sar_power, max_power;
+>
+>                         reg_power =3D mt76_connac_get_ch_power(phy, &chan=
+,
+>                                                              tx_power);
+>                         sar_power =3D mt76_get_sar_power(phy, &chan, reg_=
+power);
+>
+> -                       mt76_get_rate_power_limits(phy, &chan, limits,
+> -                                                  sar_power);
+> +                       max_power =3D mt76_get_rate_power_limits(phy, &ch=
+an,
+> +                                                              limits,
+> +                                                              sar_power)=
+;
+> +
+> +                       if (phy->chandef.chan &&
+> +                           phy->chandef.chan->hw_value =3D=3D ch_list[id=
+x] &&
+> +                           phy->chandef.chan->band =3D=3D band)
+> +                               phy->txpower_cur =3D max_power -
+> +                                       mt76_tx_power_path_delta(
+> +                                               hweight16(phy->chainmask)=
+);
+>
+>                         tx_power_tlv.last_msg =3D ch_list[idx] =3D=3D las=
+t_ch;
+>                         sku_tlbv.channel =3D ch_list[idx];
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/n=
+et/wireless/mediatek/mt76/mt7921/main.c
+> index 5881040ac..a77ae5791 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> @@ -1355,13 +1355,39 @@ mt7921_stop_ap(struct ieee80211_hw *hw, struct ie=
+ee80211_vif *vif,
+>         mt792x_mutex_release(dev);
+>  }
+>
+> +static void mt7921_update_txpower_cur(struct mt76_phy *phy)
+> +{
+> +       struct mt76_power_limits limits;
+> +       struct ieee80211_channel *chan =3D phy->chandef.chan;
+> +       int n_chains =3D hweight16(phy->chainmask);
+> +       s8 reg_power, sar_power, max_power;
+> +       int tx_power;
+> +
+> +       if (!chan)
+> +               return;
+> +
+> +       tx_power =3D 2 * phy->hw->conf.power_level;
+> +       if (!tx_power)
+> +               tx_power =3D 127;
+> +
+> +       reg_power =3D mt76_connac_get_ch_power(phy, chan, tx_power);
+> +       sar_power =3D mt76_get_sar_power(phy, chan, reg_power);
+> +       max_power =3D mt76_get_rate_power_limits(phy, chan, &limits, sar_=
+power);
+> +
+> +       phy->txpower_cur =3D max_power - mt76_tx_power_path_delta(n_chain=
+s);
+> +}
+> +
+>  static int
+>  mt7921_add_chanctx(struct ieee80211_hw *hw,
+>                    struct ieee80211_chanctx_conf *ctx)
+>  {
+>         struct mt792x_dev *dev =3D mt792x_hw_dev(hw);
+> +       struct mt76_phy *mphy =3D hw->priv;
+>
+>         dev->new_ctx =3D ctx;
+> +       mphy->chandef =3D ctx->def;
+> +       mt7921_update_txpower_cur(mphy);
+> +
 
-Adding TX EQTR before pwr_change_notify(PRE_CHANGE) is not applicable
-because we don't know the negotiated power mode yet.
+I don't think this is the right fix.
 
-Adding TX EQTR post pwr_change_notify(PRE_CHANGE) is inappropriate
-because pwr_change_notify(PRE_CHANGE) has finished preparation for a power
-mode change to negotiated power mode, yet we are changing power mode to
-HS-G1 for TX EQTR.
+This mixes multiple things in one patch and duplicates the same power
+limit calculation in shared connac code and mt7921-specific code.
 
-Add a new vops negotiate_pwr_mode() so that vendor specific power mode
-negotiation can be fulfilled in its vendor specific implementations.
-Later on, TX EQTR can be added post vops negotiate_pwr_mode() and before
-vops pwr_change_notify(PRE_CHANGE).
+The issue is in txpower reporting. A channel context is just a view of
+the current PHY configuration and should not be used to overwrite PHY
+state.
 
-Signed-off-by: Can Guo <can.guo@oss.qualcomm.com>
----
- drivers/ufs/core/ufshcd-priv.h     | 14 +++++-
- drivers/ufs/core/ufshcd.c          | 70 ++++++++++++++++++++++++------
- drivers/ufs/host/ufs-amd-versal2.c |  3 --
- drivers/ufs/host/ufs-exynos.c      | 34 +++++++--------
- drivers/ufs/host/ufs-hisi.c        | 23 +++++-----
- drivers/ufs/host/ufs-mediatek.c    | 40 ++++++++---------
- drivers/ufs/host/ufs-qcom.c        | 24 +++++-----
- drivers/ufs/host/ufs-sprd.c        |  3 --
- drivers/ufs/host/ufshcd-pci.c      |  6 +--
- include/ufs/ufshcd.h               | 17 +++++---
- 10 files changed, 143 insertions(+), 91 deletions(-)
+I think this needs to be reworked in a cleaner way, with the shared
+logic kept in shared code and the reporting side fixed in the common
+mt792x path so it can apply cleanly to both mt7921 and mt7925.
 
-diff --git a/drivers/ufs/core/ufshcd-priv.h b/drivers/ufs/core/ufshcd-priv.h
-index 7d6d19361af9..3b6958d9297a 100644
---- a/drivers/ufs/core/ufshcd-priv.h
-+++ b/drivers/ufs/core/ufshcd-priv.h
-@@ -167,14 +167,24 @@ static inline int ufshcd_vops_link_startup_notify(struct ufs_hba *hba,
- 	return 0;
- }
- 
-+static inline int ufshcd_vops_negotiate_pwr_mode(struct ufs_hba *hba,
-+						 const struct ufs_pa_layer_attr *dev_max_params,
-+						 struct ufs_pa_layer_attr *dev_req_params)
-+{
-+	if (hba->vops && hba->vops->negotiate_pwr_mode)
-+		return hba->vops->negotiate_pwr_mode(hba, dev_max_params,
-+					dev_req_params);
-+
-+	return -ENOTSUPP;
-+}
-+
- static inline int ufshcd_vops_pwr_change_notify(struct ufs_hba *hba,
- 				enum ufs_notify_change_status status,
--				const struct ufs_pa_layer_attr *dev_max_params,
- 				struct ufs_pa_layer_attr *dev_req_params)
- {
- 	if (hba->vops && hba->vops->pwr_change_notify)
- 		return hba->vops->pwr_change_notify(hba, status,
--					dev_max_params, dev_req_params);
-+					dev_req_params);
- 
- 	return -ENOTSUPP;
- }
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 8349fe2090db..91b5d5b02d22 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -335,8 +335,6 @@ static void ufshcd_suspend_clkscaling(struct ufs_hba *hba);
- static int ufshcd_scale_clks(struct ufs_hba *hba, unsigned long freq,
- 			     bool scale_up);
- static irqreturn_t ufshcd_intr(int irq, void *__hba);
--static int ufshcd_change_power_mode(struct ufs_hba *hba,
--			     struct ufs_pa_layer_attr *pwr_mode);
- static int ufshcd_setup_hba_vreg(struct ufs_hba *hba, bool on);
- static int ufshcd_setup_vreg(struct ufs_hba *hba, bool on);
- static inline int ufshcd_config_vreg_hpm(struct ufs_hba *hba,
-@@ -4662,8 +4660,26 @@ static int ufshcd_get_max_pwr_mode(struct ufs_hba *hba)
- 	return 0;
- }
- 
--static int ufshcd_change_power_mode(struct ufs_hba *hba,
--			     struct ufs_pa_layer_attr *pwr_mode)
-+/**
-+ * ufshcd_dme_change_power_mode() - UniPro DME Power Mode change sequence
-+ * @hba: per-adapter instance
-+ * @pwr_mode: pointer to the target power mode (gear/lane) attributes
-+ *
-+ * This function handles the low-level DME (Device Management Entity)
-+ * configuration required to transition the UFS link to a new power mode. It
-+ * performs the following steps:
-+ * 1. Checks if the requested mode matches the current state.
-+ * 2. Sets M-PHY and UniPro attributes including Gear (PA_RXGEAR/TXGEAR),
-+ *    Lanes, Termination, and HS Series (PA_HSSERIES).
-+ * 3. Configures default UniPro timeout values (DL_FC0, etc.) unless
-+ *    explicitly skipped via quirks.
-+ * 4. Triggers the actual hardware mode change via ufshcd_uic_change_pwr_mode().
-+ * 5. Updates the HBA's cached power information on success.
-+ *
-+ * Return: 0 on success, non-zero error code on failure.
-+ */
-+static int ufshcd_dme_change_power_mode(struct ufs_hba *hba,
-+					struct ufs_pa_layer_attr *pwr_mode)
- {
- 	int ret;
- 
-@@ -4747,6 +4763,34 @@ static int ufshcd_change_power_mode(struct ufs_hba *hba,
- 	return ret;
- }
- 
-+/**
-+ * ufshcd_change_power_mode() - Change UFS Link Power Mode
-+ * @hba: per-adapter instance
-+ * @pwr_mode: pointer to the target power mode (gear/lane) attributes
-+ *
-+ * This function handles the high-level sequence for changing the UFS link
-+ * power mode. It triggers vendor-specific pre-change notification,
-+ * executes the DME (Device Management Entity) power mode change sequence,
-+ * and, upon success, triggers vendor-specific post-change notification.
-+ *
-+ * Return: 0 on success, non-zero error code on failure.
-+ */
-+int ufshcd_change_power_mode(struct ufs_hba *hba,
-+			     struct ufs_pa_layer_attr *pwr_mode)
-+{
-+	int ret;
-+
-+	ufshcd_vops_pwr_change_notify(hba, PRE_CHANGE, pwr_mode);
-+
-+	ret = ufshcd_dme_change_power_mode(hba, pwr_mode);
-+
-+	if (!ret)
-+		ufshcd_vops_pwr_change_notify(hba, POST_CHANGE, pwr_mode);
-+
-+	return ret;
-+}
-+EXPORT_SYMBOL_GPL(ufshcd_change_power_mode);
-+
- /**
-  * ufshcd_config_pwr_mode - configure a new power mode
-  * @hba: per-adapter instance
-@@ -4760,19 +4804,17 @@ int ufshcd_config_pwr_mode(struct ufs_hba *hba,
- 	struct ufs_pa_layer_attr final_params = { 0 };
- 	int ret;
- 
--	ret = ufshcd_vops_pwr_change_notify(hba, PRE_CHANGE,
--					desired_pwr_mode, &final_params);
-+	ret = ufshcd_vops_negotiate_pwr_mode(hba, desired_pwr_mode,
-+					     &final_params);
-+	if (ret) {
-+		if (ret != -ENOTSUPP)
-+			dev_err(hba->dev, "Failed to negotiate power mode: %d, use desired as is\n",
-+				ret);
- 
--	if (ret)
- 		memcpy(&final_params, desired_pwr_mode, sizeof(final_params));
-+	}
- 
--	ret = ufshcd_change_power_mode(hba, &final_params);
--
--	if (!ret)
--		ufshcd_vops_pwr_change_notify(hba, POST_CHANGE, NULL,
--					&final_params);
--
--	return ret;
-+	return ufshcd_change_power_mode(hba, &final_params);
- }
- EXPORT_SYMBOL_GPL(ufshcd_config_pwr_mode);
- 
-diff --git a/drivers/ufs/host/ufs-amd-versal2.c b/drivers/ufs/host/ufs-amd-versal2.c
-index 40543db621a1..52031b7256fd 100644
---- a/drivers/ufs/host/ufs-amd-versal2.c
-+++ b/drivers/ufs/host/ufs-amd-versal2.c
-@@ -443,7 +443,6 @@ static int ufs_versal2_phy_ratesel(struct ufs_hba *hba, u32 activelanes, u32 rx_
- }
- 
- static int ufs_versal2_pwr_change_notify(struct ufs_hba *hba, enum ufs_notify_change_status status,
--					 const struct ufs_pa_layer_attr *dev_max_params,
- 					 struct ufs_pa_layer_attr *dev_req_params)
- {
- 	struct ufs_versal2_host *host = ufshcd_get_variant(hba);
-@@ -451,8 +450,6 @@ static int ufs_versal2_pwr_change_notify(struct ufs_hba *hba, enum ufs_notify_ch
- 	int ret = 0;
- 
- 	if (status == PRE_CHANGE) {
--		memcpy(dev_req_params, dev_max_params, sizeof(struct ufs_pa_layer_attr));
--
- 		/* If it is not a calibrated part, switch PWRMODE to SLOW_MODE */
- 		if (!host->attcompval0 && !host->attcompval1 && !host->ctlecompval0 &&
- 		    !host->ctlecompval1) {
-diff --git a/drivers/ufs/host/ufs-exynos.c b/drivers/ufs/host/ufs-exynos.c
-index 76fee3a79c77..77a6c8e44485 100644
---- a/drivers/ufs/host/ufs-exynos.c
-+++ b/drivers/ufs/host/ufs-exynos.c
-@@ -818,12 +818,10 @@ static u32 exynos_ufs_get_hs_gear(struct ufs_hba *hba)
- }
- 
- static int exynos_ufs_pre_pwr_mode(struct ufs_hba *hba,
--				const struct ufs_pa_layer_attr *dev_max_params,
- 				struct ufs_pa_layer_attr *dev_req_params)
- {
- 	struct exynos_ufs *ufs = ufshcd_get_variant(hba);
- 	struct phy *generic_phy = ufs->phy;
--	struct ufs_host_params host_params;
- 	int ret;
- 
- 	if (!dev_req_params) {
-@@ -832,18 +830,6 @@ static int exynos_ufs_pre_pwr_mode(struct ufs_hba *hba,
- 		goto out;
- 	}
- 
--	ufshcd_init_host_params(&host_params);
--
--	/* This driver only support symmetric gear setting e.g. hs_tx_gear == hs_rx_gear */
--	host_params.hs_tx_gear = exynos_ufs_get_hs_gear(hba);
--	host_params.hs_rx_gear = exynos_ufs_get_hs_gear(hba);
--
--	ret = ufshcd_negotiate_pwr_params(&host_params, dev_max_params, dev_req_params);
--	if (ret) {
--		pr_err("%s: failed to determine capabilities\n", __func__);
--		goto out;
--	}
--
- 	if (ufs->drv_data->pre_pwr_change)
- 		ufs->drv_data->pre_pwr_change(ufs, dev_req_params);
- 
-@@ -1677,17 +1663,30 @@ static int exynos_ufs_link_startup_notify(struct ufs_hba *hba,
- 	return ret;
- }
- 
-+static int exynos_ufs_negotiate_pwr_mode(struct ufs_hba *hba,
-+					 const struct ufs_pa_layer_attr *dev_max_params,
-+					 struct ufs_pa_layer_attr *dev_req_params)
-+{
-+	struct ufs_host_params host_params;
-+
-+	ufshcd_init_host_params(&host_params);
-+
-+	/* This driver only support symmetric gear setting e.g. hs_tx_gear == hs_rx_gear */
-+	host_params.hs_tx_gear = exynos_ufs_get_hs_gear(hba);
-+	host_params.hs_rx_gear = exynos_ufs_get_hs_gear(hba);
-+
-+	return ufshcd_negotiate_pwr_params(&host_params, dev_max_params, dev_req_params);
-+}
-+
- static int exynos_ufs_pwr_change_notify(struct ufs_hba *hba,
- 				enum ufs_notify_change_status status,
--				const struct ufs_pa_layer_attr *dev_max_params,
- 				struct ufs_pa_layer_attr *dev_req_params)
- {
- 	int ret = 0;
- 
- 	switch (status) {
- 	case PRE_CHANGE:
--		ret = exynos_ufs_pre_pwr_mode(hba, dev_max_params,
--					      dev_req_params);
-+		ret = exynos_ufs_pre_pwr_mode(hba, dev_req_params);
- 		break;
- 	case POST_CHANGE:
- 		ret = exynos_ufs_post_pwr_mode(hba, dev_req_params);
-@@ -2015,6 +2014,7 @@ static const struct ufs_hba_variant_ops ufs_hba_exynos_ops = {
- 	.exit				= exynos_ufs_exit,
- 	.hce_enable_notify		= exynos_ufs_hce_enable_notify,
- 	.link_startup_notify		= exynos_ufs_link_startup_notify,
-+	.negotiate_pwr_mode		= exynos_ufs_negotiate_pwr_mode,
- 	.pwr_change_notify		= exynos_ufs_pwr_change_notify,
- 	.setup_clocks			= exynos_ufs_setup_clocks,
- 	.setup_xfer_req			= exynos_ufs_specify_nexus_t_xfer_req,
-diff --git a/drivers/ufs/host/ufs-hisi.c b/drivers/ufs/host/ufs-hisi.c
-index 6f2e6bf31225..993e20ac211d 100644
---- a/drivers/ufs/host/ufs-hisi.c
-+++ b/drivers/ufs/host/ufs-hisi.c
-@@ -298,6 +298,17 @@ static void ufs_hisi_set_dev_cap(struct ufs_host_params *host_params)
- 	ufshcd_init_host_params(host_params);
- }
- 
-+static int ufs_hisi_negotiate_pwr_mode(struct ufs_hba *hba,
-+				       const struct ufs_pa_layer_attr *dev_max_params,
-+				       struct ufs_pa_layer_attr *dev_req_params)
-+{
-+	struct ufs_host_params host_params;
-+
-+	ufs_hisi_set_dev_cap(&host_params);
-+
-+	return ufshcd_negotiate_pwr_params(&host_params, dev_max_params, dev_req_params);
-+}
-+
- static void ufs_hisi_pwr_change_pre_change(struct ufs_hba *hba)
- {
- 	struct ufs_hisi_host *host = ufshcd_get_variant(hba);
-@@ -362,10 +373,8 @@ static void ufs_hisi_pwr_change_pre_change(struct ufs_hba *hba)
- 
- static int ufs_hisi_pwr_change_notify(struct ufs_hba *hba,
- 				enum ufs_notify_change_status status,
--				const struct ufs_pa_layer_attr *dev_max_params,
- 				struct ufs_pa_layer_attr *dev_req_params)
- {
--	struct ufs_host_params host_params;
- 	int ret = 0;
- 
- 	if (!dev_req_params) {
-@@ -377,14 +386,6 @@ static int ufs_hisi_pwr_change_notify(struct ufs_hba *hba,
- 
- 	switch (status) {
- 	case PRE_CHANGE:
--		ufs_hisi_set_dev_cap(&host_params);
--		ret = ufshcd_negotiate_pwr_params(&host_params, dev_max_params, dev_req_params);
--		if (ret) {
--			dev_err(hba->dev,
--			    "%s: failed to determine capabilities\n", __func__);
--			goto out;
--		}
--
- 		ufs_hisi_pwr_change_pre_change(hba);
- 		break;
- 	case POST_CHANGE:
-@@ -543,6 +544,7 @@ static const struct ufs_hba_variant_ops ufs_hba_hi3660_vops = {
- 	.name = "hi3660",
- 	.init = ufs_hi3660_init,
- 	.link_startup_notify = ufs_hisi_link_startup_notify,
-+	.negotiate_pwr_mode = ufs_hisi_negotiate_pwr_mode,
- 	.pwr_change_notify = ufs_hisi_pwr_change_notify,
- 	.suspend = ufs_hisi_suspend,
- 	.resume = ufs_hisi_resume,
-@@ -552,6 +554,7 @@ static const struct ufs_hba_variant_ops ufs_hba_hi3670_vops = {
- 	.name = "hi3670",
- 	.init = ufs_hi3670_init,
- 	.link_startup_notify = ufs_hisi_link_startup_notify,
-+	.negotiate_pwr_mode = ufs_hisi_negotiate_pwr_mode,
- 	.pwr_change_notify = ufs_hisi_pwr_change_notify,
- 	.suspend = ufs_hisi_suspend,
- 	.resume = ufs_hisi_resume,
-diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index 05892b9ac528..7b45cf0428af 100644
---- a/drivers/ufs/host/ufs-mediatek.c
-+++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -1317,6 +1317,23 @@ static int ufs_mtk_init(struct ufs_hba *hba)
- 	return err;
- }
- 
-+static int ufs_mtk_negotiate_pwr_mode(struct ufs_hba *hba,
-+				      const struct ufs_pa_layer_attr *dev_max_params,
-+				      struct ufs_pa_layer_attr *dev_req_params)
-+{
-+	struct ufs_host_params host_params;
-+
-+	ufshcd_init_host_params(&host_params);
-+	host_params.hs_rx_gear = UFS_HS_G5;
-+	host_params.hs_tx_gear = UFS_HS_G5;
-+
-+	if (dev_max_params->pwr_rx == SLOW_MODE ||
-+	    dev_max_params->pwr_tx == SLOW_MODE)
-+		host_params.desired_working_mode = UFS_PWM_MODE;
-+
-+	return ufshcd_negotiate_pwr_params(&host_params, dev_max_params, dev_req_params);
-+}
-+
- static bool ufs_mtk_pmc_via_fastauto(struct ufs_hba *hba,
- 				     struct ufs_pa_layer_attr *dev_req_params)
- {
-@@ -1372,26 +1389,10 @@ static void ufs_mtk_adjust_sync_length(struct ufs_hba *hba)
- }
- 
- static int ufs_mtk_pre_pwr_change(struct ufs_hba *hba,
--				const struct ufs_pa_layer_attr *dev_max_params,
- 				struct ufs_pa_layer_attr *dev_req_params)
- {
- 	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
--	struct ufs_host_params host_params;
--	int ret;
--
--	ufshcd_init_host_params(&host_params);
--	host_params.hs_rx_gear = UFS_HS_G5;
--	host_params.hs_tx_gear = UFS_HS_G5;
--
--	if (dev_max_params->pwr_rx == SLOW_MODE ||
--	    dev_max_params->pwr_tx == SLOW_MODE)
--		host_params.desired_working_mode = UFS_PWM_MODE;
--
--	ret = ufshcd_negotiate_pwr_params(&host_params, dev_max_params, dev_req_params);
--	if (ret) {
--		pr_info("%s: failed to determine capabilities\n",
--			__func__);
--	}
-+	int ret = 0;
- 
- 	if (ufs_mtk_pmc_via_fastauto(hba, dev_req_params)) {
- 		ufs_mtk_adjust_sync_length(hba);
-@@ -1503,7 +1504,6 @@ static int ufs_mtk_auto_hibern8_disable(struct ufs_hba *hba)
- 
- static int ufs_mtk_pwr_change_notify(struct ufs_hba *hba,
- 				enum ufs_notify_change_status stage,
--				const struct ufs_pa_layer_attr *dev_max_params,
- 				struct ufs_pa_layer_attr *dev_req_params)
- {
- 	int ret = 0;
-@@ -1515,8 +1515,7 @@ static int ufs_mtk_pwr_change_notify(struct ufs_hba *hba,
- 			reg = ufshcd_readl(hba, REG_AUTO_HIBERNATE_IDLE_TIMER);
- 			ufs_mtk_auto_hibern8_disable(hba);
- 		}
--		ret = ufs_mtk_pre_pwr_change(hba, dev_max_params,
--					     dev_req_params);
-+		ret = ufs_mtk_pre_pwr_change(hba, dev_req_params);
- 		break;
- 	case POST_CHANGE:
- 		if (ufshcd_is_auto_hibern8_supported(hba))
-@@ -2318,6 +2317,7 @@ static const struct ufs_hba_variant_ops ufs_hba_mtk_vops = {
- 	.setup_clocks        = ufs_mtk_setup_clocks,
- 	.hce_enable_notify   = ufs_mtk_hce_enable_notify,
- 	.link_startup_notify = ufs_mtk_link_startup_notify,
-+	.negotiate_pwr_mode  = ufs_mtk_negotiate_pwr_mode,
- 	.pwr_change_notify   = ufs_mtk_pwr_change_notify,
- 	.apply_dev_quirks    = ufs_mtk_apply_dev_quirks,
- 	.fixup_dev_quirks    = ufs_mtk_fixup_dev_quirks,
-diff --git a/drivers/ufs/host/ufs-qcom.c b/drivers/ufs/host/ufs-qcom.c
-index 375fd24ba458..cdc769886e82 100644
---- a/drivers/ufs/host/ufs-qcom.c
-+++ b/drivers/ufs/host/ufs-qcom.c
-@@ -966,13 +966,21 @@ static void ufs_qcom_set_tx_hs_equalizer(struct ufs_hba *hba, u32 gear, u32 tx_l
- 	}
- }
- 
--static int ufs_qcom_pwr_change_notify(struct ufs_hba *hba,
--				enum ufs_notify_change_status status,
--				const struct ufs_pa_layer_attr *dev_max_params,
--				struct ufs_pa_layer_attr *dev_req_params)
-+static int ufs_qcom_negotiate_pwr_mode(struct ufs_hba *hba,
-+				       const struct ufs_pa_layer_attr *dev_max_params,
-+				       struct ufs_pa_layer_attr *dev_req_params)
- {
- 	struct ufs_qcom_host *host = ufshcd_get_variant(hba);
- 	struct ufs_host_params *host_params = &host->host_params;
-+
-+	return ufshcd_negotiate_pwr_params(host_params, dev_max_params, dev_req_params);
-+}
-+
-+static int ufs_qcom_pwr_change_notify(struct ufs_hba *hba,
-+				      enum ufs_notify_change_status status,
-+				      struct ufs_pa_layer_attr *dev_req_params)
-+{
-+	struct ufs_qcom_host *host = ufshcd_get_variant(hba);
- 	int ret = 0;
- 
- 	if (!dev_req_params) {
-@@ -982,13 +990,6 @@ static int ufs_qcom_pwr_change_notify(struct ufs_hba *hba,
- 
- 	switch (status) {
- 	case PRE_CHANGE:
--		ret = ufshcd_negotiate_pwr_params(host_params, dev_max_params, dev_req_params);
--		if (ret) {
--			dev_err(hba->dev, "%s: failed to determine capabilities\n",
--					__func__);
--			return ret;
--		}
--
- 		/*
- 		 * During UFS driver probe, always update the PHY gear to match the negotiated
- 		 * gear, so that, if quirk UFSHCD_QUIRK_REINIT_AFTER_MAX_GEAR_SWITCH is enabled,
-@@ -2341,6 +2342,7 @@ static const struct ufs_hba_variant_ops ufs_hba_qcom_vops = {
- 	.setup_clocks           = ufs_qcom_setup_clocks,
- 	.hce_enable_notify      = ufs_qcom_hce_enable_notify,
- 	.link_startup_notify    = ufs_qcom_link_startup_notify,
-+	.negotiate_pwr_mode	= ufs_qcom_negotiate_pwr_mode,
- 	.pwr_change_notify	= ufs_qcom_pwr_change_notify,
- 	.apply_dev_quirks	= ufs_qcom_apply_dev_quirks,
- 	.fixup_dev_quirks       = ufs_qcom_fixup_dev_quirks,
-diff --git a/drivers/ufs/host/ufs-sprd.c b/drivers/ufs/host/ufs-sprd.c
-index 65bd8fb96b99..a5e8c591bead 100644
---- a/drivers/ufs/host/ufs-sprd.c
-+++ b/drivers/ufs/host/ufs-sprd.c
-@@ -161,14 +161,11 @@ static int ufs_sprd_common_init(struct ufs_hba *hba)
- 
- static int sprd_ufs_pwr_change_notify(struct ufs_hba *hba,
- 				enum ufs_notify_change_status status,
--				const struct ufs_pa_layer_attr *dev_max_params,
- 				struct ufs_pa_layer_attr *dev_req_params)
- {
- 	struct ufs_sprd_host *host = ufshcd_get_variant(hba);
- 
- 	if (status == PRE_CHANGE) {
--		memcpy(dev_req_params, dev_max_params,
--			sizeof(struct ufs_pa_layer_attr));
- 		if (host->unipro_ver >= UFS_UNIPRO_VER_1_8)
- 			ufshcd_dme_configure_adapt(hba, dev_req_params->gear_tx,
- 						   PA_INITIAL_ADAPT);
-diff --git a/drivers/ufs/host/ufshcd-pci.c b/drivers/ufs/host/ufshcd-pci.c
-index 5f65dfad1a71..8a4f2381a32e 100644
---- a/drivers/ufs/host/ufshcd-pci.c
-+++ b/drivers/ufs/host/ufshcd-pci.c
-@@ -145,7 +145,7 @@ static int ufs_intel_set_lanes(struct ufs_hba *hba, u32 lanes)
- 
- 	pwr_info.lane_rx = lanes;
- 	pwr_info.lane_tx = lanes;
--	ret = ufshcd_config_pwr_mode(hba, &pwr_info);
-+	ret = ufshcd_change_power_mode(hba, &pwr_info);
- 	if (ret)
- 		dev_err(hba->dev, "%s: Setting %u lanes, err = %d\n",
- 			__func__, lanes, ret);
-@@ -154,17 +154,15 @@ static int ufs_intel_set_lanes(struct ufs_hba *hba, u32 lanes)
- 
- static int ufs_intel_lkf_pwr_change_notify(struct ufs_hba *hba,
- 				enum ufs_notify_change_status status,
--				const struct ufs_pa_layer_attr *dev_max_params,
- 				struct ufs_pa_layer_attr *dev_req_params)
- {
- 	int err = 0;
- 
- 	switch (status) {
- 	case PRE_CHANGE:
--		if (ufshcd_is_hs_mode(dev_max_params) &&
-+		if (ufshcd_is_hs_mode(dev_req_params) &&
- 		    (hba->pwr_info.lane_rx != 2 || hba->pwr_info.lane_tx != 2))
- 			ufs_intel_set_lanes(hba, 2);
--		memcpy(dev_req_params, dev_max_params, sizeof(*dev_req_params));
- 		break;
- 	case POST_CHANGE:
- 		if (ufshcd_is_hs_mode(dev_req_params)) {
-diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-index 8563b6648976..51c2555bea73 100644
---- a/include/ufs/ufshcd.h
-+++ b/include/ufs/ufshcd.h
-@@ -302,11 +302,10 @@ struct ufs_pwr_mode_info {
-  *                     variant specific Uni-Pro initialization.
-  * @link_startup_notify: called before and after Link startup is carried out
-  *                       to allow variant specific Uni-Pro initialization.
-+ * @negotiate_pwr_mode: called to negotiate power mode.
-  * @pwr_change_notify: called before and after a power mode change
-  *			is carried out to allow vendor spesific capabilities
-- *			to be set. PRE_CHANGE can modify final_params based
-- *			on desired_pwr_mode, but POST_CHANGE must not alter
-- *			the final_params parameter
-+ *			to be set.
-  * @setup_xfer_req: called before any transfer request is issued
-  *                  to set some things
-  * @setup_task_mgmt: called before any task management request is issued
-@@ -347,10 +346,12 @@ struct ufs_hba_variant_ops {
- 				     enum ufs_notify_change_status);
- 	int	(*link_startup_notify)(struct ufs_hba *,
- 				       enum ufs_notify_change_status);
--	int	(*pwr_change_notify)(struct ufs_hba *,
--			enum ufs_notify_change_status status,
--			const struct ufs_pa_layer_attr *desired_pwr_mode,
--			struct ufs_pa_layer_attr *final_params);
-+	int	(*negotiate_pwr_mode)(struct ufs_hba *hba,
-+				      const struct ufs_pa_layer_attr *desired_pwr_mode,
-+				      struct ufs_pa_layer_attr *final_params);
-+	int	(*pwr_change_notify)(struct ufs_hba *hba,
-+				     enum ufs_notify_change_status status,
-+				     struct ufs_pa_layer_attr *final_params);
- 	void	(*setup_xfer_req)(struct ufs_hba *hba, int tag,
- 				  bool is_scsi_cmd);
- 	void	(*setup_task_mgmt)(struct ufs_hba *, int, u8);
-@@ -1361,6 +1362,8 @@ extern int ufshcd_dme_set_attr(struct ufs_hba *hba, u32 attr_sel,
- 			       u8 attr_set, u32 mib_val, u8 peer);
- extern int ufshcd_dme_get_attr(struct ufs_hba *hba, u32 attr_sel,
- 			       u32 *mib_val, u8 peer);
-+extern int ufshcd_change_power_mode(struct ufs_hba *hba,
-+				    struct ufs_pa_layer_attr *pwr_mode);
- extern int ufshcd_config_pwr_mode(struct ufs_hba *hba,
- 			struct ufs_pa_layer_attr *desired_pwr_mode);
- extern int ufshcd_uic_change_pwr_mode(struct ufs_hba *hba, u8 mode);
--- 
-2.34.1
+Given the points above, I'd prefer not to keep iterating on the current
+approach for v5. I'll try to rework this along the lines above and send
+an updated version.
 
+>         return 0;
+>  }
+>
+> @@ -1396,6 +1422,10 @@ mt7921_change_chanctx(struct ieee80211_hw *hw,
+>                 mt7921_mcu_config_sniffer(mvif, ctx);
+>         else
+>                 mt76_connac_mcu_uni_set_chctx(mvif->phy->mt76, &mvif->bss=
+_conf.mt76, ctx);
+> +
+> +       phy->mt76->chandef =3D ctx->def;
+> +       mt7921_update_txpower_cur(phy->mt76);
+> +
+>         mt792x_mutex_release(phy->dev);
+>  }
+>
+> --
+> 2.53.0
+>
 
