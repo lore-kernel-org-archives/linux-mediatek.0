@@ -4,65 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BCBA1099B2C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2026 17:30:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 951291099B59
+	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Mar 2026 01:31:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2ko2yr8EREI41gY4DKOmiWwlSx8gmD/iM6LkQEBVH6s=; b=3mA+v1voVYEXf7J23F88VRv2XW
-	5S+v/o8isOh5ImKJSIciyRO4jjf/nnk7+TLwMPjnM7dVYeDc07IH36kTjNGpHGcMzEecjjtcAN8uw
-	F2w4ujCC7ZZVahdg0vLItK7WxmN4Sc810pjMU5FfzdQz9Y+kblYD2FwAV35mfnWqDn1oZ3PxVuj/n
-	TUNpV4fkea4uxEdJLEElB5hCc0iIuFUCkJX8Uc4v2uJzhdNcjDsIEiSHTXIe0eWRMtvwc/VeHhlSg
-	DkEP4zRCyqiO7KwJBdSsh40l2sOTwkmcM/0EiYta/6oU2czsPmejb7bigXoAil/j2Y4bekTDs1jX8
-	+FXvNFOA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wJPOl0WCCHld+CK6DDvwPDPxmFR1ok8LRoHMSH472Iw=; b=V57i3bE6uxSJOKlEYqIciBFneq
+	mp/Pj77wgCpJ3W+4eJRAVQZnn9wPJI//8bGvOrOoIzYgH/CWyQQtBjVuCIJ2Vb3M5NBs5nD72/cHz
+	/Rc3bvFsK0Ol0IFikIoWyxMUFJaqx78NqrvvQ7Sd9qlGj915vQpVLwrHiw1X1n+IHxvOHEbfkSSVT
+	Fv7bqOntMpr+YuR20gfT89hzbyKMkTV6s9hEQC//c31Peh6YLulzmFFiX/gKKZh+teVmQ6NIKHeLG
+	k8yzet9xv9Bq00pOxPnAoJ8k62bM+Y6iDyVUIDbkHTyuGDjvSX3hFlnHQGl4v74wUWLwuugNfqAwL
+	dZhaJ+6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3dfp-0000000DG4i-22yz;
-	Fri, 20 Mar 2026 17:30:13 +0000
+	id 1w3lBb-0000000Dsw1-21GL;
+	Sat, 21 Mar 2026 01:31:31 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3dfl-0000000DG3W-1qO6;
-	Fri, 20 Mar 2026 17:30:09 +0000
+	id 1w3lBZ-0000000Dsvl-42wv;
+	Sat, 21 Mar 2026 01:31:30 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9630160128;
-	Fri, 20 Mar 2026 17:30:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A0EACC4CEF7;
-	Fri, 20 Mar 2026 17:30:05 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id D136560126;
+	Sat, 21 Mar 2026 01:31:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2B763C4CEF7;
+	Sat, 21 Mar 2026 01:31:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774027808;
-	bh=2ko2yr8EREI41gY4DKOmiWwlSx8gmD/iM6LkQEBVH6s=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=t5Hyus7h1OdUrxx0x+UUtqbrgN8lkDQ8LWN/V+z41wiTXKEsaXd7szrUnj4RYzONF
-	 XxCMegAu/K2xz3l/nMnJybtiTDZ0biEz8APXwMTzCqfrnsOzeehBUHkObXJTBybTUD
-	 dsKA7G9uRscvqvNbT5smjEAGGaClM1ur80JyMLNTsz4GnM8efceBHXuuMHsCKqNKLa
-	 cdc2xdC6fZUoJ99TnwFIzhVvdl2U6BACfVQKJQQBdhQk9BEkJlB55OpmgZmq7AbgMp
-	 KLOpEeTbDgfbrKAuUoGyuW6g6ss7P696/kEpt8kWunU9dUMvrs5n/XYpIyToa5MHzB
-	 OfpikkvrDSZkg==
-Date: Fri, 20 Mar 2026 17:30:03 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
-	Benson Leung <bleung@chromium.org>,
-	Guenter Roeck <groeck@chromium.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	chrome-platform@lists.linux.dev
-Subject: Re: [PATCH 1/2] regulator: dt-bindings: cros-ec: Add regulator supply
-Message-ID: <20260320-shrubbery-nimbly-17e3bacf4ad6@spud>
-References: <20260320083135.2455444-1-wenst@chromium.org>
- <20260320083135.2455444-2-wenst@chromium.org>
+	s=k20201202; t=1774056688;
+	bh=Ol71JvZMsV9PQXvwimEzBO7sWgFIqMYJwJfSQnCmfGM=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=tl7LyCxU6YyWR+YWjI7EgmDJfyX35ZsGKz9yQjcWJ4d/wSNv4FdaUvsD+L6KLhJ9C
+	 M61BN8uPQInLHN0bfhsOOX6GSluy5aKCR7A6590QTCg1SojrgDc4Ih/1enmKBhaQKi
+	 +2wpgp8L/dttRpCeO/0aUbp9l/HMma+aONlaiMJlwMNq6vhC56NTG3P53rE61/5kjy
+	 hPXwqbmG8Sij4Y2MAKWb8QVc4xS37hO1Fu2xOsolSegC17pR9Su1vkQUKwKEqHsX+x
+	 nawPOr3ZY2i8DyEJs93jxsxLRYa6w8ieL51I6tJ9H+i5I/9+uWSpITBOYK7x6tGdsM
+	 V9gd9noLLSxsA==
+Date: Fri, 20 Mar 2026 18:31:27 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
+ <pabeni@redhat.com>, Simon Horman <horms@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org
+Subject: Re: [PATCH net-next] net: airoha: Reset PPE cpu port configuration
+ in airoha_ppe_hw_init()
+Message-ID: <20260320183127.22b360be@kernel.org>
+In-Reply-To: <20260317-airoha-fix-ppe-def-cpu-v1-1-338533d8e234@kernel.org>
+References: <20260317-airoha-fix-ppe-def-cpu-v1-1-338533d8e234@kernel.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="nkY5dg21V/AsYkAX"
-Content-Disposition: inline
-In-Reply-To: <20260320083135.2455444-2-wenst@chromium.org>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,33 +71,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, 17 Mar 2026 17:40:47 +0100 Lorenzo Bianconi wrote:
+> @@ -155,6 +171,11 @@ static void airoha_ppe_hw_init(struct airoha_ppe *ppe)
+>  						 AIROHA_MAX_MTU) |
+>  				      FIELD_PREP(FP1_EGRESS_MTU_MASK,
+>  						 AIROHA_MAX_MTU));
+> +			if (!port)
+> +				continue;
+> +
+> +			airoha_ppe_set_cpu_port(port, i);
 
---nkY5dg21V/AsYkAX
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+AI says:
 
-On Fri, Mar 20, 2026 at 04:31:32PM +0800, Chen-Yu Tsai wrote:
-> Even a regulator remotely controlled by the EC will have a power supply
-> input.
->=20
-> Add a property to describe the power supply input.
->=20
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Can this lead to a NULL pointer dereference if a port is not fully
+initialized?
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-pw-bot: not-applicable
+In airoha_probe(), all GDM ports defined in the device tree are allocated
+and the eth->ports[] array is populated with pointers, but port->qdma is
+left as NULL.
 
---nkY5dg21V/AsYkAX
-Content-Type: application/pgp-signature; name="signature.asc"
+During airoha_register_gdm_devices(), the ports are registered sequentially
+with register_netdev(). Since register_netdev() drops the rtnl_lock(),
+userspace could react to the RTM_NEWLINK event of the first registered port
+and apply a tc flow offload rule.
 
------BEGIN PGP SIGNATURE-----
+This would trigger the following call chain:
+  .ndo_setup_tc() -> airoha_ppe_setup_tc_block_cb() -> airoha_ppe_offload_setup() 
+   -> airoha_ppe_hw_init()
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCab2EGwAKCRB4tDGHoIJi
-0t/+AQCAYxcTf4VwNykpGFfXOFK8EdQ2eUwyX9fEG0agtHSxwQD+MHHOSLzzbZVU
-ea5hroG7LS9S0Zp8Gm8G7Kd95VkBEQE=
-=Y7MT
------END PGP SIGNATURE-----
+If airoha_ppe_hw_init() iterates over the array, it will find the subsequent
+port that has been allocated but not yet registered, meaning its port->qdma
+is still NULL. The call to airoha_ppe_set_cpu_port(port, i) will then
+dereference the NULL port->qdma.
 
---nkY5dg21V/AsYkAX--
+Would it be better to check if (!port || !port->qdma) before calling
+airoha_ppe_set_cpu_port()?
+-- 
+pw-bot: cr
 
