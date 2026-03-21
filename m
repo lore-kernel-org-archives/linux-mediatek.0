@@ -4,62 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A5C51094471
-	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Mar 2026 12:41:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5506E1094474
+	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Mar 2026 13:09:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Gdw96O2s3CiuyvCHVeb+6oKXS/Dbg2GEk36YWsEx2Do=; b=cezwU1yey8YoKqOBLcEbij6voU
-	Np/wJTtEatJKEEqDsty7Yybhd2JlFAdhFII4RkwzCJffszQvDBjdYXXNm87hOQpeWdszc4k/cHN4h
-	6hUBvZ804OUuyEi1yweDpb0ryJXC/+irX+NoGgYeKtZ+qM3TTOcxYo6f1vQeUc6/MxHmrmaQ33Iyk
-	OuOK6vIGdy+a+JEaBMuoxrmhZfzYEaGyvYP6eIqwzeJDOzQQdIS1clA35Z3iSLNGW1k27+JFneiYl
-	+FOKc6ZEPmtoldgJMQRbd1pWdRRyE/kMVw09ODcWj6wMf5wE0PNQUAoRnRb+atTh/G1ypJ9j6B/GR
-	0ldHfT9w==;
+	bh=BODd0zrQTtQ2EVDGUzJPSylEhK+yTzVCUDSdTfTCQ+o=; b=FEb/Jk1MbgUr9P5tGW3CkxHnFH
+	q23+1G1ovgQQI0LrSjfbDgOjyEAadczou6Lk2uEpGQn6nsjBM4YtT7MR1m/AbObCsGCv8C5He1rV6
+	Aj1+pLPgl81Pw5GdEYMwSifVrMU7pZVZJLaU5KR/nwFEdWzSz2y0IDmuoH0UqK8Jt1SBWLlXPhif3
+	kUrJgCuvxRpyY2e+6bWMxWPsVlf53RmXVIhQFYg4rzsobrVLRsOF++k/vcOu4JRG4/pLF59YJ2Vz+
+	VZpbWjOuw2RS2x+yaImT2pfIPc0WVPYdRLh5PYZAC99D8UK38S32IZ6GDeBJBE+ND37t0NoxRkvyY
+	7gwimdZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3vdg-0000000ESkk-2vLh;
-	Sat, 21 Mar 2026 12:41:12 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1w3w5I-0000000ETsq-32Dd;
+	Sat, 21 Mar 2026 13:09:44 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3vde-0000000ESk8-20Fw;
-	Sat, 21 Mar 2026 12:41:10 +0000
+	id 1w3w5G-0000000ETsK-0FaM;
+	Sat, 21 Mar 2026 13:09:43 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 64206600AE;
-	Sat, 21 Mar 2026 12:41:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 437D2C19421;
-	Sat, 21 Mar 2026 12:41:08 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id F3BDD40C00;
+	Sat, 21 Mar 2026 13:09:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 54F69C19421;
+	Sat, 21 Mar 2026 13:09:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774096868;
-	bh=fxVoXze93TK9b7JkjLP3hYYoZwJ+sQWedrY/aS+Uubs=;
+	s=k20201202; t=1774098576;
+	bh=dTmt0CpKQWFrPI2bQR7wWvu2/uBaYz30e6vvB7xr+D4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=rjUxIz20bGymV7Rs5Wvfoj/C3PHimtOj2oswMcvSb4/xuT2XsaNg2m8Au0INjBZ0e
-	 5NM8fJbWPfZsIZzcfUwGrKHNO4D9xBdzsH5kuHJwzsUfPhN2T4Ait6dR0XKwSm/Jvl
-	 urLpexwJz9ruvDCpqst42b6CcRcbz/39Xk3KYwNbDw3TywC7YsgMqpZEXXsjGYHalR
-	 FJznFWd8EFZ2wcIzrW7+Y0a7YFd1k6y7zbIvuglzgHWH/0trij0rO5Zvdvkos+R9QO
-	 VPp8eKim71vTs8gkcR0883dGJesTBzPct5hoGDaYrEMWMMVkdN679j0AE+938q7CQN
-	 9DS9D5pstZoTQ==
-Date: Sat, 21 Mar 2026 13:41:06 +0100
+	b=NK1XDnNX7jKHvW9R9uT9CawmULfhovJZTIsIzwrqu89k7RbHmtbLxRgVlsnfjBbLm
+	 5sbcnMcJ6Ju6k2OgkqJ5TW6KaxRp3IbBgbIKDdod92fGhFfDJX3z9SDKwKgsHWbA8T
+	 ty5z2wQy6LzmhDipnAo9DkNwFzsZwXFNsvLoV2XpZZtFybY3ZwbsEINecHQ5pB2qju
+	 2FjoZ6TVBuRsdOYXGn4hpU3jfdlC410nH9+P5o9/Q4Eh3aXM7OGI33RNEZ6HEfGsGl
+	 FJVrEwj2lrrgh7FWe7QrqkefL2+xyZQc32SQw3Ad1OSX1DxItD7KC63/gVFq8aBDmN
+	 y/T1WPiT2KgZw==
+Date: Sat, 21 Mar 2026 14:09:34 +0100
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Jakub Kicinski <kuba@kernel.org>
+To: Simon Horman <horms@kernel.org>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
-	Simon Horman <horms@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net-next] net: airoha: Reset PPE cpu port configuration
- in airoha_ppe_hw_init()
-Message-ID: <ab6R4krBRy5dycb-@lore-desk>
-References: <20260317-airoha-fix-ppe-def-cpu-v1-1-338533d8e234@kernel.org>
- <20260320183127.22b360be@kernel.org>
+Subject: Re: [PATCH net-next] net: airoha: Rework the code flow in
+ airoha_remove() and in airoha_probe() error path
+Message-ID: <ab6YjhbSbUNt_KR4@lore-desk>
+References: <20260320-airoha-remove-rework-v1-1-adeef7e3c01f@kernel.org>
+ <20260321094429.GW74886@horms.kernel.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="3sTRF6na1p3lBxUs"
+	protocol="application/pgp-signature"; boundary="EZz7n3wwzIYEdEN2"
 Content-Disposition: inline
-In-Reply-To: <20260320183127.22b360be@kernel.org>
+In-Reply-To: <20260321094429.GW74886@horms.kernel.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260321_060942_120259_C87C892B 
+X-CRM114-Status: GOOD (  21.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,148 +78,71 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---3sTRF6na1p3lBxUs
+--EZz7n3wwzIYEdEN2
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> On Tue, 17 Mar 2026 17:40:47 +0100 Lorenzo Bianconi wrote:
-> > @@ -155,6 +171,11 @@ static void airoha_ppe_hw_init(struct airoha_ppe *=
-ppe)
-> >  						 AIROHA_MAX_MTU) |
-> >  				      FIELD_PREP(FP1_EGRESS_MTU_MASK,
-> >  						 AIROHA_MAX_MTU));
-> > +			if (!port)
-> > +				continue;
-> > +
-> > +			airoha_ppe_set_cpu_port(port, i);
+On Mar 21, Simon Horman wrote:
+> On Fri, Mar 20, 2026 at 09:42:28AM +0100, Lorenzo Bianconi wrote:
+> > As suggested by Simon in [0], rework the code flow in airoha_remove()
+> > and in the airoha_probe() error path in order to rely on a more common
+> > approach un-registering configured net-devices first and destroying the
+> > hw resources at the end of the code.
+> > Introduce airoha_qdma_cleanup routine to release QDMA resources.
+> >=20
+> > [0] https://lore.kernel.org/netdev/20251214-airoha-fix-dev-registration=
+-v1-1-860e027ad4c6@kernel.org/
+> >=20
+> > Suggested-by: Simon Horman <horms@kernel.org>
+> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > ---
+> >  drivers/net/ethernet/airoha/airoha_eth.c | 82 ++++++++++++++++++------=
+--------
+> >  1 file changed, 47 insertions(+), 35 deletions(-)
+> >=20
+> > diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/eth=
+ernet/airoha/airoha_eth.c
 >=20
-> AI says:
+> ...
 >=20
-> Can this lead to a NULL pointer dereference if a port is not fully
-> initialized?
+> > @@ -3028,7 +3044,7 @@ static int airoha_probe(struct platform_device *p=
+dev)
+> > =20
+> >  	err =3D airoha_hw_init(pdev, eth);
+> >  	if (err)
+> > -		goto error_hw_cleanup;
+> > +		return err;
 >=20
-> In airoha_probe(), all GDM ports defined in the device tree are allocated
-> and the eth->ports[] array is populated with pointers, but port->qdma is
-> left as NULL.
+> Hi Lorenzo,
 >=20
-> During airoha_register_gdm_devices(), the ports are registered sequential=
-ly
-> with register_netdev(). Since register_netdev() drops the rtnl_lock(),
-> userspace could react to the RTM_NEWLINK event of the first registered po=
-rt
-> and apply a tc flow offload rule.
->=20
-> This would trigger the following call chain:
->   .ndo_setup_tc() -> airoha_ppe_setup_tc_block_cb() -> airoha_ppe_offload=
-_setup()=20
->    -> airoha_ppe_hw_init()
->=20
-> If airoha_ppe_hw_init() iterates over the array, it will find the subsequ=
-ent
-> port that has been allocated but not yet registered, meaning its port->qd=
-ma
-> is still NULL. The call to airoha_ppe_set_cpu_port(port, i) will then
-> dereference the NULL port->qdma.
->=20
-> Would it be better to check if (!port || !port->qdma) before calling
-> airoha_ppe_set_cpu_port()?
+> AI generated review warns that eth->napi_dev is leaked here.
+> And that does seem to be the case.
 
-Hi Jakub,
+Hi Simon,
 
-I agree there is a race between airoha_register_gdm_devices() and
-airoha_ppe_setup_tc_block_cb(). Instead of not running
-airoha_ppe_set_cpu_port() in airoha_ppe_hw_init() for a given port and not
-configuring the hw correctly, I guess it would be better to grab
-flow_offload_mutex mutex in airoha_register_gdm_devices routine and wait for
-all devices to be properly registered before executing
-airoha_ppe_setup_tc_block_cb(). Something like:
-
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/etherne=
-t/airoha/airoha_eth.c
-index 961325da833b..f5bb917f0f6e 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -2927,21 +2927,24 @@ static int airoha_alloc_gdm_port(struct airoha_eth =
-*eth,
-=20
- static int airoha_register_gdm_devices(struct airoha_eth *eth)
- {
--	int i;
-+	int i, err =3D 0;
-+
-+	mutex_lock(&flow_offload_mutex);
-=20
- 	for (i =3D 0; i < ARRAY_SIZE(eth->ports); i++) {
- 		struct airoha_gdm_port *port =3D eth->ports[i];
--		int err;
-=20
- 		if (!port)
- 			continue;
-=20
- 		err =3D register_netdev(port->dev);
- 		if (err)
--			return err;
-+			break;
- 	}
-=20
--	return 0;
-+	mutex_unlock(&flow_offload_mutex);
-+
-+	return err;
- }
-=20
- static int airoha_probe(struct platform_device *pdev)
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/etherne=
-t/airoha/airoha_eth.h
-index 7df4dbcd8861..3330ee54e20e 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -551,6 +551,8 @@ struct airoha_gdm_port {
- #define AIROHA_RXD4_PPE_CPU_REASON	GENMASK(20, 16)
- #define AIROHA_RXD4_FOE_ENTRY		GENMASK(15, 0)
-=20
-+extern struct mutex flow_offload_mutex;
-+
- struct airoha_ppe {
- 	struct airoha_ppe_dev dev;
- 	struct airoha_eth *eth;
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/etherne=
-t/airoha/airoha_ppe.c
-index 7666b1d2f4f6..96d092f7214e 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -15,7 +15,7 @@
- #include "airoha_regs.h"
- #include "airoha_eth.h"
-=20
--static DEFINE_MUTEX(flow_offload_mutex);
-+DEFINE_MUTEX(flow_offload_mutex);
- static DEFINE_SPINLOCK(ppe_lock);
-=20
- static const struct rhashtable_params airoha_flow_table_params =3D {
-
-
-What do you think?
-I noticed commit f44218cd5e6a is already applied to net-next. I will post a
-follow-up patch, agree?
+right. I will fix it in v2.
 
 Regards,
 Lorenzo
 
-> --=20
-> pw-bot: cr
+>=20
+> > =20
+> >  	for (i =3D 0; i < ARRAY_SIZE(eth->qdma); i++)
+> >  		airoha_qdma_start_napi(&eth->qdma[i]);
+>=20
+> ...
 
---3sTRF6na1p3lBxUs
+--EZz7n3wwzIYEdEN2
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCab6R4gAKCRA6cBh0uS2t
-rAo2AP0VgofFC019vKtsTfxIA2WGT+rQR//Zf0DpJyAuqtpUWAD9EsknoKEO2zlx
-9aN6ois6lbevq4CS+K7KKEGrqFIfAAs=
-=tUik
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCab6YjgAKCRA6cBh0uS2t
+rNf6AP9KP6eC4+MHzMb7WFbxq92nj5wfHEpgj5oEBa1ehx8vawEAiqgEov1K4lLS
+0i3wDxbABgh92m891ZGxsVx+2UzXcgU=
+=SzaX
 -----END PGP SIGNATURE-----
 
---3sTRF6na1p3lBxUs--
+--EZz7n3wwzIYEdEN2--
 
