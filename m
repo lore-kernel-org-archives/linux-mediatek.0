@@ -4,92 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 056BFFC72C2
-	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Mar 2026 14:13:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49643FC72C6
+	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Mar 2026 14:20:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6WyenFkskQRviNgIdSNi6d7LvQNFj/WN1yDFKmE61aM=; b=UtYH9kZXOMjvlRn1HuUHRFGEsT
-	OtrSaieQLjlF78M6+H4K7jKFBkzTzbQqFSsAMDluQKw6quD6vjMeZVPafA4ygHpYa4aA2JaA4/MWz
-	/twVYIDFTFBWowr8iQf6ZO/qk5XwyUpBniE2PDtnYaYAeMGgU1SiRSVQ33uDy04cgdkZE7Mpi915m
-	GRh3yVHDlu/PrdnlnP30A1ob4vy4ZF7gbTcw6yK6DeolTkswy/qiR/LIFxjnb0s+dLnMJfLgAF9gb
-	l0TOGLIziQjUyLZdWpX4+/e+Vggzu8sOk0xtgEmT7sLdaRFhXDYTQabvazfZmcSfyELyG5I2JnQAE
-	/fezbasw==;
+	bh=6G2SVWO20IBn1PN7dFTFMYYXOJCjUg90dESHj0IaiD0=; b=NdK8j/WWJCdZQj9tRfLTIqXylz
+	Q/izZmpT82eu34uFazBNAr9lb0fEJK6KCYnbQNeMI96w+JfcboXGRcCzVOm8QoKZ0uV+2PpTpG43Q
+	8hudmOuiX9IjVIQkOgkz5lsPImSBx/ULUvOghTdX3mFCE1W0oofurSl/ELcXQzop03CwVV4/xZQlQ
+	2D78s7y5cwSriFeKFx9e64HmWlokClSGfhJCSopQ0acIdjqZgby79fypjrfJ01Lk4Co0cYTwr3u2z
+	F+sCXudQvpup3aUwFb3VCXosoeEogEUpOzDR3DMowNk7BoDVAVm9DmXDQkr6RhiEGhMJTnUzPyZvq
+	biP116Zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4JYX-0000000FOYt-0x8Z;
-	Sun, 22 Mar 2026 14:13:29 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1w4Jep-0000000FPLX-42hr;
+	Sun, 22 Mar 2026 14:19:59 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4JYU-0000000FOXi-3HFR
+	id 1w4Jeo-0000000FPLJ-0yv7
 	for linux-mediatek@lists.infradead.org;
-	Sun, 22 Mar 2026 14:13:27 +0000
+	Sun, 22 Mar 2026 14:19:58 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1002644596
-	for <linux-mediatek@lists.infradead.org>; Sun, 22 Mar 2026 14:13:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD7D3C2BCFA
-	for <linux-mediatek@lists.infradead.org>; Sun, 22 Mar 2026 14:13:25 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 4DB24600C4
+	for <linux-mediatek@lists.infradead.org>; Sun, 22 Mar 2026 14:19:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 983DBC19424
+	for <linux-mediatek@lists.infradead.org>; Sun, 22 Mar 2026 14:19:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774188805;
-	bh=6WyenFkskQRviNgIdSNi6d7LvQNFj/WN1yDFKmE61aM=;
+	s=k20201202; t=1774189196;
+	bh=pw3Kex2TtkEIr5Hh1UwrWSsRUK78ekd18b80cHZofwQ=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=fES34vzJMEYYVAt8hQ0aANzSxdlkzIOHfmj+7nanxSLwbMTbQkGxy//ZnXBw0OWUb
-	 c3Q8dtX9iDVT3EYwTYt4sLYywOkYNYl8q5jBDxw000R7Sn5m4zQjzMqVZNdSuItR8P
-	 U0QM88PrrS+e4jL4613IBn3LYcbu90qM5oJ++SN799TDhqXuRPs3AYmDG0GyeqaJIN
-	 CJcljyPGGLhjR63osauACWw/8AFvhDQX7gTwjRNnsMxwSJjY+ErkCQQh6ViDu0bpHM
-	 tUIenUzDHCUY+VwozRzhzzsaoFbuGc0LpTyHK/7u/o9dYuMdZcM5RSAdrcZ68LQYL0
-	 MIKn3kzCYbCpg==
-Received: by mail-dl1-f46.google.com with SMTP id a92af1059eb24-12a695044a4so2646188c88.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 22 Mar 2026 07:13:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCV5e6sxng5cKgMHoolTVmPCKb+IqbFBXrkzfU1/ZZ4aDe8Pl6pguvN1NasSdNifCqOy9+Lx6anSPR4bKDEYLg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw3QpMACKcJFk/eYJLD1HawR+soY5nIU0usIOifFGaQdX15+7Rc
-	h4WT5LYpyzeRbMitvo2H/aALvDqNSw5pKraQQ0Tu2rhfCEkhWkvNDKmFVH5KArzGm8s5VoP1Kzx
-	JyUbIr0ZI/vYflVtkUIEFFjYHzTha9g==
-X-Received: by 2002:a05:7022:629f:b0:11b:9386:7ecd with SMTP id
- a92af1059eb24-12a726e3eadmr3908663c88.42.1774188804941; Sun, 22 Mar 2026
- 07:13:24 -0700 (PDT)
+	b=BoFzhb5gLlfX688voT++AKnLCgQBqxpwKcGS57Z5P/fBgmKtP5VBs1tLoEDj+jA6F
+	 jXoL1k6bIEAEVg+2M2U2MywBJ3huIrXn0v0FIyzuUGwbweaxlIaVFsrMwsK+hCi24t
+	 Ch0ouWrOdCjWlvNPlw63nE1hhLmFk5nR4Zv92C7qB05u13fVqZED6GcjVH87xPjRhu
+	 fHURr1Sy8joGP3MTrM+qJMtl9NQRi3Kr18wqs0zGn5cjvfN74jURXLcnnyacfeuOJp
+	 zgsuv6BYnOxWmErUnzqoSFYb4xaa+Ko1Zlnaaz83iGYiuYmk9uwodGGj9mOZy0WbKh
+	 N00CNy9zJTEHQ==
+Received: by mail-dl1-f50.google.com with SMTP id a92af1059eb24-12a695044a4so2651373c88.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 22 Mar 2026 07:19:56 -0700 (PDT)
+X-Gm-Message-State: AOJu0YyAizKnbByBYGxLMQy+8YcfwMKlXqyOBlW9DFds4EjeQxNYcsRC
+	L/0IM5x5vEVaVMFBiB/FOkOO0cbjZ4urr/9jyyAKCsMuECpgMYkUwQj8DXicn32PlHzTZRR8tc/
+	075T3+PjuH7lcr0tBKjNUqPIncKLOtA==
+X-Received: by 2002:a05:7022:928:b0:128:e016:dd4b with SMTP id
+ a92af1059eb24-12a726e13e4mr4555706c88.37.1774189195957; Sun, 22 Mar 2026
+ 07:19:55 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260107-drm-bridge-alloc-getput-drm_of_find_bridge-3-v1-0-ef48a517828e@bootlin.com>
- <20260107-drm-bridge-alloc-getput-drm_of_find_bridge-3-v1-4-ef48a517828e@bootlin.com>
-In-Reply-To: <20260107-drm-bridge-alloc-getput-drm_of_find_bridge-3-v1-4-ef48a517828e@bootlin.com>
+References: <20260225094047.76780-1-l.scorcia@gmail.com>
+In-Reply-To: <20260225094047.76780-1-l.scorcia@gmail.com>
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Sun, 22 Mar 2026 14:13:12 +0000
-X-Gmail-Original-Message-ID: <CAAOTY_9PH4yV-mDFZ+mkNRT7R9qoZOtjQhhqmyWjx1LWSu=giw@mail.gmail.com>
-X-Gm-Features: AaiRm5108rX0H_CDRkg1jedFrdyn5bPiHycKlLMUICMJdSqU48gN54_ILYySwo8
-Message-ID: <CAAOTY_9PH4yV-mDFZ+mkNRT7R9qoZOtjQhhqmyWjx1LWSu=giw@mail.gmail.com>
-Subject: Re: [PATCH 4/6] drm/mediatek: mtk_hdmi*: convert to of_drm_find_and_get_bridge()
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Inki Dae <inki.dae@samsung.com>, 
-	Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, 
-	Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
-	Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, 
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
-	Hui Pu <Hui.Pu@gehealthcare.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	imx@lists.linux.dev, linux-mediatek@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, linux-renesas-soc@vger.kernel.org
+Date: Sun, 22 Mar 2026 14:19:43 +0000
+X-Gmail-Original-Message-ID: <CAAOTY_-_k4Fv2H_P6Xt3mT3aqfWHki_Ary3Lt0G6vk_nfqb6OQ@mail.gmail.com>
+X-Gm-Features: AaiRm53TPKDRjcIENz8E-lT6qKe1LyJ0Aic3cDGSTsLZUFPpGAbsnhoMCBgOczA
+Message-ID: <CAAOTY_-_k4Fv2H_P6Xt3mT3aqfWHki_Ary3Lt0G6vk_nfqb6OQ@mail.gmail.com>
+Subject: Re: [PATCH v3] drm/mediatek: dsi: Store driver data before invoking mipi_dsi_host_register
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Alexandre Mergnat <amergnat@baylibre.com>, 
+	CK Hu <ck.hu@mediatek.com>, dri-devel@lists.freedesktop.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260322_071326_875083_8D108889 
-X-CRM114-Status: UNSURE (   7.69  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,19 +83,134 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Luca Ceresoli <luca.ceresoli@bootlin.com> =E6=96=BC 2026=E5=B9=B41=E6=9C=88=
-7=E6=97=A5=E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=884:22=E5=AF=AB=E9=81=93=EF=BC=
-=9A
->
-> of_drm_find_bridge() is deprecated. Move to its replacement
-> of_drm_find_and_get_bridge() which gets a bridge reference, and ensure it
-> is put when done by using the drm_bridge::next_bridge pointer.
+Hi, Luca:
 
-Acked-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Luca Leonardo Scorcia <l.scorcia@gmail.com> =E6=96=BC 2026=E5=B9=B42=E6=9C=
+=8825=E6=97=A5=E9=80=B1=E4=B8=89 =E4=B8=8A=E5=8D=889:41=E5=AF=AB=E9=81=93=
+=EF=BC=9A
+>
+> The call to mipi_dsi_host_register triggers a callback to mtk_dsi_bind,
+> which uses dev_get_drvdata to retrieve the mtk_dsi struct, so this
+> structure needs to be stored inside the driver data before invoking it.
+>
+> As drvdata is currently uninitialized it leads to a crash when
+> registering the DSI DRM encoder right after acquiring
+> the mode_config.idr_mutex, blocking all subsequent DRM operations.
+>
+> Fixes the following crash during mediatek-drm probe (tested on Xiaomi
+> Smart Clock x04g):
+>
+> Unable to handle kernel NULL pointer dereference at virtual address
+>  0000000000000040
+> [...]
+> Modules linked in: mediatek_drm(+) drm_display_helper cec drm_client_lib
+>  drm_dma_helper drm_kms_helper panel_simple
+> [...]
+> Call trace:
+>  drm_mode_object_add+0x58/0x98 (P)
+>  __drm_encoder_init+0x48/0x140
+>  drm_encoder_init+0x6c/0xa0
+>  drm_simple_encoder_init+0x20/0x34 [drm_kms_helper]
+>  mtk_dsi_bind+0x34/0x13c [mediatek_drm]
+>  component_bind_all+0x120/0x280
+>  mtk_drm_bind+0x284/0x67c [mediatek_drm]
+>  try_to_bring_up_aggregate_device+0x23c/0x320
+>  __component_add+0xa4/0x198
+>  component_add+0x14/0x20
+>  mtk_dsi_host_attach+0x78/0x100 [mediatek_drm]
+>  mipi_dsi_attach+0x2c/0x50
+>  panel_simple_dsi_probe+0x4c/0x9c [panel_simple]
+>  mipi_dsi_drv_probe+0x1c/0x28
+>  really_probe+0xc0/0x3dc
+>  __driver_probe_device+0x80/0x160
+>  driver_probe_device+0x40/0x120
+>  __device_attach_driver+0xbc/0x17c
+>  bus_for_each_drv+0x88/0xf0
+>  __device_attach+0x9c/0x1cc
+>  device_initial_probe+0x54/0x60
+>  bus_probe_device+0x34/0xa0
+>  device_add+0x5b0/0x800
+>  mipi_dsi_device_register_full+0xdc/0x16c
+>  mipi_dsi_host_register+0xc4/0x17c
+>  mtk_dsi_probe+0x10c/0x260 [mediatek_drm]
+>  platform_probe+0x5c/0xa4
+>  really_probe+0xc0/0x3dc
+>  __driver_probe_device+0x80/0x160
+>  driver_probe_device+0x40/0x120
+>  __driver_attach+0xc8/0x1f8
+>  bus_for_each_dev+0x7c/0xe0
+>  driver_attach+0x24/0x30
+>  bus_add_driver+0x11c/0x240
+>  driver_register+0x68/0x130
+>  __platform_register_drivers+0x64/0x160
+>  mtk_drm_init+0x24/0x1000 [mediatek_drm]
+>  do_one_initcall+0x60/0x1d0
+>  do_init_module+0x54/0x240
+>  load_module+0x1838/0x1dc0
+>  init_module_from_file+0xd8/0xf0
+>  __arm64_sys_finit_module+0x1b4/0x428
+>  invoke_syscall.constprop.0+0x48/0xc8
+>  do_el0_svc+0x3c/0xb8
+>  el0_svc+0x34/0xe8
+>  el0t_64_sync_handler+0xa0/0xe4
+>  el0t_64_sync+0x198/0x19c
+> Code: 52800022 941004ab 2a0003f3 37f80040 (29005a80)
+> ---[ end trace 0000000000000000 ]---
+
+Applied to mediatek-drm-fixes [1], thanks.
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
+log/?h=3Dmediatek-drm-fixes
+
+Regards,
+Chun-Kuang.
 
 >
-> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+> Fixes: e4732b590a77 ("drm/mediatek: dsi: Register DSI host after acquirin=
+g clocks and PHY")
+> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
 > ---
-> 2.52.0
+> v3: Also initialize irq_wait_queue before calling platform_set_drvdata
+> v2: Added Fixes tag
+>
+>  drivers/gpu/drm/mediatek/mtk_dsi.c | 9 +++++----
+>  1 file changed, 5 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediate=
+k/mtk_dsi.c
+> index d7726091819c..acee2227275b 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -1232,6 +1232,11 @@ static int mtk_dsi_probe(struct platform_device *p=
+dev)
+>
+>         dsi->host.ops =3D &mtk_dsi_ops;
+>         dsi->host.dev =3D dev;
+> +
+> +       init_waitqueue_head(&dsi->irq_wait_queue);
+> +
+> +       platform_set_drvdata(pdev, dsi);
+> +
+>         ret =3D mipi_dsi_host_register(&dsi->host);
+>         if (ret < 0)
+>                 return dev_err_probe(dev, ret, "Failed to register DSI ho=
+st\n");
+> @@ -1243,10 +1248,6 @@ static int mtk_dsi_probe(struct platform_device *p=
+dev)
+>                 return dev_err_probe(&pdev->dev, ret, "Failed to request =
+DSI irq\n");
+>         }
+>
+> -       init_waitqueue_head(&dsi->irq_wait_queue);
+> -
+> -       platform_set_drvdata(pdev, dsi);
+> -
+>         dsi->bridge.of_node =3D dev->of_node;
+>         dsi->bridge.type =3D DRM_MODE_CONNECTOR_DSI;
+>
+> --
+> 2.43.0
 >
 
