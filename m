@@ -4,77 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFEBDD58CA1
-	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Mar 2026 22:24:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A5BFD58CA1
+	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Mar 2026 22:26:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wHlux91S1pcszks5LnQqDKbd7Lhdihe1iwVw4ZIiPgU=; b=JrP5neavnW4B4Edv5VubBFIV8T
-	nvxwNRSXXr+4EyKDRzcx5Kg1mK7vyMF6boRbqZaief/mp37Bso+XxtDYd7qSaL8aWGuv/jFAygG2H
-	ae/Ep8XfX4fjXEY3Imp6ER0xnAGaS7131hfy/5wAFgp7EfwSbBs6CtWeQzLuuR+kvNNWJM3q3fLTi
-	6Knv75gBU3OYyehedC65DDJOntli6aunSaQ9zmkArtJbumGN5lmoH57zVjf1akWCMVYH5T6P+1fMx
-	uMz3IY4fWEW//uYBbrc2Bz6y9r/6rAlmhiLcyX0F5t5fORvTVtdJ9AnA4V84PNd16z04DR+jEhLgB
-	5TnVkFGw==;
+	bh=+mst3cEdRUvZvV8FPAK+ab6xPtMgdVjX2HSYh8y/2ug=; b=Hp25RD7FPrpKxn3YKpHyvpkeeC
+	MNitQxwYKgtvV7ep/zfwKIf2dgFDxry9H9chaN1JYRgUlNePhKcuwa0NnRhoYWR4GXvvTFzMXjAys
+	UEZQY4ce8HqVKjK/T9fImLQHfOPobkp8sMwWR43Rj8X3oWyIQQPmTckGPOJ6hM8yBvViq0evpkJpp
+	WB9/qZGxECz8EiXrPFKo2d9P/JrTZsIXPm6we76uaB5WbxXjfFQ3GZyJbOzqc69A14ffrJlU7hYAB
+	k9YONt1zbSuCMJ6y7Ja3+A2/hzer5m3sY9fVsMoEn6xjZet9hWWyEpxnwCZIIgKxkTsMPk8Q3XNEp
+	RCT/EtaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4RDk-0000000FiQZ-0q8O;
-	Sun, 22 Mar 2026 22:24:32 +0000
-Received: from mail-dy1-x132d.google.com ([2607:f8b0:4864:20::132d])
+	id 1w4RFK-0000000FiUd-3Pav;
+	Sun, 22 Mar 2026 22:26:10 +0000
+Received: from mail-dy1-x1332.google.com ([2607:f8b0:4864:20::1332])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4RDg-0000000FiPq-2kn4
+	id 1w4RFI-0000000FiTw-1OSN
 	for linux-mediatek@lists.infradead.org;
-	Sun, 22 Mar 2026 22:24:30 +0000
-Received: by mail-dy1-x132d.google.com with SMTP id 5a478bee46e88-2c0ecaae7dfso6138580eec.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 22 Mar 2026 15:24:27 -0700 (PDT)
+	Sun, 22 Mar 2026 22:26:09 +0000
+Received: by mail-dy1-x1332.google.com with SMTP id 5a478bee46e88-2c0f754e756so3426040eec.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 22 Mar 2026 15:26:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1774218267; x=1774823067; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1774218367; x=1774823167; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=wHlux91S1pcszks5LnQqDKbd7Lhdihe1iwVw4ZIiPgU=;
-        b=gxd8CJTZ9AQODd25sqVcrR1WH+FRPYbsmqZHvqGDv56KQbQ3qbIfAz83UJWdMuLZNH
-         XXw4ctwRdZkj/cg5vMeh1IwuGpNzRXqHGO+o0S3/9j0P46H3YgcObQqrf9N4G3gQGKBz
-         TNQ+D35/iC9AQ8CdEHsfk0pjKajVKikrel5ujvhRh3mKuUD4dpI6UNKLKNFHXZlD7cBk
-         jGH7Pmpv8Xd7B6NlpZdo/XNquSIstvFioTJMFLGc2YT/jEUGtP/YqcP6hLISvAjg3W2e
-         LGB8BaCCHKXqUr6+EEDrau/M1A8YkFxr6/U5vUTRs+uArut5Jl6eqX2ZuQzuzR9DEnMi
-         8S3Q==
+        bh=+mst3cEdRUvZvV8FPAK+ab6xPtMgdVjX2HSYh8y/2ug=;
+        b=ivJ1A78p+Lk2wI2+Wox8a245ZVt61tbSHbhjRRuH+C7hHDJfHPogukaXYqS43uf8s3
+         eIFrEN8rODY0/Zpz3nslfbuG7nDGDikRo953adOaKUv98ak5/Lc+eWMa7j8XMLrOZ1ZW
+         jShzUkt/8RLtEI+0z5StnMU6WUThrrLA7frB1sVftT54FVAzotY0076VMEeTyF4VMIGb
+         /b/2SCsbKS/ktEPqMnpiaugIs1qQfVuG4EkuvdedhlNjDvdnFF0IgpSkyjaD+yuXOZAw
+         ammd/8mc40gfotWCAYiNk6LNVFMml0Wz+0fmipalCVk+nACf6IwO2IJS4IAUpGYgajJI
+         +0Bw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1774218267; x=1774823067;
+        d=1e100.net; s=20251104; t=1774218367; x=1774823167;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=wHlux91S1pcszks5LnQqDKbd7Lhdihe1iwVw4ZIiPgU=;
-        b=QAXuQ8zsSzhExYwtjfTlFgok9pug8SfnypUE7r0JRmS1kZ1syh2MvxHFG1ZF/m8yrJ
-         78kia6HIsbHIQ5yWxZLv8QX5kCGmreCRrt2jc/YdzHDYjWifE5+NO18Qpri86WQlf9W2
-         mm5YNTpO1X441kFAXNTXtHkAPiNayTGrH8HHeJRaWFuEHYbbV30pnpLfvrfR/46qOmTz
-         Do5fyw91FvWgZOKMOFuXEDX+f2KgiWiD0ELqH0uUsUT50VS2MSZ4+6jhARwPJO1SLzwP
-         I476ubaYuE+bt/WN57I96V5xdlbtHnLfpVFuEbWb+EYwAr48I4YGZcfsQUQzk/y5z31o
-         4YXg==
-X-Forwarded-Encrypted: i=1; AJvYcCV4GqSOIAZ9hHbtZeX9HA9ZJAqkbIKYvQ1GE5518XID6sEpy/xdTPrNn5NzCBgQfWEf2IqVG8UTO2aHwzL1Yg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyIP60PIIXcVgozvFLI0nEQCnTxrKZxEnS+4itGsApN1PyGHYDk
-	59GcA6SRq4rcoeeYY4pIdyCVgEpGOBtfczCl2IWMJTj54mTLmi0AVazP
-X-Gm-Gg: ATEYQzwpHF49oXaP8SYWujnBwqwYY+9rh/d15+DmLC+WWxjVknQR3I2TJ7lZ1ZlvKjj
-	auUVwt6/+QFTCxE4XBc4kmTdZlI/cnAAepMcjewOf+/WJYeceg3GibNFed5d50aorb2BGLTV1jb
-	vP3K/a3mznZCT0Gg8rcbpd6+oFe5RGVWRMT0ns17gTpbe3rsNOZMohuPbFB1AAZF/mVX1BeCGAS
-	3K/RtrPdwKtkB3HZfqrrexhD2PKWXJr3W8hU+8NFMFIbF2lDYfE0dxdDr7GVA7YPLwW0F9ZIxBc
-	RUUaQh93rA4y1rMRkOF20kHE/ywP6RfiZgzAOXo6rAwf3vE95xfs/Tbkk6IxO9rUh2Py8xg5Bir
-	aWs90RJ1r0azRFuCJKDZrM04WTQ6GiCDfVN0+ipveUe0qDHP6BFDh06gKc36s2TcXZi1ZV9iNCX
-	zi5F1of0P86yrdz7YN34bVNeS1Ec7/q+i+K8JP2EdwKC+sHEr3RJ0IEw4VHNilfFYXmIlKtpj+b
-	mA=
-X-Received: by 2002:a05:7300:134a:b0:2c1:7ca:ceb1 with SMTP id 5a478bee46e88-2c109567522mr4864099eec.6.1774218266887;
-        Sun, 22 Mar 2026 15:24:26 -0700 (PDT)
+        bh=+mst3cEdRUvZvV8FPAK+ab6xPtMgdVjX2HSYh8y/2ug=;
+        b=nIXuTwivu8RGAdoet1qn0JKxG8A4CjpZW+Ikgf93mN5LnR24QbmyKDiCDnNzUC4+J2
+         oUkmITxFZmRlWLBIzgMK9YB+Mdn3Gj3/rGkEDgz6XK4q/yOMdniCZH2rD5t4G+HnI8RY
+         7cEyRSwCFcuidLG7AbsLPqr3dSOmo+ZRzXhVo7/LDbTic4gVyLhJan8bgfI9ROOiR/wN
+         ppnraZxrmg7yjsyGyFUxSGFdnLs9VT7vOqE0e2LrfgqBQ5fpRg3FYbl/yiKe992cp71g
+         sdrFGuKZsRr8tBsfx+EsQZtAV0zYVJ53obB3KfjOV2im4DCVcPEF0OtyX3YPh2Sgv8DH
+         fddQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXcl0XUZ+QAHF4BOCAsFf0oekhydu4WIEHfHv5pVZ5Ac2fd+dBhrZcfoZyhlZKOIgk0HHXDdbHGTLVWRoNMOA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxWaKBO9LfoF5ZDurUVsJAP7x+CM6pyTTQZmYS0/8zHwUUnM1r5
+	NIDOazZgDw0MS1yluiJgoLlHEiOF2wyVQBnMOHAuSUZkXUqJQv2cG8z+
+X-Gm-Gg: ATEYQzxIyIUvTH6Hshs8OgBRdmr1TZBAtgXi1Sz/W69HzNR/ogwaJ+jYmF0SXGxVvjy
+	80ZfOTGkjL0SoBz1N3sWk+s0VZ38MbcrITxnUzBvM4puqOQc1cLgJBNxNZYJCo3U5BhKR7MAqYP
+	bNST1T/WtfMr1/JwJGkI0Kiu8Jp71VMxDaVN/KxOzyzsQBLtjjC40BjV6NqAw9g3URpa7+ZbgFk
+	k3zvnpLalyP4PvdwKPtTExAtETiXJx4Sdla8mI22EoIw4CNBzJrzAVOcPcGe5jw9Foo9rjAqu/S
+	1Yby34CYHYf0E+ZLmIhC2hsvB4mYUC2DtUvNKYXVay6DcQ5b+ALeeINHHatnc9qCroubdbKyOCf
+	Nz+CmwapaNOUmbG3tBG89AF7be4fHmOm1z9Ev+rECnuCaaEdOcqV8IPXd8bgYBxpD0RS9cujRFe
+	7Hy2j1+cjq6fnvEUfCc1H65a7BsJsAEO19qErdLhfPjWlqLWtTYF77zfNkbPB8WMgP
+X-Received: by 2002:a05:7300:aca2:b0:2c0:be45:6815 with SMTP id 5a478bee46e88-2c10981e483mr3694786eec.32.1774218367042;
+        Sun, 22 Mar 2026 15:26:07 -0700 (PDT)
 Received: from google.com ([2a00:79e0:2ebe:8:b768:22ed:3eba:aeb3])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-2c10b1a88e5sm13452469eec.13.2026.03.22.15.24.23
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-2c10b31bef1sm13678234eec.26.2026.03.22.15.26.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 22 Mar 2026 15:24:26 -0700 (PDT)
-Date: Sun, 22 Mar 2026 15:24:21 -0700
+        Sun, 22 Mar 2026 15:26:06 -0700 (PDT)
+Date: Sun, 22 Mar 2026 15:26:01 -0700
 From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Romain Gantois <romain.gantois@bootlin.com>
-Cc: MyungJoo Ham <myungjoo.ham@samsung.com>, 
-	Chanwoo Choi <cw00.choi@samsung.com>, Guenter Roeck <linux@roeck-us.net>, 
-	Peter Rosin <peda@axentia.se>, Jonathan Cameron <jic23@kernel.org>, 
+To: Jonathan Cameron <jic23@kernel.org>
+Cc: Romain Gantois <romain.gantois@bootlin.com>, 
+	MyungJoo Ham <myungjoo.ham@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, 
+	Guenter Roeck <linux@roeck-us.net>, Peter Rosin <peda@axentia.se>, 
 	David Lechner <dlechner@baylibre.com>, Nuno =?utf-8?B?U8Oh?= <nuno.sa@analog.com>, 
 	Andy Shevchenko <andy@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, 
 	Michael Hennerich <Michael.Hennerich@analog.com>, Mariel Tinaco <Mariel.Tinaco@analog.com>, 
@@ -104,16 +103,18 @@ Cc: MyungJoo Ham <myungjoo.ham@samsung.com>,
 	linux-stm32@st-md-mailman.stormreply.com, Sebastian Reichel <sebastian.reichel@collabora.com>, 
 	Andy Shevchenko <andriy.shevchenko@intel.com>
 Subject: Re: [PATCH v2 2/2] iio: inkern: Use namespaced exports
-Message-ID: <acBr-W2ILu9tnMyd@google.com>
+Message-ID: <acBsI0PxvxDGymCa@google.com>
 References: <20251209-iio-inkern-use-namespaced-exports-v2-0-9799a33c4b7f@bootlin.com>
  <20251209-iio-inkern-use-namespaced-exports-v2-2-9799a33c4b7f@bootlin.com>
+ <20260111170222.43aee69a@jic23-huawei>
+ <20260322122529.62093f12@jic23-huawei>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20251209-iio-inkern-use-namespaced-exports-v2-2-9799a33c4b7f@bootlin.com>
+In-Reply-To: <20260322122529.62093f12@jic23-huawei>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260322_152428_694614_31AE3833 
-X-CRM114-Status: GOOD (  12.87  )
+X-CRM114-CacheID: sfid-20260322_152608_388105_5A21D660 
+X-CRM114-Status: GOOD (  22.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,24 +129,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 09, 2025 at 09:25:56AM +0100, Romain Gantois wrote:
-> Use namespaced exports for IIO consumer API functions.
+On Sun, Mar 22, 2026 at 12:25:29PM +0000, Jonathan Cameron wrote:
+> On Sun, 11 Jan 2026 17:02:22 +0000
+> Jonathan Cameron <jic23@kernel.org> wrote:
 > 
-> This will make it easier to manage the IIO export surface. Consumer drivers
-> will only be provided access to a specific set of functions, thereby
-> restricting usage of internal IIO functions by other parts of the kernel.
+> > On Tue, 09 Dec 2025 09:25:56 +0100
+> > Romain Gantois <romain.gantois@bootlin.com> wrote:
+> > 
+> > > Use namespaced exports for IIO consumer API functions.
+> > > 
+> > > This will make it easier to manage the IIO export surface. Consumer drivers
+> > > will only be provided access to a specific set of functions, thereby
+> > > restricting usage of internal IIO functions by other parts of the kernel.
+> > > 
+> > > This change cannot be split into several parts without breaking
+> > > bisectability, thus all of the affected drivers are modified at once.
+> > > 
+> > > Acked-by: Sebastian Reichel <sebastian.reichel@collabora.com> # for power-supply
+> > > Acked-by: Guenter Roeck <linux@roeck-us.net>
+> > > Reviewed-by: Andy Shevchenko <andriy.shevchenko@intel.com>
+> > > Signed-off-by: Romain Gantois <romain.gantois@bootlin.com>  
+> > Ideally looking for a couple more Acks.
+> > 
+> > If any of the maintainers of other trees who haven't already replied
+> > have time for a quick glance that would be great.  I'll spin an
+> > immutable branch but I'm not really expecting any non trivial
+> > conflicts unless there is a new user in flight that I've forgotten
+> > about.
 > 
-> This change cannot be split into several parts without breaking
-> bisectability, thus all of the affected drivers are modified at once.
-> 
-> Acked-by: Sebastian Reichel <sebastian.reichel@collabora.com> # for power-supply
-> Acked-by: Guenter Roeck <linux@roeck-us.net>
-> Reviewed-by: Andy Shevchenko <andriy.shevchenko@intel.com>
-> Signed-off-by: Romain Gantois <romain.gantois@bootlin.com>
+> At this stage, given I'm still waiting on replies from a couple of
+> subsystem maintainers, I'm thinking we'll do this next cycle and I'll
+> provide an immutable branch based on rc1 for anyone to grab if they
+> run into merge conflicts in linux-next.
 
-For input:
-
-Acked-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Sorry, I just acked the input bits in the patch, but in general I feel
+these kind of mechanical changes in consumers do not require an ack and
+you can just go an apply such changes.
 
 Thanks.
 
