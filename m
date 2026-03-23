@@ -4,71 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06C6DEC01A6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Mar 2026 09:07:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52983EC01A6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Mar 2026 09:10:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=/kKOvh8mzHk95zH5Sm/YNif6QPFXAR4KEc0obuavFZ8=; b=L5Qo2meMnocb8HfQmHmwiLL2zf
-	6HV7XmLjRrbQS27rIjsUE3458H0btMmegUS0n+x5VCJs0yNdCFjV+c1LK+9pW1+pGEsejW+8Aa3/i
-	3loA6H/C9AEVVJpVnz7U6ikzQ2M8jHEG8lTP12gss9lT4Uaqew+dYTDL41AdIGEZIJUORgSvMWRgK
-	kvfC4/9S+6tLZDKBnSMY5XmX9MU5bMqMalv6VNLi0PfH/6xDggAKs2Hkr3YESupfvVQFdrbnE4pfX
-	9ha4fbk2++XboptyyZj5JFPTuGzMtOKhKH10OzoRY2hAw3mxyeIndYEIKxdaOigOBzVpLOrn7oMdD
-	M5d4wY5A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=suw9KHLI1LNKkl/PCLrf2qkeUAqtRJBNl4/N/e6MHDw=; b=eOJ9usyxwCYO4ZxmpLaAghrTp3
+	qrbWrmTXdr7sfWPVdEJNNuJIsaRiPwjtdzu99nDIei3aeGF0TmQrr5PCijrYDhq4V9uJyuDEKQKLe
+	8/RPGPTWdOaOriXnbtvCTTrbsXZsbGvhHht1yrHAMWuyElKKL2cKsnV9b4KfV64mxYA+Rb+KS+n8r
+	P7m9rzFcqMd/d+IhRUvrBoCn1q5TodpUun8qriq7MMK1ZznM4RIizAcZTZXJHONDHLoN4+CH5TU9W
+	jDW+n5VNv7n2dA6126jyLz91icgpna5fObjGIaG2ubujZTh1oKsUe2jv0qGq1QZY7ds/wJZ88RKL2
+	WX9NzDdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4bGM-0000000GKvy-25lb;
-	Mon, 23 Mar 2026 09:07:54 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1w4bIq-0000000GLDi-0eB4;
+	Mon, 23 Mar 2026 09:10:28 +0000
+Received: from mo4-p02-ob.smtp.rzone.de ([85.215.255.84])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4bGJ-0000000GKvH-2STZ;
-	Mon, 23 Mar 2026 09:07:52 +0000
-X-UUID: c19c5dde269711f19e7563141e833ce8-20260323
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=/kKOvh8mzHk95zH5Sm/YNif6QPFXAR4KEc0obuavFZ8=;
-	b=s90JS+MLvHuJ5N7Ps3FAj7s4QGW5hl1DbI+8W2VmcEkhCsUMoMGD7rX2uP67MRaGwfOsMcCE8id6YFttowY940S+ggs2nh5SR87QjO2u6Efv7mAX4RC2OcK4JJjvfkf4+HVeDCtik7+aKA5W87PzaSdwjoIOKDsWrVpA8qD1W+o=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:8440c5ff-b0fd-40a8-9e77-3bcfe3e7e39d,IP:0,U
-	RL:0,TC:0,Content:56,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:56
-X-CID-META: VersionHash:e7bac3a,CLOUDID:9467ce4c-9183-487b-8624-e74f2dd98990,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:3|15|5
-	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA
-	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: c19c5dde269711f19e7563141e833ce8-20260323
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1073585773; Mon, 23 Mar 2026 02:07:45 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 23 Mar 2026 17:07:42 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 23 Mar 2026 17:07:42 +0800
-From: Jason-JH Lin <jason-jh.lin@mediatek.com>
-To: Jassi Brar <jassisinghbrar@gmail.com>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-Subject: [PATCH] mailbox: mtk-cmdq: Fix CURR and END addr for task insert case
-Date: Mon, 23 Mar 2026 17:07:11 +0800
-Message-ID: <20260323090742.1522607-1-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1w4bIm-0000000GLCZ-3ggt;
+	Mon, 23 Mar 2026 09:10:26 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1774257016; cv=none;
+    d=strato.com; s=strato-dkim-0002;
+    b=fCnQxOjBHWAvciIhvDWKGSu1LEvxeGBq1dtQMwfQ/6WAAJnAx3Yp4cEn/ZabU9x/sM
+    GIgqdDNxbQutsjV8oO8lPOLn0DpOb3Bkoq8I0uKtoF4cqWGt+gTdB6X0ByylvHnf8gUR
+    JMKimUSb+RNCcx2n245u3T+748iW+y08/SRCUhsrhZuz7IWewgetlkXiKpxFeF9OMaWA
+    804UyV/Q/Q9RAubQsnrfP2ieNJ40fkzT5ZJXl/ctRCmY30+9x5QrfVBfPbAKgeoc/nuo
+    dQvcgEg8VW1iU4gK4sOFBovJLylMa5bx9O1TpWqp/V4s5NLxvAvR/ejnFPQbpcDJeibg
+    mPoQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; t=1774257016;
+    s=strato-dkim-0002; d=strato.com;
+    h=References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Cc:Date:
+    From:Subject:Sender;
+    bh=suw9KHLI1LNKkl/PCLrf2qkeUAqtRJBNl4/N/e6MHDw=;
+    b=j44P6oh9KjaapEvWeWAxinrm23dGpzGc6zQgz8zReYtOa8RQO1OZtijvbstav8i6TH
+    y+e9aUAZguwnx0WsGDuoMcYVUX5ylEtlgqztFbRc8KybT5ARjQynxC4UA7LeXPElPkqr
+    wC1AVGXoNo/vsaKHiJE9i20B3Kr/VSvUMtPkZT3YFWr79PoMgfshTB8yJamJoNXAdAo4
+    Vks/GHstO1/+Ff+kWLQUyNUbqK03RupBrRmd+PHiMZbqvG03lpDg71c2dg869GrHeBwB
+    7ILalUn4LJCoSg7K30giTEp1xd4ooKQGr/A3zDJpaxAxSuik5QrqD3SdHKefIB1xqfub
+    PxCQ==
+ARC-Authentication-Results: i=1; strato.com;
+    arc=none;
+    dkim=none
+X-RZG-CLASS-ID: mo02
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; t=1774257016;
+    s=strato-dkim-0002; d=iokpp.de;
+    h=References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Cc:Date:
+    From:Subject:Sender;
+    bh=suw9KHLI1LNKkl/PCLrf2qkeUAqtRJBNl4/N/e6MHDw=;
+    b=oB5MUOcwnL8wCWZIvUbSF+n2tSmvY2PVB1F2iP1KO29zhSuG8WjCJd7fd9BCHBLaoO
+    hCZji4UZWVbHd/cymJEyO1S+ozjz244YJBfyKb9vafioRhTGzelXhX4OzKC6kK5nhtL4
+    YQR79nLITuX5GloZVPJoO/UpMz3kMEQO92qhPnTcL6pc37pfKMniHYxAQAZfa0t7YL1Z
+    S1L3kuaFutU7wdHOboPeeVPCX/vhOxSEJR9ndUkN4paxKvvTF6X72S4NxJju1E+/ZgG5
+    Z9NH3rqjY80KOT4BKWf7AYDRjw3oVY2qlgM2m1rS0eSuQi0Z8yn0yYbBvO6roGjoWV3Z
+    Vs2w==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; t=1774257016;
+    s=strato-dkim-0003; d=iokpp.de;
+    h=References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Cc:Date:
+    From:Subject:Sender;
+    bh=suw9KHLI1LNKkl/PCLrf2qkeUAqtRJBNl4/N/e6MHDw=;
+    b=OxctGTOoYRuBaiR748PWHh5Zf8TwSpWRVyedcUgy/m2eZ9JYyuKBf0kvDe4ia1Uls5
+    cUNnrJp25Kfa9ukmmCBQ==
+X-RZG-AUTH: ":LmkFe0i9dN8c2t4QQyGBB/NDXvjDB6pBSe9tgBDSDt0V0DBslXBtZUxPOub3IZqk"
+Received: from [10.176.235.211]
+    by smtp.strato.de (RZmta 55.0.1 AUTH)
+    with ESMTPSA id z7934522N9ADQJ7
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256 bits))
+	(Client did not present a certificate);
+    Mon, 23 Mar 2026 10:10:13 +0100 (CET)
+Message-ID: <d74ef14d2376d6b4ca819eccb4570120f658caeb.camel@iokpp.de>
+Subject: Re: [PATCH v4 01/12] scsi: ufs: core: Introduce a new ufshcd vops
+ negotiate_pwr_mode()
+From: Bean Huo <beanhuo@iokpp.de>
+To: Can Guo <can.guo@oss.qualcomm.com>, avri.altman@wdc.com,
+ bvanassche@acm.org,  beanhuo@micron.com, peter.wang@mediatek.com,
+ martin.petersen@oracle.com,  mani@kernel.org
+Cc: linux-scsi@vger.kernel.org, Alim Akhtar <alim.akhtar@samsung.com>, 
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>, Sai Krishna
+ Potthuri <sai.krishna.potthuri@amd.com>, Ajay Neeli <ajay.neeli@amd.com>,
+ Peter Griffin <peter.griffin@linaro.org>, Krzysztof Kozlowski
+ <krzk@kernel.org>, Chaotian Jing <chaotian.jing@mediatek.com>, Stanley Jhu
+ <chu.stanley@gmail.com>, Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
+ <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,  "Bao D. Nguyen"
+ <quic_nguyenb@quicinc.com>, Adrian Hunter <adrian.hunter@intel.com>,
+ Archana Patni <archana.patni@intel.com>, open list
+ <linux-kernel@vger.kernel.org>, "open list:UNIVERSAL FLASH STORAGE HOST
+ CONTROLLER DRIVER..." <linux-samsung-soc@vger.kernel.org>, "moderated
+ list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:UNIVERSAL FLASH
+ STORAGE HOST CONTROLLER DRIVER..." <linux-mediatek@lists.infradead.org>,
+ "open list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
+ <linux-arm-msm@vger.kernel.org>
+Date: Mon, 23 Mar 2026 10:10:12 +0100
+In-Reply-To: <20260321031021.1722459-2-can.guo@oss.qualcomm.com>
+References: <20260321031021.1722459-1-can.guo@oss.qualcomm.com>
+	 <20260321031021.1722459-2-can.guo@oss.qualcomm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.44.4-0ubuntu2.1 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260323_020751_648233_9BDD1A40 
-X-CRM114-Status: GOOD (  12.03  )
+X-CRM114-CacheID: sfid-20260323_021025_250250_702D6C78 
+X-CRM114-Status: GOOD (  10.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,45 +121,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Xiandong Wang <xiandong.wang@mediatek.com>, Jason-JH Lin <jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>, linux-kernel@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix CURR and END address calculation for inserting a cmdq task into the
-task list by using cmdq_reg_shift_addr() for proper address converting.
-This ensures both CURR and END addresses are set correctly when
-enabling the thread.
+On Fri, 2026-03-20 at 20:10 -0700, Can Guo wrote:
+> Most vendor specific implemenations of vops pwr_change_notify(PRE_CHANGE)
+> are fulfilling two things at once:
+> - Vendor specific target power mode negotiation
+> - Vendor specific power mode change preparation
+>=20
+> When TX Equalization is added into consideration, before power mode chang=
+e
+> to a target power mode, TX Equalization Training (EQTR) needs be done for
+> that target power mode. In addition, UFSHCI spec requires to start TX EQT=
+R
+> from HS-G1 (the most reliable High Speed Gear).
+>=20
+> Adding TX EQTR before pwr_change_notify(PRE_CHANGE) is not applicable
+> because we don't know the negotiated power mode yet.
+>=20
+> Adding TX EQTR post pwr_change_notify(PRE_CHANGE) is inappropriate
+> because pwr_change_notify(PRE_CHANGE) has finished preparation for a powe=
+r
+> mode change to negotiated power mode, yet we are changing power mode to
+> HS-G1 for TX EQTR.
+>=20
+> Add a new vops negotiate_pwr_mode() so that vendor specific power mode
+> negotiation can be fulfilled in its vendor specific implementations.
+> Later on, TX EQTR can be added post vops negotiate_pwr_mode() and before
+> vops pwr_change_notify(PRE_CHANGE).
+>=20
+> Signed-off-by: Can Guo <can.guo@oss.qualcomm.com>
 
-Fixes: a195c7ccfb7a ("mailbox: mtk-cmdq: Refine DMA address handling for the command buffer")
-Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
----
- drivers/mailbox/mtk-cmdq-mailbox.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+Looks good to me. Let=E2=80=99s move forward!
 
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index d7c6b38888a3..547a10a8fad3 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -493,14 +493,14 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
- 		if (curr_pa == end_pa - CMDQ_INST_SIZE ||
- 		    curr_pa == end_pa) {
- 			/* set to this task directly */
--			writel(task->pa_base >> cmdq->pdata->shift,
--			       thread->base + CMDQ_THR_CURR_ADDR);
-+			gce_addr = cmdq_convert_gce_addr(task->pa_base, cmdq->pdata);
-+			writel(gce_addr, thread->base + CMDQ_THR_CURR_ADDR);
- 		} else {
- 			cmdq_task_insert_into_thread(task);
- 			smp_mb(); /* modify jump before enable thread */
- 		}
--		writel((task->pa_base + pkt->cmd_buf_size) >> cmdq->pdata->shift,
--		       thread->base + CMDQ_THR_END_ADDR);
-+		gce_addr = cmdq_convert_gce_addr(task->pa_base + pkt->cmd_buf_size, cmdq->pdata);
-+		writel(gce_addr, thread->base + CMDQ_THR_END_ADDR);
- 		cmdq_thread_resume(thread);
- 	}
- 	list_move_tail(&task->list_entry, &thread->task_busy_list);
--- 
-2.43.0
-
+Reviewed-by: Bean Huo <beanhuo@micron.com>
 
