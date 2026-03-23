@@ -4,112 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52983EC01A6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Mar 2026 09:10:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F20CEC01BE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Mar 2026 10:36:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=suw9KHLI1LNKkl/PCLrf2qkeUAqtRJBNl4/N/e6MHDw=; b=eOJ9usyxwCYO4ZxmpLaAghrTp3
-	qrbWrmTXdr7sfWPVdEJNNuJIsaRiPwjtdzu99nDIei3aeGF0TmQrr5PCijrYDhq4V9uJyuDEKQKLe
-	8/RPGPTWdOaOriXnbtvCTTrbsXZsbGvhHht1yrHAMWuyElKKL2cKsnV9b4KfV64mxYA+Rb+KS+n8r
-	P7m9rzFcqMd/d+IhRUvrBoCn1q5TodpUun8qriq7MMK1ZznM4RIizAcZTZXJHONDHLoN4+CH5TU9W
-	jDW+n5VNv7n2dA6126jyLz91icgpna5fObjGIaG2ubujZTh1oKsUe2jv0qGq1QZY7ds/wJZ88RKL2
-	WX9NzDdg==;
+	bh=wB/8hmIhHIYOZcP6n7qCZqxw3BgXqSCHAqTZavDQKfs=; b=GKwGHhk4h8fOk5DLdXwU90bUe0
+	oZVW5GQf6K0J/OcOpHCczmMvge+Co3b6ju1BH96Utv9ERm6GZ0m4fy/4dmmqITPyeS0l/M72JzrsY
+	MdkVYoTE4TeFQJvXlUXgnJ+HWtp113fcAlLgrBsqGNn4e/w3YhG0vIAvScNYafhkzAe+ZKXxgGO4N
+	jj/oU7clZJ//91UUmKzIUJ+T1WE/OhMDWhHCsf1opTU/SCJpZMbks51+XCWw/DixjeU7CuT9hKmR9
+	0VC1PnodMoUuviHIIuWDS5pQABk7nEYQOlOV1mKvLmZEcU8ewXPFDNm6ObOie5pcp2lTIwN+hXdUt
+	v4Mi/+kA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4bIq-0000000GLDi-0eB4;
-	Mon, 23 Mar 2026 09:10:28 +0000
-Received: from mo4-p02-ob.smtp.rzone.de ([85.215.255.84])
+	id 1w4cde-0000000GWt5-2lPI;
+	Mon, 23 Mar 2026 10:36:02 +0000
+Received: from dvalin.narfation.org ([2a00:17d8:100::8b1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4bIm-0000000GLCZ-3ggt;
-	Mon, 23 Mar 2026 09:10:26 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1774257016; cv=none;
-    d=strato.com; s=strato-dkim-0002;
-    b=fCnQxOjBHWAvciIhvDWKGSu1LEvxeGBq1dtQMwfQ/6WAAJnAx3Yp4cEn/ZabU9x/sM
-    GIgqdDNxbQutsjV8oO8lPOLn0DpOb3Bkoq8I0uKtoF4cqWGt+gTdB6X0ByylvHnf8gUR
-    JMKimUSb+RNCcx2n245u3T+748iW+y08/SRCUhsrhZuz7IWewgetlkXiKpxFeF9OMaWA
-    804UyV/Q/Q9RAubQsnrfP2ieNJ40fkzT5ZJXl/ctRCmY30+9x5QrfVBfPbAKgeoc/nuo
-    dQvcgEg8VW1iU4gK4sOFBovJLylMa5bx9O1TpWqp/V4s5NLxvAvR/ejnFPQbpcDJeibg
-    mPoQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; t=1774257016;
-    s=strato-dkim-0002; d=strato.com;
-    h=References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Cc:Date:
-    From:Subject:Sender;
-    bh=suw9KHLI1LNKkl/PCLrf2qkeUAqtRJBNl4/N/e6MHDw=;
-    b=j44P6oh9KjaapEvWeWAxinrm23dGpzGc6zQgz8zReYtOa8RQO1OZtijvbstav8i6TH
-    y+e9aUAZguwnx0WsGDuoMcYVUX5ylEtlgqztFbRc8KybT5ARjQynxC4UA7LeXPElPkqr
-    wC1AVGXoNo/vsaKHiJE9i20B3Kr/VSvUMtPkZT3YFWr79PoMgfshTB8yJamJoNXAdAo4
-    Vks/GHstO1/+Ff+kWLQUyNUbqK03RupBrRmd+PHiMZbqvG03lpDg71c2dg869GrHeBwB
-    7ILalUn4LJCoSg7K30giTEp1xd4ooKQGr/A3zDJpaxAxSuik5QrqD3SdHKefIB1xqfub
-    PxCQ==
-ARC-Authentication-Results: i=1; strato.com;
-    arc=none;
-    dkim=none
-X-RZG-CLASS-ID: mo02
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; t=1774257016;
-    s=strato-dkim-0002; d=iokpp.de;
-    h=References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Cc:Date:
-    From:Subject:Sender;
-    bh=suw9KHLI1LNKkl/PCLrf2qkeUAqtRJBNl4/N/e6MHDw=;
-    b=oB5MUOcwnL8wCWZIvUbSF+n2tSmvY2PVB1F2iP1KO29zhSuG8WjCJd7fd9BCHBLaoO
-    hCZji4UZWVbHd/cymJEyO1S+ozjz244YJBfyKb9vafioRhTGzelXhX4OzKC6kK5nhtL4
-    YQR79nLITuX5GloZVPJoO/UpMz3kMEQO92qhPnTcL6pc37pfKMniHYxAQAZfa0t7YL1Z
-    S1L3kuaFutU7wdHOboPeeVPCX/vhOxSEJR9ndUkN4paxKvvTF6X72S4NxJju1E+/ZgG5
-    Z9NH3rqjY80KOT4BKWf7AYDRjw3oVY2qlgM2m1rS0eSuQi0Z8yn0yYbBvO6roGjoWV3Z
-    Vs2w==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; t=1774257016;
-    s=strato-dkim-0003; d=iokpp.de;
-    h=References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Cc:Date:
-    From:Subject:Sender;
-    bh=suw9KHLI1LNKkl/PCLrf2qkeUAqtRJBNl4/N/e6MHDw=;
-    b=OxctGTOoYRuBaiR748PWHh5Zf8TwSpWRVyedcUgy/m2eZ9JYyuKBf0kvDe4ia1Uls5
-    cUNnrJp25Kfa9ukmmCBQ==
-X-RZG-AUTH: ":LmkFe0i9dN8c2t4QQyGBB/NDXvjDB6pBSe9tgBDSDt0V0DBslXBtZUxPOub3IZqk"
-Received: from [10.176.235.211]
-    by smtp.strato.de (RZmta 55.0.1 AUTH)
-    with ESMTPSA id z7934522N9ADQJ7
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256 bits))
-	(Client did not present a certificate);
-    Mon, 23 Mar 2026 10:10:13 +0100 (CET)
-Message-ID: <d74ef14d2376d6b4ca819eccb4570120f658caeb.camel@iokpp.de>
-Subject: Re: [PATCH v4 01/12] scsi: ufs: core: Introduce a new ufshcd vops
- negotiate_pwr_mode()
-From: Bean Huo <beanhuo@iokpp.de>
-To: Can Guo <can.guo@oss.qualcomm.com>, avri.altman@wdc.com,
- bvanassche@acm.org,  beanhuo@micron.com, peter.wang@mediatek.com,
- martin.petersen@oracle.com,  mani@kernel.org
-Cc: linux-scsi@vger.kernel.org, Alim Akhtar <alim.akhtar@samsung.com>, 
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>, Sai Krishna
- Potthuri <sai.krishna.potthuri@amd.com>, Ajay Neeli <ajay.neeli@amd.com>,
- Peter Griffin <peter.griffin@linaro.org>, Krzysztof Kozlowski
- <krzk@kernel.org>, Chaotian Jing <chaotian.jing@mediatek.com>, Stanley Jhu
- <chu.stanley@gmail.com>, Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
- <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,  "Bao D. Nguyen"
- <quic_nguyenb@quicinc.com>, Adrian Hunter <adrian.hunter@intel.com>,
- Archana Patni <archana.patni@intel.com>, open list
- <linux-kernel@vger.kernel.org>, "open list:UNIVERSAL FLASH STORAGE HOST
- CONTROLLER DRIVER..." <linux-samsung-soc@vger.kernel.org>, "moderated
- list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
- <linux-arm-kernel@lists.infradead.org>, "moderated list:UNIVERSAL FLASH
- STORAGE HOST CONTROLLER DRIVER..." <linux-mediatek@lists.infradead.org>,
- "open list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
- <linux-arm-msm@vger.kernel.org>
-Date: Mon, 23 Mar 2026 10:10:12 +0100
-In-Reply-To: <20260321031021.1722459-2-can.guo@oss.qualcomm.com>
-References: <20260321031021.1722459-1-can.guo@oss.qualcomm.com>
-	 <20260321031021.1722459-2-can.guo@oss.qualcomm.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.44.4-0ubuntu2.1 
+	id 1w4cda-0000000GWsI-1JgN;
+	Mon, 23 Mar 2026 10:36:00 +0000
+Received: by dvalin.narfation.org (Postfix) id 8B5BF20D1C;
+	Mon, 23 Mar 2026 10:35:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=narfation.org;
+	s=20121; t=1774262150;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=wB/8hmIhHIYOZcP6n7qCZqxw3BgXqSCHAqTZavDQKfs=;
+	b=pNv5+xWYOc4YBIYu3QmlifXrPhgpnzNrNnJN1SbmQ9AI+QfJhDZFGX760bxtXpQqOJB4ru
+	+eQxXSLMFUY1CYyq2b+rvd8o8A5ET9LLF0B+Yj+u4tI1V7Lnbik/OrU0VMpWgtxLWplB0K
+	flgRkfDIDiCkqGXzOnoXxiixWIDmu84=
+From: Sven Eckelmann <sven@narfation.org>
+To: Elad Yifee <eladwf@gmail.com>
+Cc: eladwf@gmail.com, daniel@makrotopia.org, Felix Fietkau <nbd@nbd.name>,
+ Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next] net: ethernet: mtk_eth_soc: ppe: prevent ppe update for
+ non-mtk devices
+Date: Mon, 23 Mar 2026 11:35:43 +0100
+Message-ID: <4723146.LvFx2qVVIh@ripper>
+In-Reply-To: <20240623175113.24437-1-eladwf@gmail.com>
+References: <20240623175113.24437-1-eladwf@gmail.com>
 MIME-Version: 1.0
+Content-Type: multipart/signed; boundary="nextPart2405260.ElGaqSPkdT";
+ micalg="pgp-sha512"; protocol="application/pgp-signature"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260323_021025_250250_702D6C78 
-X-CRM114-Status: GOOD (  10.31  )
+X-CRM114-CacheID: sfid-20260323_033558_857986_7163ADFB 
+X-CRM114-Status: GOOD (  24.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,36 +74,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2026-03-20 at 20:10 -0700, Can Guo wrote:
-> Most vendor specific implemenations of vops pwr_change_notify(PRE_CHANGE)
-> are fulfilling two things at once:
-> - Vendor specific target power mode negotiation
-> - Vendor specific power mode change preparation
->=20
-> When TX Equalization is added into consideration, before power mode chang=
-e
-> to a target power mode, TX Equalization Training (EQTR) needs be done for
-> that target power mode. In addition, UFSHCI spec requires to start TX EQT=
-R
-> from HS-G1 (the most reliable High Speed Gear).
->=20
-> Adding TX EQTR before pwr_change_notify(PRE_CHANGE) is not applicable
-> because we don't know the negotiated power mode yet.
->=20
-> Adding TX EQTR post pwr_change_notify(PRE_CHANGE) is inappropriate
-> because pwr_change_notify(PRE_CHANGE) has finished preparation for a powe=
-r
-> mode change to negotiated power mode, yet we are changing power mode to
-> HS-G1 for TX EQTR.
->=20
-> Add a new vops negotiate_pwr_mode() so that vendor specific power mode
-> negotiation can be fulfilled in its vendor specific implementations.
-> Later on, TX EQTR can be added post vops negotiate_pwr_mode() and before
-> vops pwr_change_notify(PRE_CHANGE).
->=20
-> Signed-off-by: Can Guo <can.guo@oss.qualcomm.com>
+--nextPart2405260.ElGaqSPkdT
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="utf-8"; protected-headers="v1"
+From: Sven Eckelmann <sven@narfation.org>
+To: Elad Yifee <eladwf@gmail.com>
+Date: Mon, 23 Mar 2026 11:35:43 +0100
+Message-ID: <4723146.LvFx2qVVIh@ripper>
+In-Reply-To: <20240623175113.24437-1-eladwf@gmail.com>
+References: <20240623175113.24437-1-eladwf@gmail.com>
+MIME-Version: 1.0
 
-Looks good to me. Let=E2=80=99s move forward!
+On Sunday, 23 June 2024 19:51:09 CET Elad Yifee wrote:
+> Introduce an additional validation to ensure that the PPE index
+> is modified exclusively for mtk_eth ingress devices.
+> This primarily addresses the issue related
+> to WED operation with multiple PPEs.
+> 
+> Fixes: dee4dd10c79a ("net: ethernet: mtk_eth_soc: ppe: add support for multiple PPEs")
+> Signed-off-by: Elad Yifee <eladwf@gmail.com>
+> ---
+>  drivers/net/ethernet/mediatek/mtk_ppe_offload.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+> index f80af73d0a1b..f20bb390df3a 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+> @@ -266,7 +266,7 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f,
+>  		flow_rule_match_meta(rule, &match);
+>  		if (mtk_is_netsys_v2_or_greater(eth)) {
+>  			idev = __dev_get_by_index(&init_net, match.key->ingress_ifindex);
+> -			if (idev) {
+> +			if (idev && idev->netdev_ops == eth->netdev[0]->netdev_ops) {
+>  				struct mtk_mac *mac = netdev_priv(idev);
+>  
+>  				if (WARN_ON(mac->ppe_idx >= eth->soc->ppe_num))
+> 
 
-Reviewed-by: Bean Huo <beanhuo@micron.com>
+This will immediately cause a NULL-deref when gmac0 is disabled but gmac1 (or 
+gmac2) is enabled - and you try to offload a flow.
+
+You have the problem that `eth->netdev[0]` is NULL and then you try to deref 
+it to get to its netdev_ops.
+
+Btw. can you describe what netdev[0] makes it so special that you need to 
+check for it and not netdev[1] or netdev[2]? With something like:
+
+diff --git i/drivers/net/ethernet/mediatek/mtk_ppe_offload.c w/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+index cb30108f2bf6..5f88ad7eb27a 100644
+--- i/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
++++ w/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+@@ -244,6 +244,21 @@ mtk_flow_set_output_device(struct mtk_eth *eth, struct mtk_foe_entry *foe,
+ 	return 0;
+ }
+ 
++static bool mtk_is_valid_mtk_netdev(const struct mtk_eth *eth, const struct net_device *idev)
++{
++	size_t i;
++
++	for (i = 0; i < ARRAY_SIZE(eth->netdev); i++) {
++		if (!eth->netdev[i])
++			continue;
++
++		if (idev->netdev_ops == eth->netdev[i]->netdev_ops)
++			return true;
++	}
++
++	return false;
++}
++
+ static int
+ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f,
+ 			 int ppe_index)
+@@ -270,7 +285,7 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f,
+ 		flow_rule_match_meta(rule, &match);
+ 		if (mtk_is_netsys_v2_or_greater(eth)) {
+ 			idev = __dev_get_by_index(&init_net, match.key->ingress_ifindex);
+-			if (idev && idev->netdev_ops == eth->netdev[0]->netdev_ops) {
++			if (idev && mtk_is_valid_mtk_netdev(eth, idev)) {
+ 				struct mtk_mac *mac = netdev_priv(idev);
+ 
+ 				if (WARN_ON(mac->ppe_idx >= eth->soc->ppe_num))
+
+
+Regards,
+	Sven
+--nextPart2405260.ElGaqSPkdT
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part.
+Content-Transfer-Encoding: 7Bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQS81G/PswftH/OW8cVND3cr0xT1ywUCacEXfwAKCRBND3cr0xT1
+y02aAP4iDQQDf9UUbD2rqYq0CVAEhadpEw9XDmO6ZTE0YsynIQEAtuJGax+RdlgQ
+aXVXzEzKdbIM1XUrhOCcz2ivNgWaUQI=
+=b8QW
+-----END PGP SIGNATURE-----
+
+--nextPart2405260.ElGaqSPkdT--
+
+
+
 
