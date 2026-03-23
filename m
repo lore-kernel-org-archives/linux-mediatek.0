@@ -4,69 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CFE7F483D8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Mar 2026 17:24:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A73EF483E6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Mar 2026 19:08:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	bh=ODxfnF5Y2pwSOzwqAyPL/19n5GjpOckcssol2+LCgaE=; b=vIDwPS7KUuKv+kaRq4vFGenIX7
-	cHB6jcggBxErx3V1v3iiriiBz3qExpa/o3Rq0wj7l//XV6g3bio7WdEnpzV0Fhfxwr5PyE94CizEA
-	NwY6WIA3MXKIwFKIL/LfwYx/pKiHL+HZtV/iKDI5/Gg5EWBq7LaQdVZXmBQtAq/dGV4ZCoUFr5ugy
-	p6kLtY6h4W6LkPpxHQmnmt+hnBKR2VGP9HHmCnwD/r8g59uNz8smRKVrTPUwjseeldTgY8pqi1wsC
-	H7qU8cDJfD59FJvZUhMjr+0d4r1LdZCkYWKTbhvFxMxv3xFU8sUNsS5oBcX1Y2nxanNpIEGhFo1oj
-	hpz/KAFQ==;
+	bh=H8QT6aEh1CMlnE5HhaZT9Onj3MgjLGGR5r0rlEhvm+g=; b=vJzw9v/u4lwuW+68gPsXV9STxs
+	GG0vdmYxrajlNNZkJlNhgqMuGyjN5EvS5eNKOE9eiYzGtH03SCzQj9qhEWw0Hc2wa9m+mD6DFRWMx
+	MbbNOsdbq+PxrhwosMP+cRokqOZ9e5yjPPYP2/2g2vRgXEk0B7TNZeHTVpL+9H8QPqJgzHW89kPnu
+	bYL6V8dqqz2sEGCgPbyTRa/VwzsBoUJuM6e2yAun4Hz6FnVvqbcjN6932ciV60hw1grqtXTCLEb8u
+	t7+mKybetLRaSlZJnhqr0YFJSRazta3TxzLjSdQWIuZxdLCi+difYRjLXXJIQbjQxQDT0PdDJAsig
+	aXWmlP7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4j1I-0000000HDsK-3MNg;
-	Mon, 23 Mar 2026 17:24:52 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1w4kde-0000000HQIZ-0DPz;
+	Mon, 23 Mar 2026 19:08:34 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4j1F-0000000HDrZ-2DLi;
-	Mon, 23 Mar 2026 17:24:50 +0000
+	id 1w4kdc-0000000HQID-42Kc
+	for linux-mediatek@lists.infradead.org;
+	Mon, 23 Mar 2026 19:08:33 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3BFAE4457F;
-	Mon, 23 Mar 2026 17:24:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DDE3DC4CEF7;
-	Mon, 23 Mar 2026 17:24:47 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 13ED360120;
+	Mon, 23 Mar 2026 19:08:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 64655C4CEF7;
+	Mon, 23 Mar 2026 19:08:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774286688;
-	bh=3b/Pf+efs6DwZxI9LgoT1yaJxrb4aklVz4R/Q630Z94=;
+	s=k20201202; t=1774292911;
+	bh=fND1i7XSRwnwhGWZNoGm4912eAP+A3jaUuMXaH7yais=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=rXPfHXzxduQHADzoMNap8OhCb4omlnhmjF+TLKEANg3hJUcF9KhWLRvAVSdWGsczq
-	 QAJv1Ad14K5pq7/eKchcxy2yyb+VmPkvCTYao8zeoulJQcW0I4t137BXVfJB1zU+fw
-	 KwVcpHBSKhVHjO6LxvWqc5QUhxtpY/LH2unZ/McagPFgp/5q5iMXXc5jWyMkEBrwwz
-	 Sygmx+KEt3pnHptuoTih+PutfpNiA7HU6fhbRMjFTg8vdBLoFGiY7bCDRkldH+a564
-	 iOgjn8QVERZJWKMyHKmiENSkheJk7fEbt6SWvb1crmfhkGUF6Aoi9EpKLvrw14+d9l
-	 kIGzbUsttPoGw==
-Date: Mon, 23 Mar 2026 12:24:45 -0500
+	b=hjHGSjH/Df10AQ25qwMPHhoyEddqmLCmbp4E4vSpccSPngmG8wk7aQxJAnhGeCpLl
+	 fMkhlDlE+isU7No5v8/2rA131VikVJzx7sx/yZ8lubQj5AKwvKKJzQT/UdKcBo3ye3
+	 6/eWOqrqz9l4ggc1/StbVso5NYr9G7TM+oVQcqePRQ5zyxumthpeNk0Z9VlA6gjD4Q
+	 ortLHJBJ0znwLCqHs0UzAN21JQvPN5b91E0MMekW4DX/hnVKJfYWl74Ol0fIlGnx2I
+	 fRlBfJt1tM5dwhu4ewEblXXmB68bamns6P87rCTAjJi1JY8xV6XNVYkG2gKm3BuCIO
+	 aHkmEEz4NcABQ==
+Date: Mon, 23 Mar 2026 14:08:29 -0500
 From: Bjorn Helgaas <helgaas@kernel.org>
-To: Manivannan Sadhasivam <mani@kernel.org>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Arnd Bergmann <arnd@kernel.org>,
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>,
-	Chen-Yu Tsai <wenst@chromium.org>, Arnd Bergmann <arnd@arndb.de>,
-	Rob Herring <robh@kernel.org>, Thomas Gleixner <tglx@kernel.org>,
-	Nam Cao <namcao@linutronix.de>, Marc Zyngier <maz@kernel.org>,
-	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] PCI: mediatek-gen3: select PCI_PWRCTRL_GENERIC correctly
-Message-ID: <20260323172445.GA880803@bhelgaas>
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Bartosz Golaszewski <brgl@bgdev.pl>, linux-pci@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Subject: Re: [PATCH v3 5/7] PCI: mediatek-gen3: Integrate new pwrctrl API
+Message-ID: <20260323190829.GA887140@bhelgaas>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <wlu2o3hx6yvpzs54mxsf24gmqwwudkixx7aylv4dkey744yify@eufscwyqiyhk>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260323_102449_588057_C0A00B59 
-X-CRM114-Status: GOOD (  22.50  )
+In-Reply-To: <CAGXv+5HQY9nTCacUbNZL1XggiHqomhgiQH_gdFtXLra+_ut4fQ@mail.gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,54 +76,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 23, 2026 at 05:26:47PM +0530, Manivannan Sadhasivam wrote:
-> On Mon, Mar 23, 2026 at 11:55:06AM +0100, Arnd Bergmann wrote:
-> > From: Arnd Bergmann <arnd@arndb.de>
-> > 
-> > The PCI_PWRCTRL_SLOT option was renamed to PCI_PWRCTRL_GENERIC, but a new
-> > user showed up using the old name, which caused a build failure when
-> > both conflicting patches are merged:
-> > 
-> > aarch64-linux-ld: drivers/pci/controller/pcie-mediatek-gen3.o: in function `mtk_pcie_remove':
-> > pcie-mediatek-gen3.c:(.text+0x137c): undefined reference to `pci_pwrctrl_power_off_devices'
-> > 
-> > Use the correct symbol as intended originally.
-> > 
-> > Fixes: ff124bbbca1d ("PCI/pwrctrl: generic: Rename pci-pwrctrl-slot as generic")
-> > Fixes: 073a7e1b7bcc ("PCI: mediatek-gen3: Integrate new pwrctrl API")
-> > Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+On Fri, Mar 20, 2026 at 02:10:03PM +0800, Chen-Yu Tsai wrote:
+> On Tue, Mar 10, 2026 at 12:49 PM Chen-Yu Tsai <wenst@chromium.org> wrote:
+> > On Tue, Mar 10, 2026 at 5:50 AM Bjorn Helgaas <helgaas@kernel.org> wrote:
+> > > On Mon, Mar 09, 2026 at 01:24:34PM +0800, Chen-Yu Tsai wrote:
+> > > > On Sat, Mar 7, 2026 at 4:59 AM Bjorn Helgaas <helgaas@kernel.org> wrote:
+> > > > > On Mon, Mar 02, 2026 at 01:31:05PM +0800, Chen-Yu Tsai wrote:
+> > > > > > With the new PCI pwrctrl API and PCI slot binding and power drivers, we
+> > > > > > now have a way to describe and power up WiFi/BT adapters connected
+> > > > > > through a PCIe or M.2 slot, or exploded onto the mainboard itself.
+> > > > ...
+> > >
+> > > > > So now we have:
+> > > > >
+> > > > >   mtk_pcie_probe
+> > > > >     mtk_pcie_setup
+> > > > >       mtk_pcie_startup_port
+> > > > >         mtk_pcie_device_power_up      <-- power up
+> > > > >         mtk_pcie_device_power_down    # error path
+> > > > >       mtk_pcie_setup_irq              # set up controller IRQ
+> > > > >       mtk_pcie_device_power_down      # if mtk_pcie_setup_irq() failed
+> > > > >     pci_host_probe                    # enumerate downstream devices
+> > > > >     mtk_pcie_device_power_down        # if pci_host_probe() failed
+> > > > >
+> > > > > I think this is kind of a mess because mtk_pcie_device_power_down() is
+> > > > > called from so many places, and some of them aren't connected to the
+> > > > > mtk_pcie_device_power_up().
+> > > > >
+> > > > > In mtk_pcie_setup(), mtk_pcie_setup_irq() only deals with the
+> > > > > *controller* IRQ and has nothing to do with the downstream devices.  I
+> > > > > think mtk_pcie_setup_irq() should be done before
+> > > > > mtk_pcie_startup_port() so we can abort before even powering up those
+> > > > > devices.
+> > > >
+> > > > Makes sense to me. I think it can even be moved outside of mtk_pcie_setup()?
+> > > > That way we don't have mtk_pcie_irq_teardown() in two error paths?
+> > > >
+> > > > I can send a follow up patch for that.
+> > >
+> > > What if we do those cleanups first?  That would make this patch quite
+> > > a bit simpler and we wouldn't have to undo things.  It would be a
+> > > shame to have a complicated patch to add this stuff, then another
+> > > complicated patch to clean it up.
+> >
+> > Sure.
+> >
+> > > > > In mtk_pcie_startup_port(), mtk_pcie_enable_msi() and the PCIe
+> > > > > translation window setup also don't have anything to do with the
+> > > > > downstream devices, so I think they should be done before
+> > > > > calling mtk_pcie_device_power_up().  The only thing there that needs
+> > > > > the downstream devices powered up is waiting for the link to come up.
+> > > >
+> > > > My guess is that if the link up fails, then mtk_pcie_startup_port() is
+> > > > going to error out anyway, so it maybe made sense to make sure a device
+> > > > is actually present before doing any more work.
+> > >
+> > > Doesn't sound very convincing to me.  mtk_pcie_set_trans_table() and
+> > > the window setup are local things with no timeouts or anything.  I
+> > > think the logical structure is way more important than some kind of
+> > > hand-crafted work avoidance.
+> >
+> > I understand. I merely meant that I have no actual knowledge of why it
+> > happened, or if there are any concerns from the hardware side.
+> >
+> > > Separating the PCIe controller setup from things related to the link
+> > > and downstream devices is pretty high on my list.
+> >
+> > Makes sense to me.
+> >
+> > I'll send an updated version.
 > 
-> Bjorn, should I squash this fix with 073a7e1b7bcc so that pci/next will build
-> properly?
+> I'm confused. I see this version in -next with the minor fixups from
+> Bjorn. Do you want me to do the cleanups on top of them?
 
-If you squash this into 073a7e1b7bcc, I think the 0-day bot will
-comlain about the resulting pci/controller/mediatek-gen3 branch
-because it doesn't include ff124bbbca1d.
+I had intended to defer merging pci/controller/mediatek-gen3 to
+pci/next and wait for your updated version.  But I see that I forgot
+about that and included the original version.  I rebuilt pci/next
+without pci/controller/mediatek-gen3.
 
-I can resolve it by hand when merging pci/controller/mediatek-gen3
-into pci/next.
-
-> > ---
-> >  drivers/pci/controller/Kconfig | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
-> > index e72ac6934379..686349e09cd3 100644
-> > --- a/drivers/pci/controller/Kconfig
-> > +++ b/drivers/pci/controller/Kconfig
-> > @@ -222,7 +222,7 @@ config PCIE_MEDIATEK_GEN3
-> >  	depends on ARCH_AIROHA || ARCH_MEDIATEK || COMPILE_TEST
-> >  	depends on PCI_MSI
-> >  	select IRQ_MSI_LIB
-> > -	select PCI_PWRCTRL_SLOT
-> > +	select PCI_PWRCTRL_GENERIC
-> >  	help
-> >  	  Adds support for PCIe Gen3 MAC controller for MediaTek SoCs.
-> >  	  This PCIe controller is compatible with Gen3, Gen2 and Gen1 speed,
-> > -- 
-> > 2.39.5
-> > 
-> 
-> -- 
-> மணிவண்ணன் சதாசிவம்
+Bjorn
 
