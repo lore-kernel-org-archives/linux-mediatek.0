@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C72DAF483E9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Mar 2026 19:44:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C39E6F483D7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Mar 2026 19:46:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EoWahn+aCaO4RgFt5H3ba598sk0yyiLlddVHssRrP6I=; b=CK5gYc25injHFOjC2ZEzA2EpSA
-	RJ8BUadItj5HdXDjsgJ8PpxdNAHJa+SvPkM0pm0c1Ezs6BIAdB+zrXqQ6Mnn4b6BQ3ZfKV3CV30JC
-	G1EZSvWnRT1wIKl19AWeDBJ5dttJeCX9YGFg8FeGTLQFNb4oPMQs7gqo4GVmoA8mQ+peglEurH6lj
-	wou/PsY+9Bj/WIa51wLbYWyP+5IBG37mhdpfXubRqCkjgiqmnkLSK8tl1qWfgnBw9M8byW4CCi/QR
-	S6OH7is0n4CESsBDoQcUPzLLBOktEZXzg/I4Zsqjig5MamgiPJqT4CqOeoD3MrWbPUY5qsx6DaqJE
-	roMmV1IA==;
+	bh=/dmtorY8LlAopvLU37QPmGzNGM+3mvzFRJJMdAu2qDw=; b=bnxzU9xtgt3jvbjxML3uqyCAZA
+	rhBmzWmG4fe+ak1pug7s0AAo1fxCn7HJ92Mak8HXoGknFKGGkjh+E2OcbGQ48dwj3klSa7VD9EsvD
+	F+jFEDULwDNGYzP/cQpMldMY0hgkm40xUZdHC7HEIrzjaEF8ny9rZwBifEkrRgOaU0f62XE3Byr45
+	RwgPt97R61vvYC1BrDbPNYlanycDmJ38zhJTmqqvG+zl62bA5kWXY1LLrYKNhaJHBL8/V2R5SLwM5
+	/5XIgnumTucma2Z//f/w/94Qvf+HT9Ny638Qy4+y3O2ycCJPsdknJY3nqqeJM2O5TJyrJIYlIJPLz
+	wdRS+WRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4lCg-0000000HUZ0-00Ui;
-	Mon, 23 Mar 2026 19:44:46 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1w4lEW-0000000HV7I-0iO1;
+	Mon, 23 Mar 2026 19:46:40 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4lCb-0000000HUWV-0YVy;
-	Mon, 23 Mar 2026 19:44:41 +0000
+	id 1w4lET-0000000HV6l-3uYC;
+	Mon, 23 Mar 2026 19:46:38 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6529960103;
-	Mon, 23 Mar 2026 19:44:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C8ECBC4CEF7;
-	Mon, 23 Mar 2026 19:44:37 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6F35A406E5;
+	Mon, 23 Mar 2026 19:46:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F2D6CC4CEF7;
+	Mon, 23 Mar 2026 19:46:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774295080;
-	bh=EoWahn+aCaO4RgFt5H3ba598sk0yyiLlddVHssRrP6I=;
+	s=k20201202; t=1774295197;
+	bh=/dmtorY8LlAopvLU37QPmGzNGM+3mvzFRJJMdAu2qDw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XJ462hZ/iAigMKTQaYu+CB8zaJMOH/HxYZY6tSMKEOAD0CCRZV7NuPFohwAiDzZV4
-	 s+vmj+k1xRLbPyum0J2ICSL8Hd2vR7PMUwgkDJM8AbFo0eHypKBNtUlkCRRyvlWMVu
-	 p1UDx+HPa17fcaQDH8vwLNRGZEybH9dTod7CGrUHOWl3UVlEuGzE5H+NvQUYcQu2cn
-	 YRfx4iQm+qIJNXMX2EKBEuJqASEbWeadUAdI6GgNSH9t9gJaEl9ePpUCpmRvVKTwhN
-	 /3lHI0T6oz2KT0VuPzkGojHnQymA4qvCIJIwePvzBgOjw5TUvFASATfXaaDZAw2f++
-	 cMEWIodaZK5CQ==
-Date: Mon, 23 Mar 2026 19:44:35 +0000
+	b=rShQHzbr+/e0vr8yznZXZLi0IadcEXyXmTC90VkLLCkDaKMyZV6XVtlDucYuLRq74
+	 cw8in6D0nwJYmsWUzDM5DUNt7b7dv5ZP9BgpIbj55v3YyI9+xYELCUmp3kPYHs7x0C
+	 00JUcr6l+IiGJ2xPxQM/T0R+R/AxSBcBKqUj20bwgr7zgL1F4QraMYx7OEzbxPleal
+	 UhrfMUKHBGqXIXHQZtqkMmt/ioegcjIoDyE/8AluJ3QflhBk8vVAiE0QoMZKdFT6Y0
+	 mUyw1ezBl/MjVbtx5ejQ3Exaog+afTr36miFzTZGTx45Rg10COYbaTuthczwezddX0
+	 8h16B0dBoRPdQ==
+Date: Mon, 23 Mar 2026 19:46:32 +0000
 From: Mark Brown <broonie@kernel.org>
 To: Pei Xiao <xiaopei01@kylinos.cn>
 Cc: linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
@@ -50,17 +50,21 @@ Cc: linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org,
 	linux-stm32@st-md-mailman.stormreply.com, Frank.Li@nxp.com,
 	amelie.delaunay@foss.st.com
-Subject: Re: [PATCH v5 12/17] spi: stm32-qspi: Simplify clock handling with
+Subject: Re: [PATCH v5 17/17] spi: zynqmp-gqspi: Simplify clock handling with
  devm_clk_get_enabled()
-Message-ID: <834e2939-93a4-4088-b6d2-6b15ab00ab04@sirena.org.uk>
+Message-ID: <cc7f3fec-e314-4f46-8c62-75feb919b778@sirena.org.uk>
 References: <cover.1773885292.git.xiaopei01@kylinos.cn>
- <333b09950ee5c2fc0e560536281afb33f92288d1.1773885292.git.xiaopei01@kylinos.cn>
+ <611b4c4b67aaa8d86a7aeba9707ada47e6fd5dc3.1773885292.git.xiaopei01@kylinos.cn>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="4FaSwlMKbUzxP7VW"
+	protocol="application/pgp-signature"; boundary="yXZTZfMj8/cYjg5u"
 Content-Disposition: inline
-In-Reply-To: <333b09950ee5c2fc0e560536281afb33f92288d1.1773885292.git.xiaopei01@kylinos.cn>
+In-Reply-To: <611b4c4b67aaa8d86a7aeba9707ada47e6fd5dc3.1773885292.git.xiaopei01@kylinos.cn>
 X-Cookie: The only perfect science is hind-sight.
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260323_124637_994016_808A5F8B 
+X-CRM114-Status: UNSURE (   8.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,32 +80,33 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---4FaSwlMKbUzxP7VW
+--yXZTZfMj8/cYjg5u
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-On Thu, Mar 19, 2026 at 10:04:08AM +0800, Pei Xiao wrote:
+On Thu, Mar 19, 2026 at 10:04:13AM +0800, Pei Xiao wrote:
 > Replace devm_clk_get() followed by clk_prepare_enable() with
-> devm_clk_get_enabled() for the clock. This removes the need for
-> explicit clock enable and disable calls, as the managed API automatically
-> handles clock disabling on device removal or probe failure.
+> devm_clk_get_enabled() for both "pclk" and "ref_clk". This removes
+> the need for explicit clock enable and disable calls, as the managed
+> API automatically disables the clocks on device removal or probe
+> failure.
 
-More runtime PM.
+Another runtime PM.
 
---4FaSwlMKbUzxP7VW
+--yXZTZfMj8/cYjg5u
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmnBmCIACgkQJNaLcl1U
-h9BlVAf/SqX2lKFh0WlwoopEAQeKZhC6ZHRqtyKh2/RgbK5AFMr9p/zvDbHhnb4m
-QUJdF7K+dWgmYwaqer9oU4T2iOQ7nwvkHcaqYCX4qbMnUAtUWcSkiRuntlcB3npQ
-Lc9CtCDNgixwYNjeY3tb2+kRpOSJMW6UGRCk7vdoobQgqT2nBYLx48DyjBgLUpCf
-DzWTPa0ECdN9GU+lHoSR86OTRgSVe+DwuA0gOg104a0cJxs0gz8WiLnIXpmVvxj5
-56XU5Dsc4MkWeuovuBtlEj/UXalFuNl0QK96f2BOn1EjIdBN8dFAt4Z6vxr6vdJk
-sEKFbLoc9OFb65c2iz6ILeZ87zPRtw==
-=SHbm
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmnBmJcACgkQJNaLcl1U
+h9Azogf/QlfWQKZIDTkEDnV1hRWkQlKZGgabUOpCAe5hOywhIwsKTsN0RsdWj4pu
+gZ5CUwol9/peWzpl3LUtT438fl+Tj1jWbjNJWSBHy4o6uSnLSIedjHJuFrA5nBb7
+Nw2JPIwe1Sxk3ooG6qCf1RLFclZHxcvjbAeTDIUbRmnA2ZeOMuDQ030AbISPi50p
+TwkulHE1Mfd6zQ/Dtfv6azyFxBMfirgdLPblRWmXkYp9zgnDKfOxgy29A30V/0zb
+NBeZSB5HZVYUCjuCMpe3hbq8MYLGL+d/khvAy8r/tnghN49BcXv9/LG798apXkXC
+FKZxce5d98Cm2HnL8Suce3/z9c3sKA==
+=quxv
 -----END PGP SIGNATURE-----
 
---4FaSwlMKbUzxP7VW--
+--yXZTZfMj8/cYjg5u--
 
