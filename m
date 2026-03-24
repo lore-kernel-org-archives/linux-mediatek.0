@@ -4,48 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5623F532FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2026 09:12:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF5E5E9A744
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2026 09:17:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AQWLMORUnkVbiNjJGAhEshPKUTqZoxqhRKKnwPG0jLg=; b=gtu/NSRDpTfVhbqxm/B6wVc7U7
-	Dhka+vCBE6GYNNu07z9oRMHZ0aygE788Hv8JEKen1NMY/SeOS0Ru/l9J8eQiS/vGUK/D7uyLloDBq
-	PfZLpGyPdFqAqs1ZTJHX0BtExqZVRT5DFbAFDDw7F6wkKlSaUBHXAbXMZNEwPFbxfAwOcW0QAGpJn
-	n9pdQWJO9iOzIvGiW8oGG7BuBc0Zf2D6imiSi2Xboze5IVfyQMhg2LqmM7Y5brtLMjpMDmhe9gMHR
-	fLyo5vkuMg5JWCrrA/vf+4jGFnRcnWUXFyGFKZAgv81cbs/BMgIlkfagm9fH+qJHLK7lMYjBTBzQj
-	YmdbVzJQ==;
+	bh=Tw/G9VTXwnHHHKSCmjoBsBkmBbbcaWdFFIwUqNEEQZw=; b=ubOAyWnW7g+vlTfNKKsYXukPHg
+	JiDWhf0z3r2fDJkt5R2IwOLxLU4TwGma4WIn34evTj6nTao5XVJBUWRLi2lUM3MJlHPlOSUZKf3mz
+	Py4blA+LuQilV1jv1K/UGdDL992j6fMmET1DtV+squbi7xz3BNbfKZx3m8I8gCgtIWOlwEb++RW5u
+	+iMipZEq+f4FiBUqKyQ4TxEAY1TfN+t78e6QRCnrEo8vz0GiOSrDrWXMLKBsEakAxfuYvOhM4wtp8
+	ceZVXro3nBBiKwj8VMjUhUIzt9pOEaCsxeZA6N07uQSJCTSC39kgxGdtFMgZD7jFlk3MsZdRaDUom
+	5H1L2JiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4xoE-000000013Pz-3R1x;
-	Tue, 24 Mar 2026 09:12:22 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1w4xsv-000000014AD-3mEv;
+	Tue, 24 Mar 2026 09:17:13 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4xoC-000000013PZ-23F2;
-	Tue, 24 Mar 2026 09:12:21 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1774343500; cv=none; 
+	id 1w4xst-0000000149n-47sM;
+	Tue, 24 Mar 2026 09:17:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
+	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=Tw/G9VTXwnHHHKSCmjoBsBkmBbbcaWdFFIwUqNEEQZw=; b=SplUWw9yCKhEoZCb5eKc2p6pQR
+	1hvhkCScmjwdZ8ttXZOf2xCGgCjCnD8jcgCCkoChiUQL0Fr+lOKiCC91ygKLfG3mxXULlMHg4jkf4
+	KhW9aITMlFp/aTS9wHXf5yeTSndhFKuIzpB6mI47jyG65omCqAsSRpJ8fdv/sYD+gb9gpy6CXpFFN
+	nZ1B5ibvdxAVyPHCy8x3w4o3A+mLKWI6GIfdtcjVvAkKR2Ztowev7aj9G3H8sr2whn0wd5iSyByvs
+	DSVmcIW8SOuAPGyaURH8ypZpklHHbbRq/WaKS4Dmu3+ktq9kHP3rOofw2JNCGK23H5LI1bZHDfqeQ
+	cTBoDRTw==;
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1w4xsq-00000003cqO-2gZT;
+	Tue, 24 Mar 2026 09:17:10 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1774343785; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=d8MnFBQkKpHJ4TH23zDPo4o46LfLDPrpOVdPHNE8ffXdXoFxGc7Z2FEQ4wf6xDvr2cm7f+ehIE1nYTny/bZbLEgXKPGNowaLSVzidCx+RDP0QVrCp1rUpzEgSWZboLirKnaw3feRFwxKdgLPp9qDSBWOC9EQ+PdE64D0Fb72wRo=
+	b=SYajBwuiZa8oR0IGy+sTz3PqpZrdBA/lNr0MoEAENTM+2lZ3W133Sd2UB4kk7kFSdTYfqIMtNFyozDZ6AIe3N/H//n0LK8rfhUdvxkX9oV8qVzaUuXHbvvnXhEpOQqBhz0mhFmGxqCSgw98UansqvWiOPFBBPmF/TUNnL7C2HnQ=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1774343500; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=AQWLMORUnkVbiNjJGAhEshPKUTqZoxqhRKKnwPG0jLg=; 
-	b=NH0ufGdazv3xhvW3Ffcl7B4X+OXgsO2OwuF9YchQH2o1qCxwFwAHLOp6Zc9AN4bYNWjkBXcO8A/Gl4hBfRmU2ZDpNdH4anSXnKBrZDzPcZvm1CE1utnQ6TUPnwdidE/PxAo/b5tjhVe35PQLV7xLoUd4trRPY7FM8r/TZMm+Zzk=
+	t=1774343785; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Tw/G9VTXwnHHHKSCmjoBsBkmBbbcaWdFFIwUqNEEQZw=; 
+	b=PAZeN6C+SYUsvuGqzrS2CnaplC+BBQxWmcHgJiQgN+kus0naAKpO3ZZR8NMDhCOexYzujaiRdez3CsD4DH0GWdZl707RYgn0Tj4CmR4qacVn4KYFOyL2HzsWv9TAlrN/ri62vXemfjXVra8akvFnMBlD2zwcos8lYv+Dkts7ulM=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1774343500;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1774343785;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=AQWLMORUnkVbiNjJGAhEshPKUTqZoxqhRKKnwPG0jLg=;
-	b=d35X0UtaEM7Po2FmSfpYS/6GcdVCuoJdv3y7/qdxC4D7X6PAayQR7Kq9dY6FsyOk
-	EqCn9VqIS2DDtW5r6H2IvfwLjVfCoPmKAaXUTbFOlMt00Gc2rXszoXyC6oQA7gOJ0jf
-	iE+gFM6eC7gQYaMiIKr+UMRYfL2+ysQVrvP/2n1E=
-Received: by mx.zohomail.com with SMTPS id 1774343497883801.6427108884712;
-	Tue, 24 Mar 2026 02:11:37 -0700 (PDT)
+	bh=Tw/G9VTXwnHHHKSCmjoBsBkmBbbcaWdFFIwUqNEEQZw=;
+	b=EOH1niQczPS5fbilI4PiiNRgJuvNBqXb7Mfen8spkZtWoA8KCHnvlGcBIuYVFEWp
+	T+j1DeFy1jVFNoJJSanWd2d1AH3/DIq1hNRaBr8FseE+DZypZmgdFb2Zjv8wSPuH0CZ
+	MP9TL1jsYt98vtYhRXvkCuUjsC9UiyERHaGiwJYI=
+Received: by mx.zohomail.com with SMTPS id 1774343783701798.6167436689976;
+	Tue, 24 Mar 2026 02:16:23 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 To: Jani Nikula <jani.nikula@linux.intel.com>,
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
@@ -76,18 +90,19 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  amd-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-sunxi@lists.linux.dev, Jani Nikula <jani.nikula@intel.com>
-Subject: Re: [PATCH v3 04/14] drm/amdgpu: display: Convert to drm_output_color_format
-Date: Tue, 24 Mar 2026 10:11:29 +0100
-Message-ID: <7113873.lOV4Wx5bFT@workhorse>
-In-Reply-To: <20260305-drm-rework-color-formats-v3-4-f3935f6db579@kernel.org>
+Subject: Re: [PATCH v3 12/14] drm/rockchip: analogix: Convert to
+ drm_output_color_format
+Date: Tue, 24 Mar 2026 10:16:14 +0100
+Message-ID: <5921295.GXAFRqVoOG@workhorse>
+In-Reply-To: <20260305-drm-rework-color-formats-v3-12-f3935f6db579@kernel.org>
 References: <20260305-drm-rework-color-formats-v3-0-f3935f6db579@kernel.org>
- <20260305-drm-rework-color-formats-v3-4-f3935f6db579@kernel.org>
+ <20260305-drm-rework-color-formats-v3-12-f3935f6db579@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7Bit
 Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260324_021220_560342_3DFBF40B 
-X-CRM114-Status: GOOD (  21.70  )
+X-CRM114-CacheID: sfid-20260324_091709_136609_86E159F3 
+X-CRM114-Status: GOOD (  23.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,7 +117,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thursday, 5 March 2026 10:04:56 Central European Standard Time Maxime Ripard wrote:
+On Thursday, 5 March 2026 10:05:04 Central European Standard Time Maxime Ripard wrote:
 > Now that we introduced a new drm_output_color_format enum to represent
 > what DRM_COLOR_FORMAT_* bits were representing, we can switch to the new
 > enum.
@@ -119,39 +134,40 @@ On Thursday, 5 March 2026 10:04:56 Central European Standard Time Maxime Ripard 
 > Acked-by: Jani Nikula <jani.nikula@intel.com>
 > Signed-off-by: Maxime Ripard <mripard@kernel.org>
 > ---
->  drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c | 4 ++--
+>  drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 4 ++--
 >  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
-> index a8e4e3ab5e40276b3c723297ca6520688079e0a7..2fe9044e1e91d7581fd5032b9883548f8e5e1b43 100644
-> --- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
-> +++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
-> @@ -6723,15 +6723,15 @@ static void fill_stream_properties_from_drm_display_mode(
->  		timing_out->pixel_encoding = PIXEL_ENCODING_YCBCR420;
->  	else if (drm_mode_is_420_also(info, mode_in)
->  			&& aconnector
->  			&& aconnector->force_yuv420_output)
->  		timing_out->pixel_encoding = PIXEL_ENCODING_YCBCR420;
-> -	else if ((connector->display_info.color_formats & DRM_COLOR_FORMAT_YCBCR422)
-> +	else if ((connector->display_info.color_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR422))
->  			&& aconnector
->  			&& aconnector->force_yuv422_output)
->  		timing_out->pixel_encoding = PIXEL_ENCODING_YCBCR422;
-> -	else if ((connector->display_info.color_formats & DRM_COLOR_FORMAT_YCBCR444)
-> +	else if ((connector->display_info.color_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR444))
->  			&& stream->signal == SIGNAL_TYPE_HDMI_TYPE_A)
->  		timing_out->pixel_encoding = PIXEL_ENCODING_YCBCR444;
->  	else
->  		timing_out->pixel_encoding = PIXEL_ENCODING_RGB;
+> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+> index fdab71d51e2a71d644f128b1bf1c39429b4ad52a..96bd3dd239d251af3d5a7d0fbd4dd74942d44f2d 100644
+> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+> @@ -169,16 +169,16 @@ static int rockchip_dp_powerdown(struct analogix_dp_plat_data *plat_data)
+>  static int rockchip_dp_get_modes(struct analogix_dp_plat_data *plat_data,
+>  				 struct drm_connector *connector)
+>  {
+>  	struct drm_display_info *di = &connector->display_info;
+>  	/* VOP couldn't output YUV video format for eDP rightly */
+> -	u32 mask = DRM_COLOR_FORMAT_YCBCR444 | DRM_COLOR_FORMAT_YCBCR422;
+> +	u32 mask = BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR444) | BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR422);
 >  
+>  	if ((di->color_formats & mask)) {
+>  		DRM_DEBUG_KMS("Swapping display color format from YUV to RGB\n");
+>  		di->color_formats &= ~mask;
+> -		di->color_formats |= DRM_COLOR_FORMAT_RGB444;
+> +		di->color_formats |= BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444);
+>  		di->bpc = 8;
+>  	}
+>  
+>  	return 0;
+>  }
 > 
 > 
 
-Tested-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-I've been running this patch as part of my color format work and it
-works precisely as it's supposed to (which is also quite evident from
-the simple conversion in the code.)
+I'm not the maintainer of this driver, but touched both the color
+formats and rockchip code enough to confidently state that this
+patch is trivially correct. I'm sure Heiko and Andy will agree. :)
 
 Kind regards,
 Nicolas Frattaroli
