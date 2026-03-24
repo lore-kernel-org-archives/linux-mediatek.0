@@ -4,80 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0981F532D1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2026 03:26:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA4DAF532CE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2026 03:42:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AxNLCKQ9ddz7+TDTiXJxhPHv6/rZ1vPdRVALXT4wAJk=; b=Dxo0rtTO6e6vvYgIeNhfw2M1Pq
-	JLZo3vHqdWj6qFPMEyiMzEQcrEvbWD5ytwJia+S6wEp7rePdBEYKOz2sLN5/2gDTIIDf5+KGd+AMZ
-	SONP7dwD5/c3eJnoMPu3WRrfxM0xBP8Ebl5ZUOtuyAvRJMWSRaRXtcvwkThRPXmpEi9q7LtA+gdX6
-	zwfyDxMSiUM2aFwOoBM2LvviL3GSz720VCvpxN+xjKm+APSdWOhos+nsRcDHUJQPRXPkfzaj/4trh
-	sto5kAhNvfQu4B/FyKd4hyABoiOenmoc6aE2JKCqPwiPE3qE7zz43IWDQ7I8TJpIQwL4zsuOMZoeH
-	LOV9kGvA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=X3n35LNNeF5Wx2GIr4g4uUmRoFWbzxVfDULULORcx74=; b=EzO1RfhG89nErFcE2c4hpYhwTj
+	1LO/6V7qszGPZB0hqECYAy6eA7TlfdC2idOaeDnE491ZPRyxyP3rWxWNkcgAvPyHrbvavkPKU0xmA
+	VosHWhnFnWJNr4LeDJb5p2tqbfJovRMmRz2G8ffb6678JSHcf6ddwXyS6R9MuTfWvg3JhwnR4F+ZZ
+	MxZZT1UvZWUyRDv5OFfCCriFW6TPYAN8qxQZyYQnClnTuKvIDot/wUk6eAn2DfeCAxfJGJXOpQhfH
+	hekOk4vpRwo6Icq3btCrajDdxVB9IXV05CdOBzyRu3GgET5PPebRIZhmOJHO4cezeyqdh+dZQRi63
+	tLchpQ2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4sPg-00000000Tr1-3OQi;
-	Tue, 24 Mar 2026 03:26:40 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1w4sf9-00000000VHm-14MO;
+	Tue, 24 Mar 2026 03:42:39 +0000
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4sPe-00000000TpB-2RDf;
-	Tue, 24 Mar 2026 03:26:39 +0000
-X-UUID: 41f7e5b8273111f1a6de359d7043e138-20260323
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=AxNLCKQ9ddz7+TDTiXJxhPHv6/rZ1vPdRVALXT4wAJk=;
-	b=scr16/URaN+UQdkWCxUWsOAFaif1VrryuADEkNyEgDve8NjrHBrImhdNJ9DJEvOyFtnmBz8X//WFuVh+YlU/9muLi6OgRbhx3KVRGgwy1e9LxMevGyUqWhYAdGC/7LWZrPnUFTH9SPA7eElTAG+1CozpqyTkgZ5TJK81f6+UUjg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:72de558c-0c8e-40d0-8228-17283dadc3a0,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:e7bac3a,CLOUDID:a8532294-f8ef-4ca8-bea0-143568f9ca1d,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
-	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 41f7e5b8273111f1a6de359d7043e138-20260323
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <ot_meiker.gao@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 603645903; Mon, 23 Mar 2026 20:26:33 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Tue, 24 Mar 2026 11:26:31 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Tue, 24 Mar 2026 11:26:31 +0800
-From: Meiker Gao <ot_meiker.gao@mediatek.com>
-To: Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
- Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: Bayi Cheng <bayi.cheng@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<sirius.wang@mediatek.com>, <vince-wl.liu@mediatek.com>,
-	<jh.hsu@mediatek.com>, <linux-spi@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Meiker Gao <ot_meiker.gao@mediatek.com>
-Subject: [PATCH 2/2] [v3] spi: spi-mtk-nor: Modify and optimization the SNFC.
-Date: Tue, 24 Mar 2026 11:26:18 +0800
-Message-ID: <20260324032624.1708029-3-ot_meiker.gao@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20260324032624.1708029-1-ot_meiker.gao@mediatek.com>
-References: <20260324032624.1708029-1-ot_meiker.gao@mediatek.com>
+	id 1w4sf6-00000000VFl-3gmc
+	for linux-mediatek@lists.infradead.org;
+	Tue, 24 Mar 2026 03:42:38 +0000
+Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-59e5aa4ca41so3775908e87.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Mar 2026 20:42:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1774323755; cv=none;
+        d=google.com; s=arc-20240605;
+        b=YCrhr/TQKamMXwZrCGzkvY8WdUS7UUDMP3sR3+crX3Kld4zlH65KA1V0BdPN7rtaTy
+         67h+stRAKKl7ifiomYhZc/HbOp2xsaUMS9QuurW/HmwtL0isSPRk6PPfSzNy8rW4GGjP
+         mtT4iDdDxst+1XPJ3Jei/QEu+najHFtSdMbwxoqlqZfd6jh/pHC2KN+OPFiQc/dthSmw
+         TnsrP6Ruo4AwV9miXICxfXsUKX/8MRtk/AwGLRRbHP5a88ZsbdNX6MEVWMJcj9r9yx1R
+         WEe8AyEJ3k8ILvXUdylWd7IodCBbmnaYqTTOg5eJ9dJNCkn1IdQ7M9JxU1awcAQwg589
+         IeEg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=X3n35LNNeF5Wx2GIr4g4uUmRoFWbzxVfDULULORcx74=;
+        fh=CYBvciGYR/v0FK1weiFgyx3TxJ+S6MtFAoZHsm9cw+s=;
+        b=d5Vbrio/dfRKOqrTYPzCgFXZwEDXX2SHUsyOBjI9gAn1gWv2jUjC4+2xbkm7xj+Aou
+         aSRNkT9LgMr0L1piCzh9Tei4mI5P/3UX1rovRjlMqcWAB7Xc5XWLjst+ujDw+1JsZp+k
+         N//mLjUfhMuTb2WrVW3s7L63222tw14PPHb5XW4JPcd44YEBx3AKBg7OGQyvxPpwEkGy
+         kvmUqiSZLHmSTlwP0xNkWBE3gywRCWw65Hnld9cHE37G7rpsdpS7l+1y79iNKU+t8nVs
+         BcbvvyvhWJLRBA6M4yrz+5u54BeoShtC5+CaoGhQD+1wgWkuwwBL+7SVbSljNRmKeje0
+         BMPQ==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1774323755; x=1774928555; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=X3n35LNNeF5Wx2GIr4g4uUmRoFWbzxVfDULULORcx74=;
+        b=oW1MdO7KboV/p6hCsfi6XDwu75lQFDHWCEiaV3ObG29SmvrkOHgMB2oLhzIJOnghSg
+         Aff0TY47vtf82Wz5gTgYMSo/da5oK2v1RDbGtqB9iJGpgdiV6L6ETxejjxrxCnogCRpi
+         tNfhuYtZrQbsFqO+Y7FVk1WTNsme1jZwJF0BQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1774323755; x=1774928555;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=X3n35LNNeF5Wx2GIr4g4uUmRoFWbzxVfDULULORcx74=;
+        b=GYfwjS4LiHmQEP+hQq2F8yL+1YxkQnvs2EW9VhMUGEQYTzApeqU3+X+MgnNvQrVROe
+         QJxQiz3aYt+HVo5dnilBmU7eZWoIdEJKpOgE4+E1eS8g7LhNF+ehvVcJHq5M139u4gwN
+         gUnPCREKR4GwDo/O3kZ6/h8H+w6LmYZQyedNycwC4UVr0LV8NmiuLGvgNEGMEE1vj22w
+         5XUIqFDEUR19Grf9iApq/zganHic9nsKcquQlpJoE5ZsFCTEtip6J50CLkMgx62Jp2iC
+         y/7P60ezAS0rCVNeuEv6eHgXUXhr8AXVWokUoWmm/32TmfjoPvlEvEDpd9LO28uZGKaT
+         Emtw==
+X-Forwarded-Encrypted: i=1; AJvYcCV8RyNOjAO4NTsmqrMBJaoNy9VHTDxke9uc4TGJVxL1WPZRw0Qrc7jitbPGjey2CgBW3X30BQRlar+iXXcIuw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy40Tp6iDBar0QFnxfJLH4Vl3t18CBgPX/JqgPe5rmYGQIqx7gJ
+	p/eZIl8RAGrsVlUWdtvDHdH/dqmisYfg2+1+BjOnqq6YnABdyGG8u+2fxOOkN/zBRHWUV+4RBOA
+	86TgaBqBvYcsKMnWbVtL8TRYlrp3UFiQqcRGq6j7e
+X-Gm-Gg: ATEYQzzze7GP7OYTO+63ubBUNLPqlF3mSabF3X+e6MIv1Qt3a8Ruo7BOEH+ijn1dxaM
+	OijaSWHlUA2OsoNb1V9Vpn5ycskm8PapAu/uuHwV7L7xDoh1maad4D77DlcHRFH+XG9S+LqkZgQ
+	O1ijePT72GAXKuIeqWL4LVjHrOKyZxBPzjT1YxFEM8MDC95WgKAXWVBM1LgO7b9+TgXD2dxukWq
+	JK7B6ImJddOiQRP3k9NuzHQ4A8+dG/0+Szh4Cml26lO6aeUCKsoelXdEW4R8+QcyuDRsUtk0k5x
+	mfeYY/fBVw==
+X-Received: by 2002:a05:6512:32c6:b0:5a1:44ba:c96e with SMTP id
+ 2adb3069b0e04-5a285b6db31mr4580171e87.38.1774323754655; Mon, 23 Mar 2026
+ 20:42:34 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+References: <20260320072440.2403318-1-wenst@chromium.org> <20260320072440.2403318-3-wenst@chromium.org>
+ <20260320-dashing-crocodile-of-emphasis-2cc43d@quoll> <CAGXv+5ESnhsVfu5pWf1DEt35+10ZKTgJ5G6DuJC4s6yEpRH_YQ@mail.gmail.com>
+ <e14ae934-e448-433f-987d-77bede5f6d07@kernel.org>
+In-Reply-To: <e14ae934-e448-433f-987d-77bede5f6d07@kernel.org>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 24 Mar 2026 11:42:22 +0800
+X-Gm-Features: AaiRm52CNgLAlXeiRcCcd4-xI1ROYPaycCYYMcNwH55Sc_4mMYJ7m6m9CPgV9Vk
+Message-ID: <CAGXv+5FhSsq2FtieUm+jKTZ4+Zes5TO9gD-a_rHgOzY5kTOB1g@mail.gmail.com>
+Subject: Re: [PATCH 2/5] regulator: dt-bindings: mt6359: Drop bogus
+ vcn33_[12]_* split regulators
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	devicetree@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260323_202638_624714_C6C2288D 
-X-CRM114-Status: GOOD (  14.81  )
+X-CRM114-CacheID: sfid-20260323_204237_024706_5BA6F941 
+X-CRM114-Status: GOOD (  29.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,81 +120,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes in v3:
-    -this patch is a further optimization for version v2.
+On Mon, Mar 23, 2026 at 4:31=E2=80=AFPM Krzysztof Kozlowski <krzk@kernel.or=
+g> wrote:
+>
+> On 23/03/2026 09:26, Chen-Yu Tsai wrote:
+> > On Fri, Mar 20, 2026 at 5:54=E2=80=AFPM Krzysztof Kozlowski <krzk@kerne=
+l.org> wrote:
+> >>
+> >> On Fri, Mar 20, 2026 at 03:24:35PM +0800, Chen-Yu Tsai wrote:
+> >>> vcn33_[12]_bt and vcn33_[12]_wifi refer to the same output. There are
+> >>> two enable bits in the registers so that BT and WiFi drivers can togg=
+le
+> >>> them separately without any coordination. If either bit is set, then =
+the
+> >>> regulator output is enabled.
+> >>>
+> >>> Unfortunately some of them are already referenced by in-tree device
+> >>> trees. To keep backward compatibility with them, keep the vcn33_*_bt
+> >>
+> >> So you drop "_wifi" regulators breaking the ABI, no?
+> >
+> > Indeed it is a breakage. I kept the *_bt part to cover all in-tree
+> > device trees.
+> >
+> > But the representation itself is broken, as explained in the commit
+> > message.
+> >
+> > I leave it to the platform maintainers to decide whether this "breakage=
+"
+> > to fix the broken representation is acceptable.
+> >
+> > Note that there is a similar issue with the *_sshub and non _sshub
+> > regulators: there is only one actual output for the two. I'm still
+> > asking the vendor for hardware behavior specifics.
+> >
+> >>> regulator. Also combine them for a shorten regular expression pattern=
+.
+> >>
+> >> Instead the duplicates should be deprecated and driver should still
+> >> support the "_wifi" variants.
+> >
+> > But it doesn't really work in the driver. You cannot set different
+> > constraints on the two, especially conflicting constraints, and expect
+> > them to work. And if you set the voltage on one of them, the other
+> > will change as well.
+>
+> Of course, but now imagine a DTB with only *_wifi regulators and no *_bt.
+>
+> >
+> > If we want the driver to support both with _sane_ behavior, we would
+> > need to introduce some sort of alias lookup for both reading
+> > constraints and resolving supplies. The driver registers _just_ one
+> > regulator, and both DT nodes resolve to it.
+>
+> Yes, either alias lookup or adjusting the regulator_desc before
+> registering them, depending on the nodes.
+>
+> If I understood old code correctly, the point is that ABI allowed *_wifi
+> without *_bt and this would be a working setup. Now it won't work.
 
-Changes in v2:
-    -Use clk_bulk_xxx related functions to enable/disable clocks.
+OK. I will drop this part for now and just add the supplies. I'll
+resend the cleanup once I figure out how to do it in the regulator
+driver.
 
-Changes in v1:
-    -Add new function mtk_nor_parse_clk() to parse nor clock parameters.
-
-Signed-off-by: Meiker Gao <ot_meiker.gao@mediatek.com>
-Change-Id: Ifa13f9f08aebf6feb376ca98b0fd69f379037ff3
----
- drivers/spi/spi-mtk-nor.c | 19 ++++++++-----------
- 1 file changed, 8 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/spi/spi-mtk-nor.c b/drivers/spi/spi-mtk-nor.c
-index 702339a6c817..6d24932053e5 100644
---- a/drivers/spi/spi-mtk-nor.c
-+++ b/drivers/spi/spi-mtk-nor.c
-@@ -100,7 +100,6 @@
- 
- #define CLK_TO_US(sp, clkcnt)		DIV_ROUND_UP(clkcnt, sp->spi_freq / 1000000)
- 
--#define MAX_CLOCK_CNT		6
- 
- struct mtk_nor_caps {
- 	u8 dma_bits;
-@@ -119,8 +118,8 @@ struct mtk_nor {
- 	void __iomem *base;
- 	u8 *buffer;
- 	dma_addr_t buffer_dma;
--	struct clk_bulk_data clocks[MAX_CLOCK_CNT];
--	int clock_cnt;
-+	struct clk_bulk_data *clocks;
-+	u8 clock_cnt;
- 	unsigned int spi_freq;
- 	bool wbuf_en;
- 	bool has_irq;
-@@ -733,19 +732,16 @@ static int mtk_nor_enable_clk(struct mtk_nor *sp)
- static int mtk_nor_parse_clk(struct device *dev, struct mtk_nor *sp)
- {
- 	struct device_node *np = dev->of_node;
--	int ret;
- 	const char *name;
--	int cnt,i;
-+	int cnt,i,ret;
- 
- 	cnt = of_property_count_strings(np, "clock-names");
- 	if (!cnt || (cnt == -EINVAL)) {
- 		dev_err(dev, "Unable to find clocks\n");
--		ret = -EINVAL;
--		goto out;
-+		return -EINVAL;
- 	} else if (cnt < 0) {
- 		dev_err(dev, "Count clock strings failed, err %d\n", cnt);
--		ret = cnt;
--		goto out;
-+		return cnt;
- 	}
- 
- 	sp->clock_cnt = cnt;
-@@ -760,9 +756,10 @@ static int mtk_nor_parse_clk(struct device *dev, struct mtk_nor *sp)
- 	}
- 
- 	ret = devm_clk_bulk_get(dev, sp->clock_cnt, sp->clocks);
-+	if (ret)
-+		return ret;
- 
--out:
--	return ret;
-+	return 0;
- }
- 
- static void mtk_nor_init(struct mtk_nor *sp)
--- 
-2.45.2
-
+ChenYu
 
