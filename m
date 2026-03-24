@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DA69E9A76B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2026 11:39:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 744ACD58CCA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2026 12:50:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wsd8ayXzwZIf2OvsiCFxKkIRxILOgP6+SHpyFDVmOME=; b=J/oMHehnNcGnIppf+I63vt1Adl
-	pPw2UALYEFciaYDzL6K4/tNAeiLiUFg/iZbogszEIZ/RJlDmrQk6g273Goqd8PNqZ0aMKguMmUziB
-	rbWVjMUWN6BQIpE02paxuvuioODeXax0Ko3CV1eJHfoE53PfFIKY5UnX23MiafppclDKjLbsjvrW1
-	+DHpazn7PrF58W5pGliQ6k1ZchWWkkN5fyJSIo2XMSiwnDR90nf1vALgVb2QoroEAxryyizKW8/89
-	m1ATjl5XDRxiOsOzDpUwgRt/n1Q2RNNmfsgQoClJBqNtkoSTyuT9R3fvthJDeDjyOLLgKG3kK+oTC
-	8N+lzoLQ==;
+	bh=i67Tur1lTDsW3PsndxC649p+2k9fL1eRjU0zdc9Cb8I=; b=R2489FTP/wYaZz0F4YEYZl/MWV
+	iLtjNXjbYDE9qH8knquHsW2caEG/48Y30z2DyNMeTlYJvDxWgQLSqGudfm3ezbl0bB0AZAUPzSskz
+	756ono2JgNw0kb16VdLwGOZ19TEb1S0i1oVRYkKiBQ0aoSlYEyaU8+2XPzgaUTWZqLgYEqP+9KDC6
+	te1/0uQQnHjJ+oM1VWVysJTDjMIHIrINJWr1GReEDk9OoU4MhouJ3MFMSJHPjcOKt0EaaF5/f3w1l
+	O8OUTR5wx83PkHEcCtKUvCf7Mi3Kmqu8UJA7Ku5Cd3N2HDfyA92kX1IBM2Pic/SaIK4qLRp4pvcb6
+	Ck4/stbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w506e-00000001I4C-41Qx;
-	Tue, 24 Mar 2026 11:39:32 +0000
-Received: from mail.cjdns.fr ([5.135.140.105])
+	id 1w51DB-00000001QuR-3rQI;
+	Tue, 24 Mar 2026 12:50:21 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w506c-00000001I37-0p7K
-	for linux-mediatek@lists.infradead.org;
-	Tue, 24 Mar 2026 11:39:31 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 89E9A3A15BB;
-	Tue, 24 Mar 2026 12:39:20 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1774352365; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=wsd8ayXzwZIf2OvsiCFxKkIRxILOgP6+SHpyFDVmOME=;
-	b=S81Fyulz3eWDvnLEZMjjxxBAFTnizb9Rf0UKcKtl9/U+bcK2JSO+lkMTy/RZYZmCQXtpi3
-	DfMOclCgCcsUWo2N7KqQZ865pi/j25ADGEU3kbl27i1U6T667cth3mnBgH2DJMuss1G9Nq
-	417CJsWtGluB4krKR9hpXpOJpucC7sq5xoBmoGvaggW/Yp0zSnC99H7pFQS02w6dXwBnND
-	wbeeKVFH+sA+9KpGEWjyf96vKoqrz1NVEnrVLk3rDlbqYj/mEr/jSZPEWpSIBaympBAi+6
-	bIYzP/ioBqdsEp4CwFRKX+h/iI7ngrqUWgl/g4qv4EDjXA2SNeM3S97Czg8wbg==
-Message-ID: <aae953bb-1cf3-4831-8f50-66fb863ddaf6@cjdns.fr>
-Date: Tue, 24 Mar 2026 12:39:19 +0100
+	id 1w51D9-00000001QtX-0yDv;
+	Tue, 24 Mar 2026 12:50:20 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 3D05941963;
+	Tue, 24 Mar 2026 12:50:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16084C19424;
+	Tue, 24 Mar 2026 12:50:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1774356618;
+	bh=Io+E9/jACh42NofLlkmVJ4EWwPjlsEobWJiByzv1PoA=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=Pb5e2AzGgL02ulaKN7mkzxqHz4t2UIdM3V2Y+M5duNJ4gTTUiVDoQ6ywCxSp+lcTk
+	 PkXOC0p7Bwf3gdIa3IzgOKNZod8LrccQ82ZpZXFf3fXyzeFbGsNqCYxX7LeSblUGxP
+	 mVDGy4skq1xssv595CRUTEHyNSzvlbLm74Apag4jPEsM5BSykePI5fdOFCPOHLjDdX
+	 TN27nlX6mWS33rJ8JqeqcCyNLBBBy7dvZ/s1+NpzoXNyJyS9i8JY+4LC+F4EC+jleI
+	 vSPTo4U/+o6+IEXT9lb5Lxjzgp/PV4mszsDgfEOD3PvPms4srtxjnD6lDCKfipq+j9
+	 NxBtV8wbuZJXw==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 3FE1F3808200;
+	Tue, 24 Mar 2026 12:50:07 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird Beta
-Subject: Re: [PATCH v3 1/2] dt-bindings: PCI: mediatek: Add support for EcoNet
- EN7528
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: linux-pci@vger.kernel.org, linux-mips@vger.kernel.org,
- naseefkm@gmail.com, ryder.lee@mediatek.com, bhelgaas@google.com,
- lpieralisi@kernel.org, kwilczynski@kernel.org, mani@kernel.org,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- ansuelsmth@gmail.com, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-References: <20260323213854.GA1082060@bhelgaas>
-Content-Language: en-US
-From: Caleb James DeLisle <cjd@cjdns.fr>
-In-Reply-To: <20260323213854.GA1082060@bhelgaas>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Last-TLS-Session-Version: TLSv1.3
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next v2] net: airoha: Rework the code flow in
+ airoha_remove() and in airoha_probe() error path
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <177435660604.669121.2908279813353897699.git-patchwork-notify@kernel.org>
+Date: Tue, 24 Mar 2026 12:50:06 +0000
+References: <20260321-airoha-remove-rework-v2-1-16c7bade5fe5@kernel.org>
+In-Reply-To: <20260321-airoha-remove-rework-v2-1-16c7bade5fe5@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, horms@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260324_043930_454356_75D2BA8D 
-X-CRM114-Status: UNSURE (   5.25  )
+X-CRM114-CacheID: sfid-20260324_055019_295775_C0D4CC27 
+X-CRM114-Status: UNSURE (   9.90  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,19 +77,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hello:
 
-On 23/03/2026 22:38, Bjorn Helgaas wrote:
-> On Fri, Mar 20, 2026 at 09:42:11AM +0000, Caleb James DeLisle wrote:
->> Introduce EcoNet EN7528 SoC compatible in MediaTek PCIe controller
->> binding.
->>
->> EcoNet PCIe controller has the same configuration model as
->> Mediatek v2 but is initiallized more similarly to an MT7621
->> PCIe.
-> s/initiallized/initialized/
+This patch was applied to netdev/net-next.git (main)
+by Paolo Abeni <pabeni@redhat.com>:
 
-Oops, thank you.
+On Sat, 21 Mar 2026 15:41:44 +0100 you wrote:
+> As suggested by Simon in [0], rework the code flow in airoha_remove()
+> and in the airoha_probe() error path in order to rely on a more common
+> approach un-registering configured net-devices first and destroying the
+> hw resources at the end of the code.
+> Introduce airoha_qdma_cleanup routine to release QDMA resources.
+> 
+> [0] https://lore.kernel.org/netdev/20251214-airoha-fix-dev-registration-v1-1-860e027ad4c6@kernel.org/
+> 
+> [...]
 
-Caleb
+Here is the summary with links:
+  - [net-next,v2] net: airoha: Rework the code flow in airoha_remove() and in airoha_probe() error path
+    https://git.kernel.org/netdev/net-next/c/b1c803d5c816
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
