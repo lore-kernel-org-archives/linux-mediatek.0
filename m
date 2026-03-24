@@ -4,105 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF5E5E9A744
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2026 09:17:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4CAAE9A74D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2026 09:36:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Tw/G9VTXwnHHHKSCmjoBsBkmBbbcaWdFFIwUqNEEQZw=; b=ubOAyWnW7g+vlTfNKKsYXukPHg
-	JiDWhf0z3r2fDJkt5R2IwOLxLU4TwGma4WIn34evTj6nTao5XVJBUWRLi2lUM3MJlHPlOSUZKf3mz
-	Py4blA+LuQilV1jv1K/UGdDL992j6fMmET1DtV+squbi7xz3BNbfKZx3m8I8gCgtIWOlwEb++RW5u
-	+iMipZEq+f4FiBUqKyQ4TxEAY1TfN+t78e6QRCnrEo8vz0GiOSrDrWXMLKBsEakAxfuYvOhM4wtp8
-	ceZVXro3nBBiKwj8VMjUhUIzt9pOEaCsxeZA6N07uQSJCTSC39kgxGdtFMgZD7jFlk3MsZdRaDUom
-	5H1L2JiA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0wNRdSzAgBmj3W1HLVnK+M5XPg8WJUDMQukRyAUFTZY=; b=iiSEcSOo98cgkTo/kYRCHzo+BU
+	JogAsPXONgPxcu6y1xVVl1sWiSkPsVjv7RjMTXxXv6LhG/395EmL+QzH/AepkqYEOn3m/EsWrS4Tj
+	8idXJ8hiq7pn0yrlhRoxFR9FWqEb+DzeBZAk+m2HEU3Mg8LuU4N44qf1Oa5ElT8iFiQSPdNpABeNx
+	n+HT6t7fW/lBKnCiNiGdQWt1kwKuhYxWH4UmpCBLo/v978tF3zRDj0bbPj9zhw7hfHCYUlpN3WmnV
+	qd1kKt9hqRXxaSG/WRhDte2N05Ny3vO3fySKcWYFKq3t621tGQuCPYlo31MsOEOEzV6BVqj4jfFky
+	IGm+Fvsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4xsv-000000014AD-3mEv;
-	Tue, 24 Mar 2026 09:17:13 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1w4yB5-000000016Ml-0lVJ;
+	Tue, 24 Mar 2026 09:35:59 +0000
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4xst-0000000149n-47sM;
-	Tue, 24 Mar 2026 09:17:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=Tw/G9VTXwnHHHKSCmjoBsBkmBbbcaWdFFIwUqNEEQZw=; b=SplUWw9yCKhEoZCb5eKc2p6pQR
-	1hvhkCScmjwdZ8ttXZOf2xCGgCjCnD8jcgCCkoChiUQL0Fr+lOKiCC91ygKLfG3mxXULlMHg4jkf4
-	KhW9aITMlFp/aTS9wHXf5yeTSndhFKuIzpB6mI47jyG65omCqAsSRpJ8fdv/sYD+gb9gpy6CXpFFN
-	nZ1B5ibvdxAVyPHCy8x3w4o3A+mLKWI6GIfdtcjVvAkKR2Ztowev7aj9G3H8sr2whn0wd5iSyByvs
-	DSVmcIW8SOuAPGyaURH8ypZpklHHbbRq/WaKS4Dmu3+ktq9kHP3rOofw2JNCGK23H5LI1bZHDfqeQ
-	cTBoDRTw==;
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4xsq-00000003cqO-2gZT;
-	Tue, 24 Mar 2026 09:17:10 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1774343785; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=SYajBwuiZa8oR0IGy+sTz3PqpZrdBA/lNr0MoEAENTM+2lZ3W133Sd2UB4kk7kFSdTYfqIMtNFyozDZ6AIe3N/H//n0LK8rfhUdvxkX9oV8qVzaUuXHbvvnXhEpOQqBhz0mhFmGxqCSgw98UansqvWiOPFBBPmF/TUNnL7C2HnQ=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1774343785; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=Tw/G9VTXwnHHHKSCmjoBsBkmBbbcaWdFFIwUqNEEQZw=; 
-	b=PAZeN6C+SYUsvuGqzrS2CnaplC+BBQxWmcHgJiQgN+kus0naAKpO3ZZR8NMDhCOexYzujaiRdez3CsD4DH0GWdZl707RYgn0Tj4CmR4qacVn4KYFOyL2HzsWv9TAlrN/ri62vXemfjXVra8akvFnMBlD2zwcos8lYv+Dkts7ulM=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1774343785;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=Tw/G9VTXwnHHHKSCmjoBsBkmBbbcaWdFFIwUqNEEQZw=;
-	b=EOH1niQczPS5fbilI4PiiNRgJuvNBqXb7Mfen8spkZtWoA8KCHnvlGcBIuYVFEWp
-	T+j1DeFy1jVFNoJJSanWd2d1AH3/DIq1hNRaBr8FseE+DZypZmgdFb2Zjv8wSPuH0CZ
-	MP9TL1jsYt98vtYhRXvkCuUjsC9UiyERHaGiwJYI=
-Received: by mx.zohomail.com with SMTPS id 1774343783701798.6167436689976;
-	Tue, 24 Mar 2026 02:16:23 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Jani Nikula <jani.nikula@linux.intel.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
- Rodrigo Siqueira <siqueira@igalia.com>,
- Alex Deucher <alexander.deucher@amd.com>,
- Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Andy Yan <andy.yan@rock-chips.com>, Liviu Dudau <liviu.dudau@arm.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sandy Huang <hjc@rock-chips.com>,
- Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
- Liu Ying <victor.liu@nxp.com>, Chen-Yu Tsai <wens@kernel.org>,
- Samuel Holland <samuel@sholland.org>,
- Dave Stevenson <dave.stevenson@raspberrypi.com>,
- =?UTF-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
- Maxime Ripard <mripard@kernel.org>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- amd-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-sunxi@lists.linux.dev, Jani Nikula <jani.nikula@intel.com>
-Subject: Re: [PATCH v3 12/14] drm/rockchip: analogix: Convert to
- drm_output_color_format
-Date: Tue, 24 Mar 2026 10:16:14 +0100
-Message-ID: <5921295.GXAFRqVoOG@workhorse>
-In-Reply-To: <20260305-drm-rework-color-formats-v3-12-f3935f6db579@kernel.org>
-References: <20260305-drm-rework-color-formats-v3-0-f3935f6db579@kernel.org>
- <20260305-drm-rework-color-formats-v3-12-f3935f6db579@kernel.org>
+	id 1w4yB2-000000016MO-2LCC
+	for linux-mediatek@lists.infradead.org;
+	Tue, 24 Mar 2026 09:35:57 +0000
+Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-2aecc6b0861so29836445ad.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 24 Mar 2026 02:35:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1774344955; x=1774949755; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=0wNRdSzAgBmj3W1HLVnK+M5XPg8WJUDMQukRyAUFTZY=;
+        b=JwA4lYHL2JgJdzrXkEZ2BCUd5VDC61Afe+Q771C/Y6BmJBAWW9YCcblIX2mR41nQsn
+         JdLaqWqZ2cgW5r2NabWM4TwOjHBr2RsM2Fi7flqaC1v5IKpr/2ETw04jmmnovuNl4841
+         6ztn3eFi+doO+OvGL76AnGOeOifWIU8ve7DHA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1774344955; x=1774949755;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=0wNRdSzAgBmj3W1HLVnK+M5XPg8WJUDMQukRyAUFTZY=;
+        b=p8Qpjem2pEbdCJSlNk0Qkomwka+9PqPb+mDzWBzSnBlZcCMhG226CeV/SOEAbeVdw+
+         wRU6JXw9rNf2t9hhZf+DcC4zvDuvq2SCg+ripxjQJi8k5vQgcOa/ajC981HL0t9ybjEQ
+         6hAgSxKl1spU68djwA+kw/VChqGGaqVAiI2WjRDXZNdPcw/j0okVq5QcwOJF3VfirIUf
+         buo2nJrB7fV8Y3hsW2B/ZwIX268SHmZYjHmDxHGe1mZqHZ8Kiz9OhRi63eyDWPj53vlY
+         jI84LWQStgNp+5VLao5bgHCuKMZafAOK6rLIkI8bkjx1ZjdIj7IEX0RKkt4OqTifef0O
+         9EPA==
+X-Forwarded-Encrypted: i=1; AJvYcCUK9oTQ4AD/BBnpeTazDrRRp9iZKzhSHDeAjkL2vzkWy3q/T1D61jD0Vy42Xq3cbwjD9/1HM4UDGhInDOooFw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz4YtGZ+84FK/55EM7WA6dHvCLfBhwTEVzL31+2toneFZnvWh+I
+	CsNNpTp5sB3KJMBCAIEVmZBkz6y8NA/y8ibA9Y0GV6zIPLsieL0ssG7BpvAOrwocFw==
+X-Gm-Gg: ATEYQzztDeWHULfx89hSUJcmGt0gydXCQXgqyQGqAcwT3CCnPZBIYM0OBEbhIKuUX1W
+	susT9epw+PTh9TVopXczMT6jcxIcYIYUQ98Q9k9onrzfLl3Z/KcA8MjSRxuVgt7gyW2XZ+sLLz/
+	EcBmznoKU08tqtt8DP5ufkUwgZC3yesv0NAPze7oBLMswZ+s52o0VseiUnU+LPsCJMLmF7RASB7
+	ehvg178/I4d6JUNEa/hcdtV1s8ym8OppoHn4qhmq+kv8zyHu6VakwKAmNTB0SX1x0nTYdWWVarZ
+	vlJFPBGJCW/AIgQelkR3TuqfidSUphM2tPvBrpbyZfILqIIh3ZrYgBbr/zazt3Otz33hVeEnU5v
+	pmvPYAEHxZra5mNrcYBZqKsqRE7FRAKuoTJMi1WjkING6ue85ioglm74C7GpZkbSQho5nKcVscf
+	pL8azVaUpgO/25Ky/NhC2AN9mp8ZdGxy40PXvb8wC8iyo4Y1oyxHKFkg7qAIDwZSuYJfRdKnMnS
+	KBCX8XK
+X-Received: by 2002:a17:903:2288:b0:2b0:5548:7d84 with SMTP id d9443c01a7336-2b08280c1ffmr147273335ad.48.1774344955576;
+        Tue, 24 Mar 2026 02:35:55 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:19a5:8f2f:d584:8078])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2b083679867sm163785785ad.65.2026.03.24.02.35.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 24 Mar 2026 02:35:55 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	linux-pci@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] PCI: mediatek-gen3: prevent leaking IRQ domains when IRQ not found
+Date: Tue, 24 Mar 2026 17:35:41 +0800
+Message-ID: <20260324093542.18523-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.53.0.983.g0bb29b3bc5-goog
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260324_091709_136609_86E159F3 
-X-CRM114-Status: GOOD (  23.03  )
+X-CRM114-CacheID: sfid-20260324_023556_652597_86441ECF 
+X-CRM114-Status: GOOD (  11.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,60 +102,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thursday, 5 March 2026 10:05:04 Central European Standard Time Maxime Ripard wrote:
-> Now that we introduced a new drm_output_color_format enum to represent
-> what DRM_COLOR_FORMAT_* bits were representing, we can switch to the new
-> enum.
-> 
-> The main difference is that while DRM_COLOR_FORMAT_ was a bitmask,
-> drm_output_color_format is a proper enum. However, the enum was done is
-> such a way than DRM_COLOR_FORMAT_X = BIT(DRM_OUTPUT_COLOR_FORMAT_X) so
-> the transitition is easier.
-> 
-> The only thing we need to consider is if the original code meant to use
-> that value as a bitmask, in which case we do need to keep the bit shift,
-> or as a discriminant in which case we don't.
-> 
-> Acked-by: Jani Nikula <jani.nikula@intel.com>
-> Signed-off-by: Maxime Ripard <mripard@kernel.org>
-> ---
->  drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> index fdab71d51e2a71d644f128b1bf1c39429b4ad52a..96bd3dd239d251af3d5a7d0fbd4dd74942d44f2d 100644
-> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> @@ -169,16 +169,16 @@ static int rockchip_dp_powerdown(struct analogix_dp_plat_data *plat_data)
->  static int rockchip_dp_get_modes(struct analogix_dp_plat_data *plat_data,
->  				 struct drm_connector *connector)
->  {
->  	struct drm_display_info *di = &connector->display_info;
->  	/* VOP couldn't output YUV video format for eDP rightly */
-> -	u32 mask = DRM_COLOR_FORMAT_YCBCR444 | DRM_COLOR_FORMAT_YCBCR422;
-> +	u32 mask = BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR444) | BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR422);
->  
->  	if ((di->color_formats & mask)) {
->  		DRM_DEBUG_KMS("Swapping display color format from YUV to RGB\n");
->  		di->color_formats &= ~mask;
-> -		di->color_formats |= DRM_COLOR_FORMAT_RGB444;
-> +		di->color_formats |= BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444);
->  		di->bpc = 8;
->  	}
->  
->  	return 0;
->  }
-> 
-> 
+In mtk_pcie_setup_irq(), the IRQ domains are allocated before the
+controller's IRQ is fetched. If the latter fails the function
+directly returns an error.
 
-Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Instead, reverse the order so that the IRQ domains are allocated
+after the controller's IRQ is found.
 
-I'm not the maintainer of this driver, but touched both the color
-formats and rockchip code enough to confidently state that this
-patch is trivially correct. I'm sure Heiko and Andy will agree. :)
+This was flagged by Sashiko during a review of "[PATCH v6 0/7] PCI:
+mediatek-gen3: add power control support".
 
-Kind regards,
-Nicolas Frattaroli
+Link: https://sashiko.dev/#/patchset/20260324052002.4072430-1-wenst%40chromium.org
+Fixes: 814cceebba9b ("PCI: mediatek-gen3: Add INTx support")
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+This was flagged by Sashiko during a review of "[PATCH v6 0/7] PCI:
+mediatek-gen3: add power control support", but is otherwise unrelated
+to that series and can be merged independently.
 
+ drivers/pci/controller/pcie-mediatek-gen3.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+index a94fdbaf47fe..2f9365930d6a 100644
+--- a/drivers/pci/controller/pcie-mediatek-gen3.c
++++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+@@ -890,14 +890,14 @@ static int mtk_pcie_setup_irq(struct mtk_gen3_pcie *pcie)
+ 	struct platform_device *pdev = to_platform_device(dev);
+ 	int err;
+ 
+-	err = mtk_pcie_init_irq_domains(pcie);
+-	if (err)
+-		return err;
+-
+ 	pcie->irq = platform_get_irq(pdev, 0);
+ 	if (pcie->irq < 0)
+ 		return pcie->irq;
+ 
++	err = mtk_pcie_init_irq_domains(pcie);
++	if (err)
++		return err;
++
+ 	irq_set_chained_handler_and_data(pcie->irq, mtk_pcie_irq_handler, pcie);
+ 
+ 	return 0;
+-- 
+2.53.0.983.g0bb29b3bc5-goog
 
 
