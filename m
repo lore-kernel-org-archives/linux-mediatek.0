@@ -4,78 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C351FFEC0F6
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2026 19:25:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A378FEC10C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2026 19:54:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RR7C82ByRHf9xHFB+hAjpexhUSxycw9732oruAip0zw=; b=JdedHib7wiYl8Ecvd1unHIJ6NG
-	VZgBlEvM0xPzH8eaIOU8lpJpXbiDxwxF4RhWsBD3LyKtqMsv37LS+1AoUZ3k80wVDDcDh29H33lUF
-	hKtZSCOUlk4AtTEZ0hc/MqXDtOnVywgauglv5l/IPzx3CCRzhVdAxmee/KxNqCErjk59Oa4MqVEVF
-	eonngYBagiKIAoNd6NDI6stBCVVN9DCuuqTNp0FHNjwmRDgJlzuSyZvhA9nB488V6rRjaqVwlS/lB
-	NF+Hew1TQcgv9suvKM8dDDhDzZGgcS/jLe1hZdfVdJJ/78rGK8qOoND5OH3M6+w/SdgOt6GHs0Tp3
-	oX4o/rNQ==;
+	bh=4iWKEbRSat36IV94lLy0So9Efd8lQ9YMr7+bYVKEn3s=; b=ZRKEJK8iYAdS0y+gHr3i1JFY09
+	sUhfzP1y9XjrqfGhTcZMLOJTxZc7wO3FU3CUBXKS7oCK2lK/V9yiuMJMnIUgkC+d4JE++WtfB1plb
+	tFN6gW27EO2JtnZropHfB17WSZRYztmOZ/81xJPYZmS4ump78zJzX5dUNAdYyiBpNRWEjcdvMUXuU
+	B98SaMHzygNMc9hIkyaNSrpxmov5CRQ3Ru1GtQSH5vKA+vS3eaFUrrSoXx7JScPPmFmjZa1dDjoT8
+	bMVVIWwFL0gtf56J3T3Qmz4hgzU9kU+rP8B3B3dsOmeEZ/wdpHrfW5HVhytOp1hNQcsAuYtUEAbp3
+	efByfaDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w57NT-000000029Ad-3wWp;
-	Tue, 24 Mar 2026 19:25:23 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1w57pv-00000002BSb-1vUL;
+	Tue, 24 Mar 2026 19:54:47 +0000
+Received: from mail.cjdns.fr ([5.135.140.105])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w57NJ-0000000295t-0bWV
+	id 1w57pg-00000002BEg-3tQa
 	for linux-mediatek@lists.infradead.org;
-	Tue, 24 Mar 2026 19:25:13 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3922F6012A
-	for <linux-mediatek@lists.infradead.org>; Tue, 24 Mar 2026 19:25:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E2D0BC2BCF5
-	for <linux-mediatek@lists.infradead.org>; Tue, 24 Mar 2026 19:25:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774380311;
-	bh=W2kqahuI0dRdiWt2FzF8BjyOm6F3ukwameRH6zo7Z/8=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=rdzeotiwu5t7bs+XXjN4poTi0+pT9sYIJzYXAQWmlMXlKwWLsxRYZAAbJXccMqRz8
-	 tcluVY9BwAb7qsiK8RsqA4nQvuLEaq1b8Sp5s8suPn1KCBpzZvBLQE0KNEIfBgaKjx
-	 aeiLrLs9r//AB52n/i/SDVfilfWwvxT2rKgD7YR9AIpmdD0+RmUJWFdh1xHZ2YEq7s
-	 8KaerkGa41v2sYwzkuicShvaBHEPPxGRXjlwBFJ/4uzGtqrtvL31IstDILkRPa8/Su
-	 q0IB5KrAjH91mqiIfUWhXDw5oV02/P2p382m2+DUXN+xIkt+lvJR0TW2E991WqG4Xi
-	 9pA7kvG+0M5Pw==
-Received: by mail-lj1-f169.google.com with SMTP id 38308e7fff4ca-38a42a0d7f7so1499161fa.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 24 Mar 2026 12:25:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCX9O9xKmTgjxHcY1efzATcj3bAIuNgO53ITKmQAgyB9KGcIT/UaT8jyo4cbkPDylnxVd5xk5/8uLXEn/V4Uqw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwqOQbjlIuwqaD4U4yVL2XmRmCddV/HqAhYet23W0d/lqnNtg7Y
-	CyvOqQnb1Hyv/9Bfgp2lU0gxyGYzLvGTFAd2IMNVe2MTPDUMTKBJYqspxhdKH0kMas5U09DmuDI
-	bkXl+b/yBmSdXxos6WRPhm5wLyN21Dw4=
-X-Received: by 2002:a05:651c:310:b0:387:a16:ee83 with SMTP id
- 38308e7fff4ca-38c32931d14mr11373651fa.11.1774380310067; Tue, 24 Mar 2026
- 12:25:10 -0700 (PDT)
+	Tue, 24 Mar 2026 19:54:34 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id B40973AA8E6;
+	Tue, 24 Mar 2026 20:54:25 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
+	t=1774382069; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=4iWKEbRSat36IV94lLy0So9Efd8lQ9YMr7+bYVKEn3s=;
+	b=kfBdJtAyZlEcBfjeYglEZSwbElrc+UyvohpZ6uFd5LanoHHK3huog9XW3nd40ux2SAc2Qi
+	/LxqbkLe0q74+0Rtg6UzmTBOlPHA75pfvWpUgxLomOV07eI+p4eF/0KYovc6G14ZhozK1w
+	B/cF/waaVbM6x52hkwVTnE5P+s1oiIjnEkJBw1z6+UAcmzSwprj204OsEbOQIg45R6NLI+
+	7VVlUNOk62tz+UWOU53VW7r0W90981hEyTMBtz2d5dWuLEBzsiDOoHQMZ25w3RUlAw/ybF
+	0lnc6FGCtDcbbuqdndmVNpuV/PrxUBN7oJSgl44cehMSsjumEv+AWlnuBzcP5A==
+Message-ID: <291d896e-838a-437e-8525-5896f3c957b6@cjdns.fr>
+Date: Tue, 24 Mar 2026 20:54:24 +0100
 MIME-Version: 1.0
-References: <20260319-mt7927-wifi-support-v2-v2-0-d627a7fad70d@jetm.me> <20260319-mt7927-wifi-support-v2-v2-5-d627a7fad70d@jetm.me>
-In-Reply-To: <20260319-mt7927-wifi-support-v2-v2-5-d627a7fad70d@jetm.me>
-From: Sean Wang <sean.wang@kernel.org>
-Date: Tue, 24 Mar 2026 14:24:58 -0500
-X-Gmail-Original-Message-ID: <CAGp9LzoYcJEmFKTKGsF3WchxLedyo7HvGCn8Vi=WaEXS1N-VTg@mail.gmail.com>
-X-Gm-Features: AQROBzCJFXGOj3qOH6JxvcssVN9WorUl4nD9nSO254z7rVrluItXC4oVHqFFQWg
-Message-ID: <CAGp9LzoYcJEmFKTKGsF3WchxLedyo7HvGCn8Vi=WaEXS1N-VTg@mail.gmail.com>
-Subject: Re: [PATCH v2 05/13] wifi: mt76: mt7925: advertise EHT 320MHz
- capabilities for 6GHz band
-To: Javier Tia <floss@jetm.me>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
-	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Deren Wu <deren.wu@mediatek.com>, 
-	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, linux-wireless@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Marcin FM <marcin@lgic.pl>, 
-	Cristian-Florin Radoi <radoi.chris@gmail.com>, George Salukvadze <giosal90@gmail.com>, 
-	Evgeny Kapusta <3193631@gmail.com>, Samu Toljamo <samu.toljamo@gmail.com>, 
-	Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>, Chapuis Dario <chapuisdario4@gmail.com>, 
-	=?UTF-8?Q?Thibaut_Fran=C3=A7ois?= <tibo@humeurlibre.fr>, 
-	=?UTF-8?B?5byg5pet5ra1?= <Loong.0x00@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird Beta
+Subject: Re: [PATCH v3 2/2] PCI: mediatek: Add support for EcoNet EN7528 SoC
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: linux-pci@vger.kernel.org, linux-mips@vger.kernel.org,
+ naseefkm@gmail.com, ryder.lee@mediatek.com, bhelgaas@google.com,
+ lpieralisi@kernel.org, kwilczynski@kernel.org, mani@kernel.org,
+ robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ ansuelsmth@gmail.com, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+References: <20260323213621.GA1080209@bhelgaas>
+Content-Language: en-US
+From: Caleb James DeLisle <cjd@cjdns.fr>
+In-Reply-To: <20260323213621.GA1080209@bhelgaas>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Last-TLS-Session-Version: TLSv1.3
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260324_125433_379957_5288B692 
+X-CRM114-Status: GOOD (  33.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,164 +75,209 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
-On Thu, Mar 19, 2026 at 5:26=E2=80=AFPM Javier Tia <floss@jetm.me> wrote:
+On 23/03/2026 22:36, Bjorn Helgaas wrote:
+> On Fri, Mar 20, 2026 at 09:42:12AM +0000, Caleb James DeLisle wrote:
+>> Add support for the PCIe present on the EcoNet EN7528 (and EN751221) SoCs.
+>>
+>> These SoCs have a mix of Gen1 and Gen2 capable ports, but the Gen2 ports
+>> require re-training after startup.
+>> ...
+>> +static int mtk_pcie_startup_port_en7528(struct mtk_pcie_port *port)
+>> +{
+>> +	struct mtk_pcie *pcie = port->pcie;
+>> +	struct pci_host_bridge *host = pci_host_bridge_from_priv(pcie);
+>> +	struct resource *mem = NULL;
+>> +	struct resource_entry *entry;
+>> +	u32 val, link_mask;
+>> +	int err;
+>> +
+>> +	entry = resource_list_first_type(&host->windows, IORESOURCE_MEM);
+>> +	if (entry)
+>> +		mem = entry->res;
+>> +	if (!mem)
+>> +		return -EINVAL;
+>> +
+>> +	if (!pcie->cfg) {
+>> +		dev_err(pcie->dev, "EN7528: pciecfg syscon not available\n");
+>> +		return -EINVAL;
+>> +	}
+>> +
+>> +	/* Assert all reset signals */
+>> +	writel(0, port->base + PCIE_RST_CTRL);
+>> +
+>> +	/*
+>> +	 * Enable PCIe link down reset, if link status changed from link up to
+>> +	 * link down, this will reset MAC control registers and configuration
+>> +	 * space.
+>> +	 */
+>> +	writel(PCIE_LINKDOWN_RST_EN, port->base + PCIE_RST_CTRL);
+>> +
+>> +	/*
+>> +	 * Described in PCIe CEM specification sections 2.2 (PERST# Signal) and
+>> +	 * 2.2.1 (Initial Power-Up (G3 to S0)). The deassertion of PERST#
+> Include spec rev; the section numbers are typically specific to a spec
+> revision.  E.g., CEM r1.0, sec 2.2, 2.2.1.
 >
-> mt7925_init_eht_caps() only populates EHT MCS/NSS maps for BW <=3D 80
-> and BW =3D 160, but never sets BW =3D 320. This means iw phy shows no
-> 320MHz MCS map entries even though the hardware supports 320MHz
-> operation in the 6GHz band.
->
-> Add the missing 320MHz capability bits for 6GHz, following the same
-> pattern as mt7996:
->   - PHY_CAP0: IEEE80211_EHT_PHY_CAP0_320MHZ_IN_6GHZ
->   - PHY_CAP1: beamformee SS for 320MHz
->   - PHY_CAP2: sounding dimensions for 320MHz
->   - PHY_CAP6: MCS15 support for 320MHz width
->   - PHY_CAP7: non-OFDMA UL MU-MIMO and MU beamformer for 320MHz
->   - MCS/NSS: populate bw._320 maps for 6GHz band
->
-> Introduce is_320mhz_supported() as a generic capability check using the
-> mt7925 family ID. This avoids chip-specific references in common code,
-> and automatically extends to new chips once they join the
-> is_mt7925() family via chip ID helpers.
->
-> Tested-by: Marcin FM <marcin@lgic.pl>
-> Tested-by: Cristian-Florin Radoi <radoi.chris@gmail.com>
-> Tested-by: George Salukvadze <giosal90@gmail.com>
-> Tested-by: Evgeny Kapusta <3193631@gmail.com>
-> Tested-by: Samu Toljamo <samu.toljamo@gmail.com>
-> Tested-by: Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>
-> Tested-by: Chapuis Dario <chapuisdario4@gmail.com>
-> Tested-by: Thibaut Fran=C3=A7ois <tibo@humeurlibre.fr>
-> Tested-by: =E5=BC=A0=E6=97=AD=E6=B6=B5 <Loong.0x00@gmail.com>
-> Signed-off-by: Javier Tia <floss@jetm.me>
-> ---
->  drivers/net/wireless/mediatek/mt76/mt76_connac.h |  5 +++++
->  drivers/net/wireless/mediatek/mt76/mt7925/main.c | 28 ++++++++++++++++++=
-+++++-
->  2 files changed, 32 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac.h b/drivers/n=
-et/wireless/mediatek/mt76/mt76_connac.h
-> index 813d61bffc2c..554716e01ee6 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-> @@ -177,6 +177,11 @@ static inline bool is_mt7925(struct mt76_dev *dev)
->         return mt76_chip(dev) =3D=3D 0x7925;
->  }
->
-> +static inline bool is_320mhz_supported(struct mt76_dev *dev)
-> +{
-> +       return is_mt7925(dev);
+>> +	 * should be delayed 100ms (TPVPERL) for the power and clock to become
+>> +	 * stable.
+>> +	 */
+>> +	msleep(100);
+> Isn't there a #define for this in drivers/pci/pci.h?
 
-I don't think this is correct for mt7925, and it will cause a
-regression there. Was this tested on actual mt7925 hardware?
+Indeed, and it has the proper reference to the spec revision. This hard 
+coded 100 and the spec comment trickled down from vendor code. Will 
+replace with the symbol.
 
-> +}
-> +
->  static inline bool is_mt7920(struct mt76_dev *dev)
->  {
->         return mt76_chip(dev) =3D=3D 0x7920;
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/n=
-et/wireless/mediatek/mt76/mt7925/main.c
-> index f128a198f81d..cd043ac266fb 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-> @@ -183,6 +183,10 @@ mt7925_init_eht_caps(struct mt792x_phy *phy, enum nl=
-80211_band band,
->                 IEEE80211_EHT_PHY_CAP0_SU_BEAMFORMER |
->                 IEEE80211_EHT_PHY_CAP0_SU_BEAMFORMEE;
+>> +	/* De-assert PHY, PE, PIPE, MAC and configuration reset */
+>> +	val = readl(port->base + PCIE_RST_CTRL);
+>> +	val |= PCIE_PHY_RSTB | PCIE_PERSTB | PCIE_PIPE_SRSTB |
+>> +	       PCIE_MAC_SRSTB | PCIE_CRSTB;
+>> +	writel(val, port->base + PCIE_RST_CTRL);
+>> +
+>> +	writel(PCIE_CLASS_CODE | PCIE_REVISION_ID,
+>> +	       port->base + PCIE_CONF_REV_CLASS);
+>> +	writel(EN7528_HOST_MODE, port->base);
+>> +
+>> +	link_mask = (port->slot == 0) ? EN7528_RC0_LINKUP : EN7528_RC1_LINKUP;
+>> +
+>> +	/* 100ms timeout value should be enough for Gen1/2 training */
+>> +	err = regmap_read_poll_timeout(pcie->cfg, EN7528_LINKUP_REG, val,
+>> +				       !!(val & link_mask), 20,
+>> +				       100 * USEC_PER_MSEC);
+> Ditto.  Also take a look and see if this is relevant:
+> https://lore.kernel.org/all/20260320224821.2571373-1-thierry.reding@kernel.org
+Okay, the hardcoded 100ms follows what is done in pcie-mediatek.c but 
+from pcie-mediatek-gen3.c it appears the appropriate symbol is 
+PCI_PM_D3COLD_WAIT so I'll substitute this.
 >
-> +       if (band =3D=3D NL80211_BAND_6GHZ && is_320mhz_supported(&phy->de=
-v->mt76))
-> +               eht_cap_elem->phy_cap_info[0] |=3D
-> +                       IEEE80211_EHT_PHY_CAP0_320MHZ_IN_6GHZ;
-> +
->         eht_cap_elem->phy_cap_info[0] |=3D
->                 u8_encode_bits(u8_get_bits(sts - 1, BIT(0)),
->                                IEEE80211_EHT_PHY_CAP0_BEAMFORMEE_SS_80MHZ=
-_MASK);
-> @@ -193,10 +197,20 @@ mt7925_init_eht_caps(struct mt792x_phy *phy, enum n=
-l80211_band band,
->                 u8_encode_bits(sts - 1,
->                                IEEE80211_EHT_PHY_CAP1_BEAMFORMEE_SS_160MH=
-Z_MASK);
->
-> +       if (band =3D=3D NL80211_BAND_6GHZ && is_320mhz_supported(&phy->de=
-v->mt76))
-> +               eht_cap_elem->phy_cap_info[1] |=3D
-> +                       u8_encode_bits(sts - 1,
-> +                                      IEEE80211_EHT_PHY_CAP1_BEAMFORMEE_=
-SS_320MHZ_MASK);
-> +
->         eht_cap_elem->phy_cap_info[2] =3D
->                 u8_encode_bits(sts - 1, IEEE80211_EHT_PHY_CAP2_SOUNDING_D=
-IM_80MHZ_MASK) |
->                 u8_encode_bits(sts - 1, IEEE80211_EHT_PHY_CAP2_SOUNDING_D=
-IM_160MHZ_MASK);
->
-> +       if (band =3D=3D NL80211_BAND_6GHZ && is_320mhz_supported(&phy->de=
-v->mt76))
-> +               eht_cap_elem->phy_cap_info[2] |=3D
-> +                       u8_encode_bits(sts - 1,
-> +                                      IEEE80211_EHT_PHY_CAP2_SOUNDING_DI=
-M_320MHZ_MASK);
-> +
->         eht_cap_elem->phy_cap_info[3] =3D
->                 IEEE80211_EHT_PHY_CAP3_NG_16_SU_FEEDBACK |
->                 IEEE80211_EHT_PHY_CAP3_NG_16_MU_FEEDBACK |
-> @@ -217,7 +231,8 @@ mt7925_init_eht_caps(struct mt792x_phy *phy, enum nl8=
-0211_band band,
->                 u8_encode_bits(u8_get_bits(0x11, GENMASK(1, 0)),
->                                IEEE80211_EHT_PHY_CAP5_MAX_NUM_SUPP_EHT_LT=
-F_MASK);
->
-> -       val =3D width =3D=3D NL80211_CHAN_WIDTH_160 ? 0x7 :
-> +       val =3D width =3D=3D NL80211_CHAN_WIDTH_320 ? 0xf :
-> +             width =3D=3D NL80211_CHAN_WIDTH_160 ? 0x7 :
->               width =3D=3D NL80211_CHAN_WIDTH_80 ? 0x3 : 0x1;
->         eht_cap_elem->phy_cap_info[6] =3D
->                 u8_encode_bits(u8_get_bits(0x11, GENMASK(4, 2)),
-> @@ -230,6 +245,11 @@ mt7925_init_eht_caps(struct mt792x_phy *phy, enum nl=
-80211_band band,
->                 IEEE80211_EHT_PHY_CAP7_MU_BEAMFORMER_80MHZ |
->                 IEEE80211_EHT_PHY_CAP7_MU_BEAMFORMER_160MHZ;
->
-> +       if (band =3D=3D NL80211_BAND_6GHZ && is_320mhz_supported(&phy->de=
-v->mt76))
-> +               eht_cap_elem->phy_cap_info[7] |=3D
-> +                       IEEE80211_EHT_PHY_CAP7_NON_OFDMA_UL_MU_MIMO_320MH=
-Z |
-> +                       IEEE80211_EHT_PHY_CAP7_MU_BEAMFORMER_320MHZ;
-> +
+>> +	if (err) {
+>> +		dev_err(pcie->dev, "EN7528: port%d link timeout\n", port->slot);
+>> +		return -ETIMEDOUT;
+>> +	}
+>> +
+>> +	/* Set INTx mask */
+> Looks like this *clears* an INTx mask.  But the comment is probably
+> superfluous anyway.
+Indeed. "clear" -> "unmask" -> "activate" -> "set", I'll use the word 
+"activate" since that's what we're doing.
+>> +	val = readl(port->base + PCIE_INT_MASK);
+>> +	val &= ~INTX_MASK;
+>> +	writel(val, port->base + PCIE_INT_MASK);
+>> +
+>> +	if (IS_ENABLED(CONFIG_PCI_MSI))
+>> +		mtk_pcie_enable_msi(port);
+>> +
+>> +	/* Set AHB to PCIe translation windows */
+>> +	val = lower_32_bits(mem->start) |
+>> +	      AHB2PCIE_SIZE(fls(resource_size(mem)));
+>> +	writel(val, port->base + PCIE_AHB_TRANS_BASE0_L);
+>> +
+>> +	val = upper_32_bits(mem->start);
+>> +	writel(val, port->base + PCIE_AHB_TRANS_BASE0_H);
+>> +
+>> +	writel(WIN_ENABLE, port->base + PCIE_AXI_WINDOW0);
+>> +
+>> +	return 0;
+>> +}
+>> +
+>>   static void __iomem *mtk_pcie_map_bus(struct pci_bus *bus,
+>>   				      unsigned int devfn, int where)
+>>   {
+>> @@ -1149,6 +1236,30 @@ static int mtk_pcie_probe(struct platform_device *pdev)
+>>   	if (err)
+>>   		goto put_resources;
+>>   
+>> +	/* Retrain Gen1 links to reach Gen2 where supported */
+>> +	if (pcie->soc->startup == mtk_pcie_startup_port_en7528) {
+> This looks like an ugly hack when placed here in mtk_pcie_probe(),
+> especially since it's after pci_host_probe() has already enumerated
+> the hierarchy.  Why can't this be inside
+> mtk_pcie_startup_port_en7528() itself?
 
-I don't think this should be copied from mt7996 as-is for mt7927. I'd
-suggest dropping the eht_cap_elem->phy_cap_info[7] change and keeping
-it conservative for now.
+This is indeed frustrating. This little ritual has trickled down through 
+2 or 3 generations of rewritten vendor code. What we know is that the 
+Gen2 links come up as Gen1 on startup, but if you retrain them they 
+upgrade to Gen2. Technically this could be done in 
+mtk_pcie_startup_port_en7528(), but it won't be using 
+pcie_retrain_link() because we don't yet have the pci_dev struct. Doing 
+it manually is kind of ugly because we have to get the config offset of 
+the bridge device which we're retraining - vendor code for this is a bit 
+of a mess.
 
->         val =3D u8_encode_bits(nss, IEEE80211_EHT_MCS_NSS_RX) |
->               u8_encode_bits(nss, IEEE80211_EHT_MCS_NSS_TX);
+I think probably the least bad solution here is to stick with this, 
+perhaps with a more descriptive / apologetic comment. WDYT?
+
+>> +		struct pci_bus *bus = host->bus;
+>> +		struct pci_dev *rc = NULL;
+>> +
+>> +		while ((rc = pci_get_class(PCI_CLASS_BRIDGE_PCI << 8, rc))) {
+>> +			int ret = -EOPNOTSUPP;
+> I don't get this.  pci_get_class() looks through the entire hierarchy,
+> but this driver should only care about the links directly attached to
+> Root Ports.
+Good point, I'll switch this out for something more specific.
+>> +			if (rc->bus != bus)
+>> +				continue;
+>> +
+>> +			#if IS_BUILTIN(CONFIG_PCIE_MEDIATEK)
+>> +			ret = pcie_retrain_link(rc, true);
+>> +			#endif
+> Why is this specific to being builtin?  No other PCI controller
+> drivers do this.  Needs a comment about why this is special.
+> Typically such an #ifdef would be at the left margin.
+
+Okay yes, good point. The reason for this is because pcie_retrain_link() 
+is not exported and trying to re-implement the logic is the mess I 
+alluded to earlier. Since this driver supports multiple devices and 
+allows being compiled as a module, I opted to soft-fail in this case and 
+it will log that it didn't retrain with reason -EOPNOTSUPP. In that case 
+it would continue to run as a Gen1, and since this is an embedded 
+application, I think we can rely on the integrator to make it a builtin 
+if they're targeting the EN7528. But I can re-send with nicer 
+documentation around this.
+
 >
-> @@ -239,6 +259,12 @@ mt7925_init_eht_caps(struct mt792x_phy *phy, enum nl=
-80211_band band,
->         eht_nss->bw._160.rx_tx_mcs9_max_nss =3D val;
->         eht_nss->bw._160.rx_tx_mcs11_max_nss =3D val;
->         eht_nss->bw._160.rx_tx_mcs13_max_nss =3D val;
-> +
-> +       if (band =3D=3D NL80211_BAND_6GHZ && is_320mhz_supported(&phy->de=
-v->mt76)) {
-> +               eht_nss->bw._320.rx_tx_mcs9_max_nss =3D val;
-> +               eht_nss->bw._320.rx_tx_mcs11_max_nss =3D val;
-> +               eht_nss->bw._320.rx_tx_mcs13_max_nss =3D val;
-> +       }
->  }
+>> +			if (!ret)
+> Prefer the positive test ("if (ret)").
+
+Okay.
+
+
+Thank you very much for the review.
+
+Caleb
+
+
 >
->  int mt7925_init_mlo_caps(struct mt792x_phy *phy)
->
-> --
-> 2.53.0
->
->
+>> +				dev_info(dev, "port%d link retrained\n",
+>> +					 PCI_SLOT(rc->devfn));
+>> +			else
+>> +				dev_info(dev, "port%d failed to retrain %pe\n",
+>> +					 PCI_SLOT(rc->devfn), ERR_PTR(ret));
+>> +		}
+>> +	}
+>> +
+>>   	return 0;
+>>   
+>>   put_resources:
+>> @@ -1264,8 +1375,15 @@ static const struct mtk_pcie_soc mtk_pcie_soc_mt7629 = {
+>>   	.quirks = MTK_PCIE_FIX_CLASS_ID | MTK_PCIE_FIX_DEVICE_ID,
+>>   };
+>>   
+>> +static const struct mtk_pcie_soc mtk_pcie_soc_en7528 = {
+>> +	.ops = &mtk_pcie_ops_v2,
+>> +	.startup = mtk_pcie_startup_port_en7528,
+>> +	.setup_irq = mtk_pcie_setup_irq,
+>> +};
+>> +
+>>   static const struct of_device_id mtk_pcie_ids[] = {
+>>   	{ .compatible = "airoha,an7583-pcie", .data = &mtk_pcie_soc_an7583 },
+>> +	{ .compatible = "econet,en7528-pcie", .data = &mtk_pcie_soc_en7528 },
+>>   	{ .compatible = "mediatek,mt2701-pcie", .data = &mtk_pcie_soc_v1 },
+>>   	{ .compatible = "mediatek,mt7623-pcie", .data = &mtk_pcie_soc_v1 },
+>>   	{ .compatible = "mediatek,mt2712-pcie", .data = &mtk_pcie_soc_mt2712 },
+>> -- 
+>> 2.39.5
+>>
 
