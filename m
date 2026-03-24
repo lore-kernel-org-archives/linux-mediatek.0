@@ -4,108 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA4DAF532CE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2026 03:42:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35BB5F532D0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2026 05:01:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=X3n35LNNeF5Wx2GIr4g4uUmRoFWbzxVfDULULORcx74=; b=EzO1RfhG89nErFcE2c4hpYhwTj
-	1LO/6V7qszGPZB0hqECYAy6eA7TlfdC2idOaeDnE491ZPRyxyP3rWxWNkcgAvPyHrbvavkPKU0xmA
-	VosHWhnFnWJNr4LeDJb5p2tqbfJovRMmRz2G8ffb6678JSHcf6ddwXyS6R9MuTfWvg3JhwnR4F+ZZ
-	MxZZT1UvZWUyRDv5OFfCCriFW6TPYAN8qxQZyYQnClnTuKvIDot/wUk6eAn2DfeCAxfJGJXOpQhfH
-	hekOk4vpRwo6Icq3btCrajDdxVB9IXV05CdOBzyRu3GgET5PPebRIZhmOJHO4cezeyqdh+dZQRi63
-	tLchpQ2A==;
+	bh=IDH9hxeAznPRg0ItOMrUgqU6w6T+oHEnIIMvh1Q2C4c=; b=Jarg3hYuXxmz2rXv8+Fje0tRsi
+	y8ckm998xDpV8qunNq36FaQ6Vdkrk1YZ8zAXNuON7b0cl+VQMk8VxgxcIFC6CbAPzBNGttz/dgZ3/
+	7pu+vDXvTVXnpU/y6b9hCxvqevc0XyY2AqzAQhVjB0MQsyWOnfpqc4lPtUGHikamHZjds376OunO7
+	WISMJwGL1LHKzA3NNe5rq/fBWhg+AyTkwYaTkKtkqOZp0ScF622PrFEZNtVsUeMoT2hb+XnFQR0Ph
+	WbX8A3hiIRVCbTPds7BhW3qlcFrZu9OGAbtSv5S1HH7f9tjMmZV9hi76gHjeUQVYic5NjWKWU4zns
+	Ec4WwN7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4sf9-00000000VHm-14MO;
-	Tue, 24 Mar 2026 03:42:39 +0000
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
+	id 1w4ttr-00000000Z0z-44H2;
+	Tue, 24 Mar 2026 05:01:55 +0000
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4sf6-00000000VFl-3gmc
+	id 1w4ttp-00000000Z0d-1HwP
 	for linux-mediatek@lists.infradead.org;
-	Tue, 24 Mar 2026 03:42:38 +0000
-Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-59e5aa4ca41so3775908e87.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Mar 2026 20:42:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1774323755; cv=none;
+	Tue, 24 Mar 2026 05:01:54 +0000
+Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-5a10d130b37so3918048e87.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Mar 2026 22:01:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1774328511; cv=none;
         d=google.com; s=arc-20240605;
-        b=YCrhr/TQKamMXwZrCGzkvY8WdUS7UUDMP3sR3+crX3Kld4zlH65KA1V0BdPN7rtaTy
-         67h+stRAKKl7ifiomYhZc/HbOp2xsaUMS9QuurW/HmwtL0isSPRk6PPfSzNy8rW4GGjP
-         mtT4iDdDxst+1XPJ3Jei/QEu+najHFtSdMbwxoqlqZfd6jh/pHC2KN+OPFiQc/dthSmw
-         TnsrP6Ruo4AwV9miXICxfXsUKX/8MRtk/AwGLRRbHP5a88ZsbdNX6MEVWMJcj9r9yx1R
-         WEe8AyEJ3k8ILvXUdylWd7IodCBbmnaYqTTOg5eJ9dJNCkn1IdQ7M9JxU1awcAQwg589
-         IeEg==
+        b=e16MDHW3I807T3WtH7sdoSEKZNoQO1OcaNwDTNQNO8kOKdlJR1bV/j4Zp89UcyEChZ
+         zVT4/01mNlfIMWG7++r9rK+2U2Tv//krRAr2cBjxFhGfNP/fFxKNqKSIyHf3glG316dO
+         fcwJ62s84JukB7mtNfB6KIUkRw6IdT/cm9wodqkx27IPND6PJwfnzTySL2nam7SOhOMl
+         Z6YMv6NR2onMJsWtnQ9FGz07JvIHul5Jy7kNOeju6D3mZALF8Mw27DAfKkafhW4nZE0Q
+         CHtSV6RtVxgo6OtU3A5gFdXmX4M1UMLtWxwiB5I/h7N4OrZoP5vofQ5RpJYUAB63EJWN
+         GO3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=X3n35LNNeF5Wx2GIr4g4uUmRoFWbzxVfDULULORcx74=;
-        fh=CYBvciGYR/v0FK1weiFgyx3TxJ+S6MtFAoZHsm9cw+s=;
-        b=d5Vbrio/dfRKOqrTYPzCgFXZwEDXX2SHUsyOBjI9gAn1gWv2jUjC4+2xbkm7xj+Aou
-         aSRNkT9LgMr0L1piCzh9Tei4mI5P/3UX1rovRjlMqcWAB7Xc5XWLjst+ujDw+1JsZp+k
-         N//mLjUfhMuTb2WrVW3s7L63222tw14PPHb5XW4JPcd44YEBx3AKBg7OGQyvxPpwEkGy
-         kvmUqiSZLHmSTlwP0xNkWBE3gywRCWw65Hnld9cHE37G7rpsdpS7l+1y79iNKU+t8nVs
-         BcbvvyvhWJLRBA6M4yrz+5u54BeoShtC5+CaoGhQD+1wgWkuwwBL+7SVbSljNRmKeje0
-         BMPQ==;
+        bh=IDH9hxeAznPRg0ItOMrUgqU6w6T+oHEnIIMvh1Q2C4c=;
+        fh=TcWYnFvv9I4mQ7MaWhyeaKXdShDo3MJMGZbblNM029o=;
+        b=dK3RowuFZpMWTdF8DGGN3bnCLIcW5/pkqRFGqD2ifIA+ytZMbSTCfeK3hc2YnSn5Hs
+         XrTP2cvyDQ8vAdIk/IqiN1onZZSU76fnAMWBLzVPfWdgkE5mxpyASHWO3uvB8/s6Hb1q
+         tqc+6m7Ecw+V04S9ISmNoXIPAdCmXmu6T+NZvU9yyVVT3JazAGE/C440M9Lk9KZ/knIc
+         77e7RIcYVCnWXo/FOh8EoxSDgUC0DQO5mwMnscedKA2LKMmUF46blVubVGmnJmAgSFT9
+         QuJWOlhhCqT+qPU2QfFwpiyTKnkHJmhfQHzJhppVahKrZJhCrv8WjY0WwiX9VomDUd92
+         EDnA==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1774323755; x=1774928555; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1774328511; x=1774933311; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=X3n35LNNeF5Wx2GIr4g4uUmRoFWbzxVfDULULORcx74=;
-        b=oW1MdO7KboV/p6hCsfi6XDwu75lQFDHWCEiaV3ObG29SmvrkOHgMB2oLhzIJOnghSg
-         Aff0TY47vtf82Wz5gTgYMSo/da5oK2v1RDbGtqB9iJGpgdiV6L6ETxejjxrxCnogCRpi
-         tNfhuYtZrQbsFqO+Y7FVk1WTNsme1jZwJF0BQ=
+        bh=IDH9hxeAznPRg0ItOMrUgqU6w6T+oHEnIIMvh1Q2C4c=;
+        b=FkbHKSXnpPwyx71YJWqpizWSFlx/l+g1ek9x6+uoxDtsjsn2aNViPNM/lef3YfKfDI
+         dadkJHMQU25JA160A11oa1lyVr3v8nQv0rhdUs8gE/R7a2yRRIdKppXyU4C42PVuwj0f
+         gbXv7oW1aTxrvTVXt4JCEMzvRtOmbpdydCbjM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1774323755; x=1774928555;
+        d=1e100.net; s=20251104; t=1774328511; x=1774933311;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=X3n35LNNeF5Wx2GIr4g4uUmRoFWbzxVfDULULORcx74=;
-        b=GYfwjS4LiHmQEP+hQq2F8yL+1YxkQnvs2EW9VhMUGEQYTzApeqU3+X+MgnNvQrVROe
-         QJxQiz3aYt+HVo5dnilBmU7eZWoIdEJKpOgE4+E1eS8g7LhNF+ehvVcJHq5M139u4gwN
-         gUnPCREKR4GwDo/O3kZ6/h8H+w6LmYZQyedNycwC4UVr0LV8NmiuLGvgNEGMEE1vj22w
-         5XUIqFDEUR19Grf9iApq/zganHic9nsKcquQlpJoE5ZsFCTEtip6J50CLkMgx62Jp2iC
-         y/7P60ezAS0rCVNeuEv6eHgXUXhr8AXVWokUoWmm/32TmfjoPvlEvEDpd9LO28uZGKaT
-         Emtw==
-X-Forwarded-Encrypted: i=1; AJvYcCV8RyNOjAO4NTsmqrMBJaoNy9VHTDxke9uc4TGJVxL1WPZRw0Qrc7jitbPGjey2CgBW3X30BQRlar+iXXcIuw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy40Tp6iDBar0QFnxfJLH4Vl3t18CBgPX/JqgPe5rmYGQIqx7gJ
-	p/eZIl8RAGrsVlUWdtvDHdH/dqmisYfg2+1+BjOnqq6YnABdyGG8u+2fxOOkN/zBRHWUV+4RBOA
-	86TgaBqBvYcsKMnWbVtL8TRYlrp3UFiQqcRGq6j7e
-X-Gm-Gg: ATEYQzzze7GP7OYTO+63ubBUNLPqlF3mSabF3X+e6MIv1Qt3a8Ruo7BOEH+ijn1dxaM
-	OijaSWHlUA2OsoNb1V9Vpn5ycskm8PapAu/uuHwV7L7xDoh1maad4D77DlcHRFH+XG9S+LqkZgQ
-	O1ijePT72GAXKuIeqWL4LVjHrOKyZxBPzjT1YxFEM8MDC95WgKAXWVBM1LgO7b9+TgXD2dxukWq
-	JK7B6ImJddOiQRP3k9NuzHQ4A8+dG/0+Szh4Cml26lO6aeUCKsoelXdEW4R8+QcyuDRsUtk0k5x
-	mfeYY/fBVw==
-X-Received: by 2002:a05:6512:32c6:b0:5a1:44ba:c96e with SMTP id
- 2adb3069b0e04-5a285b6db31mr4580171e87.38.1774323754655; Mon, 23 Mar 2026
- 20:42:34 -0700 (PDT)
+        bh=IDH9hxeAznPRg0ItOMrUgqU6w6T+oHEnIIMvh1Q2C4c=;
+        b=FsFGs7ZYTru9tCJnNkKu1Hsi7J7vnMtvE0pgcPFHEMEVKRpgc1JBL4Sa1k0zQZRag5
+         5jo4g8YC+jEwtGDJ7Pypn1fDB1v1I+AGMmJUVzMj9yJx7UBQ1fsspr2tlAbGfOET5DgY
+         lLxdGFWTn+lUZ4BUYli0ezi43cxyEzLokLmSYd/GIYw8GbqbGygPOexv2DlHCxqL+Upo
+         HCFsrwuubHhHczMts9I8vKKXPyvhIkFo19IOCuy8TTZFpZcsfm6cvafCX+tOpaBd11mP
+         VuxxDxyy/7YfVnDKM5wyobWqACjD3nzv2kSL7u/ywvLlsx5u5TDX7Z7xkLtwkc9jlJlW
+         eoSw==
+X-Forwarded-Encrypted: i=1; AJvYcCX+KzoUBM6s4xSBUyApAzOYBhRxHPXq6duFUAkGLnTbp6rSn0IiIuQvj8wHljrKDv52BJRH3i/CSYlbKjQ+kw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxpqsR26DgNHe6NwYSGWgSu8uptJPbv3KjVI9HZv7/aN5agUnk4
+	69IBDHcbD6IKPaZRe34J7OE4dtqQMArwiqmQLe0sOLuqzMuzqC1AkbPZwQ+8ciDGVt4VBGmibto
+	ZxMIkDsNp84GfTUhg41gAtMgUagPHC/dHW9IPwd3Q
+X-Gm-Gg: ATEYQzwkUHjWutqhJKCqyfqz0Ji1T+dkbSthAb2dXWFoTUqZvxkrpWUmXmgkEceE0GH
+	JqahBmuxv69owTZH6Fu9RpfK77aP+78XgT6dZJc2d4FdoKVVq6AJ4P4+AI+fGUhjyZMx2c0clQj
+	7JfC8Mj1gM0Tj50pAE5OZzrJH4bDXm2m8bW0WAV5GAFxFL3Gw5B4YFyTfd91gMlgFlBHw4G2D3r
+	xH2wyz0gI4p9thgB6eUMJxCWW/AF91mOzGrXej7R9lYYNoM+9jvPO7FdHybeIQWXu/NfbZEOqJn
+	xOZstZpGNXa/MYulUDCkNEGDzL1hr6Sbush3ww==
+X-Received: by 2002:a05:6512:3501:b0:5a0:ecb2:c0c2 with SMTP id
+ 2adb3069b0e04-5a2961f5c4bmr671100e87.4.1774328510840; Mon, 23 Mar 2026
+ 22:01:50 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260320072440.2403318-1-wenst@chromium.org> <20260320072440.2403318-3-wenst@chromium.org>
- <20260320-dashing-crocodile-of-emphasis-2cc43d@quoll> <CAGXv+5ESnhsVfu5pWf1DEt35+10ZKTgJ5G6DuJC4s6yEpRH_YQ@mail.gmail.com>
- <e14ae934-e448-433f-987d-77bede5f6d07@kernel.org>
-In-Reply-To: <e14ae934-e448-433f-987d-77bede5f6d07@kernel.org>
+References: <CAGXv+5HQY9nTCacUbNZL1XggiHqomhgiQH_gdFtXLra+_ut4fQ@mail.gmail.com>
+ <20260323190829.GA887140@bhelgaas>
+In-Reply-To: <20260323190829.GA887140@bhelgaas>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 24 Mar 2026 11:42:22 +0800
-X-Gm-Features: AaiRm52CNgLAlXeiRcCcd4-xI1ROYPaycCYYMcNwH55Sc_4mMYJ7m6m9CPgV9Vk
-Message-ID: <CAGXv+5FhSsq2FtieUm+jKTZ4+Zes5TO9gD-a_rHgOzY5kTOB1g@mail.gmail.com>
-Subject: Re: [PATCH 2/5] regulator: dt-bindings: mt6359: Drop bogus
- vcn33_[12]_* split regulators
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
+Date: Tue, 24 Mar 2026 13:01:39 +0800
+X-Gm-Features: AQROBzAZ6nu5jMyCQgGtQyyo85d_doglkl0nVE2DGZIM-UwStvtJT2NFKNs1DsE
+Message-ID: <CAGXv+5FYC-7BBC0gPJvbtM6hnmYt8ywhLigKLDEu2WYNRS6XeQ@mail.gmail.com>
+Subject: Re: [PATCH v3 5/7] PCI: mediatek-gen3: Integrate new pwrctrl API
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	devicetree@vger.kernel.org
+	Ryder Lee <ryder.lee@mediatek.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+	Bartosz Golaszewski <brgl@bgdev.pl>, linux-pci@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260323_204237_024706_5BA6F941 
-X-CRM114-Status: GOOD (  29.63  )
+X-CRM114-CacheID: sfid-20260323_220153_521942_B9103E85 
+X-CRM114-Status: GOOD (  40.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,68 +120,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 23, 2026 at 4:31=E2=80=AFPM Krzysztof Kozlowski <krzk@kernel.or=
-g> wrote:
+On Tue, Mar 24, 2026 at 3:08=E2=80=AFAM Bjorn Helgaas <helgaas@kernel.org> =
+wrote:
 >
-> On 23/03/2026 09:26, Chen-Yu Tsai wrote:
-> > On Fri, Mar 20, 2026 at 5:54=E2=80=AFPM Krzysztof Kozlowski <krzk@kerne=
-l.org> wrote:
-> >>
-> >> On Fri, Mar 20, 2026 at 03:24:35PM +0800, Chen-Yu Tsai wrote:
-> >>> vcn33_[12]_bt and vcn33_[12]_wifi refer to the same output. There are
-> >>> two enable bits in the registers so that BT and WiFi drivers can togg=
-le
-> >>> them separately without any coordination. If either bit is set, then =
-the
-> >>> regulator output is enabled.
-> >>>
-> >>> Unfortunately some of them are already referenced by in-tree device
-> >>> trees. To keep backward compatibility with them, keep the vcn33_*_bt
-> >>
-> >> So you drop "_wifi" regulators breaking the ABI, no?
+> On Fri, Mar 20, 2026 at 02:10:03PM +0800, Chen-Yu Tsai wrote:
+> > On Tue, Mar 10, 2026 at 12:49=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.o=
+rg> wrote:
+> > > On Tue, Mar 10, 2026 at 5:50=E2=80=AFAM Bjorn Helgaas <helgaas@kernel=
+.org> wrote:
+> > > > On Mon, Mar 09, 2026 at 01:24:34PM +0800, Chen-Yu Tsai wrote:
+> > > > > On Sat, Mar 7, 2026 at 4:59=E2=80=AFAM Bjorn Helgaas <helgaas@ker=
+nel.org> wrote:
+> > > > > > On Mon, Mar 02, 2026 at 01:31:05PM +0800, Chen-Yu Tsai wrote:
+> > > > > > > With the new PCI pwrctrl API and PCI slot binding and power d=
+rivers, we
+> > > > > > > now have a way to describe and power up WiFi/BT adapters conn=
+ected
+> > > > > > > through a PCIe or M.2 slot, or exploded onto the mainboard it=
+self.
+> > > > > ...
+> > > >
+> > > > > > So now we have:
+> > > > > >
+> > > > > >   mtk_pcie_probe
+> > > > > >     mtk_pcie_setup
+> > > > > >       mtk_pcie_startup_port
+> > > > > >         mtk_pcie_device_power_up      <-- power up
+> > > > > >         mtk_pcie_device_power_down    # error path
+> > > > > >       mtk_pcie_setup_irq              # set up controller IRQ
+> > > > > >       mtk_pcie_device_power_down      # if mtk_pcie_setup_irq()=
+ failed
+> > > > > >     pci_host_probe                    # enumerate downstream de=
+vices
+> > > > > >     mtk_pcie_device_power_down        # if pci_host_probe() fai=
+led
+> > > > > >
+> > > > > > I think this is kind of a mess because mtk_pcie_device_power_do=
+wn() is
+> > > > > > called from so many places, and some of them aren't connected t=
+o the
+> > > > > > mtk_pcie_device_power_up().
+> > > > > >
+> > > > > > In mtk_pcie_setup(), mtk_pcie_setup_irq() only deals with the
+> > > > > > *controller* IRQ and has nothing to do with the downstream devi=
+ces.  I
+> > > > > > think mtk_pcie_setup_irq() should be done before
+> > > > > > mtk_pcie_startup_port() so we can abort before even powering up=
+ those
+> > > > > > devices.
+> > > > >
+> > > > > Makes sense to me. I think it can even be moved outside of mtk_pc=
+ie_setup()?
+> > > > > That way we don't have mtk_pcie_irq_teardown() in two error paths=
+?
+> > > > >
+> > > > > I can send a follow up patch for that.
+> > > >
+> > > > What if we do those cleanups first?  That would make this patch qui=
+te
+> > > > a bit simpler and we wouldn't have to undo things.  It would be a
+> > > > shame to have a complicated patch to add this stuff, then another
+> > > > complicated patch to clean it up.
+> > >
+> > > Sure.
+> > >
+> > > > > > In mtk_pcie_startup_port(), mtk_pcie_enable_msi() and the PCIe
+> > > > > > translation window setup also don't have anything to do with th=
+e
+> > > > > > downstream devices, so I think they should be done before
+> > > > > > calling mtk_pcie_device_power_up().  The only thing there that =
+needs
+> > > > > > the downstream devices powered up is waiting for the link to co=
+me up.
+> > > > >
+> > > > > My guess is that if the link up fails, then mtk_pcie_startup_port=
+() is
+> > > > > going to error out anyway, so it maybe made sense to make sure a =
+device
+> > > > > is actually present before doing any more work.
+> > > >
+> > > > Doesn't sound very convincing to me.  mtk_pcie_set_trans_table() an=
+d
+> > > > the window setup are local things with no timeouts or anything.  I
+> > > > think the logical structure is way more important than some kind of
+> > > > hand-crafted work avoidance.
+> > >
+> > > I understand. I merely meant that I have no actual knowledge of why i=
+t
+> > > happened, or if there are any concerns from the hardware side.
+> > >
+> > > > Separating the PCIe controller setup from things related to the lin=
+k
+> > > > and downstream devices is pretty high on my list.
+> > >
+> > > Makes sense to me.
+> > >
+> > > I'll send an updated version.
 > >
-> > Indeed it is a breakage. I kept the *_bt part to cover all in-tree
-> > device trees.
-> >
-> > But the representation itself is broken, as explained in the commit
-> > message.
-> >
-> > I leave it to the platform maintainers to decide whether this "breakage=
-"
-> > to fix the broken representation is acceptable.
-> >
-> > Note that there is a similar issue with the *_sshub and non _sshub
-> > regulators: there is only one actual output for the two. I'm still
-> > asking the vendor for hardware behavior specifics.
-> >
-> >>> regulator. Also combine them for a shorten regular expression pattern=
-.
-> >>
-> >> Instead the duplicates should be deprecated and driver should still
-> >> support the "_wifi" variants.
-> >
-> > But it doesn't really work in the driver. You cannot set different
-> > constraints on the two, especially conflicting constraints, and expect
-> > them to work. And if you set the voltage on one of them, the other
-> > will change as well.
+> > I'm confused. I see this version in -next with the minor fixups from
+> > Bjorn. Do you want me to do the cleanups on top of them?
 >
-> Of course, but now imagine a DTB with only *_wifi regulators and no *_bt.
->
-> >
-> > If we want the driver to support both with _sane_ behavior, we would
-> > need to introduce some sort of alias lookup for both reading
-> > constraints and resolving supplies. The driver registers _just_ one
-> > regulator, and both DT nodes resolve to it.
->
-> Yes, either alias lookup or adjusting the regulator_desc before
-> registering them, depending on the nodes.
->
-> If I understood old code correctly, the point is that ABI allowed *_wifi
-> without *_bt and this would be a working setup. Now it won't work.
+> I had intended to defer merging pci/controller/mediatek-gen3 to
+> pci/next and wait for your updated version.  But I see that I forgot
+> about that and included the original version.  I rebuilt pci/next
+> without pci/controller/mediatek-gen3.
 
-OK. I will drop this part for now and just add the supplies. I'll
-resend the cleanup once I figure out how to do it in the regulator
-driver.
+I'll send v6 with the slot driver symbol name fixed.
+
 
 ChenYu
 
