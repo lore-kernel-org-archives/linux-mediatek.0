@@ -4,64 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7083CF532EA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2026 07:44:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85936F532E9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2026 07:47:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8c4/lD6+gPBY+GoPrKo9K062nXeyLptOwQuAizNcRbI=; b=CmHnPIHjov53Cpk63FYzNJje9U
-	finEhGo9TNEfYjPOJexw/Z/m6IQk97wRpVUfNHLZiY4BtaHctr3qn9T3HERhfXAeJTI3fJA0SH34p
-	lbg5sJeCGFf91/WJc9kHkE+ZaJwkSM3bYT3+zoEnIU196M6rxDZGTMX7vMrpn1/B1n/m3o9B09HCB
-	8YVvFWElcFAM6zo/dPXDxHjFOZdvlqV61Z5153K/oKxMIZ7oPbeJsa3rrAVZSajSBwvh0DK5HdMZK
-	yBgBBSNLZs46xjuuh2VXEBJGpalzgok2Tn+ZaESnzFmyk3bJoLE1nMZ63cubwpKq2aXL4DCBeSgSg
-	1srxd+7A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=pSryKHG3scLNvvcESqlGtLpiDqRFPGeSIvUCmCoE7gY=; b=YZMx6+C07R1yFytKKTH6SCDrb5
+	FmMMnPwS2avIkiLkexlZ3diVCCzzpMhdEQeSUjttRy3iUR0SEAcyUGyKwLpOGJnACTBfx3E+NdL8g
+	YbbKDnbbfEWHI+m+q84XwLJv56kW3zyUJcJk+bd+19HGzxldUJtrzQAgzALA7/eazsDoiZST8tFfo
+	NVUCty+RuCNC/0vHdNpxDsFH34+SpcjZul5rZFXBVn2pk7SUOJT3U4MlpF0B4QrwkM1lx3bhpOznX
+	N5GTONfhBueUgk2nA5HQiOjF/6Dxe4Jsb8iIgfce4Kz0/gyqTmAWkX08g4/DSiqVttwDHu2TLarwZ
+	xhhWXdQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4wR8-00000000uiq-0hXs;
-	Tue, 24 Mar 2026 07:44:26 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1w4wU6-00000000v7o-2JCf;
+	Tue, 24 Mar 2026 07:47:30 +0000
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4wR5-00000000uiL-0Buz
+	id 1w4wU2-00000000v6s-1mE3
 	for linux-mediatek@lists.infradead.org;
-	Tue, 24 Mar 2026 07:44:24 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1D2D744564;
-	Tue, 24 Mar 2026 07:44:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0DAEDC19424;
-	Tue, 24 Mar 2026 07:44:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774338262;
-	bh=4NRIUmJ4xpw27AQzrCmHr/wAs/OANfKNRnMbLAUb0TI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=au9bOSB+SLsZmMM6OVSr/QVh3IkzUGwUrSoTV7nxfWWkh74oIFv5svhfAppaJdaI9
-	 n6nTvgYqooAOsIgCb7M4YievOQCyngrmIWqJipO5ZWo0f8Jzx05PagiTFWQ6bMdS8H
-	 +FaM/4q00PMU4lf+Mq2cR3tc7hApfNrDn+kYsu634EcYsKQ5k+9gPewKkhx28n4v5I
-	 BEiibJnTyViUf1rB5+nj7ZgV7ZRJnclkbkGZtRrVrP/Z/6af9Tmp34sZlt78TqCTm5
-	 TOryM5+N7+TUMHXgSurdUd800aqmu2CHgwLw0aZjz7T/EhUo0irVBJxtunuCrQp5Rb
-	 y1AK4kDt+KqoQ==
-Date: Tue, 24 Mar 2026 13:14:09 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Ryder Lee <ryder.lee@mediatek.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
-	Bartosz Golaszewski <brgl@bgdev.pl>, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v6 0/7] PCI: mediatek-gen3: add power control support
-Message-ID: <ojgwqrosft5x75y3yxdawrb72k4z3chc3m6uh4mkdv7dhta3ef@qcvotm36w3ly>
-References: <20260324052002.4072430-1-wenst@chromium.org>
+	Tue, 24 Mar 2026 07:47:29 +0000
+Received: by mail-pj1-x1036.google.com with SMTP id 98e67ed59e1d1-35b905a05a8so2954480a91.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 24 Mar 2026 00:47:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1774338445; x=1774943245; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=pSryKHG3scLNvvcESqlGtLpiDqRFPGeSIvUCmCoE7gY=;
+        b=CeRkzRG1DhwFbwrEEr8JIPPYrshIuZWsPetowr+VkjOBn+rT/vEA1qmHcVNEq1Drbm
+         8AUVqlR4G3IPAMdTgVfDsIHaF9jUsnk/fpeAmRscrwpvBD8o8EngABLqccHW5gAur9vO
+         d4zeIE5xrAba6CLnq2BMEl/E836ywzKm2Zr/N3x4c5dBqN7c3V2bGBv1ZOkxF2Lujv9d
+         ytLiswkjJwhzYmaM+JjR12z6Npcn+5Ug45tHZP244qImo/CSCPnoadDCn4TMfzB3Duyb
+         Fi3peNRQyZej/9SwHoqjVVmVvNiu1MTZPYh7NZAO9dsHbgLD9YKH16qhjU/e46CsdHLd
+         Tjkw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1774338445; x=1774943245;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=pSryKHG3scLNvvcESqlGtLpiDqRFPGeSIvUCmCoE7gY=;
+        b=LcbW+HInhoJytwcwB2f84m3PGIPKZQ4kORHfdBGJ4Xp0BETWeZpoKgE9q66wuAN2GV
+         BL7E1JaQ5fRllFUumYiPayoWrfDI9rdDRBS2yA3nHO1rtFt7dZKRpN4WvwHHjSq7pT5d
+         Ld3db/zYc898Y9bGDefJuRHVkSrXNL5kgd5nrMYGJLoyaitpJpNQnUmT6ElqP4O4FNeS
+         d0IMR/z8fxmfEIE8PWPbp8mlEtDFUjhzSS4ZFN4vs2KQ/Q5pde0BXpI4vgM+Nd20vyuo
+         ndsP9F3H82q3VfkNUnlLiG9CILYpfnsyO8rEJjs8Za9blicjgFokMfAQWcJL7YZP78dt
+         0kEg==
+X-Forwarded-Encrypted: i=1; AJvYcCWnDMFa8IGgTz+7LH6vfSTtz2pyUtWj5OmCI7e78d7NWNAllPXm4UYrZDO7KUdBBP77gdK5gJQ/npBowpi1+Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw8zKC70ePvACuQSjNkPSnesvBVKQDechOu4HsOKqZlS7lH44Fv
+	Zwp3mdpCZeE+Fib7z7EGu5zqAEWUWxVYkKVsX+aQ6xUfl3TvcL+CaKnF
+X-Gm-Gg: ATEYQzwtdjgjI0aNrURYLptYSqz5gbt+0BghHx/d52AUI5iQrsL8A1ZMvALaHOcElQ2
+	tGVL9tiZuigOiQPAwDLgK6qnx7Q0Qj6tCgmc3IhQ4wcTZyjVyUJ7jIj63uQM9Y95odEZ9KF3WUQ
+	MKCuwPAcz6RdCPZdFgAoAg/CICbKc8VrVPktpRrA+7hp/zuFxfw/aq1FyFaSw+O2IRzK0iULu8W
+	XbQrsittE5rqcasA092JZ8/t/UPUyS/tlqHn5XIYijgBMSADMm37GuVaLZft0xr7WxyX/8Jm81O
+	GLghlpPiqCuf5LEEi0T8g/4sXCaQKNXG2VX8wE5VAya+Iwe5qOORVBFDEem/1oq25g1rE+vgSJd
+	1SxlGpCKiGGl2TnUpWOhn0ac+IpMZr0d2LQQyPp4Pm5IBT3j5BUcLW0gXsv7WSFR9Nf7tFtu5HH
+	tzCB7KRqhwaCVakCGsxK1ukIveXuvD
+X-Received: by 2002:a17:90a:e70f:b0:35b:a3be:f1b6 with SMTP id 98e67ed59e1d1-35bd2c6efb8mr12454014a91.16.1774338445076;
+        Tue, 24 Mar 2026 00:47:25 -0700 (PDT)
+Received: from snowman ([2401:4900:613d:9aee:633d:3c5a:a63:3067])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-35c0316327esm1364059a91.12.2026.03.24.00.47.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 24 Mar 2026 00:47:24 -0700 (PDT)
+From: Khushal Chitturi <khushalchitturi@gmail.com>
+To: lgirdwood@gmail.com,
+	broonie@kernel.org
+Cc: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	koro.chen@mediatek.com,
+	linux-sound@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Khushal Chitturi <khushalchitturi@gmail.com>
+Subject: [PATCH] dt-bindings: sound: mediatek,mt8173-rt5650-rt5514: convert to DT schema
+Date: Tue, 24 Mar 2026 13:16:18 +0530
+Message-ID: <20260324074618.145567-1-khushalchitturi@gmail.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20260324052002.4072430-1-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260324_004423_130664_CEAEF550 
-X-CRM114-Status: GOOD (  26.46  )
+X-CRM114-CacheID: sfid-20260324_004726_458064_8E0D4A55 
+X-CRM114-Status: GOOD (  12.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,105 +106,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 24, 2026 at 01:19:52PM +0800, Chen-Yu Tsai wrote:
-> Hi folks,
-> 
-> This is v6 of my MediaTek PCIe gen3 controller driver power control
-> support series. This series is based on next-20260323, with the
-> commit a2b2ca0c2477 ("Merge branch 'pci/controller/mediatek-gen3'")
-> reverted to drop the older version.
-> 
-> This series is ready to be merged. Please drop the older version and use
-> this one instead.
-> 
-> Changes since v5:
-> - Link to v5: https://lore.kernel.org/all/20260311075223.3303497-1-wenst@chromium.org/
-> - Adapt to PCI_PWRCTRL_SLOT -> PCI_PWRCTRL_GENERIC Kconfig symbol name change
-> 
-> Changes since v4:
-> - Link to v4: https://lore.kernel.org/all/20260310091947.2742004-1-wenst@chromium.org/
-> - Patch 1
->   - Expanded tabs in commit message
-> - Patch 5
->   - s/mtk_pcie_device_power_(up|down)/mtk_pcie_devices_power_(up|down)/
-> - Patch 6
->   - Adapted to mtk_pcie_devices_power_down() name change
-> - Patch 7
->   - Fixed label typo causing build break
->   - Replaced "exploded" with "populated" in commit message, and added
->     more explanation about what "populated onto the mainboard" means.
-> 
-> Changes since v3:
-> - Link to v3: https://lore.kernel.org/all/20260302053109.1117091-1-wenst@chromium.org/
-> - Added two patches to move kernel setup code before controller setup
->   code, and controller setup code before device setup code, as requested
->   by Bjorn
-> - Dropped dts patches as they are already merged
-> 
-> I kept all the existing reviewed-by tags, since the changes to the
-> existing patches aren't that big.
-> 
-> Changes since v2:
-> - Link to v2: https://lore.kernel.org/all/20260226092234.3859740-1-wenst@chromium.org/
-> - Made PCIE_MEDIATEK_GEN3 select PCI_PWRCTRL_SLOT, following existing
->   examples
-> 
-> I do wonder why the existing ones don't select PCI_PWRCTRL instead.
-> As there are multiple providers, and now even the M.2 power sequencing
-> driver, I think either we enable the common ones by default, or let
-> the user pick and choose.
-> 
+Convert the Mediatek MT8173 with RT5650 and RT5514 sound card
+bindings to YAML schema.
 
-I agree with you. I've sent a patch [1] to select these drivers in defconfig to
-make the users life easier. But in the meantime, let's have this dependency
-as-is, otherwise, until my defconfig patch lands, there is no guarantee that
-these drivers will get selected by default.
+Signed-off-by: Khushal Chitturi <khushalchitturi@gmail.com>
+---
+ .../sound/mediatek,mt8173-rt5650-rt5514.yaml  | 41 +++++++++++++++++++
+ .../bindings/sound/mt8173-rt5650-rt5514.txt   | 15 -------
+ 2 files changed, 41 insertions(+), 15 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8173-rt5650-rt5514.yaml
+ delete mode 100644 Documentation/devicetree/bindings/sound/mt8173-rt5650-rt5514.txt
 
-I'll change these dependencies after v7.1-rc1.
-
-- Mani
-
-[1] https://lore.kernel.org/linux-arm-msm/20260324073931.23739-1-manivannan.sadhasivam@oss.qualcomm.com
-
-> Changes since v1:
-> - Link to v1: https://lore.kernel.org/all/20260224071258.2654521-1-wenst@chromium.org/
-> - commit message for patch 3 was rewritten
-> Jianjun Wang was dropped from the recipients as the email was
-> bouncing.
-> 
-> This series adds power control support to the MediaTek PCIe gen3
-> controller driver. This allows proper modeling of WiFi and NVMe
-> adapters in the device tree and control over their power supplies.
-> 
-> Patch 1 through 6 are cleanups and minor improvements to the driver.
-> 
-> Patch 7 adds power control support using the new pwrctrl API to the
-> PCIe controller driver.
-> 
-> 
-> Thanks
-> ChenYu
-> 
-> [1] https://lore.kernel.org/linux-pci/20260224-pci-m2-e-v5-0-dd9b9501d33c@oss.qualcomm.com/
-> 
-> Chen-Yu Tsai (7):
->   PCI: mediatek-gen3: Clean up mtk_pcie_parse_port() with
->     dev_err_probe()
->   PCI: mediatek-gen3: Move mtk_pcie_setup_irq() out of mtk_pcie_setup()
->   PCI: mediatek-gen3: Move controller setup steps before PERST# control
->   PCI: mediatek-gen3: Add error path for resume driver callbacks
->   PCI: mediatek-gen3: Split out device power helpers
->   PCI: mediatek-gen3: Disable device if further setup fails
->   PCI: mediatek-gen3: Integrate new pwrctrl API
-> 
->  drivers/pci/controller/Kconfig              |   1 +
->  drivers/pci/controller/pcie-mediatek-gen3.c | 223 +++++++++++---------
->  2 files changed, 129 insertions(+), 95 deletions(-)
-> 
-> -- 
-> 2.53.0.983.g0bb29b3bc5-goog
-> 
-
+diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8173-rt5650-rt5514.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8173-rt5650-rt5514.yaml
+new file mode 100644
+index 000000000000..05bb18006e08
+--- /dev/null
++++ b/Documentation/devicetree/bindings/sound/mediatek,mt8173-rt5650-rt5514.yaml
+@@ -0,0 +1,41 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/sound/mediatek,mt8173-rt5650-rt5514.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek MT8173 with RT5650 and RT5514 audio codecs
++
++maintainers:
++  - Koro Chen <koro.chen@mediatek.com>
++
++properties:
++  compatible:
++    const: mediatek,mt8173-rt5650-rt5514
++
++  mediatek,audio-codec:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    description: Phandles of rt5650 and rt5514 codecs
++    items:
++      - description: phandle of rt5650 codec
++      - description: phandle of rt5514 codec
++
++  mediatek,platform:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: The phandle of MT8173 ASoC platform.
++
++additionalProperties: false
++
++required:
++  - compatible
++  - mediatek,audio-codec
++  - mediatek,platform
++
++examples:
++  - |
++    sound {
++        compatible = "mediatek,mt8173-rt5650-rt5514";
++        mediatek,audio-codec = <&rt5650 &rt5514>;
++        mediatek,platform = <&afe>;
++    };
++...
+diff --git a/Documentation/devicetree/bindings/sound/mt8173-rt5650-rt5514.txt b/Documentation/devicetree/bindings/sound/mt8173-rt5650-rt5514.txt
+deleted file mode 100644
+index e8b3c80c6fff..000000000000
+--- a/Documentation/devicetree/bindings/sound/mt8173-rt5650-rt5514.txt
++++ /dev/null
+@@ -1,15 +0,0 @@
+-MT8173 with RT5650 RT5514 CODECS
+-
+-Required properties:
+-- compatible : "mediatek,mt8173-rt5650-rt5514"
+-- mediatek,audio-codec: the phandles of rt5650 and rt5514 codecs
+-- mediatek,platform: the phandle of MT8173 ASoC platform
+-
+-Example:
+-
+-	sound {
+-		compatible = "mediatek,mt8173-rt5650-rt5514";
+-		mediatek,audio-codec = <&rt5650 &rt5514>;
+-		mediatek,platform = <&afe>;
+-	};
+-
 -- 
-மணிவண்ணன் சதாசிவம்
+2.53.0
+
 
