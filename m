@@ -4,62 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 323F6F54ADC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2026 16:55:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C351FFEC0F6
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2026 19:25:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=j5VpEbBkDbHR3AeO/vQBdMQoHwJEuruD/Gx0kzZogT8=; b=iZhSGxNmPfMoqot44ozt9qCGTw
-	be/3/PPwPxy4QXglbW1KBvO4v09aiQitbgC6o53iw6GGwtsag23r7ShS+1dOx09Sj+clnzhgBr/sO
-	sGcIFVOQhmHo9n/KjB6ZQmxfF7MZa0jjm1iLJQCguF0Yx294mq6+yM601RRc5NcniuPYr8SdaYShi
-	/ptssD9BPlCMJomsm41eRdDtoufTM5bjgTAZI2QFmhgYUlgREh/RgOAINiiqmKmR36q+CrHIs/DQK
-	u/gI6lx9zNWeQ6e+bS8FDPVlOtV/r483ckXRCxHirywMhrRpnsz82wevM/R7JGZS2/AZ5sOSDObFa
-	czGi8raw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RR7C82ByRHf9xHFB+hAjpexhUSxycw9732oruAip0zw=; b=JdedHib7wiYl8Ecvd1unHIJ6NG
+	VZgBlEvM0xPzH8eaIOU8lpJpXbiDxwxF4RhWsBD3LyKtqMsv37LS+1AoUZ3k80wVDDcDh29H33lUF
+	hKtZSCOUlk4AtTEZ0hc/MqXDtOnVywgauglv5l/IPzx3CCRzhVdAxmee/KxNqCErjk59Oa4MqVEVF
+	eonngYBagiKIAoNd6NDI6stBCVVN9DCuuqTNp0FHNjwmRDgJlzuSyZvhA9nB488V6rRjaqVwlS/lB
+	NF+Hew1TQcgv9suvKM8dDDhDzZGgcS/jLe1hZdfVdJJ/78rGK8qOoND5OH3M6+w/SdgOt6GHs0Tp3
+	oX4o/rNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w552O-00000001w6N-3DMB;
-	Tue, 24 Mar 2026 16:55:28 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1w57NT-000000029Ad-3wWp;
+	Tue, 24 Mar 2026 19:25:23 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w552L-00000001w5U-4AtQ;
-	Tue, 24 Mar 2026 16:55:27 +0000
+	id 1w57NJ-0000000295t-0bWV
+	for linux-mediatek@lists.infradead.org;
+	Tue, 24 Mar 2026 19:25:13 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 204A0600AC;
-	Tue, 24 Mar 2026 16:55:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0C1F9C19424;
-	Tue, 24 Mar 2026 16:55:23 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 3922F6012A
+	for <linux-mediatek@lists.infradead.org>; Tue, 24 Mar 2026 19:25:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E2D0BC2BCF5
+	for <linux-mediatek@lists.infradead.org>; Tue, 24 Mar 2026 19:25:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774371324;
-	bh=5r1QnMw+vkFTIcuRXJoKO+7ZYkPN9lBP+lg9RoD/6+Q=;
-	h=From:Date:Subject:To:Cc:From;
-	b=D/kJTgvUz5mozx+5jbyi1MlCtHBa4WEuewqhAmz9RmsYoxATT+Kbn+6fsG5HBSdzd
-	 0rdqiRd/JBd5bH64ACfjWJ3Z1KvsqRXUTfnDUo9wrBQWvZDeNg22/aQdqFf4zmCrMu
-	 H8EZvPuM3Y4NnwnRh1yl6gOtO1XiUez5reaFcAXdXfpTTsIxXVvv0eC4tgDEmGRRt/
-	 ikFb7MjHJsltALhzwuL021lajda81fyZlvkRx8uGF27zymG7IOeHwFIHL5g0iuyzIy
-	 Bt5X90OaSMZYYoKvFD7HZ/ieWG/uW1L9CT5h4ejBpfVD3+mLrHRlVwLBEPO1Qx1OAO
-	 NH2gy30SJpFxQ==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 24 Mar 2026 17:54:45 +0100
-Subject: [PATCH net-next] net: airoha: Grab flow_offload_mutex running
- airoha_register_gdm_devices()
+	s=k20201202; t=1774380311;
+	bh=W2kqahuI0dRdiWt2FzF8BjyOm6F3ukwameRH6zo7Z/8=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=rdzeotiwu5t7bs+XXjN4poTi0+pT9sYIJzYXAQWmlMXlKwWLsxRYZAAbJXccMqRz8
+	 tcluVY9BwAb7qsiK8RsqA4nQvuLEaq1b8Sp5s8suPn1KCBpzZvBLQE0KNEIfBgaKjx
+	 aeiLrLs9r//AB52n/i/SDVfilfWwvxT2rKgD7YR9AIpmdD0+RmUJWFdh1xHZ2YEq7s
+	 8KaerkGa41v2sYwzkuicShvaBHEPPxGRXjlwBFJ/4uzGtqrtvL31IstDILkRPa8/Su
+	 q0IB5KrAjH91mqiIfUWhXDw5oV02/P2p382m2+DUXN+xIkt+lvJR0TW2E991WqG4Xi
+	 9pA7kvG+0M5Pw==
+Received: by mail-lj1-f169.google.com with SMTP id 38308e7fff4ca-38a42a0d7f7so1499161fa.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 24 Mar 2026 12:25:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCX9O9xKmTgjxHcY1efzATcj3bAIuNgO53ITKmQAgyB9KGcIT/UaT8jyo4cbkPDylnxVd5xk5/8uLXEn/V4Uqw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwqOQbjlIuwqaD4U4yVL2XmRmCddV/HqAhYet23W0d/lqnNtg7Y
+	CyvOqQnb1Hyv/9Bfgp2lU0gxyGYzLvGTFAd2IMNVe2MTPDUMTKBJYqspxhdKH0kMas5U09DmuDI
+	bkXl+b/yBmSdXxos6WRPhm5wLyN21Dw4=
+X-Received: by 2002:a05:651c:310:b0:387:a16:ee83 with SMTP id
+ 38308e7fff4ca-38c32931d14mr11373651fa.11.1774380310067; Tue, 24 Mar 2026
+ 12:25:10 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260324-airoha-regiser-race-fix-v1-1-6014df55886b@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MQQqAMAzAviI9W9imTvEr4mFot/Wi0oEIw79bP
- CaQVCgkTAXmpoLQzYXPQ8G2DWw5HImQd2VwxnnTOYuB5cwBhRJrihI2wsgPRpqGPnq7j96A1pe
- Q6v+8rO/7Abp+PClpAAAA
-X-Change-ID: 20260321-airoha-regiser-race-fix-fe854f61d760
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+References: <20260319-mt7927-wifi-support-v2-v2-0-d627a7fad70d@jetm.me> <20260319-mt7927-wifi-support-v2-v2-5-d627a7fad70d@jetm.me>
+In-Reply-To: <20260319-mt7927-wifi-support-v2-v2-5-d627a7fad70d@jetm.me>
+From: Sean Wang <sean.wang@kernel.org>
+Date: Tue, 24 Mar 2026 14:24:58 -0500
+X-Gmail-Original-Message-ID: <CAGp9LzoYcJEmFKTKGsF3WchxLedyo7HvGCn8Vi=WaEXS1N-VTg@mail.gmail.com>
+X-Gm-Features: AQROBzCJFXGOj3qOH6JxvcssVN9WorUl4nD9nSO254z7rVrluItXC4oVHqFFQWg
+Message-ID: <CAGp9LzoYcJEmFKTKGsF3WchxLedyo7HvGCn8Vi=WaEXS1N-VTg@mail.gmail.com>
+Subject: Re: [PATCH v2 05/13] wifi: mt76: mt7925: advertise EHT 320MHz
+ capabilities for 6GHz band
+To: Javier Tia <floss@jetm.me>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
+	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Deren Wu <deren.wu@mediatek.com>, 
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, linux-wireless@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, Marcin FM <marcin@lgic.pl>, 
+	Cristian-Florin Radoi <radoi.chris@gmail.com>, George Salukvadze <giosal90@gmail.com>, 
+	Evgeny Kapusta <3193631@gmail.com>, Samu Toljamo <samu.toljamo@gmail.com>, 
+	Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>, Chapuis Dario <chapuisdario4@gmail.com>, 
+	=?UTF-8?Q?Thibaut_Fran=C3=A7ois?= <tibo@humeurlibre.fr>, 
+	=?UTF-8?B?5byg5pet5ra1?= <Loong.0x00@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,90 +90,164 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Netfilter flowtable can theoretically try offload flower rules as soon
-as a net-device is registered while not all the other ones are
-registered/initialized, triggering a possible NULL pointer dereferencing
-of qdma pointer in airoha_ppe_set_cpu_port routine. In order to avoid any
-possible race, grab the flow_offload_mutex running
-airoha_register_gdm_devices().
+Hi,
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c | 15 +++++++++++----
- drivers/net/ethernet/airoha/airoha_eth.h |  2 ++
- drivers/net/ethernet/airoha/airoha_ppe.c |  2 +-
- 3 files changed, 14 insertions(+), 5 deletions(-)
+On Thu, Mar 19, 2026 at 5:26=E2=80=AFPM Javier Tia <floss@jetm.me> wrote:
+>
+> mt7925_init_eht_caps() only populates EHT MCS/NSS maps for BW <=3D 80
+> and BW =3D 160, but never sets BW =3D 320. This means iw phy shows no
+> 320MHz MCS map entries even though the hardware supports 320MHz
+> operation in the 6GHz band.
+>
+> Add the missing 320MHz capability bits for 6GHz, following the same
+> pattern as mt7996:
+>   - PHY_CAP0: IEEE80211_EHT_PHY_CAP0_320MHZ_IN_6GHZ
+>   - PHY_CAP1: beamformee SS for 320MHz
+>   - PHY_CAP2: sounding dimensions for 320MHz
+>   - PHY_CAP6: MCS15 support for 320MHz width
+>   - PHY_CAP7: non-OFDMA UL MU-MIMO and MU beamformer for 320MHz
+>   - MCS/NSS: populate bw._320 maps for 6GHz band
+>
+> Introduce is_320mhz_supported() as a generic capability check using the
+> mt7925 family ID. This avoids chip-specific references in common code,
+> and automatically extends to new chips once they join the
+> is_mt7925() family via chip ID helpers.
+>
+> Tested-by: Marcin FM <marcin@lgic.pl>
+> Tested-by: Cristian-Florin Radoi <radoi.chris@gmail.com>
+> Tested-by: George Salukvadze <giosal90@gmail.com>
+> Tested-by: Evgeny Kapusta <3193631@gmail.com>
+> Tested-by: Samu Toljamo <samu.toljamo@gmail.com>
+> Tested-by: Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>
+> Tested-by: Chapuis Dario <chapuisdario4@gmail.com>
+> Tested-by: Thibaut Fran=C3=A7ois <tibo@humeurlibre.fr>
+> Tested-by: =E5=BC=A0=E6=97=AD=E6=B6=B5 <Loong.0x00@gmail.com>
+> Signed-off-by: Javier Tia <floss@jetm.me>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt76_connac.h |  5 +++++
+>  drivers/net/wireless/mediatek/mt76/mt7925/main.c | 28 ++++++++++++++++++=
++++++-
+>  2 files changed, 32 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac.h b/drivers/n=
+et/wireless/mediatek/mt76/mt76_connac.h
+> index 813d61bffc2c..554716e01ee6 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
+> @@ -177,6 +177,11 @@ static inline bool is_mt7925(struct mt76_dev *dev)
+>         return mt76_chip(dev) =3D=3D 0x7925;
+>  }
+>
+> +static inline bool is_320mhz_supported(struct mt76_dev *dev)
+> +{
+> +       return is_mt7925(dev);
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 82e53c60f561f6314fbf201ba8bc8711e40edc68..c1476032f78cbac95c9813bbeae6bec2c9c0a685 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -2943,21 +2943,28 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
- 
- static int airoha_register_gdm_devices(struct airoha_eth *eth)
- {
--	int i;
-+	int i, err = 0;
-+
-+	/* Netfilter flowtable can try offload flower rules while not all
-+	 * the net-devices are registered/initialized. Grab flow_offload_mutex
-+	 * to avoid any possible race.
-+	 */
-+	mutex_lock(&flow_offload_mutex);
- 
- 	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
- 		struct airoha_gdm_port *port = eth->ports[i];
--		int err;
- 
- 		if (!port)
- 			continue;
- 
- 		err = register_netdev(port->dev);
- 		if (err)
--			return err;
-+			break;
- 	}
- 
--	return 0;
-+	mutex_unlock(&flow_offload_mutex);
-+
-+	return err;
- }
- 
- static int airoha_probe(struct platform_device *pdev)
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index 7df4dbcd8861856c54c2a38bc89c69180ac2f6dc..9d97a54dbfdf9107a10bdb09cf144e5cf1ac9bdb 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -548,6 +548,8 @@ struct airoha_gdm_port {
- 	struct metadata_dst *dsa_meta[AIROHA_MAX_DSA_PORTS];
- };
- 
-+extern struct mutex flow_offload_mutex;
-+
- #define AIROHA_RXD4_PPE_CPU_REASON	GENMASK(20, 16)
- #define AIROHA_RXD4_FOE_ENTRY		GENMASK(15, 0)
- 
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index 7666b1d2f4f6ea758683181ab90d6fffb7bcd19d..96d092f7214ee3e80843a14528df66cabf79bc58 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -15,7 +15,7 @@
- #include "airoha_regs.h"
- #include "airoha_eth.h"
- 
--static DEFINE_MUTEX(flow_offload_mutex);
-+DEFINE_MUTEX(flow_offload_mutex);
- static DEFINE_SPINLOCK(ppe_lock);
- 
- static const struct rhashtable_params airoha_flow_table_params = {
+I don't think this is correct for mt7925, and it will cause a
+regression there. Was this tested on actual mt7925 hardware?
 
----
-base-commit: b1c803d5c8167026791abfaed96fd3e6a1fcd750
-change-id: 20260321-airoha-regiser-race-fix-fe854f61d760
+> +}
+> +
+>  static inline bool is_mt7920(struct mt76_dev *dev)
+>  {
+>         return mt76_chip(dev) =3D=3D 0x7920;
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/n=
+et/wireless/mediatek/mt76/mt7925/main.c
+> index f128a198f81d..cd043ac266fb 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+> @@ -183,6 +183,10 @@ mt7925_init_eht_caps(struct mt792x_phy *phy, enum nl=
+80211_band band,
+>                 IEEE80211_EHT_PHY_CAP0_SU_BEAMFORMER |
+>                 IEEE80211_EHT_PHY_CAP0_SU_BEAMFORMEE;
+>
+> +       if (band =3D=3D NL80211_BAND_6GHZ && is_320mhz_supported(&phy->de=
+v->mt76))
+> +               eht_cap_elem->phy_cap_info[0] |=3D
+> +                       IEEE80211_EHT_PHY_CAP0_320MHZ_IN_6GHZ;
+> +
+>         eht_cap_elem->phy_cap_info[0] |=3D
+>                 u8_encode_bits(u8_get_bits(sts - 1, BIT(0)),
+>                                IEEE80211_EHT_PHY_CAP0_BEAMFORMEE_SS_80MHZ=
+_MASK);
+> @@ -193,10 +197,20 @@ mt7925_init_eht_caps(struct mt792x_phy *phy, enum n=
+l80211_band band,
+>                 u8_encode_bits(sts - 1,
+>                                IEEE80211_EHT_PHY_CAP1_BEAMFORMEE_SS_160MH=
+Z_MASK);
+>
+> +       if (band =3D=3D NL80211_BAND_6GHZ && is_320mhz_supported(&phy->de=
+v->mt76))
+> +               eht_cap_elem->phy_cap_info[1] |=3D
+> +                       u8_encode_bits(sts - 1,
+> +                                      IEEE80211_EHT_PHY_CAP1_BEAMFORMEE_=
+SS_320MHZ_MASK);
+> +
+>         eht_cap_elem->phy_cap_info[2] =3D
+>                 u8_encode_bits(sts - 1, IEEE80211_EHT_PHY_CAP2_SOUNDING_D=
+IM_80MHZ_MASK) |
+>                 u8_encode_bits(sts - 1, IEEE80211_EHT_PHY_CAP2_SOUNDING_D=
+IM_160MHZ_MASK);
+>
+> +       if (band =3D=3D NL80211_BAND_6GHZ && is_320mhz_supported(&phy->de=
+v->mt76))
+> +               eht_cap_elem->phy_cap_info[2] |=3D
+> +                       u8_encode_bits(sts - 1,
+> +                                      IEEE80211_EHT_PHY_CAP2_SOUNDING_DI=
+M_320MHZ_MASK);
+> +
+>         eht_cap_elem->phy_cap_info[3] =3D
+>                 IEEE80211_EHT_PHY_CAP3_NG_16_SU_FEEDBACK |
+>                 IEEE80211_EHT_PHY_CAP3_NG_16_MU_FEEDBACK |
+> @@ -217,7 +231,8 @@ mt7925_init_eht_caps(struct mt792x_phy *phy, enum nl8=
+0211_band band,
+>                 u8_encode_bits(u8_get_bits(0x11, GENMASK(1, 0)),
+>                                IEEE80211_EHT_PHY_CAP5_MAX_NUM_SUPP_EHT_LT=
+F_MASK);
+>
+> -       val =3D width =3D=3D NL80211_CHAN_WIDTH_160 ? 0x7 :
+> +       val =3D width =3D=3D NL80211_CHAN_WIDTH_320 ? 0xf :
+> +             width =3D=3D NL80211_CHAN_WIDTH_160 ? 0x7 :
+>               width =3D=3D NL80211_CHAN_WIDTH_80 ? 0x3 : 0x1;
+>         eht_cap_elem->phy_cap_info[6] =3D
+>                 u8_encode_bits(u8_get_bits(0x11, GENMASK(4, 2)),
+> @@ -230,6 +245,11 @@ mt7925_init_eht_caps(struct mt792x_phy *phy, enum nl=
+80211_band band,
+>                 IEEE80211_EHT_PHY_CAP7_MU_BEAMFORMER_80MHZ |
+>                 IEEE80211_EHT_PHY_CAP7_MU_BEAMFORMER_160MHZ;
+>
+> +       if (band =3D=3D NL80211_BAND_6GHZ && is_320mhz_supported(&phy->de=
+v->mt76))
+> +               eht_cap_elem->phy_cap_info[7] |=3D
+> +                       IEEE80211_EHT_PHY_CAP7_NON_OFDMA_UL_MU_MIMO_320MH=
+Z |
+> +                       IEEE80211_EHT_PHY_CAP7_MU_BEAMFORMER_320MHZ;
+> +
 
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+I don't think this should be copied from mt7996 as-is for mt7927. I'd
+suggest dropping the eht_cap_elem->phy_cap_info[7] change and keeping
+it conservative for now.
 
+>         val =3D u8_encode_bits(nss, IEEE80211_EHT_MCS_NSS_RX) |
+>               u8_encode_bits(nss, IEEE80211_EHT_MCS_NSS_TX);
+>
+> @@ -239,6 +259,12 @@ mt7925_init_eht_caps(struct mt792x_phy *phy, enum nl=
+80211_band band,
+>         eht_nss->bw._160.rx_tx_mcs9_max_nss =3D val;
+>         eht_nss->bw._160.rx_tx_mcs11_max_nss =3D val;
+>         eht_nss->bw._160.rx_tx_mcs13_max_nss =3D val;
+> +
+> +       if (band =3D=3D NL80211_BAND_6GHZ && is_320mhz_supported(&phy->de=
+v->mt76)) {
+> +               eht_nss->bw._320.rx_tx_mcs9_max_nss =3D val;
+> +               eht_nss->bw._320.rx_tx_mcs11_max_nss =3D val;
+> +               eht_nss->bw._320.rx_tx_mcs13_max_nss =3D val;
+> +       }
+>  }
+>
+>  int mt7925_init_mlo_caps(struct mt792x_phy *phy)
+>
+> --
+> 2.53.0
+>
+>
 
