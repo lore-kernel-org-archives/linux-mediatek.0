@@ -4,90 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4CAAE9A74D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2026 09:36:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4D11E9A755
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2026 09:54:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=0wNRdSzAgBmj3W1HLVnK+M5XPg8WJUDMQukRyAUFTZY=; b=iiSEcSOo98cgkTo/kYRCHzo+BU
-	JogAsPXONgPxcu6y1xVVl1sWiSkPsVjv7RjMTXxXv6LhG/395EmL+QzH/AepkqYEOn3m/EsWrS4Tj
-	8idXJ8hiq7pn0yrlhRoxFR9FWqEb+DzeBZAk+m2HEU3Mg8LuU4N44qf1Oa5ElT8iFiQSPdNpABeNx
-	n+HT6t7fW/lBKnCiNiGdQWt1kwKuhYxWH4UmpCBLo/v978tF3zRDj0bbPj9zhw7hfHCYUlpN3WmnV
-	qd1kKt9hqRXxaSG/WRhDte2N05Ny3vO3fySKcWYFKq3t621tGQuCPYlo31MsOEOEzV6BVqj4jfFky
-	IGm+Fvsg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZNADjjxsZ0ZdPMjc8i40JffmEXFK1sCwtk0V+zz4sy8=; b=HdyhlHkuluFQFhwONTOp2CGjaF
+	og9EhJvYtWe+HwQyIbc6xRJUR+o0Gun8TcMELdPYEfInjxtWD20cjrxwY6IRTOd5f0hsIHq4PZVWf
+	7n9ZtshjDyL8Uq/25iD2eeZPh0MRHzz1XisIS2FXL13YvJwo1OWjFgpD7BXohNCRfletJK7xZ/9J4
+	AFHtb9jIblRtmm+NnjQ/Q/K+Ss3mbuKF6iljqqJkPz5KEubY/6xo939wDsdwy0M4RuVRQTIricWng
+	9+x4RF/nKNVPSlzmaxk8q9rDs4PSlBayX0PkUKcjKne7llR0hODwPBn1vGC/xbiHPWIx1o0oinljR
+	OY0DFwgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4yB5-000000016Ml-0lVJ;
-	Tue, 24 Mar 2026 09:35:59 +0000
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+	id 1w4yTM-000000019Bf-2JSq;
+	Tue, 24 Mar 2026 09:54:52 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4yB2-000000016MO-2LCC
-	for linux-mediatek@lists.infradead.org;
-	Tue, 24 Mar 2026 09:35:57 +0000
-Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-2aecc6b0861so29836445ad.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 24 Mar 2026 02:35:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1774344955; x=1774949755; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=0wNRdSzAgBmj3W1HLVnK+M5XPg8WJUDMQukRyAUFTZY=;
-        b=JwA4lYHL2JgJdzrXkEZ2BCUd5VDC61Afe+Q771C/Y6BmJBAWW9YCcblIX2mR41nQsn
-         JdLaqWqZ2cgW5r2NabWM4TwOjHBr2RsM2Fi7flqaC1v5IKpr/2ETw04jmmnovuNl4841
-         6ztn3eFi+doO+OvGL76AnGOeOifWIU8ve7DHA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1774344955; x=1774949755;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=0wNRdSzAgBmj3W1HLVnK+M5XPg8WJUDMQukRyAUFTZY=;
-        b=p8Qpjem2pEbdCJSlNk0Qkomwka+9PqPb+mDzWBzSnBlZcCMhG226CeV/SOEAbeVdw+
-         wRU6JXw9rNf2t9hhZf+DcC4zvDuvq2SCg+ripxjQJi8k5vQgcOa/ajC981HL0t9ybjEQ
-         6hAgSxKl1spU68djwA+kw/VChqGGaqVAiI2WjRDXZNdPcw/j0okVq5QcwOJF3VfirIUf
-         buo2nJrB7fV8Y3hsW2B/ZwIX268SHmZYjHmDxHGe1mZqHZ8Kiz9OhRi63eyDWPj53vlY
-         jI84LWQStgNp+5VLao5bgHCuKMZafAOK6rLIkI8bkjx1ZjdIj7IEX0RKkt4OqTifef0O
-         9EPA==
-X-Forwarded-Encrypted: i=1; AJvYcCUK9oTQ4AD/BBnpeTazDrRRp9iZKzhSHDeAjkL2vzkWy3q/T1D61jD0Vy42Xq3cbwjD9/1HM4UDGhInDOooFw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz4YtGZ+84FK/55EM7WA6dHvCLfBhwTEVzL31+2toneFZnvWh+I
-	CsNNpTp5sB3KJMBCAIEVmZBkz6y8NA/y8ibA9Y0GV6zIPLsieL0ssG7BpvAOrwocFw==
-X-Gm-Gg: ATEYQzztDeWHULfx89hSUJcmGt0gydXCQXgqyQGqAcwT3CCnPZBIYM0OBEbhIKuUX1W
-	susT9epw+PTh9TVopXczMT6jcxIcYIYUQ98Q9k9onrzfLl3Z/KcA8MjSRxuVgt7gyW2XZ+sLLz/
-	EcBmznoKU08tqtt8DP5ufkUwgZC3yesv0NAPze7oBLMswZ+s52o0VseiUnU+LPsCJMLmF7RASB7
-	ehvg178/I4d6JUNEa/hcdtV1s8ym8OppoHn4qhmq+kv8zyHu6VakwKAmNTB0SX1x0nTYdWWVarZ
-	vlJFPBGJCW/AIgQelkR3TuqfidSUphM2tPvBrpbyZfILqIIh3ZrYgBbr/zazt3Otz33hVeEnU5v
-	pmvPYAEHxZra5mNrcYBZqKsqRE7FRAKuoTJMi1WjkING6ue85ioglm74C7GpZkbSQho5nKcVscf
-	pL8azVaUpgO/25Ky/NhC2AN9mp8ZdGxy40PXvb8wC8iyo4Y1oyxHKFkg7qAIDwZSuYJfRdKnMnS
-	KBCX8XK
-X-Received: by 2002:a17:903:2288:b0:2b0:5548:7d84 with SMTP id d9443c01a7336-2b08280c1ffmr147273335ad.48.1774344955576;
-        Tue, 24 Mar 2026 02:35:55 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:19a5:8f2f:d584:8078])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2b083679867sm163785785ad.65.2026.03.24.02.35.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 24 Mar 2026 02:35:55 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	linux-pci@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] PCI: mediatek-gen3: prevent leaking IRQ domains when IRQ not found
-Date: Tue, 24 Mar 2026 17:35:41 +0800
-Message-ID: <20260324093542.18523-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.53.0.983.g0bb29b3bc5-goog
+	id 1w4yTK-000000019B3-2NqR;
+	Tue, 24 Mar 2026 09:54:50 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id A158E60103;
+	Tue, 24 Mar 2026 09:54:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C9E61C2BCB1;
+	Tue, 24 Mar 2026 09:54:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1774346089;
+	bh=XaFzr+YEjUMzzdze01fC+C0a/ccH9sqXCsUIJsqKR50=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=bBXX2HTw/oCXSQFIgYluZ+o0MmrV7W3Fl5DKQ3DHsDdp1LhgYAngpJHutHkAbYBjt
+	 7eCxSYZAbJb9V5/OQfYViaSPN18RWvIqWfagT6pyxTYC3IHhYpSH8wjB+96DmdjPK5
+	 eeuqmuYOU23p99DyYy6aRN0sDVA8yBQ7bl+y1oIvdoAx72Ai/NFEC02kA6dGIMa4C3
+	 lDZcrCerNd2yAybV0oxvr6qpiS5Fzli4PBVj+FYv097XaGDormfxq00TRqUYtmNSJK
+	 oik0QoJqfbMDNEkQTE/WmDoc32cr6niN7kKNBZxRhnURp1W0Ej/p5uotyjCP/HYA1f
+	 syyZdXf2trV3w==
+Date: Tue, 24 Mar 2026 10:54:46 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Meiker Gao <ot_meiker.gao@mediatek.com>
+Cc: Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Bayi Cheng <bayi.cheng@mediatek.com>, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com, sirius.wang@mediatek.com, vince-wl.liu@mediatek.com, 
+	jh.hsu@mediatek.com, linux-spi@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/2] dt-bindings: spi: Fix clock-names definition
+Message-ID: <20260324-magic-camouflaged-albatross-6fdeb1@quoll>
+References: <20260324032624.1708029-1-ot_meiker.gao@mediatek.com>
+ <20260324032624.1708029-2-ot_meiker.gao@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260324_023556_652597_86441ECF 
-X-CRM114-Status: GOOD (  11.68  )
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20260324032624.1708029-2-ot_meiker.gao@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,51 +74,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In mtk_pcie_setup_irq(), the IRQ domains are allocated before the
-controller's IRQ is fetched. If the latter fails the function
-directly returns an error.
+On Tue, Mar 24, 2026 at 11:26:17AM +0800, Meiker Gao wrote:
+> Update the device tree binding for the Mediatek
+> MT8196 NOR controller to require that the 'clock-names'
+> property contains exactly six entries, in the strict order:
+> "spi", "sf", "axi", "axi_s", "bclk", "27m".
+> 
+> Signed-off-by: Meiker Gao <ot_meiker.gao@mediatek.com>
+> Change-Id: I0542d6d726f1af34ef76c1a58ba4e4b02ec45fe6
 
-Instead, reverse the order so that the IRQ domains are allocated
-after the controller's IRQ is found.
+Please do not send patches which were never checked with tools. Run
+checkpatch.
 
-This was flagged by Sashiko during a review of "[PATCH v6 0/7] PCI:
-mediatek-gen3: add power control support".
-
-Link: https://sashiko.dev/#/patchset/20260324052002.4072430-1-wenst%40chromium.org
-Fixes: 814cceebba9b ("PCI: mediatek-gen3: Add INTx support")
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
-This was flagged by Sashiko during a review of "[PATCH v6 0/7] PCI:
-mediatek-gen3: add power control support", but is otherwise unrelated
-to that series and can be merged independently.
-
- drivers/pci/controller/pcie-mediatek-gen3.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index a94fdbaf47fe..2f9365930d6a 100644
---- a/drivers/pci/controller/pcie-mediatek-gen3.c
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -890,14 +890,14 @@ static int mtk_pcie_setup_irq(struct mtk_gen3_pcie *pcie)
- 	struct platform_device *pdev = to_platform_device(dev);
- 	int err;
- 
--	err = mtk_pcie_init_irq_domains(pcie);
--	if (err)
--		return err;
--
- 	pcie->irq = platform_get_irq(pdev, 0);
- 	if (pcie->irq < 0)
- 		return pcie->irq;
- 
-+	err = mtk_pcie_init_irq_domains(pcie);
-+	if (err)
-+		return err;
-+
- 	irq_set_chained_handler_and_data(pcie->irq, mtk_pcie_irq_handler, pcie);
- 
- 	return 0;
--- 
-2.53.0.983.g0bb29b3bc5-goog
+Best regards,
+Krzysztof
 
 
