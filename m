@@ -4,71 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C337F54ACF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2026 16:19:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 323F6F54ADC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2026 16:55:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jEX+DZPzYD9qo5oxb6TmutuNkT1eSqBoULsxdSyp4Ns=; b=Mg8m62+3eLll2vxkhpCsSVXItF
-	zkHpTettOG6a3eVTegBdoSKr2I4x5pnqvcc1gBNEdbF6FwSR+V5g2Te5pm4f+F1864gsAbE1vTN4X
-	jQTA2a1dZeuJZGOeL9euTWin5jO2c4YaeIqErRrxyu04S2lf4lxl879evR+1n96W8+2C6Yi/ym2uq
-	4Golz9958RHWxfEsIidwd3FeIZMgpbRsIi31mc1KR276cIyE29AlbncP5WYgOsnleKK/CSXi29GAx
-	H8/Y2NPQtjj68U3oT67bfnjScGw8XF2EHUFMp9Cqqmt3RX/uH4rRqys5WeM9RHmxI9XV7PSUlc8FY
-	YwsSfYqw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=j5VpEbBkDbHR3AeO/vQBdMQoHwJEuruD/Gx0kzZogT8=; b=iZhSGxNmPfMoqot44ozt9qCGTw
+	be/3/PPwPxy4QXglbW1KBvO4v09aiQitbgC6o53iw6GGwtsag23r7ShS+1dOx09Sj+clnzhgBr/sO
+	sGcIFVOQhmHo9n/KjB6ZQmxfF7MZa0jjm1iLJQCguF0Yx294mq6+yM601RRc5NcniuPYr8SdaYShi
+	/ptssD9BPlCMJomsm41eRdDtoufTM5bjgTAZI2QFmhgYUlgREh/RgOAINiiqmKmR36q+CrHIs/DQK
+	u/gI6lx9zNWeQ6e+bS8FDPVlOtV/r483ckXRCxHirywMhrRpnsz82wevM/R7JGZS2/AZ5sOSDObFa
+	czGi8raw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w54Ta-00000001sVH-2VlT;
-	Tue, 24 Mar 2026 16:19:30 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1w552O-00000001w6N-3DMB;
+	Tue, 24 Mar 2026 16:55:28 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w54TY-00000001sUn-0GvR;
-	Tue, 24 Mar 2026 16:19:29 +0000
+	id 1w552L-00000001w5U-4AtQ;
+	Tue, 24 Mar 2026 16:55:27 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 326F443EB3;
-	Tue, 24 Mar 2026 16:19:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 03C59C19424;
-	Tue, 24 Mar 2026 16:19:23 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 204A0600AC;
+	Tue, 24 Mar 2026 16:55:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0C1F9C19424;
+	Tue, 24 Mar 2026 16:55:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774369167;
-	bh=Vzn4kK1OCgM0Du86XVzwCGWpQkxeiTsel/ZSclDtI4Q=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=UeoOa94UORI96bBXQAySKUUV4lPOU5GgV/F0PP+tM2+qfdQcPDPGORvycEu59NGMf
-	 GmeBMCuc743ZB9v9NfJXzeHDR3P5uvVcFVNOE1vs07g/S8faGrHZEmMm6SciO+NtT/
-	 itfrqauIjX4n8AESW/eczPc4YcufV1pQvT2fu/c20aWivWwVynKVSZMt27gE6B5D7h
-	 GRhCtnyvt8KjFoGPzNF7KiuIl7F/pzVCQwx2J9J2IxSn5Gv9QzvBg/Rd0nK6d8KSQ2
-	 XtzpVMl4U/giunzl+qDtH3JUKpyC7MQCK5PE2hCdJppdd7SSFUPJUSK8Pm6n7nb74j
-	 TFR5ztzBFWAaA==
-Date: Tue, 24 Mar 2026 16:19:21 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Meiker Gao <ot_meiker.gao@mediatek.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Bayi Cheng <bayi.cheng@mediatek.com>,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	sirius.wang@mediatek.com, vince-wl.liu@mediatek.com,
-	jh.hsu@mediatek.com, linux-spi@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 2/2] [v3] spi: spi-mtk-nor: Modify and optimization the
- SNFC.
-Message-ID: <9091b9d4-d32e-426f-835e-b62a933dbee0@sirena.org.uk>
-References: <20260324062835.1747943-1-ot_meiker.gao@mediatek.com>
- <20260324062835.1747943-3-ot_meiker.gao@mediatek.com>
+	s=k20201202; t=1774371324;
+	bh=5r1QnMw+vkFTIcuRXJoKO+7ZYkPN9lBP+lg9RoD/6+Q=;
+	h=From:Date:Subject:To:Cc:From;
+	b=D/kJTgvUz5mozx+5jbyi1MlCtHBa4WEuewqhAmz9RmsYoxATT+Kbn+6fsG5HBSdzd
+	 0rdqiRd/JBd5bH64ACfjWJ3Z1KvsqRXUTfnDUo9wrBQWvZDeNg22/aQdqFf4zmCrMu
+	 H8EZvPuM3Y4NnwnRh1yl6gOtO1XiUez5reaFcAXdXfpTTsIxXVvv0eC4tgDEmGRRt/
+	 ikFb7MjHJsltALhzwuL021lajda81fyZlvkRx8uGF27zymG7IOeHwFIHL5g0iuyzIy
+	 Bt5X90OaSMZYYoKvFD7HZ/ieWG/uW1L9CT5h4ejBpfVD3+mLrHRlVwLBEPO1Qx1OAO
+	 NH2gy30SJpFxQ==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Tue, 24 Mar 2026 17:54:45 +0100
+Subject: [PATCH net-next] net: airoha: Grab flow_offload_mutex running
+ airoha_register_gdm_devices()
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="sjEoEUTHZWdhbgFK"
-Content-Disposition: inline
-In-Reply-To: <20260324062835.1747943-3-ot_meiker.gao@mediatek.com>
-X-Cookie: Forest fires cause Smokey Bears.
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260324_091928_121273_DEF9294E 
-X-CRM114-Status: GOOD (  11.24  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260324-airoha-regiser-race-fix-v1-1-6014df55886b@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MQQqAMAzAviI9W9imTvEr4mFot/Wi0oEIw79bP
+ CaQVCgkTAXmpoLQzYXPQ8G2DWw5HImQd2VwxnnTOYuB5cwBhRJrihI2wsgPRpqGPnq7j96A1pe
+ Q6v+8rO/7Abp+PClpAAAA
+X-Change-ID: 20260321-airoha-regiser-race-fix-fe854f61d760
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,42 +74,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Netfilter flowtable can theoretically try offload flower rules as soon
+as a net-device is registered while not all the other ones are
+registered/initialized, triggering a possible NULL pointer dereferencing
+of qdma pointer in airoha_ppe_set_cpu_port routine. In order to avoid any
+possible race, grab the flow_offload_mutex running
+airoha_register_gdm_devices().
 
---sjEoEUTHZWdhbgFK
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/ethernet/airoha/airoha_eth.c | 15 +++++++++++----
+ drivers/net/ethernet/airoha/airoha_eth.h |  2 ++
+ drivers/net/ethernet/airoha/airoha_ppe.c |  2 +-
+ 3 files changed, 14 insertions(+), 5 deletions(-)
 
-On Tue, Mar 24, 2026 at 02:28:25PM +0800, Meiker Gao wrote:
-> Changes in v3:
->     -this patch is a further optimization for version v2.
->=20
-> Changes in v2:
->     -Use clk_bulk_xxx related functions to enable/disable clocks.
->=20
-> Changes in v1:
->     -Add new function mtk_nor_parse_clk() to parse nor clock parameters.
->=20
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 82e53c60f561f6314fbf201ba8bc8711e40edc68..c1476032f78cbac95c9813bbeae6bec2c9c0a685 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -2943,21 +2943,28 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
+ 
+ static int airoha_register_gdm_devices(struct airoha_eth *eth)
+ {
+-	int i;
++	int i, err = 0;
++
++	/* Netfilter flowtable can try offload flower rules while not all
++	 * the net-devices are registered/initialized. Grab flow_offload_mutex
++	 * to avoid any possible race.
++	 */
++	mutex_lock(&flow_offload_mutex);
+ 
+ 	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
+ 		struct airoha_gdm_port *port = eth->ports[i];
+-		int err;
+ 
+ 		if (!port)
+ 			continue;
+ 
+ 		err = register_netdev(port->dev);
+ 		if (err)
+-			return err;
++			break;
+ 	}
+ 
+-	return 0;
++	mutex_unlock(&flow_offload_mutex);
++
++	return err;
+ }
+ 
+ static int airoha_probe(struct platform_device *pdev)
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
+index 7df4dbcd8861856c54c2a38bc89c69180ac2f6dc..9d97a54dbfdf9107a10bdb09cf144e5cf1ac9bdb 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.h
++++ b/drivers/net/ethernet/airoha/airoha_eth.h
+@@ -548,6 +548,8 @@ struct airoha_gdm_port {
+ 	struct metadata_dst *dsa_meta[AIROHA_MAX_DSA_PORTS];
+ };
+ 
++extern struct mutex flow_offload_mutex;
++
+ #define AIROHA_RXD4_PPE_CPU_REASON	GENMASK(20, 16)
+ #define AIROHA_RXD4_FOE_ENTRY		GENMASK(15, 0)
+ 
+diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
+index 7666b1d2f4f6ea758683181ab90d6fffb7bcd19d..96d092f7214ee3e80843a14528df66cabf79bc58 100644
+--- a/drivers/net/ethernet/airoha/airoha_ppe.c
++++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+@@ -15,7 +15,7 @@
+ #include "airoha_regs.h"
+ #include "airoha_eth.h"
+ 
+-static DEFINE_MUTEX(flow_offload_mutex);
++DEFINE_MUTEX(flow_offload_mutex);
+ static DEFINE_SPINLOCK(ppe_lock);
+ 
+ static const struct rhashtable_params airoha_flow_table_params = {
 
-As covered in submtting-patches.rst inter-version changelogs should be
-after the --- so they get cut out of the git commits by tools.  There
-doesn't appear ot be an actual changelog for this patch beyond the
-(somewhat vague) subject.
+---
+base-commit: b1c803d5c8167026791abfaed96fd3e6a1fcd750
+change-id: 20260321-airoha-regiser-race-fix-fe854f61d760
 
---sjEoEUTHZWdhbgFK
-Content-Type: application/pgp-signature; name="signature.asc"
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmnCuYgACgkQJNaLcl1U
-h9BzOAf7BRKbdHMggUaXtpn7x4H6OdzYZO6/WAWJJz1vmMRz8ulzUUGezTKvUUa9
-40SehQQSX1sukWrSh0OQSB5rDbbWOWXw6eX4MjjH73JrQo0J4EKakFKmPfLMDVqY
-zhNMJv9jgZ2AF9Cr1DLa022zE+iaGyfR7e4x+LHVVbnXfH8pbzljlL7nIVfEbTI+
-efYwSUmrLw/9S58F9UtnZPBh0DWzWm2feecZowRf0lLQa+U5zg/24fMsAN6iaKAP
-9MvsvPiVg1/C7rfftkRppTcLboBVwEosCZqFF/hNtjufGxz/i0DpxaFtMBC72ZPo
-Oqh7O7cKGclP473yIFVNwmPtGCtT7w==
-=v1zA
------END PGP SIGNATURE-----
-
---sjEoEUTHZWdhbgFK--
 
