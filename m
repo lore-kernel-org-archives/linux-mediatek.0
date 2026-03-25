@@ -4,62 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A95F2109C034
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2026 16:07:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C02D9109C045
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2026 16:55:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ZHA+0OGqEjtrHs72cGxtTXwLUKt91/R2APASGRTWv/M=; b=PquhDnx7U8vnHF3uTPz4Tsvnud
-	dfU0uR5nVzyUa6Z/h8deUHklQSX4MeT/RMmkESuipMymx/fbZnIAgvQuZyx+fNOpae5gH2jIyLLec
-	cg7xemzJ0jY+fvujld23liou9ozuHAtymNLbJCAMFT30IYSyJTt+cUduNfMraxViunMN/qCWg1u+u
-	eB/YEDE/iCKMfV1gnb8+acPHL37tiyjYufZNPxRFaGnQGe7qfydn8yYaGIgQU2KRuACRxa8l2hjxp
-	Z28Hffa2DAotK/BP1a9WVlJtF2GOIGYEZZZHmC9HzWITwOl8u2N3vb8Z0fIEsiOdEZLJyutUhThkK
-	QFBBrnAQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bOLHph50MygLD+LJIPpWwZg6/ExL863ytypasC2g0/0=; b=YjyfA4yBfq+AP3i4z+uMueOV/n
+	HuwzPz3B0Hn5yk3coXEYuxvFGrlQGQ305D7zFLPLcQhkMRWJAc12Ha28Y5rwhxHYWNPgHkifQDgfy
+	N2+KkLHscWQIkrV3NILsEgN0Hct4hcVuGu7tXwUEhk98FKtYgV7+nbt9LZ4fo/Fv9oE8BZO0AD48z
+	0MgkVJ/voz11fg64uvx6/JHYbhnZBckzm9QDvZ05FUOh0kaSlA8zTiygGcl5mrnTqq/nmMTMnv+io
+	c4FoansOuITn0bI1GYqJsvJrPIjGrt0GLRN/YtEzBlcZOo3cHGcp/9NzXCZTJn4XFNcdnWcPi0M7H
+	Z76i8tqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5QlU-00000003qzL-40Uy;
-	Wed, 25 Mar 2026 16:07:28 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1w5RVb-00000003wtb-2uXH;
+	Wed, 25 Mar 2026 16:55:07 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5QlS-00000003qyy-12aV
-	for linux-mediatek@lists.infradead.org;
-	Wed, 25 Mar 2026 16:07:27 +0000
+	id 1w5RVa-00000003wsy-0SBI;
+	Wed, 25 Mar 2026 16:55:06 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1129E43235;
-	Wed, 25 Mar 2026 16:07:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 89E5EC2BCB0;
-	Wed, 25 Mar 2026 16:07:23 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 55F8D600C4;
+	Wed, 25 Mar 2026 16:55:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DFB62C4CEF7;
+	Wed, 25 Mar 2026 16:55:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774454844;
-	bh=/AHUrVzXCnu4f902UPkYpNtP+3R1E5iLG47eo3IZY98=;
-	h=From:To:Subject:Date:From;
-	b=oDmEBC67JPEMWuP26khATKj8aDvL6Okkjwi5Khog2+4rymrUUHK++SZpKHbikMpYe
-	 1kshOKEMMmpZlb7qesfX2v0lhx69i5K5P+JsSZBnhbXyA/p5g7xnlLC/2IaOaC4AZQ
-	 amzl6IGiCERAdg+1r6pPVBYJ3gXAW2gVX2zhZ8kZ3fcC7gF5Pz0trcDVpcCva2OTUo
-	 Q9Y3y1ovm6XiHoG94BgcmWvEipXPq9bboHRwr7TExZ32W+mWbPdtMQ1y1fFvXELgT3
-	 nl6lcwL6ShNyY+N6CbMc1oqsfkKV1Y4ln/6JUd+NyvxOtklYPlUxaHDWq04tjj8uil
-	 iAifVKssWUcIQ==
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: David Airlie <airlied@linux.ie>,
-	Simona Vetter <simona@ffwll.ch>,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	Gary Bisson <bisson.gary@gmail.com>,
-	Luca Leonardo Scorcia <l.scorcia@gmail.com>,
-	Val Packett <val@packett.cool>
-Subject: [GIT PULL] mediatek drm next - 20260325
-Date: Wed, 25 Mar 2026 16:07:21 +0000
-Message-Id: <20260325160721.4891-1-chunkuang.hu@kernel.org>
-X-Mailer: git-send-email 2.34.1
+	s=k20201202; t=1774457705;
+	bh=RKKiiq8BF8Gnss15GyLrbCZ1nQZVCizvsceHIkQybeY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=fUmZoGmEOFgd86CDps+cN4uba4Z8k0RbTFUgOkt4vajosQUVDMjIwFN9CDpxm5RYr
+	 hxBLzLwoS861MUC0M22kcTkbhvNNE0TxmpPEB8PTRQDxPSCmkFS/nFXIBqG5qQp5Ry
+	 QiR0645ytteVjCwi/8/pmydejBFyvxu1LUVvWRzHDNnC+VlAXP9zcA0gSHS5r3wYus
+	 mjIJ5GADmJ0m70/jwlDNGwr7MGCxpvXj0sHXQTXBpaAeZdT+J1Oi2R6VhFZ82Lk7rw
+	 2QdZcVNjPzQA/bE/9lA/B4Gem45JFrTc9Fc3fgl1D3/mHD+g7eStV6briapV+yKL6N
+	 ito5CWuspA+Jg==
+Date: Wed, 25 Mar 2026 16:55:00 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+Subject: Re: [PATCH RESEND 1/2] regulator: dt-bindings: mt6315: Add regulator
+ supplies
+Message-ID: <32638731-8f33-4203-9e68-1170cff99280@sirena.org.uk>
+References: <20260324053030.4077453-1-wenst@chromium.org>
+ <20260324053030.4077453-2-wenst@chromium.org>
+ <20260325-uncovered-carp-of-inquire-8a7acf@quoll>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260325_090726_333598_07E31BA2 
-X-CRM114-Status: UNSURE (   6.38  )
-X-CRM114-Notice: Please train this message.
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="waZYWKl2+xYeqLDx"
+Content-Disposition: inline
+In-Reply-To: <20260325-uncovered-carp-of-inquire-8a7acf@quoll>
+X-Cookie: Question authority.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,57 +78,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Dave & Sima:
 
-This includes:
-1. mtk_dsi: enable hs clock during pre-enable
-2. Remove all conflicting aperture devices during probe
-3. Add support for mt8167 display blocks
+--waZYWKl2+xYeqLDx
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Regards,
-Chun-Kuang.
+On Wed, Mar 25, 2026 at 09:56:00AM +0100, Krzysztof Kozlowski wrote:
+> On Tue, Mar 24, 2026 at 01:30:28PM +0800, Chen-Yu Tsai wrote:
 
-The following changes since commit 6de23f81a5e08be8fbf5e8d7e9febc72a5b5f27f:
+> > +      pvdd4-supply:
+> > +        description: Supply for vbuck4
 
-  Linux 7.0-rc1 (2026-02-22 13:18:59 -0800)
+> These all look per-regulator supplies, so I think they should be in each
+> regulator node (see also regulator.yaml).
 
-are available in the Git repository at:
+> Or in top-level, but not in "regulators" node. The regulators is only
+> wrapping node for children.
 
-  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-next-20260325
+> I wonder what should be our preference - have supplies per regulator or
+> in top-level node. @Mark, any preference from your side?
 
-for you to fetch changes up to e1c3bc324407e82a616228ff70027408b2e26f91:
+The top level, so people can figure out where to describe supplies
+without having to read the bindings so much - the supplies go into the
+chip, even if they're distributed within it.
 
-  drm/mediatek: ovl: Add specific entry for mt8167 (2026-03-22 13:35:07 +0000)
+Please don't add random characters to my name.
 
-----------------------------------------------------------------
-Mediatek DRM Next - 20260325
+--waZYWKl2+xYeqLDx
+Content-Type: application/pgp-signature; name="signature.asc"
 
-1. mtk_dsi: enable hs clock during pre-enable
-2. Remove all conflicting aperture devices during probe
-3. Add support for mt8167 display blocks
+-----BEGIN PGP SIGNATURE-----
 
-----------------------------------------------------------------
-Gary Bisson (1):
-      drm/mediatek: mtk_dsi: enable hs clock during pre-enable
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmnEE2MACgkQJNaLcl1U
+h9BbaAf+OWrcsJ1vWJ5LNMOJFWdpauabUdohO1MiXidlGIsmN2yzEM3MfF9lQFNs
+Sv49o8uJQLbaVz3Abgtn4eTj0uD5zyP+QWWO1MGnfca17vRjy2PVg92Rp5GQzOWt
+TCU0jGuxbBy9flaSJ1qFyzocxSD6PQh88K2fJ3ksKBc/AUb/LlCYQqTxOaYm25Xo
+C13pwZf8CI4BqfV1T2p4h0wPQqaUwNQGi/s5h1KnhYV7H6BI4+WTjR28PpaplHD9
+g5/FIRSvoQlyz4QcyfmoCPlOhMQVq2AwuIvXEy/X+tNfVHetDX6NvHs1lPmNdJit
+w4hnfdiYl4hBXRqSFNcqwKCAsiDVkg==
+=VW8o
+-----END PGP SIGNATURE-----
 
-Luca Leonardo Scorcia (3):
-      drm/mediatek: Remove all conflicting aperture devices during probe
-      dt-bindings: display: mediatek: Add compatibles for MediaTek mt8167
-      dt-bindings: phy: mediatek, dsi-phy: Add support for mt8167
-
-Val Packett (1):
-      drm/mediatek: ovl: Add specific entry for mt8167
-
- .../bindings/display/mediatek/mediatek,aal.yaml    |  1 +
- .../bindings/display/mediatek/mediatek,ccorr.yaml  |  4 ++-
- .../bindings/display/mediatek/mediatek,dither.yaml |  1 +
- .../bindings/display/mediatek/mediatek,gamma.yaml  |  1 +
- .../bindings/display/mediatek/mediatek,ovl.yaml    |  1 +
- .../bindings/display/mediatek/mediatek,rdma.yaml   |  1 +
- .../bindings/display/mediatek/mediatek,wdma.yaml   |  4 ++-
- .../devicetree/bindings/phy/mediatek,dsi-phy.yaml  |  1 +
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c            | 12 ++++++++
- drivers/gpu/drm/mediatek/mtk_drm_drv.c             |  5 ++++
- drivers/gpu/drm/mediatek/mtk_dsi.c                 | 35 +++++++++++-----------
- 11 files changed, 46 insertions(+), 20 deletions(-)
+--waZYWKl2+xYeqLDx--
 
