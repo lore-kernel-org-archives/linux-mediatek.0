@@ -4,178 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40130106B535
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2026 13:27:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAC74109C021
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2026 14:27:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jbK2zxykqgUc2zKfD989b3UBcjdHnraEMPLn432HyCU=; b=oh/KF+qgUsrm1s7SpIx1OJelPk
-	+sriStzRpeGc9LBADLGqjd7MquP8P2zcMRvbXFhvA6h1RfobUoC58J1vEarBvAW+/KMOSCspKyv4A
-	StfjFa/PG2+t04InYPls6edWrYEidGqI28hFsbS1cYkl8w5+ISa003ZmhcuX4p+FeoDSfaey7icsA
-	9tnS7VvmGJehXQ649H0FU4a2xs19rBRceiUBK2Twq/rC2r/jDK+2WKaY4u4aOXCfPzuMxCwdfxAM+
-	M6uluYBV2W95U1nXpxndIxsFQ/+NV6v6EPUzW5CCo5PiKejBQWnVIXad/BmCeFUSJEjvGOOHtq38f
-	IGZGaBjg==;
+	bh=KWGD4hQPLoVQRo9t8LEnKi+4d5KyybuIU/ivYgViFIE=; b=LkhqW65ZJuLcicysu/AQoK/O27
+	1fZNkkCMGIcTPI5KYMPniLdwExsAvZVVTeChUk0jFW33D5+26Z+/39DB3gWoiyfKfsxqZZMyA2aTI
+	Wz3lZ1TyUIWb+kmHaTkHyD5z/KeuLwyWA+t/SUThqKmPvvBnWFn+alPhqTdf0g1KPGqctRn1nj81F
+	MpdiBvzsl75A+joSRrwu1ETeALvn0GG1P/fwuDJKk7v5ssW4yO/+IIoqfUvvLIayzOAhdId3cQ8Z9
+	FdJz9D4EepcBBcacBxstcwGXOWzGUHccUS4H8DXR4sQFMug6kg1Xr1lEBY5AWaAdJBb2Gk0cezwVq
+	OBKpZnRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5OG9-00000003Skp-1Q3o;
-	Wed, 25 Mar 2026 13:26:57 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1w5PCS-00000003Zd8-3eps;
+	Wed, 25 Mar 2026 14:27:12 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5OG6-00000003SkL-3U61;
-	Wed, 25 Mar 2026 13:26:55 +0000
-X-UUID: 47a2adfe284e11f1a6de359d7043e138-20260325
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=jbK2zxykqgUc2zKfD989b3UBcjdHnraEMPLn432HyCU=;
-	b=rwu7DwO4l4w79At0c1aJhIaVnRIGZJW0+woMNwNmjVWuodrKSuqKlwEhHJU8pEt8NwXdVZw4wqgi4NO4GXRbx0G+jbtVsJamLsZUyjbprcA18nswHS0RDb97e9NW/Ipofiq/F0mFqoQNhuR5nuRwk1s8uozmtZUhbvpXSaaRvG4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:9f96d882-99aa-4a37-adb9-39d1a210e2fd,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:e7bac3a,CLOUDID:04711fd5-060f-4ecc-9ee0-121eeeb4a682,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111|836|888|898,
-	TC:-5,Content:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BE
-	C:-1,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 47a2adfe284e11f1a6de359d7043e138-20260325
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <jay.liu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 884886058; Wed, 25 Mar 2026 06:26:49 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 25 Mar 2026 21:26:47 +0800
-Received: from SG2PR04CU010.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 25 Mar 2026 21:26:47 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=xoHSVkSwJ56bNs7+lsHwe8W/QqdD6NCfDv3bjqX4M2YdzrQ9w0tkWA8D7gSfdSbW/A2CKWYWlVItYWndEzPShckyKm1/cMcZHLwXnaXr21df5HYa+PntTea+PCelAFMy5VR4X2oDC3Qimwk3JoKLftXjiwNaD4cjuLADoAWl4v9/Uet8xNq4Gld7FB1f52rV3Yu3AIUmgTsHkemZ5wYxJtvWVYc6uQMMhjHq7M6d2VIl+Mqhh8L3/9/A6hM1h0I4ZLgvDmiRlN8apH8rOilfrs58nFnjeglIzYMIg5y61ySNuPV7JB72HpaAGrazIiHhsIhH9aWLFk5yB4TZrzKXiw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=jbK2zxykqgUc2zKfD989b3UBcjdHnraEMPLn432HyCU=;
- b=HhQ0Yc7div/FF9inSi3KCqK9ZsOmOI3J7aPg5wz5LGQ2JT+ZMTXzQPEJ2Zuhnxw1LdWS28Lu/9PPpWnLd3vHxpbNv3CvmDcvUCowDLUYg62m1i/zzE7dxFnGyuUtM5SziiyyWxLxjZCjlaSchHOqC0MJXCFeEj/Xu2kkgEI97iaihF1qt1DWwzEQue+mSpLRdO4VNgOg3soC2nPw65H1Gnf9972zJfDP8z/1Nz13N+v93HPq8z2ZYWeyuKoJgmr10+ivFxp6P58YPI1c7K3ZF3WEe5z+VZfb/k6x1bPBtHRoLjmqXFVF6PPjYg8ifOoJgHucx21Pte17lOZhiZ6f4w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=jbK2zxykqgUc2zKfD989b3UBcjdHnraEMPLn432HyCU=;
- b=vMlBkQAtpsaHtbG4b07JmOyY+/MYiUlOj0hv7Bi9A10vLk+1jvBW9YN7HXxxkPs0pWSmfPfnnk7b/Q7p/jYuVSHStbXILdTuo/K7ygOavvxZE6LE4FbBmI9rTJ2LDJJ4yWktaqMFAvT135EOoaZvNb+Szupybr82MPRFAVsdHdQ=
-Received: from TYZPR03MB8136.apcprd03.prod.outlook.com (2603:1096:400:459::6)
- by JH0PR03MB7655.apcprd03.prod.outlook.com (2603:1096:990:d::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9745.20; Wed, 25 Mar
- 2026 13:26:43 +0000
-Received: from TYZPR03MB8136.apcprd03.prod.outlook.com
- ([fe80::6ae8:431f:acb5:6294]) by TYZPR03MB8136.apcprd03.prod.outlook.com
- ([fe80::6ae8:431f:acb5:6294%4]) with mapi id 15.20.9745.019; Wed, 25 Mar 2026
- 13:26:42 +0000
-From: =?utf-8?B?SmF5IExpdSAo5YiY5Y2aKQ==?= <Jay.Liu@mediatek.com>
-To: "krzk@kernel.org" <krzk@kernel.org>
-CC: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"tzimmermann@suse.de" <tzimmermann@suse.de>, "simona@ffwll.ch"
-	<simona@ffwll.ch>, "mripard@kernel.org" <mripard@kernel.org>,
-	"p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
-	"maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
-	"conor+dt@kernel.org" <conor+dt@kernel.org>, "robh@kernel.org"
-	<robh@kernel.org>, "dri-devel@lists.freedesktop.org"
-	<dri-devel@lists.freedesktop.org>, "airlied@gmail.com" <airlied@gmail.com>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v4 0/6] porting pq compnent for MT8196
-Thread-Topic: [PATCH v4 0/6] porting pq compnent for MT8196
-Thread-Index: AQHcu4000bpzCw8SSEaCv9Ba226/6LW+6ICAgABWbAA=
-Date: Wed, 25 Mar 2026 13:26:42 +0000
-Message-ID: <62bd99417635c7c77f2e3fba77296ed3ac9aa603.camel@mediatek.com>
-References: <20260324125315.4715-1-jay.liu@mediatek.com>
-	 <20260325-hissing-jasmine-crayfish-caef70@quoll>
-In-Reply-To: <20260325-hissing-jasmine-crayfish-caef70@quoll>
-Accept-Language: zh-CN, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR03MB8136:EE_|JH0PR03MB7655:EE_
-x-ms-office365-filtering-correlation-id: f3a290bb-0421-47ab-9663-08de8a722792
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|7416014|376014|366016|38070700021|18002099003|22082099003|56012099003;
-x-microsoft-antispam-message-info: xhyV1c8pOeb4SPxhsoPyI9b3YUcZCyL0ZbmRxDiw05w5hyuRYwMR1168MU5WfOGgDu9XfvdKYu3CU83GGzpecRJJUArwz3bDRfWuWj2fXFq/wF1pdqCPCcfiAnmpYomUK9Z7n9rg8vgFo5MLH9rJCDT3FbThKhtFvMaKmSi5zVQjam5ZGUIO1bauL9Ml/bMIoY/XcSdoajX+Smh4w3L/qb5sSXdwPbHdTgVRLph2ElmzpOD1hN3+Fb/ZDVkYlEJONwZ+Kt+xt93k4Sj2SsTgKQjeLdufOsSjN5t/s0rf67raKaY/4ONCX/YmUhnSC2dsB3109YfMZ/ppVSCGt+WsGF8vpEt8fyFKBFxFe/jH/5W2efXJ+JiDvvQ5usbhvqXAMsXselytyaJYnpKU4gCCCUr7A1oOGvyvj/6uwRvKkbBHQrPt8jVCuJux1ozSpL0+q+y6aak87dUfSm3hwjG9rNYhQq9UkG/gAF4D3VdL6APc0KYeBbUDXlQ7RKg0scy+JoAGWW/OLrY5rwjMMScWyXC/dp8UKMvyBYsCiHexJqG3S1TsnTCDahSoai1z4iNuAFLgm69f7JsvDsidL5QBZNkYDbgjQKLZkzzDIDpdFnoL0c6GI/89zOv5dGiGcYCI08Yu/NqHgLi0PxgTId+zNaMo9ZSFM9+nxN04BfmsDEV5O9lyT0J233++q5+bYgjS5Ol3ws/3VbmycvAzTycnubW08EmEWzYqk33nidkPKaGZKNep7F+yh/q/jfldSCmaEliRiaihElsURNtN46chLE1nq42Dgb+kP9MAjOIu1O0=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB8136.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(7416014)(376014)(366016)(38070700021)(18002099003)(22082099003)(56012099003);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?Lytnd0hob2hGV001MHhERzZaS0dmRXN3WjFpcklESVpqNzU4WHNuVlpMZVdD?=
- =?utf-8?B?K3h5dUhqME05TkVSTnZoVVF1dFVRQ1RwWUNKYjg3RWphWitaNnJWVzJ3N1Ry?=
- =?utf-8?B?YW5YZFU5YnRRSk9EbkRTOE1JRU9USVdhU0tzU1BpcHBUc1k1SXRidE5CNGNy?=
- =?utf-8?B?QVJYVUVOVk1IaWs1ZzRRU3MvektJMnE5Z0pnNDFISTI4VXloNWkrUnZncitq?=
- =?utf-8?B?TVp2RTBqaVdqWnlnS05PTlc5RFJlK05UaStMNGZxT3VQQkhJNXkvSUQ3UDd5?=
- =?utf-8?B?cSsva3lqemRnZmdjVXpBS2xwc3R6czhUdjRSTHVEclczc1F0eTFFRWd4RnE5?=
- =?utf-8?B?bTFsUzFFTTJCNzZ5U28wQjk4QU1JSFh2bkJsL2FnVjdZemVkV0FIUkpIQ3Ro?=
- =?utf-8?B?YTBDWmYxTzl5ekp4VGsvbFY0WWQ1Yks5bkJIQnBuYUtrOFpOT0VCRkIvdGxk?=
- =?utf-8?B?cFN2NFJwc3BFbTNVSWVLa3AvdWphckhYdTA1UVprd2MvTzYvQmVqeTN0QlZM?=
- =?utf-8?B?QkdoTmh6SmNqVGFvNkpEbnZvMG90YWdYNFZXTzNNK1JudmF4emg2R29lTEVQ?=
- =?utf-8?B?WDlad2dKSTFDT05SQjJ0emJNNTVBbFZpTmlrd0ZGVWN0cnZaR0dXaHlUTEZI?=
- =?utf-8?B?VTZJL0RMTnQvVVVQTjV5d3R2aFVhb2pqazUvemJURk9IQzNIVjFjTEpJSWl6?=
- =?utf-8?B?VmFpUkY5Njd3bFYxOENiejU1NGJSdjNETldES0dRaDFEdU9vbHJzUndZaFVo?=
- =?utf-8?B?ZmpGYWlaZXZuRVZ2bm5HUVk3b0hETHNxVjZDWkpaMUlnWVFROVVoUkFaUmdE?=
- =?utf-8?B?M1c5Mm5WN041d2F5OG5BRVFkVkVzNi9ta0x5dEJHVXNjdHJsWmd2dWhXRGZN?=
- =?utf-8?B?bE5wOWdHN1hsaEVuNkhUMDRGVTh1bXd5bzNibmhUWnFBci85SCtvdmI4OHR6?=
- =?utf-8?B?VkxHK3dJSVYvRno1L1JYOWhYWlY1am5oTU1scFU1SUNSN0RyMWhxVjRqZE5P?=
- =?utf-8?B?RzRxM0RGVFdUMVVSRGdSRGZRdjhFU0ZxeGRnTGhPZ1ZQQTg5Q0U4T1pZVnky?=
- =?utf-8?B?SE1FcENaNkQzQThHYUhpclBuWndxMjdqWFArcDJHWlhsNEtCMm9UZGhwN1Fs?=
- =?utf-8?B?c1VSR3gwalMvcGViWmVwMDBVeWtFaGZZZ2xHRnVoN2Q4Z0drc3ZqZXVuaWNy?=
- =?utf-8?B?Y2QwTm5EVWZKekF4TXRrSnV1WlBGZnNjTDBxTDBlMzJ0VE9yVFJuVlVOMzcw?=
- =?utf-8?B?RlB1SHI5TklQc3N3TGZ2RzcydWltUkFYTm1abnhtM2VEL1l2UW5zR3lxZHNN?=
- =?utf-8?B?QVN2OHFwZjdjMTd0VCtmdWFLeVBwREt5UjlmVHVjRXR5cVp3ZGlWNFVpS2hm?=
- =?utf-8?B?RkhRVGFKVGdQbjRXT2xTT2lrZXZ5enpXRW1Ha0gwQTRoSFNNTS9oWk1LdTVY?=
- =?utf-8?B?dmJ4MjF6SzRaMkVsbE1HZS83bzArbTRsR2E3THpKamxXMEJ2Q0prVTJ3ekJN?=
- =?utf-8?B?UENsU2dxUUlHS3FOL0w5U3E3OUpUb3B3dWY3aXJNZ3dUZklHVktVS01kaGJa?=
- =?utf-8?B?NXEwM1l0cmlvZWMwTm83SXd6Ym96TFJvNHZiSkN6bFBBWU1ZMmRsN0JUWEI4?=
- =?utf-8?B?R0V2UlNGVGpIeWNmbGpXY1ZwOUxhNFdPVFdIMXAzYmtveHU4OGNVQ1hsY1NG?=
- =?utf-8?B?c0VFQ2FkOWhrY2tpUjg5d3p3NlFKZ0gxbnFLN1cvUUZ6S2ZKb0pmcEtUTCtE?=
- =?utf-8?B?Y1lEc3dITGIvTHZTU2c1WElEbkRTRVhuQmlKam1ZdjdDUFVjQW41YVIrYjVE?=
- =?utf-8?B?K2gwSFMrSnBrWE9Oa2FHTFF4SCtJOWdpVEpaVjB0VW15L3ZoQjZGeTJWaFR4?=
- =?utf-8?B?c0ptUitTaFZPWTdYRElEMkFTVkhmOXhVU0h5LzcrdDEwZUgxNnFRSzJWMDZh?=
- =?utf-8?B?SHVFZTg3Tk9wMTFjcldUei85M3BoKy9LN2gybFh3azg2MWhJVVl0UUt0NFRx?=
- =?utf-8?B?cGRUbTk3RkxjQjFBa1NoM3FuRENVeTBSNmxuU1Y1SjE3NnZmS3JTb0ZTbnpn?=
- =?utf-8?B?NENleTNrWXk4WFArN3Z2UEo4QVJrZGhnek5CL2UzcElCQXJKOHhORTJVdm9Q?=
- =?utf-8?B?OEVXTjJobnYvRVlvWUpncDdHWE9pUDFrN3g4U1VzNlpMOFNuZUpsY1ROQnIw?=
- =?utf-8?B?R2hmQUZQcFRCNU41LzZBMVE0OGtRdVJRSHJ5VDY4ZFpEZXNrNDVkK29NdVVs?=
- =?utf-8?B?aW90VnJVS096NnZqaU5vQjlmMGxzdkFHYldKSHF3cVhrYm5pOFcvZEV6cmZr?=
- =?utf-8?B?WnZqTTMxUXh5VU04Q0o2ZHliT1JVK1BqVzZtcnJoTlViYjYwR25hQT09?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <2A9B3AE08ACE504FA11D2761DA93F383@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	id 1w5PCI-00000003ZXz-297V
+	for linux-mediatek@lists.infradead.org;
+	Wed, 25 Mar 2026 14:27:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1774448820;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=KWGD4hQPLoVQRo9t8LEnKi+4d5KyybuIU/ivYgViFIE=;
+	b=Ghe2LJB2pKpuxoCOozcBCng1z/RofCGJZfkH7o3Yf6jIOWM3cfiylcOmwUEMIjTPSTZnt6
+	2Ubo7F9aXc9U0tq/2tFNdVpmhZDOIvYG2m6L95TLv5kV8gpHJ1xtbluYFugxK678n4BVMO
+	6DeGcvUG0WexF9qOVQszi7YiolBSur4=
+Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
+ [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-460-_wZ8FWsOOBq6efqZLaML_g-1; Wed, 25 Mar 2026 10:26:58 -0400
+X-MC-Unique: _wZ8FWsOOBq6efqZLaML_g-1
+X-Mimecast-MFC-AGG-ID: _wZ8FWsOOBq6efqZLaML_g_1774448818
+Received: by mail-qv1-f69.google.com with SMTP id 6a1803df08f44-89c4d85d619so377270356d6.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 25 Mar 2026 07:26:58 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1774448818; x=1775053618;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=KWGD4hQPLoVQRo9t8LEnKi+4d5KyybuIU/ivYgViFIE=;
+        b=D7vKLx+kDcrz3texbxFvJIJUhchIzpjIrWfwNZQjpRrnERPB2hKmb0A1mp2IZ1BBwC
+         c6aBczELbz/DcWhmxya6iR+Dc3F7cps4WJpQWdTradJhzJrKK9Bt0S4D/zhDV/eYe7Ef
+         RDZFZitvsmbxfu/Rm6rjIJfikR20dQuSruThzihQYAdlT9IgWX1X0FZ6ZB2iCrqnBlT5
+         h+unj941OBFEKGBN1xhmVnGqDM9PVHDgdTT49oMxtP/dIs6QhZ4F/ixRPyAxaIAz70dr
+         prASz2wzJEGjrhLEefuwfiLaeNQxNn3c93EZj7nqx5TCrc093IpvV7w3eD3VeQljpQKK
+         zFcw==
+X-Forwarded-Encrypted: i=1; AJvYcCWugvZJuEC3Qrq4BYm+X+ZzqU18fqFhC/vZ49ZCNYZyUv0qhp9iP3qhPEk19oGRz9lsjtCN+LgIk/7ZBNlSuw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzt/o+QJADrEiAXLdeF5W+wIwKJVRT+68JSlXAborLjVTVOjwBt
+	ycNf7PgCIaWWWu+FkrLC2365B9xsODE7sozGxfIFuRoDgviqJknjiaS8cm0MTWavEhQJdROtGAr
+	t4/pbLBECWgWWRM8QH4JMHWRJWYfN/7cvPVAhh84UyjzUrhiG+ACgmXjnn1C4bggbGAEfKm9GjQ
+	==
+X-Gm-Gg: ATEYQzxa0+uMXOuh6pUrA4kFWCnixoOUgj9zhJIvbnZcj6WWJvw0LbNhp8pgoZfd6oB
+	6yVHC+juik/vWjVyFVEMGOdLPlKvAgEdyNpFQ6xhwNv2js53NqptCM1e7nZax7d+KM7wx+VqQmM
+	MD5Ym6lIOza5Di7KHZP3XfPCN/1xCiIvCEr5AB0QhheZ2PYVSnWFMANc8M+oRZ7nskQqzs/eCMb
+	9sKBs+1YdL6NzqlzJFl1UN00Z8dB8ij2KIqY6O/5nvRtDlOz3m3W6X5EcVbHbYvO5/PThVtGF7b
+	FgqyJFkau2ujr1y14XlHMnX7WFOusTptWCVA6itO23zFzO11ni9WwMKfD+y2g7xBdgYBHART1X6
+	x4/wK82K5Isb0ZhuFgNK+wPm54fSwl3TRMsgTpr+MW8WzKFlBSNjyR/sY
+X-Received: by 2002:a05:6214:319e:b0:89a:b20:9f4e with SMTP id 6a1803df08f44-89cc4a445a8mr52199316d6.17.1774448818305;
+        Wed, 25 Mar 2026 07:26:58 -0700 (PDT)
+X-Received: by 2002:a05:6214:319e:b0:89a:b20:9f4e with SMTP id 6a1803df08f44-89cc4a445a8mr52198596d6.17.1774448817701;
+        Wed, 25 Mar 2026 07:26:57 -0700 (PDT)
+Received: from redhat.com (c-73-183-52-120.hsd1.pa.comcast.net. [73.183.52.120])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-89cad854addsm68276376d6.48.2026.03.25.07.26.55
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 25 Mar 2026 07:26:56 -0700 (PDT)
+Date: Wed, 25 Mar 2026 10:26:54 -0400
+From: Brian Masney <bmasney@redhat.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Stephen Boyd <sboyd@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Frank Binns <frank.binns@imgtec.com>,
+	Matt Coster <matt.coster@imgtec.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Icenowy Zheng <zhengxingda@iscas.ac.cn>,
+	Icenowy Zheng <icenowy@aosc.io>, David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>, linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 2/5] clk: mediatek: Add mt8173-mfgtop driver
+Message-ID: <acPwruNQpLQg7W2A@redhat.com>
+References: <20260325071951.544031-1-wenst@chromium.org>
+ <20260325071951.544031-3-wenst@chromium.org>
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: VGaMEbFN7/RvRRIsU5oV4LZLSWyc2l9Ie+8DGJcf5vsGlHJ6Os7dMQxI6SrbP13gD+2tXNeTu/49NK0EwZxcSFm39GTRuAuyvwL6GYMNJvD33u3d6u402peJcOfNl6oehLGiZeb1Sk/pNdwyTeZUtNOXJA+YR2shc3urqP5d3nU29Mo8XoT+jm0X61vmtnedYJCUMD0I4nmVlr21wZLwc1vW7l8Nb11PUCvHdnXhXETCRJ5RlpfziGyRiRySU15HwwpSCwI9db9Nlkpy/jDG7RGv6iZHz3GQrHjfyGyGS70+QgsqwbqZ/WwkqbDUQOdk444WLvY/EHXhACcmTCXlaA==
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB8136.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f3a290bb-0421-47ab-9663-08de8a722792
-X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Mar 2026 13:26:42.7719
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 7TxE0cdXAvOjUcJm0j4Vg/tUP4VtVKdSoooqPZE8BJBToY1jji1tN1NbLihLmGI1WSdPMT61FSXU0rg+UuAvDQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: JH0PR03MB7655
+In-Reply-To: <20260325071951.544031-3-wenst@chromium.org>
+User-Agent: Mutt/2.3.0 (2026-01-25)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: fZR4aOweEjreOYuYJVBQ0Sna_iHKxOK_ltMiHuc1630_1774448818
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260325_062654_894429_606A4AAC 
-X-CRM114-Status: GOOD (  19.96  )
+X-CRM114-CacheID: sfid-20260325_072702_696044_82C455DF 
+X-CRM114-Status: GOOD (  34.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -190,37 +121,325 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCAyMDI2LTAzLTI1IGF0IDA5OjE3ICswMTAwLCBLcnp5c3p0b2YgS296bG93c2tpIHdy
-b3RlOg0KPiBPbiBUdWUsIE1hciAyNCwgMjAyNiBhdCAwODo1MTo1N1BNICswODAwLCBKYXkgTGl1
-IHdyb3RlOg0KPiA+IENoYW5nZSBpbiB2NDoNCj4gPiAtIEFkZHJlc3MgY29kaW5nIHN0eWxlIGNv
-bW1lbnRzIGZvciBkaXNwLXRkc2hwIGJpbmRpbmcuIA0KPiANCj4gQ29kaW5nIHN0eWxlPyBXaHkg
-c28gdmFndWU/IFNvIGRvZXMgdGhhdCBtZWFuIHlvdSBpZ25vcmVkIGFsbA0KPiBpbXBvcnRhbnQN
-Cj4gY2hhbmdlcyBidXQgZGlkIHRoZSAic3R5bGUiIHRoaW5ncz8NCj4gDQo+ID4gLSBSZWJhc2Ug
-Y2NvcnIgZHJpdmVyIHBhdGNoIG9uIHRvcCBvZiBsYXRlc3QgbGludXgtbmV4dCB0byBmaXgNCj4g
-PiBjb25maWN0cy4NCj4gDQo+IFdoZXJlIGlzIHRoZSByZXN0IG9mIHRoZSBjaGFuZ2VnbG9nPw0K
-PiANCj4gV2h5IGFyZW4ndCB5b3UgdXNpbmcgYjQgdG8gcHJvdmlkZSBhbHNvIGxvcmUgbGlua3Mg
-YW5kIHNvbHZlIGFib3ZlDQo+IHByb2JsZW0/DQo+IA0KPiBCZXN0IHJlZ2FyZHMsDQo+IEtyenlz
-enRvZg0KPiANCg0KRGVhciBLcnp5c3p0b2YsDQoNCkkgc2luY2VyZWx5IGFwb2xvZ2l6ZSBmb3Ig
-dGhlIGNvbmZ1c2lvbiBjYXVzZWQgYnkgbXkgdmFndWUgY2hhbmdlbG9nLg0KTXkgaW50ZW50aW9u
-IHdhcyB0byBiZSBjb25jaXNlLCBidXQgSSByZWFsaXplIGl0IG1hZGUgaXQgbG9vayBsaWtlIEkN
-Cmlnbm9yZWQgeW91ciB0ZWNobmljYWwgZmVlZGJhY2ssIHdoaWNoIHdhcyBub3QgdGhlIGNhc2Uu
-DQoNCkkgaGF2ZSBhY3R1YWxseSBpbXBsZW1lbnRlZCB0aGUgY2hhbmdlcyB5b3UgcmVxdWVzdGVk
-IGluIHYzLiBIZXJlIGlzDQp0aGUgZGV0YWlsZWQgYnJlYWtkb3duIG9mIHdoYXQgd2FzIGZpeGVk
-IGluIHY0Og0KDQoxLiBTaWJsaW5nIGRlc2NyaXB0aW9uOiBSZW1vdmVkIGFzIHN1Z2dlc3RlZC4N
-CjIuIEVudW06IERyb3BwZWQgdGhlIGl0ZW1zIGxpc3QgYW5kIHVzZWQgZW51bSBkaXJlY3RseS4N
-CjMuIEZvcm1hdHRpbmc6IFJlbW92ZWQgdGhlIGV4dHJhIGJsYW5rIGxpbmUgYW5kIGZpeGVkIHRo
-ZSBpbmRlbnRhdGlvbg0KaW4gdGhlIGV4YW1wbGUgc2VjdGlvbi4NCg0KUmVnYXJkaW5nIHRoZSBO
-b2RlIE5hbWUgKGRpc3AtdGRzaHApOg0KVGhpcyB3YXMgdGhlIG9ubHkgaXRlbSBJIGhlc2l0YXRl
-ZCB0byBjaGFuZ2UuICJ0ZHNocCIgc3RhbmRzIGZvciAiMkQNCnNoYXJwbmVzcyIsIGFuZCBJIGtl
-cHQgaXQgdG8gYWxpZ24gd2l0aCBNZWRpYVRlaydzIGludGVybmFsIG5hbWluZy4NCkhvd2V2ZXIs
-IEkgdW5kZXJzdGFuZCB0aGUgdXBzdHJlYW0gcmVxdWlyZW1lbnQgZm9yIGdlbmVyaWMgbmFtZXMu
-IFNpbmNlDQp0aGlzIGlzIGEgc2hhcnBuZXNzIGVuZ2luZSwgd291bGQgeW91IHByZWZlciAic2hh
-cnBuZXNzLXByb2Nlc3NvciIgb3INCnNvbWV0aGluZyBzaW1pbGFyPw0KDQpBbmQgVGhhbmsgeW91
-IGZvciB0aGUgcmVjb21tZW5kYXRpb24gcmVnYXJkaW5nIGI0LiBJIHdpbGwgc2V0IGl0IHVwIGZv
-cg0KZnV0dXJlIHN1Ym1pc3Npb25zIHRvIGVuc3VyZSBsb3JlIGxpbmtzIGFuZCBjaGFuZ2Vsb2dz
-IGFyZSBnZW5lcmF0ZWQNCmNvcnJlY3RseS4NCg0KSSB3aWxsIHNlbmQgYSB2NSB3aXRoIGEgcHJv
-cGVyIGNoYW5nZWxvZyBhbmQgdGhlIG5vZGUgbmFtZSB1cGRhdGUgb25jZQ0Kd2UgYWdyZWUgb24g
-dGhlIG5hbWUuDQoNClBsZWFzZSBsZXQgbWUga25vdyBpZiBJIG1pc3NlZCBhbnkgb3RoZXIgY29t
-bWVudHMgb3IgaWYgeW91IGhhdmUNCmZ1cnRoZXIgc3VnZ2VzdGlvbnMuIEkgd2lsbCBkbyBteSBi
-ZXN0IHRvIGFkZHJlc3MgdGhlbS4NCg0KQmVzdCByZWdhcmRzLA0KSmF5DQo=
+On Wed, Mar 25, 2026 at 03:19:46PM +0800, Chen-Yu Tsai wrote:
+> The MFG (GPU) block on the MT8173 has a small glue layer, named MFG_TOP
+> in the datasheet, that contains clock gates, some power sequence signal
+> delays, and other unknown registers that get toggled when the GPU is
+> powered on.
+> 
+> The clock gates are exposed as clocks provided by a clock controller,
+> while the power sequencing bits are exposed as one singular power domain.
+> 
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+> Changes since v1:
+> - Reduce tab after GATE_MFG() by one tab
+> - Move of_match_clk_mt8173_mfgtop to just before clk_mt8173_mfgtop_drv
+> - Rename power domain to "mfg-top"
+> - Add FORCE_ABORT and ACTIVE_PWRCTL_EN bits and explicitly clear
+>   ACTIVE_PWRCTL_EN bit
+> ---
+>  drivers/clk/mediatek/Kconfig             |   9 +
+>  drivers/clk/mediatek/Makefile            |   1 +
+>  drivers/clk/mediatek/clk-mt8173-mfgtop.c | 243 +++++++++++++++++++++++
+>  3 files changed, 253 insertions(+)
+>  create mode 100644 drivers/clk/mediatek/clk-mt8173-mfgtop.c
+> 
+> diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+> index 2c09fd729bab..8dbd9f14be62 100644
+> --- a/drivers/clk/mediatek/Kconfig
+> +++ b/drivers/clk/mediatek/Kconfig
+> @@ -537,6 +537,15 @@ config COMMON_CLK_MT8173_IMGSYS
+>  	help
+>  	  This driver supports MediaTek MT8173 imgsys clocks.
+>  
+> +config COMMON_CLK_MT8173_MFGTOP
+> +	tristate "Clock and power driver for MediaTek MT8173 mfgtop"
+> +	depends on COMMON_CLK_MT8173
+> +	default COMMON_CLK_MT8173
+> +	select PM_GENERIC_DOMAINS
+> +	select PM_GENERIC_DOMAINS_OF
+> +	help
+> +	  This driver supports MediaTek MT8173 mfgtop clocks and power domain.
+> +
+>  config COMMON_CLK_MT8173_MMSYS
+>         tristate "Clock driver for MediaTek MT8173 mmsys"
+>         depends on COMMON_CLK_MT8173
+> diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+> index d8736a060dbd..892a54eeb281 100644
+> --- a/drivers/clk/mediatek/Makefile
+> +++ b/drivers/clk/mediatek/Makefile
+> @@ -82,6 +82,7 @@ obj-$(CONFIG_COMMON_CLK_MT8167_VDECSYS) += clk-mt8167-vdec.o
+>  obj-$(CONFIG_COMMON_CLK_MT8173) += clk-mt8173-apmixedsys.o clk-mt8173-infracfg.o \
+>  				   clk-mt8173-pericfg.o clk-mt8173-topckgen.o
+>  obj-$(CONFIG_COMMON_CLK_MT8173_IMGSYS) += clk-mt8173-img.o
+> +obj-$(CONFIG_COMMON_CLK_MT8173_MFGTOP) += clk-mt8173-mfgtop.o
+>  obj-$(CONFIG_COMMON_CLK_MT8173_MMSYS) += clk-mt8173-mm.o
+>  obj-$(CONFIG_COMMON_CLK_MT8173_VDECSYS) += clk-mt8173-vdecsys.o
+>  obj-$(CONFIG_COMMON_CLK_MT8173_VENCSYS) += clk-mt8173-vencsys.o
+> diff --git a/drivers/clk/mediatek/clk-mt8173-mfgtop.c b/drivers/clk/mediatek/clk-mt8173-mfgtop.c
+> new file mode 100644
+> index 000000000000..9e18f34166ae
+> --- /dev/null
+> +++ b/drivers/clk/mediatek/clk-mt8173-mfgtop.c
+> @@ -0,0 +1,243 @@
+> +// SPDX-License-Identifier: GPL-2.0-only
+> +/*
+> + * Copyright (c) 2024 Google LLC
+> + * Author: Chen-Yu Tsai <wenst@chromium.org>
+> + *
+> + * Based on driver in downstream ChromeOS v5.15 kernel.
+> + *
+> + * Copyright (c) 2014 MediaTek Inc.
+> + * Author: Chiawen Lee <chiawen.lee@mediatek.com>
+> + */
+> +
+> +#include <dt-bindings/clock/mt8173-clk.h>
+> +
+> +#include <linux/bitfield.h>
+> +#include <linux/clk.h>
+> +#include <linux/mfd/syscon.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/pm_domain.h>
+> +#include <linux/pm_runtime.h>
+> +#include <linux/regmap.h>
+> +
+> +#include "clk-gate.h"
+> +#include "clk-mtk.h"
+> +
+> +static const struct mtk_gate_regs mfg_cg_regs = {
+> +	.sta_ofs = 0x0000,
+> +	.clr_ofs = 0x0008,
+> +	.set_ofs = 0x0004,
+> +};
+> +
+> +#define GATE_MFG(_id, _name, _parent, _shift, _flags)	\
+> +	GATE_MTK_FLAGS(_id, _name, _parent, &mfg_cg_regs, _shift, &mtk_clk_gate_ops_setclr, _flags)
+> +
+> +/* TODO: The block actually has dividers for the core and mem clocks. */
+> +static const struct mtk_gate mfg_clks[] = {
+> +	GATE_MFG(CLK_MFG_AXI, "mfg_axi", "axi_mfg_in_sel", 0, CLK_SET_RATE_PARENT),
+> +	GATE_MFG(CLK_MFG_MEM, "mfg_mem", "mem_mfg_in_sel", 1, CLK_SET_RATE_PARENT),
+> +	GATE_MFG(CLK_MFG_G3D, "mfg_g3d", "mfg_sel", 2, CLK_SET_RATE_PARENT),
+> +	GATE_MFG(CLK_MFG_26M, "mfg_26m", "clk26m", 3, 0),
+> +};
+> +
+> +static const struct mtk_clk_desc mfg_desc = {
+> +	.clks = mfg_clks,
+> +	.num_clks = ARRAY_SIZE(mfg_clks),
+> +};
+> +
+> +struct mt8173_mfgtop_data {
+> +	struct clk_hw_onecell_data *clk_data;
+> +	struct regmap *regmap;
+> +	struct generic_pm_domain genpd;
+> +	struct of_phandle_args parent_pd, child_pd;
+> +	struct clk *clk_26m;
+> +};
+> +
+> +/* Delay count in clock cycles */
+> +#define MFG_ACTIVE_POWER_CON0	0x24
+> + #define RST_B_DELAY_CNT	GENMASK(7, 0)	/* pwr_rst_b de-assert delay during power-up */
+> + #define CLK_EN_DELAY_CNT	GENMASK(15, 8)	/* CLK_DIS deassert delay during power-up */
+> + #define CLK_DIS_DELAY_CNT	GENMASK(23, 16)	/* CLK_DIS assert delay during power-down */
+> + #define FORCE_ABORT		BIT(30)		/* write 1 to force abort a power event */
+> + #define ACTIVE_PWRCTL_EN	BIT(31)		/* enable ACTIVE_POWER */
+> +
+> +#define MFG_ACTIVE_POWER_CON1	0x28
+> + #define PWR_ON_S_DELAY_CNT	GENMASK(7, 0)	/* pwr_on_s assert delay during power-up */
+> + #define ISO_DELAY_CNT		GENMASK(15, 8)	/* ISO assert delay during power-down */
+> + #define ISOOFF_DELAY_CNT	GENMASK(23, 16)	/* ISO de-assert delay during power-up */
+> + #define RST__DELAY_CNT		GENMASK(31, 24) /* pwr_rsb_b assert delay during power-down */
+
+Is the double underscore expected in the name?
+
+> +
+> +static int clk_mt8173_mfgtop_power_on(struct generic_pm_domain *domain)
+> +{
+> +	struct mt8173_mfgtop_data *data = container_of(domain, struct mt8173_mfgtop_data, genpd);
+> +
+> +	/* drives internal power management */
+> +	clk_prepare_enable(data->clk_26m);
+> +
+> +	/* Power on/off delays for various signals */
+> +	regmap_write(data->regmap, MFG_ACTIVE_POWER_CON0,
+
+Should the return value of clk_prepare_enable() and regmap_write() be
+checked?
+
+> +		     FIELD_PREP(RST_B_DELAY_CNT, 77) |
+> +		     FIELD_PREP(CLK_EN_DELAY_CNT, 61) |
+> +		     FIELD_PREP(CLK_DIS_DELAY_CNT, 60) |
+> +		     FIELD_PREP(ACTIVE_PWRCTL_EN, 0));
+> +	regmap_write(data->regmap, MFG_ACTIVE_POWER_CON1,
+> +		     FIELD_PREP(PWR_ON_S_DELAY_CNT, 11) |
+> +		     FIELD_PREP(ISO_DELAY_CNT, 68) |
+> +		     FIELD_PREP(ISOOFF_DELAY_CNT, 69) |
+> +		     FIELD_PREP(RST__DELAY_CNT, 77));
+> +
+> +	/* Magic numbers related to core switch sequence and delays */
+> +	regmap_write(data->regmap, 0xe0, 0x7a710184);
+> +	regmap_write(data->regmap, 0xe4, 0x835f6856);
+> +	regmap_write(data->regmap, 0xe8, 0x002b0234);
+> +	regmap_write(data->regmap, 0xec, 0x80000000);
+> +	regmap_write(data->regmap, 0xa0, 0x08000000);
+> +
+> +	return 0;
+> +}
+> +
+> +static int clk_mt8173_mfgtop_power_off(struct generic_pm_domain *domain)
+> +{
+> +	struct mt8173_mfgtop_data *data = container_of(domain, struct mt8173_mfgtop_data, genpd);
+> +
+> +	/* Magic numbers related to core switch sequence and delays */
+> +	regmap_write(data->regmap, 0xec, 0);
+> +
+> +	/* drives internal power management */
+> +	clk_disable_unprepare(data->clk_26m);
+> +
+> +	return 0;
+> +}
+> +
+> +static int clk_mt8173_mfgtop_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct device_node *node = dev->of_node;
+> +	struct mt8173_mfgtop_data *data;
+> +	int ret;
+> +
+> +	data = devm_kzalloc(dev, sizeof(*data), GFP_KERNEL);
+> +	if (!data)
+> +		return -ENOMEM;
+> +
+> +	platform_set_drvdata(pdev, data);
+> +
+> +	data->clk_data = mtk_devm_alloc_clk_data(dev, ARRAY_SIZE(mfg_clks));
+> +	if (!data->clk_data)
+> +		return -ENOMEM;
+> +
+> +	/* MTK clock gates also uses regmap */
+> +	data->regmap = device_node_to_regmap(node);
+> +	if (IS_ERR(data->regmap))
+> +		return dev_err_probe(dev, PTR_ERR(data->regmap), "Failed to get regmap\n");
+> +
+> +	data->child_pd.np = node;
+> +	data->child_pd.args_count = 0;
+> +	ret = of_parse_phandle_with_args(node, "power-domains", "#power-domain-cells", 0,
+> +					 &data->parent_pd);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "Failed to parse power domain\n");
+> +
+> +	devm_pm_runtime_enable(dev);
+> +	/*
+> +	 * Do a pm_runtime_resume_and_get() to workaround a possible
+> +	 * deadlock between clk_register() and the genpd framework.
+> +	 */
+> +	ret = pm_runtime_resume_and_get(dev);
+> +	if (ret) {
+> +		dev_err_probe(dev, ret, "Failed to runtime resume device\n");
+> +		goto put_of_node;
+> +	}
+> +
+> +	ret = mtk_clk_register_gates(dev, node, mfg_clks, ARRAY_SIZE(mfg_clks),
+> +				     data->clk_data);
+> +	if (ret) {
+> +		dev_err_probe(dev, ret, "Failed to register clock gates\n");
+> +		goto put_pm_runtime;
+> +	}
+> +
+> +	data->clk_26m = clk_hw_get_clk(data->clk_data->hws[CLK_MFG_26M], "26m");
+> +	if (IS_ERR(data->clk_26m)) {
+> +		dev_err_probe(dev, PTR_ERR(data->clk_26m), "Failed to get 26 MHz clock\n");
+> +		goto unregister_clks;
+> +	}
+> +
+> +	ret = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, data->clk_data);
+> +	if (ret) {
+> +		dev_err_probe(dev, ret, "Failed to add clk OF provider\n");
+> +		goto put_26m_clk;
+> +	}
+> +
+> +	data->genpd.name = "mfg-top";
+> +	data->genpd.power_on = clk_mt8173_mfgtop_power_on;
+> +	data->genpd.power_off = clk_mt8173_mfgtop_power_off;
+> +	ret = pm_genpd_init(&data->genpd, NULL, true);
+> +	if (ret) {
+> +		dev_err_probe(dev, ret, "Failed to add power domain\n");
+> +		goto del_clk_provider;
+> +	}
+> +
+> +	ret = of_genpd_add_provider_simple(node, &data->genpd);
+> +	if (ret) {
+> +		dev_err_probe(dev, ret, "Failed to add power domain OF provider\n");
+> +		goto remove_pd;
+> +	}
+> +
+> +	ret = of_genpd_add_subdomain(&data->parent_pd, &data->child_pd);
+> +	if (ret) {
+> +		dev_err_probe(dev, ret, "Failed to link PM domains\n");
+> +		goto del_pd_provider;
+> +	}
+> +
+> +	pm_runtime_put(dev);
+> +	return 0;
+> +
+> +del_pd_provider:
+> +	of_genpd_del_provider(node);
+> +remove_pd:
+> +	pm_genpd_remove(&data->genpd);
+> +del_clk_provider:
+> +	of_clk_del_provider(node);
+> +put_26m_clk:
+> +	clk_put(data->clk_26m);
+> +unregister_clks:
+> +	mtk_clk_unregister_gates(mfg_clks, ARRAY_SIZE(mfg_clks), data->clk_data);
+> +put_pm_runtime:
+> +	pm_runtime_put(dev);
+> +put_of_node:
+> +	of_node_put(data->parent_pd.np);
+> +	return ret;
+> +}
+> +
+> +static void clk_mt8173_mfgtop_remove(struct platform_device *pdev)
+> +{
+> +	struct mt8173_mfgtop_data *data = platform_get_drvdata(pdev);
+> +	struct device_node *node = pdev->dev.of_node;
+> +
+> +	of_genpd_remove_subdomain(&data->parent_pd, &data->child_pd);
+> +	of_genpd_del_provider(node);
+> +	pm_genpd_remove(&data->genpd);
+> +	of_clk_del_provider(node);
+> +	clk_put(data->clk_26m);
+> +	mtk_clk_unregister_gates(mfg_clks, ARRAY_SIZE(mfg_clks), data->clk_data);
+> +}
+> +
+> +static const struct of_device_id of_match_clk_mt8173_mfgtop[] = {
+> +	{ .compatible = "mediatek,mt8173-mfgtop", .data = &mfg_desc },
+
+Is the match data and mfg_desc used?
+
+Brian
+
+> +	{ /* sentinel */ }
+> +};
+> +MODULE_DEVICE_TABLE(of, of_match_clk_mt8173_mfgtop);
+> +
+> +static struct platform_driver clk_mt8173_mfgtop_drv = {
+> +	.probe = clk_mt8173_mfgtop_probe,
+> +	.remove = clk_mt8173_mfgtop_remove,
+> +	.driver = {
+> +		.name = "clk-mt8173-mfgtop",
+> +		.of_match_table = of_match_clk_mt8173_mfgtop,
+> +	},
+> +};
+> +module_platform_driver(clk_mt8173_mfgtop_drv);
+> +
+> +MODULE_DESCRIPTION("MediaTek MT8173 mfgtop clock driver");
+> +MODULE_LICENSE("GPL");
+> -- 
+> 2.53.0.1018.g2bb0e51243-goog
+> 
+
 
