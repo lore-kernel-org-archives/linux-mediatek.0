@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96CCEFEA808
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2026 03:58:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74790FEA809
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2026 03:59:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=3bOdphtuowCR6PCgjWzhhXsj3t6e4lkXWBO8mqxyGy4=; b=PP7H6jZjEoiA7XjpkHuepBXP6T
-	lGLJfoXcOP6h4wECcjAKTi8gdKNTwvdy5f596EM3X6u1UQnD6RFgW+trrFzEqtLvOwYRNX1NZbQxi
-	yM9aoOEXEW2sjbwVAJPv8z/aYcmeo3BAEjrCAITdkBRHmxruqshlnl1YsdOitDAOFPB/oD5LLLuf1
-	7MxWGLEUKc2UeIS4SlmZ/cV99dcXW3YEcdQjhz9Wz2i7Gix9PdnrKOJD50yTThSjm5bjEW351Q7eE
-	yZ2m4Q5dcQwO0+HVnKYm3Rm6IT5GQq9RX4ljMgR35LsvWeBaoRzz/RmAwSU6ZepZff0cKCV9y/lJy
-	zGElc0nQ==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mrXKcBdRPrRQpsmgZp3qH7cul05vLsZIIetTaWP3sms=; b=ts0pGtdNgGY2v1iereUKZVwMxA
+	w3HkxjswTlRZWptzEGbvYn69kzdDOMZ9Mbrct0n7u6fWZjG8Pe6ehnGWCPgHBbfTATFbJYX72JNF7
+	bqzrBqknhLR7VxOflR8Pb4fTQE637rMig9qCaLHK7NIAKbDueHliGoVkf/bgZtKtdcgve2nBMbs3Y
+	jGaj3vZ60E0sIvAGjwHtQOK0N3F867snBhdbD7yLRBve+m5KoPXEZaMH3qDcL5kvFwHJlCctodPM8
+	Monr660zNFl5TIW8I2uXbmMYeP7sGU/wQJFzWwdS6TpivKWx0cfC4XFX2r7qK97WVxCFL6gky8er2
+	kEcvRJ7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5FOS-00000002crr-2lkE;
-	Wed, 25 Mar 2026 03:58:56 +0000
+	id 1w5FOY-00000002cwE-2441;
+	Wed, 25 Mar 2026 03:59:02 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5FOP-00000002cos-3ahJ;
-	Wed, 25 Mar 2026 03:58:54 +0000
-X-UUID: ec34413e27fe11f1a6de359d7043e138-20260324
+	id 1w5FOQ-00000002coz-1KT2;
+	Wed, 25 Mar 2026 03:58:55 +0000
+X-UUID: ec66766827fe11f1a6de359d7043e138-20260324
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=3bOdphtuowCR6PCgjWzhhXsj3t6e4lkXWBO8mqxyGy4=;
-	b=GtIRqvVjd1yxETezQ1LIY/RO36HquPS1TZDY0ggOuwUyb0h+zthK60jaB/xk8VIe4IE2KYQgKgboNOeRKr/gcn0k5LCts+5MeAgWZvvuPw8Tl5BSdR9haGOB/DB08sD9VnOVpKP7wEybLPQRi+uwfd9r2IBYyd6IaQj/RO0hfUA=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=mrXKcBdRPrRQpsmgZp3qH7cul05vLsZIIetTaWP3sms=;
+	b=FRh4dIs7+OArKnw/0t53vGM7GovLsJsqrz1TvNZ+h7lpf1lrQyOTlS3w4BTwH1K5DV96AVi7UBb/hQ7P6VNW0HwjyLkVLApPXVNy5aQqQViGlOR4EXCWc+aiXDpeJqBeKC91IGZWTHdaZZ4XGBUO3dkPUuKYjLqtDZvyLUODs0Y=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:148eaa6a-e7bb-4913-937f-51c192ab2941,IP:0,U
+X-CID-O-INFO: VERSION:1.3.12,REQID:aad8dae5-4211-40eb-9b84-6fd7facd9f79,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:e7bac3a,CLOUDID:7d371ad5-060f-4ecc-9ee0-121eeeb4a682,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
-	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA
-	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:e7bac3a,CLOUDID:e9a42d94-f8ef-4ca8-bea0-143568f9ca1d,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
+	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
+	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: ec34413e27fe11f1a6de359d7043e138-20260324
+X-UUID: ec66766827fe11f1a6de359d7043e138-20260324
 Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
 	(envelope-from <jason-jh.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1971428070; Tue, 24 Mar 2026 20:58:46 -0700
+	with ESMTP id 1032144884; Tue, 24 Mar 2026 20:58:46 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 25 Mar 2026 11:58:43 +0800
+ 15.2.2562.29; Wed, 25 Mar 2026 11:58:44 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
  15.2.2562.29 via Frontend Transport; Wed, 25 Mar 2026 11:58:43 +0800
@@ -59,18 +59,19 @@ To: Jassi Brar <jassisinghbrar@gmail.com>, Chun-Kuang Hu
 	<chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
 	<angelogioacchino.delregno@collabora.com>, Nicolas Dufresne
 	<nicolas@ndufresne.ca>, Mauro Carvalho Chehab <mchehab@kernel.org>
-Subject: [PATCH v2 0/5] Migrate soc, drm-mediatek, mdp3 to new CMDQ APIs (series 2/4)
-Date: Wed, 25 Mar 2026 11:57:37 +0800
-Message-ID: <20260325035836.2110757-1-jason-jh.lin@mediatek.com>
+Subject: [PATCH v2 2/5] soc: mediatek: mtk-cmdq: Add cmdq_pkt_jump_rel_temp() for removing shift_pa
+Date: Wed, 25 Mar 2026 11:57:39 +0800
+Message-ID: <20260325035836.2110757-3-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20260325035836.2110757-1-jason-jh.lin@mediatek.com>
+References: <20260325035836.2110757-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260324_205853_896351_9A599DD9 
-X-CRM114-Status: UNSURE (   9.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260324_205854_363991_3932A2F2 
+X-CRM114-Status: GOOD (  12.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,44 +87,59 @@ Cc: Moudy Ho <moudy.ho@mediatek.com>, Xiandong Wang <xiandong.wang@mediatek.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series migrates the MediaTek SoC, DRM, and MDP3 drivers to the new
-CMDQ APIs introduced for MT8196.
+Since shift_pa will be stored into the cmdq_mobx_priv of cmdq_pkt, all
+the shif_pa parameters in CMDQ helper APIs can be removed.
 
-Series application order:
-  1. [Series V2 2/4] Migrate subsystems to new CMDQ APIs (this series)
-  2. [Series V2 3/4] Remove shift_pa from CMDQ jump functions
-  3. [Series V2 4/4] Remove deprecated CMDQ APIs
+Add cmdq_pkt_jump_rel_temp() for the current users of cmdq_pkt_jump_rel(),
+and then remove shift_pa after all users have migrated to the new APIs.
 
-Please apply this series after the MT8196 GCE support series,
-and before the following series.
-
+Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
 ---
+ include/linux/soc/mediatek/mtk-cmdq.h | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
 
-Change in v2:
-1. Rebase on linux-next
-2. Fix build error of -EINVAL in patch2.
-
----
-
-Jason-JH Lin (5):
-  soc: mediatek: Use pkt_write function pointer for subsys ID
-    compatibility
-  soc: mediatek: mtk-cmdq: Add cmdq_pkt_jump_rel_temp() for removing
-    shift_pa
-  drm/mediatek:Use reg_write function pointer for subsys ID
-    compatibility
-  media: platform: mtk-mdp3: Refactor CMDQ writes for CMDQ API change
-  media: platform: mtk-mdp3: Change cmdq_pkt_jump_rel() to
-    cmdq_pkt_jump_rel_temp()
-
- drivers/gpu/drm/mediatek/mtk_ddp_comp.c       | 12 +++++-----
- .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    |  6 ++---
- .../platform/mediatek/mdp3/mtk-mdp3-comp.h    |  6 ++---
- drivers/soc/mediatek/mtk-mmsys.c              |  8 ++++---
- drivers/soc/mediatek/mtk-mutex.c              |  5 ++--
- include/linux/soc/mediatek/mtk-cmdq.h         | 24 +++++++++++++++++++
- 6 files changed, 44 insertions(+), 17 deletions(-)
-
+diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
+index a06b5a61f337..03bb85462566 100644
+--- a/include/linux/soc/mediatek/mtk-cmdq.h
++++ b/include/linux/soc/mediatek/mtk-cmdq.h
+@@ -445,6 +445,24 @@ static inline int cmdq_pkt_jump(struct cmdq_pkt *pkt, dma_addr_t addr, u8 shift_
+  */
+ int cmdq_pkt_jump_rel(struct cmdq_pkt *pkt, s32 offset, u8 shift_pa);
+ 
++/**
++ * cmdq_pkt_jump_rel_temp() - Temporary wrapper for new CMDQ helper API
++ * @pkt:	the CMDQ packet
++ * @offset:	relative offset of target instruction buffer from current PC.
++ * @shift_pa:	[DEPRECATED] shift bits of physical address in CMDQ instruction.
++ *		This value is got by cmdq_get_shift_pa().
++ *
++ * This function is a temporary wrapper that was introduced only for ease of
++ * migration of the many users of the CMDQ API located in multiple kernel
++ * subsystems.
++ *
++ * This has to be removed after all users are migrated to the newer CMDQ API.
++ */
++static inline int cmdq_pkt_jump_rel_temp(struct cmdq_pkt *pkt, s32 offset, u8 shift_pa)
++{
++	return cmdq_pkt_jump_rel(pkt, offset, shift_pa);
++}
++
+ /**
+  * cmdq_pkt_eoc() - Append EOC and ask GCE to generate an IRQ at end of execution
+  * @pkt:	The CMDQ packet
+@@ -599,6 +617,12 @@ static inline int cmdq_pkt_jump_rel(struct cmdq_pkt *pkt, s32 offset, u8 shift_p
+ 	return -EINVAL;
+ }
+ 
++/* This wrapper has to be removed after all users migrated to jump_rel */
++static inline int cmdq_pkt_jump_rel_temp(struct cmdq_pkt *pkt, s32 offset, u8 shift_pa)
++{
++	return -EINVAL;
++}
++
+ static inline int cmdq_pkt_eoc(struct cmdq_pkt *pkt)
+ {
+ 	return -EINVAL;
 -- 
 2.43.0
 
