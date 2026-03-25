@@ -4,94 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 267F0109E524
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2026 22:12:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A442D109E523
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2026 22:12:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Cc:To
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n7RyoRF58WkVZqJnuoOO9YEr75upIQgc4Q8y20FVoJo=; b=kcf4keIKIG9QwMA+lqAHx/FpOm
-	e9DRT/6AoyqkYfx2V5Q7SV2kWY2wBXpOuyIeKCehjCNllkApedYxU6Jt6vAMX2K/XaR1qGN1yV5fy
-	vVbyim4FtLUNeraalSjSQNXU1hLQMxak9m/HPP5lhPlw5GUZwAF9gJB7QySib11FdN6f8q1lo9NTF
-	8M5L3lBTAYe49DD6v851B5XReeBkKDTsX4XJCoUBuoPp79YmoLXyAI7nEeTjoZ+X5/p77AmlNlVUI
-	yxIm2xDmpCXn6+YbemKycfIk5Vq+RASglwII5ML6O4/drJ946sgdpsfRYVELCwpqMEG/ZJCLp0Y90
-	K2dUX9SQ==;
+	bh=M6mqwUzvrAper/bN3xuewcXmVlq92pIpxYo4QqPfYVo=; b=pqRRVgjZyqXNs6wcAvFaQogkxZ
+	YFBYjXEKVt9h9HIyJUb9F9cr6z7AMPftjrU45MCn8j7WdoMePzt3+3s604nrB85D6VbQ/vc7kt/Be
+	eQcWs/2japwwLYHeTeTEJa2koBr20ZD2g+IJeM9wA7f7r5UngUxGMtQt//xSRLVvpBVBZ7/YeGg3T
+	hu9P/l4PAerzhB2frQvYN0A6+2WNvn+WlO91o4yx8jI2GwFjb/ikFNX62FPqNJABfIPbo3pqke1i8
+	qBG1ny60Vqy/tmDwSuo8RWJ+MMowJMMeX+wguUmj+FDRVTaoYhkQRyoN/rj279bsqnkVhTDsnGvMJ
+	KnGlVCZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5WSH-00000004Kjy-05kA;
-	Wed, 25 Mar 2026 22:12:01 +0000
-Received: from fout-b6-smtp.messagingengine.com ([202.12.124.149])
+	id 1w5WSJ-00000004Kms-1wBp;
+	Wed, 25 Mar 2026 22:12:03 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5WRa-00000004K5G-3Wvf;
-	Wed, 25 Mar 2026 22:11:23 +0000
+	id 1w5WRu-00000004KQ7-3xDs;
+	Wed, 25 Mar 2026 22:11:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=References:In-Reply-To:Cc:To:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=M6mqwUzvrAper/bN3xuewcXmVlq92pIpxYo4QqPfYVo=; b=nSFE68HStqzGhbE//XJtgwS5gt
+	uBrpCukJ8rOANTqwCYXbcsebFF/b5VlOQ+c9YcoKpxeI3xVpMtdXTks8SbsLVYUQjapO/GbATx+7k
+	QU4USrb/XcNW1JPns489KwvMDfw+tL3v2/OKuxDG4wP/tRHWSqsST4gad1QqIYKb8KJE0EXMHxLZk
+	AfGP2scpq8fa0NMxyFeZehil1mZi8Bi+pb/T+5qKo3ufgwx+M9onDD/B3HVJX+clp6bjZJGZ7VVPw
+	sN1iwcw72eOTEZam0GeC0C+BLGf6qI+G+x7P9MX+WzrhgaJUYUYCFMxuPT+I+v60J34oHSbNx1orE
+	sgM6GL6g==;
+Received: from flow-b6-smtp.messagingengine.com ([202.12.124.141])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1w5WRi-0000000798w-1mwU;
+	Wed, 25 Mar 2026 22:11:37 +0000
 Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
-	by mailfout.stl.internal (Postfix) with ESMTP id 5B6C11D00168;
-	Wed, 25 Mar 2026 18:11:17 -0400 (EDT)
+	by mailflow.stl.internal (Postfix) with ESMTP id EC6C1130053C;
+	Wed, 25 Mar 2026 18:11:18 -0400 (EDT)
 Received: from phl-imap-07 ([10.202.2.97])
-  by phl-compute-02.internal (MEProxy); Wed, 25 Mar 2026 18:11:17 -0400
+  by phl-compute-02.internal (MEProxy); Wed, 25 Mar 2026 18:11:19 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jetm.me; h=cc:cc
 	:content-transfer-encoding:content-type:content-type:date:date
 	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to; s=fm3; t=1774476677;
-	 x=1774563077; bh=n7RyoRF58WkVZqJnuoOO9YEr75upIQgc4Q8y20FVoJo=; b=
-	FfJYpItgt4bCSVo9wuIULduF6xbyHzRPAuQk6FLtlF8MSeC5TFEP6FGfVfz9XYdw
-	IVa9hJ63X8HrJoAf+pyLbcqjtVgj0LEuCau/jqhyrZSpzdLoCeru+uDNo5OJxWa0
-	FBfl0mlGXkWEvTG5EM9gECXxn0TjCC5yeGu5dsnZYHoQkcAZG3aqm21eTaOVMzXi
-	dm+oTX9RNQ1enUKa8dZJnc/iwuAfGq31x1MmYXQuWDOv7uktfDn7msefvLMW7CNb
-	iDk/TWvicoL3SMlwSGO9dzk7phK+xCuH9IulAQogQNPdR2KJBnE5D9nw7jjGOk/r
-	g7H59kpWMzniBgPQdOOXFg==
+	:references:reply-to:subject:subject:to:to; s=fm3; t=1774476678;
+	 x=1774483878; bh=M6mqwUzvrAper/bN3xuewcXmVlq92pIpxYo4QqPfYVo=; b=
+	SnNfzvIEayMvvFxOqwdPoLrqnYJvY2cIiDhFrCdrj0qqj/d1A2o4F16xV3Ni5tBO
+	fqdbfuhFAbOSmNaen5PEokI30zKsGzX1ql35NACfOO3ngxegHTu/iHYkucqi1Z0N
+	mrYbHLwIJqUh09lqO6y1kevd0CcBXwdslOIfHKbFFPlCS6/u1Y76O5JdhZSotWYh
+	IIRIGSLMDGa+JjK/3j63VHTeuNITsTkhWuYQntgOUpruMUYa55zxt/vGh+7onmCG
+	d2iYS4PZfAI2D8c94E2Ym48Y8m8fh6kjS4Zl/SNGowktMXlVVyuvlRlNDzbbKyKe
+	pOW+6gE+YDygXawW/t3s+g==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-transfer-encoding
 	:content-type:content-type:date:date:feedback-id:feedback-id
 	:from:from:in-reply-to:in-reply-to:message-id:mime-version
 	:references:reply-to:subject:subject:to:to:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1774476677; x=
-	1774563077; bh=n7RyoRF58WkVZqJnuoOO9YEr75upIQgc4Q8y20FVoJo=; b=S
-	1KQeY+n+GsBkf/iXvOVqlYen1Hlcg4zhmh+1ouwhKEGuJe4sl8V9qGR+3XymeQpC
-	1CvLCN4g6lxB3tK0XUaeVQYzWGpXe+QgS5hUjjqN7c4Qcl+lBvDETAoxZqozgVOH
-	uR2dLo+wkJOy+n5mlFScOq/a0oO2N7x+23Z2WdhUvLV35ydhkvTYHw1txcgW3I45
-	h7jASTye9u2ctP3o2XmiQfQxrqZ5TDXTNdwUYdbSbFirNAZm4Z1xFr6nfMxnrTXX
-	m5PwSL38BnkcoXD1FCGlJ60UBHPSKYN6Q3CQZwbwaIlYsYnckYHORg/5/Elx5Onc
-	iE5Dz0jGkIwpRGtaVPkhA==
-X-ME-Sender: <xms:hV3EabldZFuAQobfEGU6mvzLC4_5zmx0WKje5WqCkc2ZeW2d09s2sQ>
-    <xme:hV3EaZrxCsa5JWRSwwk4EmbFhpBVWW4mnil-RJM0cFBNbxoGWqhwR1phN1F2ocrkp
-    8C12vF3nRGb527jFtFBOm9f2IgAyRHYQgUrvn5PCoWVDYwHcZPx>
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1774476678; x=
+	1774483878; bh=M6mqwUzvrAper/bN3xuewcXmVlq92pIpxYo4QqPfYVo=; b=a
+	70f6694tz62Xc8j8aDTbl4XL8fBjUhrnpwzEFEIXCkBeppYlruRhJokcoKTyUHnL
+	b9BrYuDXBrMmpQbkrPMxbO7CshUyZTBPGTbb1UYEXbStgfI8SAZjy9eADwwt8yZF
+	PwbBep2h2WZdP02DQjbehNsqy/zAJSR6yT6UrGhtFRMKONSgqudxBzxoQJoUZY3s
+	A+NZ4GMo09Yx/jZWkrhx0SP2GJ9Yj8UF4YcEtp4Dq+xkjWwltaTdRNoaCtxW8nCr
+	CHdgaSuvZ+JolLKFQtNkxWDf82OXyrv8xs5XkOEQkLi90YR1LOg547lvt4vLZy58
+	rim8oDqGtl5EA/GEbNXFQ==
+X-ME-Sender: <xms:hl3EafriAVxtPaAInhLnXOwA4NjaRA_VU071yMNF-eySFJGjqUCyUg>
+    <xme:hl3EaUcUwcTPpeZuuTYK8MuVk_5Vl5AdCO0R8TLp9xfmdxeixEb_A9mRolDjivqId
+    74r_63N_PEL6GL1OCZXFKUmkfakOvLzOmAlwKkkM5BxdtMbcDuO>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgdefvdehiedvucetufdoteggodetrf
     dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
     rghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujf
-    gurhepoffhfffugggtgffkvfevofgjfhesthejredtredtjeenucfhrhhomheplfgrvhhi
-    vghrucfvihgruceofhhlohhsshesjhgvthhmrdhmvgeqnecuggftrfgrthhtvghrnhepvd
-    dtjeeiheeijedtveeujeevvdekjeeuveekleeijeekfeejhfefveeiffffvdeinecuvehl
-    uhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepfhhlohhsshesjh
-    gvthhmrdhmvgdpnhgspghrtghpthhtohepudefpdhmohguvgepshhmthhpohhuthdprhgt
+    gurhepoffhfffugggtgffkvfevofgjfhesthekredtredtjeenucfhrhhomheplfgrvhhi
+    vghrucfvihgruceofhhlohhsshesjhgvthhmrdhmvgeqnecuggftrfgrthhtvghrnhepve
+    ektdfhffevuddtgfetieevtddvheduhfeggfekveejlefhleefieevueefiefhnecuvehl
+    uhhsthgvrhfuihiivgepkeenucfrrghrrghmpehmrghilhhfrhhomhepfhhlohhsshesjh
+    gvthhmrdhmvgdpnhgspghrtghpthhtohepvddvpdhmohguvgepshhmthhpohhuthdprhgt
     phhtthhopegrnhhgvghlohhgihhorggttghhihhnohdruggvlhhrvghgnhhosegtohhllh
-    grsghorhgrrdgtohhmpdhrtghpthhtohepmhgrthhthhhirghsrdgsghhgsehgmhgrihhl
-    rdgtohhmpdhrtghpthhtoheplhhorhgvnhiioheskhgvrhhnvghlrdhorhhgpdhrtghpth
-    htoheplhhinhhugidqrghrmhdqkhgvrhhnvghlsehlihhsthhsrdhinhhfrhgruggvrggu
-    rdhorhhgpdhrtghpthhtoheplhhinhhugidqmhgvughirghtvghksehlihhsthhsrdhinh
-    hfrhgruggvrggurdhorhhgpdhrtghpthhtohepuggvrhgvnhdrfihusehmvgguihgrthgv
-    khdrtghomhdprhgtphhtthhopehmihhnghihvghnrdhhshhivghhsehmvgguihgrthgvkh
-    drtghomhdprhgtphhtthhopehrhiguvghrrdhlvggvsehmvgguihgrthgvkhdrtghomhdp
-    rhgtphhtthhopehsvggrnhdrfigrnhhgsehmvgguihgrthgvkhdrtghomh
-X-ME-Proxy: <xmx:hV3EaYgNOKMY4XOGUO_fE19AsBjvub0CoNWHx7UFmm0i9VBbjeOY2g>
-    <xmx:hV3EaWM65nQQJEBQ8IbMUfg2XDjqDrOqHfc45Z-62_DCrFK0ZClMwg>
-    <xmx:hV3EaTdWKmt6y2CcbJI-tAm_m-pwPTlNDh3iAofLmmby3Z8EAYNSkA>
-    <xmx:hV3EaYxeTnWYA_tJhEtm2TkO-W7eoOvCC5UFLx6zAdGJBsOFby1Y_Q>
-    <xmx:hV3EaXPt5p7TppPpMxwauCcUktYsul-lD5YHYH3zwRy82jdPfJMRxce0>
+    grsghorhgrrdgtohhmpdhrtghpthhtohepfeduleefieefudesghhmrghilhdrtghomhdp
+    rhgtphhtthhopehlohhonhhgrddtgidttdesghhmrghilhdrtghomhdprhgtphhtthhope
+    grrhhivghlrdhrohhsvghnfhgvlhgurdejhedtsehgmhgrihhlrdgtohhmpdhrtghpthht
+    oheptghhrghpuhhishgurghrihhogeesghhmrghilhdrtghomhdprhgtphhtthhopehgih
+    hoshgrlheltdesghhmrghilhdrtghomhdprhgtphhtthhopehmrghtthhhihgrshdrsghg
+    ghesghhmrghilhdrtghomhdprhgtphhtthhopehrrgguohhirdgthhhrihhssehgmhgrih
+    hlrdgtohhmpdhrtghpthhtohepshgrmhhurdhtohhljhgrmhhosehgmhgrihhlrdgtohhm
+X-ME-Proxy: <xmx:hl3EadbGh157rIcHRoMYkHRDU0VfJsC-iI8OTCAuonPPRSyn7YnZFA>
+    <xmx:hl3EaRlE9DPeE0qd3-SF0lN4PBjGIX-OMoQkd1Fa-U_4zlHxw8Oa3g>
+    <xmx:hl3EaUft8gB1qD3B0CWyD1Iev4iqR69bYbkBmxEvcL18HAL-xQCLRQ>
+    <xmx:hl3EaX3Y2Q2_rFfHeYqguGQNnRIGzJKRgw_OqVds3m0rI16qG4JdhQ>
+    <xmx:hl3Ead5PIgqJzG-4QHbPMBoBacl6zUCopEGTh6YO4cflLoEqQ6qzTX_a>
 Feedback-ID: i9dde48b3:Fastmail
 Received: by mailuser.phl.internal (Postfix, from userid 501)
-	id 138A71EA006B; Wed, 25 Mar 2026 18:11:17 -0400 (EDT)
+	id A54FC1EA006B; Wed, 25 Mar 2026 18:11:18 -0400 (EDT)
 X-Mailer: MessagingEngine.com Webmail Interface
 From: Javier Tia <floss@jetm.me>
-Date: Wed, 25 Mar 2026 16:11:01 -0600
-Subject: [PATCH v3 12/13] wifi: mt76: mt7925: disable ASPM and runtime PM
- for MT7927
+Date: Wed, 25 Mar 2026 16:11:02 -0600
+Subject: [PATCH v3 13/13] wifi: mt76: mt7925: enable MT7927 PCI device IDs
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260325-mt7927-wifi-support-v2-v3-12-5ca66c97a755@jetm.me>
+Content-Transfer-Encoding: 8bit
+Message-Id: <20260325-mt7927-wifi-support-v2-v3-13-5ca66c97a755@jetm.me>
 To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
  Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
  Sean Wang <sean.wang@mediatek.com>,
@@ -100,26 +112,33 @@ To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
  Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
  Deren Wu <deren.wu@mediatek.com>
 Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Marcin FM <marcin@lgic.pl>, Cristian-Florin Radoi <radoi.chris@gmail.com>,
+ George Salukvadze <giosal90@gmail.com>, Evgeny Kapusta <3193631@gmail.com>,
+ Samu Toljamo <samu.toljamo@gmail.com>,
+ Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>,
+ Chapuis Dario <chapuisdario4@gmail.com>,
+ =?utf-8?q?Thibaut_Fran=C3=A7ois?= <tibo@humeurlibre.fr>,
+ =?utf-8?q?=E5=BC=A0=E6=97=AD=E6=B6=B5?= <Loong.0x00@gmail.com>
 X-Mailer: b4 0.15.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2922; i=floss@jetm.me;
- h=from:subject:message-id; bh=2iqjJzkxfCHr/WEpzj6LaYh+JuyD2C2/r14c7V0yo38=;
- b=owEB7QES/pANAwAKAbXuwwuoZ3cfAcsmYgBpxF1qvlXa+GRyNOT8nkxUvjlUbhCWJ7vFMh1vQ
- UbrZ9P12X2JAbMEAAEKAB0WIQSbE7ILzw7eI0VKk8m17sMLqGd3HwUCacRdagAKCRC17sMLqGd3
- H8cmC/4/JBzUQWEO0ZBvP9nWGmMuy9TovpJ9fS6iVWDLKgrBWryNgT2GQXx9oTxcw8jgJIpPVed
- JY+8s2dKmr6BEV8S3U9U8uHVBoDKguxcE/KEkYBXU/R+nDQxSRWB2fFkXX4iT/h1EQkr19ryFZi
- u9dW+dqk5vFUe7NwgJJV3z/oafJmGmPBdlXyrCRu/SbDJhN79y8WDBC+7Al1lhIqIcEOHd3+i/E
- TATcG8lZMPSOU9w7eUObrneLAuvQ9M572lSl9IKYcsO7C7MMfVUHz/DTgjERSwqrA3atYU1nKhU
- kuRy+JC12q+iZkXRUFvEtNQDshFoccpFEdp09s5pmqaH4/IQt8T56evb/IfRxxUj+YzvqxMFZw6
- NKN1DwApfwUX13rwwg00C3DalVwgoEK+6EzWFfUxgnv//mU9JRf4M0DChcV89EHzeMIFPl43A8x
- zMKcra7mKtzX6ZG8oLpXuhPIQUdRDR9mB++FgOVJRhdkKV/wasvy1k528Scw5ln/jnfyI=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3386; i=floss@jetm.me;
+ h=from:subject:message-id; bh=nz8eyDAP8ActMVY+DXN7zhQnBrM5b9VLE4uS6ZrmhBc=;
+ b=owEB7QES/pANAwAKAbXuwwuoZ3cfAcsmYgBpxF1qy4OIzFSfVctdeylxN5WN7tUEOZFYihOYc
+ hArKVR8gEOJAbMEAAEKAB0WIQSbE7ILzw7eI0VKk8m17sMLqGd3HwUCacRdagAKCRC17sMLqGd3
+ Hz13DACpvg2+LOJwEmxAMtdMLLvl9b8p3hqly1uXSDGdGGGFLf5pdYJvjqXrCejT7VLB14pVlux
+ /j+bMutS/fM6jxaJguR24s8ZPwiyA8nXSFX79u0Vo9vXxxhKL6G1JpkEykVj/bgxN+oT2VHKIZi
+ aKH6UrulsXzNSckegviWbRRAwDKDdfnc+I0WIW1WARdYe4Jut+WQ3CvQtd7TjJrb/6jRO0Mgb+t
+ rl7SZPWfg5KoB2OjQ9ZNMfJSYlbx45P9c3B9F4Nmf95umaHzLs4BJkak3G1IMGUhsEINTudMGmc
+ tHz8jkCDZvUDRwzUB4gJ5ZgN8Pn9eDKT23NQj9KcaoryYTDrTdjrCJHF2+f+QPi14xzJmTuUSth
+ MZk603BcqP4binMIZJIV7z596TNGyYBwaNTQ/EQgV+qDwEnO3V4nvQz/XQVYnFyVNU22Y+fZDHJ
+ oIfm3BGyGmyVXywit2ZZLfdU+wCC2TK2SKU4bqK90bOEZe2nMjUyEIRy+zhbi2rxs2B7A=
 X-Developer-Key: i=floss@jetm.me; a=openpgp;
  fpr=9B13B20BCF0EDE23454A93C9B5EEC30BA867771F
 In-Reply-To: <20260325-mt7927-wifi-support-v2-v3-0-5ca66c97a755@jetm.me>
 References: <20260325-mt7927-wifi-support-v2-v3-0-5ca66c97a755@jetm.me>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260325_151118_941676_0B1A8D68 
-X-CRM114-Status: GOOD (  11.73  )
+X-CRM114-CacheID: sfid-20260325_221131_535376_D55667F2 
+X-CRM114-Status: GOOD (  14.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,67 +153,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Disable PCIe ASPM unconditionally for MT7927. The CONNINFRA power
-domain and WFDMA register access are unreliable with PCIe L1 active,
-causing throughput to drop from 1+ Gbps to ~200 Mbps.
+Add PCI device table entries for MT7927 hardware variants:
+  - 14c3:7927 (ASUS ROG Crosshair X870E Hero, Lenovo Legion Pro 7)
+  - 14c3:6639 (Foxconn/Azurewave modules)
+  - 14c3:0738 (AMD RZ738 / MediaTek MT7927)
 
-Disable runtime PM and deep sleep for MT7927. The combo chip shares
-a CONNINFRA power domain between WiFi (PCIe) and BT (USB).
-SET_OWN/CLR_OWN transitions on the LPCTL register crash the BT
-firmware, requiring a full power cycle to recover. PM enablement will
-be addressed in a follow-up once safe power state transitions are
-determined.
+This is the final patch in the series, enabling MT7927 device
+enumeration after all infrastructure (DMA, IRQ, HW init, band index,
+power management) is in place.
 
+Tested-by: Marcin FM <marcin@lgic.pl>
+Tested-by: Cristian-Florin Radoi <radoi.chris@gmail.com>
+Tested-by: George Salukvadze <giosal90@gmail.com>
+Tested-by: Evgeny Kapusta <3193631@gmail.com>
+Tested-by: Samu Toljamo <samu.toljamo@gmail.com>
+Tested-by: Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>
+Tested-by: Chapuis Dario <chapuisdario4@gmail.com>
+Tested-by: Thibaut François <tibo@humeurlibre.fr>
+Tested-by: 张旭涵 <Loong.0x00@gmail.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
 ---
- drivers/net/wireless/mediatek/mt76/mt7925/init.c | 6 +++++-
- drivers/net/wireless/mediatek/mt76/mt7925/pci.c  | 9 +++++++--
- 2 files changed, 12 insertions(+), 3 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7925/pci.c | 29 +++++++++++++++----------
+ 1 file changed, 18 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/init.c b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
-index c4c99380f5b5..89140fc6a2b6 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
-@@ -243,7 +243,11 @@ int mt7925_register_device(struct mt792x_dev *dev)
- 	dev->pm.idle_timeout = MT792x_PM_TIMEOUT;
- 	dev->pm.stats.last_wake_event = jiffies;
- 	dev->pm.stats.last_doze_event = jiffies;
--	if (!mt76_is_usb(&dev->mt76)) {
-+	/* MT7927: runtime PM disabled. The combo chip shares a CONNINFRA
-+	 * power domain between WiFi (PCIe) and BT (USB). SET_OWN/CLR_OWN
-+	 * transitions on the LPCTL register crash BT firmware.
-+	 */
-+	if (!mt76_is_usb(&dev->mt76) && !is_mt7927(&dev->mt76)) {
- 		dev->pm.enable_user = true;
- 		dev->pm.enable = true;
- 		dev->pm.ds_enable_user = true;
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-index 393d9f408b84..693e08f35d68 100644
+index 693e08f35d68..00c3601f14ff 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-@@ -530,7 +530,13 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
+@@ -16,6 +16,12 @@ static const struct pci_device_id mt7925_pci_device_table[] = {
+ 		.driver_data = (kernel_ulong_t)MT7925_FIRMWARE_WM },
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x0717),
+ 		.driver_data = (kernel_ulong_t)MT7925_FIRMWARE_WM },
++	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7927),
++		.driver_data = (kernel_ulong_t)MT7927_FIRMWARE_WM },
++	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x6639),
++		.driver_data = (kernel_ulong_t)MT7927_FIRMWARE_WM },
++	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x0738),
++		.driver_data = (kernel_ulong_t)MT7927_FIRMWARE_WM },
+ 	{ },
+ };
+ 
+@@ -530,7 +536,8 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
  	if (ret)
  		goto err_free_pci_vec;
  
--	if (mt7925_disable_aspm)
-+	is_mt7927_hw = (pdev->device == 0x6639 || pdev->device == 0x7927);
-+
-+	/* MT7927: CONNINFRA power domain and WFDMA register access are
-+	 * unreliable with PCIe L1 active, causing throughput to drop
-+	 * from 1+ Gbps to ~200 Mbps. Disable ASPM unconditionally.
-+	 */
-+	if (mt7925_disable_aspm || is_mt7927_hw)
- 		mt76_pci_disable_aspm(pdev);
- 
- 	ops = mt792x_get_mac80211_ops(&pdev->dev, &mt7925_ops,
-@@ -562,7 +568,6 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
- 	dev = container_of(mdev, struct mt792x_dev, mt76);
- 	dev->fw_features = features;
- 	dev->hif_ops = &mt7925_pcie_ops;
 -	is_mt7927_hw = (pdev->device == 0x6639 || pdev->device == 0x7927);
- 	dev->irq_map = is_mt7927_hw ? &mt7927_irq_map : &irq_map;
- 	dev->dma_config = is_mt7927_hw ? &mt7927_dma_cfg : &mt7925_dma_cfg;
- 	mt76_mmio_init(&dev->mt76, pcim_iomap_table(pdev)[0]);
++	is_mt7927_hw = (pdev->device == 0x6639 || pdev->device == 0x7927 ||
++			pdev->device == 0x0738);
+ 
+ 	/* MT7927: CONNINFRA power domain and WFDMA register access are
+ 	 * unreliable with PCIe L1 active, causing throughput to drop
+@@ -546,16 +553,16 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
+ 		goto err_free_pci_vec;
+ 	}
+ 
+-	/* MT7927 firmware lacks the connac2 feature trailer, so
+-	 * mt792x_get_mac80211_ops() can't detect CNM support and
+-	 * replaces chanctx/ROC/mgd_prepare_tx ops with stubs.
+-	 * Force CNM and restore the original mt7925 ops.
+-	 */
+-	if ((pdev->device == 0x6639 || pdev->device == 0x7927) &&
+-	    !(features & MT792x_FW_CAP_CNM)) {
+-		features |= MT792x_FW_CAP_CNM;
+-		memcpy(ops, &mt7925_ops, sizeof(*ops));
+-	}
++		/* MT7927 firmware lacks the connac2 feature trailer, so
++		 * mt792x_get_mac80211_ops() can't detect CNM support and
++		 * replaces chanctx/ROC/mgd_prepare_tx ops with stubs.
++		 * Force CNM and restore the original mt7925 ops.
++		 */
++		if ((pdev->device == 0x6639 || pdev->device == 0x7927 ||
++		     pdev->device == 0x0738) && !(features & MT792x_FW_CAP_CNM)) {
++			features |= MT792x_FW_CAP_CNM;
++			memcpy(ops, &mt7925_ops, sizeof(*ops));
++		}
+ 
+ 	mdev = mt76_alloc_device(&pdev->dev, sizeof(*dev), ops, &drv_ops);
+ 	if (!mdev) {
 
 -- 
 2.53.0
