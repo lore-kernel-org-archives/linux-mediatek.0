@@ -4,109 +4,175 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAC74109C021
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2026 14:27:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C07B109C029
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2026 14:43:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KWGD4hQPLoVQRo9t8LEnKi+4d5KyybuIU/ivYgViFIE=; b=LkhqW65ZJuLcicysu/AQoK/O27
-	1fZNkkCMGIcTPI5KYMPniLdwExsAvZVVTeChUk0jFW33D5+26Z+/39DB3gWoiyfKfsxqZZMyA2aTI
-	Wz3lZ1TyUIWb+kmHaTkHyD5z/KeuLwyWA+t/SUThqKmPvvBnWFn+alPhqTdf0g1KPGqctRn1nj81F
-	MpdiBvzsl75A+joSRrwu1ETeALvn0GG1P/fwuDJKk7v5ssW4yO/+IIoqfUvvLIayzOAhdId3cQ8Z9
-	FdJz9D4EepcBBcacBxstcwGXOWzGUHccUS4H8DXR4sQFMug6kg1Xr1lEBY5AWaAdJBb2Gk0cezwVq
-	OBKpZnRg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6CO42NrH0o8ZBBIP0NTPmzhTbucDiEvU/OBKheKuW6g=; b=PyDOVzhvEA3FmAnDchSQwRPIwt
+	gYXh3yKM9G2iVXajfzTX+sBkCbSq/QWTsv195jymMO2qSWsH24Z+LVpSDuhymnjZZtQwi9KDOrnGu
+	FHvxTTmILr8y7+F/Pq9serxVgA7BKEdydlA3PRv/XfNCLLPeZzOfHPJVS0CAAPqBosL2+zvBV8ALx
+	J5DoAWqsIpmoiSzuL5HejER1+V5lvtxGn7GX00zNsNh/AGbhcgwBDmjrApp82PgOkkwnCDVJ8VLHa
+	A5h7HJR/ydE5Gdmsb19fzxFNYsqJy6bZj9eFD0ZEfGk+bo7QBO2py7hFAKPE8ZdTuGaEGn7PDLw16
+	pOFT3PgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5PCS-00000003Zd8-3eps;
-	Wed, 25 Mar 2026 14:27:12 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1w5PSD-00000003dkp-0eu0;
+	Wed, 25 Mar 2026 14:43:29 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5PCI-00000003ZXz-297V
+	id 1w5PRt-00000003dgR-2pD0
+	for linux-mediatek@bombadil.infradead.org;
+	Wed, 25 Mar 2026 14:43:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=6CO42NrH0o8ZBBIP0NTPmzhTbucDiEvU/OBKheKuW6g=; b=RD9DQFJI7F2Lg+Ea90sZsYFnhA
+	+losVQCz3KrJ1dBiDEWNrZogkSxfA1WfcPcbXA1C2T63aMgYKp0NTHb79nWsgzEeK2MQVkaHyDjHK
+	Mx5Oh4UhoxLHNR/j+rfbAQKTawhUgXgs6W1xLj37+bO1Z74JYag2l+49/2n9Bg3GG4qWc+OojKIhO
+	+5q+GFf1D9POHn4s3Lbc/FyDhkwIO9Wh9dthd2S0WjBpeofQzKTXpMMdqNqgm0ovLCMOn8FRw7aXZ
+	PbBuuMh1AzIu8VmNdWRX5pYt2gK7DtUvAn5YoIqBKKWzQ2VBFfA3N/ic+SspDO6z/UczlZ1vydSMa
+	ro8RDEtw==;
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1w5PRq-00000006NSO-2WdP
 	for linux-mediatek@lists.infradead.org;
-	Wed, 25 Mar 2026 14:27:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1774448820;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=KWGD4hQPLoVQRo9t8LEnKi+4d5KyybuIU/ivYgViFIE=;
-	b=Ghe2LJB2pKpuxoCOozcBCng1z/RofCGJZfkH7o3Yf6jIOWM3cfiylcOmwUEMIjTPSTZnt6
-	2Ubo7F9aXc9U0tq/2tFNdVpmhZDOIvYG2m6L95TLv5kV8gpHJ1xtbluYFugxK678n4BVMO
-	6DeGcvUG0WexF9qOVQszi7YiolBSur4=
-Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
- [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-460-_wZ8FWsOOBq6efqZLaML_g-1; Wed, 25 Mar 2026 10:26:58 -0400
-X-MC-Unique: _wZ8FWsOOBq6efqZLaML_g-1
-X-Mimecast-MFC-AGG-ID: _wZ8FWsOOBq6efqZLaML_g_1774448818
-Received: by mail-qv1-f69.google.com with SMTP id 6a1803df08f44-89c4d85d619so377270356d6.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 25 Mar 2026 07:26:58 -0700 (PDT)
+	Wed, 25 Mar 2026 14:43:08 +0000
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 62PBG2td721165
+	for <linux-mediatek@lists.infradead.org>; Wed, 25 Mar 2026 14:43:02 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	6CO42NrH0o8ZBBIP0NTPmzhTbucDiEvU/OBKheKuW6g=; b=ZSPYceDku93G02pJ
+	38QmIYgjKMgLaWUr3wX6Mz9p/n5QhC0PobotkuTYjzgXZYk8QzhPmHE2YxmTsVcb
+	E6yAw+qWfP5JtYXEQMV2qB5xzpJ6W9fU/Pt4vHK4u19gpdBBfUjzICi1DGpKJ3R1
+	blBWd9FElOnkYA38TLgS3HzW95BEc5wOEexbfLpoLkvJJq+4iFRQpalWeGOwc0Og
+	yeq1xJQ5IttxY5cfcRyoLeneokkAexuWxpttfQKbQ7js04S1m8u2GNcwMt9ThWiL
+	NLaTCaVOnMMTdv+krTySvxWQq/sGGe4YNuV6q9Cehh2zEHz+dlMSE/9s+GWA6Qzn
+	94HnJg==
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com [209.85.160.199])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4d4dm2ryd1-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Wed, 25 Mar 2026 14:43:01 +0000 (GMT)
+Received: by mail-qt1-f199.google.com with SMTP id d75a77b69052e-50911c94db1so4591cf.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 25 Mar 2026 07:43:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1774449781; x=1775054581; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=6CO42NrH0o8ZBBIP0NTPmzhTbucDiEvU/OBKheKuW6g=;
+        b=htQ8t0RVQNj5/+rvXAYniy73fik0/LD1SABblx41dbLbkIyFZDkMWCCjP5QIPxOgo3
+         a256wXk03EKtnbHaGKA5rc77YE9X89hT3wKn7JYPT5BcCdX1j0zeBbF/h22CsOGD8rs4
+         KgEgaGnCwbOFSnnTGq6DrMTdzcF3VSSl94R6PZEUrRIQmwsfYqjXofcsabN5vnBklw9s
+         AQM3L8yMAYV0qCKEFntRUjeC/zQT3B6dXx5HoMXkBP0aC9kTooJh8UTxJk+psu+l99gJ
+         JUE1l+qyn+cI18N/ZolJbNoFBTxof7USz+noEZ+eZ5BCqrdFX4l/Di+26G9vJu6Ns0YZ
+         3p/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1774448818; x=1775053618;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=KWGD4hQPLoVQRo9t8LEnKi+4d5KyybuIU/ivYgViFIE=;
-        b=D7vKLx+kDcrz3texbxFvJIJUhchIzpjIrWfwNZQjpRrnERPB2hKmb0A1mp2IZ1BBwC
-         c6aBczELbz/DcWhmxya6iR+Dc3F7cps4WJpQWdTradJhzJrKK9Bt0S4D/zhDV/eYe7Ef
-         RDZFZitvsmbxfu/Rm6rjIJfikR20dQuSruThzihQYAdlT9IgWX1X0FZ6ZB2iCrqnBlT5
-         h+unj941OBFEKGBN1xhmVnGqDM9PVHDgdTT49oMxtP/dIs6QhZ4F/ixRPyAxaIAz70dr
-         prASz2wzJEGjrhLEefuwfiLaeNQxNn3c93EZj7nqx5TCrc093IpvV7w3eD3VeQljpQKK
-         zFcw==
-X-Forwarded-Encrypted: i=1; AJvYcCWugvZJuEC3Qrq4BYm+X+ZzqU18fqFhC/vZ49ZCNYZyUv0qhp9iP3qhPEk19oGRz9lsjtCN+LgIk/7ZBNlSuw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzt/o+QJADrEiAXLdeF5W+wIwKJVRT+68JSlXAborLjVTVOjwBt
-	ycNf7PgCIaWWWu+FkrLC2365B9xsODE7sozGxfIFuRoDgviqJknjiaS8cm0MTWavEhQJdROtGAr
-	t4/pbLBECWgWWRM8QH4JMHWRJWYfN/7cvPVAhh84UyjzUrhiG+ACgmXjnn1C4bggbGAEfKm9GjQ
-	==
-X-Gm-Gg: ATEYQzxa0+uMXOuh6pUrA4kFWCnixoOUgj9zhJIvbnZcj6WWJvw0LbNhp8pgoZfd6oB
-	6yVHC+juik/vWjVyFVEMGOdLPlKvAgEdyNpFQ6xhwNv2js53NqptCM1e7nZax7d+KM7wx+VqQmM
-	MD5Ym6lIOza5Di7KHZP3XfPCN/1xCiIvCEr5AB0QhheZ2PYVSnWFMANc8M+oRZ7nskQqzs/eCMb
-	9sKBs+1YdL6NzqlzJFl1UN00Z8dB8ij2KIqY6O/5nvRtDlOz3m3W6X5EcVbHbYvO5/PThVtGF7b
-	FgqyJFkau2ujr1y14XlHMnX7WFOusTptWCVA6itO23zFzO11ni9WwMKfD+y2g7xBdgYBHART1X6
-	x4/wK82K5Isb0ZhuFgNK+wPm54fSwl3TRMsgTpr+MW8WzKFlBSNjyR/sY
-X-Received: by 2002:a05:6214:319e:b0:89a:b20:9f4e with SMTP id 6a1803df08f44-89cc4a445a8mr52199316d6.17.1774448818305;
-        Wed, 25 Mar 2026 07:26:58 -0700 (PDT)
-X-Received: by 2002:a05:6214:319e:b0:89a:b20:9f4e with SMTP id 6a1803df08f44-89cc4a445a8mr52198596d6.17.1774448817701;
-        Wed, 25 Mar 2026 07:26:57 -0700 (PDT)
-Received: from redhat.com (c-73-183-52-120.hsd1.pa.comcast.net. [73.183.52.120])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-89cad854addsm68276376d6.48.2026.03.25.07.26.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Mar 2026 07:26:56 -0700 (PDT)
-Date: Wed, 25 Mar 2026 10:26:54 -0400
-From: Brian Masney <bmasney@redhat.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Stephen Boyd <sboyd@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Frank Binns <frank.binns@imgtec.com>,
-	Matt Coster <matt.coster@imgtec.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Icenowy Zheng <zhengxingda@iscas.ac.cn>,
-	Icenowy Zheng <icenowy@aosc.io>, David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>, linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 2/5] clk: mediatek: Add mt8173-mfgtop driver
-Message-ID: <acPwruNQpLQg7W2A@redhat.com>
-References: <20260325071951.544031-1-wenst@chromium.org>
- <20260325071951.544031-3-wenst@chromium.org>
+        d=1e100.net; s=20251104; t=1774449781; x=1775054581;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=6CO42NrH0o8ZBBIP0NTPmzhTbucDiEvU/OBKheKuW6g=;
+        b=HZI9Aaxu/QLsAnQod3dBbJ1YMiQbhbg99RrvlDpZU/K7DcifDWYdj/gJ+ngJE9Ku97
+         FV8kINi33XZTiujlak63+AobyRtP8vNbkmF0fvXtiI4IxH4RvPh28pztjvKjG3BKfViN
+         ne+YNfPzPYDcbJvUvR5OGTh48tAlMG+zcVsMxNkOcG+JxyKPIDhi6nH6H5rZcAg9soPf
+         jK+ERmTw9eIpi6m5bEZInnt1IZZulu7tnlkvVHVr6r0OV/OinvO60Qxoi9SnPox3FqyU
+         /zZ0iQ+iT56FHdv7/5zYn42DfOi0C2ictcO1aqvO2VQ+8C8IlDoczkuQsH+4xkG0ZSRN
+         gDyQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVY4p2rtf4Ff/oWow8QaoSKyyC236PMbXjMxD4Q59CbwObVxL6MIDBjMCzY/znq5UAle0GFjWtIVKupnTRcog==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzqM2A+WANMJV1X1PqEZnEjEnVCVFkbl1HCZ5QmlP53mWCBMPjL
+	v9QoSCIDu8q59Xa9H2YCjl5wlesi2S7hgCqONoTGgIsJY+tcX1R9N4qhAu8K1xrqzHvzd/enfzg
+	HaL9dHAgfdo9jleTQt2Pt94Tn1E8y977BO7t+22jaMS1vXUMwlTh9n/XAc7qzbrGkKJaBdSbooK
+	0=
+X-Gm-Gg: ATEYQzzwiuf+W06Jcp9y4l9wS/V7sec1XwC0JZ1GlFLJtin4EVzSRM4yekpOqiWfGMz
+	/SL0JjpBoQy+jpgLRnvToTReyyJNwptw8A3VbFJrGyORZn3O7LmDxcJMqxzRLaXLv+bNAbMnChK
+	Yukd8eBXghH9Y24cv5mFyahbGqiD0iCVYSOXb6Zm0AIh6Stpnl02y11vvZWaJJ9/lboFyLxjkq9
+	Say0S6YAroe6YS8qWOhqdilrIfczuyCpzjFPak0F4rtAVY4HB7U4jouBZh/WZHKvdPizzvdL27n
+	SdZI/KLCz12+84ZWEEU0LmZgn+XJgitPhy3JnXNW5zeAyV4apeqfGwSuFx1VH40EzUYqfoUI2JR
+	DUkBSJbddYCe7LHVsX00ozs5IuWriAFw77bTHntuPqd72mMRK3faeN2vUe4ceivAnqWab9sPHhZ
+	+jNc0j+y/Z
+X-Received: by 2002:a05:622a:1ba3:b0:50b:8c01:2100 with SMTP id d75a77b69052e-50b8c0126e5mr20402501cf.62.1774449780480;
+        Wed, 25 Mar 2026 07:43:00 -0700 (PDT)
+X-Received: by 2002:a05:622a:1ba3:b0:50b:8c01:2100 with SMTP id d75a77b69052e-50b8c0126e5mr20401581cf.62.1774449779680;
+        Wed, 25 Mar 2026 07:42:59 -0700 (PDT)
+Received: from ?IPV6:2a05:6e02:1041:c10:a7db:2283:19fe:fa8a? ([2a05:6e02:1041:c10:a7db:2283:19fe:fa8a])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-487116ee514sm163278995e9.13.2026.03.25.07.42.58
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 25 Mar 2026 07:42:58 -0700 (PDT)
+Message-ID: <28a09389-9fdf-49d8-84a6-4e68c40b5224@oss.qualcomm.com>
+Date: Wed, 25 Mar 2026 15:42:57 +0100
 MIME-Version: 1.0
-In-Reply-To: <20260325071951.544031-3-wenst@chromium.org>
-User-Agent: Mutt/2.3.0 (2026-01-25)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: fZR4aOweEjreOYuYJVBQ0Sna_iHKxOK_ltMiHuc1630_1774448818
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [EXT] Re: [PATCH v4 3/4] clocksource/drivers/timer-mediatek:
+ Convert timer-mediatek to a loadable module
+To: Zhipeng Wang <zhipeng.wang_1@nxp.com>
+Cc: "daniel.lezcano@linaro.org" <daniel.lezcano@linaro.org>,
+        "tglx@kernel.org" <tglx@kernel.org>,
+        "shawnguo@kernel.org" <shawnguo@kernel.org>,
+        "s.hauer@pengutronix.de" <s.hauer@pengutronix.de>,
+        "kernel@pengutronix.de" <kernel@pengutronix.de>,
+        "festevam@gmail.com" <festevam@gmail.com>,
+        "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+        "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>,
+        "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+        "imx@lists.linux.dev" <imx@lists.linux.dev>,
+        "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+        "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+        "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
+        "walter.chang@mediatek.com" <walter.chang@mediatek.com>,
+        "jstultz@google.com" <jstultz@google.com>,
+        "amergnat@baylibre.com" <amergnat@baylibre.com>,
+        Aisheng Dong <aisheng.dong@nxp.com>, Jindong Yue <jindong.yue@nxp.com>,
+        Xuegang Liu <xuegang.liu@nxp.com>,
+        Greg Kroah-Hartman <gregkh@google.com>
+References: <20260304081207.4030882-1-zhipeng.wang_1@nxp.com>
+ <20260304081207.4030882-4-zhipeng.wang_1@nxp.com>
+ <aaiByowtXrTxPsd7@mai.linaro.org>
+ <AS8PR04MB84206CF559371D3966653F8EEB7AA@AS8PR04MB8420.eurprd04.prod.outlook.com>
+ <6255aa0f-529c-41cb-be32-e5d54a839125@oss.qualcomm.com>
+ <AS8PR04MB84209F4103D8D4FD495F5B26EB79A@AS8PR04MB8420.eurprd04.prod.outlook.com>
+ <019942a0-e9f2-45f1-8e04-26ecc9822705@oss.qualcomm.com>
+ <AS8PR04MB84206959C00CFDC4C85B8BC2EB46A@AS8PR04MB8420.eurprd04.prod.outlook.com>
+Content-Language: en-US
+From: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
+In-Reply-To: <AS8PR04MB84206959C00CFDC4C85B8BC2EB46A@AS8PR04MB8420.eurprd04.prod.outlook.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzI1MDEwNSBTYWx0ZWRfXy0oN2hUR7Ev6
+ YT4W6tvos4DaFp06ZYSWuSRbK/knwvTDDVQVuJkzMFFD2GaXrTeFwWMBqdagZestOrDpF9bx26k
+ CNs/JHZnt8i7udiQwZpa9eHzT8ZpbRI+mzsZZppyJ4ftceIW9+dr4W6C1aVJrpSvdsVkw7Kv0zb
+ +80PLxPYzS7xzrDt+GdGWQmMIPhu9mnX7TF5vbHe30vuCi24tqPLGezr9uM/Yp7FA8hmrweARMr
+ UI0JSaO2MvcLEtWl3asOWJ0R7xkwyvzZT2RKsvhtU5cr42x5IQb2se2RR2X85IWtbhsYKUzykM5
+ fsBh7gxYjMMT6fVpK9H+ERS4OZXaVfrkTmqDquu8C115jIwIhX/CNw/kQm+PviXcnKE538qnIEp
+ NUlif1OA97X0I5csb6rcfuNroC+PUH8a43uA1DcgSWzuzNW+Y1gzzAB46xUPFsozHwJ8FH8GaEr
+ i1Ny+LgGvygjES10A9g==
+X-Proofpoint-GUID: P-Pm9zJSEjOiJuFcH9LmY_aDv6QWik3T
+X-Authority-Analysis: v=2.4 cv=Fo0IPmrq c=1 sm=1 tr=0 ts=69c3f475 cx=c_pps
+ a=WeENfcodrlLV9YRTxbY/uA==:117 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10
+ a=Yq5XynenixoA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22 a=Zs_j8f1EyT6rY914oN0A:9
+ a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=kacYvNCVWA4VmyqE58fU:22
+X-Proofpoint-ORIG-GUID: P-Pm9zJSEjOiJuFcH9LmY_aDv6QWik3T
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-03-25_04,2026-03-24_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ lowpriorityscore=0 adultscore=0 malwarescore=0 clxscore=1015 spamscore=0
+ bulkscore=0 phishscore=0 priorityscore=1501 suspectscore=0 impostorscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2603050001 definitions=main-2603250105
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260325_072702_696044_82C455DF 
-X-CRM114-Status: GOOD (  34.51  )
+X-CRM114-CacheID: sfid-20260325_144306_996192_A6D28476 
+X-CRM114-Status: GOOD (  23.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,325 +187,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 25, 2026 at 03:19:46PM +0800, Chen-Yu Tsai wrote:
-> The MFG (GPU) block on the MT8173 has a small glue layer, named MFG_TOP
-> in the datasheet, that contains clock gates, some power sequence signal
-> delays, and other unknown registers that get toggled when the GPU is
-> powered on.
+
+Hi Zhipeng,
+
+On 3/10/26 09:41, Zhipeng Wang wrote:
+>>
+>>
+>> Hi Zhipeng,
+>>
+>> On 3/9/26 06:31, Zhipeng Wang wrote:
+>>> Hello Daniel,
+>>>
+>>> I'd be very happy to collaborate on this!
+>>
+>> Great, let me see if I can cook a patch in the next days
+>>
+>>> My availability: I can dedicate time to work on this over the next few weeks.
+>> I'm happy to help with:
+>>>      - Testing the new macros with IMX timer drivers
+>>>      - Converting existing drivers as examples
+>>>      - Reviewing and testing patches
+>>>      - Documentation
+>>
+>> That's awesome, thanks
+>>
+>>> My understanding is that, based on your RFC, we should use two macros —
+>> TIMER_OF_DECLARE_PDEV and TIMER_OF_DECLARE_PLATFORM_DRIVER.
+>>
+>> Yes, but also sort out the existing TIMER_OF_DECLARE macro vs MODULE in
+>> order to prevent #ifdef MODULE in the drivers
+>>
+> Hi Daniel,
 > 
-> The clock gates are exposed as clocks provided by a clock controller,
-> while the power sequencing bits are exposed as one singular power domain.
+> Yes, that's our goal.
 > 
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
-> Changes since v1:
-> - Reduce tab after GATE_MFG() by one tab
-> - Move of_match_clk_mt8173_mfgtop to just before clk_mt8173_mfgtop_drv
-> - Rename power domain to "mfg-top"
-> - Add FORCE_ABORT and ACTIVE_PWRCTL_EN bits and explicitly clear
->   ACTIVE_PWRCTL_EN bit
-> ---
->  drivers/clk/mediatek/Kconfig             |   9 +
->  drivers/clk/mediatek/Makefile            |   1 +
->  drivers/clk/mediatek/clk-mt8173-mfgtop.c | 243 +++++++++++++++++++++++
->  3 files changed, 253 insertions(+)
->  create mode 100644 drivers/clk/mediatek/clk-mt8173-mfgtop.c
-> 
-> diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-> index 2c09fd729bab..8dbd9f14be62 100644
-> --- a/drivers/clk/mediatek/Kconfig
-> +++ b/drivers/clk/mediatek/Kconfig
-> @@ -537,6 +537,15 @@ config COMMON_CLK_MT8173_IMGSYS
->  	help
->  	  This driver supports MediaTek MT8173 imgsys clocks.
->  
-> +config COMMON_CLK_MT8173_MFGTOP
-> +	tristate "Clock and power driver for MediaTek MT8173 mfgtop"
-> +	depends on COMMON_CLK_MT8173
-> +	default COMMON_CLK_MT8173
-> +	select PM_GENERIC_DOMAINS
-> +	select PM_GENERIC_DOMAINS_OF
-> +	help
-> +	  This driver supports MediaTek MT8173 mfgtop clocks and power domain.
-> +
->  config COMMON_CLK_MT8173_MMSYS
->         tristate "Clock driver for MediaTek MT8173 mmsys"
->         depends on COMMON_CLK_MT8173
-> diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-> index d8736a060dbd..892a54eeb281 100644
-> --- a/drivers/clk/mediatek/Makefile
-> +++ b/drivers/clk/mediatek/Makefile
-> @@ -82,6 +82,7 @@ obj-$(CONFIG_COMMON_CLK_MT8167_VDECSYS) += clk-mt8167-vdec.o
->  obj-$(CONFIG_COMMON_CLK_MT8173) += clk-mt8173-apmixedsys.o clk-mt8173-infracfg.o \
->  				   clk-mt8173-pericfg.o clk-mt8173-topckgen.o
->  obj-$(CONFIG_COMMON_CLK_MT8173_IMGSYS) += clk-mt8173-img.o
-> +obj-$(CONFIG_COMMON_CLK_MT8173_MFGTOP) += clk-mt8173-mfgtop.o
->  obj-$(CONFIG_COMMON_CLK_MT8173_MMSYS) += clk-mt8173-mm.o
->  obj-$(CONFIG_COMMON_CLK_MT8173_VDECSYS) += clk-mt8173-vdecsys.o
->  obj-$(CONFIG_COMMON_CLK_MT8173_VENCSYS) += clk-mt8173-vencsys.o
-> diff --git a/drivers/clk/mediatek/clk-mt8173-mfgtop.c b/drivers/clk/mediatek/clk-mt8173-mfgtop.c
-> new file mode 100644
-> index 000000000000..9e18f34166ae
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-mt8173-mfgtop.c
-> @@ -0,0 +1,243 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +/*
-> + * Copyright (c) 2024 Google LLC
-> + * Author: Chen-Yu Tsai <wenst@chromium.org>
-> + *
-> + * Based on driver in downstream ChromeOS v5.15 kernel.
-> + *
-> + * Copyright (c) 2014 MediaTek Inc.
-> + * Author: Chiawen Lee <chiawen.lee@mediatek.com>
-> + */
-> +
-> +#include <dt-bindings/clock/mt8173-clk.h>
-> +
-> +#include <linux/bitfield.h>
-> +#include <linux/clk.h>
-> +#include <linux/mfd/syscon.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/pm_domain.h>
-> +#include <linux/pm_runtime.h>
-> +#include <linux/regmap.h>
-> +
-> +#include "clk-gate.h"
-> +#include "clk-mtk.h"
-> +
-> +static const struct mtk_gate_regs mfg_cg_regs = {
-> +	.sta_ofs = 0x0000,
-> +	.clr_ofs = 0x0008,
-> +	.set_ofs = 0x0004,
-> +};
-> +
-> +#define GATE_MFG(_id, _name, _parent, _shift, _flags)	\
-> +	GATE_MTK_FLAGS(_id, _name, _parent, &mfg_cg_regs, _shift, &mtk_clk_gate_ops_setclr, _flags)
-> +
-> +/* TODO: The block actually has dividers for the core and mem clocks. */
-> +static const struct mtk_gate mfg_clks[] = {
-> +	GATE_MFG(CLK_MFG_AXI, "mfg_axi", "axi_mfg_in_sel", 0, CLK_SET_RATE_PARENT),
-> +	GATE_MFG(CLK_MFG_MEM, "mfg_mem", "mem_mfg_in_sel", 1, CLK_SET_RATE_PARENT),
-> +	GATE_MFG(CLK_MFG_G3D, "mfg_g3d", "mfg_sel", 2, CLK_SET_RATE_PARENT),
-> +	GATE_MFG(CLK_MFG_26M, "mfg_26m", "clk26m", 3, 0),
-> +};
-> +
-> +static const struct mtk_clk_desc mfg_desc = {
-> +	.clks = mfg_clks,
-> +	.num_clks = ARRAY_SIZE(mfg_clks),
-> +};
-> +
-> +struct mt8173_mfgtop_data {
-> +	struct clk_hw_onecell_data *clk_data;
-> +	struct regmap *regmap;
-> +	struct generic_pm_domain genpd;
-> +	struct of_phandle_args parent_pd, child_pd;
-> +	struct clk *clk_26m;
-> +};
-> +
-> +/* Delay count in clock cycles */
-> +#define MFG_ACTIVE_POWER_CON0	0x24
-> + #define RST_B_DELAY_CNT	GENMASK(7, 0)	/* pwr_rst_b de-assert delay during power-up */
-> + #define CLK_EN_DELAY_CNT	GENMASK(15, 8)	/* CLK_DIS deassert delay during power-up */
-> + #define CLK_DIS_DELAY_CNT	GENMASK(23, 16)	/* CLK_DIS assert delay during power-down */
-> + #define FORCE_ABORT		BIT(30)		/* write 1 to force abort a power event */
-> + #define ACTIVE_PWRCTL_EN	BIT(31)		/* enable ACTIVE_POWER */
-> +
-> +#define MFG_ACTIVE_POWER_CON1	0x28
-> + #define PWR_ON_S_DELAY_CNT	GENMASK(7, 0)	/* pwr_on_s assert delay during power-up */
-> + #define ISO_DELAY_CNT		GENMASK(15, 8)	/* ISO assert delay during power-down */
-> + #define ISOOFF_DELAY_CNT	GENMASK(23, 16)	/* ISO de-assert delay during power-up */
-> + #define RST__DELAY_CNT		GENMASK(31, 24) /* pwr_rsb_b assert delay during power-down */
+> I'll test the new macros (TIMER_OF_DECLARE_PLATFORM_DRIVER and
+> TIMER_OF_DECLARE_EARLY_PLATFORM_DRIVER) with the IMX timer drivers
+> once the patches are available.
 
-Is the double underscore expected in the name?
+I think I have an idea on how to achieve that. That will result in the 
+removal of TIMER_OF_DECLARE() when all drivers will be changed to use 
+the new macro.
 
-> +
-> +static int clk_mt8173_mfgtop_power_on(struct generic_pm_domain *domain)
-> +{
-> +	struct mt8173_mfgtop_data *data = container_of(domain, struct mt8173_mfgtop_data, genpd);
-> +
-> +	/* drives internal power management */
-> +	clk_prepare_enable(data->clk_26m);
-> +
-> +	/* Power on/off delays for various signals */
-> +	regmap_write(data->regmap, MFG_ACTIVE_POWER_CON0,
+The #ifdef MODULE macro is set when the driver is compiled as a module.
 
-Should the return value of clk_prepare_enable() and regmap_write() be
-checked?
+So we can do something like:
 
-> +		     FIELD_PREP(RST_B_DELAY_CNT, 77) |
-> +		     FIELD_PREP(CLK_EN_DELAY_CNT, 61) |
-> +		     FIELD_PREP(CLK_DIS_DELAY_CNT, 60) |
-> +		     FIELD_PREP(ACTIVE_PWRCTL_EN, 0));
-> +	regmap_write(data->regmap, MFG_ACTIVE_POWER_CON1,
-> +		     FIELD_PREP(PWR_ON_S_DELAY_CNT, 11) |
-> +		     FIELD_PREP(ISO_DELAY_CNT, 68) |
-> +		     FIELD_PREP(ISOOFF_DELAY_CNT, 69) |
-> +		     FIELD_PREP(RST__DELAY_CNT, 77));
-> +
-> +	/* Magic numbers related to core switch sequence and delays */
-> +	regmap_write(data->regmap, 0xe0, 0x7a710184);
-> +	regmap_write(data->regmap, 0xe4, 0x835f6856);
-> +	regmap_write(data->regmap, 0xe8, 0x002b0234);
-> +	regmap_write(data->regmap, 0xec, 0x80000000);
-> +	regmap_write(data->regmap, 0xa0, 0x08000000);
-> +
-> +	return 0;
-> +}
-> +
-> +static int clk_mt8173_mfgtop_power_off(struct generic_pm_domain *domain)
-> +{
-> +	struct mt8173_mfgtop_data *data = container_of(domain, struct mt8173_mfgtop_data, genpd);
-> +
-> +	/* Magic numbers related to core switch sequence and delays */
-> +	regmap_write(data->regmap, 0xec, 0);
-> +
-> +	/* drives internal power management */
-> +	clk_disable_unprepare(data->clk_26m);
-> +
-> +	return 0;
-> +}
-> +
-> +static int clk_mt8173_mfgtop_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct device_node *node = dev->of_node;
-> +	struct mt8173_mfgtop_data *data;
-> +	int ret;
-> +
-> +	data = devm_kzalloc(dev, sizeof(*data), GFP_KERNEL);
-> +	if (!data)
-> +		return -ENOMEM;
-> +
-> +	platform_set_drvdata(pdev, data);
-> +
-> +	data->clk_data = mtk_devm_alloc_clk_data(dev, ARRAY_SIZE(mfg_clks));
-> +	if (!data->clk_data)
-> +		return -ENOMEM;
-> +
-> +	/* MTK clock gates also uses regmap */
-> +	data->regmap = device_node_to_regmap(node);
-> +	if (IS_ERR(data->regmap))
-> +		return dev_err_probe(dev, PTR_ERR(data->regmap), "Failed to get regmap\n");
-> +
-> +	data->child_pd.np = node;
-> +	data->child_pd.args_count = 0;
-> +	ret = of_parse_phandle_with_args(node, "power-domains", "#power-domain-cells", 0,
-> +					 &data->parent_pd);
-> +	if (ret)
-> +		return dev_err_probe(dev, ret, "Failed to parse power domain\n");
-> +
-> +	devm_pm_runtime_enable(dev);
-> +	/*
-> +	 * Do a pm_runtime_resume_and_get() to workaround a possible
-> +	 * deadlock between clk_register() and the genpd framework.
-> +	 */
-> +	ret = pm_runtime_resume_and_get(dev);
-> +	if (ret) {
-> +		dev_err_probe(dev, ret, "Failed to runtime resume device\n");
-> +		goto put_of_node;
-> +	}
-> +
-> +	ret = mtk_clk_register_gates(dev, node, mfg_clks, ARRAY_SIZE(mfg_clks),
-> +				     data->clk_data);
-> +	if (ret) {
-> +		dev_err_probe(dev, ret, "Failed to register clock gates\n");
-> +		goto put_pm_runtime;
-> +	}
-> +
-> +	data->clk_26m = clk_hw_get_clk(data->clk_data->hws[CLK_MFG_26M], "26m");
-> +	if (IS_ERR(data->clk_26m)) {
-> +		dev_err_probe(dev, PTR_ERR(data->clk_26m), "Failed to get 26 MHz clock\n");
-> +		goto unregister_clks;
-> +	}
-> +
-> +	ret = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, data->clk_data);
-> +	if (ret) {
-> +		dev_err_probe(dev, ret, "Failed to add clk OF provider\n");
-> +		goto put_26m_clk;
-> +	}
-> +
-> +	data->genpd.name = "mfg-top";
-> +	data->genpd.power_on = clk_mt8173_mfgtop_power_on;
-> +	data->genpd.power_off = clk_mt8173_mfgtop_power_off;
-> +	ret = pm_genpd_init(&data->genpd, NULL, true);
-> +	if (ret) {
-> +		dev_err_probe(dev, ret, "Failed to add power domain\n");
-> +		goto del_clk_provider;
-> +	}
-> +
-> +	ret = of_genpd_add_provider_simple(node, &data->genpd);
-> +	if (ret) {
-> +		dev_err_probe(dev, ret, "Failed to add power domain OF provider\n");
-> +		goto remove_pd;
-> +	}
-> +
-> +	ret = of_genpd_add_subdomain(&data->parent_pd, &data->child_pd);
-> +	if (ret) {
-> +		dev_err_probe(dev, ret, "Failed to link PM domains\n");
-> +		goto del_pd_provider;
-> +	}
-> +
-> +	pm_runtime_put(dev);
-> +	return 0;
-> +
-> +del_pd_provider:
-> +	of_genpd_del_provider(node);
-> +remove_pd:
-> +	pm_genpd_remove(&data->genpd);
-> +del_clk_provider:
-> +	of_clk_del_provider(node);
-> +put_26m_clk:
-> +	clk_put(data->clk_26m);
-> +unregister_clks:
-> +	mtk_clk_unregister_gates(mfg_clks, ARRAY_SIZE(mfg_clks), data->clk_data);
-> +put_pm_runtime:
-> +	pm_runtime_put(dev);
-> +put_of_node:
-> +	of_node_put(data->parent_pd.np);
-> +	return ret;
-> +}
-> +
-> +static void clk_mt8173_mfgtop_remove(struct platform_device *pdev)
-> +{
-> +	struct mt8173_mfgtop_data *data = platform_get_drvdata(pdev);
-> +	struct device_node *node = pdev->dev.of_node;
-> +
-> +	of_genpd_remove_subdomain(&data->parent_pd, &data->child_pd);
-> +	of_genpd_del_provider(node);
-> +	pm_genpd_remove(&data->genpd);
-> +	of_clk_del_provider(node);
-> +	clk_put(data->clk_26m);
-> +	mtk_clk_unregister_gates(mfg_clks, ARRAY_SIZE(mfg_clks), data->clk_data);
-> +}
-> +
-> +static const struct of_device_id of_match_clk_mt8173_mfgtop[] = {
-> +	{ .compatible = "mediatek,mt8173-mfgtop", .data = &mfg_desc },
+#ifdef MODULE
 
-Is the match data and mfg_desc used?
+#define TIMER_OF_DECLARE_PDEV(name, compat, data, fn) \
+         OF_DECLARE_1_RET(timer_pdev, name, compat, data, fn)
 
-Brian
 
-> +	{ /* sentinel */ }
-> +};
-> +MODULE_DEVICE_TABLE(of, of_match_clk_mt8173_mfgtop);
-> +
-> +static struct platform_driver clk_mt8173_mfgtop_drv = {
-> +	.probe = clk_mt8173_mfgtop_probe,
-> +	.remove = clk_mt8173_mfgtop_remove,
-> +	.driver = {
-> +		.name = "clk-mt8173-mfgtop",
-> +		.of_match_table = of_match_clk_mt8173_mfgtop,
-> +	},
-> +};
-> +module_platform_driver(clk_mt8173_mfgtop_drv);
-> +
-> +MODULE_DESCRIPTION("MediaTek MT8173 mfgtop clock driver");
-> +MODULE_LICENSE("GPL");
-> -- 
-> 2.53.0.1018.g2bb0e51243-goog
-> 
+#else
+
+#define TIMER_OF_DECLARE_PDEV(__name, compat, data, fn) \
+         OF_DECLARE_1_RET(of_pdev_timer_match_table,
+			__name, compat, data, fn)
+
+static struct platform_driver __##__name##_timer_driver = {
+         .probe = __##__name##_timer_probe,
+         .driver = {
+                 .name = name,
+                 .of_match_table = of_pdev_timer_match_table,
+         },
+};
+module_platform_driver(__##__name##_timer_driver);
+
+#endif
+
+So we deal with two tables, one for platform device non module and one 
+module for modules.
+
+The first one is called by the timer-of init routine. The other one is 
+called by the probe function.
+
+The drawback will be the match table will be common to all timer 
+drivers. So probe will be a bit slower. May be there is an area of 
+optimization here.
 
 
