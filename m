@@ -4,99 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21C4BFEA83C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2026 09:34:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAFB8FEA824
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2026 10:01:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MY2gl1nH38Ouss3TR0Op2BV2a45ltxMnBfWmMEGs8W0=; b=OWB/mB7+bQFWEJ
-	J6wZG384xz3RxaYUOtXp/H2ZDAscMORyRY0x7dn8MBOqO7Mi8F7KFDgzEtbVNEwwNVy6i3eAU/SFM
-	CREkrQnbqaOOz8J7NIOeNoI7cAzTUGyt8lzOvj1VGtkZnCtrmEG4zD4yth3UrsPq4JbSpEYeBGn7z
-	8bWrPiVyp2SlrCxKIx/XKcCZYFDNn80lgoEF81a7bhHe4CufEdd2Fw82bC2gaQlrugVxfpwQfrITH
-	cQCzD8tutTbpC4vnt9oqgJ7+P4+AwuAe89gQqJ6bJOl5yXUBnf+N6skKZnL5ExN9tiTns5rA9JrKM
-	pNfXCnhtYhzttOqX9Vww==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=UWiacNPqbTBMPSYg7bJTAWnfbMXH+FwDSMbsXyySBHg=; b=prYRUXnX2+GasGHnyJcPWdheL6
+	ND+4ETe8QkR8oCvm27BqWcgM+5YeTNFWXyWZTeoKK/zeTSudNAhWJhP15z/5YNP8+sUKPAzO+7QCS
+	Sa79Eb+OyfOXiZE1KVV133tqwQ7OsiXZfoNy+8Nd2WCdy4VPgf0i7McFpeOnBMY9UnhkF/7QPb1Ae
+	gd5Q/JzngnqFyniyjlnPS8WQ8mUwEjDBNGy1dqY+0CSwAcWlKUidIdiym20Noffo4NzqJwAZQuemx
+	I9yuAtJ9+SWcV1Y/MEzbJLequC7BvILX3L+5JJI/S0gwUe2MlIwNEDyvtrWV2jy9CU+HjZxvpSuhF
+	f9a79zcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5Kcn-00000003406-15bP;
-	Wed, 25 Mar 2026 09:34:05 +0000
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+	id 1w5L3i-0000000367O-3uZa;
+	Wed, 25 Mar 2026 10:01:54 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5Kcl-000000033zH-0a9a
-	for linux-mediatek@lists.infradead.org;
-	Wed, 25 Mar 2026 09:34:04 +0000
-Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-5a283c44478so4974173e87.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 25 Mar 2026 02:34:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1774431241; cv=none;
-        d=google.com; s=arc-20240605;
-        b=ELnfMFG/tzesVrnFeEQqO72GsVWaY93jDpHAeWwXt300jdZM5V8S01gDKd/+atv1eM
-         RlNdmvYyGd4OtMgbjNnzejM2NmGHVWoPWF6wlJntqWcOIfMjBz4CBBw/ZsY+4ZjndvP9
-         XQkBxvI5EBmSr9azZrIQGNWEUy910PcM7AZ9exq2IFK+FwjW9ZIjo2YfeiA+BvppUnSd
-         4c/xjZpOT0oojFML1Zt14HhZck1BByhaV0UQ2YT1I5m8+a6HxEOOjg/qmhe+6z/7ANEG
-         gSPdh9KwufnV+w/Vr9BsjBnw3hDLAu3KxrL+UtqOtQs5ZR9LTAzxOGBRfTgdDyZEGvvA
-         q0cA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=MY2gl1nH38Ouss3TR0Op2BV2a45ltxMnBfWmMEGs8W0=;
-        fh=QNJC08BlPq5ZDvGfX++8SFhLQerEVvoQyAZUgBo4I2s=;
-        b=ZwOAcvRaK8e8O/t2iDMfU2oQUqReP8q6ProVZmO2MRf9JpjbIkDHn0KDSf/F4+82UO
-         Xx8K2PKUVoZZgPV+DWWoj1tuiL/2iDeD/SLW9Jnx4Bhd8u3BPi8qA96WhX03dPEofV5K
-         aVH3uQ+brSztivztBOiRwdJCqSDfg+tAp/X0pH7lwqoF8eSHmJUzB5iC2BxI07iZ3UIv
-         SITGKnsES8urLLD68PlgBDVb03zpeYapLid8AKn1C7CI3XpRRXrf/PDCr3lk3WkUM2cP
-         0xzkyKWjsPY6bylAD3EkxSXAFSOffrblXAZR2aUVQLFpYCKJ1IkDo2pjV6NRhugTLWpi
-         m7bg==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1774431241; x=1775036041; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=MY2gl1nH38Ouss3TR0Op2BV2a45ltxMnBfWmMEGs8W0=;
-        b=Z7+c4VZffI2YFB1gU19s73DpUlvX6lEeJqA/bZHvE86Dqmt/vpP86WVtUCSSaBBc+d
-         Rc0Eh8UtSUxwXv56NwY5IzZOCcx0DDZPE590pxsQCeEUMm5zqT6V+2HZvkCUH7AMp6NA
-         MYBWtfYrVOI5a5BY8yD9CVneWgACKfjTyPMfI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1774431241; x=1775036041;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=MY2gl1nH38Ouss3TR0Op2BV2a45ltxMnBfWmMEGs8W0=;
-        b=p6EzlHRUcpaEZKp2gOXMstnKDBRPqzQudwCTSG1WHfG3cC9SGS6K/DCttQuYPG93nB
-         DLUFe+qYWWnFS+n9FRLhiuFzeU7WVB6241j5RYIrFRM6unDvJjzi5MA63WSsHWXe2OI8
-         XCn94H4A9QMB+nrfD4ISmXTy744e2n5g3pv6VuE+TBwpH2jAZqi678dP1jEspF3/6olO
-         +b/vYqjdiDo+mMLgZrmWjMLo0BMgGMoMl+z7RkZhkWzCjwhU6Re7kSZ9IFRZt1E19p36
-         IBxWO0jLmzhUO7qbjc5rjf5eeatA8mUcbXXsZGxThwEIqOf41EyBVLwQDErfXX7/9JRD
-         1UCw==
-X-Forwarded-Encrypted: i=1; AJvYcCXCxRJvSjSzYPT6Qh04R/slA7g1CIlvZfma2JpLd2qPYmyG6njq5JYAWtsMn2r87hStTVZsquWt70FlXA1OGA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwuON7gTPxZgk8NJ4beoSsTGLqfXmQtzX5YakGj5uKzHFjqJsxx
-	VTwS8fDmh3lAVoxXJXusYEJVBI/qxTl9HkB5C+tFRPzfI8vL0qgR/9m2lL3b+g3VjRBfU8GN4zC
-	fCb6afGjXlRo2lN8mHgBxB9sApR7Qdcd1UvG9k1wj
-X-Gm-Gg: ATEYQzxAW/m6dYwc5t7HcvuM4lfeZNjPNDIx5nce10BJfI+D1O0Miozb68uej2QbtaK
-	fSl/cfZj+he1mRyHwQ3nDvRYcHKe92AmwqHlFvFMpKQ1jNpq9BwgKTKhjkMzkPJtvM4KFns5Fmu
-	nWuklMdfa2lKdczkmihd9eWQGfXdTCKrsT6mi3Q3mtFle6umWwijYM28XtFHXenE/kHaazMMmWK
-	z6ELusMi0nvDHGKGynsCgZMUjlfZjipFZYmZ8ig8sfXftZbNWm5qDUsTrWLhxbJQskK1asf3akE
-	kUkBEyxAKYWs42r8/GxALrHHF7f3st59aMNk
-X-Received: by 2002:ac2:46c7:0:b0:5a2:95e6:8349 with SMTP id
- 2adb3069b0e04-5a29b995620mr642031e87.31.1774431241276; Wed, 25 Mar 2026
- 02:34:01 -0700 (PDT)
+	id 1w5L3f-0000000366Y-0rw7;
+	Wed, 25 Mar 2026 10:01:51 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 460AF600C4;
+	Wed, 25 Mar 2026 10:01:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 778C0C4CEF7;
+	Wed, 25 Mar 2026 10:01:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1774432910;
+	bh=Q0y68Sh0drunIWBrbPQGi+mpNZ+3qNgyIEg6q1TJwSs=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Do3onyXUBuQV8Yzx8HEV2pWDywWlNUTdMFucTiA8sKEuTSZvjsuXkZiBhYiQBaNmf
+	 Y+iVbspzq7WTgkCMPSfxwxyi7w+7hHkkLLOB9NRbgED2iF9PPm2TNAPqZpTShZ53sF
+	 n80ZlTQ/6JXPKKVXoqDZ8H5NPvaGXc0XJ4RPboju1yAO0nOEJLmcn0OigEXJsKfLJd
+	 bwHdtB8hgcryXtQkHLLX4dIp1PBRGLb22la0NEWVU+BnEfVZYG3IL7V1b9s8fhDyPb
+	 hoSezUtwX0s+IBr73BbBMYs53KjrQxvgNDQo6tgcpCPCM61TncIyZKAlTES5nR+Rbs
+	 +3BSYEOXGF5vA==
+From: Arnd Bergmann <arnd@kernel.org>
+To: Linus Walleij <linusw@kernel.org>,
+	Bartosz Golaszewski <brgl@kernel.org>
+Cc: Arnd Bergmann <arnd@arndb.de>,
+	Yixun Lan <dlan@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-riscv@lists.infradead.org,
+	spacemit@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] gpio: fix up CONFIG_OF dependencies
+Date: Wed, 25 Mar 2026 11:01:14 +0100
+Message-Id: <20260325100144.1696731-1-arnd@kernel.org>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-References: <20260325082546.1572405-1-zhengxingda@iscas.ac.cn> <20260325082546.1572405-2-zhengxingda@iscas.ac.cn>
-In-Reply-To: <20260325082546.1572405-2-zhengxingda@iscas.ac.cn>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 25 Mar 2026 17:33:50 +0800
-X-Gm-Features: AQROBzBoVW0M0QSdDVNGtSFKBNttJVM9VIsbTSnjXBMQkFjb8Ekw7FmKmmCMyQE
-Message-ID: <CAGXv+5EEFtifhMeTKQ9uCvih+Le8XPafxASiVXzd8BW0swaRng@mail.gmail.com>
-Subject: Re: [PATCH 2/2] arm64: dts: mediatek: mt8173: add hana revision 2
-To: Icenowy Zheng <zhengxingda@iscas.ac.cn>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260325_023403_197909_BFBAEB97 
-X-CRM114-Status: GOOD (  11.00  )
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,27 +71,101 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>, Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Max Shevchenko <wctrl@proton.me>, Cristian Cozzolino <cristian_ci@protonmail.com>, Icenowy Zheng <uwu@icenowy.me>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, Gary Bisson <bisson.gary@gmail.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Mateusz Koza <mateusz.koza@grinn-global.com>, devicetree@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 25, 2026 at 4:26=E2=80=AFPM Icenowy Zheng <zhengxingda@iscas.ac=
-.cn> wrote:
->
-> The current mt8173-elm-hana.dts file only contains compatible strings
-> for revision 3~6, makes boards with revision 0~2 to fail to match a
-> revision-specific DTS and may fall back to the rev7 one (which lacks
-> some gpio-keys).
->
-> As I've got a Lenovo Flex 11 Chromebook with board revision 2, add it to
-> the base hana DTB file.
->
-> Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
-> Signed-off-by: Icenowy Zheng <zhengxingda@iscas.ac.cn>
+From: Arnd Bergmann <arnd@arndb.de>
 
-I couldn't dig up which revisions were commercially available, but
-our downstream kernel says that regvisions 0 through 6 are all
-compatible.
+A number of GPIO drivers that used to have a CONFIG_OF_GPIO dependency now fail
+to build on targets without CONFIG_OF:
 
-Acked-by: Chen-Yu Tsai <wenst@chromium.org>
+WARNING: unmet direct dependencies detected for GPIO_SYSCON
+  Depends on [n]: GPIOLIB [=y] && HAS_IOMEM [=y] && MFD_SYSCON [=y] && OF [=n]
+  Selected by [y]:
+  - GPIO_SAMA5D2_PIOBU [=y] && GPIOLIB [=y] && HAS_IOMEM [=y] && MFD_SYSCON [=y] && (ARCH_AT91 || COMPILE_TEST [=y])
+
+drivers/gpio/gpio-mt7621.c: In function 'mediatek_gpio_bank_probe':
+drivers/gpio/gpio-mt7621.c:254:20: error: 'struct gpio_chip' has no member named 'of_gpio_n_cells'
+  254 |         rg->chip.gc.of_gpio_n_cells = 2;
+      |                    ^
+drivers/gpio/gpio-tegra186.c: In function 'tegra186_gpio_of_xlate':
+drivers/gpio/gpio-tegra186.c:502:25: error: 'struct gpio_chip' has no member named 'of_gpio_n_cells'
+  502 |         if (WARN_ON(chip->of_gpio_n_cells < 2))
+      |                         ^~
+drivers/gpio/gpio-lpc32xx.c: In function 'lpc32xx_gpio_probe':
+drivers/gpio/gpio-lpc32xx.c:523:49: error: 'struct gpio_chip' has no member named 'of_xlate'
+  523 |                         lpc32xx_gpiochip[i].chip.of_xlate = lpc32xx_of_xlate;
+      |                                                 ^
+drivers/gpio/gpio-spacemit-k1.c: In function 'spacemit_gpio_add_bank':
+drivers/gpio/gpio-spacemit-k1.c:234:11: error: 'struct gpio_chip' has no member named 'of_gpio_n_cells'
+  234 |         gc->of_gpio_n_cells     = 3;
+      |           ^~
+
+Bring that back as a dependency.
+
+Fixes: 7803501e5754 ("gpio: drop unneeded Kconfig dependencies on OF_GPIO")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+There may be more fallout from the change, this is just what I found immediately,
+but you could already fold the changes into the broken patch while I look
+for additional ones.
+---
+ drivers/gpio/Kconfig | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/drivers/gpio/Kconfig b/drivers/gpio/Kconfig
+index e1e48e432133..bcb8ce89396c 100644
+--- a/drivers/gpio/Kconfig
++++ b/drivers/gpio/Kconfig
+@@ -236,6 +236,7 @@ config GPIO_BRCMSTB
+ 	tristate "BRCMSTB GPIO support"
+ 	default y if (ARCH_BRCMSTB || BMIPS_GENERIC)
+ 	depends on ARCH_BRCMSTB || ARCH_BCM2835 || BMIPS_GENERIC || COMPILE_TEST
++	depends on OF
+ 	select GPIO_GENERIC
+ 	select IRQ_DOMAIN
+ 	help
+@@ -450,6 +451,7 @@ config GPIO_LPC18XX
+ config GPIO_LPC32XX
+ 	tristate "NXP LPC32XX GPIO support"
+ 	depends on ARCH_LPC32XX || COMPILE_TEST
++	depends on OF
+ 	help
+ 	  Select this option to enable GPIO driver for
+ 	  NXP LPC32XX devices.
+@@ -492,6 +494,7 @@ config GPIO_MPC8XXX
+ config GPIO_MT7621
+ 	bool "Mediatek MT7621 GPIO Support"
+ 	depends on SOC_MT7620 || SOC_MT7621 || COMPILE_TEST
++	depends on OF
+ 	select GPIO_GENERIC
+ 	select GPIOLIB_IRQCHIP
+ 	help
+@@ -632,6 +635,7 @@ config GPIO_RTD
+ 
+ config GPIO_SAMA5D2_PIOBU
+ 	tristate "SAMA5D2 PIOBU GPIO support"
++	depends on OF
+ 	depends on MFD_SYSCON
+ 	depends on ARCH_AT91 || COMPILE_TEST
+ 	select GPIO_SYSCON
+@@ -672,6 +676,7 @@ config GPIO_SNPS_CREG
+ config GPIO_SPACEMIT_K1
+ 	tristate "SPACEMIT K1 GPIO support"
+ 	depends on ARCH_SPACEMIT || COMPILE_TEST
++	depends on OF
+ 	select GPIO_GENERIC
+ 	select GPIOLIB_IRQCHIP
+ 	help
+@@ -737,6 +742,7 @@ config GPIO_TEGRA186
+ 	tristate "NVIDIA Tegra186 GPIO support"
+ 	default ARCH_TEGRA_186_SOC || ARCH_TEGRA_194_SOC || ARCH_TEGRA_234_SOC
+ 	depends on ARCH_TEGRA_186_SOC || ARCH_TEGRA_194_SOC || ARCH_TEGRA_234_SOC || COMPILE_TEST
++	depends on OF
+ 	select GPIOLIB_IRQCHIP
+ 	select IRQ_DOMAIN_HIERARCHY
+ 	help
+-- 
+2.39.5
+
 
