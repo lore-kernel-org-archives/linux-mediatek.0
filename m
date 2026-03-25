@@ -4,66 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C02D9109C045
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2026 16:55:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F07A109C04A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2026 17:17:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bOLHph50MygLD+LJIPpWwZg6/ExL863ytypasC2g0/0=; b=YjyfA4yBfq+AP3i4z+uMueOV/n
-	HuwzPz3B0Hn5yk3coXEYuxvFGrlQGQ305D7zFLPLcQhkMRWJAc12Ha28Y5rwhxHYWNPgHkifQDgfy
-	N2+KkLHscWQIkrV3NILsEgN0Hct4hcVuGu7tXwUEhk98FKtYgV7+nbt9LZ4fo/Fv9oE8BZO0AD48z
-	0MgkVJ/voz11fg64uvx6/JHYbhnZBckzm9QDvZ05FUOh0kaSlA8zTiygGcl5mrnTqq/nmMTMnv+io
-	c4FoansOuITn0bI1GYqJsvJrPIjGrt0GLRN/YtEzBlcZOo3cHGcp/9NzXCZTJn4XFNcdnWcPi0M7H
-	Z76i8tqw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=1NDzJA/0MjyusnuWKkzTQb8f5VjxX7ByPwK0ik1Pxfk=; b=Y77NU6UTdYua85CP6RbsKoV2wy
+	rZj2vTvYaZsIKnDiSJFSAX/RsHx+SO4stUSn4jOon6vtCGaw5GIB6H6drrRH8S5o3zeCKOsRWGLKT
+	PgkKgxtRTuqk+Q9eibX1jr0+2Dkdw0nh4lfMyYjFbrXWqMzOQ59afdhSAv4syPXNxPWMlgVe/O6rx
+	Ibu8i5HddzpIY0F7PF3Jq4Auy0n7LSg4Pe8yYKn4TFSBUfJdQ1k9v5kEVg/602cxIDe7cOQ6rXn+o
+	2vMDWVyDmZl6HJ3Az3pQoF+0QbkJ32lkkTyTQwVn4Fsf52XF/VNoiRJXzIocjp99ISNGvE9yYiYte
+	DbNpX6Ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5RVb-00000003wtb-2uXH;
-	Wed, 25 Mar 2026 16:55:07 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1w5RrN-00000003yMx-2mCp;
+	Wed, 25 Mar 2026 17:17:37 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5RVa-00000003wsy-0SBI;
-	Wed, 25 Mar 2026 16:55:06 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 55F8D600C4;
-	Wed, 25 Mar 2026 16:55:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DFB62C4CEF7;
-	Wed, 25 Mar 2026 16:55:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774457705;
-	bh=RKKiiq8BF8Gnss15GyLrbCZ1nQZVCizvsceHIkQybeY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=fUmZoGmEOFgd86CDps+cN4uba4Z8k0RbTFUgOkt4vajosQUVDMjIwFN9CDpxm5RYr
-	 hxBLzLwoS861MUC0M22kcTkbhvNNE0TxmpPEB8PTRQDxPSCmkFS/nFXIBqG5qQp5Ry
-	 QiR0645ytteVjCwi/8/pmydejBFyvxu1LUVvWRzHDNnC+VlAXP9zcA0gSHS5r3wYus
-	 mjIJ5GADmJ0m70/jwlDNGwr7MGCxpvXj0sHXQTXBpaAeZdT+J1Oi2R6VhFZ82Lk7rw
-	 2QdZcVNjPzQA/bE/9lA/B4Gem45JFrTc9Fc3fgl1D3/mHD+g7eStV6briapV+yKL6N
-	 ito5CWuspA+Jg==
-Date: Wed, 25 Mar 2026 16:55:00 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH RESEND 1/2] regulator: dt-bindings: mt6315: Add regulator
- supplies
-Message-ID: <32638731-8f33-4203-9e68-1170cff99280@sirena.org.uk>
-References: <20260324053030.4077453-1-wenst@chromium.org>
- <20260324053030.4077453-2-wenst@chromium.org>
- <20260325-uncovered-carp-of-inquire-8a7acf@quoll>
+	id 1w5RrK-00000003yMW-3BRz
+	for linux-mediatek@lists.infradead.org;
+	Wed, 25 Mar 2026 17:17:35 +0000
+X-UUID: 8091b98c286e11f19e7563141e833ce8-20260325
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=1NDzJA/0MjyusnuWKkzTQb8f5VjxX7ByPwK0ik1Pxfk=;
+	b=hKSqS6IZcSKZdrhW9adfyWPBGiOC2WIdBgSclQSA5SV/HvOXiACvQvh6R7FHv9YP8IUaWMytu5VpilEBLrpIkb/0XwPxGnX8NABdp5B/v3AHFx/rv7LOcIgc4DJn+/W1cKPSv/u9/5zWqZZYdShoOR/K9Wbxk84wDOqG2+SjLkw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.12,REQID:441d176c-8aaa-49d7-aa09-30fbb98ad08d,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:e7bac3a,CLOUDID:57c3b08e-6df4-4a3d-a7a4-fbdc42d669ce,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA
+	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 8091b98c286e11f19e7563141e833ce8-20260325
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
+	(envelope-from <ryder.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 232309920; Wed, 25 Mar 2026 10:17:29 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Thu, 26 Mar 2026 01:17:26 +0800
+Received: from mussdccf250.eus.mediatek.inc (10.73.250.250) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Thu, 26 Mar 2026 01:17:26 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: <linux-mediatek@lists.infradead.org>, <linux-wireless@vger.kernel.org>,
+	Shayne Chen <shayne.chen@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH v2] wifi: mt76: mt7996: disable UNI_BSS_INFO_PROTECT_INFO for mt7996
+Date: Wed, 25 Mar 2026 10:17:23 -0700
+Message-ID: <6427326eb4e8f375c63379f7a0df7e2ae9d120a4.1774458901.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="waZYWKl2+xYeqLDx"
-Content-Disposition: inline
-In-Reply-To: <20260325-uncovered-carp-of-inquire-8a7acf@quoll>
-X-Cookie: Question authority.
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260325_101734_806554_81186A19 
+X-CRM114-Status: UNSURE (   9.10  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,46 +85,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The current MT7996 firmware causes TX failure and need further
+investigation, so it is temporarily disabled.
 
---waZYWKl2+xYeqLDx
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+MT7992 and MT7990 are working normally.
 
-On Wed, Mar 25, 2026 at 09:56:00AM +0100, Krzysztof Kozlowski wrote:
-> On Tue, Mar 24, 2026 at 01:30:28PM +0800, Chen-Yu Tsai wrote:
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+v2 - add a comment to describe why this check is required.
+---
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-> > +      pvdd4-supply:
-> > +        description: Supply for vbuck4
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index 16420375112d..ae068392b9dd 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -1281,6 +1281,10 @@ int mt7996_mcu_set_protection(struct mt7996_phy *phy, struct mt7996_vif_link *li
+ 		PROT_NONGF_STA	 = BIT(7),
+ 	};
+ 
++	/* The current firmware causes TX failure. Need further investigation */
++	if (is_mt7996(&dev->mt76))
++		return 0;
++
+ 	skb = __mt7996_mcu_alloc_bss_req(&dev->mt76, &link->mt76,
+ 					 MT7996_BSS_UPDATE_MAX_SIZE);
+ 	if (IS_ERR(skb))
+-- 
+2.45.2
 
-> These all look per-regulator supplies, so I think they should be in each
-> regulator node (see also regulator.yaml).
-
-> Or in top-level, but not in "regulators" node. The regulators is only
-> wrapping node for children.
-
-> I wonder what should be our preference - have supplies per regulator or
-> in top-level node. @Mark, any preference from your side?
-
-The top level, so people can figure out where to describe supplies
-without having to read the bindings so much - the supplies go into the
-chip, even if they're distributed within it.
-
-Please don't add random characters to my name.
-
---waZYWKl2+xYeqLDx
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmnEE2MACgkQJNaLcl1U
-h9BbaAf+OWrcsJ1vWJ5LNMOJFWdpauabUdohO1MiXidlGIsmN2yzEM3MfF9lQFNs
-Sv49o8uJQLbaVz3Abgtn4eTj0uD5zyP+QWWO1MGnfca17vRjy2PVg92Rp5GQzOWt
-TCU0jGuxbBy9flaSJ1qFyzocxSD6PQh88K2fJ3ksKBc/AUb/LlCYQqTxOaYm25Xo
-C13pwZf8CI4BqfV1T2p4h0wPQqaUwNQGi/s5h1KnhYV7H6BI4+WTjR28PpaplHD9
-g5/FIRSvoQlyz4QcyfmoCPlOhMQVq2AwuIvXEy/X+tNfVHetDX6NvHs1lPmNdJit
-w4hnfdiYl4hBXRqSFNcqwKCAsiDVkg==
-=VW8o
------END PGP SIGNATURE-----
-
---waZYWKl2+xYeqLDx--
 
