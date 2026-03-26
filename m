@@ -4,68 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90FC0109E529
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 04:48:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 793BB109E54D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 05:05:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pK8IitOhj+qJYRG0RQz1aH3TD26+Pq23VmPLgDzAB1g=; b=EjBzq5Kw2YUU3NgK24qGCkuShk
-	m6jpQYZlSWz1KOjO/e79LqeAcXfEaiZLpCjpr10jx14uk/rrDLx4JYmMsAJn11SJF+CqD0XRN3PRp
-	4+aoxAtdv1g0r0/qwLLJ1KGiN8TbtbMv9FMN802iCsfFnjmkhG0dbnVkkBz4ggCPk6xTGVlzMub8W
-	4NRJGPll6pNKmsah+tyUCyvfN8PR9oHoBcAQPoFI19d2Hic2nUEnZXDqvAg5L4tkPW66AxYC7tC+B
-	Pmf7BNA8uMq3NOJi1oEioRk02Ed83S2p296RLIeEtLR55N+QgGLMAIK8g3aVXmdcvWAGrN40BOpLF
-	5nqust4Q==;
+	bh=88eQUwPWNg5/11s1UwpjtUkzDcsJiKmUA2VqWZ7xx4Q=; b=xjjUUaNajQJcQPPXFgbkr1ka/Y
+	gE3i5rSO2B6v9I0sOY2bdV4a6JuOWFJhWwNxXTndtawUSv2jtO5QvXwUjYVhPjauCjFbFTv8vVfX9
+	qRTl/FTFrPcT55RgVDIFVa0t0qZ4kr6WNuyRMNUX3yBv6nAwVBm2FNFIp5kdIvX4wWdTEJcYSu8sO
+	GJaSsRkNwKl3x4LyeFrNq5xFc8FIa5RUlV/XxejrOVdjacwZ9TULkdqYZdC18ZKs7sGbVKFi1md4P
+	UGBEKOqPD0zmkzgmVNwn/58sKjb7gWfYIzqhRfJVg88HgIeX5oJm/KZI2h0FWKyyekFQo0ntWP0Ps
+	9HxQOfsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5cdv-00000004gvN-3EW6;
-	Thu, 26 Mar 2026 04:48:27 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1w5cuO-00000004hzn-3b1F;
+	Thu, 26 Mar 2026 05:05:28 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5cdu-00000004gvH-2Sf6
+	id 1w5cuL-00000004hyz-0p4P
 	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Mar 2026 04:48:26 +0000
+	Thu, 26 Mar 2026 05:05:26 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id A41B360053
-	for <linux-mediatek@lists.infradead.org>; Thu, 26 Mar 2026 04:48:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5AE65C2BC87
-	for <linux-mediatek@lists.infradead.org>; Thu, 26 Mar 2026 04:48:25 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id AB147443A4
+	for <linux-mediatek@lists.infradead.org>; Thu, 26 Mar 2026 05:05:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8B33FC2BCB1
+	for <linux-mediatek@lists.infradead.org>; Thu, 26 Mar 2026 05:05:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774500505;
-	bh=pK8IitOhj+qJYRG0RQz1aH3TD26+Pq23VmPLgDzAB1g=;
+	s=k20201202; t=1774501522;
+	bh=TyLg5thFWaqlzjvd8zu1XKcqeTfoSr+Jj2R8vgCS6KA=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=A8s9pbqj4y9Rc3OBhR3hAU67szsVAjaMru7+kpQ5U8oQeGlsjKG+jem5YBUTiXak1
-	 FOeV9VjTnCHTFNbuu5F95RzEihJ/7zXGOeinIZEuPpu+qwINJVzDJ7aEWq6NGAPvGl
-	 3DFstdd2OlW9hfcOl2yuPClPur51CEtko397EluLjyTIZpvUSnn6ijE3EHPPOmxbf/
-	 Qzgjf/um+dUDXCogYmF69IiSjN7lrAYFf+sSjIuxWZPlBOXnAfrHKRX5Ulc0DkfyVQ
-	 BjAw7jT/9UCzwgTHM9R8P4SjJnv4e7i3hB7+o3/Jj60W3rGFHoQ4lYmVQRn8mJaMnK
-	 Q5Y51O2mi93FQ==
-Received: by mail-lj1-f181.google.com with SMTP id 38308e7fff4ca-38a42a0d7f7so14566701fa.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 25 Mar 2026 21:48:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCXAZpUZFKEv3+czTaNxNyXVBZzFXsiEOwYDOCesy5V75gA6Rtex/5gsso3NGAK+53NW5pY5SeIVK12/iRKiYg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzXeFSYtyDa9GHt/DfUul8eolISbIdOfZpOnWj9818b1y1U/mLk
-	jpL95SyRom9mDAY6DUZ7aOpJquKzA+OtD8ItJmwuCKt/JNG4YSspuyWd9VmV+SEhuWqFNglFsu8
-	+X4JqKk9E58gbpPt8mdLQySZdVQxDSJY=
-X-Received: by 2002:a05:651c:3250:b0:38a:539b:f67 with SMTP id
- 38308e7fff4ca-38c653a066fmr716601fa.14.1774500503745; Wed, 25 Mar 2026
- 21:48:23 -0700 (PDT)
+	b=s0vhoR5QLERHe3jxWNy3J1dO/sE08j7FukSfKmJVmcEiRRmXTrBf6/rfNCyYS5FLW
+	 nrGrRKU0QPnU7CHhtVm9WXMENXrq/jzqdIHfANx+R9D2ELhq3SIlNS5KNYuarj23BY
+	 PBAUUyYdGUCMl9CCkBjFrXjPkL83mL8lDz4YelI0nYeKgXohGE8KIG7IqIQcdASFqD
+	 OwPz+IqID6L/4p0F5CA/nd0ShZsyjJdmDDVGY+jk7vkkc0Ev5wXPbdcqoJyblmUkL0
+	 5M0SNSTGnzzMFKXmjxAcZHk6B/WNL+1Y2vRACoMIRCreORSy3UtnJUnWq8bI/LaL3/
+	 mteRrAYYKMMmw==
+Received: by mail-lj1-f172.google.com with SMTP id 38308e7fff4ca-38bcda08c76so5087801fa.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 25 Mar 2026 22:05:22 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCX/2sU1syaRYHufHQChKLUMIXA80AOuo5APUaToqovNNtgu3Cz7m32T8Eg/BWZ8IiiWZffj+8jLmfhm0lIWMw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzOfOn414wboeC8SS++PL/SOdzTZ2pzdnyR0mouOxXyidQG5li/
+	4WjQUuw0znkZE5njYmJTRW91DsUnXBaI52DPKDzsr3BvG1OrQgcxQgtJFC0EkY5t+58CL6ncIHb
+	pryc3bU7jC+CvlCw8nLQeSblFc/a2r/c=
+X-Received: by 2002:a05:651c:41d5:b0:38a:8602:71e7 with SMTP id
+ 38308e7fff4ca-38c4311b956mr22846451fa.28.1774501520757; Wed, 25 Mar 2026
+ 22:05:20 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260326002348.4F98B1EA006B@mailuser.phl.internal>
-In-Reply-To: <20260326002348.4F98B1EA006B@mailuser.phl.internal>
+References: <20260325-mt7927-bt-support-v2-0-b892a3252880@jetm.me> <20260325-mt7927-bt-support-v2-1-b892a3252880@jetm.me>
+In-Reply-To: <20260325-mt7927-bt-support-v2-1-b892a3252880@jetm.me>
 From: Sean Wang <sean.wang@kernel.org>
-Date: Wed, 25 Mar 2026 23:48:14 -0500
-X-Gmail-Original-Message-ID: <CAGp9LzpHUANcUVavpZi-jNhJRWuYdtJ0HvV2q0ACjR5JNkswZg@mail.gmail.com>
-X-Gm-Features: AQROBzAJJTKkWQ4SvTldkO6SARCPPoUpJ15E3gt3p4fwVPZPpa31nGQitjyq8iY
-Message-ID: <CAGp9LzpHUANcUVavpZi-jNhJRWuYdtJ0HvV2q0ACjR5JNkswZg@mail.gmail.com>
-Subject: Re: [PATCH 1/2] Bluetooth: btmtk: Add MT6639 (MT7927) Bluetooth support
+Date: Thu, 26 Mar 2026 00:05:11 -0500
+X-Gmail-Original-Message-ID: <CAGp9Lzrme_J2UyzzG+7AWGU4MKx4yehgUy4biy4ZbtP9OkbfnQ@mail.gmail.com>
+X-Gm-Features: AQROBzAPG2S2pavEhvwOU-i45Vxw9QY7jzh-VaM4p7aDsscxDyjnvBriDVDFaS4
+Message-ID: <CAGp9Lzrme_J2UyzzG+7AWGU4MKx4yehgUy4biy4ZbtP9OkbfnQ@mail.gmail.com>
+Subject: Re: [PATCH v2 1/8] Bluetooth: btmtk: Add MT6639 (MT7927) Bluetooth support
 To: Javier Tia <floss@jetm.me>
-Cc: linux-bluetooth@vger.kernel.org, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	Luiz Augusto von Dentz <luiz.dentz@gmail.com>
+Cc: Marcel Holtmann <marcel@holtmann.org>, Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-bluetooth@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, Ryan Gilbert <xelnaga@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260325_220525_287737_5D9320D2 
+X-CRM114-Status: GOOD (  32.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,54 +87,165 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi, Javier
 
-On Wed, Mar 25, 2026 at 7:23=E2=80=AFPM Javier Tia <floss@jetm.me> wrote:
->
-> Hi Sean,
->
-> On Fri, Mar 7, 2026 Sean Wang wrote:
-> > BT and WiFi use separate firmware.
-> > I'm not sure why those WiFi sections are included in the binary.
-> > Another concern is whether it is appropriate to upload the firmware
-> > used in Windows to the linux-firmware repository,
-> > The firmware files are probably intended for dedicated OEMs.
->
-> The section filtering remains in v2 since the binary from the ASUS
-> driver package does contain mixed BT+WiFi sections. The firmware
-> upload question is being tracked separately in linux-firmware
-> MR !946.
->
-> On that topic - would it be possible for MediaTek to provide a
-> proper BT firmware binary for linux-firmware, or to sign off on
-> the one extracted from the ASUS driver package? That would resolve
-> the firmware provenance concern. If a formal submission from
-> MediaTek is required, could you help coordinate that?
->
+This is already a clear improvement over the previous version, but I
+think there are still a few areas that could be refined further.
 
-Yes, this has been under internal coordination for some time already.
-I also hope we can have a Linux-dedicated firmware binary rather than
-relying on one extracted from a Windows driver package, as that would
-be a cleaner upstream path.
-For now, the practical step is to make the driver-side handling robust
-and consistent first, so it is ready once the proper firmware is
-available.
+On Wed, Mar 25, 2026 at 6:33=E2=80=AFPM Javier Tia <floss@jetm.me> wrote:
+>
+> The MediaTek MT7927 (Filogic 380) combo WiFi 7 + BT 5.4 module uses
+> hardware variant 0x6639 for its Bluetooth subsystem. Without this patch,
+> the chip fails with "Unsupported hardware variant (00006639)" or hangs
+> during firmware download.
+>
+> Three changes are needed to support MT6639:
+>
+> 1. CHIPID workaround: On some boards the BT USB MMIO register reads
+>    0x0000 for dev_id, causing the driver to skip the 0x6639 init path.
+>    Force dev_id to 0x6639 when it reads zero, matching the equivalent
+>    WiFi-side workaround that forces chip=3D0x7927.
+>
+> 2. Firmware naming: MT6639 uses firmware version prefix "2_1" instead of
+>    "1_1" used by MT7925 and other variants. The firmware path is
+>    mediatek/mt6639/BT_RAM_CODE_MT6639_2_1_hdr.bin.
+>
+> 3. Section filtering: The MT6639 firmware binary contains 9 sections, but
+>    only sections with (dlmodecrctype & 0xff) =3D=3D 0x01 are Bluetooth-re=
+lated.
+>    Sending the remaining WiFi/other sections causes an irreversible BT
+>    subsystem hang requiring a full power cycle. This matches the Windows
+>    driver behavior observed via USB captures.
+>
+> Also add 0x6639 to the reset register (CONNV3) and firmware setup switch
+> cases alongside the existing 0x7925 handling.
+>
+> Link: https://bugzilla.kernel.org/show_bug.cgi?id=3D221096
+> Link: https://github.com/openwrt/mt76/issues/927
+> Reported-by: Ryan Gilbert <xelnaga@gmail.com>
+> Signed-off-by: Javier Tia <floss@jetm.me>
+> ---
+>  drivers/bluetooth/btmtk.c | 23 +++++++++++++++++++++--
+>  drivers/bluetooth/btmtk.h |  1 +
+>  2 files changed, 22 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+> index 2507d587f28a..13c6e45deede 100644
+> --- a/drivers/bluetooth/btmtk.c
+> +++ b/drivers/bluetooth/btmtk.c
+> @@ -112,7 +112,11 @@ static void btmtk_coredump_notify(struct hci_dev *hd=
+ev, int state)
+>  void btmtk_fw_get_filename(char *buf, size_t size, u32 dev_id, u32 fw_ve=
+r,
+>                            u32 fw_flavor)
+>  {
+> -       if (dev_id =3D=3D 0x7925)
+> +       if (dev_id =3D=3D 0x6639)
+> +               snprintf(buf, size,
+> +                        "mediatek/mt%04x/BT_RAM_CODE_MT%04x_2_%x_hdr.bin=
+",
+> +                        dev_id & 0xffff, dev_id & 0xffff, (fw_ver & 0xff=
+) + 1);
+> +       else if (dev_id =3D=3D 0x7925)
+>                 snprintf(buf, size,
+>                          "mediatek/mt%04x/BT_RAM_CODE_MT%04x_1_%x_hdr.bin=
+",
+>                          dev_id & 0xffff, dev_id & 0xffff, (fw_ver & 0xff=
+) + 1);
+> @@ -130,6 +134,7 @@ EXPORT_SYMBOL_GPL(btmtk_fw_get_filename);
+>  int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
+>                               wmt_cmd_sync_func_t wmt_cmd_sync)
+>  {
+> +       struct btmtk_data *data =3D hci_get_priv(hdev);
+>         struct btmtk_hci_wmt_params wmt_params;
+>         struct btmtk_patch_header *hdr;
+>         struct btmtk_global_desc *globaldesc =3D NULL;
+> @@ -166,6 +171,14 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, =
+const char *fwname,
+>                 section_offset =3D le32_to_cpu(sectionmap->secoffset);
+>                 dl_size =3D le32_to_cpu(sectionmap->bin_info_spec.dlsize)=
+;
+>
+> +               /* MT6639: only download sections where dlmode byte0 =3D=
+=3D 0x01,
+> +                * matching the Windows driver behavior which skips WiFi/=
+other
+> +                * sections that would cause the chip to hang.
+> +                */
+> +               if (data->dev_id =3D=3D 0x6639 && dl_size > 0 &&
+> +                   (le32_to_cpu(sectionmap->bin_info_spec.dlmodecrctype)=
+ & 0xff) !=3D 0x01)
+> +                       continue;
+> +
+>                 if (dl_size > 0) {
+>                         retry =3D 20;
+>                         while (retry > 0) {
+> @@ -852,7 +865,7 @@ int btmtk_usb_subsys_reset(struct hci_dev *hdev, u32 =
+dev_id)
+>                 if (err < 0)
+>                         return err;
+>                 msleep(100);
+> -       } else if (dev_id =3D=3D 0x7925) {
+> +       } else if (dev_id =3D=3D 0x7925 || dev_id =3D=3D 0x6639) {
+>                 err =3D btmtk_usb_uhw_reg_read(hdev, MTK_BT_RESET_REG_CON=
+NV3, &val);
+>                 if (err < 0)
+>                         return err;
+> @@ -1322,6 +1335,11 @@ int btmtk_usb_setup(struct hci_dev *hdev)
+>                 fw_flavor =3D (fw_flavor & 0x00000080) >> 7;
+>         }
+>
+> +       if (!dev_id) {
+> +               bt_dev_info(hdev, "MT6639: raw CHIPID=3D0x0000, forcing c=
+hip=3D0x6639");
+> +               dev_id =3D 0x6639;
+> +       }
 
-> > This is common logic for the other mediatek chips. It only takes
-> > longer on the first power-on.
->
-> [...]
->
-> > If the firmware download is properly handled in
-> > btmtk_setup_firmware_79xx, we don't need the extra bit.
->
-> Understood. The BTMTK_FIRMWARE_LOADED flag and skip logic are
-> removed in v2. Firmware persistence is handled by the existing
-> framework as you suggested.
->
+Using raw CHIPID=3D0x0000 to unconditionally force 0x6639 seems fragile.
+If another device later hits the same missing-ID condition, it would
+also be misdetected as MT6639. Normally this kind of quirk could be
+carried in .driver_data, but since btusb.c is shared, I'm not sure
+that is the right fit here either. This should probably be handled
+through a more device-specific fallback instead of mapping all zero
+CHIPID cases to 0x6639.
 
-Good, it looks better after removing BTMTK_FIRMWARE_LOADED flags
-
-> v2 is sent with these changes addressed.
+> +
+>         btmtk_data->dev_id =3D dev_id;
 >
-> Best,
-> Javier
+>         err =3D btmtk_register_coredump(hdev, btmtk_data->drv_name, fw_ve=
+rsion);
+> @@ -1339,6 +1357,7 @@ int btmtk_usb_setup(struct hci_dev *hdev)
+>         case 0x7925:
+>         case 0x7961:
+>         case 0x7902:
+> +       case 0x6639:
+>                 btmtk_fw_get_filename(fw_bin_name, sizeof(fw_bin_name), d=
+ev_id,
+>                                       fw_version, fw_flavor);
+>
+> diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
+> index adaf385626ee..6645bcadb523 100644
+> --- a/drivers/bluetooth/btmtk.h
+> +++ b/drivers/bluetooth/btmtk.h
+> @@ -8,6 +8,7 @@
+>  #define FIRMWARE_MT7902                "mediatek/BT_RAM_CODE_MT7902_1_1_=
+hdr.bin"
+>  #define FIRMWARE_MT7961                "mediatek/BT_RAM_CODE_MT7961_1_2_=
+hdr.bin"
+>  #define FIRMWARE_MT7925                "mediatek/mt7925/BT_RAM_CODE_MT79=
+25_1_1_hdr.bin"
+> +#define FIRMWARE_MT7927                "mediatek/mt6639/BT_RAM_CODE_MT66=
+39_2_1_hdr.bin"
+
+Sorry I did not respond to this earlier.
+I would prefer using the mediatek/mt7927/ folder naming here. mt7927
+is more widely recognized, and using it would avoid unnecessary
+confusion.
+
+>
+>  #define HCI_EV_WMT 0xe4
+>  #define HCI_WMT_MAX_EVENT_SIZE         64
+>
+> --
+> 2.53.0
+>
+>
 
