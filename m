@@ -4,71 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA39510A1E77
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 11:08:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C883710A3D80
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 12:05:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vgc9KvChhjRavgBjrlbscuXfO3SJeUlFlFdUNRpKwec=; b=A3vpIw4lBsp5orpErIpIMXz6BW
-	7YQcZ/Hnaxgc8GDPGCZciR5z534kaMK7HTWG1A8k1loSTsHGXPF92CculHoVOdu8CqEnK/wJm09UX
-	6Xu52ASwVIZG0jPCfAKZifL9PafKL8DNyG7LOVW/T0xTGkPZOZvqV5QYi66AtR0gIbJFelXgd+6x+
-	ColYn+EWYMJL8SzrD9bZvt6FDezNKrMqo3V7loInKH4TFd9kvLpbANHZmi2GIR4Ez5sVoujqszJGU
-	HLhIaEghlO4iTcsZ9DzP2WGPMvQeIY+NL1GKAIU8qhnyTmWsi95JpoE7KcCflactClJwQvgRTCOK0
-	cobWb+rw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tmr5pIZ3uDUDnmr+tLaGSi0/UR7lT7JyH5Iown1Pxyk=; b=c9qaJx6/VK5gnahXZ/F/JNe9Xc
+	YB8z5kvt1pugBYTRfjXvW/zOjAyP0zaNCPS9XLC+Q9Hyl9x+K9LDKipmN82g8sBoQ1aX03FerTvuw
+	Z0HWHd24F2eoy8skNZso0ncUXfv90qOvYsu6V2MW1va+WsiRsCROH9jl9CCmyJ7K2/JCcliOo9O9i
+	P7g8WeAC8PZitPPQqPj55t6ECSviPzcV3KlXVevjH722rmOI0aTtEs8oEAwDVzr34FiYHPYNbxMkP
+	TruuubuGqmODaPyPODVG10DHZUFEH1sldsHCTCRtCwPOgNnzqwi05ACSnSY0VrgEp+k5Q6A2Ymr9e
+	kteZqJ6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5iZR-00000005K9R-2Kx4;
-	Thu, 26 Mar 2026 11:08:13 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1w5jSz-00000005OxV-0sWd;
+	Thu, 26 Mar 2026 12:05:37 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5iZO-00000005K8x-2Drh;
-	Thu, 26 Mar 2026 11:08:11 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E75184391B;
-	Thu, 26 Mar 2026 11:08:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 91817C116C6;
-	Thu, 26 Mar 2026 11:08:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774523289;
-	bh=+FhWc0INodHNcusM5JjA9bz3CwoI7iZDfiT6TTB+4QA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=lOgdNxLsTi8DtMDzePjgCDmLAHI5mhZkzKeH7gXHNmILLQJwgN+KjBX5ja3sWHVQ8
-	 dOYWiUkC0dY/HRVSqfbB5jPWnjBYLt7uXcrCzmF0NMQ0Wb+8gk3c/UDUiiaUbcUdcx
-	 44tT+tHR+AVhfL/BdHxujl5NxuTiD7XRocYQyUo6MZXeSY1QmeQSN9DVDMouytg2XN
-	 PhqZ7oehi5pR/1/b1E3srSGvx0BFg8mBDE2Fq8Gc5NfwQl/b28iMzeuK2yZmililqC
-	 gwV7jhPOgAMYiEx/csjr5zacH8CCPdZns5Uw5iDLfzt/HL+XvlDdojiQL7uzIN0hSf
-	 /sZSgaNOMehzQ==
-Date: Thu, 26 Mar 2026 11:08:04 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Krzysztof Kozlowski <krzk@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH RESEND 1/2] regulator: dt-bindings: mt6315: Add regulator
- supplies
-Message-ID: <0d027c7e-f1a3-492f-880b-4b48d64bbd41@sirena.org.uk>
-References: <20260324053030.4077453-1-wenst@chromium.org>
- <20260324053030.4077453-2-wenst@chromium.org>
- <20260325-uncovered-carp-of-inquire-8a7acf@quoll>
- <32638731-8f33-4203-9e68-1170cff99280@sirena.org.uk>
- <CAGXv+5Fo2GmvWQGogA-KTsFChE0-SOwWek6BQ+ZA3xaXup_z+A@mail.gmail.com>
+	id 1w5jSw-00000005Ovh-1taE;
+	Thu, 26 Mar 2026 12:05:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1774526731;
+	bh=Zgf20bu0xGzHqUFQHCNtBUZtwRdwhJSQCkmmV2fc+ys=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=ZGbUBS5JiTuFi7VBT2/pW5362F8o0aMKire94QYUJY/NQgk9COoAQp47Y3DmioUVy
+	 UcXlgGWd+Rx4IJFjKE05TarlhL2GtHYMeUrr1TcESsDvQK/lD3/PZgZ8CFsVg4Fppy
+	 inDIUapqFS6xkKIllL1AfE7dl9LswO9OeHYczFztAE+vnlpBzGQxu54WEX0Xw8F57V
+	 Fdl8XE0K4cC6LjevWUloVYuKwJQX/1jVDyqKRzmHF5Hb5XsqeFEre1oNJVTdDyijcZ
+	 aK9666e06IIgHK5XYla7IN0ZcCcTgniJLIvdiV32qCWfy7Y/8sGQmif135m5iVB6wk
+	 r5suKlMf6K4gw==
+Received: from yukiji.home (lfbn-idf1-1-2269-27.w92-151.abo.wanadoo.fr [92.151.67.27])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DDD6B17E6082;
+	Thu, 26 Mar 2026 13:05:30 +0100 (CET)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Date: Thu, 26 Mar 2026 13:04:12 +0100
+Subject: [PATCH net-next v2 1/4] dt-bindings: net: Add support for Airoha
+ AN8801/R GbE PHY
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="q/FgDHQaj/4ct7kW"
-Content-Disposition: inline
-In-Reply-To: <CAGXv+5Fo2GmvWQGogA-KTsFChE0-SOwWek6BQ+ZA3xaXup_z+A@mail.gmail.com>
-X-Cookie: Here there be tygers.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260326-add-airoha-an8801-support-v2-1-1a42d6b6050f@collabora.com>
+References: <20260326-add-airoha-an8801-support-v2-0-1a42d6b6050f@collabora.com>
+In-Reply-To: <20260326-add-airoha-an8801-support-v2-0-1a42d6b6050f@collabora.com>
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>, 
+ Russell King <linux@armlinux.org.uk>
+Cc: kevin-kw.huang@airoha.com, macpaul.lin@mediatek.com, 
+ matthias.bgg@gmail.com, kernel@collabora.com, netdev@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1774526729; l=3223;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=FA5AQZRyCjhwT8o7QRGwdmO6VLOKQrbpn6fhImI/4Og=;
+ b=cA3GQztJxtw0FPttw+KwoD4r9hKjNYsOOFsNSP9sD/iJLAaWXOrkWzaLWrZmTzB3qAu/BJXCo
+ 9oB3+Sy2ceSCnyWXAXLLwcafvIXQf8m1C/n9PGK8lmDhmQHri7VX5jV
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260326_040810_618972_BF9DE7E0 
-X-CRM114-Status: GOOD (  13.93  )
+X-CRM114-CacheID: sfid-20260326_050534_641454_2D4FC567 
+X-CRM114-Status: GOOD (  12.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,45 +91,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
---q/FgDHQaj/4ct7kW
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Add a new binding to support the Airoha AN8801R Series Gigabit
+Ethernet PHY.
 
-On Thu, Mar 26, 2026 at 12:14:32PM +0800, Chen-Yu Tsai wrote:
-> On Thu, Mar 26, 2026 at 12:55=E2=80=AFAM Mark Brown <broonie@kernel.org> =
-wrote:
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+---
+ .../devicetree/bindings/net/airoha,an8801.yaml     | 85 ++++++++++++++++++++++
+ 1 file changed, 85 insertions(+)
 
-> > The top level, so people can figure out where to describe supplies
-> > without having to read the bindings so much - the supplies go into the
-> > chip, even if they're distributed within it.
+diff --git a/Documentation/devicetree/bindings/net/airoha,an8801.yaml b/Documentation/devicetree/bindings/net/airoha,an8801.yaml
+new file mode 100644
+index 0000000000000000000000000000000000000000..b90b21b5505367309b5df8ece54ea38664f6b50f
+--- /dev/null
++++ b/Documentation/devicetree/bindings/net/airoha,an8801.yaml
+@@ -0,0 +1,85 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/net/airoha,an8801.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Airoha AN8801R Series PHY
++
++maintainers:
++  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
++
++description:
++  The Airoha AN8801R is a low power single-port Ethernet PHY Transceiver
++  with Single-port serdes interface for 1000Base-X/RGMII; this chip is
++  compliant with 10Base-T, 100Base-TX and 1000Base-T IEEE 802.3(u,ab)
++  and supports Energy Efficient Ethernet (802.3az), Full Duplex Control
++  Flow (802.3x), auto-negotiation, crossover detect and autocorrection,
++  Wake-on-LAN with Magic Packet, and Jumbo Frame up to 9 Kilobytes.
++  This PHY also supports up to three user-configurable LEDs, which are
++  usually used for LAN Activity, 100M, 1000M indication.
++
++allOf:
++  - $ref: ethernet-phy.yaml#
++
++properties:
++  compatible:
++    enum:
++      - ethernet-phy-idc0ff.0421
++
++  reg:
++    maxItems: 1
++
++  leds: true
++
++  wakeup-source:
++    $ref: /schemas/types.yaml#/definitions/flag
++    description:
++      Enable Wake-on-LAN support
++
++required:
++  - reg
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/leds/common.h>
++
++    mdio {
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        ethernet-phy@0 {
++            compatible = "ethernet-phy-idc0ff.0421";
++            reg = <0>;
++
++            leds {
++                #address-cells = <1>;
++                #size-cells = <0>;
++
++                led@0 {
++                    reg = <0>;
++                    color = <LED_COLOR_ID_GREEN>;
++                    function = LED_FUNCTION_LAN;
++                    default-state = "keep";
++                };
++
++                led@1 {
++                    reg = <1>;
++                    color = <LED_COLOR_ID_GREEN>;
++                    function = LED_FUNCTION_LAN;
++                    function-enumerator = <1>;
++                    default-state = "keep";
++                };
++
++                led@2 {
++                    reg = <2>;
++                    color = <LED_COLOR_ID_YELLOW>;
++                    function = LED_FUNCTION_LAN;
++                    function-enumerator = <2>;
++                    default-state = "keep";
++                };
++            };
++        };
++    };
 
-> OK. What about the more complicated mfd PMICs? We already added
-> *-supplies for the regulator side of these PMICs in
+-- 
+2.53.0
 
->   - regulator/mediatek,mt6358-regulator.yaml
->   - regulator/mediatek,mt6363-regulator.yaml
-
-> And my other series for the MT6359 also adds them in this manner.
-
-Existing bindings are existing bindings, we can't really do anything
-with them.
-
---q/FgDHQaj/4ct7kW
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmnFE5QACgkQJNaLcl1U
-h9CL7ggAgKF6xfRBI6ZivfcXbd/SrQnByho2Y1xJl2cnd1Y0TCfoatIiZB7ZiYz5
-qCv+EKML1pICmBQM+d2qEJfssXEOVqou60WZIaiK35y8/G7WuubtGGHeOTaj3ISC
-tYBPuL0xZkBonsk54HqiLedLdPI6kqudc17Bpjky4ohW5OEc6tBceHpIQ5JjeT47
-XWnIUn4lT2ceikRNsgj5AI7EaVYTSVh6o/cXPHuz1FbQMlEj9htuvaey7/NpH76f
-9N00HqwUP9qAesmrjOjVDa7M8sj5aPNLfH1YVL/qH03lP2dAOiqhYlmebW/YItNQ
-ZN0kBy1Lv2fAMLBLsMn4GlliVMsccQ==
-=aoz7
------END PGP SIGNATURE-----
-
---q/FgDHQaj/4ct7kW--
 
