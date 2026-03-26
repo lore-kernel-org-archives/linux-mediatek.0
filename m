@@ -4,53 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97CE310A88D4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 15:27:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F5CA10A88E6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 16:57:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gzVATzeIpqjOe+8Cx38MLFUSi1q5cYwLtg5AqfYWoD0=; b=wdyvVihItmaSg1jAgrYnJytssv
-	FLCN5LuJG5ODwjwU+F82o1zSm6TVJ4qxaKb54zsaHKwmSiumNzK0FJ3zEuDyBjpGF9IQ1JJe/JqzQ
-	MIVPx3JJd35dMTHBAcRxfmeygETkpfC4OMWyiO4d18fwIVbUtI9UWRZjB5wTKwf4X01ieUeY2N9OV
-	EvvXf1Ph+XF3RnYxgmcsCdVK5X+kDbu/1nf2YiBwPcImhyjKNQeXklApXr8lAyI2W337SjsY2ACqa
-	9avTo/gqNzRJMDzCLGfk2q/iqTGIGFZ8H48dYrLDW+pYvyx1h2EEu7b+LTr0iChHOxmmMxhuYfBvD
-	LycE489w==;
+	bh=PkShcBQS80RyZYMl9HL/R0BWB7g3pxpOka68lKMaHPg=; b=VSZ0KIjlGpFcq6tsCzTeyqr0oj
+	nXqb5AfC27aCRRVW/nzWETx408eMLGTEYlsE1pX6taubMIy342HeN3+SRGTUfXhpRmji0tJo4X7J0
+	WKCIT6S8lBXM+gg0WZxIk3iBlnXuB6DVM4aYPHdUEhCeoA/w5Z1zkVGDBqMf+lxoPND7EtOs6FtXB
+	bfCX1j1x8SXEzi8bXd2gQ2+Tbd2mkDqXjRiUl0WwcCj5hQml78WT5ar9Py+FVN/9XegA82jRXIecP
+	gPZpmJE9yfoScw04IgB+9SgjqHojiz0T/rN7tbzhoKvAf4Y8jyL1jKUaAs8B7lSs1mmLKHQyV79Xu
+	2SaKkz/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5mcA-00000005kVp-2TLH;
-	Thu, 26 Mar 2026 15:27:18 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1w5o1I-00000005tww-0JHq;
+	Thu, 26 Mar 2026 16:57:20 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5mc8-00000005kVN-1ggI;
-	Thu, 26 Mar 2026 15:27:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=gzVATzeIpqjOe+8Cx38MLFUSi1q5cYwLtg5AqfYWoD0=; b=1T8b5Jwhep6s1bdWD5TFn69pLd
-	SZy76s1Snrm8+z47EkFs8pZ+0aN7O1f/CRLTzggTAK990pTxU/0jKo2cqbVyH6JLzbiRwv14myAiT
-	eTR5fybqRfzJ31fYr2YHTHbg2A68ALLDfCJbdipXFN7uhgA+1NVXH2puZFFppl3R+IsnI8D7Rd3Iy
-	yxjDkb5v6q0ydugukyqGcRF8U125/05UaD43B7lTf8nI3TnXbp/gXXQfL3QmejCzKSrIvZFu36hxC
-	Vn/nM434Xrgmgt020x4M0+hBAje0q8xBEhZ+6yB1qj2vdhNBkchMmXOEv7UmuthB5MCmMx/YrYF7Q
-	HQF3D0bA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:51150)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.98.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1w5mbs-000000004xT-2JKK;
-	Thu, 26 Mar 2026 15:27:00 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1w5mbq-0000000078D-0OZH;
-	Thu, 26 Mar 2026 15:26:58 +0000
-Date: Thu, 26 Mar 2026 15:26:57 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Andrew Lunn <andrew@lunn.ch>
+	id 1w5o16-00000005tsF-0KGB;
+	Thu, 26 Mar 2026 16:57:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=PkShcBQS80RyZYMl9HL/R0BWB7g3pxpOka68lKMaHPg=; b=RU6AMIeW6MKpa3dJEhSIo6xFgl
+	EzrITyhusn+DTnjUfAwiwMR4vvM6XaLUmwrQ++HPn0GBFQJp87L9US0eo4AR4FK85P7BElugJztiF
+	K6mgtzh6DVRT0rUFMfNUoiJnD4cFWcR+bVNNDPLMLQMeQY65aYa/YQzmnn9b6eb70Uao=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1w5o0q-00DVrj-28; Thu, 26 Mar 2026 17:56:52 +0100
+Date: Thu, 26 Mar 2026 17:56:52 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
 	"David S. Miller" <davem@davemloft.net>,
@@ -67,18 +56,20 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 Subject: Re: [PATCH net-next v2 4/4] net: phy: Introduce Airoha AN8801/R
  Gigabit Ethernet PHY driver
-Message-ID: <acVQQQiciPQBkQOG@shell.armlinux.org.uk>
+Message-ID: <425217fd-f74c-455c-9aa7-5b6682d887fa@lunn.ch>
 References: <20260326-add-airoha-an8801-support-v2-0-1a42d6b6050f@collabora.com>
  <20260326-add-airoha-an8801-support-v2-4-1a42d6b6050f@collabora.com>
  <acVND6DdpM9czIwU@shell.armlinux.org.uk>
  <044110c5-da1e-48c0-93fd-35553e86b271@lunn.ch>
+ <acVQQQiciPQBkQOG@shell.armlinux.org.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <044110c5-da1e-48c0-93fd-35553e86b271@lunn.ch>
+In-Reply-To: <acVQQQiciPQBkQOG@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260326_082716_461969_4429798A 
-X-CRM114-Status: GOOD (  19.18  )
+X-CRM114-CacheID: sfid-20260326_095708_123017_61D43931 
+X-CRM114-Status: UNSURE (   8.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,35 +84,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 26, 2026 at 04:24:23PM +0100, Andrew Lunn wrote:
-> On Thu, Mar 26, 2026 at 03:13:19PM +0000, Russell King (Oracle) wrote:
-> > On Thu, Mar 26, 2026 at 01:04:15PM +0100, Louis-Alexis Eyraud wrote:
-> > > +static int an8801r_set_wol(struct phy_device *phydev,
-> > > +			   struct ethtool_wolinfo *wol)
-> > > +{
-> > > +	struct net_device *attach_dev = phydev->attached_dev;
-> > > +	const unsigned char *macaddr = attach_dev->dev_addr;
-> > 
-> > This isn't a criticism for this patch, but a discussion point for
-> > phylib itself.
-> > 
-> > It occurs to me that there's a weakness in the phylib interface for WoL,
-> > specifically when WoL is enabled at the PHY, but someone then changes
-> > the interface's MAC address - there doesn't seem to be a way for the
-> > address programmed into the PHY to be updated. Should there be?
-> > 
-> > Do we instead expect users to disable WoL before changing the MAC for
-> > a network interface?
-> 
-> Program the MAC address during suspend? I assume userspace is no
-> longer active at this point, so the address should be stable.
+> What is the timing requirements for a system going into suspend vs a WoL
+> packet being sent? Should a WoL packet abort entry into suspend? If yes,
+> then we need to program the MAC before the PHY is suspended, because
+> suspend could already be in progress.
 
-What is the timing requirements for a system going into suspend vs a WoL
-packet being sent? Should a WoL packet abort entry into suspend? If yes,
-then we need to program the MAC before the PHY is suspended, because
-suspend could already be in progress.
+We would then need to hook into the NETDEV_CHANGEADDR notifier, and
+call into the PHY driver to let it reprogram the MAC address.
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+     Andrew
 
