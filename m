@@ -4,121 +4,128 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA41A10AB82B
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B15B110AB822
 	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 22:13:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Cc:To
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c/sc9PqOP5aDWCbebaeriZ+L6SbJzf0pCMQUibPtrdE=; b=AOF+/A6vmZ96+tBiy+iCAN8eN3
-	V0pRCJCtlnMREnUpTCnnp/sMi/sb+iFhTIgG3PQCALuLhuIv0X/J/r2DkyraKbhS7uLUlSdYHtOA2
-	/KgnYVeUwQJcVhlMPZBpFLVuKJXp7JpwK6yumjR0E/AYSOEXqoFPTTxNZAoeMFzsNO5CMEzYyWkAg
-	MSjq48QyuCg64aRuB2Ig0149XRZFcMUBu1Z+swbSn4EfbRa65syJqLVa+4UQGUURL4aYwdfivJ7iU
-	8+66fknls1d6gHRfRNgI1CA1Sm96DjB0/Pg9dyr1MJwWPVWzqCYuSrJkpQIbSiCZ73slcz6GndjGX
-	fYbkNPPQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:References:
+	In-Reply-To:Date:Subject:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=qX+reOEVuZDx8UfWmUlNl/QyI4m0a7yMtNo+lm1iM6U=; b=tV7Dxo1DdWLr8M
+	oRGqPW/ei4jRkrWktYdSobsF1nt2HKwBvO8ZNgz4u5exg4mvMjLjgPVOY0MelDxb/EeylqIKMnUkq
+	5q5dbJwV/2CThDWpqeuQ7brsIRTQ5EA2ugfFqWzIKBsYWK4VJZjZozbQIzMSyU0ag5SnJZzkXV1ys
+	bhx00t4CQV0ljigSKeMRCYHHWeU6AT+pPbNANG40R0gqS5KHd+MsdHMW43pv/mnXg3jk5mI7cAdkW
+	PHrkmKgIxOl3X0o34EdFG9lXKaYOdFJWeQ0ffF5aBYaofgRz49cA1oCS+BhiXIwrIWwWed1y0KcEZ
+	SlM+bvoxTfpPvdFPZgSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5sx2-00000006Hpl-3PW8;
-	Thu, 26 Mar 2026 22:13:16 +0000
-Received: from fhigh-a3-smtp.messagingengine.com ([103.168.172.154])
+	id 1w5sx3-00000006HqH-0F1A;
+	Thu, 26 Mar 2026 22:13:17 +0000
+Received: from fout-a1-smtp.messagingengine.com ([103.168.172.144])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5swy-00000006HnK-0UqV;
+	id 1w5swx-00000006HnC-1vxV;
 	Thu, 26 Mar 2026 22:13:14 +0000
 Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
-	by mailfhigh.phl.internal (Postfix) with ESMTP id 40F311400280;
-	Thu, 26 Mar 2026 18:13:09 -0400 (EDT)
+	by mailfout.phl.internal (Postfix) with ESMTP id 414AFEC021A;
+	Thu, 26 Mar 2026 18:13:07 -0400 (EDT)
 Received: from phl-imap-07 ([10.202.2.97])
-  by phl-compute-02.internal (MEProxy); Thu, 26 Mar 2026 18:13:09 -0400
+  by phl-compute-02.internal (MEProxy); Thu, 26 Mar 2026 18:13:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jetm.me; h=cc:cc
 	:content-transfer-encoding:content-type:content-type:date:date
 	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to; s=fm3; t=1774563189;
-	 x=1774649589; bh=c/sc9PqOP5aDWCbebaeriZ+L6SbJzf0pCMQUibPtrdE=; b=
-	POa51uTTkWpYhe4YF5HPuyp+E0L2ZV6asCtOxQha/JqZjFd2/GJvg1yt84QpcxuL
-	X2FfmrQhFvbf3TCk3WdV7yH8TGDh6iGpZlqO3zUy/Xoa1neLxS4WzDI3qLisMmdL
-	Nf/MTFM+AxsRUHwdH5A6DzuNuKcaiCl87qIJLZUhNiggraAnoXel5iXFRSWfTAWI
-	QHxOK7R/Ym2jxAs26EVBQDYxvHTEcnbNakpbVCeBqm5AtynRy6uGETuytYbC9bXc
-	aL6g5Qi28VR+JZBOTwie7fxh5F1pPjAkiMiUrv9ZafXKGoeygjDn5TdWbIoIRGl7
-	0loBmC5TXP2r22oJ7xZ3rg==
+	:references:reply-to:subject:subject:to:to; s=fm3; t=1774563187;
+	 x=1774649587; bh=qX+reOEVuZDx8UfWmUlNl/QyI4m0a7yMtNo+lm1iM6U=; b=
+	pGhSj7oYfDFtC4yTawBr4o9yATU1gmVXGZDEoex2dGMae3zk8OTK7Pg0uuYF7sN8
+	n+smmn4tl4iewvK9BJp+OISMH52Mb6c8hkcmgzexRqsJS1r8ept8LZD8KsK2gLQL
+	CZCudHIFd5D/lfYMWbo3KqZ+AbQ7J346KVBgzB+cYkv0Dhvy2KNtlAwdTAT0yMvu
+	yLsUNdwlpPIj9cbsVgEqngD+HTu0inJbVY6sFNstpwSpdeglQpSCARm9Oocsosqd
+	xUXZsR8wM9hFY4GReGRAMS9tZMiAoQXGcWdr/ozEkKLOMGsmhoeDfzWvfVH1xu3t
+	b91/TJhVTq3BhWqwensVvA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-transfer-encoding
 	:content-type:content-type:date:date:feedback-id:feedback-id
 	:from:from:in-reply-to:in-reply-to:message-id:mime-version
 	:references:reply-to:subject:subject:to:to:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1774563189; x=
-	1774649589; bh=c/sc9PqOP5aDWCbebaeriZ+L6SbJzf0pCMQUibPtrdE=; b=b
-	b0HDaliy1p62b3y/rIoK6c+x51UP3kthW/CnS22xBQGXRi46kruY8YYMUcNuA6sf
-	SXAbwizmAR6D4eOJIjDK96u0xFVmQuPJTEqTOD/YnlxFn+RvdN9rxYEFOqs+8oz8
-	b8wHV9VzgRNFEJRSKD9+kUHcL/i9nxPDwjXgc5RyghEbpDDbyez3Z4ZozTSXhzKH
-	Hp2PAWpkYY/1kq4ojLyxs3FFakYN++V7mVpnXYN98naUcTIH1/8KvZrx28pPvc4a
-	V5KIEa9f0qYy2f4xHHCJJeC4m5+zKI8HjngweeIfOwDUzzx78UrwjjC7bP4jmeqt
-	RMJeRIiRyat9OJa1eXE9g==
-X-ME-Sender: <xms:da_FaYrUSy1BPoVUS8KMtegbSBQzWGjHre3M4X2BkqCtuwkLTqQeow>
-    <xme:da_FaZdOBOGhWneYozyhBcS5VJL_adfIQBO2c2KGFY9IAV8F2PnrvsIvHZiaGoWGs
-    mUAS4KQ4hC54inIMHvWoYLWEPrAgbbZyb4YfwFTz95tTM22ZvJ6YA0>
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1774563187; x=
+	1774649587; bh=qX+reOEVuZDx8UfWmUlNl/QyI4m0a7yMtNo+lm1iM6U=; b=v
+	Rv5M+/1U59VLnqKLWgzYz7vd+Gnw82id1jVvm4sLkfdlUXtJvc3l8JuAXTDUvNo4
+	L3WceGQenSSYuOQMuy8H0agE2QymM1vpkYnyDgi6BQtA2iW/++ZdBPmrzKzVaBsm
+	yKPKkPNrCJAUqNVtZUQno4+vOeIOCfFtTK41wRJaQB5k9gIckGSRKt2/zU6zTQvD
+	6SkckaKj7kLCpq2+tIvaYaa3GVMpMwWRYa8QISzdwaVr4lo+R49cE2Qh3ALT21eh
+	HwazupJQvY0bMAGhU0Jg9gCkb+KwVNsA2he7DMEWvDHI+7SduAxYSXWfqyOMFetw
+	qc9i11/g07AjwZ8aIpOPQ==
+X-ME-Sender: <xms:ca_FaaHL4KrciFh0Osd_lsHQNU57zijnWZ1D8wkaHWZXYtw4mRcYOw>
+    <xme:ca_FaWItpOo9rW0InPMCUn_1iyrQpMpEnvLeFbIfbXCMdm9WsoABLyy_ZllLE3lYm
+    WbiG63T_fwRgqmX3Ao_rBV-_AksU5jCNmF5IpUJ8Jubvluv3HQ1qtU>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgdefvdekheehucetufdoteggodetrf
     dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
     rghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujf
-    gurhepoffhfffugggtgffkvfevofgjfhesthejredtredtjeenucfhrhhomheplfgrvhhi
-    vghrucfvihgruceofhhlohhsshesjhgvthhmrdhmvgeqnecuggftrfgrthhtvghrnheptd
-    fghefflefhieffveevtedttdejudefueetvdevvdfffeegffeludevgeehteetnecuffho
-    mhgrihhnpehgihhthhhusgdrtghomhenucevlhhushhtvghrufhiiigvpedtnecurfgrrh
+    gurhepoffhufffjghfkfggtgfgvfevofesthejredtredtjeenucfhrhhomheplfgrvhhi
+    vghrucfvihgruceofhhlohhsshesjhgvthhmrdhmvgeqnecuggftrfgrthhtvghrnhepud
+    ejheduhfehfeehfeeuueefiefggfdtueduheetveekjefhfeefheejiedtjeevnecuffho
+    mhgrihhnpehkvghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpedtnecurfgrrh
     grmhepmhgrihhlfhhrohhmpehflhhoshhssehjvghtmhdrmhgvpdhnsggprhgtphhtthho
-    peelpdhmohguvgepshhmthhpohhuthdprhgtphhtthhopegrnhhgvghlohhgihhorggttg
-    hhihhnohdruggvlhhrvghgnhhosegtohhllhgrsghorhgrrdgtohhmpdhrtghpthhtohep
-    lhhuihiirdguvghnthiisehgmhgrihhlrdgtohhmpdhrtghpthhtohepmhgrthhthhhirg
-    hsrdgsghhgsehgmhgrihhlrdgtohhmpdhrtghpthhtohepgigvlhhnrghgrgesghhmrghi
-    lhdrtghomhdprhgtphhtthhopehmrghrtggvlheshhholhhtmhgrnhhnrdhorhhgpdhrtg
-    hpthhtoheplhhinhhugidqrghrmhdqkhgvrhhnvghlsehlihhsthhsrdhinhhfrhgruggv
-    rggurdhorhhgpdhrtghpthhtoheplhhinhhugidqmhgvughirghtvghksehlihhsthhsrd
-    hinhhfrhgruggvrggurdhorhhgpdhrtghpthhtoheplhhinhhugidqsghluhgvthhoohht
-    hhesvhhgvghrrdhkvghrnhgvlhdrohhrghdprhgtphhtthhopehlihhnuhigqdhkvghrnh
-    gvlhesvhhgvghrrdhkvghrnhgvlhdrohhrgh
-X-ME-Proxy: <xmx:da_FaUKSyoCXSbHVbAkJ1MyV_u9n7gkhN_Uf-taqmsAO6QNHxbFqhw>
-    <xmx:da_FaXOT9BbWrc2ILACv_F0YmmBl_UNSJ9X2ihXh19rySoeR-Fipug>
-    <xmx:da_FafXxvYYLG1z6GbcGvE2ysURzRmhA1RLf8MUZW7F6mFRpUYQzhg>
-    <xmx:da_FadmaIGORfrBPC9kcyC26bn8SVyREB5C38be5yaQKG1tS-ZGiwA>
-    <xmx:da_FaQHu0byvMvrWmtzWleXHIsBj3uE6vTWSSBlDO_eKBRUctRieNd1b>
+    peduiedpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtoheprghnghgvlhhoghhiohgrtg
+    gthhhinhhordguvghlrhgvghhnohestgholhhlrggsohhrrgdrtghomhdprhgtphhtthho
+    peefudelfeeifedusehgmhgrihhlrdgtohhmpdhrtghpthhtoheptghhrghpuhhishgurg
+    hrihhogeesghhmrghilhdrtghomhdprhgtphhtthhopehluhgsnhhinhdrihhvrghnsehg
+    mhgrihhlrdgtohhmpdhrtghpthhtoheplhhuihiirdguvghnthiisehgmhgrihhlrdgtoh
+    hmpdhrtghpthhtohepmhgrthhthhhirghsrdgsghhgsehgmhgrihhlrdgtohhmpdhrtghp
+    thhtohepmhgvlhhinhhkohdvtddtfeesghhmrghilhdrtghomhdprhgtphhtthhopehnih
+    htihhnrdhrvgguugihkeeksehgmhgrihhlrdgtohhmpdhrtghpthhtohepgigvlhhnrghg
+    rgesghhmrghilhdrtghomh
+X-ME-Proxy: <xmx:ca_FaSKgoS2wIHgiy66KlO8z_UHZ2r_g49qltqzHAeba29OTYTPjJw>
+    <xmx:cq_FaTgGbpAWfLANYCWmXmSJVmV_5KvhPpmDhw4Vc2vTR5tppz3InQ>
+    <xmx:cq_FabMzDnSFnc5QuBOouf4sfVmqv7_m4gMUyQvQ7tKqps_URLeF2A>
+    <xmx:cq_FaW5Tu0vCJVtndaA6Xme_78L0iA7GtStfVVI-58SJpUupLHT1rQ>
+    <xmx:c6_FaWouPJDNzLnqZS2OGx9d94liJnOckF1sAb9XNzwji8zA3p6u-Rt6>
 Feedback-ID: i9dde48b3:Fastmail
 Received: by mailuser.phl.internal (Postfix, from userid 501)
-	id 1B5BC1EA006B; Thu, 26 Mar 2026 18:13:09 -0400 (EDT)
+	id D23A71EA006B; Thu, 26 Mar 2026 18:13:05 -0400 (EDT)
 X-Mailer: MessagingEngine.com Webmail Interface
 From: Javier Tia <floss@jetm.me>
-Date: Thu, 26 Mar 2026 16:13:05 -0600
-Subject: [PATCH v3 2/8] Bluetooth: btmtk: fix ISO interface setup for
- single alt setting
+Subject: [PATCH v3 0/8] Bluetooth: Add MediaTek MT7927 (MT6639) support
+Date: Thu, 26 Mar 2026 16:13:03 -0600
+In-Reply-To: <177272816248.352280.12453518046823439297@jetm.me>
+References: <177272816248.352280.12453518046823439297@jetm.me>
+Message-Id: <20260326-mt7927-bt-support-v3-0-fa7ebd424323@jetm.me>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260326-mt7927-bt-support-v3-2-fa7ebd424323@jetm.me>
-To: Marcel Holtmann <marcel@holtmann.org>,
- Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyjHUUlJIzE
+ vPSU3UzU4B8JSMDIzMDYwNT3dwSc0sjc92kEt3i0oKC/KISXTNTC8tEU4NkSzPDNCWgvoKi1LT
+ MCrCZ0bG1tQCSofBsYwAAAA==
+X-Change-ID: 20260305-mt7927-bt-support-6589a50c961f
+To: Marcel Holtmann <marcel@holtmann.org>, 
+ Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Ryan Gilbert <xelnaga@gmail.com>
+Cc: linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Ryan Gilbert <xelnaga@gmail.com>, 
+ Jose Tiburcio Ribeiro Netto <jnetto@mineiro.io>, 
+ Llewellyn Curran <melinko2003@gmail.com>, 
+ Chapuis Dario <chapuisdario4@gmail.com>, Evgeny Kapusta <3193631@gmail.com>, 
+ Nitin Gurram <nitin.reddy88@gmail.com>, 
+ Thibaut FRANCOIS <tibo@humeurlibre.fr>, Ivan Lubnin <lubnin.ivan@gmail.com>
 X-Mailer: b4 0.15.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1384; i=floss@jetm.me;
- h=from:subject:message-id; bh=vyqsuG+xMWp5r+4UqeMvlmZYwWcpk/QUCdD0Ktx12jc=;
- b=owEB7QES/pANAwAKAbXuwwuoZ3cfAcsmYgBpxa9vnNeIgkcFvVYWCjalmAp4NNE1jOUDr/QL0
- XvgY76y+CuJAbMEAAEKAB0WIQSbE7ILzw7eI0VKk8m17sMLqGd3HwUCacWvbwAKCRC17sMLqGd3
- H+n1C/91CTJlh3xtD/NBx/OnfHnX5rITmaoOC5orPA6FwDZnKpKFRvPRQb3QFwboxgiMZwVL1Ma
- 6Dc7h3Xuga0HhMCmp/DW4TXzIkg7mR4Ul9ytqTBnuDuRREh332E8cJaeMNaPt8heKksWthfaVR+
- ULGvztC68IGk0J2rlbyIahHH1C1grLr1I+n/AzsegAP0E25wR5Tib8p+xKmlT50/Xeyg/gU+u9D
- E5jPjyEDrU3TiwKSbvgrl0zKsmKrc9X+ubzlc2ZLE2eCb0wJCp1etbD6IqAj8n+7klg/bu24yoT
- N4C0gTDnizDDC4+mLrwpzP2RKU2Mny61CFF3oWD4FsEw3e0O2tEwRHsvbEq4XKRHsFDCKe9uHvk
- ML1+gIS228KHTyaZtICKgbolPOB7U/X1NHuWqp7WG7PUHM3iR+sA2qB+ktHZe1fV0Kj11xbGyzw
- 13gLkgytVqScilGi6kVh4UXaw8w4lqMsPBezr5d8inHqaGX/6U1/YM7SdOoaJDXDnfCqo=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4754; i=floss@jetm.me;
+ h=from:subject:message-id; bh=OpgBAjKnDiir2AF1xHFd8B3qoKOvAbft3PxkCn8MgxY=;
+ b=owEB7QES/pANAwAKAbXuwwuoZ3cfAcsmYgBpxa9v6PKNfz3YcaZt0nUslqXRsBppv56R6OBGt
+ dSpUoVePpaJAbMEAAEKAB0WIQSbE7ILzw7eI0VKk8m17sMLqGd3HwUCacWvbwAKCRC17sMLqGd3
+ HxYzDACaoVolEfsF6bbF0o5E1HgLf3XRo6eb4/TNYcpdczqzpDrDcAcdWjFAleqT4ykM/6iRfjQ
+ mvgYGQ74DFxTSElYtvkwYNtLM+6GDgSidC6jeA6wyfraSyDCCQRpNNuW1iCUwybTUXonix42l2I
+ gkna77O3GjhwhGe0x+BJEWT0BfO2tM+sqZwUxaoL6KvghNrfqtuXdM0ND/2MnbO5gIvHU2Q4rcX
+ lokLaoE+CGymEuxVmb4bCiOx3Vic2oXEByApThj+CErvHUO/KTSt8H8ULSCj1NsALcBTF4/Ku2K
+ klvHF0xQAR+tpQMFzRbBdlLd5PU0IXFpUVN1968/pdR4Ne3/nTxKBt3WkPHqcg1GCF+g83d1oFN
+ /lANyDn3vxffV6hztg2oXh1n6p5/BfayKovkXr5NqeeyXxr5JOYJWVoLFYGT/MoJZn+BEHVPjnf
+ e10o2xCMfU7FR/AaxpQfn1cCq93EwUrcc7K816nn8/p+vgAWM8dmtIPLTNhpQnTEjfRmg=
 X-Developer-Key: i=floss@jetm.me; a=openpgp;
  fpr=9B13B20BCF0EDE23454A93C9B5EEC30BA867771F
-In-Reply-To: <20260326-mt7927-bt-support-v3-0-fa7ebd424323@jetm.me>
-References: <20260326-mt7927-bt-support-v3-0-fa7ebd424323@jetm.me>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260326_151312_235741_9F5A5EEF 
-X-CRM114-Status: GOOD (  10.10  )
+X-CRM114-CacheID: sfid-20260326_151312_237642_D7CB7112 
+X-CRM114-Status: GOOD (  14.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,40 +140,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some MT6639 Bluetooth USB interfaces (e.g. IMC Networks 13d3:3588 on
-ASUS ROG STRIX X870E-E and ProArt X870E-Creator boards) expose only a
-single alternate setting (alt 0) on the ISO interface. The driver
-unconditionally requests alt setting 1, which fails with EINVAL on
-these devices, causing a ~20 second initialization delay and no LE
-audio support.
+This series adds Bluetooth support for the MediaTek MT7927 (Filogic 380)
+combo WiFi 7 + BT 5.4 module. The BT subsystem uses hardware variant
+0x6639 and connects via USB.
 
-Check the number of available alternate settings before selecting one.
-If only alt 0 exists, use it; otherwise request alt 1 as before.
+The MT7927 is shipping in motherboards and PCIe add-in cards from ASUS,
+Gigabyte, Lenovo, MSI, and TP-Link since mid-2024. Without these patches,
+users see "Unsupported hardware variant (00006639)" or the BT subsystem
+hangs during firmware download.
 
-Link: https://github.com/jetm/mediatek-mt7927-dkms/pull/39
+The series consists of eight patches:
+
+  [1/8] Bluetooth: btmtk: Add MT6639 (MT7927) Bluetooth support
+  [2/8] Bluetooth: btmtk: fix ISO interface setup for single alt setting
+  [3/8] Bluetooth: btusb: Add MT7927 ID for ASUS ROG Crosshair X870E Hero
+  [4/8] Bluetooth: btusb: Add MT7927 ID for Lenovo Legion Pro 7 16ARX9
+  [5/8] Bluetooth: btusb: Add MT7927 ID for Gigabyte Z790 AORUS MASTER X
+  [6/8] Bluetooth: btusb: Add MT7927 ID for MSI X870E Ace Max
+  [7/8] Bluetooth: btusb: Add MT7927 ID for TP-Link Archer TBE550E
+  [8/8] Bluetooth: btusb: Add MT7927 ID for ASUS X870E / ProArt X870E-Creator
+
+Three driver changes are needed for MT6639 (patch 1):
+
+1. CHIPID workaround: On some boards the BT USB MMIO register reads
+   0x0000 for dev_id. Force dev_id to 0x6639 only when the USB VID/PID
+   matches a known MT6639 device, avoiding misdetection if a future
+   chip also reads zero. This follows the WiFi-side pattern.
+
+2. Firmware naming: MT6639 uses firmware version prefix "2_1" instead of
+   "1_1" used by MT7925 and other variants. The firmware path is
+   mediatek/mt7927/BT_RAM_CODE_MT6639_2_1_hdr.bin, using the mt7927
+   directory to match the WiFi firmware convention. The filename will
+   likely change to use MT7927 once MediaTek submits a dedicated
+   Linux firmware binary.
+
+3. Section filtering: The firmware binary contains 9 sections, but only
+   sections with (dlmodecrctype & 0xff) == 0x01 are Bluetooth-related.
+   Sending WiFi/other sections causes an irreversible BT subsystem hang.
+
+Patch 2 fixes the ISO interface setup for devices that expose only a
+single alternate setting (alt 0) on the ISO endpoint. Without this fix,
+btmtk_usb_claim_iso_intf() fails with EINVAL, causing ~20 second
+initialization delays on 13d3:3588 devices.
+
+Tested on:
+- ASUS ROG Crosshair X870E Hero (USB 0489:e13a)
+- ASUS ROG STRIX X870E-E (USB 13d3:3588)
+- ASUS ROG STRIX B850-E GAMING WIFI (USB 0489:e13a)
+- Gigabyte Z790 AORUS MASTER X (USB 0489:e10f)
+- Lenovo Legion Pro 7 16ARX9 (USB 0489:e0fa)
+- MSI MEG X870E ACE MAX (USB 0489:e110)
+- TP-Link Archer TBE550E PCIe (USB 0489:e116)
+
+The firmware blob is being submitted separately to linux-firmware via
+GitLab MR !946. The firmware path has been updated to mediatek/mt7927/
+per maintainer feedback.
+
+Changes in v3 (suggested by Sean Wang):
+- Scoped CHIPID workaround to a static VID/PID table of known MT6639
+  USB devices instead of mapping all zero-CHIPID cases to 0x6639
+- Changed firmware path from mediatek/mt6639/ to mediatek/mt7927/ to
+  match the WiFi firmware convention and avoid confusion
+- Added MODULE_FIRMWARE(FIRMWARE_MT7927) for initramfs firmware discovery
+- Added Tested-by for 0489:e110 (Nitin Gurram)
+
+Changes in v2:
+- Split USB device IDs into per-device commits as requested (Luiz)
+- Added 0489:e110 (MSI X870E Ace Max, new hardware report)
+- Added ISO interface fix for single alt setting (13d3:3588 devices)
+- Added Tested-by trailers for all USB IDs
+- Added USB descriptor output to all per-device commits
+- Removed BTMTK_FIRMWARE_LOADED skip logic (Sean Wang)
+
+Link to v2: https://lore.kernel.org/linux-bluetooth/20260325-mt7927-bt-support-v2-0-b892a3252880@jetm.me/T/#t
+Link to v1: https://lore.kernel.org/linux-bluetooth/177272816248.352280.12453518046823439297@jetm.me/
+
 Signed-off-by: Javier Tia <floss@jetm.me>
-Reported-by: Ryan Gilbert <xelnaga@gmail.com>
-Tested-by: Ryan Gilbert <xelnaga@gmail.com>
 ---
- drivers/bluetooth/btmtk.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Javier Tia (8):
+      Bluetooth: btmtk: Add MT6639 (MT7927) Bluetooth support
+      Bluetooth: btmtk: fix ISO interface setup for single alt setting
+      Bluetooth: btusb: Add MT7927 ID for ASUS ROG Crosshair X870E Hero
+      Bluetooth: btusb: Add MT7927 ID for Lenovo Legion Pro 7 16ARX9
+      Bluetooth: btusb: Add MT7927 ID for Gigabyte Z790 AORUS MASTER X
+      Bluetooth: btusb: Add MT7927 ID for MSI X870E Ace Max
+      Bluetooth: btusb: Add MT7927 ID for TP-Link Archer TBE550E
+      Bluetooth: btusb: Add MT7927 ID for ASUS X870E / ProArt X870E-Creator
 
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index 3f12f2ab6369..95b09b1ea78f 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -1029,7 +1029,8 @@ static int __set_mtk_intr_interface(struct hci_dev *hdev)
- 	if (!btmtk_data->isopkt_intf)
- 		return -ENODEV;
- 
--	err = usb_set_interface(btmtk_data->udev, MTK_ISO_IFNUM, 1);
-+	err = usb_set_interface(btmtk_data->udev, MTK_ISO_IFNUM,
-+			       (intf->num_altsetting > 1) ? 1 : 0);
- 	if (err < 0) {
- 		bt_dev_err(hdev, "setting interface failed (%d)", -err);
- 		return err;
+ drivers/bluetooth/btmtk.c | 56 ++++++++++++++++++++++++++++++++++++++++++++---
+ drivers/bluetooth/btmtk.h |  1 +
+ drivers/bluetooth/btusb.c | 12 ++++++++++
+ 3 files changed, 66 insertions(+), 3 deletions(-)
+---
+base-commit: 50003ce2085a7f7dacf2426065d1a69c84b5b963
+change-id: 20260305-mt7927-bt-support-6589a50c961f
 
--- 
-2.53.0
+Best regards,
+--  
+Javier Tia <floss@jetm.me>
 
 
