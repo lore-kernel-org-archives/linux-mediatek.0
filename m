@@ -4,54 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4889310A88C2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 15:13:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2026E10A88D2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 15:24:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yoPRntc725ITLfGgqIRFU6DPMCxT8aSkgEEY7vmF7eg=; b=gSwek6OzxlBE4Att3WjJy0CoIO
-	9kwekUnQCWrReNPSZEr+Hvf6tikvnrRc9+HTGmsSIlv3E9FnhgRmy7lDgycES6gWrB2JXqNdlhx9h
-	3jfHAPTef12fq0lQlThI0D3s/ZW+9tBpCQh3uxfQUFJEmwvPZOpp9/1PSsXewwJwqyXpaNgryyCcX
-	9ro649a7H7hs5DiBf5ehPvHrgEUEHEcPcdOSghnblEnjYWBqpiPGrNxK2RZ9UCg6dsEHUbPs1tnZD
-	LMnkMCD8S+T+mwxrJqOkJIXiPSSpSfG4g2te2Knfs+xk89l3+cWwTss9zt357b8dlxk8uBLWQb9tJ
-	l2w/wJZw==;
+	bh=yqjbpiDcHC6AwPh2QC2yHN18vthccDIXI82Vxclmimg=; b=uusbnJ03aEComrJF3UHvJllsew
+	ECR3k8FbG3ab35TO39+XfT/8uQuW5zN97SVDBNGRkJK2PBR8X5HrEgpT14vOXWNbatlpqxy317Jde
+	k8FxWsaRHbR3Zw0vAgTSz/TSYWj1tw0YOjt0Phid80zVUCud5FjoKsldxI2y1GLT3JlxlLvUucVOi
+	YMbPNTWgZ+ttnVIUqiIJKc34pcnCY38QI5J+whP7T8Uwa/NNZxviTznMdnBcAbhEyiqjrRd1PmJsq
+	lusOL3LXUqGyfniqJrr2uQk8mZDVyqia34OZkizNTArBpEkObbnIg0HjqVfQ4Zmy/0FgLBGhrrsVO
+	2A/NRlBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5mP8-00000005ivm-1q4v;
-	Thu, 26 Mar 2026 15:13:50 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1w5mZh-00000005kFR-3C5c;
+	Thu, 26 Mar 2026 15:24:45 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5mP3-00000005iuQ-3cVk;
-	Thu, 26 Mar 2026 15:13:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=yoPRntc725ITLfGgqIRFU6DPMCxT8aSkgEEY7vmF7eg=; b=YLuLyUr8vwasLtKLoNTx842J2L
-	DhoPufecckhHL/YoiQgqmGbZCRWCvKeV24NjWI7pYFZwZsDGZBiRA4UpzU49fcoy3XNe0euSq3tdN
-	gE7dWwfeZonPegJJaBCEUJDmwLzVmkP0OHVOIqgJ6i/FaFXxvCGlqeibMl1HmdsII+JSv2p6ITqbh
-	qPxOJpvQvkfRVF2dEKefl3xUDKA/ZletVCC1uOd7MnuVPgC8ZNG8BsW2GT8ruQPTTzPvncwXEeoi9
-	UW5BD91NMIR1pS58nMn+HLqZ94G/wyUrU49tO1VSwZz7TGqWqg/7H4fOif1pmLUuMxO7TUZVqFxgN
-	rX6aIMZA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:57924)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.98.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1w5mOh-000000004vM-3Dlj;
-	Thu, 26 Mar 2026 15:13:23 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1w5mOd-0000000077d-3cH2;
-	Thu, 26 Mar 2026 15:13:19 +0000
-Date: Thu, 26 Mar 2026 15:13:19 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Andrew Lunn <andrew+netdev@lunn.ch>
-Cc: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+	id 1w5mZc-00000005kEI-017l;
+	Thu, 26 Mar 2026 15:24:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=yqjbpiDcHC6AwPh2QC2yHN18vthccDIXI82Vxclmimg=; b=AtNy/DLHjEfyeQ9EHXJqWyK++U
+	pzDjpjsmSM+vpt7k01cyb4YN4Jqz8qvVR1fHpZ8YaKItFJGkZakuYryCR3Rk9RgHHaf+khxUjynvR
+	yaQ0rdqc4YwIp9ekJQ0aZfk14y8AFjkiM6FJ9t9BNajKuLC67P/u1sN7kjCkKptyJraY=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1w5mZL-00DV6x-Ea; Thu, 26 Mar 2026 16:24:23 +0100
+Date: Thu, 26 Mar 2026 16:24:23 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
@@ -59,7 +49,6 @@ Cc: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andrew Lunn <andrew@lunn.ch>,
 	Heiner Kallweit <hkallweit1@gmail.com>, kevin-kw.huang@airoha.com,
 	macpaul.lin@mediatek.com, matthias.bgg@gmail.com,
 	kernel@collabora.com, netdev@vger.kernel.org,
@@ -67,16 +56,17 @@ Cc: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
 	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 Subject: Re: [PATCH net-next v2 4/4] net: phy: Introduce Airoha AN8801/R
  Gigabit Ethernet PHY driver
-Message-ID: <acVND6DdpM9czIwU@shell.armlinux.org.uk>
+Message-ID: <044110c5-da1e-48c0-93fd-35553e86b271@lunn.ch>
 References: <20260326-add-airoha-an8801-support-v2-0-1a42d6b6050f@collabora.com>
  <20260326-add-airoha-an8801-support-v2-4-1a42d6b6050f@collabora.com>
+ <acVND6DdpM9czIwU@shell.armlinux.org.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260326-add-airoha-an8801-support-v2-4-1a42d6b6050f@collabora.com>
+In-Reply-To: <acVND6DdpM9czIwU@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260326_081346_206024_637A66DE 
-X-CRM114-Status: GOOD (  11.38  )
+X-CRM114-CacheID: sfid-20260326_082440_879456_D491CA83 
+X-CRM114-Status: GOOD (  15.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,25 +81,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 26, 2026 at 01:04:15PM +0100, Louis-Alexis Eyraud wrote:
-> +static int an8801r_set_wol(struct phy_device *phydev,
-> +			   struct ethtool_wolinfo *wol)
-> +{
-> +	struct net_device *attach_dev = phydev->attached_dev;
-> +	const unsigned char *macaddr = attach_dev->dev_addr;
+On Thu, Mar 26, 2026 at 03:13:19PM +0000, Russell King (Oracle) wrote:
+> On Thu, Mar 26, 2026 at 01:04:15PM +0100, Louis-Alexis Eyraud wrote:
+> > +static int an8801r_set_wol(struct phy_device *phydev,
+> > +			   struct ethtool_wolinfo *wol)
+> > +{
+> > +	struct net_device *attach_dev = phydev->attached_dev;
+> > +	const unsigned char *macaddr = attach_dev->dev_addr;
+> 
+> This isn't a criticism for this patch, but a discussion point for
+> phylib itself.
+> 
+> It occurs to me that there's a weakness in the phylib interface for WoL,
+> specifically when WoL is enabled at the PHY, but someone then changes
+> the interface's MAC address - there doesn't seem to be a way for the
+> address programmed into the PHY to be updated. Should there be?
+> 
+> Do we instead expect users to disable WoL before changing the MAC for
+> a network interface?
 
-This isn't a criticism for this patch, but a discussion point for
-phylib itself.
+Program the MAC address during suspend? I assume userspace is no
+longer active at this point, so the address should be stable.
 
-It occurs to me that there's a weakness in the phylib interface for WoL,
-specifically when WoL is enabled at the PHY, but someone then changes
-the interface's MAC address - there doesn't seem to be a way for the
-address programmed into the PHY to be updated. Should there be?
-
-Do we instead expect users to disable WoL before changing the MAC for
-a network interface?
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+       Andrew
 
