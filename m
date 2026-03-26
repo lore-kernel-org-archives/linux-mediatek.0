@@ -4,105 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF8E4106F311
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 09:49:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF085106F311
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 09:56:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7knoakIKaubGmtXGun6YWaShT3Bs+tTtvHK7ZAazb4A=; b=AI00fB6LTwGoBfad/VdztpA40O
-	YyKHxmtfB3yD941a3VDmknlB35+9kZYCmfcbvPNiEjTTnPZmFJq+nmnt0AhS1dPi5wzolAwB1HX4C
-	q0NzismU/9L5/NwhWH1cDtL0GyPCppbAs0vh6wNHimkGBMbpnD6EPAV+oP4JsLL5PSEeifjLI2ZBD
-	AyEYgwr2R90JMUG5lhvgHcXozQsRFKldJEjd7pDhkATb8bNx0HyGKfTKWf7IKu/2J5pLf6jt9EqcJ
-	RvYXP/LgV2Y5EcYTR7nm8SMa5SqxH8WmiyyslAu55VX1IOEwxKrwoqohcd9BRsi1YKEEP6m/EsGfk
-	Fk6OfoAw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=j35fyBCAsBxvmyZzu70td33IBCN9USG+e/YD1RLcgRw=; b=amfXyCvKh0b//PImqDtcE1hGAR
+	XD481Aw6/KmU5m+SNG+uXdoTVtpO8SfcyKuJdW+CBPapS0Y8Dp3ftNIR7hHs07TVpoMdqbbTFjPP8
+	6X73+AgZm55Uw1qxnDZWh5Yvv1/vmnLTNdXtyM3mOpj62RZYsdGR2dX6HGFuslwMKeq+VouzRdzHS
+	ttBkPKIJ/9NQVSy8hfhS83GRkbB2K2abFv8U4IeZtA4iGWLGpVm8btn5k+llB/KqAuxW0Ep2Gyfic
+	p548QzxqQ2c2PC12BZaU+UtmkbeKD3kRXDlZJjHxZDru7BARIgQY+en7LcoVScC9DAntI6FWANkYY
+	ZyI9Cxag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5hLB-00000005Bf7-1I8O;
-	Thu, 26 Mar 2026 09:49:25 +0000
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+	id 1w5hRY-00000005C85-0CHd;
+	Thu, 26 Mar 2026 09:56:00 +0000
+Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5hL8-00000005Bdv-0Uh5
-	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Mar 2026 09:49:23 +0000
-Received: by mail-lj1-x234.google.com with SMTP id 38308e7fff4ca-38ad4677830so6203851fa.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 26 Mar 2026 02:49:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1774518560; cv=none;
-        d=google.com; s=arc-20240605;
-        b=E8ctIe3EwMycBqt9Y+Z73OI9TI9ja9N6WJg68byr3biijdRzUR0Sag3kvg/jkmOtVH
-         iUUHDm1hEEESZhO/uTthDXuEnLi+Un/syeXYKJR05H5vQyzNEl+denWI+QRLFi3v0C7y
-         6Zroh+OtdrMW0/lyNszrd0p0i40LjNVJhdhGbBQOAcOyFTPQH1F5X8pjNOXLHvZnqr8U
-         YfrJZtGJVg9MSrl9xJttNPNDarycB6ShTpFC4fQWbr+2tiAYG43BvFFXe+VWIiXeIssb
-         1JrMgL+KRdFOzCQYTirlaL1VppF3LuKpwY6wWYIf8mrTMcctB1COaF1umpMUGsCu0E/S
-         V/Gw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=7knoakIKaubGmtXGun6YWaShT3Bs+tTtvHK7ZAazb4A=;
-        fh=lz2u9st2VNXJVRCN5m5kU1hl9dY+q3SAvOQ9RK+UzSE=;
-        b=fJZo2Bb4KxyIdi7gZW8EAqNEX3DGd7lVmdhH3VMnBBudJGa9H50z+EUdKixfrzd2yL
-         mN1Qh7JGkx+8pkMFdHUSKDLTFsP8/k6gHI+OIBMLIvIVdP7TTKL3g381JkDZb37vICGk
-         MIKYjgwpFw31rYMnlSj/QEGwDDKUt1jzzwtaRfKICbwDZagIeiWRINmiHiHG745wd/pD
-         Ay0rwAXgyt0Osa+CdfLSaaHUNtL9l6csHTaDXnIelp9tkmFVFidu3cKoIIsvCccV8EhO
-         dRWP6Gn5ryq1bQTipgUyA+jxFIb4CNKrHYErfZwBXm+oQU4G4k2CWJ/RBYERnPXO+Dgp
-         wM4A==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1774518560; x=1775123360; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=7knoakIKaubGmtXGun6YWaShT3Bs+tTtvHK7ZAazb4A=;
-        b=cImS6t8LY2hTfUi/3bXF60Pl1mVjo9JctYL42iFbxQlEKchALHXFBxwv1Q5VMxe1yf
-         U2b6LJra3BDG5LX8yCPGIeqzhXiymHK7YrI1Vf8Td9yQrsA6nm1+vIlEN07v33Rxmh37
-         cj2bW2yu8Sybrrf46PIptaY3DU74UjtKeA2xM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1774518560; x=1775123360;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=7knoakIKaubGmtXGun6YWaShT3Bs+tTtvHK7ZAazb4A=;
-        b=B6CeLRhfaLHreSZqXDfZMybEPJQ7BdA06QobB8DCUmVVJyoyLuFIFVdHpiW4/JsIEH
-         +1bBBJoFyFkD4TIKfgwxbvGVaiJ9TTrZGSrzYsvL+0tZosIYd/pD2ySL7OOqg9OH2rYF
-         YWg8OeADSx0ClbaaTbupDal2rMXIjtR85DUwbo08Avm2fep2szg5mOSU3gtPuM0N+chQ
-         4nlb1v70y8UewxYXR/cqqd7YVLf7GECzxwjOdbn9RVUFtyfgeA3/7NJAXCmAWEVcyYw5
-         vYjgyU39b6j8e4SmFEd5prcR9QtZuQaY7VUHRHs9hMU7PEYzRYSlicrbXXXxHtfWw/8Z
-         TZkg==
-X-Forwarded-Encrypted: i=1; AJvYcCXg/rbXq1tHCtOpUGutZgkXWcaHoc0ABhYw3vpE6ExRVz9ck+2I4RTUJQt4ZH9xE8lUuQ4BHrFIh9FuJjIeFQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx7s7GFRSNUDYZ4+s2epqdiFL2IHQ81UQmAliuF2v/YL4yhuaAp
-	S95jHiFjkSZ+oUiH84HUseOL+nDtftLeSINhVxhO6oVumS7Sq90khTz3MbzpttzNwDf/9deWSn4
-	wjYSc2FkpHktLiSYv9jGHqWITsWbNV7IRWPAFCu2C
-X-Gm-Gg: ATEYQzxV3Uiab8TJPNrpWR/+ZQK8UOaFOv8g4krVA2O4GlhKQPxnBSV5EUXPpY1C+bp
-	33Vo5jJh0CxeSL5kDJd36ew+bdU6d+PxfeU1WNZSY1KkRzyXDuilWSVCsQexUFF+zesY30nGTtX
-	Ynmcw7jq/59NUca1ZiNTZwb5+EfdmCDdibBS6/jg46Iuzdbjqb4CZdMfIwVWqROzxoCcPxrNRFf
-	BlixuYR2wu8YKwnxRtbN0SQqLsNCHr4O/dROBQ9ETyURxy7wK635cyEfM7+YVJsRe8Bb6gXjCbm
-	r6ljpMapPtBg5SqOxUhI0knODTGTSqRJTgtsxA==
-X-Received: by 2002:ac2:55bc:0:b0:5a2:8570:299a with SMTP id
- 2adb3069b0e04-5a29b995643mr1745645e87.34.1774518559747; Thu, 26 Mar 2026
- 02:49:19 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260318084621.4127757-1-adlavinitha.reddy@mediatek.com> <20260318084621.4127757-2-adlavinitha.reddy@mediatek.com>
-In-Reply-To: <20260318084621.4127757-2-adlavinitha.reddy@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 26 Mar 2026 17:49:08 +0800
-X-Gm-Features: AQROBzBAalqKzp35Y91nZQL13UXSFnXuvsBfaF-bjpY0zqhQlozBnv2cKghChRQ
-Message-ID: <CAGXv+5FYSCG4NYqUcBTBAvG-6=EQNStS5qRnzYV0oGzJ9dJ1bA@mail.gmail.com>
-Subject: Re: [v1,PATCH 1/1] i2c: mediatek: add bus regulator control for power saving
-To: adlavinitha reddy <adlavinitha.reddy@mediatek.com>
-Cc: Qii Wang <qii.wang@mediatek.com>, Andi Shyti <andi.shyti@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-i2c@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com
+	id 1w5hRV-00000005C6x-0k8F;
+	Thu, 26 Mar 2026 09:55:58 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1774518944; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=Yv50FW13ltQlCpU5oY80HNAQFPvVMEMR8gviAFpY5l4oghlJOIMBB/92RGX0camtxPRE2Pjm8EhSS5j9pDO1ppRuBlaOKmL5sKbeXPFB+98LYrPAz9SfBec3KBxNhO0JRumPlKZVnyznbH+MK40ZTxrddbaNN8bKjCBfeMn5nGA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1774518944; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=j35fyBCAsBxvmyZzu70td33IBCN9USG+e/YD1RLcgRw=; 
+	b=UMb11mj2lK16+yC3+ji9Vzx613EjzZbhkmqgRh7mYw2GCc9n5J4kmpdHQ+9UOn2ubTwiJP5rPm36M66oZaJBUhqsl8rxhDBvaw0CyMy4kVEE6gaXKkfz+HJ7K59bAwytGoVijWb4KeucMu6KXZuTMqFyRTY1K4fqhhWgqdQx5VQ=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=icenowy.me;
+	spf=pass  smtp.mailfrom=uwu@icenowy.me;
+	dmarc=pass header.from=<uwu@icenowy.me>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1774518944;
+	s=zmail2; d=icenowy.me; i=uwu@icenowy.me;
+	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
+	bh=j35fyBCAsBxvmyZzu70td33IBCN9USG+e/YD1RLcgRw=;
+	b=VM1S0ZNG87GbLV+D32T8Sz4WTxN3caqeELdFglZi+gxeAvarpqY463xs1rCdTWAX
+	oPL1fAIN8PeqJhXdAtSfJDKGtjXzPtBxxcygdItX4Botv6WLrG/U2RBanr4pWODz6C8
+	6MvhuY5eP7VIDlxBezL+pzBrS8UVFfXJ1idJyz7aflHonB6RP6ul0QW1c5VMCqkZGsd
+	2jpx7C0H1dNV52HcMzq9AlljL/WuJMBprgHIp+1k5cez+S4/vOFXwYj0vffjOODkcMG
+	hbC/sbqh1KKQwy906yItaMtPUNfCZgKVEWpJujaQ1kKLLDlbsDS/AVrAp8llUKWAjf/
+	wwhL5zMpFA==
+Received: by mx.zohomail.com with SMTPS id 1774518941373528.0843117610801;
+	Thu, 26 Mar 2026 02:55:41 -0700 (PDT)
+Message-ID: <7661792fa0d7014adfad11651639149e1ad8590f.camel@icenowy.me>
+Subject: Re: [PATCH v2 0/5] powervr: MT8173 GPU support
+From: Icenowy Zheng <uwu@icenowy.me>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Stephen Boyd <sboyd@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Frank Binns
+ <frank.binns@imgtec.com>, Matt Coster	 <matt.coster@imgtec.com>, Maarten
+ Lankhorst <maarten.lankhorst@linux.intel.com>,  Maxime Ripard
+ <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
+ <airlied@gmail.com>,  Simona Vetter <simona@ffwll.ch>,
+ linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Date: Thu, 26 Mar 2026 17:55:33 +0800
+In-Reply-To: <fbba135320ea666a5ad127c9da58276f2afd3494.camel@icenowy.me>
+References: <20260325071951.544031-1-wenst@chromium.org>
+				 <93c1d325461cc0ffad890d64870de680506338c4.camel@icenowy.me>
+				 <CAGXv+5FL2rs35V4F0bwq-a4ccvFaWKcr1cuKxT6sfTj9h+d6iA@mail.gmail.com>
+			 <0739597b7a9c162525c10d82c3993e37af1c8a75.camel@icenowy.me>
+		 <42fb6b7dfc6a9d66649e0a7040cdafc1289ddf63.camel@icenowy.me>
+	 <fbba135320ea666a5ad127c9da58276f2afd3494.camel@icenowy.me>
+Organization: Anthon Open-Source Community
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.58.3 
+MIME-Version: 1.0
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260326_024922_213074_4DF7A2D7 
-X-CRM114-Status: GOOD (  10.06  )
+X-CRM114-CacheID: sfid-20260326_025557_291038_ED7B034B 
+X-CRM114-Status: GOOD (  50.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,25 +94,244 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 18, 2026 at 4:46=E2=80=AFPM adlavinitha reddy
-<adlavinitha.reddy@mediatek.com> wrote:
->
-> Add conditional bus regulator enable/disable in mtk_i2c_transfer()
-> to support I2C bus power gating for platforms that require it.
->
-> This implementation:
-> - Enables bus_regulator before clk_bulk_enable() if vbus-supply is define=
-d
-> - Disables bus_regulator after clk_bulk_disable()
-> - Only activates when vbus-supply is provided in device tree
-> - Has no impact on platforms without vbus-supply defined
->
-> This approach provides power savinggs for platforms with an extra I2C bus
-> regulator, while avoiding runtime PM complexity.
->
-> TEST=3D Build and boot on MT8188
->
-> Signed-off-by: adlavinitha reddy <adlavinitha.reddy@mediatek.com>
+=E5=9C=A8 2026-03-26=E5=9B=9B=E7=9A=84 13:56 +0800=EF=BC=8CIcenowy Zheng=E5=
+=86=99=E9=81=93=EF=BC=9A
+> =E5=9C=A8 2026-03-25=E4=B8=89=E7=9A=84 17:11 +0800=EF=BC=8CIcenowy Zheng=
+=E5=86=99=E9=81=93=EF=BC=9A
+> > =E5=9C=A8 2026-03-25=E4=B8=89=E7=9A=84 16:30 +0800=EF=BC=8CIcenowy Zhen=
+g=E5=86=99=E9=81=93=EF=BC=9A
+> > > =E5=9C=A8 2026-03-25=E4=B8=89=E7=9A=84 16:08 +0800=EF=BC=8CChen-Yu Ts=
+ai=E5=86=99=E9=81=93=EF=BC=9A
+> > > > On Wed, Mar 25, 2026 at 4:04=E2=80=AFPM Icenowy Zheng <uwu@icenowy.=
+me>
+> > > > wrote:
+> > > > >=20
+> > > > > =E5=9C=A8 2026-03-25=E4=B8=89=E7=9A=84 15:19 +0800=EF=BC=8CChen-Y=
+u Tsai=E5=86=99=E9=81=93=EF=BC=9A
+> > > > > > Hi everyone,
+> > > > > >=20
+> > > > > > This is v2 of my MT8173 PowerVR GPU support series.
+> > > > > >=20
+> > > > > > Changes since v1:
+> > > > > > - Adapted to changed DT bindings
+> > > > > > - Dropped driver change
+> > > > > > - Use same power domain for "a" and "b" GPU power domains
+> > > > > >=20
+> > > > > > This update was requested by Icenowy.
+> > > > > >=20
+> > > > > >=20
+> > > > > > This series enables the PowerVR GPU found in the MT8173
+> > > > > > SoC,
+> > > > > > found in
+> > > > > > some Chromebooks.
+> > > > > >=20
+> > > > > > This version is different from the initial powervr driver
+> > > > > > submission
+> > > > > > [1]
+> > > > > > in that it splits out the GPU glue layer support out of the
+> > > > > > powervr
+> > > > > > driver and into a separate clock and power domain driver.
+> > > > > > The
+> > > > > > glue
+> > > > > > code
+> > > > > > is otherwise the same, and also the same as found in the
+> > > > > > ChromeOS
+> > > > > > kernels, with some extra comments and macro names added
+> > > > > > where
+> > > > > > possible.
+> > > > > >=20
+> > > > > > Patch 1 adds a binding for the glue layer, called mfgtop.
+> > > > > > The
+> > > > > > glue
+> > > > > > layer
+> > > > > > contains clock and power controls for the GPU.
+> > > > > >=20
+> > > > > > Patch 2 adds a driver for the glue layer.
+> > > > > >=20
+> > > > > > Patch 3 adds an entry for the MT8173 GPU and 6XT series to
+> > > > > > the
+> > > > > > PowerVR
+> > > > > > binding.
+> > > > > >=20
+> > > > > > Patch 4 adds an entry for the PowerVR 6XT series GPU to the
+> > > > > > driver.
+> > > > > >=20
+> > > > > > Patch 5 corrects the clock for the GPU (called MFG) power
+> > > > > > domain.
+> > > > > >=20
+> > > > > > Patch 6 adds device nodes for the GPU and glue layer to the
+> > > > > > MT8173
+> > > > > > dtsi
+> > > > > > file.
+> > > > > >=20
+> > > > > > Patch 2 and 6 depend on patch 1 to build. I suppose some
+> > > > > > common
+> > > > > > immutable tree would be needed from the MediaTek
+> > > > > > maintainers.
+> > > > > >=20
+> > > > > > The kernel driver successfully probes the hardware and
+> > > > > > loads
+> > > > > > the
+> > > > > > "rogue_4.40.2.51_v1.fw" firmware provided by Imagination
+> > > > > > Technologies
+> > > > > > [2].
+> > > > > > Userspace was tested with Mesa 24.0.8 from Debian Trixie
+> > > > > > rebuilt
+> > > > > > with
+> > > > > > the powervr vulkan driver enabled. `vulkaninfo` gives some
+> > > > > > information
+> > > > > > about the GPU (attached at the end), but running the
+> > > > > > `triangle`
+> > > > > > example
+> > > > > > from the Sascha Willems demos [3] with -DUSE_D2D_WSI=3DON as
+> > > > > > recommended [4]
+> > > > > > failed with:
+> > > > > >=20
+> > > > > > =C2=A0=C2=A0=C2=A0 Can't find a display and a display mode!
+> > > > >=20
+> > > > > I think when using D2D the demos want width and height to be
+> > > > > explicitly
+> > > > > specified, otherwise it seems to hardcode 1280x720.
+> > > > >=20
+> > > > > If you're using an elm, could you try to add `-w 1920 -h
+> > > > > 1080`
+> > > > > or
+> > > > > for
+> > > > > hana `-w 1366 -h 768` ?
+> > > >=20
+> > > > I only did the basic `vulkaninfo` test this time around. To do
+> > > > anything
+> > > > interesting probably requires the Mesa 26.1 release.
+> > > >=20
+> > > > =C2=A0=C2=A0=C2=A0 PVR_I_WANT_A_BROKEN_VULKAN_DRIVER=3D1 \
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 vkmark --winsys kms -D b=
+81f54f8568deb0fb70a6a1ed845b65d
+> > > >=20
+> > > > just reports "Error: Device specified by uuid is not available"
+> > >=20
+> > > I am very sorry to tell you that, when I run Sascha's demo with
+> > > Mesa
+> > > main, I got GPU lost immediately...
+> > >=20
+> > > ```
+> > > [=C2=A0 441.509433] powervr 13000000.gpu: [drm] *ERROR* GPU device
+> > > lost
+> > > ```
+>=20
+> The device lost message seems to be some bug of the open source KMD
+> or
+> the firmware.
+>=20
+> When I disable runtime power management of the 13000000.gpu device,
+> this message does not appear, instead the following message appears
+> and
+> the GPU can continue to accept jobs:
+>=20
+> ```
+> powervr 13000000.gpu: [drm] Received unknown FWCCB command 2abc0070
+> ```
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Both the device lost behavior and this message are suspicious, but at
+least they shouldn't be this patchset's fault.
+
+So, for patches 2, 4, 5 in this patchset:
+
+`Tested-by: Icenowy Zheng <zhengxingda@iscas.ac.cn>`
+
+(DT binding maintainers suggest not to give binding patches t-b tags)
+
+>=20
+> >=20
+> > However, Zink on PowerVR works, and on Lichee Pi 4A I also got
+> > `VK_ERROR_DEVICE_LOST` when running Sascha's demos (although the
+> > kernel
+> > does not report device lost).
+> >=20
+> > I bet it's a regression on the VK_KHR_display code.
+>=20
+> I'm now sure that it's a regression, it's now tracked at [1].
+
+It's now getting fixed (Mesa MR !40640, already being processed by
+Marge Bot).
+
+Thanks,
+Icenowy
+
+>=20
+> [1] https://gitlab.freedesktop.org/mesa/mesa/-/issues/15161
+>=20
+> >=20
+> > Thanks,
+> > Icenowy
+> >=20
+> > >=20
+> > > Icenowy
+> > >=20
+> > > >=20
+> > > > This is with Mesa 26.0.2 packages from Debian testing. At least
+> > > > now
+> > > > have the powervr vulkan driver enabled by default, so I don't
+> > > > have
+> > > > to rebuild the packages again.
+> > > >=20
+> > > >=20
+> > > > ChenYu
+> > > >=20
+> > > > > Thanks
+> > > > > Icenowy
+> > > > >=20
+> > > > > >=20
+> > > > > > Same program worked correctly on a BeaglePlay and displayed
+> > > > > > a
+> > > > > > color
+> > > > > > gradient triangle. Not sure what went wrong here.
+> > > > > >=20
+> > > > > > Anyway, please have a look and test.
+> > > > > >=20
+> > > > > >=20
+> > > > > > Thanks
+> > > > > > ChenYu
+> > > > > >=20
+> > > > > > [1]
+> > > > > > https://lore.kernel.org/dri-devel/20220815165156.118212-2-sarah=
+.walker@imgtec.com/
+> > > > > > [2]
+> > > > > > https://gitlab.freedesktop.org/imagination/linux-firmware/-/tre=
+e/powervr
+> > > > > > [3] https://github.com/SaschaWillems/Vulkan
+> > > > > > [4]
+> > > > > > https://lore.kernel.org/dri-devel/f2b2671e-5acc-4dec-9c2e-3c9cd=
+2e1f19e@imgtec.com/
+> > > > > >=20
+> > > > > > Chen-Yu Tsai (5):
+> > > > > > =C2=A0 dt-bindings: clock: mediatek: Add mt8173 mfgtop
+> > > > > > =C2=A0 clk: mediatek: Add mt8173-mfgtop driver
+> > > > > > =C2=A0 dt-bindings: gpu: powervr-rogue: Add MediaTek MT8173 GPU
+> > > > > > =C2=A0 arm64: dts: mediatek: mt8173: Fix MFG_ASYNC power domain
+> > > > > > clock
+> > > > > > =C2=A0 arm64: dts: mediatek: mt8173: Add GPU device nodes
+> > > > > >=20
+> > > > > > =C2=A0.../clock/mediatek,mt8173-mfgtop.yaml=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 70 +++++
+> > > > > > =C2=A0.../bindings/gpu/img,powervr-rogue.yaml=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0 1 +
+> > > > > > =C2=A0arch/arm64/boot/dts/mediatek/mt8173.dtsi=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 |=C2=A0 33 ++-
+> > > > > > =C2=A0drivers/clk/mediatek/Kconfig=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ |=C2=A0=C2=A0 9 +
+> > > > > > =C2=A0drivers/clk/mediatek/Makefile=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=
+=A0=C2=A0 1 +
+> > > > > > =C2=A0drivers/clk/mediatek/clk-mt8173-mfgtop.c=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 | 243
+> > > > > > ++++++++++++++++++
+> > > > > > =C2=A0include/dt-bindings/clock/mt8173-clk.h=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0 7 +
+> > > > > > =C2=A07 files changed, 363 insertions(+), 1 deletion(-)
+> > > > > > =C2=A0create mode 100644
+> > > > > > Documentation/devicetree/bindings/clock/mediatek,mt8173-
+> > > > > > mfgtop.yaml
+> > > > > > =C2=A0create mode 100644 drivers/clk/mediatek/clk-mt8173-
+> > > > > > mfgtop.c
 
