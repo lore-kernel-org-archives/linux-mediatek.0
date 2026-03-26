@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBC8710A88FB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 18:09:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A9E310A88FC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 18:16:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=GNkNjuauvi46Y6nlZNxVIpreHdjhURYOCTsX9AMkqLU=; b=qBvgHVzlrDtxjR
-	mE/yzPYXSPJlLtMxcNlUpAa8vP4F3uJr2jOcD9r2RqmsvO31Nzr81O5MUlxKikuU+BnyxsdoiSA2a
-	4fNuuPgSQM6RPxp1VRlzcYcFaRTP8pOF9chzhx4Txd9bxaRqCfzAZYWc9hqFmVr7swoq+YpRqRqTU
-	oTnYIOxywuPCi2NxV2whBERH6qw/YS9jER35CGMMQ4r88V5WekILuepraaw+3yp+vzjrXO5HaCsqc
-	WgOY/zC/HpnuBZt/VbDdhw4Kx9/tlrjmNm3JB3eZc1rr70xqkriUMpFkt5mbb/LeAl85dgJMeCUEw
-	/H3kmse1kEF+CXwCd7MQ==;
+	List-Owner; bh=zkX1cUz2nuxsIW1ThYc+vShL+mFbMn/nEGXCfq/ZhOI=; b=QyziWYLcXAx/B4
+	JCRMBr+heXKjitcOgVdbIdCtGSrR6Tzr86YCOW3swJ5i5vd1f3ruZGGS/T63p3k89NLOh6wuysS5u
+	P1V2z+HZ5BzIm6cKACELYkBpAJzfo/ELdSBMwSOi7sCR2O3ztRLQRqGHtYDKN/a/SIYMw4W5ZgT3g
+	VWhX9eil+htM80PyCHv3CWXmh8LZw7jeb7kr3ikc2WqIbLGnkzaMROkrkYrZ9A5Dm+fixebEI+Jon
+	yKTZ6SIHVrkC4+vQjEnJXKl1/e75JyTfiGH8W9SADgBntoyL2yhtWhJmg6ZnJMmjaUixX14HkTKL9
+	L7+UVQHviVS69jslBC5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5p9S-000000060Ka-21R5;
-	Thu, 26 Mar 2026 18:09:50 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1w5pFs-000000061MI-2mmD;
+	Thu, 26 Mar 2026 18:16:28 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5p9P-000000060Jv-1vFZ;
-	Thu, 26 Mar 2026 18:09:48 +0000
+	id 1w5pFr-000000061Lm-0yRq;
+	Thu, 26 Mar 2026 18:16:27 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 0255C43A08;
-	Thu, 26 Mar 2026 18:09:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A9922C116C6;
-	Thu, 26 Mar 2026 18:09:46 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 0CE8E60054;
+	Thu, 26 Mar 2026 18:16:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9B186C116C6;
+	Thu, 26 Mar 2026 18:16:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774548586;
-	bh=Rn+vhInqQodS/bAOEwWYdnq6SYa4NomZ2mbnsMoy6H0=;
+	s=k20201202; t=1774548985;
+	bh=43VqNhtITmRTb0E71wFtuKVyxafRya6of6b3L56zIuM=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=GPQKysa2Kkl0pnDdhP2t5CHyGa0cSastDgmKm1O2tVeZiouqwEbsOgxTrwYLdJo+p
-	 Ufja9z0tJ2PtiRx9h6st1c6T9AoJRU36LL+yeBp8LiylI7/3RBzBX12VaEnqZNdgr7
-	 CA+E7cZdX0iMz4YCgV4wa0RAs2ytQxQNOrpeU+P/G7dkkXQcaLNf4hc1u87LijDMYT
-	 YK89haZnBIMHtd6lRQxHNY8CBETPQVS3QsUUPzBlpSyp7lGtqMmmkCDEgL5jqJl8N1
-	 WRrCF+Z4e5BzM1QOPKpSOgWr/y59L1IZRZ2xky1NUV6h8K+Mbe8i5vnaHXu6BC0S5Y
-	 i1dnY6VpNPZ8A==
-Date: Thu, 26 Mar 2026 13:09:45 -0500
+	b=rH9ZhPhoyZPAUHGu42qfHJzQoyDXiaLHk6u2TDy7jxtMKoyFyr1etgM02j2RMJag2
+	 +iwu/QLH6SDpzrX2Rwk7Xf0D6UaUv0Ye7LUU1K4BrOo4hIU5IkQT+aOp2QxQMFS4LN
+	 Sm/C7ZPguXcDl6fWI5t8T1BYmS/AirzbSCbMC4v3AtXUqoEUsbX80tNGQMYwKTFXAj
+	 8J0GdOJCo649nUq3toORH7UXb0O2mTBwPoR2YLTayka8sROxFdMkqb6K66rqL+ieDD
+	 X/OwHRNfv1L6odykUi95poRDrpG0rOAWuK8xO8B1T+sfP/rfAn6ckYa8+jwX+T1tkY
+	 XXnHox9MEju3w==
+Date: Thu, 26 Mar 2026 13:16:24 -0500
 From: Bjorn Helgaas <helgaas@kernel.org>
 To: Hans Zhang <18255117159@163.com>
 Cc: lpieralisi@kernel.org, jingoohan1@gmail.com, mani@kernel.org,
@@ -56,14 +56,11 @@ Cc: lpieralisi@kernel.org, jingoohan1@gmail.com, mani@kernel.org,
 	shawn.lin@rock-chips.com
 Subject: Re: [PATCH v9 1/5] PCI: Add pcie_get_link_speed() helper for safe
  array access
-Message-ID: <20260326180945.GA1331170@bhelgaas>
+Message-ID: <20260326181624.GA1331242@bhelgaas>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <20260313165522.123518-2-18255117159@163.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260326_110947_522271_517D2544 
-X-CRM114-Status: GOOD (  18.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,9 +88,6 @@ On Sat, Mar 14, 2026 at 12:55:18AM +0800, Hans Zhang wrote:
 > removed from of_pci_get_max_link_speed().
 > 
 > Signed-off-by: Hans Zhang <18255117159@163.com>
-
-Acked-by: Bjorn Helgaas <bhelgaas@google.com>
-
 > ---
 >  drivers/pci/pci.h   |  2 ++
 >  drivers/pci/probe.c | 16 ++++++++++++++++
@@ -122,12 +116,23 @@ Acked-by: Bjorn Helgaas <bhelgaas@google.com>
 >  
 > +/**
 > + * pcie_link_speed_value - Get speed value from PCIe generation number
+
+Wrong name here (pcie_link_speed_value vs pcie_get_link_speed)
+(pointed out by Sashiko).
+
 > + * @speed: PCIe speed (1-based: 1 = 2.5GT, 2 = 5GT, ...)
 > + *
 > + * Returns the speed value (e.g., PCIE_SPEED_2_5GT) if @speed is valid,
 > + * otherwise returns PCI_SPEED_UNKNOWN.
 > + */
 > +unsigned char pcie_get_link_speed(unsigned int speed)
+
+Sashiko also pointed out that the commit log says this returns "enum
+pci_bus_speed", while here we return unsigned char (which is also the
+type of pcie_link_speed[x]).
+
+https://sashiko.dev/#/patchset/20260313165522.123518-1-18255117159%40163.com
+
 > +{
 > +	if (speed >= ARRAY_SIZE(pcie_link_speed))
 > +		return PCI_SPEED_UNKNOWN;
