@@ -4,80 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95C9510A88EC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 17:25:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7621210A88F1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 17:41:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ysN35GdxO1ttW5m2FClYkwqiFcjtmzjlRfjcsFmDvAI=; b=pzhC+oRAQyAVHygZxbh43cMTp8
-	fES/S1nmvHNGJyf9KX3vPT0ObGFnpnxK63J9lXXF/hKtG1zkWS0RWhzqnuFQPTDzOG6XQHn/cmwBs
-	UKhc2xM5XVI6Kjf7jhs2ZSU/BPG9L4K/1gjq2qu8pDNcfr/sCkaOmCawOty97lJmlqaWfe9eciizn
-	badu1MATUKGM3vY+rqhZu9kiT+BVIvSClTkyFhhEHdsuDM+fpo7ed7NgTmTFgIm0TFRt/C76SSMPB
-	rq3EX09NHp69GePw8mQjK658k7ZOZLZy2vNjuuh/24Q6V3tzYQIjHrn5RWcNHYmBM6mPArdpbfFMm
-	fnT8oLpQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ti7ZwaJ+oZnya6rqiSsqWfcUMtAp2b39yBmGbBFvlt0=; b=ZIXUT4squbYKbZYcR/jCssql/7
+	cLxM9j0AYqKs4e4n41BZcKOXMTCEHlGlg3f6LRT6sG/opBGbYEFL7c7zasw6kjzNRTqw0YAe8+0Es
+	W3EYBLjKpnPedsBjl5tF/u0mzWo2btsSQySzQLNquhnuBpQCeWrfipQn4rKabNsL4fOAtoxa7poHi
+	i9zUw0qvDoznKYRGxfTJeJNh02nLyYop6PNy1b50oEU779z8TgQw9v3hPTwH5wQQy399Wa3dkWzwv
+	fnLlzSunQaUP/nROEILbp77PhlnIAZZnru0DaZ0mrOzWVDATANyGysIRYZaYH7WN1bURukTZ5avXa
+	Lox1yA+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5oSf-00000005wdg-1PkL;
-	Thu, 26 Mar 2026 17:25:37 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+	id 1w5ohp-00000005yTZ-2x4a;
+	Thu, 26 Mar 2026 17:41:17 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5oSc-00000005wd4-12UV;
-	Thu, 26 Mar 2026 17:25:36 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id BE3411A3003;
-	Thu, 26 Mar 2026 17:25:30 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 90210601FA;
-	Thu, 26 Mar 2026 17:25:30 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 54A5A10450C6A;
-	Thu, 26 Mar 2026 18:25:21 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1774545929; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=ysN35GdxO1ttW5m2FClYkwqiFcjtmzjlRfjcsFmDvAI=;
-	b=Q0d1aEaMo5UpzpiJ6qXDP3rV+xnW3uNZNbk4gVTqZfIyTR9HrtirKmZuHJR/iI6mFOjLqC
-	aOcC/UcObBbsTyKSKEa/cZqSq5uv7diljbGR86ZwqNdiKY6iNIiQWU5dqpJCcrlHgGZ4in
-	Gua7WNkUofKWtstY20tQ+EU0t3kqAfXRNgGerqiiToKGFupUHhKVrcX1QmLFnSrjlNpSk+
-	+x5kX+wJVeQQNfTgSMFh5KkHouev4aSioRSQwne1YV//bDQrUAzPmqumiKnUv+DbQd4YIu
-	DoA4sNdBW6Kkdkrx8q7FNbJRvdkY0EvfVu5Gbp7QxUAOQASKFizDcC1WH2AsjA==
-Message-ID: <385d2137-0d15-4dc0-8994-9cd48e4150b4@bootlin.com>
-Date: Thu, 26 Mar 2026 18:25:20 +0100
+	id 1w5ohm-00000005ySd-2lAX;
+	Thu, 26 Mar 2026 17:41:15 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id E626A42A3E;
+	Thu, 26 Mar 2026 17:41:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 70CBCC116C6;
+	Thu, 26 Mar 2026 17:41:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1774546873;
+	bh=y2HmnRcLJJ8HS4kuIm9lQr9tyMPyTUtfBDwLVFKrKqU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=GEIe77U6Ip02xX+b0iJGz2iUhHFHIUBzkDmC77AYhSoc8RUWXJnpJr/hV4bVuFzyY
+	 xBphxVhSjCjJSE015JYnDTx4sZRgkTNPRY1iC9DTpwLSqhcJQEizXYP5p3Yt7a3Kaw
+	 R9qitskxyCRoNFJzme8kGbxp887C9poIjnYH/uJc824LxCdw+UlqTd5Miw1sr2rjtz
+	 Gtf3NFPxVRdJEJ2jZFRlQqS9SwoiJBNQALjzWe+6a4xGC0PrhJgth12/kaYjzcKIzr
+	 qo19TB6oWmdIHQDgfnRaBN5jea+y88y6UPVCesH1xceAtkOQCB/CcpOm9W4em68pHj
+	 WUrCs72uILyCQ==
+Date: Thu, 26 Mar 2026 23:10:58 +0530
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Hans Zhang <18255117159@163.com>, bhelgaas@google.com, 
+	helgaas@kernel.org
+Cc: lpieralisi@kernel.org, jingoohan1@gmail.com, kwilczynski@kernel.org, 
+	florian.fainelli@broadcom.com, jim2101024@gmail.com, robh@kernel.org, 
+	ilpo.jarvinen@linux.intel.com, linux-arm-msm@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
+	claudiu.beznea.uj@bp.renesas.com, linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, 
+	linux-omap@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com, linux-pci@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, shawn.lin@rock-chips.com
+Subject: Re: [PATCH v9 1/5] PCI: Add pcie_get_link_speed() helper for safe
+ array access
+Message-ID: <yxtwt2gwwasccsfrymnfahn3ruimnpa3noctqbdurei5yzi233@6j5wzkudjrb7>
+References: <20260313165522.123518-1-18255117159@163.com>
+ <20260313165522.123518-2-18255117159@163.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v2 4/4] net: phy: Introduce Airoha AN8801/R
- Gigabit Ethernet PHY driver
-To: Andrew Lunn <andrew@lunn.ch>,
- "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Heiner Kallweit <hkallweit1@gmail.com>, kevin-kw.huang@airoha.com,
- macpaul.lin@mediatek.com, matthias.bgg@gmail.com, kernel@collabora.com,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20260326-add-airoha-an8801-support-v2-0-1a42d6b6050f@collabora.com>
- <20260326-add-airoha-an8801-support-v2-4-1a42d6b6050f@collabora.com>
- <acVND6DdpM9czIwU@shell.armlinux.org.uk>
- <044110c5-da1e-48c0-93fd-35553e86b271@lunn.ch>
- <acVQQQiciPQBkQOG@shell.armlinux.org.uk>
- <425217fd-f74c-455c-9aa7-5b6682d887fa@lunn.ch>
-From: Maxime Chevallier <maxime.chevallier@bootlin.com>
-Content-Language: en-US
-In-Reply-To: <425217fd-f74c-455c-9aa7-5b6682d887fa@lunn.ch>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Last-TLS-Session-Version: TLSv1.3
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20260313165522.123518-2-18255117159@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260326_102534_429592_DC71DAB9 
-X-CRM114-Status: GOOD (  10.48  )
+X-CRM114-CacheID: sfid-20260326_104114_731337_419F85DE 
+X-CRM114-Status: GOOD (  20.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,26 +79,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 26/03/2026 17:56, Andrew Lunn wrote:
->> What is the timing requirements for a system going into suspend vs a WoL
->> packet being sent? Should a WoL packet abort entry into suspend? If yes,
->> then we need to program the MAC before the PHY is suspended, because
->> suspend could already be in progress.
+On Sat, Mar 14, 2026 at 12:55:18AM +0800, Hans Zhang wrote:
+> The pcie_link_speed[] array is indexed by PCIe generation numbers
+> (1 = 2.5 GT/s, 2 = 5 GT/s, ...).  Several drivers use it directly,
+> which can lead to out-of-bounds accesses if an invalid generation
+> number is used.
 > 
-> We would then need to hook into the NETDEV_CHANGEADDR notifier, and
-> call into the PHY driver to let it reprogram the MAC address.
-
-We would also probably have to re-do that MAC addr programming at phy
-attach time ? If the PHY isn't attached (e.g. link admin-down on some
-boards), we can't use that notifier as we don't know what netdev to
-listen to. Or I'm missing something ?
-
-Maxime
-
-> 
->      Andrew
+> Introduce a helper function pcie_get_link_speed() that returns the
+> corresponding enum pci_bus_speed value for a given generation number,
+> or PCI_SPEED_UNKNOWN if the generation is out of range.  This will
+> allow us to safely handle invalid values after the range check is
+> removed from of_pci_get_max_link_speed().
 > 
 
+Bjorn: Could you please take a look at this patch and ack if looks good? Rest of
+the patches look good to me (I might squash patch 5 with 4 while applying).
+
+- Mani
+
+> Signed-off-by: Hans Zhang <18255117159@163.com>
+> ---
+>  drivers/pci/pci.h   |  2 ++
+>  drivers/pci/probe.c | 16 ++++++++++++++++
+>  2 files changed, 18 insertions(+)
+> 
+> diff --git a/drivers/pci/pci.h b/drivers/pci/pci.h
+> index 13d998fbacce..409aca7d737a 100644
+> --- a/drivers/pci/pci.h
+> +++ b/drivers/pci/pci.h
+> @@ -108,6 +108,8 @@ struct pcie_tlp_log;
+>  				 PCI_EXP_DEVCTL_FERE | PCI_EXP_DEVCTL_URRE)
+>  
+>  extern const unsigned char pcie_link_speed[];
+> +unsigned char pcie_get_link_speed(unsigned int speed);
+> +
+>  extern bool pci_early_dump;
+>  
+>  extern struct mutex pci_rescan_remove_lock;
+> diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
+> index bccc7a4bdd79..d6592898330c 100644
+> --- a/drivers/pci/probe.c
+> +++ b/drivers/pci/probe.c
+> @@ -783,6 +783,22 @@ const unsigned char pcie_link_speed[] = {
+>  };
+>  EXPORT_SYMBOL_GPL(pcie_link_speed);
+>  
+> +/**
+> + * pcie_link_speed_value - Get speed value from PCIe generation number
+> + * @speed: PCIe speed (1-based: 1 = 2.5GT, 2 = 5GT, ...)
+> + *
+> + * Returns the speed value (e.g., PCIE_SPEED_2_5GT) if @speed is valid,
+> + * otherwise returns PCI_SPEED_UNKNOWN.
+> + */
+> +unsigned char pcie_get_link_speed(unsigned int speed)
+> +{
+> +	if (speed >= ARRAY_SIZE(pcie_link_speed))
+> +		return PCI_SPEED_UNKNOWN;
+> +
+> +	return pcie_link_speed[speed];
+> +}
+> +EXPORT_SYMBOL_GPL(pcie_get_link_speed);
+> +
+>  const char *pci_speed_string(enum pci_bus_speed speed)
+>  {
+>  	/* Indexed by the pci_bus_speed enum */
+> -- 
+> 2.34.1
+> 
+
+-- 
+மணிவண்ணன் சதாசிவம்
 
