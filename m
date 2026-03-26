@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1568B109E54E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 05:09:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4472109E54E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 05:10:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G2TbPo/pMw3pBSbT82bq1wqpfPNit/D4PQZeEFgUmrY=; b=JQCM0L+xGKcLvJAd7kjdtPwDj/
-	3zGyiB/BOL8LYgIaYxs/Tn6brwzY9S2GHUnnCTqdnboBd9lHnXOvGgBuo7OTpatG5Ku7XM4fdootM
-	dNB9/1sJzfd96u9QURq7SLoldDNbWwZyq2kCOcLnRKv/e7PhYOcrUYU7/HHN7+EssmSz+g4x0+CtB
-	m0cMMz35EBmj6os0Tr0m7rPve6OaNmtYQ4swnHodgP+bVjTfaOxWiPKJ92ejQVxf8NV/w8PHsZwmX
-	Te1kIqcj9H0zPFcHFcyXEgxEUs2yQ2mCrrt/UDWAGC7mk+DA/H1w9e2Da2+rwRLej+ZiXByBHaYtY
-	QAa14phw==;
+	bh=cGGWTdMUIVyS3Qgx0DfvUx9qEFkK7tjaolD+dx0ptGw=; b=rbW9dfBNaWE8pL9G5oC6pEiYFk
+	hCWi0bhFAie2XiHlvN+NLvIzIKqxkKIXw/y96uOugRtx08gehh4xz2y9gnl2g4lfPFLRBsNF0KcrB
+	pSO6X3Kn3UX3Pa/9E7N+1vvjda2bvMTru4jYCDZorTtRdhKBs9QCYZlD2RB8XdnWllYj4e+ckSona
+	AarJrziJRQGdhtUmF8E4KpltZ+RlbxjzW0VdEP8X6tAIRO1JHVnB+kvgJOOKzql2XqozKhyoKzko0
+	xIQpcMwlbrfpcMNu15bTHXyrdzGcJvlsfFPdXNlTTDe7jQJD6eK14BSM10PY6XMbSbrKVCKtZ/vRX
+	v/FW1pdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5cyY-00000004iMP-0lK8;
-	Thu, 26 Mar 2026 05:09:46 +0000
+	id 1w5czh-00000004iYB-3cjY;
+	Thu, 26 Mar 2026 05:10:57 +0000
 Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5cyV-00000004iKh-1Kt6;
-	Thu, 26 Mar 2026 05:09:44 +0000
+	id 1w5cze-00000004iXN-3UY3;
+	Thu, 26 Mar 2026 05:10:55 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.99)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1w5cyQ-000000006qC-3Tq7;
-	Thu, 26 Mar 2026 05:09:38 +0000
-Date: Thu, 26 Mar 2026 05:09:35 +0000
+	id 1w5cza-000000006qv-0vim;
+	Thu, 26 Mar 2026 05:10:50 +0000
+Date: Thu, 26 Mar 2026 05:10:47 +0000
 From: Daniel Golle <daniel@makrotopia.org>
 To: Michael Turquette <mturquette@baylibre.com>,
 	Stephen Boyd <sboyd@kernel.org>,
@@ -47,17 +47,16 @@ To: Michael Turquette <mturquette@baylibre.com>,
 	linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 1/3] clk: mediatek: add MUX_CLR_SET macro
-Message-ID: <65e504ac2c2d19b4baba6b79a241788220b19b34.1774499536.git.daniel@makrotopia.org>
+Subject: [PATCH v2 2/3] clk: mediatek: mt8192: use MUX_CLR_SET
+Message-ID: <9667e8a7a0757f7fb9d6bb3fca105df97afd007b.1774499536.git.daniel@makrotopia.org>
 References: <cover.1774499536.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1774499536.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260325_220943_381043_862739DA 
-X-CRM114-Status: UNSURE (   8.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260325_221054_868054_FA7B80BC 
+X-CRM114-Status: GOOD (  12.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,35 +71,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some MediaTek SoCs (e.g. MT7988) define infra muxes that have neither
-a clock gate nor an update register.
+The mfg_pll_sel mux has neither a clock gate nor an update register,
+and upd_ofs is stored as u32, so the -1 truncates to 0xFFFFFFFF.
 
-Add a MUX_CLR_SET convenience macro that takes only the mux register
-offsets, bit shift, and width, hardcoding upd_ofs = 0 and
-upd_shift = -1 so callers cannot accidentally pass bogus sentinel
-values to wrongly-typed fields.
+While upd_shift being -1 (as s8) prevents the update path from
+executing at runtime, the bogus upd_ofs value is still stored in the
+struct.
 
+Use MUX_CLR_SET to avoid passing sentinel values to wrongly-typed
+fields.
+
+Fixes: 710573dee31b4 ("clk: mediatek: Add MT8192 basic clocks support")
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
- drivers/clk/mediatek/clk-mux.h | 6 ++++++
- 1 file changed, 6 insertions(+)
+ drivers/clk/mediatek/clk-mt8192.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mux.h b/drivers/clk/mediatek/clk-mux.h
-index 151e56dcf8842..8a5d6aca43aa9 100644
---- a/drivers/clk/mediatek/clk-mux.h
-+++ b/drivers/clk/mediatek/clk-mux.h
-@@ -126,6 +126,11 @@ extern const struct clk_ops mtk_mux_gate_hwv_fenc_clr_set_upd_ops;
- 			0, _upd_ofs, _upd, CLK_SET_RATE_PARENT,		\
- 			mtk_mux_clr_set_upd_ops)
- 
-+#define MUX_CLR_SET(_id, _name, _parents, _mux_ofs,			\
-+		    _mux_set_ofs, _mux_clr_ofs, _shift, _width)		\
-+		    MUX_CLR_SET_UPD(_id, _name, _parents, _mux_ofs,	\
-+		    _mux_set_ofs, _mux_clr_ofs, _shift, _width, 0, -1)
-+
- #define MUX_GATE_HWV_FENC_CLR_SET_UPD_FLAGS(_id, _name, _parents,			\
- 				_mux_ofs, _mux_set_ofs, _mux_clr_ofs,			\
- 				_hwv_sta_ofs, _hwv_set_ofs, _hwv_clr_ofs,		\
+diff --git a/drivers/clk/mediatek/clk-mt8192.c b/drivers/clk/mediatek/clk-mt8192.c
+index 50b43807c60cf..6413619880483 100644
+--- a/drivers/clk/mediatek/clk-mt8192.c
++++ b/drivers/clk/mediatek/clk-mt8192.c
+@@ -579,8 +579,8 @@ static const struct mtk_mux top_mtk_muxes[] = {
+ 			     dsp7_parents, 0x050, 0x054, 0x058, 0, 3, 7, 0x004, 16),
+ 	MUX_GATE_CLR_SET_UPD(CLK_TOP_MFG_REF_SEL, "mfg_ref_sel",
+ 			     mfg_ref_parents, 0x050, 0x054, 0x058, 16, 2, 23, 0x004, 18),
+-	MUX_CLR_SET_UPD(CLK_TOP_MFG_PLL_SEL, "mfg_pll_sel",
+-			mfg_pll_parents, 0x050, 0x054, 0x058, 18, 1, -1, -1),
++	MUX_CLR_SET(CLK_TOP_MFG_PLL_SEL, "mfg_pll_sel", mfg_pll_parents,
++		   0x050, 0x054, 0x058, 18, 1),
+ 	MUX_GATE_CLR_SET_UPD(CLK_TOP_CAMTG_SEL, "camtg_sel",
+ 			     camtg_parents, 0x050, 0x054, 0x058, 24, 3, 31, 0x004, 19),
+ 	/* CLK_CFG_5 */
 -- 
 2.53.0
 
