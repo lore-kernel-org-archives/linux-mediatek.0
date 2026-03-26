@@ -4,94 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F664106F2F3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 08:11:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B086F106F303
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 08:40:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YEBDbGWMGSNIllBw+P70xdFs4cNvWJCEJNsNL7NIicU=; b=kreChxB95t15g8ePsEpcyg0Mcw
-	mDH7Tmux3Ne/lgPid3W9r2NBwhrN0dbOghtAYLjujrnEAIM5vapWBoNSosuTi5UAhWVAP6q2DhbEM
-	BDYJjyxuuSC+Sc3RUe1k371jqxGw7+8PZEF8sk5EAIYGLgTUqe8VikBIwvBq9PKTMYx9PhWay37ej
-	t2RQkQHuOWE4B/kXFTNcFaTpJHgbaptn4pFplry/jQk8JUOCvRnZHwXFcKc8Yx4ROfYKSCILlJjQF
-	+JhBn47TLN+qXg0k5oBeYb0WRvQY6CIoOJI4FCU6yKRHu0CJ2ziuTBz87ok1Ohoabux+YTAWe2NyH
-	OpW534kw==;
+	bh=RZIuiXRVUEe8C+bPC4WsRGZm1BjkEqR+1WT0JlENtHs=; b=1P8H4PefP+zDi8/bORo6Fm2mLp
+	5v/WAR5OXu9Nt94iTdUWhFgPLrbVL1GERGcCTpE21xsnTwkzMeE+faja892uzDQX3FQLfNbCbQov/
+	rVoonWkIU5UOlKQy02FEE1J1AAYAtmLHDE3PmdKT7ZPpXbJhMKxGbvdUPS7GvZG9ZMC9xyC+7eU/V
+	f+rkTjeIP/3mycZUnIeslBMcBvdoY1LLrpG8iu7Xt9IeH5oOMCiVBGrbYhD0Vm8m//t21bJqexRwk
+	iUgqLUlv+sr0EYZ6Iy3ZoxRNvIqYWZwYzqvnH6T61z70baYYQXIX9GV2qn3h7DrCVyTZzhq3IrupD
+	LJVtRfCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5foK-00000004zZJ-2D4x;
-	Thu, 26 Mar 2026 08:11:24 +0000
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+	id 1w5gGK-000000052hd-0pnU;
+	Thu, 26 Mar 2026 08:40:20 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5foB-00000004zVS-2bq6
+	id 1w5gGI-000000052gu-39QS
+	for linux-mediatek@bombadil.infradead.org;
+	Thu, 26 Mar 2026 08:40:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=RZIuiXRVUEe8C+bPC4WsRGZm1BjkEqR+1WT0JlENtHs=; b=gKzGNwZAIS9x4Nhb3R3EywFYas
+	4sSbQgwp8D1bQCcOcp7ck5/z8olQ6pkllJQ5vCwryqQ+zIwKvQZ62FQn/TF04KXxiacIPkACVh1Mf
+	b27IrJNbhfcVRrmuqtwT4ed/jvES5zYcwjiVPSfCePPFoo3s+4blHG/5cbhyMM/KSlZ7OSSWrjRM0
+	kXhrlwpHSnhAo3ONaEzfBd61XYQ0z9s6IbtLaY+w2zZsi3cCA1Q4sKPVn6curQhmG5PBfjmHnfnG+
+	WrttSPpm7Kj3hp5+A+UP8Cc6nP40hMZz+XbKoM0vjT3ABNrxYp8hnC8T3u/weZsDsYPfP8GQAzjId
+	iS/9kCWA==;
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1w5gGF-00000007lov-19tz
 	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Mar 2026 08:11:16 +0000
-Received: by mail-pj1-x1029.google.com with SMTP id 98e67ed59e1d1-35c1107d4b7so596291a91.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 26 Mar 2026 01:11:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1774512675; x=1775117475; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=YEBDbGWMGSNIllBw+P70xdFs4cNvWJCEJNsNL7NIicU=;
-        b=HdE4hNT57yIbcct4s70MG2otVymTejDoXu7IRQXb/8DdEhPZUecSR1xsmAehJhQ3c5
-         fs/nEoCRhSYxpxn7nAiOngLF4aGRDMuuiN+ICLUtle6En3okaAEtsNdD/2pnrbwl9Gvl
-         pAV6OFz3rycSxDMn+pmePRjQ+pHzkUHNh0f8k=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1774512675; x=1775117475;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=YEBDbGWMGSNIllBw+P70xdFs4cNvWJCEJNsNL7NIicU=;
-        b=r5EzL27M3vBS4DVC/y4PxQFSd90a9Ej8SjkWqMy+G51avSW3HyTC6N99wBtDjFJLZ1
-         Chg+JJX1c2O9A99LO0+kYYl0niLJDU+61mbG7RAOPM3WSUfi7APILGHLQaFjlAgoC0oR
-         vnp8UBFul/B5wPybPU3A4EVI08VX4JelVa0O900CFlsBDDgx2P3389pIouWPelPxdZ2+
-         AqorjbcDYxZhojObZ8gO3gPIcvED2l3frw7NHzt+dY/8GJ4mq0IPBqYXrV7R4vQzxiW6
-         6IK7xLm+brXLHLbZiSF88i6boRgBNn+lzCmjLQ8dk/wOC6XDbyayhFl4cRFGpICHUU+z
-         GFMA==
-X-Forwarded-Encrypted: i=1; AJvYcCV2qh8pK0vaSrkwc2swHgC9Xrinlqz0cPBwGYM74y7L6rE5T0hh4A8z2VONb4HSBJcNLkl9hF/79ZW0olLIbA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzuwypuYwUnA6/1kFB364aEDYThPKPnE7cVHTMPQjU/7Y1fyu9N
-	cVslfDbWx5Hb1RRK8h/td3vOylESstC9VZBy9ZizFlRX1oAURNpcHem3Wd41zZHQJw==
-X-Gm-Gg: ATEYQzyrX4U4V2h5qwzxH19QVbyL1z9Kkbdsj6XFg1+mSXEy6VRJHnGquHzDQyZ4RG5
-	SkhT6dg5JH/U6++goh5ZIwMgz26DWI8BVbwpfvl9OUlAlsxizJ4vRr80EY28B2+WEZW4otHLYP6
-	vz7zPD6esVii31fn8LXh9l20gO3UW5X36IKaDkMrfxtLQncUG2WNJBre+38oJvbwyiueuD769va
-	SN030SfJzX3nMcwyrFthgCNzSkTfZkzivkTm9yDAPIGw74ZK7OWxigYy/+YN3Lz29K0uIj9quuj
-	C7abEU3enKAGqPcomWdD5PHeqURV+slu/nizcc02BqctaY8V0L42n84XnsS9+Hm1h2RTbsbMAFr
-	Xwtb0t3rFQRgezXux9x8b0z3uF2EEeIGG3EsjDkU1/LBNbqrmaVBREdtXUmYutOxQM519SBWGeP
-	2GftCwRli3uJfXXtxqVAr2j3Rs8M2/9vkgRbpgF5vHvMsq0fH/FjO40jSIWcmVJxB1xr99CnO9h
-	+0iUrx+
-X-Received: by 2002:a17:90b:3a88:b0:35c:9fe:a58d with SMTP id 98e67ed59e1d1-35c0dd0949amr6018363a91.11.1774512674744;
-        Thu, 26 Mar 2026 01:11:14 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:3ed5:7e63:b37c:a7d7])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-35c22d09573sm823452a91.16.2026.03.26.01.11.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 26 Mar 2026 01:11:14 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Mark Brown <broonie@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-kernel@vger.kernel.org,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org
-Subject: [PATCH v2 1/2] regulator: dt-bindings: mt6315: Add regulator supplies
-Date: Thu, 26 Mar 2026 16:10:48 +0800
-Message-ID: <20260326081050.1115201-2-wenst@chromium.org>
-X-Mailer: git-send-email 2.53.0.1018.g2bb0e51243-goog
-In-Reply-To: <20260326081050.1115201-1-wenst@chromium.org>
-References: <20260326081050.1115201-1-wenst@chromium.org>
+	Thu, 26 Mar 2026 08:40:17 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id E85EA44214
+	for <linux-mediatek@lists.infradead.org>; Thu, 26 Mar 2026 08:40:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C8189C2BCB7
+	for <linux-mediatek@lists.infradead.org>; Thu, 26 Mar 2026 08:40:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1774514411;
+	bh=QfOa7OzRwwd4XlZR0+3Hhy9wDi0PAtKq+HHQAKzIr2Q=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=ftVRdaDOnFGANoIrp9OBhja30/JqJdcf3WqhVM2IUvVXw1JgNZtfzpu2r9NuVwChu
+	 joOjJsjzXJUWLt+dRFKmTpkTngVjS8DFiBoJ1ku8K6YdkYhh15H9U+Yj2GDrKUaEPa
+	 Sw9pzt32LwMPHlNSpKHdfyI5x+h/+fpuWZY3hm3mQQQsUMdJKtH/Wy3RPLx5CSksGw
+	 zJVQOUPBX2D/joxJX1uJJ01gj+2Q/gRrNklw3vit3m6/D4jR/LSLPCV+ciIuMS1O0K
+	 0Tqg46eygQg5MxDMp9zjKRDyxww15tORBncfdovtYuhN55HeyXHK/qz7TQnyMLjRty
+	 I2Wy4KJzpWdCg==
+Received: by mail-lf1-f49.google.com with SMTP id 2adb3069b0e04-5a126c8aab9so1001161e87.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 26 Mar 2026 01:40:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCVoFAPVqaOuOCia9ltzyBRB4Bvv3XdtU2FqhnNJpX7+QVvzF2nkiy6SB0g2EfOnXCVP5PwbAL4LBXaiG8cwIA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxyVO/FSnKvpuPZWaUoi6VPWJyH1huIkQsuEdEeCDCzLDnTiS9K
+	B03NJW3PUaDP0xxXkoseGFfymuP2Am8XKYGWlbYIw1hYUmUFoMdpEbLyshQOoY+jWMk1QJCFLNu
+	1TsfVo9r+iClCwoJzJOcGQON85D8gwON6UUvx9ZYCTw==
+X-Received: by 2002:a05:6512:a8f:b0:5a1:3da4:e92f with SMTP id
+ 2adb3069b0e04-5a29b9ab6d8mr2497661e87.43.1774514410393; Thu, 26 Mar 2026
+ 01:40:10 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20260325100144.1696731-1-arnd@kernel.org> <CAMRc=Mdwu85gghDjQEu4eP2HZxHjBFpph07q9SOfAifSDMtpVw@mail.gmail.com>
+ <1789ce66-5a18-4b54-bbad-3b2049f2c26d@app.fastmail.com>
+In-Reply-To: <1789ce66-5a18-4b54-bbad-3b2049f2c26d@app.fastmail.com>
+From: Bartosz Golaszewski <brgl@kernel.org>
+Date: Thu, 26 Mar 2026 09:39:57 +0100
+X-Gmail-Original-Message-ID: <CAMRc=MfwR9POm3OvuJTRcg8sO1y=LRdBMrbVLQ=eZD177r49qw@mail.gmail.com>
+X-Gm-Features: AQROBzDadLtwyr2raaFqkwGzyCOh9M5RUz_Gm02mFq1aGi1CGm9iwle9RVHpGLA
+Message-ID: <CAMRc=MfwR9POm3OvuJTRcg8sO1y=LRdBMrbVLQ=eZD177r49qw@mail.gmail.com>
+Subject: Re: [PATCH] gpio: fix up CONFIG_OF dependencies
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: Arnd Bergmann <arnd@kernel.org>, Yixun Lan <dlan@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	"open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, linux-kernel@vger.kernel.org, 
+	linux-riscv@lists.infradead.org, spacemit@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Linus Walleij <linusw@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260326_011115_655521_79ED2483 
-X-CRM114-Status: UNSURE (   9.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260326_084015_645200_097220B3 
+X-CRM114-Status: GOOD (  19.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,52 +103,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT6315 family of PMICs has 4 buck regulators. Each regulator has a
-separate supply.
+On Wed, Mar 25, 2026 at 11:41=E2=80=AFAM Arnd Bergmann <arnd@arndb.de> wrot=
+e:
+>
+> On Wed, Mar 25, 2026, at 11:32, Bartosz Golaszewski wrote:
+> > On Wed, 25 Mar 2026 11:01:14 +0100, Arnd Bergmann <arnd@kernel.org> sai=
+d:
+> >>
+> >> WARNING: unmet direct dependencies detected for GPIO_SYSCON
+> >>   Depends on [n]: GPIOLIB [=3Dy] && HAS_IOMEM [=3Dy] && MFD_SYSCON [=
+=3Dy] && OF [=3Dn]
+> >>   Selected by [y]:
+> >>   - GPIO_SAMA5D2_PIOBU [=3Dy] && GPIOLIB [=3Dy] && HAS_IOMEM [=3Dy] &&=
+ MFD_SYSCON [=3Dy] && (ARCH_AT91 || COMPILE_TEST [=3Dy])
+> >>
+> >
+> > Thanks and sorry for the breakage. However, I'm wondering if it wouldn'=
+t make
+> > sense to do the following:
+> >
+> >
+> > -#if defined(CONFIG_OF_GPIO)
+> >       /*
+> >        * If CONFIG_OF_GPIO is enabled, then all GPIO controllers descri=
+bed in
+> >        * the device tree automatically may have an OF translation
+> ...
+> > Symbols from linux/of.h are stubbed out and these drivers can build jus=
+t fine
+> > with !CONFIG_OF. This would naturally increase the build coverage.
+>
+> I don't think we need to worry about the build coverage here, CONFIG_OF
+> is still included in x86 allmodconfig and half the randconfig builds,
+> so the drivers get enough exposure either way.
+>
+> On the other hand, dropping the build time check may help avoid
+> future Kconfig dependency issues, so that still sounds like a
+> reasonable suggestion. At least CONFIG_GPIO_SAMA5D2_PIOBU
+> is going to need the 'depends on OF' regardless though to work
+> around the other build error I cited above.
+>
+>      Arnd
 
-Add these supplies to the device tree binding.
+Fair enough, I'll queue this patch.
 
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
-Changes since v1:
-- Moved *-supply to top level, same level as compatible
----
- .../bindings/regulator/mt6315-regulator.yaml         | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/regulator/mt6315-regulator.yaml b/Documentation/devicetree/bindings/regulator/mt6315-regulator.yaml
-index fa6743bb269d..1c63265907f1 100644
---- a/Documentation/devicetree/bindings/regulator/mt6315-regulator.yaml
-+++ b/Documentation/devicetree/bindings/regulator/mt6315-regulator.yaml
-@@ -25,6 +25,15 @@ properties:
-   reg:
-     maxItems: 1
- 
-+  pvdd1-supply:
-+    description: Supply for regulator vbuck1
-+  pvdd2-supply:
-+    description: Supply for regulator vbuck2
-+  pvdd3-supply:
-+    description: Supply for regulator vbuck3
-+  pvdd4-supply:
-+    description: Supply for regulator vbuck4
-+
-   regulators:
-     type: object
-     description: List of regulators and its properties
-@@ -49,8 +58,11 @@ examples:
-     pmic@6 {
-       compatible = "mediatek,mt6315-regulator";
-       reg = <0x6 0>;
-+      pvdd1-supply = <&pp4200_z2>;
-+      pvdd3-supply = <&pp4200_z2>;
- 
-       regulators {
-+
-         vbuck1 {
-           regulator-min-microvolt = <300000>;
-           regulator-max-microvolt = <1193750>;
--- 
-2.53.0.1018.g2bb0e51243-goog
-
+Bart
 
