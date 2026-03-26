@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64C2510AB82B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 22:13:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF22D10AB822
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 22:13:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Cc:To
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2qHp84u4lfDr+6YeO86QEXq5X1hXYtGUt81s2Al/O8Q=; b=24DeArt30Ld01S1ugPEGs22qrh
-	FSClOvXgeMnULyEG392Vd9zsFolYSsjD5hedHcTU4sZnlcB5OzW/zUvkGm29IckYPDWvr1t6iOQAf
-	hbtVKb78BOK6Pvcw6rf6fWLHDRVp2PP/eCZ/YEJbTu8fZfa4i6AAXFQwX56+0DGVSxQO4KCkYbXV3
-	MoVzjEXCk7bwc7OHGnMak7XqXnUP8TMo9DZtoGzKf0ihSuFZUoZn2i/9Qzt63za89YD9zjFpL6Rop
-	IZueQ4LJPcfqgx+atdQQ8d+9e9lKpu8i1/Uorxx0E6X2hJodcn665DsFSD5w/E3O9MsCZcbVA5tyu
-	fXbUqN/g==;
+	bh=nmRwyCI/8YRQA7cAtMtcG+fFkazLXjESdEioP+CFUN4=; b=S4OB15hsI62E80jFwmHU78N/ZZ
+	yx7WWnf/361JHeXZ5RlnYW2d+NtuDiLP40Dhn/dMDStfaGZF5x5r8lPGn+fw79vCivmNM6sk5DNwd
+	HE87s6xrRiZV/s/t3grPif5ClVKP61Nr4B17oImKEMMKvSqqPasOHHYbzPBG9l0e3EOA18XkBzhbp
+	kbj1QRwm2YYl0eWx7uJnpSA+9CQ5XDzurQUsjuSG45gVawfC6dlv75C4Mcx8lvlXQ137MwcY1CSkd
+	PwZrjvvSWp1m7/5gDwbbDI1FW19cs1+ejXdx4LDyCaIgRq6ztLedGH04i+NHCsy0ns/C+ndCddvzB
+	0mc1BHqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5sxE-00000006Hxd-1B4L;
+	id 1w5sxE-00000006HxN-02Aj;
 	Thu, 26 Mar 2026 22:13:28 +0000
 Received: from fhigh-a3-smtp.messagingengine.com ([103.168.172.154])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5swy-00000006Hnl-3Eje;
+	id 1w5swy-00000006HnD-0UuQ;
 	Thu, 26 Mar 2026 22:13:15 +0000
 Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
-	by mailfhigh.phl.internal (Postfix) with ESMTP id 06EE8140022E;
-	Thu, 26 Mar 2026 18:13:12 -0400 (EDT)
+	by mailfhigh.phl.internal (Postfix) with ESMTP id A42FD140027E;
+	Thu, 26 Mar 2026 18:13:07 -0400 (EDT)
 Received: from phl-imap-07 ([10.202.2.97])
-  by phl-compute-02.internal (MEProxy); Thu, 26 Mar 2026 18:13:12 -0400
+  by phl-compute-02.internal (MEProxy); Thu, 26 Mar 2026 18:13:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jetm.me; h=cc:cc
 	:content-transfer-encoding:content-type:content-type:date:date
 	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to; s=fm3; t=1774563192;
-	 x=1774649592; bh=2qHp84u4lfDr+6YeO86QEXq5X1hXYtGUt81s2Al/O8Q=; b=
-	W03OovYV4WEyvXpwpUl66TK++puY4KdRyfZOy2YHveMn6eleLmVb2bPYPWgK4RSO
-	fOZSMt7HwUWJ3JOeKpte3+jZh25hSZlUWrx1VsAUYZWymEg3ASQjVkkT/0vzgRnu
-	rIKuOGllpSZF+rwo/Q/byJEHjG9QZbEZakuBNlcaqPLYAVvtXQiiZeoHzWIOVEd2
-	JaWRRvkPJOzAmAKrqzIyAG+hMka+ghduAx14tIYc+lvLyaACxVqva6ztWiP5VE04
-	wb30IqvyxODHhLoekVbzuyI8voYMKjxD9YQKDWDKv8yXTBo9B9QzxHVlmBYljC8p
-	FP2DOraV5abC7w5vt12lCw==
+	:references:reply-to:subject:subject:to:to; s=fm3; t=1774563187;
+	 x=1774649587; bh=nmRwyCI/8YRQA7cAtMtcG+fFkazLXjESdEioP+CFUN4=; b=
+	FFKHIIVKCEmDQ9p5lMR8iNyGnTp+IcLlMWa6s9NPcZ+0neieX2ULliAlWp2Kjtac
+	6rEnr9tmsw7I7QLC0JLAYmBfFU1Ws9njLkgfqF/7KuQql5Jujl8gQleMbDnUX0CY
+	nqqxNzJE3ogK8Ajth+hr2viNdJ/Eg9f/yd6TYXPd3Cw/jMYCujDL8uMUFzltkSeO
+	/6BZnfpJFSm9N6TdJMH4oYn8COAZqjgcvkVZ27mzRo+4D/U6bbYVf28wpkbRhnZf
+	OpmuygCuOjoVCHroMawViRP2ZoPk1xhZkx3nXMrcVDFzYACYF2hgRKaYuRrIJ6oy
+	hSdHOIP4jqzmUQqwU9ZrBA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-transfer-encoding
 	:content-type:content-type:date:date:feedback-id:feedback-id
 	:from:from:in-reply-to:in-reply-to:message-id:mime-version
 	:references:reply-to:subject:subject:to:to:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1774563192; x=
-	1774649592; bh=2qHp84u4lfDr+6YeO86QEXq5X1hXYtGUt81s2Al/O8Q=; b=s
-	ziV9h81BoOqELiP2ilVRDTf52rIL1XUwznCCociBJacsQ8s/5xl7fcPpmNhcsq94
-	Nigz0nileSi/box6E4FjvrtmVeWdiZkn/LqHSTkCYUeFA8ZM4e5hXAs/5wpHNW5H
-	0zS2wP2SCCoDakXN6ACOCOWbN6yHHRlqXU82jpOeDujp7rzMKo1MRSTEHbnbfsMg
-	0es/IZ0G1hvjeVyVHq4dgRl+S6Qge1eHj9vMfG1rqT2/NRFjvwJPX4ci9AEgUJ64
-	zZ5AJztpuNgjiRePlK1UCPGeoyurdRf+5GEjM+xUMUUoP6PDb2wqvUQ1uMic4pii
-	VfXYH3wTuE04rvzEbmIiQ==
-X-ME-Sender: <xms:d6_FaRskssXXmxXzbfqi8wWBhqE2vaejblIdtXUdAGQb44ZpU-NnGw>
-    <xme:d6_FaVR1vMeju3OIVtRGO7wvCt8T45l3NtTCQWKzcSSM_NLD01kdnQH8HJtjMBek-
-    _ZsI2Ef-FMHLtmdhJy0mJzUELr06Q_ATnPmUNR8M58NAGw7ucTSxtI>
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1774563187; x=
+	1774649587; bh=nmRwyCI/8YRQA7cAtMtcG+fFkazLXjESdEioP+CFUN4=; b=j
+	tceBobr6cL9ywKEqhLBB7/AXgCiM5kXXKsxY6azq27qrlgJ7SgpgIqieeh42zdLh
+	4ZYw+wMA5LDm3c4zvftNsVsdNhC29/4he6XqpwHzbpjNVdtwvVEf0kdJZQj1Ysz5
+	N/+pIFBGfwF9NEaUfcRYBg+HNcoecJVQSNA2SFe93Hmh9QWxAJVb8zPZETxBvEDP
+	LrOgrz7nqT4ZjbQCFxIzMi4p0rCMAt6vNZnK21oI0gdXdRsPLHN/e9S39tCOO/lh
+	WP9GBKm5P8FCBPWWFmw+zizGJR5lwsyZWNzSiRYH5SYrx6WfOnC3A9l3zxoAB1U5
+	BBHqUvAI4jxMFfW6DN/ug==
+X-ME-Sender: <xms:c6_FaSRm_6Y88PFhNcdOteAXphvgmfTY_ehKv8EH9eR2tu6mAMLEww>
+    <xme:c6_FaSmpQc2_uobzYLda1e_bLGXe0MjicEUt2PeZTHOcgUyVJwt3oCsDDJlE1r-4N
+    Rrf_rHKNRnh1WY_ae0XGHeIqas6va1JutYfepNuGn38wcULjhGIZI0>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgdefvdekheehucetufdoteggodetrf
     dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
     rghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujf
@@ -69,57 +69,56 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgdefvdekheehucetufdote
     vgdpnhgspghrtghpthhtohepledpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtoheprg
     hnghgvlhhoghhiohgrtggthhhinhhordguvghlrhgvghhnohestgholhhlrggsohhrrgdr
     tghomhdprhgtphhtthhopehluhhiiidruggvnhhtiiesghhmrghilhdrtghomhdprhgtph
-    htthhopehmrghtthhhihgrshdrsghgghesghhmrghilhdrtghomhdprhgtphhtthhopehm
-    rghrtggvlheshhholhhtmhgrnhhnrdhorhhgpdhrtghpthhtoheplhhinhhugidqrghrmh
-    dqkhgvrhhnvghlsehlihhsthhsrdhinhhfrhgruggvrggurdhorhhgpdhrtghpthhtohep
-    lhhinhhugidqmhgvughirghtvghksehlihhsthhsrdhinhhfrhgruggvrggurdhorhhgpd
-    hrtghpthhtohepjhhnvghtthhosehmihhnvghirhhordhiohdprhgtphhtthhopehlihhn
+    htthhopehmrghtthhhihgrshdrsghgghesghhmrghilhdrtghomhdprhgtphhtthhopeig
+    vghlnhgrghgrsehgmhgrihhlrdgtohhmpdhrtghpthhtohepmhgrrhgtvghlsehhohhlth
+    hmrghnnhdrohhrghdprhgtphhtthhopehlihhnuhigqdgrrhhmqdhkvghrnhgvlheslhhi
+    shhtshdrihhnfhhrrgguvggrugdrohhrghdprhgtphhtthhopehlihhnuhigqdhmvgguih
+    grthgvkheslhhishhtshdrihhnfhhrrgguvggrugdrohhrghdprhgtphhtthhopehlihhn
     uhigqdgslhhuvghtohhothhhsehvghgvrhdrkhgvrhhnvghlrdhorhhgpdhrtghpthhtoh
     eplhhinhhugidqkhgvrhhnvghlsehvghgvrhdrkhgvrhhnvghlrdhorhhg
-X-ME-Proxy: <xmx:d6_FadNaMYWvf6bl7SR0mRjecsF4ZBi1WkA1OUc2dFi9F-uPn1ooSw>
-    <xmx:d6_FaTA_lvLx1kiufTESuigwrc294SSqAMeBUP-WwzJxifM1FhpiuQ>
-    <xmx:d6_FaW7fG4MTHzE5Ez0ho6tvzEqaQxa5yRuQemc6F9LP61KLbaHojg>
-    <xmx:d6_FaV5tBRQ_UOICUTGWlcukBtRI8jm3mLN-peSQaPNuTdtg19ZUgA>
-    <xmx:eK_FabbmYq1Y2edsyWn_ii305zEAoRdBLg57yNlfUhIJUQTzkrH-QUFn>
+X-ME-Proxy: <xmx:c6_FadxNAoNujpN7ea6ItKjuU5QextYwGSHrGbeNRKSnx08Qzk-PuA>
+    <xmx:c6_FaQXQM5kJJ87LdEbJSInN0ROznjDKlfZz561KIUVI6jveoR_MPQ>
+    <xmx:c6_FaR_orT7i-jybEFLC1U3xvmLKsh-FRZ-MEyOGiRhQOtVV5xBHSw>
+    <xmx:c6_FabsmLqbtaeCwirVgyk7iWG01fQ6gbFE04GdA3sLVY9DrcAORxg>
+    <xmx:c6_FaasZ6BEw0k2OylXCkJiZEvIfH6LIl7rkaFSP-tjv0kEvEzF4UMCf>
 Feedback-ID: i9dde48b3:Fastmail
 Received: by mailuser.phl.internal (Postfix, from userid 501)
-	id D3A071EA006B; Thu, 26 Mar 2026 18:13:11 -0400 (EDT)
+	id 7D20B1EA006B; Thu, 26 Mar 2026 18:13:07 -0400 (EDT)
 X-Mailer: MessagingEngine.com Webmail Interface
 From: Javier Tia <floss@jetm.me>
-Date: Thu, 26 Mar 2026 16:13:06 -0600
-Subject: [PATCH v3 3/8] Bluetooth: btusb: Add MT7927 ID for ASUS ROG
- Crosshair X870E Hero
+Date: Thu, 26 Mar 2026 16:13:04 -0600
+Subject: [PATCH v3 1/8] Bluetooth: btmtk: Add MT6639 (MT7927) Bluetooth
+ support
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260326-mt7927-bt-support-v3-3-fa7ebd424323@jetm.me>
+Message-Id: <20260326-mt7927-bt-support-v3-1-fa7ebd424323@jetm.me>
 To: Marcel Holtmann <marcel@holtmann.org>,
  Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Jose Tiburcio Ribeiro Netto <jnetto@mineiro.io>
+ Ryan Gilbert <xelnaga@gmail.com>
 X-Mailer: b4 0.15.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2196; i=floss@jetm.me;
- h=from:subject:message-id; bh=M/B2rUsIc9XPtt7O3AdFVlNy7Muc9x3nvF7epwhHRKU=;
- b=owEB7QES/pANAwAKAbXuwwuoZ3cfAcsmYgBpxa9vWxoC5654A3OOyMXqe2D+NDO3LCGUCUEn9
- Q6vkaQoj42JAbMEAAEKAB0WIQSbE7ILzw7eI0VKk8m17sMLqGd3HwUCacWvbwAKCRC17sMLqGd3
- H0bpC/9HkhTiHerRco+nW3YlruTs1y33O5i7RwBGz3i1mabmCYieK5Z1T3g4MwSQNHR4z+qdF24
- qaFGkgM2jvXYzgqXo+u39vups6PDJXnh6c8khqPZzUXQCK5r5OP3VKOLh80KeafF2BD4E3TcxKW
- lpa5GJSASucRud+/u0JrnBTyRJw+5C+dYkgJhxy31Bhk8y8B5GPsFeWfQOumksUbOB5ThNW3DQr
- 6uoFf+1uDsRjaiCNvaq+dA3i0Oarys5DVH4U4Lia+1BunKrYVawjoqb5I74OQZj37BSDvEDcWML
- 62m30PwRrNjYuHsvuOc5W4YNbdkq0fsJmkX+cMJ2KPcHyxOw3XKX6h8xQAC9lAvwyZ+/617Dudy
- diuPw/35n25X3C2QQOj6i3gR2/xXxfeTzXNE1IMfxSqZjMBqO1C1qj0Ecr5h5N7QKZ+PK0LzeXM
- JJqWyrivin7PyZhZs0glZXGBFQ9VGRcnQ49WW1zQJWNOgnxtMyx78In3T++7sGfTaNweg=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=6436; i=floss@jetm.me;
+ h=from:subject:message-id; bh=k028IzpOLzyefC8lh+HkGq9e9Y/OCjM3t5s3hKR+plE=;
+ b=owEB7QES/pANAwAKAbXuwwuoZ3cfAcsmYgBpxa9vZRxNsGXSJuygeqoJqwSW01a5OLjHscYwk
+ +YlMFZtkRiJAbMEAAEKAB0WIQSbE7ILzw7eI0VKk8m17sMLqGd3HwUCacWvbwAKCRC17sMLqGd3
+ H+hNC/4g9zYIQfGL5SIt9SpOUB+vzaYLQ7XB1i9vBwpqcyfM8PY2/xlU0ZWZ5Lae/PfdUHeYZE5
+ SGFXJEglTyAeZX/OjLPJg4n7lQxqgNR3MNmkz/RSsDbOcNS5VR+VArhQIxYVkt0DODTSpNzDzfj
+ AWG0xxNXCDAl5SpZ/Vl6vfSJDzmTDrQ9+Zmw34nrRqyaUQ2GJUITS1e1ZDxbm+RzfgAK6aY1zSk
+ BQH9eUW+hiJN9YWPlzGqZLt2++uX3bXy24GhLUxzD4ug8uZkMd3BPzdNaLXb6f7WNEukFEFuyTG
+ 2xHhx86fGFZokvfyMvMjAoEUYGR8Ehbucjp2Fcd5KvFKchuXDVpyklqy2u/UtK8rosPDveoWTjm
+ dk5JMpMidbvLPuebibagoDrmG2VDEKlP62dINgCfOA5VvSnEphKGHOECsPCt40L43Z7P4ihRFOM
+ XAdyWrpbRZ4dIpYMdDstzRWvgIRHlkpLDPMn8XTE4ugCPvP8TePKxJtVjhy810/+Qi+0A=
 X-Developer-Key: i=floss@jetm.me; a=openpgp;
  fpr=9B13B20BCF0EDE23454A93C9B5EEC30BA867771F
 In-Reply-To: <20260326-mt7927-bt-support-v3-0-fa7ebd424323@jetm.me>
 References: <20260326-mt7927-bt-support-v3-0-fa7ebd424323@jetm.me>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260326_151312_868830_F4742926 
-X-CRM114-Status: UNSURE (   9.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260326_151312_238219_463E3EA5 
+X-CRM114-Status: GOOD (  23.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,55 +133,167 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add USB device ID 0489:e13a (Foxconn/Hon Hai) for the MediaTek MT7927
-(Filogic 380) Bluetooth interface found on the ASUS ROG Crosshair X870E
-Hero WiFi motherboard.
+The MediaTek MT7927 (Filogic 380) combo WiFi 7 + BT 5.4 module uses
+hardware variant 0x6639 for its Bluetooth subsystem. Without this patch,
+the chip fails with "Unsupported hardware variant (00006639)" or hangs
+during firmware download.
 
-The information in /sys/kernel/debug/usb/devices about the Bluetooth
-device is listed as the below.
+Three changes are needed to support MT6639:
 
-T:  Bus=01 Lev=01 Prnt=01 Port=05 Cnt=04 Dev#=  5 Spd=480  MxCh= 0
-D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-P:  Vendor=0489 ProdID=e13a Rev= 1.00
-S:  Manufacturer=MediaTek Inc.
-S:  Product=Wireless_Device
-S:  SerialNumber=000000000
-C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
-A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
-I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
-E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-...
-I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
+1. CHIPID workaround: On some boards the BT USB MMIO register reads
+   0x0000 for dev_id, causing the driver to skip the 0x6639 init path.
+   Force dev_id to 0x6639 only when the USB VID/PID matches a known
+   MT6639 device, avoiding misdetection if a future chip also reads
+   zero. This follows the WiFi-side pattern that uses PCI device IDs
+   to scope the same workaround.
+
+2. Firmware naming: MT6639 uses firmware version prefix "2_1" instead of
+   "1_1" used by MT7925 and other variants. The firmware path is
+   mediatek/mt7927/BT_RAM_CODE_MT6639_2_1_hdr.bin, using the mt7927
+   directory to match the WiFi firmware convention. The filename will
+   likely change to use MT7927 once MediaTek submits a dedicated
+   Linux firmware binary.
+
+3. Section filtering: The MT6639 firmware binary contains 9 sections, but
+   only sections with (dlmodecrctype & 0xff) == 0x01 are Bluetooth-related.
+   Sending the remaining WiFi/other sections causes an irreversible BT
+   subsystem hang requiring a full power cycle. This matches the Windows
+   driver behavior observed via USB captures.
+
+Also add 0x6639 to the reset register (CONNV3) and firmware setup switch
+cases alongside the existing 0x7925 handling.
 
 Link: https://bugzilla.kernel.org/show_bug.cgi?id=221096
 Link: https://github.com/openwrt/mt76/issues/927
+Reported-by: Ryan Gilbert <xelnaga@gmail.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
-Tested-by: Jose Tiburcio Ribeiro Netto <jnetto@mineiro.io>
 ---
- drivers/bluetooth/btusb.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/bluetooth/btmtk.c | 53 +++++++++++++++++++++++++++++++++++++++++++++--
+ drivers/bluetooth/btmtk.h |  1 +
+ 2 files changed, 52 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index a5e44887a5b5..58309af0f7a2 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -751,6 +751,8 @@ static const struct usb_device_id quirks_table[] = {
- 						     BTUSB_WIDEBAND_SPEECH },
- 	{ USB_DEVICE(0x0489, 0xe139), .driver_info = BTUSB_MEDIATEK |
- 						     BTUSB_WIDEBAND_SPEECH },
-+	{ USB_DEVICE(0x0489, 0xe13a), .driver_info = BTUSB_MEDIATEK |
-+						     BTUSB_WIDEBAND_SPEECH },
- 	{ USB_DEVICE(0x0489, 0xe14e), .driver_info = BTUSB_MEDIATEK |
- 						     BTUSB_WIDEBAND_SPEECH },
- 	{ USB_DEVICE(0x0489, 0xe14f), .driver_info = BTUSB_MEDIATEK |
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index 2507d587f28a..3f12f2ab6369 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -25,6 +25,22 @@
+ /* It is for mt79xx iso data transmission setting */
+ #define MTK_ISO_THRESHOLD	264
+ 
++/* Known MT6639 (MT7927) Bluetooth USB devices.
++ * Used to scope the zero-CHIPID workaround to real MT6639 hardware,
++ * since some boards return 0x0000 from the MMIO chip ID register.
++ */
++static const struct {
++	u16 vendor;
++	u16 product;
++} btmtk_mt6639_devs[] = {
++	{ 0x0489, 0xe13a },	/* ASUS ROG Crosshair X870E Hero */
++	{ 0x0489, 0xe0fa },	/* Lenovo Legion Pro 7 16ARX9 */
++	{ 0x0489, 0xe10f },	/* Gigabyte Z790 AORUS MASTER X */
++	{ 0x0489, 0xe110 },	/* MSI X870E Ace Max */
++	{ 0x0489, 0xe116 },	/* TP-Link Archer TBE550E */
++	{ 0x13d3, 0x3588 },	/* ASUS ROG STRIX X870E-E */
++};
++
+ struct btmtk_patch_header {
+ 	u8 datetime[16];
+ 	u8 platform[4];
+@@ -112,7 +128,11 @@ static void btmtk_coredump_notify(struct hci_dev *hdev, int state)
+ void btmtk_fw_get_filename(char *buf, size_t size, u32 dev_id, u32 fw_ver,
+ 			   u32 fw_flavor)
+ {
+-	if (dev_id == 0x7925)
++	if (dev_id == 0x6639)
++		snprintf(buf, size,
++			 "mediatek/mt7927/BT_RAM_CODE_MT%04x_2_%x_hdr.bin",
++			 dev_id & 0xffff, (fw_ver & 0xff) + 1);
++	else if (dev_id == 0x7925)
+ 		snprintf(buf, size,
+ 			 "mediatek/mt%04x/BT_RAM_CODE_MT%04x_1_%x_hdr.bin",
+ 			 dev_id & 0xffff, dev_id & 0xffff, (fw_ver & 0xff) + 1);
+@@ -130,6 +150,7 @@ EXPORT_SYMBOL_GPL(btmtk_fw_get_filename);
+ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
+ 			      wmt_cmd_sync_func_t wmt_cmd_sync)
+ {
++	struct btmtk_data *data = hci_get_priv(hdev);
+ 	struct btmtk_hci_wmt_params wmt_params;
+ 	struct btmtk_patch_header *hdr;
+ 	struct btmtk_global_desc *globaldesc = NULL;
+@@ -166,6 +187,14 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
+ 		section_offset = le32_to_cpu(sectionmap->secoffset);
+ 		dl_size = le32_to_cpu(sectionmap->bin_info_spec.dlsize);
+ 
++		/* MT6639: only download sections where dlmode byte0 == 0x01,
++		 * matching the Windows driver behavior which skips WiFi/other
++		 * sections that would cause the chip to hang.
++		 */
++		if (data->dev_id == 0x6639 && dl_size > 0 &&
++		    (le32_to_cpu(sectionmap->bin_info_spec.dlmodecrctype) & 0xff) != 0x01)
++			continue;
++
+ 		if (dl_size > 0) {
+ 			retry = 20;
+ 			while (retry > 0) {
+@@ -852,7 +881,7 @@ int btmtk_usb_subsys_reset(struct hci_dev *hdev, u32 dev_id)
+ 		if (err < 0)
+ 			return err;
+ 		msleep(100);
+-	} else if (dev_id == 0x7925) {
++	} else if (dev_id == 0x7925 || dev_id == 0x6639) {
+ 		err = btmtk_usb_uhw_reg_read(hdev, MTK_BT_RESET_REG_CONNV3, &val);
+ 		if (err < 0)
+ 			return err;
+@@ -1322,6 +1351,24 @@ int btmtk_usb_setup(struct hci_dev *hdev)
+ 		fw_flavor = (fw_flavor & 0x00000080) >> 7;
+ 	}
+ 
++	if (!dev_id) {
++		u16 vid = le16_to_cpu(btmtk_data->udev->descriptor.idVendor);
++		u16 pid = le16_to_cpu(btmtk_data->udev->descriptor.idProduct);
++		int i;
++
++		for (i = 0; i < ARRAY_SIZE(btmtk_mt6639_devs); i++) {
++			if (vid == btmtk_mt6639_devs[i].vendor &&
++			    pid == btmtk_mt6639_devs[i].product) {
++				dev_id = 0x6639;
++				break;
++			}
++		}
++
++		if (dev_id)
++			bt_dev_info(hdev, "MT6639: CHIPID=0x0000 with VID=%04x PID=%04x, using 0x6639",
++				    vid, pid);
++	}
++
+ 	btmtk_data->dev_id = dev_id;
+ 
+ 	err = btmtk_register_coredump(hdev, btmtk_data->drv_name, fw_version);
+@@ -1339,6 +1386,7 @@ int btmtk_usb_setup(struct hci_dev *hdev)
+ 	case 0x7925:
+ 	case 0x7961:
+ 	case 0x7902:
++	case 0x6639:
+ 		btmtk_fw_get_filename(fw_bin_name, sizeof(fw_bin_name), dev_id,
+ 				      fw_version, fw_flavor);
+ 
+@@ -1516,3 +1564,4 @@ MODULE_FIRMWARE(FIRMWARE_MT7668);
+ MODULE_FIRMWARE(FIRMWARE_MT7922);
+ MODULE_FIRMWARE(FIRMWARE_MT7961);
+ MODULE_FIRMWARE(FIRMWARE_MT7925);
++MODULE_FIRMWARE(FIRMWARE_MT7927);
+diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
+index adaf385626ee..d95d023b6adc 100644
+--- a/drivers/bluetooth/btmtk.h
++++ b/drivers/bluetooth/btmtk.h
+@@ -8,6 +8,7 @@
+ #define FIRMWARE_MT7902		"mediatek/BT_RAM_CODE_MT7902_1_1_hdr.bin"
+ #define FIRMWARE_MT7961		"mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin"
+ #define FIRMWARE_MT7925		"mediatek/mt7925/BT_RAM_CODE_MT7925_1_1_hdr.bin"
++#define FIRMWARE_MT7927		"mediatek/mt7927/BT_RAM_CODE_MT6639_2_1_hdr.bin"
+ 
+ #define HCI_EV_WMT 0xe4
+ #define HCI_WMT_MAX_EVENT_SIZE		64
 
 -- 
 2.53.0
