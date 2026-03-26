@@ -4,101 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6E34109E530
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 00:22:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E941109E52F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 00:23:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:References:
 	In-Reply-To:Cc:Subject:Date:To:From:Content-Transfer-Encoding:MIME-Version:
 	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KoGksBrhgEtRDSfM/YDFfZUq76xOqjELkeavOboi/IU=; b=kgmnFDE3dGVlYQvVyLQ+2MEj8D
-	36Dod7r2mJuHXRp7t4bA5g+b/2tnUA7DXhfCN5H3V2mJ50DklXCmBvu85qj+77lgT9ImT8jeW3Ski
-	c7gOMoV3vbKlUwNTB9BkAk5J56NZNrS/OykQguvv5/s64Xt15EmIoDcD/0IZmPEa4ihP1PALuqz3G
-	1YbXuLF8Zvqu3V1itx3Gztiz1bYm3Blz6ghwXRFaiqV5PFZ/Tlbhw4TlLCklKMcLx9DCc/WzGPDnH
-	6mIIYC5fsC7Y0MLr33gyRjnz7+qweRe5BqS0D98+kPmwkyhjkpQoV0o5IprGpQPo3FOhBV/8Fvktm
-	zE1nxLJA==;
+	bh=qrleg9vBvliQVWMBDUBH8lNbSBSo21hDzjvysYLLmsA=; b=k0bucZAlROJKZlICBM59AolrAP
+	zG/2nGGngpemqGaLoXeIvMK4tOTJ+Xkiw8hJ3T7tjtNtHueJ+np1BtZZrSeZjwtzF2dG/rI/m5bTv
+	jtmLMEB3HZtWCrV7L+hVPGiyQoaWUuFCXCcOze5tuNFDTnZivRilh7kyTe/Z0flgJcxki9cdiPH8Q
+	ZO8nwu9bU+VtHmKKiBU4L9243gZdNgJd4m07JR9wdA61nALF9GYr0TWMTXnzdYRPIbUt/ByLcMjuw
+	W9sH+SL9WdTsgbSbULmA+DPuexRXYtgmFrMt11PwQ0kkZr1IyIk4BxfY8y6wbUkIko3QlMAscRCRy
+	J1ewOksw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5YUp-00000004Tgl-2oKj;
-	Thu, 26 Mar 2026 00:22:47 +0000
-Received: from flow-a6-smtp.messagingengine.com ([103.168.172.141])
+	id 1w5YVt-00000004Tnr-0z4y;
+	Thu, 26 Mar 2026 00:23:53 +0000
+Received: from fout-a7-smtp.messagingengine.com ([103.168.172.150])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5YUm-00000004TgJ-3TWq;
-	Thu, 26 Mar 2026 00:22:46 +0000
+	id 1w5YVp-00000004Tmx-3EYP
+	for linux-mediatek@lists.infradead.org;
+	Thu, 26 Mar 2026 00:23:52 +0000
 Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
-	by mailflow.phl.internal (Postfix) with ESMTP id 1EE311380743;
-	Wed, 25 Mar 2026 20:22:43 -0400 (EDT)
+	by mailfout.phl.internal (Postfix) with ESMTP id 806B8EC008E;
+	Wed, 25 Mar 2026 20:23:48 -0400 (EDT)
 Received: from phl-imap-07 ([10.202.2.97])
-  by phl-compute-02.internal (MEProxy); Wed, 25 Mar 2026 20:22:43 -0400
+  by phl-compute-02.internal (MEProxy); Wed, 25 Mar 2026 20:23:48 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jetm.me; h=cc:cc
 	:content-transfer-encoding:content-type:content-type:date:date
 	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to; s=fm3; t=1774484563;
-	 x=1774491763; bh=KoGksBrhgEtRDSfM/YDFfZUq76xOqjELkeavOboi/IU=; b=
-	FfGJaiGR8wwkUXmw0OxoZpapCVyITNP9jQy8V6NXs0B+Ph/EboZ2CHMbTVSeupkj
-	JBD0zhKFeLS3L8CW8USOd442u1gW4WT1y9mQbnYGuun3qhtkeSv0HTFgcexsIOgZ
-	DKM26Re1KjHSTDGIlM+h0WJlhs+6rzihgMk0Vmx/h6GyzimOsPkL2rmPlw2agXHH
-	R3M7xQBFAIHcDdxKbyLWVKOM10V7AR6FC1cS2z3WipPG7/8omenaCkD8IyqJVC8i
-	uieLb8upy0xI0GAU8XQBD2js3xklu2zPADpLfKLaFndXrs0M5tD+Xt51R/k+YLuy
-	8CHf8wsChVIfAwZPnRHNdQ==
+	:references:reply-to:subject:subject:to:to; s=fm3; t=1774484628;
+	 x=1774571028; bh=qrleg9vBvliQVWMBDUBH8lNbSBSo21hDzjvysYLLmsA=; b=
+	X5iGYnuZbAQyM0yfNsG13VvSK3hR2zgmwNn8bslY2Ray4byRPBjc2XHMEyr4nE/3
+	wHOQ93rL2QJomaYwsIcYw7E937tXUm4vlICsaVktrzqnaO20tecdd1p9vSbox9YQ
+	gL4AWgZvJhf2VR1Ih6c2aJODSpqvLVk7HTl/B7MA+NMqqU02D8rroXQqAfZOA44R
+	jZ3x5hw0/Y4EwAy5Vpv268OYo0amMm4o8GF21Z8ABsV8M1TYNp0KyYpwRNHON8Ua
+	4qmh/iD/ji3GaSgla1ylAjYxisuw3OVAtqd/CQjrfnBeT+hEIE8PVf8xxgyEnIeN
+	ydP4Xa2eyGxiaB78ImLqvQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-transfer-encoding
 	:content-type:content-type:date:date:feedback-id:feedback-id
 	:from:from:in-reply-to:in-reply-to:message-id:mime-version
 	:references:reply-to:subject:subject:to:to:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1774484563; x=
-	1774491763; bh=KoGksBrhgEtRDSfM/YDFfZUq76xOqjELkeavOboi/IU=; b=A
-	MCjAfotSWOW3C9NV4AeCNzy4JHkSliVuTt0hUDrEPtKEGOshqyW4BvD6IQTIXirQ
-	LTEe5edkZKe2JTOuo4MyQNiKv6ux/nahS3w0TKY6ATJzzq1eW3uNq50fUwdnEfuP
-	eKXfHbE6JAWIHVz6C1pi/yHEHfkGPbX/GhrmRaiB95nmMkf0R/DQubxxJRzXiFxS
-	66IPRzG+AX6DvMqqueeu7MbAi3repjTeColUxTWnJThzbOs4HSh1DmGPX+6FquSO
-	uIQ2mf+QD15/nqo5uKEbU4z/oBdGdJh+hXMYIwq8BYcbVJ9RcXYopdGqXymK6raM
-	OlbV4/XUk5khh1MSZc7CQ==
-X-ME-Sender: <xms:UnzEac2LXinKBmeR3d0Q11WE2DDpQWKzJXO4ycyPck9LqLIS4IyPcA>
-    <xme:UnzEaR6IZhGtIDeTOb3SAV7MGqaAp0Mo6JVoZm1d5LvTrvWBoY-60PvQzlbQWMjUa
-    nocXa8ZOJGFtWGeDcbQNICZHxVD39rHIOe6tWbSJgvBuS5gSC9nxw>
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1774484628; x=
+	1774571028; bh=qrleg9vBvliQVWMBDUBH8lNbSBSo21hDzjvysYLLmsA=; b=T
+	xM80vX+BJW82pd2LBYrynxK571qUK9GThRmbZ/2DmDKT67dnJr9rHycIcGOKGWaf
+	k6+J8XP+PLyUnXgyJqHJcSM3mywFe+plRZ/5IFPwGq9704t/NJlhKvXpZtcplneJ
+	729dAch9Z3v2cdvb7iX34moyV8MoSve2Bn01xca6JsqIS6TloSP0LAsDKTo9rW+v
+	N+GxKlH81e3m30t0gLPzHfo+/zR6MPG7x4TU+EwJ7jlOh70Ii7Wvprqi67lW9xK9
+	GAuLgkHtsj4DoT9gp7rNzra+hFQURW2CFMM0Vo6rV93n37pqxbjLt1pEU/wCdvI5
+	zQubnrd2czzdgJGjFSDHg==
+X-ME-Sender: <xms:lHzEaT5IiXk7rs4jP5lmjMUfWmP60tD453qu6jg_5dU2AWjp3UdlZA>
+    <xme:lHzEaTtKEk9gSwq1kEHzviqO_YhcAdmbF0HHQXfRuB7oO58r2XEHNq5ILJ9P55pkI
+    UQlLSOmt3jX4zObWd3LlMuhvciEeJGZM663i7S4Ztfb6nnlLt1-IQ>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgdefvdehledtucetufdoteggodetrf
     dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
     rghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnegopf
     hokfffucdluddtmdenucfjughrpefotggggffhvfffufevjghfsehtkedttdertdejnecu
     hfhrohhmpeflrghvihgvrhcuvfhirgcuoehflhhoshhssehjvghtmhdrmhgvqeenucggtf
     frrghtthgvrhhnpedtudejffejkeekteelueefvdejvdeuhfefteehkeevtddvleduteek
-    leetvdelhfenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhroh
-    hmpehflhhoshhssehjvghtmhdrmhgvpdhnsggprhgtphhtthhopedvfedpmhhouggvpehs
-    mhhtphhouhhtpdhrtghpthhtoheprghnghgvlhhoghhiohgrtggthhhinhhordguvghlrh
-    gvghhnohestgholhhlrggsohhrrgdrtghomhdprhgtphhtthhopeefudelfeeifedusehg
-    mhgrihhlrdgtohhmpdhrtghpthhtoheplhhoohhnghdrtdigtddtsehgmhgrihhlrdgtoh
-    hmpdhrtghpthhtoheprghrihgvlhdrrhhoshgvnhhfvghlugdrjeehtdesghhmrghilhdr
-    tghomhdprhgtphhtthhopegthhgrphhuihhsuggrrhhiohegsehgmhgrihhlrdgtohhmpd
-    hrtghpthhtohepghhiohhsrghlledtsehgmhgrihhlrdgtohhmpdhrtghpthhtohepmhgr
-    thhthhhirghsrdgsghhgsehgmhgrihhlrdgtohhmpdhrtghpthhtoheprhgrughoihdrtg
-    hhrhhishesghhmrghilhdrtghomhdprhgtphhtthhopehsrghmuhdrthholhhjrghmohes
-    ghhmrghilhdrtghomh
-X-ME-Proxy: <xmx:UnzEab2oOstJnxD3dqX5RYKr-ESaHoxoRnNsZYzSCAV-UwH8WCVi5w>
-    <xmx:UnzEae-ZILLAGzzaLn06h_7AIjh4xtDuvtUWod50hjVv7GIuwi3ktQ>
-    <xmx:UnzEaZdVrqQuIE9xnoEK3CriglFgOK3tpmn3r3l-SFnbAstLTuVrKA>
-    <xmx:UnzEaS7r9qT97VdUBsaCuJhRdNTDekAHd0IKPihETnVnXsem2QDGag>
-    <xmx:U3zEaZShFSVc8IhrR0Le_l4CFEQpZQVkY_JEG6y5wJovFb4_lMPWUdbE>
+    leetvdelhfenucevlhhushhtvghrufhiiigvpedvnecurfgrrhgrmhepmhgrihhlfhhroh
+    hmpehflhhoshhssehjvghtmhdrmhgvpdhnsggprhgtphhtthhopeegpdhmohguvgepshhm
+    thhpohhuthdprhgtphhtthhopehluhhiiidruggvnhhtiiesghhmrghilhdrtghomhdprh
+    gtphhtthhopehsvggrnhdrfigrnhhgsehkvghrnhgvlhdrohhrghdprhgtphhtthhopehl
+    ihhnuhigqdhmvgguihgrthgvkheslhhishhtshdrihhnfhhrrgguvggrugdrohhrghdprh
+    gtphhtthhopehlihhnuhigqdgslhhuvghtohhothhhsehvghgvrhdrkhgvrhhnvghlrdho
+    rhhg
+X-ME-Proxy: <xmx:lHzEaSiEzOmxJ5FHdidzeJPc3seH3ZwgRHxCqrXg-dgrVtc8uc654A>
+    <xmx:lHzEaeeCRh7MYugIEmfVOZ-IyUHOOPCMsbmRwBCVD4q4J8QYCVKkbg>
+    <xmx:lHzEadlZgMTsjVeb5sBh3G4beq7tfCz7k8C6gayF2pmz6ujPK6-Dbw>
+    <xmx:lHzEafsdmBguEFUgrZSioE23DJSj3I_tJ2NltGas_1Ghw7eyrNN9Zg>
+    <xmx:lHzEaYFCX30Y_xYOUSUdLbABtrbtltmkU6YDd3RQhux9927W1SqagXgY>
 Feedback-ID: i9dde48b3:Fastmail
 Received: by mailuser.phl.internal (Postfix, from userid 501)
-	id 50D8B1EA006B; Wed, 25 Mar 2026 20:22:42 -0400 (EDT)
+	id 4F98B1EA006B; Wed, 25 Mar 2026 20:23:48 -0400 (EDT)
 X-Mailer: MessagingEngine.com Webmail Interface
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 From: Javier Tia <floss@jetm.me>
 To: Sean Wang <sean.wang@kernel.org>
-Date: Wed, 25 Mar 2026 18:18:45 -0600
-Subject: Re: [PATCH v2 05/13] wifi: mt76: mt7925: advertise EHT 320MHz capabilities for 6GHz band
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Deren Wu <deren.wu@mediatek.com>, Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Marcin FM <marcin@lgic.pl>, Cristian-Florin Radoi <radoi.chris@gmail.com>, George Salukvadze <giosal90@gmail.com>, Evgeny Kapusta <3193631@gmail.com>, Samu Toljamo <samu.toljamo@gmail.com>, Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>, Chapuis Dario <chapuisdario4@gmail.com>, =?utf-8?q?Thibaut_Fran=C3=A7ois?= <tibo@humeurlibre.fr>, =?utf-8?b?5byg5pet5ra1?= <Loong.0x00@gmail.com>
-In-Reply-To: CAGp9LzoYcJEmFKTKGsF3WchxLedyo7HvGCn8Vi=WaEXS1N-VTg@mail.gmail.com
-References: 20260319-mt7927-wifi-support-v2-v2-0-d627a7fad70d@jetm.me 20260319-mt7927-wifi-support-v2-v2-5-d627a7fad70d@jetm.me CAGp9LzoYcJEmFKTKGsF3WchxLedyo7HvGCn8Vi=WaEXS1N-VTg@mail.gmail.com
-Message-Id: <20260326002242.50D8B1EA006B@mailuser.phl.internal>
+Date: Wed, 25 Mar 2026 18:22:52 -0600
+Subject: Re: [PATCH 1/2] Bluetooth: btmtk: Add MT6639 (MT7927) Bluetooth support
+Cc: linux-bluetooth@vger.kernel.org, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Luiz Augusto von Dentz <luiz.dentz@gmail.com>
+In-Reply-To: CAGp9Lzrysz8Tyh2KUMWVgHMsfUqojiJgPseG+CTULTqH=QQhaw@mail.gmail.com
+References: 177272816248.352280.12453518046823439297@jetm.me 20260305162928.5E8F11EA006C@mailuser.phl.internal CAGp9Lzrysz8Tyh2KUMWVgHMsfUqojiJgPseG+CTULTqH=QQhaw@mail.gmail.com
+Message-Id: <20260326002348.4F98B1EA006B@mailuser.phl.internal>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260325_172244_943266_31D4B388 
-X-CRM114-Status: UNSURE (   9.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260325_172349_870995_38D7DFD3 
+X-CRM114-Status: GOOD (  12.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,23 +111,37 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi Sean,
 
-On Mon, Mar 24, 2026 Sean Wang wrote:
-> I don't think this is correct for mt7925, and it will cause a
-> regression there. Was this tested on actual mt7925 hardware?
+On Fri, Mar 7, 2026 Sean Wang wrote:
+> BT and WiFi use separate firmware.
+> I'm not sure why those WiFi sections are included in the binary.
+> Another concern is whether it is appropriate to upload the firmware
+> used in Windows to the linux-firmware repository,
+> The firmware files are probably intended for dedicated OEMs.
 
-You are right. I do not have mt7925 hardware to verify against.
-In v3, is_320mhz_supported() now checks is_mt7927() only, so
-mt7925 behavior is unchanged.
+The section filtering remains in v2 since the binary from the ASUS
+driver package does contain mixed BT+WiFi sections. The firmware
+upload question is being tracked separately in linux-firmware
+MR !946.
 
-> I don't think this should be copied from mt7996 as-is for mt7927. I'd
-> suggest dropping the eht_cap_elem->phy_cap_info[7] change and keeping
-> it conservative for now.
+On that topic - would it be possible for MediaTek to provide a
+proper BT firmware binary for linux-firmware, or to sign off on
+the one extracted from the ASUS driver package? That would resolve
+the firmware provenance concern. If a formal submission from
+MediaTek is required, could you help coordinate that?
 
-Agreed. The phy_cap_info[7] additions (NON_OFDMA_UL_MU_MIMO_320MHZ
-and MU_BEAMFORMER_320MHZ) are dropped in v3. Only the MCS/NSS maps
-and per-BW beamformee SS/sounding dimensions for 320MHz remain.
+> This is common logic for the other mediatek chips. It only takes
+> longer on the first power-on.
 
-Both changes are in v3, sent today.
+[...]
+
+> If the firmware download is properly handled in
+> btmtk_setup_firmware_79xx, we don't need the extra bit.
+
+Understood. The BTMTK_FIRMWARE_LOADED flag and skip logic are
+removed in v2. Firmware persistence is handled by the existing
+framework as you suggested.
+
+v2 is sent with these changes addressed.
 
 Best,
 Javier
