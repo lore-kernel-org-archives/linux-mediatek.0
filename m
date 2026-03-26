@@ -4,67 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5E3710A88EC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 17:15:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95C9510A88EC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 17:25:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2iz6Kx63iIsmMZCDFp4f6bceBdYx8kf2s18BrcmKZX0=; b=c3fWhf7+zMs9ST5kXPi5F++NES
-	uBk5WLzTDMu2VyenFMOvldBfXahBoCF0Ki/whfjBGIf/3fhJEs5rMPgWrfVRHpcvocp4eqBLhI8D6
-	Hj2e/JjS2MrLyP1GultedR6QUpNG+V3OkOWhz8vOhHzqPytS0x0YBrwMtWqEE/jfa9DKS/t+zDkDx
-	bsofmwHbQwdiwDh5pMwSNSB63jwKL0X70oDmdWX5ORiEkJYXbYEn8dvjQUrX2vKih6oX2pmWPl4dZ
-	7OdC450FKBFUv7ftNl+Aew4k62LujexEXuJ94VOQjZG3DYIq8rwT3cWE57V0KSHExegP6fI0vY3RO
-	5xI9hs8g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ysN35GdxO1ttW5m2FClYkwqiFcjtmzjlRfjcsFmDvAI=; b=pzhC+oRAQyAVHygZxbh43cMTp8
+	fES/S1nmvHNGJyf9KX3vPT0ObGFnpnxK63J9lXXF/hKtG1zkWS0RWhzqnuFQPTDzOG6XQHn/cmwBs
+	UKhc2xM5XVI6Kjf7jhs2ZSU/BPG9L4K/1gjq2qu8pDNcfr/sCkaOmCawOty97lJmlqaWfe9eciizn
+	badu1MATUKGM3vY+rqhZu9kiT+BVIvSClTkyFhhEHdsuDM+fpo7ed7NgTmTFgIm0TFRt/C76SSMPB
+	rq3EX09NHp69GePw8mQjK658k7ZOZLZy2vNjuuh/24Q6V3tzYQIjHrn5RWcNHYmBM6mPArdpbfFMm
+	fnT8oLpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5oIy-00000005vak-1IqY;
-	Thu, 26 Mar 2026 17:15:36 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1w5oSf-00000005wdg-1PkL;
+	Thu, 26 Mar 2026 17:25:37 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5oIw-00000005vZZ-0HD5;
-	Thu, 26 Mar 2026 17:15:35 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 72BAD4396D;
-	Thu, 26 Mar 2026 17:15:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F717C19423;
-	Thu, 26 Mar 2026 17:15:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774545333;
-	bh=jvkDS9tKLVeEgF0DgkEhc5+lTjNn80rqHLS3xCz8V0w=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=BDXTH51QoJgCKUhhoHf42bamFgq+wwWwg1N9Yig9JfaQ3gADMfymF5+pKFJZBgewY
-	 scQZV+UZ1Twq7B/cvZGwTdphEYhvnqj1envTzFEZB1quSnoOAwsXV+D6CcgmWzSO3I
-	 sNcM4Q264pAZgFkDgmoFWNG3zPjLGLiYXClrgzo/dqjANPgJ6I821qS009NzZkAV9q
-	 b+e8Nh5yJ1KOp+KZ4C4oFIUMxq5q2iXPid9IYvcrcM057xWBWk36a+IR4lwec+qQBD
-	 B6/NkJ4vU61QMiR2zZKH3k+RXdBxUpvHeuWY70qvzZ2G2nc7UvS3pGLV12cmDjkCkT
-	 xJ1qQhQutGwmw==
-Date: Thu, 26 Mar 2026 17:15:27 +0000
-From: Simon Horman <horms@kernel.org>
-To: "Sven Eckelmann (Plasma Cloud)" <se@simonwunderlich.de>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Elad Yifee <eladwf@gmail.com>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, stable@vger.kernel.org
-Subject: Re: [PATCH net] net: ethernet: mtk_ppe: avoid NULL deref when gmac0
- is disabled
-Message-ID: <20260326171527.GO111839@horms.kernel.org>
-References: <20260324-wed-crash-gmac0-disabled-v1-1-3bc388aee565@simonwunderlich.de>
+	id 1w5oSc-00000005wd4-12UV;
+	Thu, 26 Mar 2026 17:25:36 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-02.galae.net (Postfix) with ESMTPS id BE3411A3003;
+	Thu, 26 Mar 2026 17:25:30 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 90210601FA;
+	Thu, 26 Mar 2026 17:25:30 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 54A5A10450C6A;
+	Thu, 26 Mar 2026 18:25:21 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1774545929; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=ysN35GdxO1ttW5m2FClYkwqiFcjtmzjlRfjcsFmDvAI=;
+	b=Q0d1aEaMo5UpzpiJ6qXDP3rV+xnW3uNZNbk4gVTqZfIyTR9HrtirKmZuHJR/iI6mFOjLqC
+	aOcC/UcObBbsTyKSKEa/cZqSq5uv7diljbGR86ZwqNdiKY6iNIiQWU5dqpJCcrlHgGZ4in
+	Gua7WNkUofKWtstY20tQ+EU0t3kqAfXRNgGerqiiToKGFupUHhKVrcX1QmLFnSrjlNpSk+
+	+x5kX+wJVeQQNfTgSMFh5KkHouev4aSioRSQwne1YV//bDQrUAzPmqumiKnUv+DbQd4YIu
+	DoA4sNdBW6Kkdkrx8q7FNbJRvdkY0EvfVu5Gbp7QxUAOQASKFizDcC1WH2AsjA==
+Message-ID: <385d2137-0d15-4dc0-8994-9cd48e4150b4@bootlin.com>
+Date: Thu, 26 Mar 2026 18:25:20 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260324-wed-crash-gmac0-disabled-v1-1-3bc388aee565@simonwunderlich.de>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next v2 4/4] net: phy: Introduce Airoha AN8801/R
+ Gigabit Ethernet PHY driver
+To: Andrew Lunn <andrew@lunn.ch>,
+ "Russell King (Oracle)" <linux@armlinux.org.uk>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>, kevin-kw.huang@airoha.com,
+ macpaul.lin@mediatek.com, matthias.bgg@gmail.com, kernel@collabora.com,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20260326-add-airoha-an8801-support-v2-0-1a42d6b6050f@collabora.com>
+ <20260326-add-airoha-an8801-support-v2-4-1a42d6b6050f@collabora.com>
+ <acVND6DdpM9czIwU@shell.armlinux.org.uk>
+ <044110c5-da1e-48c0-93fd-35553e86b271@lunn.ch>
+ <acVQQQiciPQBkQOG@shell.armlinux.org.uk>
+ <425217fd-f74c-455c-9aa7-5b6682d887fa@lunn.ch>
+From: Maxime Chevallier <maxime.chevallier@bootlin.com>
+Content-Language: en-US
+In-Reply-To: <425217fd-f74c-455c-9aa7-5b6682d887fa@lunn.ch>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260326_101534_121081_7E9D4A94 
-X-CRM114-Status: GOOD (  11.52  )
+X-CRM114-CacheID: sfid-20260326_102534_429592_DC71DAB9 
+X-CRM114-Status: GOOD (  10.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,20 +92,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 24, 2026 at 09:36:01AM +0100, Sven Eckelmann (Plasma Cloud) wrote:
-> If the gmac0 is disabled, the precheck for a valid ingress device will
-> cause a NULL pointer deref and crash the system. This happens because
-> eth->netdev[0] will be NULL but the code will directly try to access
-> netdev_ops.
-> 
-> Instead of just checking for the first net_device, it must be checked if
-> any of the mtk_eth net_devices is matching the netdev_ops of the ingress
-> device.
-> 
-> Cc: stable@vger.kernel.org
-> Fixes: 73cfd947dbdb ("net: ethernet: mtk_eth_soc: ppe: prevent ppe update for non-mtk devices")
-> Signed-off-by: Sven Eckelmann (Plasma Cloud) <se@simonwunderlich.de>
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+
+On 26/03/2026 17:56, Andrew Lunn wrote:
+>> What is the timing requirements for a system going into suspend vs a WoL
+>> packet being sent? Should a WoL packet abort entry into suspend? If yes,
+>> then we need to program the MAC before the PHY is suspended, because
+>> suspend could already be in progress.
+> 
+> We would then need to hook into the NETDEV_CHANGEADDR notifier, and
+> call into the PHY driver to let it reprogram the MAC address.
+
+We would also probably have to re-do that MAC addr programming at phy
+attach time ? If the PHY isn't attached (e.g. link admin-down on some
+boards), we can't use that notifier as we don't know what netdev to
+listen to. Or I'm missing something ?
+
+Maxime
+
+> 
+>      Andrew
+> 
 
 
