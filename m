@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE040109E553
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 06:09:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47EA1109E557
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 06:15:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FYh4N0xMpo1/r7tfakgcVhpozqGy7LPF8N3wXacvOlw=; b=Vih9cxI/pNsIDCeieEvyp8JXXh
-	nODTx3wUxdXjk7rm9BpfUkoAllDel3oDXCVr8s1IShpdbE+SMfrCWjlDa/mTDhR2zMeSkoTHVdAo4
-	GlRyV9voVFtMWz0E5/2LWq1xSXkM2zPjc9LqGHkHsLL2JxzNnZA9weNMNf+ZHbEsFn6RNoZ83sRpL
-	6X7FXZpJ/AT8JlFdEcK/lizqyrVdG81O0QDaDPMXKrm8g1HPR3cndpC16bWYu3SxIvA4e41VcjsXS
-	n5JqaQ1UEnzaQP+S8QgctkptyE6juwWnQopHk0Nkf8r9TGYSWCwh3Z7gSVkcq17i/wzkj++KZN9kG
-	FNrLpC8A==;
+	bh=Tsk6WcmjilhlRbKr/BTGP/KUx0eEmXYmNNzIrwH8c7A=; b=pC80sS9d88SG2CqTLpOvJNCk3D
+	SZTRTHU6gHazJTIZe7Gh9S1B3FOoAfdnB7LyHiBZ3sQQiMVy9NfDRVyURjg3/xAi/yWbG4LMi1YH7
+	AP21DztqLe+wBMar2wR7QFlmmjwl+96EYhRLk9BQn5lXYaZcP5ME4bOZesHLYPoZJ2I/PJjstWm45
+	Cs0Rgr7OQJOefzr4B8NzrK2JIcs0OXh14SqqrzJpI7i1+ffnGY0NfRobBJMj9Pv6byNtIn6pCAJGi
+	eKuptLHiusMS3pyv4wtCD6pL58BkYDUOfgF3ptQQiGOjRMPNN1+WkL7s1Wwi2xyFgo9XtukIeUwVY
+	Jn7zYoKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5du2-00000004mMX-0cWV;
-	Thu, 26 Mar 2026 06:09:10 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1w5dzt-00000004mqz-1bkz;
+	Thu, 26 Mar 2026 06:15:13 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5du0-00000004mM9-2Rtf
+	id 1w5dzo-00000004mpZ-3JqQ
 	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Mar 2026 06:09:08 +0000
+	Thu, 26 Mar 2026 06:15:12 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id B05CA60053
-	for <linux-mediatek@lists.infradead.org>; Thu, 26 Mar 2026 06:09:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 64165C19423
-	for <linux-mediatek@lists.infradead.org>; Thu, 26 Mar 2026 06:09:07 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id F12D544536
+	for <linux-mediatek@lists.infradead.org>; Thu, 26 Mar 2026 06:15:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B75C7C2BCB9
+	for <linux-mediatek@lists.infradead.org>; Thu, 26 Mar 2026 06:15:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774505347;
-	bh=YYJzzBUZ5xCz3VewPGgIe4VjqU3krL4cpevmT2J0q6U=;
+	s=k20201202; t=1774505707;
+	bh=qNPDzY1c3zPMJCL6JgWJwXs7dJyiTLP5CKNIBdYLW2E=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=VW7PLw9U98ap5cmm0HGJgn8kBNyx9LWjDm5ZwUMF6xoHYiwy7jysd+EM7DB6/+rFy
-	 Wmg9Y8V+VjjBW9gfO4eXuoP703pzTrNFwpa/Ukb+BoVKxodZrGDW7mx/er4SoM0KTy
-	 SijiYEUN/tvU26aKd8QOaAwnovAHIfG9JiNFiFC0JKNBclaB96suWXPmgfLA5BlRw/
-	 CwKG0e1Ucdq8SdHypvZy0wXYdqjMrhNup1Z74iF2uiGLAiTsyFiN7GyvJAgxyrVqmI
-	 ImYtVQLGAvuwEMY7kDE0qNjfGLl24U7danZ1ze6cC00PpIf8aMimiboCkeMxEQdHyP
-	 hjlwjPPFtqlbA==
-Received: by mail-lj1-f182.google.com with SMTP id 38308e7fff4ca-38ad26e3992so4438071fa.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 25 Mar 2026 23:09:07 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCXNQnzCci/XwBGdlqFywR3Ami1VI8ViqJeLo1wLq14wWhN9dibmeNaFg28EVJ2fl3B97ERUWNbYNz4uUq05Iw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzsC9sH5O75FIHbYuEobOVbaaTPbPRSe8wugDSLtO8nxg7kF6gF
-	GYF6L00+G+PXQcR+ARWaGRQGlQ1u+xXyYB1wHp1OVJSR/YehIpM6Ryu7VuBMLpBvEseD+FRnYWd
-	YmqLvmUZlQuLpCD0DK4eQ52nhY5PLfFE=
-X-Received: by 2002:a05:651c:1469:b0:38c:6b7:ad47 with SMTP id
- 38308e7fff4ca-38c43072d48mr24340281fa.7.1774505345770; Wed, 25 Mar 2026
- 23:09:05 -0700 (PDT)
+	b=KrdoafSQp/PoGdrRZrHSdDIbUO3qnqh4298eJxgPd58fUG9mGedPkOEWKbzYL/fSz
+	 knapw+oWNpV6otfvqTOA97un0IcFxNztV3IRnO3egICzYCtMXekXIiBraTfbVJzlDM
+	 LwQ6oacGYegjnPHUDC+4oMISal/9t8FfaKFVSgy9bNm18pjET6KRT81yN9ZHnOHUlq
+	 ypHTL+I6NvrJM7EIZFeeT6XyzOKtZElOSTFqKHPjuACyxhw/uF8+2rmHBXEq/5jDiX
+	 x8xsfl2J1V4Jf5hA/RD/lLS8VXequw9rbvU4f55++hwT9mN//ge+ArmHLcWKl7XOik
+	 GXxvbCLQe0awQ==
+Received: by mail-lj1-f175.google.com with SMTP id 38308e7fff4ca-38ad26e3992so4466601fa.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 25 Mar 2026 23:15:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCVy5sgvzQTElOYmj5uelTqjr6vOtI2xp4edzjgwh/IprX0ZFq/pFln1YXjcakpvmp08qfOrOdijaY/JDLu/Zw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YykLki5E3ErMCLbY7cB2SQgWQzjiQbBgvYgYZjgyI2g1EoX2zmU
+	ZNZ+Ac8/vf7KsflWdlwJhbY6mcWBoTqPBtx7/4QsI4gGNVlg+qbHTmo52uWZ2FnOgpHtyRWcCZJ
+	TXb4NakUwQrrhcNtygFNXvNmOigkeVs4=
+X-Received: by 2002:a05:651c:4081:b0:389:f13f:8082 with SMTP id
+ 38308e7fff4ca-38c4320f5e3mr14222931fa.37.1774505705946; Wed, 25 Mar 2026
+ 23:15:05 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260325-mt7927-wifi-support-v2-v3-0-5ca66c97a755@jetm.me> <20260325-mt7927-wifi-support-v2-v3-5-5ca66c97a755@jetm.me>
-In-Reply-To: <20260325-mt7927-wifi-support-v2-v3-5-5ca66c97a755@jetm.me>
+References: <20260325-mt7927-wifi-support-v2-v3-0-5ca66c97a755@jetm.me> <20260325-mt7927-wifi-support-v2-v3-12-5ca66c97a755@jetm.me>
+In-Reply-To: <20260325-mt7927-wifi-support-v2-v3-12-5ca66c97a755@jetm.me>
 From: Sean Wang <sean.wang@kernel.org>
-Date: Thu, 26 Mar 2026 01:08:56 -0500
-X-Gmail-Original-Message-ID: <CAGp9Lzr1Fgj5Gk2cAUFWq6sfKZZR2Cd6ymrzP7wKQh-7P9eo1A@mail.gmail.com>
-X-Gm-Features: AQROBzAUYeAj2eTTTOIP2gLEFHOEoyZYt5R3yZNXfXyqfKxhXOUP9a1iwLeqE3c
-Message-ID: <CAGp9Lzr1Fgj5Gk2cAUFWq6sfKZZR2Cd6ymrzP7wKQh-7P9eo1A@mail.gmail.com>
-Subject: Re: [PATCH v3 05/13] wifi: mt76: mt7925: advertise EHT 320MHz
- capabilities for 6GHz band
+Date: Thu, 26 Mar 2026 01:14:56 -0500
+X-Gmail-Original-Message-ID: <CAGp9LzpdV3TEK2LNrjotgJX10a-WyAb_8P_kpTNYVtUta2Q2MQ@mail.gmail.com>
+X-Gm-Features: AQROBzB7OndRY6rEIWjHQOhEVzDIfM5J7pucQeFuRa7TwBdAyjB6Crc6NPXHqfI
+Message-ID: <CAGp9LzpdV3TEK2LNrjotgJX10a-WyAb_8P_kpTNYVtUta2Q2MQ@mail.gmail.com>
+Subject: Re: [PATCH v3 12/13] wifi: mt76: mt7925: disable ASPM and runtime PM
+ for MT7927
 To: Javier Tia <floss@jetm.me>
 Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
 	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
@@ -68,14 +68,12 @@ Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder L
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
 	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, Deren Wu <deren.wu@mediatek.com>, 
 	linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Marcin FM <marcin@lgic.pl>, Cristian-Florin Radoi <radoi.chris@gmail.com>, 
-	George Salukvadze <giosal90@gmail.com>, Evgeny Kapusta <3193631@gmail.com>, 
-	Samu Toljamo <samu.toljamo@gmail.com>, Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>, 
-	Chapuis Dario <chapuisdario4@gmail.com>, =?UTF-8?Q?Thibaut_Fran=C3=A7ois?= <tibo@humeurlibre.fr>, 
-	=?UTF-8?B?5byg5pet5ra1?= <Loong.0x00@gmail.com>
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260325_231508_868126_6A2B6EE4 
+X-CRM114-Status: GOOD (  21.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,134 +90,82 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi, Javier
 
-On Wed, Mar 25, 2026 at 5:14=E2=80=AFPM Javier Tia <floss@jetm.me> wrote:
+On Wed, Mar 25, 2026 at 5:13=E2=80=AFPM Javier Tia <floss@jetm.me> wrote:
 >
-> mt7925_init_eht_caps() only populates EHT MCS/NSS maps for BW <=3D 80
-> and BW =3D 160, but never sets BW =3D 320. This means iw phy shows no
-> 320MHz MCS map entries even though the hardware supports 320MHz
-> operation in the 6GHz band.
+> Disable PCIe ASPM unconditionally for MT7927. The CONNINFRA power
+> domain and WFDMA register access are unreliable with PCIe L1 active,
+> causing throughput to drop from 1+ Gbps to ~200 Mbps.
 >
-> Add the missing 320MHz capability bits for 6GHz:
->   - PHY_CAP0: IEEE80211_EHT_PHY_CAP0_320MHZ_IN_6GHZ
->   - PHY_CAP1: beamformee SS for 320MHz
->   - PHY_CAP2: sounding dimensions for 320MHz
->   - PHY_CAP6: MCS15 support for 320MHz width
->   - MCS/NSS: populate bw._320 maps for 6GHz band
+> Disable runtime PM and deep sleep for MT7927. The combo chip shares
+> a CONNINFRA power domain between WiFi (PCIe) and BT (USB).
+> SET_OWN/CLR_OWN transitions on the LPCTL register crash the BT
+> firmware, requiring a full power cycle to recover. PM enablement will
+> be addressed in a follow-up once safe power state transitions are
+> determined.
 >
-> Introduce is_320mhz_supported() to gate 320MHz on MT7927 only, since
-> MT7925 does not support 320MHz operation.
->
-> Tested-by: Marcin FM <marcin@lgic.pl>
-> Tested-by: Cristian-Florin Radoi <radoi.chris@gmail.com>
-> Tested-by: George Salukvadze <giosal90@gmail.com>
-> Tested-by: Evgeny Kapusta <3193631@gmail.com>
-> Tested-by: Samu Toljamo <samu.toljamo@gmail.com>
-> Tested-by: Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>
-> Tested-by: Chapuis Dario <chapuisdario4@gmail.com>
-> Tested-by: Thibaut Fran=C3=A7ois <tibo@humeurlibre.fr>
-> Tested-by: =E5=BC=A0=E6=97=AD=E6=B6=B5 <Loong.0x00@gmail.com>
 > Signed-off-by: Javier Tia <floss@jetm.me>
 > ---
->  drivers/net/wireless/mediatek/mt76/mt76_connac.h |  5 +++++
->  drivers/net/wireless/mediatek/mt76/mt7925/main.c | 22 ++++++++++++++++++=
-+++-
->  2 files changed, 26 insertions(+), 1 deletion(-)
+>  drivers/net/wireless/mediatek/mt76/mt7925/init.c | 6 +++++-
+>  drivers/net/wireless/mediatek/mt76/mt7925/pci.c  | 9 +++++++--
+>  2 files changed, 12 insertions(+), 3 deletions(-)
 >
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac.h b/drivers/n=
-et/wireless/mediatek/mt76/mt76_connac.h
-> index 813d61bffc2c..3785fbf5ac99 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-> @@ -177,6 +177,11 @@ static inline bool is_mt7925(struct mt76_dev *dev)
->         return mt76_chip(dev) =3D=3D 0x7925;
->  }
->
-> +static inline bool is_320mhz_supported(struct mt76_dev *dev)
-> +{
-> +       return is_mt7927(dev);
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/init.c b/drivers/n=
+et/wireless/mediatek/mt76/mt7925/init.c
+> index c4c99380f5b5..89140fc6a2b6 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7925/init.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
+> @@ -243,7 +243,11 @@ int mt7925_register_device(struct mt792x_dev *dev)
+>         dev->pm.idle_timeout =3D MT792x_PM_TIMEOUT;
+>         dev->pm.stats.last_wake_event =3D jiffies;
+>         dev->pm.stats.last_doze_event =3D jiffies;
+> -       if (!mt76_is_usb(&dev->mt76)) {
+> +       /* MT7927: runtime PM disabled. The combo chip shares a CONNINFRA
+> +        * power domain between WiFi (PCIe) and BT (USB). SET_OWN/CLR_OWN
+> +        * transitions on the LPCTL register crash BT firmware.
+> +        */
 
-This looks like it would cause a build error since is_mt7927() is not
-introduced until patch 6.
+I think this level of detail is better kept in the commit message. For
+the code itself, a short comment should be enough, or even no comment
+if the condition is already clear enough.
 
-> +}
+> +       if (!mt76_is_usb(&dev->mt76) && !is_mt7927(&dev->mt76)) {
+>                 dev->pm.enable_user =3D true;
+>                 dev->pm.enable =3D true;
+>                 dev->pm.ds_enable_user =3D true;
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7925/pci.c
+> index 393d9f408b84..693e08f35d68 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+> @@ -530,7 +530,13 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
+>         if (ret)
+>                 goto err_free_pci_vec;
+>
+> -       if (mt7925_disable_aspm)
+> +       is_mt7927_hw =3D (pdev->device =3D=3D 0x6639 || pdev->device =3D=
+=3D 0x7927);
 > +
->  static inline bool is_mt7920(struct mt76_dev *dev)
->  {
->         return mt76_chip(dev) =3D=3D 0x7920;
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/n=
-et/wireless/mediatek/mt76/mt7925/main.c
-> index f128a198f81d..cfce851a94e2 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-> @@ -183,6 +183,10 @@ mt7925_init_eht_caps(struct mt792x_phy *phy, enum nl=
-80211_band band,
->                 IEEE80211_EHT_PHY_CAP0_SU_BEAMFORMER |
->                 IEEE80211_EHT_PHY_CAP0_SU_BEAMFORMEE;
+> +       /* MT7927: CONNINFRA power domain and WFDMA register access are
+> +        * unreliable with PCIe L1 active, causing throughput to drop
+> +        * from 1+ Gbps to ~200 Mbps. Disable ASPM unconditionally.
+> +        */
+
+Ditto
+
+> +       if (mt7925_disable_aspm || is_mt7927_hw)
+>                 mt76_pci_disable_aspm(pdev);
 >
-> +       if (band =3D=3D NL80211_BAND_6GHZ && is_320mhz_supported(&phy->de=
-v->mt76))
-> +               eht_cap_elem->phy_cap_info[0] |=3D
-> +                       IEEE80211_EHT_PHY_CAP0_320MHZ_IN_6GHZ;
-> +
->         eht_cap_elem->phy_cap_info[0] |=3D
->                 u8_encode_bits(u8_get_bits(sts - 1, BIT(0)),
->                                IEEE80211_EHT_PHY_CAP0_BEAMFORMEE_SS_80MHZ=
-_MASK);
-> @@ -193,10 +197,20 @@ mt7925_init_eht_caps(struct mt792x_phy *phy, enum n=
-l80211_band band,
->                 u8_encode_bits(sts - 1,
->                                IEEE80211_EHT_PHY_CAP1_BEAMFORMEE_SS_160MH=
-Z_MASK);
->
-> +       if (band =3D=3D NL80211_BAND_6GHZ && is_320mhz_supported(&phy->de=
-v->mt76))
-> +               eht_cap_elem->phy_cap_info[1] |=3D
-> +                       u8_encode_bits(sts - 1,
-> +                                      IEEE80211_EHT_PHY_CAP1_BEAMFORMEE_=
-SS_320MHZ_MASK);
-> +
->         eht_cap_elem->phy_cap_info[2] =3D
->                 u8_encode_bits(sts - 1, IEEE80211_EHT_PHY_CAP2_SOUNDING_D=
-IM_80MHZ_MASK) |
->                 u8_encode_bits(sts - 1, IEEE80211_EHT_PHY_CAP2_SOUNDING_D=
-IM_160MHZ_MASK);
->
-> +       if (band =3D=3D NL80211_BAND_6GHZ && is_320mhz_supported(&phy->de=
-v->mt76))
-> +               eht_cap_elem->phy_cap_info[2] |=3D
-> +                       u8_encode_bits(sts - 1,
-> +                                      IEEE80211_EHT_PHY_CAP2_SOUNDING_DI=
-M_320MHZ_MASK);
-> +
->         eht_cap_elem->phy_cap_info[3] =3D
->                 IEEE80211_EHT_PHY_CAP3_NG_16_SU_FEEDBACK |
->                 IEEE80211_EHT_PHY_CAP3_NG_16_MU_FEEDBACK |
-> @@ -217,7 +231,8 @@ mt7925_init_eht_caps(struct mt792x_phy *phy, enum nl8=
-0211_band band,
->                 u8_encode_bits(u8_get_bits(0x11, GENMASK(1, 0)),
->                                IEEE80211_EHT_PHY_CAP5_MAX_NUM_SUPP_EHT_LT=
-F_MASK);
->
-> -       val =3D width =3D=3D NL80211_CHAN_WIDTH_160 ? 0x7 :
-> +       val =3D width =3D=3D NL80211_CHAN_WIDTH_320 ? 0xf :
-> +             width =3D=3D NL80211_CHAN_WIDTH_160 ? 0x7 :
->               width =3D=3D NL80211_CHAN_WIDTH_80 ? 0x3 : 0x1;
->         eht_cap_elem->phy_cap_info[6] =3D
->                 u8_encode_bits(u8_get_bits(0x11, GENMASK(4, 2)),
-> @@ -239,6 +254,11 @@ mt7925_init_eht_caps(struct mt792x_phy *phy, enum nl=
-80211_band band,
->         eht_nss->bw._160.rx_tx_mcs9_max_nss =3D val;
->         eht_nss->bw._160.rx_tx_mcs11_max_nss =3D val;
->         eht_nss->bw._160.rx_tx_mcs13_max_nss =3D val;
-> +       if (band =3D=3D NL80211_BAND_6GHZ && is_320mhz_supported(&phy->de=
-v->mt76)) {
-> +               eht_nss->bw._320.rx_tx_mcs9_max_nss =3D val;
-> +               eht_nss->bw._320.rx_tx_mcs11_max_nss =3D val;
-> +               eht_nss->bw._320.rx_tx_mcs13_max_nss =3D val;
-> +       }
->  }
->
->  int mt7925_init_mlo_caps(struct mt792x_phy *phy)
+>         ops =3D mt792x_get_mac80211_ops(&pdev->dev, &mt7925_ops,
+> @@ -562,7 +568,6 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
+>         dev =3D container_of(mdev, struct mt792x_dev, mt76);
+>         dev->fw_features =3D features;
+>         dev->hif_ops =3D &mt7925_pcie_ops;
+> -       is_mt7927_hw =3D (pdev->device =3D=3D 0x6639 || pdev->device =3D=
+=3D 0x7927);
+>         dev->irq_map =3D is_mt7927_hw ? &mt7927_irq_map : &irq_map;
+>         dev->dma_config =3D is_mt7927_hw ? &mt7927_dma_cfg : &mt7925_dma_=
+cfg;
+>         mt76_mmio_init(&dev->mt76, pcim_iomap_table(pdev)[0]);
 >
 > --
 > 2.53.0
