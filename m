@@ -4,80 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87D60109E54B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 06:26:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8456B109E556
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 06:37:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hIe/d+aqEF+Og+dkwi/qcOoP5kcHDvehyPihNn/5TwE=; b=m3J3ngznpcftM/AmloH70Yq0fo
-	oyFQIEQVZqgx0C9nxj9OqTt1mEMERKkGECDZfBzc7vO1LQiqOFjuuPoNgAlDzHdJfCviMi1/Lw2+f
-	qWyLD5LgySeTPQT9I0ZRsA7mcfh0gR/c6fGoRd8GQlLrpI7EBcLOVDoT7A05k/WhMtlhyYZr4oJRu
-	8KAj9f9dQsxaPpLCTsZJfn0UM2m2p8qNf15dI+POHMSZTieKjLQUSt0G98tFENaienhXz2DN05oRW
-	6SqcTlOllQ63CoH3G2+PbgW49/ktLhWdpyyzv+NJ++i3Kk3sT227BhwsStyo8ISsSwz5TSSxfuQWO
-	KnEu1SHA==;
+	bh=k9g2AAnC8qe/prRU7Bfg3yafNhzAQNHPWxAghNJRhpo=; b=FzDGcJQieHAdOYPczbFD+uShpx
+	QAaHEZSoomdJDnQ9ZesNX3bjN4YOi6jogAfjCwwgw6ISBdAFF4Y3Dh7SHP8/luKvCGU/pln7FKuU2
+	e7w26hJEb87P5fL+QyP8kofy+qdmpPtiZazwi1Yh59CGCDujTtMcv/fdwHBf+hs6QxWrCA4kSlwAx
+	Pa9R2sg3kDow9l+acFAmPCtNIxSGrj6D60KRXz3k5RifUAhwFPSTNI1/k+jHebJJ+/7Q56zS/7OQI
+	+AeOLSx++29fbtqktoP6q+RkJ5UqYOvdg9juNT/08K1dv4I8yDHvTgT8I1EXpjHqBXZ92ULv/6+eM
+	+8lZGVFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5eAr-00000004ofa-2bKG;
-	Thu, 26 Mar 2026 06:26:33 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1w5eLg-00000004r8F-2AI2;
+	Thu, 26 Mar 2026 06:37:44 +0000
+Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5eAn-00000004oeb-0ydE
+	id 1w5eLX-00000004r6h-3iMi
 	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Mar 2026 06:26:32 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9E1E8444BE
-	for <linux-mediatek@lists.infradead.org>; Thu, 26 Mar 2026 06:26:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 73F78C2BCC4
-	for <linux-mediatek@lists.infradead.org>; Thu, 26 Mar 2026 06:26:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774506388;
-	bh=PONUkDK5Nxfv+FEOSWCheKX6fc5iX8BXeD7AcKEe1tc=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=dlyOxobOD7/nYy9+GasYYrE2iASEDUSRxFdWw1g0dcvJ4AsHzlIvOXc3dyxqz6OGe
-	 iePLcbc3KY61fK+dGD0uWopqKF+KDAXk31JmHENFOHpPn2RB6Y4RV38PPmSweUxx7u
-	 TG/FaySOkJSwu0+G9SHUuAeoUJVS3i+dOiTEIJvjunaJBJ3jAPmje6cUajjXedI1GY
-	 vlDC+bfj0EBGstW5vD9jBTCyfu42HYpK9w7ilvWyGSya0GPpymj10n7HBWRCOJepdf
-	 MN9gvYuix0F5WM9Mbvss+cJ80ACOdCxo47rIXLrykg/HulJ01EL1IT+5WnGpw/9fC+
-	 Md+/8dUSc4T0A==
-Received: by mail-lj1-f175.google.com with SMTP id 38308e7fff4ca-38a43f1f978so4709071fa.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 25 Mar 2026 23:26:28 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCXX2iSmCZySpOkkLX9EJV/lZBy7KpPeF2Ajc4ojDTKnmFXM5JAdYF9FWzGkI2uBDckUoj6bbbn9MHxWSlCY9Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwhSE2QihZpY2Px8WOS4F2jmNOf0uK893PZrBP9W++vUn0VtIit
-	PYljYDK2oX8+qxPGOThP1MO8uRRYy16MrrPE+DvLJGdBfxBbvwWvJUGK9xK4HVDK6JZURUNS8eJ
-	aL8CSfUjA0bOup3atYwgd2FTxGq0gcqA=
-X-Received: by 2002:a05:651c:4406:20b0:38a:8b97:7e9c with SMTP id
- 38308e7fff4ca-38c4309e800mr18002601fa.11.1774506386686; Wed, 25 Mar 2026
- 23:26:26 -0700 (PDT)
+	Thu, 26 Mar 2026 06:37:42 +0000
+Received: by mail-lj1-x22d.google.com with SMTP id 38308e7fff4ca-38ad12fb595so16296891fa.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 25 Mar 2026 23:37:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1774507053; cv=none;
+        d=google.com; s=arc-20240605;
+        b=QGlMCj3ON84FIhRl5rNzQuA7veIAOoPMDNOsrB1j1wrV9RyCDYu7c75dkHS3ijmLjZ
+         eX8WpKVrhWt+5Zy6jhMY+kgSVIc7+oERHKb7jQPYgyhvgT+G9IPypp/PxUSc05OKxMCd
+         KCR8/Gco8+0xAd9b1GUa5/5u3kHE6nq4eUz17/0IFg8FZCPMAQ3aS7267xevMoErOQ6y
+         P5SzgyE2rSE8CnKlvcz22ZOx+hhBTf7kgs93yGOca43GicmyRnKxzi35la6Vt4Fi1Ss2
+         GwKZNu+cTYmwJf9ljfPYIabvqx5iRgSpmHx08hbQuH+fSqQFNEoOwakZ3dNY1P7pSHLC
+         T/Vw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=k9g2AAnC8qe/prRU7Bfg3yafNhzAQNHPWxAghNJRhpo=;
+        fh=fK5Q3UonNQYTeQwpaLLytUj7dx9hA3qpae3bcLTvv+o=;
+        b=EGQYP88Ag+6UgcNon0j3buwlbvUQVthzisI+NZnkzf3mlqMSgIIQtUZ53Wz6EvzQoz
+         lRTosUDv28t8S9FbQ6uEhDkBOvRm4EvKdOGqngQcScFaPQu2ePb2hgbwNNXh1iE+RgY2
+         SvoRDMynIVvZ+4pDrF8pi7i6bS7/jPpKng+fQhSc9Ihw1VrXaEPEk3nz9XTlKKvkJ3Ae
+         1V2IiCHXApOAnDdbbsgDWiuyAHCuaVVYl61aP1Y4nabuxKOR3yM4uow9VxLey5+XhGjt
+         ojWJufheEEGkqgx0d94x4gP8UL5qV/LkQ4IGSKTgoQBWCnUKR7DDvSYyVrP6dK2SGwIv
+         b7Wg==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1774507053; x=1775111853; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=k9g2AAnC8qe/prRU7Bfg3yafNhzAQNHPWxAghNJRhpo=;
+        b=Zr+NUrxv7MUeZtcMsGoBuGf15fTu/ODJP2eeb6Z6h6Shkq5l/RfqM/2jKi8eYmiIh3
+         2hlDkR+v6sbyzyGWN0/6jjA5+iAKUqi3kblICMdjvgwoGIs78qW1yStgYG5/EcoG4Z9z
+         FI3Sl/Osj5+kWCnhuVVVUj9S7GKCpN2/RXquw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1774507053; x=1775111853;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=k9g2AAnC8qe/prRU7Bfg3yafNhzAQNHPWxAghNJRhpo=;
+        b=km3fxFM8MUsRypszlmMr+i8KrJai53TyjRClLD0l5P9drfeVfAh2ecXOOb/OrlUwGA
+         6C5KIm+e7m5tJTl0p0RaRBBRxqYCUe4MzYdPq17R1xLfxaNLPnKHxT/YuzQP1kjnLk16
+         UIE+0Ky8OjjHkJJ2iU+DkKmkAbftiugu6CTGjn05LxMzeC6fBEC2/cD+KY5Sj8vkTqP/
+         G9Qis7me9NEqhFc3DmfGe8EP9KbaUyxuFZhBX7j3aj8rqnTNKqgEOSqxEd6W0pQjAMye
+         D0JyQ7zL+/EouySMMcHNGQjTOA/5v8lUrtAVBSqhlL6z3eGHugsk6VRa1g7UPQdcq4qr
+         443g==
+X-Forwarded-Encrypted: i=1; AJvYcCVvDsZzioDkXjaHiDyYAGhuIBA2WzMms0qZb74GDb5UYfxSMy1LU6ghGvZqoZAwZK+QWr5hOaTV/pU43eMKDA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyw4nhJnURXFUZBHxl/8goUE70etB0JLP7huA38RKFnH6Xoj40E
+	qHszaHrMqRxk2SIfOKMulpKcs47qWCefu+Nq+KRdLzeOvCdrkH2RnMrek6iofeqVIPfcC0MvVKA
+	BO1rTVtBNnNvmM013f4fKB4oP6z9frbae8vfKoDyT
+X-Gm-Gg: ATEYQzzdjr/MVdGoLQN2e3vHkuNyEzu2zGPzvLfqseZyq8Z2Lo2WCdhauAh0gvOEb1I
+	NxSsi60mpnFyaeTrLWyOVO0XFkMZu+8Ir2OtQ8vXu0YfpWG2xAMuUCKi/Bmt8zXCkXtOZCSP8nY
+	c8sqMiLYrZVovvyQo9cArhyhpJpbogj7eQjtai6kR76mvFmG/rCDCxNo4NsHP5O61LiYptOycDk
+	CyLM8aHhUTnp7fwiN2u1uzq2QOEf0rU/2K0WXs2SsPAsyEsrpbhFtnKSIQmngqH3c8/zobOrJ6x
+	GZOVqSxMBMCPMF5lOciXO0APvtGvurdsaU5t/g==
+X-Received: by 2002:a05:6512:3f05:b0:5a1:2e7b:d885 with SMTP id
+ 2adb3069b0e04-5a2a50927f7mr203717e87.25.1774507053537; Wed, 25 Mar 2026
+ 23:37:33 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260325-mt7927-wifi-support-v2-v3-0-5ca66c97a755@jetm.me> <20260325-mt7927-wifi-support-v2-v3-13-5ca66c97a755@jetm.me>
-In-Reply-To: <20260325-mt7927-wifi-support-v2-v3-13-5ca66c97a755@jetm.me>
-From: Sean Wang <sean.wang@kernel.org>
-Date: Thu, 26 Mar 2026 01:26:17 -0500
-X-Gmail-Original-Message-ID: <CAGp9LzpZy70T61o7q0t5AAYQwBK+ywp_zbLGw=4SD5Ga_gxmmQ@mail.gmail.com>
-X-Gm-Features: AQROBzBJ6-X-H7xt9CpRo8Vppnuc0zRH3pX-AHj4xX39HuOpZCQktesCUmP5MEQ
-Message-ID: <CAGp9LzpZy70T61o7q0t5AAYQwBK+ywp_zbLGw=4SD5Ga_gxmmQ@mail.gmail.com>
-Subject: Re: [PATCH v3 13/13] wifi: mt76: mt7925: enable MT7927 PCI device IDs
-To: Javier Tia <floss@jetm.me>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
-	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+References: <cover.1774499536.git.daniel@makrotopia.org> <65e504ac2c2d19b4baba6b79a241788220b19b34.1774499536.git.daniel@makrotopia.org>
+In-Reply-To: <65e504ac2c2d19b4baba6b79a241788220b19b34.1774499536.git.daniel@makrotopia.org>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 26 Mar 2026 14:37:22 +0800
+X-Gm-Features: AQROBzCCmaG_qIJQfQe8KdYGB1bTw6MFFgF3aMq79sEp0x0VqbdbLLlRtaaQZUY
+Message-ID: <CAGXv+5H2GdeEVf56apai56Ak3-b75DEK89S7SJgMO9YK5S3y=w@mail.gmail.com>
+Subject: Re: [PATCH v2 1/3] clk: mediatek: add MUX_CLR_SET macro
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, Deren Wu <deren.wu@mediatek.com>, 
-	linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Marcin FM <marcin@lgic.pl>, Cristian-Florin Radoi <radoi.chris@gmail.com>, 
-	George Salukvadze <giosal90@gmail.com>, Evgeny Kapusta <3193631@gmail.com>, 
-	Samu Toljamo <samu.toljamo@gmail.com>, Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>, 
-	Chapuis Dario <chapuisdario4@gmail.com>, =?UTF-8?Q?Thibaut_Fran=C3=A7ois?= <tibo@humeurlibre.fr>, 
-	=?UTF-8?B?5byg5pet5ra1?= <Loong.0x00@gmail.com>
+	=?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
+	Laura Nao <laura.nao@collabora.com>, Weiyi Lu <weiyi.lu@mediatek.com>, 
+	Chun-Jie Chen <chun-jie.chen@mediatek.com>, Ikjoon Jang <ikjn@chromium.org>, 
+	Sam Shih <sam.shih@mediatek.com>, linux-clk@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260325_232630_106882_450AE1EB 
-X-CRM114-Status: GOOD (  22.59  )
+X-CRM114-CacheID: sfid-20260325_233740_289616_F91A2800 
+X-CRM114-Status: UNSURE (   9.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,112 +121,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Javier
+On Thu, Mar 26, 2026 at 1:09=E2=80=AFPM Daniel Golle <daniel@makrotopia.org=
+> wrote:
+>
+> Some MediaTek SoCs (e.g. MT7988) define infra muxes that have neither
+> a clock gate nor an update register.
+>
+> Add a MUX_CLR_SET convenience macro that takes only the mux register
+> offsets, bit shift, and width, hardcoding upd_ofs =3D 0 and
+> upd_shift =3D -1 so callers cannot accidentally pass bogus sentinel
+> values to wrongly-typed fields.
+>
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
-On Wed, Mar 25, 2026 at 5:14=E2=80=AFPM Javier Tia <floss@jetm.me> wrote:
->
-> Add PCI device table entries for MT7927 hardware variants:
->   - 14c3:7927 (ASUS ROG Crosshair X870E Hero, Lenovo Legion Pro 7)
->   - 14c3:6639 (Foxconn/Azurewave modules)
->   - 14c3:0738 (AMD RZ738 / MediaTek MT7927)
->
-> This is the final patch in the series, enabling MT7927 device
-> enumeration after all infrastructure (DMA, IRQ, HW init, band index,
-> power management) is in place.
->
-> Tested-by: Marcin FM <marcin@lgic.pl>
-> Tested-by: Cristian-Florin Radoi <radoi.chris@gmail.com>
-> Tested-by: George Salukvadze <giosal90@gmail.com>
-> Tested-by: Evgeny Kapusta <3193631@gmail.com>
-> Tested-by: Samu Toljamo <samu.toljamo@gmail.com>
-> Tested-by: Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>
-> Tested-by: Chapuis Dario <chapuisdario4@gmail.com>
-> Tested-by: Thibaut Fran=C3=A7ois <tibo@humeurlibre.fr>
-> Tested-by: =E5=BC=A0=E6=97=AD=E6=B6=B5 <Loong.0x00@gmail.com>
-> Signed-off-by: Javier Tia <floss@jetm.me>
-> ---
->  drivers/net/wireless/mediatek/mt76/mt7925/pci.c | 29 +++++++++++++++----=
-------
->  1 file changed, 18 insertions(+), 11 deletions(-)
->
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7925/pci.c
-> index 693e08f35d68..00c3601f14ff 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-> @@ -16,6 +16,12 @@ static const struct pci_device_id mt7925_pci_device_ta=
-ble[] =3D {
->                 .driver_data =3D (kernel_ulong_t)MT7925_FIRMWARE_WM },
->         { PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x0717),
->                 .driver_data =3D (kernel_ulong_t)MT7925_FIRMWARE_WM },
-> +       { PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7927),
-> +               .driver_data =3D (kernel_ulong_t)MT7927_FIRMWARE_WM },
-> +       { PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x6639),
-> +               .driver_data =3D (kernel_ulong_t)MT7927_FIRMWARE_WM },
-> +       { PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x0738),
-> +               .driver_data =3D (kernel_ulong_t)MT7927_FIRMWARE_WM },
->         { },
->  };
->
-> @@ -530,7 +536,8 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
->         if (ret)
->                 goto err_free_pci_vec;
->
-> -       is_mt7927_hw =3D (pdev->device =3D=3D 0x6639 || pdev->device =3D=
-=3D 0x7927);
-> +       is_mt7927_hw =3D (pdev->device =3D=3D 0x6639 || pdev->device =3D=
-=3D 0x7927 ||
-> +                       pdev->device =3D=3D 0x0738);
->
->         /* MT7927: CONNINFRA power domain and WFDMA register access are
->          * unreliable with PCIe L1 active, causing throughput to drop
-> @@ -546,16 +553,16 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
->                 goto err_free_pci_vec;
->         }
->
-> -       /* MT7927 firmware lacks the connac2 feature trailer, so
-> -        * mt792x_get_mac80211_ops() can't detect CNM support and
-> -        * replaces chanctx/ROC/mgd_prepare_tx ops with stubs.
-> -        * Force CNM and restore the original mt7925 ops.
-> -        */
-> -       if ((pdev->device =3D=3D 0x6639 || pdev->device =3D=3D 0x7927) &&
-> -           !(features & MT792x_FW_CAP_CNM)) {
-> -               features |=3D MT792x_FW_CAP_CNM;
-> -               memcpy(ops, &mt7925_ops, sizeof(*ops));
-> -       }
-> +               /* MT7927 firmware lacks the connac2 feature trailer, so
-> +                * mt792x_get_mac80211_ops() can't detect CNM support and
-> +                * replaces chanctx/ROC/mgd_prepare_tx ops with stubs.
-> +                * Force CNM and restore the original mt7925 ops.
-> +                */
-> +               if ((pdev->device =3D=3D 0x6639 || pdev->device =3D=3D 0x=
-7927 ||
-> +                    pdev->device =3D=3D 0x0738) && !(features & MT792x_F=
-W_CAP_CNM)) {
-> +                       features |=3D MT792x_FW_CAP_CNM;
-> +                       memcpy(ops, &mt7925_ops, sizeof(*ops));
-> +               }
-
-I think the quirk should be applied before the CNM check in
-mt792x_get_mac80211_ops().
-
-That helper already owns the fw_features detection and the ops rewrite,
-so adding another memcpy() later to restore mt7925_ops feels fragile.
-The final ops selection is no longer decided in one place, and the extra
-full memcpy() depends on the current call flow and implementation
-details of mt792x_get_mac80211_ops().
-
-If MT7927 should force MT792x_FW_CAP_CNM despite the missing trailer,
-please fold that into mt792x_get_mac80211_ops() and keep the ops
-selection in one place.
-
->
->         mdev =3D mt76_alloc_device(&pdev->dev, sizeof(*dev), ops, &drv_op=
-s);
->         if (!mdev) {
->
-> --
-> 2.53.0
->
->
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
