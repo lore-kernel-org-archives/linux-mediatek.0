@@ -4,77 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B982109E540
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 03:09:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 669E7109E547
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 04:14:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=gc1Cfkcgv/5lPuvFF53M/UC0jd9eXEdjF+510NK63+E=; b=TfAisDPkXxGd4vKG0N83PhWFZk
-	LmuhjhzaDCeH31D6SPYnh2dWfT30AuR1NiwIfguZTvIq+R6bwYozkjlwSN4ZBkzB8Ai4jxdsWumkC
-	memQN3k56iWtOJ/XON8XXxyP1lKy/Wfjrrq0EgXryEp48aKcKUY/hMkV0G0ktmuUhmVCjyqmpYiU2
-	TYj+/pE1pxKieyDs2k9sZX1YTyqqMT3etUnGgjjEOC/cVKe9zYryrkpulMy2hqWxE/e+onh7Tro3u
-	VsCXeMJkEuBF5tQfsO1fR6iCDi28YfiD8/fmBY+hglxbB+Fo2725qIDlOiuY14jazi0Y9D16gpxtZ
-	n6QGQmzA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=de7JHH7k1zqX8/9oU7ziLibktmb15IDmP+4qbS9sqKo=; b=fT72kEdKYErsbyVVZMGh+BoYUX
+	eisONSpuFHIGP6xN3GeUdDyC9FCFCMjDks1wrfTPDBttJaNbNLEwzr8hb+vDsnY1OOrwuvkp5qcdp
+	3ZT1r4NvvIQtDAbJuMgUi7XbWrCgbJRRT98k+w6nlD3V6z5xuMJ7zxTHLhmv+Ic0F40VUd9eKcx+K
+	noul1mac/jT790xtx2YubQMG6CUIbFiE9SL+PworAIrXk5Fxkrqz8g06A/kp4eWDu4pcc2/3Qb/5z
+	+I0NmKWOP6kR9Q4dp88+mqYR8hh+vt/OHV23G9ER+pUwYFCovsh7c52+3cOv5qOYj+FT0avcJUUUQ
+	VY34YA5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5b5g-00000004bnU-0GQ8;
-	Thu, 26 Mar 2026 03:09:00 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1w5c7M-00000004fCo-3hFq;
+	Thu, 26 Mar 2026 04:14:48 +0000
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5b5c-00000004bn1-3Lf0;
-	Thu, 26 Mar 2026 03:08:57 +0000
-X-UUID: 1cc117c428c111f1a6de359d7043e138-20260325
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=gc1Cfkcgv/5lPuvFF53M/UC0jd9eXEdjF+510NK63+E=;
-	b=gmKO2qkAAxrmjzTqBw4aLC8P41r4tut1eZ8bTxm1h4+9Aw4KefYdSR3vJGbGSqSV0IwbO4QIMP93huCuG9cxPuxly9hiqXZV35/h2BqMt/2kBybsQemuqqOC21Yv+7bxsDHpHM1l5Gy+eBcmLRJsxM7VEcos1a01PH7/FznFfqQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:e716eacf-05c5-4acd-808f-96be45d2efff,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:e7bac3a,CLOUDID:c6b6b48e-6df4-4a3d-a7a4-fbdc42d669ce,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
-	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA
-	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 1cc117c428c111f1a6de359d7043e138-20260325
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
-	(envelope-from <ot_cathy.xu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 222753313; Wed, 25 Mar 2026 20:08:50 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Thu, 26 Mar 2026 11:08:47 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Thu, 26 Mar 2026 11:08:46 +0800
-From: Cathy Xu <ot_cathy.xu@mediatek.com>
-To: Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson
-	<ulf.hansson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-CC: <linux-mmc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Mengqi Zhang <Mengqi.Zhang@mediatek.com>, Wenbin Mei
-	<Wenbin.Mei@mediatek.com>, Andy-ld Lu <Andy-ld.Lu@mediatek.com>, Axe Yang
-	<Axe.Yang@mediatek.com>, Yong Mao <yong.mao@mediatek.com>, Cathy Xu
-	<ot_cathy.xu@mediatek.com>, <stable@vger.kernel.org>
-Subject: [PATCH RESEND] mmc: mtk-sd: disable new_tx/rx and modify related settings for mt8189
-Date: Thu, 26 Mar 2026 11:05:16 +0800
-Message-ID: <20260326030759.8107-1-ot_cathy.xu@mediatek.com>
-X-Mailer: git-send-email 2.46.0
+	id 1w5c7K-00000004f9P-0pZI
+	for linux-mediatek@lists.infradead.org;
+	Thu, 26 Mar 2026 04:14:47 +0000
+Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-5a159c1e65aso572429e87.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 25 Mar 2026 21:14:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1774498484; cv=none;
+        d=google.com; s=arc-20240605;
+        b=GcXfqogzZu2BA91ADBkaC/e3GrG2iukgWPQe1J77UJcbSW8ACcwZQ04NRHH2lVnC0q
+         HF5FhAsbAfwufbEOpTwhRpwLbKE7nuDEQntMOjnb6U5NR6wAH4as8hybWa1FURrPSXCB
+         qh4sxbarkAkd4EAW2hf1AimG7w3/tZ5j6Le37UOFXikTMHU1npceEYPoIpZuklhwXTPj
+         6l6JFq2ltnvNJsd60eY8yh//U6UahVSZ7vSRK5bwGS+unwEQZSTItMSvkB+4wcXah5Qq
+         mlF9yZlrcJznv5qMcduF0G26BhZNgXrdBDeZgj4hBq1gZ9ph1xQT9pYSIoOvlWRJ2eaQ
+         545w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=de7JHH7k1zqX8/9oU7ziLibktmb15IDmP+4qbS9sqKo=;
+        fh=UnDJDEf0H3xBBAauMt70KRj2ByAEtzWJpSWB6w7ZFvg=;
+        b=bAyanlqXqRs7E7MHnwYzcjb/pu1Gn/BXiQjB6dwnIwHc12gALsQcEbVawa3tYbYnk7
+         PLuPtJG8zLkgBjuuK90liBNgiwQO1Nv3rfluzGp7Sh98jyZNnznwp8e6YNDDPi5X3u7K
+         UvY4P2X1Gjel4RmAiEQGY/y+Wy+cEZrOaxBL3NXwYPIFv7qM3FIm/QnWaBc9ZM+WjUY7
+         RUjpOKx3SpL/3fCXxLnGGZEBUeWcXyoCatb2OiSA5A7/t+r7ongiOBzTLC+zCbAtWyz0
+         6LVkBx0ukJ6X26B+Leq9I+y0BLznhJXoDCwGY4M9ijnAU/Mfal0OWZqSCWJ6FCkx3rr8
+         B98Q==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1774498484; x=1775103284; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=de7JHH7k1zqX8/9oU7ziLibktmb15IDmP+4qbS9sqKo=;
+        b=dJ/5WGwXV4lQj9ljO0ansBsAkqS3gAVGD8oN+FhVDin38U5cU8rJmT3fQCLfV/jQoz
+         tpfpNr3poDzef2TTPHYnbSkX9JsKlQikE112eS/vgocViH+Dp0ta+KNQbmSkgp9F5mu+
+         kGFxZoK9AwkSpXWWP7EUtol04shJ4wes40G6E=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1774498484; x=1775103284;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=de7JHH7k1zqX8/9oU7ziLibktmb15IDmP+4qbS9sqKo=;
+        b=ifPl6HTxS3XR4drLwsiT319DusfOS4RruIHcz3ZfSwBOD6ItCj1+AqXjJgu5hLv1JM
+         lL6NdI1jhAzTVrsZiN9EO/Gj6Xu8wYS9spjo3ExvUUVGnYb/94aTJklVArEeLXdBQrxM
+         2Y8WY4qY/H2QTw+e7Mqty2PU0fnTCPffGIK25uEXuY/1kos8byh0AdrvME9MYQbdLdyN
+         HO5RvwV/+dEbquz6to7yPH6WXtR/0+XafsIJ8UdH2nTrcFzpzfPIwo/WkJ6es+tNkGad
+         /3Wi+8moPmT3YzfNLk9mVYtJyHTFXhDx4lpil2uRVEtOISxGnVbyOl4KtZ2+hQNU98pX
+         i8Mg==
+X-Forwarded-Encrypted: i=1; AJvYcCVFMggKicvJH0cnCQzXZcMWtCRjR/o7854aWztt5azn6JE1TqfNyasL69IWfeJni/oYQJqRTUom3HsXOOkFEw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxKAsRwp63hxHyJwVzIJoT/PLjaIJlzjsZeo7SaWh6gkrlxbtq2
+	fKNBQDP29XJdqL7heL3FeSKiETGIJffzkas5nsbfFCXX9M1vQHKjqYzNQlqSyRYMgkm8OUpYsR8
+	unm3yMRva1ctkLJaPAMgz9km/WQAjWWizUJF+3OtR
+X-Gm-Gg: ATEYQzzXSV7mnyWSKUyTbKm8443/lxVLrX487tDUeF6oz7B4RQJ6e8QZTf7Xgu9JJn2
+	xcdrkAYYyDZltGaNpy2bVzrenrRmv0PtGALgMx+gy3plaCiQ+fNrkaKG8U0HgOtDdSAKsFUo2TQ
+	5MaaZklasi89dA229yCgEbIq6kNES5py5RGFnfcpce2Aa06o1j+IVZ9VGgvNtvwTpoAKEIWTw9E
+	AFxRvmlTWSmbBPqALXLEi2RX7UEsCrmzEtsuKudPGZ21j7U3fsy8DnRltsTeyfL49OwGnX/HO4o
+	EyQ3bXyGwlJy7kaeB+VJmyTAZzdYqRh/vz1hig==
+X-Received: by 2002:a05:6512:3ca0:b0:59e:65ff:e57e with SMTP id
+ 2adb3069b0e04-5a29b976b9fmr2386806e87.12.1774498483909; Wed, 25 Mar 2026
+ 21:14:43 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+References: <20260324053030.4077453-1-wenst@chromium.org> <20260324053030.4077453-2-wenst@chromium.org>
+ <20260325-uncovered-carp-of-inquire-8a7acf@quoll> <32638731-8f33-4203-9e68-1170cff99280@sirena.org.uk>
+In-Reply-To: <32638731-8f33-4203-9e68-1170cff99280@sirena.org.uk>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 26 Mar 2026 12:14:32 +0800
+X-Gm-Features: AQROBzDMA30fJWTvgwWnvWVXSov1HJF2nrcMqAj-rcI0Dx_RnI-WKxTXLlei1no
+Message-ID: <CAGXv+5Fo2GmvWQGogA-KTsFChE0-SOwWek6BQ+ZA3xaXup_z+A@mail.gmail.com>
+Subject: Re: [PATCH RESEND 1/2] regulator: dt-bindings: mt6315: Add regulator supplies
+To: Mark Brown <broonie@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	devicetree@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260325_200856_862321_B18B1A88 
-X-CRM114-Status: GOOD (  11.49  )
+X-CRM114-CacheID: sfid-20260325_211446_320054_D5BC1A36 
+X-CRM114-Status: GOOD (  17.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,45 +118,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Disable new_tx/rx to avoid data transmission instability, and adjust
-.data_tune, .stop_dly_sel, and .pop_en_cnt to fit the overall
-configuration after disabling new_tx/rx, making it more compatible
-with mt8189.
+On Thu, Mar 26, 2026 at 12:55=E2=80=AFAM Mark Brown <broonie@kernel.org> wr=
+ote:
+>
+> On Wed, Mar 25, 2026 at 09:56:00AM +0100, Krzysztof Kozlowski wrote:
+> > On Tue, Mar 24, 2026 at 01:30:28PM +0800, Chen-Yu Tsai wrote:
+>
+> > > +      pvdd4-supply:
+> > > +        description: Supply for vbuck4
+>
+> > These all look per-regulator supplies, so I think they should be in eac=
+h
+> > regulator node (see also regulator.yaml).
+>
+> > Or in top-level, but not in "regulators" node. The regulators is only
+> > wrapping node for children.
+>
+> > I wonder what should be our preference - have supplies per regulator or
+> > in top-level node. @Mark, any preference from your side?
+>
+> The top level, so people can figure out where to describe supplies
+> without having to read the bindings so much - the supplies go into the
+> chip, even if they're distributed within it.
 
-Fixes: 846a3a2fdff5 ("mmc: mtk-sd: add support for MT8189 SoC")
-Cc: stable@vger.kernel.org
-Tested-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Signed-off-by: Cathy Xu <ot_cathy.xu@mediatek.com>
----
- drivers/mmc/host/mtk-sd.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+OK. What about the more complicated mfd PMICs? We already added
+*-supplies for the regulator side of these PMICs in
 
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index 302ac8529c4f..b2680cc054bd 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -682,15 +682,15 @@ static const struct mtk_mmc_compatible mt8189_compat = {
- 	.needs_top_base = true,
- 	.pad_tune_reg = MSDC_PAD_TUNE0,
- 	.async_fifo = true,
--	.data_tune = true,
-+	.data_tune = false,
- 	.busy_check = true,
- 	.stop_clk_fix = true,
--	.stop_dly_sel = 1,
--	.pop_en_cnt = 2,
-+	.stop_dly_sel = 3,
-+	.pop_en_cnt = 8,
- 	.enhance_rx = true,
- 	.support_64g = true,
--	.support_new_tx = true,
--	.support_new_rx = true,
-+	.support_new_tx = false,
-+	.support_new_rx = false,
- 	.support_spm_res_release = true,
- };
- 
--- 
-2.45.2
+  - regulator/mediatek,mt6358-regulator.yaml
+  - regulator/mediatek,mt6363-regulator.yaml
 
+And my other series for the MT6359 also adds them in this manner.
+
+
+Thanks
+ChenYu
 
