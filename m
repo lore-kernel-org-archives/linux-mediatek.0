@@ -4,81 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03C80109E557
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 05:57:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE040109E553
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2026 06:09:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xh5QcYAfEMFXHbh0WK42+35rw1y3aSrFCHR3K9Wbzu4=; b=m41/MH6f/tmIqcRWSaENUQ9Jum
-	K1gBBaPfYzLSgmdTb8uhWjo/awsG7Oaw03FShBBPGCC4qgRXH+MTh75JgMzTAtvLCJZ7lSon8KSJE
-	rcuc0Sxyld6vSEK4uW3bx159bscX7wh+6SCih8mfmn5CXszYTsxeLCDGusLSMtSfxu/+YSGE4w4yG
-	VMMM2g3ljkt4zxq4aop8R/UY50kIhVVPch9A0n336cpSh6vXIhz/5iZQ6hWtcjpKezRdk5lBrjVpc
-	EBHUYZQ4zC1oaHL6RQu8u+o+LM1togehye6o7h2xbVjMp8o0zxajIEWpdYClOm9OpFXZpvHUsQ5RD
-	LNefxlhg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FYh4N0xMpo1/r7tfakgcVhpozqGy7LPF8N3wXacvOlw=; b=Vih9cxI/pNsIDCeieEvyp8JXXh
+	nODTx3wUxdXjk7rm9BpfUkoAllDel3oDXCVr8s1IShpdbE+SMfrCWjlDa/mTDhR2zMeSkoTHVdAo4
+	GlRyV9voVFtMWz0E5/2LWq1xSXkM2zPjc9LqGHkHsLL2JxzNnZA9weNMNf+ZHbEsFn6RNoZ83sRpL
+	6X7FXZpJ/AT8JlFdEcK/lizqyrVdG81O0QDaDPMXKrm8g1HPR3cndpC16bWYu3SxIvA4e41VcjsXS
+	n5JqaQ1UEnzaQP+S8QgctkptyE6juwWnQopHk0Nkf8r9TGYSWCwh3Z7gSVkcq17i/wzkj++KZN9kG
+	FNrLpC8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5diU-00000004ln7-3lVa;
-	Thu, 26 Mar 2026 05:57:14 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+	id 1w5du2-00000004mMX-0cWV;
+	Thu, 26 Mar 2026 06:09:10 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5diS-00000004lmJ-25W3;
-	Thu, 26 Mar 2026 05:57:14 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1774504622; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=Mkf6zUtwlT2CtdV8DayQHX/AuQiNtB4rQ32WTmol5rl4U4fv/8V9VnmFyRPQaTqm0d5362E1BE6YT1THilTYoqWmnvgNkU+I9nkOg3GXNIqzEBeynE9fGxR3MkEDbKxUBm3Ta4c7bQP4F2NDxF9nlOLoKO1nLSA5f35Pb0djXkk=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1774504622; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=xh5QcYAfEMFXHbh0WK42+35rw1y3aSrFCHR3K9Wbzu4=; 
-	b=HisGqtURNgasPUPl/AfZVgF8IhOghkyFg7CEhUspEnrT4SCFUiIOCnpdeZ6vtx9RUPh0k02uKCKBZIk7TqRpEYOKrE1PoIEzC9pd3DI/eekrvn5uD43uo9OXyxZYhu1KpZZkg0U/2xXGNRlT+r3DysiP3ScLTXA/Ex3P531Hc/A=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=icenowy.me;
-	spf=pass  smtp.mailfrom=uwu@icenowy.me;
-	dmarc=pass header.from=<uwu@icenowy.me>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1774504622;
-	s=zmail2; d=icenowy.me; i=uwu@icenowy.me;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=xh5QcYAfEMFXHbh0WK42+35rw1y3aSrFCHR3K9Wbzu4=;
-	b=gkYCDRH1D9/3bbcfsNZVUGpV7eHZORKaF6UnoL3qaiM/T7ol0/ONeIqlT9SogZiM
-	AM8c9eUJgaX5Y0UMF2TpTVg/gQMpRMPL6mqr2AL+1i7hg+kPFbiHc/Ctt7f1a/D6xyQ
-	GFC97KbEyLkCriYzRT3Q1LA2Q6kIn3FYabwsY96OMTTx2TkdEfukQjIFCusVJVzf51V
-	upg9GQwkQ1AWPnl00HVj2BI/s/UdIqdxfYsuu66WlSJxMrDXMLZIwNER+TbA0NVSbV3
-	KgGHoTpeq2nO4F9L+vOPi9/vXtvLiRirGR/pVTIG53cIJlcEm+5eivVqh+zJPY34M9F
-	01O8EI1peA==
-Received: by mx.zohomail.com with SMTPS id 1774504620418841.5970104476653;
-	Wed, 25 Mar 2026 22:57:00 -0700 (PDT)
-Message-ID: <fbba135320ea666a5ad127c9da58276f2afd3494.camel@icenowy.me>
-Subject: Re: [PATCH v2 0/5] powervr: MT8173 GPU support
-From: Icenowy Zheng <uwu@icenowy.me>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Stephen Boyd <sboyd@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Frank Binns
- <frank.binns@imgtec.com>, Matt Coster	 <matt.coster@imgtec.com>, Maarten
- Lankhorst <maarten.lankhorst@linux.intel.com>,  Maxime Ripard
- <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
- <airlied@gmail.com>,  Simona Vetter <simona@ffwll.ch>,
- linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Date: Thu, 26 Mar 2026 13:56:52 +0800
-In-Reply-To: <42fb6b7dfc6a9d66649e0a7040cdafc1289ddf63.camel@icenowy.me>
-References: <20260325071951.544031-1-wenst@chromium.org>
-			 <93c1d325461cc0ffad890d64870de680506338c4.camel@icenowy.me>
-			 <CAGXv+5FL2rs35V4F0bwq-a4ccvFaWKcr1cuKxT6sfTj9h+d6iA@mail.gmail.com>
-		 <0739597b7a9c162525c10d82c3993e37af1c8a75.camel@icenowy.me>
-	 <42fb6b7dfc6a9d66649e0a7040cdafc1289ddf63.camel@icenowy.me>
-Organization: Anthon Open-Source Community
+	id 1w5du0-00000004mM9-2Rtf
+	for linux-mediatek@lists.infradead.org;
+	Thu, 26 Mar 2026 06:09:08 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id B05CA60053
+	for <linux-mediatek@lists.infradead.org>; Thu, 26 Mar 2026 06:09:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 64165C19423
+	for <linux-mediatek@lists.infradead.org>; Thu, 26 Mar 2026 06:09:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1774505347;
+	bh=YYJzzBUZ5xCz3VewPGgIe4VjqU3krL4cpevmT2J0q6U=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=VW7PLw9U98ap5cmm0HGJgn8kBNyx9LWjDm5ZwUMF6xoHYiwy7jysd+EM7DB6/+rFy
+	 Wmg9Y8V+VjjBW9gfO4eXuoP703pzTrNFwpa/Ukb+BoVKxodZrGDW7mx/er4SoM0KTy
+	 SijiYEUN/tvU26aKd8QOaAwnovAHIfG9JiNFiFC0JKNBclaB96suWXPmgfLA5BlRw/
+	 CwKG0e1Ucdq8SdHypvZy0wXYdqjMrhNup1Z74iF2uiGLAiTsyFiN7GyvJAgxyrVqmI
+	 ImYtVQLGAvuwEMY7kDE0qNjfGLl24U7danZ1ze6cC00PpIf8aMimiboCkeMxEQdHyP
+	 hjlwjPPFtqlbA==
+Received: by mail-lj1-f182.google.com with SMTP id 38308e7fff4ca-38ad26e3992so4438071fa.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 25 Mar 2026 23:09:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCXNQnzCci/XwBGdlqFywR3Ami1VI8ViqJeLo1wLq14wWhN9dibmeNaFg28EVJ2fl3B97ERUWNbYNz4uUq05Iw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzsC9sH5O75FIHbYuEobOVbaaTPbPRSe8wugDSLtO8nxg7kF6gF
+	GYF6L00+G+PXQcR+ARWaGRQGlQ1u+xXyYB1wHp1OVJSR/YehIpM6Ryu7VuBMLpBvEseD+FRnYWd
+	YmqLvmUZlQuLpCD0DK4eQ52nhY5PLfFE=
+X-Received: by 2002:a05:651c:1469:b0:38c:6b7:ad47 with SMTP id
+ 38308e7fff4ca-38c43072d48mr24340281fa.7.1774505345770; Wed, 25 Mar 2026
+ 23:09:05 -0700 (PDT)
+MIME-Version: 1.0
+References: <20260325-mt7927-wifi-support-v2-v3-0-5ca66c97a755@jetm.me> <20260325-mt7927-wifi-support-v2-v3-5-5ca66c97a755@jetm.me>
+In-Reply-To: <20260325-mt7927-wifi-support-v2-v3-5-5ca66c97a755@jetm.me>
+From: Sean Wang <sean.wang@kernel.org>
+Date: Thu, 26 Mar 2026 01:08:56 -0500
+X-Gmail-Original-Message-ID: <CAGp9Lzr1Fgj5Gk2cAUFWq6sfKZZR2Cd6ymrzP7wKQh-7P9eo1A@mail.gmail.com>
+X-Gm-Features: AQROBzAUYeAj2eTTTOIP2gLEFHOEoyZYt5R3yZNXfXyqfKxhXOUP9a1iwLeqE3c
+Message-ID: <CAGp9Lzr1Fgj5Gk2cAUFWq6sfKZZR2Cd6ymrzP7wKQh-7P9eo1A@mail.gmail.com>
+Subject: Re: [PATCH v3 05/13] wifi: mt76: mt7925: advertise EHT 320MHz
+ capabilities for 6GHz band
+To: Javier Tia <floss@jetm.me>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
+	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, Deren Wu <deren.wu@mediatek.com>, 
+	linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Marcin FM <marcin@lgic.pl>, Cristian-Florin Radoi <radoi.chris@gmail.com>, 
+	George Salukvadze <giosal90@gmail.com>, Evgeny Kapusta <3193631@gmail.com>, 
+	Samu Toljamo <samu.toljamo@gmail.com>, Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>, 
+	Chapuis Dario <chapuisdario4@gmail.com>, =?UTF-8?Q?Thibaut_Fran=C3=A7ois?= <tibo@humeurlibre.fr>, 
+	=?UTF-8?B?5byg5pet5ra1?= <Loong.0x00@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.58.3 
-MIME-Version: 1.0
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260325_225712_574370_4A14E18D 
-X-CRM114-Status: GOOD (  47.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,213 +90,139 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-=E5=9C=A8 2026-03-25=E4=B8=89=E7=9A=84 17:11 +0800=EF=BC=8CIcenowy Zheng=E5=
-=86=99=E9=81=93=EF=BC=9A
-> =E5=9C=A8 2026-03-25=E4=B8=89=E7=9A=84 16:30 +0800=EF=BC=8CIcenowy Zheng=
-=E5=86=99=E9=81=93=EF=BC=9A
-> > =E5=9C=A8 2026-03-25=E4=B8=89=E7=9A=84 16:08 +0800=EF=BC=8CChen-Yu Tsai=
-=E5=86=99=E9=81=93=EF=BC=9A
-> > > On Wed, Mar 25, 2026 at 4:04=E2=80=AFPM Icenowy Zheng <uwu@icenowy.me=
+Hi, Javier
+
+On Wed, Mar 25, 2026 at 5:14=E2=80=AFPM Javier Tia <floss@jetm.me> wrote:
 >
-> > > wrote:
-> > > >=20
-> > > > =E5=9C=A8 2026-03-25=E4=B8=89=E7=9A=84 15:19 +0800=EF=BC=8CChen-Yu =
-Tsai=E5=86=99=E9=81=93=EF=BC=9A
-> > > > > Hi everyone,
-> > > > >=20
-> > > > > This is v2 of my MT8173 PowerVR GPU support series.
-> > > > >=20
-> > > > > Changes since v1:
-> > > > > - Adapted to changed DT bindings
-> > > > > - Dropped driver change
-> > > > > - Use same power domain for "a" and "b" GPU power domains
-> > > > >=20
-> > > > > This update was requested by Icenowy.
-> > > > >=20
-> > > > >=20
-> > > > > This series enables the PowerVR GPU found in the MT8173 SoC,
-> > > > > found in
-> > > > > some Chromebooks.
-> > > > >=20
-> > > > > This version is different from the initial powervr driver
-> > > > > submission
-> > > > > [1]
-> > > > > in that it splits out the GPU glue layer support out of the
-> > > > > powervr
-> > > > > driver and into a separate clock and power domain driver. The
-> > > > > glue
-> > > > > code
-> > > > > is otherwise the same, and also the same as found in the
-> > > > > ChromeOS
-> > > > > kernels, with some extra comments and macro names added where
-> > > > > possible.
-> > > > >=20
-> > > > > Patch 1 adds a binding for the glue layer, called mfgtop. The
-> > > > > glue
-> > > > > layer
-> > > > > contains clock and power controls for the GPU.
-> > > > >=20
-> > > > > Patch 2 adds a driver for the glue layer.
-> > > > >=20
-> > > > > Patch 3 adds an entry for the MT8173 GPU and 6XT series to
-> > > > > the
-> > > > > PowerVR
-> > > > > binding.
-> > > > >=20
-> > > > > Patch 4 adds an entry for the PowerVR 6XT series GPU to the
-> > > > > driver.
-> > > > >=20
-> > > > > Patch 5 corrects the clock for the GPU (called MFG) power
-> > > > > domain.
-> > > > >=20
-> > > > > Patch 6 adds device nodes for the GPU and glue layer to the
-> > > > > MT8173
-> > > > > dtsi
-> > > > > file.
-> > > > >=20
-> > > > > Patch 2 and 6 depend on patch 1 to build. I suppose some
-> > > > > common
-> > > > > immutable tree would be needed from the MediaTek maintainers.
-> > > > >=20
-> > > > > The kernel driver successfully probes the hardware and loads
-> > > > > the
-> > > > > "rogue_4.40.2.51_v1.fw" firmware provided by Imagination
-> > > > > Technologies
-> > > > > [2].
-> > > > > Userspace was tested with Mesa 24.0.8 from Debian Trixie
-> > > > > rebuilt
-> > > > > with
-> > > > > the powervr vulkan driver enabled. `vulkaninfo` gives some
-> > > > > information
-> > > > > about the GPU (attached at the end), but running the
-> > > > > `triangle`
-> > > > > example
-> > > > > from the Sascha Willems demos [3] with -DUSE_D2D_WSI=3DON as
-> > > > > recommended [4]
-> > > > > failed with:
-> > > > >=20
-> > > > > =C2=A0=C2=A0=C2=A0 Can't find a display and a display mode!
-> > > >=20
-> > > > I think when using D2D the demos want width and height to be
-> > > > explicitly
-> > > > specified, otherwise it seems to hardcode 1280x720.
-> > > >=20
-> > > > If you're using an elm, could you try to add `-w 1920 -h 1080`
-> > > > or
-> > > > for
-> > > > hana `-w 1366 -h 768` ?
-> > >=20
-> > > I only did the basic `vulkaninfo` test this time around. To do
-> > > anything
-> > > interesting probably requires the Mesa 26.1 release.
-> > >=20
-> > > =C2=A0=C2=A0=C2=A0 PVR_I_WANT_A_BROKEN_VULKAN_DRIVER=3D1 \
-> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 vkmark --winsys kms -D b81=
-f54f8568deb0fb70a6a1ed845b65d
-> > >=20
-> > > just reports "Error: Device specified by uuid is not available"
-> >=20
-> > I am very sorry to tell you that, when I run Sascha's demo with
-> > Mesa
-> > main, I got GPU lost immediately...
-> >=20
-> > ```
-> > [=C2=A0 441.509433] powervr 13000000.gpu: [drm] *ERROR* GPU device lost
-> > ```
+> mt7925_init_eht_caps() only populates EHT MCS/NSS maps for BW <=3D 80
+> and BW =3D 160, but never sets BW =3D 320. This means iw phy shows no
+> 320MHz MCS map entries even though the hardware supports 320MHz
+> operation in the 6GHz band.
+>
+> Add the missing 320MHz capability bits for 6GHz:
+>   - PHY_CAP0: IEEE80211_EHT_PHY_CAP0_320MHZ_IN_6GHZ
+>   - PHY_CAP1: beamformee SS for 320MHz
+>   - PHY_CAP2: sounding dimensions for 320MHz
+>   - PHY_CAP6: MCS15 support for 320MHz width
+>   - MCS/NSS: populate bw._320 maps for 6GHz band
+>
+> Introduce is_320mhz_supported() to gate 320MHz on MT7927 only, since
+> MT7925 does not support 320MHz operation.
+>
+> Tested-by: Marcin FM <marcin@lgic.pl>
+> Tested-by: Cristian-Florin Radoi <radoi.chris@gmail.com>
+> Tested-by: George Salukvadze <giosal90@gmail.com>
+> Tested-by: Evgeny Kapusta <3193631@gmail.com>
+> Tested-by: Samu Toljamo <samu.toljamo@gmail.com>
+> Tested-by: Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>
+> Tested-by: Chapuis Dario <chapuisdario4@gmail.com>
+> Tested-by: Thibaut Fran=C3=A7ois <tibo@humeurlibre.fr>
+> Tested-by: =E5=BC=A0=E6=97=AD=E6=B6=B5 <Loong.0x00@gmail.com>
+> Signed-off-by: Javier Tia <floss@jetm.me>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt76_connac.h |  5 +++++
+>  drivers/net/wireless/mediatek/mt76/mt7925/main.c | 22 ++++++++++++++++++=
++++-
+>  2 files changed, 26 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac.h b/drivers/n=
+et/wireless/mediatek/mt76/mt76_connac.h
+> index 813d61bffc2c..3785fbf5ac99 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
+> @@ -177,6 +177,11 @@ static inline bool is_mt7925(struct mt76_dev *dev)
+>         return mt76_chip(dev) =3D=3D 0x7925;
+>  }
+>
+> +static inline bool is_320mhz_supported(struct mt76_dev *dev)
+> +{
+> +       return is_mt7927(dev);
 
-The device lost message seems to be some bug of the open source KMD or
-the firmware.
+This looks like it would cause a build error since is_mt7927() is not
+introduced until patch 6.
 
-When I disable runtime power management of the 13000000.gpu device,
-this message does not appear, instead the following message appears and
-the GPU can continue to accept jobs:
-
-```
-powervr 13000000.gpu: [drm] Received unknown FWCCB command 2abc0070
-```
-
->=20
-> However, Zink on PowerVR works, and on Lichee Pi 4A I also got
-> `VK_ERROR_DEVICE_LOST` when running Sascha's demos (although the
-> kernel
-> does not report device lost).
->=20
-> I bet it's a regression on the VK_KHR_display code.
-
-I'm now sure that it's a regression, it's now tracked at [1].
-
-[1] https://gitlab.freedesktop.org/mesa/mesa/-/issues/15161
-
->=20
-> Thanks,
-> Icenowy
->=20
-> >=20
-> > Icenowy
-> >=20
-> > >=20
-> > > This is with Mesa 26.0.2 packages from Debian testing. At least
-> > > now
-> > > have the powervr vulkan driver enabled by default, so I don't
-> > > have
-> > > to rebuild the packages again.
-> > >=20
-> > >=20
-> > > ChenYu
-> > >=20
-> > > > Thanks
-> > > > Icenowy
-> > > >=20
-> > > > >=20
-> > > > > Same program worked correctly on a BeaglePlay and displayed a
-> > > > > color
-> > > > > gradient triangle. Not sure what went wrong here.
-> > > > >=20
-> > > > > Anyway, please have a look and test.
-> > > > >=20
-> > > > >=20
-> > > > > Thanks
-> > > > > ChenYu
-> > > > >=20
-> > > > > [1]
-> > > > > https://lore.kernel.org/dri-devel/20220815165156.118212-2-sarah.w=
-alker@imgtec.com/
-> > > > > [2]
-> > > > > https://gitlab.freedesktop.org/imagination/linux-firmware/-/tree/=
-powervr
-> > > > > [3] https://github.com/SaschaWillems/Vulkan
-> > > > > [4]
-> > > > > https://lore.kernel.org/dri-devel/f2b2671e-5acc-4dec-9c2e-3c9cd2e=
-1f19e@imgtec.com/
-> > > > >=20
-> > > > > Chen-Yu Tsai (5):
-> > > > > =C2=A0 dt-bindings: clock: mediatek: Add mt8173 mfgtop
-> > > > > =C2=A0 clk: mediatek: Add mt8173-mfgtop driver
-> > > > > =C2=A0 dt-bindings: gpu: powervr-rogue: Add MediaTek MT8173 GPU
-> > > > > =C2=A0 arm64: dts: mediatek: mt8173: Fix MFG_ASYNC power domain
-> > > > > clock
-> > > > > =C2=A0 arm64: dts: mediatek: mt8173: Add GPU device nodes
-> > > > >=20
-> > > > > =C2=A0.../clock/mediatek,mt8173-mfgtop.yaml=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 70 +++++
-> > > > > =C2=A0.../bindings/gpu/img,powervr-rogue.yaml=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0 1 +
-> > > > > =C2=A0arch/arm64/boot/dts/mediatek/mt8173.dtsi=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 |=C2=A0 33 ++-
-> > > > > =C2=A0drivers/clk/mediatek/Kconfig=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=
-=C2=A0=C2=A0 9 +
-> > > > > =C2=A0drivers/clk/mediatek/Makefile=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=
-=C2=A0 1 +
-> > > > > =C2=A0drivers/clk/mediatek/clk-mt8173-mfgtop.c=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 | 243
-> > > > > ++++++++++++++++++
-> > > > > =C2=A0include/dt-bindings/clock/mt8173-clk.h=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0 7 +
-> > > > > =C2=A07 files changed, 363 insertions(+), 1 deletion(-)
-> > > > > =C2=A0create mode 100644
-> > > > > Documentation/devicetree/bindings/clock/mediatek,mt8173-
-> > > > > mfgtop.yaml
-> > > > > =C2=A0create mode 100644 drivers/clk/mediatek/clk-mt8173-mfgtop.c
+> +}
+> +
+>  static inline bool is_mt7920(struct mt76_dev *dev)
+>  {
+>         return mt76_chip(dev) =3D=3D 0x7920;
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/n=
+et/wireless/mediatek/mt76/mt7925/main.c
+> index f128a198f81d..cfce851a94e2 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+> @@ -183,6 +183,10 @@ mt7925_init_eht_caps(struct mt792x_phy *phy, enum nl=
+80211_band band,
+>                 IEEE80211_EHT_PHY_CAP0_SU_BEAMFORMER |
+>                 IEEE80211_EHT_PHY_CAP0_SU_BEAMFORMEE;
+>
+> +       if (band =3D=3D NL80211_BAND_6GHZ && is_320mhz_supported(&phy->de=
+v->mt76))
+> +               eht_cap_elem->phy_cap_info[0] |=3D
+> +                       IEEE80211_EHT_PHY_CAP0_320MHZ_IN_6GHZ;
+> +
+>         eht_cap_elem->phy_cap_info[0] |=3D
+>                 u8_encode_bits(u8_get_bits(sts - 1, BIT(0)),
+>                                IEEE80211_EHT_PHY_CAP0_BEAMFORMEE_SS_80MHZ=
+_MASK);
+> @@ -193,10 +197,20 @@ mt7925_init_eht_caps(struct mt792x_phy *phy, enum n=
+l80211_band band,
+>                 u8_encode_bits(sts - 1,
+>                                IEEE80211_EHT_PHY_CAP1_BEAMFORMEE_SS_160MH=
+Z_MASK);
+>
+> +       if (band =3D=3D NL80211_BAND_6GHZ && is_320mhz_supported(&phy->de=
+v->mt76))
+> +               eht_cap_elem->phy_cap_info[1] |=3D
+> +                       u8_encode_bits(sts - 1,
+> +                                      IEEE80211_EHT_PHY_CAP1_BEAMFORMEE_=
+SS_320MHZ_MASK);
+> +
+>         eht_cap_elem->phy_cap_info[2] =3D
+>                 u8_encode_bits(sts - 1, IEEE80211_EHT_PHY_CAP2_SOUNDING_D=
+IM_80MHZ_MASK) |
+>                 u8_encode_bits(sts - 1, IEEE80211_EHT_PHY_CAP2_SOUNDING_D=
+IM_160MHZ_MASK);
+>
+> +       if (band =3D=3D NL80211_BAND_6GHZ && is_320mhz_supported(&phy->de=
+v->mt76))
+> +               eht_cap_elem->phy_cap_info[2] |=3D
+> +                       u8_encode_bits(sts - 1,
+> +                                      IEEE80211_EHT_PHY_CAP2_SOUNDING_DI=
+M_320MHZ_MASK);
+> +
+>         eht_cap_elem->phy_cap_info[3] =3D
+>                 IEEE80211_EHT_PHY_CAP3_NG_16_SU_FEEDBACK |
+>                 IEEE80211_EHT_PHY_CAP3_NG_16_MU_FEEDBACK |
+> @@ -217,7 +231,8 @@ mt7925_init_eht_caps(struct mt792x_phy *phy, enum nl8=
+0211_band band,
+>                 u8_encode_bits(u8_get_bits(0x11, GENMASK(1, 0)),
+>                                IEEE80211_EHT_PHY_CAP5_MAX_NUM_SUPP_EHT_LT=
+F_MASK);
+>
+> -       val =3D width =3D=3D NL80211_CHAN_WIDTH_160 ? 0x7 :
+> +       val =3D width =3D=3D NL80211_CHAN_WIDTH_320 ? 0xf :
+> +             width =3D=3D NL80211_CHAN_WIDTH_160 ? 0x7 :
+>               width =3D=3D NL80211_CHAN_WIDTH_80 ? 0x3 : 0x1;
+>         eht_cap_elem->phy_cap_info[6] =3D
+>                 u8_encode_bits(u8_get_bits(0x11, GENMASK(4, 2)),
+> @@ -239,6 +254,11 @@ mt7925_init_eht_caps(struct mt792x_phy *phy, enum nl=
+80211_band band,
+>         eht_nss->bw._160.rx_tx_mcs9_max_nss =3D val;
+>         eht_nss->bw._160.rx_tx_mcs11_max_nss =3D val;
+>         eht_nss->bw._160.rx_tx_mcs13_max_nss =3D val;
+> +       if (band =3D=3D NL80211_BAND_6GHZ && is_320mhz_supported(&phy->de=
+v->mt76)) {
+> +               eht_nss->bw._320.rx_tx_mcs9_max_nss =3D val;
+> +               eht_nss->bw._320.rx_tx_mcs11_max_nss =3D val;
+> +               eht_nss->bw._320.rx_tx_mcs13_max_nss =3D val;
+> +       }
+>  }
+>
+>  int mt7925_init_mlo_caps(struct mt792x_phy *phy)
+>
+> --
+> 2.53.0
+>
+>
 
