@@ -4,67 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC97710A1E63
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Mar 2026 02:10:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 003BA10A62D1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Mar 2026 02:15:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Szm82a7QWvbG1l4cNod3Rb11XZkTJ1mmIxeDQmZ4i3c=; b=3v7tR/mlAlA2hU+Rs/L/R6MyeF
-	GvmOhZxHRzY6PsphNtTm89F2xQfeyaaikte+X6if95+I2tF+0kdSMsSSXvbpM9y8d+0XcvE+hRlFA
-	+k29GtfaouMVa9iVgYMyouIAw90MqrlJdRr2es1IuEa+gCQgz/mq+vxIin57iwo5A3XVpEtgIorx6
-	TuX5QVdQSg+8KeYAn6F5uEQvChZGXqdi4HpyxvSayOEYbfwwf9oQy42JoMgrk662f7DYL74TgaKUz
-	1Lx6808EeDUe/ZO4/Hbn8Xzu1UPswACUXXQhOAfS2EI22d6mO3xPEPykFlKiHVPEz4S8va0LWNqll
-	XJcFS48g==;
+	bh=FnYQyy4CIDZ+UDVBQhtZGfTVFPQdwxplb2xmifQE3/g=; b=YUzFjz1Iyy7YFg6qpbXtNXVQwK
+	J4/QFQC+AXMx43kI4I5AT/L+yM+t+x/ujIANOC7hyfzw7E4vxVecnEIYdb251qKHryCxgzfOu1Y7h
+	levbBrj6SF73v/CWCQBj8OlzanobByaH+bWXs5HUl7EpNxGXOk1//1Mhs00m7DWZDf+/yhbGOlNpQ
+	+qydqicigIxnTs7jiPC6nn69mlgjfnWGnji0uC/74cgZIP2o6y6LcO4zWD1KFpATzW+3iGwEyVnw1
+	Bo418De9JXK2bQT+js+XJRapDp9ONNXpMiBBfOPAj6R+O6e7nMewybBZhQqvllT18HEteTOeMy2bg
+	uq1YFXqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5weX-00000006WdB-2IRr;
-	Fri, 27 Mar 2026 02:10:25 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1w5wjl-00000006XU4-2QGG;
+	Fri, 27 Mar 2026 02:15:49 +0000
+Received: from out-184.mta0.migadu.com ([91.218.175.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5weU-00000006Wbk-3yfe;
-	Fri, 27 Mar 2026 02:10:24 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4683244354;
-	Fri, 27 Mar 2026 02:10:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E7FA2C116C6;
-	Fri, 27 Mar 2026 02:10:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774577420;
-	bh=HWwilsjJarrXBHBtNXrPyxHPRfiQkF06LtsZJa2qGkA=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=DSuJmIORxKBJJtnJzkNSMJXiooHONZU2DElijz/D7oxorXHmt0c+wnNgMsF3t+0im
-	 /l8CBDrFEy8Sk6/YUwytwUbF8WF69hNuMJjVxSzUO9qRoMMfOAWeBT68+m2wwfuQZN
-	 7XWEGkLgvq91e8ndQ3sgQneprjb4C9PEIZ52h+UCL4VHLjTShmHK66qGLJRYdwTzcC
-	 33Tff46XKsp6nVTEGYlzQApKluVCbj7/KWePE8odAzTdID5FyX5KRakEs8gen5QBEP
-	 q1mGN3WSZ3JdMjcXRx04rkhUVG/dUpwaQvp6iJ3d7yw3Itgak66hlmoBe0ixOns4mL
-	 2dXSOnZW6N6CQ==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 7CEC23809A07;
-	Fri, 27 Mar 2026 02:10:08 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1w5wji-00000006XTD-0FUm
+	for linux-mediatek@lists.infradead.org;
+	Fri, 27 Mar 2026 02:15:48 +0000
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=justthetip.ca;
+	s=key1; t=1774577741;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=FnYQyy4CIDZ+UDVBQhtZGfTVFPQdwxplb2xmifQE3/g=;
+	b=bOXSPqDth8FGuuXnKq5tSaxICd3jwuC3C2geHyQtNrDzSmma3dMyd2jIDaA8gyT31dcvZ1
+	AcXDR1D/D+EwNt/S1boyJYxrQpKBBQRBLtmAZP0Maeg+ILJQbpT+yPvSbteMfmvLzQw+AZ
+	fS77tDcNctUG5fOlxfBYA05U37Qo2nr3+5w7lzQQwjxO8oqCWUBcqB6LvZtGEdsuRnSbrp
+	EH6yl3j1C2mNPxxRef7QvEZwzIkRR6oY9Uz5eoWOGJ1eXf+MSFXR7c3kc1jvMgffeuqTze
+	a46fpgFF8HH/VYFNM+PfBRccjWHZAM9C9u/YtU3WqQV+kzbDXWUFJz91wBbN9w==
+From: Lucid Duck <lucid_duck@justthetip.ca>
+To: sean.wang@kernel.org
+Cc: nbd@nbd.name,
+	lorenzo.bianconi@redhat.com,
+	linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	morrownr@gmail.com,
+	satadru@gmail.com
+Subject: Re: [PATCH 1/3] wifi: mt76: connac: use a helper to cache txpower_cur
+Date: Thu, 26 Mar 2026 19:15:34 -0700
+Message-ID: <20260327021534.448552-1-lucid_duck@justthetip.ca>
+In-Reply-To: <20260325043318.13298-1-sean.wang@kernel.org>
+References: <20260325043318.13298-1-sean.wang@kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net] net: ethernet: mtk_ppe: avoid NULL deref when gmac0
- is
- disabled
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <177457740729.3263687.4179857130043396261.git-patchwork-notify@kernel.org>
-Date: Fri, 27 Mar 2026 02:10:07 +0000
-References: <20260324-wed-crash-gmac0-disabled-v1-1-3bc388aee565@simonwunderlich.de>
-In-Reply-To: <20260324-wed-crash-gmac0-disabled-v1-1-3bc388aee565@simonwunderlich.de>
-To: Sven Eckelmann (Plasma Cloud) <se@simonwunderlich.de>
-Cc: nbd@nbd.name, lorenzo@kernel.org, andrew+netdev@lunn.ch,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- eladwf@gmail.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- stable@vger.kernel.org
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260326_191023_004946_012D37FC 
-X-CRM114-Status: GOOD (  11.30  )
+X-CRM114-CacheID: sfid-20260326_191547_350172_B86FC73F 
+X-CRM114-Status: UNSURE (   3.32  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,31 +75,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Adding Tested-by from Satadru Pramanik, who tested the full 3-patch
+series on MT7925U with kernel 7.0-rc5 (US regdomain):
 
-This patch was applied to netdev/net.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+Before patch (5 GHz ch 36, 80 MHz):  txpower 3.00 dBm
+After patch  (5 GHz ch 36, 80 MHz):  txpower 23.00 dBm
 
-On Tue, 24 Mar 2026 09:36:01 +0100 you wrote:
-> If the gmac0 is disabled, the precheck for a valid ingress device will
-> cause a NULL pointer deref and crash the system. This happens because
-> eth->netdev[0] will be NULL but the code will directly try to access
-> netdev_ops.
-> 
-> Instead of just checking for the first net_device, it must be checked if
-> any of the mtk_eth net_devices is matching the netdev_ops of the ingress
-> device.
-> 
-> [...]
-
-Here is the summary with links:
-  - [net] net: ethernet: mtk_ppe: avoid NULL deref when gmac0 is disabled
-    https://git.kernel.org/netdev/net/c/976ff48c2ac6
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+Tested-by: Satadru Pramanik <satadru@gmail.com>
 
