@@ -4,94 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE5B310ED674
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Mar 2026 13:47:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8476D10ED679
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Mar 2026 13:57:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=no0uujIoaeBaN0lzDrFX2OOJtop28oGgvskS3mBh/+k=; b=TAC/g2tJGX2msX7MEiv1+8oGCN
-	HB94H9kdQpom2uzXESeInGRoCWWVhYOzTa89QL5dnaLp/nCKxGzkYl5kjCacOpwggv97lV9ouZHV1
-	lm3RaaKu+yli6qBe+89Dsk6N3UNoAc/ZiUKxAw4DaPw+HENY6lVcP+ecFpBDia7ItAIe2v8ZMdRMO
-	d9Sal6Cx3Wr1r0pX7fxseXJRQYng83PtuP7Avjk6bnKkcI4+j/zSkA7SO/9wC9Pan8vw2Ruep0YZ3
-	ukE+fE6asPsZoQmWWmFs3f34jjlyV3cCcqLDrM4RstLJM5xYXYd0yYby0RcvoIgrUbUeHVmZr1eAK
-	XO9naOtw==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kriuTgobHO4VRaxwfam5aZi68JnF/DrxIijlnglnZdk=; b=Ithgu9rhi7YnD9g8pLwrXEHFtd
+	a6vtxG1VZhV4EWND8VeaJOSy9OS4FHKGiS1pNU5uhpyDlAF9p7wiY8eALkLPcCTObdokoPZeqW0wl
+	4nUVQlWsPpNQ708fC+FRmpfW1FuN5uGj0sG8pO+Kpj4Odb5OQX8/vk/P0hEhI0hdUyiSf2roufeGM
+	oZHodKIZ3qvrwusyzwPIgkZzradxftuzFLoa9tf2waRQDAdHtFV0T7vl4tMAz80f5dAVRdMv0qQMC
+	/w5dWe8ERa74IxxGcbmy/csLTmdlVoONKyyA4SnqKkKtW4q+U4ZHhwprXtwSVi5ZTlHMFIrftATiG
+	xWk/gM3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w67XJ-00000007TOW-1UgZ;
-	Fri, 27 Mar 2026 13:47:42 +0000
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+	id 1w67gr-00000007Uqx-17VT;
+	Fri, 27 Mar 2026 13:57:33 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w67XH-00000007TNV-0iS0
-	for linux-mediatek@lists.infradead.org;
-	Fri, 27 Mar 2026 13:47:40 +0000
-Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-2addb31945aso17091665ad.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 27 Mar 2026 06:47:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1774619258; x=1775224058; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=no0uujIoaeBaN0lzDrFX2OOJtop28oGgvskS3mBh/+k=;
-        b=bIQr2/xaQFXwJHMQ+1/u09JwLkef2Fa766y5gZhivphgXazCefzfyHg7ajjn11kWTL
-         dQs02VYzab9j2iki886ZkoLpNoDfNWkX24o152n2DQmtBOBkt8ezzg8UvfV3AqCvl2Oj
-         bEarZczZbtFZ/VOlMcoNE6+2DcDvHZwX1guJENDmIC2z7o5uLZAYES7+uRY7WJk7s/6/
-         AXuZFmoapImVQDx0c5t5F78QL14sb/WbnohRSB16EMvKZ2hJRFl+IkyfDjndfsJzjax8
-         MkQc5lPd/ZYOqBNPiZvC9mbcAjlapztz9LVGFIh7qLzvUKvZgek4JisYe431Drn58L3f
-         UIlg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1774619258; x=1775224058;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=no0uujIoaeBaN0lzDrFX2OOJtop28oGgvskS3mBh/+k=;
-        b=sEF/MtiIwIXOG+P3gpYo5ZHxf6Uu5qAJ3lv90pKITQgrBRT7iiYLXQwXOfI7L5fD5p
-         F64bg/BB4veWhLjGYfOa9ENuFRWsDVggdQYC4ovj4sKZRdEo45zS3Rblno0ZP4ZI7Cz5
-         nCUwU2kSwJHSIGRXZz+ReBhm9mAS2fDvl0BSzTH37Xjg899jL0NYdNMGSKspxurpaIhm
-         x5UiU1vLazFbrTW0Q70cJzBz0SXt+TyabqKpNk5qogdpwmv85otUI6BHnrvtzOfM8j7c
-         OVDt7yclrwLshQZAatsr/k6L/StSF/AviPod8Gu/mqL8ixUUJ6d5Z+9vE+QSqRjvkSxs
-         cxFg==
-X-Forwarded-Encrypted: i=1; AJvYcCXsD0edwdsy9s/NLTDvlLggJBaZvlU9Ck9BEOhk84vU6oJmC5jSqGJDQ9j1fmjIEd4+qqUr6lJxvUcyd8bXgw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx+DlsmrfHPaoVbmjKu1wGmRwkFOStDI7t28aumr4okptJbE7YN
-	1ywv/uHEIKdX+QjQC9NbX/IkWYvJggcaHO1DI16vp5/KE1Cvu5IfMrUN
-X-Gm-Gg: ATEYQzyd+dwVMzBMlE1kl4zsMSdxL9S717biCl5TW8Nn3F4wxM3ACnxB83s6/N/7rjO
-	UY32xXXmwdyPLKjnsW6JFT7mnMaBlQQknuMK2mjLlsxJqaaDkL8AO/l4Pozwq4X9ZSaGzhZd9TA
-	Lxs4v8jgJJsm7ZG7cBPRMXX5rQhrv9BReSbK1pxewrrugqtGtTDP4VIyMWrijyzKPshx5weiLwN
-	dYuT5t9d6u6EUyw6PfQRT+sQisdbXSZtG4+C2jYMItNIWlPZrAvoaTYuC2Mtv7A022DL2UTYbcE
-	kA5MfJctLKWxyXkP5Hs+R4fSHkXCeCYgX2lmzN6L5whbIRkPYPqgHjP4ruSz3cp8D18YweVgcFD
-	1Updr6yv/ucoNzqDkkzLFEVC2/X4l3czH4n0ji85okRcKjgC/5d3a7cFoXR13YQqWIUjaKC75za
-	J0oEc3irm3tWDBvYSacGiK1M4IAJ91
-X-Received: by 2002:a17:903:8cb:b0:2ab:3cba:42fa with SMTP id d9443c01a7336-2b0cdd0555emr28331695ad.46.1774619257719;
-        Fri, 27 Mar 2026 06:47:37 -0700 (PDT)
-Received: from snowman ([2401:4900:614d:8cb4:a69f:d838:ad5c:7358])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2b0bc76b6casm62403545ad.16.2026.03.27.06.47.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 27 Mar 2026 06:47:37 -0700 (PDT)
-From: Khushal Chitturi <khushalchitturi@gmail.com>
-To: lgirdwood@gmail.com,
-	broonie@kernel.org
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	koro.chen@mediatek.com,
-	linux-sound@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Khushal Chitturi <khushalchitturi@gmail.com>
-Subject: [PATCH v2] ASoC: dt-bindings: mediatek,mt8173-rt5650-rt5514: convert to DT schema
-Date: Fri, 27 Mar 2026 19:16:49 +0530
-Message-ID: <20260327134649.31376-1-khushalchitturi@gmail.com>
-X-Mailer: git-send-email 2.53.0
+	id 1w67gn-00000007UpH-2VZF;
+	Fri, 27 Mar 2026 13:57:30 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id EBC8A44151;
+	Fri, 27 Mar 2026 13:57:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CF398C19423;
+	Fri, 27 Mar 2026 13:57:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1774619848;
+	bh=QoiKaNTYrjORWOMsbRPUw7aZWwxwHRhfcq1ApneMqF4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Oqzi4bhtXPUd+stBnasJPE6OL61Dx+nakBeYIFTp6GaBoMBjtZSl7lj2jNa6H/SUj
+	 dv0sAmuakskIVMAkTgprUHsSFiVJNqT2Ig73CnD8sEmV+e9kd5AHQx+v1AfuK4OHBG
+	 PXiRxyw/Ql/kXf7xLE9cbfFWGodb5wLNQofmstb3Yr+82X7EQvKzbCt6Rw19I0v98s
+	 RB5jfqT1Xy2jP1azLmRxRjpRIkXTQzdr9bpfFqbaDPav5bWlVevfwM2P/cnlh+AbmK
+	 hapZYwnrZ3Tj4bTQ2zV5cpQ1RasWq6UL/Ff9xARN66acZr2cafNLHdl8DQAgNFbQzr
+	 VRBjVovC6LMeg==
+Message-ID: <d5e35218-57e5-4905-96b8-618db05e4bbf@kernel.org>
+Date: Fri, 27 Mar 2026 14:57:23 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] ASoC: dt-bindings: mediatek,mt8173-rt5650-rt5514:
+ convert to DT schema
+To: Khushal Chitturi <khushalchitturi@gmail.com>, lgirdwood@gmail.com,
+ broonie@kernel.org
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ koro.chen@mediatek.com, linux-sound@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20260327134649.31376-1-khushalchitturi@gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20260327134649.31376-1-khushalchitturi@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260327_064739_206365_FF3040D3 
-X-CRM114-Status: GOOD (  12.76  )
+X-CRM114-CacheID: sfid-20260327_065729_675609_67A960D4 
+X-CRM114-Status: UNSURE (   5.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,96 +121,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert the Mediatek MT8173 with RT5650 and RT5514 sound card
-bindings to DT schema.
+On 27/03/2026 14:46, Khushal Chitturi wrote:
+> Convert the Mediatek MT8173 with RT5650 and RT5514 sound card
+> bindings to DT schema.
+> 
+> Signed-off-by: Khushal Chitturi <khushalchitturi@gmail.com>
+> ---
 
-Signed-off-by: Khushal Chitturi <khushalchitturi@gmail.com>
----
-Changelog:
-v1 -> v2:
-- Used two separate entries for two phandles.
-- corrected positioning of additionalProperties.
-- Fixed commit message to match subsystem.
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
-Note:
-* This patch is part of the GSoC2026 application process for device tree bindings conversions
-* https://github.com/LinuxFoundationGSoC/ProjectIdeas/wiki/GSoC-2026-Device-Tree-Bindings
-
- .../sound/mediatek,mt8173-rt5650-rt5514.yaml  | 41 +++++++++++++++++++
- .../bindings/sound/mt8173-rt5650-rt5514.txt   | 15 -------
- 2 files changed, 41 insertions(+), 15 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8173-rt5650-rt5514.yaml
- delete mode 100644 Documentation/devicetree/bindings/sound/mt8173-rt5650-rt5514.txt
-
-diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8173-rt5650-rt5514.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8173-rt5650-rt5514.yaml
-new file mode 100644
-index 000000000000..ed698c9ff42b
---- /dev/null
-+++ b/Documentation/devicetree/bindings/sound/mediatek,mt8173-rt5650-rt5514.yaml
-@@ -0,0 +1,41 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/sound/mediatek,mt8173-rt5650-rt5514.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek MT8173 with RT5650 and RT5514 audio codecs
-+
-+maintainers:
-+  - Koro Chen <koro.chen@mediatek.com>
-+
-+properties:
-+  compatible:
-+    const: mediatek,mt8173-rt5650-rt5514
-+
-+  mediatek,audio-codec:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    description: Phandles of rt5650 and rt5514 codecs
-+    items:
-+      - description: phandle of rt5650 codec
-+      - description: phandle of rt5514 codec
-+
-+  mediatek,platform:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description: The phandle of MT8173 ASoC platform.
-+
-+required:
-+  - compatible
-+  - mediatek,audio-codec
-+  - mediatek,platform
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    sound {
-+        compatible = "mediatek,mt8173-rt5650-rt5514";
-+        mediatek,audio-codec = <&rt5650>, <&rt5514>;
-+        mediatek,platform = <&afe>;
-+    };
-+...
-diff --git a/Documentation/devicetree/bindings/sound/mt8173-rt5650-rt5514.txt b/Documentation/devicetree/bindings/sound/mt8173-rt5650-rt5514.txt
-deleted file mode 100644
-index e8b3c80c6fff..000000000000
---- a/Documentation/devicetree/bindings/sound/mt8173-rt5650-rt5514.txt
-+++ /dev/null
-@@ -1,15 +0,0 @@
--MT8173 with RT5650 RT5514 CODECS
--
--Required properties:
--- compatible : "mediatek,mt8173-rt5650-rt5514"
--- mediatek,audio-codec: the phandles of rt5650 and rt5514 codecs
--- mediatek,platform: the phandle of MT8173 ASoC platform
--
--Example:
--
--	sound {
--		compatible = "mediatek,mt8173-rt5650-rt5514";
--		mediatek,audio-codec = <&rt5650 &rt5514>;
--		mediatek,platform = <&afe>;
--	};
--
--- 
-2.53.0
-
+Best regards,
+Krzysztof
 
