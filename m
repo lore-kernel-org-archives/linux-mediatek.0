@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 003BA10A62D1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Mar 2026 02:15:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3136F10BA422
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Mar 2026 03:06:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FnYQyy4CIDZ+UDVBQhtZGfTVFPQdwxplb2xmifQE3/g=; b=YUzFjz1Iyy7YFg6qpbXtNXVQwK
-	J4/QFQC+AXMx43kI4I5AT/L+yM+t+x/ujIANOC7hyfzw7E4vxVecnEIYdb251qKHryCxgzfOu1Y7h
-	levbBrj6SF73v/CWCQBj8OlzanobByaH+bWXs5HUl7EpNxGXOk1//1Mhs00m7DWZDf+/yhbGOlNpQ
-	+qydqicigIxnTs7jiPC6nn69mlgjfnWGnji0uC/74cgZIP2o6y6LcO4zWD1KFpATzW+3iGwEyVnw1
-	Bo418De9JXK2bQT+js+XJRapDp9ONNXpMiBBfOPAj6R+O6e7nMewybBZhQqvllT18HEteTOeMy2bg
-	uq1YFXqA==;
+	bh=GSPHdHyg+uH9B41/pLMTI1+glPJGMLW1zAyv4w3Z/U0=; b=33JuozMXBfPlTZiZh/Tnica9tj
+	Q/+fvpFCuil8Y4QgAEJ4CJYcqfFf6gLXzDrO6w7dshGNmIiyjBuxJsuQDb3dli6oATh+xhM3ZG96Y
+	UPkrqXf7DCbAQ79DvwcEqNhL7Pg64LGnfynGb/sQqDZZtLT96QTfTJRF85acJAn1gv0B+EgV+dnTZ
+	sfQPeL8Q4mItnAXTUsecamvXFOFernBex7Oxk0uU7+iFYrF1SolMzbMhRMkC6DQ5rdZQh+NjA5OI8
+	I2FuJ1+gTPoNHfg8bHic5O5sSgQQ6dONlmEwkgMuMf9Yz2f7VrjpB9Ymfrktggo6En2dobffI2ojY
+	s8IzZ8Nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5wjl-00000006XU4-2QGG;
-	Fri, 27 Mar 2026 02:15:49 +0000
-Received: from out-184.mta0.migadu.com ([91.218.175.184])
+	id 1w5xWV-00000006aws-1Ych;
+	Fri, 27 Mar 2026 03:06:11 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5wji-00000006XTD-0FUm
-	for linux-mediatek@lists.infradead.org;
-	Fri, 27 Mar 2026 02:15:48 +0000
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=justthetip.ca;
-	s=key1; t=1774577741;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=FnYQyy4CIDZ+UDVBQhtZGfTVFPQdwxplb2xmifQE3/g=;
-	b=bOXSPqDth8FGuuXnKq5tSaxICd3jwuC3C2geHyQtNrDzSmma3dMyd2jIDaA8gyT31dcvZ1
-	AcXDR1D/D+EwNt/S1boyJYxrQpKBBQRBLtmAZP0Maeg+ILJQbpT+yPvSbteMfmvLzQw+AZ
-	fS77tDcNctUG5fOlxfBYA05U37Qo2nr3+5w7lzQQwjxO8oqCWUBcqB6LvZtGEdsuRnSbrp
-	EH6yl3j1C2mNPxxRef7QvEZwzIkRR6oY9Uz5eoWOGJ1eXf+MSFXR7c3kc1jvMgffeuqTze
-	a46fpgFF8HH/VYFNM+PfBRccjWHZAM9C9u/YtU3WqQV+kzbDXWUFJz91wBbN9w==
-From: Lucid Duck <lucid_duck@justthetip.ca>
-To: sean.wang@kernel.org
-Cc: nbd@nbd.name,
-	lorenzo.bianconi@redhat.com,
-	linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	morrownr@gmail.com,
-	satadru@gmail.com
-Subject: Re: [PATCH 1/3] wifi: mt76: connac: use a helper to cache txpower_cur
-Date: Thu, 26 Mar 2026 19:15:34 -0700
-Message-ID: <20260327021534.448552-1-lucid_duck@justthetip.ca>
-In-Reply-To: <20260325043318.13298-1-sean.wang@kernel.org>
-References: <20260325043318.13298-1-sean.wang@kernel.org>
+	id 1w5xWR-00000006awE-3v0r;
+	Fri, 27 Mar 2026 03:06:09 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2E95343A89;
+	Fri, 27 Mar 2026 03:06:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A8165C116C6;
+	Fri, 27 Mar 2026 03:06:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1774580767;
+	bh=GSPHdHyg+uH9B41/pLMTI1+glPJGMLW1zAyv4w3Z/U0=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=i7umSLLH7F7pSYDbl4NzXHQ0/+ryzvhUGshvZhEfrM99aWA9u3sA9d4wdqIVFSM7n
+	 1r0versrA4SxwpmwSIvQu6GFPgRSW1s3qR1Yja//u/HolhHcA114r9vbzeL0agNdYC
+	 1M/qlqZln64ybSpKJCPEGJcV+TkhOX3PalmnFChaGm32cff6v96BtAi8rnld987iHt
+	 9K172xEzUVi6FrdqckncHtXDfDb4vh5M6/3fGpnoXLVo+z+Ct3WwYKbls4BSYZjpoR
+	 1v0Lp77mlev+cA7uCm9RomtNklZrjNhwh2a7MbBSEtQGTYZtJ4bv1oMmy9unj44mjN
+	 UVLdXPrCKJD9Q==
+Date: Thu, 26 Mar 2026 20:06:05 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
+ <pabeni@redhat.com>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net-next] net: airoha: Grab flow_offload_mutex running
+ airoha_register_gdm_devices()
+Message-ID: <20260326200605.39222917@kernel.org>
+In-Reply-To: <20260324-airoha-regiser-race-fix-v1-1-6014df55886b@kernel.org>
+References: <20260324-airoha-regiser-race-fix-v1-1-6014df55886b@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Migadu-Flow: FLOW_OUT
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260326_191547_350172_B86FC73F 
-X-CRM114-Status: UNSURE (   3.32  )
+X-CRM114-CacheID: sfid-20260326_200608_678589_1282BB93 
+X-CRM114-Status: UNSURE (   6.21  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,11 +74,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Adding Tested-by from Satadru Pramanik, who tested the full 3-patch
-series on MT7925U with kernel 7.0-rc5 (US regdomain):
+On Tue, 24 Mar 2026 17:54:45 +0100 Lorenzo Bianconi wrote:
+> Netfilter flowtable can theoretically try offload flower rules as soon
+> as a net-device is registered while not all the other ones are
+> registered/initialized, triggering a possible NULL pointer dereferencing
+> of qdma pointer in airoha_ppe_set_cpu_port routine. In order to avoid any
+> possible race, grab the flow_offload_mutex running
+> airoha_register_gdm_devices().
 
-Before patch (5 GHz ch 36, 80 MHz):  txpower 3.00 dBm
-After patch  (5 GHz ch 36, 80 MHz):  txpower 23.00 dBm
-
-Tested-by: Satadru Pramanik <satadru@gmail.com>
+Sashiko says this causes a lock ordering issue:
+https://sashiko.dev/#/patchset/20260324-airoha-regiser-race-fix-v1-1-6014df55886b@kernel.org
 
