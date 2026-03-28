@@ -4,179 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A7DC10F2865
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Mar 2026 21:25:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC06310F3DD1
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Mar 2026 05:16:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Date:References:Message-ID:In-Reply-To:From:Subject:Cc:To:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cd5uUH6iYAM/sctUzcRfn+LvtaQb++INNgjOiXvBkDg=; b=WNlU8+Qxs2BIGIxtaipAcTJAbX
-	gmNlHBSYTE9mihiPCaHQAN6L+7wOHbQR8S5qUAqt4hiyPXM4ioGp6OJ/u6ksUokXjP+df/+kuPZR0
-	rlbDWHYNUAC6juwxdETaF4seelQ9o4HKDPzZSId95aWokQVrBUGlmoeOhn5MTq9rgvqPZ1KHwGx47
-	XghtqpLSIcZZMBKVyPyKadse+Nzma3OsWvKX51EidcSGGdjbD5sLX3KIkv8hZJNF2iEnSKySPI365
-	e07dIRMhJtcUU7KBETNFcMPfbUK40yIZmKPsA+6ceNb8ISFlWKP8K2V3QhhyCSnWKCJpAKtqjvZlc
-	aL0PFyjw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ItY3XW4lOvR6siOUQ5bYSIbpXYmHoGqydFeMTzgi2E4=; b=3OUgktL5seDiq3M3WUxyoS6Td0
+	Of4ykEDjtGvaRY4n3sAgPVVhiBWmd5LvqdlhZRjjhMgvXyqXrj4rZgZXLW7seIGNMuHkp9D7ARqKV
+	M4lwcTk5n+RYF68et/t/zHNrzUp9yNBh58kdfDCYMcPAuYROsS3sg14sluL9RQvaNJ3h7H064QMBD
+	6nQamNqH3dvFvwywSHXz1Cl+TsqjHnvbpU13MV7p3aiNljSizIJ0iP2CHSphCE1dxLK5oC2PRPSDL
+	KBxu9RUOBVSkKg8yAUqzYRFolnzl6cC/osIEZdYsvDiv4fmLcwlRJ4Bxgq0yO+9Jfz1FBne/8v7hx
+	BHq3Yuqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w6EgW-00000008EZH-0VRI;
-	Fri, 27 Mar 2026 21:25:40 +0000
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+	id 1w6M2N-00000008YoA-3BVD;
+	Sat, 28 Mar 2026 05:16:43 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w6EgR-00000008EYk-0MEL;
-	Fri, 27 Mar 2026 21:25:37 +0000
-Received: from pps.filterd (m0246617.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 62RGu3213575414;
-	Fri, 27 Mar 2026 21:25:21 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
-	:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=corp-2025-04-25; bh=cd5uUH6iYAM/sctUzc
-	Rfn+LvtaQb++INNgjOiXvBkDg=; b=T2wh0P/3327VIjzQU2bsndAI7I4agMykxL
-	S36aZDGU8NCrQjCPXg8sPq2qxE1oTvPVGP0APXimqGGp7ozRGA4hji7pHrv9KHa5
-	iY5dA2ViWiMbpcZWhWFe42W8O3+9gju/GlX+crRc5SScwqgzXjlYdwvZfHs9U4Ni
-	Jdo9CzZ/jzsl02bkgKlNKrLU4o9s+ir8RrbEtKMC3qBag+cgUPR7Sv08lHjS4XhE
-	+fd4TTBZkiM8JaAMrQBcNXojKlyZXZ1aZePg2uT4Fu4k3U++XGHi9nhgyOe97L94
-	eLMdCh1dNqJXGBMHwV8v7YWRpkR9hxFUUYocRPDmkR+L7xv8qmEQ==
-Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta01.appoci.oracle.com [130.35.100.223])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4d1kvntwuh-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 27 Mar 2026 21:25:21 +0000 (GMT)
-Received: from pps.filterd (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 62RJq4Dv012307;
-	Fri, 27 Mar 2026 21:25:20 GMT
-Received: from cy3pr05cu001.outbound.protection.outlook.com (mail-westcentralusazon11013066.outbound.protection.outlook.com [40.93.201.66])
-	by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 4d1hsn04s1-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 27 Mar 2026 21:25:20 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=KGHowcs0FGzY3rlNxUpM8dt2G50Ghqvdnv99ORFImRuOpXvOHXPD7NQUsYG4d0uDtqEvOsbA0JWmbJ6+DiPovEH6LiB5itlRBtpac7fTfive6Gre3WbJwMTsRW3Y2owQnAt1TYpOGNWGcEtcDqwrGZaypPi7yhfhfKq6Txj7bZjFum3IpJMukvBoTE5rJaykxgu34bnm2tooSZeKiGUDq8S/gVm+6EiJelKT68uynIpWlvysfnnYbkWk6WMFyUwLTIk0jTifbPIwY4wsgX5WP31+4yGcV6Y1x7/VzY2d5iWh0bOod3e7OY81TA1uK3DVuOEDOvLSaGPQHS6masVg5Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=cd5uUH6iYAM/sctUzcRfn+LvtaQb++INNgjOiXvBkDg=;
- b=ELueBcW90Tu3h9JpgZP365RsDdEuzJ352wMn7Sq2Uau7eJoi5Wb6ChWkpwyuFIdctQgwyt/3Q4GBXjaUy6oMN79saGUldjPXg+8GfRYLvGYZRAHkJWr36iplDUTh3nPWbRgk/JuDejw/0bxeQqsI10G8JDlvGVuYDT8Qk3EnPl6xixVdFd2NdUXSkkMEfSmcyeBpvP7y1ahdK3WtHfWXmweVaGXb4jkP5aJBZwwW7b71BaXyod6fra/YeCs50TR96WhLqXh49pjoT+kV14nduM1jVyYgKSbkap5KUmGHHrgdiGMGeoo3B/FOKkx9amvcU1OZ8wzw+v92AguPwMnV5A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=cd5uUH6iYAM/sctUzcRfn+LvtaQb++INNgjOiXvBkDg=;
- b=SD7bW+wQaBZkOlF7Vj/u8o3ciYFj3SRWu3qdwTwRZg4ZvkrCxUUICg2ysoT1McCwJ3qbaevcydf2oFNpHPb7zlZCiZ9w3j76fpgx3wAoDzx3dj7whJMERMstmayEqkIzMm1/GPYpsabBffe6+mzCupHk/WCKl6YGHAJy5+h19+A=
-Received: from CH0PR10MB5338.namprd10.prod.outlook.com (2603:10b6:610:cb::8)
- by IA1PR10MB6879.namprd10.prod.outlook.com (2603:10b6:208:421::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9745.20; Fri, 27 Mar
- 2026 21:25:16 +0000
-Received: from CH0PR10MB5338.namprd10.prod.outlook.com
- ([fe80::e525:dd71:b002:6ad5]) by CH0PR10MB5338.namprd10.prod.outlook.com
- ([fe80::e525:dd71:b002:6ad5%6]) with mapi id 15.20.9745.023; Fri, 27 Mar 2026
- 21:25:16 +0000
-To: Can Guo <can.guo@oss.qualcomm.com>
-Cc: avri.altman@wdc.com, bvanassche@acm.org, beanhuo@micron.com,
-        peter.wang@mediatek.com, martin.petersen@oracle.com, mani@kernel.org,
-        linux-scsi@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC
- support:Keyword:mediatek),
-        linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek),
-        linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC
- support:Keyword:mediatek)
-Subject: Re: [PATCH v5 00/12] scsi: ufs: Add TX Equalization support for UFS
- 5.0
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-In-Reply-To: <20260325152154.1604082-1-can.guo@oss.qualcomm.com> (Can Guo's
-	message of "Wed, 25 Mar 2026 08:21:42 -0700")
-Organization: Oracle Corporation
-Message-ID: <yq1jyux7yok.fsf@ca-mkp.ca.oracle.com>
-References: <20260325152154.1604082-1-can.guo@oss.qualcomm.com>
-Date: Fri, 27 Mar 2026 17:25:14 -0400
-Content-Type: text/plain
-X-ClientProxiedBy: YQZPR01CA0068.CANPRD01.PROD.OUTLOOK.COM
- (2603:10b6:c01:88::9) To CH0PR10MB5338.namprd10.prod.outlook.com
- (2603:10b6:610:cb::8)
+	id 1w6M2L-00000008YmD-0m6I;
+	Sat, 28 Mar 2026 05:16:42 +0000
+X-UUID: 4a5bc56c2a6511f19e7563141e833ce8-20260327
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=ItY3XW4lOvR6siOUQ5bYSIbpXYmHoGqydFeMTzgi2E4=;
+	b=YOuFXUDkvjcpUOAsMrgpqKJ3TYzSpYynJ5ous4/1E49573A0q6KuR3TCIyS3P+PwVUhyyZlUbx/+mKEWFbo6BkQaLyeLt039lcbOr+CteTjrUvQ2T0wjZm19937g4GtPml0gbXd9MCjAFrwNs7NvYLFdCYuPsqwj6vzvB5DL3Fw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.12,REQID:7cd2a0a0-0d8f-4b47-9144-db555b77ff33,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:e7bac3a,CLOUDID:a2254d94-f8ef-4ca8-bea0-143568f9ca1d,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,
+	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 4a5bc56c2a6511f19e7563141e833ce8-20260327
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 137100446; Fri, 27 Mar 2026 22:16:35 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Sat, 28 Mar 2026 13:16:32 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Sat, 28 Mar 2026 13:16:31 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>, Sebastian Fricke <sebastian.fricke@collabora.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Hans Verkuil
+	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>,
+	Daniel Almeida <daniel.almeida@collabora.com>
+CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
+	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, Yunfei
+ Dong <yunfei.dong@mediatek.com>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v4 00/14] media: mediatek: vcodec: support video decoder in mt8196
+Date: Sat, 28 Mar 2026 13:16:10 +0800
+Message-ID: <20260328051630.7937-1-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH0PR10MB5338:EE_|IA1PR10MB6879:EE_
-X-MS-Office365-Filtering-Correlation-Id: c13b3b93-661d-426b-e2a2-08de8c4756ad
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|1800799024|366016|18002099003|22082099003|56012099003;
-X-Microsoft-Antispam-Message-Info: e4IWbbGCuH8xj47YJXqjvs75DF+TsXKlLI6xypOEZUUAKwM297+CPUAaz/tibBpY8OwqPRv65xzpoxayVMJ/VtgGi+NdP25skI9kcduHN+GMmeqwUs/iu0B6OZ5KdaKj+yJLo+SvDyIPujp55HLFv9qhtZRSG53g8t2gI5FnAOrrpdzbqfVsHumhfqHHIjQJM1YwXsdl/o+ZGLdpctPg/LI/iuOS4+UGRmWuJTqvfAMJ8vwRAEhgOAj6Tv197BbBZ26pAcwy+SJAGX4a2nSZDbTtZh8ASX4lWRjbBqK9Xm9gOz0h9wCoDHGuvLEPQmtTTUP5ZactzC/9BucJrDumZFsbz3bfsksM46TT+59K25t5Wk752uu6bLXA5+unN433HNh+0eQY6wdgekgWq5AnkjiCk0P7/JRAjepOhW+ydXuy9FgTHhpIQcPHZA/+W+Ujc1mu7myk3JNyxhdH7i5CocoiJbgNfHhg0mE5gtQOz2PUWtks9TEodTB9/3bEvLp7Lz4LCLpb/ppy3XqXlax5OJuC/xZrth/igx7EZg5peQGUnHhyBc9od0qw+SfTKX+pLk8c+iZNHE6abfRm9FHOZdYQRGuCElm+PO6h6o7nAhfiOw5BplZZEWA3qaTodZjdVnHq/7H2R12gAH0CX/15vZAeo57LmK1CViW8t2VMum3Pv0SqLYCIwtj3jUO4EPclW1TnzP/8y29rjQ10U1svmmGGrgJgJJE9bGzsKFwnrAI=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH0PR10MB5338.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(1800799024)(366016)(18002099003)(22082099003)(56012099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?eLyXYbOqX0Fpz3vHwgHufcpgHw+Z5z+C2wqu3tfVYNBey7XFkiafaBKthNN8?=
- =?us-ascii?Q?9UiM9bpE05z9+WXlZjxig766GJ0kqpSW+WNDqLcXJxsYvilKoaA1cF2oIo6u?=
- =?us-ascii?Q?N7+TqmHksATSHkeslNK7o4Govh8Fdeq5sd0sRAZ4lIFi41YgaX3PAytAoZ7i?=
- =?us-ascii?Q?d/imA+P1KxwHJtNb6iGLJxUkZTuge5FT/3TevPgVbPCqFCF0abMhiRTqhSOz?=
- =?us-ascii?Q?EZiDL7Sz+2utwPUh0qdY5mRFUoUv9jgkQTrjbJTEHFYBfBZ2vFg+brlQt3pJ?=
- =?us-ascii?Q?4igDawmimjA8SkaY5IUvU7wB+u3whgsZjP/BkM12yawYABktq9I9yDS+cnBb?=
- =?us-ascii?Q?9xbWVFnH76BkrZ5glfcXn18km1/TX/38/D8LZiiFhL9NKfq/GmACWfRlSiXo?=
- =?us-ascii?Q?W0UuhebsF1OG53I+EmTD+J1iveQmzAXd/DYACFGaHYoGKl/tre+/SFPOVaFe?=
- =?us-ascii?Q?9bjilv1IOHVTp2G+U0NwFcpVlYIsQIVzarQoTsZuS4QkdRMCxIgkNUs5rJ0r?=
- =?us-ascii?Q?c6uYWbrHObkkyQ8k7O2L6gIn+FnKglbrOlWAV/28LOpZGNe+oyRH5Jxppz5Q?=
- =?us-ascii?Q?WI2P3ULNmCvRwqfi3pB0RUOCHPPZo/KTzw18Eada252M8uRuhP7kvXv5pQNe?=
- =?us-ascii?Q?xCdvTOxId0j/kSUbA8EvtILTLpnM5vsjMOiqX+MrXf+QwESM5TA5r8GCU8YG?=
- =?us-ascii?Q?K8/l7IjLdWS/ICf18D+VvQq/fRrjKbMhLRQC2Exl+kyGa8RkdSUhrCdVJBSn?=
- =?us-ascii?Q?ymlrOXo5W5a9tEx9QT46d3CZ1cKeveDdo0Yd2z+gZ7zqKdaEIqvPtjbLqihd?=
- =?us-ascii?Q?dyoV/mK8At7ZdV6BTEh+V9+lyZoNbKDG9HeWLZzLGiOUGtQDigfBb3/HbGwI?=
- =?us-ascii?Q?d4I9Gf1mAPJ6t0EellCAApGI/Qq8lKdzdBZN6UahomSWYd2lmANyCRqFyc8t?=
- =?us-ascii?Q?ggLqFERkxcudgCO1gMBTLk0a/7b0HWB88KZzfXbw11sHdq3JtsDSRZ9fGyGv?=
- =?us-ascii?Q?NyH36UJZWg/qq+AaofUgydsu3RQlL99HmTSQL9PFIsTVrkrC94OCaIxikg8+?=
- =?us-ascii?Q?4/JqJEf7TCvt4ay3bXUIpF42E4mCzPTeacRyB0CGghMLjZX96bBYIqZFT4Z8?=
- =?us-ascii?Q?3InVd11UDNLKjIiREF1ZnB9t9qXafq/Qkfb08RyPU4PPS5rn5xtUakYv67O1?=
- =?us-ascii?Q?ZcpnzWk8jfmLC7zfpq/xKZnUdKsV2Cl1q3nS1q/GqY65xoopYmnNgMaeRJSp?=
- =?us-ascii?Q?Q7DO6gKjkPL3Sr3k5u/ziCQCqtPOukNd6dRVydi5R8Mit7ZtR9FTNuK3ctjP?=
- =?us-ascii?Q?IOK9EyCvV40ifoGKQsYZp8SROG+eAY4hOGvV0I52yeVX0E1+6P93ilP2Fxbq?=
- =?us-ascii?Q?NXgYq99vR1RXPgW9V3MJH7zNasX43wWWjl1R4q3G7w3YQSgQWn5ajoT2rSKi?=
- =?us-ascii?Q?dDExbklUY4p7DX2sPvlRBN/BsyRtHR7G6hJtG8qIyAtTqkEpE6sDDERvFEwx?=
- =?us-ascii?Q?mvOXZuOYs3PZUsjQMu72grVqRnR/1cVP+t1z/0GR8PQP2aXxxvQt5DWWZprp?=
- =?us-ascii?Q?fZR1DPYenJ1iExUYcpkUjqIx/B0GE0L5HYKiwqsMcezUVpM5d2oguWvvSN2N?=
- =?us-ascii?Q?BOBWCUkhLJWTLZOSTMcjXZejpz/jPPWjnf5DaQiGIXd+BlDsHy2ll4q+FKDu?=
- =?us-ascii?Q?RMoH6kb5rFb1oDsQbrhZqU+mCAuaI3NmWDUFT0P7vIp885wv/JXmHj5egnmU?=
- =?us-ascii?Q?e/66MKzL+dzCbD4Nq5BIRNs38rSPdZ0=3D?=
-X-Exchange-RoutingPolicyChecked: QWQIZ6pv3BYtFI9B3vN3xxeI+G6CfAcrxtMacLcPfnJu+rErg/YWYxqQA6927LLXHFoiiQWbLsMnN4eFxJNZsUTZsOMm8cmIWNeiPqfK2NfLOpm7i1+5BcSS48RkTZm3ettkA2JIjzN/qMH4Moi0aFaa/R3xvFpgjxEyib9bWxtPetB94EBg+FNedjKwy608Pr0kYbrL8N3gjSLzTVoluKpriHhFxN8rnPksPCJHkM97AOUmja4vCGUuJfXng3Dq+wYNxzRoaWz0Tdbo4RQ8ii1+UK9OIXSp4dzV8OUuISyTtQSktQHeGIojBF3dpqbpgSdibs46U01NGo++ETHBPQ==
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: nng98+KGrKgCvjUzMXDL5UEnvZDT3OYqUMI3Rl3HA26IMh0EpQwSrQJHWHW41RpRPHjgJTWLkUXzPbRjCIAMGHSi8VOiYBS9dMfxGvdRAHj2BA5XORyx8CA9/AAGeeiJakhw744vTsszTZRPiH4fKruEItEbgGz5rEH02T0Uypu3REXih3EDvHy8A5jLpvPsEVPBzD3KEfFUwl3reQ+v+ebTfAukUV4FLvimbU+r8mS4c4Jm9sjKzTQbvSZHCBb+Xn/XiA8crDJ2N3blWAkySAaK0WN7i6h187NrW/LjfGBXq0yqW7WpTY61Hc90TuLmuyfFzD99BxaAQqYsaZ6LW0GLduAR3qHtBgrwsDJZuxG5U24nkkMwnXBWUKEX4Mh5I4b7Are9vZfJ622o/BrVNh4rg+klH4JK7RILsM4LB478WZQyxNodcVz/3xCkq7eMGq+/RMYHUjFmQ2gd7ttAh8nCR0Q7IQghBgekePlTE/5jJ9+uR60eMAvIoLm+O/jusNQViZxPqrfdwuCJYxC+yxqPLI6a3+dcTm3CMXxLOUMPk8gEPIiZKISZIv06YpdI/Dxy0ZQxN2JQWGUM/U+lD77k5CZpI7cnbpByU91aXBg=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c13b3b93-661d-426b-e2a2-08de8c4756ad
-X-MS-Exchange-CrossTenant-AuthSource: CH0PR10MB5338.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Mar 2026 21:25:15.9410
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: z54Vkja20x+ZsLWvTa2nBsvR/g/OUlcIoiAcf2dhM4rU9MGLjD5cf8xflB+8Sd9MBV0FKDfS5VkHC6fx5BOPEdvd6sVLEd3wZeKOlxYznxM=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR10MB6879
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-03-27_01,2026-03-26_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 bulkscore=0 suspectscore=0
- malwarescore=0 mlxlogscore=999 spamscore=0 adultscore=0 mlxscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2603050001
- definitions=main-2603270150
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzI3MDE1MCBTYWx0ZWRfXyrERv4P7gNnI
- zrmu/JQ6P1f/gTbe1WLN7M4E3oYvqFIQG/Rx/57jq57MOlOcuhqg32Yz4+liISDk2L1Shte1PWW
- hetjGqatVHiUPMPvfy+H+Xg3znX5reiwJ111URQrX3xIZT8Ad7jZgxoHlf1LmBqeZ/nve0gKSUH
- OxCEtZBSSj7Pxf61yQc/UuqEtppATPzsDS3mHCD4aLjwLpjMLcM4pEvqrUcWVJ8bMWqLJa7MEQS
- VzHdE7Uf3jmFCKsK3iRr2XLv2AFjtiTy//v34hwbNmhUI5gULR1zpH4fQ6XNyubRcLthGcpWHQ2
- 39egD5NY5G4BA2XeHxZf+N8E4G5T3DyAaQleQThsFtGb9lCBWSvgjB0/hnCFbkoznCQoPKybN4T
- MMD0s3dYR6si0+59sqHcIqKhWuRZFc7gc56lbmzWkS2+ADDxLw0ZrMGNGpNfuLjHU6eHmhLL8st
- oiVU3m0F+syR5K++SIzRs6259eaiNy4btJeuwCo0=
-X-Proofpoint-GUID: 2vGVFJbs_xpQz-qMYsU6XMoqlP8-Zt45
-X-Authority-Analysis: v=2.4 cv=GrtPO01C c=1 sm=1 tr=0 ts=69c6f5c1 b=1 cx=c_pps
- a=zPCbziy225d3KhSqZt3L1A==:117 a=zPCbziy225d3KhSqZt3L1A==:17
- a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19 a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19
- a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19 a=xqWC_Br6kY4A:10 a=Yq5XynenixoA:10
- a=GoEa3M9JfhUA:10 a=VkNPw1HP01LnGYTKEx00:22 a=jiCTI4zE5U7BLdzWsZGv:22
- a=7Gl3-_t3PgB9XO-mQDs3:22 a=52_T1jr_FX7imiZLLDMA:9 cc=ntf awl=host:12275
-X-Proofpoint-ORIG-GUID: 2vGVFJbs_xpQz-qMYsU6XMoqlP8-Zt45
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260327_142535_155757_227B4CAF 
-X-CRM114-Status: UNSURE (   8.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260327_221641_239681_2D5ACDA7 
+X-CRM114-Status: GOOD (  16.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -191,18 +93,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This patch set adds support for the video decoder on the MediaTek MT8196
+platform, leveraging the VCP microprocessor for enhanced performance. It
+introduces new firmware interfaces for kernel-side communication with VCP,
+adds MT8196 compatible, codec levels/profiles, and private data. Rewrites
+the AV1 driver to support extended VSI structures, then change irq table
+and cdf table size.
 
-Can,
+This patch set depends on "Add VCP support for mt8196"[1]
 
-> The UFS v5.0 and UFSHCI v5.0 standards have published, introducing
-> support for HS-G6 (46.6 Gbps per lane) through the new UniPro V3.0
-> interconnect layer and M-PHY V6.0 physical layer specifications. To
-> achieve reliable operation at these higher speeds, UniPro V3.0
-> introduces TX Equalization and Pre-Coding mechanisms that are
-> essential for signal integrity.
+[1] https://patchwork.kernel.org/project/linux-remoteproc/patch/20250402092134.12293-2-xiangzhi.tang@mediatek.com/
 
-Applied to 7.1/scsi-staging, thanks!
+Compliance Test Result:
+- v4l2-compliance: 48/49 tests passed, 1 failed (known issue)
+- fail: v4l2-test-controls.cpp(981): ret (got 13)
+-        test VIDIOC_G/S/TRY_EXT_CTRLS: FAIL
+
+Fluster Test Result:
+- H264:
+- Ran 95/135 tests successfully   in 73.540 secs
+- H265:
+- Ran 142/147 tests successfully  in 100.168 secs
+- VP9:
+- Ran 276/305 tests successfully  in 106.804 secs
+- AV1:
+- Ran 240/242 tests successfully  in 23.991 secs
+---
+Changed in v4:
+- Rebase to latest codebase
+- Move dt-bindings and compatible to the after of vcp driver ready
+- MT8189 base on MT8196 patch set
+
+Changed in v3:
+- Depends on change no update
+- Add Compliance and Fluster test result
+- Re-write the commit message for patch 12
+- Change the patches according to review suggestion for patch: 3/4/5/6/14
+
+Changed in v2:
+- re-write the commit message for patch 1
+---
+Yunfei Dong (14):
+  media: mediatek: vcodec: add driver to support vcp
+  media: mediatek: vcodec: add driver to support vcp encoder
+  media: mediatek: vcodec: get different firmware ipi id
+  media: mediatek: vcodec: get share memory address
+  media: mediatek: vcodec: define MT8196 vcodec levels.
+  media: mediatek: vcodec: support vcp architecture
+  media: mediatek: vcodec: support 36bit iova address
+  media: mediatek: vcodec: clean xpc status
+  media: mediatek: vcodec: add debug information
+  media: mediatek: vcodec: send share memory address to vcp
+  dt-bindings: media: mediatek: vcodec: add decoder dt-bindings for
+    mt8196
+  media: mediatek: vcodec: add decoder compatible to support mt8196
+  media: mediatek: decoder: fill av1 buffer size with picinfo
+  media: mediatek: decoder: support av1 extend vsi
+
+ .../media/mediatek,vcodec-subdev-decoder.yaml |   1 +
+ .../media/platform/mediatek/vcodec/Kconfig    |   4 +
+ .../platform/mediatek/vcodec/common/Makefile  |   4 +
+ .../mediatek/vcodec/common/mtk_vcodec_dbgfs.c |  21 +-
+ .../mediatek/vcodec/common/mtk_vcodec_fw.c    |  16 +
+ .../mediatek/vcodec/common/mtk_vcodec_fw.h    |   2 +
+ .../vcodec/common/mtk_vcodec_fw_priv.h        |  12 +
+ .../vcodec/common/mtk_vcodec_fw_vcp.c         | 561 ++++++++++++++++++
+ .../vcodec/common/mtk_vcodec_fw_vcp.h         | 153 +++++
+ .../vcodec/decoder/mtk_vcodec_dec_drv.c       |  16 +
+ .../vcodec/decoder/mtk_vcodec_dec_drv.h       |   1 +
+ .../vcodec/decoder/mtk_vcodec_dec_hw.c        |  28 +
+ .../vcodec/decoder/mtk_vcodec_dec_hw.h        |  13 +-
+ .../vcodec/decoder/mtk_vcodec_dec_stateless.c |   6 +
+ .../vcodec/decoder/vdec/vdec_av1_req_lat_if.c | 113 +++-
+ .../decoder/vdec/vdec_h264_req_multi_if.c     |  11 +-
+ .../decoder/vdec/vdec_hevc_req_multi_if.c     |  12 +-
+ .../vcodec/decoder/vdec/vdec_vp8_req_if.c     |   5 +-
+ .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c |  27 +-
+ .../mediatek/vcodec/decoder/vdec_ipi_msg.h    |   2 +
+ .../mediatek/vcodec/decoder/vdec_vpu_if.c     |  12 +-
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc.c  |   1 -
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc.h  |   2 +
+ 23 files changed, 985 insertions(+), 38 deletions(-)
+ create mode 100644 drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vcp.c
+ create mode 100644 drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vcp.h
 
 -- 
-Martin K. Petersen
+2.45.2
+
 
