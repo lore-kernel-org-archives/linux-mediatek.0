@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C5D310F3DCB
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Mar 2026 05:17:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C1B710F3DCA
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Mar 2026 05:17:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e6XngLUckco1OS7SuwQLcvPxEOedev4wun0qUBLHLUQ=; b=AKxe3TMaM22+A7X22ZUOZ12vvF
-	VZ0refOGXg/6c5TMaT2+HZ4na/P/6eW7KU4VfmLHabLws3A6DECPCDrbYbkozT9Sh0EId7qv6051i
-	tkpGdW0TLdFf9LeZEPf5swSIGitdGehzbiuSJ96Cct/d+JJvEClK3cDEY6L8AFfjwk5/DyIxsxl+R
-	DylVyAyBA2tSJIuXmbdmq4r8p3CQf315EIbUOs17/eRtS+EcXEez3prHFYzIX/W9lhRNsJ6UdEV8e
-	GgxPAlfQlw353zAP65D5gdn3TCcNzmOkrMNyVoYxMWVdctt1DbDdbQ2snCj1OnlMR9rRmdhxDEkZJ
-	EssV+xMQ==;
+	bh=fboU0It6ToyJiyGzCLDiK2SnVMilY387Mkvchhg7tVs=; b=UAAsJqnc0qHN9NZd6M2LHGv3yi
+	DJaBkeEdGzcDZxcUdYuqR6i1eUcbzxsz1EO/GMdCrNQLDpB5wPxzbCTWzYxYIFKnXm94nGPz4hDrd
+	Dl/Ym2BMAX3iH06z6PbCgMJksVrvJxUQZO7R7xvhtNEecRWCO7gay6Q4HJEy8ZxLr3mYnAfbpKxqv
+	5UtFZInZgcVjteIJcPxbyzzDJ+DrW7WcZstuWvQK76KuxZESN0CfeuZEXRtOFAVd+3V/f6oPSyNZS
+	2yoW1F1QHao78cRNAAK+yR2Jlcc3U2jUaT44Vvel7l2/X8ZpxBU670s6GcbdE6P6P0ATYYfecJwta
+	qya0bY9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w6M2q-00000008Z8Y-2krk;
-	Sat, 28 Mar 2026 05:17:12 +0000
+	id 1w6M2v-00000008ZBd-1085;
+	Sat, 28 Mar 2026 05:17:17 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w6M2O-00000008Yos-3Pko;
-	Sat, 28 Mar 2026 05:16:45 +0000
-X-UUID: 4eaba2182a6511f19e7563141e833ce8-20260327
+	id 1w6M2P-00000008YqF-3RNB;
+	Sat, 28 Mar 2026 05:16:46 +0000
+X-UUID: 4ddae7402a6511f19e7563141e833ce8-20260327
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=e6XngLUckco1OS7SuwQLcvPxEOedev4wun0qUBLHLUQ=;
-	b=aFKisSBGsK3GCfMjy8eU52O60RsjepexqlNoiIUTnmXL0S9soDG9lsL5kUJrOFDk6I3CnfJ7kqLMJ+RrEg6oeOwCOQT0rNyqmKw5aK4nAmmrE60mGQ609Pwhzt55ZRqyaAhqWM77H/ZWc1Ye8XgZ0Lb+zJpDbXTIVbG6e7zGnUs=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=fboU0It6ToyJiyGzCLDiK2SnVMilY387Mkvchhg7tVs=;
+	b=NRa3Ii8uir7WRGugwq2zzL9udquWSwkP9mq8R6RTXqzghSCOulrolgEF3STfMR8EmftckvBj1fB0syiV+a2hGgwl9KGbZd42S9NmshCBD27mcHGNX/HtXKhCoR3vMKts/CCgddxYBIDA+owIW4RQuiM57A4mHKG0K16wzavIMMU=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:12f1e540-36ee-4e76-a5e1-d0da6fcd023a,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:e7bac3a,CLOUDID:a5c8c98e-6df4-4a3d-a7a4-fbdc42d669ce,B
+X-CID-O-INFO: VERSION:1.3.12,REQID:69f1783f-953f-4dfd-b58b-3c4ef14b325b,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:e7bac3a,CLOUDID:c1254d94-f8ef-4ca8-bea0-143568f9ca1d,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
 	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
 	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -42,18 +42,18 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 4eaba2182a6511f19e7563141e833ce8-20260327
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+X-UUID: 4ddae7402a6511f19e7563141e833ce8-20260327
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 779602724; Fri, 27 Mar 2026 22:16:42 -0700
+	with ESMTP id 408889920; Fri, 27 Mar 2026 22:16:41 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Sat, 28 Mar 2026 13:16:39 +0800
+ 15.2.2562.29; Sat, 28 Mar 2026 13:16:38 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Sat, 28 Mar 2026 13:16:38 +0800
+ 15.2.2562.29 via Frontend Transport; Sat, 28 Mar 2026 13:16:37 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
 	<nfraprado@collabora.com>, Sebastian Fricke <sebastian.fricke@collabora.com>,
@@ -68,9 +68,9 @@ CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v4 06/14] media: mediatek: vcodec: support vcp architecture
-Date: Sat, 28 Mar 2026 13:16:16 +0800
-Message-ID: <20260328051630.7937-7-yunfei.dong@mediatek.com>
+Subject: [PATCH v4 05/14] media: mediatek: vcodec: define MT8196 vcodec levels.
+Date: Sat, 28 Mar 2026 13:16:15 +0800
+Message-ID: <20260328051630.7937-6-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20260328051630.7937-1-yunfei.dong@mediatek.com>
 References: <20260328051630.7937-1-yunfei.dong@mediatek.com>
@@ -79,8 +79,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260327_221644_858750_281A96FF 
-X-CRM114-Status: GOOD (  10.77  )
+X-CRM114-CacheID: sfid-20260327_221645_864387_EE1399D6 
+X-CRM114-Status: UNSURE (   9.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,29 +96,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some platforms expose the video codec through the VCP coprocessor.
-Use the VCP architecture when the VCP coprocessor is found.
+The supported level and profile are not the same for different
+codecs and architecture. Select the correct one.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ---
- .../platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c      | 3 +++
- 1 file changed, 3 insertions(+)
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c      | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-index e936ed8dffba..d220b645e455 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-@@ -379,6 +379,9 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 	} else if (!of_property_read_u32(pdev->dev.of_node, "mediatek,scp",
- 					 &rproc_phandle)) {
- 		fw_type = SCP;
-+	} else if (!of_property_read_u32(pdev->dev.of_node, "mediatek,vcp",
-+					 &rproc_phandle)) {
-+		fw_type = VCP;
- 	} else {
- 		dev_dbg(&pdev->dev, "Could not get vdec IPI device");
- 		return -ENODEV;
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
+index ab1894fba0d9..472ece5713a5 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
+@@ -577,6 +577,7 @@ static void mtk_vcodec_dec_fill_h264_level(struct v4l2_ctrl_config *cfg,
+ 		cfg->max = V4L2_MPEG_VIDEO_H264_LEVEL_5_2;
+ 		break;
+ 	case MTK_VDEC_MT8195:
++	case MTK_VDEC_MT8196:
+ 		cfg->max = V4L2_MPEG_VIDEO_H264_LEVEL_6_0;
+ 		break;
+ 	case MTK_VDEC_MT8183:
+@@ -595,6 +596,7 @@ static void mtk_vcodec_dec_fill_h264_profile(struct v4l2_ctrl_config *cfg,
+ 	switch (ctx->dev->chip_name) {
+ 	case MTK_VDEC_MT8188:
+ 	case MTK_VDEC_MT8195:
++	case MTK_VDEC_MT8196:
+ 		cfg->max = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH_10;
+ 		break;
+ 	default:
+@@ -611,6 +613,7 @@ static void mtk_vcodec_dec_fill_h265_level(struct v4l2_ctrl_config *cfg,
+ 		cfg->max = V4L2_MPEG_VIDEO_HEVC_LEVEL_5_1;
+ 		break;
+ 	case MTK_VDEC_MT8195:
++	case MTK_VDEC_MT8196:
+ 		cfg->max = V4L2_MPEG_VIDEO_HEVC_LEVEL_5_2;
+ 		break;
+ 	default:
+@@ -625,6 +628,7 @@ static void mtk_vcodec_dec_fill_h265_profile(struct v4l2_ctrl_config *cfg,
+ 	switch (ctx->dev->chip_name) {
+ 	case MTK_VDEC_MT8188:
+ 	case MTK_VDEC_MT8195:
++	case MTK_VDEC_MT8196:
+ 		cfg->max = V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_10;
+ 		break;
+ 	default:
+@@ -642,6 +646,7 @@ static void mtk_vcodec_dec_fill_vp9_level(struct v4l2_ctrl_config *cfg,
+ 		cfg->max = V4L2_MPEG_VIDEO_VP9_LEVEL_5_1;
+ 		break;
+ 	case MTK_VDEC_MT8195:
++	case MTK_VDEC_MT8196:
+ 		cfg->max = V4L2_MPEG_VIDEO_VP9_LEVEL_5_2;
+ 		break;
+ 	case MTK_VDEC_MT8186:
+@@ -659,6 +664,7 @@ static void mtk_vcodec_dec_fill_vp9_profile(struct v4l2_ctrl_config *cfg,
+ 	switch (ctx->dev->chip_name) {
+ 	case MTK_VDEC_MT8188:
+ 	case MTK_VDEC_MT8195:
++	case MTK_VDEC_MT8196:
+ 		cfg->max = V4L2_MPEG_VIDEO_VP9_PROFILE_2;
+ 		break;
+ 	default:
 -- 
 2.45.2
 
