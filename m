@@ -4,142 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBD4EF3D5FA
-	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Mar 2026 08:54:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1F77F3D5FC
+	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Mar 2026 09:12:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=56CjK8Dlmjlu61WmN68lHw5bOAP1Bw9JF0FQpg+rfOw=; b=N0wXQQicHu2G7INALYI3+MIwb1
-	O3YbbxQVUJ2c7g6h+0ljc9OZPtsWgcztcbng0RyDPhBEvkULcG+LdUPJEq/suJFrzW0jTdvt3Z+8r
-	o59Q14ru3jN5lBvGKehEt8ntjjeEypAaOVAvrRW7q1LbxSCc9cBoXMUjWktAKjZKyno8RdeYXPyVA
-	PCFYPCVYMSyN9qUFSQKSWrtHtQNCSXJ9EBIiuEsPbQly2Qrmava+JRxo44wVznC383kpkm/8sOa9w
-	YbpK1Rlr68t07jgIRK+JVlwXIclZAchyIdjNe6i7bdyLIluRX38Qh2DqrzR6vCzYXL8YPpTFibv76
-	btVkAcnw==;
+	bh=TB/QPugCcb4AdM0Fj/XxB/blX3PBNtkMN7SH+oDhiFA=; b=GnecIu1w7rNBsWFgyorZcE7pah
+	XyuTlwIVKkepOsq1JyvDFx9J5AgVsRNg8nP6hESHppJaM4fwtqJ3GjNRIF8ObmBc6f2QyWKuyNbYv
+	/AfZai11D1XDZAi9tLuWyUSqocxlYVLjw/jVWA4BauRU/g5NLeJWj6Kdqsnfd49gVuqxs0G0BVmA1
+	3MBXsejZM6rDRayqvPtYwPxdTqTJL5MsClrmnF1tH/3c+a4JNSCzy7F3BFfU0f4WCOQ8dGY/9HYcB
+	GtnG6AviB+FQytTnbvlSAj0i7aQKRnIVrLBC0i6TgxK/vezAo206qlE9WbUZHJg84HWi30IZ/xTVy
+	uX/2SIbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w6luM-00000009lPu-0GoY;
-	Sun, 29 Mar 2026 08:54:10 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1w6mCL-00000009m4D-1OJR;
+	Sun, 29 Mar 2026 09:12:45 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w6luJ-00000009lPD-3F9I
+	id 1w6mCJ-00000009m3K-14qr
 	for linux-mediatek@lists.infradead.org;
-	Sun, 29 Mar 2026 08:54:09 +0000
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 62T7qV1L3521047
-	for <linux-mediatek@lists.infradead.org>; Sun, 29 Mar 2026 08:54:05 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:date:from:message-id:mime-version
-	:subject:to; s=qcppdkim1; bh=56CjK8Dlmjlu61WmN68lHw5bOAP1Bw9JF0F
-	Qpg+rfOw=; b=lwekuy3YcGrbipODntW9V0V3ZbtCSFrBwpaIIz2T8HXUDcZ2sbH
-	DfHpsYKzNL62XfZBIu6NZ8XGv07Rrx3IrkUNiVUu4qz+l3KzDYG7VPs/A39h7PUX
-	o2ofJShQCEQgb6ya8FlQ5pSgWlXqFxzzaRLMdHWaiFC6OaDPnQdCIpjNXvVDxmqK
-	aVGuY69K1B19cAX5xPAp2o9TRgpZoIWgsQ4UTviSVPohr9vSHYP4UsXWrFCkmiFp
-	Dq9rot0txpGs+P22/VSjzYEDIKh8iVMMiLHFZ4OblR62AzHS4rUoieDmgK9DmDiv
-	KcduodorRYh0JlxewEKCtzGvFscpd2SbO9g==
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com [209.85.222.198])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4d64bm2sww-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Sun, 29 Mar 2026 08:54:04 +0000 (GMT)
-Received: by mail-qk1-f198.google.com with SMTP id af79cd13be357-8cfdc479f68so391056185a.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 29 Mar 2026 01:54:04 -0700 (PDT)
+	Sun, 29 Mar 2026 09:12:44 +0000
+Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-43b88b7ca76so2897013f8f.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 29 Mar 2026 02:12:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1774774444; x=1775379244; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1774775560; x=1775380360; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=56CjK8Dlmjlu61WmN68lHw5bOAP1Bw9JF0FQpg+rfOw=;
-        b=RbSlNTktqBbHDJD3xGi7UPgo/XHTparkzGVRl7+kNAAfUUaeF2jRoHuP8/VEDaTdMy
-         3mNy8gGSxsDqij4N7nYe5pZHvpFw8YxKXZgnrPAuH3kEvwTQhDKuadgYGLIQYUjNOq7C
-         CmjO5TLzZNCyaE8hNMlU8b2zewEylhptT1kdFClUmye2WaEmLx68X36xFZp0EFKLqjsW
-         YK489Fsbg1rKi2rQCHiwMdNxQ6IhTMYCOJHLxDYXfgw242bzA2BWPgjw6EnhaAMoeg+A
-         YXo0qBfgCvd5evU62W6of383spflobVHKj2LkBZd0TY0fRDXtgXePE5wTQTKs1Kfgv1F
-         CzJA==
+        bh=TB/QPugCcb4AdM0Fj/XxB/blX3PBNtkMN7SH+oDhiFA=;
+        b=c3KZYfnkjVAhcs1j+5vPk+NF/VTH12UfaL75UKux0nbpQl4pNe3yrOx17UGXx1qyNc
+         qs6m85mrmERpw2Ru3xLmQ2ayVhBU0aDjB8wl5uzKBcvzC1YvRIBzm3nXL9PoJRO6fbxB
+         KlHpvM4fGI3KRDIZ0Y8AG32Sayvu19BdHJPm4k9DnI3323VxJUetoMEBhFsLcwLLlxWK
+         EwH7gM2/dpeT+cJJZSBcz82rP50Nulhhq8guCZmGXAILyJ23t8fb7P5LXS5SvDkgiKA7
+         5KeUhxosZR+9KTGl9uf1HeTirKKG9GFhGDclUiA2eNlJTqv5dpzo5SW3j6TanwxgAWcM
+         Rdag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1774774444; x=1775379244;
+        d=1e100.net; s=20251104; t=1774775560; x=1775380360;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=56CjK8Dlmjlu61WmN68lHw5bOAP1Bw9JF0FQpg+rfOw=;
-        b=ewLvECQ39r5kHfjSqMUypgFszqDGoQHud6r9npKzbU3bbmlQI0JoGocsvu9/nxHcfn
-         8Fnly7Rkw27QMWbmE4lvfOsnwx5XcumfMBPoE9L6FeiVKrzYr+bUcWS85Mi6Y0JfzZvO
-         Xi02fru26F1pUThb4ZnftvbHHDyQZLE27rLZ6AUUK1a+mHrKiYHI3Www31tTSGpXHbZ7
-         8D/RyQvFzZHvI2lPWX9dl3AEOY64nhUY2Y/NNeknnq706DAnDEELu/lu1NH+qfXFtpQ1
-         Do5JuyRusvU0YVRbi3YNqcjpJo7sWJWy2qUwf50y1S14zuNP/fB/PFRmmBHFndkXQHjO
-         cwdQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVRq2Ig2QLt+nu6XjMYiSNJ5GZQRIrc8CjdM+B2P0Z0OLLDEju815pjQrRVYrEJFZ4x0IDXXkJrNL7RobX0Kw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwGF1KAxogA+93Z6f9nY80iHEBCJYJD0hZwSZoldj4f+05pfTVl
-	vTKRuSoEKkJwXltptjCcyFn7z36Z6MtaZGm/CueIRH7q6QxgU8PNayClnbLJ6HYHQ1VHZMCne+1
-	p56ZwCghqByeQ3fr06S3wIMaABiqNW0cmnHRJd1oea2z+SdQRSSaTGAiOn/TOBBl82reP2ES5rk
-	A=
-X-Gm-Gg: ATEYQzyv23dpiinsVA8/9WpmR8L5vKFO1LVjd2ENTjSpEjjNAuHoQ9FBSSV3+Ho5CdU
-	K9UnX/Ll3PCoKwwfDddZxr5neWu+PLRDzCevpKDcPWbzbYZdaiWOUeT5L9ivrcVRevR+vTSmtgM
-	FHbIshXWRBYB1+Uex4OKMYJlYERrI5mdiuoQc7wMk8VJilAU6yIs9q+h4c0vJmjzhSrJON5Zm7r
-	DPykQkDtMO0s5iUia75ZKymzJVQ2SBZRqSZp3tBfwqS3Z3JZc3QWjVfI17KtEk6R9bPTEU19TPO
-	wfEaQurlGZ4sPUwjroUKSOou6vy/qlGfCWyZCWtFmqIu1zM242MnRKhQRvULlYWSih1IOCsJ2IA
-	KNs8bYdgq45VMjxnSLZrqMgd6ccBB+YINy/Yq
-X-Received: by 2002:ac8:7fc9:0:b0:50b:47b0:8138 with SMTP id d75a77b69052e-50ba3808ce1mr122433121cf.3.1774774444160;
-        Sun, 29 Mar 2026 01:54:04 -0700 (PDT)
-X-Received: by 2002:ac8:7fc9:0:b0:50b:47b0:8138 with SMTP id d75a77b69052e-50ba3808ce1mr122432981cf.3.1774774443736;
-        Sun, 29 Mar 2026 01:54:03 -0700 (PDT)
-Received: from quoll ([178.197.219.94])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-48725fc4827sm52017705e9.11.2026.03.29.01.54.02
+        bh=TB/QPugCcb4AdM0Fj/XxB/blX3PBNtkMN7SH+oDhiFA=;
+        b=gnBqwRgbwhJvTcwKly+ikl5qNJOP6K6knLyX4TZceA/s1kND0a3qNPCsdyixsYCvLG
+         U9xSOwPhceH4+uFQsPSgHwxMWmNZTZc2f8LhHLjFRnrw4XBIK0sywIRo9UrwrATxOAPy
+         HtNFwnnMUwC4cSo/aLN7rRKd2kWSvtZHsVv9kc9nea0Gn2smXa+RMBN4rXmGa18ETtls
+         ICwmqjlOKDH0ETHisXzAzQgXB8uSCXLjdalJbc8Cvv8UHW2RftVMXLl43wjky6mRjLvu
+         TLu+xbbIKyak9YyFJfALOiQqZk+nroox2ES6WCv91ds0nS47NycLuSogzm4V6jDOvW1o
+         Ovbg==
+X-Gm-Message-State: AOJu0YzBxd43gwjOMkc7Y+lRkqS7skE7lxP2tcQ8rO9TRJ/aTeP6Mj/Y
+	AamZgs8/PDllagFdlj8Vk7IRlJYqZ7B2H2ChceDNodaIsDuJkVzdHgI65vURghP8
+X-Gm-Gg: ATEYQzyO1t8JzGmUYVw+kY6iZMB+yq/7ws7TMiH4Qo+Q6N5HYiYwhqeUuCg+ir/ZcTV
+	5zlwZDyciSXla6rnCpY7l3bHUCZOcfi3asfzI713iVggFpnYMkGdqQe5eiRdLeHILdttvgwA0aJ
+	R/T6gSuO+0O5rCHlBF6xDIAk+PzlOjGwCmtuNWj8Ct1+kYR2JksRF5stVX8ml83apFI1jxx9gTZ
+	N17oVjCdy8RDOM3RY2fqJ0QHpnSFrxTvJQhj6H3wYylxUUhJYQhCfUlj/ES5BpmCasZXSBu+MZy
+	h2ntquL0XYE4fUlb2fcEvIhRgSu4VnpcgiyrRcUXjYZ66ECS07THy2VSZ9NWEEvz34MPwrVmmFF
+	7wdOjUwF8gne0l0Jmv+D86qVTL8lzf8IWOCrkjpRA+fx+fD9J/ie9TfTuHu8Rip7iMcanukXafX
+	l1bhx+HqMXV/AsrtbUnsI=
+X-Received: by 2002:a05:6000:428a:b0:43b:5b25:67ff with SMTP id ffacd0b85a97d-43b9e9a97e9mr14703306f8f.24.1774775560242;
+        Sun, 29 Mar 2026 02:12:40 -0700 (PDT)
+Received: from luca-vm.lan ([154.61.61.58])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-43cf90424fcsm4625813f8f.32.2026.03.29.02.12.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 29 Mar 2026 01:54:02 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-        linux-mediatek@lists.infradead.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Subject: [PATCH v2] arm: mediatek: MAINTAINERS: Include SoC bindings
-Date: Sun, 29 Mar 2026 10:53:54 +0200
-Message-ID: <20260329085353.8649-2-krzysztof.kozlowski@oss.qualcomm.com>
-X-Mailer: git-send-email 2.51.0
+        Sun, 29 Mar 2026 02:12:39 -0700 (PDT)
+From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+To: linux-mediatek@lists.infradead.org
+Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Fabien Parent <fparent@baylibre.com>,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH v2 RESEND] soc: mediatek: mtk-mmsys: Restore MT8167 routing masks lost during merge
+Date: Sun, 29 Mar 2026 10:12:20 +0100
+Message-ID: <20260329091225.4530-1-l.scorcia@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=917; i=krzysztof.kozlowski@oss.qualcomm.com;
- h=from:subject; bh=uTvVCFYn6ggVdhBFdj3biKma/pt3C7DlTk7Izwkt6jQ=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBpyOiiIrBvn87zGeI4ZNk6E/RKCc7XfMwgS9vAn
- jMMfkmWs3CJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCacjoogAKCRDBN2bmhouD
- 12qYD/4pqcCBzo+fjkGl5/LWnfHTPg4q/79c0QsaeUJzoRNQYizleMmonoS9GrRgtV19ABV83aR
- MsiqCL4pZ/zzPKlIhSHGjpMw/Tze5MME3adwsMEBapto7LMeoTxRdweAn1eb/Yg1moXTMc5xUyA
- vTkST+Pjj5UP22LJtbMgC/i1VwsZzpCI2DdMaW9PWOGv4AXpsO5cBCscq3beTi7fX17WomIp3+0
- 6YbNOVPLtqKCmfeTVMIUl2qopnHgOa09WmVRX2pjiH9vEj8ZZLunKB9hXb23npK1Or3rqG3+Pqg
- ZY7aNmP3knlkA9+65qSkdIie9a9EFE8IrfGTOr1/7hQQdiiJqlV0qyltEv9knJHs2/wI5Sy21I5
- 6HyCIpZbb2Zs3ewbdQ+eb0xp/Jlaz0pkrfzmj1TASOyfEXZiZHiNYMRZmaAGpYbyUfSDnptshMh
- d/NHsiqHmVZdU+98GCZ9RiX5C7D5Rq+p9uETOvEy7AbS+wAcwWTsoWuaahZgmx3I5t5k0jk8Mwf
- z1vda4tycQSFYIunt+/ba2fMzyGh1yccWcwGqY3zOSFvwqvPRmihQWd/b85cRgWcuYsLJSdBVP0
- Fe3ViNYcd18QwvMcmrgB+5g9+UcJL+ZV3u6feL7q5gTS0NUR9pZboYPdENKbGcC+qD5pdEwgQQl lOnDvUSv1k3Z8RQ==
-X-Developer-Key: i=krzysztof.kozlowski@oss.qualcomm.com; a=openpgp; fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: irvSZOumcCCFBzdmScJVd-BMe7yYjopp
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzI5MDA2NyBTYWx0ZWRfX5cL0VkFY1y/n
- jN1lrBrFAY3VddzGK5Gpg/Vl/CDa3EeS3o4rG5G88N3yY45FUzSXM2dh6tk+NdvHBRxZ7qgbKlg
- ahrLZFFvQjs9zFslXY9kZv9QtlqrktgVzFlKf4aAE9KtET2GFz1sT/TKez+pc+sB+/3Oqzo+gXV
- tDgvUitmD1lQlxiXDSbUEfbnR96VIrmdhUwYmlEQ+AEgjHgy/VzvnteWXDsyYeKeUb4s8uW4HeL
- C/ibK/Icu9fvrpUSmT91O1jLdgu7M3POLWTqcS5jQSkkLZbFWWgMUA6cc5WSFaxjacGNvTzL7f+
- YLpHxEuQG0b4CRQXZ2wx9Ujj8ZFxjBlM8/qLEWNdCto1Xf/ZCMJhmqh5k+rZZ71s1qaJG1/HoYs
- PjcFL1PxcKyY2zRZ1Ei6VlKjvwrKHfE87NXpLSwT0qghBYoK/oVOPS5JRTiOP4329CLFCkfuEhw
- fCtEeofz2v8cstSx/EA==
-X-Authority-Analysis: v=2.4 cv=eJAeTXp1 c=1 sm=1 tr=0 ts=69c8e8ac cx=c_pps
- a=qKBjSQ1v91RyAK45QCPf5w==:117 a=gOEeR9iKwsj33Yj5oN/cWg==:17
- a=Yq5XynenixoA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=u7WPNUs3qKkmUXheDGA7:22 a=rJkE3RaqiGZ5pbrm-msn:22 a=VwQbUJbxAAAA:8
- a=EUspDBNiAAAA:8 a=JfrnYn6hAAAA:8 a=7Ge9OOpH_7tX5qf7V1AA:9
- a=NFOGd7dJGGMPyQGDc5-O:22 a=1CNFftbPRP8L7MoqJWF3:22
-X-Proofpoint-GUID: irvSZOumcCCFBzdmScJVd-BMe7yYjopp
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-03-29_02,2026-03-28_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0 suspectscore=0 phishscore=0 malwarescore=0 bulkscore=0
- adultscore=0 impostorscore=0 priorityscore=1501 clxscore=1015 spamscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2603050001 definitions=main-2603290067
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260329_015407_950714_F24E5F68 
-X-CRM114-Status: GOOD (  12.27  )
+X-CRM114-CacheID: sfid-20260329_021243_302540_543BA8CA 
+X-CRM114-Status: UNSURE (   9.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -154,37 +99,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The ARM/ARM64 Mediatek SoC maintainer entry misses bindings directory
-for SoC devices.
+The original patch that was sent to the mailing lists included the values
+for the route masks, but they got lost during merge: add back the full
+register masks where missing.
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-
+Fixes: 060f7875bd23 ("soc: mediatek: mmsys: Add support for MT8167 SoC")
+Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
+ drivers/soc/mediatek/mt8167-mmsys.h | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
 
-FYI, there are already patches on the list which used get_maintainers.pl
-script and did not CC Mediatek maintainers, so they might get
-forgotten/missed.
-
-Changes in v2:
-1. Correct f:->F:
-2. Cc maintainers...
----
- MAINTAINERS | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 80b9074e96ae..8474210a93b9 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3061,6 +3061,7 @@ L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
- S:	Maintained
- W:	https://mtk.wiki.kernel.org/
- C:	irc://irc.libera.chat/linux-mediatek
-+F:	Documentation/devicetree/bindings/soc/mediatek/
- F:	arch/arm/boot/dts/mediatek/
- F:	arch/arm/mach-mediatek/
- F:	arch/arm64/boot/dts/mediatek/
+diff --git a/drivers/soc/mediatek/mt8167-mmsys.h b/drivers/soc/mediatek/mt8167-mmsys.h
+index c468926561b4..eef14083c47b 100644
+--- a/drivers/soc/mediatek/mt8167-mmsys.h
++++ b/drivers/soc/mediatek/mt8167-mmsys.h
+@@ -10,24 +10,29 @@
+ #define MT8167_DISP_REG_CONFIG_DISP_RDMA0_SOUT_SEL_IN	0x06c
+ 
+ #define MT8167_DITHER_MOUT_EN_RDMA0			0x1
++#define MT8167_DITHER_MOUT_EN_MASK			0x7
++
+ #define MT8167_RDMA0_SOUT_DSI0				0x2
++#define MT8167_RDMA0_SOUT_MASK				0x3
++
+ #define MT8167_DSI0_SEL_IN_RDMA0			0x1
++#define MT8167_DSI0_SEL_IN_MASK				0x3
+ 
+ static const struct mtk_mmsys_routes mt8167_mmsys_routing_table[] = {
+ 	MMSYS_ROUTE(OVL0, COLOR0,
+ 		    MT8167_DISP_REG_CONFIG_DISP_OVL0_MOUT_EN, OVL0_MOUT_EN_COLOR0,
+ 		    OVL0_MOUT_EN_COLOR0),
+ 	MMSYS_ROUTE(DITHER0, RDMA0,
+-		    MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN, MT8167_DITHER_MOUT_EN_RDMA0,
++		    MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN, MT8167_DITHER_MOUT_EN_MASK,
+ 		    MT8167_DITHER_MOUT_EN_RDMA0),
+ 	MMSYS_ROUTE(OVL0, COLOR0,
+ 		    MT8167_DISP_REG_CONFIG_DISP_COLOR0_SEL_IN, COLOR0_SEL_IN_OVL0,
+ 		    COLOR0_SEL_IN_OVL0),
+ 	MMSYS_ROUTE(RDMA0, DSI0,
+-		    MT8167_DISP_REG_CONFIG_DISP_DSI0_SEL_IN, MT8167_DSI0_SEL_IN_RDMA0,
++		    MT8167_DISP_REG_CONFIG_DISP_DSI0_SEL_IN, MT8167_DSI0_SEL_IN_MASK,
+ 		    MT8167_DSI0_SEL_IN_RDMA0),
+ 	MMSYS_ROUTE(RDMA0, DSI0,
+-		    MT8167_DISP_REG_CONFIG_DISP_RDMA0_SOUT_SEL_IN, MT8167_RDMA0_SOUT_DSI0,
++		    MT8167_DISP_REG_CONFIG_DISP_RDMA0_SOUT_SEL_IN, MT8167_RDMA0_SOUT_MASK,
+ 		    MT8167_RDMA0_SOUT_DSI0),
+ };
+ 
 -- 
-2.51.0
+2.43.0
 
 
