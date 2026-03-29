@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B8E7F3D5FF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Mar 2026 10:32:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C70A4F3D603
+	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Mar 2026 13:08:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=OIBKIcUHPvDv8cHoVaj2hxLo5nkdSglUFK1zIEXk2Ac=; b=p9rvfbG3Nuuz8grKMGoLJ+In04
-	cif6L50G6tA9Cwo2qgrXNLHcvlBGTevBqtr5YorwsuW8Msbc+uim67iZWxaF0zkmlaQK4oyKB2ztM
-	DXhJgA9VFCKNu/pvHd/vT4Z10Bzjn2z2ga2gqx9//PTlZHoZEe9I0TfBZZj9re/CR1ndFj0WJxmSJ
-	KTDUiRqAHt0KcBQtFc5ZAicFFqfL6fUl0NTedkg/BSR0FsYdx1h2qSZ8WQBhNpUDrPOt9TObuzREz
-	W3bHNQXj5xTSLuujFSmkniXIQGLmxds5IpnxlTJ9JArF3mdlDLGgFkq7IEAfQ1ge0sLXwB9MC+YFO
-	84nRB6QA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Q7CjPLtBI/CIQ0PlW+ZKhSC5pu1E0l0TDhHmbHzg3EU=; b=tbfOPsVo2pcMuM
+	juHRrnfoyTV8THaxVNKxo2+ojwDl2jyz1nmXKJcVxiKVXpH0OMPj2RtLdDCVZAGonKILgsbFA1/QT
+	Lw0V4659TxFRB2lyBJDucHY7XdGAqdvEjH/7OBAyNBu9hNVw/NtuV5wnwfQyMBTlQT3owrMhRttBe
+	Cz8ycFoZnQuD9eRFi8HpdW2biI0s4wSlW5KvkPCSKbiJSIz9w6CQy8pBBf0XbsqKVB8tQ4dGhRPly
+	UKhj4H76n1kd0r32xwbCR1/v7M0CtgyNMm5EHXvz+m65w3oj+7HMPI2JTQxJZH6MTMukk1mhRJGsV
+	2oAKfLknJqjCi8i6TCIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w6nRv-00000009q2t-3gj1;
-	Sun, 29 Mar 2026 10:32:55 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1w6psI-00000009wjR-1CSe;
+	Sun, 29 Mar 2026 13:08:18 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w6nRs-00000009q2B-3kpJ;
-	Sun, 29 Mar 2026 10:32:54 +0000
+	id 1w6psG-00000009wjD-38tl;
+	Sun, 29 Mar 2026 13:08:16 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 720E74449F;
-	Sun, 29 Mar 2026 10:32:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CAA82C116C6;
-	Sun, 29 Mar 2026 10:32:50 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id BEF9760103;
+	Sun, 29 Mar 2026 13:08:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F3131C2BC9E;
+	Sun, 29 Mar 2026 13:08:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774780371;
-	bh=H5kTsfBqoaymzwtE0f4kGO+QKpbjF0HlaDUOV/uNet4=;
-	h=From:Date:Subject:To:Cc:From;
-	b=QNBGtbCZnr0gu12JO1gWqdp4bWA8J7HoSjvT1LVvQbCnbMFE3C9T4UYIEw4wukuwQ
-	 jZimwY98STVOauxRL20o9HbKie2RcSdFoMidfjwtReYd4C7qQttMw0eylELXZTbMvB
-	 NuVW8Kn+vlA+AwEw0DpgIx+XBcbq+PZAdotca542CkUOmWBNLmGWZEYcvu0B+U3Iut
-	 QoMROxGrjptruN+VkxtTPLYCO5d7XjfnJjDVx1iRaC6z9xrsAAvbkAZ+RmRPzG22Ee
-	 5PcOCrxRFIztWmUQNWarcbBUDnKal4PyE7VsfkzIsUOFiAk+z8CdW+ln0pYNUH0IYf
-	 crygs3pG88P1w==
+	s=k20201202; t=1774789695;
+	bh=bBfbGJ9mJcA+NBsd5zGoJk2uB8RFGVX/pg5sGKGq6AU=;
+	h=From:Subject:Date:To:Cc:From;
+	b=kmu95NbKHUXOmKZo/46eKzQtteubfnWSS7xD5MRWilH4gJmVoXX7oQJYb12czgEDM
+	 ifA/taz373k6tZm+GyxKgfJECqO7CEdWUjBoUNZByYC+S5xOqDJEIcD5ubutfU06zh
+	 9N2VZe6d6O0HRJWbUl+ISfe2pfGkfvx++yR/lu3LaFQaWIJx/I0Q1QjnZ884bjH7Rl
+	 OM+FftzF463t/D97NESwGmtJ8YHWl4fAgtwtdb4hydJnpENoqdNzFdc226eWR3e+/T
+	 sRJs9cHXM4YQKuNdue6PR9RDdUeFVXqhrHzkv1p3R6tMOqi9DZP7F8wNQCIFty1Xf7
+	 qz7hYcFh4UHyw==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Sun, 29 Mar 2026 12:32:27 +0200
-Subject: [PATCH net-next v2] net: airoha: Delay offloading until all
- net_devices are fully registered
+Subject: [PATCH net-next 00/10] net: airoha: Support multiple net_devices
+ connected to the same GDM port
+Date: Sun, 29 Mar 2026 15:07:50 +0200
+Message-Id: <20260329-airoha-eth-multi-serdes-v1-0-00f52dc360ca@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260329-airoha-regiser-race-fix-v2-1-f4ebb139277b@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3WNwQqDMBBEf0X23C1Jqqn01P8oHlLd6NKSyEbEI
- vn3Bum1x5nhvdkhkTAluFU7CK2cOIYSzKmCfnJhJOShZDDKWHUxGh1LnBwKjVxQFNcTet7QU9v
- U3urhahUUehYq9WF+QKAFA20LdGWZOC1RPsflqo/9Z6//2leNGq3S9eCbpm3t8/4iCfQ+Rxmhy
- zl/AW1cTiHJAAAA
-X-Change-ID: 20260321-airoha-regiser-race-fix-fe854f61d760
+Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MQQqEMBAF0atIr6dBo4ngVYZZRP2aBo1DEkUQ7
+ 25w+RZVF0UEQaSuuCjgkCibz6g+BQ3O+hksYzapUpmyVg1bCZuzjOR43ZcknAcjIk9902ttgFY
+ byvU/YJLzPX/JI7HHmeh33w/VT7PCcwAAAA==
+X-Change-ID: 20260324-airoha-eth-multi-serdes-fb4b556ee756
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
  "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Christian Marangi <ansuelsmth@gmail.com>, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ netdev@vger.kernel.org, devicetree@vger.kernel.org, 
+ Xuegang Lu <xuegang.lu@airoha.com>
 X-Mailer: b4 0.14.2
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260329_033252_980802_ECB9FA33 
-X-CRM114-Status: GOOD (  12.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,77 +77,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Netfilter flowtable can theoretically try to offload flower rules as soon
-as a net_device is registered while all the other ones are not
-registered or initialized, triggering a possible NULL pointer dereferencing
-of qdma pointer in airoha_ppe_set_cpu_port routine. Moreover, if
-register_netdev() fails for a particular net_device, there is a small
-race if Netfilter tries to offload flowtable rules before all the
-net_devices are properly unregistered in airoha_probe() error patch,
-triggering a NULL pointer dereferencing in airoha_ppe_set_cpu_port
-routine. In order to avoid any possible race, delay offloading until
-all net_devices are registered in the networking subsystem.
+EN7581 or AN7583 SoCs support connecting multiple external SerDes (e.g.
+Ethernet or USB SerDes) to GDM3 or GDM4 ports via a hw multiplexer that
+manages the traffic in a TDM manner. As a result multiple net_devices can
+connect to the same GDM{3,4} port and there is a theoretical "1:n"
+relation between GDM ports and net_devices.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
-Changes in v2:
-- Do not grab flow_offload_mutex in airoha_register_gdm_devices() since
-  it can trigger a deadlock. Add DEV_STATE_REGISTERED flag instead to
-  mark when all net_devices are fully registered.
-- Link to v1: https://lore.kernel.org/r/20260324-airoha-regiser-race-fix-v1-1-6014df55886b@kernel.org
----
- drivers/net/ethernet/airoha/airoha_eth.c | 2 ++
- drivers/net/ethernet/airoha/airoha_eth.h | 1 +
- drivers/net/ethernet/airoha/airoha_ppe.c | 7 +++++++
- 3 files changed, 10 insertions(+)
+           ┌─────────────────────────────────┐
+           │                                 │    ┌──────┐
+           │                         P1 GDM1 ├────►MT7530│
+           │                                 │    └──────┘
+           │                                 │      ETH0 (DSA conduit)
+           │                                 │
+           │              PSE/FE             │
+           │                                 │
+           │                                 │
+           │                                 │    ┌─────┐
+           │                         P0 CDM1 ├────►QDMA0│
+           │  P4                     P9 GDM4 │    └─────┘
+           └──┬─────────────────────────┬────┘
+              │                         │
+           ┌──▼──┐                 ┌────▼────┐
+           │ PPE │                 │   MUX   │
+           └─────┘                 └─┬─────┬─┘
+                                     │     │
+                                  ┌──▼──┐┌─▼───┐
+                                  │ ETH ││ USB │
+                                  └─────┘└─────┘
+                                   ETH1   ETH2
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 82e53c60f561f6314fbf201ba8bc8711e40edc68..743ef0db30980ce74059dfb63553030ef3bf735f 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -2957,6 +2957,8 @@ static int airoha_register_gdm_devices(struct airoha_eth *eth)
- 			return err;
- 	}
- 
-+	set_bit(DEV_STATE_REGISTERED, &eth->state);
-+
- 	return 0;
- }
- 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index 7df4dbcd8861856c54c2a38bc89c69180ac2f6dc..af29fc74165b8fffb59f45b4725dbd963f1b876d 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -88,6 +88,7 @@ enum {
- 
- enum {
- 	DEV_STATE_INITIALIZED,
-+	DEV_STATE_REGISTERED,
- };
- 
- enum {
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index 58b14aea7c2f33ebce11c51d892eefff692378ca..c057bb2d105d92947bb8c421d89ee94fc0c10f2f 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -1389,6 +1389,13 @@ int airoha_ppe_setup_tc_block_cb(struct airoha_ppe_dev *dev, void *type_data)
- 	struct airoha_eth *eth = ppe->eth;
- 	int err = 0;
- 
-+	/* Netfilter flowtable can try to offload flower rules while not all
-+	 * the net_devices are registered or initialized. Delay offloading
-+	 * until all net_devices are registered in the system.
-+	 */
-+	if (!test_bit(DEV_STATE_REGISTERED, &eth->state))
-+		return -EBUSY;
-+
- 	mutex_lock(&flow_offload_mutex);
- 
- 	if (!eth->npu)
+This series introduces support for multiple net_devices connected to the
+same Frame Engine (FE) GDM port (GDM3 or GDM4) via an external hw
+multiplexer. Please note GDM1 or GDM2 does not support the connection with
+the external multiplexer.
 
 ---
-base-commit: ced629dc8e5c51ff2b5d847adeeb1035cd655d58
-change-id: 20260321-airoha-regiser-race-fix-fe854f61d760
+Lorenzo Bianconi (10):
+      dt-bindings: net: airoha: Add EN7581 ethernet-ports properties
+      net: airoha: Rely on net_device pointer in airoha_dev_setup_tc_block signature
+      net: airoha: Rely on net_device pointer in HTB callbacks
+      net: airoha: Rely on net_device pointer in ETS callbacks
+      net: airoha: Introduce airoha_gdm_dev struct
+      net: airoha: Move airoha_qdma pointer in airoha_gdm_dev struct
+      net: airoha: Rely on airoha_gdm_dev pointer in airhoa_is_lan_gdm_port()
+      net: airoha: Support multiple net_devices for a single FE GDM port
+      net: airoha: Do not stop GDM port if it is shared
+      net: airoha: Rename get_src_port_id callback in get_sport
+
+ .../devicetree/bindings/net/airoha,en7581-eth.yaml |  44 +-
+ drivers/net/ethernet/airoha/airoha_eth.c           | 626 +++++++++++++--------
+ drivers/net/ethernet/airoha/airoha_eth.h           |  30 +-
+ drivers/net/ethernet/airoha/airoha_ppe.c           |  42 +-
+ 4 files changed, 497 insertions(+), 245 deletions(-)
+---
+base-commit: 68bb4adb58e114336826e2ecc15ecf62e2890d3e
+change-id: 20260324-airoha-eth-multi-serdes-fb4b556ee756
 
 Best regards,
 -- 
