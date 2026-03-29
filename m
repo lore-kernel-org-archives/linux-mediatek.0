@@ -4,87 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1F77F3D5FC
-	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Mar 2026 09:12:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B8E7F3D5FF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Mar 2026 10:32:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=TB/QPugCcb4AdM0Fj/XxB/blX3PBNtkMN7SH+oDhiFA=; b=GnecIu1w7rNBsWFgyorZcE7pah
-	XyuTlwIVKkepOsq1JyvDFx9J5AgVsRNg8nP6hESHppJaM4fwtqJ3GjNRIF8ObmBc6f2QyWKuyNbYv
-	/AfZai11D1XDZAi9tLuWyUSqocxlYVLjw/jVWA4BauRU/g5NLeJWj6Kdqsnfd49gVuqxs0G0BVmA1
-	3MBXsejZM6rDRayqvPtYwPxdTqTJL5MsClrmnF1tH/3c+a4JNSCzy7F3BFfU0f4WCOQ8dGY/9HYcB
-	GtnG6AviB+FQytTnbvlSAj0i7aQKRnIVrLBC0i6TgxK/vezAo206qlE9WbUZHJg84HWi30IZ/xTVy
-	uX/2SIbA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=OIBKIcUHPvDv8cHoVaj2hxLo5nkdSglUFK1zIEXk2Ac=; b=p9rvfbG3Nuuz8grKMGoLJ+In04
+	cif6L50G6tA9Cwo2qgrXNLHcvlBGTevBqtr5YorwsuW8Msbc+uim67iZWxaF0zkmlaQK4oyKB2ztM
+	DXhJgA9VFCKNu/pvHd/vT4Z10Bzjn2z2ga2gqx9//PTlZHoZEe9I0TfBZZj9re/CR1ndFj0WJxmSJ
+	KTDUiRqAHt0KcBQtFc5ZAicFFqfL6fUl0NTedkg/BSR0FsYdx1h2qSZ8WQBhNpUDrPOt9TObuzREz
+	W3bHNQXj5xTSLuujFSmkniXIQGLmxds5IpnxlTJ9JArF3mdlDLGgFkq7IEAfQ1ge0sLXwB9MC+YFO
+	84nRB6QA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w6mCL-00000009m4D-1OJR;
-	Sun, 29 Mar 2026 09:12:45 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1w6nRv-00000009q2t-3gj1;
+	Sun, 29 Mar 2026 10:32:55 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w6mCJ-00000009m3K-14qr
-	for linux-mediatek@lists.infradead.org;
-	Sun, 29 Mar 2026 09:12:44 +0000
-Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-43b88b7ca76so2897013f8f.3
-        for <linux-mediatek@lists.infradead.org>; Sun, 29 Mar 2026 02:12:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1774775560; x=1775380360; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=TB/QPugCcb4AdM0Fj/XxB/blX3PBNtkMN7SH+oDhiFA=;
-        b=c3KZYfnkjVAhcs1j+5vPk+NF/VTH12UfaL75UKux0nbpQl4pNe3yrOx17UGXx1qyNc
-         qs6m85mrmERpw2Ru3xLmQ2ayVhBU0aDjB8wl5uzKBcvzC1YvRIBzm3nXL9PoJRO6fbxB
-         KlHpvM4fGI3KRDIZ0Y8AG32Sayvu19BdHJPm4k9DnI3323VxJUetoMEBhFsLcwLLlxWK
-         EwH7gM2/dpeT+cJJZSBcz82rP50Nulhhq8guCZmGXAILyJ23t8fb7P5LXS5SvDkgiKA7
-         5KeUhxosZR+9KTGl9uf1HeTirKKG9GFhGDclUiA2eNlJTqv5dpzo5SW3j6TanwxgAWcM
-         Rdag==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1774775560; x=1775380360;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=TB/QPugCcb4AdM0Fj/XxB/blX3PBNtkMN7SH+oDhiFA=;
-        b=gnBqwRgbwhJvTcwKly+ikl5qNJOP6K6knLyX4TZceA/s1kND0a3qNPCsdyixsYCvLG
-         U9xSOwPhceH4+uFQsPSgHwxMWmNZTZc2f8LhHLjFRnrw4XBIK0sywIRo9UrwrATxOAPy
-         HtNFwnnMUwC4cSo/aLN7rRKd2kWSvtZHsVv9kc9nea0Gn2smXa+RMBN4rXmGa18ETtls
-         ICwmqjlOKDH0ETHisXzAzQgXB8uSCXLjdalJbc8Cvv8UHW2RftVMXLl43wjky6mRjLvu
-         TLu+xbbIKyak9YyFJfALOiQqZk+nroox2ES6WCv91ds0nS47NycLuSogzm4V6jDOvW1o
-         Ovbg==
-X-Gm-Message-State: AOJu0YzBxd43gwjOMkc7Y+lRkqS7skE7lxP2tcQ8rO9TRJ/aTeP6Mj/Y
-	AamZgs8/PDllagFdlj8Vk7IRlJYqZ7B2H2ChceDNodaIsDuJkVzdHgI65vURghP8
-X-Gm-Gg: ATEYQzyO1t8JzGmUYVw+kY6iZMB+yq/7ws7TMiH4Qo+Q6N5HYiYwhqeUuCg+ir/ZcTV
-	5zlwZDyciSXla6rnCpY7l3bHUCZOcfi3asfzI713iVggFpnYMkGdqQe5eiRdLeHILdttvgwA0aJ
-	R/T6gSuO+0O5rCHlBF6xDIAk+PzlOjGwCmtuNWj8Ct1+kYR2JksRF5stVX8ml83apFI1jxx9gTZ
-	N17oVjCdy8RDOM3RY2fqJ0QHpnSFrxTvJQhj6H3wYylxUUhJYQhCfUlj/ES5BpmCasZXSBu+MZy
-	h2ntquL0XYE4fUlb2fcEvIhRgSu4VnpcgiyrRcUXjYZ66ECS07THy2VSZ9NWEEvz34MPwrVmmFF
-	7wdOjUwF8gne0l0Jmv+D86qVTL8lzf8IWOCrkjpRA+fx+fD9J/ie9TfTuHu8Rip7iMcanukXafX
-	l1bhx+HqMXV/AsrtbUnsI=
-X-Received: by 2002:a05:6000:428a:b0:43b:5b25:67ff with SMTP id ffacd0b85a97d-43b9e9a97e9mr14703306f8f.24.1774775560242;
-        Sun, 29 Mar 2026 02:12:40 -0700 (PDT)
-Received: from luca-vm.lan ([154.61.61.58])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-43cf90424fcsm4625813f8f.32.2026.03.29.02.12.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 29 Mar 2026 02:12:39 -0700 (PDT)
-From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-To: linux-mediatek@lists.infradead.org
-Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Fabien Parent <fparent@baylibre.com>,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v2 RESEND] soc: mediatek: mtk-mmsys: Restore MT8167 routing masks lost during merge
-Date: Sun, 29 Mar 2026 10:12:20 +0100
-Message-ID: <20260329091225.4530-1-l.scorcia@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	id 1w6nRs-00000009q2B-3kpJ;
+	Sun, 29 Mar 2026 10:32:54 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 720E74449F;
+	Sun, 29 Mar 2026 10:32:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CAA82C116C6;
+	Sun, 29 Mar 2026 10:32:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1774780371;
+	bh=H5kTsfBqoaymzwtE0f4kGO+QKpbjF0HlaDUOV/uNet4=;
+	h=From:Date:Subject:To:Cc:From;
+	b=QNBGtbCZnr0gu12JO1gWqdp4bWA8J7HoSjvT1LVvQbCnbMFE3C9T4UYIEw4wukuwQ
+	 jZimwY98STVOauxRL20o9HbKie2RcSdFoMidfjwtReYd4C7qQttMw0eylELXZTbMvB
+	 NuVW8Kn+vlA+AwEw0DpgIx+XBcbq+PZAdotca542CkUOmWBNLmGWZEYcvu0B+U3Iut
+	 QoMROxGrjptruN+VkxtTPLYCO5d7XjfnJjDVx1iRaC6z9xrsAAvbkAZ+RmRPzG22Ee
+	 5PcOCrxRFIztWmUQNWarcbBUDnKal4PyE7VsfkzIsUOFiAk+z8CdW+ln0pYNUH0IYf
+	 crygs3pG88P1w==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Sun, 29 Mar 2026 12:32:27 +0200
+Subject: [PATCH net-next v2] net: airoha: Delay offloading until all
+ net_devices are fully registered
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260329-airoha-regiser-race-fix-v2-1-f4ebb139277b@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3WNwQqDMBBEf0X23C1Jqqn01P8oHlLd6NKSyEbEI
+ vn3Bum1x5nhvdkhkTAluFU7CK2cOIYSzKmCfnJhJOShZDDKWHUxGh1LnBwKjVxQFNcTet7QU9v
+ U3urhahUUehYq9WF+QKAFA20LdGWZOC1RPsflqo/9Z6//2leNGq3S9eCbpm3t8/4iCfQ+Rxmhy
+ zl/AW1cTiHJAAAA
+X-Change-ID: 20260321-airoha-regiser-race-fix-fe854f61d760
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260329_021243_302540_543BA8CA 
-X-CRM114-Status: UNSURE (   9.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260329_033252_980802_ECB9FA33 
+X-CRM114-Status: GOOD (  12.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,55 +78,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The original patch that was sent to the mailing lists included the values
-for the route masks, but they got lost during merge: add back the full
-register masks where missing.
+Netfilter flowtable can theoretically try to offload flower rules as soon
+as a net_device is registered while all the other ones are not
+registered or initialized, triggering a possible NULL pointer dereferencing
+of qdma pointer in airoha_ppe_set_cpu_port routine. Moreover, if
+register_netdev() fails for a particular net_device, there is a small
+race if Netfilter tries to offload flowtable rules before all the
+net_devices are properly unregistered in airoha_probe() error patch,
+triggering a NULL pointer dereferencing in airoha_ppe_set_cpu_port
+routine. In order to avoid any possible race, delay offloading until
+all net_devices are registered in the networking subsystem.
 
-Fixes: 060f7875bd23 ("soc: mediatek: mmsys: Add support for MT8167 SoC")
-Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/soc/mediatek/mt8167-mmsys.h | 11 ++++++++---
- 1 file changed, 8 insertions(+), 3 deletions(-)
+Changes in v2:
+- Do not grab flow_offload_mutex in airoha_register_gdm_devices() since
+  it can trigger a deadlock. Add DEV_STATE_REGISTERED flag instead to
+  mark when all net_devices are fully registered.
+- Link to v1: https://lore.kernel.org/r/20260324-airoha-regiser-race-fix-v1-1-6014df55886b@kernel.org
+---
+ drivers/net/ethernet/airoha/airoha_eth.c | 2 ++
+ drivers/net/ethernet/airoha/airoha_eth.h | 1 +
+ drivers/net/ethernet/airoha/airoha_ppe.c | 7 +++++++
+ 3 files changed, 10 insertions(+)
 
-diff --git a/drivers/soc/mediatek/mt8167-mmsys.h b/drivers/soc/mediatek/mt8167-mmsys.h
-index c468926561b4..eef14083c47b 100644
---- a/drivers/soc/mediatek/mt8167-mmsys.h
-+++ b/drivers/soc/mediatek/mt8167-mmsys.h
-@@ -10,24 +10,29 @@
- #define MT8167_DISP_REG_CONFIG_DISP_RDMA0_SOUT_SEL_IN	0x06c
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 82e53c60f561f6314fbf201ba8bc8711e40edc68..743ef0db30980ce74059dfb63553030ef3bf735f 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -2957,6 +2957,8 @@ static int airoha_register_gdm_devices(struct airoha_eth *eth)
+ 			return err;
+ 	}
  
- #define MT8167_DITHER_MOUT_EN_RDMA0			0x1
-+#define MT8167_DITHER_MOUT_EN_MASK			0x7
++	set_bit(DEV_STATE_REGISTERED, &eth->state);
 +
- #define MT8167_RDMA0_SOUT_DSI0				0x2
-+#define MT8167_RDMA0_SOUT_MASK				0x3
-+
- #define MT8167_DSI0_SEL_IN_RDMA0			0x1
-+#define MT8167_DSI0_SEL_IN_MASK				0x3
+ 	return 0;
+ }
  
- static const struct mtk_mmsys_routes mt8167_mmsys_routing_table[] = {
- 	MMSYS_ROUTE(OVL0, COLOR0,
- 		    MT8167_DISP_REG_CONFIG_DISP_OVL0_MOUT_EN, OVL0_MOUT_EN_COLOR0,
- 		    OVL0_MOUT_EN_COLOR0),
- 	MMSYS_ROUTE(DITHER0, RDMA0,
--		    MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN, MT8167_DITHER_MOUT_EN_RDMA0,
-+		    MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN, MT8167_DITHER_MOUT_EN_MASK,
- 		    MT8167_DITHER_MOUT_EN_RDMA0),
- 	MMSYS_ROUTE(OVL0, COLOR0,
- 		    MT8167_DISP_REG_CONFIG_DISP_COLOR0_SEL_IN, COLOR0_SEL_IN_OVL0,
- 		    COLOR0_SEL_IN_OVL0),
- 	MMSYS_ROUTE(RDMA0, DSI0,
--		    MT8167_DISP_REG_CONFIG_DISP_DSI0_SEL_IN, MT8167_DSI0_SEL_IN_RDMA0,
-+		    MT8167_DISP_REG_CONFIG_DISP_DSI0_SEL_IN, MT8167_DSI0_SEL_IN_MASK,
- 		    MT8167_DSI0_SEL_IN_RDMA0),
- 	MMSYS_ROUTE(RDMA0, DSI0,
--		    MT8167_DISP_REG_CONFIG_DISP_RDMA0_SOUT_SEL_IN, MT8167_RDMA0_SOUT_DSI0,
-+		    MT8167_DISP_REG_CONFIG_DISP_RDMA0_SOUT_SEL_IN, MT8167_RDMA0_SOUT_MASK,
- 		    MT8167_RDMA0_SOUT_DSI0),
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
+index 7df4dbcd8861856c54c2a38bc89c69180ac2f6dc..af29fc74165b8fffb59f45b4725dbd963f1b876d 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.h
++++ b/drivers/net/ethernet/airoha/airoha_eth.h
+@@ -88,6 +88,7 @@ enum {
+ 
+ enum {
+ 	DEV_STATE_INITIALIZED,
++	DEV_STATE_REGISTERED,
  };
  
+ enum {
+diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
+index 58b14aea7c2f33ebce11c51d892eefff692378ca..c057bb2d105d92947bb8c421d89ee94fc0c10f2f 100644
+--- a/drivers/net/ethernet/airoha/airoha_ppe.c
++++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+@@ -1389,6 +1389,13 @@ int airoha_ppe_setup_tc_block_cb(struct airoha_ppe_dev *dev, void *type_data)
+ 	struct airoha_eth *eth = ppe->eth;
+ 	int err = 0;
+ 
++	/* Netfilter flowtable can try to offload flower rules while not all
++	 * the net_devices are registered or initialized. Delay offloading
++	 * until all net_devices are registered in the system.
++	 */
++	if (!test_bit(DEV_STATE_REGISTERED, &eth->state))
++		return -EBUSY;
++
+ 	mutex_lock(&flow_offload_mutex);
+ 
+ 	if (!eth->npu)
+
+---
+base-commit: ced629dc8e5c51ff2b5d847adeeb1035cd655d58
+change-id: 20260321-airoha-regiser-race-fix-fe854f61d760
+
+Best regards,
 -- 
-2.43.0
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
