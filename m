@@ -4,61 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02761F3D611
-	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Mar 2026 17:36:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F46AFC97F6
+	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Mar 2026 22:04:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=INKh6Tf9/+Lv0D2IsKobLvoX5JdxAlriktIbLJ9mA5Q=; b=Qow6+W8cc43dgPs805vk4K74yP
-	vvFzRtqPVfbu/OhCKvry6ktZMFnnaESdLPu7KhCVrn+apOvbvgWblC3GLb2tAzXMZQlb9KWxHUsw0
-	bVBbAG5skPPtb/t/5gsYCRXQ+G9rC98in8z5DFQB3Oa+Y3hSXbVrZtjK5bf1Qcc3HReR7xZseAT7r
-	C+9iiBuwZ0cV29R+kxZL3ireJCBFFx3IyLGslYbJztm6s+zkppDgoIilP9+rw20HoM30ePMoX9Af3
-	73Fdi5AqGevPlbP+2JhST68gvkrupXiJ6thNUVVulL948Cj1t+8dv5clhhYfHmJs0kC3oSsLRNiHs
-	xCLZRg6A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=dUdOr+EVEBlpgTcz0k0y+EyAFhkceT4EL0v0ts4IUYs=; b=0F4ZY3e6VnQpfqtk2/Cet89d9i
+	5kyyUnSoU/KERlaJLx6wFroBrPXHN8T9wrQML2fuDP41iYUV56SCig5EiKMuOcwcSn5tFDSsoEBHs
+	lC7ONwcOQ+WT3cZfr/uc014jhqgmeEgGziMPYoZUyJjIOg9DewD5aRbV7jGEDvjERXiAquKzvjghV
+	pXv8YFJyadEB/+vjyNK86y03Vco2KkUcw8+/of4sISMhldGW5dcpiYCw9bJlFDsTTjYt66rdncHYa
+	wRvGM9fcwE1DUoK2rUxdNwZ7afETn/e7Mu46c0IhdtU0p85mFGweSqGDuz7d2wzKpZohokjIGzPjg
+	UI7S61qQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w6u4H-0000000ACrq-2RaM;
-	Sun, 29 Mar 2026 17:36:57 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1w6yEk-0000000AMlY-0osq;
+	Sun, 29 Mar 2026 22:04:02 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w6u4G-0000000ACrD-0Glo;
-	Sun, 29 Mar 2026 17:36:56 +0000
+	id 1w6yEh-0000000AMl5-1zzw;
+	Sun, 29 Mar 2026 22:04:00 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E3518600AC;
-	Sun, 29 Mar 2026 17:36:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 11FC4C116C6;
-	Sun, 29 Mar 2026 17:36:54 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id AC21D44438;
+	Sun, 29 Mar 2026 22:03:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 39119C116C6;
+	Sun, 29 Mar 2026 22:03:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774805814;
-	bh=INKh6Tf9/+Lv0D2IsKobLvoX5JdxAlriktIbLJ9mA5Q=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=OXxPKonGybrKSvL0N7Xkeuru4Fe5bfOR3H0iVqvuzkxbjtzINxwtjh+btmD4KYSyn
-	 v/cssZIm8RIrNDnvUlbiHGfGIiFSsNLXWmgJabE/mfq4HOZtz1PrMFtA7wjH/L5ICZ
-	 qWiw27sLVcw9jqQsmn1z5I9k+pIXtdGg/AOBVEH1EBApvLPnyMJfK5AMrP9qF2E8Xo
-	 2/HWCYCJlwrytob387UUCTMCFTBa8gQys+Dc3czh8niVjASdx94/MihWEYEg6jg5rA
-	 XJwkbb8QN+utfycn+R/W7kKZegwCYncIYYBnvaJJEtdUKrLgQ0aOyzO6QIcAyguCrw
-	 GUOqzBPxEbUxw==
-Date: Sun, 29 Mar 2026 10:36:53 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
- <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Christian Marangi
- <ansuelsmth@gmail.com>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, Xuegang Lu <xuegang.lu@airoha.com>
-Subject: Re: [PATCH net-next 00/10] net: airoha: Support multiple
- net_devices connected to the same GDM port
-Message-ID: <20260329103653.7593cbb2@kernel.org>
-In-Reply-To: <20260329-airoha-eth-multi-serdes-v1-0-00f52dc360ca@kernel.org>
-References: <20260329-airoha-eth-multi-serdes-v1-0-00f52dc360ca@kernel.org>
+	s=k20201202; t=1774821838;
+	bh=6yn7EwahshMP7t8gqyl8uwicrBe/9zbJ4Uog9xwOHv0=;
+	h=From:Date:Subject:To:Cc:From;
+	b=ZAfRSMz0wkc+I1P/TrrvJfqM2Aq9vVJMq62NhtG6qrQkyvL4HCmwEhUVoKFd4lI5h
+	 4GpnaiCeG0k8vEEUsxIwlbGcG5hyylgYGnt25APxWcuNFL+eqn+sOTIrXsqXaoZQPQ
+	 ftrR0nITFRxSUx6C3YjIinCn2R0klplk16HU37jieJnotbKuOh3VeDyKUEO3S6tU14
+	 CNtN4q7iKFjYiPNd6Iy/qjkBtnc85evSC6Xjhxud7m8wRlQsz5x16bVfi6bQoYe+jd
+	 6Nbb8I/SnUEaw9ZXXb6NJQnZFWyqgUdWlPsWTkds/2aw+FYhjxU6suBjY5DVqgJBEX
+	 qgp0PteYCkiMQ==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Mon, 30 Mar 2026 00:03:49 +0200
+Subject: [PATCH net-next] net: airoha: Fix typo in airoha_set_gdm2_loopback
+ routine name
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+Message-Id: <20260330-airoha_set_gdm2_loopback-fix-typo-v1-1-a1320ff6b6cc@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2NQQrDIBAAvxL23AU1NdB+pRSxZpMsbV1RKSkhf
+ 4/kOAzMbFAoMxW4dxtk+nFhiQ30pYOw+DgT8tgYjDKD6s0NPWdZvCtU3Tx+jfuIpJcPb5x4xfp
+ PgoGs7rWy18kO0DopU3Pn4wGRKkZaKzz3/QCPiBUufQAAAA==
+X-Change-ID: 20260329-airoha_set_gdm2_loopback-fix-typo-ce5131054f56
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260329_150359_546446_5F1E4EBD 
+X-CRM114-Status: GOOD (  10.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,12 +77,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 29 Mar 2026 15:07:50 +0200 Lorenzo Bianconi wrote:
-> EN7581 or AN7583 SoCs support connecting multiple external SerDes (e.g.
-> Ethernet or USB SerDes) to GDM3 or GDM4 ports via a hw multiplexer that
-> manages the traffic in a TDM manner. As a result multiple net_devices can
-> connect to the same GDM{3,4} port and there is a theoretical "1:n"
-> relation between GDM ports and net_devices.
+Rename airhoha_set_gdm2_loopback() in airoha_set_gdm2_loopback()
 
-Does not apply.
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/ethernet/airoha/airoha_eth.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 82e53c60f561f6314fbf201ba8bc8711e40edc68..2beba017e791d20f142e754edafcd402d8cc496f 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -1709,7 +1709,7 @@ static int airoha_dev_set_macaddr(struct net_device *dev, void *p)
+ 	return 0;
+ }
+ 
+-static int airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
++static int airoha_set_gdm2_loopback(struct airoha_gdm_port *port)
+ {
+ 	struct airoha_eth *eth = port->qdma->eth;
+ 	u32 val, pse_port, chan, nbq;
+@@ -1785,7 +1785,7 @@ static int airoha_dev_init(struct net_device *dev)
+ 		if (!eth->ports[1]) {
+ 			int err;
+ 
+-			err = airhoha_set_gdm2_loopback(port);
++			err = airoha_set_gdm2_loopback(port);
+ 			if (err)
+ 				return err;
+ 		}
+
+---
+base-commit: cf0d9080c6f795bc6be08babbffa29b62c06e9b0
+change-id: 20260329-airoha_set_gdm2_loopback-fix-typo-ce5131054f56
+
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
