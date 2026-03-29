@@ -4,102 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9709F3D610
-	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Mar 2026 16:19:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7326AF3D60A
+	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Mar 2026 16:30:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gEm9m7dxQ5iQP9UmmPg53kE3LH2ArVB/tcgnz/gczt4=; b=U4NSJuMaK/u2ch
-	L9TlmqHzUe5K5+5bUJdkINgIGloEroD56ldW/bCZ3J8vxpMIKawr98ZQ9jd1bkq6ieBVg1UarFhk7
-	DaQRPFvP8Wj/1C/kWxw97kjXKozILYMm7jw/caVKb5KdMLtCstrp2xcVJZZeSuKqlTBkF8c2WR+Fp
-	KiEBpU7U7PpOyovJBPCYUju52Ewgw4tJabsQQgFEtOSNFjX+jrPOCvhAXSFZqwrIGH9Z4w4PifZBx
-	RWNh2/mAmSIb8Sr9YRevs2L/lW1AkeCOYPkzJ3WvJ43fyL+BhPoLhZaiDCdUXpNG7eZdKpejYoTjO
-	S9KqSHaomMDOYNFBTvGA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OiD8FHcWjlfKLGbWYvCviOg7SMJ/k+r9s3JA1CV2BMw=; b=nOG3t78EWgAyyst9J7A40Fn3Nl
+	ldC+MrEM17AmxII8pcstdz3LFclcGewX6X94D1HI+AzlJ1Q+Zj+kD2HyIg5rQeZ5zIvslnZU4vmxa
+	sAbMe25xE/7dih12D+CH/bIb/WRcD8HpN8TfPT64xBwiIIp+YlscwufDh3lH6FKyE2RCNzd27CrP7
+	wDzF5MIUMWlDI/DtvS6VP7sZcbhVd2GddPDXVt1f2wYqhWdFadU2IILMCBS6uKuUQpFiWeZW6Ojdz
+	PxqONFH2/9iyjL0XRQ/0IDDdOsOhNHuLVppGHY/pQdpRGwZcTYofpBNPdUnyTzoQySdw9YAANSD9F
+	YkBnONoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w6sr1-0000000A6YO-23v1;
-	Sun, 29 Mar 2026 16:19:11 +0000
-Received: from mail-ot1-x329.google.com ([2607:f8b0:4864:20::329])
+	id 1w6t1b-0000000A7J5-0vhI;
+	Sun, 29 Mar 2026 16:30:07 +0000
+Received: from mail-ot1-x32d.google.com ([2607:f8b0:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w6sqy-0000000A6Wd-1pmZ
+	id 1w6t1Y-0000000A7IL-1kOj
 	for linux-mediatek@lists.infradead.org;
-	Sun, 29 Mar 2026 16:19:09 +0000
-Received: by mail-ot1-x329.google.com with SMTP id 46e09a7af769-7d9d929e27aso3131620a34.2
-        for <linux-mediatek@lists.infradead.org>; Sun, 29 Mar 2026 09:19:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1774801147; cv=none;
+	Sun, 29 Mar 2026 16:30:05 +0000
+Received: by mail-ot1-x32d.google.com with SMTP id 46e09a7af769-7d4c12ff3d5so3633908a34.2
+        for <linux-mediatek@lists.infradead.org>; Sun, 29 Mar 2026 09:30:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1774801803; cv=none;
         d=google.com; s=arc-20240605;
-        b=Rak63W8wjjc7Bb1ORBjcYV8Ftouozp18LQeN61ydLmRwrXkGCZ0d2/IPYD8DgIENgm
-         lOx8gw30zJsNm7bK215URTxp6mkvYG1sEnZBWhikb6PGr+ccq+p3wfWUEYHzlJQLaxX2
-         /aMfJ48o9JMbca1Bo3317KTvXl2m6Sx8FD4OBn9IyEEJBphb/a6BOyDjuVe31jkAFZqr
-         JBzcsJe7/B79fxjw15Vw14cqqpUCaOZDSqJpkOoH1ArUGNsstsoyR314jFdg9MK+8ADP
-         b7+UUjPplfFmjXQxq2txoGMCrojI7cnljnsyVb0zYLBtwmr1ZUVn9cklhNNUV+L8wpgV
-         ivvg==
+        b=d0D02i2zTqBkOqANPfYNyuNm3GjmNrV9IAIDKdi/wNVLO1G/YQ94qV3NsGR77C9FcK
+         Eb4amzaYlYuKtH5T732FYtSyWT5MT2Z/0ISWnwoorxXZ4iVlfWOwtVRQK75lVbOKpa1h
+         ywknE0mewgRwwCJ45I7vPi119oPama/pQ+TMrTlc3Gst78g8YWgi3wJFAWiVaH0HCtYN
+         VC/U3wNwhQ1lR2JsnnA3F9KscuqflqwYan6cBmKpoxT+jQxVRU6dbrvRFRk0LtQp9LWx
+         J1cphZFw18MOzCVJ+/ItIBKhVh7ZTanqQxOe3CD+CCIwl7F5M1qFZt0bfo/8WLRwu421
+         Puog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=gEm9m7dxQ5iQP9UmmPg53kE3LH2ArVB/tcgnz/gczt4=;
-        fh=KkIAJmmaQhecKCPpFgzkf8V5BUViImlJCXiBXrf8qLg=;
-        b=NU0RjV1YAUpAfXnGmi9aJVFe5rumtzmTW34ZMOHgbVz/lXD2XAooN8eerA7fhpBOjO
-         GyPR8DLWOVgmesVSDns4+JO7HJVhKutiGh5hiCXrW8WN0g+C2rYL0iZSQMXh8zffcnhH
-         L9krPYtfaYQFhfOSZbmlWSP+OxLmqpQ+6iHqK0eXTym/AGA9E6X7STGa/2SQSttLbW3Q
-         7aaNI4PNsi9S0ZODs2Prg6uvgO3VLlXY7mQL7iLzZEM7whx2euARaf9DO4XB1OvEVsmk
-         NjOIkaj38bv1SSrbuhzPZph7WYE4X4C+FMKtILkXI7WRK9MeAz3Sbo2wWhSTt4ZKGoPB
-         IhQw==;
+        bh=OiD8FHcWjlfKLGbWYvCviOg7SMJ/k+r9s3JA1CV2BMw=;
+        fh=Rj+GNYBIb8vjs6p40wm81g+y7XzFX+yOxKoH0+eZSO0=;
+        b=bwwBW4gLmFpoXhMCsOg3ivLIJc27KJ5nzqO72pkgQPatOBeF3WYpOf0oLt7JK+aXUm
+         e8asHtfUEOI3r0FpiDYY3/OI+ZMHiSoqRVpy5k1onswLeLN3O6atlYKVOBL/a1m8Q557
+         QSDZDjBVnoxekrrjBuFdG2szMUTlxPRmytoGBlSsWQOopNHlKzdtPUqdWsLHEwjfNtcq
+         foFJNSHrNC0jqdNl1FfslfA4e+nyrh/zNDERn6PBZxo1hajNQ9I9ml8Qrkj9gU2xluVl
+         cpG0k+a/7FZxbXepGDJsmEoMMaCHDK+eg/EIWxDFs73uHYrS8CTMLsvl1zK72R0HEr+r
+         fEJQ==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1774801147; x=1775405947; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1774801803; x=1775406603; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=gEm9m7dxQ5iQP9UmmPg53kE3LH2ArVB/tcgnz/gczt4=;
-        b=JMRlTmwJdfw+ZpSKbKOLx1vfv4HEhmKXoIkrNsTOXcvXt1zrkSTtJoBKYx4TVTtbPH
-         M7l4ovoRsYkhB1Woe8ynFJ4q8Hn927nery/tv+qFl9pS1a5XcoWZUJa4q93pxf6zHxw3
-         UI7l9rrJO5JcqU46Myhywr5hfW+olwTZPHLtML1g/1929oHOkPg4Q3tpfp7/8ntW+3OX
-         oviLL9RYunlx2GYVzEIQZugwvnFVRbparOsappOM8qdANjwDVOGp4m0fq3GINY70IYm0
-         3bUKYtszKA0wGYUJfmTI2BOAVvHFDbH19ddu090b2EeLV6WITnbz9sfT/f5jgZ2JdbnW
-         KJ/g==
+        bh=OiD8FHcWjlfKLGbWYvCviOg7SMJ/k+r9s3JA1CV2BMw=;
+        b=dPSZR/TjZ2Mde7KzNx4WujTTQaUy5tBcs7LzhxVrEhTzSGaqMDvY31gIoHug8atY7M
+         PYgRx8/CY8N8pqFXAxzTXjzssZqIbYcTmB6LDCPAQ2amjjlgLXk2Nbq5JMV090jcenkm
+         l1iOFbWcP5wHv/a2s8+ebpwSA0SF1DrAUAQAmir4onOEj87iJ7CoZz7lAVnKV2JxpJ8W
+         9goHiDG55OCiYH0DMnO3nemRtsYpeYswErC0I6fxxLx/URkiLKbTyocoS0PxAPjqnXe8
+         jjT6isdOBYX4gDLAf1rfPhY7A8x8pfgyQy8KJER/HCCvFyQU96G/96mlJ5NBGzTIVsky
+         DXmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1774801147; x=1775405947;
+        d=1e100.net; s=20251104; t=1774801803; x=1775406603;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=gEm9m7dxQ5iQP9UmmPg53kE3LH2ArVB/tcgnz/gczt4=;
-        b=l0gswB0ZmkkkBvVAhNREc6ztm3YZ4DxU7y8kkjGPSdtCZHkiMuVRDseIJzSFcXHobR
-         rS6d0BNTUaJuNOJ/aeRCMrMJiJDu0ApXxH++i+UPlZIThTaKImMbRCQA3X+ewcAAXAF6
-         isiQRPmmYKs6fwVA/O/3PYNCmBOtdSClCZV5TDvAMQ+KRH3D4Pj3r39mqKoe3PvPq9W3
-         2/hSb4vfJEliM8WmsqmmyNWMpPEyMj6s9Cd6mgxZ7Xf3aUxpghla8HXbrjjuWz2wEk9J
-         x8683wTfMvd9gYumhKGC7inBwmIoUz6BVHmmWDt+oPWL6D9Ott0dJkQm6KgROZrSWqiV
-         QEZg==
-X-Forwarded-Encrypted: i=1; AJvYcCWK/mTx/vy/28ISOWv1DckIOc/fVnA6kgFA2d4Eednbq9g8hTYeScGGMvTVHwTp7ygssFQAveYvwV338+hXQg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz7UQczYifjEHTaWAFi34pu4hwtJs1exzUxLLm95Z/o7OE+MZlq
-	jl6JgFWLOZsPfZV/222FsE7icfO/xjcVMg+cOZY4u8iF7+17ccLHxoH/7akZKhqnQB0LtBud1a1
-	vGJdGun7HdyxKxq3O0mSXmMQt3wrf/NI=
-X-Gm-Gg: ATEYQzzfE2R7om5NrPW2Mb+agfcShg7+Bfm9bQ0TrYacaku5odyhcpvgjz8iFt2UuS6
-	wyt6AzBem+qIgKFYpnW2U6WUcaTnWqr7pWVAG0U0yQ8ISUsEDCxRXiqzLfpn+bwruWp5Th6bglk
-	Gs5W/QVDUMtIm5k+uxy3FA8ro+AvgKyli6DoZcnb78ZIYj8PFdI6OEZJFRLBBv7xYFgsT9q1fIG
-	rdF5d8/yGMFT2GOgFPD1zzKslgafzm2YDaLqz886HPBW4yUBlruU2kodEnUxm4yEZiABTuYKPWF
-	h08wMmvz
-X-Received: by 2002:a05:6830:8292:b0:7d9:d2b6:155c with SMTP id
- 46e09a7af769-7d9fad972acmr5592504a34.2.1774801147392; Sun, 29 Mar 2026
- 09:19:07 -0700 (PDT)
+        bh=OiD8FHcWjlfKLGbWYvCviOg7SMJ/k+r9s3JA1CV2BMw=;
+        b=fpkH8gy1xpnd9T91PtCLOWXzOVaeasJM3KFlDmJy6bhFh480zoVpp1LVYy2NBlsAZs
+         Gg093EXONuDWjGfWrCUJa/tZLkqRTVbXUVAfD8KLqZC/varlKQ9tnWqMD133ADiVbP5d
+         jQbqifh7VEoSQOKGYQCLhT84kE0GTx8q+w8vCx08x+iWVCR/zXqVt/UkpmgUhBBjbjSc
+         m85SI5RuVabbn0EQiJrGv96y3WEu9KohWD9xjRJqNKw6CZ2OHA75z/Jfv36z4AGzbKZI
+         lAOJNym0NBdF/4Dp2SqemlDId9Rd8BN3VdFgGWfD97wXSi7sKvVvrrwyhJrkt6p3WxFg
+         sxdQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWOO9C3IIXBoC0LOv0kr0d2/WUdkDVpXzobtSJFmHSoWDQ0qvnrCb4egctBvAsXTGo3paVplkcoqSsmBzdzjA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx5hxh0pfthHEnG+flmhnYTEOeNLOU7c9mDBJkqerkxqWza6yNR
+	V+kYaKuBK0h7QCYtXJel5ErrZPUU+Rw5L+YQDrriIXNmT2wsfMOK3dy7F5m6GWTf7RTmmQztCbo
+	zRtsxY757pw7xhdxnQ5UaRoObUmLLCAk=
+X-Gm-Gg: ATEYQzwKVyqSq8eaWIYfFxlfLXfAZyyXVtBWjGgSdWaJe1THVGMy3+n1mWRK8VuJKkV
+	1qqo+s3gTSsl6yXWRO9Gw+Kmdwj8o1FjQrUknUDJyCsDUi0up92iFDQlUpgDwxmgDP0lX3ES9ZK
+	VIPwKNVoqY7+QdVrnngHN4ZoXziOBLE4WUEh49VmVzW4xG0k+F2huLsIMgBAtH69/PoEZxKS7p8
+	SMyirTgofQdnbY1Gio1spcjkrZM7vZBhu0aVUJnzg3peSlFYNWGP1S/GFHF8eMnwYQAoEZxrajg
+	5M3KhOVk
+X-Received: by 2002:a05:6820:212:b0:67e:2fbd:c363 with SMTP id
+ 006d021491bc7-67e2fbdcb15mr837332eaf.9.1774801803363; Sun, 29 Mar 2026
+ 09:30:03 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260323090742.1522607-1-jason-jh.lin@mediatek.com>
-In-Reply-To: <20260323090742.1522607-1-jason-jh.lin@mediatek.com>
+References: <20260226-vcp-v1-1-766c5877017d@gmail.com>
+In-Reply-To: <20260226-vcp-v1-1-766c5877017d@gmail.com>
 From: Jassi Brar <jassisinghbrar@gmail.com>
-Date: Sun, 29 Mar 2026 11:18:56 -0500
-X-Gm-Features: AQROBzA7xXjIQ4tkZaMphxv2Ps8tgRrWBc1wi2mt1Aa8d2cIxfJw63Lhb39TBHU
-Message-ID: <CABb+yY2J5CoWcBZvf-o9jgpjYFC5PyXSpnH9UEBdNYj0rAGjEQ@mail.gmail.com>
-Subject: Re: [PATCH] mailbox: mtk-cmdq: Fix CURR and END addr for task insert case
-To: Jason-JH Lin <jason-jh.lin@mediatek.com>
+Date: Sun, 29 Mar 2026 11:29:51 -0500
+X-Gm-Features: AQROBzBl1Ou1fhsJiwTmhLJSC1Vrfy8M5kKovqY1sGQqEd9y-J-hWzcG0L_WLfw
+Message-ID: <CABb+yY0YNHSnkBegLhr-YtAOD52d+KH3ZyqKtjkvYp-=37Q61g@mail.gmail.com>
+Subject: Re: [PATCH] mailbox: mtk-vcp-mailbox: Fix the return value in mtk_vcp_mbox_xlate()
+To: Felix Gu <ustc.gu@gmail.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Jjian Zhou <jjian.zhou@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260329_091908_476912_D3A229C7 
-X-CRM114-Status: GOOD (  17.67  )
+X-CRM114-CacheID: sfid-20260329_093004_457166_29C95C41 
+X-CRM114-Status: GOOD (  16.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,56 +116,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Xiandong Wang <xiandong.wang@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>, linux-kernel@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 23, 2026 at 4:07=E2=80=AFAM Jason-JH Lin <jason-jh.lin@mediatek=
-.com> wrote:
+On Wed, Feb 25, 2026 at 10:33=E2=80=AFAM Felix Gu <ustc.gu@gmail.com> wrote=
+:
 >
-> Fix CURR and END address calculation for inserting a cmdq task into the
-> task list by using cmdq_reg_shift_addr() for proper address converting.
-> This ensures both CURR and END addresses are set correctly when
-> enabling the thread.
+> The return value of mtk_vcp_mbox_xlate() is checked by IS_ERR(), so
+> return NULL is incorrect and could lead to a NULL pointer dereference.
 >
-> Fixes: a195c7ccfb7a ("mailbox: mtk-cmdq: Refine DMA address handling for =
-the command buffer")
-> Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
+> Fixes: b562abd95672 ("mailbox: mediatek: Add mtk-vcp-mailbox driver")
+> Signed-off-by: Felix Gu <ustc.gu@gmail.com>
 > ---
->  drivers/mailbox/mtk-cmdq-mailbox.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+>  drivers/mailbox/mtk-vcp-mailbox.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmd=
-q-mailbox.c
-> index d7c6b38888a3..547a10a8fad3 100644
-> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
-> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> @@ -493,14 +493,14 @@ static int cmdq_mbox_send_data(struct mbox_chan *ch=
-an, void *data)
->                 if (curr_pa =3D=3D end_pa - CMDQ_INST_SIZE ||
->                     curr_pa =3D=3D end_pa) {
->                         /* set to this task directly */
-> -                       writel(task->pa_base >> cmdq->pdata->shift,
-> -                              thread->base + CMDQ_THR_CURR_ADDR);
-> +                       gce_addr =3D cmdq_convert_gce_addr(task->pa_base,=
- cmdq->pdata);
-> +                       writel(gce_addr, thread->base + CMDQ_THR_CURR_ADD=
-R);
->                 } else {
->                         cmdq_task_insert_into_thread(task);
->                         smp_mb(); /* modify jump before enable thread */
->                 }
-> -               writel((task->pa_base + pkt->cmd_buf_size) >> cmdq->pdata=
-->shift,
-> -                      thread->base + CMDQ_THR_END_ADDR);
-> +               gce_addr =3D cmdq_convert_gce_addr(task->pa_base + pkt->c=
-md_buf_size, cmdq->pdata);
-> +               writel(gce_addr, thread->base + CMDQ_THR_END_ADDR);
->                 cmdq_thread_resume(thread);
->         }
->         list_move_tail(&task->list_entry, &thread->task_busy_list);
-> --
-> 2.43.0
+> diff --git a/drivers/mailbox/mtk-vcp-mailbox.c b/drivers/mailbox/mtk-vcp-=
+mailbox.c
+> index cedad575528f..1b291b8ea15a 100644
+> --- a/drivers/mailbox/mtk-vcp-mailbox.c
+> +++ b/drivers/mailbox/mtk-vcp-mailbox.c
+> @@ -50,7 +50,7 @@ static struct mbox_chan *mtk_vcp_mbox_xlate(struct mbox=
+_controller *mbox,
+>                                             const struct of_phandle_args =
+*sp)
+>  {
+>         if (sp->args_count)
+> -               return NULL;
+> +               return ERR_PTR(-EINVAL);
+>
+>         return &mbox->chans[0];
+>  }
 >
 Applied to mailbox/for-next
 Thanks
