@@ -4,69 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08676F3D5FB
-	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Mar 2026 14:48:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7765EF3D60A
+	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Mar 2026 16:03:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6D55HdNBFgogkbxZ9B6R/xFqNQaywSSEdDJEMT48Flw=; b=eS70f+VPbb6/Po/o/TSkYOsr9f
-	2ioScWa0ZVn3qLcExJ9kYdCGCxiDVpF05l1/KsqxqQLF4imv9gXAD0qHTKwVX14M7h+hIf2q0IJba
-	d6sdsIp3hqZ0zkf0Jxi08MhdOjlLc3Y8qvDzo8Q1F0yO29FTUh7U4eHjz05A1iOcsEPmE1Aw32aKP
-	Mp2eg0j4NfygN93ymKpa6DEFddyM7N0646Ft5R1SEnVlpp8NNmHrxo37M2fosNn5QOKsCTWvRmAm2
-	kCZSeVmUeMQPZ9aLhIhVhj9Q7fPat1awQlCOEPF0B8gGD8Ln7UOeBQi+OV1WFfv3GowLzpJEZCLly
-	OHeSL6dg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=iuRiB7kx80/hvjqFvrfisUx6wOU49zwzAkhJWuxRZrs=; b=Ie+gza5KnT2pAU
+	CGuLjkvZvD+A3jTe1OUAB+XDknTBcYq3U7oG78QqmoQnb81ORqdxW2xfbEcj1vd0Zo51TOQ9KBCr2
+	MsD401RvpMU28vj9vWpZKi/y5j7Tt0GhqsWxZ9iSpV26wCQjtxjyi9NuTCGcp52JyQHF3jqkVsGPq
+	DvQunELviSlwNY3K8yONlLD6S8WmhLZFAoAFhOIajZBmbxmaX4rwTblgSHAXZsdumWZ9hIg/qNmY9
+	Gh+FTiKIH6aqtxaNI7LqjjStjT6bY5x+x+fwrKdCyXBhA/SSCn/DqoAIff+kdq0trCKj3MJKp0K5g
+	LN81sPp4Q77L2yVWIF6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w6rRc-0000000A1xR-26PW;
-	Sun, 29 Mar 2026 14:48:52 +0000
-Received: from m16.mail.163.com ([220.197.31.2])
+	id 1w6scC-0000000A5aD-2KRK;
+	Sun, 29 Mar 2026 16:03:52 +0000
+Received: from mail-ot1-x334.google.com ([2607:f8b0:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w6rRO-0000000A1v3-27HP;
-	Sun, 29 Mar 2026 14:48:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Message-ID:Date:MIME-Version:Subject:To:From:
-	Content-Type; bh=6D55HdNBFgogkbxZ9B6R/xFqNQaywSSEdDJEMT48Flw=;
-	b=F7yvNXzLWcYYggmho/921Cdsj6BQqjQJgBSJHBEj4Vw9puKVQlnetagQ5l37K3
-	8ux/HqhEJB2aARWpwEBywajYM6gLq9/+4k1oxuO6opefsdSeHpQCrA3AzY1QeNfG
-	Klrgdk9QPyY/3nPqdQs2t6q70aBKgd0j18K2DHtpBNzRQ=
-Received: from [192.168.50.71] (unknown [])
-	by gzga-smtp-mtada-g1-3 (Coremail) with SMTP id _____wCnr9J+O8lpUdKTCA--.51946S2;
-	Sun, 29 Mar 2026 22:47:27 +0800 (CST)
-Message-ID: <fbff8f2a-f4a9-4e06-b5ae-cfb554e73664@163.com>
-Date: Sun, 29 Mar 2026 22:47:26 +0800
+	id 1w6sc9-0000000A5ZJ-0Bjl
+	for linux-mediatek@lists.infradead.org;
+	Sun, 29 Mar 2026 16:03:50 +0000
+Received: by mail-ot1-x334.google.com with SMTP id 46e09a7af769-7d744d9acbeso1479143a34.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 29 Mar 2026 09:03:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1774800227; cv=none;
+        d=google.com; s=arc-20240605;
+        b=YuvT9EF0LpqKpIaaAvo2bm7ciQVG1seKYZ0yf6JKMrwNJZBf3qh7kYZb8Rm6+R9SRP
+         mhaZzPZnSbqbHrYlmDqze460Tfjv/VTHKf1sYS3v2ydKFowrItOePMrMNVnW5i2ahLsq
+         mwMJCFqmHIY9eHkrX9HHqqFToASC1FRBsMZDZYIoG8AcMV8MGsRm6S/RNYuN26uZpNve
+         0XHVGdlCmmCIxwHg1pP6qilifF7McVeOpRyH1/bI2n6OvwZ93Kxjr/EvATumg3IuEjsq
+         kXR2gGzcD8bqLmNYB+DiWTra+Y9Tf7omY5nt9R4anhSgi1LO0AdrBTA76jhvbkIbPODs
+         jXVw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=iuRiB7kx80/hvjqFvrfisUx6wOU49zwzAkhJWuxRZrs=;
+        fh=rGT0MZGIO3yCFrfO5GCcysX4JBlmAecAgE/bcScWAyY=;
+        b=g1z+x1BFTOGnaFNt5TcsyY5QsEr1PJ1Gdog8UE5xPqeXNEqqalduhzApn5v5wsSq6M
+         KroJgtKAmJnhBc2uHBn8qMYvV+SIiJ0A2U4eItSwtPafGgFIeCnB4nD8iIGPWCK8lKdd
+         BUqr/4nIO8X/1K4tWSn8zNTs1KofhdNNx7eghGyz5ChImSHQf82ROuioa0A7joX80vyC
+         9vmQNFSAl/VnH1dvyfywP6Npk4iuj+Q3Kdi2mRcIvYD9/SJ4SWZG4PZrueR4vV0HgKd3
+         rxmsTvLed9cxhoiAQM4kHuL92ybDSvB9Tg2OYmwbiZHYJxK+k/7S9joeCuwFWIl0uICe
+         96gg==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1774800227; x=1775405027; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=iuRiB7kx80/hvjqFvrfisUx6wOU49zwzAkhJWuxRZrs=;
+        b=hmuuR7TiJdGZqATGtQRKQMKBgg7OkaveSd8HWVs9wLmQZLPRuSlWhwzsySJzGE4QQv
+         p8HpP0E5YltjiegxH5EI64lBJXnU7rFmJNvUfK7JHl0Qa1QdMeWLEL3ajZC00Mmm36hW
+         mA4hNcHh8+vLn0CkNn5WstYgMfUK9z9R7qwHBI23J6cUnijT8oacSUqLv1NGW1nziaRM
+         FhkGHAWXndoriJqjQmcSH6ImyXjiO/5ivZ93fo5rY9L2uqLKiS7tus6HVPYgxaCAgQmG
+         /GB3Sh/ZvFtpOFjeg6128JG7ykWcL42iyqwMpKC8TDc/R51TykQEZM3aHcMPvas1dsIk
+         umDQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1774800227; x=1775405027;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=iuRiB7kx80/hvjqFvrfisUx6wOU49zwzAkhJWuxRZrs=;
+        b=UxDO5cke2V6teYCB/Ij1P2doVzU/Syj7+iotvSNsh7f6eD0hIQlFt2EvJSktiJN7dq
+         1ZfZnKs7uwLNE1pLzn2/e+0THiS1SQ3VeTq7/6zfFauFIvVYnVF5pzJ19l4Ot3FHIwxJ
+         81tGh7tuUbRf096bHnVg87oLZ3nQkCH6EYjJxCXgvuUKiEdvwuq1l4DHvw4V9dBiNiNF
+         mboYvDSr0gWlJff9ydLkK/5fbyViv30FvBjpL9dyhOljMT3tIeo3CqtXZfRDkp4mxpu7
+         kTVu9/0GqR3oedVjtBp78hoZXyINGU+WYmR7P0wx8gDZYsClMOPoLV0UQ4FE4LLHezEu
+         WL9g==
+X-Forwarded-Encrypted: i=1; AJvYcCUhnT3Sd3mHvZMiDcF+ZNb1tR/1t2uIu9sJf6rDD08chFsU/LLRvkFo9/DH7CNbKHIcEsoCcYmrHu5HVdGYyQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwXb2jG4Oqh/BPxescsY1axlcNYFxoV1zO7z7Bnn9/L/tjZ9HQC
+	wBSM5sWc6AqyUHq4xSAYrMtFjM+rVmUvCAyoAeoMgFySiuYIunZOANxa84W3xqwhoNCb8D1Hvba
+	qA1CyRWzytxnMHh6Otw2so7pPWxijhiI=
+X-Gm-Gg: ATEYQzwCsyCEpJssOvBMzB8sK734dk05Dw4FT0G0ZM1I9eY55tE59piOaIihwutVtM/
+	RSYoRmsRoFNistk1VyB71GqLvm2qDow91zWfCzZbymfye6mbzj5hpgaZCRgUo1hfzjietc1WbKc
+	E66rPEMiIbDpbBkEfqdgtcRtFsoXqPXofheXXraoO4pNcBTo5PchvEG3ActImbAdXQOdjh29RqH
+	r7GJiXPbbs6eZwIscHtgN00DcmOTVKio3ov5GiVS0mEd13jvJ4c/9jQUTnr8wR8xZvx4piKSB2e
+	5k+a1vpG
+X-Received: by 2002:a05:6808:1a1c:b0:466:ff3a:c745 with SMTP id
+ 5614622812f47-46a8a3eb1b4mr4305468b6e.21.1774800227277; Sun, 29 Mar 2026
+ 09:03:47 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 0/5] PCI: of: Remove max-link-speed generation
- validation
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: lpieralisi@kernel.org, jingoohan1@gmail.com, mani@kernel.org,
- kwilczynski@kernel.org, bhelgaas@google.com, florian.fainelli@broadcom.com,
- jim2101024@gmail.com, robh@kernel.org, ilpo.jarvinen@linux.intel.com,
- linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-renesas-soc@vger.kernel.org, claudiu.beznea.uj@bp.renesas.com,
- linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
- linux-omap@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com,
- linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
- shawn.lin@rock-chips.com
-References: <20260327164250.GA1513325@bhelgaas>
-Content-Language: en-US
-From: Hans Zhang <18255117159@163.com>
-In-Reply-To: <20260327164250.GA1513325@bhelgaas>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-CM-TRANSID: _____wCnr9J+O8lpUdKTCA--.51946S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxJFyDCr18WF1UtFyfJr4rGrg_yoW5WrWDpa
-	y2kF40vry0qr43Xr4DX3W5Z3WYq3ZxurWjyryFg3s7Z3ZxCrsxXFyIvayFqF9Ikrsxury2
-	qF12qF4akFW7AFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07U7fHbUUUUU=
-X-Originating-IP: [140.206.53.66]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbC7AC7X2nJO4BGqwAA3+
+References: <20260325040457.2113120-1-jason-jh.lin@mediatek.com> <20260325040457.2113120-4-jason-jh.lin@mediatek.com>
+In-Reply-To: <20260325040457.2113120-4-jason-jh.lin@mediatek.com>
+From: Jassi Brar <jassisinghbrar@gmail.com>
+Date: Sun, 29 Mar 2026 11:03:36 -0500
+X-Gm-Features: AQROBzDYnGEvrmF9Nv8aKI46KCu4qNGcGl029nctsf-3ar7uJysAlIX7PTC3c6A
+Message-ID: <CABb+yY2cjMskJeXsn8+hZj2DcFs05yabHbSaGT5XSi0fn45zCQ@mail.gmail.com>
+Subject: Re: [PATCH v2 3/3] mailbox: mtk-cmdq: Remove unsued cmdq_get_shift_pa()
+To: Jason-JH Lin <jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260329_074839_025244_31CFDCFF 
-X-CRM114-Status: GOOD (  17.20  )
+X-CRM114-CacheID: sfid-20260329_090349_102899_B588A2DF 
+X-CRM114-Status: GOOD (  18.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,68 +111,74 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Moudy Ho <moudy.ho@mediatek.com>, Xiandong Wang <xiandong.wang@mediatek.com>, linux-media@vger.kernel.org, Singo Chang <singo.chang@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Nicolas Dufresne <nicolas@ndufresne.ca>, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Mar 24, 2026 at 11:05=E2=80=AFPM Jason-JH Lin <jason-jh.lin@mediate=
+k.com> wrote:
+>
+> Since the mailbox driver data can be obtained using cmdq_get_mbox_priv()
+> and all CMDQ users have transitioned to cmdq_get_mbox_priv(),
+> cmdq_get_shift_pa() can be removed.
+>
+> Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> ---
+>  drivers/mailbox/mtk-cmdq-mailbox.c       |  8 --------
+>  include/linux/mailbox/mtk-cmdq-mailbox.h | 12 ------------
+>  2 files changed, 20 deletions(-)
+>
+> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmd=
+q-mailbox.c
+> index d7c6b38888a3..f463f443e834 100644
+> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
+> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+> @@ -123,14 +123,6 @@ void cmdq_get_mbox_priv(struct mbox_chan *chan, stru=
+ct cmdq_mbox_priv *priv)
+>  }
+>  EXPORT_SYMBOL(cmdq_get_mbox_priv);
+>
+> -u8 cmdq_get_shift_pa(struct mbox_chan *chan)
+> -{
+> -       struct cmdq *cmdq =3D container_of(chan->mbox, struct cmdq, mbox)=
+;
+> -
+> -       return cmdq->pdata->shift;
+> -}
+> -EXPORT_SYMBOL(cmdq_get_shift_pa);
+> -
+>  static void cmdq_vm_init(struct cmdq *cmdq)
+>  {
+>         int i;
+> diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mai=
+lbox/mtk-cmdq-mailbox.h
+> index 07c1bfbdb8c4..a42b44d5fd49 100644
+> --- a/include/linux/mailbox/mtk-cmdq-mailbox.h
+> +++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
+> @@ -96,16 +96,4 @@ struct cmdq_pkt {
+>   */
+>  void cmdq_get_mbox_priv(struct mbox_chan *chan, struct cmdq_mbox_priv *p=
+riv);
+>
+> -/**
+> - * cmdq_get_shift_pa() - get the shift bits of physical address
+> - * @chan: mailbox channel
+> - *
+> - * GCE can only fetch the command buffer address from a 32-bit register.
+> - * Some SOCs support more than 32-bit command buffer address for GCE, wh=
+ich
+> - * requires some shift bits to make the address fit into the 32-bit regi=
+ster.
+> - *
+> - * Return: the shift bits of physical address
+> - */
+> -u8 cmdq_get_shift_pa(struct mbox_chan *chan);
+> -
+>  #endif /* __MTK_CMDQ_MAILBOX_H__ */
 
-
-On 3/28/26 00:42, Bjorn Helgaas wrote:
-> On Sat, Mar 14, 2026 at 12:55:17AM +0800, Hans Zhang wrote:
->> Hi,
->>
->> This series moves the validation from the common OF function to the
->> individual PCIe controller drivers.  To protect against out-of-bounds
->> accesses to the pcie_link_speed[] array, we first introduce a helper
->> function pcie_get_link_speed() that safely returns the speed value
->> (or PCI_SPEED_UNKNOWN) for a given generation number.
->>
->> Then all direct uses of pcie_link_speed[] as an array are converted to
->> use the new helper, ensuring that even if an invalid generation number
->> reaches those code paths, no out-of-bounds access occurs.
->>
->> For several drivers that read the "max-link-speed" property
->> (pci-j721e, brcmstb, mediatek-gen3, rzg3s-host), we add an explicit
->> validation step: if the value is missing, out of range, or unsupported
->> by the hardware, a safe default is used (usually Gen2). Other drivers
->> (mainly DesignWare glue drivers) rely on the helper to safely handle
->> invalid values, but do not yet include fallback logic or warnings.
->>
->> Finally, the range check is removed from of_pci_get_max_link_speed(),
->> so that future PCIe generations can be supported without modifying
->> drivers/pci/of.c.
-> 
-> Thanks for this series.
-> 
-> We still have a couple references to pcie_link_speed[] that bypass
-> pcie_get_link_speed().  These are safe because PCI_EXP_LNKSTA_CLS is
-> 0xf and pcie_link_speed[] is size 16, but I'm not sure the direct
-> reference is necessary.
-> 
-> The array itself is exported, which I suppose we needed for modular
-> PCI controller drivers, but we probably don't need it now that
-> pcie_get_link_speed() is exported?
-> 
->    $ git grep "\<pcie_link_speed\>"
->    drivers/pci/pci-sysfs.c:        speed = pcie_link_speed[linkstat & PCI_EXP_LNKSTA_CLS];
->    drivers/pci/pci.c:      return pcie_link_speed[FIELD_GET(PCI_EXP_LNKSTA_CLS, lnksta)];
->    drivers/pci/pci.h:extern const unsigned char pcie_link_speed[];
->    drivers/pci/pci.h:      bus->cur_bus_speed = pcie_link_speed[linksta & PCI_EXP_LNKSTA_CLS];
->    drivers/pci/probe.c:const unsigned char pcie_link_speed[] = {
->    drivers/pci/probe.c:EXPORT_SYMBOL_GPL(pcie_link_speed);
->    drivers/pci/probe.c:    if (speed >= ARRAY_SIZE(pcie_link_speed))
->    drivers/pci/probe.c:    return pcie_link_speed[speed];
->    drivers/pci/probe.c:            bus->max_bus_speed = pcie_link_speed[linkcap & PCI_EXP_LNKCAP_SLS];
-
-Hi Bjorn,
-
-Yes, I also realized that this array is directly used in other places. 
-So I submitted this series and I would appreciate it if you could review 
-it to ensure its correctness.
-
-See also this series:
-https://patchwork.kernel.org/project/linux-pci/patch/20260315160057.127639-1-18255117159@163.com/
-
-Best regards,
-Hans
-
+I think the simplest would be to take this with the other two
+predecessor patches.
+Acked-by: Jassi Brar <jassisinghbrar@gmail.com>
 
