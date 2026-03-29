@@ -4,142 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 943DEF3D60A
-	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Mar 2026 13:56:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08676F3D5FB
+	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Mar 2026 14:48:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jvffxLoCBgjG87056ZyPh5owZY2FyeuDQKF7B3dGugk=; b=wqll/vRkGJ9epZFcrEhiQfGQk9
-	UkgJ1yA90x+fuet2pdvsyYFH22SEjnECU8w6luG/TqR+U5OCMWm2ctHIZfPeuTBbcA3PdPPhNC0lr
-	n0Tk1CWTnN8hwpoa/X5NvY04+0gCisUexW9dlsNOOH8iwLI5KQRdx8+AaDtXCL8T1XmlGcD4cPIa6
-	fohsqZqb8k8Hg/AdoHhKyxD+7SbftSMshEW6JlT4Ux2XwOlYWcPWxbferbCs10lDzJy23Bc8KkDNc
-	e2CwaAI8CHn2HDyu9UOfSRJAbjg/I9Sg0sVYuJn4zlF74FvYoAPChWxFLYt4v+d/QK3D1308Gr4hs
-	FoFSfRkg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6D55HdNBFgogkbxZ9B6R/xFqNQaywSSEdDJEMT48Flw=; b=eS70f+VPbb6/Po/o/TSkYOsr9f
+	2ioScWa0ZVn3qLcExJ9kYdCGCxiDVpF05l1/KsqxqQLF4imv9gXAD0qHTKwVX14M7h+hIf2q0IJba
+	d6sdsIp3hqZ0zkf0Jxi08MhdOjlLc3Y8qvDzo8Q1F0yO29FTUh7U4eHjz05A1iOcsEPmE1Aw32aKP
+	Mp2eg0j4NfygN93ymKpa6DEFddyM7N0646Ft5R1SEnVlpp8NNmHrxo37M2fosNn5QOKsCTWvRmAm2
+	kCZSeVmUeMQPZ9aLhIhVhj9Q7fPat1awQlCOEPF0B8gGD8Ln7UOeBQi+OV1WFfv3GowLzpJEZCLly
+	OHeSL6dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w6qdI-00000009zxo-0Gxf;
-	Sun, 29 Mar 2026 13:56:52 +0000
-Received: from mail-swedencentralazon11023129.outbound.protection.outlook.com ([52.101.83.129] helo=GVXPR05CU001.outbound.protection.outlook.com)
+	id 1w6rRc-0000000A1xR-26PW;
+	Sun, 29 Mar 2026 14:48:52 +0000
+Received: from m16.mail.163.com ([220.197.31.2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w6qdF-00000009zxO-1joI;
-	Sun, 29 Mar 2026 13:56:50 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=KphWP202U4bGHDWTGjwjenck6q0mtw6AouDbV5kHRuFk4+cooSFDQEXWNaKgOiZgW9K1bX0dbaTbae/lNkvduiDRC5s6HgoZjoewl9OQyaHoKo3SJlq6AueEMJ+E/aJ+xKidpuKiqWL8f/HsyNeI80S21X0Ecf/Ui5C5tmnly57J/PTFtjbKnKn98SMdoqLtS21HByVZsljK1LIRHDSwYHubIKp+ZLykW6+YIaYqQpN8WkJEhB61qtoOKJpyi/RUu1SdpKGftBywTT8YfiQhQWte2g/6Vj+1huIEe99ccyb4kQZgdGgoGJMQTuKPvJHRm1suNMZhPD0xqxJKIs5YfA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=jvffxLoCBgjG87056ZyPh5owZY2FyeuDQKF7B3dGugk=;
- b=vKscX+lseFdMTW+N1mCgPhEs1Omieu1T++KnoiqTB25J3njP7rDnQQY7Jv1ZCr0TnVihN881hIR25sb6wPfJu2UJLDydLWTn1eW8VjjmiRk1ltwd6aJEv8dI07Us6fwB4XAc8lgcCgZMLnMkscCiPhoWSeJggJ4pjz8xWvh2t/LUyk4+jAVksNLI7C0kwEg6+otIaL6qoUY7SY0rFUt7IX57sTZvcnYiZnhg/Xl98wM44GS5WSKNrX1J1HyHs1cnZ/5sxkNny5crb9iRX3ne1zkwIgyN9IMTnwwurz+P4Vr7029ZKGbdnhrWQtbnZc4qHOMdm/v4oY7tsV7CxCF6RA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=genexis.eu;
- dkim=pass header.d=genexis.eu; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=genexis.eu;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=jvffxLoCBgjG87056ZyPh5owZY2FyeuDQKF7B3dGugk=;
- b=d82onZ/wX8SSjSmNvcI6NNuL4RzKYXrX7V4Y1/Egz1o/+g7HwHA5kzLQvUbCCRiu1cDxRfv3wuA85D9GousbLp2C/IxVcyPt/U6F2ga8+G514CRiFFEaYPTs2iEyQA9wbdKM2GMs/vff+RTXagHpExsharHrzTg/5Xq0XMWYlPIGQjSJxxrIB3z3a466kFdMdYKo+mt3U7ChG+OzWaMWiD/YXoS7Kr5UMkUZeTcB2PfzL1xbvkCOd/6aqHKDthFahkOnTdxCLTK/8vHV5EFGF8kYB7G/apfqRqkVw3tpnvUYGHxnCchgWtBosH1xvZUL0lupGg1qAWzac8TyEfJqzQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=genexis.eu;
-Received: from DB9PR08MB6697.eurprd08.prod.outlook.com (2603:10a6:10:2ad::14)
- by PAWPR08MB8887.eurprd08.prod.outlook.com (2603:10a6:102:33b::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9745.25; Sun, 29 Mar
- 2026 13:40:45 +0000
-Received: from DB9PR08MB6697.eurprd08.prod.outlook.com
- ([fe80::bdec:3e95:6614:441f]) by DB9PR08MB6697.eurprd08.prod.outlook.com
- ([fe80::bdec:3e95:6614:441f%7]) with mapi id 15.20.9745.025; Sun, 29 Mar 2026
- 13:40:44 +0000
-Message-ID: <a64e0f7e-7073-4355-a3de-e8d93e2c795c@genexis.eu>
-Date: Sun, 29 Mar 2026 15:40:43 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next 00/10] net: airoha: Support multiple net_devices
- connected to the same GDM port
-To: Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn
- <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
-Cc: Christian Marangi <ansuelsmth@gmail.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- Xuegang Lu <xuegang.lu@airoha.com>
-References: <20260329-airoha-eth-multi-serdes-v1-0-00f52dc360ca@kernel.org>
-Content-Language: en-US
-From: Benjamin Larsson <benjamin.larsson@genexis.eu>
-In-Reply-To: <20260329-airoha-eth-multi-serdes-v1-0-00f52dc360ca@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: GVZP280CA0096.SWEP280.PROD.OUTLOOK.COM
- (2603:10a6:150:275::14) To DB9PR08MB6697.eurprd08.prod.outlook.com
- (2603:10a6:10:2ad::14)
+	id 1w6rRO-0000000A1v3-27HP;
+	Sun, 29 Mar 2026 14:48:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Message-ID:Date:MIME-Version:Subject:To:From:
+	Content-Type; bh=6D55HdNBFgogkbxZ9B6R/xFqNQaywSSEdDJEMT48Flw=;
+	b=F7yvNXzLWcYYggmho/921Cdsj6BQqjQJgBSJHBEj4Vw9puKVQlnetagQ5l37K3
+	8ux/HqhEJB2aARWpwEBywajYM6gLq9/+4k1oxuO6opefsdSeHpQCrA3AzY1QeNfG
+	Klrgdk9QPyY/3nPqdQs2t6q70aBKgd0j18K2DHtpBNzRQ=
+Received: from [192.168.50.71] (unknown [])
+	by gzga-smtp-mtada-g1-3 (Coremail) with SMTP id _____wCnr9J+O8lpUdKTCA--.51946S2;
+	Sun, 29 Mar 2026 22:47:27 +0800 (CST)
+Message-ID: <fbff8f2a-f4a9-4e06-b5ae-cfb554e73664@163.com>
+Date: Sun, 29 Mar 2026 22:47:26 +0800
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DB9PR08MB6697:EE_|PAWPR08MB8887:EE_
-X-MS-Office365-Filtering-Correlation-Id: 40d94f2e-3605-42a6-685d-08de8d98c6ee
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|366016|1800799024|22082099003|18002099003|56012099003;
-X-Microsoft-Antispam-Message-Info: AiwFPG/tMGgs3sgoEVcR16sbNiaTcYpuTpHn++jbRoQ4uxMPsWQ+RGWjH+ddOlVAcSTfKIWzH9TAeuWv7lWaPlPbtneCtWsqc+auqNphLzJfIWONRMUyuOObKBqOqkBmn00Le8hoOxwAQYxO7zT7Y6UcITnuotDAQIQ0FSbA4evg3aE1FImWQmtFjoU2E88k6DgdBwVWGAPuo9kkW9VzJfeWhZ+aAbo9G+A6QbzMP7q1RoIEFySdOQqY5izwEnWqjtIEtgtu6scxXbKfJ+qHC7bypn4FgbKu0cc8sNL8Em6C/hjtsdpSzT89Yle5HX15N63ibuViN5hnMtgNRM7d+CVHbfwGv+InYhPMBKB1NPFqx8xO6NfIAHDpvkTwrs3ogl0WYPai3pjT1Uujg4NMIaT7KwpzGXOCB2WMzBHTyxyZ0RWiGkJFWZwgQmIRhyX7cOQKhfImL2n2vvTIoUOvvQV8GaHLRPEL03M4qCVZ9bm6R73aI5FTeGaPv2AoR1yQTaH4hFEBgv3ZSi0HFfMXM/cA9zjqKEdBe8bV9eApmwR7Mh523g+UH9IRWTR3ClXR+Jmfy0nUO8cFptnQBAjvBNCo5FYY+bDOBThquhhLff0Qe6wGUEUEM3VUmEJB4VQVZ0JpGv8f7ZwSgAlQU+TfC1MT5Si91BtnDqxDMptoIvp8Jo5NCOV69WcFlzwD92QYAt/vLt/N4QGPiPs0gLOLPlAGan6PvqxUb0DqT7RJcH8=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DB9PR08MB6697.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(366016)(1800799024)(22082099003)(18002099003)(56012099003);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Z1hpYjF0MkZ0dGVQeDVnMXVSYStsWnA1SHFVcUdWKyt5ZWE4NzZhWnROS0JX?=
- =?utf-8?B?S3p6UXp6cytaR3lObndOVnhkc3VpYUhFRVNuUjhKRVVZU1FBaUJDUjF4dkV3?=
- =?utf-8?B?ZUVHN211RE9hS1ZHcDV0ZFF0SlhSOEVIcllMMzFEYjhrM1FFcDh2UzlCS01s?=
- =?utf-8?B?TFp1VlJtYk45am4xcDdqVDhWbFNGelVXWWhWdEpXWkJicDVabFVzK2hEMUpw?=
- =?utf-8?B?aHNaRzVTQ3BnZ3hOc3p5SHAzMGhhdjlNcloyQWRYSHdIVDhrNytlSWhqRHZE?=
- =?utf-8?B?MzFobVNtNWoyWnR1aDJvSUlkRTZZYzdtd2JyRldNZE81czBMbkxRNnoxbVY4?=
- =?utf-8?B?b1Fjd0s5dUlLNkJEbUlHUzdscnVtTlduTzlCb3d1Ty9wMVQ1VzJuRnAzcjFl?=
- =?utf-8?B?VzNCOFRjZU90ZE50MGo1SDB2czVTRGU3aUZNZ2Q1Mk43b0NoTXpsQ3V5WUwv?=
- =?utf-8?B?Wld5NzVmRXBaVjBHc1pjSSt3OTRlSkkza0dzZWFjTzVidEhDSkVTTXU1WFY3?=
- =?utf-8?B?MDFWenJXSmp1MHo5N2ZLekhzYnI1Z0hvbzU2eGVtV1UzamVKNnNhd2VuWHVG?=
- =?utf-8?B?UWdpWHFnTG8xUmpYK2x6RVZMOVVWbjBMTExnV1gxcHBTY3FsTnhnNk14RkpW?=
- =?utf-8?B?NU1mell2RnllV0RGeGpQdy9EalJPSzRVUHNtbDIvYjdZSm95VXpvcXRzbEYw?=
- =?utf-8?B?VTJZMEZvbDV4WmhvVUdkd0g3bWgrcC9xL3M0M3NFMDF5QWh3NXVVTGlRTURk?=
- =?utf-8?B?T2Z1VDNBMU9pZE4wYitPSC91Mkk3YUtDSHpCVFZQUmxINDdLMGhkRnlZbCt2?=
- =?utf-8?B?TVdKcUgxMmJBMWtvYVlYYi9oUGtTZFp5U2FIYWF1V1J1dzk2TStFR3Z2b0FU?=
- =?utf-8?B?eUFuWjRpWUNEc3hORktWYmxZVnJidmtiemV6QnFWUWZwcFcvWklZSmJkMS9D?=
- =?utf-8?B?clhlQ2NuenFsRng0Uy83aHVrTzVFcXhJeXdWKy9vZVJhSmNTQ1FDMm1PTFNk?=
- =?utf-8?B?MVlOUUo0dlZKOFE1RVo2VzFOSXF3QklBZWkzQ2xqY3NlQjhSZHNab082SFhR?=
- =?utf-8?B?SkFRTlZxTjh1VWxRcCt1S1gvcXAvK3VZMDlGeWFLZWExMGFwWldySHRmZnBz?=
- =?utf-8?B?akYrT3RTc2x2azhKQWFHMGo1MnF0VGc4NlE2MUpUZEpPZm8yYllRM05va1lE?=
- =?utf-8?B?WlI2ejBwdGFSbDJ4UTk5RE1IZXZ4TlI5Uys3NGVLMUhEUURMYkR2N2NoS2ta?=
- =?utf-8?B?bjJpZWlkbFBVVld1eXRINFdhek1OTmZwMU04ZkF2ZUk0NXl5Uko4VDVhTE5z?=
- =?utf-8?B?ZEpPNWp4OUdGQlFXWXVBTklUUkJaLy9PcWpaUmRHUGc1ZzN2NUdQd3VYcWdv?=
- =?utf-8?B?c0pZSHhEWEZjVlUrTlRKejVUU29qOUJJRHNLbW9zb3dDL2I4Uk9veGd1Nm8v?=
- =?utf-8?B?d3NiVmhrVm44RTRRNWo3bjhraWIyRytDMllrc1RGb3lub3VEVmVkR2xYQ2Q3?=
- =?utf-8?B?SG1rbGJsY3JLVkRyT2dwTTRTVFZoTm9PZzgrM1hhLzlOcjdONmllREZNWTVV?=
- =?utf-8?B?cXRyVzhBb1JlSW1UY3Q4aHljZ2JjdmRGSkxET1diS1IzaEJ6dEVzQ3ljMjY1?=
- =?utf-8?B?OU4va21vdSs1Q2paVmdOenJqdjE5V2hpRE54dFl6dm1LUlMzR0w5ZTd4elBJ?=
- =?utf-8?B?YlREM3kzZ0Rkd1lUbDRoMU03bzloZ3liMXlUaUhKRzVULzVaRFpNQ0lVNnNh?=
- =?utf-8?B?M2NycHlyUnBvSit4Y1U5bm9leE9SL1MwZVlXekc2T1lBNWYreU8reHVRSmIw?=
- =?utf-8?B?YmtNczBzT1FURXd6UnVtMFc3VytmMlNTOC9zT3FEeTJPcmtOWHF4NzBqeUNY?=
- =?utf-8?B?ZzJucXR4NTQwcW1YSlNUMFd4eDZsNGJNVng4MGNPTHhGZFVJays0bWVGSGU4?=
- =?utf-8?B?WTYrMjlydmk5MUFXSTRRTkN5bzI3TFBCWXZLRDlRWEdESVdTODZuRW83ekRJ?=
- =?utf-8?B?T3h2d3AxV2pob2ROK2wyV0FjWU5tVnFwcENhTVlacUhweWNFOURvTEk2N2lR?=
- =?utf-8?B?WDladXkxSTFFRmlVc092c1ZRL0hjYkZTZDZPOVVITzUyRVZFUUVsNVZ3TStE?=
- =?utf-8?B?YjRaNS93UG8wekExSmRCZDNXQ253WE1WZ3J4bi9TelJwRThWNzBkZ1ZQSXlW?=
- =?utf-8?B?bWZLM0lzOXZ0SGVLMVF2OHlqQWtJWXZOOTNOWkJhV2tzQWEyRXdFZnRVenlh?=
- =?utf-8?B?aUEvOUJVTWEvZlRNcm9EMXhWZ3ZBL3pBZHdxRXJiSmdoK21TaWFaWkNKQXZD?=
- =?utf-8?B?dlN5MjY2ZTFaeGJ1WHpSNHA5N1RaRzkyM0ZsOGl5QzJPaWhaelUvbC8vSW5n?=
- =?utf-8?Q?jDC/KgMQPvQl/KSU=3D?=
-X-OriginatorOrg: genexis.eu
-X-MS-Exchange-CrossTenant-Network-Message-Id: 40d94f2e-3605-42a6-685d-08de8d98c6ee
-X-MS-Exchange-CrossTenant-AuthSource: DB9PR08MB6697.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Mar 2026 13:40:44.7294
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: kTPjteBXkFKR+pv1F8WdEgcisYqH3EnvzZ0zqVMS2IzL1/0VtCz9aofKdYFsHHMrfK+IzINLmxbytUzzuYMS/8jqzQp83Am0s1x+8fpnV90=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAWPR08MB8887
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v9 0/5] PCI: of: Remove max-link-speed generation
+ validation
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: lpieralisi@kernel.org, jingoohan1@gmail.com, mani@kernel.org,
+ kwilczynski@kernel.org, bhelgaas@google.com, florian.fainelli@broadcom.com,
+ jim2101024@gmail.com, robh@kernel.org, ilpo.jarvinen@linux.intel.com,
+ linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org, claudiu.beznea.uj@bp.renesas.com,
+ linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
+ linux-omap@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com,
+ linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+ shawn.lin@rock-chips.com
+References: <20260327164250.GA1513325@bhelgaas>
+Content-Language: en-US
+From: Hans Zhang <18255117159@163.com>
+In-Reply-To: <20260327164250.GA1513325@bhelgaas>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-CM-TRANSID: _____wCnr9J+O8lpUdKTCA--.51946S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxJFyDCr18WF1UtFyfJr4rGrg_yoW5WrWDpa
+	y2kF40vry0qr43Xr4DX3W5Z3WYq3ZxurWjyryFg3s7Z3ZxCrsxXFyIvayFqF9Ikrsxury2
+	qF12qF4akFW7AFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07U7fHbUUUUU=
+X-Originating-IP: [140.206.53.66]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbC7AC7X2nJO4BGqwAA3+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260329_065649_472514_FC395F42 
-X-CRM114-Status: UNSURE (   9.47  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260329_074839_025244_31CFDCFF 
+X-CRM114-Status: GOOD (  17.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -154,71 +81,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi.
 
-On 29/03/2026 15:07, Lorenzo Bianconi wrote:
- > EN7581 or AN7583 SoCs support connecting multiple external SerDes (e.g.
- > Ethernet or USB SerDes) to GDM3 or GDM4 ports via a hw multiplexer that
- > manages the traffic in a TDM manner.
 
-I think the word for this is arbiter. I think the common use of mux is 
-as a more fixed data path selector.
+On 3/28/26 00:42, Bjorn Helgaas wrote:
+> On Sat, Mar 14, 2026 at 12:55:17AM +0800, Hans Zhang wrote:
+>> Hi,
+>>
+>> This series moves the validation from the common OF function to the
+>> individual PCIe controller drivers.  To protect against out-of-bounds
+>> accesses to the pcie_link_speed[] array, we first introduce a helper
+>> function pcie_get_link_speed() that safely returns the speed value
+>> (or PCI_SPEED_UNKNOWN) for a given generation number.
+>>
+>> Then all direct uses of pcie_link_speed[] as an array are converted to
+>> use the new helper, ensuring that even if an invalid generation number
+>> reaches those code paths, no out-of-bounds access occurs.
+>>
+>> For several drivers that read the "max-link-speed" property
+>> (pci-j721e, brcmstb, mediatek-gen3, rzg3s-host), we add an explicit
+>> validation step: if the value is missing, out of range, or unsupported
+>> by the hardware, a safe default is used (usually Gen2). Other drivers
+>> (mainly DesignWare glue drivers) rely on the helper to safely handle
+>> invalid values, but do not yet include fallback logic or warnings.
+>>
+>> Finally, the range check is removed from of_pci_get_max_link_speed(),
+>> so that future PCIe generations can be supported without modifying
+>> drivers/pci/of.c.
+> 
+> Thanks for this series.
+> 
+> We still have a couple references to pcie_link_speed[] that bypass
+> pcie_get_link_speed().  These are safe because PCI_EXP_LNKSTA_CLS is
+> 0xf and pcie_link_speed[] is size 16, but I'm not sure the direct
+> reference is necessary.
+> 
+> The array itself is exported, which I suppose we needed for modular
+> PCI controller drivers, but we probably don't need it now that
+> pcie_get_link_speed() is exported?
+> 
+>    $ git grep "\<pcie_link_speed\>"
+>    drivers/pci/pci-sysfs.c:        speed = pcie_link_speed[linkstat & PCI_EXP_LNKSTA_CLS];
+>    drivers/pci/pci.c:      return pcie_link_speed[FIELD_GET(PCI_EXP_LNKSTA_CLS, lnksta)];
+>    drivers/pci/pci.h:extern const unsigned char pcie_link_speed[];
+>    drivers/pci/pci.h:      bus->cur_bus_speed = pcie_link_speed[linksta & PCI_EXP_LNKSTA_CLS];
+>    drivers/pci/probe.c:const unsigned char pcie_link_speed[] = {
+>    drivers/pci/probe.c:EXPORT_SYMBOL_GPL(pcie_link_speed);
+>    drivers/pci/probe.c:    if (speed >= ARRAY_SIZE(pcie_link_speed))
+>    drivers/pci/probe.c:    return pcie_link_speed[speed];
+>    drivers/pci/probe.c:            bus->max_bus_speed = pcie_link_speed[linkcap & PCI_EXP_LNKCAP_SLS];
 
- > As a result multiple net_devices can
- > connect to the same GDM{3,4} port and there is a theoretical "1:n"
- > relation between GDM ports and net_devices.
- >
- >             ┌─────────────────────────────────┐
- >             │                                 │    ┌──────┐
- >             │                         P1 GDM1 ├────►MT7530│
- >             │                                 │    └──────┘
- >             │                                 │      ETH0 (DSA conduit)
- >             │                                 │
- >             │              PSE/FE             │
- >             │                                 │
- >             │                                 │
- >             │                                 │    ┌─────┐
- >             │                         P0 CDM1 ├────►QDMA0│
- >             │  P4                     P9 GDM4 │    └─────┘
- >             └──┬─────────────────────────┬────┘
- >                │                         │
- >             ┌──▼──┐                 ┌────▼────┐
- >             │ PPE │                 │   MUX   │
- >             └─────┘                 └─┬─────┬─┘
- >                                       │     │
- >                                    ┌──▼──┐┌─▼───┐
- >                                    │ ETH ││ USB │
- >                                    └─────┘└─────┘
- >                                     ETH1   ETH2
+Hi Bjorn,
 
-A more representative picture is like the following and in the GDM2 path 
-there is a real mux present(not relevant for this patch series though). 
-Thus I think it is important to have the distinction between mux and 
-arbiter. (Feel free to reuse the following illustration freely).
+Yes, I also realized that this array is directly used in other places. 
+So I submitted this series and I would appreciate it if you could review 
+it to ensure its correctness.
 
-                 ┌─────────────────────────────────┐
-                 │                                 │    ┌──────┐
-    ┌─────────┐  │                         P1 GDM1 ├────►MT7530│
-    │   MUX   ├──│ P2 GDM2                         │    └──────┘
-    └─┬─────┬─┘  │                                 │      ETH0 (DSA conduit)
-      │     │    │                                 │
-   ┌──▼──┐┌─▼───┐│              PSE/FE             │
-   │ PON ││ PON ││                                 │
-   └─────┘└─────┘│                                 │
-    ETH5   XPON  │                                 │    ┌─────┐
-                 │                         P0 CDM1 ├────►QDMA0│
-                 │  P4      P3 GDM3        P9 GDM4 │    └─────┘
-                 └──┬──────────┬──────────────┬────┘
-                    │          │              │
-                 ┌──▼──┐  ┌────▼────┐    ┌────▼────┐
-                 │ PPE │  │   ARB   │    │   ARB   │
-                 └─────┘  └─┬─────┬─┘    └─┬─────┬─┘
-                            │     │        │     │
-                         ┌──▼──┐┌─▼───┐ ┌──▼──┐┌─▼───┐
-                         │PCIE0││PCIE1│ │ ETH ││ USB │
-                         └─────┘└─────┘ └─────┘└─────┘
-                           ETH3   ETH4    ETH1   ETH2
+See also this series:
+https://patchwork.kernel.org/project/linux-pci/patch/20260315160057.127639-1-18255117159@163.com/
 
-MvH
-Benjamin Larsson
+Best regards,
+Hans
+
 
