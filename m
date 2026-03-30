@@ -4,147 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 116241061B1C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Mar 2026 19:04:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F7521061B1E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Mar 2026 20:39:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZlLl8aCcjTj4IJadLBfqKEo65s+vGmy+tNjnLTLSfXI=; b=C5DCfog0kt/11WrQFCLhaah1tV
-	iwVQ2XQdk13kURAfccQFxfvq1HmN5Wc1fDruIJvlzlX+VL13sYOy/nQj1WY/gtzWiUSmpFqia7/h7
-	NtGDycshmb2RQXroqQgnCFzucb0ZeW2UxW8Z+Aa+Ssk/noQNgmdfuDcQS2f4LOxLxKOYxScnsJhzG
-	aDSY9ArzsvilmBDTckqpNsBMCNNaN46ADQfzjhIJC4MHFDj8Cwpstx+nggh0fGCnzCSDhtnY46/+Q
-	8uofpb/ASkU8GClXmCWrIi+WhEe59VSLuT861iw9bXl8pdz3IqV13XU46O2+3UAIvo2GLavmk3zHB
-	pXFSkerw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=D/DDszmqc68wuwl8I+3vQKmrECMgQKEVydlEKXUwWoY=; b=oo6FD3HKxqC0//
+	TtlfRQKdvMKELdB8xi9mHNVeGx3sMojW18pwACoX0CTY1T0083IfGpcFFaU/HJgZmmjXF6NeXd2N4
+	MvvVoq4cC58MDyxMjieF1QFmh0Umsui46GxR81pyXXNibMLXe5s2NmSt1o83OzY2ogh9EcSs2YrtN
+	5xskJ8bQOD14fJE9SJNDGy7vJ9vHuUyZ9hJSFC5MAaJf4btw6nf8ZgHSWTbxf20BZfD5r4H7zligP
+	uD37Guhbo4qKQXGnwc1ab/LAKR90iEcJ7SJb1BtuPKDd7YqQDa7ESYGSVgOWAMXe2iVb9TKEMlszs
+	4DNjmMD3X5Pv8dOIiYcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7Huy-0000000Blpd-2cj3;
-	Mon, 30 Mar 2026 19:04:56 +0000
-Received: from mail-swedencentralazon11013054.outbound.protection.outlook.com ([52.101.83.54] helo=GVXPR05CU001.outbound.protection.outlook.com)
+	id 1w7JOX-0000000BqKz-07rT;
+	Mon, 30 Mar 2026 20:39:33 +0000
+Received: from fhigh-a2-smtp.messagingengine.com ([103.168.172.153])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7Huv-0000000Bloe-3mRK
-	for linux-mediatek@lists.infradead.org;
-	Mon, 30 Mar 2026 19:04:55 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=IgMeT3+5KaSWW6DpZyeltWSmMh5WLHdKOv91u76bEWEUAwiZBJ83KYn+14Gf4iZKE+cySK4vyxlxAD/1EEXO5mp0X6EZEhVPytAM8ZR5IxxDJMVXUqm3Nw+cJU3RgKBc78nBIiKO6RaRE7L7VFA4UT7W6rx710uVKHrK+98QubzUrEkIBsVDR5Qsit8rGWqVwVy3JxeqxFoqoELWEbkmJWBfpFd89uQITrV9oz9YjttJBaiwvqCzcIrLG8oHmLChH/lGSYhVyZyIZDNiQdDZPz0v1Y70c2oRE7SrZuyQYzHCw1OxkUJXDIZ54RUCZNT0UdhD+sg1qpnNAmfhi8RDyA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ZlLl8aCcjTj4IJadLBfqKEo65s+vGmy+tNjnLTLSfXI=;
- b=TSFgtur8juE7BHX+zGzwddKNiWrA1BeMSU/azJnlMi7RMJewOlY9uzYqq8CeHkv1+H+VuvIZQTUQ++PJoyP00Zp777CHo48G7+//ef7yQckMbVDYwSvoIO9CPZfecZH3JpET6cfJydXJ6ziyI2tE8xVe7KxCIlpqh3uqB+b60HbdgLody3sQx73SrECIoKoQPzzeWIv+tjWQ7xUQ54xdB9bOP88fZdAQsMiNMxywWXqdlfTl31WIGmLMJ5d945xlNowdHUjaMz0KgNfSim0FpOKh7tBKj3X1qltwJWva9TLDD+RIX2JG12jag57+19EBGiRCsizSJ8nYXI4XZLrwpg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ZlLl8aCcjTj4IJadLBfqKEo65s+vGmy+tNjnLTLSfXI=;
- b=bP620wtgZgrQFYOe3VrZ/9z0knFhw63jZVCUj+zSr5YUpsHQeMpcd2xVicoNO8Ng8Zq3cWmIkgSxZY1Ct+XrQBHFs4KzLYeajK5vAUqIx9qevYnEqdL8xDyXAkBcYErq2+FdeXZRxljeUT51faiiHLCOm2Qaya3yTB0eBEawvP+UQHpvQrjD6uW0k7yn2V6zVTswc180grTWSFEfe4g4/smw08iVvxOk9wrLfwdzbOlfsZAnbJny92xBlurHYJbi07RvY/VsNSOLQk4j8557GcuT17rWqgnczsibj1WWQm/lwro5dhTGlTapNPXKQguiErcKzoRyn6ac8OF1XKjc4A==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from AM9PR04MB8585.eurprd04.prod.outlook.com (2603:10a6:20b:438::13)
- by PA4PR04MB8045.eurprd04.prod.outlook.com (2603:10a6:102:bb::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9745.28; Mon, 30 Mar
- 2026 19:04:48 +0000
-Received: from AM9PR04MB8585.eurprd04.prod.outlook.com
- ([fe80::f010:fca8:7ef:62f4]) by AM9PR04MB8585.eurprd04.prod.outlook.com
- ([fe80::f010:fca8:7ef:62f4%4]) with mapi id 15.20.9745.027; Mon, 30 Mar 2026
- 19:04:48 +0000
-Date: Mon, 30 Mar 2026 22:04:43 +0300
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
-To: Frank Wunderlich <frank.wunderlich@linux.dev>
-Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	Daniel Golle <daniel@makrotopia.org>,
-	Horatiu Vultur <horatiu.vultur@microchip.com>,
-	=?utf-8?B?QmriiJriiI9ybg==?= Mork <bjorn@mork.no>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Eric Woudstra <ericwouds@gmail.com>,
-	Alexander Couzens <lynxis@fe80.eu>,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, Felix Fietkau <nbd@nbd.name>
-Subject: Re: [PATCH v4 net-next 5/5] net: pcs: pcs-mtk-lynxi: deprecate
- "mediatek,pnswap"
-Message-ID: <20260330190443.bol5vjfqqitz7kuo@skbuf>
-References: <20260119091220.1493761-1-vladimir.oltean@nxp.com>
- <20260119091220.1493761-6-vladimir.oltean@nxp.com>
- <e0ad52862d34cf4e0169c9850a7f164f127d0093@linux.dev>
- <20260326215404.krh6v3mmnqdlndli@skbuf>
- <d9639ac711ff8f1186a684fa120ba77247669051@linux.dev>
-Content-Type: multipart/mixed; boundary="gg3xcc6lsi5dh453"
-Content-Disposition: inline
-In-Reply-To: <d9639ac711ff8f1186a684fa120ba77247669051@linux.dev>
-X-ClientProxiedBy: WA0P291CA0022.POLP291.PROD.OUTLOOK.COM
- (2603:10a6:1d0:1::22) To AM9PR04MB8585.eurprd04.prod.outlook.com
- (2603:10a6:20b:438::13)
+	id 1w7JOT-0000000BqGl-2weC;
+	Mon, 30 Mar 2026 20:39:31 +0000
+Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
+	by mailfhigh.phl.internal (Postfix) with ESMTP id CE3081400231;
+	Mon, 30 Mar 2026 16:39:25 -0400 (EDT)
+Received: from phl-imap-07 ([10.202.2.97])
+  by phl-compute-02.internal (MEProxy); Mon, 30 Mar 2026 16:39:25 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jetm.me; h=cc:cc
+	:content-transfer-encoding:content-type:content-type:date:date
+	:from:from:in-reply-to:message-id:mime-version:reply-to:subject
+	:subject:to:to; s=fm1; t=1774903165; x=1774989565; bh=D/DDszmqc6
+	8wuwl8I+3vQKmrECMgQKEVydlEKXUwWoY=; b=ZR7DWJmLAwW76xR1F6FndGNMdi
+	sdBqisbD0apIExYY5HpGkSZOpawAxGvFlPeNWC66WFlaYBToj7lH+WaLP3pbNnRZ
+	9p5+Vp2pCNPJpvjf/7HIoNwDIwT+XH/fh7uyzW+woEk4SwVOkZTK2Vg98l3U0qLV
+	GhNDBjzgzYmeo9DpcdrhQRF/4wMSra9TFLLXJUyeD/0MBlEtTg03VEexe1o+/T2p
+	lOMwJd5yF5QLpDmPiBxcL1OvB4VjFj+pzA/V6FyHMbeMSwKwnLxqSZysHt+jOc8J
+	8XjkTSYFLOqw0VmFGVTysWoMpIlKSqi424O0It0mdoWB8zhVL1SmhmSH7+sQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:message-id:mime-version:reply-to:subject
+	:subject:to:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm1; t=1774903165; x=1774989565; bh=D/DDszmqc68wuwl8I+3vQKmrECMg
+	QKEVydlEKXUwWoY=; b=zrv829U8HJ14S18d0l0BLE4UN5csqNumBPh7ETsRqW5r
+	v1bTp29WavCfHTFT627A6OvTrKXQqeIQxsKFZ26JzqDFy2FggjzzokONCUJ3hGx0
+	hfxQhJKXNe7JcAl+UvR3jn3Z4hYuQvyA+JYt03swNJ5fBzau6gVhQPShm+Xud7TE
+	BFKtARclfrnvT2UdKbEsGzQSY3nk+F6ec911qPo/5lzm4beK+ASVbOJKoZHsNbOM
+	skxQMYBsyCqE3nXyNz9sZ2aukXsDhrpo52kZxYaanNgLfjGCakwoXifKTIcDgauR
+	tE9IkSJm9T8l4hiflK2unVg3vm+1r0FxFk3DdkwmuQ==
+X-ME-Sender: <xms:fd_KabYG5X3e8_gcgb_SgerLpjqKZ04ImU2kUJ_ZBxfrqJLtrY2oRA>
+    <xme:fd_KaVMz4j0JG4L7SHeMAvEtatUFL9zbglGPZRRs-h0W388Vj0DXWQdWFRyCBHSFZ
+    7gO0ZgSxivxRtAhTPzlgCsM_gKvgkBH4JjlFDt5M_olGFSTQQzExtI>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgdeffeelleeiucetufdoteggodetrf
+    dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
+    rghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujf
+    gurhepoffhufffkfggtgfgvfevofesthejredtredtjeenucfhrhhomheplfgrvhhivghr
+    ucfvihgruceofhhlohhsshesjhgvthhmrdhmvgeqnecuggftrfgrthhtvghrnhephefhfe
+    eiudffleeliedvhfetvdevieegheeuleefuefhhfekgeefkeegueffgeehnecuffhomhgr
+    ihhnpehkvghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmh
+    epmhgrihhlfhhrohhmpehflhhoshhssehjvghtmhdrmhgvpdhnsggprhgtphhtthhopedu
+    iedpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtoheprghnghgvlhhoghhiohgrtggthh
+    hinhhordguvghlrhgvghhnohestgholhhlrggsohhrrgdrtghomhdprhgtphhtthhopeef
+    udelfeeifedusehgmhgrihhlrdgtohhmpdhrtghpthhtoheptghhrghpuhhishgurghrih
+    hogeesghhmrghilhdrtghomhdprhgtphhtthhopehluhgsnhhinhdrihhvrghnsehgmhgr
+    ihhlrdgtohhmpdhrtghpthhtoheplhhuihiirdguvghnthiisehgmhgrihhlrdgtohhmpd
+    hrtghpthhtohepmhgrthhthhhirghsrdgsghhgsehgmhgrihhlrdgtohhmpdhrtghpthht
+    ohepmhgvlhhinhhkohdvtddtfeesghhmrghilhdrtghomhdprhgtphhtthhopehnihhtih
+    hnrdhrvgguugihkeeksehgmhgrihhlrdgtohhmpdhrtghpthhtohepgigvlhhnrghgrges
+    ghhmrghilhdrtghomh
+X-ME-Proxy: <xmx:fd_Kad9L7cm6uL4SmTpHRpcyXSG6wd2_3Qdt8RyyYlayiqhPdbX0gQ>
+    <xmx:fd_KabHzLVFqQ6Cn4n4zY2IPEUTmG9a_s-18vzOgmig6ucOd1MIa0g>
+    <xmx:fd_KaTgGrc6gZfKcIz6xkXkTPhsO6HWqwoSfcOfvt8mSdDmkVYZxIA>
+    <xmx:fd_KaQ90GvvTd8_HJXwaPXL_ERWO-fXHCI_r0nR4VBsWiBGtHkX6TA>
+    <xmx:fd_KabtrvjNWo05ffs6JrD7u2sJm83iy1MuKrMZ_1atHDfD4vhPFLASp>
+Feedback-ID: i9dde48b3:Fastmail
+Received: by mailuser.phl.internal (Postfix, from userid 501)
+	id 1A0041EA006B; Mon, 30 Mar 2026 16:39:25 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+From: Javier Tia <floss@jetm.me>
+Subject: [PATCH v4 0/8] Bluetooth: Add MediaTek MT7927 (MT6639) support
+Date: Mon, 30 Mar 2026 14:39:22 -0600
+Message-Id: <20260330-mt7927-bt-support-v4-0-cecc025e7062@jetm.me>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM9PR04MB8585:EE_|PA4PR04MB8045:EE_
-X-MS-Office365-Filtering-Correlation-Id: 30f64a31-21d4-4ac5-a917-08de8e8f365d
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|6049299003|376014|7416014|10070799003|19092799006|366016|4053099003|22082099003|18002099003|56012099003;
-X-Microsoft-Antispam-Message-Info: ndbagg7ZXLocAh8wTENgKTYah82HKh2RNuCTQ6MdeeNwLByCMKyqlzpjMnjWaCVbvLy+DMCSi6aikGVdNKfL22WGNVwmy44O1pIZiqvQdOSwJa5tCXb3VjvJpRmW9hVGKBcCq0zYNedfl0IgBG/g4PDPGg4DAnluXlrq735cMjpGAtby0ybIEhXgATjO1k106wlDhOAhH6gRDPd98l4WrJsMBh9pRj9Q4m7AT2AtIhgA6NcfEKu8O4K25midxKXZVz6OjGJXIN45l4DZLT6XAue/0D4KjF7DvbB4pnQO59zi16LlPRjojUUAUswG/j6C1REXOy1F9B49UIM2fHLNxEsbFNcvUmqSiCAb6tORuOLy3JK/MVc1+JriO6ftUI9dKtKaRkAbAiza8svYVwrKjhNlpaukq5Rlutl51zfRstRu9LWcwMv4CPaZYfNGHXRujKLJfqaYHYwcOcWrf/fulmXur7glI2OeLn+OkjjWDI5vTYdQIH8Ouko5v0+UiWQKBxFUrFA6Euw5XzNaTC6jGuEucfCjPbsUs3RZBgKsFq71fRzbU1krzczj55rI0h1NauIjSWxuaVO/Xyb/PFftD6WhzDWGBIJeGgVoKdsKhrX+0OP+AwDQsC3GD6Rw4UI1r69HeC9uwzulVpb40oTsIBSh+v4m7wOqOiFjYWJKg9EOyBQSSBrsnZDe+YFWq6W9fiLAn6PJGYs2wWcmV6flrIEC3DXHr+n5a8R1TWdbRUw=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8585.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(6049299003)(376014)(7416014)(10070799003)(19092799006)(366016)(4053099003)(22082099003)(18002099003)(56012099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Zh47gwAZU7ukBaCEtBCeurr7qHrNETgBLJEr9CPKx9PDzEcou90y6o8ZIPq+?=
- =?us-ascii?Q?7Sqsovg53cN3ugnAsv8bH5xCW/bf1axpKj9TT4HDitmrt6NcrH/OEg2Snm78?=
- =?us-ascii?Q?6z04psYMzVQ4Jh05WCxHOjMCdPjpNCHmJ6B119HcjH1/Fa/ZW6Cm/yQwsMn6?=
- =?us-ascii?Q?P+CJmYDnx+iFi61TCm6dCWaXY2CuipNvu+iofAeFfZMGSux1oCXNoEeABj1/?=
- =?us-ascii?Q?UnHQ06tOirHQEnmU0STlXpFEietqFCD4YDUqrA3nGgL7BjKdMDgtvkLAxX4S?=
- =?us-ascii?Q?/pD+Swzd2RwrBloN+bJYm05ZIFOM+HHHRoCh9LKKcgc4PWH/zFVngsA7Lnio?=
- =?us-ascii?Q?lXiXPItrkLwvOV+3ikDrWFbyATKfP5UCWwyqnAeatIiL3aa9KMgzdjctIISy?=
- =?us-ascii?Q?yzi5k9uhJbBk9LxLDAqUS46bl5ATbDrnNhzm4engVtJya3pmdzYomboTppQJ?=
- =?us-ascii?Q?0NuOzqbn9FgKQsd4+f2y+vR67EtsdyU//LHV3QxCU0i9TrA1Q0tn3nBccaQC?=
- =?us-ascii?Q?IrLYus7a2xZraIqR3v5iCppCIsBV8EgXc3PCtrh+ansO8/rVBA1MDuZZdgUp?=
- =?us-ascii?Q?qAGJlS74+N1mR5irN+PxzA99kXt0XnhOA65q8qTNym3IM26RdisWHPo0Ccy8?=
- =?us-ascii?Q?u6DRNBiJkX3t2+Ohsj0gczG5lz4W1ZMmyCywO3YR3O5Uz+2aXIgyr2/QOR7A?=
- =?us-ascii?Q?LFNJrQ/0l4UA/1K4hd2ynEXFYz/+ghe59Yp9pUo8P1fQojRGBf4+X41ZZB7n?=
- =?us-ascii?Q?w6f4bdyl6ql7EVZdHQhfW+r6FkJk9fm9mQlSin8u+geplc+kgKHErNeCbHKb?=
- =?us-ascii?Q?4I0MTUZo11B1ud72uFxF0QvunTm3kVXCgpLxNv5K15K/n/5Sp/5gF3DDqrxh?=
- =?us-ascii?Q?WjMziEYc6GgGDN0Mpdzef6nlNZxpksF9roQeCLCro4fOr7TKJoXUou3PobnB?=
- =?us-ascii?Q?Qah8QE/Hd3RmdDds1Nj4e7gCvlkCqrgdGlpuxMmi/h5A+peL8RA+N5y3BWBW?=
- =?us-ascii?Q?zmnTVVCAwPpRBW4glmFqReswErnJDsP5HB6MIZD2hAA5xddorsYU6CGlN+XB?=
- =?us-ascii?Q?HPWLBgUQg1VPvl46mHwUS6glZ3l4CzK6w7b+oXd7glQUtwRu0NNZFAWJhBRA?=
- =?us-ascii?Q?QW9Td+4PJFdkJUz2lLvrGTHhXWxZ6bf+1aHkhOpo4w5AWqQxxWWTKfZfIIMi?=
- =?us-ascii?Q?G77DBLvbF9XE9C93CrVmaQAC3AtvwA95xbhACdXELKl3WAJs1zt8tX2d3sTu?=
- =?us-ascii?Q?oKV1nuzGR+wPO+9yGBCofQ2txeKBO2cUBFOlZibtSuk45UpbojC3nzNQHF7n?=
- =?us-ascii?Q?2T4hL8t7B6LfqC60G37kG/xX+whj2Hfy5AZ+HLYrdYrw/uhnOcrXCZOCpGqW?=
- =?us-ascii?Q?4YsXAIymesX5HgeqMTo90+Da8zIVC2VOy9lyRNeXakW/m8C8KVJIpa3yN/Wg?=
- =?us-ascii?Q?YQYox8/Vh9486+sgna+/qZ2NurwX18SI8etwgSF9qgDvdbUOSHh+iWjSZQ+7?=
- =?us-ascii?Q?V+QMoZ++d0W4lP8JA6EcmMOrbopuZu8dd4zfkerxUe6LquHw+KUAa04Nzidh?=
- =?us-ascii?Q?4Y3bmx8j+bqOsAjOlVGXFkn8NLfaMkS6Gxvvh3m+sux43WtSBNgR/oxQj/Xd?=
- =?us-ascii?Q?mu4o8CR2ZJojyDt+lH+vJTZf7OIRaOHz502x//jxW3CeEDyv8seHNQ5fhvEs?=
- =?us-ascii?Q?F5XAl9+jhrjiLxtWGAQiSL7c/9B2QtNp3O1tKEZbmfY8wxQKs8tGYCm3KrrX?=
- =?us-ascii?Q?P74lqRb2TeSVpIlMdZTFzQNgKkl+SXPddS+H8VaKyPPZQxiPidvBQcSt8Vge?=
-X-MS-Exchange-AntiSpam-MessageData-1: 7fdTPaGC+bsE0q3/Ff3G2SPFM2UZZyBKT3o=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 30f64a31-21d4-4ac5-a917-08de8e8f365d
-X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8585.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Mar 2026 19:04:47.9317
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 58G2ri9SVW4go7eVKOSEJHVgs1ReYPFGoaLjQmpefyXcqxjpvy1R4B1Jy9eA9ZO7TM2NESaKCsah8FRp0fOxRQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PA4PR04MB8045
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MQQ5AMBBA0avIrE1SpaWuIhbFYBZo2hKJuLvG8
+ i3+fyCQZwrQZg94ujjwsSdUeQbjaveFkKdkkEJqUQqFW6yNrHGIGE7nDh9Rq8ZYJUajixlS5zz
+ NfP/Prn/fD4L9+/RjAAAA
+X-Change-ID: 20260305-mt7927-bt-support-6589a50c961f
+To: Marcel Holtmann <marcel@holtmann.org>, 
+ Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Ryan Gilbert <xelnaga@gmail.com>, 
+ Jose Tiburcio Ribeiro Netto <jnetto@mineiro.io>, 
+ Llewellyn Curran <melinko2003@gmail.com>, 
+ Chapuis Dario <chapuisdario4@gmail.com>, Evgeny Kapusta <3193631@gmail.com>, 
+ Nitin Gurram <nitin.reddy88@gmail.com>, 
+ Thibaut FRANCOIS <tibo@humeurlibre.fr>, Ivan Lubnin <lubnin.ivan@gmail.com>
+X-Mailer: b4 0.15.1
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4198; i=floss@jetm.me;
+ h=from:subject:message-id; bh=9QbfEsus5oxjDzaBF1qQRf0uTZqwEXyPCiI/9Rl9hbE=;
+ b=owEB7QES/pANAwAKAbXuwwuoZ3cfAcsmYgBpyt964WdbZ4X2MlcWzGKSbZ1IgY8IUW8C10CJ/
+ KmPhe9pzgSJAbMEAAEKAB0WIQSbE7ILzw7eI0VKk8m17sMLqGd3HwUCacrfegAKCRC17sMLqGd3
+ H09uDACBpAakeFK1dRDLcyp2eB/ViI6xbh3wHwk/9lFdARVmJmm3ZndTHYIhgjZzqohPcCZZvsU
+ NaOWwxBJ9GXAkEdwSPeXuLuWv0Cz25nfNY3ogYGLXrks2QOi5xHR0ahql6rgWGYcP0u9ViNbSKI
+ rais3YKmupjPKpsCj7d29KeaAL9pu5b2XHXh27ZqHLajR6ubPLM4gtXOnk3B8MJSH/wydupXROH
+ pbtUEJX1LtHd9YCBK651Kfa9sN/EpF+DoSxD6kcYF6ComSOhJWMUpYF89qx1KFEgA8qLY6iK+aL
+ b4MT4fE0yrmQt37WeMD6Kg8a0hvR4jTArACBO4UuPOzUUAxicboHP3IrlPJ63rneL3Csyeh2dhV
+ fqctCEJtNPVue5YLiK1BiO84i75jPWIU+WDwLyJ/OFWDl/UsAnfG1RWUgypsSVnzMls8H+3IsOE
+ Lj5qRWbsq7xu9RpqSvnpkLujbTmbksuuUKF5pzLRNpSdCOnAi9y5n1qbBUVKm+4e06X5Q=
+X-Developer-Key: i=floss@jetm.me; a=openpgp;
+ fpr=9B13B20BCF0EDE23454A93C9B5EEC30BA867771F
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260330_120453_949957_5CD2F1FD 
-X-CRM114-Status: GOOD (  32.46  )
+X-CRM114-CacheID: sfid-20260330_133929_938157_94F1E324 
+X-CRM114-Status: GOOD (  12.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,136 +136,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---gg3xcc6lsi5dh453
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+combo WiFi 7 + BT 5.4 module. The BT subsystem uses hardware variant
+0x6639 and connects via USB.
 
-Hi Frank,
+The MT7927 is shipping in motherboards and PCIe add-in cards from ASUS,
+Gigabyte, Lenovo, MSI, and TP-Link since mid-2024. Without these patches,
+users see "Unsupported hardware variant (00006639)" or the BT subsystem
+hangs during firmware download.
 
-On Mon, Mar 30, 2026 at 05:52:17PM +0000, Frank Wunderlich wrote:
-> Hi Vladimir
-> 
-> Thanks for the patch and sorry for my delay...i was away this weekend so i was not able to test.
-> 
-> traffic works again (but there is only read now) and this is the result of your debug prints:
-> 
-> root@bpi-r3:~# dmesg | grep SGMSYS_QPHY_WRAP_CTRL
-> [    2.706963] SGMSYS_QPHY_WRAP_CTRL = 0x501, intending to write 0x500
-> [    9.134081] SGMSYS_QPHY_WRAP_CTRL = 0x500, intending to write 0x500
-> 
-> R3/mt7986 has 2 MAC, and switch is on the first, so value will change, not sure why this is different.
-> 
-> i have not found SGMSYS_QPHY_WRAP_CTRL or something related with polarity in ethernet/mac-
-> (drivers/net/ethernet/mediatek/mtk_eth_soc.c) or switch-driver (drivers/net/dsa/mt7530{,-mdio}.c)
-> in case they manipulate this register too (of course they should not). Also looked into the pcs-handling
-> in both drivers, but see nothing related to polarity. And looked for possible duplicate register const
-> definition (other name for 0xec).
+The series consists of eight patches:
 
-This result means that your default QPHY_WRAP_CTRL register value has
-the SGMII_PN_SWAP_TX bit set. Whether that comes from U-Boot or hardware
-default or otherwise, it doesn't really matter. Curious that the
-SGMII_SW_RESET doesn't clear TX inversion, though. I guess you wouldn't
-have documentation that would suggest this setting is sticky?
+  [1/8] Bluetooth: btmtk: Add MT6639 (MT7927) Bluetooth support
+  [2/8] Bluetooth: btmtk: fix ISO interface setup for single alt setting
+  [3/8] Bluetooth: btusb: Add MT7927 ID for ASUS ROG Crosshair X870E Hero
+  [4/8] Bluetooth: btusb: Add MT7927 ID for Lenovo Legion Pro 7 16ARX9
+  [5/8] Bluetooth: btusb: Add MT7927 ID for Gigabyte Z790 AORUS MASTER X
+  [6/8] Bluetooth: btusb: Add MT7927 ID for MSI X870E Ace Max
+  [7/8] Bluetooth: btusb: Add MT7927 ID for TP-Link Archer TBE550E
+  [8/8] Bluetooth: btusb: Add MT7927 ID for ASUS X870E / ProArt X870E-Creator
 
-In Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml,
-it is not specified what happens when the "mediatek,pnswap" property is
-missing. I thought the most logical thing would be for the lane
-polarities to not be swapped - because how would you describe normal
-lane polarities otherwise? My bad for thinking the original vendor
-bindings were more sane than they were.
+Three driver changes are needed for MT6639 (patch 1):
 
-The only way to describe the polarities that this SGMSYS block needs on
-a particular board is to use the newly introduced 'rx-polarity =
-<PHY_POL_NORMAL>' and 'tx-polarity = <PHY_POL_INVERT>'. Which I strongly
-recommend you to do, even if the attached patch should restore
-functionality with your current device tree.
+1. CHIPID workaround: On some boards the BT USB MMIO register reads
+   0x0000 for dev_id. Force dev_id to 0x6639 only when the USB VID/PID
+   matches a known MT6639 device, avoiding misdetection if a future
+   chip also reads zero. This follows the WiFi-side pattern.
 
---gg3xcc6lsi5dh453
-Content-Type: text/x-diff; charset=us-ascii
-Content-Disposition: attachment;
-	filename="0001-net-pcs-pcs-mtk-lynxi-preserve-lane-polarities-when-.patch"
+2. Firmware naming: MT6639 uses firmware version prefix "2_1" instead of
+   "1_1" used by MT7925 and other variants. The firmware path is
+   mediatek/mt7927/BT_RAM_CODE_MT6639_2_1_hdr.bin, using the mt7927
+   directory to match the WiFi firmware convention. The filename will
+   likely change to use MT7927 once MediaTek submits a dedicated
+   Linux firmware binary.
 
-From 6b5fe06ec16e8a1e752fc871c135d2f12a37ce33 Mon Sep 17 00:00:00 2001
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
-Date: Thu, 26 Mar 2026 23:46:46 +0200
-Subject: [PATCH] net: pcs: pcs-mtk-lynxi: preserve lane polarities when not
- described in fwnode
+3. Section filtering: The firmware binary contains 9 sections, but only
+   sections with (dlmodecrctype & 0xff) == 0x01 are Bluetooth-related.
+   Sending WiFi/other sections causes an irreversible BT subsystem hang.
 
-Frank Wunderlich reports that the BPI-R3 board has a default
-SGMSYS_QPHY_WRAP_CTRL = 0x501, aka TX inverted and RX not inverted.
-At the same time, neither rx-polarity/tx-polarity nor mediatek,pnswap
-are present in the device tree.
+Patch 2 fixes the ISO interface setup for devices that expose only a
+single alternate setting (alt 0) on the ISO endpoint. Without this fix,
+btmtk_usb_claim_iso_intf() fails with EINVAL, causing ~20 second
+initialization delays on 13d3:3588 devices.
 
-The original driver logic was to enable both TX inversion and RX
-inversion when finding mediatek,pnswap in the device tree, and leave
-SGMSYS_QPHY_WRAP_CTRL to its default value otherwise.
+WBS (Wideband Speech) was verified on MT7927 hardware. The controller
+reports LMP_TRANSPARENT, LMP_ERR_DATA_REPORTING, and mSBC codec support.
+A btmon capture confirms eSCO links establish with Transparent air mode
+(mSBC) and 60-byte frames. BTUSB_WIDEBAND_SPEECH is correct for this
+controller family.
 
-The blamed commit has broken that by assuming that a missing
-mediatek,pnswap would mean non-inverting polarity.
+Tested on:
+- ASUS ROG Crosshair X870E Hero (USB 0489:e13a)
+- ASUS ROG STRIX X870E-E (USB 13d3:3588)
+- ASUS ROG STRIX B850-E GAMING WIFI (USB 0489:e13a)
+- Gigabyte Z790 AORUS MASTER X (USB 0489:e10f)
+- Lenovo Legion Pro 7 16ARX9 (USB 0489:e0fa)
 
-Restore the original behaviour by reading the SGMSYS_QPHY_WRAP_CTRL
-value and using it as a default polarity if mediatek,pnswap and the new
-rx-polarity/tx-polarity are all unset.
+Changes in v4:
+- Pass dev_id as parameter to btmtk_setup_firmware_79xx instead of
+  using hci_get_priv, which is not available in btmtksdio
+  (suggested by Luiz Augusto von Dentz)
+- Skip post-reset CHIPID validation for 0x6639 in
+  btmtk_usb_subsys_reset since the register always returns 0x0000
+  on affected boards
 
-Fixes: 8871389da151 ("net: pcs: pcs-mtk-lynxi: deprecate "mediatek,pnswap"")
-Reported-by: Frank Wunderlich <frank.wunderlich@linux.dev>
-Closes: https://lore.kernel.org/netdev/e0ad52862d34cf4e0169c9850a7f164f127d0093@linux.dev/
-Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+Link to v3: https://lore.kernel.org/linux-bluetooth/20260326-mt7927-bt-support-v3-0-fa7ebd424323@jetm.me/
+
+Signed-off-by: Javier Tia <floss@jetm.me>
 ---
- drivers/net/pcs/pcs-mtk-lynxi.c | 27 +++++++++++++++++++++++++--
- 1 file changed, 25 insertions(+), 2 deletions(-)
+Javier Tia (8):
+      Bluetooth: btmtk: Add MT6639 (MT7927) Bluetooth support
+      Bluetooth: btmtk: fix ISO interface setup for single alt setting
+      Bluetooth: btusb: Add MT7927 ID for ASUS ROG Crosshair X870E Hero
+      Bluetooth: btusb: Add MT7927 ID for Lenovo Legion Pro 7 16ARX9
+      Bluetooth: btusb: Add MT7927 ID for Gigabyte Z790 AORUS MASTER X
+      Bluetooth: btusb: Add MT7927 ID for MSI X870E Ace Max
+      Bluetooth: btusb: Add MT7927 ID for TP-Link Archer TBE550E
+      Bluetooth: btusb: Add MT7927 ID for ASUS X870E / ProArt X870E-Creator
 
-diff --git a/drivers/net/pcs/pcs-mtk-lynxi.c b/drivers/net/pcs/pcs-mtk-lynxi.c
-index c12f8087af9b..7518c98fa98a 100644
---- a/drivers/net/pcs/pcs-mtk-lynxi.c
-+++ b/drivers/net/pcs/pcs-mtk-lynxi.c
-@@ -126,11 +126,24 @@ static int mtk_pcs_config_polarity(struct mtk_pcs_lynxi *mpcs,
- {
- 	struct fwnode_handle *fwnode = mpcs->fwnode, *pcs_fwnode;
- 	unsigned int pol, default_pol = PHY_POL_NORMAL;
--	unsigned int val = 0;
-+	unsigned int val = 0, orig;
-+	bool has_legacy_prop;
- 	int ret;
- 
--	if (fwnode_property_read_bool(fwnode, "mediatek,pnswap"))
-+	ret = regmap_read(mpcs->regmap, SGMSYS_QPHY_WRAP_CTRL, &orig);
-+	if (ret)
-+		return ret;
-+
-+	/* RX polarity:
-+	 * - if standard 'rx-polarity' exists in 'pcs' subnode, follow that
-+	 * - if 'mediatek,pnswap' is set, invert RX polarity
-+	 * - otherwise, leave unchanged
-+	 */
-+	has_legacy_prop = fwnode_property_read_bool(fwnode, "mediatek,pnswap");
-+	if (has_legacy_prop || FIELD_GET(SGMII_PN_SWAP_RX, orig))
- 		default_pol = PHY_POL_INVERT;
-+	else
-+		default_pol = PHY_POL_NORMAL;
- 
- 	pcs_fwnode = fwnode_get_named_child_node(fwnode, "pcs");
- 
-@@ -144,6 +157,16 @@ static int mtk_pcs_config_polarity(struct mtk_pcs_lynxi *mpcs,
- 	if (pol == PHY_POL_INVERT)
- 		val |= SGMII_PN_SWAP_RX;
- 
-+	/* And TX polarity:
-+	 * - if standard 'tx-polarity' exists in 'pcs' subnode, follow that
-+	 * - if 'mediatek,pnswap' is set, invert TX polarity
-+	 * - otherwise, leave unchanged
-+	 */
-+	if (has_legacy_prop || FIELD_GET(SGMII_PN_SWAP_TX, orig))
-+		default_pol = PHY_POL_INVERT;
-+	else
-+		default_pol = PHY_POL_NORMAL;
-+
- 	ret = phy_get_tx_polarity(pcs_fwnode, phy_modes(interface),
- 				  BIT(PHY_POL_NORMAL) | BIT(PHY_POL_INVERT),
- 				  default_pol, &pol);
--- 
-2.43.0
+ drivers/bluetooth/btmtk.c     | 63 ++++++++++++++++++++++++++++++++++++++-----
+ drivers/bluetooth/btmtk.h     |  7 +++--
+ drivers/bluetooth/btmtksdio.c |  2 +-
+ drivers/bluetooth/btusb.c     | 12 +++++++++
+ 4 files changed, 75 insertions(+), 9 deletions(-)
+---
+base-commit: 7f9446b23ac77f46d356b354ea8da49113e8000d
+change-id: 20260305-mt7927-bt-support-6589a50c961f
 
+Best regards,
+--  
+Javier Tia <floss@jetm.me>
 
---gg3xcc6lsi5dh453--
 
