@@ -4,101 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 306E31061B1F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Mar 2026 20:42:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42F601061B27
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Mar 2026 22:42:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:References:
-	In-Reply-To:Cc:Subject:Date:To:From:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ReuejuDn8UrdQGs4rqrNlK0vLMzZogyPHFzPjRqc7/U=; b=eSP5V2YfmmZkRM36CXaDSgqjt+
-	hPmJKuWpGs+XjoFzfFxO6s19ua+DuQUEUw0aygHPXMI8evH/Og3wtyQeYLqbr0HzkfeS63kUJTfvu
-	oOFQ4Elf864y1GlxmAoXOWlU8s7yuYL11Fu0DygNBGnqt+Q81BYqeGcrX+udBGnCKPTJsZxa2PfdZ
-	tnH2MyHL+7rmHBtKgNHD86URn73uVB38NrqclUFqf3G03CEoM24An6cW9W2y4TSPtTKdEhvUPGegQ
-	kmXdLrP6ht1arcF+OjsTbt5Pd7OOftQaeooJF40NPf+L5MwUCVar+s9ZERfc3wphJI04anG6C8487
-	dADhtnsw==;
+	bh=5zAq89DFX5oBUWHG0rF8OkIz5yQMy1m9cdp9RIxyIpQ=; b=QIWHGO7LQG4qbEMDrMr/GY1dim
+	SFEha3X6QXW/zl93g0VAJ1bRotzlzS9uwc7FZWNjDCkBicsE3lBB88HA7jD5EGFOHu12zfifcFyuU
+	seDOjQB/oCeI0Swd0ZOh6jM4fyekooiCy8RzIYFC6cq/QWofMcg7ss91BtZPpVZV4IWjchFqsQuxC
+	Qn/m/1VURvIG+6zF+1DC7zt4+nQvbrjl1wMwpoepG+W4XDlfO6S+8CZITxIdlS0ZNGyHYJ1qJqgba
+	cUlWmtNbe4P7oNXx519FAtNJizQOmzGC3LcwAh8VblAKnIJVl/TCI5peXYoPXgPhNJE4AieAoh1k3
+	tD491tzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7JQx-0000000BrlA-1Dhf;
-	Mon, 30 Mar 2026 20:42:03 +0000
-Received: from fhigh-a2-smtp.messagingengine.com ([103.168.172.153])
+	id 1w7LJU-0000000Bz4l-3T8h;
+	Mon, 30 Mar 2026 22:42:28 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7JQt-0000000BrkY-1en6;
-	Mon, 30 Mar 2026 20:42:00 +0000
-Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
-	by mailfhigh.phl.internal (Postfix) with ESMTP id 8633614001B0;
-	Mon, 30 Mar 2026 16:41:58 -0400 (EDT)
-Received: from phl-imap-07 ([10.202.2.97])
-  by phl-compute-02.internal (MEProxy); Mon, 30 Mar 2026 16:41:58 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jetm.me; h=cc:cc
-	:content-transfer-encoding:content-type:content-type:date:date
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to; s=fm1; t=1774903318;
-	 x=1774989718; bh=ReuejuDn8UrdQGs4rqrNlK0vLMzZogyPHFzPjRqc7/U=; b=
-	I5IYlUcjqQvSMde5TX3Q2zgSSK9dFRA6iDioTURVNv+qILw+fLkkItrHyAYffvn1
-	pl95YMCXaWF0mgDQtxy+dkily0DFXlf3V9qpOB2niRdVHU63jPosx//n0cWSQXQM
-	zilov1rTxrumz3LA+ppLsnsAMfaN5PB9OoW0jDHqKmYAXnpELApBOXawfecb8OAc
-	CosL/QuNdS/LnxHPhI14xMO0Sq4UZym3NiYdvS/pihcv6qD7iApdZA8JrIPql8k8
-	BX1SHaYUf9YwArdL++qhuLF5FteQjSgZ3h6uFMaQG7tOqO6//k/76ymd42sHb8sQ
-	2lkmJkWzagRm85BXx5v7vA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1774903318; x=
-	1774989718; bh=ReuejuDn8UrdQGs4rqrNlK0vLMzZogyPHFzPjRqc7/U=; b=O
-	sRhpTWUpn1JAybElN5kJOb4NuGfMEFTfyZl42SUNzLsq6uLip1TB34/hCiA7u5c+
-	+jpspCSFYnvX5Ceiou15lPsp8xCQE/r60zg2zxxLz5b1LyeANJdjuh8pOx+5H8Rh
-	5mVttDD19tWSAQ6M6XyG92TvMvyyTyibbOLFwbwjo8wsHy1MMgIPaOCCrxc5z+8e
-	A13o1q4LctxIt2bCIGn7+lR4eE7LYm8XVt9BJbXjqcC+5EV2UX/alFwmXUTmxH+h
-	T0l9FcweCA45HR+z9MVflTPBxJdnqPAWC09omxEaDtf0j6PhMePUjfXAGif6aq9s
-	IzXIgnG/iQ+8Gq3tpeLiQ==
-X-ME-Sender: <xms:FuDKafHE4bJ5QQoklvmZ-PP4G-AqbSZ1T5-fES4ekRAGEP65gYuM_A>
-    <xme:FuDKaXI0zGiCP-Sbdr61zJgVcJYUBMJDvTgwIZRoQx6lvp0I9jVDpPIBnhqo2M_H4
-    akJEzlRu_RfiaReOpbGuCoX8hgp9H48223rITy4vPvcjh7V7hVtYYQ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgdeffeelleejucetufdoteggodetrf
-    dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
-    rghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnegopf
-    hokfffucdluddtmdenucfjughrpefotggggffhvfffufevjghfsehtkedttdertdejnecu
-    hfhrohhmpeflrghvihgvrhcuvfhirgcuoehflhhoshhssehjvghtmhdrmhgvqeenucggtf
-    frrghtthgvrhhnpedtudehhfelhedvueejtdejffdtheefgefgjedvhfekvdekffeuueef
-    heetledufeenucffohhmrghinhepshgrshhhihhkohdruggvvhdpkhgvrhhnvghlrdhorh
-    hgnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepfhhl
-    ohhsshesjhgvthhmrdhmvgdpnhgspghrtghpthhtohepudeipdhmohguvgepshhmthhpoh
-    huthdprhgtphhtthhopegrnhhgvghlohhgihhorggttghhihhnohdruggvlhhrvghgnhho
-    segtohhllhgrsghorhgrrdgtohhmpdhrtghpthhtohepfeduleefieefudesghhmrghilh
-    drtghomhdprhgtphhtthhopegthhgrphhuihhsuggrrhhiohegsehgmhgrihhlrdgtohhm
-    pdhrtghpthhtoheplhhusghnihhnrdhivhgrnhesghhmrghilhdrtghomhdprhgtphhtth
-    hopehluhhiiidruggvnhhtiiesghhmrghilhdrtghomhdprhgtphhtthhopehmrghtthhh
-    ihgrshdrsghgghesghhmrghilhdrtghomhdprhgtphhtthhopehmvghlihhnkhhovddttd
-    efsehgmhgrihhlrdgtohhmpdhrtghpthhtohepnhhithhinhdrrhgvugguhiekkeesghhm
-    rghilhdrtghomhdprhgtphhtthhopeigvghlnhgrghgrsehgmhgrihhlrdgtohhm
-X-ME-Proxy: <xmx:FuDKafLjw9ck_HBl3KeFPgSjqxv839H-r8Vs3_RQHb9Ihp7DVKBrsw>
-    <xmx:FuDKacjFsa1o2N6SD_ym0jfkfb80wn6XQUzsljpV9ddusrsOZjJAJg>
-    <xmx:FuDKaQMkwkC73E76EvaULnAH6q9u2PLtYuwwZnVgPV6Fer5eHvhUUA>
-    <xmx:FuDKaX6FAAgXreo7m48R4WJ_powIfpYu8-_cqLdMX8k4tCwVsfEmHg>
-    <xmx:FuDKaXqrDk9--SyNBSZW5OyyNLZdgBzFEuxfqcIVcnOzQ0MJQA8aW9wP>
-Feedback-ID: i9dde48b3:Fastmail
-Received: by mailuser.phl.internal (Postfix, from userid 501)
-	id 0F0D11EA006B; Mon, 30 Mar 2026 16:41:58 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
-Content-Type: text/plain; charset="utf-8"
+	id 1w7LJR-0000000Bz3y-2uU0;
+	Mon, 30 Mar 2026 22:42:26 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 698A540809;
+	Mon, 30 Mar 2026 22:42:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 482C9C4CEF7;
+	Mon, 30 Mar 2026 22:42:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1774910543;
+	bh=KEFQLZc20GWW8sgN2/76iip+g3PEt4uQ0FT8+1KvwXQ=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=dJnLxUBU5LnSUHF1d1WPIyOzKVijcgeaimKRu14Cf4v/aA1HMdZhuu5gSsYU6NALA
+	 5+cIDn0blVJBbe87OIwjOAxMUFACHt1Zm55YRn4pWl0EtUmG1ncOPgQBippmBkvcLm
+	 0DHcCIwoZd20JaJimS+0tfuAiTIcsDYD3BcFLNOeMofld5ZL+7TxgUGojmE8MNLWHX
+	 PM7/hDtUf0esLdcycLnyMtzS/yJyEKf09FszjvYvZbWCC14ngLTZvswolbRcFibFCK
+	 2409zxujVFUvq9OjpOMoT+lGs4jHEmjJgwlkqUo5NbWk+bGjvHyzey87GhqFPp096V
+	 sU+BypcC13RuA==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Chen-Yu Tsai <wenst@chromium.org>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+In-Reply-To: <20260326081050.1115201-1-wenst@chromium.org>
+References: <20260326081050.1115201-1-wenst@chromium.org>
+Subject: Re: [PATCH v2 0/2] regulator: mt6315: add regulator supplies
+Message-Id: <177488194606.167050.13383296010943273438.b4-ty@b4>
+Date: Mon, 30 Mar 2026 15:45:46 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-From: Javier Tia <floss@jetm.me>
-To: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-Date: Mon, 30 Mar 2026 14:39:46 -0600
-Subject: Re: [PATCH v3 0/8] Bluetooth: Add MediaTek MT7927 (MT6639) support
-Cc: Marcel Holtmann <marcel@holtmann.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryan Gilbert <xelnaga@gmail.com>, Jose Tiburcio Ribeiro Netto <jnetto@mineiro.io>, Llewellyn Curran <melinko2003@gmail.com>, Chapuis Dario <chapuisdario4@gmail.com>, Evgeny Kapusta <3193631@gmail.com>, Nitin Gurram <nitin.reddy88@gmail.com>, Thibaut FRANCOIS <tibo@humeurlibre.fr>, Ivan Lubnin <lubnin.ivan@gmail.com>
-In-Reply-To: CABBYNZJLQ99727+3vnKscsDwgTnuP0NijWr9T=YWBpdq7giv7A@mail.gmail.com
-References: 177272816248.352280.12453518046823439297@jetm.me 20260326-mt7927-bt-support-v3-0-fa7ebd424323@jetm.me CABBYNZJLQ99727+3vnKscsDwgTnuP0NijWr9T=YWBpdq7giv7A@mail.gmail.com
-Message-Id: <20260330204158.0F0D11EA006B@mailuser.phl.internal>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.16-dev-3ac6c
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1511; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=KEFQLZc20GWW8sgN2/76iip+g3PEt4uQ0FT8+1KvwXQ=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBpyvxMA3ShhadjMJFm+yMuBgo1epnMA7LXIqnTb
+ TaKpUtyeuKJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCacr8TAAKCRAk1otyXVSH
+ 0I5PB/9S8zgjJrYgaMUtuHun1Hsk1sZ5p3dpGcZqX8Xo24uvgAYM+mudCYj3OzvEhU4hDQXF9In
+ HWmR+w098C190BNhR+dtPdBNP/SlSyLFxSuqaC3jZY9jlryM7d8uedsO14MGwnXhOZddk8Yi53d
+ 7J7bXsTk4icZTaA6ABms4xsL4Y8OKSS5HqJ1WzLxR9J9AghNHDfLDNLlaN9rnDfbtnT5p4q8GGG
+ Gs+6BZMoJbWoK0/RVf5n7lBRQHIfwlUTEv5HxNh4nMuL/MwWGJnzsAittPyQbcY8mYBAaaQsKHd
+ msOE9yKHKNFSI6SD9ZU/SO7tsyZvN82gzHm2YzTogAv8R0ES
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260330_134159_645875_4B0F1E7D 
-X-CRM114-Status: UNSURE (   9.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260330_154225_766062_D6B5E2EF 
+X-CRM114-Status: GOOD (  12.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,40 +87,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Luiz,
+On Thu, 26 Mar 2026 16:10:47 +0800, Chen-Yu Tsai wrote:
+> regulator: mt6315: add regulator supplies
+> 
+> Hi,
+> 
+> This is v2 of the "Add MT6315 regulator supplies" series.
+> 
+> Changes since v1:
+> - Link to v1: https://lore.kernel.org/all/20260324053030.4077453-1-wenst@chromium.org/
+> - Move supplies to top level node, at the same level as the compatible
+> 
+> [...]
 
-Thank you for the review.
+Applied to
 
-On Thu, Mar 27, 2026 Luiz Augusto von Dentz wrote:
-> https://sashiko.dev/#/patchset/20260326-mt7927-bt-support-v3-0-fa7ebd424323%40jetm.me
->
-> First one is more concerning since it may mean it can lead to crashes
-> with SDIO driver, the other comment may actually need to be addressed
-> separately, perhaps WBS handling needs to be fixed on this family of
-> controllers.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-7.1
 
-Both issues are addressed in v4.
+Thanks!
 
-For the SDIO concern: btmtk_setup_firmware_79xx now takes dev_id
-as a parameter instead of reading it from hci_get_priv. The SDIO
-caller passes its own dev_id, so there is no out-of-bounds read
-from a mismatched private struct layout.
+[1/2] regulator: dt-bindings: mt6315: Add regulator supplies
+      https://git.kernel.org/broonie/regulator/c/d15d0f1a27b2
+[2/2] regulator: mt6315: Add regulator supplies
+      https://git.kernel.org/broonie/regulator/c/292d64fb98a2
 
-For the subsys reset: btmtk_usb_subsys_reset now skips the
-post-reset CHIPID validation for 0x6639. On affected boards the
-register always reads back 0x0000, so the validation would always
-fail. This is scoped to 0x6639 only.
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-Regarding WBS, I verified it on MT7927 hardware (ASUS ROG
-Crosshair X870E Hero). The controller reports LMP_TRANSPARENT
-and LMP_ERR_DATA_REPORTING in its LMP features, and
-HCI_Read_Local_Supported_Codecs returns CVSD, Transparent, and
-mSBC. A btmon capture confirms eSCO links establish with
-Transparent air mode (0x03) and 60-byte mSBC frames. WBS works
-correctly on this controller family, no fix needed.
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-Link to v4: https://lore.kernel.org/linux-bluetooth/20260330-mt7927-bt-support-v4-0-cecc025e7062@jetm.me/
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-Best,
-Javier
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
