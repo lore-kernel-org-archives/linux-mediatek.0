@@ -4,113 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6AFAFB3CE2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Mar 2026 09:36:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E163F1061B17
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Mar 2026 17:52:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Cc:To
+	:Subject:Message-ID:From:Content-Transfer-Encoding:Content-Type:Date:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ONNvpnHIrrlZOFnwwhyENzcT4/Pw+OdMUWkbXsdiH4Y=; b=gXXTy8qBIlXMVuHsH+aUReGtqa
-	l8hSmvRfiaUM2Rn4GpvNnIAqpX1wek+indgwBeri6Wy76hhUADegwC1553glQDr3gTTTIDrBSzJ3d
-	N69i0p/Q8oPkbwTCo8sEq6Ig/vb84NFbSek6q20cgRJq7CNXLBo+yFlDFmL2m5ufa2VbQlFWl/jGw
-	xD/fXQBmG4pGixrQ6x94eBDBMltuJzG49xr7rxOVlMVlDBTrBS03soD5/GR+IkiX0Jm6Kc3EierSy
-	kK46owBS92dvigy8ZqhhbIfw0rj9YAnKIrFbeMKocSHMqg7Uab54y5DJ297L28jDsRnaoVff2y/3b
-	5qugNu7A==;
+	bh=8/ZohPn0tEwclWEs73U7FxbLocJmGnnoEpSpxL5nBww=; b=IWv2iGc6W5X9Qo0RS6YO6i60ZY
+	FeGWH7XzXeYSZj5k1J2daGEfqVTBj1vscK4jToNtcWtzAZf/wRzBr26k0IrQm+3nXWuGaLkqLcAm9
+	Cd1pGH/e/1kdWrXo+Ak+M5B1uk+qMN14WwAPQp4Se9t6veebP/XyxtbNgZfSdbOUeb9kBrgfuXzG8
+	BZD22ihyU1oUyts+2yQ/hHVlANj1eTR/WmgF7LJKnOXfOWOLV/OFcU1AMek3Cwg/QaS/hSFafTjbZ
+	vqUP7EUwZfiBxSRGkbBrsicdy2xjEH+BfNJr8NuJl2WcMBU8Hj9Uzi6UJbLz2txxKUPPLhmNQtTZb
+	nE6rQL3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w792Z-0000000AyRX-0xtB;
-	Mon, 30 Mar 2026 09:36:11 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1w7GnD-0000000Bi1D-1nb8;
+	Mon, 30 Mar 2026 17:52:51 +0000
+Received: from out-189.mta0.migadu.com ([91.218.175.189])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w792W-0000000AyQc-2GCz
+	id 1w7GnA-0000000Bhzp-2MtL
 	for linux-mediatek@lists.infradead.org;
-	Mon, 30 Mar 2026 09:36:09 +0000
-Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-5a0faa0d15cso4465551e87.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 30 Mar 2026 02:36:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1774863366; cv=none;
-        d=google.com; s=arc-20240605;
-        b=ZHbDevKnfm1W7mg1qG/Vcf4UXc8ZUwRxnNI1i3CjqjKv03IvkUQ6exUFe9uNe7WWly
-         GpZYTlrjT35Of3jp0AmVFgIsh7s20T19KP+G2Z9lowlpptjKxUR6c76P2EbpSH7jieWD
-         6yP1oNfz/VyDbpLkBilaWurrS4ltftICww/xoqM7QJeLrd9n6YavU6Yr20y1wW5kcoG3
-         NMH+KCniZ4l87rA5Wmq0ayy7VBXibyo87gjWcLyKOKBdnJzCANt74+mO44uz3TfyLiTx
-         gdSMl+4i8Up/3C7eB+BPevA2vpGp+K18Kx+kGhg/T6C7oITNEN0Y//GsB5DrMOJ9+qiN
-         aX9w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=ONNvpnHIrrlZOFnwwhyENzcT4/Pw+OdMUWkbXsdiH4Y=;
-        fh=iCD3y10TIr2QCXo3b1RrMUCkcxJyQ3iwuzW4y8KLKqI=;
-        b=IIy0Dgh1ovUMHIuHuWdyxc/tyDz7Hkh+hRovgiRJLiZuMeQp7de4AA5nEZlA0Ya/uO
-         wVrqalqpoXpTJ5vrdBdq8AFsBUShqLgi1woqrpkSaVKdiUYKBVPp+jEUbkoCEsuLSz6w
-         EwVRcE0EhjrO9jvmp0pBpPCTDkvZrWBNy05zYdTE2DCkSv2s4mr0D4Egt2yjzm3lRskb
-         X+lAks1BID8slV8zaEwn1SHsZqMjMhUfcbEqZmtPws4csN3D1AK1CCjyPFrTSRP7B+cp
-         xXbzPRQwZkizHZZ3bQrWSMNXkay0hqFXsbqutuW1SbXs5uJyDQq2e2ZiR8BWsTXeFdky
-         I8mw==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1774863366; x=1775468166; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ONNvpnHIrrlZOFnwwhyENzcT4/Pw+OdMUWkbXsdiH4Y=;
-        b=Y9zGQ15zM9CQoO59R0MGHvzGQlFcuFPPfFvFwLUF7zQUZAfXYMDUChMyfR6YJVcHmp
-         uxCtDCjjAQV0+A1p9EdH2NtbVdyfmLdjfcaBsS79L/xuWyKY9ZCY5ahI02YxA3mdHCJT
-         uOEgRRWBJCpTqsqMrE4QSJ3M3sYhUSJF1X6Z4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1774863366; x=1775468166;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=ONNvpnHIrrlZOFnwwhyENzcT4/Pw+OdMUWkbXsdiH4Y=;
-        b=NhFuUM62Ybd8fBk8FF7V4BtS/6rw7qnGfMGWdvz2rYYAdDRylh4MxOMhrRHGJMB8Yk
-         4jhSXMBVTMDgVbm1sWz7ghd+iGfqeOmYbOGblYo57LisfFuFZAu1SgLeoLvK7IifTr/o
-         G8f1KeVeY58PiHmsUEZSMa7iuXvzFUg7DCj43wJqQ3mERy+eqgk5RmS/97QArTwVQWOA
-         8E5h9reFGPNdEoiWqefVKKOCdoNAqNwRlGg1KlxIkKWAzW5dgCTK6UvI2kSllJzNI6UN
-         Upzb4KusuRprLaTKmy8wjMbqaEhj+bzUVCPuC6/gcl3Wo6r6xrx9/ppxkPpjpPk9Brsz
-         Dmeg==
-X-Gm-Message-State: AOJu0Yx44PaIRKaTbKw7Q+PbvQ72D6qoF20oTwBiZnpeCEXRAdvvcaUR
-	hA3q8YHmGA8O7nParv7JDSEs5+UZTqMoBkmfiQwFtsAF8R9Dg69R84EbV5rAzZx3C8BSQEAajy3
-	C52oLsMGpYFoCE1G7to07xRUrhMtegrQdMv1SuxRkYcCs/45E/jE=
-X-Gm-Gg: ATEYQzx2FP/CvP+yohDT4AVBIhUHlP7Hzva8ofekB2BUmg+kg5UB4UoSDHszxvPXMJj
-	LaVDntdvKZBws6DFOGoxFZ9IKxcJaF9un/O/j2OsX5FAGHWJQ2sgZd+8rKopI3rwipu2X0/P2Kx
-	OGncPY2DYgdM6Qtxr8USkyzjBwF6jgu4HVbHUjZP3gW0mTxq9OrhbgZO9PkNUbvCoeA6+sy9DbT
-	wFuOJrAXWD/fNkxXGdx/pUm4JWejts/TLxlabJly75HrfQWCZ9sbaKlioz2gtyyUg4Ny/kVaKO+
-	p9r4J9vKMxx/chn5KBWsifY2SX81KIUQpGNn
-X-Received: by 2002:a05:6512:3f12:b0:5a2:7aeb:e7b3 with SMTP id
- 2adb3069b0e04-5a2ab92ae11mr5011592e87.29.1774863365955; Mon, 30 Mar 2026
- 02:36:05 -0700 (PDT)
+	Mon, 30 Mar 2026 17:52:50 +0000
 MIME-Version: 1.0
-References: <20260317184507.523060-1-l.scorcia@gmail.com> <20260317184507.523060-8-l.scorcia@gmail.com>
- <CAGXv+5GmDtrtFHJXs+fDyF+dZ5YW-TSEqXnPs2xCH8cu-Xcn9w@mail.gmail.com> <CAORyz2J355NZH=7iQ9sTDBhAmtjP7xTpXe21_3Z9J_R5YvdXAQ@mail.gmail.com>
-In-Reply-To: <CAORyz2J355NZH=7iQ9sTDBhAmtjP7xTpXe21_3Z9J_R5YvdXAQ@mail.gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 30 Mar 2026 17:35:54 +0800
-X-Gm-Features: AQROBzDDuO289B2CM0DmVnpmaCFifXhpUymo-5rQ6aPBkZTqTiIMBWQIo9x2VA8
-Message-ID: <CAGXv+5HRWRW=+Mk2z4qCPrF7zFax9zQJ70Q4ihR6PkWJP0OUrg@mail.gmail.com>
-Subject: Re: [PATCH v3 7/9] regulator: mt6392: Add support for MT6392 regulator
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, Fabien Parent <parent.f@gmail.com>, 
-	Val Packett <val@packett.cool>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
-	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Linus Walleij <linusw@kernel.org>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Gary Bisson <bisson.gary@gmail.com>, 
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
-	Julien Massot <julien.massot@collabora.com>, Chen Zhong <chen.zhong@mediatek.com>, 
-	linux-input@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1774893142;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=8/ZohPn0tEwclWEs73U7FxbLocJmGnnoEpSpxL5nBww=;
+	b=HT/utHUc8lgdICl+7AKP2eUGWqGS87jeJCjNhlM/axXVP2uTR1zAEx7oxBP2d7gF9Ptfg5
+	br7hixyyJVb0342CKYZWVHZXIS5gxQFeCl6mlfA2LaO6JAsv8xnFOD6/VmXRCnWIngNnRD
+	ZEz3Dt9vAyTkqK/rpdquDTmF+EevXqY=
+Date: Mon, 30 Mar 2026 17:52:17 +0000
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Frank Wunderlich" <frank.wunderlich@linux.dev>
+Message-ID: <d9639ac711ff8f1186a684fa120ba77247669051@linux.dev>
+TLS-Required: No
+Subject: Re: [PATCH v4 net-next 5/5] net: pcs: pcs-mtk-lynxi: deprecate
+ "mediatek,pnswap"
+To: "Vladimir Oltean" <vladimir.oltean@nxp.com>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, "Daniel
+ Golle" <daniel@makrotopia.org>, "Horatiu Vultur"
+ <horatiu.vultur@microchip.com>, "=?utf-8?B?QmriiJriiI9ybiBNb3Jr?="
+ <bjorn@mork.no>, "Andrew Lunn" <andrew+netdev@lunn.ch>, "Heiner Kallweit"
+ <hkallweit1@gmail.com>, "Russell King" <linux@armlinux.org.uk>, "David S.
+ Miller" <davem@davemloft.net>, "Eric Dumazet" <edumazet@google.com>,
+ "Jakub Kicinski" <kuba@kernel.org>, "Paolo Abeni" <pabeni@redhat.com>,
+ "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski"
+ <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, "AngeloGioacchino Del Regno"
+ <angelogioacchino.delregno@collabora.com>, "Eric Woudstra"
+ <ericwouds@gmail.com>, "Alexander Couzens" <lynxis@fe80.eu>, "Chester A.
+ Unal" <chester.a.unal@arinc9.com>, "DENG Qingfang" <dqfext@gmail.com>,
+ "Sean Wang" <sean.wang@mediatek.com>, "Felix Fietkau" <nbd@nbd.name>
+In-Reply-To: <20260326215404.krh6v3mmnqdlndli@skbuf>
+References: <20260119091220.1493761-1-vladimir.oltean@nxp.com>
+ <20260119091220.1493761-6-vladimir.oltean@nxp.com>
+ <e0ad52862d34cf4e0169c9850a7f164f127d0093@linux.dev>
+ <20260326215404.krh6v3mmnqdlndli@skbuf>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260330_023608_634133_41B00138 
-X-CRM114-Status: GOOD (  25.69  )
+X-CRM114-CacheID: sfid-20260330_105249_200867_294C814E 
+X-CRM114-Status: GOOD (  24.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,47 +86,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 30, 2026 at 3:39=E2=80=AFPM Luca Leonardo Scorcia
-<l.scorcia@gmail.com> wrote:
->
-> Il giorno gio 19 mar 2026 alle ore 06:04 Chen-Yu Tsai
-> <wenst@chromium.org> ha scritto:
->
-> > If this PMIC is anything like the MT6358, then it has 0.01V fine
-> > tuning for most if not all the LDOs. It is sometimes needed as
-> > a rail may have a 0.04V boost that would otherwise be invisible
-> > to the system. And then if you have something like 3.04V set in
-> > the DT constraints, you end up with something the regulator driver
-> > doesn't support, but the hardware does.
-> >
-> > Please see how it's done in the MT6358 driver. I spent a lot of
-> > time on that driver to make it actually support the full range
-> > of voltages, and describing the supplies.
-> >
->
-> I had a good look at the datasheet (MT6392 PMIC Datasheet v1.0 08 Dec.
-> 2016) and unfortunately I did not see any fine tuning option in there.
-> I'm sure this data sheet is not perfect as it's missing some regulator
-> registers that are clearly used in the Android sources, but there's no
-> mention of fine tuning in that code either. I guess it does not have
-> that capability.
+Hi Vladimir
 
-Well, thanks for looking. FWIW on the MT6358 / MT6366, the main voltage
-control and the fine tuning are mostly in the same register. The fine
-tuning is described as "calibrates output voltage" from +00mV to +100mV.
+Thanks for the patch and sorry for my delay...i was away this weekend so =
+i was not able to test.
 
-I looked into this because the LDO table shows some of the default voltages
-with 0.01V precision, but the main voltage controls only have 0.1V precisio=
-n.
+traffic works again (but there is only read now) and this is the result o=
+f your debug prints:
 
+root@bpi-r3:~# dmesg | grep SGMSYS_QPHY_WRAP_CTRL
+[    2.706963] SGMSYS_QPHY_WRAP_CTRL =3D 0x501, intending to write 0x500
+[    9.134081] SGMSYS_QPHY_WRAP_CTRL =3D 0x500, intending to write 0x500
 
-ChenYu
+R3/mt7986 has 2 MAC, and switch is on the first, so value will change, no=
+t sure why this is different.
 
-> I will shortly submit v4 that hopefully addresses the rest of the comment=
-s.
->
-> Thanks for your help!
-> --
-> Luca Leonardo Scorcia
-> l.scorcia@gmail.com
+i have not found SGMSYS_QPHY_WRAP_CTRL or something related with polarity=
+ in ethernet/mac-=20
+(drivers/net/ethernet/mediatek/mtk_eth_soc.c)=20or switch-driver (drivers=
+/net/dsa/mt7530{,-mdio}.c)
+in case they manipulate this register too (of course they should not). Al=
+so looked into the pcs-handling
+in both drivers, but see nothing related to polarity. And looked for poss=
+ible duplicate register const
+definition (other name for 0xec).
+
+regards Frank
+
+Am 26. M=C3=A4rz 2026 um 22:54 schrieb "Vladimir Oltean" <vladimir.oltean=
+@nxp.com>:
+>=20
+>=20Hi Frank,
+>=20
+>=20On Tue, Mar 24, 2026 at 06:36:44AM +0000, Frank Wunderlich wrote:
+>=20
+>=20>=20
+>=20> Hi,
+> >=20=20
+>=20>  looks like this patch breaks BPI-R3 serdes between mt7986 SoC and =
+mt7531 switch in 7.0 (6.19 is ok).
+> >  in ethtool i see only tx on mac but no rx. if i revert this patch i =
+can ping through dsa-ports again.
+> >=20=20
+>=20>  i did not completely understanding the code with the default-pol a=
+s it is now splitted between rx and tx.
+> >=20=20
+>=20>  mt7986 and this board does not have mediatek,pnswap set, so the fi=
+nal regmap_update_bits writes val=3D0,
+> >  before there was only write to this register on invert mode...but i =
+guess this should not break. Maybe some
+> >  kind of timing issue between mac and switch?
+> >=20=20
+>=20>  maybe reverting this patch skips changes made here:
+> >  bde1ae2d52ab 2026-01-19 net: pcs: pcs-mtk-lynxi: pass SGMIISYS OF no=
+de to PCS
+> >=20=20
+>=20>  I resend as last try was sending as html (option "always send as t=
+ext" in webmailer seems to be ignored
+> >  somehow, had to choose "unformatted" in this response too).
+> >=20=20
+>=20>  regards Frank
+> >=20
+>=20Sorry for the delay.
+>=20
+>=20If writing val=3D0 breaks the link, I'm curious
+> (a) whether it still breaks if we don't write anything at all
+> (b) what was the register value originally
+>=20
+>=20Could you please test the patch below and let me know what it prints,
+> and whether traffic passes with it applied?
+>=20
+>=20-- >8 --
+> diff --git a/drivers/net/pcs/pcs-mtk-lynxi.c b/drivers/net/pcs/pcs-mtk-=
+lynxi.c
+> index c12f8087af9b..5c5f45b93b82 100644
+> --- a/drivers/net/pcs/pcs-mtk-lynxi.c
+> +++ b/drivers/net/pcs/pcs-mtk-lynxi.c
+> @@ -126,7 +126,7 @@ static int mtk_pcs_config_polarity(struct mtk_pcs_l=
+ynxi *mpcs,
+>  {
+>  struct fwnode_handle *fwnode =3D mpcs->fwnode, *pcs_fwnode;
+>  unsigned int pol, default_pol =3D PHY_POL_NORMAL;
+> - unsigned int val =3D 0;
+> + unsigned int val =3D 0, tmp;
+>  int ret;
+>=20=20
+>=20 if (fwnode_property_read_bool(fwnode, "mediatek,pnswap"))
+> @@ -153,8 +153,14 @@ static int mtk_pcs_config_polarity(struct mtk_pcs_=
+lynxi *mpcs,
+>  if (pol =3D=3D PHY_POL_INVERT)
+>  val |=3D SGMII_PN_SWAP_TX;
+>=20=20
+>=20- return regmap_update_bits(mpcs->regmap, SGMSYS_QPHY_WRAP_CTRL,
+> - SGMII_PN_SWAP_RX | SGMII_PN_SWAP_TX, val);
+> + ret =3D regmap_read(mpcs->regmap, SGMSYS_QPHY_WRAP_CTRL, &tmp);
+> + if (ret)
+> + return ret;
+> +
+> + pr_err("SGMSYS_QPHY_WRAP_CTRL =3D 0x%x, intending to write 0x%lx\n",
+> + tmp, (tmp & ~(SGMII_PN_SWAP_RX | SGMII_PN_SWAP_TX)) | val);
+> +
+> + return 0;
+>  }
+>=20=20
+>=20 static int mtk_pcs_lynxi_config(struct phylink_pcs *pcs, unsigned in=
+t neg_mode,
+> -- >8 --
+>=20
+
+regards=20Frank
 
