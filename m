@@ -4,90 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A2161061B28
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2026 00:24:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83E9A1061B2A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2026 00:29:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=x6KkVZ6avnq5JZYkKR1K26BH30WGfxU6tLWicybER9M=; b=eiCgKbbB1ZNQw31XAfBJtjVQY0
-	8g+DU0a0J5MU7ISpYDMH6cch73wRx6C0R8rbLa8XV1gbcfgfH1+C0rzzw0DvAFBSp992Q3qcjfX1L
-	jdRe1ZX0c2xBziy26cHVZQYjh92+SFTcnHXv3Flmg5HRJsL2ChzK3+O1CsJrGzvJ0bAlsH/cC3Njc
-	J4bTa34Roc+DfYI+0gLm10q1skYJ+/jTjgr3Uwx+e5auKfxCmVOwvCK2Q7MaXc8tj0J7+ADJzXwk+
-	RhS70CrHuXi6im52e07M0p5UBEMVbwOdddsNo+VUQ86exvZ3gzgnhL9SB+7O/Z3HKXUVDbix9KmsQ
-	puDJvjuQ==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kboeLqYNOSQN3AXOfZCSntrXfQNumGp7lIu/grxGAMc=; b=KaAPD+kM7ZR6z1ycaiZ9UdXwFE
+	uBL60CnYRzJIsdidcazcC/HUgXs+ngsvQfWa3YmrWuaqoDOVczgVKBjeH0oLsb7bKbVt1/JeH865R
+	gIa1eJr5HyNvFhZd9toUDchS5NWDjxDaUOtDo/g51B/vAtGr2/xBiikQa89Ms+LG0HbgBAW05zVkm
+	LauMm35CLWAmDe071uEVVVOBgTcKEydj4xpmTGjZkmOf9lfgHwc6nl8vCB4trASHaKOZAG/BSXzX1
+	yHTgmlyz5QWbHr5Oa5uT3l+ftLNA3Suak3pmuBLNQGvyvagIk7IQJ8V5jK+vs1t6GDpMzsn+5cVgb
+	vWJAYTxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7Mu3-0000000C3wm-2SM2;
-	Tue, 31 Mar 2026 00:24:19 +0000
-Received: from mail-dl1-x122a.google.com ([2607:f8b0:4864:20::122a])
+	id 1w7Myp-0000000C5BA-1vqI;
+	Tue, 31 Mar 2026 00:29:15 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7Mu0-0000000C3w2-1U22
-	for linux-mediatek@lists.infradead.org;
-	Tue, 31 Mar 2026 00:24:18 +0000
-Received: by mail-dl1-x122a.google.com with SMTP id a92af1059eb24-1271195d2a7so2295172c88.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 30 Mar 2026 17:24:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1774916655; x=1775521455; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=x6KkVZ6avnq5JZYkKR1K26BH30WGfxU6tLWicybER9M=;
-        b=eOW7/xcDMiK33IuA3bnA7CLw8DBesx4x6LIuVCMrRnXb1vV7DUv6+bt80aJIOQ7ROr
-         RrOiGtkG1RvH8vfyXi6rNzxwXb1IJgoJFBUUG1kyfGMDa7BnfsBfUXozaoQn58FsFZ6J
-         DbZg0wv020b9QNwBEh5gnF8BNMIC3jefYXMXv/BuVTpX9ubyHNjqmv9EjPxHPZPqb/7/
-         iWrRlPmpTc7Swd5U+XDgWQqtZGWsehQb3J1OmYiVCCyNDT0vEcgQNtL5jvvJSDbDHGX6
-         gs9LreVf5ZjEStmncLjrgO4/CIv2wMvAFyO+jBpKe4iSChkzuZ9IEPvVLTGxKYMweo0j
-         tr1w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1774916655; x=1775521455;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=x6KkVZ6avnq5JZYkKR1K26BH30WGfxU6tLWicybER9M=;
-        b=sukKt+tXe0Kw2WLNERquUqjLk/3PejFhGddehm00sT5G2xryYXtwf1XSsbDS0MOaJd
-         RtKKGNt2/xfKRwy9mavjVZzdenEt8BTVO+njPllQeyX8zYfilWa62EurZrD7AVxDQRWV
-         zBgah0fl+/C2z489xPmAExvUaOXoT914BQsaZt3nFG/4xQXE0b0T2pzEjR5aLbnmF81q
-         Z1fHN6F6NPTpYLui7a5WYlyu7P5mbDRJ+ghhQ7RNjGI7MFygvCkiAwsrY2jU2O+3ai46
-         wpo70FdFrJwDd9yv6vF7skG185cMH5gn55KS1I0GEs15j8+2OX0WoesK7/wmT5ji2LQ4
-         E/ug==
-X-Forwarded-Encrypted: i=1; AJvYcCW16TUOBpdeeyqByrnSMKJ+u3ohGZSQPevTmccmdxg9BSa0znbr2sBTVgi2NT2qoJHTJhy1UdRsFvyvUQ5DnA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxPWD4qvVK+7Wz7sdGNH5VFnu6njpxpUaSe5svcoPB8iiAekFTV
-	aO+FW6d5hIXVv9SyXyS0uwq42r1T8BSEmQ350+6GFLwdduIoybocOc94
-X-Gm-Gg: ATEYQzyky7NcI4XpAy1BEBCGuS11wKukMOr1k+sAwCz7IHFt7FRceZHI6xstaCuxz2o
-	OfhjWAU1p9naZEFgAAz5eSN01JrfR8A2Hlp0OMBxxt5tdCi3736RXi3SdMj9i4PAEHNMCrlGMda
-	Nh8JuNZ56cF29vHKId+SJ4pYeiaBOXROQHydbSxF4n2nIKfovFtq7VD4mGsxfSAN07ICdrBHJjh
-	TtrLMdRnGrG6RSHkKdqvhKzMWSaJWhb8nHOFtVlbbmof+/0znAAfhiUJKw/ibo0BWRVYrbWTvp4
-	3PVhoEkkQrIINwYRR8IiysIdv7WiDrfVghZIOAYpzj2H5IKhVWuA7o2SPPqAhB4l1hCy56C4POX
-	+GeYu1I4Cn9QPRDLeG2JuX8GiBVeywy2h21gzqep1C6iPaaJAJxeBQoE7cEebMWY5EoMvPNz1uq
-	ki9r6rojklgMp13NLRm+fPYhY9RmhkNuHeumbYopfkIblaLvbKp3hPL8w=
-X-Received: by 2002:a05:7022:2221:b0:128:d2a5:709c with SMTP id a92af1059eb24-12ab28f3331mr8407522c88.33.1774916655278;
-        Mon, 30 Mar 2026 17:24:15 -0700 (PDT)
-Received: from ryzen ([2601:644:8000:5b5d::8bd])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-12ab983f9f3sm13195709c88.10.2026.03.30.17.24.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 30 Mar 2026 17:24:14 -0700 (PDT)
-From: Rosen Penev <rosenp@gmail.com>
-To: dri-devel@lists.freedesktop.org
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org (moderated list:DRM DRIVERS FOR MEDIATEK),
-	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
-Subject: [PATCH] drm/mediatek: simplify mtk_crtc allocation
-Date: Mon, 30 Mar 2026 17:23:57 -0700
-Message-ID: <20260331002357.7995-1-rosenp@gmail.com>
-X-Mailer: git-send-email 2.53.0
+	id 1w7Myn-0000000C5Ap-1GeR;
+	Tue, 31 Mar 2026 00:29:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:From:Date:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=kboeLqYNOSQN3AXOfZCSntrXfQNumGp7lIu/grxGAMc=; b=iQM6cjg1yW0vZcGGcqHcxjmGlL
+	oTJbPC36F6hE+xkl8K26V690nL8Gt4VT8L6EqHn8eXGY8d5vZ8jKjiOGcScn+vjN1apUCXGWqXqmD
+	p68hPVgeMbJiIyUaAoHJzIzwv8f1NJEtKH5kFuIj7phEQWNA2UQCfyDS474a3fpSk6NWsFoYRQrK6
+	9AkuiRKW+VsrmdT471RVK9p+5B5N7dPPeKNPMnPJ7RPKILp38Kd0X77+6zQ8j53H+wLh7wrwtnKjR
+	uzQXNeHzpGgvzh/j5aOSQBm2oS7ORdm5smKeDNlW10JKEgTmS2ghtUnKSjfZHGCjckQOqyh7hDIPT
+	wTQ8Hq4w==;
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1w7Myj-0000000EvMr-2trk;
+	Tue, 31 Mar 2026 00:29:11 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id C7942439DE;
+	Tue, 31 Mar 2026 00:29:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 732E3C4CEF7;
+	Tue, 31 Mar 2026 00:29:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1774916945;
+	bh=HqldPgKp9TGGyn7L65pc2nORgMdMa6raZULjHCR1jCQ=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=UaignE4TkOdCWR+vxfEaWiwNOgV+brzQ80h1rNgUJxsm/9PunnuneMchdQcMT8OOZ
+	 WDYsGFF0bcd8yNT7kJgVuOpNiyHk4+fj6pDzKnokCN9tyJbeAuDRcOgdeC4QymVtcv
+	 t/vDxrU5q/MUz6+ViW+XGtvy8u35xBJy5QEW9o/ulNtuZ1b3gXE/RAWLooVujhpry5
+	 7Y0pG3yClGmoojWnWmbDulqcrmd7+hu8WmDVnnLx/gehIAymFFskNMIWNNjZC+MX7L
+	 4Xgdn7NPhQhGM45M9W3GiwU2kuSMEzJFoO8ZcY4//w6JCGT4h9mVaBx0gmVfTohZux
+	 4FlkvsJ76abvQ==
+Date: Mon, 30 Mar 2026 17:28:57 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
+ <pabeni@redhat.com>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, Madhur Agrawal
+ <Madhur.Agrawal@airoha.com>
+Subject: Re: [PATCH net] net: airoha: Add missing cleanup bits in
+ airoha_qdma_cleanup_rx_queue()
+Message-ID: <20260330172857.0c94685d@kernel.org>
+In-Reply-To: <20260327-airoha_qdma_cleanup_rx_queue-fix-v1-1-369d6ab1511a@kernel.org>
+References: <20260327-airoha_qdma_cleanup_rx_queue-fix-v1-1-369d6ab1511a@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260330_172416_949480_7678E0EF 
-X-CRM114-Status: GOOD (  10.29  )
+X-CRM114-CacheID: sfid-20260331_012910_073785_0FB28866 
+X-CRM114-Status: UNSURE (   7.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,56 +89,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use a flexible array member to combine allocations.
+On Fri, 27 Mar 2026 10:48:21 +0100 Lorenzo Bianconi wrote:
+> In order to properly cleanup hw rx QDMA queues and bring the device to
+> the initial state, reset rx DMA queue head/tail index. Moreover, reset
+> queued DMA descriptor fields.
+> 
+> Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 SoC")
+> Tested-by: Madhur Agrawal <Madhur.Agrawal@airoha.com>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-Signed-off-by: Rosen Penev <rosenp@gmail.com>
----
- drivers/gpu/drm/mediatek/mtk_crtc.c | 13 ++++---------
- 1 file changed, 4 insertions(+), 9 deletions(-)
+Take a look at sashiko, please:
+https://sashiko.dev/#/patchset/20260327-airoha_qdma_cleanup_rx_queue-fix-v1-1-369d6ab1511a@kernel.org
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.c b/drivers/gpu/drm/mediatek/mtk_crtc.c
-index fcb16f3f7b23..914841d2396e 100644
---- a/drivers/gpu/drm/mediatek/mtk_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_crtc.c
-@@ -62,7 +62,6 @@ struct mtk_crtc {
- 	struct device			*dma_dev;
- 	struct mtk_mutex		*mutex;
- 	unsigned int			ddp_comp_nr;
--	struct mtk_ddp_comp		**ddp_comp;
- 	unsigned int			num_conn_routes;
- 	const struct mtk_drm_route	*conn_routes;
- 
-@@ -71,6 +70,8 @@ struct mtk_crtc {
- 	bool				config_updating;
- 	/* lock for config_updating to cmd buffer */
- 	spinlock_t			config_lock;
-+
-+	struct mtk_ddp_comp		*ddp_comp[];
- };
- 
- struct mtk_crtc_state {
-@@ -1048,18 +1049,12 @@ int mtk_crtc_create(struct drm_device *drm_dev, const unsigned int *path,
- 		}
- 	}
- 
--	mtk_crtc = devm_kzalloc(dev, sizeof(*mtk_crtc), GFP_KERNEL);
-+	mtk_crtc = devm_kzalloc(dev, struct_size(mtk_crtc, ddp_comp, path_len + (conn_routes ? 1 : 0)), GFP_KERNEL);
- 	if (!mtk_crtc)
- 		return -ENOMEM;
- 
--	mtk_crtc->mmsys_dev = priv->mmsys_dev;
- 	mtk_crtc->ddp_comp_nr = path_len;
--	mtk_crtc->ddp_comp = devm_kcalloc(dev,
--					  mtk_crtc->ddp_comp_nr + (conn_routes ? 1 : 0),
--					  sizeof(*mtk_crtc->ddp_comp),
--					  GFP_KERNEL);
--	if (!mtk_crtc->ddp_comp)
--		return -ENOMEM;
-+	mtk_crtc->mmsys_dev = priv->mmsys_dev;
- 
- 	mtk_crtc->mutex = mtk_mutex_get(priv->mutex_dev);
- 	if (IS_ERR(mtk_crtc->mutex)) {
--- 
-2.53.0
-
+Looks somewhat orthogonal to the current patch but probably worth
+fixing.
 
