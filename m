@@ -4,110 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBF1A10F92E3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2026 17:32:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5EC410F92E6
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2026 17:56:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E0yhE4GnVbJG4hKHIdWBFQgvJX3G1vXsn2yBdUvHrzU=; b=LNKxMTmrAUwvMhdYDKPyMtqLrn
-	02JsodmkXb+o9olY9d+TW9+jKSkj2BMr721mfFYuvtb9hzwEuxKCEU5dJ8Nh/TqvzbnPmuJXQ8SRq
-	guEp6zySviZ9FL1mpi2v8vZGBra3vtEhusd6GkickztImHpL1aC7ejpAM4mxZXJ8ipMM4ZfFRZTq4
-	mJltBIZvkeumNQsaDUTMKHnr6VcAgotySiDP7V+vFoyz9jfwTGqtNENpnD4cf02exO5b3DVGtaT7A
-	vPqVDAcGME/bH04nOid25+ME1dwKHMlDFelzTo7/4YxRxneNRaUxizWC4MMD+JJHm/CmUAHDS6wop
-	cl72gqlA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jeHvqiew2Y/ju1T0GobjBCZNMGeG07uDxOxTlV8Ufos=; b=J+WfDpmzGWvkTtAVUc6/qxOh89
+	CPnFeCiX3VgkK1wGtNl6gSQz2IALnL9pnjkr0S8yojELv5/DWjC9TjkLYUOoiOsHlL74B3rTkuXjT
+	VsZCJQZLaD8QOY1YHGekgXAz71kLwiYD+HVCuOPuM23kawHGtNf49ByrpDRj9/uQ3UKpdK4+znRIN
+	lbgKjlrH6nBtjDtQ/KrqmpQwq4IBfJJ3VNyo/knwxaSo15v2MZYyjMzOsOJQwXMiThne94z3oHj5/
+	ixSXCuyajit/bjNp3F1Db26Xukc2Dl6ZNaa4NwtqOG6uYw687OPdEWV0gqGje9vV9UQGE/gYj3P+1
+	9EZjOfMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7cwd-0000000DLf5-0KUu;
-	Tue, 31 Mar 2026 17:32:03 +0000
-Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
+	id 1w7dKV-0000000DNHr-035D;
+	Tue, 31 Mar 2026 17:56:43 +0000
+Received: from mgamail.intel.com ([198.175.65.13])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7cwa-0000000DLds-3DH6
-	for linux-mediatek@lists.infradead.org;
-	Tue, 31 Mar 2026 17:32:01 +0000
-Received: by mail-yx1-xb12c.google.com with SMTP id 956f58d0204a3-6500040ef83so5518213d50.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 31 Mar 2026 10:32:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1774978319; cv=none;
-        d=google.com; s=arc-20240605;
-        b=Ezp2MPxLgZsd150qMo70vwRFWXcbrTtDZj8U/yHWVi3ouiPJ9JEqDoR8oCrYMaDChG
-         SxqrTukUJ4FZJ2m3+Ifeikw3vM+ODkGS5qEadjAIF85wx/Fh9lLChe8f/RJPt4f8mbkE
-         QltfPdm4BwiCY5JpiVFHWe9ncQ6/qYBBln6lNfNfkzwm/zAiIHKB32ys+RN0M/eMH+JT
-         HZyLtle1AWZwUE71D1A0Pu0I9YBRd6aSuY6ox3STyPVqLOvm32r6Byl+8RxuQku56pyh
-         rhr7PIdur/ynemCaX3QhbIJK8HjDmjYy4NhZc2L5rcCfu+suoRF7Fg1aH6omsRZNfFze
-         vJHg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=E0yhE4GnVbJG4hKHIdWBFQgvJX3G1vXsn2yBdUvHrzU=;
-        fh=rvEw3b4ggpAapjSzZ470DlIs9rsTyli5zX7Tfbhz6HA=;
-        b=fKaU6Jkx4dgdxX9G2gb+Nxncvuhsi0QJAM5Kvx0zSuijmJise8UaW/+WsMxfxbA6qo
-         yPwu+sAxgFvOzNzrmkkoHUOWZYDqP/IVM0YOJRUOi0wOuy5yTdO1wk6sAzqw3Hj6STmy
-         DUbd0oWOkxbD+vDGZ/PoRI1Bln5/0jjeW7FkzCVJ/lRMYduYfytSXnu83ktIVvHawk/4
-         HDScWG7e9Qi9I0hpo6VSrPrLRulHoInkWzwh3AZA2vwM/EZJtZt9efyBonjBBkL2ZjsQ
-         KdqPmKv4cHKbTiGZHZQHZVcN9EH8WbkptnwOW1EoHGIb5yxQFRL4G6JvojEWzjiFtebJ
-         682w==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1774978319; x=1775583119; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=E0yhE4GnVbJG4hKHIdWBFQgvJX3G1vXsn2yBdUvHrzU=;
-        b=RViFhMP7nNqoYaObc+XricEFXts52XmHEOlpSG1L83M3B1tRynZKUAg4PLkZSUt/sN
-         QDG9PxWyj/zrjyy/lijvbkhp4F4z8me4Ah091mtSkU+ajxqQmnxCN4qDr/uJyuUKqEfZ
-         ZBZwRbBXXpTrU6uqpt6komAAzxa0wAbEXqyntKcxVDwBXxJdzBgUd+eFQSbvDzKXzK44
-         psT1wQuFwc/KVhYfUTGBsUnu5jJoEZRvxqTnv+9bAwSY+SgK31Ry8O8ideSq7Mw1Wh6f
-         QGotWqaiY5Yk7zLz9K+aFbMCw8moL9HtJ7Yffysowj1kkM6gEt2lW2bva8TmkZXy5OQh
-         0rPw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1774978319; x=1775583119;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=E0yhE4GnVbJG4hKHIdWBFQgvJX3G1vXsn2yBdUvHrzU=;
-        b=Dx8V1UADM/mAjzTiLv+o/ktvNcdlw4eQur3Eqiz2qdpGzMPHU3bOoZdmYIS7hkP3pF
-         27+vhLH+XCaEAmY1bEX/tyLhgKJnwFG9+HM3RltkI8iN92g9Yh3P+2gPYUn8f3DkcAHh
-         FHQE1tGSrMH/1FZ0CdfE95gfJqsqREE7iTi//EJScj6cRKZHVJJeH9iIR8v92XA3LKsj
-         9uryeAzSlcJB6lzHMMmhHSPcN1H4x3KNMjdHNExMBageS3C6JbDgc2CM6vP/ziwSMpQw
-         OiZrGtnwzG5etCySxgrlVIMaLFUheh6/vhJehl3fQTZ5o70M76UawxR6Db4RL6aDf6MX
-         ooAQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVmw6OTLAZfiDKeziet5gK7VD+eT3/xolVpAXD2aEyifBoDbvKVjvD6VgHNBT/EHGJ8r7AlM64vtwRx0qcSNw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxCJzGXOvrgX1NeAdCeCiLL6fAYa1ThI1niHJWkP/qLIpUufifQ
-	I2ud+sGizx7fpcwv2/JYufdNYibYJSaRBkjtvkeBUE/VvMeZap6UrhRkvF0Gz81PGAIFjT8MVbT
-	Edjy0q8NNCpQukZoT/vMDayWvJnhU0/8=
-X-Gm-Gg: ATEYQzx5sieU2Ec8oScgCaXHrzAggh7BzhieyXxyTUIELxL1VV09cy+WkHTq8T+J5Cy
-	B1ThrttdGeeCuwSkXa8IGCr8bYpsBZTMB/ClXNnfuGCQceEgdTBXDSw+8Rw7lN+sslqTZwLBi1z
-	wnWRGwd0n18V2QBh+TftuXD89i2zxfqMcpKnybSQu7OftGMaYVke48FNISNJB+UzbsZCLyDmIwW
-	+5g/G7++bEOnDnw3DMXYwoadNEoLwCaD+j7HTLLGoPnY59ZwY24AmhS1A9cE78br/q9IPbvSBEo
-	QVBjhOK7LJ/Qo7KX9jnHBiQZokJz1LSflBb+0mJv/4pE98OWm7M/y+GN4zMiTNCN55N/tg==
-X-Received: by 2002:a53:d103:0:b0:649:97d9:cf1f with SMTP id
- 956f58d0204a3-6502fe40abcmr71151d50.44.1774978316344; Tue, 31 Mar 2026
- 10:31:56 -0700 (PDT)
+	id 1w7dKS-0000000DNHG-3p3x;
+	Tue, 31 Mar 2026 17:56:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1774979801; x=1806515801;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=TcZWBzzpqTS7aPD+ZnOCeM/2iUYCY9wQrFL9paJkYx8=;
+  b=cRzGRS/cezPGrGogxLWnNqwrP8TiQc69+vgpwEHJXbVWyHE2k5dmQUHC
+   jB/pYHymDpfxOjevJ2Dnhvi2w/x1APMoHWmx39YRx6EHw8lxPdt8Y61lB
+   VDaujUsRTw+5XSesrPemi0fXKeJ6TmcUQ7iF/1M/+jU+xGel3887lxYL+
+   YHC1TIz/NGGoQL0SQoiU/AZVDNfBkL5wXu0eZ5JLYYWjXGpdemxmGXHLR
+   ZcTNneKWCMiTAj6dN6a9e268OJYkBvYahw5TOEZmLa1iEgbBjjfuBL0yx
+   K5yy/ZYCIMXXybnM6H4a6Fa4BgE659HmOU2v6p3hTSwyDj1teEq90QUoY
+   Q==;
+X-CSE-ConnectionGUID: Yoz2HVP5Rd2VwmVVXpdUJg==
+X-CSE-MsgGUID: UFMDQNoZS4Oog+7nJSeGDg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11745"; a="87078498"
+X-IronPort-AV: E=Sophos;i="6.23,152,1770624000"; 
+   d="scan'208";a="87078498"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Mar 2026 10:56:40 -0700
+X-CSE-ConnectionGUID: vgGp7BthSbC+6Z49GyWWcA==
+X-CSE-MsgGUID: z3szsMWpQeymP90If8fszQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,152,1770624000"; 
+   d="scan'208";a="230501581"
+Received: from lkp-server01.sh.intel.com (HELO 283bf2e1b94a) ([10.239.97.150])
+  by orviesa003.jf.intel.com with ESMTP; 31 Mar 2026 10:56:33 -0700
+Received: from kbuild by 283bf2e1b94a with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1w7dKI-00000000463-3PEk;
+	Tue, 31 Mar 2026 17:56:30 +0000
+Date: Wed, 1 Apr 2026 01:55:46 +0800
+From: kernel test robot <lkp@intel.com>
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+	linux-mediatek@lists.infradead.org
+Cc: oe-kbuild-all@lists.linux.dev, Fabien Parent <parent.f@gmail.com>,
+	Val Packett <val@packett.cool>,
+	Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Linus Walleij <linusw@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Julien Massot <julien.massot@collabora.com>,
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+	Gary Bisson <bisson.gary@gmail.com>,
+	Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-gpio@vger.kernel.org
+Subject: Re: [PATCH v4 7/9] regulator: Add MediaTek MT6392 regulator
+Message-ID: <202604010103.FzAGRPye-lkp@intel.com>
+References: <20260330083429.359819-8-l.scorcia@gmail.com>
 MIME-Version: 1.0
-References: <20260331171043.F1C481EA006B@mailuser.phl.internal>
-In-Reply-To: <20260331171043.F1C481EA006B@mailuser.phl.internal>
-From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-Date: Tue, 31 Mar 2026 13:31:45 -0400
-X-Gm-Features: AQROBzDtH2rQqqFQDzX0DAENqJJXYBOysXiWpgWuMs-qnB_6ztR_ntWKoAltnrI
-Message-ID: <CABBYNZ+mr1_rf0shA8xiWweq2tydLhFXBrhjpry-tnY2u4X8qw@mail.gmail.com>
-Subject: Re: [PATCH v4 0/8] Bluetooth: Add MediaTek MT7927 (MT6639) support
-To: Javier Tia <floss@jetm.me>
-Cc: Marcel Holtmann <marcel@holtmann.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-bluetooth@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Ryan Gilbert <xelnaga@gmail.com>, 
-	Jose Tiburcio Ribeiro Netto <jnetto@mineiro.io>, Llewellyn Curran <melinko2003@gmail.com>, 
-	Chapuis Dario <chapuisdario4@gmail.com>, Evgeny Kapusta <3193631@gmail.com>, 
-	Nitin Gurram <nitin.reddy88@gmail.com>, Thibaut FRANCOIS <tibo@humeurlibre.fr>, 
-	Ivan Lubnin <lubnin.ivan@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260330083429.359819-8-l.scorcia@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260331_103200_801934_8BA15C19 
-X-CRM114-Status: GOOD (  15.94  )
+X-CRM114-CacheID: sfid-20260331_105641_022888_1FA5DBB8 
+X-CRM114-Status: GOOD (  13.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,44 +106,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Javier,
+Hi Luca,
 
-On Tue, Mar 31, 2026 at 1:10=E2=80=AFPM Javier Tia <floss@jetm.me> wrote:
->
-> Hi Luiz,
->
-> On Tue, 31 Mar 2026 Luiz Augusto von Dentz wrote:
-> > Ok, but on 8/8 it seem to suggest the problem still exists which
-> > trigger the following review:
-> >
-> > https://sashiko.dev/#/patchset/20260330-mt7927-bt-support-v4-0-cecc025e=
-7062%40jetm.me
-> >
-> > Perhaps we should ajust the commit description if the 19 seconds
-> > doesn't really occurs when 2/8 is applied.
->
-> Good catch. The ~19 second delay is indeed fixed by patch 2/8, so the
-> note in 8/8 was misleading as written.
->
-> I've updated the commit message in 8/8 to clarify:
->
->   Note: boards with this USB ID expose only one ISO alternate setting
->   (alt 0). Without the fix in patch 2/8 ("btmtk: fix ISO interface
->   setup for single alt setting"), this caused ~19 second initialization
->   delays. With the fix applied, initialization completes in ~2.6
->   seconds.
->
-> This is addressed in v5:
-> https://lore.kernel.org/linux-bluetooth/20260331-mt7927-bt-support-v5-0-6=
-f31b4342daa@jetm.me/
+kernel test robot noticed the following build warnings:
 
-I've already pushed v4 with the 19 seconds comments removed.
+[auto build test WARNING on lee-mfd/for-mfd-next]
+[also build test WARNING on broonie-regulator/for-next linusw-pinctrl/devel linusw-pinctrl/for-next lee-mfd/for-mfd-fixes linus/master v7.0-rc6 next-20260330]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-> Best,
-> Javier
+url:    https://github.com/intel-lab-lkp/linux/commits/Luca-Leonardo-Scorcia/dt-bindings-mfd-mt6397-Add-MT6392-PMIC/20260331-081127
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/lee/mfd.git for-mfd-next
+patch link:    https://lore.kernel.org/r/20260330083429.359819-8-l.scorcia%40gmail.com
+patch subject: [PATCH v4 7/9] regulator: Add MediaTek MT6392 regulator
+config: sh-allmodconfig (https://download.01.org/0day-ci/archive/20260401/202604010103.FzAGRPye-lkp@intel.com/config)
+compiler: sh4-linux-gcc (GCC) 15.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260401/202604010103.FzAGRPye-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202604010103.FzAGRPye-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+>> drivers/regulator/mt6392-regulator.c:181:18: warning: 'ldo_volt_table1b' defined but not used [-Wunused-const-variable=]
+     181 | static const u32 ldo_volt_table1b[] = {
+         |                  ^~~~~~~~~~~~~~~~
 
 
+vim +/ldo_volt_table1b +181 drivers/regulator/mt6392-regulator.c
 
---=20
-Luiz Augusto von Dentz
+   180	
+ > 181	static const u32 ldo_volt_table1b[] = {
+   182		1500000, 1800000, 2500000, 2800000,
+   183	};
+   184	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
