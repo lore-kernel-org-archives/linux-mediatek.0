@@ -4,110 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75930109B469
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2026 13:21:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E65A0109B492
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2026 16:02:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TsHouUjM/sX6MNpZdJ+2Xl09xrG1oeKuiE+2byGWXSQ=; b=Zz8PhJvGRnlEuJvSmGSBsvliUU
-	doOg/3FrrvkOwWv2wKw+V+gdvjyb3XTWHxqvEIhSbf4VtXsFchgNIw1RzFoKvGVzEYx2KX+2KQxoi
-	9BNMtaUj+KNj0Ohuye1HZ3FySwt9/RMu8t2RYfO3PkgqWDdxQaeBkZOwSO3PD/r0TD0PT0MGAtIQo
-	5vrxMogH/6du7N1mO3FEs0kgwBrwbvcX3VSC4HSymV9AeglLat4RtolY26gCWNGNH8pirFdYxJuud
-	jtSFGOZU0djH/VgFnNO3qdEY21eAJaoFhnoRTY+WbeQ0CsDjGEQpFD+9s9EU5w3zrcUF5A9NazH17
-	jChm5BoQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6smz/tVlVP2xa4k25TAtdUHzHsfk0EudBM++sE/hz60=; b=VDEpko5+IuXRhOyO6uSgDL0CVu
+	O5w+lYJ5zTEkR4gySAVug/i9vsLqVWqcrG5pXcpXQ/Wl+d1XkgIiGIt7x8HViZyyjUhmsi9waxgvQ
+	FMDnnZyhOZ+HzSzwN8a6VPvlK9Rs+wCxO5TLcIM6OHzGeod42Sfaq1q6QMGnE8Cwok55CflvhEScD
+	lnJWImO3NJXkq7m6BQncOgBx169f1+JFPK6c3D3ffRRgdrbkz4l5YE986cHGJVRE0N7NE+4WOVAsA
+	r9RRannPxOeX4MXCxcjf5ATe53ZnpHVEF+uM9mhfCo32e81TuO0Y6HgAV4yh++6xKhZxhskvruLwq
+	82BscSnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7Z25-0000000D0KH-2cq5;
-	Tue, 31 Mar 2026 13:21:25 +0000
-Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
+	id 1w7bXT-0000000DDvN-3pF0;
+	Tue, 31 Mar 2026 16:01:59 +0000
+Received: from mgamail.intel.com ([198.175.65.17])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7Z23-0000000D0Jc-1M92
-	for linux-mediatek@lists.infradead.org;
-	Tue, 31 Mar 2026 13:21:24 +0000
-Received: by mail-yx1-xb130.google.com with SMTP id 956f58d0204a3-650221149e2so3464145d50.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 31 Mar 2026 06:21:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1774963281; cv=none;
-        d=google.com; s=arc-20240605;
-        b=Jv/07A7VEiKfroaOKr/vgyau5gsRGbmJ8kJTP04SwHhXeBBepGgQ0mzbdGJp7A4aOL
-         UEg2khIGh4JH9JxDF4kkFs7f6ZVoSN+zBOt4jlNhPBA7rdyJqa9kQBmxhqaGN3B3g6ER
-         3QnWe+OPoaV1eGFclOyLSmogf0Z6wmOO7ETDsaOI0uyLKOfbDgMMarCFEPt4D0Ieb9jF
-         rFI5NGCP518VrAFpvYdVtdko8IM8iC7NuByysRPsM/ZKlcQDA129vx+MHZOQzwKV6gEq
-         Wy8N4+0CaP3ouYL1fCOZFC5V8USYzrgWV6cToPrVsuyxNs99mP94oGoCWpWEyABZ1AIh
-         Bxew==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=TsHouUjM/sX6MNpZdJ+2Xl09xrG1oeKuiE+2byGWXSQ=;
-        fh=MyaxuvPh0Gy5xL+wcMMJ/fxW9Qd5mFxcbeRgDk+x1SY=;
-        b=SruBJiB2ez6cHxZ4ff2qwwQVAMtBSinpkC4mOC+hL8Z7ff9yMsYLAWb0Oy2Ap7/bWy
-         faVhNSGWdyxWU8kfuNUOeako6A7G6+GCJTQh2VeV8y975nAfEuQqO4ssY+8EvX4ViuiR
-         Px+uQpg89zMthVGLtAZIthtpN6uRPgysSwpAG6+ZNCnnyqWqyCT2VBTecAI8fuOrEClm
-         uFhpW7p1rH98iXWTKbSuJIL7e7zUYbHxputPxUBvas/pnlvbi7FF8xCyI7jR6UBzpTnB
-         5yOHF8lFYnuFTY3BqVJj7QVBZk2cMjdx4SsqpHU4fAKuu2nTL98eVnMJyHXOrXbtVYOL
-         9uVg==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1774963281; x=1775568081; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=TsHouUjM/sX6MNpZdJ+2Xl09xrG1oeKuiE+2byGWXSQ=;
-        b=LAYHZITMJToHIS5+duW5CKrXzx2ZTXPysPgsYQFOIDCCOpJ9ek3RcSrviK26gt2O3A
-         wTTCNUbD9ObfPwx/CQHuRgbziHtB7OslPEC6AswmQXAOqrJbhsgiZOlpY9NXsSjR4NM/
-         fe2zUTCpnOb0eSevYDzJQ+Yq3DkFANauWJO674N50EmLGLljA4mlxnQgZqgxMx3mMPLd
-         zAzXafpCs5MUsRcNfWRob6sSH6uAfTwyIEP+/fwXe4pDHn1cZFS1/LnZP6x6ofb+Erhy
-         FSgko9ygMUX/1CLWCvJ7IP3hdjwsw7l1bKFAiTxDNimvqOCSQnNK3e8O9JjxON/1Xcqe
-         BiMA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1774963281; x=1775568081;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=TsHouUjM/sX6MNpZdJ+2Xl09xrG1oeKuiE+2byGWXSQ=;
-        b=cvyHr1rhyyhqjuFoDTkmV1iu8hl6Kty2N1RdyysGFmoM7jXBo+qVGoDaDnoRK1zEwr
-         kk/F3DNLOpq0lOqyh2Iva6kZ2tMvnUvZsFdBW3R1ZEKZtYx4/po5Gm5AaAEoUY8IH8LR
-         UODGsGSbQGB/mkRWeZCPQ14Vw84u8rk6bXiqjE9Dgk6m/9ipyMo9XZ0yzhAVkB7ORAVz
-         bY4yloK1RRz2EDG7Kr91Okdvi54sYA04UmbSywLS/l8QOTmsjnMMYXHJLx1Tn3N/NCgs
-         swaX2py6G/myf5hM6GLj9gWStfTi2PRw1hKKI3tJUxfciCgzqYHBs+Sm3bPhsLoU/2Mc
-         1d6A==
-X-Forwarded-Encrypted: i=1; AJvYcCXlggiVfeHE9jtVKXYjF3VvTBqXxnTWP76HyN1Fj4dY0uR+/i1LIugL2VTaViXEH6RpEuPQyeSiWD+A5kEvvw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yyn6lernG2hKWzp3RGi00v20DqISO+aUTSB1hwXxs0uQSc75RSY
-	wkRbGCw3Tggz/IkVgeurzu37Jmkd+pvkhkJ3s5uUbhN7bH4ulUIW4PAOZHqK1nMSNGgwixGgE3d
-	0+GcUem9iKAno15uoTwa27ZQC/WhhSTY=
-X-Gm-Gg: ATEYQzzND2Y42DKOK3UdzujIESPRnZY+uFl3Tl0ctWuGafUsAojBKXF7IiSu2QOIQTS
-	7o3cPyGrmt6zXIPZFwGzWErcMpMbJbXRyo3dUT4pjv9dkQVugRIcbQQQxzbQ+HgPo3sJUAFhxRl
-	Syw0jeegVaZTtzKidxuuiw9CE+1EroghZbYzvvS1ZdEBR2Kn52mfwdCsBW9AcRa0a2A+jpxSzI+
-	3CGpWDxtzU8q38dLbC8Ki7/C8ZAGfWATBYUcbUdcEZeIJSyYc4epV1BylrbWLbP7HQtE7sj+Kpj
-	gRnK6l72cgj/ZVdsI4Mx/h3qBZvOY+7ppPxfudAnRn4PNOLq3iiy2Gs083B6YSYi707j7Q==
-X-Received: by 2002:a05:690e:4106:b0:650:1203:b18e with SMTP id
- 956f58d0204a3-6501203b3a5mr10132128d50.73.1774963281252; Tue, 31 Mar 2026
- 06:21:21 -0700 (PDT)
+	id 1w7bXP-0000000DDuk-38Zn;
+	Tue, 31 Mar 2026 16:01:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1774972916; x=1806508916;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=eI8SQ8hlmfnTvWkv7QAhjjIQ17PWVbfzQx5ojZvnNo4=;
+  b=YmoKJvYMScr+U6C6++if/njXNNOPiDZ84pyDRo7Bl2HhG/TTW47LStwQ
+   1758d2xd3C6ZjB9ga8WbzIHdDpF58kPxZea0SAm72NM3TA1ehbw7albRh
+   5acu/2++hzxgY3SQJ92Gfym6IxYrFTYuqK7DL2mactW3f48lHsB710AQt
+   9HeX05rsi4Jrc4nCbB+wnuKjqjrNdGw27Dz86O2y87S4M3ifHQzWZZz3D
+   d8kdyu+dem8+upZq/sCh8k7c0IQddieiWmSfBSHOjkZFwXiupDm7SYubW
+   h4MH+6cymmo9vcmfFRqwTVN7/2/XxHg33EZeZZnrgQvF2Cp5ru0v0UC4Y
+   w==;
+X-CSE-ConnectionGUID: TC3QqX2zTx60HD1DcedPrg==
+X-CSE-MsgGUID: s6vtS9/iSJ2hU2SUj3EwIQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11745"; a="75954403"
+X-IronPort-AV: E=Sophos;i="6.23,152,1770624000"; 
+   d="scan'208";a="75954403"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Mar 2026 09:01:53 -0700
+X-CSE-ConnectionGUID: W+2NdeozTVSmfTQd4l/CIQ==
+X-CSE-MsgGUID: IGnx9ev2S/KHj+cLPQVwFQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,152,1770624000"; 
+   d="scan'208";a="226270636"
+Received: from lkp-server01.sh.intel.com (HELO 283bf2e1b94a) ([10.239.97.150])
+  by orviesa009.jf.intel.com with ESMTP; 31 Mar 2026 09:01:47 -0700
+Received: from kbuild by 283bf2e1b94a with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1w7bXD-000000002qT-3p6k;
+	Tue, 31 Mar 2026 16:01:43 +0000
+Date: Wed, 1 Apr 2026 00:01:12 +0800
+From: kernel test robot <lkp@intel.com>
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+	linux-mediatek@lists.infradead.org
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	Fabien Parent <parent.f@gmail.com>, Val Packett <val@packett.cool>,
+	Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Linus Walleij <linusw@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Gary Bisson <bisson.gary@gmail.com>,
+	Julien Massot <julien.massot@collabora.com>,
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+	Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-gpio@vger.kernel.org
+Subject: Re: [PATCH v4 5/9] mfd: mt6397: Add support for MT6392 PMIC
+Message-ID: <202603312339.CMJpqhEq-lkp@intel.com>
+References: <20260330083429.359819-6-l.scorcia@gmail.com>
 MIME-Version: 1.0
-References: <20260330-mt7927-bt-support-v4-0-cecc025e7062@jetm.me>
-In-Reply-To: <20260330-mt7927-bt-support-v4-0-cecc025e7062@jetm.me>
-From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-Date: Tue, 31 Mar 2026 09:21:09 -0400
-X-Gm-Features: AQROBzA8Gvb6W-nwoEVCHeIegRAguGDmKStqgZKVOgir3Am0LgLVxEFaOOAfJvw
-Message-ID: <CABBYNZ+MFJU=LLEaizYEt1b-7VzosErkav7dyneZExr_rLUnRA@mail.gmail.com>
-Subject: Re: [PATCH v4 0/8] Bluetooth: Add MediaTek MT7927 (MT6639) support
-To: Javier Tia <floss@jetm.me>
-Cc: Marcel Holtmann <marcel@holtmann.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-bluetooth@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Ryan Gilbert <xelnaga@gmail.com>, 
-	Jose Tiburcio Ribeiro Netto <jnetto@mineiro.io>, Llewellyn Curran <melinko2003@gmail.com>, 
-	Chapuis Dario <chapuisdario4@gmail.com>, Evgeny Kapusta <3193631@gmail.com>, 
-	Nitin Gurram <nitin.reddy88@gmail.com>, Thibaut FRANCOIS <tibo@humeurlibre.fr>, 
-	Ivan Lubnin <lubnin.ivan@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260330083429.359819-6-l.scorcia@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260331_062123_398213_9A436150 
-X-CRM114-Status: GOOD (  26.08  )
+X-CRM114-CacheID: sfid-20260331_090157_534152_9CF2889D 
+X-CRM114-Status: GOOD (  15.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,116 +106,124 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Javier,
+Hi Luca,
 
-On Mon, Mar 30, 2026 at 4:39=E2=80=AFPM Javier Tia <floss@jetm.me> wrote:
->
-> combo WiFi 7 + BT 5.4 module. The BT subsystem uses hardware variant
-> 0x6639 and connects via USB.
->
-> The MT7927 is shipping in motherboards and PCIe add-in cards from ASUS,
-> Gigabyte, Lenovo, MSI, and TP-Link since mid-2024. Without these patches,
-> users see "Unsupported hardware variant (00006639)" or the BT subsystem
-> hangs during firmware download.
->
-> The series consists of eight patches:
->
->   [1/8] Bluetooth: btmtk: Add MT6639 (MT7927) Bluetooth support
->   [2/8] Bluetooth: btmtk: fix ISO interface setup for single alt setting
->   [3/8] Bluetooth: btusb: Add MT7927 ID for ASUS ROG Crosshair X870E Hero
->   [4/8] Bluetooth: btusb: Add MT7927 ID for Lenovo Legion Pro 7 16ARX9
->   [5/8] Bluetooth: btusb: Add MT7927 ID for Gigabyte Z790 AORUS MASTER X
->   [6/8] Bluetooth: btusb: Add MT7927 ID for MSI X870E Ace Max
->   [7/8] Bluetooth: btusb: Add MT7927 ID for TP-Link Archer TBE550E
->   [8/8] Bluetooth: btusb: Add MT7927 ID for ASUS X870E / ProArt X870E-Cre=
-ator
->
-> Three driver changes are needed for MT6639 (patch 1):
->
-> 1. CHIPID workaround: On some boards the BT USB MMIO register reads
->    0x0000 for dev_id. Force dev_id to 0x6639 only when the USB VID/PID
->    matches a known MT6639 device, avoiding misdetection if a future
->    chip also reads zero. This follows the WiFi-side pattern.
->
-> 2. Firmware naming: MT6639 uses firmware version prefix "2_1" instead of
->    "1_1" used by MT7925 and other variants. The firmware path is
->    mediatek/mt7927/BT_RAM_CODE_MT6639_2_1_hdr.bin, using the mt7927
->    directory to match the WiFi firmware convention. The filename will
->    likely change to use MT7927 once MediaTek submits a dedicated
->    Linux firmware binary.
->
-> 3. Section filtering: The firmware binary contains 9 sections, but only
->    sections with (dlmodecrctype & 0xff) =3D=3D 0x01 are Bluetooth-related=
-.
->    Sending WiFi/other sections causes an irreversible BT subsystem hang.
->
-> Patch 2 fixes the ISO interface setup for devices that expose only a
-> single alternate setting (alt 0) on the ISO endpoint. Without this fix,
-> btmtk_usb_claim_iso_intf() fails with EINVAL, causing ~20 second
-> initialization delays on 13d3:3588 devices.
+kernel test robot noticed the following build warnings:
 
-Ok, but on 8/8 it seem to suggest the problem still exists which
-trigger the following review:
+[auto build test WARNING on lee-mfd/for-mfd-next]
+[also build test WARNING on broonie-regulator/for-next linusw-pinctrl/devel linusw-pinctrl/for-next lee-mfd/for-mfd-fixes linus/master v7.0-rc6 next-20260330]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-https://sashiko.dev/#/patchset/20260330-mt7927-bt-support-v4-0-cecc025e7062=
-%40jetm.me
+url:    https://github.com/intel-lab-lkp/linux/commits/Luca-Leonardo-Scorcia/dt-bindings-mfd-mt6397-Add-MT6392-PMIC/20260331-081127
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/lee/mfd.git for-mfd-next
+patch link:    https://lore.kernel.org/r/20260330083429.359819-6-l.scorcia%40gmail.com
+patch subject: [PATCH v4 5/9] mfd: mt6397: Add support for MT6392 PMIC
+config: s390-randconfig-002-20260331 (https://download.01.org/0day-ci/archive/20260331/202603312339.CMJpqhEq-lkp@intel.com/config)
+compiler: clang version 17.0.6 (https://github.com/llvm/llvm-project 6009708b4367171ccdbf4b5905cb6a803753fe18)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260331/202603312339.CMJpqhEq-lkp@intel.com/reproduce)
 
-Perhaps we should ajust the commit description if the 19 seconds
-doesn't really occurs when 2/8 is applied.
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202603312339.CMJpqhEq-lkp@intel.com/
 
-> WBS (Wideband Speech) was verified on MT7927 hardware. The controller
-> reports LMP_TRANSPARENT, LMP_ERR_DATA_REPORTING, and mSBC codec support.
-> A btmon capture confirms eSCO links establish with Transparent air mode
-> (mSBC) and 60-byte frames. BTUSB_WIDEBAND_SPEECH is correct for this
-> controller family.
->
-> Tested on:
-> - ASUS ROG Crosshair X870E Hero (USB 0489:e13a)
-> - ASUS ROG STRIX X870E-E (USB 13d3:3588)
-> - ASUS ROG STRIX B850-E GAMING WIFI (USB 0489:e13a)
-> - Gigabyte Z790 AORUS MASTER X (USB 0489:e10f)
-> - Lenovo Legion Pro 7 16ARX9 (USB 0489:e0fa)
->
-> Changes in v4:
-> - Pass dev_id as parameter to btmtk_setup_firmware_79xx instead of
->   using hci_get_priv, which is not available in btmtksdio
->   (suggested by Luiz Augusto von Dentz)
-> - Skip post-reset CHIPID validation for 0x6639 in
->   btmtk_usb_subsys_reset since the register always returns 0x0000
->   on affected boards
->
-> Link to v3: https://lore.kernel.org/linux-bluetooth/20260326-mt7927-bt-su=
-pport-v3-0-fa7ebd424323@jetm.me/
->
-> Signed-off-by: Javier Tia <floss@jetm.me>
-> ---
-> Javier Tia (8):
->       Bluetooth: btmtk: Add MT6639 (MT7927) Bluetooth support
->       Bluetooth: btmtk: fix ISO interface setup for single alt setting
->       Bluetooth: btusb: Add MT7927 ID for ASUS ROG Crosshair X870E Hero
->       Bluetooth: btusb: Add MT7927 ID for Lenovo Legion Pro 7 16ARX9
->       Bluetooth: btusb: Add MT7927 ID for Gigabyte Z790 AORUS MASTER X
->       Bluetooth: btusb: Add MT7927 ID for MSI X870E Ace Max
->       Bluetooth: btusb: Add MT7927 ID for TP-Link Archer TBE550E
->       Bluetooth: btusb: Add MT7927 ID for ASUS X870E / ProArt X870E-Creat=
-or
->
->  drivers/bluetooth/btmtk.c     | 63 +++++++++++++++++++++++++++++++++++++=
-+-----
->  drivers/bluetooth/btmtk.h     |  7 +++--
->  drivers/bluetooth/btmtksdio.c |  2 +-
->  drivers/bluetooth/btusb.c     | 12 +++++++++
->  4 files changed, 75 insertions(+), 9 deletions(-)
-> ---
-> base-commit: 7f9446b23ac77f46d356b354ea8da49113e8000d
-> change-id: 20260305-mt7927-bt-support-6589a50c961f
->
-> Best regards,
-> --
-> Javier Tia <floss@jetm.me>
->
+All warnings (new ones prefixed by >>):
+
+>> drivers/mfd/mt6397-core.c:421:16: warning: cast to smaller integer type 'enum mfd_match_data' from 'const void *' [-Wvoid-pointer-to-enum-cast]
+     421 |         device_data = (enum mfd_match_data)of_device_get_match_data(&pdev->dev);
+         |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   1 warning generated.
 
 
---=20
-Luiz Augusto von Dentz
+vim +421 drivers/mfd/mt6397-core.c
+
+   398	
+   399	static int mt6397_probe(struct platform_device *pdev)
+   400	{
+   401		int ret;
+   402		unsigned int id = 0;
+   403		struct mt6397_chip *pmic;
+   404		const struct chip_data *pmic_core;
+   405		enum mfd_match_data device_data;
+   406	
+   407		pmic = devm_kzalloc(&pdev->dev, sizeof(*pmic), GFP_KERNEL);
+   408		if (!pmic)
+   409			return -ENOMEM;
+   410	
+   411		pmic->dev = &pdev->dev;
+   412	
+   413		/*
+   414		 * mt6397 MFD is child device of soc pmic wrapper.
+   415		 * Regmap is set from its parent.
+   416		 */
+   417		pmic->regmap = dev_get_regmap(pdev->dev.parent, NULL);
+   418		if (!pmic->regmap)
+   419			return -ENODEV;
+   420	
+ > 421		device_data = (enum mfd_match_data)of_device_get_match_data(&pdev->dev);
+   422		switch (device_data) {
+   423		case MATCH_DATA_MT6323:
+   424			pmic_core = &mt6323_core;
+   425			break;
+   426		case MATCH_DATA_MT6328:
+   427			pmic_core = &mt6328_core;
+   428			break;
+   429		case MATCH_DATA_MT6331:
+   430			pmic_core = &mt6331_mt6332_core;
+   431			break;
+   432		case MATCH_DATA_MT6357:
+   433			pmic_core = &mt6357_core;
+   434			break;
+   435		case MATCH_DATA_MT6358:
+   436			pmic_core = &mt6358_core;
+   437			break;
+   438		case MATCH_DATA_MT6359:
+   439			pmic_core = &mt6359_core;
+   440			break;
+   441		case MATCH_DATA_MT6392:
+   442			pmic_core = &mt6392_core;
+   443			break;
+   444		case MATCH_DATA_MT6397:
+   445			pmic_core = &mt6397_core;
+   446			break;
+   447		default:
+   448			dev_err(&pdev->dev, "Unknown device match data %u\n", device_data);
+   449			return -ENODEV;
+   450		}
+   451	
+   452		ret = regmap_read(pmic->regmap, pmic_core->cid_addr, &id);
+   453		if (ret) {
+   454			dev_err(&pdev->dev, "Failed to read chip id: %d\n", ret);
+   455			return ret;
+   456		}
+   457	
+   458		pmic->chip_id = (id >> pmic_core->cid_shift) & 0xff;
+   459	
+   460		platform_set_drvdata(pdev, pmic);
+   461	
+   462		pmic->irq = platform_get_irq(pdev, 0);
+   463		if (pmic->irq <= 0)
+   464			return pmic->irq;
+   465	
+   466		ret = pmic_core->irq_init(pmic);
+   467		if (ret)
+   468			return ret;
+   469	
+   470		ret = devm_mfd_add_devices(&pdev->dev, PLATFORM_DEVID_NONE,
+   471					   pmic_core->cells, pmic_core->cell_size,
+   472					   NULL, 0, pmic->irq_domain);
+   473		if (ret) {
+   474			irq_domain_remove(pmic->irq_domain);
+   475			dev_err(&pdev->dev, "failed to add child devices: %d\n", ret);
+   476		}
+   477	
+   478		return ret;
+   479	}
+   480	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
