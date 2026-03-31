@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09570FF60D5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2026 07:04:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45842FF60DE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2026 07:59:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pxWGc2TsHE0VqN8tEOLzDD2Cwy8bGqX3dfs0MX0CZws=; b=HCPuhRNWQ2t/PaLPwJpeVdglOo
-	cv8QyjBNDgReRWW4WAr9BcGFlRs2v2Xze2xHA8DsvqhwVt5wlDQXWENgL8nlNlCExMebCtlvv2fVg
-	djtE4uKDFcudzISWngSKkg167UDzQDkXUdEy18PbF+E85jtE9RocPuxFFWafNQ/F5jfZgUto+H9n5
-	kAnRASfDjkLWq5xzoZZQ32qjmko9YITov0PCa7A7a2ttBo3TTit0cdYE6MaedrjqLpG2SSTT+B840
-	MWphSZq1mDieraXkiGm4uXJ1rDua1tTGw5Qf2I7CJ3cnlpYSfakAhY4osJtlj+DKNBmEDTvRjzOQc
-	yW1Ye5IA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xf3baQcdCPT0xFW7ni7rVWBaUQV2OoiDultSu0Aff8k=; b=Tn2VZKjdGxBuLUermWrJ9OIHDD
+	iygj/X85+fVyXiJHX5DzdqGyL9nSaGs2XdxloBbgKVepActV1gwZX8k2ICuLRKgy3Ijbj5caZYa1M
+	VprEOcD/cFZ3F6KEgPdgfcqMN3FjlHiUjx7soS1bYze9Q/J213FdkCC1qN4S3yAuH+ZDzZzESRA/b
+	pX5SPxvbw63L0aQPmlHffAaeJ74AqPT9Y4aUApUu9mDIS84M2jf9fV467ScSuVkRC8HuibiqXIMdj
+	BT3TyOdekD7qNXrUq65aPfMS7zgC4FiEopXV7uL/YF63Zm4kAFWPCpNL/wqt3H705PB+G9M9xkbhd
+	2yVVbLpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7T9h-0000000CQa1-0DbO;
-	Tue, 31 Mar 2026 07:04:53 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1w7U0f-0000000CXgS-1rGb;
+	Tue, 31 Mar 2026 07:59:37 +0000
+Received: from vm007.relaix.net ([2a00:fe0:0:5::4500])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7T9e-0000000CQZY-0E93;
-	Tue, 31 Mar 2026 07:04:51 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9251343B45;
-	Tue, 31 Mar 2026 07:04:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DF191C19423;
-	Tue, 31 Mar 2026 07:04:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774940689;
-	bh=BVLZuM9Tb/IhhGxxJ8XR8Poig0u+Q+Ff5TgQHV/QdUM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=WyjRDPlKTvxSBHEu0LQLHoB1bQ/7j2PGJ6zJDIoHHdF+eBnsNlBA5/G4e28/majZK
-	 sS077DV5gR/nH1tMgvhznEkv+Q2Wk1R45tJpKqEHewhqdfiBxdx5Em7UNtvvstnU73
-	 qBbVOHhjODHeamOhG1TTMXU73wHPIsRUqK/1QqtRvzYCYQRQuN3KsSyqra5jT+VJsw
-	 bjrTTqDZJyKs7NrrYsLa0V44TDs2+EJ8o0L0qosiqCKI6uNH+EFpHcFqF3xIg/NYy5
-	 +KBqYG+Xo3nwq1B+PeOy8B+ONGiaqyxH0mzvlNxlFCZou4Kar1nWPAiy1Etu9Dya8N
-	 5wv0si+9LT7CQ==
-Date: Tue, 31 Mar 2026 09:04:47 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, 
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
-	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Linus Walleij <linusw@kernel.org>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Julien Massot <julien.massot@collabora.com>, Gary Bisson <bisson.gary@gmail.com>, 
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, Val Packett <val@packett.cool>, 
-	Fabien Parent <parent.f@gmail.com>, Chen Zhong <chen.zhong@mediatek.com>, 
-	linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org
-Subject: Re: [PATCH v4 3/9] regulator: dt-bindings: Add MediaTek MT6392 PMIC
-Message-ID: <20260331-gorgeous-bloodhound-of-dew-cfbfbb@quoll>
-References: <20260330083429.359819-1-l.scorcia@gmail.com>
- <20260330083429.359819-4-l.scorcia@gmail.com>
+	id 1w7U0c-0000000CXct-0UK7
+	for linux-mediatek@lists.infradead.org;
+	Tue, 31 Mar 2026 07:59:36 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 578C054D7DB;
+	Tue, 31 Mar 2026 09:59:23 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=freifunk-aachen.de;
+	s=dkim; t=1774943966;
+	h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references:autocrypt;
+	bh=xf3baQcdCPT0xFW7ni7rVWBaUQV2OoiDultSu0Aff8k=;
+	b=ah89LX72H/Ci2jMUilNQGOcs9GjmgWJuHtpIo67jflsErH9yAXwYfKHz/89K0F3QhFsdCo
+	jd8Osi078DSNGkJv2IFRpIaKCV2wy3Up05RdOxxxE/E9O6ePJgdWbJgYPnmc0JpJFhqwgP
+	PLBkSbE1kLoTxUw5fS8FHovSjY68N+8GPsCVDGzdB1XZqIKl7adSM8b3pw8qrNJz0s+IQE
+	T9TNKGKoSTMadnOeIT9vjx7IlhzNCakL68owIS8iBH/6dnCV5qvlwNqLVXrycOWcYob6my
+	quyiBLjavZzl5FqTB7R/fmzbFAn1Glm4B0eQgeyrooba6e0xd9elqWggCOyG2g==
+Message-ID: <3f4103d9-4871-4ae8-93a7-d286fce37443@freifunk-aachen.de>
+Date: Tue, 31 Mar 2026 09:59:22 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20260330083429.359819-4-l.scorcia@gmail.com>
+User-Agent: Mozilla Thunderbird
+To: lucid_duck@justthetip.ca
+Cc: linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org,
+ lorenzo.bianconi@redhat.com, morrownr@gmail.com, nbd@nbd.name,
+ satadru@gmail.com, sean.wang@kernel.org
+References: <20260327021534.448552-1-lucid_duck@justthetip.ca>
+Subject: Re: [PATCH 1/3] wifi: mt76: connac: use a helper to cache txpower_cur
+Content-Language: en-US
+From: Felix Baumann <felix.baumann@freifunk-aachen.de>
+Autocrypt: addr=felix.baumann@freifunk-aachen.de; keydata=
+ xjMEaXlalxYJKwYBBAHaRw8BAQdAy2mf6IX/aorkYHujfexbrrHPZ9evkUR6MjkWqzxM1l3N
+ MEZlbGl4IEJhdW1hbm4gPGZlbGl4LmJhdW1hbm5AZnJlaWZ1bmstYWFjaGVuLmRlPsKPBBMW
+ CAA3FiEE0nprspF4aDRw7fLJVcWHRzGzREoFAml5WpcFCQDtTgACGwMECwkIBwUVCAkKCwUW
+ AgMBAAAKCRBVxYdHMbNESpb0AP9bpO2TOFuA56gBS38TbOtiOBTqhzvxHSnxn3JIa9opEQEA
+ mOLrjuD5DJdaW56g4X1l4oOSwEcH43qrcLRI6KtjZw/OOARpeVqXEgorBgEEAZdVAQUBAQdA
+ bnuRly36kpIJPY7TufU6iEseKtyERyKniKQY15AYY0kDAQgHwn4EGBYIACYWIQTSemuykXho
+ NHDt8slVxYdHMbNESgUCaXlalwUJAO1OAAIbDAAKCRBVxYdHMbNESv3UAP9/rR+UtikbtAul
+ X83a5sNYdTxJoMISGpEIGFBtWApGEAEAkMUNQHnFv+L7IkZEjBcOS6eUzOMmu6/Bg+BkZjCy HAU=
+In-Reply-To: <20260327021534.448552-1-lucid_duck@justthetip.ca>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260331_000450_136632_0EAF4ABB 
-X-CRM114-Status: GOOD (  15.92  )
+X-CRM114-CacheID: sfid-20260331_005934_644425_615D927B 
+X-CRM114-Status: UNSURE (   2.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,46 +82,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 30, 2026 at 09:29:37AM +0100, Luca Leonardo Scorcia wrote:
-> Add bindings for the regulators found in the MediaTek MT6392 PMIC,
-> usually found in board designs using the MediaTek MT8516/MT8167 SoCs.
-> 
-> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-> ---
->  .../regulator/mediatek,mt6392-regulator.yaml  | 74 +++++++++++++++++++
->  .../regulator/mediatek,mt6392-regulator.h     | 24 ++++++
->  2 files changed, 98 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6392-regulator.yaml
->  create mode 100644 include/dt-bindings/regulator/mediatek,mt6392-regulator.h
-> 
-> diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6392-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6392-regulator.yaml
-> new file mode 100644
-> index 000000000000..24fbaef0e717
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6392-regulator.yaml
-> @@ -0,0 +1,74 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/regulator/mediatek,mt6392-regulator.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek MT6392 regulator
-> +
-> +description:
-> +  Regulator node of the PMIC. This node should under the PMIC's device node.
-> +  MT6392 is a power management system chip containing three buck converters and
-> +  23 LDOs. All voltage regulators provided by the PMIC are described as
-> +  sub-nodes of this node.
-> +
+Hi Lucid Duck,
 
-So that's a dead code / schema.
+thanks a lot for your contribution. Very much appreciated :)
+The kernel has a strict policy for contributions: real names only.
+https://www.kernel.org/doc/html/v4.11/process/submitting-patches.html#sign-your-work-the-developer-s-certificate-of-origin
 
-Try yourself if it works.
+May I kindly ask whether it would be okay for Sean to use your real name?
+https://github.com/Lucid-Duck
 
-Your parent schema must reference this one for the regulators node.
-
-Best regards,
-Krzysztof
+-- 
+Regards
+Felix Baumann
 
 
