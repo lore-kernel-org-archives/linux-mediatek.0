@@ -4,151 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF3BB10F92F8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2026 19:56:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21E6110F9300
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2026 21:04:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=PPKrF7cCCAHO5t3ubcZIHTwTCR3avdQrpYBWYawqY0A=; b=HNRWU91ma6C4RxT2dvenwGyts0
-	hlrkUqioucFFfqAmjKisPN48vVunHOJxFu2Ws/eBz0WDSy44KY8ScvIFNgT44294j5bI8+v3i94Oi
-	g8A6qeBm5ixU61eAvraYFuTPRJuDLuiMHX98J6+dd10CeeUbo9hUuP7nTCljfvJWwPcfWUThyE5E+
-	GwE2/1XppLgQkwBexXuhIKirY0qSGWSGR8gnJSXA3iQC5XZv4IHQSRpbj12CgNjz09nezviwVDxlT
-	WAAPE/KvFDUYKJYbQwElEOyHg4/RZN17nL6Wimo/tXvK9usWvchBvn5RHy2lNgici2ZFo4JkWMMpE
-	9U81nymA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:References:
+	In-Reply-To:Cc:Subject:Date:To:From:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vxQdo+GsTGHOPhfZ6KDq0AqryyH8iiUIo3Vw21bj1s8=; b=TFiEPboaJrWq3FrbcQYIRjSnTF
+	8kpKydPE6HNnLgEUKA30bGSF35WgJsslXxgtbWPudv/G6p/DGSSDqkzy6tiiZKb3uMbPT2eGHwCCS
+	gHg9a13spmpNyCJC3V4UGmT4DnRCZAbl5dNNiA3JOnAPTZQA7uw1OvrWnwvBJXI9j8/CBXcMm1mqJ
+	gMJ39zYixoqk1K2gbuEWXBvzTbDW37k/X2mX294oymBT4xAEPG9jO+HHqkUHkzbU6jf2SA1+DiH0u
+	JdJtzyjrQuZBgK933VgrEESoCOVKOTp3UyMtKQWXASUkgszdkyixPgTJBLhpRd0CVW5awbQ908sK/
+	b5JpfAow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7fCb-0000000DVAJ-1jlw;
-	Tue, 31 Mar 2026 19:56:41 +0000
-Received: from mail-westusazon11010025.outbound.protection.outlook.com ([52.101.85.25] helo=BYAPR05CU005.outbound.protection.outlook.com)
+	id 1w7gFu-0000000DYaz-1vGz;
+	Tue, 31 Mar 2026 21:04:10 +0000
+Received: from fout-a7-smtp.messagingengine.com ([103.168.172.150])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7fCX-0000000DV9h-1fbS;
-	Tue, 31 Mar 2026 19:56:38 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=yGsbJ8A9q4NGBHOZ/Tq9ar3ZKaNSHCDIyOVrgfk95BUfXiPmlyjy1xwiJq7tWmLNy5hAQTY8oDM4MekRK7QlP1phgMi2CFyNKKkPdVSCMPpQVnMjsoqea7teG1vnvOIeR6mdPa+d0wxCjSb6Hnm/stOmJ5vUfktT9yQqZrzOQ1AXsx7J6ZWkgKT4r+vdloNmzKiL1fN0iyvqnyP5TAXeHfdPfMoKsqF9DhrmPgQ8MgRiStu/Uqgf3npsDm9IGcVK0X+oJEWtpD4K0PVN8EfeKECUrTYZ7n14LaYwnMjRm5JzEoMmjqjJT0OQuRxg1Y1l7vxw5CzAfgxUdok86vE9Cg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=PPKrF7cCCAHO5t3ubcZIHTwTCR3avdQrpYBWYawqY0A=;
- b=H5aEuVKZ76KcF3lRFblgwV+QWlDtbD5p87Itbb1oC6S4T09FNg+IHYpgYhw1mMCpitIpG87gy1IwhlPw/48dgt0M7Ct6SCYaDK/EpInrKumlTpCC2l7HeV2OnENJCcGp4A+bXDUyI1ewUHPp+n1sz67hKs4Mq7QuStY5cPGRprpadMAB0YVjmFQ0YJuymRrDz3JIRTP6NSD1yb0VTjNFY5XfG0gzWJLyeEs2c3V2iLf01PKhH3vjh93yqa2HOZb7TOgXZB1MJ0P9ZrXesyd8DAD++rg9aiLdtOOHXT1JqdYm2cLaYfIPWfS4vborg2zUpIYQWGQvoxAcHMaeBhF7JQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=PPKrF7cCCAHO5t3ubcZIHTwTCR3avdQrpYBWYawqY0A=;
- b=tJUnu1FUnZ3EADTd9naYlfcNO4LedH5b8z/rcB7UZJMwi3aeUlb5AMJOP38RRuBHw6ApJn93dKxNL3E9nvsYnEYUKrkWy73NY0SBUkXE/IUFbKE+sMZJNk7mlFsusIB/M2eFi5uYVv7rTagBIg667N3Dly1/QmqiJ/pTNe6XT1zOLbuuMuoGVS3IMZqXdcnHsSu3+b+ey74cXtI8Ls0wku0oL6ZA4oSDIh40ywzLOIL5LXj+GseG6ox1GXjOzfWGusEAqadEPyGNks1wT/2BuYSNsdnW7j5OoZWKeVXJflAk9VeIBzbgkiiTzIWZWFXn6LzAUi++vfSE8XSGOLpTjQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV8PR12MB9620.namprd12.prod.outlook.com (2603:10b6:408:2a1::19)
- by SA1PR12MB6823.namprd12.prod.outlook.com (2603:10b6:806:25e::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9769.15; Tue, 31 Mar
- 2026 19:56:25 +0000
-Received: from LV8PR12MB9620.namprd12.prod.outlook.com
- ([fe80::299d:f5e0:3550:1528]) by LV8PR12MB9620.namprd12.prod.outlook.com
- ([fe80::299d:f5e0:3550:1528%5]) with mapi id 15.20.9769.014; Tue, 31 Mar 2026
- 19:56:24 +0000
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Alexandre Ghiti <alex@ghiti.fr>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Albert Ou <aou@eecs.berkeley.edu>,
-	asahi@lists.linux.dev,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	iommu@lists.linux.dev,
-	Janne Grunau <j@jannau.net>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Joerg Roedel <joro@8bytes.org>,
-	Jean-Philippe Brucker <jpb@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-riscv@lists.infradead.org,
-	linux-sunxi@lists.linux.dev,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Neal Gompa <neal@gompa.dev>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <pjw@kernel.org>,
-	Samuel Holland <samuel@sholland.org>,
-	Sven Peter <sven@kernel.org>,
-	virtualization@lists.linux.dev,
-	Chen-Yu Tsai <wens@kernel.org>,
-	Will Deacon <will@kernel.org>,
-	Yong Wu <yong.wu@mediatek.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>
-Cc: Lu Baolu <baolu.lu@linux.intel.com>,
-	Janusz Krzysztofik <janusz.krzysztofik@linux.intel.com>,
-	Joerg Roedel <joerg.roedel@amd.com>,
-	Jon Hunter <jonathanh@nvidia.com>,
-	patches@lists.linux.dev,
-	Robin Murphy <robin.murphy@arm.com>,
-	Samiullah Khawaja <skhawaja@google.com>,
-	stable@vger.kernel.org,
-	Vasant Hegde <vasant.hegde@amd.com>
-Subject: [PATCH] iommu: Always fill in gather when unmapping
-Date: Tue, 31 Mar 2026 16:56:22 -0300
-Message-ID: <0-v1-664d3acaabb9+78b-iommu_gather_always_jgg@nvidia.com>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: BL1P222CA0009.NAMP222.PROD.OUTLOOK.COM
- (2603:10b6:208:2c7::14) To LV8PR12MB9620.namprd12.prod.outlook.com
- (2603:10b6:408:2a1::19)
+	id 1w7gFr-0000000DYaD-1VDM;
+	Tue, 31 Mar 2026 21:04:08 +0000
+Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
+	by mailfout.phl.internal (Postfix) with ESMTP id 83AC1EC010A;
+	Tue, 31 Mar 2026 17:04:03 -0400 (EDT)
+Received: from phl-imap-07 ([10.202.2.97])
+  by phl-compute-02.internal (MEProxy); Tue, 31 Mar 2026 17:04:03 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jetm.me; h=cc:cc
+	:content-transfer-encoding:content-type:content-type:date:date
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to; s=fm1; t=1774991043;
+	 x=1775077443; bh=vxQdo+GsTGHOPhfZ6KDq0AqryyH8iiUIo3Vw21bj1s8=; b=
+	WbHnLidoIW2uJNemwQMLAKmulHP7ovrIKEeCf/LVykpvojSwY737G+MhZWwv+rVK
+	bC0fzvudtk/i83wzwcgmKhXDQX0DfKTkkUeD6Ht+iOWOVniyAtmgSdL40wr16J8i
+	1fp2mtQgn/n0lgl/mAevyCPcZ0t1dlbP1QdEiFfeM0o6OWm02yVkN1bubnd2sVxK
+	DxktENQz9opbwzTzQO6X9u+Fs1Y53EEFSTahss+8eXdukzlYe6E86OQXRSmO7ybf
+	9M/ybFoTdswaNhzlNBszo0TCXSNWEwqOvO9NjRrRRVGcmxPQCtPo9bb5rKlmb3u9
+	NWX7+PkywVu3IktFyKgBPA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1774991043; x=
+	1775077443; bh=vxQdo+GsTGHOPhfZ6KDq0AqryyH8iiUIo3Vw21bj1s8=; b=N
+	1rpNS0NIljt6lBHkass/SqUQKRptAEZDWmcEFRkrBKknBQU0eehYAnoD7Np7Edge
+	3mjEvEH/gDJIEHzpdZnOBscXXuOC0m+QK7C0sQrwAO7DS6gEMUKSMvM1ft7ZwZJQ
+	TrNYoFIZoScyWvgwrZWe9EV0AnbuSU3EtAbHYl7M0LAUaN/VqsEwxBImEuSwzpX3
+	ElhcQr7B075b4kcuCmDGz0yZp72bycQHfUkJkSnLFlP9MF81m13hqKLX4IGDWA5B
+	R8W9N39y12FwlZ1lYvMwtaqCM1nqeCCozxCSIeOzzshaq6gxfqGzCitaWGNYRqCB
+	iTlGHV7x1cJ7Fn+xwytLw==
+X-ME-Sender: <xms:wjbMaawEEtpRe7-HS-H1k4HgXYOa8XEupNgiH5i7bvvt8pIZIdO1KQ>
+    <xme:wjbMaRFZ_VsKThOkMj-VzSblzkhxZZXqXh46DX3qsHHRm5D0vRyxjFlHMmLnxLWZ3
+    HVNKajvhkLfjtHfSX8Mrn_Ph1DVBDvPwghrpAxA52ZZURwP0oJ0a-c>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefhedrtddtgdduvdefucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceurghi
+    lhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnegopfhokf
+    ffucdluddtmdenucfjughrpefotggggffhvfffufevjghfsehtkedttdertdejnecuhfhr
+    ohhmpeflrghvihgvrhcuvfhirgcuoehflhhoshhssehjvghtmhdrmhgvqeenucggtffrrg
+    htthgvrhhnpedtudejffejkeekteelueefvdejvdeuhfefteehkeevtddvleduteekleet
+    vdelhfenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
+    hflhhoshhssehjvghtmhdrmhgvpdhnsggprhgtphhtthhopeduuddpmhhouggvpehsmhht
+    phhouhhtpdhrtghpthhtoheprghnghgvlhhoghhiohgrtggthhhinhhordguvghlrhgvgh
+    hnohestgholhhlrggsohhrrgdrtghomhdprhgtphhtthhopehluhgsnhhinhdrihhvrghn
+    sehgmhgrihhlrdgtohhmpdhrtghpthhtoheplhhuihiirdguvghnthiisehgmhgrihhlrd
+    gtohhmpdhrtghpthhtohepmhgrthhthhhirghsrdgsghhgsehgmhgrihhlrdgtohhmpdhr
+    tghpthhtohepmhgrrhgtvghlsehhohhlthhmrghnnhdrohhrghdprhgtphhtthhopehlih
+    hnuhigqdgrrhhmqdhkvghrnhgvlheslhhishhtshdrihhnfhhrrgguvggrugdrohhrghdp
+    rhgtphhtthhopehlihhnuhigqdhmvgguihgrthgvkheslhhishhtshdrihhnfhhrrgguvg
+    grugdrohhrghdprhgtphhtthhopehjnhgvthhtohesmhhinhgvihhrohdrihhopdhrtghp
+    thhtohepphhmvghniigvlhesmhholhhgvghnrdhmphhgrdguvg
+X-ME-Proxy: <xmx:wjbMaaosQq4Hksquv81s7VGSNdW4bTZ8xFCZH-eBkp6CI-zCuqxB1w>
+    <xmx:wzbMaQySBGrkHaBIKT-227T9WR5RuzWhcc1IVk3ZdivdsWoeSJioag>
+    <xmx:wzbMaesE0hMsTfirkDkLlQTCGRxT0CZ7P_iI3aTxw404KrFvn8Uy8g>
+    <xmx:wzbMaZ245cWpETaqnvIXTd-wD2zx1aRU5CsSAaCSodkc_7UIFzsf2w>
+    <xmx:wzbMaX5gXIfDYnYJBNWm2F7U5cHU6zflptQYTRcz5_xWX51S638s9YCG>
+Feedback-ID: i9dde48b3:Fastmail
+Received: by mailuser.phl.internal (Postfix, from userid 501)
+	id DCE821EA006B; Tue, 31 Mar 2026 17:04:02 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV8PR12MB9620:EE_|SA1PR12MB6823:EE_
-X-MS-Office365-Filtering-Correlation-Id: f29deb23-400f-46be-cbe2-08de8f5f9619
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|376014|7416014|921020|56012099003|18002099003;
-X-Microsoft-Antispam-Message-Info: kxi2MoOlqOzyiQUaPVavpFNinXtk2BfImZBVe5NlaTknzi927XQynUJIJaHzVDGkYaKRrvDEP6zv5X5nK6cN4gG64k/gVyL62dpK44qIIB/ruGaKtJasgIRMAiPCAZoIFLIZfirIhZxOBdrPS3+x4Sa36LI2R2iI/VONesj+xBHGsiVbugQwbU7ONWYpQFWaRWRDDgzwJk+9z0Wbgf0QlO7aD+mC+bnqUGhfMsvxCxp+sRteYkff6wXL/7JoP4gO/RXjXWjOQxOGgO7v8Wpp0XhxH0VqGp79H15JVyFAbwWsoiYDiApuIqg5wq1i+tDd9jfAqaYxDOKFJLuW2jk9vToqtMR0hUac0sddprpoRhT6HuCaNzXA56OEmsRafQbZ58yCVdakp/atxOHBrCvlGXb7byPr9lfWRjdAdUlDIB0NtFh2Dvj40LvUI/dXUwCAqpliNHQZTaKtV4zBA+vRUZ9x4puRVLssnMmMLH1b/mzg1I931qcDUZQXMsagYbyfVB6Vfqu6WSrzjzWcYEQ001JsWAUT77B5+eCAykJ6DmiA2ntmPHnVkZapBdRbjvW+dteVKgta1aDjk8tQo1EWb7QIBxEaOzs7tM2Rt0zQSD4PF5r7yOTDKRk+HT2jiK9g2O8h/MP5ewOwiI6uoPzsUlhODEUFTx/kD2nEWdUZDuupa3AGmKlLmkRu2qAc0qXWH88TWr+OM8pzTh4zdna02CAQs4HoYduKPkCZTkuxLmD+r5VzE42IwnPAd+Gs5zy2cLGAKB4ASW/YUeTn9vx5F5t50q07Sgog8fBX1/zCf00=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV8PR12MB9620.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014)(7416014)(921020)(56012099003)(18002099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?os5QxeHvKht+W4m21l7sXk86H6im4hvVLnGDPCmDV6+Tbzd4sj1lQV7ccPgh?=
- =?us-ascii?Q?vgag2LnxrDYD0fZQVU/xg4qi9YAI2ffyfKv4LPK9gLREUeXy3TKHzlhP2PBG?=
- =?us-ascii?Q?7FdiSxDXhpeBQK9Jh+0bpf2M1IXNy1eaKMdCiGDL39SQBNu7PmCsvlQxxVfF?=
- =?us-ascii?Q?rlL9OD+TDGEHzkbnxlxGwEFPf6yzaS59XzZ8q2qVg3wjp4MzJ+h5vYjR/zgk?=
- =?us-ascii?Q?6msa+2kfe9Oh2cKLvsFjBWuqRnQuZT0qvVakkIRP7MJFj0i/WOkwvm6Brxux?=
- =?us-ascii?Q?FMUPzt4PP2d6opAGyLdzNbhTYY0fJPQ2be9+5QYZGn0zuV4qDlL8L2YQi76s?=
- =?us-ascii?Q?Xc/nKJ9VhekoDQrHTQQsM25QXboLG+8kvx2X6HmXha4xe9QU8BzTiymZLEaS?=
- =?us-ascii?Q?JZVnRyyiXsmIo+LhIGjK4KCioMrJnAEDNrvjbp2BFgKXUC7j/G7AkPi6+ul4?=
- =?us-ascii?Q?8SnZ9wR/nJDkvE/7HyldqIZ4Tm27K+jtbCHrmZ4gKT9zDD8c/uWWTJeZJqHn?=
- =?us-ascii?Q?h8nvqOCzpMcXDgApgh5nuvofTjBagQ4DK6zK+++jmhUvMUrLTVSs3s23+v0F?=
- =?us-ascii?Q?hHDqNcRqkALuaOaT/DvtQDZhIZUC5OwAk5RNVZmQTdst76WC7hdur3kOtyaG?=
- =?us-ascii?Q?0VwvBBvn8bVTHhFQOZwYhcvfzA0xfUHVQv0me/TpaqHQSazAHkbdbFuTDHsi?=
- =?us-ascii?Q?EgfM0zaHsKmRbZRioztzx5sxIdaw4e9UWa2mqyoq07YRMUkToOtS5naccc5r?=
- =?us-ascii?Q?wYeAKdZeNl4hd8NbWQGxuTCdGtLLLBze7us7oBofWFVB2molbd2Ztj2Px71f?=
- =?us-ascii?Q?Y2nNGvHsOTeqDDY7rm/WmkCLnDRXnTplOHjV12PHkWYnAsmMvm2Lgx+gA4XW?=
- =?us-ascii?Q?eGM6aKnMYQnmDMaeMyVmrRGqh4OawTfYTueMlcn7Yzr0es0vGBoSNQHS7VsP?=
- =?us-ascii?Q?hc2lxggkgq06Z59utSVw0z4epooEb9mnobom6M/yztnMCBrGEUt4kksCPdIV?=
- =?us-ascii?Q?eoonyze48aPsdZlYuDxVplQrWLB19iEgODIwzaE2+ApSsWeVlJ5GcXFkmkw+?=
- =?us-ascii?Q?a0eL52cuIYTeXqlFjcKuZ3F9aRBciN7lnqKq4tiLxrMu2Ed251roROBHTnGS?=
- =?us-ascii?Q?gPhnHGvKRtS6NaJJkv5gRwGRn8Ie0ngBbNpbyhg4Ve/WNqqyZ77QXeR8Yp0K?=
- =?us-ascii?Q?fUcfn2wVUv7pG+w7qgSyM+JUbz8TeyvuQllbQpVX9fQahuY2+SYAW4gsjjNX?=
- =?us-ascii?Q?V3jPHyLy0vjY1cvVVPCemcJNYJ69vc2Zm3y+HV0SJR4JW1XYhwflzzgXdMlD?=
- =?us-ascii?Q?oCYhWnnHSWImXN5PQzU1/PLkZuxL/TqVQMgcoQohyDXxcw/rHplBnI+4s2At?=
- =?us-ascii?Q?wnxLuhrvji8T88cLIVuUQFZoJNNX/CMdoCXoU9wDAQ+03/RYQQ3+UCU6I4KY?=
- =?us-ascii?Q?5Y3zF4oLxUM6awTMz88TGthCv4D5a6PUipojd7x0Nu7UGbqJ92BAkzUNUIma?=
- =?us-ascii?Q?o7vDlQb03+kdQDrbdtFDuQi/5qxH55BiqxFG9iOFQNWNmq4rlYHpe3KU/23r?=
- =?us-ascii?Q?R5dFVsiDjFsyycLOYIXtkaVvRpVDn+n77sitcAgw7R1w8JDM2mnyanKEG5w8?=
- =?us-ascii?Q?Cr56ifKBMKs9hmoOuplkWEmzZMob4OXmUyRWoRR/gXu74Xj/hb/6n6IoAJHO?=
- =?us-ascii?Q?JWKsj27OYfsx2cjS6KbraIx8HDYh3ovsQ9d5yzeeouDCrpGo?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f29deb23-400f-46be-cbe2-08de8f5f9619
-X-MS-Exchange-CrossTenant-AuthSource: LV8PR12MB9620.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Mar 2026 19:56:23.9340
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: CABeFgj1DfeFa2N0cdn8V+r9HlWJPdG/SCnyO9VCdbF5qai8eGc24xm2hIAIkkHG
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR12MB6823
+Content-Transfer-Encoding: 8bit
+From: Javier Tia <floss@jetm.me>
+To: Paul Menzel <pmenzel@molgen.mpg.de>
+Date: Tue, 31 Mar 2026 14:58:59 -0600
+Subject: Re: [PATCH v5 8/8] Bluetooth: btusb: Add MT7927 ID for ASUS X870E / ProArt X870E-Creator
+Cc: Marcel Holtmann <marcel@holtmann.org>, Luiz Augusto von Dentz <luiz.dentz@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Jose Tiburcio Ribeiro Netto <jnetto@mineiro.io>, Ivan Lubnin <lubnin.ivan@gmail.com>
+In-Reply-To: 11effdbc-4eff-4430-a22f-3320f84859fb@molgen.mpg.de
+References: 11effdbc-4eff-4430-a22f-3320f84859fb@molgen.mpg.de
+Message-Id: <20260331210402.DCE821EA006B@mailuser.phl.internal>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260331_125637_445550_6FACC012 
-X-CRM114-Status: GOOD (  17.25  )
+X-CRM114-CacheID: sfid-20260331_140407_644430_F120B117 
+X-CRM114-Status: GOOD (  10.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -163,139 +112,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The fixed commit assumed that the gather would always be populated if
-an iotlb_sync was required.
+Hi Paul,
 
-arm-smmu-v3, amd, VT-d, riscv, s390, mtk all use information from the
-gather during their iotlb_sync() and this approach works for them.
+Thank you for the review.
 
-However, arm-smmu, qcom_iommu, ipmmu-vmsa, sun50i, sprd, virtio,
-apple-dart all ignore the gather during their iotlb_sync(). They
-mostly issue a full flush.
+On Mon, 31 Mar 2026 Paul Menzel wrote:
+> > +	{ USB_DEVICE(0x13d3, 0x3588), .driver_info = BTUSB_MEDIATEK |
+> > +						     BTUSB_WIDEBAND_SPEECH },
+>
+> This is not sorted. Is there a reason to place it here?
 
-Unfortunately the latter set of drivers often don't bother to add
-anything to the gather since they don't intend on using it. Since the
-core code now blocks gathers that were never filled, this caused those
-drivers to stop getting their iotlb_sync() calls and breaks them.
+The placement is a consequence of the series structure - each USB ID
+patch inserts after the previous one to keep patches independent and
+conflict-free. The existing 0x13d3 MediaTek entries in the table are
+also not strictly sorted (e.g. 3560, 3620, 3621, 3622, 3563, 3564),
+as they are grouped by chip generation rather than numerical order.
 
-Since it is impossible to tell the difference between gathers that are
-empty because there is nothing to do and gathers that are empty
-because they are not used, fill in the gathers for the missing cases.
+That said, Luiz has already applied v4 of this series to
+bluetooth-next with this ordering, so any resorting would need a
+separate follow-up patch.
 
-io-pgtable might have intended to allow the driver to choose between
-gather or immediate flush because it passed gather to
-ops->tlb_add_page(), however no driver does anything with it.
-
-mtk uses io-pgtable-arm-v7s but added the range to the gather in the
-unmap callback. Move this into the io-pgtable-arm unmap itself. That
-will fix all the armv7 using drivers (arm-smmu, qcom_iommu,
-ipmmu-vmsa).
-
-arm-smmu uses both ARM_V7S and ARM LPAE formats. The LPAE formats
-already have the gather population because SMMUv3 requires it, so it
-becomes consistent.
-
-Add a trivial gather population to io-pgtable-dart.
-
-Add trivial populations to sprd, sun50i and virtio-iommu in their
-unmap functions.
-
-Fixes: 90c5def10bea ("iommu: Do not call drivers for empty gathers")
-Reported-by: Jon Hunter <jonathanh@nvidia.com>
-Closes: https://lore.kernel.org/r/8800a38b-8515-4bbe-af15-0dae81274bf7@nvidia.com
-Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
----
- drivers/iommu/io-pgtable-arm.c  | 4 +++-
- drivers/iommu/io-pgtable-dart.c | 3 +++
- drivers/iommu/mtk_iommu.c       | 1 -
- drivers/iommu/sprd-iommu.c      | 1 +
- drivers/iommu/sun50i-iommu.c    | 1 +
- drivers/iommu/virtio-iommu.c    | 2 ++
- 6 files changed, 10 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/iommu/io-pgtable-arm.c b/drivers/iommu/io-pgtable-arm.c
-index 0208e5897c299a..8572713a42ca29 100644
---- a/drivers/iommu/io-pgtable-arm.c
-+++ b/drivers/iommu/io-pgtable-arm.c
-@@ -666,9 +666,11 @@ static size_t __arm_lpae_unmap(struct arm_lpae_io_pgtable *data,
- 		/* Clear the remaining entries */
- 		__arm_lpae_clear_pte(ptep, &iop->cfg, i);
- 
--		if (gather && !iommu_iotlb_gather_queued(gather))
-+		if (gather && !iommu_iotlb_gather_queued(gather)) {
-+			iommu_iotlb_gather_add_range(gather, iova, i * size);
- 			for (int j = 0; j < i; j++)
- 				io_pgtable_tlb_add_page(iop, gather, iova + j * size, size);
-+		}
- 
- 		return i * size;
- 	} else if (iopte_leaf(pte, lvl, iop->fmt)) {
-diff --git a/drivers/iommu/io-pgtable-dart.c b/drivers/iommu/io-pgtable-dart.c
-index cbc5d6aa2daa23..75d699dc28e7b0 100644
---- a/drivers/iommu/io-pgtable-dart.c
-+++ b/drivers/iommu/io-pgtable-dart.c
-@@ -330,6 +330,9 @@ static size_t dart_unmap_pages(struct io_pgtable_ops *ops, unsigned long iova,
- 		i++;
- 	}
- 
-+	if (i && !iommu_iotlb_gather_queued(gather))
-+		iommu_iotlb_gather_add_range(gather, iova, i * pgsize);
-+
- 	return i * pgsize;
- }
- 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 2be990c108de2b..a2f80a92f51f2c 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -828,7 +828,6 @@ static size_t mtk_iommu_unmap(struct iommu_domain *domain,
- {
- 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
- 
--	iommu_iotlb_gather_add_range(gather, iova, pgsize * pgcount);
- 	return dom->iop->unmap_pages(dom->iop, iova, pgsize, pgcount, gather);
- }
- 
-diff --git a/drivers/iommu/sprd-iommu.c b/drivers/iommu/sprd-iommu.c
-index c1a34445d244fb..893ea67d322644 100644
---- a/drivers/iommu/sprd-iommu.c
-+++ b/drivers/iommu/sprd-iommu.c
-@@ -340,6 +340,7 @@ static size_t sprd_iommu_unmap(struct iommu_domain *domain, unsigned long iova,
- 	spin_lock_irqsave(&dom->pgtlock, flags);
- 	memset(pgt_base_iova, 0, pgcount * sizeof(u32));
- 	spin_unlock_irqrestore(&dom->pgtlock, flags);
-+	iommu_iotlb_gather_add_range(iotlb_gather, iova, size);
- 
- 	return size;
- }
-diff --git a/drivers/iommu/sun50i-iommu.c b/drivers/iommu/sun50i-iommu.c
-index be3f1ce696ba29..b9aa4bbc82acad 100644
---- a/drivers/iommu/sun50i-iommu.c
-+++ b/drivers/iommu/sun50i-iommu.c
-@@ -655,6 +655,7 @@ static size_t sun50i_iommu_unmap(struct iommu_domain *domain, unsigned long iova
- 
- 	memset(pte_addr, 0, sizeof(*pte_addr));
- 	sun50i_table_flush(sun50i_domain, pte_addr, 1);
-+	iommu_iotlb_gather_add_range(gather, iova, SZ_4K);
- 
- 	return SZ_4K;
- }
-diff --git a/drivers/iommu/virtio-iommu.c b/drivers/iommu/virtio-iommu.c
-index 587fc13197f122..5865b8f6c6e67a 100644
---- a/drivers/iommu/virtio-iommu.c
-+++ b/drivers/iommu/virtio-iommu.c
-@@ -897,6 +897,8 @@ static size_t viommu_unmap_pages(struct iommu_domain *domain, unsigned long iova
- 	if (unmapped < size)
- 		return 0;
- 
-+	iommu_iotlb_gather_add_range(gather, iova, unmapped);
-+
- 	/* Device already removed all mappings after detach. */
- 	if (!vdomain->nr_endpoints)
- 		return unmapped;
-
-base-commit: fcbe430399ca5c318e99bfda6df9beee90ab051c
--- 
-2.43.0
-
+Best,
+Javier
 
