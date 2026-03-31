@@ -4,105 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18A0AFF60EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2026 09:31:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 006EFFF60FB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2026 10:15:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=N4IZZidSD2WIAS3m5FuPO+zmZWOkjgPwvsnfgKOy5uk=; b=2E9TqB1wT9YsaQSIjjxn6NjC4F
-	Z+oBmTGldbMDm98vVdaiESy4H/vCWjs7tVoLS5O03wBk8ITw1w41NFcCFtGnfp1ZDxpTKgs7KN3lO
-	vxwVfkCF3rWg20zikW3x6oK9YzCWhwHlYd32WeRR94cqzl9dv8kYpNm8RJOcp60MWly7ysau0pFIJ
-	aoJEMQxd+Ngv4PFwE5sGg4CCxp38l83xLYbnTpZXSHq0YGDPKrO8hsKma++JncIwJmFz/J4UD1w8Y
-	ev/QJNJErkjb5a5gpWr7Z+jNgF4FYrAUNSwv/6cwc7xSgubfutcdy9gD59MdoTqcLEkwRhmIcOdKA
-	ee1kG4bA==;
+	bh=IwM4Dg0oPoF1Vd4vmJzcbvBl/vV3R15yI0dEAidybMw=; b=OdK/4TcjhHMbowYlpyacwVPLip
+	LNpgA3Uslhn3twfIguBC6mcBib7itUVMwMof/Xlkuduv9dLJtVVM2/sAojveDStRnM532MEbI8B4E
+	aoVYhWsP7OcHt131AUxrNhP7Mgl2fCw/SjUD5qm0Rf/CUrzCQKgki7XfkPhfKdXuWvUpDnIPcAOvd
+	EJ3LcS3gdFOPA4+dgEO7bg1Yu3+1gJQ1b+kNiV8m/DuXgWCzIRZOipugy+ldYS5LsgtbCRSjesTRt
+	mubrDhKZdV7lxUlLzdtB4HqKUsOaqS9/bkqRyNiofxxHIiQmLAg0fN2XPX2EmQftdzWKkG8RVSvw2
+	QJC7dZSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7VRD-0000000ChAI-0zTN;
-	Tue, 31 Mar 2026 09:31:07 +0000
-Received: from mail-yx1-xb131.google.com ([2607:f8b0:4864:20::b131])
+	id 1w7W7y-0000000ClPb-1e8o;
+	Tue, 31 Mar 2026 10:15:18 +0000
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7VRA-0000000Ch9c-08FS
+	id 1w7W7w-0000000ClOv-039h
 	for linux-mediatek@lists.infradead.org;
-	Tue, 31 Mar 2026 09:31:06 +0000
-Received: by mail-yx1-xb131.google.com with SMTP id 956f58d0204a3-65003f40a22so6716954d50.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 31 Mar 2026 02:31:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1774949462; cv=none;
+	Tue, 31 Mar 2026 10:15:17 +0000
+Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-5a2853b1f8cso5450535e87.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 31 Mar 2026 03:15:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1774952113; cv=none;
         d=google.com; s=arc-20240605;
-        b=QcrTX4uelo0OULpG98Jrayq7q5+fycJi6xz3/+HpsMeldKAHnyYss2VZ9ptCwX2rBg
-         XPuYJfoDmn9eJovE4PruKPZlSNRnzGcf2pN/noux2SLlttrSMWpAAXSnvdNQ1nKo6gDZ
-         NwQF543XuHhDW5LxjLvT/Vu36FSKFu1wLOAm//1oc6XizwnVERX2ZpbV88EUWhBUNs79
-         VbA6BuT8KTT6ILhpuvfDm+cWz9dQf4C63Rhin6A2om0Wk7NbNcyVtuMu6cuGgYMqDq+z
-         W+qbhBFFahqEOwE80di9W9IU+d0m5jNlIITZ3fN/a44LAnQeEMZ+zgs0/t6T9gMT3uES
-         NIYA==
+        b=U97R6w0gzsSP1flQgzpujtJKFlEiTkQIFTO7WTk/mdFYobHwKjRyaldS/xrS3gYJEB
+         TiHK2B0DYzT+muwH0BsEnPnI7ECuUvIdPmBV+bF8zDALWPAyW3VasQuv4Cb1yzVTDcYh
+         2rBN9scrJGh/69ep6dO7vI83OtxxS3XYs9j3UhbUNr++HkxBv1WnYNSX6ukp1BBtD8Th
+         z4+3hENYiEZjhncpwQgAk2nUbNcJt6P8ih6X/lKvWLRzSPoVvs1HyUhnRG9C7Ix756Yu
+         0M16e1YYU6KlD2szEExn6QHET+aAxl8dOTD/DADP5OCkwhboZGE24jnwSvAvUJNqnnC3
+         B+2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=N4IZZidSD2WIAS3m5FuPO+zmZWOkjgPwvsnfgKOy5uk=;
-        fh=6SpXxLfe+PTiPSaoSaPz/qBBQBbPuTtlBJMzIjRwgos=;
-        b=V4V+f8y3pDbky7X845GbdSIrF8QAb3Ri1JCiqVXkqUy+KyoFy7v1SrQfvhgk6fApot
-         9GiTkeo23Zi7oOLN/U9q6T8ha7w5mBIfkFKwkR/dTiTAh3wmw7KJ7rhZUxjf4Y72/1go
-         RcSBsyQNGYf2FoCtC/vYwTSm/wBAl1OUsl+5wNvpKSGeuwlaQnX8+twSiHat+C3uK3dq
-         ySYNkLlQd98lPJd8cGE06i95UC5OftAMdrCwIhVYlCryOJOdg90eWj9PW7UL25E9c4Ey
-         D2OcJkcw67q7yLUmp+0w3KjHs398+Wsfjqp3wQbiU5LQp613DAf8FFrgTG4MHV+to2Bj
-         E5YQ==;
+        bh=IwM4Dg0oPoF1Vd4vmJzcbvBl/vV3R15yI0dEAidybMw=;
+        fh=EQ5UEnx6QyeXfGKUHwhFsPqXI6d7uaWnUBOpqhqbf2U=;
+        b=VnhE1PHSMg/DMlPOfSQEY8eq6A7qRXEMLe5OQ8nxbM3X6Rst/MH8AmHNgLfuAeHPaE
+         eoeiX+B2uTkmKNfN3GSxGQEetqMj4qnsTcYEksI98EFs3YRk+UzzBnZRHWhg0flC83O1
+         7P5NgAPOfr672MBUBnOchqXTDjJorGuZOvGOFKbY+OaMZgF2bp+3Y/z69NDFzLicXJ5w
+         B2rlJ/r/0S59cwSi0cNyY0bu8SqEJ0kxqr02CXcL/NYABsol1qfVeYzbTLAFT7HoXUCr
+         KZZ967AqELwmZaqX68jDE2ZkLVHy3hQUnr4s767xkyKWZ2JkWg73liyzrnzZnQ+TILDN
+         SfHg==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1774949462; x=1775554262; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1774952113; x=1775556913; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=N4IZZidSD2WIAS3m5FuPO+zmZWOkjgPwvsnfgKOy5uk=;
-        b=M4z+bHKcyGye173NvWAbUzpGvGSarg1xqxPJ+582hSZqblnRbt8aHvHat0MWA1SM2T
-         LmkeQcLUtWHUJtjGbqHZYn+sunHhScmq46oCHg2BDAI/X8F4cvS76gjUBbPdcJC/+5r7
-         GQlYyeTpoBhygaJzYQ7IZTC15xsZcerUdcIMoBh/Xr7OWqBR3lcidpXaw9rQvtx2lfAH
-         6Vzf+XMeagXxh8xo8wFgfqkXNupKhMX85RtTjVa2gvdPo1TO++iZKtkdzcQIk+wx2ZGF
-         MrFBo3VdzlCRIImcBk2aInlMQ/A2TSWSusyIYN29gXPvGyVCPPAPLmugcj+BeiP+pcIr
-         k0jA==
+        bh=IwM4Dg0oPoF1Vd4vmJzcbvBl/vV3R15yI0dEAidybMw=;
+        b=NvyfrSd7fLGaHmiYyvT7KWPdfE1COYswL0cUVCDqUz2Q7WoxSxhvbj7FC+UKbgbOoX
+         ebwRZLkeXz6ZGmPjU8OD251gOLZStz+zQCEcwXWQvyoj36pRX9EY9cwKWFIdmiEqCDKs
+         T7in7msT03bvhpdxAMejotZSb93jXf99Uf/uo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1774949462; x=1775554262;
+        d=1e100.net; s=20251104; t=1774952113; x=1775556913;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=N4IZZidSD2WIAS3m5FuPO+zmZWOkjgPwvsnfgKOy5uk=;
-        b=UP1R++igXZ9yKxe8YYn3NYQ35GmURirnCL1UGimuTx2kxcWmv3RgxYEMtZYN8gGQHS
-         jaijlgpp+kjceS9zliiMvNc9LSJE5XYWilqKLK4m0M82cZudS7K8cXTjWWTqQ5kXFNn7
-         b6TrZ+/maqNhAwx7INWTNPdznY4Qmh/mW4bfFljgTJMogP8ioy9dh5IqmSfqPt25qg8N
-         tMCaSNW3IISJjG9c5ocK0a7ct4O95CviL+jKtAOpDpNOFvslcAy4fbUr/SfC5VELZs8u
-         ebFDFXHRFoakm7OPDqzxdUKvCW+gggSdvtoKz6L5k7dEtO44/CkIA/HuyMcmflD/9/RS
-         J7kQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVLZv09jQboJqc8nbxYm2TtOAnUb6mBiWXK7ghHzz+nRsNoPyRnEsYOlFsgmeVlLgNvQSDXOgqO2pvgLglOvA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxGCVorG7G/EDh9vnfHQlkX0kIOo6SG/7P9RuhYJPdfzizqf2R9
-	C1Iakx+OVRK0gVGT7crnl2jENUyOEKUPhyJSQ0h1UWg9ZPzD5RSQVHrH5RFy2LrHILdwc/MpNv1
-	F+U55Ty0zr3TWJH5AfPE1aUU32Bo+a6E=
-X-Gm-Gg: ATEYQzwjJ1PUVW/ntuKOyQL2oFnAsFumVtn+sq7W8hmtAIsz2TRKrpkc0Jx7hKYEWdm
-	j5BoonY6KNTRg3xkf4b4owpRyzl2MTMlEX5xa2ohgSg/NS/k8mCho28LjpcZfg1t1f87vnrxh9z
-	22PKlJj38KGk6AR8YQAfHLbtW85NOHwJxfLFxt9HZc6ZyjYhfQyFrJdk2zVWLT+PqYUOeiUKSNP
-	XR4PZws1xyqso28OrXHkLJ4KIhs/zyxcJ/iEBmjM4sw9xeKSHlQ5p3fxDh6ofkUGvehAMkrTzTA
-	59iKdA==
-X-Received: by 2002:a53:acd7:0:10b0:64c:a0c6:da8e with SMTP id
- 956f58d0204a3-64ff720f358mr12073996d50.29.1774949462281; Tue, 31 Mar 2026
- 02:31:02 -0700 (PDT)
+        bh=IwM4Dg0oPoF1Vd4vmJzcbvBl/vV3R15yI0dEAidybMw=;
+        b=C+zDHIp5FhNBfNM/45bG8pjiayh2Kp3Oc9HyEvlzKngbHQctc3jzdpnlINAs+FllEV
+         u1WMapMH5srhMwKL3cIuYd3qt/KXhrXAaC2AZy7k4pTCLxEaFRf4JXrVdMIpEK/Q7R6u
+         8ANwVdSj5KgEpwFFy0kv7s4NVV3RZUAueirn8GMvfRc57ifBfzTOrkgpWPhNJTiq76Ll
+         SBdcdvsQPRUpAW3ugpYT0/rQmism0HkB6rdpaWovlUQ/x2S+CISg2EAGfbOenkr/hKr2
+         7DISMHovmZxB4PDEWOAgnTA1L65vAF02M72PMagsG4DqeneUVvmLaqcM+ICLNPRHJU11
+         TpcA==
+X-Forwarded-Encrypted: i=1; AJvYcCVzK/KbpaSj8oWvWT+DwbM5Pwl2IbnizZXPBtv/Nuc3BCRBeYe9PcVlJBGuIDI3T5oiboWlH8jpHWnR4kOEUw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwHSHuzYL2ui8HeW6nh18agdlGa6bJ7+zCltsuyv3iIpkgb3JL9
+	dMAAHeB3tizP3JzIV5Ft4+n3P2BGqaCZH3pCx7hCpgV1LXNKg1sxDZO+auTpiyFCj0oFZbdZy5F
+	APzRmXhPMfDc2X0IFYhYg9AWuxLkx1SCpVXmJ72Yf
+X-Gm-Gg: ATEYQzwz/dYHXzStPI3GG+GijCwb7bXKL99i+hrVADRpD/JdAFYsRjj0RrFS+GhXELD
+	8ZwfRMTQ2O21h9VOzGJBxHfk+ZOXQeuy4NW+skLkXvQRU8fwEdwPKBIePbDiAZZPUaVUd1UChd7
+	X+E0AZFb1x4YslQ31kpgrKpb7icXvndeoxvsf/1h7vnk44BJ/fI9x/8ht1apS3sar26ptR4jcb9
+	wo2LJUyh/s5cCatiUriQgQSs4mUHZTMX0Z4SgUCJ9uizHueTZIfKSglkgcdHP94gV5KUTo7DXqw
+	+VR5GxLaW8eSj+WIm8YNsuUx5nhLyFzVTunP4Q==
+X-Received: by 2002:a05:6512:10d1:b0:5a2:a5f6:dfce with SMTP id
+ 2adb3069b0e04-5a2ab7ea285mr5687077e87.11.1774952111900; Tue, 31 Mar 2026
+ 03:15:11 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260327021534.448552-1-lucid_duck@justthetip.ca> <3f4103d9-4871-4ae8-93a7-d286fce37443@freifunk-aachen.de>
-In-Reply-To: <3f4103d9-4871-4ae8-93a7-d286fce37443@freifunk-aachen.de>
-From: Jonas Gorski <jonas.gorski@gmail.com>
-Date: Tue, 31 Mar 2026 11:30:51 +0200
-X-Gm-Features: AQROBzCjgtPgpLreH4PDh3vAfKNOaMMXa_BnpfjYnpFtP-Mj3gf6hF190Ym92R0
-Message-ID: <CAOiHx=nm+9Kna6VDyug8Lxg7NQHJYoWnZO1Mo=pvbRRAscsPtA@mail.gmail.com>
-Subject: Re: [PATCH 1/3] wifi: mt76: connac: use a helper to cache txpower_cur
-To: Felix Baumann <felix.baumann@freifunk-aachen.de>
-Cc: lucid_duck@justthetip.ca, linux-mediatek@lists.infradead.org, 
-	linux-wireless@vger.kernel.org, lorenzo.bianconi@redhat.com, 
-	morrownr@gmail.com, nbd@nbd.name, satadru@gmail.com, sean.wang@kernel.org
+References: <20260330083429.359819-1-l.scorcia@gmail.com> <20260330083429.359819-2-l.scorcia@gmail.com>
+ <20260331-flawless-bronze-lorikeet-59a6ff@quoll> <CAORyz2+1bc9Z-opoNqyUU_WFzyXZKGQmR_Ur=4UonOC=AWtQ8w@mail.gmail.com>
+In-Reply-To: <CAORyz2+1bc9Z-opoNqyUU_WFzyXZKGQmR_Ur=4UonOC=AWtQ8w@mail.gmail.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 31 Mar 2026 18:15:00 +0800
+X-Gm-Features: AQROBzCSfOwC7PpxPWsVcV8RwypXUnG7y9-g_GLDlmzGCrhYIDEBqda8qgwR7SE
+Message-ID: <CAGXv+5F2nMwftF4JvXLuJr8Oz9VSoB1f1qq9mPcMYegmJ6BP_g@mail.gmail.com>
+Subject: Re: [PATCH v4 1/9] dt-bindings: mfd: mt6397: Add MT6392 PMIC
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, linux-mediatek@lists.infradead.org, 
+	Fabien Parent <parent.f@gmail.com>, Val Packett <val@packett.cool>, 
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>, 
+	Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Linus Walleij <linusw@kernel.org>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, Gary Bisson <bisson.gary@gmail.com>, 
+	Julien Massot <julien.massot@collabora.com>, Chen Zhong <chen.zhong@mediatek.com>, 
+	linux-input@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260331_023104_105934_39FDB9DB 
-X-CRM114-Status: GOOD (  10.52  )
+X-CRM114-CacheID: sfid-20260331_031516_060079_2A55D730 
+X-CRM114-Status: GOOD (  17.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,37 +125,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Felix,
-
-On Tue, Mar 31, 2026 at 10:24=E2=80=AFAM Felix Baumann
-<felix.baumann@freifunk-aachen.de> wrote:
+On Tue, Mar 31, 2026 at 4:36=E2=80=AFPM Luca Leonardo Scorcia
+<l.scorcia@gmail.com> wrote:
 >
-> Hi Lucid Duck,
+> > > -    required:
+> > > -      - compatible
+> >
+> > Not really, this affects existing ABI and might make the child schema
+> > being applied. Basically regulators node can be anything now.
+> >
+> > This is definitely not a binding we want. The syntax for parent schema
+> > when listing only compatibles is requiring this compatible. You cannot
+> > have here whatever empty node.
 >
-> thanks a lot for your contribution. Very much appreciated :)
-> The kernel has a strict policy for contributions: real names only.
-> https://www.kernel.org/doc/html/v4.11/process/submitting-patches.html#sig=
-n-your-work-the-developer-s-certificate-of-origin
+> Hi, it felt quite strange to me too, but that's what I thought you
+> meant with your previous suggestion [1].
+> To keep the required attribute I would be happy to reintroduce the
+> compatible here, in the regulator schema and the pmic dtsi.
 >
-> May I kindly ask whether it would be okay for Sean to use your real name?
-> https://github.com/Lucid-Duck
+> Before I do that and resubmit, could you please help me understand
+> what you meant before?
 
-You should update your link, the real name policy was relaxed a while ago:
+I think the point is that compatibles for regulator sub-nodes on MFDs
+is no longer accepted.
 
-https://www.kernel.org/doc/html/latest/process/submitting-patches.html#deve=
-loper-s-certificate-of-origin-1-1
+Instead if you want to have a separate binding for the regulator part,
+you would need to reference the binding directly.
 
-"(...) then you just add a line saying: (...) using a known identity
-(sorry, no anonymous contributions.)."
+Say the binding is at bindings/regulator/mt6392.yaml, in this patch
+you would have something after the "additionalProperties: false" like:
 
-See https://github.com/torvalds/linux/commit/d4563201f33a022fc0353033d9dfeb=
-1606a88330
-for details.
+allOf:
+  - if:
+      properties:
+        "compatible":
+          contains:
+            const: mediatek,mt6392
+    then:
+      properties:
+        regulators:
+          $ref: /schemas/regulator/mt6392.yaml
+    else:
+      properties:
+        regulators:
+          required:
+            - compatible
 
-Having said that, I don't think the real name policy would have even
-applied to Tested-by / Reported-by tags. For these it really doesn't
-matter, as these are not code contributions.
+And drop the "required: - compatible" part from the common regulator
+node bits of the binding.
 
-Best regards,
-Jonas
+
+ChenYu
+
+> Thank you!
+>
+> [1] https://lists.infradead.org/pipermail/linux-mediatek/2026-March/10506=
+0.html
+> --
+> Luca Leonardo Scorcia
+> l.scorcia@gmail.com
+>
 
