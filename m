@@ -4,75 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42F601061B27
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Mar 2026 22:42:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A2161061B28
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2026 00:24:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5zAq89DFX5oBUWHG0rF8OkIz5yQMy1m9cdp9RIxyIpQ=; b=QIWHGO7LQG4qbEMDrMr/GY1dim
-	SFEha3X6QXW/zl93g0VAJ1bRotzlzS9uwc7FZWNjDCkBicsE3lBB88HA7jD5EGFOHu12zfifcFyuU
-	seDOjQB/oCeI0Swd0ZOh6jM4fyekooiCy8RzIYFC6cq/QWofMcg7ss91BtZPpVZV4IWjchFqsQuxC
-	Qn/m/1VURvIG+6zF+1DC7zt4+nQvbrjl1wMwpoepG+W4XDlfO6S+8CZITxIdlS0ZNGyHYJ1qJqgba
-	cUlWmtNbe4P7oNXx519FAtNJizQOmzGC3LcwAh8VblAKnIJVl/TCI5peXYoPXgPhNJE4AieAoh1k3
-	tD491tzg==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=x6KkVZ6avnq5JZYkKR1K26BH30WGfxU6tLWicybER9M=; b=eiCgKbbB1ZNQw31XAfBJtjVQY0
+	8g+DU0a0J5MU7ISpYDMH6cch73wRx6C0R8rbLa8XV1gbcfgfH1+C0rzzw0DvAFBSp992Q3qcjfX1L
+	jdRe1ZX0c2xBziy26cHVZQYjh92+SFTcnHXv3Flmg5HRJsL2ChzK3+O1CsJrGzvJ0bAlsH/cC3Njc
+	J4bTa34Roc+DfYI+0gLm10q1skYJ+/jTjgr3Uwx+e5auKfxCmVOwvCK2Q7MaXc8tj0J7+ADJzXwk+
+	RhS70CrHuXi6im52e07M0p5UBEMVbwOdddsNo+VUQ86exvZ3gzgnhL9SB+7O/Z3HKXUVDbix9KmsQ
+	puDJvjuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7LJU-0000000Bz4l-3T8h;
-	Mon, 30 Mar 2026 22:42:28 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1w7Mu3-0000000C3wm-2SM2;
+	Tue, 31 Mar 2026 00:24:19 +0000
+Received: from mail-dl1-x122a.google.com ([2607:f8b0:4864:20::122a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7LJR-0000000Bz3y-2uU0;
-	Mon, 30 Mar 2026 22:42:26 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 698A540809;
-	Mon, 30 Mar 2026 22:42:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 482C9C4CEF7;
-	Mon, 30 Mar 2026 22:42:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774910543;
-	bh=KEFQLZc20GWW8sgN2/76iip+g3PEt4uQ0FT8+1KvwXQ=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=dJnLxUBU5LnSUHF1d1WPIyOzKVijcgeaimKRu14Cf4v/aA1HMdZhuu5gSsYU6NALA
-	 5+cIDn0blVJBbe87OIwjOAxMUFACHt1Zm55YRn4pWl0EtUmG1ncOPgQBippmBkvcLm
-	 0DHcCIwoZd20JaJimS+0tfuAiTIcsDYD3BcFLNOeMofld5ZL+7TxgUGojmE8MNLWHX
-	 PM7/hDtUf0esLdcycLnyMtzS/yJyEKf09FszjvYvZbWCC14ngLTZvswolbRcFibFCK
-	 2409zxujVFUvq9OjpOMoT+lGs4jHEmjJgwlkqUo5NbWk+bGjvHyzey87GhqFPp096V
-	 sU+BypcC13RuA==
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Chen-Yu Tsai <wenst@chromium.org>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
-In-Reply-To: <20260326081050.1115201-1-wenst@chromium.org>
-References: <20260326081050.1115201-1-wenst@chromium.org>
-Subject: Re: [PATCH v2 0/2] regulator: mt6315: add regulator supplies
-Message-Id: <177488194606.167050.13383296010943273438.b4-ty@b4>
-Date: Mon, 30 Mar 2026 15:45:46 +0100
+	id 1w7Mu0-0000000C3w2-1U22
+	for linux-mediatek@lists.infradead.org;
+	Tue, 31 Mar 2026 00:24:18 +0000
+Received: by mail-dl1-x122a.google.com with SMTP id a92af1059eb24-1271195d2a7so2295172c88.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 30 Mar 2026 17:24:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1774916655; x=1775521455; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=x6KkVZ6avnq5JZYkKR1K26BH30WGfxU6tLWicybER9M=;
+        b=eOW7/xcDMiK33IuA3bnA7CLw8DBesx4x6LIuVCMrRnXb1vV7DUv6+bt80aJIOQ7ROr
+         RrOiGtkG1RvH8vfyXi6rNzxwXb1IJgoJFBUUG1kyfGMDa7BnfsBfUXozaoQn58FsFZ6J
+         DbZg0wv020b9QNwBEh5gnF8BNMIC3jefYXMXv/BuVTpX9ubyHNjqmv9EjPxHPZPqb/7/
+         iWrRlPmpTc7Swd5U+XDgWQqtZGWsehQb3J1OmYiVCCyNDT0vEcgQNtL5jvvJSDbDHGX6
+         gs9LreVf5ZjEStmncLjrgO4/CIv2wMvAFyO+jBpKe4iSChkzuZ9IEPvVLTGxKYMweo0j
+         tr1w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1774916655; x=1775521455;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=x6KkVZ6avnq5JZYkKR1K26BH30WGfxU6tLWicybER9M=;
+        b=sukKt+tXe0Kw2WLNERquUqjLk/3PejFhGddehm00sT5G2xryYXtwf1XSsbDS0MOaJd
+         RtKKGNt2/xfKRwy9mavjVZzdenEt8BTVO+njPllQeyX8zYfilWa62EurZrD7AVxDQRWV
+         zBgah0fl+/C2z489xPmAExvUaOXoT914BQsaZt3nFG/4xQXE0b0T2pzEjR5aLbnmF81q
+         Z1fHN6F6NPTpYLui7a5WYlyu7P5mbDRJ+ghhQ7RNjGI7MFygvCkiAwsrY2jU2O+3ai46
+         wpo70FdFrJwDd9yv6vF7skG185cMH5gn55KS1I0GEs15j8+2OX0WoesK7/wmT5ji2LQ4
+         E/ug==
+X-Forwarded-Encrypted: i=1; AJvYcCW16TUOBpdeeyqByrnSMKJ+u3ohGZSQPevTmccmdxg9BSa0znbr2sBTVgi2NT2qoJHTJhy1UdRsFvyvUQ5DnA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxPWD4qvVK+7Wz7sdGNH5VFnu6njpxpUaSe5svcoPB8iiAekFTV
+	aO+FW6d5hIXVv9SyXyS0uwq42r1T8BSEmQ350+6GFLwdduIoybocOc94
+X-Gm-Gg: ATEYQzyky7NcI4XpAy1BEBCGuS11wKukMOr1k+sAwCz7IHFt7FRceZHI6xstaCuxz2o
+	OfhjWAU1p9naZEFgAAz5eSN01JrfR8A2Hlp0OMBxxt5tdCi3736RXi3SdMj9i4PAEHNMCrlGMda
+	Nh8JuNZ56cF29vHKId+SJ4pYeiaBOXROQHydbSxF4n2nIKfovFtq7VD4mGsxfSAN07ICdrBHJjh
+	TtrLMdRnGrG6RSHkKdqvhKzMWSaJWhb8nHOFtVlbbmof+/0znAAfhiUJKw/ibo0BWRVYrbWTvp4
+	3PVhoEkkQrIINwYRR8IiysIdv7WiDrfVghZIOAYpzj2H5IKhVWuA7o2SPPqAhB4l1hCy56C4POX
+	+GeYu1I4Cn9QPRDLeG2JuX8GiBVeywy2h21gzqep1C6iPaaJAJxeBQoE7cEebMWY5EoMvPNz1uq
+	ki9r6rojklgMp13NLRm+fPYhY9RmhkNuHeumbYopfkIblaLvbKp3hPL8w=
+X-Received: by 2002:a05:7022:2221:b0:128:d2a5:709c with SMTP id a92af1059eb24-12ab28f3331mr8407522c88.33.1774916655278;
+        Mon, 30 Mar 2026 17:24:15 -0700 (PDT)
+Received: from ryzen ([2601:644:8000:5b5d::8bd])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-12ab983f9f3sm13195709c88.10.2026.03.30.17.24.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 30 Mar 2026 17:24:14 -0700 (PDT)
+From: Rosen Penev <rosenp@gmail.com>
+To: dri-devel@lists.freedesktop.org
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mediatek@lists.infradead.org (moderated list:DRM DRIVERS FOR MEDIATEK),
+	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH] drm/mediatek: simplify mtk_crtc allocation
+Date: Mon, 30 Mar 2026 17:23:57 -0700
+Message-ID: <20260331002357.7995-1-rosenp@gmail.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.16-dev-3ac6c
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1511; i=broonie@kernel.org;
- h=from:subject:message-id; bh=KEFQLZc20GWW8sgN2/76iip+g3PEt4uQ0FT8+1KvwXQ=;
- b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBpyvxMA3ShhadjMJFm+yMuBgo1epnMA7LXIqnTb
- TaKpUtyeuKJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCacr8TAAKCRAk1otyXVSH
- 0I5PB/9S8zgjJrYgaMUtuHun1Hsk1sZ5p3dpGcZqX8Xo24uvgAYM+mudCYj3OzvEhU4hDQXF9In
- HWmR+w098C190BNhR+dtPdBNP/SlSyLFxSuqaC3jZY9jlryM7d8uedsO14MGwnXhOZddk8Yi53d
- 7J7bXsTk4icZTaA6ABms4xsL4Y8OKSS5HqJ1WzLxR9J9AghNHDfLDNLlaN9rnDfbtnT5p4q8GGG
- Gs+6BZMoJbWoK0/RVf5n7lBRQHIfwlUTEv5HxNh4nMuL/MwWGJnzsAittPyQbcY8mYBAaaQsKHd
- msOE9yKHKNFSI6SD9ZU/SO7tsyZvN82gzHm2YzTogAv8R0ES
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260330_154225_766062_D6B5E2EF 
-X-CRM114-Status: GOOD (  12.47  )
+X-CRM114-CacheID: sfid-20260330_172416_949480_7678E0EF 
+X-CRM114-Status: GOOD (  10.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,47 +102,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 26 Mar 2026 16:10:47 +0800, Chen-Yu Tsai wrote:
-> regulator: mt6315: add regulator supplies
-> 
-> Hi,
-> 
-> This is v2 of the "Add MT6315 regulator supplies" series.
-> 
-> Changes since v1:
-> - Link to v1: https://lore.kernel.org/all/20260324053030.4077453-1-wenst@chromium.org/
-> - Move supplies to top level node, at the same level as the compatible
-> 
-> [...]
+Use a flexible array member to combine allocations.
 
-Applied to
+Signed-off-by: Rosen Penev <rosenp@gmail.com>
+---
+ drivers/gpu/drm/mediatek/mtk_crtc.c | 13 ++++---------
+ 1 file changed, 4 insertions(+), 9 deletions(-)
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-7.1
-
-Thanks!
-
-[1/2] regulator: dt-bindings: mt6315: Add regulator supplies
-      https://git.kernel.org/broonie/regulator/c/d15d0f1a27b2
-[2/2] regulator: mt6315: Add regulator supplies
-      https://git.kernel.org/broonie/regulator/c/292d64fb98a2
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.c b/drivers/gpu/drm/mediatek/mtk_crtc.c
+index fcb16f3f7b23..914841d2396e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_crtc.c
+@@ -62,7 +62,6 @@ struct mtk_crtc {
+ 	struct device			*dma_dev;
+ 	struct mtk_mutex		*mutex;
+ 	unsigned int			ddp_comp_nr;
+-	struct mtk_ddp_comp		**ddp_comp;
+ 	unsigned int			num_conn_routes;
+ 	const struct mtk_drm_route	*conn_routes;
+ 
+@@ -71,6 +70,8 @@ struct mtk_crtc {
+ 	bool				config_updating;
+ 	/* lock for config_updating to cmd buffer */
+ 	spinlock_t			config_lock;
++
++	struct mtk_ddp_comp		*ddp_comp[];
+ };
+ 
+ struct mtk_crtc_state {
+@@ -1048,18 +1049,12 @@ int mtk_crtc_create(struct drm_device *drm_dev, const unsigned int *path,
+ 		}
+ 	}
+ 
+-	mtk_crtc = devm_kzalloc(dev, sizeof(*mtk_crtc), GFP_KERNEL);
++	mtk_crtc = devm_kzalloc(dev, struct_size(mtk_crtc, ddp_comp, path_len + (conn_routes ? 1 : 0)), GFP_KERNEL);
+ 	if (!mtk_crtc)
+ 		return -ENOMEM;
+ 
+-	mtk_crtc->mmsys_dev = priv->mmsys_dev;
+ 	mtk_crtc->ddp_comp_nr = path_len;
+-	mtk_crtc->ddp_comp = devm_kcalloc(dev,
+-					  mtk_crtc->ddp_comp_nr + (conn_routes ? 1 : 0),
+-					  sizeof(*mtk_crtc->ddp_comp),
+-					  GFP_KERNEL);
+-	if (!mtk_crtc->ddp_comp)
+-		return -ENOMEM;
++	mtk_crtc->mmsys_dev = priv->mmsys_dev;
+ 
+ 	mtk_crtc->mutex = mtk_mutex_get(priv->mutex_dev);
+ 	if (IS_ERR(mtk_crtc->mutex)) {
+-- 
+2.53.0
 
 
