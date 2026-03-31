@@ -4,61 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3437D10F92E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2026 16:50:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BB6810F92E3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2026 16:50:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
 	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NW9FT3heafudYayYdJx184A6WBt3nh1QG+SPM9QBDME=; b=anIHkNaZTg/brg5UEcyZPk2NE9
-	0eQTHrqa0DLc7JZzlDP4Ap19G0f6tcPXfpx+XLcFfLhpZSG+2f/VqjsF8eNkeWpZxsB5VuBv94Svh
-	1p5Cnx5vulQ5PedKvXOfrzvCXS9LoMi1ULuuCVkiMqtTKcaPc3jLXLx1cVyFo3D5uTrBalqKtw1gi
-	/GNL94Tw5hACrn6Mo5pBcGlgqkaG6+fzZJ1AXP/Sp66g2w+XOgrzR2SAo9qlo/U1wptCwjWd4K9Lo
-	sh54BjHJf6pUsEuDW6msAGlHEdftnRvb96gx5q4dkGBBQaHiL2GZYDkaBfJsFYuB3e78F/23NVlcK
-	yEVPC0dg==;
+	bh=mCEk1mzGPwHXI9US3EUUquhGmHolsu3eK9XGd/s4wvA=; b=uU4iVgKPA26/XM2rraBPgi8gKK
+	2DRBpLtRE0PUt0fpnaAmdaKPumqSt2fY4OKUnmELZdIeDuNeozvjVM5Ss8n9ZRcSOvPnTU7xRvZVU
+	rHiFEkBKBc+treK154/FD9+cFa/oWsOohyoTDJOHplQ92zCFENU/6wxTAg+H8tCxzxvTvj+Zn60vP
+	9RmVA2Vuj35lChbqV4149+5qcJlGwxxm2slKPsu/UXWvbwxOBtXzry/Am1H0MwtEmwY3NawIehgmR
+	wzpkh9eWfSLdHPiC8WdCM5tcJqh34lPuH7gustRume2z8lc0CC8Q6Dgglfw7WL+VrtuwS5/3s0vh5
+	DneYAVxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7cIL-0000000DHX7-0pmo;
-	Tue, 31 Mar 2026 16:50:25 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1w7cIT-0000000DHaK-14kb;
+	Tue, 31 Mar 2026 16:50:33 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7cIJ-0000000DHWe-3rJ0;
-	Tue, 31 Mar 2026 16:50:23 +0000
+	id 1w7cIL-0000000DHWn-0ZR3;
+	Tue, 31 Mar 2026 16:50:26 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1B0A360128;
-	Tue, 31 Mar 2026 16:50:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BDB88C19423;
-	Tue, 31 Mar 2026 16:50:22 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 29F5E444C7;
+	Tue, 31 Mar 2026 16:50:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0750EC19423;
+	Tue, 31 Mar 2026 16:50:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774975822;
-	bh=cS9OfKUzzwFU9V+lMVEZIVa2iy6qI0oKjaGyR/ydJ/g=;
+	s=k20201202; t=1774975824;
+	bh=yPbT/W313OSJoZ8O0RXZ7diQTSAMILjsVYypreYNEew=;
 	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=i49IYVfpquBKPlD/K8vcg7I3/8rh/QqLRWWaBn6sUxEzdH9POUSooVHmdgcDNerbd
-	 Wf3UMa/aABRlu7Q1334hRoAS+b406mQuIYtUvnyDdpIMwihOumNpcYIGu2AIjqFZdp
-	 LoaNnowMTvq+lfAK15iQ1pwncQI8goso7JWHX9kMRjdrQDXUaM9raQGWgKttGhScOG
-	 QLSTT8V0lyfwQAMSRop9Rn2hVnNVQV/uw14W2XxXYnnxCG3+mRuB5H91rmWFXSWUiz
-	 H/We8vBkaiHL+mon+yopcN0Yz93K8k/gZWzh8bh+f3rUeBGmWb5YC6EPYYZA8A4AIa
-	 lJJBepPCpIiKA==
+	b=VouOZYbE5mttvfHFRwlMgQzatPf1c619iwkQnBoyE8tBQw6Gk+aQ4jMdrOqblMtiW
+	 QZdHJ/pw73UBWAwwnECkyX3Vnr+yB+Ue4ND4A4JJqGxt5I8iBVmNa+N26MURipssNG
+	 w4k6bmD/pbthSrbTtao4W2Zu6PYFPdzxvTpjlaieEj2c3L3Lj4i9GKI5p0/5T7nhnH
+	 ts5BcrRKSQjWItX9d69IvvRG/XzFa8OZdteH0cC5nBLMRMz9u1zxbJqDZt3e9brxTK
+	 8HBH6qflQwpUKIkoQPawePE0mH0tpgoaj0GgY/6Xww7pTQf4i8fkxN3L+RggybC+e/
+	 QAdQN8cQSbEGQ==
 Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 7CECF3809A05;
-	Tue, 31 Mar 2026 16:50:07 +0000 (UTC)
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id B9E4B3809A05;
+	Tue, 31 Mar 2026 16:50:08 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v3 1/8] Bluetooth: btmtk: Add MT6639 (MT7927) Bluetooth
- support
+Subject: Re: [PATCH v4 0/8] Bluetooth: Add MediaTek MT7927 (MT6639) support
 From: patchwork-bot+bluetooth@kernel.org
-Message-Id: <177497580604.2805862.8417774878741242767.git-patchwork-notify@kernel.org>
-Date: Tue, 31 Mar 2026 16:50:06 +0000
-References: <20260326-mt7927-bt-support-v3-1-fa7ebd424323@jetm.me>
-In-Reply-To: <20260326-mt7927-bt-support-v3-1-fa7ebd424323@jetm.me>
+Message-Id: <177497580753.2805862.5559231119574123982.git-patchwork-notify@kernel.org>
+Date: Tue, 31 Mar 2026 16:50:07 +0000
+References: <20260330-mt7927-bt-support-v4-0-cecc025e7062@jetm.me>
+In-Reply-To: <20260330-mt7927-bt-support-v4-0-cecc025e7062@jetm.me>
 To: Javier Tia <floss@jetm.me>
 Cc: marcel@holtmann.org, luiz.dentz@gmail.com, matthias.bgg@gmail.com,
  angelogioacchino.delregno@collabora.com, linux-bluetooth@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, xelnaga@gmail.com
+ linux-mediatek@lists.infradead.org, xelnaga@gmail.com, jnetto@mineiro.io,
+ melinko2003@gmail.com, chapuisdario4@gmail.com, 3193631@gmail.com,
+ nitin.reddy88@gmail.com, tibo@humeurlibre.fr, lubnin.ivan@gmail.com
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260331_095025_204495_DC900ACB 
+X-CRM114-Status: UNSURE (   8.16  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,32 +83,33 @@ Hello:
 This series was applied to bluetooth/bluetooth-next.git (master)
 by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-On Thu, 26 Mar 2026 16:13:04 -0600 you wrote:
-> The MediaTek MT7927 (Filogic 380) combo WiFi 7 + BT 5.4 module uses
-> hardware variant 0x6639 for its Bluetooth subsystem. Without this patch,
-> the chip fails with "Unsupported hardware variant (00006639)" or hangs
-> during firmware download.
+On Mon, 30 Mar 2026 14:39:22 -0600 you wrote:
+> combo WiFi 7 + BT 5.4 module. The BT subsystem uses hardware variant
+> 0x6639 and connects via USB.
 > 
-> Three changes are needed to support MT6639:
+> The MT7927 is shipping in motherboards and PCIe add-in cards from ASUS,
+> Gigabyte, Lenovo, MSI, and TP-Link since mid-2024. Without these patches,
+> users see "Unsupported hardware variant (00006639)" or the BT subsystem
+> hangs during firmware download.
 > 
 > [...]
 
 Here is the summary with links:
-  - [v3,1/8] Bluetooth: btmtk: Add MT6639 (MT7927) Bluetooth support
-    (no matching commit)
-  - [v3,2/8] Bluetooth: btmtk: fix ISO interface setup for single alt setting
+  - [v4,1/8] Bluetooth: btmtk: Add MT6639 (MT7927) Bluetooth support
+    https://git.kernel.org/bluetooth/bluetooth-next/c/4cdd001ff03f
+  - [v4,2/8] Bluetooth: btmtk: fix ISO interface setup for single alt setting
     https://git.kernel.org/bluetooth/bluetooth-next/c/fe9e35d0b3f1
-  - [v3,3/8] Bluetooth: btusb: Add MT7927 ID for ASUS ROG Crosshair X870E Hero
+  - [v4,3/8] Bluetooth: btusb: Add MT7927 ID for ASUS ROG Crosshair X870E Hero
     https://git.kernel.org/bluetooth/bluetooth-next/c/af6731663d8f
-  - [v3,4/8] Bluetooth: btusb: Add MT7927 ID for Lenovo Legion Pro 7 16ARX9
+  - [v4,4/8] Bluetooth: btusb: Add MT7927 ID for Lenovo Legion Pro 7 16ARX9
     https://git.kernel.org/bluetooth/bluetooth-next/c/70d2954d3051
-  - [v3,5/8] Bluetooth: btusb: Add MT7927 ID for Gigabyte Z790 AORUS MASTER X
+  - [v4,5/8] Bluetooth: btusb: Add MT7927 ID for Gigabyte Z790 AORUS MASTER X
     https://git.kernel.org/bluetooth/bluetooth-next/c/e4fb2113d5e2
-  - [v3,6/8] Bluetooth: btusb: Add MT7927 ID for MSI X870E Ace Max
+  - [v4,6/8] Bluetooth: btusb: Add MT7927 ID for MSI X870E Ace Max
     https://git.kernel.org/bluetooth/bluetooth-next/c/4be0c8800708
-  - [v3,7/8] Bluetooth: btusb: Add MT7927 ID for TP-Link Archer TBE550E
+  - [v4,7/8] Bluetooth: btusb: Add MT7927 ID for TP-Link Archer TBE550E
     https://git.kernel.org/bluetooth/bluetooth-next/c/26308f935d23
-  - [v3,8/8] Bluetooth: btusb: Add MT7927 ID for ASUS X870E / ProArt X870E-Creator
+  - [v4,8/8] Bluetooth: btusb: Add MT7927 ID for ASUS X870E / ProArt X870E-Creator
     https://git.kernel.org/bluetooth/bluetooth-next/c/b65fdb465d54
 
 You are awesome, thank you!
