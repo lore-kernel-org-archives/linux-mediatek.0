@@ -4,64 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4FB31061B2B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2026 01:10:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3211FF60D8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2026 06:58:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zqxsAEm3zB3tx9HPvoc1xGSBviNoU0UH8MfgLojT/GU=; b=H/86mpcJDU5KdBxP5TZAsd607L
-	UwJdxHH3MVpLqnsIwbIvUhJamguXzWIzk59G5fvNek5/GTS7Ua9zGRN/3dmbSl601t/bVLpZ+elXW
-	i/xsqUbW1I4TcqI5NFQ4r+kpbHFU1TpsKwUXz/JQfif/jcP4qcBNQqHTvd0PR7HJveCHbBUCThmbr
-	3c0Vr4FlXWXQ4UrlANEfx0BllLVH2ae72bNp6Q3bFKKarb/TKYJtDIiGPCJgeoU4Fb3hM2bAx9P8n
-	/4gdOIVRihKxB/V57sSSihihWLRHorPPBwgjFxw7aPG1g7HRcrdn1o06nijJLXjUrxvszgCebV5f0
-	vEsJ4Xew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nqMPxCyJPgWl55lvKwJiskd5mysgy8bz3FdQbDuTwEE=; b=K37Rf9w6t4OACKkMGhVaHT9M0f
+	QCdbz0GifeAo8bumJw/l+9XrxdK0dx5+KWqs74gu2bfsgcxo+T/5kprUzF9v/e1JxZP0UCXVDAXdn
+	r7PVR3CT+3hnkRDTIxpPx6YaN4XvzpdP8/QZNAbluG7UyCnAB2KUwn/1Ez/L7yaquUuS6auW9+Jwg
+	cmNEAMy3rMVITxS/RVxODrhoBfTZYNdi0lYel2xae4SbydzpcAGltRg93spAvvdKYPdee4ZGEFLDT
+	SOJIaiTQYZw7TGELTgktcBQ9j8jRmv9OyhrPyyAwCBoYF8+9hWMzxm6OazMycUQQLoTYpfYEPYzVE
+	CQq8zDCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7Nck-0000000C78N-0gYR;
-	Tue, 31 Mar 2026 01:10:30 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1w7T3I-0000000CPxN-0hS4;
+	Tue, 31 Mar 2026 06:58:16 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7Nch-0000000C77t-2brQ;
-	Tue, 31 Mar 2026 01:10:28 +0000
+	id 1w7T3G-0000000CPwM-02A8;
+	Tue, 31 Mar 2026 06:58:14 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 08AE141879;
-	Tue, 31 Mar 2026 01:10:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DBA05C4CEF7;
-	Tue, 31 Mar 2026 01:10:26 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 52A49600CB;
+	Tue, 31 Mar 2026 06:58:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6A5D3C19423;
+	Tue, 31 Mar 2026 06:58:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774919426;
-	bh=rFMcBYeopbsen4UF2EndeJk0OSUhO9PRv3WemTAI2lg=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=RQkykAGaQ8Hda8DjWN61ks9t9LmuKde1eVeVeGWbUzz0oHlCGDlH4H3z3Vl/ad9cJ
-	 c+PKO00Z7ZWqGD4UAjwUBlN3p0jdqz+K26VG4Mqa8MTq5VTlaU47qTruPNWjKzJe0q
-	 LxV+1phkBqKa9yc2Na470eyflxZQxt7Etu8pMcYTTXO2TNxJKWQp5/LQFLVS7TToxI
-	 rpO6+BM5ruLjphPUFO1GKDsAYzOJhOfXrAQHNSpac6QZLYyNS4LcWObYoHDMC2+dYH
-	 1L0gAcAfK7Ay3gm6ir5LHPTq+2KDzWUE5Ko+BvsDF4EXCnqDGqqhvOMN+ih+BZ4+tX
-	 rba94M3WRROCg==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 0CF32392FF97;
-	Tue, 31 Mar 2026 01:10:12 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1774940293;
+	bh=vZRhJfLIHtRNxv9Ku8UnrdHkQj63umsc0nroN0CiSVE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=DFnvt4VrrZmcm2PstmRZXNm45WHCeH7OgYOg3Q0leLVTj/SIpXSxL0W19zsdk9X8I
+	 he4gRaNRwP4dhmSnFU2zFfosEJvPlIity6K0lyY8vWbJkyTStL9vuGEDFiilu1DkOE
+	 iDlLaqXATsDH3qkySF1HT82ImNt/ejvAk5Z0ddAKjmCGX8TjuVcqj3TUie8zY8xlhg
+	 lU5lIqgPNe/DJCay49+04YOUCBZxnvyqMBKCR7ebe6ZDGmB+r2Yf2q1RydHf4vWBfV
+	 MSl30gU6me9sgK0iR21Qx6CsKY8/jgP6mEaAhbtiWQxcWhYntwyN9YMPeYkV41rIZ1
+	 QnDOh70oPK00A==
+Date: Tue, 31 Mar 2026 08:58:10 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Jianhua Lin <jianhua.lin@mediatek.com>
+Cc: nicolas@ndufresne.ca, mchehab@kernel.org, robh@kernel.org, 
+	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, Project_Global_Chrome_Upstream_Group@mediatek.com, 
+	sirius.wang@mediatek.com, vince-wl.liu@mediatek.com, jh.hsu@mediatek.com
+Subject: Re: [PATCH v5 1/3] dt-bindings: media: mediatek-jpeg-decoder: add
+ MT8189 compatible string
+Message-ID: <20260331-thankful-crouching-camel-cfabce@quoll>
+References: <20260331005458.24010-1-jianhua.lin@mediatek.com>
+ <20260331005458.24010-2-jianhua.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next v2] net: airoha: Delay offloading until all
- net_devices are fully registered
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <177491941075.2043537.8277292762892112886.git-patchwork-notify@kernel.org>
-Date: Tue, 31 Mar 2026 01:10:10 +0000
-References: <20260329-airoha-regiser-race-fix-v2-1-f4ebb139277b@kernel.org>
-In-Reply-To: <20260329-airoha-regiser-race-fix-v2-1-f4ebb139277b@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260330_181027_681898_CC576166 
-X-CRM114-Status: UNSURE (   9.55  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20260331005458.24010-2-jianhua.lin@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,33 +73,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This patch was applied to netdev/net.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
-
-On Sun, 29 Mar 2026 12:32:27 +0200 you wrote:
-> Netfilter flowtable can theoretically try to offload flower rules as soon
-> as a net_device is registered while all the other ones are not
-> registered or initialized, triggering a possible NULL pointer dereferencing
-> of qdma pointer in airoha_ppe_set_cpu_port routine. Moreover, if
-> register_netdev() fails for a particular net_device, there is a small
-> race if Netfilter tries to offload flowtable rules before all the
-> net_devices are properly unregistered in airoha_probe() error patch,
-> triggering a NULL pointer dereferencing in airoha_ppe_set_cpu_port
-> routine. In order to avoid any possible race, delay offloading until
-> all net_devices are registered in the networking subsystem.
+On Tue, Mar 31, 2026 at 08:54:56AM +0800, Jianhua Lin wrote:
+> Add the compatible string for the JPEG decoder block found in the
+> MediaTek MT8189 SoC.
 > 
-> [...]
+> Compared to previous generation ICs, the MT8189 JPEG decoder requires
+> 34-bit IOVA address space support and only needs a single clock
+> ("jpgdec") instead of two. Therefore, it is added as a standalone
+> compatible string without falling back to older SoCs.
+> 
+> Update the binding schema to include the new compatible string and add
+> an `allOf` block with conditional checks. This enforces the single clock
+> requirement for MT8189 while preserving the two-clock requirement
+> ("jpgdec-smi", "jpgdec") for older SoCs.
+> 
+> Suggested-by: Rob Herring <robh@kernel.org>
+> Signed-off-by: Jianhua Lin <jianhua.lin@mediatek.com>
+> ---
+>  .../bindings/media/mediatek-jpeg-decoder.yaml | 44 +++++++++++++++----
+>  1 file changed, 36 insertions(+), 8 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
+> index a4aacd3eb189..601fe05b73e7 100644
+> --- a/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
+> +++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
+> @@ -15,10 +15,10 @@ description: |-
+>  properties:
+>    compatible:
+>      oneOf:
+> -      - items:
+> -          - enum:
+> -              - mediatek,mt8173-jpgdec
+> -              - mediatek,mt2701-jpgdec
+> +      - enum:
+> +          - mediatek,mt2701-jpgdec
+> +          - mediatek,mt8173-jpgdec
+> +          - mediatek,mt8189-jpgdec
+>        - items:
+>            - enum:
+>                - mediatek,mt7623-jpgdec
+> @@ -32,13 +32,22 @@ properties:
+>      maxItems: 1
+>  
+>    clocks:
+> +    minItems: 1
+>      maxItems: 2
+> -    minItems: 2
+>  
+>    clock-names:
+> -    items:
+> -      - const: jpgdec-smi
+> -      - const: jpgdec
+> +    minItems: 1
+> +    maxItems: 2
 
-Here is the summary with links:
-  - [net-next,v2] net: airoha: Delay offloading until all net_devices are fully registered
-    https://git.kernel.org/netdev/net/c/cedc1bf327de
+Why jpgdec-smi alone is now valid? Drop these two.
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+> +    oneOf:
+> +      - items:
+> +          - const: jpgdec
+> +      - items:
+> +          - const: jpgdec-smi
+> +          - const: jpgdec
+> +
+> +  mediatek,larb:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description: a phandle to the smi_larb node.
 
+Best regards,
+Krzysztof
 
 
