@@ -4,78 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A77810FCAC0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Apr 2026 18:23:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFA69D3517F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Apr 2026 19:06:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q3xYD9hif0mmKJi5KnGGefNn1V5fwiod+4YYIl9xrIk=; b=StSPmnr5MyFFhoh3HaDm+jT3Tq
-	kdZD9RgE1KONCgoOhEg16R/d+Atwliq1hq+Ts4T5slf8Ekos4J+f/DblMq1u4k0Me7+Vo7y8mm2KR
-	4TzwxoS/cmD1h9sJ6l/uVCfPMyf4IvLR6vEbL55DpxLbyPcIfkSIgx7Be8YG7fWdCq9szXKuaMNFU
-	ul3DwW3vLcxdzLZoGGA0N5gbCDUS84xSqgWzpsJheAm7Ranh2fOqCBNJAUKRW+cBq8uVF0LTfJdD9
-	7kZSv4Gt63LbDF8ZIHIUFxR3lzcUimfwOTm0rlo1rcFR70KyrBHJTWylQInFB190xbHXH7ztRq4fm
-	Rk1IMEmg==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=RhMDaJgdHrBwkyZkpBFRF9FScxuvntJewf4BaEmC6l8=; b=dML+rWFzYhpjzagP9XQr637S7C
+	WVuZrkECCf4MqgDJtfrkk+ODOvTJH+xNJGFm1T0ah856gyrQC9y1iFgxMkKudViX+sd6wIft0oXMB
+	60KpidOldDe3URTzGvz/W4vSRn5bDsSttm6tz+3jTSH4Yyo4OzLjYxFi1e+aYnDeWSTxyKxSz4sMS
+	t7e9KM5JDsWDySUD9w0SW1vlpd7oc5r9+25EbUOKpOj+n6qJxxdJtm118ZSxvek/QV5m0mBlkZKm4
+	ylsA7v0HB2lJSXUyoTf/nD/DFWxNX76tkKs1TD9Cs7dnt6eqCosYG8AVDnIpSq7evXrCWOKyOjUz2
+	dqcTQFog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w80EC-0000000FxJD-0LUU;
-	Wed, 01 Apr 2026 18:23:44 +0000
-Received: from mail-oa1-f49.google.com ([209.85.160.49])
+	id 1w80tt-0000000G04A-3o81;
+	Wed, 01 Apr 2026 19:06:49 +0000
+Received: from mail-oa1-f52.google.com ([209.85.160.52])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w80E9-0000000FxHo-2A7e
+	id 1w80to-0000000G03D-0nih
 	for linux-mediatek@lists.infradead.org;
-	Wed, 01 Apr 2026 18:23:43 +0000
-Received: by mail-oa1-f49.google.com with SMTP id 586e51a60fabf-40f1ffba6a0so59168fac.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 01 Apr 2026 11:23:41 -0700 (PDT)
+	Wed, 01 Apr 2026 19:06:48 +0000
+Received: by mail-oa1-f52.google.com with SMTP id 586e51a60fabf-41bfec86420so63891fac.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 01 Apr 2026 12:06:43 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1775067821; x=1775672621;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=q3xYD9hif0mmKJi5KnGGefNn1V5fwiod+4YYIl9xrIk=;
-        b=PNvO2fsgBEMsdp0q0pRQXbSE3Lq41vJUyIFePiZ77+b6yLsfmqcbzC7xhbe76jPnrD
-         Bvn2pWtIrJ3pva1pa11QraNRm5Vi+KKT/ADffz8WFNo1eHKM/0WCYnhwc3wJRIwFjOL8
-         Qnhh+Mhp8EPu6R8YFcjGwGrBMVRU88GkLnTGKU+oTF4Rl7z8+Bwiy49ubGazNLCKL824
-         JnM1NiYWaJgW+B3YOTrbYKo0HOzWnUT+mORgAw6PRM0jqxYZyaC2dKEox9ouNP+nBjnZ
-         ds0cxQGRaZ+Ow3kFfLuiiltVPU8hzSlm65sbyIfXc4f6OUSh6+y9Tj3oAeqvHnbe7tnA
-         5hqA==
-X-Forwarded-Encrypted: i=1; AJvYcCUDAbgqqrPMK5378FOm+GYlSJW62sMYqA1NyVlAD6/JEW9TCrwVYWsRL5UBgCspzSr5Xt4/uDz7YeGTZx2EGQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzDT+4O3chL5Un32kCO7BS8PDWkohuPg2HbLSi72EJSiW5BXyXT
-	owE+V6c5XTEkwgcAyTsMMc95jqhBpSfrXcdaHEBCSmODU6DRQCKOYmVe
-X-Gm-Gg: ATEYQzwuOtwy8EBfYIh5jMVRMiCdWIw1pfSKgfRD3uyvoch4nbkNqC/d5jVAfb4c+VV
-	PGcgk7ShZirUiHgYX4VfMaRPDoyEJn0L3kzSjFOTBQ2TdpD9DSReTKB232Xy0evm0e+t43yrLA4
-	Pq1XwXuUxhCskiK2lyIdOWdPkRnJZmkTyO0inEZDtzD0J2qXkZPSTxn7UCrX2btV2GZktMSO6DU
-	M8pnMFIPtyVL4i97V7sg+6UKCYcqmShB6vQoYsQ90Zdzm+qW0LyZgHm6YqBxKJl8UNvZSmQLphP
-	8Xb4amPS7qlpJtdnwy1d+eBAm6Ydzb1BPXEJ+zqoSLAor1AuTTTZoLUj1m4NJZw06gEAYO5qKNc
-	xeorRNCDNAihsxFIoOKNyQjBVvbDFsR8kBGrBidsxY+KQihOGSXbMpPMlkuVqoCIjUGGTvifDhk
-	otK1Ca1SNI87dxR/rgavDTafWb4GUrz8ZRdX51YrQgii9faQQ=
-X-Received: by 2002:a05:6870:d29c:b0:417:c695:869c with SMTP id 586e51a60fabf-422cfeaeb79mr2545688fac.27.1775067820280;
-        Wed, 01 Apr 2026 11:23:40 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1775070403; x=1775675203;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=RhMDaJgdHrBwkyZkpBFRF9FScxuvntJewf4BaEmC6l8=;
+        b=iFMigpGW3L8cbrNytySeHL4kDgzAcrN2oZdbDSlmm3QhbcZw76StD+KBlw/9p/vGZs
+         RUV4y12G8knuHenIkPthH+rOgcKn4g8bg4zU6T0IMxP1nVqOo8yJmk3W2p8PNrRcXCUW
+         /vwc/0JxgYK3ngkT01YkFCLhNsqnHwDWmCY+IJDfpVG/rsAbHHq3s373qzmlgfqmckJc
+         qdlh47Q4p+M3/xl9gM8FelDrFu0XJYbOmOg4GJzuz34+7z/QkpBEW7rWYUNQdcH1POqF
+         /cY8wamf8FR+wIzDHMc50uzWSORqvEMlX3lHpFeJp4Mk3DgxdL/IFnzVMXcIFZ1G43V4
+         LvEw==
+X-Forwarded-Encrypted: i=1; AJvYcCXrG63u2V5YJf8TxXe+jhp3L67EgPSqIk3kDOcE6C7G9bDdAUkgTqBMirTNDGn9Zf94gAy8pAFLbmN7sP+cGg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxicD5lXsGNC4WyGXRD+6fRkKKCD3e4dj8xhfin4nhBb2k1gG9R
+	6XoUu6WYHnVFxrd7xITz5a5JCFzE9fak+eYQNl4lcioETpiIJb6y5JRw
+X-Gm-Gg: ATEYQzwKrB+oW0MfYOlSfCNxzjufduscMV52Gnzj5/06gu0ZfQvt+zmNbnXT5aWD5Dt
+	Zuz5TGQeYlC2MUdLjk+WNaonlG2/rX1nkoGWNEJULnzgQgjGh2MqOyNqyoBr9irCi0JYpyl/Huf
+	nN15+ue8n0ZNHAlSGzC/J6dMBCJcBoxBWMdQxHCWbL0Did5C4YO4+UDA/vOJzCKHvb8o5U8cV+i
+	/39wegGJAvJOb3T0Td4XizBifxzrxbTFdRnnTjPUi5tTZ0ZXB0JxIjeiCTMuP2Qt1HgZQtm34VN
+	PlbzFb/jdvKz6suL/UaZUg+juiX3nMRzhhnIp1zlb+H7j7UlbhBJY1H0bdMKv6sKzfSrhVY5V3A
+	Bwpdt86HYQSGowaSvRfchOV6bR4FcUGUvE/9XoezqCtwgbwk9F6b+cjZFPsG4Qu4npFS4JZiwiy
+	uafMRJqCF6xZV7tXtulJF7b7x4ljguVRr2aaX3MzuN10Vg18KTa10I0E1GwQ==
+X-Received: by 2002:a05:6871:3588:b0:417:533b:79ac with SMTP id 586e51a60fabf-422cfc075bamr3055228fac.9.1775070402752;
+        Wed, 01 Apr 2026 12:06:42 -0700 (PDT)
 Received: from sean-HP-EliteBook-830-G6.lan ([207.191.35.252])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-422eb3c9e06sm386778fac.15.2026.04.01.11.23.39
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-422eaf2c780sm551867fac.6.2026.04.01.12.06.41
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 01 Apr 2026 11:23:39 -0700 (PDT)
+        Wed, 01 Apr 2026 12:06:42 -0700 (PDT)
 From: Sean Wang <sean.wang@kernel.org>
 To: nbd@nbd.name,
 	lorenzo.bianconi@redhat.com
 Cc: linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	Sean Wang <sean.wang@mediatek.com>,
-	Devin Wittmayer <lucid_duck@justthetip.ca>,
-	Satadru Pramanik <satadru@gmail.com>
-Subject: [PATCH v2 3/3] wifi: mt76: mt792x: report txpower for the requested vif link
-Date: Wed,  1 Apr 2026 13:23:22 -0500
-Message-ID: <20260401182322.64355-3-sean.wang@kernel.org>
+	Sean Wang <sean.wang@mediatek.com>
+Subject: [PATCH v2 1/2] wifi: mt76: mt792x: add common USB transport reset helpers
+Date: Wed,  1 Apr 2026 14:06:31 -0500
+Message-ID: <20260401190632.147042-1-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260401182322.64355-1-sean.wang@kernel.org>
-References: <20260401182322.64355-1-sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260401_112341_747127_F977A199 
-X-CRM114-Status: GOOD (  16.07  )
+X-CRM114-CacheID: sfid-20260401_120646_945879_6B9AEBB4 
+X-CRM114-Status: GOOD (  13.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,120 +88,156 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-mt792x currently reports txpower from the generic PHY cached state,
-which may not match the requested vif/link context.
+Add per-device USB reset work and a control-path access check helper
+for mt7921u and mt7925u.
 
-Resolve the requested link channel and derive txpower from that channel
-instead, with fallback to the current PHY chandef if no valid chanctx is
-available.
+This prepares common infrastructure for transport-level recovery while
+keeping the reset state per-device for correct lifetime handling.
 
-Reported-by: Devin Wittmayer <lucid_duck@justthetip.ca>
-Closes: https://lore.kernel.org/linux-wireless/20260130215839.53270-1-lucid_duck@justthetip.ca/
-Tested-by: Devin Wittmayer <lucid_duck@justthetip.ca>
-Tested-by: Satadru Pramanik <satadru@gmail.com>
+No functional change intended.
+
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
 v2:
 - Rebased onto the latest mt76 tree
-- Added Reported-by, Tested-by, Co-developed-by and Signed-off-by tags
 ---
- .../net/wireless/mediatek/mt76/mt7921/main.c  |  2 +-
- .../net/wireless/mediatek/mt76/mt7925/main.c  |  2 +-
- drivers/net/wireless/mediatek/mt76/mt792x.h   |  2 +
- .../net/wireless/mediatek/mt76/mt792x_core.c  | 41 +++++++++++++++++++
- 4 files changed, 45 insertions(+), 2 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7921/usb.c   |  2 +
+ .../net/wireless/mediatek/mt76/mt7925/usb.c   |  2 +
+ drivers/net/wireless/mediatek/mt76/mt792x.h   |  5 ++
+ .../net/wireless/mediatek/mt76/mt792x_usb.c   | 50 +++++++++++++++++++
+ 4 files changed, 59 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index 3d74fabe7408..2e7cdf8edc12 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -1552,7 +1552,7 @@ const struct ieee80211_ops mt7921_ops = {
- 	.wake_tx_queue = mt76_wake_tx_queue,
- 	.release_buffered_frames = mt76_release_buffered_frames,
- 	.channel_switch_beacon = mt7921_channel_switch_beacon,
--	.get_txpower = mt76_get_txpower,
-+	.get_txpower = mt792x_get_txpower,
- 	.get_stats = mt792x_get_stats,
- 	.get_et_sset_count = mt792x_get_et_sset_count,
- 	.get_et_strings = mt792x_get_et_strings,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index 73d3722739d0..53e1a93c6976 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -2433,7 +2433,7 @@ const struct ieee80211_ops mt7925_ops = {
- 	.wake_tx_queue = mt76_wake_tx_queue,
- 	.release_buffered_frames = mt76_release_buffered_frames,
- 	.channel_switch_beacon = mt7925_channel_switch_beacon,
--	.get_txpower = mt76_get_txpower,
-+	.get_txpower = mt792x_get_txpower,
- 	.get_stats = mt792x_get_stats,
- 	.get_et_sset_count = mt792x_get_et_sset_count,
- 	.get_et_strings = mt792x_get_et_strings,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+index 17057e68bf21..6be28f4152ed 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+@@ -196,6 +196,7 @@ static int mt7921u_probe(struct usb_interface *usb_intf,
+ 	dev = container_of(mdev, struct mt792x_dev, mt76);
+ 	dev->fw_features = features;
+ 	dev->hif_ops = &hif_ops;
++	mt792xu_reset_work_init(dev);
+ 
+ 	udev = usb_get_dev(udev);
+ 	usb_reset_device(udev);
+@@ -244,6 +245,7 @@ static int mt7921u_probe(struct usb_interface *usb_intf,
+ 
+ error:
+ 	mt76u_queues_deinit(&dev->mt76);
++	mt792xu_reset_work_cleanup(dev);
+ 
+ 	usb_set_intfdata(usb_intf, NULL);
+ 	usb_put_dev(interface_to_usbdev(usb_intf));
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/usb.c b/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
+index d9968f03856d..8b5d58125352 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
+@@ -184,6 +184,7 @@ static int mt7925u_probe(struct usb_interface *usb_intf,
+ 	dev = container_of(mdev, struct mt792x_dev, mt76);
+ 	dev->fw_features = features;
+ 	dev->hif_ops = &hif_ops;
++	mt792xu_reset_work_init(dev);
+ 
+ 	udev = usb_get_dev(udev);
+ 	usb_reset_device(udev);
+@@ -232,6 +233,7 @@ static int mt7925u_probe(struct usb_interface *usb_intf,
+ 
+ error:
+ 	mt76u_queues_deinit(&dev->mt76);
++	mt792xu_reset_work_cleanup(dev);
+ 
+ 	usb_set_intfdata(usb_intf, NULL);
+ 	usb_put_dev(interface_to_usbdev(usb_intf));
 diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
-index 4ff93f2cd624..65eba18bc3a1 100644
+index 4ff93f2cd624..5f06074591ca 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt792x.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
-@@ -397,6 +397,8 @@ void mt792x_roc_timer(struct timer_list *timer);
- void mt792x_csa_timer(struct timer_list *timer);
- void mt792x_flush(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 		  u32 queues, bool drop);
-+int mt792x_get_txpower(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
-+		       unsigned int link_id, int *dbm);
- int mt792x_assign_vif_chanctx(struct ieee80211_hw *hw,
- 			      struct ieee80211_vif *vif,
- 			      struct ieee80211_bss_conf *link_conf,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-index 152cfcca2f90..3fd1be7db1f4 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-@@ -329,6 +329,47 @@ void mt792x_flush(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- }
- EXPORT_SYMBOL_GPL(mt792x_flush);
+@@ -243,6 +243,8 @@ struct mt792x_dev {
+ 	wait_queue_head_t wait;
  
-+int mt792x_get_txpower(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
-+		       unsigned int link_id, int *dbm)
+ 	struct work_struct init_work;
++	struct work_struct usb_reset_work;
++	atomic_t usb_reset_pending;
+ 
+ 	u8 fw_debug;
+ 	u8 fw_features;
+@@ -489,6 +491,9 @@ int mt792xu_dma_init(struct mt792x_dev *dev, bool resume);
+ int mt792xu_mcu_power_on(struct mt792x_dev *dev);
+ int mt792xu_wfsys_reset(struct mt792x_dev *dev);
+ int mt792xu_init_reset(struct mt792x_dev *dev);
++void mt792xu_reset_work_init(struct mt792x_dev *dev);
++void mt792xu_reset_work_cleanup(struct mt792x_dev *dev);
++int mt792xu_check_bus(struct mt792x_dev *dev);
+ u32 mt792xu_rr(struct mt76_dev *dev, u32 addr);
+ void mt792xu_wr(struct mt76_dev *dev, u32 addr, u32 val);
+ u32 mt792xu_rmw(struct mt76_dev *dev, u32 addr, u32 mask, u32 val);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_usb.c b/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
+index 47827d1c5ccb..2558d87b1e0f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
+@@ -11,6 +11,55 @@
+ #include "mt792x.h"
+ #include "mt76_connac2_mac.h"
+ 
++static int mt792xu_read32(struct mt76_dev *dev, u32 addr, void *buf)
 +{
-+	struct mt76_power_limits limits = {};
-+	struct ieee80211_bss_conf *link_conf;
-+	struct ieee80211_channel *chan;
-+	struct mt792x_bss_conf *mconf;
-+	struct mt792x_vif *mvif;
-+	struct mt76_phy *phy;
-+	s8 max_power;
-+
-+	if (!vif)
-+		return mt76_get_txpower(hw, vif, link_id, dbm);
-+
-+	mvif = (struct mt792x_vif *)vif->drv_priv;
-+	phy = mvif->phy->mt76;
-+
-+	mt792x_mutex_acquire(mvif->phy->dev);
-+
-+	link_conf = mt792x_vif_to_bss_conf(vif, link_id);
-+	mconf = link_conf ? mt792x_link_conf_to_mconf(link_conf) : NULL;
-+	if (mconf && mconf->mt76.ctx && mconf->mt76.ctx->def.chan)
-+		chan = mconf->mt76.ctx->def.chan;
-+	else
-+		/* Fall back to the current PHY chandef if the requested link
-+		 * does not have a valid channel context.
-+		 */
-+		chan = phy->chandef.chan;
-+
-+	mt792x_mutex_release(mvif->phy->dev);
-+
-+	if (!chan)
-+		return -EINVAL;
-+
-+	max_power = mt76_connac_get_rate_power_limit(phy, chan, &limits);
-+	*dbm = DIV_ROUND_UP(max_power, 2);
-+
-+	return 0;
++	return __mt76u_vendor_request(dev, MT_VEND_READ_EXT,
++				      USB_DIR_IN | MT_USB_TYPE_VENDOR,
++				      (u16)(addr >> 16), (u16)addr,
++				      buf, sizeof(__le32));
 +}
-+EXPORT_SYMBOL_GPL(mt792x_get_txpower);
 +
- int mt792x_assign_vif_chanctx(struct ieee80211_hw *hw,
- 			      struct ieee80211_vif *vif,
- 			      struct ieee80211_bss_conf *link_conf,
++static void mt792xu_reset_work(struct work_struct *work)
++{
++	struct mt792x_dev *dev =
++		container_of(work, struct mt792x_dev, usb_reset_work);
++	struct usb_interface *usb_intf = to_usb_interface(dev->mt76.dev);
++
++	if (usb_intf && usb_get_intfdata(usb_intf) == dev)
++		usb_queue_reset_device(usb_intf);
++
++	atomic_set(&dev->usb_reset_pending, 0);
++}
++
++void mt792xu_reset_work_init(struct mt792x_dev *dev)
++{
++	INIT_WORK(&dev->usb_reset_work, mt792xu_reset_work);
++	atomic_set(&dev->usb_reset_pending, 0);
++}
++EXPORT_SYMBOL_GPL(mt792xu_reset_work_init);
++
++void mt792xu_reset_work_cleanup(struct mt792x_dev *dev)
++{
++	cancel_work_sync(&dev->usb_reset_work);
++	atomic_set(&dev->usb_reset_pending, 0);
++}
++EXPORT_SYMBOL_GPL(mt792xu_reset_work_cleanup);
++
++int mt792xu_check_bus(struct mt792x_dev *dev)
++{
++	int ret;
++
++	mutex_lock(&dev->mt76.usb.usb_ctrl_mtx);
++	ret = mt792xu_read32(&dev->mt76, MT_HW_CHIPID, dev->mt76.usb.data);
++	mutex_unlock(&dev->mt76.usb.usb_ctrl_mtx);
++
++	if (ret == sizeof(__le32))
++		return 0;
++
++	return ret < 0 ? ret : -EIO;
++}
++EXPORT_SYMBOL_GPL(mt792xu_check_bus);
++
+ u32 mt792xu_rr(struct mt76_dev *dev, u32 addr)
+ {
+ 	u32 ret;
+@@ -333,6 +382,7 @@ void mt792xu_disconnect(struct usb_interface *usb_intf)
+ {
+ 	struct mt792x_dev *dev = usb_get_intfdata(usb_intf);
+ 
++	mt792xu_reset_work_cleanup(dev);
+ 	cancel_work_sync(&dev->init_work);
+ 	if (!test_bit(MT76_STATE_INITIALIZED, &dev->mphy.state))
+ 		return;
 -- 
 2.43.0
 
