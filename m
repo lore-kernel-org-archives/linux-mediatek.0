@@ -4,65 +4,159 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84C0AD35177
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Apr 2026 12:36:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B676ED3517C
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Apr 2026 13:14:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yQBDnJoVhLwcKafuIZRk96w4yQeYQ1vq8BsBfxQ3u2s=; b=PrZGKqERO7rnwSMBoNtNv83hPo
-	160QruvdvU4o4xfxIrRCcjMLsGIMdgvEHyfT2LO9OQRhu+gtenjcfPsikGwZNOjgR8nW/GHM0wGPq
-	4ERhFTqZLFAbp+wvvDYuVBd8+4UWhAkZHZAqNyyeDtb/T+UUBgEF0pDHGzCWDazqi2hSk+eSxICiy
-	Wb1niJIIP8wwf+OhPd29wgOyUOvJR4q2kajkeMCnRfRWZSaOtRYShpC5nNdqgvv15rZJSiROTP4S+
-	Uhyfi2NAVFJxkgATf2aq+NExAaHQ1XFvLLjNYM/WxkuyEtC8IfTS8IDJSjlpuS28nM81FRHkA6y2m
-	/hAU5ydw==;
+	bh=iRvSg2X5oF+wex5OLrs7/ynRUevh5KTOF8iDw5s+bIc=; b=U0Qsrc25UDQKDa75Mv1r0vJNSA
+	SlVNlVHtLtcu6age/LwZc3X25+okE7+RIgMGuqLFmOG4cqyLovaT+UWHH2jLKyjzVj2aMGhScb2DG
+	KLQFAOoe7xNQltI2NEzvfU/nSJgdKRmGGIfDaVTnJo53YIEgg+HGslOpkGXnpqkaO0aBAtGGO8+Eo
+	7Fz/iVHUrAKTT/R6SWMIVmmJQ+7mISIoS8St90fp6waHpE4vTvr7dSMKWMQEEQ5jAlq1KVkzdPvcf
+	Dcjuc1h25r2iyEoG2lzv2EOZHfJxXs3InbCzWIVrvxWZO5I4RdwmANAKpypfv/dFqaTIG0b3eWKHB
+	bBtYTbHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7uoR-0000000FBe2-0uy0;
-	Wed, 01 Apr 2026 12:36:49 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1w7vP2-0000000FHUM-1jgl;
+	Wed, 01 Apr 2026 13:14:36 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7uXm-0000000EyoK-1re7
-	for linux-mediatek@lists.infradead.org;
-	Wed, 01 Apr 2026 12:19:35 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E64CF4097B;
-	Wed,  1 Apr 2026 12:19:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2E4DFC4CEF7;
-	Wed,  1 Apr 2026 12:19:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1775045972;
-	bh=U2chIgld3ec2AzP0+woeUhBzxiB30kpsbfVXjgxQpnM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ozbrvJxp1hCEaO+OqA5RSPyS6ivh97M810FcogJ+qweaHIHH54EX+tW49zBBsA9vp
-	 yWFLVaSdVmQPXvJNbHGgcnDHV3Aur16AuZMvik4VkjuT4l85I8iJPOEno7tjEfKKZg
-	 ARXfcovEr6/xoL2GuM0H1DES1eCiRg6229ab0ckBJDZTh54JANl4PpXIFklNjUvoBZ
-	 unV3ilMoL5eu5X9jj1h2CwfkKUkcCXCcojPlNnT/mg59JvoPCu5lw4jlXOeuwArL4E
-	 1eTjDB/OR1cBpa8TqM2sXI9BSnBf2BFtdzI3uFakdcNa9RnciAEdgcOOkKh7v0QvgY
-	 rD1pgPN658YBg==
-Date: Wed, 1 Apr 2026 17:49:21 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Jian Yang <jian.yang@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Ryder Lee <ryder.lee@mediatek.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com, chuanjia.liu@mediatek.com, yonglong.wu@mediatek.com
-Subject: Re: [PATCH v1] PCI: mediatek-gen3: Align PERST# sequence with PCIe
- CEM specification
-Message-ID: <x6nabkumov75khx4icgibrmd4o3oz5drm3cfthh6j2himsihla@echprgpjanoq>
-References: <20260401031917.9108-1-jian.yang@mediatek.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+	id 1w7vOy-0000000FHTb-3sum;
+	Wed, 01 Apr 2026 13:14:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:In-Reply-To:Content-Type:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=iRvSg2X5oF+wex5OLrs7/ynRUevh5KTOF8iDw5s+bIc=; b=p0zhESBGSFccKp7N9cxGesUiTr
+	zNTFP7GwV7T8LEl+Joz07VyDR3OJau8ZOVfis+JPlvwkzpmKC4ZBKWu6smFJtGHdAZ2YvOJzZGLDI
+	GAf8f7/tkFymYdToWfXWIooCoD5ntQoxVrP9OX1UAfy+S+TPFEYlJvcziVXF/EAI7EDjqX4gT1hF3
+	FGquikA03kNfbmnKVzmH10qCK1Ge8HrFmzvxDtrFwE3MOuFeMOxJFpNXAb61XHPGMiQvmL1fi5Oon
+	tC8mIC02wIOjl6LVBTYn4xa1bt3fNVt+RkEPhyfvPLjlUJcuaQ0bYpyIhq/q1Wfpjn4++gmCuk76T
+	4aalWyfA==;
+Received: from mail-westusazlp170100001.outbound.protection.outlook.com ([2a01:111:f403:c000::1] helo=BYAPR05CU005.outbound.protection.outlook.com)
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1w7vOv-00000000Qnk-39QU;
+	Wed, 01 Apr 2026 13:14:31 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=joBN8NzTHhwAvsKv/6WkFEDO1lS+GSbE4jJc2SvR7BV3Z0yOCbK1pgkEIpzJTDzNicMEsjnaIPFdR4S6S18eGV59JjHh8Oag/ri+NYduOXOHJ737ZkEBjZNxVbLUDJXEPNh60WFt3RqYa+TnrZ7y2Nn8G01iyPy+u75VdaBKU9AX8zPlTz8n6YfWZjkYAPNEZWbZf1HeHzRShr+lhgz5XRSYJUnZ870RhAOKCEfmcti3rK3iyG9BbhDEmdB/4wv9OvSpgrlPH1UZybWK+ngkbDKt99oASyUSyeEeehHu9URU7FnDAcpHFv4WweuI/XZoEdY0aE+bGujBhsFtnW0Snw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=iRvSg2X5oF+wex5OLrs7/ynRUevh5KTOF8iDw5s+bIc=;
+ b=MqObNlCGMWhQ+cc48nSi3DKypHZ58hpbcPcbbN8PciFgXlnRu0KVN1tD8+ny8eezix71h7U3btktNEc0j6tkUfS3aLYCD4AEkMv3OsBHNDbPfBrOEHmURNUbjdar4980PuaUPQTbY/ZZWscW3zBbDcfJrfTYCJPT4FeJROno/eYgokGMV99QrOfMTZFbj0VKuQxdtRfkmSISaklZD1pFsew0GGI9xv6dL9UlmH5dstAmspCVhHR3aupVFkOG+gEuK4RUY1AQHUpKWYvSreWH4A0a95ktZmjSpNT3f0L4rBx8dSGStRZFLxfywojMjVM0fQV72sp7uzjbU+ucWXTFkw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=iRvSg2X5oF+wex5OLrs7/ynRUevh5KTOF8iDw5s+bIc=;
+ b=Iqmn9va4ePHAQKUQmxcxPxUWVSxpAvrtQwP9oBXjZC5MYyY4TX37DJTv7eLh1oRtMwL9efv6SXnTd2KodVOFD7sdZPrxE6jC1cLqv0RJXq8FVNWkEfRF2Poj03kC9Qfup20vrlRsh5JLEaIR8DnAJbOj2UKLnBimkpWjbpe4REHne0kzv3hWFDK1BGXTr9ynU/7Cu6RA5AVwHD20gmb+JCOQidBi86c4ps8iCfMcohL5XodeVMM34oYZzTthOOUbPklHd8pzpkK8rgsyWSwRBms/Vp700i3YD2k0PICLy9XSV+ywMo/1DjGn4fplVwicBwG09T/6ViW2ade5fTcfpQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV8PR12MB9620.namprd12.prod.outlook.com (2603:10b6:408:2a1::19)
+ by SN7PR12MB7322.namprd12.prod.outlook.com (2603:10b6:806:299::6) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9769.16; Wed, 1 Apr
+ 2026 12:58:51 +0000
+Received: from LV8PR12MB9620.namprd12.prod.outlook.com
+ ([fe80::299d:f5e0:3550:1528]) by LV8PR12MB9620.namprd12.prod.outlook.com
+ ([fe80::299d:f5e0:3550:1528%5]) with mapi id 15.20.9769.016; Wed, 1 Apr 2026
+ 12:58:51 +0000
+Date: Wed, 1 Apr 2026 09:58:50 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Pranjal Shrivastava <praan@google.com>
+Cc: Alexandre Ghiti <alex@ghiti.fr>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Albert Ou <aou@eecs.berkeley.edu>, asahi@lists.linux.dev,
+	Baolin Wang <baolin.wang@linux.alibaba.com>, iommu@lists.linux.dev,
+	Janne Grunau <j@jannau.net>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Joerg Roedel <joro@8bytes.org>,
+	Jean-Philippe Brucker <jpb@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
+	linux-sunxi@lists.linux.dev,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Neal Gompa <neal@gompa.dev>, Orson Zhai <orsonzhai@gmail.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <pjw@kernel.org>,
+	Samuel Holland <samuel@sholland.org>, Sven Peter <sven@kernel.org>,
+	virtualization@lists.linux.dev, Chen-Yu Tsai <wens@kernel.org>,
+	Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Lu Baolu <baolu.lu@linux.intel.com>,
+	Janusz Krzysztofik <janusz.krzysztofik@linux.intel.com>,
+	Joerg Roedel <joerg.roedel@amd.com>,
+	Jon Hunter <jonathanh@nvidia.com>, patches@lists.linux.dev,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samiullah Khawaja <skhawaja@google.com>, stable@vger.kernel.org,
+	Vasant Hegde <vasant.hegde@amd.com>
+Subject: Re: [PATCH] iommu: Always fill in gather when unmapping
+Message-ID: <20260401125850.GZ310919@nvidia.com>
+References: <0-v1-664d3acaabb9+78b-iommu_gather_always_jgg@nvidia.com>
+ <ac0AKyvHMYHlqL5i@google.com>
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20260401031917.9108-1-jian.yang@mediatek.com>
+In-Reply-To: <ac0AKyvHMYHlqL5i@google.com>
+X-ClientProxiedBy: BN9PR03CA0066.namprd03.prod.outlook.com
+ (2603:10b6:408:fc::11) To LV8PR12MB9620.namprd12.prod.outlook.com
+ (2603:10b6:408:2a1::19)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV8PR12MB9620:EE_|SN7PR12MB7322:EE_
+X-MS-Office365-Filtering-Correlation-Id: 72902b0a-31dc-414d-a8a1-08de8fee6c47
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|366016|1800799024|18002099003|56012099003|22082099003;
+X-Microsoft-Antispam-Message-Info: 4UJx0E8KWXxHEMICwrNdAVkp7OhhenLehH8KTzh8t3iQRG/tWO1nlu9J3SRNRLZ2A7NjVBobHuZbnwSaS7nTbw9EcGUj/PmUG6ZI9EvKOYkreohgt1GJ8+W65G8MZeJ5pOHARfPgUkKIyT4DLp4hymC9k0ycY0LN5uI+uXoWZFidLBXRdSjERD6/ww8DfDf1Wu8vloxs7B2cst/QR5lzcHSPmNR4bPZ8bBfUfHggjHwV0vL2EupyNjQXesXUXQlk0otCsXnWQx2CLvPr6LkjkBnzv0pSwbbU18W+/zvT/KPTi9V34zAoFrTagoCLyAb2YVNwcP6iBBPbJBtj6orijRT0bjG+tAYwn5OKSTKahLbRts4NkAepxVvxQURv5UHSFLczGYTc5SDokMYdz6nx/x0EAoELXahIdSjGQ+F6+cHDQSgIdUE+INFxOcaMUsJZll7e6YGxmmhRhVusOqkjiyfE+AhD2o48LE7s4SlccUn0lWzyLFMHcwVZljfK6hTgLM2DCm/8vamVKqaXeGq4FkU/aNbK9OSJAvrJq6ajuNyhY0fL4vj+QGKBPgW5gKLCEiw3sFFdNBzTU4jUAS3aIrr84YjE4Qovnz9C6kwaymFwaGc0A9UxrctuT/RUDGs393ZMRsWG8Gb+R/WVZfQrpYqyy8EOxhx1FRyhobwwAVJB9Vu4A2xM2+igY52IiEp8mojRcvXIt0lAiLgKBaltj0FwI1y7QPsg/2Z1dxwMUDc=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV8PR12MB9620.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(366016)(1800799024)(18002099003)(56012099003)(22082099003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?p3wbNsyZlG8XYPWHQx9nS9eGLdJD980HE2+h3I70baHz8agh2DJoXgjKQRaG?=
+ =?us-ascii?Q?lOsAH8d07sLCQgP+yFBBn8453tQCUJ7Yvt1OGC/0wMWkCq6S7eGi6MRIu1vg?=
+ =?us-ascii?Q?mAOCAEDyNfgvqTttEZT0sRxP3h17aIkxVl5giSKfqkhCM1PCtnbw57lz2Jw8?=
+ =?us-ascii?Q?ZUrvTZJqLQr+y1SJTS3y27/v4g90o9SDkxFdyLBLoSXRL7MbgaHY0IvKx1zZ?=
+ =?us-ascii?Q?p8BG3+NY0TN2Zj3hePBnM2qlchWD/HWsgRoiTs73VXqyMbtIRnwtdMY2Yj96?=
+ =?us-ascii?Q?xYTK5zbCl/T7LcUX7S3Rx3bC40jP1R8m9IfMpA7kb2MVTzoyiBQZ6vFSgRC4?=
+ =?us-ascii?Q?QflEMutZMWvmXTfaZ2ZQn5ycluCLibrtlGKdZnV1SiGKs4G+QCUdmXOmgltH?=
+ =?us-ascii?Q?Ms2uuez/BftatZMsizsNfJW6vu/e5GHAUXjJE9mOTcgYdq4rMVQE3EdBz+fw?=
+ =?us-ascii?Q?hWeynXyMJZ93+s931SP7hkcB7U0Yz17UmaMXJ25u4s1QTY4FcaUUp9KtQcFP?=
+ =?us-ascii?Q?xmoM5VNwJ7fAZ2TEHOGq/xsghsvka5Acov+OhZHaBZn52nwXs+obCUrk3nsT?=
+ =?us-ascii?Q?jksm4etXBwuzKEGRUMjrPH8uvrKT17plpQlhveAsnv4UVDDkTHu2306rUW8D?=
+ =?us-ascii?Q?lbeVB6fkqVDc0HY6QlIYGNGI8GHBrzG+DOYjnbejqWvrIvdbwy6CmJycY3cH?=
+ =?us-ascii?Q?Yei+0bH2fPLkb3e/A8ctkRtgX6mcwvpGwGyml5bCJlS9p5AxTLfG1EY/kw+5?=
+ =?us-ascii?Q?pkUWRm5EsI/leVbLzAC0qlXp3qsqhtCCwes0dJ0JJAVofyCHjrQOc/x3wV8c?=
+ =?us-ascii?Q?iZ6GsGzx5VaU3EOZlKYTvkowA4pFUvpsTIYb8czXSsrFevrPs63HeCj4pb6g?=
+ =?us-ascii?Q?4BnaWt/2mz0yK7ZkrZ1GqUHwxv6+sMWTpOVpgGgWkCXSKzOgHIgt+4/xEUxY?=
+ =?us-ascii?Q?z0Z/9/nHQpEdudvXV0M7CLYkTdVyhnrBYckmuxL7ZY+Yc0V4Eep7fEsnIWMP?=
+ =?us-ascii?Q?jgvA/tJdpU2+LR/9mJf3O83sa64LUunv2W8AICcuxlad+pylx7SDmaXJgRwo?=
+ =?us-ascii?Q?YnwCg7kwwI64K5uwvMvN/0WqJMGhC1D5MCf7+u+pOWX95GhYbLfAdH9y9Bom?=
+ =?us-ascii?Q?ZSAutN/dMST3sESGjZ5Uf7pm/Y/idR/oAlnHS+znlQoixQBFP9KTw/GGTmgB?=
+ =?us-ascii?Q?3CKSiP1mbnWsAt4wq+WPA3LCgqgFtaXLsyNAmL04HzRQBkIOBwazlxSunNNa?=
+ =?us-ascii?Q?RLwxHyl6kbI95p/YTsmZfZOO/aeTFR3dts2BGoa4XccJOmA9wganzIP08jlD?=
+ =?us-ascii?Q?o9bkqEc0l6HgeUSf7Un28bsrvthnB8g0rEWHZli1bhAyLxoHhVXO/XyilZEd?=
+ =?us-ascii?Q?RXR2eEws0ybUxsQTge6LnRedaChu1qw+RuisK0HZAEE8RZx5DGOHPGgPw2OQ?=
+ =?us-ascii?Q?wLHRTZ8Eh/En6usoxHe/NzcMGf+uiTVCtkt8woDU5rKk1tQBYsujuVG2xhAR?=
+ =?us-ascii?Q?gQ3yzIYXa3qNnkWzCSS86qAN1vowhc31PE5JvwjZu7yiJBfVF64JOASB3Jos?=
+ =?us-ascii?Q?IXxUlW1F2NYrskmkQUofVr5/toVTuHuUCyGwnCvZWcNOelO58n3JVit+c9MB?=
+ =?us-ascii?Q?VT8pTsRTboSKMWuwYIEXfg8tkVHftxs7j5Xa6ThJIT10j8WBPkZIRwH88/BL?=
+ =?us-ascii?Q?bfyc75GzKqtD2CwsiwBWhJhC60fo4i1JhZT47dmLLj1HGFUU?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 72902b0a-31dc-414d-a8a1-08de8fee6c47
+X-MS-Exchange-CrossTenant-AuthSource: LV8PR12MB9620.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Apr 2026 12:58:51.6213
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: G34U7eBhHK8zZIUrrohGinMZLSJr2Ti8+0M0ATW6PziKkhNm31/1szIUFRH74VMQ
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR12MB7322
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260401_051934_538192_0420607C 
-X-CRM114-Status: GOOD (  26.50  )
+X-CRM114-CacheID: sfid-20260401_141430_096783_DB6A32A3 
+X-CRM114-Status: GOOD (  10.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,111 +171,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 01, 2026 at 11:16:42AM +0800, Jian Yang wrote:
-> Fix the control sequence of PERST# during system bootup/shutdown to
-> meet the requirement from PCIe CEM specification. There are two major
-> changes in this patch:
-> 
+On Wed, Apr 01, 2026 at 11:23:23AM +0000, Pranjal Shrivastava wrote:
 
-You are fixing multiple issues in one patch, which is not acceptable.
+> I was wondering if, as a longer-term direction, having an explicit flag
+> for these drivers to indicate they always require a sync would be a
+> cleaner way to handle this than the trivial population?
 
-> 1. Some of MediaTek's chip will stop generating REFCLK if the
-> PCIE_PHY_RSTB signal of PCIe controller is asserted. We have to
-> adjust the startup sequence as follows to ensure that PERST# will be
-> de-asserted after the REFCLK is stable:
-> Assert PHY reset and PERST# -> delay 10ms -> De-assert PHY reset ->
-> delay 100ms -> De-assert PERST#
-> 
+My first thought was to just set the gather to start=0,end=ULONG_MAX
+but it turned out to be trivial to just set the right gather parameters
+and it looks like it is basically the same cost..
 
-This issue is separate and not related to the below two issues.
+Adding a flag would mean we have to test the flag on the other case
+where we don't use this flow, which doesn't seem good either.
 
-> 2. Add 'shutdown' callback to control the timing of PERST# and power
-> during the system shutdown phase, ensuring that PERST# is active
-> before the power on connector is removed.
-> 
-
-Adding 'shutdown()' callback should belong to a separate patch with its own
-motivation.
-
-> Signed-off-by: Jian Yang <jian.yang@mediatek.com>
-> ---
->  drivers/pci/controller/pcie-mediatek-gen3.c | 39 +++++++++++++++++++--
->  1 file changed, 36 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-> index a94fdbaf47fe..66d177918565 100644
-> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
-> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> @@ -62,6 +62,7 @@
->  #define PCIE_PHY_RSTB			BIT(1)
->  #define PCIE_BRG_RSTB			BIT(2)
->  #define PCIE_PE_RSTB			BIT(3)
-> +#define PCIE_BRG_RST_RDY_MS		10
->  
->  #define PCIE_LTSSM_STATUS_REG		0x150
->  #define PCIE_LTSSM_STATE_MASK		GENMASK(28, 24)
-> @@ -133,6 +134,7 @@
->  #define MAX_NUM_PHY_RESETS		3
->  
->  #define PCIE_MTK_RESET_TIME_US		10
-> +#define PCIE_MTK_PDN_PERST_TIME_MS	5
->  
->  /* Time in ms needed to complete PCIe reset on EN7581 SoC */
->  #define PCIE_EN7581_RESET_TIME_MS	100
-> @@ -430,6 +432,21 @@ static int mtk_pcie_devices_power_up(struct mtk_gen3_pcie *pcie)
->  		return err;
->  	}
->  
-> +	/*
-> +	 * Some of MediaTek's chips won't output REFCLK when PCIE_PHY_RSTB is
-> +	 * asserted, we have to de-assert MAC & PHY & BRG reset signals first
-> +	 * to allow the REFCLK to be stable. While PCIE_BRG_RSTB is asserted,
-> +	 * there is a short period during which the PCIe internal register
-> +	 * cannot be accessed, so we need to wait 10ms here.
-> +	 */
-> +	msleep(PCIE_BRG_RST_RDY_MS);
-> +
-> +	if (!(pcie->soc->flags & SKIP_PCIE_RSTB)) {
-> +		/* De-assert MAC, PHY and BRG reset signals */
-> +		val &= ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB);
-> +		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> +	}
-> +
->  	/*
->  	 * Described in PCIe CEM specification revision 6.0.
->  	 *
-> @@ -439,9 +456,8 @@ static int mtk_pcie_devices_power_up(struct mtk_gen3_pcie *pcie)
->  	msleep(PCIE_T_PVPERL_MS);
->  
->  	if (!(pcie->soc->flags & SKIP_PCIE_RSTB)) {
-> -		/* De-assert reset signals */
-> -		val &= ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB |
-> -			 PCIE_PE_RSTB);
-> +		/* De-assert PERST# signal */
-> +		val &= ~PCIE_PE_RSTB;
->  		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
->  	}
->  
-> @@ -459,6 +475,14 @@ static void mtk_pcie_devices_power_down(struct mtk_gen3_pcie *pcie)
->  		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
->  	}
->  
-> +	/*
-> +	 * Described in PCIe CEM specification revision 6.0.
-> +	 *
-> +	 * The PERST# gose active before the power on the connector is removed.
-> +	 * Wait a while to ensure the voltage transition of PERST# is completed.
-> +	 */
-> +	msleep(PCIE_MTK_PDN_PERST_TIME_MS);
-
-PERST# is asserted by setting the 'PCIE_PE_RSTB' bit. So if that controls the
-actual voltage transition of PERST# signal, will reading it back ensure that the
-transition has been completed without waiting for an arbitrary delay?
-
-Nevertheless, this also belongs to a separate patch.
-
-- Mani
-
--- 
-மணிவண்ணன் சதாசிவம்
+Jason
 
