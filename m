@@ -4,72 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B151C10FCAD2
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Apr 2026 22:59:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACFC71112241
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Apr 2026 23:33:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Bh04i1AsLlmfPzJc4tfDUDKrG+zQUwrNren6a6q14IY=; b=KA9/A/eLHGEYMzloVwTJwKcO/j
-	5gM72J72tcxaNva+6rR84hZcrHPv1J/kOs+ObXCgWMT6a/hWgafhWmI+xmSx9o9s+mqWDc/WfG0qL
-	7xR3hW/LyFkEYCwwCrbKe6TmpELMeo0vdXgfy3ThAuQP9H3TSIKLGCYuVgq4dFHED18tlG5QPW2X6
-	29r8UUJJbG9lIF3wmczEsucYFIugLhWUz0ycuynKlD2zvfQRQnluF0rWdNFO/IxrTteUaxvbtIT+R
-	A+uohK74n/oAbYUdKd9p13nbgP65AH+9wsIJmnKh6fLHmpGoz2rfgMvLbvHUU9rrY/eQSeg1BROOR
-	pnjH+a0A==;
+	bh=1sXBNqug0DkE2sO3RKQReACBcJvWTOGM7QqwiJSRO1g=; b=whAM6q4neI/CHNZ5beYfPenTDH
+	9fkasvVSfjbLxojJfCzELEYCunq/Nu1lnuk0kMrItR8ib04qIsEdwS/rTVpSZ1GZeABFrE88rTujd
+	+o0rziE1Z6v3M/WH+wwPu90HOqsLw4diUKWF4x0GOcIFOYmvy4BrotkgsQJ6SfmbCdliqWocuZqoO
+	0z5ADzTNySFOBefq2478D0g1hvJXRhWc7CZzJh+ckDSVtS5G7IZbLcwtlkriMhkw/4FxS2V3YiRk4
+	KMfLpvB7HgT7DzyEl8ZxyObLtt46iY9m7jCK7ShvwlBPm+2qI+ZkFj8WirauxJ6yWXYog8l4GzhNv
+	mkbST3qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w84Wl-0000000GLLc-2WI0;
-	Wed, 01 Apr 2026 22:59:11 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1w853p-0000000GRfl-2Z97;
+	Wed, 01 Apr 2026 23:33:21 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w84Wi-0000000GLLC-3wPj
+	id 1w853j-0000000GRf6-3Ood
 	for linux-mediatek@lists.infradead.org;
-	Wed, 01 Apr 2026 22:59:10 +0000
+	Wed, 01 Apr 2026 23:33:20 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id D510A4055B
-	for <linux-mediatek@lists.infradead.org>; Wed,  1 Apr 2026 22:59:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B3619C116C6
-	for <linux-mediatek@lists.infradead.org>; Wed,  1 Apr 2026 22:59:07 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 12C1F43208
+	for <linux-mediatek@lists.infradead.org>; Wed,  1 Apr 2026 23:33:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E0B53C2BCB0
+	for <linux-mediatek@lists.infradead.org>; Wed,  1 Apr 2026 23:33:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1775084347;
-	bh=Bh04i1AsLlmfPzJc4tfDUDKrG+zQUwrNren6a6q14IY=;
+	s=k20201202; t=1775086394;
+	bh=1sXBNqug0DkE2sO3RKQReACBcJvWTOGM7QqwiJSRO1g=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=nr4mDDMpqOPxtogvY217Vr023niJV3H3X+OEMpaBiyygtUn+HYAlNrHa+1I0NxIN+
-	 iMjn0jgFnRVud5+eAU0J6oMFx8hirsUMhRIb0Pr89kut46lMEpiIGHbhNUsFcjP+TK
-	 bKyuXfQCvJX3izTSc6qxW5u5qKxC4BhkouI0c5lwoJ+AKfEGMuhG2Msm/ABCknL4De
-	 oygKcNZO6KL4c18d8Sn89Fh9mwhpHFePpc2DW+928Unq3fBDlOVRtW9iKG79wMHTmW
-	 +4tYRhV7PM0DiLMaYIm8CdR5zjrDJfQ/8XIWJbpirrSiD+N+56wF0gk/nx7GsupDq6
-	 PMYs9ctGKU89g==
-Received: by mail-lj1-f175.google.com with SMTP id 38308e7fff4ca-38ad26e3992so2728431fa.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 01 Apr 2026 15:59:07 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCWlZvu3S6euyJQ22foBq7sU6PzXK+/LH+JdmkmceNcOeB7dLF4a9wiRV9ZWdc2V+x1NYx8QGzCl/Na3Wkfong==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyTXCkG+C6R1IA/W3Is4Qb1N/79qmQ7XHW9X67wYp+aadl1gTX7
-	6Q4A3tlCFv0CqJ0LXFuVofhybsGnQas/s5xJNiE06yrhnEUpGZfEDyt8UyP9OYa8i72pmDRtTG3
-	ERA421dSo8Ro6hDLy43i/7Etqei0b3ho=
-X-Received: by 2002:a05:651c:324b:b0:37c:d689:7e1c with SMTP id
- 38308e7fff4ca-38cc3072eeamr20758451fa.23.1775084346107; Wed, 01 Apr 2026
- 15:59:06 -0700 (PDT)
+	b=b/5T8d5hK0Af0DpF0zqeb3jsYu8NsJg3mz2UzZZplfwnYEiZO7g2QA3Ff1NC7R4XJ
+	 0gowvLGs0sXRxQMBqi8h8owSdKNg7+ZvH2B1DICiRBsC5aooxonbeOSuDztkf4SkGs
+	 UA9DK8ybPw8uRake+0k2t6TLlChHe8W91kNaI+RnWO12YauXMI9V9rCX0HB5RvXDSO
+	 4jB5lScb1ASi6LJFVLnLqoHMQ0uqnhGmjemtWh+LndetKe+NKxgeRzWo/+oYYB6VIU
+	 YmnqsJR+jGhbkWDp+wpOduMqwJq83LphwNQe8nLfmKG2bEca1MpwB/aDp0iq3aVgGi
+	 uh6Q/6IiGERPA==
+Received: by mail-lj1-f173.google.com with SMTP id 38308e7fff4ca-38a23dd61c1so2698031fa.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 01 Apr 2026 16:33:14 -0700 (PDT)
+X-Gm-Message-State: AOJu0YyLvnMQRAO5J3Z+1632d8UrItkl450kM2WFDlSICz4fizzE0ZEl
+	dN+fjzIqzA2eF4jQcUKLYOSUvvlw96Dd10rjsT5WZzjJ8aUEWLB5aJmurxk8y68Zn1Vq8hLChm/
+	OIG8qljiuXY1v05vElA1a90fjpO/W+VU=
+X-Received: by 2002:a2e:96c4:0:b0:38b:fd3e:c42f with SMTP id
+ 38308e7fff4ca-38cc2f6d560mr14044901fa.14.1775086393244; Wed, 01 Apr 2026
+ 16:33:13 -0700 (PDT)
 MIME-Version: 1.0
-References: <59f58f03-6dee-4380-80d6-7e2778b5f14b@altlinux.org> <f264b392-37bc-4b31-ac0e-768466f2b962@altlinux.org>
-In-Reply-To: <f264b392-37bc-4b31-ac0e-768466f2b962@altlinux.org>
+References: <CAEoHs0hONW_X8POryv-YC8ahGAVoOsvXXJw9VnDOguSgq52v=Q@mail.gmail.com>
+In-Reply-To: <CAEoHs0hONW_X8POryv-YC8ahGAVoOsvXXJw9VnDOguSgq52v=Q@mail.gmail.com>
 From: Sean Wang <sean.wang@kernel.org>
-Date: Wed, 1 Apr 2026 17:58:54 -0500
-X-Gmail-Original-Message-ID: <CAGp9LzrfD+a84ZVGjUnrv7KYCpgfe88NyrXos8wW8U7aKM8BZw@mail.gmail.com>
-X-Gm-Features: AQROBzCRx5vmL5Svm5WZlkSZUDNKHT4mh-uraOryAXlhYNAIGQLo8xUpZway6ys
-Message-ID: <CAGp9LzrfD+a84ZVGjUnrv7KYCpgfe88NyrXos8wW8U7aKM8BZw@mail.gmail.com>
-Subject: Re: [BUG] mt7921e: Intermittent connection failure
-To: silverducks@altlinux.org
-Cc: linux-wireless@vger.kernel.org, nbd@nbd.name, lorenzo@kernel.org, 
+Date: Wed, 1 Apr 2026 18:33:00 -0500
+X-Gmail-Original-Message-ID: <CAGp9LzqMNFwQVg248rxEQ=YPhqABprVGMHx2jREmSBBzSW91aw@mail.gmail.com>
+X-Gm-Features: AQROBzDkN6WEAOoeEce2wboeQZfOu-bn-7y38aYDKlWopxuom81kQnrkfRRU5wI
+Message-ID: <CAGp9LzqMNFwQVg248rxEQ=YPhqABprVGMHx2jREmSBBzSW91aw@mail.gmail.com>
+Subject: Re: [BUG] mt7925e: MSI Vector A16 HX A8WHG-004US reports permanent
+ hardware rfkill block under Linux; ACPI GPPA.WLAN AE_ALREADY_EXISTS
+To: Ross <rosspayant@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, nbd@nbd.name, lorenzo@kernel.org, 
 	ryder.lee@mediatek.com, shayne.chen@mediatek.com, sean.wang@mediatek.com, 
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+	deren.wu@mediatek.com, linux-wireless@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260401_155909_019548_9EC477F4 
-X-CRM114-Status: GOOD (  15.15  )
+X-CRM114-CacheID: sfid-20260401_163315_895476_8C5A6385 
+X-CRM114-Status: GOOD (  33.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,43 +85,148 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi,
 
-On Tue, Mar 31, 2026 at 2:40=E2=80=AFAM silverducks <silverducks@altlinux.o=
-rg> wrote:
+On Mon, Mar 9, 2026 at 2:20=E2=80=AFPM Ross <rosspayant@gmail.com> wrote:
 >
-> Greetings!
+> Hello, I want to report a wifi bug. This bug makes the wifi hard lock
+> on my computer under Arch Linux as well as Fedora. Wifi does work on
+> Linux LTE and Windows 11. The computer is a Vector A16 HX A8WHG-004US
+> and this it's actually the second I bought. I returned the first one
+> because of the exact same bug. Since I got the second one I've stuck
+> it through hoping there would be a fix, it's been three months now.
+> I've tried all the possible fixes (on both machines), nothing. "sudo
+> rfkill unblock all" and "sudo rfkill unblock wifi" do not work. There
+> is no switch in the bios or "airplane mode" hotkey to toggle either.
+> The wifi just does not work in Linux (apart from LTE). I've updated
+> the bios to the new version every time a new one drops (including the
+> most recent one from a couple days ago) and nothing has changed
+> anything. I've updated everything else frequently. No dice.
 >
-> I apologize for poor formatting in the previous email. I did not realize =
-all
-> plain text files' contents would be visible on the mailing list.
-> I am attaching an archive containing the same files as in previous email =
-for
-> convenience.
-> Given compression, I can also avoid using external hosting, which I
-> presume is
-> preferred, so I am including all relevant logs in the archive as well.
-> I am also including original email text just in case.
+> Anyway, I suppose this is where I go to file report bugs like this?
+> I've never issued a bug report before so I'm not sure. Thank you so
+> much for giving this the time of day, as well as all the other work
+> you do on the LInux project. If you need further information I'll give
+> you whatever you need.
+>
+> I had the following written for me by AI but I can confirm it's
+> accurate to the problem:
+>
+>
+> I am reporting what appears to be an MSI-platform-specific MT7925
+> hard-rfkill issue on Linux.
+>
+> Hardware
+> - Laptop: MSI Vector A16 HX A8WHG-004US
+> - WLAN: MEDIATEK MT7925 802.11be 160MHz 2x2 PCIe Wireless Network
+> Adapter [14c3:7925]
+> - Subsystem: Foxconn International, Inc. Device [105b:e138]
+>
+> Software
+> - BIOS: E15MMAMS.107
+> - Kernel: 6.19.6-arch1-1
+> - linux-firmware: 20260221-1
+> - Distro: Arch Linux
+>
+> Problem
+> - The Wi-Fi device is detected correctly.
+> - The mt7925e driver binds successfully.
+> - Firmware appears to load.
+> - The interface is created/renamed to wlp5s0.
+> - However, rfkill always reports the WLAN as hard blocked.
+>
+> Current rfkill state
+> - Bluetooth: Soft blocked: no / Hard blocked: no
+> - Wireless LAN: Soft blocked: no / Hard blocked: yes
+>
+> Attempted commands
+> - sudo rfkill unblock wifi
+> - sudo rfkill unblock all
+>
+> Neither command changes the WLAN hard block.
+>
+> Relevant observations
+> - lspci shows:
+> MEDIATEK Corp. MT7925 802.11be 160MHz 2x2 PCIe Wireless Network
+> Adapter [Filogic 360] [14c3:7925]
+> Kernel driver in use: mt7925e
+> - The boot log shows the device being enabled, ASIC revision detected,
+> firmware information printed, and the interface renamed from wlan0 to
+> wlp5s0.
+> - The same boot log also shows repeated ACPI errors involving WLAN
+> objects under \_SB.PCI0.GPPA.WLAN..., including repeated
+> AE_ALREADY_EXISTS failures.
+>
+> This makes it look like:
+> - the device is present,
+> - the mt7925e driver is loading,
+> - but platform/ACPI state may be forcing or misreporting hardware rfkill.
+>
+> Relevant kernel log excerpt
+>
+> mt7925e 0000:05:00.0: enabling device (0000 -> 0002)
+> mt7925e 0000:05:00.0: ASIC revision: 79250000
+> mt7925e 0000:05:00.0: HW/SW Version: 0x8a108a10, Build Time: 202601061530=
+07a
+> mt7925e 0000:05:00.0: WM Firmware Version: ____000000, Build Time:
+> 20260106153120
+> mt7925e 0000:05:00.0 wlp5s0: renamed from wlan0
+>
 
-I think the current test setup is still mixing too many variables, so
-it is hard to tell what is actually triggering the issue.
+From the logs so far, this does not look like a basic mt7925e
+initialization failure. The device probes normally, firmware loads,
+and the interface is created, but the WLAN still ends up reported as
+hard blocked, so Wi-Fi never becomes usable. Typically, this kind of
+blocked state comes from a platform-level source, such as a hardware
+radio switch or platform-provided radio state, rather than from the
+mt7925e path itself.
 
-In particular, if the goal is to test the NetworkManager path, the
-script should not also manually manage wpa_supplicant, and iwd should
-not be part of the same test either. NetworkManager normally manages
-the Wi-Fi backend itself, so mixing manual wpa_supplicant handling,
-iwd, and NetworkManager in one setup makes the result difficult to
-interpret.
-
-Could you first simplify the setup and test one path at a time?
-
-If you want to test NetworkManager, use only NetworkManager, for
-example by using nmcli to explicitly control the connection steps.
-If you want to test plain wpa_supplicant, stop NetworkManager
-completely and use only wpa_supplicant + wpa_cli. I would suggest
-starting with this path, since that is also the setup I usually use
-for testing.
-If you want to test iwd, please test it separately as well.
-Also suggest to avoid suspend/resume or hibernation for now.
-The log you shared includes a clear S4 resume path (ACPI: PM: Waking
-up from system sleep state S4 and pci_pm_restore returns -110), which
-does not match a simple reconnect or module reload test.
+> ACPI BIOS Error (bug): Failure creating named object
+> [\_SB.PCI0.GPPA.WLAN._S0W], AE_ALREADY_EXISTS
+> ACPI BIOS Error (bug): Failure creating named object
+> [\_SB.PCI0.GPPA.WLAN._S4W], AE_ALREADY_EXISTS
+> ACPI BIOS Error (bug): Failure creating named object
+> [\_SB.PCI0.GPPA.WLAN._DSM], AE_ALREADY_EXISTS
+> ACPI BIOS Error (bug): Failure creating named object
+> [\_SB.PCI0.GPPA.WLAN.PCIF], AE_ALREADY_EXISTS
+> ACPI BIOS Error (bug): Failure creating named object
+> [\_SB.PCI0.GPPA.WLAN.NVID], AE_ALREADY_EXISTS
+> ACPI BIOS Error (bug): Failure creating named object
+> [\_SB.PCI0.GPPA.WLAN.NDID], AE_ALREADY_EXISTS
+> ACPI BIOS Error (bug): Failure creating named object
+> [\_SB.PCI0.GPPA.WLAN.PWR1], AE_ALREADY_EXISTS
+> ACPI BIOS Error (bug): Failure creating named object
+> [\_SB.PCI0.GPPA.WLAN._PR0], AE_ALREADY_EXISTS
+> ACPI BIOS Error (bug): Failure creating named object
+> [\_SB.PCI0.GPPA.WLAN._PR2], AE_ALREADY_EXISTS
+> ACPI BIOS Error (bug): Failure creating named object
+> [\_SB.PCI0.GPPA.WLAN._PR3], AE_ALREADY_EXISTS
+> ACPI BIOS Error (bug): Failure creating named object
+> [\_SB.PCI0.GPPA.WLAN.PWFR], AE_ALREADY_EXISTS
+> ACPI BIOS Error (bug): Failure creating named object
+> [\_SB.PCI0.GPPA.WLAN._PRR], AE_ALREADY_EXISTS
+>
+> Reproduction
+> 1. Boot Linux normally.
+> 2. Run:
+> rfkill list all
+> 3. Wireless LAN is always reported as:
+> Soft blocked: no
+> Hard blocked: yes
+>
+> Additional notes
+> - Windows 11 on the same laptop can use Wi-Fi normally.
+> - Updating BIOS from E15MMAMS.106 to E15MMAMS.107 did not resolve the iss=
+ue.
+> - This may be similar in shape to other MT7925 hard-rfkill issues that
+> required a machine-specific quirk, but on this MSI model the prominent
+> clue is the repeated ACPI GPPA.WLAN object collision.
+>
+> Please let me know if you want:
+> - full lspci -nnk output
+> - full dmesg/journalctl -b -k
+> - acpidump / decoded DSDT
+> - additional testing with a proposed patch or boot parameter
+>
+> --
+> Ross Payant
+>
 
