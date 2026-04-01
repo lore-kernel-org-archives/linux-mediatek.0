@@ -4,94 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 935FD10F92EC
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Apr 2026 01:22:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C96F910F9318
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Apr 2026 02:40:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cc8X+evmSW2GvriYn2tcPlQ6m5YeoX1kIdk1sd4Bupk=; b=UrnsRrdGGqIoNy6CEOfugeyH/x
-	xvLkxZZ6x5pbtsTco2fDVXNRD32QkpRe0Vmbp9c5J1/1Ki/ZrKzYw4sxX55en3prXGsBY4bPODcTJ
-	Aw4lpiSMxsgeCB/nsV3BY+kRwaq9rr8TmIznU1/4n7AImHJve8uslS+EEDWqeQqdsc0QYdsRadFzH
-	Auqs+EOLCUmIF/tIpF5Yy+oWfVwjXrD/mJknYumqgsh1MPBG9YVufEHprp0pGju+Vj/3XLhsTaFfA
-	YSRf5tr2vG2vSoYzkhe0mxkRR0QbnzQt0KPjT51bgF7n6UVNoJkvhvaK0w1cDmVC/BsHLvhMGqMlI
-	luASfjXA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Stq5PUCpdAv/LJBgiwUgdDzIj2dFhHSZ+EfCK/OxO9M=; b=31bQArDj6gEelWiTc3VfdWjpEa
+	v6wAiXV6oGOX81EKYZInos0ZqHNmKtXmI6TeI2v6bRXCRSkeNA4VVF8p2XkT7Zx6hBUBrV755hh5U
+	zMSbrzpJqwStqSQOSsrO0PFtPdYq+HBu6wpHzekEhF72ecEHgvUYF2B+NzWcwMdiC6D3CGvk8J/FY
+	2/MGwl7PN2Ukr3jZXLNJGQkyb5sOczGufs84wsNBk2160d3iUEqvQvHuBl2Y/AXBeoDxVMPnmdEfu
+	YrE50cHT3FwOTb701SkT6/p985EoUkS3Th7iQYYOItofNDOfVi+deJ6KvELwGLTTaIPtZxzyR8Eei
+	dbWjHHRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7kHd-0000000DmyO-1LRa;
-	Wed, 01 Apr 2026 01:22:13 +0000
-Received: from mgamail.intel.com ([192.198.163.19])
+	id 1w7lVO-0000000Dr7S-1BkG;
+	Wed, 01 Apr 2026 02:40:30 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7kHa-0000000Dmxy-1yEe;
-	Wed, 01 Apr 2026 01:22:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1775006530; x=1806542530;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=IV/ezrq2wJekwozwDxi/VB18Q8hzC5mhy/g8CQQwaXc=;
-  b=hq7puzR+eHev2QNZUSeOeL8l1B2CsfRmYOMfsG9qN2YFQO2ERVwB13uA
-   VHvyJDmtCN7hBWjHaQAmq5AM687R35JoYxOwoNidkMfT0X4EY/RCV4iRg
-   2BKbywEnyGvUvhHYVIj/pWzudLbCxGW4eCsULMP3rgj8Ts9PemVbKoj2f
-   VBkuR+OwCsIfW7swEC17oGd5Z3pXHWMUacrTTvJvVvFMrJgiML1hY6sd5
-   fo4zsOJFOVKHc8x9b1jkMDsbhBrVdSO8JqdjgDv8D0eqWYIJwgaRRuDfD
-   nv9LAxV7pssc74YUHDuh9TXg/b3+gGO7k+xg9GlwIO6XVYJD+5C9i6LAV
-   w==;
-X-CSE-ConnectionGUID: +5CrZ3EZQ+OhHFpkYeoUOA==
-X-CSE-MsgGUID: gxzXnbOXQWyKR21+CHLtdw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11745"; a="75073332"
-X-IronPort-AV: E=Sophos;i="6.23,152,1770624000"; 
-   d="scan'208";a="75073332"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
-  by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Mar 2026 18:22:06 -0700
-X-CSE-ConnectionGUID: tC+gR6JkSHirq2rGvZGdwg==
-X-CSE-MsgGUID: k10tL47EQp29KSvB8kLdpw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,152,1770624000"; 
-   d="scan'208";a="230596232"
-Received: from lkp-server01.sh.intel.com (HELO 283bf2e1b94a) ([10.239.97.150])
-  by orviesa003.jf.intel.com with ESMTP; 31 Mar 2026 18:22:00 -0700
-Received: from kbuild by 283bf2e1b94a with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1w7kHN-000000004XR-0wJY;
-	Wed, 01 Apr 2026 01:21:57 +0000
-Date: Wed, 1 Apr 2026 09:21:46 +0800
-From: kernel test robot <lkp@intel.com>
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
-	linux-mediatek@lists.infradead.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	Fabien Parent <parent.f@gmail.com>, Val Packett <val@packett.cool>,
-	Luca Leonardo Scorcia <l.scorcia@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Linus Walleij <linusw@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Julien Massot <julien.massot@collabora.com>,
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
-	Gary Bisson <bisson.gary@gmail.com>,
-	Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-gpio@vger.kernel.org
-Subject: Re: [PATCH v4 7/9] regulator: Add MediaTek MT6392 regulator
-Message-ID: <202604010924.UuETwSKZ-lkp@intel.com>
-References: <20260330083429.359819-8-l.scorcia@gmail.com>
+	id 1w7lVM-0000000Dr7F-13fg;
+	Wed, 01 Apr 2026 02:40:28 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 8784C60120;
+	Wed,  1 Apr 2026 02:40:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3E28EC19423;
+	Wed,  1 Apr 2026 02:40:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1775011227;
+	bh=F77V0qacPu1vsT0FF1/qkJ4lDD4ex7Tvwh26H0RDfT0=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=hnDQpZyUmF5pzivLNcBWW/aekszVoClHVqiREtpV4lnfq4i87xhLVMYTx1iKb/g3Z
+	 4uDhC7DLQhaYkR3HRPy+TntSKakePRTJGutqWr30q8zaVGRoQzwJ19+gLteE90qHj/
+	 GLB+F3WSL2znt9OIf1pERFatXlA1m/V3qa8GvIcBzLCVZnP7l+8XEY4K8h+swxRe7N
+	 RjY4VK4sxHIWtYC5VXF8Fcu1+L4bMb1bz+RVzV70yPX2xS8hL6N7wi8eoNnT0Go5jf
+	 M3Pe2M65I2LR0ff10Sj+WlhbitGBVsRaFCGFzkJkygdxv1cBTv2eb312hYJhdsa4za
+	 KDc4zFeSXY8aQ==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id BA0453808203;
+	Wed,  1 Apr 2026 02:40:11 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260330083429.359819-8-l.scorcia@gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260331_182210_524476_251D0F61 
-X-CRM114-Status: GOOD (  13.77  )
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next] net: airoha: Fix typo in
+ airoha_set_gdm2_loopback
+ routine name
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <177501121053.3042140.8960610979272112652.git-patchwork-notify@kernel.org>
+Date: Wed, 01 Apr 2026 02:40:10 +0000
+References: <20260330-airoha_set_gdm2_loopback-fix-typo-v1-1-a1320ff6b6cc@kernel.org>
+In-Reply-To: <20260330-airoha_set_gdm2_loopback-fix-typo-v1-1-a1320ff6b6cc@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,46 +73,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Luca,
+Hello:
 
-kernel test robot noticed the following build warnings:
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-[auto build test WARNING on lee-mfd/for-mfd-next]
-[also build test WARNING on broonie-regulator/for-next linusw-pinctrl/devel linusw-pinctrl/for-next lee-mfd/for-mfd-fixes linus/master v7.0-rc6 next-20260330]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+On Mon, 30 Mar 2026 00:03:49 +0200 you wrote:
+> Rename airhoha_set_gdm2_loopback() in airoha_set_gdm2_loopback()
+> 
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  drivers/net/ethernet/airoha/airoha_eth.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> [...]
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Luca-Leonardo-Scorcia/dt-bindings-mfd-mt6397-Add-MT6392-PMIC/20260331-081127
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/lee/mfd.git for-mfd-next
-patch link:    https://lore.kernel.org/r/20260330083429.359819-8-l.scorcia%40gmail.com
-patch subject: [PATCH v4 7/9] regulator: Add MediaTek MT6392 regulator
-config: hexagon-allmodconfig (https://download.01.org/0day-ci/archive/20260401/202604010924.UuETwSKZ-lkp@intel.com/config)
-compiler: clang version 17.0.6 (https://github.com/llvm/llvm-project 6009708b4367171ccdbf4b5905cb6a803753fe18)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260401/202604010924.UuETwSKZ-lkp@intel.com/reproduce)
+Here is the summary with links:
+  - [net-next] net: airoha: Fix typo in airoha_set_gdm2_loopback routine name
+    https://git.kernel.org/netdev/net-next/c/a94ddc191f19
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202604010924.UuETwSKZ-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
->> drivers/regulator/mt6392-regulator.c:181:18: warning: unused variable 'ldo_volt_table1b' [-Wunused-const-variable]
-     181 | static const u32 ldo_volt_table1b[] = {
-         |                  ^~~~~~~~~~~~~~~~
-   1 warning generated.
-
-
-vim +/ldo_volt_table1b +181 drivers/regulator/mt6392-regulator.c
-
-   180	
- > 181	static const u32 ldo_volt_table1b[] = {
-   182		1500000, 1800000, 2500000, 2800000,
-   183	};
-   184	
-
+You are awesome, thank you!
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
