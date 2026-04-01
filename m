@@ -4,63 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6C45D3514D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Apr 2026 07:00:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3834D35162
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Apr 2026 09:45:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UrkFsLKIX2f88NcAiZCmJmcVyJyMz8+p7lKis3Rh/9Q=; b=t8RWOuWdxCPlbVqrxQK86M/92d
-	B09dS7NUPmV45y6KkgDrus7QDgRHI1jH4zsmhTYqmM/zCfjmagpznaKYbQ/AEH0Qe/uBOg+Z9Grw0
-	Iw0J5RnlceGPgXFqDuhPm0F3n1Vgn7NbTA52fOT5ZEvrUdGcHAAoZvd5uHT8g3Hk9aLKWozKqHSwi
-	iYvvv0ZGF4zsGgFBFynxbjpmj2zqXzoGJVHVPi3H3IPzSaFHcofayvsx+0StYAXonkgJatRO//WpI
-	fFDXonEldAZZ5/TLgf1nvr6vvKS8nBD7CiAQclEkGQsram+k3oq31UOFqug4T8Gvnm5LO4AqyExvE
-	YDkScw5Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ACcaxtMVSGhLKYW7D/qzvB0FLltv++7jcCBwwGZnKyw=; b=RetT6T8Omp1QsD3NbBhMD4h57/
+	VDwhfPusgPNE8x8ujlDKxwvXngpchKYbr/pgUJiyas1C/oFDqopollTNdfO1vY3Ip794VwBWWquZm
+	pqM2HlVmbSH3lUVzukqT+rr6YauJamgesu50oulGpGo+T64y1KOvWkqAXF01R7COL7+eCORASo6GU
+	j8V/CZPox/Be+eO+sUT1fjQ4n7C3l95v2HViRKVw8YkfCKZ5gj03+3UFCMkVu7Lh8Er96BsH9IcSo
+	sA44GA7nx7G3X8q0SfO4unRndSMcYnqDgPonvvvbhw0jRGkViROLNhgyYtdFbmJobRO4cXHKFhYE+
+	r+B1fodg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7pZQ-0000000E9gi-2JMk;
-	Wed, 01 Apr 2026 07:00:56 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1w7s8w-0000000ERBV-2yzx;
+	Wed, 01 Apr 2026 09:45:46 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7pZ1-0000000E9L4-2hz7;
-	Wed, 01 Apr 2026 07:00:31 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1375E60121;
-	Wed,  1 Apr 2026 07:00:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3FDF1C2BCB2;
-	Wed,  1 Apr 2026 07:00:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1775026830;
-	bh=zot45+s4jeVdAguxss4LYuLtmhR3y6kpT1CAA1uASco=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=rm4zgsjp66OmWKDxKb+cbYUgPP6BpbKod/CPq8WZDAtuGd2VjljIsq+jW79GCyRL0
-	 bJLxHgxybJXdGsRcffN5m5QC2HdH1rWtg/JqZxCkceA2mSnUuK7XRsOqp9vlIrn0vi
-	 Hp97akhbi/2WvCKGdeo6rOfQ3W2rWeoV2D3TrIN3BD0ViGMKgYTh0rGPW7jOBSyZ+/
-	 kjf8ikAnYIRK3tOVvbfwK5FPGqVtOGUsn0AhaT++CGdVvjcm+mHB1QdSF4X1R3cGaG
-	 PUnRv87zg1Y99EzrRnGquoyw3q0NG4cL8n8r13s8ot/dwN+C4g3sUhYsKkuevgjLxH
-	 dRI0zeEng9b9w==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Wed, 01 Apr 2026 08:59:29 +0200
-Subject: [PATCH net-next v2 11/11] net: airoha: Rename get_src_port_id
- callback in get_sport
+	id 1w7s8t-0000000ERAU-2wuQ;
+	Wed, 01 Apr 2026 09:45:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1775036740;
+	bh=d59Vvq+IUOLgliXQPlQq76Luy0alKaQ2aX44NWQeWlI=;
+	h=From:Date:Subject:To:Cc:From;
+	b=I11Ud/2f41YKWZ8Om2tBAC/Ek+BcmwXc69hq0zcuK3AEQtpNge8HAsnizflFJPxkA
+	 96VXJxsQW1h9wAiuUMORZ5H6BCTRZPMuvMJ0GYOUI1iaBMEWMdn9JYowgE3Lbgkyf1
+	 U5dkcJXayM9y9b9uuzcAMGDk/GA1KLdDw6F9zRqcfgG5uC2JSb3g3CMELdrNoknDmi
+	 DE2PTX+5p/yZUqdigz6SiJcNa9qF8bEIMzKO1h2BCjRKAy2ziO8vsWlNQFlVkodrW1
+	 8HHrxNQD4pLHbHH1kXOVUybUFqlTdZB4ran93ZSahgoivKnB6kHnSe52NqP2RkOIt2
+	 /eCtF3A0Vz/xQ==
+Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 74FBB17E759A;
+	Wed,  1 Apr 2026 11:45:39 +0200 (CEST)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Date: Wed, 01 Apr 2026 11:44:15 +0200
+Subject: [PATCH] media: mtk-jpeg: cancel workqueue on release for supported
+ platforms only
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260401-airoha-eth-multi-serdes-v2-11-ac427ae4beeb@kernel.org>
-References: <20260401-airoha-eth-multi-serdes-v2-0-ac427ae4beeb@kernel.org>
-In-Reply-To: <20260401-airoha-eth-multi-serdes-v2-0-ac427ae4beeb@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Christian Marangi <ansuelsmth@gmail.com>, 
- Benjamin Larsson <benjamin.larsson@genexis.eu>, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- netdev@vger.kernel.org, devicetree@vger.kernel.org
+Message-Id: <20260401-mtk-jpeg-release-issue-v1-1-2271a1779340@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yWN2w6CMBBEf6XZZzdpizf4FcJDhRVXbcFuMSSEf
+ 7fC45nJmVlAKDIJVGqBSF8WHkIGc1DQPlzoCbnLDFbbsz5qgz698DlSj5He5CT3IhNhdy2tKS/
+ a2ZOGLI+R7jxvw3Wzc6TPlPfTHsLtL7eD95wqFWhOuH0UhYFmXX/AAkBxmQAAAA==
+X-Change-ID: 20260401-mtk-jpeg-release-issue-d8921970a250
+To: Bin Liu <bin.liu@mediatek.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Hans Verkuil <hverkuil+cisco@kernel.org>, Fan Wu <fanwu01@zju.edu.cn>
+Cc: kernel@collabora.com, linux-media@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1775036739; l=2803;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=d59Vvq+IUOLgliXQPlQq76Luy0alKaQ2aX44NWQeWlI=;
+ b=fYdV0Isw9rPolpF51EkIAXenhPIyyvue9pwR6ZLlxJqtdB2oY7GFZ4+8ZOP6y1rO9Mi5feQJK
+ CiH4s6Oug6GCXdBXrCtsPrA0+M4tPQk+yWcCnZoZ0TLfmKwQxUZusJM
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260401_024543_962094_B95CAB51 
+X-CRM114-Status: GOOD (  14.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,80 +90,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For code consistency, rename get_src_port_id callback in get_sport.
-Please note this patch does not introduce any logical change and it is
-just a cosmetic patch.
+Since a recent fix the mtk_jpeg_release function cancels any pending
+or running work present in the driver workqueue using
+cancel_work_sync function.
+Currently, only the multicore based variants use this workqueue and they
+have the jpeg_worker platform data field initialized with a workqueue
+callback function. For the others, this field value remain NULL by
+default.
+The cancel_work_sync function is unconditionally called in
+mtk_jpeg_release function, even for the variants that do not use the
+workqueue. This call generates a WARN_ON print in __flush_work because
+the workqueue callback function presence check fails in __flush_work
+function (used by cancel_work_sync).
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+So, to avoid these warnings, call cancel_work_sync only if a workqueue
+callback is defined in platform data.
+
+Fixes: 34c519feef3e ("media: mtk-jpeg: fix use-after-free in release path due to uncancelled work")
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- drivers/net/ethernet/airoha/airoha_eth.c | 10 +++++-----
- drivers/net/ethernet/airoha/airoha_eth.h |  2 +-
- 2 files changed, 6 insertions(+), 6 deletions(-)
+Patch to fix the following warning that occurs on boards such as
+Mediatek Genio 510-EVK:
+```
+WARNING: kernel/workqueue.c:4291 at __flush_work+0x320/0x340, CPU#1:
+  v4l_id/409
+...
+Call trace:
+ __flush_work+0x320/0x340 (P)
+ cancel_work_sync+0x6c/0x9c
+ mtk_jpeg_release+0x2c/0x84 [mtk_jpeg]
+ v4l2_release+0x8c/0xe8 [videodev]
+ __fput+0xcc/0x2e0
+ fput_close_sync+0x40/0x100
+ __arm64_sys_close+0x38/0x7c
+ invoke_syscall+0x54/0x10c
+ el0_svc_common.constprop.0+0xc0/0xe0
+ do_el0_svc+0x1c/0x34
+ el0_svc+0x34/0x108
+ el0t_64_sync_handler+0xa0/0xf0
+ el0t_64_sync+0x198/0x19c
+---[ end trace 0000000000000000 ]---
+```
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 3f9bce8c537081756aff276009c77670ec5915f4..5fe48601bb623f9dba9d3a4d2c1fd6c8276aba88 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -1751,7 +1751,7 @@ static int airoha_set_gdm2_loopback(struct airoha_gdm_dev *dev)
- 	airoha_fe_clear(eth, REG_FE_VIP_PORT_EN, BIT(AIROHA_GDM2_IDX));
- 	airoha_fe_clear(eth, REG_FE_IFC_PORT_EN, BIT(AIROHA_GDM2_IDX));
- 
--	src_port = eth->soc->ops.get_src_port_id(port, dev->nbq);
-+	src_port = eth->soc->ops.get_sport(port, dev->nbq);
- 	if (src_port < 0)
- 		return src_port;
- 
-@@ -3228,7 +3228,7 @@ static const char * const en7581_xsi_rsts_names[] = {
- 	"xfp-mac",
- };
- 
--static int airoha_en7581_get_src_port_id(struct airoha_gdm_port *port, int nbq)
-+static int airoha_en7581_get_sport(struct airoha_gdm_port *port, int nbq)
- {
- 	switch (port->id) {
- 	case AIROHA_GDM3_IDX:
-@@ -3292,7 +3292,7 @@ static const char * const an7583_xsi_rsts_names[] = {
- 	"xfp-mac",
- };
- 
--static int airoha_an7583_get_src_port_id(struct airoha_gdm_port *port, int nbq)
-+static int airoha_an7583_get_sport(struct airoha_gdm_port *port, int nbq)
- {
- 	switch (port->id) {
- 	case AIROHA_GDM3_IDX:
-@@ -3350,7 +3350,7 @@ static const struct airoha_eth_soc_data en7581_soc_data = {
- 	.num_xsi_rsts = ARRAY_SIZE(en7581_xsi_rsts_names),
- 	.num_ppe = 2,
- 	.ops = {
--		.get_src_port_id = airoha_en7581_get_src_port_id,
-+		.get_sport = airoha_en7581_get_sport,
- 		.get_dev_from_sport = airoha_en7581_get_dev_from_sport,
- 	},
- };
-@@ -3361,7 +3361,7 @@ static const struct airoha_eth_soc_data an7583_soc_data = {
- 	.num_xsi_rsts = ARRAY_SIZE(an7583_xsi_rsts_names),
- 	.num_ppe = 1,
- 	.ops = {
--		.get_src_port_id = airoha_an7583_get_src_port_id,
-+		.get_sport = airoha_an7583_get_sport,
- 		.get_dev_from_sport = airoha_an7583_get_dev_from_sport,
- 	},
- };
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index 337bb2d1b59fac6d7bed216e7d7dbbe1ca89d3c5..bbd83d7b6453ae5e45b2e324bbee47883978675f 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -585,7 +585,7 @@ struct airoha_eth_soc_data {
- 	int num_xsi_rsts;
- 	int num_ppe;
- 	struct {
--		int (*get_src_port_id)(struct airoha_gdm_port *port, int nbq);
-+		int (*get_sport)(struct airoha_gdm_port *port, int nbq);
- 		int (*get_dev_from_sport)(struct airoha_qdma_desc *desc,
- 					  u16 *port, u16 *dev);
- 	} ops;
+It is based on linux-next (tag next-20260331) and has been tested on
+Mediatek Genio 510-EVK (mt8390) and 1200-EVK (mt8395) boards.
+---
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index 8c684756d5fc2524da3a67f67f0fdda894b676fc..d147ec48308110ae8520662e182dc0445447d8d0 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -1202,7 +1202,8 @@ static int mtk_jpeg_release(struct file *file)
+ 	struct mtk_jpeg_dev *jpeg = video_drvdata(file);
+ 	struct mtk_jpeg_ctx *ctx = mtk_jpeg_file_to_ctx(file);
+ 
+-	cancel_work_sync(&ctx->jpeg_work);
++	if (jpeg->variant->jpeg_worker)
++		cancel_work_sync(&ctx->jpeg_work);
+ 	mutex_lock(&jpeg->lock);
+ 	v4l2_m2m_ctx_release(ctx->fh.m2m_ctx);
+ 	v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
+
+---
+base-commit: e5da3eef8dadab4e98b228725ca8948edd9d601f
+change-id: 20260401-mtk-jpeg-release-issue-d8921970a250
+
+Best regards,
 -- 
-2.53.0
+Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
 
