@@ -4,108 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8D4D1076365
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Apr 2026 05:01:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E762D3514A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Apr 2026 07:00:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OqQ601QbL/y+YrmVBidvwxw5csxIEjRfbUIlqPG+O5M=; b=K5JjhVmFCnSOh8/Zr3peRiZ/uZ
-	1rAbrwclnzeEyt9O0le2r0+8h7jyFx606n402TKOpMqYw8KnypdFMVQwdu591BGuxfZ9TTD523vd8
-	Dc9X9eTvK2xj17Pei7nbcqJWoc9XaBYOIEpCoNExdU0sx6NKdY/HMoKlD94b5tb5t/yJ3yXCkdEJr
-	2foPgQnPLIewIpGs2P30KhvhmjEKkmmr7/uJkK44RDOeDAoAAsmF0hFHhHsCSs7nUnztweykqAgRb
-	sO8mz+BKxMhrt5dLH3O/jsyPUcrZt/ZMsXmDbgz8T/dZxCtYwd3NbWj37Ydq/RILmBzSopu/RdNDB
-	y27921og==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=le+EgAUwDVQurs9zi9zKKtauIBjk9pzxlau65VU9EC0=; b=XjvmkThvnTLDcp
+	UfnVU/ORIes8Yf+DdNr7HQb7RsHsB9t8xWq4l5x4eQBbiJCQ81yv4odx51mUrksVIg5Uc120IolpT
+	aJX0kBeMMkPY1fOD/Yffz2nOnSzDacpPUP9nvPz6dUIxMwHUzNP1uM6ErUipIX3GmhjGQsnm04eSh
+	AaYe89kPt1P4jK0jSqv/xxcvTCqdDv0JKb7OorDmooYfGOXrKFxNGhGgiSqxWT6dPEwYG+1KhssbC
+	m/gEq+jsbkOhEaru+xNMRkh0TIZleUUOifGMoNL80MPTW1Uz1SO58gpP9rvDHIGBTjktx+KmRBqS8
+	M0cZaV+pRJy+DHnOqGZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7nhJ-0000000DyJo-3bdL;
-	Wed, 01 Apr 2026 05:00:57 +0000
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+	id 1w7pYa-0000000E8zk-1cro;
+	Wed, 01 Apr 2026 07:00:04 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7nhI-0000000DyJR-19XV
-	for linux-mediatek@lists.infradead.org;
-	Wed, 01 Apr 2026 05:00:57 +0000
-Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-5a279ce9475so574731e87.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 31 Mar 2026 22:00:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1775019654; cv=none;
-        d=google.com; s=arc-20240605;
-        b=famV7FlyikXzH5NrHGgnFB1KC2ZOcuci9VWc1X5koGpKDkfpa5732ziDldweTlgmj/
-         HA5htjTfzCYEC33zO9u0LaupC4L9gVbe6K27y1T/et2IEnZz4QvxMbQvwsLS17l0rase
-         LAsaPy2rkSI7jKKq2UQ99N6oqlWMiNxBMM0WqD6CwbkGilWa4/Y1n+sBv/WzbuwoKvD1
-         M3uyWmO8o9Ilf9I5AXVkaMHVW0lJWQY/8pPOJHmBYNFiKENvSWvwucL0/e1BJ+daQhzS
-         7hMwNVbZTepPnRcBBuzl2bNkRNPXvlVtXFFZ0SD864rom9wjkkaiZT8Pzam7HUCntHzZ
-         +BgA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=OqQ601QbL/y+YrmVBidvwxw5csxIEjRfbUIlqPG+O5M=;
-        fh=Hjobwk3yVsD+fOQkop4xDRwE9lcG4UBEnFzjPkqA0zk=;
-        b=ZCeQSeIjDbxF1FlzFVFBL6qFuN/CwL7nOaqiWIz1yXdxUCOvXt71mbBsVeLaw8fJrj
-         FRj/Csd5+0Pn4urCb/dT9L4/myA2kJp2ErIwKryVCbJBvyCnqib2Whiex3fKPLEobIlB
-         gX9+9XvLSJh3byzzGyhUHbenNfNooOHIXia3L6vIlL3v4IGXzbNiq/ZcpTIJ6nfsTKz+
-         odbGmEZ/t0AgTcPYiabhiPzpRotwwQfRK3iO//klXFfN8K9LrDhqxHHH/uMr/NFwSi4J
-         d1Wz3dbQUjahx7csEtonWSjO8aUoth7lez6yhMjuBPQg/YqD2cioLVbEIoCeg3/X+KJu
-         /3zA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1775019654; x=1775624454; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=OqQ601QbL/y+YrmVBidvwxw5csxIEjRfbUIlqPG+O5M=;
-        b=M/ZJaQ2pKLvI07J5Mjwe1jPz4avwU/wVbu6Z8A5yxOFCrc9TgFVnsyG2svDqQgmPxq
-         Lwe/oWw0+cOq+iLe4jHvnukuGQZ9u/Fs9tjbxWj6LR42XAPQ+UW5+ej5IiCkuUHKZdHu
-         9DXlkdwtFq+DoisJVSM3dr0ZApeQKODs6qYvg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1775019654; x=1775624454;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=OqQ601QbL/y+YrmVBidvwxw5csxIEjRfbUIlqPG+O5M=;
-        b=SUaUyv8rNC6U8QhcXDF2GF25KbxbggBxWUqPc8F7jRRSaGgGqMkhWoQPqxb1O25ztv
-         5PQa8Pocpz2nxAI92p0PV98BZl/gXQSa6z/n+bNgVKhJ1Nndep5hhDhif8L6LYMr0aZY
-         cXE2h46gwTWxblRoZhAaYU1ienQ9bHyDAsclM0kRqexJW/1jlOGHqGpQCxW2iHUPU6sb
-         Kj8jxFVLvX8ygKcX0ZmrqHFtR4k5Jo7lDqEQJ+iTNnryPUwSzygdoX9eKKjrtuN6ctvI
-         x3cAEyuXWFg3HNyGl968hiZPvTbTr799XJKVPxelJS0oAioSR+dcGzG8auKwZT+JclrA
-         lAiw==
-X-Forwarded-Encrypted: i=1; AJvYcCUCuN2Rwe+NDQh3uJeGDeBNhCCpJ2sRd6WPmhceyjvHnchyBuEMW/WKDaC6C/Gob3tgI/psZQS2FUo9Krf4+A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwwAQZNTYCRV7AuPUavGC0MMk8XYmDeNpXcSHfAegqW6guCjaSu
-	629REPtc1EQKCTTSOdk/nlnyxSQfvcO54CUXYlCa963CLLcXlxrMrqd7NiLRj0aHbqZmAwd1nW7
-	Wi2iccChiQFDAG14/1Yl4P2QwGqSyacT5dWA1SM3z
-X-Gm-Gg: ATEYQzwwDGLOVkg4bBVgr/xsAMepYZZTYe7UBx2kJlZIDocUs1Erl5U1kA5hll3a7vO
-	uBGtrPXiiQQzCesuM68nOFhM1djzrOy6INuebFHl9NjvDgtg13CGPqFid6xfk88XaN7ymCl1EgW
-	Rf0k3CeZt7uEuq7icmdB6oTRzskB032GKn9Fx3bSle/8neZikaQpykhVgr++nWakD/AA1BM8g8S
-	S89mu9TOhvloGTpUarjuxQ9OSUzNGDYBSGwIHxt5xWY3Q5iueohU6TmANtlESOpeHx3qJnbSh4H
-	0m50tM4YBCJzj4z+CfuSOhSzn5sIwE6Ew9N+ug==
-X-Received: by 2002:a05:6512:3ba1:b0:5a1:4e53:c68b with SMTP id
- 2adb3069b0e04-5a2baacc775mr2863990e87.2.1775019653869; Tue, 31 Mar 2026
- 22:00:53 -0700 (PDT)
+	id 1w7pYY-0000000E8zL-3RWS;
+	Wed, 01 Apr 2026 07:00:02 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 848DC600AD;
+	Wed,  1 Apr 2026 07:00:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1DFC6C4CEF7;
+	Wed,  1 Apr 2026 06:59:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1775026801;
+	bh=4HoH/phdBrc8oyL9BAmfrv1hLzyLn1XUdnpO9xKGt0A=;
+	h=From:Subject:Date:To:Cc:From;
+	b=KMHR94DgfRfOsfxuCdVVQP2+x0xQMgUCkKVaQ81WrDYnarnEtMItaUpDVYAYil9tF
+	 DXanx74oixguSoHPe8XgMxIpsWv2hz/L2eckJm7zW7r9couPmi8qJL4Uw1zdhDnuM9
+	 mdk/l2Lcw9gvPUrS+6JKCltA/PSW+2AERYiHyy87dq0ynJvZ7aLB5JIjJHWpaYYDoB
+	 bFHTu4EHd+hnpXEHWdQ2rSdyURSpvJV3l2I4zuMqmysnGKIaBRzrUYO/oqN6bGkXeH
+	 W4B3k5YSUEQaFzD1fbzdsVQiYsYETySEdt3NsD4tHAfrFRpXx434u71PxTmv9pc4p9
+	 aCrfz3qi1Wh8A==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH net-next v2 00/11] net: airoha: Support multiple
+ net_devices connected to the same GDM port
+Date: Wed, 01 Apr 2026 08:59:18 +0200
+Message-Id: <20260401-airoha-eth-multi-serdes-v2-0-ac427ae4beeb@kernel.org>
 MIME-Version: 1.0
-References: <20260401031917.9108-1-jian.yang@mediatek.com>
-In-Reply-To: <20260401031917.9108-1-jian.yang@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 1 Apr 2026 13:00:42 +0800
-X-Gm-Features: AQROBzCjsi0xnmIJgMsX3J2duHUIVsuutzrB8RxL3Ea321MAwxUsjyebvjmh5A4
-Message-ID: <CAGXv+5EJ5rUVdnJZKwLj_NLQVtn+8TE4+gEqt1=LQrD28pA-eQ@mail.gmail.com>
-Subject: Re: [PATCH v1] PCI: mediatek-gen3: Align PERST# sequence with PCIe
- CEM specification
-To: Jian Yang <jian.yang@mediatek.com>, Manivannan Sadhasivam <mani@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Ryder Lee <ryder.lee@mediatek.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com, chuanjia.liu@mediatek.com, 
-	yonglong.wu@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260331_220056_477223_1011DEBA 
-X-CRM114-Status: GOOD (  12.11  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3WNQQ6CMBBFr0Jm7ZhSaI2uvIdhUWCgE7ElbSUYw
+ t1tiFuXLy///Q0iBaYIt2KDQAtH9i6DPBXQWeNGQu4zgxRSi0rWaDh4a5CSxdd7Sow50FPEoa1
+ bpTTRRWnI6znQwOtRfoCjhI7WBE02lmPy4XNcLuXhf/Xr3/pSokAhBiX7rtKiM/cnBUfT2YcRm
+ n3fv5vISCTJAAAA
+X-Change-ID: 20260324-airoha-eth-multi-serdes-fb4b556ee756
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Christian Marangi <ansuelsmth@gmail.com>, 
+ Benjamin Larsson <benjamin.larsson@genexis.eu>, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ netdev@vger.kernel.org, devicetree@vger.kernel.org, 
+ Xuegang Lu <xuegang.lu@airoha.com>
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,30 +79,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 1, 2026 at 11:19=E2=80=AFAM Jian Yang <jian.yang@mediatek.com> =
-wrote:
->
-> Fix the control sequence of PERST# during system bootup/shutdown to
-> meet the requirement from PCIe CEM specification. There are two major
-> changes in this patch:
->
-> 1. Some of MediaTek's chip will stop generating REFCLK if the
-> PCIE_PHY_RSTB signal of PCIe controller is asserted. We have to
-> adjust the startup sequence as follows to ensure that PERST# will be
-> de-asserted after the REFCLK is stable:
-> Assert PHY reset and PERST# -> delay 10ms -> De-assert PHY reset ->
-> delay 100ms -> De-assert PERST#
->
-> 2. Add 'shutdown' callback to control the timing of PERST# and power
-> during the system shutdown phase, ensuring that PERST# is active
-> before the power on connector is removed.
->
-> Signed-off-by: Jian Yang <jian.yang@mediatek.com>
+EN7581 or AN7583 SoCs support connecting multiple external SerDes (e.g.
+Ethernet or USB SerDes) to GDM3 or GDM4 ports via a hw arbiter that
+manages the traffic in a TDM manner. As a result multiple net_devices can
+connect to the same GDM{3,4} port and there is a theoretical "1:n"
+relation between GDM ports and net_devices.
 
-Seems correct to me.
+           ┌─────────────────────────────────┐
+           │                                 │    ┌──────┐
+           │                         P1 GDM1 ├────►MT7530│
+           │                                 │    └──────┘
+           │                                 │      ETH0 (DSA conduit)
+           │                                 │
+           │              PSE/FE             │
+           │                                 │
+           │                                 │
+           │                                 │    ┌─────┐
+           │                         P0 CDM1 ├────►QDMA0│
+           │  P4                     P9 GDM4 │    └─────┘
+           └──┬─────────────────────────┬────┘
+              │                         │
+           ┌──▼──┐                 ┌────▼────┐
+           │ PPE │                 │   ARB   │
+           └─────┘                 └─┬─────┬─┘
+                                     │     │
+                                  ┌──▼──┐┌─▼───┐
+                                  │ ETH ││ USB │
+                                  └─────┘└─────┘
+                                   ETH1   ETH2
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+This series introduces support for multiple net_devices connected to the
+same Frame Engine (FE) GDM port (GDM3 or GDM4) via an external hw
+arbiter. Please note GDM1 or GDM2 does not support the connection with
+the external arbiter.
 
-If possible, I think we would want this merged this cycle together
-with the other pwrctrl changes.
+---
+Changes in v2:
+- Rename multiplexer in arbiter in the commit logs.
+- Rebase on top of net-next main branch.
+- Add missing PPE cpu port configuration for GDM2 when loopback is
+  enabled.
+- Link to v1: https://lore.kernel.org/r/20260329-airoha-eth-multi-serdes-v1-0-00f52dc360ca@kernel.org
+
+---
+Lorenzo Bianconi (11):
+      dt-bindings: net: airoha: Add EN7581 ethernet-ports properties
+      net: airoha: Set PPE cpu port for GDM2 if loopback is enabled
+      net: airoha: Rely on net_device pointer in airoha_dev_setup_tc_block signature
+      net: airoha: Rely on net_device pointer in HTB callbacks
+      net: airoha: Rely on net_device pointer in ETS callbacks
+      net: airoha: Introduce airoha_gdm_dev struct
+      net: airoha: Move airoha_qdma pointer in airoha_gdm_dev struct
+      net: airoha: Rely on airoha_gdm_dev pointer in airhoa_is_lan_gdm_port()
+      net: airoha: Support multiple net_devices for a single FE GDM port
+      net: airoha: Do not stop GDM port if it is shared
+      net: airoha: Rename get_src_port_id callback in get_sport
+
+ .../devicetree/bindings/net/airoha,en7581-eth.yaml |  44 +-
+ drivers/net/ethernet/airoha/airoha_eth.c           | 631 +++++++++++++--------
+ drivers/net/ethernet/airoha/airoha_eth.h           |  30 +-
+ drivers/net/ethernet/airoha/airoha_ppe.c           |  43 +-
+ 4 files changed, 502 insertions(+), 246 deletions(-)
+---
+base-commit: f1359c240191e686614847905fc861cbda480b47
+change-id: 20260324-airoha-eth-multi-serdes-fb4b556ee756
+
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
