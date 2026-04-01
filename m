@@ -4,108 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D170CD35162
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Apr 2026 11:23:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84C0AD35177
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Apr 2026 12:36:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+wLwW3RwfZlMNchucl4Q1BjkgKkbbVmuqcbZXsSlons=; b=PzEoWZygjJ9+bvUBV1nTXZUOZK
-	4+ZKrH8V+jLR+EnDBKGcFkCMy3AyEDPzL0pQBTCnU2Unih1Vg3c8YjIurzupmsqwf0auZ3fyLn3Ht
-	5sVORbCjtXAZd+fkSo8BycpFkn39q3cpgQImwXDRRnC/TOhzdyrmhaqiJBAT3yrxFDBZPoqcXUvpM
-	BtSpn1uWdNnDhq+jzAftnPvumWh4TluLXdoIV23hLrCu1uZEuwp8GhJJPY4d1bR0yd/DvlWLzXuzZ
-	GRafKgvvl70fJwwnZmNJDac3VQqEUzVC1Mzk3Z7UwA5GdBJGaCUpPY8CHjzeHpx9yhKbaQeFV3ug/
-	A9nnvg/A==;
+	bh=yQBDnJoVhLwcKafuIZRk96w4yQeYQ1vq8BsBfxQ3u2s=; b=PrZGKqERO7rnwSMBoNtNv83hPo
+	160QruvdvU4o4xfxIrRCcjMLsGIMdgvEHyfT2LO9OQRhu+gtenjcfPsikGwZNOjgR8nW/GHM0wGPq
+	4ERhFTqZLFAbp+wvvDYuVBd8+4UWhAkZHZAqNyyeDtb/T+UUBgEF0pDHGzCWDazqi2hSk+eSxICiy
+	Wb1niJIIP8wwf+OhPd29wgOyUOvJR4q2kajkeMCnRfRWZSaOtRYShpC5nNdqgvv15rZJSiROTP4S+
+	Uhyfi2NAVFJxkgATf2aq+NExAaHQ1XFvLLjNYM/WxkuyEtC8IfTS8IDJSjlpuS28nM81FRHkA6y2m
+	/hAU5ydw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7tfg-0000000EdK1-1gMj;
-	Wed, 01 Apr 2026 11:23:40 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1w7uoR-0000000FBe2-0uy0;
+	Wed, 01 Apr 2026 12:36:49 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7tfd-0000000EdIY-2qx9
+	id 1w7uXm-0000000EyoK-1re7
 	for linux-mediatek@lists.infradead.org;
-	Wed, 01 Apr 2026 11:23:38 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-2b0b260d309so166145ad.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 01 Apr 2026 04:23:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20251104; t=1775042616; x=1775647416; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=+wLwW3RwfZlMNchucl4Q1BjkgKkbbVmuqcbZXsSlons=;
-        b=AlR96aZuenuYYNVVRaA2bkaazoK/5q4O4+sro4/1cCx1WMHL6oF+sWS8I+BMeKBruN
-         JrJher1L2PucxuhDmzwS/dg3Ur1Y5FQ4fngNxQf+WbMebB02DF/MTPWAtm0eT9QK3d0R
-         2s8TB17Vw0ZR7quIoYNTZDXk79PlyssdNyX8Ju+u/DtZyMCp4RpzuAA3uYHHIvBIThGB
-         IrSKGaX8D1BJCGGH+DIydwpNdtha+W4s/RZqWZVVBi8ZeOtfmSICrfC91m3ZGkXXS2Ni
-         ow1soaCkS0vpNACBiCoP42jltuA4mFZSG/dKITkgRXk9GAj/wgtdoCUocOj1oR9zheXh
-         Yohg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1775042616; x=1775647416;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=+wLwW3RwfZlMNchucl4Q1BjkgKkbbVmuqcbZXsSlons=;
-        b=X9UjqEyoMTL98OnmwGTxvuarCDTvDtY42RPDe8r64XZ1m1zcVZR3lxvPrI1KkQbik7
-         nTgU0m+C4c7e+RiNfLmaS1D+eSa4I9LrXZ1CmIwzPMvOz0p3eBCizS6MCvtA3t4Jpy2y
-         WvmNcI6VRRO9Uv1wmwBeZ4HTJ2YunndMxyS2sD/AxqVGdmvegbTQl2qZjvHwUrrvs+Ny
-         div0Qsc8A7hMUbyEpyoltvym4oEqpxuGVNfCQD0sAHvryjEQG2ENq8PtJd7Rgppliv61
-         0Tb9jvOtEozt6bLFk4j8Dk2fzWBMLDcpKwDyviytNYNehufWgdU4/ydivRpLougMbc/N
-         qCXA==
-X-Forwarded-Encrypted: i=1; AJvYcCWYoie1eCwYMxTZ0MvQdFAqrLSzQw8fHUbnGNUfEvPYJfjFszywxrGPkyWnHioxM/2Q94PDFdfbXCaHyqkKlg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwSIYWjRp5I7fqs1ZYh0TAdFccCLvVCZxS9RR+Zxb2DMPy9/P+S
-	+9fUDo5itEzLOBVL1LGDWdWeCWMSMmKVqwr5k+BCix+nuDW4y5hVcWN4B2Ub6F0l2A==
-X-Gm-Gg: ATEYQzz6Dj77sdYMcYfPpwrP7wSahHEJV/OAbgtN9qIbhvRawtHzD86+/Sk16yetlwn
-	3iKkmT71HgQKNT1bfTGiOjQxf36FinrHoZZjMBeiKJaH8ZPoQ2pwEx5DM7TLa7sNPWhLhz8HLjU
-	KDz8hexKa2dZraASXhsu77hxfBKZRFNgnr2ZsKgtMlTuW4WVLQETOOrzbWlR2GTTmzIUcvUSZ5b
-	1ENv5dNxPrt2qJ3xWAyG/ZirwfFi2ABEgy85TOHt2I7vxymm2yPjqJZnocecQVzFLOXrGsQyLnQ
-	8ooGorxEgJW9+6urJrDP0mzRMStQitp7f0EMLW58qh0hmQbm6VMualcvvVCy5SbnEuvQuAFetFi
-	uYOlJYJxGr4MQg2lvnR1QqrcabQzfaZ9I3F0wdMt6RN6LVbOAmTdu4RFcC7R3H6/cjuYy5Mr5D4
-	3XQ6nZb9kdM5u3eZOgibfIDP/o/GCJidMxOHZHE4HDzOcM6WyUr+NfWiT51Q==
-X-Received: by 2002:a17:902:ccca:b0:2ae:44db:570c with SMTP id d9443c01a7336-2b26b2b089amr2189835ad.12.1775042615401;
-        Wed, 01 Apr 2026 04:23:35 -0700 (PDT)
-Received: from google.com (10.129.124.34.bc.googleusercontent.com. [34.124.129.10])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-35dbe606dd2sm6533691a91.3.2026.04.01.04.23.27
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 01 Apr 2026 04:23:34 -0700 (PDT)
-Date: Wed, 1 Apr 2026 11:23:23 +0000
-From: Pranjal Shrivastava <praan@google.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Cc: Alexandre Ghiti <alex@ghiti.fr>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Albert Ou <aou@eecs.berkeley.edu>, asahi@lists.linux.dev,
-	Baolin Wang <baolin.wang@linux.alibaba.com>, iommu@lists.linux.dev,
-	Janne Grunau <j@jannau.net>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Joerg Roedel <joro@8bytes.org>,
-	Jean-Philippe Brucker <jpb@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-sunxi@lists.linux.dev,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Neal Gompa <neal@gompa.dev>, Orson Zhai <orsonzhai@gmail.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <pjw@kernel.org>,
-	Samuel Holland <samuel@sholland.org>, Sven Peter <sven@kernel.org>,
-	virtualization@lists.linux.dev, Chen-Yu Tsai <wens@kernel.org>,
-	Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Lu Baolu <baolu.lu@linux.intel.com>,
-	Janusz Krzysztofik <janusz.krzysztofik@linux.intel.com>,
-	Joerg Roedel <joerg.roedel@amd.com>,
-	Jon Hunter <jonathanh@nvidia.com>, patches@lists.linux.dev,
-	Robin Murphy <robin.murphy@arm.com>,
-	Samiullah Khawaja <skhawaja@google.com>, stable@vger.kernel.org,
-	Vasant Hegde <vasant.hegde@amd.com>
-Subject: Re: [PATCH] iommu: Always fill in gather when unmapping
-Message-ID: <ac0AKyvHMYHlqL5i@google.com>
-References: <0-v1-664d3acaabb9+78b-iommu_gather_always_jgg@nvidia.com>
+	Wed, 01 Apr 2026 12:19:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id E64CF4097B;
+	Wed,  1 Apr 2026 12:19:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2E4DFC4CEF7;
+	Wed,  1 Apr 2026 12:19:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1775045972;
+	bh=U2chIgld3ec2AzP0+woeUhBzxiB30kpsbfVXjgxQpnM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ozbrvJxp1hCEaO+OqA5RSPyS6ivh97M810FcogJ+qweaHIHH54EX+tW49zBBsA9vp
+	 yWFLVaSdVmQPXvJNbHGgcnDHV3Aur16AuZMvik4VkjuT4l85I8iJPOEno7tjEfKKZg
+	 ARXfcovEr6/xoL2GuM0H1DES1eCiRg6229ab0ckBJDZTh54JANl4PpXIFklNjUvoBZ
+	 unV3ilMoL5eu5X9jj1h2CwfkKUkcCXCcojPlNnT/mg59JvoPCu5lw4jlXOeuwArL4E
+	 1eTjDB/OR1cBpa8TqM2sXI9BSnBf2BFtdzI3uFakdcNa9RnciAEdgcOOkKh7v0QvgY
+	 rD1pgPN658YBg==
+Date: Wed, 1 Apr 2026 17:49:21 +0530
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Jian Yang <jian.yang@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Ryder Lee <ryder.lee@mediatek.com>, 
+	Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com, chuanjia.liu@mediatek.com, yonglong.wu@mediatek.com
+Subject: Re: [PATCH v1] PCI: mediatek-gen3: Align PERST# sequence with PCIe
+ CEM specification
+Message-ID: <x6nabkumov75khx4icgibrmd4o3oz5drm3cfthh6j2himsihla@echprgpjanoq>
+References: <20260401031917.9108-1-jian.yang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <0-v1-664d3acaabb9+78b-iommu_gather_always_jgg@nvidia.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20260401031917.9108-1-jian.yang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260401_042337_716340_56C3DE1D 
-X-CRM114-Status: GOOD (  28.36  )
+X-CRM114-CacheID: sfid-20260401_051934_538192_0420607C 
+X-CRM114-Status: GOOD (  26.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,73 +77,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 31, 2026 at 04:56:22PM -0300, Jason Gunthorpe wrote:
-> The fixed commit assumed that the gather would always be populated if
-> an iotlb_sync was required.
-> 
-> arm-smmu-v3, amd, VT-d, riscv, s390, mtk all use information from the
-> gather during their iotlb_sync() and this approach works for them.
-> 
-> However, arm-smmu, qcom_iommu, ipmmu-vmsa, sun50i, sprd, virtio,
-> apple-dart all ignore the gather during their iotlb_sync(). They
-> mostly issue a full flush.
-> 
-> Unfortunately the latter set of drivers often don't bother to add
-> anything to the gather since they don't intend on using it. Since the
-> core code now blocks gathers that were never filled, this caused those
-> drivers to stop getting their iotlb_sync() calls and breaks them.
-> 
-> Since it is impossible to tell the difference between gathers that are
-> empty because there is nothing to do and gathers that are empty
-> because they are not used, fill in the gathers for the missing cases.
+On Wed, Apr 01, 2026 at 11:16:42AM +0800, Jian Yang wrote:
+> Fix the control sequence of PERST# during system bootup/shutdown to
+> meet the requirement from PCIe CEM specification. There are two major
+> changes in this patch:
 > 
 
-I believe the problem is a fundamental disagreement between the core
-layer and these drivers. The core assumes an empty gather means there
-is no work to do, while these drivers expect a sync regardless. With
-this, it seems we're forcing the drivers to lie to the core by 
-populating a gather they don't actually use just to trigger the sync.
+You are fixing multiple issues in one patch, which is not acceptable.
 
-I was wondering if, as a longer-term direction, having an explicit flag
-for these drivers to indicate they always require a sync would be a
-cleaner way to handle this than the trivial population?
+> 1. Some of MediaTek's chip will stop generating REFCLK if the
+> PCIE_PHY_RSTB signal of PCIe controller is asserted. We have to
+> adjust the startup sequence as follows to ensure that PERST# will be
+> de-asserted after the REFCLK is stable:
+> Assert PHY reset and PERST# -> delay 10ms -> De-assert PHY reset ->
+> delay 100ms -> De-assert PERST#
+> 
 
-Just a thought, not a hard disagreement with the current approach..
+This issue is separate and not related to the below two issues.
 
-> io-pgtable might have intended to allow the driver to choose between
-> gather or immediate flush because it passed gather to
-> ops->tlb_add_page(), however no driver does anything with it.
+> 2. Add 'shutdown' callback to control the timing of PERST# and power
+> during the system shutdown phase, ensuring that PERST# is active
+> before the power on connector is removed.
 > 
-> mtk uses io-pgtable-arm-v7s but added the range to the gather in the
-> unmap callback. Move this into the io-pgtable-arm unmap itself. That
-> will fix all the armv7 using drivers (arm-smmu, qcom_iommu,
-> ipmmu-vmsa).
-> 
-> arm-smmu uses both ARM_V7S and ARM LPAE formats. The LPAE formats
-> already have the gather population because SMMUv3 requires it, so it
-> becomes consistent.
-> 
-> Add a trivial gather population to io-pgtable-dart.
-> 
-> Add trivial populations to sprd, sun50i and virtio-iommu in their
-> unmap functions.
-> 
-> Fixes: 90c5def10bea ("iommu: Do not call drivers for empty gathers")
-> Reported-by: Jon Hunter <jonathanh@nvidia.com>
-> Closes: https://lore.kernel.org/r/8800a38b-8515-4bbe-af15-0dae81274bf7@nvidia.com
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+
+Adding 'shutdown()' callback should belong to a separate patch with its own
+motivation.
+
+> Signed-off-by: Jian Yang <jian.yang@mediatek.com>
 > ---
->  drivers/iommu/io-pgtable-arm.c  | 4 +++-
->  drivers/iommu/io-pgtable-dart.c | 3 +++
->  drivers/iommu/mtk_iommu.c       | 1 -
->  drivers/iommu/sprd-iommu.c      | 1 +
->  drivers/iommu/sun50i-iommu.c    | 1 +
->  drivers/iommu/virtio-iommu.c    | 2 ++
->  6 files changed, 10 insertions(+), 2 deletions(-)
->
+>  drivers/pci/controller/pcie-mediatek-gen3.c | 39 +++++++++++++++++++--
+>  1 file changed, 36 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+> index a94fdbaf47fe..66d177918565 100644
+> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
+> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+> @@ -62,6 +62,7 @@
+>  #define PCIE_PHY_RSTB			BIT(1)
+>  #define PCIE_BRG_RSTB			BIT(2)
+>  #define PCIE_PE_RSTB			BIT(3)
+> +#define PCIE_BRG_RST_RDY_MS		10
+>  
+>  #define PCIE_LTSSM_STATUS_REG		0x150
+>  #define PCIE_LTSSM_STATE_MASK		GENMASK(28, 24)
+> @@ -133,6 +134,7 @@
+>  #define MAX_NUM_PHY_RESETS		3
+>  
+>  #define PCIE_MTK_RESET_TIME_US		10
+> +#define PCIE_MTK_PDN_PERST_TIME_MS	5
+>  
+>  /* Time in ms needed to complete PCIe reset on EN7581 SoC */
+>  #define PCIE_EN7581_RESET_TIME_MS	100
+> @@ -430,6 +432,21 @@ static int mtk_pcie_devices_power_up(struct mtk_gen3_pcie *pcie)
+>  		return err;
+>  	}
+>  
+> +	/*
+> +	 * Some of MediaTek's chips won't output REFCLK when PCIE_PHY_RSTB is
+> +	 * asserted, we have to de-assert MAC & PHY & BRG reset signals first
+> +	 * to allow the REFCLK to be stable. While PCIE_BRG_RSTB is asserted,
+> +	 * there is a short period during which the PCIe internal register
+> +	 * cannot be accessed, so we need to wait 10ms here.
+> +	 */
+> +	msleep(PCIE_BRG_RST_RDY_MS);
+> +
+> +	if (!(pcie->soc->flags & SKIP_PCIE_RSTB)) {
+> +		/* De-assert MAC, PHY and BRG reset signals */
+> +		val &= ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB);
+> +		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+> +	}
+> +
+>  	/*
+>  	 * Described in PCIe CEM specification revision 6.0.
+>  	 *
+> @@ -439,9 +456,8 @@ static int mtk_pcie_devices_power_up(struct mtk_gen3_pcie *pcie)
+>  	msleep(PCIE_T_PVPERL_MS);
+>  
+>  	if (!(pcie->soc->flags & SKIP_PCIE_RSTB)) {
+> -		/* De-assert reset signals */
+> -		val &= ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB |
+> -			 PCIE_PE_RSTB);
+> +		/* De-assert PERST# signal */
+> +		val &= ~PCIE_PE_RSTB;
+>  		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+>  	}
+>  
+> @@ -459,6 +475,14 @@ static void mtk_pcie_devices_power_down(struct mtk_gen3_pcie *pcie)
+>  		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+>  	}
+>  
+> +	/*
+> +	 * Described in PCIe CEM specification revision 6.0.
+> +	 *
+> +	 * The PERST# gose active before the power on the connector is removed.
+> +	 * Wait a while to ensure the voltage transition of PERST# is completed.
+> +	 */
+> +	msleep(PCIE_MTK_PDN_PERST_TIME_MS);
 
-Acked-by: Pranjal Shrivastava <praan@google.com>
+PERST# is asserted by setting the 'PCIE_PE_RSTB' bit. So if that controls the
+actual voltage transition of PERST# signal, will reading it back ensure that the
+transition has been completed without waiting for an arbitrary delay?
 
-Thanks,
-Praan
+Nevertheless, this also belongs to a separate patch.
+
+- Mani
+
+-- 
+மணிவண்ணன் சதாசிவம்
 
