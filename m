@@ -4,100 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21E6110F9300
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2026 21:04:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 935FD10F92EC
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Apr 2026 01:22:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:References:
-	In-Reply-To:Cc:Subject:Date:To:From:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vxQdo+GsTGHOPhfZ6KDq0AqryyH8iiUIo3Vw21bj1s8=; b=TFiEPboaJrWq3FrbcQYIRjSnTF
-	8kpKydPE6HNnLgEUKA30bGSF35WgJsslXxgtbWPudv/G6p/DGSSDqkzy6tiiZKb3uMbPT2eGHwCCS
-	gHg9a13spmpNyCJC3V4UGmT4DnRCZAbl5dNNiA3JOnAPTZQA7uw1OvrWnwvBJXI9j8/CBXcMm1mqJ
-	gMJ39zYixoqk1K2gbuEWXBvzTbDW37k/X2mX294oymBT4xAEPG9jO+HHqkUHkzbU6jf2SA1+DiH0u
-	JdJtzyjrQuZBgK933VgrEESoCOVKOTp3UyMtKQWXASUkgszdkyixPgTJBLhpRd0CVW5awbQ908sK/
-	b5JpfAow==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cc8X+evmSW2GvriYn2tcPlQ6m5YeoX1kIdk1sd4Bupk=; b=UrnsRrdGGqIoNy6CEOfugeyH/x
+	xvLkxZZ6x5pbtsTco2fDVXNRD32QkpRe0Vmbp9c5J1/1Ki/ZrKzYw4sxX55en3prXGsBY4bPODcTJ
+	Aw4lpiSMxsgeCB/nsV3BY+kRwaq9rr8TmIznU1/4n7AImHJve8uslS+EEDWqeQqdsc0QYdsRadFzH
+	Auqs+EOLCUmIF/tIpF5Yy+oWfVwjXrD/mJknYumqgsh1MPBG9YVufEHprp0pGju+Vj/3XLhsTaFfA
+	YSRf5tr2vG2vSoYzkhe0mxkRR0QbnzQt0KPjT51bgF7n6UVNoJkvhvaK0w1cDmVC/BsHLvhMGqMlI
+	luASfjXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7gFu-0000000DYaz-1vGz;
-	Tue, 31 Mar 2026 21:04:10 +0000
-Received: from fout-a7-smtp.messagingengine.com ([103.168.172.150])
+	id 1w7kHd-0000000DmyO-1LRa;
+	Wed, 01 Apr 2026 01:22:13 +0000
+Received: from mgamail.intel.com ([192.198.163.19])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7gFr-0000000DYaD-1VDM;
-	Tue, 31 Mar 2026 21:04:08 +0000
-Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
-	by mailfout.phl.internal (Postfix) with ESMTP id 83AC1EC010A;
-	Tue, 31 Mar 2026 17:04:03 -0400 (EDT)
-Received: from phl-imap-07 ([10.202.2.97])
-  by phl-compute-02.internal (MEProxy); Tue, 31 Mar 2026 17:04:03 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jetm.me; h=cc:cc
-	:content-transfer-encoding:content-type:content-type:date:date
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to; s=fm1; t=1774991043;
-	 x=1775077443; bh=vxQdo+GsTGHOPhfZ6KDq0AqryyH8iiUIo3Vw21bj1s8=; b=
-	WbHnLidoIW2uJNemwQMLAKmulHP7ovrIKEeCf/LVykpvojSwY737G+MhZWwv+rVK
-	bC0fzvudtk/i83wzwcgmKhXDQX0DfKTkkUeD6Ht+iOWOVniyAtmgSdL40wr16J8i
-	1fp2mtQgn/n0lgl/mAevyCPcZ0t1dlbP1QdEiFfeM0o6OWm02yVkN1bubnd2sVxK
-	DxktENQz9opbwzTzQO6X9u+Fs1Y53EEFSTahss+8eXdukzlYe6E86OQXRSmO7ybf
-	9M/ybFoTdswaNhzlNBszo0TCXSNWEwqOvO9NjRrRRVGcmxPQCtPo9bb5rKlmb3u9
-	NWX7+PkywVu3IktFyKgBPA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1774991043; x=
-	1775077443; bh=vxQdo+GsTGHOPhfZ6KDq0AqryyH8iiUIo3Vw21bj1s8=; b=N
-	1rpNS0NIljt6lBHkass/SqUQKRptAEZDWmcEFRkrBKknBQU0eehYAnoD7Np7Edge
-	3mjEvEH/gDJIEHzpdZnOBscXXuOC0m+QK7C0sQrwAO7DS6gEMUKSMvM1ft7ZwZJQ
-	TrNYoFIZoScyWvgwrZWe9EV0AnbuSU3EtAbHYl7M0LAUaN/VqsEwxBImEuSwzpX3
-	ElhcQr7B075b4kcuCmDGz0yZp72bycQHfUkJkSnLFlP9MF81m13hqKLX4IGDWA5B
-	R8W9N39y12FwlZ1lYvMwtaqCM1nqeCCozxCSIeOzzshaq6gxfqGzCitaWGNYRqCB
-	iTlGHV7x1cJ7Fn+xwytLw==
-X-ME-Sender: <xms:wjbMaawEEtpRe7-HS-H1k4HgXYOa8XEupNgiH5i7bvvt8pIZIdO1KQ>
-    <xme:wjbMaRFZ_VsKThOkMj-VzSblzkhxZZXqXh46DX3qsHHRm5D0vRyxjFlHMmLnxLWZ3
-    HVNKajvhkLfjtHfSX8Mrn_Ph1DVBDvPwghrpAxA52ZZURwP0oJ0a-c>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefhedrtddtgdduvdefucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceurghi
-    lhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnegopfhokf
-    ffucdluddtmdenucfjughrpefotggggffhvfffufevjghfsehtkedttdertdejnecuhfhr
-    ohhmpeflrghvihgvrhcuvfhirgcuoehflhhoshhssehjvghtmhdrmhgvqeenucggtffrrg
-    htthgvrhhnpedtudejffejkeekteelueefvdejvdeuhfefteehkeevtddvleduteekleet
-    vdelhfenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
-    hflhhoshhssehjvghtmhdrmhgvpdhnsggprhgtphhtthhopeduuddpmhhouggvpehsmhht
-    phhouhhtpdhrtghpthhtoheprghnghgvlhhoghhiohgrtggthhhinhhordguvghlrhgvgh
-    hnohestgholhhlrggsohhrrgdrtghomhdprhgtphhtthhopehluhgsnhhinhdrihhvrghn
-    sehgmhgrihhlrdgtohhmpdhrtghpthhtoheplhhuihiirdguvghnthiisehgmhgrihhlrd
-    gtohhmpdhrtghpthhtohepmhgrthhthhhirghsrdgsghhgsehgmhgrihhlrdgtohhmpdhr
-    tghpthhtohepmhgrrhgtvghlsehhohhlthhmrghnnhdrohhrghdprhgtphhtthhopehlih
-    hnuhigqdgrrhhmqdhkvghrnhgvlheslhhishhtshdrihhnfhhrrgguvggrugdrohhrghdp
-    rhgtphhtthhopehlihhnuhigqdhmvgguihgrthgvkheslhhishhtshdrihhnfhhrrgguvg
-    grugdrohhrghdprhgtphhtthhopehjnhgvthhtohesmhhinhgvihhrohdrihhopdhrtghp
-    thhtohepphhmvghniigvlhesmhholhhgvghnrdhmphhgrdguvg
-X-ME-Proxy: <xmx:wjbMaaosQq4Hksquv81s7VGSNdW4bTZ8xFCZH-eBkp6CI-zCuqxB1w>
-    <xmx:wzbMaQySBGrkHaBIKT-227T9WR5RuzWhcc1IVk3ZdivdsWoeSJioag>
-    <xmx:wzbMaesE0hMsTfirkDkLlQTCGRxT0CZ7P_iI3aTxw404KrFvn8Uy8g>
-    <xmx:wzbMaZ245cWpETaqnvIXTd-wD2zx1aRU5CsSAaCSodkc_7UIFzsf2w>
-    <xmx:wzbMaX5gXIfDYnYJBNWm2F7U5cHU6zflptQYTRcz5_xWX51S638s9YCG>
-Feedback-ID: i9dde48b3:Fastmail
-Received: by mailuser.phl.internal (Postfix, from userid 501)
-	id DCE821EA006B; Tue, 31 Mar 2026 17:04:02 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
-Content-Type: text/plain; charset="utf-8"
+	id 1w7kHa-0000000Dmxy-1yEe;
+	Wed, 01 Apr 2026 01:22:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1775006530; x=1806542530;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=IV/ezrq2wJekwozwDxi/VB18Q8hzC5mhy/g8CQQwaXc=;
+  b=hq7puzR+eHev2QNZUSeOeL8l1B2CsfRmYOMfsG9qN2YFQO2ERVwB13uA
+   VHvyJDmtCN7hBWjHaQAmq5AM687R35JoYxOwoNidkMfT0X4EY/RCV4iRg
+   2BKbywEnyGvUvhHYVIj/pWzudLbCxGW4eCsULMP3rgj8Ts9PemVbKoj2f
+   VBkuR+OwCsIfW7swEC17oGd5Z3pXHWMUacrTTvJvVvFMrJgiML1hY6sd5
+   fo4zsOJFOVKHc8x9b1jkMDsbhBrVdSO8JqdjgDv8D0eqWYIJwgaRRuDfD
+   nv9LAxV7pssc74YUHDuh9TXg/b3+gGO7k+xg9GlwIO6XVYJD+5C9i6LAV
+   w==;
+X-CSE-ConnectionGUID: +5CrZ3EZQ+OhHFpkYeoUOA==
+X-CSE-MsgGUID: gxzXnbOXQWyKR21+CHLtdw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11745"; a="75073332"
+X-IronPort-AV: E=Sophos;i="6.23,152,1770624000"; 
+   d="scan'208";a="75073332"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+  by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Mar 2026 18:22:06 -0700
+X-CSE-ConnectionGUID: tC+gR6JkSHirq2rGvZGdwg==
+X-CSE-MsgGUID: k10tL47EQp29KSvB8kLdpw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,152,1770624000"; 
+   d="scan'208";a="230596232"
+Received: from lkp-server01.sh.intel.com (HELO 283bf2e1b94a) ([10.239.97.150])
+  by orviesa003.jf.intel.com with ESMTP; 31 Mar 2026 18:22:00 -0700
+Received: from kbuild by 283bf2e1b94a with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1w7kHN-000000004XR-0wJY;
+	Wed, 01 Apr 2026 01:21:57 +0000
+Date: Wed, 1 Apr 2026 09:21:46 +0800
+From: kernel test robot <lkp@intel.com>
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+	linux-mediatek@lists.infradead.org
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	Fabien Parent <parent.f@gmail.com>, Val Packett <val@packett.cool>,
+	Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Linus Walleij <linusw@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Julien Massot <julien.massot@collabora.com>,
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+	Gary Bisson <bisson.gary@gmail.com>,
+	Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-gpio@vger.kernel.org
+Subject: Re: [PATCH v4 7/9] regulator: Add MediaTek MT6392 regulator
+Message-ID: <202604010924.UuETwSKZ-lkp@intel.com>
+References: <20260330083429.359819-8-l.scorcia@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-From: Javier Tia <floss@jetm.me>
-To: Paul Menzel <pmenzel@molgen.mpg.de>
-Date: Tue, 31 Mar 2026 14:58:59 -0600
-Subject: Re: [PATCH v5 8/8] Bluetooth: btusb: Add MT7927 ID for ASUS X870E / ProArt X870E-Creator
-Cc: Marcel Holtmann <marcel@holtmann.org>, Luiz Augusto von Dentz <luiz.dentz@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Jose Tiburcio Ribeiro Netto <jnetto@mineiro.io>, Ivan Lubnin <lubnin.ivan@gmail.com>
-In-Reply-To: 11effdbc-4eff-4430-a22f-3320f84859fb@molgen.mpg.de
-References: 11effdbc-4eff-4430-a22f-3320f84859fb@molgen.mpg.de
-Message-Id: <20260331210402.DCE821EA006B@mailuser.phl.internal>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260330083429.359819-8-l.scorcia@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260331_140407_644430_F120B117 
-X-CRM114-Status: GOOD (  10.00  )
+X-CRM114-CacheID: sfid-20260331_182210_524476_251D0F61 
+X-CRM114-Status: GOOD (  13.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,26 +106,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Paul,
+Hi Luca,
 
-Thank you for the review.
+kernel test robot noticed the following build warnings:
 
-On Mon, 31 Mar 2026 Paul Menzel wrote:
-> > +	{ USB_DEVICE(0x13d3, 0x3588), .driver_info = BTUSB_MEDIATEK |
-> > +						     BTUSB_WIDEBAND_SPEECH },
->
-> This is not sorted. Is there a reason to place it here?
+[auto build test WARNING on lee-mfd/for-mfd-next]
+[also build test WARNING on broonie-regulator/for-next linusw-pinctrl/devel linusw-pinctrl/for-next lee-mfd/for-mfd-fixes linus/master v7.0-rc6 next-20260330]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-The placement is a consequence of the series structure - each USB ID
-patch inserts after the previous one to keep patches independent and
-conflict-free. The existing 0x13d3 MediaTek entries in the table are
-also not strictly sorted (e.g. 3560, 3620, 3621, 3622, 3563, 3564),
-as they are grouped by chip generation rather than numerical order.
+url:    https://github.com/intel-lab-lkp/linux/commits/Luca-Leonardo-Scorcia/dt-bindings-mfd-mt6397-Add-MT6392-PMIC/20260331-081127
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/lee/mfd.git for-mfd-next
+patch link:    https://lore.kernel.org/r/20260330083429.359819-8-l.scorcia%40gmail.com
+patch subject: [PATCH v4 7/9] regulator: Add MediaTek MT6392 regulator
+config: hexagon-allmodconfig (https://download.01.org/0day-ci/archive/20260401/202604010924.UuETwSKZ-lkp@intel.com/config)
+compiler: clang version 17.0.6 (https://github.com/llvm/llvm-project 6009708b4367171ccdbf4b5905cb6a803753fe18)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260401/202604010924.UuETwSKZ-lkp@intel.com/reproduce)
 
-That said, Luiz has already applied v4 of this series to
-bluetooth-next with this ordering, so any resorting would need a
-separate follow-up patch.
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202604010924.UuETwSKZ-lkp@intel.com/
 
-Best,
-Javier
+All warnings (new ones prefixed by >>):
+
+>> drivers/regulator/mt6392-regulator.c:181:18: warning: unused variable 'ldo_volt_table1b' [-Wunused-const-variable]
+     181 | static const u32 ldo_volt_table1b[] = {
+         |                  ^~~~~~~~~~~~~~~~
+   1 warning generated.
+
+
+vim +/ldo_volt_table1b +181 drivers/regulator/mt6392-regulator.c
+
+   180	
+ > 181	static const u32 ldo_volt_table1b[] = {
+   182		1500000, 1800000, 2500000, 2800000,
+   183	};
+   184	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
