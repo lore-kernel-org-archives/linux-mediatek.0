@@ -4,78 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73CA4D39421
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2026 13:20:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80A44D3942C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2026 14:11:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IOW0L3XaVV3vYFTMqc4EpsZV2dtS9rU8WQqx5KOjvYI=; b=U9Uoawcq9oX5fwQX1OhK+hVZSx
-	PCRZ/EgmSNmdrc3U9czIia+nm+glo4+nwPJt7R9gMi7y2krZnsbtEKSjz0epEEeVeotgi92m1vx9t
-	VZTK33uqQe47qMswDvLvXw1/FiyiYnIGA1If/O6fUwQRKHoNbs5MBeDiqjx6RONZ4wr6eTDIWxHWG
-	611QUYRy4CcX0Q7scXZeX24OckwLe8Ttf3yR2swl4jaKoc4Qi0L9qdv1WVMz1+CyTRIdFYWS48Gex
-	KSHkpl2uvnwivg626Cq8Xm1Fnt4kOD4CbpDQORrMPi7mVdcOAwhwgdJQ3FnvLNNt0n2m8uy0RVsg+
-	ZA+Rt2YA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=QxNJ4Qn0m51y6tu8fH++pdqnAyQxy0JIYUU81rpg0b8=; b=vip3hEjN7Z6VoS9jeE2V+uebIU
+	D+8TnY/O1iuvNYoo3hTrtRt9DsVPM3VBKvxUtFrTLtro3Klv7/h4V47JaPYnjNS5+9HqWFXqorZRc
+	ZUwSyIrhX4MWjusiE3mEMKAwg99NnmR8sLqkVpqvEdZr49fNic/wZzpvDffb8QRhgaKh2DqUTmG2p
+	g5q45cy0y9xcaFpSOIxqYerXLTWht7uuZx/816Nl6HjUkCVG3EMKJnQj1E55HR0+61R5h14gMzsWA
+	BW9h+lRpXA4ngbYTzAn3l1e3j3znBDSMVTNBnVNSFuAJgvTLU6/ZVyuZApRLds13bpFrMgr1VyKkk
+	oveTHYIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8HyS-00000000AB4-44js;
-	Thu, 02 Apr 2026 13:20:40 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1w8Ilc-00000000Fwz-2K1k;
+	Thu, 02 Apr 2026 14:11:28 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8HyR-00000000AAp-2aXA;
-	Thu, 02 Apr 2026 13:20:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:Date:
-	Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:Content-Type:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=IOW0L3XaVV3vYFTMqc4EpsZV2dtS9rU8WQqx5KOjvYI=; b=Vg1AP2g+3BfskFSjJrzi4h98QD
-	IXnfFEvtbhmz8RtOcitNnCSI/NsdqWjl2c6VnSVwQiewMxnPMr+dnwGT3PfqY2uDtrDDD3beoknjR
-	xT/RaeVnTphf1F2zMlF0H8HtJ8mFC8lzUA7CbqLIeXVYk2B//T0PB2ULDWjisi33ZNcjagqosVVBR
-	N5wqTFdtKkLsy0Pks3Zu1kuP9wxrB6UjKqc7M9Rt/UHjq5HTsOD2E2qMhhFZ6U09pj+fblpH36oU5
-	NiyEkk3nI1r9jxYfLaeoM8f6VI63LN0q7neBC34ES/bTmE9n55zYqIh9xMgTQWg/DkAMagx2S6fbL
-	rSbA0DmA==;
-Received: from sea.source.kernel.org ([172.234.252.31])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8HyO-00000002Wj6-1sMR;
-	Thu, 02 Apr 2026 13:20:38 +0000
+	id 1w8Ila-00000000FwQ-3TGc;
+	Thu, 02 Apr 2026 14:11:26 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id BBFAD43D66;
-	Thu,  2 Apr 2026 13:20:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9A345C116C6;
-	Thu,  2 Apr 2026 13:20:32 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 9CE1160008;
+	Thu,  2 Apr 2026 14:11:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 44F12C116C6;
+	Thu,  2 Apr 2026 14:11:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1775136032;
-	bh=bdM5CpBSGBUjea2E0M0inYXAS7dXwzD2DrU4yvZg14g=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=LBPMJ4aKdUI5AFsTq8Jerr5MFJ0I7h5UqvC/VIkXr/u2gA++PjVmemeLAg1r7OYto
-	 wVUfkBU0DMWIiFG4wjjTq8G9zge/ZBFOKBPTGDN8JI4/cL6TuCiSyCxIhCaURdVKiZ
-	 nUSXg6t0FF0bN++7wPOGZe5Wj5EtXR8rHRpDtwdqPEDogopv2mrA7mws3N7cnfnFqn
-	 9nors6N0UjocQo+nX9S5KH7fahpyIVSlj1CrOegvjjmvV/J32RNhykormoFOkRGK/b
-	 E46PbUbDJ1AJ9bvAhs74MX+a6ul2BsDgNNwpaE6xhhdpzBbPUw1s7O3Py/qQjnSoQM
-	 P6F6PizKqsJzw==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 3FDC23809A05;
-	Thu,  2 Apr 2026 13:20:16 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1775139085;
+	bh=+6ca/Obmn4va08+h17L1/nNzv5x2583fM9j2PQdNcdI=;
+	h=From:To:Cc:Subject:Date:From;
+	b=nL7/F0qQVtHVQ5aSo/IlwVnjKBud5//OsJER78W5GUNtxUyrEMG3wa3DXrM2ngv+G
+	 Y5ogpABSGhDHj3vvctyVf2JBUEk1bZiedX0VFsTkbQNgAKC2TSybaK9UUxc9hmalX0
+	 +vE2Y9VwoU2CVhgt8xHaICwNbaYhKzMD8039r3c75iwm+PcM+981rkBHb9lZjqtn6+
+	 M9Uff64uESOrSszNRM32HZP1lgVVzvAzYXfwRN4JFzutdsewPembNz6PAcrwarnnAz
+	 W/GTYU8N9/HfARegpokJ0iPA0plitzQ4WwBgVXsMXF9kc9m0MySjd6Usvk9miklIED
+	 FkGvCZqzJZPzg==
+From: Arnd Bergmann <arnd@kernel.org>
+To: Marcel Holtmann <marcel@holtmann.org>,
+	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Javier Tia <floss@jetm.me>
+Cc: Arnd Bergmann <arnd@arndb.de>,
+	Chris Lu <chris.lu@mediatek.com>,
+	Kees Cook <kees@kernel.org>,
+	Johan Hovold <johan@kernel.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Jiande Lu <jiande.lu@mediatek.com>,
+	linux-bluetooth@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] Bluetooth: btmtk: hide unused  btmtk_mt6639_devs[] array
+Date: Thu,  2 Apr 2026 16:11:15 +0200
+Message-Id: <20260402141119.2732591-1-arnd@kernel.org>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next] net: airoha: Set REG_RX_CPU_IDX() once in
- airoha_qdma_fill_rx_queue()
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <177513601478.26443.18083192170217288880.git-patchwork-notify@kernel.org>
-Date: Thu, 02 Apr 2026 13:20:14 +0000
-References: <20260331-airoha-cpu-idx-out-off-loop-v1-1-75c66b428f50@kernel.org>
-In-Reply-To: <20260331-airoha-cpu-idx-out-off-loop-v1-1-75c66b428f50@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260402_142036_694344_3AB624B5 
-X-CRM114-Status: UNSURE (   8.97  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,29 +77,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+From: Arnd Bergmann <arnd@arndb.de>
 
-This patch was applied to netdev/net-next.git (main)
-by Paolo Abeni <pabeni@redhat.com>:
+When USB support is disabled, the array is not referenced anywhere,
+causing a warning:
 
-On Tue, 31 Mar 2026 12:33:24 +0200 you wrote:
-> It is not necessary to update REG_RX_CPU_IDX register for each iteration
-> of the descriptor loop in airoha_qdma_fill_rx_queue routine.
-> Move REG_RX_CPU_IDX configuration out of the descriptor loop and rely on
-> the last queue head value updated in the descriptor loop.
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> 
-> [...]
+drivers/bluetooth/btmtk.c:35:3: error: 'btmtk_mt6639_devs' defined but not used [-Werror=unused-const-variable=]
+   35 | } btmtk_mt6639_devs[] = {
+      |   ^~~~~~~~~~~~~~~~~
 
-Here is the summary with links:
-  - [net-next] net: airoha: Set REG_RX_CPU_IDX() once in airoha_qdma_fill_rx_queue()
-    https://git.kernel.org/netdev/net-next/c/269389ba5398
+Move it into the #ifdef block.
 
-You are awesome, thank you!
+Fixes: 4cdd001ff03f ("Bluetooth: btmtk: Add MT6639 (MT7927) Bluetooth support")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+ drivers/bluetooth/btmtk.c | 32 ++++++++++++++++----------------
+ 1 file changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index 099188bf772e..6fb6ca274808 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -25,22 +25,6 @@
+ /* It is for mt79xx iso data transmission setting */
+ #define MTK_ISO_THRESHOLD	264
+ 
+-/* Known MT6639 (MT7927) Bluetooth USB devices.
+- * Used to scope the zero-CHIPID workaround to real MT6639 hardware,
+- * since some boards return 0x0000 from the MMIO chip ID register.
+- */
+-static const struct {
+-	u16 vendor;
+-	u16 product;
+-} btmtk_mt6639_devs[] = {
+-	{ 0x0489, 0xe13a },	/* ASUS ROG Crosshair X870E Hero */
+-	{ 0x0489, 0xe0fa },	/* Lenovo Legion Pro 7 16ARX9 */
+-	{ 0x0489, 0xe10f },	/* Gigabyte Z790 AORUS MASTER X */
+-	{ 0x0489, 0xe110 },	/* MSI X870E Ace Max */
+-	{ 0x0489, 0xe116 },	/* TP-Link Archer TBE550E */
+-	{ 0x13d3, 0x3588 },	/* ASUS ROG STRIX X870E-E */
+-};
+-
+ struct btmtk_patch_header {
+ 	u8 datetime[16];
+ 	u8 platform[4];
+@@ -483,6 +467,22 @@ int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb)
+ EXPORT_SYMBOL_GPL(btmtk_process_coredump);
+ 
+ #if IS_ENABLED(CONFIG_BT_HCIBTUSB_MTK)
++/* Known MT6639 (MT7927) Bluetooth USB devices.
++ * Used to scope the zero-CHIPID workaround to real MT6639 hardware,
++ * since some boards return 0x0000 from the MMIO chip ID register.
++ */
++static const struct {
++	u16 vendor;
++	u16 product;
++} btmtk_mt6639_devs[] = {
++	{ 0x0489, 0xe13a },	/* ASUS ROG Crosshair X870E Hero */
++	{ 0x0489, 0xe0fa },	/* Lenovo Legion Pro 7 16ARX9 */
++	{ 0x0489, 0xe10f },	/* Gigabyte Z790 AORUS MASTER X */
++	{ 0x0489, 0xe110 },	/* MSI X870E Ace Max */
++	{ 0x0489, 0xe116 },	/* TP-Link Archer TBE550E */
++	{ 0x13d3, 0x3588 },	/* ASUS ROG STRIX X870E-E */
++};
++
+ static void btmtk_usb_wmt_recv(struct urb *urb)
+ {
+ 	struct hci_dev *hdev = urb->context;
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.39.5
 
 
