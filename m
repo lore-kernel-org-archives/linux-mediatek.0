@@ -4,58 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AA69111224B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2026 00:37:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46C9CCC6B03
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2026 05:50:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WwsexIiTzE/Lt5vtwbs50H95ipvLQnSTZ1Y33LxdZXg=; b=x1daSNVCIE5BP1cf/wDFnrZABg
-	0pybEQxC5d9KURju0HnE//NmjXx9YgkbL3Hcch0HRI44PRrO7XC6E0C9zrHpcAdfEoP/l0r8icJJl
-	s+04lqe5p4kr6PvMsJkO5Pa2mREfXP5Rw5nouDvmdDddRMArFMpLms4LXUBis5xh9J6hlaQycvAWT
-	g5RMYC2tcM5WXDOYMgI5C3TsKJeqKN/R9GemapJ3zdn/GYta8yXOerqh0HziQ/ATr6g2gLiecQuZG
-	WJb6wqh/sOswnB2H61WZEnyDZ894X1fwuEKT8UFWIkXSQapi4kicaJ41OAeh0CxRCigdfw5KSW6Lt
-	9eL6sJ9A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Cc:To
+	:Subject:Message-ID:From:Content-Transfer-Encoding:Content-Type:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=A2IxQXDTDghIiyuotp3O84vD+rLQkEIhubPuL16ueno=; b=STOhT2Mx0A+pqC1bJ6r7+MbIG4
+	b9remJOBIIJGpvm5h4/U5U9v3imZCTk4AUngHJk5PQ23n6rGSTruozeHisQ9RpqfG56qd0PoAwL5P
+	m50Jfgg/9zfaTwlIZbUJ30bjQ5cA5c5g9mls2vpJZ7fyzW0cNtt8usoaleGcc9TmrtOTWUeOQALkj
+	53040xWpy1Rw7q7mVdQg4xYyMmGBEo3eHBUCkVRh/53YFzFmfWhRhesmBZtQALpbTERQ1Y7trEVBX
+	Q/g2r2CWaNHvX5EXsVEAHDdmYK7vHp94lD2u7mybVuldSt1p6rOHvEB4izV6FQNqkjHGZ+VglxRyU
+	tZmTbjEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w863y-0000000GV4Y-1jsa;
-	Thu, 02 Apr 2026 00:37:34 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1w8Ax6-0000000Gpj2-31f0;
+	Thu, 02 Apr 2026 05:50:48 +0000
+Received: from out-179.mta1.migadu.com ([95.215.58.179])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w863t-0000000GV28-0hD7;
-	Thu, 02 Apr 2026 00:37:30 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.99)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1w863c-000000006dQ-3Wcy;
-	Thu, 02 Apr 2026 00:37:12 +0000
-Date: Thu, 2 Apr 2026 01:37:10 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Olivia Mackall <olivia@selenic.com>,
-	Herbert Xu <herbert@gondor.apana.org.au>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Daniel Golle <daniel@makrotopia.org>, linux-crypto@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 2/2] hwrng: mtk - add support for hw access via SMCC
-Message-ID: <674c4e1d7f3501d2563d07ea685c4a4b9ba30b65.1775090165.git.daniel@makrotopia.org>
-References: <0a951e34b7030e514091d6c0922c5982ae349221.1775090165.git.daniel@makrotopia.org>
+	id 1w8Ax3-0000000Gpia-2RpW
+	for linux-mediatek@lists.infradead.org;
+	Thu, 02 Apr 2026 05:50:47 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <0a951e34b7030e514091d6c0922c5982ae349221.1775090165.git.daniel@makrotopia.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1775109039;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=A2IxQXDTDghIiyuotp3O84vD+rLQkEIhubPuL16ueno=;
+	b=K0/pktxteFCz4rfz1V6ek6NdCs1QO9Re6Gv5UDhf8sz8XK+V59QPpgEvkm74cswxBJHXHs
+	pv8fd/vJIIqkQ8XUFPwhNHmbffCFCKQtkgsH4C/1PMElEP0dI/5xtJVWTEzMH3LCgYiBhd
+	/kgc/b5ujgIDPiSnz6qRw+AE59z5xpE=
+Date: Thu, 02 Apr 2026 05:50:33 +0000
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Frank Wunderlich" <frank.wunderlich@linux.dev>
+Message-ID: <4dbc3dabfdbc3bdf6b8d411e62a27fa8988e3388@linux.dev>
+TLS-Required: No
+Subject: Re: [PATCH v4 net-next 5/5] net: pcs: pcs-mtk-lynxi: deprecate
+ "mediatek,pnswap"
+To: "Vladimir Oltean" <vladimir.oltean@nxp.com>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, "Daniel
+ Golle" <daniel@makrotopia.org>, "Horatiu Vultur"
+ <horatiu.vultur@microchip.com>, "=?utf-8?B?QmriiJriiI9ybiBNb3Jr?="
+ <bjorn@mork.no>, "Andrew Lunn" <andrew+netdev@lunn.ch>, "Heiner Kallweit"
+ <hkallweit1@gmail.com>, "Russell King" <linux@armlinux.org.uk>, "David S.
+ Miller" <davem@davemloft.net>, "Eric Dumazet" <edumazet@google.com>,
+ "Jakub Kicinski" <kuba@kernel.org>, "Paolo Abeni" <pabeni@redhat.com>,
+ "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski"
+ <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, "AngeloGioacchino Del Regno"
+ <angelogioacchino.delregno@collabora.com>, "Eric Woudstra"
+ <ericwouds@gmail.com>, "Alexander Couzens" <lynxis@fe80.eu>, "Chester A.
+ Unal" <chester.a.unal@arinc9.com>, "DENG Qingfang" <dqfext@gmail.com>,
+ "Sean Wang" <sean.wang@mediatek.com>, "Felix Fietkau" <nbd@nbd.name>
+In-Reply-To: <20260330190443.bol5vjfqqitz7kuo@skbuf>
+References: <20260119091220.1493761-1-vladimir.oltean@nxp.com>
+ <20260119091220.1493761-6-vladimir.oltean@nxp.com>
+ <e0ad52862d34cf4e0169c9850a7f164f127d0093@linux.dev>
+ <20260326215404.krh6v3mmnqdlndli@skbuf>
+ <d9639ac711ff8f1186a684fa120ba77247669051@linux.dev>
+ <20260330190443.bol5vjfqqitz7kuo@skbuf>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260401_173729_216981_A2F42EE1 
-X-CRM114-Status: GOOD (  22.55  )
+X-CRM114-CacheID: sfid-20260401_225045_782150_807F28B7 
+X-CRM114-Status: GOOD (  21.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,220 +88,152 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Newer versions of ARM TrustedFirmware-A on MediaTek's ARMv8 SoCs no longer
-allow accessing the TRNG from outside of the trusted firmware.
-Instead, a vendor-defined custom Secure Monitor Call can be used to
-acquire random bytes.
+Hi,
 
-Add support for newer SoCs (MT7981, MT7987, MT7988).
+i tried using these properties in sgmiisys0 node (which should be mapped =
+to mac0 and the mt7530 switch) without success [1].
 
-As TF-A for the MT7986 may either follow the old or the new
-convention, the best bet is to test if firmware blocks direct access
-to the hwrng and if so, expect the SMCC interface to be usable.
+it looks like these properties are not read somewhere.
 
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
-v2: unchanged
+the flow is
 
- drivers/char/hw_random/mtk-rng.c | 127 ++++++++++++++++++++++++++-----
- 1 file changed, 106 insertions(+), 21 deletions(-)
+mtk_probe (eth driver)
 
-diff --git a/drivers/char/hw_random/mtk-rng.c b/drivers/char/hw_random/mtk-rng.c
-index 5808d09d12c45..8f5856b59ad66 100644
---- a/drivers/char/hw_random/mtk-rng.c
-+++ b/drivers/char/hw_random/mtk-rng.c
-@@ -3,6 +3,7 @@
-  * Driver for Mediatek Hardware Random Number Generator
-  *
-  * Copyright (C) 2017 Sean Wang <sean.wang@mediatek.com>
-+ * Copyright (C) 2026 Daniel Golle <daniel@makrotopia.org>
-  */
- #define MTK_RNG_DEV KBUILD_MODNAME
- 
-@@ -17,6 +18,8 @@
- #include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
-+#include <linux/arm-smccc.h>
-+#include <linux/soc/mediatek/mtk_sip_svc.h>
- 
- /* Runtime PM autosuspend timeout: */
- #define RNG_AUTOSUSPEND_TIMEOUT		100
-@@ -30,6 +33,11 @@
- 
- #define RNG_DATA			0x08
- 
-+/* Driver feature flags */
-+#define MTK_RNG_SMC			BIT(0)
-+
-+#define MTK_SIP_KERNEL_GET_RND		MTK_SIP_SMC_CMD(0x550)
-+
- #define to_mtk_rng(p)	container_of(p, struct mtk_rng, rng)
- 
- struct mtk_rng {
-@@ -37,6 +45,7 @@ struct mtk_rng {
- 	struct clk *clk;
- 	struct hwrng rng;
- 	struct device *dev;
-+	unsigned long flags;
- };
- 
- static int mtk_rng_init(struct hwrng *rng)
-@@ -103,6 +112,56 @@ static int mtk_rng_read(struct hwrng *rng, void *buf, size_t max, bool wait)
- 	return retval || !wait ? retval : -EIO;
- }
- 
-+static int mtk_rng_read_smc(struct hwrng *rng, void *buf, size_t max,
-+			    bool wait)
-+{
-+	struct arm_smccc_res res;
-+	int retval = 0;
-+
-+	while (max >= sizeof(u32)) {
-+		arm_smccc_smc(MTK_SIP_KERNEL_GET_RND, 0, 0, 0, 0, 0, 0, 0,
-+			      &res);
-+		if (res.a0)
-+			break;
-+
-+		*(u32 *)buf = res.a1;
-+		retval += sizeof(u32);
-+		buf += sizeof(u32);
-+		max -= sizeof(u32);
-+	}
-+
-+	return retval || !wait ? retval : -EIO;
-+}
-+
-+static bool mtk_rng_hw_accessible(struct mtk_rng *priv)
-+{
-+	u32 val;
-+	int err;
-+
-+	err = clk_prepare_enable(priv->clk);
-+	if (err)
-+		return false;
-+
-+	val = readl(priv->base + RNG_CTRL);
-+	val |= RNG_EN;
-+	writel(val, priv->base + RNG_CTRL);
-+
-+	val = readl(priv->base + RNG_CTRL);
-+
-+	if (val & RNG_EN) {
-+		/* HW is accessible, clean up: disable RNG and clock */
-+		writel(val & ~RNG_EN, priv->base + RNG_CTRL);
-+		clk_disable_unprepare(priv->clk);
-+		return true;
-+	}
-+
-+	/*
-+	 * If TF-A blocks direct access, the register reads back as 0.
-+	 * Leave the clock enabled as TF-A needs it.
-+	 */
-+	return false;
-+}
-+
- static int mtk_rng_probe(struct platform_device *pdev)
- {
- 	int ret;
-@@ -114,23 +173,42 @@ static int mtk_rng_probe(struct platform_device *pdev)
- 
- 	priv->dev = &pdev->dev;
- 	priv->rng.name = pdev->name;
--#ifndef CONFIG_PM
--	priv->rng.init = mtk_rng_init;
--	priv->rng.cleanup = mtk_rng_cleanup;
--#endif
--	priv->rng.read = mtk_rng_read;
- 	priv->rng.quality = 900;
--
--	priv->clk = devm_clk_get(&pdev->dev, "rng");
--	if (IS_ERR(priv->clk)) {
--		ret = PTR_ERR(priv->clk);
--		dev_err(&pdev->dev, "no clock for device: %d\n", ret);
--		return ret;
-+	priv->flags = (unsigned long)device_get_match_data(&pdev->dev);
-+
-+	if (!(priv->flags & MTK_RNG_SMC)) {
-+		priv->clk = devm_clk_get(&pdev->dev, "rng");
-+		if (IS_ERR(priv->clk)) {
-+			ret = PTR_ERR(priv->clk);
-+			dev_err(&pdev->dev, "no clock for device: %d\n", ret);
-+			return ret;
-+		}
-+
-+		priv->base = devm_platform_ioremap_resource(pdev, 0);
-+		if (IS_ERR(priv->base))
-+			return PTR_ERR(priv->base);
-+
-+		if (IS_ENABLED(CONFIG_HAVE_ARM_SMCCC) &&
-+		    of_device_is_compatible(pdev->dev.of_node,
-+					    "mediatek,mt7986-rng") &&
-+		    !mtk_rng_hw_accessible(priv)) {
-+			priv->flags |= MTK_RNG_SMC;
-+			dev_info(&pdev->dev,
-+				 "HW RNG not MMIO accessible, using SMC\n");
-+		}
- 	}
- 
--	priv->base = devm_platform_ioremap_resource(pdev, 0);
--	if (IS_ERR(priv->base))
--		return PTR_ERR(priv->base);
-+	if (priv->flags & MTK_RNG_SMC) {
-+		if (!IS_ENABLED(CONFIG_HAVE_ARM_SMCCC))
-+			return -ENODEV;
-+		priv->rng.read = mtk_rng_read_smc;
-+	} else {
-+#ifndef CONFIG_PM
-+		priv->rng.init = mtk_rng_init;
-+		priv->rng.cleanup = mtk_rng_cleanup;
-+#endif
-+		priv->rng.read = mtk_rng_read;
-+	}
- 
- 	ret = devm_hwrng_register(&pdev->dev, &priv->rng);
- 	if (ret) {
-@@ -139,12 +217,15 @@ static int mtk_rng_probe(struct platform_device *pdev)
- 		return ret;
- 	}
- 
--	dev_set_drvdata(&pdev->dev, priv);
--	pm_runtime_set_autosuspend_delay(&pdev->dev, RNG_AUTOSUSPEND_TIMEOUT);
--	pm_runtime_use_autosuspend(&pdev->dev);
--	ret = devm_pm_runtime_enable(&pdev->dev);
--	if (ret)
--		return ret;
-+	if (!(priv->flags & MTK_RNG_SMC)) {
-+		dev_set_drvdata(&pdev->dev, priv);
-+		pm_runtime_set_autosuspend_delay(&pdev->dev,
-+						 RNG_AUTOSUSPEND_TIMEOUT);
-+		pm_runtime_use_autosuspend(&pdev->dev);
-+		ret = devm_pm_runtime_enable(&pdev->dev);
-+		if (ret)
-+			return ret;
-+	}
- 
- 	dev_info(&pdev->dev, "registered RNG driver\n");
- 
-@@ -181,8 +262,11 @@ static const struct dev_pm_ops mtk_rng_pm_ops = {
- #endif	/* CONFIG_PM */
- 
- static const struct of_device_id mtk_rng_match[] = {
--	{ .compatible = "mediatek,mt7986-rng" },
- 	{ .compatible = "mediatek,mt7623-rng" },
-+	{ .compatible = "mediatek,mt7981-rng", .data = (void *)MTK_RNG_SMC },
-+	{ .compatible = "mediatek,mt7986-rng" },
-+	{ .compatible = "mediatek,mt7987-rng", .data = (void *)MTK_RNG_SMC },
-+	{ .compatible = "mediatek,mt7988-rng", .data = (void *)MTK_RNG_SMC },
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_rng_match);
-@@ -200,4 +284,5 @@ module_platform_driver(mtk_rng_driver);
- 
- MODULE_DESCRIPTION("Mediatek Random Number Generator Driver");
- MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
-+MODULE_AUTHOR("Daniel Golle <daniel@makrotopia.org>");
- MODULE_LICENSE("GPL");
--- 
-2.53.0
+if (MTK_HAS_CAPS(eth->soc->caps, MTK_SGMII)) {
+	err =3D mtk_sgmii_init(eth);
+
+and there calling mtk_pcs_lynxi_create with the sgmiisys-node (for each m=
+ac, so imho mac0=3Dsgmiisys0)
+but handling the sgmiisys only as syscon, not a "real" pcs node [2].
+
+but your new code calls phy_get_tx_polarity and should read out this prop=
+erties, but from subnode "pcs", so next try was
+
+&sgmiisys0 {
+	pcs {
+		rx-polarity =3D <PHY_POL_NORMAL>;
+		tx-polarity =3D <PHY_POL_INVERT>;
+	};
+};
+
+which results in completely strange behaviour (looks like sgmiisys1 is ma=
+pped to mac0, but based on code in mtk_sgmii_init 0=3D0 should be right):
+
+[    2.765218] SGMSYS_QPHY_WRAP_CTRL =3D 0x501, will write 0x500
+[    9.143849] SGMSYS_QPHY_WRAP_CTRL =3D 0x500, will write 0x501
+
+but nevertheless i tried changing sgmiisys0 to sgmiisys1 and got the dame=
+ result as before
+
+[    2.713644] SGMSYS_QPHY_WRAP_CTRL =3D 0x501, will write 0x500
+[    9.061509] SGMSYS_QPHY_WRAP_CTRL =3D 0x500, will write 0x500
+
+i can only change the second serdes with sgmiisys0, but not the first.
+
+mapping between mac and sgmiisys in dts in mt7986a.dtsi [3] are like this=
+:
+
+eth: ethernet@15100000 {
+	compatible =3D "mediatek,mt7986-eth";
+	mediatek,sgmiisys =3D <&sgmiisys0>, <&sgmiisys1>;
+	...
+};
+
+&eth {
+	status =3D "okay";
+
+	gmac0: mac@0 {
+		compatible =3D "mediatek,eth-mac";
+	...
+	};
+
+	gmac1: mac@1 {
+		compatible =3D "mediatek,eth-mac";
+	...
+	};
+};
+
+maybe it is time to revive the PCS framework discussion ([4]-[6])?
+
+[1] https://github.com/frank-w/BPI-Router-Linux/commit/4846a7bb352fe59111=
+36cba33813f099bac035fd
+[2] https://elixir.bootlin.com/linux/v7.0-rc4/source/drivers/net/ethernet=
+/mediatek/mtk_eth_soc.c#L5001
+[3] https://elixir.bootlin.com/linux/v7.0-rc4/source/arch/arm64/boot/dts/=
+mediatek/mt7986a.dtsi#L528
+
+[4] * https://patchwork.kernel.org/project/netdevbpf/patch/20250610233134=
+.3588011-4-sean.anderson@linux.dev/ (v6)
+> pcs-framework itself had not yet got a response from netdev maintainer =
+(only other parts)
+[5] * https://patchwork.kernel.org/project/netdevbpf/patch/20250511201250=
+.3789083-4-ansuelsmth@gmail.com/ (v4)
+> discussion: https://lore.kernel.org/netdev/20250511201250.3789083-1-ans=
+uelsmth@gmail.com/
+[6] * https://patchwork.kernel.org/project/netdevbpf/patch/ba4e359584a6b3=
+bc4b3470822c42186d5b0856f9.1721910728.git.daniel@makrotopia.org/
+> discussion: https://patchwork.kernel.org/project/netdevbpf/patch/8aa905=
+080bdb6760875d62cb3b2b41258837f80e.1702352117.git.daniel@makrotopia.org/
+
+Am 30. M=C3=A4rz 2026 um 21:04 schrieb "Vladimir Oltean" <vladimir.oltean=
+@nxp.com mailto:vladimir.oltean@nxp.com?to=3D%22Vladimir%20Oltean%22%20%3=
+Cvladimir.oltean%40nxp.com%3E >:
+>=20
+>=20Hi Frank,
+>=20
+>=20On Mon, Mar 30, 2026 at 05:52:17PM +0000, Frank Wunderlich wrote:
+>=20
+>=20>=20
+>=20> Hi Vladimir
+> >=20=20
+>=20>  Thanks for the patch and sorry for my delay...i was away this week=
+end so i was not able to test.
+> >=20=20
+>=20>  traffic works again (but there is only read now) and this is the r=
+esult of your debug prints:
+> >=20=20
+>=20>  root@bpi-r3:~# mailto:root@bpi-r3:~#  dmesg | grep SGMSYS_QPHY_WRA=
+P_CTRL
+> >  [ 2.706963] SGMSYS_QPHY_WRAP_CTRL =3D 0x501, intending to write 0x50=
+0
+> >  [ 9.134081] SGMSYS_QPHY_WRAP_CTRL =3D 0x500, intending to write 0x50=
+0
+> >=20=20
+>=20>  R3/mt7986 has 2 MAC, and switch is on the first, so value will cha=
+nge, not sure why this is different.
+> >=20=20
+>=20>  i have not found SGMSYS_QPHY_WRAP_CTRL or something related with p=
+olarity in ethernet/mac-
+> >  (drivers/net/ethernet/mediatek/mtk_eth_soc.c) or switch-driver (driv=
+ers/net/dsa/mt7530{,-mdio}.c)
+> >  in case they manipulate this register too (of course they should not=
+). Also looked into the pcs-handling
+> >  in both drivers, but see nothing related to polarity. And looked for=
+ possible duplicate register const
+> >  definition (other name for 0xec).
+> >=20
+>=20This result means that your default QPHY_WRAP_CTRL register value has
+> the SGMII_PN_SWAP_TX bit set. Whether that comes from U-Boot or hardwar=
+e
+> default or otherwise, it doesn't really matter. Curious that the
+> SGMII_SW_RESET doesn't clear TX inversion, though. I guess you wouldn't
+> have documentation that would suggest this setting is sticky?
+>=20
+>=20In Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml,
+> it is not specified what happens when the "mediatek,pnswap" property is
+> missing. I thought the most logical thing would be for the lane
+> polarities to not be swapped - because how would you describe normal
+> lane polarities otherwise? My bad for thinking the original vendor
+> bindings were more sane than they were.
+>=20
+>=20The only way to describe the polarities that this SGMSYS block needs =
+on
+> a particular board is to use the newly introduced 'rx-polarity =3D
+> <PHY_POL_NORMAL>' and 'tx-polarity =3D <PHY_POL_INVERT>'. Which I stron=
+gly
+> recommend you to do, even if the attached patch should restore
+> functionality with your current device tree.
+>=20
+
+regards=20Frank
 
