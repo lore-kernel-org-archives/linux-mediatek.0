@@ -4,84 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C77BED3940B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2026 10:06:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCDB0D3941D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2026 12:44:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RCAYnrozxEjVyydqMIlUful1bjJGTiFmh3IjjKa1k6I=; b=N/9L2F6LUhcKC4sclXBCm63dWU
-	5kSiP/2M6/lql4YnWc3lU54/wKhZ1W50UVe82Ogu8OUtP4TmMRQTeW+JvQzYNxbmH8u6DMXPld+rR
-	ZRKoIQP/Kk+wenwdgd1ZWP4GC3P3pc42ogwuEUyO3JVV2NukU3p++F+jGqBGiPNx9uia0KGO9ev+r
-	qYahvg0KHu5BDw4rv4APyVC3K87AiPHIus9LB+iZoj/k7Su05MmyUfbxpSLQDEw7Eg+TcUM0JZloI
-	gOgbzT6USwfnfJmH2XEJPJVE1L97g77DhXYzLTj95YRD/P/CqA685gllWfBgEyoFgyRZEMFlWrCcv
-	+TDKYDtw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZyMsFe3z3vuMiI4u51V1HuAp4KrHEDdDU/NA6lQUuqc=; b=yV9NDGhyeKm2Df3LnV3pIuZ88T
+	w6IiyOcvEN+udD1oL8tnE05GWnnE1j14qzPVc4+p90kZiYs79XFGJcEgdwp1XVTExWQPWQpyKU3He
+	4r16x0i0OeVoZ2YwtZp2fH9MsZV+NPznrMSL3ddNN1Re8PxSU3unhx5SbrcPMdBcf0EwTjGYYaeMs
+	Nobsc08lOV3pYolmWjvV0v4nCSbIZbO+BdP8b87ES9SDO+QSESUpQzWakHiyxnbRNK9e35Zo/1SwQ
+	/2eLRLbpyIVM4Ol84psSGjZSpuOPCTpnCfsYopp6DFAUnUpXpN3h0IMWCd8rh0ungd4T6WY+FDO6u
+	6u95uGpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8Ew7-0000000HLLx-3NxQ;
-	Thu, 02 Apr 2026 10:06:03 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1w8HP3-000000006Mz-3EYu;
+	Thu, 02 Apr 2026 12:44:05 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8Ew2-0000000HLIo-3fIU;
-	Thu, 02 Apr 2026 10:06:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1775124355;
-	bh=D4kfl7vQPG5i2TDOvaJ3hANWJtrLLrfKi0I6ESNoUBs=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=nRHJM3auCioWf+U0lXNf1DZ9gI4HLqoLnXqJQpjK6TuZsG9eGFNv66ISHZTp2Fsf9
-	 4+KQuuqnFfDlcwxSRhSX9dCkDB05hBwx3nPMGi7F0x1EFo1spXfrGcB/J5NQCl/nh3
-	 ag9YWUXhz1aubhJ/gq27GHnYIVutjnU6rioAydOUSPF8+8HLcbzc+n9G7OB/a34IHm
-	 sWAE+DffuBhhDmc7g1NV38A/CoWRxmoWbg7sdMGLOiGQjDjcmE4sLuevU4vfqgTCNU
-	 F8wZT8Mct0gVg9s3Uy8Forr2bfWqRAziqSbeVIDa6a8SdQTVY7t28t7DtfnbqBQ0LN
-	 qUi7hMlU4TDhg==
-Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:54e2:77ca:8340:99bd])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laura.nao)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 19DCC17E76A5;
-	Thu,  2 Apr 2026 12:05:54 +0200 (CEST)
-From: Laura Nao <laura.nao@collabora.com>
-To: jason-jh.lin@mediatek.com
-Cc: Guangjie.Song@mediatek.com,
-	Nancy.Lin@mediatek.com,
-	Paul-pl.Chen@mediatek.com,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	Singo.Chang@mediatek.com,
-	Sirius.Wang@mediatek.com,
-	angelogioacchino.delregno@collabora.com,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	kernel@collabora.com,
-	krzk+dt@kernel.org,
-	laura.nao@collabora.com,
+	id 1w8HP1-000000006Lw-2Wui;
+	Thu, 02 Apr 2026 12:44:04 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.99)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1w8HOm-000000004C2-42Qe;
+	Thu, 02 Apr 2026 12:43:49 +0000
+Date: Thu, 2 Apr 2026 13:43:45 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Olivia Mackall <olivia@selenic.com>,
+	Herbert Xu <herbert@gondor.apana.org.au>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sean Wang <sean.wang@mediatek.com>, linux-crypto@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	matthias.bgg@gmail.com,
-	mturquette@baylibre.com,
-	netdev@vger.kernel.org,
-	nfraprado@collabora.com,
-	p.zabel@pengutronix.de,
-	richardcochran@gmail.com,
-	robh@kernel.org,
-	sboyd@kernel.org,
-	wenst@chromium.org
-Subject: Re: [PATCH v5 23/27] clk: mediatek: Add MT8196 disp-ao clock support
-Date: Thu,  2 Apr 2026 12:05:38 +0200
-Message-Id: <20260402100538.27291-1-laura.nao@collabora.com>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <2d418383ff2d6ff40ffb3b4f8e2b0c0e665c3b58.camel@mediatek.com>
-References: <2d418383ff2d6ff40ffb3b4f8e2b0c0e665c3b58.camel@mediatek.com>
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 1/2] dt-bindings: rng: mtk-rng: add SMC-based TRNG
+ variants
+Message-ID: <ac5kgYh6Jbv4SSz4@makrotopia.org>
+References: <0a951e34b7030e514091d6c0922c5982ae349221.1775090165.git.daniel@makrotopia.org>
+ <20260402-towering-transparent-malamute-1e44b8@quoll>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260402-towering-transparent-malamute-1e44b8@quoll>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260402_030559_068527_396530EC 
-X-CRM114-Status: GOOD (  23.58  )
+X-CRM114-CacheID: sfid-20260402_054403_674426_F7ED8D16 
+X-CRM114-Status: GOOD (  28.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,141 +72,150 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jason-JH,
+On Thu, Apr 02, 2026 at 09:57:59AM +0200, Krzysztof Kozlowski wrote:
+> On Thu, Apr 02, 2026 at 01:37:02AM +0100, Daniel Golle wrote:
+> > Add compatible strings for MediaTek SoCs where the hardware random number
+> > generator is accessed via a vendor-defined Secure Monitor Call (SMC)
+> > rather than direct MMIO register access:
+> > 
+> >   - mediatek,mt7981-rng
+> >   - mediatek,mt7987-rng
+> >   - mediatek,mt7988-rng
+> > 
+> > These variants require no reg, clocks, or clock-names properties since
+> > the RNG hardware is managed by ARM Trusted Firmware-A.
+> > 
+> > Relax the $nodename pattern to also allow 'rng' in addition to the
+> > existing 'rng@...' pattern.
+> > 
+> > Add a second example showing the minimal SMC variant binding.
+> > 
+> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> > ---
+> > v2: express compatibilities with fallback
+> > 
+> >  .../devicetree/bindings/rng/mtk-rng.yaml      | 28 ++++++++++++++++---
+> >  1 file changed, 24 insertions(+), 4 deletions(-)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/rng/mtk-rng.yaml b/Documentation/devicetree/bindings/rng/mtk-rng.yaml
+> > index 7e8dc62e5d3a6..34648b53d14c6 100644
+> > --- a/Documentation/devicetree/bindings/rng/mtk-rng.yaml
+> > +++ b/Documentation/devicetree/bindings/rng/mtk-rng.yaml
+> > @@ -11,12 +11,13 @@ maintainers:
+> >  
+> >  properties:
+> >    $nodename:
+> > -    pattern: "^rng@[0-9a-f]+$"
+> > +    pattern: "^rng(@[0-9a-f]+)?$"
+> >  
+> >    compatible:
+> >      oneOf:
+> >        - enum:
+> >            - mediatek,mt7623-rng
+> > +          - mediatek,mt7981-rng
+> >        - items:
+> >            - enum:
+> >                - mediatek,mt7622-rng
+> > @@ -25,6 +26,11 @@ properties:
+> >                - mediatek,mt8365-rng
+> >                - mediatek,mt8516-rng
+> >            - const: mediatek,mt7623-rng
+> > +      - items:
+> > +          - enum:
+> > +              - mediatek,mt7987-rng
+> > +              - mediatek,mt7988-rng
+> > +          - const: mediatek,mt7981-rng
+> >  
+> >    reg:
+> >      maxItems: 1
+> > @@ -38,9 +44,19 @@ properties:
+> >  
+> >  required:
+> >    - compatible
+> > -  - reg
+> > -  - clocks
+> > -  - clock-names
+> > +
+> > +allOf:
+> > +  - if:
+> > +      properties:
+> > +        compatible:
+> > +          not:
+> 
+> As requested last time - drop
+> 
+> > +            contains:
+> > +              const: mediatek,mt7981-rng
+> > +    then:
+> 
+> missing constraints for mediatek,mt7981-rng. So does it have IO space
+> and clocks or not?
 
-On 4/2/26 08:30, Jason-JH Lin (林睿祥) wrote:
-> On Fri, 2025-08-29 at 11:19 +0200, Laura Nao wrote:
->> Add support for the MT8196 disp-ao clock controller, which provides
->> clock gate control for the display system. It is integrated with the
->> mtk-mmsys driver, which registers the disp-ao clock driver via
->> platform_device_register_data().
->>
->> Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
->> Reviewed-by: AngeloGioacchino Del Regno
->> <angelogioacchino.delregno@collabora.com>
->> Signed-off-by: Laura Nao <laura.nao@collabora.com>
->> ---
->>  drivers/clk/mediatek/Makefile              |  2 +-
->>  drivers/clk/mediatek/clk-mt8196-vdisp_ao.c | 80
->> ++++++++++++++++++++++
->>  2 files changed, 81 insertions(+), 1 deletion(-)
->>  create mode 100644 drivers/clk/mediatek/clk-mt8196-vdisp_ao.c
->>
->> diff --git a/drivers/clk/mediatek/Makefile
->> b/drivers/clk/mediatek/Makefile
->> index fe5699411d8b..5b8969ff1985 100644
->> --- a/drivers/clk/mediatek/Makefile
->> +++ b/drivers/clk/mediatek/Makefile
->> @@ -157,7 +157,7 @@ obj-$(CONFIG_COMMON_CLK_MT8196_IMP_IIC_WRAP) +=
->> clk-mt8196-imp_iic_wrap.o
->>  obj-$(CONFIG_COMMON_CLK_MT8196_MCUSYS) += clk-mt8196-mcu.o
->>  obj-$(CONFIG_COMMON_CLK_MT8196_MDPSYS) += clk-mt8196-mdpsys.o
->>  obj-$(CONFIG_COMMON_CLK_MT8196_MFGCFG) += clk-mt8196-mfg.o
->> -obj-$(CONFIG_COMMON_CLK_MT8196_MMSYS) += clk-mt8196-disp0.o clk-
->> mt8196-disp1.o
->> +obj-$(CONFIG_COMMON_CLK_MT8196_MMSYS) += clk-mt8196-disp0.o clk-
->> mt8196-disp1.o clk-mt8196-vdisp_ao.o
->>  obj-$(CONFIG_COMMON_CLK_MT8196_PEXTPSYS) += clk-mt8196-pextp.o
->>  obj-$(CONFIG_COMMON_CLK_MT8196_UFSSYS) += clk-mt8196-ufs_ao.o
->>  obj-$(CONFIG_COMMON_CLK_MT8365) += clk-mt8365-apmixedsys.o clk-
->> mt8365.o
->> diff --git a/drivers/clk/mediatek/clk-mt8196-vdisp_ao.c
->> b/drivers/clk/mediatek/clk-mt8196-vdisp_ao.c
->> new file mode 100644
->> index 000000000000..fddb69d1c3eb
->> --- /dev/null
->> +++ b/drivers/clk/mediatek/clk-mt8196-vdisp_ao.c
->> @@ -0,0 +1,80 @@
->> +// SPDX-License-Identifier: GPL-2.0-only
->> +/*
->> + * Copyright (c) 2025 MediaTek Inc.
->> + *                    Guangjie Song <guangjie.song@mediatek.com>
->> + * Copyright (c) 2025 Collabora Ltd.
->> + *                    Laura Nao <laura.nao@collabora.com>
->> + */
->> +#include <dt-bindings/clock/mediatek,mt8196-clock.h>
->> +
->> +#include <linux/clk-provider.h>
->> +#include <linux/module.h>
->> +#include <linux/of_device.h>
->> +#include <linux/platform_device.h>
->> +
->> +#include "clk-gate.h"
->> +#include "clk-mtk.h"
->> +
->> +static const struct mtk_gate_regs mm_v_cg_regs = {
->> +	.set_ofs = 0x104,
->> +	.clr_ofs = 0x108,
->> +	.sta_ofs = 0x100,
->> +};
->> +
->> +static const struct mtk_gate_regs mm_v_hwv_regs = {
->> +	.set_ofs = 0x0030,
->> +	.clr_ofs = 0x0034,
->> +	.sta_ofs = 0x2c18,
->> +};
->> +
->> +#define GATE_MM_AO_V(_id, _name, _parent, _shift) {	\
->> +		.id = _id,				\
->> +		.name = _name,				\
->> +		.parent_name = _parent,			\
->> +		.regs = &mm_v_cg_regs,			\
->> +		.shift = _shift,			\
->> +		.ops = &mtk_clk_gate_ops_setclr,	\
->> +		.flags = CLK_OPS_PARENT_ENABLE |	\
->> +			 CLK_IS_CRITICAL,		\
->> +	}
->> +
->> +#define GATE_HWV_MM_V(_id, _name, _parent, _shift) {	\
->> +		.id = _id,				\
->> +		.name = _name,				\
->> +		.parent_name = _parent,			\
->> +		.regs = &mm_v_cg_regs,			\
->> +		.hwv_regs = &mm_v_hwv_regs,		\
->> +		.shift = _shift,			\
->> +		.ops = &mtk_clk_gate_hwv_ops_setclr,	\
->> +		.flags = CLK_OPS_PARENT_ENABLE,		\
->> +	}
->> +
->> +static const struct mtk_gate mm_v_clks[] = {
->> +	GATE_HWV_MM_V(CLK_MM_V_DISP_VDISP_AO_CONFIG,
->> "mm_v_disp_vdisp_ao_config", "disp", 0),
->> +	GATE_HWV_MM_V(CLK_MM_V_DISP_DPC, "mm_v_disp_dpc", "disp",
->> 16),
->> +	GATE_MM_AO_V(CLK_MM_V_SMI_SUB_SOMM0, "mm_v_smi_sub_somm0",
->> "disp", 2),
->> +};
->> +
->> +static const struct mtk_clk_desc mm_v_mcd = {
->> +	.clks = mm_v_clks,
->> +	.num_clks = ARRAY_SIZE(mm_v_clks),
->> +};
->> +
->> +static const struct of_device_id of_match_clk_mt8196_vdisp_ao[] = {
->> +	{ .compatible = "mediatek,mt8196-vdisp-ao", .data =
->> &mm_v_mcd },
->
-> Hi Laura,
->
-> We are going to send mtk-mmsys driver for MT8196 recently, but we found
-> the compatible name is used here.
->
-> As your commit message, vdisp-ao is integrated with the mtk-mmsys
-> driver, which registers the vdisp-ao clock driver via 
-> platform_device_register_data().
->
-> Shouldn't this compatible name belong to mmsys driver for MT8196?
->
+The firmware variant which has the RNG under the control of TF-A and
+requires Linux to use SMC to access it implies that Linux should not
+touch the clk and cannot access the IO space (which is accessible from
+secure-land only in this case).
 
-That's right, my fault for missing that! Thanks for the heads up.
+Do you think something like the hunk below would properly express that?
 
-I'm aware Angelo is currently restructuring mediatek-drm (including 
-mmsys and mutex), and that might affect the way vdisp-ao is loaded too. 
-So I'm not sure whether it makes sense to send a patch to fix this 
-right away.
+@@ -38,9 +44,23 @@ properties:
+ 
+ required:
+   - compatible
+-  - reg
+-  - clocks
+-  - clock-names
++
++allOf:
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: mediatek,mt7981-rng
++    then:
++      properties:
++        reg: false
++        clocks: false
++        clock-names: false
++    else:
++      required:
++        - reg
++        - clocks
++        - clock-names
+ 
+ additionalProperties: false
+ 
 
-Best,
+> 
+> > +      required:
+> > +        - reg
+> > +        - clocks
+> > +        - clock-names
+> >  
+> >  additionalProperties: false
+> >  
+> > @@ -53,3 +69,7 @@ examples:
+> >              clocks = <&infracfg CLK_INFRA_TRNG>;
+> >              clock-names = "rng";
+> >      };
+> > +  - |
+> > +    rng {
+> > +            compatible = "mediatek,mt7981-rng";
+> 
+> No improvements.
+> 
+> Also, make the example complete since binding claims you have clocks and
+> reg.
 
-Laura
+So clocks and reg have to be prohibited, not just allowed to be absent,
+right?
 
+> 
+> I am not sure it should be even same file, but if you are making it same
+> file, then make it correct.
+
+It's the same hardware. In case of the MT7986 SoC MediaTek has even switched
+from requiring the mediatek,mt7623-rng driver implementation to have the TRNG
+controlled by TF-A in newer firmware, see driver implementation
+auto-detecting this as a work-around...
 
