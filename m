@@ -4,60 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A90B9D6AAE4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2026 15:42:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 269A8D6AAE2
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2026 15:44:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=18pYQahmcGP5O3MNZCkLmQTs3eCeQFVHjRELcNHzfl8=; b=sEoEfRSONuEqP2fozq2NUuvFCG
-	o4iro4k6qKsgVh1JQ9TJugNBKFfGmJFzteFUEgdHvlPgiulIx6QeAUIQfCEQ0vXIxRg85Kw3m/epG
-	me62DD6iQx+U8hbqH+dSV6E9AKtSJhSLNCHWvW5XY4S6xkdvZgQ34UMiFKVw3Js0+31JK6XOvBE6Q
-	u6TLyugiHpUpIv8hDlHjTH5N5dXC9TFwCTGKsR3wYv+s8M2x5uXfK80pPPrp15QKtiWSeMReT5/Da
-	R5fkKo2YkwDor/KBjGYlntHY02/erhoGpyPPCcJyuza6WV7BTKLnpEx0NjJnuAIA+0MjShQkHXjjI
-	t9nV2oHw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=azq6rPccAYyL64s6PaPux04RMnp/m4vA3aQmA1PwB+s=; b=gXdfMVrnyta8YD43x6H83nLAFV
+	tLxDiVVOuPo0HT5G844K+r70pM8Cwdhu7T+TQwNK87r4/w4nir4jxrdslJ8MZ0IexQIDH9KDSKevl
+	dsHVJrA3QIVGC/WSvV77d9u7yBPLdF9dntmEmz+d0hh3P0MOM5x5cC/+3yhJOUrP9uyxDVu7CVpdm
+	iX5P0Q+8KseYE0ytu6DER5hr3aOP+hvH9BHwWIumgqbPREn4//mrJnhxhkf09f0jOfbA1pRq6m+dk
+	/N5RSTAktwje8geDe2O93X98pm4fG+A68nejieFP0TNXdGMab1ILoDF5u1FXv2n1wsxMjA9VtiE+w
+	eisPUU1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8KBN-00000000SNL-1kP7;
-	Thu, 02 Apr 2026 15:42:09 +0000
-Received: from mx3.molgen.mpg.de ([141.14.17.11])
+	id 1w8KDl-00000000SYP-0uEr;
+	Thu, 02 Apr 2026 15:44:37 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8KBJ-00000000SM8-3W1a;
-	Thu, 02 Apr 2026 15:42:07 +0000
-Received: from [141.14.220.42] (g42.guest.molgen.mpg.de [141.14.220.42])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: pmenzel)
-	by mx.molgen.mpg.de (Postfix) with ESMTPSA id 307064C2C37D49;
-	Thu, 02 Apr 2026 17:41:27 +0200 (CEST)
-Message-ID: <4736768a-e391-4f70-9821-7386efedf3b3@molgen.mpg.de>
-Date: Thu, 2 Apr 2026 17:41:25 +0200
+	id 1w8KDj-00000000SY3-2phQ;
+	Thu, 02 Apr 2026 15:44:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id D3ADA600C4;
+	Thu,  2 Apr 2026 15:44:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3684CC116C6;
+	Thu,  2 Apr 2026 15:44:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1775144674;
+	bh=azq6rPccAYyL64s6PaPux04RMnp/m4vA3aQmA1PwB+s=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=qfZF8LlDV9jK3dpUo3HHmQlZoKNRx+stidWv4GnjXhJGBbmrYY3rw0ySLBYNCZMX1
+	 PK3vbmAAw0shZFe0Nysg1lpOGjYbTXcmRo32x28NpBoTejPSafLosWQ3cjxScnyjAX
+	 qGxcoJWePsoAIegg/WqhAHELGu1ZnLwumbMjv/0z7df18+8XXwrekoyUdX8Y2n7wDQ
+	 /fzZgh0nECyfcvKTzQh7AWr66CO8byr6J8NmhwXNKiFwVokCePb7Uib7eOaraJsoMT
+	 ItqzEOVSDRzqoScDdkRHUacP6+WRHkfKAyXmqq7UdkJW8nrNATWmgzC9/J2++ptHCM
+	 hJJIYhXli2x0Q==
+Date: Thu, 2 Apr 2026 17:44:32 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
+To: Shiji Yang <yangshiji66@outlook.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 0/2] pwm: mediatek: fix mt7628 register offset and clock
+ source
+Message-ID: <ac6OYRkiDt_OJVcp@monoceros>
+References: <OS7PR01MB1360282ADC135931ECCAD9AF6BC74A@OS7PR01MB13602.jpnprd01.prod.outlook.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] Bluetooth: btmtk: hide unused btmtk_mt6639_devs[] array
-To: Arnd Bergmann <arnd@kernel.org>
-Cc: Marcel Holtmann <marcel@holtmann.org>,
- Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Javier Tia <floss@jetm.me>, Arnd Bergmann <arnd@arndb.de>,
- Chris Lu <chris.lu@mediatek.com>, Kees Cook <kees@kernel.org>,
- Johan Hovold <johan@kernel.org>, Sean Wang <sean.wang@mediatek.com>,
- Jiande Lu <jiande.lu@mediatek.com>, linux-bluetooth@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20260402141119.2732591-1-arnd@kernel.org>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20260402141119.2732591-1-arnd@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260402_084206_033419_75856B8E 
-X-CRM114-Status: GOOD (  17.96  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="nosq6hqdgk23uy6t"
+Content-Disposition: inline
+In-Reply-To: <OS7PR01MB1360282ADC135931ECCAD9AF6BC74A@OS7PR01MB13602.jpnprd01.prod.outlook.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,84 +71,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dear Arnd,
 
+--nosq6hqdgk23uy6t
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Subject: Re: [PATCH 0/2] pwm: mediatek: fix mt7628 register offset and clock
+ source
+MIME-Version: 1.0
 
-Thank you for your patch.
+Hello,
 
-Am 02.04.26 um 16:11 schrieb Arnd Bergmann:
-> From: Arnd Bergmann <arnd@arndb.de>
-> 
-> When USB support is disabled, the array is not referenced anywhere,
-> causing a warning:
-> 
-> drivers/bluetooth/btmtk.c:35:3: error: 'btmtk_mt6639_devs' defined but not used [-Werror=unused-const-variable=]
->     35 | } btmtk_mt6639_devs[] = {
->        |   ^~~~~~~~~~~~~~~~~
-> 
-> Move it into the #ifdef block.
-> 
-> Fixes: 4cdd001ff03f ("Bluetooth: btmtk: Add MT6639 (MT7927) Bluetooth support")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> ---
->   drivers/bluetooth/btmtk.c | 32 ++++++++++++++++----------------
->   1 file changed, 16 insertions(+), 16 deletions(-)
-> 
-> diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-> index 099188bf772e..6fb6ca274808 100644
-> --- a/drivers/bluetooth/btmtk.c
-> +++ b/drivers/bluetooth/btmtk.c
-> @@ -25,22 +25,6 @@
->   /* It is for mt79xx iso data transmission setting */
->   #define MTK_ISO_THRESHOLD	264
->   
-> -/* Known MT6639 (MT7927) Bluetooth USB devices.
-> - * Used to scope the zero-CHIPID workaround to real MT6639 hardware,
-> - * since some boards return 0x0000 from the MMIO chip ID register.
-> - */
-> -static const struct {
-> -	u16 vendor;
-> -	u16 product;
-> -} btmtk_mt6639_devs[] = {
-> -	{ 0x0489, 0xe13a },	/* ASUS ROG Crosshair X870E Hero */
-> -	{ 0x0489, 0xe0fa },	/* Lenovo Legion Pro 7 16ARX9 */
-> -	{ 0x0489, 0xe10f },	/* Gigabyte Z790 AORUS MASTER X */
-> -	{ 0x0489, 0xe110 },	/* MSI X870E Ace Max */
-> -	{ 0x0489, 0xe116 },	/* TP-Link Archer TBE550E */
-> -	{ 0x13d3, 0x3588 },	/* ASUS ROG STRIX X870E-E */
-> -};
-> -
->   struct btmtk_patch_header {
->   	u8 datetime[16];
->   	u8 platform[4];
-> @@ -483,6 +467,22 @@ int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb)
->   EXPORT_SYMBOL_GPL(btmtk_process_coredump);
->   
->   #if IS_ENABLED(CONFIG_BT_HCIBTUSB_MTK)
-> +/* Known MT6639 (MT7927) Bluetooth USB devices.
-> + * Used to scope the zero-CHIPID workaround to real MT6639 hardware,
-> + * since some boards return 0x0000 from the MMIO chip ID register.
-> + */
-> +static const struct {
-> +	u16 vendor;
-> +	u16 product;
-> +} btmtk_mt6639_devs[] = {
-> +	{ 0x0489, 0xe13a },	/* ASUS ROG Crosshair X870E Hero */
-> +	{ 0x0489, 0xe0fa },	/* Lenovo Legion Pro 7 16ARX9 */
-> +	{ 0x0489, 0xe10f },	/* Gigabyte Z790 AORUS MASTER X */
-> +	{ 0x0489, 0xe110 },	/* MSI X870E Ace Max */
-> +	{ 0x0489, 0xe116 },	/* TP-Link Archer TBE550E */
-> +	{ 0x13d3, 0x3588 },	/* ASUS ROG STRIX X870E-E */
-> +};
-> +
->   static void btmtk_usb_wmt_recv(struct urb *urb)
->   {
->   	struct hci_dev *hdev = urb->context;
+On Tue, Feb 24, 2026 at 04:51:00PM +0800, Shiji Yang wrote:
+> This patch series fixes support for mt7628.
 
-Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
+The series looks reasonable to me. It would be great to get some
+feedback from the Mediatek maintainers, though?!
 
+Best regards
+Uwe
 
-Kind regards,
+--nosq6hqdgk23uy6t
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Paul
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmnOjt0ACgkQj4D7WH0S
+/k7wcQf8DbZttWvtDRcy6Kuni91T0fY9QIk0I7HqCTtpHmiHKQsMxqGuvRQkvyj0
+d2jN+Z35x0m678C62gahQj4PQwoAD2TimRMG8l4JakiHG39GugFef1ntXqISIUdR
+BX+kx+mplwRhrLjCgsGPnM7EWUvn6cEpVrGis4EmU4nca5bbWeN6ZU6qtrsMDUBf
+j7F9ipxoCD1f6bQyBy4pe859OOJcSO9WXyLSE9uHSH+vs+tKWILtRMow8sEcf5QG
+MLrpWSMR3r3FhMrfmdNJC+F3xG3yCR7x6zxAxi0ZZ8WdS1VJK9AMMAIxVdwv6RuH
+7IEs9OpqV4yZaMawC9f3kVhlRkPuWw==
+=MxUZ
+-----END PGP SIGNATURE-----
+
+--nosq6hqdgk23uy6t--
 
