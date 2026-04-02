@@ -4,145 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D659FD6AAF5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2026 16:51:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98139D6AAF6
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2026 17:07:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RBizT6dITzOWs3PxefUJhuMVHGKPHsRS7LDlIgolVHA=; b=YwR35GDl+JagxCfEK2CLTK2b0W
-	IZVUGwjcr2f7DVFK241eSzZHfXItFCXpEv4+gY4Id2TgP9fgpqiQU3IlJ08M9pUlyazad6q0jDF7R
-	vmbSnvBBKjtX9FpFJnjPFFPBnUV/K2G2D6yO9++Z1ITLhAS7x9RkqNSy6jQCrsKdY28lM/T0c+eFo
-	QZThTP0J7XdhvohIGnPD5u3bmJz4lu2qaDx7Y7tKnH/fUbzUgUOFjP2R172RWdJDI7xQkx1IeMayv
-	j7V8z6VTDf44OvJIMRGkzffzr6csdGqeS6u0S7E66sTtWpP1AI47P2eKcFq2oX62Ux7+rWxV/RY68
-	LaGV/hsg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:From:
+	Subject:Message-ID:Mime-Version:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5ceebF0cNoevtXZxXS/tupzteUV9Qk2AK74OlrZ5xNE=; b=zKEeQ8MdTHP3GzHE3DUdjcTxno
+	Qo3Q9wQbZ8vHYvuQ0Lv+Q9NR5KTZoYTtBlE+5a24fk5TjfQGwj25MVtW5Qtw0NYvoeegqV42jyEdz
+	ulrNC6P7FCHD0UGLv7zV3gVQ5CoGkEduZNfyBi6HVi1ur0AQ5JRx12MJq7RdJvlRk2mqEZzFIQaMI
+	JslLVgT9cPrvOkwQO3M36ij7Gyto9eKG6YrO4zpB80PznD9aseni4Z6iVZAIiXBGXQfHJCFcC908l
+	Ik5eWIapiRWSozXDVfzE5AODb7CSRf6WRc346UkiSPkNj1BACo00W4JBwA8x7k6m45EhU+b4/h6R9
+	G1wJEYnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8LGY-00000000XzH-3tvO;
-	Thu, 02 Apr 2026 16:51:34 +0000
-Received: from mail-westus2azon11010071.outbound.protection.outlook.com ([52.101.46.71] helo=CO1PR03CU002.outbound.protection.outlook.com)
+	id 1w8LVX-00000000ZfJ-22sN;
+	Thu, 02 Apr 2026 17:07:03 +0000
+Received: from mail-pl1-x64a.google.com ([2607:f8b0:4864:20::64a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8LGW-00000000Xy8-19pG;
-	Thu, 02 Apr 2026 16:51:33 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=YxVgv/a5FBKUEMGOwAyZZQ+/9ATFx1rxCHbK2fXsszMd9I/Oz6wFdYMxcbYVQtn6EiB/jPzdYvI+48gmNFm8xJmpGwW3sIPfr48J4p4SIsyz7E+sVJ2/exJaZ2RSqmV0NyFyU75LNGqT37xZZOU4xBcUZ470ocPBo15lmjphKmUBei4RtYQSsWTiDlFbVg94oV8joP+XdJ+yDL247JUk6rRgka4NZ1tAf2R1x1DRbw92b4LZsXLxrSXkWAYWGfDvVXF7lHyrmIJNawZ3TCMszvGZlUULsKlGjI5DinhIRcabdSseEKa9eNm3/ecMuHcgD0PyOHwdCtO040OD0U8Czg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=RBizT6dITzOWs3PxefUJhuMVHGKPHsRS7LDlIgolVHA=;
- b=T2GzLxBtOdF1SM6L0TtHSIZXsj/HYSzYP2UWfIpXDUOgfGbDpXHEV6UD30Yxm1pKG+4WGmD5PIxcRvGKo2WoptfHQYiAIAYKZYpprwqUgAkGACcI6T8ratzPu9IvynuGB0D2SxYMsK6ueGB+ONhe9txfS9Tr81ORwzS7MBJcoqb+kMEGQUgT48nsBoZtMG80TmQqF1oLuHKx+Z3umgdtXzl98FUw8tIm3WJOZd2Nqbli55rzLRSV9Hh12RqOEOrh9t6AP3hKyBvSEuEMf2AYh8b4RQrdT/d3DKDP3Ckvn7cpqwUnB8mAlv/bRiyOqTpZSqrmH9XdnDEkQR3xpozsfQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=RBizT6dITzOWs3PxefUJhuMVHGKPHsRS7LDlIgolVHA=;
- b=fQDyJAqSkJyMHoiYKTaK32SJvdJQCDaUpLB7molXDt67shG25G/IDhdZMnvZBUNJYdR3eqkPuRY45T6410bkmzo5QUud2JAe7GqdT8nVqPalZCO9CjUCOj1lDWp9+y/mc2qxOgBBOPjIpjcxpGQ9MyRjEXyL6MIdbFSymTUTbhzTvnlypWSXvbwF7y2SRmEBU9nKYAPntiYaZaiClSO/iQw0Mf4/titxp/Bm+gy28cgzf7/iMt/uAkTwH4Z8xGgBI4zlnj89tAwNVgHLCOg9Ffm9IOLxNun5+3oqGRPOojh0hEzDYrwpggrJRYtoNWqu1FmXrY4Oxpgw//ZBN2v9fw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV8PR12MB9620.namprd12.prod.outlook.com (2603:10b6:408:2a1::19)
- by SJ2PR12MB7918.namprd12.prod.outlook.com (2603:10b6:a03:4cc::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9769.17; Thu, 2 Apr
- 2026 16:51:25 +0000
-Received: from LV8PR12MB9620.namprd12.prod.outlook.com
- ([fe80::299d:f5e0:3550:1528]) by LV8PR12MB9620.namprd12.prod.outlook.com
- ([fe80::299d:f5e0:3550:1528%5]) with mapi id 15.20.9769.017; Thu, 2 Apr 2026
- 16:51:25 +0000
-Date: Thu, 2 Apr 2026 13:51:23 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Alexandre Ghiti <alex@ghiti.fr>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Albert Ou <aou@eecs.berkeley.edu>, asahi@lists.linux.dev,
-	Baolin Wang <baolin.wang@linux.alibaba.com>, iommu@lists.linux.dev,
-	Janne Grunau <j@jannau.net>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Joerg Roedel <joro@8bytes.org>,
-	Jean-Philippe Brucker <jpb@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-sunxi@lists.linux.dev,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Neal Gompa <neal@gompa.dev>, Orson Zhai <orsonzhai@gmail.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <pjw@kernel.org>,
-	Samuel Holland <samuel@sholland.org>, Sven Peter <sven@kernel.org>,
-	virtualization@lists.linux.dev, Chen-Yu Tsai <wens@kernel.org>,
-	Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Lu Baolu <baolu.lu@linux.intel.com>,
-	Janusz Krzysztofik <janusz.krzysztofik@linux.intel.com>,
-	Joerg Roedel <joerg.roedel@amd.com>,
-	Jon Hunter <jonathanh@nvidia.com>, patches@lists.linux.dev,
-	Pranjal Shrivastava <praan@google.com>,
-	Samiullah Khawaja <skhawaja@google.com>, stable@vger.kernel.org,
-	Vasant Hegde <vasant.hegde@amd.com>
-Subject: Re: [PATCH v2] iommu: Always fill in gather when unmapping
-Message-ID: <20260402165123.GG310919@nvidia.com>
-References: <0-v2-b24668f107b2+11bbe-iommu_gather_always_jgg@nvidia.com>
- <70a128f9-d6f0-41b6-8fef-e249c0507149@arm.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <70a128f9-d6f0-41b6-8fef-e249c0507149@arm.com>
-X-ClientProxiedBy: YT4PR01CA0221.CANPRD01.PROD.OUTLOOK.COM
- (2603:10b6:b01:eb::12) To LV8PR12MB9620.namprd12.prod.outlook.com
- (2603:10b6:408:2a1::19)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV8PR12MB9620:EE_|SJ2PR12MB7918:EE_
-X-MS-Office365-Filtering-Correlation-Id: 12a523e2-26d5-4294-88b9-08de90d8134d
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|1800799024|366016|22082099003|56012099003|18002099003;
-X-Microsoft-Antispam-Message-Info: nv3eWcfPVgqpwumndzHvGpmiicpJDjcAupVRIpfFppJ2h7nneXAjiVLiFGyeE4haqMRus50NmE12DLDx17tyEnunLBqV8UmPT4tLbrneF0rT/eAV21uGRn/GuBvUFqUsmC1sqhCpuvVNT7VLjmq/FM+unJaz4ODfhfFYcGFmXhekMU0Mcbv/yhEGWNTLNSCvbJ7dctJLsoFVEHdBAaYo1Bs6sgpibI6hiH5bFCd/wlGalQVwCP4wyYb1ei2oo13wmYFHTl17b5UracBRe/KJXNIw/ytFWpS3PwldMhUm+0lBo4KB8bW+S3I5fcZmmYUeZvcHJLaJ9KS4MiWwcDF1ffU9GmRsKc4FbHh7dNVf14pDCqURXkhcPpiYYTZKBoymIaQwV/S47darmEMQlQppF3EgCRVv/U4t9Ggv4XmG9PRBNekTnIrsGNDRcu/HnnWsMktw3VZw0ChZhv75Py//1uwfnJnLadX6ida5RGFhzBc0dHhkNbV3GR+2Q+4FB1tLQuBL3zWxY5WLrTpsS9AfytOh70B2mAlw8DW3SVk2/E5NanfFOZhhjELsEdMXnfy32biCvThZP6+JZS4Qi2vh3LVAwrd6Njs5hbm9nEkugeB1MWsdxlWfxD7pcv7ZJpiKKpARakWf9ltiPzp8iXJrD8qBQNE8u9YyhYIdJtIEYZyjPDCDuDO7VyIOqk8U9HzmRGwJbnp/EOX3+dh6ZCsUpoaDjukpn3QBshEgQFya3gc=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV8PR12MB9620.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(1800799024)(366016)(22082099003)(56012099003)(18002099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?pdbny2mjmDm0DkpF0XzFDwQxA68zQu5QwbhUMLKNfLKme00Sg/a6r5XvOfes?=
- =?us-ascii?Q?im0OPbWN1UvQ8UCgyrT1j12USyPoFHyHs/Fx/SkIj6ApzeE2vWV1X0mud7Y7?=
- =?us-ascii?Q?gR00yHrP1ZyNESt8HjZs3pU6/DWjo1vScfe6Uqo/6lEWzhAdfi16MX1eLVwY?=
- =?us-ascii?Q?cY3L78dmNLtarQb4N3GcnqRcKWxKihxU0wTMkv+kK3oQ/vgaVvW7M1jWmtWC?=
- =?us-ascii?Q?KROIBGArjPls1SzS23QiCEukolq4jRYALAskNgWVw/R05nG8YfwdCbNgQvJ4?=
- =?us-ascii?Q?ZRZeGqgChoLIorgKfx/1KOBOP9maqIY4ZJvPdIaLBsIpBimo76uYfGW4r65O?=
- =?us-ascii?Q?pg5X45F++0cejh5ZeyauVHKAKDZgoJdty7fVH1o+nsDSHFV1IMBsh35Ik5yp?=
- =?us-ascii?Q?CPfY+CLr6MMJTiFwgCiIhp74zNzT7oOFlQVfPiLbVgNWmJNXu+lJq5mfaKp1?=
- =?us-ascii?Q?d2a+5NwxpCL9NQzMrAyFCgY/ryZWc5i1XKfftV+i6ZkkbUKRaa/wE8sUcFRN?=
- =?us-ascii?Q?aQ864kCbB5iIcqsGCV19D6LPwCKxnwzTQJrBk1Ks1oqojGYLTv93qphcevcg?=
- =?us-ascii?Q?YjiDyhigMkpDDmb4oMhOYEKFG/AFgcW8S+QlICtl4oOTJsLqOWlMP9N3HAtg?=
- =?us-ascii?Q?AVSRJU+kQ598+yfbKxAYwDEaHYfBhY8luoV5f5mYbqd0cwMn4gm9iLdyQ7of?=
- =?us-ascii?Q?lYK3yx8mLA8LyOSzgQoHSLGy7jd+WgB1B8Oib5nWd4skxBDFuugYKl4wWnwd?=
- =?us-ascii?Q?Wfa4uMj4YFUPNUdVEGjq2DO5u5wFtoEoCs4bzXsctQoBlR141JLOY0wY+RaB?=
- =?us-ascii?Q?eB1vYcjNHXJ+nPbqAsEUIMQ6DQuu/WAns4gZxNzP2K3OF3oKfkkUnJwvcjrF?=
- =?us-ascii?Q?TPF40m68jGlpJndufvibmvEj25qpctsdic6YdnzTh8nIHRZ5nuGBdWQAQZAz?=
- =?us-ascii?Q?cM9/aYtN4qPo+9JWu0m5OPThky/7gOyUbuZAGkowR/2WsxiUHamuV4llEvHJ?=
- =?us-ascii?Q?FcbqvdqlAALlw7JZxzNyCWtmkzF97aLTsB/NmVzOADgg+A0R/Nw/tW0RhZYC?=
- =?us-ascii?Q?HaXILRGz91th53gEY1KibxpohW7jStXl1RLunTbPtO7984Vu4fwI9rWD0+L1?=
- =?us-ascii?Q?0hO5nrr3RMWn1hw4QzWBrL90bWGoikfu+kZd9e0JMsM/hw13s8qrq2BsqUvD?=
- =?us-ascii?Q?OCDsL5gAf2VX3eXswdqaT4CibT9ZneNWIIdVh4LDenzpLxOVocYa3307kj6P?=
- =?us-ascii?Q?yKyYt4JMfbI8YucN9AI+BywLGCEgrfF5TCNIwOgVtHj1KYHBzwvzE3NfC2CN?=
- =?us-ascii?Q?p0CMEOa7JBS/meGYrMSy9hCtBEsiY5ROZuGYTLXuTNoUleY1ZXS4ES5DCQ8Y?=
- =?us-ascii?Q?wGrb3AgZ1wr1hgu8E6NNJH8ood37t/cEW5jDyZW2e9DQuOWiouGE4TWEWn0v?=
- =?us-ascii?Q?x9zXnl+zijnvb8gCzMxm6t1t66xbtu7RMqfgeVHePsDS8B3YRGPiXmafAeOC?=
- =?us-ascii?Q?g/d09J0jN/Ob9A7Jxl2J/8lFhsTjfAEq+jBct5tsYjyByiSxquBn7AKJHz3a?=
- =?us-ascii?Q?6ZapIxGHhDG/msQYrybHwvI/aWpv9ZBOVWaBaVSB33NRPIiMZZKp81JCNV8t?=
- =?us-ascii?Q?zwj//5BOBrS25GQpRohQKKE3wcpsRz1AJ2w9lVnRUXUhqQxxPF37EsLdD7E0?=
- =?us-ascii?Q?qVrkwoV4aVjNm71KJR9mNtY1xHmbhYD7Kqdf9hQrrxGc+9Vh?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 12a523e2-26d5-4294-88b9-08de90d8134d
-X-MS-Exchange-CrossTenant-AuthSource: LV8PR12MB9620.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Apr 2026 16:51:24.8765
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: tcdTlflq2fhu3zOHc9hj1v+tRAfHusMO9e0IMxmC8dO1XOBn7eHcnxYH4UWKaoji
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR12MB7918
+	id 1w8LVU-00000000Zec-2L90
+	for linux-mediatek@lists.infradead.org;
+	Thu, 02 Apr 2026 17:07:01 +0000
+Received: by mail-pl1-x64a.google.com with SMTP id d9443c01a7336-2b241be0126so29269085ad.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 02 Apr 2026 10:06:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20251104; t=1775149619; x=1775754419; darn=lists.infradead.org;
+        h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=5ceebF0cNoevtXZxXS/tupzteUV9Qk2AK74OlrZ5xNE=;
+        b=Fb8t/8OLs9lVc+lM51/Za1XH2Av699OfqeKCARg1ttgwND64viVznSFM0O7r7L6DTP
+         V4JkCpbWBuOk/EwrgJLYaFFQcJQeHr41JL6ieNt6OJVz04AbvkZ9gzeaLm4dsv7o1heM
+         307YkarkcToT1rjkPkcDvVa70yRF2JhMNrcuZfVvalFmrXmkNYA+ym9VSjgVV3Rs49kw
+         08pg0MyGdkVlB9Pkj4ET+h/nsGcngI/5MtC1bNS5c+/7jScPprBjBVIXuOc5zOyN4577
+         S2UJGJUHo7qDE9o69zZ/fbFuZkC+mf5xo8UuQcjiRoKvPJh3BOKzX6IAQBFST7jPISmC
+         4IGg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1775149619; x=1775754419;
+        h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=5ceebF0cNoevtXZxXS/tupzteUV9Qk2AK74OlrZ5xNE=;
+        b=fIyTZqiPWkMoWOP73P5G8UEohakYYidFyii5r7ls9xCR9Ls+Byxmmw+xOGv6pCegrE
+         kUrlY1poA5MdkDjHmuNFrQzajiMh0IVmuMKpIgjckNLN3J3scSLllVeMbrkjwsKR4fR9
+         NFP07Y9r0SjYhLyyAR1TuHaPqvz+LXYXTISphBJ9hEyxEntZyA7ot01sgoSWoUp21OHs
+         x+Pip5XvjWnWe+2xops+l/nXdn471irSi7xxoW5HGwTCPX+vMETgwn8Amo7rf8sT0Pen
+         tA8aFYdOd+keIpj0JptY5cSkU8xkNVw3u50pqCmHGKsSwIzp3aAqfiZvgLpZxM3i7QSq
+         jdrg==
+X-Forwarded-Encrypted: i=1; AJvYcCWAHDPa3depIBGFbWApQ2vjHn4cnO33HS8osjUSQ/9m4EdBNAw2j1jZlfCw6eyAQyU1KXEhs4VgEkpib8wvyg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx+1J3AU+e2GR+tZjDLYJHXAHEAyomNi9MufZryhloL01cZFY0c
+	V9slXiTF0cK8ICo52tAo8w4uQrrfeB8fRxMw9ymUHiJHdqBQqc5sf/p5S2VdPOoumnbdKK9uyHf
+	qHPHcgS1cMlwc99kbB7W5cPzmYA==
+X-Received: from ploe7.prod.google.com ([2002:a17:903:2407:b0:2b0:b03a:16ce])
+ (user=joonwonkang job=prod-delivery.src-stubby-dispatcher) by
+ 2002:a17:903:3d0f:b0:2b2:4cd2:e174 with SMTP id d9443c01a7336-2b281811ef1mr573475ad.43.1775149618937;
+ Thu, 02 Apr 2026 10:06:58 -0700 (PDT)
+Date: Thu,  2 Apr 2026 17:06:39 +0000
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.53.0.1213.gd9a14994de-goog
+Message-ID: <20260402170641.2082547-1-joonwonkang@google.com>
+Subject: [PATCH v3 0/2] mailbox: Fix wrong completion order and improper send
+ result in the blocking mode send API
+From: Joonwon Kang <joonwonkang@google.com>
+To: jassisinghbrar@gmail.com, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, thierry.reding@gmail.com, 
+	jonathanh@nvidia.com
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, 
+	Joonwon Kang <joonwonkang@google.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260402_095132_322848_2DE6E214 
-X-CRM114-Status: GOOD (  14.27  )
+X-CRM114-CacheID: sfid-20260402_100700_601676_DE14E8E6 
+X-CRM114-Status: GOOD (  22.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -157,41 +90,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 02, 2026 at 04:59:29PM +0100, Robin Murphy wrote:
-> > @@ -666,9 +666,22 @@ static size_t __arm_lpae_unmap(struct arm_lpae_io_pgtable *data,
-> >   		/* Clear the remaining entries */
-> >   		__arm_lpae_clear_pte(ptep, &iop->cfg, i);
-> > -		if (gather && !iommu_iotlb_gather_queued(gather))
-> > -			for (int j = 0; j < i; j++)
-> > -				io_pgtable_tlb_add_page(iop, gather, iova + j * size, size);
-> > +		if (gather && !iommu_iotlb_gather_queued(gather)) {
-> > +			if (iop->cfg.tlb && iop->cfg.tlb->tlb_add_range) {
-> > +				iop->cfg.tlb->tlb_add_range(gather, iova,
-> > +							    i * size, size,
-> > +							    iop->cookie);
-> > +
-> > +			} else {
-> > +				iommu_iotlb_gather_add_range(gather, iova,
-> > +							     i * size);
-> > +
-> > +				for (int j = 0; j < i; j++)
-> > +					io_pgtable_tlb_add_page(iop, gather,
-> > +								iova + j * size,
-> > +								size);
-> > +			}
-> > +		}
-> 
-> NAK, this is insane.
+Hi team,
 
-This quite an optimization for SMMUv3 so it doesn't have to fit into
-the ill fitting add_page api. What is "insane" here?
+This patch series fixes the two major issues in blocking mode.
 
-> If you'd rather make gathers mandatory for all drivers than fix it in the
-> core code, then for goodness' sake just add the trivial one-liner to the
-> handful of .unamp_pages implementations which need it, 
+1) Wrong completion order in the send API as described in [1]:
 
-Do I understand this right, you want to not touch io-pgtable and
-instead the unmap trampolines will fix the gather like mkt is doing?
+        Thread#1(T1)               Thread#2(T2)
+     mbox_send_message           mbox_send_message
+            |                           |
+            V                           |
+        add_to_rbuf(M1)                 V
+            |                     add_to_rbuf(M2)
+            |                           |
+            |                           V
+            V                      msg_submit(picks M1)
+        msg_submit                      |
+            |                           V
+            V                   wait_for_completion(on M2)
+     wait_for_completion(on M1)         |  (1st in waitQ)
+            |   (2nd in waitQ)          V
+            V                   wake_up(on completion of M1)<--incorrect
 
-Jason
+2) Send API does not return the actual send result.
+
+This patch series contains two patches for each issue:
+  0001-mailbox-Use-per-thread-completion-to-fix-wrong-co.patch
+  0002-mailbox-Make-mbox_send_message-return-error-code-.patch
+
+The first issue has to do with multi-threads support. Given the
+discussion in [1] with the mailbox framework maintainer, it has been
+long thought that the mailbox framework is designed to support
+multi-threads although it missed the completion order issue at its
+introduction. The first patch of this series is to fix it.
+
+Alternatively, we could instead declare that the mailbox API does not
+support multi-threads [2]. However, it would be a sudden big change to
+the mailbox users after the long standing implication of supporting
+multi-threads. Plus, it would have disparity with the non-blocking mode
+which supports multi-threads already, which could also lead to confusion
+to the users by saying "non-blocking mode supports multi-threads whereas
+blocking mode doesn't". For this reason, the first patch in this series
+does not choose this alternative.
+
+The patch series rules out the case where tx_tick() is called twice or
+more for a sent message on the same channel. In theory, it could happen
+when timeout occurs. For example, one tx_tick() by the mailbox core due
+to timeout and another tx_tick() by the mailbox controller or client by
+accident or for any other reason. If it happens, the internal mailbox
+state could become inconsistent even on a single thread. Thus, this
+issue should be handled in an orthogonal effort later on.
+
+The second issue forces users to register tx done callback to get the
+actual send result although they are using the blocking mode send API.
+This behavior is different from typical blocking send APIs, which just
+return the actual send result directly, and so confusing to the users.
+Without knowing this additional requirement of the API, it would be
+prone to miss the send result check entirely. The second patch is to fix
+it by making the blocking mode send API return the actual send result.
+
+Change log of the first patch:
+ - v3: Rebase on the latest for-next branch.
+ - v2: Consider the case where timeout occurs and so tx_tick() is called
+   for a channel by one thread while another thread is having an active
+   request on the same channel. In that case, we mark the inactive
+   request as canceled and do not send it to the controller.
+ - v1: The previous solution in v0 tries to have per-message completion:
+   `tx_cmpl[MBOX_TX_QUEUE_LEN]`; each completion belongs to each slot of
+   the message queue: `msg_data[i]`. Those completions take up additional
+   memory even when they are not used. Instead, this patch tries to have
+   per-"thread" completion; each completion belongs to each sender thread
+   and each slot of the message queue has a pointer to that completion;
+   `struct mbox_message` has the "pointer" field
+   `struct completion *tx_complete` which points to the completion which
+   is created on the stack of the sender, instead of owning the
+   completion by `struct completion tx_complete`. This way, we could
+   avoid additional memory use since a completion will be allocated only
+   when necessary. Plus, more importantly, we could avoid the window
+   where the same completion is reused by different sender threads, which
+   the previous solution still has.
+ - v0: This first attempt tries to have per-message completion: [1].
+
+Change log of the second patch:
+ - No major change from v1.
+
+References:
+ - [1]: https://lore.kernel.org/all/1490809381-28869-1-git-send-email-jaswinder.singh@linaro.org
+ - [2]: https://lore.kernel.org/all/CABb+yY39rhTZbtA21MecYk-R9fh7VQQr5kZUgCw4z92mWhZ1Rg@mail.gmail.com/
+
+
+Joonwon Kang (2):
+  mailbox: Use per-thread completion to fix wrong completion order
+  mailbox: Make mbox_send_message() return error code when tx fails
+
+ drivers/mailbox/mailbox.c          | 98 ++++++++++++++++++++----------
+ drivers/mailbox/mtk-vcp-mailbox.c  |  2 +-
+ drivers/mailbox/tegra-hsp.c        |  2 +-
+ include/linux/mailbox_controller.h | 22 +++++--
+ 4 files changed, 85 insertions(+), 39 deletions(-)
+
+
+Thanks,
+Joonwon Kang
+-- 
+2.53.0.1185.g05d4b7b318-goog
+
 
