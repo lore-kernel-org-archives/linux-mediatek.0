@@ -4,62 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EE89D39418
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2026 12:57:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73CA4D39421
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2026 13:20:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=iHEWfbvKFtRJFXm9RNPwNDnN8PoPuneE3H4WgitsNAY=; b=RV8cfe7fxdGVMZ8Nfnx0BT+yUF
-	PWywi49PoqQE/FTvzMJIxXa2s65PMPmlq2zH+MuDbjpaKd2PHzt4b/01LQ4QWFqEmVxQXarHvfVsg
-	Mm7BFWvQGKkP5wXlG45FtMEpwk/muiMwvhVIStrpJv0XgZfJpkkAm0DU4nVj/ceKYZCoc7gpi13du
-	AMRinbOWmXmu5/o5KhCuNazA85sYE61tRbgEQfeNW9iwsV2+x2GG6/G4NXhERhzg+2WEAO7fWzTf7
-	d42CAhYOO+ls4BqzM/iZxTm9Ss3GeSopxuoj+TiTCZv0gB+LsP2vGDhpMmsWMJjtAiL9OJc24v+tW
-	H4D7+Few==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IOW0L3XaVV3vYFTMqc4EpsZV2dtS9rU8WQqx5KOjvYI=; b=U9Uoawcq9oX5fwQX1OhK+hVZSx
+	PCRZ/EgmSNmdrc3U9czIia+nm+glo4+nwPJt7R9gMi7y2krZnsbtEKSjz0epEEeVeotgi92m1vx9t
+	VZTK33uqQe47qMswDvLvXw1/FiyiYnIGA1If/O6fUwQRKHoNbs5MBeDiqjx6RONZ4wr6eTDIWxHWG
+	611QUYRy4CcX0Q7scXZeX24OckwLe8Ttf3yR2swl4jaKoc4Qi0L9qdv1WVMz1+CyTRIdFYWS48Gex
+	KSHkpl2uvnwivg626Cq8Xm1Fnt4kOD4CbpDQORrMPi7mVdcOAwhwgdJQ3FnvLNNt0n2m8uy0RVsg+
+	ZA+Rt2YA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8Hc4-0000000080m-2Z5w;
-	Thu, 02 Apr 2026 12:57:32 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1w8HyS-00000000AB4-44js;
+	Thu, 02 Apr 2026 13:20:40 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8Hc2-0000000080S-1RtH;
-	Thu, 02 Apr 2026 12:57:30 +0000
+	id 1w8HyR-00000000AAp-2aXA;
+	Thu, 02 Apr 2026 13:20:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:Content-Type:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=IOW0L3XaVV3vYFTMqc4EpsZV2dtS9rU8WQqx5KOjvYI=; b=Vg1AP2g+3BfskFSjJrzi4h98QD
+	IXnfFEvtbhmz8RtOcitNnCSI/NsdqWjl2c6VnSVwQiewMxnPMr+dnwGT3PfqY2uDtrDDD3beoknjR
+	xT/RaeVnTphf1F2zMlF0H8HtJ8mFC8lzUA7CbqLIeXVYk2B//T0PB2ULDWjisi33ZNcjagqosVVBR
+	N5wqTFdtKkLsy0Pks3Zu1kuP9wxrB6UjKqc7M9Rt/UHjq5HTsOD2E2qMhhFZ6U09pj+fblpH36oU5
+	NiyEkk3nI1r9jxYfLaeoM8f6VI63LN0q7neBC34ES/bTmE9n55zYqIh9xMgTQWg/DkAMagx2S6fbL
+	rSbA0DmA==;
+Received: from sea.source.kernel.org ([172.234.252.31])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1w8HyO-00000002Wj6-1sMR;
+	Thu, 02 Apr 2026 13:20:38 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6759761881;
-	Thu,  2 Apr 2026 12:57:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BB8F2C116C6;
-	Thu,  2 Apr 2026 12:57:28 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id BBFAD43D66;
+	Thu,  2 Apr 2026 13:20:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9A345C116C6;
+	Thu,  2 Apr 2026 13:20:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1775134649;
-	bh=V6OVjIC2l3rgrFgADrj8zqhzjtfaMmdho2sc81R4Sgc=;
-	h=From:Date:Subject:To:Cc:From;
-	b=TxZWGkvO/QQgBy2cgsWsDxzPX0kUqBgPnH/JmFNQvw19BYgARLXjprcNaonFrFo8T
-	 DiFwo0Yuu3ol2QjuuQ3jkLdb1ImmDXGqgGsH0YretZYbX/j7nMGc+38Ypy9doslmfK
-	 PUqb20+5495Ttq0rPgCWOejDPHuqSNYcmyzodS+fRciH1i35rIbV9DGpMcrWqSEwz8
-	 TAjXk6ZWe+FcTC5DTb4G8qPIPwumt3tXiNQoQHpo9Wj0fKgeteCnwCRwW5HWlniDeV
-	 1+OgdAGHQisSi5uy0A47/zwlgsTdXZ2LrrQMtVEwkEALSR2YByB5Vpbt+/OeVs1Gf8
-	 2XtoJDc9+48ZA==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Thu, 02 Apr 2026 14:57:10 +0200
-Subject: [PATCH net] net: airoha: Fix memory leak in
- airoha_qdma_rx_process()
-MIME-Version: 1.0
+	s=k20201202; t=1775136032;
+	bh=bdM5CpBSGBUjea2E0M0inYXAS7dXwzD2DrU4yvZg14g=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=LBPMJ4aKdUI5AFsTq8Jerr5MFJ0I7h5UqvC/VIkXr/u2gA++PjVmemeLAg1r7OYto
+	 wVUfkBU0DMWIiFG4wjjTq8G9zge/ZBFOKBPTGDN8JI4/cL6TuCiSyCxIhCaURdVKiZ
+	 nUSXg6t0FF0bN++7wPOGZe5Wj5EtXR8rHRpDtwdqPEDogopv2mrA7mws3N7cnfnFqn
+	 9nors6N0UjocQo+nX9S5KH7fahpyIVSlj1CrOegvjjmvV/J32RNhykormoFOkRGK/b
+	 E46PbUbDJ1AJ9bvAhs74MX+a6ul2BsDgNNwpaE6xhhdpzBbPUw1s7O3Py/qQjnSoQM
+	 P6F6PizKqsJzw==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 3FDC23809A05;
+	Thu,  2 Apr 2026 13:20:16 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260402-airoha_qdma_rx_process-mem-leak-fix-v1-1-b5706f402d3c@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2N0QrCMAwAf2Xk2UCtU8FfESnZmrmgbbdExmDs3
- 1d8vHu428BYhQ0ezQbKi5iUXOF8aqAfKb8ZJVYG7/zNtc4jiZaRwhwTBV3DpKVnM0yc8Mv0wUF
- W9PfueokdEbUD1NKkXPX/8oTMP3jt+wGy096kegAAAA==
-X-Change-ID: 20260402-airoha_qdma_rx_process-mem-leak-fix-27b53dbaaa4f
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next] net: airoha: Set REG_RX_CPU_IDX() once in
+ airoha_qdma_fill_rx_queue()
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <177513601478.26443.18083192170217288880.git-patchwork-notify@kernel.org>
+Date: Thu, 02 Apr 2026 13:20:14 +0000
+References: <20260331-airoha-cpu-idx-out-off-loop-v1-1-75c66b428f50@kernel.org>
+In-Reply-To: <20260331-airoha-cpu-idx-out-off-loop-v1-1-75c66b428f50@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260402_142036_694344_3AB624B5 
+X-CRM114-Status: UNSURE (   8.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,44 +90,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If an error occurs on the subsequents buffers belonging to the
-non-linear part of the skb (e.g. due to an error in the payload length
-reported by the NIC or if we consumed all the available fragments for
-the skb), the page_pool fragment will not be linked to the skb so it will
-not return to the pool in the airoha_qdma_rx_process() error path. Fix the
-memory leak partially reverting commit 'd6d2b0e1538d ("net: airoha: Fix
-page recycling in airoha_qdma_rx_process()")' and always running
-page_pool_put_full_page routine in the airoha_qdma_rx_process() error
-path.
+Hello:
 
-Fixes: d6d2b0e1538d ("net: airoha: Fix page recycling in airoha_qdma_rx_process()")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+This patch was applied to netdev/net-next.git (main)
+by Paolo Abeni <pabeni@redhat.com>:
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 95ba99b89428e4cafb91ff7813e43ffeb38e6d9b..91cb63a32d9904e0700bcce45b53624677d75c6c 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -697,9 +697,8 @@ static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
- 		if (q->skb) {
- 			dev_kfree_skb(q->skb);
- 			q->skb = NULL;
--		} else {
--			page_pool_put_full_page(q->page_pool, page, true);
- 		}
-+		page_pool_put_full_page(q->page_pool, page, true);
- 	}
- 	airoha_qdma_fill_rx_queue(q);
- 
+On Tue, 31 Mar 2026 12:33:24 +0200 you wrote:
+> It is not necessary to update REG_RX_CPU_IDX register for each iteration
+> of the descriptor loop in airoha_qdma_fill_rx_queue routine.
+> Move REG_RX_CPU_IDX configuration out of the descriptor loop and rely on
+> the last queue head value updated in the descriptor loop.
+> 
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> 
+> [...]
 
----
-base-commit: a1822cb524e89b4cd2cf0b82e484a2335496a6d9
-change-id: 20260402-airoha_qdma_rx_process-mem-leak-fix-27b53dbaaa4f
+Here is the summary with links:
+  - [net-next] net: airoha: Set REG_RX_CPU_IDX() once in airoha_qdma_fill_rx_queue()
+    https://git.kernel.org/netdev/net-next/c/269389ba5398
 
-Best regards,
+You are awesome, thank you!
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
