@@ -4,101 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB596D6AAFA
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2026 02:06:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFAACD730AA
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2026 06:49:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JuU4KWiApf0ZUp6VJ9psnuq1pPNAcv7FH3S1uYvgc+M=; b=F1ydSXRJaik8Y3INFQ5aJdkto7
-	vbtUBZUQ5gaCJ5tUTPO8swtjcu5fK+pnsGd5rnCjqfCTPc5DV08LbBZvolzVOfOmKAVO1wj4Orf7K
-	fvU/+EnUSaraJQjbVer7+9O8UJYpUzYa6DHwuLcmeDtevIGLme5zNOf1SwohS5zcpvoKxUffjNx/F
-	ybc1UZZUeLJSSZhGb9BVDobn4dKGjTXf/cp03ZOpbT6HHLe6zDmUqdkenCmRY3ZBmJm/eEFV2vs5n
-	FbyMf7MGJFitHjaWp2SchRXtx7FCAOR11/R5UPlkACvvTdUm2lRkEr9UCDWZeejEmjneHr3gldfRc
-	/gOPXP6w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=UVDiR/387rcc5iosgK3Eo/Y5G2Be4ywKMU1i0407va4=; b=FSynqN7aUeGlLL9JpZ4twU5yWV
+	keYPNwXp/enaY73g3JQBoVy8S4uvVhjfSMxRLFEKZv8jtRKch4k/Q3QbjbS80ay+T3M0jRZMxP3nB
+	wMFfoypqkVSecHMMK/FiaVov17njQuX3JSYKeWYFNLBKwmrY39EnsCXhUVDUtIKJWpbO+BM46cTtU
+	ZYa+GGNuyD5zzwmebxBpfqlO4qX+XPqEi1hU36H1zkuDI4o6OkKSzRejtq8qqs25fJlD1z3NGgPUw
+	8+zQVaHSDUP+IWH0wNVnVRF5YLozl3bns+K+3Njn+mqYxEDhPNl2a8h+YV1pycG8tlTxhF+4NGQ4H
+	FCszScaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8Tve-000000015LC-15sx;
-	Fri, 03 Apr 2026 02:06:34 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1w8YLo-00000001PDn-06w3;
+	Fri, 03 Apr 2026 06:49:52 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8Tvb-000000015Ke-3ZIH;
-	Fri, 03 Apr 2026 02:06:33 +0000
-Received: from pps.filterd (m0333520.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6330GC2Z1380163;
-	Fri, 3 Apr 2026 02:05:43 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
-	:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=
-	corp-2025-04-25; bh=JuU4KWiApf0ZUp6VJ9psnuq1pPNAcv7FH3S1uYvgc+M=; b=
-	Qt+9uZ1u/LHo+bGtDpN2v9Zed05JNtsSBBB4ocolh0+Hcx/687h8RJkoVDR6XWwX
-	7PxIeDQwZcCajaStb2ljMKnHhg2T2UZEHisLgsTB8kzx892bx2hjTBVbofEQt2Qh
-	GHjPKwtJW12eCl5IeGwfr4vrGzUX2lMrTSJq6JQyfXs5IR+Z6RHl+/O8gSlfQKOU
-	sk/KVypXcEKQOewPSELXyvRXdw1SozqpbtAwhE6mi+uesCIBoF19iZneL/UJpmC1
-	q3f9mqKyJscv4fKScHnsKiXNxHYRAksDgxgI29yEO7OLaPbm6Xa4KXYBO/OZwv9A
-	rIUmFix3T6ug3/SHFFoaaA==
-Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta03.appoci.oracle.com [138.1.37.129])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4d671b1gvq-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 03 Apr 2026 02:05:42 +0000 (GMT)
-Received: from pps.filterd (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 6331Kig9028961;
-	Fri, 3 Apr 2026 02:05:42 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
-	by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 4d65eddp4r-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 03 Apr 2026 02:05:41 +0000
-Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 63325cqb017364;
-	Fri, 3 Apr 2026 02:05:41 GMT
-Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
-	by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id 4d65eddp33-3;
-	Fri, 03 Apr 2026 02:05:41 +0000
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-To: avri.altman@wdc.com, bvanassche@acm.org, beanhuo@micron.com,
-        peter.wang@mediatek.com, mani@kernel.org,
-        Can Guo <can.guo@oss.qualcomm.com>
-Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
-        linux-scsi@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-        linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v5 00/12] scsi: ufs: Add TX Equalization support for UFS 5.0
-Date: Thu,  2 Apr 2026 22:05:26 -0400
-Message-ID: <177517593459.3522679.17128283878850153356.b4-ty@oracle.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260325152154.1604082-1-can.guo@oss.qualcomm.com>
-References: <20260325152154.1604082-1-can.guo@oss.qualcomm.com>
+	id 1w8YLl-00000001PBH-1XBE;
+	Fri, 03 Apr 2026 06:49:50 +0000
+X-UUID: 4bf533fe2f2911f19e7563141e833ce8-20260402
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=UVDiR/387rcc5iosgK3Eo/Y5G2Be4ywKMU1i0407va4=;
+	b=XAeAKNFwVmjr7qkkuMAo4ETf2pIeNHvpVlDLzlaMkQTSHOXQiwMqif/oQe8vOLIEkjECYPKHBHyosVsM+DHgwwB9u7xisvhDSw4U72KjBeQRxR8eDtYmUsGzMw8DIvlCwesMOC6q44q8XSDtERfi+18vEfInVSuJiebqkFJkEgQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.12,REQID:ceebc0e7-8d2e-49d6-bb16-2033dd18ab95,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:e7bac3a,CLOUDID:63e174d5-060f-4ecc-9ee0-121eeeb4a682,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|865|888|898,TC:-5,Content:0|
+	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0
+	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 4bf533fe2f2911f19e7563141e833ce8-20260402
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <jianhua.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 699569643; Thu, 02 Apr 2026 23:49:43 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Fri, 3 Apr 2026 14:49:41 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Fri, 3 Apr 2026 14:49:40 +0800
+From: Jianhua Lin <jianhua.lin@mediatek.com>
+To: <nicolas@ndufresne.ca>, <mchehab@kernel.org>, <robh@kernel.org>,
+	<krzk+dt@kernel.org>, <conor+dt@kernel.org>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>
+CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<sirius.wang@mediatek.com>, <vince-wl.liu@mediatek.com>,
+	<jh.hsu@mediatek.com>, Jianhua Lin <jianhua.lin@mediatek.com>
+Subject: [PATCH v6 0/3] Mediatek MT8189 JPEG support
+Date: Fri, 3 Apr 2026 14:49:09 +0800
+Message-ID: <20260403064912.17259-1-jianhua.lin@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-04-02_04,2026-04-02_05,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0 bulkscore=0 spamscore=0
- malwarescore=0 mlxlogscore=999 phishscore=0 suspectscore=0 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2603050001
- definitions=main-2604030017
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDAzMDAxNyBTYWx0ZWRfX1LBiQhOsYASj
- d3H2snTfATbPOEWZg2HG1tt7/4T05EXo6LV9feS5OwUWTg9/TPUFuBZwMOd4Mo2K0RiRPDDxkqP
- 8CVDlhXM4D4w+Cenl0eGd7Fly88H4BubUJyn/NL2+LCyPi9qgNO6Z5QylQcfp//xeCvqvmGTFuC
- 4ed74nuW9ruFeUQoEZ1C696AmvDcf9Wcj7a2feizDRouxswMEU4mKU9MMqyhAAHcrZKsvd9d0zP
- zDOEC0kknYdUFcuxqVHXejyJ0FM7Blp79ONYlwPS33o/B/8yyC6Tym11GoS7uwXfBImVWwZiR3K
- eee13D0Ypm0e7zVrvudZuoOepSxSLGYcgJDwMwSa4FAmJLb3qumlAXYF/MiVQ4D1wuwEyvz2Uoa
- ozEiIqkLDlrmXKZ2FFo0FiULZWxafzSvHrWhrAWAJIHXoraP9TqfqkRU5hudSrcB83FYZepIWSw
- fQldEsdhH7i8u7HnPZw==
-X-Authority-Analysis: v=2.4 cv=PJkCOPqC c=1 sm=1 tr=0 ts=69cf2076 b=1 cx=c_pps
- a=WeWmnZmh0fydH62SvGsd2A==:117 a=WeWmnZmh0fydH62SvGsd2A==:17
- a=IkcTkHD0fZMA:10 a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=jiCTI4zE5U7BLdzWsZGv:22 a=BqU2WV_vvsyTyxaotp0D:22 a=VwQbUJbxAAAA:8
- a=EuvOurwuZNnj9x5cPKIA:9 a=QEXdDO2ut3YA:10
-X-Proofpoint-GUID: J3hC8jPB2XAMZ05DyGFme7bAbVHCETjW
-X-Proofpoint-ORIG-GUID: J3hC8jPB2XAMZ05DyGFme7bAbVHCETjW
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260402_190632_007131_F53256F3 
-X-CRM114-Status: GOOD (  13.17  )
+X-CRM114-CacheID: sfid-20260402_234949_425447_68309AA1 
+X-CRM114-Status: UNSURE (   9.57  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,48 +89,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 25 Mar 2026 08:21:42 -0700, Can Guo wrote:
+This series is based on tag: next-20260327, linux-next/master
 
-> The UFS v5.0 and UFSHCI v5.0 standards have published, introducing support
-> for HS-G6 (46.6 Gbps per lane) through the new UniPro V3.0 interconnect
-> layer and M-PHY V6.0 physical layer specifications. To achieve reliable
-> operation at these higher speeds, UniPro V3.0 introduces TX Equalization
-> and Pre-Coding mechanisms that are essential for signal integrity.
-> 
-> This patch series implements TX Equalization support in the UFS core
-> driver as specified in UFSHCI v5.0, along with the necessary vendor
-> operations and a reference implementation for Qualcomm UFS host
-> controllers.
-> 
-> [...]
+Changes compared with v5:
+- Patches 1/3 (dt-bindings: decoder):
+  - Drop top-level minItems/maxItems for clock-names per Krzysztof's
+    review.
+  - Refine allOf block to strictly enforce clock constraints.
 
-Applied to 7.1/scsi-queue, thanks!
+Changes compared with v4:
+- Refines the device tree bindings for JPEG decoder and encoder.
+  - Patches 1/3 (dt-bindings: decoder):
+    Moved the standalone compatible string mediatek,mt8189-jpgdec
+    into the first oneOf entry along with mt2701 and mt8173, as
+    suggested by Rob Herring. This correctly groups all independent
+    ICs and removes the redundant items wrapper.
+  - Patches 2/3 (dt-bindings: encoder):
+    Applied the same logic suggested by Rob Herring to the encoder
+    binding. Restructured the compatible property to clearly
+    distinguish between the standalone IC (mediatek,mt8189-jpgenc)
+    and the ICs that must fallback to mediatek,mtk-jpgenc.
 
-[01/12] scsi: ufs: core: Introduce a new ufshcd vops negotiate_pwr_mode()
-        https://git.kernel.org/mkp/scsi/c/d3eba21c7170
-[02/12] scsi: ufs: core: Pass force_pmc to ufshcd_config_pwr_mode() as a parameter
-        https://git.kernel.org/mkp/scsi/c/c91c83671642
-[03/12] scsi: ufs: core: Add UFS_HS_G6 and UFS_HS_GEAR_MAX to enum ufs_hs_gear_tag
-        https://git.kernel.org/mkp/scsi/c/6669ab18c223
-[04/12] scsi: ufs: core: Add support for TX Equalization
-        https://git.kernel.org/mkp/scsi/c/03e5d38e2f98
-[05/12] scsi: ufs: core: Add debugfs entries for TX Equalization params
-        https://git.kernel.org/mkp/scsi/c/10c40143f369
-[06/12] scsi: ufs: core: Add helpers to pause and resume command processing
-        https://git.kernel.org/mkp/scsi/c/dc5dcac53278
-[07/12] scsi: ufs: core: Add support to retrain TX Equalization via debugfs
-        https://git.kernel.org/mkp/scsi/c/adbabdcf0db0
-[08/12] scsi: ufs: ufs-qcom: Fixup PAM-4 TX L0_L1_L2_L3 adaptation pattern length
-        https://git.kernel.org/mkp/scsi/c/53c94067efa2
-[09/12] scsi: ufs: ufs-qcom: Implement vops tx_eqtr_notify()
-        https://git.kernel.org/mkp/scsi/c/385b95893e79
-[10/12] scsi: ufs: ufs-qcom: Implement vops get_rx_fom()
-        https://git.kernel.org/mkp/scsi/c/26605db7604d
-[11/12] scsi: ufs: ufs-qcom: Implement vops apply_tx_eqtr_settings()
-        https://git.kernel.org/mkp/scsi/c/16cbdc830877
-[12/12] scsi: ufs: ufs-qcom: Enable TX Equalization
-        https://git.kernel.org/mkp/scsi/c/57b7943fd87f
+Changes compared with v3:
+- The v4 is resending the cover-letter, because the v3 cover-letter was
+  not sent successfully.
+
+Changes compared with v2:
+- Dropped the dts patch (arm64: dts: mt8188: update JPEG encoder/decoder
+  compatible) as it belongs to a different tree/series.
+- Patches 1/3 (dt-bindings: decoder):
+  - Changed the MT8189 compatible to be a standalone `const` instead of
+    an `enum`.
+  - Added an `allOf` block with conditional checks to enforce the single
+    clock ("jpgdec") requirement for MT8189, while preserving the
+    two-clock requirement for older SoCs.
+  - Updated commit message to reflect the schema structure changes and
+    hardware differences.
+- Patches 2/3 (dt-bindings: encoder):
+  - Changed the MT8189 compatible to be a standalone `const` instead of
+    an `enum` inside the `items` list, as it does not fallback to
+    "mediatek,mtk-jpgenc" due to 34-bit IOVA requirements.
+  - Updated commit message to explain the standalone compatible design.
+- Patches 3/3 (media: mediatek: jpeg):
+  - Refined commit message for better clarity regarding 34-bit IOVA and
+    single clock configuration.
+
+Changes compared with v1:
+- Patches 1/4:
+  - Updating commit message
+- Patches 2/4, 3/4: 
+  - Updating commit message
+  - Adjusted property descriptions acorrding to hardware requirements
+  - Improved formatting for better readability and consistency
+- Patches 4/4:
+  - Updating commit message
+
+Jianhua Lin (3):
+  dt-bindings: media: mediatek-jpeg-decoder: add MT8189 compatible
+    string
+  dt-bindings: media: mediatek-jpeg-encoder: add MT8189 compatible
+    string
+  media: mediatek: jpeg: add compatible for MT8189 SoC
+
+ .../bindings/media/mediatek-jpeg-decoder.yaml | 46 +++++++++++++++----
+ .../bindings/media/mediatek-jpeg-encoder.yaml | 19 +++++---
+ .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 44 ++++++++++++++++++
+ 3 files changed, 95 insertions(+), 14 deletions(-)
 
 -- 
-Martin K. Petersen
+2.45.2
+
 
