@@ -4,189 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7221AE7E34E
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2026 08:54:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A9C7E7E365
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2026 10:18:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=749l+8tmuSGDLXg49Hfrlvxrxrf3wW2fMXTmsAj8E9g=; b=2sNCRC4ylm5wXDw42UBX9rHi+D
-	pkKo3dhpk2uS3j7yh6PkGg5Yv1wBeXggN4foMOEvqB3yhS/hwmDq0lKAuX01S0XxnRO4oBdlfJfKH
-	uHaTs0uloMM22073mfG11+kT0SSE9QW64mlyeTQ1blweNieEcq/7IRJWXFHRbWYRL3AUCDjtltlae
-	3BWdT+WstkBqwFSFSRYtlbmpw5E1HcRwI2f/0ZoBgcVjn+W4ZtNxakYDnU6NEIb72+UsUBSo/i01L
-	3s5q0XcqgJkOErz6hnN3zOcFI94k1+SgasqDRSDgyxS5FEQOkZ+eeK/30oj21L+F5inyYoCLKR4LM
-	vbtioYLw==;
+	bh=VfRg7JhxgO22hv4vWTi7qx0wPWni4jPw9gnG9lj7S84=; b=xyiGnRWGiHKcbPJMHWkG2gHH1F
+	9vDmRoQr6Jjaw2VCAiFBJtHGY+s2QQbF7FLWO/DaGB30dLbphUiSnzFwcgCARW0GLCoEIjGxBr9Z2
+	kSs8qt83vYEUVEwklHsueNhid5+AtAukEMmHT20jWjY1D5RdKREUSkVWaggAqCZoVdjdueQHPD0Bd
+	Mzyi/0a8Ne/e7eEQ930VjeVNyL+Wkl5RYLtoh3YXJlhNDm5Q8zQuHb8xrtLuaZz/Ms/ug7C+uOghS
+	W8zFpchyJNs8+ydOtYOgeIj4kxWtWocEVpodqeRweaO3gGJT4PISG7A8yOFzewsmKemjzcjXinEWg
+	kX9NP/5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8aIl-00000001kp7-1vO4;
-	Fri, 03 Apr 2026 08:54:51 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1w8bbR-00000001sOY-06KT;
+	Fri, 03 Apr 2026 10:18:13 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8aIj-00000001koS-0tX7;
-	Fri, 03 Apr 2026 08:54:50 +0000
-X-UUID: c2e6569e2f3a11f1a6de359d7043e138-20260403
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=749l+8tmuSGDLXg49Hfrlvxrxrf3wW2fMXTmsAj8E9g=;
-	b=dm4GM8MMmxfFf9utn7d1quqUvl9tn2m8Z52qElYNkf8iHpnnYKUgULrB9Lvz1/qAjCEmIdFkvrG8qECR51LkVTJEIvLNsCFdV+Y5aOnjvM4dLdAnbiD0HNGrUvNwvDPZfBVCfoj20cbdGYVITaeegDsNyKxfXMswhkFdreIGHA0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:b5526ff0-7ab5-444f-99b6-feb471fde815,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:e7bac3a,CLOUDID:23b975d5-060f-4ecc-9ee0-121eeeb4a682,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111|836|865|888|
-	898,TC:-5,Content:-10|3|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,Q
-	S:nil,BEC:-1,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,A
-	RC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: c2e6569e2f3a11f1a6de359d7043e138-20260403
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 309542237; Fri, 03 Apr 2026 01:54:44 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Fri, 3 Apr 2026 16:54:42 +0800
-Received: from SI4PR04CU002.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Fri, 3 Apr 2026 16:54:42 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=GoRiyuB50lQvuRKGeA6MSFNAkRXrfvNM7rP5DVQ1vslZdw7G3jLO+UQPm+lRMynZXf5/8i3UrTDdm+jqSjyQqaWjILRCgHiaGI6srBLYOdb5dHUqLwTPTtkODzNXCECuGAu51zF8ELzijyytUWP7mAxfRF+ObCQS3QUSeyNdaCrLaSOvFglFJxEUwu0XXngqgkeRW5LiOI1/3mGqTdc/S301GkxhZh4TthCJtAWA49kRBSW/ODwFO14Ue567dYak8kVPniqk4PYut+vpg+djVdOcx+7py0xb6gAu0FE5QrjCSXxqvpfuLQseH64rOY+2JSpm4fa5Lg1tQkisK9Ak2g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=749l+8tmuSGDLXg49Hfrlvxrxrf3wW2fMXTmsAj8E9g=;
- b=Z/u7BroJo4sjET3Zd11tbPSF86yvyuqg0E48rTH7bGg41SHZjynTUPT8P+LIpNGPU6CgYQAr6fzq5KFRGJe/zHmXDUw0jRQkTZqSw/TKenD8nl00tm/07QyO+REgDCQ1wsImO3ZekWf+jnIWiy7pY5u2Xb0wbCQ5AXbO6IvinkZNFwe858jd9p8WHJ3y8oY4DLbqHovaE7g+u98qjrbj4cwn+M5uyATa7STgBaVKkZQgCW2KbLVGIGDE+RABVI5M8K9LVtbe+FIQ7D8qj2f/BztVT/xuuI34TshpWcd7V+SiDHw+OjSg3HbFGYfAs0dEIdXZNYXHc5bn0pkJjBGupw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=749l+8tmuSGDLXg49Hfrlvxrxrf3wW2fMXTmsAj8E9g=;
- b=vJHlTAXMMRifB4X++EQrnxFS2/0GaXZBilIMCwfNsxdTkEFqB9rTaqrio+GR92rudpbRvrtn+k1I/RxzKkFAF26nBjVpJGE1lL5q2FVj4mElIr/7GJsF4NMC5e1bXp9fWwoDySkLuYDU8RqiMmqPJj7rnWpLMjRCgA9fo1Dmd+U=
-Received: from SEYPR03MB7682.apcprd03.prod.outlook.com (2603:1096:101:149::11)
- by TYZPR03MB7819.apcprd03.prod.outlook.com (2603:1096:400:464::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9769.20; Fri, 3 Apr
- 2026 08:54:39 +0000
-Received: from SEYPR03MB7682.apcprd03.prod.outlook.com
- ([fe80::1fe4:fb59:1b1:1646]) by SEYPR03MB7682.apcprd03.prod.outlook.com
- ([fe80::1fe4:fb59:1b1:1646%6]) with mapi id 15.20.9769.020; Fri, 3 Apr 2026
- 08:54:39 +0000
-From: =?utf-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
-To: Laura Nao <laura.nao@collabora.com>
-CC: =?utf-8?B?R3VhbmdqaWUgU29uZyAo5a6L5YWJ5p2wKQ==?=
-	<Guangjie.Song@mediatek.com>, "robh@kernel.org" <robh@kernel.org>,
-	"kernel@collabora.com" <kernel@collabora.com>,
-	=?utf-8?B?U2lyaXVzIFdhbmcgKOeOi+eak+aYsSk=?= <Sirius.Wang@mediatek.com>,
-	=?utf-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"conor+dt@kernel.org" <conor+dt@kernel.org>,
-	=?utf-8?B?UGF1bC1wbCBDaGVuICjpmbPmn4/pnJYp?= <Paul-pl.Chen@mediatek.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"richardcochran@gmail.com" <richardcochran@gmail.com>, "krzk+dt@kernel.org"
-	<krzk+dt@kernel.org>, "mturquette@baylibre.com" <mturquette@baylibre.com>,
-	Nicolas Prado <nfraprado@collabora.com>, "p.zabel@pengutronix.de"
-	<p.zabel@pengutronix.de>, =?utf-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?=
-	<Singo.Chang@mediatek.com>, "wenst@chromium.org" <wenst@chromium.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "netdev@vger.kernel.org"
-	<netdev@vger.kernel.org>, "linux-clk@vger.kernel.org"
-	<linux-clk@vger.kernel.org>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "sboyd@kernel.org" <sboyd@kernel.org>
-Subject: Re: [PATCH v5 23/27] clk: mediatek: Add MT8196 disp-ao clock support
-Thread-Topic: [PATCH v5 23/27] clk: mediatek: Add MT8196 disp-ao clock support
-Thread-Index: AQHcGNelXPSfqVm58E66r9ASuZOvZbXMoqQAgAA8LwCAAX5+AA==
-Date: Fri, 3 Apr 2026 08:54:39 +0000
-Message-ID: <04a1848e3ffb43fae727ca0110d57e81fe88a4a1.camel@mediatek.com>
-References: <2d418383ff2d6ff40ffb3b4f8e2b0c0e665c3b58.camel@mediatek.com>
-	 <20260402100538.27291-1-laura.nao@collabora.com>
-In-Reply-To: <20260402100538.27291-1-laura.nao@collabora.com>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SEYPR03MB7682:EE_|TYZPR03MB7819:EE_
-x-ms-office365-filtering-correlation-id: f396c047-9ab3-4385-6138-08de915ea3a8
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|376014|366016|1800799024|7416014|38070700021|22082099003|18002099003|56012099003;
-x-microsoft-antispam-message-info: gxniqvuysKYY5PL5eU3rg9rRfKBbW134VbRVimALStZ0RkBUEU6vXtKcdKeYk300H5fCdtHdb45yDHdyPRq8kZtwtFnnzROgrOx4dzL9m6+iJQtgEWMUEt/+doo1mGm437YncjCG9RD0KjWIib44s3ijPkwDaz+Z8avGTQ78qv93Od/RFlhC42Cv6eQBgBrTdZ5aKMfbFf/Sz6CeoCJf9Cq1Lj6PgaoaWPyrGYWQDTmF6Bze8eQ+Oxb2zNeVrta0PvGtT03FX+v1lye5uiHkur1IMVWv+4fVnUtzGV7yZ3OJ/fPjt5xI6tCoB/q+8MEmu6w5to6Wr8MDGPXYmD8DJl4czHtYsk1432WfFJzITS25feZ/qlqrjxZVAyGUB9WZiE5EiFmTOuSgOHhXCzf64OIjBV1GVw9+sUkicLsIBYBwpZK3HpjfGAf6nHK9f0GE1vT1JiQN9goX9iIPwk/tD0kF21rzIvbEScFYPuuJyuVjTyGcztvCGGuhg0VglMQrLPp855G1nqhVsGA7x/+v5Wp8+23mQP9wwnmVv0T2OiaIfnVTX4ccIdY3elpP2f2gsuUydn/Xm3fhfO/jOteFMDvY0oyb4A9bjF2VGeH3aTGL2lTFts77Haa88hX/NXURgait4qKvI8bAC7jJewdykvS5rzfa+NKAuP0m2JHyiOyvjKPsfeW6ZiuV1DUQYWe76Xp+h/bx5/+KY5z2OBDzm2+/h7CYynJrSbsVbijo0yV3PsuEdiFe7XrQvdpX3YetX/2r+EI6jw2RNJebPmzXqA==
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEYPR03MB7682.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(366016)(1800799024)(7416014)(38070700021)(22082099003)(18002099003)(56012099003);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?SmNvOGJ1eEIrUVZrbEppMkp6Ulk1Z0poZDAyYUlkdVZLMy8wV3J3bk5weklo?=
- =?utf-8?B?T0pWR0dtNTdaZjk3ZmFuK2poMzRzVElzVm5kYzBEZjIyWitKeUs4UWFCRUN2?=
- =?utf-8?B?azdmbk5yYnJFRnIrTVBaNWEzanJHK3JtdFpMQWUvcHFMdm4reCthUkN5OFc3?=
- =?utf-8?B?VHdnK1ozSFFtU1lnb0o0TWh2R1hBTWgyemZOQVYrR1dxWVRrbTdhYThhcTBZ?=
- =?utf-8?B?SEo0SWlHMDNEWVVmMDRvdnVnZDNBcXdwR2RaN2R6cjBSd1pra1luaHFQRnJi?=
- =?utf-8?B?NlV6WjNiUHM1ZEJ1eU1EQVNEZ1puaGVZMTQ2WUtUdjVhZG5lL1hrVUdJeE1o?=
- =?utf-8?B?Zk9hTHlsQ2haaVIyaE5Vc29UOXhYOXArZ3FsMzZmcnRma0tVT25Pa0Uyc09M?=
- =?utf-8?B?bElYallRdGdjQ1FtYnJPL0xORlArSkw0N0U1RVc1c3Z6VTgwUzZKd2RDd3lG?=
- =?utf-8?B?bUxVRDVXb3NvSXMwdEhkUnJKVkx3aG9PdzJURlRZRWZrTVpXMUFPbXVsQnJo?=
- =?utf-8?B?TEQwelM4YmpBM2VGK3pPUzhIL0NTRHFuZ1gzQ2oxU0FScEYveDhlNUczU0lD?=
- =?utf-8?B?RUNZZkxrWXZFNWNvckZ5Q3cyVStpVVJPbmNMYWErNGd6cSttSUFiWTIzL1da?=
- =?utf-8?B?ajhvb1l3aDBrLytNVm1mRnc2V05SRW16M3ByMitVMUFNSHFhdDdkbGpySS9S?=
- =?utf-8?B?Z2hLOW1OOWpXeG9DdXlUNHFDNDkrODdqdFVkTnRnM0F4STY3U0Q0dDI5Y0Q2?=
- =?utf-8?B?bEtnSGNOU1RiSWhQaVdST01qdnYrSnB5WjA5aUtmZk1Bc2F1WG1QSzVEQ2E1?=
- =?utf-8?B?MlB0US9zN1BwZnRLY0FvZWU0NzlhcmgxYytaN2E1aVdKTTdGV0Z5cFVNeEpq?=
- =?utf-8?B?R05nMVNpZytqMktQNVBENkZpT0JpWlRHcThQZWxZbXZUVE1tRXFWZytxNDIy?=
- =?utf-8?B?U0E1Nno0NVhUc1lZZ29rZDJOdCtzTlE3dER3dzMzOENveFBtVDIyUzZUSHVE?=
- =?utf-8?B?M1dobjZjSXlIOVpqR0QyeG9MQkZLbXNJSXFCc3FENDFoTElqZmIrZS94bGlF?=
- =?utf-8?B?TnMrTk50bW1HZ1JLeHYxOUFpbUdtNWlzWmVIZURtZ3NabVFiMmtrRHVmcitz?=
- =?utf-8?B?eTltQis0VENacmlhdkVmUWVFMHAwSkRwa1dKYThuQUd6c3FzMEtFVDd2TXlk?=
- =?utf-8?B?T3JhVURGdy9HaVkwSEZCWFlNOGQ5aFEwbG8wZ1l6OXUrUWREYmlRc1d5aUho?=
- =?utf-8?B?REJWdXE5ekI1OFFJUjhiQXJpc2trcmJqTGlrbk9kbGt1VUVMbEdteU9zandW?=
- =?utf-8?B?MEJTT0FuVUlRWEc5OUlnMElENGFEb2Y1aThvSzFmckFXQkZBVVF2c3p2WWVu?=
- =?utf-8?B?cXQrK2NzTUlyY0IxNDA3WjdCYlNJR1ppZjZsR1g3RmFkRi9rbENIRzJucXNV?=
- =?utf-8?B?OHRhdnZnSzQ0QSt2Z240dyticTVINk94ZnFOeFQ1eHV0dEdyV0NiN0F2VlFH?=
- =?utf-8?B?aWg5S3BPOWVESmN3WDdyODZJaThTQkJFL2UvVW1Sd2tKczZPYmx0TXNCQ1Y5?=
- =?utf-8?B?RU9jQmxqY1FqaUI4Wm5tWjFJYU83MXhJb21TQkdEMHZHZW16YUFmY2dERUpZ?=
- =?utf-8?B?ZnJnWUlibm9melFVaEhVdTNhLy9zRjF6QXdJeG4xbVQvZSs5VytaalZLem4x?=
- =?utf-8?B?N0dyaTVJL3BobU1IRWU4RWN0NEx6ZnpDVUZSajhHaDVrNjJYaVRiMUpBdXpI?=
- =?utf-8?B?bHNSSk1BcXdsbGJEbDVFSTltOG1mTUZERUpoNmg4eDI3U1BGWCtmSzRON1Z3?=
- =?utf-8?B?bDV0cU1TV2w5RG9EQkhmNHhRY3lNZ0NTd3p1UTdkeXZHN2tvRHJXWXptVE1U?=
- =?utf-8?B?bWEvVnhmUi9WQWNpejUyL1FuTlZHdkdjQVEyby91MGhxaXpVcDFDeFovNlo0?=
- =?utf-8?B?Wko0TVVwc2k2bzZ5Wmw2ZzhXN1g1MjZYUUZTeWtyVlE0QURJeHRnMTlvMFNK?=
- =?utf-8?B?azkraWRHaDlBbDh4eEY1c1doL1NoRmQ4b2lSbzNzY3hTZDdRbVNraFB4RHhJ?=
- =?utf-8?B?ZTcvTCt1Zms1U2dJcGpJcjZva09aYnVzay9DdVd3YlFlcHdHNUNCSXhReTRs?=
- =?utf-8?B?RCtxVVdQYTVkQWQ4RlZJUENwZnhGM3hlclVKdU90Q2FvcUhZZ2kxeVkxSnlu?=
- =?utf-8?B?ZmlsdEk0dlIzanlwbllxQUtLc2VZRGJxTy9TY25lUzVZRWxMdldNSlEvakps?=
- =?utf-8?B?b01UK3FScEQ0M0w4a0xSQW1lcFVXOTQvT0dWeURzd2tsQTloNU42cmtBWUZx?=
- =?utf-8?B?UFVtSTZqc2JLMTZMNk9RVWUvR1lqT3lydlhENGQ1cUI2bVNaNkMrYUhOMFpp?=
- =?utf-8?Q?PgrI0j+Kq3mcLHVU=3D?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <6CEAD2A2AA83B048AFBFEFCA9F6728CC@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	id 1w8bbO-00000001sO1-43tt;
+	Fri, 03 Apr 2026 10:18:11 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 029D960008;
+	Fri,  3 Apr 2026 10:18:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5F41CC4CEF7;
+	Fri,  3 Apr 2026 10:18:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1775211489;
+	bh=gnO1TPgDaKN0Jehro+SBn82RW/6IA1b93dtYQWKMCk4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=bG6aHuwiQKPtfqhem1Q0+Uy42nD+WovXzdsuTbPT5MlR3StVje5XoD14o+64+H2vY
+	 ygzwEseyG5seQJ1Jdzz/Ybsw99HBkNJI6OBOdc3oI+/xwbFUqozVG5qNLRQY3/iD8G
+	 mRkH3YwjdrtptG8T/k10LIDBM8WaXvu0L4sCR/8SB3BNpHnU+LZAirWnj4jdMMeNsF
+	 C6GoC17k+Yah2ogHJdUutH2WIsTAvC7y8c3t6wQIvT675Plx90F3vgxqVgjeh8Sw8P
+	 tc7hc8KMxR83NtUt5gn+IkqP7UA+Ac531Fvdg6SeTP/6k3XdMrthgTuLwS05a/xCf/
+	 YFem104TfOCDQ==
+Date: Fri, 3 Apr 2026 12:18:07 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+	pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org,
+	conor+dt@kernel.org, ansuelsmth@gmail.com,
+	benjamin.larsson@genexis.eu, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH net-next v2 09/11] net: airoha: Support multiple
+ net_devices for a single FE GDM port
+Message-ID: <ac-T31bmPzp7hqbA@lore-desk>
+References: <20260401-airoha-eth-multi-serdes-v2-9-ac427ae4beeb@kernel.org>
+ <20260403011208.1784815-1-kuba@kernel.org>
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: HIyk6ZbZFJ/WvqlRHv5JMMOi2SEkvC08EMLsZqLJKF6nUIgYgvCSVPb2N4fOWAgBEuxtFCdN0IRMD0FULyX86cyDKA10PCENCI+C8wbJUrKPQThgViJRRies2eTG0yfbLXgmtDV9BMNwPnqxThrj3ajAg5GjiDP4Uu+V9lIMlZiODPMJPaL7Gg65V1wY857tm9b6P0uBz5+B8ECIU7K9JYMDD+KHu5UGZ16LpD8LNDnQF3inbGfQUjaFIVc+k2sA9MTAlBANUxsDl5ZMKKr5UMDHvsWKe72kMVmMb//5tUtBi5JOTxrnnnLWhlTOwEB8/PWkpprOvBN2k0ZxixvQqA==
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SEYPR03MB7682.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f396c047-9ab3-4385-6138-08de915ea3a8
-X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Apr 2026 08:54:39.1434
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 7PFMwQSo7GPFNI0MjlKGslA4kXg7tbX+fvpO/l2ofu7MXNcjT3oMHY5RCFmQTfjFR/R3CspH1+s0Q3pkhwVkxyPbcVYwYvVjkJIpywX78R8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB7819
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260403_015449_272114_A663758D 
-X-CRM114-Status: GOOD (  17.79  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="uANK1J/2luT5WIud"
+Content-Disposition: inline
+In-Reply-To: <20260403011208.1784815-1-kuba@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -201,23 +74,259 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-W3NuaXBdDQoNCj4gPiA+ICtzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBvZl9tYXRj
-aF9jbGtfbXQ4MTk2X3ZkaXNwX2FvW10NCj4gPiA+ID0gew0KPiA+ID4gKwl7IC5jb21wYXRpYmxl
-ID0gIm1lZGlhdGVrLG10ODE5Ni12ZGlzcC1hbyIsIC5kYXRhID0NCj4gPiA+ICZtbV92X21jZCB9
-LA0KPiA+IA0KPiA+IEhpIExhdXJhLA0KPiA+IA0KPiA+IFdlIGFyZSBnb2luZyB0byBzZW5kIG10
-ay1tbXN5cyBkcml2ZXIgZm9yIE1UODE5NiByZWNlbnRseSwgYnV0IHdlDQo+ID4gZm91bmQNCj4g
-PiB0aGUgY29tcGF0aWJsZSBuYW1lIGlzIHVzZWQgaGVyZS4NCj4gPiANCj4gPiBBcyB5b3VyIGNv
-bW1pdCBtZXNzYWdlLCB2ZGlzcC1hbyBpcyBpbnRlZ3JhdGVkIHdpdGggdGhlIG10ay1tbXN5cw0K
-PiA+IGRyaXZlciwgd2hpY2ggcmVnaXN0ZXJzIHRoZSB2ZGlzcC1hbyBjbG9jayBkcml2ZXIgdmlh
-IA0KPiA+IHBsYXRmb3JtX2RldmljZV9yZWdpc3Rlcl9kYXRhKCkuDQo+ID4gDQo+ID4gU2hvdWxk
-bid0IHRoaXMgY29tcGF0aWJsZSBuYW1lIGJlbG9uZyB0byBtbXN5cyBkcml2ZXIgZm9yIE1UODE5
-Nj8NCj4gPiANCj4gDQo+IFRoYXQncyByaWdodCwgbXkgZmF1bHQgZm9yIG1pc3NpbmcgdGhhdCEg
-VGhhbmtzIGZvciB0aGUgaGVhZHMgdXAuDQo+IA0KPiBJJ20gYXdhcmUgQW5nZWxvIGlzIGN1cnJl
-bnRseSByZXN0cnVjdHVyaW5nIG1lZGlhdGVrLWRybSAoaW5jbHVkaW5nIA0KPiBtbXN5cyBhbmQg
-bXV0ZXgpLCBhbmQgdGhhdCBtaWdodCBhZmZlY3QgdGhlIHdheSB2ZGlzcC1hbyBpcyBsb2FkZWQN
-Cj4gdG9vLiANCj4gU28gSSdtIG5vdCBzdXJlIHdoZXRoZXIgaXQgbWFrZXMgc2Vuc2UgdG8gc2Vu
-ZCBhIHBhdGNoIHRvIGZpeCB0aGlzIA0KPiByaWdodCBhd2F5Lg0KDQpPSywgd2UnbGwgdHJ5IHRv
-IGNvbnRhY3QgQW5nZWxvIGZyb20gb3RoZXIgcGxhY2VzLg0KVGhhbmtzIGZvciB5b3VyIGNvbmZp
-cm1hdGlvbiENCg0KUmVnYXJkcywNCkphc29uLUpILkxpbg0KDQo+IA0KPiBCZXN0LA0KPiANCj4g
-TGF1cmENCj4gDQo=
+
+--uANK1J/2luT5WIud
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+> This is an AI-generated review of your patch. The human sending this
+> email has considered the AI review valid, or at least plausible.
+> ---
+> Subject: net: airoha: Support multiple net_devices for a single FE GDM po=
+rt
+>=20
+> This commit introduces support for multiple net_devices connected to the
+> same Frame Engine (FE) GDM port via an external hardware arbiter. It
+> adds logic to parse device tree child nodes and instantiate separate
+> net_devices for TDM traffic from external SerDes.
+>=20
+> > diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/eth=
+ernet/airoha/airoha_eth.c
+> > index 5e489e8593ba..0780fb8aacfb 100644
+> > --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> > +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+> [ ... ]
+> > @@ -614,9 +616,8 @@ static int airoha_qdma_rx_process(struct airoha_que=
+ue *q, int budget)
+> >  		u32 hash, reason, msg1 =3D le32_to_cpu(desc->msg1);
+> >  		struct page *page =3D virt_to_head_page(e->buf);
+> >  		u32 desc_ctrl =3D le32_to_cpu(desc->ctrl);
+> > -		struct airoha_gdm_port *port;
+> > -		struct net_device *netdev;
+> > -		int data_len, len, p;
+> > +		struct airoha_gdm_dev *dev;
+> > +		int data_len, len;
+> > =20
+> >  		if (!(desc_ctrl & QDMA_DESC_DONE_MASK))
+> >  			break;
+> > @@ -633,12 +634,10 @@ static int airoha_qdma_rx_process(struct airoha_q=
+ueue *q, int budget)
+> >  		if (!len || data_len < len)
+> >  			goto free_frag;
+> > =20
+> > -		p =3D airoha_qdma_get_gdm_port(eth, desc);
+> > -		if (p < 0 || !eth->ports[p])
+> > +		dev =3D airoha_qdma_get_gdm_dev(eth, desc);
+> > +		if (IS_ERR(dev))
+> >  			goto free_frag;
+>=20
+> If a scattered frame is being processed (q->skb is not NULL) and IS_ERR(d=
+ev)
+> triggers the goto free_frag, the error handler frees the skb:
+>=20
+> free_frag:
+> 	if (q->skb) {
+> 		dev_kfree_skb(q->skb);
+> 		q->skb =3D NULL;
+> 	} else {
+> 		page_pool_put_full_page(q->page_pool, page, true);
+> 	}
+>=20
+> Since the current fragment's page is not yet attached to q->skb, does this
+> skip the else branch and permanently leak the page pool buffer?
+
+This issue is fixed in the following net patch (not merged yet):
+
+https://lore.kernel.org/netdev/20260402-airoha_qdma_rx_process-mem-leak-fix=
+-v1-1-b5706f402d3c@kernel.org/
+
+>=20
+> [ ... ]
+> > @@ -1747,9 +1748,7 @@ static int airoha_set_gdm2_loopback(struct airoha=
+_gdm_dev *dev)
+> >  	airoha_fe_clear(eth, REG_FE_VIP_PORT_EN, BIT(AIROHA_GDM2_IDX));
+> >  	airoha_fe_clear(eth, REG_FE_IFC_PORT_EN, BIT(AIROHA_GDM2_IDX));
+> > =20
+> > -	/* XXX: handle XSI_USB_PORT and XSI_PCE1_PORT */
+> > -	nbq =3D port->id =3D=3D AIROHA_GDM3_IDX && airoha_is_7581(eth) ? 4 : =
+0;
+> > -	src_port =3D eth->soc->ops.get_src_port_id(port, nbq);
+> > +	src_port =3D eth->soc->ops.get_src_port_id(port, dev->nbq);
+> >  	if (src_port < 0)
+> >  		return src_port;
+>=20
+> With multiple net_devices instantiated for the same physical GDM port, do=
+es
+> the initialization of sibling devices overwrite shared hardware registers?
+>=20
+> For example, when airoha_set_gdm2_loopback() uses src_port to configure
+> REG_FE_WAN_PORT, it explicitly clears the WAN port routing masks:
+>=20
+> 	airoha_fe_rmw(eth, REG_FE_WAN_PORT,
+> 		      WAN1_EN_MASK | WAN1_MASK | WAN0_MASK,
+> 		      FIELD_PREP(WAN0_MASK, src_port));
+>=20
+> Will the last initialized device clobber the WAN routing configurations a=
+nd
+> hardware MAC filters for the others, causing their traffic to be dropped?
+
+ack, I will fix it in v3.
+
+>=20
+> [ ... ]
+> > @@ -1970,7 +1969,8 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff=
+ *skb,
+> >  	}
+> > =20
+> >  	fport =3D airoha_get_fe_port(dev);
+> > -	msg1 =3D FIELD_PREP(QDMA_ETH_TXMSG_FPORT_MASK, fport) |
+> > +	msg1 =3D FIELD_PREP(QDMA_ETH_TXMSG_NBOQ_MASK, dev->nbq) |
+> > +	       FIELD_PREP(QDMA_ETH_TXMSG_FPORT_MASK, fport) |
+> >  	       FIELD_PREP(QDMA_ETH_TXMSG_METER_MASK, 0x7f);
+> > =20
+> >  	q =3D &qdma->q_tx[qid];
+>=20
+> When multiple net_devices share a single QDMA instance and its TX rings
+> (qdma->q_tx), a TX queue stall might occur here.
+>=20
+> If the shared hardware ring fills up, netif_tx_stop_queue() stops the
+> transmitting device's queue. Later, when descriptors are freed, the driver
+> only wakes the queue corresponding to the specific packet that just compl=
+eted.
+>=20
+> If multiple devices' TX queues are stopped, will the other devices' queues
+> remain stalled unless their specific packets happen to be processed?
+
+This does not seem strictly related to this series. I will look into it in a
+dedicated patch.
+
+>=20
+> [ ... ]
+> > @@ -2897,10 +2900,11 @@ bool airoha_is_valid_gdm_dev(struct airoha_eth =
+*eth,
+> > =20
+> >  static int airoha_alloc_gdm_device(struct airoha_eth *eth,
+> >  				   struct airoha_gdm_port *port,
+> > -				   struct device_node *np)
+> > +				   int nbq, struct device_node *np)
+> >  {
+> > -	struct airoha_gdm_dev *dev;
+> >  	struct net_device *netdev;
+> > +	struct airoha_gdm_dev *dev;
+> > +	u8 index;
+> >  	int err;
+> [ ... ]
+> > +	/* Allowed nbq for EN7581 on GDM3 port are 4 and 5 for PCIE0
+> > +	 * and PCIE1 respectively.
+> > +	 */
+> > +	index =3D nbq;
+> > +	if (airoha_is_7581(eth) && port->id =3D=3D AIROHA_GDM3_IDX)
+> > +		index -=3D 4;
+> > +
+> > +	if (index >=3D ARRAY_SIZE(port->devs) || port->devs[index]) {
+> > +		dev_err(eth->dev, "invalid nbq id: %d\n", nbq);
+> > +		return -EINVAL;
+> > +	}
+>=20
+> There are two potential issues regarding the new index logic:
+>=20
+> First, does this break probing for older device trees without child nodes?
+> When falling back to airoha_alloc_gdm_device(..., 0, np) with nbq =3D 0,
+> the index -=3D 4 operation for AIROHA_GDM3_IDX will cause the u8 index to
+> underflow to 252. The bounds check 252 >=3D 2 fails, returning -EINVAL.
+
+ack, I will fix it in v3.
+
+>=20
+> Second, can an invalid device tree value bypass the bounds check?
+> The int nbq parameter is directly assigned to the u8 index. If a large va=
+lue
+> like reg =3D <256> is provided, it truncates to 0, passing the index >=3D=
+ 2
+> check. The un-truncated int nbq is then stored in dev->nbq, potentially
+> causing out-of-bounds shifts when used in hardware macros.
+
+ack, I will fix it in v3.
+
+>=20
+> [ ... ]
+> > @@ -2986,7 +3004,36 @@ static int airoha_alloc_gdm_port(struct airoha_e=
+th *eth,
+> >  	if (err)
+> >  		return err;
+> > =20
+> > -	return airoha_alloc_gdm_device(eth, port, np);
+> > +	for_each_child_of_node(np, node) {
+> > +		/* Multiple external serdes connected to the FE GDM port via an
+> > +		 * external arbiter.
+> > +		 */
+> > +		const __be32 *nbq_ptr;
+> > +
+> > +		if (!of_device_is_compatible(node, "airoha,eth-port"))
+> > +			continue;
+> > +
+> > +		d++;
+> > +		if (!of_device_is_available(node))
+> > +			continue;
+> > +
+> > +		nbq_ptr =3D of_get_property(node, "reg", NULL);
+> > +		if (!nbq_ptr) {
+> > +			dev_err(eth->dev, "missing nbq id\n");
+> > +			err =3D -EINVAL;
+> > +			of_node_put(node);
+> > +			break;
+> > +		}
+> > +
+> > +		err =3D airoha_alloc_gdm_device(eth, port, be32_to_cpup(nbq_ptr),
+> > +					      node);
+> > +		if (err) {
+> > +			of_node_put(node);
+> > +			return err;
+> > +		}
+> > +	}
+> > +
+> > +	return !d ? airoha_alloc_gdm_device(eth, port, 0, np) : 0;
+> >  }
+>=20
+> If nbq_ptr is missing, err =3D -EINVAL is set and the loop breaks. Howeve=
+r,
+> since the child counter d was already incremented, the final statement
+> evaluates to 0 (success) because !d is false.
+>=20
+> Does this swallow the -EINVAL error and cause a silent failure where the
+> driver continues probing without initializing the misconfigured GDM devic=
+es?
+>=20
+> Additionally, the for_each_child_of_node() iterator automatically handles
+> taking and dropping the reference to node.
+>=20
+> When node is passed to airoha_alloc_gdm_device(), it is directly assigned:
+> netdev->dev.of_node =3D np;
+>=20
+> Since of_node_get() is not called, when the loop iteration finishes and d=
+rops
+> the reference, does this leave the net_device pointing to a freed device
+> tree node?
+
+ack, I will fix it in v3.
+
+Regards,
+Lorenzo
+
+> --=20
+> pw-bot: cr
+
+--uANK1J/2luT5WIud
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCac+T3wAKCRA6cBh0uS2t
+rD8uAQDLwW+kRrIkaKBLR1QF49omOiYp+YjFijcbAKEE/A1lWAD9GoWKnBmEB+A1
+wsVr9oMXxS/1lbttP9QypribarRFtAU=
+=maWk
+-----END PGP SIGNATURE-----
+
+--uANK1J/2luT5WIud--
 
