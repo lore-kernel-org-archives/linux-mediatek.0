@@ -4,67 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 624C8D6AB1A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2026 01:12:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB596D6AAFA
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2026 02:06:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HXK+EYLtc5lIZRh1TcUZZxAPrhwOg9uhHu8DEfjyPdA=; b=gZ803XtTjFa9QA1bxCCfR2zS7a
-	pcdMqoOhyhf3wx9lrNDbFQrlx7ljWex6lXUgqGbWFl35lFQ4fid091Km5iLPvnJHRcZhkTrgRwL/f
-	Mx3zvt2mt0sNwwU8AvQiKJQgG+7XE+xoobaE90Q0phMoNwkEELz6YQGwZ1Kolb/43b2B4gSgzDzCO
-	ToexMx2Ro8c2WLQSjK0ppTfFB5ZFMqFTjlKGbI8d3DLVPnY8uzxMhB5Ba0B8Ugr9lnzUM6A7OJb5u
-	s2GZU/3n+ws69Uw5k+cOBLPN6/+QyvSnI74w9RO8xyxIU9XXcPJhhb0aKgvT06UHpkXTxqxcQDXeU
-	r7+1MGjQ==;
+	bh=JuU4KWiApf0ZUp6VJ9psnuq1pPNAcv7FH3S1uYvgc+M=; b=F1ydSXRJaik8Y3INFQ5aJdkto7
+	vbtUBZUQ5gaCJ5tUTPO8swtjcu5fK+pnsGd5rnCjqfCTPc5DV08LbBZvolzVOfOmKAVO1wj4Orf7K
+	fvU/+EnUSaraJQjbVer7+9O8UJYpUzYa6DHwuLcmeDtevIGLme5zNOf1SwohS5zcpvoKxUffjNx/F
+	ybc1UZZUeLJSSZhGb9BVDobn4dKGjTXf/cp03ZOpbT6HHLe6zDmUqdkenCmRY3ZBmJm/eEFV2vs5n
+	FbyMf7MGJFitHjaWp2SchRXtx7FCAOR11/R5UPlkACvvTdUm2lRkEr9UCDWZeejEmjneHr3gldfRc
+	/gOPXP6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8T5L-000000011K1-3wC5;
-	Fri, 03 Apr 2026 01:12:31 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1w8Tve-000000015LC-15sx;
+	Fri, 03 Apr 2026 02:06:34 +0000
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8T5K-000000011Jg-09Nf;
-	Fri, 03 Apr 2026 01:12:30 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2FF5860008;
-	Fri,  3 Apr 2026 01:12:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 47078C116C6;
-	Fri,  3 Apr 2026 01:12:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1775178748;
-	bh=tgVI8ESKBIFQCUY2ygL+jTE2pS6yd4+CeEVqpP8vaCo=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=EaDajJnGxhQ4kknRlCCMgeRdDdq0D7TlMeA2iX8kgkAHlFGApqHHu+Dsx2FspoDK+
-	 ibZnS8scvcaS4lrBtKFhQZ31Ga66SP2W83uYilpFkWQBSBhdsdU2B4fT8ej21N109c
-	 QeueZ6UCRNzA4scfsdplZlLsOC9X2n4KN5LlaPmgRIdZgyn1JyOay7khaYkxasee6P
-	 lbIKeLxzyKvLyloqyVppv5SuSJijvKh4HVknoPugbLfnswTPDj0R3dsZYcf98uxvdY
-	 jCAbu5VEu/hoFZF7i7y2NE77+QQ2TM1em3yglIqeIAQbmPsu6NpGditOY6sSp78GIh
-	 TxCS7T4iYAMQA==
-From: Jakub Kicinski <kuba@kernel.org>
-To: lorenzo@kernel.org
-Cc: Jakub Kicinski <kuba@kernel.org>,
-	andrew+netdev@lunn.ch,
-	davem@davemloft.net,
-	edumazet@google.com,
-	pabeni@redhat.com,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	ansuelsmth@gmail.com,
-	benjamin.larsson@genexis.eu,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	netdev@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH net-next v2 09/11] net: airoha: Support multiple net_devices for a single FE GDM port
-Date: Thu,  2 Apr 2026 18:12:08 -0700
-Message-ID: <20260403011208.1784815-1-kuba@kernel.org>
+	id 1w8Tvb-000000015Ke-3ZIH;
+	Fri, 03 Apr 2026 02:06:33 +0000
+Received: from pps.filterd (m0333520.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6330GC2Z1380163;
+	Fri, 3 Apr 2026 02:05:43 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=
+	corp-2025-04-25; bh=JuU4KWiApf0ZUp6VJ9psnuq1pPNAcv7FH3S1uYvgc+M=; b=
+	Qt+9uZ1u/LHo+bGtDpN2v9Zed05JNtsSBBB4ocolh0+Hcx/687h8RJkoVDR6XWwX
+	7PxIeDQwZcCajaStb2ljMKnHhg2T2UZEHisLgsTB8kzx892bx2hjTBVbofEQt2Qh
+	GHjPKwtJW12eCl5IeGwfr4vrGzUX2lMrTSJq6JQyfXs5IR+Z6RHl+/O8gSlfQKOU
+	sk/KVypXcEKQOewPSELXyvRXdw1SozqpbtAwhE6mi+uesCIBoF19iZneL/UJpmC1
+	q3f9mqKyJscv4fKScHnsKiXNxHYRAksDgxgI29yEO7OLaPbm6Xa4KXYBO/OZwv9A
+	rIUmFix3T6ug3/SHFFoaaA==
+Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta03.appoci.oracle.com [138.1.37.129])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4d671b1gvq-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 03 Apr 2026 02:05:42 +0000 (GMT)
+Received: from pps.filterd (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+	by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 6331Kig9028961;
+	Fri, 3 Apr 2026 02:05:42 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 4d65eddp4r-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 03 Apr 2026 02:05:41 +0000
+Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 63325cqb017364;
+	Fri, 3 Apr 2026 02:05:41 GMT
+Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
+	by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id 4d65eddp33-3;
+	Fri, 03 Apr 2026 02:05:41 +0000
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+To: avri.altman@wdc.com, bvanassche@acm.org, beanhuo@micron.com,
+        peter.wang@mediatek.com, mani@kernel.org,
+        Can Guo <can.guo@oss.qualcomm.com>
+Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
+        linux-scsi@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v5 00/12] scsi: ufs: Add TX Equalization support for UFS 5.0
+Date: Thu,  2 Apr 2026 22:05:26 -0400
+Message-ID: <177517593459.3522679.17128283878850153356.b4-ty@oracle.com>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260401-airoha-eth-multi-serdes-v2-9-ac427ae4beeb@kernel.org>
-References: <20260401-airoha-eth-multi-serdes-v2-9-ac427ae4beeb@kernel.org>
+In-Reply-To: <20260325152154.1604082-1-can.guo@oss.qualcomm.com>
+References: <20260325152154.1604082-1-can.guo@oss.qualcomm.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-04-02_04,2026-04-02_05,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0 bulkscore=0 spamscore=0
+ malwarescore=0 mlxlogscore=999 phishscore=0 suspectscore=0 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2603050001
+ definitions=main-2604030017
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDAzMDAxNyBTYWx0ZWRfX1LBiQhOsYASj
+ d3H2snTfATbPOEWZg2HG1tt7/4T05EXo6LV9feS5OwUWTg9/TPUFuBZwMOd4Mo2K0RiRPDDxkqP
+ 8CVDlhXM4D4w+Cenl0eGd7Fly88H4BubUJyn/NL2+LCyPi9qgNO6Z5QylQcfp//xeCvqvmGTFuC
+ 4ed74nuW9ruFeUQoEZ1C696AmvDcf9Wcj7a2feizDRouxswMEU4mKU9MMqyhAAHcrZKsvd9d0zP
+ zDOEC0kknYdUFcuxqVHXejyJ0FM7Blp79ONYlwPS33o/B/8yyC6Tym11GoS7uwXfBImVWwZiR3K
+ eee13D0Ypm0e7zVrvudZuoOepSxSLGYcgJDwMwSa4FAmJLb3qumlAXYF/MiVQ4D1wuwEyvz2Uoa
+ ozEiIqkLDlrmXKZ2FFo0FiULZWxafzSvHrWhrAWAJIHXoraP9TqfqkRU5hudSrcB83FYZepIWSw
+ fQldEsdhH7i8u7HnPZw==
+X-Authority-Analysis: v=2.4 cv=PJkCOPqC c=1 sm=1 tr=0 ts=69cf2076 b=1 cx=c_pps
+ a=WeWmnZmh0fydH62SvGsd2A==:117 a=WeWmnZmh0fydH62SvGsd2A==:17
+ a=IkcTkHD0fZMA:10 a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=jiCTI4zE5U7BLdzWsZGv:22 a=BqU2WV_vvsyTyxaotp0D:22 a=VwQbUJbxAAAA:8
+ a=EuvOurwuZNnj9x5cPKIA:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-GUID: J3hC8jPB2XAMZ05DyGFme7bAbVHCETjW
+X-Proofpoint-ORIG-GUID: J3hC8jPB2XAMZ05DyGFme7bAbVHCETjW
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260402_190632_007131_F53256F3 
+X-CRM114-Status: GOOD (  13.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,197 +113,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is an AI-generated review of your patch. The human sending this
-email has considered the AI review valid, or at least plausible.
----
-Subject: net: airoha: Support multiple net_devices for a single FE GDM port
+On Wed, 25 Mar 2026 08:21:42 -0700, Can Guo wrote:
 
-This commit introduces support for multiple net_devices connected to the
-same Frame Engine (FE) GDM port via an external hardware arbiter. It
-adds logic to parse device tree child nodes and instantiate separate
-net_devices for TDM traffic from external SerDes.
+> The UFS v5.0 and UFSHCI v5.0 standards have published, introducing support
+> for HS-G6 (46.6 Gbps per lane) through the new UniPro V3.0 interconnect
+> layer and M-PHY V6.0 physical layer specifications. To achieve reliable
+> operation at these higher speeds, UniPro V3.0 introduces TX Equalization
+> and Pre-Coding mechanisms that are essential for signal integrity.
+> 
+> This patch series implements TX Equalization support in the UFS core
+> driver as specified in UFSHCI v5.0, along with the necessary vendor
+> operations and a reference implementation for Qualcomm UFS host
+> controllers.
+> 
+> [...]
 
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-> index 5e489e8593ba..0780fb8aacfb 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-[ ... ]
-> @@ -614,9 +616,8 @@ static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
->  		u32 hash, reason, msg1 = le32_to_cpu(desc->msg1);
->  		struct page *page = virt_to_head_page(e->buf);
->  		u32 desc_ctrl = le32_to_cpu(desc->ctrl);
-> -		struct airoha_gdm_port *port;
-> -		struct net_device *netdev;
-> -		int data_len, len, p;
-> +		struct airoha_gdm_dev *dev;
-> +		int data_len, len;
->  
->  		if (!(desc_ctrl & QDMA_DESC_DONE_MASK))
->  			break;
-> @@ -633,12 +634,10 @@ static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
->  		if (!len || data_len < len)
->  			goto free_frag;
->  
-> -		p = airoha_qdma_get_gdm_port(eth, desc);
-> -		if (p < 0 || !eth->ports[p])
-> +		dev = airoha_qdma_get_gdm_dev(eth, desc);
-> +		if (IS_ERR(dev))
->  			goto free_frag;
+Applied to 7.1/scsi-queue, thanks!
 
-If a scattered frame is being processed (q->skb is not NULL) and IS_ERR(dev)
-triggers the goto free_frag, the error handler frees the skb:
+[01/12] scsi: ufs: core: Introduce a new ufshcd vops negotiate_pwr_mode()
+        https://git.kernel.org/mkp/scsi/c/d3eba21c7170
+[02/12] scsi: ufs: core: Pass force_pmc to ufshcd_config_pwr_mode() as a parameter
+        https://git.kernel.org/mkp/scsi/c/c91c83671642
+[03/12] scsi: ufs: core: Add UFS_HS_G6 and UFS_HS_GEAR_MAX to enum ufs_hs_gear_tag
+        https://git.kernel.org/mkp/scsi/c/6669ab18c223
+[04/12] scsi: ufs: core: Add support for TX Equalization
+        https://git.kernel.org/mkp/scsi/c/03e5d38e2f98
+[05/12] scsi: ufs: core: Add debugfs entries for TX Equalization params
+        https://git.kernel.org/mkp/scsi/c/10c40143f369
+[06/12] scsi: ufs: core: Add helpers to pause and resume command processing
+        https://git.kernel.org/mkp/scsi/c/dc5dcac53278
+[07/12] scsi: ufs: core: Add support to retrain TX Equalization via debugfs
+        https://git.kernel.org/mkp/scsi/c/adbabdcf0db0
+[08/12] scsi: ufs: ufs-qcom: Fixup PAM-4 TX L0_L1_L2_L3 adaptation pattern length
+        https://git.kernel.org/mkp/scsi/c/53c94067efa2
+[09/12] scsi: ufs: ufs-qcom: Implement vops tx_eqtr_notify()
+        https://git.kernel.org/mkp/scsi/c/385b95893e79
+[10/12] scsi: ufs: ufs-qcom: Implement vops get_rx_fom()
+        https://git.kernel.org/mkp/scsi/c/26605db7604d
+[11/12] scsi: ufs: ufs-qcom: Implement vops apply_tx_eqtr_settings()
+        https://git.kernel.org/mkp/scsi/c/16cbdc830877
+[12/12] scsi: ufs: ufs-qcom: Enable TX Equalization
+        https://git.kernel.org/mkp/scsi/c/57b7943fd87f
 
-free_frag:
-	if (q->skb) {
-		dev_kfree_skb(q->skb);
-		q->skb = NULL;
-	} else {
-		page_pool_put_full_page(q->page_pool, page, true);
-	}
-
-Since the current fragment's page is not yet attached to q->skb, does this
-skip the else branch and permanently leak the page pool buffer?
-
-[ ... ]
-> @@ -1747,9 +1748,7 @@ static int airoha_set_gdm2_loopback(struct airoha_gdm_dev *dev)
->  	airoha_fe_clear(eth, REG_FE_VIP_PORT_EN, BIT(AIROHA_GDM2_IDX));
->  	airoha_fe_clear(eth, REG_FE_IFC_PORT_EN, BIT(AIROHA_GDM2_IDX));
->  
-> -	/* XXX: handle XSI_USB_PORT and XSI_PCE1_PORT */
-> -	nbq = port->id == AIROHA_GDM3_IDX && airoha_is_7581(eth) ? 4 : 0;
-> -	src_port = eth->soc->ops.get_src_port_id(port, nbq);
-> +	src_port = eth->soc->ops.get_src_port_id(port, dev->nbq);
->  	if (src_port < 0)
->  		return src_port;
-
-With multiple net_devices instantiated for the same physical GDM port, does
-the initialization of sibling devices overwrite shared hardware registers?
-
-For example, when airoha_set_gdm2_loopback() uses src_port to configure
-REG_FE_WAN_PORT, it explicitly clears the WAN port routing masks:
-
-	airoha_fe_rmw(eth, REG_FE_WAN_PORT,
-		      WAN1_EN_MASK | WAN1_MASK | WAN0_MASK,
-		      FIELD_PREP(WAN0_MASK, src_port));
-
-Will the last initialized device clobber the WAN routing configurations and
-hardware MAC filters for the others, causing their traffic to be dropped?
-
-[ ... ]
-> @@ -1970,7 +1969,8 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
->  	}
->  
->  	fport = airoha_get_fe_port(dev);
-> -	msg1 = FIELD_PREP(QDMA_ETH_TXMSG_FPORT_MASK, fport) |
-> +	msg1 = FIELD_PREP(QDMA_ETH_TXMSG_NBOQ_MASK, dev->nbq) |
-> +	       FIELD_PREP(QDMA_ETH_TXMSG_FPORT_MASK, fport) |
->  	       FIELD_PREP(QDMA_ETH_TXMSG_METER_MASK, 0x7f);
->  
->  	q = &qdma->q_tx[qid];
-
-When multiple net_devices share a single QDMA instance and its TX rings
-(qdma->q_tx), a TX queue stall might occur here.
-
-If the shared hardware ring fills up, netif_tx_stop_queue() stops the
-transmitting device's queue. Later, when descriptors are freed, the driver
-only wakes the queue corresponding to the specific packet that just completed.
-
-If multiple devices' TX queues are stopped, will the other devices' queues
-remain stalled unless their specific packets happen to be processed?
-
-[ ... ]
-> @@ -2897,10 +2900,11 @@ bool airoha_is_valid_gdm_dev(struct airoha_eth *eth,
->  
->  static int airoha_alloc_gdm_device(struct airoha_eth *eth,
->  				   struct airoha_gdm_port *port,
-> -				   struct device_node *np)
-> +				   int nbq, struct device_node *np)
->  {
-> -	struct airoha_gdm_dev *dev;
->  	struct net_device *netdev;
-> +	struct airoha_gdm_dev *dev;
-> +	u8 index;
->  	int err;
-[ ... ]
-> +	/* Allowed nbq for EN7581 on GDM3 port are 4 and 5 for PCIE0
-> +	 * and PCIE1 respectively.
-> +	 */
-> +	index = nbq;
-> +	if (airoha_is_7581(eth) && port->id == AIROHA_GDM3_IDX)
-> +		index -= 4;
-> +
-> +	if (index >= ARRAY_SIZE(port->devs) || port->devs[index]) {
-> +		dev_err(eth->dev, "invalid nbq id: %d\n", nbq);
-> +		return -EINVAL;
-> +	}
-
-There are two potential issues regarding the new index logic:
-
-First, does this break probing for older device trees without child nodes?
-When falling back to airoha_alloc_gdm_device(..., 0, np) with nbq = 0,
-the index -= 4 operation for AIROHA_GDM3_IDX will cause the u8 index to
-underflow to 252. The bounds check 252 >= 2 fails, returning -EINVAL.
-
-Second, can an invalid device tree value bypass the bounds check?
-The int nbq parameter is directly assigned to the u8 index. If a large value
-like reg = <256> is provided, it truncates to 0, passing the index >= 2
-check. The un-truncated int nbq is then stored in dev->nbq, potentially
-causing out-of-bounds shifts when used in hardware macros.
-
-[ ... ]
-> @@ -2986,7 +3004,36 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
->  	if (err)
->  		return err;
->  
-> -	return airoha_alloc_gdm_device(eth, port, np);
-> +	for_each_child_of_node(np, node) {
-> +		/* Multiple external serdes connected to the FE GDM port via an
-> +		 * external arbiter.
-> +		 */
-> +		const __be32 *nbq_ptr;
-> +
-> +		if (!of_device_is_compatible(node, "airoha,eth-port"))
-> +			continue;
-> +
-> +		d++;
-> +		if (!of_device_is_available(node))
-> +			continue;
-> +
-> +		nbq_ptr = of_get_property(node, "reg", NULL);
-> +		if (!nbq_ptr) {
-> +			dev_err(eth->dev, "missing nbq id\n");
-> +			err = -EINVAL;
-> +			of_node_put(node);
-> +			break;
-> +		}
-> +
-> +		err = airoha_alloc_gdm_device(eth, port, be32_to_cpup(nbq_ptr),
-> +					      node);
-> +		if (err) {
-> +			of_node_put(node);
-> +			return err;
-> +		}
-> +	}
-> +
-> +	return !d ? airoha_alloc_gdm_device(eth, port, 0, np) : 0;
->  }
-
-If nbq_ptr is missing, err = -EINVAL is set and the loop breaks. However,
-since the child counter d was already incremented, the final statement
-evaluates to 0 (success) because !d is false.
-
-Does this swallow the -EINVAL error and cause a silent failure where the
-driver continues probing without initializing the misconfigured GDM devices?
-
-Additionally, the for_each_child_of_node() iterator automatically handles
-taking and dropping the reference to node.
-
-When node is passed to airoha_alloc_gdm_device(), it is directly assigned:
-netdev->dev.of_node = np;
-
-Since of_node_get() is not called, when the loop iteration finishes and drops
-the reference, does this leave the net_device pointing to a freed device
-tree node?
 -- 
-pw-bot: cr
+Martin K. Petersen
 
