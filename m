@@ -4,62 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2DC8E7E365
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2026 10:18:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 085DCE7E375
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2026 12:00:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bOTd3srgk4rrP4E6kQiY1BMbpnm51l6xf4nHD01pQ5g=; b=3TQIm1hCyoxYNqNP8avCMVOfd8
-	tXTsY5U8joEW1NCr3L5gy7S8kxPd/QCAl+aQ+Gf1fRruh//YfHZwfBr02+dgL4Hi6zPJ0HxoTACyT
-	mvlv88TeVi5c7VIZro4w2NZ5L+fsxxS9j5zzjIARq/dByUhp8QRMIEsVwoR/5mi/AQZk1cbHEYPol
-	7i9fZCwkZOh/kiS9a4/+jN570yMvXp13CKtKz9kL9GOdOECv/MM0iocsnhoG9lABkTWyBGuKUt1ND
-	XOCMEdr48LmNCua65Iw3iCRRBhSGJedXtsAcBf2x53/OS5ELlKW8tkI8n9F3Dax4hxFh+MFqtqQhC
-	GFKfcBhg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=KyOUdk8sUD/sDmy7Wqz7ebaRL1KwJyE3BposHwuZhfY=; b=DMemFZ464+HITVx8s56A9e79A8
+	bklPPu3vAKhhnbNN+YdxkUDO1eXWExTw4TFECnLpTi+Gy9OmWginReDbzqTJOj1nEvJI4+u/EUnQR
+	0ExVRLjqeAnNdYkhjtpFbtDMrzr8cbEG06qB5ryIaqCRgnTSovWJbHvddzsxE69mdyMe2feZCANBb
+	2fcv+Tn/bQZeZSQ98jdluFTq6Oe5vQC5a4D1SQv8lV/YXVUKSFvLgNXZ8PRNDCNvTECWaD+DYA/Iu
+	opQTin1Nroj5QAXzj7zjLgEJIylyjWNmXNQALENpeSuqKzwZdsxm4fewInnqmsXxRQRgsXOg9CtlV
+	koGFebOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8bbs-00000001sU6-2ueH;
-	Fri, 03 Apr 2026 10:18:40 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1w8dCW-00000001zKP-3RM4;
+	Fri, 03 Apr 2026 12:00:36 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8bbr-00000001sTX-2Mwi;
-	Fri, 03 Apr 2026 10:18:39 +0000
+	id 1w8dCV-00000001zJz-1kRA;
+	Fri, 03 Apr 2026 12:00:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id AD20660121;
-	Fri,  3 Apr 2026 10:18:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E6909C19423;
-	Fri,  3 Apr 2026 10:18:37 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id BF93A60127;
+	Fri,  3 Apr 2026 12:00:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 6DD93C4CEF7;
+	Fri,  3 Apr 2026 12:00:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1775211518;
-	bh=88tMHoUUWmi1PJoD+n4oQI0lN0JAMMrQTdtZ93Vgmsg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=uuWoeCS7h902ubwxZePg8q5liA2YqnbSs0vmMCtIEJa4iZ9g6uh5qAe78HA66zVSo
-	 zcHGAYJQl1TKeG2vOqOBI/egUoFcJMv4IpEvwF5795bTFnIvVeOOb1keeWbY8SBlVH
-	 kePPWevvdj/vORgWSlfo4lqMVwxLX1LyBbbSrGWPiRG6qFZPcbWHMkxaOerkmd6jVH
-	 acN0LgbwBO98ypTpPGIa/echLsWZ83d3mu1rsQFv1xqLifJTr/LOFX2DSZKBnb27z7
-	 vuAfuPCKz1/CjrIelV9L4h4t7DiAlx9sNq3qdVaJlbtypRwc8vjWN5Jf+TYXal7OKL
-	 pDnJhVBUYxFaQ==
-Date: Fri, 3 Apr 2026 12:18:35 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
-	pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, ansuelsmth@gmail.com,
-	benjamin.larsson@genexis.eu, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH net-next v2 10/11] net: airoha: Do not stop GDM port if
- it is shared
-Message-ID: <ac-T-4gbX9Fmhbtb@lore-desk>
-References: <20260401-airoha-eth-multi-serdes-v2-10-ac427ae4beeb@kernel.org>
- <20260403011229.1785808-1-kuba@kernel.org>
+	s=k20201202; t=1775217634;
+	bh=UUaHSx9UwNftr+A/xRgyf4A3CKUAZeQm+LUEO0i9hr8=;
+	h=From:Date:Subject:To:Cc:Reply-To:From;
+	b=FTnDNmYEHuGlu/IzqKTLBW41dHDfKgeA4f62JAXgZ9gLiltvGY5sm1HKr/4wkJORE
+	 W7K2wgFEz4Z2tKeYIHDF+N5hcNzU+jNy2d6bsXMznIk4mDeAnmpJfjS7/BTa4hqbvE
+	 zxc0pKV3iwX/5XQmG9O30zVHKG6bCXErpDl0U5Knd7dYVIjtK9eD5Ltk31M3RSoNJL
+	 ERx3egS5xpiHXKoalrlH9BQ+Pz+x2OQ6POs3gOwCx1+TNhWQz5kwK8sY9fVEghI4fm
+	 7e9NzDDdxg1wWHp2wTSsQZcaj4XzhgSk+hc3eKOaHe6Cu7974VbEeT7TdyWViYYhG2
+	 StysP9EdZfSoA==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5D4F6E7E36C;
+	Fri,  3 Apr 2026 12:00:34 +0000 (UTC)
+From: Shivam Kalra via B4 Relay <devnull+shivamkalra98.zohomail.in@kernel.org>
+Date: Fri, 03 Apr 2026 17:30:26 +0530
+Subject: [PATCH] drm/mediatek: mtk_dpi: Open-code drm_simple_encoder_init()
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="8drteVwn+iFzTVzY"
-Content-Disposition: inline
-In-Reply-To: <20260403011229.1785808-1-kuba@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260403-drm-mediatek-opencode-encoder-init-v1-1-7be86241b876@zohomail.in>
+X-B4-Tracking: v=1; b=H4sIANmrz2kC/yXNwQrCMBCE4Vcpe3YhNiEHX0U81GSiqzQpmyhC6
+ bsb7Wn4Lv+sVKGCSqdhJcVbqpTccTwMFO5TvoEldtNoRm+csRx15hlRpoYnlwU5lAjeR1myNLb
+ eWg8XXEqWemhRJPn8T86X3fV1fSC0X5m27Qu6nSeShgAAAA==
+X-Change-ID: 20260403-drm-mediatek-opencode-encoder-init-36336e4c4ff3
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Thomas Zimmermann <tzimmermann@suse.de>, 
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ Shivam Kalra <shivamkalra98@zohomail.in>
+X-Mailer: b4 0.15.1
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1775217629; l=2101;
+ i=shivamkalra98@zohomail.in; s=20260402; h=from:subject:message-id;
+ bh=9DjXSfOgfUU5yg/kiJD0QlllCcJ+4tIybh7zqyvb0Gs=;
+ b=CrHLxQL+7xEDYiixoSol8OG9gkFNY9o81VC5AbB67EE257gn+LlkpL+BZzcJKQZPavGvGk+Bf
+ t59unbL8axaCODm0YSBCBgdyugg5VYLhB8fx3mf9gsqeuXShXgfhmcW
+X-Developer-Key: i=shivamkalra98@zohomail.in; a=ed25519;
+ pk=U8kQSxcte8P8iZ6zB7phIj+Yl+i/5ntifBGuclgypx8=
+X-Endpoint-Received: by B4 Relay for shivamkalra98@zohomail.in/20260402
+ with auth_id=716
+X-Original-From: Shivam Kalra <shivamkalra98@zohomail.in>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,117 +85,71 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: shivamkalra98@zohomail.in
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Shivam Kalra <shivamkalra98@zohomail.in>
 
---8drteVwn+iFzTVzY
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+The helper drm_simple_encoder_init() is a trivial wrapper around
+drm_encoder_init() that only provides a static drm_encoder_funcs with
+.destroy set to drm_encoder_cleanup(). Open-code the initialization
+with a driver-specific instance of drm_encoder_funcs and remove the
+dependency on drm_simple_kms_helper.
 
-> This is an AI-generated review of your patch. The human sending this
-> email has considered the AI review valid, or at least plausible.
-> ---
-> net: airoha: Do not stop GDM port if it is shared
->=20
-> This patch introduces a port->users reference counter to prevent setting
-> the GDM port forward configuration to FE_PSE_PORT_DROP if another net_dev=
-ice
-> is still using the shared GDM port.
->=20
-> > diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/eth=
-ernet/airoha/airoha_eth.c
-> > index 0780fb8aacfb..3f9bce8c5370 100644
-> > --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> > +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> [ ... ]
-> > @@ -1681,9 +1682,6 @@ static int airoha_dev_stop(struct net_device *net=
-dev)
-> >  	for (i =3D 0; i < ARRAY_SIZE(qdma->q_tx); i++)
-> >  		netdev_tx_reset_subqueue(netdev, i);
-> > =20
-> > -	airoha_set_gdm_port_fwd_cfg(qdma->eth, REG_GDM_FWD_CFG(port->id),
-> > -				    FE_PSE_PORT_DROP);
-> > -
-> >  	if (atomic_dec_and_test(&qdma->users)) {
-> >  		airoha_qdma_clear(qdma, REG_QDMA_GLOBAL_CFG,
-> >  				  GLOBAL_CFG_TX_DMA_EN_MASK |
->=20
-> While this patch aims to support shared GDM ports, does the remaining
-> unconditional call to airoha_set_vip_for_gdm_port(dev, false) at the start
-> of airoha_dev_stop() break other active devices sharing the port?
->=20
-> static int airoha_dev_stop(struct net_device *netdev)
-> {
->         ...
->         err =3D airoha_set_vip_for_gdm_port(dev, false);
->         ...
-> }
->=20
-> This appears to clear the REG_FE_VIP_PORT_EN and REG_FE_IFC_PORT_EN hardw=
-are
-> bits for the physical port, which might instantly kill traffic for any ot=
-her
-> active interface using the shared port.
->=20
-> Similarly, in airoha_dev_open() and airoha_dev_change_mtu(), the
-> REG_GDM_LEN_CFG (MTU) is overwritten unconditionally. If a device with a
-> smaller MTU is brought up, will it overwrite the shared port's MTU limit
-> and cause the hardware to silently drop larger packets for the other devi=
-ce?
+Suggested-by: Thomas Zimmermann <tzimmermann@suse.de>
+Signed-off-by: Shivam Kalra <shivamkalra98@zohomail.in>
+---
+Addresses the "Open-code drm_simple_encoder_init()" task from
+Documentation/gpu/todo.rst.
+---
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
 
-ack, I will fix it in v3.
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index 53360b5d12ba..5b83ca6aecb2 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -25,8 +25,8 @@
+ #include <drm/drm_bridge_connector.h>
+ #include <drm/drm_crtc.h>
+ #include <drm/drm_edid.h>
++#include <drm/drm_encoder.h>
+ #include <drm/drm_of.h>
+-#include <drm/drm_simple_kms_helper.h>
+ 
+ #include "mtk_ddp_comp.h"
+ #include "mtk_disp_drv.h"
+@@ -993,6 +993,10 @@ static const struct drm_bridge_funcs mtk_dpi_bridge_funcs = {
+ 	.debugfs_init = mtk_dpi_debugfs_init,
+ };
+ 
++static const struct drm_encoder_funcs mtk_dpi_encoder_funcs = {
++	.destroy = drm_encoder_cleanup,
++};
++
+ void mtk_dpi_start(struct device *dev)
+ {
+ 	struct mtk_dpi *dpi = dev_get_drvdata(dev);
+@@ -1026,8 +1030,8 @@ static int mtk_dpi_bind(struct device *dev, struct device *master, void *data)
+ 	int ret;
+ 
+ 	dpi->mmsys_dev = priv->mmsys_dev;
+-	ret = drm_simple_encoder_init(drm_dev, &dpi->encoder,
+-				      DRM_MODE_ENCODER_TMDS);
++	ret = drm_encoder_init(drm_dev, &dpi->encoder, &mtk_dpi_encoder_funcs,
++			       DRM_MODE_ENCODER_TMDS, NULL);
+ 	if (ret) {
+ 		dev_err(dev, "Failed to initialize decoder: %d\n", ret);
+ 		return ret;
 
->=20
-> [ ... ]
-> > @@ -1697,6 +1695,11 @@ static int airoha_dev_stop(struct net_device *ne=
-tdev)
-> >  		}
-> >  	}
-> > =20
-> > +	if (atomic_dec_and_test(&port->users))
-> > +		airoha_set_gdm_port_fwd_cfg(qdma->eth,
-> > +					    REG_GDM_FWD_CFG(port->id),
-> > +					    FE_PSE_PORT_DROP);
-> > +
-> >  	return 0;
-> >  }
->=20
-> Does moving this FE_PSE_PORT_DROP configuration to the end of airoha_dev_=
-stop()
-> cause a race condition when stopping the device?
->=20
-> In airoha_dev_open(), the driver correctly enables the QDMA engine before
-> configuring the GDM port to forward packets. A safe teardown typically
-> mirrors this by first stopping the packet source (setting FE_PSE_PORT_DRO=
-P)
-> and then disabling the destination DMA engine.
->=20
-> By moving airoha_set_gdm_port_fwd_cfg() after the airoha_qdma_clear() blo=
-ck,
-> when both qdma->users and port->users reach zero, the QDMA engine and its
-> queues are shut down while the GDM port is still actively forwarding pack=
-ets.
->=20
-> Could incoming packets be forwarded to a disabled DMA engine during this
-> window, risking hardware lockups or buffer leaks?
+---
+base-commit: 4b9c36c83b34f710da9573291404f6a2246251c1
+change-id: 20260403-drm-mediatek-opencode-encoder-init-36336e4c4ff3
 
-ack, I will fix it in v3.
+Best regards,
+--  
+Shivam Kalra <shivamkalra98@zohomail.in>
 
-Regards,
-Lorenzo
 
---8drteVwn+iFzTVzY
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCac+T+wAKCRA6cBh0uS2t
-rBm2AQCvBVHq6iuxtRf5otgmibRNOjubyAtWc+9ULdeW0GtT6AD+M6TIdwlOOCIg
-GsdGbqFmP8JPFncb7+dbSHLUnEJBuQc=
-=qvfH
------END PGP SIGNATURE-----
-
---8drteVwn+iFzTVzY--
 
