@@ -4,35 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C040E88D80
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Apr 2026 03:45:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81E9FE88D7A
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Apr 2026 03:45:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=50C97MrmxRYizVBIsWWTqviXJxkn2i99CFFIy3ghU9c=; b=FukRPw7+mRAGx1w60T5nNemDwM
-	WcIYpKZfsJMbbO+PRfQrzMXsgDPyTqKYKXN5m+YaC8ez/ZQ4PT3disSxlLlWcCdxR2q463UgL8+nl
-	y4N8kloi7kT02cQoeGktovyde6NwsW0AXShHKxueE0g/AveIW18XOKGRKra7PntIg/Q59FZbkM48f
-	cvbeM4i64U8gIOT5JWyVmacXQdo8QM03JLFUTlxlFGD8A/Q7f0U4Q6eEf5VWc4r1XUzClhXKTzL1F
-	M03t9Gqlw2I37mgnW0TAiQd/Z52Zi6qndfMaqlz6rWXWOII8Wx4WXDWhytH/dFTR9x7BqooqzhSWN
-	DDw85kZQ==;
+	bh=O4N63e/PlWX37AwLeUFPXlesB0FFlS8Vt1dWRmsCoFI=; b=BuBQpcMB6A3CLmuqQ11n5XLk6D
+	aqoOdv/y3g9UmtycxvaIYry4Mgv+bMrvfu7xACvAk7cpOCmrbjszMB/Gt5pS3T6NMwn03K2Xz0/dm
+	R3AurUTqEgeLzuc3pu0MdcxNIICl4p2ZyzuKOS7JFl6EH2XpOCMfen3iXcrO5egMDdE6pLHVDrwVq
+	ZZTqMQfF38eeAvU1b1IB0P5BszXiFJ3RVDSIR4JAmfobn1HR4htz0OT0BAXsKmw/fHCTnQ+q/gU6+
+	PEIY7LUW27zqyCnYmSN3ymsm/YQheFFhabXIilcZm5lYe2E1mhYVRrO+bJO1jYUYqG1ONWmS4Cxeh
+	eH2h+xGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8rwo-000000035aw-1hPV;
-	Sat, 04 Apr 2026 03:45:22 +0000
-Received: from mailgw.kylinos.cn ([124.126.103.232])
+	id 1w8rx4-000000035fW-0gZR;
+	Sat, 04 Apr 2026 03:45:38 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8rwl-000000035ZM-390y
+	id 1w8rx3-000000035fD-0B50
+	for linux-mediatek@bombadil.infradead.org;
+	Sat, 04 Apr 2026 03:45:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=O4N63e/PlWX37AwLeUFPXlesB0FFlS8Vt1dWRmsCoFI=; b=f4i+M57anYuFNYYqCCYgLzZSHs
+	FRHfxLnkkCnQXw7bqJ+0mM6BBp1E27gP4NUTHOqz36QwaDx5XQCSk9ABASz607Qx+4G/WFSURPK6l
+	+SZ0soBQ4LP4TyYNvAe5md5c/hx8lq6BxxtT0zCoONJ6l/k6C51UGd6DfR/zJnTlZs16greLX77Yk
+	f4b8xW2H6VvSbk3QEJoeyvq2CA+HQz8WE/tocTsC9sgzzYlnk3gZBi9y9366XoKORbWwOglbIvJpi
+	ujOv8uBupVXjgjbFhB6MvxUUP+BGJaCqYU1ydGbDi8SY3vipIxjlE76BWjAo/o5meQ7dht/pDCa0J
+	JmYKmpGQ==;
+Received: from mailgw.kylinos.cn ([124.126.103.232])
+	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1w8rwz-0000000FQuE-0FDH
 	for linux-mediatek@lists.infradead.org;
-	Sat, 04 Apr 2026 03:45:21 +0000
-X-UUID: ab797e842fd811f1aa26b74ffac11d73-20260404
+	Sat, 04 Apr 2026 03:45:35 +0000
+X-UUID: ab33409a2fd811f1aa26b74ffac11d73-20260404
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:78b799ad-32a9-4808-9d7c-46d4bad02e3c,IP:0,U
+X-CID-O-INFO: VERSION:1.3.12,REQID:e74d3271-af13-49b7-b58a-3aa148f31397,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:e7bac3a,CLOUDID:41f9ecd829b3757b01f2fc4674a1a5f6,BulkI
+X-CID-META: VersionHash:e7bac3a,CLOUDID:3bd7b7895dbc23d3ca19204f907c1050,BulkI
 	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850|898,TC:nil,Content:0|15|50
 	,EDM:5,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
 	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -40,29 +55,30 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: ab797e842fd811f1aa26b74ffac11d73-20260404
+X-UUID: ab33409a2fd811f1aa26b74ffac11d73-20260404
 X-User: xiaopei01@kylinos.cn
 Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
 	(envelope-from <xiaopei01@kylinos.cn>)
 	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 1752595493; Sat, 04 Apr 2026 11:45:06 +0800
+	with ESMTP id 537749328; Sat, 04 Apr 2026 11:45:05 +0800
 From: Pei Xiao <xiaopei01@kylinos.cn>
 To: broonie@kernel.org,
 	gch981213@gmail.com,
 	linux-spi@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
 Cc: Pei Xiao <xiaopei01@kylinos.cn>
-Subject: [PATCH 3/4] spi: zynq-qspi: Simplify clock handling with devm_clk_get_enabled()
-Date: Sat,  4 Apr 2026 11:45:00 +0800
-Message-Id: <358f3d25bfbba9f552f287711e0fba746ca13246.1775273351.git.xiaopei01@kylinos.cn>
+Subject: [PATCH 1/4] spi: mtk-snfi: unregister ECC engine on probe failure and remove() callback
+Date: Sat,  4 Apr 2026 11:44:58 +0800
+Message-Id: <09ac1024a0f1626efaa47ceefc5cfb8ee5dd9418.1775273351.git.xiaopei01@kylinos.cn>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1775273351.git.xiaopei01@kylinos.cn>
 References: <cover.1775273351.git.xiaopei01@kylinos.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260403_204520_103039_9ED341D9 
-X-CRM114-Status: GOOD (  11.38  )
+X-CRM114-CacheID: sfid-20260404_044533_695440_B9320DC4 
+X-CRM114-Status: UNSURE (   7.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,110 +93,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Replace devm_clk_get() followed by clk_prepare_enable() with
-devm_clk_get_enabled() for both "pclk" and "ref_clk". This removes
-the need for explicit clock enable and disable calls, as the managed
-API automatically disables the clocks on device removal or probe
-failure.
+mtk_snand_probe() registers the on-host NAND ECC engine, but teardown was
+missing from both probe unwind and remove-time cleanup. Add a devm cleanup
+action after successful registration so
+nand_ecc_unregister_on_host_hw_engine() runs automatically on probe
+failures and during device removal.
 
-Remove the now-unnecessary clk_disable_unprepare() calls from the
-probe error paths and the remove callback. Simplify error handling
-by jumping directly to the remove_ctlr label.
-
+Fixes: 764f1b748164 ("spi: add driver for MTK SPI NAND Flash Interface")
 Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
 ---
- drivers/spi/spi-zynq-qspi.c | 31 ++++++-------------------------
- 1 file changed, 6 insertions(+), 25 deletions(-)
+ drivers/spi/spi-mtk-snfi.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/drivers/spi/spi-zynq-qspi.c b/drivers/spi/spi-zynq-qspi.c
-index 5232483c4a3a..8c3975030d0a 100644
---- a/drivers/spi/spi-zynq-qspi.c
-+++ b/drivers/spi/spi-zynq-qspi.c
-@@ -661,7 +661,7 @@ static int zynq_qspi_probe(struct platform_device *pdev)
- 		goto remove_ctlr;
+diff --git a/drivers/spi/spi-mtk-snfi.c b/drivers/spi/spi-mtk-snfi.c
+index 437edbd658aa..3973b5f9a9ca 100644
+--- a/drivers/spi/spi-mtk-snfi.c
++++ b/drivers/spi/spi-mtk-snfi.c
+@@ -1303,6 +1303,13 @@ static const struct spi_controller_mem_caps mtk_snand_mem_caps = {
+ 	.ecc = true,
+ };
+ 
++static void mtk_unregister_ecc_engine(void *data)
++{
++	struct nand_ecc_engine *eng = data;
++
++	nand_ecc_unregister_on_host_hw_engine(eng);
++}
++
+ static irqreturn_t mtk_snand_irq(int irq, void *id)
+ {
+ 	struct mtk_snand *snf = id;
+@@ -1443,6 +1450,13 @@ static int mtk_snand_probe(struct platform_device *pdev)
+ 		goto release_ecc;
  	}
  
--	xqspi->pclk = devm_clk_get(&pdev->dev, "pclk");
-+	xqspi->pclk = devm_clk_get_enabled(&pdev->dev, "pclk");
- 	if (IS_ERR(xqspi->pclk)) {
- 		dev_err(&pdev->dev, "pclk clock not found.\n");
- 		ret = PTR_ERR(xqspi->pclk);
-@@ -670,36 +670,24 @@ static int zynq_qspi_probe(struct platform_device *pdev)
- 
- 	init_completion(&xqspi->data_completion);
- 
--	xqspi->refclk = devm_clk_get(&pdev->dev, "ref_clk");
-+	xqspi->refclk = devm_clk_get_enabled(&pdev->dev, "ref_clk");
- 	if (IS_ERR(xqspi->refclk)) {
- 		dev_err(&pdev->dev, "ref_clk clock not found.\n");
- 		ret = PTR_ERR(xqspi->refclk);
- 		goto remove_ctlr;
- 	}
- 
--	ret = clk_prepare_enable(xqspi->pclk);
--	if (ret) {
--		dev_err(&pdev->dev, "Unable to enable APB clock.\n");
--		goto remove_ctlr;
--	}
--
--	ret = clk_prepare_enable(xqspi->refclk);
--	if (ret) {
--		dev_err(&pdev->dev, "Unable to enable device clock.\n");
--		goto clk_dis_pclk;
--	}
--
- 	xqspi->irq = platform_get_irq(pdev, 0);
- 	if (xqspi->irq < 0) {
- 		ret = xqspi->irq;
--		goto clk_dis_all;
-+		goto remove_ctlr;
- 	}
- 	ret = devm_request_irq(&pdev->dev, xqspi->irq, zynq_qspi_irq,
- 			       0, pdev->name, xqspi);
- 	if (ret != 0) {
- 		ret = -ENXIO;
- 		dev_err(&pdev->dev, "request_irq failed\n");
--		goto clk_dis_all;
-+		goto remove_ctlr;
- 	}
- 
- 	ret = of_property_read_u32(np, "num-cs",
-@@ -709,7 +697,7 @@ static int zynq_qspi_probe(struct platform_device *pdev)
- 	} else if (num_cs > ZYNQ_QSPI_MAX_NUM_CS) {
- 		ret = -EINVAL;
- 		dev_err(&pdev->dev, "only 2 chip selects are available\n");
--		goto clk_dis_all;
-+		goto remove_ctlr;
- 	} else {
- 		ctlr->num_chipselect = num_cs;
- 	}
-@@ -728,15 +716,11 @@ static int zynq_qspi_probe(struct platform_device *pdev)
- 	ret = devm_spi_register_controller(&pdev->dev, ctlr);
- 	if (ret) {
- 		dev_err(&pdev->dev, "devm_spi_register_controller failed\n");
--		goto clk_dis_all;
-+		goto remove_ctlr;
- 	}
- 
- 	return ret;
- 
--clk_dis_all:
--	clk_disable_unprepare(xqspi->refclk);
--clk_dis_pclk:
--	clk_disable_unprepare(xqspi->pclk);
- remove_ctlr:
- 	spi_controller_put(ctlr);
- 
-@@ -758,9 +742,6 @@ static void zynq_qspi_remove(struct platform_device *pdev)
- 	struct zynq_qspi *xqspi = platform_get_drvdata(pdev);
- 
- 	zynq_qspi_write(xqspi, ZYNQ_QSPI_ENABLE_OFFSET, 0);
--
--	clk_disable_unprepare(xqspi->refclk);
--	clk_disable_unprepare(xqspi->pclk);
- }
- 
- static const struct of_device_id zynq_qspi_of_match[] = {
++	ret = devm_add_action_or_reset(&pdev->dev, mtk_unregister_ecc_engine,
++				       &ms->ecc_eng);
++	if (ret) {
++		dev_err(&pdev->dev, ret, "failed to add ECC unregister action\n");
++		goto release_ecc;
++	}
++
+ 	ctlr->num_chipselect = 1;
+ 	ctlr->mem_ops = &mtk_snand_mem_ops;
+ 	ctlr->mem_caps = &mtk_snand_mem_caps;
 -- 
 2.25.1
 
