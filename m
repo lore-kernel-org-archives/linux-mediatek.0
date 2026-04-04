@@ -4,81 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81E9FE88D7A
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Apr 2026 03:45:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B2BAE88D80
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Apr 2026 11:48:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O4N63e/PlWX37AwLeUFPXlesB0FFlS8Vt1dWRmsCoFI=; b=BuBQpcMB6A3CLmuqQ11n5XLk6D
-	aqoOdv/y3g9UmtycxvaIYry4Mgv+bMrvfu7xACvAk7cpOCmrbjszMB/Gt5pS3T6NMwn03K2Xz0/dm
-	R3AurUTqEgeLzuc3pu0MdcxNIICl4p2ZyzuKOS7JFl6EH2XpOCMfen3iXcrO5egMDdE6pLHVDrwVq
-	ZZTqMQfF38eeAvU1b1IB0P5BszXiFJ3RVDSIR4JAmfobn1HR4htz0OT0BAXsKmw/fHCTnQ+q/gU6+
-	PEIY7LUW27zqyCnYmSN3ymsm/YQheFFhabXIilcZm5lYe2E1mhYVRrO+bJO1jYUYqG1ONWmS4Cxeh
-	eH2h+xGQ==;
+	Content-Type:Cc:To:From:Subject:Message-ID:References:Mime-Version:
+	In-Reply-To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0G1qQkwBhPOCSaPNNZcA5R2UExCpSWly+t1LnZq/nHI=; b=kZrrIJEmn/lIzycE/nr98TzhTH
+	cnFzcA+WF40fIUJxQ766Z9pCQie/KVOTgyRDP+ccPb4yPlzMqP8+TQtONTohABdOtLR2UXEyqwFwo
+	UVba3nXeKjSHBdzSU8qYtYNBYnun1kEiUc+O72WgUIfIM790LUekAeMcBIgcTp3D4E5qsOJxdX6yt
+	RJ24uCc3Co/VDYlQpSbrAS7C9FAouJkRdt0FwGlGLeetxjmEj5rZi/NKjIdT4mbc7iAqzVcgX/QsM
+	IGsh+mmxik89TmeIjNjTixpBO43dMMdkX7an5io23Gr4tAqDhTTqBao2Pomj3rC2oySpTbyP7GQtu
+	LBBiP5cA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8rx4-000000035fW-0gZR;
-	Sat, 04 Apr 2026 03:45:38 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1w8zTq-00000003QsN-25d9;
+	Sat, 04 Apr 2026 11:47:58 +0000
+Received: from mail-pl1-x649.google.com ([2607:f8b0:4864:20::649])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8rx3-000000035fD-0B50
-	for linux-mediatek@bombadil.infradead.org;
-	Sat, 04 Apr 2026 03:45:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=O4N63e/PlWX37AwLeUFPXlesB0FFlS8Vt1dWRmsCoFI=; b=f4i+M57anYuFNYYqCCYgLzZSHs
-	FRHfxLnkkCnQXw7bqJ+0mM6BBp1E27gP4NUTHOqz36QwaDx5XQCSk9ABASz607Qx+4G/WFSURPK6l
-	+SZ0soBQ4LP4TyYNvAe5md5c/hx8lq6BxxtT0zCoONJ6l/k6C51UGd6DfR/zJnTlZs16greLX77Yk
-	f4b8xW2H6VvSbk3QEJoeyvq2CA+HQz8WE/tocTsC9sgzzYlnk3gZBi9y9366XoKORbWwOglbIvJpi
-	ujOv8uBupVXjgjbFhB6MvxUUP+BGJaCqYU1ydGbDi8SY3vipIxjlE76BWjAo/o5meQ7dht/pDCa0J
-	JmYKmpGQ==;
-Received: from mailgw.kylinos.cn ([124.126.103.232])
-	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8rwz-0000000FQuE-0FDH
+	id 1w8zTn-00000003Qri-2uQb
 	for linux-mediatek@lists.infradead.org;
-	Sat, 04 Apr 2026 03:45:35 +0000
-X-UUID: ab33409a2fd811f1aa26b74ffac11d73-20260404
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:e74d3271-af13-49b7-b58a-3aa148f31397,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:e7bac3a,CLOUDID:3bd7b7895dbc23d3ca19204f907c1050,BulkI
-	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850|898,TC:nil,Content:0|15|50
-	,EDM:5,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
-	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: ab33409a2fd811f1aa26b74ffac11d73-20260404
-X-User: xiaopei01@kylinos.cn
-Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
-	(envelope-from <xiaopei01@kylinos.cn>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 537749328; Sat, 04 Apr 2026 11:45:05 +0800
-From: Pei Xiao <xiaopei01@kylinos.cn>
-To: broonie@kernel.org,
-	gch981213@gmail.com,
-	linux-spi@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Cc: Pei Xiao <xiaopei01@kylinos.cn>
-Subject: [PATCH 1/4] spi: mtk-snfi: unregister ECC engine on probe failure and remove() callback
-Date: Sat,  4 Apr 2026 11:44:58 +0800
-Message-Id: <09ac1024a0f1626efaa47ceefc5cfb8ee5dd9418.1775273351.git.xiaopei01@kylinos.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1775273351.git.xiaopei01@kylinos.cn>
-References: <cover.1775273351.git.xiaopei01@kylinos.cn>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+	Sat, 04 Apr 2026 11:47:56 +0000
+Received: by mail-pl1-x649.google.com with SMTP id d9443c01a7336-2b2497cc190so23946415ad.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 04 Apr 2026 04:47:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20251104; t=1775303274; x=1775908074; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:from:subject:message-id:references
+         :mime-version:in-reply-to:date:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=0G1qQkwBhPOCSaPNNZcA5R2UExCpSWly+t1LnZq/nHI=;
+        b=Y2enxEnaUeBEdLqeMCqQU2e+w5uIa/6fK4vU+AylPbecMzugHncNsHglNnp7ccEkru
+         23Q1e33F8st+XG4KmUsoI2gAmDAzeA6+2Ms61e5Ga0dJ+20mm6I2EQbg3a3a4J0oOSzc
+         TLfk2nREdWzm07dnUjYzhONCedt6xQG9VRi07B8NIf2rI03yPcvN173wepffURKoGbtm
+         IQIor0qJbQqP0CP50dpKrIwPjIgMpeCpHk+6SR4ULhCdJfM7oFR45FuAPECWUIO6S6tx
+         JoIgxAw9FZfSwziYs7wFzCijHgT+OWRdaSjd9x2Kf5ljpvr2Xumt1S6SKyztjdPBqWbP
+         IVVQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1775303274; x=1775908074;
+        h=content-transfer-encoding:cc:to:from:subject:message-id:references
+         :mime-version:in-reply-to:date:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=0G1qQkwBhPOCSaPNNZcA5R2UExCpSWly+t1LnZq/nHI=;
+        b=iLgv+MJNcpVR4jU/60eOD+uuvJK3niG0zWYo8pmxhQW0zNU3gngtwoUon17UZ8ZdwP
+         zbGov4A1PHE37OsAc7Ztpw6tManlJ2D3Iq3CIYXYWi9LmacWLigkKH3RHz9aKSQ3mDNs
+         xvTJPORMjVSFhuSMxQT+9l9s5aQC5bZY7vQT8CXjsPoLlQSPwX7q0hHLHTa5y7YghiXa
+         lYZLckrRiQHwhujX99AnNPnv3SGUQ2vnPJeOx5HMDVXFZUUwwoby3eYs7gYOZzpsdlty
+         bNi+1Yr7or/DGEwEg4HJ2y/TQyBDGrnmuVv3LClRIXoViebo25r1RM1+dou3E56sBCoc
+         fBmA==
+X-Forwarded-Encrypted: i=1; AJvYcCXL9B3Nlubzn8MB8MeeZWynsm0AUT3BUE4VzNVNcOpvsfjXIIeGXLf8pE0F1Dg5G7UCgTUgm6v408NqVUex7w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyY61YOJHoujAQe4lLm6stYYCSoaxxby68/hV35NU7sF1f8zW4s
+	/Z57X64sICLlSe0ALZcHcKXtf/E7cz0YpSkAAdn/m+QXdM79f5RW4q4eNl4ArWszRbUIoJRZID4
+	jZaiuxQOdWN0hDg6dYy4Dq9fGqQ==
+X-Received: from plbjz3.prod.google.com ([2002:a17:903:4303:b0:2b0:6207:5fd3])
+ (user=joonwonkang job=prod-delivery.src-stubby-dispatcher) by
+ 2002:a17:903:2ec8:b0:2b0:aebe:259 with SMTP id d9443c01a7336-2b2821a7fbemr58943675ad.19.1775303273972;
+ Sat, 04 Apr 2026 04:47:53 -0700 (PDT)
+Date: Sat,  4 Apr 2026 11:47:51 +0000
+In-Reply-To: <CABb+yY23aTXeXu6G-8sHjw32DCqmhsJLu2Mt-txenOgTBiyv+A@mail.gmail.com>
+Mime-Version: 1.0
+References: <CABb+yY23aTXeXu6G-8sHjw32DCqmhsJLu2Mt-txenOgTBiyv+A@mail.gmail.com>
+X-Mailer: git-send-email 2.53.0.1213.gd9a14994de-goog
+Message-ID: <20260404114752.3052748-1-joonwonkang@google.com>
+Subject: Re: [PATCH v3 2/2] mailbox: Make mbox_send_message() return error
+ code when tx fails
+From: Joonwon Kang <joonwonkang@google.com>
+To: jassisinghbrar@gmail.com
+Cc: akpm@linux-foundation.org, angelogioacchino.delregno@collabora.com, 
+	jonathanh@nvidia.com, joonwonkang@google.com, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, 
+	matthias.bgg@gmail.com, stable@vger.kernel.org, thierry.reding@gmail.com, 
+	lee@kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260404_044533_695440_B9320DC4 
-X-CRM114-Status: UNSURE (   7.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260404_044755_742993_677ADBC7 
+X-CRM114-Status: GOOD (  42.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,51 +96,141 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mtk_snand_probe() registers the on-host NAND ECC engine, but teardown was
-missing from both probe unwind and remove-time cleanup. Add a devm cleanup
-action after successful registration so
-nand_ecc_unregister_on_host_hw_engine() runs automatically on probe
-failures and during device removal.
+> On Fri, Apr 3, 2026 at 10:19=E2=80=AFAM Joonwon Kang <joonwonkang@google.=
+com> wrote:
+> >
+> > > On Thu, Apr 2, 2026 at 12:07=E2=80=AFPM Joonwon Kang <joonwonkang@goo=
+gle.com> wrote:
+> > > >
+> > > > When the mailbox controller failed transmitting message, the error =
+code
+> > > > was only passed to the client's tx done handler and not to
+> > > > mbox_send_message(). For this reason, the function could return a f=
+alse
+> > > > success. This commit resolves the issue by introducing the tx statu=
+s and
+> > > > checking it before mbox_send_message() returns.
+> > > >
+> > > Can you please share the scenario when this becomes necessary? This
+> > > can potentially change the ground underneath some clients, so we have
+> > > to be sure this is really useful.
+> >
+> > I would say the problem here is generic enough to apply to all the case=
+s where
+> > the send result needs to be checked. Since the return value of the send=
+ API is
+> > not the real send result, any users who believe that this blocking send=
+ API
+> > will return the real send result could fall for that. For example, user=
+s may
+> > think the send was successful even though it was not actually. I believ=
+e it is
+> > uncommon that users have to register a callback solely to get the send =
+result
+> > even though they are using the blocking send API already. Also, I guess=
+ there
+> > is no special reason why only the mailbox send API should work this way=
+ among
+> > other typical blocking send APIs. For these reasons, this patch makes t=
+he send
+> > API return the real send result. This way, users will not need to regis=
+ter the
+> > redundant callback and I think the return value will align with their c=
+ommon
+> > expectation.
+> >
+> Clients submit a message into the Mailbox subsystem to be sent out to
+> the remote side which can happen immediately or later.
+> If submission fails, clients get immediately notified. If transmission
+> fails (which is now internal to the subsystem) it is reported to the
+> client by a callback.
+> If the API was called mbox_submit_message (which it actually is)
+> instead of mbox_send_message, there would be no confusion.
+> We can argue how good/bad the current implementation is, but the fact
+> is that it is here. And I am reluctant to cause churn without good
+> reason.
+> Again, as I said, any, _legal_, setup scenario will help me come over
+> my reluctance.
 
-Fixes: 764f1b748164 ("spi: add driver for MTK SPI NAND Flash Interface")
-Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
----
- drivers/spi/spi-mtk-snfi.c | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+mbox_send_message() in blocking mode is not only for submitting the message=
+ in
+the first place if we read through the API docs.
 
-diff --git a/drivers/spi/spi-mtk-snfi.c b/drivers/spi/spi-mtk-snfi.c
-index 437edbd658aa..3973b5f9a9ca 100644
---- a/drivers/spi/spi-mtk-snfi.c
-+++ b/drivers/spi/spi-mtk-snfi.c
-@@ -1303,6 +1303,13 @@ static const struct spi_controller_mem_caps mtk_snand_mem_caps = {
- 	.ecc = true,
- };
- 
-+static void mtk_unregister_ecc_engine(void *data)
-+{
-+	struct nand_ecc_engine *eng = data;
-+
-+	nand_ecc_unregister_on_host_hw_engine(eng);
-+}
-+
- static irqreturn_t mtk_snand_irq(int irq, void *id)
- {
- 	struct mtk_snand *snf = id;
-@@ -1443,6 +1450,13 @@ static int mtk_snand_probe(struct platform_device *pdev)
- 		goto release_ecc;
- 	}
- 
-+	ret = devm_add_action_or_reset(&pdev->dev, mtk_unregister_ecc_engine,
-+				       &ms->ecc_eng);
-+	if (ret) {
-+		dev_err(&pdev->dev, ret, "failed to add ECC unregister action\n");
-+		goto release_ecc;
-+	}
-+
- 	ctlr->num_chipselect = 1;
- 	ctlr->mem_ops = &mtk_snand_mem_ops;
- 	ctlr->mem_caps = &mtk_snand_mem_caps;
--- 
-2.25.1
+From the API doc for `mbox_send_message()`:
+```
+ * If the client had set 'tx_block', the call will return
+ * either when the remote receives the data or when 'tx_tout' millisecs
+ * run out.
+```
 
+From the API doc for `struct mbox_client`:
+```
+ * @tx_block:		If the mbox_send_message should block until data is
+ *			transmitted.
+```
+
+With the docs, I think it is apparent that the API covers "transmission" of=
+ the
+message, not only submission of it. If sumbitting is the sole purpose of th=
+e
+API, what does the API block for in the first place? We would not need the
+blocking mode at all then.
+
+The current return value of the API in failure cases is as follows:
+
+ - When submission fails, returns failure.
+ - When submission succeeds but timeout occurs during transmission, return
+   failure, i.e. -ETIME.
+ - When submission succeeds but transmission fails without timeout, return
+   success.
+
+The third case looks problematic. This patch is focusing on this. There is =
+also
+disparity to handle the failure between timeout(the second case) and
+non-timeout(the third case). Why does it not return failure when non-timeou=
+t
+error occurs during transmission whereas it does when timeout occurs during
+transmission? If the API is solely for submission, why does it return failu=
+re
+instead of success in the second case?
+
+In the third case, the controller(or the client) will inform the mailbox co=
+re
+of the transmission failure. Then, why not return that failure as a return
+value of the API despite having this information in the core?
+
+An alternative to fixing this issue would be adding the API doc by saying l=
+ike:
+
+ - In blocking mode, the send API will return -ETIME when timeout occurs du=
+ring
+   transmission, but it will not return failure but success(since submissio=
+n
+   itself was successful before transmission) when other errors occur durin=
+g
+   transmission. Users have to register a callback to collect the error cod=
+e
+   when non-timeout error occurs.
+
+But, I think we can go away with this unnecessary confusion by fixing the A=
+PI
+just to return the error code when error occurs regardless of whether it is
+timeout or not. Then, we could simply say:
+
+ - In blocking mode, the send API will return failure when error occurs.
+
+Since this patch is pointing out this anomaly of the send API's behavior, I
+am not sure what scenario we would need more. In other words, the current w=
+ay
+of working would be more surprising to the users than the fixed version of =
+it
+as it was when I found out this issue for the first time.
+
+Do you think that this change will cause any other problem on the client si=
+de
+than fixing the existing issue? If not, I am wondering why not go fix the
+issue with this patch.
+
+Thanks,
+Joonwon Kang
 
