@@ -4,66 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A4D5EF4ECB
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2026 10:36:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92335EF4ED8
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2026 12:35:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5+YY+HBF+xJboaY2LwOAdWrmV8cUrvMvZFgolOvqjhA=; b=kcCsrSgj6dvHqf1ihk3J9sKmKO
-	RsLVArJ7zx+4rzkDSveVtdYayH6T/7Yvq/20iY1Cg038tw91tmnPujzdWVbJSWBurA3Ndtlt5quiX
-	sfDvQeRCEXqNacDHXCBy+sEjytbp9jHn+kGqoECzSuJ91vqYONWCdRt/oLwtvG1bwA8JUJktfvLsq
-	vCcDb81nb8iAIF0oNk5QPc74D7SfUsNNmY7C0jTycYdg/oEA/njhTrv7cZV8oAYqKHnWO+ZN1EBAI
-	86Ln9ux3dLYnmV3lLThhb0D6UDVHC/7duc8Vzse6d7fidhHmfHQbhqjofdiMu9Y3fHb2RG1wd/95g
-	tl/HlCdA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oY3q1h2AWxYa+aq6tw2htsu9P781lAVUFOH6kSb0j8U=; b=EV+UXTSu+HtR/zDfk0gLyxdOFp
+	19tSVAK2BQkAiCmVq74pl7CWWQrQbqx4ZMeQquRFhj4I9iCL8QD/M6VczzA7PE1trHXwlSZL6n2rM
+	kBC9xSKMzODhzK3F1rtUHG4dvayN1DG5nbf4/Upes2XF2zy4+1MJAbWGgDxA732j9gD7C5+toZbPz
+	OWysazJJTMhUJ+ZMjbtPyrJeoab0M9UZkmhnks/ZqeSi+jGBf6zOvIoSP3srFf8ejyhyAguMJfFBP
+	ddcSIqldzrbzsQ17+y9fpLDIRxZ82sLrU5B2m/tYeqjGVLvk1RB+816UOaOG1zgBX44bOn6n2XZBO
+	l3zffNNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w9hJu-0000000520M-3OyD;
-	Mon, 06 Apr 2026 10:36:38 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w9hIe-000000051PC-0J3N;
-	Mon, 06 Apr 2026 10:35:33 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id BB384443B0;
-	Mon,  6 Apr 2026 10:35:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 49639C4CEF7;
-	Mon,  6 Apr 2026 10:35:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1775471719;
-	bh=ql5s5IPOxHwoCRZKRGso/EiW5KK05u2mNhk9r4W+5Ao=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=u2q9s9czwFku/NWK86TGvX5WD3fq76hqNjs02Bz9vcSMDg3KTO4eIaUsQrt1qXYsA
-	 6LypANxi8U19Q1uLb09nGnzIA5vMu0SsBCebqQa5510OuiIu7IW7co9Mpb1o5weroo
-	 DGiqmsJ0G2itWqTlw6QODHNWMxNp3NXvDjDxH/h0ZEY0AdPDHJCA9OtSLCLm24eDZ+
-	 UJio6tyEoCqGVtlXKLdk7NiIuodte6Tio/yG9kUDJZF6qUb1p5h2g3zH7qREGoJaRu
-	 WMp+PjrzdlvGPgEh08G/DkJNrj1GPp4EYZArSSeBnRnDbcuRZ17dygzV67ykhzkhd4
-	 53V5XtWOZGDHg==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Mon, 06 Apr 2026 12:34:16 +0200
-Subject: [PATCH net-next v3 11/12] net: airoha: Introduce WAN device flag
+	id 1w9jAZ-000000056iS-3IVI;
+	Mon, 06 Apr 2026 12:35:07 +0000
+Received: from elvis.franken.de ([193.175.24.41])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1w9jAW-000000056gt-1dp0;
+	Mon, 06 Apr 2026 12:35:06 +0000
+Received: from uucp by elvis.franken.de with local-rmail (Exim 3.36 #1)
+	id 1w9jAQ-00040p-00; Mon, 06 Apr 2026 14:34:58 +0200
+Received: by alpha.franken.de (Postfix, from userid 1000)
+	id 0DB2EC0C39; Mon,  6 Apr 2026 14:29:28 +0200 (CEST)
+Date: Mon, 6 Apr 2026 14:29:28 +0200
+From: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
+To: Shiji Yang <yangshiji66@outlook.com>
+Cc: linux-mips@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 3/3] mips: pci-mt7620: rework initialization procedure
+Message-ID: <adOnKBet9PT-xbKv@alpha.franken.de>
+References: <OSBPR01MB1670555F549B69B9A5E7F133BC72A@OSBPR01MB1670.jpnprd01.prod.outlook.com>
+ <OSBPR01MB167090804D80D1166900D7BCBC72A@OSBPR01MB1670.jpnprd01.prod.outlook.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260406-airoha-eth-multi-serdes-v3-11-ab6ea49d59ff@kernel.org>
-References: <20260406-airoha-eth-multi-serdes-v3-0-ab6ea49d59ff@kernel.org>
-In-Reply-To: <20260406-airoha-eth-multi-serdes-v3-0-ab6ea49d59ff@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Christian Marangi <ansuelsmth@gmail.com>, 
- Benjamin Larsson <benjamin.larsson@genexis.eu>, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- netdev@vger.kernel.org, devicetree@vger.kernel.org, 
- Xuegang Lu <xuegang.lu@airoha.com>
-X-Mailer: b4 0.14.3
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <OSBPR01MB167090804D80D1166900D7BCBC72A@OSBPR01MB1670.jpnprd01.prod.outlook.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260406_033523_076265_8E32C71A 
-X-CRM114-Status: GOOD (  19.98  )
+X-CRM114-CacheID: sfid-20260406_053504_591183_F898B4CA 
+X-CRM114-Status: GOOD (  15.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,168 +63,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce WAN flag to specify if a given device is used to transmit/receive
-WAN or LAN traffic. Current codebase supports specifying LAN/WAN device
-configuration in ndo_init() callback during device bootstrap.
-Please note it is possible to specify multiple LAN devices but just a
-single WAN one.
+On Wed, Jun 18, 2025 at 11:42:07AM +0800, Shiji Yang wrote:
+> Move the reset operation to the common part to reduce the code
+> redundancy. They are actually the same and needed for all SoCs.
+> Disabling power and clock are unnecessary for MT7620 and will be
+> removed. In vendor SDK, it's used to save the power when the PCI
+> driver is not selected. The MT7628 GPIO pinctrl has been removed
+> because this should be done in device-tree. Some delay intervals
+> have also been increased to follow the recommendations of the SoC
+> SDK and datasheet. Tested on both MT7620 and MT7628.
+> 
+> Signed-off-by: Shiji Yang <yangshiji66@outlook.com>
+> ---
+>  arch/mips/pci/pci-mt7620.c | 38 +++++++++++++-------------------------
+>  1 file changed, 13 insertions(+), 25 deletions(-)
 
-Tested-by: Xuegang Lu <xuegang.lu@airoha.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c | 69 +++++++++++++++++++++++++-------
- drivers/net/ethernet/airoha/airoha_eth.h | 13 +++---
- drivers/net/ethernet/airoha/airoha_ppe.c |  2 +-
- 3 files changed, 62 insertions(+), 22 deletions(-)
+applied to mips-next
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 5b0cd37b155e..9988011dca53 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -1796,36 +1796,77 @@ static int airoha_set_gdm2_loopback(struct airoha_gdm_dev *dev)
- 	return 0;
- }
- 
--static int airoha_dev_init(struct net_device *netdev)
-+static struct airoha_gdm_dev *
-+airoha_get_wan_gdm_dev(struct airoha_eth *eth)
-+{
-+	int i;
-+
-+	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
-+		struct airoha_gdm_port *port = eth->ports[i];
-+		int j;
-+
-+		if (!port)
-+			continue;
-+
-+		for (j = 0; j < ARRAY_SIZE(port->devs); j++) {
-+			struct airoha_gdm_dev *dev = port->devs[j];
-+
-+			if (dev && !airoha_is_lan_gdm_dev(dev))
-+				return dev;
-+		}
-+	}
-+
-+	return NULL;
-+}
-+
-+static void airoha_dev_set_qdma(struct airoha_gdm_dev *dev)
- {
--	struct airoha_gdm_dev *dev = netdev_priv(netdev);
--	struct airoha_gdm_port *port = dev->port;
- 	struct airoha_eth *eth = dev->eth;
- 	int i;
- 
- 	/* QDMA0 is used for lan ports while QDMA1 is used for WAN ports */
- 	dev->qdma = &eth->qdma[!airoha_is_lan_gdm_dev(dev)];
- 	dev->dev->irq = dev->qdma->irq_banks[0].irq;
--	airoha_set_macaddr(dev, netdev->dev_addr);
-+
-+	for (i = 0; i < eth->soc->num_ppe; i++)
-+		airoha_ppe_set_cpu_port(dev, i, airoha_get_fe_port(dev));
-+}
-+
-+static int airoha_dev_init(struct net_device *netdev)
-+{
-+	struct airoha_gdm_dev *dev = netdev_priv(netdev);
-+	struct airoha_gdm_port *port = dev->port;
- 
- 	switch (port->id) {
- 	case AIROHA_GDM3_IDX:
--	case AIROHA_GDM4_IDX:
--		/* If GDM2 is active we can't enable loopback */
--		if (!eth->ports[1]) {
--			int err;
-+	case AIROHA_GDM4_IDX: {
-+		struct airoha_eth *eth = dev->eth;
- 
--			err = airoha_set_gdm2_loopback(dev);
--			if (err)
--				return err;
--		}
-+		if (eth->ports[1] || airoha_get_wan_gdm_dev(eth))
-+			break;
-+		fallthrough;
-+	}
-+	case AIROHA_GDM2_IDX:
-+		/* GDM2 is always used as wan */
-+		dev->flags |= PRIV_FLAG_WAN;
- 		break;
- 	default:
- 		break;
- 	}
- 
--	for (i = 0; i < eth->soc->num_ppe; i++)
--		airoha_ppe_set_cpu_port(dev, i, airoha_get_fe_port(dev));
-+	airoha_dev_set_qdma(dev);
-+	airoha_set_macaddr(dev, netdev->dev_addr);
-+
-+	if (!airoha_is_lan_gdm_dev(dev) &&
-+	    (port->id == AIROHA_GDM3_IDX || port->id == AIROHA_GDM4_IDX)) {
-+		int err;
-+
-+		err = airoha_set_gdm2_loopback(dev);
-+		if (err) {
-+			dev->flags &= ~PRIV_FLAG_WAN;
-+			return err;
-+		}
-+	}
- 
- 	return 0;
- }
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index 3e77bbae630a..8dec25fa0478 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -533,12 +533,17 @@ struct airoha_qdma {
- 	struct airoha_queue q_rx[AIROHA_NUM_RX_RING];
- };
- 
-+enum airoha_priv_flags {
-+	PRIV_FLAG_WAN = BIT(0),
-+};
-+
- struct airoha_gdm_dev {
- 	struct airoha_gdm_port *port;
- 	struct airoha_qdma *qdma;
- 	struct airoha_eth *eth;
- 	struct net_device *dev;
- 
-+	u32 flags;
- 	int nbq;
- };
- 
-@@ -642,13 +647,7 @@ u32 airoha_rmw(void __iomem *base, u32 offset, u32 mask, u32 val);
- 
- static inline bool airoha_is_lan_gdm_dev(struct airoha_gdm_dev *dev)
- {
--	struct airoha_gdm_port *port = dev->port;
--
--	/* GDM1 port on EN7581 SoC is connected to the lan dsa switch.
--	 * GDM{2,3,4} can be used as wan port connected to an external
--	 * phy module.
--	 */
--	return port->id == 1;
-+	return !(dev->flags & PRIV_FLAG_WAN);
- }
- 
- static inline bool airoha_is_7581(struct airoha_eth *eth)
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index a6b188fab053..87bb20b6ee49 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -343,7 +343,7 @@ static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
- 				return -EINVAL;
- 
- 			port = dev->port;
--			if (dsa_port >= 0 || eth->ports[1])
-+			if (dsa_port >= 0 || airoha_is_lan_gdm_dev(dev))
- 				pse_port = port->id == 4 ? FE_PSE_PORT_GDM4
- 							 : port->id;
- 			else
+Thomas.
 
 -- 
-2.53.0
-
+Crap can work. Given enough thrust pigs will fly, but it's not necessarily a
+good idea.                                                [ RFC1925, 2.3 ]
 
