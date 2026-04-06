@@ -4,57 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D5BCEF4EDF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2026 12:37:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 960D6EF4EDE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2026 12:53:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DmBWQp407PS3C3blBT27whCkUNWZwLdXdrOvCWYusnk=; b=MI9TxUsGNww6stoUFzBAK3pmJO
-	HN6qKMPdb518hyS3hgDF5BX/+P4m0f8IqaOUc5doPZxz8o5na1A8dYE7LEWk1tAxWRGzin7AgEta/
-	iiUWTlvIsvv5gCEIq7bEPNYt4y5opA1ufaq5ZJZd/8beghEDjrZ4MaASsbjgtLEUB8G79drr+Mu76
-	cjTJ7s+l3O5ULI4mKTu+02vq0dQ+jzcpN4CmyOFzIBi1Ab8BeMFia/PyCZ1ZGpQH20OJuN5LrraMl
-	bQk9T+GDKMn3aD+unM5WqBmg+/j4mHV0MiWP+gsCOsVPPlisuxLXVdCTpKgEOWC1d2ZYAiflBp8Nj
-	t+u01xOA==;
+	bh=7SQW2Ad2NOvoVZWhstp8kFvex9rmv3LN2nziLtVN7gw=; b=x9L1arIjJV433BHbBkvLszGDwx
+	soyIRKglWlwx4kh4c4fZ2fm4ai3B0wh4FxbV4veBVQlanQdgreBnIFvWdlZb2eAP5akHgb8hmkAWO
+	hloUOcR0kXJoh6zEP234xWH4UpGhvUUd7n/33mbXDqHQZn5sXKqaKQV3FBkTruD1pT6dmrtkSHVnM
+	YuZN31KmCnwPkrniQWM17VoZT45gWyIgwoR7WI8UDUhfirOp7uVDQuoEU5b42nooZrv0rf6Z/Ypcy
+	sGy3NcwzIs2UPp/V6pxD+Fporq3Dj0C+5UYSc6OAjeYXP6vTXGJJ5iTRQBtYt61vzSyC/zznEpTvE
+	HsNu4wjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w9jD8-00000005762-22e3;
-	Mon, 06 Apr 2026 12:37:46 +0000
-Received: from elvis.franken.de ([193.175.24.41])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w9jD5-00000005759-16pg;
-	Mon, 06 Apr 2026 12:37:44 +0000
-Received: from uucp by elvis.franken.de with local-rmail (Exim 3.36 #1)
-	id 1w9jD1-000441-00; Mon, 06 Apr 2026 14:37:39 +0200
-Received: by alpha.franken.de (Postfix, from userid 1000)
-	id 1F503C0256; Mon,  6 Apr 2026 14:37:11 +0200 (CEST)
-Date: Mon, 6 Apr 2026 14:37:11 +0200
-From: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
-To: Caleb James DeLisle <cjd@cjdns.fr>
-Cc: linux-mips@vger.kernel.org, naseefkm@gmail.com, mturquette@baylibre.com,
-	sboyd@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, ryder.lee@mediatek.com,
-	jianjun.wang@mediatek.com, lpieralisi@kernel.org,
-	kwilczynski@kernel.org, mani@kernel.org, bhelgaas@google.com,
-	vkoul@kernel.org, neil.armstrong@linaro.org, p.zabel@pengutronix.de,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	nbd@nbd.name, ansuelsmth@gmail.com, linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v2 8/8] mips: dts: Add PCIe to EcoNet EN751221
-Message-ID: <adOo9xZxXT3FkufM@alpha.franken.de>
-References: <20260309131818.74467-1-cjd@cjdns.fr>
- <20260309131818.74467-9-cjd@cjdns.fr>
+	id 1w9jSS-000000057rP-1PQf;
+	Mon, 06 Apr 2026 12:53:36 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1w9jSP-000000057r2-3j9i
+	for linux-mediatek@lists.infradead.org;
+	Mon, 06 Apr 2026 12:53:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id A64D541A33;
+	Mon,  6 Apr 2026 12:53:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8918BC4CEF7;
+	Mon,  6 Apr 2026 12:53:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1775480012;
+	bh=mPQ/xpAlrlk9I52Qbng8ToGDsSDNUZmp0x8Cnhd0ATE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=G3YjwtEPumdHKYP8BhJyBZ7e5j2rMTrTy+lKEUU/fSMZAvVID7O4njhoOE+81Rkc0
+	 0hceYT+yhYIquW1BZdaHh3Q0xHEzsg4OSV1DWv2xLOPrgVxKkdBQwDhk96VUcfcyKa
+	 ylDkOPptHY1xdFYPjwHjABomyl6zITUX2t4OVWsOpLjD959ax7tgRJzJvud7ZF9zVM
+	 VHlURaovf24lOkqvEL5duA6ONCm+dOdvlOpAOOpG7eVQx8SJNuBdSaOH6Y0y3463t+
+	 EdFdkeiuSTG3BWCLBhKc9rEs+48HAjnSDhuN5qYAv6FnayhFaeULPdZkMQ2po2eNCJ
+	 QKFwz4oF09x0w==
+Date: Mon, 6 Apr 2026 13:53:28 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Pei Xiao <xiaopei01@kylinos.cn>
+Cc: gch981213@gmail.com, linux-spi@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/4] spi: mtk-snfi: unregister ECC engine on probe
+ failure and remove() callback
+Message-ID: <d4871bdf-15bf-4491-be5c-5b38a065d810@sirena.org.uk>
+References: <cover.1775273351.git.xiaopei01@kylinos.cn>
+ <09ac1024a0f1626efaa47ceefc5cfb8ee5dd9418.1775273351.git.xiaopei01@kylinos.cn>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="bcY2f4OxCKNUI0TS"
 Content-Disposition: inline
-In-Reply-To: <20260309131818.74467-9-cjd@cjdns.fr>
+In-Reply-To: <09ac1024a0f1626efaa47ceefc5cfb8ee5dd9418.1775273351.git.xiaopei01@kylinos.cn>
+X-Cookie: Does not include installation.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260406_053743_451120_3A3CEE1B 
-X-CRM114-Status: GOOD (  10.04  )
+X-CRM114-CacheID: sfid-20260406_055333_968397_97E24B10 
+X-CRM114-Status: GOOD (  11.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,23 +75,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 09, 2026 at 01:18:18PM +0000, Caleb James DeLisle wrote:
-> Add PCIe based on EN7528 PCIe driver, also add two MT76 wifi devices
-> to SmartFiber XP8421-B.
-> 
-> Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
-> ---
->  arch/mips/boot/dts/econet/en751221.dtsi       | 114 ++++++++++++++++++
->  .../econet/en751221_smartfiber_xp8421-b.dts   |  21 ++++
->  arch/mips/econet/Kconfig                      |   2 +
->  3 files changed, 137 insertions(+)
-> 
 
-applied to mips-next
+--bcY2f4OxCKNUI0TS
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Thomas.
+On Sat, Apr 04, 2026 at 11:44:58AM +0800, Pei Xiao wrote:
 
--- 
-Crap can work. Given enough thrust pigs will fly, but it's not necessarily a
-good idea.                                                [ RFC1925, 2.3 ]
+> +	ret = devm_add_action_or_reset(&pdev->dev, mtk_unregister_ecc_engine,
+> +				       &ms->ecc_eng);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, ret, "failed to add ECC unregister action\n");
+> +		goto release_ecc;
+> +	}
+
+This should either be dev_err(), in which case ret is not a format
+string and this is buggy (I'm surprised it compiles without warnings...)
+or it should be dev_err_probe() in which case the arguments are correct.
+The latter is a little better, though it's unlikely to make a practical
+difference here.
+
+--bcY2f4OxCKNUI0TS
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmnTrMcACgkQJNaLcl1U
+h9Bn3gf/Tw/3QaY8d26oeHjBwK7iRpKZDFeEWD14GaAFJjqvItlGkc4O/inmsmL4
++ajauW6rgAK6VdnS7CPbuLbaO1G0BS+ipl1hNiEjeEM5C8L7kAbVNXBl7FEmPL6g
+8txAv5ScD12FqhKA+QM58asD2s1jjeFVxHMnzY1Hvk9sF9b5M6z/6Rj0HGlDT8Af
+zvO58eJeQ0z7dOjyP1q/cmdZ3uDpMClQsCnmVG8w5GgO1UfhaLTf1stSIfEIjcG+
+pfsJsj0TXaDZKDP2iuYPZBMi9ih4vL/m3LS7L7KBuHLlFnUOQo/V6oLXQ5BoHXpo
+UJbMneAI729UBtl5jo498yD26wk3Ow==
+=Skbd
+-----END PGP SIGNATURE-----
+
+--bcY2f4OxCKNUI0TS--
 
