@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B53AEE64014
-	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Apr 2026 07:03:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E145DEF4ECC
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2026 10:34:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ktaNlzovVtSwejukUhaR06M7XsTZ8oWSRoUEK4xQ0X0=; b=KsOyv3sO7zf3udwYjR95kTqirt
-	ImKS/DhFfNQRk2eeoDeimA/TkXLI73NfKrrhzzHHBWmMuMfPcIfh64QtUbdGVmJSgC+dXzbvr0aSl
-	CK5RvkRa5x3ovZADGluo++GM2cG+C47Kz7tVxZ1uw9Ny6PbahjMSwQ2OKx8E79DDohOm/Gh2bKpp3
-	k25VoPjEGrUaNp8u/1gXiJKKJSpRmL0oqd08uVSKcSuVf1FDo9FocPJL+tpBg/F7JiWzME7CjS/Wj
-	ele4LhJmvACmmndEfSmPQjE0dp4i/oHy9nziyg9urqbAuDjXnlZJH2RHHUtu/MdBprvUeJ5NRxvOy
-	Y8nfI7Xw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nQGak1CXMx/DzbsknoygdrrDMQjxjOTVI15tBZstJuI=; b=zZtb3s3SsrztG8polGlK0zSrbI
+	kMX334iobJDUZs6qFHUba/vnaSQLSeOHGdje0asKJcUmnWTyDFU5s3QjeSxjQ8tZFncZAhNFBYTWw
+	esFKKzzq+pGaWd7sk0459o+k9Cxfws1c6zfFuptczQZJSjPrA8t7MSHU6Njd/rmDZdDVkF6qpVsjc
+	Vlgfp7Ig2xhopSC3H2qgPXTIHme296kRVOS0w2ZvuOi++kMjjxBFZmJDvL+KEoBOLiUA+rQXWfiLH
+	19Hk4NJ97ysQSqH/iJ0e20/1dWeDtMP1gxk8Du0rio8uBAW8/k5vEFfUJrJv4VWU6+NVf0VxS1ti/
+	6Bj7LmyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w9HWM-000000040zc-1Mn0;
-	Sun, 05 Apr 2026 07:03:46 +0000
+	id 1w9hIG-0000000514G-2bRR;
+	Mon, 06 Apr 2026 10:34:56 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w9HWK-000000040zW-22Xd
-	for linux-mediatek@lists.infradead.org;
-	Sun, 05 Apr 2026 07:03:44 +0000
+	id 1w9hIF-0000000513S-0Ce1;
+	Mon, 06 Apr 2026 10:34:55 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E25BC60018;
-	Sun,  5 Apr 2026 07:03:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 17DF8C116C6;
-	Sun,  5 Apr 2026 07:03:40 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 672CE600AD;
+	Mon,  6 Apr 2026 10:34:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BE0CEC4CEF7;
+	Mon,  6 Apr 2026 10:34:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1775372621;
-	bh=cGZQASeUOD7DEYI24yGkpzM2VpgQdKxFA6eMQ7fZ9Mg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=U4JLTX8/zDK6FRLC2p7WxuOu6hFXklMMukj9ElNkbETU0DRkXJLsJQ8h+1l6XGg7o
-	 BxaCe6udKIsJLA5gFXj9mFJyPrYMsLFy5M8BwiE0ocE8M/yWRBM7h1pP6yTRhvqzBb
-	 xoDvZ9MWgwDEEymjkd8ILzjWo2jVI0NX/QlshiEnFNMeh5oppoP30SWH5AjOv1IAol
-	 /Pv8ZKG1mXGB/btCYEdFWN+14AOkY8luPUbqGNngYgJwZu+73NZL6i1/TaCCSw2rbB
-	 VP2sPwgb8JFZI+UWYsg/qDFKJ8HVtEOJqdFod70D3pqJpYFZG/PM8m1HEJO8LktkEz
-	 4oasjxw6uhtSw==
-Date: Sun, 5 Apr 2026 09:03:39 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Caleb James DeLisle <cjd@cjdns.fr>
-Cc: linux-pci@vger.kernel.org, linux-mips@vger.kernel.org, 
-	naseefkm@gmail.com, ryder.lee@mediatek.com, helgaas@kernel.org, 
-	lpieralisi@kernel.org, kwilczynski@kernel.org, mani@kernel.org, robh@kernel.org, 
-	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, ansuelsmth@gmail.com, linux-mediatek@lists.infradead.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v4 1/2] dt-bindings: PCI: mediatek: Add support for
- EcoNet EN7528
-Message-ID: <20260405-phenomenal-messy-shark-bdefbd@quoll>
-References: <20260404182854.2183651-1-cjd@cjdns.fr>
- <20260404182854.2183651-2-cjd@cjdns.fr>
+	s=k20201202; t=1775471694;
+	bh=SJu4TSkAng63cVn9f4OWRRElUiEoJ4XxnXUX+Dp4f6Y=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=j4KDasB9YkEao7lgVk2Ai4KvySb6oMOL0k6KZN4iZGk7fFc6bRgTnvZzcqMOD4opG
+	 GozfINliiJj8T7oCYNddhf3kmO13N3BTR/Ku+DwVLlajUej8Z8L92BNmrcge8gXSJk
+	 PPEXpSBQT1NKmnch6r4QKm0f382odbIqceeW+vFwGxHtHQmU6d9KzpLpGjWmkVLC7F
+	 YWwSizuIPDAukVW8YqfNdHIq8jBQVC+wYooq0Yjxp4zZrx5B+Gdf8DhXrJCTJL+CUY
+	 6+Wkdy08ufpKrCBnvkNV+5hRjP0Nbugzz9u1XEWH/nZBn95L5pnsqJVDfgNTWQ7uGn
+	 qvUWIeEEmlDnw==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Mon, 06 Apr 2026 12:34:06 +0200
+Subject: [PATCH net-next v3 01/12] dt-bindings: net: airoha: Add EN7581
+ ethernet-ports properties
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20260404182854.2183651-2-cjd@cjdns.fr>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260406-airoha-eth-multi-serdes-v3-1-ab6ea49d59ff@kernel.org>
+References: <20260406-airoha-eth-multi-serdes-v3-0-ab6ea49d59ff@kernel.org>
+In-Reply-To: <20260406-airoha-eth-multi-serdes-v3-0-ab6ea49d59ff@kernel.org>
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Christian Marangi <ansuelsmth@gmail.com>, 
+ Benjamin Larsson <benjamin.larsson@genexis.eu>, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ netdev@vger.kernel.org, devicetree@vger.kernel.org
+X-Mailer: b4 0.14.3
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,37 +75,88 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Apr 04, 2026 at 06:28:53PM +0000, Caleb James DeLisle wrote:
-> Introduce EcoNet EN7528 SoC compatible in MediaTek PCIe controller
-> binding.
-> 
-> EcoNet PCIe controller has the same configuration model as
-> Mediatek v2 but is initialized more similarly to an MT7621
-> PCIe.
-> 
+EN7581 and AN7583 SoCs support connecting multiple external SerDes to GDM3
+or GDM4 ports via a hw arbiter that manages the traffic in a TDM manner.
+As a result multiple net_devices can connect to the same GDM{3,4} port
+and there is a theoretical "1:n" relation between GDM ports and
+net_devices.
+Introduce the ethernet-port property in order to model a given net_device
+that is connected via the external arbiter to the GDM{3,4} port (that
+is represented by the ethernet property. Please note GDM1 or GDM2 does not
+support the connection with the external arbiter and are represented
+by ethernet property.
 
-<form letter>
-This is a friendly reminder during the review process.
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ .../devicetree/bindings/net/airoha,en7581-eth.yaml | 44 +++++++++++++++++++++-
+ 1 file changed, 43 insertions(+), 1 deletion(-)
 
-It looks like you received a tag and forgot to add it.
+diff --git a/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml b/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
+index fbe2ddcdd909..ebbd433e9c9f 100644
+--- a/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
++++ b/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
+@@ -130,6 +130,30 @@ patternProperties:
+         maximum: 4
+         description: GMAC port identifier
+ 
++      '#address-cells':
++        const: 1
++      '#size-cells':
++        const: 0
++
++    patternProperties:
++      "^ethernet-port@[0-5]$":
++        type: object
++        unevaluatedProperties: false
++        $ref: ethernet-controller.yaml#
++        description: External ethernet port ID available on the GDM port
++
++        properties:
++          compatible:
++            const: airoha,eth-port
++
++          reg:
++            maxItems: 1
++            description: External ethernet port identifier
++
++        required:
++          - compatible
++          - reg
++
+     required:
+       - reg
+       - compatible
+@@ -191,9 +215,27 @@ examples:
+         #address-cells = <1>;
+         #size-cells = <0>;
+ 
+-        mac: ethernet@1 {
++        mac1: ethernet@1 {
+           compatible = "airoha,eth-mac";
+           reg = <1>;
+         };
++
++        mac4: ethernet@4 {
++          compatible = "airoha,eth-mac";
++          reg = <4>;
++
++          #address-cells = <1>;
++          #size-cells = <0>;
++
++          ethernet-port@0 {
++            compatible = "airoha,eth-port";
++            reg = <0>;
++          };
++
++          ethernet-port@1 {
++            compatible = "airoha,eth-port";
++            reg = <1>;
++          };
++        };
+       };
+     };
 
-If you do not know the process, here is a short explanation:
-Please add Acked-by/Reviewed-by/Tested-by tags when posting new
-versions of patchset, under or above your Signed-off-by tag, unless
-patch changed significantly (e.g. new properties added to the DT
-bindings). Tag is "received", when provided in a message replied to you
-on the mailing list. Tools like b4 can help here. However, there's no
-need to repost patches *only* to add the tags. The upstream maintainer
-will do that for tags received on the version they apply.
-
-Please read:
-https://elixir.bootlin.com/linux/v6.12-rc3/source/Documentation/process/submitting-patches.rst#L577
-
-If a tag was not added on purpose, please state in the patch changelog
-or cover letter why and what changed.
-</form letter>
-
-Best regards,
-Krzysztof
+-- 
+2.53.0
 
 
