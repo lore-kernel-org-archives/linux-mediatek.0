@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAF81EF4EC2
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2026 10:35:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8190CEF4ECC
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2026 10:36:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IVpIe8G1IB1lj9gtKD4aNjpy+uUDyJ46jE+2dOksmJM=; b=opd7gS96ap5uiQkPLGV7OzUudD
-	fPLy6KzLo+orQ/6aiHHUfrmHOYb6T49JxwfI7r4FeNSAgZXBbqEQpzDEHryd0T/UaOWMJy2grRJL+
-	gyl70UgqdEpgoPGbSiHCzkiqRvQiKXwDCTmMszLFSUQJhjYOmosBLgCDSTVMLvp0oIFQ4n7ROj2yf
-	fXP0zcDlFhKItOykj1Qvd93QLJl/sPlb1JBwzf5l1l8OoQTUZD+63HMzFeBqQx0UxEyC59RmHHx4j
-	sjiIoBK2U01Q48ejuuIxvT0XT90ZTObEDcrywh8BWeuuZeIIiZZ9n9dIRge/ZLM6528HvOgqdr0Cm
-	dNB+FHAw==;
+	bh=77yFOdaXUTaqkj5JQcxywG/dnz7QnSEmk3PZTAME1uI=; b=0L89OZLqFWHanQl1kLTAJDwzSC
+	RGm4LcIZVudbYeTx2+rFNyEzs1vHsHwauuszSwhpCafir5eZXvtBnigG67DMMj5y1Oq6B7Y3SRLNT
+	cUsqe3QOEwV7SMUjVQExzSTxbNZoaG3Xgr3DZjs/NoWLukT+u/bNhQuz57TQ1BnWL9COEgMtjLmpa
+	qAwcce1XiTbQ42onScoaRI/NYSJpZKI4yLbdcvwrz7gJWLJdSswsmXMH17pY/iY42Jxw6LblE0sdG
+	xff4q0oltpMMq5aY1yHYk+a/riOAwKcMuWV9KcDDbet+DQ9WGWwydsRJ7/3dXSDyNzlWZRogil6Aq
+	V3MLQBUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w9hJB-000000051jA-2YAO;
-	Mon, 06 Apr 2026 10:35:53 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1w9hJr-000000051xj-2ZxY;
+	Mon, 06 Apr 2026 10:36:37 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w9hIc-000000051Nk-0W9M;
-	Mon, 06 Apr 2026 10:35:18 +0000
+	id 1w9hIg-000000051QO-3owK;
+	Mon, 06 Apr 2026 10:35:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8682660103;
-	Mon,  6 Apr 2026 10:35:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DC1CAC19425;
-	Mon,  6 Apr 2026 10:35:16 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 5B484600AC;
+	Mon,  6 Apr 2026 10:35:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B2E03C4CEF7;
+	Mon,  6 Apr 2026 10:35:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1775471717;
-	bh=e2xtWaYtDRf+AJ5CGEQVIPbqYXhzw2AaQaTxGK6qCqs=;
+	s=k20201202; t=1775471722;
+	bh=8Mrg0yy4Xk/C/etY2AlCJfZSISnYqkitJZWt4ANfVg4=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=UIXpX5FkM1lSgUz9MtBQPS7gDL86DLhBzlmRTJ2Lm+WHXHN9CK+ZaL+V23jHms4IY
-	 Mwy/+11O/5jz2E8m5omRHW80yPcw5QXm3PglkNP2s7pX11j/4Embv3zeGYQutq0ESv
-	 qgZMApIjUbcPrbbbeRrpheNv6pbxfZlXkdA8CWJy+CNJJ9tZ/E2nPMybF+Meaub5km
-	 ZuuMNPR6p3D922pg2esfyzCrgA39BKewV9/RtFPOOpYYoEoxclxdti3TuHOFnj+PM3
-	 QEq3Nq1uYLO7WkKD8Z6otu8zfAEmzjCKPmfcTJw9vEVCx8kXgChrGo7/gM1/j4Rl0x
-	 J4LySovqG8Ysw==
+	b=XSraxYjCgU2J0H4fZt2UrtpCMSvrd0BINn2NKUnixlTRwQKX3841/yr6APDsyWLhr
+	 qYgkshMMezsdYHobUf81wY5fFSjqQTaewACtRnMgJ6scHoIX2+tr5ZSJo/s//gjICG
+	 q1uU0mnBMVPK1i3T+zKIykv0yOvtg5O31Ltw951gBX51lKatP6kUYxapsnUw7ygBlv
+	 gjk6KvkTLO66flsBbZ9MyEL/ElXTFRIPjB6ta+ENDmCF6qlWJnHrv68SyGcDhm7EqA
+	 YpHzGjTlTm7qKmAlwJvGvfH/uguzDOKctnxeewYD7T5o/qfiofwAiAWw4k5s52qaET
+	 C6G5fFO+CfpOg==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Mon, 06 Apr 2026 12:34:15 +0200
-Subject: [PATCH net-next v3 10/12] net: airoha: Do not stop GDM port if it
- is shared
+Date: Mon, 06 Apr 2026 12:34:17 +0200
+Subject: [PATCH net-next v3 12/12] net: airoha: Rename get_src_port_id
+ callback in get_sport
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260406-airoha-eth-multi-serdes-v3-10-ab6ea49d59ff@kernel.org>
+Message-Id: <20260406-airoha-eth-multi-serdes-v3-12-ab6ea49d59ff@kernel.org>
 References: <20260406-airoha-eth-multi-serdes-v3-0-ab6ea49d59ff@kernel.org>
 In-Reply-To: <20260406-airoha-eth-multi-serdes-v3-0-ab6ea49d59ff@kernel.org>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
@@ -59,8 +59,7 @@ To: Andrew Lunn <andrew+netdev@lunn.ch>,
 Cc: Christian Marangi <ansuelsmth@gmail.com>, 
  Benjamin Larsson <benjamin.larsson@genexis.eu>, 
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- netdev@vger.kernel.org, devicetree@vger.kernel.org, 
- Xuegang Lu <xuegang.lu@airoha.com>
+ netdev@vger.kernel.org, devicetree@vger.kernel.org
 X-Mailer: b4 0.14.3
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,115 +75,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Theoretically, in the current codebase, two independent net_devices can
-be connected to the same GDM port so we need to check the GDM port is not
-used by any other running net_device before setting the forward
-configuration to FE_PSE_PORT_DROP.
+For code consistency, rename get_src_port_id callback in get_sport.
+Please note this patch does not introduce any logical change and it is
+just a cosmetic patch.
 
-Tested-by: Xuegang Lu <xuegang.lu@airoha.com>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/ethernet/airoha/airoha_eth.c | 43 ++++++++++++++++++++++----------
- drivers/net/ethernet/airoha/airoha_eth.h |  2 ++
- 2 files changed, 32 insertions(+), 13 deletions(-)
+ drivers/net/ethernet/airoha/airoha_eth.c | 12 ++++++------
+ drivers/net/ethernet/airoha/airoha_eth.h |  2 +-
+ 2 files changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index fd27ba13029b..5b0cd37b155e 100644
+index 9988011dca53..c14dee3c9bfb 100644
 --- a/drivers/net/ethernet/airoha/airoha_eth.c
 +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -1647,8 +1647,8 @@ static int airoha_dev_open(struct net_device *netdev)
- 	int err, len = ETH_HLEN + netdev->mtu + ETH_FCS_LEN;
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
- 	struct airoha_gdm_port *port = dev->port;
-+	u32 cur_len, pse_port = FE_PSE_PORT_PPE1;
- 	struct airoha_qdma *qdma = dev->qdma;
--	u32 pse_port = FE_PSE_PORT_PPE1;
+@@ -1770,7 +1770,7 @@ static int airoha_set_gdm2_loopback(struct airoha_gdm_dev *dev)
+ 	airoha_fe_clear(eth, REG_FE_VIP_PORT_EN, BIT(AIROHA_GDM2_IDX));
+ 	airoha_fe_clear(eth, REG_FE_IFC_PORT_EN, BIT(AIROHA_GDM2_IDX));
  
- 	netif_tx_start_all_queues(netdev);
- 	err = airoha_set_vip_for_gdm_port(dev, true);
-@@ -1662,10 +1662,15 @@ static int airoha_dev_open(struct net_device *netdev)
- 		airoha_fe_clear(qdma->eth, REG_GDM_INGRESS_CFG(port->id),
- 				GDM_STAG_EN_MASK);
+-	src_port = eth->soc->ops.get_src_port_id(port, dev->nbq);
++	src_port = eth->soc->ops.get_sport(port, dev->nbq);
+ 	if (src_port < 0)
+ 		return src_port;
  
--	airoha_fe_rmw(qdma->eth, REG_GDM_LEN_CFG(port->id),
--		      GDM_SHORT_LEN_MASK | GDM_LONG_LEN_MASK,
--		      FIELD_PREP(GDM_SHORT_LEN_MASK, 60) |
--		      FIELD_PREP(GDM_LONG_LEN_MASK, len));
-+	cur_len = FIELD_GET(GDM_LONG_LEN_MASK,
-+			    airoha_fe_rr(qdma->eth,
-+					 REG_GDM_LEN_CFG(port->id)));
-+	if (!atomic_read(&port->users) || len > cur_len)
-+		airoha_fe_rmw(qdma->eth, REG_GDM_LEN_CFG(port->id),
-+			      GDM_SHORT_LEN_MASK | GDM_LONG_LEN_MASK,
-+			      FIELD_PREP(GDM_SHORT_LEN_MASK, 60) |
-+			      FIELD_PREP(GDM_LONG_LEN_MASK, len));
-+	atomic_inc(&port->users);
+@@ -3102,7 +3102,7 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
  
- 	airoha_qdma_set(qdma, REG_QDMA_GLOBAL_CFG,
- 			GLOBAL_CFG_TX_DMA_EN_MASK |
-@@ -1688,18 +1693,18 @@ static int airoha_dev_stop(struct net_device *netdev)
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
- 	struct airoha_gdm_port *port = dev->port;
- 	struct airoha_qdma *qdma = dev->qdma;
--	int i, err;
-+	int i;
+ 		/* Verify the provided nbq parameter is valid */
+ 		nbq = be32_to_cpup(nbq_ptr);
+-		err = eth->soc->ops.get_src_port_id(port, nbq);
++		err = eth->soc->ops.get_sport(port, nbq);
+ 		if (err < 0) {
+ 			of_node_put(node);
+ 			return err;
+@@ -3309,7 +3309,7 @@ static const char * const en7581_xsi_rsts_names[] = {
+ 	"xfp-mac",
+ };
  
- 	netif_tx_disable(netdev);
--	err = airoha_set_vip_for_gdm_port(dev, false);
--	if (err)
--		return err;
--
- 	for (i = 0; i < ARRAY_SIZE(qdma->q_tx); i++)
- 		netdev_tx_reset_subqueue(netdev, i);
- 
--	airoha_set_gdm_port_fwd_cfg(qdma->eth, REG_GDM_FWD_CFG(port->id),
--				    FE_PSE_PORT_DROP);
-+	if (atomic_dec_and_test(&port->users)) {
-+		airoha_set_vip_for_gdm_port(dev, false);
-+		airoha_set_gdm_port_fwd_cfg(qdma->eth,
-+					    REG_GDM_FWD_CFG(port->id),
-+					    FE_PSE_PORT_DROP);
-+	}
- 
- 	if (atomic_dec_and_test(&qdma->users)) {
- 		airoha_qdma_clear(qdma, REG_QDMA_GLOBAL_CFG,
-@@ -1851,10 +1856,22 @@ static void airoha_dev_get_stats64(struct net_device *netdev,
- static int airoha_dev_change_mtu(struct net_device *netdev, int mtu)
+-static int airoha_en7581_get_src_port_id(struct airoha_gdm_port *port, int nbq)
++static int airoha_en7581_get_sport(struct airoha_gdm_port *port, int nbq)
  {
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
-+	u32 cur_len, len = ETH_HLEN + mtu + ETH_FCS_LEN;
- 	struct airoha_gdm_port *port = dev->port;
--	u32 len = ETH_HLEN + mtu + ETH_FCS_LEN;
- 	struct airoha_eth *eth = dev->eth;
+ 	switch (port->id) {
+ 	case AIROHA_GDM3_IDX:
+@@ -3373,7 +3373,7 @@ static const char * const an7583_xsi_rsts_names[] = {
+ 	"xfp-mac",
+ };
  
-+	cur_len = FIELD_GET(GDM_LONG_LEN_MASK,
-+			    airoha_fe_rr(eth, REG_GDM_LEN_CFG(port->id)));
-+	if (len < cur_len) {
-+		u8 port_refcnt = atomic_read(&port->users);
-+
-+		/* We can decrease the device MTU just if the GDM port is
-+		 * not shared or if the other device is not running.
-+		 */
-+		if (port_refcnt > 1 || (port_refcnt && !netif_running(netdev)))
-+			return -EBUSY;
-+	}
-+
- 	airoha_fe_rmw(eth, REG_GDM_LEN_CFG(port->id),
- 		      GDM_LONG_LEN_MASK,
- 		      FIELD_PREP(GDM_LONG_LEN_MASK, len));
+-static int airoha_an7583_get_src_port_id(struct airoha_gdm_port *port, int nbq)
++static int airoha_an7583_get_sport(struct airoha_gdm_port *port, int nbq)
+ {
+ 	switch (port->id) {
+ 	case AIROHA_GDM3_IDX:
+@@ -3431,7 +3431,7 @@ static const struct airoha_eth_soc_data en7581_soc_data = {
+ 	.num_xsi_rsts = ARRAY_SIZE(en7581_xsi_rsts_names),
+ 	.num_ppe = 2,
+ 	.ops = {
+-		.get_src_port_id = airoha_en7581_get_src_port_id,
++		.get_sport = airoha_en7581_get_sport,
+ 		.get_dev_from_sport = airoha_en7581_get_dev_from_sport,
+ 	},
+ };
+@@ -3442,7 +3442,7 @@ static const struct airoha_eth_soc_data an7583_soc_data = {
+ 	.num_xsi_rsts = ARRAY_SIZE(an7583_xsi_rsts_names),
+ 	.num_ppe = 1,
+ 	.ops = {
+-		.get_src_port_id = airoha_an7583_get_src_port_id,
++		.get_sport = airoha_an7583_get_sport,
+ 		.get_dev_from_sport = airoha_an7583_get_dev_from_sport,
+ 	},
+ };
 diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index 5ce71aff6c39..3e77bbae630a 100644
+index 8dec25fa0478..ec31a3b5efc3 100644
 --- a/drivers/net/ethernet/airoha/airoha_eth.h
 +++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -546,6 +546,8 @@ struct airoha_gdm_port {
- 	struct airoha_gdm_dev *devs[AIROHA_MAX_NUM_GDM_DEVS];
- 	int id;
- 
-+	atomic_t users;
-+
- 	struct airoha_hw_stats stats;
- 
- 	DECLARE_BITMAP(qos_sq_bmap, AIROHA_NUM_QOS_CHANNELS);
+@@ -591,7 +591,7 @@ struct airoha_eth_soc_data {
+ 	int num_xsi_rsts;
+ 	int num_ppe;
+ 	struct {
+-		int (*get_src_port_id)(struct airoha_gdm_port *port, int nbq);
++		int (*get_sport)(struct airoha_gdm_port *port, int nbq);
+ 		int (*get_dev_from_sport)(struct airoha_qdma_desc *desc,
+ 					  u16 *port, u16 *dev);
+ 	} ops;
 
 -- 
 2.53.0
