@@ -4,51 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 231AFEF4EDF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2026 12:35:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D5BCEF4EDF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2026 12:37:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=beuVj1GM4stqoqd5lgplEfzpxAtDZ8E4uxY79YaFhyI=; b=44UBzpNMUqQDZpheNAi/qzLQWt
-	QJr2TKDsHp+OWpv575aWjR0WEgpKZfAPBV+Il/k/Ga7QX4VtW1C6BG/Lzbr4vQa9GJG0v+2DWNyjk
-	DRWy4vHzkFMKLXQo6wHEPwl/DweB9OXWRmXshFPDbolv1VtbKYFIyD43xlM/Kjp2WhbodqbbV82kC
-	wfN9kiAily3KaxeF2+icqoCAQXkyMjH2Wm0qnhWdVnwjw77/F+9jbMgz9L92URMgCeokv407gKpyk
-	sWld04OkllCMUNWdLpVZPo6wN/ETwZTg6Ft1mau9EybcRq7LnM1CLm2kS/XO0sMijxJ0Kg6s5cntn
-	owmDq4bQ==;
+	bh=DmBWQp407PS3C3blBT27whCkUNWZwLdXdrOvCWYusnk=; b=MI9TxUsGNww6stoUFzBAK3pmJO
+	HN6qKMPdb518hyS3hgDF5BX/+P4m0f8IqaOUc5doPZxz8o5na1A8dYE7LEWk1tAxWRGzin7AgEta/
+	iiUWTlvIsvv5gCEIq7bEPNYt4y5opA1ufaq5ZJZd/8beghEDjrZ4MaASsbjgtLEUB8G79drr+Mu76
+	cjTJ7s+l3O5ULI4mKTu+02vq0dQ+jzcpN4CmyOFzIBi1Ab8BeMFia/PyCZ1ZGpQH20OJuN5LrraMl
+	bQk9T+GDKMn3aD+unM5WqBmg+/j4mHV0MiWP+gsCOsVPPlisuxLXVdCTpKgEOWC1d2ZYAiflBp8Nj
+	t+u01xOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w9jAc-000000056k5-05Mu;
-	Mon, 06 Apr 2026 12:35:10 +0000
+	id 1w9jD8-00000005762-22e3;
+	Mon, 06 Apr 2026 12:37:46 +0000
 Received: from elvis.franken.de ([193.175.24.41])
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w9jAW-000000056gs-1dot;
-	Mon, 06 Apr 2026 12:35:07 +0000
+	id 1w9jD5-00000005759-16pg;
+	Mon, 06 Apr 2026 12:37:44 +0000
 Received: from uucp by elvis.franken.de with local-rmail (Exim 3.36 #1)
-	id 1w9jAQ-00040l-00; Mon, 06 Apr 2026 14:34:58 +0200
+	id 1w9jD1-000441-00; Mon, 06 Apr 2026 14:37:39 +0200
 Received: by alpha.franken.de (Postfix, from userid 1000)
-	id 20329C0988; Mon,  6 Apr 2026 14:29:08 +0200 (CEST)
-Date: Mon, 6 Apr 2026 14:29:08 +0200
+	id 1F503C0256; Mon,  6 Apr 2026 14:37:11 +0200 (CEST)
+Date: Mon, 6 Apr 2026 14:37:11 +0200
 From: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
-To: Shiji Yang <yangshiji66@outlook.com>
-Cc: linux-mips@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 2/3] mips: pci-mt7620: add more register init values
-Message-ID: <adOnFMS2l_diXevH@alpha.franken.de>
-References: <OSBPR01MB1670555F549B69B9A5E7F133BC72A@OSBPR01MB1670.jpnprd01.prod.outlook.com>
- <OSBPR01MB167036A58FE6FB745311AF5FBC72A@OSBPR01MB1670.jpnprd01.prod.outlook.com>
+To: Caleb James DeLisle <cjd@cjdns.fr>
+Cc: linux-mips@vger.kernel.org, naseefkm@gmail.com, mturquette@baylibre.com,
+	sboyd@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
+	conor+dt@kernel.org, ryder.lee@mediatek.com,
+	jianjun.wang@mediatek.com, lpieralisi@kernel.org,
+	kwilczynski@kernel.org, mani@kernel.org, bhelgaas@google.com,
+	vkoul@kernel.org, neil.armstrong@linaro.org, p.zabel@pengutronix.de,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	nbd@nbd.name, ansuelsmth@gmail.com, linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v2 8/8] mips: dts: Add PCIe to EcoNet EN751221
+Message-ID: <adOo9xZxXT3FkufM@alpha.franken.de>
+References: <20260309131818.74467-1-cjd@cjdns.fr>
+ <20260309131818.74467-9-cjd@cjdns.fr>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <OSBPR01MB167036A58FE6FB745311AF5FBC72A@OSBPR01MB1670.jpnprd01.prod.outlook.com>
+In-Reply-To: <20260309131818.74467-9-cjd@cjdns.fr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260406_053504_591928_47DA6A5B 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20260406_053743_451120_3A3CEE1B 
+X-CRM114-Status: GOOD (  10.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,15 +69,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 18, 2025 at 11:42:06AM +0800, Shiji Yang wrote:
-> These missing register init values are ported from the vendor SDK.
-> It should have some stability enhancements. Tested on both MT7620
-> and MT7628.
+On Mon, Mar 09, 2026 at 01:18:18PM +0000, Caleb James DeLisle wrote:
+> Add PCIe based on EN7528 PCIe driver, also add two MT76 wifi devices
+> to SmartFiber XP8421-B.
 > 
-> Signed-off-by: Shiji Yang <yangshiji66@outlook.com>
+> Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
 > ---
->  arch/mips/pci/pci-mt7620.c | 59 +++++++++++++++++++++++++++++---------
->  1 file changed, 46 insertions(+), 13 deletions(-)
+>  arch/mips/boot/dts/econet/en751221.dtsi       | 114 ++++++++++++++++++
+>  .../econet/en751221_smartfiber_xp8421-b.dts   |  21 ++++
+>  arch/mips/econet/Kconfig                      |   2 +
+>  3 files changed, 137 insertions(+)
+> 
 
 applied to mips-next
 
