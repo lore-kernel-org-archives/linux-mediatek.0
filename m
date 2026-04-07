@@ -4,75 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 190F8E9D814
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2026 06:48:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 198B9FB519F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2026 06:48:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=9MpSWEeOtFVXl58+rDfFFbpljSaaJoXfG6V58eCnX3o=; b=UFmektxIYnl0rZ5SWfBQu8U+QN
-	SzGZ2NhnwQEFEVrGx3gukv8HxLVWALat8cY+qVNcpZ1zClQimdTxkNV6BzOv/IoNPmOmtxanN8QwR
-	rvtx8HaDgBjQy5cBH+u3+wobNu1/j19j+RUh0rNCKRmLGgrF+tRUdIE10AOpwrcZNngvvcTKifVaD
-	5ai6EbozpN3gO6Ai9y5MgDqo5l+XSyPOVlBKwXgVMyKerirb9oy+E2+aYsCIA/CUtAD1Epg2N4H5Z
-	BNB/Gvq0i5D9dHaCgMsDO0nzWX80Gnv0UTLYjg0uRmPL6MtxoIT2vk8L3Jc5c+X94+qlqeeEaXDIm
-	Cngo9StA==;
+	bh=k94lUa+KEMbk6AFvbQk7NdZga11Yp/wVHOllCIcd9o0=; b=D7QL8oscIA16OO9hH6nGFQPjtz
+	Is85CtqPvFsUgl2wtfQwOYH3+c9X80ZcScHT3ItDmNJOwxGr0sci1s5pzV0x6ckFT6tjeClT9hX2m
+	8b8rjeqVoOq3EZqHEsKch+Cekj8uuRV3Dzb4xmHaafOvNk06NknKEw0V/hJjRfswcP+AchPUXs/cf
+	EqLfEI/JdOEhg5XQFFMma3wYo15UtfJkc8kqBDjL1XeR02lWXX6zXYNUYv/YnPq1qJXjyxsSXDCeO
+	DFHPlIkuTWDSvCuU7j3oBFf4s/Xpk3d62BE4zc2VPHrLInj2l59qJe3/NJaWedUaSFR3qBnUVmXDi
+	QuDhTHsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wA0EO-000000061WD-1MVR;
-	Tue, 07 Apr 2026 06:48:12 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1wA0Es-000000061Yu-0DqK;
+	Tue, 07 Apr 2026 06:48:42 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wA0EM-000000061Vl-2NoQ
-	for linux-mediatek@lists.infradead.org;
-	Tue, 07 Apr 2026 06:48:11 +0000
-X-UUID: ba861cb2324d11f1a6de359d7043e138-20260406
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=9MpSWEeOtFVXl58+rDfFFbpljSaaJoXfG6V58eCnX3o=;
-	b=uU5y19o9CgafvqY5OoutrtKyB+NDd2KG8yTEgxnlMXtlhmeuVwfG+A0hlKa4xoKy6yLS6/UmPSwdMIbdubjHLHp0TsALgM0ZEHE15TLFNMk/IrFFJ6HbzxKBt5GWnokBA2y4g2MS5jLybURtHLoBPbB4J3zrSDKEj62Tk6OhAy0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:ae6367ab-6597-4d29-8f8d-7732aaf297f1,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:e7bac3a,CLOUDID:ec17218f-6df4-4a3d-a7a4-fbdc42d669ce,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|865|888|898,TC:-5,Content:0|
-	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0
-	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: ba861cb2324d11f1a6de359d7043e138-20260406
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
-	(envelope-from <chris.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1721314805; Mon, 06 Apr 2026 23:48:04 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Tue, 7 Apr 2026 14:48:02 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Tue, 7 Apr 2026 14:48:02 +0800
-From: Chris Lu <chris.lu@mediatek.com>
-To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
-	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>,
-	SS Wu <ss.wu@mediatek.com>, Steve Lee <steve.lee@mediatek.com>,
-	linux-bluetooth <linux-bluetooth@vger.kernel.org>, linux-kernel
-	<linux-kernel@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH v1] Bluetooth: btmtk: add event filter to filter specific event
-Date: Tue, 7 Apr 2026 14:47:59 +0800
-Message-ID: <20260407064759.3036650-1-chris.lu@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1wA0Ep-000000061Xs-2Dc3;
+	Tue, 07 Apr 2026 06:48:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id C82BC441C6;
+	Tue,  7 Apr 2026 06:48:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5A990C116C6;
+	Tue,  7 Apr 2026 06:48:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1775544518;
+	bh=sO9aQuhE+niwJIm1bqiOtD3Jjz6qnYB8L83GRriDkrA=;
+	h=From:Date:Subject:To:Cc:From;
+	b=W7RyjkJPbc9QY9ImPBHkmjo0uS84hXK7K/BSLw6m6mt+L9Y6FaXWxApbiloGeOI49
+	 MO+z5Z2rMK1/BgV1bIFHqNSaXzJTEtrPCqO2xkAJUXzYxiLwtDdg79S1CiJLQ3MJXR
+	 nRERo2iz9AwoFN0eBfPSC1I21LHmaklRVfmdP1FoYDSbJ6zyvfr2DjkCoIvNa3Du9l
+	 OpS8xCNQnTvj3bxcwjnKpKqZdS7aIuqxj0XE9F+GlfCPYJeOE+69VSHzgjg1eE5AMN
+	 XHn4GAOCbmEl687Akghnl9byCiBaJU5iA1OX/KUPavRUrtkLdC7+VPrEMQhlGMfpxb
+	 GAltvef+phLjw==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Tue, 07 Apr 2026 08:48:04 +0200
+Subject: [PATCH net v3] net: airoha: Add dma_rmb() and READ_ONCE() in
+ airoha_qdma_rx_process()
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260407-airoha_qdma_rx_process-fix-reordering-v3-1-91c36e9da31f@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/5XNSw6CMBCA4auQrq1pp1CIK+9hDOExQKO2OCUNh
+ nB3m650p8t55Ps35pEMenbKNkYYjDfOxkEdMtZNjR2Rmz7ODARokQvgjSE3NfWzfzQ1rfVMrkP
+ v+WBWTuioj5wdeQmgRAVF0eqCRWsmjB+pc2EWF3aNy8n4xdErtYNMpz8zQXLJCwVllZf5IDScb
+ 0gW70dHY0oE+GTVryxEVlYSNYLqoWy/2H3f374jibI3AQAA
+X-Change-ID: 20260402-airoha_qdma_rx_process-fix-reordering-722308255b65
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Xuegang Lu <xuegang.lu@airoha.com>, Simon Horman <horms@kernel.org>, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ netdev@vger.kernel.org
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260406_234810_651090_47C4E3F2 
-X-CRM114-Status: GOOD (  12.51  )
+X-CRM114-CacheID: sfid-20260406_234839_632093_A62F2F42 
+X-CRM114-Status: GOOD (  11.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,87 +79,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Due to some Bluetooth hosts have mechanism to detect invalid events,
-causing abnormal behavior. Add a event filter to prevent debugging
-events from being sent to host.
+Add missing dma_rmb() in airoha_qdma_rx_process routine to make sure the
+DMA read operations are completed when the NIC reports the processing on
+the current descriptor is done. Moreover, add missing READ_ONCE() in
+airoha_qdma_rx_process() for DMA descriptor control fields in order to
+avoid any compiler reordering.
 
-Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+Fixes: 23020f0493270 ("net: airoha: Introduce ethernet support for EN7581 SoC")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/bluetooth/btmtk.c | 22 ++++++++++++++++++++++
- drivers/bluetooth/btmtk.h |  7 +++++++
- drivers/bluetooth/btusb.c |  2 ++
- 3 files changed, 31 insertions(+)
+Changes in v3:
+- Move page pointer initialization before checking error condition on
+  payload length in order avoid using page pointer uninitialized in the
+  airoha_qdma_rx_process() error path.
+- Link to v2: https://lore.kernel.org/r/20260403-airoha_qdma_rx_process-fix-reordering-v2-1-181e6e23d27b@kernel.org
 
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index 55516b4602db..302d6ddf9062 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -1503,6 +1503,28 @@ int btmtk_usb_shutdown(struct hci_dev *hdev)
- 	return 0;
- }
- EXPORT_SYMBOL_GPL(btmtk_usb_shutdown);
-+
-+int btmtk_recv_event(struct hci_dev *hdev, struct sk_buff *skb)
-+{
-+	struct hci_event_hdr *hdr = (void *)skb->data;
-+
-+	if (hdr->evt == HCI_EV_CMD_COMPLETE) {
-+		struct hci_ev_cmd_complete *ec;
-+		u16 opcode;
-+
-+		ec = (void *)(skb->data + HCI_EVENT_HDR_SIZE);
-+		opcode = __le16_to_cpu(ec->opcode);
-+
-+		/* Filter vendor opcode */
-+		if (opcode == 0xfc5d) {
-+			kfree_skb(skb);
-+			return 0;
-+		}
-+	}
-+
-+	return hci_recv_frame(hdev, skb);
-+}
-+EXPORT_SYMBOL_GPL(btmtk_recv_event);
- #endif
- 
- MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
-diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
-index adaf385626ee..08b73927c8f3 100644
---- a/drivers/bluetooth/btmtk.h
-+++ b/drivers/bluetooth/btmtk.h
-@@ -218,6 +218,8 @@ int btmtk_usb_suspend(struct hci_dev *hdev);
- int btmtk_usb_setup(struct hci_dev *hdev);
- 
- int btmtk_usb_shutdown(struct hci_dev *hdev);
-+
-+int btmtk_recv_event(struct hci_dev *hdev, struct sk_buff *skb);
- #else
- 
- static inline int btmtk_set_bdaddr(struct hci_dev *hdev,
-@@ -296,4 +298,9 @@ static inline int btmtk_usb_shutdown(struct hci_dev *hdev)
+Changes in v2:
+- Use msg1 in airoha_qdma_get_gdm_port() signature to avoid missing
+  READ_ONCE().
+- Link to v1: https://lore.kernel.org/r/20260402-airoha_qdma_rx_process-fix-reordering-v1-1-53278474f062@kernel.org
+---
+ drivers/net/ethernet/airoha/airoha_eth.c | 16 ++++++++++------
+ 1 file changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 91cb63a32d99..9285a68f435f 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -584,7 +584,7 @@ static int airoha_qdma_fill_rx_queue(struct airoha_queue *q)
+ static int airoha_qdma_get_gdm_port(struct airoha_eth *eth,
+ 				    struct airoha_qdma_desc *desc)
  {
- 	return -EOPNOTSUPP;
- }
-+
-+static inline int btmtk_recv_event(struct hci_dev *hdev, struct sk_buff *skb)
-+{
-+	return -EOPNOTSUPP;
-+}
- #endif
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index f9d515ee9124..daf8a387e660 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -4150,6 +4150,8 @@ static int btusb_probe(struct usb_interface *intf,
- 	} else if (id->driver_info & BTUSB_MEDIATEK) {
- 		/* Allocate extra space for Mediatek device */
- 		priv_size += sizeof(struct btmtk_data);
-+
-+		data->recv_event = btmtk_recv_event;
- 	}
+-	u32 port, sport, msg1 = le32_to_cpu(desc->msg1);
++	u32 port, sport, msg1 = le32_to_cpu(READ_ONCE(desc->msg1));
  
- 	data->recv_acl = hci_recv_frame;
+ 	sport = FIELD_GET(QDMA_ETH_RXMSG_SPORT_MASK, msg1);
+ 	switch (sport) {
+@@ -612,21 +612,24 @@ static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
+ 	while (done < budget) {
+ 		struct airoha_queue_entry *e = &q->entry[q->tail];
+ 		struct airoha_qdma_desc *desc = &q->desc[q->tail];
+-		u32 hash, reason, msg1 = le32_to_cpu(desc->msg1);
+-		struct page *page = virt_to_head_page(e->buf);
+-		u32 desc_ctrl = le32_to_cpu(desc->ctrl);
++		u32 hash, reason, msg1, desc_ctrl;
+ 		struct airoha_gdm_port *port;
+ 		int data_len, len, p;
++		struct page *page;
+ 
++		desc_ctrl = le32_to_cpu(READ_ONCE(desc->ctrl));
+ 		if (!(desc_ctrl & QDMA_DESC_DONE_MASK))
+ 			break;
+ 
++		dma_rmb();
++
+ 		q->tail = (q->tail + 1) % q->ndesc;
+ 		q->queued--;
+ 
+ 		dma_sync_single_for_cpu(eth->dev, e->dma_addr,
+ 					SKB_WITH_OVERHEAD(q->buf_size), dir);
+ 
++		page = virt_to_head_page(e->buf);
+ 		len = FIELD_GET(QDMA_DESC_LEN_MASK, desc_ctrl);
+ 		data_len = q->skb ? q->buf_size
+ 				  : SKB_WITH_OVERHEAD(q->buf_size);
+@@ -670,8 +673,8 @@ static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
+ 			 * DMA descriptor. Report DSA tag to the DSA stack
+ 			 * via skb dst info.
+ 			 */
+-			u32 sptag = FIELD_GET(QDMA_ETH_RXMSG_SPTAG,
+-					      le32_to_cpu(desc->msg0));
++			u32 msg0 = le32_to_cpu(READ_ONCE(desc->msg0));
++			u32 sptag = FIELD_GET(QDMA_ETH_RXMSG_SPTAG, msg0);
+ 
+ 			if (sptag < ARRAY_SIZE(port->dsa_meta) &&
+ 			    port->dsa_meta[sptag])
+@@ -679,6 +682,7 @@ static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
+ 						  &port->dsa_meta[sptag]->dst);
+ 		}
+ 
++		msg1 = le32_to_cpu(READ_ONCE(desc->msg1));
+ 		hash = FIELD_GET(AIROHA_RXD4_FOE_ENTRY, msg1);
+ 		if (hash != AIROHA_RXD4_FOE_ENTRY)
+ 			skb_set_hash(q->skb, jhash_1word(hash, 0),
+
+---
+base-commit: a9d4f4f6e65e0bf9bbddedecc84d67249991979c
+change-id: 20260402-airoha_qdma_rx_process-fix-reordering-722308255b65
+
+Best regards,
 -- 
-2.45.2
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
