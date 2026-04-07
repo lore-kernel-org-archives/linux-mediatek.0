@@ -4,109 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BB41FEEF55
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2026 14:55:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3156DFF510A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2026 15:45:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7O+zSSK3GIsBsnq81maqI5w/67B+NUUKHtZOyjDy8dE=; b=Yy/URU+ln+sBcFc72rHaY8vNJl
-	6/VCIQdr5Ype941+8AIjm/CFXZvsbEEQCJkdyvVtNLzF6EMjvLaYLVeDLo1mHl0dningAFASq/bys
-	S/xVKH0OTmsgKubJ/fOb023HVRb7EWNy9yB6pHYTeRg3NiZhCChcVNhkXcZTQoZzfRKML+0nxC/ze
-	UBHem67KofHpPIKdlTgVItn5z/Gc/azpbJQqbx12FEzXDaTvbuMx0270KYmo5NBryOQjwe90xcVOu
-	E7+pAkxAKWnv7l0uf8pgLA5BaHLyvx9K6worQmAxAZdsZxDSxr3LUZS+0q8fnAjZXtDDsZ3QB4hPd
-	lkMVc1SA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mdgebIX8WCshNHCphbYwlC8WuuoYhJuJww2bMe0846A=; b=sxZ1CSlRwcmwDHu8+6eICiLXn5
+	Slh0bNaRaKiNxVKnCynKMfduVSvblKw6q9kfyBs9aaF1kX4FmprQMXqaF1APF30UNu4mS8jLAFLpd
+	iBJfy2KjUWEnwT8ALd0w+ZH5oyWFbx17wmD83cruWAk9ATGl3ON56Dl/WmFXHmLy40NgMLNelLbTZ
+	e3adxW2SflmYyMXG49iBbEbL6k0n9VrPUw4fPl7QeIQk9+K80RNxRcqfFyfIuqtldM07B+woNvHlV
+	hm4mHQnguithO9taYYzrHJ3v3TaFQWEepz8EwYvTu5x0n0nwx8RBSlfNNdT2SirwukrQyYUHv7Yc0
+	o9d9MFMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wA7pd-00000006elq-3VMH;
-	Tue, 07 Apr 2026 14:55:09 +0000
-Received: from mail-yx1-xb12f.google.com ([2607:f8b0:4864:20::b12f])
+	id 1wA8cB-00000006jkw-0bbB;
+	Tue, 07 Apr 2026 15:45:19 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wA7pa-00000006elG-24tN
+	id 1wA8c9-00000006jkH-3Kez
+	for linux-mediatek@bombadil.infradead.org;
+	Tue, 07 Apr 2026 15:45:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=mdgebIX8WCshNHCphbYwlC8WuuoYhJuJww2bMe0846A=; b=SBTBmS/KDJiNBM7lz/Mgj+4o7z
+	EQeH5qwxV2lXcXvzTt+SMuioZhm//2Wx2IWtARQZJgqR2Ob6xMHjpYXWIhJf6y/d8agC8epqdDt4/
+	t6zTB1bcqvUWLHpfdLBm+N9SqjJo6dudVD3CvhjZzqu1p6cod04X39j4b9ug5zt74eEZlZoliu5nD
+	N9XDITnyXNTwGBNHM+4K00AaMlcYONxEPHwegzTZUsJGpa842LfOlHxJvMYEAx3BO4RmUMkWYDcwM
+	xEWb4xizraQ+kaXlEEMs4TEy2Bj21P9KNhFn9B/6tPnnqZdnF1z0IYoMB4lbqNyeNgF8YS8pFUI+5
+	8QdDKBig==;
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1wA8c6-00000008cWQ-3Ix5
 	for linux-mediatek@lists.infradead.org;
-	Tue, 07 Apr 2026 14:55:09 +0000
-Received: by mail-yx1-xb12f.google.com with SMTP id 956f58d0204a3-65005a8840dso5130155d50.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 07 Apr 2026 07:55:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1775573705; cv=none;
-        d=google.com; s=arc-20240605;
-        b=RajrGuqdMC7CDyPANpHB6HviWW1CG0errHWu8K2o/iUxvvrXfHgNe9QYQQRkp5seRM
-         Ap2EzfdQMjutneNwTg3XAIFoHGViVCzuJRzkNKEHCU5HoHlWbfiJGBTxYNq1sCKskakg
-         xOSyWCVM1CRIMERqS6p/gv+HoF17Y32lt19q1duS6mgGC1g1GUueHJVX35PYXr9HNAG0
-         7GggyLe3u1GH8oSb0LF+VxKL7klsE3EQFzLXpFmkIf5sWpT4GLSZxg7LhfHqn6qXqNMl
-         1d7iz/DlZjlBkk4olftQorriMSh5ttMpBvzykF4fp2Ksn4pc6Ht8gBZSZ24OwF12KNyT
-         NfOQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=7O+zSSK3GIsBsnq81maqI5w/67B+NUUKHtZOyjDy8dE=;
-        fh=2uZE/PEDWvhZZnfixOzgnKMqzl/RozEmV20tsRQPl4M=;
-        b=e2bNhfimkIRIyNWZIRf46IX539wbbPL0RzWTZlfWu88HqDAdkS1H7IAZT61+0i/czk
-         b52bLWXvV6jqoya+hlxlVWXUnALICKr5p1UCA0EKWem5Fgk4T9MXEY0yk3B03hIKhZbf
-         YpO6j3eeNPB0Re4JQ8Fssy2rdL8be8D/Q6DLwGEcuvC6Iigr0FMmeBacUhU1T/9LaJeJ
-         K5jLhxsREyeoolcSeDdGt4YaQqyTu2HciyEtvPoiAX5NfSpFJHOTagIDacaiweQeLren
-         GHhAEXv+1VaPGWYBP7vbUo9x8XN0VM2YuP+bO0FyL+VcqlfQpv1EyvG0zrC5UYxx5cLe
-         rWaw==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Tue, 07 Apr 2026 15:45:16 +0000
+Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-2b258576d8cso33031495ad.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 07 Apr 2026 08:45:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1775573705; x=1776178505; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=7O+zSSK3GIsBsnq81maqI5w/67B+NUUKHtZOyjDy8dE=;
-        b=na84RH8MVpeGdLBstlE3r8aOJC+07id42RJ+q2AXQ1WbUmZn+eF9wem/PXSXmh8QKz
-         hkQUwxsS8Ut5kfsi0IHyG5JI6vnwoSPg90SRJN8AY73FZcsjOd1kXS7Sws43M69F3q4+
-         PxK4hRpmutLa9V+U6Hgy58NK//0bKf+3/esclBMxwDMn3iCjScS2sY87Mi4Vlq5k8tVG
-         sBAGOOSMK7Xsm20Q+wekJfqMBnu7M+ZY4vGo+HCf4s2XSvM0dQ63Gi188UrFdeZ9REkX
-         dm5gnr0q9fBlx90w4BvhBvO7a4ksAdy2ijxFLddcosbffIZI9TUePd+nqRNHIwdjcI+r
-         Dgyw==
+        d=gmail.com; s=20251104; t=1775576712; x=1776181512; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=mdgebIX8WCshNHCphbYwlC8WuuoYhJuJww2bMe0846A=;
+        b=rD15C5gJrDbCxsPg7AfZyp1cXMK9BECznqTyIzJqDYeBF4rXtZw8ILdoIx9EUVXpUK
+         Yt7mJDvz69FIt/N/ojQpnS/yyyLcXi4AklseUYzD1QIeJMefkWWQatSMrH5WvbC/fZ8P
+         Jxii+9zVr603Mj0umwydAKUmVIwY8UR2wmannv2foHDrjfm8NWpzlrqxxFfZnqj1YHTA
+         oAa22ZE24hWmpxnfHeYC4boGh+e52ac4k03jpphEtPeG+E5hPkikc9jLUvrAGLgvChue
+         q33xkXEERN0TvSoyv0MS5eKGT0nHYMYwgmxojrQ23W2OF4hTL5fguntO/gWsvnk5wvyl
+         t5Pw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1775573705; x=1776178505;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=7O+zSSK3GIsBsnq81maqI5w/67B+NUUKHtZOyjDy8dE=;
-        b=HqgP1YwWOQaH09+MVZssn9MXOs4q6kKTBcy6KBg2b10yKUkT1P+UC+bMhgRVFYDBDH
-         1sNqFiBWlFqrtSfl4eYXO5hER9SlQIhoJ1NbHO+R5tr99imi9Yr29brNzDOZSwuFE22h
-         woiRx45zRBmAYMi2ugFEU0tuRS7jPEf18+3nnJwWTtf4+yZ43U/Ve4fdM71qph7HN+AT
-         /NNFhjCaGLwNIeG1PD1NMz2sPoJepNUjkMI93+wQ9y10aZ3x1+87piE7ZRhNWCXephQW
-         cMIEw1t89fxylb3NyPtZ+A6X0nLnOUKakyOPXNjCeSIDiiZf2IEfnQ8YoPoekhNeH3Nn
-         OnDQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVmGeGc+BBPx5x1xNt8cVDGMiCK8h6ZdOr6TgEsBY3PX/sxRGoXL2CicK7ADvtHR23x1i/E5Cnm0ZMEmd84ow==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxpNH2qkhtCk8OC8dLaxBzfxTIzVBN0YEXQ7hkc7MeDdITWB0t0
-	UzQ3Xp2VOcPUN2lIqzZqboaTDNDt78fAGCcNqvH+3ujIBfa3hUYrJ3ritYlk1Mc5MyCgddMvyea
-	NX87b1dbmObP5ynmMfc/ZjtMhO41cCms=
-X-Gm-Gg: AeBDieuQEJlwPLS5acuNkEescdhtV9YPI9SnyuoI5RvQvSS9bFD+3Cn7fN3RiaBz6Qb
-	of2SxwL/aw80FCXy2SyINOI9dsxwS1S+TSybi/cH7ZEoTo1IZSVC+BCpEclG1ayInSiUd7EP7lW
-	bQmjwJUplqmF0/4vdTIKq5C0XH21NUZYUIb6d0zYardlUf/UXxQFqn4aHzwCecm/ZU+g3yEdFU8
-	GF/sywfQD2b49hwhhQ90iImNGgtBbEmn3hHKhOc3eQCgixpc8wMVodDza1BJZ48z/HHkSibE324
-	rCxnTHI/7dQM3E+XbFUx1hMNuOXakMDch1hOmBtGYVgoQ3r2JFs2RFK7SkeU9VW0X5D8Ekd3dcf
-	mLg==
-X-Received: by 2002:a05:690e:1482:b0:650:7a8a:f89e with SMTP id
- 956f58d0204a3-6507a8afa29mr3439862d50.9.1775573705119; Tue, 07 Apr 2026
- 07:55:05 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1775576712; x=1776181512;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=mdgebIX8WCshNHCphbYwlC8WuuoYhJuJww2bMe0846A=;
+        b=LqY+S6Xdq6/ZwVav8rIbwv0Q3A5DUnryKE+soPHKbiXukh1HdfmSQK+pzMf7B58NVH
+         GTgFZetxIxKJcX7k9kCTqUqp2nlXcOZ9SaGFPYdjJu2KZSxkm967G1klZiDnkHmj71U8
+         CPDQEkXb7ML1cfs0iIFKXiVjyFm2UdO6tcoBQbA/4HRw3hzjCr0erd/Xm+dy0KDdeID/
+         bys1zU/g70XtBbrZtIO1XHsXFRCdGs8kq1TWcG29XL6Fkdr88X4hMqIFSVVVa4HtXy2e
+         wgBZfEJp1QtV5KTI1fGgx1BgZowbWd908ZQkiixW3tF4l6UDDzHNJK346B0HZ6tDKl0P
+         g5bA==
+X-Forwarded-Encrypted: i=1; AJvYcCXF0UbLtLIWF9o1/CR5jiMXiSMfbSSvGh020r37qzacBj6cnikh+rLZVDcId2nGao7AUMLhO94pn4TW0JhEBg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyYlml3dws+WdIoqvvmPaXSYnF7BeHNOplY1zsKdds82Ff/l6mQ
+	sybIZJkvlXWXz9vrmV6e4Nw9slfmMGVsdjQv5PxdUPIwlcEkCwtUFM0b
+X-Gm-Gg: AeBDieujQmElZVi7ZmXMCLt/wIlj+r2Y7lDLs6Kjs5OWLTFNZL5iVeoHB2bJC1s6FfN
+	CbSVEZutVPH92xLufLbwtfUZTTosdJawdp5FIKugENB04VybTnSDWS1omZkRvGM+qmN26kkHbGD
+	8ppY8g6fwsHcRodzjxk6B9qqC1bQmCE2rvf+mSUJRxBQI7vxtrManFVZQCGrQK1EyH4qiUTi7h8
+	KsytXwbdfYpoBTR6FDnJXvd+qm77vhBvC9prJetAv9uzJTerggQrpWm7M0RaaaHkYuqXKYN4WVC
+	uM8BKkeAJEwhPwWQSSzJbz3GhCakywMX98/bzDpCIBlRgSxnQfZJ5XW46kkW7jvQityDhf8FeCA
+	59dtUOVPisAh5lfSCLGgqFkgYVxHkH+neZfqRiwRImXCR6IIsXUdGMMhHIaQxvdJb6MXlfh33Yi
+	ObC0voWHmjkH+VYh817rCjVP8=
+X-Received: by 2002:a17:903:1aa8:b0:2b2:42b1:ad9a with SMTP id d9443c01a7336-2b28182be11mr183382875ad.19.1775576712346;
+        Tue, 07 Apr 2026 08:45:12 -0700 (PDT)
+Received: from BM5220 ([49.215.226.71])
+        by smtp.googlemail.com with ESMTPSA id d9443c01a7336-2b27472d55fsm230992905ad.11.2026.04.07.08.45.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 07 Apr 2026 08:45:11 -0700 (PDT)
+From: Zenm Chen <zenmchen@gmail.com>
+To: nbd@nbd.name,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: zenmchen@gmail.com,
+	stable@vger.kernel.org
+Subject: [PATCH mt76] wifi: mt76: mt76x2u: Add support for ELECOM WDC-867SU3S
+Date: Tue,  7 Apr 2026 23:44:30 +0800
+Message-ID: <20260407154430.9184-1-zenmchen@gmail.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-References: <20260407114851.3087886-1-chris.lu@mediatek.com>
-In-Reply-To: <20260407114851.3087886-1-chris.lu@mediatek.com>
-From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-Date: Tue, 7 Apr 2026 10:54:53 -0400
-X-Gm-Features: AQROBzAHknm1LcaBHn6KcplFZfkI-H597cHtdCF_vlpcMyfjpqsUG1hHk8Yd4sw
-Message-ID: <CABBYNZ+xi_ktCMSeXP_aNTVLZzKoz+Ye4gFZFvF7eiMRZcULww@mail.gmail.com>
-Subject: Re: [PATCH v2] Bluetooth: btmtk: add event filter to filter specific event
-To: Chris Lu <chris.lu@mediatek.com>
-Cc: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>, 
-	Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>, 
-	SS Wu <ss.wu@mediatek.com>, Steve Lee <steve.lee@mediatek.com>, 
-	linux-bluetooth <linux-bluetooth@vger.kernel.org>, 
-	linux-kernel <linux-kernel@vger.kernel.org>, 
-	linux-mediatek <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260407_075506_549965_C95437CA 
-X-CRM114-Status: GOOD (  21.20  )
+X-CRM114-CacheID: sfid-20260407_164514_934412_B516EE53 
+X-CRM114-Status: GOOD (  10.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,111 +120,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Chris,
+Add the ID 056e:400a to the table to support an additional MT7612U
+adapter: ELECOM WDC-867SU3S.
 
-On Tue, Apr 7, 2026 at 7:48=E2=80=AFAM Chris Lu <chris.lu@mediatek.com> wro=
-te:
->
-> Add an event filter to filter event with specific opcode to prevent BT
-> stack from receiving unexpected event.
->
-> Event with opcode 0xfc5d is generated when MediaTek's Bluetooth enable
-> firmware logs and is not expected to be sent to userspace.
->
-> Signed-off-by: Chris Lu <chris.lu@mediatek.com>
-> ---
-> v1 -> v2: update commit message
-> ---
->  drivers/bluetooth/btmtk.c | 22 ++++++++++++++++++++++
->  drivers/bluetooth/btmtk.h |  7 +++++++
->  drivers/bluetooth/btusb.c |  2 ++
->  3 files changed, 31 insertions(+)
->
-> diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-> index 55516b4602db..302d6ddf9062 100644
-> --- a/drivers/bluetooth/btmtk.c
-> +++ b/drivers/bluetooth/btmtk.c
-> @@ -1503,6 +1503,28 @@ int btmtk_usb_shutdown(struct hci_dev *hdev)
->         return 0;
->  }
->  EXPORT_SYMBOL_GPL(btmtk_usb_shutdown);
-> +
-> +int btmtk_recv_event(struct hci_dev *hdev, struct sk_buff *skb)
-> +{
-> +       struct hci_event_hdr *hdr =3D (void *)skb->data;
-> +
-> +       if (hdr->evt =3D=3D HCI_EV_CMD_COMPLETE) {
-> +               struct hci_ev_cmd_complete *ec;
-> +               u16 opcode;
-> +
-> +               ec =3D (void *)(skb->data + HCI_EVENT_HDR_SIZE);
-> +               opcode =3D __le16_to_cpu(ec->opcode);
-> +
-> +               /* Filter vendor opcode */
-> +               if (opcode =3D=3D 0xfc5d) {
-> +                       kfree_skb(skb);
-> +                       return 0;
-> +               }
-> +       }
-> +
-> +       return hci_recv_frame(hdev, skb);
-> +}
-> +EXPORT_SYMBOL_GPL(btmtk_recv_event);
->  #endif
->
->  MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
-> diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
-> index adaf385626ee..08b73927c8f3 100644
-> --- a/drivers/bluetooth/btmtk.h
-> +++ b/drivers/bluetooth/btmtk.h
-> @@ -218,6 +218,8 @@ int btmtk_usb_suspend(struct hci_dev *hdev);
->  int btmtk_usb_setup(struct hci_dev *hdev);
->
->  int btmtk_usb_shutdown(struct hci_dev *hdev);
-> +
-> +int btmtk_recv_event(struct hci_dev *hdev, struct sk_buff *skb);
->  #else
->
->  static inline int btmtk_set_bdaddr(struct hci_dev *hdev,
-> @@ -296,4 +298,9 @@ static inline int btmtk_usb_shutdown(struct hci_dev *=
-hdev)
->  {
->         return -EOPNOTSUPP;
->  }
-> +
-> +static inline int btmtk_recv_event(struct hci_dev *hdev, struct sk_buff =
-*skb)
-> +{
-> +       return -EOPNOTSUPP;
-> +}
->  #endif
-> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-> index f9d515ee9124..daf8a387e660 100644
-> --- a/drivers/bluetooth/btusb.c
-> +++ b/drivers/bluetooth/btusb.c
-> @@ -4150,6 +4150,8 @@ static int btusb_probe(struct usb_interface *intf,
->         } else if (id->driver_info & BTUSB_MEDIATEK) {
->                 /* Allocate extra space for Mediatek device */
->                 priv_size +=3D sizeof(struct btmtk_data);
-> +
-> +               data->recv_event =3D btmtk_recv_event;
->         }
->
->         data->recv_acl =3D hci_recv_frame;
-> --
-> 2.45.2
+Compile tested only.
 
+Cc: stable@vger.kernel.org # 5.10.x
+Signed-off-by: Zenm Chen <zenmchen@gmail.com>
+---
+This ID was found from [1] and adding it to the device table should be 
+enough to make it work. Hardware probes at [2] can prove its existence.
 
-https://sashiko.dev/#/patchset/20260407114851.3087886-1-chris.lu%40mediatek=
-.com
+[1] https://bushowhige.blogspot.com/2019/08/ubuntu-1804-mediatek-usb-wi-fi.html
+[2] https://linux-hardware.org/?id=usb:056e-400a
+---
+ drivers/net/wireless/mediatek/mt76/mt76x2/usb.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Both issues seem valid to me. That said, I wonder if it wouldn't have
-been better to allow drivers to register with its own struct
-hci_ev/struct hci_cc tables, that way the driver can extend event
-parsing rather than intercepting it and performing custom parsing
-which can lead to bugs like the ones mentioned above.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c b/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
+index 01cb3b283..459c4044f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
+@@ -16,6 +16,7 @@ static const struct usb_device_id mt76x2u_device_table[] = {
+ 	{ USB_DEVICE(0x0e8d, 0x7612) },	/* Aukey USBAC1200 - Alfa AWUS036ACM */
+ 	{ USB_DEVICE(0x057c, 0x8503) },	/* Avm FRITZ!WLAN AC860 */
+ 	{ USB_DEVICE(0x7392, 0xb711) },	/* Edimax EW 7722 UAC */
++	{ USB_DEVICE(0x056e, 0x400a) },	/* ELECOM WDC-867SU3S */
+ 	{ USB_DEVICE(0x0e8d, 0x7632) },	/* HC-M7662BU1 */
+ 	{ USB_DEVICE(0x0471, 0x2126) }, /* LiteOn WN4516R module, nonstandard USB connector */
+ 	{ USB_DEVICE(0x0471, 0x7600) }, /* LiteOn WN4519R module, nonstandard USB connector */
+-- 
+2.53.0
 
-
---=20
-Luiz Augusto von Dentz
 
