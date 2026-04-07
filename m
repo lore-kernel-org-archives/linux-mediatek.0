@@ -4,58 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 356F4EDB7C5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2026 07:15:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9ADD3EDB7CA
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2026 07:26:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ct66h3ks0TCkZpnAPLTecdDjDaAg6BW6U9iVsPjRtm4=; b=ZF/67lG7tsx7gm3xICo+N838Z/
-	y5x2WWs1Rs3Wk0ruMFCyQlP84WyMDbEwf5D/BLTwFkLqO8tdAyxjOhdz5shwbJQifzu8/uikMrZ1S
-	mE1Vjl6tIijrgDZbmkH+C1/Z416M6eiHs9Io0o6aUcbD0EnqUyNKFQTji9/23P/iH5wI9xkWKH0uv
-	sqfEB7+HyDC3QM93SoIztQOykwA6fQrLWvbP0sTIKTgxOCjIzhlYKM26nUaFdd1u3upapbkJm80tO
-	1r1+Kvbnvm2biwKmTXkjYGKjdbvjGEqB53YxO72nxJIfvcNcB9Fl+FRGDEQyE5jy2wvUWhN/SAYrH
-	VRh3u+fA==;
+	bh=uNskSbdvu6jFrA/u8elybDz1SG9TWXPXirXnKe3aEt8=; b=VmAkVU+zi6jiBmTOg53qDI/cLL
+	9Y6v6lRHUKbGoVGTooepKTJXLv9HJhMvB74F27jmTTYzEx48yPms7ry2kr8Y6LRASIqXDRHLlwmBd
+	aE6lQynm8LhtP6eMRxLxL0BS2J4CnIStIevR5dc/0KfszoV+eJN9/XiFiQpXHAE3tPDSPkXW5ya7N
+	rjvv8Zf8xm7ZpLlWyd5zBzq19xndtdLblzOcVShFtRhzs4V15/MNMjFLBhiSMowvIYB5yacxpepQi
+	KOhi5Pnbp7VCo36U/lwOoTdC2Z+OGFDE0YRuYyr8Bkyi7FR0YP9iNk1wxB2viQG4fdnhlPWpLCNCH
+	TKy6Y2LQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wA0eL-000000063LY-1jCW;
-	Tue, 07 Apr 2026 07:15:01 +0000
-Received: from mx3.molgen.mpg.de ([141.14.17.11])
+	id 1wA0pW-000000064Bd-1duf;
+	Tue, 07 Apr 2026 07:26:34 +0000
+Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wA0eG-000000063HS-1NBF
+	id 1wA0pT-000000064Av-09mv
 	for linux-mediatek@lists.infradead.org;
-	Tue, 07 Apr 2026 07:14:59 +0000
-Received: from [192.168.44.15] (unknown [185.238.219.34])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: pmenzel)
-	by mx.molgen.mpg.de (Postfix) with ESMTPSA id 49A204C2C37D7A;
-	Tue, 07 Apr 2026 09:14:33 +0200 (CEST)
-Message-ID: <abdf652a-f7e1-4641-bfd9-c0cfc20cca6d@molgen.mpg.de>
-Date: Tue, 7 Apr 2026 09:14:29 +0200
+	Tue, 07 Apr 2026 07:26:33 +0000
+X-UUID: 15288c4a325311f1aa26b74ffac11d73-20260407
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.12,REQID:53894c7f-3703-429d-8003-cd38803bdc3f,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:e7bac3a,CLOUDID:d08578642a4a2fcd9191a12797752f6e,BulkI
+	D:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|898,TC:nil,Content:0|15|
+	52,EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0
+	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 15288c4a325311f1aa26b74ffac11d73-20260407
+X-User: xiaopei01@kylinos.cn
+Received: from [10.42.12.251] [(10.44.16.150)] by mailgw.kylinos.cn
+	(envelope-from <xiaopei01@kylinos.cn>)
+	(Generic MTA with TLSv1.3 TLS_AES_128_GCM_SHA256 128/128)
+	with ESMTP id 1313178304; Tue, 07 Apr 2026 15:26:24 +0800
+Message-ID: <3cf2a965-27f4-40e2-99ad-0b386fbc8831@kylinos.cn>
+Date: Tue, 7 Apr 2026 15:26:22 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] Bluetooth: btmtk: add event filter to filter specific
- event
-To: Chris Lu <chris.lu@mediatek.com>
-Cc: Marcel Holtmann <marcel@holtmann.org>,
- Johan Hedberg <johan.hedberg@gmail.com>,
- Luiz Von Dentz <luiz.dentz@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
- Will Lee <will-cy.Lee@mediatek.com>, SS Wu <ss.wu@mediatek.com>,
- Steve Lee <steve.lee@mediatek.com>, linux-bluetooth@vger.kernel.org,
- LKML <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org
-References: <20260407064759.3036650-1-chris.lu@mediatek.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20260407064759.3036650-1-chris.lu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Subject: Re: [PATCH 1/4] spi: mtk-snfi: unregister ECC engine on probe failure
+ and remove() callback
+To: Mark Brown <broonie@kernel.org>
+Cc: gch981213@gmail.com, linux-spi@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <cover.1775273351.git.xiaopei01@kylinos.cn>
+ <09ac1024a0f1626efaa47ceefc5cfb8ee5dd9418.1775273351.git.xiaopei01@kylinos.cn>
+ <d4871bdf-15bf-4491-be5c-5b38a065d810@sirena.org.uk>
+From: Pei Xiao <xiaopei01@kylinos.cn>
+In-Reply-To: <d4871bdf-15bf-4491-be5c-5b38a065d810@sirena.org.uk>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260407_001456_527014_3E99D131 
-X-CRM114-Status: GOOD (  17.92  )
+X-CRM114-CacheID: sfid-20260407_002631_416761_F2345172 
+X-CRM114-Status: UNSURE (   8.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,106 +80,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dear Chris,
 
 
-Thank you for the patch.
-
-Am 07.04.26 um 08:47 schrieb Chris Lu:
-> Due to some Bluetooth hosts have mechanism to detect invalid events,
-> causing abnormal behavior.
-
-Sorry, this description is much too short and general. Please elaborate, 
-and document details.
-
-> Add a event filter to prevent debugging events from being sent to host.
-
-a*n*
-
-What are debugging events, and how can they be detected?
-
-> Signed-off-by: Chris Lu <chris.lu@mediatek.com>
-
-Should there be a Fixes: tag, so it gets backported?
-
-> ---
->   drivers/bluetooth/btmtk.c | 22 ++++++++++++++++++++++
->   drivers/bluetooth/btmtk.h |  7 +++++++
->   drivers/bluetooth/btusb.c |  2 ++
->   3 files changed, 31 insertions(+)
+在 2026/4/6 20:53, Mark Brown 写道:
+> On Sat, Apr 04, 2026 at 11:44:58AM +0800, Pei Xiao wrote:
 > 
-> diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-> index 55516b4602db..302d6ddf9062 100644
-> --- a/drivers/bluetooth/btmtk.c
-> +++ b/drivers/bluetooth/btmtk.c
-> @@ -1503,6 +1503,28 @@ int btmtk_usb_shutdown(struct hci_dev *hdev)
->   	return 0;
->   }
->   EXPORT_SYMBOL_GPL(btmtk_usb_shutdown);
-> +
-> +int btmtk_recv_event(struct hci_dev *hdev, struct sk_buff *skb)
-> +{
-> +	struct hci_event_hdr *hdr = (void *)skb->data;
-> +
-> +	if (hdr->evt == HCI_EV_CMD_COMPLETE) {
-> +		struct hci_ev_cmd_complete *ec;
-> +		u16 opcode;
-> +
-> +		ec = (void *)(skb->data + HCI_EVENT_HDR_SIZE);
-> +		opcode = __le16_to_cpu(ec->opcode);
-> +
-> +		/* Filter vendor opcode */
-> +		if (opcode == 0xfc5d) {
-> +			kfree_skb(skb);
-> +			return 0;
-> +		}
-> +	}
-> +
-> +	return hci_recv_frame(hdev, skb);
-> +}
-> +EXPORT_SYMBOL_GPL(btmtk_recv_event);
->   #endif
->   
->   MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
-> diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
-> index adaf385626ee..08b73927c8f3 100644
-> --- a/drivers/bluetooth/btmtk.h
-> +++ b/drivers/bluetooth/btmtk.h
-> @@ -218,6 +218,8 @@ int btmtk_usb_suspend(struct hci_dev *hdev);
->   int btmtk_usb_setup(struct hci_dev *hdev);
->   
->   int btmtk_usb_shutdown(struct hci_dev *hdev);
-> +
-> +int btmtk_recv_event(struct hci_dev *hdev, struct sk_buff *skb);
->   #else
->   
->   static inline int btmtk_set_bdaddr(struct hci_dev *hdev,
-> @@ -296,4 +298,9 @@ static inline int btmtk_usb_shutdown(struct hci_dev *hdev)
->   {
->   	return -EOPNOTSUPP;
->   }
-> +
-> +static inline int btmtk_recv_event(struct hci_dev *hdev, struct sk_buff *skb)
-> +{
-> +	return -EOPNOTSUPP;
-> +}
->   #endif
-> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-> index f9d515ee9124..daf8a387e660 100644
-> --- a/drivers/bluetooth/btusb.c
-> +++ b/drivers/bluetooth/btusb.c
-> @@ -4150,6 +4150,8 @@ static int btusb_probe(struct usb_interface *intf,
->   	} else if (id->driver_info & BTUSB_MEDIATEK) {
->   		/* Allocate extra space for Mediatek device */
->   		priv_size += sizeof(struct btmtk_data);
-> +
-> +		data->recv_event = btmtk_recv_event;
->   	}
->   
->   	data->recv_acl = hci_recv_frame;
+>> +	ret = devm_add_action_or_reset(&pdev->dev, mtk_unregister_ecc_engine,
+>> +				       &ms->ecc_eng);
+>> +	if (ret) {
+>> +		dev_err(&pdev->dev, ret, "failed to add ECC unregister action\n");
+>> +		goto release_ecc;
+>> +	}
+> 
+> This should either be dev_err(), in which case ret is not a format
+> string and this is buggy (I'm surprised it compiles without warnings...)
+> or it should be dev_err_probe() in which case the arguments are correct.
+ok, thanks a lot, from a person make bug.
+I will send v2.
 
+Pei.
+> The latter is a little better, though it's unlikely to make a practical
+> difference here.
 
-Kind regards,
-
-Paul
 
