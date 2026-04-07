@@ -4,67 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 198B9FB519F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2026 06:48:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BFA8E9D832
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2026 06:51:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=k94lUa+KEMbk6AFvbQk7NdZga11Yp/wVHOllCIcd9o0=; b=D7QL8oscIA16OO9hH6nGFQPjtz
-	Is85CtqPvFsUgl2wtfQwOYH3+c9X80ZcScHT3ItDmNJOwxGr0sci1s5pzV0x6ckFT6tjeClT9hX2m
-	8b8rjeqVoOq3EZqHEsKch+Cekj8uuRV3Dzb4xmHaafOvNk06NknKEw0V/hJjRfswcP+AchPUXs/cf
-	EqLfEI/JdOEhg5XQFFMma3wYo15UtfJkc8kqBDjL1XeR02lWXX6zXYNUYv/YnPq1qJXjyxsSXDCeO
-	DFHPlIkuTWDSvCuU7j3oBFf4s/Xpk3d62BE4zc2VPHrLInj2l59qJe3/NJaWedUaSFR3qBnUVmXDi
-	QuDhTHsQ==;
+	bh=arBSd4zr9tsfwVdrLFBln2RLy4Vaw8q9hroMz/bROds=; b=QfJ9jBXLgDGbcwFSGWvn/D2hAc
+	je88ZT92IRyoMxiqj6CKfM86DCcVoccybo7JqeBLWzGa4UzOkCx8MVbEJIGdVV4hrq0e1gnROTS2g
+	UCDr8p3ARSoSlS8fGgG4udL7YFzFpLBe3l2atYmSC+3qEcSGInOTN/xhBUm1h8s7DNN1C4uo8tS2p
+	OYIiJKK9f9ppEYYcu/EhEKzut5n1HPoA9iiEAXR3zXtMDenww5aAEjO9yOywlmK+NEYdwP+/Ad8H1
+	SOLp8GSbSqQw5mXiJb39JacZjctY3ZgJSBY3hFww2R6PPYzxZ8njU6y6fg9GP9TWZ5/i3lpRtWxcC
+	0xo8TT1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wA0Es-000000061Yu-0DqK;
-	Tue, 07 Apr 2026 06:48:42 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wA0HD-000000061tz-0sD6;
+	Tue, 07 Apr 2026 06:51:07 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wA0Ep-000000061Xs-2Dc3;
-	Tue, 07 Apr 2026 06:48:40 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id C82BC441C6;
-	Tue,  7 Apr 2026 06:48:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5A990C116C6;
-	Tue,  7 Apr 2026 06:48:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1775544518;
-	bh=sO9aQuhE+niwJIm1bqiOtD3Jjz6qnYB8L83GRriDkrA=;
-	h=From:Date:Subject:To:Cc:From;
-	b=W7RyjkJPbc9QY9ImPBHkmjo0uS84hXK7K/BSLw6m6mt+L9Y6FaXWxApbiloGeOI49
-	 MO+z5Z2rMK1/BgV1bIFHqNSaXzJTEtrPCqO2xkAJUXzYxiLwtDdg79S1CiJLQ3MJXR
-	 nRERo2iz9AwoFN0eBfPSC1I21LHmaklRVfmdP1FoYDSbJ6zyvfr2DjkCoIvNa3Du9l
-	 OpS8xCNQnTvj3bxcwjnKpKqZdS7aIuqxj0XE9F+GlfCPYJeOE+69VSHzgjg1eE5AMN
-	 XHn4GAOCbmEl687Akghnl9byCiBaJU5iA1OX/KUPavRUrtkLdC7+VPrEMQhlGMfpxb
-	 GAltvef+phLjw==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 07 Apr 2026 08:48:04 +0200
-Subject: [PATCH net v3] net: airoha: Add dma_rmb() and READ_ONCE() in
- airoha_qdma_rx_process()
+	id 1wA0HA-000000061tS-1P5u
+	for linux-mediatek@lists.infradead.org;
+	Tue, 07 Apr 2026 06:51:05 +0000
+X-UUID: 217d337e324e11f19e7563141e833ce8-20260406
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=arBSd4zr9tsfwVdrLFBln2RLy4Vaw8q9hroMz/bROds=;
+	b=M9QscBYImEWXcsD7mD5jgN+7m3oxBhWPEttGUFJbxT4NKSx8pWvAcy6u6Y+Lhso1tVEnfy3No3Gg8LhxIu5J+u3/pM1VHnwCq0L1xixupWNDV+vF4dbjBP/SSuGV/MQoFmNig2LCyaWHnMGu85IRkngBmSTnGDVwTNYEkGjiCCA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.12,REQID:fb6dc7e0-4902-40e0-9253-2aa537417259,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:e7bac3a,CLOUDID:8721218f-6df4-4a3d-a7a4-fbdc42d669ce,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|865|888|898,TC:-5,Content:0|
+	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0
+	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 217d337e324e11f19e7563141e833ce8-20260406
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <chris.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1869335141; Mon, 06 Apr 2026 23:50:57 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Tue, 7 Apr 2026 14:50:54 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Tue, 7 Apr 2026 14:50:54 +0800
+From: Chris Lu <chris.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>,
+	SS Wu <ss.wu@mediatek.com>, Steve Lee <steve.lee@mediatek.com>,
+	linux-bluetooth <linux-bluetooth@vger.kernel.org>, linux-kernel
+	<linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
+Subject: [RESEND PATCH v1] Bluetooth: btusb: MT7922: Add VID/PID 0e8d/223c
+Date: Tue, 7 Apr 2026 14:50:53 +0800
+Message-ID: <20260407065053.3037036-1-chris.lu@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260407-airoha_qdma_rx_process-fix-reordering-v3-1-91c36e9da31f@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/5XNSw6CMBCA4auQrq1pp1CIK+9hDOExQKO2OCUNh
- nB3m650p8t55Ps35pEMenbKNkYYjDfOxkEdMtZNjR2Rmz7ODARokQvgjSE3NfWzfzQ1rfVMrkP
- v+WBWTuioj5wdeQmgRAVF0eqCRWsmjB+pc2EWF3aNy8n4xdErtYNMpz8zQXLJCwVllZf5IDScb
- 0gW70dHY0oE+GTVryxEVlYSNYLqoWy/2H3f374jibI3AQAA
-X-Change-ID: 20260402-airoha_qdma_rx_process-fix-reordering-722308255b65
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Xuegang Lu <xuegang.lu@airoha.com>, Simon Horman <horms@kernel.org>, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- netdev@vger.kernel.org
-X-Mailer: b4 0.14.3
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260406_234839_632093_A62F2F42 
-X-CRM114-Status: GOOD (  11.49  )
+X-CRM114-CacheID: sfid-20260406_235104_397361_BA2F25F4 
+X-CRM114-Status: UNSURE (   8.60  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,96 +88,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add missing dma_rmb() in airoha_qdma_rx_process routine to make sure the
-DMA read operations are completed when the NIC reports the processing on
-the current descriptor is done. Moreover, add missing READ_ONCE() in
-airoha_qdma_rx_process() for DMA descriptor control fields in order to
-avoid any compiler reordering.
+Add VID 0e8d & PID 223c for MediaTek MT7922 USB Bluetooth chip.
 
-Fixes: 23020f0493270 ("net: airoha: Introduce ethernet support for EN7581 SoC")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+The information in /sys/kernel/debug/usb/devices about the Bluetooth
+device is listed as the below.
+
+T:  Bus=07 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
+D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
+P:  Vendor=0e8d ProdID=223c Rev= 1.00
+S:  Manufacturer=MediaTek Inc.
+S:  Product=Wireless_Device
+S:  SerialNumber=000000000
+C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
+A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
+I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
+E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+I:  If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+I:* If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
+
+Signed-off-by: Chris Lu <chris.lu@mediatek.com>
 ---
-Changes in v3:
-- Move page pointer initialization before checking error condition on
-  payload length in order avoid using page pointer uninitialized in the
-  airoha_qdma_rx_process() error path.
-- Link to v2: https://lore.kernel.org/r/20260403-airoha_qdma_rx_process-fix-reordering-v2-1-181e6e23d27b@kernel.org
+ drivers/bluetooth/btusb.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Changes in v2:
-- Use msg1 in airoha_qdma_get_gdm_port() signature to avoid missing
-  READ_ONCE().
-- Link to v1: https://lore.kernel.org/r/20260402-airoha_qdma_rx_process-fix-reordering-v1-1-53278474f062@kernel.org
----
- drivers/net/ethernet/airoha/airoha_eth.c | 16 ++++++++++------
- 1 file changed, 10 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 91cb63a32d99..9285a68f435f 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -584,7 +584,7 @@ static int airoha_qdma_fill_rx_queue(struct airoha_queue *q)
- static int airoha_qdma_get_gdm_port(struct airoha_eth *eth,
- 				    struct airoha_qdma_desc *desc)
- {
--	u32 port, sport, msg1 = le32_to_cpu(desc->msg1);
-+	u32 port, sport, msg1 = le32_to_cpu(READ_ONCE(desc->msg1));
- 
- 	sport = FIELD_GET(QDMA_ETH_RXMSG_SPORT_MASK, msg1);
- 	switch (sport) {
-@@ -612,21 +612,24 @@ static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
- 	while (done < budget) {
- 		struct airoha_queue_entry *e = &q->entry[q->tail];
- 		struct airoha_qdma_desc *desc = &q->desc[q->tail];
--		u32 hash, reason, msg1 = le32_to_cpu(desc->msg1);
--		struct page *page = virt_to_head_page(e->buf);
--		u32 desc_ctrl = le32_to_cpu(desc->ctrl);
-+		u32 hash, reason, msg1, desc_ctrl;
- 		struct airoha_gdm_port *port;
- 		int data_len, len, p;
-+		struct page *page;
- 
-+		desc_ctrl = le32_to_cpu(READ_ONCE(desc->ctrl));
- 		if (!(desc_ctrl & QDMA_DESC_DONE_MASK))
- 			break;
- 
-+		dma_rmb();
-+
- 		q->tail = (q->tail + 1) % q->ndesc;
- 		q->queued--;
- 
- 		dma_sync_single_for_cpu(eth->dev, e->dma_addr,
- 					SKB_WITH_OVERHEAD(q->buf_size), dir);
- 
-+		page = virt_to_head_page(e->buf);
- 		len = FIELD_GET(QDMA_DESC_LEN_MASK, desc_ctrl);
- 		data_len = q->skb ? q->buf_size
- 				  : SKB_WITH_OVERHEAD(q->buf_size);
-@@ -670,8 +673,8 @@ static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
- 			 * DMA descriptor. Report DSA tag to the DSA stack
- 			 * via skb dst info.
- 			 */
--			u32 sptag = FIELD_GET(QDMA_ETH_RXMSG_SPTAG,
--					      le32_to_cpu(desc->msg0));
-+			u32 msg0 = le32_to_cpu(READ_ONCE(desc->msg0));
-+			u32 sptag = FIELD_GET(QDMA_ETH_RXMSG_SPTAG, msg0);
- 
- 			if (sptag < ARRAY_SIZE(port->dsa_meta) &&
- 			    port->dsa_meta[sptag])
-@@ -679,6 +682,7 @@ static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
- 						  &port->dsa_meta[sptag]->dst);
- 		}
- 
-+		msg1 = le32_to_cpu(READ_ONCE(desc->msg1));
- 		hash = FIELD_GET(AIROHA_RXD4_FOE_ENTRY, msg1);
- 		if (hash != AIROHA_RXD4_FOE_ENTRY)
- 			skb_set_hash(q->skb, jhash_1word(hash, 0),
-
----
-base-commit: a9d4f4f6e65e0bf9bbddedecc84d67249991979c
-change-id: 20260402-airoha_qdma_rx_process-fix-reordering-722308255b65
-
-Best regards,
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index a5e44887a5b5..5f264ac843f5 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -721,6 +721,8 @@ static const struct usb_device_id quirks_table[] = {
+ 						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x04ca, 0x38e4), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x0e8d, 0x223c), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x13d3, 0x3568), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x13d3, 0x3584), .driver_info = BTUSB_MEDIATEK |
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.45.2
 
 
