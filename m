@@ -4,65 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F0CBEDB7CA
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2026 07:27:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 226B4EDB7C8
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2026 07:38:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=VjE/kwtjHDmwGu+w7EYsta1KZK4hBKon7NUEFZP+KY8=; b=R9QqH2JCBHxV4XFp2ohZvqymvy
-	aiJsfCeKmtpwGcNbmg2j71MaQmSGgG5+YHVXabhRSSFZBt8MH5etiDWPUEHh4I9m2bgEpSNvXbLQM
-	hjRImoqKseIQca69eQ0rLzye2NTjnbV1PosAnMNJ9IYffff61qnvFXGxBO6jOzuADDiYrKDxZEU6z
-	K9LUlUvMT3uegsaClLbLTTKH7a44TiWB3IaLccD88w4ew2+uWIJXoVh07+vSZ3PlbWo76A2ICnbhy
-	YvAKbgeeKsmEtEaWFvnTZKy0GcpPK3AkorRWl1oRkHJSbmAMTDSwyHVQLbQF0DTmbl1qRPqF2HD6m
-	d5c18XJg==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dKuhbcWvVAtweYEIkm3gzIZJHw/uoJzbYfAh+xkvzGM=; b=RQIuYbq0WOFl07AJDGc8SKq7DW
+	68SF0j40nLxtw4TLLIqMSmKOetn3iQL9z7tulK8gFPZ/JZqIgEAYKdnf+jz/NYDKigF92UBhvZ9MZ
+	a1C4+nPqg1B0rSTC6jAzBZilzFG7d8IRP8GyMcdtJbE8SeXM0bgNSyRt7ZjdmZrHmQY+zQYrZyVNI
+	Gg+f8VYjUXovMyaDj2oOqpoVDLo/6Yf6He1ZrTnWTgFeinOTRZPoGZJmSgBiTpyz4PezmEQKkLbYs
+	tL8VoekkyflCU7q8+EtGTAVpjtQqxcLNc/9ammIiOlSvRTvpdu+ZBockBzPXgtSmkvfSs6TdCnydw
+	gqK4h5jQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wA0q9-000000064F2-34IE;
-	Tue, 07 Apr 2026 07:27:13 +0000
-Received: from mailgw.kylinos.cn ([124.126.103.232])
+	id 1wA11O-000000065WE-1hyi;
+	Tue, 07 Apr 2026 07:38:50 +0000
+Received: from mx3.molgen.mpg.de ([141.14.17.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wA0q6-000000064Ed-4BgA;
-	Tue, 07 Apr 2026 07:27:12 +0000
-X-UUID: 2cea3824325311f1aa26b74ffac11d73-20260407
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:89bc7613-b92a-44ba-bd44-f4baee65e200,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:e7bac3a,CLOUDID:965edecb4007e0332f95446e105f3848,BulkI
-	D:nil,BulkQuantity:0,Recheck:0,SF:102|850|898,TC:nil,Content:0|15|50,EDM:5
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 2cea3824325311f1aa26b74ffac11d73-20260407
-X-User: xiaopei01@kylinos.cn
-Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
-	(envelope-from <xiaopei01@kylinos.cn>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 1129026814; Tue, 07 Apr 2026 15:27:04 +0800
-From: Pei Xiao <xiaopei01@kylinos.cn>
-To: broonie@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-spi@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Pei Xiao <xiaopei01@kylinos.cn>
-Subject: [PATCH V2] spi: mtk-snfi: unregister ECC engine on probe failure and remove() callback
-Date: Tue,  7 Apr 2026 15:26:59 +0800
-Message-Id: <20263f885f1a9c9d559f95275298cd6de4b11ed5.1775546401.git.xiaopei01@kylinos.cn>
-X-Mailer: git-send-email 2.25.1
+	id 1wA11L-000000065VW-0YwD
+	for linux-mediatek@lists.infradead.org;
+	Tue, 07 Apr 2026 07:38:48 +0000
+Received: from [141.14.13.172] (g427.RadioFreeInternet.molgen.mpg.de [141.14.13.172])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: pmenzel)
+	by mx.molgen.mpg.de (Postfix) with ESMTPSA id 1852A4C2C37D7D;
+	Tue, 07 Apr 2026 09:38:40 +0200 (CEST)
+Message-ID: <e1aa637e-1139-4328-8ff7-e5c023dcb200@molgen.mpg.de>
+Date: Tue, 7 Apr 2026 09:38:36 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RESEND PATCH v1] Bluetooth: btusb: MT7922: Add VID/PID 0e8d/223c
+To: Chris Lu <chris.lu@mediatek.com>
+Cc: Marcel Holtmann <marcel@holtmann.org>,
+ Johan Hedberg <johan.hedberg@gmail.com>,
+ Luiz Von Dentz <luiz.dentz@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
+ Will Lee <will-cy.Lee@mediatek.com>, SS Wu <ss.wu@mediatek.com>,
+ Steve Lee <steve.lee@mediatek.com>, linux-bluetooth@vger.kernel.org,
+ LKML <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org
+References: <20260407065053.3037036-1-chris.lu@mediatek.com>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20260407065053.3037036-1-chris.lu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260407_002711_405048_E3FEE33B 
-X-CRM114-Status: GOOD (  10.58  )
+X-CRM114-CacheID: sfid-20260407_003847_371113_695366CC 
+X-CRM114-Status: GOOD (  12.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,53 +69,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mtk_snand_probe() registers the on-host NAND ECC engine, but teardown was
-missing from both probe unwind and remove-time cleanup. Add a devm cleanup
-action after successful registration so
-nand_ecc_unregister_on_host_hw_engine() runs automatically on probe
-failures and during device removal.
+Dear Chris,
 
-Fixes: 764f1b748164 ("spi: add driver for MTK SPI NAND Flash Interface")
-Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
----
-changlog in v2: dev_err changes to dev_err_probe
----
- drivers/spi/spi-mtk-snfi.c | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
 
-diff --git a/drivers/spi/spi-mtk-snfi.c b/drivers/spi/spi-mtk-snfi.c
-index 437edbd658aa..73fa84475f0e 100644
---- a/drivers/spi/spi-mtk-snfi.c
-+++ b/drivers/spi/spi-mtk-snfi.c
-@@ -1303,6 +1303,13 @@ static const struct spi_controller_mem_caps mtk_snand_mem_caps = {
- 	.ecc = true,
- };
- 
-+static void mtk_unregister_ecc_engine(void *data)
-+{
-+	struct nand_ecc_engine *eng = data;
-+
-+	nand_ecc_unregister_on_host_hw_engine(eng);
-+}
-+
- static irqreturn_t mtk_snand_irq(int irq, void *id)
- {
- 	struct mtk_snand *snf = id;
-@@ -1443,6 +1450,13 @@ static int mtk_snand_probe(struct platform_device *pdev)
- 		goto release_ecc;
- 	}
- 
-+	ret = devm_add_action_or_reset(&pdev->dev, mtk_unregister_ecc_engine,
-+				       &ms->ecc_eng);
-+	if (ret) {
-+		dev_err_probe(&pdev->dev, ret, "failed to add ECC unregister action\n");
-+		goto release_ecc;
-+	}
-+
- 	ctlr->num_chipselect = 1;
- 	ctlr->mem_ops = &mtk_snand_mem_ops;
- 	ctlr->mem_caps = &mtk_snand_mem_caps;
--- 
-2.25.1
+Thank you for the patch.
 
+Am 07.04.26 um 08:50 schrieb Chris Lu:
+> Add VID 0e8d & PID 223c for MediaTek MT7922 USB Bluetooth chip.
+> 
+> The information in /sys/kernel/debug/usb/devices about the Bluetooth
+> device is listed as the below.
+> 
+> T:  Bus=07 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
+> D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
+> P:  Vendor=0e8d ProdID=223c Rev= 1.00
+> S:  Manufacturer=MediaTek Inc.
+> S:  Product=Wireless_Device
+> S:  SerialNumber=000000000
+> C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
+> A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
+> I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
+> E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+> E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+> I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+> I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+> I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+> I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+> I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+> I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+> I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+> I:  If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
+> E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+> I:* If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
+> E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
+> 
+> Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+> ---
+>   drivers/bluetooth/btusb.c | 2 ++
+>   1 file changed, 2 insertions(+)
+> 
+> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+> index a5e44887a5b5..5f264ac843f5 100644
+> --- a/drivers/bluetooth/btusb.c
+> +++ b/drivers/bluetooth/btusb.c
+> @@ -721,6 +721,8 @@ static const struct usb_device_id quirks_table[] = {
+>   						     BTUSB_WIDEBAND_SPEECH },
+>   	{ USB_DEVICE(0x04ca, 0x38e4), .driver_info = BTUSB_MEDIATEK |
+>   						     BTUSB_WIDEBAND_SPEECH },
+> +	{ USB_DEVICE(0x0e8d, 0x223c), .driver_info = BTUSB_MEDIATEK |
+> +						     BTUSB_WIDEBAND_SPEECH },
+>   	{ USB_DEVICE(0x13d3, 0x3568), .driver_info = BTUSB_MEDIATEK |
+>   						     BTUSB_WIDEBAND_SPEECH },
+>   	{ USB_DEVICE(0x13d3, 0x3584), .driver_info = BTUSB_MEDIATEK |
+
+Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
+
+
+Kind regards,
+
+Paul
 
