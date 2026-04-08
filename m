@@ -4,73 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B8341073CBF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2026 14:11:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DD9F10F995C
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2026 18:27:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=LqZnsz7wcqTyhp78mNFKi+0Adfefk/BvJL3db1qKzPo=; b=Yp+xEiiCPTqPwlNTZHiEzJwkVb
-	EduM4JSd8IVu24WgzRKpsFc4ekcRsC5XBvzjKxpyzLuFVusXbBC+KP3d78ooQmlQ0Pk/XPpIis6JR
-	G98/+AiJogobzr1Cdu1s7jtRN1p4sRbhNK38pXuxmvj2Mg+JCZFrkPyB8qrQBNDwQ0WKf5tLauGVy
-	4kuXYGZ971zWd7ok0JMAmVYTA0S1ZWV+dxJZzMRQ8v7nDwn5tXo6GfzGdusMuT7eWaGZ0BISZJq4f
-	q8Flkbxptk7nhZXe9/iKLmf3Q2uWoiAX6682U5RODugiN+MynGKd1/bctexZko+11y6kZPRD2IPqK
-	sWGiIMmA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Sx4zp1EdB2uDxCISzytLgCj/xVDSdyBvPkC4Byie1/4=; b=gx+UPjNyV3BBy0+z+sm2rN55QS
+	oXyOJqhbQwBk86ccYFRVkd91ojiNmBGQwcqWRda4reywfZBXL6wQresVfgLMjHCG+Cs9vDdyzA040
+	FU8tfRgU/Ou4Vd03ylvqmnpinJl6F0qY34E/HwbtAbI6IuGnd6Ti0AEBjJVRBL7QXbfm6G4C9T1sq
+	9x4WCN5a39+UAgflTincrKoGUtJxvEMh7fSh7erO8yOJet6cNXiVtWw4R+qf6Yn1b1OjQ8upBMbgR
+	0+v77vbbC13ja8PXDLUE1jubg7ziiTtqdo/GRqW1Fwj9EkTiWOMeiBSQ81tRQvEgSp92UyzHDlX/z
+	WAwXS0/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wATd0-00000008yku-0g4Z;
-	Wed, 08 Apr 2026 14:11:34 +0000
-Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
+	id 1wAXcm-00000009Fme-2H92;
+	Wed, 08 Apr 2026 18:27:36 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wATcw-00000008yjr-0tAt;
-	Wed, 08 Apr 2026 14:11:32 +0000
-Received: from dfae2b116770.home.arpa (unknown [124.16.138.129])
-	by APP-05 (Coremail) with SMTP id zQCowACXKAwLYtZprHbzDA--.2435S2;
-	Wed, 08 Apr 2026 22:11:23 +0800 (CST)
-From: Wentao Liang <vulab@iscas.ac.cn>
-To: Ulf Hansson <ulf.hansson@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: nfraprado@collabora.com,
-	Macpaul Lin <macpaul.lin@mediatek.com>,
-	Adam Ford <aford173@gmail.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Wentao Liang <vulab@iscas.ac.cn>,
-	stable@vger.kernel.org
-Subject: [PATCH] pmdomain: mediatek: fix use-after-free in scpsys_get_bus_protection_legacy()
-Date: Wed,  8 Apr 2026 14:11:21 +0000
-Message-Id: <20260408141121.386522-1-vulab@iscas.ac.cn>
-X-Mailer: git-send-email 2.34.1
+	id 1wAXcj-00000009Fm8-2scZ;
+	Wed, 08 Apr 2026 18:27:34 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 593914020D;
+	Wed,  8 Apr 2026 18:27:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DAB8DC19421;
+	Wed,  8 Apr 2026 18:27:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1775672852;
+	bh=CfAlUusSjZ0wcqcNUqCtpQrYzlAuAjxX2Y/xcgidRyc=;
+	h=From:Date:Subject:To:Cc:From;
+	b=eq9e0skW6NWZp/g+XSib6ls+XMic5D9Gzda3j+pyy8ZN7zOzZp8Z4HWcO5Dn0FW03
+	 BSDJAsxmR42QFzQDypqbudDg7SWNjJ/tbJ5+R81I6F0/x4pgJjHkBy2pRG1wo3Ec2h
+	 CXVlXiyP1OR1CLdc44F+osZgzmWhKk4H+SoYfJxqLfv8uoJOe9WTY/sXfeaojQozJm
+	 EXY9GcToa1JEQC5fNSNho0Rw8pXh7h7m4IXminNsYR1XQv9HTJNRW1rFOkZ7eYxynP
+	 k70K4sQhnC9LSROeRTv7uRAbVL0JgAqpM/op3qpV2EvGk2qT1P68JD1MMMrQWjorUw
+	 NAo/Nr7xWREAw==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Wed, 08 Apr 2026 20:26:56 +0200
+Subject: [PATCH net] net: airoha: Add missing RX_CPU_IDX() configuration in
+ airoha_qdma_cleanup_rx_queue()
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: zQCowACXKAwLYtZprHbzDA--.2435S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7Kw1kuF4rZFyxGFyfZFWfAFb_yoW8Zw1fpF
-	W5Ka4YvrWUJr18GFW0krW8uayayrykK395Cws7GwsFv3Z8Xr1kGrySva4Yqr9YkrZYkanr
-	A3W7tryUA3W8AFDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUU9C14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
-	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
-	1l84ACjcxK6xIIjxv20xvE14v26r4j6ryUM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
-	6F4UM28EF7xvwVC2z280aVAFwI0_GcCE3s1l84ACjcxK6I8E87Iv6xkF7I0E14v26rxl6s
-	0DM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj6xII
-	jxv20xvE14v26r1j6r18McIj6I8E87Iv67AKxVWUJVW8JwAm72CE4IkC6x0Yz7v_Jr0_Gr
-	1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAGYxC7M4IIrI8v6xkF7I0E8cxa
-	n2IY04v7MxkF7I0En4kS14v26r1q6r43MxkIecxEwVAFwVW5XwCF04k20xvY0x0EwIxGrw
-	CFx2IqxVCFs4IE7xkEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE
-	14v26r106r1rMI8E67AF67kF1VAFwI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2
-	IY67AKxVWUJVWUCwCI42IY6xIIjxv20xvEc7CjxVAFwI0_Gr0_Cr1lIxAIcVCF04k26cxK
-	x2IYs7xG6r1j6r1xMIIF0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI
-	0_Gr0_Gr1UYxBIdaVFxhVjvjDU0xZFpf9x0JUPR6wUUUUU=
-X-Originating-IP: [124.16.138.129]
-X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiBwwLA2nWHcDczgAAsz
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260408-airoha-cpu-idx-airoha_qdma_cleanup_rx_queue-v1-1-8efa64844308@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/y3NWwrDIBCF4a2Eea6QG+llKyXIRE+agdYYrUUI2
+ Xul9PHjh3N2igiCSLdqp4CPRFldQXOqyCzsHlBii6mt26HuukaxhHVhZXwqJf+pN/tibZ5gl7w
+ OWW8JCQqzxRU9T+fLQGXRB8ySf293cnjTeBxfT2KBToIAAAA=
+X-Change-ID: 20260331-airoha-cpu-idx-airoha_qdma_cleanup_rx_queue-efde9e4ab786
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260408_071130_613624_7474BC22 
-X-CRM114-Status: GOOD (  12.56  )
+X-CRM114-CacheID: sfid-20260408_112733_752078_2B6C18DB 
+X-CRM114-Status: UNSURE (   8.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,55 +78,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In scpsys_get_bus_protection_legacy(), of_find_node_with_property()
-returns a device node with its reference count incremented. The function
-then calls of_node_put(node) before checking whether
-syscon_regmap_lookup_by_phandle() returns an error. If an error occurs,
-dev_err_probe() dereferences the node pointer to print diagnostic
-information, but the node memory may have already been freed due to the
-earlier of_node_put(), leading to a use-after-free vulnerability.
+When the descriptor index written in REG_RX_CPU_IDX() is equal to the one
+stored in REG_RX_DMA_IDX(), the hw will stop since the QDMA RX ring is
+empty.
+Add missing REG_RX_CPU_IDX() configuration in airoha_qdma_cleanup_rx_queue
+routine during QDMA RX ring cleanup.
 
-Fix this by moving the of_node_put() call after the error check, ensuring
-the node is still valid when accessed in the error path.
-
-Fixes: c29345fa5f66 ("pmdomain: mediatek: Refactor bus protection regmaps retrieval")
-Cc: stable@vger.kernel.org
-Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
+Fixes: 514aac359987 ("net: airoha: Add missing cleanup bits in airoha_qdma_cleanup_rx_queue()")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/pmdomain/mediatek/mtk-pm-domains.c | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/airoha/airoha_eth.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-index e2800aa1bc59..d3b36f32417c 100644
---- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
-+++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-@@ -993,6 +993,7 @@ static int scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *s
- 	struct device_node *node, *smi_np;
- 	int num_regmaps = 0, i, j;
- 	struct regmap *regmap[3];
-+	int ret = 0;
- 
- 	/*
- 	 * Legacy code retrieves a maximum of three bus protection handles:
-@@ -1043,11 +1044,14 @@ static int scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *s
- 	if (node) {
- 		regmap[2] = syscon_regmap_lookup_by_phandle(node, "mediatek,infracfg-nao");
- 		num_regmaps++;
--		of_node_put(node);
--		if (IS_ERR(regmap[2]))
--			return dev_err_probe(dev, PTR_ERR(regmap[2]),
-+		if (IS_ERR(regmap[2])) {
-+			ret = dev_err_probe(dev, PTR_ERR(regmap[2]),
- 					     "%pOF: failed to get infracfg regmap\n",
- 					     node);
-+			of_node_put(node);
-+			return ret;
-+		}
-+		of_node_put(node);
- 	} else {
- 		regmap[2] = NULL;
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 91cb63a32d99..919b7009cbe5 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -819,6 +819,11 @@ static void airoha_qdma_cleanup_rx_queue(struct airoha_queue *q)
  	}
+ 
+ 	q->head = q->tail;
++	/* Set RX_DMA_IDX to RX_CPU_IDX to notify the hw the QDMA RX ring is
++	 * empty.
++	 */
++	airoha_qdma_rmw(qdma, REG_RX_CPU_IDX(qid), RX_RING_CPU_IDX_MASK,
++			FIELD_PREP(RX_RING_CPU_IDX_MASK, q->head));
+ 	airoha_qdma_rmw(qdma, REG_RX_DMA_IDX(qid), RX_RING_DMA_IDX_MASK,
+ 			FIELD_PREP(RX_RING_DMA_IDX_MASK, q->tail));
+ }
+
+---
+base-commit: f821664dde29302e8450aa0597bf1e4c7c5b0a22
+change-id: 20260331-airoha-cpu-idx-airoha_qdma_cleanup_rx_queue-efde9e4ab786
+
+Best regards,
 -- 
-2.34.1
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
