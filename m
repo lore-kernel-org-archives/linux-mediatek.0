@@ -4,61 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B041F105D9AD
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2026 09:34:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE9A91073C8B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2026 10:20:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UiRsyqA8gapL9LmlJ2rGgGsXps9zlQ66AzSloszYUaQ=; b=pLkJAcdtMpbFDKmI9vYKzocoL8
-	7fJUeiaJC7sC20eqMfirflbFF3QUS+4OlSBKay1d2VY9E/jP+3f85m1XXVDC+KSya+Jo8VeiydZDJ
-	XdwHakGF6QUO2DZtY4dL0PO4E0WdisYRqdFQ0KqfyeJK7WtKz8ZkpY7swv1qY+9ej7PL/f7ETOIB+
-	xug6Pr0vGq0ESYFOa5Qr4B9JRDZh1/u0mz1i0I1RJkUmXGpPhytGFDXfX3WNim7IjIK4xvtK02rhn
-	MIhIfHg5Nqs0zYqVX1hE4+2Q4GC5aCSn/RgncpHXa87hn2hx2/Y34Zk8/ZjbgqkYBcy38RMDtAECR
-	+4TV05ww==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=tZSUNgoKuiFadjEFerCS0nKsIpd3Tqofym8ba1BATyM=; b=gPaUyjLg2H3v9IqP7r297iX5+f
+	BxWHOSjMxkFMSP43xaKPIML/SzQcatV/RmFpA6bcLfkbMVQG/Apb0xbtbEU7zNFh0adA7CHQHVujh
+	9Rcb08JU/pxg0hy2zG7nGST4XVIyRcfY1EaKLi6lxamZKCACLW+HCoaXtqhHyatob6M7CrY0EVtmH
+	n081Z9+LG/fyR0NURBlrgxBqmsjSQSiefDhzYO0JU2+6tSD6CyWc5CfUmyPF/aCzntiIzBKxly6yi
+	m6rfCWKD0cZEHx0kXwxmVYilMw5yJ0JBzXhDsO99cplG1znnT6YD/EH98SCWMbhIHPCf8AiXungQA
+	Vf0B/gEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAPJA-00000008cRN-0eDn;
-	Wed, 08 Apr 2026 09:34:48 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wAQ1d-00000008g7R-3CHL;
+	Wed, 08 Apr 2026 10:20:45 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAPJ8-00000008cRA-1g9Z;
-	Wed, 08 Apr 2026 09:34:46 +0000
+	id 1wAQ1b-00000008g6U-1oyg;
+	Wed, 08 Apr 2026 10:20:43 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 77CEB600AD;
-	Wed,  8 Apr 2026 09:34:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A99ADC19421;
-	Wed,  8 Apr 2026 09:34:44 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id DC9B7600AD;
+	Wed,  8 Apr 2026 10:20:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 41E71C19421;
+	Wed,  8 Apr 2026 10:20:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1775640885;
-	bh=xB2G7g50HPojzs91gVhYtm9ibj6OxWB3a3yj4DtnA9c=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=SCfmrL2jaBS2Zir8M+930wpHrwSiWb69VCPUF2OaZOMPzdm7HQyBDiWU3WZrLKPEJ
-	 8K1yB42YQjodE3UsdJeA+PvQI5EuaQcKHp8n9ptkJlp0KAYEqTP0meK39CFNWnZnR5
-	 QhepcmDlPZxOmYgPD24obbjbip6ihfpIe+HAhYP4SCm0FAX3ppt0y1Mg6KCePy4SWI
-	 25VtanpprO9taPO1sVdnhpRQiE3QdeHgkoNT9OoX8D/sg19ksbA15A7vp9RjeRxIgM
-	 +DW9hRZZbhVPRAbQQWhcuuy+mBCQ/CP4wdY370sxnrdlQuSyGfSLczZXA5u5HXn8C/
-	 jtzWF4gtNoyAg==
-Date: Wed, 8 Apr 2026 11:34:42 +0200
+	s=k20201202; t=1775643642;
+	bh=ABZLM89td49tEIN7UAY05XdHZIYCDOKvcEo6PPPXL4g=;
+	h=From:Date:Subject:To:Cc:From;
+	b=UylZGa91eIst3xrkGSx8Rv7QKeB4U9GXaeu3sGozFpC1+cKpVH/MXGk6NsfglblLL
+	 mJp5oRaoxD7E/OCKVrB7F6GtchmH7J0ad1p1WZa4f0vL+9m9IEPkBFjaJkZvCo9IrZ
+	 v/US7MRVyxLnEt8HZ0slSyAX4v7Jf1ckbOe2+kjAx5OtPxk5akENyPL0KoEsQDpa5i
+	 xLB3tiR12atgVp+K8PWFGO2q2THEUrKenlmyR2X9KtakFLaq0MRdUvpgtQE20+nXZ9
+	 VAjyWK+5Z/UUt8bxu8N1LUkesug4MJ08hq+Trt1fMkmtm7Nu54p7KuFMPdOQaSiR9q
+	 Kzi9pV2XAEM3Q==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Zenm Chen <zenmchen@gmail.com>
-Cc: nbd@nbd.name, ryder.lee@mediatek.com, shayne.chen@mediatek.com,
-	sean.wang@mediatek.com, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, stable@vger.kernel.org
-Subject: Re: [PATCH mt76] wifi: mt76: mt76x2u: Add support for ELECOM
- WDC-867SU3S
-Message-ID: <adYhMgllS55Chvpb@lore-desk>
-References: <20260407154430.9184-1-zenmchen@gmail.com>
+Date: Wed, 08 Apr 2026 12:20:09 +0200
+Subject: [PATCH net] net: airoha: Fix FE_PSE_BUF_SET configuration if PPE2
+ is available
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ECjadagwUqD3QKe7"
-Content-Disposition: inline
-In-Reply-To: <20260407154430.9184-1-zenmchen@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260408-airoha-reg_fe_pse_buf_set-v1-1-0c4fa8f4d1d9@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MQQ6CMBBG4auQWdOkVhHkKsY0A/yF2RQyg8aEc
+ Hcbl9/ivYMMKjDqq4MUHzFZc8GlrmhcOM9wMhVT8OHub75zLLou7BRzTIibIQ7vFA27uz64bTA
+ NTRiZSr8pknz/7ydl7PQ6zx+1t6AOcAAAAA==
+X-Change-ID: 20260408-airoha-reg_fe_pse_buf_set-39a75edb52ca
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Simon Horman <horms@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Xuegang Lu <xuegang.lu@airoha.com>, Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.3
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,66 +75,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+airoha_fe_set routine is used to set specified bits to 1 in the selected
+register. In the FE_PSE_BUF_SET case this can due to a overestimation of
+the required buffers for I/O queues since we can miss to set some bits
+of PSE_ALLRSV_MASK subfield to 0. Fix the issue relying on airoha_fe_rmw
+routine instead.
 
---ECjadagwUqD3QKe7
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Fixes: 8e38e08f2c560 ("net: airoha: fix PSE memory configuration in airoha_fe_pse_ports_init()")
+Tested-by: Xuegang Lu <xuegang.lu@airoha.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/ethernet/airoha/airoha_eth.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-On Apr 07, Zenm Chen wrote:
-> Add the ID 056e:400a to the table to support an additional MT7612U
-> adapter: ELECOM WDC-867SU3S.
->=20
-> Compile tested only.
->=20
-> Cc: stable@vger.kernel.org # 5.10.x
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 91cb63a32d99..c365d693cf40 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -293,16 +293,18 @@ static void airoha_fe_pse_ports_init(struct airoha_eth *eth)
+ 		[FE_PSE_PORT_GDM4] = 2,
+ 		[FE_PSE_PORT_CDM5] = 2,
+ 	};
+-	u32 all_rsv;
+ 	int q;
+ 
+-	all_rsv = airoha_fe_get_pse_all_rsv(eth);
+ 	if (airoha_ppe_is_enabled(eth, 1)) {
++		u32 all_rsv;
++
+ 		/* hw misses PPE2 oq rsv */
++		all_rsv = airoha_fe_get_pse_all_rsv(eth);
+ 		all_rsv += PSE_RSV_PAGES *
+ 			   pse_port_num_queues[FE_PSE_PORT_PPE2];
++		airoha_fe_rmw(eth, REG_FE_PSE_BUF_SET, PSE_ALLRSV_MASK,
++			      FIELD_PREP(PSE_ALLRSV_MASK, all_rsv));
+ 	}
+-	airoha_fe_set(eth, REG_FE_PSE_BUF_SET, all_rsv);
+ 
+ 	/* CMD1 */
+ 	for (q = 0; q < pse_port_num_queues[FE_PSE_PORT_CDM1]; q++)
 
-I do not think this material for stable. Anyway:
+---
+base-commit: f821664dde29302e8450aa0597bf1e4c7c5b0a22
+change-id: 20260408-airoha-reg_fe_pse_buf_set-39a75edb52ca
 
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
-> Signed-off-by: Zenm Chen <zenmchen@gmail.com>
-> ---
-> This ID was found from [1] and adding it to the device table should be=20
-> enough to make it work. Hardware probes at [2] can prove its existence.
->=20
-> [1] https://bushowhige.blogspot.com/2019/08/ubuntu-1804-mediatek-usb-wi-f=
-i.html
-> [2] https://linux-hardware.org/?id=3Dusb:056e-400a
-> ---
->  drivers/net/wireless/mediatek/mt76/mt76x2/usb.c | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt76x2/usb.c
-> index 01cb3b283..459c4044f 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
-> @@ -16,6 +16,7 @@ static const struct usb_device_id mt76x2u_device_table[=
-] =3D {
->  	{ USB_DEVICE(0x0e8d, 0x7612) },	/* Aukey USBAC1200 - Alfa AWUS036ACM */
->  	{ USB_DEVICE(0x057c, 0x8503) },	/* Avm FRITZ!WLAN AC860 */
->  	{ USB_DEVICE(0x7392, 0xb711) },	/* Edimax EW 7722 UAC */
-> +	{ USB_DEVICE(0x056e, 0x400a) },	/* ELECOM WDC-867SU3S */
->  	{ USB_DEVICE(0x0e8d, 0x7632) },	/* HC-M7662BU1 */
->  	{ USB_DEVICE(0x0471, 0x2126) }, /* LiteOn WN4516R module, nonstandard U=
-SB connector */
->  	{ USB_DEVICE(0x0471, 0x7600) }, /* LiteOn WN4519R module, nonstandard U=
-SB connector */
-> --=20
-> 2.53.0
->=20
-
---ECjadagwUqD3QKe7
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCadYhMgAKCRA6cBh0uS2t
-rH4BAQDadaOqA+izjfKsqTGZE4t7netvYf9LX/dwKhfjXP+BpwEAmT0UWS1fM3wY
-y/Xgc7k8ncdplQixrzhIVJD56iveDAM=
-=Vfip
------END PGP SIGNATURE-----
-
---ECjadagwUqD3QKe7--
 
