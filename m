@@ -4,67 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5BF81073CAE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2026 13:03:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C61631073CB0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2026 13:31:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9pcOpxN6Pac/tfrhcOWSMi5MFBcz5khZMRo0IAJMCeo=; b=wW3J8f11mLyA2z1KlEqP1J3cIR
-	oB9yDC/o7+K3YV9JQzSKxtCYY1gNHfGSRMubmm5aCstpZhKTo+n3koRnOR+KQJrDKqij+LUZAFThp
-	G5W0NMyu+2rwftqhlFvB5xtATJSHQ196KANKz7YdwdOpOmDTmDNOdSyWwLpbpUTHdCujJUZS3gfjJ
-	AwtQDlZ9atdBI49ILMiBn3YS/JTb/5QDe6iK2xm8U5FyaOi5hbiGwRsDpVoeUkUuKwXHYyifJcLpz
-	Zd1GQdQhpVKtt19cYbND3U9P/KEBm0L+l2jnupdsO2jVPKkP3VHHyZhR1ds2edTTghu0zEm3D45Js
-	iVhlPLgA==;
+	Content-Type:MIME-Version:Message-ID:In-Reply-To:Date:From:Cc:To:Subject:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	bh=U07YSVN+slV9dwpU0xNKzXX9xvEdAg1wb2kpmf8y7rE=; b=fulk8IhvPqpWJB81GICxuyFNqC
+	pFzF25vKXz+CfgRJfj3Md/exjowLBSsmoH3L05QN1ymfiv69FW0zJH7MG69AhDrUgju9R375ON7yO
+	sKVJ4ZEk/peUca/esmf+SVV/p2ZXpgteLT2GWTpCv9dVdrROozDmQqKCogTgq1tYuYGJ+pdOHzMNU
+	0/VPRQrh0TJi/+hchNIOdsbGHdhmmUzlO5NeH27g4Gsj5/pCSU23IrJm5KCkD//dpYQKTzZXVVj0i
+	K5dbzT3d0FiiSNDq88r3GygroL7CWwC4RKQY3AfC9h6fY3v9Q0FHmzTNehE8lYGXo/iG2TtJL32aP
+	ioBbUrTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wASYr-00000008suR-2SZF;
-	Wed, 08 Apr 2026 13:03:13 +0000
-Received: from mail.cjdns.fr ([5.135.140.105])
+	id 1wAT03-00000008uoW-0zV8;
+	Wed, 08 Apr 2026 13:31:19 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wASYp-00000008su5-0xMh
-	for linux-mediatek@lists.infradead.org;
-	Wed, 08 Apr 2026 13:03:12 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 89F2D1EED5B;
-	Wed,  8 Apr 2026 15:03:01 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1775653384; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=9pcOpxN6Pac/tfrhcOWSMi5MFBcz5khZMRo0IAJMCeo=;
-	b=Ed8aRzW/e1aT4ydmqhyP1mUMg8ps7n1rXRRmiSpwoXICBp/n/BNXrs8iMawxYIwi1hfGM9
-	4gAk915TNFF7pCYUJUl72JgONkS0X2uirHkxU0ieP98iXO93PrwaJL3ichDIusGjuEY5u2
-	isyh0WwO7fN4Cdg/eFHAG9BEH/xb9emtX5m4XdvtO4hkGrXwVpRGP5vv8oALUEa8/oZgcF
-	GxizstQ2rw6OxzT/WRpXf0pQQTvulrgT6bg38lvANHOSiMUi+I0EsHL5qmotO/VJfruJbF
-	szOAHbvYwSdGLyHFJAS0ymKriK+j+99G91mLf7/lTPvQJxoEfC3oHq/En71Veg==
-Message-ID: <32cd3283-b3f8-4a3c-abda-39a1423f68ca@cjdns.fr>
-Date: Wed, 8 Apr 2026 15:03:00 +0200
+	id 1wASzz-00000008unk-3xBn;
+	Wed, 08 Apr 2026 13:31:17 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id A28AD44114;
+	Wed,  8 Apr 2026 13:31:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 35A78C19421;
+	Wed,  8 Apr 2026 13:31:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1775655074;
+	bh=MdShFLWH5QPjrXvRDQGuCSptNh4eJfQ1ZFDMbiT05D0=;
+	h=Subject:To:Cc:From:Date:In-Reply-To:From;
+	b=JwkcLktSCKf1NlUL5ShsfIAEZ7wi+jn7PsaiOsu2hWLRk16/LLi5/NRkmkt1Y6OcX
+	 1HpiKz/gIxXlye9bUa/z0nsY7EuCvhIqgC71VARhMeDYTQUGDTBY0GaTiUtHJurA9A
+	 XOYkBHDQIKjKJJqLmijAjGc2FpLQE88quy+A4lMY=
+Subject: Patch "net: phy: allow MDIO bus PM ops to start/stop state machine for phylink-controlled PHY" has been added to the 6.1-stable tree
+To: 681739313@139.com,Z-1tiW9zjcoFkhwc@shell.armlinux.org.uk,andrew@lunn.ch,davem@davemloft.net,edumazet@google.com,f.fainelli@gmail.com,gregkh@linuxfoundation.org,hkallweit1@gmail.com,kuba@kernel.org,linux-arm-kernel@lists.infradead.org,linux-mediatek@lists.infradead.org,linux@armlinux.org.uk,matthias.bgg@gmail.com,pabeni@redhat.com,patches@lists.linux.dev,vladimir.oltean@nxp.com,wei.fang@nxp.com
+Cc: <stable-commits@vger.kernel.org>
+From: <gregkh@linuxfoundation.org>
+Date: Wed, 08 Apr 2026 15:30:52 +0200
+In-Reply-To: <20260327015237.1713008-1-681739313@139.com>
+Message-ID: <2026040852-unpinned-dollop-b158@gregkh>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird Beta
-Subject: Re: [PATCH v4 1/2] dt-bindings: PCI: mediatek: Add support for EcoNet
- EN7528
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: linux-pci@vger.kernel.org, linux-mips@vger.kernel.org,
- naseefkm@gmail.com, ryder.lee@mediatek.com, helgaas@kernel.org,
- lpieralisi@kernel.org, kwilczynski@kernel.org, mani@kernel.org,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- ansuelsmth@gmail.com, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-References: <20260404182854.2183651-1-cjd@cjdns.fr>
- <20260404182854.2183651-2-cjd@cjdns.fr>
- <20260405-phenomenal-messy-shark-bdefbd@quoll>
-Content-Language: en-US
-From: Caleb James DeLisle <cjd@cjdns.fr>
-In-Reply-To: <20260405-phenomenal-messy-shark-bdefbd@quoll>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Last-TLS-Session-Version: TLSv1.3
+Content-Type: text/plain; charset=ANSI_X3.4-1968
+Content-Transfer-Encoding: 8bit
+X-stable: commit
+X-Patchwork-Hint: ignore 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260408_060311_468769_6D97200D 
-X-CRM114-Status: UNSURE (   7.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260408_063116_050217_F56FA030 
+X-CRM114-Status: GOOD (  31.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,29 +68,187 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On 05/04/2026 09:03, Krzysztof Kozlowski wrote:
-> On Sat, Apr 04, 2026 at 06:28:53PM +0000, Caleb James DeLisle wrote:
->> Introduce EcoNet EN7528 SoC compatible in MediaTek PCIe controller
->> binding.
->>
->> EcoNet PCIe controller has the same configuration model as
->> Mediatek v2 but is initialized more similarly to an MT7621
->> PCIe.
->>
-> <form letter>
-> This is a friendly reminder during the review process.
->
-> It looks like you received a tag and forgot to add it.
->
-Whoops, that was a failed-to-press-save error, thanks for catching it, I 
-will update in a few days after waiting for any additional commentary.
+This is a note to let you know that I've just added the patch titled
+
+    net: phy: allow MDIO bus PM ops to start/stop state machine for phylink-controlled PHY
+
+to the 6.1-stable tree which can be found at:
+    http://www.kernel.org/git/?p=linux/kernel/git/stable/stable-queue.git;a=summary
+
+The filename of the patch is:
+     net-phy-allow-mdio-bus-pm-ops-to-start-stop-state-machine-for-phylink-controlled-phy.patch
+and it can be found in the queue-6.1 subdirectory.
+
+If you, or anyone else, feels it should not be added to the stable tree,
+please let <stable@vger.kernel.org> know about it.
 
 
-Caleb
+From 681739313@139.com Fri Mar 27 02:52:59 2026
+From: Rajani Kantha <681739313@139.com>
+Date: Fri, 27 Mar 2026 09:52:37 +0800
+Subject: net: phy: allow MDIO bus PM ops to start/stop state machine for phylink-controlled PHY
+To: gregkh@linuxfoundation.org, stable@vger.kernel.org, vladimir.oltean@nxp.com
+Cc: patches@lists.linux.dev, linux-kernel@vger.kernel.org, andrew@lunn.ch, hkallweit1@gmail.com, linux@armlinux.org.uk, davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com, f.fainelli@gmail.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wei.fang@nxp.com
+Message-ID: <20260327015237.1713008-1-681739313@139.com>
+
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+
+[ Upstream commit fc75ea20ffb452652f0d4033f38fe88d7cfdae35 ]
+
+DSA has 2 kinds of drivers:
+
+1. Those who call dsa_switch_suspend() and dsa_switch_resume() from
+   their device PM ops: qca8k-8xxx, bcm_sf2, microchip ksz
+2. Those who don't: all others. The above methods should be optional.
+
+For type 1, dsa_switch_suspend() calls dsa_user_suspend() -> phylink_stop(),
+and dsa_switch_resume() calls dsa_user_resume() -> phylink_start().
+These seem good candidates for setting mac_managed_pm = true because
+that is essentially its definition [1], but that does not seem to be the
+biggest problem for now, and is not what this change focuses on.
+
+Talking strictly about the 2nd category of DSA drivers here (which
+do not have MAC managed PM, meaning that for their attached PHYs,
+mdio_bus_phy_suspend() and mdio_bus_phy_resume() should run in full),
+I have noticed that the following warning from mdio_bus_phy_resume() is
+triggered:
+
+	WARN_ON(phydev->state != PHY_HALTED && phydev->state != PHY_READY &&
+		phydev->state != PHY_UP);
+
+because the PHY state machine is running.
+
+It's running as a result of a previous dsa_user_open() -> ... ->
+phylink_start() -> phy_start() having been initiated by the user.
+
+The previous mdio_bus_phy_suspend() was supposed to have called
+phy_stop_machine(), but it didn't. So this is why the PHY is in state
+PHY_NOLINK by the time mdio_bus_phy_resume() runs.
+
+mdio_bus_phy_suspend() did not call phy_stop_machine() because for
+phylink, the phydev->adjust_link function pointer is NULL. This seems a
+technicality introduced by commit fddd91016d16 ("phylib: fix PAL state
+machine restart on resume"). That commit was written before phylink
+existed, and was intended to avoid crashing with consumer drivers which
+don't use the PHY state machine - phylink always does, when using a PHY.
+But phylink itself has historically not been developed with
+suspend/resume in mind, and apparently not tested too much in that
+scenario, allowing this bug to exist unnoticed for so long. Plus, prior
+to the WARN_ON(), it would have likely been invisible.
+
+This issue is not in fact restricted to type 2 DSA drivers (according to
+the above ad-hoc classification), but can be extrapolated to any MAC
+driver with phylink and MDIO-bus-managed PHY PM ops. DSA is just where
+the issue was reported. Assuming mac_managed_pm is set correctly, a
+quick search indicates the following other drivers might be affected:
+
+$ grep -Zlr PHYLINK_NETDEV drivers/ | xargs -0 grep -L mac_managed_pm
+drivers/net/ethernet/atheros/ag71xx.c
+drivers/net/ethernet/microchip/sparx5/sparx5_main.c
+drivers/net/ethernet/microchip/lan966x/lan966x_main.c
+drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.c
+drivers/net/ethernet/freescale/fs_enet/fs_enet-main.c
+drivers/net/ethernet/freescale/dpaa/dpaa_eth.c
+drivers/net/ethernet/freescale/ucc_geth.c
+drivers/net/ethernet/freescale/enetc/enetc_pf_common.c
+drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
+drivers/net/ethernet/marvell/mvneta.c
+drivers/net/ethernet/marvell/prestera/prestera_main.c
+drivers/net/ethernet/mediatek/mtk_eth_soc.c
+drivers/net/ethernet/altera/altera_tse_main.c
+drivers/net/ethernet/wangxun/txgbe/txgbe_phy.c
+drivers/net/ethernet/meta/fbnic/fbnic_phylink.c
+drivers/net/ethernet/tehuti/tn40_phy.c
+drivers/net/ethernet/mscc/ocelot_net.c
+
+Make the existing conditions dependent on the PHY device having a
+phydev->phy_link_change() implementation equal to the default
+phy_link_change() provided by phylib. Otherwise, we implicitly know that
+the phydev has the phylink-provided phylink_phy_change() callback, and
+when phylink is used, the PHY state machine always needs to be stopped/
+started on the suspend/resume path. The code is structured as such that
+if phydev->phy_link_change() is absent, it is a matter of time until the
+kernel will crash - no need to further complicate the test.
+
+Thus, for the situation where the PM is not managed by the MAC, we will
+make the MDIO bus PM ops treat identically the phylink-controlled PHYs
+with the phylib-controlled PHYs where an adjust_link() callback is
+supplied. In both cases, the MDIO bus PM ops should stop and restart the
+PHY state machine.
+
+[1] https://lore.kernel.org/netdev/Z-1tiW9zjcoFkhwc@shell.armlinux.org.uk/
+
+Fixes: 744d23c71af3 ("net: phy: Warn about incorrect mdio_bus_phy_resume() state")
+Reported-by: Wei Fang <wei.fang@nxp.com>
+Tested-by: Wei Fang <wei.fang@nxp.com>
+Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+Link: https://patch.msgid.link/20250407094042.2155633-1-vladimir.oltean@nxp.com
+Signed-off-by: Jakub Kicinski <kuba@kernel.org>
+Signed-off-by: Rajani Kantha <681739313@139.com>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/net/phy/phy_device.c |   31 +++++++++++++++++++++++++++++--
+ 1 file changed, 29 insertions(+), 2 deletions(-)
+
+--- a/drivers/net/phy/phy_device.c
++++ b/drivers/net/phy/phy_device.c
+@@ -247,6 +247,33 @@ static void phy_link_change(struct phy_d
+ 		phydev->mii_ts->link_state(phydev->mii_ts, phydev);
+ }
+ 
++/**
++ * phy_uses_state_machine - test whether consumer driver uses PAL state machine
++ * @phydev: the target PHY device structure
++ *
++ * Ultimately, this aims to indirectly determine whether the PHY is attached
++ * to a consumer which uses the state machine by calling phy_start() and
++ * phy_stop().
++ *
++ * When the PHY driver consumer uses phylib, it must have previously called
++ * phy_connect_direct() or one of its derivatives, so that phy_prepare_link()
++ * has set up a hook for monitoring state changes.
++ *
++ * When the PHY driver is used by the MAC driver consumer through phylink (the
++ * only other provider of a phy_link_change() method), using the PHY state
++ * machine is not optional.
++ *
++ * Return: true if consumer calls phy_start() and phy_stop(), false otherwise.
++ */
++static bool phy_uses_state_machine(struct phy_device *phydev)
++{
++	if (phydev->phy_link_change == phy_link_change)
++		return phydev->attached_dev && phydev->adjust_link;
++
++	/* phydev->phy_link_change is implicitly phylink_phy_change() */
++	return true;
++}
++
+ static bool mdio_bus_phy_may_suspend(struct phy_device *phydev)
+ {
+ 	struct device_driver *drv = phydev->mdio.dev.driver;
+@@ -307,7 +334,7 @@ static __maybe_unused int mdio_bus_phy_s
+ 	 * may call phy routines that try to grab the same lock, and that may
+ 	 * lead to a deadlock.
+ 	 */
+-	if (phydev->attached_dev && phydev->adjust_link)
++	if (phy_uses_state_machine(phydev))
+ 		phy_stop_machine(phydev);
+ 
+ 	if (!mdio_bus_phy_may_suspend(phydev))
+@@ -361,7 +388,7 @@ no_resume:
+ 		}
+ 	}
+ 
+-	if (phydev->attached_dev && phydev->adjust_link)
++	if (phy_uses_state_machine(phydev))
+ 		phy_start_machine(phydev);
+ 
+ 	return 0;
 
 
-The missing line:
+Patches currently in stable-queue which might be from 681739313@139.com are
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-
+queue-6.1/net-phy-move-phy_link_change-prior-to-mdio_bus_phy_may_suspend.patch
+queue-6.1/net-phy-fix-phy_uses_state_machine.patch
+queue-6.1/net-phy-allow-mdio-bus-pm-ops-to-start-stop-state-machine-for-phylink-controlled-phy.patch
 
