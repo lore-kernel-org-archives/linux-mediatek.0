@@ -4,82 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F29F610F9972
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2026 20:22:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 912E510FC441
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2026 21:03:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Type:References:In-Reply-To:Date:To:From:Subject:Message-ID:Reply-To:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wBJw70mUEicNNB549MIpFjeIXaI1p71OdOWBzakHM6k=; b=sSAboYNTz2hiQPMkWHPzd+pO4M
-	cNBM8MoWm2o8Xoof+kDJyV+mH7DMmjP93ftIT5lmjbiFYjnneuefcqLzhIFM5VEEgJn3weBaOo+og
-	kbIaLw5AETVxSeDYKa4cgjBhO/uBaLyLR/CVboqziOB68zXyIqr4s9R8tvbEaBV3D72a7xDmjiqY1
-	3po5UdXXnq4He3gzSOYv7KC6kdZ9M/LKAEv3EXXqqnUY/0JapXOGCGuCqIijkkW3xLlJLPBRp06V0
-	VQuiPIS2+xhSen496Lmw1xDXqHGXu5XAF7dKR1Pp8eZtozuhxk6+mC3/yjcIZ+Veq+9n2NUb+k0cW
-	iq4hnHzA==;
+	bh=i2a7q2IgX/NcU0MYyGISo/21RZi2Nok3PGAXn4bG1Po=; b=VyPA8GAGwAXTrGPXwpPVPPWIjp
+	Lkc58vvQJ9XyiE9lpRH+NBHA4dgGnH5B607X7LGvb6U10VJG69VO/rZO/AxXtkGg9I9x2b0UxlDf0
+	xaHMmjIX9pyOPV+TH61EMoREefwrASxYMbt3u/cPUztyweNjgC13lRI8No3pxsO5vl5FBIuMSKz7r
+	qI7QXQ9ZZ9Gss3cxyJ5sPPknFK2XEY8qTUaAjRsFdXlFclWp56wsHbZmBcuXcVhAycIXMsqgNfK0/
+	CoP4fpwQKBp4BrHuNVC4VAejdEsn42uGscLkrGmwFpd2e+/JO6CSj/AhlishcZ2KMk7QIZwZ3/AlR
+	3Ve1mzqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAZQG-00000009Nge-30lD;
-	Wed, 08 Apr 2026 20:22:48 +0000
-Received: from mail-qt1-x832.google.com ([2607:f8b0:4864:20::832])
+	id 1wAa3a-00000009PWt-2p8r;
+	Wed, 08 Apr 2026 21:03:26 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAZQD-00000009Nfu-2AGX
-	for linux-mediatek@lists.infradead.org;
-	Wed, 08 Apr 2026 20:22:46 +0000
-Received: by mail-qt1-x832.google.com with SMTP id d75a77b69052e-50d8e11b948so1744871cf.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Apr 2026 13:22:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20251104.gappssmtp.com; s=20251104; t=1775679764; x=1776284564; darn=lists.infradead.org;
-        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
-         :from:subject:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=wBJw70mUEicNNB549MIpFjeIXaI1p71OdOWBzakHM6k=;
-        b=RBlNsejb1MsOC/WsTg9OBzYIYs7rv2025vA3Y7bq+I4bKlJUEYp7vu5nXn0zv80j/d
-         e5S5NG4uRDHaF4sHFtfjJxr3uPNB0+oWO2OzTUNeU6VLLo8MdJiVGx2iXMWyO4pGiO3Y
-         FR/SoQSaGAHN/uHTlt0SXR7vhje1RZfj5ay57a4XYEc9CNPUfiIGSBDJM/CATqq/x/AA
-         NT4HVxqIHf5dJ0CaGBxty0h4wFa6cj8wyWlABti43H/oIVUkW7kzuqPRaF7L3MwJMpp+
-         vWIGDrFDNXxZWKyN1L9ZiS+Z8K50+ky6DFvPwnVbXErbd3CmAe7pYmgLrcNr05yAHIOA
-         Iq3A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1775679764; x=1776284564;
-        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
-         :from:subject:message-id:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=wBJw70mUEicNNB549MIpFjeIXaI1p71OdOWBzakHM6k=;
-        b=CoDe6IhE5iDp8heXLe1cVNbqZxQ+x0XMiO32kGpA4XrpnYMOPUAUibkr1JQP/RJIO+
-         YFFEZXImge254fHbKfQhgvj6FjCgNkikr6fZLY3iICbmt4qE8OTp0DvlaLmHK4vpfdj1
-         QEK0wfuBD8s3DkBd0WQLPJGy8H56QKW15DtyGNMEKRnKWkqPn/5H4L/hz5DCOoi9qiZo
-         qJOog7Bg10L9V/I0LPK16yIVtdEtBZbqlyRNRC8L7QIZrzy0cZLrgjhpWVBb5gp36IaP
-         Pfc/bwQIRaIt3+FHYHs3ditH/US3QW8yaPi6CEk6RRfPSRQM/NT+dW/RQ+QG8B5Qv2md
-         HMfg==
-X-Forwarded-Encrypted: i=1; AJvYcCVL4E75SGrkRxalwENAGOPX0k/ooMoKyauesFLclzmvznki4EzhY3tbWisCpjqcgR2OhdzrNz5y74COTcI2Ng==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx3QBh9gyicWdDw2o34J2fUzGsPuuTwZSjpl2iq7Cmrvu34d0Qk
-	BrvisNriEu4pYPi9kp0W5GXe4wJvkpwDvqmW2/7K9h+wYU0Z7qyPAuCKWz/BpcoGBWQ=
-X-Gm-Gg: AeBDieuB6DeD8gRjoLTd3R7HssoLFUnNUXyF1ydSthmw5j/22QXf6o9qxcSfIYGnS5T
-	/jMvhuw/xytB3wXc74Dp6QS5X2w5ZinCvoJEhz/Lj9TUlB2t2j4EKpctedIjxx4SSH+FwyWAcXc
-	AH0XYWIz/xoCnwjGBAsBjOQqqbfJuMlA4vOwN7Q6+2Fk1TNcIxsRp+7OtypK55Wz4YWEhyrVkSm
-	UNsfvy9tCC9UuFmA/QbEokn4zOKXBPDlo9ttWIFiJANEpNnrHszejQrcdE6SPG/nct3yQCU9EdD
-	bniNSiHBPj0APit3vozETv436rK54rDPmawxvh7NoJRyha6EfE1HICKJtQnOYgBU7E/Otxg718C
-	Z3yRAMvKOa+AOHlOZmBnCJSOR2xNEWtHtKw3Vo1gPDf8DgHIxnqmFdyvtvCtCB6XqcqnMjquZ9X
-	xfbOT3AD2kFjaj35Cr9Q3i42mDC9NQ
-X-Received: by 2002:a05:622a:1984:b0:50b:4ba4:9add with SMTP id d75a77b69052e-50d62a9ca10mr334496991cf.34.1775679763542;
-        Wed, 08 Apr 2026 13:22:43 -0700 (PDT)
-Received: from ?IPv6:2606:6d00:15:e06b::5ac? ([2606:6d00:15:e06b::5ac])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-50d4aed181asm192301041cf.0.2026.04.08.13.22.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Apr 2026 13:22:42 -0700 (PDT)
-Message-ID: <cd1de04076917d65ccd7dd91d9392af7977a4906.camel@ndufresne.ca>
-Subject: Re: [PATCH v2 0/5] Migrate soc, drm-mediatek, mdp3 to new CMDQ APIs
- (series 2/4)
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Jason-JH Lin <jason-jh.lin@mediatek.com>, Jassi Brar	
- <jassisinghbrar@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Mauro
- Carvalho Chehab <mchehab@kernel.org>
-Date: Wed, 08 Apr 2026 16:22:41 -0400
-In-Reply-To: <20260325035836.2110757-1-jason-jh.lin@mediatek.com>
-References: <20260325035836.2110757-1-jason-jh.lin@mediatek.com>
-Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
+	id 1wAa3X-00000009PVV-3Uj9;
+	Wed, 08 Apr 2026 21:03:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1775682199;
+	bh=LtL8zWRJDXdRoRijhg72rUTbqF2RwTDTiPsU4WYDaUA=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=A5LHM2SIuPeAgKhLOKSz/dHZxIT7D4v3kxYiJ2ia3Y2Rs8opabz742k1NcJvZwGa0
+	 KInH9ggvtk43eWBYUmuSBn0n20NiQ59nljYgI9ab0PAdjecgecmuMx5iZpc2GuH111
+	 /T0LNPOXhoieJUXngos5i9bIpz+5O7954LUkFy28R0M3WU+Vi3gUbA6aQuA87dYbda
+	 RsWBXv8X8jQpJMJAhFbPvSef/fA3H64292McwOSFeSyVz0t1qT+14Vu4ZU8FIePkAS
+	 Z1Dm1y2BeMhL25KFyLU9d9YpVGJIOMuHs3SkypM4Exd3B+Ty/QXHyNNwZy7NHcxZF/
+	 SfE7oIzNIY5bw==
+Received: from [100.64.0.214] (unknown [100.64.0.214])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 17BDF17E0C83;
+	Wed,  8 Apr 2026 23:03:17 +0200 (CEST)
+Message-ID: <e1ee5e8e41dbc1dfe6f2ce3a43998b3a717fb56e.camel@collabora.com>
+Subject: Re: [PATCH] media: mtk-jpeg: cancel workqueue on release for
+ supported platforms only
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, Bin Liu	
+ <bin.liu@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
+ <angelogioacchino.delregno@collabora.com>, Hans Verkuil	
+ <hverkuil+cisco@kernel.org>, Fan Wu <fanwu01@zju.edu.cn>
+Cc: kernel@collabora.com, linux-media@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Date: Wed, 08 Apr 2026 17:03:16 -0400
+In-Reply-To: <20260401-mtk-jpeg-release-issue-v1-1-2271a1779340@collabora.com>
+References: <20260401-mtk-jpeg-release-issue-v1-1-2271a1779340@collabora.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
  cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
@@ -92,13 +71,14 @@ Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
  iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
  ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
  bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-RDSjhy/5yQt09mvK/09B"
+	protocol="application/pgp-signature"; boundary="=-+6gXRB8C3U/+xLywTZ0i"
 User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260408_132245_571625_7BAB3A12 
-X-CRM114-Status: GOOD (  14.47  )
+X-CRM114-CacheID: sfid-20260408_140324_058376_787A891F 
+X-CRM114-Status: GOOD (  23.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,83 +90,103 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Moudy Ho <moudy.ho@mediatek.com>, Xiandong Wang <xiandong.wang@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---=-RDSjhy/5yQt09mvK/09B
+--=-+6gXRB8C3U/+xLywTZ0i
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Hi,
+Le mercredi 01 avril 2026 =C3=A0 11:44 +0200, Louis-Alexis Eyraud a =C3=A9c=
+rit=C2=A0:
+> Since a recent fix the mtk_jpeg_release function cancels any pending
+> or running work present in the driver workqueue using
+> cancel_work_sync function.
+> Currently, only the multicore based variants use this workqueue and they
+> have the jpeg_worker platform data field initialized with a workqueue
+> callback function. For the others, this field value remain NULL by
+> default.
+> The cancel_work_sync function is unconditionally called in
+> mtk_jpeg_release function, even for the variants that do not use the
+> workqueue. This call generates a WARN_ON print in __flush_work because
+> the workqueue callback function presence check fails in __flush_work
+> function (used by cancel_work_sync).
+>=20
+> So, to avoid these warnings, call cancel_work_sync only if a workqueue
+> callback is defined in platform data.
+>=20
+> Fixes: 34c519feef3e ("media: mtk-jpeg: fix use-after-free in release path=
+ due to uncancelled work")
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
-Le mercredi 25 mars 2026 =C3=A0 11:57 +0800, Jason-JH Lin a =C3=A9crit=C2=
-=A0:
-> This series migrates the MediaTek SoC, DRM, and MDP3 drivers to the new
-> CMDQ APIs introduced for MT8196.
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+
+> ---
+> Patch to fix the following warning that occurs on boards such as
+> Mediatek Genio 510-EVK:
+> ```
+> WARNING: kernel/workqueue.c:4291 at __flush_work+0x320/0x340, CPU#1:
+> =C2=A0 v4l_id/409
+> ...
+> Call trace:
+> =C2=A0__flush_work+0x320/0x340 (P)
+> =C2=A0cancel_work_sync+0x6c/0x9c
+> =C2=A0mtk_jpeg_release+0x2c/0x84 [mtk_jpeg]
+> =C2=A0v4l2_release+0x8c/0xe8 [videodev]
+> =C2=A0__fput+0xcc/0x2e0
+> =C2=A0fput_close_sync+0x40/0x100
+> =C2=A0__arm64_sys_close+0x38/0x7c
+> =C2=A0invoke_syscall+0x54/0x10c
+> =C2=A0el0_svc_common.constprop.0+0xc0/0xe0
+> =C2=A0do_el0_svc+0x1c/0x34
+> =C2=A0el0_svc+0x34/0x108
+> =C2=A0el0t_64_sync_handler+0xa0/0xf0
+> =C2=A0el0t_64_sync+0x198/0x19c
+> ---[ end trace 0000000000000000 ]---
+> ```
 >=20
-> Series application order:
-> =C2=A0 1. [Series V2 2/4] Migrate subsystems to new CMDQ APIs (this serie=
-s)
-> =C2=A0 2. [Series V2 3/4] Remove shift_pa from CMDQ jump functions
-> =C2=A0 3. [Series V2 4/4] Remove deprecated CMDQ APIs
+> It is based on linux-next (tag next-20260331) and has been tested on
+> Mediatek Genio 510-EVK (mt8390) and 1200-EVK (mt8395) boards.
+> ---
+> =C2=A0drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 3 ++-
+> =C2=A01 file changed, 2 insertions(+), 1 deletion(-)
 >=20
-> Please apply this series after the MT8196 GCE support series,
-> and before the following series.
+> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drive=
+rs/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> index 8c684756d5fc2524da3a67f67f0fdda894b676fc..d147ec48308110ae8520662e1=
+82dc0445447d8d0 100644
+> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> @@ -1202,7 +1202,8 @@ static int mtk_jpeg_release(struct file *file)
+> =C2=A0	struct mtk_jpeg_dev *jpeg =3D video_drvdata(file);
+> =C2=A0	struct mtk_jpeg_ctx *ctx =3D mtk_jpeg_file_to_ctx(file);
+> =C2=A0
+> -	cancel_work_sync(&ctx->jpeg_work);
+> +	if (jpeg->variant->jpeg_worker)
+> +		cancel_work_sync(&ctx->jpeg_work);
+> =C2=A0	mutex_lock(&jpeg->lock);
+> =C2=A0	v4l2_m2m_ctx_release(ctx->fh.m2m_ctx);
+> =C2=A0	v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
 >=20
 > ---
+> base-commit: e5da3eef8dadab4e98b228725ca8948edd9d601f
+> change-id: 20260401-mtk-jpeg-release-issue-d8921970a250
 >=20
-> Change in v2:
-> 1. Rebase on linux-next
-> 2. Fix build error of -EINVAL in patch2.
->=20
-> ---
->=20
-> Jason-JH Lin (5):
-> =C2=A0 soc: mediatek: Use pkt_write function pointer for subsys ID
-> =C2=A0=C2=A0=C2=A0 compatibility
-> =C2=A0 soc: mediatek: mtk-cmdq: Add cmdq_pkt_jump_rel_temp() for removing
-> =C2=A0=C2=A0=C2=A0 shift_pa
-> =C2=A0 drm/mediatek:Use reg_write function pointer for subsys ID
-> =C2=A0=C2=A0=C2=A0 compatibility
-> =C2=A0 media: platform: mtk-mdp3: Refactor CMDQ writes for CMDQ API chang=
-e
-> =C2=A0 media: platform: mtk-mdp3: Change cmdq_pkt_jump_rel() to
-> =C2=A0=C2=A0=C2=A0 cmdq_pkt_jump_rel_temp()
+> Best regards,
 
-Can the two last be applied to the media tree alone without breaking anythi=
-ng ?
-Otherwise I will need to wait for the soc: patches to have landed.
-
-Nicolas
-
->=20
-> =C2=A0drivers/gpu/drm/mediatek/mtk_ddp_comp.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 | 12 +++++-----
-> =C2=A0.../platform/mediatek/mdp3/mtk-mdp3-cmdq.c=C2=A0=C2=A0=C2=A0 |=C2=
-=A0 6 ++---
-> =C2=A0.../platform/mediatek/mdp3/mtk-mdp3-comp.h=C2=A0=C2=A0=C2=A0 |=C2=
-=A0 6 ++---
-> =C2=A0drivers/soc/mediatek/mtk-mmsys.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 8 ++++---
-> =C2=A0drivers/soc/mediatek/mtk-mutex.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 5 ++--
-> =C2=A0include/linux/soc/mediatek/mtk-cmdq.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0 | 24 +++++++++++++++++++
-> =C2=A06 files changed, 44 insertions(+), 17 deletions(-)
-
---=-RDSjhy/5yQt09mvK/09B
+--=-+6gXRB8C3U/+xLywTZ0i
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCada5EQAKCRDZQZRRKWBy
-9BvDAQDiGnxs8IuI1dVJpXUEYd4nLqhHu0mrYWUd+Xo+VGU9BQD+M4bHsQCcq4KC
-eU/cm+cZeMh1990/2+dj1+RYXPBBewk=
-=HqBw
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCadbClAAKCRDZQZRRKWBy
+9E6KAQCtbRF0ml8NeffxiE9e18nyCtOIJ/xHDrd3SH2HI970dAD/XJ0W+e8dQDx0
+9RWf/octwsctl+2l+vVTZvQdCYsnrgw=
+=6DRi
 -----END PGP SIGNATURE-----
 
---=-RDSjhy/5yQt09mvK/09B--
+--=-+6gXRB8C3U/+xLywTZ0i--
 
