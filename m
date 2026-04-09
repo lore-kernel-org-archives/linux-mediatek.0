@@ -4,58 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E285210FC456
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2026 23:34:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5F6510FC456
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Apr 2026 01:41:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=4XULHe8enbUXLuiBFqQ5XoeR/9dws/Rh24z9BiTHJN4=; b=mfgw7uSuTvHqZer6ZY4mJOXR+Q
-	+ffYMVPD6gkTGWXH/tt86kRP3e+DpGLOzLgdzQGpdZ1k60YLrm33mMq/TCJ7/F3jHOeA3K/5AxVTq
-	/uixcmFYLRThIAmRpDSZPoH35d+Z14G+3/Rqd3gU3IOVVa79MtWykYmIptuqWBWvidWsGMCDGUmL8
-	WHSyhaVBjvSp2/G9PqeYHcGAmAI0ITvr9V/pazL5YypCOrFsqpSWoVL6fiNdOEK5ObQj9W1BYzZ8B
-	W+KpwaqgcuenfGV5kwqC6bxXd5gyiU0guZubq4xyyykw++8wdNxDH9LWqTTB+OchY6FD1rEBQlklr
-	duBw10gg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MadnNngCxJC8yYjvjyaGGRQRw+73E0DoH8OrsCxju0I=; b=g+7ioDliOKkGWIhBIka7Ta9miX
+	gpbe+PTCrC/s4mY0mKAwT2HbjcGnOuGATNkws5HNSxHSt/LnEf/hai2uPrjsQ4Dcv74hVXnIa/bSq
+	3yBSlqthEXhM1htn4n25GyqAbTXlIC6tsGyks5/ss7uq9y4SiXKe469imJ+vVO0T3cEEbwhzzgsal
+	waAJSqIOZfXrlWMoIW5NfnSP1DTK5eoYVcCU33LHPEeO0YKCvEJV8JKrkGww8k2lY31sRil49epux
+	N7okZ/ldaL6YSKNlA4Va+nnKJcp5VYnDC12sbOqTtdgdvvs+A8Ot9pommhVMcaHfNzDOaSkZ1g5bd
+	VSTDL9FA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAcPb-00000009WQd-1TT6;
-	Wed, 08 Apr 2026 23:34:19 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1wAeOw-00000009aPB-2g3j;
+	Thu, 09 Apr 2026 01:41:46 +0000
+Received: from mail-dy1-x132d.google.com ([2607:f8b0:4864:20::132d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAcPY-00000009WQB-27Oe;
-	Wed, 08 Apr 2026 23:34:17 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.99)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1wAcPF-000000004lk-2YmF;
-	Wed, 08 Apr 2026 23:33:57 +0000
-Date: Thu, 9 Apr 2026 00:33:47 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Pablo Neira Ayuso <pablo@netfilter.org>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Chad Monroe <chad.monroe@adtran.com>, Elad Yifee <eladwf@gmail.com>,
-	=?iso-8859-1?Q?Jo=E3o?= Duarte <du@rte.pm>,
-	John Crispin <john@phrozen.org>
-Subject: [PATCH net] net: ethernet: mtk_eth_soc: initialize PPE per-tag-layer
- MTU registers
-Message-ID: <164435c1de5b4ccfd773ee623ad1bc65b5366250.1775690659.git.daniel@makrotopia.org>
+	id 1wAeOt-00000009aOo-2iOO
+	for linux-mediatek@lists.infradead.org;
+	Thu, 09 Apr 2026 01:41:44 +0000
+Received: by mail-dy1-x132d.google.com with SMTP id 5a478bee46e88-2ce22328930so336574eec.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Apr 2026 18:41:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1775698902; x=1776303702; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=MadnNngCxJC8yYjvjyaGGRQRw+73E0DoH8OrsCxju0I=;
+        b=QfKq/5hdKtVMnbutwSXlWep32IP0DvO1X0mWhV/SWdoQUaDsTC8WOojMfiloaVPOgw
+         d6e9IaeYyWqS3v7Z/f3u1QZFUbyyZKi2TnVtGxiU9i7uebrfmjy1SIEyKmCcUlRwPLao
+         4MDXlJBZE4vgLLLJO1fCB60PhyoIvvAHakEAFqhFuNYZ1cyD2pjQbj80uoC2iYI9DuB9
+         mIQ4ql3JICCLiH+QypduHhjXYeV/fKmY03jPzDp7fAUmgG42f8YBCgOboUSzbxMOA332
+         sflPnYzudPjsQlws25wz2jvTprQVJLGjXvkjkHA7JbUphtSClM/qZBkE+Cl/GcpodWy8
+         bqJw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1775698902; x=1776303702;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=MadnNngCxJC8yYjvjyaGGRQRw+73E0DoH8OrsCxju0I=;
+        b=TL6fQh4LNp1zc7uRuL5aM3fGubo71/xD3RgadCEjsW4oCEfQ79b8kGUKufjCQt4IdU
+         FsCk66AUg3yQLCYHTuWzFIlNsRWrGzDOo+VVyrYrYQhgnGithlMhWM4dKhtDCtnUebHD
+         m0O9jIc/G8ah1Yx0ankb0ge47j+vHjzS54QXA5eBlaeFdMdAh+wKv0yUqhRQmTk56GzC
+         KuInhpuBKGTUIRkYluJIWnLp07YAOiCoq3HVCEy7E+/BqvubVZCfFa7cTGr1UA5TQ9rH
+         OvZ3MamnXbw7OD4qDN0varNlrL0BaffOmcSj+BuS6AdgvTfaEVmJraCi2s6CWMKQh5ts
+         tBAQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVdanOwK1si+Kq2gfjWdVdrjEG4DmW2SDt33vDetsp7HoyKx9JQb+aMgMWsuhaDJ7cvVhTu8ntdC4LzUkR1ow==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyAF5e93kgvbMDBzVxxqysWhcugYuZGRPQiDdAi1agg58gm6y5q
+	WwJokUshCSDG+qi1AWFHTYrskAFsmfhstwEboEUvETcgP/Yt9Vt+P+j3
+X-Gm-Gg: AeBDieuV2tg6WVGIRlwsf8WCJun8zNC8yvEi4xxHZe0nkfr84s7lOTvHNuHyaeez15Z
+	PK0sCZdMivUUgysCgVecmQePcc40uaJN7ozEA2MQmGkHb289N9CEBxBVTX7Tb9gbMLSpqY8vHY8
+	tdvcOkKLGIoCveOeasNVVKmyOd4RRvc0zJeODpp0CocQRsshkU1IySgm+kNuqGw7/J0+N1ZBl2j
+	dzoVSb1FGYZkhCo2Es+In6dmx9LBGDMb2NH070tsOBNaVMC6ortFNtsH9i3ICnZg7/+J2HxVP0z
+	zsrOyXLspg1fpy6K8h3uzEs1fZnKfD27qHL98ZfYh/I/11fkRP3aFC8Tp+hLiCEVo1AZdWaHNoS
+	pZ2CuXuXWu99m/OmvJFLOriJTdKv1JJV5Jk2SOcj5cFmXv+/2+bapMO6OTuXl4yzEkZqkaWcL0d
+	Soq6Gkxn7CY2ZPYS07mQGAk730VMlpnDvyk2OJDw1ZObC2nulOEipG4pmUzPhIX4Mt4hq+VDNs0
+	XkCsjIqVgDob/4vs5EWqDRXNFHcq91/OmVS
+X-Received: by 2002:a05:7300:2310:b0:2d4:2cc8:68d with SMTP id 5a478bee46e88-2d42cc80a4bmr710272eec.25.1775698901971;
+        Wed, 08 Apr 2026 18:41:41 -0700 (PDT)
+Received: from ?IPv6:2804:1b1:fa41:f3c2:efa2:f2d9:c540:bfc4? ([2804:1b1:fa41:f3c2:efa2:f2d9:c540:bfc4])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-2ca7cf1271asm27331763eec.26.2026.04.08.18.41.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Apr 2026 18:41:41 -0700 (PDT)
+Message-ID: <7e1ebd83b843b6e74673117018fc5ff97f26f35e.camel@gmail.com>
+Subject: Re: mt7921e: repeated driver own failures cause hanging
+From: Vinicius <viniciuspython@gmail.com>
+To: Sean Wang <sean.wang@kernel.org>, moosager90 <moosager90@gmail.com>
+Cc: linux-wireless@vger.kernel.org, "moderated list:ARM/Mediatek SoC
+ support"	 <linux-mediatek@lists.infradead.org>
+Date: Wed, 08 Apr 2026 22:41:38 -0300
+In-Reply-To: <CAGp9Lzp8NjVwkn2atNqT9x9-QTkWMLxK+Ntkb=3Z1fWcM6N=7A@mail.gmail.com>
+References: <4870974.vXUDI8C0e8@fedora.fritz.box>
+	 <CAGp9Lzp8NjVwkn2atNqT9x9-QTkWMLxK+Ntkb=3Z1fWcM6N=7A@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.58.3 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260408_163416_548201_CA31BDEB 
-X-CRM114-Status: GOOD (  18.15  )
+X-CRM114-CacheID: sfid-20260408_184143_695793_09F55FCF 
+X-CRM114-Status: GOOD (  34.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,136 +101,201 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The PPE enforces output frame size limits via per-tag-layer VLAN_MTU
-registers that the driver never initializes. The hardware defaults do
-not account for PPPoE overhead, causing the PPE to punt encapsulated
-frames back to the CPU instead of forwarding them.
+Hi Sean,
 
-Initialize the registers at PPE start and on MTU changes using the
-maximum GMAC MTU. This is a conservative approximation -- the actual
-per-PPE requirement depends on egress path, but using the global
-maximum ensures the limits are never too small.
+moosager90 recommended me to reply to this thread when we were talking
+about a bug reported at
+https://bugzilla.kernel.org/show_bug.cgi?id=3D220353
 
-Fixes: ba37b7caf1ed2 ("net: ethernet: mtk_eth_soc: add support for initializing the PPE")
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+This bug reported in bugzilla is related to mt7921e raising several
+"driver own failed" messages in dmesg. But it seems this same bug is
+also affecting me through **mt7925e** driver.
+
+Before posting below a log from my dmesg, which also shows several
+"driver own failed" messages, I would like to say in advance that yes,
+the bug was occurring every time my computer suspended. I first tried
+to disable the auto-suspend feature of my linux distro and the bug
+stopped happening too often, but was still happening sometimes. In
+~March 28th the bug was being triggered too much (even without the
+computer being suspended), freezing my computer and requiring a reboot.
+So I tried adding `options mt7925e disable_aspm=3D1` to
+`/etc/modprobe.d/mt7925e.conf`. I think this is what you suggested when
+you said "could you also try disabling PCIe ASPM...".
+
+**Since I added this line to disable ASPM, I have not experienced more
+freezes. It seems this line really fixed the issue.**
+
+Below you can find all the information about the kernel version I'm
+using, as well as the driver version, firmware version and logs from
+dmesg (a copy-paste from my message at bugzilla on March 25th):
+
+```
+# uname -a
+Linux arch 6.19.9-arch1-1 #1 SMP PREEMPT_DYNAMIC Thu, 19 Mar 2026
+16:33:17 +0000 x86_64 GNU/Linux
+
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 22 ++++++++++++++-
- drivers/net/ethernet/mediatek/mtk_ppe.c     | 30 +++++++++++++++++++++
- drivers/net/ethernet/mediatek/mtk_ppe.h     |  1 +
- 3 files changed, 52 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 1767463475de4..06880fa86f0ea 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -3922,12 +3922,23 @@ static int mtk_device_event(struct notifier_block *n, unsigned long event, void
- 	return NOTIFY_DONE;
- }
- 
-+static int mtk_max_gmac_mtu(struct mtk_eth *eth)
-+{
-+	int i, max_mtu = ETH_DATA_LEN;
-+
-+	for (i = 0; i < ARRAY_SIZE(eth->netdev); i++)
-+		if (eth->netdev[i] && eth->netdev[i]->mtu > max_mtu)
-+			max_mtu = eth->netdev[i]->mtu;
-+
-+	return max_mtu;
-+}
-+
- static int mtk_open(struct net_device *dev)
- {
- 	struct mtk_mac *mac = netdev_priv(dev);
- 	struct mtk_eth *eth = mac->hw;
- 	struct mtk_mac *target_mac;
--	int i, err, ppe_num;
-+	int i, err, ppe_num, mtu;
- 
- 	ppe_num = eth->soc->ppe_num;
- 
-@@ -3974,6 +3985,10 @@ static int mtk_open(struct net_device *dev)
- 			mtk_gdm_config(eth, target_mac->id, gdm_config);
- 		}
- 
-+		mtu = mtk_max_gmac_mtu(eth);
-+		for (i = 0; i < ARRAY_SIZE(eth->ppe); i++)
-+			mtk_ppe_update_mtu(eth->ppe[i], mtu);
-+
- 		napi_enable(&eth->tx_napi);
- 		napi_enable(&eth->rx_napi[0].napi);
- 		mtk_tx_irq_enable(eth, MTK_TX_DONE_INT);
-@@ -4788,6 +4803,7 @@ static int mtk_change_mtu(struct net_device *dev, int new_mtu)
- 	int length = new_mtu + MTK_RX_ETH_HLEN;
- 	struct mtk_mac *mac = netdev_priv(dev);
- 	struct mtk_eth *eth = mac->hw;
-+	int max_mtu, i;
- 
- 	if (rcu_access_pointer(eth->prog) &&
- 	    length > MTK_PP_MAX_BUF_SIZE) {
-@@ -4798,6 +4814,10 @@ static int mtk_change_mtu(struct net_device *dev, int new_mtu)
- 	mtk_set_mcr_max_rx(mac, length);
- 	WRITE_ONCE(dev->mtu, new_mtu);
- 
-+	max_mtu = mtk_max_gmac_mtu(eth);
-+	for (i = 0; i < ARRAY_SIZE(eth->ppe); i++)
-+		mtk_ppe_update_mtu(eth->ppe[i], max_mtu);
-+
- 	return 0;
- }
- 
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
-index 79c11e179d894..9e829a2e4354e 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
-@@ -973,6 +973,36 @@ static void mtk_ppe_init_foe_table(struct mtk_ppe *ppe)
- 	}
- }
- 
-+void mtk_ppe_update_mtu(struct mtk_ppe *ppe, int mtu)
-+{
-+	int base;
-+	u32 val;
-+
-+	if (!ppe)
-+		return;
-+
-+	/* The PPE checks output frame size against per-tag-layer MTU limits,
-+	 * treating PPPoE and DSA tags just like 802.1Q VLAN tags. The Linux
-+	 * device MTU already accounts for PPPoE (PPPOE_SES_HLEN) and DSA tag
-+	 * overhead, but 802.1Q VLAN tags are handled transparently without
-+	 * being reflected by the lower device MTU being increased by 4.
-+	 * Use the maximum MTU across all GMAC interfaces so that PPE output
-+	 * frame limits are sufficiently high regardless of which port a flow
-+	 * egresses through.
-+	 */
-+	base = ETH_HLEN + mtu;
-+
-+	val = FIELD_PREP(MTK_PPE_VLAN_MTU0_NONE, base) |
-+	      FIELD_PREP(MTK_PPE_VLAN_MTU0_1TAG, base + VLAN_HLEN);
-+	ppe_w32(ppe, MTK_PPE_VLAN_MTU0, val);
-+
-+	val = FIELD_PREP(MTK_PPE_VLAN_MTU1_2TAG,
-+			 base + 2 * VLAN_HLEN) |
-+	      FIELD_PREP(MTK_PPE_VLAN_MTU1_3TAG,
-+			 base + 3 * VLAN_HLEN);
-+	ppe_w32(ppe, MTK_PPE_VLAN_MTU1, val);
-+}
-+
- void mtk_ppe_start(struct mtk_ppe *ppe)
- {
- 	u32 val;
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.h b/drivers/net/ethernet/mediatek/mtk_ppe.h
-index 223f709e2704f..ba85e39a155bf 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe.h
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe.h
-@@ -346,6 +346,7 @@ struct mtk_ppe {
- struct mtk_ppe *mtk_ppe_init(struct mtk_eth *eth, void __iomem *base, int index);
- 
- void mtk_ppe_deinit(struct mtk_eth *eth);
-+void mtk_ppe_update_mtu(struct mtk_ppe *ppe, int mtu);
- void mtk_ppe_start(struct mtk_ppe *ppe);
- int mtk_ppe_stop(struct mtk_ppe *ppe);
- int mtk_ppe_prepare_reset(struct mtk_ppe *ppe);
--- 
-2.53.0
+# journalctl -k -g mt7925e -b -1
+mar 25 09:00:09 arch kernel: mt7925e 0000:01:00.0: enabling device
+(0000 -> 0002)
+mar 25 09:00:09 arch kernel: mt7925e 0000:01:00.0: ASIC revision:
+79250000
+mar 25 09:00:09 arch kernel: mt7925e 0000:01:00.0: HW/SW Version:
+0x8a108a10, Build Time: 20260106153007a
+mar 25 09:00:09 arch kernel: mt7925e 0000:01:00.0: WM Firmware Version:
+____000000, Build Time: 20260106153120
+mar 25 09:00:10 arch kernel: mt7925e 0000:01:00.0 wlp1s0: renamed from
+wlan0
+mar 25 10:25:16 arch kernel: mt7925e 0000:01:00.0: driver own failed
+mar 25 10:25:17 arch kernel: mt7925e 0000:01:00.0: driver own failed
+...
+mar 25 10:25:42 arch kernel: mt7925e 0000:01:00.0: chip reset failed
+mar 25 10:25:45 arch kernel: mt7925e 0000:01:00.0: Message 00020001
+(seq 9) timeout
+mar 25 10:25:48 arch kernel: mt7925e 0000:01:00.0: Message 00020004
+(seq 10) timeout
+mar 25 10:25:51 arch kernel: mt7925e 0000:01:00.0: Message 00020002
+(seq 11) timeout
+mar 25 10:25:54 arch kernel: mt7925e 0000:01:00.0: Message 00020001
+(seq 12) timeout
+mar 25 10:25:57 arch kernel: mt7925e 0000:01:00.0: Message 00020004
+(seq 13) timeout
+mar 25 10:25:58 arch kernel: mt7925e 0000:01:00.0: driver own failed
+mar 25 10:26:00 arch kernel: mt7925e 0000:01:00.0: Message 00020027
+(seq 14) timeout
+mar 25 10:26:04 arch kernel: mt7925e 0000:01:00.0: driver own failed
+mar 25 10:26:06 arch kernel: mt7925e 0000:01:00.0: driver own failed
+mar 25 10:26:07 arch kernel: mt7925e 0000:01:00.0: driver own failed
+mar 25 10:26:08 arch kernel: mt7925e 0000:01:00.0: driver own failed
+mar 25 10:26:14 arch kernel: mt7925e 0000:01:00.0: Message 00020003
+(seq 15) timeout
+
+---
+
+# modinfo mt7925e
+filename:       /lib/modules/6.19.9-arch1-
+1/kernel/drivers/net/wireless/mediatek/mt76/mt7925/mt7925e.ko.zst
+license:        Dual BSD/GPL
+description:    MediaTek MT7925E (PCIe) wireless driver
+author:         Lorenzo Bianconi <lorenzo@kernel.org>
+author:         Deren Wu <deren.wu@mediatek.com>
+firmware:       mediatek/mt7925/WIFI_MT7925_PATCH_MCU_1_1_hdr.bin
+firmware:       mediatek/mt7925/WIFI_RAM_CODE_MT7925_1_1.bin
+srcversion:     CB386A1D0C64CC7F4C723D9
+alias:          pci:v000014C3d00000717sv*sd*bc*sc*i*
+alias:          pci:v000014C3d00007925sv*sd*bc*sc*i*
+depends:        mt792x-lib,mt76-connac-lib,mt76,mt7925-common,rfkill
+intree:         Y
+name:           mt7925e
+retpoline:      Y
+vermagic:       6.19.9-arch1-1 SMP preempt mod_unload=20
+sig_id:         PKCS#7
+signer:         Build time autogenerated kernel key
+sig_key:      =20
+6F:56:40:C8:60:B3:9B:AD:DF:E1:84:24:BC:D4:A9:07:90:4E:7B:C6
+sig_hashalgo:   sha512
+signature:    =20
+30:64:02:30:54:34:C4:0C:8E:A8:D6:EB:38:02:71:55:A3:09:CA:39:
+		28:2E:F3:8C:2C:38:AB:26:89:8A:B7:3E:66:77:40:26:C7:D5:
+
+13:12:
+		CA:39:F4:99:1A:EC:3B:0C:D4:8D:D7:C0:02:30:62:78:5D:DC:
+
+90:B7:
+		57:5E:CE:F5:64:99:EF:AC:B9:3B:B7:00:3E:EE:BA:B7:81:C2:
+
+8F:2C:
+		DF:B2:F4:64:3C:76:54:24:0B:70:72:56:80:7E:28:5A:56:71:
+
+45:D6:
+		A7:57
+parm:           disable_aspm:disable PCI ASPM support (bool)
+
+```
+
+Best regards.
+
+
+On Sat, 2026-01-03 at 01:10 -0600, Sean Wang wrote:
+> Hi moosager90,
+>=20
+> Could you please share more details on how this issue can be
+> reproduced? For example, does it occur after suspend/resume, under
+> heavy traffic, or during normal runtime? Also, please confirm which
+> firmware version you are using.
+>=20
+> It would be helpful to test with the latest linux-firmware version:
+> https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.g=
+it/commit/mediatek?id=3D5cf85776762a544ad27c4447b61eaabb0d4716e7
+>=20
+> As a debugging step, could you also try disabling PCIe ASPM and check
+> whether the issue still occurs?
+>=20
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 Sean
+>=20
+> On Fri, Jan 2, 2026 at 4:35=E2=80=AFAM moosager90 <moosager90@gmail.com>
+> wrote:
+> >=20
+> > Hello,
+> >=20
+> > There is an issue with mt7921e which causes repeated failures in
+> > chip resets,
+> > bringing the network down and causing hanging on every command or
+> > action on the
+> > system; the only workaround is to reboot. This is what the kernel
+> > output looks
+> > like at those times:
+> >=20
+> > mt7921e 0000:62:00.0: driver own failed
+> > kernel: mt7921e 0000:62:00.0: Timeout for driver own
+> > kernel: mt7921e 0000:62:00.0: driver own failed
+> > kernel: mt7921e 0000:62:00.0: Timeout for driver own
+> > kernel: mt7921e 0000:62:00.0: driver own failed
+> > kernel: mt7921e 0000:62:00.0: Timeout for driver own
+> > kernel: mt7921e 0000:62:00.0: driver own failed
+> > kernel: mt7921e 0000:62:00.0: chip reset failed
+> > kernel: mt7921e 0000:62:00.0: Timeout for driver own
+> > kernel: Console: switching to colour frame buffer device 360x112
+> > kernel: fbcon: Taking over console
+> > kernel: mt7921e 0000:62:00.0: Message 00020001 (seq 1) timeout
+> >=20
+> > I have observed the issue on many untainted kernels, and I have had
+> > it happen on
+> > vanilla kernels not provided by my distro as well.
+> >=20
+> > Mine and some other people's reports are available at [1]. More
+> > logs of the
+> > issue on my system are in the attachments of my original report on
+> > the Red Hat
+> > Bugzilla [2].
+> >=20
+> > In the past, the issue was reported at [3], which resulted in a
+> > patch [4] that
+> > only keeps the system running instead of panicking. This means the
+> > driver still
+> > causes system hangs.
+> >=20
+> > I still don't know the root cause of the issue and I would like to
+> > get to the
+> > bottom of this; any help or guidance is appreciated. Crucially, I
+> > have not found
+> > a way to reproduce the issue at will.
+> >=20
+> > Best regards.
+> >=20
+> > [1] https://bugzilla.kernel.org/show_bug.cgi?id=3D220353
+> > [2] https://bugzilla.redhat.com/show_bug.cgi?id=3D2411854
+> > [3]
+> > https://lore.kernel.org/linux-wireless/VE1PR04MB64945C660A81D38F290E4A4=
+BE59F9@VE1PR04MB6494.eurprd04.prod.outlook.com/T/#u
+> > [4]
+> > https://patchwork.kernel.org/project/linux-wireless/patch/727eb5ffd3c7c=
+805245e512da150ecf0a7154020.1659452909.git.deren.wu@mediatek.com/
+> >=20
+> >=20
+> >=20
+> >=20
+>=20
 
