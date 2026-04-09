@@ -4,61 +4,134 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92B8CF31E22
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Apr 2026 14:22:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E47CDF364A2
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Apr 2026 16:50:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	In-Reply-To:Content-Transfer-Encoding:Content-Type:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M02TVSfJ/9vSNYEyU/7aDtDFaJupWn6ab5dtRvMPr8g=; b=xlYgEyxFjWvOlYAN5rdhg3y87V
-	EpN9mIK15AjW/JH1462BlPXrbmoBj96LynesEGWo8o1BMjmokI4Vk1hJ6xdv+uFE+cKLIXNImYM+7
-	zJIRBOJ9fK+UgHACd2s0fw17SUMg1QMitq0IlQrHWiM/pfS5ZOQdb7veIfWB2TkGrXq5Kt+E5lkr2
-	Rmd/I7R0u74svRpSJMYHUEL2WaNGspdcN/PRCo0NdO6d7ayMzSkQC+MpJQP7JMAH6g5uS5t5WaOHk
-	GGCECkVDumMoMiIGVrLST4V8dwQrqOQQXrG97cu7BpfvIur5d8AIHYBaKCINQpKHJJpFJIjjrE9WL
-	Hmmf4F2w==;
+	bh=8MPz/Ds/m/pi4Erp8U/4iENSHTjV/2od/D+QL9LG2t8=; b=oF03w+LLS1VdKRNEQdJvS2tEoc
+	bVl1T8n9VjFe3S7qf3RtzdxsHZcVO145jjRM/h6DwRXDI28tRIqeqFOO6vW00lnJTxkTqB+9843QW
+	dX1iSa1AzZqQSXrauKFPQNUtcK9D9DgaK5hnfIoqBll0tq/TYEiSCntXtbupMIg5Cdhi8zJFW98Ei
+	Bpn1CwFDTI0lDoTe9eb3n/XS0ZO95a579nl1jBH8EKhxcpuKmzNoMXa4kS0Zu9ecTjcyvKLC6a5I3
+	3jN4erdZvsV1ZnMhlY0i53TP/iIxV6d9GlFWL7Y1OnWLnDzWi7e3+7nJOsVX+Ox5Xt0VKryhXoRr9
+	ypi1CfHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAqGl-0000000AgY1-0Sb3;
-	Thu, 09 Apr 2026 14:22:07 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1wAsaO-0000000Ax8B-3h5V;
+	Thu, 09 Apr 2026 16:50:32 +0000
+Received: from mail-westeuropeazlp170130006.outbound.protection.outlook.com ([2a01:111:f403:c201::6] helo=AM0PR02CU008.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAqGe-0000000AgSZ-0OR2;
-	Thu, 09 Apr 2026 14:22:05 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.99)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1wAqGT-000000002Iq-2EUP;
-	Thu, 09 Apr 2026 14:21:49 +0000
-Date: Thu, 9 Apr 2026 15:21:45 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Pablo Neira Ayuso <pablo@netfilter.org>
-Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Simon Horman <horms@kernel.org>, Florian Westphal <fw@strlen.de>,
-	Phil Sutter <phil@nwl.cc>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netfilter-devel@vger.kernel.org,
-	coreteam@netfilter.org
-Subject: Re: [PATCH RFC net-next 0/4] improve hw flow offload byte accounting
-Message-ID: <ade1-dlugvWF7IzB@makrotopia.org>
-References: <cover.1775739840.git.daniel@makrotopia.org>
- <adevKeasLkEB5zZ4@chamomile>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+	id 1wAsZj-0000000Ax3u-1f12;
+	Thu, 09 Apr 2026 16:50:11 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=xBEpLWoVKnD84wvEEksHW+CY7yrarKGpnbHN9wLqOT4bXpIdWbFFc2EIpjIcjXOWGBNbp5sYNuK07sMeHCc4ptStxNBcP+ywdDcEZ+1rTYIwKe3scMNkpKtgWLUxyxlmD98KrXoAkY74fOoBY0fQw1pX0dikXzmG57yThAHV+M7UpoaPKFuJWdxwCRNCyx4JN9hGmMGi6fYPzK1R8+mVDtOhFpeNYCf0FXsPxy9ZpBV6pCarhBgWLekW+KzZwLxhTLtrFerJRUepKJnqIoeNzuxmWFzxCs+W/49Mf2fZ/xMLBZ2qUHq3tvCv8k+BTmM/JXIqXyo+tfMR+a5nMTvXGw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=8MPz/Ds/m/pi4Erp8U/4iENSHTjV/2od/D+QL9LG2t8=;
+ b=MCKgz+lDu2l7uKRLYmMEFteTOQJOXVCyN0kFjI4k3enBgqAuvK70uhatFuCWRvtRrtyy0KFAv7H41U/cQQQoiPPSvuHrJK48OxpQHaW7sdqQ8Bs696ngdVEiWK/+jyt+wbx26E9bxz1OKhPxcDNGAsklgyEHM7g5Jgjk7vbEXE3nywoJY+P/+TKk1Nl33On8Xq/QyqRPs71YFUXiJOd0I9/xujyGpJ9+XRUrmlON4Rimusv3sJWKUjxrLb2AzUYgmbGpdBlCuaekfinGVvaBTyxT/Ecdj1PR9fFC6G+wtbphd/Dc/ry+bx+t6CwOX/7UVVkAbFaDQOeD1ng/t0+CPQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=8MPz/Ds/m/pi4Erp8U/4iENSHTjV/2od/D+QL9LG2t8=;
+ b=QBaXTQPT8DO4I6xpJzAf9eqjicZHW4C++ThAAdp9zikzLRK9xs6FWmQh45b7E8cHgzjFxydUDNx6bucUvoxoYH2TTt2IN3vVvzJyDD85N46emCQfjjruUW3Kq9fuWHwZaRMJXyGiBSAYp8HmUvL4tYv3QxZ4O3H4nBvluAzeZ1wxcKXjOYbLnvLLr++yBxFMGt4INNniXfeyatVUHJCcFOBvYs0ZTcKj3JlcEJZhdDitqJMQd7NcoZxOXVrB/ioLTWK3aNHLWKcqCBwc8Tvx0b6MRZeRJDVG/b+OY0wkN/ZFWXqzd2cULbuHqz7/0UpiV2v+4E22lXEAWbXVWSQVtw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from PAXSPRMB0032.eurprd04.prod.outlook.com (2603:10a6:102:2bd::8)
+ by AS8PR04MB8531.eurprd04.prod.outlook.com (2603:10a6:20b:422::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9769.15; Thu, 9 Apr
+ 2026 16:49:46 +0000
+Received: from PAXSPRMB0032.eurprd04.prod.outlook.com
+ ([fe80::901f:47ae:dfc9:2499]) by PAXSPRMB0032.eurprd04.prod.outlook.com
+ ([fe80::901f:47ae:dfc9:2499%5]) with mapi id 15.20.9769.041; Thu, 9 Apr 2026
+ 16:49:46 +0000
+Date: Thu, 9 Apr 2026 19:49:42 +0300
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+To: Frank Wunderlich <linux@fw-web.de>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Felix Fietkau <nbd@nbd.name>
+Subject: Re: [RFC net PATCH v1] net: pcs: pcs-mtk-lynxi: fix bpi-r3 serdes
+ configuration
+Message-ID: <20260409164942.wbmwtkpd5d5zibyy@skbuf>
+References: <20260409133344.129620-1-linux@fw-web.de>
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <adevKeasLkEB5zZ4@chamomile>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20260409133344.129620-1-linux@fw-web.de>
+X-ClientProxiedBy: WA1P291CA0007.POLP291.PROD.OUTLOOK.COM
+ (2603:10a6:1d0:19::11) To PAXSPRMB0032.eurprd04.prod.outlook.com
+ (2603:10a6:102:2bd::8)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PAXSPRMB0032:EE_|AS8PR04MB8531:EE_
+X-MS-Office365-Filtering-Correlation-Id: 0ecbdfa1-8eda-4e83-6d87-08de9658019e
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|10070799003|366016|19092799006|7416014|376014|18002099003|22082099003|56012099003;
+X-Microsoft-Antispam-Message-Info: Ec13hwYI4yedeMVgel60oBlc8N6qmdgmxe5eOOioPIlwoZGRZIuGWzUZMdUOg1IwStfv4vkMpCPbIcFggWXA1XOb7MFlpXLK7hD2tsituKSLXE6p4yICzUIy5HzRMqiM9U3+p/K4eaJUr4e8BZWpJed0bTboybhihX/IIgb6iTzIlOSF6XaFtFuU0M93pqn1l9o3bu9XIstNnnR1D8lwTQDL/arcSLaK3NV6/BXDO5vmminit607cDRMe+xzSuQtFrtdyk0Bs55JXfuzojzRC0fesYjQlb+kMoIl783rVuRysptvEbX2xnC3Pj/G/9FDWvzJ86A9eCfnWZI91egXcCfcT37BOwvaNeMpytA4MD57b3y1DZDcEptUZmKCG+dyVyYqLfFutADCWAGldnSriXFj1t0u1e/Y8wBD+G4XF6boVl93TzbUutdUjsZ8BWP6v8wNTSwAL3+XvyuMRPjJYAONhIBDMRObRusdZwpFnvf2nc6OLWT8O7PqcJlmo3phGEc7n4rKlNbSERaCy2MbJllo0NhC+UHqF4ALuUibNlD35GG0Vn6M/mj6gEaJBiFDuFHF4QEUJUzRMrN/+xlQdT4dt3pKfAAGlR0OltRkTpUd8Ub7dzguaMLAGUZsBUO98TB6OX/87cFyKKnY6HB9S2mBl48ANPux2WbjuYhJDduODJleNO7M/9Sa6dPhpVi6
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PAXSPRMB0032.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(10070799003)(366016)(19092799006)(7416014)(376014)(18002099003)(22082099003)(56012099003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?V21oUlZpSzZ2SkVqd3U5clZ3SGFTN0phVmc1T3BFMXlUNHdZVXhjc1BvMkNv?=
+ =?utf-8?B?eCtOQU9zYkNiQ1oxcDMzQys4RzBRQUk4OHIrZ2ZJeEYrZmIxK3BPcmVWN2RO?=
+ =?utf-8?B?U3R2dHFjRkM0UmxhUFgwaWZWSHFSdU5QMURVTFBUaFozdmkvd0VlUmx6Rk1E?=
+ =?utf-8?B?dm9vVmVPaUhqM0wxbzRVOC9pekY5a3U3RHpCMTdkVXBaamZRS2pWc2Q0dlBo?=
+ =?utf-8?B?aWRId1VIZlB4Y2NjR3NEbms3TWNEbUtIb1YrVDY3cUYrQllWUGhEdkx1RjZJ?=
+ =?utf-8?B?VCtrRU1CaFFkYzlHalJqcStlSUptRFY5MmlsMXE3SXNvdWd4UzNEcFBDcVdJ?=
+ =?utf-8?B?ZWtjbHJCcXJsNzRDVDJNTnZrU1o5LzFEandMaGZMS1czbzRYelgwYlptWWd1?=
+ =?utf-8?B?Q3ZhOG5iNEdieUhpNXBHSXBadFd0M3ZFRklmK3M5Q1FDak5acTNBR0V1bGxP?=
+ =?utf-8?B?NkFzRnQxaVJLY0VXWXdWWkxjV1oyNVo0VVJqdHlUbU5DM1Y0MjdCdGJsNUFo?=
+ =?utf-8?B?U0VBdzZuNlBYVWFna0EvY2FxRno3WEFlQVNIYkJvMWFoVHFHZ25oOHVTWTRQ?=
+ =?utf-8?B?N1RRdWUwb2NTamtvUTFjcjlhbllCNER1WlNVbE9ndGpzK2tKUUFwY0RSY1dU?=
+ =?utf-8?B?ckRiM3VJV0JHazB3ZHRCM1ZFcjFOWkZxKzR5eFV5WHpvVStFcjBMUHlMdHV5?=
+ =?utf-8?B?QTBqRUp2cWN0WnVUTmJ0S1B4RUY1MGlxNmhHZGdtdFI5bjdJSUxVRXNTM2Ev?=
+ =?utf-8?B?QWxRNHBjbmorc2hndEhZdUdkdEpiSnlCYXZFZkViMzAvMmROZ1p0Z1lqajN0?=
+ =?utf-8?B?dG5GS25ZYURuUkpXZ1kwZ29qOEZPbkwvOFVSWVNrS3lrdTJXdURkNEVUMHVN?=
+ =?utf-8?B?TGJCbHNjamNRSzBjNThyOFlyUWZISnlCMFpGUG8yT0dIQkVGMk1IMERlalYx?=
+ =?utf-8?B?bXlCNlJmV3F2amNhQ3RHTCtGTDU1L2xBbTNDVzlZSFZVRFFrSnBZM0F5aUpp?=
+ =?utf-8?B?aFVJRDN6OVZxRUJCUnR4c3FYRXg4NHk5bjh0aDBucmRXdWpYdkI4UDM5c1o3?=
+ =?utf-8?B?bklZTkMvUGF1S0RVUllpT25GaW85eEZOTG9nMUYxQTZIblZBSU5PbEoyQlcv?=
+ =?utf-8?B?bTU2TTlUdUsvbENaQ1FqaTY1bTlaaThIOTAzSzB1U0dhUmdjb1RCazY4MS94?=
+ =?utf-8?B?VTFtaTk4MmEzWDl1NlVYWW8wMlB3cm0xbG9kelNsZmRKeGxPSkdIKzNuRGhx?=
+ =?utf-8?B?eDFKRXJ4ck9YNktBVXpaM0JDdjFsSXVJdDQ2ZlNyZ1k1ZEJGZ0Jhd2pBeUc0?=
+ =?utf-8?B?UU1Vbm95ZW1kTG93cVRmKzlFWGxZMzNETnhHbDlHTytRSXZiTHViODlyU0VY?=
+ =?utf-8?B?Z0JoMUVvUWlyWlgwUVk1Mkc1eUsvMkVGdDZnM2o3cWs0UkRzME5saXNneWVO?=
+ =?utf-8?B?Wnp0Qk16RWxyOWYrVEdCM3JFbEpEczh2cnEreno4Y1VjK2VuMTdwRGorRlFx?=
+ =?utf-8?B?WUpmRjZndDd6WkpMZVRyWUNqS0RTQnV1eGhWbGpTY2NHbExKK0p5R1ZUV0Zk?=
+ =?utf-8?B?TnhDTzViYkloNVpyMm9yV1o2Z2E1Z3BpbmFsVGhmRGJoK3dyeXpnK3RVMUU4?=
+ =?utf-8?B?TS9tRVZrTjBHS0lZNzdrNGF2blNTeU45ZWlFZmhuNWJUc2JzcXRqTXFOTUpS?=
+ =?utf-8?B?OVFmcFZpelc4ai9QVG1RMGdSZTdQQWhOMFFUUkpJa2lPaGUrZ1dyQktEVGJo?=
+ =?utf-8?B?SXd0eG1ZdTZJZ3BHUmYzVUFWM1k0QWFlend1Q1FsMVJYOGFCTVpYT0RDRU9x?=
+ =?utf-8?B?Snk3TUFSeTBqeUpSeUJ4d2prbjVqWE42blZGd2V5MXFqWXVlTTdOZ2k4dFZz?=
+ =?utf-8?B?SExiSk9tMDBHVi80M0RUYmE1ZFVRQ1NFN0o0dEQwYzVaNW14NTBVbG9NeUlj?=
+ =?utf-8?B?eUx1UDFteTJGSjMrNGZUbEpIODE2YlR6T1dDRkdqMkxXWEZBREVWa1J2WHFx?=
+ =?utf-8?B?RnRkNmo2RnBqek1EUlVUK2JUU04zREY4NmNORnBqcGtWY3JoZTRuTy9MZy9v?=
+ =?utf-8?B?bk14WS84dGVSaUM4NWJsU1NBa2haemYwU3dBSzkvTmdUSG1yZWNzV3RGV1Fn?=
+ =?utf-8?B?elFVVE5mcDVlVVJZMTh6ZVVncHFNQytGTER4aDQ2ejgrRytudXhNTFk2clpG?=
+ =?utf-8?B?Q2w0M2VwYU9sS2FENmhZQlh5eWxTUlRJSndtSXM5UCtka0ZhSjB4K05lTWdp?=
+ =?utf-8?B?VEw3cnNRY0VuQ0VjcWU0eU9Gc3p4Y081MjlUbklaOFhreWREOUlMTDExOXgw?=
+ =?utf-8?B?UVAyZXZMcW05N3l2TFROaW9CZ1FkYmRHYlMrenFPZk5EdkJ2VTB1RU1MVFd2?=
+ =?utf-8?Q?Rm+fyVUG+3kwVeLeSnJqwCE+bIx6A/RiYF076F3hPxVRO?=
+X-MS-Exchange-AntiSpam-MessageData-1: Sinpm0E6GktVGgvgPyZqiF35Y17MRbPtWWc=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0ecbdfa1-8eda-4e83-6d87-08de9658019e
+X-MS-Exchange-CrossTenant-AuthSource: PAXSPRMB0032.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Apr 2026 16:49:46.4559
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 4BndVgIIyuHHJLe5skoRAcJR9ydiyMRKwvr+igs0L8szOAtjWm0RH04yAzIVZPBcPzoaayMX1aLwKi0JJ6SVfA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR04MB8531
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260409_072200_504606_CC2911DC 
-X-CRM114-Status: GOOD (  21.30  )
+X-CRM114-CacheID: sfid-20260409_095010_503665_52A6A03B 
+X-CRM114-Status: GOOD (  23.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,54 +143,57 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, Russell King <linux@armlinux.org.uk>, Daniel Golle <daniel@makrotopia.org>, Eric Dumazet <edumazet@google.com>, Alexander Couzens <lynxis@fe80.eu>, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org, Heiner Kallweit <hkallweit1@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 09, 2026 at 03:52:41PM +0200, Pablo Neira Ayuso wrote:
-> On Thu, Apr 09, 2026 at 02:07:22PM +0100, Daniel Golle wrote:
-> > Hardware flow counters report raw byte counts whose semantics
-> > vary by vendor -- some count ingress L2 frames, others egress
-> > L2, others L3. The nf_flow_table framework currently passes
-> > these bytes straight to conntrack without conversion, and
-> > sub-interfaces (VLAN, PPPoE) that are bypassed by hw offload
-> > never see any counter updates at all.
+On Thu, Apr 09, 2026 at 03:33:42PM +0200, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> I see, but that is part of the feature itself? Why pretend that these
-> interface are really seeing traffic while they don't. This aspiration
-> of trying to do all hardware offload fully transparent (when it is not
-> the case, not mentioning semantic changes in how packet handling is
-> done compared to the software plane) does not sound convincing to me.
-
-Please explain what you mean by offloading not being fully
-transparent. If the MAC hardware offloads VLAN encap/decap, for
-example, we also maintain the counters correctly (it just so happens),
-just the flow-offloading case results in a weird overall picture:
-hardware interface counters keep increasing, encap interfaces (802.1Q,
-PPPoE) don't. That makes it confusing and hard to understand what's
-happening when only looking at the interface counters (ie. "what is
-all that traffic on my physical WAN interface which isn't PPPoE? Can't
-be that all of that is the modems management interface, SNMP, ...")
-
+> Commit 8871389da151 introduces common pcs dts properties which writes
+> rx=normal,tx=normal polarity to register SGMSYS_QPHY_WRAP_CTRL of switch.
+> This is initialized with tx-bit set and so change inverts polarity
+> compared to before.
 > 
-> On top of this, this issue also exists in the software plane: Devices
-> that are bypasses do not get their counters bumped.
+> It looks like mt7531 has tx polarity inverted in hardware and set tx-bit
+> by default to restore the normal polarity.
 > 
-> Maybe if this is really a requirement, then this should address the
-> issue for software too, but is it worth the effort to add
-> infrastructure for this purpose?
+> Till this patch the register write was only called when mediatek,pnswap
+> property was set which cannot be done for switch because the fw-node param
+> was always NULL from switch driver in the mtk_pcs_lynxi_create call.
+> 
+> Do not configure switch side like it's done before.
+> 
+> Fixes: 8871389da151 ("net: pcs: pcs-mtk-lynxi: deprecate "mediatek,pnswap"")
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+>  drivers/net/pcs/pcs-mtk-lynxi.c | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
+> diff --git a/drivers/net/pcs/pcs-mtk-lynxi.c b/drivers/net/pcs/pcs-mtk-lynxi.c
+> index c12f8087af9b..a753bd88cbc2 100644
+> --- a/drivers/net/pcs/pcs-mtk-lynxi.c
+> +++ b/drivers/net/pcs/pcs-mtk-lynxi.c
+> @@ -129,6 +129,9 @@ static int mtk_pcs_config_polarity(struct mtk_pcs_lynxi *mpcs,
+>         unsigned int val = 0;
+>         int ret;
+> 
+> +       if (!fwnode)
+> +               return 0;
+> +
+>         if (fwnode_property_read_bool(fwnode, "mediatek,pnswap"))
+>                 default_pol = PHY_POL_INVERT;
+> 
+> --
+> 2.43.0
+>
 
-To me it would feel more correct to see counters increasing also
-for offloaded traffic on software interfaces such as PPPoE or VLAN.
+I notice Arınc, listed by ./scripts/get_maintainer.pl drivers/net/dsa/mt7530.c,
+and Felix, listed by ./scripts/get_maintainer.pl drivers/net/ethernet/mediatek/mtk_eth_soc.c,
+are not on CC. Maybe they have more info.
 
-I honestly didn't think about the software fastpath, and yes, I think
-it should be addressed there too.
-
-> > This series lets drivers declare what their counters represent,
-> > so the framework can normalize to L3 for conntrack and
-> > propagate per-layer stats to encap sub-interfaces.
-
-This part could also been seen as an independent fix as currently
-conntrack stats for the same traffic differ in case of software
-offloading (pure L3 bytes) and hardware offloading (L2 ingress bytes
-in case of mtk_ppe).
+Only the switch port has a chance of having a non-zero default polarity
+setting? (coming from the efuse, if I understood this discussion properly)
+https://lore.kernel.org/netdev/C59EED96-3973-4074-A4D8-C264949D447E@linux.dev/
+The GMAC doesn't?
 
