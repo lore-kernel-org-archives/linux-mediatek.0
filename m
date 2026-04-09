@@ -4,89 +4,187 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5F6510FC456
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Apr 2026 01:41:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE8A5E98FB5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Apr 2026 06:10:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MadnNngCxJC8yYjvjyaGGRQRw+73E0DoH8OrsCxju0I=; b=g+7ioDliOKkGWIhBIka7Ta9miX
-	gpbe+PTCrC/s4mY0mKAwT2HbjcGnOuGATNkws5HNSxHSt/LnEf/hai2uPrjsQ4Dcv74hVXnIa/bSq
-	3yBSlqthEXhM1htn4n25GyqAbTXlIC6tsGyks5/ss7uq9y4SiXKe469imJ+vVO0T3cEEbwhzzgsal
-	waAJSqIOZfXrlWMoIW5NfnSP1DTK5eoYVcCU33LHPEeO0YKCvEJV8JKrkGww8k2lY31sRil49epux
-	N7okZ/ldaL6YSKNlA4Va+nnKJcp5VYnDC12sbOqTtdgdvvs+A8Ot9pommhVMcaHfNzDOaSkZ1g5bd
-	VSTDL9FA==;
+	bh=dnKsbz2UCrF7mTIUS+nNs0u6zQ52lOZmNXHA3WiyFQQ=; b=aiWSxQ7/3CID/peZ5pYmf2bUMl
+	wmEGOJyHRxSzK2cs97IehLobbCkzHMqWCeArLQ5d43VeZJ/j9Jjx5Iow4VhAcatpKdHHjkLvZuKAU
+	ZlaaShWzm84uosuTFn5NRIaSttgI5Z0y/2Gde3gDIVzgFocCdY8L+o2pSsTPoUmoxzAk3+fsMF4uE
+	2ca2UvLSUyJGgJFR+PeHmrCCcsjhfuJLxAs4QlpMqeOj7/RUKzetw5J2fSU7EC1fOCfJdn95ERNkl
+	OUkl4m6p8wzl4H6+9AoRTjtPbzESpitHzHFatzOO8RV7gffF6koyjhcfCRKQ0MHqMCJPvWcgyBH/i
+	MAGuBZUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAeOw-00000009aPB-2g3j;
-	Thu, 09 Apr 2026 01:41:46 +0000
-Received: from mail-dy1-x132d.google.com ([2607:f8b0:4864:20::132d])
+	id 1wAib7-00000009kbk-1xtJ;
+	Thu, 09 Apr 2026 06:10:37 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAeOt-00000009aOo-2iOO
-	for linux-mediatek@lists.infradead.org;
-	Thu, 09 Apr 2026 01:41:44 +0000
-Received: by mail-dy1-x132d.google.com with SMTP id 5a478bee46e88-2ce22328930so336574eec.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Apr 2026 18:41:42 -0700 (PDT)
+	id 1wAib3-00000009kaG-3pTs;
+	Thu, 09 Apr 2026 06:10:35 +0000
+X-UUID: cdd9b21833da11f1a6de359d7043e138-20260408
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=dnKsbz2UCrF7mTIUS+nNs0u6zQ52lOZmNXHA3WiyFQQ=;
+	b=S5TiXX18N8Yk3PrCas6nff6V+OIpCE9YiGkdNbzAnjofBXm4IQRW9kn9wliPoNcAup6o8UNJr7tATs81iTswudgjsEaMBJnTwwXf9BeIVZfF1HbUYuDqmRypIsALLE1Ee7BPxSJZWke5EirIDA/91CBr5lzzddphJSiDEEyk4kI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.12,REQID:315cf620-a1d3-4459-a49b-e5d887399aca,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:e7bac3a,CLOUDID:6daaa7d5-060f-4ecc-9ee0-121eeeb4a682,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111|836|865|888|
+	898,TC:-5,Content:0|15|50,EDM:-3,IP:nil,URL:1,File:130,RT:0,Bulk:nil,QS:ni
+	l,BEC:-1,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: cdd9b21833da11f1a6de359d7043e138-20260408
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 310177820; Wed, 08 Apr 2026 23:10:27 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Thu, 9 Apr 2026 14:10:25 +0800
+Received: from SI4PR04CU001.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Thu, 9 Apr 2026 14:10:24 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=gTuQ7m83yhri245SUfSjHyVPkCkxWuV2q13xYLLE7QCVlK6cxDql0lG79iseRQfCLpLoWHQNt266MyBLjrjh0mu77Cgd/MsOzuZOXqjhn6h5lLzDs8tOxZN6u2dZUVx5izpcWw4WO4aLpLwT8UdVrTHSejiBtaWth7a+FTXmT5zAXUwt0j3r74ECvyz/Rh5iy8PR6hFJCPDl7wKTCX3Aa71GTGNPga7d++G3XFJirXrl7z2a/WxkqeT9NlmmpbL5znIbjRCrxFOCz2H5LBEgmxAolhuk2HDAbDGs1d2prZpxSubfoH9MzyM6Z2iJPURQi6fiqi2N0gI1gecNfdf6Pw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=dnKsbz2UCrF7mTIUS+nNs0u6zQ52lOZmNXHA3WiyFQQ=;
+ b=prhEfXBAvRBnaNE+CWJzkH1fzD4E+S1uwKN7cRz2J9LeNhZSBerZ4c0W227UJnp3y3dylobd2gUkpl5X2jvv6RlMKjNzASpvvn6yjTntTIwt8Sy7yUdD8eiFhut/vQvtbkEzYkl9dlBAvCSwVdmBL8Xts+H6I60CXa+q4AeQj8zrrMrUSr1cD7IKgto8ieI2uptezAfziee+PGSDMFpd/fA7UA65OJBiiGfIHXKE7q2RBgaQ4Z/QJfO4C0z8H8fnwMVtDqL6+HIwvga78xSOvdaDyJ+FeeOFeIw28yqGJxX2nvqEsEwLdYERfhewKQvUlLK4G0FRaq7QfB0T25UCIg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1775698902; x=1776303702; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=MadnNngCxJC8yYjvjyaGGRQRw+73E0DoH8OrsCxju0I=;
-        b=QfKq/5hdKtVMnbutwSXlWep32IP0DvO1X0mWhV/SWdoQUaDsTC8WOojMfiloaVPOgw
-         d6e9IaeYyWqS3v7Z/f3u1QZFUbyyZKi2TnVtGxiU9i7uebrfmjy1SIEyKmCcUlRwPLao
-         4MDXlJBZE4vgLLLJO1fCB60PhyoIvvAHakEAFqhFuNYZ1cyD2pjQbj80uoC2iYI9DuB9
-         mIQ4ql3JICCLiH+QypduHhjXYeV/fKmY03jPzDp7fAUmgG42f8YBCgOboUSzbxMOA332
-         sflPnYzudPjsQlws25wz2jvTprQVJLGjXvkjkHA7JbUphtSClM/qZBkE+Cl/GcpodWy8
-         bqJw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1775698902; x=1776303702;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=MadnNngCxJC8yYjvjyaGGRQRw+73E0DoH8OrsCxju0I=;
-        b=TL6fQh4LNp1zc7uRuL5aM3fGubo71/xD3RgadCEjsW4oCEfQ79b8kGUKufjCQt4IdU
-         FsCk66AUg3yQLCYHTuWzFIlNsRWrGzDOo+VVyrYrYQhgnGithlMhWM4dKhtDCtnUebHD
-         m0O9jIc/G8ah1Yx0ankb0ge47j+vHjzS54QXA5eBlaeFdMdAh+wKv0yUqhRQmTk56GzC
-         KuInhpuBKGTUIRkYluJIWnLp07YAOiCoq3HVCEy7E+/BqvubVZCfFa7cTGr1UA5TQ9rH
-         OvZ3MamnXbw7OD4qDN0varNlrL0BaffOmcSj+BuS6AdgvTfaEVmJraCi2s6CWMKQh5ts
-         tBAQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVdanOwK1si+Kq2gfjWdVdrjEG4DmW2SDt33vDetsp7HoyKx9JQb+aMgMWsuhaDJ7cvVhTu8ntdC4LzUkR1ow==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyAF5e93kgvbMDBzVxxqysWhcugYuZGRPQiDdAi1agg58gm6y5q
-	WwJokUshCSDG+qi1AWFHTYrskAFsmfhstwEboEUvETcgP/Yt9Vt+P+j3
-X-Gm-Gg: AeBDieuV2tg6WVGIRlwsf8WCJun8zNC8yvEi4xxHZe0nkfr84s7lOTvHNuHyaeez15Z
-	PK0sCZdMivUUgysCgVecmQePcc40uaJN7ozEA2MQmGkHb289N9CEBxBVTX7Tb9gbMLSpqY8vHY8
-	tdvcOkKLGIoCveOeasNVVKmyOd4RRvc0zJeODpp0CocQRsshkU1IySgm+kNuqGw7/J0+N1ZBl2j
-	dzoVSb1FGYZkhCo2Es+In6dmx9LBGDMb2NH070tsOBNaVMC6ortFNtsH9i3ICnZg7/+J2HxVP0z
-	zsrOyXLspg1fpy6K8h3uzEs1fZnKfD27qHL98ZfYh/I/11fkRP3aFC8Tp+hLiCEVo1AZdWaHNoS
-	pZ2CuXuXWu99m/OmvJFLOriJTdKv1JJV5Jk2SOcj5cFmXv+/2+bapMO6OTuXl4yzEkZqkaWcL0d
-	Soq6Gkxn7CY2ZPYS07mQGAk730VMlpnDvyk2OJDw1ZObC2nulOEipG4pmUzPhIX4Mt4hq+VDNs0
-	XkCsjIqVgDob/4vs5EWqDRXNFHcq91/OmVS
-X-Received: by 2002:a05:7300:2310:b0:2d4:2cc8:68d with SMTP id 5a478bee46e88-2d42cc80a4bmr710272eec.25.1775698901971;
-        Wed, 08 Apr 2026 18:41:41 -0700 (PDT)
-Received: from ?IPv6:2804:1b1:fa41:f3c2:efa2:f2d9:c540:bfc4? ([2804:1b1:fa41:f3c2:efa2:f2d9:c540:bfc4])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-2ca7cf1271asm27331763eec.26.2026.04.08.18.41.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Apr 2026 18:41:41 -0700 (PDT)
-Message-ID: <7e1ebd83b843b6e74673117018fc5ff97f26f35e.camel@gmail.com>
-Subject: Re: mt7921e: repeated driver own failures cause hanging
-From: Vinicius <viniciuspython@gmail.com>
-To: Sean Wang <sean.wang@kernel.org>, moosager90 <moosager90@gmail.com>
-Cc: linux-wireless@vger.kernel.org, "moderated list:ARM/Mediatek SoC
- support"	 <linux-mediatek@lists.infradead.org>
-Date: Wed, 08 Apr 2026 22:41:38 -0300
-In-Reply-To: <CAGp9Lzp8NjVwkn2atNqT9x9-QTkWMLxK+Ntkb=3Z1fWcM6N=7A@mail.gmail.com>
-References: <4870974.vXUDI8C0e8@fedora.fritz.box>
-	 <CAGp9Lzp8NjVwkn2atNqT9x9-QTkWMLxK+Ntkb=3Z1fWcM6N=7A@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.58.3 
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=dnKsbz2UCrF7mTIUS+nNs0u6zQ52lOZmNXHA3WiyFQQ=;
+ b=A1LDqNt77RUcYgIIy1dyb+tWerOzOBC2JDK0VKvrKOJaN81DNWL750hdGpXxc7/jjGMMeSELD30x5OuifZm98mgjdoYRCcvGGL/2VfaEqZAR9yiIgeGWeyeIPif/qz8iKSsmK2AnIgt0PlDjOZXkWRHCMskpA5RnnCgN2+dy9qg=
+Received: from SEYPR03MB7682.apcprd03.prod.outlook.com (2603:1096:101:149::11)
+ by SEZPR03MB8680.apcprd03.prod.outlook.com (2603:1096:101:233::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9769.42; Thu, 9 Apr
+ 2026 06:10:13 +0000
+Received: from SEYPR03MB7682.apcprd03.prod.outlook.com
+ ([fe80::1fe4:fb59:1b1:1646]) by SEYPR03MB7682.apcprd03.prod.outlook.com
+ ([fe80::1fe4:fb59:1b1:1646%6]) with mapi id 15.20.9769.020; Thu, 9 Apr 2026
+ 06:10:13 +0000
+From: =?utf-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
+To: "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>,
+	"mchehab@kernel.org" <mchehab@kernel.org>, "chunkuang.hu@kernel.org"
+	<chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, "nicolas@ndufresne.ca"
+	<nicolas@ndufresne.ca>
+CC: "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	=?utf-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+	Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	=?utf-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	=?utf-8?B?UGF1bC1wbCBDaGVuICjpmbPmn4/pnJYp?= <Paul-pl.Chen@mediatek.com>,
+	=?utf-8?B?U2lyaXVzIFdhbmcgKOeOi+eak+aYsSk=?= <Sirius.Wang@mediatek.com>,
+	"wenst@chromium.org" <wenst@chromium.org>,
+	=?utf-8?B?WGlhbmRvbmcgV2FuZyAo546L5YWI5YasKQ==?=
+	<Xiandong.Wang@mediatek.com>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>,
+	=?utf-8?B?TW91ZHkgSG8gKOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Subject: Re: [PATCH v2 0/5] Migrate soc, drm-mediatek, mdp3 to new CMDQ APIs
+ (series 2/4)
+Thread-Topic: [PATCH v2 0/5] Migrate soc, drm-mediatek, mdp3 to new CMDQ APIs
+ (series 2/4)
+Thread-Index: AQHcvAvSBds8WfTaQE+zC56UdJjNk7XVss6AgACkJwA=
+Date: Thu, 9 Apr 2026 06:10:13 +0000
+Message-ID: <653f9ce91c42398211b065ddf8e7fd970296df3a.camel@mediatek.com>
+References: <20260325035836.2110757-1-jason-jh.lin@mediatek.com>
+	 <cd1de04076917d65ccd7dd91d9392af7977a4906.camel@ndufresne.ca>
+In-Reply-To: <cd1de04076917d65ccd7dd91d9392af7977a4906.camel@ndufresne.ca>
+Accept-Language: zh-TW, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SEYPR03MB7682:EE_|SEZPR03MB8680:EE_
+x-ms-office365-filtering-correlation-id: ed7de357-acc1-4bde-fc83-08de95fea9a8
+x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|366016|1800799024|376014|7416014|38070700021|56012099003|22082099003|18002099003;
+x-microsoft-antispam-message-info: eBRsahw0jSZylYqs2r9nDntMgUNDHIxNZlYG6KRCkqd3q7d4WPByv98IM8+JTN5IJOkyI2zNUs3iWhI64Rmx4lZgt3dXLY4FfP3s/mEDfNlMSklB7bMOgsQHh3V6oLCGJ8cQqZjuZunnn+JxC+0Z1rt21aZSHTdT1sZBFsmBrDN59YHRe9oN8M4/jLRmkLK/+mz+lYqarpcxwC/bSKzYl7EFLqtlQxNr5vjuZ959qRg7K9zQuCTExOqUFZgxzWts/D3jJTTqIsqbt3LJ5zZzjOac1kZtRcVMf8OjMK6vhmNLjH0zEXjjEiJgEGpyBD10sk1WwrxpWPjoXHGpt7gD+avpTk403mfIlmoSfvmYbhxohXJ7c7QxVOSyBTHZe2uOG135XlejCHLUrXmBPrdyDlT+saUl9S3t1wvfQYA6Ft3V+oOhXfIVKWoz0QOSS2TD1Hl3+a0hDEXVGg4BFzKJnjXs8p+xov04wQVX0ntsttrnlX0q/3W+JbcYWzFFZslhtoiKotnTKYUiPvqsfUQYQ7I63MQBautkNyeOgdXiGY0CU+zC5LRZqozWoUsTeBI2lDtUrPxBjxVjNBO4moSEF4eV299FX3OgOsZQeu2GiQXjEBYMQJNGuFWJ6PauKl0ghOjUMgbmpA6COo3uvpakGD78yGvB2Sx/wZ5Qq70t1QteoUZc9febFI0QrboSvizzzwJzdy0rhbFFxpFkRpUSzF7CU3QMPuK5GK1YWdxznZkMcNOakuxy0q2tE376Kv2zm3DxaNb06341KYI6mmwieBQcoCdmtdaj32/v1CM2yVw=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEYPR03MB7682.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(376014)(7416014)(38070700021)(56012099003)(22082099003)(18002099003);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?NmlHZUdzbC9lU1pHalZxWC9jOVNoQjZ5QzY4bVkwdSsrbVQrbFd4czhid0lm?=
+ =?utf-8?B?Y2I1S3BsRHRLOUMwWGRHMXpmT0w2TzZqTEo1RkpkZGNrY2R3VWdBY1ZITUdN?=
+ =?utf-8?B?VmRvdTkwQU9oOXFpQUpoTXliNDhXckhtNlRSbG1Saklha053NEVQQ0FLMGhU?=
+ =?utf-8?B?dkF3azR4MmcwUFJoU2p5Mklrc3hMM0J2UHZIYVBua3QwR3JzcG5teGpwUkg2?=
+ =?utf-8?B?THNqUUZIWklqSmtObWtqTCtkYzhDaUNkRnM5eDRsR0xEL2o2c0RsVzVCNFg4?=
+ =?utf-8?B?VWp5aTdBR040Y2ptcXRuUldid1ArTmtRaVRzTkQ4YzBjQVFhT0JKSXFvaWdu?=
+ =?utf-8?B?RW5MNnZoNjRsMmxmaWxURkV0MERjcHU4TGcvenpNeUFadU16NHVlMDhqZnZT?=
+ =?utf-8?B?YTNGVHRraENQZGlHVTRXUnN6YWM3TE0zUk1RUXRVNHdnSjBvei9VT3UweDM2?=
+ =?utf-8?B?UERVZnJvcHlOeU9JZkExT3pYUjVZeEV4b2k3eFFtNDJSdHo4bnJlRUhWeXhS?=
+ =?utf-8?B?MDBHZXp0OVBnKzNLQUFSOU5pbEIrWEovODhhemZ4OGZ0d3pOdUpuaVlzSXBL?=
+ =?utf-8?B?Y2xQU2NtdXFIbEFCQVhwN2tJaXJOMTd3WTR6amF6VU1sNUg5VUlENUNLK0ZW?=
+ =?utf-8?B?RnRYaVkyd3E5WjhwV0pnbTNaa0ozQ3AzdU9NelJ4WnN2aWdWUHF0Tm9jZ3RN?=
+ =?utf-8?B?eGZpUWVmTjFaRG9aaXJ0d1hOV1d0MWp4QnZ4bXBpSHlmRHdHUnJwV1lFVXpL?=
+ =?utf-8?B?YWc3ZVl6ZDVNQktmMis4USszMElEME1LL2xCNldRQVBsck4wZldsQk84SEZU?=
+ =?utf-8?B?OFZFbmJIcExVdU4rRmVobEx1ck04S0szVGM0TnB1R1B6cURndmUrNCt0WXBU?=
+ =?utf-8?B?TFFvaTBoZzVCS0N1dUVuVlhwSDhOemV4RFZLaXBKVDRhK0IrOXZEMUlDRVBR?=
+ =?utf-8?B?WUFHNXpsK3hNWWNEbDh6aVREVkMrbmJuWkx0dC8rVndQQ01ETWI1bTAyQnhN?=
+ =?utf-8?B?TTRRclJIYUNpdys4UFFHeUtXdHZWb2QzWFcvaVR4QklvRGxEY1FaY29zc0Rs?=
+ =?utf-8?B?RzZFUkswcWpnWkpDK2dxS29WYkZsU3ZRY0x1OWxJWVRDVGN6K0kxd3lPTXdH?=
+ =?utf-8?B?a2lIUzdndnRXN1dpK0YrWjQwKzgvcVd3a0NwSTU5Wm9QNzNDUEorRlVCdVl4?=
+ =?utf-8?B?MlBYcUJiaDkzZUd2Qm85T3l4aTdXU09rWUhhWEZCOXpzaXFvamgrWWQvWVZr?=
+ =?utf-8?B?bG1KNDlXRUpHQndzbUplR3oxbGpGRVE2L1ZjS2JjWUdwaU1DRnJJc2c1dGla?=
+ =?utf-8?B?SjdLNjNvdUdveGdjSDQrMjk4MHFURFMzWDFWcG0zTFdvemk0Sy9JOEEwVFY5?=
+ =?utf-8?B?N3hZQXhhZTA0cHBEcEVQL2F3VU93b1ZxUWZadml0UHN1VGhGZ2U5VzZCU0VU?=
+ =?utf-8?B?WWJPZG9UR0ErcURqalRSbWgydkc4U0h1a0FXRW1YNlcyQVdJZXVPSVBkbk5l?=
+ =?utf-8?B?THVMNDQxUStOeU9VVmh4UUlUbDhjeUwxengwd3p5Uk5UWUlKLyt2TlQzeG4y?=
+ =?utf-8?B?RGVWZzRHNkhGeVhaTFNDUU0rdUx0SklFYThQSkwzTFlNRHNZb1VnVkMweU9q?=
+ =?utf-8?B?S3pkNGtqYjlYdGlqV2wvUzJqMXlwc3AydUZubGdWRFFpblJpd2VVNy9PU2My?=
+ =?utf-8?B?Y005MXM2UUtDZWJZK01sRlBEeWZlNEU2VUhjbWtkd2p6NGZlMUtkNDEram40?=
+ =?utf-8?B?WWZMK0d1V0FRS3N4R2VGeTJudTVTRk5qWkJtR092WFU0NlI4c25qRm5NMDFL?=
+ =?utf-8?B?eGlBUjIvRnFKZWVqNFd2ajJhQmxuTGRzK0F1YkVPOGlGNC92MTR6bXhDc2tp?=
+ =?utf-8?B?bFg5Q1NFQ1h1Zkd1ZHdnZ3N0MnQrSTJxa01LNnhBdzFHZVh1TmhRRzZ4VWdq?=
+ =?utf-8?B?WS93ZHNNYmRZUUpwL0JTS25KY3F6ZFJ3NTEzeXZPZU9XdU9XUWk2Sks0VkE2?=
+ =?utf-8?B?MWhRbEdQWkpmVmxOZjMrT2FCekhmOWNTTHhYcDE1eTVBQjJBMjA0UnhOem5j?=
+ =?utf-8?B?dkx6eUdEaGpTUVZSeUdLVDNGVk82aEhReXM3U0s1SnFCWXk2eEhhaE5jZDBy?=
+ =?utf-8?B?dDl0SUN5SXFMWCtCUTJhZWlpZ3dkWVhVL3FKRFBzNkR1dUxQa1d1ZGlaSnN3?=
+ =?utf-8?B?c3psNVZnZEhYTW1QUXZ1dzJIU0owbHBTeVpqVmdTL1E1b1JqZUx1Y1I0eEdy?=
+ =?utf-8?B?c1MzWmtpV3c0OUVlc09FUUwrVWU1cTBaU3NmOFZnSDRCWUJJTW9hay9aWG56?=
+ =?utf-8?B?UU9XbzdmdHlzM0o0ZTk1REl3U1plZk9udjNqSHVWc21udTFhZzR1N3pIY3Fu?=
+ =?utf-8?Q?hXWpADFHZHQjbDGs=3D?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <E980F61B88466749B8C343E6121F7F6A@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
+X-Exchange-RoutingPolicyChecked: sX2rP2Jp+Wn7IMPpyVmx/aAPHa6Mfxw+VCRGqsC/66S75U8MoQUXbgQgqeP/kYKpS9Wva+M9PkDKGldOU223LAM1VFYsgEQ+bTzwC4bsPolGvRdJnf4hPPsNFq1+VPoJupvX803LrRzktkiaOcMReVK3Hr9vQctNDYdFPjWOgktHrWrorMdFar0RFRmsyD9p5OlA9Iq09MCkPwccXxEqTBdBLynjJc7UerVAGtJK5X5Zed3SwShhMwWTTGcKHXnFmLOkeLWJB4aXL+Zj/4bYLtlEbKhQIbJNXLEmXM2kxNlImH9o0h5EaRt8j9Eazn7S/dELkNF6eYY9wOxlLcq95Q==
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SEYPR03MB7682.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ed7de357-acc1-4bde-fc83-08de95fea9a8
+X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Apr 2026 06:10:13.3282
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 0D3A6pJmwLRrP97K7/RJTg4LaVx7xQyNaTE66oe9pp98Z7Il99i3yJAw8NahJjEEtF22X9fQ4+1OO5mGvlOGLewCPNLLi17sTmnQ+z/RVmc=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR03MB8680
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260408_184143_695793_09F55FCF 
-X-CRM114-Status: GOOD (  34.46  )
+X-CRM114-CacheID: sfid-20260408_231033_964451_66D0C2C3 
+X-CRM114-Status: GOOD (  11.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,201 +199,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Sean,
-
-moosager90 recommended me to reply to this thread when we were talking
-about a bug reported at
-https://bugzilla.kernel.org/show_bug.cgi?id=3D220353
-
-This bug reported in bugzilla is related to mt7921e raising several
-"driver own failed" messages in dmesg. But it seems this same bug is
-also affecting me through **mt7925e** driver.
-
-Before posting below a log from my dmesg, which also shows several
-"driver own failed" messages, I would like to say in advance that yes,
-the bug was occurring every time my computer suspended. I first tried
-to disable the auto-suspend feature of my linux distro and the bug
-stopped happening too often, but was still happening sometimes. In
-~March 28th the bug was being triggered too much (even without the
-computer being suspended), freezing my computer and requiring a reboot.
-So I tried adding `options mt7925e disable_aspm=3D1` to
-`/etc/modprobe.d/mt7925e.conf`. I think this is what you suggested when
-you said "could you also try disabling PCIe ASPM...".
-
-**Since I added this line to disable ASPM, I have not experienced more
-freezes. It seems this line really fixed the issue.**
-
-Below you can find all the information about the kernel version I'm
-using, as well as the driver version, firmware version and logs from
-dmesg (a copy-paste from my message at bugzilla on March 25th):
-
-```
-# uname -a
-Linux arch 6.19.9-arch1-1 #1 SMP PREEMPT_DYNAMIC Thu, 19 Mar 2026
-16:33:17 +0000 x86_64 GNU/Linux
-
----
-
-# journalctl -k -g mt7925e -b -1
-mar 25 09:00:09 arch kernel: mt7925e 0000:01:00.0: enabling device
-(0000 -> 0002)
-mar 25 09:00:09 arch kernel: mt7925e 0000:01:00.0: ASIC revision:
-79250000
-mar 25 09:00:09 arch kernel: mt7925e 0000:01:00.0: HW/SW Version:
-0x8a108a10, Build Time: 20260106153007a
-mar 25 09:00:09 arch kernel: mt7925e 0000:01:00.0: WM Firmware Version:
-____000000, Build Time: 20260106153120
-mar 25 09:00:10 arch kernel: mt7925e 0000:01:00.0 wlp1s0: renamed from
-wlan0
-mar 25 10:25:16 arch kernel: mt7925e 0000:01:00.0: driver own failed
-mar 25 10:25:17 arch kernel: mt7925e 0000:01:00.0: driver own failed
-...
-mar 25 10:25:42 arch kernel: mt7925e 0000:01:00.0: chip reset failed
-mar 25 10:25:45 arch kernel: mt7925e 0000:01:00.0: Message 00020001
-(seq 9) timeout
-mar 25 10:25:48 arch kernel: mt7925e 0000:01:00.0: Message 00020004
-(seq 10) timeout
-mar 25 10:25:51 arch kernel: mt7925e 0000:01:00.0: Message 00020002
-(seq 11) timeout
-mar 25 10:25:54 arch kernel: mt7925e 0000:01:00.0: Message 00020001
-(seq 12) timeout
-mar 25 10:25:57 arch kernel: mt7925e 0000:01:00.0: Message 00020004
-(seq 13) timeout
-mar 25 10:25:58 arch kernel: mt7925e 0000:01:00.0: driver own failed
-mar 25 10:26:00 arch kernel: mt7925e 0000:01:00.0: Message 00020027
-(seq 14) timeout
-mar 25 10:26:04 arch kernel: mt7925e 0000:01:00.0: driver own failed
-mar 25 10:26:06 arch kernel: mt7925e 0000:01:00.0: driver own failed
-mar 25 10:26:07 arch kernel: mt7925e 0000:01:00.0: driver own failed
-mar 25 10:26:08 arch kernel: mt7925e 0000:01:00.0: driver own failed
-mar 25 10:26:14 arch kernel: mt7925e 0000:01:00.0: Message 00020003
-(seq 15) timeout
-
----
-
-# modinfo mt7925e
-filename:       /lib/modules/6.19.9-arch1-
-1/kernel/drivers/net/wireless/mediatek/mt76/mt7925/mt7925e.ko.zst
-license:        Dual BSD/GPL
-description:    MediaTek MT7925E (PCIe) wireless driver
-author:         Lorenzo Bianconi <lorenzo@kernel.org>
-author:         Deren Wu <deren.wu@mediatek.com>
-firmware:       mediatek/mt7925/WIFI_MT7925_PATCH_MCU_1_1_hdr.bin
-firmware:       mediatek/mt7925/WIFI_RAM_CODE_MT7925_1_1.bin
-srcversion:     CB386A1D0C64CC7F4C723D9
-alias:          pci:v000014C3d00000717sv*sd*bc*sc*i*
-alias:          pci:v000014C3d00007925sv*sd*bc*sc*i*
-depends:        mt792x-lib,mt76-connac-lib,mt76,mt7925-common,rfkill
-intree:         Y
-name:           mt7925e
-retpoline:      Y
-vermagic:       6.19.9-arch1-1 SMP preempt mod_unload=20
-sig_id:         PKCS#7
-signer:         Build time autogenerated kernel key
-sig_key:      =20
-6F:56:40:C8:60:B3:9B:AD:DF:E1:84:24:BC:D4:A9:07:90:4E:7B:C6
-sig_hashalgo:   sha512
-signature:    =20
-30:64:02:30:54:34:C4:0C:8E:A8:D6:EB:38:02:71:55:A3:09:CA:39:
-		28:2E:F3:8C:2C:38:AB:26:89:8A:B7:3E:66:77:40:26:C7:D5:
-
-13:12:
-		CA:39:F4:99:1A:EC:3B:0C:D4:8D:D7:C0:02:30:62:78:5D:DC:
-
-90:B7:
-		57:5E:CE:F5:64:99:EF:AC:B9:3B:B7:00:3E:EE:BA:B7:81:C2:
-
-8F:2C:
-		DF:B2:F4:64:3C:76:54:24:0B:70:72:56:80:7E:28:5A:56:71:
-
-45:D6:
-		A7:57
-parm:           disable_aspm:disable PCI ASPM support (bool)
-
-```
-
-Best regards.
-
-
-On Sat, 2026-01-03 at 01:10 -0600, Sean Wang wrote:
-> Hi moosager90,
->=20
-> Could you please share more details on how this issue can be
-> reproduced? For example, does it occur after suspend/resume, under
-> heavy traffic, or during normal runtime? Also, please confirm which
-> firmware version you are using.
->=20
-> It would be helpful to test with the latest linux-firmware version:
-> https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.g=
-it/commit/mediatek?id=3D5cf85776762a544ad27c4447b61eaabb0d4716e7
->=20
-> As a debugging step, could you also try disabling PCIe ASPM and check
-> whether the issue still occurs?
->=20
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 Sean
->=20
-> On Fri, Jan 2, 2026 at 4:35=E2=80=AFAM moosager90 <moosager90@gmail.com>
-> wrote:
-> >=20
-> > Hello,
-> >=20
-> > There is an issue with mt7921e which causes repeated failures in
-> > chip resets,
-> > bringing the network down and causing hanging on every command or
-> > action on the
-> > system; the only workaround is to reboot. This is what the kernel
-> > output looks
-> > like at those times:
-> >=20
-> > mt7921e 0000:62:00.0: driver own failed
-> > kernel: mt7921e 0000:62:00.0: Timeout for driver own
-> > kernel: mt7921e 0000:62:00.0: driver own failed
-> > kernel: mt7921e 0000:62:00.0: Timeout for driver own
-> > kernel: mt7921e 0000:62:00.0: driver own failed
-> > kernel: mt7921e 0000:62:00.0: Timeout for driver own
-> > kernel: mt7921e 0000:62:00.0: driver own failed
-> > kernel: mt7921e 0000:62:00.0: chip reset failed
-> > kernel: mt7921e 0000:62:00.0: Timeout for driver own
-> > kernel: Console: switching to colour frame buffer device 360x112
-> > kernel: fbcon: Taking over console
-> > kernel: mt7921e 0000:62:00.0: Message 00020001 (seq 1) timeout
-> >=20
-> > I have observed the issue on many untainted kernels, and I have had
-> > it happen on
-> > vanilla kernels not provided by my distro as well.
-> >=20
-> > Mine and some other people's reports are available at [1]. More
-> > logs of the
-> > issue on my system are in the attachments of my original report on
-> > the Red Hat
-> > Bugzilla [2].
-> >=20
-> > In the past, the issue was reported at [3], which resulted in a
-> > patch [4] that
-> > only keeps the system running instead of panicking. This means the
-> > driver still
-> > causes system hangs.
-> >=20
-> > I still don't know the root cause of the issue and I would like to
-> > get to the
-> > bottom of this; any help or guidance is appreciated. Crucially, I
-> > have not found
-> > a way to reproduce the issue at will.
-> >=20
-> > Best regards.
-> >=20
-> > [1] https://bugzilla.kernel.org/show_bug.cgi?id=3D220353
-> > [2] https://bugzilla.redhat.com/show_bug.cgi?id=3D2411854
-> > [3]
-> > https://lore.kernel.org/linux-wireless/VE1PR04MB64945C660A81D38F290E4A4=
-BE59F9@VE1PR04MB6494.eurprd04.prod.outlook.com/T/#u
-> > [4]
-> > https://patchwork.kernel.org/project/linux-wireless/patch/727eb5ffd3c7c=
-805245e512da150ecf0a7154020.1659452909.git.deren.wu@mediatek.com/
-> >=20
-> >=20
-> >=20
-> >=20
->=20
+SGkgTmljb2xhcywNCg0KPiA+IMKgIG1lZGlhOiBwbGF0Zm9ybTogbXRrLW1kcDM6IFJlZmFjdG9y
+IENNRFEgd3JpdGVzIGZvciBDTURRIEFQSQ0KPiA+IGNoYW5nZQ0KU2luY2UgdGhpcyBwYXRjaCBp
+cyBhbHJlYWR5IGFwcGxpZWQ6DQpzb2M6IG1lZGlhdGVrOiBtdGstY21kcTogRXh0ZW5kIGNtZHFf
+cGt0X3dyaXRlIEFQSSBmb3IgU29DcyB3aXRob3V0DQpzdWJzeXMgSUQNCmh0dHBzOi8vZ2l0Lmtl
+cm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L3RvcnZhbGRzL2xpbnV4LmdpdC9jb21t
+aXQvP2lkPTQwZGM1YmJhZDYzYjVmNjBkZDJlNjlhMzJkZWYxYTI2NzNjYmEwOWUNCg0KWW91IGNh
+biBhcHBseSB0aGlzIG1kcDMgcGF0Y2ggdG8gbWVkaWEgdHJlZSBub3cuDQoNCi0tLQ0KDQo+ID4g
+wqAgbWVkaWE6IHBsYXRmb3JtOiBtdGstbWRwMzogQ2hhbmdlIGNtZHFfcGt0X2p1bXBfcmVsKCkg
+dG8NCj4gPiDCoMKgwqAgY21kcV9wa3RfanVtcF9yZWxfdGVtcCgpDQpUaGlzIG1kcDMgcGF0Y2gg
+bmVlZCB0byBiZSBhcHBsaWVkIHdpdGggdGhpcyBzb2MgcGF0Y2ggaW4gdGhpcyBzZXJpZXM6DQpb
+djIsMi81XSBzb2M6IG1lZGlhdGVrOiBtdGstY21kcTogQWRkIGNtZHFfcGt0X2p1bXBfcmVsX3Rl
+bXAoKSBmb3INCnJlbW92aW5nIHNoaWZ0X3BhDQoNCllvdSBuZWVkIHRvIHdhaXQgZm9yIHRoZSBz
+b2M6IHBhdGNoZWQgbGFuZGVkLg0KDQpUaGFua3MNCkphc29uLUpIIExpbg0KDQo+IENhbiB0aGUg
+dHdvIGxhc3QgYmUgYXBwbGllZCB0byB0aGUgbWVkaWEgdHJlZSBhbG9uZSB3aXRob3V0IGJyZWFr
+aW5nDQo+IGFueXRoaW5nID8NCj4gT3RoZXJ3aXNlIEkgd2lsbCBuZWVkIHRvIHdhaXQgZm9yIHRo
+ZSBzb2M6IHBhdGNoZXMgdG8gaGF2ZSBsYW5kZWQuDQo+IA0KPiBOaWNvbGFzDQo+IA0K
 
