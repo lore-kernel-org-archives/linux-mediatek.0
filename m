@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7916EA3C5F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Apr 2026 13:08:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E25BEA3C59
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Apr 2026 13:10:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=p+XatuKFuWPmHTMoM7IUJAMJeXjeaiyC1ovPXiEWYcU=; b=qq+OfPQnUcc+NR3znybSggquQ/
-	F6b6GPam/0O/D2Yw/D4bGz8fKELTqGxz03YdBvZqESoSNaCAM1bhDQFKQY/kWicH4juFivz1rNkR6
-	UjKu2VP1bG/0b56rzbQfTZcZfbmiTnEGkblmxL3z44JAq89UUiTzBAd2Hh/QCCy2uQMRAYzB5rS0Z
-	EOVUkl1ThMM1B6GXMM5KoLx3HSZe0s/V6XmSVR0PyPEVlVxJJkmAbX4TW7nBHXUj+ofihT8akjciJ
-	o8ViDb3AZPIoaiZ+hboxAjy0Bi3fs6Jgb1OiwlWQYy8PiURV2TWESMYGzdQ3WevNgmBpB+JMLD0+1
-	JwnuS/Zg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Cc:To
+	:Subject:Message-ID:From:Content-Transfer-Encoding:Content-Type:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iE8w8BKR9j/c/KXxBdy3hHdvFhkW5sMVrg83EMjqrqE=; b=ldy0jVLjglOa33SYX/6XZeqQ2S
+	Ge2Bdyx85wD4losfA2cq5jS/8Rk6bL/9Nz2/X8Rdg0iSFd72Fp2xwLX9G1AtGTVOJHtIWSO/Sn5o6
+	N7UkWR43I5ck7MahP8wNJYlFG43jIhGbEACgpma6xWJIVw1ewXTrw4vuwi7LR3KlbCVRpVRMIu1Td
+	0oDIA+/LFPN1bvnUyPj2hCsQ5lzzPxFZd/fVW8TnnqgIA8lY82LBwiJymyB5PZUeHgRsFvMS7V5OC
+	QjLBv9qz4s9J3Cyfmg9aZUwTCYq4HopIHl2MYlwvGS4ZLL293YpkDGJafP2a1l3K2eYHV+UimZYD5
+	bwT/k90g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAp75-0000000ARY7-2VOk;
-	Thu, 09 Apr 2026 13:08:03 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1wAp9G-0000000AS6Q-1Q1n;
+	Thu, 09 Apr 2026 13:10:22 +0000
+Received: from out-183.mta1.migadu.com ([95.215.58.183])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAp71-0000000ARUU-1y8R;
-	Thu, 09 Apr 2026 13:08:01 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.99)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1wAp6w-000000001l8-25rf;
-	Thu, 09 Apr 2026 13:07:54 +0000
-Date: Thu, 9 Apr 2026 14:07:51 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Simon Horman <horms@kernel.org>,
-	Pablo Neira Ayuso <pablo@netfilter.org>,
-	Florian Westphal <fw@strlen.de>, Phil Sutter <phil@nwl.cc>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netfilter-devel@vger.kernel.org,
-	coreteam@netfilter.org
-Subject: [PATCH RFC net-next 4/4] net: ethernet: mtk_eth_soc: report
- INGRESS_L2 byte_type in flow stats
-Message-ID: <2a1df22e3ff326cee3a70d346fb87b4a446554f3.1775739840.git.daniel@makrotopia.org>
-References: <cover.1775739840.git.daniel@makrotopia.org>
+	id 1wAp9D-0000000AS5T-0QOu
+	for linux-mediatek@lists.infradead.org;
+	Thu, 09 Apr 2026 13:10:16 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1775739840.git.daniel@makrotopia.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1775740202;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=iE8w8BKR9j/c/KXxBdy3hHdvFhkW5sMVrg83EMjqrqE=;
+	b=N9Bco2Ei3oTM6eVFFmiNqUiCX0NTEkLaqtjBfRsV5q/xJ8gOTt81MFvLwuUNXEYR/pkr53
+	XTxf8e5oRSJVghhqEUrMCQ4gUiXjHMqbpBaZwWlmEaLRUZ/v1Fa51J+RSQO4NPqZyeWVOW
+	POg0F86nqnX0ZjGNgR95HygdWV3ORZI=
+Date: Thu, 09 Apr 2026 13:09:58 +0000
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Frank Wunderlich" <frank.wunderlich@linux.dev>
+Message-ID: <7ac2cb56696a4d23f5951291101ce5292c9042c2@linux.dev>
+TLS-Required: No
+Subject: Re: [PATCH] arm64: dts: mediatek: mt7988a-bpi-r4pro: rename mgmt
+ port to lan5
+To: "Frank Wunderlich" <linux@fw-web.de>, "Rob Herring" <robh@kernel.org>,
+ "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley"
+ <conor+dt@kernel.org>, "Matthias Brugger" <matthias.bgg@gmail.com>,
+ "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, "Daniel Golle" <daniel@makrotopia.org>,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, "Andrew
+ LaMarche" <andrewjlamarche@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20260303202006.37515-1-linux@fw-web.de>
+References: <20260303202006.37515-1-linux@fw-web.de>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260409_060800_125482_74CCE815 
-X-CRM114-Status: UNSURE (   8.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260409_061015_278698_43C4F526 
+X-CRM114-Status: GOOD (  11.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,28 +75,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MediaTek PPE MIB counters report ingress L2 frame bytes
-including Ethernet, VLAN and PPPoE headers. Tell the flow offload
-framework so it can derive correct L3 byte counts for conntrack
-and update sub-interface counters.
+Hi,
 
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
- drivers/net/ethernet/mediatek/mtk_ppe_offload.c | 1 +
- 1 file changed, 1 insertion(+)
+just a friendly ping....
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-index cc8c4ef8038f3..68cb03a193f3f 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-@@ -557,6 +557,7 @@ mtk_flow_offload_stats(struct mtk_eth *eth, struct flow_cls_offload *f)
- 				  &diff)) {
- 		f->stats.pkts += diff.packets;
- 		f->stats.bytes += diff.bytes;
-+		f->stats.byte_type = FLOW_STATS_BYTES_INGRESS_L2;
- 	}
- 
- 	return 0;
--- 
-2.53.0
+Am 3. M=C3=A4rz 2026 um 21:20 schrieb "Frank Wunderlich" <linux@fw-web.de=
+ mailto:linux@fw-web.de?to=3D%22Frank%20Wunderlich%22%20%3Clinux%40fw-web=
+.de%3E >:
+>=20
+>=20From: Frank Wunderlich <frank-w@public-files.de>
+>=20
+>=20It turns out that the label mgmt confuses users and now official case=
+ is
+> released where the port is labeled with number 5. So just rename it to
+> lan5 to follow naming convension (lan1-4 from mxl switch and lan6 for l=
+an-
+> combo).
+>=20
+>=20Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+>=20diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro=
+.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi
+> index a48132f09411..1175ee156cb3 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi
+> @@ -207,7 +207,7 @@ &gsw_phy0_led0 {
+>  };
+>=20=20
+>=20 &gsw_port0 {
+> - label =3D "mgmt";
+> + label =3D "lan5";
+>  };
+>=20=20
+>=20 /* R4Pro has only port 0 connected, so disable the others */
+> --=20
+>=202.43.0
+>=20
+
+regards=20Frank
 
