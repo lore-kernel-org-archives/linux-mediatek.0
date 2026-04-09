@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85364F364A7
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Apr 2026 17:09:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CE03F364A8
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Apr 2026 17:09:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wQHs+xJKsUMQO+6CCh7X3NX/2yXBo/WKUOrvcvLPWfg=; b=16M3Qph460AcYz66ZjVlwmqIp4
-	LdOVUY7Rlr6nu991nuM4AET4cb7j8YDL/3+xI0eYN8p+U9S3GDUIesgyUBmLy8j+eNIOi4B7pkvy0
-	95ZqK3Iznv0zCTcOuRASjc0dMEPHTiwOm+lgjnKX8q7YmgLfkJVx1SymGYf8tIVh0mCO/HWh1vt+b
-	wd4Ws/iLJzLCVym7WbApNlfKWfBgqABN9FHPPjIG85Nf90BSLWbHZWYs2HxbNXFX0VWZ8S/ll41/I
-	5Oq41vKX4/lZ9RJPMhTv500iLFbfzsM7JwQiDzu4OIFRktPvYVEvU7ag134Vb7S3uPvhRuhvNYvK5
-	z5Nm/Q7Q==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=vkWOcKx6uUnLGWEeSpSMD8GMbN5TDhNOCyHUzp+VpLg=; b=SSUAcu6I0xsZci
+	E4n9pEktG05/BH65vphIByqb28dJTJVg4Q8B86KppiX9IEtK8ss40dD5jiM0/kG86RObnme7WmaxM
+	REEqrsLCzGEydhd8G/Sh0hKvDfV1gzQ4lqnIDVY8UYlbO2kPacFfapRAKa40jH2+9ALEFTI5+YW1l
+	02koKTt5rWBSIhNhuom+qZiUHN9nSMrtrIu5a+Hfm2S5/fdhudIZzgovq3dXZrYooSkkK3J8ha8bs
+	QcOjU4fGJbiGZjPimjHzqHJRoJyzBSkH41lY20qEkWPQMRXPCf1qalBXauIG5oInzQOecsBUqDxyV
+	Pw2wms+eflI8o0exoUBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAssH-0000000AyY1-1rOc;
-	Thu, 09 Apr 2026 17:09:01 +0000
+	id 1wAssI-0000000AyYf-09lT;
+	Thu, 09 Apr 2026 17:09:02 +0000
 Received: from smtpout-04.galae.net ([185.171.202.116])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAssD-0000000AyWy-1ihi;
+	id 1wAssC-0000000AyWu-2YWl;
 	Thu, 09 Apr 2026 17:08:59 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id 8B53CC5C18B;
-	Thu,  9 Apr 2026 17:09:30 +0000 (UTC)
+	by smtpout-04.galae.net (Postfix) with ESMTPS id EF74FC5C18A;
+	Thu,  9 Apr 2026 17:09:26 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id C09BA603E4;
-	Thu,  9 Apr 2026 17:08:55 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 9BAF410450194;
-	Thu,  9 Apr 2026 19:08:50 +0200 (CEST)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 00587603E4;
+	Thu,  9 Apr 2026 17:08:51 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id B8770104500F2;
+	Thu,  9 Apr 2026 19:08:41 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1775754534; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=wQHs+xJKsUMQO+6CCh7X3NX/2yXBo/WKUOrvcvLPWfg=;
-	b=MIZWIZeI6SDzL7xElyXrZcp1xP5FU/iv6TVLEMIzJzuy69V14+eWik9kRKFGixgQaD6ciS
-	Ddf0uG5jq9ljh6Qn4Bfo3Lo4wh3XkM6VJnIAAGk9dBUjHNGHVUxP2CdnVN7cr8dJaD0IMj
-	J0Syiixw7j9TNbIZj6PVG1Ugn2d1/iCHei/yCZMmd68Rx+dsZQxLDuWDrcTWQIm7QeB+QA
-	164m9FfPe/Owoxjn26H4BCuDi+FulELgNLV8kTRt7/wicDSenIEtyWuk+lzDtW7/7QYFln
-	hwwOk/KBfs0c9gD6gPRrMcw5DivnFR3liiquTWK6mqxqzChKFRM/bHEfHbbn+Q==
+	t=1775754530; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding; bh=vkWOcKx6uUnLGWEeSpSMD8GMbN5TDhNOCyHUzp+VpLg=;
+	b=hxpi7DsxOvnrGkGEMd+Aa5L7+cTR44o6q+DIIYM+E88DF08NNiyGSA36Z9B4uTkPe9PTf3
+	Y1Mk2/KNjvIiSUnjp+GTl2o32jI/r0soNWm+SBkJliCgN3BwZxRrxdFL58Hk5UBNyxxU66
+	o+th6eHU1A4yNEroonMDElx+4JgdLv68aWDmEACMzOD1Xf7fT9k/ovMBns/p6sTn+D53D5
+	l7gP3O7x9X7kwvGIhScbDAZh4NjOCoYvale6z4mrsLdOhSQuGo7Ka7dpGxuFmJhyLYlxXv
+	2XEYp9Ki+p27ZZgvpeUgFNv70GwDkdOH64xkmoWbfBfPWMfBPLAuprjOnPcl3g==
 From: Kory Maincent <kory.maincent@bootlin.com>
-Date: Thu, 09 Apr 2026 19:08:17 +0200
-Subject: [PATCH RFC 01/12] drm/i915/display/intel_sdvo: Fix double
- connector destroy in error paths
+Subject: [PATCH RFC 00/12] Add support for DisplayPort link training
+ information report
+Date: Thu, 09 Apr 2026 19:08:16 +0200
+Message-Id: <20260409-feat_link_cap-v1-0-7069e8199ce2@bootlin.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260409-feat_link_cap-v1-1-7069e8199ce2@bootlin.com>
-References: <20260409-feat_link_cap-v1-0-7069e8199ce2@bootlin.com>
-In-Reply-To: <20260409-feat_link_cap-v1-0-7069e8199ce2@bootlin.com>
+Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIAADd12kC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIzMDIyMz3bTUxJL4nMy87PjkxAJdI4PkpCSzNGPDFBMDJaCegqLUtMwKsHn
+ RSkFuzkqxtbUAHOP6R2QAAAA=
 To: Jani Nikula <jani.nikula@linux.intel.com>, 
  Rodrigo Vivi <rodrigo.vivi@intel.com>, 
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
@@ -81,9 +81,8 @@ Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
 X-Mailer: b4 0.14-dev-d4707
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260409_100857_598569_BF69746F 
-X-CRM114-Status: UNSURE (   9.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260409_100857_248627_A3DD901E 
+X-CRM114-Status: GOOD (  13.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,77 +97,108 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-intel_sdvo_connector_funcs registers intel_connector_destroy() as the
-.destroy callback. Once drm_connector_init_with_ddc() succeeds inside
-intel_sdvo_connector_init(), the DRM core takes ownership of the
-connector object and will call .destroy on teardown.
+DisplayPort link training negotiates the physical-layer parameters needed
+for a reliable connection: lane count, link rate, voltage swing,
+pre-emphasis, and optionally Display Stream Compression (DSC). Currently,
+each driver exposes this state in its own way, often through
+driver-specific debugfs entries, with no standard interface for userspace
+diagnostic and monitoring tools.
 
-The error labels in intel_sdvo_tv_init() and intel_sdvo_lvds_init()
-call intel_connector_destroy() explicitly before returning false,
-causing it to be invoked twice: once in the error path and again by
-the DRM core through the registered .destroy callback.
+This series introduces a generic, DRM-managed framework for exposing DP
+link training state as standard connector properties, modeled after the
+existing HDMI helper drmm_connector_hdmi_init().
 
-Remove the manual intel_connector_destroy() calls from the error labels
-and return false directly instead.
+The new drmm_connector_dp_init() helper initializes a DP connector and
+registers the following connector properties to expose the negotiated link
+state to userspace:
 
-Fixes: 32aad86fe88e7 ("drm/i915/sdvo: Propagate errors from reading/writing control bus.")
+- num_lanes:      negotiated lane count (1, 2 or 4)
+- link_rate:      negotiated link rate
+- dsc_en:         whether Display Stream Compression is active
+- voltage_swingN: per-lane voltage swing level (lanes 0-3)
+- pre_emphasisN:  per-lane pre-emphasis level (lanes 0-3)
+
+Two runtime helpers update and clear these properties when link training
+completes or the link goes down:
+- drm_connector_dp_set_link_train_properties()
+- drm_connector_dp_reset_link_train_properties()
+
+Two drivers are updated as reference implementations: i915 (direct
+connector path) and MediaTek (via the bridge connector framework using a
+new DRM_BRIDGE_OP_DP flag). The i915 patches are preceded by a series of
+conversions to DRM managed resources, which are required before adopting
+drmm_connector_dp_init().
+
+The MST case in i915 driver is not supported yet.
+
+Patches 1-3:  Fix two error-path cleanup bugs in i915 sdvo and lvds
+[Will probably be sent standalone]
+Patches 4-8: Convert i915 display resources to DRM managed lifetime
+Patch 9: Introduce the core drmm_connector_dp_init() framework
+Patch 10: Wire the i915 DP connector to use the new helpers
+Patch 11: Introduce DRM_BRIDGE_OP_DP and wire bridge connectors
+Patch 12: Wire the MediaTek DP bridge to the new helpers [untested]
+
 Signed-off-by: Kory Maincent <kory.maincent@bootlin.com>
 ---
+Kory Maincent (12):
+      drm/i915/display/intel_sdvo: Fix double connector destroy in error paths
+      drm/i915/display/intel_lvds: Drop redundant manual cleanup on init failure
+      drm/i915/display/intel_dp: Drop redundant intel_dp_aux_fini() on init failure
+      drm/i915/display: Switch to drmm_mode_config_init() and drop manual cleanup
+      drm/i915/display: Switch to managed for crtc
+      drm/i915/display: Switch to managed for plane
+      drm/i915/display: Switch to managed for encoder
+      drm/i915/display: Switch to managed for connector
+      drm: Introduce drmm_connector_dp_init() with link training state properties
+      drm/i915/display/dp: Adopt dp_connector helpers to expose link training state
+      drm/bridge: Wire drmm_connector_dp_init() via new DRM_BRIDGE_OP_DP flag
+      drm/mediatek: Use dp_connector helpers to report link training state
 
-Not tested as I don't have such hardware.
+ drivers/gpu/drm/Makefile                           |   1 +
+ drivers/gpu/drm/display/drm_bridge_connector.c     |  26 +-
+ drivers/gpu/drm/drm_dp_connector.c                 | 344 +++++++++++++++++++++
+ drivers/gpu/drm/i915/display/g4x_dp.c              |  39 +--
+ drivers/gpu/drm/i915/display/g4x_hdmi.c            |  27 +-
+ drivers/gpu/drm/i915/display/i9xx_plane.c          |  97 +++---
+ drivers/gpu/drm/i915/display/icl_dsi.c             |  50 ++-
+ drivers/gpu/drm/i915/display/intel_connector.c     |  26 +-
+ drivers/gpu/drm/i915/display/intel_connector.h     |   5 +-
+ drivers/gpu/drm/i915/display/intel_crt.c           |  28 +-
+ drivers/gpu/drm/i915/display/intel_crtc.c          | 102 +++---
+ drivers/gpu/drm/i915/display/intel_cursor.c        |  41 ++-
+ drivers/gpu/drm/i915/display/intel_ddi.c           |  64 ++--
+ drivers/gpu/drm/i915/display/intel_display.c       |   8 -
+ drivers/gpu/drm/i915/display/intel_display.h       |   1 -
+ .../gpu/drm/i915/display/intel_display_driver.c    |  37 ++-
+ drivers/gpu/drm/i915/display/intel_dp.c            |  43 ++-
+ .../gpu/drm/i915/display/intel_dp_link_training.c  |  25 ++
+ drivers/gpu/drm/i915/display/intel_dp_mst.c        |  33 +-
+ drivers/gpu/drm/i915/display/intel_dvo.c           |  43 +--
+ drivers/gpu/drm/i915/display/intel_encoder.c       |   6 +-
+ drivers/gpu/drm/i915/display/intel_encoder.h       |   3 +-
+ drivers/gpu/drm/i915/display/intel_hdmi.c          |  15 +-
+ drivers/gpu/drm/i915/display/intel_lvds.c          |  45 ++-
+ drivers/gpu/drm/i915/display/intel_plane.c         |  45 +--
+ drivers/gpu/drm/i915/display/intel_plane.h         |   5 +-
+ drivers/gpu/drm/i915/display/intel_sdvo.c          | 134 +++-----
+ drivers/gpu/drm/i915/display/intel_sprite.c        | 119 ++++---
+ drivers/gpu/drm/i915/display/intel_tv.c            |  26 +-
+ drivers/gpu/drm/i915/display/skl_universal_plane.c | 102 +++---
+ drivers/gpu/drm/i915/display/vlv_dsi.c             |  42 +--
+ drivers/gpu/drm/mediatek/mtk_dp.c                  |  34 +-
+ include/drm/drm_bridge.h                           |  13 +
+ include/drm/drm_connector.h                        |  38 +++
+ include/drm/drm_dp_connector.h                     | 109 +++++++
+ 35 files changed, 1125 insertions(+), 651 deletions(-)
 ---
- drivers/gpu/drm/i915/display/intel_sdvo.c | 16 ++++------------
- 1 file changed, 4 insertions(+), 12 deletions(-)
+base-commit: db5a75cfd29766536be62aece9f19c6e7a858fa6
+change-id: 20260226-feat_link_cap-20cbb6f31d40
 
-diff --git a/drivers/gpu/drm/i915/display/intel_sdvo.c b/drivers/gpu/drm/i915/display/intel_sdvo.c
-index 2e1af9e869ded..6eb2b4b45a9b4 100644
---- a/drivers/gpu/drm/i915/display/intel_sdvo.c
-+++ b/drivers/gpu/drm/i915/display/intel_sdvo.c
-@@ -2873,16 +2873,12 @@ intel_sdvo_tv_init(struct intel_sdvo *intel_sdvo, u16 type)
- 	}
- 
- 	if (!intel_sdvo_tv_create_property(intel_sdvo, intel_sdvo_connector, type))
--		goto err;
-+		return false;
- 
- 	if (!intel_sdvo_create_enhance_property(intel_sdvo, intel_sdvo_connector))
--		goto err;
-+		return false;
- 
- 	return true;
--
--err:
--	intel_connector_destroy(connector);
--	return false;
- }
- 
- static bool
-@@ -2945,7 +2941,7 @@ intel_sdvo_lvds_init(struct intel_sdvo *intel_sdvo, u16 type)
- 	}
- 
- 	if (!intel_sdvo_create_enhance_property(intel_sdvo, intel_sdvo_connector))
--		goto err;
-+		return false;
- 
- 	intel_bios_init_panel_late(display, &intel_connector->panel, NULL, NULL);
- 
-@@ -2967,13 +2963,9 @@ intel_sdvo_lvds_init(struct intel_sdvo *intel_sdvo, u16 type)
- 	intel_panel_init(intel_connector, NULL);
- 
- 	if (!intel_panel_preferred_fixed_mode(intel_connector))
--		goto err;
-+		return false;
- 
- 	return true;
--
--err:
--	intel_connector_destroy(connector);
--	return false;
- }
- 
- static u16 intel_sdvo_filter_output_flags(u16 flags)
-
+Best regards,
 -- 
-2.43.0
+Köry Maincent, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
 
 
