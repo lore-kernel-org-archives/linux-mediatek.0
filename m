@@ -4,134 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E47CDF364A2
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Apr 2026 16:50:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85364F364A7
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Apr 2026 17:09:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	In-Reply-To:Content-Transfer-Encoding:Content-Type:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8MPz/Ds/m/pi4Erp8U/4iENSHTjV/2od/D+QL9LG2t8=; b=oF03w+LLS1VdKRNEQdJvS2tEoc
-	bVl1T8n9VjFe3S7qf3RtzdxsHZcVO145jjRM/h6DwRXDI28tRIqeqFOO6vW00lnJTxkTqB+9843QW
-	dX1iSa1AzZqQSXrauKFPQNUtcK9D9DgaK5hnfIoqBll0tq/TYEiSCntXtbupMIg5Cdhi8zJFW98Ei
-	Bpn1CwFDTI0lDoTe9eb3n/XS0ZO95a579nl1jBH8EKhxcpuKmzNoMXa4kS0Zu9ecTjcyvKLC6a5I3
-	3jN4erdZvsV1ZnMhlY0i53TP/iIxV6d9GlFWL7Y1OnWLnDzWi7e3+7nJOsVX+Ox5Xt0VKryhXoRr9
-	ypi1CfHw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wQHs+xJKsUMQO+6CCh7X3NX/2yXBo/WKUOrvcvLPWfg=; b=16M3Qph460AcYz66ZjVlwmqIp4
+	LdOVUY7Rlr6nu991nuM4AET4cb7j8YDL/3+xI0eYN8p+U9S3GDUIesgyUBmLy8j+eNIOi4B7pkvy0
+	95ZqK3Iznv0zCTcOuRASjc0dMEPHTiwOm+lgjnKX8q7YmgLfkJVx1SymGYf8tIVh0mCO/HWh1vt+b
+	wd4Ws/iLJzLCVym7WbApNlfKWfBgqABN9FHPPjIG85Nf90BSLWbHZWYs2HxbNXFX0VWZ8S/ll41/I
+	5Oq41vKX4/lZ9RJPMhTv500iLFbfzsM7JwQiDzu4OIFRktPvYVEvU7ag134Vb7S3uPvhRuhvNYvK5
+	z5Nm/Q7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAsaO-0000000Ax8B-3h5V;
-	Thu, 09 Apr 2026 16:50:32 +0000
-Received: from mail-westeuropeazlp170130006.outbound.protection.outlook.com ([2a01:111:f403:c201::6] helo=AM0PR02CU008.outbound.protection.outlook.com)
+	id 1wAssH-0000000AyY1-1rOc;
+	Thu, 09 Apr 2026 17:09:01 +0000
+Received: from smtpout-04.galae.net ([185.171.202.116])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAsZj-0000000Ax3u-1f12;
-	Thu, 09 Apr 2026 16:50:11 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=xBEpLWoVKnD84wvEEksHW+CY7yrarKGpnbHN9wLqOT4bXpIdWbFFc2EIpjIcjXOWGBNbp5sYNuK07sMeHCc4ptStxNBcP+ywdDcEZ+1rTYIwKe3scMNkpKtgWLUxyxlmD98KrXoAkY74fOoBY0fQw1pX0dikXzmG57yThAHV+M7UpoaPKFuJWdxwCRNCyx4JN9hGmMGi6fYPzK1R8+mVDtOhFpeNYCf0FXsPxy9ZpBV6pCarhBgWLekW+KzZwLxhTLtrFerJRUepKJnqIoeNzuxmWFzxCs+W/49Mf2fZ/xMLBZ2qUHq3tvCv8k+BTmM/JXIqXyo+tfMR+a5nMTvXGw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=8MPz/Ds/m/pi4Erp8U/4iENSHTjV/2od/D+QL9LG2t8=;
- b=MCKgz+lDu2l7uKRLYmMEFteTOQJOXVCyN0kFjI4k3enBgqAuvK70uhatFuCWRvtRrtyy0KFAv7H41U/cQQQoiPPSvuHrJK48OxpQHaW7sdqQ8Bs696ngdVEiWK/+jyt+wbx26E9bxz1OKhPxcDNGAsklgyEHM7g5Jgjk7vbEXE3nywoJY+P/+TKk1Nl33On8Xq/QyqRPs71YFUXiJOd0I9/xujyGpJ9+XRUrmlON4Rimusv3sJWKUjxrLb2AzUYgmbGpdBlCuaekfinGVvaBTyxT/Ecdj1PR9fFC6G+wtbphd/Dc/ry+bx+t6CwOX/7UVVkAbFaDQOeD1ng/t0+CPQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=8MPz/Ds/m/pi4Erp8U/4iENSHTjV/2od/D+QL9LG2t8=;
- b=QBaXTQPT8DO4I6xpJzAf9eqjicZHW4C++ThAAdp9zikzLRK9xs6FWmQh45b7E8cHgzjFxydUDNx6bucUvoxoYH2TTt2IN3vVvzJyDD85N46emCQfjjruUW3Kq9fuWHwZaRMJXyGiBSAYp8HmUvL4tYv3QxZ4O3H4nBvluAzeZ1wxcKXjOYbLnvLLr++yBxFMGt4INNniXfeyatVUHJCcFOBvYs0ZTcKj3JlcEJZhdDitqJMQd7NcoZxOXVrB/ioLTWK3aNHLWKcqCBwc8Tvx0b6MRZeRJDVG/b+OY0wkN/ZFWXqzd2cULbuHqz7/0UpiV2v+4E22lXEAWbXVWSQVtw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from PAXSPRMB0032.eurprd04.prod.outlook.com (2603:10a6:102:2bd::8)
- by AS8PR04MB8531.eurprd04.prod.outlook.com (2603:10a6:20b:422::17) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9769.15; Thu, 9 Apr
- 2026 16:49:46 +0000
-Received: from PAXSPRMB0032.eurprd04.prod.outlook.com
- ([fe80::901f:47ae:dfc9:2499]) by PAXSPRMB0032.eurprd04.prod.outlook.com
- ([fe80::901f:47ae:dfc9:2499%5]) with mapi id 15.20.9769.041; Thu, 9 Apr 2026
- 16:49:46 +0000
-Date: Thu, 9 Apr 2026 19:49:42 +0300
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
-To: Frank Wunderlich <linux@fw-web.de>,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Felix Fietkau <nbd@nbd.name>
-Subject: Re: [RFC net PATCH v1] net: pcs: pcs-mtk-lynxi: fix bpi-r3 serdes
- configuration
-Message-ID: <20260409164942.wbmwtkpd5d5zibyy@skbuf>
-References: <20260409133344.129620-1-linux@fw-web.de>
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20260409133344.129620-1-linux@fw-web.de>
-X-ClientProxiedBy: WA1P291CA0007.POLP291.PROD.OUTLOOK.COM
- (2603:10a6:1d0:19::11) To PAXSPRMB0032.eurprd04.prod.outlook.com
- (2603:10a6:102:2bd::8)
+	id 1wAssD-0000000AyWy-1ihi;
+	Thu, 09 Apr 2026 17:08:59 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-04.galae.net (Postfix) with ESMTPS id 8B53CC5C18B;
+	Thu,  9 Apr 2026 17:09:30 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id C09BA603E4;
+	Thu,  9 Apr 2026 17:08:55 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 9BAF410450194;
+	Thu,  9 Apr 2026 19:08:50 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1775754534; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=wQHs+xJKsUMQO+6CCh7X3NX/2yXBo/WKUOrvcvLPWfg=;
+	b=MIZWIZeI6SDzL7xElyXrZcp1xP5FU/iv6TVLEMIzJzuy69V14+eWik9kRKFGixgQaD6ciS
+	Ddf0uG5jq9ljh6Qn4Bfo3Lo4wh3XkM6VJnIAAGk9dBUjHNGHVUxP2CdnVN7cr8dJaD0IMj
+	J0Syiixw7j9TNbIZj6PVG1Ugn2d1/iCHei/yCZMmd68Rx+dsZQxLDuWDrcTWQIm7QeB+QA
+	164m9FfPe/Owoxjn26H4BCuDi+FulELgNLV8kTRt7/wicDSenIEtyWuk+lzDtW7/7QYFln
+	hwwOk/KBfs0c9gD6gPRrMcw5DivnFR3liiquTWK6mqxqzChKFRM/bHEfHbbn+Q==
+From: Kory Maincent <kory.maincent@bootlin.com>
+Date: Thu, 09 Apr 2026 19:08:17 +0200
+Subject: [PATCH RFC 01/12] drm/i915/display/intel_sdvo: Fix double
+ connector destroy in error paths
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PAXSPRMB0032:EE_|AS8PR04MB8531:EE_
-X-MS-Office365-Filtering-Correlation-Id: 0ecbdfa1-8eda-4e83-6d87-08de9658019e
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|10070799003|366016|19092799006|7416014|376014|18002099003|22082099003|56012099003;
-X-Microsoft-Antispam-Message-Info: Ec13hwYI4yedeMVgel60oBlc8N6qmdgmxe5eOOioPIlwoZGRZIuGWzUZMdUOg1IwStfv4vkMpCPbIcFggWXA1XOb7MFlpXLK7hD2tsituKSLXE6p4yICzUIy5HzRMqiM9U3+p/K4eaJUr4e8BZWpJed0bTboybhihX/IIgb6iTzIlOSF6XaFtFuU0M93pqn1l9o3bu9XIstNnnR1D8lwTQDL/arcSLaK3NV6/BXDO5vmminit607cDRMe+xzSuQtFrtdyk0Bs55JXfuzojzRC0fesYjQlb+kMoIl783rVuRysptvEbX2xnC3Pj/G/9FDWvzJ86A9eCfnWZI91egXcCfcT37BOwvaNeMpytA4MD57b3y1DZDcEptUZmKCG+dyVyYqLfFutADCWAGldnSriXFj1t0u1e/Y8wBD+G4XF6boVl93TzbUutdUjsZ8BWP6v8wNTSwAL3+XvyuMRPjJYAONhIBDMRObRusdZwpFnvf2nc6OLWT8O7PqcJlmo3phGEc7n4rKlNbSERaCy2MbJllo0NhC+UHqF4ALuUibNlD35GG0Vn6M/mj6gEaJBiFDuFHF4QEUJUzRMrN/+xlQdT4dt3pKfAAGlR0OltRkTpUd8Ub7dzguaMLAGUZsBUO98TB6OX/87cFyKKnY6HB9S2mBl48ANPux2WbjuYhJDduODJleNO7M/9Sa6dPhpVi6
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PAXSPRMB0032.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(10070799003)(366016)(19092799006)(7416014)(376014)(18002099003)(22082099003)(56012099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?V21oUlZpSzZ2SkVqd3U5clZ3SGFTN0phVmc1T3BFMXlUNHdZVXhjc1BvMkNv?=
- =?utf-8?B?eCtOQU9zYkNiQ1oxcDMzQys4RzBRQUk4OHIrZ2ZJeEYrZmIxK3BPcmVWN2RO?=
- =?utf-8?B?U3R2dHFjRkM0UmxhUFgwaWZWSHFSdU5QMURVTFBUaFozdmkvd0VlUmx6Rk1E?=
- =?utf-8?B?dm9vVmVPaUhqM0wxbzRVOC9pekY5a3U3RHpCMTdkVXBaamZRS2pWc2Q0dlBo?=
- =?utf-8?B?aWRId1VIZlB4Y2NjR3NEbms3TWNEbUtIb1YrVDY3cUYrQllWUGhEdkx1RjZJ?=
- =?utf-8?B?VCtrRU1CaFFkYzlHalJqcStlSUptRFY5MmlsMXE3SXNvdWd4UzNEcFBDcVdJ?=
- =?utf-8?B?ZWtjbHJCcXJsNzRDVDJNTnZrU1o5LzFEandMaGZMS1czbzRYelgwYlptWWd1?=
- =?utf-8?B?Q3ZhOG5iNEdieUhpNXBHSXBadFd0M3ZFRklmK3M5Q1FDak5acTNBR0V1bGxP?=
- =?utf-8?B?NkFzRnQxaVJLY0VXWXdWWkxjV1oyNVo0VVJqdHlUbU5DM1Y0MjdCdGJsNUFo?=
- =?utf-8?B?U0VBdzZuNlBYVWFna0EvY2FxRno3WEFlQVNIYkJvMWFoVHFHZ25oOHVTWTRQ?=
- =?utf-8?B?N1RRdWUwb2NTamtvUTFjcjlhbllCNER1WlNVbE9ndGpzK2tKUUFwY0RSY1dU?=
- =?utf-8?B?ckRiM3VJV0JHazB3ZHRCM1ZFcjFOWkZxKzR5eFV5WHpvVStFcjBMUHlMdHV5?=
- =?utf-8?B?QTBqRUp2cWN0WnVUTmJ0S1B4RUY1MGlxNmhHZGdtdFI5bjdJSUxVRXNTM2Ev?=
- =?utf-8?B?QWxRNHBjbmorc2hndEhZdUdkdEpiSnlCYXZFZkViMzAvMmROZ1p0Z1lqajN0?=
- =?utf-8?B?dG5GS25ZYURuUkpXZ1kwZ29qOEZPbkwvOFVSWVNrS3lrdTJXdURkNEVUMHVN?=
- =?utf-8?B?TGJCbHNjamNRSzBjNThyOFlyUWZISnlCMFpGUG8yT0dIQkVGMk1IMERlalYx?=
- =?utf-8?B?bXlCNlJmV3F2amNhQ3RHTCtGTDU1L2xBbTNDVzlZSFZVRFFrSnBZM0F5aUpp?=
- =?utf-8?B?aFVJRDN6OVZxRUJCUnR4c3FYRXg4NHk5bjh0aDBucmRXdWpYdkI4UDM5c1o3?=
- =?utf-8?B?bklZTkMvUGF1S0RVUllpT25GaW85eEZOTG9nMUYxQTZIblZBSU5PbEoyQlcv?=
- =?utf-8?B?bTU2TTlUdUsvbENaQ1FqaTY1bTlaaThIOTAzSzB1U0dhUmdjb1RCazY4MS94?=
- =?utf-8?B?VTFtaTk4MmEzWDl1NlVYWW8wMlB3cm0xbG9kelNsZmRKeGxPSkdIKzNuRGhx?=
- =?utf-8?B?eDFKRXJ4ck9YNktBVXpaM0JDdjFsSXVJdDQ2ZlNyZ1k1ZEJGZ0Jhd2pBeUc0?=
- =?utf-8?B?UU1Vbm95ZW1kTG93cVRmKzlFWGxZMzNETnhHbDlHTytRSXZiTHViODlyU0VY?=
- =?utf-8?B?Z0JoMUVvUWlyWlgwUVk1Mkc1eUsvMkVGdDZnM2o3cWs0UkRzME5saXNneWVO?=
- =?utf-8?B?Wnp0Qk16RWxyOWYrVEdCM3JFbEpEczh2cnEreno4Y1VjK2VuMTdwRGorRlFx?=
- =?utf-8?B?WUpmRjZndDd6WkpMZVRyWUNqS0RTQnV1eGhWbGpTY2NHbExKK0p5R1ZUV0Zk?=
- =?utf-8?B?TnhDTzViYkloNVpyMm9yV1o2Z2E1Z3BpbmFsVGhmRGJoK3dyeXpnK3RVMUU4?=
- =?utf-8?B?TS9tRVZrTjBHS0lZNzdrNGF2blNTeU45ZWlFZmhuNWJUc2JzcXRqTXFOTUpS?=
- =?utf-8?B?OVFmcFZpelc4ai9QVG1RMGdSZTdQQWhOMFFUUkpJa2lPaGUrZ1dyQktEVGJo?=
- =?utf-8?B?SXd0eG1ZdTZJZ3BHUmYzVUFWM1k0QWFlend1Q1FsMVJYOGFCTVpYT0RDRU9x?=
- =?utf-8?B?Snk3TUFSeTBqeUpSeUJ4d2prbjVqWE42blZGd2V5MXFqWXVlTTdOZ2k4dFZz?=
- =?utf-8?B?SExiSk9tMDBHVi80M0RUYmE1ZFVRQ1NFN0o0dEQwYzVaNW14NTBVbG9NeUlj?=
- =?utf-8?B?eUx1UDFteTJGSjMrNGZUbEpIODE2YlR6T1dDRkdqMkxXWEZBREVWa1J2WHFx?=
- =?utf-8?B?RnRkNmo2RnBqek1EUlVUK2JUU04zREY4NmNORnBqcGtWY3JoZTRuTy9MZy9v?=
- =?utf-8?B?bk14WS84dGVSaUM4NWJsU1NBa2haemYwU3dBSzkvTmdUSG1yZWNzV3RGV1Fn?=
- =?utf-8?B?elFVVE5mcDVlVVJZMTh6ZVVncHFNQytGTER4aDQ2ejgrRytudXhNTFk2clpG?=
- =?utf-8?B?Q2w0M2VwYU9sS2FENmhZQlh5eWxTUlRJSndtSXM5UCtka0ZhSjB4K05lTWdp?=
- =?utf-8?B?VEw3cnNRY0VuQ0VjcWU0eU9Gc3p4Y081MjlUbklaOFhreWREOUlMTDExOXgw?=
- =?utf-8?B?UVAyZXZMcW05N3l2TFROaW9CZ1FkYmRHYlMrenFPZk5EdkJ2VTB1RU1MVFd2?=
- =?utf-8?Q?Rm+fyVUG+3kwVeLeSnJqwCE+bIx6A/RiYF076F3hPxVRO?=
-X-MS-Exchange-AntiSpam-MessageData-1: Sinpm0E6GktVGgvgPyZqiF35Y17MRbPtWWc=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0ecbdfa1-8eda-4e83-6d87-08de9658019e
-X-MS-Exchange-CrossTenant-AuthSource: PAXSPRMB0032.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Apr 2026 16:49:46.4559
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 4BndVgIIyuHHJLe5skoRAcJR9ydiyMRKwvr+igs0L8szOAtjWm0RH04yAzIVZPBcPzoaayMX1aLwKi0JJ6SVfA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR04MB8531
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260409-feat_link_cap-v1-1-7069e8199ce2@bootlin.com>
+References: <20260409-feat_link_cap-v1-0-7069e8199ce2@bootlin.com>
+In-Reply-To: <20260409-feat_link_cap-v1-0-7069e8199ce2@bootlin.com>
+To: Jani Nikula <jani.nikula@linux.intel.com>, 
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, 
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
+ Tvrtko Ursulin <tursulin@ursulin.net>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, Dave Airlie <airlied@redhat.com>, 
+ Jesse Barnes <jbarnes@virtuousgeek.org>, Eric Anholt <eric@anholt.net>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Chris Wilson <chris@chris-wilson.co.uk>
+Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ Mark Yacoub <markyacoub@google.com>, Sean Paul <seanpaul@google.com>, 
+ Louis Chauvet <louis.chauvet@bootlin.com>, intel-gfx@lists.freedesktop.org, 
+ intel-xe@lists.freedesktop.org, dri-devel@lists.freedesktop.org, 
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ Simona Vetter <simona.vetter@ffwll.ch>, 
+ Kory Maincent <kory.maincent@bootlin.com>
+X-Mailer: b4 0.14-dev-d4707
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260409_095010_503665_52A6A03B 
-X-CRM114-Status: GOOD (  23.26  )
+X-CRM114-CacheID: sfid-20260409_100857_598569_BF69746F 
+X-CRM114-Status: UNSURE (   9.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -143,57 +95,80 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, Russell King <linux@armlinux.org.uk>, Daniel Golle <daniel@makrotopia.org>, Eric Dumazet <edumazet@google.com>, Alexander Couzens <lynxis@fe80.eu>, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org, Heiner Kallweit <hkallweit1@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 09, 2026 at 03:33:42PM +0200, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> Commit 8871389da151 introduces common pcs dts properties which writes
-> rx=normal,tx=normal polarity to register SGMSYS_QPHY_WRAP_CTRL of switch.
-> This is initialized with tx-bit set and so change inverts polarity
-> compared to before.
-> 
-> It looks like mt7531 has tx polarity inverted in hardware and set tx-bit
-> by default to restore the normal polarity.
-> 
-> Till this patch the register write was only called when mediatek,pnswap
-> property was set which cannot be done for switch because the fw-node param
-> was always NULL from switch driver in the mtk_pcs_lynxi_create call.
-> 
-> Do not configure switch side like it's done before.
-> 
-> Fixes: 8871389da151 ("net: pcs: pcs-mtk-lynxi: deprecate "mediatek,pnswap"")
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
->  drivers/net/pcs/pcs-mtk-lynxi.c | 3 +++
->  1 file changed, 3 insertions(+)
-> 
-> diff --git a/drivers/net/pcs/pcs-mtk-lynxi.c b/drivers/net/pcs/pcs-mtk-lynxi.c
-> index c12f8087af9b..a753bd88cbc2 100644
-> --- a/drivers/net/pcs/pcs-mtk-lynxi.c
-> +++ b/drivers/net/pcs/pcs-mtk-lynxi.c
-> @@ -129,6 +129,9 @@ static int mtk_pcs_config_polarity(struct mtk_pcs_lynxi *mpcs,
->         unsigned int val = 0;
->         int ret;
-> 
-> +       if (!fwnode)
-> +               return 0;
-> +
->         if (fwnode_property_read_bool(fwnode, "mediatek,pnswap"))
->                 default_pol = PHY_POL_INVERT;
-> 
-> --
-> 2.43.0
->
+intel_sdvo_connector_funcs registers intel_connector_destroy() as the
+.destroy callback. Once drm_connector_init_with_ddc() succeeds inside
+intel_sdvo_connector_init(), the DRM core takes ownership of the
+connector object and will call .destroy on teardown.
 
-I notice Arınc, listed by ./scripts/get_maintainer.pl drivers/net/dsa/mt7530.c,
-and Felix, listed by ./scripts/get_maintainer.pl drivers/net/ethernet/mediatek/mtk_eth_soc.c,
-are not on CC. Maybe they have more info.
+The error labels in intel_sdvo_tv_init() and intel_sdvo_lvds_init()
+call intel_connector_destroy() explicitly before returning false,
+causing it to be invoked twice: once in the error path and again by
+the DRM core through the registered .destroy callback.
 
-Only the switch port has a chance of having a non-zero default polarity
-setting? (coming from the efuse, if I understood this discussion properly)
-https://lore.kernel.org/netdev/C59EED96-3973-4074-A4D8-C264949D447E@linux.dev/
-The GMAC doesn't?
+Remove the manual intel_connector_destroy() calls from the error labels
+and return false directly instead.
+
+Fixes: 32aad86fe88e7 ("drm/i915/sdvo: Propagate errors from reading/writing control bus.")
+Signed-off-by: Kory Maincent <kory.maincent@bootlin.com>
+---
+
+Not tested as I don't have such hardware.
+---
+ drivers/gpu/drm/i915/display/intel_sdvo.c | 16 ++++------------
+ 1 file changed, 4 insertions(+), 12 deletions(-)
+
+diff --git a/drivers/gpu/drm/i915/display/intel_sdvo.c b/drivers/gpu/drm/i915/display/intel_sdvo.c
+index 2e1af9e869ded..6eb2b4b45a9b4 100644
+--- a/drivers/gpu/drm/i915/display/intel_sdvo.c
++++ b/drivers/gpu/drm/i915/display/intel_sdvo.c
+@@ -2873,16 +2873,12 @@ intel_sdvo_tv_init(struct intel_sdvo *intel_sdvo, u16 type)
+ 	}
+ 
+ 	if (!intel_sdvo_tv_create_property(intel_sdvo, intel_sdvo_connector, type))
+-		goto err;
++		return false;
+ 
+ 	if (!intel_sdvo_create_enhance_property(intel_sdvo, intel_sdvo_connector))
+-		goto err;
++		return false;
+ 
+ 	return true;
+-
+-err:
+-	intel_connector_destroy(connector);
+-	return false;
+ }
+ 
+ static bool
+@@ -2945,7 +2941,7 @@ intel_sdvo_lvds_init(struct intel_sdvo *intel_sdvo, u16 type)
+ 	}
+ 
+ 	if (!intel_sdvo_create_enhance_property(intel_sdvo, intel_sdvo_connector))
+-		goto err;
++		return false;
+ 
+ 	intel_bios_init_panel_late(display, &intel_connector->panel, NULL, NULL);
+ 
+@@ -2967,13 +2963,9 @@ intel_sdvo_lvds_init(struct intel_sdvo *intel_sdvo, u16 type)
+ 	intel_panel_init(intel_connector, NULL);
+ 
+ 	if (!intel_panel_preferred_fixed_mode(intel_connector))
+-		goto err;
++		return false;
+ 
+ 	return true;
+-
+-err:
+-	intel_connector_destroy(connector);
+-	return false;
+ }
+ 
+ static u16 intel_sdvo_filter_output_flags(u16 flags)
+
+-- 
+2.43.0
+
 
