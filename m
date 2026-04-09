@@ -4,63 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CC94EA3C5F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Apr 2026 13:18:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2680EA3C59
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Apr 2026 13:33:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=raj8KEj7nncAo56c1DXB93zAwOjYFuyy1P91EJAGKgQ=; b=Heso3Y9UTNW01v
-	tY2sEj0V4c9ih5q0XXyuQ0uA5c8unQJ3xL34OoJz8/xFgLpfrPY1rGf0AGJ8GkVAStGyKZrOy1H0r
-	7+CFztQPGWD2BJNTi9Ai2xYbsbfFKsYyRQ+EdvVsKZowUt43G2t2EBF/U3eNXjeueDF5tmkNpmwLX
-	TgyYloTny8X8xNOJAislXMWDW2PruH6OBBhPYhLecsAe6JGcw3U48zZelm4uJJdJVtXGZkxgawe48
-	S8dC2U28eCA1hvC48AZBhx1OMutlG7QZ5NbL+IzvVV+uNfnTQRMT/w0pFArqJttP9WYoqg6bTNkhO
-	9RAetjF2WQ61IRfKZNDA==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0rLKwU1N/qqCdCrv9tx/W5ZVb8mZQmZW22Ca/SiHrac=; b=OAndZGY/Uw/Ltw
+	6M4K4N6b/bg0awozBK346DFjPESndWwH84UI0jm4rn0cQR1ATSHXRxf2Jy1mkOcWWpmCAF8BSRnSo
+	x9fWaKd1SRMcLjOoD+lS+y3JTxPdLBY88887l6frGaA7kASMm+JZJ9JjCJkZDaoqlP/4XjKp8M+iB
+	FRsp3ocIagkkXxL9n4W12pxSSfgc8QoXogBLfSr/zax3oMQaAmtz292kn+ZnlGOR6sVdciyv2JYYs
+	R1ozggwgcHAx5vaqsLlxfGKei4sXhQszBfVaQXb+ONEXeYzAGSP2UEZx8bQRBWITzXBPIsVNr4Yye
+	xUwnW6hWolE+tEZx180A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wApHc-0000000ATde-18P3;
-	Thu, 09 Apr 2026 13:18:56 +0000
-Received: from mxout4.routing.net ([2a03:2900:1:a::9])
+	id 1wApW9-0000000AWlT-3DZK;
+	Thu, 09 Apr 2026 13:33:57 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wApGu-0000000ATIU-13my;
-	Thu, 09 Apr 2026 13:18:23 +0000
+	id 1wApW0-0000000AWjY-3sgR;
+	Thu, 09 Apr 2026 13:33:55 +0000
 Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout4.routing.net (Postfix) with ESMTP id 9A4EF10086D;
-	Thu,  9 Apr 2026 13:18:04 +0000 (UTC)
+	by mxout2.routing.net (Postfix) with ESMTP id 842F0600F5;
+	Thu,  9 Apr 2026 13:33:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=routing; t=1775740684;
+	s=routing; t=1775741626;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=raj8KEj7nncAo56c1DXB93zAwOjYFuyy1P91EJAGKgQ=;
-	b=FoAfbg0Ar/qN7/CNnYXpybCDJj45NkDPLWINkhoihBBZ+dA6MRP7rlhJOM77/eVjdXy+lJ
-	Fnu+xE7q/yJphP8utODHFSMDJZtBn+He4iQw9j26j2FEMe5SsyX8D72oEj3G/3G80a2k35
-	Imic6WbJPlRaNXrGFgYsdcE8k6YaFKk=
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=0rLKwU1N/qqCdCrv9tx/W5ZVb8mZQmZW22Ca/SiHrac=;
+	b=pspSm2EV6OnSVVj8ldY+ADJmMhcHgyBGVECtXBh7eB369i2V36LVtmGCPUTR3bM8HNZfAA
+	j8zfZY4JDsO7hv3jounVTwd2T+4TX8wzBsKKEYzHBqt7M8NAPAF0tOyzaJHe+xqqK5EQ8g
+	iVZDRlcRwxiM2+GQg5hpCIWDNABt/Rs=
 Received: from frank-u24.. (fttx-pool-217.61.155.21.bambit.de [217.61.155.21])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 6EC781226C0;
-	Thu,  9 Apr 2026 13:18:04 +0000 (UTC)
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 472731226C0;
+	Thu,  9 Apr 2026 13:33:46 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
+To: Alexander Couzens <lynxis@fe80.eu>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Subject: [PATCH v1 2/3] arm64: dts: mediatek: mt7988a-bpi-r4pro: update gpio-leds
-Date: Thu,  9 Apr 2026 15:17:50 +0200
-Message-ID: <20260409131754.121737-3-linux@fw-web.de>
+	Vladimir Oltean <vladimir.oltean@nxp.com>
+Subject: [RFC net PATCH v1] net: pcs: pcs-mtk-lynxi: fix bpi-r3 serdes configuration
+Date: Thu,  9 Apr 2026 15:33:42 +0200
+Message-ID: <20260409133344.129620-1-linux@fw-web.de>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260409131754.121737-1-linux@fw-web.de>
-References: <20260409131754.121737-1-linux@fw-web.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260409_061812_607732_0EC205BA 
-X-CRM114-Status: UNSURE (   8.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260409_063350_410296_5B28363E 
+X-CRM114-Status: GOOD (  11.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,42 +74,45 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Andrew LaMarche <andrewjlamarche@gmail.com>, linux-arm-kernel@lists.infradead.org
+Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-On the official case the red LED is named ERR, the blue LED is named ACT.​​​​​​​​​​​​​​​​
-Reflect these labels in function and set them default off.
+Commit 8871389da151 introduces common pcs dts properties which writes
+rx=normal,tx=normal polarity to register SGMSYS_QPHY_WRAP_CTRL of switch.
+This is initialized with tx-bit set and so change inverts polarity
+compared to before.
 
+It looks like mt7531 has tx polarity inverted in hardware and set tx-bit
+by default to restore the normal polarity.
+
+Till this patch the register write was only called when mediatek,pnswap
+property was set which cannot be done for switch because the fw-node param
+was always NULL from switch driver in the mtk_pcs_lynxi_create call.
+
+Do not configure switch side like it's done before.
+
+Fixes: 8871389da151 ("net: pcs: pcs-mtk-lynxi: deprecate "mediatek,pnswap"")
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
- .../boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi      | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ drivers/net/pcs/pcs-mtk-lynxi.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi
-index 759f608d1081..7f770a76775a 100644
---- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi
-@@ -61,14 +61,16 @@ gpio-leds {
+diff --git a/drivers/net/pcs/pcs-mtk-lynxi.c b/drivers/net/pcs/pcs-mtk-lynxi.c
+index c12f8087af9b..a753bd88cbc2 100644
+--- a/drivers/net/pcs/pcs-mtk-lynxi.c
++++ b/drivers/net/pcs/pcs-mtk-lynxi.c
+@@ -129,6 +129,9 @@ static int mtk_pcs_config_polarity(struct mtk_pcs_lynxi *mpcs,
+ 	unsigned int val = 0;
+ 	int ret;
  
- 		led_red: sys-led-red {
- 			color = <LED_COLOR_ID_RED>;
-+			function = LED_FUNCTION_FAULT;
- 			gpios = <&pca9555 15 GPIO_ACTIVE_HIGH>;
--			default-state = "on";
-+			default-state = "off";
- 		};
- 
- 		led_blue: sys-led-blue {
- 			color = <LED_COLOR_ID_BLUE>;
-+			function = LED_FUNCTION_ACTIVITY;
- 			gpios = <&pca9555 14 GPIO_ACTIVE_HIGH>;
--			default-state = "on";
-+			default-state = "off";
- 		};
- 	};
++	if (!fwnode)
++		return 0;
++
+ 	if (fwnode_property_read_bool(fwnode, "mediatek,pnswap"))
+ 		default_pol = PHY_POL_INVERT;
  
 -- 
 2.43.0
