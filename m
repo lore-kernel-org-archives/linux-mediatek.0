@@ -4,139 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12D00F44842
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2026 11:29:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC30FF44841
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2026 11:51:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NT/+rXZTuacqov1mq7SF0lV8RvQ3HiZKImY7BxOQLMs=; b=lGjaHd1l8rGQYOBq2m72Lh+xjy
-	rmRAyg7YgfaRW1ktJfxSEFtjFFze+q5M+RCF4RFhLMP5PIiAVkbw0e35k5WFubnUNA+m7X9zYCh5i
-	3j0pZLEeGQky1Sej8QxgEr0Jq8T23r+3mndo9wi2YH28TNC72pGlPuomYxr0LifSwDY77OQYmN/99
-	ji1XDmqFu9iVgsklmfWG6AP6vUj+dd/VOEW2yl1UmvVGOJXYwz5usPSRmnc6MJ11WeOiwDJ0hIkXT
-	0Pv1f0VEuyIYOwBudTvEKymbcNrkkeiv96Hv2i6yjuvJgW58h7UYnWJhl3asTMy6zqgIvYDT/JWFC
-	cgOldgzA==;
+	bh=jAbh96kURybP3B1FnJBvblEKWrZ1OrTJN0UaRwHzHJ8=; b=GHPCB6my4kS/WkltzBPLNigF+x
+	+4p4P4QfJOlHoTYvRy25ULIm3kmgyEG35M+MAlsL+chP/XfUvxCLoRfQh7uYnmjGWeHIJR4pHZjJq
+	hmsRQ2gY+WzEhtIi+Mju+s+wZKItOEjHYuAEC8tLsMyWx0MjZYC7doXIIwioop3RPipoj4fH4Gzkz
+	qFJNTkJbBuH7j+AiCpk/jE4EwINvZDaBvwNUuDnaOGPDjYzqo78E1a9EmnyTJ5uQIj6h2Wu0EHF8D
+	FyhemuqkoVba5WMeWwALY/wyaMrvp3OjIP8Y43HIWqED6N/gp/jw/jzkkCwwQlIVtdOutNl+UUtbt
+	2ZwdWUBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBA3a-0000000C5HG-05Iz;
-	Fri, 10 Apr 2026 11:29:50 +0000
-Received: from mail-northeuropeazon11020092.outbound.protection.outlook.com ([52.101.84.92] helo=DB3PR0202CU003.outbound.protection.outlook.com)
+	id 1wBAOZ-0000000C6ai-2KTo;
+	Fri, 10 Apr 2026 11:51:31 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBA3X-0000000C5GS-40fR;
-	Fri, 10 Apr 2026 11:29:49 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=oImK0vDzsT16hDc5UqP8zzg6RgQrlYZt2B6xXDz7fXkCPwDjhKPl12DzskIRlTjLrd3+7LqLhURaqOJi/QVdQGCcIWBa6wzgVVnoqB7DTVWcT8Sm9WsjI+Lmte3P1PSEdg31FM7wK4m3FtlTkssDzmkTA8QBV+NalVA+LGgMQMS55gONVr3Y3uRW7Id3rcFp7hIfj8kxZ/TbLQGOgOQSDtWZykteJxYGnR0kD9wrvpKILJ3fK84LiVF/DZaSDFaY5XevyG+/qW7eV2NTB1Uhv6dOYTPPe1hSvBAyldtnWuagMIzpwrb6sYQGRmEopSQaSPafLV3mFkS/Bzp58WbOJA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=NT/+rXZTuacqov1mq7SF0lV8RvQ3HiZKImY7BxOQLMs=;
- b=Y6hEf3Nvw3n9TSNqV2h+OiwXld2d1W+4sPkJQ+h+0NEFw7bIGMinuWnSTrz84yUyykfE21YFtN76BfZCDEEgkmcRhcEkq2capDTCNbdYbmzBT17Rp16pNAQfvbp2Bx32mJ+kcz3CNykHcfPjaa0dunghvIQ9OFjDusMJedZsmDTPZ046XPKkH0OtEXoUrjNQT/Vu25TUFDFpZpc2rO4KMaEsCk4noAMs+kabKUjirIXWvT8rYX0ZY/+TcbbMAFHXm8mYLQmUH1SA+IPML/FnyKn7Fo6Zw0/TwYHyL8+fMjWbD6F9dPRk8uWmHbviIN2gDg779BSlNWYS6bvWqOIgUA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=genexis.eu;
- dkim=pass header.d=genexis.eu; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=genexis.eu;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=NT/+rXZTuacqov1mq7SF0lV8RvQ3HiZKImY7BxOQLMs=;
- b=RObgzcj0V5QnTtQa81n6pzQzPCi5jPQ/X7KE1+IMvNLKLp9wZ0+I8vyfAcyNAxKLk7p4HX5XaScoruQwfyoqhsFMNcEBCeE86o1YdKxB08AyyJs/DZ5TEypT5quZJipe0+zHu5oMuq5dq9uCl+ThtNvBLFgdO9K3A96FGaQj0aqiMieHGiDN2XDUaMlcgmmnmNlxGnB5KXFMDkfuZgOuH0miKrCsj8FVx4rFjBTLiQcm7vHQVfJy+kdj11GW0W3bUwp3w0p+EtsPUiEIsQHokXwHKTd2XqGLuHsY2tAzTGiBtKPEpCnvHUOIjyKN40tQyS5bpLku4MVTfkFdzrMFKg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=genexis.eu;
-Received: from DB9PR08MB6697.eurprd08.prod.outlook.com (2603:10a6:10:2ad::14)
- by AM8PR08MB6498.eurprd08.prod.outlook.com (2603:10a6:20b:364::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9769.19; Fri, 10 Apr
- 2026 11:29:40 +0000
-Received: from DB9PR08MB6697.eurprd08.prod.outlook.com
- ([fe80::bdec:3e95:6614:441f]) by DB9PR08MB6697.eurprd08.prod.outlook.com
- ([fe80::bdec:3e95:6614:441f%7]) with mapi id 15.20.9769.041; Fri, 10 Apr 2026
- 11:29:40 +0000
-Message-ID: <bd486b55-a8d7-4811-965a-aa1f3dc98e30@genexis.eu>
-Date: Fri, 10 Apr 2026 13:29:38 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v3 04/12] net: airoha: Rely on net_device pointer
- in HTB callbacks
-To: Jakub Kicinski <kuba@kernel.org>, lorenzo@kernel.org
+	id 1wBAOX-0000000C6Zz-0DZ3;
+	Fri, 10 Apr 2026 11:51:30 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 34A1943C6C;
+	Fri, 10 Apr 2026 11:51:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 941C8C19421;
+	Fri, 10 Apr 2026 11:51:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1775821888;
+	bh=/v9RdEAhzS37lCkkSXoeeZkAOF1mvH24IcozDlYc1Sk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=KQeciTH0wbDVxWHCfhuS6Y+LIbp5to6StlVHunODdUah0VDc4u/jwg+o7W3Voy080
+	 LkSxAjQphEBPvs0gRrMpCLXGplUiVEvBLQuC9fAuPy79tEjvwAtQ7DqzCKvDt7Al+g
+	 K79MgjIo4vgMuGGAWor9mF8IVp4WtYDlqN8NSJtIEHMTjHnLgloM1Y49UxTuSpknrL
+	 sWTf+er889DEsqaUIQebfp3BgNbwgnS/4+3JGbDSQR9INnlrnBuJ0WQX90BWIxZmyo
+	 YlFy+6K7ZW9UkTSYQ9DMaS0eX9fHNMO9zf4IRWOIIZnmF4D93WmJPT7xNwCP6QpkiJ
+	 RtN2KLgdUMx/w==
+Date: Fri, 10 Apr 2026 13:51:25 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Jakub Kicinski <kuba@kernel.org>
 Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- ansuelsmth@gmail.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
- devicetree@vger.kernel.org
+	pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org,
+	conor+dt@kernel.org, ansuelsmth@gmail.com,
+	benjamin.larsson@genexis.eu, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH net-next v3 04/12] net: airoha: Rely on net_device
+ pointer in HTB callbacks
+Message-ID: <adjkPSK-qR5UAuA-@lore-desk>
 References: <20260406-airoha-eth-multi-serdes-v3-4-ab6ea49d59ff@kernel.org>
  <20260410025722.1809973-1-kuba@kernel.org>
-Content-Language: en-US
-From: Benjamin Larsson <benjamin.larsson@genexis.eu>
-In-Reply-To: <20260410025722.1809973-1-kuba@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: GVZP280CA0027.SWEP280.PROD.OUTLOOK.COM
- (2603:10a6:150:276::13) To DB9PR08MB6697.eurprd08.prod.outlook.com
- (2603:10a6:10:2ad::14)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DB9PR08MB6697:EE_|AM8PR08MB6498:EE_
-X-MS-Office365-Filtering-Correlation-Id: 2dda6686-9857-41ae-3fb6-08de96f47446
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|7416014|376014|1800799024|56012099003|22082099003|18002099003;
-X-Microsoft-Antispam-Message-Info: LfaL61M9qCbNeNyy2ynzZaoyJ3QM3suxd3YyTeNuYJFGuN/7+KUY95ly9jDCAou6N3y1fOdD5hH+GcKxH2PXkrPO71Qol3cMwjQ4IEiLHvrG1Rl8v7/SWuG55wvlkpqzMf6Yskk8ULjFEA+Bps9x1LndONw8e7laTpaymvHiOtyJDYEGMeeQj/b6uh4pyJr3Txo8zHLxpuO6UBCxzfJdciuoOv42jZVsqG2sKw+E1CCiF/cktlpwx37J2cGVTOHZVc2IXPxUVLFQsBfZ/uuGRgOasIbLRCIOfu2EDY3AFfCU/rz5zDCOS0VIZ7gtFkVwOkyDTzteBCpCZAmjUwiz1VkyWAWZxvL8yu+hmJPs8rsLtfsiEyfa7CKmLDEIXBnAKXC4i68OYnF4rej99xhd+ZdjxP5OuPb1vcFuERcN/lVm507VxfrGoRD6oWd9tmCyz5bJk52GJVzGSVp+OCTL6ltSA58xT6fr3lylUUQHNvwYm4GXsEAicxC1JojXNYcmeMX6vc/MgQUD3+NAT66mUe1dbPt6JA2VuXdqOigib/QeoiVC2FTJmToN9a17QY7HgejzF4pe0+FaJokHirw2jukyIYY1ug6ipCoFn3WXR200zJyC414dPhApr+KcoHKZGUeCl9shLlAZ1dvz6O9Fl6h3xTRXsn8hNq4QtcgkJjoDX+5EB0dy+Jjj/BvNqlHeR3lPCaf2cinJ+cdGUlFm5kZHQrbu/Fcrx/YUoGXIvrs=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DB9PR08MB6697.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(7416014)(376014)(1800799024)(56012099003)(22082099003)(18002099003);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?UFczaXFUanU0ZTVqRVEyNjdJUy9PWVMxY0RQQnVMbzVZcEg1VEVHNjF3RUxJ?=
- =?utf-8?B?K09xaUxsQTI5dnlPeUF2bys4MXlnQ0ZaS3JMNmc3SUNCck04TW4rNTNvM0RH?=
- =?utf-8?B?dVV6bncwU25qYjlOdkZYU2l4MjQ0R1pXdUZTQlhLS0o4NWVTdVJja2d2QWI1?=
- =?utf-8?B?b2gxTzZCZXkxUXNSaExtaUw4NjRZRzMycnlUVnZLVjc1SU1yQlZ3M0prMitv?=
- =?utf-8?B?UmpPVXp4TmxHbGlHQ0R3REFRbmhONVoySFFZaVBXWXhNU0lXRnlxQWF1YlYy?=
- =?utf-8?B?TUVvbGN2eU5Qd2N6WXd3bmxsbmpFYnRRQVJCWWNVMEF1MURyYS9vaFNDUlJn?=
- =?utf-8?B?Wit6M25qakxrdTdyL1hFcFcvVGJzUVVKYXU1QUI1OG5IaUJESWt3K1NGWTZ1?=
- =?utf-8?B?c25NSng1NVFVWGhGVE5naWpHMnNucktSUEFsTFRmRit2d0pmSmtDc1RYeEhO?=
- =?utf-8?B?azFkNXlnTW9IMlRNeUxsSG44YTJWZUF2d1p1Z1FMcUpseVUvRmhhVEVEcXpU?=
- =?utf-8?B?YWdiQXFkaUhqT2Y4NmVYU1c3Tzh0bkZIbXRLL1NCRHdrem0vN281L3paZFJq?=
- =?utf-8?B?dGQ0VzFIT3J6VFlFWjdaL2dkU1RXNmlnWG1oNGRMT3VRRy9ZV0hLMW9JTUg2?=
- =?utf-8?B?SU9jc09GRm1HUmJNQ1FkY1Z4UnZ4WS94WUlPNWk4OVIyWG1hSll6QlNOMUlF?=
- =?utf-8?B?UlpuTkJsVVhmN2hGYWt5eEp5bjZiWmE5MnVjeExBOENpNE1zSUtQSHdpemU2?=
- =?utf-8?B?UysxZG11M1JMbnV3NUpIazFRVVkzRGVkZmEzMXd3Tk1YS3hSdG43VE12L2xT?=
- =?utf-8?B?U1MvallmREI2SmdrQmd4bzF4dW9iVVVDbVF0d3BsdmNFOFRINnhESmo4VkVr?=
- =?utf-8?B?NjJLSzhvb2NWbTRrWm5yMzNiM3dVVjVmQjVVeGJpY1lCUElnbmpVanRTYWh0?=
- =?utf-8?B?QkpZSkNQaDJ6aHBOaDAwQjM5OGFQRHBKd2pMNUVUNGp4RDNTMko0eCtQTTMw?=
- =?utf-8?B?R2ZPMDhmTncrK2ZEL0w0b0dKamF4NGgzemRPczJHUXdkL003RzlxaDNwUS9y?=
- =?utf-8?B?Y1RDamFLWXdmODNsU0JzSWtsbmdTaDRmb25PZU1iQ29kajhScTRFa2FiWHJr?=
- =?utf-8?B?NWl2bEN2djRhYmc2OFNUQlRLSkFQaUNoYzRkL1JUZHVrWlhHOEtudXpRM3ZP?=
- =?utf-8?B?dHdONm9KRHNjOVRWMmIxSGZJVWt5aWs4WWdCeWt6OE5qS0g0MFF2VUh6MDFF?=
- =?utf-8?B?NkFjeG4zbEJXSlVyWFNwc050UTRCN2FySnRPYktJZ3hNK2drT0NTNGpLZWhx?=
- =?utf-8?B?Y1I4Q2hNY1dNcW8xeDZzRmFucE50aEQzbmJYenZVQzRFNE5SL1RvMVh5QmR1?=
- =?utf-8?B?cmxYL2xubkdmenNzOFlXNkhtWGh1NkI4Ky9mVEwvMzBlOE5ocU5SZ01VWTBo?=
- =?utf-8?B?dWQ2S2pkdjNjRGNUT2orMGh6VC91QmZibmpsb1RkQjRzK0VVL09odkxrd3h1?=
- =?utf-8?B?R0owMlBrU1VVTEZkcEFNaHF5RGFPc3pyd1lkTnNUTG1ENWJNcVJHTXV5YSs0?=
- =?utf-8?B?RUtOWGh5VzhtQVFPbkZpZVMrSS9PT3pLdmJjWVVSTHpyUDMzYnlFNjR3L1l4?=
- =?utf-8?B?UGd5Ym1zNEJCWU5QWG91alJkeVlCckcxTlpSYW1MczZmdFBqZWVNdjZHSzFD?=
- =?utf-8?B?blNYejkzVUpZV3hrQWlZM2hSTWJDUmlsU29kdllGcWdyenpJTE9INU1XTSth?=
- =?utf-8?B?c2JZMnY3TFczQ2FmTXBiaUdkOE9raE1PMlU0R3ZzMy9FRlVmS09aUjZYQlVT?=
- =?utf-8?B?NkUvZmJGZE0vWGI3T2taM0JGOC95SDRhQjM3KzdLb0VkNWlBSkIxUnh4WDRW?=
- =?utf-8?B?NVg5VkptMitEeXhhSGVJTkNtMHgzZTdFT2dsVzJuQzZiWlpwYUlsR05tS0tJ?=
- =?utf-8?B?YmFqdUczcXBvelhBOHZNcUFoNytUZlM5RmlySi8rbWFMVjFkaVlFVUVyYmVp?=
- =?utf-8?B?dE5wOGxQUk9udktBdjh2NTRRM0lsZDJXY0pBOVQvUDR4NkVwSnV0UG44MDFT?=
- =?utf-8?B?QXY2bTJWcXo3akFxbThaUzk0UElTc1ZGdFdCZGNQN0NkbDU1dnA2bGUybGZR?=
- =?utf-8?B?akxHUGQ2RHNxSUxPNElUTFg3RWFmNldVZmNRdFFSdjU5Wmo3ZWhtYlpwbTFK?=
- =?utf-8?B?a1h1UHQzR2F2S0crdnBPVDBLWUVzQ0NFc3FIb2hLVGYvY0tQb05SZXNLWHEy?=
- =?utf-8?B?RlNNZit1bXMwdXd6Q2pNNFVob2VwdlNnZ2o3Y0REL1FSZFd4TE91NHcvT3pa?=
- =?utf-8?B?dWEwT09zM3FJODlGYnR5VHgybk9IdnRpeGxrUlNqYWpIbTVraUVBeXpqby9s?=
- =?utf-8?Q?Dn2uvTu2yo6uJxME=3D?=
-X-OriginatorOrg: genexis.eu
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2dda6686-9857-41ae-3fb6-08de96f47446
-X-MS-Exchange-CrossTenant-AuthSource: DB9PR08MB6697.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Apr 2026 11:29:40.2223
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 9ck+g9IIzMQzrNLNrXd29nsoZ6/NjDnBVaW8yvT+fISAJctfJZVRioZqEi4RFj/kUXMst9NArbyxNL1KFzEQ7AmIvVfQg4Qp0oW7jMEFGbI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM8PR08MB6498
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="7W5gcngAA2i51Gam"
+Content-Disposition: inline
+In-Reply-To: <20260410025722.1809973-1-kuba@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260410_042948_019702_EA3D821D 
-X-CRM114-Status: GOOD (  19.05  )
+X-CRM114-CacheID: sfid-20260410_045129_132124_0BF3947F 
+X-CRM114-Status: GOOD (  26.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -151,61 +77,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/04/2026 04:57, Jakub Kicinski wrote:
+
+--7W5gcngAA2i51Gam
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
 > This is an AI-generated review of your patch. The human sending this
 > email says "For your consideration."
 > ---
 > net: airoha: Introduce WAN device flag
-> 
+>=20
 > This commit introduces a WAN flag to specify whether a device is used to
 > transmit or receive WAN or LAN traffic. It enables specifying multiple LAN
 > devices but limits the configuration to a single WAN device.
-> 
+>=20
+> > diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/eth=
+ernet/airoha/airoha_eth.c
+> > index 5b0cd37b155e4..9988011dca53f 100644
+> > --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> > +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+> > @@ -1796,36 +1796,77 @@ static int airoha_set_gdm2_loopback(struct airo=
+ha_gdm_dev *dev)
+>=20
+> [ ... ]
+>=20
+> > +static int airoha_dev_init(struct net_device *netdev)
+> > +{
+> > +	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
+> > +	struct airoha_gdm_port *port =3D dev->port;
+> > =20
+> >  	switch (port->id) {
+> >  	case AIROHA_GDM3_IDX:
+> > -	case AIROHA_GDM4_IDX:
+> > -		/* If GDM2 is active we can't enable loopback */
+> > -		if (!eth->ports[1]) {
+> > -			int err;
+> > +	case AIROHA_GDM4_IDX: {
+> > +		struct airoha_eth *eth =3D dev->eth;
+> > =20
+> > -			err =3D airoha_set_gdm2_loopback(dev);
+> > -			if (err)
+> > -				return err;
+> > -		}
+> > +		if (eth->ports[1] || airoha_get_wan_gdm_dev(eth))
+> > +			break;
+>=20
+> If a board's Device Tree enables both GDM3 and GDM4, and GDM2 is not pres=
+ent,
+> does this sequence permanently assign the WAN role to GDM3 since it is
+> initialized first? Is there a Device Tree property or fallback configurat=
+ion
+> mechanism to allow users to specify GDM4 as the WAN port instead?
 
-[...]
+This issue will be fixed with following series that allows to dynamically
+select LAN or WAN configuration at runtime.
 
->> +		fallthrough;
->> +	}
->> +	case AIROHA_GDM2_IDX:
->> +		/* GDM2 is always used as wan */
->> +		dev->flags |= PRIV_FLAG_WAN;
->>   		break;
->>   	default:
->>   		break;
->>   	}
->>   
->> -	for (i = 0; i < eth->soc->num_ppe; i++)
->> -		airoha_ppe_set_cpu_port(dev, i, airoha_get_fe_port(dev));
->> +	airoha_dev_set_qdma(dev);
->> +	airoha_set_macaddr(dev, netdev->dev_addr);
-> 
+>=20
+> > +		fallthrough;
+> > +	}
+> > +	case AIROHA_GDM2_IDX:
+> > +		/* GDM2 is always used as wan */
+> > +		dev->flags |=3D PRIV_FLAG_WAN;
+> >  		break;
+> >  	default:
+> >  		break;
+> >  	}
+> > =20
+> > -	for (i =3D 0; i < eth->soc->num_ppe; i++)
+> > -		airoha_ppe_set_cpu_port(dev, i, airoha_get_fe_port(dev));
+> > +	airoha_dev_set_qdma(dev);
+> > +	airoha_set_macaddr(dev, netdev->dev_addr);
+>=20
 > Since the commit message notes it is possible to specify multiple LAN
 > devices, does unconditionally calling airoha_set_macaddr() for each
 > device overwrite the single shared hardware LAN MAC register?
-> 
-> If so, could this cause only the last initialized LAN device to have its MAC
+>=20
+> If so, could this cause only the last initialized LAN device to have its =
+MAC
 > correctly programmed into the hardware, leading to dropped unicast
 > packets for the other LAN interfaces?
-> 
->> +
->> +	if (!airoha_is_lan_gdm_dev(dev) &&
->> +	    (port->id == AIROHA_GDM3_IDX || port->id == AIROHA_GDM4_IDX)) {
->> +		int err;
-> 
+>=20
+> > +
+> > +	if (!airoha_is_lan_gdm_dev(dev) &&
+> > +	    (port->id =3D=3D AIROHA_GDM3_IDX || port->id =3D=3D AIROHA_GDM4_I=
+DX)) {
+> > +		int err;
+>=20
 > [ ... ]
 
-Hi, the frame engine can be configured with a range of wan mac addresses 
-and a range of lan mac addresses via registers that set the top 24 bits 
-and then 2 registers that form a range of the low 24 bits.
+--7W5gcngAA2i51Gam
+Content-Type: application/pgp-signature; name=signature.asc
 
-Documentation says that packets that fall into this mac address range 
-either on the lan side or the wan side are to be treated as layer 3 
-packages and if a packet is not then it will be handled as a layer 2 packet.
+-----BEGIN PGP SIGNATURE-----
 
-The exact implication of this and if it actually matters is unknown. But 
-traffic that comes in on an interface that is not matched by an 
-acceleration flow is usually forwarded to the cpu for further processing.
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCadjkPQAKCRA6cBh0uS2t
+rHwtAQCeVEB7opEH1jTAFAZgyCK8krbgv67AHGuqZexgJaekzQEApxT1RtXkOtbj
+ZispmFs1Ej3NlAgqNDlkItlht8fBzwM=
+=cCJU
+-----END PGP SIGNATURE-----
 
-MvH
-Benjamin Larsson
+--7W5gcngAA2i51Gam--
 
