@@ -4,69 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 003B5F459F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2026 16:28:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7FB6F45A0D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2026 20:49:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
-	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=djz8Fg9XnT6VVYbCR0fwt3rZU8ifS6ZwQGEz+FJ7IBI=; b=YRj/rK/aGocf+lIAFYd0RgvpXN
-	TvLIG/BFXPb7AYMLHURLYLmTWZFIHXAcPA/1ROwUxp3nKO5V1Lsj7C/Zcj6XSzsIvGgr/C2opDEhd
-	/YlgTJ0ZfiRr3mNJMnbutdZgN3rROGhTR2Q3JTR3CTtInjVjszcy/RF7sej9p9syTnLzetSSc2CVT
-	DAceTuue3gYfBXmRH30rWlg7lN7grlQVeuL+YW0KSY2q5fHz1EzIqD+ogcPwdlVvge6l3bpvNsCsz
-	/FnrO/aozG5kE2NoESbx/y4XnEGOJDKTistAgAzT6uluYjsi1mk8MnDvH2SPw52fWJxkWYEq6OBgA
-	f4UNUgvg==;
+	bh=beSRkMl/EZljPX3wONrLjzs8nZ/qaSudU/qHKAOssnE=; b=RRrMJonjCf6qhV6tdQ1okMH3J7
+	NSbKcs/4+Onq/HnHv39XxJ1Np2JUV1qyhjXRa01gjYA7ERNST68t1I6VGDpnHCSNrDDwIrAnHOW1N
+	k8MUW/a1lxnLZQjnPolxzxyAnj5SVDFzr70mt7mkXF3EPPAPA2CZh0VlNjOlum3kPPHjj0Qz55D7L
+	JWHqaFMMo/LR6gV/6pjXimLQwMDNFWv3KFnlTnsPqQj7400qoMx50VG41194PKQxDNTnT/N8KB20d
+	mfwmHaieufFnVlOB6b7vpArDVEG5KoCF098dSBlzrLnCeWpooQXshMbTX2u0qXhOoXNhvIfc0vtY8
+	91NxNOrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBEiq-0000000CXjC-3nQB;
-	Fri, 10 Apr 2026 16:28:44 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wBInb-0000000CmoB-3PIM;
+	Fri, 10 Apr 2026 20:49:55 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBEio-0000000CXib-2pqr;
-	Fri, 10 Apr 2026 16:28:42 +0000
+	id 1wBIna-0000000Cmnb-10d0;
+	Fri, 10 Apr 2026 20:49:54 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 959AE60126;
-	Fri, 10 Apr 2026 16:28:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AD729C19421;
-	Fri, 10 Apr 2026 16:28:39 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 5D7A960141;
+	Fri, 10 Apr 2026 20:49:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7AA9AC19421;
+	Fri, 10 Apr 2026 20:49:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1775838521;
-	bh=osnLMVmDFnwHE+le2JetnpP1rDIKNK8VoMDGuRUbSkQ=;
-	h=From:To:In-Reply-To:References:Subject:Date:From;
-	b=SBSKGPyPzmGKQV/LPkTTrX4Wzsb/pXU3HGU5yRXBVHjmEQOeIdBpFtwfCUctVP/+n
-	 I6q3Iqvpw0u/RR2FW0TjkmFWABT/+NJoZitoLyGeHDovSxoio1o28JGKuJUuHNCf7A
-	 JJmGz/nfc4/F+CRJzJ0Weu2tAqUx6Fi5s3X68IwxG1ohEWMqr82C5JG81vAsocKum5
-	 f3Iz3mlVW3MfBZfkIKqbu8en+ncQKZS8AldyP/rkAYMZw6dccC0THYz9MFrH7Cf+wH
-	 7AzS4xz39CuT7UMi4bQOUybx7ibVCY4QCF03+PEGOvq9fFInNdOwmpIBnGx6u7VDj6
-	 mEwnGcADPUqNg==
-From: Mark Brown <broonie@kernel.org>
-To: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
- linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Pei Xiao <xiaopei01@kylinos.cn>
-In-Reply-To: <20263f885f1a9c9d559f95275298cd6de4b11ed5.1775546401.git.xiaopei01@kylinos.cn>
-References: <20263f885f1a9c9d559f95275298cd6de4b11ed5.1775546401.git.xiaopei01@kylinos.cn>
-Subject: Re: [PATCH V2] spi: mtk-snfi: unregister ECC engine on probe
- failure and remove() callback
-Message-Id: <177582518300.1175120.4251320554598514411.b4-ty@b4>
-Date: Fri, 10 Apr 2026 13:46:23 +0100
+	s=k20201202; t=1775854193;
+	bh=BA4rVAHrRJzqSSgJrpMLT50mB/MklDSW0pj2JlzB7vE=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=KyVIhkT8XM9inBfNeWjmFSxdEzhz83AVmlYNyXhwaY0E3HVb8RbJaopAjQ8YBeugV
+	 RqGuCy+Oz+mOhlVHYFEDF9y9zx+LX5cBCWvSVVysUyIQv0+oTQdY+lr8xHpFQXssuL
+	 ZHOEWiBr63q34suV665uO5LK0jXLVhHq0BqBjX2YWqqkYh9HHEt5kVdhug+GKUafGG
+	 wumlqC7N/G6ZyQ0+iIgDiuSMZIuVzRSt3U9OHDQ+36zXlEM18QYKIeB6dfYBdVStbS
+	 mzfwR2IL5Judnz6GTRObeLKvyBnnOmcGLIc5JW9VSW4yNX4ZOmqb++eWWsfKoIR02A
+	 rQwwBAU8mOqQg==
+Date: Fri, 10 Apr 2026 13:49:51 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
+ <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Christian Marangi
+ <ansuelsmth@gmail.com>, Benjamin Larsson <benjamin.larsson@genexis.eu>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org, Xuegang Lu
+ <xuegang.lu@airoha.com>
+Subject: Re: [PATCH net-next v3 00/12] net: airoha: Support multiple
+ net_devices connected to the same GDM port
+Message-ID: <20260410134951.6f4ee0f2@kernel.org>
+In-Reply-To: <adiop-9Mo4ADfvfw@lore-desk>
+References: <20260406-airoha-eth-multi-serdes-v3-0-ab6ea49d59ff@kernel.org>
+	<20260409195950.74e4bc97@kernel.org>
+	<adiop-9Mo4ADfvfw@lore-desk>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.16-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1160; i=broonie@kernel.org;
- h=from:subject:message-id; bh=osnLMVmDFnwHE+le2JetnpP1rDIKNK8VoMDGuRUbSkQ=;
- b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBp2SU2RitBbmkr8ekYufID3Vy04zsNcEbuqOtOz
- +A98eHez3eJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCadklNgAKCRAk1otyXVSH
- 0A34B/4vClavqfgu41Z3rhEFRB53rXHsRwu4oH0nExrZ3ppSyOO7D81I5wYge7HBJ7ew14LxO3D
- D7zQ2c6ujCwAo/Z7ALYVtrQJAlXrebXMEGwCBPWphtEoOv/3Rapazu3KqoXDupzQRXU+e41ZpKq
- Ru1LAi3tRel7/VvAwqeWdLwJ67yTmjO/lkRmbYs2VuWhTX9tIrmQHEXgEvky23G/pKPwrcW/46y
- K/Sh2hapWlAN3OZ6wDBdMLmQypCA8buxp6mEOULQIVYY5LUQPQuzjPSUUZaxsP3UW6Hiw/m+R2d
- RXp0785TpsfiKldsT36xgClIFNtcy2lDHtK7lBYGloMztQyA
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,35 +76,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 07 Apr 2026 15:26:59 +0800, Pei Xiao wrote:
-> spi: mtk-snfi: unregister ECC engine on probe failure and remove() callback
+On Fri, 10 Apr 2026 09:37:11 +0200 Lorenzo Bianconi wrote:
+> > On Mon, 06 Apr 2026 12:34:05 +0200 Lorenzo Bianconi wrote:  
+> > > EN7581 or AN7583 SoCs support connecting multiple external SerDes (e.g.
+> > > Ethernet or USB SerDes) to GDM3 or GDM4 ports via a hw arbiter that
+> > > manages the traffic in a TDM manner. As a result multiple net_devices can
+> > > connect to the same GDM{3,4} port and there is a theoretical "1:n"
+> > > relation between GDM ports and net_devices.  
+> > 
+> > Looks like this driver uses page pool.
+> > If you're sharing the same page pool across multiple netdevs
+> > it must not be linked to a netdev.  
+> 
+> are you referring to slow.netdev pointer? If so, this is not set in airoha_eth
+> driver.
 
-Applied to
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-7.1
-
-Thanks!
-
-[1/1] spi: mtk-snfi: unregister ECC engine on probe failure and remove() callback
-      https://git.kernel.org/broonie/spi/c/ab00febad191
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+Yes. Alright, thanks for checking. Pretty sure I saw it set somewhere 
+in a file called airoha* but must be another component :)
 
