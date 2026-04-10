@@ -4,44 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAEA0F44857
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2026 12:52:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AF7FF44863
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2026 13:14:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eNvhm9CinR/mt5QMcH9sbvegFYB8q1e3BDZdoArdfcM=; b=D2VE7QBSSShWnhTmV7kHJJzkG9
-	VeE3mGXE7Wyc2eLATfgHvVfldzstcVOybu4xKYTusJpDZ0nCLOhb+KSI7zzfdJ/28XdtF5QnuX2fl
-	I5poaklfCf40TZk4LPwrNkJNOKrgpGygI6oJAE17bzGuSJQsA4L/GeA11C5itYphK5gvNIl1IAaSk
-	6D+hXiTgJW1AOvmRW2GvonJmEBBtu3UdkhOkoPcqtUC9a9leRW0Z+5OD4A0EHprgVMH8uWP+xqn0W
-	GMT9uUfuruki7ArsM7tyhbj/vqQ3LrHFfR9w4cpmT5ltBtNkoG3GeGYKDhyErJAGvVil9fWle7eyB
-	MMecr1mA==;
+	bh=5eCOPn79mwH4Ca9kbCGIq0SRkJ8dL3+eE1sfjSyo2h4=; b=ncry0s1DUJ2i7RdWv/of0N6Fv7
+	zBuVgvgYks5KDggL9/gSD6BFiiFhG86g7efyTeOHHgA42eKE0YnogWBgWxlKD+byWOvGEY8vpioAu
+	UBicr2lgGeA7pa5YO8aXI1Pfj7AO8LwCafDBll652C2QthMMEhcqv8xVOfS2Ae6oSP0oHJiG32VrX
+	GXyHukE1OwXsjDoQlDdfBzaBCKXpCcJY0F1rj9SWqN588rF+OzOT89ZsSuVl7+ltMrDmTUCJiioGA
+	sVNBdSQp6ZMU2sngHsL46yyehfSpIz1zSY36AmKqAS+hVQMhLDbUAfQYzv4ASbPVQ0vbESd5bdiBF
+	c3mgYo7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBBLR-0000000CGzV-3FIO;
-	Fri, 10 Apr 2026 12:52:21 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wBBhB-0000000CIZP-0BbD;
+	Fri, 10 Apr 2026 13:14:49 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBBLP-0000000CGyb-3yNI;
-	Fri, 10 Apr 2026 12:52:20 +0000
+	id 1wBBh9-0000000CIYX-1n2u;
+	Fri, 10 Apr 2026 13:14:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=5eCOPn79mwH4Ca9kbCGIq0SRkJ8dL3+eE1sfjSyo2h4=; b=TycpUXfBloVp1q+Q8/HEv/GKLz
+	MPy5lqtK9NoXfauWbJplTP/v4/S4zIBbFnjemahrYtpVisxTL+FTeaLfi97yro+PrcfTTbatX8Dia
+	NS3jnI+p4ZDpAbxLivFLfvnyR+SLIoucI8mF0uAZ+tYtHsFa9gAerVT18Av3mvRPyxJNySFSQMv6g
+	I9ayJJuAG6AyjJQ9PjmJv9Ipgu7V/KE9L7w7CSde2WOdBkCqAIsOQMHZl9I/rO+wK9EJc/XVGcKgI
+	JPnyxvld9b73qPa9ysfRIE5BhD21n82ch0Q3t812AtOjSu5i5Cyij8rZl6WYIJyauvncGsWlMN6rv
+	QHvW/NuA==;
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1wBBh6-0000000DYot-1BAu;
+	Fri, 10 Apr 2026 13:14:46 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id D6BF161119;
-	Fri, 10 Apr 2026 12:52:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3B7EAC19421;
-	Fri, 10 Apr 2026 12:52:18 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 91AE444141;
+	Fri, 10 Apr 2026 13:14:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 244F8C19421;
+	Fri, 10 Apr 2026 13:14:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1775825538;
-	bh=zuuCDFpBIYwYCymvnfHsVnlCyTNDji9hQDQRq6t3Qvw=;
+	s=k20201202; t=1775826879;
+	bh=mQ/7OrrwieJDTdrH7hooz4EEuxSFq4IEqgQU97DnhbE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=aggJ54El2gifA4t0ODO4iu3a7rNJ7EPppvZAilEijwKJRJ74De2JT3xUkfdQJUv1g
-	 gt802ZPmbRRt4g5zE7yUEBTWLryVsXlYdO6MtO9amEcS7aTU8fGl12ps85ZG2n6jiQ
-	 SoCLAD1c+XvTTpHdZYsIfDmrbOrUcTfBRf6oUMo3paJbbm9vqm4D4RfW35SN72Am+L
-	 G3vPRpbdFI9B36RlTNTRBKcqxXqLC+yqeqPP4QExF/cLE0LjyF5aRjLEB4Ce0Y/3wE
-	 MPm8G0FPOvcd8hizllvb88zlG7rnsnEeM3I8BunjBJIMnla7cvBAjM4aRwIRChmNrd
-	 SeE0RMAIc1TyA==
-Date: Fri, 10 Apr 2026 14:52:16 +0200
+	b=L+I3U6gU0OxyPmQwzoqXjiYH+t54Yehw5ewLHCuioPKr8KMz6sHE7MaTydXX6Igmv
+	 +2iM+/lwImgN+0lJbzlr3uC1yPV3kTzA+TxM+9NiQhUZLcXlshdlFkqCdLiOpxdIHB
+	 Hkh/TS4sTMKxPhihYha/+QFydpIgHWLpkYTQx7MlAzhWXjTZfWqTBFeEZSxLgjPR83
+	 hdzMrTfS4IWLvGQKrq6KfQYbQJMkBO3kCZzmAGz0kdw6tyBjqcEscPt5qwYxawDE/V
+	 JYQxffvP869eX9CC5YyLB95QBAF/vAK18VkgOlrOi5NOImbPjnRVYJs+HnEDhG9Ca0
+	 /JQXer2WhHuJg==
+Date: Fri, 10 Apr 2026 15:14:37 +0200
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: Jakub Kicinski <kuba@kernel.org>
 Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
@@ -50,16 +64,19 @@ Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
 	benjamin.larsson@genexis.eu, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
 	devicetree@vger.kernel.org
-Subject: Re: [PATCH net-next v3 02/12] net: airoha: Set PPE cpu port for GDM2
- if loopback is enabled
-Message-ID: <adjygGm5fYHhoPza@lore-desk>
-References: <20260406-airoha-eth-multi-serdes-v3-2-ab6ea49d59ff@kernel.org>
- <20260410025720.1809934-1-kuba@kernel.org>
+Subject: Re: [PATCH net-next v3 01/12] dt-bindings: net: airoha: Add EN7581
+ ethernet-ports properties
+Message-ID: <adj3vW7TKXccLSXa@lore-desk>
+References: <20260406-airoha-eth-multi-serdes-v3-1-ab6ea49d59ff@kernel.org>
+ <20260410025717.1809904-1-kuba@kernel.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="jU4TpBQMci5bfaI7"
+	protocol="application/pgp-signature"; boundary="w8PmPGRkvaOhX7h0"
 Content-Disposition: inline
-In-Reply-To: <20260410025720.1809934-1-kuba@kernel.org>
+In-Reply-To: <20260410025717.1809904-1-kuba@kernel.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260410_141444_732390_900F5F9A 
+X-CRM114-Status: GOOD (  18.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,7 +92,7 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---jU4TpBQMci5bfaI7
+--w8PmPGRkvaOhX7h0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
@@ -83,105 +100,73 @@ Content-Transfer-Encoding: quoted-printable
 > This is an AI-generated review of your patch. The human sending this
 > email says "For your consideration."
 > ---
-> net: airoha: Move airoha_qdma pointer in airoha_gdm_dev struct
+> dt-bindings: net: airoha: Add EN7581 ethernet-ports properties
 >=20
-> This commit moves the airoha_qdma pointer from the airoha_gdm_port struct
-> to the airoha_gdm_dev struct. This ensures the QDMA block used depends on
-> the specific net_device WAN/LAN configuration.
+> This commit introduces the ethernet-port property to model a net_device
+> connected via an external arbiter to the GDM3 or GDM4 ports on EN7581
+> and AN7583 SoCs.
 >=20
-> [ ... ]
->=20
-> > --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> > +++ b/drivers/net/ethernet/airoha/airoha_eth.c
->=20
-> [ ... ]
->=20
-> > @@ -1497,9 +1498,10 @@ static void airoha_qdma_stop_napi(struct airoha_=
-qdma *qdma)
-> >  	}
-> >  }
+> > diff --git a/Documentation/devicetree/bindings/net/airoha,en7581-eth.ya=
+ml b/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
+> > index fbe2ddcdd909c..ebbd433e9c9fb 100644
+> > --- a/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
+> > +++ b/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
+> > @@ -130,6 +130,30 @@ patternProperties:
+> >          maximum: 4
+> >          description: GMAC port identifier
 > > =20
-> > -static void airoha_update_hw_stats(struct airoha_gdm_port *port)
-> > +static void airoha_update_hw_stats(struct airoha_gdm_dev *dev)
-> >  {
-> > -	struct airoha_eth *eth =3D port->qdma->eth;
-> > +	struct airoha_gdm_port *port =3D dev->port;
-> > +	struct airoha_eth *eth =3D dev->eth;
-> >  	u32 val, i =3D 0;
-> > =20
-> >  	spin_lock(&port->stats.lock);
+> > +      '#address-cells':
+> > +        const: 1
+> > +      '#size-cells':
+> > +        const: 0
+> > +
+> > +    patternProperties:
+> > +      "^ethernet-port@[0-5]$":
 >=20
-> This isn't a bug introduced by this patch, but does this spin_lock()
-> carry a deadlock risk?
->=20
-> Because ndo_get_stats64() can be called from atomic context (e.g., from a
-> softirq), if a process context caller holds port->stats.lock and is
-> interrupted by a softirq on the same CPU that also triggers dev_get_stats=
-(),
-> the softirq could spin forever waiting for the lock.
->=20
-> Should this be upgraded to spin_lock_bh() to ensure local softirqs are
-> disabled during the critical section?
+> The commit message states that GDM1 and GDM2 do not support connection
+> with the external arbiter. However, since this pattern property appears to
+> be placed inside the generic ^ethernet@[1-4]$ block, does this allow a
+> device tree to incorrectly configure ethernet-port subnodes on ethernet@1
+> or ethernet@2 and still pass schema validation?
 
-I was not able to spot any point in the networking stack where
-ndo_get_stats64 callback is run from a softirq. Moreover,
-airoha_update_hw_stats() is never executed in any napi in airoha_eth
-driver. It seems to me spin_lock() is enough here. Am I missing something?
+ack, I will fix it in v4
 
 >=20
-> [ ... ]
+> Could this be restricted to GDM3 and GDM4, perhaps by splitting the
+> patternProperties or using an if/then block based on the reg property?
 >=20
-> > --- a/drivers/net/ethernet/airoha/airoha_eth.h
-> > +++ b/drivers/net/ethernet/airoha/airoha_eth.h
-> > @@ -534,12 +534,12 @@ struct airoha_qdma {
-> > =20
-> >  struct airoha_gdm_dev {
-> >  	struct airoha_gdm_port *port;
-> > +	struct airoha_qdma *qdma;
-> >  	struct net_device *dev;
-> >  	struct airoha_eth *eth;
-> >  };
-> > =20
-> >  struct airoha_gdm_port {
-> > -	struct airoha_qdma *qdma;
-> >  	struct airoha_gdm_dev *dev;
-> >  	int id;
+> > +        type: object
+> > +        unevaluatedProperties: false
+> > +        $ref: ethernet-controller.yaml#
 >=20
-> This isn't a bug introduced by this patch, but since the qdma pointer
-> is being moved to better align with the hardware structure, should=20
-> qos_sq_bmap, cpu_tx_packets, and fwd_tx_packets be moved to=20
-> struct airoha_qdma as well?
+> Does referencing ethernet-controller.yaml cause a validation conflict her=
+e?
 >=20
-> Because QDMA1 is shared by all WAN ports (GDM 2, 3, 4) and qos_sq_bmap
-> is currently tracked per-port instead of per-QDMA, each WAN port=20
-> independently allocates QDMA1 channels starting from index 0. Does this=
-=20
-> cause different ports to overwrite each other's hardware QoS configuratio=
-ns=20
-> in the shared QDMA1 block?
->=20
-> Furthermore, cpu_tx_packets and fwd_tx_packets cache per-channel ETS
-> hardware counters but are single u64 scalar variables in the port structu=
-re.
-> When querying stats for multiple channels, do these scalar caches get
-> overwritten with values from completely different channels, resulting in
-> incorrect delta calculations?
+> The ethernet-controller.yaml schema enforces a strict nodename pattern
+> of ^ethernet(@.*)?$. Since these new nodes use the -port suffix and are
+> named ethernet-port@X, will they unconditionally fail the node name
+> validation enforced by the referenced schema during dt_binding_check?
 
-ack, I will fix it in v4.
+ack, I will fix it in v4
 
 Regards,
 Lorenzo
 
---jU4TpBQMci5bfaI7
+>=20
+> [ ... ]
+> --=20
+> pw-bot: cr
+
+--w8PmPGRkvaOhX7h0
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCadjygAAKCRA6cBh0uS2t
-rAmpAQCSpwTbuYHGGRmUj36P1TRUbM5XJ248xde7FVOJfAtYwAD+Pi6va2remwkz
-5cZ1xinWhYE5QyISrzvQr4SzJzJYcAA=
-=sr7/
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCadj3vQAKCRA6cBh0uS2t
+rBlnAQChofOe0utPGIDu5PUixZsRZzjAtGGT6M2YM583zTPi5wD9H2ST3gaJBBny
+9/CzLBUS8ZiATfT1pwiaaFdOA9BHig0=
+=dppY
 -----END PGP SIGNATURE-----
 
---jU4TpBQMci5bfaI7--
+--w8PmPGRkvaOhX7h0--
 
