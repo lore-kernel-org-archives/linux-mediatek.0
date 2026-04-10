@@ -4,59 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9FE8F36BA8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2026 03:35:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1E43F36BA8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2026 03:40:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7bklhLbfR1ys8v8hxfDXtHey8Rp/a8UoInTCx1wqcss=; b=RfgMR9xXZfWSeQVEh7Cxql5BY3
-	oqjwfB6upRSshmGfNsWLAp6QK0ONMZE7NNrBLj/FGLvFdo9TPvVT4ejazDuwylvhu/7OhoGzvpgX0
-	SgflbJqz/TtoKfw+FfN2fpfDaEaehxf8gIlEvfj/QrNz1QmyF9nWzTUwhwVbXtOCL+gdOwD5TSY7A
-	gFI/dqxw/7x892nDEDGvjgDWnTzISawYn2XTmpF7d6g9Oiu/8H19yqpDFG501SIhIxWdLfkRmPOVj
-	rwjfOmekIiSsDsNI0R54eYAU/CqTHOnwIv3kMs2F0FsgaFfSpRorAB1KzbxBiYyA+TPp7cAHnZrHT
-	F5XjzAKQ==;
+	bh=YfCM+ueUc/mLsOP9kkDKa1t1POBr/5r3gViB75s79J0=; b=WntENHVlmH6DFic0HnpCBVfjUm
+	RETjQIqrpb9iDUyJApoiR+kIK8Y8smboB4b8IHKUnAddc9YOtaLqm/lcYc3WLscfnBj3nJ2v8u8le
+	0cuZiC/GINz+s0sthprHPopd5Hn3lEh31ZXefo2VfXC48UuSh290tYNYuhgwe6DTzUQjbdVAvULNx
+	HThUjQJ2Ho5llzYZqx7cRUf/sM1v9fi8xO7ROYZ2311SJfMMuge7o9Ql3bggqieTIPxecYRwfW31O
+	74z91hEiHVf9tWjgHPSftWmasemGa+m5CiIMp9qcLgE+1MRF0LQSPp0omVmMPaSJSiD7sCKpBbkNs
+	ceNH1X/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wB2ek-0000000BY82-3dCX;
-	Fri, 10 Apr 2026 03:35:42 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wB2jc-0000000BYRr-0lAS;
+	Fri, 10 Apr 2026 03:40:44 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wB2ei-0000000BY7o-2yak;
-	Fri, 10 Apr 2026 03:35:40 +0000
+	id 1wB2jY-0000000BYQq-3ilR;
+	Fri, 10 Apr 2026 03:40:42 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2959960103;
-	Fri, 10 Apr 2026 03:35:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 64A14C19421;
-	Fri, 10 Apr 2026 03:35:39 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id C81A044495;
+	Fri, 10 Apr 2026 03:40:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1360C19421;
+	Fri, 10 Apr 2026 03:40:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1775792139;
-	bh=7bklhLbfR1ys8v8hxfDXtHey8Rp/a8UoInTCx1wqcss=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=RezecpH5XGi6zJlQAcDlO/E+mA+cVXKG+mfp4mZiDMciX5ragKG48onb2lUJFpC7E
-	 KGSRkd5LAKOSD4RYXygMWLdnLmAqszsTX4am9u0XjwdhDmlzClAyrL+VVNTWy7wzbh
-	 VsS262mEGEoEC09+dmOqb088xofYlVpOgomWGLAgEJFSMfva2/AR4DQUNEAZAQ8o0o
-	 LH+broIy0AV4uYEPLkHjKtRBIWboIAqbhkVPCOKA6loQA/cG+Q4Bb5yLtu+eQ1IlcL
-	 uAKwZnM/PaTIRISkqinYNhPOxfl7VKkfPx7zbjdzf4Gm92IKp75/bBkAgSsGvKqota
-	 ZeBqf8vbco5wQ==
-Date: Thu, 9 Apr 2026 20:35:38 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
- <pabeni@redhat.com>, Xuegang Lu <xuegang.lu@airoha.com>, Simon Horman
- <horms@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+	s=k20201202; t=1775792439;
+	bh=4QCvPD9AZ63dpL1uXXGkfV4C0i9Z6kEkgDqNQY9GE3A=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=SECBq1jgogHRc6CEUK2s32VLaXqQo5bXj0kzK+7y+DV8MAtm+lqx+9pbRl290tAkG
+	 DYy7bg7mwzGjO0IjLuUzmA3P+6/3QLMZRodovov1IqPcLuo7jQumHMg6iVaAqqyRrN
+	 /GTGimORB58J6PTMbm1f88cl3uSFXCG5CrXDLgBqIuBMwNjdhlQcLdWVlOf/cR3Chw
+	 JjPzsxvRr024Rv+6MwvYyMdz7dsfW3dVSb/APd9dM8y8aZ7LDB3MAPA4KuA/IGkJ94
+	 fC5Rdboa4vF0096QjOu+FvvDkqBgjjw93oE6Qxsqx27tygOOZb41b2hcK++R7/j2Uf
+	 UP1XKdj0uAfLw==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 02BB13809A22;
+	Fri, 10 Apr 2026 03:40:16 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Subject: Re: [PATCH net v3] net: airoha: Add dma_rmb() and READ_ONCE() in
  airoha_qdma_rx_process()
-Message-ID: <20260409203538.35337631@kernel.org>
-In-Reply-To: <20260407-airoha_qdma_rx_process-fix-reordering-v3-1-91c36e9da31f@kernel.org>
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <177579241479.1854480.10305828080332220396.git-patchwork-notify@kernel.org>
+Date: Fri, 10 Apr 2026 03:40:14 +0000
 References: <20260407-airoha_qdma_rx_process-fix-reordering-v3-1-91c36e9da31f@kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <20260407-airoha_qdma_rx_process-fix-reordering-v3-1-91c36e9da31f@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, xuegang.lu@airoha.com, horms@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260409_204040_949517_F0DA8AF9 
+X-CRM114-Status: UNSURE (   9.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,12 +77,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 07 Apr 2026 08:48:04 +0200 Lorenzo Bianconi wrote:
+Hello:
+
+This patch was applied to netdev/net.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Tue, 07 Apr 2026 08:48:04 +0200 you wrote:
 > Add missing dma_rmb() in airoha_qdma_rx_process routine to make sure the
 > DMA read operations are completed when the NIC reports the processing on
 > the current descriptor is done. Moreover, add missing READ_ONCE() in
 > airoha_qdma_rx_process() for DMA descriptor control fields in order to
 > avoid any compiler reordering.
+> 
+> Fixes: 23020f0493270 ("net: airoha: Introduce ethernet support for EN7581 SoC")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> 
+> [...]
 
-Sashiko seems to have more orthogonal complaints FWIW
+Here is the summary with links:
+  - [net,v3] net: airoha: Add dma_rmb() and READ_ONCE() in airoha_qdma_rx_process()
+    https://git.kernel.org/netdev/net/c/4ae0604a0673
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
