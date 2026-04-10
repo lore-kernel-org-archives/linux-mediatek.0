@@ -4,66 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9997EF36BA0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2026 02:59:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9FE8F36BA8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2026 03:35:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MLXmBUt+5y/LI0drG1RByAqBpv7xchmUlLNdG+XBJsQ=; b=nOUZTuMIw6rD42XtATORT3IWVB
-	DqhZ9oHwdQQBOih2+d8SNmi4i1FuRZrJfeH3xIYpciQdDcxAvFRFmEfJ76xqXMXlVAmEGG3ZMjpCJ
-	1kiQMdBDG9h1gqkrChbtZpLndlzWACHwiqK+xztLTQAUjqFRoxOUsD12uqs7fOQOizCy+lkOnTfQa
-	hxTHIk2dpY87mFC6u7DYY6RIPp67RgBDyX+sWMbj+08nO04dDMb2uigByghPEaTCLpsDQG2Q5kb2Y
-	S5fJmS4dwRMErQtYCdrXwvRg+lnBwvRBcvfNptvakLLlRKSS6jihd2t4AExSPs++fOM0wvyOox/Z3
-	spzs+LVA==;
+	bh=7bklhLbfR1ys8v8hxfDXtHey8Rp/a8UoInTCx1wqcss=; b=RfgMR9xXZfWSeQVEh7Cxql5BY3
+	oqjwfB6upRSshmGfNsWLAp6QK0ONMZE7NNrBLj/FGLvFdo9TPvVT4ejazDuwylvhu/7OhoGzvpgX0
+	SgflbJqz/TtoKfw+FfN2fpfDaEaehxf8gIlEvfj/QrNz1QmyF9nWzTUwhwVbXtOCL+gdOwD5TSY7A
+	gFI/dqxw/7x892nDEDGvjgDWnTzISawYn2XTmpF7d6g9Oiu/8H19yqpDFG501SIhIxWdLfkRmPOVj
+	rwjfOmekIiSsDsNI0R54eYAU/CqTHOnwIv3kMs2F0FsgaFfSpRorAB1KzbxBiYyA+TPp7cAHnZrHT
+	F5XjzAKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wB267-0000000BVfC-3E0u;
-	Fri, 10 Apr 2026 02:59:55 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wB2ek-0000000BY82-3dCX;
+	Fri, 10 Apr 2026 03:35:42 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wB264-0000000BVeZ-2RW5;
-	Fri, 10 Apr 2026 02:59:53 +0000
+	id 1wB2ei-0000000BY7o-2yak;
+	Fri, 10 Apr 2026 03:35:40 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 244A243F56;
-	Fri, 10 Apr 2026 02:59:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 401BEC4CEF7;
-	Fri, 10 Apr 2026 02:59:51 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 2959960103;
+	Fri, 10 Apr 2026 03:35:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 64A14C19421;
+	Fri, 10 Apr 2026 03:35:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1775789992;
-	bh=MLXmBUt+5y/LI0drG1RByAqBpv7xchmUlLNdG+XBJsQ=;
+	s=k20201202; t=1775792139;
+	bh=7bklhLbfR1ys8v8hxfDXtHey8Rp/a8UoInTCx1wqcss=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=ET+FxGEvFyK5aaK+ipK1ANSh6vQiJyeax0/cD9WmrzLEe2QVyFmRKPWqSObyd+qTJ
-	 QSzcUj6m9S1xblsfE44tUvjCAFeYDYC9srazHTj/qsl1mlRTo8vOed9ZeIdSZq6j7D
-	 pudl4tcKOjQ2p5tL1gDhD9kNHYDRC4/08SXGsCQlPrs2owo9yVSh3EjVx2JgOqXO5M
-	 ajsOf01oae4IUhmEzFaTSw25ZjdD4mYq3oljBQ4Ou3QbodLrpUdlGjyZgIb6Z5XONz
-	 IqOPpMtRgIKjzB4McPOuCK5kiTFI53fID9YsKYugOxt2j3/HAkavSgktmlQwtn39rz
-	 fVv4wwHryhw8A==
-Date: Thu, 9 Apr 2026 19:59:50 -0700
+	b=RezecpH5XGi6zJlQAcDlO/E+mA+cVXKG+mfp4mZiDMciX5ragKG48onb2lUJFpC7E
+	 KGSRkd5LAKOSD4RYXygMWLdnLmAqszsTX4am9u0XjwdhDmlzClAyrL+VVNTWy7wzbh
+	 VsS262mEGEoEC09+dmOqb088xofYlVpOgomWGLAgEJFSMfva2/AR4DQUNEAZAQ8o0o
+	 LH+broIy0AV4uYEPLkHjKtRBIWboIAqbhkVPCOKA6loQA/cG+Q4Bb5yLtu+eQ1IlcL
+	 uAKwZnM/PaTIRISkqinYNhPOxfl7VKkfPx7zbjdzf4Gm92IKp75/bBkAgSsGvKqota
+	 ZeBqf8vbco5wQ==
+Date: Thu, 9 Apr 2026 20:35:38 -0700
 From: Jakub Kicinski <kuba@kernel.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
  <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
- <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Christian Marangi
- <ansuelsmth@gmail.com>, Benjamin Larsson <benjamin.larsson@genexis.eu>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org, devicetree@vger.kernel.org, Xuegang Lu
- <xuegang.lu@airoha.com>
-Subject: Re: [PATCH net-next v3 00/12] net: airoha: Support multiple
- net_devices connected to the same GDM port
-Message-ID: <20260409195950.74e4bc97@kernel.org>
-In-Reply-To: <20260406-airoha-eth-multi-serdes-v3-0-ab6ea49d59ff@kernel.org>
-References: <20260406-airoha-eth-multi-serdes-v3-0-ab6ea49d59ff@kernel.org>
+ <pabeni@redhat.com>, Xuegang Lu <xuegang.lu@airoha.com>, Simon Horman
+ <horms@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net v3] net: airoha: Add dma_rmb() and READ_ONCE() in
+ airoha_qdma_rx_process()
+Message-ID: <20260409203538.35337631@kernel.org>
+In-Reply-To: <20260407-airoha_qdma_rx_process-fix-reordering-v3-1-91c36e9da31f@kernel.org>
+References: <20260407-airoha_qdma_rx_process-fix-reordering-v3-1-91c36e9da31f@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260409_195952_650647_1591DDA3 
-X-CRM114-Status: UNSURE (   7.99  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,14 +71,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 06 Apr 2026 12:34:05 +0200 Lorenzo Bianconi wrote:
-> EN7581 or AN7583 SoCs support connecting multiple external SerDes (e.g.
-> Ethernet or USB SerDes) to GDM3 or GDM4 ports via a hw arbiter that
-> manages the traffic in a TDM manner. As a result multiple net_devices can
-> connect to the same GDM{3,4} port and there is a theoretical "1:n"
-> relation between GDM ports and net_devices.
+On Tue, 07 Apr 2026 08:48:04 +0200 Lorenzo Bianconi wrote:
+> Add missing dma_rmb() in airoha_qdma_rx_process routine to make sure the
+> DMA read operations are completed when the NIC reports the processing on
+> the current descriptor is done. Moreover, add missing READ_ONCE() in
+> airoha_qdma_rx_process() for DMA descriptor control fields in order to
+> avoid any compiler reordering.
 
-Looks like this driver uses page pool.
-If you're sharing the same page pool across multiple netdevs
-it must not be linked to a netdev.
+Sashiko seems to have more orthogonal complaints FWIW
 
