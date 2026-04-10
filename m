@@ -4,83 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C516E99071
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2026 10:13:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3337E99076
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2026 10:13:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=qARg06qVMz9+DLd38HAj11nvFT4m9He5ePu4KsCy86E=; b=LVebeUp2uqPops4I6lUiy+f4dA
-	C1zgxp7A0Yc2UYpjL5ctbEjNe5N8s5nEWDIw/4Q6lOOEFoWIiuT97VF25VvJkQ/BsHwtFK7E10WtV
-	0b/skSpAWezGkSlf0tO6QB+urcwSbRTj5M2YgeheTwzFeg/93u7d/eNEIxYO1yANmE69VgMGC9DLd
-	kQ7dURFcLGBuB0AoXGw0cvV0KtKNiCuKKVxk/a6SQsKlbwNn382RvVudcOBj0Vnzla0Y8rW/lVONg
-	urn7BRcS3Mh5/+40aOk9AHoaRhax9cUFyKIXa3TLREom/Ik4zt/auwaxb5AyAHC/LnZ+KtONlUHFX
-	gEOJdZ9w==;
+	bh=Wet2DYKEwk3JQ9CbL3lHmxBHJf7aDapnyclx38VwBQc=; b=xBFebGmdd7p4k35xZQmS5cglr5
+	UnF5evRk+mkObTm512dVSSDm19nQYfWyquo0Ib6cnVdVYKINg5otwBjXRZmAw3AGMD6kMVLp/X7pp
+	A9AqvwYXZOlUo9hLRhzfcIdVpWV+UfSLmGbpb26U/wNJofjWRr3Cm281ryZopDfmS54jHwN3g3Esi
+	yilDcTnT6XtktgDOMOs/hGT62wTdnY4X/it8wak3Z0a+0A90wnUzIGzrgpoDSu4D2neRofUsdpubb
+	zPl2QD20zuRyl6xOB173+vG+wZZaIrEQq2q/AL3sj2e0j1yANq+USKagFShwGirptN0sXuurYZuxC
+	5h9dN6bA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wB8rv-0000000Bz71-2Qjr;
-	Fri, 10 Apr 2026 10:13:43 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1wB8s4-0000000Bz8d-3VCz;
+	Fri, 10 Apr 2026 10:13:52 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wB8rt-0000000Bz6F-1FMh
+	id 1wB8s3-0000000Bz8S-3ReF
+	for linux-mediatek@bombadil.infradead.org;
+	Fri, 10 Apr 2026 10:13:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=Wet2DYKEwk3JQ9CbL3lHmxBHJf7aDapnyclx38VwBQc=; b=WUFpLWtpJkQ9IwjLJKTlgOTDuB
+	NeBANAzLWswIz3jRNwasby53Kf1CqAY9NWHhEQhw4sr6ZCC+9yt+zjbORRnJ4PLaxMB0i9d/OfByF
+	T43twoGrIkz//t07CLFbv9QEu9Ad1qh/bCa1gStZywznNWvCOP69ofsn/HGq5Z9wqgsAa6qWx3BHc
+	sJbL1HHYSnV6/NdnXK/SnuOZNQIWsK9E/kucsj+G8yca0EMkgraTDvNN3qpoZ7abLDVE3MFEFhEij
+	3kjlZTshw9gOEnIpBNY2JZp3xPyT7T4h2eEQxso3snjxVqkO2LqxqCYmFJjTpxDgb4O/rtEKOnBDp
+	/FvhNFsQ==;
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1wB8s1-0000000DGmV-0NuE
 	for linux-mediatek@lists.infradead.org;
-	Fri, 10 Apr 2026 10:13:42 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-482f454be5bso19656605e9.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 10 Apr 2026 03:13:40 -0700 (PDT)
+	Fri, 10 Apr 2026 10:13:50 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-488c2690057so18145905e9.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 10 Apr 2026 03:13:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1775816019; x=1776420819; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1775816027; x=1776420827; darn=lists.infradead.org;
         h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=qARg06qVMz9+DLd38HAj11nvFT4m9He5ePu4KsCy86E=;
-        b=i1xn3rFSwk8xsNvilnSQVe8B39BGSKZVQlZysVs2CQBqEpf+SC3WTO5A7xqkNmnwL5
-         6cD9l7ZmJTFFWLRJJwWfbzdkKYF/HDyLmn6+XSq9z3tzK3AV2Gq5CWPRvpNuu7ITX4FD
-         1+wPWGOR1uvq8uWKbJTNiTy130wLRvNx409HXscfzUxjPpU95bPO6cD5ZdaE+tHuPJnz
-         bb1zPbXb4jvRxga8r3YWce5SnILbcFqGZaeExuJs7mi2WZ2UUPhMOpdHyGH4F3QM4rMN
-         jAenlLyYJCZMB4zy5pKeLGc39puaZ0elMh09hQydIAwBAxgmnurvOvMTaCEX+lt/y1Js
-         izTA==
+        bh=Wet2DYKEwk3JQ9CbL3lHmxBHJf7aDapnyclx38VwBQc=;
+        b=NpJ+QgcHDJCQOKqgFYCm+neA4WVxvy27gz5Ca9PVSiQV0SlCeY8di1iyCf8XG+ePQC
+         vsh57h0LqwPLg204dGNouYspuox4TFh6e2AKDVjhTwRheUwYH71pEfiMAlJt7AVuNXdI
+         ey1CmC1iuDFtO3LyWWKeafSMWzsdqZSQBgnyhs2YzO1nTBQGpKMp6phnjhHaU8tgvIM4
+         CRAT1STWZFUS2cdixtZsItHWE1lPdDW04IxmQ8suFqRIpAeXmktP6ydgKQa+E5QLCocU
+         X2LUK9pb8mHvZ2YyCU6aaVlt8iWPOUwBV9e0ih9twSYZxfX4OpVgCbhUEzNDm3UzxCsV
+         l25A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1775816019; x=1776420819;
+        d=1e100.net; s=20251104; t=1775816027; x=1776420827;
         h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=qARg06qVMz9+DLd38HAj11nvFT4m9He5ePu4KsCy86E=;
-        b=qa5XoATcTuwr5uRWMn3cfYXycPhIB6xifl+outJ1vds3lrE+R9XlNOUNmhSWeZrj/9
-         6SCANH06b1J51P8IQgVCC8oEUY5tEqUG/8Yf6kVwJANS2208oMujPzRQuNqURDR9cxR7
-         g6/T07B4t/7xzR6I1uW2kaNeTRMqzHwGQfj/H0KnMwuUYbYe2PkC8IL4a3lsyeSO0C1B
-         XghTv02mjVAdU4UGcHIAocB+E9zWrRMCMQ8JdSa4SsRyQvT362W7Ogg8Amw//BAibkiJ
-         RNpeng6zllX4on9np6U0Xo7CyMOOq+q2rs7EO2jBJQgmovH3pVoi10rqG3PbC7TBv+VS
-         1roQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWykMVWxHWqAwM9kw8XuD7bJaTeIsSwTBQzELO40G1t3T1i+FvL3x08H+CTq44PQdOCgwf17XU110csYh8dlw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwTnQcde8XAsjkWoovPgaOAvCLd5ufl9PXpJ5TW+nwemr1s+A9s
-	QRk4gWFEj0Ym0erGhYXaJuK+PQaZwiM/luxvTcFIU8OJuPuv2bzkPp+4p2o68xDw
-X-Gm-Gg: AeBDievZz7qOlvuDB7dyjtr3tbgFxkgE0P6gX0M8jkHMoU9j+qWExK4ZPqtOwF9VknC
-	txiPk6VqbNV5wdDxci9oYK1pY3XyEX5OWlWqHjFhe+m8fNA65ENX77U4ujP9VXEQdmigvoKIWZl
-	1HUg7PKPbfZmJM2hQ7EEFVmRF6pdc1IJCUsAGRaoEvyQXAHBE3mj6XBVzwD398sJbt8ZAMCTDSc
-	VtT8kONS0SomayooO4sItA3vdVSdLNaYdGVQYcLtlMeMuYRHuY5eBaD1XL7d4aX4SSQAXLzza3X
-	YfDInCEjAnPSyOF8dbgu0OStTDZ35vp7qU2lXUZUBwZX5vQ1FrOl+zpnythEBwMn+c2Epa/VfSG
-	IPYc8RGKaCXFgU9NFljlN52sbup94yhUyjycm5NpdSXXd1SAM4BobccCiPYwSkD4sDyAPJ2VvqZ
-	6AgsfI2esHXSG2nouovRM=
-X-Received: by 2002:a05:600c:3ba4:b0:488:c6e9:1e0c with SMTP id 5b1f17b1804b1-488d6847de9mr28556345e9.5.1775816019154;
-        Fri, 10 Apr 2026 03:13:39 -0700 (PDT)
+        bh=Wet2DYKEwk3JQ9CbL3lHmxBHJf7aDapnyclx38VwBQc=;
+        b=BcFqPd0bU0zF7Y0ve/JWKtW9mk8vSECGKZbY6G8ec2TLV1pCDOo9mAGzCnPzaSHvr9
+         YNjSIE6B6KFY751612j9IfCIBu29jsVuDMZl6j+PiwOnt7WH19yKFB3qF+z1lFPfvemi
+         tUrwugQiO+9OrvWb1HBzVJM8SCEwxMvDeWFFmH+25ZAXEk5UNQfjZTs4+1MooQFpZsZf
+         y8CIBjABNUeacWdONy2rdJYUQB1E/jkzuJrx4h5hgk2Bnj3icOdcwMCMrAnsfZOvjHtu
+         KVTSr0xQOSAm8ZOPpeK0/H7LMkadbcJCVchwqI1PYGO//wCvBjboJGjnegFOEBhjVvH6
+         eHmA==
+X-Forwarded-Encrypted: i=1; AJvYcCWENzItNAzxjZfDHEsH28IrVqrs0b+RU1XvWkZTVSgytmC2UHSWs7Xh+AL9lmwpUB+kI1yJFMO7pcDWbU8hjw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyOXBHQ5GnvxSS7pnHdF0o4BqWqPkmEgKnWCPC+OQpy+TGTXW94
+	mtroFSULOJEw2/IVzBTpt9BFiG3UA1r/81A60cxMikZwQsCOpjP0FBebhEatxDyX
+X-Gm-Gg: AeBDievhIfhoQ8e2WKZG7ufWyYsfY+s6XZjKTbpJVokq6THU/Q8CbMtierNMxAKECG7
+	Sv3YYPnAqkRkSZb2iZkETIUgGsu5d0+bJWXvobbLJW02DLOVIK3DRF63J8RT3E5SmUICYdi9umn
+	OGhooSrjVq//srQ3zpZv80wE+1wyMHUwYy1B5A1chTMciGtO7daBDRwd/3a3XnA+gg4+5aFxrpB
+	dsx0NhXfKKXnfLN6dDzIC7WRqwjwTSESIPQmx8DiiJYBMZ1QgN2X5DsQYeJwI7lSPFSCKrSdU2G
+	czjxsmXD7LEQiBvezXBWvgGXXTIOq756mtrKBDGO71XjnRea0YgPnAmrgttpk5Ah1zbQbwA5i2t
+	jJh3NXhNDKLjC/rY01sFyOjt7Hs/oZ1NTZnmLQCsIg6lsqtumYAnOAtSc9BUgxzDl3PTzLR2aUr
+	weJHey8ze04x1YLNNGZiZAN7mMU9Xk2w==
+X-Received: by 2002:a05:600c:c117:b0:486:fb69:4960 with SMTP id 5b1f17b1804b1-488d68af0e7mr21886205e9.19.1775816026971;
+        Fri, 10 Apr 2026 03:13:46 -0700 (PDT)
 Received: from localhost ([196.207.164.177])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-43d63e5c981sm6388557f8f.33.2026.04.10.03.13.38
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-488d67ce3e4sm36755705e9.5.2026.04.10.03.13.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 10 Apr 2026 03:13:38 -0700 (PDT)
-Date: Fri, 10 Apr 2026 13:13:35 +0300
+        Fri, 10 Apr 2026 03:13:46 -0700 (PDT)
+Date: Fri, 10 Apr 2026 13:13:43 +0300
 From: Dan Carpenter <error27@gmail.com>
-To: Sean Wang <sean.wang@mediatek.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: [bug report] wifi: mt76: mt7921: handle MT7902 irq_map quirk with
- mutable copy
-Message-ID: <adjNTwO_ziI9eLWU@stanley.mountain>
+Subject: [bug report] wifi: mt76: mt7996: Integrate MT7990 dma configuration
+ for NPU
+Message-ID: <adjNVyjGFNxvJIW8@stanley.mountain>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260410_031341_376328_D174B674 
-X-CRM114-Status: UNSURE (   8.01  )
+X-CRM114-CacheID: sfid-20260410_111349_204086_CB2167BD 
+X-CRM114-Status: UNSURE (   5.46  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,204 +111,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Sean Wang,
+Hello Lorenzo Bianconi,
 
-Commit 222606f43b58 ("wifi: mt76: mt7921: handle MT7902 irq_map quirk
-with mutable copy") from Feb 18, 2026 (linux-next), leads to the
+Commit cd7951f242a7 ("wifi: mt76: mt7996: Integrate MT7990 dma
+configuration for NPU") from Jan 22, 2026 (linux-next), leads to the
 following Smatch static checker warning:
 
-	drivers/net/wireless/mediatek/mt76/mt7921/pci.c:363 mt7921_pci_probe()
-	warn: missing unwind goto?
+	drivers/net/wireless/mediatek/mt76/mt7996/dma.c:683 mt7996_dma_init()
+	error: NULL dereference inside function mt7996_init_tx_queues()
 
-drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-    258 static int mt7921_pci_probe(struct pci_dev *pdev,
-    259                             const struct pci_device_id *id)
-    260 {
-    261         static const struct mt76_driver_ops drv_ops = {
-    262                 /* txwi_size = txd size + txp size */
-    263                 .txwi_size = MT_TXD_SIZE + sizeof(struct mt76_connac_hw_txp),
-    264                 .drv_flags = MT_DRV_TXWI_NO_FREE | MT_DRV_HW_MGMT_TXQ |
-    265                              MT_DRV_AMSDU_OFFLOAD,
-    266                 .survey_flags = SURVEY_INFO_TIME_TX |
-    267                                 SURVEY_INFO_TIME_RX |
-    268                                 SURVEY_INFO_TIME_BSS_RX,
-    269                 .token_size = MT7921_TOKEN_SIZE,
-    270                 .tx_prepare_skb = mt7921e_tx_prepare_skb,
-    271                 .tx_complete_skb = mt76_connac_tx_complete_skb,
-    272                 .rx_check = mt7921_rx_check,
-    273                 .rx_skb = mt7921_queue_rx_skb,
-    274                 .rx_poll_complete = mt792x_rx_poll_complete,
-    275                 .sta_add = mt7921_mac_sta_add,
-    276                 .sta_event = mt7921_mac_sta_event,
-    277                 .sta_remove = mt7921_mac_sta_remove,
-    278                 .update_survey = mt792x_update_channel,
-    279                 .set_channel = mt7921_set_channel,
-    280         };
-    281         static const struct mt792x_hif_ops mt7921_pcie_ops = {
-    282                 .init_reset = mt7921e_init_reset,
-    283                 .reset = mt7921e_mac_reset,
-    284                 .mcu_init = mt7921e_mcu_init,
-    285                 .drv_own = mt792xe_mcu_drv_pmctrl,
-    286                 .fw_own = mt792xe_mcu_fw_pmctrl,
-    287         };
-    288         static const struct mt792x_irq_map irq_map = {
-    289                 .host_irq_enable = MT_WFDMA0_HOST_INT_ENA,
-    290                 .tx = {
-    291                         .all_complete_mask = MT_INT_TX_DONE_ALL,
-    292                         .mcu_complete_mask = MT_INT_TX_DONE_MCU,
-    293                 },
-    294                 .rx = {
-    295                         .data_complete_mask = MT_INT_RX_DONE_DATA,
-    296                         .wm_complete_mask = MT_INT_RX_DONE_WM,
-    297                         .wm2_complete_mask = MT_INT_RX_DONE_WM2,
-    298                 },
-    299         };
-    300         struct ieee80211_ops *ops;
-    301         struct mt76_bus_ops *bus_ops;
-    302         struct mt792x_dev *dev;
-    303         struct mt76_dev *mdev;
-    304         void __iomem *regs;
-    305         u16 cmd, chipid;
-    306         u8 features;
-    307         int ret;
-    308 
-    309         ret = pcim_enable_device(pdev);
-    310         if (ret)
-    311                 return ret;
-    312 
-    313         pci_read_config_word(pdev, PCI_COMMAND, &cmd);
-    314         if (!(cmd & PCI_COMMAND_MEMORY)) {
-    315                 cmd |= PCI_COMMAND_MEMORY;
-    316                 pci_write_config_word(pdev, PCI_COMMAND, cmd);
-    317         }
-    318         pci_set_master(pdev);
-    319 
-    320         ret = pci_alloc_irq_vectors(pdev, 1, 1, PCI_IRQ_ALL_TYPES);
-    321         if (ret < 0)
-    322                 return ret;
-    323 
-    324         ret = dma_set_mask(&pdev->dev, DMA_BIT_MASK(32));
-    325         if (ret)
-    326                 goto err_free_pci_vec;
-    327 
-    328         if (mt7921_disable_aspm)
-    329                 mt76_pci_disable_aspm(pdev);
-    330 
-    331         ops = mt792x_get_mac80211_ops(&pdev->dev, &mt7921_ops,
-    332                                       (void *)id->driver_data, &features);
-    333         if (!ops) {
-    334                 ret = -ENOMEM;
-    335                 goto err_free_pci_vec;
-    336         }
-    337 
-    338         mdev = mt76_alloc_device(&pdev->dev, sizeof(*dev), ops, &drv_ops);
-    339         if (!mdev) {
-    340                 ret = -ENOMEM;
-    341                 goto err_free_pci_vec;
-    342         }
-    343 
-    344         pci_set_drvdata(pdev, mdev);
-    345 
-    346         regs =  pcim_iomap_region(pdev, 0, pci_name(pdev));
-    347         if (IS_ERR(regs))
-    348                 return PTR_ERR(regs);
+drivers/net/wireless/mediatek/mt76/mt7996/dma.c
+    664 int mt7996_dma_init(struct mt7996_dev *dev)
+    665 {
+    666         struct mtk_wed_device *wed = &dev->mt76.mmio.wed;
+    667         struct mtk_wed_device *wed_hif2 = &dev->mt76.mmio.wed_hif2;
+    668         u32 rx_base;
+    669         u32 hif1_ofs = 0;
+    670         int ret;
+    671 
+    672         mt7996_dma_config(dev);
+    673 
+    674         mt76_dma_attach(&dev->mt76);
+    675 
+    676         if (dev->hif2)
+    677                 hif1_ofs = MT_WFDMA0_PCIE1(0) - MT_WFDMA0(0);
+    678 
+    679         mt7996_dma_disable(dev, true);
+    680 
+    681         /* init tx queue */
+    682         if (is_mt7996(&dev->mt76) && mt76_npu_device_active(&dev->mt76))
+--> 683                 ret = mt7996_init_tx_queues(&dev->phy, MT_TXQ_ID(0),
+    684                                             MT7996_NPU_TX_RING_SIZE,
+    685                                             MT_TXQ_RING_BASE(0) + hif1_ofs,
+    686                                             NULL);
+                                                    ^^^^
+Can't pass NULL here.  It leads to a crash.  Use wed?
 
-Need to goto to err_free_pci_vec before returning
-
-    349 
-    350         dev = container_of(mdev, struct mt792x_dev, mt76);
-    351         dev->fw_features = features;
-    352         dev->hif_ops = &mt7921_pcie_ops;
-    353         dev->irq_map = &irq_map;
-    354         mt76_mmio_init(&dev->mt76, regs);
-    355 
-    356         if (id->device == 0x7902) {
-    357                 struct mt792x_irq_map *map;
-    358 
-    359                 /* MT7902 needs a mutable copy because wm2_complete_mask differs */
-    360                 map = devm_kmemdup(&pdev->dev, &irq_map,
-    361                                    sizeof(irq_map), GFP_KERNEL);
-    362                 if (!map)
---> 363                         return -ENOMEM;
-
-Same.
-
-    364 
-    365                 map->rx.wm2_complete_mask = 0;
-    366                 dev->irq_map = map;
-    367         }
-    368 
-    369         tasklet_init(&mdev->irq_tasklet, mt792x_irq_tasklet, (unsigned long)dev);
-    370 
-    371         dev->phy.dev = dev;
-    372         dev->phy.mt76 = &dev->mt76.phy;
-    373         dev->mt76.phy.priv = &dev->phy;
-    374         dev->bus_ops = dev->mt76.bus;
-    375         bus_ops = devm_kmemdup(dev->mt76.dev, dev->bus_ops, sizeof(*bus_ops),
-    376                                GFP_KERNEL);
-    377         if (!bus_ops) {
-    378                 ret = -ENOMEM;
-    379                 goto err_free_dev;
-    380         }
-    381 
-    382         bus_ops->rr = mt7921_rr;
-    383         bus_ops->wr = mt7921_wr;
-    384         bus_ops->rmw = mt7921_rmw;
-    385         dev->mt76.bus = bus_ops;
-    386 
-    387         if (!mt7921_disable_aspm && mt76_pci_aspm_supported(pdev))
-    388                 dev->aspm_supported = true;
-    389 
-    390         ret = mt792xe_mcu_fw_pmctrl(dev);
-    391         if (ret)
-    392                 goto err_free_dev;
-    393 
-    394         ret = __mt792xe_mcu_drv_pmctrl(dev);
-    395         if (ret)
-    396                 goto err_free_dev;
-    397 
-    398         chipid = mt7921_l1_rr(dev, MT_HW_CHIPID);
-    399         if (chipid == 0x7961 && (mt7921_l1_rr(dev, MT_HW_BOUND) & BIT(7)))
-    400                 chipid = 0x7920;
-    401         mdev->rev = (chipid << 16) |
-    402                     (mt7921_l1_rr(dev, MT_HW_REV) & 0xff);
-    403         dev_info(mdev->dev, "ASIC revision: %04x\n", mdev->rev);
-    404 
-    405         ret = mt792x_wfsys_reset(dev);
-    406         if (ret)
-    407                 goto err_free_dev;
-    408 
-    409         mt76_wr(dev, irq_map.host_irq_enable, 0);
-    410 
-    411         mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0xff);
-    412 
-    413         ret = devm_request_irq(mdev->dev, pdev->irq, mt792x_irq_handler,
-    414                                IRQF_SHARED, KBUILD_MODNAME, dev);
-    415         if (ret)
-    416                 goto err_free_dev;
-    417 
-    418         ret = mt7921_dma_init(dev);
-    419         if (ret)
-    420                 goto err_free_irq;
-    421 
-    422         ret = mt7921_register_device(dev);
-    423         if (ret)
-    424                 goto err_free_irq;
-    425 
-    426         if (of_property_read_bool(dev->mt76.dev->of_node, "wakeup-source"))
-    427                 device_init_wakeup(dev->mt76.dev, true);
-    428 
-    429         return 0;
-    430 
-    431 err_free_irq:
-    432         devm_free_irq(&pdev->dev, pdev->irq, dev);
-    433 err_free_dev:
-    434         mt76_free_device(&dev->mt76);
-    435 err_free_pci_vec:
-    436         pci_free_irq_vectors(pdev);
-    437 
-    438         return ret;
-    439 }
+    687         else
+    688                 ret = mt7996_init_tx_queues(&dev->phy,
+    689                                             MT_TXQ_ID(dev->mphy.band_idx),
+    690                                             MT7996_TX_RING_SIZE,
+    691                                             MT_TXQ_RING_BASE(0), wed);
+    692         if (ret)
+    693                 return ret;
+    694 
 
 This email is a free service from the Smatch-CI project [smatch.sf.net].
 
