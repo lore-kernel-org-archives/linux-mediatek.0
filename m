@@ -4,63 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22E18F44842
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2026 11:53:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C5DFF44857
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2026 12:51:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+W8BQyhl2FXAtq1l8AaoMNX45tFzqDxS6dlGXM21Kk8=; b=nki28YH4QnLFCKKipt8p9fy7CS
-	jlfRFSPuAJHrjIxj8x01oTF0TYvWNgnTV4eNB4I6QpSVq0+z4vazNLAuqAblMJgSnsQDE6vJOXHy6
-	MktFTJaxzDE6+1XWYis+7b2lM86uhg6rlOJrMk2Vm6i9YXpr956GRL5gB3ZHQohULFLe1GHk+MyEl
-	FkeINZDvZ8s64ds1Hng6SM0V2Tajz8kXGbuAgQ7ZGd/kw+us3Y3L+6OCVUl00S7hIyi3aGIqt/gBp
-	Gc+z61OC6dRpOTVeM0ZKKVUU9NI8O66ZlnYGGbcMDcqDcirolsKtxcbPB0/b5HLRmNHTDEBjaLbvB
-	FRwfkwAQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hZ69bOR3/6zlmiUsLzPVxv31mozYAaVG3lW9J1qZUxI=; b=yn7/wPnghzDiC1gNG0DJOZWEIF
+	k5CUESrIHpI4s1nkD/A5qQWoiLWZ3zyWqU+NPHRo0OJom5rBQ2tlZVwg0T11QQHp6i4pgmPGKy4J5
+	uAkjwtWA4mmPO8f9ztRt/IAiGm2MymREvCpOWL1XfF8nplY3ZlVcdRbugPHrVwAu+z6bVBT+N+LNH
+	hbCOTt68ETNa40/EVfuDxLfD3qLZAK/QvHDc+10f/uTj9BjWoESsP3lkHPJAZ26wX+NvB+ugp76bb
+	MYiO5bmeCnRjdXPr3JLBWwo+J9cBEpo3Nu4b7Mjh26QYXi+ABn5iLphwwXtMNp2OqMHJ7XFqDpm/b
+	0eE3lr8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBAQ0-0000000C6oC-0fm5;
-	Fri, 10 Apr 2026 11:53:00 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wBBKX-0000000CGr9-1O42;
+	Fri, 10 Apr 2026 12:51:25 +0000
+Received: from zeus03.de ([194.117.254.33] helo=mail.zeus03.de)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBAPy-0000000C6nc-12Da;
-	Fri, 10 Apr 2026 11:52:58 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 59FC660154;
-	Fri, 10 Apr 2026 11:52:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 88B71C19421;
-	Fri, 10 Apr 2026 11:52:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1775821977;
-	bh=Y4GnJSxmVoLcOsU28nVNoZ44KeRm+qtdWi6Re7neJws=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=u8hkTLvdwmNEtlQbPxwGhpXKFahK7mAw84EdneFSvzt8h2dssZtDjOraINVgKLXVw
-	 zCFVOJJr0UaOhh3JHtuGLlFl8kL6eLsvcRTOdeI0ZbjWyJ98VN9BOtayLeSX6jRPfm
-	 XsbIfNl2jY9BmQNkieqFqSIKunfkAPedZWAkKJ/x8aygtpXTGcCFXbt/t/4o0Ns7g8
-	 TLmmIjcEwypFAgvyUOTa55Gs406EdHlufYK2P5Tv5HN2ZRcLTIoZZccpEWgBC6HmBM
-	 CZHB2dAjbMS+jd/Ke1lK6d62Orvfk1YtmGHmghdTeu8RPdsjOVplos307CCBnyvzl4
-	 prUynAYuTiZGA==
-Date: Fri, 10 Apr 2026 13:52:54 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Benjamin Larsson <benjamin.larsson@genexis.eu>
-Cc: Jakub Kicinski <kuba@kernel.org>, andrew+netdev@lunn.ch,
-	davem@davemloft.net, edumazet@google.com, pabeni@redhat.com,
-	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-	ansuelsmth@gmail.com, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH net-next v3 04/12] net: airoha: Rely on net_device
- pointer in HTB callbacks
-Message-ID: <adjklonQX0q7ghZD@lore-desk>
-References: <20260406-airoha-eth-multi-serdes-v3-4-ab6ea49d59ff@kernel.org>
- <20260410025722.1809973-1-kuba@kernel.org>
- <bd486b55-a8d7-4811-965a-aa1f3dc98e30@genexis.eu>
+	id 1wBBKT-0000000CGpn-0Udt
+	for linux-mediatek@lists.infradead.org;
+	Fri, 10 Apr 2026 12:51:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	sang-engineering.com; h=from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding; s=k1; bh=hZ69bOR3/6zlmi
+	UsLzPVxv31mozYAaVG3lW9J1qZUxI=; b=PT9XZv14TZKyIZjpRDMZJR1GC/7nt6
+	itsg24VEoIYNOGnXun4s5/H4GQGToC3SeshINnvbY183bBqOsOhePB+Evwg631S9
+	KmyOgPpt+Cb/MKTH9Zm2bqAYtzf+4d7WNi1B8C1POUALGRAPB99XCrlZpR/URL77
+	Cx2GcWQAYTKJFlU5pDstn8eobP4FuUfrXWgdqEEVD+VAeIHWBjMVB8urgNGBXW2y
+	JLWRn287bZxDsHggwgTknq010sAzJoinV4kngM3S0Ly3mMWSuWdrCzTo5a1QUg8E
+	pjxDcfdrEY4wbZepST3vrAAZM3HLsra9iaKkXRjbFmfbJWLaBQ47RKbQ==
+Received: (qmail 1249670 invoked from network); 10 Apr 2026 14:51:13 +0200
+Received: by mail.zeus03.de with ESMTPSA (TLS_AES_256_GCM_SHA384 encrypted, authenticated); 10 Apr 2026 14:51:13 +0200
+X-UD-Smtp-Session: l3s3148p1@QqiHlhpPpI9UszZ9
+From: Wolfram Sang <wsa+renesas@sang-engineering.com>
+To: linux-renesas-soc@vger.kernel.org,
+	Jassi Brar <jassisinghbrar@gmail.com>
+Cc: Wolfram Sang <wsa+renesas@sang-engineering.com>,
+	Peter Chen <peter.chen@cixtech.com>,
+	Fugang Duan <fugang.duan@cixtech.com>,
+	CIX Linux Kernel Upstream Group <cix-kernel-upstream@cixtech.com>,
+	Frank Li <Frank.Li@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	linux-arm-kernel@lists.infradead.org,
+	imx@lists.linux.dev,
+	linux-mediatek@lists.infradead.org,
+	linux-tegra@vger.kernel.org
+Subject: [PATCH] mailbox: prefix new constants with MBOX_
+Date: Fri, 10 Apr 2026 14:49:12 +0200
+Message-ID: <20260410125105.39340-2-wsa+renesas@sang-engineering.com>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="i1NM/Tit3uG0u/BY"
-Content-Disposition: inline
-In-Reply-To: <bd486b55-a8d7-4811-965a-aa1f3dc98e30@genexis.eu>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260410_055122_034484_9EE5FD2F 
+X-CRM114-Status: GOOD (  20.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,96 +81,182 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Commit 89e5d7d61600 ("mailbox: remove superfluous internal header")
+moved some constants to a public header but forgot to add a mailbox
+specific prefix. Add this now to prevent future collisions on a too
+generic naming.
 
---i1NM/Tit3uG0u/BY
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Link: https://sashiko.dev/#/patchset/20260327151112.5202-2-wsa%2Brenesas%40sang-engineering.com
+Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
+---
 
-> On 10/04/2026 04:57, Jakub Kicinski wrote:
-> > This is an AI-generated review of your patch. The human sending this
-> > email says "For your consideration."
-> > ---
-> > net: airoha: Introduce WAN device flag
-> >=20
-> > This commit introduces a WAN flag to specify whether a device is used to
-> > transmit or receive WAN or LAN traffic. It enables specifying multiple =
-LAN
-> > devices but limits the configuration to a single WAN device.
-> >=20
->=20
-> [...]
->=20
-> > > +		fallthrough;
-> > > +	}
-> > > +	case AIROHA_GDM2_IDX:
-> > > +		/* GDM2 is always used as wan */
-> > > +		dev->flags |=3D PRIV_FLAG_WAN;
-> > >   		break;
-> > >   	default:
-> > >   		break;
-> > >   	}
-> > > -	for (i =3D 0; i < eth->soc->num_ppe; i++)
-> > > -		airoha_ppe_set_cpu_port(dev, i, airoha_get_fe_port(dev));
-> > > +	airoha_dev_set_qdma(dev);
-> > > +	airoha_set_macaddr(dev, netdev->dev_addr);
-> >=20
-> > Since the commit message notes it is possible to specify multiple LAN
-> > devices, does unconditionally calling airoha_set_macaddr() for each
-> > device overwrite the single shared hardware LAN MAC register?
-> >=20
-> > If so, could this cause only the last initialized LAN device to have it=
-s MAC
-> > correctly programmed into the hardware, leading to dropped unicast
-> > packets for the other LAN interfaces?
-> >=20
-> > > +
-> > > +	if (!airoha_is_lan_gdm_dev(dev) &&
-> > > +	    (port->id =3D=3D AIROHA_GDM3_IDX || port->id =3D=3D AIROHA_GDM4=
-_IDX)) {
-> > > +		int err;
-> >=20
-> > [ ... ]
->=20
-> Hi, the frame engine can be configured with a range of wan mac addresses =
-and
-> a range of lan mac addresses via registers that set the top 24 bits and t=
-hen
-> 2 registers that form a range of the low 24 bits.
->=20
-> Documentation says that packets that fall into this mac address range eit=
-her
-> on the lan side or the wan side are to be treated as layer 3 packages and=
- if
-> a packet is not then it will be handled as a layer 2 packet.
->=20
-> The exact implication of this and if it actually matters is unknown. But
-> traffic that comes in on an interface that is not matched by an accelerat=
-ion
-> flow is usually forwarded to the cpu for further processing.
+This patch improves the above mentioned commit which already sits in
+-next. It is not really a fix but it probably is still a good idea to
+apply it before rc1 to avoid confusion.
 
-The assumption here is the mac addresses are read from the SNAND or eMMC and
-they all share the upper bits. I will fix the issue with a separated patch =
-for
-net tree.
+ drivers/mailbox/cix-mailbox.c      |  2 +-
+ drivers/mailbox/imx-mailbox.c      |  2 +-
+ drivers/mailbox/mailbox.c          | 22 +++++++++++-----------
+ drivers/mailbox/mtk-cmdq-mailbox.c |  2 +-
+ drivers/mailbox/omap-mailbox.c     |  2 +-
+ drivers/mailbox/tegra-hsp.c        |  2 +-
+ include/linux/mailbox_controller.h |  6 +++---
+ 7 files changed, 19 insertions(+), 19 deletions(-)
 
-Regards,
-Lorenzo
+diff --git a/drivers/mailbox/cix-mailbox.c b/drivers/mailbox/cix-mailbox.c
+index 8cfaa91b75bd..43c76cdab24a 100644
+--- a/drivers/mailbox/cix-mailbox.c
++++ b/drivers/mailbox/cix-mailbox.c
+@@ -413,7 +413,7 @@ static int cix_mbox_startup(struct mbox_chan *chan)
+ 	switch (cp->type) {
+ 	case CIX_MBOX_TYPE_DB:
+ 		/* Overwrite txdone_method for DB channel */
+-		chan->txdone_method = TXDONE_BY_ACK;
++		chan->txdone_method = MBOX_TXDONE_BY_ACK;
+ 		fallthrough;
+ 	case CIX_MBOX_TYPE_REG:
+ 		if (priv->dir == CIX_MBOX_TX) {
+diff --git a/drivers/mailbox/imx-mailbox.c b/drivers/mailbox/imx-mailbox.c
+index 22331b579489..246a9a9e3952 100644
+--- a/drivers/mailbox/imx-mailbox.c
++++ b/drivers/mailbox/imx-mailbox.c
+@@ -732,7 +732,7 @@ static struct mbox_chan * imx_mu_xlate(struct mbox_controller *mbox,
+ 	p_chan = &mbox->chans[chan];
+ 
+ 	if (type == IMX_MU_TYPE_TXDB_V2)
+-		p_chan->txdone_method = TXDONE_BY_ACK;
++		p_chan->txdone_method = MBOX_TXDONE_BY_ACK;
+ 
+ 	return p_chan;
+ }
+diff --git a/drivers/mailbox/mailbox.c b/drivers/mailbox/mailbox.c
+index 138ffbcd4fde..30eafdf3a91e 100644
+--- a/drivers/mailbox/mailbox.c
++++ b/drivers/mailbox/mailbox.c
+@@ -72,7 +72,7 @@ static void msg_submit(struct mbox_chan *chan)
+ 		}
+ 	}
+ 
+-	if (!err && (chan->txdone_method & TXDONE_BY_POLL)) {
++	if (!err && (chan->txdone_method & MBOX_TXDONE_BY_POLL)) {
+ 		/* kick start the timer immediately to avoid delays */
+ 		scoped_guard(spinlock_irqsave, &chan->mbox->poll_hrt_lock)
+ 			hrtimer_start(&chan->mbox->poll_hrt, 0, HRTIMER_MODE_REL);
+@@ -162,7 +162,7 @@ EXPORT_SYMBOL_GPL(mbox_chan_received_data);
+  */
+ void mbox_chan_txdone(struct mbox_chan *chan, int r)
+ {
+-	if (unlikely(!(chan->txdone_method & TXDONE_BY_IRQ))) {
++	if (unlikely(!(chan->txdone_method & MBOX_TXDONE_BY_IRQ))) {
+ 		dev_err(chan->mbox->dev,
+ 		       "Controller can't run the TX ticker\n");
+ 		return;
+@@ -183,7 +183,7 @@ EXPORT_SYMBOL_GPL(mbox_chan_txdone);
+  */
+ void mbox_client_txdone(struct mbox_chan *chan, int r)
+ {
+-	if (unlikely(!(chan->txdone_method & TXDONE_BY_ACK))) {
++	if (unlikely(!(chan->txdone_method & MBOX_TXDONE_BY_ACK))) {
+ 		dev_err(chan->mbox->dev, "Client can't run the TX ticker\n");
+ 		return;
+ 	}
+@@ -344,8 +344,8 @@ static int __mbox_bind_client(struct mbox_chan *chan, struct mbox_client *cl)
+ 		chan->cl = cl;
+ 		init_completion(&chan->tx_complete);
+ 
+-		if (chan->txdone_method	== TXDONE_BY_POLL && cl->knows_txdone)
+-			chan->txdone_method = TXDONE_BY_ACK;
++		if (chan->txdone_method	== MBOX_TXDONE_BY_POLL && cl->knows_txdone)
++			chan->txdone_method = MBOX_TXDONE_BY_ACK;
+ 	}
+ 
+ 	if (chan->mbox->ops->startup) {
+@@ -499,8 +499,8 @@ void mbox_free_channel(struct mbox_chan *chan)
+ 	scoped_guard(spinlock_irqsave, &chan->lock) {
+ 		chan->cl = NULL;
+ 		chan->active_req = MBOX_NO_MSG;
+-		if (chan->txdone_method == TXDONE_BY_ACK)
+-			chan->txdone_method = TXDONE_BY_POLL;
++		if (chan->txdone_method == MBOX_TXDONE_BY_ACK)
++			chan->txdone_method = MBOX_TXDONE_BY_POLL;
+ 	}
+ 
+ 	module_put(chan->mbox->dev->driver->owner);
+@@ -531,13 +531,13 @@ int mbox_controller_register(struct mbox_controller *mbox)
+ 		return -EINVAL;
+ 
+ 	if (mbox->txdone_irq)
+-		txdone = TXDONE_BY_IRQ;
++		txdone = MBOX_TXDONE_BY_IRQ;
+ 	else if (mbox->txdone_poll)
+-		txdone = TXDONE_BY_POLL;
++		txdone = MBOX_TXDONE_BY_POLL;
+ 	else /* It has to be ACK then */
+-		txdone = TXDONE_BY_ACK;
++		txdone = MBOX_TXDONE_BY_ACK;
+ 
+-	if (txdone == TXDONE_BY_POLL) {
++	if (txdone == MBOX_TXDONE_BY_POLL) {
+ 
+ 		if (!mbox->ops->last_tx_done) {
+ 			dev_err(mbox->dev, "last_tx_done method is absent\n");
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index 547a10a8fad3..e523c84b4808 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -728,7 +728,7 @@ static int cmdq_probe(struct platform_device *pdev)
+ 	cmdq->mbox.ops = &cmdq_mbox_chan_ops;
+ 	cmdq->mbox.of_xlate = cmdq_xlate;
+ 
+-	/* make use of TXDONE_BY_ACK */
++	/* make use of MBOX_TXDONE_BY_ACK */
+ 	cmdq->mbox.txdone_irq = false;
+ 	cmdq->mbox.txdone_poll = false;
+ 
+diff --git a/drivers/mailbox/omap-mailbox.c b/drivers/mailbox/omap-mailbox.c
+index 5772c6b9886a..535ca8020877 100644
+--- a/drivers/mailbox/omap-mailbox.c
++++ b/drivers/mailbox/omap-mailbox.c
+@@ -238,7 +238,7 @@ static int omap_mbox_startup(struct omap_mbox *mbox)
+ 	}
+ 
+ 	if (mbox->send_no_irq)
+-		mbox->chan->txdone_method = TXDONE_BY_ACK;
++		mbox->chan->txdone_method = MBOX_TXDONE_BY_ACK;
+ 
+ 	omap_mbox_enable_irq(mbox, IRQ_RX);
+ 
+diff --git a/drivers/mailbox/tegra-hsp.c b/drivers/mailbox/tegra-hsp.c
+index 7b1e1b83ea29..500fa77c7d53 100644
+--- a/drivers/mailbox/tegra-hsp.c
++++ b/drivers/mailbox/tegra-hsp.c
+@@ -514,7 +514,7 @@ static int tegra_hsp_mailbox_startup(struct mbox_chan *chan)
+ 	struct tegra_hsp *hsp = mb->channel.hsp;
+ 	unsigned long flags;
+ 
+-	chan->txdone_method = TXDONE_BY_IRQ;
++	chan->txdone_method = MBOX_TXDONE_BY_IRQ;
+ 
+ 	/*
+ 	 * Shared mailboxes start out as consumers by default. FULL and EMPTY
+diff --git a/include/linux/mailbox_controller.h b/include/linux/mailbox_controller.h
+index e3896b08f22e..a49ee687d4cf 100644
+--- a/include/linux/mailbox_controller.h
++++ b/include/linux/mailbox_controller.h
+@@ -15,9 +15,9 @@ struct mbox_chan;
+ /* Sentinel value distinguishing "no active request" from "NULL message data" */
+ #define MBOX_NO_MSG	((void *)-1)
+ 
+-#define TXDONE_BY_IRQ	BIT(0) /* controller has remote RTR irq */
+-#define TXDONE_BY_POLL	BIT(1) /* controller can read status of last TX */
+-#define TXDONE_BY_ACK	BIT(2) /* S/W ACK received by Client ticks the TX */
++#define MBOX_TXDONE_BY_IRQ	BIT(0) /* controller has remote RTR irq */
++#define MBOX_TXDONE_BY_POLL	BIT(1) /* controller can read status of last TX */
++#define MBOX_TXDONE_BY_ACK	BIT(2) /* S/W ACK received by Client ticks the TX */
+ 
+ /**
+  * struct mbox_chan_ops - methods to control mailbox channels
+-- 
+2.51.0
 
->=20
-> MvH
-> Benjamin Larsson
-
---i1NM/Tit3uG0u/BY
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCadjklgAKCRA6cBh0uS2t
-rOALAQDChwhT+q+W9kV8svjw4vYBOXlgu4gRACeUn8gsl1GgfQD9HP1z0i1xfifR
-9EwKX95S/PvAovnwKbRE5sYz1v1dGQY=
-=Za20
------END PGP SIGNATURE-----
-
---i1NM/Tit3uG0u/BY--
 
