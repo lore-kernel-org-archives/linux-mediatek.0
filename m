@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7412AE9905C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2026 09:24:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E304E99068
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2026 09:55:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x55BnAYCiYc4Ou8winh9a1tHPbGxq5JqwjTCAarUD1s=; b=pgMiUfh7Ya3kZzEhfSIxxdvMM9
-	0CSgd+5OwPiUt4kJJc6dkxiFc+aEV5P7JSfzkZ44D/TZwWKnY6IriOTXtBs9se37D5wFLhC5BE6j7
-	y4PsJtK4tzTDhdxInJLBS5sOb8Y5ZQcA9tn65UrOGm7B81WH4CsP82g4bSZI9OcmkeJetKBzpCP5/
-	lTwXkW65CjtrtdTdXzBySQDjDT6GKaZq/qpWW3+K0aLCfXCs0aRxQcU1bVFwPKE3M76QV1PhrBxtS
-	TT64ftV4wu8SX99I9mfi4Ne5FmObXcnOPbr6ZeK9rAGcvnjddp/ZU52e34zQjLmy3qndk6P32lt+M
-	kqbIBJZQ==;
+	bh=Wr5+DY/r74XrPI08rq2r+6e8S4vo7PRdMxQwpUoapWc=; b=pgrB1NtZFeY6yo8CabUvjFbuVr
+	AAeLlyWEfxhPrMKGe4vZTm6RiQuKQE/XANS4c78rRLZancV9H8ErbJ/TJmLWIBS6FuAE6kS8Br5sZ
+	jwkJ+HyhgOBnHIP+vFMEnQMdPUw7OloY1jrcEmNf89UVn7SPlgCLBFmRg1lNGsuRe6xa/jKtM11XD
+	9mm1T5xBSEtRxY0VYevb4cRyAHzUKlcmkKeDrhliW5LAmYBW6qBTh1+sPyhgy/6ZcxjdYWckYzUSB
+	6M8nbxPasrWI8qla07KjKabY439UwC+O2OTvxeAbC2NzVvXSucaJ9RIicsnmzau3u7KuhqKjmfNXm
+	3pRqwBiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wB86a-0000000BuH2-3rQC;
-	Fri, 10 Apr 2026 09:24:48 +0000
-Received: from mout.gmx.net ([212.227.17.22])
+	id 1wB8a4-0000000BxNU-25J5;
+	Fri, 10 Apr 2026 09:55:16 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wB86X-0000000BuGM-0n9y;
-	Fri, 10 Apr 2026 09:24:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1775813076; x=1776417876; i=frank-w@public-files.de;
-	bh=x55BnAYCiYc4Ou8winh9a1tHPbGxq5JqwjTCAarUD1s=;
-	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
-	 Content-Type:Date:In-Reply-To:References:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=Xe0MHdJgqMcToxHilpfE1H7P6QH+0YdonORUma+5xYG7s1vDEb6zGaBJ/2SCE7ZM
-	 JBIRWBwtgpM+5WgGEcUbgEzRVlY06HDEXrSrFqCof5Cv4aDKRgk+di12RMQUDqqIa
-	 8JWsyhrQwEyoVYr2sb7e/+ldN7B6V2WEarcPydxqDo943diy+qqmVqtSRC90INVlh
-	 nPFsbKeGwTgA5FQ5/Z8L8qY3T7yShJB/jNbROLE08QL0PDXOArkem9ui71hIESuwt
-	 qQQJnCY5irUpJyVsSlBnL2wPNU9LFdv2MHtPmyzv+AuivU9oYsmvTWBgOYd5tNd57
-	 2aRzAUVT1IQKNV/lXg==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [217.61.152.0] ([217.61.152.0]) by
- trinity-msg-rest-gmx-gmx-live-5cf7d7879b-qwfn5 (via HTTP); Fri, 10 Apr 2026
- 09:24:36 +0000
+	id 1wB8a1-0000000BxML-2Rq2
+	for linux-mediatek@lists.infradead.org;
+	Fri, 10 Apr 2026 09:55:15 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id AA17943507
+	for <linux-mediatek@lists.infradead.org>; Fri, 10 Apr 2026 09:55:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8B170C19425
+	for <linux-mediatek@lists.infradead.org>; Fri, 10 Apr 2026 09:55:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1775814912;
+	bh=Wr5+DY/r74XrPI08rq2r+6e8S4vo7PRdMxQwpUoapWc=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=T6+n50wfxhA0Z3X4fXSdHd+0nckQVzmfcE6pJnKliP4yUr5vzgO3pZC7NCZ1WtO+B
+	 EW5O11mjHqwaUIaPkOIk7+AVVyk4T4kJugmboOcrdvo32jf0wypts7ySU4AmBTBlnB
+	 owolzVGoXiy4ck1U0vS3oOCY1gpWkoZkj3RIWY0oZmGNMPGKgZd0MDe1K/ymiSCmLM
+	 WTzdFQWXc6h/mbUwNoO44DMth3PuB8z7hKqr4WFGPE0TahLa4HOF8YoObqToRd6mnU
+	 ZDTsl53cCud9kPvEgNB+gm6mcYARk16jJs7+AiohMl39rsMO8wzyW6BaUzLWtr1FcJ
+	 f9r7pobV/ePQA==
+Received: by mail-lj1-f171.google.com with SMTP id 38308e7fff4ca-38cc0b91b01so15028931fa.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 10 Apr 2026 02:55:12 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCVTSpxMeJb/sFQ9h9kLCmTX+qdMn872bVq620QWWtlryJMF0/hbgkkE4JxnAHxLzRPCmtVJp9alntEMOAN+0Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwLr2XHk/cmbaDwRgTggTrelSC5okQ7J1g5diDfYaCq3Hirb72E
+	UNuyETcpMUtMbVSNIn1Cv01acTRgu27r4Uo/SkTuSh/v1BpgjxoF1nFeGuDB/sj4MlWm4MEFYyl
+	suXT+PQqA+PdmCzpnNA9CzW+UBusZTIjzUMrxRWhEfQ==
+X-Received: by 2002:a05:6512:114c:b0:5a2:afbe:4aaf with SMTP id
+ 2adb3069b0e04-5a3efb2c6c3mr909348e87.21.1775814911289; Fri, 10 Apr 2026
+ 02:55:11 -0700 (PDT)
 MIME-Version: 1.0
-Message-ID: <trinity-5e6f6a95-e576-4f97-9085-c6de21945eab-1775813076268@trinity-msg-rest-gmx-gmx-live-5cf7d7879b-qwfn5>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: bartosz.golaszewski@oss.qualcomm.com, linux@fw-web.de,
- sean.wang@kernel.org, linusw@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, brgl@kernel.org
-Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- bartosz.golaszewski@oss.qualcomm.com
-Subject: Aw: [PATCH] pinctrl: mediatek: moore: implement
- gpio_chip::get_direction()
-Content-Type: text/plain; charset=UTF-8
-Date: Fri, 10 Apr 2026 09:24:36 +0000
-In-Reply-To: <20260410070935.9540-1-bartosz.golaszewski@oss.qualcomm.com>
-References: <20260410070935.9540-1-bartosz.golaszewski@oss.qualcomm.com>
-X-UI-CLIENT-META-MAIL-DROP: W10=
-X-Provags-ID: V03:K1:v+CtdG+miWP51FXD9E3ff9lKGyUuigRMCImtxUW3pQXoaVPjA/Tx6oMcjL/Su/mnSSsyy
- QJzylvbVtXD4DJrMH8LsSsJ6xsjQOcqPpzMlvfP1HErHMI1pvp6lb/P4JInZlX4oVxp93xWRTEa+
- slFJ6uLQY0t1lPHb7vPor4sieprsQpPP9Uo3Wi03tQ77+hmtOgDHOG+/w2/T9GqmTn/hCLxIsZPW
- zr5yQLtGVMzl5ZuW6/qfk8xOyagSPeUBiFPt/CTC5WmccMIvEQnz67QoiNFeJOYGLJqxNPLi8eCK
- G7wcalfbYHzBx9c5Bl27fQrN0fiebO2Ub+AWR+PyUF5iCcrxk6gUWwwfq7MdkxIf/A=
-UI-OutboundReport: notjunk:1;M01:P0:R2lLZiC8lLA=;cAt8Qw5xE9k3wOlNKTRacd1GwMj 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
+References: <20260410070935.9540-1-bartosz.golaszewski@oss.qualcomm.com> <trinity-5e6f6a95-e576-4f97-9085-c6de21945eab-1775813076268@trinity-msg-rest-gmx-gmx-live-5cf7d7879b-qwfn5>
+In-Reply-To: <trinity-5e6f6a95-e576-4f97-9085-c6de21945eab-1775813076268@trinity-msg-rest-gmx-gmx-live-5cf7d7879b-qwfn5>
+From: Bartosz Golaszewski <brgl@kernel.org>
+Date: Fri, 10 Apr 2026 11:54:57 +0200
+X-Gmail-Original-Message-ID: <CAMRc=Md1pC_a8zSQqWWcubNG-1ret8Lf9sajVDnU8nw2gnXZiA@mail.gmail.com>
+X-Gm-Features: AQROBzCP-_fg9A2t_Kbkm4--HVao78r-kjo5RBoGRmmLlahvEN3yRZA61_WNy7w
+Message-ID: <CAMRc=Md1pC_a8zSQqWWcubNG-1ret8Lf9sajVDnU8nw2gnXZiA@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: mediatek: moore: implement gpio_chip::get_direction()
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: bartosz.golaszewski@oss.qualcomm.com, linux@fw-web.de, 
+	sean.wang@kernel.org, linusw@kernel.org, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, linux-mediatek@lists.infradead.org, 
+	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260410_022445_536702_176EDDCC 
-X-CRM114-Status: UNSURE (   7.50  )
+X-CRM114-CacheID: sfid-20260410_025513_669445_95465426 
+X-CRM114-Status: UNSURE (   9.90  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,37 +86,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Gesendet: Freitag, 10. April 2026 um 09:09
-> Von: "Bartosz Golaszewski" <bartosz.golaszewski@oss.qualcomm.com>
-> An: "Frank Wunderlich" <linux@fw-web.de>, "Sean Wang" <sean.wang@kernel.=
-org>, "Linus Walleij" <linusw@kernel.org>, "Matthias Brugger" <matthias.bg=
-g@gmail.com>, "AngeloGioacchino Del Regno" <angelogioacchino.delregno@coll=
-abora.com>, "Bartosz Golaszewski" <brgl@kernel.org>
-> CC: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, linu=
-x-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, "Bartosz G=
+On Fri, Apr 10, 2026 at 11:24=E2=80=AFAM Frank Wunderlich
+<frank-w@public-files.de> wrote:
+>
+> > Gesendet: Freitag, 10. April 2026 um 09:09
+> > Von: "Bartosz Golaszewski" <bartosz.golaszewski@oss.qualcomm.com>
+> > An: "Frank Wunderlich" <linux@fw-web.de>, "Sean Wang" <sean.wang@kernel=
+.org>, "Linus Walleij" <linusw@kernel.org>, "Matthias Brugger" <matthias.bg=
+g@gmail.com>, "AngeloGioacchino Del Regno" <angelogioacchino.delregno@colla=
+bora.com>, "Bartosz Golaszewski" <brgl@kernel.org>
+> > CC: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, lin=
+ux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, "Bartosz G=
 olaszewski" <bartosz.golaszewski@oss.qualcomm.com>
-> Betreff: [PATCH] pinctrl: mediatek: moore: implement gpio_chip::get_dire=
-ction()
+> > Betreff: [PATCH] pinctrl: mediatek: moore: implement gpio_chip::get_dir=
+ection()
+> >
+> > If the gpio_chip::get_direction() callback is not implemented by the GP=
+IO
+> > controller driver, GPIOLIB emits a warning.
+> >
+> > Implement get_direction() for the GPIO part of pinctrl-moore.
+> >
+> > Fixes: 471e998c0e31 ("gpiolib: remove redundant callback check")
+> > Fixes: e623c4303ed1 ("gpiolib: sanitize the return value of gpio_chip::=
+get_direction()")
+> > Reported-by: Frank Wunderlich <linux@fw-web.de>
 >
-> If the gpio_chip::get_direction() callback is not implemented by the GPI=
-O
-> controller driver, GPIOLIB emits a warning.
->=20
-> Implement get_direction() for the GPIO part of pinctrl-moore.
->=20
-> Fixes: 471e998c0e31 ("gpiolib: remove redundant callback check")
-> Fixes: e623c4303ed1 ("gpiolib: sanitize the return value of gpio_chip::g=
-et_direction()")
-> Reported-by: Frank Wunderlich <linux@fw-web.de>
-
-please use the email i used for SoB in my linked patch (closes link below)=
-, the other email i use only for sending patches due to mail provider limi=
+> please use the email i used for SoB in my linked patch (closes link below=
+), the other email i use only for sending patches due to mail provider limi=
 tation.
-
-regards Frank
-
-> Closes: https://lore.kernel.org/all/20260409132724.126258-1-linux@fw-web=
-.de/
-> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com=
 >
+
+Linus: Can you fix this when applying, please?
+
+Frank: Can you also leave your Tested-by under the patch?
+
+Thanks,
+Bartosz
 
