@@ -4,89 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A58D8F45A12
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Apr 2026 03:57:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEDA6F3ED5B
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Apr 2026 17:41:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=cwxR3TEzggrqwnYhCtbksF3x2HjY5X8G0vLpnWNk5pY=; b=28/u8/dLS5u/ZojyBoQxN1KwQ1
-	KHXpb4fMbNc/b2GMGqtjOT1PO8hzV/vg1RdHRpqiZXg8sVQPZ5D2QdaxcqBAlQ3iAJJaZ26q98fbF
-	44LFhUxfX6tlCmRfTo3UAGBeuzRQwWlWWXF0tamZkXpoa09sRNG+H042cLNOZ+mqCiBDC+n7wzCFD
-	x5cHEnsgOKYT8amQQOaDDBy37N5/UUylVqO68/qPmHC4oAbEkPf+UMwfAsAhl7IZIBMUBiGS4mw9c
-	8kaHmvCiuU7WnuzUbiUMXCmW9j9wOpsvJoeHG3KKt7XAaoOz7Jww967GqDG14L6IpHy9pImNMpZlq
-	XOjDpEVA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pzkNJjGPGbrfyoiWxyUiNakpp3BFzvMTp1pGC4Fff9g=; b=zJq6eeIW3EYD9AaK3zUCmlLlel
+	bx4etAYDnYHB9RV/+4fTih/UOPzjVPYi+k3YMg9ibT6pA8h0nqiaq/wJjX98DjLRABtZfGrQ2tBsG
+	gXTGbsRq/VG0jUZNKyUEROyo4Q6YX5i+BMRbgngETj2bMJajM1dhM/m915oAQ77ColDyYR5amMn3m
+	XRt0D3Pv+eH2GZjWhJ4V/xf3KWCIUrAw8DHiRwSoNgBE58HlZ7dGYxx1oeZ8QDo/dlKw8+UXyP9I+
+	fkuBZiCy+qlNzy9fqrdQ+joSD6rWBGpwO6NiTfo0uS1nB31owdbnmhPOVnzBR52APnfLTOqLyJjYU
+	B1/nlRjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBPTl-0000000D77b-29nS;
-	Sat, 11 Apr 2026 03:57:53 +0000
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+	id 1wBcKn-0000000DgbZ-0OSW;
+	Sat, 11 Apr 2026 17:41:29 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBPTj-0000000D76x-1e16
-	for linux-mediatek@lists.infradead.org;
-	Sat, 11 Apr 2026 03:57:52 +0000
-Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-82f22f6b0feso54471b3a.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 10 Apr 2026 20:57:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1775879870; x=1776484670; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=cwxR3TEzggrqwnYhCtbksF3x2HjY5X8G0vLpnWNk5pY=;
-        b=A7dOWKtPZzoD9fgmyfbQ7ZaGUfX+7OkOikfvhSCFboJl/+qlMEddVo31cXnMAVZ4ij
-         T6d85TdbpQg/+nugHqbF1fn5baqCnaqtJrF472gvokGOIOmYHlwd0h69lcFa68KSiZ/6
-         hodw3JPMvup3GXyW0VvlYgNYFEsSw8tSQrfWMZmj1FPbJlSWxmenU9bNe86tTD9qa2HK
-         tZnFBsi7bKYso0SFkAXxEQz+nQY48RZIDMe5gzxZPcdeKsd5mzdib68VnClWG9cnheon
-         5RTTFMwMgLdZjRC0uPvOCiUDstQLUmN0aecRcG/e2ppOwRumkJ3rJULlJZaEHgBOP39d
-         oNAA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1775879870; x=1776484670;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=cwxR3TEzggrqwnYhCtbksF3x2HjY5X8G0vLpnWNk5pY=;
-        b=MPawIcEmN92zvKyQk4R69SSa++gaFxqisUcuRgPpxVpPHog1ZcD9BvQAuKY+2fWz3q
-         3mfUOI3LYMEDU7yDLTbft6fSz6zcqo4HGG51SJ/slHvKwcjhCrXfnmuNlc8x1vML/B+P
-         vQ2aGtH4acJsv8RF1uU1Z871SO6Ma3wcVt3w8ADitkff8S8D6i9gkqN2XVG1b4oJtLyE
-         0g4SWMSd5Sg4G1dG7Gawy10NhfdhZ7KkrkldCCN2zmgXwY0w8EBt+1EsIGFHtafPKi2d
-         BY1hn7qQwwOfUlorCWuupZiE7NZLRfHH7eHszBtolQQD2tpbnIei8hPjA2o9W4fZn94w
-         70uA==
-X-Forwarded-Encrypted: i=1; AJvYcCX+tG7+NqJeGhF7RfmCBqnDZCvfnYYmylALwPObhWb412ELopZbAoXeGKdnfe0il02bMz7YpdYOQccXPjTJpg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy+IWu2xjwEjvH+7pVDUUTugweNH0nxV9Eoj4U3rQqrkxDDsWGZ
-	6T1yhio8f5aXsDU+RLs0leLzMFkFi1jiIZkGoQV2cQwJgOs8k6wXd+qF
-X-Gm-Gg: AeBDievZi12glPQKkz4r6FROTVb5vqO4fDy/cNwLD5T56kuHlsMVWqeHtpMjRNmV+sb
-	lnImlbLn1dskQm1xBxxKSSYwo+4Q9vrUyTYtEDk5s0N+Cck9KUUANjazqBJBXIa4D+GHcNe7BvJ
-	ZkraAqKnQo16H7O13y9BC4p+z3XSMT3D/HZ5fUjkRlbQ5Q+vW2JGODe401Oj1OT7FbL9spt1Jy1
-	LVSgYersg43ZiWORHQYeh/g3hg5e5lkSA/Gybtq2TP2n0YzIg1bpC9TcIEzHDiUiE8932qIiXL4
-	EslyN7XYh5xQ69Gcf5sYl6G54F/b69iKGLXVHdZHZAPLwONh99ZQGyPP6tQ7kNvptky8rIwbrw3
-	dhwha8QC4kZEuoe25y8ogG+iX0Jqg67T0h2QayaDixQpeL0PHL5g0zcWlVbLRCvDyk7EbJ8Sa9Z
-	TetEy5NgpebNEnWpHexf9FDSW9+PIQpPgNhRIgMilClfKDHQpMg3wUqik=
-X-Received: by 2002:a05:6a20:3d12:b0:39c:bf48:11db with SMTP id adf61e73a8af0-39fe3f3d83cmr6340981637.38.1775879869733;
-        Fri, 10 Apr 2026 20:57:49 -0700 (PDT)
-Received: from ryzen ([2601:644:8000:5b5d::8bd])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-c79216fff97sm3986596a12.7.2026.04.10.20.57.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 10 Apr 2026 20:57:49 -0700 (PDT)
-From: Rosen Penev <rosenp@gmail.com>
-To: linux-usb@vger.kernel.org
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Kees Cook <kees@kernel.org>,
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
-	linux-arm-kernel@lists.infradead.org (moderated list:MEDIATEK USB3 DRD IP DRIVER),
-	linux-mediatek@lists.infradead.org (moderated list:MEDIATEK USB3 DRD IP DRIVER),
-	linux-kernel@vger.kernel.org (open list),
-	linux-hardening@vger.kernel.org (open list:KERNEL HARDENING (not covered by other areas):Keyword:\b__counted_by(_le|_be)?\b)
-Subject: [PATCH] usb: mtu3: allocate phys with ssusb
-Date: Fri, 10 Apr 2026 20:57:31 -0700
-Message-ID: <20260411035731.163580-1-rosenp@gmail.com>
-X-Mailer: git-send-email 2.53.0
+	id 1wBcKl-0000000Dgaz-3xTo;
+	Sat, 11 Apr 2026 17:41:28 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 110A96015B;
+	Sat, 11 Apr 2026 17:41:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8E5F8C4CEF7;
+	Sat, 11 Apr 2026 17:41:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1775929286;
+	bh=/DQ7HVNRXx7m8000Zg8l40K+eA6BYCD8ejkHrrjEhvU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FWMe6+nMFoOGF2h+dtgHyWlmSQoPQjWvj9zanstYdWqXw2g+jZKO13PFK6frgUTj8
+	 mQOrOgQk4gZm/cxm/6StK2WEHTBgtIwURY1mNPAbtL5LNRZJTPUNEk9IonpglI/YdN
+	 c/zyGX73BjQMt/IZAoOdSkzJxcOUYNJ9UOHb22dyUOod8O3h2i7QNpqvbcjhBqRhWZ
+	 QYHAeRFeL/39EzdU5MfMwebB84NWSl7HE/BRv2JI9vc6juBJejyziW9dMtSSICOJCR
+	 yYdoazp1mDLrtM5PBtOJodUQUjWhtuEfMNu/2h5Z05fbeQ5l+sXd/ULHatW8MpU2p2
+	 qMKm0NSkmAp4g==
+Date: Sat, 11 Apr 2026 18:41:21 +0100
+From: Sudeep Holla <sudeep.holla@kernel.org>
+To: Wolfram Sang <wsa+renesas@sang-engineering.com>
+Cc: linux-renesas-soc@vger.kernel.org,
+	Jassi Brar <jassisinghbrar@gmail.com>,
+	Peter Chen <peter.chen@cixtech.com>,
+	Fugang Duan <fugang.duan@cixtech.com>,
+	CIX Linux Kernel Upstream Group <cix-kernel-upstream@cixtech.com>,
+	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	linux-arm-kernel@lists.infradead.org, imx@lists.linux.dev,
+	linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org
+Subject: Re: [PATCH] mailbox: prefix new constants with MBOX_
+Message-ID: <20260411-malachite-phoenix-of-discourse-bdf44a@sudeepholla>
+References: <20260410125105.39340-2-wsa+renesas@sang-engineering.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260410_205751_440947_4107FD52 
-X-CRM114-Status: GOOD (  14.13  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260410125105.39340-2-wsa+renesas@sang-engineering.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,79 +79,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use a flexible array member to combine allocations. Allows removal of a
-pointless branch. A size of 0 means phys are not allocated.
+On Fri, Apr 10, 2026 at 02:49:12PM +0200, Wolfram Sang wrote:
+> Commit 89e5d7d61600 ("mailbox: remove superfluous internal header")
+> moved some constants to a public header but forgot to add a mailbox
+> specific prefix. Add this now to prevent future collisions on a too
+> generic naming.
+> 
+> Link: https://sashiko.dev/#/patchset/20260327151112.5202-2-wsa%2Brenesas%40sang-engineering.com
+> Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
+> ---
+> 
+> This patch improves the above mentioned commit which already sits in
+> -next. It is not really a fix but it probably is still a good idea to
+> apply it before rc1 to avoid confusion.
+> 
 
-Add __counted_by for extra runtime analysis.
+Agreed and makes sense to have the mailbox namespace for these macro.
 
-Signed-off-by: Rosen Penev <rosenp@gmail.com>
----
- drivers/usb/mtu3/mtu3.h      |  2 +-
- drivers/usb/mtu3/mtu3_plat.c | 18 ++++++------------
- 2 files changed, 7 insertions(+), 13 deletions(-)
+Reviewed-by: Sudeep Holla <sudeep.holla@kernel.org>
 
-diff --git a/drivers/usb/mtu3/mtu3.h b/drivers/usb/mtu3/mtu3.h
-index ba5a63669e5f..d71849388602 100644
---- a/drivers/usb/mtu3/mtu3.h
-+++ b/drivers/usb/mtu3/mtu3.h
-@@ -252,7 +252,6 @@ struct ssusb_mtk {
- 	struct mtu3 *u3d;
- 	void __iomem *mac_base;
- 	void __iomem *ippc_base;
--	struct phy **phys;
- 	int num_phys;
- 	int wakeup_irq;
- 	/* common power & clock */
-@@ -272,6 +271,7 @@ struct ssusb_mtk {
- 	struct regmap *uwk;
- 	u32 uwk_reg_base;
- 	u32 uwk_vers;
-+	struct phy *phys[] __counted_by(num_phys);
- };
- 
- /**
-diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
-index cc8a864dbd63..11a919fc3d47 100644
---- a/drivers/usb/mtu3/mtu3_plat.c
-+++ b/drivers/usb/mtu3/mtu3_plat.c
-@@ -240,17 +240,6 @@ static int get_ssusb_rscs(struct platform_device *pdev, struct ssusb_mtk *ssusb)
- 	if (ret)
- 		return ret;
- 
--	ssusb->num_phys = of_count_phandle_with_args(node,
--			"phys", "#phy-cells");
--	if (ssusb->num_phys > 0) {
--		ssusb->phys = devm_kcalloc(dev, ssusb->num_phys,
--					sizeof(*ssusb->phys), GFP_KERNEL);
--		if (!ssusb->phys)
--			return -ENOMEM;
--	} else {
--		ssusb->num_phys = 0;
--	}
--
- 	for (i = 0; i < ssusb->num_phys; i++) {
- 		ssusb->phys[i] = devm_of_phy_get_by_index(dev, node, i);
- 		if (IS_ERR(ssusb->phys[i])) {
-@@ -330,12 +319,17 @@ static int mtu3_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct ssusb_mtk *ssusb;
- 	int ret = -ENOMEM;
-+	int num_phys;
- 
-+	num_phys = of_count_phandle_with_args(dev->of_node,
-+			"phys", "#phy-cells");
- 	/* all elements are set to ZERO as default value */
--	ssusb = devm_kzalloc(dev, sizeof(*ssusb), GFP_KERNEL);
-+	ssusb = devm_kzalloc(dev, struct_size(ssusb, phys, num_phys), GFP_KERNEL);
- 	if (!ssusb)
- 		return -ENOMEM;
- 
-+	ssusb->num_phys = num_phys;
-+
- 	ret = dma_set_mask_and_coherent(dev, DMA_BIT_MASK(32));
- 	if (ret) {
- 		dev_err(dev, "No suitable DMA config available\n");
 -- 
-2.53.0
-
+Regards,
+Sudeep
 
