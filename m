@@ -4,65 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 884DCE64001
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Apr 2026 08:43:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98781F3ED6C
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Apr 2026 09:03:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=8LqfVVStbOlT4DXnXM+T9GIVxgtIHCLqQa4S5/50wtw=; b=s8d71l4LTUDWMgHLB7vttsWisN
-	ruh8VpTBLoN/CnDCt/fnpXg2iJhuFw1AWn8R5zTrv+m36uoNWzPL+GmaB2F81pzwap5J0yemdDT+S
-	1O3G84Y6WVRmOhuD5TDJJhoa78V2ADgK8bARmgJx9DkDJhbvr8m2i8p0AzPiGf0E8siVQFt7kMzFY
-	ev1K0gWRB30z6VibSvstdNEzBhcvL4gjE8494OEguqHiscu4dLeR9UM7cNrvx2d56BqkXS85bzoeR
-	YzB81eSWZpIi3YwO0RC22kjRb3t6etfalzFXonRinvpVIval3NDk2rGC72VtNmW3F5242JbWdRXkG
-	3Ar2Nm8A==;
+	bh=eswdepsRpw7C5ySDeJmU7CTcV9FFqFZQAQ3ydAH/FJg=; b=WWy8upLyEUPNOaOHOC8iicyF1M
+	CDfmiLDoi3Pl/t+jCfgWhTd3WXNTysLP1izknIYOCxhjIFS9XL+crj9LlVUENG8g3qVG+/p5Lwm1o
+	twuvo5tF3vMzWgE46YGKKQy7Epi4sJ+Dj63fOOT9k1ZswLKKiaeLZzP2DkhqCu6optj7j5+J8gKN8
+	l+FZYDYHtos1ShugxC/jU8p8b91FGPxFJ5gI92bE11IWpTqLS4+r+k46LX6SIbrsh3UHYvW199j/X
+	bwFJknYIlj1P9ePQ7MmKq4xUPcEjX2b6G1vbxyAi5d0MPbjJE1XxVELr7Y92n/eUqsZISwbrpb1My
+	/FsIGAqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBqPt-0000000EADg-27Fo;
-	Sun, 12 Apr 2026 08:43:41 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wBqiX-0000000EB0g-3fvL;
+	Sun, 12 Apr 2026 09:02:57 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBqPq-0000000EADC-22Lo;
-	Sun, 12 Apr 2026 08:43:39 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5390941990;
-	Sun, 12 Apr 2026 08:43:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9979BC19424;
-	Sun, 12 Apr 2026 08:43:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1775983417;
-	bh=fR4xkjuGCLJHBTxO040OymgXA4yd4dowEx+1+ardsFU=;
-	h=From:Date:Subject:To:Cc:From;
-	b=Zah5asWQkPVZs3mMcEZP9qbES6XbPKDeeMYD2w7o10qTmltxV40RcjW1yVyoHD5YZ
-	 nBrDZNGE5gic4YinYkAhidQpNPeHy7qZQ5cZpSYOh7Yn/61G273T/Sshuvkt8Yhx9i
-	 XlO/mecZ9Tq0cqlu+mh1UwD+c/QuWaIpYdHrs/P2/edmSEcxAFdPp+KG9EZjeDBP+W
-	 sFDWim3SgXBasfab/1Qtr3bQV6ACkYokB9JtjgI3fOpu70T2lHdi04Qu+jFwfFcLRL
-	 igaIYmbbrnn3d8zrnkXop/39ZPNxknhn8JuhVDNo85pMl0qfcuXyz5K1hBvlY2sNSS
-	 gI0TRPM7+8o7w==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Sun, 12 Apr 2026 10:43:26 +0200
-Subject: [PATCH net] net: airoha: Add missing PPE configurations in
- airoha_ppe_hw_init()
+	id 1wBqiV-0000000EAzu-0B1q
+	for linux-mediatek@lists.infradead.org;
+	Sun, 12 Apr 2026 09:02:56 +0000
+X-UUID: 5fb9fd62364e11f1a6de359d7043e138-20260412
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=eswdepsRpw7C5ySDeJmU7CTcV9FFqFZQAQ3ydAH/FJg=;
+	b=AIEtBjxo7H8BY4cwD9fF2KTvV0Gj6uDHfHwGJsHBIRoz6WijwrU14WU7x5fy+KuIV3h05KKSUQjAO+XAc4NtjEfHXf+tbiX/pWitsAcf2takfKxqtHyVMEAl7CDRz8gqlFnT2y251a2QvnVyNDgd4S0dkVvnMBAX4VAPv91IvjE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.12,REQID:b2212bd1-30b2-454b-a926-7211cd4f9ff2,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:e7bac3a,CLOUDID:0b48c324-cb5c-4236-a89a-9a7fb20c9bc4,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|865|888|898,TC:-5,Content:0|
+	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0
+	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 5fb9fd62364e11f1a6de359d7043e138-20260412
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+	(envelope-from <chris.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1892268187; Sun, 12 Apr 2026 02:02:46 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Sun, 12 Apr 2026 17:02:44 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Sun, 12 Apr 2026 17:02:44 +0800
+From: Chris Lu <chris.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>,
+	SS Wu <ss.wu@mediatek.com>, Steve Lee <steve.lee@mediatek.com>,
+	linux-bluetooth <linux-bluetooth@vger.kernel.org>, linux-kernel
+	<linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
+Subject: [PATCH v3] Bluetooth: btmtk: add event filter to filter specific event
+Date: Sun, 12 Apr 2026 17:02:42 +0800
+Message-ID: <20260412090242.1129701-1-chris.lu@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260412-airoha_ppe_hw_init-missing-bits-v1-1-06ac670819e3@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3NQQrCMBBG4auUWTuQRBH0KiJhbMbmX5iGTFCh9
- O4Gl9/mvY1MG9ToOm3U9A3DWgb8YaI5S1mUkYYpuHB2Jx9Y0NYssVaN+RNR0PkFM5SFH+jGx+S
- chHCRNHsaldr0ie//cKOine77/gO/4QwPdgAAAA==
-X-Change-ID: 20260412-airoha_ppe_hw_init-missing-bits-3d00a229adc1
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.3
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260412_014338_569226_12AD6C78 
-X-CRM114-Status: GOOD (  10.90  )
+X-CRM114-CacheID: sfid-20260412_020255_107324_156526AE 
+X-CRM114-Status: GOOD (  12.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,68 +87,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the following PPE configuration in airoha_ppe_hw_init routine:
-- 6RD hw offloading is currently not supported by Netfilter flowtable.
-  Disable explicitly PPE 6RD offloading in order to prevent PPE to learn
-  6RD flows and eventually interrupt the traffic.
-- Add missing PPE bind rate configuration for L3 and L2 traffic.
-  PPE bind rate configuration specifies the pps threshold to move a PPE
-  entry state from UNBIND to BIND. Without this configuration this value
-  is random.
-- Set ageing thresholds to the values used in the vendor SDK in order to
-  improve connection stability under load and avoid packet loss caused by
-  fast aging.
+Add an event filter to filter event with specific opcode to prevent BT
+stack from receiving unexpected event.
 
-Fixes: 00a7678310fe3 ("net: airoha: Introduce flowtable offload support")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Event with opcode 0xfc5d is generated when MediaTek's Bluetooth enable
+firmware logs and is not expected to be sent to userspace.
+
+Signed-off-by: Chris Lu <chris.lu@mediatek.com>
 ---
- drivers/net/ethernet/airoha/airoha_ppe.c | 14 +++++++++++---
- 1 file changed, 11 insertions(+), 3 deletions(-)
+v1 -> v2 : update commit message
+v2 -> v3 : add boundary check in btmtk.c in btmtk_recv_event; keep using
+           hci_recv_frame if CONFIG_BT_MTK wasn't defined in btmtk.h
+---
+ drivers/bluetooth/btmtk.c | 23 +++++++++++++++++++++++
+ drivers/bluetooth/btmtk.h |  7 +++++++
+ drivers/bluetooth/btusb.c |  2 ++
+ 3 files changed, 32 insertions(+)
 
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index c2c32b6833df..62cfffb4f0e5 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -111,13 +111,13 @@ static void airoha_ppe_hw_init(struct airoha_ppe *ppe)
- 		airoha_fe_rmw(eth, REG_PPE_BND_AGE0(i),
- 			      PPE_BIND_AGE0_DELTA_NON_L4 |
- 			      PPE_BIND_AGE0_DELTA_UDP,
--			      FIELD_PREP(PPE_BIND_AGE0_DELTA_NON_L4, 1) |
--			      FIELD_PREP(PPE_BIND_AGE0_DELTA_UDP, 12));
-+			      FIELD_PREP(PPE_BIND_AGE0_DELTA_NON_L4, 60) |
-+			      FIELD_PREP(PPE_BIND_AGE0_DELTA_UDP, 60));
- 		airoha_fe_rmw(eth, REG_PPE_BND_AGE1(i),
- 			      PPE_BIND_AGE1_DELTA_TCP_FIN |
- 			      PPE_BIND_AGE1_DELTA_TCP,
- 			      FIELD_PREP(PPE_BIND_AGE1_DELTA_TCP_FIN, 1) |
--			      FIELD_PREP(PPE_BIND_AGE1_DELTA_TCP, 7));
-+			      FIELD_PREP(PPE_BIND_AGE1_DELTA_TCP, 60));
- 
- 		airoha_fe_rmw(eth, REG_PPE_TB_HASH_CFG(i),
- 			      PPE_SRAM_TABLE_EN_MASK |
-@@ -145,7 +145,15 @@ static void airoha_ppe_hw_init(struct airoha_ppe *ppe)
- 			      FIELD_PREP(PPE_DRAM_TB_NUM_ENTRY_MASK,
- 					 dram_num_entries));
- 
-+		airoha_fe_rmw(eth, REG_PPE_BIND_RATE(i),
-+			      PPE_BIND_RATE_L2B_BIND_MASK |
-+			      PPE_BIND_RATE_BIND_MASK,
-+			      FIELD_PREP(PPE_BIND_RATE_L2B_BIND_MASK, 0x1e) |
-+			      FIELD_PREP(PPE_BIND_RATE_BIND_MASK, 0x1e));
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index 55516b4602db..78e84ecbbb91 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -1503,6 +1503,29 @@ int btmtk_usb_shutdown(struct hci_dev *hdev)
+ 	return 0;
+ }
+ EXPORT_SYMBOL_GPL(btmtk_usb_shutdown);
 +
- 		airoha_fe_wr(eth, REG_PPE_HASH_SEED(i), PPE_HASH_SEED);
-+		airoha_fe_clear(eth, REG_PPE_PPE_FLOW_CFG(i),
-+				PPE_FLOW_CFG_IP6_6RD_MASK);
++int btmtk_recv_event(struct hci_dev *hdev, struct sk_buff *skb)
++{
++	struct hci_event_hdr *hdr = (void *)skb->data;
++	struct hci_ev_cmd_complete *ec;
++
++	if (hdr->evt == HCI_EV_CMD_COMPLETE &&
++	    skb->len >= HCI_EVENT_HDR_SIZE + sizeof(*ec)) {
++		u16 opcode;
++
++		ec = (void *)(skb->data + HCI_EVENT_HDR_SIZE);
++		opcode = __le16_to_cpu(ec->opcode);
++
++		/* Filter vendor opcode */
++		if (opcode == 0xfc5d) {
++			kfree_skb(skb);
++			return 0;
++		}
++	}
++
++	return hci_recv_frame(hdev, skb);
++}
++EXPORT_SYMBOL_GPL(btmtk_recv_event);
+ #endif
  
- 		for (p = 0; p < ARRAY_SIZE(eth->ports); p++)
- 			airoha_fe_rmw(eth, REG_PPE_MTU(i, p),
-
----
-base-commit: 02f72964395911e7a09bb2ea2fe6f79eda4ea2c2
-change-id: 20260412-airoha_ppe_hw_init-missing-bits-3d00a229adc1
-
-Best regards,
+ MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
+diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
+index adaf385626ee..c93652508f14 100644
+--- a/drivers/bluetooth/btmtk.h
++++ b/drivers/bluetooth/btmtk.h
+@@ -218,6 +218,8 @@ int btmtk_usb_suspend(struct hci_dev *hdev);
+ int btmtk_usb_setup(struct hci_dev *hdev);
+ 
+ int btmtk_usb_shutdown(struct hci_dev *hdev);
++
++int btmtk_recv_event(struct hci_dev *hdev, struct sk_buff *skb);
+ #else
+ 
+ static inline int btmtk_set_bdaddr(struct hci_dev *hdev,
+@@ -296,4 +298,9 @@ static inline int btmtk_usb_shutdown(struct hci_dev *hdev)
+ {
+ 	return -EOPNOTSUPP;
+ }
++
++static inline int btmtk_recv_event(struct hci_dev *hdev, struct sk_buff *skb)
++{
++	return hci_recv_frame(hdev, skb);
++}
+ #endif
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index f9d515ee9124..daf8a387e660 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -4150,6 +4150,8 @@ static int btusb_probe(struct usb_interface *intf,
+ 	} else if (id->driver_info & BTUSB_MEDIATEK) {
+ 		/* Allocate extra space for Mediatek device */
+ 		priv_size += sizeof(struct btmtk_data);
++
++		data->recv_event = btmtk_recv_event;
+ 	}
+ 
+ 	data->recv_acl = hci_recv_frame;
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.45.2
 
 
