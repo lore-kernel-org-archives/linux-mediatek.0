@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA3E6E937EE
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Apr 2026 18:40:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09AEFE937FD
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Apr 2026 19:24:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Cc:To
+	:Subject:Message-ID:From:Content-Transfer-Encoding:Content-Type:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=d/wzw7uIYdaxudaglIH2J9UznWiy71S4q36mUbzo1/Y=; b=12+VRgFniqurhojgUsu45bws25
-	d223NCj1QbsluIeM8vzuqKDqZdcf5tT1LemvSXgNvr8TJSG4wC/B44I7Wklcic4o2lQyq+/T7J4vz
-	JP4OtB5f8oigrxVZYdULe+yGgRRu1N0+R2jCZEYkmH38y7Io9mc9QBanEkllHJcSNZQxn2ILKy9K4
-	0Qqu08q1fzlJ5UZ/5WJxpnKgG2NAcOYA2G5SnLQ0TVLqXYo/tP/Pxvny46sWQBnQV85mNK+QpPA0v
-	TA67ZcO/WEbsj5PabIFzB7zM/n8STvFCFMHaUzotYBiio4LmYIX37cE7nEKWz8fCnQtrw0Jdldb2m
-	AIbS9TpQ==;
+	bh=Iy3hhlwzu20rJFN2tuJlW97lY33vaDiPnXe0xqQOhSQ=; b=fl+9BCcck+iTwg0HtdLv75tpFu
+	rgL7IxQnP5oeAREpYSgwFBPqSPN361a5FEPLuVzyiq8IvtCMFnep6fhx1P+ml25RuVtXbj/iNucWW
+	AgfPNwFaAade2mup3ALiB/lysjJ/FAnvCdjI/UeHpwiqmEi1yfuGoFS6sYE5g6r3vcoG4OPgVvmJv
+	qAO0YIjnAnW0a0zbQMuZaGndF1Nre1HO97YmauX6mUfnAktUl6ycriWEA0CrkQ4uTjV5cv6MCnBVi
+	gLORfJpmacAxAJY2r9sTfAsDZ7gpn+jPBxvvMDrHQEDx9s1CBwc5MdJCls5UmxMcTjjhU9KB6j+lk
+	LviIzosA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBzje-0000000Eb2g-49S0;
-	Sun, 12 Apr 2026 18:40:43 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wC0QI-0000000EdCx-3Vsi;
+	Sun, 12 Apr 2026 19:24:46 +0000
+Received: from out-170.mta0.migadu.com ([2001:41d0:1004:224b::aa])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBzjc-0000000Eb24-2KN5;
-	Sun, 12 Apr 2026 18:40:41 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3A0F844537;
-	Sun, 12 Apr 2026 18:40:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 14721C2BCB0;
-	Sun, 12 Apr 2026 18:40:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776019239;
-	bh=COsDTpK+goKtZ6v+1Eg3O5mezNOOSNJXILqQG+OL680=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=fyFbOPefESr9S9R10KtfTKx31mwLKY1l2YXY3Okb2t4icf0dAZ7EI7c/4N1DeAluc
-	 +4mDvrZX/gCAhHDISQs52gYmVxxzk5ASj1s+vqeReby/izDfaWcEyDWkSp6/cBI3WR
-	 GhkB9fTBOcenrOz/IPuvY/O+LmsWeHzTESRd9KYoRmIGwTwi8ZAG4sbeMJDggvg+44
-	 Fagib4jdfGvlcZr3mTRhKtERc2Ze2cET3w2N9fKQjKTwl/logTm0V49GSR1Y/DjxKQ
-	 ZHXp7l6uqT8Qy8ggo9jCFPTRHzcNng5rQVR69WcKfkHktLY/Karu1JL4XneJdtgxwy
-	 YNF6R9JDIctOA==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id B9DDB3809A8C;
-	Sun, 12 Apr 2026 18:40:12 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1wC0QF-0000000EdCa-2p90
+	for linux-mediatek@lists.infradead.org;
+	Sun, 12 Apr 2026 19:24:45 +0000
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net] net: airoha: Add missing RX_CPU_IDX() configuration
- in
- airoha_qdma_cleanup_rx_queue()
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <177601921154.3370691.1789981504047499151.git-patchwork-notify@kernel.org>
-Date: Sun, 12 Apr 2026 18:40:11 +0000
-References: <20260408-airoha-cpu-idx-airoha_qdma_cleanup_rx_queue-v1-1-8efa64844308@kernel.org>
-In-Reply-To: <20260408-airoha-cpu-idx-airoha_qdma_cleanup_rx_queue-v1-1-8efa64844308@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1776021876;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Iy3hhlwzu20rJFN2tuJlW97lY33vaDiPnXe0xqQOhSQ=;
+	b=pdbkd0MD/ZPOv2q7gy0vwIbn+SPzxhxnX8WgErYwxbyVXyh8pmkD5k/fsVyqPSPYg2dcCz
+	qvMZXkhAxkg8zPTeQYXnEgS4RsgqdnL/vznfjFoJoJ0j8Gr+2mDk8uMFZhh/JY35WARTLa
+	lqJXuoAQ4Z9Ot3NIa1CZQjMKC0SGhlA=
+Date: Sun, 12 Apr 2026 19:24:30 +0000
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Frank Wunderlich" <frank.wunderlich@linux.dev>
+Message-ID: <ee4d27c8bf587a66953d8705ccbaecdffdc66d68@linux.dev>
+TLS-Required: No
+Subject: Re: [RFC net-next v5 0/3] Add RSS and LRO support
+To: "Jakub Kicinski" <kuba@kernel.org>, "Frank Wunderlich"
+ <frank-w@public-files.de>
+Cc: linux@fw-web.de, nbd@nbd.name, sean.wang@mediatek.com,
+ lorenzo@kernel.org, andrew+netdev@lunn.ch, davem@davemloft.net,
+ edumazet@google.com, pabeni@redhat.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, linux@armlinux.org.uk,
+ daniel@makrotopia.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20260412075402.2eda04d3@kernel.org>
+References: <20251219151219.77115-1-linux@fw-web.de>
+ <trinity-1304ecb5-9a3f-4e37-b2c6-bcd7f35c2921-1775995067670@trinity-msg-rest-gmx-gmx-live-579dcf886d-nkpds>
+ <20260412075402.2eda04d3@kernel.org>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260412_114040_614441_C7945993 
-X-CRM114-Status: UNSURE (   8.08  )
+X-CRM114-CacheID: sfid-20260412_122444_490624_A87CD010 
+X-CRM114-Status: UNSURE (   5.39  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,31 +78,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Am 12. April 2026 um 16:54 schrieb "Jakub Kicinski" <kuba@kernel.org>:
+>=20
+>=20On Sun, 12 Apr 2026 11:57:47 +0000 Frank Wunderlich wrote:
+>=20
+>=20>=20
+>=20> some time has passed without a single comment, so i just send a fri=
+endly reminder ;)
+> >=20
+>=20You have a lot of people in the To:
+> Could you clarify who you expect to action these patches?
+> Patches are an RFC and I suppose ain't nobody got much comments?
 
-This patch was applied to netdev/net.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+Hi,
 
-On Wed, 08 Apr 2026 20:26:56 +0200 you wrote:
-> When the descriptor index written in REG_RX_CPU_IDX() is equal to the one
-> stored in REG_RX_DMA_IDX(), the hw will stop since the QDMA RX ring is
-> empty.
-> Add missing REG_RX_CPU_IDX() configuration in airoha_qdma_cleanup_rx_queue
-> routine during QDMA RX ring cleanup.
-> 
-> Fixes: 514aac359987 ("net: airoha: Add missing cleanup bits in airoha_qdma_cleanup_rx_queue()")
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> 
-> [...]
+imho 11 people are in "To" is not much, but i was told that no comments c=
+an mean
+"OK so far" so i will send v6 soon rebased on current net-next.
 
-Here is the summary with links:
-  - [net] net: airoha: Add missing RX_CPU_IDX() configuration in airoha_qdma_cleanup_rx_queue()
-    https://git.kernel.org/netdev/net/c/656121b15503
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+regards Frank
 
