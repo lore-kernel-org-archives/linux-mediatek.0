@@ -4,60 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4AA4E937EF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Apr 2026 17:13:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA3E6E937EE
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Apr 2026 18:40:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b9bT1aZc+fZ47P5keOfyluoi5sTgS3zjLq9FMh9TGWM=; b=Vi1CH0Incw46Nj1PReW7V8k63A
-	+WXgtvNSTS0MN1VMv9l4jNDvXymNjdviHmBbMeeldJXHch2VH3FbXSFwRnly4a3YM2hjLyC4VxLDF
-	PTMhqXFTK5WM2WtcqDCDFCr/HJjs49Nl9DKHjTSgI50XTwlOes3dPxWM/iCixyjIoeKpdESMLeu3x
-	FZ/K56Ak85y/6xtYCLzVUzYUWV+K0wIPDNOpWV/zC6ugFQbjAY9OyokfIrYAkq4ANflPPyIKlJR3C
-	e/NN0yukc58JQ8lRvy7AD0vmCluLaolILj58ZHiYVkIpbOGx8FsOrKM3u0x16UvNTdzjnVEqv52EX
-	gvy5hQBQ==;
+	bh=d/wzw7uIYdaxudaglIH2J9UznWiy71S4q36mUbzo1/Y=; b=12+VRgFniqurhojgUsu45bws25
+	d223NCj1QbsluIeM8vzuqKDqZdcf5tT1LemvSXgNvr8TJSG4wC/B44I7Wklcic4o2lQyq+/T7J4vz
+	JP4OtB5f8oigrxVZYdULe+yGgRRu1N0+R2jCZEYkmH38y7Io9mc9QBanEkllHJcSNZQxn2ILKy9K4
+	0Qqu08q1fzlJ5UZ/5WJxpnKgG2NAcOYA2G5SnLQ0TVLqXYo/tP/Pxvny46sWQBnQV85mNK+QpPA0v
+	TA67ZcO/WEbsj5PabIFzB7zM/n8STvFCFMHaUzotYBiio4LmYIX37cE7nEKWz8fCnQtrw0Jdldb2m
+	AIbS9TpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wByNW-0000000EWuz-4A5s;
-	Sun, 12 Apr 2026 17:13:46 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wBzje-0000000Eb2g-49S0;
+	Sun, 12 Apr 2026 18:40:43 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wByNV-0000000EWsh-10UL;
-	Sun, 12 Apr 2026 17:13:45 +0000
+	id 1wBzjc-0000000Eb24-2KN5;
+	Sun, 12 Apr 2026 18:40:41 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9C2C960180;
-	Sun, 12 Apr 2026 17:13:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E8228C19424;
-	Sun, 12 Apr 2026 17:13:43 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 3A0F844537;
+	Sun, 12 Apr 2026 18:40:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 14721C2BCB0;
+	Sun, 12 Apr 2026 18:40:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776014024;
-	bh=BwXzSKo8O6XZ4uKlUSwMzQY2fTA/0n/oxvStx7Ka5oM=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=g7VwjRcKwFy7gc7X/oa6VeIRpU4Tk/HA1FXGoi5k9c4RH3PiLaA36raLAJw6wnO24
-	 WgouBjti2v0hnGvVCwXQuMVwLf0nUvk/PsuZp8cPZVyEWhAtdeu6t/PqpoH3G0l51H
-	 K/zt9lTBgho3rsapudLiFwFuAqFtvTkP8LNNwJh+LrA+9eCnAsXs4MTJ0YaI3M8ho3
-	 pY/NT5vTdsnkgfRPY6C7X7Ap/0lU2DhItyRBXs07VlQwsEu/3X32ZU/6BGCjfhmB3v
-	 Vx87RG4SMWw8uSfKJO/FqvhcDvZc6nnZKwkqVC+VCFIV8jq/S1npptrGx3jF0KksFF
-	 y8AfL9AhvIOiQ==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Sun, 12 Apr 2026 19:13:14 +0200
-Subject: [PATCH net-next 3/3] net: airoha: Rely on net_device pointer in
- ETS callbacks
-MIME-Version: 1.0
+	s=k20201202; t=1776019239;
+	bh=COsDTpK+goKtZ6v+1Eg3O5mezNOOSNJXILqQG+OL680=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=fyFbOPefESr9S9R10KtfTKx31mwLKY1l2YXY3Okb2t4icf0dAZ7EI7c/4N1DeAluc
+	 +4mDvrZX/gCAhHDISQs52gYmVxxzk5ASj1s+vqeReby/izDfaWcEyDWkSp6/cBI3WR
+	 GhkB9fTBOcenrOz/IPuvY/O+LmsWeHzTESRd9KYoRmIGwTwi8ZAG4sbeMJDggvg+44
+	 Fagib4jdfGvlcZr3mTRhKtERc2Ze2cET3w2N9fKQjKTwl/logTm0V49GSR1Y/DjxKQ
+	 ZHXp7l6uqT8Qy8ggo9jCFPTRHzcNng5rQVR69WcKfkHktLY/Karu1JL4XneJdtgxwy
+	 YNF6R9JDIctOA==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id B9DDB3809A8C;
+	Sun, 12 Apr 2026 18:40:12 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260412-airoha-multi-serdes-preliminary-patch-v1-3-08d5b670ca8f@kernel.org>
-References: <20260412-airoha-multi-serdes-preliminary-patch-v1-0-08d5b670ca8f@kernel.org>
-In-Reply-To: <20260412-airoha-multi-serdes-preliminary-patch-v1-0-08d5b670ca8f@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Xuegang Lu <xuegang.lu@airoha.com>, Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.3
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net] net: airoha: Add missing RX_CPU_IDX() configuration
+ in
+ airoha_qdma_cleanup_rx_queue()
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <177601921154.3370691.1789981504047499151.git-patchwork-notify@kernel.org>
+Date: Sun, 12 Apr 2026 18:40:11 +0000
+References: <20260408-airoha-cpu-idx-airoha_qdma_cleanup_rx_queue-v1-1-8efa64844308@kernel.org>
+In-Reply-To: <20260408-airoha-cpu-idx-airoha_qdma_cleanup_rx_queue-v1-1-8efa64844308@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260412_114040_614441_C7945993 
+X-CRM114-Status: UNSURE (   8.08  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,121 +77,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove airoha_gdm_port dependency in ETS tc callback signatures and rely
-on net_device pointer instead. Please note this patch does not introduce
-any logical change and it is a preliminary patch in order to support
-multiple net_devices connected to the same GDM3 or GDM4 port via an
-external hw arbiter.
+Hello:
 
-Tested-by: Xuegang Lu <xuegang.lu@airoha.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c | 30 ++++++++++++++----------------
- 1 file changed, 14 insertions(+), 16 deletions(-)
+This patch was applied to netdev/net.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index c2b5fcffce82..d426dc173d99 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -2138,10 +2138,11 @@ airoha_ethtool_get_rmon_stats(struct net_device *dev,
- 	} while (u64_stats_fetch_retry(&port->stats.syncp, start));
- }
- 
--static int airoha_qdma_set_chan_tx_sched(struct airoha_gdm_port *port,
-+static int airoha_qdma_set_chan_tx_sched(struct net_device *dev,
- 					 int channel, enum tx_sched_mode mode,
- 					 const u16 *weights, u8 n_weights)
- {
-+	struct airoha_gdm_port *port = netdev_priv(dev);
- 	int i;
- 
- 	for (i = 0; i < AIROHA_NUM_TX_RING; i++)
-@@ -2173,17 +2174,15 @@ static int airoha_qdma_set_chan_tx_sched(struct airoha_gdm_port *port,
- 	return 0;
- }
- 
--static int airoha_qdma_set_tx_prio_sched(struct airoha_gdm_port *port,
--					 int channel)
-+static int airoha_qdma_set_tx_prio_sched(struct net_device *dev, int channel)
- {
- 	static const u16 w[AIROHA_NUM_QOS_QUEUES] = {};
- 
--	return airoha_qdma_set_chan_tx_sched(port, channel, TC_SCH_SP, w,
-+	return airoha_qdma_set_chan_tx_sched(dev, channel, TC_SCH_SP, w,
- 					     ARRAY_SIZE(w));
- }
- 
--static int airoha_qdma_set_tx_ets_sched(struct airoha_gdm_port *port,
--					int channel,
-+static int airoha_qdma_set_tx_ets_sched(struct net_device *dev, int channel,
- 					struct tc_ets_qopt_offload *opt)
- {
- 	struct tc_ets_qopt_offload_replace_params *p = &opt->replace_params;
-@@ -2224,20 +2223,21 @@ static int airoha_qdma_set_tx_ets_sched(struct airoha_gdm_port *port,
- 	else if (nstrict < AIROHA_NUM_QOS_QUEUES - 1)
- 		mode = nstrict + 1;
- 
--	return airoha_qdma_set_chan_tx_sched(port, channel, mode, w,
-+	return airoha_qdma_set_chan_tx_sched(dev, channel, mode, w,
- 					     ARRAY_SIZE(w));
- }
- 
--static int airoha_qdma_get_tx_ets_stats(struct airoha_gdm_port *port,
--					int channel,
-+static int airoha_qdma_get_tx_ets_stats(struct net_device *dev, int channel,
- 					struct tc_ets_qopt_offload *opt)
- {
-+	struct airoha_gdm_port *port = netdev_priv(dev);
- 	u64 cpu_tx_packets = airoha_qdma_rr(port->qdma,
- 					    REG_CNTR_VAL(channel << 1));
- 	u64 fwd_tx_packets = airoha_qdma_rr(port->qdma,
- 					    REG_CNTR_VAL((channel << 1) + 1));
- 	u64 tx_packets = (cpu_tx_packets - port->cpu_tx_packets) +
- 			 (fwd_tx_packets - port->fwd_tx_packets);
-+
- 	_bstats_update(opt->stats.bstats, 0, tx_packets);
- 
- 	port->cpu_tx_packets = cpu_tx_packets;
-@@ -2246,7 +2246,7 @@ static int airoha_qdma_get_tx_ets_stats(struct airoha_gdm_port *port,
- 	return 0;
- }
- 
--static int airoha_tc_setup_qdisc_ets(struct airoha_gdm_port *port,
-+static int airoha_tc_setup_qdisc_ets(struct net_device *dev,
- 				     struct tc_ets_qopt_offload *opt)
- {
- 	int channel;
-@@ -2259,12 +2259,12 @@ static int airoha_tc_setup_qdisc_ets(struct airoha_gdm_port *port,
- 
- 	switch (opt->command) {
- 	case TC_ETS_REPLACE:
--		return airoha_qdma_set_tx_ets_sched(port, channel, opt);
-+		return airoha_qdma_set_tx_ets_sched(dev, channel, opt);
- 	case TC_ETS_DESTROY:
- 		/* PRIO is default qdisc scheduler */
--		return airoha_qdma_set_tx_prio_sched(port, channel);
-+		return airoha_qdma_set_tx_prio_sched(dev, channel);
- 	case TC_ETS_STATS:
--		return airoha_qdma_get_tx_ets_stats(port, channel, opt);
-+		return airoha_qdma_get_tx_ets_stats(dev, channel, opt);
- 	default:
- 		return -EOPNOTSUPP;
- 	}
-@@ -2807,11 +2807,9 @@ static int airoha_tc_setup_qdisc_htb(struct net_device *dev,
- static int airoha_dev_tc_setup(struct net_device *dev, enum tc_setup_type type,
- 			       void *type_data)
- {
--	struct airoha_gdm_port *port = netdev_priv(dev);
--
- 	switch (type) {
- 	case TC_SETUP_QDISC_ETS:
--		return airoha_tc_setup_qdisc_ets(port, type_data);
-+		return airoha_tc_setup_qdisc_ets(dev, type_data);
- 	case TC_SETUP_QDISC_HTB:
- 		return airoha_tc_setup_qdisc_htb(dev, type_data);
- 	case TC_SETUP_BLOCK:
+On Wed, 08 Apr 2026 20:26:56 +0200 you wrote:
+> When the descriptor index written in REG_RX_CPU_IDX() is equal to the one
+> stored in REG_RX_DMA_IDX(), the hw will stop since the QDMA RX ring is
+> empty.
+> Add missing REG_RX_CPU_IDX() configuration in airoha_qdma_cleanup_rx_queue
+> routine during QDMA RX ring cleanup.
+> 
+> Fixes: 514aac359987 ("net: airoha: Add missing cleanup bits in airoha_qdma_cleanup_rx_queue()")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> 
+> [...]
 
+Here is the summary with links:
+  - [net] net: airoha: Add missing RX_CPU_IDX() configuration in airoha_qdma_cleanup_rx_queue()
+    https://git.kernel.org/netdev/net/c/656121b15503
+
+You are awesome, thank you!
 -- 
-2.53.0
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
