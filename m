@@ -4,75 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98781F3ED6C
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Apr 2026 09:03:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63305F3ED6E
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Apr 2026 09:23:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=eswdepsRpw7C5ySDeJmU7CTcV9FFqFZQAQ3ydAH/FJg=; b=WWy8upLyEUPNOaOHOC8iicyF1M
-	CDfmiLDoi3Pl/t+jCfgWhTd3WXNTysLP1izknIYOCxhjIFS9XL+crj9LlVUENG8g3qVG+/p5Lwm1o
-	twuvo5tF3vMzWgE46YGKKQy7Epi4sJ+Dj63fOOT9k1ZswLKKiaeLZzP2DkhqCu6optj7j5+J8gKN8
-	l+FZYDYHtos1ShugxC/jU8p8b91FGPxFJ5gI92bE11IWpTqLS4+r+k46LX6SIbrsh3UHYvW199j/X
-	bwFJknYIlj1P9ePQ7MmKq4xUPcEjX2b6G1vbxyAi5d0MPbjJE1XxVELr7Y92n/eUqsZISwbrpb1My
-	/FsIGAqg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HT1LmTE+wyO1hbqhpbnpGgkpi6vYm7hFobdw7gJUxz4=; b=bahhxds5u+X268
+	76cJwcxN/Nw2HAq4+WUR2J8/S/u1NO/zsyMSscw6/Qme0xa03uCzZnpy9ALVTguh3LRblTf2rQ/kc
+	dp1n8zoq8loGBvdQavGkr9Mi57TMFP8bZx5sEsMNcMgGuXSs0ig1oe+eZvifpouVZ8co92PZyqtWq
+	sLBXSWdmAUTrk3RDBl6tVIClDhadcus1BtNPxiXTWrMKFBrqi2VLKzcQPT5MMNTL30nHSX+4bDqd7
+	7bniO7LagLF1gic/loUCdEqxSkxfdB9ijCNwlNY4l5EPZ4B4j4ZyiY1RuQkbnDxDA1IAy0HXksRvz
+	1cYYiILOenTLWpajz23A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBqiX-0000000EB0g-3fvL;
-	Sun, 12 Apr 2026 09:02:57 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1wBr2i-0000000ECBn-0Emh;
+	Sun, 12 Apr 2026 09:23:48 +0000
+Received: from mxout4.routing.net ([2a03:2900:1:a::9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBqiV-0000000EAzu-0B1q
-	for linux-mediatek@lists.infradead.org;
-	Sun, 12 Apr 2026 09:02:56 +0000
-X-UUID: 5fb9fd62364e11f1a6de359d7043e138-20260412
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=eswdepsRpw7C5ySDeJmU7CTcV9FFqFZQAQ3ydAH/FJg=;
-	b=AIEtBjxo7H8BY4cwD9fF2KTvV0Gj6uDHfHwGJsHBIRoz6WijwrU14WU7x5fy+KuIV3h05KKSUQjAO+XAc4NtjEfHXf+tbiX/pWitsAcf2takfKxqtHyVMEAl7CDRz8gqlFnT2y251a2QvnVyNDgd4S0dkVvnMBAX4VAPv91IvjE=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:b2212bd1-30b2-454b-a926-7211cd4f9ff2,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:e7bac3a,CLOUDID:0b48c324-cb5c-4236-a89a-9a7fb20c9bc4,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|865|888|898,TC:-5,Content:0|
-	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0
-	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 5fb9fd62364e11f1a6de359d7043e138-20260412
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
-	(envelope-from <chris.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1892268187; Sun, 12 Apr 2026 02:02:46 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Sun, 12 Apr 2026 17:02:44 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Sun, 12 Apr 2026 17:02:44 +0800
-From: Chris Lu <chris.lu@mediatek.com>
-To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
-	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>,
-	SS Wu <ss.wu@mediatek.com>, Steve Lee <steve.lee@mediatek.com>,
-	linux-bluetooth <linux-bluetooth@vger.kernel.org>, linux-kernel
-	<linux-kernel@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH v3] Bluetooth: btmtk: add event filter to filter specific event
-Date: Sun, 12 Apr 2026 17:02:42 +0800
-Message-ID: <20260412090242.1129701-1-chris.lu@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1wBr2e-0000000EC9k-3Xh7;
+	Sun, 12 Apr 2026 09:23:46 +0000
+Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
+	by mxout4.routing.net (Postfix) with ESMTP id A0DAB100501;
+	Sun, 12 Apr 2026 09:23:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=routing; t=1775985819;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=HT1LmTE+wyO1hbqhpbnpGgkpi6vYm7hFobdw7gJUxz4=;
+	b=BhALq0GLxllLVKbwbzl8x7kH5PUqeVVAHiZuXhvdJll5yG/N+MCTT5L5kEmcAeI9mdcRdE
+	fEOwxd7M5UOD6rIsbe1CBAft5afYXJ1EE0mdtrN18l6SmPa6NJcr9TnNsdbONEa5osy7C+
+	PdZ+MUwrwMrxf9sUyJRWC3X2wWvk/tM=
+Received: from frank-u24.. (fttx-pool-80.245.78.225.bambit.de [80.245.78.225])
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 7145B1226F8;
+	Sun, 12 Apr 2026 09:23:39 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Subject: [PATCH v2 2/4] arm64: dts: mediatek: mt7988a-bpi-r4pro: drop duplicate fan properties
+Date: Sun, 12 Apr 2026 11:23:30 +0200
+Message-ID: <20260412092333.6371-3-linux@fw-web.de>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260412092333.6371-1-linux@fw-web.de>
+References: <20260412092333.6371-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260412_020255_107324_156526AE 
-X-CRM114-Status: GOOD (  12.51  )
+X-CRM114-CacheID: sfid-20260412_022345_079698_9211DC99 
+X-CRM114-Status: UNSURE (   8.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,97 +71,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Andrew LaMarche <andrewjlamarche@gmail.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add an event filter to filter event with specific opcode to prevent BT
-stack from receiving unexpected event.
+From: Frank Wunderlich <frank-w@public-files.de>
 
-Event with opcode 0xfc5d is generated when MediaTek's Bluetooth enable
-firmware logs and is not expected to be sent to userspace.
+These properties are already set in the original node and do not need
+to be defined again.
 
-Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
-v1 -> v2 : update commit message
-v2 -> v3 : add boundary check in btmtk.c in btmtk_recv_event; keep using
-           hci_recv_frame if CONFIG_BT_MTK wasn't defined in btmtk.h
----
- drivers/bluetooth/btmtk.c | 23 +++++++++++++++++++++++
- drivers/bluetooth/btmtk.h |  7 +++++++
- drivers/bluetooth/btusb.c |  2 ++
- 3 files changed, 32 insertions(+)
+ .../boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi     | 7 -------
+ 1 file changed, 7 deletions(-)
 
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index 55516b4602db..78e84ecbbb91 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -1503,6 +1503,29 @@ int btmtk_usb_shutdown(struct hci_dev *hdev)
- 	return 0;
- }
- EXPORT_SYMBOL_GPL(btmtk_usb_shutdown);
-+
-+int btmtk_recv_event(struct hci_dev *hdev, struct sk_buff *skb)
-+{
-+	struct hci_event_hdr *hdr = (void *)skb->data;
-+	struct hci_ev_cmd_complete *ec;
-+
-+	if (hdr->evt == HCI_EV_CMD_COMPLETE &&
-+	    skb->len >= HCI_EVENT_HDR_SIZE + sizeof(*ec)) {
-+		u16 opcode;
-+
-+		ec = (void *)(skb->data + HCI_EVENT_HDR_SIZE);
-+		opcode = __le16_to_cpu(ec->opcode);
-+
-+		/* Filter vendor opcode */
-+		if (opcode == 0xfc5d) {
-+			kfree_skb(skb);
-+			return 0;
-+		}
-+	}
-+
-+	return hci_recv_frame(hdev, skb);
-+}
-+EXPORT_SYMBOL_GPL(btmtk_recv_event);
- #endif
+diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi
+index 1175ee156cb3..759f608d1081 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi
+@@ -185,13 +185,6 @@ &eth {
+ 	status = "okay";
+ };
  
- MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
-diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
-index adaf385626ee..c93652508f14 100644
---- a/drivers/bluetooth/btmtk.h
-+++ b/drivers/bluetooth/btmtk.h
-@@ -218,6 +218,8 @@ int btmtk_usb_suspend(struct hci_dev *hdev);
- int btmtk_usb_setup(struct hci_dev *hdev);
- 
- int btmtk_usb_shutdown(struct hci_dev *hdev);
-+
-+int btmtk_recv_event(struct hci_dev *hdev, struct sk_buff *skb);
- #else
- 
- static inline int btmtk_set_bdaddr(struct hci_dev *hdev,
-@@ -296,4 +298,9 @@ static inline int btmtk_usb_shutdown(struct hci_dev *hdev)
- {
- 	return -EOPNOTSUPP;
- }
-+
-+static inline int btmtk_recv_event(struct hci_dev *hdev, struct sk_buff *skb)
-+{
-+	return hci_recv_frame(hdev, skb);
-+}
- #endif
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index f9d515ee9124..daf8a387e660 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -4150,6 +4150,8 @@ static int btusb_probe(struct usb_interface *intf,
- 	} else if (id->driver_info & BTUSB_MEDIATEK) {
- 		/* Allocate extra space for Mediatek device */
- 		priv_size += sizeof(struct btmtk_data);
-+
-+		data->recv_event = btmtk_recv_event;
- 	}
- 
- 	data->recv_acl = hci_recv_frame;
+-&fan {
+-	pinctrl-0 = <&pwm0_pins>;
+-	pinctrl-names = "default";
+-	pwms = <&pwm 0 50000>;
+-	status = "okay";
+-};
+-
+ &gmac0 {
+ 	status = "okay";
+ };
 -- 
-2.45.2
+2.43.0
 
 
