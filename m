@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09AEFE937FD
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Apr 2026 19:24:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03187E937E7
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Apr 2026 22:30:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Cc:To
-	:Subject:Message-ID:From:Content-Transfer-Encoding:Content-Type:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Iy3hhlwzu20rJFN2tuJlW97lY33vaDiPnXe0xqQOhSQ=; b=fl+9BCcck+iTwg0HtdLv75tpFu
-	rgL7IxQnP5oeAREpYSgwFBPqSPN361a5FEPLuVzyiq8IvtCMFnep6fhx1P+ml25RuVtXbj/iNucWW
-	AgfPNwFaAade2mup3ALiB/lysjJ/FAnvCdjI/UeHpwiqmEi1yfuGoFS6sYE5g6r3vcoG4OPgVvmJv
-	qAO0YIjnAnW0a0zbQMuZaGndF1Nre1HO97YmauX6mUfnAktUl6ycriWEA0CrkQ4uTjV5cv6MCnBVi
-	gLORfJpmacAxAJY2r9sTfAsDZ7gpn+jPBxvvMDrHQEDx9s1CBwc5MdJCls5UmxMcTjjhU9KB6j+lk
-	LviIzosA==;
+	bh=cqEHVbalOZDMrIAVohHC244pfpG/Lm7e2ymVgUVhKuU=; b=IIQhyAMDDsA4kSdm+6ui/Td4Ak
+	OVek2xU5f4jk7uG9IyvqIgRfJw5VjWNSfa7Tp8+VGkN7xmPLorSiNyE/KEWJTV6LpbIhvWYx+UbbP
+	ygKWnByJRlZ+pHpa0cB7+nFC+/bE0YREPnVfsNCzi7Yxb/ir3rlMGF898u6UGqHzVyJ6fnmsRxuV1
+	LeUkvCMmupPZvd/tQPChVlWh14t5PzLAxumSjLgGA+L+vk1ifK88Tak5wVJ3DlnkwaEMJLH0TOOFP
+	xrisjG00BCt4oLNIhf39DTCYibte+sQnkYcAHX7wqPKnWZV61xkGt/OiMh3s1BwkamcGkoqfzjAMt
+	zIhGXPPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wC0QI-0000000EdCx-3Vsi;
-	Sun, 12 Apr 2026 19:24:46 +0000
-Received: from out-170.mta0.migadu.com ([2001:41d0:1004:224b::aa])
+	id 1wC3KD-0000000EjFI-1WtP;
+	Sun, 12 Apr 2026 22:30:42 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wC0QF-0000000EdCa-2p90
-	for linux-mediatek@lists.infradead.org;
-	Sun, 12 Apr 2026 19:24:45 +0000
-MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1776021876;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Iy3hhlwzu20rJFN2tuJlW97lY33vaDiPnXe0xqQOhSQ=;
-	b=pdbkd0MD/ZPOv2q7gy0vwIbn+SPzxhxnX8WgErYwxbyVXyh8pmkD5k/fsVyqPSPYg2dcCz
-	qvMZXkhAxkg8zPTeQYXnEgS4RsgqdnL/vznfjFoJoJ0j8Gr+2mDk8uMFZhh/JY35WARTLa
-	lqJXuoAQ4Z9Ot3NIa1CZQjMKC0SGhlA=
-Date: Sun, 12 Apr 2026 19:24:30 +0000
+	id 1wC3K5-0000000EjEo-1y37;
+	Sun, 12 Apr 2026 22:30:39 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id A47AB44576;
+	Sun, 12 Apr 2026 22:30:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7F039C19424;
+	Sun, 12 Apr 2026 22:30:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1776033032;
+	bh=Vkbqz7zSnWjuc4pCYjwiNLsgGE+7Xgk1fU+bplSwK2M=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=A7raTKe8zc8OvdXJU8zSKq+zNvse90ovHrWigUqCsBUMRLoc9pKghuGwdsqo+jI2u
+	 IlgcW4V5Ac3ntYWPOX0ecHFsQj6cYLonurfiTldpPIODcyKZ06At4sWrEiG2WD/Wwe
+	 llH/5OGJtN2IxSv+Ibrv3I0GQDfLAdvHb1CNVlcSCQ4ydwPuwWuzKyXv6WzWwQhWvo
+	 9RVehWeezjdo/eQPZ1+VBvBU+MiI1UV4RGamAEh9O6ntTcCSLzobZZfJ/Ui16xogxe
+	 cU7kOlfQA9xjw/jl93YBO6BvlB02UbTfy0vkWHc0fkyKV7HfgCn5p/1y31w4IS/Jg1
+	 K/JLCRYIWA8xQ==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 02C793809A8C;
+	Sun, 12 Apr 2026 22:30:06 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Frank Wunderlich" <frank.wunderlich@linux.dev>
-Message-ID: <ee4d27c8bf587a66953d8705ccbaecdffdc66d68@linux.dev>
-TLS-Required: No
-Subject: Re: [RFC net-next v5 0/3] Add RSS and LRO support
-To: "Jakub Kicinski" <kuba@kernel.org>, "Frank Wunderlich"
- <frank-w@public-files.de>
-Cc: linux@fw-web.de, nbd@nbd.name, sean.wang@mediatek.com,
- lorenzo@kernel.org, andrew+netdev@lunn.ch, davem@davemloft.net,
- edumazet@google.com, pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, linux@armlinux.org.uk,
- daniel@makrotopia.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-In-Reply-To: <20260412075402.2eda04d3@kernel.org>
-References: <20251219151219.77115-1-linux@fw-web.de>
- <trinity-1304ecb5-9a3f-4e37-b2c6-bcd7f35c2921-1775995067670@trinity-msg-rest-gmx-gmx-live-579dcf886d-nkpds>
- <20260412075402.2eda04d3@kernel.org>
-X-Migadu-Flow: FLOW_OUT
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net v2] net: ethernet: mtk_eth_soc: initialize PPE
+ per-tag-layer MTU registers
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <177603300480.3841629.11936598519296387626.git-patchwork-notify@kernel.org>
+Date: Sun, 12 Apr 2026 22:30:04 +0000
+References: <ec995ab8ce8be423267a1cc093147a74d2eb9d82.1775789829.git.daniel@makrotopia.org>
+In-Reply-To: <ec995ab8ce8be423267a1cc093147a74d2eb9d82.1775789829.git.daniel@makrotopia.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: nbd@nbd.name, lorenzo@kernel.org, andrew+netdev@lunn.ch,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ pablo@netfilter.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260412_122444_490624_A87CD010 
-X-CRM114-Status: UNSURE (   5.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260412_153037_288940_3AFF43BC 
+X-CRM114-Status: GOOD (  10.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,23 +77,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 12. April 2026 um 16:54 schrieb "Jakub Kicinski" <kuba@kernel.org>:
->=20
->=20On Sun, 12 Apr 2026 11:57:47 +0000 Frank Wunderlich wrote:
->=20
->=20>=20
->=20> some time has passed without a single comment, so i just send a fri=
-endly reminder ;)
-> >=20
->=20You have a lot of people in the To:
-> Could you clarify who you expect to action these patches?
-> Patches are an RFC and I suppose ain't nobody got much comments?
+Hello:
 
-Hi,
+This patch was applied to netdev/net.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-imho 11 people are in "To" is not much, but i was told that no comments c=
-an mean
-"OK so far" so i will send v6 soon rebased on current net-next.
+On Fri, 10 Apr 2026 03:57:52 +0100 you wrote:
+> The PPE enforces output frame size limits via per-tag-layer VLAN_MTU
+> registers that the driver never initializes. The hardware defaults do
+> not account for PPPoE overhead, causing the PPE to punt encapsulated
+> frames back to the CPU instead of forwarding them.
+> 
+> Initialize the registers at PPE start and on MTU changes using the
+> maximum GMAC MTU. This is a conservative approximation -- the actual
+> per-PPE requirement depends on egress path, but using the global
+> maximum ensures the limits are never too small.
+> 
+> [...]
 
-regards Frank
+Here is the summary with links:
+  - [net,v2] net: ethernet: mtk_eth_soc: initialize PPE per-tag-layer MTU registers
+    https://git.kernel.org/netdev/net/c/2dddb34dd0d0
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
