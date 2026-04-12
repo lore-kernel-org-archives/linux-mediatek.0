@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97BB6D58B06
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Apr 2026 07:57:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17E71F3ED7B
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Apr 2026 08:10:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Q3WJNJGLuSLaMvFnrxZS6/2EtwZKMV4qjvCrPjl3n5I=; b=Atk+g6NbYgu2gUdIMRYnaiyGGd
-	4hEp9O+rUQiSfQCUrdcCsGg5eUsopn1fZih7BpIC/onU8KibhWvVj0WmEGAhQAOVPugg0Ai8lDZxB
-	n3kSPGfimKSRUXGKU8ItQYneozGPNP3h2r8KYFPqNgHV50KgJW8KVt9tKncPm/vIrN2T1c98ZS1Bb
-	2Rq5clpFgqyntFmVtXegEc+8pebYoeBiZlhY5DmZf2KtmvQ1IZ++XCiYqdi9X8nWIu5Ny3ZBquFAv
-	CzuFm5Kv1bvrJc5g9XQltBl7OFpwdBPljd9uwH/WtYMDlaB/HhxFOo87KMoVoTflF8rOmfagVZyve
-	aNF0yluA==;
+	bh=E32ka6Ina3nUMd7OiXM3vjZodFi1Ttwt14xZB74DKOU=; b=L4YiAgPqpOG2JCUEBvIxo9lr3Q
+	76Byn18uCX40W06wclt5zMWJpaEzcX1bEEB63ADd1Qt62qcinFWPUnCpsQBIGxLkdtcr4cEjsdbbm
+	3yXRmAxdNvN/EPeCP096iBNI37y/hjf7zQspPr10DvQ1JRmyONbaGuu4FpRS5iQH6h084A8+wpgTm
+	/+Vk6rd19PT+pYDJKoexNngHASqbwv1lSmar6c7jQQJ7tpIAlfruh2NpovhjxcWMxuR30WrV4B6+s
+	TScVZZjR9rURrCbpYdNZbCjQaJymECtj4NI55K5jJHLrb9nXIMkFk1rbuOqNPoa6XFOu7vW+jjCvI
+	tGOe+v9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBpha-0000000E8P6-2nI0;
-	Sun, 12 Apr 2026 07:57:54 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wBptX-0000000E8sv-0DeN;
+	Sun, 12 Apr 2026 08:10:15 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBphY-0000000E8OT-0nsy;
-	Sun, 12 Apr 2026 07:57:53 +0000
+	id 1wBptV-0000000E8si-2zQ7;
+	Sun, 12 Apr 2026 08:10:13 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 76BA4439AE;
-	Sun, 12 Apr 2026 07:57:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F2214C19424;
-	Sun, 12 Apr 2026 07:57:49 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 290D460008;
+	Sun, 12 Apr 2026 08:10:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5731CC19424;
+	Sun, 12 Apr 2026 08:10:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1775980670;
-	bh=hEB/WlU+PuCaCCF9GLECeF0sJYz4vRrr9X6SysrwYrs=;
+	s=k20201202; t=1775981411;
+	bh=36H48P9hjoQUXkzENXR+4KOVxVLh08Uk+rBggeOjamo=;
 	h=From:Date:Subject:To:Cc:From;
-	b=beWUfbwZJ/aZnitlU+tGPf3EwUUaWXXHhsD/6HTlEdiVAwMquibjyqFWH8ncjwEVx
-	 tYreXdA6/ewOATjJKNItuVp+o/Yujw5uPPhjeY3LUsUBspEc2GLTS4Y49YYhegOcUp
-	 ypp1aSdOLFxBD4PtSgDzK6IAHDQDLbR8Rq6W+Ch+pMcA/VrBipeeFOiLmakXa3r/KA
-	 /9cNsQX4Y02vKQ+MnoomVLri3CJtmcmLfJUaUNOYecAG9qSSDQl1hkkJT2dt/yS7qL
-	 sdFNpjQvf+se7slrz+R7NGL82tgpPEIfwlRE8Ae8FWs4y+0Eu6AcSSiFYZKtRQmVuC
-	 JXazpXgmiRD3w==
+	b=fjziGkTO/dy4HMECql4anEfWbo8cHbp0IkS9s42ZvcrWSt6akH3InZQ5hmsQpP5Ut
+	 W9g/lCICDlqUbWKxCtpqmCFMhgp+FDMs327ptDG3KeVQsVp5N5f3T1lG0VDU7AeO5c
+	 Z6j2wvqnTRkTFHghQrRr4rOEB0Uu9TP+z1FQ/eIeA0e/rhQKA1UhFhdNzjYHK5bBKG
+	 i9bpQ7YHPnwCpjJpJix4/0Oqy/ag2kKFXZ6q2gzLG+AhVbYmqF+j80jub4x3hAa3Y3
+	 zfjJcK7a7WemazFtqjSUzyidz/yG3eHTRm3Kknd3jFdgZh8Vl4ESM6JHXgCcmh14RK
+	 2oVtNaJOPHkKA==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Sun, 12 Apr 2026 09:57:29 +0200
-Subject: [PATCH net] net: airoha: Fix VIP configuration for AN7583 SoC
+Date: Sun, 12 Apr 2026 10:09:41 +0200
+Subject: [PATCH net] net: airoha: Fix max TX packet length configuration
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260412-airoha-7583-vip-fix-v1-1-c35e02b054bb@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MywqAIBAAfyX23IJZ2uNXooPZVntR0Ygg/Pek4
- wzMvJAoMiWYqhci3ZzYuwJNXYE9jTsIeSsMUkgtukai4ehPg70aWrw54M4PKqH0Olrd78JAKUO
- kov/rDI4uWHL+ALnhc0VqAAAA
-X-Change-ID: 20260412-airoha-7583-vip-fix-5056b9c67f0a
+Message-Id: <20260412-airoha-fix-max-mtu-v1-1-333030d0a564@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MOwqAQAwFryKpDWgUf1cRi7BGTeEquyqCeHeDx
+ RTD8N4DUYJKhC55IMilUTdvkqcJuIX9LKijOVBGVVbmhKxhWxgnvXFl4zhxal3dUOGEmMCGexD
+ L/2kPXg4Y3vcDABmZzGkAAAA=
+X-Change-ID: 20260412-airoha-fix-max-mtu-f9c7823ce2a2
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
  "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
@@ -60,9 +60,6 @@ Cc: linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
  Lorenzo Bianconi <lorenzo@kernel.org>
 X-Mailer: b4 0.14.3
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260412_005752_278513_4E149CD8 
-X-CRM114-Status: GOOD (  14.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,171 +74,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-EN7581 and AN7583 SoCs have different VIP definitions. Introduce
-get_vip_port callback in airoha_eth_soc_data struct in order to take
-into account EN7581 and AN7583 VIP register layout and definition
-differences.
-Introduce nbq parameter in airoha_gdm_port struct. At the moment nbq
-is set statically to value previously used in airhoha_set_gdm2_loopback
-routine and it will be read from device tree in subsequent patches.
+According to the Airoha documentation, REG_GDM_LEN_CFG() register does not
+include FCS length. Fix MTU configuration removing ETH_FCS_LEN from
+maximum TX packet length configuration.
 
-Fixes: e4e5ce823bdd ("net: airoha: Add AN7583 SoC support")
+Fixes: 54d989d58d2ac ("net: airoha: Move min/max packet len configuration in airoha_dev_open()")
+Fixes: 03b1b69f0662c ("net: airoha: Introduce airoha_dev_change_mtu callback")
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/ethernet/airoha/airoha_eth.c | 66 ++++++++++++++++++++++++--------
- drivers/net/ethernet/airoha/airoha_eth.h |  2 +
- 2 files changed, 51 insertions(+), 17 deletions(-)
+ drivers/net/ethernet/airoha/airoha_eth.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index c14cdce588a7..b64667722d7f 100644
+index c14cdce588a7..a81ffda72b39 100644
 --- a/drivers/net/ethernet/airoha/airoha_eth.c
 +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -107,19 +107,7 @@ static int airoha_set_vip_for_gdm_port(struct airoha_gdm_port *port,
- 	struct airoha_eth *eth = port->qdma->eth;
- 	u32 vip_port;
+@@ -1629,9 +1629,9 @@ static void airoha_update_hw_stats(struct airoha_gdm_port *port)
  
--	switch (port->id) {
--	case AIROHA_GDM3_IDX:
--		/* FIXME: handle XSI_PCIE1_PORT */
--		vip_port = XSI_PCIE0_VIP_PORT_MASK;
--		break;
--	case AIROHA_GDM4_IDX:
--		/* FIXME: handle XSI_USB_PORT */
--		vip_port = XSI_ETH_VIP_PORT_MASK;
--		break;
--	default:
--		return 0;
--	}
--
-+	vip_port = eth->soc->ops.get_vip_port(port, port->nbq);
- 	if (enable) {
- 		airoha_fe_set(eth, REG_FE_VIP_PORT_EN, vip_port);
- 		airoha_fe_set(eth, REG_FE_IFC_PORT_EN, vip_port);
-@@ -1705,7 +1693,7 @@ static int airoha_dev_set_macaddr(struct net_device *dev, void *p)
- static int airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
+ static int airoha_dev_open(struct net_device *dev)
  {
+-	int err, len = ETH_HLEN + dev->mtu + ETH_FCS_LEN;
+ 	struct airoha_gdm_port *port = netdev_priv(dev);
+ 	struct airoha_qdma *qdma = port->qdma;
++	int err, len = ETH_HLEN + dev->mtu;
+ 
+ 	netif_tx_start_all_queues(dev);
+ 	err = airoha_set_vip_for_gdm_port(port, true);
+@@ -1833,7 +1833,7 @@ static int airoha_dev_change_mtu(struct net_device *dev, int mtu)
+ {
+ 	struct airoha_gdm_port *port = netdev_priv(dev);
  	struct airoha_eth *eth = port->qdma->eth;
--	u32 val, pse_port, chan, nbq;
-+	u32 val, pse_port, chan;
- 	int src_port;
+-	u32 len = ETH_HLEN + mtu + ETH_FCS_LEN;
++	u32 len = ETH_HLEN + mtu;
  
- 	/* Forward the traffic to the proper GDM port */
-@@ -1735,9 +1723,7 @@ static int airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
- 	airoha_fe_clear(eth, REG_FE_VIP_PORT_EN, BIT(AIROHA_GDM2_IDX));
- 	airoha_fe_clear(eth, REG_FE_IFC_PORT_EN, BIT(AIROHA_GDM2_IDX));
- 
--	/* XXX: handle XSI_USB_PORT and XSI_PCE1_PORT */
--	nbq = port->id == AIROHA_GDM3_IDX && airoha_is_7581(eth) ? 4 : 0;
--	src_port = eth->soc->ops.get_src_port_id(port, nbq);
-+	src_port = eth->soc->ops.get_src_port_id(port, port->nbq);
- 	if (src_port < 0)
- 		return src_port;
- 
-@@ -2946,6 +2932,8 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
- 	port->qdma = qdma;
- 	port->dev = dev;
- 	port->id = id;
-+	/* XXX: Read nbq from DTS */
-+	port->nbq = id == AIROHA_GDM3_IDX && airoha_is_7581(eth) ? 4 : 0;
- 	eth->ports[p] = port;
- 
- 	return airoha_metadata_dst_alloc(port);
-@@ -3147,6 +3135,28 @@ static int airoha_en7581_get_src_port_id(struct airoha_gdm_port *port, int nbq)
- 	return -EINVAL;
- }
- 
-+static u32 airoha_en7581_get_vip_port(struct airoha_gdm_port *port, int nbq)
-+{
-+	switch (port->id) {
-+	case AIROHA_GDM3_IDX:
-+		if (nbq == 4)
-+			return XSI_PCIE0_VIP_PORT_MASK;
-+		if (nbq == 5)
-+			return XSI_PCIE1_VIP_PORT_MASK;
-+		break;
-+	case AIROHA_GDM4_IDX:
-+		if (!nbq)
-+			return XSI_ETH_VIP_PORT_MASK;
-+		if (nbq == 1)
-+			return XSI_USB_VIP_PORT_MASK;
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
- static const char * const an7583_xsi_rsts_names[] = {
- 	"xsi-mac",
- 	"hsi0-mac",
-@@ -3176,6 +3186,26 @@ static int airoha_an7583_get_src_port_id(struct airoha_gdm_port *port, int nbq)
- 	return -EINVAL;
- }
- 
-+static u32 airoha_an7583_get_vip_port(struct airoha_gdm_port *port, int nbq)
-+{
-+	switch (port->id) {
-+	case AIROHA_GDM3_IDX:
-+		if (!nbq)
-+			return XSI_ETH_VIP_PORT_MASK;
-+		break;
-+	case AIROHA_GDM4_IDX:
-+		if (!nbq)
-+			return XSI_PCIE0_VIP_PORT_MASK;
-+		if (nbq == 1)
-+			return XSI_USB_VIP_PORT_MASK;
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
- static const struct airoha_eth_soc_data en7581_soc_data = {
- 	.version = 0x7581,
- 	.xsi_rsts_names = en7581_xsi_rsts_names,
-@@ -3183,6 +3213,7 @@ static const struct airoha_eth_soc_data en7581_soc_data = {
- 	.num_ppe = 2,
- 	.ops = {
- 		.get_src_port_id = airoha_en7581_get_src_port_id,
-+		.get_vip_port = airoha_en7581_get_vip_port,
- 	},
- };
- 
-@@ -3193,6 +3224,7 @@ static const struct airoha_eth_soc_data an7583_soc_data = {
- 	.num_ppe = 1,
- 	.ops = {
- 		.get_src_port_id = airoha_an7583_get_src_port_id,
-+		.get_vip_port = airoha_an7583_get_vip_port,
- 	},
- };
- 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index a97903569335..8bcd809e6f53 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -536,6 +536,7 @@ struct airoha_gdm_port {
- 	struct airoha_qdma *qdma;
- 	struct net_device *dev;
- 	int id;
-+	int nbq;
- 
- 	struct airoha_hw_stats stats;
- 
-@@ -576,6 +577,7 @@ struct airoha_eth_soc_data {
- 	int num_ppe;
- 	struct {
- 		int (*get_src_port_id)(struct airoha_gdm_port *port, int nbq);
-+		u32 (*get_vip_port)(struct airoha_gdm_port *port, int nbq);
- 	} ops;
- };
- 
+ 	airoha_fe_rmw(eth, REG_GDM_LEN_CFG(port->id),
+ 		      GDM_LONG_LEN_MASK,
 
 ---
 base-commit: 02f72964395911e7a09bb2ea2fe6f79eda4ea2c2
-change-id: 20260412-airoha-7583-vip-fix-5056b9c67f0a
+change-id: 20260412-airoha-fix-max-mtu-f9c7823ce2a2
 
 Best regards,
 -- 
