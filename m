@@ -4,65 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50D7AE64009
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Apr 2026 09:56:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87812E937E1
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Apr 2026 11:58:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ncnpvs7B3KhxlO+WRuPRM3eg1ZSdDJ0ooKbApZFkLMA=; b=E5sdSQRvK0e6V6S3Bx3cRUaVqK
-	A0XoVla+wvAyEKkn7D/76IyHEtJCQGwSMVNzWKlWaBRZrqgh0kwLx4lE931jKFbR/TWDDNaZW2Mj1
-	0O8CoOyX2Q7F8uyYUYvy3g+xJIfSk8gEy6PkH/bHuFlpNX32oflPtu3xY5HwmbUS8SG39AEGhisud
-	cqdM37Z1c0GFT2O895kR9H57IglPe3ouTvRdn42vAoxXxcgopI/tLz74r03d5I3TOKtoItkV3KsMG
-	691zHkzvpP7Zn0eT91ftVIgoXbpIHK9N6MD8zd5GXwpUcGJpQvBAotHrA0w6UjrUWn86AOwHVKvMn
-	o1FT/qJQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kz22EaCJFqR2Sh3DIHgGI1UiKlZwsYdIx/mKmPpPpEA=; b=OZ760/4AL7VDhCk4PIF5nto3tE
+	btZw3K1ldrxnah9oHZL+u9GNiSG1OAV581UUKIRrIg0872jidy7+BGV8pcRU9dEQB6feSq3CTw/sX
+	R2rOmvEvTVTNfqKjnxexdCaK+6KObJl64agv/+lTLw3IdyrEefE7feRzQG0ZCnxceMcbih+3sWP/q
+	HaBzVay0CzidcN/2Cxg+jdSE4MjnevZcdsn3vIwU8jnikm6Awp1veb8SCQe3uxF9atEEqQAGFG120
+	LPVSgqlnyX4EVLs2qnoOtpnx3SRrzA5Ati7yxUjx+6OskpHKC6QauDQjfoYcdgraoyFe3rRpH8Mh5
+	Jhk24hjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBrYV-0000000EDuJ-1Pho;
-	Sun, 12 Apr 2026 09:56:39 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wBtSJ-0000000EHtw-2BGr;
+	Sun, 12 Apr 2026 11:58:23 +0000
+Received: from mout.gmx.net ([212.227.15.15])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBrYS-0000000EDtJ-3Xxb;
-	Sun, 12 Apr 2026 09:56:37 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 20C634402E;
-	Sun, 12 Apr 2026 09:56:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7E81FC19424;
-	Sun, 12 Apr 2026 09:56:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1775987796;
-	bh=bWTAU7CtOZ3is69U6C/L35u5+9IkLvK6b+Gt8sgHq14=;
-	h=From:Date:Subject:To:Cc:From;
-	b=re+ASIDoyvLcewdruxi3zdzfMhuhe06Y4T2is62zvRj1ZVH706WVGyOBTdaPqO3zr
-	 Cb1oh8voTefZCIHL7eYKII+R1xERpT+ZaZhlU1LZZOxwVAeinbNbk6HQwuasK+FNeU
-	 6oZtugDtdUwltwLBim44z7H9eYCOGuxCLMV5K8jNlhF4PsLAwM/RV8/9mdPdFHTsub
-	 eG8x+1Vnxz8/Znl6H+PhptGdJy5NNO2Oh4Jt+kN0oV2uyEvxCn5HaHn4fAvLeVjQmF
-	 QdMj9ubzAxjQSPEYa1AKYP9XyXjAC2RZSxVvV7yZLtkPxqjP9lCl8VN6VdP2k864m8
-	 xZLnKUYzFoLdA==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Sun, 12 Apr 2026 11:56:25 +0200
-Subject: [PATCH net-next] net: airoha: Remove PCE_MC_EN_MASK bit in
- REG_FE_PCE_CFG configuration
+	id 1wBtSF-0000000EHtG-1w0F;
+	Sun, 12 Apr 2026 11:58:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1775995067; x=1776599867; i=frank-w@public-files.de;
+	bh=kz22EaCJFqR2Sh3DIHgGI1UiKlZwsYdIx/mKmPpPpEA=;
+	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
+	 Content-Type:Date:In-Reply-To:References:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=nKTwyJZgnGbugAWGKUnS23+UUoA1TgH3eEGkmqnqcSFecGqa6w/a5EbU+9xIIhRs
+	 qgI5SKrVjpdeztxmGRtqg3Y0ULezao/bXsKKIa4sTRs1+iosk+jPJMfmADcBTkBmq
+	 ZqTXWuH1+VuK8DJbeH2ERAQ5h9xYEfT+Ks6C/75NjWxfMfumPpEgZ52AEe10GSb/E
+	 c71gx7ey0+rlBUKyK4Fao4OBjK8JDxrEGnC9fbRbi9WPoMEnLlez/3zAjVG9v4OgM
+	 fW+KkwH3tEPME51ZfFrw1XASFYuv1efx/mTKnsoHrBemyLfQPYXKJ7wQj5hXIHw2d
+	 Y6zCMFzvbhomt+UtzQ==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [80.245.78.225] ([80.245.78.225]) by
+ trinity-msg-rest-gmx-gmx-live-579dcf886d-nkpds (via HTTP); Sun, 12 Apr 2026
+ 11:57:47 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260412-airoha_fe_init_remove_mc_en_bit-v1-1-7b6a5a25a74d@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3NywqDMBBG4VeRWTegobWXVyllSMc/dRZOShJEE
- N+9octvc85OBVlR6NHtlLFq0WQNw6kjmYN94HRqJt/7sT8P3gXNaQ4cwWpaOWNJK3gRhvFbqwu
- 3+3SNIpcoI7XKNyPq9j88yVCdYav0Oo4fH3pjxHsAAAA=
-X-Change-ID: 20260412-airoha_fe_init_remove_mc_en_bit-a89d7fcc5fc6
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-X-Mailer: b4 0.14.3
+Message-ID: <trinity-1304ecb5-9a3f-4e37-b2c6-bcd7f35c2921-1775995067670@trinity-msg-rest-gmx-gmx-live-579dcf886d-nkpds>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: linux@fw-web.de, nbd@nbd.name, sean.wang@mediatek.com,
+ lorenzo@kernel.org, andrew+netdev@lunn.ch, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ linux@armlinux.org.uk
+Cc: daniel@makrotopia.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Aw: [RFC net-next v5 0/3] Add RSS and LRO support
+Content-Type: text/plain; charset=UTF-8
+Date: Sun, 12 Apr 2026 11:57:47 +0000
+In-Reply-To: <20251219151219.77115-1-linux@fw-web.de>
+References: <20251219151219.77115-1-linux@fw-web.de>
+X-UI-CLIENT-META-MAIL-DROP: W10=
+X-Provags-ID: V03:K1:EoGCU1oP2FpHYa9pnrkOrIyeUnVBHAl52P6LkUqWZGQSZS+p+o7n1mW3IBwicssFtAGTc
+ l6Cq/0uJh0foP+KgH37kfWRLZLgYwMVTeOUXmw1OgZilQuvQmPglXVD2cwDw5eUdoz02PTgaNoGn
+ WFLzhQ/QYdApFMIBl87UPsvy1IxTXd4K8kRrexRP689ju/3LwKJfgUNN03pLsbBFeEo/Pmat8uLz
+ 8AEZ93mTeKy3De5i0lr38Tq94rv7I98f3t85Y4s6MUOXuHnLuIGss7GQmuBAKV403RXoRzpD5K33
+ Lj6F5lBDR+/FuN/gWfWvHM1a6q29uR+1jf8z7/XFmBgj6YBZF41IBnkM4wCvPmBBTQ=
+UI-OutboundReport: notjunk:1;M01:P0:JYKe4y5Dccs=;ngiIncvC9xIAX9CQy/PeaJAWgjZ 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
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260412_025636_929824_15E190DB 
-X-CRM114-Status: GOOD (  10.72  )
+X-CRM114-CacheID: sfid-20260412_045819_927576_A046DB4D 
+X-CRM114-Status: GOOD (  15.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,40 +86,88 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-PCE_MC_EN_MASK bit in REG_FE_PCE_CFG configuration performed in
-airoha_fe_init() is used to duplicate multicast packets and send a copy
-to the CPU when the traffic is offloaded. This is necessary just if
-it is requested by the user. Disable multicast packets duplication by
-default.
+Hi,
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+some time has passed without a single comment, so i just send a friendly r=
+eminder ;)
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 8e4b043af4bc..9b5b677a7071 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -458,9 +458,8 @@ static int airoha_fe_init(struct airoha_eth *eth)
- 		      FIELD_PREP(PSE_IQ_RES2_P5_MASK, 0x40) |
- 		      FIELD_PREP(PSE_IQ_RES2_P4_MASK, 0x34));
- 
--	/* enable FE copy engine for MC/KA/DPI */
--	airoha_fe_wr(eth, REG_FE_PCE_CFG,
--		     PCE_DPI_EN_MASK | PCE_KA_EN_MASK | PCE_MC_EN_MASK);
-+	/* enable FE copy engine for KA/DPI */
-+	airoha_fe_wr(eth, REG_FE_PCE_CFG, PCE_DPI_EN_MASK | PCE_KA_EN_MASK);
- 	/* set vip queue selection to ring 1 */
- 	airoha_fe_rmw(eth, REG_CDM_FWD_CFG(1), CDM_VIP_QSEL_MASK,
- 		      FIELD_PREP(CDM_VIP_QSEL_MASK, 0x4));
+regards Frank
 
----
-base-commit: 3f3a2aefbc661b837c8e344f944982d61c2ae037
-change-id: 20260412-airoha_fe_init_remove_mc_en_bit-a89d7fcc5fc6
 
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
-
+> Gesendet: Freitag, 19. Dezember 2025 um 16:12
+> Von: "Frank Wunderlich" <linux@fw-web.de>
+> An: "Felix Fietkau" <nbd@nbd.name>, "Sean Wang" <sean.wang@mediatek.com>=
+, "Lorenzo Bianconi" <lorenzo@kernel.org>, "Andrew Lunn" <andrew+netdev@lu=
+nn.ch>, "David S. Miller" <davem@davemloft.net>, "Eric Dumazet" <edumazet@=
+google.com>, "Jakub Kicinski" <kuba@kernel.org>, "Paolo Abeni" <pabeni@red=
+hat.com>, "Matthias Brugger" <matthias.bgg@gmail.com>, "AngeloGioacchino D=
+el Regno" <angelogioacchino.delregno@collabora.com>, "Russell King" <linux=
+@armlinux.org.uk>
+> CC: "Frank Wunderlich" <frank-w@public-files.de>, "Daniel Golle" <daniel=
+@makrotopia.org>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, li=
+nux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+> Betreff: [RFC net-next v5 0/3] Add RSS and LRO support
+>
+> From: Frank Wunderlich <frank-w@public-files.de>
+>=20
+> This series add RSS and LRO hardware acceleration for terminating
+> traffic on MT798x.
+>=20
+> It is currently only for discussion to get the upported SDK driver
+> changes in a good shape.
+>=20
+> patches are upported from mtk SDK:
+> - https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-f=
+eeds/+/refs/heads/master/master/files/target/linux/mediatek/patches-6.12/9=
+99-eth-08-mtk_eth_soc-add-register-definitions-for-rss-lro-reg.patch
+> - https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-f=
+eeds/+/refs/heads/master/master/files/target/linux/mediatek/patches-6.12/9=
+99-eth-09-mtk_eth_soc-add-rss-support.patch
+> - https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-f=
+eeds/+/refs/heads/master/master/files/target/linux/mediatek/patches-6.12/9=
+99-eth-10-mtk_eth_soc-add-hw-lro-support.patch
+> with additional fixes
+>=20
+> changes:
+> v5:
+> - fix too long lines after macro changes reported by checkpatch
+>=20
+> v4:
+> - drop unrelated file
+> - rss-changes suggested by andrew
+>   - fix MTK_HW_LRO_RING_NUM macro (add eth)
+>   - fix MTK_LRO_CTRL_DW[123]_CFG (add reg_map param)
+>   - fix MTK_RX_DONE_INT (add eth param)
+> - fix lro reverse christmas tree and LRO params suggested by andrew
+> - drop mtk_hwlro_stats_ebl and unused IS_HW_LRO_RING (only used in
+>   properitary debugfs)
+>=20
+> v3:
+> - readded the change dropped in v2 because it was a fix
+>   for getting RSS working on mt7986
+> - changes requested by jakub
+> - reworked coverletter (dropped instructions for configuration)
+> - name all PDMA-IRQ the same way
+> - retested on
+>   - BPI-R3/mt7986 (RSS needs to be enabled)
+>   - BPI-R4/mt7988
+>   - BPI-R64/mt7622 and BPI-R2/mt7623 for not breaking network functional=
+ity
+>=20
+> v2:
+> - drop wrong change (MTK_CDMP_IG_CTRL is only netsys v1)
+> - Fix immutable string IRQ setup (thx to Emilia Schotte)
+> - drop links to 6.6 patches/commits in sdk in comments
+>=20
+> Mason Chang (3):
+>   net: ethernet: mtk_eth_soc: Add register definitions for RSS and LRO
+>   net: ethernet: mtk_eth_soc: Add RSS support
+>   net: ethernet: mtk_eth_soc: Add LRO support
+>=20
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 812 ++++++++++++++++----
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.h | 173 +++--
+>  2 files changed, 778 insertions(+), 207 deletions(-)
+>=20
+> --=20
+> 2.43.0</frank-w@public-files.de>
 
