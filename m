@@ -4,176 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB188EBFD3A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Apr 2026 10:57:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CDB7F34C47
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Apr 2026 12:10:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rtvTOG4vHz5JW+ejkz14WCIcFGn00NUmXjad2BxqBC4=; b=ospYQ+AblPN9PJuJx8YiN0LqeS
-	QV2lSCXTVAdIbNKg7Fe3XJJh+HTUI/M0jkdFuviBn8VfCCZT4n6QnZ6wynEtbz++WHTbgKFerD0mr
-	EpcKyZ0oxQC4HVzsQYAsc1wUkkVHSPHTKRoTaDFuyCqUzZdyOZ1Al4ML+1Pa/OPRCZ9lzPeY8wyPd
-	2gwLxgY0leejEZObV6MDs8A0DbQ6dBBukABmcDSpbay9Hj8OzZh4tSCOcepvHC1EYb/vnI+B3OaFR
-	HNlc8j4zY7YO+BquNv4I2R4TbTeiNAOtuK7jT+16esFeZ1Swb2pzWYpz3/gXJiTJafY8hNJOAczyr
-	WBj0Tsiw==;
+	bh=dhpDLI3GbjEnq5ea2C3CSlaeOYOoDERSaq/PhF217/g=; b=tPQxo8/S/HvJjzjw0YRC2pab5L
+	HNuHajiVNH0ZvlJUugnDn5XgiYUuOHSRVEGSoFRc0RV5v9VXLUvLbD5DweEN63f4qO4MCjukg/V29
+	tgy4jOG0YUvq9SOLWaZ8P8qbvJr04WVEwYGe916cJjk/ZEkB7RVjVg6W8zhNNIJAjeWeUCUiLceCA
+	Iyt5813W4kl/kfQr7nr0ALy8o5zrO2kYdNOhlCijiinY7zD/mgP7iBRxLOX4QAL5kQZAZqqBZNA8u
+	++GdoTZoobTlNV5VkMKBeMiuG+a7wChOIrt9jHFtxDuTX5JsBb/yiUV9lbk2Qty2jIoxwY9x3r0qn
+	yKsmE3LQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCEz8-0000000FXHP-22ce;
-	Mon, 13 Apr 2026 10:57:42 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wCG7V-0000000FcdX-3IHa;
+	Mon, 13 Apr 2026 12:10:25 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCEz7-0000000FXGN-28ML
-	for linux-mediatek@bombadil.infradead.org;
-	Mon, 13 Apr 2026 10:57:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=rtvTOG4vHz5JW+ejkz14WCIcFGn00NUmXjad2BxqBC4=; b=MNTTeQ4nrdDRnT3uN4ukITs6bp
-	CzNIGC1FwPZgx50xw6UStWNROR8BUUC+7Ta6KzsbxrOcvnOR161Mwz2UXKt9/Oxj2bg8VQYjjPeeY
-	78WwK2XMtzivTVJ3hheqBhogN8+vTT4n7unDoAcw/F0ANMWf385dHvbh8I/+eu6OVQ0dHjKN3mtnn
-	51hohSFx5/IiYKo+7E8YK08jdWMIsWmPFoiijbtVg8vO9HXvZ+wQluEO4XLuSRXOLnz69VvWvNJ54
-	jX5wW8tK51FDReWpSKd9A75H6KjFClQey13JYxRmdmunEPomqia3q/kXamhPnamUuSCi82VcX/GQo
-	jg4U8DGw==;
-Received: from smtp-out1.suse.de ([2a07:de40:b251:101:10:150:64:1])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCEz1-0000000GeDx-3goI
-	for linux-mediatek@lists.infradead.org;
-	Mon, 13 Apr 2026 10:57:40 +0000
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 8F89C6A8A2;
-	Mon, 13 Apr 2026 10:57:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1776077853; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=rtvTOG4vHz5JW+ejkz14WCIcFGn00NUmXjad2BxqBC4=;
-	b=dxIsGqEpsHoQixcNWqW5OrvhcmE8kyu39UNykMC8Z3LU+QxfNnxKTuhcimr7JMabJDE7Bz
-	NouIBdH59eV1DblqB5c2jQZu31dACtpPAI1pEz+PrI6/NmG/1KtALKc8VzBMXMCgzD4zuN
-	9emJ6YsHK4jRQFsiEqCjzArVkPMBvmQ=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1776077853;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=rtvTOG4vHz5JW+ejkz14WCIcFGn00NUmXjad2BxqBC4=;
-	b=9qR+vPCxG8UaeGPn7ugUVf9AGewqR39N+H2v//03Moo5yX/5jk9/EtpDlv9sj5Sb3yrIkm
-	GK+M8tYpftjmAADA==
-Authentication-Results: smtp-out1.suse.de;
-	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=SfiFwSz0;
-	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=1F57HNJj
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1776077852; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=rtvTOG4vHz5JW+ejkz14WCIcFGn00NUmXjad2BxqBC4=;
-	b=SfiFwSz0mbuIS38T/CoBuK8/YkfkF5wrDvLm3V58cHHN3aegKyFseHmEqduKRoFGei3y/f
-	DDPL19CTIssAhm48uZ/yNBfl2WTR3hTr7QikyJizAK6QmW87Pkt3YF06ImYs8DAe3U3NSm
-	6c9Hin/+BHJjxfKrc2Vj9L296b8cxfM=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1776077852;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=rtvTOG4vHz5JW+ejkz14WCIcFGn00NUmXjad2BxqBC4=;
-	b=1F57HNJjd67TJYMZGyVaqlkks2HUMF0n0gRKF/brGVbfP9n9Is8k52AfbiVeI7y/sinXWw
-	o28a1fJ7hhqDT0AQ==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 32A814AE4E;
-	Mon, 13 Apr 2026 10:57:32 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id N+nWChzM3GnUKQAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Mon, 13 Apr 2026 10:57:32 +0000
-Message-ID: <545d02d2-e66e-4c33-b0b3-3b3482949fbb@suse.de>
-Date: Mon, 13 Apr 2026 12:57:31 +0200
+	id 1wCG7S-0000000Fcd3-0YTn;
+	Mon, 13 Apr 2026 12:10:24 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 406224E4296E;
+	Mon, 13 Apr 2026 12:10:17 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id EEFD25FFB9;
+	Mon, 13 Apr 2026 12:10:16 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id AA50A104500A2;
+	Mon, 13 Apr 2026 14:10:02 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1776082215; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=dhpDLI3GbjEnq5ea2C3CSlaeOYOoDERSaq/PhF217/g=;
+	b=XgDbUsd0kza50SBVz4+wc3tba3Gea/Rw9Wtl9Oh3cj1zYYyx83GshUatFgLe99itaxWAJf
+	dbLqFjb/kWwi0Lrqgc0awLQeFS+zivNYqgAQVEqYi8w3nolcV+k65uHo3kdCaoU8FmQRYi
+	FNnxTfJNQn5FvhrAeOubTD8A5Hs74ZXx+AAtTu4zM20gVeAwAclh1G1dVmBb9dY1Eir7Jq
+	fvH5aaDiIW27DKzBoQbqfzu2fOc/1o1RsElFMmpjnd6CCy0Z1XUpibM/HsTJ3u3RLvDctq
+	J8mv0Uvt+qvEaqgfRTVFVct2t/QHp9kY5w5CLgxJtUaDj7TEc6nIau/Ea77HiQ==
+Date: Mon, 13 Apr 2026 14:10:00 +0200
+From: Kory Maincent <kory.maincent@bootlin.com>
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: Ville =?UTF-8?B?U3lyasOkbMOk?= <ville.syrjala@linux.intel.com>, Jani
+ Nikula <jani.nikula@linux.intel.com>, Rodrigo Vivi
+ <rodrigo.vivi@intel.com>, Joonas Lahtinen
+ <joonas.lahtinen@linux.intel.com>, Tvrtko Ursulin <tursulin@ursulin.net>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Dave
+ Airlie <airlied@redhat.com>, Jesse Barnes <jbarnes@virtuousgeek.org>, Eric
+ Anholt <eric@anholt.net>, Maarten Lankhorst
+ <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>, Andrzej Hajda
+ <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>,
+ Robert Foss <rfoss@kernel.org>, Laurent Pinchart
+ <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Chris Wilson
+ <chris@chris-wilson.co.uk>, Thomas Petazzoni
+ <thomas.petazzoni@bootlin.com>, Mark Yacoub <markyacoub@google.com>, Sean
+ Paul <seanpaul@google.com>, Louis Chauvet <louis.chauvet@bootlin.com>,
+ intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Simona Vetter <simona.vetter@ffwll.ch>
+Subject: Re: [PATCH RFC 00/12] Add support for DisplayPort link training
+ information report
+Message-ID: <20260413141000.0e190dcc@kmaincent-XPS-13-7390>
+In-Reply-To: <u4ononk4cpccx77gvlywtfen5rmyslvr72v7olkhdrjf65aqce@xo777vofhcan>
+References: <20260409-feat_link_cap-v1-0-7069e8199ce2@bootlin.com>
+	<adgNxaFhbQaxC5E_@intel.com>
+	<u4ononk4cpccx77gvlywtfen5rmyslvr72v7olkhdrjf65aqce@xo777vofhcan>
+Organization: bootlin
+X-Mailer: Claws Mail 4.2.0 (GTK 3.24.41; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] drm/mediatek: mtk_dpi: Open-code
- drm_simple_encoder_init()
-To: shivamkalra98@zohomail.in, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-References: <20260403-drm-mediatek-opencode-encoder-init-v1-1-7be86241b876@zohomail.in>
-Content-Language: en-US
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Autocrypt: addr=tzimmermann@suse.de; keydata=
- xsBNBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
- XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
- BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
- hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
- 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
- AAHNJ1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPsLAjgQTAQgAOAIb
- AwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftODH
- AAoJEGgNwR1TC3ojx1wH/0hKGWugiqDgLNXLRD/4TfHBEKmxIrmfu9Z5t7vwUKfwhFL6hqvo
- lXPJJKQpQ2z8+X2vZm/slsLn7J1yjrOsoJhKABDi+3QWWSGkaGwRJAdPVVyJMfJRNNNIKwVb
- U6B1BkX2XDKDGffF4TxlOpSQzdtNI/9gleOoUA8+jy8knnDYzjBNOZqLG2FuTdicBXblz0Mf
- vg41gd9kCwYXDnD91rJU8tzylXv03E75NCaTxTM+FBXPmsAVYQ4GYhhgFt8S2UWMoaaABLDe
- 7l5FdnLdDEcbmd8uLU2CaG4W2cLrUaI4jz2XbkcPQkqTQ3EB67hYkjiEE6Zy3ggOitiQGcqp
- j//OwE0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRHUE9eosYb
- T6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgTRjP+qbU6
- 3Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+RdhgATnWW
- GKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zbehDda8lv
- hFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r12+lqdsA
- EQEAAcLAdgQYAQgAIAIbDBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftOH6AAoJEGgNwR1T
- C3ojVSkIALpAPkIJPQoURPb1VWjh34l0HlglmYHvZszJWTXYwavHR8+k6Baa6H7ufXNQtThR
- yIxJrQLW6rV5lm7TjhffEhxVCn37+cg0zZ3j7zIsSS0rx/aMwi6VhFJA5hfn3T0TtrijKP4A
- SAQO9xD1Zk9/61JWk8OysuIh7MXkl0fxbRKWE93XeQBhIJHQfnc+YBLprdnxR446Sh8Wn/2D
- Ya8cavuWf2zrB6cZurs048xe0UbSW5AOSo4V9M0jzYI4nZqTmPxYyXbm30Kvmz0rYVRaitYJ
- 4kyYYMhuULvrJDMjZRvaNe52tkKAvMevcGdt38H4KSVXAylqyQOW5zvPc4/sq9c=
-In-Reply-To: <20260403-drm-mediatek-opencode-encoder-init-v1-1-7be86241b876@zohomail.in>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Rspamd-Action: no action
-X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
-X-Spamd-Result: default: False [-3.01 / 50.00];
-	BAYES_HAM(-3.00)[100.00%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	NEURAL_HAM_SHORT(-0.20)[-1.000];
-	MIME_GOOD(-0.10)[text/plain];
-	MX_GOOD(-0.01)[];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	FUZZY_RATELIMITED(0.00)[rspamd.com];
-	RBL_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:104:10:150:64:97:from];
-	TO_DN_SOME(0.00)[];
-	FREEMAIL_TO(0.00)[zohomail.in,kernel.org,pengutronix.de,gmail.com,ffwll.ch,collabora.com];
-	MIME_TRACE(0.00)[0:+];
-	ARC_NA(0.00)[];
-	FREEMAIL_ENVRCPT(0.00)[gmail.com];
-	RCVD_TLS_ALL(0.00)[];
-	DKIM_TRACE(0.00)[suse.de:+];
-	RCVD_COUNT_TWO(0.00)[2];
-	FROM_EQ_ENVFROM(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from];
-	MID_RHS_MATCH_FROM(0.00)[];
-	RECEIVED_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:106:10:150:64:167:received];
-	RCPT_COUNT_SEVEN(0.00)[11];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	TAGGED_RCPT(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[zohomail.in:email,suse.de:dkim,suse.de:mid,suse.de:email,suse.com:url,imap1.dmz-prg2.suse.org:helo,imap1.dmz-prg2.suse.org:rdns]
-X-Rspamd-Queue-Id: 8F89C6A8A2
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260413_115736_284782_852F7A3D 
-X-CRM114-Status: GOOD (  18.07  )
+X-CRM114-CacheID: sfid-20260413_051022_670161_1A00D551 
+X-CRM114-Status: GOOD (  20.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -188,85 +99,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, 10 Apr 2026 00:36:09 +0300
+Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com> wrote:
 
+> On Thu, Apr 09, 2026 at 11:36:21PM +0300, Ville Syrj=C3=A4l=C3=A4 wrote:
+> > On Thu, Apr 09, 2026 at 07:08:16PM +0200, Kory Maincent wrote: =20
+> > > DisplayPort link training negotiates the physical-layer parameters ne=
+eded
+> > > for a reliable connection: lane count, link rate, voltage swing,
+> > > pre-emphasis, and optionally Display Stream Compression (DSC). Curren=
+tly,
+> > > each driver exposes this state in its own way, often through
+> > > driver-specific debugfs entries, with no standard interface for users=
+pace
+> > > diagnostic and monitoring tools.
+> > >=20
+> > > This series introduces a generic, DRM-managed framework for exposing =
+DP
+> > > link training state as standard connector properties, modeled after t=
+he
+> > > existing HDMI helper drmm_connector_hdmi_init().
+> > >=20
+> > > The new drmm_connector_dp_init() helper initializes a DP connector and
+> > > registers the following connector properties to expose the negotiated=
+ link
+> > > state to userspace:
+> > >=20
+> > > - num_lanes:      negotiated lane count (1, 2 or 4)
+> > > - link_rate:      negotiated link rate
+> > > - dsc_en:         whether Display Stream Compression is active
+> > > - voltage_swingN: per-lane voltage swing level (lanes 0-3)
+> > > - pre_emphasisN:  per-lane pre-emphasis level (lanes 0-3) =20
+> >=20
+> > I don't see why any real userspace would be interested in those (apart
+> > from maybe DSC). If this is just for diagnostics and whatnot then I
+> > think sysfs/debugfs could be a better fit. =20
+>=20
+> I'd agree here. Please consider implementing it as a debugfs interface,
+> possibly reusing the Intel's format.
 
-Am 03.04.26 um 14:00 schrieb Shivam Kalra via B4 Relay:
-> From: Shivam Kalra <shivamkalra98@zohomail.in>
->
-> The helper drm_simple_encoder_init() is a trivial wrapper around
-> drm_encoder_init() that only provides a static drm_encoder_funcs with
-> .destroy set to drm_encoder_cleanup(). Open-code the initialization
-> with a driver-specific instance of drm_encoder_funcs and remove the
-> dependency on drm_simple_kms_helper.
->
-> Suggested-by: Thomas Zimmermann <tzimmermann@suse.de>
-> Signed-off-by: Shivam Kalra <shivamkalra98@zohomail.in>
+Sorry, I completely forgot to include a paragraph explaining the rationale
+behind using DRM properties.
 
-Looks good.
+This DisplayPort link information report was requested by OSes to allow the=
+m to
+assess the capabilities of each DisplayPort connector on the system, and to
+guide users from the most to least capable ones. It will also enable the OS=
+ to
+warn the user when a cable is too long or experiencing noise (indicated by =
+high
+voltage swing and pre-emphasis levels).
 
-Reviewed-by: Thomas Zimmermann <tzimmermann@suse.de>
+Since this is information that OSes will consume on a regular basis, exposi=
+ng
+it directly as DRM properties seems the most appropriate approach.=20
 
-> ---
-> Addresses the "Open-code drm_simple_encoder_init()" task from
-> Documentation/gpu/todo.rst.
-> ---
->   drivers/gpu/drm/mediatek/mtk_dpi.c | 10 +++++++---
->   1 file changed, 7 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> index 53360b5d12ba..5b83ca6aecb2 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> @@ -25,8 +25,8 @@
->   #include <drm/drm_bridge_connector.h>
->   #include <drm/drm_crtc.h>
->   #include <drm/drm_edid.h>
-> +#include <drm/drm_encoder.h>
->   #include <drm/drm_of.h>
-> -#include <drm/drm_simple_kms_helper.h>
->   
->   #include "mtk_ddp_comp.h"
->   #include "mtk_disp_drv.h"
-> @@ -993,6 +993,10 @@ static const struct drm_bridge_funcs mtk_dpi_bridge_funcs = {
->   	.debugfs_init = mtk_dpi_debugfs_init,
->   };
->   
-> +static const struct drm_encoder_funcs mtk_dpi_encoder_funcs = {
-> +	.destroy = drm_encoder_cleanup,
-> +};
-> +
->   void mtk_dpi_start(struct device *dev)
->   {
->   	struct mtk_dpi *dpi = dev_get_drvdata(dev);
-> @@ -1026,8 +1030,8 @@ static int mtk_dpi_bind(struct device *dev, struct device *master, void *data)
->   	int ret;
->   
->   	dpi->mmsys_dev = priv->mmsys_dev;
-> -	ret = drm_simple_encoder_init(drm_dev, &dpi->encoder,
-> -				      DRM_MODE_ENCODER_TMDS);
-> +	ret = drm_encoder_init(drm_dev, &dpi->encoder, &mtk_dpi_encoder_funcs,
-> +			       DRM_MODE_ENCODER_TMDS, NULL);
->   	if (ret) {
->   		dev_err(dev, "Failed to initialize decoder: %d\n", ret);
->   		return ret;
->
-> ---
-> base-commit: 4b9c36c83b34f710da9573291404f6a2246251c1
-> change-id: 20260403-drm-mediatek-opencode-encoder-init-36336e4c4ff3
->
-> Best regards,
-> --
-> Shivam Kalra <shivamkalra98@zohomail.in>
->
->
-
--- 
---
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Frankenstr. 146, 90461 Nürnberg, Germany, www.suse.com
-GF: Jochen Jaser, Andrew McDonald, Werner Knoblich, (HRB 36809, AG Nürnberg)
-
-
+Regards,
+--=20
+K=C3=B6ry Maincent, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
 
