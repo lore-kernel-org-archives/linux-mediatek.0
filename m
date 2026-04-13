@@ -4,65 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A8E5F34C63
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Apr 2026 16:59:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A53DFF531DC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Apr 2026 22:57:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Cc:To
-	:Subject:Message-ID:From:Content-Transfer-Encoding:Content-Type:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cyv0AxehRNOQolYCuoB+pRa5GzYKrq0BCQrOiqbyjL8=; b=OuB96ELnAgEHL5CdchENz2Syri
-	xicANddWF5SH5d/JM0THTE+7TrOl1Yhv9eFGk3eOkv6zqQ+6AREgYYIh0/MYxDK4vo7qWAcfTfju+
-	dunkWeIXhF2rHBxoxRVgaSOtD74gS/g7pgOP5ZsDaAnXTT5EsLbKFv/3Vtqp9usBCdLQgNITlyMP9
-	hrTSIaZwB4k8vpD0Qs0vRtbzqgjTdF8F3lVis4ngEKxESfOh+WzvpYzMWsqqszorFIsyjGk9qtPAr
-	hqxMUyRFpPYyRzFEWD9GIpt55BJxb6ruL6d2GJsFokmXoP5SsiIy8FLxIBbuqEOVobBzXSZ1cH1XS
-	FDzNShdA==;
+	bh=CggsGn6QMsEBufE1DlAnoRc5ZxsulsN4ccCKXX9TEWc=; b=WC10QKDiIWTZhFUrpm5mb4EiyK
+	e429Tql7fXeGgxaRajtjQm68vWp7nJMcoxeEDWI3aa7pEXcOB/CaUPyh0icRFX33tCnqppBDOtD7R
+	UuQ0tQaQ+cB/+BYmbbW/yHG7LDMCbV+0Erx+EBX7BHu4rgbo9Ow0MPtJRXPxDkhqWmFcn/X6UAldP
+	LaGxDaoYTD+9wuGeJFRVFBtkBXNdM+zF33sxh6CqBoyY1G8UuBZzUu0kYDtwYWVc7r44qPIuv/Zz/
+	jeVy79tRMM+13jPuLzb0WfHKS2M6KhTXyefLjmjDspYeWKsth7vzo+1f+1GDPM1HegomwUeud8ppg
+	ESqWPkyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCKdZ-0000000G6Jy-2jYH;
-	Mon, 13 Apr 2026 16:59:49 +0000
-Received: from out-172.mta0.migadu.com ([91.218.175.172])
+	id 1wCQDT-0000000GSlI-2QdZ;
+	Mon, 13 Apr 2026 22:57:15 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCKdW-0000000G6Iu-1YWf
-	for linux-mediatek@lists.infradead.org;
-	Mon, 13 Apr 2026 16:59:47 +0000
+	id 1wCQDR-0000000GSl4-0DYC;
+	Mon, 13 Apr 2026 22:57:13 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 206D761338;
+	Mon, 13 Apr 2026 22:57:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6A729C2BCAF;
+	Mon, 13 Apr 2026 22:57:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1776121031;
+	bh=5lT5VGCSztp5RHHAfbUGBi5lH094ZC7FcPVmm6uwpds=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=arl2BT6yZiJTpZwPUCeVbRRMKP+NidZwRNmQ2AlGT48QeXXkxN0Yw5MeJOwzMShK3
+	 l7AZfMBEOlioQTR0cDcv4I/JVBrGdjiwLxx66vH8rPoDFuMWXXha8EbQRFnBvoYqHi
+	 DsNPogFzWDwW/9yQj5keuIFnU4nP8uNtNJYV0L5aNbcoaopcjx0V6jfr+q2acfHV2k
+	 XnvFqYHgRbYobHy2UG6MoxPkSk2ElXQzVpQOCIi+HdYAlYauMvHRALxeqaeNKgI+IM
+	 O4RJz08yayli3h8Tymk7BI7/qMu5hR6PTR7BhAJvHdwPLBqhXp5/nGmSMmYv/IWqZ5
+	 vJ7abtUUykARA==
+From: Jakub Kicinski <kuba@kernel.org>
+To: lorenzo@kernel.org
+Cc: Jakub Kicinski <kuba@kernel.org>,
+	andrew+netdev@lunn.ch,
+	davem@davemloft.net,
+	edumazet@google.com,
+	pabeni@redhat.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	netdev@vger.kernel.org
+Subject: Re: [PATCH net] net: airoha: Add missing bits in airoha_qdma_cleanup_tx_queue()
+Date: Mon, 13 Apr 2026 15:57:09 -0700
+Message-ID: <20260413225709.3648413-1-kuba@kernel.org>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260410-airoha_qdma_cleanup_tx_queue-fix-net-v1-1-b7171c8f1e78@kernel.org>
+References: <20260410-airoha_qdma_cleanup_tx_queue-fix-net-v1-1-b7171c8f1e78@kernel.org>
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1776099582;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=cyv0AxehRNOQolYCuoB+pRa5GzYKrq0BCQrOiqbyjL8=;
-	b=ZtzKKlNrEZvrY0siISgE/Ud2mhjzBo1yzcjuC4tb9MyBLjR73qQtuDvHQlCLosiqRhdeC5
-	MvippeHIVM5I6tQO6RpYzDwoa5PnPUAhCoWXcYCyF6Q+pHYs6/d3pBxwgK7CY6dQU4Ttlu
-	Y/+WANgaGegDGnl4JCDWZwnxsBNfhZQ=
-Date: Mon, 13 Apr 2026 16:59:37 +0000
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Frank Wunderlich" <frank.wunderlich@linux.dev>
-Message-ID: <dc46f7d784281642aad6d47e79a3e91652eec667@linux.dev>
-TLS-Required: No
-Subject: Re: [PATCH] pinctrl: mediatek: moore: implement
- gpio_chip::get_direction()
-To: "Linus Walleij" <linusw@kernel.org>, "Frank Wunderlich"
- <frank-w@public-files.de>
-Cc: bartosz.golaszewski@oss.qualcomm.com, linux@fw-web.de,
- sean.wang@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, brgl@kernel.org,
- linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-In-Reply-To: <CAD++jLnjN-gUdCbmdmLaMYck=sP9wrhT2fFRB0TGCAVGvSsY1w@mail.gmail.com>
-References: <20260410070935.9540-1-bartosz.golaszewski@oss.qualcomm.com>
- <trinity-5e6f6a95-e576-4f97-9085-c6de21945eab-1775813076268@trinity-msg-rest-gmx-gmx-live-5cf7d7879b-qwfn5>
- <CAD++jLnjN-gUdCbmdmLaMYck=sP9wrhT2fFRB0TGCAVGvSsY1w@mail.gmail.com>
-X-Migadu-Flow: FLOW_OUT
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260413_095946_577347_829102D0 
-X-CRM114-Status: UNSURE (   7.57  )
-X-CRM114-Notice: Please train this message.
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,50 +73,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 13. April 2026 um 10:01 schrieb "Linus Walleij" <linusw@kernel.org mai=
-lto:linusw@kernel.org?to=3D%22Linus%20Walleij%22%20%3Clinusw%40kernel.org=
-%3E >:
->=20
->=20On Fri, Apr 10, 2026 at 11:24 AM Frank Wunderlich
-> <frank-w@public-files.de> wrote:
->=20
->=20>=20
->=20> Gesendet: Freitag, 10. April 2026 um 09:09
-> >  Von: "Bartosz Golaszewski" <bartosz.golaszewski@oss.qualcomm.com>
-> >  An: "Frank Wunderlich" <linux@fw-web.de>, "Sean Wang" <sean.wang@ker=
-nel.org>, "Linus Walleij" <linusw@kernel.org>, "Matthias Brugger" <matthi=
-as.bgg@gmail.com>, "AngeloGioacchino Del Regno" <angelogioacchino.delregn=
-o@collabora.com>, "Bartosz Golaszewski" <brgl@kernel.org>
-> >  CC: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, =
-linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, "Bart=
-osz Golaszewski" <bartosz.golaszewski@oss.qualcomm.com>
-> >  Betreff: [PATCH] pinctrl: mediatek: moore: implement gpio_chip::get_=
-direction()
-> >=20
->=20>  If the gpio_chip::get_direction() callback is not implemented by t=
-he GPIO
-> >  controller driver, GPIOLIB emits a warning.
-> >=20
->=20>  Implement get_direction() for the GPIO part of pinctrl-moore.
-> >=20
->=20>  Fixes: 471e998c0e31 ("gpiolib: remove redundant callback check")
-> >  Fixes: e623c4303ed1 ("gpiolib: sanitize the return value of gpio_chi=
-p::get_direction()")
-> >  Reported-by: Frank Wunderlich <linux@fw-web.de>
-> >=20
->=20>  please use the email i used for SoB in my linked patch (closes lin=
-k below), the other email i use only for sending patches due to mail prov=
-ider limitation.
-> >=20
->=20I can't fix this up because the closes link isn't working right now.
-> Is it the same
-> as the one this mail came from frank-w@public-files.de?
+This is an AI-generated review of your patch. The human sending this
+email has considered the AI review valid, or at least plausible.
+---
+net: airoha: Add missing bits in airoha_qdma_cleanup_tx_queue()
 
-yes, closes-link works for me
+This commit resets DMA TX descriptors in airoha_qdma_cleanup_tx_queue
+and synchronizes TX_DMA_IDX to TX_CPU_IDX to notify the hardware that
+the ring is empty.
 
-> Yours,
-> Linus Walleij
->=20
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+> index 9285a68f435fe..963ab7b8d166b 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+> @@ -1044,13 +1044,17 @@ static int airoha_qdma_init_tx(struct airoha_qdma *qdma)
+[ ... ]
+>  	spin_lock_bh(&q->lock);
+>  	for (i = 0; i < q->ndesc; i++) {
+> -		struct airoha_queue_entry *e = &q->entry[i];
+> +		struct airoha_qdma_desc *desc = &q->desc[i];
+>  
+> +		e = &q->entry[i];
 
-regards=20Frank
+Can this result in a NULL pointer dereference?
+
+If airoha_qdma_init_tx_queue() sets q->ndesc before allocating q->entry and
+q->desc, and devm_kzalloc() fails, the error path jumps to
+airoha_hw_cleanup().
+
+Because q->ndesc > 0, this cleanup loop would execute and dereference
+q->entry[i] and q->desc[i], which may not have been allocated.
+
+[ ... ]
+> +		/* Reset DMA descriptor */
+> +		WRITE_ONCE(desc->ctrl, 0);
+> +		WRITE_ONCE(desc->addr, 0);
+> +		WRITE_ONCE(desc->data, 0);
+> +		WRITE_ONCE(desc->msg0, 0);
+> +		WRITE_ONCE(desc->msg1, 0);
+> +		WRITE_ONCE(desc->msg2, 0);
+
+Is it safe to modify these DMA descriptors and reset the ring indices below
+without waiting for the hardware DMA engine to become idle?
+
+In airoha_dev_stop(), the driver clears GLOBAL_CFG_TX_DMA_EN_MASK to request
+the hardware DMA engine to stop, but it does not appear to poll
+GLOBAL_CFG_TX_DMA_BUSY_MASK to ensure it has actually stopped.
+
+Modifying the DMA descriptors and internal ring indices while the hardware
+is still actively processing in-flight descriptors could potentially lead
+to corrupted DMA fetches or IOMMU faults.
+
+>  		q->queued--;
+>  	}
+> +
+> +	e = list_first_entry(&q->tx_list, struct airoha_queue_entry,
+> +			     list);
+> +	index = e - q->entry;
+> +	/* Set TX_DMA_IDX to TX_CPU_IDX to notify the hw the QDMA TX ring is
+> +	 * empty.
+> +	 */
+> +	airoha_qdma_rmw(qdma, REG_TX_CPU_IDX(qid), TX_RING_CPU_IDX_MASK,
+> +			FIELD_PREP(TX_RING_CPU_IDX_MASK, index));
+> +	airoha_qdma_rmw(qdma, REG_TX_DMA_IDX(qid), TX_RING_DMA_IDX_MASK,
+> +			FIELD_PREP(TX_RING_DMA_IDX_MASK, index));
+
+Could list_first_entry() be called on an empty list here?
+
+If q->tx_list is empty (for example, if allocation failed in
+airoha_qdma_init_tx_queue or if no entries had a valid dma_addr), calling
+list_first_entry() returns an invalid pointer.
+
+The subsequent pointer arithmetic would produce a garbage index value,
+which is then written to the REG_TX_CPU_IDX and REG_TX_DMA_IDX registers.
+-- 
+pw-bot: cr
 
