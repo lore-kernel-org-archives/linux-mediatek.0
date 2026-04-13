@@ -4,81 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E91FEBFD08
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Apr 2026 07:14:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE972EBFD10
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Apr 2026 08:01:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xfFRo0UHQusuMDmGKevH0yFYeubiKUgkDDCMUWqjD1Y=; b=EJx7QLHfVQK9gJ3zKg2TH1l5Zw
-	oH9emv/2VY7Wj0paOGWQE12GUsiGbczad9sbdr/P1/O5uOb5gANL7a7wz9fNRQUK0IGNn/4PFmXzM
-	IcXXx+8/ECWS0E6e8le3uCoLwXs8P/U3WT2urwqoiZ92wFdB3jmcJlzQ/vKIFk4zvQwNASdW9ZgZF
-	+FkQahGSfbX7caxyg4/Ve72UeGs9Sdv3MXy3kQa/6OkAKJfpNCfJMXpI8rTMoTfoWi27EHjHD4hdf
-	GxqKFV8dUThQS6YVpZjsIa+lDH0NyZ05XaSUekt5ISvQq8YWWR8aICkKkydUHWAUDkZwsMqk2W/H6
-	rxUAxywg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hP1el5xOJ6rC5eOpWPTnKPIlVHp2ZUXrZ+j7CVleAq4=; b=go21HdaPpJh59Y3f6QDO5sO2Zh
+	+Yh4KvvZrp5s4CFfMGW856ZUTdxK5F0bUtnyd6e+dfigwRcoMStcHXiVttdteh7J0kPyJidVww641
+	+1Kl9yNrtK4++7HbH4U1VpQttPr0wnk0euK4PpucKj4uU4oB2WOuuJHzPmCvJsf9neapBNyIfJq/C
+	2fvY697Rwvp5klUNBRsy6NlYyBcAwikULVflk89IqoD9f6p4MZMWMk+fRVg6uwcOBo2ZchQ3YToOt
+	5/P3Ue3/NzutDLBs2h+Y/M4Fq563p4YaGJnjAGG/b+FMV0Ar/qMa+CtDcytePmhPsRku1UHh5myBX
+	QUKrQcEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCBV7-0000000F7R7-2BKS;
-	Mon, 13 Apr 2026 07:14:29 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1wCCET-0000000FCsK-01Xc;
+	Mon, 13 Apr 2026 08:01:21 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCBUx-0000000F7OL-02db
+	id 1wCCER-0000000FCrW-1bHv
 	for linux-mediatek@lists.infradead.org;
-	Mon, 13 Apr 2026 07:14:27 +0000
-X-UUID: 6003bd16370811f1a6de359d7043e138-20260413
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=xfFRo0UHQusuMDmGKevH0yFYeubiKUgkDDCMUWqjD1Y=;
-	b=bINiSEyWMudMogYpEeJHY9RajiFIFstwyJMpLFkiDDBafhPJ8jpXAjnTr6MMicU/oXl3yAnkLmtRmmV8DCwLVyqIiJzCSL9ZnQ/ny7wu5yycwMaybldajO0j8sGWeUb68vlT+GNiCZ1PnzEFOhuwT9HJnPVzCksf1P8r3khA7+o=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:b41f1963-fafe-4b28-9d95-de0e9ba9ab60,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:e7bac3a,CLOUDID:91d5cb24-cb5c-4236-a89a-9a7fb20c9bc4,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|865|888|898,TC:-5,Cont
-	ent:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0
-	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 6003bd16370811f1a6de359d7043e138-20260413
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <jian.yang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2054130728; Mon, 13 Apr 2026 00:14:13 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 13 Apr 2026 15:14:10 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 13 Apr 2026 15:14:10 +0800
-From: Jian Yang <jian.yang@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Ryder Lee
-	<ryder.lee@mediatek.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>, Manivannan
- Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, Bjorn Helgaas
-	<bhelgaas@google.com>
-CC: <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<jian.yang@mediatek.com>, <chuanjia.liu@mediatek.com>,
-	<yonglong.wu@mediatek.com>
-Subject: [PATCH 2/2] PCI: mediatek-gen3: Add a shutdown callback to cotnrol PERST# signal
-Date: Mon, 13 Apr 2026 15:13:56 +0800
-Message-ID: <20260413071401.1151-3-jian.yang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20260413071401.1151-1-jian.yang@mediatek.com>
-References: <20260413071401.1151-1-jian.yang@mediatek.com>
+	Mon, 13 Apr 2026 08:01:20 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2B71144206
+	for <linux-mediatek@lists.infradead.org>; Mon, 13 Apr 2026 08:01:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0CA8BC2BCB3
+	for <linux-mediatek@lists.infradead.org>; Mon, 13 Apr 2026 08:01:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1776067278;
+	bh=hP1el5xOJ6rC5eOpWPTnKPIlVHp2ZUXrZ+j7CVleAq4=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=XVL+C4Zlx2UQ+13koLXQcEPQGEYAoHM+f0LLebzDe96Dwb480JRfo4MTchku3dCTW
+	 tBITlIPs0vJiPMM/IcM1utoDatp++soq+yU/OBW8rP657qOO/Um+Bw1vzea9K0/sMM
+	 e8isoJqw6QJ1XzoI69f/4RW3I+sojwEV6MmZXeF9oM4HX2u4Rhj+wZUwDLBj9oNMVB
+	 lfZPSCWll3xebdJ2uP5P3ykgSg7h5pa9dx0NBarNfmiVMFYgLOjEVZWyNj4jciBJ0e
+	 SyRRNNrnhMnz0zgec1XVgwfnbVmeIRxM7mYfmMkuqdHzQ+pd2hcdHrX4BMM3Gwgie4
+	 1zDEbHlo1Po5A==
+Received: by mail-yx1-f51.google.com with SMTP id 956f58d0204a3-651c7ddf514so647892d50.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 13 Apr 2026 01:01:18 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AFNElJ/9EYXkdH4nQv6WVTyH7cXNLDwAU1Z7nOK5rpSCV2TzOPQuag4rhZYW99gXo4SQUzkXDlq8UjTHjySpdiCvmA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywt7prFD62npGPs+x5BqXvnBQ0Qs/YL6s/GW5kCEn4MCHSd/poW
+	zySJADr1t+BbUwe/fAf4/EVtiD56ud564q+83Z6OT5qbJTDBXrffFKIwTmb2ItlSS9qKCbudq57
+	T9vN4LK4WbNGjg5EliU0dKWooc/eTwKU=
+X-Received: by 2002:a53:e1f9:0:b0:650:1d3c:2ae4 with SMTP id
+ 956f58d0204a3-65198a7ff99mr9464905d50.19.1776067277379; Mon, 13 Apr 2026
+ 01:01:17 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+References: <20260410070935.9540-1-bartosz.golaszewski@oss.qualcomm.com> <trinity-5e6f6a95-e576-4f97-9085-c6de21945eab-1775813076268@trinity-msg-rest-gmx-gmx-live-5cf7d7879b-qwfn5>
+In-Reply-To: <trinity-5e6f6a95-e576-4f97-9085-c6de21945eab-1775813076268@trinity-msg-rest-gmx-gmx-live-5cf7d7879b-qwfn5>
+From: Linus Walleij <linusw@kernel.org>
+Date: Mon, 13 Apr 2026 10:01:05 +0200
+X-Gmail-Original-Message-ID: <CAD++jLnjN-gUdCbmdmLaMYck=sP9wrhT2fFRB0TGCAVGvSsY1w@mail.gmail.com>
+X-Gm-Features: AQROBzBVbNkZQd5M-JIcoCwBqTnfC8gpTQhwy0nP69ggr9JlXF4NUsZC_rYcX28
+Message-ID: <CAD++jLnjN-gUdCbmdmLaMYck=sP9wrhT2fFRB0TGCAVGvSsY1w@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: mediatek: moore: implement gpio_chip::get_direction()
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: bartosz.golaszewski@oss.qualcomm.com, linux@fw-web.de, 
+	sean.wang@kernel.org, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, brgl@kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260413_001421_201847_92B67B57 
-X-CRM114-Status: GOOD (  11.56  )
+X-CRM114-CacheID: sfid-20260413_010119_485606_3EA11982 
+X-CRM114-Status: GOOD (  10.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,44 +85,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a shutdown callback to control the timing of PERST# and power
-during system shutdown, ensuring that the PERST#, as required by the
-PCIe CEM specification, is active before the power on connector is
-removed.
+On Fri, Apr 10, 2026 at 11:24=E2=80=AFAM Frank Wunderlich
+<frank-w@public-files.de> wrote:
 
-Signed-off-by: Jian Yang <jian.yang@mediatek.com>
----
- drivers/pci/controller/pcie-mediatek-gen3.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+> > Gesendet: Freitag, 10. April 2026 um 09:09
+> > Von: "Bartosz Golaszewski" <bartosz.golaszewski@oss.qualcomm.com>
+> > An: "Frank Wunderlich" <linux@fw-web.de>, "Sean Wang" <sean.wang@kernel=
+.org>, "Linus Walleij" <linusw@kernel.org>, "Matthias Brugger" <matthias.bg=
+g@gmail.com>, "AngeloGioacchino Del Regno" <angelogioacchino.delregno@colla=
+bora.com>, "Bartosz Golaszewski" <brgl@kernel.org>
+> > CC: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, lin=
+ux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, "Bartosz G=
+olaszewski" <bartosz.golaszewski@oss.qualcomm.com>
+> > Betreff: [PATCH] pinctrl: mediatek: moore: implement gpio_chip::get_dir=
+ection()
+> >
+> > If the gpio_chip::get_direction() callback is not implemented by the GP=
+IO
+> > controller driver, GPIOLIB emits a warning.
+> >
+> > Implement get_direction() for the GPIO part of pinctrl-moore.
+> >
+> > Fixes: 471e998c0e31 ("gpiolib: remove redundant callback check")
+> > Fixes: e623c4303ed1 ("gpiolib: sanitize the return value of gpio_chip::=
+get_direction()")
+> > Reported-by: Frank Wunderlich <linux@fw-web.de>
+>
+> please use the email i used for SoB in my linked patch (closes link below=
+), the other email i use only for sending patches due to mail provider limi=
+tation.
 
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index 58ba1aa35a22..4915979968b9 100644
---- a/drivers/pci/controller/pcie-mediatek-gen3.c
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -1285,6 +1285,14 @@ static void mtk_pcie_remove(struct platform_device *pdev)
- 	mtk_pcie_irq_teardown(pcie);
- }
- 
-+static void mtk_pcie_shutdown(struct platform_device *pdev)
-+{
-+	struct mtk_gen3_pcie *pcie = platform_get_drvdata(pdev);
-+
-+	mtk_pcie_devices_power_down(pcie);
-+	mtk_pcie_power_down(pcie);
-+}
-+
- static void mtk_pcie_irq_save(struct mtk_gen3_pcie *pcie)
- {
- 	int i;
-@@ -1423,6 +1431,7 @@ MODULE_DEVICE_TABLE(of, mtk_pcie_of_match);
- static struct platform_driver mtk_pcie_driver = {
- 	.probe = mtk_pcie_probe,
- 	.remove = mtk_pcie_remove,
-+	.shutdown = mtk_pcie_shutdown,
- 	.driver = {
- 		.name = "mtk-pcie-gen3",
- 		.of_match_table = mtk_pcie_of_match,
--- 
-2.45.2
+I can't fix this up because the closes link isn't working right now.
+Is it the same
+as the one this mail came from frank-w@public-files.de?
 
+Yours,
+Linus Walleij
 
