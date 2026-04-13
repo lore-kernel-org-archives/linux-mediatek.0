@@ -4,73 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE972EBFD10
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Apr 2026 08:01:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9088EBFD17
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Apr 2026 08:30:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hP1el5xOJ6rC5eOpWPTnKPIlVHp2ZUXrZ+j7CVleAq4=; b=go21HdaPpJh59Y3f6QDO5sO2Zh
-	+Yh4KvvZrp5s4CFfMGW856ZUTdxK5F0bUtnyd6e+dfigwRcoMStcHXiVttdteh7J0kPyJidVww641
-	+1Kl9yNrtK4++7HbH4U1VpQttPr0wnk0euK4PpucKj4uU4oB2WOuuJHzPmCvJsf9neapBNyIfJq/C
-	2fvY697Rwvp5klUNBRsy6NlYyBcAwikULVflk89IqoD9f6p4MZMWMk+fRVg6uwcOBo2ZchQ3YToOt
-	5/P3Ue3/NzutDLBs2h+Y/M4Fq563p4YaGJnjAGG/b+FMV0Ar/qMa+CtDcytePmhPsRku1UHh5myBX
-	QUKrQcEw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=20iQrWAFXeXnfwivnBV87cuFIXv+5v5bRlJjFoST/xs=; b=NMn3UbYJ0+u5fNAJKcRVkLv7bc
+	94tGkJ9fW7iATP3Jcj3SiHcjUUqS5S0sJ1a08DHIm/PzMt3cS2YTl1fSSY6xb3h2MitZC2P5EAk4o
+	nd9YKbGr66BONmQDliRnUG4ZOI15a6CFJX1HvveXockElF48yzr8U2caj23b3a0gMEgFmsCQwxFYw
+	Jp9wUGdEQTmIK950ueQ8ddUuEgK/aJxPnVeOAVOSn2NMCxoTKVYaMw1bmVnJjzQR0WHQWiC6wmcys
+	sUdYFUXQlnFD4pqoDodezU6clQTn08V8NHHeht3OFErrXcymSuetGtFCStn07fv1/EUHkSB24D11N
+	Ps3oO8yA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCCET-0000000FCsK-01Xc;
-	Mon, 13 Apr 2026 08:01:21 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wCCgM-0000000FGlj-1jF9;
+	Mon, 13 Apr 2026 08:30:10 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCCER-0000000FCrW-1bHv
-	for linux-mediatek@lists.infradead.org;
-	Mon, 13 Apr 2026 08:01:20 +0000
+	id 1wCCgK-0000000FGlW-0uqO;
+	Mon, 13 Apr 2026 08:30:08 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2B71144206
-	for <linux-mediatek@lists.infradead.org>; Mon, 13 Apr 2026 08:01:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0CA8BC2BCB3
-	for <linux-mediatek@lists.infradead.org>; Mon, 13 Apr 2026 08:01:18 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 63E5B60172;
+	Mon, 13 Apr 2026 08:30:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9525EC116C6;
+	Mon, 13 Apr 2026 08:30:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776067278;
-	bh=hP1el5xOJ6rC5eOpWPTnKPIlVHp2ZUXrZ+j7CVleAq4=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=XVL+C4Zlx2UQ+13koLXQcEPQGEYAoHM+f0LLebzDe96Dwb480JRfo4MTchku3dCTW
-	 tBITlIPs0vJiPMM/IcM1utoDatp++soq+yU/OBW8rP657qOO/Um+Bw1vzea9K0/sMM
-	 e8isoJqw6QJ1XzoI69f/4RW3I+sojwEV6MmZXeF9oM4HX2u4Rhj+wZUwDLBj9oNMVB
-	 lfZPSCWll3xebdJ2uP5P3ykgSg7h5pa9dx0NBarNfmiVMFYgLOjEVZWyNj4jciBJ0e
-	 SyRRNNrnhMnz0zgec1XVgwfnbVmeIRxM7mYfmMkuqdHzQ+pd2hcdHrX4BMM3Gwgie4
-	 1zDEbHlo1Po5A==
-Received: by mail-yx1-f51.google.com with SMTP id 956f58d0204a3-651c7ddf514so647892d50.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 13 Apr 2026 01:01:18 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AFNElJ/9EYXkdH4nQv6WVTyH7cXNLDwAU1Z7nOK5rpSCV2TzOPQuag4rhZYW99gXo4SQUzkXDlq8UjTHjySpdiCvmA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywt7prFD62npGPs+x5BqXvnBQ0Qs/YL6s/GW5kCEn4MCHSd/poW
-	zySJADr1t+BbUwe/fAf4/EVtiD56ud564q+83Z6OT5qbJTDBXrffFKIwTmb2ItlSS9qKCbudq57
-	T9vN4LK4WbNGjg5EliU0dKWooc/eTwKU=
-X-Received: by 2002:a53:e1f9:0:b0:650:1d3c:2ae4 with SMTP id
- 956f58d0204a3-65198a7ff99mr9464905d50.19.1776067277379; Mon, 13 Apr 2026
- 01:01:17 -0700 (PDT)
+	s=k20201202; t=1776069007;
+	bh=Zmf17Ef7V1/I9+tjQStHwQFn4sJYJNvogny1tDE3r9Y=;
+	h=From:Date:Subject:To:Cc:From;
+	b=PVuX+jD0WGBgtt9stuVLqQgyCRxVxnTKU6VCuQkugMknm9u76hJRSoTp//vGve1Nd
+	 wup09DPBMarQ20v2q9/H5/hcBF8VOWWpetWrTN4yLO6QP2S0GKEg/iLriBW8vwX3Uu
+	 IFxOj7hFmEPyVUpaxH3ozBV6jKrLfIEFD+uJekw/z9A+Bie58NMcORrWqudIrfNA39
+	 O3QlVCyKfAyRcD962bMFt9XwnvGyrFg+00LLJk9iq4QsY6L7P1aLG8v5X0pcssBBxe
+	 7OqfJDAljXkiubgKIOSlBjW3oSN6BCKXk2Xc79VF+o3eQOM6ww/P8omZYAH1RN5kHG
+	 tkRFS5cEHv8pw==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Mon, 13 Apr 2026 10:29:49 +0200
+Subject: [PATCH net] net: airoha: Fix possible TX queue stall in
+ airoha_qdma_tx_napi_poll()
 MIME-Version: 1.0
-References: <20260410070935.9540-1-bartosz.golaszewski@oss.qualcomm.com> <trinity-5e6f6a95-e576-4f97-9085-c6de21945eab-1775813076268@trinity-msg-rest-gmx-gmx-live-5cf7d7879b-qwfn5>
-In-Reply-To: <trinity-5e6f6a95-e576-4f97-9085-c6de21945eab-1775813076268@trinity-msg-rest-gmx-gmx-live-5cf7d7879b-qwfn5>
-From: Linus Walleij <linusw@kernel.org>
-Date: Mon, 13 Apr 2026 10:01:05 +0200
-X-Gmail-Original-Message-ID: <CAD++jLnjN-gUdCbmdmLaMYck=sP9wrhT2fFRB0TGCAVGvSsY1w@mail.gmail.com>
-X-Gm-Features: AQROBzBVbNkZQd5M-JIcoCwBqTnfC8gpTQhwy0nP69ggr9JlXF4NUsZC_rYcX28
-Message-ID: <CAD++jLnjN-gUdCbmdmLaMYck=sP9wrhT2fFRB0TGCAVGvSsY1w@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: mediatek: moore: implement gpio_chip::get_direction()
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: bartosz.golaszewski@oss.qualcomm.com, linux@fw-web.de, 
-	sean.wang@kernel.org, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, brgl@kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260413_010119_485606_3EA11982 
-X-CRM114-Status: GOOD (  10.40  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260413-airoha-txq-potential-stall-v1-1-7830363b1543@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MSwqDMBAA0KvIrDsQY/z1KsXFEKd1ICSaDEUQ7
+ 97Q5du8Cwpn4QLP5oLMXymSYkX7aMBvFD+MslaDNXYwzoxIktNGqOeBe1KOKhSwKIWAtPbW952
+ ZHU9Qgz3zW85//oLICst9/wDuW38ccQAAAA==
+X-Change-ID: 20260407-airoha-txq-potential-stall-ad52c53094e8
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+X-Mailer: b4 0.14.3
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,40 +74,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 10, 2026 at 11:24=E2=80=AFAM Frank Wunderlich
-<frank-w@public-files.de> wrote:
+Since multiple net_device TX queues can share the same hw QDMA TX queue,
+there is no guarantee we have inflight packets queued in hw belonging to a
+net_device TX queue stopped in the xmit path because hw QDMA TX queue
+can be full. In this corner case the net_device TX queue will never be
+re-activated. In order to avoid any potential net_device TX queue stall,
+we need to wake all the net_device TX queues feeding the same hw QDMA TX
+queue in airoha_qdma_tx_napi_poll routine.
 
-> > Gesendet: Freitag, 10. April 2026 um 09:09
-> > Von: "Bartosz Golaszewski" <bartosz.golaszewski@oss.qualcomm.com>
-> > An: "Frank Wunderlich" <linux@fw-web.de>, "Sean Wang" <sean.wang@kernel=
-.org>, "Linus Walleij" <linusw@kernel.org>, "Matthias Brugger" <matthias.bg=
-g@gmail.com>, "AngeloGioacchino Del Regno" <angelogioacchino.delregno@colla=
-bora.com>, "Bartosz Golaszewski" <brgl@kernel.org>
-> > CC: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, lin=
-ux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, "Bartosz G=
-olaszewski" <bartosz.golaszewski@oss.qualcomm.com>
-> > Betreff: [PATCH] pinctrl: mediatek: moore: implement gpio_chip::get_dir=
-ection()
-> >
-> > If the gpio_chip::get_direction() callback is not implemented by the GP=
-IO
-> > controller driver, GPIOLIB emits a warning.
-> >
-> > Implement get_direction() for the GPIO part of pinctrl-moore.
-> >
-> > Fixes: 471e998c0e31 ("gpiolib: remove redundant callback check")
-> > Fixes: e623c4303ed1 ("gpiolib: sanitize the return value of gpio_chip::=
-get_direction()")
-> > Reported-by: Frank Wunderlich <linux@fw-web.de>
->
-> please use the email i used for SoB in my linked patch (closes link below=
-), the other email i use only for sending patches due to mail provider limi=
-tation.
+Fixes: 23020f0493270 ("net: airoha: Introduce ethernet support for EN7581 SoC")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/ethernet/airoha/airoha_eth.c | 30 ++++++++++++++++++++++++++----
+ 1 file changed, 26 insertions(+), 4 deletions(-)
 
-I can't fix this up because the closes link isn't working right now.
-Is it the same
-as the one this mail came from frank-w@public-files.de?
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 9e995094c32a..e7610f36b8e4 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -855,6 +855,19 @@ static int airoha_qdma_init_rx(struct airoha_qdma *qdma)
+ 	return 0;
+ }
+ 
++static void airoha_qdma_wake_tx_queues(struct airoha_qdma *qdma)
++{
++	struct airoha_eth *eth = qdma->eth;
++	int i;
++
++	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
++		struct airoha_gdm_port *port = eth->ports[i];
++
++		if (port && port->qdma == qdma)
++			netif_tx_wake_all_queues(port->dev);
++	}
++}
++
+ static int airoha_qdma_tx_napi_poll(struct napi_struct *napi, int budget)
+ {
+ 	struct airoha_tx_irq_queue *irq_q;
+@@ -931,12 +944,21 @@ static int airoha_qdma_tx_napi_poll(struct napi_struct *napi, int budget)
+ 
+ 			txq = netdev_get_tx_queue(skb->dev, queue);
+ 			netdev_tx_completed_queue(txq, 1, skb->len);
+-			if (netif_tx_queue_stopped(txq) &&
+-			    q->ndesc - q->queued >= q->free_thr)
+-				netif_tx_wake_queue(txq);
+-
+ 			dev_kfree_skb_any(skb);
+ 		}
++
++		if (q->ndesc - q->queued == q->free_thr) {
++			/* Since multiple net_device TX queues can share the
++			 * same hw QDMA TX queue, there is no guarantee we have
++			 * inflight packets queued in hw belonging to a
++			 * net_device TX queue stopped in the xmit path.
++			 * In order to avoid any potential net_device TX queue
++			 * stall, we need to wake all the net_device TX queues
++			 * feeding the same hw QDMA TX queue.
++			 */
++			airoha_qdma_wake_tx_queues(qdma);
++		}
++
+ unlock:
+ 		spin_unlock_bh(&q->lock);
+ 	}
 
-Yours,
-Linus Walleij
+---
+base-commit: 2dddb34dd0d07b01fa770eca89480a4da4f13153
+change-id: 20260407-airoha-txq-potential-stall-ad52c53094e8
+
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
