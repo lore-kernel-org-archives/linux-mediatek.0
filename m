@@ -4,111 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F03BE93808
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Apr 2026 01:43:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46596E9380E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Apr 2026 03:33:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZpqWZ5OeBihZW+KiOWj3yc4NCjFh45eEbq7S9GQ1ONE=; b=0P+tv2Gsl/K4PMx3usb0c5pt+0
-	p11ZenRowia4R14hzVMcaU3Itr7cqPUl8MicHsgeTAlgNNNxLgYrxbEDkDKnZ8ysafQPIYoApMUF3
-	2UtNajkm7F7gsgROOttclHuZSfFw+5gJcNQOa/1YMHC4JX6ZOlIs0InGH06QnVJZfuAXX3nGLTdvv
-	lk63aeJrY0igFFStK9+QnvSDOUdeEADbgk+S5VKP6r/WeGNkNZ8+3Oh0hFauyai11N1RCI6UhWd6l
-	7qLH/fKCRd3QqC3nHPCo5K3+I2e/EhkaR8b0jdfIC+Rq9RLaVscK+dKmwr7NPrHRDu5WdqPbILOci
-	r9z4FAAg==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jyXknkEQRieSm0PHmWno6BYuEQ3h0sr9KS+KjU9LA/o=; b=gDTBgD/IDt+g9q08eJrnWb+Ye8
+	zu2m35QxCXaQx83GtAD4tPZcUxQ1KDHrijeGsUMYnPCU5aIvWxbbwnI5Q++0pMZsyERU0tWb7/Q1E
+	t8bDPcpYHnwMaAMbML5+HY6/rqtaCB3XU0kFkZwiAiWePoCfbZ7jE3zU5YSKTfeZVRMlvvlVeX5YL
+	KdkWkcOB4zMQdac3BfCAkya2f/uizHWUTqZyBghDJ+OpkIg5vJJmMHxUbQH+Ov7cq5JiAlE3lVHJC
+	FYkd0fqyrtbmRuE2Jq9TMGN17r0pVONvZ6vmRUDwDx3YgmKfk6UtRo15BkBpOf2JPN5QVW9fJv69+
+	R+NP2DHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wC6KM-0000000Eqc9-35dL;
-	Mon, 13 Apr 2026 01:43:02 +0000
-Received: from mail-oa1-x30.google.com ([2001:4860:4864:20::30])
+	id 1wC82z-0000000EweM-3oeE;
+	Mon, 13 Apr 2026 03:33:13 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wC6KJ-0000000Eqaj-11YI
+	id 1wC82w-0000000Ewdz-2OpB
 	for linux-mediatek@lists.infradead.org;
-	Mon, 13 Apr 2026 01:43:00 +0000
-Received: by mail-oa1-x30.google.com with SMTP id 586e51a60fabf-404254ffe8aso2592714fac.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 12 Apr 2026 18:42:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1776044578; cv=none;
-        d=google.com; s=arc-20240605;
-        b=R4UzbYooa2vR7N+f9TqL9WqBSSMVE29T2uBSwYdWo35DoUZtk0BrIOqDI++ednW7+r
-         X1jmnPYpGQAuW9Fd3nh8yaXT75RA3BTQcXLpitVbXEJmSZ49ICuXcbdTHZJMKjDKgX+j
-         d3NIuJehKRKxhq+LMNTsd4hga/bzOFjox8EbyuE628kfAEsjoN66Xb/qUONrXkwL/TnB
-         k5PndOCmGJlEb0jfXWFwymzckRsDLFBA5PmXwdElgGXEbBejo2LYR2uVD8VhBBiS4V0c
-         Tv3cOYbkAUJbQmoxFAvn3i3aDVMiL1k9rdp9a/YLoTrZiXwXPmpXJfT6hx95DveVTwE4
-         KbMg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=ZpqWZ5OeBihZW+KiOWj3yc4NCjFh45eEbq7S9GQ1ONE=;
-        fh=Kyl9OyoQ+XYzWfExnI+8udRvjhvxCtBfFzGGQjIixy8=;
-        b=Iu+tqP29uz2tJnq+ZOXxFlzkMx8/kl+Nsj3h5Vi5bTXu1mkfD3lT/gGpO9A10BsuRl
-         tS23a8wjC/a6RzIwNpWcrJet5QuGxF9lmq4Lqg/cbepIxuxNT0Kkm8rAqIJjoAH8tk9J
-         dYqYh+oB/iAokeRTtFRBkiUfPTa5rkZFbEfaNMytruvJLIpQ1FL3zAVxOlgtT/7MDXES
-         HYkqBon7U3HSxo0tBx9RDTrDo2WXKK2IjYcIB11VfsYf4fUnIdWmBD8M4jSfbA+9CAAp
-         j/WuqzRu6TK20Oqdg0TSdhdGz7nMv2lvN2dn+hKoWTeGeo547Egq3eCs1+zEPaJnU+lT
-         FIQQ==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Mon, 13 Apr 2026 03:33:13 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-488b3f8fa2bso41530705e9.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 12 Apr 2026 20:33:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1776044578; x=1776649378; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ZpqWZ5OeBihZW+KiOWj3yc4NCjFh45eEbq7S9GQ1ONE=;
-        b=ERIyDAJvMuNoYACU9C/CmLuXfDTxnuFu71BwTNbkVm5jgKEprloxT0TlhApYfL9hKZ
-         EwZRktvU0hnTE9wUZIKE4864YcQLvQ1po2QOLY+ap87E9Plxr5q0lIshuZMnfEMQAHZy
-         j4q8HS2JTEzoSUuUNxYqOLm6fFRlYi/vkxf5sf6dWGUVHp+Os8Iwkn185TJkKSKDWY37
-         Xpr0Bjb1jctqz4LXbIY9uYq5Wx/gnDiczMQUxOsUoNHspbwlQu/9dDxzD0o+Os6STLdd
-         /BwhKuEsYrohBUH1J/9PqCR69x4XZ+LKMqQftYDf9cG4MDNYawainD2ppT4GQWxog2z4
-         Dh6g==
+        d=gmail.com; s=20251104; t=1776051188; x=1776655988; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=jyXknkEQRieSm0PHmWno6BYuEQ3h0sr9KS+KjU9LA/o=;
+        b=WxNyJmDan5MeR0wswbTYcNbSyutiK8GAvJqyHhx92HfBhsFjwsbCZH0kMJ0DY9ioOe
+         7QtHbwWhT1wVvauurrbfPPfkNAfGPOQ0SuEVHp2Xq/dGFyOruVIjQ905ae6NMGVzKv1Z
+         X5LDwPRsukoYp6u/f7wKlvGwj9x8k6uV3r+G5gETiazfSDO6iIIm6KNwxOe/t+5MRNSA
+         v9k31C3yXK7nlqG8N90RRhEmhXPBcHxs5foRcElvGrRGCvDCB/oq3gXPPnJKW0BqIlAN
+         WFgOP4K/O3S++C2NL4d2dzZuDei5NEXM2/xYW5ZpYB79TxdlPOtG4O6y80nF3FieOXst
+         jGhw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1776044578; x=1776649378;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=ZpqWZ5OeBihZW+KiOWj3yc4NCjFh45eEbq7S9GQ1ONE=;
-        b=F9Xvs9T/5T9eWdKuXvype8aL/neiJLheT7J3jxaPPWZlFC6RenTopiYynVEu2fqkxC
-         sIWgfclEyDFRrSIvBbFYUPw8EZVHhq/WJ1/yPs3KRQokWC43GmU4JFtjtTKqHhJvTJuj
-         KBi7vOH8ETtKS3SKiLK0BOgBbAvutO04hIR7M1AfAn7qu5Yi/TExyqSznjgMO1pxnP7Q
-         j7FYyU36G5X3qnBNcaxkCYafo5lj/I3yJ2ZE50lhGgvrLw9V2PZrxAP/PaqV6mBxd138
-         zb4fA5hiXKGvXjM84Nv+C1S4u1i+jN+eMG30Kzi/O4YJMxu9TzC6cCA8HZ5iOsK5d5eA
-         tknw==
-X-Forwarded-Encrypted: i=1; AFNElJ8O2yk+7MC4m2q79uyoA/Zn1slAMoXe0+5cwpNrpgl9naBPWHA+Bn53GyECAgJ69yVvwlo8edhWrN200icDWg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyD37GBcDPTtUQHmLZ7GJ7+XiyGHIBHdmScEck6GHeQg1MRC41k
-	GZYeTfxc/8rhwFf3hPGRmZhB9KJnM/Vbaz4EbCMPuCafC5LZsINLZZ6AKVCon7bm8LU98Qon7kf
-	bZpRcUc9AF8UUJwUV+3AePcXgfQIKVc8=
-X-Gm-Gg: AeBDietTOSOZQJcamXrPKX/l/EFEYMMd/FRNV26IyCoDNXkxfdea1lY4WyG/CeSyVBR
-	GxW0DvmDVtHopSffUfD9QuF+H8uqz1Zj3oWlnjCaO/0iqrNqXmSjYXO05L5sabNzhh0PRc0njl3
-	GsCDVmkDe8+Ed3WtKlRdJnAL6C5cfEg7THDBYBzU5XT04bxvpAkMXD55HXkkjFi/ql//2zHoDQv
-	/7cUkhfqfelBZ13b/lE7UUnLqHG5HZFakW5lD6P8GqIENFXjhtooA3UCgujkoEXn6hXNkcj9qlG
-	1SRMTwbY
-X-Received: by 2002:a05:687c:20c2:b0:41c:9797:d1e6 with SMTP id
- 586e51a60fabf-423e1e1318dmr5077336fac.14.1776044577979; Sun, 12 Apr 2026
- 18:42:57 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1776051188; x=1776655988;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=jyXknkEQRieSm0PHmWno6BYuEQ3h0sr9KS+KjU9LA/o=;
+        b=J2Bu17xMxMMSyt5N/w/MtRVWTBzgz6nusUd1A1ZW3KGrb/tKI2JrHlMnMBDqGUR5Qu
+         vGQ71BnzXYymxtQA/Uji/RhCNUqx/P/7WL8EKAsp3OVKhBwskJRreQ87EoSEu+Kwl6uB
+         0xl+tE0n37r0iBK28QPXOxjxf3bGWNXDLOBhefFbmj94z9rvo7gDuGxmBH0AE1OZt3+3
+         PJW0zdBedJ3zBVuXT9ZmHlJLIuR89kSBqQID33AYt5yrszoOddpgwIe6gWD5HPytIao9
+         Ztgc4UAgw5aeq8xcMq4CqFTx/XUU7vyMFZN+ashiZpKcEZRJaQYUi5485fzhitBthc90
+         o0aw==
+X-Gm-Message-State: AOJu0YzLk0pOx7MATj5KYSSOxwYzfIZT0V+OzE0hHZEUlQz4OYuBFu3T
+	/AQcf0N4EOY6CWisoRUkuymYucZsJfFUZ9MNNIThMHaRM4ZpAdu4jmIV
+X-Gm-Gg: AeBDieva7BsgvC16ambz1OcaRPoWK7khBjAWkC/p8Me0N9y49hrPdVJchFeC5OL797B
+	sY8P/I/wYMUs4Lp2El/5Tzaeo2mvv8VuBFX04AGOpqZEHSZVJ4KhyfR6uG1IDSpLOCkGxRRea5G
+	M2egPfBLzTj71rPtTbEKnCAUTBiypmRQKVvNPUsM7YCEb8KXWllQ3Rx2DE9Jmi9493aW/dnDUpm
+	YRVAKfpfKoNuBBKAaQUgGVy1iw3p/YR0bzzClINXOoeJ2W6M57i7sjm1Sr/4AmwCQ4JNuHWy0Bl
+	N0MUlYvZNT433wUKfhLY8H6W3dlRA5DqAOh2JuEnZcUdTr6ru/dI/YQpIoYuQvYkr6ulFzk89Gb
+	Ro/qB6dS64sE9mMb2li5jF/gfmqiT8nWyRFkf9CjTndyO7w4OcEES9wSdrgjCMcCy7+4InXdion
+	mCxsmUyWBy4/PfuBrzeDdzIabCDwIrg3OeP5+aBDnyvpRz6lpJZeY=
+X-Received: by 2002:a05:600d:8453:b0:46e:59bd:f7e2 with SMTP id 5b1f17b1804b1-488d68ae9b7mr121137355e9.11.1776051187989;
+        Sun, 12 Apr 2026 20:33:07 -0700 (PDT)
+Received: from localhost.localdomain ([87.71.34.96])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-488d5d6ee98sm114039175e9.1.2026.04.12.20.33.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 12 Apr 2026 20:33:07 -0700 (PDT)
+From: Aviel Zohar <avielzohar123@gmail.com>
+To: linux-wireless@vger.kernel.org
+Cc: linux-mediatek@lists.infradead.org,
+	nbd@nbd.name,
+	lorenzo@kernel.org,
+	sean.wang@mediatek.com,
+	ryder.lee@mediatek.com,
+	Aviel Zohar <avielzohar123@gmail.com>
+Subject: [PATCH 0/2] wifi: mt76: add missing skb length validation
+Date: Mon, 13 Apr 2026 06:31:33 +0300
+Message-ID: <20260413033136.5417-1-avielzohar123@gmail.com>
+X-Mailer: git-send-email 2.47.0.windows.1
 MIME-Version: 1.0
-References: <20260410125105.39340-2-wsa+renesas@sang-engineering.com>
-In-Reply-To: <20260410125105.39340-2-wsa+renesas@sang-engineering.com>
-From: Jassi Brar <jassisinghbrar@gmail.com>
-Date: Sun, 12 Apr 2026 20:42:46 -0500
-X-Gm-Features: AQROBzD5VLydoqD-crkS8q5jKVQvu0Dgk3PHuV4kaQv0TPwaWMSf23DdaK7QoI0
-Message-ID: <CABb+yY0QydFqBQ2sPzrbDjoj1ODTe0FW_p_4jyBR8cP_gxg9XQ@mail.gmail.com>
-Subject: Re: [PATCH] mailbox: prefix new constants with MBOX_
-To: Wolfram Sang <wsa+renesas@sang-engineering.com>
-Cc: linux-renesas-soc@vger.kernel.org, Peter Chen <peter.chen@cixtech.com>, 
-	Fugang Duan <fugang.duan@cixtech.com>, 
-	CIX Linux Kernel Upstream Group <cix-kernel-upstream@cixtech.com>, Frank Li <Frank.Li@nxp.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Thierry Reding <thierry.reding@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	linux-arm-kernel@lists.infradead.org, imx@lists.linux.dev, 
-	linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260412_184259_305919_6DF27B73 
-X-CRM114-Status: GOOD (  28.50  )
+X-CRM114-CacheID: sfid-20260412_203310_619403_69449C52 
+X-CRM114-Status: GOOD (  10.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,211 +98,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 10, 2026 at 7:51=E2=80=AFAM Wolfram Sang
-<wsa+renesas@sang-engineering.com> wrote:
->
-> Commit 89e5d7d61600 ("mailbox: remove superfluous internal header")
-> moved some constants to a public header but forgot to add a mailbox
-> specific prefix. Add this now to prevent future collisions on a too
-> generic naming.
->
-> Link: https://sashiko.dev/#/patchset/20260327151112.5202-2-wsa%2Brenesas%=
-40sang-engineering.com
-> Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
-> ---
->
-> This patch improves the above mentioned commit which already sits in
-> -next. It is not really a fix but it probably is still a good idea to
-> apply it before rc1 to avoid confusion.
->
->  drivers/mailbox/cix-mailbox.c      |  2 +-
->  drivers/mailbox/imx-mailbox.c      |  2 +-
->  drivers/mailbox/mailbox.c          | 22 +++++++++++-----------
->  drivers/mailbox/mtk-cmdq-mailbox.c |  2 +-
->  drivers/mailbox/omap-mailbox.c     |  2 +-
->  drivers/mailbox/tegra-hsp.c        |  2 +-
->  include/linux/mailbox_controller.h |  6 +++---
->  7 files changed, 19 insertions(+), 19 deletions(-)
->
-> diff --git a/drivers/mailbox/cix-mailbox.c b/drivers/mailbox/cix-mailbox.=
-c
-> index 8cfaa91b75bd..43c76cdab24a 100644
-> --- a/drivers/mailbox/cix-mailbox.c
-> +++ b/drivers/mailbox/cix-mailbox.c
-> @@ -413,7 +413,7 @@ static int cix_mbox_startup(struct mbox_chan *chan)
->         switch (cp->type) {
->         case CIX_MBOX_TYPE_DB:
->                 /* Overwrite txdone_method for DB channel */
-> -               chan->txdone_method =3D TXDONE_BY_ACK;
-> +               chan->txdone_method =3D MBOX_TXDONE_BY_ACK;
->                 fallthrough;
->         case CIX_MBOX_TYPE_REG:
->                 if (priv->dir =3D=3D CIX_MBOX_TX) {
-> diff --git a/drivers/mailbox/imx-mailbox.c b/drivers/mailbox/imx-mailbox.=
-c
-> index 22331b579489..246a9a9e3952 100644
-> --- a/drivers/mailbox/imx-mailbox.c
-> +++ b/drivers/mailbox/imx-mailbox.c
-> @@ -732,7 +732,7 @@ static struct mbox_chan * imx_mu_xlate(struct mbox_co=
-ntroller *mbox,
->         p_chan =3D &mbox->chans[chan];
->
->         if (type =3D=3D IMX_MU_TYPE_TXDB_V2)
-> -               p_chan->txdone_method =3D TXDONE_BY_ACK;
-> +               p_chan->txdone_method =3D MBOX_TXDONE_BY_ACK;
->
->         return p_chan;
->  }
-> diff --git a/drivers/mailbox/mailbox.c b/drivers/mailbox/mailbox.c
-> index 138ffbcd4fde..30eafdf3a91e 100644
-> --- a/drivers/mailbox/mailbox.c
-> +++ b/drivers/mailbox/mailbox.c
-> @@ -72,7 +72,7 @@ static void msg_submit(struct mbox_chan *chan)
->                 }
->         }
->
-> -       if (!err && (chan->txdone_method & TXDONE_BY_POLL)) {
-> +       if (!err && (chan->txdone_method & MBOX_TXDONE_BY_POLL)) {
->                 /* kick start the timer immediately to avoid delays */
->                 scoped_guard(spinlock_irqsave, &chan->mbox->poll_hrt_lock=
-)
->                         hrtimer_start(&chan->mbox->poll_hrt, 0, HRTIMER_M=
-ODE_REL);
-> @@ -162,7 +162,7 @@ EXPORT_SYMBOL_GPL(mbox_chan_received_data);
->   */
->  void mbox_chan_txdone(struct mbox_chan *chan, int r)
->  {
-> -       if (unlikely(!(chan->txdone_method & TXDONE_BY_IRQ))) {
-> +       if (unlikely(!(chan->txdone_method & MBOX_TXDONE_BY_IRQ))) {
->                 dev_err(chan->mbox->dev,
->                        "Controller can't run the TX ticker\n");
->                 return;
-> @@ -183,7 +183,7 @@ EXPORT_SYMBOL_GPL(mbox_chan_txdone);
->   */
->  void mbox_client_txdone(struct mbox_chan *chan, int r)
->  {
-> -       if (unlikely(!(chan->txdone_method & TXDONE_BY_ACK))) {
-> +       if (unlikely(!(chan->txdone_method & MBOX_TXDONE_BY_ACK))) {
->                 dev_err(chan->mbox->dev, "Client can't run the TX ticker\=
-n");
->                 return;
->         }
-> @@ -344,8 +344,8 @@ static int __mbox_bind_client(struct mbox_chan *chan,=
- struct mbox_client *cl)
->                 chan->cl =3D cl;
->                 init_completion(&chan->tx_complete);
->
-> -               if (chan->txdone_method =3D=3D TXDONE_BY_POLL && cl->know=
-s_txdone)
-> -                       chan->txdone_method =3D TXDONE_BY_ACK;
-> +               if (chan->txdone_method =3D=3D MBOX_TXDONE_BY_POLL && cl-=
->knows_txdone)
-> +                       chan->txdone_method =3D MBOX_TXDONE_BY_ACK;
->         }
->
->         if (chan->mbox->ops->startup) {
-> @@ -499,8 +499,8 @@ void mbox_free_channel(struct mbox_chan *chan)
->         scoped_guard(spinlock_irqsave, &chan->lock) {
->                 chan->cl =3D NULL;
->                 chan->active_req =3D MBOX_NO_MSG;
-> -               if (chan->txdone_method =3D=3D TXDONE_BY_ACK)
-> -                       chan->txdone_method =3D TXDONE_BY_POLL;
-> +               if (chan->txdone_method =3D=3D MBOX_TXDONE_BY_ACK)
-> +                       chan->txdone_method =3D MBOX_TXDONE_BY_POLL;
->         }
->
->         module_put(chan->mbox->dev->driver->owner);
-> @@ -531,13 +531,13 @@ int mbox_controller_register(struct mbox_controller=
- *mbox)
->                 return -EINVAL;
->
->         if (mbox->txdone_irq)
-> -               txdone =3D TXDONE_BY_IRQ;
-> +               txdone =3D MBOX_TXDONE_BY_IRQ;
->         else if (mbox->txdone_poll)
-> -               txdone =3D TXDONE_BY_POLL;
-> +               txdone =3D MBOX_TXDONE_BY_POLL;
->         else /* It has to be ACK then */
-> -               txdone =3D TXDONE_BY_ACK;
-> +               txdone =3D MBOX_TXDONE_BY_ACK;
->
-> -       if (txdone =3D=3D TXDONE_BY_POLL) {
-> +       if (txdone =3D=3D MBOX_TXDONE_BY_POLL) {
->
->                 if (!mbox->ops->last_tx_done) {
->                         dev_err(mbox->dev, "last_tx_done method is absent=
-\n");
-> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmd=
-q-mailbox.c
-> index 547a10a8fad3..e523c84b4808 100644
-> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
-> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> @@ -728,7 +728,7 @@ static int cmdq_probe(struct platform_device *pdev)
->         cmdq->mbox.ops =3D &cmdq_mbox_chan_ops;
->         cmdq->mbox.of_xlate =3D cmdq_xlate;
->
-> -       /* make use of TXDONE_BY_ACK */
-> +       /* make use of MBOX_TXDONE_BY_ACK */
->         cmdq->mbox.txdone_irq =3D false;
->         cmdq->mbox.txdone_poll =3D false;
->
-> diff --git a/drivers/mailbox/omap-mailbox.c b/drivers/mailbox/omap-mailbo=
-x.c
-> index 5772c6b9886a..535ca8020877 100644
-> --- a/drivers/mailbox/omap-mailbox.c
-> +++ b/drivers/mailbox/omap-mailbox.c
-> @@ -238,7 +238,7 @@ static int omap_mbox_startup(struct omap_mbox *mbox)
->         }
->
->         if (mbox->send_no_irq)
-> -               mbox->chan->txdone_method =3D TXDONE_BY_ACK;
-> +               mbox->chan->txdone_method =3D MBOX_TXDONE_BY_ACK;
->
->         omap_mbox_enable_irq(mbox, IRQ_RX);
->
-> diff --git a/drivers/mailbox/tegra-hsp.c b/drivers/mailbox/tegra-hsp.c
-> index 7b1e1b83ea29..500fa77c7d53 100644
-> --- a/drivers/mailbox/tegra-hsp.c
-> +++ b/drivers/mailbox/tegra-hsp.c
-> @@ -514,7 +514,7 @@ static int tegra_hsp_mailbox_startup(struct mbox_chan=
- *chan)
->         struct tegra_hsp *hsp =3D mb->channel.hsp;
->         unsigned long flags;
->
-> -       chan->txdone_method =3D TXDONE_BY_IRQ;
-> +       chan->txdone_method =3D MBOX_TXDONE_BY_IRQ;
->
->         /*
->          * Shared mailboxes start out as consumers by default. FULL and E=
-MPTY
-> diff --git a/include/linux/mailbox_controller.h b/include/linux/mailbox_c=
-ontroller.h
-> index e3896b08f22e..a49ee687d4cf 100644
-> --- a/include/linux/mailbox_controller.h
-> +++ b/include/linux/mailbox_controller.h
-> @@ -15,9 +15,9 @@ struct mbox_chan;
->  /* Sentinel value distinguishing "no active request" from "NULL message =
-data" */
->  #define MBOX_NO_MSG    ((void *)-1)
->
-> -#define TXDONE_BY_IRQ  BIT(0) /* controller has remote RTR irq */
-> -#define TXDONE_BY_POLL BIT(1) /* controller can read status of last TX *=
-/
-> -#define TXDONE_BY_ACK  BIT(2) /* S/W ACK received by Client ticks the TX=
- */
-> +#define MBOX_TXDONE_BY_IRQ     BIT(0) /* controller has remote RTR irq *=
-/
-> +#define MBOX_TXDONE_BY_POLL    BIT(1) /* controller can read status of l=
-ast TX */
-> +#define MBOX_TXDONE_BY_ACK     BIT(2) /* S/W ACK received by Client tick=
-s the TX */
->
->  /**
->   * struct mbox_chan_ops - methods to control mailbox channels
-> --
-> 2.51.0
->
-Applied to mailbox/for-next
-Thanks
-Jassi
+This series addresses missing skb length validation in two mt76
+drivers before memcpy operations on firmware MCU responses.
+
+In both cases, the driver copies a fixed number of bytes from
+skb->data without first checking that skb->len is large enough.
+If the firmware returns a shorter-than-expected response (due to a
+bug, partial DMA transfer, or in the case of mt7925, a malicious
+USB device), the memcpy reads beyond the skb data buffer, causing
+a heap buffer over-read. The over-read data is subsequently
+returned to userspace.
+
+Patch 1: mt7925 testmode - mt7925_tm_query() copies 512 bytes
+(MT7925_EVT_RSP_LEN) from skb->data + 8 without verifying
+skb->len >= 520. The leaked data is returned via nla_put()
+through nl80211 testmode dump. Fix adds a length check before
+the memcpy.
+
+Patch 2: mt7915 txpower - mt7915_mcu_get_txpower_sku() copies
+up to 322 bytes (MT7915_SKU_RATE_NUM * 2) from skb->data + 4
+without verifying skb->len. The data surfaces through debugfs
+(txpower_sku, txpower_path). Fix adds length checks for both
+the TX_POWER_INFO_RATE and TX_POWER_INFO_PATH code paths.
+
+Both fixes follow the same pattern: validate skb->len before
+performing the memcpy, returning -EINVAL on insufficient data.
+
+Tested by code inspection; I do not have the hardware to
+run-test these changes.
+
+Aviel Zohar (2):
+  wifi: mt76: mt7925: validate skb length in testmode query
+  wifi: mt76: mt7915: validate skb length in txpower SKU query
+
+ drivers/net/wireless/mediatek/mt76/mt7925/testmode.c | 5 +++++
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.c      | 8 ++++++++
+ 2 files changed, 13 insertions(+)
+
+-- 
+2.34.1
 
