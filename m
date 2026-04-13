@@ -4,77 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C9A2F34C51
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Apr 2026 12:28:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC017F34C4B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Apr 2026 12:34:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=AGiehZZNyaMCBy3EGSOGSIxMabypmgMQbg0NvoD0/8w=; b=Pw3Ou1P+XwomxLF+jdWwPmpn7I
-	xPFm1i2ZSV8GH0EW8/51j2d4RvglRYhUl8rAXFYHRqVAfNsrGNQR244uCE0TQRuLS3QsyZmiZxQRY
-	QOvP0hoH8md9yZ2sOaHp+ZIL+uUj2r7m2Ms32+3DtCCYTwqq7Y4Am2Et24Np8v520HwMIEGkkkPnF
-	RBrNEnUieQJkGSZSIX8MoghUULhYSXdBCDnxWwDNVVmJKPBF/FANhTzr1OsksTzk9hICz0nmN9UFQ
-	nG9gb9+qAwErgtKiUfQE54TGkppw3s8OiKeuZwUf1RGhnA8I3Eej/5/B+OwNqqfbCfs9f/YsVgo19
-	0mu3jn3g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=W8Wq0XFDTnCET+9d1u1+KkWzNdxSiwKVtLFGfiPbxXY=; b=thZ6K/YTyeXYRDzgIPndevKP8o
+	FbIk9PD5HshLcfkxzBTD1X99rVAalvwZSAz+9PphuZAgB3g93xaaE5jsKo/H+p0CQfDqmkh3r2QSY
+	c9ipMpbv45DdjgXdKP2YtPmGVnbNyYU0Y1j8+k9b6ut/vznU6NuZjRXi4RJiPefEdrXgGNWYVhH8C
+	I5n7o4FQP+hoB/ps9Q6qIgyFgjb4/U2c5Ixi4FvDcNo52nnuDV02OLy9CHnYkALWQ6KtI+PATldDR
+	gOIJm+noTzMJi6wSC7jadBanNYVDIHvlQD6hLuFsCEtcLcp3MUI5YDVJKxL36Si3xmoyvTToYFDkZ
+	TQGoxniQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCGPJ-0000000FdsA-0yF0;
-	Mon, 13 Apr 2026 12:28:49 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1wCGUo-0000000Fer7-2iPI;
+	Mon, 13 Apr 2026 12:34:30 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCGPG-0000000FdqJ-0eo4;
-	Mon, 13 Apr 2026 12:28:47 +0000
-X-UUID: 4e6753ac373411f19e7563141e833ce8-20260413
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=AGiehZZNyaMCBy3EGSOGSIxMabypmgMQbg0NvoD0/8w=;
-	b=RRKx/WZfJ7SHI3ArpakS8EVDOJePhNEbuNjXn4ltuK3/WBeD0JJvQZnIZ0cFok0MASZDNmowdjz7n6XrZTyBVy9uAkkEK39T3C/bR3N7cX2vMm3ybB06ZXWDN9QjLYjtysvyxq/vr6AaBihgN68kLLONNsc6KqiS2qHrG/QLEto=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:503719db-ac68-4a70-be1c-3dc0326e7d94,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:e7bac3a,CLOUDID:16eb5d8f-6df4-4a3d-a7a4-fbdc42d669ce,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|865|888|898,TC:-5,Content:0|
-	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0
-	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 4e6753ac373411f19e7563141e833ce8-20260413
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <chunfeng.yun@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1826340708; Mon, 13 Apr 2026 05:28:41 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 13 Apr 2026 20:28:39 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 13 Apr 2026 20:28:38 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Vinod Koul <vkoul@kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Neil Armstrong
-	<neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>, Krzysztof
- Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-phy@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>
-Subject: [PATCH v2 RESEND 1/2] dt-bindings: phy: mediatek,xsphy: add property to set disconnect threshold
-Date: Mon, 13 Apr 2026 20:28:35 +0800
-Message-ID: <20260413122836.4848-1-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.46.0
+	id 1wCGUn-0000000Feq5-10We;
+	Mon, 13 Apr 2026 12:34:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:From:Date:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=W8Wq0XFDTnCET+9d1u1+KkWzNdxSiwKVtLFGfiPbxXY=; b=PelejzhlSAYOVcgIFZ7UHsnZbU
+	MdqGm9VaJ+BCUpLu3FHId2cJda0+KxqiPD3Hk7wosiiAQvriRo/hhL7EsVFPgK/tpcGpMMJaaWXVd
+	jXuljvROUImeD4ZSQA7ssp1/FzFvlfE96T1VCydPHtOPwcsQrxT3+NLn7iOxCwXixn4MLlJJM4jlr
+	qh5qD1+Cph0rZP2f4cTXhqzerWoXiw01ZCLvNMKu2Ng8YRVMCO6S0NM1TO9eFwH8IErb3v9Cxlker
+	oOkWNhzF3aGXrPjNWRnhZwHSOojZEBxvFR/5nIcDsTPNSdQCcTZqdmV5wU6QHiqAaAPRgEmfe/+AV
+	dYV4Wx+A==;
+Received: from smtpout-03.galae.net ([185.246.85.4])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1wCGUj-0000000Gn5T-44F7;
+	Mon, 13 Apr 2026 12:34:28 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 9BD954E4296E;
+	Mon, 13 Apr 2026 12:34:15 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 6D14A5FFB9;
+	Mon, 13 Apr 2026 12:34:15 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 10AAC10450229;
+	Mon, 13 Apr 2026 14:34:04 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1776083654; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=W8Wq0XFDTnCET+9d1u1+KkWzNdxSiwKVtLFGfiPbxXY=;
+	b=syyNFaz4M5CS3w/qw5wtQg2RUzkQnw7q8wpoWJoj2F/6PjYErOhqgA15EFQePTJFBA4UUF
+	LSoYPrX+6nQZSqeG+B4U4C4xWZ1ulEKEh0Ey4sQyQWMzsQ6tAryHHJei5nGcYHXOoxDecC
+	MEHdbtnzQcIZmpBy0guw4bo6EI9a3soHuL6Iia5wgs5TjoAu7fZyVJG+ga+5ODGi/+U2VG
+	5Hif4ZnGHGfMoRaK7RFojvStP0nVD+NWuhg11+AM9pkSYzPTLZPJvgxhSIVupZBkt6H3R8
+	zRfNZdNIdvMsN5cINpliwzzvjzglbX6zYtJZaEhq4n3qR6E/vUiX3TK/CIPkKw==
+Date: Mon, 13 Apr 2026 14:34:02 +0200
+From: Kory Maincent <kory.maincent@bootlin.com>
+To: Jani Nikula <jani.nikula@linux.intel.com>
+Cc: Rodrigo Vivi <rodrigo.vivi@intel.com>, Joonas Lahtinen
+ <joonas.lahtinen@linux.intel.com>, Tvrtko Ursulin <tursulin@ursulin.net>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Dave
+ Airlie <airlied@redhat.com>, Jesse Barnes <jbarnes@virtuousgeek.org>, Eric
+ Anholt <eric@anholt.net>, Maarten Lankhorst
+ <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>, Andrzej Hajda
+ <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>,
+ Robert Foss <rfoss@kernel.org>, Laurent Pinchart
+ <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Chris Wilson
+ <chris@chris-wilson.co.uk>, Thomas Petazzoni
+ <thomas.petazzoni@bootlin.com>, Mark Yacoub <markyacoub@google.com>, Sean
+ Paul <seanpaul@google.com>, Louis Chauvet <louis.chauvet@bootlin.com>,
+ intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Simona Vetter <simona.vetter@ffwll.ch>
+Subject: Re: [PATCH RFC 10/12] drm/i915/display/dp: Adopt dp_connector
+ helpers to expose link training state
+Message-ID: <20260413143402.76f5c3c9@kmaincent-XPS-13-7390>
+In-Reply-To: <e253ca4fa0b493032a7b35a0a20689b9d9e0c4e7@intel.com>
+References: <20260409-feat_link_cap-v1-0-7069e8199ce2@bootlin.com>
+	<20260409-feat_link_cap-v1-10-7069e8199ce2@bootlin.com>
+	<e253ca4fa0b493032a7b35a0a20689b9d9e0c4e7@intel.com>
+Organization: bootlin
+X-Mailer: Claws Mail 4.2.0 (GTK 3.24.41; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260413_052846_195467_6F089334 
-X-CRM114-Status: UNSURE (   7.45  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260413_133426_130176_BC463E78 
+X-CRM114-Status: GOOD (  23.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,44 +111,117 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a property to tune usb2 phy's disconnect threshold.
-And add a compatible for mt8196.
+On Fri, 10 Apr 2026 19:26:53 +0300
+Jani Nikula <jani.nikula@linux.intel.com> wrote:
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
-v2: change property name
----
- Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml | 8 ++++++++
- 1 file changed, 8 insertions(+)
+> On Thu, 09 Apr 2026, Kory Maincent <kory.maincent@bootlin.com> wrote:
+> > Switch the i915 DP connector initialization from drmm_connector_init()
+> > to drmm_connector_dp_init(), providing the source link capabilities
+> > (supported lane counts, link rates, DSC support, voltage swing and
+> > pre-emphasis levels).
+> >
+> > Add intel_dp_report_link_train() to collect the negotiated link
+> > parameters (rate, lane count, DSC enable, per-lane voltage swing and
+> > pre-emphasis) and report them via
+> > drm_connector_dp_set_link_train_properties() once link training complet=
+es
+> > successfully.
+> >
+> > Reset the link training properties via
+> > drm_connector_dp_reset_link_train_properties() when the connector is
+> > reported as disconnected or when the display device is disabled, so
+> > the exposed state always reflects the current link status.
+> >
+> > Signed-off-by: Kory Maincent <kory.maincent@bootlin.com>
+> > ---
+> >  drivers/gpu/drm/i915/display/intel_dp.c            | 31
+> > +++++++++++++++++++--- .../gpu/drm/i915/display/intel_dp_link_training.=
+c  |
+> > 25 +++++++++++++++++ 2 files changed, 52 insertions(+), 4 deletions(-)
+> >
+> > diff --git a/drivers/gpu/drm/i915/display/intel_dp.c
+> > b/drivers/gpu/drm/i915/display/intel_dp.c index
+> > 2af64de9c81de..641406bdc0cc9 100644 ---
+> > a/drivers/gpu/drm/i915/display/intel_dp.c +++
+> > b/drivers/gpu/drm/i915/display/intel_dp.c @@ -45,6 +45,7 @@
+> >  #include <drm/display/drm_hdmi_helper.h>
+> >  #include <drm/drm_atomic_helper.h>
+> >  #include <drm/drm_crtc.h>
+> > +#include <drm/drm_dp_connector.h>
+> >  #include <drm/drm_edid.h>
+> >  #include <drm/drm_fixed.h>
+> >  #include <drm/drm_managed.h>
+> > @@ -6337,8 +6338,10 @@ intel_dp_detect(struct drm_connector *_connector,
+> >  	drm_WARN_ON(display->drm,
+> >  		    !drm_modeset_is_locked(&display->drm->mode_config.connection_mut=
+ex));
+> > =20
+> > -	if (!intel_display_device_enabled(display))
+> > +	if (!intel_display_device_enabled(display)) {
+> > +		drm_connector_dp_reset_link_train_properties(_connector);
+> >  		return connector_status_disconnected;
+> > +	}
+> > =20
+> >  	if (!intel_display_driver_check_access(display))
+> >  		return connector->base.status;
+> > @@ -6388,6 +6391,8 @@ intel_dp_detect(struct drm_connector *_connector,
+> > =20
+> >  		intel_dp_tunnel_disconnect(intel_dp);
+> > =20
+> > +		drm_connector_dp_reset_link_train_properties(_connector);
+> > +
+> >  		goto out_unset_edid;
+> >  	}
+> > =20
+> > @@ -7162,10 +7167,12 @@ intel_dp_init_connector(struct intel_digital_po=
+rt
+> > *dig_port, struct intel_connector *connector)
+> >  {
+> >  	struct intel_display *display =3D to_intel_display(dig_port);
+> > +	struct drm_connector_dp_link_train_caps link_caps;
+> >  	struct intel_dp *intel_dp =3D &dig_port->dp;
+> >  	struct intel_encoder *encoder =3D &dig_port->base;
+> >  	struct drm_device *dev =3D encoder->base.dev;
+> >  	enum port port =3D encoder->port;
+> > +	u32 *rates;
+> >  	int type;
+> > =20
+> >  	if (drm_WARN(dev, dig_port->max_lanes < 1,
+> > @@ -7213,8 +7220,25 @@ intel_dp_init_connector(struct intel_digital_port
+> > *dig_port, type =3D=3D DRM_MODE_CONNECTOR_eDP ? "eDP" : "DP",
+> >  		    encoder->base.base.id, encoder->base.name);
+> > =20
+> > -	drmm_connector_init(dev, &connector->base,
+> > &intel_dp_connector_funcs,
+> > -			    type, &intel_dp->aux.ddc);
+> > +	intel_dp_set_source_rates(intel_dp);
+> > +	link_caps.nlanes =3D DRM_DP_1LANE | DRM_DP_2LANE | DRM_DP_4LANE;
+> > +	link_caps.nrates =3D intel_dp->num_source_rates;
+> > +	rates =3D kzalloc_objs(*rates, intel_dp->num_source_rates);
+> > +	if (!rates)
+> > +		goto fail;
+> > +
+> > +	for (int i =3D 0; i < intel_dp->num_source_rates; i++)
+> > +		rates[i] =3D intel_dp->source_rates[i];
+> > +
+> > +	link_caps.rates =3D rates;
+> > +	link_caps.dsc =3D true; =20
+>=20
+> You have a source, you have a sink, and you have a link between the two.
+>=20
+> Source rates do not reflect the link rates common between source and
+> sink.
+>=20
+> DSC depends on source and sink, and it's not statically "true" for
+> either, and depends on a bunch of things.
 
-diff --git a/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
-index 0bed847bb4ad..9017a9c93eb9 100644
---- a/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
-+++ b/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
-@@ -50,6 +50,7 @@ properties:
-           - mediatek,mt3611-xsphy
-           - mediatek,mt3612-xsphy
-           - mediatek,mt7988-xsphy
-+          - mediatek,mt8196-xsphy
-       - const: mediatek,xsphy
- 
-   reg:
-@@ -130,6 +131,13 @@ patternProperties:
-         minimum: 1
-         maximum: 7
- 
-+      mediatek,disconnect-threshold:
-+        description:
-+          The selection of disconnect threshold (U2 phy)
-+        $ref: /schemas/types.yaml#/definitions/uint32
-+        minimum: 1
-+        maximum: 15
-+
-       mediatek,efuse-intr:
-         description:
-           The selection of Internal Resistor (U2/U3 phy)
--- 
-2.45.2
+At init, we are reporting the capabilities of the source. So we list every
+link rates that the source can achieve and we report that the source is DSC
+capable which it is IIUC the code. Or maybe I am missing something?
 
+Regards,
+--=20
+K=C3=B6ry Maincent, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
 
