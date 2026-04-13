@@ -4,89 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73A34E9380E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Apr 2026 03:34:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02318EBFD0A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Apr 2026 07:14:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VWai8sQZcAy73MJVvJe8OyZCghHwHKCcS0IqPiTlaK0=; b=v/DLQcYnha/Rps+DilzwP/NjOp
-	PiS1OQ7Vv85WK++2U8zsg195JLkOYZ90lhHO1/Q5L07C1Q86f0DiQSswU2hgV9KM+0k/jAUwYeJPg
-	PcbxbZyZUIKBZaHb0FaaRtJa7YgyJpxwhiMm4Pw4xUjVnOhmP75mWKbZcp+vSgKrw9Te5iQM9TRLJ
-	e75x4KYjuD62dGrwp8N6Y2y3+Qizx0Tst/dC47vCwR+avzn7SQL18at9sN7a3qdW6k2U03yTB+en/
-	7qwmnK6ZmfLxkCRRXN5vhEAF9pu0kVJ85R+AeDn/Qc8iRj2uC1S7Q+4/uVqCwTloy+JrsnJtr4amt
-	J8ENtdOA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+9DOIPBCDXn1gL4EYuRhhyUJKMqKeMJcK0WHANYjnaQ=; b=NsjEPsrVOHTv6aktitgha4P+WR
+	XF9d9BB4pD81MNVdDk+YHCHHDbgUqwjHyQ1ibdFDJc5a+WQXnce0+b2/SAkSJhWz+8SRh2Hu+hHlt
+	6q8ywijRRBJe7s8irNYiKAUqMWEpsdyWyk1RDFQHyClLtS/utuiq/B6wNns7zkuY2kGT3qaF7CHSL
+	PueATX9b1bHi9xnKdLWVK0UsFG9qjGpxqj/F+v9+fYJF3fG0f63EjIsYgowiwm4oTqXzmKz5e+96K
+	dixQWgg+rCCsmWNzhcSOT3FQWldiIMwClR43T5852T/2ckD/wX/1xOpMMXbJsrrLykgNUZ6JPc/me
+	HXCIv7uA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wC83s-0000000Ewju-1ztA;
-	Mon, 13 Apr 2026 03:34:08 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1wCBUw-0000000F7OM-1VJ6;
+	Mon, 13 Apr 2026 07:14:21 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wC83q-0000000EwjW-0dGU
+	id 1wCBUt-0000000F7Nm-2sg9
 	for linux-mediatek@lists.infradead.org;
-	Mon, 13 Apr 2026 03:34:07 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-488b150559bso30565965e9.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 12 Apr 2026 20:34:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1776051244; x=1776656044; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=VWai8sQZcAy73MJVvJe8OyZCghHwHKCcS0IqPiTlaK0=;
-        b=s6B549p9F1E0HlsmHjxKom6LYSFV/J/yY9ZAS8VFpJu3z4kpoZZMyc04XvPRUiRe9B
-         lVx+Me92pGIq+xgC4hkCHJQr6eKVgoFgnQCLuaMoeYNBVosCpi36XMqDTPsb3w7Mkh5i
-         49VM4d7eNYquCtT/OPhki1m4tbkQny0eGRrvebV5Ds7oxaj0K+Phq1my9nBP8Yxu10nQ
-         ZPC56MSh85/r/jinmipvuo7whmBC+q0VWdRtIkn6/3gG89oxc488hG6sgmC7jExXpnwm
-         3eg12sCpTRjj4jA0gF1+JXmB7mfG7oIUQpv2RHVRe2EAh9bUYZMR5lH1Me+qzaYd0cyK
-         XxVA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1776051244; x=1776656044;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=VWai8sQZcAy73MJVvJe8OyZCghHwHKCcS0IqPiTlaK0=;
-        b=Krf3vcW2mdYrWeUg4vCj/yxclRwfN9lW+lDvkcWp4sh11eO4HBiWbdKnK007YQKrvB
-         LliJGrr76CHXc6y4tzfmkeo69bHvkrKPKipc+qQVrFQ9SpcuEe4sXsYaXkoc37/wifwE
-         McF2k/becE1J+M68DNk/ThOy4tS0/cjG5tOT4HL+lqNVe2r3vODjldBGF/X8Ht7aP5MH
-         sWE1BCvqHjwc67/fp0m5KL7ea/wFz3zhaN2ClVaxq69JCjeUP6xFhRwL1xxf8NgWMz6I
-         wssk2Eg5W4MU/7HBzkDmjmXlZczUEVvWv5QlOcS/H1qIVakF5VeDKntyS0ed3x60xmAq
-         9E0g==
-X-Gm-Message-State: AOJu0YxfpClxcrIVwCDoeWcdSf4Cu039X0OujO/EFHEdag3mcMjJ1ZFf
-	v13mXChjAqPNxdcULmV4znyDCe8kVhUHs0MVt7lsMOEdIcCXVFCuWT/EanNZY9Yo
-X-Gm-Gg: AeBDies80qILRxbw5lEHnK8LwuVkoR51GPmDQNCd/AeiUJRmG3h9SF2OkTBGiMJ3tK3
-	ylSNTOgLKjtut6WekbhqAtzNfp+TXRD94q53N++1ggILmYpxR6YKJ/HKohqilC7zQDO2Te/SpkZ
-	kJaIdaQyB4BpFMzbfVJm05vSSG76oYRiN2t/ZratsE39RHYZSKUOTirUQ2V32qkq4p3ICbvOueD
-	kqIvsFiiFWEqKvwOsxDmEnOLw28qtmPKq3MmWMlA0ymQs3OQK3BTbBN/dhH6JIA6LKF+Ornny3J
-	iug5OOeCV5soaU+xWQtqQ0dJOrDTMGGbIZ9hHHlwhQlacfCqqyFOBO95jECwaP7G9mDHz10Ovrx
-	3z1r/WRrUYHd/cyvAV4jBglv85EiwceiwPgbwGslnTn7e0Kesd6QHFCBUpDdhgsCZCkn727zelk
-	eUxaelnFOkjTlFzhK62SpM//fDiPgnkDr643JVtXi5jRU9I9WluIc=
-X-Received: by 2002:a05:600c:64cd:b0:485:3cf3:1010 with SMTP id 5b1f17b1804b1-488d67df592mr163123525e9.2.1776051244197;
-        Sun, 12 Apr 2026 20:34:04 -0700 (PDT)
-Received: from localhost.localdomain ([87.71.34.96])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-488d5d6ee98sm114039175e9.1.2026.04.12.20.34.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 12 Apr 2026 20:34:03 -0700 (PDT)
-From: Aviel Zohar <avielzohar123@gmail.com>
-To: linux-wireless@vger.kernel.org
-Cc: linux-mediatek@lists.infradead.org,
-	nbd@nbd.name,
-	lorenzo@kernel.org,
-	sean.wang@mediatek.com,
-	ryder.lee@mediatek.com,
-	Aviel Zohar <avielzohar123@gmail.com>
-Subject: [PATCH 2/2] wifi: mt76: mt7915: validate skb length in txpower SKU query
-Date: Mon, 13 Apr 2026 06:31:35 +0300
-Message-ID: <20260413033136.5417-3-avielzohar123@gmail.com>
-X-Mailer: git-send-email 2.47.0.windows.1
-In-Reply-To: <20260413033136.5417-1-avielzohar123@gmail.com>
-References: <20260413033136.5417-1-avielzohar123@gmail.com>
+	Mon, 13 Apr 2026 07:14:16 +0000
+X-UUID: 5dbfce3c370811f19e7563141e833ce8-20260413
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=+9DOIPBCDXn1gL4EYuRhhyUJKMqKeMJcK0WHANYjnaQ=;
+	b=UJBWpx5Rvxo5tloIEnswGWZ9Xa7i4JKEvGpSj6WlRyLYZMw0vu6XduZXGv44MbHQgyV0LVm3mHqQyEFWzi13CVBxkyu70Vb6KTF9j0lMhJaSsQNT09+SEe2Bfp2tNgNqAr3BM5jhzJSk6jPZfdWOfpBo4MI5MKKH0Fgn+yKPoWo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.12,REQID:2fc7dea8-740f-40e8-b562-f6c5224cc5ef,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:e7bac3a,CLOUDID:54d5cb24-cb5c-4236-a89a-9a7fb20c9bc4,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|865|888|898,TC:-5,Content:0|
+	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0
+	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 5dbfce3c370811f19e7563141e833ce8-20260413
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+	(envelope-from <jian.yang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1327665788; Mon, 13 Apr 2026 00:14:09 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Mon, 13 Apr 2026 15:14:07 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Mon, 13 Apr 2026 15:14:06 +0800
+From: Jian Yang <jian.yang@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Ryder Lee
+	<ryder.lee@mediatek.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>, Manivannan
+ Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, Bjorn Helgaas
+	<bhelgaas@google.com>
+CC: <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<jian.yang@mediatek.com>, <chuanjia.liu@mediatek.com>,
+	<yonglong.wu@mediatek.com>
+Subject: [PATCH 0/2] PCI: mediatek-gen3: Fix the control timing of PERST#
+Date: Mon, 13 Apr 2026 15:13:54 +0800
+Message-ID: <20260413071401.1151-1-jian.yang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260412_203406_193390_F28825EB 
-X-CRM114-Status: GOOD (  10.49  )
+X-CRM114-CacheID: sfid-20260413_001415_740132_45B8F41B 
+X-CRM114-Status: UNSURE (   8.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,48 +92,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In mt7915_mcu_get_txpower_sku(), the response skb from
-mt76_mcu_send_and_get_msg() is used in memcpy without validating
-its length:
+Dear maintainers,
 
-For TX_POWER_INFO_RATE:
-  memcpy(res, skb->data + 4, sizeof(res));
+The purpose of this patch series is to fix the PERST# control timing
+in the MediaTek PCIe Gen3 controller driver so that it complies with
+the PCIe CEM specification.
 
-where sizeof(res) is MT7915_SKU_RATE_NUM * 2 = 322 bytes.
+In the current MediaTek PCIe Gen3 controller driver, there are two
+issues with PERST# timing:
+1. During the power-up phase (i.e., before PCIe link-up), on some
+MediaTek SoCs PERST# is de-asserted before the REFCLK becomes stable;
+2. During system shutdown, PERST# is not asserted before power is
+removed.
 
-For TX_POWER_INFO_PATH:
-  memcpy(txpower, skb->data + 4, len);
+Patch 1 fixes the reset signal sequencing during the power-up phase.
 
-In both cases, if the firmware returns a response shorter than
-the expected size, the memcpy reads beyond the skb data buffer.
-The data surfaces to userspace via debugfs (txpower_sku and
-txpower_path).
+Patch 2 adds a shutdown callback to control PERST# during system
+shutdown.
 
-Add length checks for both code paths before the memcpy.
+Best regards,
+Jian Yang
 
-Signed-off-by: Aviel Zohar <avielzohar123@gmail.com>
----
- drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+Jian Yang (2):
+  PCI: mediatek-gen3: Fix PERST# control sequence at system startup
+    phase
+  PCI: mediatek-gen3: Add shutdown callback to cotnrol PERST# signal
 
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -3532,10 +3532,18 @@
- 	if (category == TX_POWER_INFO_RATE) {
- 		s8 res[MT7915_SKU_RATE_NUM][2];
- 
-+		if (skb->len < sizeof(res) + 4) {
-+			dev_kfree_skb(skb);
-+			return -EINVAL;
-+		}
- 		memcpy(res, skb->data + 4, sizeof(res));
- 		for (i = 0; i < len; i++)
- 			txpower[i] = res[i][req.band_idx];
- 	} else if (category == TX_POWER_INFO_PATH) {
-+		if (skb->len < len + 4) {
-+			dev_kfree_skb(skb);
-+			return -EINVAL;
-+		}
- 		memcpy(txpower, skb->data + 4, len);
- 	}
+ drivers/pci/controller/pcie-mediatek-gen3.c | 30 ++++++++++++++++++---
+ 1 file changed, 27 insertions(+), 3 deletions(-)
+
+-- 
+2.45.2
+
 
