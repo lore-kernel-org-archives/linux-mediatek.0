@@ -4,70 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44C1EF34C49
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Apr 2026 14:04:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19D08F34C62
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Apr 2026 15:30:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GdKZudBiZWRmnj2Q8xLAe5Ktsw/srDvDPRU3HuRREMc=; b=Lx7D7PB5s6iswONSVWeNdmyX8o
-	DyI+GDTaAudxLWteqMvzYUrttfL9l2bkKhpI1/vM+Jp2hDalzJwVPCDV0ixxhJEvE7ZSUb6F5WW0E
-	GUIhvftNGHfS2aUzrLVsitafaanr5+PQhKPMHpqlmJvgb5NMKbqg3XjLHkK+0YOYiuzf8DImLbrMs
-	egkhbM0w+u7txtyfUyUwPKBq0/07CbekYWXrrCrPLcSE3/biGGjpDj87lKQMxD4ao0Vd2xDFFkRAX
-	xKVdN6aaMNPk+hDDpxHGTlGY0Ss+dCW12sBcdMt9+gpX/s6U/4vDeb9UNWpENQNxDv7KBSIR3AsKW
-	Iv6eUETw==;
+	bh=xg8mzFbPBXrLw9j1EK50l3GIhD/98doCuEPkQsBTXYk=; b=GLC5HN9hC19WbjdIZFLK12P8cF
+	Cf35YzUjIGidNk03+luIPkpOIKH5TwkP34V2cbt+OrRLKLZbzjbltWA3xlsalCvgpUKr+oTXawNML
+	uLmjbnDN1+80oms7c0NLN/9pW8hKY4LtEaid5LDFBXc7gLqQIIX0jSLssIrxFz06fM/YgkMkgiciM
+	+WN6YWUD7oallyBFcDigNJ2/WkShpBU+Yjl8xSFrLNNWsMDob5Wv4sJ412L7OsDTrmlETIoxw4Yfa
+	v7GMjolLIE58Je8dCujOX8vJT3CyvQedki5NHr5TZ/IcAp1f35akL82EGxD2cljXi6n7Kim6jRmqO
+	ND2oV+lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCHtW-0000000FpbT-2TDO;
-	Mon, 13 Apr 2026 14:04:06 +0000
-Received: from mail.cjdns.fr ([5.135.140.105])
+	id 1wCJFX-0000000FyAE-0ubs;
+	Mon, 13 Apr 2026 15:30:55 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCHtT-0000000FpZd-04No
-	for linux-mediatek@lists.infradead.org;
-	Mon, 13 Apr 2026 14:04:04 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 7094F9D108;
-	Mon, 13 Apr 2026 16:03:54 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1776089038; h=from:subject:date:message-id:to:cc:mime-version:
+	id 1wCJFS-0000000Fy76-29cZ;
+	Mon, 13 Apr 2026 15:30:53 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 3528C4E42978;
+	Mon, 13 Apr 2026 15:30:46 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id ED2C35FFBB;
+	Mon, 13 Apr 2026 15:30:45 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id D8842104513C6;
+	Mon, 13 Apr 2026 17:30:33 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1776094244; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=GdKZudBiZWRmnj2Q8xLAe5Ktsw/srDvDPRU3HuRREMc=;
-	b=A4Yk1ABGxWLdq40Gvch9gUgy3szNqMcS5sYkVGBWDOnj4Nwan2XZP22vijpjyuVRBjDhqB
-	3G1ZCKZPIg4V4m5YvBV354jG7tjV5X2AxfKcElxeT3ZZf2R/vaoLVaq1XoeoE0yykz2Mvq
-	LFeJ1k6NgjymqkhJlyrnvM9q30oM3Hp3DGYSbAVz77pCYDk95kEB9BBg/osYwb2V91+F+Y
-	Gcbc4F8O4Eve/+A+iv75RxLZf4E3swTCpoGZ+oHXSr0aFPHsrLsRpJ4E8A6ZcWdua8J8RW
-	dCxubAeiJY3/3d4Ko0VMUfcralaaf0UBQJ1EyHRl9pdQBD2HreeL/wsb7sMHEA==
-From: Caleb James DeLisle <cjd@cjdns.fr>
-To: linux-pci@vger.kernel.org
-Cc: linux-mips@vger.kernel.org,
-	naseefkm@gmail.com,
-	ryder.lee@mediatek.com,
-	helgaas@kernel.org,
-	lpieralisi@kernel.org,
-	kwilczynski@kernel.org,
-	mani@kernel.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	ansuelsmth@gmail.com,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Caleb James DeLisle <cjd@cjdns.fr>
-Subject: [PATCH v5 2/2] PCI: mediatek: Add support for EcoNet EN7528 SoC
-Date: Mon, 13 Apr 2026 14:03:39 +0000
-Message-Id: <20260413140339.16238-3-cjd@cjdns.fr>
-In-Reply-To: <20260413140339.16238-1-cjd@cjdns.fr>
-References: <20260413140339.16238-1-cjd@cjdns.fr>
+	bh=xg8mzFbPBXrLw9j1EK50l3GIhD/98doCuEPkQsBTXYk=;
+	b=Bd+Mxj8LwX8bmTnYNL7sIGdg6fifgVRg5gBnAlj9DJfaOxX3ZMmFgplXr3RpU0G6J0nZsm
+	GsPmX0Cd70dbZe9H37Sg/fs6lNEDwb2HFql8aKBOyyVHYkhs+kOEsc4183IEhRtE/+Y+bn
+	B7Quo8kONLit4TeT3qRtlgQ8aIpLCBKwRueL734GVpuAoGRTWcIVQd8HZh+lml6CSdv5qB
+	1DIjkVOi1e1GN698Ge5QhGyetJvHFhguVpCbSawA8cwwM0U4oRZqE04EEmUDBhaj9QQqzN
+	5xK+Sw/bTXn8nBDLQHq455wUR0enHUfQ4/ku2qUCLZV+HGW8lgvFBy129MgmxA==
+Date: Mon, 13 Apr 2026 17:30:32 +0200
+From: Kory Maincent <kory.maincent@bootlin.com>
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: Jani Nikula <jani.nikula@linux.intel.com>, Rodrigo Vivi
+ <rodrigo.vivi@intel.com>, Joonas Lahtinen
+ <joonas.lahtinen@linux.intel.com>, Tvrtko Ursulin <tursulin@ursulin.net>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Dave
+ Airlie <airlied@redhat.com>, Jesse Barnes <jbarnes@virtuousgeek.org>, Eric
+ Anholt <eric@anholt.net>, Maarten Lankhorst
+ <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>, Andrzej Hajda
+ <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>,
+ Robert Foss <rfoss@kernel.org>, Laurent Pinchart
+ <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Chris Wilson
+ <chris@chris-wilson.co.uk>, Thomas Petazzoni
+ <thomas.petazzoni@bootlin.com>, Mark Yacoub <markyacoub@google.com>, Sean
+ Paul <seanpaul@google.com>, Louis Chauvet <louis.chauvet@bootlin.com>,
+ intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Simona Vetter <simona.vetter@ffwll.ch>
+Subject: Re: [PATCH RFC 09/12] drm: Introduce drmm_connector_dp_init() with
+ link training state properties
+Message-ID: <20260413173032.75ee842a@kmaincent-XPS-13-7390>
+In-Reply-To: <bwgzwwlmvlbtnl7qnmnjrkzjaifeyrhllnbjxh7txrd2o24aqi@2ykn2gwyatcx>
+References: <20260409-feat_link_cap-v1-0-7069e8199ce2@bootlin.com>
+	<20260409-feat_link_cap-v1-9-7069e8199ce2@bootlin.com>
+	<gmaxonri7y3k43pxsnxfnd23mydgrwsw2322v6m4yjoksqm7aj@4ehgvhzg2ubb>
+	<20260413145930.140ba461@kmaincent-XPS-13-7390>
+	<bwgzwwlmvlbtnl7qnmnjrkzjaifeyrhllnbjxh7txrd2o24aqi@2ykn2gwyatcx>
+Organization: bootlin
+X-Mailer: Claws Mail 4.2.0 (GTK 3.24.41; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260413_070403_704366_CFF9CEC7 
-X-CRM114-Status: GOOD (  22.98  )
+X-CRM114-CacheID: sfid-20260413_083051_085485_2F6A3DB9 
+X-CRM114-Status: GOOD (  30.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,234 +100,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for the PCIe present on the EcoNet EN7528 (and EN751221) SoCs.
+On Mon, 13 Apr 2026 16:59:43 +0300
+Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com> wrote:
 
-These SoCs have a mix of Gen1 and Gen2 capable ports, but the Gen2 ports
-require re-training after startup.
+> On Mon, Apr 13, 2026 at 02:59:30PM +0200, Kory Maincent wrote:
+> > On Fri, 10 Apr 2026 00:53:08 +0300
+> > Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com> wrote:
+> >  =20
+> > > On Thu, Apr 09, 2026 at 07:08:25PM +0200, Kory Maincent wrote: =20
+> > > > Add a managed DisplayPort connector initialization helper,
+> > > > drmm_connector_dp_init(), modeled after the existing HDMI counterpa=
+rt
+> > > > drmm_connector_hdmi_init(). Cleanup is handled automatically via a
+> > > > DRM-managed action.
+> > > >=20
+> > > > The helper creates the following immutable connector properties to
+> > > > expose DP link training capabilities and state to userspace:
+> > > >=20
+> > > >   - num_lanes: bitmask of supported lane counts (1, 2, 4)
+> > > >   - link_rate: Array of supported link rates.
+> > > >   - dsc_en: Display Stream Compression supported
+> > > >   - voltage_swingN: per-lane voltage swing level bitmask
+> > > >   - pre-emphasisN: per-lane pre-emphasis level bitmask
+> > > >=20
+> > > > Link rates are passed by the driver in deca-kbps, following the DRM
+> > > > convention, but exposed to userspace in kbps for clarity.
+> > > >=20
+> > > > Two additional helpers are provided to update and reset those prope=
+rties
+> > > > at runtime:
+> > > >   - drm_connector_dp_set_link_train_properties()
+> > > >   - drm_connector_dp_reset_link_train_properties()
+> > > >  =20
+> >=20
+> > ...
+> >  =20
+> > > > +/**
+> > > > + * struct drm_connector_dp_link_train - DRM DisplayPort link train=
+ing
+> > > > + * information report
+> > > > + */
+> > > > +struct drm_connector_dp_link_train {   =20
+> > >=20
+> > > THese define the current DP state. As such, they definitely make sense
+> > > to be a part of the drm_connector. =20
+> > > > +	/**
+> > > > +	 * @nlanes: The number of lanes used
+> > > > +	 */
+> > > > +	u8 nlanes;
+> > > > +
+> > > > +	/**
+> > > > +	 * @rates: Link rate value selected in deca-kbps
+> > > > +	 */
+> > > > +	u32 rate;
+> > > > +
+> > > > +	/**
+> > > > +	 * @dsc: Display Stream Compression enabled
+> > > > +	 */
+> > > > +	bool dsc_en;
+> > > > +
+> > > > +	/**
+> > > > +	 * @v_swings: Array listing the bitmask voltage swing level per
+> > > > lanes
+> > > > +	 */
+> > > > +	u8 v_swing[4];
+> > > > +
+> > > > +	/**
+> > > > +	 * @pre_emph: Array listing the bitmask pre-emphasis level per
+> > > > lanes
+> > > > +	 */
+> > > > +	u8 pre_emph[4];   =20
+> > >=20
+> > > Please consider following struct phy_configure_opts_dp (or using it as
+> > > is). Overall, please refer the talk and (more important) the lightning
+> > > resumee at this XDC. I have some bits and pieces ready in spite of th=
+at
+> > > proposal, but I didn't have time to finish it. =20
+> >=20
+> > I didn't know this phy_configure_opts_dp struct. This indeed could make
+> > sense to reuse and modify that structure for our needs. =20
+>=20
+> Why would you want to modify it? It is an interface for the PHY drivers.
+> Is there anything that you miss there?
 
-Co-developed-by: Ahmed Naseef <naseefkm@gmail.com>
-Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
-Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
----
- drivers/pci/controller/Kconfig         |   2 +-
- drivers/pci/controller/pcie-mediatek.c | 133 +++++++++++++++++++++++++
- 2 files changed, 134 insertions(+), 1 deletion(-)
+I was thinking of the DSC, but after a quick look it is not done at the PHY
+level therefore it won't land here.
+=20
+> > About your XDC talk. What were the developments you were talking about?
+> > Could I have a look at them? =20
+>=20
+> I've posted an RFC just before the XDC. Currently I'm looking at the
+> link training generification. Overall, you don't have to wait for that
+> job to be completed, just take some of the notes in account (like reuse
+> of the PHY config structures).
 
-diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
-index 686349e09cd3..5808d5e407fd 100644
---- a/drivers/pci/controller/Kconfig
-+++ b/drivers/pci/controller/Kconfig
-@@ -209,7 +209,7 @@ config PCI_MVEBU
- 
- config PCIE_MEDIATEK
- 	tristate "MediaTek PCIe controller"
--	depends on ARCH_AIROHA || ARCH_MEDIATEK || COMPILE_TEST
-+	depends on ARCH_AIROHA || ARCH_MEDIATEK || ECONET || COMPILE_TEST
- 	depends on OF
- 	depends on PCI_MSI
- 	select IRQ_MSI_LIB
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index 75722524fe74..915a35825ce1 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -7,6 +7,7 @@
-  *	   Honghui Zhang <honghui.zhang@mediatek.com>
-  */
- 
-+#include <asm-generic/errno-base.h>
- #include <linux/clk.h>
- #include <linux/delay.h>
- #include <linux/iopoll.h>
-@@ -14,6 +15,7 @@
- #include <linux/irqchip/chained_irq.h>
- #include <linux/irqchip/irq-msi-lib.h>
- #include <linux/irqdomain.h>
-+#include <linux/kconfig.h>
- #include <linux/kernel.h>
- #include <linux/mfd/syscon.h>
- #include <linux/msi.h>
-@@ -77,6 +79,7 @@
- 
- #define PCIE_CONF_VEND_ID	0x100
- #define PCIE_CONF_DEVICE_ID	0x102
-+#define PCIE_CONF_REV_CLASS	0x104
- #define PCIE_CONF_CLASS_ID	0x106
- 
- #define PCIE_INT_MASK		0x420
-@@ -89,6 +92,11 @@
- #define MSI_MASK		BIT(23)
- #define MTK_MSI_IRQS_NUM	32
- 
-+#define EN7528_HOST_MODE	0x00804201
-+#define EN7528_LINKUP_REG	0x50
-+#define EN7528_RC0_LINKUP	BIT(1)
-+#define EN7528_RC1_LINKUP	BIT(2)
-+
- #define PCIE_AHB_TRANS_BASE0_L	0x438
- #define PCIE_AHB_TRANS_BASE0_H	0x43c
- #define AHB2PCIE_SIZE(x)	((x) & GENMASK(4, 0))
-@@ -148,12 +156,15 @@ struct mtk_pcie_port;
-  * @MTK_PCIE_FIX_DEVICE_ID: host's device ID needed to be fixed
-  * @MTK_PCIE_NO_MSI: Bridge has no MSI support, and relies on an external block
-  * @MTK_PCIE_SKIP_RSTB: Skip calling RSTB bits on PCIe probe
-+ * @MTK_PCIE_RETRAIN: Re-train link to bridge after startup because some
-+ *                    Gen2-capable devices start as Gen1.
-  */
- enum mtk_pcie_quirks {
- 	MTK_PCIE_FIX_CLASS_ID = BIT(0),
- 	MTK_PCIE_FIX_DEVICE_ID = BIT(1),
- 	MTK_PCIE_NO_MSI = BIT(2),
- 	MTK_PCIE_SKIP_RSTB = BIT(3),
-+	MTK_PCIE_RETRAIN = BIT(4),
- };
- 
- /**
-@@ -753,6 +764,80 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
- 	return 0;
- }
- 
-+static int mtk_pcie_startup_port_en7528(struct mtk_pcie_port *port)
-+{
-+	struct mtk_pcie *pcie = port->pcie;
-+	struct pci_host_bridge *host = pci_host_bridge_from_priv(pcie);
-+	struct resource *mem = NULL;
-+	struct resource_entry *entry;
-+	u32 val, link_mask;
-+	int err;
-+
-+	entry = resource_list_first_type(&host->windows, IORESOURCE_MEM);
-+	if (entry)
-+		mem = entry->res;
-+	if (!mem)
-+		return -EINVAL;
-+
-+	if (!pcie->cfg) {
-+		dev_err(pcie->dev, "EN7528: pciecfg syscon not available\n");
-+		return -EINVAL;
-+	}
-+
-+	/* Assert all reset signals */
-+	writel(0, port->base + PCIE_RST_CTRL);
-+
-+	/*
-+	 * Enable PCIe link down reset, if link status changed from link up to
-+	 * link down, this will reset MAC control registers and configuration
-+	 * space.
-+	 */
-+	writel(PCIE_LINKDOWN_RST_EN, port->base + PCIE_RST_CTRL);
-+
-+	msleep(PCIE_T_PVPERL_MS);
-+
-+	/* De-assert PHY, PE, PIPE, MAC and configuration reset */
-+	val = readl(port->base + PCIE_RST_CTRL);
-+	val |= PCIE_PHY_RSTB | PCIE_PERSTB | PCIE_PIPE_SRSTB |
-+	       PCIE_MAC_SRSTB | PCIE_CRSTB;
-+	writel(val, port->base + PCIE_RST_CTRL);
-+
-+	writel(PCIE_CLASS_CODE | PCIE_REVISION_ID,
-+	       port->base + PCIE_CONF_REV_CLASS);
-+	writel(EN7528_HOST_MODE, port->base);
-+
-+	link_mask = (port->slot == 0) ? EN7528_RC0_LINKUP : EN7528_RC1_LINKUP;
-+
-+	/* 100ms timeout value should be enough for Gen1/2 training */
-+	err = regmap_read_poll_timeout(pcie->cfg, EN7528_LINKUP_REG, val,
-+				       !!(val & link_mask), 20,
-+				       PCI_PM_D3COLD_WAIT * USEC_PER_MSEC);
-+	if (err) {
-+		dev_err(pcie->dev, "EN7528: port%d link timeout\n", port->slot);
-+		return -ETIMEDOUT;
-+	}
-+
-+	/* Activate INTx interrupts */
-+	val = readl(port->base + PCIE_INT_MASK);
-+	val &= ~INTX_MASK;
-+	writel(val, port->base + PCIE_INT_MASK);
-+
-+	if (IS_ENABLED(CONFIG_PCI_MSI))
-+		mtk_pcie_enable_msi(port);
-+
-+	/* Set AHB to PCIe translation windows */
-+	val = lower_32_bits(mem->start) |
-+	      AHB2PCIE_SIZE(fls(resource_size(mem)));
-+	writel(val, port->base + PCIE_AHB_TRANS_BASE0_L);
-+
-+	val = upper_32_bits(mem->start);
-+	writel(val, port->base + PCIE_AHB_TRANS_BASE0_H);
-+
-+	writel(WIN_ENABLE, port->base + PCIE_AXI_WINDOW0);
-+
-+	return 0;
-+}
-+
- static void __iomem *mtk_pcie_map_bus(struct pci_bus *bus,
- 				      unsigned int devfn, int where)
- {
-@@ -1149,6 +1234,46 @@ static int mtk_pcie_probe(struct platform_device *pdev)
- 	if (err)
- 		goto put_resources;
- 
-+	/* EN7528 PCIe initially comes up as Gen1 even if Gen2 is supported.
-+	 * The cannonical way to achieve Gen2 is to re-train the link
-+	 * immediately after setup. However, to save a lot of duplicated code
-+	 * we use pcie_retrain_link() which is usable once we have the pci_dev
-+	 * struct for the bridge, i.e. after pci_host_probe(). */
-+	if (pcie->soc->quirks & MTK_PCIE_RETRAIN) {
-+		int slot = of_get_pci_domain_nr(dev->of_node);
-+		struct pci_dev *rc = NULL;
-+		int ret = -ENOENT;
-+
-+		if (slot >= 0)
-+			rc = pci_get_slot(host->bus, PCI_DEVFN(slot, 0));
-+
-+		if (rc) {
-+			ret = -EOPNOTSUPP;
-+
-+			/* pcie_retrain_link() is not an exported symbol but
-+			 * this driver supports being built as a loadable
-+			 * module. Someone using this on an EN7528 should make
-+			 * it builtin, or accept Gen1 PCI. */
-+#if IS_BUILTIN(CONFIG_PCIE_MEDIATEK)
-+			ret = pcie_retrain_link(rc, true);
-+#endif
-+		}
-+
-+		if (ret) {
-+			dev_info(dev, "port%d failed to retrain %pe\n", slot,
-+				 ERR_PTR(ret));
-+		} else {
-+			u16 lnksta;
-+			u32 speed;
-+
-+			pcie_capability_read_word(rc, PCI_EXP_LNKSTA, &lnksta);
-+			speed = lnksta & PCI_EXP_LNKSTA_CLS;
-+
-+			dev_info(dev, "port%d link retrained, speed %s\n", slot,
-+				 pci_speed_string(pcie_link_speed[speed]));
-+		}
-+	}
-+
- 	return 0;
- 
- put_resources:
-@@ -1264,8 +1389,16 @@ static const struct mtk_pcie_soc mtk_pcie_soc_mt7629 = {
- 	.quirks = MTK_PCIE_FIX_CLASS_ID | MTK_PCIE_FIX_DEVICE_ID,
- };
- 
-+static const struct mtk_pcie_soc mtk_pcie_soc_en7528 = {
-+	.ops = &mtk_pcie_ops_v2,
-+	.startup = mtk_pcie_startup_port_en7528,
-+	.setup_irq = mtk_pcie_setup_irq,
-+	.quirks = MTK_PCIE_RETRAIN,
-+};
-+
- static const struct of_device_id mtk_pcie_ids[] = {
- 	{ .compatible = "airoha,an7583-pcie", .data = &mtk_pcie_soc_an7583 },
-+	{ .compatible = "econet,en7528-pcie", .data = &mtk_pcie_soc_en7528 },
- 	{ .compatible = "mediatek,mt2701-pcie", .data = &mtk_pcie_soc_v1 },
- 	{ .compatible = "mediatek,mt7623-pcie", .data = &mtk_pcie_soc_v1 },
- 	{ .compatible = "mediatek,mt2712-pcie", .data = &mtk_pcie_soc_mt2712 },
--- 
-2.39.5
+Ok, have you a link? I can't find the related series.
 
+Regards,
+--=20
+K=C3=B6ry Maincent, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
 
