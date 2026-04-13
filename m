@@ -4,63 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC017F34C4B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Apr 2026 12:34:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4A28F34C51
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Apr 2026 12:59:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W8Wq0XFDTnCET+9d1u1+KkWzNdxSiwKVtLFGfiPbxXY=; b=thZ6K/YTyeXYRDzgIPndevKP8o
-	FbIk9PD5HshLcfkxzBTD1X99rVAalvwZSAz+9PphuZAgB3g93xaaE5jsKo/H+p0CQfDqmkh3r2QSY
-	c9ipMpbv45DdjgXdKP2YtPmGVnbNyYU0Y1j8+k9b6ut/vznU6NuZjRXi4RJiPefEdrXgGNWYVhH8C
-	I5n7o4FQP+hoB/ps9Q6qIgyFgjb4/U2c5Ixi4FvDcNo52nnuDV02OLy9CHnYkALWQ6KtI+PATldDR
-	gOIJm+noTzMJi6wSC7jadBanNYVDIHvlQD6hLuFsCEtcLcp3MUI5YDVJKxL36Si3xmoyvTToYFDkZ
-	TQGoxniQ==;
+	bh=h3FUUOILacuSgM+ABHMGfQupbtWpVZVev0K7QR0S3PA=; b=1dDdxGSYh048l0FVDx0BnrwFOV
+	Dg79KpSlTeE92SWaNvKUvPISo4mTA6v9Lb5I+/9M3fnR30/ypP1cEPfD2/Agclo9PH3WqWj1OxHGh
+	J5Xne6D2Ob5RxBrDbM+NqjDLYIpWams8QTeHeAib8lY6QXwJ78han2KVsj5tg/vb8EtyNXb4i48CJ
+	qpgKaQvt6Jz3VhOhEj9cZaQ8YPtgPQL8HhHHYUAa1rNUjFLAxRczIkXHcIOC8vpWBD05pWElx/X7e
+	slM2xJ+tRNzxhSTAa3ihUqrjMyTdUbFpdeQTVN4cOTzROFPh97htpHad1SgQCKgh9r7NzSGhM/m1c
+	uQmFSJpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCGUo-0000000Fer7-2iPI;
-	Mon, 13 Apr 2026 12:34:30 +0000
+	id 1wCGtL-0000000FhEb-1t0F;
+	Mon, 13 Apr 2026 12:59:51 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCGUn-0000000Feq5-10We;
-	Mon, 13 Apr 2026 12:34:29 +0000
+	id 1wCGtK-0000000FhDo-1TZJ
+	for linux-mediatek@bombadil.infradead.org;
+	Mon, 13 Apr 2026 12:59:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
 	:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:From:Date:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=W8Wq0XFDTnCET+9d1u1+KkWzNdxSiwKVtLFGfiPbxXY=; b=PelejzhlSAYOVcgIFZ7UHsnZbU
-	MdqGm9VaJ+BCUpLu3FHId2cJda0+KxqiPD3Hk7wosiiAQvriRo/hhL7EsVFPgK/tpcGpMMJaaWXVd
-	jXuljvROUImeD4ZSQA7ssp1/FzFvlfE96T1VCydPHtOPwcsQrxT3+NLn7iOxCwXixn4MLlJJM4jlr
-	qh5qD1+Cph0rZP2f4cTXhqzerWoXiw01ZCLvNMKu2Ng8YRVMCO6S0NM1TO9eFwH8IErb3v9Cxlker
-	oOkWNhzF3aGXrPjNWRnhZwHSOojZEBxvFR/5nIcDsTPNSdQCcTZqdmV5wU6QHiqAaAPRgEmfe/+AV
-	dYV4Wx+A==;
+	bh=h3FUUOILacuSgM+ABHMGfQupbtWpVZVev0K7QR0S3PA=; b=bwsCUBQzWXkKmKIIa2/Ts4dIAO
+	H7o4nWxcyQp8p55msajIpAIP5IWLqRjake16MusoUQveuyGMolBRz81RdFu1SrpJSXYkG8OMX4PuP
+	Q5N9klP5iHy/GFtCgvckjHL2FJvRmpM8YQ5Utx3V1pRgCKqU6Q5P+10EsohPXdnshvf2yncddP9uw
+	ulUibfCAQ9cXhF5j9Y73lSCtXx9LGcbBvdGabZU6+6We0jzfOZpKZ6Bt2+NX8YW9D1VKmhtZbx+09
+	cb9wm56TgRMaKqkX3w8iLXerYJUqqCnpl2CmdF7qz8rJu5cu/jxOlNaDYSCA7pfVhIsrf3FsjG0+0
+	wG8/0mxA==;
 Received: from smtpout-03.galae.net ([185.246.85.4])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCGUj-0000000Gn5T-44F7;
-	Mon, 13 Apr 2026 12:34:28 +0000
+	id 1wCGtG-0000000GofX-3K4e
+	for linux-mediatek@lists.infradead.org;
+	Mon, 13 Apr 2026 12:59:48 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 9BD954E4296E;
-	Mon, 13 Apr 2026 12:34:15 +0000 (UTC)
+	by smtpout-03.galae.net (Postfix) with ESMTPS id E7E274E42982;
+	Mon, 13 Apr 2026 12:59:43 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 6D14A5FFB9;
-	Mon, 13 Apr 2026 12:34:15 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 10AAC10450229;
-	Mon, 13 Apr 2026 14:34:04 +0200 (CEST)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id B42DE5FFB9;
+	Mon, 13 Apr 2026 12:59:43 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 05B5810450229;
+	Mon, 13 Apr 2026 14:59:32 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1776083654; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1776085182; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=W8Wq0XFDTnCET+9d1u1+KkWzNdxSiwKVtLFGfiPbxXY=;
-	b=syyNFaz4M5CS3w/qw5wtQg2RUzkQnw7q8wpoWJoj2F/6PjYErOhqgA15EFQePTJFBA4UUF
-	LSoYPrX+6nQZSqeG+B4U4C4xWZ1ulEKEh0Ey4sQyQWMzsQ6tAryHHJei5nGcYHXOoxDecC
-	MEHdbtnzQcIZmpBy0guw4bo6EI9a3soHuL6Iia5wgs5TjoAu7fZyVJG+ga+5ODGi/+U2VG
-	5Hif4ZnGHGfMoRaK7RFojvStP0nVD+NWuhg11+AM9pkSYzPTLZPJvgxhSIVupZBkt6H3R8
-	zRfNZdNIdvMsN5cINpliwzzvjzglbX6zYtJZaEhq4n3qR6E/vUiX3TK/CIPkKw==
-Date: Mon, 13 Apr 2026 14:34:02 +0200
+	bh=h3FUUOILacuSgM+ABHMGfQupbtWpVZVev0K7QR0S3PA=;
+	b=wDi4rylprXYa5KvrF5XClhZwCqdBhIRvrj68umpv0rOZCRw+SHIMqqb9J6A5OlpXFegLXb
+	1v1yWAis2ur92VlhEUydt8lyKrp3p55Mm8z+cYDV+L0hnrTR+erxW8efuL3L8dxN5VzCkr
+	zU/YVxQzBaq+vUFYst8ScqPRT6rtP+1OJUU/axL3iUbwIQxAhQxyAuWdIIfxwRFUKKgp/6
+	th235XxhexkP7slAiEV8kDSum6Qom6jTajuknHPdnSpgRF4Y9gRdntzSjMMsboitxLJD2v
+	2oOiT4IQHWd8cguLrclzB4T7Rk0CCw8IEvepPTsgnrO/+IRlae+TSlDZSMjNuQ==
+Date: Mon, 13 Apr 2026 14:59:30 +0200
 From: Kory Maincent <kory.maincent@bootlin.com>
-To: Jani Nikula <jani.nikula@linux.intel.com>
-Cc: Rodrigo Vivi <rodrigo.vivi@intel.com>, Joonas Lahtinen
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: Jani Nikula <jani.nikula@linux.intel.com>, Rodrigo Vivi
+ <rodrigo.vivi@intel.com>, Joonas Lahtinen
  <joonas.lahtinen@linux.intel.com>, Tvrtko Ursulin <tursulin@ursulin.net>,
  David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Dave
  Airlie <airlied@redhat.com>, Jesse Barnes <jbarnes@virtuousgeek.org>, Eric
@@ -81,13 +84,13 @@ Cc: Rodrigo Vivi <rodrigo.vivi@intel.com>, Joonas Lahtinen
  dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  Simona Vetter <simona.vetter@ffwll.ch>
-Subject: Re: [PATCH RFC 10/12] drm/i915/display/dp: Adopt dp_connector
- helpers to expose link training state
-Message-ID: <20260413143402.76f5c3c9@kmaincent-XPS-13-7390>
-In-Reply-To: <e253ca4fa0b493032a7b35a0a20689b9d9e0c4e7@intel.com>
+Subject: Re: [PATCH RFC 09/12] drm: Introduce drmm_connector_dp_init() with
+ link training state properties
+Message-ID: <20260413145930.140ba461@kmaincent-XPS-13-7390>
+In-Reply-To: <gmaxonri7y3k43pxsnxfnd23mydgrwsw2322v6m4yjoksqm7aj@4ehgvhzg2ubb>
 References: <20260409-feat_link_cap-v1-0-7069e8199ce2@bootlin.com>
-	<20260409-feat_link_cap-v1-10-7069e8199ce2@bootlin.com>
-	<e253ca4fa0b493032a7b35a0a20689b9d9e0c4e7@intel.com>
+	<20260409-feat_link_cap-v1-9-7069e8199ce2@bootlin.com>
+	<gmaxonri7y3k43pxsnxfnd23mydgrwsw2322v6m4yjoksqm7aj@4ehgvhzg2ubb>
 Organization: bootlin
 X-Mailer: Claws Mail 4.2.0 (GTK 3.24.41; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
@@ -95,8 +98,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260413_133426_130176_BC463E78 
-X-CRM114-Status: GOOD (  23.53  )
+X-CRM114-CacheID: sfid-20260413_135947_118419_D299A1B1 
+X-CRM114-Status: GOOD (  18.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,113 +114,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 10 Apr 2026 19:26:53 +0300
-Jani Nikula <jani.nikula@linux.intel.com> wrote:
+On Fri, 10 Apr 2026 00:53:08 +0300
+Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com> wrote:
 
-> On Thu, 09 Apr 2026, Kory Maincent <kory.maincent@bootlin.com> wrote:
-> > Switch the i915 DP connector initialization from drmm_connector_init()
-> > to drmm_connector_dp_init(), providing the source link capabilities
-> > (supported lane counts, link rates, DSC support, voltage swing and
-> > pre-emphasis levels).
-> >
-> > Add intel_dp_report_link_train() to collect the negotiated link
-> > parameters (rate, lane count, DSC enable, per-lane voltage swing and
-> > pre-emphasis) and report them via
-> > drm_connector_dp_set_link_train_properties() once link training complet=
-es
-> > successfully.
-> >
-> > Reset the link training properties via
-> > drm_connector_dp_reset_link_train_properties() when the connector is
-> > reported as disconnected or when the display device is disabled, so
-> > the exposed state always reflects the current link status.
-> >
-> > Signed-off-by: Kory Maincent <kory.maincent@bootlin.com>
-> > ---
-> >  drivers/gpu/drm/i915/display/intel_dp.c            | 31
-> > +++++++++++++++++++--- .../gpu/drm/i915/display/intel_dp_link_training.=
-c  |
-> > 25 +++++++++++++++++ 2 files changed, 52 insertions(+), 4 deletions(-)
-> >
-> > diff --git a/drivers/gpu/drm/i915/display/intel_dp.c
-> > b/drivers/gpu/drm/i915/display/intel_dp.c index
-> > 2af64de9c81de..641406bdc0cc9 100644 ---
-> > a/drivers/gpu/drm/i915/display/intel_dp.c +++
-> > b/drivers/gpu/drm/i915/display/intel_dp.c @@ -45,6 +45,7 @@
-> >  #include <drm/display/drm_hdmi_helper.h>
-> >  #include <drm/drm_atomic_helper.h>
-> >  #include <drm/drm_crtc.h>
-> > +#include <drm/drm_dp_connector.h>
-> >  #include <drm/drm_edid.h>
-> >  #include <drm/drm_fixed.h>
-> >  #include <drm/drm_managed.h>
-> > @@ -6337,8 +6338,10 @@ intel_dp_detect(struct drm_connector *_connector,
-> >  	drm_WARN_ON(display->drm,
-> >  		    !drm_modeset_is_locked(&display->drm->mode_config.connection_mut=
-ex));
-> > =20
-> > -	if (!intel_display_device_enabled(display))
-> > +	if (!intel_display_device_enabled(display)) {
-> > +		drm_connector_dp_reset_link_train_properties(_connector);
-> >  		return connector_status_disconnected;
-> > +	}
-> > =20
-> >  	if (!intel_display_driver_check_access(display))
-> >  		return connector->base.status;
-> > @@ -6388,6 +6391,8 @@ intel_dp_detect(struct drm_connector *_connector,
-> > =20
-> >  		intel_dp_tunnel_disconnect(intel_dp);
-> > =20
-> > +		drm_connector_dp_reset_link_train_properties(_connector);
-> > +
-> >  		goto out_unset_edid;
-> >  	}
-> > =20
-> > @@ -7162,10 +7167,12 @@ intel_dp_init_connector(struct intel_digital_po=
-rt
-> > *dig_port, struct intel_connector *connector)
-> >  {
-> >  	struct intel_display *display =3D to_intel_display(dig_port);
-> > +	struct drm_connector_dp_link_train_caps link_caps;
-> >  	struct intel_dp *intel_dp =3D &dig_port->dp;
-> >  	struct intel_encoder *encoder =3D &dig_port->base;
-> >  	struct drm_device *dev =3D encoder->base.dev;
-> >  	enum port port =3D encoder->port;
-> > +	u32 *rates;
-> >  	int type;
-> > =20
-> >  	if (drm_WARN(dev, dig_port->max_lanes < 1,
-> > @@ -7213,8 +7220,25 @@ intel_dp_init_connector(struct intel_digital_port
-> > *dig_port, type =3D=3D DRM_MODE_CONNECTOR_eDP ? "eDP" : "DP",
-> >  		    encoder->base.base.id, encoder->base.name);
-> > =20
-> > -	drmm_connector_init(dev, &connector->base,
-> > &intel_dp_connector_funcs,
-> > -			    type, &intel_dp->aux.ddc);
-> > +	intel_dp_set_source_rates(intel_dp);
-> > +	link_caps.nlanes =3D DRM_DP_1LANE | DRM_DP_2LANE | DRM_DP_4LANE;
-> > +	link_caps.nrates =3D intel_dp->num_source_rates;
-> > +	rates =3D kzalloc_objs(*rates, intel_dp->num_source_rates);
-> > +	if (!rates)
-> > +		goto fail;
-> > +
-> > +	for (int i =3D 0; i < intel_dp->num_source_rates; i++)
-> > +		rates[i] =3D intel_dp->source_rates[i];
-> > +
-> > +	link_caps.rates =3D rates;
-> > +	link_caps.dsc =3D true; =20
->=20
-> You have a source, you have a sink, and you have a link between the two.
->=20
-> Source rates do not reflect the link rates common between source and
-> sink.
->=20
-> DSC depends on source and sink, and it's not statically "true" for
-> either, and depends on a bunch of things.
+> On Thu, Apr 09, 2026 at 07:08:25PM +0200, Kory Maincent wrote:
+> > Add a managed DisplayPort connector initialization helper,
+> > drmm_connector_dp_init(), modeled after the existing HDMI counterpart
+> > drmm_connector_hdmi_init(). Cleanup is handled automatically via a
+> > DRM-managed action.
+> >=20
+> > The helper creates the following immutable connector properties to expo=
+se
+> > DP link training capabilities and state to userspace:
+> >=20
+> >   - num_lanes: bitmask of supported lane counts (1, 2, 4)
+> >   - link_rate: Array of supported link rates.
+> >   - dsc_en: Display Stream Compression supported
+> >   - voltage_swingN: per-lane voltage swing level bitmask
+> >   - pre-emphasisN: per-lane pre-emphasis level bitmask
+> >=20
+> > Link rates are passed by the driver in deca-kbps, following the DRM
+> > convention, but exposed to userspace in kbps for clarity.
+> >=20
+> > Two additional helpers are provided to update and reset those properties
+> > at runtime:
+> >   - drm_connector_dp_set_link_train_properties()
+> >   - drm_connector_dp_reset_link_train_properties()
+> >=20
 
-At init, we are reporting the capabilities of the source. So we list every
-link rates that the source can achieve and we report that the source is DSC
-capable which it is IIUC the code. Or maybe I am missing something?
+...
+
+> > +/**
+> > + * struct drm_connector_dp_link_train - DRM DisplayPort link training
+> > + * information report
+> > + */
+> > +struct drm_connector_dp_link_train { =20
+>=20
+> THese define the current DP state. As such, they definitely make sense
+> to be a part of the drm_connector.
+> > +	/**
+> > +	 * @nlanes: The number of lanes used
+> > +	 */
+> > +	u8 nlanes;
+> > +
+> > +	/**
+> > +	 * @rates: Link rate value selected in deca-kbps
+> > +	 */
+> > +	u32 rate;
+> > +
+> > +	/**
+> > +	 * @dsc: Display Stream Compression enabled
+> > +	 */
+> > +	bool dsc_en;
+> > +
+> > +	/**
+> > +	 * @v_swings: Array listing the bitmask voltage swing level per
+> > lanes
+> > +	 */
+> > +	u8 v_swing[4];
+> > +
+> > +	/**
+> > +	 * @pre_emph: Array listing the bitmask pre-emphasis level per
+> > lanes
+> > +	 */
+> > +	u8 pre_emph[4]; =20
+>=20
+> Please consider following struct phy_configure_opts_dp (or using it as
+> is). Overall, please refer the talk and (more important) the lightning
+> resumee at this XDC. I have some bits and pieces ready in spite of that
+> proposal, but I didn't have time to finish it.
+
+I didn't know this phy_configure_opts_dp struct. This indeed could make sen=
+se
+to reuse and modify that structure for our needs.
+
+About your XDC talk. What were the developments you were talking about? Cou=
+ld I
+have a look at them?
 
 Regards,
 --=20
