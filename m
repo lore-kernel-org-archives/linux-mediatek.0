@@ -4,60 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47D19F9D0CF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2026 13:20:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6903EF9D0D2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2026 14:09:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yBlTr/oh/wv2inLYJ8i7doZ3+YfwtyCfuEdPzn5dDLo=; b=RbAW0jEPINj8Au/3GEgXXT2aI8
-	kGK8U2N/99uDVBHpdez9WtOVd8co+rPgvm6YuJ6FrU5+wJVqhNsger/3L1JPn58fu/357vbgIblOw
-	zTRxrdDDeXtcUc+ekyIA2dlJMlfBtnYDIvGP+5y4l/q8wrNGSdeDcVvMWjHzwp0MtwLazy6zkyLUn
-	xhfyfNGkqLR22xo6+AdhRp8euGBQvUfETnxPI2g8DWPeP9Bu+5Odt/zZvr9T5uysechD9/OkY6yxf
-	/RAw64KJjlBmr+Wu0+ZoH3cQyjeVsrLGMpJ7V7MW9sUTTywSqcWnKMp04DFnWXWIHJvvySvCtdNrb
-	UISFPSYQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=v21dmV+lYuasVw3fNqFyvXKdZD52UiXwkLFP25P9nLg=; b=aYS9+PRbve983Q576LA2bknwPv
+	/HQJRnKZdSz9ZZ8xERIhXybWfk8sDvPW0qw7DtdfM1VE9314tNOkOjfLfZt0gJOf9y2nIeyP3UN/l
+	TsULfN+iq7TFhABaq7BWH191yfv0SESmnUlU2kLV+4hYL/rZu49donT4LuGTnzjTi4/2bmcGqI01+
+	E33ndu9m+GT0NbZNejbY7skQpLvbnCwolcjHxNHTMnC9Y8AG0X5ueFSn06nFYbr+tciOWjUWXH09I
+	QSt1dj/PRQO2nqG0zHU+Qm0OirBFZZm3emdNi4PdUdW6GwW7Su5KizU6HGifizLa0Ec/lHfdHhxnw
+	9N7RLP8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCdgz-0000000HMh2-1Eoc;
-	Tue, 14 Apr 2026 13:20:37 +0000
+	id 1wCeRw-0000000HQcm-1nqK;
+	Tue, 14 Apr 2026 14:09:08 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCdgx-0000000HMgj-3fwx;
-	Tue, 14 Apr 2026 13:20:35 +0000
+	id 1wCeRu-0000000HQcR-381U;
+	Tue, 14 Apr 2026 14:09:06 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 0477060018;
-	Tue, 14 Apr 2026 13:20:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A98F0C19425;
-	Tue, 14 Apr 2026 13:20:34 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 682C360018;
+	Tue, 14 Apr 2026 14:09:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BFD7DC19425;
+	Tue, 14 Apr 2026 14:09:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776172834;
-	bh=cMCDkATKBmtmieFp8QBU6yJuQwNr3qs20Cfx6XJdEWU=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=B5XSbWwJ+9hKnt5Xdh2YU+VP2rCKj5FPUW3me8pSMUUaW79hQUMGZt49iZI5aT9E7
-	 rxBm8aJxvQ9rj54iGEC3ZEuMaxoliVjLY3C7f71WvRLJnNYaygyHfH0eWzLGQdNmBJ
-	 M2PI6lBOvRnlDhsNlJQxZ7vUC36QlYFleT0bT/WGe5hVi5A4K6WRvU93BXZs8t8It/
-	 WoI3t4Ul5bfy71peBBJlX6b2ZFY0QKnRxF1ricuYosCd5cSMokKQxOqKZt6wN/wfO3
-	 0JEyaMxbwJzBlqO6CaimbfarHs88jz25P2ikU2og/bSMK+vko+elJKTu6ZjA9XyCxV
-	 i9t8cjufkt0Pw==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 7CE743808205;
-	Tue, 14 Apr 2026 13:20:06 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1776175744;
+	bh=ZxZWJI8qqfzCDhQbBvHw11oPHk45TsukiZ+I1BwbZBo=;
+	h=From:Date:Subject:To:Cc:From;
+	b=U1EaK8uaOIEaRDvFnhCDxrClEYZPnNEOObNFPqWT38CCV6LpArpBW27pHOhjs8xpY
+	 9lXg5oT+/wGbyZpZw80tVHLODI0PsOqoGSqcR0evklDSv5shC+hy09rAu6+VZ0T4sg
+	 AZtMq3d2k+CgLkNFqyUydTu8MI5vYw35ntTgQHFoH5TdQSprjx7NoN4f9gmLDEyXyC
+	 HulQcpKv3bliqEowIIOs83KiyOPtgKbm5oUih1CfvkTn6DHpiSioU9psb7q6RZow0G
+	 7Pgq8z5T6EtGI9NmKq6gvbAI5LgKuYQJyPFoxBSGhp2ld0E6vjQa+QGR86icTsJqCi
+	 li+nRO3EMBnyA==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Tue, 14 Apr 2026 16:08:52 +0200
+Subject: [PATCH net v2] net: airoha: Wait for NPU PPE configuration to
+ complete in airoha_ppe_offload_setup()
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net] net: airoha: Add missing PPE configurations in
- airoha_ppe_hw_init()
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <177617280505.878864.13821756004828787817.git-patchwork-notify@kernel.org>
-Date: Tue, 14 Apr 2026 13:20:05 +0000
-References: <20260412-airoha_ppe_hw_init-missing-bits-v1-1-06ac670819e3@kernel.org>
-In-Reply-To: <20260412-airoha_ppe_hw_init-missing-bits-v1-1-06ac670819e3@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260414-airoha-wait-for-npu-config-offload-setup-v2-1-5a9bf6d43aee@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/5WNQQ6CMBBFr0Jm7RjagFFX3sOwmNApTCQd0hbUE
+ O5uww1cvv/z/9sgcRROcK82iLxKEg0F7KmCfqQwMIorDLa2l7oxFkmijoRvkoxeI4Z5wV6DlwH
+ V+0nJYeK8zGhurm5aa8vIQbmbI3v5HKonBM7QlXCUlDV+D/1qjup/02rQoG+4JrLUumv7eHEMP
+ J01DtDt+/4DwctuKuYAAAA=
+X-Change-ID: 20260412-airoha-wait-for-npu-config-offload-setup-19d04522412d
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+X-Mailer: b4 0.14.3
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,34 +75,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+In order to properly enable flowtable hw offloading, poll
+REG_PPE_FLOW_CFG register in airoha_ppe_offload_setup routine and
+wait for NPU PPE configuration triggered by ppe_init callback to complete
+before running airoha_ppe_hw_init().
 
-This patch was applied to netdev/net.git (main)
-by Paolo Abeni <pabeni@redhat.com>:
+Fixes: 00a7678310fe3 ("net: airoha: Introduce flowtable offload support")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+Changes in v2:
+- Check for both REG_PPE_PPE_FLOW_CFG(0) and REG_PPE_PPE_FLOW_CFG(1) to
+  complete.
+- Link to v1: https://lore.kernel.org/r/20260412-airoha-wait-for-npu-config-offload-setup-v1-1-f4e0aa2a5d85@kernel.org
+---
+ drivers/net/ethernet/airoha/airoha_ppe.c | 28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
 
-On Sun, 12 Apr 2026 10:43:26 +0200 you wrote:
-> Add the following PPE configuration in airoha_ppe_hw_init routine:
-> - 6RD hw offloading is currently not supported by Netfilter flowtable.
->   Disable explicitly PPE 6RD offloading in order to prevent PPE to learn
->   6RD flows and eventually interrupt the traffic.
-> - Add missing PPE bind rate configuration for L3 and L2 traffic.
->   PPE bind rate configuration specifies the pps threshold to move a PPE
->   entry state from UNBIND to BIND. Without this configuration this value
->   is random.
-> - Set ageing thresholds to the values used in the vendor SDK in order to
->   improve connection stability under load and avoid packet loss caused by
->   fast aging.
-> 
-> [...]
+diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
+index 62cfffb4f0e5..684c8ae9576f 100644
+--- a/drivers/net/ethernet/airoha/airoha_ppe.c
++++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+@@ -1335,6 +1335,29 @@ static struct airoha_npu *airoha_ppe_npu_get(struct airoha_eth *eth)
+ 	return npu;
+ }
+ 
++static int airoha_ppe_wait_for_npu_init(struct airoha_eth *eth)
++{
++	int err;
++	u32 val;
++
++	/* PPE_FLOW_CFG default register value is 0. Since we reset FE
++	 * during the device probe we can just check the configured value
++	 * is not 0 here.
++	 */
++	err = read_poll_timeout(airoha_fe_rr, val, val, USEC_PER_MSEC,
++				100 * USEC_PER_MSEC, false, eth,
++				REG_PPE_PPE_FLOW_CFG(0));
++	if (err)
++		return err;
++
++	if (airoha_ppe_is_enabled(eth, 1))
++		err = read_poll_timeout(airoha_fe_rr, val, val, USEC_PER_MSEC,
++					100 * USEC_PER_MSEC, false, eth,
++					REG_PPE_PPE_FLOW_CFG(1));
++
++	return err;
++}
++
+ static int airoha_ppe_offload_setup(struct airoha_eth *eth)
+ {
+ 	struct airoha_npu *npu = airoha_ppe_npu_get(eth);
+@@ -1348,6 +1371,11 @@ static int airoha_ppe_offload_setup(struct airoha_eth *eth)
+ 	if (err)
+ 		goto error_npu_put;
+ 
++	/* Wait for NPU PPE configuration to complete */
++	err = airoha_ppe_wait_for_npu_init(eth);
++	if (err)
++		goto error_npu_put;
++
+ 	ppe_num_stats_entries = airoha_ppe_get_total_num_stats_entries(ppe);
+ 	if (ppe_num_stats_entries > 0) {
+ 		err = npu->ops.ppe_init_stats(npu, ppe->foe_stats_dma,
 
-Here is the summary with links:
-  - [net] net: airoha: Add missing PPE configurations in airoha_ppe_hw_init()
-    https://git.kernel.org/netdev/net/c/b9d8b856689d
+---
+base-commit: b9d8b856689d2b968495d79fe653d87fcb8ad98c
+change-id: 20260412-airoha-wait-for-npu-config-offload-setup-19d04522412d
 
-You are awesome, thank you!
+Best regards,
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
