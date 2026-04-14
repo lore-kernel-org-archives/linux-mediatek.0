@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C767ED7B9F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2026 10:33:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 222F9ED7B9E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2026 10:33:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6n4IMnZq2+EdLwlhf7az1AcIEM+UsEFK9lEeE6eUfQ0=; b=e2NRRRIzhHnQR4KS4csqfg1p0a
-	baWJBStqSgXH4pmRxh3aZfIeLhHwnmvd134hQLN49IHYcNYOtgNYjUdhOQmQfWWTYj1O0vLbHcrg1
-	NlA7aHoKbC0wLOg3ZgIGoOrwX8g/nMIoe5MPJWaOZ/w9hf83o/4TKG/MMoC/ymeOmGhxE3sJUnz9U
-	F3GNtG0iqhdZJZo7o/wVk//9PNWb0te0akHyKbZk1k7GI6kyM59ZWrAT/0CdAdRnvdz1RP3ZL+3aV
-	e7c+CGEU60rMozT7VFnVXCbnoH8z5WToxCLEivO9QlvCEF6HuF8eUdeB3iJqU7QhbTxcS6y9EDdPc
-	M2XSnOWA==;
+	bh=T8QHOy3ra4IFny5Ey993K5xs59jKtguHgSHZvIpWKPQ=; b=g7lkmLibjL2uojxdrAfduo7Dea
+	xfb0JW2FQdrUVE5bX3aj8KmraBTvrAEbi9Nr27/YTqpR3tgpg0cfbtqSdRtrBwtoWKVVbXwV7lYzB
+	WUPSlZ8z5dwg7h4Xhu9eWk2NUUKKKFgdmVMQkCnxlhlk7a6zuf3CoQ7cifVib2UGDEQwVFQBwJW9v
+	IzGhpaN0LAiTo/VHJ3TKDEkONGER8UGvHHX8iwS8osOvz0S2Mg0seujjWylk3Q/x3r7bHWSJDU/E6
+	RqSdtCCA7+ti6iUa+oRkLEYRqs8/NzZr8il9BEprplbC9sIASua5u67lSlYMFJAh89xhaobChQcbt
+	S6IpSjMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCb5g-0000000H9aS-3Juy;
-	Tue, 14 Apr 2026 10:33:57 +0000
+	id 1wCb5g-0000000H9ZG-0Y3O;
+	Tue, 14 Apr 2026 10:33:56 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCb5b-0000000H9Tw-2aWc;
+	id 1wCb5a-0000000H9TZ-0VDH;
 	Tue, 14 Apr 2026 10:33:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1776162828;
-	bh=UQc4ou+UQDzZxINqGXpBn97ET/EsjCNUWs9PO5MU9T4=;
+	s=mail; t=1776162827;
+	bh=KWcYLXR3SCPD4C4XGxkdTEzImPQ+OVS9H3Ad1rh1FyA=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=NrjZ/SKdNrPnCpprsS45aCtMUiUZYV4cjYW8SHy7ICBnSMTkjK4MHKVf46I9oUHkR
-	 9a6vCggXXoMOcKYs7MVRkR/MZIgevGsi5HCdtQp2iqfMAqSMfv1SecWPn3LmdQHlnT
-	 fj7gsOQCJ09WSu6Qa64t3BRapjHWD40uQpd77xmnSyrQLv9XwGYZN7fqw7Llqa89WO
-	 HG7NfrXozwk7g8INTYY6KCSGdW0zMuGjNOvHZZrMADjNWENyi9+lisHxFsdQd+6N5b
-	 x6xqz29oO56Z50+3Pd2KGvNKbk8dkiJ3E6Q9iLj66H6dEO02eazcyNnbEFTdt8OEhA
-	 Il7L7iXi4vDVA==
+	b=mO+YCPRQY0Um27I97agmSipFvat9xgRgWeZT5YVVyjbLYVxla161R75A6KtT+yV7E
+	 0DZACVmJ+8Wg4B7AXfyXAK432iYxWWm+XCbWXNXyxJWuegCWpBKFRQcU3n2MrXef+Z
+	 kdUz2WnA4HGYW8Es9K4evCrHcMadq9sIkqgsxNHbMVSFDd6OMAwCBQbBQloYb+uo0/
+	 N5gb3fsxvPQZe3EIPskycMo7reNqd6KKSWcMY0CFrr44A8meJNb4P8fiNh2mgKPGXQ
+	 Uj70dglaRGzpwjBNlTjX5j+bjpsgAd97EkTUfSWTdS3/9GohSo+Ru440a5ByIxP3An
+	 MKGl4KB4h55Pw==
 Received: from yukiji.home (unknown [100.64.0.131])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EA32517E1380;
-	Tue, 14 Apr 2026 12:33:47 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id F377217E137E;
+	Tue, 14 Apr 2026 12:33:46 +0200 (CEST)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Tue, 14 Apr 2026 12:33:33 +0200
-Subject: [PATCH 3/3] arm64: dts: mediatek: mt8390-genio-700-evk: add
- specific CPU power supplies
+Date: Tue, 14 Apr 2026 12:33:32 +0200
+Subject: [PATCH 2/3] arm64: dts: mediatek: mt8390-genio-common: add CPU
+ power supplies
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260414-mtk-g510-700-cpu-supplies-v1-3-3b8313e5ca8d@collabora.com>
+Message-Id: <20260414-mtk-g510-700-cpu-supplies-v1-2-3b8313e5ca8d@collabora.com>
 References: <20260414-mtk-g510-700-cpu-supplies-v1-0-3b8313e5ca8d@collabora.com>
 In-Reply-To: <20260414-mtk-g510-700-cpu-supplies-v1-0-3b8313e5ca8d@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -62,16 +62,16 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  linux-mediatek@lists.infradead.org, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1776162824; l=896;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1776162824; l=1691;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=UQc4ou+UQDzZxINqGXpBn97ET/EsjCNUWs9PO5MU9T4=;
- b=XZTakqBs+bu5IEN53sjLNd6l+Agru9M7boQC5q8Cr0xUfHypxBfQTKTISwtJqOisY7q3Q6+rz
- jjPZzyECpClBAp9Cl/ahryTLGmuU4wlk5dmeAOWOJdsu40ictxM/BD3
+ bh=KWcYLXR3SCPD4C4XGxkdTEzImPQ+OVS9H3Ad1rh1FyA=;
+ b=SSSvq5wiJytbcW9kvgsxYNwvEhUVwkMIDeNUu3F0c+VEXNOkB//PxCKZmiDmGa9QYaYqXJ2xm
+ f+jBDRpcUDTDD7ZmE6EYVSxuX0tS68QXobkWZrVynQfqu805tIV66ly
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260414_033351_818779_F44C1820 
-X-CRM114-Status: UNSURE (   8.26  )
+X-CRM114-CacheID: sfid-20260414_033350_359579_559D293A 
+X-CRM114-Status: UNSURE (   9.94  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,31 +87,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add power supply definitions for the additional little CPU core nodes,
-that cannot be factorized in the board common dtsi due to little core
-number difference between MT8390 SoC (used by this board) and MT8370
-SoC (used by Genio 510-EVK).
+Mediatek Genio 510-EVK (MT8370) and 700-EVK (MT8390) devicetrees are
+missing power supply definitions for all their CPU cores.
+
+On the boards, the big core power is supplied by a MT6319 (sub PMIC),
+and little core power by a MT6365 (main PMIC).
+
+MT8370 and MT8390 SoC have the same core type (little cores are ARM
+Cortex A55, big ones are A72), the same big core number (2) but MT8390
+SoC has more little cores (6) than MT8370 SoC (only 4).
+
+To handle the little core number difference, add in the board common
+dtsi the power supply definitions for the common CPU core nodes (0-3,
+6 and 7).
+The power supplies for the additional MT8390 CPU core nodes (4 and 5)
+will be added for the Genio 700 in a separate commit.
 
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts | 7 +++++++
- 1 file changed, 7 insertions(+)
+ .../boot/dts/mediatek/mt8390-genio-common.dtsi     | 24 ++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts b/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
-index 612336713a64..0d5a75efb2ee 100644
---- a/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
-@@ -21,3 +21,10 @@ memory@40000000 {
- 	};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
+index aab474d6c5f8..9ebb222a877f 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
+@@ -285,6 +285,30 @@ &afe {
+ 	status = "okay";
  };
  
-+&cpu4 {
++&cpu0 {
 +	cpu-supply = <&mt6359_vcore_buck_reg>;
 +};
 +
-+&cpu5 {
++&cpu1 {
 +	cpu-supply = <&mt6359_vcore_buck_reg>;
 +};
++
++&cpu2 {
++	cpu-supply = <&mt6359_vcore_buck_reg>;
++};
++
++&cpu3 {
++	cpu-supply = <&mt6359_vcore_buck_reg>;
++};
++
++&cpu6 {
++	cpu-supply = <&mt6319_vbuck1>;
++};
++
++&cpu7 {
++	cpu-supply = <&mt6319_vbuck1>;
++};
++
+ &disp_dsi0 {
+ 	#address-cells = <1>;
+ 	#size-cells = <0>;
 
 -- 
 2.53.0
