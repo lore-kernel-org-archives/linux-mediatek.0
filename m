@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B8C3F9D0F1
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EDADF9D0F9
 	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2026 21:00:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,55 +12,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
 	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PmTL00imlfzfCUKOQTRKBa8T+HUPZbwNdGNPXybgvyY=; b=YbiD5h1BUVzVOidwRZXBteUZ3k
-	OM7gJUO3rA53AvbkEyvOpaY6aRIsS58+KROew1AbXcOF86pJd+a8XCBAot2L+yyCYY1w09wlBoDDx
-	Odov3/SOWWxBYM9DLJexdNpOJKD2xy0zwrmXjJDr2neUnz8LGyKsYitx2citaxI2DS0UxZYMeSl02
-	cYBe1sPVSUnhMYI0N8dnOuEoykqobZ/HgN517iC74IhhmoYFARC9Wq8qmrzhxUmqapSWMrnCnb8Df
-	xzHq5bzKjzzDv8uFj5+DqJJDmopnZd625bq0IJdNrZ1oI8iEgkKeEXqIVEwC9qg+Y/+DU8qnnSMEH
-	eRMqg4yg==;
+	bh=JtfV/nUvZaCFEkNd73TciHjx8DAWrmrKCaCwf9Lgxng=; b=4HTQI7ozBJ25MjTbNdNtnUsDZI
+	fXh4Sg5ULyHgChNID/lmFRNMB6077RoIkArcbm6jiq0axegm2PzsoL3CLQId7JqHWLCVEssVpMD+b
+	a2REavvmYF3QwEKnlYF84MoeLcBbhA0ZrLibB2/SG0Wnd6SEdz3wLmYyks7URoPIakeHhVv0xTCcY
+	cOmpRH6e6bp0HuJQi6nDaHfIEbFodWMongFmunAuIIbHMUvuf1RW7OJqlfjuGGEwctjMSORbEopMw
+	2WQJgMai0VRtQPRlaN8oNpLJl7AeYfwons02edRPnKN2VYIR1POv9j81mvaK/P+VebCeQodVv8vPD
+	3xZ1zPZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCksC-00000000DV7-0vtb;
+	id 1wCksC-00000000DVB-21qh;
 	Tue, 14 Apr 2026 21:00:40 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCks9-00000000DUU-0Fpm
+	id 1wCks9-00000000DUV-1HR7
 	for linux-mediatek@lists.infradead.org;
 	Tue, 14 Apr 2026 21:00:38 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id CDC9143461;
-	Tue, 14 Apr 2026 21:00:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AC5DCC2BCB0;
-	Tue, 14 Apr 2026 21:00:34 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 63F1D43C34;
+	Tue, 14 Apr 2026 21:00:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3942CC19425;
+	Tue, 14 Apr 2026 21:00:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776200434;
-	bh=qDVYh6WLv/dBWQA7VroryOtD7C4utadxXIolPhKn+fE=;
+	s=k20201202; t=1776200436;
+	bh=6g0P2jYp8BQllTknzWCy2u2MiitXnxdF1aRmQTkSYwY=;
 	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=LTrr2JZsNKowtXuZP9tKfPuPBBGD3HG5iF43zRXzlrVL/yNWhmiEPjv5JWvtocIU6
-	 T8XpftcsAKovZxMzHPV9MlzXZR2ceRRdipEIXByuIU31Xc53kOcMg9eWrKaB8SElkS
-	 AKbjD/ZhqNbtJERUnd+k8f1EJzKtvhUpjhEZ5KI8v1Fm/q1rOh5kz4MtHMDWxi8Ned
-	 Tk0crGPlADLwfM4iY6EjVzfZimGjGpHjzEKRpugGtjgnstmFMVl8szI+wYlqR+gJo9
-	 57KJvDNAGplzHeESAkIh66uDyVudeYvF5HZyEqVhi+Vv1Opi+ircW01Jj+hs31HeYx
-	 YD9h6rbqRpuGA==
+	b=hNzjAUC1k9twayaWsqA1yGROCWWm1dKcZXT2rkzaPHiG/KmiqPwBiLPWMhZ4ThJFg
+	 QOTrA3IxSQv3QyQKOWkZ+fTkuJoNP0T56GeK3sldx4zXRqShTyIT9xQu6iuUkuTIdA
+	 u+jlORyw8N+QzxkJei+IiGQwCs0S0oEpxaVK4hdMvNzqUbQe5q5I+4gm7AD2DR93NS
+	 BBd3fdwNYiB+gLGcpp5O4g0s7KEb2g1XGjme8yFNKhMCdqWkRUhRjzJbAhmE/6HMoV
+	 le2XjC4f0/f2SMpQi5f/yKnz7eu/D1bEz8K1i58ZGsmAjCllr4iR/evUKL0fNjgefg
+	 mJRWJuBMJ8oKw==
 Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 3FC8B3809A0C;
-	Tue, 14 Apr 2026 21:00:06 +0000 (UTC)
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id BA2323809A0D;
+	Tue, 14 Apr 2026 21:00:07 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [RESEND PATCH v1] Bluetooth: btusb: MT7922: Add VID/PID 0e8d/223c
+Subject: Re: [RESEND PATCH v1] Bluetooth: btusb: MT7925: Add VID/PID 0e8d/8c38
 From: patchwork-bot+bluetooth@kernel.org
-Message-Id: <177620040505.1468596.15480605558058158606.git-patchwork-notify@kernel.org>
-Date: Tue, 14 Apr 2026 21:00:05 +0000
-References: <20260407065053.3037036-1-chris.lu@mediatek.com>
-In-Reply-To: <20260407065053.3037036-1-chris.lu@mediatek.com>
+Message-Id: <177620040629.1468596.9025066166850277075.git-patchwork-notify@kernel.org>
+Date: Tue, 14 Apr 2026 21:00:06 +0000
+References: <20260407065110.3037135-1-chris.lu@mediatek.com>
+In-Reply-To: <20260407065110.3037135-1-chris.lu@mediatek.com>
 To: Chris Lu <chris.lu@mediatek.com>
 Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
  sean.wang@mediatek.com, will-cy.Lee@mediatek.com, ss.wu@mediatek.com,
  steve.lee@mediatek.com, linux-bluetooth@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260414_140037_142507_D05C3DFC 
+X-CRM114-CacheID: sfid-20260414_140037_380043_752294E5 
 X-CRM114-Status: UNSURE (   7.16  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -82,15 +82,15 @@ Hello:
 This patch was applied to bluetooth/bluetooth-next.git (master)
 by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-On Tue, 7 Apr 2026 14:50:53 +0800 you wrote:
-> Add VID 0e8d & PID 223c for MediaTek MT7922 USB Bluetooth chip.
+On Tue, 7 Apr 2026 14:51:10 +0800 you wrote:
+> Add VID 0e8d & PID 8c38 for MediaTek MT7925 USB Bluetooth chip.
 > 
 > The information in /sys/kernel/debug/usb/devices about the Bluetooth
 > device is listed as the below.
 > 
-> T:  Bus=07 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
+> T:  Bus=06 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
 > D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-> P:  Vendor=0e8d ProdID=223c Rev= 1.00
+> P:  Vendor=0e8d ProdID=8c38 Rev= 1.00
 > S:  Manufacturer=MediaTek Inc.
 > S:  Product=Wireless_Device
 > S:  SerialNumber=000000000
@@ -131,8 +131,8 @@ On Tue, 7 Apr 2026 14:50:53 +0800 you wrote:
 > [...]
 
 Here is the summary with links:
-  - [RESEND,v1] Bluetooth: btusb: MT7922: Add VID/PID 0e8d/223c
-    https://git.kernel.org/bluetooth/bluetooth-next/c/8205cbb54538
+  - [RESEND,v1] Bluetooth: btusb: MT7925: Add VID/PID 0e8d/8c38
+    https://git.kernel.org/bluetooth/bluetooth-next/c/41388deeb990
 
 You are awesome, thank you!
 -- 
