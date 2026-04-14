@@ -4,102 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B155F9D0CD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2026 13:04:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7263FF9D0CE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2026 13:15:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7SB2FdFz1cnEJeeU7lmGtgbspb+2GXG652NxyTVE25c=; b=rQGfA+Ts4agMizaTvLugzRd8ox
-	ah5CVUwh3RY4tTgyBwajotj9UvhR1Jq8jVdIEjpAqX7qBBh/4qV7BFDFgZjZUG26pARsG6T/lkTAE
-	5FdwBxXSUyxWWPuUn7QVq04EJSH3gWu7cPk4lbkheK+8MSOrrSZwVR0kcEwAF21E/1OqM9St3V1Ml
-	CmQWE8iXT/8bL1Es5EQ434FPSIMv6OtKdf+J2ti/17GPsClSRjjVMMWclBY16mCZxpA8D3jOeBqFe
-	dOhtbUVSDs01Bp+JVmeLh1TPTUvTs7Knynj3IbE1mVbdVmtO1J4gzK8pYPjjPZDgPUfBDo7+3pCn4
-	HA23WcrA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/XVkGTDzW4/sLTyq2ds3zFoOfu2PSlh7GL0qmxrBxE0=; b=KKvesaLB3JNUgFWceCxQ8hLb7Z
+	gVuTB47VRLbfhnX34/8r9mYB8NsHMAbspTD68S0GiUStAzl4AOd4F3463LffQXyOVNqnorV5quJb1
+	jsQj23q71nTfooAPAwvVx91z8kAvWT/ArXgLJYmZTkN4gsTXX3DpLPr0hjA5Vh5gdLT11utVLpo03
+	rus4aqhslT2P+0ykAfV/7VJaWidyH3oRpkJylDBdmUca7xFy1yO+0+S34s5bmRxcmc9iY8aL85qPI
+	AkZC17rQmGhI4RVy4UDgmN7YAiH0AeJvDjiSmbslN6gA+MShYM1I/4Vr92RsMKqfwIcU1RLdvwnel
+	DdT7K93Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCdRd-0000000HLHe-0oll;
-	Tue, 14 Apr 2026 13:04:45 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1wCdbg-0000000HMBC-1L21;
+	Tue, 14 Apr 2026 13:15:08 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCdRa-0000000HLGI-3Xbc
-	for linux-mediatek@lists.infradead.org;
-	Tue, 14 Apr 2026 13:04:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1776171881;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=7SB2FdFz1cnEJeeU7lmGtgbspb+2GXG652NxyTVE25c=;
-	b=F+ETVXiPx8UQJ805qvIs4CEYvFXOfCNhNHRUOWNlHD1y46sXlsOWSudXq5p9gGcLtTBHwr
-	/mfF+TB0jTFJy0ceA7bmwxIvWv0MotNK7vIr+1ZcUN5atWZuSBpqAbjs5gZG6n6ZUt5msd
-	keRz0HmWMzh9UfB6VLeM6lwovigswxI=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-529-KtT4dxaiMYe1FOmZ5cqx9w-1; Tue, 14 Apr 2026 09:04:39 -0400
-X-MC-Unique: KtT4dxaiMYe1FOmZ5cqx9w-1
-X-Mimecast-MFC-AGG-ID: KtT4dxaiMYe1FOmZ5cqx9w_1776171879
-Received: by mail-wr1-f70.google.com with SMTP id ffacd0b85a97d-43d00dd913cso6081592f8f.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 14 Apr 2026 06:04:39 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1776171878; x=1776776678;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=7SB2FdFz1cnEJeeU7lmGtgbspb+2GXG652NxyTVE25c=;
-        b=UrLDFOgVs1d64Cg8DwEUM9tmafBsTnHt5DKG18DYoRVE1z48575aXFYfoGM5vYzgXB
-         XxxC4XVy9nNfzktbnfr0YLCZu95NSI9xb/Jh5z/i7WJ5ShjnxYb+QD5Diur+Q4kEzauq
-         ws1TeGMY+p+GHEY1oK2daIhtaX+l2WSaAqrYUEzYsjn6aCPEehwTr/NFENnmA4bRUfR7
-         SU9Cy5f+SxGlDThvOE8zcMHaUWvdI5cpPGMZ0gln9XyXSC985XiFALb3BT3P3UdlC9SB
-         MvZDwtruu9wKUjEEIuxfd8fjdpmtcphnvta2YPCh1t/rDbAVSk5vVfY4RVusqf97sAcd
-         a+fw==
-X-Forwarded-Encrypted: i=1; AFNElJ/6Y2r+pwngn5Vg2et2Z6kpHwwPQ7PWe32x6Oo8PaIcyiveUGGmJ8fLNDg0ziR1DM3jBne1FfmSB/SN9SaHuw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx/tONccS91IMSFh/S/Y2YFmlbusi3q82c91B38fR6Aikhek8dV
-	W0zMdIfGImpJJm9f8hdVOP2ewuio0E8I6iAXskSo9S0isI09MyqAKj19XC1L0bbPEeBbltXbRI1
-	0qATSYdVXH2VqnI3UNyP14dHyJMFQBzmGA3k/j+K3aYaMsN/r7XsCyACiZqhEd/iRVbJs2bnPfI
-	yzJWUKbg==
-X-Gm-Gg: AeBDiet9hrq5VUACgJrJpChmrzAZAzriVYgHVd6ROMmpSHPmBOGYsDb/DbFV9nVG56o
-	KZonYgQXtjIhdqJQHUHXDU8JpXzzhKy3XOQ1rpZa/C0r2VesMrrpm7KRra6P3uFM8Lzt4S6P9Yt
-	3WcRenAJFn/lg9C9FE8D0OTn/UaHD8qkHv12Y3+A3W5oKdIL6la8vkT5HrHqIqxmmumkYIgpnKk
-	rvYoxDvoXK2nZR6R2BaLIpZg1tY1/4VFXjmb304eqEoPiJ3mYqNNbDW/smHetMsdqZhK7VDL6lt
-	izZotaopTrEJS0GHSNdwcORYqH2DwkfDIBP5Ka7JjiQRHTzg4SxzeYIZLr4sKsn+t62jaTg4m72
-	AaYNHFScbdvDJ8U6Z3Uifd1NVqff+NGGo2g6zKI3fogcMCnzJH83UgNHU
-X-Received: by 2002:a05:6000:2f88:b0:43e:a69b:d818 with SMTP id ffacd0b85a97d-43ea69bda81mr3521169f8f.38.1776171877506;
-        Tue, 14 Apr 2026 06:04:37 -0700 (PDT)
-X-Received: by 2002:a05:600c:820a:b0:488:b675:360f with SMTP id 5b1f17b1804b1-488d6889a6bmr214737225e9.27.1776171861891;
-        Tue, 14 Apr 2026 06:04:21 -0700 (PDT)
-Received: from [192.168.88.32] ([216.128.11.125])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-488d67b128dsm200877535e9.2.2026.04.14.06.04.20
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 14 Apr 2026 06:04:20 -0700 (PDT)
-Message-ID: <5767dffc-26e7-40da-8be9-46b878795a85@redhat.com>
-Date: Tue, 14 Apr 2026 15:04:19 +0200
+	id 1wCdbd-0000000HM8G-1TpA;
+	Tue, 14 Apr 2026 13:15:06 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 38EBF438C6;
+	Tue, 14 Apr 2026 13:15:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BFE2CC19425;
+	Tue, 14 Apr 2026 13:15:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1776172504;
+	bh=wEv5mqvmrSOGSAYKMInPhiGsKDkCJqa9FtAb0FRnrAE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=R363Qf9vqymirGwgv+28hUY+lIpw1XfX7/+X8NapLj91KX6VFRlnSChUhkW9hf6Ni
+	 MgOY8g1U3o2JTWjuVvvso4iobwr1xBF44PSAKodTwTSO31TrbH4G+Y9XWccc/vxBhD
+	 nLc97t9hQrdRf2IOLOtRAlgYXfPAX7Rmit/EVDwpXkeS93hb0r2HlFsgyr4zCi/7d9
+	 1jAWQpXyMuULNW7FZAR8u1Gg+VaiWJBH8hYJwLOg85vqfEZopbK5y+8F5G8lLRljo0
+	 BXUjjJKtBKYIvHRnrHhX1CmFHveGov7AkrtIDhsQnZqpw6vyetHYsXqe0co5UCb7/e
+	 PM/7L5AI+V5fg==
+Date: Tue, 14 Apr 2026 15:15:01 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Simon Horman <horms@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+	kuba@kernel.org, pabeni@redhat.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net] net: airoha: Wait for NPU PPE configuration to
+ complete in airoha_ppe_offload_setup()
+Message-ID: <ad491UEDZFUoxpoF@lore-desk>
+References: <20260412-airoha-wait-for-npu-config-offload-setup-v1-1-f4e0aa2a5d85@kernel.org>
+ <20260414124641.754059-1-horms@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net] net: airoha: Fix max TX packet length configuration
-To: Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn
- <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Simon Horman <horms@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org
-References: <20260412-airoha-fix-max-mtu-v1-1-333030d0a564@kernel.org>
-From: Paolo Abeni <pabeni@redhat.com>
-In-Reply-To: <20260412-airoha-fix-max-mtu-v1-1-333030d0a564@kernel.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 6vrSLCp5oYwMT64vPCIcGVaupK1wOzk9y-EUDkzd1BQ_1776171879
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="+y3x5upWOivh3efE"
+Content-Disposition: inline
+In-Reply-To: <20260414124641.754059-1-horms@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260414_060443_021742_B0719023 
-X-CRM114-Status: GOOD (  13.11  )
+X-CRM114-CacheID: sfid-20260414_061505_433469_D22A6006 
+X-CRM114-Status: GOOD (  23.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,34 +75,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 4/12/26 10:09 AM, Lorenzo Bianconi wrote:
-> According to the Airoha documentation, REG_GDM_LEN_CFG() register does not
-> include FCS length. Fix MTU configuration removing ETH_FCS_LEN from
-> maximum TX packet length configuration.
-> 
-> Fixes: 54d989d58d2ac ("net: airoha: Move min/max packet len configuration in airoha_dev_open()")
-> Fixes: 03b1b69f0662c ("net: airoha: Introduce airoha_dev_change_mtu callback")
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+
+--+y3x5upWOivh3efE
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+> From: 'Simon Horman' <horms@kernel.org>
+>=20
+> This is an AI-generated review of your patch. The human sending this
+> email has considered the AI review valid, or at least plausible.
+> Full review at: https://sashiko.dev
 > ---
->  drivers/net/ethernet/airoha/airoha_eth.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-> index c14cdce588a7..a81ffda72b39 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -1629,9 +1629,9 @@ static void airoha_update_hw_stats(struct airoha_gdm_port *port)
->  
->  static int airoha_dev_open(struct net_device *dev)
->  {
-> -	int err, len = ETH_HLEN + dev->mtu + ETH_FCS_LEN;
->  	struct airoha_gdm_port *port = netdev_priv(dev);
->  	struct airoha_qdma *qdma = port->qdma;
-> +	int err, len = ETH_HLEN + dev->mtu;
+>     net: airoha: Wait for NPU PPE configuration to complete in airoha_ppe=
+_offload_setup()
+>=20
+> This commit adds a poll loop in airoha_ppe_offload_setup() to wait for th=
+e NPU
+> PPE configuration to complete before running airoha_ppe_hw_init().
+>=20
+> > diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/eth=
+ernet/airoha/airoha_ppe.c
+> > index c2c32b6833df9..52199f6b39f9b 100644
+> > --- a/drivers/net/ethernet/airoha/airoha_ppe.c
+> > +++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+> [ ... ]
+> > @@ -1340,6 +1341,13 @@ static int airoha_ppe_offload_setup(struct airoh=
+a_eth *eth)
+> >  	if (err)
+> >  		goto error_npu_put;
+> > =20
+> > +	/* Wait for NPU PPE configuration to complete */
+> > +	err =3D read_poll_timeout(airoha_fe_rr, val, val, USEC_PER_MSEC,
+> > +				100 * USEC_PER_MSEC, false, eth,
+> > +				REG_PPE_PPE_FLOW_CFG(0));
+>=20
+> If the SoC has multiple PPE instances, is it sufficient to only wait for
+> REG_PPE_PPE_FLOW_CFG(0)?
+>=20
+> Later in airoha_ppe_hw_init(), the code iterates up to eth->soc->num_ppe,
+> initializing all available instances:
+>=20
+> drivers/net/ethernet/airoha/airoha_ppe.c:airoha_ppe_hw_init() {
+>     ...
+> 	for (i =3D 0; i < eth->soc->num_ppe; i++) {
+> 		...
+> 		airoha_fe_wr(eth, REG_PPE_TB_BASE(i),
+> 			     ppe->foe_dma + sram_tb_size);
+>     ...
+> }
 
-Sashiko noted that the above may cause regressions, dropping max MTU
-vlan frames.
+ack, let me look into it, I will post a v2.
 
-/P
+>=20
+> If we only poll PPE 0, could the driver race with the NPU firmware's
+> initialization of subsequent PPEs?
+>=20
+> Additionally, does this poll condition properly ensure the hardware is re=
+ady?
+> Since the break condition is simply `val`, it exits immediately if the re=
+gister
+> contains any non-zero value.
+>=20
+> If the register retains a non-zero value from a previous session (like ac=
+ross
+> driver reloads), or if an unclocked domain returns 0xFFFFFFFF, this poll =
+might
+> succeed immediately and bypass the wait.
+>=20
+> Could we clear the register before polling, or wait for a specific bit in=
+stead?
 
+I guess check val !=3D 0 is enough since we reset the FE block and defualt
+register value is 0 for both REG_PPE_PPE_FLOW_CFG(0) and
+REG_PPE_PPE_FLOW_CFG(1).
+
+Regards,
+Lorenzo
+
+>=20
+> > +	if (err)
+> > +		goto error_npu_put;
+> > +
+> >  	ppe_num_stats_entries =3D airoha_ppe_get_total_num_stats_entries(ppe);
+
+--+y3x5upWOivh3efE
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCad491QAKCRA6cBh0uS2t
+rHlaAP4rfMeHRF6mcqYQkq2q6DoKFIguOTwyIQc/8amuWQy1qwEAkQYNgGlR1Tiy
+Sp8gdjxgWaIvIlF8f9kYq/GTEaZjxQc=
+=Ngyp
+-----END PGP SIGNATURE-----
+
+--+y3x5upWOivh3efE--
 
