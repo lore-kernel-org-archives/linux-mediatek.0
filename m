@@ -4,79 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E23DED7B87
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2026 08:30:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C27FED7B8D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2026 08:57:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:content-type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DigNPQlaEMr+fYZbjylCUqlUkj2+OF9+JpKPFIeOgh0=; b=BJVhdSbW/wjut4ExEJahanZlE9
-	19q7EeVyW/mOcyreScHaXIejbmAuxoNkN10jHGrwzNAVc1erVxnVVRcw7tRy22xCAdOI4xeVV+Q6a
-	tJep10CrsWBl7X80QRi4hMz3oB7KIZpNWFrOMTtZG43Nk3EJ8Ww1l1MDHFXDF2bMf25WDlENJpD3S
-	baj3vpyazxv+IpyzL8JiA6sge4k/Ql+C76Gv8xmnvTTRSykgN+HeCCnzU/Q2BIc3HXfyDlp4G4NLj
-	fqW5xGjN3OeUq4vAovxFOdV6GX8wNOQBCHr/nEGnqY8Q6ddMGG0AQkgSCY1zcMaSVxl0e4SQsyWAz
-	z2u0OSWw==;
+	bh=OnxSsdQSwxp8X97PpUGHLpgxiLqFzOUXvBqz3/GWOfI=; b=nGWhhO4XcCVYzpPsuqO43lWVWF
+	8ui9zUhCULCrkPbcL330+HHuwx39P+gKpcKHl9j8WRVzBXPa8zWBCe95meJZqW6YODDxQ4N0T1gUF
+	idpL+Rwv23fn/oY8RQQqERbtjUpYyVKUwL0O6yl+o2WdrY1Z43o8k5RI55Roq4nJnA5qjooXi60on
+	V5VlA4m5OErEkSAl9M/EwPq5X6gcEcT/BWkGqjQACQAHrG0u1rpLMPky2TgZP3wNLnUKR7sD2aKTS
+	z19hZio81uiMNRICnEjd41OKLWv+TBB/nPoifPN4XQXAViZ9vmu4OicoL8FIW+FsL3yrXAhuHSVaH
+	UW1Ev15Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCZAb-0000000GyWQ-44Uz;
-	Tue, 14 Apr 2026 08:30:53 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1wCZaX-0000000H1RA-43hN;
+	Tue, 14 Apr 2026 08:57:41 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCZAZ-0000000GyVD-2l3I
-	for linux-mediatek@lists.infradead.org;
-	Tue, 14 Apr 2026 08:30:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1776155449;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=DigNPQlaEMr+fYZbjylCUqlUkj2+OF9+JpKPFIeOgh0=;
-	b=ai+Li8cMXRIAVge8nFSbX2TiLEXDLOIKZO9ojB/GYr6gQJL3RRNMjlV6ZZGDMSepPVD/Dj
-	xZq3vsKY9vonll+wZrh5D/f0oppA0+x6eSAT77onnlB4qLIFFwQw59oppTOOVqNzgb3Xba
-	mdPmH+Jk4GifRDHYM25wwtQ4Y1QExMQ=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-654-9yk3hmX1Pz2SUi4zHch4vw-1; Tue,
- 14 Apr 2026 04:30:47 -0400
-X-MC-Unique: 9yk3hmX1Pz2SUi4zHch4vw-1
-X-Mimecast-MFC-AGG-ID: 9yk3hmX1Pz2SUi4zHch4vw_1776155446
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 0BF5419560A7;
-	Tue, 14 Apr 2026 08:30:46 +0000 (UTC)
-Received: from gerbillo.redhat.com (unknown [10.44.49.51])
-	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 1FBA919560AB;
-	Tue, 14 Apr 2026 08:30:42 +0000 (UTC)
-From: Paolo Abeni <pabeni@redhat.com>
-To: lorenzo@kernel.org
-Cc: edumazet@google.com,
-	kuba@kernel.org,
-	davem@davemloft.net,
-	netdev@vger.kernel.org,
-	andrew+netdev@lunn.ch,
-	pabeni@redhat.com,
+	id 1wCZaW-0000000H1Qn-1OPm;
+	Tue, 14 Apr 2026 08:57:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 65B3A60018;
+	Tue, 14 Apr 2026 08:57:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BDFF1C19425;
+	Tue, 14 Apr 2026 08:57:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1776157059;
+	bh=lUWPEDw2DjZ1dgMC7s3MwDU2q8Tz/2D26MRcskvU9JI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FOVJBdYSJAB4kqVME5GuYkdjjQ8r+wmfye6NPtk12e8D+nABK/hxsEt4h51jSEcxa
+	 4/+v4ur5cxjQdwXZW9J26Q2lfg77+dChh3lixbrU0nKj3EstT/v8xUFo7hUezBBcZ8
+	 9pUuzL2Ov/xkbuwONlXp42lJcAgUG1XYPquH78mBWAR5ujg4/WK5y2VbkMFsC0L+Ms
+	 nhFAMVJoChi8GbN7MfWehrngrSujPnz8e/5t8Qt4NLrki2wax/GijSEzDZhP2Kn99C
+	 wS7DAT0lnYKVKAL5OB+oKAghDnW7q5NSCSp/5SF/2cBVEBWMc/uYfyUtKQfgjZOEMg
+	 i1rZOhnl20SFQ==
+Date: Tue, 14 Apr 2026 10:57:36 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Paolo Abeni <pabeni@redhat.com>
+Cc: edumazet@google.com, kuba@kernel.org, davem@davemloft.net,
+	netdev@vger.kernel.org, andrew+netdev@lunn.ch,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [net-next] net: airoha: Wait for TX to complete in airoha_dev_stop()
-Date: Tue, 14 Apr 2026 10:29:49 +0200
-Message-ID: <20260414082949.104611-1-pabeni@redhat.com>
-In-Reply-To: <20260411-airoha-fix-ndo_stop-v1-1-caddaa181739@kernel.org>
+Subject: Re: [net-next] net: airoha: Wait for TX to complete in
+ airoha_dev_stop()
+Message-ID: <ad4BgCGNYjYACUdv@lore-desk>
 References: <20260411-airoha-fix-ndo_stop-v1-1-caddaa181739@kernel.org>
+ <20260414082949.104611-1-pabeni@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: txVWSZHtq14z-1P4FjHDvZMO5fuyQHDSvP_FYlsz914_1776155446
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260414_013051_770017_B1E617E5 
-X-CRM114-Status: GOOD (  17.31  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="eigqXCj77aqg9JTa"
+Content-Disposition: inline
+In-Reply-To: <20260414082949.104611-1-pabeni@redhat.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,79 +72,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is an AI-generated review of your patch. The human sending this
-email has considered the AI review valid, or at least plausible.
 
-For local reproduction steps see https://netdev-ai.bots.linux.dev/ai-local.html
----
-net: airoha: Wait for TX to complete in airoha_dev_stop()
+--eigqXCj77aqg9JTa
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Wait for TX to complete in airoha_dev_stop routine before stopping the
-TX DMA and run airoha_qdma_cleanup_tx_queue routine. Moreover,
-start/stop TX/RX NAPIs in ndo_open()/ndo_stop() callbacks in order to be
-sure the TX NAPIs have completed before stopping the TX DMA engine in
-airoha_dev_stop routine.
+> This is an AI-generated review of your patch. The human sending this
+> email has considered the AI review valid, or at least plausible.
+>=20
+> For local reproduction steps see https://netdev-ai.bots.linux.dev/ai-loca=
+l.html
+> ---
+> net: airoha: Wait for TX to complete in airoha_dev_stop()
+>=20
+> Wait for TX to complete in airoha_dev_stop routine before stopping the
+> TX DMA and run airoha_qdma_cleanup_tx_queue routine. Moreover,
+> start/stop TX/RX NAPIs in ndo_open()/ndo_stop() callbacks in order to be
+> sure the TX NAPIs have completed before stopping the TX DMA engine in
+> airoha_dev_stop routine.
+>=20
+> > diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/eth=
+ernet/airoha/airoha_eth.c
+> > index 8e4b043af4bc..9e40c8f375c1 100644
+> > --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> > +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+>=20
+> [ ... ]
+>=20
+> > @@ -1684,18 +1686,26 @@ static int airoha_dev_stop(struct net_device *d=
+ev)
+> >  	struct airoha_qdma *qdma =3D port->qdma;
+> >  	int i, err;
+> >
+> > -	netif_tx_disable(dev);
+> >  	err =3D airoha_set_vip_for_gdm_port(port, false);
+> >  	if (err)
+> >  		return err;
+> >
+> > -	for (i =3D 0; i < ARRAY_SIZE(qdma->q_tx); i++)
+> > -		netdev_tx_reset_subqueue(dev, i);
+> > -
+> >  	airoha_set_gdm_port_fwd_cfg(qdma->eth, REG_GDM_FWD_CFG(port->id),
+> >  				    FE_PSE_PORT_DROP);
+> >
+> > +	netif_tx_disable(dev);
+> >  	if (atomic_dec_and_test(&qdma->users)) {
+> > +		u32 val;
+> > +
+> > +		/* Wait for TX to complete */
+> > +		err =3D read_poll_timeout(airoha_qdma_rr, val,
+> > +					!(val & GLOBAL_CFG_TX_DMA_BUSY_MASK),
+> > +					USEC_PER_MSEC, 100 * USEC_PER_MSEC,
+> > +					false, qdma, REG_QDMA_GLOBAL_CFG);
+> > +		if (err)
+> > +			return err;
+> >                   ^^^^^^^^^^
+>=20
+> Can this leave the device in an inconsistent state? When read_poll_timeou=
+t()
+> fails (TX DMA busy for more than 100ms), airoha_dev_stop() returns an err=
+or
+> immediately. However, atomic_dec_and_test(&qdma->users) has already
+> decremented qdma->users to 0, but airoha_qdma_stop_napi() was never calle=
+d,
+> so all NAPIs remain enabled.
+>=20
+> The networking core (__dev_close_many in net/core/dev.c) ignores the
+> ndo_stop return value and marks the device as down regardless. When the
+> device is later brought up again, airoha_dev_open() sees atomic_fetch_inc=
+()
+> return 0 (old value) and calls airoha_qdma_start_napi() -> napi_enable(),
+> which hits BUG_ON(!test_bit(NAPI_STATE_SCHED, &val)) in napi_enable_locke=
+d()
+> because the NAPI was never disabled.
+>=20
+> The early return also skips the netdev_tx_reset_subqueue() calls at the e=
+nd
+> of the function.
+>=20
+> Should the code either continue with cleanup on timeout (don't return), or
+> ensure NAPI and DMA state are properly cleaned up before returning?
 
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-> index 8e4b043af4bc..9e40c8f375c1 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+ack, I will fix it in v2.
 
-[ ... ]
+Regards,
+Lorenzo
 
-> @@ -1684,18 +1686,26 @@ static int airoha_dev_stop(struct net_device *dev)
->  	struct airoha_qdma *qdma = port->qdma;
->  	int i, err;
->
-> -	netif_tx_disable(dev);
->  	err = airoha_set_vip_for_gdm_port(port, false);
->  	if (err)
->  		return err;
->
-> -	for (i = 0; i < ARRAY_SIZE(qdma->q_tx); i++)
-> -		netdev_tx_reset_subqueue(dev, i);
-> -
->  	airoha_set_gdm_port_fwd_cfg(qdma->eth, REG_GDM_FWD_CFG(port->id),
->  				    FE_PSE_PORT_DROP);
->
-> +	netif_tx_disable(dev);
->  	if (atomic_dec_and_test(&qdma->users)) {
-> +		u32 val;
-> +
-> +		/* Wait for TX to complete */
-> +		err = read_poll_timeout(airoha_qdma_rr, val,
-> +					!(val & GLOBAL_CFG_TX_DMA_BUSY_MASK),
-> +					USEC_PER_MSEC, 100 * USEC_PER_MSEC,
-> +					false, qdma, REG_QDMA_GLOBAL_CFG);
-> +		if (err)
-> +			return err;
->                   ^^^^^^^^^^
+>=20
+> > +
+> > +		airoha_qdma_stop_napi(qdma);
+> >  		airoha_qdma_clear(qdma, REG_QDMA_GLOBAL_CFG,
+> >  				  GLOBAL_CFG_TX_DMA_EN_MASK |
+> >  				  GLOBAL_CFG_RX_DMA_EN_MASK);
+>=20
+> [ ... ]
+>=20
 
-Can this leave the device in an inconsistent state? When read_poll_timeout()
-fails (TX DMA busy for more than 100ms), airoha_dev_stop() returns an error
-immediately. However, atomic_dec_and_test(&qdma->users) has already
-decremented qdma->users to 0, but airoha_qdma_stop_napi() was never called,
-so all NAPIs remain enabled.
+--eigqXCj77aqg9JTa
+Content-Type: application/pgp-signature; name=signature.asc
 
-The networking core (__dev_close_many in net/core/dev.c) ignores the
-ndo_stop return value and marks the device as down regardless. When the
-device is later brought up again, airoha_dev_open() sees atomic_fetch_inc()
-return 0 (old value) and calls airoha_qdma_start_napi() -> napi_enable(),
-which hits BUG_ON(!test_bit(NAPI_STATE_SCHED, &val)) in napi_enable_locked()
-because the NAPI was never disabled.
+-----BEGIN PGP SIGNATURE-----
 
-The early return also skips the netdev_tx_reset_subqueue() calls at the end
-of the function.
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCad4BgAAKCRA6cBh0uS2t
+rNmgAP9RniNbQ5atnC99/hDeG+1/vN79rvITBQQqpU0PDLwR5AEA5/vQe6+SQyC8
+86Sc7ARxKYPKvkm2qY8grGKYTvVMAgY=
+=qwvR
+-----END PGP SIGNATURE-----
 
-Should the code either continue with cleanup on timeout (don't return), or
-ensure NAPI and DMA state are properly cleaned up before returning?
-
-> +
-> +		airoha_qdma_stop_napi(qdma);
->  		airoha_qdma_clear(qdma, REG_QDMA_GLOBAL_CFG,
->  				  GLOBAL_CFG_TX_DMA_EN_MASK |
->  				  GLOBAL_CFG_RX_DMA_EN_MASK);
-
-[ ... ]
-
+--eigqXCj77aqg9JTa--
 
