@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B877F9D0C9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2026 12:40:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03823F9D0C9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2026 12:46:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NrEbNwq0wU+eIYA2Akm+iQiv1mTUuZg+JocQyt4c7kQ=; b=0jbKEBS9Owz4xFwtMsLyw1ypCI
-	zyk3k2NGt1B1B4VNJQQpR1wYBSP+Xms6yYZaSv/CdOn875VBwYAFTfTWnaEEzF/8cMmbQ6cUsIRGJ
-	99BNmXQDEAo+9DTGGVg1TNVUC6enyib3aY1KVfrHeCzKDsJxRcBWB0jTf6WwFYbhs+RuQHxaa1Ahq
-	in4UtwRdwPzZXBPr7tBq6v3d+DLZqUX9xLTRXB9Zgo3S3UD16zgG+0I0pn4O+iMQNGSt6n4ui3pgv
-	/3U2d96Dh7aTXLA/pf1A7XnZCocAz1pQHx8MOFAcdSr5mbP6G6F4suomjrIho+P4pqF4ZQdONHeq1
-	dsh3eO8Q==;
+	bh=AqmsG+Mvl/dOdfhm/0XVj1sTKwx12L2hYh9eYN2vBpI=; b=sLq8NtGd8/xgB4mlEfVCzlGtyD
+	v/ffnRvxFwdu66At8fCZpIKs9KDoUHnd4gt5xcNVA+2jQOjGZT3GnNEqUG2v2DRzWz0TwL1wTpOSX
+	7sFBf8VJJeePMgOTayKvq1Jv/yhxGKoBZfhKULIP3TPiyn77Fx1y1HPNLi9NuIMbNJyMocRXc8x1v
+	zjz6fOGMQG7UhKXx7s1oR8guTeuAl/iHkNiA3GxwKBNQZR41wSAMcMgHEaxqQRxFCF348GdfyCz4W
+	VnmLClIboxi09/H/sPJG2r+RLm/pxQjCPq+U6dIpXl9qAl2KognTJp6qD1qG/CMtysVpeaq3x6Z4J
+	3DfaFcLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCd4A-0000000HJ5y-1z2k;
-	Tue, 14 Apr 2026 12:40:30 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wCdAM-0000000HJes-0FJX;
+	Tue, 14 Apr 2026 12:46:54 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCd48-0000000HJ5j-1J8N;
-	Tue, 14 Apr 2026 12:40:28 +0000
+	id 1wCdAI-0000000HJe9-2peP;
+	Tue, 14 Apr 2026 12:46:51 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E3B2160018;
-	Tue, 14 Apr 2026 12:40:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9A47EC19425;
-	Tue, 14 Apr 2026 12:40:24 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id CDA3143B30;
+	Tue, 14 Apr 2026 12:46:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B10DFC19425;
+	Tue, 14 Apr 2026 12:46:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776170426;
-	bh=IPBwqh9d3tDbxmlKfehIU4Pa/JiRA+IdViszBuMtYAg=;
+	s=k20201202; t=1776170809;
+	bh=0xrsRx8+fhBqILy3gChyEPRzzf8cZshNTlrUxsv7RZE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=l+o6JimJSyx0n76jesd6mCHnnhRw0R97PxIu1yNKcBHkqXebFznuJ4wQvjRE2Jf0r
-	 H5pS6nhw8wsbwz6zcAlqNG0+5JM0yUpBW64Q0KUIC/saKUWa8CXBo8CLl0BM2tYwJe
-	 /yC+jTNFhqchoZlVTqiV/NH+mGZ5zCTUFKmUfQ5amTHKmZan/hGLqkgcDOh6kqa5Un
-	 PP3SGIGAMjuuVAOoIcpq4PAc+qTuDhjECcYVCgazCVL7I4txSLrm4WqhtAywLG8ZT5
-	 8OAv6dyZbOFWMoLsr/jQnii/m3pNJqKNIaQz8rsCTasnzS6znKczm1Xh/+bt/nOdN9
-	 Y5Du/+H/533tQ==
+	b=s+lll3apOXZ6lUCDqv5yjMnIzo9yurD/78YpGTKuGiu5ceEmxt38X8F6eUAOQb4lK
+	 w4cTDQgA1U9R+Zsn6xepiteJzeFNVxVhUQrfs1GEnM2NYOBBJuHuTm1wPE/TMigTCc
+	 ciSfADwOeRtZqqQ+4iTr2y9FjwfaComoC1tgU8qG8cfdNzhsO+D/OcMwogPbSQYyLz
+	 o/FLEeGhEE6EQ93hNdu3eZHQjmWjh5hXMwpL3nP6PFgaHzPO2N6XLXQBC58GHG+v0c
+	 e7ceZE86pS8SNSIwm3GGq+/5WrnHoo4qlX5KX8OGUgO7rp8l+eLEYtcUVa3LWLBsIP
+	 4dmVU0sH6dU9w==
 From: Simon Horman <horms@kernel.org>
 To: lorenzo@kernel.org
 Cc: 'Simon Horman' <horms@kernel.org>,
@@ -52,14 +52,17 @@ Cc: 'Simon Horman' <horms@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	netdev@vger.kernel.org
-Subject: Re: [PATCH net] net: airoha: Fix max TX packet length configuration
-Date: Tue, 14 Apr 2026 13:40:11 +0100
-Message-ID: <20260414124011.751922-1-horms@kernel.org>
+Subject: Re: [PATCH net] net: airoha: Wait for NPU PPE configuration to complete in airoha_ppe_offload_setup()
+Date: Tue, 14 Apr 2026 13:46:41 +0100
+Message-ID: <20260414124641.754059-1-horms@kernel.org>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260412-airoha-fix-max-mtu-v1-1-333030d0a564@kernel.org>
-References: <20260412-airoha-fix-max-mtu-v1-1-333030d0a564@kernel.org>
+In-Reply-To: <20260412-airoha-wait-for-npu-config-offload-setup-v1-1-f4e0aa2a5d85@kernel.org>
+References: <20260412-airoha-wait-for-npu-config-offload-setup-v1-1-f4e0aa2a5d85@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260414_054650_797936_C0118817 
+X-CRM114-Status: GOOD (  15.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,38 +83,55 @@ This is an AI-generated review of your patch. The human sending this
 email has considered the AI review valid, or at least plausible.
 Full review at: https://sashiko.dev
 ---
-net: airoha: Fix max TX packet length configuration
+    net: airoha: Wait for NPU PPE configuration to complete in airoha_ppe_offload_setup()
 
-This commit fixes the MTU configuration for the Airoha driver by removing
-ETH_FCS_LEN from the maximum TX packet length, matching the hardware
-documentation which states the register does not include the FCS length.
+This commit adds a poll loop in airoha_ppe_offload_setup() to wait for the NPU
+PPE configuration to complete before running airoha_ppe_hw_init().
 
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-> index c14cdce588a7c..a81ffda72b39f 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -1629,9 +1629,9 @@ static void airoha_update_hw_stats(struct airoha_gdm_port *port)
->  
->  static int airoha_dev_open(struct net_device *dev)
->  {
-> -	int err, len = ETH_HLEN + dev->mtu + ETH_FCS_LEN;
->  	struct airoha_gdm_port *port = netdev_priv(dev);
->  	struct airoha_qdma *qdma = port->qdma;
-> +	int err, len = ETH_HLEN + dev->mtu;
-
-Does this regression cause MTU-sized VLAN-tagged frames to be dropped by the
-hardware?
-
-By limiting the frame size to ETH_HLEN + dev->mtu, the maximum allowed length
-becomes 1514 bytes for a standard 1500 MTU. An Ethernet frame containing a
-standard 802.1Q VLAN tag and a maximum-sized 1500-byte IP payload requires an
-18-byte L2 header, making the total frame size 1518 bytes (excluding FCS).
-
-Previously, the inclusion of ETH_FCS_LEN inadvertently provided the 4-byte
-headroom needed to accommodate a single VLAN tag. 
-
-Could the configuration explicitly account for VLAN headers using VLAN_ETH_HLEN
-instead?
-
+> diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
+> index c2c32b6833df9..52199f6b39f9b 100644
+> --- a/drivers/net/ethernet/airoha/airoha_ppe.c
+> +++ b/drivers/net/ethernet/airoha/airoha_ppe.c
 [ ... ]
+> @@ -1340,6 +1341,13 @@ static int airoha_ppe_offload_setup(struct airoha_eth *eth)
+>  	if (err)
+>  		goto error_npu_put;
+>  
+> +	/* Wait for NPU PPE configuration to complete */
+> +	err = read_poll_timeout(airoha_fe_rr, val, val, USEC_PER_MSEC,
+> +				100 * USEC_PER_MSEC, false, eth,
+> +				REG_PPE_PPE_FLOW_CFG(0));
+
+If the SoC has multiple PPE instances, is it sufficient to only wait for
+REG_PPE_PPE_FLOW_CFG(0)?
+
+Later in airoha_ppe_hw_init(), the code iterates up to eth->soc->num_ppe,
+initializing all available instances:
+
+drivers/net/ethernet/airoha/airoha_ppe.c:airoha_ppe_hw_init() {
+    ...
+	for (i = 0; i < eth->soc->num_ppe; i++) {
+		...
+		airoha_fe_wr(eth, REG_PPE_TB_BASE(i),
+			     ppe->foe_dma + sram_tb_size);
+    ...
+}
+
+If we only poll PPE 0, could the driver race with the NPU firmware's
+initialization of subsequent PPEs?
+
+Additionally, does this poll condition properly ensure the hardware is ready?
+Since the break condition is simply `val`, it exits immediately if the register
+contains any non-zero value.
+
+If the register retains a non-zero value from a previous session (like across
+driver reloads), or if an unclocked domain returns 0xFFFFFFFF, this poll might
+succeed immediately and bypass the wait.
+
+Could we clear the register before polling, or wait for a specific bit instead?
+
+> +	if (err)
+> +		goto error_npu_put;
+> +
+>  	ppe_num_stats_entries = airoha_ppe_get_total_num_stats_entries(ppe);
 
