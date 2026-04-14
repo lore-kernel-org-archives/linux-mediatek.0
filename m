@@ -4,63 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FD7BF531F1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2026 06:51:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E23DED7B87
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2026 08:30:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=mFcskcNPjj+if0QeGUzgLxPT9AMobbo/E+QtnQWUyAo=; b=ZeMXRi1KcN/TNDcywwUK8JLIqg
-	y23Bx2xZkZ5m9eEttFKBKYgYlFzC3Ku9/ak4XAU3UKsZGwwGTGseXEk8OvhxJxoDEh/k2L/f0db4c
-	BNLk2lkiv7giovM1zySi5MsvuzrRuDSjkD22MnHtIHd07Q+xDaKosV3to1ukQyoyy2Lz5/r/Lp8F2
-	3wQ9aNwJxVVc2m0/m1yReF1rrdRtCe6ghXH9uQAbR6IufjjKnkgYaj4qE/M/Xi7lMJId38aDWghq6
-	6cBRxwz1l2mUvnIYrnJrTjxBRLTbs0Mt8H4CfNmDjY6yk65hidWIdi4UV1xZlpygf96HTAmTJ3SVM
-	goh/v+PQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:content-type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DigNPQlaEMr+fYZbjylCUqlUkj2+OF9+JpKPFIeOgh0=; b=BJVhdSbW/wjut4ExEJahanZlE9
+	19q7EeVyW/mOcyreScHaXIejbmAuxoNkN10jHGrwzNAVc1erVxnVVRcw7tRy22xCAdOI4xeVV+Q6a
+	tJep10CrsWBl7X80QRi4hMz3oB7KIZpNWFrOMTtZG43Nk3EJ8Ww1l1MDHFXDF2bMf25WDlENJpD3S
+	baj3vpyazxv+IpyzL8JiA6sge4k/Ql+C76Gv8xmnvTTRSykgN+HeCCnzU/Q2BIc3HXfyDlp4G4NLj
+	fqW5xGjN3OeUq4vAovxFOdV6GX8wNOQBCHr/nEGnqY8Q6ddMGG0AQkgSCY1zcMaSVxl0e4SQsyWAz
+	z2u0OSWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCXc4-0000000GrkE-0RbH;
-	Tue, 14 Apr 2026 06:51:08 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wCZAb-0000000GyWQ-44Uz;
+	Tue, 14 Apr 2026 08:30:53 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCXc1-0000000Grjd-3NNU;
-	Tue, 14 Apr 2026 06:51:05 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4103A60126;
-	Tue, 14 Apr 2026 06:51:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6FD8EC19425;
-	Tue, 14 Apr 2026 06:51:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776149465;
-	bh=HZPV2FvJj6UhRn6Km5MahgpIDMpyNJ7h1uzc2GBuNik=;
-	h=From:Date:Subject:To:Cc:From;
-	b=tvZUHNW6QwYV21WEXKJLZ3MqI+TIicgCniMqgtVY0ou5dJL2snWpFw3cNucFcF66M
-	 gxa6sIw2keT+r1zwKWLiMltTMuFA+9tsbOZXz3Mz14zdhQjvBPjqxsmuJP3wkHCbCJ
-	 I/9A41HV0c9ij3CN44cpXxa2YVN6MCVky/VcJfpOV6W1wwMeq1/3cb/gJHBLUoRDn5
-	 8IhyClnaRQ3nueHqNvjAsJNT02dSBHlzH9GP5yFwKgKfvdg63lAYcSzN5SPjKhiP41
-	 e/1BRjYsOuRsqkxGiO3eNMnkCoc4OY9NCdl0F2YoOmv9OoKqX1q4xyB3iEX4OyZ5+I
-	 iFl7/UuUubGQw==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 14 Apr 2026 08:50:52 +0200
-Subject: [PATCH net v2] net: airoha: Add missing bits in
- airoha_qdma_cleanup_tx_queue()
+	id 1wCZAZ-0000000GyVD-2l3I
+	for linux-mediatek@lists.infradead.org;
+	Tue, 14 Apr 2026 08:30:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1776155449;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=DigNPQlaEMr+fYZbjylCUqlUkj2+OF9+JpKPFIeOgh0=;
+	b=ai+Li8cMXRIAVge8nFSbX2TiLEXDLOIKZO9ojB/GYr6gQJL3RRNMjlV6ZZGDMSepPVD/Dj
+	xZq3vsKY9vonll+wZrh5D/f0oppA0+x6eSAT77onnlB4qLIFFwQw59oppTOOVqNzgb3Xba
+	mdPmH+Jk4GifRDHYM25wwtQ4Y1QExMQ=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-654-9yk3hmX1Pz2SUi4zHch4vw-1; Tue,
+ 14 Apr 2026 04:30:47 -0400
+X-MC-Unique: 9yk3hmX1Pz2SUi4zHch4vw-1
+X-Mimecast-MFC-AGG-ID: 9yk3hmX1Pz2SUi4zHch4vw_1776155446
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 0BF5419560A7;
+	Tue, 14 Apr 2026 08:30:46 +0000 (UTC)
+Received: from gerbillo.redhat.com (unknown [10.44.49.51])
+	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 1FBA919560AB;
+	Tue, 14 Apr 2026 08:30:42 +0000 (UTC)
+From: Paolo Abeni <pabeni@redhat.com>
+To: lorenzo@kernel.org
+Cc: edumazet@google.com,
+	kuba@kernel.org,
+	davem@davemloft.net,
+	netdev@vger.kernel.org,
+	andrew+netdev@lunn.ch,
+	pabeni@redhat.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [net-next] net: airoha: Wait for TX to complete in airoha_dev_stop()
+Date: Tue, 14 Apr 2026 10:29:49 +0200
+Message-ID: <20260414082949.104611-1-pabeni@redhat.com>
+In-Reply-To: <20260411-airoha-fix-ndo_stop-v1-1-caddaa181739@kernel.org>
+References: <20260411-airoha-fix-ndo_stop-v1-1-caddaa181739@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260414-airoha_qdma_cleanup_tx_queue-fix-net-v2-1-875de57cc022@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/5WNQQ6CMBREr0L+2pp+EIuuvIchTYVfaMQWWiAY0
- rvbcAOXb2Yyb4dA3lCAe7aDp9UE42yC/JRB0yvbETNtYsh5fuUX5EwZ73olp/ajZDOQssso501
- OCy3EtNmYpZndikKUuiSquIZ0NXpK1aF5QhpAncLehNn576Fe8aj+s6zIkL0ECmwqjSSqx5u8p
- eHsfAd1jPEHqO0DYN4AAAA=
-X-Change-ID: 20260410-airoha_qdma_cleanup_tx_queue-fix-net-93375f5ee80f
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-X-Mailer: b4 0.14.3
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: txVWSZHtq14z-1P4FjHDvZMO5fuyQHDSvP_FYlsz914_1776155446
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+content-type: text/plain; charset="US-ASCII"; x-default=true
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260414_013051_770017_B1E617E5 
+X-CRM114-Status: GOOD (  17.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,119 +91,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Similar to airoha_qdma_cleanup_rx_queue(), reset DMA TX descriptors in
-airoha_qdma_cleanup_tx_queue routine. Moreover, reset TX_DMA_IDX to
-TX_CPU_IDX to notify the NIC the QDMA TX ring is empty.
+This is an AI-generated review of your patch. The human sending this
+email has considered the AI review valid, or at least plausible.
 
-Fixes: 23020f0493270 ("net: airoha: Introduce ethernet support for EN7581 SoC")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+For local reproduction steps see https://netdev-ai.bots.linux.dev/ai-local.html
 ---
-Changes in v2:
-- Move q->ndesc initialization at end of airoha_qdma_init_tx routine in
-  order to avoid any possible NULL pointer dereference in
-  airoha_qdma_cleanup_tx_queue()
-- Check if q->tx_list is empty in airoha_qdma_cleanup_tx_queue()
-- Link to v1: https://lore.kernel.org/r/20260410-airoha_qdma_cleanup_tx_queue-fix-net-v1-1-b7171c8f1e78@kernel.org
----
- drivers/net/ethernet/airoha/airoha_eth.c | 41 ++++++++++++++++++++++++++------
- 1 file changed, 34 insertions(+), 7 deletions(-)
+net: airoha: Wait for TX to complete in airoha_dev_stop()
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 9e995094c32a..3c1a2bc68c42 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -966,27 +966,27 @@ static int airoha_qdma_init_tx_queue(struct airoha_queue *q,
- 	dma_addr_t dma_addr;
- 
- 	spin_lock_init(&q->lock);
--	q->ndesc = size;
- 	q->qdma = qdma;
- 	q->free_thr = 1 + MAX_SKB_FRAGS;
- 	INIT_LIST_HEAD(&q->tx_list);
- 
--	q->entry = devm_kzalloc(eth->dev, q->ndesc * sizeof(*q->entry),
-+	q->entry = devm_kzalloc(eth->dev, size * sizeof(*q->entry),
- 				GFP_KERNEL);
- 	if (!q->entry)
- 		return -ENOMEM;
- 
--	q->desc = dmam_alloc_coherent(eth->dev, q->ndesc * sizeof(*q->desc),
-+	q->desc = dmam_alloc_coherent(eth->dev, size * sizeof(*q->desc),
- 				      &dma_addr, GFP_KERNEL);
- 	if (!q->desc)
- 		return -ENOMEM;
- 
--	for (i = 0; i < q->ndesc; i++) {
-+	for (i = 0; i < size; i++) {
- 		u32 val = FIELD_PREP(QDMA_DESC_DONE_MASK, 1);
- 
- 		list_add_tail(&q->entry[i].list, &q->tx_list);
- 		WRITE_ONCE(q->desc[i].ctrl, cpu_to_le32(val));
- 	}
-+	q->ndesc = size;
- 
- 	/* xmit ring drop default setting */
- 	airoha_qdma_set(qdma, REG_TX_RING_BLOCKING(qid),
-@@ -1051,13 +1051,17 @@ static int airoha_qdma_init_tx(struct airoha_qdma *qdma)
- 
- static void airoha_qdma_cleanup_tx_queue(struct airoha_queue *q)
- {
--	struct airoha_eth *eth = q->qdma->eth;
--	int i;
-+	struct airoha_qdma *qdma = q->qdma;
-+	struct airoha_eth *eth = qdma->eth;
-+	int i, qid = q - &qdma->q_tx[0];
-+	struct airoha_queue_entry *e;
-+	u16 index = 0;
- 
- 	spin_lock_bh(&q->lock);
- 	for (i = 0; i < q->ndesc; i++) {
--		struct airoha_queue_entry *e = &q->entry[i];
-+		struct airoha_qdma_desc *desc = &q->desc[i];
- 
-+		e = &q->entry[i];
- 		if (!e->dma_addr)
- 			continue;
- 
-@@ -1067,8 +1071,31 @@ static void airoha_qdma_cleanup_tx_queue(struct airoha_queue *q)
- 		e->dma_addr = 0;
- 		e->skb = NULL;
- 		list_add_tail(&e->list, &q->tx_list);
-+
-+		/* Reset DMA descriptor */
-+		WRITE_ONCE(desc->ctrl, 0);
-+		WRITE_ONCE(desc->addr, 0);
-+		WRITE_ONCE(desc->data, 0);
-+		WRITE_ONCE(desc->msg0, 0);
-+		WRITE_ONCE(desc->msg1, 0);
-+		WRITE_ONCE(desc->msg2, 0);
-+
- 		q->queued--;
- 	}
-+
-+	if (!list_empty(&q->tx_list)) {
-+		e = list_first_entry(&q->tx_list, struct airoha_queue_entry,
-+				     list);
-+		index = e - q->entry;
-+	}
-+	/* Set TX_DMA_IDX to TX_CPU_IDX to notify the hw the QDMA TX ring is
-+	 * empty.
-+	 */
-+	airoha_qdma_rmw(qdma, REG_TX_CPU_IDX(qid), TX_RING_CPU_IDX_MASK,
-+			FIELD_PREP(TX_RING_CPU_IDX_MASK, index));
-+	airoha_qdma_rmw(qdma, REG_TX_DMA_IDX(qid), TX_RING_DMA_IDX_MASK,
-+			FIELD_PREP(TX_RING_DMA_IDX_MASK, index));
-+
- 	spin_unlock_bh(&q->lock);
- }
- 
+Wait for TX to complete in airoha_dev_stop routine before stopping the
+TX DMA and run airoha_qdma_cleanup_tx_queue routine. Moreover,
+start/stop TX/RX NAPIs in ndo_open()/ndo_stop() callbacks in order to be
+sure the TX NAPIs have completed before stopping the TX DMA engine in
+airoha_dev_stop routine.
 
----
-base-commit: 2cd7e6971fc2787408ceef17906ea152791448cf
-change-id: 20260410-airoha_qdma_cleanup_tx_queue-fix-net-93375f5ee80f
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+> index 8e4b043af4bc..9e40c8f375c1 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
 
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+[ ... ]
+
+> @@ -1684,18 +1686,26 @@ static int airoha_dev_stop(struct net_device *dev)
+>  	struct airoha_qdma *qdma = port->qdma;
+>  	int i, err;
+>
+> -	netif_tx_disable(dev);
+>  	err = airoha_set_vip_for_gdm_port(port, false);
+>  	if (err)
+>  		return err;
+>
+> -	for (i = 0; i < ARRAY_SIZE(qdma->q_tx); i++)
+> -		netdev_tx_reset_subqueue(dev, i);
+> -
+>  	airoha_set_gdm_port_fwd_cfg(qdma->eth, REG_GDM_FWD_CFG(port->id),
+>  				    FE_PSE_PORT_DROP);
+>
+> +	netif_tx_disable(dev);
+>  	if (atomic_dec_and_test(&qdma->users)) {
+> +		u32 val;
+> +
+> +		/* Wait for TX to complete */
+> +		err = read_poll_timeout(airoha_qdma_rr, val,
+> +					!(val & GLOBAL_CFG_TX_DMA_BUSY_MASK),
+> +					USEC_PER_MSEC, 100 * USEC_PER_MSEC,
+> +					false, qdma, REG_QDMA_GLOBAL_CFG);
+> +		if (err)
+> +			return err;
+>                   ^^^^^^^^^^
+
+Can this leave the device in an inconsistent state? When read_poll_timeout()
+fails (TX DMA busy for more than 100ms), airoha_dev_stop() returns an error
+immediately. However, atomic_dec_and_test(&qdma->users) has already
+decremented qdma->users to 0, but airoha_qdma_stop_napi() was never called,
+so all NAPIs remain enabled.
+
+The networking core (__dev_close_many in net/core/dev.c) ignores the
+ndo_stop return value and marks the device as down regardless. When the
+device is later brought up again, airoha_dev_open() sees atomic_fetch_inc()
+return 0 (old value) and calls airoha_qdma_start_napi() -> napi_enable(),
+which hits BUG_ON(!test_bit(NAPI_STATE_SCHED, &val)) in napi_enable_locked()
+because the NAPI was never disabled.
+
+The early return also skips the netdev_tx_reset_subqueue() calls at the end
+of the function.
+
+Should the code either continue with cleanup on timeout (don't return), or
+ensure NAPI and DMA state are properly cleaned up before returning?
+
+> +
+> +		airoha_qdma_stop_napi(qdma);
+>  		airoha_qdma_clear(qdma, REG_QDMA_GLOBAL_CFG,
+>  				  GLOBAL_CFG_TX_DMA_EN_MASK |
+>  				  GLOBAL_CFG_RX_DMA_EN_MASK);
+
+[ ... ]
 
 
