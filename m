@@ -4,60 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C27FED7B8D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2026 08:57:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29E8EED7B9A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2026 10:33:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OnxSsdQSwxp8X97PpUGHLpgxiLqFzOUXvBqz3/GWOfI=; b=nGWhhO4XcCVYzpPsuqO43lWVWF
-	8ui9zUhCULCrkPbcL330+HHuwx39P+gKpcKHl9j8WRVzBXPa8zWBCe95meJZqW6YODDxQ4N0T1gUF
-	idpL+Rwv23fn/oY8RQQqERbtjUpYyVKUwL0O6yl+o2WdrY1Z43o8k5RI55Roq4nJnA5qjooXi60on
-	V5VlA4m5OErEkSAl9M/EwPq5X6gcEcT/BWkGqjQACQAHrG0u1rpLMPky2TgZP3wNLnUKR7sD2aKTS
-	z19hZio81uiMNRICnEjd41OKLWv+TBB/nPoifPN4XQXAViZ9vmu4OicoL8FIW+FsL3yrXAhuHSVaH
-	UW1Ev15Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ToiL0nfFXeNTtllMSPT8ombniIvaY4M3+Mwkw7pu7bY=; b=QO7elHk6BOa+Rq
+	F2YuQQQjrIEB0T8trUE0wAWE0QsEu2SDGMhMMlfl0avp3mEg9mFUHkyDBEtHpuv+LycaeTdC8oLgL
+	fTTmmLUxGHU91Z/s3HeMaJz6iQJUxnAqw0n7+g1a5C67ZUdkX+3ifN+qtsGnsWrYseBc+1KXKCHAJ
+	wN4ZM4aPqnnusK/eysz4q8JdPLtH6+EbPutCMdTgsiWoOAULR+gmg/dL2Kj4x4defEwG67KI5NHqI
+	g+Xu2lk6KcaL5BGPYTaMlobIW6n3NWK7yKlamGxb2uukWRWEdwyGKwOGfiFwzZshYs1rRzBYioDoH
+	YJlMJ+JZrIEvUNnTNhkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCZaX-0000000H1RA-43hN;
-	Tue, 14 Apr 2026 08:57:41 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wCb5c-0000000H9VJ-0RS0;
+	Tue, 14 Apr 2026 10:33:52 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCZaW-0000000H1Qn-1OPm;
-	Tue, 14 Apr 2026 08:57:40 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 65B3A60018;
-	Tue, 14 Apr 2026 08:57:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BDFF1C19425;
-	Tue, 14 Apr 2026 08:57:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776157059;
-	bh=lUWPEDw2DjZ1dgMC7s3MwDU2q8Tz/2D26MRcskvU9JI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=FOVJBdYSJAB4kqVME5GuYkdjjQ8r+wmfye6NPtk12e8D+nABK/hxsEt4h51jSEcxa
-	 4/+v4ur5cxjQdwXZW9J26Q2lfg77+dChh3lixbrU0nKj3EstT/v8xUFo7hUezBBcZ8
-	 9pUuzL2Ov/xkbuwONlXp42lJcAgUG1XYPquH78mBWAR5ujg4/WK5y2VbkMFsC0L+Ms
-	 nhFAMVJoChi8GbN7MfWehrngrSujPnz8e/5t8Qt4NLrki2wax/GijSEzDZhP2Kn99C
-	 wS7DAT0lnYKVKAL5OB+oKAghDnW7q5NSCSp/5SF/2cBVEBWMc/uYfyUtKQfgjZOEMg
-	 i1rZOhnl20SFQ==
-Date: Tue, 14 Apr 2026 10:57:36 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Paolo Abeni <pabeni@redhat.com>
-Cc: edumazet@google.com, kuba@kernel.org, davem@davemloft.net,
-	netdev@vger.kernel.org, andrew+netdev@lunn.ch,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [net-next] net: airoha: Wait for TX to complete in
- airoha_dev_stop()
-Message-ID: <ad4BgCGNYjYACUdv@lore-desk>
-References: <20260411-airoha-fix-ndo_stop-v1-1-caddaa181739@kernel.org>
- <20260414082949.104611-1-pabeni@redhat.com>
+	id 1wCb5Z-0000000H9TJ-3J7C;
+	Tue, 14 Apr 2026 10:33:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1776162825;
+	bh=peArRsgSCdj7tCOZzX4QtAqjUdjIstvhefAfXi/8La8=;
+	h=From:Subject:Date:To:Cc:From;
+	b=JO0JIPLxnzATb3XL7LLUAIMuCPWiB4uDlrtuMDy8pkPSk08izy7xNRM6+a1WDgBoF
+	 Ff+48Qxg33kZg8++zzDQsy7hHMZsEfuAO7TvFkpmccR+Fvu/1ikEXWwFWToYFazr8p
+	 PsObnyrPPbl5sY1ZnnG6WzcKvFd6xFOgr732TdqqnIop+1rVubZ5t1rrtSuPi7baeZ
+	 QnaAc3KOCUYP8b9dBCDvX4Zhio6Ud3RtlO5ozS0d8K7TpmsGb2a8kru2OuOLR83zl4
+	 6sSat6EgsCsrd72VY3qfu7OGh9zUtB8tHrG9QCqYgBp946p2oFg4Oq6Ajc4c6KfURa
+	 g/gw16G01Ky2A==
+Received: from yukiji.home (unknown [100.64.0.131])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0A89717E0EB6;
+	Tue, 14 Apr 2026 12:33:44 +0200 (CEST)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Subject: [PATCH 0/3] Mediatek Genio 510/700-EVK: add CPU power supplies
+Date: Tue, 14 Apr 2026 12:33:30 +0200
+Message-Id: <20260414-mtk-g510-700-cpu-supplies-v1-0-3b8313e5ca8d@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="eigqXCj77aqg9JTa"
-Content-Disposition: inline
-In-Reply-To: <20260414082949.104611-1-pabeni@redhat.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/y2NywqDMBBFf0Vm3YHEqin+SnER09EObWLMowjiv
+ zfULs+Fe84OkQJThL7aIdCHIy+ugLxUYJ7azYT8KAy1qDvRyCva9MK5lQKVEGh8xpi9fxcFNlK
+ rm+7GSaoWyt8Hmnj7ue/DyYHWXBLpHGHUkdAs1nLqK0dbwn9GwHAcX6sad3ecAAAA
+X-Change-ID: 20260413-mtk-g510-700-cpu-supplies-41a78a6bf175
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1776162824; l=1365;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=peArRsgSCdj7tCOZzX4QtAqjUdjIstvhefAfXi/8La8=;
+ b=NXk+aPBqN3LNQq+MyWv/ARR7Zmgai7cJuc9VV97YVOvAoxADMXzwzGDLeyBqBj1iszsiacPFG
+ dOyhAKK8+OVDKdRepioQuYsNVf6/XKPQKBty+njlyaNeyLYw7+rvZ8s
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260414_033350_008313_BD97CC2E 
+X-CRM114-Status: UNSURE (   8.67  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,113 +88,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This series adds for the Mediatek Genio 510-EVK (MT8370) and 700-EVK
+(MT8390) boards the CPU power supply definitions in their devicetree
+that are missing for all their CPU cores.
 
---eigqXCj77aqg9JTa
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On the boards, the big core power is supplied by a MT6319 (sub PMIC)
+and little core power by a MT6365 (main PMIC).
 
-> This is an AI-generated review of your patch. The human sending this
-> email has considered the AI review valid, or at least plausible.
->=20
-> For local reproduction steps see https://netdev-ai.bots.linux.dev/ai-loca=
-l.html
-> ---
-> net: airoha: Wait for TX to complete in airoha_dev_stop()
->=20
-> Wait for TX to complete in airoha_dev_stop routine before stopping the
-> TX DMA and run airoha_qdma_cleanup_tx_queue routine. Moreover,
-> start/stop TX/RX NAPIs in ndo_open()/ndo_stop() callbacks in order to be
-> sure the TX NAPIs have completed before stopping the TX DMA engine in
-> airoha_dev_stop routine.
->=20
-> > diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/eth=
-ernet/airoha/airoha_eth.c
-> > index 8e4b043af4bc..9e40c8f375c1 100644
-> > --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> > +++ b/drivers/net/ethernet/airoha/airoha_eth.c
->=20
-> [ ... ]
->=20
-> > @@ -1684,18 +1686,26 @@ static int airoha_dev_stop(struct net_device *d=
-ev)
-> >  	struct airoha_qdma *qdma =3D port->qdma;
-> >  	int i, err;
-> >
-> > -	netif_tx_disable(dev);
-> >  	err =3D airoha_set_vip_for_gdm_port(port, false);
-> >  	if (err)
-> >  		return err;
-> >
-> > -	for (i =3D 0; i < ARRAY_SIZE(qdma->q_tx); i++)
-> > -		netdev_tx_reset_subqueue(dev, i);
-> > -
-> >  	airoha_set_gdm_port_fwd_cfg(qdma->eth, REG_GDM_FWD_CFG(port->id),
-> >  				    FE_PSE_PORT_DROP);
-> >
-> > +	netif_tx_disable(dev);
-> >  	if (atomic_dec_and_test(&qdma->users)) {
-> > +		u32 val;
-> > +
-> > +		/* Wait for TX to complete */
-> > +		err =3D read_poll_timeout(airoha_qdma_rr, val,
-> > +					!(val & GLOBAL_CFG_TX_DMA_BUSY_MASK),
-> > +					USEC_PER_MSEC, 100 * USEC_PER_MSEC,
-> > +					false, qdma, REG_QDMA_GLOBAL_CFG);
-> > +		if (err)
-> > +			return err;
-> >                   ^^^^^^^^^^
->=20
-> Can this leave the device in an inconsistent state? When read_poll_timeou=
-t()
-> fails (TX DMA busy for more than 100ms), airoha_dev_stop() returns an err=
-or
-> immediately. However, atomic_dec_and_test(&qdma->users) has already
-> decremented qdma->users to 0, but airoha_qdma_stop_napi() was never calle=
-d,
-> so all NAPIs remain enabled.
->=20
-> The networking core (__dev_close_many in net/core/dev.c) ignores the
-> ndo_stop return value and marks the device as down regardless. When the
-> device is later brought up again, airoha_dev_open() sees atomic_fetch_inc=
-()
-> return 0 (old value) and calls airoha_qdma_start_napi() -> napi_enable(),
-> which hits BUG_ON(!test_bit(NAPI_STATE_SCHED, &val)) in napi_enable_locke=
-d()
-> because the NAPI was never disabled.
->=20
-> The early return also skips the netdev_tx_reset_subqueue() calls at the e=
-nd
-> of the function.
->=20
-> Should the code either continue with cleanup on timeout (don't return), or
-> ensure NAPI and DMA state are properly cleaned up before returning?
+Patch 1 adds the MT6319 PMIC support that was not yet enabled for these
+boards.
+Patch 2 adds the CPU power supplies definitions that are common to both
+Genio 510 and 700 EVK boards, and patch 3 adds the Genio 700-EVK
+specific ones.
 
-ack, I will fix it in v2.
+The series has been tested on Genio 510-EVK board with a kernel based
+on linux-next (tag: next-20260410).
 
-Regards,
-Lorenzo
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+---
+Louis-Alexis Eyraud (3):
+      arm64: dts: mediatek: mt8390-genio-common: add MT6319 PMIC support
+      arm64: dts: mediatek: mt8390-genio-common: add CPU power supplies
+      arm64: dts: mediatek: mt8390-genio-700-evk: add specific CPU power supplies
 
->=20
-> > +
-> > +		airoha_qdma_stop_napi(qdma);
-> >  		airoha_qdma_clear(qdma, REG_QDMA_GLOBAL_CFG,
-> >  				  GLOBAL_CFG_TX_DMA_EN_MASK |
-> >  				  GLOBAL_CFG_RX_DMA_EN_MASK);
->=20
-> [ ... ]
->=20
+ .../boot/dts/mediatek/mt8390-genio-700-evk.dts     |  7 +++
+ .../boot/dts/mediatek/mt8390-genio-common.dtsi     | 68 ++++++++++++++++++++++
+ 2 files changed, 75 insertions(+)
+---
+base-commit: f244905cd8cff7a7249cd3dac8a366e02d61ad4f
+change-id: 20260413-mtk-g510-700-cpu-supplies-41a78a6bf175
 
---eigqXCj77aqg9JTa
-Content-Type: application/pgp-signature; name=signature.asc
+Best regards,
+-- 
+Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCad4BgAAKCRA6cBh0uS2t
-rNmgAP9RniNbQ5atnC99/hDeG+1/vN79rvITBQQqpU0PDLwR5AEA5/vQe6+SQyC8
-86Sc7ARxKYPKvkm2qY8grGKYTvVMAgY=
-=qwvR
------END PGP SIGNATURE-----
-
---eigqXCj77aqg9JTa--
 
