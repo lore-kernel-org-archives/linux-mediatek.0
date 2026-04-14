@@ -4,63 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6903EF9D0D2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2026 14:09:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE702F9D0ED
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2026 18:40:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=v21dmV+lYuasVw3fNqFyvXKdZD52UiXwkLFP25P9nLg=; b=aYS9+PRbve983Q576LA2bknwPv
-	/HQJRnKZdSz9ZZ8xERIhXybWfk8sDvPW0qw7DtdfM1VE9314tNOkOjfLfZt0gJOf9y2nIeyP3UN/l
-	TsULfN+iq7TFhABaq7BWH191yfv0SESmnUlU2kLV+4hYL/rZu49donT4LuGTnzjTi4/2bmcGqI01+
-	E33ndu9m+GT0NbZNejbY7skQpLvbnCwolcjHxNHTMnC9Y8AG0X5ueFSn06nFYbr+tciOWjUWXH09I
-	QSt1dj/PRQO2nqG0zHU+Qm0OirBFZZm3emdNi4PdUdW6GwW7Su5KizU6HGifizLa0Ec/lHfdHhxnw
-	9N7RLP8Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:Subject:
+	Message-ID:Date:From:MIME-Version:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=cp+RfCU2cxNRTrslQeqfjoL+Wugk/C2lusZI0u6wgbA=; b=WNnUDMv4p/mluZd3vw3p6U2IjU
+	8LN3D26d/PGeh5tA6JrXnBcmuzRmXRqzUeXpisgWXoMFgi8HP0EGxAv7VLjp5robJUS1pIAuQqvPe
+	MrmVT3v66X5NijVydUYdw+dbnEzvh6BfgmqcIXIOcCw5iWN6pCVrh2o25vjFwz2b546fjT6jE9qdb
+	9x6lOOq7Xyr/tz/rmDUCAyakPAa3BqHCA0QM5vepXzF3vUCkjqSYY9dJu6CP0qzDi+qrxVarw+zAw
+	zVxpdMxxFVCiZTX6CLRblEOliZZE94fV7DRGb1HcBWM2+eiXTVTur/mBPdYgewl+oLLKH1I28SJ6E
+	olOlfZzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCeRw-0000000HQcm-1nqK;
-	Tue, 14 Apr 2026 14:09:08 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wCiga-000000006qy-3Apk;
+	Tue, 14 Apr 2026 18:40:32 +0000
+Received: from mail-qv1-xf2a.google.com ([2607:f8b0:4864:20::f2a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCeRu-0000000HQcR-381U;
-	Tue, 14 Apr 2026 14:09:06 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 682C360018;
-	Tue, 14 Apr 2026 14:09:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BFD7DC19425;
-	Tue, 14 Apr 2026 14:09:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776175744;
-	bh=ZxZWJI8qqfzCDhQbBvHw11oPHk45TsukiZ+I1BwbZBo=;
-	h=From:Date:Subject:To:Cc:From;
-	b=U1EaK8uaOIEaRDvFnhCDxrClEYZPnNEOObNFPqWT38CCV6LpArpBW27pHOhjs8xpY
-	 9lXg5oT+/wGbyZpZw80tVHLODI0PsOqoGSqcR0evklDSv5shC+hy09rAu6+VZ0T4sg
-	 AZtMq3d2k+CgLkNFqyUydTu8MI5vYw35ntTgQHFoH5TdQSprjx7NoN4f9gmLDEyXyC
-	 HulQcpKv3bliqEowIIOs83KiyOPtgKbm5oUih1CfvkTn6DHpiSioU9psb7q6RZow0G
-	 7Pgq8z5T6EtGI9NmKq6gvbAI5LgKuYQJyPFoxBSGhp2ld0E6vjQa+QGR86icTsJqCi
-	 li+nRO3EMBnyA==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 14 Apr 2026 16:08:52 +0200
-Subject: [PATCH net v2] net: airoha: Wait for NPU PPE configuration to
- complete in airoha_ppe_offload_setup()
+	id 1wCigX-000000006qe-1DcV
+	for linux-mediatek@lists.infradead.org;
+	Tue, 14 Apr 2026 18:40:30 +0000
+Received: by mail-qv1-xf2a.google.com with SMTP id 6a1803df08f44-8a151012558so71274486d6.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 14 Apr 2026 11:40:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1776192027; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Gw1HUW2bInpEX8i4P1yU+kTsYQ2qWfZgtlFjYYo14sz0Ce8wyv0WKuUBMbP2O4o7ib
+         ul4qSWZjqqWzkAjoIAlnPsq9TgGXtEQttdMuhqFtiRHpvq2vdEmzwL2pWyLsDvLvW3Bv
+         ITC1memH/ge1aoCRqpd/KISoxGkD9j/bBu0jU7PWIyrKeW0Y2Yejr2yC4kZ3jHP4LByi
+         Pqwm3CWzUVbNtenQUDiATQnzBhP6m3UIJ+ya7npFMxkYlPi68eWQKNBQekvYA8+NGgLk
+         /R+Mmh92rxPRWwAr4VGChY/bjWimscgYjgrWSKxZYNOIWE+7XWts39DPELSGn8awNwmi
+         W9GA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=cp+RfCU2cxNRTrslQeqfjoL+Wugk/C2lusZI0u6wgbA=;
+        fh=7q9slQwJZ94/e6e481MFJgYPeNForZhGYqL2OGSLeAY=;
+        b=MwG4KGXyKH26+ewj6Q6T52ITGbmvcywqUlFsd6uNPNbYxLOHIh+CPLKYrmANqlPl2c
+         dvRzivDBPqXgtCA5fWB4Ydyi3vkftO7dN8bTqJW9iPcH+YokymthScyke6igPPQPGOhD
+         h5WQFF2KmEttGhO8ccYhwZp6xeJvaaMDZr8/TrpK2JEBOEfpVkM+lQSAc0FIXIHszUiz
+         SltfHk3wVDvgRFKNV4BDQqS5iV9RzdzhEJ7ohbxK4nFUtZ763S6ldQ+v0LzFi5spxj2n
+         jFPwuX+j74WIcYME/UTNpZPotkch3TpcVuam1rp02I2Jb4lmEcWIAXwSARErcFMV/Uk9
+         ZCRA==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=jqluv-com.20251104.gappssmtp.com; s=20251104; t=1776192027; x=1776796827; darn=lists.infradead.org;
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=cp+RfCU2cxNRTrslQeqfjoL+Wugk/C2lusZI0u6wgbA=;
+        b=W/800bsts9AKSrHddvFZolmeAeO3wRvKH1Ishb7ss5djCGinIxu9m/jc5mjtoOdXke
+         0R11hz9mOPUyU2bZcdAue61OJUqi/asMURs3TW0Toe9WlriDrZkWJmLs4uUE+2EGvmCM
+         7DkG4GPh8C/jNiy/i8T444SE0OZDC967jcPcoSQMzOA7yBAVCLXav6Yg2ZkX6I17Rf/j
+         AlZ/y1XgnLwb3axzqjvPNT1Fl6LnIp/5Dsi2a3nQK3oCz3FUICgz2vEzt4T5NJginlg5
+         m+6i79N7oHRUkvadap64VyJqvTQoqT6ly04L2xPVs3Ve18XytSuIkch7TN1/bEj2QFKs
+         Y/WQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1776192027; x=1776796827;
+        h=to:subject:message-id:date:from:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=cp+RfCU2cxNRTrslQeqfjoL+Wugk/C2lusZI0u6wgbA=;
+        b=rkILJEa7YhvkCazLrzaUJ42KLvciaJrBI30EVEaYdZzTxS6gbSs6UykCs9Img4S+wb
+         PaOJtMxi6efriBQow2wU0GBpNi5Sao/vIKonjg8yK11CKuaurid7OJfNLde8oJD2yYxF
+         ZgKNqenTS1f7tK4RcJkwMnVQE/hyMoXGC6wBW5miSgL0CVEhixuGbDt8chaXVz4/y+Ch
+         W+4VZL0MAU0KDyaLK4uiJC4AoiNkBnPkUDKae/vNmX/xTfiZDffDvBGluRqARQ/AxfBt
+         +4PfdKcU84koDUfVR2zyRQHiPLZS7FuHGcfmsl/I4CUd62Xip8xwGtb3+jB8NRrKip++
+         oQcw==
+X-Gm-Message-State: AOJu0Ywx874noc0aPLCmvGrzoGsk+EQ8h89mZRo70Drsnqj5R4tFRqDm
+	xaB+L8AhfteuUlQSFNPy9CHUI8fEoh3rs1pVBnik4gb8hV/aFaOXcVteKH7ZIUHxt933pWIA8dN
+	dc5d8Tor2A1sVuDPR8rTyQfAANTrvo2+HgCn1M67740gH97K02adyxZU6VeJW
+X-Gm-Gg: AeBDievrNg6pEYtIvI3kcjqIL00sDOUAsp2n7BoOmRtt4K6dOhPWQrkXj8oAVO3y4Ra
+	4F2R2AvmvvDlRm/DEbC6vf2yu9K+ZtkC7zkLFFsPs8ndqWWpwvGQCSrI4FuHmTLrysPrZ4u5ZmJ
+	+AlNW9lr5imQDnQUMqyt9p28YlhGA5U8GrkIv23yBwWcbjLoS5KaCx/PmZV8XYq0O+Di80hQ34f
+	rDohjMneljj6ks75q4zUQyCJomagz9kLhnbjLw4EYA28Pvkh/tOWk87gGe3PHH+6kAJTvs42D/Z
+	slOzA/epALD31KI=
+X-Received: by 2002:a05:6214:5294:b0:8ac:b1ad:3a1f with SMTP id
+ 6a1803df08f44-8acb1ad3ecemr127498816d6.35.1776192027124; Tue, 14 Apr 2026
+ 11:40:27 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260414-airoha-wait-for-npu-config-offload-setup-v2-1-5a9bf6d43aee@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/5WNQQ6CMBBFr0Jm7RjagFFX3sOwmNApTCQd0hbUE
- O5uww1cvv/z/9sgcRROcK82iLxKEg0F7KmCfqQwMIorDLa2l7oxFkmijoRvkoxeI4Z5wV6DlwH
- V+0nJYeK8zGhurm5aa8vIQbmbI3v5HKonBM7QlXCUlDV+D/1qjup/02rQoG+4JrLUumv7eHEMP
- J01DtDt+/4DwctuKuYAAAA=
-X-Change-ID: 20260412-airoha-wait-for-npu-config-offload-setup-19d04522412d
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-X-Mailer: b4 0.14.3
+From: Geramy Loveless <gloveless@jqluv.com>
+Date: Tue, 14 Apr 2026 11:40:14 -0700
+X-Gm-Features: AQROBzCUOxlhUBtJqQayNqh6uhvubDwdSfrIH-MpMOSXTtqogPjtlaQcr1s3FBM
+Message-ID: <CAGpo2mcU1qW12Fk69MRW5TCdpKXQ-3hcK+W6-fAJgebsGmkLEg@mail.gmail.com>
+Subject: [Question] mt7925: CSI (Channel State Information) support in STA firmware?
+To: linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260414_114029_612417_C6F15A44 
+X-CRM114-Status: UNSURE (   9.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,75 +108,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order to properly enable flowtable hw offloading, poll
-REG_PPE_FLOW_CFG register in airoha_ppe_offload_setup routine and
-wait for NPU PPE configuration triggered by ppe_init callback to complete
-before running airoha_ppe_hw_init().
+Sorry for the duplicate email I didnt realize there was a mailing list
+for mediatek i got the last mailing list wrong also which created
+another duplicate sorry, anyways to my problem.
 
-Fixes: 00a7678310fe3 ("net: airoha: Introduce flowtable offload support")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
-Changes in v2:
-- Check for both REG_PPE_PPE_FLOW_CFG(0) and REG_PPE_PPE_FLOW_CFG(1) to
-  complete.
-- Link to v1: https://lore.kernel.org/r/20260412-airoha-wait-for-npu-config-offload-setup-v1-1-f4e0aa2a5d85@kernel.org
----
- drivers/net/ethernet/airoha/airoha_ppe.c | 28 ++++++++++++++++++++++++++++
- 1 file changed, 28 insertions(+)
+I'm working on enabling CSI extraction on the MT7925 (Filogic 360,
+PCIe) running as a station. I've built the full kernel-side
+infrastructure (vendor netlink, ring buffer, debugfs, event handlers)
+and have been testing against the stock firmware:
 
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index 62cfffb4f0e5..684c8ae9576f 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -1335,6 +1335,29 @@ static struct airoha_npu *airoha_ppe_npu_get(struct airoha_eth *eth)
- 	return npu;
- }
- 
-+static int airoha_ppe_wait_for_npu_init(struct airoha_eth *eth)
-+{
-+	int err;
-+	u32 val;
-+
-+	/* PPE_FLOW_CFG default register value is 0. Since we reset FE
-+	 * during the device probe we can just check the configured value
-+	 * is not 0 here.
-+	 */
-+	err = read_poll_timeout(airoha_fe_rr, val, val, USEC_PER_MSEC,
-+				100 * USEC_PER_MSEC, false, eth,
-+				REG_PPE_PPE_FLOW_CFG(0));
-+	if (err)
-+		return err;
-+
-+	if (airoha_ppe_is_enabled(eth, 1))
-+		err = read_poll_timeout(airoha_fe_rr, val, val, USEC_PER_MSEC,
-+					100 * USEC_PER_MSEC, false, eth,
-+					REG_PPE_PPE_FLOW_CFG(1));
-+
-+	return err;
-+}
-+
- static int airoha_ppe_offload_setup(struct airoha_eth *eth)
- {
- 	struct airoha_npu *npu = airoha_ppe_npu_get(eth);
-@@ -1348,6 +1371,11 @@ static int airoha_ppe_offload_setup(struct airoha_eth *eth)
- 	if (err)
- 		goto error_npu_put;
- 
-+	/* Wait for NPU PPE configuration to complete */
-+	err = airoha_ppe_wait_for_npu_init(eth);
-+	if (err)
-+		goto error_npu_put;
-+
- 	ppe_num_stats_entries = airoha_ppe_get_total_num_stats_entries(ppe);
- 	if (ppe_num_stats_entries > 0) {
- 		err = npu->ops.ppe_init_stats(npu, ppe->foe_stats_dma,
+  WIFI_RAM_CODE_MT7925_1_1.bin
+  Version: t-neptune-main-mt7925-2249 (build 2025-12-10)
 
----
-base-commit: b9d8b856689d2b968495d79fe653d87fcb8ad98c
-change-id: 20260412-airoha-wait-for-npu-config-offload-setup-19d04522412d
+I found the connac3 CSI patch for mt7996 in the MediaTek SDK feeds:
 
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+  0095-mtk-mt76-mt7996-Add-connac3-csi-feature.patch
+  (by Chank Chen, Jan 2024)
 
+which defines:
+
+  MCU_UNI_CMD_CSI_CTRL  = 0x4A
+  MCU_UNI_EVENT_CSI_REPORT = 0x4A
+
+  Command tags:
+    UNI_CMD_CSI_STOP          = 0
+    UNI_CMD_CSI_START         = 1
+    UNI_CMD_CSI_SET_FRAME_TYPE = 2
+    ...
+
+I've been sending MCU_WM_UNI_CMD(CSI_CTRL) with tag=1 (CSI_START) to
+the MT7925 firmware. The command returns success (ret=0) but the
+firmware never generates MCU_UNI_EVENT_CSI_REPORT (eid=0x4A) events.
+
+All commands return success but none produce CSI I/Q data events.
+
+My questions:
+
+  1. Does the MT7925 STA firmware (CE variant) have the CSI reporting
+     handler compiled in? Or is CSI only available in AP firmware
+     builds (mt7996, mt7981)?
+
+  2. If CSI is not in the current firmware, is there a firmware build
+     or roadmap that would add MCU_UNI_CMD_CSI_CTRL support for the
+     MT7925 in STA mode?
+
+  3. Is there any alternative path to obtain per-subcarrier channel
+     estimates on the MT7925? (e.g., via ICAP, WiFi Spectrum mode,
+     or PHY register reads)
+
+The kernel-side driver patches are ready and tested. The full
+infrastructure (NL80211 vendor commands, TLV event parsing, ring
+buffer) will work immediately once the firmware starts delivering
+CSI events.
+
+Hardware: ASUS ROG Strix Halo (Ryzen AI Max+ 395)
+WiFi: MT7925 PCIe [14c3:7925]
+Kernel: 7.0-rc7 with mt76 from mainline + CSI patches
+Firmware: WIFI_RAM_CODE_MT7925_1_1.bin v2249
+
+Thanks for any guidance.
+
+Geramy Loveless
 
