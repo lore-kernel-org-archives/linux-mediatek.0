@@ -4,95 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE702F9D0ED
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2026 18:40:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B8C3F9D0F1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2026 21:00:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:Subject:
-	Message-ID:Date:From:MIME-Version:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=cp+RfCU2cxNRTrslQeqfjoL+Wugk/C2lusZI0u6wgbA=; b=WNnUDMv4p/mluZd3vw3p6U2IjU
-	8LN3D26d/PGeh5tA6JrXnBcmuzRmXRqzUeXpisgWXoMFgi8HP0EGxAv7VLjp5robJUS1pIAuQqvPe
-	MrmVT3v66X5NijVydUYdw+dbnEzvh6BfgmqcIXIOcCw5iWN6pCVrh2o25vjFwz2b546fjT6jE9qdb
-	9x6lOOq7Xyr/tz/rmDUCAyakPAa3BqHCA0QM5vepXzF3vUCkjqSYY9dJu6CP0qzDi+qrxVarw+zAw
-	zVxpdMxxFVCiZTX6CLRblEOliZZE94fV7DRGb1HcBWM2+eiXTVTur/mBPdYgewl+oLLKH1I28SJ6E
-	olOlfZzg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PmTL00imlfzfCUKOQTRKBa8T+HUPZbwNdGNPXybgvyY=; b=YbiD5h1BUVzVOidwRZXBteUZ3k
+	OM7gJUO3rA53AvbkEyvOpaY6aRIsS58+KROew1AbXcOF86pJd+a8XCBAot2L+yyCYY1w09wlBoDDx
+	Odov3/SOWWxBYM9DLJexdNpOJKD2xy0zwrmXjJDr2neUnz8LGyKsYitx2citaxI2DS0UxZYMeSl02
+	cYBe1sPVSUnhMYI0N8dnOuEoykqobZ/HgN517iC74IhhmoYFARC9Wq8qmrzhxUmqapSWMrnCnb8Df
+	xzHq5bzKjzzDv8uFj5+DqJJDmopnZd625bq0IJdNrZ1oI8iEgkKeEXqIVEwC9qg+Y/+DU8qnnSMEH
+	eRMqg4yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCiga-000000006qy-3Apk;
-	Tue, 14 Apr 2026 18:40:32 +0000
-Received: from mail-qv1-xf2a.google.com ([2607:f8b0:4864:20::f2a])
+	id 1wCksC-00000000DV7-0vtb;
+	Tue, 14 Apr 2026 21:00:40 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCigX-000000006qe-1DcV
+	id 1wCks9-00000000DUU-0Fpm
 	for linux-mediatek@lists.infradead.org;
-	Tue, 14 Apr 2026 18:40:30 +0000
-Received: by mail-qv1-xf2a.google.com with SMTP id 6a1803df08f44-8a151012558so71274486d6.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 14 Apr 2026 11:40:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1776192027; cv=none;
-        d=google.com; s=arc-20240605;
-        b=Gw1HUW2bInpEX8i4P1yU+kTsYQ2qWfZgtlFjYYo14sz0Ce8wyv0WKuUBMbP2O4o7ib
-         ul4qSWZjqqWzkAjoIAlnPsq9TgGXtEQttdMuhqFtiRHpvq2vdEmzwL2pWyLsDvLvW3Bv
-         ITC1memH/ge1aoCRqpd/KISoxGkD9j/bBu0jU7PWIyrKeW0Y2Yejr2yC4kZ3jHP4LByi
-         Pqwm3CWzUVbNtenQUDiATQnzBhP6m3UIJ+ya7npFMxkYlPi68eWQKNBQekvYA8+NGgLk
-         /R+Mmh92rxPRWwAr4VGChY/bjWimscgYjgrWSKxZYNOIWE+7XWts39DPELSGn8awNwmi
-         W9GA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=cp+RfCU2cxNRTrslQeqfjoL+Wugk/C2lusZI0u6wgbA=;
-        fh=7q9slQwJZ94/e6e481MFJgYPeNForZhGYqL2OGSLeAY=;
-        b=MwG4KGXyKH26+ewj6Q6T52ITGbmvcywqUlFsd6uNPNbYxLOHIh+CPLKYrmANqlPl2c
-         dvRzivDBPqXgtCA5fWB4Ydyi3vkftO7dN8bTqJW9iPcH+YokymthScyke6igPPQPGOhD
-         h5WQFF2KmEttGhO8ccYhwZp6xeJvaaMDZr8/TrpK2JEBOEfpVkM+lQSAc0FIXIHszUiz
-         SltfHk3wVDvgRFKNV4BDQqS5iV9RzdzhEJ7ohbxK4nFUtZ763S6ldQ+v0LzFi5spxj2n
-         jFPwuX+j74WIcYME/UTNpZPotkch3TpcVuam1rp02I2Jb4lmEcWIAXwSARErcFMV/Uk9
-         ZCRA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=jqluv-com.20251104.gappssmtp.com; s=20251104; t=1776192027; x=1776796827; darn=lists.infradead.org;
-        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=cp+RfCU2cxNRTrslQeqfjoL+Wugk/C2lusZI0u6wgbA=;
-        b=W/800bsts9AKSrHddvFZolmeAeO3wRvKH1Ishb7ss5djCGinIxu9m/jc5mjtoOdXke
-         0R11hz9mOPUyU2bZcdAue61OJUqi/asMURs3TW0Toe9WlriDrZkWJmLs4uUE+2EGvmCM
-         7DkG4GPh8C/jNiy/i8T444SE0OZDC967jcPcoSQMzOA7yBAVCLXav6Yg2ZkX6I17Rf/j
-         AlZ/y1XgnLwb3axzqjvPNT1Fl6LnIp/5Dsi2a3nQK3oCz3FUICgz2vEzt4T5NJginlg5
-         m+6i79N7oHRUkvadap64VyJqvTQoqT6ly04L2xPVs3Ve18XytSuIkch7TN1/bEj2QFKs
-         Y/WQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1776192027; x=1776796827;
-        h=to:subject:message-id:date:from:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=cp+RfCU2cxNRTrslQeqfjoL+Wugk/C2lusZI0u6wgbA=;
-        b=rkILJEa7YhvkCazLrzaUJ42KLvciaJrBI30EVEaYdZzTxS6gbSs6UykCs9Img4S+wb
-         PaOJtMxi6efriBQow2wU0GBpNi5Sao/vIKonjg8yK11CKuaurid7OJfNLde8oJD2yYxF
-         ZgKNqenTS1f7tK4RcJkwMnVQE/hyMoXGC6wBW5miSgL0CVEhixuGbDt8chaXVz4/y+Ch
-         W+4VZL0MAU0KDyaLK4uiJC4AoiNkBnPkUDKae/vNmX/xTfiZDffDvBGluRqARQ/AxfBt
-         +4PfdKcU84koDUfVR2zyRQHiPLZS7FuHGcfmsl/I4CUd62Xip8xwGtb3+jB8NRrKip++
-         oQcw==
-X-Gm-Message-State: AOJu0Ywx874noc0aPLCmvGrzoGsk+EQ8h89mZRo70Drsnqj5R4tFRqDm
-	xaB+L8AhfteuUlQSFNPy9CHUI8fEoh3rs1pVBnik4gb8hV/aFaOXcVteKH7ZIUHxt933pWIA8dN
-	dc5d8Tor2A1sVuDPR8rTyQfAANTrvo2+HgCn1M67740gH97K02adyxZU6VeJW
-X-Gm-Gg: AeBDievrNg6pEYtIvI3kcjqIL00sDOUAsp2n7BoOmRtt4K6dOhPWQrkXj8oAVO3y4Ra
-	4F2R2AvmvvDlRm/DEbC6vf2yu9K+ZtkC7zkLFFsPs8ndqWWpwvGQCSrI4FuHmTLrysPrZ4u5ZmJ
-	+AlNW9lr5imQDnQUMqyt9p28YlhGA5U8GrkIv23yBwWcbjLoS5KaCx/PmZV8XYq0O+Di80hQ34f
-	rDohjMneljj6ks75q4zUQyCJomagz9kLhnbjLw4EYA28Pvkh/tOWk87gGe3PHH+6kAJTvs42D/Z
-	slOzA/epALD31KI=
-X-Received: by 2002:a05:6214:5294:b0:8ac:b1ad:3a1f with SMTP id
- 6a1803df08f44-8acb1ad3ecemr127498816d6.35.1776192027124; Tue, 14 Apr 2026
- 11:40:27 -0700 (PDT)
+	Tue, 14 Apr 2026 21:00:38 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id CDC9143461;
+	Tue, 14 Apr 2026 21:00:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AC5DCC2BCB0;
+	Tue, 14 Apr 2026 21:00:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1776200434;
+	bh=qDVYh6WLv/dBWQA7VroryOtD7C4utadxXIolPhKn+fE=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=LTrr2JZsNKowtXuZP9tKfPuPBBGD3HG5iF43zRXzlrVL/yNWhmiEPjv5JWvtocIU6
+	 T8XpftcsAKovZxMzHPV9MlzXZR2ceRRdipEIXByuIU31Xc53kOcMg9eWrKaB8SElkS
+	 AKbjD/ZhqNbtJERUnd+k8f1EJzKtvhUpjhEZ5KI8v1Fm/q1rOh5kz4MtHMDWxi8Ned
+	 Tk0crGPlADLwfM4iY6EjVzfZimGjGpHjzEKRpugGtjgnstmFMVl8szI+wYlqR+gJo9
+	 57KJvDNAGplzHeESAkIh66uDyVudeYvF5HZyEqVhi+Vv1Opi+ircW01Jj+hs31HeYx
+	 YD9h6rbqRpuGA==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 3FC8B3809A0C;
+	Tue, 14 Apr 2026 21:00:06 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-From: Geramy Loveless <gloveless@jqluv.com>
-Date: Tue, 14 Apr 2026 11:40:14 -0700
-X-Gm-Features: AQROBzCUOxlhUBtJqQayNqh6uhvubDwdSfrIH-MpMOSXTtqogPjtlaQcr1s3FBM
-Message-ID: <CAGpo2mcU1qW12Fk69MRW5TCdpKXQ-3hcK+W6-fAJgebsGmkLEg@mail.gmail.com>
-Subject: [Question] mt7925: CSI (Channel State Information) support in STA firmware?
-To: linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Subject: Re: [RESEND PATCH v1] Bluetooth: btusb: MT7922: Add VID/PID 0e8d/223c
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <177620040505.1468596.15480605558058158606.git-patchwork-notify@kernel.org>
+Date: Tue, 14 Apr 2026 21:00:05 +0000
+References: <20260407065053.3037036-1-chris.lu@mediatek.com>
+In-Reply-To: <20260407065053.3037036-1-chris.lu@mediatek.com>
+To: Chris Lu <chris.lu@mediatek.com>
+Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
+ sean.wang@mediatek.com, will-cy.Lee@mediatek.com, ss.wu@mediatek.com,
+ steve.lee@mediatek.com, linux-bluetooth@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260414_114029_612417_C6F15A44 
-X-CRM114-Status: UNSURE (   9.36  )
+X-CRM114-CacheID: sfid-20260414_140037_142507_D05C3DFC 
+X-CRM114-Status: UNSURE (   7.16  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -108,65 +77,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Sorry for the duplicate email I didnt realize there was a mailing list
-for mediatek i got the last mailing list wrong also which created
-another duplicate sorry, anyways to my problem.
+Hello:
 
-I'm working on enabling CSI extraction on the MT7925 (Filogic 360,
-PCIe) running as a station. I've built the full kernel-side
-infrastructure (vendor netlink, ring buffer, debugfs, event handlers)
-and have been testing against the stock firmware:
+This patch was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-  WIFI_RAM_CODE_MT7925_1_1.bin
-  Version: t-neptune-main-mt7925-2249 (build 2025-12-10)
+On Tue, 7 Apr 2026 14:50:53 +0800 you wrote:
+> Add VID 0e8d & PID 223c for MediaTek MT7922 USB Bluetooth chip.
+> 
+> The information in /sys/kernel/debug/usb/devices about the Bluetooth
+> device is listed as the below.
+> 
+> T:  Bus=07 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
+> D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
+> P:  Vendor=0e8d ProdID=223c Rev= 1.00
+> S:  Manufacturer=MediaTek Inc.
+> S:  Product=Wireless_Device
+> S:  SerialNumber=000000000
+> C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
+> A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
+> I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
+> E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+> E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+> I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+> I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+> I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+> I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+> I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+> I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+> I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+> I:  If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
+> E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+> I:* If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
+> E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
+> 
+> [...]
 
-I found the connac3 CSI patch for mt7996 in the MediaTek SDK feeds:
+Here is the summary with links:
+  - [RESEND,v1] Bluetooth: btusb: MT7922: Add VID/PID 0e8d/223c
+    https://git.kernel.org/bluetooth/bluetooth-next/c/8205cbb54538
 
-  0095-mtk-mt76-mt7996-Add-connac3-csi-feature.patch
-  (by Chank Chen, Jan 2024)
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-which defines:
 
-  MCU_UNI_CMD_CSI_CTRL  = 0x4A
-  MCU_UNI_EVENT_CSI_REPORT = 0x4A
-
-  Command tags:
-    UNI_CMD_CSI_STOP          = 0
-    UNI_CMD_CSI_START         = 1
-    UNI_CMD_CSI_SET_FRAME_TYPE = 2
-    ...
-
-I've been sending MCU_WM_UNI_CMD(CSI_CTRL) with tag=1 (CSI_START) to
-the MT7925 firmware. The command returns success (ret=0) but the
-firmware never generates MCU_UNI_EVENT_CSI_REPORT (eid=0x4A) events.
-
-All commands return success but none produce CSI I/Q data events.
-
-My questions:
-
-  1. Does the MT7925 STA firmware (CE variant) have the CSI reporting
-     handler compiled in? Or is CSI only available in AP firmware
-     builds (mt7996, mt7981)?
-
-  2. If CSI is not in the current firmware, is there a firmware build
-     or roadmap that would add MCU_UNI_CMD_CSI_CTRL support for the
-     MT7925 in STA mode?
-
-  3. Is there any alternative path to obtain per-subcarrier channel
-     estimates on the MT7925? (e.g., via ICAP, WiFi Spectrum mode,
-     or PHY register reads)
-
-The kernel-side driver patches are ready and tested. The full
-infrastructure (NL80211 vendor commands, TLV event parsing, ring
-buffer) will work immediately once the firmware starts delivering
-CSI events.
-
-Hardware: ASUS ROG Strix Halo (Ryzen AI Max+ 395)
-WiFi: MT7925 PCIe [14c3:7925]
-Kernel: 7.0-rc7 with mt76 from mainline + CSI patches
-Firmware: WIFI_RAM_CODE_MT7925_1_1.bin v2249
-
-Thanks for any guidance.
-
-Geramy Loveless
 
