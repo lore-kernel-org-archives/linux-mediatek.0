@@ -4,75 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 222F9ED7B9E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2026 10:33:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB376F9D0C4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2026 11:40:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T8QHOy3ra4IFny5Ey993K5xs59jKtguHgSHZvIpWKPQ=; b=g7lkmLibjL2uojxdrAfduo7Dea
-	xfb0JW2FQdrUVE5bX3aj8KmraBTvrAEbi9Nr27/YTqpR3tgpg0cfbtqSdRtrBwtoWKVVbXwV7lYzB
-	WUPSlZ8z5dwg7h4Xhu9eWk2NUUKKKFgdmVMQkCnxlhlk7a6zuf3CoQ7cifVib2UGDEQwVFQBwJW9v
-	IzGhpaN0LAiTo/VHJ3TKDEkONGER8UGvHHX8iwS8osOvz0S2Mg0seujjWylk3Q/x3r7bHWSJDU/E6
-	RqSdtCCA7+ti6iUa+oRkLEYRqs8/NzZr8il9BEprplbC9sIASua5u67lSlYMFJAh89xhaobChQcbt
-	S6IpSjMw==;
+	bh=Z8CuHpoJMmm/eTipaRhGEwIxqjGQ4qli3GNAsKwX/ME=; b=EU1DwBZsR+ElCCJzogzmexfi7y
+	imIPo0fH7t/8neNTZtQUr7ub+XBp5AWE/+ZV/njyWB4Cz++c5oCuOExZASLI5IG4aXPUA1qH0/7Ro
+	69+SeawJvlEyVpteX8XxTFJkhFzmzotpXYUrAvNx8ENJq9UnF9ghMg+3tcNBH+Posr6mkVPll89ct
+	hiMrGDz5zNOxhS4bG5X+a38WdHhMgsCPeo6X6MLqDpatoa0y6ud0zvOcOeXwOXf3SfiqWOzoKVOba
+	CsdQjhQKwxUNrKNogP0D6bHMsp57xL5jSGpaEzjMXvcqQuK+CWmP5rxOSVjGykILNb5B6F+R9yWhP
+	AkQB+n3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCb5g-0000000H9ZG-0Y3O;
-	Tue, 14 Apr 2026 10:33:56 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wCc8E-0000000HFCE-2wgy;
+	Tue, 14 Apr 2026 11:40:38 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCb5a-0000000H9TZ-0VDH;
-	Tue, 14 Apr 2026 10:33:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1776162827;
-	bh=KWcYLXR3SCPD4C4XGxkdTEzImPQ+OVS9H3Ad1rh1FyA=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=mO+YCPRQY0Um27I97agmSipFvat9xgRgWeZT5YVVyjbLYVxla161R75A6KtT+yV7E
-	 0DZACVmJ+8Wg4B7AXfyXAK432iYxWWm+XCbWXNXyxJWuegCWpBKFRQcU3n2MrXef+Z
-	 kdUz2WnA4HGYW8Es9K4evCrHcMadq9sIkqgsxNHbMVSFDd6OMAwCBQbBQloYb+uo0/
-	 N5gb3fsxvPQZe3EIPskycMo7reNqd6KKSWcMY0CFrr44A8meJNb4P8fiNh2mgKPGXQ
-	 Uj70dglaRGzpwjBNlTjX5j+bjpsgAd97EkTUfSWTdS3/9GohSo+Ru440a5ByIxP3An
-	 MKGl4KB4h55Pw==
-Received: from yukiji.home (unknown [100.64.0.131])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id F377217E137E;
-	Tue, 14 Apr 2026 12:33:46 +0200 (CEST)
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Tue, 14 Apr 2026 12:33:32 +0200
-Subject: [PATCH 2/3] arm64: dts: mediatek: mt8390-genio-common: add CPU
- power supplies
-MIME-Version: 1.0
+	id 1wCc8C-0000000HFBb-1Zya;
+	Tue, 14 Apr 2026 11:40:36 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 2B9F660128;
+	Tue, 14 Apr 2026 11:40:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D5D60C19425;
+	Tue, 14 Apr 2026 11:40:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1776166834;
+	bh=B3BglmvRt8X/jgxHSb6URI9mj88QwlUxQhBzS+va8rU=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=FU4pYPFnthk4cT9SVYY2n9sh7zY/ThkDQBv3UpAF6uqFug2Ee7N/IIjrZ8Qfwv3Y3
+	 /ilxmuXrxUKx0wjEJHr3HmcSL/t5D9eQYoCT12SQ/KN17yAtGcI1eo+XApI/lm3Nh+
+	 n8bPmr1aH2+nZuXkw2cATloIvz0latJjTIvq/8sebOvYL43I7HNVygxeieekFSsJET
+	 WbwO6KMGTzZKbZZmZvP0BiUeJnhEPwFjVpX5dG1gnjedOV3DIIh4OtB5JqnGs77vzn
+	 eph+32ZqnfYAd8QE0Re6J/QELvmHBIKG9RQqCNb7huKhfxb/3R0T5+AH0eXAevtd+E
+	 rCjOfHbD7Prwg==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id B9F153808205;
+	Tue, 14 Apr 2026 11:40:06 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260414-mtk-g510-700-cpu-supplies-v1-2-3b8313e5ca8d@collabora.com>
-References: <20260414-mtk-g510-700-cpu-supplies-v1-0-3b8313e5ca8d@collabora.com>
-In-Reply-To: <20260414-mtk-g510-700-cpu-supplies-v1-0-3b8313e5ca8d@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1776162824; l=1691;
- i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=KWcYLXR3SCPD4C4XGxkdTEzImPQ+OVS9H3Ad1rh1FyA=;
- b=SSSvq5wiJytbcW9kvgsxYNwvEhUVwkMIDeNUu3F0c+VEXNOkB//PxCKZmiDmGa9QYaYqXJ2xm
- f+jBDRpcUDTDD7ZmE6EYVSxuX0tS68QXobkWZrVynQfqu805tIV66ly
-X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
- pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260414_033350_359579_559D293A 
-X-CRM114-Status: UNSURE (   9.94  )
-X-CRM114-Notice: Please train this message.
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net] net: airoha: Fix VIP configuration for AN7583 SoC
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <177616680555.841978.4384575148487022724.git-patchwork-notify@kernel.org>
+Date: Tue, 14 Apr 2026 11:40:05 +0000
+References: <20260412-airoha-7583-vip-fix-v1-1-c35e02b054bb@kernel.org>
+In-Reply-To: <20260412-airoha-7583-vip-fix-v1-1-c35e02b054bb@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, horms@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,64 +72,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Mediatek Genio 510-EVK (MT8370) and 700-EVK (MT8390) devicetrees are
-missing power supply definitions for all their CPU cores.
+Hello:
 
-On the boards, the big core power is supplied by a MT6319 (sub PMIC),
-and little core power by a MT6365 (main PMIC).
+This patch was applied to netdev/net.git (main)
+by Paolo Abeni <pabeni@redhat.com>:
 
-MT8370 and MT8390 SoC have the same core type (little cores are ARM
-Cortex A55, big ones are A72), the same big core number (2) but MT8390
-SoC has more little cores (6) than MT8370 SoC (only 4).
+On Sun, 12 Apr 2026 09:57:29 +0200 you wrote:
+> EN7581 and AN7583 SoCs have different VIP definitions. Introduce
+> get_vip_port callback in airoha_eth_soc_data struct in order to take
+> into account EN7581 and AN7583 VIP register layout and definition
+> differences.
+> Introduce nbq parameter in airoha_gdm_port struct. At the moment nbq
+> is set statically to value previously used in airhoha_set_gdm2_loopback
+> routine and it will be read from device tree in subsequent patches.
+> 
+> [...]
 
-To handle the little core number difference, add in the board common
-dtsi the power supply definitions for the common CPU core nodes (0-3,
-6 and 7).
-The power supplies for the additional MT8390 CPU core nodes (4 and 5)
-will be added for the Genio 700 in a separate commit.
+Here is the summary with links:
+  - [net] net: airoha: Fix VIP configuration for AN7583 SoC
+    https://git.kernel.org/netdev/net/c/1acdfbdb516b
 
-Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
----
- .../boot/dts/mediatek/mt8390-genio-common.dtsi     | 24 ++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-index aab474d6c5f8..9ebb222a877f 100644
---- a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-@@ -285,6 +285,30 @@ &afe {
- 	status = "okay";
- };
- 
-+&cpu0 {
-+	cpu-supply = <&mt6359_vcore_buck_reg>;
-+};
-+
-+&cpu1 {
-+	cpu-supply = <&mt6359_vcore_buck_reg>;
-+};
-+
-+&cpu2 {
-+	cpu-supply = <&mt6359_vcore_buck_reg>;
-+};
-+
-+&cpu3 {
-+	cpu-supply = <&mt6359_vcore_buck_reg>;
-+};
-+
-+&cpu6 {
-+	cpu-supply = <&mt6319_vbuck1>;
-+};
-+
-+&cpu7 {
-+	cpu-supply = <&mt6319_vbuck1>;
-+};
-+
- &disp_dsi0 {
- 	#address-cells = <1>;
- 	#size-cells = <0>;
-
+You are awesome, thank you!
 -- 
-2.53.0
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
