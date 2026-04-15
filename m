@@ -4,56 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C177F43834
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2026 15:04:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 747A1F43832
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2026 15:23:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vi3OiVNt/NkQIzT5opV64E0LD0O9rqcwx3jEF1Vrbvo=; b=ACJRzOy4tw/+Yy4bt1VRak4DyP
-	k8xObD/OtbCXg2U2K03+pxz7vAPSj4zCKcFrNkt0AzOvH6rWULOkA9hzcJIBjmhToswDM5Qjb2xYH
-	j16KAf+j/PKyyws7hrpBSnvJ950VHsie49KIxFCADZevi/vjdQnATYPbA+7LelpivtjE/PhnFVcNF
-	wZWO12MoQ5UpxZRo8Fd7uWSSSmVflKdfsNEhNCsGcQVVaG+3PFtr1dsUsh0Iunqw0iuWgPmlgEUCz
-	Bbt9QvNeO8RH9eS6+HZakklFnDi8rjUQluSCzsS79hbmNZrGSuokw7sCHvBp7mOP3xPpqHo13cLsN
-	GRSksbKg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=uy98rZ0nWolXchTD8m5yvaBDG4+4G1NIqCUVcsrwcWE=; b=g3f5XCLNzwP4mUYrrTC6xICyUv
+	gGWUTwAYtqCSVPaXvKEtUUeqiCIU9QqfqrxpyApaLDArfGdUN86EatwiR5H99Wr2vklN9QKGYZx7Y
+	ZOQs648rPV9/D/Hbqje/Z3FFM3yyidO1/Ke23G8eoOlk+eiKJjCWal21HmerIpR4aUcz1951ywYaL
+	B3TqdCJbHELkJkIsgYiCzZ8ADMb7g9TrHuKnczDfOzbvDV4y3rp9Xl7QM8KpBXUab04pZ1fmKAwFU
+	UDa+jP+NpDIEId84Z1bF95sGK+6w8ZBnaWXtZUdPlqbTcr1ld/3W0pMqNGtEq1/u1Ta30eV00vtci
+	DHEVWDmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wD1my-00000001HUo-38il;
-	Wed, 15 Apr 2026 15:04:24 +0000
+	id 1wD25X-00000001JIw-3BRW;
+	Wed, 15 Apr 2026 15:23:35 +0000
 Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wD1mw-00000001HSX-1hiG;
-	Wed, 15 Apr 2026 15:04:23 +0000
+	id 1wD25V-00000001JIG-1oJW;
+	Wed, 15 Apr 2026 15:23:34 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.99)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1wD1ms-000000002Nq-3tYX;
-	Wed, 15 Apr 2026 15:04:19 +0000
-Date: Wed, 15 Apr 2026 16:04:16 +0100
+	id 1wD25J-000000002dB-1dYA;
+	Wed, 15 Apr 2026 15:23:21 +0000
+Date: Wed, 15 Apr 2026 16:23:17 +0100
 From: Daniel Golle <daniel@makrotopia.org>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Junzhi Zhao <junzhi.zhao@mediatek.com>,
-	Jie Qiu <jie.qiu@mediatek.com>, dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH 2/2] drm/mediatek: hdmi: report jack plugged state from
- bridge enable/disable
-Message-ID: <c4d62fc2244fb72207855c5a366ff10fad419f2d.1776265222.git.daniel@makrotopia.org>
-References: <a3e22cbae528c9a38d854a586d1736b860998d41.1776265222.git.daniel@makrotopia.org>
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Cyril Chao <Cyril.Chao@mediatek.com>, Arnd Bergmann <arnd@arndb.de>,
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
+	Eugen Hristev <eugen.hristev@linaro.org>,
+	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 0/9] ASoC: mediatek: mt2701: HDMI audio support
+Message-ID: <cover.1776265610.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <a3e22cbae528c9a38d854a586d1736b860998d41.1776265222.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260415_080422_446452_FAF36788 
-X-CRM114-Status: GOOD (  10.46  )
+X-CRM114-CacheID: sfid-20260415_082333_493119_E12F506D 
+X-CRM114-Status: GOOD (  12.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,47 +71,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Notify hdmi-codec of the current sink plugged state from
-mtk_hdmi_bridge_atomic_enable() and mtk_hdmi_bridge_atomic_disable()
-via mtk_hdmi_update_plugged_status(). This matches the pattern used
-by dw-hdmi, which invokes handle_plugged_change() from the bridge
-enable and disable paths so that ASoC jack state stays in sync with
-the actual sink presence across atomic commit cycles, and not only
-on CEC HPD transitions.
+This series wires up on-chip HDMI audio on MT2701 and MT7623, from the
+DRM bridge down through the AFE into a small machine driver that binds
+the AFE HDMI BE to the HDMI TX codec already exposed by the
+mediatek-drm-hdmi driver. Bindings, DT and a BananaPi R2 board node
+are included.
 
-Userspace audio daemons (e.g. pipewire) rely on the jack state to
-route streams, restore per-sink volume levels, and recover the last
-used device after a reconnect. Without this, those transitions are
-missed whenever the sink change is driven by a mode set rather than
-by a bare HPD event.
+In order to survive vblank or late hotplug of the monitor, the fix
+submitted separately [1] is required as well.
 
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
- drivers/gpu/drm/mediatek/mtk_hdmi.c | 4 ++++
- 1 file changed, 4 insertions(+)
+Everything here was developed for and tested on a BananaPi R2
+(MT7623N), which turns ten years old this year -- a nice occasion to
+finally land native HDMI audio for a SoC which was truly ahead of its
+time.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index 9050d7785f109..565bb72c9b63a 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -1013,6 +1013,8 @@ static void mtk_hdmi_bridge_atomic_disable(struct drm_bridge *bridge,
- 	hdmi->curr_conn = NULL;
- 
- 	hdmi->enabled = false;
-+
-+	mtk_hdmi_update_plugged_status(hdmi);
- }
- 
- static void mtk_hdmi_bridge_atomic_post_disable(struct drm_bridge *bridge,
-@@ -1082,6 +1084,8 @@ static void mtk_hdmi_bridge_atomic_enable(struct drm_bridge *bridge,
- 	mtk_hdmi_clk_enable_audio(hdmi);
- 
- 	hdmi->enabled = true;
-+
-+	mtk_hdmi_update_plugged_status(hdmi);
- }
- 
- static const struct drm_bridge_funcs mtk_hdmi_bridge_funcs = {
+[1]: https://patchwork.kernel.org/project/linux-mediatek/patch/a3e22cbae528c9a38d854a586d1736b860998d41.1776265222.git.daniel@makrotopia.org/
+
+Daniel Golle (9):
+  dt-bindings: sound: mt2701-afe-pcm: add HDMI audio path clocks
+  dt-bindings: sound: add mediatek,mt2701-hdmi-audio machine binding
+  ASoC: mediatek: mt2701: add AFE HDMI register definitions
+  ASoC: mediatek: mt2701: add optional HDMI audio path clocks
+  ASoC: mediatek: mt2701: add HDMI audio memif, FE and BE DAIs
+  ASoC: mediatek: mt2701: add machine driver for on-chip HDMI codec
+  ARM: dts: mediatek: mt2701: wire HDMI audio path clocks into AFE
+  ARM: dts: mediatek: mt7623: wire HDMI audio path clocks into AFE
+  ARM: dts: mediatek: mt7623n-bananapi-bpi-r2: add HDMI audio machine
+    node
+
+ .../bindings/sound/mediatek,mt2701-audio.yaml |  10 +
+ .../sound/mediatek,mt2701-hdmi-audio.yaml     |  47 +++
+ arch/arm/boot/dts/mediatek/mt2701.dtsi        |  21 +-
+ arch/arm/boot/dts/mediatek/mt7623.dtsi        |  21 +-
+ .../dts/mediatek/mt7623n-bananapi-bpi-r2.dts  |   7 +
+ sound/soc/mediatek/Kconfig                    |  10 +
+ sound/soc/mediatek/mt2701/Makefile            |   1 +
+ .../mediatek/mt2701/mt2701-afe-clock-ctrl.c   |  22 ++
+ sound/soc/mediatek/mt2701/mt2701-afe-common.h |   6 +
+ sound/soc/mediatek/mt2701/mt2701-afe-pcm.c    | 281 +++++++++++++++++-
+ sound/soc/mediatek/mt2701/mt2701-hdmi.c       | 114 +++++++
+ sound/soc/mediatek/mt2701/mt2701-reg.h        |  35 +++
+ 12 files changed, 564 insertions(+), 11 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt2701-hdmi-audio.yaml
+ create mode 100644 sound/soc/mediatek/mt2701/mt2701-hdmi.c
+
 -- 
 2.53.0
 
