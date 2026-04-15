@@ -4,62 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8570DF43834
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2026 15:24:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CE22F43848
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2026 16:46:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YxlXpKsUWDkWjxmyYXYdVApiw2us7toBOVYN8AtJ9IY=; b=j1UvNOBhqwgjhw+8lvPLXW+Vhh
-	L4cAVZOKwVDs3g2+yNn1xmLtGtEtUGggziiaWm/f+AWepMkhbo7Bzhcqk0PMaQSaBQFgGojYA5o0o
-	xiODl3U5V/vit9kmZRQ8l9e0kUgDnYLQ6MTCU3aOiemcoZ4TsEmZaUC8RBSjIlLDJZMkkO8msKTGP
-	QI1Pz3nS4irrykP31gziNdhcJ7oLU4o1huTq+RnTGBhf5ELDN7ICbqMhDwjr/isjjzIQ7QNQxcTcL
-	A1p72MOu3tAZQE1AUSxSKsEKmOqHvf6BK47AZghxLlaVSwKQXV/mUgCNpbWHjYbUfoDYktqqBw8zT
-	V2en3Z8g==;
+	bh=nvEfo4RLMftO1QlHHSO50filSXucrZy2YoN/9VrEKeM=; b=BBCw7FmrsS4klgtEJpn8SToFc2
+	UaurlzEpznmuV0QOwJlqrB1Y1xPKcJZTssqULIHROeSNaqHJo0gVOryN6SZnjTSff/Qw7aOYiIYuB
+	0EhBGKil5eW2L2b2RuqWdaYvXT+Yltd+2dZAjfd1RHNyZnyxMbVHDpmAgc5T9NtaFc0uMMFptrIWH
+	FlepRa5qAPTmrD151k9gmHUrvyBKvzZtlumUpkr5dJIcDoQjkGWN8vBSu+jNgPQqc4itDwcKElpk4
+	DHjscei1elmH+teBgK+/TdVe3zdpnVeUFwibl887Rzt2IQLsfB38xC7aaTyuU2X5AkiM9o497/zyC
+	jkuzSuqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wD26b-00000001K3b-2eww;
-	Wed, 15 Apr 2026 15:24:41 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1wD3O6-00000001OKq-1Jr3;
+	Wed, 15 Apr 2026 16:46:50 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wD26W-00000001JyK-3GIL;
-	Wed, 15 Apr 2026 15:24:39 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.99)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1wD26Q-000000002hi-28Wl;
-	Wed, 15 Apr 2026 15:24:30 +0000
-Date: Wed, 15 Apr 2026 16:24:27 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Cyril Chao <Cyril.Chao@mediatek.com>, Arnd Bergmann <arnd@arndb.de>,
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
-	Eugen Hristev <eugen.hristev@linaro.org>,
-	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 9/9] ARM: dts: mediatek: mt7623n-bananapi-bpi-r2: add HDMI
- audio machine node
-Message-ID: <a826e752361e6ea89ab259d6544a7e16096ca3f8.1776265610.git.daniel@makrotopia.org>
-References: <cover.1776265610.git.daniel@makrotopia.org>
+	id 1wD3O4-00000001OKI-2FXJ;
+	Wed, 15 Apr 2026 16:46:48 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 90C92600AD;
+	Wed, 15 Apr 2026 16:46:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7531AC19424;
+	Wed, 15 Apr 2026 16:46:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1776271607;
+	bh=9V5UV0H7MNGsiv3j20XRW3gOxXBgz2rZPl/n+ef13Uw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=fW/f26Es+VpZNbsFgLDGuFZPeNpaxhhh4Snuyt9w2JIMPiB1dhxrqeL6YBx8Jpt4E
+	 ZQ7/nvDHkkPpEo8MOH4NbMh/Ok3l9PHn1ELWTJjvicCfCC994+ciDxlnXoQ2QlLykV
+	 dPDakfB6qFZ5v3sKcVhSSyBmuHBHHUeoQYG5BP9LXCdfjzgHeenrjWUkjF40swEwNx
+	 a0mVjfMq2eaSGSMKoOXfbZF0xPIUvGN3ErKGA2Z0kW4V3TAe3zyqy9v9zPM/HRF1Gc
+	 oLN05DTT8JdNdkSG9UbHnbRc3budngWXSxJwrPBGbCc4sBjUbqX5wYgYT1EH4khf6m
+	 F7Aed9NzH5q4A==
+Date: Wed, 15 Apr 2026 17:46:43 +0100
+From: Simon Horman <horms@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net v2] net: airoha: Add missing bits in
+ airoha_qdma_cleanup_tx_queue()
+Message-ID: <20260415164643.GQ772670@horms.kernel.org>
+References: <20260414-airoha_qdma_cleanup_tx_queue-fix-net-v2-1-875de57cc022@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1776265610.git.daniel@makrotopia.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260415_082436_820147_BDA015C5 
-X-CRM114-Status: GOOD (  10.14  )
+In-Reply-To: <20260414-airoha_qdma_cleanup_tx_queue-fix-net-v2-1-875de57cc022@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,33 +72,136 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Instantiate the mediatek,mt2701-hdmi-audio machine on the
-BananaPi BPI-R2, binding the AFE HDMI playback path to the
-on-chip HDMI transmitter acting as the generic HDMI codec.
+On Tue, Apr 14, 2026 at 08:50:52AM +0200, Lorenzo Bianconi wrote:
+> Similar to airoha_qdma_cleanup_rx_queue(), reset DMA TX descriptors in
+> airoha_qdma_cleanup_tx_queue routine. Moreover, reset TX_DMA_IDX to
+> TX_CPU_IDX to notify the NIC the QDMA TX ring is empty.
+> 
+> Fixes: 23020f0493270 ("net: airoha: Introduce ethernet support for EN7581 SoC")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+> Changes in v2:
+> - Move q->ndesc initialization at end of airoha_qdma_init_tx routine in
+>   order to avoid any possible NULL pointer dereference in
+>   airoha_qdma_cleanup_tx_queue()
 
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
- arch/arm/boot/dts/mediatek/mt7623n-bananapi-bpi-r2.dts | 7 +++++++
- 1 file changed, 7 insertions(+)
+This seems to be a separate issue.
+If so, I think it should be split out into a separate patch.
 
-diff --git a/arch/arm/boot/dts/mediatek/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mediatek/mt7623n-bananapi-bpi-r2.dts
-index a37f3fa223c72..139a76764faa0 100644
---- a/arch/arm/boot/dts/mediatek/mt7623n-bananapi-bpi-r2.dts
-+++ b/arch/arm/boot/dts/mediatek/mt7623n-bananapi-bpi-r2.dts
-@@ -132,6 +132,13 @@ memory@80000000 {
- 		device_type = "memory";
- 		reg = <0 0x80000000 0 0x80000000>;
- 	};
-+
-+	sound-hdmi {
-+		compatible = "mediatek,mt7623n-hdmi-audio",
-+			     "mediatek,mt2701-hdmi-audio";
-+		mediatek,platform = <&afe>;
-+		mediatek,audio-codec = <&hdmi0>;
-+	};
- };
- 
- &bls {
--- 
-2.53.0
+> - Check if q->tx_list is empty in airoha_qdma_cleanup_tx_queue()
+> - Link to v1: https://lore.kernel.org/r/20260410-airoha_qdma_cleanup_tx_queue-fix-net-v1-1-b7171c8f1e78@kernel.org
+
+I think it was covered in the review Jakub forwarded for v1.  But FTR,
+Sashiko has some feedback on this patch in the form of an existing bug
+(that should almost certainly be handled separately from this patch).
+
+> ---
+>  drivers/net/ethernet/airoha/airoha_eth.c | 41 ++++++++++++++++++++++++++------
+>  1 file changed, 34 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+> index 9e995094c32a..3c1a2bc68c42 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+> @@ -966,27 +966,27 @@ static int airoha_qdma_init_tx_queue(struct airoha_queue *q,
+>  	dma_addr_t dma_addr;
+>  
+>  	spin_lock_init(&q->lock);
+> -	q->ndesc = size;
+>  	q->qdma = qdma;
+>  	q->free_thr = 1 + MAX_SKB_FRAGS;
+>  	INIT_LIST_HEAD(&q->tx_list);
+>  
+> -	q->entry = devm_kzalloc(eth->dev, q->ndesc * sizeof(*q->entry),
+> +	q->entry = devm_kzalloc(eth->dev, size * sizeof(*q->entry),
+>  				GFP_KERNEL);
+>  	if (!q->entry)
+>  		return -ENOMEM;
+>  
+> -	q->desc = dmam_alloc_coherent(eth->dev, q->ndesc * sizeof(*q->desc),
+> +	q->desc = dmam_alloc_coherent(eth->dev, size * sizeof(*q->desc),
+>  				      &dma_addr, GFP_KERNEL);
+>  	if (!q->desc)
+>  		return -ENOMEM;
+>  
+> -	for (i = 0; i < q->ndesc; i++) {
+> +	for (i = 0; i < size; i++) {
+>  		u32 val = FIELD_PREP(QDMA_DESC_DONE_MASK, 1);
+>  
+>  		list_add_tail(&q->entry[i].list, &q->tx_list);
+>  		WRITE_ONCE(q->desc[i].ctrl, cpu_to_le32(val));
+>  	}
+> +	q->ndesc = size;
+>  
+>  	/* xmit ring drop default setting */
+>  	airoha_qdma_set(qdma, REG_TX_RING_BLOCKING(qid),
+> @@ -1051,13 +1051,17 @@ static int airoha_qdma_init_tx(struct airoha_qdma *qdma)
+>  
+>  static void airoha_qdma_cleanup_tx_queue(struct airoha_queue *q)
+>  {
+> -	struct airoha_eth *eth = q->qdma->eth;
+> -	int i;
+> +	struct airoha_qdma *qdma = q->qdma;
+> +	struct airoha_eth *eth = qdma->eth;
+> +	int i, qid = q - &qdma->q_tx[0];
+> +	struct airoha_queue_entry *e;
+> +	u16 index = 0;
+>  
+>  	spin_lock_bh(&q->lock);
+>  	for (i = 0; i < q->ndesc; i++) {
+> -		struct airoha_queue_entry *e = &q->entry[i];
+
+super nit: In v2 e is always used within a block (here and in the hunk below).
+           So I would lean towards declaring e in the blocks where it is
+	   used.
+
+	   No need to repost just for this!
+
+> +		struct airoha_qdma_desc *desc = &q->desc[i];
+>  
+> +		e = &q->entry[i];
+>  		if (!e->dma_addr)
+>  			continue;
+>  
+> @@ -1067,8 +1071,31 @@ static void airoha_qdma_cleanup_tx_queue(struct airoha_queue *q)
+>  		e->dma_addr = 0;
+>  		e->skb = NULL;
+>  		list_add_tail(&e->list, &q->tx_list);
+> +
+> +		/* Reset DMA descriptor */
+> +		WRITE_ONCE(desc->ctrl, 0);
+> +		WRITE_ONCE(desc->addr, 0);
+> +		WRITE_ONCE(desc->data, 0);
+> +		WRITE_ONCE(desc->msg0, 0);
+> +		WRITE_ONCE(desc->msg1, 0);
+> +		WRITE_ONCE(desc->msg2, 0);
+> +
+>  		q->queued--;
+>  	}
+> +
+> +	if (!list_empty(&q->tx_list)) {
+> +		e = list_first_entry(&q->tx_list, struct airoha_queue_entry,
+> +				     list);
+> +		index = e - q->entry;
+> +	}
+> +	/* Set TX_DMA_IDX to TX_CPU_IDX to notify the hw the QDMA TX ring is
+> +	 * empty.
+> +	 */
+> +	airoha_qdma_rmw(qdma, REG_TX_CPU_IDX(qid), TX_RING_CPU_IDX_MASK,
+> +			FIELD_PREP(TX_RING_CPU_IDX_MASK, index));
+> +	airoha_qdma_rmw(qdma, REG_TX_DMA_IDX(qid), TX_RING_DMA_IDX_MASK,
+> +			FIELD_PREP(TX_RING_DMA_IDX_MASK, index));
+> +
+>  	spin_unlock_bh(&q->lock);
+>  }
+>  
+> 
+> ---
+> base-commit: 2cd7e6971fc2787408ceef17906ea152791448cf
+> change-id: 20260410-airoha_qdma_cleanup_tx_queue-fix-net-93375f5ee80f
+> 
+> Best regards,
+> -- 
+> Lorenzo Bianconi <lorenzo@kernel.org>
+> 
 
