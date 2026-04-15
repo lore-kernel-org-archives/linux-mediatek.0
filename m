@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7C3EF43848
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2026 16:58:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 192CAF419B9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2026 17:58:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/ULHc/LOwewxp81/QQxfODHRb3cHHuL82pprhl3jFPg=; b=NLRbRJNl8Vd4qKcOVwRKEVpKy6
-	jWrcPIA2shkVSntcmhVQ2wSmM7YdVAO3gkxIV9wTnR4R2iAxC9Y5UOp57MWvy/rqECR0m5hFofxuB
-	Ws/wFvs4kWyvFFJZk70lhHGSjxHWwhWIAS3eKqvJGLDO483soSQQvpsqebQMn3cZ+LVHk5nuoTsMV
-	fe8/KCvZNSid7WnlSpC23M9JOaIjS6WzyNaj91EQ/daFk1iJH/+pv/F+NM5OMeZqNPWwakoTh/Tzk
-	Qyie+Mct/ruga9L57tQT7xw5m2b4BT78psMP8Dfr9LCaETTLZ0EZKqYHBEepStHfQEs3yuU/idFFG
-	dBy3wa0g==;
+	bh=b0NXYVGheZNN2fgRMDNeYJQUh1YcNfnhZj1Zx2eozhM=; b=A4T+ESckVB2+to/UaU4pTd8Xfn
+	1kGVIXgS07DkCSqVsQPj/rrjmnYqjuThwNDQc6wK4iZh5nSlXVkajv9kBLjm+MFYRrGbGmWCpzfCh
+	i5MTTqH9JXiBn0J9DIfR2cJQuhHy6t0ULKfK2xSU0ckVn6iOZ0CRCsiWS0jdE5rlWyWIipnOAOh8W
+	9R6lNk0aRLY4i4ls1vz2EcTnSf+ILFRZXG7nbxQN6VL4/egLXYpAA3jBmriZ7gVRWterUsRRiZ3aM
+	rVDZFaEBVJOyDKCAM1le7KIjeUvkDlOebow1gGiDszMa2RHYNFu1776yzhiEiK8PT6VWMQeFbtBKi
+	ZMnay5Vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wD3ZL-00000001QcA-3GnU;
-	Wed, 15 Apr 2026 16:58:27 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wD4Vs-00000001U0s-3b2k;
+	Wed, 15 Apr 2026 17:58:56 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wD3ZK-00000001Qbw-1nJM;
-	Wed, 15 Apr 2026 16:58:26 +0000
+	id 1wD4Vp-00000001U01-40w2;
+	Wed, 15 Apr 2026 17:58:55 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 841A5600AD;
-	Wed, 15 Apr 2026 16:58:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E0563C19424;
-	Wed, 15 Apr 2026 16:58:24 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id A9D0B434F9;
+	Wed, 15 Apr 2026 17:58:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 11729C19424;
+	Wed, 15 Apr 2026 17:58:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776272305;
-	bh=nN9jt/f9MAKzPkpWtbk/RLKLebk1/ZQ/W3GDIw3V3xw=;
+	s=k20201202; t=1776275932;
+	bh=zOaTL2NNkh6dUpZwCq8yCW+BdPc/jYidrV0dsURT6W0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=VUuzGbdx4Xmi5fm1DcgkedJ0LuZIsUQlDJgY8mqpGuezOantYHh4qPtFzezyCNHPj
-	 Rv0VWBREEU6H1aZSRpn2V2ECc0fyaFUf9qcH6MHaQJV2E5oRHbGT4WHnpvWPk0HV6M
-	 ASSDsL8VdiIVUdqDnbPgdoUoNvSBwZUG54TOSgIg8eWLpsgDkR6xw3znGkz8C7GSu7
-	 e1Pxf2OGOiXGEO2r1sTLuuGYukGOeNAyY66glA7WLmZ1fLmSqCWcDKHf6ez1tJLP09
-	 2r/8lEUlIUj5E+cYlfnWSj88/WKbI9FJAdrCP6Fwf7Wx2/WSwyvhDrBqCvEy8Sizi8
-	 6QA8jxPDmOXOQ==
-Date: Wed, 15 Apr 2026 18:58:22 +0200
+	b=Hd4LhKjeERgPr4m0ddcWMGu5i9MGZ9zXikQHCi98iXlS3evOK/FP5JYwQSu2adcoy
+	 7H4Koez7sDTZyHubivMUWfy6jqNm/TtRWVMLG+gON7v7TvjqNe4Kn4uABmXNH/tFCA
+	 undKq6SCceEza5YNvbMnRXlGZUUzgdAEoGAHFP7AskuYhVHyqJ1GCro/VIGJyabqJI
+	 dlRbgSJv8autY9Vao+IYD4iRs0PJMDz+JX2Qc8jUXW0Ah9G8zNItOnjGdj715zHjF+
+	 xgEXu9/ZyRmsdBwicVOVTtgc1o431kae3N4A9POgEYaLsPkVs4Oxi4EXsliiruCua5
+	 kDmjqFHer3vEA==
+Date: Wed, 15 Apr 2026 19:58:50 +0200
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: Simon Horman <horms@kernel.org>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
@@ -52,14 +52,17 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
 Subject: Re: [PATCH net v2] net: airoha: Add missing bits in
  airoha_qdma_cleanup_tx_queue()
-Message-ID: <ad_DrrC6duye_lR0@lore-desk>
+Message-ID: <ad_R2kp2toH35Z0p@lore-desk>
 References: <20260414-airoha_qdma_cleanup_tx_queue-fix-net-v2-1-875de57cc022@kernel.org>
  <20260415164643.GQ772670@horms.kernel.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="xQbSQq7qBSSZg18s"
+	protocol="application/pgp-signature"; boundary="iThq3ydaXqdTfH2R"
 Content-Disposition: inline
 In-Reply-To: <20260415164643.GQ772670@horms.kernel.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260415_105854_038508_6AD8E799 
+X-CRM114-Status: GOOD (  33.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,12 +78,11 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---xQbSQq7qBSSZg18s
+--iThq3ydaXqdTfH2R
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Apr 15, Simon Horman wrote:
 > On Tue, Apr 14, 2026 at 08:50:52AM +0200, Lorenzo Bianconi wrote:
 > > Similar to airoha_qdma_cleanup_rx_queue(), reset DMA TX descriptors in
 > > airoha_qdma_cleanup_tx_queue routine. Moreover, reset TX_DMA_IDX to
@@ -97,6 +99,13 @@ On Apr 15, Simon Horman wrote:
 >=20
 > This seems to be a separate issue.
 > If so, I think it should be split out into a separate patch.
+
+Sorry, I missed this comment.
+Ack. I will repost splitting this in two separated patches.
+
+Regards,
+Lorenzo
+
 >=20
 > > - Check if q->tx_list is empty in airoha_qdma_cleanup_tx_queue()
 > > - Link to v1: https://lore.kernel.org/r/20260410-airoha_qdma_cleanup_tx=
@@ -105,19 +114,6 @@ _queue-fix-net-v1-1-b7171c8f1e78@kernel.org
 > I think it was covered in the review Jakub forwarded for v1.  But FTR,
 > Sashiko has some feedback on this patch in the form of an existing bug
 > (that should almost certainly be handled separately from this patch).
-
-Hi Simon,
-
-I took a look to the Sashiko's report [0] but this issue is not introduced =
-by
-this patch and, even if it would be a better approach, I guess the hw is
-capable of managing out-of-order TX descriptors. So I guess this patch is f=
-ine
-in this way, agree?
-
-[0] https://sashiko.dev/#/patchset/20260414-airoha_qdma_cleanup_tx_queue-fi=
-x-net-v2-1-875de57cc022%40kernel.org
-
 >=20
 > > ---
 > >  drivers/net/ethernet/airoha/airoha_eth.c | 41 ++++++++++++++++++++++++=
@@ -185,12 +181,6 @@ low).
 > 	   used.
 >=20
 > 	   No need to repost just for this!
-
-I can fix it if I need to repost.
-
-Regards,
-Lorenzo
-
 >=20
 > > +		struct airoha_qdma_desc *desc =3D &q->desc[i];
 > > =20
@@ -241,16 +231,16 @@ airoha_queue *q)
 > > Lorenzo Bianconi <lorenzo@kernel.org>
 > >=20
 
---xQbSQq7qBSSZg18s
+--iThq3ydaXqdTfH2R
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCad/DrgAKCRA6cBh0uS2t
-rOFlAP4lp7hgAJ+lChgaBcM9KOHMTwJOo3gXhFRt80fPYSganQD/RXCUFDR3h4lW
-XdUHa1RYpKN7PR9qzwaCoKsHGBk4fgw=
-=bCGY
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCad/R2gAKCRA6cBh0uS2t
+rAsxAQCKyKMvs7z3VGfMqDQMFX/Z8atbBA5QK1r7fjjqMBvsBgD/Us/x1vWTr9QG
+hilddlamKDc07tzQ7aqXHFHN3z0CLwM=
+=b3Np
 -----END PGP SIGNATURE-----
 
---xQbSQq7qBSSZg18s--
+--iThq3ydaXqdTfH2R--
 
