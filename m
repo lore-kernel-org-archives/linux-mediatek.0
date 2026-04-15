@@ -4,106 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF89AF41984
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2026 09:48:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF8B2F4198C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2026 10:32:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IyJiLQD5TCPnlIsoP9sQ4nsBlHq4fhOleCfx0q9dKFo=; b=Ipit+iNtKcRh6YLr9/pogD/hfc
-	QBGOPdTQ8YFL9VDlsic1rm3+cTmLTERry0yKUP92K/Q1AgL4Ay1Ab7oKrwx5eQzl4jF8Nic5/qhs9
-	71o1zbS9fH8lgquEIWBuciuwnFy9CPgRVNjF8x0BNOa7yEOC64UkIdxOjWFOBCPc8TBfXFOg76A7o
-	1pbaOrhUiw2rFMqD7kh5IkaLLKwwBujgN+JF6ABl0lU7poL7r29sMBpWUQ1edGWLcFbd+RoRaHGML
-	9J3BIrd8kMkJAzXOsFhtu+lWA6TCAQ6TiYRGbUjXQPcItbX+EYv/4lE0WeZX6+mgp4dJ7BVtfSGGe
-	gYsfVtbg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=U/iizR17Gf6o+UY0a60C+rF+10q08/vEGmsLhnspuew=; b=WOZQzVLK2DEanK+8mWO7u0XsvO
+	+Fp3TL3vQrdyoevaj1lq10XdoJVxj4A8iwLxHtE9aexS8Upd3OF70JtrUHSwIdt6SnFN8uUzuk5j9
+	DPqdIt3vWA3UfVLShc9jOS8pwqFO1/kGQNWLiHCLiwnwepYNbIwgxcvwo67DWT1Ll0rEitBjM40i1
+	TtDtwhIjwPrKWflfnQ7eh/TW5A0HE7NjoqSB15fsKLRM24vDSS8ouiF3UYc2/adAgXBQh0f36UcEW
+	/4wTlFo/6UDW74rn20/Bh46fQyy/UiTAerNNmSGQsoMJeJj73SAEyPcK0kjkN07Qxuhk6uBI+tb1O
+	Ltdz5JIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCwqz-00000000veJ-3NpT;
-	Wed, 15 Apr 2026 09:48:13 +0000
-Received: from mail-qv1-xf2d.google.com ([2607:f8b0:4864:20::f2d])
+	id 1wCxXU-00000000y9v-3HfH;
+	Wed, 15 Apr 2026 10:32:08 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCwqx-00000000vdL-32pp
-	for linux-mediatek@lists.infradead.org;
-	Wed, 15 Apr 2026 09:48:13 +0000
-Received: by mail-qv1-xf2d.google.com with SMTP id 6a1803df08f44-8a093c784b0so80379516d6.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 15 Apr 2026 02:48:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1776246490; cv=none;
-        d=google.com; s=arc-20240605;
-        b=OY7yvWX1zgG+kKoHRXcZEqfCvI4N2lxCI6aLvzHk3i3RyOkJGvkUKJMy9AUYx/we46
-         9MilOx7wRWBE/mFOh43EDuzfIUU6w751vzQELXnQDrIRG4WuN8nmNAkDQJrE4H8xd6VK
-         3MBV2+FZRk8aH3jh/M41PrNV+cCv3ysE7Ossmpsm2tScwjwufVgbQo7I5SWjtRa7zGrc
-         ptz6X/IhRqUC2uzgaTkxgagDB7YZn96sPMdRtCQF7TGRqJAd6zorrgDsjwjge5eCXIJe
-         U/xvUONl38AMT7hzMgxmRuXtGZZ4RNE3rZfXn+gV2Ky17YJUp9yzc4phZQj+E4tMGbS6
-         0yxg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=IyJiLQD5TCPnlIsoP9sQ4nsBlHq4fhOleCfx0q9dKFo=;
-        fh=BUsKKEjAn/xNYdM1kdcNRwY4cam56QNL/1tVQJUxSYw=;
-        b=GzAkRJRbhIc2PPUyhZJcs3G0nHEP2rO6q5zInjPJsIqeTn0hOlzxU7GK3Tm/QuXiLr
-         EhKGy3mNRBTwAmtsdVxrjqRDb8aQCyxyPoeniS9URs3Iw/WNd3XfOV9ZE4QXZiePuhdh
-         foz1vezmOzo0feQgyZY3Tr0YTL+Cm/qfq+FxF9IXmN1USGtjRkaJuU89GJ+nD3TcLah8
-         IJSLdnKLymcQk+jlLn5KpHH2QSsyM+NXV6S0vTGaW9tCeVme63RyzGhwsd9OibUNTvPF
-         bptpj4MZUYvA/T04WnGo8r5AQkd8Oh5HopMT4H1sFekh5+jvebwFl1kSC0WmW8x9DAOh
-         tJHw==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1776246490; x=1776851290; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=IyJiLQD5TCPnlIsoP9sQ4nsBlHq4fhOleCfx0q9dKFo=;
-        b=soIz5LI2qdaTZL42YM8tKmPqIlihjZoqEntCimD2CbslqGrHJHd3go8YDFhrJnJVq4
-         rtluUx/SPUutgyNRFcBHE7QhLRedrCHV4UHF3pGUrUDlxFLKbZC3eaV2S+ptoWYs2pZf
-         eOIa5jJH9w+pBfVqlRSxbQ8SeZrgoQLbLAXa1ZUE1V0dRuOTICtA7MwW7C1Zfllt8fAf
-         LAddbczIqmMORB0CIjJ5mvxmcjQPIYpv8wKMibE6Sx1nLubKw7Wl60yFCLiENRwe2IHm
-         0xufsF7HaDA0ZR0bHb1/n0Y8NKCctY0tKEeIRwYz19YAZPGHRvAiSY9ofQztrkmYv3IW
-         zqsw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1776246490; x=1776851290;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=IyJiLQD5TCPnlIsoP9sQ4nsBlHq4fhOleCfx0q9dKFo=;
-        b=PgrKbN4JRrNv7e+Bm6pcpeIMxxY6SEstR8hL23GaKQ1EP00Zj+WZJJG/9UzkqTuFI+
-         zLJ74SBfqt7Yn9pulActG4ZufZrDf4Dqb7SdJeW9444hLNfcl91jmI5hdfGwxRAJGy1+
-         THm9tbm1WcgYJNKdOiCy/tqvMvoHdSQs6TGsvMUhtQ1R5lRxUPhall+7jiFMSZY2Y67v
-         fc+eyBkhhYgnbUuF/2ergvAwba1raGQnKJq+st+0IOOY3Nql51Y77+K/qpAwyt1KlPSS
-         qKqswWSPRLalvjd5HU9tVMcZ1N9MAl2+BMRVp2Ih9pjm0DXuxT5AAImvkcufHkEiKMPA
-         ji2Q==
-X-Forwarded-Encrypted: i=1; AFNElJ8U2rNP9tLRZyccb5aAzLyNeEmF0NDWwc5r5gc5DlgyIFhqAyI8n+O8LW9CpvOys/1VIROJqvw9oYnf+ZREhA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YynkAKyRHTx2z7sPPh6sD9aZHmIPTr0TdZRTKGz9dY4DIl9FB/K
-	24NdSf2lig6T3ySzKiCuPCnhOkB9013dtvhrECNxXTbgfhasGNLWBhMUYA/YJQ6JcYNE/tDgRKL
-	2ZiQm7QLx2xOhJ8YyNjZzh7imbduhIp/oVg==
-X-Gm-Gg: AeBDieuHKfDqIEiidhKKIHlLBOglAp9YE2+TwXVVZgs6Zum0e/rQF2ayMn9v89wGq0d
-	ZK5EXIP4ZmS6KG/QjnC8vnBa1IdimhrbvTIRduT2UQ6kC0dcK85oXyCl7e4BOpkpS1QYq0iPQyu
-	nKHItvgcU1P3+3Ccx9izlL9G7JKiBfE0XLwEUOxUtE6kS36R/HqPuVBoMdBBbBH8yGX5FXVsafv
-	ZeboIZTwujCtWsMPzpiQ34eXNbdkTVvnDEZVhJhZ1UzD12r695Pr5jTw0jgQ2PPjTCAhPQyT1S8
-	Kkg7PdNMUxne00u51U7/17qlUiU=
-X-Received: by 2002:a05:6214:2e48:b0:8ac:7616:569c with SMTP id
- 6a1803df08f44-8ac861ad3aamr350240316d6.21.1776246489728; Wed, 15 Apr 2026
- 02:48:09 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250225-en7581-snfi-probe-fix-v2-1-92e35add701b@kernel.org> <abBPufvrG8I8UP69@lore-desk>
-In-Reply-To: <abBPufvrG8I8UP69@lore-desk>
-From: "Christian Marangi (Ansuel)" <ansuelsmth@gmail.com>
-Date: Wed, 15 Apr 2026 11:47:54 +0200
-X-Gm-Features: AQROBzC_3emuWl_zkXPyDwuBn-0k_x9_JCqk9UTd8pYkmyaVmNF-Oazonv_2HuA
-Message-ID: <CA+_ehUyfP7bohsSZEbjp-KLxD084NcR+2SmhDNrpoKQE=BiHcQ@mail.gmail.com>
-Subject: Re: [PATCH v2] arm64: dts: airoha: en7581: Enable spi nand controller
+	id 1wCxXS-00000000y90-0CA7;
+	Wed, 15 Apr 2026 10:32:07 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 31FC3439A0;
+	Wed, 15 Apr 2026 10:32:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B5C12C2BCB6;
+	Wed, 15 Apr 2026 10:32:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1776249125;
+	bh=HIKPLEyWCCsA3zb5wxtyTAgfOX1+xiCwivVroOYHU3I=;
+	h=From:Date:Subject:To:Cc:From;
+	b=IsWcfKmGsYtWiRh/FZMbE4wbuP6wYxpAnlj2rdBMw9jy0FIshvnLhRncIFBGx55DU
+	 yWEDTdxCQmP+AmN2EykEHsTXI9y9W2IILpWODjg9oKPSy8qeZUAUIvQTvYrQHlNG4k
+	 Vl8esEtpWkq/n7NX1kLIVB71KEFYhSPp3uUHCeTWfx7UcmpIboef/Yh4gDB1fA/uKP
+	 IArjFXNgkgQp621EAHevpxOUICTzfsFCt0XsmgbHf+KfhyfSOnwjzvuR6+6ZN4chNd
+	 2i4k0TM8+7Obc9EMJgzVudsLnapoQdfbeCPwj9RO6QTPn/JCMARqhdDQ1xKh0Svqud
+	 7Ht4qE9fBE31A==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Wed, 15 Apr 2026 12:31:49 +0200
+Subject: [PATCH v3] arm64: dts: airoha: en7581: Enable spi nand controller
  for EN7581 EVB
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	devicetree@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260415-airoha-7581-spi-enable-v3-1-07e0f27cce13@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MQQqAIBBA0avIrBswzYquEi1MpxoIFYUIorsnL
+ d/i/wcKZaYCk3gg08WFY6jQjQB32LATsq8GJVUvu9ag5RwPi4MZWyyJkYJdT0KpOydp08qvPdQ
+ 4Zdr4/sfz8r4fC51muWgAAAA=
+X-Change-ID: 20260415-airoha-7581-spi-enable-034c0ef32db6
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>
+Cc: Arnd Bergmann <arnd@arndb.de>, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260415_024811_800919_0F98C7A9 
-X-CRM114-Status: GOOD (  12.16  )
+X-CRM114-CacheID: sfid-20260415_033206_118367_F82A579C 
+X-CRM114-Status: GOOD (  10.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,36 +78,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il giorno mar 10 mar 2026 alle ore 18:07 Lorenzo Bianconi
-<lorenzo@kernel.org> ha scritto:
->
-> > Enable spi controller used for snand memory device for EN7581 evaluation
-> > board.
-> >
-> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
->
-> Hi all,
->
-> it seems this patch has been reviewed by AngeloGioacchino, but it has never
-> been applied to linux-mediatek tree (or at least I can't find it). It is marked
-> as 'New, archived' in patchwork [0]. Am I missing something?
->
-> Regards,
-> Lorenzo
->
-> [0] https://patchwork.kernel.org/project/linux-mediatek/patch/20250225-en7581-snfi-probe-fix-v2-1-92e35add701b@kernel.org/
->
+Enable spi controller used for snand memory device for EN7581 evaluation
+board.
 
-Hi,
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+Changes in v3:
+- Rebase and resend
+- Link to v2: https://lore.kernel.org/linux-mediatek/20250225-en7581-snfi-probe-fix-v2-1-92e35add701b@kernel.org/
 
-friendly ping here. There are lots of patch with review tag and ACK
-also for 7583.
+Changes in v2:
+- Clarify the commit title
+- Link to v1: https://lore.kernel.org/r/20250225-en7581-snfi-probe-fix-v1-1-77e4769574e4@kernel.org
+---
+ arch/arm64/boot/dts/airoha/en7581-evb.dts | 4 ++++
+ arch/arm64/boot/dts/airoha/en7581.dtsi    | 2 +-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
 
-Any chance someone can ping maintainers that take care of picking these patch?
-Or someone that can reply on how to handle this? Maybe we need to sync with
-them? Lorenzo (and also me) are fully maintaining the Airoha ARM target also on
-U-Boot. Also on OpenWrt this target is starting to get traction and is
-getting used
-there, so Airoha is not considered an abandoned target anymore.
+diff --git a/arch/arm64/boot/dts/airoha/en7581-evb.dts b/arch/arm64/boot/dts/airoha/en7581-evb.dts
+index 886e2e4b5f64..3dc68dbf1be7 100644
+--- a/arch/arm64/boot/dts/airoha/en7581-evb.dts
++++ b/arch/arm64/boot/dts/airoha/en7581-evb.dts
+@@ -25,6 +25,10 @@ memory@80000000 {
+ 	};
+ };
+ 
++&snfi {
++	status = "okay";
++};
++
+ &spi_nand {
+ 	partitions {
+ 		compatible = "fixed-partitions";
+diff --git a/arch/arm64/boot/dts/airoha/en7581.dtsi b/arch/arm64/boot/dts/airoha/en7581.dtsi
+index ff6908a76e8e..0964cd783013 100644
+--- a/arch/arm64/boot/dts/airoha/en7581.dtsi
++++ b/arch/arm64/boot/dts/airoha/en7581.dtsi
+@@ -150,7 +150,7 @@ gic: interrupt-controller@9000000 {
+ 			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_LOW>;
+ 		};
+ 
+-		spi@1fa10000 {
++		snfi: spi@1fa10000 {
+ 			compatible = "airoha,en7581-snand";
+ 			reg = <0x0 0x1fa10000 0x0 0x140>,
+ 			      <0x0 0x1fa11000 0x0 0x160>;
+
+---
+base-commit: e6490a169f6d5f5bdea7a2e8a673890d43afadc0
+change-id: 20260415-airoha-7581-spi-enable-034c0ef32db6
+
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
