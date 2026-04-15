@@ -4,63 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BD97F9D0FB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2026 23:03:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 376C3FA0C47
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2026 08:06:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Uo03UPaCbU5fCLB6rB8/Wfjvuj9xckNaS+amXlIhHFw=; b=IMTDqmNVhRdlRV4fdCzGFA/H2t
-	IRQ1pXTib4979BFlHVayiG//dCcTvX0ZDtE3uy2TL0b6n5SeW1GNCS+hjwlocJdEOueaR3UwFJOGn
-	UlJCZNEnwmS6ZPM2H7qBI7oeL+/6udX5YNLdzwDijt7wTfCRhBnZPPGCBKHbMdnFE2hMypumlLSb4
-	oqLxeMvZgEiBYHZSHJYF3BIDcXdjn1nhRQQhYhLfzlxaNupFyJpXoNn/ckMCA12wXyR/4gO7XfqU/
-	mOrCvASzU54NDdqLrUJtBo6nD2wypcb51eIWsQfYJvnhmo0Et4+XMrRZLhhK+WXGptU7a/h8LJ9h8
-	hGyJt7HQ==;
+	bh=kIfiro5qa0qdakbKJs/gPCa7//kofURKtoktUaVygDc=; b=QqmpgNXhVIa23KV4HId+Wp/FvI
+	dUmu9izZsLWb+o1XQbKTq+9nPEXWV2LBqVkCqTspiV3kiJqAc1nxqSIL/gN4TzCe/x/CssHLW4Tb7
+	vxWLmkNtTSah4LUJz1C3JKMMzjsjFBg+CIDbExRXI/jxZnPcViDQG4kVEMhRc8En2+RSnil8UsD03
+	uOZyD3wBIKog1u/xkE9tSdgrGdtd1NycBHnfgE8M23oYykT+0OCKktPgMinSV0JjmMsGY0XBfa/Xz
+	IbpcFZHagqhDeARCYoIMMByHDMGfxa3KI6ljlPcCNZMSyycnsYHFnUAhKUhoR6s4ib8OU46V1B2B6
+	a5v7AlPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCmmq-00000000JSb-0E70;
-	Tue, 14 Apr 2026 23:03:16 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wCvGS-00000000lv0-34oM;
+	Wed, 15 Apr 2026 08:06:24 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCmmn-00000000JRz-0Vkx;
-	Tue, 14 Apr 2026 23:03:14 +0000
+	id 1wCvGR-00000000luf-0s5G;
+	Wed, 15 Apr 2026 08:06:23 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id BB47A4395D;
-	Tue, 14 Apr 2026 23:03:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 39872C19425;
-	Tue, 14 Apr 2026 23:03:11 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id E16A660131;
+	Wed, 15 Apr 2026 08:06:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 14785C19424;
+	Wed, 15 Apr 2026 08:06:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776207791;
-	bh=DPMIG0JyHD8TiANVF6tKn1krzB0C2AAq7YcH8D+L2w4=;
+	s=k20201202; t=1776240381;
+	bh=MSJUysqVgt1QUFc7uq+PpRAh/iOmjbKOQGfVXqW2iGo=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qMRqA8NWtpwh46bcDmDtPfeFSsI7VfEvufnIj70RnhOpvKpu2H2OdtOvM28jJ/Ujj
-	 9+jkDC1wW77PceNKP5EnwBPHQltH4H80Yk98xbMrQUK/Y2PTwlWgiTVdQfE4Bs5Pak
-	 dvLbqPBc2M65FwlOprrcEMb+9IbUaFGTtnNf7+S7d6471VxFutgK6KwJVnheiOAYHn
-	 zJLsGczmt4x0z+X26vysLjD50SGqRe9XBkrHhS5jGRbv1EniaqNwP9lFNYQD6l9URe
-	 j5f6u7Uk8ZpYlCxHTs3LgySB5fk+754sojJIaC8M290UrrYxXExY3VwZpquhJqO3Qj
-	 /AtIApwXUlJ8g==
-Date: Wed, 15 Apr 2026 01:03:08 +0200
-From: Andi Shyti <andi.shyti@kernel.org>
-To: adlavinitha reddy <adlavinitha.reddy@mediatek.com>
-Cc: Qii Wang <qii.wang@mediatek.com>, 
+	b=nri/vLHGbGnwm6HJFES4MIwV+2lYUglPI6smarMNGpx5Fm+iQQI4QyN368R19Zl7N
+	 GciIs+1dMlIduO6Dmh9OO0wcLOel4ZROmLkgN1sJHAjLDmaBNEyt9pzf3epGRuMUHd
+	 PzbzteNS4GGoaWNLxOsZpmNkwW4gnXJpe3Ot63JbBIMc07JfRDqWjiB22veA/O1GxY
+	 DRag8tiyI7qdBEE9tcYKQ7we+kd6d6ITXOrzCXRJJwty6Bok9xQ0nF7lFVNXTb6/Cm
+	 7WE0QKUnzeJEYM+8RvFz2oLIzT0xzi1xZYvnJcVJ3ORajDqdkg1WvlrfIE9r264HRE
+	 LrtRMfuGZVr0A==
+Date: Wed, 15 Apr 2026 10:06:19 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [v1,PATCH 1/1] i2c: mediatek: add bus regulator control for
- power saving
-Message-ID: <ad7FOoevcOm0AxP8@zenone.zhora.eu>
-References: <20260318084621.4127757-1-adlavinitha.reddy@mediatek.com>
- <20260318084621.4127757-2-adlavinitha.reddy@mediatek.com>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Mark Brown <broonie@kernel.org>, Gene Chen <gene_chen@richtek.com>, kernel@collabora.com, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/3] regulator: dt-bindings: mt6360: add buck regulator
+ supplies
+Message-ID: <20260415-spiritual-sloppy-sidewinder-2d394c@quoll>
+References: <20260414-mtk-g1200-pmic-cleanup-v1-0-2a7193ed4e93@collabora.com>
+ <20260414-mtk-g1200-pmic-cleanup-v1-1-2a7193ed4e93@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20260318084621.4127757-2-adlavinitha.reddy@mediatek.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260414_160313_203835_E0A2AE83 
-X-CRM114-Status: GOOD (  13.50  )
+In-Reply-To: <20260414-mtk-g1200-pmic-cleanup-v1-1-2a7193ed4e93@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,47 +74,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Adlavinitha,
-
-On Wed, Mar 18, 2026 at 04:46:16PM +0800, adlavinitha reddy wrote:
-> Add conditional bus regulator enable/disable in mtk_i2c_transfer()
-> to support I2C bus power gating for platforms that require it.
+On Tue, Apr 14, 2026 at 01:44:10PM +0200, Louis-Alexis Eyraud wrote:
+> MT6360 PMIC provides 2 buck and 6 ldo regulators, that have each one a
+> separate supply.
+> Currently, the supplies for the ldo regulators are described in the
+> dt-bindings but the ones for the buck regulators are not.
 > 
-> This implementation:
-> - Enables bus_regulator before clk_bulk_enable() if vbus-supply is defined
-> - Disables bus_regulator after clk_bulk_disable()
-> - Only activates when vbus-supply is provided in device tree
-> - Has no impact on platforms without vbus-supply defined
+> Add the descriptions for these missing supplies.
 > 
-> This approach provides power savinggs for platforms with an extra I2C bus
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+> ---
+>  Documentation/devicetree/bindings/regulator/mt6360-regulator.yaml | 4 ++++
+>  1 file changed, 4 insertions(+)
 
-I changed /savinggs/savings/.
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
-> regulator, while avoiding runtime PM complexity.
-> 
-> TEST= Build and boot on MT8188
+Best regards,
+Krzysztof
 
-'"TEST=..." is a tag. There is no need to save characters in the
-commit log. I changed it to "Tested on MT8188.".'
-
-> Signed-off-by: adlavinitha reddy <adlavinitha.reddy@mediatek.com>
-
-Please use capital letters for your name and for the committer's
-name as well. I fixed it.
-
-Now you have to explain me why you sent three times this same
-patch.
-
-Next time, please use the format '[PATCH v1 1/1]' instead of
-'[v1,PATCH 1/1]'. Normally for the first version you can omit v1.
-
-For single patches you don't need the 0/1 cover letter. Just send
-as [PATCH].
-
-Please read Documentation/SubmittingPatches.
-
-For now I merged this patch in i2c/i2c-host-2.
-
-Thanks,
-Andi
 
