@@ -4,62 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7DD5F8A175
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Apr 2026 13:29:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFC3CF8D74B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Apr 2026 14:23:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pMj5pQuZ6VDOT5R097z4wZeimxAE2fHt8ObaXpvsvUE=; b=a8r+rTFfQKJ/CJHgjmo6sXeofn
-	epOjmSat873wKThrJi49DzNfm3D4hpJ5CMAa8XWPWI6wBxs8a7lVSzFMcMXTw8GZrqbgimk8lUGbv
-	vmkkxXso4R0jWnhNX5Q11E6YFZyG1cBAQ5Mb7gVsh4OaP+GpCEmhdwjmjPzz+ZfgLrOQOee/zGLwb
-	llsLRz9iTwuRzsm/7ZVSNXGCGzIjg0NPBPxGx25SyfQpztu3Pf4MMwCtcX3aeSSsQgNlAKTWOe9F3
-	SwMLUsWvXQ/BCIx6oQrnb6Oe6U5ILfTnpBtbOq+F8bekymORxX+ARkNZEfN/HoBAu/bXuLEChtRCL
-	Yq50/Tgw==;
+	bh=+l7kv+rSnvW+MHciA/lpab1uUs3dd1TMko96Ol/cH48=; b=0bs3IB+dgt2FJl+m44xwrJRURZ
+	92nhTmzYUAhq+l0WDC/oDn5ay2jaBTlwJoRWFor89AvEk5z+mgZgjxBuPdAGj7zcwsV/O7HWSolSC
+	wWU/1FK1Y4Md/mSvq1UwE1u3xt1U6UfA+Nj5MoUwyPp8HL73gQDE5WvW9ud76p2yuNcsj4OSkGICX
+	CQks1pIPEKgrFfR6ouq4nbtsV62UPvw1kwXfHqAM7GiEiLuyOsdsawt67nbLkP+YLl+XlYV+dDby9
+	RcZBBFRwnPXSU2kEWmd/zYkiy6bG1bP363JuDx65/MyhapBCGn/oT9K9ZRGkP8MBSuxPIm7NEiNgF
+	xrk7equQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDMn1-00000002VAr-2Kbn;
-	Thu, 16 Apr 2026 13:29:51 +0000
+	id 1wDNco-00000002Ykf-3OSP;
+	Thu, 16 Apr 2026 14:23:22 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDMmz-00000002VAc-2b7g;
-	Thu, 16 Apr 2026 13:29:49 +0000
+	id 1wDNcm-00000002YkB-3BX1;
+	Thu, 16 Apr 2026 14:23:20 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id F0E5860127;
-	Thu, 16 Apr 2026 13:29:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D8B0CC2BCAF;
-	Thu, 16 Apr 2026 13:29:46 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 1E1D560127;
+	Thu, 16 Apr 2026 14:23:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE7B6C2BCAF;
+	Thu, 16 Apr 2026 14:23:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776346188;
-	bh=TD0UVB4QDOczS9ajeE/KW9nzXJ9QMZAv+muPY3AVbBk=;
+	s=k20201202; t=1776349399;
+	bh=opPcvVlYuRkjUIo32RRgDtwtOOlKtMIz0mFBSIY2WOY=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ooFmWVoyjulIZ/2UdJhww0q8nlp7Uhqr1hnAlDc/yFgA3h/6B9xUU6Jjl/rCmbUlN
-	 wFzZ1USo3eG1YUV8iaCJkmeKm+9Kiv79TP+4rmyp730Jh28nLW+ThOzxq0kJHFFKJw
-	 Tl/L0DwZEjdYM3N8Ih037NVaBnbPmADeidO1LupkcFmQayZ1VxGmVrzcrcAltMxyyB
-	 duwh0wznpmn8OiDYuDGHQ57E8X2IKTDvAKv/oDU/RwPA29tHtRJJIHkefEH1UqtkRF
-	 22Fz3KLFlBa8aKbyOsbGqm0UOSAEsNuiWOn0TL84kU0KQyvXmMKQWHpte8CGk4efva
-	 x11wXirEycBmw==
-Date: Thu, 16 Apr 2026 14:29:44 +0100
-From: Simon Horman <horms@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net v2] net: airoha: Add missing bits in
- airoha_qdma_cleanup_tx_queue()
-Message-ID: <20260416132944.GA863718@horms.kernel.org>
-References: <20260414-airoha_qdma_cleanup_tx_queue-fix-net-v2-1-875de57cc022@kernel.org>
- <20260415164643.GQ772670@horms.kernel.org>
- <ad_DrrC6duye_lR0@lore-desk>
+	b=jVrlTw+ieUMT7xieZztjtWdV9B4SLOVadxtgetiQvQ10dPMK3yLwWgFj/ErgtsypQ
+	 7K6oCS1unszJLViIhMWpRKmXQYvBNHQB+83K+8jiMmibL/Tbf8Zuc5OpN7Q6YBeEvP
+	 CM0r12aTEh4AHtIaRKhKAUsOV+NkWA3uozMpCQcGw7E5wrsZzgE8ajythEAEyzyet3
+	 wV125yHnUauN3vOpKQGpiIlfIqy7ggqjLtuvB8QtFPG+GPMmrC0ORLPaG6xYAUvruB
+	 zir98diHX3X34+aUz3CNNDJK2RteQHg68tYu7ll/ULdr9O+6R7fOkgOHEUJKlFKveD
+	 3t27gyXEZoPXg==
+Date: Thu, 16 Apr 2026 15:23:13 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Cyril Chao <Cyril.Chao@mediatek.com>, Arnd Bergmann <arnd@arndb.de>,
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
+	Eugen Hristev <eugen.hristev@linaro.org>,
+	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 5/9] ASoC: mediatek: mt2701: add HDMI audio memif, FE and
+ BE DAIs
+Message-ID: <4601e621-69f3-44f2-8a77-37d53b5daca5@sirena.org.uk>
+References: <cover.1776265610.git.daniel@makrotopia.org>
+ <975f39291cffc5d3f201d2ec7fdc2cfdd1fed6aa.1776265610.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="jxRr5EZNrsglGDN6"
 Content-Disposition: inline
-In-Reply-To: <ad_DrrC6duye_lR0@lore-desk>
+In-Reply-To: <975f39291cffc5d3f201d2ec7fdc2cfdd1fed6aa.1776265610.git.daniel@makrotopia.org>
+X-Cookie: Process promptly.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,48 +82,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 15, 2026 at 06:58:22PM +0200, Lorenzo Bianconi wrote:
-> On Apr 15, Simon Horman wrote:
-> > On Tue, Apr 14, 2026 at 08:50:52AM +0200, Lorenzo Bianconi wrote:
-> > > Similar to airoha_qdma_cleanup_rx_queue(), reset DMA TX descriptors in
-> > > airoha_qdma_cleanup_tx_queue routine. Moreover, reset TX_DMA_IDX to
-> > > TX_CPU_IDX to notify the NIC the QDMA TX ring is empty.
-> > > 
-> > > Fixes: 23020f0493270 ("net: airoha: Introduce ethernet support for EN7581 SoC")
-> > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > > ---
-> > > Changes in v2:
-> > > - Move q->ndesc initialization at end of airoha_qdma_init_tx routine in
-> > >   order to avoid any possible NULL pointer dereference in
-> > >   airoha_qdma_cleanup_tx_queue()
-> > 
-> > This seems to be a separate issue.
-> > If so, I think it should be split out into a separate patch.
-> > 
-> > > - Check if q->tx_list is empty in airoha_qdma_cleanup_tx_queue()
-> > > - Link to v1: https://lore.kernel.org/r/20260410-airoha_qdma_cleanup_tx_queue-fix-net-v1-1-b7171c8f1e78@kernel.org
-> > 
-> > I think it was covered in the review Jakub forwarded for v1.  But FTR,
-> > Sashiko has some feedback on this patch in the form of an existing bug
-> > (that should almost certainly be handled separately from this patch).
-> 
-> Hi Simon,
-> 
-> I took a look to the Sashiko's report [0] but this issue is not introduced by
-> this patch and, even if it would be a better approach, I guess the hw is
-> capable of managing out-of-order TX descriptors. So I guess this patch is fine
-> in this way, agree?
-> 
-> [0] https://sashiko.dev/#/patchset/20260414-airoha_qdma_cleanup_tx_queue-fix-net-v2-1-875de57cc022%40kernel.org
 
-Hi Lorenzo,
+--jxRr5EZNrsglGDN6
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-You responded in a different sub thread, so I think this is probably
-implied. But FTR:
+On Wed, Apr 15, 2026 at 04:23:59PM +0100, Daniel Golle wrote:
+> Extend the MT2701/MT7623N AFE driver with the HDMI playback path:
 
-1. I agree [0] is not introduced by this patch
-2. If the hw is capable of managing TX descriptors then
-   I think that [0] is a false positive
+> +static int mt2701_afe_hdmi_hw_params(struct snd_pcm_substream *substream,
+> +				     struct snd_pcm_hw_params *params,
+> +				     struct snd_soc_dai *dai)
+> +{
 
-Regardless, [0] doesn't effect this patch.
+> +	/* Channel count into the HDMI output memif (bits [7:4]). */
+> +	regmap_update_bits(afe->regmap, AFE_HDMI_OUT_CON0,
+> +			   0x000000f0, channels << 4);
+
+Are the other fields guaranteed to be already set up properly?
+
+> +	/*
+> +	 * 8-channel I2S framing: standard I2S, 32-bit slots,
+> +	 * LRCK/BCK inverted. The wire protocol is fixed.
+> +	 */
+> +	regmap_update_bits(afe->regmap, AFE_8CH_I2S_OUT_CON,
+> +			   AFE_8CH_I2S_OUT_CON_WLEN_MASK |
+> +			   AFE_8CH_I2S_OUT_CON_I2S_DELAY |
+> +			   AFE_8CH_I2S_OUT_CON_LRCK_INV |
+> +			   AFE_8CH_I2S_OUT_CON_BCK_INV,
+> +			   AFE_8CH_I2S_OUT_CON_WLEN_32BIT |
+> +			   AFE_8CH_I2S_OUT_CON_I2S_DELAY |
+> +			   AFE_8CH_I2S_OUT_CON_LRCK_INV |
+> +			   AFE_8CH_I2S_OUT_CON_BCK_INV);
+
+Does this need suspend/resume handling?
+
+--jxRr5EZNrsglGDN6
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmng8NAACgkQJNaLcl1U
+h9Dn3wf+Mnx8MVoz/CoB0OxIak3Sw/h8KczHapNPRJnhvDiRg4IpMHe539ZCHTwX
+6fAQBc1V8g1+G/Up6I639OfuGz026oE9/V93dWIKJRYE8NhPi3cUXi3/GjXAXn/H
+LgTZa7BudOMrHznrHlottyg4Y97CDNJXegfoD+lh3D6zoPoMdjjnFgHTmZ1lYeMW
+Mg31QIIls9Optj4OAYqHuju/70vVXGAyH9tvijMo/WFsxt8rzjRgvLQGrA/ZiRAl
+XGRUq5w/a0eB3i6OcUkeo8OiGssjUVRcQMdzqPBox0HyQNKVcIWgY8O4pP7bJGpU
+rfvO0oI2IN/iTzTORd+PAeO9QPQtaQ==
+=WwxQ
+-----END PGP SIGNATURE-----
+
+--jxRr5EZNrsglGDN6--
 
