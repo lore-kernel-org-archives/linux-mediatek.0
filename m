@@ -4,70 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFC3CF8D74B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Apr 2026 14:23:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E11FDF8D75B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Apr 2026 15:46:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+l7kv+rSnvW+MHciA/lpab1uUs3dd1TMko96Ol/cH48=; b=0bs3IB+dgt2FJl+m44xwrJRURZ
-	92nhTmzYUAhq+l0WDC/oDn5ay2jaBTlwJoRWFor89AvEk5z+mgZgjxBuPdAGj7zcwsV/O7HWSolSC
-	wWU/1FK1Y4Md/mSvq1UwE1u3xt1U6UfA+Nj5MoUwyPp8HL73gQDE5WvW9ud76p2yuNcsj4OSkGICX
-	CQks1pIPEKgrFfR6ouq4nbtsV62UPvw1kwXfHqAM7GiEiLuyOsdsawt67nbLkP+YLl+XlYV+dDby9
-	RcZBBFRwnPXSU2kEWmd/zYkiy6bG1bP363JuDx65/MyhapBCGn/oT9K9ZRGkP8MBSuxPIm7NEiNgF
-	xrk7equQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CyPmSGyK816MUuWcKPWra66rWlqz/gSBtKUFepuyfsQ=; b=XiAjDCuSZyho++fj91B3CORhnw
+	FZnrY0W3SYaxBjISuKQdF36oBmPSEV6nr5wWE2kHfuACgvntCPELLq8+mFGANZ0m8Mraj/2B4pqT/
+	X5twd5uOGTEfb0TqgTU3yBpeQXOwt8vyk14+JigEu/2iHyqJVRRCCq2K+bZe4TLjxLMirDg1+B0em
+	ECRQ610TRT8WEm+Vu1voVWLjEbekUxAUtFngTLRiO8HWBxXtymdvO5lKrGlJsY6ddP/1tHaQzlQeC
+	VFATLfrPAw9qW9oxX+3drpV8H8FLNKEhFJPXx4233sUlbWI7OKDMwX4b8onbghOrUlSv1JkH0VvzZ
+	fyXodObg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDNco-00000002Ykf-3OSP;
-	Thu, 16 Apr 2026 14:23:22 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wDOv0-00000002dTr-3gdi;
+	Thu, 16 Apr 2026 15:46:14 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDNcm-00000002YkB-3BX1;
-	Thu, 16 Apr 2026 14:23:20 +0000
+	id 1wDOuy-00000002dTR-1L5i;
+	Thu, 16 Apr 2026 15:46:13 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1E1D560127;
-	Thu, 16 Apr 2026 14:23:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE7B6C2BCAF;
-	Thu, 16 Apr 2026 14:23:15 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id DDD8443860;
+	Thu, 16 Apr 2026 15:46:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16150C2BCAF;
+	Thu, 16 Apr 2026 15:46:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776349399;
-	bh=opPcvVlYuRkjUIo32RRgDtwtOOlKtMIz0mFBSIY2WOY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=jVrlTw+ieUMT7xieZztjtWdV9B4SLOVadxtgetiQvQ10dPMK3yLwWgFj/ErgtsypQ
-	 7K6oCS1unszJLViIhMWpRKmXQYvBNHQB+83K+8jiMmibL/Tbf8Zuc5OpN7Q6YBeEvP
-	 CM0r12aTEh4AHtIaRKhKAUsOV+NkWA3uozMpCQcGw7E5wrsZzgE8ajythEAEyzyet3
-	 wV125yHnUauN3vOpKQGpiIlfIqy7ggqjLtuvB8QtFPG+GPMmrC0ORLPaG6xYAUvruB
-	 zir98diHX3X34+aUz3CNNDJK2RteQHg68tYu7ll/ULdr9O+6R7fOkgOHEUJKlFKveD
-	 3t27gyXEZoPXg==
-Date: Thu, 16 Apr 2026 15:23:13 +0100
+	s=k20201202; t=1776354370;
+	bh=fZETXYu0oWCsWiHimS0OA/TAWz0pKdtdcNhYZKxuwdQ=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=ho9Truf9ExiGsv2biQrqDWEdZ3vfKdwLsLgn6qcAq0yRfny/3O+OCgJfKh+RAetrx
+	 Dhb9qdBUb/9bjbHdP9LmUY+NkuHR8Dm1JG+qCBLWRRctmPEIKxvM0WgY3oo1wYJ8QY
+	 zVAhIfQchi930aM5q8WF34gDm7Ke3ecjmH3siJ7V12K7DuOpR1i3QxxU08/HDZ8HHo
+	 050hHfMyQDux65WsVE0ZQoi8qR7lkVzu/92zM8NW66ktpXC+M5/xTo9wYy/FPXircA
+	 InugFvlU3Lk0STI/an1ejUHhVMwbooR2juvR/b2Et+loAjvSLLYDM3GIO/2W0uJIqf
+	 kyePIWT4ZHh4A==
 From: Mark Brown <broonie@kernel.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Cyril Chao <Cyril.Chao@mediatek.com>, Arnd Bergmann <arnd@arndb.de>,
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
-	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
-	Eugen Hristev <eugen.hristev@linaro.org>,
-	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 5/9] ASoC: mediatek: mt2701: add HDMI audio memif, FE and
- BE DAIs
-Message-ID: <4601e621-69f3-44f2-8a77-37d53b5daca5@sirena.org.uk>
-References: <cover.1776265610.git.daniel@makrotopia.org>
- <975f39291cffc5d3f201d2ec7fdc2cfdd1fed6aa.1776265610.git.daniel@makrotopia.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Xiangsheng Hou <xiangsheng.hou@mediatek.com>, Felix Gu <ustc.gu@gmail.com>
+Cc: linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <20260416-mtk-snfi-v2-1-3f487689dacb@gmail.com>
+References: <20260416-mtk-snfi-v2-1-3f487689dacb@gmail.com>
+Subject: Re: [PATCH v2] spi: mtk-snfi: fix memory leak in probe
+Message-Id: <177635127007.43536.11128592640404935803.b4-ty@b4>
+Date: Thu, 16 Apr 2026 15:54:30 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="jxRr5EZNrsglGDN6"
-Content-Disposition: inline
-In-Reply-To: <975f39291cffc5d3f201d2ec7fdc2cfdd1fed6aa.1776265610.git.daniel@makrotopia.org>
-X-Cookie: Process promptly.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.16-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1088; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=fZETXYu0oWCsWiHimS0OA/TAWz0pKdtdcNhYZKxuwdQ=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBp4QRALDdqFpSWntj953+kCEe/VleFyxyWZA5MS
+ nBVKNSokdKJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCaeEEQAAKCRAk1otyXVSH
+ 0FifB/9XMPkENhGcZcoP0IMp2qLmCOAxnJR28C+LRnrKISS01bhd/THZdf+sg08r/TC/SRM1dIl
+ bnmrWNcHji0BDMZGNzGxqkjx7y7pFjenjr0duKNMpw2kIpyDIfcd81EPJ+p1jwMdLImels0Kc9q
+ 8OVODeNGdCRC33VgQfBId4erOzbwpGr1XisGMuvj9Qp9RSWkHfhBiGvcl2gUGn6lpl9ZxGairbL
+ pnvy0yz4vscFJx3EW1PgNWOrF1ZQSSFtOtkXc2BcYrfsF9ionXHSofv3z8fs4aXz/B0KSNZhak8
+ t3J6scRq8IcjCA5Pq6MlCo8X+x3EsbJoW7hX6HyPU9MKAWHY
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260416_084612_390923_B1ABAE9B 
+X-CRM114-Status: UNSURE (   9.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,55 +85,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, 16 Apr 2026 21:00:08 +0800, Felix Gu wrote:
+> spi: mtk-snfi: fix memory leak in probe
 
---jxRr5EZNrsglGDN6
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Applied to
 
-On Wed, Apr 15, 2026 at 04:23:59PM +0100, Daniel Golle wrote:
-> Extend the MT2701/MT7623N AFE driver with the HDMI playback path:
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-7.1
 
-> +static int mt2701_afe_hdmi_hw_params(struct snd_pcm_substream *substream,
-> +				     struct snd_pcm_hw_params *params,
-> +				     struct snd_soc_dai *dai)
-> +{
+Thanks!
 
-> +	/* Channel count into the HDMI output memif (bits [7:4]). */
-> +	regmap_update_bits(afe->regmap, AFE_HDMI_OUT_CON0,
-> +			   0x000000f0, channels << 4);
+[1/1] spi: mtk-snfi: fix memory leak in probe
+      https://git.kernel.org/broonie/spi/c/51942b77f443
 
-Are the other fields guaranteed to be already set up properly?
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-> +	/*
-> +	 * 8-channel I2S framing: standard I2S, 32-bit slots,
-> +	 * LRCK/BCK inverted. The wire protocol is fixed.
-> +	 */
-> +	regmap_update_bits(afe->regmap, AFE_8CH_I2S_OUT_CON,
-> +			   AFE_8CH_I2S_OUT_CON_WLEN_MASK |
-> +			   AFE_8CH_I2S_OUT_CON_I2S_DELAY |
-> +			   AFE_8CH_I2S_OUT_CON_LRCK_INV |
-> +			   AFE_8CH_I2S_OUT_CON_BCK_INV,
-> +			   AFE_8CH_I2S_OUT_CON_WLEN_32BIT |
-> +			   AFE_8CH_I2S_OUT_CON_I2S_DELAY |
-> +			   AFE_8CH_I2S_OUT_CON_LRCK_INV |
-> +			   AFE_8CH_I2S_OUT_CON_BCK_INV);
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-Does this need suspend/resume handling?
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
---jxRr5EZNrsglGDN6
-Content-Type: application/pgp-signature; name="signature.asc"
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
------BEGIN PGP SIGNATURE-----
+Thanks,
+Mark
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmng8NAACgkQJNaLcl1U
-h9Dn3wf+Mnx8MVoz/CoB0OxIak3Sw/h8KczHapNPRJnhvDiRg4IpMHe539ZCHTwX
-6fAQBc1V8g1+G/Up6I639OfuGz026oE9/V93dWIKJRYE8NhPi3cUXi3/GjXAXn/H
-LgTZa7BudOMrHznrHlottyg4Y97CDNJXegfoD+lh3D6zoPoMdjjnFgHTmZ1lYeMW
-Mg31QIIls9Optj4OAYqHuju/70vVXGAyH9tvijMo/WFsxt8rzjRgvLQGrA/ZiRAl
-XGRUq5w/a0eB3i6OcUkeo8OiGssjUVRcQMdzqPBox0HyQNKVcIWgY8O4pP7bJGpU
-rfvO0oI2IN/iTzTORd+PAeO9QPQtaQ==
-=WwxQ
------END PGP SIGNATURE-----
-
---jxRr5EZNrsglGDN6--
 
