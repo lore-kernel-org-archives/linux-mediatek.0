@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2BA7F8A154
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Apr 2026 10:30:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F614F8A15B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Apr 2026 10:47:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=1iXIMsdfyTbopCbtjg+sQNMkzBRT1ysNowZ3jnRrMDo=; b=SWWkS9T6NnZa2B4vQI/rKDfZ4T
-	WOZqPoCg4NL7GHAYDI8TpQkoFAk665jpY9kUrB1lJjbzDYI3t/5H85NWGT5+0H2ocBEth+SKw+LEV
-	NUgvzvbXO5whWhD2to8pHbslBbqLav2emYI0yK1SzHA98/QXEuzzH4MvFsTaoSANWoi8AHZbdqoZl
-	aSI4iHAdOiC6NdVENo1PyzKL3s5615t96auDrxcgOXwbiLR6NwjIXaIVD99SsvCIoCdwuCK/JuNzw
-	Jt0odBsMXMtGfEROTIWVXCNMMBKZOSQ5z52Jjp0RjtlZ99iEiw4aeZTyGuXIuqB3iuoS9+/v6ONaP
-	RDlAYFyg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GcXhudkVlVyWtckoqITx7NSvn1VWwg2cDlfpgnc7R7E=; b=YqvJIZmP0wl3KBfHo3CoqeRV1H
+	Hv+rgw5MAjOx74N+PerrWqUQCGMRSLCtroKSnnc9NXVFvc/O8q8KeQM2qGYzLnHPz773FX//LNKBp
+	m+xZqdvs1wjkctfUgVPY/sPbOfLRHBL5xvjPfLT9JcURwRzfuk4reGBggc/KIP+SE+W6wFnfESg9p
+	ErvePru3FlIJBNoO/fupF9OT5k3BaHYp0nOzBcb6VZyxAI5QI3geAdlyeVX0t2uNNQl22aCqdbndG
+	uzf0T8s9SFoXJDCa6evJjrnIsG5Re4a8oWjzXNLQmkPyOf5xfSsIRO7XIEPC2E6Aa+C33w7luMPpX
+	iUXj2FFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDJzh-00000002JOq-32hH;
-	Thu, 16 Apr 2026 10:30:45 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wDKG2-00000002KHJ-0OhI;
+	Thu, 16 Apr 2026 10:47:38 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDJzf-00000002JO3-0cgj;
-	Thu, 16 Apr 2026 10:30:44 +0000
+	id 1wDKFz-00000002KGr-1217;
+	Thu, 16 Apr 2026 10:47:36 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 841A64416A;
-	Thu, 16 Apr 2026 10:30:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 14229C2BCAF;
-	Thu, 16 Apr 2026 10:30:41 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 42BFD43FF0;
+	Thu, 16 Apr 2026 10:47:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 80B0DC2BCAF;
+	Thu, 16 Apr 2026 10:47:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776335442;
-	bh=NPcDG1Ottrtk5BiLjOdCbSSnt84O39ClqPxApC6Xue0=;
-	h=From:Date:Subject:To:Cc:From;
-	b=axKAaQ/cj+oRnXUPg2U9dgZZO6H568/ZDENKG0RSgGEwGz+otgjG8DEeyc37bD370
-	 YHZGJ+ZsLvNeAilM/hP+EDvmDR1H9Lzfpfm7BMNqlmf56GCJAOLEHj3lMPI+DDBv7/
-	 0uQqU1AQIOzYgzOv7lTR5SI0DbJru4RTODwrOMDaYHelOY2sImomAzsVBnSOPmUkWr
-	 yyy47t/pSfJ8ihdKOrABSvRHIuhfKG7JH0nVtgdhUd7FdJEsb44A75EwUzQpeZXCXv
-	 y3xR95gB5AHBtU0sDq9tI5Xp9iw0Jnga77xVWoamJUgkRy3RyFZ9hUfPQ/HuaKQ0un
-	 3qHUANfOHEesA==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Thu, 16 Apr 2026 12:30:12 +0200
-Subject: [PATCH net v2] net: airoha: Fix possible TX queue stall in
- airoha_qdma_tx_napi_poll()
+	s=k20201202; t=1776336454;
+	bh=jYaBX80FRIXXpscmnT17RShReMIi8jqV+glgNsQeNlQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=UGHoyua96qkqz4wPL39pPw5zk/pila8GQwPKGGB6omsX42ZcPKtq/0PZomyHplfdO
+	 b0Z1LPDhuigf7I4O/8ao1MBILnKIMEjBd0C1gjRXsctYmWv/BiJmFjCwd5NeVLPeWM
+	 tDAawyMhtwOojf8F7Cqff0GOCReHFNU2jfmAZp9XPyO7phWyo38et9Cn8W1YbyKUQ9
+	 SdlGAHc7wUdMf51fVmCCQ6LkckDlhASyOHUJdWUkVkQrpKuJqUH2gaRssxVtq+fSRt
+	 QSKSowOIrL/YBqK9hLV4w3k6ILV7XY2TM+Irz/cabEkYJsCJTdT8N8EgH+reu6Y1k1
+	 XspZQzcfPsvMg==
+Date: Thu, 16 Apr 2026 12:47:30 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Cyril Chao <Cyril.Chao@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, 
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, 
+	=?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>, Eugen Hristev <eugen.hristev@linaro.org>, 
+	linux-sound@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 2/9] dt-bindings: sound: add mediatek,mt2701-hdmi-audio
+ machine binding
+Message-ID: <20260416-angelic-monumental-skunk-eae6c2@quoll>
+References: <cover.1776265610.git.daniel@makrotopia.org>
+ <1fe31edbdf045f87f4cfa7ae6fa53196e8b67b96.1776265610.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260416-airoha-txq-potential-stall-v2-1-42c732074540@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/33NzQ6CMBAE4Fche3ZNf/jTk+9hOFRYYWPTYtsQD
- OHdbfDucWaSbzaIFJgiXIsNAi0c2bsc1KmAfjJuJOQhZ1BC1aIUDRoOfjKY1jfOPpFLbCzGZKx
- FM1Sqr7S4lNRCBuZAT14P/A6OEnS5nDgmHz7H4SKP6WdL/c9eJEpsWi10rR+yKvXtRcGRPfswQ
- rfv+xeYqI5cygAAAA==
-X-Change-ID: 20260407-airoha-txq-potential-stall-ad52c53094e8
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Simon Horman <horms@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-X-Mailer: b4 0.14.3
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <1fe31edbdf045f87f4cfa7ae6fa53196e8b67b96.1776265610.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260416_033043_227304_63934FBD 
-X-CRM114-Status: GOOD (  15.79  )
+X-CRM114-CacheID: sfid-20260416_034735_325874_022A8F19 
+X-CRM114-Status: GOOD (  19.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,117 +79,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since multiple net_device TX queues can share the same hw QDMA TX queue,
-there is no guarantee we have inflight packets queued in hw belonging to a
-net_device TX queue stopped in the xmit path because hw QDMA TX queue
-can be full. In this corner case the net_device TX queue will never be
-re-activated. In order to avoid any potential net_device TX queue stall,
-we need to wake all the net_device TX queues feeding the same hw QDMA TX
-queue in airoha_qdma_tx_napi_poll routine.
+On Wed, Apr 15, 2026 at 04:23:35PM +0100, Daniel Golle wrote:
+> Describe the ASoC machine compatible used to wire the MT2701/MT7623N
+> AFE HDMI playback path to the on-chip HDMI transmitter acting as the
+> generic HDMI audio codec. MT7623N boards carry the same IP and use
+> the mt7623n- compatible as a fallback to mt2701-.
 
-Fixes: 23020f0493270 ("net: airoha: Introduce ethernet support for EN7581 SoC")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
-Changes in v2:
-- Add txq_stopped parameter to avoid any possible corner cases where the
-  netdev queue stalls.
-- Link to v1: https://lore.kernel.org/r/20260413-airoha-txq-potential-stall-v1-1-7830363b1543@kernel.org
----
- drivers/net/ethernet/airoha/airoha_eth.c | 37 +++++++++++++++++++++++++++-----
- drivers/net/ethernet/airoha/airoha_eth.h |  1 +
- 2 files changed, 33 insertions(+), 5 deletions(-)
+subject: sound:
+Please use subject prefixes matching the subsystem. You can get them for
+example with 'git log --oneline -- DIRECTORY_OR_FILE' on the directory
+your patch is touching. For bindings, the preferred subjects are
+explained here:
+https://www.kernel.org/doc/html/latest/devicetree/bindings/submitting-patches.html#i-for-patch-submitters
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index e1ab15f1ee7d..19f67c7dd8e1 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -843,6 +843,21 @@ static int airoha_qdma_init_rx(struct airoha_qdma *qdma)
- 	return 0;
- }
- 
-+static void airoha_qdma_wake_netdev_txqs(struct airoha_queue *q)
-+{
-+	struct airoha_qdma *qdma = q->qdma;
-+	struct airoha_eth *eth = qdma->eth;
-+	int i;
-+
-+	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
-+		struct airoha_gdm_port *port = eth->ports[i];
-+
-+		if (port && port->qdma == qdma)
-+			netif_tx_wake_all_queues(port->dev);
-+	}
-+	q->txq_stopped = false;
-+}
-+
- static int airoha_qdma_tx_napi_poll(struct napi_struct *napi, int budget)
- {
- 	struct airoha_tx_irq_queue *irq_q;
-@@ -919,12 +934,21 @@ static int airoha_qdma_tx_napi_poll(struct napi_struct *napi, int budget)
- 
- 			txq = netdev_get_tx_queue(skb->dev, queue);
- 			netdev_tx_completed_queue(txq, 1, skb->len);
--			if (netif_tx_queue_stopped(txq) &&
--			    q->ndesc - q->queued >= q->free_thr)
--				netif_tx_wake_queue(txq);
--
- 			dev_kfree_skb_any(skb);
- 		}
-+
-+		if (q->txq_stopped && q->ndesc - q->queued >= q->free_thr) {
-+			/* Since multiple net_device TX queues can share the
-+			 * same hw QDMA TX queue, there is no guarantee we have
-+			 * inflight packets queued in hw belonging to a
-+			 * net_device TX queue stopped in the xmit path.
-+			 * In order to avoid any potential net_device TX queue
-+			 * stall, we need to wake all the net_device TX queues
-+			 * feeding the same hw QDMA TX queue.
-+			 */
-+			airoha_qdma_wake_netdev_txqs(q);
-+		}
-+
- unlock:
- 		spin_unlock_bh(&q->lock);
- 	}
-@@ -1984,6 +2008,7 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
- 	if (q->queued + nr_frags >= q->ndesc) {
- 		/* not enough space in the queue */
- 		netif_tx_stop_queue(txq);
-+		q->txq_stopped = true;
- 		spin_unlock_bh(&q->lock);
- 		return NETDEV_TX_BUSY;
- 	}
-@@ -2039,8 +2064,10 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
- 				TX_RING_CPU_IDX_MASK,
- 				FIELD_PREP(TX_RING_CPU_IDX_MASK, index));
- 
--	if (q->ndesc - q->queued < q->free_thr)
-+	if (q->ndesc - q->queued < q->free_thr) {
- 		netif_tx_stop_queue(txq);
-+		q->txq_stopped = true;
-+	}
- 
- 	spin_unlock_bh(&q->lock);
- 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index 95e557638617..87b328cfefb0 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -193,6 +193,7 @@ struct airoha_queue {
- 	int ndesc;
- 	int free_thr;
- 	int buf_size;
-+	bool txq_stopped;
- 
- 	struct napi_struct napi;
- 	struct page_pool *page_pool;
 
----
-base-commit: 1f5ffc672165ff851063a5fd044b727ab2517ae3
-change-id: 20260407-airoha-txq-potential-stall-ad52c53094e8
+> 
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+>  .../sound/mediatek,mt2701-hdmi-audio.yaml     | 47 +++++++++++++++++++
+>  1 file changed, 47 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt2701-hdmi-audio.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt2701-hdmi-audio.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt2701-hdmi-audio.yaml
+> new file mode 100644
+> index 0000000000000..d08aee447b471
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/sound/mediatek,mt2701-hdmi-audio.yaml
+> @@ -0,0 +1,47 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/sound/mediatek,mt2701-hdmi-audio.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek MT2701 HDMI audio machine driver
+
+1. Don't describe drivers. Descirbe the hardware.
+
+2. There is already audio for mt2701: mediatek,mt2701-audio. Why HDMI is
+not part of existing audio machine bindings? Or maybe this is not sound
+card driver?
+
+> +
+> +maintainers:
+> +  - Daniel Golle <daniel@makrotopia.org>
+> +
+> +description:
+> +  ASoC machine driver binding the MT2701 AFE HDMI playback path to
+> +  the on-chip HDMI transmitter via the generic HDMI audio codec.
+> +  The same HDMI audio IP is present on MT7623N.
+> +
+> +properties:
+> +  compatible:
+> +    oneOf:
+> +      - const: mediatek,mt2701-hdmi-audio
+> +      - items:
+> +          - const: mediatek,mt7623n-hdmi-audio
+> +          - const: mediatek,mt2701-hdmi-audio
+> +
+> +  mediatek,platform:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description: Phandle of the MT2701/MT7623N AFE platform node.
+> +
+> +  mediatek,audio-codec:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description: Phandle of the HDMI transmitter acting as audio codec.
+
+But these suggest it is sound card driver...
 
 Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+Krzysztof
 
 
