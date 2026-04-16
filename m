@@ -4,73 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E11FDF8D75B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Apr 2026 15:46:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA02FF8D75F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Apr 2026 16:20:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CyPmSGyK816MUuWcKPWra66rWlqz/gSBtKUFepuyfsQ=; b=XiAjDCuSZyho++fj91B3CORhnw
-	FZnrY0W3SYaxBjISuKQdF36oBmPSEV6nr5wWE2kHfuACgvntCPELLq8+mFGANZ0m8Mraj/2B4pqT/
-	X5twd5uOGTEfb0TqgTU3yBpeQXOwt8vyk14+JigEu/2iHyqJVRRCCq2K+bZe4TLjxLMirDg1+B0em
-	ECRQ610TRT8WEm+Vu1voVWLjEbekUxAUtFngTLRiO8HWBxXtymdvO5lKrGlJsY6ddP/1tHaQzlQeC
-	VFATLfrPAw9qW9oxX+3drpV8H8FLNKEhFJPXx4233sUlbWI7OKDMwX4b8onbghOrUlSv1JkH0VvzZ
-	fyXodObg==;
+	bh=Kev8OfCOazUH+qIDTLa9ebYXK7y8rmISHnJHqZCKjhI=; b=4ze0BJZuvWJ3fQa4urVpmpQX8y
+	ZU5E/zYhVC6n1FKh4Ht7Rahzy8OYE8ZK0qY8dOiVtdqAkYTFr9cuQcKTgmHPnlIpowUEqFG6zoLZL
+	KiKUxzuh8664yxt5l2/DedTcEgKfp6B4GAGmeXedJ6RcsjAtfDX4TIeSC/hiXPUFW3N/hVxBbQij/
+	5gtLKW2C+DAvNe7cyW6qvTDIuMsKdyji55tINS5lO0orlnCGGLWIhKU8jfQG/09hA1CsmmxZtDjY5
+	JyMq/0CVhjjjhiA9TZ71QN2Wb+JDzE85ZUzOMQR7QYmXhLnJ48NR0ud0Q7dx3h7IaBZZn9r4EMQku
+	x/mNo1fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDOv0-00000002dTr-3gdi;
-	Thu, 16 Apr 2026 15:46:14 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wDPSL-00000002f4a-22yu;
+	Thu, 16 Apr 2026 16:20:41 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDOuy-00000002dTR-1L5i;
-	Thu, 16 Apr 2026 15:46:13 +0000
+	id 1wDPSJ-00000002f4Q-1WOM
+	for linux-mediatek@lists.infradead.org;
+	Thu, 16 Apr 2026 16:20:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id DDD8443860;
-	Thu, 16 Apr 2026 15:46:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16150C2BCAF;
-	Thu, 16 Apr 2026 15:46:08 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 53A5A60126;
+	Thu, 16 Apr 2026 16:20:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 09F5EC2BCAF;
+	Thu, 16 Apr 2026 16:20:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776354370;
-	bh=fZETXYu0oWCsWiHimS0OA/TAWz0pKdtdcNhYZKxuwdQ=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=ho9Truf9ExiGsv2biQrqDWEdZ3vfKdwLsLgn6qcAq0yRfny/3O+OCgJfKh+RAetrx
-	 Dhb9qdBUb/9bjbHdP9LmUY+NkuHR8Dm1JG+qCBLWRRctmPEIKxvM0WgY3oo1wYJ8QY
-	 zVAhIfQchi930aM5q8WF34gDm7Ke3ecjmH3siJ7V12K7DuOpR1i3QxxU08/HDZ8HHo
-	 050hHfMyQDux65WsVE0ZQoi8qR7lkVzu/92zM8NW66ktpXC+M5/xTo9wYy/FPXircA
-	 InugFvlU3Lk0STI/an1ejUHhVMwbooR2juvR/b2Et+loAjvSLLYDM3GIO/2W0uJIqf
-	 kyePIWT4ZHh4A==
-From: Mark Brown <broonie@kernel.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Xiangsheng Hou <xiangsheng.hou@mediatek.com>, Felix Gu <ustc.gu@gmail.com>
-Cc: linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20260416-mtk-snfi-v2-1-3f487689dacb@gmail.com>
-References: <20260416-mtk-snfi-v2-1-3f487689dacb@gmail.com>
-Subject: Re: [PATCH v2] spi: mtk-snfi: fix memory leak in probe
-Message-Id: <177635127007.43536.11128592640404935803.b4-ty@b4>
-Date: Thu, 16 Apr 2026 15:54:30 +0100
-MIME-Version: 1.0
+	s=k20201202; t=1776356438;
+	bh=i4QTJp6gfQ6MsI0r1QtFdih9ZbHFZKrzr7vv0eudWf0=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=ee4GYH1OcRa7DsyCxEmZUvA84gGsjvS+gM93qvXBSXBNzKeyI5DZItZJaza6eMtkx
+	 1QzPknArtBWexvc17KVia73PeybCnuQY2FNvfXUEgocVhE4j11xa8PvGuUMelVlsiq
+	 aFOAyB6kPrdmvMMs6Pc+Po4d07L03DzN0WXI3hcBddXh+ywtYJUWH03AvyRNQM3wjN
+	 2pwcqW1v9Me6INg5ycjmpuBuFfnjFPgRfPmMHHrEmTFNNRmKMOnPJdEM7K2aO/jtzs
+	 twu8OjDojoTyEIgywS2fLCS0g5gcw8ip5oAET5UlaC/ttXEzWHkOADcgyyBFwHyC8M
+	 XUw6DML1ZN1Pw==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id B9EC4380AA67;
+	Thu, 16 Apr 2026 16:20:07 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.16-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1088; i=broonie@kernel.org;
- h=from:subject:message-id; bh=fZETXYu0oWCsWiHimS0OA/TAWz0pKdtdcNhYZKxuwdQ=;
- b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBp4QRALDdqFpSWntj953+kCEe/VleFyxyWZA5MS
- nBVKNSokdKJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCaeEEQAAKCRAk1otyXVSH
- 0FifB/9XMPkENhGcZcoP0IMp2qLmCOAxnJR28C+LRnrKISS01bhd/THZdf+sg08r/TC/SRM1dIl
- bnmrWNcHji0BDMZGNzGxqkjx7y7pFjenjr0duKNMpw2kIpyDIfcd81EPJ+p1jwMdLImels0Kc9q
- 8OVODeNGdCRC33VgQfBId4erOzbwpGr1XisGMuvj9Qp9RSWkHfhBiGvcl2gUGn6lpl9ZxGairbL
- pnvy0yz4vscFJx3EW1PgNWOrF1ZQSSFtOtkXc2BcYrfsF9ionXHSofv3z8fs4aXz/B0KSNZhak8
- t3J6scRq8IcjCA5Pq6MlCo8X+x3EsbJoW7hX6HyPU9MKAWHY
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260416_084612_390923_B1ABAE9B 
-X-CRM114-Status: UNSURE (   9.49  )
-X-CRM114-Notice: Please train this message.
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH v4] Bluetooth: btmtk: add event filter to filter specific
+ event
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <177635640655.3303094.2277821963642028002.git-patchwork-notify@kernel.org>
+Date: Thu, 16 Apr 2026 16:20:06 +0000
+References: <20260416111607.3161032-1-chris.lu@mediatek.com>
+In-Reply-To: <20260416111607.3161032-1-chris.lu@mediatek.com>
+To: Chris Lu <chris.lu@mediatek.com>
+Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
+ sean.wang@mediatek.com, will-cy.Lee@mediatek.com, ss.wu@mediatek.com,
+ steve.lee@mediatek.com, linux-bluetooth@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,35 +74,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 16 Apr 2026 21:00:08 +0800, Felix Gu wrote:
-> spi: mtk-snfi: fix memory leak in probe
+Hello:
 
-Applied to
+This patch was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-7.1
+On Thu, 16 Apr 2026 19:16:07 +0800 you wrote:
+> Add an event filter to filter event with specific opcode to prevent BT
+> stack from receiving unexpected event.
+> 
+> Event with opcode 0xfc5d is generated when MediaTek's Bluetooth enable
+> firmware logs and is not expected to be sent to userspace.
+> 
+> Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+> 
+> [...]
 
-Thanks!
+Here is the summary with links:
+  - [v4] Bluetooth: btmtk: add event filter to filter specific event
+    https://git.kernel.org/bluetooth/bluetooth-next/c/b57b0f27cb05
 
-[1/1] spi: mtk-snfi: fix memory leak in probe
-      https://git.kernel.org/broonie/spi/c/51942b77f443
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
 
 
