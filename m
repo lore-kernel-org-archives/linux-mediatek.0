@@ -4,66 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6ABACF8A145
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Apr 2026 08:58:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 339EEF8A146
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Apr 2026 09:38:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DamR8A+C4zUJBLajvIKOyz7PR05n3QFmEoIY/5V6QUU=; b=T7AvWZqXOxMhjNkQ75Dobt/Si3
-	KocX1JhKa6LdTrySdwFcHezzmH7Eu8UgCe5UW5yaK4p5vRYWjakk+/czirg3hKnHj2Ijdwa90Oz/+
-	+SWzCjecOWLDnargM7MR1V7qswG3ps/HHFIZF9FCsi0L5fm2dAA3qvN9H0J/TqxZsoIsFY8TCs1No
-	/YVAg1puaFvDGyll8jWURMGe06f7b0kdK1qMFS9rzW3MnYXv2jhkNlPI08a8Y0GJChGEjrECrYp/4
-	XoCzWEX6RtiIHzN4jBCRgCWN1DAF0JTANSEHXY8mxEXVDqiBRnisFcviHhekRWncDYIVGun1zMiVz
-	saFGB6YA==;
+	bh=ZEk5LMSdObaEX3bHnYTn4K0ZqqQUmPLr8EtxN54Wbzc=; b=Xfim8m2sGVzTBoPDyGCs2B/W7A
+	EUNNKNRDZZXoCCRuM9RTaIStHuCONIpdOsH0L4qQheJWnBCv2hifypAHHGSWdjR4MYfdVH4VtGNtl
+	czS/BkYGiKJ0KPaEwi462clWtEPDY8y6oRvY10rxhqGAUE9KXRDT6SZBG2lqCUFNW0nmxyAXHKXzA
+	CDzbjEvIJQ2cjcABEOqZ2WEoddq04tYSCqNQMCuzQ5PNp52WVCd8eckjCMDoTSo/L7dtVBdBSAMCd
+	qPXpk2nd1w2guWTB382FlWEsxyM4ZjrOe6mLXJS9kWA0fzZzlBxS/Yc61BrHAQGknsDFywGT9tnVB
+	/VA1ohHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDIY6-00000002Cz4-1r2B;
-	Thu, 16 Apr 2026 08:58:10 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wDJBA-00000002FhB-45ya;
+	Thu, 16 Apr 2026 09:38:32 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDIY2-00000002CyE-3fUJ;
-	Thu, 16 Apr 2026 08:58:08 +0000
+	id 1wDJB9-00000002Fgr-1LNG;
+	Thu, 16 Apr 2026 09:38:31 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 862D542D76;
-	Thu, 16 Apr 2026 08:58:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C5761C2BCAF;
-	Thu, 16 Apr 2026 08:58:05 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id BD4D260126;
+	Thu, 16 Apr 2026 09:38:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE1D9C2BCB0;
+	Thu, 16 Apr 2026 09:38:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776329886;
-	bh=wIVmSPEWi58JQM7nvjRlxWGWBS3n11NN6UIk/ySZXFU=;
+	s=k20201202; t=1776332308;
+	bh=ZEk5LMSdObaEX3bHnYTn4K0ZqqQUmPLr8EtxN54Wbzc=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=X2pui/sNYh+IOj8b2MtTogNe0yeCNU6qS1lupk0CscO+IXwOqSHNplQYjwwvcw72E
-	 JBaEDta9t4o0wjgh3osrO7pM0PzANOcgyUy66x1n/t32MEjiWsxqneBk4o73GGFMQY
-	 Z6HYMognzwkUavvDvBf4RGc6Jj7+XtfmwlhW0fI+dGMRPvckg6+Q+NSksxo72SZqqz
-	 lWjvAwQNH+QTJEAx7DpHHHDi8QdOIKnyG+MoNmrLi7aSWcXKX3RmC5aHQfTbSAS7fB
-	 WMpEo7zx0utCqlB3U6OLd/hnL9XfXswNr192UqREFWshgIhPoOYArakTsMS7ogtJgh
-	 RgezysU48045Q==
-Date: Thu, 16 Apr 2026 10:58:03 +0200
+	b=pzPAa+USsIfvntejjAejl3l1C+DskMzWVVdijjf1YRUCpeRSRxETPTYWWYMaLLtGz
+	 9/MVI3DEV6eXiKlYFhuSAYW39V1LOecYUAWbZYezTs26xapIfjLANLgdxjErKLb3lB
+	 3pYr+OjAAlUlxIE+chRtTHTeKJ5vmWbhXuqMFiYbu8tJcmeJ8SWoQc8LTkl/a+Rvlo
+	 Frn+/cOsThi0QFAW5TgHrz6uW1tJL3N3Z1p7PKoDq2+6dpZ2zrAEP7RBAQ/WbEk5hy
+	 XLZ2joQFmh6LVtw1WaqvadEB2RtqEYnX/OfHeUPO2nNi7OmUrBD/XmNkulaNA/x9dm
+	 bkTxFOMp6YmUw==
+Date: Thu, 16 Apr 2026 11:38:24 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Xiaoshun Xu <xiaoshun.xu@mediatek.com>
-Cc: Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Sirius Wang <sirius.wang@mediatek.com>, Vince-wl Liu <vince-wl.liu@mediatek.com>, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v3 6/6] dt-bindings: soc: mediatek: devapc: Add bindings
- for MT8196
-Message-ID: <20260416-gabby-porcupine-of-snow-bc10c0@quoll>
-References: <20260416031231.2932493-1-xiaoshun.xu@mediatek.com>
- <20260416031231.2932493-7-xiaoshun.xu@mediatek.com>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Cyril Chao <Cyril.Chao@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, 
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, 
+	=?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>, Eugen Hristev <eugen.hristev@linaro.org>, 
+	linux-sound@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/9] dt-bindings: sound: mt2701-afe-pcm: add HDMI audio
+ path clocks
+Message-ID: <20260416-qualified-violet-salmon-4bec7e@quoll>
+References: <cover.1776265610.git.daniel@makrotopia.org>
+ <50afd83a314cd20c715fb9b0d3bc85fb00f9a6eb.1776265610.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20260416031231.2932493-7-xiaoshun.xu@mediatek.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260416_015806_933145_169378BF 
-X-CRM114-Status: UNSURE (   8.50  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <50afd83a314cd20c715fb9b0d3bc85fb00f9a6eb.1776265610.git.daniel@makrotopia.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,22 +76,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 16, 2026 at 11:12:09AM +0800, Xiaoshun Xu wrote:
-> Extend the devapc device tree bindings to support the MediaTek MT8196
-> SoC. This includes:
-> 
-> - Adding "mediatek,mt8196-devapc" to the list of compatible strings.
-> 
-> These changes enable proper configuration and integration of devapc on
-> MT8196 platforms, ensuring accurate device matching and resource
-> allocation in the device tree.
+On Wed, Apr 15, 2026 at 04:23:27PM +0100, Daniel Golle wrote:
+> Document four additional optional clocks feeding the HDMI audio
+> output path on MT2701 and MT7623N: the HADDS2 PLL (root of the
 
-Same comments. It's really poor commit msg.
-
-Also, subject wrong. Drop second/last, redundant "bindings". The
-"dt-bindings" prefix is already stating that these are bindings.
-See also:
-https://elixir.bootlin.com/linux/v6.17-rc3/source/Documentation/devicetree/bindings/submitting-patches.rst#L18
+There is no MT7623N compatible in this file, so that's confusing. Does
+mt7622 have it? If not, then it should be restricted per variant. If
+yet, the model name is confusing.
 
 Best regards,
 Krzysztof
