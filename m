@@ -4,64 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21C11F8A163
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Apr 2026 11:41:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED0EAF8A160
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Apr 2026 11:46:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cEhhMsJS+Xwg5OcJOdGV8rtWdnWqs6FYlhVDF1VB5bs=; b=L94LFZXWJcEvcYJ17LGXoKJNR/
-	JAv/a303hnrZGKlD3mh7g0YUhaMllONBHg1m5vdS2pWiOe5PwgMn19wXWOl5hThhYWVdAa6NjG4xe
-	Ld1ZT4KOGEXpSM54Fv9xo5+++oGX6IVF3oYlciMDfNLrtqF4wBbFoB96gfujv5t0KyKJv5NzaOCZZ
-	unRNgcPWeCKS0LtPBjaEgNfEwieZEqTnLrAEEWMjG+9rNVmR/XCSi05QTLKt5Wbbf7zco4S1bDtjx
-	jUxlOirbkrdNbO8DJi0c8AvHaboHEJRYIud07uE0ifjxlP7KP/rxYVDUcDgHWBmxakO3qAXS0+nfo
-	AUK/LmKg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8Ak+ZDEB7WeybsrLIOMHRS67N6O7QONYYPEi13P7yBA=; b=Zqn7AtW7y9ehY3GFHp2Y7ywxGG
+	qkxBPB4xCH8CQhGQYK296kdhZVZ/Qrkv0vtkkp5S8j+nU356I5x1LMxZWsgXRPiG/x/2JxLEo9N+E
+	J+nfu5pwuy4+VzMca0yaC8UW6KnsrCzap+2tAjReubCrWey+clWGC7hVXXycesLK30yOqLuROyfhi
+	IsdVE/VuNeXmYJtY0PSJooql0h2v79fVnM7K1rxxZqTpr4jTAQM1vJcX9AXmli2Ktfo0HR2ZgD+YE
+	OGvQ7QTNgbQY9I20GV2C/UdRHomtp1mEh5pE7pHEzRjvcxiv6R2XACV68JllsEGdDWTujktxOvMei
+	nec4ff7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDL6L-00000002OkD-0vAM;
-	Thu, 16 Apr 2026 11:41:41 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1wDLAx-00000002P4M-47Ba;
+	Thu, 16 Apr 2026 11:46:27 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDL6J-00000002Ojj-09Nl;
-	Thu, 16 Apr 2026 11:41:40 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.99)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1wDL65-000000001iW-004L;
-	Thu, 16 Apr 2026 11:41:25 +0000
-Date: Thu, 16 Apr 2026 12:41:21 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Cyril Chao <Cyril.Chao@mediatek.com>, Arnd Bergmann <arnd@arndb.de>,
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
-	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
-	Eugen Hristev <eugen.hristev@linaro.org>,
-	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/9] dt-bindings: sound: mt2701-afe-pcm: add HDMI audio
- path clocks
-Message-ID: <aeDK4Ta4BJEQ-7eA@makrotopia.org>
-References: <cover.1776265610.git.daniel@makrotopia.org>
- <50afd83a314cd20c715fb9b0d3bc85fb00f9a6eb.1776265610.git.daniel@makrotopia.org>
- <20260416-qualified-violet-salmon-4bec7e@quoll>
+	id 1wDLAv-00000002P3D-2eLC
+	for linux-mediatek@lists.infradead.org;
+	Thu, 16 Apr 2026 11:46:27 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id 98e67ed59e1d1-3585ec417f6so248401a91.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 16 Apr 2026 04:46:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1776339985; x=1776944785; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=8Ak+ZDEB7WeybsrLIOMHRS67N6O7QONYYPEi13P7yBA=;
+        b=Kj8I/fP2iiMGOsTTo8ItCB2siFGrOnIVQQSdPku4seva3Ndk9WBiX/PPEdXTI7QJ6z
+         hwtWfW8ZayLbuVcmizkQ+w9R1jyanZtettkOYCyAiq9T4sH3yxKPNmzFRtLqUYG81Y2e
+         ltfHZU15O451co5UPf+BVTajNpTIIjDh2mWUyj2ReycVFSdAfbgB9UO9CTKLMebnKBxH
+         WM7pTRIjWAOEepQ2KB9A+ITNKEdiLFq8nr8fgwFZkS0MII0j/Rj43dIxayvPLqHCar34
+         ipThgXWkTG8cEhvc8Yq1tP9356tB479jKyoyZbzXHE9xDrjIR7gOdDnGQLGUQ+c1tSZP
+         IO7Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1776339985; x=1776944785;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=8Ak+ZDEB7WeybsrLIOMHRS67N6O7QONYYPEi13P7yBA=;
+        b=iX/nO/CcMvlgc/uY9ZuUJDjAqCMd6/dZ2GE44bc8Rt+6e5EWK/9CZpYG0OlzTwmRl4
+         8evY+Ok6t5ztxRPENnHvQsM16Zgbt13u4pMqqc+nxhYWZqHIqvRlUCaprZkaBLzygKtl
+         7UwEfy52uM2rdqfAPsX37HLI5E/vgXfSGGW0gTi7FmpI+NHrglmw0z2RccsmhRCokzPk
+         nTFznETJqrCdhFmJtXs1n9Mct8oILU7VR/q7bDFE0jVhtPfK7hMpQfkVv1B0ejNrOuSH
+         vUFU9LUucksH38Rh+F5fguUi3UUF5/KqxCBKJKRNTnEBBeuD1NdYSPIuQlNu9UcC7mrl
+         n1KA==
+X-Forwarded-Encrypted: i=1; AFNElJ+l5VcJRm4Cxf+pxD/lkFjoI5A2dGW+0yK5olhtcDtsg96+F2kZ5l6mRvwxHLTIrZ9/tNS/88wr9SJgcLKRbQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyc5J0EtOJwJbLKPlIHu+1F1k5c6VRLAMj9foNhOkCqmZdfQYJ1
+	wGFKrHhiI/HoyMd3Pmns6bSpGBCzq/U6vh9En8bdC5AXM/1gAdw8KOxzmiZiU5TxmGs=
+X-Gm-Gg: AeBDies8hDTxCWbqPfZ90XICDXRn/Lu0dLgpnKpwSpyRStkreOSy3ZNHyYrgtPA6Vp8
+	HeLP7DsqHTrLGPJu7tWbzCFLBn/hSpsyywGYGjPcpmbU5lR10LO78bKIGgVpoce7OYmmkw9TFXX
+	CwnKa5XAkE9oKuTm7UWXkd1/kAGaWvscX09upR4cw9QtjYRyrWfid5FZzwQE2mgHpIriIKR0QOm
+	JYgWSsUt+TTrZChJgFa7TOWm7zn0of4/BHs5Dp0HkUCjmLlS+IPGiITvcv82knXmhxXMU1pk3PM
+	qQJeYK0+3wc/8YiXX5s9enJ7dslGgKTdUDxJ7ztbmZICnVP7gqDvPBd4GFPShaQf83jvawiKYhA
+	VIAzrO/mi0SQgd02kG+xBQ/NVZ1nQSWRo3EEXiwVO4SZAJKjrxlah2kwKe1R4y/aUA2Oya1aD/m
+	dVWtMWM3jIi0z9xteUDr4T29iakcpjjFbXLPEyy3brQAtwc5vh/apzUzNc4E2xL8fU/cgA9ja1o
+	yNwC8/pPqoOGMW9f04Jtcl/NnQ5qCI=
+X-Received: by 2002:a17:90b:3952:b0:35d:aa02:d776 with SMTP id 98e67ed59e1d1-36135c6d422mr1195562a91.2.1776339984508;
+        Thu, 16 Apr 2026 04:46:24 -0700 (PDT)
+Received: from junjungu-PC.localdomain ([223.167.147.125])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-36132d01150sm3055586a91.14.2026.04.16.04.46.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 16 Apr 2026 04:46:24 -0700 (PDT)
+From: Felix Gu <ustc.gu@gmail.com>
+Date: Thu, 16 Apr 2026 19:46:20 +0800
+Subject: [PATCH] spi: mtk-snfi: fix memory leak in probe
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260416-qualified-violet-salmon-4bec7e@quoll>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260416-mtk-snfi-v1-1-fafccfd288f9@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAAvM4GkC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIzMDE0NT3dySbN3ivLRMXTNTw0RLCxMDA6OkRCWg8oKi1LTMCrBR0bG1tQB
+ NXuIaWgAAAA==
+X-Change-ID: 20260415-mtk-snfi-651a984002ba
+To: Mark Brown <broonie@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Xiangsheng Hou <xiangsheng.hou@mediatek.com>
+Cc: linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Felix Gu <ustc.gu@gmail.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1776339982; l=1399;
+ i=ustc.gu@gmail.com; h=from:subject:message-id;
+ bh=XB1YmbfqO9Kx+UK9NAZHUwfreTrkYt0BW/+tigI6sTM=;
+ b=HdxlppJCMd5S7npIE2p7HIyJ3C1bLlGGm6txyaDjoKu/faflIykPEP+jl5yqiUDjiXFBSkwmA
+ W+GU00d+C+uCf5klSZDikIGK9NNNS+RbAUxEafQxqJZTlPGQhcbnlqW
+X-Developer-Key: i=ustc.gu@gmail.com; a=ed25519;
+ pk=fjUXwmjchVN7Ja6KGP55IXOzFeCl9edaHoQIEUA+/hw=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260416_044139_098005_C4413691 
-X-CRM114-Status: GOOD (  12.12  )
+X-CRM114-CacheID: sfid-20260416_044625_674950_50E38798 
+X-CRM114-Status: GOOD (  11.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,22 +112,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 16, 2026 at 11:38:24AM +0200, Krzysztof Kozlowski wrote:
-> On Wed, Apr 15, 2026 at 04:23:27PM +0100, Daniel Golle wrote:
-> > Document four additional optional clocks feeding the HDMI audio
-> > output path on MT2701 and MT7623N: the HADDS2 PLL (root of the
-> 
-> There is no MT7623N compatible in this file, so that's confusing. Does
-> mt7622 have it? If not, then it should be restricted per variant. If
-> yet, the model name is confusing.
+ms->buf is allocated in mtk_snand_setup_pagefmt() but was not freed on
+the following error paths.
 
-Only MT7623N (which is apparently identical with MT2701) has all the
-multimedia features (ie. HDMI, a Mali-450 GPU, ...). Neither MT7623A
-nor any of the other MediaTek router SoCs got any of that. So it
-should be restricted to that variant. I'll fix this in v2.
+Fixes: 2b1e19811a8e ("spi: mtk-snfi: Change default page format to setup default setting")
+Signed-off-by: Felix Gu <ustc.gu@gmail.com>
+---
+ drivers/spi/spi-mtk-snfi.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-Thanks for the review!
+diff --git a/drivers/spi/spi-mtk-snfi.c b/drivers/spi/spi-mtk-snfi.c
+index 73fa84475f0e..a728cf571b78 100644
+--- a/drivers/spi/spi-mtk-snfi.c
++++ b/drivers/spi/spi-mtk-snfi.c
+@@ -1447,14 +1447,14 @@ static int mtk_snand_probe(struct platform_device *pdev)
+ 	ret = nand_ecc_register_on_host_hw_engine(&ms->ecc_eng);
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "failed to register ecc engine.\n");
+-		goto release_ecc;
++		goto free_buf;
+ 	}
+ 
+ 	ret = devm_add_action_or_reset(&pdev->dev, mtk_unregister_ecc_engine,
+ 				       &ms->ecc_eng);
+ 	if (ret) {
+ 		dev_err_probe(&pdev->dev, ret, "failed to add ECC unregister action\n");
+-		goto release_ecc;
++		goto free_buf;
+ 	}
+ 
+ 	ctlr->num_chipselect = 1;
+@@ -1469,6 +1469,8 @@ static int mtk_snand_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	return 0;
++free_buf:
++	kfree(ms->buf);
+ release_ecc:
+ 	mtk_ecc_release(ms->ecc);
+ 	return ret;
 
+---
+base-commit: 936c21068d7ade00325e40d82bfd2f3f29d9f659
+change-id: 20260415-mtk-snfi-651a984002ba
 
-Daniel
+Best regards,
+-- 
+Felix Gu <ustc.gu@gmail.com>
+
 
