@@ -4,79 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AEFFF8E4B7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Apr 2026 08:07:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 489FEF8DFEA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Apr 2026 08:40:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Os1dnyvYL2jpJMtSiA0rHB9vces/3fIbY0D06HvlXQE=; b=eUy3ICkd9Gndv74g4WXPoQI3XO
-	ZzAIeeA6C2lE0IboEUTcNjQhdJ2DsZ53QeQP6+eHwnr2WhCxfCukMhlkGqDZJ0LUdmoFTIFIcbWpK
-	yI0gTeLvMFJI2CkkogkLYoXr/hNDvCrWsn9mkG8aHe5oPc+Mct7jOuIu7RCUmq/cEHP3f/fEu+dmA
-	Ulrxj7RvugR3tyfDcTxfB140hMSaWrDZxp/OuRADSPd4t6tmrW4dZuK/6Jq4S1N40+SnyTHEzrPlj
-	vKJ9D6mrGi4vagdusnMk8QC2RiX31jWvX7+eyvZHtYRiO8sFOJnN6bW6QSNLymk9KDUVRw494SXdQ
-	p4VuZBLg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Z1G8e6qfG0pLpHF22BztMzalo1UZrGYRjb2508dDwC8=; b=mjtNVPPFpLeQ9Y
+	3h/vQ2UpFPa3g8uj3Rbd2+mNccYZW6+ab9z9RBOTde4dbQ1AHiPWMiTPxmVewPgELLH6KDmr9HH9G
+	POA54Vu4zl3fq4brutWqOfzUpPIUF+BwPJtyp/99GocPNjIOiLgmjR1v9pqroCS/gr0fM/gYhLyiC
+	2Ofr1WgJjHGNPsDP5f57JNSZ0jJEjij6m262917c6lWbJX4R3xcWsFnd8V8iAmWCYqubMzPMJuG0N
+	FAAOf6im3+a6EEijdhRUYV0uoYET0IGpIPTJWxvjeiJMY08P4+j/bhS8jYGw1FQVbvQT9eVzP+/uS
+	g1rxnXwmbjO2KUwm5kig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDeEN-00000003eL0-1VHv;
-	Fri, 17 Apr 2026 08:07:15 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1wDekw-00000003gi9-00b9;
+	Fri, 17 Apr 2026 08:40:54 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDeEL-00000003eKN-126a;
-	Fri, 17 Apr 2026 08:07:14 +0000
-X-UUID: 6c7606a63a3411f19e7563141e833ce8-20260417
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Os1dnyvYL2jpJMtSiA0rHB9vces/3fIbY0D06HvlXQE=;
-	b=hCy5uFlQ+OU3J0JLu0vBYpeMJPAryroIdAPQ+nBji356LkrGcpNtDloYKdEAF3+OFLWzH/vEJo6SIbcSVcBJ6j/nbFOVJnAqpPlDp3IaDYyq9CEQBS64qV5N53mtabousned13/btNAT3jySODUOUEoS8NhMv6kNJS/Gg08M+Fw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:f89b2444-ff9e-4f80-9d77-be1adf0f362a,IP:0,U
-	RL:0,TC:0,Content:29,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:29
-X-CID-META: VersionHash:e7bac3a,CLOUDID:59cdf924-cb5c-4236-a89a-9a7fb20c9bc4,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|865|888|898,TC:-5,Content:4|
-	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0
-	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 6c7606a63a3411f19e7563141e833ce8-20260417
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
-	(envelope-from <binbin.shi@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 113432091; Fri, 17 Apr 2026 01:07:05 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Fri, 17 Apr 2026 16:07:02 +0800
-Received: from gcnsap21.gcn.mediatek.inc (10.17.81.22) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Fri, 17 Apr 2026 16:07:02 +0800
-From: Binbin Shi <binbin.shi@mediatek.com>
-To: "Rafael J . Wysocki" <rafael@kernel.org>, Viresh Kumar
-	<viresh.kumar@linaro.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
-	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Hector Yuan
-	<hector.yuan@mediatek.com>
-CC: <linux-pm@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<vince-wl.liu@mediatek.com>, Binbin Shi <binbin.shi@mediatek.com>
-Subject: [PATCH] dt-bindings: cpufreq: add mt8189 cpufreq hw dt-bindings
-Date: Fri, 17 Apr 2026 16:06:17 +0800
-Message-ID: <20260417080648.3692438-1-binbin.shi@mediatek.com>
-X-Mailer: git-send-email 2.43.0
+	id 1wDekt-00000003ggl-1Kby;
+	Fri, 17 Apr 2026 08:40:51 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 62CA360128;
+	Fri, 17 Apr 2026 08:40:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 97D93C19425;
+	Fri, 17 Apr 2026 08:40:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1776415250;
+	bh=22JN6Dq3EwTB9lMjfnyhyBhVNs0t2Y592P69k7lFa3U=;
+	h=From:Subject:Date:To:Cc:From;
+	b=uODRvIfnQZxYFgNOy6P2Hhm2jjODYwvVYwkkO5ZHMZvpdcV4xD1UFt415qS0wJOJi
+	 1BZdY0jYtISVNzt5OaN/CgCW65VZi5trwUb92Oixt8elvzKU0QMjTcATvfEpZDyr+8
+	 OlwghzWhLlRiNipuWcgdSiE0GuAVMdmlPWo+rBWPpdnteBmh3ntYz2AuOT6wKCENJ+
+	 yGxuIlHh4T9xkg6wLC8zY/Vilyq/wnyzWxZ5YP0wiB3TQRXUUkaRKPArBpovDi9kTI
+	 Xojp3sU89DMv3VwzxdGQzhSkVAbq7y4PRUUlNWoTxOrmvEebxT/DxN4cHGOnKKoUxh
+	 4QiXHEUCkuZnA==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH net 0/2] net: airoha: Fix NULL pointer derefrences in
+ airoha_qdma_cleanup()
+Date: Fri, 17 Apr 2026 10:40:35 +0200
+Message-Id: <20260417-airoha_qdma_init_rx_queue-fix-v1-0-db9fa5e468e5@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260417_010713_296984_6C06F222 
-X-CRM114-Status: UNSURE (   8.12  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MTQ5AMBBA4avIrDVR8ROuItIMHcxCMS2RiLtrL
+ L+3eA94EiYPbfKA0MWeNxeh0wTGBd1Mim005FleZYWuFbJsC5rDrmjYcTBym+Okk9TEtxqaYUK
+ Lpa5qDfGxC8X8/ztwFKB/3w/ZiJZ8dAAAAA==
+X-Change-ID: 20260417-airoha_qdma_init_rx_queue-fix-b9bfada51671
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+X-Mailer: b4 0.14.3
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,29 +74,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mt8189 cpufreq hw compatible in dt-bindings.
+Fix two possible NULL pointer derefrences in airoha_qdma_cleanup routine
+if airoha_qdma_init() fails.
 
-Signed-off-by: Binbin Shi <binbin.shi@mediatek.com>
 ---
- .../devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml      | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+Lorenzo Bianconi (2):
+      net: airoha: Move ndesc initialization at end of airoha_qdma_init_rx_queue()
+      net: airoha: Add size check for TX NAPIs in airoha_qdma_cleanup()
 
-diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
-index d0aecde2b89b..cff52fffc6b8 100644
---- a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
-+++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
-@@ -16,7 +16,9 @@ description:
- 
- properties:
-   compatible:
--    const: mediatek,cpufreq-hw
-+    enum:
-+      - mediatek,cpufreq-hw
-+      - mediatek,mt8189-cpufreq-hw
- 
-   reg:
-     minItems: 1
+ drivers/net/ethernet/airoha/airoha_eth.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+---
+base-commit: 82c21069028c5db3463f851ae8ac9cc2e38a3827
+change-id: 20260417-airoha_qdma_init_rx_queue-fix-b9bfada51671
+
+Best regards,
 -- 
-2.45.2
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
