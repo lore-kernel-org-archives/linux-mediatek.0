@@ -4,88 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5AECF43699
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Apr 2026 12:27:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3644F4369E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Apr 2026 13:11:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=7B1zAJzyc2aJm8FtQJrwknWWRUXny98vqjyGldOGID0=; b=EOtBcwWsAmOUwvzsZlDwiSUOWm
-	GCLkXrigZcmFLb39Z2mW6LrEzMtE7esOkQt/esulCeczASZQ9msXti55gyY71ZacjXgLGGcbP+0XF
-	J6eKUVwqVd9m3nYCU8KGfnZL7iGVJI0h90XJFCCcdNy3o/ztpZv3a4zR6qiV2V9mUp0pToEld5nRJ
-	eC0/NsmbqKaQtcXmD5Xbz9NGhzOL9JexCad20ISngxGjG9Sslr2O8BiqvgO/cVn6yrpfIXBocVRPE
-	2ws7S9NgOezi5JLEWMU9sRXampZShtoG0DJnFECGUBMucOTBAigZEe5eOml+JRCrBi2RGZ79UFCj/
-	9B/2ckuA==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KiTXMXyGgbry+1smTdjpHYLgWhcXFX/mZbw63wGDKJA=; b=1tYK4sGv8KTFnlGAP5CTqnVWHu
+	gkDDw15iQOLq3fXNIvxOCsRV35E2lz18yYG/dHezqFl1YHxkxxdojNZhZXQ4NQrc+6gQ5NyOuDX1O
+	QIC7RVYc0U1cFJdJ2o+SN/k2uyXYfHn/ty1Gs/9ihCWH68IkOoF1ZYlqaQH+qEZIu1bpDbIsMmxl0
+	pzd2rHwGWTTwgOvbbjmLX+fO4QrWYhJcwXPaha7AtP62Dc2MuOkTwUFOMT21/EnDoeifY1jxqKKco
+	jcionnmpCAfZr4+qYbXNqMeyve41icAncRlqaGnDIZ+9tBXu1U77hpDwYqZReYsDjbrYgc1Fn6MuC
+	8ukfj25w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDiIQ-000000042O2-3nLv;
-	Fri, 17 Apr 2026 12:27:42 +0000
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+	id 1wDiyq-000000044Kd-37iN;
+	Fri, 17 Apr 2026 13:11:32 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDiIN-000000042N4-25Ye
+	id 1wDiyo-000000044Jb-2de1
 	for linux-mediatek@lists.infradead.org;
-	Fri, 17 Apr 2026 12:27:40 +0000
-Received: by mail-pj1-x102f.google.com with SMTP id 98e67ed59e1d1-358e3cc5e7eso381953a91.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 17 Apr 2026 05:27:39 -0700 (PDT)
+	Fri, 17 Apr 2026 13:11:31 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-48374014a77so8448355e9.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 17 Apr 2026 06:11:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1776428858; x=1777033658; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=7B1zAJzyc2aJm8FtQJrwknWWRUXny98vqjyGldOGID0=;
-        b=TQyBmzyLdtQxefCrD1tM5MaILqwaLbbdsitLG9nTf9s+q2bYSq2MCx/eDNxAZBUhRw
-         qAqS16SKDQWQ4dAJps3K6RC32JxzDKMMYuimqk6NqDWrSkbh9wzLMeXsRgyzwEwW33Iz
-         ngOWbN48tWpHNEJalHTCevUU1q94NIyfKtD/WXceIHqJgRH0kj+ezh2Le+0a6HfHp20z
-         715HxXPRh8eZHv/6fk+2MHCWMdZ0daJoB2U27kgRrzCmrtlxzK9NO50zU1Wknsn3rY9+
-         xlO4xJSGfhNLpwyzSxZ9otBYxPNNGiqyxt42Z7ny1zMvcBMKppE+waNcAvfoRtHOyI3f
-         Da7w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1776428858; x=1777033658;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=baylibre-com.20251104.gappssmtp.com; s=20251104; t=1776431489; x=1777036289; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=7B1zAJzyc2aJm8FtQJrwknWWRUXny98vqjyGldOGID0=;
-        b=AMOqYBNsdLl/2+sxGfek8RefC9lARZXXrHRIMYQwDmGTtO3GiPiQpOGOq0s1QTZRb5
-         GqAai5+1q4RJb50gR5N1C1sZweFx5Or4k16JcevSreWcLHU0HigTwrJKSWDU/PQOnQN/
-         R3CQ9nXFaiCaY21uO+ZD7jt2ly76yj6fFCDgfn66uU8YN1yK4xVA7C8xIqH++jZrMzih
-         s8iVZ2YA0b6aglx/5+GJz0Pl1E7VLnqZ0ydf7YKULIMBhUNhSfocxU3b13KZ3PXJJErX
-         MhxBeB9hD7bfxL6uNVMVJJSpnktfuy8A0kG9racxSedjDvf90hPRyPdijujLDlc1FW2t
-         HDmg==
-X-Forwarded-Encrypted: i=1; AFNElJ+F/ahtqMnbA3E2ue+W5qkDsce0HWfRd8DIBkIiRSeReB34Wt1ELpYfg9GIq/AH4kf2KGkzZ6VvJeIuosB1xw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxhYj9ZenFqTYmMOiCRfRY1ILGdI+Yf8AtteAoIrLUSah/7pT6E
-	ffJuzIirUHuM6W7p89qCLAeGj7aDg0q6tSxbfCFy/RazCOwdrKcVSaNC
-X-Gm-Gg: AeBDietj31+289PFTBvj7pI945qAyu5761DcIzetUzqncGENHbviuYOLzsHW8JF1UyP
-	+Yr8QAdbZKmsPCFX3penA+1lRBMIFJuxSvQWHi9hJncE2n4jTNOReu3jkCL0l9soFQREug9Py+S
-	WHa09Hv21wu9O/D0Hj6ZG43iFTsrAg4jDYtwuX21URqaWszZS26LoFZKjJZc2x/whtxgf11ouiZ
-	OHVYrdnSkot3QD7PBHOAaLwkT/6BUZ+zuOZu3VP6yccMgoZBIfgCn26uTgi6dCh/T3Jqk1YNwpP
-	8jZg0sL4MmCUbe39WcqahmqiCU9/5KoIttmrEZPCDZFCQi+0J+YZdsXkw0hxHyKS6ObEA0KPh/U
-	2UiFWE/LQjcWgQRKq5+OD2UQqqFSdSzBsT2yv9sRBe5c8ib1jxjiNCAxrl+r3ExSnXmDCQ88a3m
-	Iwjv7T5l9NTvXNKOPgO72NMcY7q0ZZYWeTEqDISUZpcQsiQ/w9bGWINQ==
-X-Received: by 2002:a17:90b:1e0b:b0:35d:a542:2dcb with SMTP id 98e67ed59e1d1-3614048a731mr2630632a91.16.1776428858176;
-        Fri, 17 Apr 2026 05:27:38 -0700 (PDT)
-Received: from dbc5pt3-os.ban-spse ([165.204.156.251])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-361410cc196sm2074491a91.17.2026.04.17.05.27.35
+        bh=KiTXMXyGgbry+1smTdjpHYLgWhcXFX/mZbw63wGDKJA=;
+        b=q4Owt7RJaTSK0Jr29zBT7PjAPCW1HAdMSAT+KPFI6KpA3/V03QfrC9ElZuDQNujpQo
+         YQGd9I21NOXwRzIQK42iSSPonwzxg4kmlNKYw761RyAcwsiKgKx0QskDw1DEECcMCM0Z
+         QVpMiacZ1b7Pg24sEjfEe0DvRgb8hSyWP2PFmCV5ePpGWzSlE96jFoOKDDxiMotIRuut
+         tLKe1hNbECQbVBeNjyF0bzyUpHNUH+nK7F5kxivqz3oc5Yso5tfWvtFugRP6bVoOSl7z
+         D/lYn5d5rQhk+7KvjHm5pZCzl9oIA2crkI4BcwXAe4lGi4M1kGLoJj/WHKo9+Gsgaxg5
+         +oRQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1776431489; x=1777036289;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=KiTXMXyGgbry+1smTdjpHYLgWhcXFX/mZbw63wGDKJA=;
+        b=EulP8tEK3tYqubZ/ODiECzKuAcc0M7ceCSWgiQcxeduxYGoQFA6Gs/qH2xhBHj9InX
+         R0JQIS2yBCVNUyXZ9ONKIGDaZMpiM1z7uXq0dV3s6OiZiJ0rGCk0DE/Ln7CVZp1b5SfJ
+         ACVN2uVdQ/tD7FTSMwFq16HkiK1C+g1M+/UBeLjFcmBhUoriKusWPTfKmIMhankx1DBk
+         9Qp88d9HUoutP+SAW018RrNQC61/Mtuj0fM3Uz5CxeipDUU2dFPgx2A8c8rzNReTkEzN
+         hs4I5x7y1OKzubEscKw5aExxKfvDUohfYKHd3wg9vnvFi5/Io4p0gJk5nQz4i0RrgXcZ
+         HVBQ==
+X-Forwarded-Encrypted: i=1; AFNElJ9k3bkwG9mr4bjolkEfflQRMsNJAwGMsbHMPjJa7t9LWvVKkUJ0IYN1QVpAhUCOnfhz3WJjkTJj4cpqwuuMxA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyVjJ9Mx50JUokIk+MmaPuoikD23VUw4HSmR6XJcXyHSEJcDs/c
+	ZDQFXNkb3o2RM+Avn+4n7OMOyBEk/cVvV/FVv9eAQKay5EidO7O4ZMEEPuNnpBPOVJ8=
+X-Gm-Gg: AeBDievEXNzhmBMejcXT97JPVS454/iMo2IaStyNRUY+/CBS/HeFwcCkapXYBMr4Oz3
+	6b7PinfOqJwobCmtN8F9eAmtDwhxPmykOtXDewcT/H9ofEZu4rCTJhI+Ld20/AUC2XDBvTtkpJk
+	53coqbFu4oO0SWOw5R0gHcmFV0C/1hSxY5GriLyuPWvg7bYdqo8XyfyK8kX/Vx2mg8s9bS0P9wk
+	NwR5ilFJJ9Elhas1tiWUWgagd8U3W1CKxZK//R/ro5Prq/bad3iGfBgMZ4RuIA5Zo5XreTD5qqf
+	jDPc1hJ31HtutKzbUnKwCxOCGkT+0e/n4nG38j7SEOAZcODkyR6pZfDHdrE4h959LoJARVmys1D
+	uVNQfrYp9A/dgpQFawQhz/4OzoW+984JwBPkynrZebOZzk1AR+Z7POIlGPHnIXE4jlQkMw1Q6rW
+	ES04tJP0jLUnek7dblSWQ5jXOt8q5EdXlyZotdA1tOJjPUn+dPLDJm/x/ztOgBl3wzfsOAGArxa
+	kCxTD4GlCBJkkVo4cAjJ9wh9PwCoNfBbrI=
+X-Received: by 2002:a05:600c:6297:b0:486:d76c:fa57 with SMTP id 5b1f17b1804b1-488fb77155dmr40662045e9.17.1776431488705;
+        Fri, 17 Apr 2026 06:11:28 -0700 (PDT)
+Received: from localhost (p200300f65f20eb08db61cfc60d8aa232.dip0.t-ipconnect.de. [2003:f6:5f20:eb08:db61:cfc6:d8a:a232])
+        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-488fc10019bsm47077255e9.4.2026.04.17.06.11.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 Apr 2026 05:27:37 -0700 (PDT)
-From: sai madhu <suryasaimadhu369@gmail.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
+        Fri, 17 Apr 2026 06:11:28 -0700 (PDT)
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig=20=28The=20Capable=20Hub=29?= <u.kleine-koenig@baylibre.com>
+To: Marcel Holtmann <marcel@holtmann.org>,
+	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: "Christian A. Ehrhardt" <christian.ehrhardt@codasip.com>,
+	linux-bluetooth@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	sai madhu <suryasaimadhu369@gmail.com>
-Subject: [PATCH v2] drm/mediatek: hdmi: Convert DRM_ERROR() to drm_err()
-Date: Fri, 17 Apr 2026 12:27:26 +0000
-Message-Id: <20260417122726.2948518-1-suryasaimadhu369@gmail.com>
-X-Mailer: git-send-email 2.34.1
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v1 3/6] Bluetooth: btmtksdio: Make use of driver data pointer in sdio_device_id
+Date: Fri, 17 Apr 2026 15:10:49 +0200
+Message-ID: <06f26b3e090ea52c7a2620759e91511570404ec4.1776429984.git.u.kleine-koenig@baylibre.com>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <cover.1776429984.git.u.kleine-koenig@baylibre.com>
+References: <cover.1776429984.git.u.kleine-koenig@baylibre.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1468; i=u.kleine-koenig@baylibre.com; h=from:subject:message-id; bh=2l6+VruZCe2G92lMFTOG+EfNer+jq/4dC3nqnXbD9Bs=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBp4jFefmfBzsGZ3kLo9zeNLh94uuX0wHZ82YrGA IzIlV9GZuaJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCaeIxXgAKCRCPgPtYfRL+ TqVpCACTT3vbVLQ2hxvR192QyFytoivzueoZDb7jatdZDvJrGkXY/SJpKAnv9gc7tTavtwOYXhV L7rr9SxPzSvrm3zD+tvpqyfbLoKqfGvY3AVSSl8244v/FpXMDNxScKr3vYhEkizGEik/1XdcnB3 AW8x/CqjVCy9e75Lwpx8EInxLRJZEbAfqaiX0exiAd+fe+EndihAzVbnujmTdKL8ma/h+gLj0eB mG3HY/e/6niSjndyNC/AvCXSlLgv3xR9Eg2yeDtxVe1/blvgFVPWaTjeUsEueV8dDHxLhU+f7vs T09dLoBa8K/yteXcNJ/kWIajTt4k3fRJTctpa2WxJWDTRszg
+X-Developer-Key: i=u.kleine-koenig@baylibre.com; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260417_052739_544533_050480C9 
-X-CRM114-Status: UNSURE (   9.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260417_061130_682128_4530059F 
+X-CRM114-Status: GOOD (  12.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,35 +107,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The DRM_ERROR() macro is deprecated in favor of drm_err() which
-provides device-specific logging.
+Recently struct sdio_device_id gained a new member to store a pointer to
+driver data. Make use of that to get rid of a bunch of casts.
 
-Replace DRM_ERROR() with drm_err() in the Mediatek HDMI bridge
-driver and pass the drm_device pointer via bridge->dev.
-
-No functional change intended.
-
-Signed-off-by: sai madhu <suryasaimadhu369@gmail.com>
+Signed-off-by: Uwe Kleine-König (The Capable Hub) <u.kleine-koenig@baylibre.com>
 ---
- drivers/gpu/drm/mediatek/mtk_hdmi.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/bluetooth/btmtksdio.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index 1ea259854780..4ddcdbf7bc8c 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -981,8 +981,8 @@ static int mtk_hdmi_bridge_attach(struct drm_bridge *bridge,
- 	int ret;
+diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
+index e986e5af51ae..ee886dcada63 100644
+--- a/drivers/bluetooth/btmtksdio.c
++++ b/drivers/bluetooth/btmtksdio.c
+@@ -64,11 +64,11 @@ static const struct btmtksdio_data mt7921_data = {
  
- 	if (!(flags & DRM_BRIDGE_ATTACH_NO_CONNECTOR)) {
--		DRM_ERROR("%s: The flag DRM_BRIDGE_ATTACH_NO_CONNECTOR must be supplied\n",
--			  __func__);
-+		drm_err(bridge->dev,
-+			"DRM_BRIDGE_ATTACH_NO_CONNECTOR must be supplied\n");
- 		return -EINVAL;
- 	}
+ static const struct sdio_device_id btmtksdio_table[] = {
+ 	{SDIO_DEVICE(SDIO_VENDOR_ID_MEDIATEK, SDIO_DEVICE_ID_MEDIATEK_MT7663),
+-	 .driver_data = (kernel_ulong_t)&mt7663_data },
++	 .driver_data_ptr = &mt7663_data },
+ 	{SDIO_DEVICE(SDIO_VENDOR_ID_MEDIATEK, SDIO_DEVICE_ID_MEDIATEK_MT7668),
+-	 .driver_data = (kernel_ulong_t)&mt7668_data },
++	 .driver_data_ptr = &mt7668_data },
+ 	{SDIO_DEVICE(SDIO_VENDOR_ID_MEDIATEK, SDIO_DEVICE_ID_MEDIATEK_MT7961),
+-	 .driver_data = (kernel_ulong_t)&mt7921_data },
++	 .driver_data_ptr = &mt7921_data },
+ 	{ }	/* Terminating entry */
+ };
+ MODULE_DEVICE_TABLE(sdio, btmtksdio_table);
+@@ -1352,7 +1352,7 @@ static int btmtksdio_probe(struct sdio_func *func,
+ 	if (!bdev)
+ 		return -ENOMEM;
+ 
+-	bdev->data = (void *)id->driver_data;
++	bdev->data = id->driver_data_ptr;
+ 	if (!bdev->data)
+ 		return -ENODEV;
  
 -- 
-2.34.1
+2.47.3
 
 
