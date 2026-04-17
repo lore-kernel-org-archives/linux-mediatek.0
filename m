@@ -4,71 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3FA8F8DFCE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Apr 2026 21:59:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED77EF8E497
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Apr 2026 02:10:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AlLMcUQhFasP1gpVZMHOUydAPyqbNw6g5fn1ghs9xQc=; b=SrZ1x40UnO9O1xw3iOnCrCPRd+
-	zvA+IIYUtzdRDyoUB4WOqV2DTEVdKTtlZuHLW0kXK7gvquasLZm/aoNA6s8P1doOyrZxLYb0y/hhV
-	/NDsBTShSWl7zWP6KKyBF1adUZ/R11zWCo+R9gENYYSox1YrM6zJQ3vT6fwU9x9h+6JC0/JQIjOcV
-	jy5DASzANMM2sNGAVmVtBPN1fWgDjMqO5PQTWKSGeMvhs/yKz8KOjMA0QWhgY6H6qcSTAad+Wkv47
-	ITcA3L1f8EoXbzTyAphBeTubMEjA/z6FVPKSmphMSRV88eioyJffMDlOjuhLlIlkOoPuYHoLg3GZG
-	493dfPzA==;
+	bh=MJa8pdLEdVqabC8vwNoSVmX2YrTRj9w7t3c5Vn/uyLY=; b=XQKQPwBgbMzuySXZOSn1037y7Y
+	cURhX94TcS9mIq7zprJeYxPzXm+1riKKCgT5O6k1/6ibc/CZOCBHr7l/3RIly43t8fHDAWSfogez6
+	9RpTgYx0KxoGw0w3iev45gZki/eAQ4M/YuCOK5prHZBKJVtMK+kMqRd59cr+cHeuJHi8muv/FsIZ3
+	Rg0B9UnuGLhUwwydETWrAjfEX976DHAbFKjZIE7ZNKWGY1LlNFybXMvLpTCV6h8bT+5xK/d06rIsm
+	Y1HAe56XFHtWnmypshb1l1gGpQJ0JR1sgkCFS8uwFM3MKmZy61g3ZercvOXHd3bIj43XBMwfGfuxK
+	b9f1mctQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDUkP-000000037II-2BlA;
-	Thu, 16 Apr 2026 21:59:41 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wDYfO-00000003JWm-0jrN;
+	Fri, 17 Apr 2026 02:10:46 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDUkO-000000037IB-1UaQ
-	for linux-mediatek@lists.infradead.org;
-	Thu, 16 Apr 2026 21:59:40 +0000
+	id 1wDYfM-00000003JWX-0NLz;
+	Fri, 17 Apr 2026 02:10:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 241FC6012A
-	for <linux-mediatek@lists.infradead.org>; Thu, 16 Apr 2026 21:59:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D0A3EC2BCB4
-	for <linux-mediatek@lists.infradead.org>; Thu, 16 Apr 2026 21:59:38 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 20B2060181;
+	Fri, 17 Apr 2026 02:10:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E78A7C2BCB3;
+	Fri, 17 Apr 2026 02:10:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776376778;
-	bh=AlLMcUQhFasP1gpVZMHOUydAPyqbNw6g5fn1ghs9xQc=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=gg7/THy1+AX+5j9Nd6vMKO6fPOKg9HUVY5TkRex5a6XdEZRUppF6UqJ2uRBly4WCO
-	 e9NbcmpJw9bmoZK7z0taLnegnx/b5/tcxZ9wghi4cqF1A+xZManOCZPW9sY/H18G0D
-	 MwIyekkyH3F/qWMVuS7CGzFVqkNrlHNkexXtC1z8U6a2lnaW5epQcNniG/uy63mJmw
-	 uWoFTGLiVdyDTPUovssflZdkU6dQdtCQfppVJHU55FTtm8X6ryBtqF7/I+ivRRvXv8
-	 pO1fT8m1bJODZrM187RNX3nmlJuoHDj3EQesX5HusIQKmiFR9xh3T6LCCXmHXu2uyP
-	 Rm5iGlkJR/FPg==
-Received: by mail-lj1-f175.google.com with SMTP id 38308e7fff4ca-38e96a071c3so445581fa.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 16 Apr 2026 14:59:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AFNElJ/GxX62ALECfCG1Emw3CS1ikGfT66eCzJfORf0ihiqShCyhl2TD5Px/PrvRAqDwdGlXpi+PJALw0nAPGEI2XA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwJuN51TcxT4Kw2p4u7CkeTkvXHZrTak447B+nnjnayDq6W25AN
-	dY0sTBnMgyhygz4kY4uqzvUQWONLLuqrWDwIwBg9l/GHopZKKeYhqNNVDUyIW4t+Lft1WK8oB70
-	bzEs2AYsAV/mrB0vNEVzCTCn1V5GfcfA=
-X-Received: by 2002:a05:651c:553:b0:383:5390:bc96 with SMTP id
- 38308e7fff4ca-38ec7437420mr1136551fa.0.1776376777227; Thu, 16 Apr 2026
- 14:59:37 -0700 (PDT)
+	s=k20201202; t=1776391842;
+	bh=/bgy00+4dQ+qdVqSAhqIMgVG2c+nPIoBLaK7Cx2GAZM=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=qE1Vv+EVo5h4eXbn8veFGVomCLLA1gDOOcpiaeHoxK0sNI2x8YDPlhvRIYUehdM/u
+	 RDgpzqs9eZn8UMSkCXZAU1DxAHDDPyVqugxfRJIgdj/vGS8UQDMoL74HiJPSKPUoLy
+	 7ecnGFwge0/zDdR2uom1oa1rNm3NiJCoDuiE54RS80VNUXTh8Wye7RlR6bR6jURZhP
+	 jbMektIYQxKzfRBvuRga3lLIqvaxtIh8ZQV2312YwOyTbIA/KIb2+OakRvY46fJ2fQ
+	 RsI8kkMLXlFK9TfV0wPwGx+ner4mpGwFkBgTLARbgKzSAO8fR7nCQRF2TwkM2GtA3k
+	 Onhr/3VQnHA1w==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 3FD38380AA76;
+	Fri, 17 Apr 2026 02:10:12 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-References: <59f58f03-6dee-4380-80d6-7e2778b5f14b@altlinux.org>
- <f264b392-37bc-4b31-ac0e-768466f2b962@altlinux.org> <CAGp9LzrfD+a84ZVGjUnrv7KYCpgfe88NyrXos8wW8U7aKM8BZw@mail.gmail.com>
- <651b9626-0c2c-4993-829a-3259141109dc@altlinux.org> <ddb70af0-b3b1-42c3-9459-ce41914c4d20@altlinux.org>
-In-Reply-To: <ddb70af0-b3b1-42c3-9459-ce41914c4d20@altlinux.org>
-From: Sean Wang <sean.wang@kernel.org>
-Date: Thu, 16 Apr 2026 16:59:25 -0500
-X-Gmail-Original-Message-ID: <CAGp9LzoEaNuQf7+2i5QZi8f44zQfxpWGJiW0WgYrAZhT2a9D+Q@mail.gmail.com>
-X-Gm-Features: AQROBzAF8JmAS5EwGdBo41HZ0lpUNVOogRqOVGSfwXTacaEkYFE9SKdGuf0rLfo
-Message-ID: <CAGp9LzoEaNuQf7+2i5QZi8f44zQfxpWGJiW0WgYrAZhT2a9D+Q@mail.gmail.com>
-Subject: Re: [BUG] mt7921e: Intermittent connection failure
-To: silverducks@altlinux.org
-Cc: linux-wireless@vger.kernel.org, nbd@nbd.name, lorenzo@kernel.org, 
-	ryder.lee@mediatek.com, shayne.chen@mediatek.com, sean.wang@mediatek.com, 
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net v2] net: airoha: Wait for NPU PPE configuration to
+ complete in airoha_ppe_offload_setup()
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <177639181104.3482475.13335009889872843570.git-patchwork-notify@kernel.org>
+Date: Fri, 17 Apr 2026 02:10:11 +0000
+References: <20260414-airoha-wait-for-npu-config-offload-setup-v2-1-5a9bf6d43aee@kernel.org>
+In-Reply-To: <20260414-airoha-wait-for-npu-config-offload-setup-v2-1-5a9bf6d43aee@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,116 +72,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hello:
 
-Thanks for the update and for sharing the revised script and rerun logs.
-I tried to reproduce the issue with your script on an mt7921u, but I
-could not reproduce the timeout on my side.
-In my run, I got 398 reload cycles and 398 successful reconnects:
-grep Reloading test_log.txt | wc -l
-388
-grep Connection test_log.txt | wc -l
-398
-The log is consistently like this after module reload [1]
-If this were a generic race in the common MCU command layer, I would
-expect it to reproduce on mt7921u as well.
-Also, could you record and save the "iw event" log when you run the
-test? That would help show what userspace-triggered
-activities are happening. we can mimic the same sequence using wpa_cli
+This patch was applied to netdev/net.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-[1]
-Starting WiFi mt7921u reset loop (using NetworkManager)
-Making sure network services are down...
-----------------------------------------
-Reloading module mt7921u...
-Starting network services...
-Checking for connection...
-Checking for connection...
-Connected.
-Connection succeeded. Cleaning up.
-----------------------------------------
-Reloading module mt7921u...
-Starting network services...
-Checking for connection...
-Checking for connection...
-Connected.
-Connection succeeded. Cleaning up.
-----------------------------------------
-Reloading module mt7921u...
-Starting network services...
-Checking for connection...
-Checking for connection...
-Connected.
-Connection succeeded. Cleaning up.
-----------------------------------------
-Reloading module mt7921u...
-Starting network services...
-Checking for connection...
-Checking for connection...
-Status: Connecting
-Checking for connection...
-Connected.
-Connection succeeded. Cleaning up.
-----------------------------------------
-Reloading module mt7921u...
-Starting network services...
-Checking for connection...
-Checking for connection...
-Connected.
-Connection succeeded. Cleaning up.
-----------------------------------------
-Reloading module mt7921u...
-Starting network services...
-Checking for connection...
-Checking for connection...
-Status: Connecting
-Checking for connection...
-Connected.
-Connection succeeded. Cleaning up.
-----------------------------------------
-Reloading module mt7921u...
-Starting network services...
-Checking for connection...
-Checking for connection...
-Connected.
-Connection succeeded. Cleaning up.
-----------------------------------------
-Reloading module mt7921u...
-Starting network services...
-Checking for connection...
-Checking for connection...
-Connected.
-Connection succeeded. Cleaning up.
-----------------------------------------
-Reloading module mt7921u...
-Starting network services...
-Checking for connection...
-Checking for connection...
-Connected.
-Connection succeeded. Cleaning up.
-----------------------------------------
-Reloading module mt7921u...
-Starting network services...
-Checking for connection...
-Checking for connection...
-Connected.
-Connection succeeded. Cleaning up.
-----------------------------------------
-...
-and so on
+On Tue, 14 Apr 2026 16:08:52 +0200 you wrote:
+> In order to properly enable flowtable hw offloading, poll
+> REG_PPE_FLOW_CFG register in airoha_ppe_offload_setup routine and
+> wait for NPU PPE configuration triggered by ppe_init callback to complete
+> before running airoha_ppe_hw_init().
+> 
+> Fixes: 00a7678310fe3 ("net: airoha: Introduce flowtable offload support")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> 
+> [...]
 
-On Tue, Apr 14, 2026 at 1:22=E2=80=AFAM silverducks <silverducks@altlinux.o=
-rg> wrote:
->
-> Greetings!
->
-> Update:
-> New version of the script is less consistent at reproducing the bug.
-> I've also noticed that on patched kernel it triggers timeout way
-> more often than older script. I've rolled back to the older one,
-> which relies on the NM autoconnect feature, though retained cleanup
-> changes.
-> I'm guessing direct nmcli command is often preventing NM from doing
-> whatever it is usually doing that triggers the error.
-> Script and reruns with it attached.
+Here is the summary with links:
+  - [net,v2] net: airoha: Wait for NPU PPE configuration to complete in airoha_ppe_offload_setup()
+    https://git.kernel.org/netdev/net/c/f3206328bb52
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
