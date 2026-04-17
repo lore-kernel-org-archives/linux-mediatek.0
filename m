@@ -4,67 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA475F436BD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Apr 2026 16:40:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 232DBF8DFFF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Apr 2026 17:47:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lrJMlkRjepbR2+v734nOnTQCfqKwaJyhX1Le4Qo3DI4=; b=RAwhy0fe7bnYNctSjUH5JfE7gg
-	hQy3HoHvK+P6Pkn0Y1m7YddgCFVf6a9OIM1wlHFK1rdyVaGNAw8OxKAau/9p4n5JZ1+bZ5TQ4r4mG
-	OErysrgJ26v/yqFvFwIxusiSaPlIK8j1o/VXYh31LoiN3Gq3sn0Z5rBH+7lxIb4PboBQSq305h7k9
-	a3eoj9Lqv2uTegwQmJSKutemQzn5G7nj4uao82/+5advYmG6OC+Y/x4wEuECMIToH55Jxdg1T7maE
-	Rb5ThqCKoKvXOYyhlUIzhlOGCS2zuQaoihAozmHriDzzt6kMDTmYe3Lz0VTFIHxDS4xpRmfzFmfXD
-	sZcMfJ6Q==;
+	bh=k8m/KTTmnq5PY9ru1DsdH08IpJYZRyWyKs1/HT27WEs=; b=xVsRk+Bki190B7oOVVtB3KVrSv
+	0zXZbSWme500JwfDAZxny/JylZ8aeilFD3NV4i/WjTC9tVzpCawCOMitRbJh/LsPdr2hogLKyRXdV
+	Lx/DxBa87ZkoH/RFg0sPH/pIPJk1Y+pHacoAdb7UBCJB4hZfgxunI6lppsBCjrH1I7ADTQeaqyBUz
+	nkaFROao+gHVkLf2QzsuBulOUqbTFLxE6pK5sZIZjLTa2iKPwBbuBTOv4Bkmc0RHuqiQlY8qVblJh
+	Yu/Hc6i5iDV64daBBRtJ65zDMfIMQ87bpg7NaEovHw/4194CGK9V3M+01T7BHc03fV1dAjswEZVhB
+	djHeFuOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDmFC-00000004Htl-3BDd;
-	Fri, 17 Apr 2026 16:40:38 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wDnHV-00000004KoT-3f7C;
+	Fri, 17 Apr 2026 17:47:05 +0000
+Received: from stravinsky.debian.org ([2001:41b8:202:deb::311:108])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDmFA-00000004HtY-3ZbL;
-	Fri, 17 Apr 2026 16:40:37 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E9DCF60145;
-	Fri, 17 Apr 2026 16:40:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B168FC19425;
-	Fri, 17 Apr 2026 16:40:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776444035;
-	bh=vS+6JjIgSwATnAo0FDNGd2EBykmQuR1wkqPKp83GKMk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=J9GWZ1tk5cd9ZwIhZsBOpKbe1Wt4MbDlnyOBqRcBM3Z2ySyLmocXF9Y4f2eXQ0Gzi
-	 Nvv6xCB4ZZKL+TEgTyYg3Uj78qNZWG38cCwP/8dPab0YZmsVGkoX4vqzN6g7PB/ARa
-	 YLxVw8QCDZnVxh6cZcVhOlG4QNM6klXU4/OqYM6JDfGaqjdDzqSZjqohcZgelD9Uas
-	 KnWYQkGlov7sgzkeE8zyidF4Ot5QbarZ23UnlHKMF+sGQP3BLfLDheRiE6EnoFGDix
-	 6L1DypqMLaqlpISnowtoZBeVggsS6xPcZy/YJoMyb+Xb8T3grFgqw1hpzFaJbWSMjA
-	 ZD84jBXaSRrVA==
-Date: Fri, 17 Apr 2026 17:40:30 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Binbin Shi <binbin.shi@mediatek.com>
-Cc: "Rafael J . Wysocki" <rafael@kernel.org>,
-	Viresh Kumar <viresh.kumar@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hector Yuan <hector.yuan@mediatek.com>, linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	vince-wl.liu@mediatek.com
-Subject: Re: [PATCH] dt-bindings: cpufreq: add mt8189 cpufreq hw dt-bindings
-Message-ID: <20260417-heat-broom-3ffd6419fa07@spud>
-References: <20260417080648.3692438-1-binbin.shi@mediatek.com>
+	id 1wDnHT-00000004Kne-0pLY;
+	Fri, 17 Apr 2026 17:47:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=debian.org;
+	s=smtpauto.stravinsky; h=X-Debian-User:In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=k8m/KTTmnq5PY9ru1DsdH08IpJYZRyWyKs1/HT27WEs=; b=G8ioTg1PqKwL/Klcpomt6dE9Xa
+	JPpL9IJjXkGPag8r3o9xajKGIy4+9OeXkj2D8YjNECvgQYyIqbGBNLkfK8n0v2zLaNpkkzbUeWsIO
+	UdQ7d8v4rw1Tr9oyOhpJcCg2Is/sNrdSW4x9Tl3TeSuoaCOxBHZbd+3k5tlxVQdswdWacHoXN71uh
+	uO3smsPJZN8s46HtaAOfNz6/wHDxoox2OaYKSBtgqw3khAoHH6vZ2xn7YAMFylVphR5FxO6N7ya/A
+	EgTsq2S/5sPLv3+4mXLX6Jn1Tg0EvE9JbVMvk5LXYzKaqRYWvmB2KYPhd1F1GQxm7Fpa772McW2xo
+	klQbWTaQ==;
+Received: from authenticated user
+	by stravinsky.debian.org with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+	(Exim 4.96)
+	(envelope-from <leitao@debian.org>)
+	id 1wDnH2-00FY4p-1L;
+	Fri, 17 Apr 2026 17:46:36 +0000
+Date: Fri, 17 Apr 2026 10:46:29 -0700
+From: Breno Leitao <leitao@debian.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Subject: Re: [PATCH net] net: dsa: mt7530: fix .get_stats64 sleeping in
+ atomic context
+Message-ID: <aeJjcoHyezEgUG_Q@gmail.com>
+References: <79dc0ec5b6be698b14cb66339d6f63033ca2934a.1776397542.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="O16sYH1P8rELRFuU"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260417080648.3692438-1-binbin.shi@mediatek.com>
+In-Reply-To: <79dc0ec5b6be698b14cb66339d6f63033ca2934a.1776397542.git.daniel@makrotopia.org>
+X-Debian-User: leitao
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260417_104703_276018_6C53F835 
+X-CRM114-Status: UNSURE (   9.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,63 +69,31 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Paolo Abeni <pabeni@redhat.com>, netdev@vger.kernel.org, Russell King <linux@armlinux.org.uk>, Christian Marangi <ansuelsmth@gmail.com>, "Chester A. Unal" <chester.a.unal@arinc9.com>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, Apr 17, 2026 at 04:55:57AM +0100, Daniel Golle wrote:
+> @@ -3404,6 +3449,9 @@ EXPORT_SYMBOL_GPL(mt7530_probe_common);
+>  void
+>  mt7530_remove_common(struct mt7530_priv *priv)
+>  {
+> +	if (priv->bus)
+> +		cancel_delayed_work_sync(&priv->stats_work);
+> +
 
---O16sYH1P8rELRFuU
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Shouldn't you cancel the work later, after dsa_unregister_switch()?
 
-On Fri, Apr 17, 2026 at 04:06:17PM +0800, Binbin Shi wrote:
-> Add mt8189 cpufreq hw compatible in dt-bindings.
+I am wondering if the following race cannot happen:
 
-Why's this not compatible with the existing device? You've got no driver
-change with this so I can't even guess as why. The incompatibility should
-be explained in the commit message.
-
-pw-bot: changes-requested
-
-Cheers,
-Conor.
-
->=20
-> Signed-off-by: Binbin Shi <binbin.shi@mediatek.com>
-> ---
->  .../devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml      | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
->=20
-> diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-h=
-w.yaml b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
-> index d0aecde2b89b..cff52fffc6b8 100644
-> --- a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
-> +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
-> @@ -16,7 +16,9 @@ description:
-> =20
->  properties:
->    compatible:
-> -    const: mediatek,cpufreq-hw
-> +    enum:
-> +      - mediatek,cpufreq-hw
-> +      - mediatek,mt8189-cpufreq-hw
-> =20
->    reg:
->      minItems: 1
-> --=20
-> 2.45.2
->=20
-
---O16sYH1P8rELRFuU
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaeJifgAKCRB4tDGHoIJi
-0s9TAQD+qCFWSseJi4hwmF+JLmEE23ceOhV1OauB+CRT623n9AD/UTVQllhEmCr7
-1OjjOwDL92kHJhFrA7d6dYxHqxkLqQ8=
-=VuKY
------END PGP SIGNATURE-----
-
---O16sYH1P8rELRFuU--
+ mt7530_remove_common()                  someone reading /proc/net/dev
+    cancel_delayed_work_sync()
+      /* returns: work neither pending
+         nor executing - true at this
+         instant */
+                                          mt7530_get_stats64()
+                                            mod_delayed_work(...)
+                                            /* work is queued again */
+    dsa_unregister_switch()
+    return
 
