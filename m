@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3644F4369E
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3A41F4369D
 	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Apr 2026 13:11:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,87 +12,101 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KiTXMXyGgbry+1smTdjpHYLgWhcXFX/mZbw63wGDKJA=; b=1tYK4sGv8KTFnlGAP5CTqnVWHu
-	gkDDw15iQOLq3fXNIvxOCsRV35E2lz18yYG/dHezqFl1YHxkxxdojNZhZXQ4NQrc+6gQ5NyOuDX1O
-	QIC7RVYc0U1cFJdJ2o+SN/k2uyXYfHn/ty1Gs/9ihCWH68IkOoF1ZYlqaQH+qEZIu1bpDbIsMmxl0
-	pzd2rHwGWTTwgOvbbjmLX+fO4QrWYhJcwXPaha7AtP62Dc2MuOkTwUFOMT21/EnDoeifY1jxqKKco
-	jcionnmpCAfZr4+qYbXNqMeyve41icAncRlqaGnDIZ+9tBXu1U77hpDwYqZReYsDjbrYgc1Fn6MuC
-	8ukfj25w==;
+	bh=yLBJQur6L6abrgINbvpQqXST9x1YXfxN6XkkI5ZCGzQ=; b=N3OZZcYGRz6I7byORpmJC5emeA
+	8ZpHWhFiM8FvjuZomJca9W/uPDtgO0pzpc1TpWFGy3X/7ip38eO9bvo//OxgJEEgfQRFSkLiFSPTr
+	u/YW5WwZvjfBFIyUcxb6EuTzyr7Z2yM+xymx+lSs/rlSzxG4ru6GE4grzTlG9JBPIzpGN1okQL44/
+	/Y8wNsEYcs8endpfGsgLmFPca03tyTmjbkCYsC6jvkMTAr9dWZcErqEwQ9+W1iGBxNophJA7Qwe3t
+	4/6+JSkgP2isb1ZIQ2Vkoxg9kKGJNL1OmxKIwZwJK5AM5eid5ckLYPoZLb4xO6ugr6PNL5moqYGLC
+	Yl4B5YBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDiyq-000000044Kd-37iN;
-	Fri, 17 Apr 2026 13:11:32 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDiyo-000000044Jb-2de1
-	for linux-mediatek@lists.infradead.org;
+	id 1wDiyp-000000044K4-14KZ;
 	Fri, 17 Apr 2026 13:11:31 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-48374014a77so8448355e9.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 17 Apr 2026 06:11:30 -0700 (PDT)
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1wDiyl-000000044Iu-3JwP
+	for linux-mediatek@lists.infradead.org;
+	Fri, 17 Apr 2026 13:11:29 +0000
+Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-43d77f60944so499497f8f.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 17 Apr 2026 06:11:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20251104.gappssmtp.com; s=20251104; t=1776431489; x=1777036289; darn=lists.infradead.org;
+        d=baylibre-com.20251104.gappssmtp.com; s=20251104; t=1776431486; x=1777036286; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=KiTXMXyGgbry+1smTdjpHYLgWhcXFX/mZbw63wGDKJA=;
-        b=q4Owt7RJaTSK0Jr29zBT7PjAPCW1HAdMSAT+KPFI6KpA3/V03QfrC9ElZuDQNujpQo
-         YQGd9I21NOXwRzIQK42iSSPonwzxg4kmlNKYw761RyAcwsiKgKx0QskDw1DEECcMCM0Z
-         QVpMiacZ1b7Pg24sEjfEe0DvRgb8hSyWP2PFmCV5ePpGWzSlE96jFoOKDDxiMotIRuut
-         tLKe1hNbECQbVBeNjyF0bzyUpHNUH+nK7F5kxivqz3oc5Yso5tfWvtFugRP6bVoOSl7z
-         D/lYn5d5rQhk+7KvjHm5pZCzl9oIA2crkI4BcwXAe4lGi4M1kGLoJj/WHKo9+Gsgaxg5
-         +oRQ==
+        bh=yLBJQur6L6abrgINbvpQqXST9x1YXfxN6XkkI5ZCGzQ=;
+        b=KpmCqDu18xt9n/rw8TgE4n9+DLYb2YSWBgKVNfTOOwhEBKHSnUYUflGeiwr0Zo7yuA
+         zDWhBsJv+1JFWPtteLB0KbupZ6MxDXuE0ofSL+XZSYn1P5obaFSHzZEy1MdF7cqYUKrT
+         hUaO748IE/TKeSXJ7E3qr2YNB2O+sI/UfHtowwBgB2NgW34eVPK0Mnv3skL7ToM3M/Pk
+         rNToznsz0fYHaevjVapsbLVEjEqZWLNy1o+l8rhmyC2X+9holoo9d/ZdECOK/76Soe5u
+         dpW9WD/m2psymGy73+7LviOCYrTfn+GRFsJwTD6s02wlVYZnjMy0OYTYU2FJN045eR0C
+         CMyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1776431489; x=1777036289;
+        d=1e100.net; s=20251104; t=1776431486; x=1777036286;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=KiTXMXyGgbry+1smTdjpHYLgWhcXFX/mZbw63wGDKJA=;
-        b=EulP8tEK3tYqubZ/ODiECzKuAcc0M7ceCSWgiQcxeduxYGoQFA6Gs/qH2xhBHj9InX
-         R0JQIS2yBCVNUyXZ9ONKIGDaZMpiM1z7uXq0dV3s6OiZiJ0rGCk0DE/Ln7CVZp1b5SfJ
-         ACVN2uVdQ/tD7FTSMwFq16HkiK1C+g1M+/UBeLjFcmBhUoriKusWPTfKmIMhankx1DBk
-         9Qp88d9HUoutP+SAW018RrNQC61/Mtuj0fM3Uz5CxeipDUU2dFPgx2A8c8rzNReTkEzN
-         hs4I5x7y1OKzubEscKw5aExxKfvDUohfYKHd3wg9vnvFi5/Io4p0gJk5nQz4i0RrgXcZ
-         HVBQ==
-X-Forwarded-Encrypted: i=1; AFNElJ9k3bkwG9mr4bjolkEfflQRMsNJAwGMsbHMPjJa7t9LWvVKkUJ0IYN1QVpAhUCOnfhz3WJjkTJj4cpqwuuMxA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyVjJ9Mx50JUokIk+MmaPuoikD23VUw4HSmR6XJcXyHSEJcDs/c
-	ZDQFXNkb3o2RM+Avn+4n7OMOyBEk/cVvV/FVv9eAQKay5EidO7O4ZMEEPuNnpBPOVJ8=
-X-Gm-Gg: AeBDievEXNzhmBMejcXT97JPVS454/iMo2IaStyNRUY+/CBS/HeFwcCkapXYBMr4Oz3
-	6b7PinfOqJwobCmtN8F9eAmtDwhxPmykOtXDewcT/H9ofEZu4rCTJhI+Ld20/AUC2XDBvTtkpJk
-	53coqbFu4oO0SWOw5R0gHcmFV0C/1hSxY5GriLyuPWvg7bYdqo8XyfyK8kX/Vx2mg8s9bS0P9wk
-	NwR5ilFJJ9Elhas1tiWUWgagd8U3W1CKxZK//R/ro5Prq/bad3iGfBgMZ4RuIA5Zo5XreTD5qqf
-	jDPc1hJ31HtutKzbUnKwCxOCGkT+0e/n4nG38j7SEOAZcODkyR6pZfDHdrE4h959LoJARVmys1D
-	uVNQfrYp9A/dgpQFawQhz/4OzoW+984JwBPkynrZebOZzk1AR+Z7POIlGPHnIXE4jlQkMw1Q6rW
-	ES04tJP0jLUnek7dblSWQ5jXOt8q5EdXlyZotdA1tOJjPUn+dPLDJm/x/ztOgBl3wzfsOAGArxa
-	kCxTD4GlCBJkkVo4cAjJ9wh9PwCoNfBbrI=
-X-Received: by 2002:a05:600c:6297:b0:486:d76c:fa57 with SMTP id 5b1f17b1804b1-488fb77155dmr40662045e9.17.1776431488705;
-        Fri, 17 Apr 2026 06:11:28 -0700 (PDT)
+        bh=yLBJQur6L6abrgINbvpQqXST9x1YXfxN6XkkI5ZCGzQ=;
+        b=j7SCS3zSCR6qzZ053rDx2TkfIdVTzxGX9XYzlgm8e9OBRCPKoMkKBCsQtPME/frjzE
+         vlRXzmGbr3EzaY/4OIPSiB3lKpqlcusLWKSqBGMaBonydgYtv52kIKkE61l6lshfmcPh
+         9MlOAS38QV+ObDTBM+qjWXzcmtMqDvk3tr65qIShl8X6gjC4M5EHOO8Bz8PhHW5xBVOW
+         zl2//D32G2ePuIdu7z9b1BijcpX5CHzfaL2TJQtsmRpGeiDQxeBeqdzqqhfiJ1zGnOh2
+         DS0VmkFe6ht33b8r6z0xvF4zws7Y3UuNNU4emkqvtxGU0aVWMw8Fm7Jx4MOWsQFL41CH
+         Ofyw==
+X-Forwarded-Encrypted: i=1; AFNElJ8LMA7Xovd0fGAdmfQO3NG+ww7Wa+YT0ySKHIOTRtRvuaQwisc9VrVC0++gilYRi3Pkcwofh0lNKhuV/y/wlA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxU7tmJVDBwcgxXInjrw7iBqC0nU1m/unx8dnDkIQDlrO8BtQpk
+	ovtooy2opU2wW4r4Lf28CPryoOkOyWP+Q7lR1zZqYSqnBNcVHtAGx2EwUsUxSbjOZQ0=
+X-Gm-Gg: AeBDieuIBrnh81CxWTGN+1X/l1XXUyEhsTxPduUg+81JI7ASXezaunSp7K7IY1btluC
+	eLNiXZQCfoBMgRDrOvTT0SuYz5zzHKMrr8QijnJwWFfaeurq4shc3TpX/OzfEIaM//evqAxJdsA
+	mJpeUcUedcUDfgolQPyAfLD1TeUH0VHfol7Dw0xDaP3Nd41DBdM7ToAtOMi8w6LcoyquWN4zi8H
+	ZrQEf1cPGYWb8pbX+AI1UjQoHM8m1eI094Qkg7KK5w0z3JiQeA5XQcvIspK2uEZtxoqHQ/HNRYw
+	3ERLMHiWrIBGfhncgRZY39x9JULBVclxAc49xX0Sg0T2dtdkvS86IKov8jSiuWeYvc1hmCIQyws
+	QK/eX+zbDf4i0W65D/P+NSmr+gsRlPoa4K1NohYEImzFj5fRJsweFVI1W30CTx5rv9wllhHMuvL
+	XufrsK/FNcBQjCs9wShWRpkcBgqfgPOclEn7QNjZT164DQ1bfqHK0EJKohiuHuXGWBpiQskCsJi
+	DM/DROuMo2smTbcUrarIKSH
+X-Received: by 2002:a05:6000:420a:b0:43e:a69b:d813 with SMTP id ffacd0b85a97d-43fe3e0d459mr4571980f8f.25.1776431485775;
+        Fri, 17 Apr 2026 06:11:25 -0700 (PDT)
 Received: from localhost (p200300f65f20eb08db61cfc60d8aa232.dip0.t-ipconnect.de. [2003:f6:5f20:eb08:db61:cfc6:d8a:a232])
-        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-488fc10019bsm47077255e9.4.2026.04.17.06.11.28
+        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-43fe4e4daf2sm4238766f8f.33.2026.04.17.06.11.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 Apr 2026 06:11:28 -0700 (PDT)
+        Fri, 17 Apr 2026 06:11:25 -0700 (PDT)
 From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig=20=28The=20Capable=20Hub=29?= <u.kleine-koenig@baylibre.com>
-To: Marcel Holtmann <marcel@holtmann.org>,
-	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Ulf Hansson <ulfh@kernel.org>
 Cc: "Christian A. Ehrhardt" <christian.ehrhardt@codasip.com>,
-	linux-bluetooth@vger.kernel.org,
+	linux-mmc@vger.kernel.org,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Wolfram Sang <wsa+renesas@sang-engineering.com>,
 	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v1 3/6] Bluetooth: btmtksdio: Make use of driver data pointer in sdio_device_id
-Date: Fri, 17 Apr 2026 15:10:49 +0200
-Message-ID: <06f26b3e090ea52c7a2620759e91511570404ec4.1776429984.git.u.kleine-koenig@baylibre.com>
+	Marcel Holtmann <marcel@holtmann.org>,
+	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+	linux-bluetooth@vger.kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mediatek@lists.infradead.org,
+	Ping-Ke Shih <pkshih@realtek.com>,
+	linux-wireless@vger.kernel.org,
+	Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Brian Norris <briannorris@chromium.org>,
+	Francesco Dolcini <francesco@dolcini.it>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v1 1/6] sdio: Add syntactic sugar to store a pointer in sdio_driver_id
+Date: Fri, 17 Apr 2026 15:10:47 +0200
+Message-ID: <c830049dcfcd99f005e2ff6742aace9341c61f13.1776429984.git.u.kleine-koenig@baylibre.com>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <cover.1776429984.git.u.kleine-koenig@baylibre.com>
 References: <cover.1776429984.git.u.kleine-koenig@baylibre.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1468; i=u.kleine-koenig@baylibre.com; h=from:subject:message-id; bh=2l6+VruZCe2G92lMFTOG+EfNer+jq/4dC3nqnXbD9Bs=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBp4jFefmfBzsGZ3kLo9zeNLh94uuX0wHZ82YrGA IzIlV9GZuaJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCaeIxXgAKCRCPgPtYfRL+ TqVpCACTT3vbVLQ2hxvR192QyFytoivzueoZDb7jatdZDvJrGkXY/SJpKAnv9gc7tTavtwOYXhV L7rr9SxPzSvrm3zD+tvpqyfbLoKqfGvY3AVSSl8244v/FpXMDNxScKr3vYhEkizGEik/1XdcnB3 AW8x/CqjVCy9e75Lwpx8EInxLRJZEbAfqaiX0exiAd+fe+EndihAzVbnujmTdKL8ma/h+gLj0eB mG3HY/e/6niSjndyNC/AvCXSlLgv3xR9Eg2yeDtxVe1/blvgFVPWaTjeUsEueV8dDHxLhU+f7vs T09dLoBa8K/yteXcNJ/kWIajTt4k3fRJTctpa2WxJWDTRszg
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1594; i=u.kleine-koenig@baylibre.com; h=from:subject:message-id; bh=Klkglyq/jaqn07LVoY+DygFKlFSeY4mf3uyDS+66nUI=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBp4jFZkxQbj+KYt4Q9fEkJxuokeQF4k0Z8QVO3Q 7wAQaupW5KJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCaeIxWQAKCRCPgPtYfRL+ TtZtB/0YGCqVt5rVpLrWqCD44F5LfNFUgv/+TGPxayzQfsH7zoCBqE9UgsVpBkFZprUwAzLBPWG MPbj74nUaxJfky/T/6x/bsJ20CXFl14Aky5oeSqWXwpx/STsvR1t7BH1meFZ1chEsexFTdIwswa 8F2lrrBsAe+eGHk4UdYwOcEBLke8MRKu7X9WInf8735NDYlo6VkX6TwaQTxpOcTlNIDfwZlA6ON nlrxK4GTkQYXCmaFZYylJBpOTDYLdH8GJZthPQhYPW5w9D8jVeVUIanYYaSikHt0R/zyWaylAij O7+GqKklrjT08jMFR3/4DzejRKFhjlyBUA+HrbH74dCapvBS
 X-Developer-Key: i=u.kleine-koenig@baylibre.com; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260417_061130_682128_4530059F 
-X-CRM114-Status: GOOD (  12.04  )
+X-CRM114-CacheID: sfid-20260417_061127_853889_410BCEB4 
+X-CRM114-Status: GOOD (  16.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,42 +121,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Recently struct sdio_device_id gained a new member to store a pointer to
-driver data. Make use of that to get rid of a bunch of casts.
+On all current Linux architectures sizeof(long) == sizeof(void *) and
+this is used a lot through the kernel. For example it enables the usual
+practice to store pointers in sdio_driver_id's .driver_data member.
+
+This works fine, but involves casting and thus isn't type-safe.
+Additionally with the CHERI architecture extension there are machines
+with sizeof(void *) > sizeof(long) for with the traditional approach of
+storing a pointer in .driver_data doesn't work.
+
+By replacing the plain unsigned long .driver_data by an anonymous union,
+most of the casting can be dropped and it yields a working solution for
+CHERI.
+
+All users of struct sdio_driver_id are initialized in a way that is
+compatible with the new definition, so no adaptions are needed there.
 
 Signed-off-by: Uwe Kleine-König (The Capable Hub) <u.kleine-koenig@baylibre.com>
 ---
- drivers/bluetooth/btmtksdio.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ include/linux/mod_devicetable.h | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index e986e5af51ae..ee886dcada63 100644
---- a/drivers/bluetooth/btmtksdio.c
-+++ b/drivers/bluetooth/btmtksdio.c
-@@ -64,11 +64,11 @@ static const struct btmtksdio_data mt7921_data = {
- 
- static const struct sdio_device_id btmtksdio_table[] = {
- 	{SDIO_DEVICE(SDIO_VENDOR_ID_MEDIATEK, SDIO_DEVICE_ID_MEDIATEK_MT7663),
--	 .driver_data = (kernel_ulong_t)&mt7663_data },
-+	 .driver_data_ptr = &mt7663_data },
- 	{SDIO_DEVICE(SDIO_VENDOR_ID_MEDIATEK, SDIO_DEVICE_ID_MEDIATEK_MT7668),
--	 .driver_data = (kernel_ulong_t)&mt7668_data },
-+	 .driver_data_ptr = &mt7668_data },
- 	{SDIO_DEVICE(SDIO_VENDOR_ID_MEDIATEK, SDIO_DEVICE_ID_MEDIATEK_MT7961),
--	 .driver_data = (kernel_ulong_t)&mt7921_data },
-+	 .driver_data_ptr = &mt7921_data },
- 	{ }	/* Terminating entry */
+diff --git a/include/linux/mod_devicetable.h b/include/linux/mod_devicetable.h
+index 5b1725fe9707..0eb5d196f5b5 100644
+--- a/include/linux/mod_devicetable.h
++++ b/include/linux/mod_devicetable.h
+@@ -414,7 +414,10 @@ struct sdio_device_id {
+ 	__u8	class;			/* Standard interface or SDIO_ANY_ID */
+ 	__u16	vendor;			/* Vendor or SDIO_ANY_ID */
+ 	__u16	device;			/* Device ID or SDIO_ANY_ID */
+-	kernel_ulong_t driver_data;	/* Data private to the driver */
++	union {				/* Data private to the driver */
++		kernel_ulong_t driver_data;
++		const void *driver_data_ptr;
++	};
  };
- MODULE_DEVICE_TABLE(sdio, btmtksdio_table);
-@@ -1352,7 +1352,7 @@ static int btmtksdio_probe(struct sdio_func *func,
- 	if (!bdev)
- 		return -ENOMEM;
  
--	bdev->data = (void *)id->driver_data;
-+	bdev->data = id->driver_data_ptr;
- 	if (!bdev->data)
- 		return -ENODEV;
- 
+ /* SSB core, see drivers/ssb/ */
 -- 
 2.47.3
 
