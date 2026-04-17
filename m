@@ -4,60 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED77EF8E497
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Apr 2026 02:10:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF7A6F8E4A1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Apr 2026 03:56:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MJa8pdLEdVqabC8vwNoSVmX2YrTRj9w7t3c5Vn/uyLY=; b=XQKQPwBgbMzuySXZOSn1037y7Y
-	cURhX94TcS9mIq7zprJeYxPzXm+1riKKCgT5O6k1/6ibc/CZOCBHr7l/3RIly43t8fHDAWSfogez6
-	9RpTgYx0KxoGw0w3iev45gZki/eAQ4M/YuCOK5prHZBKJVtMK+kMqRd59cr+cHeuJHi8muv/FsIZ3
-	Rg0B9UnuGLhUwwydETWrAjfEX976DHAbFKjZIE7ZNKWGY1LlNFybXMvLpTCV6h8bT+5xK/d06rIsm
-	Y1HAe56XFHtWnmypshb1l1gGpQJ0JR1sgkCFS8uwFM3MKmZy61g3ZercvOXHd3bIj43XBMwfGfuxK
-	b9f1mctQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	MIME-Version:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=uep00RZ20m9hqEUltmLDIss2gfgFCB/WV8qm+AZ7DaY=; b=LEM
+	M71PXdnvLGDMve+hhk11YKFJ2J90UnUmgFEaw8OIWlz/bd6F2bWO5JDW98ytqHOH9Mcg8rAJz9OA3
+	rzoANDAQhGgV2/y2MXyS+rUUxGzYs64QgEApZWRj3YZC5lSUreAJvFjPIv+4UvjMCLSzaJQKIWIXQ
+	jKuqefSCFxvD2EeQGRIOQ8zWzpxyuQs/eWwheMsaIR+lq9ZX0/TSJ0lyuwtWuKI0BIa8f6w7kULMa
+	x5LP4RmPKbpuemfNeXaSwM6gTBDalKQ+l0Czui8JaqfRXIrktTI0Nov6kydwnRNXJGXbPKYh0/ZSD
+	cizFeRo4TfWf5j35OI94eiP0FqK6RZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDYfO-00000003JWm-0jrN;
-	Fri, 17 Apr 2026 02:10:46 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wDaJa-00000003OjZ-1l1l;
+	Fri, 17 Apr 2026 03:56:22 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDYfM-00000003JWX-0NLz;
-	Fri, 17 Apr 2026 02:10:44 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 20B2060181;
-	Fri, 17 Apr 2026 02:10:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E78A7C2BCB3;
-	Fri, 17 Apr 2026 02:10:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776391842;
-	bh=/bgy00+4dQ+qdVqSAhqIMgVG2c+nPIoBLaK7Cx2GAZM=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=qE1Vv+EVo5h4eXbn8veFGVomCLLA1gDOOcpiaeHoxK0sNI2x8YDPlhvRIYUehdM/u
-	 RDgpzqs9eZn8UMSkCXZAU1DxAHDDPyVqugxfRJIgdj/vGS8UQDMoL74HiJPSKPUoLy
-	 7ecnGFwge0/zDdR2uom1oa1rNm3NiJCoDuiE54RS80VNUXTh8Wye7RlR6bR6jURZhP
-	 jbMektIYQxKzfRBvuRga3lLIqvaxtIh8ZQV2312YwOyTbIA/KIb2+OakRvY46fJ2fQ
-	 RsI8kkMLXlFK9TfV0wPwGx+ner4mpGwFkBgTLARbgKzSAO8fR7nCQRF2TwkM2GtA3k
-	 Onhr/3VQnHA1w==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 3FD38380AA76;
-	Fri, 17 Apr 2026 02:10:12 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1wDaJW-00000003Oil-3YAA;
+	Fri, 17 Apr 2026 03:56:20 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.99)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1wDaJE-000000008VK-2ntw;
+	Fri, 17 Apr 2026 03:56:00 +0000
+Date: Fri, 17 Apr 2026 04:55:57 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Christian Marangi <ansuelsmth@gmail.com>, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net] net: dsa: mt7530: fix .get_stats64 sleeping in atomic
+ context
+Message-ID: <79dc0ec5b6be698b14cb66339d6f63033ca2934a.1776397542.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net v2] net: airoha: Wait for NPU PPE configuration to
- complete in airoha_ppe_offload_setup()
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <177639181104.3482475.13335009889872843570.git-patchwork-notify@kernel.org>
-Date: Fri, 17 Apr 2026 02:10:11 +0000
-References: <20260414-airoha-wait-for-npu-config-offload-setup-v2-1-5a9bf6d43aee@kernel.org>
-In-Reply-To: <20260414-airoha-wait-for-npu-config-offload-setup-v2-1-5a9bf6d43aee@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260416_205619_068340_0A7BB360 
+X-CRM114-Status: GOOD (  16.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,33 +66,202 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: John Crispin <john@phrozen.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+The .get_stats64 callback runs in atomic context, but on
+MDIO-connected switches every register read acquires the MDIO bus
+mutex, which can sleep:
+[   12.645973] BUG: sleeping function called from invalid context at kernel/locking/mutex.c:609
+[   12.654442] in_atomic(): 0, irqs_disabled(): 0, non_block: 0, pid: 759, name: grep
+[   12.663377] preempt_count: 0, expected: 0
+[   12.667410] RCU nest depth: 1, expected: 0
+[   12.671511] INFO: lockdep is turned off.
+[   12.675441] CPU: 0 UID: 0 PID: 759 Comm: grep Tainted: G S      W           7.0.0+ #0 PREEMPT
+[   12.675453] Tainted: [S]=CPU_OUT_OF_SPEC, [W]=WARN
+[   12.675456] Hardware name: Bananapi BPI-R64 (DT)
+[   12.675459] Call trace:
+[   12.675462]  show_stack+0x14/0x1c (C)
+[   12.675477]  dump_stack_lvl+0x68/0x8c
+[   12.675487]  dump_stack+0x14/0x1c
+[   12.675495]  __might_resched+0x14c/0x220
+[   12.675504]  __might_sleep+0x44/0x80
+[   12.675511]  __mutex_lock+0x50/0xb10
+[   12.675523]  mutex_lock_nested+0x20/0x30
+[   12.675532]  mt7530_get_stats64+0x40/0x2ac
+[   12.675542]  dsa_user_get_stats64+0x2c/0x40
+[   12.675553]  dev_get_stats+0x44/0x1e0
+[   12.675564]  dev_seq_printf_stats+0x24/0xe0
+[   12.675575]  dev_seq_show+0x14/0x3c
+[   12.675583]  seq_read_iter+0x37c/0x480
+[   12.675595]  seq_read+0xd0/0xec
+[   12.675605]  proc_reg_read+0x94/0xe4
+[   12.675615]  vfs_read+0x98/0x29c
+[   12.675625]  ksys_read+0x54/0xdc
+[   12.675633]  __arm64_sys_read+0x18/0x20
+[   12.675642]  invoke_syscall.constprop.0+0x54/0xec
+[   12.675653]  do_el0_svc+0x3c/0xb4
+[   12.675662]  el0_svc+0x38/0x200
+[   12.675670]  el0t_64_sync_handler+0x98/0xdc
+[   12.675679]  el0t_64_sync+0x158/0x15c
 
-This patch was applied to netdev/net.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+For MDIO-connected switches, poll MIB counters asynchronously using a
+delayed workqueue every second and let .get_stats64 return the cached
+values under a per-port spinlock. A mod_delayed_work() call on each
+read triggers an immediate refresh so counters stay responsive when
+queried more frequently.
 
-On Tue, 14 Apr 2026 16:08:52 +0200 you wrote:
-> In order to properly enable flowtable hw offloading, poll
-> REG_PPE_FLOW_CFG register in airoha_ppe_offload_setup routine and
-> wait for NPU PPE configuration triggered by ppe_init callback to complete
-> before running airoha_ppe_hw_init().
-> 
-> Fixes: 00a7678310fe3 ("net: airoha: Introduce flowtable offload support")
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> 
-> [...]
+MMIO-connected switches (MT7988, EN7581, AN7583) are not affected
+because their regmap does not sleep, so they continue to read MIB
+counters directly in .get_stats64.
 
-Here is the summary with links:
-  - [net,v2] net: airoha: Wait for NPU PPE configuration to complete in airoha_ppe_offload_setup()
-    https://git.kernel.org/netdev/net/c/f3206328bb52
+Fixes: 88c810f35ed5 ("net: dsa: mt7530: implement .get_stats64")
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+This bug highlights a bigger problem and the actual cause:
+Locking in the mt7530 driver deserves a cleanup, and refactoring
+towards cleanly and directly using the regmap API.
+I've prepared this already and am going to submit a series doing
+most of that using Coccinelle semantic patches once net-next opens
+again.
 
-You are awesome, thank you!
+ drivers/net/dsa/mt7530.c | 54 +++++++++++++++++++++++++++++++++++++---
+ drivers/net/dsa/mt7530.h |  6 +++++
+ 2 files changed, 57 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index b9423389c2ef0..786d3a8492bcb 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -25,6 +25,8 @@
+ 
+ #include "mt7530.h"
+ 
++#define MT7530_STATS_POLL_INTERVAL	(1 * HZ)
++
+ static struct mt753x_pcs *pcs_to_mt753x_pcs(struct phylink_pcs *pcs)
+ {
+ 	return container_of(pcs, struct mt753x_pcs, pcs);
+@@ -906,10 +908,9 @@ static void mt7530_get_rmon_stats(struct dsa_switch *ds, int port,
+ 	*ranges = mt7530_rmon_ranges;
+ }
+ 
+-static void mt7530_get_stats64(struct dsa_switch *ds, int port,
+-			       struct rtnl_link_stats64 *storage)
++static void mt7530_read_port_stats64(struct mt7530_priv *priv, int port,
++				     struct rtnl_link_stats64 *storage)
+ {
+-	struct mt7530_priv *priv = ds->priv;
+ 	uint64_t data;
+ 
+ 	/* MIB counter doesn't provide a FramesTransmittedOK but instead
+@@ -951,6 +952,43 @@ static void mt7530_get_stats64(struct dsa_switch *ds, int port,
+ 			       &storage->rx_crc_errors);
+ }
+ 
++static void mt7530_stats_poll(struct work_struct *work)
++{
++	struct mt7530_priv *priv = container_of(work, struct mt7530_priv,
++						stats_work.work);
++	struct rtnl_link_stats64 stats = {};
++	struct dsa_port *dp;
++	int port;
++
++	dsa_switch_for_each_user_port(dp, priv->ds) {
++		port = dp->index;
++
++		mt7530_read_port_stats64(priv, port, &stats);
++
++		spin_lock(&priv->stats_lock);
++		priv->ports[port].stats = stats;
++		spin_unlock(&priv->stats_lock);
++	}
++
++	schedule_delayed_work(&priv->stats_work,
++			      MT7530_STATS_POLL_INTERVAL);
++}
++
++static void mt7530_get_stats64(struct dsa_switch *ds, int port,
++			       struct rtnl_link_stats64 *storage)
++{
++	struct mt7530_priv *priv = ds->priv;
++
++	if (priv->bus) {
++		spin_lock(&priv->stats_lock);
++		*storage = priv->ports[port].stats;
++		spin_unlock(&priv->stats_lock);
++		mod_delayed_work(system_wq, &priv->stats_work, 0);
++	} else {
++		mt7530_read_port_stats64(priv, port, storage);
++	}
++}
++
+ static void mt7530_get_eth_ctrl_stats(struct dsa_switch *ds, int port,
+ 				      struct ethtool_eth_ctrl_stats *ctrl_stats)
+ {
+@@ -3137,6 +3175,13 @@ mt753x_setup(struct dsa_switch *ds)
+ 	if (ret && priv->irq_domain)
+ 		mt7530_free_mdio_irq(priv);
+ 
++	if (!ret && priv->bus) {
++		spin_lock_init(&priv->stats_lock);
++		INIT_DELAYED_WORK(&priv->stats_work, mt7530_stats_poll);
++		schedule_delayed_work(&priv->stats_work,
++				      MT7530_STATS_POLL_INTERVAL);
++	}
++
+ 	return ret;
+ }
+ 
+@@ -3404,6 +3449,9 @@ EXPORT_SYMBOL_GPL(mt7530_probe_common);
+ void
+ mt7530_remove_common(struct mt7530_priv *priv)
+ {
++	if (priv->bus)
++		cancel_delayed_work_sync(&priv->stats_work);
++
+ 	if (priv->irq_domain)
+ 		mt7530_free_mdio_irq(priv);
+ 
+diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+index 3e0090bed298d..44c1dc75baea8 100644
+--- a/drivers/net/dsa/mt7530.h
++++ b/drivers/net/dsa/mt7530.h
+@@ -796,6 +796,7 @@ struct mt7530_fdb {
+  * @pvid:	The VLAN specified is to be considered a PVID at ingress.  Any
+  *		untagged frames will be assigned to the related VLAN.
+  * @sgmii_pcs:	Pointer to PCS instance for SerDes ports
++ * @stats:	Cached port statistics for MDIO-connected switches
+  */
+ struct mt7530_port {
+ 	bool enable;
+@@ -803,6 +804,7 @@ struct mt7530_port {
+ 	u32 pm;
+ 	u16 pvid;
+ 	struct phylink_pcs *sgmii_pcs;
++	struct rtnl_link_stats64 stats;
+ };
+ 
+ /* Port 5 mode definitions of the MT7530 switch */
+@@ -875,6 +877,8 @@ struct mt753x_info {
+  * @create_sgmii:	Pointer to function creating SGMII PCS instance(s)
+  * @active_cpu_ports:	Holding the active CPU ports
+  * @mdiodev:		The pointer to the MDIO device structure
++ * @stats_lock:		Protects cached per-port stats from concurrent access
++ * @stats_work:		Delayed work for polling MIB counters on MDIO switches
+  */
+ struct mt7530_priv {
+ 	struct device		*dev;
+@@ -900,6 +904,8 @@ struct mt7530_priv {
+ 	int (*create_sgmii)(struct mt7530_priv *priv);
+ 	u8 active_cpu_ports;
+ 	struct mdio_device *mdiodev;
++	spinlock_t stats_lock; /* protects cached stats counters */
++	struct delayed_work stats_work;
+ };
+ 
+ struct mt7530_hw_vlan_entry {
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+2.53.0
 
