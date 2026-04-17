@@ -4,60 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 232DBF8DFFF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Apr 2026 17:47:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6C9FF436BF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Apr 2026 18:04:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k8m/KTTmnq5PY9ru1DsdH08IpJYZRyWyKs1/HT27WEs=; b=xVsRk+Bki190B7oOVVtB3KVrSv
-	0zXZbSWme500JwfDAZxny/JylZ8aeilFD3NV4i/WjTC9tVzpCawCOMitRbJh/LsPdr2hogLKyRXdV
-	Lx/DxBa87ZkoH/RFg0sPH/pIPJk1Y+pHacoAdb7UBCJB4hZfgxunI6lppsBCjrH1I7ADTQeaqyBUz
-	nkaFROao+gHVkLf2QzsuBulOUqbTFLxE6pK5sZIZjLTa2iKPwBbuBTOv4Bkmc0RHuqiQlY8qVblJh
-	Yu/Hc6i5iDV64daBBRtJ65zDMfIMQ87bpg7NaEovHw/4194CGK9V3M+01T7BHc03fV1dAjswEZVhB
-	djHeFuOA==;
+	bh=RgGLav7Gb6QvovV50XxB4tm3UuKBSRBem6o7kf7SUp0=; b=WLFqliB8En+4QUGjawnMBG9qg1
+	ZlKm5GIvN58snDMxNeK3ntC/FJL3H0L7+vBs5S0et3ElkO3zAc6UfeJumpkEz3FBSnKmWEjSgg79u
+	/QE2MEXmpMWH6MJI68h56WdjRidAemOLeg+gjmTTTthhrffzbFWewx+aTpdnZZ3pFvGe3IecSdq1B
+	ZBO9N6CmtoH7BniwoiWaKmuHDsJK0Kt6KK07U8R3uS3nWPOnbdA0v4+s+ioISPrUW6nMdT4u6TTcq
+	Ibz3CyGMiO46tiJzzDxbfLh+UEI5HvJMe7b4VE/OF/Zb5qcYkc/vSDhQ3t7SDLeC0iR6pm/6qMLyN
+	uN5/VHqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDnHV-00000004KoT-3f7C;
-	Fri, 17 Apr 2026 17:47:05 +0000
-Received: from stravinsky.debian.org ([2001:41b8:202:deb::311:108])
+	id 1wDnYF-00000004MGd-2wRv;
+	Fri, 17 Apr 2026 18:04:23 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDnHT-00000004Kne-0pLY;
-	Fri, 17 Apr 2026 17:47:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=debian.org;
-	s=smtpauto.stravinsky; h=X-Debian-User:In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=k8m/KTTmnq5PY9ru1DsdH08IpJYZRyWyKs1/HT27WEs=; b=G8ioTg1PqKwL/Klcpomt6dE9Xa
-	JPpL9IJjXkGPag8r3o9xajKGIy4+9OeXkj2D8YjNECvgQYyIqbGBNLkfK8n0v2zLaNpkkzbUeWsIO
-	UdQ7d8v4rw1Tr9oyOhpJcCg2Is/sNrdSW4x9Tl3TeSuoaCOxBHZbd+3k5tlxVQdswdWacHoXN71uh
-	uO3smsPJZN8s46HtaAOfNz6/wHDxoox2OaYKSBtgqw3khAoHH6vZ2xn7YAMFylVphR5FxO6N7ya/A
-	EgTsq2S/5sPLv3+4mXLX6Jn1Tg0EvE9JbVMvk5LXYzKaqRYWvmB2KYPhd1F1GQxm7Fpa772McW2xo
-	klQbWTaQ==;
-Received: from authenticated user
-	by stravinsky.debian.org with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
-	(Exim 4.96)
-	(envelope-from <leitao@debian.org>)
-	id 1wDnH2-00FY4p-1L;
-	Fri, 17 Apr 2026 17:46:36 +0000
-Date: Fri, 17 Apr 2026 10:46:29 -0700
-From: Breno Leitao <leitao@debian.org>
-To: Daniel Golle <daniel@makrotopia.org>
+	id 1wDnYB-00000004MFv-3xxX;
+	Fri, 17 Apr 2026 18:04:21 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.99)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1wDnXv-000000007HL-0Cuh;
+	Fri, 17 Apr 2026 18:04:03 +0000
+Date: Fri, 17 Apr 2026 19:03:58 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Breno Leitao <leitao@debian.org>
 Subject: Re: [PATCH net] net: dsa: mt7530: fix .get_stats64 sleeping in
  atomic context
-Message-ID: <aeJjcoHyezEgUG_Q@gmail.com>
+Message-ID: <aeJ2Di7tuIQ5RniE@makrotopia.org>
 References: <79dc0ec5b6be698b14cb66339d6f63033ca2934a.1776397542.git.daniel@makrotopia.org>
+ <aeJjcoHyezEgUG_Q@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <79dc0ec5b6be698b14cb66339d6f63033ca2934a.1776397542.git.daniel@makrotopia.org>
-X-Debian-User: leitao
+In-Reply-To: <aeJjcoHyezEgUG_Q@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260417_104703_276018_6C53F835 
-X-CRM114-Status: UNSURE (   9.34  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260417_110419_989480_D3D8B6C5 
+X-CRM114-Status: GOOD (  12.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,27 +62,32 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Paolo Abeni <pabeni@redhat.com>, netdev@vger.k
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 17, 2026 at 04:55:57AM +0100, Daniel Golle wrote:
-> @@ -3404,6 +3449,9 @@ EXPORT_SYMBOL_GPL(mt7530_probe_common);
->  void
->  mt7530_remove_common(struct mt7530_priv *priv)
->  {
-> +	if (priv->bus)
-> +		cancel_delayed_work_sync(&priv->stats_work);
-> +
+On Fri, Apr 17, 2026 at 10:46:29AM -0700, Breno Leitao wrote:
+> On Fri, Apr 17, 2026 at 04:55:57AM +0100, Daniel Golle wrote:
+> > @@ -3404,6 +3449,9 @@ EXPORT_SYMBOL_GPL(mt7530_probe_common);
+> >  void
+> >  mt7530_remove_common(struct mt7530_priv *priv)
+> >  {
+> > +	if (priv->bus)
+> > +		cancel_delayed_work_sync(&priv->stats_work);
+> > +
+> 
+> Shouldn't you cancel the work later, after dsa_unregister_switch()?
+> 
+> I am wondering if the following race cannot happen:
+> 
+>  mt7530_remove_common()                  someone reading /proc/net/dev
+>     cancel_delayed_work_sync()
+>       /* returns: work neither pending
+>          nor executing - true at this
+>          instant */
+>                                           mt7530_get_stats64()
+>                                             mod_delayed_work(...)
+>                                             /* work is queued again */
+>     dsa_unregister_switch()
+>     return
 
-Shouldn't you cancel the work later, after dsa_unregister_switch()?
-
-I am wondering if the following race cannot happen:
-
- mt7530_remove_common()                  someone reading /proc/net/dev
-    cancel_delayed_work_sync()
-      /* returns: work neither pending
-         nor executing - true at this
-         instant */
-                                          mt7530_get_stats64()
-                                            mod_delayed_work(...)
-                                            /* work is queued again */
-    dsa_unregister_switch()
-    return
+Thanks you for pointing this out.
+cancel_delayed_work_sync() should be moved after dsa_unregister_switch()
+to avoid this kind of race.
 
