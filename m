@@ -4,78 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E047F4368B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Apr 2026 10:05:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78E09F43683
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Apr 2026 10:29:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Lvbv8ytIdTwjGat5iq09ZVK5234WoS7drLcT9eltSXI=; b=tPJy2LgmKppJ6bvPv6IrIfseng
-	8ufVvdazclDNjIueWyM8Bt29UK9k10jCoaEBBhRREOkHL64jmKi1g7tguVlDfHaZtoqH/NN5ZusE4
-	uSgsu+OJ6AtKcjBzQR1rX07UWKjZOl4v7T1r3hdF1DkHGKWQ/10HovkDEvNsllB1YrG+Eb3Yb/aYV
-	RKb4qCANRKksFUqzcYHycLZmUGGybveyGmU0s1gwHqXk59httMHD8RcCQ1WGmmt6r19Vg7tlAMqtp
-	cyGMgkhVPCBjGECJtTC9jO/9/RnT1Tvtm9l9sa/4HDN6lqlSGYfdqHO7UNjcSy+ptb19BIwzh4tyX
-	euykG+ww==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=fE+qnOdm3zs6vETg/xjRcNv6wjpPT+qb+RS/sbJQMYo=; b=WpMoc3CMAwOSFAHg56lDLR4zkW
+	i7qUYtLJbEMcIo3wo6EPm/XaH9shrBVyTqLEFnvf7KnV9WyeYGDndGKX6C8+p0fy9Qfs4QEHjg57J
+	OULAoEY/ukAzrUJlTvTZaD95lQhVvh80mXjYpC8ZaQnnvYbsAGvOCNHOucxGFfF8cOg3d6/82yTd/
+	RXaVqXpiDbE803cV/nNKkdnU3ng57gG68BfOoO7optYIooLA0b0ZnvwBPjSDgW8lHuh77Vw4UflDC
+	l892VM+fp5Qf0zaWGIz1+CslRUGtkLUI5XMd+laRZAQ3p3d8XY2dBOI04pVqrhgUshZUwvwcWhVD7
+	n8alZbxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDg5A-00000003sKu-1ehI;
-	Fri, 17 Apr 2026 10:05:52 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1wDgRx-00000003uLH-0uVy;
+	Fri, 17 Apr 2026 10:29:25 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDg55-00000003sH4-1gzj;
-	Fri, 17 Apr 2026 10:05:48 +0000
-X-UUID: fedabeaa3a4411f19e7563141e833ce8-20260417
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Lvbv8ytIdTwjGat5iq09ZVK5234WoS7drLcT9eltSXI=;
-	b=KJL+vNEbS673t1uDhgY6A2O8m8RKxRDupDmYmAQ3cvYnrzIm1NAyo67u+e31kzk0XdUf+dhrtd5HVuXOCHlpnoBBg1ByVSRoJBDCgTLrMc6pjZG/KEafcLjJJC6oOqHBaM1NpeFu1jMGnxuIu0fsEknHe8a5gvo654Gaxs5z/gg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:f901e3ea-c91e-44e7-9e50-0f7881f8fbff,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:e7bac3a,CLOUDID:238d0d95-f8ef-4ca8-bea0-143568f9ca1d,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|865|888|898,TC:-5,Cont
-	ent:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0
-	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: fedabeaa3a4411f19e7563141e833ce8-20260417
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
-	(envelope-from <jianhua.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1334613157; Fri, 17 Apr 2026 03:05:43 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Fri, 17 Apr 2026 18:05:40 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Fri, 17 Apr 2026 18:05:39 +0800
-From: Jianhua Lin <jianhua.lin@mediatek.com>
-To: <nicolas@ndufresne.ca>, <mchehab@kernel.org>, <robh@kernel.org>,
-	<krzk+dt@kernel.org>, <conor+dt@kernel.org>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>
-CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<sirius.wang@mediatek.com>, <vince-wl.liu@mediatek.com>,
-	<jh.hsu@mediatek.com>, Jianhua Lin <jianhua.lin@mediatek.com>
-Subject: [PATCH v7 3/3] media: mediatek: jpeg: add compatible for MT8189 SoC
-Date: Fri, 17 Apr 2026 18:05:19 +0800
-Message-ID: <20260417100519.1043-4-jianhua.lin@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20260417100519.1043-1-jianhua.lin@mediatek.com>
-References: <20260417100519.1043-1-jianhua.lin@mediatek.com>
+	id 1wDgRu-00000003uKx-3xV5
+	for linux-mediatek@lists.infradead.org;
+	Fri, 17 Apr 2026 10:29:24 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-488b0e1b870so8221565e9.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 17 Apr 2026 03:29:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1776421760; x=1777026560; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=fE+qnOdm3zs6vETg/xjRcNv6wjpPT+qb+RS/sbJQMYo=;
+        b=huLu5kyvhkyE+HSnU9W3Rk4yNbJ6MGEU78SXGbQ/h5z9UveZN7sjGF0Ph1nTLcpD/K
+         WrtGDGjYezwPPemAi28Z1Hd4OTFCs9UNGl7rqrPbjoQFfqwstL0MZaMzxzPMoVSwURqD
+         UUGvrW4ejE5B2r9Zi990sMeXc+LCLXCrnCArXzyJJ3B4YDfwRNQrsT4JLequJIypcP1a
+         z0pxqJMOonRLMWw66L8HSQLb21StrjsPlM5bE9oXoJeeWVkdtgrcMsmI9Gi70Lr22iEm
+         BCSDnT0WVIbMn07fiGKH/fKiUZObA3/16pAVLotC1OCp88R2mJ4n/ybZXo4mGJclA2Zc
+         ILjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1776421760; x=1777026560;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=fE+qnOdm3zs6vETg/xjRcNv6wjpPT+qb+RS/sbJQMYo=;
+        b=Isd6BVuceTM3+vp5Kt8QgQF+USx3vJ+NJf226vqiHTS+z1ooq5/Ta6Iu+P0o8adgq7
+         dH7SkO9FI4W3oULIMd8Y1VwcAyeyfWjR1mvVC39wWm5WEmvs62CSAjKFZzz+Y4jsnvDc
+         v7oOjtxOX/Xwr/JFSj3nizQpOc8On8Ho5JIc+ZUevu6UsEJYhuOozQY6gzKh8kt06cJT
+         wy2bN0Ea6SI3UnS1I6qj823cgfPryVv7t7ocMvLLtxbAcPBVeMUGdCheh5ZC/RszJ16/
+         +r6ELs21GOxFEZhO9izuvImO+BO+GdTqYwAbsYOlIX8EwUAUXJCcr8du0lGcBf//PIG/
+         g2KA==
+X-Forwarded-Encrypted: i=1; AFNElJ/gzva7Qlsnv7vPaeSR6vZGIu/bwCyOekh3V9y/yIH+dLL9Fh3wvog49BX7jfk/qGX5uzpG+qhpzL9q2WstTA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy4wFm0Wfi6hlplt8LQpz2X4N/3ISmZbrRzdv0MXdfWbtnKZVmc
+	UdyGYyXkYMENLfBOzPdECHjJrmtmb/oRra118LKcmuzHaA1Tz2e0KRA=
+X-Gm-Gg: AeBDieuGMr4f+ZxDp0iFUtk5tShm7cU3tG0AhPqU5nrdCkSNBW4aNeqzaF0ep5Oz/Hk
+	fDIHK4AbHlHOv3jtdGzXcXyz3X1Gg38aqRuqp8pGby3aupaOv/ooUHz/eooX1wgC0fB17leB60N
+	+bl8B4dTFmPqpMpoR4PvphuW7pSlnKYjfizW6IGG+R8kkXxcW+//TNKp9HvBSk/aYvhF0pr65H+
+	VZdyjHObPH/mfmd1/yQGDGt3sf4j4VCl90m9KWV+8BqQpnyFP597e9mKb3QiX2dBH+ssArn5/Hf
+	vZeSs4aF2+RvhCBlySEKMg9NQkK6DDqy4hYPpNi9gOKZEY6jCa1WJrg7E7ZFM6rCuuCZ7uV8yM0
+	2Irt6v9zzbGkPmZd2Y9O6td9L61MF1nrlmy8a8jc7SWZ00ooyqgLgIOSIbEbx/aMwzi3DNbaRra
+	Qnu5s=
+X-Received: by 2002:a05:600c:c4a1:b0:488:c014:34da with SMTP id 5b1f17b1804b1-488fb77ed1bmr27199815e9.26.1776421760356;
+        Fri, 17 Apr 2026 03:29:20 -0700 (PDT)
+Received: from debian.. ([2001:41d0:303:db6b::])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-488fb7c0eacsm13854955e9.35.2026.04.17.03.29.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 17 Apr 2026 03:29:19 -0700 (PDT)
+From: Tristan Madani <tristmd@gmail.com>
+To: linux-bluetooth@vger.kernel.org
+Cc: luiz.dentz@gmail.com,
+	marcel@holtmann.org,
+	sean.wang@mediatek.com,
+	mark-yw.chen@mediatek.com,
+	linux-mediatek@lists.infradead.org,
+	stable@vger.kernel.org
+Subject: [PATCH v3] Bluetooth: btmtk: validate WMT event SKB length before struct access
+Date: Fri, 17 Apr 2026 10:29:19 +0000
+Message-ID: <20260417102919.2549352-1-tristmd@gmail.com>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260417_030547_458730_8AF55A1A 
-X-CRM114-Status: GOOD (  10.58  )
+X-CRM114-CacheID: sfid-20260417_032923_008513_FDA2108B 
+X-CRM114-Status: UNSURE (   9.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,88 +100,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Compared to the previous generation ICs, the MT8189 uses a 34-bit IOVA
-address space (16GB) and requires a single clock configuration.
+From: Tristan Madani <tristan@talencesecurity.com>
 
-Therefore, add new compatible strings ("mediatek,mt8189-jpgenc" and
-"mediatek,mt8189-jpgdec") along with their specific driver data to
-support the JPEG encoder and decoder of the MT8189 SoC.
+btmtk_usb_hci_wmt_sync() casts the WMT event response SKB data to
+struct btmtk_hci_wmt_evt (7 bytes) and struct btmtk_hci_wmt_evt_funcc
+(9 bytes) without first checking that the SKB contains enough data.
+A short firmware response causes out-of-bounds reads from SKB tailroom.
 
-Signed-off-by: Jianhua Lin <jianhua.lin@mediatek.com>
+Add length validation before each struct access to prevent OOB reads
+from malformed WMT event responses.
+
+Fixes: d019930b0049 ("Bluetooth: btmtk: move btusb_mtk_hci_wmt_sync to btmtk.c")
+Cc: stable@vger.kernel.org
+Signed-off-by: Tristan Madani <tristan@talencesecurity.com>
 ---
- .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 44 +++++++++++++++++++
- 1 file changed, 44 insertions(+)
+ drivers/bluetooth/btmtk.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index 8c684756d5fc..786cc2942c3a 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -1867,6 +1867,10 @@ static struct clk_bulk_data mt8173_jpeg_dec_clocks[] = {
- 	{ .id = "jpgdec" },
- };
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index 6fb6ca274..b1a96ebae 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -695,6 +695,12 @@ static int btmtk_usb_hci_wmt_sync(struct hci_dev *hdev,
+ 	if (data->evt_skb == NULL)
+ 		goto err_free_wc;
  
-+static struct clk_bulk_data mtk_jpeg_dec_clocks[] = {
-+	{ .id = "jpgdec" },
-+};
++	/* Validate SKB length before accessing WMT event structs */
++	if (data->evt_skb->len < sizeof(*wmt_evt)) {
++		err = -EINVAL;
++		goto err_free_skb;
++	}
 +
- static const struct mtk_jpeg_variant mt8173_jpeg_drvdata = {
- 	.clks = mt8173_jpeg_dec_clocks,
- 	.num_clks = ARRAY_SIZE(mt8173_jpeg_dec_clocks),
-@@ -1898,6 +1902,38 @@ static const struct mtk_jpeg_variant mtk_jpeg_drvdata = {
- 	.multi_core = false,
- };
- 
-+static const struct mtk_jpeg_variant mtk8189_jpegenc_drvdata = {
-+	.clks = mtk_jpeg_clocks,
-+	.num_clks = ARRAY_SIZE(mtk_jpeg_clocks),
-+	.formats = mtk_jpeg_enc_formats,
-+	.num_formats = MTK_JPEG_ENC_NUM_FORMATS,
-+	.qops = &mtk_jpeg_enc_qops,
-+	.irq_handler = mtk_jpeg_enc_irq,
-+	.hw_reset = mtk_jpeg_enc_reset,
-+	.m2m_ops = &mtk_jpeg_enc_m2m_ops,
-+	.dev_name = "mtk-jpeg-enc",
-+	.ioctl_ops = &mtk_jpeg_enc_ioctl_ops,
-+	.out_q_default_fourcc = V4L2_PIX_FMT_YUYV,
-+	.cap_q_default_fourcc = V4L2_PIX_FMT_JPEG,
-+	.support_34bit = true,
-+};
-+
-+static const struct mtk_jpeg_variant mtk8189_jpegdec_drvdata = {
-+	.clks = mtk_jpeg_dec_clocks,
-+	.num_clks = ARRAY_SIZE(mtk_jpeg_dec_clocks),
-+	.formats = mtk_jpeg_dec_formats,
-+	.num_formats = MTK_JPEG_DEC_NUM_FORMATS,
-+	.qops = &mtk_jpeg_dec_qops,
-+	.irq_handler = mtk_jpeg_dec_irq,
-+	.hw_reset = mtk_jpeg_dec_reset,
-+	.m2m_ops = &mtk_jpeg_dec_m2m_ops,
-+	.dev_name = "mtk-jpeg-dec",
-+	.ioctl_ops = &mtk_jpeg_dec_ioctl_ops,
-+	.out_q_default_fourcc = V4L2_PIX_FMT_JPEG,
-+	.cap_q_default_fourcc = V4L2_PIX_FMT_YUV420M,
-+	.support_34bit = true,
-+};
-+
- static struct mtk_jpeg_variant mtk8195_jpegenc_drvdata = {
- 	.formats = mtk_jpeg_enc_formats,
- 	.num_formats = MTK_JPEG_ENC_NUM_FORMATS,
-@@ -1937,6 +1973,14 @@ static const struct of_device_id mtk_jpeg_match[] = {
- 		.compatible = "mediatek,mtk-jpgenc",
- 		.data = &mtk_jpeg_drvdata,
- 	},
-+	{
-+		.compatible = "mediatek,mt8189-jpgenc",
-+		.data = &mtk8189_jpegenc_drvdata,
-+	},
-+	{
-+		.compatible = "mediatek,mt8189-jpgdec",
-+		.data = &mtk8189_jpegdec_drvdata,
-+	},
- 	{
- 		.compatible = "mediatek,mt8195-jpgenc",
- 		.data = &mtk8195_jpegenc_drvdata,
+ 	/* Parse and handle the return WMT event */
+ 	wmt_evt = (struct btmtk_hci_wmt_evt *)data->evt_skb->data;
+ 	if (wmt_evt->whdr.op != hdr->op) {
+@@ -712,6 +718,10 @@ static int btmtk_usb_hci_wmt_sync(struct hci_dev *hdev,
+ 			status = BTMTK_WMT_PATCH_DONE;
+ 		break;
+ 	case BTMTK_WMT_FUNC_CTRL:
++		if (data->evt_skb->len < sizeof(*wmt_evt_funcc)) {
++			err = -EINVAL;
++			goto err_free_skb;
++		}
+ 		wmt_evt_funcc = (struct btmtk_hci_wmt_evt_funcc *)wmt_evt;
+ 		if (be16_to_cpu(wmt_evt_funcc->status) == 0x404)
+ 			status = BTMTK_WMT_ON_DONE;
 -- 
-2.45.2
+2.47.3
 
 
