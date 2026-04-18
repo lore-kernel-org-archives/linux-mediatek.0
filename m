@@ -4,83 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 059ECF99C73
-	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Apr 2026 03:39:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E427CF99C88
+	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Apr 2026 18:01:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:From:Subject:Message-ID:References:Mime-Version:
-	In-Reply-To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G+ETtzwm86y2ubyHKvTZyBSdg3SjvxcOgxe973ohm5w=; b=XV+4K+uYyrcU9ljU2rN5WDadTe
-	ZvoklDiZb3eByJCb0uSrd3o7wsuAx0LPolctiBsE/hXHxcttUox/RP7EsDunXQ5bvgEz+d19gyYcl
-	ycnuACZvdwYZYe96isgbxhTmznQ5S1B51u0NszqFc/as/0BWAy3VngDvsCvsSxnrdCD+jCPPE83Bp
-	24Kq8wHWIa334QzOktfnTdDjd23r5bHVpPQizoYpIRpaPoCgL+d4LrsO5rcAwKyACM6dsSlVa3k2t
-	oLJu6z7KaC4eXHXDKOO4hZnwB9U1Uw908wujOxBYkfsBSOdhaVvS+P10nWncRp+mAGtF9e60axYsJ
-	lxFyVI9g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/FnOo4DBqc9z3yprR5F+4D1BbbX9kRlkofnogug2d28=; b=XVboZu7IMldCUY
+	PKkUnyPJfFQnVCGJsk4l7+H9B+dtcUJA2cNLOicbLLB0xUIpJXL3xY2pwhYe5DcYYAuKAwTtUmpll
+	bd/I6dbPP2ds9EwKGzV9v6rM4pG5N+rHax7Uo76H3fMmzuUSKTIl6aRORgfg9sOdC2wNGn3vhLZzo
+	Ct6THOQh+wnJNuyCNFAlpomCcGRAMpwTOY+7VoNdHJRylkd3k6GFiJnqAERPRjej+gDJAfvbWYt2M
+	uXrdIJ5JEW9UCzQzuXIc23f3DuUeDgauI6rijFaPg+wdUt2aaaT5mMhmtInCk8BEEygYM4zjk/vh0
+	ovmQNLePluMfuwni4o0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDwWR-00000004i6O-17UO;
-	Sat, 18 Apr 2026 03:39:07 +0000
-Received: from mail-pg1-x54a.google.com ([2607:f8b0:4864:20::54a])
+	id 1wE9yd-000000058Gh-1580;
+	Sat, 18 Apr 2026 18:01:07 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDwWO-00000004i5e-3pcW
-	for linux-mediatek@lists.infradead.org;
-	Sat, 18 Apr 2026 03:39:06 +0000
-Received: by mail-pg1-x54a.google.com with SMTP id 41be03b00d2f7-c7973e22399so541412a12.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 17 Apr 2026 20:39:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20251104; t=1776483543; x=1777088343; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:from:subject:message-id:references
-         :mime-version:in-reply-to:date:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=G+ETtzwm86y2ubyHKvTZyBSdg3SjvxcOgxe973ohm5w=;
-        b=sHwSnBuUdOE6NYJlTrmyIQVgahl3OAL2p6r5aIWY4c98UKT+++YwChzTaa9HBMwSuF
-         IPsvCYc1WfqEiUO/czTm01lo0j87feT1ePP1JX7Nv5vYNtltBy+2Rko3gp05jo4VsnhA
-         JA13RPyIJwWVyB3iGk1Rdr9++ZftgurOzfuXurkbyIrG6KYi0IaHz1gksWGWBd9jTkxT
-         Imrasvba/MQ/8rzYU4iY4NCw00Ok2rIw8g5OEqmnjW91YOWy8Iqje2c8+6uDZOEzztk9
-         fht347KLDEeALh8BbRPtWnbS0sZGololOguuRYjmGXttTaMph+3eF9HgzZi3tIrD2klD
-         lNsQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1776483543; x=1777088343;
-        h=content-transfer-encoding:cc:to:from:subject:message-id:references
-         :mime-version:in-reply-to:date:x-gm-message-state:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=G+ETtzwm86y2ubyHKvTZyBSdg3SjvxcOgxe973ohm5w=;
-        b=GJn+5r2/nXvsYcYU0HyRwL3coY0GRf3saUAvVwKnDDX/hnJvgSMsQSbrtiZKYQeNCS
-         k1y/tqTxMcnz0fbLteeJMGAVEsDVo/vnlbboyvMI6iqlo9jbGKNtYk9nTgQNM9EDpsZW
-         8TgRuTqEnxFMHn5FHK8yC7NatEiVdePnFWjqIrZO1JN0FWSvKOYi/Uh2eTvahWgwcHaH
-         IqA2as9S0GObSTg9pWJjliNdinTH+vTeb4Ftfkgj4attVuKST3trlDIn53YKuHu2lWn1
-         U0uAu4cBiEoyHDJHe5U3WhgHXcBMfEoz0tX8SUzWsKSn6f5eDIf3JFTkWYn2/AMl36/d
-         RClQ==
-X-Forwarded-Encrypted: i=1; AFNElJ8Z2rOnTKpXXbw2tJEC30WivVPHFdthvX0kjpZR3BMVbc8/uuvv8LQ3SpbykVQSLjI4lBd8JxITCJe5FisZaw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxjGBIeV9HmJSrqvfsawonayKXThKsPOInzL5IeCyvJKuMjNEZi
-	gZxwGnwFx7afJPzZ3AuzrQAzhpUzbcO5UpHWVOvMyHtkydgy17Toj+0UJcmL2ThHnuGpr40Er6w
-	MwBijOM8TX/8XonaxgMA/JXDGgA==
-X-Received: from pgbfp6.prod.google.com ([2002:a05:6a02:2ce6:b0:c76:a6b1:ed23])
- (user=joonwonkang job=prod-delivery.src-stubby-dispatcher) by
- 2002:a05:6300:8088:b0:39f:216:f400 with SMTP id adf61e73a8af0-3a08d708cc3mr4939472637.14.1776483542721;
- Fri, 17 Apr 2026 20:39:02 -0700 (PDT)
-Date: Sat, 18 Apr 2026 03:38:59 +0000
-In-Reply-To: <CABb+yY2yBZ+hgr-=Uh_sRk-TJZRfsk2AYtoS5rPtUN8kVsUScA@mail.gmail.com>
-Mime-Version: 1.0
-References: <CABb+yY2yBZ+hgr-=Uh_sRk-TJZRfsk2AYtoS5rPtUN8kVsUScA@mail.gmail.com>
-X-Mailer: git-send-email 2.54.0.rc1.555.g9c883467ad-goog
-Message-ID: <20260418033900.3652042-1-joonwonkang@google.com>
-Subject: Re: [PATCH v3 2/2] mailbox: Make mbox_send_message() return error
- code when tx fails
-From: Joonwon Kang <joonwonkang@google.com>
-To: jassisinghbrar@gmail.com
-Cc: akpm@linux-foundation.org, angelogioacchino.delregno@collabora.com, 
-	jonathanh@nvidia.com, joonwonkang@google.com, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, 
-	matthias.bgg@gmail.com, stable@vger.kernel.org, thierry.reding@gmail.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260417_203905_094562_2B5F7525 
-X-CRM114-Status: GOOD (  37.65  )
+	id 1wE9ya-000000058GS-1FFG;
+	Sat, 18 Apr 2026 18:01:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id CA8256013A;
+	Sat, 18 Apr 2026 18:01:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B89E5C19424;
+	Sat, 18 Apr 2026 18:01:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1776535262;
+	bh=gfCnfVv+6IRcfetQm4ukDI1hhxp2kXNRzZ9OCpuJKNs=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=SL4xBmWncX6eqD+Qm1sWsTokqcFl7OJjdnW78wvTqznlWwnlGOPgAeYOdt+tSHreM
+	 lucAOmker/15lTJ7qHtbOpD8KvLvJ6T/SwIK+MEqob6e8rQLm/OPXS7ARA876Rj4aF
+	 3MdICvlTEnFiyfk+e4b1PnnQ2oduHC4CMHzMRBmEIbJ0ti51rSd8GR6jxDfT7BJnRZ
+	 ya58Xw3R4RQgt2fQ43dT16NkQkmD/bk5c6E6Ipn9HEJzLtgDPsn2GFuNCIg/+8W0c7
+	 oXVvGWTi89TJagM34DfJKpQEK9lNBAZyiEU619mdHuA/fWvdPk13LUq0SGbu/B9bp3
+	 qfbmo9fCekeYw==
+From: Jakub Kicinski <kuba@kernel.org>
+To: daniel@makrotopia.org
+Subject: Re: [PATCH net] net: dsa: mt7530: fix .get_stats64 sleeping in atomic context
+Date: Sat, 18 Apr 2026 11:01:00 -0700
+Message-ID: <20260418180100.131392-1-kuba@kernel.org>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <79dc0ec5b6be698b14cb66339d6f63033ca2934a.1776397542.git.daniel@makrotopia.org>
+References: <79dc0ec5b6be698b14cb66339d6f63033ca2934a.1776397542.git.daniel@makrotopia.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,92 +62,120 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: andrew@lunn.ch, pabeni@redhat.com, netdev@vger.kernel.org, linux@armlinux.org.uk, ansuelsmth@gmail.com, chester.a.unal@arinc9.com, edumazet@google.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, john@phrozen.org, matthias.bgg@gmail.com, Jakub Kicinski <kuba@kernel.org>, olteanv@gmail.com, davem@davemloft.net, linux-kernel@vger.kernel.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> On Fri, Apr 17, 2026 at 3:43=E2=80=AFAM Joonwon Kang <joonwonkang@google.=
-com> wrote:
-> >
-> > > On Fri, Apr 3, 2026 at 10:19=E2=80=AFAM Joonwon Kang <joonwonkang@goo=
-gle.com> wrote:
-> > > >
-> > > > > On Thu, Apr 2, 2026 at 12:07=E2=80=AFPM Joonwon Kang <joonwonkang=
-@google.com> wrote:
-> > > > > >
-> > > > > > When the mailbox controller failed transmitting message, the er=
-ror code
-> > > > > > was only passed to the client's tx done handler and not to
-> > > > > > mbox_send_message(). For this reason, the function could return=
- a false
-> > > > > > success. This commit resolves the issue by introducing the tx s=
-tatus and
-> > > > > > checking it before mbox_send_message() returns.
-> > > > > >
-> > > > > Can you please share the scenario when this becomes necessary? Th=
-is
-> > > > > can potentially change the ground underneath some clients, so we =
-have
-> > > > > to be sure this is really useful.
-> > > >
-> > > > I would say the problem here is generic enough to apply to all the =
-cases where
-> > > > the send result needs to be checked. Since the return value of the =
-send API is
-> > > > not the real send result, any users who believe that this blocking =
-send API
-> > > > will return the real send result could fall for that. For example, =
-users may
-> > > > think the send was successful even though it was not actually. I be=
-lieve it is
-> > > > uncommon that users have to register a callback solely to get the s=
-end result
-> > > > even though they are using the blocking send API already. Also, I g=
-uess there
-> > > > is no special reason why only the mailbox send API should work this=
- way among
-> > > > other typical blocking send APIs. For these reasons, this patch mak=
-es the send
-> > > > API return the real send result. This way, users will not need to r=
-egister the
-> > > > redundant callback and I think the return value will align with the=
-ir common
-> > > > expectation.
-> > > >
-> > > Clients submit a message into the Mailbox subsystem to be sent out to
-> > > the remote side which can happen immediately or later.
-> > > If submission fails, clients get immediately notified. If transmissio=
-n
-> > > fails (which is now internal to the subsystem) it is reported to the
-> > > client by a callback.
-> > > If the API was called mbox_submit_message (which it actually is)
-> > > instead of mbox_send_message, there would be no confusion.
-> > > We can argue how good/bad the current implementation is, but the fact
-> > > is that it is here. And I am reluctant to cause churn without good
-> > > reason.
-> > > Again, as I said, any, _legal_, setup scenario will help me come over
-> > > my reluctance.
-> > >
-> > > Thanks
-> > > Jassi
-> >
-> > Hi Jassi, can we continue discussing this issue from where we left off =
-last
-> > time?
-> >
-> Long passionate essays are difficult to read, so I haven't yet. A
-> simple description of some setup that you think is not supported, will
-> keep the discussion focused.
-> If your platform is supported but you think the api is not clear,
-> updates to the documentation are welcome
+This is an AI-generated review of your patch. The human sending this
+email has considered the AI review valid, or at least plausible.
+---
+Subject: net: dsa: mt7530: fix .get_stats64 sleeping in atomic context
 
-Sorry that it was hard for you to read. The long form was to explain what i=
-s
-misaligned and problematic with data and examples for better understanding
-because your previous long essays did not make much sense to me. Please go
-through it and let me know if anything is unclear to you. In the mean time,=
- I
-will prepare a new version of patch with some update to the API doc.
+This commit addresses a sleep-in-atomic bug when reading MDIO-connected
+switch port statistics by delegating the register reads to a delayed
+workqueue. The get_stats64 callback now returns cached values protected
+by a spinlock instead of synchronously reading from the MDIO bus.
+MMIO-connected switches are unaffected and continue to read counters
+directly.
 
-Thanks,
-Joonwon Kang
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index b9423389c2ef0..786d3a8492bcb 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+
+[ ... ]
+
+> @@ -951,6 +952,43 @@ static void mt7530_get_stats64(struct dsa_switch *ds, int port,
+>  			       &storage->rx_crc_errors);
+>  }
+>  
+> +static void mt7530_stats_poll(struct work_struct *work)
+> +{
+> +	struct mt7530_priv *priv = container_of(work, struct mt7530_priv,
+> +						stats_work.work);
+> +	struct rtnl_link_stats64 stats = {};
+> +	struct dsa_port *dp;
+> +	int port;
+> +
+> +	dsa_switch_for_each_user_port(dp, priv->ds) {
+> +		port = dp->index;
+> +
+> +		mt7530_read_port_stats64(priv, port, &stats);
+> +
+> +		spin_lock(&priv->stats_lock);
+
+Are we at risk of a deadlock here?
+
+The get_stats64 callback can be called by dev_get_stats(), which runs in
+softirq context.
+
+If this delayed work runs in process context and is preempted by a softirq
+that attempts to acquire the lock via dev_get_stats(), a deadlock could
+occur. Both paths should likely use spin_lock_bh() and spin_unlock_bh().
+
+> +		priv->ports[port].stats = stats;
+> +		spin_unlock(&priv->stats_lock);
+> +	}
+> +
+> +	schedule_delayed_work(&priv->stats_work,
+> +			      MT7530_STATS_POLL_INTERVAL);
+> +}
+> +
+> +static void mt7530_get_stats64(struct dsa_switch *ds, int port,
+> +			       struct rtnl_link_stats64 *storage)
+> +{
+> +	struct mt7530_priv *priv = ds->priv;
+> +
+> +	if (priv->bus) {
+> +		spin_lock(&priv->stats_lock);
+> +		*storage = priv->ports[port].stats;
+> +		spin_unlock(&priv->stats_lock);
+> +		mod_delayed_work(system_wq, &priv->stats_work, 0);
+
+Could this unconditional background refresh cause a denial of service on
+the MDIO bus?
+
+If an unprivileged user continually reads network statistics in a tight
+loop, mt7530_stats_poll() will execute continuously, potentially starving
+other MDIO tasks like PHY link-state monitoring.
+
+Additionally, is it possible for this call to re-arm the workqueue during
+teardown?
+
+In mt7530_remove_common(), cancel_delayed_work_sync() is called before
+dsa_unregister_switch(). If get_stats64() is called during or after
+dsa_unregister_switch(), it would re-arm the workqueue after it was
+explicitly cancelled, potentially causing a use-after-free when priv is
+freed.
+
+> +	} else {
+> +		mt7530_read_port_stats64(priv, port, storage);
+> +	}
+> +}
+
+[ ... ]
+
+> @@ -3137,6 +3175,13 @@ mt753x_setup(struct dsa_switch *ds)
+>  	if (ret && priv->irq_domain)
+>  		mt7530_free_mdio_irq(priv);
+>  
+> +	if (!ret && priv->bus) {
+> +		spin_lock_init(&priv->stats_lock);
+> +		INIT_DELAYED_WORK(&priv->stats_work, mt7530_stats_poll);
+> +		schedule_delayed_work(&priv->stats_work,
+> +				      MT7530_STATS_POLL_INTERVAL);
+
+If dsa_register_switch() encounters an error after this setup callback
+completes successfully, the DSA core will attempt to clean up.
+
+Since mt7530_switch_ops does not implement a teardown callback to cancel
+this delayed work, will the work remain scheduled and eventually
+dereference freed priv memory once the driver core frees it via devres?
+
+> +	}
+> +
+>  	return ret;
+>  }
+-- 
+pw-bot: cr
 
