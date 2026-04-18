@@ -4,78 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF685F99C69
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Apr 2026 22:53:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16826F99C74
+	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Apr 2026 02:50:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Frw2WIcsMXau1lzNqvo61mU42MBSPeG0i7j4l0PnqU8=; b=ANVw1fGBOFcitt+xDljJ+gxJtn
-	PH1sPT/a286B9vwlLeIhSl27mjBLNoLm5YI+kTR4fpQDHV4BoudefA552lJjiTe/S18VJrXnfLixc
-	9DcDSfiTVUA26BdZ+Zkb8iCvxTC8cw3gnX2PtJWQhvh85VhYx9NPUS6ggs2/D+WOa3MMuiGpnGsYT
-	foX7NbZhc4x9S6Ka3YzELvCRBJsrHuPAEaPINQWI02DV927Vz0lgsxGT7vCS7Intfn1JWyopSw+qW
-	wWEi2PR2DOo8NMo4JTU3mpaW7CesaVv7SLmx/vG1FPUwGG2XSuLdk0GLVwbaY03GQCOo8kVcUoMjq
-	M5zKWS3g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sTpB3zFGMA4+49UPAPJnoMPYvm1cGwiY/ChissLecvk=; b=cCz2yPOvHYyaoOeaixKaRvsbEt
+	JW4jCHYNICQLqBaiiehXEZ2e6ymNREOF65GBeyXctOjZGGPbOEKY0oprAoE3xL2o2zkPXb2KY+1vD
+	xhON1g67Gj6nGimHSNl0RefyaWYAiDRMx+FVQa4D09cKBikYy0z18uQhWz8Iaax4+MRnLuMJdS5eI
+	FWD39HuhXHWkddFvZ0GwfOGASU0+9zIIxgzZ1EQuFXbAnZJ8/LNslOf5BvM9TgDtPQd0kD70LtdzJ
+	e2zURXLFWz2fi13NWgpeRBjKeG9KFhyhhUIy98BoeNKzwI94gUaT1rJA9APufF5XP5jCi4KAI0lsR
+	/wxxNdJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDs3e-00000004XWC-0g60;
-	Fri, 17 Apr 2026 22:53:06 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wDvlA-00000004gm9-2nFl;
+	Sat, 18 Apr 2026 02:50:16 +0000
+Received: from mail-oo1-xc36.google.com ([2607:f8b0:4864:20::c36])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDs3a-00000004XVh-3xII;
-	Fri, 17 Apr 2026 22:53:04 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8B14640E27;
-	Fri, 17 Apr 2026 22:53:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3AEE8C19425;
-	Fri, 17 Apr 2026 22:53:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776466381;
-	bh=Frw2WIcsMXau1lzNqvo61mU42MBSPeG0i7j4l0PnqU8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=WD+AArgDs+vyowQlE5XeV2t9ZJObt/J1PFD4+zhCh6pjvkZOkeoXeGlT4FIcuTw5d
-	 6KOggY7yyvLsa/1jBjN3oYKmfuPg6aRAEc1FjGGRfsMhpwJH4JR3XFR/SJQ/i5buOr
-	 qBefF7+8NhwuMHxxCC/vuAg+nJcsbFwbIgeZ9nY7KqnRbVrLq4EbrnvFJlz4B3QNeA
-	 w8vHjVGd1bLmbjN1VPlzPpyd8PFVKr9QsgM5qcBB4niTWCjQNzt+7851Rp+s10t0e6
-	 7qlfMxBT4PPAPYsPiV0pMnI48o7oUnxCe+BeYGRWyF25EwJMaxaPQepQK/IyHnirWU
-	 zXKGRPvcAlgyg==
-Received: by finisterre.sirena.org.uk (Postfix, from userid 1000)
-	id 3C6671AC57F2; Fri, 17 Apr 2026 23:52:57 +0100 (BST)
-Date: Fri, 17 Apr 2026 23:52:57 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Cyril Chao =?utf-8?B?KOmSnuaCpik=?= <Cyril.Chao@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	Darren Ye =?utf-8?B?KOWPtumjnik=?= <Darren.Ye@mediatek.com>,
-	"linux-sound@vger.kernel.org" <linux-sound@vger.kernel.org>,
-	"conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"tiwai@suse.com" <tiwai@suse.com>,
-	"robh@kernel.org" <robh@kernel.org>,
-	"lgirdwood@gmail.com" <lgirdwood@gmail.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"krzk+dt@kernel.org" <krzk+dt@kernel.org>,
-	"perex@perex.cz" <perex@perex.cz>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v8 08/10] ASoC: mediatek: mt8196: add platform driver
-Message-ID: <aeK5ySqgvHdBvuuB@sirena.co.uk>
-References: <20260324015719.17543-1-Cyril.Chao@mediatek.com>
- <20260324015719.17543-9-Cyril.Chao@mediatek.com>
- <892468cc-7eb4-411e-b91b-f14789d8da0c@sirena.org.uk>
- <da5752796e1774b6bbc24f5ef1ab2529e24a384f.camel@mediatek.com>
+	id 1wDvl7-00000004glM-1ssu
+	for linux-mediatek@lists.infradead.org;
+	Sat, 18 Apr 2026 02:50:14 +0000
+Received: by mail-oo1-xc36.google.com with SMTP id 006d021491bc7-673ee2a98b1so745673eaf.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 17 Apr 2026 19:50:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1776480612; cv=none;
+        d=google.com; s=arc-20240605;
+        b=I8AWIq6v5mik48TpzcX+rZ36X3CELdL+RtNXIIRMiG/mfOXkjB18dkuBXgOjJmf0mF
+         Cr6vF95BuRRQ5ms1tH76Eiez+ptKOw6QhPMIfpdBSJqapKCfDu65in5+hwQ9FlG96Y/G
+         LBMBe1/gd0KtS+XHOjQJMqm1T+lf5jaqxMAM1mRKAR3UxSyo+0tC9z+zyRBQPov3Fkv2
+         P/BcxFnVH4LxkCQpm/1ADtGUmCJX4I7U+6k94ZNDhuH16fQz625O0WnkDkIEOcY6lHDz
+         QZMp2h1gWctLrWwzGx38wYhYPTNxY5mVg9E25p7bxO2tV9fSDb92mJ11EtWbmAqnzw8P
+         u1Ww==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=sTpB3zFGMA4+49UPAPJnoMPYvm1cGwiY/ChissLecvk=;
+        fh=KsZKlc7OCiGDagoWx7lB5W99uLATymE1w+oKWuV8dZw=;
+        b=F6FOnI7jbCyY+yUGtF6WM83GgoMMq5qLeB6870xK9fsayRUxxOLDKMyQtf6b3t6kvV
+         Hjq74kZEGXW0/Q7vgIItMWRvoCfHKnnAislyXyJv15QqRHzgo3h+qfVt1don2xNZtNVU
+         55WYElCulrQZ9XBzpw06OeRQuq/IqIE6KpGEgw2fOYsYXZj893fixU+tE44kgdnv5pUw
+         BrjeciB6zwb7yE2+AQZ8G6IAlmUvQz+z3W201m4C08avwnJswC/bZFw64JyjLnPIOuFv
+         77qD2w8bqlWf2RSoQOB51VAT7/auif6m+ykXAGiOk5OWkG3/0AoPFqbl6qL6GyePYH2c
+         Bi5A==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1776480612; x=1777085412; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=sTpB3zFGMA4+49UPAPJnoMPYvm1cGwiY/ChissLecvk=;
+        b=P7xouFs8W6yXnEEbU2r4HZ5hd1Sy5kolztxFpifyfqjcULdgi4Ey/nQJM/OXzYrOa+
+         b8D9RF4Dz2S4BgKGgOHWj/QQcomj1DNi67ZB+wXpBcqC0q9tr7Ka+5GFtFp79MP6BFdd
+         c/kCW+WyvABBEEycryp1ayJA3eUSlXcQjVI6Rk5OYPSr193ZJ1D4SxgSu98N/8PqMC0e
+         15v0rcqc1RK6dDMy13vhIw/En/SefcvNlb0wOvGs+t7GqvQ3rkdnPJw10Bn0dzRte1g7
+         EbE+E8OJCKrtBtDR/hphiVUfxEr+tENcEXIqNVoSqgD9jgv0HHMTsDPtvQREZC22ez0Q
+         3ayA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1776480612; x=1777085412;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=sTpB3zFGMA4+49UPAPJnoMPYvm1cGwiY/ChissLecvk=;
+        b=HidopWJmHEiIag2oe8aO53IuKo+KmMB+3dewm3hl/PLsr0LflaJnw782nTnlTTOYDt
+         eRODwn282H6A9tc3Ol5v+kdPrBWk0Qky1I6M0eIRwjr149NOg0sg2wPAJiqLeJ0L1WzK
+         XJBBef11bIerKqg3NxT1Mn8uTZ/r9CtjJL0fSKuHz1Ndf3O2U/VVbhCiXNheRgdqN84R
+         O8Nli0qV4eWaKFNA8pna6iHQLcu7f/aBSRQ0j91wEWIBgLIxwi+Zuhik/1ED4hoifqk6
+         a0kSOr0NH0Br/+4zgEUxsZx5atVR+4V86kfpmStSKGg4nLVGsHyNV7lFDJe0molxDbYa
+         Nd8A==
+X-Forwarded-Encrypted: i=1; AFNElJ+AfzggX1EGe7R9aXvGU66wOwviWD9kJ49Nq9hsniV5T4RfXkd/dXbmgrHERV5qdgxfGh8cKYCu2m0a7cgw2g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyDSqXL/PdSeKTIcCXa9CRMbDnCMHyZtHGW5xIf/EEA82FcJKEy
+	WWDEDMO4tlPWPIj2VYqjm3g1Tj2fsGgifArEGVU8WvmDGPegkyd8KOeu60mdic063f2ZTtH04U/
+	itKDREhDpVTiij7LijW7FMit0FIMJ1lw=
+X-Gm-Gg: AeBDiesMrFrcistcT7prcxV5QY4Y3Z363b9WKaNzgeweRs31QoTePHRCmXWs/erHLp2
+	XflATQzdnxqGwMGp6yjrbhbHC17+DOTzRXqYv6VSrq/4GSPrRLTiAG6l6LAMndAWPPuoIfocgpV
+	MFhpVn9e3iblV0T3keDxn7tD6r1YXUB35XDut5hQH4LvwXRFFTO+v4jK0AxkpGTXysfL8swiuJX
+	6PoLx53490PiU/lFQ6nhz+r+iCmAnfhMHesNtLuh5nczQHkzhj0MltxonHa9n9RnLdAO6Oi+2nk
+	o91m8C5fa364EYWldKE=
+X-Received: by 2002:a05:6820:604:b0:689:7cd7:259e with SMTP id
+ 006d021491bc7-69462f44c08mr3366697eaf.57.1776480611628; Fri, 17 Apr 2026
+ 19:50:11 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="1Z+JCqeY2FxPdfrp"
-Content-Disposition: inline
-In-Reply-To: <da5752796e1774b6bbc24f5ef1ab2529e24a384f.camel@mediatek.com>
-X-Cookie: Victory uber allies!
+References: <CABb+yY23aTXeXu6G-8sHjw32DCqmhsJLu2Mt-txenOgTBiyv+A@mail.gmail.com>
+ <20260417084335.2092188-1-joonwonkang@google.com>
+In-Reply-To: <20260417084335.2092188-1-joonwonkang@google.com>
+From: Jassi Brar <jassisinghbrar@gmail.com>
+Date: Fri, 17 Apr 2026 21:50:00 -0500
+X-Gm-Features: AQROBzBa_VS1wWtSKDMjmtBp02-qplt4Nx2TejF_JEV5fvEqT0eLpBXx6xGnZnk
+Message-ID: <CABb+yY2yBZ+hgr-=Uh_sRk-TJZRfsk2AYtoS5rPtUN8kVsUScA@mail.gmail.com>
+Subject: Re: [PATCH v3 2/2] mailbox: Make mbox_send_message() return error
+ code when tx fails
+To: Joonwon Kang <joonwonkang@google.com>
+Cc: akpm@linux-foundation.org, angelogioacchino.delregno@collabora.com, 
+	jonathanh@nvidia.com, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-tegra@vger.kernel.org, matthias.bgg@gmail.com, stable@vger.kernel.org, 
+	thierry.reding@gmail.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260417_155303_036300_2CD74196 
-X-CRM114-Status: GOOD (  10.04  )
+X-CRM114-CacheID: sfid-20260417_195013_548541_8693036C 
+X-CRM114-Status: GOOD (  33.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,35 +121,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, Apr 17, 2026 at 3:43=E2=80=AFAM Joonwon Kang <joonwonkang@google.co=
+m> wrote:
+>
+> > On Fri, Apr 3, 2026 at 10:19=E2=80=AFAM Joonwon Kang <joonwonkang@googl=
+e.com> wrote:
+> > >
+> > > > On Thu, Apr 2, 2026 at 12:07=E2=80=AFPM Joonwon Kang <joonwonkang@g=
+oogle.com> wrote:
+> > > > >
+> > > > > When the mailbox controller failed transmitting message, the erro=
+r code
+> > > > > was only passed to the client's tx done handler and not to
+> > > > > mbox_send_message(). For this reason, the function could return a=
+ false
+> > > > > success. This commit resolves the issue by introducing the tx sta=
+tus and
+> > > > > checking it before mbox_send_message() returns.
+> > > > >
+> > > > Can you please share the scenario when this becomes necessary? This
+> > > > can potentially change the ground underneath some clients, so we ha=
+ve
+> > > > to be sure this is really useful.
+> > >
+> > > I would say the problem here is generic enough to apply to all the ca=
+ses where
+> > > the send result needs to be checked. Since the return value of the se=
+nd API is
+> > > not the real send result, any users who believe that this blocking se=
+nd API
+> > > will return the real send result could fall for that. For example, us=
+ers may
+> > > think the send was successful even though it was not actually. I beli=
+eve it is
+> > > uncommon that users have to register a callback solely to get the sen=
+d result
+> > > even though they are using the blocking send API already. Also, I gue=
+ss there
+> > > is no special reason why only the mailbox send API should work this w=
+ay among
+> > > other typical blocking send APIs. For these reasons, this patch makes=
+ the send
+> > > API return the real send result. This way, users will not need to reg=
+ister the
+> > > redundant callback and I think the return value will align with their=
+ common
+> > > expectation.
+> > >
+> > Clients submit a message into the Mailbox subsystem to be sent out to
+> > the remote side which can happen immediately or later.
+> > If submission fails, clients get immediately notified. If transmission
+> > fails (which is now internal to the subsystem) it is reported to the
+> > client by a callback.
+> > If the API was called mbox_submit_message (which it actually is)
+> > instead of mbox_send_message, there would be no confusion.
+> > We can argue how good/bad the current implementation is, but the fact
+> > is that it is here. And I am reluctant to cause churn without good
+> > reason.
+> > Again, as I said, any, _legal_, setup scenario will help me come over
+> > my reluctance.
+> >
+> > Thanks
+> > Jassi
+>
+> Hi Jassi, can we continue discussing this issue from where we left off la=
+st
+> time?
+>
+Long passionate essays are difficult to read, so I haven't yet. A
+simple description of some setup that you think is not supported, will
+keep the discussion focused.
+If your platform is supported but you think the api is not clear,
+updates to the documentation are welcome
 
---1Z+JCqeY2FxPdfrp
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Apr 16, 2026 at 05:53:25AM +0000, Cyril Chao (=E9=92=9E=E6=82=A6) w=
-rote:
-> Thank you for your assistance in reviewing. Could you please also
-> review the modifications in the diff? If everything is okay, I will
-> include them in v9 in the next update.
-
-That looks OK from a scan through, though it's possible I'd see
-something else if I review in full context.
-
---1Z+JCqeY2FxPdfrp
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmniucgACgkQJNaLcl1U
-h9DACwf9H2I11k4JlXEGCoDjtI4sgy3/SrHG9jWgFJ4N+WaSWg5a00Cs1icay7Lz
-CrAmRcjVbCuLniYSP18LS3Mbv8dtKs98W60KdDGGHDz3pxFCKGYr4pnhkXdM/SFz
-D0PbcBHlaj11Abd4kUSeTG3JO4GiEUidCja0vZX+YYGVaPJjWeA3SJwZuvkSjUcM
-FJ6hhGnvDJcyhwt29fV+FTYVe8gYxUYQFELH0vKUwsk5gj58vi6ZFHo+1GDSwBbC
-KfCAO2nvkF1mJhLJckU2xca67RoYdMULyNCkh5ig/8g6/u54TuD5smI4wByhHmwK
-Qw+KSoMw96DdwqNqYYb0Ewhh9pl92w==
-=Ugrc
------END PGP SIGNATURE-----
-
---1Z+JCqeY2FxPdfrp--
+Thanks,
+Jassi
 
