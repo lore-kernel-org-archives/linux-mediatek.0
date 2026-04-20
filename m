@@ -4,66 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAD48F588E4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 15:02:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5643CF588F7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 16:35:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Mime-Version:References:In-Reply-To:Message-Id:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lArVrBn/x5rTmypa5CmSx1ZlITyRRcDc30mnIjp2KpQ=; b=P1aSZaaQVZGlSrOoYvtNhqnc8+
-	A80zBeUpnrR0S/iqAM50couH4/tvZ3g2QNXLMp34AsYQUR65f7gJT5gZSdosQM9E6fP9DLu7nhUup
-	LWMhJ+dZZwWWXftZ/FGNW+IZxgW/eUaL1HuhzJ554ucfkbjP/9vB9w/fe0Ty456E3wtwIyfcC6kN2
-	92L0JxABoHuIWNGJ/8tuxDd/kOgJaSLb7RWcdQ+yV7GwR4aCBYK8gGxjj2bZ2R6ycZDTeC0lJBu8z
-	oLk1b4Bk3AZH9Lrbr7jhPb+bfk1We5Ez6y3DH3PDgb/fzGdlq8tv8Q965P5NoroXIgRYbVAwTZY6h
-	IxBfY9YQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=e/Du74EJttRYzocAt0aYwsBrBN+xYnBNbkIiSv+PCto=; b=1wmeQJFsvzyIBncUCrVqboZFUD
+	EZNdgq8n8C7jxZ/Ij0UGjcT8F0MFXHBLEX4EbVUkZfF0vWEkCAT9zKNIIrdai6Crct+X1B6Ho4gsj
+	pCJ+nk3KUI5BPFCua8uLEqUfTWkae5sJZFKyIJx/JypuLVdbLy3j4+Q1dp2Ifd9ebMIinGKo+eS79
+	nktKJTs+jsdLgJpmsselkNr2TG2K7e/47aD2GF5WX8RitVfr43iZwzpgjpeyjwvhwife/zr1nLVfn
+	ZfEOGx7uCmTTqYcj6wvuj/F+r10nKluChHID4DalSE1sUPkOYvfXO4Vj5jwu6cmuejdtXzYDIBm2s
+	5qGQwOXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEq8b-00000007DJ7-0BB5;
-	Mon, 20 Apr 2026 15:02:13 +0000
-Received: from mail.hugovil.com ([162.243.120.170])
+	id 1wEraT-00000007RHh-0So2;
+	Mon, 20 Apr 2026 16:35:05 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEq8Y-00000007DIf-3E0f;
-	Mon, 20 Apr 2026 15:02:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=hugovil.com
-	; s=default; h=Content-Transfer-Encoding:Mime-Version:Message-Id:Subject:Cc:
-	To:From:Date:subject:date:message-id:reply-to;
-	bh=lArVrBn/x5rTmypa5CmSx1ZlITyRRcDc30mnIjp2KpQ=; b=fX1lO7lXlbcZkWbqF5Vl8AKrFY
-	PL6aJ/ecp6cwzbZVPLyqPNq9GGGgnYWrU0J+UARb0+2IlW4qDB5K9N6PCSf9hGi4DaHghmF1aG4XE
-	gbheHtXZQRlp3RFYMaGjm98ttXUK7EfpxgVcnzmwIxUqPPuWCaj0C1GqvfEE2ybScMf4=;
-Received: from modemcable168.174-80-70.mc.videotron.ca ([70.80.174.168] helo=pettiford.lan)
-	by mail.hugovil.com with esmtpa (Exim 4.98.2)
-	(envelope-from <hugo@hugovil.com>)
-	id 1wEq8N-000000006HH-36N1;
-	Mon, 20 Apr 2026 11:02:00 -0400
-Date: Mon, 20 Apr 2026 11:01:59 -0400
-From: Hugo Villeneuve <hugo@hugovil.com>
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Cc: robin@protonic.nl, andy@kernel.org, geert@linux-m68k.org,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- hvilleneuve@dimonoff.com, mkorpershoek@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, lee@kernel.org,
- alexander.sverdlin@gmail.com, marek.vasut@gmail.com, akurz@blala.de,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v5 4/4] Input: charlieplex_keypad: add GPIO charlieplex
- keypad
-Message-Id: <20260420110159.29ccb815eb584bca18a407ac@hugovil.com>
-In-Reply-To: <aeWtDA7snjJmiF9K@google.com>
-References: <20260312180304.3865850-1-hugo@hugovil.com>
-	<20260312180304.3865850-5-hugo@hugovil.com>
-	<aeWtDA7snjJmiF9K@google.com>
-X-Mailer: Sylpheed 3.8.0beta1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Spam_score: -2.0
-X-Spam_bar: --
+	id 1wEraP-00000007RGl-3X3r;
+	Mon, 20 Apr 2026 16:35:03 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.99)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1wEraC-000000001Bl-1o7A;
+	Mon, 20 Apr 2026 16:34:48 +0000
+Date: Mon, 20 Apr 2026 17:34:45 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Olivia Mackall <olivia@selenic.com>,
+	Herbert Xu <herbert@gondor.apana.org.au>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Daniel Golle <daniel@makrotopia.org>, linux-crypto@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v4 1/3] dt-bindings: rng: mtk-rng: fix style problems in
+ example
+Message-ID: <912fe579eccf577f3064b69d6c945e2c9087cab8.1776702734.git.daniel@makrotopia.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260420_080210_975718_9DB2EF2D 
-X-CRM114-Status: GOOD (  30.76  )
+X-CRM114-CacheID: sfid-20260420_093501_886671_B9AB29F8 
+X-CRM114-Status: UNSURE (   9.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,226 +70,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
+Use 4 spaces for each level indentation, remove unused label, and add
+missing empty line between header include and body.
 
-On Sun, 19 Apr 2026 21:47:40 -0700
-Dmitry Torokhov <dmitry.torokhov@gmail.com> wrote:
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+v4: new patch
 
-> Hi Hugo,
-> 
-> On Thu, Mar 12, 2026 at 02:00:58PM -0400, Hugo Villeneuve wrote:
-> > +
-> > +static void charlieplex_keypad_report_key(struct input_dev *input)
-> > +{
-> > +	struct charlieplex_keypad *keypad = input_get_drvdata(input);
-> > +	const unsigned short *keycodes = input->keycode;
-> > +
-> > +	if (keypad->current_code > 0) {
-> > +		input_event(input, EV_MSC, MSC_SCAN, keypad->current_code);
-> > +		input_report_key(input, keycodes[keypad->current_code], 0);
-> 
-> This needs input_sync() as otherwise userspace is free to only recognize
-> the last MSC_SCAN event.
+ Documentation/devicetree/bindings/rng/mtk-rng.yaml | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
 
-Ok, now I get it, my code would have been be working only if it was an
-if/else.
-
-> 
-> > +	}
-> > +
-> > +	if (keypad->debounce_code) {
-> > +		input_event(input, EV_MSC, MSC_SCAN, keypad->debounce_code);
-> > +		input_report_key(input, keycodes[keypad->debounce_code], 1);
-> > +	}
-> > +
-> > +	input_sync(input);
-> > +	keypad->current_code = keypad->debounce_code;
-> > +}
-> > +
-> > +static void charlieplex_keypad_check_switch_change(struct input_dev *input,
-> > +						   int code)
-> > +{
-> > +	struct charlieplex_keypad *keypad = input_get_drvdata(input);
-> > +
-> > +	if (code != keypad->debounce_code) {
-> > +		keypad->debounce_count = 0;
-> > +		keypad->debounce_code = code;
-> > +	} else if (keypad->debounce_count < keypad->debounce_threshold) {
-> 
-> This does not work if debouncing is disabled (debounce threshold is 0).
-
-Yes.
-
-
-> 
-> > +		keypad->debounce_count++;
-> > +
-> > +		if (keypad->debounce_count >= keypad->debounce_threshold &&
-> > +		    keypad->debounce_code != keypad->current_code)
-> > +			charlieplex_keypad_report_key(input);
-> > +	}
-> > +}
-> > +
-> > +static void charlieplex_keypad_poll(struct input_dev *input)
-> > +{
-> > +	struct charlieplex_keypad *keypad = input_get_drvdata(input);
-> > +	int code;
-> > +
-> > +	code = 0;
-> > +	for (unsigned int oline = 0; oline < keypad->nlines; oline++) {
-> > +		DECLARE_BITMAP(values, MATRIX_MAX_ROWS);
-> > +		int err;
-> > +
-> > +		/* Activate only one line as output at a time. */
-> > +		gpiod_direction_output(keypad->line_gpios->desc[oline], 1);
-> > +
-> > +		if (keypad->settling_time_us)
-> > +			fsleep(keypad->settling_time_us);
-> > +
-> > +		/* Read input on all other lines. */
-> > +		err = gpiod_get_array_value_cansleep(keypad->line_gpios->ndescs,
-> > +						     keypad->line_gpios->desc,
-> > +						     keypad->line_gpios->info, values);
-> > +		if (err)
-> > +			return;
-> 
-> We need to deactivate the line on error too.
-
-Yer, good catch.
-
-> 
-> > +
-> > +		for (unsigned int iline = 0; iline < keypad->nlines; iline++) {
-> > +			if (iline == oline)
-> > +				continue; /* Do not read active output line. */
-> > +
-> > +			/* Check if GPIO is asserted. */
-> > +			if (test_bit(iline, values)) {
-> > +				code = MATRIX_SCAN_CODE(oline, iline,
-> > +							get_count_order(keypad->nlines));
-> > +				/*
-> > +				 * Exit loop immediately since we cannot detect
-> > +				 * more than one key press at a time.
-> > +				 */
-> > +				break;
-> > +			}
-> > +		}
-> > +
-> > +		gpiod_direction_input(keypad->line_gpios->desc[oline]);
-> > +
-> > +		if (code)
-> > +			break;
-> > +	}
-> > +
-> > +	charlieplex_keypad_check_switch_change(input, code);
-> > +}
-> > +
-> > +static int charlieplex_keypad_init_gpio(struct platform_device *pdev,
-> > +					struct charlieplex_keypad *keypad)
-> > +{
-> > +	char **pin_names;
-> > +	char label[32];
-> > +
-> > +	snprintf(label, sizeof(label), "%s-pin", pdev->name);
-> > +
-> > +	keypad->line_gpios = devm_gpiod_get_array(&pdev->dev, "line", GPIOD_IN);
-> > +	if (IS_ERR(keypad->line_gpios))
-> > +		return PTR_ERR(keypad->line_gpios);
-> > +
-> > +	keypad->nlines = keypad->line_gpios->ndescs;
-> > +
-> > +	if (keypad->nlines > MATRIX_MAX_ROWS)
-> > +		return -EINVAL;
-> > +
-> > +	pin_names = devm_kasprintf_strarray(&pdev->dev, label, keypad->nlines);
-> > +	if (IS_ERR(pin_names))
-> > +		return PTR_ERR(pin_names);
-> > +
-> > +	for (unsigned int i = 0; i < keypad->line_gpios->ndescs; i++)
-> > +		gpiod_set_consumer_name(keypad->line_gpios->desc[i], pin_names[i]);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int charlieplex_keypad_probe(struct platform_device *pdev)
-> > +{
-> > +	struct charlieplex_keypad *keypad;
-> > +	unsigned int debounce_interval_ms;
-> > +	unsigned int poll_interval_ms;
-> > +	struct input_dev *input_dev;
-> > +	int err;
-> > +
-> > +	keypad = devm_kzalloc(&pdev->dev, sizeof(*keypad), GFP_KERNEL);
-> > +	if (!keypad)
-> > +		return -ENOMEM;
-> > +
-> > +	input_dev = devm_input_allocate_device(&pdev->dev);
-> > +	if (!input_dev)
-> > +		return -ENOMEM;
-> > +
-> > +	keypad->input_dev = input_dev;
-> > +
-> > +	device_property_read_u32(&pdev->dev, "poll-interval", &poll_interval_ms);
-> > +	device_property_read_u32(&pdev->dev, "debounce-delay-ms", &debounce_interval_ms);
-> > +	device_property_read_u32(&pdev->dev, "settling-time-us", &keypad->settling_time_us);
-> 
-> Not all of these are required properties. If they are missing the driver
-> will operate on garbage values.
-
-Yes.
-
-
-> 
-> > +
-> > +	keypad->current_code = -1;
-> > +	keypad->debounce_code = -1;
-> > +	keypad->debounce_threshold = DIV_ROUND_UP(debounce_interval_ms, poll_interval_ms);
-> 
-> This will bomb if poll interval is 0.
-
-Yes.
-
-> 
-> > +
-> > +	err = charlieplex_keypad_init_gpio(pdev, keypad);
-> > +	if (err)
-> > +		return err;
-> > +
-> > +	input_dev->name		= pdev->name;
-> > +	input_dev->id.bustype	= BUS_HOST;
-> > +
-> > +	err = matrix_keypad_build_keymap(NULL, NULL, keypad->nlines,
-> > +					 keypad->nlines, NULL, input_dev);
-> > +	if (err)
-> > +		dev_err_probe(&pdev->dev, -ENOMEM, "failed to build keymap\n");
-> 
-> Missing "return".
-> 
-> > +
-> > +	if (device_property_read_bool(&pdev->dev, "autorepeat"))
-> > +		__set_bit(EV_REP, input_dev->evbit);
-> > +
-> > +	input_set_capability(input_dev, EV_MSC, MSC_SCAN);
-> > +
-> > +	err = input_setup_polling(input_dev, charlieplex_keypad_poll);
-> > +	if (err)
-> > +		dev_err_probe(&pdev->dev, err, "unable to set up polling\n");
-> 
-> Missing "return".
-
-Ok for both.
-
-> I fixed it up and applied, please take a look in my 'next' branch and
-> tell me if I messed up.
-
-Thank you for the review and the fixes.
-
-I tested it on the real hardware and all is good.
-
-So I imagine that it can still go into 7.1 since it is a new driver
-and not a modification of an existing one?
-
-
+diff --git a/Documentation/devicetree/bindings/rng/mtk-rng.yaml b/Documentation/devicetree/bindings/rng/mtk-rng.yaml
+index 7e8dc62e5d3a6..8f2f4c32a0cfc 100644
+--- a/Documentation/devicetree/bindings/rng/mtk-rng.yaml
++++ b/Documentation/devicetree/bindings/rng/mtk-rng.yaml
+@@ -47,9 +47,10 @@ additionalProperties: false
+ examples:
+   - |
+     #include <dt-bindings/clock/mt2701-clk.h>
+-    rng: rng@1020f000 {
+-            compatible = "mediatek,mt7623-rng";
+-            reg = <0x1020f000 0x1000>;
+-            clocks = <&infracfg CLK_INFRA_TRNG>;
+-            clock-names = "rng";
++
++    rng@1020f000 {
++        compatible = "mediatek,mt7623-rng";
++        reg = <0x1020f000 0x1000>;
++        clocks = <&infracfg CLK_INFRA_TRNG>;
++        clock-names = "rng";
+     };
 -- 
-Hugo Villeneuve
+2.53.0
 
