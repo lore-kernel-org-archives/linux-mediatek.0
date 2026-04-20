@@ -4,49 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F041F588C5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 13:16:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 374FEF588C5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 13:17:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FLd6z6Q1lnuqIRVH4mif3W6e3qNGv//sJZwYQPxpdv8=; b=vRHTmzit3etSEjqyqSfBYFYobA
-	MliLXwnkQED8AcuWg8Q3ZcqM6C1Td488EmRIGKNuR/nbxCDtMna8VO7AgFRx6r0T2ucfNHjaR8ftL
-	1qaKHN019kTJ1lYzZ7953dG9h23Wm7wa1vKY+pLteirAxxc5ozFpTl5XjFu3jE/0E7psLP0YsiJ8Z
-	dvnL1oR4WvV6um89t+XT/j86UgRGnOTb1GYLx2fXi5+v/gGaiv8zGIRAIL1oK7VCPYX/6LwnUIRL7
-	006iiz7vHxQECRD3kjxAaeudv7a3pir1QhpKtqbG1SOgB7JLTey8gGhh9Oj8mk+E7QzKlDgSaPDl9
-	UI3ZoWVg==;
+	bh=3yq8p7uK8lywqpvX0pFgAX/Ui64mP2cVRRthaF3EBUY=; b=TJjSF86DCmL8VhMr3nLSUptqvO
+	ZQT5jHYhj89Tp2FrZ5zOfHGdhLTicae8ty4Q3NFGM3nI64lzQPBNC6g5T/0w1nXyD1x9uY16fnQM5
+	XrpvVfP5I9saYcm/y2El1HxJ0TqMWoOBThkEC0E86DoLHvVO+3D/KEkF1EOSwF4X9/xdsNTo/X0Ce
+	2omHdAyi5wqW15vWaN7q5Ckw7FbnkDlIDKR+RcY2XZuoUDA+F8BZrjNoPTxD4x2n4dDnvAO7ZPI3Z
+	+SPcyL8T+GgGY8LQIK8n8GRw1uYxyPCnfja+JKM3piTbeJdRRynTMutATJezU2zIEjA/8wqyxjJEa
+	rupRX60w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEoU6-00000006yDq-3IS7;
-	Mon, 20 Apr 2026 13:16:18 +0000
+	id 1wEoVc-00000006yym-3Nhl;
+	Mon, 20 Apr 2026 13:17:52 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEoU0-00000006y9T-45qL;
-	Mon, 20 Apr 2026 13:16:15 +0000
+	id 1wEoVZ-00000006yxI-2gkg;
+	Mon, 20 Apr 2026 13:17:51 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 84E3141901;
-	Mon, 20 Apr 2026 13:16:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E1038C2BCC4;
-	Mon, 20 Apr 2026 13:16:10 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 3EB034043A;
+	Mon, 20 Apr 2026 13:17:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B4C7FC2BCB4;
+	Mon, 20 Apr 2026 13:17:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776690972;
-	bh=XRu+DMAZZf7fnaXEhjw82GF1wBHfzxLJuoQc7tEAjZc=;
+	s=k20201202; t=1776691069;
+	bh=f3xsyAIWxI4nn00HNYNNjBmimSPNBuKH8vBU5p8iJLA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=QRHwl6ih7O4Ep0yW0eyLlp11HYqg37Y0e64D1tUxQp9nXu+KLy5EPHIJyHKPy/mQw
-	 A8gSPrAj+FJn57XHPNKbLlEFgakXVngpPA0cRllsYi6skQU92rPuybx3yvCwXrMSSR
-	 Tiw1hraIzRKdz3c8jOyoxWn6iOq+yNVDllWWxkXkAPk+JYzPuVk369tBbp0i1pmO1F
-	 BAizd3QWRbDTFf/MF85TaNjXyNpk+dXTQA3Dpifh9VvZWZDKxAY2mTlwTOGO+VeUJg
-	 cS1cbKtC6J0zA/Uw18rSF+C+SEqFl6OnqpxwjqZKdukY0cNicuviOiy87+AyTjniI3
-	 z4QwVYnnLExGA==
+	b=HdAG88NmYH6GuyXj6dySNYWssxcVNOdzdhVyR+KpfwJc259LU5t5tWjs204yFJvRh
+	 y8rk/wdANibgQDkz4JRqA1NPX3WsDv6fHqsyMGpP+g/6wbL4b/YMQFihstQub8Ykyb
+	 DXO1FJFB4vfg+e45cBgqGddS9vXeMC1fG22Px0KppXDSRvK1vl7+GGkRxwqBE6N1ss
+	 tX4cgGVgC2VhT2a+oLBY971QEXvWJqpSUopzF1A/P8Yhoh4viDKkAE1FoQgBfBeBEB
+	 HKgGO0k49LpRap3DySWaPNHbpDDf5shFFtg47o5sRqXZQ0zDhuV9XG9JWbL//9OmLi
+	 eKUfzB4QNahhg==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Leon Yen <leon.yen@mediatek.com>,
-	"Chia-Lin Kao (AceLan)" <acelan.kao@canonical.com>,
-	Felix Fietkau <nbd@nbd.name>,
+Cc: Felix Fietkau <nbd@nbd.name>,
 	Sasha Levin <sashal@kernel.org>,
 	lorenzo@kernel.org,
 	ryder.lee@mediatek.com,
@@ -57,9 +55,9 @@ Cc: Leon Yen <leon.yen@mediatek.com>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 7.0-6.6] wifi: mt76: mt792x: Fix a potential deadlock in high-load situations
-Date: Mon, 20 Apr 2026 09:08:05 -0400
-Message-ID: <20260420131539.986432-19-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 7.0-6.18] wifi: mt76: abort ROC on chanctx changes
+Date: Mon, 20 Apr 2026 09:09:01 -0400
+Message-ID: <20260420131539.986432-75-sashal@kernel.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260420131539.986432-1-sashal@kernel.org>
 References: <20260420131539.986432-1-sashal@kernel.org>
@@ -67,11 +65,10 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-stable-base: Linux 7.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260420_061613_147001_34BEEA75 
-X-CRM114-Status: GOOD (  23.62  )
+X-CRM114-CacheID: sfid-20260420_061749_726216_935B08A4 
+X-CRM114-Status: GOOD (  26.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,294 +83,346 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Leon Yen <leon.yen@mediatek.com>
+From: Felix Fietkau <nbd@nbd.name>
 
-[ Upstream commit bb2f07819d063a58756186cac6465341956ac0a4 ]
+[ Upstream commit de62b24224ac1533c17b3d5bae77164a82ae2e49 ]
 
-A deadlock may occur between two works, ps_work and mac_work, if their work
-functions run simultaneously as they attempt to cancel each other by
-calling cancel_delayed_work_sync().
+mt76_change_chanctx() calls mt76_phy_update_channel() which switches
+the hardware channel. If ROC is active on the same phy, this switches
+away from the ROC channel and clears offchannel, but leaves ROC state
+intact. Mac80211 still thinks the phy is on the ROC channel.
 
-mt792x_mac_work() ->   ...  -> cancel_delayed_work_sync(&pm->ps_work);
-mt792x_pm_power_save_work() -> cancel_delayed_work_sync(&mphy->mac_work);
+Abort any active ROC before proceeding, matching the pattern already
+used in add, remove, assign, unassign, and switch chanctx functions.
 
-In high-load situations, they are queued but may not have chance to be
-executed until the CPUs are released. Once the CPUs are available, there
-is a high possibility that the ps_work function and mac_work function will
-be executed simultaneously, resulting in a possible deadlock.
-
-This patch replaces cancel_delayed_work_sync() with cancel_delayed_work()
-in ps_work to eliminate the deadlock and make the code easier to maintain.
-
-Signed-off-by: Leon Yen <leon.yen@mediatek.com>
-Tested-by: Chia-Lin Kao (AceLan) <acelan.kao@canonical.com>
-Link: https://patch.msgid.link/20251215122231.3180648-1-leon.yen@mediatek.com
+Link: https://patch.msgid.link/20260309060730.87840-5-nbd@nbd.name
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
 LLM Generated explanations, may be completely bogus:
 
-Now I have all the data needed. Let me compile the full analysis.
+I now have all the information needed for a complete analysis. Let me
+compile the findings.
 
 ---
 
 ## PHASE 1: COMMIT MESSAGE FORENSICS
 
 **Step 1.1: Subject Line**
-- Subsystem: `wifi: mt76: mt792x`
-- Action verb: "Fix"
-- Summary: Fixes a potential deadlock between ps_work and mac_work in
-  high-load situations.
-
-Record: [wifi/mt76/mt792x] [Fix] [Deadlock between two work functions
-that cancel each other with _sync variant]
+- Subsystem: `wifi: mt76:` (MediaTek MT76 wireless driver)
+- Action: "abort" - stopping an ongoing operation to prevent state
+  inconsistency
+- Summary: Abort ROC (Remain on Channel) on channel context changes
+- Record: [wifi: mt76] [abort] [Abort active ROC when channel context
+  changes to prevent state desync]
 
 **Step 1.2: Tags**
-- `Signed-off-by: Leon Yen <leon.yen@mediatek.com>` — Author from
-  MediaTek (the chip vendor)
-- `Tested-by: Chia-Lin Kao (AceLan) <acelan.kao@canonical.com>` — Tested
-  by a Canonical engineer
-- `Link: https://patch.msgid.link/20251215122231.3180648-1-
-  leon.yen@mediatek.com`
-- `Signed-off-by: Felix Fietkau <nbd@nbd.name>` — mt76 subsystem
-  maintainer accepted the patch
+- Link: `https://patch.msgid.link/20260309060730.87840-5-nbd@nbd.name`
+  (patch 5 in a series)
+- Signed-off-by: Felix Fietkau `<nbd@nbd.name>` (mt76 subsystem
+  maintainer/author)
+- No Fixes: tag (expected for autosel candidates)
+- No Reported-by (no external report; author found the issue)
+- Record: Author is the mt76 subsystem creator. Patch 5 of a series.
 
-Record: Author is from MediaTek (chip vendor). Tested by Canonical
-(Ubuntu). Accepted by mt76 maintainer Felix Fietkau. No Fixes: tag, no
-Reported-by (expected since this is a code-analysis-based fix).
+**Step 1.3: Commit Body Analysis**
+The commit describes a concrete bug mechanism:
+1. `mt76_change_chanctx()` calls `mt76_phy_update_channel()` which
+   switches the hardware channel
+2. If ROC is active on the same phy, the hardware switches away from ROC
+   channel
+3. `offchannel` is cleared (set to false), but ROC state (`roc_vif`,
+   `roc_link`, `roc_work` timer) remains intact
+4. Mac80211 still believes the phy is on the ROC channel
 
-**Step 1.3: Commit Body**
-The message describes:
-- **Bug**: A deadlock between two delayed works: `ps_work` and
-  `mac_work`
-- **Mechanism**: Both try to cancel each other using
-  `cancel_delayed_work_sync()`, which blocks until the target work
-  finishes
-- **Trigger**: High-load situations where both works get queued and
-  execute simultaneously on different CPUs
-- **Fix**: Replace `cancel_delayed_work_sync()` with
-  `cancel_delayed_work()` in ps_work
+Record: [State inconsistency between driver and mac80211 when chanctx
+changes during active ROC] [Symptom: mac80211 and hardware out of sync
+on channel state] [Bug introduced with channel.c in v6.14]
 
-Record: Classic ABBA deadlock. Failure mode is system hang (deadlock).
-Triggered under high CPU load with WiFi active.
+**Step 1.4: Hidden Bug Fix Detection**
+This is clearly a bug fix, not cleanup. The commit explicitly describes
+a state desynchronization between the hardware and the mac80211 layer.
 
-**Step 1.4: Hidden Bug Fix?**
-No — this is explicitly labeled "Fix" and clearly describes a deadlock.
-Not hidden.
+---
 
 ## PHASE 2: DIFF ANALYSIS
 
 **Step 2.1: Inventory**
-- 1 file changed: `drivers/net/wireless/mediatek/mt76/mt792x_mac.c`
-- 1 line changed: `-cancel_delayed_work_sync(` → `+cancel_delayed_work(`
-- Function modified: `mt792x_pm_power_save_work()`
-- Scope: Single-file, single-line, surgical fix
+- 1 file changed: `drivers/net/wireless/mediatek/mt76/channel.c`
+- +3 lines added (including blank line), 0 removed
+- Function modified: `mt76_change_chanctx()`
+- Scope: Single-function surgical fix
+- Record: [channel.c +3/-0] [mt76_change_chanctx modified] [Single-file
+  surgical fix]
 
 **Step 2.2: Code Flow Change**
-Before: `mt792x_pm_power_save_work()` calls
-`cancel_delayed_work_sync(&mphy->mac_work)`, which blocks until any
-currently-running `mac_work` completes.
+Before: `mt76_change_chanctx()` directly proceeds to cancel mac_work and
+update channel.
+After: Before canceling mac_work, checks if ROC is active
+(`phy->roc_vif`) and aborts it via `mt76_abort_roc(phy)`.
 
-After: It calls `cancel_delayed_work(&mphy->mac_work)`, which cancels a
-pending work but does NOT wait for a running instance to finish.
+**Step 2.3: Bug Mechanism**
+Verified by reading `__mt76_set_channel()` at mac80211.c:1045:
+`phy->offchannel = offchannel;`. When called from
+`mt76_phy_update_channel()` with `offchannel = false`, it clears the
+offchannel flag. But the ROC state (`roc_vif`, `roc_link`, `roc_work`)
+remains set, causing a desynchronization.
 
-**Step 2.3: Bug Mechanism — Deadlock**
-
-The deadlock is an ABBA pattern between two work functions:
-
-**Chain A** (mac_work → waits for ps_work):
-
-```
-mt792x_mac_work()
-  → mt792x_mutex_acquire()
-    → mt76_connac_mutex_acquire()
-      → mt76_connac_pm_wake()
-        → cancel_delayed_work_sync(&pm->ps_work)   ← WAITS for ps_work
-```
-
-**Chain B** (ps_work → waits for mac_work):
-
-```
-mt792x_pm_power_save_work()
-  → cancel_delayed_work_sync(&mphy->mac_work)      ← WAITS for mac_work
-```
-
-If both execute simultaneously:
-- CPU1's mac_work waits for ps_work to finish
-- CPU2's ps_work waits for mac_work to finish
-- **Classic ABBA deadlock → system hang**
-
-The two works run on *different* workqueues (`mac_work` on ieee80211's
-workqueue, `ps_work` on `dev->mt76.wq`), which confirms they CAN execute
-in parallel on different CPUs.
+Classification: **Logic/correctness fix** - missing cleanup of related
+state when switching channels.
 
 **Step 2.4: Fix Quality**
-- Obviously correct: removing `_sync` breaks the circular dependency
-- The non-sync variant is safe here because after the cancel, `ps_work`
-  immediately returns. If `mac_work` is running, it will re-queue itself
-  (line 30-31) and will be properly managed in the next power-save
-  cycle. `mac_work` acquires `mt792x_mutex_acquire` which wakes the
-  device if needed.
-- Minimal/surgical: exactly 1 function call changed
-- Regression risk: Very low — the only difference is not waiting for a
-  running `mac_work` to finish, which is acceptable since `ps_work`
-  doesn't depend on `mac_work` completion
+- Obviously correct: follows the exact pattern established by all other
+  chanctx functions which abort scans
+- Minimal: 2 lines of actual logic
+- `mt76_abort_roc()` handles its own locking (takes `dev->mutex`
+  internally), so calling it before the existing `mutex_lock` is correct
+- Regression risk: extremely low - if ROC is not active (`roc_vif ==
+  NULL`), the check is a no-op
 
-## PHASE 3: GIT HISTORY
+---
+
+## PHASE 3: GIT HISTORY INVESTIGATION
 
 **Step 3.1: Blame**
-The buggy line was introduced by commit `c21a7f9f406bba` (Lorenzo
-Bianconi, 2023-06-28), "wifi: mt76: mt7921: move shared runtime-pm code
-on mt792x-lib". This was code movement that created the mt792x_mac.c
-file, carrying the original deadlock-prone pattern from mt7921/mac.c.
+From git blame, the buggy `mt76_change_chanctx()` was introduced by
+commit `82334623af0cd` ("wifi: mt76: add chanctx functions for multi-
+channel phy support") by Felix Fietkau on 2025-01-02. This commit is in
+v6.14.
 
-**Step 3.2: Fixes tag** — No Fixes: tag present (expected).
+**Step 3.2: Fixes Tag**
+No Fixes: tag present. The implicit target is `82334623af0cd` which
+introduced `mt76_change_chanctx` without ROC abort handling.
 
-**Step 3.3: Related changes** — The file has had several changes since,
-but none addressing this specific deadlock.
+**Step 3.3: File History**
+The file has 7 commits since creation: the original, scanning code, ROC
+functions, offchannel link, a deref fix, abort scan/roc on hw restart,
+and relicensing. No conflicting changes near the modified area.
 
-**Step 3.4: Author** — Leon Yen is a MediaTek engineer with multiple
-mt76 contributions, including WiFi/BT combo fixes and power management
-work.
+**Step 3.4: Author**
+Felix Fietkau (nbd@nbd.name) is the creator and maintainer of the mt76
+driver. He wrote the original `channel.c` file and all major chanctx
+functions.
 
-**Step 3.5: Dependencies** — None. This is a standalone one-line fix.
+**Step 3.5: Dependencies**
+The commit is patch 5 of a series (msgid `-5-`). However, the fix is
+**self-contained**:
+- `mt76_abort_roc()` already exists in the tree (since `a8f424c1287cc`,
+  in v6.14)
+- `phy->roc_vif` already exists in `mt76.h`
+- `mt76_abort_roc` is declared in `mt76.h` and accessible from
+  `channel.c`
+- No other patch from the series is needed for this fix to work
+  correctly.
+
+---
 
 ## PHASE 4: MAILING LIST RESEARCH
 
-b4 dig did not find the exact commit (it matched a different file
-change). The lore.kernel.org search was blocked. However, the commit
-message Link tag points to the original submission:
-`20251215122231.3180648-1-leon.yen@mediatek.com`. The patch was accepted
-by Felix Fietkau (mt76 maintainer) and tested by a Canonical engineer.
+**Step 4.1-4.5**: Lore.kernel.org is behind Anubis anti-bot protection
+and could not be accessed. The `b4 dig` also did not find a match for
+the message-id (possibly a future date issue). However, the patch URL is
+well-formed and the commit is by the subsystem maintainer, providing
+strong quality assurance.
 
-Record: Maintainer-accepted, independently tested. Standalone patch (not
-a series).
+Record: [UNVERIFIED: Could not access lore/b4 due to anti-bot
+protection] [Author is mt76 maintainer which provides confidence in
+quality]
+
+---
 
 ## PHASE 5: CODE SEMANTIC ANALYSIS
 
-**Step 5.1: Functions modified**: `mt792x_pm_power_save_work()`
+**Step 5.1: Functions Modified**
+- `mt76_change_chanctx()` - modified to add ROC abort call
 
-**Step 5.2: Callers**: This function is the work handler for
-`pm.ps_work`, queued on `dev->mt76.wq` (an ordered workqueue) via
-`mt76_connac_power_save_sched()`. It is called indirectly when the
-device transitions to power-save mode.
+**Step 5.2: Callers**
+`mt76_change_chanctx` is a mac80211 callback assigned via
+`ieee80211_ops`. It is called by mac80211 whenever the channel context
+configuration changes (width changes, radar detection changes). This is
+a normal operation path triggered by AP configuration, DFS, or
+regulatory changes.
 
-**Step 5.3-5.4: Call chain**: The power-save work is scheduled via
-`mt76_connac_mutex_release()` → `mt76_connac_power_save_sched()`, which
-is called after every device register access. This is a very hot path
-for any mt792x WiFi operation.
+**Step 5.3: Callees**
+`mt76_abort_roc()` calls:
+1. `cancel_delayed_work_sync(&phy->roc_work)` - cancels the ROC timeout
+2. `mt76_roc_complete(phy)` under mutex - restores main channel, frees
+   offchannel link, notifies mac80211
 
-**Step 5.5: Similar patterns**: The `mt7615` driver has similar power-
-save code at `drivers/net/wireless/mediatek/mt76/mt7615/mac.c`, but this
-specific fix only addresses the mt792x code path.
+**Step 5.4: Call Chain**
+Userspace/regulatory -> mac80211 -> `mt76_change_chanctx` -> bug
+triggers if ROC active. This is reachable from normal WiFi operation
+(e.g., DFS, bandwidth changes during P2P).
+
+**Step 5.5: Similar Patterns**
+All 5 other chanctx functions (`add`, `remove`, `assign`, `unassign`,
+`switch`) already call `mt76_abort_scan()`. The fix adds the equivalent
+`mt76_abort_roc()` to the one function that was missing it.
+
+---
 
 ## PHASE 6: STABLE TREE ANALYSIS
 
-**Step 6.1**: The buggy code was introduced in commit `c21a7f9f406bba`
-(June 2023), which is present in v6.6 but NOT in v6.1. Affected stable
-trees: v6.6.y, v6.12.y, and any later LTS.
+**Step 6.1: Buggy Code in Stable Trees**
+- `channel.c` with `mt76_change_chanctx` was introduced in v6.14 (commit
+  `82334623af0cd`)
+- `mt76_abort_roc` function exists since v6.14 (commit `a8f424c1287cc`)
+- `mt76_abort_roc` is declared in `mt76.h` even in v6.14 (confirmed at
+  line 1586)
+- Bug affects: v6.14.y and later stable trees
 
-**Step 6.2**: The fix is a one-line change. It should apply cleanly to
-any tree containing the buggy code.
+**Step 6.2: Backport Complications**
+The code in v6.14 matches exactly: `mt76_change_chanctx()` is identical
+to the pre-patch state in v7.0. The patch would apply cleanly. No
+forward-declaration issues since `mt76_abort_roc` is declared in
+`mt76.h`.
 
-**Step 6.3**: No related fixes for this specific deadlock already in
-stable.
+**Step 6.3: Related Fixes**
+No alternative fix for this specific bug exists in stable trees.
+
+---
 
 ## PHASE 7: SUBSYSTEM CONTEXT
 
-**Step 7.1**: `drivers/net/wireless/mediatek/mt76` — WiFi driver for
-MediaTek MT7921/MT7922/MT7925 chipsets. These are extremely popular WiFi
-chips found in many modern laptops (Framework, Lenovo ThinkPad, Dell,
-etc.). Criticality: **IMPORTANT** — affects many real users.
+**Step 7.1: Subsystem**
+- Subsystem: WiFi/wireless drivers (drivers/net/wireless/mediatek/mt76)
+- Criticality: IMPORTANT - mt76 is one of the most widely used WiFi
+  chipset drivers (MT7921, MT7922, MT7925, MT7996, etc.), found in many
+  laptops and routers
 
-**Step 7.2**: The mt76 subsystem is very active with regular
-contributions.
+**Step 7.2: Activity**
+Actively maintained by Felix Fietkau with recent commits in the channel
+management area. The multi-radio/chanctx support is relatively new
+(v6.14).
+
+---
 
 ## PHASE 8: IMPACT AND RISK ASSESSMENT
 
-**Step 8.1**: Affects all users with MT7921/MT7922/MT7925 WiFi chipsets
-(very large population, especially Ubuntu/Fedora laptop users).
+**Step 8.1: Affected Users**
+All users of MediaTek mt76 WiFi chipsets who use P2P, scanning, or any
+ROC functionality while channel context changes occur.
 
-**Step 8.2**: Trigger is high CPU load with active WiFi. Both works must
-execute simultaneously. Under heavy load this is realistic — the commit
-specifically says "In high-load situations, they are queued but may not
-have chance to be executed until the CPUs are released."
+**Step 8.2: Trigger Conditions**
+- Trigger: Channel context change (width change or radar detection)
+  while ROC is active
+- Likelihood: Moderate - occurs during DFS, bandwidth negotiation, or
+  regulatory changes that happen to coincide with P2P discovery or off-
+  channel management frames
+- Not directly triggered by unprivileged users (requires wireless state
+  machine interaction)
 
-**Step 8.3**: **Failure mode: DEADLOCK → system hang**. Severity:
-**CRITICAL** — the system becomes unresponsive.
+**Step 8.3: Failure Mode**
+- Driver/mac80211 state desynchronization
+- ROC operations fail silently or behave unpredictably
+- P2P connection failures
+- Dangling ROC state may cause subsequent operations to fail or produce
+  unexpected behavior
+- Severity: **MEDIUM-HIGH** (functional failure, not crash, but can
+  break WiFi connectivity features)
 
-**Step 8.4**:
-- Benefit: VERY HIGH — prevents deadlock/hang on popular hardware
-- Risk: VERY LOW — 1-line change, removing a sync variant that was
-  causing the deadlock
-- Ratio: Extremely favorable
+**Step 8.4: Risk-Benefit**
+- Benefit: Fixes real state inconsistency in a widely-used WiFi driver
+- Risk: Extremely low - 2 lines, guarded by `if (phy->roc_vif)` check,
+  calls well-tested existing function
+- Ratio: Very favorable
+
+---
 
 ## PHASE 9: FINAL SYNTHESIS
 
-**Evidence FOR backporting:**
-- Fixes a real deadlock (ABBA pattern) verified through code analysis
-- 1-line fix, obviously correct, minimal regression risk
-- Affects widely-used WiFi hardware (MT7921/MT7922/MT7925)
-- Tested by Canonical engineer (Ubuntu LTS relevance)
-- Accepted by subsystem maintainer
-- Buggy code exists in stable trees v6.6+
-- Failure mode is system hang (CRITICAL)
-- Author is from MediaTek (chip vendor, deep domain expertise)
+**Step 9.1: Evidence Compilation**
 
-**Evidence AGAINST backporting:**
-- None significant
+FOR backporting:
+- Fixes a real state desynchronization bug between driver and mac80211
+- 2-line fix, obviously correct, minimal risk
+- Written by the mt76 subsystem maintainer/author (Felix Fietkau)
+- Follows the established pattern used by all other chanctx functions
+- Self-contained, no dependencies on other patches
+- Applies cleanly to v6.14+ stable trees
+- mt76 is a widely-used WiFi driver
 
-**Stable rules checklist:**
-1. Obviously correct and tested? **YES** — 1-line change, independently
-   tested
-2. Fixes a real bug? **YES** — deadlock under high load
-3. Important issue? **YES** — system deadlock/hang (CRITICAL)
-4. Small and contained? **YES** — 1 line in 1 file
-5. No new features? **YES** — pure bug fix
-6. Applies to stable? **YES** — clean apply expected for v6.6+
+AGAINST backporting:
+- No crash/panic, no data corruption - the bug causes functional issues
+  (ROC state desync)
+- No user reports (no Reported-by tag)
+- Part of a larger series (other patches in series not evaluated)
+
+UNRESOLVED:
+- Could not access mailing list discussion due to anti-bot protection
+- Could not verify if other patches in the series are also being
+  considered
+
+**Step 9.2: Stable Rules Checklist**
+1. Obviously correct and tested? **YES** - trivial 2-line check, follows
+   existing pattern, by subsystem maintainer
+2. Fixes a real bug? **YES** - state desync between driver and mac80211
+   during ROC
+3. Important issue? **MEDIUM-HIGH** - WiFi functionality failure, not
+   crash
+4. Small and contained? **YES** - 2 lines in 1 file
+5. No new features? **YES** - purely a bug fix
+6. Can apply to stable? **YES** - clean apply to v6.14+
+
+**Step 9.3: Exception Categories**
+Not an exception category; this is a standard bug fix.
+
+**Step 9.4: Decision**
+The fix is small, surgical, obviously correct, written by the subsystem
+maintainer, and fixes a real state inconsistency bug in a widely-used
+WiFi driver. The risk is minimal and the benefit is clear.
+
+---
 
 ## Verification
 
-- [Phase 1] Parsed tags: Tested-by from Canonical, maintainer SOB from
-  Felix Fietkau
-- [Phase 2] Diff analysis: 1-line change in
-  `mt792x_pm_power_save_work()`, `cancel_delayed_work_sync` →
-  `cancel_delayed_work`
-- [Phase 3] git blame: buggy code from commit c21a7f9f406bba (June
-  2023), code refactoring that moved runtime-PM code to mt792x-lib
-- [Phase 3] `git merge-base --is-ancestor`: confirmed code is in v6.6
-  but NOT in v6.1
-- [Phase 5] Traced deadlock chain: mac_work→mt792x_mutex_acquire→mt76_co
-  nnac_pm_wake→cancel_delayed_work_sync(&ps_work) vs
-  ps_work→cancel_delayed_work_sync(&mac_work)
-- [Phase 5] Verified `dev->mt76.wq` is `alloc_ordered_workqueue`
-  (mac80211.c line 733) and mac_work uses ieee80211's workqueue
-  (different queues → parallel execution possible)
-- [Phase 5] Verified `mt76_connac_power_save_sched` at line 62-83 of
-  mt76_connac_mac.c schedules ps_work, confirming the scheduling path
-- [Phase 6] Confirmed fix applies to v6.6+ stable trees
-- [Phase 7] mt76 is a widely used WiFi driver subsystem
-- [Phase 8] Failure mode: system deadlock/hang, severity CRITICAL
+- [Phase 1] Parsed tags: Link to patch.msgid.link, SOB by Felix Fietkau
+  (mt76 maintainer)
+- [Phase 2] Diff analysis: +3 lines (2 logic + 1 blank) in
+  `mt76_change_chanctx()`, adds ROC abort guard
+- [Phase 2] Verified `__mt76_set_channel()` at mac80211.c:1045 sets
+  `phy->offchannel = offchannel`, confirming the bug mechanism
+- [Phase 3] git blame: `mt76_change_chanctx` introduced by commit
+  `82334623af0cd` (v6.14) by Felix Fietkau
+- [Phase 3] `mt76_abort_roc` introduced by `a8f424c1287cc` (v6.14),
+  declared in mt76.h line 1586
+- [Phase 3] Confirmed `b36d55610215a` (EXPORT_SYMBOL_GPL for abort_roc)
+  is NOT in v6.14 but not needed since abort_roc is declared in mt76.h
+- [Phase 3] Confirmed patch is self-contained: all referenced
+  functions/fields exist in v6.14
+- [Phase 4] UNVERIFIED: Could not access lore.kernel.org or b4 dig
+  results due to anti-bot protection
+- [Phase 5] Verified all 5 other chanctx functions call
+  `mt76_abort_scan()` - this fix adds the analogous ROC abort
+- [Phase 5] Verified `mt76_abort_roc` cancels work, locks mutex, calls
+  `mt76_roc_complete`, unlocks - proper cleanup
+- [Phase 6] `82334623af0cd` is in v6.14 (confirmed via `git merge-base
+  --is-ancestor`)
+- [Phase 6] v6.14 `mt76_change_chanctx` code is identical to pre-patch
+  v7.0 - clean apply
+- [Phase 8] Failure mode: state desynchronization causing ROC/P2P
+  failures, severity MEDIUM-HIGH
 
 **YES**
 
- drivers/net/wireless/mediatek/mt76/mt792x_mac.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/wireless/mediatek/mt76/channel.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_mac.c b/drivers/net/wireless/mediatek/mt76/mt792x_mac.c
-index 71dec93094ebd..888e5a5056731 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_mac.c
-@@ -375,7 +375,7 @@ void mt792x_pm_power_save_work(struct work_struct *work)
- 	}
- 
- 	if (!mt792x_mcu_fw_pmctrl(dev)) {
--		cancel_delayed_work_sync(&mphy->mac_work);
-+		cancel_delayed_work(&mphy->mac_work);
+diff --git a/drivers/net/wireless/mediatek/mt76/channel.c b/drivers/net/wireless/mediatek/mt76/channel.c
+index 2b705bdb7993c..a6e45b8d63d6b 100644
+--- a/drivers/net/wireless/mediatek/mt76/channel.c
++++ b/drivers/net/wireless/mediatek/mt76/channel.c
+@@ -88,6 +88,9 @@ void mt76_change_chanctx(struct ieee80211_hw *hw,
+ 			 IEEE80211_CHANCTX_CHANGE_RADAR)))
  		return;
- 	}
- out:
+ 
++	if (phy->roc_vif)
++		mt76_abort_roc(phy);
++
+ 	cancel_delayed_work_sync(&phy->mac_work);
+ 
+ 	mutex_lock(&dev->mutex);
 -- 
 2.53.0
 
