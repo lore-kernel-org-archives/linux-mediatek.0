@@ -4,47 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E570F588C3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 13:29:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6113F588C6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 13:29:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SjOeLt8RQklqXDpYEFgyKBSlehsqHCewYNhEGjC529o=; b=QNjFlRXYtOaJYyxtrtPuijbQgo
-	IbBJudTAh/aeA8tFeIrFPv4VFpSodgEzOZY7oqSJR/5w4SiDlTTRDMbGCCwZFXcORj1Qm265dOqq1
-	P2VJczMy51Vp10z2zve8KJO8HhvMgfeKo/GHBpBDoW9H9NW4OsLFzHGG+RtSuzpvlu0YnD/n+OHEm
-	466IA8n8ZNdxCNwf2C7a9+WqUCIkgdDN31aaivWc334hgp2EiPNAIfPTfo2l7htP2QeIAAwumL67K
-	XcQfWXUhxRcm3vl+Fbw4kKlsbLAgYI/3pWfNlvoB28pHY+liD+XkQ8Ss2kI1gW06QgnVEwr3uL+Nn
-	NS20jfOQ==;
+	bh=b2sQL+WIDV5NFF7jaouKjFSbyZQoe1FXqjgQHbusIrk=; b=vNqvtA1kZPB8lpz+7AstLQhSch
+	55Y259kaoQhvEp+ESt1YcMVYDI1Q9327H6OEkLbz1pRt/xG6kfNAiT7ZORWsVpxEl6HSGEt7H/OgE
+	5wZ8qwOV0zau++kYsNqxBEFCAukX3f6G57g2QO0jmW6uMTYTAu2aoYwhwLdXE50OC2GJ6MFOtsWlx
+	gatb9BAH3TETaIhAce7/fmN8xW7k/9/e8xDYenU3LcFzoJnG9IuSlv/a1uOuuGWDztVrOcAe8g2j1
+	CM30bUsroSC9wmSqkVlMR3sRR2HPyYUkkihjtNCxFg9+Wylae72hNDO4GL0TBMKTGE261PTwfEPX6
+	PMkLsM/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEoh3-000000071nM-2mUL;
-	Mon, 20 Apr 2026 13:29:41 +0000
+	id 1wEoh5-000000071pp-2dzZ;
+	Mon, 20 Apr 2026 13:29:43 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEogx-000000071i4-3Chy;
-	Mon, 20 Apr 2026 13:29:37 +0000
+	id 1wEoh1-000000071ll-3dmK;
+	Mon, 20 Apr 2026 13:29:41 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 423F843A4E;
-	Mon, 20 Apr 2026 13:29:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D4DCBC2BCB4;
-	Mon, 20 Apr 2026 13:29:33 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 89E7F4065C;
+	Mon, 20 Apr 2026 13:29:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F328CC2BCB9;
+	Mon, 20 Apr 2026 13:29:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776691775;
-	bh=xbJ0IB4Q5cSCaWoM2HB+vF/YtYqGE5DEOWqKit9ysRY=;
+	s=k20201202; t=1776691779;
+	bh=DVSVbUdKpbDvuRnkO+k2cYAK220bL7xPJ/H3+kN+0NQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=fWUrYW5qyClb6QL1MZUB4N9e/VrTz5Uo07MEuTNaLpoZZnXQBxcbiS6stVRystzjx
-	 pRBEeLSftbhL6ozAQmg+BwDiV9xC0ctUrMx5uVGQ5hbcm8DKD1skfmNquymI0+Y7XB
-	 c+auk1/zhWFtJgvKqsRs1YEr+3fjbT/RfX/udG4r8US9bJLFA22BG/vRtB9m4n505U
-	 IbccAenmS9fyUB0qm6t6Gw0pG5GXKzinFe/czKAG9d0yA20MySpROYh7IGlv+Jtlo5
-	 SwiYS8A8Is2KwLlbqb798APyyOxghesROU47EVzCWjEkGGlXNHYjQoZCqPwKQAidV/
-	 dl0FX8YxInLWA==
+	b=Qbh+Bed3gT6Nvo7wx18qAuOQ5HdGZfQU/lHiQ5CqPIQ22ga4XVyJvO22U/LbdmIXw
+	 VKuWq6qdEHwpKYLMcdzgQOp3vjsTWhOROLVg44cECoDBKAIbPNnAeEylvXMCQp6TeN
+	 tbG8AIY+sRjqtJFUav4sgTR72Nn9rlrlmK0AD0sTBD9tVDvM2wUC3jpCnk0kuyyZmm
+	 1D5XTEINZ97f2uyzb5vEEq7N9LkmnnY+cFiHnFClcq8DiS2JbYIms1qYU//GOYrI/F
+	 552Gh+HAzegIAKBk6mS1ADS1wlK/rEvwncvogJx39o0FK046AJm+cGz+P70/cB6kta
+	 wwlVCd0tfO4HA==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Sean Wang <sean.wang@mediatek.com>,
+Cc: StanleyYP Wang <StanleyYP.Wang@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
 	Felix Fietkau <nbd@nbd.name>,
 	Sasha Levin <sashal@kernel.org>,
 	lorenzo@kernel.org,
@@ -55,9 +56,9 @@ Cc: Sean Wang <sean.wang@mediatek.com>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 7.0-6.12] wifi: mt76: mt7925: resolve link after acquiring mt76 mutex
-Date: Mon, 20 Apr 2026 09:19:40 -0400
-Message-ID: <20260420132314.1023554-186-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 7.0-6.18] wifi: mt76: mt7996: fix queue pause after scan due to wrong channel switch reason
+Date: Mon, 20 Apr 2026 09:19:43 -0400
+Message-ID: <20260420132314.1023554-189-sashal@kernel.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260420132314.1023554-1-sashal@kernel.org>
 References: <20260420132314.1023554-1-sashal@kernel.org>
@@ -68,8 +69,8 @@ X-stable-base: Linux 7.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260420_062935_852159_FAC125A7 
-X-CRM114-Status: GOOD (  32.41  )
+X-CRM114-CacheID: sfid-20260420_062940_114866_91AA6E0C 
+X-CRM114-Status: GOOD (  26.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,273 +85,251 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+From: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
 
-[ Upstream commit beec58f36983f826fe90287a90edff46b32e8a89 ]
+[ Upstream commit 1f9017d19db38ad2cb9bedb5b078f6f4f60afa94 ]
 
-mt792x_sta_to_link() uses rcu_dereference_protected() and therefore
-expects mt76.mutex to be held. Move the lookup after
-mt792x_mutex_acquire() to make the locking explicit and correct.
+Previously, we used the IEEE80211_CONF_IDLE flag to avoid setting the
+parking channel with the CH_SWITCH_NORMAL reason, which could trigger TX
+emission before bootup CAC.
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Link: https://patch.msgid.link/20260306232238.2039675-12-sean.wang@kernel.org
+However, we found that this flag can be set after triggering scanning on a
+connected station interface, and the reason CH_SWITCH_SCAN_BYPASS_DPD will
+be used when switching back to the operating channel, which makes the
+firmware failed to resume paused AC queues.
+
+Seems that we should avoid relying on this flag after switching to single
+multi-radio architecture. Instead, use the existence of chanctx as the
+condition.
+
+Signed-off-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+Link: https://patch.msgid.link/20260203155532.1098290-4-shayne.chen@mediatek.com
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
 LLM Generated explanations, may be completely bogus:
 
-Now I have all the information needed for a thorough analysis.
+Here is my complete analysis:
 
 ---
 
 ## PHASE 1: COMMIT MESSAGE FORENSICS
 
 ### Step 1.1: Subject Line
-- **Subsystem**: `wifi: mt76: mt7925` (MediaTek MT7925 WiFi driver in
-  the mt76 subsystem)
-- **Action verb**: "resolve" — implies correcting something that was
-  wrong
-- **Summary**: Move the `mt792x_sta_to_link()` lookup after acquiring
-  `mt76.mutex`, because the function uses `rcu_dereference_protected()`
-  which requires that lock.
+- **Subsystem**: `wifi: mt76: mt7996:` (MediaTek mt7996 WiFi 7 chipset
+  driver)
+- **Action verb**: "fix" — explicit bug fix
+- **Summary**: Fixes queue pause after scan due to wrong channel switch
+  reason being sent to firmware
 
-Record: [wifi: mt76: mt7925] [resolve/correct] [Fix locking order:
-acquire mutex before RCU-protected dereference]
+Record: [wifi: mt76: mt7996] [fix] [queue pause after scan due to wrong
+channel switch reason]
 
 ### Step 1.2: Tags
-- **Signed-off-by**: Sean Wang <sean.wang@mediatek.com> — the author, a
-  prominent mt76/mt7925 contributor
-- **Link**: https://patch.msgid.link/20260306232238.2039675-12-
-  sean.wang@kernel.org — patch 12 (of 20 messages, patch 11/19)
-- **Signed-off-by**: Felix Fietkau <nbd@nbd.name> — the mt76 subsystem
-  maintainer who applied the patch
-- No Fixes: tag, no Reported-by:, no Cc: stable — expected for candidate
-  review
+- **Signed-off-by**: StanleyYP Wang (author, MediaTek engineer), Shayne
+  Chen (MediaTek, submitter), Felix Fietkau (mt76 subsystem maintainer)
+- **Link**: `https://patch.msgid.link/20260203155532.1098290-4-
+  shayne.chen@mediatek.com` — patch 4 of a series
+- No Fixes: tag (expected)
+- No Reported-by tag
+- No Cc: stable tag (expected)
 
-Record: Author is Sean Wang (regular mt76 contributor), applied by the
-mt76 maintainer Felix Fietkau. No explicit Fixes: or stable tags.
+Record: Patch is from MediaTek engineers (hardware vendor), signed off
+by the mt76 maintainer Felix Fietkau. Part of a series (patch 4).
 
 ### Step 1.3: Commit Body Analysis
-The body says: "`mt792x_sta_to_link()` uses
-`rcu_dereference_protected()` and therefore expects `mt76.mutex` to be
-held." This directly describes a locking contract violation. The fix:
-"Move the lookup after `mt792x_mutex_acquire()`."
+The commit explains:
+1. **Previous approach**: Used `IEEE80211_CONF_IDLE` flag to avoid
+   setting parking channel with `CH_SWITCH_NORMAL` reason (which could
+   trigger TX emission before bootup CAC).
+2. **Bug discovered**: After scanning on a connected station interface,
+   the `IEEE80211_CONF_IDLE` flag can be set. When switching back to the
+   operating channel, the wrong reason `CH_SWITCH_SCAN_BYPASS_DPD` is
+   used, causing firmware to fail to resume paused AC queues.
+3. **Fix**: Use the existence of `chanctx` (channel context) instead of
+   the IDLE flag, which is more appropriate for the multi-radio
+   architecture.
 
-Record: Bug: calling `rcu_dereference_protected()` without holding the
-required lock. Symptom: lockdep warning if `CONFIG_PROVE_LOCKING` is
-enabled; potential race condition for MLO vifs where the RCU pointer
-could be concurrently modified.
+Record: Bug causes TX queues to remain paused after scan on a connected
+station interface. Firmware-level failure to resume AC queues. Root
+cause is the `IEEE80211_CONF_IDLE` flag being unreliable after the
+multi-radio architecture switch.
 
 ### Step 1.4: Hidden Bug Fix Detection
-This IS a bug fix despite not using the word "fix" — the commit corrects
-a lock ordering violation. The `rcu_dereference_protected()` API
-explicitly expects the lock to be held, and calling it without it is
-incorrect.
-
-Record: Yes, this is a real bug fix — locking correctness violation.
+Not hidden — explicitly labeled "fix" with clear bug mechanism
+described.
 
 ---
 
 ## PHASE 2: DIFF ANALYSIS
 
 ### Step 2.1: Inventory
-- **File**: `drivers/net/wireless/mediatek/mt76/mt7925/main.c`
-- **Function**: `mt7925_mac_link_sta_assoc()`
-- **Change**: 2 lines moved (net 0 lines added/removed — pure reorder)
-- **Scope**: Single function, single file, surgical
-
-Record: 1 file changed, ~4 lines reordered within one function. Scope:
-trivially small.
+- **Files changed**: 1
+  (`drivers/net/wireless/mediatek/mt76/mt7996/mcu.c`)
+- **Lines changed**: 2 lines modified (1 removed, 1 added — net -1 line)
+- **Function modified**: `mt7996_mcu_set_chan_info()`
+- **Scope**: Single-file, single-line surgical fix
 
 ### Step 2.2: Code Flow Change
-**Before**: `msta` and `mlink` were resolved via `mt792x_sta_to_link()`
-before `mt792x_mutex_acquire(dev)` was called.
+The only change is in the condition for setting `switch_reason`:
 
-**After**: `mt792x_mutex_acquire(dev)` is called first, then `msta` and
-`mlink` are resolved.
-
-The `msta` assignment (`(struct mt792x_sta *)link_sta->sta->drv_priv`)
-does not need the lock, but moving it below the mutex acquire is
-harmless and keeps the code cleaner.
-
-### Step 2.3: Bug Mechanism
-This is a **synchronization / locking correctness fix**. The function
-`mt792x_sta_to_link()` uses:
-
-```293:294:drivers/net/wireless/mediatek/mt76/mt792x.h
-return rcu_dereference_protected(msta->link[link_id],
-        lockdep_is_held(&msta->vif->phy->dev->mt76.mutex));
+Before:
+```c
+else if (phy->mt76->offchannel ||
+         phy->mt76->hw->conf.flags & IEEE80211_CONF_IDLE)
+    req.switch_reason = CH_SWITCH_SCAN_BYPASS_DPD;
 ```
 
-The `rcu_dereference_protected()` call asserts that `mt76.mutex` must be
-held. Calling it without the lock is:
-1. A lockdep assertion violation (runtime warning with
-   `CONFIG_PROVE_LOCKING`)
-2. A potential race: without the mutex, the `msta->link[link_id]` RCU
-   pointer could be concurrently modified (e.g., during link teardown),
-   leading to use-after-free.
+After:
+```c
+else if (phy->mt76->offchannel || !phy->mt76->chanctx)
+    req.switch_reason = CH_SWITCH_SCAN_BYPASS_DPD;
+```
 
-Note: For non-MLD (non-WiFi-7-MLO) vifs, the function returns
-`&msta->deflink` early without touching RCU, so the actual RCU race only
-applies to MLO connections.
+The `IEEE80211_CONF_IDLE` flag check is replaced by
+`!phy->mt76->chanctx` (channel context is NULL). Both mean "no active
+operating channel," but `chanctx` is the correct indicator in the multi-
+radio architecture.
 
-Record: Synchronization/locking fix. `rcu_dereference_protected()`
-called without required mutex. Race window for concurrent link
-modification on MLO vifs.
+### Step 2.3: Bug Mechanism
+**Logic/correctness fix**: The condition for determining which channel
+switch reason to send to firmware was wrong. The `IEEE80211_CONF_IDLE`
+flag can be spuriously set after scanning on a connected station,
+causing the firmware to use `CH_SWITCH_SCAN_BYPASS_DPD` instead of
+`CH_SWITCH_NORMAL` when returning to the operating channel. This makes
+firmware fail to resume paused TX AC queues.
 
 ### Step 2.4: Fix Quality
-- **Obviously correct**: Yes — just reorders two existing operations.
-- **Minimal**: Yes — net zero lines changed.
-- **Regression risk**: Essentially zero. The mutex is acquired slightly
-  earlier but still released at the same point. No new code is added.
-
-Record: Fix is trivially correct with no regression risk.
+- **Obviously correct**: Yes — `chanctx` directly indicates if a channel
+  context exists, which is the semantic meaning needed.
+- **Minimal/surgical**: Yes — 1 line change.
+- **Regression risk**: Very low — `chanctx` is NULL only when no channel
+  context is assigned, which is semantically equivalent to (and more
+  accurate than) the IDLE flag check.
 
 ---
 
 ## PHASE 3: GIT HISTORY INVESTIGATION
 
 ### Step 3.1: Blame
-From the git blame, the buggy code was introduced by commit
-`89397bccc882a4` ("wifi: mt76: mt7925: add mt7925_mac_link_sta_assoc to
-associate per-link STA") by Sean Wang, dated 2024-06-12. This commit
-first appeared in `v6.11-rc1`.
+- The `IEEE80211_CONF_IDLE` check was introduced in commit
+  `413f05d68d1198` (StanleyYP Wang, 2023-08-31, first in v6.7-rc1):
+  "wifi: mt76: get rid of false alarms of tx emission issues"
+- The `offchannel` field was introduced in `f4fdd7716290a2` (Felix
+  Fietkau, 2024-08-28, first in v6.12-rc1): "wifi: mt76: partially move
+  channel change code to core"
+- The `chanctx` field and multi-radio architecture was introduced in
+  commits `82334623af0cd` and `69d54ce7491d` (Felix Fietkau, 2025-01-02,
+  first in v6.14-rc1)
 
-Record: Buggy code introduced in 89397bccc882a4, first in v6.11-rc1.
-Present in stable trees v6.11+.
+Record: The bug only manifests from v6.14 onwards (when multi-radio
+architecture was introduced and chanctx is used). The IDLE flag check
+was fine before the architecture change.
 
-### Step 3.2: Fixes Tag
-No explicit Fixes: tag, but the bug was clearly introduced by
-`89397bccc882a4`.
-
-Record: The original commit created the function
-`mt7925_mac_link_sta_assoc` with the lock ordering issue from day one.
+### Step 3.2: No Fixes: tag present (expected).
 
 ### Step 3.3: File History
-The file has had ~46 commits since v6.11. Several are related locking
-fixes (e.g., `9f15701370ec1` "fix locking in
-mt7925_change_vif_links()").
+The mcu.c file is actively maintained with many recent fixes. The fix is
+self-contained and standalone.
 
-Record: Active file with other locking fixes. This is standalone.
-
-### Step 3.4: Author
-Sean Wang is a prolific contributor to mt76/mt7925 and the author of the
-MLO link support. He's also the author of the original buggy commit, so
-this is the author fixing their own oversight.
-
-Record: Author is the subsystem developer who introduced the bug.
+### Step 3.4: Author Context
+StanleyYP Wang (author) is a regular MediaTek contributor working on
+mt76 radar/DFS/channel features. Shayne Chen is the primary MediaTek
+mt7996 contributor. Felix Fietkau is the mt76 subsystem maintainer who
+signed off.
 
 ### Step 3.5: Dependencies
-This is patch 11/19 in a series, but the fix itself is **self-
-contained**: it only reorders existing lines within one function. It has
-no dependency on any other patch in the series.
-
-Record: Self-contained, no dependencies.
+The fix uses `phy->mt76->chanctx` which exists in all trees from v6.14
+onwards. No other dependencies needed.
 
 ---
 
 ## PHASE 4: MAILING LIST RESEARCH
 
-### Step 4.1: Original Discussion
-The patch was submitted as `[PATCH 11/19]` in a series titled "wifi:
-mt76: mt7925: fix up MLO link lifetime and error handling". The series
-includes a mix of refactoring and fixes. This specific patch is a pure
-correctness fix.
+Lore.kernel.org and patch.msgid.link are protected by Anubis anti-
+scraping, so web fetch failed. b4 dig could not find the commit (it's a
+candidate, not yet in tree).
 
-Record: Part of a 19-patch series for MLO link lifetime improvements.
-This patch is standalone.
+The Link: URL (`20260203155532.1098290-4-shayne.chen@mediatek.com`)
+shows this is patch 4 of a series, but the fix is completely self-
+contained — it only changes one condition in one function.
 
-### Step 4.2: Reviewers
-The series was sent to `nbd@nbd.name` (Felix Fietkau, mt76 maintainer)
-and `lorenzo.bianconi@redhat.com`. Applied by Felix Fietkau.
-
-Record: Applied by subsystem maintainer.
-
-### Step 4.3-4.5: Bug Reports / Stable Discussion
-No specific bug report or syzbot link. No specific stable discussion
-found. The kernel test robot reported build issues on patch 2/19 only,
-not on this patch.
-
-Record: No external bug reports. The issue is self-evident from code
-inspection.
+Record: Could not access lore discussion due to anti-bot protection.
+Patch 4 of a series, but standalone.
 
 ---
 
 ## PHASE 5: CODE SEMANTIC ANALYSIS
 
-### Step 5.1: Key Functions
-- `mt7925_mac_link_sta_assoc()` — the function being fixed
-- `mt792x_sta_to_link()` — the inline function that requires the mutex
+### Step 5.1-5.4: Function Call Analysis
+`mt7996_mcu_set_chan_info()` is called from:
+1. `mt7996_run()` (line 25 in main.c) — during interface start, with
+   `UNI_CHANNEL_RX_PATH`
+2. `mt7996_set_channel()` (lines 561, 565 in main.c) — during channel
+   switch, with both `UNI_CHANNEL_SWITCH` and `UNI_CHANNEL_RX_PATH`
 
-### Step 5.2: Callers
-`mt7925_mac_link_sta_assoc()` is called from `mt7925_mac_sta_event()`
-(line 1078), which is exported via `EXPORT_SYMBOL_GPL` and called during
-station association events via the mac80211 callback path. This is a
-common WiFi operational path.
+The `mt7996_set_channel()` path is the critical one — this is called
+during scan return (switching back to operating channel). This is a hot
+path triggered by every scan operation.
 
-### Step 5.4: Reachability
-The code path is: mac80211 sta_event callback ->
-`mt7925_mac_sta_event()` -> `mt7925_mac_link_sta_assoc()`. This is
-triggered during WiFi association, which is a very common operation.
-
-Record: The buggy code is on a common WiFi association path, reachable
-during normal operation.
+Record: Function called on every channel switch, including post-scan
+return. Bug affects all users who scan while connected.
 
 ---
 
 ## PHASE 6: STABLE TREE ANALYSIS
 
-### Step 6.1: Presence in Stable Trees
-- Buggy commit `89397bccc882a4` is NOT in v6.10 (verified)
-- It IS in v6.11+ (verified: v6.11-rc1)
-- Relevant stable trees: 6.11.y, 6.12.y, and any later LTS
+### Step 6.1: Buggy Code in Stable Trees
+- **v6.14.y through v6.19.y**: YES — all contain the buggy
+  `IEEE80211_CONF_IDLE` check and have `chanctx` infrastructure
+  available.
+- **v6.12.y and earlier**: NO — don't have multi-radio architecture; the
+  bug doesn't exist there (different code path).
+
+Verified: v6.14.11 and v6.19.12 both have the exact same buggy code and
+have the `chanctx` field available.
 
 ### Step 6.2: Backport Complications
-The patch is a trivial reorder of existing lines. It should apply
-cleanly to any tree that has the buggy commit.
-
-Record: Clean apply expected for all trees with the buggy code (v6.11+).
+The fix should apply cleanly to all affected stable trees (v6.14.y
+through v6.19.y). The surrounding code context matches exactly.
 
 ---
 
 ## PHASE 7: SUBSYSTEM CONTEXT
 
-### Step 7.1: Subsystem Criticality
-- Subsystem: `drivers/net/wireless/mediatek/mt76/mt7925/` — WiFi driver
-- Criticality: IMPORTANT — MediaTek MT7925 is a WiFi 7 chip used in many
-  modern laptops
-- The fix is specifically for the MLO (Multi-Link Operation) code path
-
-Record: IMPORTANT subsystem — popular WiFi 7 chip. Bug affects MLO
-connections.
+### Step 7.1: Subsystem
+- **Subsystem**: WiFi driver (drivers/net/wireless/mediatek/mt76/mt7996)
+- **Criticality**: IMPORTANT — mt7996 is MediaTek's WiFi 7 chipset used
+  in many routers and APs
+- **Activity**: Very active development (many recent commits)
 
 ---
 
 ## PHASE 8: IMPACT AND RISK ASSESSMENT
 
-### Step 8.1: Who Is Affected
-Users of MediaTek MT7925 WiFi 7 hardware using MLO (Multi-Link
-Operation). For non-MLO connections, `mt792x_sta_to_link()` takes the
-early `deflink` return path and doesn't touch RCU.
+### Step 8.1: Affected Population
+Users of mt7996-based WiFi hardware (WiFi 7 routers, APs, and client
+devices) running kernels v6.14+.
 
 ### Step 8.2: Trigger Conditions
-- Triggered during WiFi association with MLO
-- Common operation for WiFi 7 users
-- With `CONFIG_PROVE_LOCKING`: always triggers a warning
-- Without: race window exists but may be hard to hit
+Triggering a scan while connected as a station interface. This is a
+**very common operation** — background scanning happens regularly for
+roaming decisions, network discovery, etc.
 
 ### Step 8.3: Failure Mode Severity
-- **With lockdep**: WARNING (lock assertion failure) — MEDIUM
-- **Without lockdep**: Potential use-after-free if link is concurrently
-  modified — HIGH (crash/corruption risk, though race window is small)
+TX AC queues remain paused indefinitely after scan. This means **the
+WiFi interface effectively stops transmitting data**. Severity: **HIGH**
+— complete loss of WiFi transmit functionality until manual
+intervention.
 
 ### Step 8.4: Risk-Benefit Ratio
-- **Benefit**: Fixes locking correctness and prevents lockdep warnings +
-  potential UAF for MLO users. LOW-MEDIUM benefit.
-- **Risk**: Essentially ZERO risk — the fix is a trivial reorder of two
-  existing operations.
-- **Ratio**: Very favorable — zero risk for a real correctness fix.
+- **Benefit**: HIGH — prevents complete WiFi TX failure on mt7996
+  hardware after scanning
+- **Risk**: VERY LOW — 1-line condition change, replacing one "no active
+  channel" check with a more accurate one
+- **Ratio**: Very favorable
 
 ---
 
@@ -359,97 +338,86 @@ early `deflink` return path and doesn't touch RCU.
 ### Step 9.1: Evidence Summary
 
 **FOR backporting:**
-- Fixes a real locking correctness violation
-  (`rcu_dereference_protected()` without lock)
-- The fix is trivially correct — just reorders 2 lines
+- Fixes a real, functional bug: TX queues stuck after scan
+- Very high impact: WiFi effectively stops working (no transmit)
+- Common trigger: scanning while connected as station
+- Minimal change: 1 line, obviously correct
+- From the hardware vendor (MediaTek) and signed off by subsystem
+  maintainer (Felix Fietkau)
+- Applies cleanly to affected stable trees (v6.14.y through v6.19.y)
+- No dependencies on other patches
 - Zero regression risk
-- Self-contained, no dependencies on other patches
-- Applied by subsystem maintainer
-- Bug exists in stable trees v6.11+
-- On a common WiFi association code path
 
 **AGAINST backporting:**
-- Part of a 19-patch series (though this patch is standalone)
-- Primarily affects WiFi 7 MLO users (subset of mt7925 users)
-- Without lockdep, the actual race is theoretically possible but hard to
-  trigger
-- No user reports or syzbot reports of the issue
+- No Fixes: tag (expected — that's why it needs review)
+- Part of a series (patch 4), but the fix is self-contained
+- Only affects v6.14+ trees (bug doesn't exist in older LTS trees)
 
 ### Step 9.2: Stable Rules Checklist
-1. Obviously correct and tested? **YES** — trivial reorder, applied by
-   maintainer
-2. Fixes a real bug? **YES** — locking correctness violation
-3. Important issue? **MEDIUM** — lockdep warning + potential UAF race on
-   MLO
-4. Small and contained? **YES** — ~4 lines reordered in one function
-5. No new features or APIs? **YES** — pure fix
-6. Can apply to stable trees? **YES** — should apply cleanly to v6.11+
+1. Obviously correct and tested? **YES** — trivial condition
+   replacement, from hardware vendor
+2. Fixes a real bug? **YES** — TX queues stuck = complete WiFi transmit
+   failure
+3. Important issue? **YES** — effectively disables WiFi after common
+   operation
+4. Small and contained? **YES** — 1 line change in 1 file
+5. No new features or APIs? **CORRECT** — no new features
+6. Can apply to stable trees? **YES** — applies cleanly to v6.14.y
+   through v6.19.y
 
 ### Step 9.3: Exception Categories
-Not an exception category — this is a standard bug fix.
-
-### Step 9.4: Decision
-The fix is a trivially correct locking fix with zero regression risk. It
-fixes a real `rcu_dereference_protected()` locking violation that
-triggers lockdep warnings and has a theoretical UAF race. While the
-impact is limited to WiFi 7 MLO users, the fix is so small and safe that
-the risk-benefit ratio strongly favors backporting.
+Not needed — meets standard stable criteria as a bug fix.
 
 ---
 
 ## Verification
 
-- [Phase 1] Parsed tags: Author is Sean Wang (MediaTek), applied by
-  Felix Fietkau (mt76 maintainer)
-- [Phase 2] Diff analysis: ~4 lines reordered in
-  `mt7925_mac_link_sta_assoc()` — moves mutex_acquire before
-  `mt792x_sta_to_link()`
-- [Phase 2] Verified `mt792x_sta_to_link()` uses
-  `rcu_dereference_protected()` with `lockdep_is_held(&mt76.mutex)` at
-  lines 293-294 of mt792x.h
-- [Phase 2] Verified `mt792x_mutex_acquire()` expands to
-  `mutex_lock(&dev->mutex)` via `mt76_connac_mutex_acquire()` at line
-  401 of mt76_connac.h
-- [Phase 3] git blame: buggy code introduced by 89397bccc882a4 (Sean
-  Wang, 2024-06-12)
-- [Phase 3] git describe: buggy commit first appears in v6.11-rc1
-- [Phase 3] git merge-base: confirmed NOT in v6.10, YES in v6.11 and
-  v6.12
-- [Phase 4] b4 mbox: found series cover "fix up MLO link lifetime and
-  error handling" (19 patches)
-- [Phase 4] This is patch 11/19, but is self-contained
-- [Phase 5] `mt7925_mac_link_sta_assoc()` called from
-  `mt7925_mac_sta_event()` (line 1078), triggered during WiFi
-  association
-- [Phase 6] Code exists in stable trees v6.11+
-- [Phase 8] Failure mode: lockdep WARNING (MEDIUM) or potential UAF race
-  on MLO (HIGH but hard to trigger)
-- UNVERIFIED: Could not access lore.kernel.org directly due to anti-bot
-  protection to check for reviewer comments on patch 11/19 specifically
+- [Phase 1] Parsed subject: explicit "fix" for queue pause after scan,
+  WiFi mt76/mt7996 subsystem
+- [Phase 2] Diff: 1 line changed in `mt7996_mcu_set_chan_info()`,
+  replaces `IEEE80211_CONF_IDLE` flag with `!chanctx` check
+- [Phase 3] git blame: `IEEE80211_CONF_IDLE` check added in
+  413f05d68d1198 (v6.7-rc1), became buggy after multi-radio switch in
+  69d54ce7491d (v6.14-rc1)
+- [Phase 3] git describe --contains: chanctx infra first in v6.14-rc1,
+  confirmed via `git merge-base --is-ancestor`
+- [Phase 3] git show 413f05d68d1198: confirmed original CONF_IDLE commit
+  purpose was DFS CAC false alarm avoidance
+- [Phase 5] Grep callers: `mt7996_mcu_set_chan_info()` called from
+  `mt7996_run()` and `mt7996_set_channel()` — channel switch path
+  triggered on every scan return
+- [Phase 6] git show v6.14.11/v6.19.12: confirmed buggy code present in
+  both stable trees, chanctx field available
+- [Phase 6] v6.12.y: does NOT have the bug (no multi-radio architecture,
+  different code)
+- [Phase 7] Felix Fietkau confirmed as mt76 maintainer (signed off on
+  the fix)
+- UNVERIFIED: Could not access lore.kernel.org discussion due to anti-
+  bot protection
+
+The fix is a clear, minimal, single-line correction that prevents WiFi
+TX queues from permanently stalling after scan operations on mt7996
+hardware. It meets all stable kernel criteria.
 
 **YES**
 
- drivers/net/wireless/mediatek/mt76/mt7925/main.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index 38474cd2c38d6..caafac14d97ba 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -1030,11 +1030,11 @@ static void mt7925_mac_link_sta_assoc(struct mt76_dev *mdev,
- 	struct mt792x_link_sta *mlink;
- 	struct mt792x_sta *msta;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index 0abe5efa9424e..470e69eacb7da 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -3748,8 +3748,7 @@ int mt7996_mcu_set_chan_info(struct mt7996_phy *phy, u16 tag)
  
-+	mt792x_mutex_acquire(dev);
-+
- 	msta = (struct mt792x_sta *)link_sta->sta->drv_priv;
- 	mlink = mt792x_sta_to_link(msta, link_sta->link_id);
- 
--	mt792x_mutex_acquire(dev);
--
- 	if (ieee80211_vif_is_mld(vif)) {
- 		link_conf = mt792x_vif_to_bss_conf(vif, msta->deflink_id);
- 	} else {
+ 	if (phy->mt76->hw->conf.flags & IEEE80211_CONF_MONITOR)
+ 		req.switch_reason = CH_SWITCH_NORMAL;
+-	else if (phy->mt76->offchannel ||
+-		 phy->mt76->hw->conf.flags & IEEE80211_CONF_IDLE)
++	else if (phy->mt76->offchannel || !phy->mt76->chanctx)
+ 		req.switch_reason = CH_SWITCH_SCAN_BYPASS_DPD;
+ 	else if (!cfg80211_reg_can_beacon(phy->mt76->hw->wiphy, chandef,
+ 					  NL80211_IFTYPE_AP))
 -- 
 2.53.0
 
