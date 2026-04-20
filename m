@@ -4,56 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75B23F36C41
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 08:08:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53AF5F36C51
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 08:08:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=uIxFM4cBCmTZ3VQvCVMagv4DMQBxu6L9h1p7hNWUSU4=; b=2SlOL3yIVz1P7V
-	NTD2mh09IqStZX+5KV6NneeZKHOh1icqG5ZFVHAKt3vN8xSQEXxw3VlNkRAMzr4jacD8Nmo2VrrmU
-	56S8GLiB8qMKr2qgtvRYCjfteUsOPfgT//5t7F0BL1Rb5pKVSELQFUGZo1HG/AFYB6Uld3G3lSi93
-	cg/o1RHjU1R2oI1jNshkfBLUgknUdNaGvIXVnGgkXblKWgj6ZPYc1meteH8EFBUBp0EjSLMAJ29kq
-	MhyuJBQMzYE4TDoeP/OuzPxWIVJkrS+Z9JqufZD2wC++e2DMqesqu2Wx+A0Atcds1TwDVhGOfaR/V
-	NPllEWGb9SbbEKqmwYnw==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YbeDGJfbuvHJaJysemq1yCV8QyeKLOMPiVz3t8bW8s4=; b=VN/U+B+c5llgIxkBJmozwte4hn
+	NLUXKOZLFJzS/X+uKEo9Xk+ToGRG+/fUsd0bTz6wbUmDKIFImzAiu3SW/adlsxq3YtaXWtS/bdM4h
+	6ZS8y9tMLixsV24tpWGF+C7uW8vwyYNTy6nyYAqlxbcz+WUF2+HAt2cEpVlEqTEm+tMz2HNtw9LiE
+	5DJFOPhK3ghrtJooifTS3Z57qqy3f8Xz6yR/sgk8aDef7sP/4ZiYiqRbRKVI+KZ06+hEHa3Y1mm+y
+	obYZSohu9Pwuh+BMpfWpN4d1ettYJ3rHDiY2u8zUrLjmR16FZCP1QXbQIimDuEVk4BoYyHfHjqT+i
+	4xBNtw4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEjfu-00000006Zxf-2uGc;
-	Mon, 20 Apr 2026 08:08:10 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wEjfz-00000006Zzc-1C5U;
+	Mon, 20 Apr 2026 08:08:15 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEjfs-00000006Zwe-0qnG;
-	Mon, 20 Apr 2026 08:08:08 +0000
+	id 1wEjft-00000006ZxD-24Ru;
+	Mon, 20 Apr 2026 08:08:10 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1676860055;
-	Mon, 20 Apr 2026 08:08:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6EC22C19425;
-	Mon, 20 Apr 2026 08:08:05 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 9274143CE7;
+	Mon, 20 Apr 2026 08:08:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 20CADC2BCB3;
+	Mon, 20 Apr 2026 08:08:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776672485;
-	bh=0MlFO6P0m8/NK/SYcNlmOcWF1m2ZQhsuX9z7XL/3XC0=;
-	h=From:Subject:Date:To:Cc:From;
-	b=ZlMNJzI7t0Y0qGiYo1CDXuQmn4Z9R5ZnKzV1cF3a8WLcnF6jN9IUeymCJEf26bo9f
-	 54Zl2NwTEWKJhqVq2ZITZPoTi2M8Ji84oEjt3MXZjPKtUH0FYA1ANzz4dNa7JDYsBC
-	 hpPCbiaTotKQH82YNRxEn+6kc3gtXfqkpsAb+v1ssf2GihHIHAlDmTftjwRVpLVvMB
-	 Mr35MGZV39COFzv57XODIZkzVeWj+EIaMQEVCoonpkGJueu7ORqjbguxmyFIAM0WW4
-	 xZEk/U1A3gznpIApYsWDaZ6Ew0gduJBWnyJUer+dG8tnLbNuL728dCGaVu+zvT6oa3
-	 t8ZXtjaSBDLUw==
+	s=k20201202; t=1776672488;
+	bh=iJfYHjbtQcWXulEhPUnNrNVT7wdpLyZo8wc0yxlsesk=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=e+9urV6K58ahpj9nD4gByGJBfQ2yw6edYmFol3cpas1UUf/+DDiIyXWyXqxNpydt1
+	 yuJz8wOQZfrtejlLFgX2wClYdI9997yMSMZRu7QaAEhH7ZHub6Tim87qKTnOX5CD1o
+	 S6iQNIcGHpyH0eK30Dqjw+jUJMjobksb8pbGOpf0hup8Li35T0OMG9nlZlmR5x4OXL
+	 HkgfKNQC2nfAWuNVL45bmC3hZwJ7AAqw5pPyxDG/cEFZH11ZI+gXRJHFforF92dKOw
+	 9STnhtATXXqRFVg9xJmS11ExPXqKHvWazwF5qIuizQP9ITG++4zLaw4HRxDd6MfsGF
+	 Tsl8BjwBwkUTQ==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Subject: [PATCH net v2 0/2] net: airoha: Fix NULL pointer derefrences in
- airoha_qdma_cleanup()
-Date: Mon, 20 Apr 2026 10:07:46 +0200
-Message-Id: <20260420-airoha_qdma_init_rx_queue-fix-v2-0-d99347e5c18d@kernel.org>
+Date: Mon, 20 Apr 2026 10:07:47 +0200
+Subject: [PATCH net v2 1/2] net: airoha: Move ndesc initialization at end
+ of airoha_qdma_init_rx_queue()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/42NWw6CMBBFt0Lm2xpKeIhf7sOQZrADTNRWpkAwh
- L3bsAI/z7nJuRsEEqYA12QDoYUDexchOyXwGND1pNhGhizNyjTXlUIWP6AZ7RsNO56MrGacaSb
- V8arauu3QYqHLSkNsfISiPvp3cDRBE+XAYfLyPT4XfUx/5hetUmXbusOC8vJCxe1J4uh19tJDs
- +/7D/h0LCLQAAAA
-X-Change-ID: 20260417-airoha_qdma_init_rx_queue-fix-b9bfada51671
+Message-Id: <20260420-airoha_qdma_init_rx_queue-fix-v2-1-d99347e5c18d@kernel.org>
+References: <20260420-airoha_qdma_init_rx_queue-fix-v2-0-d99347e5c18d@kernel.org>
+In-Reply-To: <20260420-airoha_qdma_init_rx_queue-fix-v2-0-d99347e5c18d@kernel.org>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
  "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
@@ -61,6 +58,9 @@ To: Andrew Lunn <andrew+netdev@lunn.ch>,
 Cc: Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
 X-Mailer: b4 0.14.3
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260420_010809_611391_0964BA92 
+X-CRM114-Status: GOOD (  11.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,30 +75,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix two possible NULL pointer derefrences in airoha_qdma_cleanup routine
-if airoha_qdma_init() fails.
+If queue entry or DMA descriptor list allocation fails in
+airoha_qdma_init_rx_queue routine, airoha_qdma_cleanup() will trigger a
+NULL pointer dereference running netif_napi_del() for RX queue NAPIs
+since netif_napi_add() has never been executed to this particular RX NAPI.
+The issue is due to the early ndesc initialization in
+airoha_qdma_init_rx_queue() since airoha_qdma_cleanup() relies on ndesc
+value to check if the queue is properly initialized. Fix the issue moving
+ndesc initialization at end of airoha_qdma_init_tx routine.
+Move page_pool allocation after descriptor list allocation in order to
+avoid memory leaks if desc allocation fails.
 
+Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 SoC")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
-Changes in v2:
-- Move page_pool allocation after desc list allocation in
-  airoha_qdma_init_rx_queue()
-- Move netif_napi_add_tx() after irq desc queue allocation in
-  airoha_qdma_tx_irq_init()
-- Link to v1: https://lore.kernel.org/r/20260417-airoha_qdma_init_rx_queue-fix-v1-0-db9fa5e468e5@kernel.org
+ drivers/net/ethernet/airoha/airoha_eth.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
----
-Lorenzo Bianconi (2):
-      net: airoha: Move ndesc initialization at end of airoha_qdma_init_rx_queue()
-      net: airoha: Add size check for TX NAPIs in airoha_qdma_cleanup()
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index e1ab15f1ee7d..fc79c456743c 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -745,14 +745,18 @@ static int airoha_qdma_init_rx_queue(struct airoha_queue *q,
+ 	dma_addr_t dma_addr;
+ 
+ 	q->buf_size = PAGE_SIZE / 2;
+-	q->ndesc = ndesc;
+ 	q->qdma = qdma;
+ 
+-	q->entry = devm_kzalloc(eth->dev, q->ndesc * sizeof(*q->entry),
++	q->entry = devm_kzalloc(eth->dev, ndesc * sizeof(*q->entry),
+ 				GFP_KERNEL);
+ 	if (!q->entry)
+ 		return -ENOMEM;
+ 
++	q->desc = dmam_alloc_coherent(eth->dev, ndesc * sizeof(*q->desc),
++				      &dma_addr, GFP_KERNEL);
++	if (!q->desc)
++		return -ENOMEM;
++
+ 	q->page_pool = page_pool_create(&pp_params);
+ 	if (IS_ERR(q->page_pool)) {
+ 		int err = PTR_ERR(q->page_pool);
+@@ -761,11 +765,7 @@ static int airoha_qdma_init_rx_queue(struct airoha_queue *q,
+ 		return err;
+ 	}
+ 
+-	q->desc = dmam_alloc_coherent(eth->dev, q->ndesc * sizeof(*q->desc),
+-				      &dma_addr, GFP_KERNEL);
+-	if (!q->desc)
+-		return -ENOMEM;
+-
++	q->ndesc = ndesc;
+ 	netif_napi_add(eth->napi_dev, &q->napi, airoha_qdma_rx_napi_poll);
+ 
+ 	airoha_qdma_wr(qdma, REG_RX_RING_BASE(qid), dma_addr);
 
- drivers/net/ethernet/airoha/airoha_eth.c | 25 +++++++++++++++----------
- 1 file changed, 15 insertions(+), 10 deletions(-)
----
-base-commit: 0cf004ffb61cd32d140531c3a84afe975f9fc7ea
-change-id: 20260417-airoha_qdma_init_rx_queue-fix-b9bfada51671
-
-Best regards,
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.53.0
 
 
