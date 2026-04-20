@@ -4,70 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2599F5A8AA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 18:08:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5B19F5A8BB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 20:31:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZnX9yztV0/MnLxV1PqQMKtkhGKJfRB3mxac7Alud1bo=; b=XuRWRNi/33YbfDzor8RF5mVXbu
-	wR2o9IEunJIJoUGxkEl1nL6q9aD27pfZB5baDAU2IM+iuaMm3MjKyO1oCMQDVNyAFRlfEBSfqDoCq
-	5V+pNJmQUaZDzMmuvsDF24VI/7GHvgScPewgsbZT4Tsoy+R+1JVtCnGoisYTPRej83sdoTeQ+U6EJ
-	BvzTkG5KndFshUPWaEZgGEw/ID37L4WmQyHtfQ+Ldzfq62TTdBPoWWfzG1SyntW9eUM8fC9ESgwC7
-	+FC3Ly3Zw9YWkiy3vWZqDTeZ3Iod8aMPqtvA9Wl7hfcnmFvEj0Vd3tx1QoiG7lyi4mu08FuUOF+h3
-	Ey25Cxuw==;
+	bh=1fmttW43m02UXdVQMFbm1+Fjb9kM23jey1UIcB3meSs=; b=T0yGhn0dCnNW8Ehdm7MOarxQpc
+	t5FyqxALtMkH2+T6xam5CMEP/KHC9n7mq0wj8+iAvwL2dvNils5waBLGvfSbmAeSZyenHTyGi5CyR
+	9h3uF8kIgDRIvLeIZCGVQNa1SCE2CgtwM4tkUJs81xjVWaZcMJzawOHmZlfK5yQmVyOI8NFficSd2
+	fHt41ObhubzmwIcowbkkWwhyqwllmn5Aqbwu1EZsUf8W0HpeZwtbgWbZ33dVYxf8mrH6KEi4wcaMd
+	vQ0u1H1difvb2w7+ZC1VtSm1+lCQ8CHIQIsKbxvOewHOdzTO/AjjX4x6/WPqefeAI0Zy2zZ5coYyq
+	sh49KgKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEt2Z-00000007X8d-03Zn;
-	Mon, 20 Apr 2026 18:08:11 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wEvHM-00000007dBq-191C;
+	Mon, 20 Apr 2026 20:31:36 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEt2X-00000007X8O-1Tfm;
-	Mon, 20 Apr 2026 18:08:09 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 56FA16014B;
-	Mon, 20 Apr 2026 18:08:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 70E4DC19425;
-	Mon, 20 Apr 2026 18:08:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776708488;
-	bh=2nn2NZ44rKzXTLFfO38sfqAzBiN9AedaozeHdtaU54g=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=FyIKIOxyioDE++KLwaVnbPeHrDrLexB22rwK6SGAQ5+svxGh6xCEWnSuCtrLgrI3o
-	 I0xryMzw5Q+H9iROtrAXoIP0ghhDTOKGHhdE+Y9Dp5iKXvAauFFfm8h2U2w9yajV5n
-	 pJv4LnGScHctv3C9pjfmv4TTbIgw7uQQIfFMRwKAae1fNFG1thDAsG0CxOkNBj9mU8
-	 Gf2iJwf4KsT9+UZFudBGgqKqv6blKswZAhZpJfaKGSpAj0A435G3msSKoS809xz2ME
-	 /LbGMYLGtfzR25umFZ/kvzsKIWmQ7R20mq1+HHFY7m0jz1OOEZf+e8W1iMyXPAbDG3
-	 8pvgYSo9Oj1EA==
-Date: Mon, 20 Apr 2026 19:08:01 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Arnd Bergmann <arnd@arndb.de>, Cyril Chao <Cyril.Chao@mediatek.com>,
-	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
-	Eugen Hristev <eugen.hristev@linaro.org>,
-	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 5/9] ASoC: mediatek: mt2701: add HDMI audio memif, FE
- and BE DAIs
-Message-ID: <95e1067c-3c8e-4dd4-997d-f3be9d2cba29@sirena.org.uk>
-References: <cover.1776646435.git.daniel@makrotopia.org>
- <59f911bb1a855a00c0d9dd4760f10ff0030fedb6.1776646435.git.daniel@makrotopia.org>
+	id 1wEvHJ-00000007dBR-0irL
+	for linux-mediatek@lists.infradead.org;
+	Mon, 20 Apr 2026 20:31:35 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-488a9033b2cso39727715e9.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 20 Apr 2026 13:31:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20251104.gappssmtp.com; s=20251104; t=1776717091; x=1777321891; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=1fmttW43m02UXdVQMFbm1+Fjb9kM23jey1UIcB3meSs=;
+        b=purmVCS+ZGBlTE781fRQ1dX86d+u1vgih3rlCEb4rtBvMyh8LKqXNJIo8R/MPAlBf9
+         agPP2N4MtxdfgDcVWGu2xke78VuTOJEXRhUPASryo3jpAPitbwVjfS2RTWu6b2ybMshj
+         M19tQ7WihE8K7f2uwYTdyFyIhyMkqMG9Fz4GeelyBmu9uZ90JVQ16neMJaXID6UgCzp7
+         eDZlvMoBQKxRZe83hPRIi0lNCudboMa/Ksl5UPmY8T+VWqU64spiG82MCc4kTWeWekaW
+         ZsoSV4qJZJm7js5DThDP4zyR5QfCn8gsm+O+bGikX2RRhIL2FxoVmFnAp6X4kEiciACa
+         u5pQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1776717091; x=1777321891;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=1fmttW43m02UXdVQMFbm1+Fjb9kM23jey1UIcB3meSs=;
+        b=Sz0/8qeUIAXzuGHA7jvmB5MdJvfxhHzL2Wlt5GKrc2YKCNMzBeIwHnDLN9r2PAmXxp
+         Ifc8hPfAyRysQIk9oT7lqF3YrhR30pY2vbkny6fBWSenWutuW+NNp9zsmU6OLc7CHb/k
+         tse6MrzAcpjQNIPmyt00+wvySuBPr1cLRYNCnihttowik8+HTrNMdlswrJeA2+1c9cBZ
+         JZtffC5W2ayY+NfrSD6od0fYp7iyMj8MwsYzuNeoVZpNOASJzwe6x1H7cgw3bprV/2By
+         RHHu5ZoTPQIc//qRedEJc8Uxqdh7q9j5g8Y8GHWKWsq+nWqwSoKo6wBw/om6b7G/Fp9o
+         qaug==
+X-Forwarded-Encrypted: i=1; AFNElJ/5Bju+IdoYICsvwunNx5riGEdrF6vCx2iEg/4Z5CiyCPvy401O9BFzr3THP2nw9hKZbmvYKl0K5jQdbZXk4Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyv8e9qkRwgdYrqfpbYKv6igYfANKoshiCII3JXLM1uGEtd7OAN
+	3MflHCyuB6e950NB1UcvDvYv66JftylxP8u1p0JYWjRMOrpVamlftH/rAVDhSITVDQU=
+X-Gm-Gg: AeBDies1wfdRTHDT207/8S6LVg6hegkXajOvriqVMgexdS//WS9K7NPZWqrfHhQ8mbM
+	uLsmKIu9Kwyw8JeUR0wNGu8e4VN5C1M5gTh+j3SrbbQuU2cYHGEt6t6U/j7hnnfNsglXPuDXbg7
+	/YS/Y5gLr2G4YAiULVzT67Insfoeu2SDHO4sGRNNqbQtWtcwyhXTfrtL1ZcBPcI6CGD2siNagUI
+	tbSsxKgG9ICKugYp2uyapjKQed6ngLsC+GV+4jHAb7KURVtQcKS6rnKgN4TnRKsLt0ZGZN/E74i
+	xDUb5y8WaETnVQyz+nfM9AJ5AXtZOWt+/eyVHPAJGTX2lz2+FESez7/MsszVaFrZxiYPl7CtjfI
+	Q58yR7Q5vyM2uzjKn41cy8B7w5Nmo+bAOmRORDzuxyFbisPJrSIeUfRW0UiaPOh5GQvuFWDdtr+
+	5aP2WY/yfo/qRA7n87fisCX/KIf7PB4Rbnucz3RLI=
+X-Received: by 2002:a05:600c:4f49:b0:489:1ff1:74df with SMTP id 5b1f17b1804b1-4891ff176bamr64290705e9.1.1776717090675;
+        Mon, 20 Apr 2026 13:31:30 -0700 (PDT)
+Received: from localhost ([2a02:8071:b783:6940:1d24:d58d:2b65:c291])
+        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-488fb7a0745sm126204805e9.9.2026.04.20.13.31.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 Apr 2026 13:31:29 -0700 (PDT)
+Date: Mon, 20 Apr 2026 22:31:28 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>
+To: Ulf Hansson <ulfh@kernel.org>
+Cc: "Christian A. Ehrhardt" <christian.ehrhardt@codasip.com>, 
+	linux-mmc@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Wolfram Sang <wsa+renesas@sang-engineering.com>, linux-kernel@vger.kernel.org, 
+	Marcel Holtmann <marcel@holtmann.org>, Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
+	linux-bluetooth@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mediatek@lists.infradead.org, 
+	Ping-Ke Shih <pkshih@realtek.com>, linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
+	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+	Brian Norris <briannorris@chromium.org>, Francesco Dolcini <francesco@dolcini.it>, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Subject: Re: [PATCH v1 1/6] sdio: Add syntactic sugar to store a pointer in
+ sdio_driver_id
+Message-ID: <aeaMkfk_1t98e7SU@monoceros>
+References: <cover.1776429984.git.u.kleine-koenig@baylibre.com>
+ <c830049dcfcd99f005e2ff6742aace9341c61f13.1776429984.git.u.kleine-koenig@baylibre.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="jvJgKormJ2TC3jlE"
+	protocol="application/pgp-signature"; boundary="u46iqxpjoedhizpi"
 Content-Disposition: inline
-In-Reply-To: <59f911bb1a855a00c0d9dd4760f10ff0030fedb6.1776646435.git.daniel@makrotopia.org>
-X-Cookie: Sales tax applies.
+In-Reply-To: <c830049dcfcd99f005e2ff6742aace9341c61f13.1776429984.git.u.kleine-koenig@baylibre.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260420_133133_480053_62679CCF 
+X-CRM114-Status: GOOD (  17.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,44 +110,57 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---jvJgKormJ2TC3jlE
-Content-Type: text/plain; charset=us-ascii
+--u46iqxpjoedhizpi
+Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
 Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v1 1/6] sdio: Add syntactic sugar to store a pointer in
+ sdio_driver_id
+MIME-Version: 1.0
 
-On Mon, Apr 20, 2026 at 02:13:34AM +0100, Daniel Golle wrote:
+Hello,
 
-> +static int mt2701_afe_hdmi_trigger(struct snd_pcm_substream *substream, int cmd,
-> +				   struct snd_soc_dai *dai)
-> +{
-> +	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-> +
-> +	switch (cmd) {
-> +	case SNDRV_PCM_TRIGGER_START:
-> +	case SNDRV_PCM_TRIGGER_RESUME:
-> +		/* Ungate HDMI and SPDIF power islands. */
-> +		regmap_update_bits(afe->regmap, AUDIO_TOP_CON0,
-> +				   AUDIO_TOP_CON0_PDN_HDMI_CK |
-> +				   AUDIO_TOP_CON0_PDN_SPDIF_CK, 0);
+On Fri, Apr 17, 2026 at 03:10:47PM +0200, Uwe Kleine-K=F6nig (The Capable H=
+ub) wrote:
+> On all current Linux architectures sizeof(long) =3D=3D sizeof(void *) and
+> this is used a lot through the kernel. For example it enables the usual
+> practice to store pointers in sdio_driver_id's .driver_data member.
+>=20
+> This works fine, but involves casting and thus isn't type-safe.
+> Additionally with the CHERI architecture extension there are machines
+> with sizeof(void *) > sizeof(long) for with the traditional approach of
+> storing a pointer in .driver_data doesn't work.
+>=20
+> By replacing the plain unsigned long .driver_data by an anonymous union,
+> most of the casting can be dropped and it yields a working solution for
+> CHERI.
+>=20
+> All users of struct sdio_driver_id are initialized in a way that is
+> compatible with the new definition, so no adaptions are needed there.
 
-It looks like we have clock API clocks for HDMI and S/PDIF on this SoC
-(see clk-mt2701-aud.c) - are there going to be problem with peering
-directly at the register?  We do manage some clocks via the clock API
-but not those ones.
+sashiko.dev found s/sdio_driver_id/sdio_device_id/ twice in the commit
+log and once in the short log. If you consider applying this patch
+please adapt the commit message accordingly.
 
---jvJgKormJ2TC3jlE
+Many thanks to those who created sashiko.dev!
+
+Best regards
+Uwe
+
+--u46iqxpjoedhizpi
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmnma4EACgkQJNaLcl1U
-h9ACNQf/THgMc0UA4YHXPSQgC7xwdqabDnTemhp2DF0amZkEYC6jkp4hf2k0DLml
-G+j2VcumFyYOggfzi7ELJxb+xR+3iVYFg/a5whf4X6Qm9GOVhq5uHrYEXEhtIbZf
-+eJsmSTKFe2idDmfZxo4gijNVhupkVCA7AE2TRRDlcebh5P2VLKT1W5WNuk4mdeS
-9anRlfsFCvMJlYI4eyYNmKJ5eQ/zXDL7IAf9mhJG/9xbWjvut904xCN+tfmW4Jht
-LlNBdQ58oUYy+ytzen7omr8nZTOfvIrvv+new7BLXiRWW2nsiK5ciLZ1nke9TgPi
-eonLfX98fitWZyJrd0ZJpE3qWnsgeA==
-=f+8p
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmnmjQwACgkQj4D7WH0S
+/k7lawf+IBy1b5wfuwWZiVYsobJ5/VQtS1uab/j//LDVdxK0lHUoqurrxgHf8aFa
+2/h7V1KF+nbxyYPjLmWI8a37uIwuSKZ5vijoBeDnFRFwWdEokon2xNz+IK0hTkf4
+Ill7bkiF7fk+epa8am5nZ9gUbmy1nlQbFZHlXizQA4YeFOlLyfOdPTsXw8p/P7Tq
+RIGbTgcE13Qkiokn+iCwGUzLfb1sjBm+Nx3M/g1/C2r4tw+M1ypwCAizKjjvFyTz
+8a7d4lCX5G140aKhxhTCdN3nE5iwtvZ4w9BT2RXRY03pv4w0FW5Xyc/PqymZ2Kp/
+qcp9T3xPsnUPVlIgTg1SnhlhnrS5Qg==
+=RSgT
 -----END PGP SIGNATURE-----
 
---jvJgKormJ2TC3jlE--
+--u46iqxpjoedhizpi--
 
