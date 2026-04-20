@@ -4,60 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C4E0F588C3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 13:31:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAF4DF588C6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 13:32:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=evaJ5vkDrbqrWw6yH4YpYlxL910zEoGMM830QaFFWDQ=; b=lWcghnPGgGxb4p6jxKfXImq4Bu
-	ioCjZM7cPCCxuFJ9XHguGAEN40CGyi/15Ba+OhEwYoFRaNVqbqlV5lWMOTC1RspbH+va3duBQSrbU
-	Ji7mEy5ZteTd/qIKUEMNcC4wNAZV2ym1Mx6avVJ/0KideEDMS+8Nspn22P78mHJot5sSZ60kgSmwz
-	X2BNn9/o70ERl1uO3PxT7pjvR2I9TsfqaUygfeU/P+Ghm9i/XnNmV8pErS+BCmk9fP7t6gxeF6AQZ
-	WPCykPDqFk5VncfV16lDtY8kru9ldJNQJbhjSsXuvu8fMZA7HPnFXWi5l0GCHImYQf4OVrEYUX9xi
-	iNuYBq/Q==;
+	bh=S8+m3mKsAbgnERbsc1mYS35qk7nuKf9yDbLSpVIlcCA=; b=pHrcOVRD0OooIt2AGWm3CG5IdE
+	hYAd7YsSpT1WgOQGSiVozDRHTIzMgQdVgAc3iyJM72OkMu/ZFfcEs8t6EpR14qBKB4fQULt6sqVAu
+	1UBmyQKiF/ZL30AJbfxsZVA45bbF7yLRc9EfJKPgOOUVvvkEETkQRTcrTPQ9jx0w760uIZ2VaKEmI
+	karXZ1k8aMoJl2mbF6awhildAmn1IXyQcI6GdxlLCMEX6/vzpQBf+ZLbRYjIbBpVYGC/gnefz1UJC
+	j+v10STh75C63vpEF/asKTTQR+UxKCZnHAI3/w1L3UEMAob9QtnBAOHiGVb008JkUDeX6CQkoD35F
+	tn7O/rww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEoio-000000072hd-1y93;
-	Mon, 20 Apr 2026 13:31:30 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wEojI-000000072yL-2e4D;
+	Mon, 20 Apr 2026 13:32:00 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEoik-000000072e2-0tii;
-	Mon, 20 Apr 2026 13:31:28 +0000
+	id 1wEojH-000000072wk-0Nvs;
+	Mon, 20 Apr 2026 13:31:59 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id C99C8435DE;
-	Mon, 20 Apr 2026 13:31:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EEC6AC19425;
-	Mon, 20 Apr 2026 13:31:23 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 7489B6014C;
+	Mon, 20 Apr 2026 13:31:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 77FB9C2BCB9;
+	Mon, 20 Apr 2026 13:31:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776691885;
-	bh=Pn9O84j5Gzkkn/+pDkJ16PqPIewq1Dj5WL2dYyGinJI=;
+	s=k20201202; t=1776691918;
+	bh=ySf/LE2O06y+dCF/bB7jvsvf0tUNgkD8x1b2qFu+YiA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=uRB+RSWfLJmUWoPP6r5iAA9mCImlc25pZdMrkBXQ7kR3fztmXbovGkBQx5gJCuBYd
-	 oRPrV4UDUX+16F2pEzRfVXnTmwCPqj6qVeIcMPoQYfuzdWYNjb+TZhQnmBYb7kw3g/
-	 qyXRroLRETD3T6Ad8HtcTa7Vdh2vhV9DvCn3KYwPGZquqYxUUsaITNPCi43QPhclDT
-	 Mcbkg+MFycqY2lp8f7QIdzQg7AzMpeLgaRSBC6WalQpNUGrDINahAzkX7ETyeJl0n1
-	 TqHhrYMcalUihz4RdnwmvnZXdsEPM/VaxUQH/QvigB3O9nEXXjQ/rBUloZbLCefm4Z
-	 UtLMFBBc7SyqQ==
+	b=U4JmStDpodyleQ2ZevNgGLFlAdoYfFRV+GVamMFnHM4UfCJi2yUJSuuJXrOiste1D
+	 uYuMFBikhAW/g2PQABkR44509iM8vTVbUplXWQjTB+OTJj5lyz4z5Ou+Uz1bT0n2L2
+	 bCXz7IzgsmVkgzGw/D3B1Wn7AdU0UX6/NPAOdQ4c2QZ5H7oGwFXlga6UbbzO2yl9n0
+	 G8ov+SmVOtOBbd9I0qSqGT+fGO9+hRy7wavR6P4//na+dvAP8WG0CA118cmAQjPH8i
+	 wufY7zVZScIS7uJ6QkQl5UL5Uq9Gys6+o1WxJZ+vCeZnRfUdBUqBjg/U7ySxX93asX
+	 aA8MhjFp8CIfA==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Chad Monroe <chad@monroe.io>,
-	Felix Fietkau <nbd@nbd.name>,
+Cc: Gary Bisson <bisson.gary@gmail.com>,
+	CK Hu <ck.hu@mediatek.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
+	p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
 	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-wireless@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 7.0-6.6] wifi: mt76: mt7996: reset device after MCU message timeout
-Date: Mon, 20 Apr 2026 09:20:45 -0400
-Message-ID: <20260420132314.1023554-251-sashal@kernel.org>
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH AUTOSEL 7.0-5.10] drm/mediatek: mtk_dsi: enable hs clock during pre-enable
+Date: Mon, 20 Apr 2026 09:21:02 -0400
+Message-ID: <20260420132314.1023554-268-sashal@kernel.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260420132314.1023554-1-sashal@kernel.org>
 References: <20260420132314.1023554-1-sashal@kernel.org>
@@ -65,11 +68,7 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-stable-base: Linux 7.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260420_063126_615922_D5795882 
-X-CRM114-Status: GOOD (  22.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,415 +83,352 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Chad Monroe <chad@monroe.io>
+From: Gary Bisson <bisson.gary@gmail.com>
 
-[ Upstream commit d2b860454ea2df8f336e9b859da7ffb27f43444d ]
+[ Upstream commit 76255024cadbe8c40462953f8193d2d78cd3b0ac ]
 
-Trigger a full reset after MCU message timeout.
+Some bridges, such as the TI SN65DSI83, require the HS clock to be
+running in order to lock its PLL during its own pre-enable function.
 
-Signed-off-by: Chad Monroe <chad@monroe.io>
-Link: https://patch.msgid.link/6e05ed063f3763ad3457633c56b60a728a49a6f0.1765203753.git.chad@monroe.io
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
+Without this change, the bridge gives the following error:
+sn65dsi83 14-002c: failed to lock PLL, ret=-110
+sn65dsi83 14-002c: Unexpected link status 0x01
+sn65dsi83 14-002c: reset the pipe
+
+Move the necessary functions from enable to pre-enable.
+
+Signed-off-by: Gary Bisson <bisson.gary@gmail.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Tested-by: Chen-Yu Tsai <wenst@chromium.org> # Chromebooks
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Link: https://patchwork.kernel.org/project/dri-devel/patch/20260120-mtkdsi-v1-1-b0f4094f3ac3@gmail.com/
+Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
 LLM Generated explanations, may be completely bogus:
 
-Now I have all the information needed for the complete analysis. Let me
-compile the findings.
+Good. Now I have all the information needed for a comprehensive
+analysis.
 
 ---
 
-## PHASE 1: COMMIT MESSAGE FORENSICS
+## Complete Analysis
+
+### PHASE 1: COMMIT MESSAGE FORENSICS
 
 **Step 1.1: Subject Line**
-- Subsystem: `wifi: mt76: mt7996`
-- Action verb: "reset" (implies recovery from a failure state)
-- Summary: Trigger a device reset when MCU message timeouts occur on
-  mt7996
-- Record: [wifi/mt76/mt7996] [reset] [Trigger full device recovery after
-  MCU message timeout]
+- Subsystem: `drm/mediatek: mtk_dsi`
+- Action: "enable" (HS clock during pre-enable)
+- Summary: Move HS clock activation from the bridge enable phase to pre-
+  enable so downstream bridges can use it.
+Record: [drm/mediatek] [enable] [Move HS clock setup earlier to fix
+bridge PLL locking]
 
 **Step 1.2: Tags**
-- `Signed-off-by: Chad Monroe <chad@monroe.io>` - patch author
-- `Link: https://patch.msgid.link/...` - reference to lore
-- `Signed-off-by: Felix Fietkau <nbd@nbd.name>` - maintainer/committer
-  of mt76
-- No Fixes: tag (expected for manual review candidates)
-- No Cc: stable (expected)
-- No Reported-by tag
-- Record: Author is Chad Monroe; applied by Felix Fietkau (the mt76
-  subsystem maintainer)
+- Signed-off-by: Gary Bisson (author)
+- Reviewed-by: CK Hu (MediaTek DSI maintainer)
+- Tested-by: Chen-Yu Tsai (Chromium developer) on 5 Chromebook variants
+- Tested-by: AngeloGioacchino Del Regno (Collabora, regular MTK
+  contributor)
+- Reviewed-by: AngeloGioacchino Del Regno
+- Link: to patchwork entry
+- Signed-off-by: Chun-Kuang Hu (subsystem maintainer, merged it)
+
+Record: Strong review and testing from 3 independent testers across 7+
+hardware platforms. Maintainer reviewed and approved.
 
 **Step 1.3: Commit Body**
-- Body is very brief: "Trigger a full reset after MCU message timeout."
-- No stack traces or reproduction steps given
-- The mt7915 equivalent (commit 10f73bb3938f7c5) provides more context:
-  "MCU hangs do not trigger watchdog interrupts, so they can only be
-  detected through MCU message timeouts. Ensure that the hardware gets
-  restarted when that happens in order to prevent a permanent stuck
-  state."
-- Record: Bug = MCU hang leaves device permanently stuck. Symptom = WiFi
-  device becomes non-functional, requires reboot. Root cause = MCU hang
-  without watchdog interrupt, only detectable via message timeout, no
-  recovery triggered.
+- Bug: SN65DSI83 bridge chip fails to lock its PLL during pre-enable,
+  resulting in errors: "failed to lock PLL, ret=-110" / "Unexpected link
+  status 0x01" / "reset the pipe"
+- Root cause: HS clock not running during the pre-enable phase
+- Fix: Move `mtk_dsi_lane_ready()` and `mtk_dsi_clk_hs_mode(dsi, 1)`
+  from enable to pre-enable (poweron)
+Record: Clear bug description with error messages. Display completely
+fails without fix.
 
-**Step 1.4: Hidden Bug Fix Detection**
-- "reset device after MCU message timeout" - this is clearly a fix for a
-  missing recovery path. Without it, a firmware hang results in a
-  permanent stuck state.
-- Record: This IS a bug fix. The device becomes permanently stuck
-  without it.
+**Step 1.4: Hidden Bug Fix?**
+This is NOT hidden - it's explicitly a fix for display not working with
+certain DSI bridges.
 
----
-
-## PHASE 2: DIFF ANALYSIS
+### PHASE 2: DIFF ANALYSIS
 
 **Step 2.1: Inventory**
-- `mcu.c`: +9 lines (in `mt7996_mcu_parse_response`)
-- `mac.c`: +5 lines (in `mt7996_reset`)
-- Total: ~14 lines added, 0 removed
-- Scope: Single-driver, surgical fix in two closely-related functions
-- Record: 2 files, +14 lines, functions: mt7996_mcu_parse_response,
-  mt7996_reset
+- 1 file: `drivers/gpu/drm/mediatek/mtk_dsi.c`
+- +17 / -18 lines (net -1 line)
+- Functions modified: `mtk_dsi_lane_ready()` (moved earlier),
+  `mtk_dsi_poweron()` (added 2 calls), `mtk_output_dsi_enable()`
+  (removed 3 lines)
+Record: Single-file surgical fix, minimal scope.
 
-**Step 2.2: Code Flow Changes**
+**Step 2.2: Code Flow Change**
+- `mtk_dsi_lane_ready()` function definition moved earlier (before
+  `mtk_dsi_poweron`) - this is purely for forward declaration ordering
+- In `mtk_dsi_poweron()` (called during bridge pre_enable): added
+  `mtk_dsi_lane_ready(dsi)` and `mtk_dsi_clk_hs_mode(dsi, 1)` at end
+- In `mtk_output_dsi_enable()` (called during bridge enable): removed
+  `mtk_dsi_lane_ready(dsi)` and `mtk_dsi_clk_hs_mode(dsi, 1)`, kept
+  `mtk_dsi_set_mode(dsi)` and `mtk_dsi_start(dsi)`
 
-Hunk 1 (mcu.c): In `mt7996_mcu_parse_response()`, when `skb == NULL`
-(MCU timeout):
-- **Before**: Log error, return -ETIMEDOUT. No recovery action.
-- **After**: Log error, atomically set `MT76_MCU_RESET` bit (via
-  `test_and_set_bit` to prevent duplicates), set `recovery.restart =
-  true`, wake up MCU wait queue, queue `reset_work`, wake up
-  `reset_wait`, then return -ETIMEDOUT.
-
-Hunk 2 (mac.c): In `mt7996_reset()`, before the existing `queue_work`:
-- **Before**: Always queue reset_work and wake reset_wait
-  unconditionally.
-- **After**: If `MT_MCU_CMD_STOP_DMA` is set, additionally set
-  `MT76_MCU_RESET` bit and wake up MCU wait queue, aborting pending MCU
-  operations before reset.
+Before: Lane ready + HS clock in enable phase
+After: Lane ready + HS clock in pre-enable phase
 
 **Step 2.3: Bug Mechanism**
-- Category: Missing error recovery / permanent hardware stuck state
-- The MCU can hang in a way that doesn't trigger a hardware watchdog
-  interrupt. The only indication is MCU message timeouts. Without this
-  patch, timeouts just return an error code but never trigger device
-  recovery. The device becomes permanently non-functional.
-- Record: Missing recovery mechanism. MCU hang → timeout → error return
-  → no recovery → permanent stuck state.
+Category: Hardware interoperability / timing issue. The SN65DSI83 bridge
+requires HS clock from the DSI host during its pre_enable to lock its
+PLL. Without HS clock, the bridge fails completely.
 
 **Step 2.4: Fix Quality**
-- Obviously correct: Mirrors the exact same pattern used in mt7915
-  (commit 10f73bb3938f7c5) and mt7915's STOP_DMA handling (commit
-  b13cd593ef2402).
-- Minimal/surgical: Only adds recovery trigger code at the exact points
-  needed.
-- `test_and_set_bit` prevents duplicate resets.
-- Regression risk: Very low. The reset_work handler already handles
-  `recovery.restart = true` properly. The STOP_DMA path already exists
-  for other triggers.
-- Record: High quality fix, obviously correct, mirrors established
-  patterns.
+- Obviously correct: just moves existing function calls earlier in the
+  init sequence
+- Minimal: no new logic, no new code paths
+- Regression risk is LOW: extensively tested on 7+ platforms with
+  different bridges/panels, all confirmed no regressions
 
----
-
-## PHASE 3: GIT HISTORY INVESTIGATION
+### PHASE 3: GIT HISTORY
 
 **Step 3.1: Blame**
-- `mt7996_mcu_parse_response()`: Unchanged since original driver
-  addition by Shayne Chen (commit 98686cd21624c7, November 2022, v6.2).
-- `mt7996_reset()`: Added by Bo Jiao (commit 27015b6fbcca83, April 2023,
-  v6.4) as "enable full system reset support".
-- The buggy code (missing recovery trigger) has been present since the
-  driver was first created.
-- Record: Bug present since v6.2 (mcu.c) and v6.4 (mac.c had
-  mt7996_reset without STOP_DMA handling).
+- `mtk_dsi_lane_ready()` introduced by commit `39e8d062b03c3d` (Jitao
+  Shi, 2022-05-20) - present since ~v5.19
+- `mtk_dsi_clk_hs_mode(dsi, 1)` in enable path introduced by
+  `80a5cfd60d2a94` (yt.shen@mediatek.com, 2017-03-31) - present since
+  v4.x
+- The buggy ordering has existed since 2022 when lane_ready was moved to
+  enable
+Record: Bug present in all active stable trees (v5.19+)
 
-**Step 3.2: No Fixes: Tag**
-- N/A - no Fixes: tag present (expected).
+**Step 3.2: No Fixes: tag** (expected for autosel candidate)
 
 **Step 3.3: File History**
-- The mt7996 reset infrastructure was significantly improved in v6.18
-  (ace5d3b6b49e8 "improve hardware restart reliability"). However, the
-  basic recovery mechanism has been in place since v6.4.
-- The commit `beb01caa570c52` in v6.18 decreased MCU timeouts to allow
-  faster recovery - this patch's logic works with either timeout value.
-- Record: This commit is standalone; no prerequisites needed beyond the
-  v6.4 reset infrastructure.
+- Recent changes to mtk_dsi.c include bridge API updates
+  (devm_drm_bridge_alloc, encoder parameter), HS mode support, pre-
+  enable order fix/revert
+- The pre-enable order fix/revert (f5b1819193667 / 33e8150bd32d7) is
+  related but independent - it was about `pre_enable_prev_first` flag
+  management
 
 **Step 3.4: Author**
-- Chad Monroe is a contributor to mt76 (5 commits found in the driver).
-- Felix Fietkau (nbd@nbd.name) is THE mt76 subsystem maintainer - he
-  applied the patch.
-- Felix also authored the identical fix for mt7915 (10f73bb3938f7c5).
-- Record: Applied by subsystem maintainer. Author is a regular
-  contributor.
+- Gary Bisson is a regular contributor to MediaTek platforms (Tungsten
+  boards), actively maintains DT and driver support
 
 **Step 3.5: Dependencies**
-- All structures/flags used already exist: `MT76_MCU_RESET`,
-  `recovery.restart`, `mcu.wait`, `reset_work`, `reset_wait`,
-  `MT_MCU_CMD_STOP_DMA`.
-- No new functions or data structures introduced.
-- Record: Fully self-contained, no dependencies on other uncommitted
-  patches.
+- No dependencies. The commit 8b00951402f74 (HS mode in cmdq) is
+  completely independent
+- The SN65DSI83 driver already sets `pre_enable_prev_first = true`,
+  ensuring correct bridge ordering
 
----
-
-## PHASE 4: MAILING LIST AND EXTERNAL RESEARCH
+### PHASE 4: MAILING LIST DISCUSSION
 
 **Step 4.1: Original Discussion**
-- lore.kernel.org returned anti-bot protection; direct web access was
-  blocked.
-- b4 dig of the mt7915 equivalent found it was part of a 24-patch series
-  (v2) by Felix Fietkau from August 2024.
-- The mt7996 version is by Chad Monroe and was ported from the mt7915
-  fix.
-- Record: Could not access lore directly due to anti-bot protection. b4
-  confirmed the mt7915 version was part of Felix Fietkau's cleanup
-  series.
+- b4 mbox retrieved 5 messages in the thread
+- CK Hu (MediaTek DSI maintainer) noted "this changes the flow for all
+  SoC and panel, so I would wait for more SoC and more panel test" -
+  then gave Reviewed-by after testing completed
+- AngeloGioacchino Del Regno tested on MT6795 + MT8395, gave both
+  Tested-by and Reviewed-by
+- Chen-Yu Tsai tested on 5 Chromebook models (MT8173, MT8183x2,
+  MT8186x2) - "No regressions observed"
+- Chun-Kuang Hu applied it with message "Applied to mediatek-drm-next"
 
-**Step 4.2: Reviewer**
-- Applied by Felix Fietkau, the mt76 subsystem maintainer.
-- Record: Subsystem maintainer applied the patch directly.
+**Step 4.2: Reviewers**
+All appropriate MediaTek subsystem maintainers were CC'd and reviewed.
+CK Hu explicitly asked for extensive testing, which was provided.
 
-**Step 4.3-4.5**: Blocked by lore anti-bot protection. No additional
-information could be gathered.
-
----
-
-## PHASE 5: CODE SEMANTIC ANALYSIS
+### PHASE 5: CODE SEMANTIC ANALYSIS
 
 **Step 5.1: Functions Modified**
-- `mt7996_mcu_parse_response()` - MCU response parser (callback)
-- `mt7996_reset()` - device reset entry point
+- `mtk_dsi_poweron()`: called from `mtk_dsi_bridge_atomic_pre_enable()`
+  and `mtk_dsi_ddp_start()`
+- `mtk_output_dsi_enable()`: called from
+  `mtk_dsi_bridge_atomic_enable()`
+- `mtk_dsi_lane_ready()`: also called from `mtk_dsi_host_transfer()`
+  (for DSI command transfers)
 
-**Step 5.2: Callers of `mt7996_mcu_parse_response`**
-- Registered as `.mcu_parse_response` in `mt7996_mcu_ops` (mcu.c line
-  3363).
-- Called from `mt76_mcu_skb_send_and_get_msg()` in `mcu.c` (core mt76
-  code, line 122).
-- This is the universal MCU message response handler - called for EVERY
-  MCU command the driver issues.
-- Record: Called for every MCU message. Critical, high-frequency path.
+**Step 5.2: Impact on mtk_dsi_host_transfer**
+After the patch, `mtk_dsi_lane_ready()` call in
+`mtk_dsi_host_transfer()` becomes a no-op during normal operation (lanes
+already ready from poweron). This is safe because DSI must be powered on
+before any host transfers.
 
-**Step 5.3: Callers of `mt7996_reset`**
-- Called from interrupt context and error recovery paths.
-- Used by `mt7996_irq_tasklet()` when MCU command interrupts occur.
-- Record: Called from interrupt handler / tasklet context.
+**Step 5.3: Bridge ordering confirmed**
+The SN65DSI83 bridge driver sets `ctx->bridge.pre_enable_prev_first =
+true` (line 1041 of `ti-sn65dsi83.c`), which causes
+`drm_atomic_bridge_chain_pre_enable()` to call the MTK DSI pre_enable
+BEFORE the SN65DSI83's pre_enable. This confirms the fix works
+correctly.
 
-**Step 5.4: Call Chain**
-- Any WiFi operation → MCU command → `mt76_mcu_skb_send_and_get_msg()` →
-  wait for response → `mt7996_mcu_parse_response()` → if timeout →
-  trigger reset
-- This path is reachable from normal WiFi operations (scan, associate,
-  channel switch, etc.)
-- Record: Fully reachable from normal user operations.
+### PHASE 6: STABLE TREE ANALYSIS
 
-**Step 5.5: Similar Patterns**
-- mt7915 has identical recovery logic (10f73bb3938f7c5 +
-  b13cd593ef2402).
-- mt7921/mt7925 have similar reset mechanisms.
-- Record: Well-established pattern across the mt76 driver family.
+**Step 6.1: Code exists in stable trees**
+The buggy code (`mtk_dsi_lane_ready()` being called from enable instead
+of pre_enable) has been present since v5.19, so it affects all active
+stable trees from 6.1 onwards.
 
----
+**Step 6.2: Backport difficulty**
+The patch should apply cleanly - the context in `mtk_dsi_poweron()` and
+`mtk_output_dsi_enable()` is unchanged in the 7.0 tree.
 
-## PHASE 6: STABLE TREE ANALYSIS
-
-**Step 6.1: Buggy Code in Stable Trees**
-- mt7996 driver added in v6.2.
-- `mt7996_reset()` added in v6.4.
-- `mt7996_mcu_parse_response()` unchanged since v6.2.
-- The mcu.c part of the fix applies to 6.2+. The mac.c part applies to
-  6.4+.
-- Affected stable trees: 6.6.y, 6.12.y, and any other active LTS that
-  includes mt7996.
-- Record: Bug exists in 6.6.y and all later stable trees.
-
-**Step 6.2: Backport Complications**
-- The code being modified is unchanged since original introduction.
-- Should apply cleanly to 6.6.y.
-- Record: Expected clean apply.
-
-**Step 6.3: No Related Fixes Already in Stable**
-- No similar fix found in stable trees.
-- Record: No existing fix for this issue in stable.
-
----
-
-## PHASE 7: SUBSYSTEM CONTEXT
+### PHASE 7: SUBSYSTEM CONTEXT
 
 **Step 7.1: Subsystem**
-- WiFi driver (drivers/net/wireless/mediatek/mt76/mt7996)
-- MT7996 is MediaTek's Wi-Fi 7 (802.11be) chipset - used in routers and
-  access points.
-- Criticality: IMPORTANT - WiFi is critical infrastructure for many
-  users.
-- Record: [WiFi driver] [IMPORTANT - affects mt7996 hardware users]
+- drm/mediatek (DRM display driver) - IMPORTANT category
+- MediaTek SoCs are used extensively in Chromebooks, Android devices,
+  and embedded systems
 
-**Step 7.2: Activity**
-- Very actively developed - dozens of commits in recent releases.
-- Active MLO/Wi-Fi 7 development ongoing.
-- Record: Highly active subsystem.
+### PHASE 8: IMPACT AND RISK
 
----
+**Step 8.1: Affected users**
+Users of MediaTek SoCs with DSI bridges that need HS clock during
+initialization (specifically SN65DSI83, potentially others).
 
-## PHASE 8: IMPACT AND RISK ASSESSMENT
+**Step 8.2: Trigger conditions**
+Every display initialization when using SN65DSI83 with MediaTek DSI. The
+display simply doesn't work.
 
-**Step 8.1: Affected Users**
-- All users of mt7996/mt7992 WiFi hardware (routers, access points, PCIe
-  WiFi cards).
-- Record: Hardware-specific, but MT7996 is a current-generation popular
-  WiFi chipset.
+**Step 8.3: Failure mode**
+Without fix: Display completely fails to initialize (PLL lock fails,
+bridge errors, no display output). Severity: HIGH - affects usability.
 
-**Step 8.2: Trigger Conditions**
-- Triggers when MCU firmware hangs without issuing a watchdog interrupt.
-- Can happen during normal operation (firmware bugs, hardware glitches).
-- Not user-triggered in the security sense, but can happen during
-  routine WiFi operation.
-- Record: Firmware hang during normal operation. Not predictable but
-  happens in practice (same fix was needed for mt7915).
+**Step 8.4: Risk-Benefit**
+- Benefit: HIGH - enables display to work for specific bridge
+  combinations, no regressions observed on 7+ platforms
+- Risk: LOW - moves existing function calls earlier, extensively tested,
+  well-reviewed, single file
 
-**Step 8.3: Failure Mode**
-- Without the fix: WiFi device becomes permanently non-functional until
-  reboot.
-- This is a system hang from the WiFi perspective.
-- Severity: HIGH (permanent loss of WiFi connectivity, requires reboot)
-- Record: Permanent device stuck state. Severity: HIGH.
+### PHASE 9: SYNTHESIS
 
-**Step 8.4: Risk-Benefit Ratio**
-- Benefit: HIGH - prevents permanent WiFi device failure, enables
-  automatic recovery.
-- Risk: VERY LOW - 14 lines, uses `test_and_set_bit` for safety, mirrors
-  proven mt7915 pattern, no changes to public APIs or data structures.
-- Record: Benefit HIGH, Risk VERY LOW. Excellent ratio.
+**Evidence FOR backporting:**
+1. Fixes a real hardware bug: display doesn't work with SN65DSI83 bridge
+2. Small, surgical change (17 insertions, 18 deletions, net -1 line,
+   single file)
+3. Extensive testing: 7+ platforms (Chromebooks, MediaTek boards) - zero
+   regressions
+4. Strong review: MediaTek DSI maintainer, Collabora engineer, Chromium
+   developer
+5. Code is well-understood: simply moves existing calls from enable to
+   pre-enable
+6. Affects popular hardware (Chromebooks use MediaTek SoCs extensively)
 
----
+**Evidence AGAINST backporting:**
+1. CK Hu noted it "changes the flow for all SoC and panel" - but this
+   concern was addressed by extensive testing
+2. No explicit Cc: stable tag - but this is expected for autosel
+   candidates
 
-## PHASE 9: FINAL SYNTHESIS
-
-**Step 9.1: Evidence Summary**
-
-FOR backporting:
-- Fixes permanent device stuck state (WiFi becomes completely non-
-  functional)
-- Small and surgical fix (14 lines, 2 files in same driver)
-- Mirrors identical fix already applied to sister chip mt7915 (proven
-  pattern)
-- Applied by mt76 subsystem maintainer (Felix Fietkau)
-- No dependencies on other patches
-- Buggy code present since driver introduction (v6.2/v6.4)
-- `test_and_set_bit` prevents duplicate resets (safe concurrent
-  behavior)
-- Should apply cleanly to stable trees
-
-AGAINST backporting:
-- Brief commit message (but supplemented by identical mt7915 fix
-  explanation)
-- No explicit stable nomination or Reported-by (but this is expected for
-  manual review candidates)
-
-**Step 9.2: Stable Rules Checklist**
-1. Obviously correct and tested? **YES** - mirrors proven mt7915
-   pattern, applied by maintainer
-2. Fixes a real bug? **YES** - permanent device stuck state
-3. Important issue? **YES** - device becomes permanently non-functional
-4. Small and contained? **YES** - 14 lines in single driver
-5. No new features or APIs? **YES** - only adds error recovery
-6. Can apply to stable? **YES** - code unchanged since introduction
-
-**Step 9.3: Exception Categories**
-- Not an exception category - this is a standard bug fix.
-
-**Step 9.4: Decision**
-This is a clear bug fix that prevents a permanent device stuck state.
-It's small, obviously correct, follows established patterns, and was
-applied by the subsystem maintainer. The benefit-to-risk ratio is
-excellent.
+**Stable rules checklist:**
+1. Obviously correct and tested? YES - extensively tested on 7+
+   platforms
+2. Fixes a real bug? YES - display completely fails with SN65DSI83
+   bridge
+3. Important issue? YES - hardware doesn't work (no display output)
+4. Small and contained? YES - single file, 35 lines total changed
+5. No new features? YES - just moves existing code to different phase
+6. Can apply to stable? YES - context appears unchanged
 
 ---
 
-## Verification
+### Verification
 
-- [Phase 1] Parsed tags: Link to patch.msgid, signed by author (Chad
-  Monroe) and maintainer (Felix Fietkau)
-- [Phase 2] Diff analysis: +9 lines in mcu.c (reset trigger on timeout),
-  +5 lines in mac.c (STOP_DMA handling)
-- [Phase 3] git blame: mt7996_mcu_parse_response unchanged since
-  98686cd21624c7 (v6.2); mt7996_reset from 27015b6fbcca83 (v6.4)
-- [Phase 3] git show 10f73bb3938f7c5: confirmed identical mt7915 fix
-  exists with clear explanation of the permanent stuck state bug
-- [Phase 3] git show b13cd593ef2402: confirmed identical mt7915 STOP_DMA
-  handling pattern
-- [Phase 3] git log --author: Chad Monroe has 5 commits in mt76, is a
-  regular contributor
-- [Phase 4] b4 dig: found mt7915 version in Felix Fietkau's series at
-  lore
-- [Phase 4] lore direct access blocked by anti-bot protection
-- [Phase 5] Grep MT76_MCU_RESET: confirmed flag is used across 15+ files
-  in mt76 for reset coordination
-- [Phase 5] Grep mt7996_mcu_parse_response: confirmed it's registered as
-  mcu_ops callback (line 3363)
-- [Phase 5] Grep reset_work: confirmed reset_work/reset_wait
-  infrastructure exists since v6.4
-- [Phase 6] git tag --contains: mt7996_reset present since v6.4; driver
-  since v6.2
-- [Phase 6] Current 7.0 code confirmed: mt7996_reset lacks STOP_DMA
-  handling, parse_response lacks reset trigger
-- [Phase 8] Failure mode: permanent WiFi device stuck state requiring
-  reboot - severity HIGH
-- UNVERIFIED: Exact lore discussion content could not be accessed due to
-  anti-bot protection
+- [Phase 1] Parsed tags: Reviewed-by (CK Hu, AngeloGioacchino), Tested-
+  by (Chen-Yu Tsai on 5 Chromebooks, AngeloGioacchino on 2 platforms)
+- [Phase 2] Diff analysis: mtk_dsi_lane_ready + clk_hs_mode moved from
+  enable to poweron (pre_enable), 17 add / 18 del
+- [Phase 3] git blame: lane_ready introduced in commit 39e8d062b03c3d
+  (2022, v5.19), clk_hs_mode in enable since 80a5cfd60d2a94 (2017)
+- [Phase 3] git show 33e8150bd32d7: revert of pre_enable_prev_first in
+  MediaTek DSI is independent
+- [Phase 3] git show 8b00951402f74: HS mode support in cmdq is
+  independent, no dependency
+- [Phase 4] b4 mbox retrieved thread: CK Hu reviewed, requested more
+  testing, got it; patch applied to mediatek-drm-next
+- [Phase 4] Chen-Yu Tsai tested on MT8173, MT8183, MT8186 Chromebooks -
+  no regressions
+- [Phase 4] AngeloGioacchino tested on MT6795, MT8395 - no regressions
+- [Phase 5] Confirmed SN65DSI83 sets pre_enable_prev_first=true (line
+  1041), so MTK DSI pre_enable runs before SN65DSI83 pre_enable
+- [Phase 5] mtk_dsi_host_transfer's call to lane_ready() becomes no-op
+  (safe)
+- [Phase 6] Buggy code exists in all stable trees since v5.19
+- [Phase 8] Failure mode: display doesn't work at all (PLL lock fails),
+  severity HIGH
+
+The fix is small, surgical, well-tested across multiple platforms, and
+fixes a real hardware bug where display completely fails with SN65DSI83
+bridges on MediaTek DSI.
 
 **YES**
 
- drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 5 +++++
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 9 +++++++++
- 2 files changed, 14 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 35 +++++++++++++++---------------
+ 1 file changed, 17 insertions(+), 18 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-index d4f3ee943b472..b7aa51481ce82 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-@@ -2737,6 +2737,11 @@ void mt7996_reset(struct mt7996_dev *dev)
- 		return;
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index aaf6c9ebd319f..5aa71fcdcfab7 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -673,6 +673,21 @@ static s32 mtk_dsi_switch_to_cmd_mode(struct mtk_dsi *dsi, u8 irq_flag, u32 t)
  	}
- 
-+	if (READ_ONCE(dev->recovery.state) & MT_MCU_CMD_STOP_DMA) {
-+		set_bit(MT76_MCU_RESET, &dev->mphy.state);
-+		wake_up(&dev->mt76.mcu.wait);
-+	}
-+
- 	queue_work(dev->mt76.wq, &dev->reset_work);
- 	wake_up(&dev->reset_wait);
  }
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index c0c042de477b8..54776f0703876 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -209,6 +209,7 @@ static int
- mt7996_mcu_parse_response(struct mt76_dev *mdev, int cmd,
- 			  struct sk_buff *skb, int seq)
- {
-+	struct mt7996_dev *dev = container_of(mdev, struct mt7996_dev, mt76);
- 	struct mt7996_mcu_rxd *rxd;
- 	struct mt7996_mcu_uni_event *event;
- 	int mcu_cmd = FIELD_GET(__MCU_CMD_FIELD_ID, cmd);
-@@ -217,6 +218,14 @@ mt7996_mcu_parse_response(struct mt76_dev *mdev, int cmd,
- 	if (!skb) {
- 		dev_err(mdev->dev, "Message %08x (seq %d) timeout\n",
- 			cmd, seq);
-+
-+		if (!test_and_set_bit(MT76_MCU_RESET, &dev->mphy.state)) {
-+			dev->recovery.restart = true;
-+			wake_up(&dev->mt76.mcu.wait);
-+			queue_work(dev->mt76.wq, &dev->reset_work);
-+			wake_up(&dev->reset_wait);
-+		}
-+
- 		return -ETIMEDOUT;
- 	}
  
++static void mtk_dsi_lane_ready(struct mtk_dsi *dsi)
++{
++	if (!dsi->lanes_ready) {
++		dsi->lanes_ready = true;
++		mtk_dsi_rxtx_control(dsi);
++		usleep_range(30, 100);
++		mtk_dsi_reset_dphy(dsi);
++		mtk_dsi_clk_ulp_mode_leave(dsi);
++		mtk_dsi_lane0_ulp_mode_leave(dsi);
++		mtk_dsi_clk_hs_mode(dsi, 0);
++		usleep_range(1000, 3000);
++		/* The reaction time after pulling up the mipi signal for dsi_rx */
++	}
++}
++
+ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
+ {
+ 	struct device *dev = dsi->host.dev;
+@@ -725,6 +740,8 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
+ 	mtk_dsi_set_vm_cmd(dsi);
+ 	mtk_dsi_config_vdo_timing(dsi);
+ 	mtk_dsi_set_interrupt_enable(dsi);
++	mtk_dsi_lane_ready(dsi);
++	mtk_dsi_clk_hs_mode(dsi, 1);
+ 
+ 	return 0;
+ err_disable_engine_clk:
+@@ -770,30 +787,12 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
+ 	dsi->lanes_ready = false;
+ }
+ 
+-static void mtk_dsi_lane_ready(struct mtk_dsi *dsi)
+-{
+-	if (!dsi->lanes_ready) {
+-		dsi->lanes_ready = true;
+-		mtk_dsi_rxtx_control(dsi);
+-		usleep_range(30, 100);
+-		mtk_dsi_reset_dphy(dsi);
+-		mtk_dsi_clk_ulp_mode_leave(dsi);
+-		mtk_dsi_lane0_ulp_mode_leave(dsi);
+-		mtk_dsi_clk_hs_mode(dsi, 0);
+-		usleep_range(1000, 3000);
+-		/* The reaction time after pulling up the mipi signal for dsi_rx */
+-	}
+-}
+-
+ static void mtk_output_dsi_enable(struct mtk_dsi *dsi)
+ {
+ 	if (dsi->enabled)
+ 		return;
+ 
+-	mtk_dsi_lane_ready(dsi);
+ 	mtk_dsi_set_mode(dsi);
+-	mtk_dsi_clk_hs_mode(dsi, 1);
+-
+ 	mtk_dsi_start(dsi);
+ 
+ 	dsi->enabled = true;
 -- 
 2.53.0
 
