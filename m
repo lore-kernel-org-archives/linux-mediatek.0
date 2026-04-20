@@ -4,107 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF436F5A8C6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 20:42:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DFD5F5A8C6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 20:45:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YPMesXK6zWWUdv1z0+n4FdWvrPSk0fKkgxZCyXQ+qGI=; b=QQnsef6aB/EFWIKavl4kvG34jE
-	LqqEYZm4/hCeD0KMZO+ko7f4tYJrSAE14orNXm6eCfpofQCu1DWRmkQzAyRcB0u1pEhx8IQdDBNmx
-	FTAZKSSoZivjVLIRKEutO3TEkfK6voXFwQCs1nXCZ2am+Xyq89sPCaPVpQxzA41EiJA30k3IdOYgD
-	u9VHmUh47Cnxa3wOuKYD8C63UjmnoMT9cRPWJwBgkhdcOlYMZ8KXZutsiKhGFRPNMxU88jClE6uU3
-	JoZT1k/00Vt8fYgVRtld+hcn6aInYRB8mGt0W2yfcOaLrzHf3ZNW4UrP/IUKCdSYW6/uOmtetPDsp
-	Rdn8ZsRQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=NFxnKBIb4rP9HCGv24zgq2DmExS0pP68iWUHvrzRj3k=; b=clPdvHvv3Kh+kFSSNsi2PCNy0t
+	m6YJ5GgT9d45uGZRRCyl6dNFKgT/ibQ6+rTX5Q0MMl8A5IcYsatYXjuCrvsog9tqGiGsCjYO8CvIr
+	zwzWhx3hIWaBJq+ot+nx+ewVaIbGcrUTyo2lh145eB+S0BczZPxj5I8esjusXsC+J8z4D4lAnrgrc
+	sJQc+FfzFci/6gCeYDwBTkB6E4IElJx85KWmXnZthkuYHgi3QbzRMJtMM0eHJZAJQs3YvXO+JMbEt
+	IfqjTJOi5FXCXA3zYFvh86fBdfp4yz3fDniGkoFOQlhtiLEThDIvgQKzWiu6g+o2w0acHwpV2JjEg
+	f4YbUiBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEvRY-00000007dY0-2iMW;
-	Mon, 20 Apr 2026 20:42:08 +0000
-Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
+	id 1wEvUw-00000007dts-18ai;
+	Mon, 20 Apr 2026 20:45:38 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEvRV-00000007dXc-21By
+	id 1wEvUu-00000007dsl-1E9Y
 	for linux-mediatek@lists.infradead.org;
-	Mon, 20 Apr 2026 20:42:06 +0000
-Received: by mail-yx1-xb134.google.com with SMTP id 956f58d0204a3-65006c99d38so3330690d50.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 20 Apr 2026 13:42:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1776717724; cv=none;
-        d=google.com; s=arc-20240605;
-        b=iex0PUw2xrw32yixDck0ApxiykYNci/DF6+4acANeTGM8gY8a4WE3rGnhubZ8IGeeH
-         Jn9Bobm/mI9TkrfpJngDwzPYz08UiLIwlOZa7d9QL1n1fRyyJN1YwULJBOt1++n7x4Xu
-         v16veLzdpdgbJYjY9/CpHKd7XWaxLfCLxpRYR/lYp2cfQxWsE+lkK4HUUBVz83p7BUlf
-         O0upA40B40Cc6YktZUcUB6hm4MN91eamIZlBVK3u+ZUwZ88YPi/eYURha35gtvNmOR6r
-         qHr8jpFeUc+imrAUMT5eT5wzc8wsicgi/qi8g9fhgxZEnLamdRyCQQwKjgDWcf5eoGbG
-         0naA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=YPMesXK6zWWUdv1z0+n4FdWvrPSk0fKkgxZCyXQ+qGI=;
-        fh=0nEpECICOFHwZcJcUj/+vCgCBXCONNbUf7JscK2a7Mw=;
-        b=KyOem8Yh/9SRykHS3hbcBudGbxpHgGFJjiwB+o22+4MVW+3WEeW/MZkhoRaH1xKyME
-         ip9RkmJaKPqCeGOJ/l2D5PsVjSL1CXfVx2DMN/gvIDPgEBnYHOhha551KxxJreT3b6Yn
-         EnNa4BRXoHGejtslGTjJ5JsWM2Dotz/sUSBJOc1n/PHnB/laAWo2Y4cSdhXWdeQ+2aZq
-         DechqQCgAWyyx9jZIj5LfG2l7KIvNn4zsZrj81pJF5y5me5cx7GaCUP2Qn2M2odFFHdY
-         m2WiPrCMLp+kQKRMk86ZIlzbi18KKT2l2d+ePnPi3tg7pBSnZN9RpD1ZqEp7sn2kcMx2
-         V1tw==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Mon, 20 Apr 2026 20:45:37 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-488ba840146so33334865e9.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 20 Apr 2026 13:45:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1776717724; x=1777322524; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=YPMesXK6zWWUdv1z0+n4FdWvrPSk0fKkgxZCyXQ+qGI=;
-        b=AP4BNAbOyqS0qKr4DZifNsTI3XvGDfnaA3GjtlOjVfIQiGBQTAtwryWgZAygHAaP5Y
-         6bKLjh1rg0H8Gj8ox6EACvYegtUV9TAxuqzUgclQAikc881OK/o9Uvdq4vyEPBXzkmtO
-         O17Xn52KvPcNaulSNpc2NB/U8O0yLD3uiFv5520/hzeI0fkAYIFZeWc5I8jb4SI4+Rke
-         qbi8qmdda7JCP4faG92Gliv02Jk4tKR0ZWpS2kvBkJRFh1QtR5Pn1n5GQ0tyAc4ccynp
-         N6rgWJDinhLsUen2pVbhdb1JhHLEh7bSmdhJ4OYXr9lrTLqj4LRBa8L7B0UaOwpriafI
-         nGFw==
+        d=gmail.com; s=20251104; t=1776717934; x=1777322734; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=NFxnKBIb4rP9HCGv24zgq2DmExS0pP68iWUHvrzRj3k=;
+        b=D6KBscg0TPl7AywJz5OWmv8ZShTf7c1fZuDQMVo4EVU3hBbeELYJeFloaSqxjURj8H
+         oEGZ4xmXmfYz3a1WHI8DAXgHI5RrLkDNQmoZoB5s4S+i0F1vX2x3HC1C39e7T0Qu9QNu
+         k85IZmOvGaW1ARhCC0OdTNDy5dCpTGpkD+PB0Os0FkC+H5TsoMnUBjCWm0SE+Hf2/Dvq
+         0TmHSkaOAlVs6uqEo0r7cUb1ya7+/jFBzfrNylL44Uv3SJXkOXX7tXPDqn1aE38SBeZm
+         Ag701jmuGHeSjNa3CRaceAht7fdRQDTlPSUaJsLDe5sAxhoDuUsQE7m3pkdUbDtkSDvg
+         rV3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1776717724; x=1777322524;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=YPMesXK6zWWUdv1z0+n4FdWvrPSk0fKkgxZCyXQ+qGI=;
-        b=OMyFzO+EZeT9Mz9cbGHAXFXxDJX6ZfuZo5t9kcwHe9HGVjdTdPj0INJsRvhLi13kDR
-         bFTSblImZWTtPlxl4yxnEO6K55g2dSDOpGqBhF5m0jtkEnWabvC/lYm9ZwlqWZXlmYlr
-         OFZF952a0uVVeDh63cp18t7Hpu7DK0VQXjfXS+OHz/uSXn5iA+PSCkayQP3k8Chn9NOB
-         e7kQRavBnqwj2e2THoUztqDbGW1f52ClSpPyLzG6X+AMzr6N/+o5ye3mBCWBmOGT9gk5
-         eCwLB49cRd5DBJeLqh1LDqPFfBs2wdD2vqM4FK4BXqrd6DtFILY6YKNo72yInQUzwzkq
-         63rQ==
-X-Forwarded-Encrypted: i=1; AFNElJ/sBcMQEULT7GGhjyX9uYD2taZn7qM+3sPHVpoSSNu+vM/cr6NYWQzII7XDDxykXNAoeZ+koExEJTIWS/omfA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzVR1QZv1yRIyP7rSTPjgECPN5lsLexSRymZIKF36xLbJ9FqGgF
-	7LDbw96m0c/SItIVUxdYmBTuRSuECiareglPFsbp9zTGA2V3w0Um1+WfgBcwcfVSv4VX9+hJ5cO
-	WUnwjnrawAS1iRzMRUZ3CCYRIyzNZY7Y=
-X-Gm-Gg: AeBDieswjysl1cdrVWoMvvMMeToQ1bZKu0E5XLvEhqL//F2CGlAooQeIU7CkuLtQSEE
-	eF2cqzCTDxnLFrtThgSpHQEKH3gLtfzFV90+GtW5w7m62weRAJikmWErWU/J3/AkgGVz/L5jwg9
-	QKtH23eRbwIqIesVrUxTlKD5hbhOUu9w8cQp/4Q3EuLkkXuL1pmRaj32pOEA4iiMT/U2FfOOEk3
-	FygAgdahuwkKcAHPzeZ/zZmZ6GOXSxuYpxyu2mkJ22ky5caGjXHp9qTfDACENGGbNPOX+FgOgLq
-	qrEeXLn48DtJdngXLhf91+Ws6WGkvcMRxBye2LVSNnz9oK4sEAG2FQx2bHAXG6iVAB8yb9EkGy6
-	68ZYF
-X-Received: by 2002:a05:690e:1688:b0:643:1a5f:aaec with SMTP id
- 956f58d0204a3-65310a71a75mr14572943d50.47.1776717723702; Mon, 20 Apr 2026
- 13:42:03 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1776717934; x=1777322734;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=NFxnKBIb4rP9HCGv24zgq2DmExS0pP68iWUHvrzRj3k=;
+        b=CkPKtdf0C8iZ8tL7Q6KQQ60wGrfBeJWfmAR1047Fj7YaxwQx6MGoWty/THkKb+d1Nx
+         Vn8d4yG32/R0I680U5YgRh/ci0AscySX/YJtpn/qlRGC7kMexxF5/K3Lxnor62smbFhY
+         5fJEiDcieyW53DELZRGHZyq3aPpozMP3i3owdSnmIL5yJ6kBLmknJUk3qfkcp1eYNqUZ
+         MO70Qb/GwnXSiKmxpHBY7V66Lq/w2ZMNwelgYKEx6zFzZya4drq59ocl38o6qkMg27ih
+         TrPxHu7VMBrS6CkIB/XODYOws+F458MVhoZ9U1MPyDIHZnKrd7PWq2c1dURnnDDMUsgd
+         dDYA==
+X-Forwarded-Encrypted: i=1; AFNElJ+h0+dd6ZE+nRFNYWcBssIGjxJBiUbefoQI/65gjP+0h2kxs1yt/ywFSrSZt0HcdrR2dbMeI0le+0JfwdZC5Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyk3+AZ5n4Mli64m98RL/TpKGTeGMEZWIF5TUan8GlsIkvg5l0d
+	zhzui7sOZnaQbD0AaW9ne+YGsbSd7zfMPG2kcbItvnJkq5sQZ9u0cw8a
+X-Gm-Gg: AeBDieuILtsEcBI2Tt0hkYTkFtnwk3RDb/oRiT7w5VMnaDkrZiATdlaC257cGLZLIh+
+	jOg4Mx+gxZgNeYsbY0zrOaW5mhGIqDMv3itqIMT/qQV0cAcT5dIisM1XUxdFe08/4O5KUk4dBwa
+	iSdiTDUvg0JOBm3J31b8oSjlJSvyXQ8CPAqGmr2XzYh/Gg6JyqeS9ET9TqRCO8VJxUzHVkLM6WG
+	/IKHrYP4WDg9fMcd/Fua5QrMdSAT7JjsBzSAF8+s7rTP+Sen61OyiTwh4GkEa6eZkc5R0GfihEO
+	ou4HtHWHuXX9AoknstbiCCLdDFu+0eT54iYwG50dViKpeBfvo44w5FkbDHKsyk3og0mA5Ypb8xt
+	CGIDwd9vyD7B2t0jxQtHQzbUfPGwbcSFMyH8r6jFKK8PD5ZRJPb3lE2zvOD7qZH/qJ9T78w59+h
+	K0Uygs6ahJHTSv0iRcRAIo431ncZ2OVQ==
+X-Received: by 2002:a05:600c:8115:b0:488:ac01:72b6 with SMTP id 5b1f17b1804b1-488fb77d7d3mr176918155e9.21.1776717933714;
+        Mon, 20 Apr 2026 13:45:33 -0700 (PDT)
+Received: from luca-vm.lan ([154.61.61.58])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4891c320084sm170344535e9.2.2026.04.20.13.45.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 Apr 2026 13:45:33 -0700 (PDT)
+From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+To: linux-sound@vger.kernel.org
+Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] ASoC: dt-bindings: mediatek: Convert mtk-btcvsd-snd to DT Schema
+Date: Mon, 20 Apr 2026 21:44:30 +0100
+Message-ID: <20260420204514.1640995-1-l.scorcia@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-References: <20260417102919.2549352-1-tristmd@gmail.com>
-In-Reply-To: <20260417102919.2549352-1-tristmd@gmail.com>
-From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-Date: Mon, 20 Apr 2026 16:41:52 -0400
-X-Gm-Features: AQROBzD_GQxwoxVdlYB8b6d_zTcStlFgzMZlZcqFbSiUktCCzUOkh_n5AZI2Cjs
-Message-ID: <CABBYNZK5dsj7oTpXAgJ1mOBYBvN+haDK0okR7ed33QC=Td18JQ@mail.gmail.com>
-Subject: Re: [PATCH v3] Bluetooth: btmtk: validate WMT event SKB length before
- struct access
-To: Tristan Madani <tristmd@gmail.com>
-Cc: linux-bluetooth@vger.kernel.org, marcel@holtmann.org, 
-	sean.wang@mediatek.com, mark-yw.chen@mediatek.com, 
-	linux-mediatek@lists.infradead.org, stable@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260420_134205_531259_FF04577C 
-X-CRM114-Status: GOOD (  16.60  )
+X-CRM114-CacheID: sfid-20260420_134536_367018_B8A41C48 
+X-CRM114-Status: GOOD (  13.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,75 +105,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Tristan,
+Convert the mtk-btcvsd-snd.txt DT binding to DT Schema format.
 
-On Fri, Apr 17, 2026 at 6:29=E2=80=AFAM Tristan Madani <tristmd@gmail.com> =
-wrote:
->
-> From: Tristan Madani <tristan@talencesecurity.com>
->
-> btmtk_usb_hci_wmt_sync() casts the WMT event response SKB data to
-> struct btmtk_hci_wmt_evt (7 bytes) and struct btmtk_hci_wmt_evt_funcc
-> (9 bytes) without first checking that the SKB contains enough data.
-> A short firmware response causes out-of-bounds reads from SKB tailroom.
->
-> Add length validation before each struct access to prevent OOB reads
-> from malformed WMT event responses.
->
-> Fixes: d019930b0049 ("Bluetooth: btmtk: move btusb_mtk_hci_wmt_sync to bt=
-mtk.c")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Tristan Madani <tristan@talencesecurity.com>
-> ---
->  drivers/bluetooth/btmtk.c | 10 ++++++++++
->  1 file changed, 10 insertions(+)
->
-> diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-> index 6fb6ca274..b1a96ebae 100644
-> --- a/drivers/bluetooth/btmtk.c
-> +++ b/drivers/bluetooth/btmtk.c
-> @@ -695,6 +695,12 @@ static int btmtk_usb_hci_wmt_sync(struct hci_dev *hd=
-ev,
->         if (data->evt_skb =3D=3D NULL)
->                 goto err_free_wc;
->
-> +       /* Validate SKB length before accessing WMT event structs */
-> +       if (data->evt_skb->len < sizeof(*wmt_evt)) {
-> +               err =3D -EINVAL;
-> +               goto err_free_skb;
-> +       }
+Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+---
+ .../sound/mediatek,mtk-btcvsd-snd.yaml        | 54 +++++++++++++++++++
+ .../bindings/sound/mtk-btcvsd-snd.txt         | 24 ---------
+ 2 files changed, 54 insertions(+), 24 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mtk-btcvsd-snd.yaml
+ delete mode 100644 Documentation/devicetree/bindings/sound/mtk-btcvsd-snd.txt
 
-Can't we just use skb_pull_data instead?
+diff --git a/Documentation/devicetree/bindings/sound/mediatek,mtk-btcvsd-snd.yaml b/Documentation/devicetree/bindings/sound/mediatek,mtk-btcvsd-snd.yaml
+new file mode 100644
+index 000000000000..f423e3a02997
+--- /dev/null
++++ b/Documentation/devicetree/bindings/sound/mediatek,mtk-btcvsd-snd.yaml
+@@ -0,0 +1,54 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/sound/mediatek,mtk-btcvsd-snd.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek ALSA BT SCO CVSD/MSBC Driver
++
++properties:
++  compatible:
++    const: mediatek,mtk-btcvsd-snd
++
++  reg:
++    items:
++      - description: Register location and size of PKV
++      - description: Register location and size of SRAM_BANK2
++
++  interrupts:
++    items:
++      - description: BT-SCO interrupt
++
++  mediatek,infracfg:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: The phandle of the infracfg controller
++
++  mediatek,offset:
++    description: Array of register offsets and masks
++    $ref: /schemas/types.yaml#/definitions/uint32-array
++    items:
++      - description: infra_misc_offset
++      - description: infra_conn_bt_cvsd_mask
++      - description: cvsd_mcu_read_offset
++      - description: cvsd_mcu_write_offset
++      - description: cvsd_packet_indicator_offset
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - mediatek,infracfg
++  - mediatek,offset
++
++additionalProperties: false
++
++examples:
++  - |
++    mtk-btcvsd-snd@18000000 {
++      compatible = "mediatek,mtk-btcvsd-snd";
++      reg = <0 0x18000000 0 0x1000>,
++            <0 0x18080000 0 0x8000>;
++      interrupts = <GIC_SPI 286 IRQ_TYPE_LEVEL_LOW>;
++      mediatek,infracfg = <&infrasys>;
++      mediatek,offset = <0xf00 0x800 0xfd0 0xfd4 0xfd8>;
++    };
+diff --git a/Documentation/devicetree/bindings/sound/mtk-btcvsd-snd.txt b/Documentation/devicetree/bindings/sound/mtk-btcvsd-snd.txt
+deleted file mode 100644
+index 679e44839b48..000000000000
+--- a/Documentation/devicetree/bindings/sound/mtk-btcvsd-snd.txt
++++ /dev/null
+@@ -1,24 +0,0 @@
+-Mediatek ALSA BT SCO CVSD/MSBC Driver
+-
+-Required properties:
+-- compatible = "mediatek,mtk-btcvsd-snd";
+-- reg: register location and size of PKV and SRAM_BANK2
+-- interrupts: should contain BTSCO interrupt
+-- mediatek,infracfg: the phandles of INFRASYS
+-- mediatek,offset: Array contains of register offset and mask
+-    infra_misc_offset,
+-    infra_conn_bt_cvsd_mask,
+-    cvsd_mcu_read_offset,
+-    cvsd_mcu_write_offset,
+-    cvsd_packet_indicator_offset
+-
+-Example:
+-
+-	mtk-btcvsd-snd@18000000 {
+-		compatible = "mediatek,mtk-btcvsd-snd";
+-		reg=<0 0x18000000 0 0x1000>,
+-		    <0 0x18080000 0 0x8000>;
+-		interrupts = <GIC_SPI 286 IRQ_TYPE_LEVEL_LOW>;
+-		mediatek,infracfg = <&infrasys>;
+-		mediatek,offset = <0xf00 0x800 0xfd0 0xfd4 0xfd8>;
+-	};
+-- 
+2.43.0
 
-> +
->         /* Parse and handle the return WMT event */
->         wmt_evt =3D (struct btmtk_hci_wmt_evt *)data->evt_skb->data;
->         if (wmt_evt->whdr.op !=3D hdr->op) {
-> @@ -712,6 +718,10 @@ static int btmtk_usb_hci_wmt_sync(struct hci_dev *hd=
-ev,
->                         status =3D BTMTK_WMT_PATCH_DONE;
->                 break;
->         case BTMTK_WMT_FUNC_CTRL:
-> +               if (data->evt_skb->len < sizeof(*wmt_evt_funcc)) {
-> +                       err =3D -EINVAL;
-> +                       goto err_free_skb;
-> +               }
-
-Ditto.
-
->                 wmt_evt_funcc =3D (struct btmtk_hci_wmt_evt_funcc *)wmt_e=
-vt;
->                 if (be16_to_cpu(wmt_evt_funcc->status) =3D=3D 0x404)
->                         status =3D BTMTK_WMT_ON_DONE;
-> --
-> 2.47.3
->
-
-https://sashiko.dev/#/patchset/20260417102919.2549352-1-tristmd%40gmail.com
-
-We should probably check if the comments above are valid and have them fixe=
-d.
-
---=20
-Luiz Augusto von Dentz
 
