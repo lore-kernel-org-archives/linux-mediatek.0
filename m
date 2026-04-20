@@ -4,97 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5B19F5A8BB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 20:31:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF436F5A8C6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 20:42:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1fmttW43m02UXdVQMFbm1+Fjb9kM23jey1UIcB3meSs=; b=T0yGhn0dCnNW8Ehdm7MOarxQpc
-	t5FyqxALtMkH2+T6xam5CMEP/KHC9n7mq0wj8+iAvwL2dvNils5waBLGvfSbmAeSZyenHTyGi5CyR
-	9h3uF8kIgDRIvLeIZCGVQNa1SCE2CgtwM4tkUJs81xjVWaZcMJzawOHmZlfK5yQmVyOI8NFficSd2
-	fHt41ObhubzmwIcowbkkWwhyqwllmn5Aqbwu1EZsUf8W0HpeZwtbgWbZ33dVYxf8mrH6KEi4wcaMd
-	vQ0u1H1difvb2w7+ZC1VtSm1+lCQ8CHIQIsKbxvOewHOdzTO/AjjX4x6/WPqefeAI0Zy2zZ5coYyq
-	sh49KgKA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YPMesXK6zWWUdv1z0+n4FdWvrPSk0fKkgxZCyXQ+qGI=; b=QQnsef6aB/EFWIKavl4kvG34jE
+	LqqEYZm4/hCeD0KMZO+ko7f4tYJrSAE14orNXm6eCfpofQCu1DWRmkQzAyRcB0u1pEhx8IQdDBNmx
+	FTAZKSSoZivjVLIRKEutO3TEkfK6voXFwQCs1nXCZ2am+Xyq89sPCaPVpQxzA41EiJA30k3IdOYgD
+	u9VHmUh47Cnxa3wOuKYD8C63UjmnoMT9cRPWJwBgkhdcOlYMZ8KXZutsiKhGFRPNMxU88jClE6uU3
+	JoZT1k/00Vt8fYgVRtld+hcn6aInYRB8mGt0W2yfcOaLrzHf3ZNW4UrP/IUKCdSYW6/uOmtetPDsp
+	Rdn8ZsRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEvHM-00000007dBq-191C;
-	Mon, 20 Apr 2026 20:31:36 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1wEvRY-00000007dY0-2iMW;
+	Mon, 20 Apr 2026 20:42:08 +0000
+Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEvHJ-00000007dBR-0irL
+	id 1wEvRV-00000007dXc-21By
 	for linux-mediatek@lists.infradead.org;
-	Mon, 20 Apr 2026 20:31:35 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-488a9033b2cso39727715e9.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 20 Apr 2026 13:31:32 -0700 (PDT)
+	Mon, 20 Apr 2026 20:42:06 +0000
+Received: by mail-yx1-xb134.google.com with SMTP id 956f58d0204a3-65006c99d38so3330690d50.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 20 Apr 2026 13:42:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1776717724; cv=none;
+        d=google.com; s=arc-20240605;
+        b=iex0PUw2xrw32yixDck0ApxiykYNci/DF6+4acANeTGM8gY8a4WE3rGnhubZ8IGeeH
+         Jn9Bobm/mI9TkrfpJngDwzPYz08UiLIwlOZa7d9QL1n1fRyyJN1YwULJBOt1++n7x4Xu
+         v16veLzdpdgbJYjY9/CpHKd7XWaxLfCLxpRYR/lYp2cfQxWsE+lkK4HUUBVz83p7BUlf
+         O0upA40B40Cc6YktZUcUB6hm4MN91eamIZlBVK3u+ZUwZ88YPi/eYURha35gtvNmOR6r
+         qHr8jpFeUc+imrAUMT5eT5wzc8wsicgi/qi8g9fhgxZEnLamdRyCQQwKjgDWcf5eoGbG
+         0naA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=YPMesXK6zWWUdv1z0+n4FdWvrPSk0fKkgxZCyXQ+qGI=;
+        fh=0nEpECICOFHwZcJcUj/+vCgCBXCONNbUf7JscK2a7Mw=;
+        b=KyOem8Yh/9SRykHS3hbcBudGbxpHgGFJjiwB+o22+4MVW+3WEeW/MZkhoRaH1xKyME
+         ip9RkmJaKPqCeGOJ/l2D5PsVjSL1CXfVx2DMN/gvIDPgEBnYHOhha551KxxJreT3b6Yn
+         EnNa4BRXoHGejtslGTjJ5JsWM2Dotz/sUSBJOc1n/PHnB/laAWo2Y4cSdhXWdeQ+2aZq
+         DechqQCgAWyyx9jZIj5LfG2l7KIvNn4zsZrj81pJF5y5me5cx7GaCUP2Qn2M2odFFHdY
+         m2WiPrCMLp+kQKRMk86ZIlzbi18KKT2l2d+ePnPi3tg7pBSnZN9RpD1ZqEp7sn2kcMx2
+         V1tw==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20251104.gappssmtp.com; s=20251104; t=1776717091; x=1777321891; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=1fmttW43m02UXdVQMFbm1+Fjb9kM23jey1UIcB3meSs=;
-        b=purmVCS+ZGBlTE781fRQ1dX86d+u1vgih3rlCEb4rtBvMyh8LKqXNJIo8R/MPAlBf9
-         agPP2N4MtxdfgDcVWGu2xke78VuTOJEXRhUPASryo3jpAPitbwVjfS2RTWu6b2ybMshj
-         M19tQ7WihE8K7f2uwYTdyFyIhyMkqMG9Fz4GeelyBmu9uZ90JVQ16neMJaXID6UgCzp7
-         eDZlvMoBQKxRZe83hPRIi0lNCudboMa/Ksl5UPmY8T+VWqU64spiG82MCc4kTWeWekaW
-         ZsoSV4qJZJm7js5DThDP4zyR5QfCn8gsm+O+bGikX2RRhIL2FxoVmFnAp6X4kEiciACa
-         u5pQ==
+        d=gmail.com; s=20251104; t=1776717724; x=1777322524; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=YPMesXK6zWWUdv1z0+n4FdWvrPSk0fKkgxZCyXQ+qGI=;
+        b=AP4BNAbOyqS0qKr4DZifNsTI3XvGDfnaA3GjtlOjVfIQiGBQTAtwryWgZAygHAaP5Y
+         6bKLjh1rg0H8Gj8ox6EACvYegtUV9TAxuqzUgclQAikc881OK/o9Uvdq4vyEPBXzkmtO
+         O17Xn52KvPcNaulSNpc2NB/U8O0yLD3uiFv5520/hzeI0fkAYIFZeWc5I8jb4SI4+Rke
+         qbi8qmdda7JCP4faG92Gliv02Jk4tKR0ZWpS2kvBkJRFh1QtR5Pn1n5GQ0tyAc4ccynp
+         N6rgWJDinhLsUen2pVbhdb1JhHLEh7bSmdhJ4OYXr9lrTLqj4LRBa8L7B0UaOwpriafI
+         nGFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1776717091; x=1777321891;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=1fmttW43m02UXdVQMFbm1+Fjb9kM23jey1UIcB3meSs=;
-        b=Sz0/8qeUIAXzuGHA7jvmB5MdJvfxhHzL2Wlt5GKrc2YKCNMzBeIwHnDLN9r2PAmXxp
-         Ifc8hPfAyRysQIk9oT7lqF3YrhR30pY2vbkny6fBWSenWutuW+NNp9zsmU6OLc7CHb/k
-         tse6MrzAcpjQNIPmyt00+wvySuBPr1cLRYNCnihttowik8+HTrNMdlswrJeA2+1c9cBZ
-         JZtffC5W2ayY+NfrSD6od0fYp7iyMj8MwsYzuNeoVZpNOASJzwe6x1H7cgw3bprV/2By
-         RHHu5ZoTPQIc//qRedEJc8Uxqdh7q9j5g8Y8GHWKWsq+nWqwSoKo6wBw/om6b7G/Fp9o
-         qaug==
-X-Forwarded-Encrypted: i=1; AFNElJ/5Bju+IdoYICsvwunNx5riGEdrF6vCx2iEg/4Z5CiyCPvy401O9BFzr3THP2nw9hKZbmvYKl0K5jQdbZXk4Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yyv8e9qkRwgdYrqfpbYKv6igYfANKoshiCII3JXLM1uGEtd7OAN
-	3MflHCyuB6e950NB1UcvDvYv66JftylxP8u1p0JYWjRMOrpVamlftH/rAVDhSITVDQU=
-X-Gm-Gg: AeBDies1wfdRTHDT207/8S6LVg6hegkXajOvriqVMgexdS//WS9K7NPZWqrfHhQ8mbM
-	uLsmKIu9Kwyw8JeUR0wNGu8e4VN5C1M5gTh+j3SrbbQuU2cYHGEt6t6U/j7hnnfNsglXPuDXbg7
-	/YS/Y5gLr2G4YAiULVzT67Insfoeu2SDHO4sGRNNqbQtWtcwyhXTfrtL1ZcBPcI6CGD2siNagUI
-	tbSsxKgG9ICKugYp2uyapjKQed6ngLsC+GV+4jHAb7KURVtQcKS6rnKgN4TnRKsLt0ZGZN/E74i
-	xDUb5y8WaETnVQyz+nfM9AJ5AXtZOWt+/eyVHPAJGTX2lz2+FESez7/MsszVaFrZxiYPl7CtjfI
-	Q58yR7Q5vyM2uzjKn41cy8B7w5Nmo+bAOmRORDzuxyFbisPJrSIeUfRW0UiaPOh5GQvuFWDdtr+
-	5aP2WY/yfo/qRA7n87fisCX/KIf7PB4Rbnucz3RLI=
-X-Received: by 2002:a05:600c:4f49:b0:489:1ff1:74df with SMTP id 5b1f17b1804b1-4891ff176bamr64290705e9.1.1776717090675;
-        Mon, 20 Apr 2026 13:31:30 -0700 (PDT)
-Received: from localhost ([2a02:8071:b783:6940:1d24:d58d:2b65:c291])
-        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-488fb7a0745sm126204805e9.9.2026.04.20.13.31.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Apr 2026 13:31:29 -0700 (PDT)
-Date: Mon, 20 Apr 2026 22:31:28 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>
-To: Ulf Hansson <ulfh@kernel.org>
-Cc: "Christian A. Ehrhardt" <christian.ehrhardt@codasip.com>, 
-	linux-mmc@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Wolfram Sang <wsa+renesas@sang-engineering.com>, linux-kernel@vger.kernel.org, 
-	Marcel Holtmann <marcel@holtmann.org>, Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
-	linux-bluetooth@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mediatek@lists.infradead.org, 
-	Ping-Ke Shih <pkshih@realtek.com>, linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
-	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
-	Brian Norris <briannorris@chromium.org>, Francesco Dolcini <francesco@dolcini.it>, 
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Subject: Re: [PATCH v1 1/6] sdio: Add syntactic sugar to store a pointer in
- sdio_driver_id
-Message-ID: <aeaMkfk_1t98e7SU@monoceros>
-References: <cover.1776429984.git.u.kleine-koenig@baylibre.com>
- <c830049dcfcd99f005e2ff6742aace9341c61f13.1776429984.git.u.kleine-koenig@baylibre.com>
+        d=1e100.net; s=20251104; t=1776717724; x=1777322524;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=YPMesXK6zWWUdv1z0+n4FdWvrPSk0fKkgxZCyXQ+qGI=;
+        b=OMyFzO+EZeT9Mz9cbGHAXFXxDJX6ZfuZo5t9kcwHe9HGVjdTdPj0INJsRvhLi13kDR
+         bFTSblImZWTtPlxl4yxnEO6K55g2dSDOpGqBhF5m0jtkEnWabvC/lYm9ZwlqWZXlmYlr
+         OFZF952a0uVVeDh63cp18t7Hpu7DK0VQXjfXS+OHz/uSXn5iA+PSCkayQP3k8Chn9NOB
+         e7kQRavBnqwj2e2THoUztqDbGW1f52ClSpPyLzG6X+AMzr6N/+o5ye3mBCWBmOGT9gk5
+         eCwLB49cRd5DBJeLqh1LDqPFfBs2wdD2vqM4FK4BXqrd6DtFILY6YKNo72yInQUzwzkq
+         63rQ==
+X-Forwarded-Encrypted: i=1; AFNElJ/sBcMQEULT7GGhjyX9uYD2taZn7qM+3sPHVpoSSNu+vM/cr6NYWQzII7XDDxykXNAoeZ+koExEJTIWS/omfA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzVR1QZv1yRIyP7rSTPjgECPN5lsLexSRymZIKF36xLbJ9FqGgF
+	7LDbw96m0c/SItIVUxdYmBTuRSuECiareglPFsbp9zTGA2V3w0Um1+WfgBcwcfVSv4VX9+hJ5cO
+	WUnwjnrawAS1iRzMRUZ3CCYRIyzNZY7Y=
+X-Gm-Gg: AeBDieswjysl1cdrVWoMvvMMeToQ1bZKu0E5XLvEhqL//F2CGlAooQeIU7CkuLtQSEE
+	eF2cqzCTDxnLFrtThgSpHQEKH3gLtfzFV90+GtW5w7m62weRAJikmWErWU/J3/AkgGVz/L5jwg9
+	QKtH23eRbwIqIesVrUxTlKD5hbhOUu9w8cQp/4Q3EuLkkXuL1pmRaj32pOEA4iiMT/U2FfOOEk3
+	FygAgdahuwkKcAHPzeZ/zZmZ6GOXSxuYpxyu2mkJ22ky5caGjXHp9qTfDACENGGbNPOX+FgOgLq
+	qrEeXLn48DtJdngXLhf91+Ws6WGkvcMRxBye2LVSNnz9oK4sEAG2FQx2bHAXG6iVAB8yb9EkGy6
+	68ZYF
+X-Received: by 2002:a05:690e:1688:b0:643:1a5f:aaec with SMTP id
+ 956f58d0204a3-65310a71a75mr14572943d50.47.1776717723702; Mon, 20 Apr 2026
+ 13:42:03 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="u46iqxpjoedhizpi"
-Content-Disposition: inline
-In-Reply-To: <c830049dcfcd99f005e2ff6742aace9341c61f13.1776429984.git.u.kleine-koenig@baylibre.com>
+References: <20260417102919.2549352-1-tristmd@gmail.com>
+In-Reply-To: <20260417102919.2549352-1-tristmd@gmail.com>
+From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
+Date: Mon, 20 Apr 2026 16:41:52 -0400
+X-Gm-Features: AQROBzD_GQxwoxVdlYB8b6d_zTcStlFgzMZlZcqFbSiUktCCzUOkh_n5AZI2Cjs
+Message-ID: <CABBYNZK5dsj7oTpXAgJ1mOBYBvN+haDK0okR7ed33QC=Td18JQ@mail.gmail.com>
+Subject: Re: [PATCH v3] Bluetooth: btmtk: validate WMT event SKB length before
+ struct access
+To: Tristan Madani <tristmd@gmail.com>
+Cc: linux-bluetooth@vger.kernel.org, marcel@holtmann.org, 
+	sean.wang@mediatek.com, mark-yw.chen@mediatek.com, 
+	linux-mediatek@lists.infradead.org, stable@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260420_133133_480053_62679CCF 
-X-CRM114-Status: GOOD (  17.55  )
+X-CRM114-CacheID: sfid-20260420_134205_531259_FF04577C 
+X-CRM114-Status: GOOD (  16.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,58 +119,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Tristan,
 
---u46iqxpjoedhizpi
-Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v1 1/6] sdio: Add syntactic sugar to store a pointer in
- sdio_driver_id
-MIME-Version: 1.0
+On Fri, Apr 17, 2026 at 6:29=E2=80=AFAM Tristan Madani <tristmd@gmail.com> =
+wrote:
+>
+> From: Tristan Madani <tristan@talencesecurity.com>
+>
+> btmtk_usb_hci_wmt_sync() casts the WMT event response SKB data to
+> struct btmtk_hci_wmt_evt (7 bytes) and struct btmtk_hci_wmt_evt_funcc
+> (9 bytes) without first checking that the SKB contains enough data.
+> A short firmware response causes out-of-bounds reads from SKB tailroom.
+>
+> Add length validation before each struct access to prevent OOB reads
+> from malformed WMT event responses.
+>
+> Fixes: d019930b0049 ("Bluetooth: btmtk: move btusb_mtk_hci_wmt_sync to bt=
+mtk.c")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Tristan Madani <tristan@talencesecurity.com>
+> ---
+>  drivers/bluetooth/btmtk.c | 10 ++++++++++
+>  1 file changed, 10 insertions(+)
+>
+> diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+> index 6fb6ca274..b1a96ebae 100644
+> --- a/drivers/bluetooth/btmtk.c
+> +++ b/drivers/bluetooth/btmtk.c
+> @@ -695,6 +695,12 @@ static int btmtk_usb_hci_wmt_sync(struct hci_dev *hd=
+ev,
+>         if (data->evt_skb =3D=3D NULL)
+>                 goto err_free_wc;
+>
+> +       /* Validate SKB length before accessing WMT event structs */
+> +       if (data->evt_skb->len < sizeof(*wmt_evt)) {
+> +               err =3D -EINVAL;
+> +               goto err_free_skb;
+> +       }
 
-Hello,
+Can't we just use skb_pull_data instead?
 
-On Fri, Apr 17, 2026 at 03:10:47PM +0200, Uwe Kleine-K=F6nig (The Capable H=
-ub) wrote:
-> On all current Linux architectures sizeof(long) =3D=3D sizeof(void *) and
-> this is used a lot through the kernel. For example it enables the usual
-> practice to store pointers in sdio_driver_id's .driver_data member.
->=20
-> This works fine, but involves casting and thus isn't type-safe.
-> Additionally with the CHERI architecture extension there are machines
-> with sizeof(void *) > sizeof(long) for with the traditional approach of
-> storing a pointer in .driver_data doesn't work.
->=20
-> By replacing the plain unsigned long .driver_data by an anonymous union,
-> most of the casting can be dropped and it yields a working solution for
-> CHERI.
->=20
-> All users of struct sdio_driver_id are initialized in a way that is
-> compatible with the new definition, so no adaptions are needed there.
+> +
+>         /* Parse and handle the return WMT event */
+>         wmt_evt =3D (struct btmtk_hci_wmt_evt *)data->evt_skb->data;
+>         if (wmt_evt->whdr.op !=3D hdr->op) {
+> @@ -712,6 +718,10 @@ static int btmtk_usb_hci_wmt_sync(struct hci_dev *hd=
+ev,
+>                         status =3D BTMTK_WMT_PATCH_DONE;
+>                 break;
+>         case BTMTK_WMT_FUNC_CTRL:
+> +               if (data->evt_skb->len < sizeof(*wmt_evt_funcc)) {
+> +                       err =3D -EINVAL;
+> +                       goto err_free_skb;
+> +               }
 
-sashiko.dev found s/sdio_driver_id/sdio_device_id/ twice in the commit
-log and once in the short log. If you consider applying this patch
-please adapt the commit message accordingly.
+Ditto.
 
-Many thanks to those who created sashiko.dev!
+>                 wmt_evt_funcc =3D (struct btmtk_hci_wmt_evt_funcc *)wmt_e=
+vt;
+>                 if (be16_to_cpu(wmt_evt_funcc->status) =3D=3D 0x404)
+>                         status =3D BTMTK_WMT_ON_DONE;
+> --
+> 2.47.3
+>
 
-Best regards
-Uwe
+https://sashiko.dev/#/patchset/20260417102919.2549352-1-tristmd%40gmail.com
 
---u46iqxpjoedhizpi
-Content-Type: application/pgp-signature; name="signature.asc"
+We should probably check if the comments above are valid and have them fixe=
+d.
 
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmnmjQwACgkQj4D7WH0S
-/k7lawf+IBy1b5wfuwWZiVYsobJ5/VQtS1uab/j//LDVdxK0lHUoqurrxgHf8aFa
-2/h7V1KF+nbxyYPjLmWI8a37uIwuSKZ5vijoBeDnFRFwWdEokon2xNz+IK0hTkf4
-Ill7bkiF7fk+epa8am5nZ9gUbmy1nlQbFZHlXizQA4YeFOlLyfOdPTsXw8p/P7Tq
-RIGbTgcE13Qkiokn+iCwGUzLfb1sjBm+Nx3M/g1/C2r4tw+M1ypwCAizKjjvFyTz
-8a7d4lCX5G140aKhxhTCdN3nE5iwtvZ4w9BT2RXRY03pv4w0FW5Xyc/PqymZ2Kp/
-qcp9T3xPsnUPVlIgTg1SnhlhnrS5Qg==
-=RSgT
------END PGP SIGNATURE-----
-
---u46iqxpjoedhizpi--
+--=20
+Luiz Augusto von Dentz
 
