@@ -4,47 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4154F588C2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 13:15:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F041F588C5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 13:16:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/pYV/DrEEhy9R/PsS38AT0sDL/upZTOa7PoRVejtnNA=; b=Ch2uJQixqgbUqiqVMKi6ufp4d0
-	nodD4AyLOvU09QQ8Bdo12dcrQTJPXvxllYKyJV2vW0c6YS0Lk6PsVmXqFXDelHBYYdFcPNIzDKP5f
-	MTL/KbT9/Uh1QEAJ150cCvXp3TsLZLLfMMyBSVsgq33jKejimcvuwkAqbV1QzqF8PG4eqhfHTIDWd
-	Qnn61qD/oFCY50pkWUPa2QMiCVt8F2petWlUSizwBigFGwi77LHseBLYg+zWrfAimtflR4W/zgWjK
-	XEtWVbGSyK+2BI1D7h0Yy+IVPqJ/BdrHVi68C+QQd8CbkRs7i2XzMNSj/2+RboxCJJNICUjAdG+W+
-	YlqDBbWg==;
+	bh=FLd6z6Q1lnuqIRVH4mif3W6e3qNGv//sJZwYQPxpdv8=; b=vRHTmzit3etSEjqyqSfBYFYobA
+	MliLXwnkQED8AcuWg8Q3ZcqM6C1Td488EmRIGKNuR/nbxCDtMna8VO7AgFRx6r0T2ucfNHjaR8ftL
+	1qaKHN019kTJ1lYzZ7953dG9h23Wm7wa1vKY+pLteirAxxc5ozFpTl5XjFu3jE/0E7psLP0YsiJ8Z
+	dvnL1oR4WvV6um89t+XT/j86UgRGnOTb1GYLx2fXi5+v/gGaiv8zGIRAIL1oK7VCPYX/6LwnUIRL7
+	006iiz7vHxQECRD3kjxAaeudv7a3pir1QhpKtqbG1SOgB7JLTey8gGhh9Oj8mk+E7QzKlDgSaPDl9
+	UI3ZoWVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEoTj-00000006xwe-2VBw;
-	Mon, 20 Apr 2026 13:15:55 +0000
+	id 1wEoU6-00000006yDq-3IS7;
+	Mon, 20 Apr 2026 13:16:18 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEoTg-00000006xuX-2w9E;
-	Mon, 20 Apr 2026 13:15:54 +0000
+	id 1wEoU0-00000006y9T-45qL;
+	Mon, 20 Apr 2026 13:16:15 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 606DB40331;
-	Mon, 20 Apr 2026 13:15:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E9543C19425;
-	Mon, 20 Apr 2026 13:15:50 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 84E3141901;
+	Mon, 20 Apr 2026 13:16:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E1038C2BCC4;
+	Mon, 20 Apr 2026 13:16:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776690952;
-	bh=VWOTnYN/a6Qya2C8TW2lWsYuvseWE56Cy8ZSZjxYK7g=;
+	s=k20201202; t=1776690972;
+	bh=XRu+DMAZZf7fnaXEhjw82GF1wBHfzxLJuoQc7tEAjZc=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=U1bt9X/Q5cLFwDWpmuJyUIAvwwhuq67TeWS5A+fjoAxCPeod0V12cXARBloMbe+71
-	 GzLhmIEyaqcKRr34ceUzV7MMKfhazT3Urk/2pSdoLkQF7oairQov1uhn1OX37dmY/r
-	 1jvyOaueM8yPUATn9TD7B4K0COdQWwz8CIMtdoVvAYyoLVpPrAwzDfGD9Fq7XODAx/
-	 2IwlemSu6KMD4RCoZ+/AUrJ9s1hyoZRWuth73YAF5SVLiafhZr0FzhN/67l/YAPVH6
-	 nVqDjEBIUP0vzuRHie2gM2SZbI5XC6t6AqJyze17iL2EOvbIBX8/ef4utSCEEiVGWG
-	 GTzK9zj1Ah6tg==
+	b=QRHwl6ih7O4Ep0yW0eyLlp11HYqg37Y0e64D1tUxQp9nXu+KLy5EPHIJyHKPy/mQw
+	 A8gSPrAj+FJn57XHPNKbLlEFgakXVngpPA0cRllsYi6skQU92rPuybx3yvCwXrMSSR
+	 Tiw1hraIzRKdz3c8jOyoxWn6iOq+yNVDllWWxkXkAPk+JYzPuVk369tBbp0i1pmO1F
+	 BAizd3QWRbDTFf/MF85TaNjXyNpk+dXTQA3Dpifh9VvZWZDKxAY2mTlwTOGO+VeUJg
+	 cS1cbKtC6J0zA/Uw18rSF+C+SEqFl6OnqpxwjqZKdukY0cNicuviOiy87+AyTjniI3
+	 z4QwVYnnLExGA==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: David Bauer <mail@david-bauer.net>,
+Cc: Leon Yen <leon.yen@mediatek.com>,
+	"Chia-Lin Kao (AceLan)" <acelan.kao@canonical.com>,
 	Felix Fietkau <nbd@nbd.name>,
 	Sasha Levin <sashal@kernel.org>,
 	lorenzo@kernel.org,
@@ -56,9 +57,9 @@ Cc: David Bauer <mail@david-bauer.net>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 7.0-6.18] wifi: mt76: don't return TXQ when exceeding max non-AQL packets
-Date: Mon, 20 Apr 2026 09:07:54 -0400
-Message-ID: <20260420131539.986432-8-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 7.0-6.6] wifi: mt76: mt792x: Fix a potential deadlock in high-load situations
+Date: Mon, 20 Apr 2026 09:08:05 -0400
+Message-ID: <20260420131539.986432-19-sashal@kernel.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260420131539.986432-1-sashal@kernel.org>
 References: <20260420131539.986432-1-sashal@kernel.org>
@@ -69,8 +70,8 @@ X-stable-base: Linux 7.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260420_061552_790153_36579036 
-X-CRM114-Status: GOOD (  24.71  )
+X-CRM114-CacheID: sfid-20260420_061613_147001_34BEEA75 
+X-CRM114-Status: GOOD (  23.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,373 +86,294 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: David Bauer <mail@david-bauer.net>
+From: Leon Yen <leon.yen@mediatek.com>
 
-[ Upstream commit 964f870e090e9c88a41e2890333421204cc0bdf4 ]
+[ Upstream commit bb2f07819d063a58756186cac6465341956ac0a4 ]
 
-mt76_txq_send_burst does check if the number of non-AQL frames exceeds
-the maximum. In this case the queue is returned to ieee80211_return_txq
-when iterating over the scheduled TXQs in mt76_txq_schedule_list.
+A deadlock may occur between two works, ps_work and mac_work, if their work
+functions run simultaneously as they attempt to cancel each other by
+calling cancel_delayed_work_sync().
 
-This has the effect of inserting said TXQ at the head of the list. This
-means the loop will get the same TXQ again, which will terminate the
-scheduling round. TXQs following in the list thus never get scheduled
-for transmission.
+mt792x_mac_work() ->   ...  -> cancel_delayed_work_sync(&pm->ps_work);
+mt792x_pm_power_save_work() -> cancel_delayed_work_sync(&mphy->mac_work);
 
-This can manifest in high latency low throughput or broken connections
-for said STAs.
+In high-load situations, they are queued but may not have chance to be
+executed until the CPUs are released. Once the CPUs are available, there
+is a high possibility that the ps_work function and mac_work function will
+be executed simultaneously, resulting in a possible deadlock.
 
-Check if the non-AQL packet count exceeds the limit and not return the
-TXQ in this case.
-Schedule all TXQs for the STA in case the non-AQL limit can be satisfied
-again.
+This patch replaces cancel_delayed_work_sync() with cancel_delayed_work()
+in ps_work to eliminate the deadlock and make the code easier to maintain.
 
-Signed-off-by: David Bauer <mail@david-bauer.net>
-Link: https://patch.msgid.link/20260129232321.276575-1-mail@david-bauer.net
+Signed-off-by: Leon Yen <leon.yen@mediatek.com>
+Tested-by: Chia-Lin Kao (AceLan) <acelan.kao@canonical.com>
+Link: https://patch.msgid.link/20251215122231.3180648-1-leon.yen@mediatek.com
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
 LLM Generated explanations, may be completely bogus:
 
-I now have all the information needed for a complete analysis. Let me
-compile my findings.
+Now I have all the data needed. Let me compile the full analysis.
 
 ---
 
 ## PHASE 1: COMMIT MESSAGE FORENSICS
 
-### Step 1.1: Subject Line
-- **Subsystem**: `wifi: mt76:` (MediaTek mt76 WiFi driver)
-- **Action verb**: "don't return" — indicates preventing incorrect
-  behavior, i.e., a bug fix
-- **Summary**: Don't return TXQ to mac80211 scheduler when the non-AQL
-  packet limit is exceeded
+**Step 1.1: Subject Line**
+- Subsystem: `wifi: mt76: mt792x`
+- Action verb: "Fix"
+- Summary: Fixes a potential deadlock between ps_work and mac_work in
+  high-load situations.
 
-### Step 1.2: Tags
-- **Signed-off-by**: David Bauer (author), Felix Fietkau
-  (committer/maintainer)
-- **Link**:
-  `https://patch.msgid.link/20260129232321.276575-1-mail@david-
-  bauer.net`
-- No Fixes: tag, no Cc: stable, no Reported-by — all expected for a
-  commit under review
-- Felix Fietkau (nbd@nbd.name) is the mt76 subsystem maintainer who
-  merged this
+Record: [wifi/mt76/mt792x] [Fix] [Deadlock between two work functions
+that cancel each other with _sync variant]
 
-### Step 1.3: Commit Body
-- **Bug described**: When `mt76_txq_send_burst` detects non-AQL packets
-  exceeding the limit, it returns 0. The TXQ is then returned to
-  mac80211 via `ieee80211_return_txq()`, which re-inserts it at the head
-  of the scheduling list (with airtime fairness). On the next iteration,
-  `ieee80211_next_txq()` sees the same TXQ with its round number already
-  set, returns NULL, and terminates the scheduling round.
-- **Symptom**: "high latency low throughput or broken connections for
-  said STAs" — TXQs following the problematic one in the list never get
-  scheduled.
-- **Root cause**: TXQ scheduling starvation due to improper return of
-  rate-limited TXQs
+**Step 1.2: Tags**
+- `Signed-off-by: Leon Yen <leon.yen@mediatek.com>` — Author from
+  MediaTek (the chip vendor)
+- `Tested-by: Chia-Lin Kao (AceLan) <acelan.kao@canonical.com>` — Tested
+  by a Canonical engineer
+- `Link: https://patch.msgid.link/20251215122231.3180648-1-
+  leon.yen@mediatek.com`
+- `Signed-off-by: Felix Fietkau <nbd@nbd.name>` — mt76 subsystem
+  maintainer accepted the patch
 
-### Step 1.4: Hidden Bug Fix Detection
-This is an explicit, clearly-described bug fix for a scheduling
-starvation issue.
+Record: Author is from MediaTek (chip vendor). Tested by Canonical
+(Ubuntu). Accepted by mt76 maintainer Felix Fietkau. No Fixes: tag, no
+Reported-by (expected since this is a code-analysis-based fix).
+
+**Step 1.3: Commit Body**
+The message describes:
+- **Bug**: A deadlock between two delayed works: `ps_work` and
+  `mac_work`
+- **Mechanism**: Both try to cancel each other using
+  `cancel_delayed_work_sync()`, which blocks until the target work
+  finishes
+- **Trigger**: High-load situations where both works get queued and
+  execute simultaneously on different CPUs
+- **Fix**: Replace `cancel_delayed_work_sync()` with
+  `cancel_delayed_work()` in ps_work
+
+Record: Classic ABBA deadlock. Failure mode is system hang (deadlock).
+Triggered under high CPU load with WiFi active.
+
+**Step 1.4: Hidden Bug Fix?**
+No — this is explicitly labeled "Fix" and clearly describes a deadlock.
+Not hidden.
 
 ## PHASE 2: DIFF ANALYSIS
 
-### Step 2.1: Inventory
-- **Files changed**: 1 file — `drivers/net/wireless/mediatek/mt76/tx.c`
-- **Changes**: ~20 lines added, 0 removed (two code additions)
-- **Functions modified**: `mt76_tx_check_non_aql()`,
-  `mt76_txq_schedule_list()`
-- **Scope**: Single-file, surgical fix in two specific functions
+**Step 2.1: Inventory**
+- 1 file changed: `drivers/net/wireless/mediatek/mt76/mt792x_mac.c`
+- 1 line changed: `-cancel_delayed_work_sync(` → `+cancel_delayed_work(`
+- Function modified: `mt792x_pm_power_save_work()`
+- Scope: Single-file, single-line, surgical fix
 
-### Step 2.2: Code Flow Changes
+**Step 2.2: Code Flow Change**
+Before: `mt792x_pm_power_save_work()` calls
+`cancel_delayed_work_sync(&mphy->mac_work)`, which blocks until any
+currently-running `mac_work` completes.
 
-**Hunk 1** (`mt76_tx_check_non_aql`):
-- **Before**: Decrements `non_aql_packets` on tx completion, clamps to 0
-  if negative, returns
-- **After**: Same, plus: when `pending == MT_MAX_NON_AQL_PKT - 1` (count
-  just dropped below limit), reschedules all TXQs for the STA via
-  `ieee80211_schedule_txq()`. This ensures TXQs that were dropped from
-  the scheduling list get re-added.
+After: It calls `cancel_delayed_work(&mphy->mac_work)`, which cancels a
+pending work but does NOT wait for a running instance to finish.
 
-**Hunk 2** (`mt76_txq_schedule_list`):
-- **Before**: After getting a TXQ from `ieee80211_next_txq()`, checks PS
-  flag and reset state, then proceeds to `mt76_txq_send_burst()` which
-  may early-return if non-AQL limit is hit. Then always calls
-  `ieee80211_return_txq()`.
-- **After**: Adds a check `if (atomic_read(&wcid->non_aql_packets) >=
-  MT_MAX_NON_AQL_PKT) continue;` — skips the TXQ without returning it to
-  the scheduler, allowing the loop to proceed to the next TXQ.
+**Step 2.3: Bug Mechanism — Deadlock**
 
-### Step 2.3: Bug Mechanism
-This is a **logic/scheduling correctness bug**. The mac80211 TXQ
-scheduler has specific round-tracking semantics:
-- `ieee80211_next_txq()` removes the TXQ and marks its round number
-- `ieee80211_return_txq()` re-inserts it (at HEAD with airtime fairness)
-- A subsequent `ieee80211_next_txq()` seeing the same TXQ's round number
-  → returns NULL, ending the round
+The deadlock is an ABBA pattern between two work functions:
 
-When a non-AQL-limited TXQ is returned to the list, it poisons the
-scheduling round and starves all subsequent TXQs.
+**Chain A** (mac_work → waits for ps_work):
 
-### Step 2.4: Fix Quality
-- **Obviously correct**: Yes — the `continue` pattern is already used in
-  this function for PS flag and reset state checks
-- **Minimal/surgical**: Yes — two small additions, no unrelated changes
-- **Regression risk**: Very low — not returning a rate-limited TXQ is
-  correct; the rescheduling on tx completion ensures it gets re-added
-  when appropriate
+```
+mt792x_mac_work()
+  → mt792x_mutex_acquire()
+    → mt76_connac_mutex_acquire()
+      → mt76_connac_pm_wake()
+        → cancel_delayed_work_sync(&pm->ps_work)   ← WAITS for ps_work
+```
 
-## PHASE 3: GIT HISTORY INVESTIGATION
+**Chain B** (ps_work → waits for mac_work):
 
-### Step 3.1: Blame
-- `mt76_tx_check_non_aql()` — core logic introduced by `e1378e5228aaa1`
-  (Felix Fietkau, 2020-08-23), refactored in `0fe88644c06063`
-  (2021-05-07)
-- `mt76_txq_schedule_list()` — scheduling loop from `17f1de56df0512`
-  (2017-11-21), with non-AQL logic from `e1378e5228aaa1`
-- The non-AQL mechanism itself was introduced in commit `e1378e5228aaa1`
-  which first appeared in **v5.10-rc1**
+```
+mt792x_pm_power_save_work()
+  → cancel_delayed_work_sync(&mphy->mac_work)      ← WAITS for mac_work
+```
 
-### Step 3.2: Fixes Tag
-No Fixes: tag present. However, the bug was effectively introduced by
-`e1378e5228aaa1` ("mt76: rely on AQL for burst size limits on tx
-queueing") in v5.10-rc1.
+If both execute simultaneously:
+- CPU1's mac_work waits for ps_work to finish
+- CPU2's ps_work waits for mac_work to finish
+- **Classic ABBA deadlock → system hang**
 
-### Step 3.3: File History
-- `tx.c` has had 19 commits since v6.1, including multi-radio support
-  (`716cc146d5805`, Jan 2025) and wcid pointer wrapper (`dc66a129adf1f`,
-  Jul 2025)
-- This patch is standalone — not part of a series
+The two works run on *different* workqueues (`mac_work` on ieee80211's
+workqueue, `ps_work` on `dev->mt76.wq`), which confirms they CAN execute
+in parallel on different CPUs.
 
-### Step 3.4: Author
-- David Bauer: occasional mt76 contributor (5 commits found), has worked
-  on mt7915 MCU and other mt76 issues
-- Felix Fietkau: mt76 subsystem maintainer who reviewed and merged this
+**Step 2.4: Fix Quality**
+- Obviously correct: removing `_sync` breaks the circular dependency
+- The non-sync variant is safe here because after the cancel, `ps_work`
+  immediately returns. If `mac_work` is running, it will re-queue itself
+  (line 30-31) and will be properly managed in the next power-save
+  cycle. `mac_work` acquires `mt792x_mutex_acquire` which wakes the
+  device if needed.
+- Minimal/surgical: exactly 1 function call changed
+- Regression risk: Very low — the only difference is not waiting for a
+  running `mac_work` to finish, which is acceptable since `ps_work`
+  doesn't depend on `mac_work` completion
 
-### Step 3.5: Dependencies
-- The `continue` in scheduling loop follows the existing pattern (PS
-  flag, reset state already use `continue`)
-- The rescheduling uses `ieee80211_schedule_txq()` — available since
-  mac80211 TXQ API inception
-- `wcid_to_sta()` — fundamental mt76 helper, present in all trees
-- Minor adaptations needed for older trees (e.g., `__mt76_wcid_ptr` vs
-  `rcu_dereference`)
+## PHASE 3: GIT HISTORY
+
+**Step 3.1: Blame**
+The buggy line was introduced by commit `c21a7f9f406bba` (Lorenzo
+Bianconi, 2023-06-28), "wifi: mt76: mt7921: move shared runtime-pm code
+on mt792x-lib". This was code movement that created the mt792x_mac.c
+file, carrying the original deadlock-prone pattern from mt7921/mac.c.
+
+**Step 3.2: Fixes tag** — No Fixes: tag present (expected).
+
+**Step 3.3: Related changes** — The file has had several changes since,
+but none addressing this specific deadlock.
+
+**Step 3.4: Author** — Leon Yen is a MediaTek engineer with multiple
+mt76 contributions, including WiFi/BT combo fixes and power management
+work.
+
+**Step 3.5: Dependencies** — None. This is a standalone one-line fix.
 
 ## PHASE 4: MAILING LIST RESEARCH
 
-### Step 4.1–4.5
-b4 dig couldn't find the message-id, and lore.kernel.org is blocking
-automated access. The patch link is
-`https://patch.msgid.link/20260129232321.276575-1-mail@david-bauer.net`.
-It was merged by Felix Fietkau (mt76 maintainer), which provides strong
-implicit review. No NAKs or objections were found.
+b4 dig did not find the exact commit (it matched a different file
+change). The lore.kernel.org search was blocked. However, the commit
+message Link tag points to the original submission:
+`20251215122231.3180648-1-leon.yen@mediatek.com`. The patch was accepted
+by Felix Fietkau (mt76 maintainer) and tested by a Canonical engineer.
+
+Record: Maintainer-accepted, independently tested. Standalone patch (not
+a series).
 
 ## PHASE 5: CODE SEMANTIC ANALYSIS
 
-### Step 5.1: Functions Modified
-1. `mt76_tx_check_non_aql()` — called from `__mt76_tx_complete_skb()` on
-   every TX completion
-2. `mt76_txq_schedule_list()` — core TX scheduling loop, called from
-   `mt76_txq_schedule()`
+**Step 5.1: Functions modified**: `mt792x_pm_power_save_work()`
 
-### Step 5.2: Callers
-- `mt76_tx_check_non_aql()` → called from `__mt76_tx_complete_skb()`
-  which is the main TX completion path for ALL mt76 drivers
-- `mt76_txq_schedule_list()` → called from `mt76_txq_schedule()` →
-  `mt76_txq_schedule_all()` → `mt76_tx_worker_run()` — the main TX
-  worker
+**Step 5.2: Callers**: This function is the work handler for
+`pm.ps_work`, queued on `dev->mt76.wq` (an ordered workqueue) via
+`mt76_connac_power_save_sched()`. It is called indirectly when the
+device transitions to power-save mode.
 
-### Step 5.3–5.4: Call Chain
-TX completion path: hardware IRQ → driver tx_complete →
-`__mt76_tx_complete_skb()` → `mt76_tx_check_non_aql()` → (new)
-`ieee80211_schedule_txq()`. This is a very hot, commonly-exercised path.
+**Step 5.3-5.4: Call chain**: The power-save work is scheduled via
+`mt76_connac_mutex_release()` → `mt76_connac_power_save_sched()`, which
+is called after every device register access. This is a very hot path
+for any mt792x WiFi operation.
 
-### Step 5.5: Similar Patterns
-The existing `continue` statements in `mt76_txq_schedule_list()` for PS
-flag and reset state already follow the exact same pattern of skipping
-TXQs without returning them.
+**Step 5.5: Similar patterns**: The `mt7615` driver has similar power-
+save code at `drivers/net/wireless/mediatek/mt76/mt7615/mac.c`, but this
+specific fix only addresses the mt792x code path.
 
 ## PHASE 6: STABLE TREE ANALYSIS
 
-### Step 6.1: Buggy Code in Stable
-The non-AQL mechanism (`e1378e5228aaa1`) was introduced in v5.10-rc1.
-All active stable trees (5.10.y, 5.15.y, 6.1.y, 6.6.y, 6.12.y) contain
-the buggy code.
+**Step 6.1**: The buggy code was introduced in commit `c21a7f9f406bba`
+(June 2023), which is present in v6.6 but NOT in v6.1. Affected stable
+trees: v6.6.y, v6.12.y, and any later LTS.
 
-### Step 6.2: Backport Complications
-- The multi-radio refactoring (`716cc146d5805`, Jan 2025) and wcid_ptr
-  wrapper (`dc66a129adf1f`, Jul 2025) are post-6.12
-- Older trees will need minor adaptation (e.g., different wcid lookup
-  syntax)
-- The core logical change applies cleanly to all trees conceptually
+**Step 6.2**: The fix is a one-line change. It should apply cleanly to
+any tree containing the buggy code.
 
-### Step 6.3: No Related Fixes in Stable
-No existing fix for this scheduling starvation issue was found in
+**Step 6.3**: No related fixes for this specific deadlock already in
 stable.
 
 ## PHASE 7: SUBSYSTEM CONTEXT
 
-### Step 7.1: Subsystem Criticality
-- **Subsystem**: `drivers/net/wireless/mediatek/mt76` — one of the most
-  widely-used WiFi driver families in Linux
-- **Criticality**: IMPORTANT — mt76 covers MT7603, MT7615, MT7915,
-  MT7921, MT7996 chipsets used in routers, laptops, and access points
-- This affects ALL mt76 devices, not just a specific chipset
+**Step 7.1**: `drivers/net/wireless/mediatek/mt76` — WiFi driver for
+MediaTek MT7921/MT7922/MT7925 chipsets. These are extremely popular WiFi
+chips found in many modern laptops (Framework, Lenovo ThinkPad, Dell,
+etc.). Criticality: **IMPORTANT** — affects many real users.
 
-### Step 7.2: Subsystem Activity
-Active development — 30 commits in recent history for tx.c alone.
+**Step 7.2**: The mt76 subsystem is very active with regular
+contributions.
 
 ## PHASE 8: IMPACT AND RISK ASSESSMENT
 
-### Step 8.1: Affected Users
-All users of mt76 WiFi hardware (very broad: routers, embedded systems,
-laptops). mt76 is one of the most popular WiFi driver families in the
-Linux kernel.
+**Step 8.1**: Affects all users with MT7921/MT7922/MT7925 WiFi chipsets
+(very large population, especially Ubuntu/Fedora laptop users).
 
-### Step 8.2: Trigger Conditions
-- Trigger: Multiple STAs connected, one STA hitting the non-AQL packet
-  limit (common during bursts before rate control information is
-  available, or under load)
-- With airtime fairness enabled (default in many configurations):
-  immediate starvation of all other STAs in the same AC
-- Very likely to trigger in multi-client AP scenarios (routers, access
-  points)
+**Step 8.2**: Trigger is high CPU load with active WiFi. Both works must
+execute simultaneously. Under heavy load this is realistic — the commit
+specifically says "In high-load situations, they are queued but may not
+have chance to be executed until the CPUs are released."
 
-### Step 8.3: Failure Mode Severity
-- **Failure mode**: High latency, low throughput, or broken connections
-  for affected STAs
-- **Severity**: HIGH — loss of connectivity/severe degradation for WiFi
-  clients in multi-client scenarios
+**Step 8.3**: **Failure mode: DEADLOCK → system hang**. Severity:
+**CRITICAL** — the system becomes unresponsive.
 
-### Step 8.4: Risk-Benefit
-- **Benefit**: HIGH — fixes scheduling starvation affecting all mt76
-  users with multiple clients
-- **Risk**: VERY LOW — ~20 lines, follows existing patterns, single
-  file, obviously correct, merged by subsystem maintainer
-- **Ratio**: Strongly favorable for backporting
+**Step 8.4**:
+- Benefit: VERY HIGH — prevents deadlock/hang on popular hardware
+- Risk: VERY LOW — 1-line change, removing a sync variant that was
+  causing the deadlock
+- Ratio: Extremely favorable
 
 ## PHASE 9: FINAL SYNTHESIS
 
-### Step 9.1: Evidence Summary
-**FOR backporting:**
-- Fixes a real, user-visible bug (high latency, broken connections)
-- Affects all mt76 WiFi users with multiple clients — very broad impact
-- Small, surgical fix (~20 lines, single file)
-- Follows existing code patterns (`continue` for TXQ skipping)
-- Merged by subsystem maintainer (Felix Fietkau)
-- Bug exists in all stable trees since v5.10
-- No regression risk — the fix is obviously correct
+**Evidence FOR backporting:**
+- Fixes a real deadlock (ABBA pattern) verified through code analysis
+- 1-line fix, obviously correct, minimal regression risk
+- Affects widely-used WiFi hardware (MT7921/MT7922/MT7925)
+- Tested by Canonical engineer (Ubuntu LTS relevance)
+- Accepted by subsystem maintainer
+- Buggy code exists in stable trees v6.6+
+- Failure mode is system hang (CRITICAL)
+- Author is from MediaTek (chip vendor, deep domain expertise)
 
-**AGAINST backporting:**
-- No Fixes: tag or Cc: stable (expected)
-- Minor adaptation needed for older trees due to intermediate
-  refactoring
-- No syzbot/KASAN report (this is a logic/scheduling bug, not memory
-  safety)
+**Evidence AGAINST backporting:**
+- None significant
 
-### Step 9.2: Stable Rules Checklist
-1. Obviously correct and tested? **YES** — merged by maintainer, follows
-   established patterns
-2. Fixes a real bug? **YES** — scheduling starvation causing high
-   latency/broken connections
-3. Important issue? **YES** — connectivity loss for WiFi clients in
-   common multi-client scenarios
-4. Small and contained? **YES** — ~20 lines, single file, two functions
-5. No new features or APIs? **YES** — no new features
-6. Can apply to stable? **YES** — with minor adaptation for older trees
-
-### Step 9.3: Exception Categories
-Not an exception category — this is a standard bug fix.
-
-### Step 9.4: Decision
-This is a clear bug fix for a significant scheduling starvation issue in
-the mt76 WiFi driver. The fix is small, obviously correct, and addresses
-a real user-visible problem (high latency, low throughput, broken
-connections) that affects all mt76 WiFi users in multi-client scenarios.
+**Stable rules checklist:**
+1. Obviously correct and tested? **YES** — 1-line change, independently
+   tested
+2. Fixes a real bug? **YES** — deadlock under high load
+3. Important issue? **YES** — system deadlock/hang (CRITICAL)
+4. Small and contained? **YES** — 1 line in 1 file
+5. No new features? **YES** — pure bug fix
+6. Applies to stable? **YES** — clean apply expected for v6.6+
 
 ## Verification
 
-- [Phase 1] Parsed tags: Signed-off-by David Bauer (author) and Felix
-  Fietkau (maintainer/committer), Link to patch.msgid.link
-- [Phase 2] Diff analysis: ~20 lines added in two functions in tx.c;
-  adds non-AQL limit check in scheduling loop + TXQ rescheduling on tx
-  completion
-- [Phase 2] Verified `ieee80211_return_txq()` calls
-  `__ieee80211_schedule_txq()` which re-inserts at head with airtime
-  fairness (net/mac80211/tx.c lines 4116-4151)
-- [Phase 2] Verified `ieee80211_next_txq()` terminates round when seeing
-  same TXQ's schedule_round (net/mac80211/tx.c lines 4103-4104)
-- [Phase 3] git blame: non-AQL logic introduced in e1378e5228aaa1
-  (2020-08-23), first in v5.10-rc1
-- [Phase 3] git describe: confirmed e1378e5228aaa1 is
-  `v5.10-rc1~107^2~150^2~2^2~34`
-- [Phase 3] Existing `continue` pattern verified in
-  mt76_txq_schedule_list() for PS flag (line 542-543) and reset state
-  (line 546-547)
-- [Phase 3] No dependent patches found; this is standalone
-- [Phase 4] b4 dig: could not find match; lore blocked by anti-scraping
-- [Phase 5] mt76_tx_check_non_aql called from __mt76_tx_complete_skb
-  (hot TX completion path, line 255)
-- [Phase 5] mt76_txq_schedule_list called from mt76_txq_schedule →
-  mt76_txq_schedule_all → mt76_tx_worker_run (main TX worker)
-- [Phase 6] Bug present in all stable trees 5.10.y through 6.12.y
-  (e1378e5228aaa1 in v5.10-rc1)
-- [Phase 6] Backport needs minor adaptation for multi-radio refactoring
-  (716cc146d5805) and wcid_ptr wrapper (dc66a129adf1f)
-- [Phase 8] Failure mode: scheduling starvation → high latency/broken
-  connections; severity HIGH
-- UNVERIFIED: Exact mailing list review discussion (lore blocked);
-  however, maintainer merge provides implicit review confirmation
+- [Phase 1] Parsed tags: Tested-by from Canonical, maintainer SOB from
+  Felix Fietkau
+- [Phase 2] Diff analysis: 1-line change in
+  `mt792x_pm_power_save_work()`, `cancel_delayed_work_sync` →
+  `cancel_delayed_work`
+- [Phase 3] git blame: buggy code from commit c21a7f9f406bba (June
+  2023), code refactoring that moved runtime-PM code to mt792x-lib
+- [Phase 3] `git merge-base --is-ancestor`: confirmed code is in v6.6
+  but NOT in v6.1
+- [Phase 5] Traced deadlock chain: mac_work→mt792x_mutex_acquire→mt76_co
+  nnac_pm_wake→cancel_delayed_work_sync(&ps_work) vs
+  ps_work→cancel_delayed_work_sync(&mac_work)
+- [Phase 5] Verified `dev->mt76.wq` is `alloc_ordered_workqueue`
+  (mac80211.c line 733) and mac_work uses ieee80211's workqueue
+  (different queues → parallel execution possible)
+- [Phase 5] Verified `mt76_connac_power_save_sched` at line 62-83 of
+  mt76_connac_mac.c schedules ps_work, confirming the scheduling path
+- [Phase 6] Confirmed fix applies to v6.6+ stable trees
+- [Phase 7] mt76 is a widely used WiFi driver subsystem
+- [Phase 8] Failure mode: system deadlock/hang, severity CRITICAL
 
 **YES**
 
- drivers/net/wireless/mediatek/mt76/tx.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt792x_mac.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/tx.c b/drivers/net/wireless/mediatek/mt76/tx.c
-index 9ec6d0b53a84a..0753acf2eccb8 100644
---- a/drivers/net/wireless/mediatek/mt76/tx.c
-+++ b/drivers/net/wireless/mediatek/mt76/tx.c
-@@ -227,7 +227,9 @@ mt76_tx_check_non_aql(struct mt76_dev *dev, struct mt76_wcid *wcid,
- 		      struct sk_buff *skb)
- {
- 	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
-+	struct ieee80211_sta *sta;
- 	int pending;
-+	int i;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_mac.c b/drivers/net/wireless/mediatek/mt76/mt792x_mac.c
+index 71dec93094ebd..888e5a5056731 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_mac.c
+@@ -375,7 +375,7 @@ void mt792x_pm_power_save_work(struct work_struct *work)
+ 	}
  
- 	if (!wcid || info->tx_time_est)
+ 	if (!mt792x_mcu_fw_pmctrl(dev)) {
+-		cancel_delayed_work_sync(&mphy->mac_work);
++		cancel_delayed_work(&mphy->mac_work);
  		return;
-@@ -235,6 +237,17 @@ mt76_tx_check_non_aql(struct mt76_dev *dev, struct mt76_wcid *wcid,
- 	pending = atomic_dec_return(&wcid->non_aql_packets);
- 	if (pending < 0)
- 		atomic_cmpxchg(&wcid->non_aql_packets, pending, 0);
-+
-+	sta = wcid_to_sta(wcid);
-+	if (!sta || pending != MT_MAX_NON_AQL_PKT - 1)
-+		return;
-+
-+	for (i = 0; i < ARRAY_SIZE(sta->txq); i++) {
-+		if (!sta->txq[i])
-+			continue;
-+
-+		ieee80211_schedule_txq(dev->hw, sta->txq[i]);
-+	}
- }
- 
- void __mt76_tx_complete_skb(struct mt76_dev *dev, u16 wcid_idx, struct sk_buff *skb,
-@@ -542,6 +555,9 @@ mt76_txq_schedule_list(struct mt76_phy *phy, enum mt76_txq_id qid)
- 		if (!wcid || test_bit(MT_WCID_FLAG_PS, &wcid->flags))
- 			continue;
- 
-+		if (atomic_read(&wcid->non_aql_packets) >= MT_MAX_NON_AQL_PKT)
-+			continue;
-+
- 		phy = mt76_dev_phy(dev, wcid->phy_idx);
- 		if (test_bit(MT76_RESET, &phy->state) || phy->offchannel)
- 			continue;
+ 	}
+ out:
 -- 
 2.53.0
 
