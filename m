@@ -4,61 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6113F588C6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 13:29:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4ADA6F588C4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 13:30:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b2sQL+WIDV5NFF7jaouKjFSbyZQoe1FXqjgQHbusIrk=; b=vNqvtA1kZPB8lpz+7AstLQhSch
-	55Y259kaoQhvEp+ESt1YcMVYDI1Q9327H6OEkLbz1pRt/xG6kfNAiT7ZORWsVpxEl6HSGEt7H/OgE
-	5wZ8qwOV0zau++kYsNqxBEFCAukX3f6G57g2QO0jmW6uMTYTAu2aoYwhwLdXE50OC2GJ6MFOtsWlx
-	gatb9BAH3TETaIhAce7/fmN8xW7k/9/e8xDYenU3LcFzoJnG9IuSlv/a1uOuuGWDztVrOcAe8g2j1
-	CM30bUsroSC9wmSqkVlMR3sRR2HPyYUkkihjtNCxFg9+Wylae72hNDO4GL0TBMKTGE261PTwfEPX6
-	PMkLsM/Q==;
+	bh=zo86+fTdURix9ml7hENocZlgfPNK77Gp6vVBJm3Rsjg=; b=fKNt3enDyQ/Es5zKnDLR6vc4g7
+	IGdsS+dTbbSnEUhIgQk6QAdbwMGuJNi/JmVQSYn5uUXC8XBh72LbfVlCj3Q4X5DLe8Vniy7jCD66F
+	Ed5XbKeYalZcke+cU2t6JHKAB9xiFxh90OBYJdDOqqwNvldeBZ5hleDiF/mpfzWRdM17cC2bSZsKL
+	W6vtwmmwva9ueTYwAGdY5DICpF3amk+x6TswKZEg14k6xrqYN7GYSchPYLEzuZ0GmPqawuPU7mneg
+	2dUo8ePxvncZgSZwRT7tRk6H3iqsngHb5EGazp3nUIEWXEA4lXtFNoCTPHcz1lorhQtP74tveMdfp
+	LBL8RoUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEoh5-000000071pp-2dzZ;
-	Mon, 20 Apr 2026 13:29:43 +0000
+	id 1wEoi2-000000072KX-12tK;
+	Mon, 20 Apr 2026 13:30:42 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEoh1-000000071ll-3dmK;
-	Mon, 20 Apr 2026 13:29:41 +0000
+	id 1wEohx-000000072Hj-12yn;
+	Mon, 20 Apr 2026 13:30:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 89E7F4065C;
-	Mon, 20 Apr 2026 13:29:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F328CC2BCB9;
-	Mon, 20 Apr 2026 13:29:37 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id CE71F439F6;
+	Mon, 20 Apr 2026 13:30:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4481AC19425;
+	Mon, 20 Apr 2026 13:30:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776691779;
-	bh=DVSVbUdKpbDvuRnkO+k2cYAK220bL7xPJ/H3+kN+0NQ=;
+	s=k20201202; t=1776691836;
+	bh=v1cKWJCVFx6J4ytowCiHzotwuUAHOGUrFYtxlnIIG+o=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Qbh+Bed3gT6Nvo7wx18qAuOQ5HdGZfQU/lHiQ5CqPIQ22ga4XVyJvO22U/LbdmIXw
-	 VKuWq6qdEHwpKYLMcdzgQOp3vjsTWhOROLVg44cECoDBKAIbPNnAeEylvXMCQp6TeN
-	 tbG8AIY+sRjqtJFUav4sgTR72Nn9rlrlmK0AD0sTBD9tVDvM2wUC3jpCnk0kuyyZmm
-	 1D5XTEINZ97f2uyzb5vEEq7N9LkmnnY+cFiHnFClcq8DiS2JbYIms1qYU//GOYrI/F
-	 552Gh+HAzegIAKBk6mS1ADS1wlK/rEvwncvogJx39o0FK046AJm+cGz+P70/cB6kta
-	 wwlVCd0tfO4HA==
+	b=hV74BdvwAKbetkVNzbopIPzqv1772i2yK+VeDuJMLDx6q9hkxkMoeCY/9PteF6cE4
+	 qeJHXWzLEh6opsmisnnmY4qeVemtVnzwVKmb+IXQ9FyNOuVmhkrDKSKSl7Xwm8EDak
+	 ju2rljvz28nxxwLRNkXbpTssQbHCrZibSr+iCQ1IKPwD8xbB6ZN1D5uBd2YhtnjEF+
+	 L0rw0MzZV6UCn/XPIWKaxFj8aTSeaHQG3LAPNauIG29WZRAZlRHT+Fio7DKt7XHQvm
+	 CoGIAhiEKf+XgYWHYMjFBfL86tOWVBpiV0UrNxdny+fv5EEdaXG+3PPXNdvyNJVh/J
+	 a/OCyPsnK+M8A==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: StanleyYP Wang <StanleyYP.Wang@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Felix Fietkau <nbd@nbd.name>,
+Cc: Joris Vaisvila <joey@tinyisr.com>,
+	Daniel Golle <daniel@makrotpia.org>,
+	Stefan Roese <stefan.roese@mailbox.org>,
+	Jakub Kicinski <kuba@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
+	nbd@nbd.name,
 	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
+	andrew+netdev@lunn.ch,
+	davem@davemloft.net,
+	edumazet@google.com,
+	pabeni@redhat.com,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	linux-wireless@vger.kernel.org,
+	netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 7.0-6.18] wifi: mt76: mt7996: fix queue pause after scan due to wrong channel switch reason
-Date: Mon, 20 Apr 2026 09:19:43 -0400
-Message-ID: <20260420132314.1023554-189-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 7.0-6.12] net: ethernet: mtk_eth_soc: avoid writing to ESW registers on MT7628
+Date: Mon, 20 Apr 2026 09:20:17 -0400
+Message-ID: <20260420132314.1023554-223-sashal@kernel.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260420132314.1023554-1-sashal@kernel.org>
 References: <20260420132314.1023554-1-sashal@kernel.org>
@@ -69,8 +74,8 @@ X-stable-base: Linux 7.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260420_062940_114866_91AA6E0C 
-X-CRM114-Status: GOOD (  26.27  )
+X-CRM114-CacheID: sfid-20260420_063037_383649_ECCDB1E9 
+X-CRM114-Status: GOOD (  29.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,339 +90,343 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
+From: Joris Vaisvila <joey@tinyisr.com>
 
-[ Upstream commit 1f9017d19db38ad2cb9bedb5b078f6f4f60afa94 ]
+[ Upstream commit 9a04d3b2f0708a9e5e1f731bafb69b040bb934a0 ]
 
-Previously, we used the IEEE80211_CONF_IDLE flag to avoid setting the
-parking channel with the CH_SWITCH_NORMAL reason, which could trigger TX
-emission before bootup CAC.
+The MT7628 has a fixed-link PHY and does not expose MAC control
+registers. Writes to these registers only corrupt the ESW VLAN
+configuration.
 
-However, we found that this flag can be set after triggering scanning on a
-connected station interface, and the reason CH_SWITCH_SCAN_BYPASS_DPD will
-be used when switching back to the operating channel, which makes the
-firmware failed to resume paused AC queues.
+This patch explicitly registers no-op phylink_mac_ops for MT7628, as
+after removing the invalid register accesses, the existing
+phylink_mac_ops effectively become no-ops.
 
-Seems that we should avoid relying on this flag after switching to single
-multi-radio architecture. Instead, use the existence of chanctx as the
-condition.
+This code was introduced by commit 296c9120752b
+("net: ethernet: mediatek: Add MT7628/88 SoC support")
 
-Signed-off-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
-Link: https://patch.msgid.link/20260203155532.1098290-4-shayne.chen@mediatek.com
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
+Signed-off-by: Joris Vaisvila <joey@tinyisr.com>
+Reviewed-by: Daniel Golle <daniel@makrotpia.org>
+Reviewed-by: Stefan Roese <stefan.roese@mailbox.org>
+Link: https://patch.msgid.link/20260226154547.68553-1-joey@tinyisr.com
+Signed-off-by: Jakub Kicinski <kuba@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
 LLM Generated explanations, may be completely bogus:
 
-Here is my complete analysis:
+Now I have all the information needed for a thorough analysis. Let me
+compile my findings.
 
 ---
 
 ## PHASE 1: COMMIT MESSAGE FORENSICS
 
-### Step 1.1: Subject Line
-- **Subsystem**: `wifi: mt76: mt7996:` (MediaTek mt7996 WiFi 7 chipset
-  driver)
-- **Action verb**: "fix" — explicit bug fix
-- **Summary**: Fixes queue pause after scan due to wrong channel switch
-  reason being sent to firmware
+**Step 1.1: Subject Line**
+- Subsystem: `net: ethernet: mtk_eth_soc`
+- Action verb: "avoid" — strongly implies a bug fix (preventing harmful
+  behavior)
+- Summary: Avoid writing to ESW (Embedded Switch) registers on MT7628 to
+  prevent corruption
 
-Record: [wifi: mt76: mt7996] [fix] [queue pause after scan due to wrong
-channel switch reason]
+**Step 1.2: Tags**
+- No `Fixes:` tag, but commit body references `296c9120752b` ("net:
+  ethernet: mediatek: Add MT7628/88 SoC support") from August 2019 as
+  the introducing commit
+- `Signed-off-by: Joris Vaisvila <joey@tinyisr.com>` — author
+- `Reviewed-by: Daniel Golle <daniel@makrotpia.org>` — MediaTek ethernet
+  maintainer/expert
+- `Reviewed-by: Stefan Roese <stefan.roese@mailbox.org>` — original
+  author of the MT7628 support commit
+- `Link:` to patch.msgid.link (standard netdev submission)
+- `Signed-off-by: Jakub Kicinski <kuba@kernel.org>` — netdev maintainer
+  applied it
 
-### Step 1.2: Tags
-- **Signed-off-by**: StanleyYP Wang (author, MediaTek engineer), Shayne
-  Chen (MediaTek, submitter), Felix Fietkau (mt76 subsystem maintainer)
-- **Link**: `https://patch.msgid.link/20260203155532.1098290-4-
-  shayne.chen@mediatek.com` — patch 4 of a series
-- No Fixes: tag (expected)
-- No Reported-by tag
-- No Cc: stable tag (expected)
+Record: Two reviewer tags from highly relevant people (original MT7628
+author + subsystem expert). No syzbot. No explicit Cc: stable.
 
-Record: Patch is from MediaTek engineers (hardware vendor), signed off
-by the mt76 maintainer Felix Fietkau. Part of a series (patch 4).
+**Step 1.3: Commit Body**
+- Bug: MT7628 has a fixed-link PHY and does not expose MAC control
+  registers. Writes to `MTK_MAC_MCR(x)` (offset 0x10100) on MT7628 hit
+  the ESW VLAN configuration instead of non-existent MAC control
+  registers.
+- Symptom: VLAN configuration corruption on MT7628
+- Root cause: The phylink_mac_ops callbacks (`link_down`, `link_up`,
+  `mac_finish`) write to `MTK_MAC_MCR` registers without checking for
+  MT7628
 
-### Step 1.3: Commit Body Analysis
-The commit explains:
-1. **Previous approach**: Used `IEEE80211_CONF_IDLE` flag to avoid
-   setting parking channel with `CH_SWITCH_NORMAL` reason (which could
-   trigger TX emission before bootup CAC).
-2. **Bug discovered**: After scanning on a connected station interface,
-   the `IEEE80211_CONF_IDLE` flag can be set. When switching back to the
-   operating channel, the wrong reason `CH_SWITCH_SCAN_BYPASS_DPD` is
-   used, causing firmware to fail to resume paused AC queues.
-3. **Fix**: Use the existence of `chanctx` (channel context) instead of
-   the IDLE flag, which is more appropriate for the multi-radio
-   architecture.
-
-Record: Bug causes TX queues to remain paused after scan on a connected
-station interface. Firmware-level failure to resume AC queues. Root
-cause is the `IEEE80211_CONF_IDLE` flag being unreliable after the
-multi-radio architecture switch.
-
-### Step 1.4: Hidden Bug Fix Detection
-Not hidden — explicitly labeled "fix" with clear bug mechanism
-described.
-
----
+**Step 1.4: Hidden Bug Fix Detection**
+This is clearly a data corruption fix. The word "avoid" means preventing
+invalid register writes that corrupt VLAN config.
 
 ## PHASE 2: DIFF ANALYSIS
 
-### Step 2.1: Inventory
-- **Files changed**: 1
-  (`drivers/net/wireless/mediatek/mt76/mt7996/mcu.c`)
-- **Lines changed**: 2 lines modified (1 removed, 1 added — net -1 line)
-- **Function modified**: `mt7996_mcu_set_chan_info()`
-- **Scope**: Single-file, single-line surgical fix
+**Step 2.1: Inventory**
+- Single file: `drivers/net/ethernet/mediatek/mtk_eth_soc.c`
+- Approximate: +27 lines added, -5 lines removed
+- Functions modified: `mtk_mac_config` (guard removed), `mtk_add_mac`
+  (ops selection added)
+- Functions added: `rt5350_mac_config`, `rt5350_mac_link_down`,
+  `rt5350_mac_link_up` (all no-ops), `rt5350_phylink_ops` (new ops
+  struct)
 
-### Step 2.2: Code Flow Change
-The only change is in the condition for setting `switch_reason`:
+**Step 2.2: Code Flow Change**
+1. In `mtk_mac_config`: The `!MTK_HAS_CAPS(eth->soc->caps,
+   MTK_SOC_MT7628)` guard was removed. Safe because MT7628 now uses
+   entirely different (no-op) ops, so this function is never called for
+   MT7628.
+2. In `mtk_add_mac`: Added conditional to select `rt5350_phylink_ops`
+   for MT7628 instead of `mtk_phylink_ops`.
+3. New no-op functions: `rt5350_mac_config`, `rt5350_mac_link_down`,
+   `rt5350_mac_link_up` — all empty.
 
-Before:
-```c
-else if (phy->mt76->offchannel ||
-         phy->mt76->hw->conf.flags & IEEE80211_CONF_IDLE)
-    req.switch_reason = CH_SWITCH_SCAN_BYPASS_DPD;
-```
+**Step 2.3: Bug Mechanism**
+Category: **Hardware workaround / data corruption fix**
 
-After:
-```c
-else if (phy->mt76->offchannel || !phy->mt76->chanctx)
-    req.switch_reason = CH_SWITCH_SCAN_BYPASS_DPD;
-```
+The bug: On MT7628, register offset 0x10100 is part of the ESW VLAN
+configuration, not a MAC control register. The existing
+`mtk_mac_link_down()`, `mtk_mac_link_up()`, and `mtk_mac_finish()` all
+write to `MTK_MAC_MCR(mac->id)` (= 0x10100) without MT7628 checks. Only
+`mtk_mac_config()` had a guard. Every link state change event corrupts
+the VLAN configuration.
 
-The `IEEE80211_CONF_IDLE` flag check is replaced by
-`!phy->mt76->chanctx` (channel context is NULL). Both mean "no active
-operating channel," but `chanctx` is the correct indicator in the multi-
-radio architecture.
+**Step 2.4: Fix Quality**
+- Obviously correct: The fix prevents ALL register writes by
+  substituting no-op callbacks
+- Minimal regression risk: Empty callbacks for a fixed-link PHY that
+  never needed MAC configuration
+- Self-contained in one file
+- Reviewed by the original MT7628 author (Stefan Roese) and MediaTek
+  network expert (Daniel Golle)
 
-### Step 2.3: Bug Mechanism
-**Logic/correctness fix**: The condition for determining which channel
-switch reason to send to firmware was wrong. The `IEEE80211_CONF_IDLE`
-flag can be spuriously set after scanning on a connected station,
-causing the firmware to use `CH_SWITCH_SCAN_BYPASS_DPD` instead of
-`CH_SWITCH_NORMAL` when returning to the operating channel. This makes
-firmware fail to resume paused TX AC queues.
+## PHASE 3: GIT HISTORY
 
-### Step 2.4: Fix Quality
-- **Obviously correct**: Yes — `chanctx` directly indicates if a channel
-  context exists, which is the semantic meaning needed.
-- **Minimal/surgical**: Yes — 1 line change.
-- **Regression risk**: Very low — `chanctx` is NULL only when no channel
-  context is assigned, which is semantically equivalent to (and more
-  accurate than) the IDLE flag check.
+**Step 3.1: Blame**
+- The buggy code in `mtk_mac_link_down`/`mtk_mac_link_up` was introduced
+  by `b8fc9f30821ec0` (René van Dorst, 2019-08-25) during the phylink
+  conversion
+- The `mtk_mac_config` guard was already in `b8fc9f30821ec0` but was
+  never added to `link_down`/`link_up`/`finish`
 
----
+**Step 3.2: Original commit**
+- `296c9120752b` ("Add MT7628/88 SoC support") was merged in v5.3-rc6
+  (August 2019)
+- This commit is present in all stable trees from v5.3 onwards
+  (confirmed in p-5.10, p-5.15 tags)
 
-## PHASE 3: GIT HISTORY INVESTIGATION
+**Step 3.3/3.4: Author & File History**
+- Joris Vaisvila is not a frequent kernel contributor (only 1-2 commits
+  found)
+- However, both reviewers are well-known in this subsystem
+- File has 231 commits since 296c9120752b; 32 since v6.12
 
-### Step 3.1: Blame
-- The `IEEE80211_CONF_IDLE` check was introduced in commit
-  `413f05d68d1198` (StanleyYP Wang, 2023-08-31, first in v6.7-rc1):
-  "wifi: mt76: get rid of false alarms of tx emission issues"
-- The `offchannel` field was introduced in `f4fdd7716290a2` (Felix
-  Fietkau, 2024-08-28, first in v6.12-rc1): "wifi: mt76: partially move
-  channel change code to core"
-- The `chanctx` field and multi-radio architecture was introduced in
-  commits `82334623af0cd` and `69d54ce7491d` (Felix Fietkau, 2025-01-02,
-  first in v6.14-rc1)
+**Step 3.5: Dependencies**
+- The patch is self-contained. The no-op ops pattern doesn't depend on
+  any other patches.
+- In v6.6, the `mtk_mac_finish` function also writes to `MTK_MAC_MCR`
+  without MT7628 guard — same bug. The no-op ops approach fixes all
+  callbacks at once.
 
-Record: The bug only manifests from v6.14 onwards (when multi-radio
-architecture was introduced and chanctx is used). The IDLE flag check
-was fine before the architecture change.
+## PHASE 4: MAILING LIST
 
-### Step 3.2: No Fixes: tag present (expected).
-
-### Step 3.3: File History
-The mcu.c file is actively maintained with many recent fixes. The fix is
-self-contained and standalone.
-
-### Step 3.4: Author Context
-StanleyYP Wang (author) is a regular MediaTek contributor working on
-mt76 radar/DFS/channel features. Shayne Chen is the primary MediaTek
-mt7996 contributor. Felix Fietkau is the mt76 subsystem maintainer who
-signed off.
-
-### Step 3.5: Dependencies
-The fix uses `phy->mt76->chanctx` which exists in all trees from v6.14
-onwards. No other dependencies needed.
-
----
-
-## PHASE 4: MAILING LIST RESEARCH
-
-Lore.kernel.org and patch.msgid.link are protected by Anubis anti-
-scraping, so web fetch failed. b4 dig could not find the commit (it's a
-candidate, not yet in tree).
-
-The Link: URL (`20260203155532.1098290-4-shayne.chen@mediatek.com`)
-shows this is patch 4 of a series, but the fix is completely self-
-contained — it only changes one condition in one function.
-
-Record: Could not access lore discussion due to anti-bot protection.
-Patch 4 of a series, but standalone.
-
----
+Lore/b4 dig returned results but couldn't access full discussions due to
+Anubis protection. The patch was submitted as
+`20260226154547.68553-1-joey@tinyisr.com` and accepted by Jakub Kicinski
+(netdev maintainer).
 
 ## PHASE 5: CODE SEMANTIC ANALYSIS
 
-### Step 5.1-5.4: Function Call Analysis
-`mt7996_mcu_set_chan_info()` is called from:
-1. `mt7996_run()` (line 25 in main.c) — during interface start, with
-   `UNI_CHANNEL_RX_PATH`
-2. `mt7996_set_channel()` (lines 561, 565 in main.c) — during channel
-   switch, with both `UNI_CHANNEL_SWITCH` and `UNI_CHANNEL_RX_PATH`
-
-The `mt7996_set_channel()` path is the critical one — this is called
-during scan return (switching back to operating channel). This is a hot
-path triggered by every scan operation.
-
-Record: Function called on every channel switch, including post-scan
-return. Bug affects all users who scan while connected.
-
----
+**Step 5.1-5.4: Impact Surface**
+- `mtk_mac_link_down` is called by phylink whenever the link goes down —
+  every cable disconnect, PHY negotiation change
+- `mtk_mac_link_up` is called on every link up event
+- `mtk_mac_finish` is called during PHY configuration
+- On MT7628, these are called regularly during normal operation
+- `mtk_set_mcr_max_rx` at line 3886 already has its own `MTK_SOC_MT7628`
+  guard, confirming the developers know these registers don't exist on
+  MT7628
 
 ## PHASE 6: STABLE TREE ANALYSIS
 
-### Step 6.1: Buggy Code in Stable Trees
-- **v6.14.y through v6.19.y**: YES — all contain the buggy
-  `IEEE80211_CONF_IDLE` check and have `chanctx` infrastructure
-  available.
-- **v6.12.y and earlier**: NO — don't have multi-radio architecture; the
-  bug doesn't exist there (different code path).
+**Step 6.1:** The buggy code exists in ALL stable trees from v5.3+,
+including v5.15, v6.1, v6.6, and 6.12.
+- In v6.6: `mtk_mac_link_down` at line 689 unconditionally writes to
+  `MTK_MAC_MCR` — confirmed the same bug
+- In v6.6: `mtk_mac_link_up` at line 769 also unconditionally writes to
+  `MTK_MAC_MCR` — confirmed
+- In v6.6: `mtk_mac_finish` at line 660 also writes to `MTK_MAC_MCR` —
+  confirmed
 
-Verified: v6.14.11 and v6.19.12 both have the exact same buggy code and
-have the `chanctx` field available.
-
-### Step 6.2: Backport Complications
-The fix should apply cleanly to all affected stable trees (v6.14.y
-through v6.19.y). The surrounding code context matches exactly.
-
----
+**Step 6.2: Backport Difficulty**
+For v7.0: Should apply cleanly or with minor fuzz.
+For v6.6 and older: Will need rework. The `mtk_mac_link_down`/`link_up`
+implementations differ significantly (v7.0 has xgmii handling added by
+`51cf06ddafc91e`). However, the *concept* of the fix (separate no-op
+ops) is portable.
 
 ## PHASE 7: SUBSYSTEM CONTEXT
 
-### Step 7.1: Subsystem
-- **Subsystem**: WiFi driver (drivers/net/wireless/mediatek/mt76/mt7996)
-- **Criticality**: IMPORTANT — mt7996 is MediaTek's WiFi 7 chipset used
-  in many routers and APs
-- **Activity**: Very active development (many recent commits)
-
----
+- Subsystem: Network driver (embedded Ethernet), IMPORTANT criticality
+  for MT7628 users
+- MT7628/MT7688 is a widely-used MIPS SoC found in popular embedded
+  platforms (Omega2, VoCore2, many OpenWrt routers)
 
 ## PHASE 8: IMPACT AND RISK ASSESSMENT
 
-### Step 8.1: Affected Population
-Users of mt7996-based WiFi hardware (WiFi 7 routers, APs, and client
-devices) running kernels v6.14+.
+**Step 8.1: Affected Users**
+- All MT7628/MT7688 users (embedded routers running Linux with VLANs)
 
-### Step 8.2: Trigger Conditions
-Triggering a scan while connected as a station interface. This is a
-**very common operation** — background scanning happens regularly for
-roaming decisions, network discovery, etc.
+**Step 8.2: Trigger Conditions**
+- Triggered on every link state change (boot, cable plug/unplug, PHY
+  state change)
+- Extremely common — happens during normal boot
 
-### Step 8.3: Failure Mode Severity
-TX AC queues remain paused indefinitely after scan. This means **the
-WiFi interface effectively stops transmitting data**. Severity: **HIGH**
-— complete loss of WiFi transmit functionality until manual
-intervention.
+**Step 8.3: Failure Mode**
+- **ESW VLAN configuration corruption** — MEDIUM-HIGH severity
+- VLAN configuration is silently corrupted, leading to incorrect network
+  behavior
+- Not a crash but a data corruption issue affecting network
+  configuration
 
-### Step 8.4: Risk-Benefit Ratio
-- **Benefit**: HIGH — prevents complete WiFi TX failure on mt7996
-  hardware after scanning
-- **Risk**: VERY LOW — 1-line condition change, replacing one "no active
-  channel" check with a more accurate one
-- **Ratio**: Very favorable
-
----
+**Step 8.4: Risk-Benefit**
+- Benefit: HIGH — prevents VLAN corruption on every MT7628 system
+- Risk: LOW — the fix adds empty callback functions and selects them
+  conditionally; the no-op approach is obviously correct for a fixed-
+  link PHY with no MAC control registers
 
 ## PHASE 9: FINAL SYNTHESIS
 
-### Step 9.1: Evidence Summary
+**Evidence FOR backporting:**
+1. Fixes real data corruption (VLAN config) on real hardware
+   (MT7628/MT7688)
+2. Bug present since v5.3 (2019) — affects all stable trees
+3. Reviewed by original MT7628 author and subsystem expert
+4. Accepted by netdev maintainer (Jakub Kicinski)
+5. Fix is obviously correct (no-op callbacks for hardware without MAC
+   registers)
+6. Single file change, well-contained
+7. Other code in the same file already has MT7628 guards for the same
+   registers (`mtk_set_mcr_max_rx` at line 3886)
 
-**FOR backporting:**
-- Fixes a real, functional bug: TX queues stuck after scan
-- Very high impact: WiFi effectively stops working (no transmit)
-- Common trigger: scanning while connected as station
-- Minimal change: 1 line, obviously correct
-- From the hardware vendor (MediaTek) and signed off by subsystem
-  maintainer (Felix Fietkau)
-- Applies cleanly to affected stable trees (v6.14.y through v6.19.y)
-- No dependencies on other patches
-- Zero regression risk
+**Evidence AGAINST backporting:**
+1. ~30 lines of new code (not trivially small, but straightforward)
+2. May need rework for older stable trees (6.6, 6.1, 5.15) due to
+   function refactoring
+3. No explicit Cc: stable (expected for commits under review)
 
-**AGAINST backporting:**
-- No Fixes: tag (expected — that's why it needs review)
-- Part of a series (patch 4), but the fix is self-contained
-- Only affects v6.14+ trees (bug doesn't exist in older LTS trees)
+**Stable Rules Checklist:**
+1. Obviously correct and tested? YES — reviewed by 2 experts, one the
+   original author
+2. Fixes a real bug? YES — VLAN config corruption on MT7628
+3. Important issue? YES — data corruption, affects all MT7628 users
+4. Small and contained? YES — single file, ~30 lines
+5. No new features? CORRECT — only prevents invalid register writes
+6. Can apply to stable? YES for 7.0; needs rework for older trees
 
-### Step 9.2: Stable Rules Checklist
-1. Obviously correct and tested? **YES** — trivial condition
-   replacement, from hardware vendor
-2. Fixes a real bug? **YES** — TX queues stuck = complete WiFi transmit
-   failure
-3. Important issue? **YES** — effectively disables WiFi after common
-   operation
-4. Small and contained? **YES** — 1 line change in 1 file
-5. No new features or APIs? **CORRECT** — no new features
-6. Can apply to stable trees? **YES** — applies cleanly to v6.14.y
-   through v6.19.y
-
-### Step 9.3: Exception Categories
-Not needed — meets standard stable criteria as a bug fix.
-
----
-
-## Verification
-
-- [Phase 1] Parsed subject: explicit "fix" for queue pause after scan,
-  WiFi mt76/mt7996 subsystem
-- [Phase 2] Diff: 1 line changed in `mt7996_mcu_set_chan_info()`,
-  replaces `IEEE80211_CONF_IDLE` flag with `!chanctx` check
-- [Phase 3] git blame: `IEEE80211_CONF_IDLE` check added in
-  413f05d68d1198 (v6.7-rc1), became buggy after multi-radio switch in
-  69d54ce7491d (v6.14-rc1)
-- [Phase 3] git describe --contains: chanctx infra first in v6.14-rc1,
-  confirmed via `git merge-base --is-ancestor`
-- [Phase 3] git show 413f05d68d1198: confirmed original CONF_IDLE commit
-  purpose was DFS CAC false alarm avoidance
-- [Phase 5] Grep callers: `mt7996_mcu_set_chan_info()` called from
-  `mt7996_run()` and `mt7996_set_channel()` — channel switch path
-  triggered on every scan return
-- [Phase 6] git show v6.14.11/v6.19.12: confirmed buggy code present in
-  both stable trees, chanctx field available
-- [Phase 6] v6.12.y: does NOT have the bug (no multi-radio architecture,
-  different code)
-- [Phase 7] Felix Fietkau confirmed as mt76 maintainer (signed off on
-  the fix)
-- UNVERIFIED: Could not access lore.kernel.org discussion due to anti-
-  bot protection
-
-The fix is a clear, minimal, single-line correction that prevents WiFi
-TX queues from permanently stalling after scan operations on mt7996
-hardware. It meets all stable kernel criteria.
+**Verification:**
+- [Phase 1] Parsed tags: Reviewed-by from Daniel Golle and Stefan Roese,
+  Link to netdev submission
+- [Phase 2] Diff analysis: Adds no-op phylink_mac_ops for MT7628,
+  selects them in `mtk_add_mac()`, removes now-unreachable guard in
+  `mtk_mac_config()`
+- [Phase 3] git blame: buggy code from `b8fc9f30821ec0` (2019), phylink
+  conversion missing MT7628 guards in link_down/link_up
+- [Phase 3] git show 296c9120752b: confirmed original MT7628 support
+  commit from v5.3 era (2019-08-16)
+- [Phase 3] git tag --contains: original commit present in p-5.10,
+  p-5.15 tags (all active stable trees)
+- [Phase 5] Verified `mtk_mac_link_down` writes to
+  `MTK_MAC_MCR(mac->id)` without MT7628 check (line 731 in current code)
+- [Phase 5] Verified `mtk_mac_link_up`→`mtk_gdm_mac_link_up` writes to
+  `MTK_MAC_MCR(mac->id)` (line 846) without MT7628 check
+- [Phase 5] Verified `mtk_mac_finish` writes to `MTK_MAC_MCR(mac->id)`
+  (line 709/716) without MT7628 check
+- [Phase 5] Confirmed `mtk_set_mcr_max_rx` (line 3886) already guards
+  against MT7628, proving developers know these registers don't exist on
+  MT7628
+- [Phase 6] Verified v6.6 stable has the same bug: `mtk_mac_link_down`
+  (line 689) and `mtk_mac_link_up` (line 769) unconditionally write to
+  `MTK_MAC_MCR`
+- [Phase 6] `MTK_MAC_MCR(x)` = 0x10100 + x*0x100, confirmed in header
+  file (line 453)
+- [Phase 8] VLAN corruption confirmed by commit message: "Writes to
+  these registers only corrupt the ESW VLAN configuration"
+- UNVERIFIED: Could not access full lore.kernel.org discussion due to
+  Anubis protection; relied on tags in the commit message
 
 **YES**
 
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 34 ++++++++++++++++++---
+ 1 file changed, 30 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index 0abe5efa9424e..470e69eacb7da 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -3748,8 +3748,7 @@ int mt7996_mcu_set_chan_info(struct mt7996_phy *phy, u16 tag)
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index ddc321a02fdae..bb8ced22ca3be 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -562,9 +562,7 @@ static void mtk_mac_config(struct phylink_config *config, unsigned int mode,
+ 	int val, ge_mode, err = 0;
+ 	u32 i;
  
- 	if (phy->mt76->hw->conf.flags & IEEE80211_CONF_MONITOR)
- 		req.switch_reason = CH_SWITCH_NORMAL;
--	else if (phy->mt76->offchannel ||
--		 phy->mt76->hw->conf.flags & IEEE80211_CONF_IDLE)
-+	else if (phy->mt76->offchannel || !phy->mt76->chanctx)
- 		req.switch_reason = CH_SWITCH_SCAN_BYPASS_DPD;
- 	else if (!cfg80211_reg_can_beacon(phy->mt76->hw->wiphy, chandef,
- 					  NL80211_IFTYPE_AP))
+-	/* MT76x8 has no hardware settings between for the MAC */
+-	if (!MTK_HAS_CAPS(eth->soc->caps, MTK_SOC_MT7628) &&
+-	    mac->interface != state->interface) {
++	if (mac->interface != state->interface) {
+ 		/* Setup soc pin functions */
+ 		switch (state->interface) {
+ 		case PHY_INTERFACE_MODE_TRGMII:
+@@ -956,6 +954,30 @@ static const struct phylink_mac_ops mtk_phylink_ops = {
+ 	.mac_enable_tx_lpi = mtk_mac_enable_tx_lpi,
+ };
+ 
++static void rt5350_mac_config(struct phylink_config *config, unsigned int mode,
++				const struct phylink_link_state *state)
++{
++}
++
++static void rt5350_mac_link_down(struct phylink_config *config, unsigned int mode,
++				phy_interface_t interface)
++{
++}
++
++static void rt5350_mac_link_up(struct phylink_config *config,
++			    struct phy_device *phy,
++			    unsigned int mode, phy_interface_t interface,
++			    int speed, int duplex, bool tx_pause, bool rx_pause)
++{
++}
++
++/* MT76x8 (rt5350-eth) does not expose any MAC control registers */
++static const struct phylink_mac_ops rt5350_phylink_ops = {
++	.mac_config = rt5350_mac_config,
++	.mac_link_down = rt5350_mac_link_down,
++	.mac_link_up = rt5350_mac_link_up,
++};
++
+ static void mtk_mdio_config(struct mtk_eth *eth)
+ {
+ 	u32 val;
+@@ -4780,6 +4802,7 @@ static const struct net_device_ops mtk_netdev_ops = {
+ 
+ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
+ {
++	const struct phylink_mac_ops *mac_ops = &mtk_phylink_ops;
+ 	const __be32 *_id = of_get_property(np, "reg", NULL);
+ 	phy_interface_t phy_mode;
+ 	struct phylink *phylink;
+@@ -4914,9 +4937,12 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
+ 			  mac->phylink_config.supported_interfaces);
+ 	}
+ 
++	if (MTK_HAS_CAPS(eth->soc->caps, MTK_SOC_MT7628))
++		mac_ops = &rt5350_phylink_ops;
++
+ 	phylink = phylink_create(&mac->phylink_config,
+ 				 of_fwnode_handle(mac->of_node),
+-				 phy_mode, &mtk_phylink_ops);
++				 phy_mode, mac_ops);
+ 	if (IS_ERR(phylink)) {
+ 		err = PTR_ERR(phylink);
+ 		goto free_netdev;
 -- 
 2.53.0
 
