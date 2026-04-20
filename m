@@ -4,66 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4ADA6F588C4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 13:30:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C4E0F588C3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 13:31:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zo86+fTdURix9ml7hENocZlgfPNK77Gp6vVBJm3Rsjg=; b=fKNt3enDyQ/Es5zKnDLR6vc4g7
-	IGdsS+dTbbSnEUhIgQk6QAdbwMGuJNi/JmVQSYn5uUXC8XBh72LbfVlCj3Q4X5DLe8Vniy7jCD66F
-	Ed5XbKeYalZcke+cU2t6JHKAB9xiFxh90OBYJdDOqqwNvldeBZ5hleDiF/mpfzWRdM17cC2bSZsKL
-	W6vtwmmwva9ueTYwAGdY5DICpF3amk+x6TswKZEg14k6xrqYN7GYSchPYLEzuZ0GmPqawuPU7mneg
-	2dUo8ePxvncZgSZwRT7tRk6H3iqsngHb5EGazp3nUIEWXEA4lXtFNoCTPHcz1lorhQtP74tveMdfp
-	LBL8RoUw==;
+	bh=evaJ5vkDrbqrWw6yH4YpYlxL910zEoGMM830QaFFWDQ=; b=lWcghnPGgGxb4p6jxKfXImq4Bu
+	ioCjZM7cPCCxuFJ9XHguGAEN40CGyi/15Ba+OhEwYoFRaNVqbqlV5lWMOTC1RspbH+va3duBQSrbU
+	Ji7mEy5ZteTd/qIKUEMNcC4wNAZV2ym1Mx6avVJ/0KideEDMS+8Nspn22P78mHJot5sSZ60kgSmwz
+	X2BNn9/o70ERl1uO3PxT7pjvR2I9TsfqaUygfeU/P+Ghm9i/XnNmV8pErS+BCmk9fP7t6gxeF6AQZ
+	WPCykPDqFk5VncfV16lDtY8kru9ldJNQJbhjSsXuvu8fMZA7HPnFXWi5l0GCHImYQf4OVrEYUX9xi
+	iNuYBq/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEoi2-000000072KX-12tK;
-	Mon, 20 Apr 2026 13:30:42 +0000
+	id 1wEoio-000000072hd-1y93;
+	Mon, 20 Apr 2026 13:31:30 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEohx-000000072Hj-12yn;
-	Mon, 20 Apr 2026 13:30:39 +0000
+	id 1wEoik-000000072e2-0tii;
+	Mon, 20 Apr 2026 13:31:28 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id CE71F439F6;
-	Mon, 20 Apr 2026 13:30:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4481AC19425;
-	Mon, 20 Apr 2026 13:30:34 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id C99C8435DE;
+	Mon, 20 Apr 2026 13:31:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EEC6AC19425;
+	Mon, 20 Apr 2026 13:31:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776691836;
-	bh=v1cKWJCVFx6J4ytowCiHzotwuUAHOGUrFYtxlnIIG+o=;
+	s=k20201202; t=1776691885;
+	bh=Pn9O84j5Gzkkn/+pDkJ16PqPIewq1Dj5WL2dYyGinJI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=hV74BdvwAKbetkVNzbopIPzqv1772i2yK+VeDuJMLDx6q9hkxkMoeCY/9PteF6cE4
-	 qeJHXWzLEh6opsmisnnmY4qeVemtVnzwVKmb+IXQ9FyNOuVmhkrDKSKSl7Xwm8EDak
-	 ju2rljvz28nxxwLRNkXbpTssQbHCrZibSr+iCQ1IKPwD8xbB6ZN1D5uBd2YhtnjEF+
-	 L0rw0MzZV6UCn/XPIWKaxFj8aTSeaHQG3LAPNauIG29WZRAZlRHT+Fio7DKt7XHQvm
-	 CoGIAhiEKf+XgYWHYMjFBfL86tOWVBpiV0UrNxdny+fv5EEdaXG+3PPXNdvyNJVh/J
-	 a/OCyPsnK+M8A==
+	b=uRB+RSWfLJmUWoPP6r5iAA9mCImlc25pZdMrkBXQ7kR3fztmXbovGkBQx5gJCuBYd
+	 oRPrV4UDUX+16F2pEzRfVXnTmwCPqj6qVeIcMPoQYfuzdWYNjb+TZhQnmBYb7kw3g/
+	 qyXRroLRETD3T6Ad8HtcTa7Vdh2vhV9DvCn3KYwPGZquqYxUUsaITNPCi43QPhclDT
+	 Mcbkg+MFycqY2lp8f7QIdzQg7AzMpeLgaRSBC6WalQpNUGrDINahAzkX7ETyeJl0n1
+	 TqHhrYMcalUihz4RdnwmvnZXdsEPM/VaxUQH/QvigB3O9nEXXjQ/rBUloZbLCefm4Z
+	 UtLMFBBc7SyqQ==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Joris Vaisvila <joey@tinyisr.com>,
-	Daniel Golle <daniel@makrotpia.org>,
-	Stefan Roese <stefan.roese@mailbox.org>,
-	Jakub Kicinski <kuba@kernel.org>,
+Cc: Chad Monroe <chad@monroe.io>,
+	Felix Fietkau <nbd@nbd.name>,
 	Sasha Levin <sashal@kernel.org>,
-	nbd@nbd.name,
 	lorenzo@kernel.org,
-	andrew+netdev@lunn.ch,
-	davem@davemloft.net,
-	edumazet@google.com,
-	pabeni@redhat.com,
+	ryder.lee@mediatek.com,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	netdev@vger.kernel.org,
+	linux-wireless@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 7.0-6.12] net: ethernet: mtk_eth_soc: avoid writing to ESW registers on MT7628
-Date: Mon, 20 Apr 2026 09:20:17 -0400
-Message-ID: <20260420132314.1023554-223-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 7.0-6.6] wifi: mt76: mt7996: reset device after MCU message timeout
+Date: Mon, 20 Apr 2026 09:20:45 -0400
+Message-ID: <20260420132314.1023554-251-sashal@kernel.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260420132314.1023554-1-sashal@kernel.org>
 References: <20260420132314.1023554-1-sashal@kernel.org>
@@ -74,8 +68,8 @@ X-stable-base: Linux 7.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260420_063037_383649_ECCDB1E9 
-X-CRM114-Status: GOOD (  29.52  )
+X-CRM114-CacheID: sfid-20260420_063126_615922_D5795882 
+X-CRM114-Status: GOOD (  22.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,343 +84,415 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Joris Vaisvila <joey@tinyisr.com>
+From: Chad Monroe <chad@monroe.io>
 
-[ Upstream commit 9a04d3b2f0708a9e5e1f731bafb69b040bb934a0 ]
+[ Upstream commit d2b860454ea2df8f336e9b859da7ffb27f43444d ]
 
-The MT7628 has a fixed-link PHY and does not expose MAC control
-registers. Writes to these registers only corrupt the ESW VLAN
-configuration.
+Trigger a full reset after MCU message timeout.
 
-This patch explicitly registers no-op phylink_mac_ops for MT7628, as
-after removing the invalid register accesses, the existing
-phylink_mac_ops effectively become no-ops.
-
-This code was introduced by commit 296c9120752b
-("net: ethernet: mediatek: Add MT7628/88 SoC support")
-
-Signed-off-by: Joris Vaisvila <joey@tinyisr.com>
-Reviewed-by: Daniel Golle <daniel@makrotpia.org>
-Reviewed-by: Stefan Roese <stefan.roese@mailbox.org>
-Link: https://patch.msgid.link/20260226154547.68553-1-joey@tinyisr.com
-Signed-off-by: Jakub Kicinski <kuba@kernel.org>
+Signed-off-by: Chad Monroe <chad@monroe.io>
+Link: https://patch.msgid.link/6e05ed063f3763ad3457633c56b60a728a49a6f0.1765203753.git.chad@monroe.io
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
 LLM Generated explanations, may be completely bogus:
 
-Now I have all the information needed for a thorough analysis. Let me
-compile my findings.
+Now I have all the information needed for the complete analysis. Let me
+compile the findings.
 
 ---
 
 ## PHASE 1: COMMIT MESSAGE FORENSICS
 
 **Step 1.1: Subject Line**
-- Subsystem: `net: ethernet: mtk_eth_soc`
-- Action verb: "avoid" — strongly implies a bug fix (preventing harmful
-  behavior)
-- Summary: Avoid writing to ESW (Embedded Switch) registers on MT7628 to
-  prevent corruption
+- Subsystem: `wifi: mt76: mt7996`
+- Action verb: "reset" (implies recovery from a failure state)
+- Summary: Trigger a device reset when MCU message timeouts occur on
+  mt7996
+- Record: [wifi/mt76/mt7996] [reset] [Trigger full device recovery after
+  MCU message timeout]
 
 **Step 1.2: Tags**
-- No `Fixes:` tag, but commit body references `296c9120752b` ("net:
-  ethernet: mediatek: Add MT7628/88 SoC support") from August 2019 as
-  the introducing commit
-- `Signed-off-by: Joris Vaisvila <joey@tinyisr.com>` — author
-- `Reviewed-by: Daniel Golle <daniel@makrotpia.org>` — MediaTek ethernet
-  maintainer/expert
-- `Reviewed-by: Stefan Roese <stefan.roese@mailbox.org>` — original
-  author of the MT7628 support commit
-- `Link:` to patch.msgid.link (standard netdev submission)
-- `Signed-off-by: Jakub Kicinski <kuba@kernel.org>` — netdev maintainer
-  applied it
-
-Record: Two reviewer tags from highly relevant people (original MT7628
-author + subsystem expert). No syzbot. No explicit Cc: stable.
+- `Signed-off-by: Chad Monroe <chad@monroe.io>` - patch author
+- `Link: https://patch.msgid.link/...` - reference to lore
+- `Signed-off-by: Felix Fietkau <nbd@nbd.name>` - maintainer/committer
+  of mt76
+- No Fixes: tag (expected for manual review candidates)
+- No Cc: stable (expected)
+- No Reported-by tag
+- Record: Author is Chad Monroe; applied by Felix Fietkau (the mt76
+  subsystem maintainer)
 
 **Step 1.3: Commit Body**
-- Bug: MT7628 has a fixed-link PHY and does not expose MAC control
-  registers. Writes to `MTK_MAC_MCR(x)` (offset 0x10100) on MT7628 hit
-  the ESW VLAN configuration instead of non-existent MAC control
-  registers.
-- Symptom: VLAN configuration corruption on MT7628
-- Root cause: The phylink_mac_ops callbacks (`link_down`, `link_up`,
-  `mac_finish`) write to `MTK_MAC_MCR` registers without checking for
-  MT7628
+- Body is very brief: "Trigger a full reset after MCU message timeout."
+- No stack traces or reproduction steps given
+- The mt7915 equivalent (commit 10f73bb3938f7c5) provides more context:
+  "MCU hangs do not trigger watchdog interrupts, so they can only be
+  detected through MCU message timeouts. Ensure that the hardware gets
+  restarted when that happens in order to prevent a permanent stuck
+  state."
+- Record: Bug = MCU hang leaves device permanently stuck. Symptom = WiFi
+  device becomes non-functional, requires reboot. Root cause = MCU hang
+  without watchdog interrupt, only detectable via message timeout, no
+  recovery triggered.
 
 **Step 1.4: Hidden Bug Fix Detection**
-This is clearly a data corruption fix. The word "avoid" means preventing
-invalid register writes that corrupt VLAN config.
+- "reset device after MCU message timeout" - this is clearly a fix for a
+  missing recovery path. Without it, a firmware hang results in a
+  permanent stuck state.
+- Record: This IS a bug fix. The device becomes permanently stuck
+  without it.
+
+---
 
 ## PHASE 2: DIFF ANALYSIS
 
 **Step 2.1: Inventory**
-- Single file: `drivers/net/ethernet/mediatek/mtk_eth_soc.c`
-- Approximate: +27 lines added, -5 lines removed
-- Functions modified: `mtk_mac_config` (guard removed), `mtk_add_mac`
-  (ops selection added)
-- Functions added: `rt5350_mac_config`, `rt5350_mac_link_down`,
-  `rt5350_mac_link_up` (all no-ops), `rt5350_phylink_ops` (new ops
-  struct)
+- `mcu.c`: +9 lines (in `mt7996_mcu_parse_response`)
+- `mac.c`: +5 lines (in `mt7996_reset`)
+- Total: ~14 lines added, 0 removed
+- Scope: Single-driver, surgical fix in two closely-related functions
+- Record: 2 files, +14 lines, functions: mt7996_mcu_parse_response,
+  mt7996_reset
 
-**Step 2.2: Code Flow Change**
-1. In `mtk_mac_config`: The `!MTK_HAS_CAPS(eth->soc->caps,
-   MTK_SOC_MT7628)` guard was removed. Safe because MT7628 now uses
-   entirely different (no-op) ops, so this function is never called for
-   MT7628.
-2. In `mtk_add_mac`: Added conditional to select `rt5350_phylink_ops`
-   for MT7628 instead of `mtk_phylink_ops`.
-3. New no-op functions: `rt5350_mac_config`, `rt5350_mac_link_down`,
-   `rt5350_mac_link_up` — all empty.
+**Step 2.2: Code Flow Changes**
+
+Hunk 1 (mcu.c): In `mt7996_mcu_parse_response()`, when `skb == NULL`
+(MCU timeout):
+- **Before**: Log error, return -ETIMEDOUT. No recovery action.
+- **After**: Log error, atomically set `MT76_MCU_RESET` bit (via
+  `test_and_set_bit` to prevent duplicates), set `recovery.restart =
+  true`, wake up MCU wait queue, queue `reset_work`, wake up
+  `reset_wait`, then return -ETIMEDOUT.
+
+Hunk 2 (mac.c): In `mt7996_reset()`, before the existing `queue_work`:
+- **Before**: Always queue reset_work and wake reset_wait
+  unconditionally.
+- **After**: If `MT_MCU_CMD_STOP_DMA` is set, additionally set
+  `MT76_MCU_RESET` bit and wake up MCU wait queue, aborting pending MCU
+  operations before reset.
 
 **Step 2.3: Bug Mechanism**
-Category: **Hardware workaround / data corruption fix**
-
-The bug: On MT7628, register offset 0x10100 is part of the ESW VLAN
-configuration, not a MAC control register. The existing
-`mtk_mac_link_down()`, `mtk_mac_link_up()`, and `mtk_mac_finish()` all
-write to `MTK_MAC_MCR(mac->id)` (= 0x10100) without MT7628 checks. Only
-`mtk_mac_config()` had a guard. Every link state change event corrupts
-the VLAN configuration.
+- Category: Missing error recovery / permanent hardware stuck state
+- The MCU can hang in a way that doesn't trigger a hardware watchdog
+  interrupt. The only indication is MCU message timeouts. Without this
+  patch, timeouts just return an error code but never trigger device
+  recovery. The device becomes permanently non-functional.
+- Record: Missing recovery mechanism. MCU hang → timeout → error return
+  → no recovery → permanent stuck state.
 
 **Step 2.4: Fix Quality**
-- Obviously correct: The fix prevents ALL register writes by
-  substituting no-op callbacks
-- Minimal regression risk: Empty callbacks for a fixed-link PHY that
-  never needed MAC configuration
-- Self-contained in one file
-- Reviewed by the original MT7628 author (Stefan Roese) and MediaTek
-  network expert (Daniel Golle)
+- Obviously correct: Mirrors the exact same pattern used in mt7915
+  (commit 10f73bb3938f7c5) and mt7915's STOP_DMA handling (commit
+  b13cd593ef2402).
+- Minimal/surgical: Only adds recovery trigger code at the exact points
+  needed.
+- `test_and_set_bit` prevents duplicate resets.
+- Regression risk: Very low. The reset_work handler already handles
+  `recovery.restart = true` properly. The STOP_DMA path already exists
+  for other triggers.
+- Record: High quality fix, obviously correct, mirrors established
+  patterns.
 
-## PHASE 3: GIT HISTORY
+---
+
+## PHASE 3: GIT HISTORY INVESTIGATION
 
 **Step 3.1: Blame**
-- The buggy code in `mtk_mac_link_down`/`mtk_mac_link_up` was introduced
-  by `b8fc9f30821ec0` (René van Dorst, 2019-08-25) during the phylink
-  conversion
-- The `mtk_mac_config` guard was already in `b8fc9f30821ec0` but was
-  never added to `link_down`/`link_up`/`finish`
+- `mt7996_mcu_parse_response()`: Unchanged since original driver
+  addition by Shayne Chen (commit 98686cd21624c7, November 2022, v6.2).
+- `mt7996_reset()`: Added by Bo Jiao (commit 27015b6fbcca83, April 2023,
+  v6.4) as "enable full system reset support".
+- The buggy code (missing recovery trigger) has been present since the
+  driver was first created.
+- Record: Bug present since v6.2 (mcu.c) and v6.4 (mac.c had
+  mt7996_reset without STOP_DMA handling).
 
-**Step 3.2: Original commit**
-- `296c9120752b` ("Add MT7628/88 SoC support") was merged in v5.3-rc6
-  (August 2019)
-- This commit is present in all stable trees from v5.3 onwards
-  (confirmed in p-5.10, p-5.15 tags)
+**Step 3.2: No Fixes: Tag**
+- N/A - no Fixes: tag present (expected).
 
-**Step 3.3/3.4: Author & File History**
-- Joris Vaisvila is not a frequent kernel contributor (only 1-2 commits
-  found)
-- However, both reviewers are well-known in this subsystem
-- File has 231 commits since 296c9120752b; 32 since v6.12
+**Step 3.3: File History**
+- The mt7996 reset infrastructure was significantly improved in v6.18
+  (ace5d3b6b49e8 "improve hardware restart reliability"). However, the
+  basic recovery mechanism has been in place since v6.4.
+- The commit `beb01caa570c52` in v6.18 decreased MCU timeouts to allow
+  faster recovery - this patch's logic works with either timeout value.
+- Record: This commit is standalone; no prerequisites needed beyond the
+  v6.4 reset infrastructure.
+
+**Step 3.4: Author**
+- Chad Monroe is a contributor to mt76 (5 commits found in the driver).
+- Felix Fietkau (nbd@nbd.name) is THE mt76 subsystem maintainer - he
+  applied the patch.
+- Felix also authored the identical fix for mt7915 (10f73bb3938f7c5).
+- Record: Applied by subsystem maintainer. Author is a regular
+  contributor.
 
 **Step 3.5: Dependencies**
-- The patch is self-contained. The no-op ops pattern doesn't depend on
-  any other patches.
-- In v6.6, the `mtk_mac_finish` function also writes to `MTK_MAC_MCR`
-  without MT7628 guard — same bug. The no-op ops approach fixes all
-  callbacks at once.
+- All structures/flags used already exist: `MT76_MCU_RESET`,
+  `recovery.restart`, `mcu.wait`, `reset_work`, `reset_wait`,
+  `MT_MCU_CMD_STOP_DMA`.
+- No new functions or data structures introduced.
+- Record: Fully self-contained, no dependencies on other uncommitted
+  patches.
 
-## PHASE 4: MAILING LIST
+---
 
-Lore/b4 dig returned results but couldn't access full discussions due to
-Anubis protection. The patch was submitted as
-`20260226154547.68553-1-joey@tinyisr.com` and accepted by Jakub Kicinski
-(netdev maintainer).
+## PHASE 4: MAILING LIST AND EXTERNAL RESEARCH
+
+**Step 4.1: Original Discussion**
+- lore.kernel.org returned anti-bot protection; direct web access was
+  blocked.
+- b4 dig of the mt7915 equivalent found it was part of a 24-patch series
+  (v2) by Felix Fietkau from August 2024.
+- The mt7996 version is by Chad Monroe and was ported from the mt7915
+  fix.
+- Record: Could not access lore directly due to anti-bot protection. b4
+  confirmed the mt7915 version was part of Felix Fietkau's cleanup
+  series.
+
+**Step 4.2: Reviewer**
+- Applied by Felix Fietkau, the mt76 subsystem maintainer.
+- Record: Subsystem maintainer applied the patch directly.
+
+**Step 4.3-4.5**: Blocked by lore anti-bot protection. No additional
+information could be gathered.
+
+---
 
 ## PHASE 5: CODE SEMANTIC ANALYSIS
 
-**Step 5.1-5.4: Impact Surface**
-- `mtk_mac_link_down` is called by phylink whenever the link goes down —
-  every cable disconnect, PHY negotiation change
-- `mtk_mac_link_up` is called on every link up event
-- `mtk_mac_finish` is called during PHY configuration
-- On MT7628, these are called regularly during normal operation
-- `mtk_set_mcr_max_rx` at line 3886 already has its own `MTK_SOC_MT7628`
-  guard, confirming the developers know these registers don't exist on
-  MT7628
+**Step 5.1: Functions Modified**
+- `mt7996_mcu_parse_response()` - MCU response parser (callback)
+- `mt7996_reset()` - device reset entry point
+
+**Step 5.2: Callers of `mt7996_mcu_parse_response`**
+- Registered as `.mcu_parse_response` in `mt7996_mcu_ops` (mcu.c line
+  3363).
+- Called from `mt76_mcu_skb_send_and_get_msg()` in `mcu.c` (core mt76
+  code, line 122).
+- This is the universal MCU message response handler - called for EVERY
+  MCU command the driver issues.
+- Record: Called for every MCU message. Critical, high-frequency path.
+
+**Step 5.3: Callers of `mt7996_reset`**
+- Called from interrupt context and error recovery paths.
+- Used by `mt7996_irq_tasklet()` when MCU command interrupts occur.
+- Record: Called from interrupt handler / tasklet context.
+
+**Step 5.4: Call Chain**
+- Any WiFi operation → MCU command → `mt76_mcu_skb_send_and_get_msg()` →
+  wait for response → `mt7996_mcu_parse_response()` → if timeout →
+  trigger reset
+- This path is reachable from normal WiFi operations (scan, associate,
+  channel switch, etc.)
+- Record: Fully reachable from normal user operations.
+
+**Step 5.5: Similar Patterns**
+- mt7915 has identical recovery logic (10f73bb3938f7c5 +
+  b13cd593ef2402).
+- mt7921/mt7925 have similar reset mechanisms.
+- Record: Well-established pattern across the mt76 driver family.
+
+---
 
 ## PHASE 6: STABLE TREE ANALYSIS
 
-**Step 6.1:** The buggy code exists in ALL stable trees from v5.3+,
-including v5.15, v6.1, v6.6, and 6.12.
-- In v6.6: `mtk_mac_link_down` at line 689 unconditionally writes to
-  `MTK_MAC_MCR` — confirmed the same bug
-- In v6.6: `mtk_mac_link_up` at line 769 also unconditionally writes to
-  `MTK_MAC_MCR` — confirmed
-- In v6.6: `mtk_mac_finish` at line 660 also writes to `MTK_MAC_MCR` —
-  confirmed
+**Step 6.1: Buggy Code in Stable Trees**
+- mt7996 driver added in v6.2.
+- `mt7996_reset()` added in v6.4.
+- `mt7996_mcu_parse_response()` unchanged since v6.2.
+- The mcu.c part of the fix applies to 6.2+. The mac.c part applies to
+  6.4+.
+- Affected stable trees: 6.6.y, 6.12.y, and any other active LTS that
+  includes mt7996.
+- Record: Bug exists in 6.6.y and all later stable trees.
 
-**Step 6.2: Backport Difficulty**
-For v7.0: Should apply cleanly or with minor fuzz.
-For v6.6 and older: Will need rework. The `mtk_mac_link_down`/`link_up`
-implementations differ significantly (v7.0 has xgmii handling added by
-`51cf06ddafc91e`). However, the *concept* of the fix (separate no-op
-ops) is portable.
+**Step 6.2: Backport Complications**
+- The code being modified is unchanged since original introduction.
+- Should apply cleanly to 6.6.y.
+- Record: Expected clean apply.
+
+**Step 6.3: No Related Fixes Already in Stable**
+- No similar fix found in stable trees.
+- Record: No existing fix for this issue in stable.
+
+---
 
 ## PHASE 7: SUBSYSTEM CONTEXT
 
-- Subsystem: Network driver (embedded Ethernet), IMPORTANT criticality
-  for MT7628 users
-- MT7628/MT7688 is a widely-used MIPS SoC found in popular embedded
-  platforms (Omega2, VoCore2, many OpenWrt routers)
+**Step 7.1: Subsystem**
+- WiFi driver (drivers/net/wireless/mediatek/mt76/mt7996)
+- MT7996 is MediaTek's Wi-Fi 7 (802.11be) chipset - used in routers and
+  access points.
+- Criticality: IMPORTANT - WiFi is critical infrastructure for many
+  users.
+- Record: [WiFi driver] [IMPORTANT - affects mt7996 hardware users]
+
+**Step 7.2: Activity**
+- Very actively developed - dozens of commits in recent releases.
+- Active MLO/Wi-Fi 7 development ongoing.
+- Record: Highly active subsystem.
+
+---
 
 ## PHASE 8: IMPACT AND RISK ASSESSMENT
 
 **Step 8.1: Affected Users**
-- All MT7628/MT7688 users (embedded routers running Linux with VLANs)
+- All users of mt7996/mt7992 WiFi hardware (routers, access points, PCIe
+  WiFi cards).
+- Record: Hardware-specific, but MT7996 is a current-generation popular
+  WiFi chipset.
 
 **Step 8.2: Trigger Conditions**
-- Triggered on every link state change (boot, cable plug/unplug, PHY
-  state change)
-- Extremely common — happens during normal boot
+- Triggers when MCU firmware hangs without issuing a watchdog interrupt.
+- Can happen during normal operation (firmware bugs, hardware glitches).
+- Not user-triggered in the security sense, but can happen during
+  routine WiFi operation.
+- Record: Firmware hang during normal operation. Not predictable but
+  happens in practice (same fix was needed for mt7915).
 
 **Step 8.3: Failure Mode**
-- **ESW VLAN configuration corruption** — MEDIUM-HIGH severity
-- VLAN configuration is silently corrupted, leading to incorrect network
-  behavior
-- Not a crash but a data corruption issue affecting network
-  configuration
+- Without the fix: WiFi device becomes permanently non-functional until
+  reboot.
+- This is a system hang from the WiFi perspective.
+- Severity: HIGH (permanent loss of WiFi connectivity, requires reboot)
+- Record: Permanent device stuck state. Severity: HIGH.
 
-**Step 8.4: Risk-Benefit**
-- Benefit: HIGH — prevents VLAN corruption on every MT7628 system
-- Risk: LOW — the fix adds empty callback functions and selects them
-  conditionally; the no-op approach is obviously correct for a fixed-
-  link PHY with no MAC control registers
+**Step 8.4: Risk-Benefit Ratio**
+- Benefit: HIGH - prevents permanent WiFi device failure, enables
+  automatic recovery.
+- Risk: VERY LOW - 14 lines, uses `test_and_set_bit` for safety, mirrors
+  proven mt7915 pattern, no changes to public APIs or data structures.
+- Record: Benefit HIGH, Risk VERY LOW. Excellent ratio.
+
+---
 
 ## PHASE 9: FINAL SYNTHESIS
 
-**Evidence FOR backporting:**
-1. Fixes real data corruption (VLAN config) on real hardware
-   (MT7628/MT7688)
-2. Bug present since v5.3 (2019) — affects all stable trees
-3. Reviewed by original MT7628 author and subsystem expert
-4. Accepted by netdev maintainer (Jakub Kicinski)
-5. Fix is obviously correct (no-op callbacks for hardware without MAC
-   registers)
-6. Single file change, well-contained
-7. Other code in the same file already has MT7628 guards for the same
-   registers (`mtk_set_mcr_max_rx` at line 3886)
+**Step 9.1: Evidence Summary**
 
-**Evidence AGAINST backporting:**
-1. ~30 lines of new code (not trivially small, but straightforward)
-2. May need rework for older stable trees (6.6, 6.1, 5.15) due to
-   function refactoring
-3. No explicit Cc: stable (expected for commits under review)
+FOR backporting:
+- Fixes permanent device stuck state (WiFi becomes completely non-
+  functional)
+- Small and surgical fix (14 lines, 2 files in same driver)
+- Mirrors identical fix already applied to sister chip mt7915 (proven
+  pattern)
+- Applied by mt76 subsystem maintainer (Felix Fietkau)
+- No dependencies on other patches
+- Buggy code present since driver introduction (v6.2/v6.4)
+- `test_and_set_bit` prevents duplicate resets (safe concurrent
+  behavior)
+- Should apply cleanly to stable trees
 
-**Stable Rules Checklist:**
-1. Obviously correct and tested? YES — reviewed by 2 experts, one the
-   original author
-2. Fixes a real bug? YES — VLAN config corruption on MT7628
-3. Important issue? YES — data corruption, affects all MT7628 users
-4. Small and contained? YES — single file, ~30 lines
-5. No new features? CORRECT — only prevents invalid register writes
-6. Can apply to stable? YES for 7.0; needs rework for older trees
+AGAINST backporting:
+- Brief commit message (but supplemented by identical mt7915 fix
+  explanation)
+- No explicit stable nomination or Reported-by (but this is expected for
+  manual review candidates)
 
-**Verification:**
-- [Phase 1] Parsed tags: Reviewed-by from Daniel Golle and Stefan Roese,
-  Link to netdev submission
-- [Phase 2] Diff analysis: Adds no-op phylink_mac_ops for MT7628,
-  selects them in `mtk_add_mac()`, removes now-unreachable guard in
-  `mtk_mac_config()`
-- [Phase 3] git blame: buggy code from `b8fc9f30821ec0` (2019), phylink
-  conversion missing MT7628 guards in link_down/link_up
-- [Phase 3] git show 296c9120752b: confirmed original MT7628 support
-  commit from v5.3 era (2019-08-16)
-- [Phase 3] git tag --contains: original commit present in p-5.10,
-  p-5.15 tags (all active stable trees)
-- [Phase 5] Verified `mtk_mac_link_down` writes to
-  `MTK_MAC_MCR(mac->id)` without MT7628 check (line 731 in current code)
-- [Phase 5] Verified `mtk_mac_link_up`→`mtk_gdm_mac_link_up` writes to
-  `MTK_MAC_MCR(mac->id)` (line 846) without MT7628 check
-- [Phase 5] Verified `mtk_mac_finish` writes to `MTK_MAC_MCR(mac->id)`
-  (line 709/716) without MT7628 check
-- [Phase 5] Confirmed `mtk_set_mcr_max_rx` (line 3886) already guards
-  against MT7628, proving developers know these registers don't exist on
-  MT7628
-- [Phase 6] Verified v6.6 stable has the same bug: `mtk_mac_link_down`
-  (line 689) and `mtk_mac_link_up` (line 769) unconditionally write to
-  `MTK_MAC_MCR`
-- [Phase 6] `MTK_MAC_MCR(x)` = 0x10100 + x*0x100, confirmed in header
-  file (line 453)
-- [Phase 8] VLAN corruption confirmed by commit message: "Writes to
-  these registers only corrupt the ESW VLAN configuration"
-- UNVERIFIED: Could not access full lore.kernel.org discussion due to
-  Anubis protection; relied on tags in the commit message
+**Step 9.2: Stable Rules Checklist**
+1. Obviously correct and tested? **YES** - mirrors proven mt7915
+   pattern, applied by maintainer
+2. Fixes a real bug? **YES** - permanent device stuck state
+3. Important issue? **YES** - device becomes permanently non-functional
+4. Small and contained? **YES** - 14 lines in single driver
+5. No new features or APIs? **YES** - only adds error recovery
+6. Can apply to stable? **YES** - code unchanged since introduction
+
+**Step 9.3: Exception Categories**
+- Not an exception category - this is a standard bug fix.
+
+**Step 9.4: Decision**
+This is a clear bug fix that prevents a permanent device stuck state.
+It's small, obviously correct, follows established patterns, and was
+applied by the subsystem maintainer. The benefit-to-risk ratio is
+excellent.
+
+---
+
+## Verification
+
+- [Phase 1] Parsed tags: Link to patch.msgid, signed by author (Chad
+  Monroe) and maintainer (Felix Fietkau)
+- [Phase 2] Diff analysis: +9 lines in mcu.c (reset trigger on timeout),
+  +5 lines in mac.c (STOP_DMA handling)
+- [Phase 3] git blame: mt7996_mcu_parse_response unchanged since
+  98686cd21624c7 (v6.2); mt7996_reset from 27015b6fbcca83 (v6.4)
+- [Phase 3] git show 10f73bb3938f7c5: confirmed identical mt7915 fix
+  exists with clear explanation of the permanent stuck state bug
+- [Phase 3] git show b13cd593ef2402: confirmed identical mt7915 STOP_DMA
+  handling pattern
+- [Phase 3] git log --author: Chad Monroe has 5 commits in mt76, is a
+  regular contributor
+- [Phase 4] b4 dig: found mt7915 version in Felix Fietkau's series at
+  lore
+- [Phase 4] lore direct access blocked by anti-bot protection
+- [Phase 5] Grep MT76_MCU_RESET: confirmed flag is used across 15+ files
+  in mt76 for reset coordination
+- [Phase 5] Grep mt7996_mcu_parse_response: confirmed it's registered as
+  mcu_ops callback (line 3363)
+- [Phase 5] Grep reset_work: confirmed reset_work/reset_wait
+  infrastructure exists since v6.4
+- [Phase 6] git tag --contains: mt7996_reset present since v6.4; driver
+  since v6.2
+- [Phase 6] Current 7.0 code confirmed: mt7996_reset lacks STOP_DMA
+  handling, parse_response lacks reset trigger
+- [Phase 8] Failure mode: permanent WiFi device stuck state requiring
+  reboot - severity HIGH
+- UNVERIFIED: Exact lore discussion content could not be accessed due to
+  anti-bot protection
 
 **YES**
 
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 34 ++++++++++++++++++---
- 1 file changed, 30 insertions(+), 4 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 5 +++++
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 9 +++++++++
+ 2 files changed, 14 insertions(+)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index ddc321a02fdae..bb8ced22ca3be 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -562,9 +562,7 @@ static void mtk_mac_config(struct phylink_config *config, unsigned int mode,
- 	int val, ge_mode, err = 0;
- 	u32 i;
- 
--	/* MT76x8 has no hardware settings between for the MAC */
--	if (!MTK_HAS_CAPS(eth->soc->caps, MTK_SOC_MT7628) &&
--	    mac->interface != state->interface) {
-+	if (mac->interface != state->interface) {
- 		/* Setup soc pin functions */
- 		switch (state->interface) {
- 		case PHY_INTERFACE_MODE_TRGMII:
-@@ -956,6 +954,30 @@ static const struct phylink_mac_ops mtk_phylink_ops = {
- 	.mac_enable_tx_lpi = mtk_mac_enable_tx_lpi,
- };
- 
-+static void rt5350_mac_config(struct phylink_config *config, unsigned int mode,
-+				const struct phylink_link_state *state)
-+{
-+}
-+
-+static void rt5350_mac_link_down(struct phylink_config *config, unsigned int mode,
-+				phy_interface_t interface)
-+{
-+}
-+
-+static void rt5350_mac_link_up(struct phylink_config *config,
-+			    struct phy_device *phy,
-+			    unsigned int mode, phy_interface_t interface,
-+			    int speed, int duplex, bool tx_pause, bool rx_pause)
-+{
-+}
-+
-+/* MT76x8 (rt5350-eth) does not expose any MAC control registers */
-+static const struct phylink_mac_ops rt5350_phylink_ops = {
-+	.mac_config = rt5350_mac_config,
-+	.mac_link_down = rt5350_mac_link_down,
-+	.mac_link_up = rt5350_mac_link_up,
-+};
-+
- static void mtk_mdio_config(struct mtk_eth *eth)
- {
- 	u32 val;
-@@ -4780,6 +4802,7 @@ static const struct net_device_ops mtk_netdev_ops = {
- 
- static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
- {
-+	const struct phylink_mac_ops *mac_ops = &mtk_phylink_ops;
- 	const __be32 *_id = of_get_property(np, "reg", NULL);
- 	phy_interface_t phy_mode;
- 	struct phylink *phylink;
-@@ -4914,9 +4937,12 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
- 			  mac->phylink_config.supported_interfaces);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+index d4f3ee943b472..b7aa51481ce82 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+@@ -2737,6 +2737,11 @@ void mt7996_reset(struct mt7996_dev *dev)
+ 		return;
  	}
  
-+	if (MTK_HAS_CAPS(eth->soc->caps, MTK_SOC_MT7628))
-+		mac_ops = &rt5350_phylink_ops;
++	if (READ_ONCE(dev->recovery.state) & MT_MCU_CMD_STOP_DMA) {
++		set_bit(MT76_MCU_RESET, &dev->mphy.state);
++		wake_up(&dev->mt76.mcu.wait);
++	}
 +
- 	phylink = phylink_create(&mac->phylink_config,
- 				 of_fwnode_handle(mac->of_node),
--				 phy_mode, &mtk_phylink_ops);
-+				 phy_mode, mac_ops);
- 	if (IS_ERR(phylink)) {
- 		err = PTR_ERR(phylink);
- 		goto free_netdev;
+ 	queue_work(dev->mt76.wq, &dev->reset_work);
+ 	wake_up(&dev->reset_wait);
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index c0c042de477b8..54776f0703876 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -209,6 +209,7 @@ static int
+ mt7996_mcu_parse_response(struct mt76_dev *mdev, int cmd,
+ 			  struct sk_buff *skb, int seq)
+ {
++	struct mt7996_dev *dev = container_of(mdev, struct mt7996_dev, mt76);
+ 	struct mt7996_mcu_rxd *rxd;
+ 	struct mt7996_mcu_uni_event *event;
+ 	int mcu_cmd = FIELD_GET(__MCU_CMD_FIELD_ID, cmd);
+@@ -217,6 +218,14 @@ mt7996_mcu_parse_response(struct mt76_dev *mdev, int cmd,
+ 	if (!skb) {
+ 		dev_err(mdev->dev, "Message %08x (seq %d) timeout\n",
+ 			cmd, seq);
++
++		if (!test_and_set_bit(MT76_MCU_RESET, &dev->mphy.state)) {
++			dev->recovery.restart = true;
++			wake_up(&dev->mt76.mcu.wait);
++			queue_work(dev->mt76.wq, &dev->reset_work);
++			wake_up(&dev->reset_wait);
++		}
++
+ 		return -ETIMEDOUT;
+ 	}
+ 
 -- 
 2.53.0
 
