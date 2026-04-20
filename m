@@ -4,93 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BE6CEA71BC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 04:47:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE2E7F3ED73
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 05:20:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ivIQYtxBKSYYxLWGWSom7fjyGf+pGkpG586CwmF2GsI=; b=jshLi+XUn/NaSiJjtRBGSTFJDk
-	4Z9YK7lLYL8ujD3WZJolxIEG8fLHSLApO3qyjv23EXMKyJMxLU1rHFZtYApu2dfxMFsOu07XCOMKs
-	Hqt06WV35QTECUO2aQGUoR/HBu65m8VKBww76DWAjMdncV8VDtZPdlGMwewaDLYtHq9RTCK7I2cBr
-	9hWyUb1ov6FgD52p4twuzxp6QtbrPQa6V4CGMmjxj36OPm8s/nxZANDvvQAzYFknSbaYMptAXziwH
-	FqgmDwZqAWwjSY7hc+mixsHV86bWSmuj9mQ1PAAI6EHj7PLX+Hp7julAgvPs6aZPu60iZyT0WwVj5
-	Gw3+XADg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=GzRXCJv6s7nBaWaSPV26wDLtfWq6m8la+VtHkby4pFA=; b=uOIfKI3rT1bVldxXkYzgKraAaa
+	jTc97Vg/omk1+m5DcbudJulA2F0g4BemykhQfwu9amvkGE29ah/5XVSKzpYEXy3lC7Y7HEqMvAFN9
+	buEwe6NGi111VlD4WV2AYLtq5LPBHZix6IRZkwCfZZYDepp0YXG5PtnE/eTlPj3M9HKOKWIDJ2YPR
+	Pg2MTMjoRBk/768a+A0AZzMoQVKgsioL/cSpEWhY/PDI/NyfFRBwyX5VLLI0FylYjqJPYF/QI8a0S
+	KtwRCmsdurGzxo+QBiZOmvY8JpxnGJok1QNgDcvrAy0sybIWb+ETFVCEmEZX9ysT9sGq7qTkZAcf3
+	eFjrcS/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEgY3-00000006Pj7-1mkv;
-	Mon, 20 Apr 2026 04:47:51 +0000
-Received: from mail-dy1-x1336.google.com ([2607:f8b0:4864:20::1336])
+	id 1wEh3n-00000006RFJ-06kh;
+	Mon, 20 Apr 2026 05:20:39 +0000
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEgXy-00000006PiK-1NDI
+	id 1wEh3k-00000006REc-0FGt
 	for linux-mediatek@lists.infradead.org;
-	Mon, 20 Apr 2026 04:47:50 +0000
-Received: by mail-dy1-x1336.google.com with SMTP id 5a478bee46e88-2bdcf5970cdso2175204eec.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 19 Apr 2026 21:47:45 -0700 (PDT)
+	Mon, 20 Apr 2026 05:20:37 +0000
+Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-2b45cb89f7eso18893205ad.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 19 Apr 2026 22:20:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1776660465; x=1777265265; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=ivIQYtxBKSYYxLWGWSom7fjyGf+pGkpG586CwmF2GsI=;
-        b=Fn8IA7M80U1FL2zHMrwbk1sAiQdlCUXRSKht/p3XCgXmvRsEaA77KJaY2ixZTGkQFO
-         Yk1dsGPPhMzLPXFOopKV+ep62j/vH+B38XbqfgEWSVmAxHR41n3NALMCSsWx5lPvlbXU
-         0C+lWBCP0LkXCOVSkP9ATtk6Sy92ooXCdQvRqhbTFlsew3uu0hdtBK613i213vS15XCk
-         D+PqLKftFZhuYQGs4x9zh0HfeQWXpWE17uDe9JePHl9WYSWKxSylnylnbMZXLxdJEE6H
-         cA5C68rNyAzWepkHrX7O3P74EQIp2JbGnILqBrQRHNUmpz7n5GOP0ZFk/NmRkUc+hyE/
-         kWNw==
+        d=gmail.com; s=20251104; t=1776662434; x=1777267234; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=GzRXCJv6s7nBaWaSPV26wDLtfWq6m8la+VtHkby4pFA=;
+        b=pWeDDbrAIYC6Z/rKnMef8eyHgABklabxgMnQ8cQVHIfdyvuYOlqTbTMvRHt1JC8OLX
+         OTbe+D2XkKk1wlHhiVSjHaP+gh+UpL51B0kif8TB+uKS4tkFPTXnjTdg/9Tke1y86IUb
+         2ISk8nU3KPjN0/j0xwtFp/ZSRYt5OKn6oWzIFs9HrDa6l1Xr3wijnow5bBX/wkkphnSd
+         d5gtT3o4jG6bCn5zpnKiTRGZZn96PZRAq+d0g4OTCmSaNG5YnN2sM/5T0Vj0K291t15r
+         AkyJL3YJsYqVsELbjPoQ/OMcdm80Y20yW1QW/dakYmEFXqZxFxWYk61y4je7lqvhlXCx
+         QoRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1776660465; x=1777265265;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ivIQYtxBKSYYxLWGWSom7fjyGf+pGkpG586CwmF2GsI=;
-        b=g7SvRyRCWeSrvrTgKuntYh0NesuSiZx7+7LoKWFjYc7eiadL0L8pYqYO42nqSiZAun
-         HrOmnCMYeqBKD6ftNXxdETa63naLEQhKIVYyXpx8CzwMTuqqAc57Zl8SLGGgu0DOz46C
-         EpwQcR8JBBojnK9u5LpZaYa8yCPMa1Daw0B2LBnlrZa6ZzVJmy5C0ZYtDM9+K3QTUvP4
-         ZMsIyPD3k4dYQlx+Pko8IhU5vpRR2JUT0KmxUx/MWRNYmPmibYiJ7hH+Pu4uYXZ+DBzZ
-         AU/OnL5smNmuHr17jPT9dPkX4NCqS03Xy3kxKFpcF2szAbnUEN9WiZ5vZOQdtBkf05uf
-         MxHQ==
-X-Forwarded-Encrypted: i=1; AFNElJ9+Dg4l1YCQrHZXkdPcs6l4ScMmIc1Yow9XWzD1wqdxqiaQrQiSwv5+mnq9M+ScVLKQCEPpPrpkTLGjIvHi0A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyAnjemG2dutb+81rY4k9H6fHFzer8E3wxh6Fz9qqSv8xfYiy/n
-	A7coVKOYcqQPxXKvtv0zkoZ5I6ayONRM2Yx/ZgEAYDec7CN5BYkvamj4
-X-Gm-Gg: AeBDiesAW4Sq18K3nHJLL9aqmNBOABHRrSsJsZ8i2aY/r4ZT7m652GIOL7Q8yzzFUt7
-	GihI5eknK+6q3XweR/mXi3N51NtGHH4F4haA8vofO1b72eOhVqydMU20pP8VFStBnu1kVWshD/Y
-	8IuQ+scdvfRI+kZHYOyoDtd6BA41jIMEw/E7mD1HoCoY9/ZqnCsp5yKy6oTfOCidhx9ggRVnhCu
-	GlmJWBCTTtKfCn4hJlJ5hwS0bduvCm7qgTd5cMCeiB8pRrR8Vp4jeumi5gs9tBoRBoQsm6CW+Do
-	w94tJ8yH2LlMfqk+iHR+el0OSDN6zSa7aJNXh1c1iwgZZ+Nc+JwPesDm+W3KnCEq6AFmm3dLHpk
-	DA2SlFiwPBED3W6tLqBG7S9kGQmaFmYKpk21mXixtxiTvNw7KdJTfVeQ2+zl0QZxk02v9TIyviR
-	ZZO1yOr8E6Bc16JyS/bK7DDc2CJ+PIpQ5GfOWm6v+YgPruyO2EOMqIwvo+UTgaB7x40jO2QnQcL
-	+Y=
-X-Received: by 2002:a05:7300:72d5:b0:2a4:701a:b9ba with SMTP id 5a478bee46e88-2e42e10aeabmr4580207eec.14.1776660464756;
-        Sun, 19 Apr 2026 21:47:44 -0700 (PDT)
-Received: from google.com ([2a00:79e0:2ebe:8:1a4e:4965:5dff:cdee])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-2e53a4a8018sm15897536eec.8.2026.04.19.21.47.42
+        d=1e100.net; s=20251104; t=1776662434; x=1777267234;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=GzRXCJv6s7nBaWaSPV26wDLtfWq6m8la+VtHkby4pFA=;
+        b=gt0Kh2oFYO8F+Q0d0l9K2DAu6fm32bYny4cEpiqSX6SmwRINba6+x+OeaYx7vKSqSc
+         R8gjg2mDm+jjFCV5kW8acZMvqwJ5jM+4FOlRo5epBQ0EQSLm0N4kTywOa1uYskwfnD/f
+         Tc64kxgywT7uP1gYn8+HzKFJC7Oudh7+9tXGO6SSdp3FWf/tC0GdApaIwyBpoqd7EGna
+         wR+ZMb/q3dAjYV4Y0BjFire4NEKRFQSZgYl1q5Z5vOYOgNeTEVU/9XjNoNzcK0oYG8dL
+         TVXU36FJl2TxrQKygxOJngzAm91rUyTl/eLuYk2Y8gGTcVwyWXe0rFxQW7ssQqSc9qi6
+         M/lQ==
+X-Forwarded-Encrypted: i=1; AFNElJ9SXLvJl/td5anf3ZnEXrtMfV5B2hptzof586iajbFtCxQPdjF/Zjy3Q36G194Wxu1zBJVY6ScUVZwTmSKfEg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyJKp/rK2RnXE3ExAzxAvCJBHiii+Ur5tgu9ZGEFCAAXJyu+IAF
+	XbUATUkzPvUJexyse24kSWvvFeNh/xgw+N30nIczNzzfcu/hYsGUqXcx
+X-Gm-Gg: AeBDievgUHoxJRdKkBnvgCdC3MW+K2/tXHu9Pr95fMqyCXBIPrIkybPrmPSsuvKqvyO
+	lkwBQw5JgS01kMfoll8Ie9wdPke52O6XVMi8iRDmk+SxKIKDQLxTyoBoI0+vFZRa5WllYwa/1R7
+	8d161679MSOdsgMXaEvYmIKIRDYDVmMfeGd7uMXRfn9n7MEH5eQwKq/eLMj92Zm707j+raxPNy2
+	pLzGSUmEYSzzpBvS7vgUB6A4uwJtIcHMfG6YSNbojxaRgRqkmxCkGCWwiYFC77BdnUixHiWq7Kh
+	6KUsjXMCNeUyQzlxlZsRY1SrC9rCDTtfgI6eulgtctONksuroO30MgIKy+J3b66YGzDm583iUkt
+	N9q1PkrE77F9yIr4d/2o2woVe58XeymC+DR5VXAOMn+ItrRmdE5iQX9NSLKsjc4hEVVZxhnAaRE
+	n7940XkNq6i0CnTJVbAUlcP2AnWnI2xnDuRsltfweynN0Nqv+SuY0=
+X-Received: by 2002:a17:903:124c:b0:2b2:57df:264d with SMTP id d9443c01a7336-2b5f9f61ad2mr132449745ad.33.1776662434501;
+        Sun, 19 Apr 2026 22:20:34 -0700 (PDT)
+Received: from rahul-mintos.ban-spse ([165.204.156.251])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2b5fab30f29sm87965555ad.68.2026.04.19.22.20.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 19 Apr 2026 21:47:43 -0700 (PDT)
-Date: Sun, 19 Apr 2026 21:47:40 -0700
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Hugo Villeneuve <hugo@hugovil.com>
-Cc: robin@protonic.nl, andy@kernel.org, geert@linux-m68k.org, 
-	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	hvilleneuve@dimonoff.com, mkorpershoek@kernel.org, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, lee@kernel.org, alexander.sverdlin@gmail.com, 
-	marek.vasut@gmail.com, akurz@blala.de, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-input@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v5 4/4] Input: charlieplex_keypad: add GPIO charlieplex
- keypad
-Message-ID: <aeWtDA7snjJmiF9K@google.com>
-References: <20260312180304.3865850-1-hugo@hugovil.com>
- <20260312180304.3865850-5-hugo@hugovil.com>
+        Sun, 19 Apr 2026 22:20:34 -0700 (PDT)
+From: Abhishek Rajput <abhiraj21put@gmail.com>
+To: chunkuang.hu@kernel.org,
+	p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com
+Cc: dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	abhiraj21put@gmail.com
+Subject: [PATCH] drm/mediatek: Convert legacy DRM logging to drm_* helpers in mtk_dsi.c
+Date: Mon, 20 Apr 2026 10:50:08 +0530
+Message-ID: <20260420052008.5417-1-abhiraj21put@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260312180304.3865850-5-hugo@hugovil.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260419_214746_612839_D0FD9DC8 
-X-CRM114-Status: GOOD (  22.42  )
+X-CRM114-CacheID: sfid-20260419_222036_338976_BE09FE81 
+X-CRM114-Status: GOOD (  13.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,195 +103,158 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Hugo,
+Replace DRM_INFO(), DRM_WARN() and DRM_ERROR() calls in
+drivers/gpu/drm/mediatek/mtk_dsi.c with the corresponding
+drm_info(), drm_warn() and drm_err() helpers.
 
-On Thu, Mar 12, 2026 at 02:00:58PM -0400, Hugo Villeneuve wrote:
-> +
-> +static void charlieplex_keypad_report_key(struct input_dev *input)
-> +{
-> +	struct charlieplex_keypad *keypad = input_get_drvdata(input);
-> +	const unsigned short *keycodes = input->keycode;
-> +
-> +	if (keypad->current_code > 0) {
-> +		input_event(input, EV_MSC, MSC_SCAN, keypad->current_code);
-> +		input_report_key(input, keycodes[keypad->current_code], 0);
+The drm_*() logging helpers take a struct drm_device * argument,
+allowing the DRM core to prefix log messages with the correct device
+name and instance. This is required to correctly distinguish log
+messages on systems with multiple GPUs.
 
-This needs input_sync() as otherwise userspace is free to only recognize
-the last MSC_SCAN event.
+This change aligns the radeon driver with the DRM TODO item:
+"Convert logging to drm_* functions with drm_device parameter".
 
-> +	}
-> +
-> +	if (keypad->debounce_code) {
-> +		input_event(input, EV_MSC, MSC_SCAN, keypad->debounce_code);
-> +		input_report_key(input, keycodes[keypad->debounce_code], 1);
-> +	}
-> +
-> +	input_sync(input);
-> +	keypad->current_code = keypad->debounce_code;
-> +}
-> +
-> +static void charlieplex_keypad_check_switch_change(struct input_dev *input,
-> +						   int code)
-> +{
-> +	struct charlieplex_keypad *keypad = input_get_drvdata(input);
-> +
-> +	if (code != keypad->debounce_code) {
-> +		keypad->debounce_count = 0;
-> +		keypad->debounce_code = code;
-> +	} else if (keypad->debounce_count < keypad->debounce_threshold) {
+Signed-off-by: Abhishek Rajput <abhiraj21put@gmail.com>
 
-This does not work if debouncing is disabled (debounce threshold is 0).
-
-> +		keypad->debounce_count++;
-> +
-> +		if (keypad->debounce_count >= keypad->debounce_threshold &&
-> +		    keypad->debounce_code != keypad->current_code)
-> +			charlieplex_keypad_report_key(input);
-> +	}
-> +}
-> +
-> +static void charlieplex_keypad_poll(struct input_dev *input)
-> +{
-> +	struct charlieplex_keypad *keypad = input_get_drvdata(input);
-> +	int code;
-> +
-> +	code = 0;
-> +	for (unsigned int oline = 0; oline < keypad->nlines; oline++) {
-> +		DECLARE_BITMAP(values, MATRIX_MAX_ROWS);
-> +		int err;
-> +
-> +		/* Activate only one line as output at a time. */
-> +		gpiod_direction_output(keypad->line_gpios->desc[oline], 1);
-> +
-> +		if (keypad->settling_time_us)
-> +			fsleep(keypad->settling_time_us);
-> +
-> +		/* Read input on all other lines. */
-> +		err = gpiod_get_array_value_cansleep(keypad->line_gpios->ndescs,
-> +						     keypad->line_gpios->desc,
-> +						     keypad->line_gpios->info, values);
-> +		if (err)
-> +			return;
-
-We need to deactivate the line on error too.
-
-> +
-> +		for (unsigned int iline = 0; iline < keypad->nlines; iline++) {
-> +			if (iline == oline)
-> +				continue; /* Do not read active output line. */
-> +
-> +			/* Check if GPIO is asserted. */
-> +			if (test_bit(iline, values)) {
-> +				code = MATRIX_SCAN_CODE(oline, iline,
-> +							get_count_order(keypad->nlines));
-> +				/*
-> +				 * Exit loop immediately since we cannot detect
-> +				 * more than one key press at a time.
-> +				 */
-> +				break;
-> +			}
-> +		}
-> +
-> +		gpiod_direction_input(keypad->line_gpios->desc[oline]);
-> +
-> +		if (code)
-> +			break;
-> +	}
-> +
-> +	charlieplex_keypad_check_switch_change(input, code);
-> +}
-> +
-> +static int charlieplex_keypad_init_gpio(struct platform_device *pdev,
-> +					struct charlieplex_keypad *keypad)
-> +{
-> +	char **pin_names;
-> +	char label[32];
-> +
-> +	snprintf(label, sizeof(label), "%s-pin", pdev->name);
-> +
-> +	keypad->line_gpios = devm_gpiod_get_array(&pdev->dev, "line", GPIOD_IN);
-> +	if (IS_ERR(keypad->line_gpios))
-> +		return PTR_ERR(keypad->line_gpios);
-> +
-> +	keypad->nlines = keypad->line_gpios->ndescs;
-> +
-> +	if (keypad->nlines > MATRIX_MAX_ROWS)
-> +		return -EINVAL;
-> +
-> +	pin_names = devm_kasprintf_strarray(&pdev->dev, label, keypad->nlines);
-> +	if (IS_ERR(pin_names))
-> +		return PTR_ERR(pin_names);
-> +
-> +	for (unsigned int i = 0; i < keypad->line_gpios->ndescs; i++)
-> +		gpiod_set_consumer_name(keypad->line_gpios->desc[i], pin_names[i]);
-> +
-> +	return 0;
-> +}
-> +
-> +static int charlieplex_keypad_probe(struct platform_device *pdev)
-> +{
-> +	struct charlieplex_keypad *keypad;
-> +	unsigned int debounce_interval_ms;
-> +	unsigned int poll_interval_ms;
-> +	struct input_dev *input_dev;
-> +	int err;
-> +
-> +	keypad = devm_kzalloc(&pdev->dev, sizeof(*keypad), GFP_KERNEL);
-> +	if (!keypad)
-> +		return -ENOMEM;
-> +
-> +	input_dev = devm_input_allocate_device(&pdev->dev);
-> +	if (!input_dev)
-> +		return -ENOMEM;
-> +
-> +	keypad->input_dev = input_dev;
-> +
-> +	device_property_read_u32(&pdev->dev, "poll-interval", &poll_interval_ms);
-> +	device_property_read_u32(&pdev->dev, "debounce-delay-ms", &debounce_interval_ms);
-> +	device_property_read_u32(&pdev->dev, "settling-time-us", &keypad->settling_time_us);
-
-Not all of these are required properties. If they are missing the driver
-will operate on garbage values.
-
-> +
-> +	keypad->current_code = -1;
-> +	keypad->debounce_code = -1;
-> +	keypad->debounce_threshold = DIV_ROUND_UP(debounce_interval_ms, poll_interval_ms);
-
-This will bomb if poll interval is 0.
-
-> +
-> +	err = charlieplex_keypad_init_gpio(pdev, keypad);
-> +	if (err)
-> +		return err;
-> +
-> +	input_dev->name		= pdev->name;
-> +	input_dev->id.bustype	= BUS_HOST;
-> +
-> +	err = matrix_keypad_build_keymap(NULL, NULL, keypad->nlines,
-> +					 keypad->nlines, NULL, input_dev);
-> +	if (err)
-> +		dev_err_probe(&pdev->dev, -ENOMEM, "failed to build keymap\n");
-
-Missing "return".
-
-> +
-> +	if (device_property_read_bool(&pdev->dev, "autorepeat"))
-> +		__set_bit(EV_REP, input_dev->evbit);
-> +
-> +	input_set_capability(input_dev, EV_MSC, MSC_SCAN);
-> +
-> +	err = input_setup_polling(input_dev, charlieplex_keypad_poll);
-> +	if (err)
-> +		dev_err_probe(&pdev->dev, err, "unable to set up polling\n");
-
-Missing "return".
-
-I fixed it up and applied, please take a look in my 'next' branch and
-tell me if I messed up.
-
-Thanks.
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index 0e2bcd5f67b7..a67ad575f5f0 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -510,6 +510,7 @@ static void mtk_dsi_config_vdo_timing_per_line_lp(struct mtk_dsi *dsi)
+ 	u32 delta;
+ 	struct mtk_phy_timing *timing = &dsi->phy_timing;
+ 	struct videomode *vm = &dsi->vm;
++	struct drm_device *drm = dsi->bridge.dev;
+ 
+ 	if (dsi->format == MIPI_DSI_FMT_RGB565)
+ 		dsi_tmp_buf_bpp = 2;
+@@ -543,7 +544,7 @@ static void mtk_dsi_config_vdo_timing_per_line_lp(struct mtk_dsi *dsi)
+ 					     horizontal_backporch_byte /
+ 					     horizontal_front_back_byte;
+ 	} else {
+-		DRM_WARN("HFP + HBP less than d-phy, FPS will under 60Hz\n");
++		drm_warn(drm, "HFP + HBP less than d-phy, FPS will under 60Hz\n");
+ 	}
+ 
+ 	if ((dsi->mode_flags & MIPI_DSI_HS_PKT_END_ALIGNED) &&
+@@ -623,12 +624,13 @@ static s32 mtk_dsi_wait_for_irq_done(struct mtk_dsi *dsi, u32 irq_flag,
+ {
+ 	s32 ret = 0;
+ 	unsigned long jiffies = msecs_to_jiffies(timeout);
++	struct drm_device *drm = dsi->bridge.dev;
+ 
+ 	ret = wait_event_interruptible_timeout(dsi->irq_wait_queue,
+ 					       dsi->irq_data & irq_flag,
+ 					       jiffies);
+ 	if (ret == 0) {
+-		DRM_WARN("Wait DSI IRQ(0x%08x) Timeout\n", irq_flag);
++		drm_warn(drm, "Wait DSI IRQ(0x%08x) Timeout\n", irq_flag);
+ 
+ 		mtk_dsi_enable(dsi);
+ 		mtk_dsi_reset_engine(dsi);
+@@ -663,9 +665,10 @@ static s32 mtk_dsi_switch_to_cmd_mode(struct mtk_dsi *dsi, u8 irq_flag, u32 t)
+ {
+ 	mtk_dsi_irq_data_clear(dsi, irq_flag);
+ 	mtk_dsi_set_cmd_mode(dsi);
++	struct drm_device *drm = dsi->bridge.dev;
+ 
+ 	if (!mtk_dsi_wait_for_irq_done(dsi, irq_flag, t)) {
+-		DRM_ERROR("failed to switch cmd mode\n");
++		drm_err(drm, "failed to switch cmd mode\n");
+ 		return -ETIME;
+ 	} else {
+ 		return 0;
+@@ -849,11 +852,12 @@ static void mtk_dsi_bridge_atomic_pre_enable(struct drm_bridge *bridge,
+ 					     struct drm_atomic_state *state)
+ {
+ 	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
++	struct drm_device *drm = bridge->dev;
+ 	int ret;
+ 
+ 	ret = mtk_dsi_poweron(dsi);
+ 	if (ret < 0)
+-		DRM_ERROR("failed to power on dsi\n");
++		drm_err(drm, "failed to power on dsi\n");
+ }
+ 
+ static void mtk_dsi_bridge_atomic_post_disable(struct drm_bridge *bridge,
+@@ -916,7 +920,7 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
+ 	ret = drm_simple_encoder_init(drm, &dsi->encoder,
+ 				      DRM_MODE_ENCODER_DSI);
+ 	if (ret) {
+-		DRM_ERROR("Failed to encoder init to drm\n");
++		drm_err(drm, "Failed to encoder init to drm\n");
+ 		return ret;
+ 	}
+ 
+@@ -932,7 +936,7 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
+ 
+ 	dsi->connector = drm_bridge_connector_init(drm, &dsi->encoder);
+ 	if (IS_ERR(dsi->connector)) {
+-		DRM_ERROR("Unable to create bridge connector\n");
++		drm_err(drm, "Unable to create bridge connector\n");
+ 		ret = PTR_ERR(dsi->connector);
+ 		goto err_cleanup_encoder;
+ 	}
+@@ -985,6 +989,7 @@ static int mtk_dsi_host_attach(struct mipi_dsi_host *host,
+ {
+ 	struct mtk_dsi *dsi = host_to_dsi(host);
+ 	struct device *dev = host->dev;
++	struct drm_device *drm = dsi->bridge.dev;
+ 	int ret;
+ 
+ 	dsi->lanes = device->lanes;
+@@ -1012,7 +1017,7 @@ static int mtk_dsi_host_attach(struct mipi_dsi_host *host,
+ 
+ 	ret = component_add(host->dev, &mtk_dsi_component_ops);
+ 	if (ret) {
+-		DRM_ERROR("failed to add dsi_host component: %d\n", ret);
++		drm_err(drm, "failed to add dsi_host component: %d\n", ret);
+ 		drm_bridge_remove(&dsi->bridge);
+ 		return ret;
+ 	}
+@@ -1034,11 +1039,12 @@ static void mtk_dsi_wait_for_idle(struct mtk_dsi *dsi)
+ {
+ 	int ret;
+ 	u32 val;
++	struct drm_device *drm = dsi->bridge.dev;
+ 
+ 	ret = readl_poll_timeout(dsi->regs + DSI_INTSTA, val, !(val & DSI_BUSY),
+ 				 4, 2000000);
+ 	if (ret) {
+-		DRM_WARN("polling dsi wait not busy timeout!\n");
++		drm_warn(drm, "polling dsi wait not busy timeout!\n");
+ 
+ 		mtk_dsi_enable(dsi);
+ 		mtk_dsi_reset_engine(dsi);
+@@ -1123,6 +1129,7 @@ static ssize_t mtk_dsi_host_transfer(struct mipi_dsi_host *host,
+ 				     const struct mipi_dsi_msg *msg)
+ {
+ 	struct mtk_dsi *dsi = host_to_dsi(host);
++	struct drm_device *drm = dsi->bridge.dev;
+ 	ssize_t recv_cnt;
+ 	u8 read_data[16];
+ 	void *src_addr;
+@@ -1153,7 +1160,7 @@ static ssize_t mtk_dsi_host_transfer(struct mipi_dsi_host *host,
+ 	}
+ 
+ 	if (!msg->rx_buf) {
+-		DRM_ERROR("dsi receive buffer size may be NULL\n");
++		drm_err(drm, "dsi receive buffer size may be NULL\n");
+ 		ret = -EINVAL;
+ 		goto restore_dsi_mode;
+ 	}
+@@ -1177,7 +1184,7 @@ static ssize_t mtk_dsi_host_transfer(struct mipi_dsi_host *host,
+ 	if (recv_cnt)
+ 		memcpy(msg->rx_buf, src_addr, recv_cnt);
+ 
+-	DRM_INFO("dsi get %zd byte data from the panel address(0x%x)\n",
++	drm_info(drm, "dsi get %zd byte data from the panel address(0x%x)\n",
+ 		 recv_cnt, *((u8 *)(msg->tx_buf)));
+ 
+ restore_dsi_mode:
 -- 
-Dmitry
+2.43.0
+
 
