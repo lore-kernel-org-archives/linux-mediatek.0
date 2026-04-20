@@ -4,59 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E06B3F588C6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 13:27:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F5D8F588C3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 13:29:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DqNzVRw4uE6LedSuO2ArRVEBmuoGBDuL9mAb9aNpaF8=; b=dHx0/I6wsDANH7SPjqQbsgqz8C
-	Aa0c9Df+MgI2cPGeyWYOCMTFfEK93UEikn4qOMbON98ygnlnk8/i97wOuofHZB+Jg/hexbFaa7Di/
-	DmAjsuoRQEKRYHtwZaPFbLJ5q8MQfRd2qnLByaA1rCdWU9ZdOAJ+fE3kOK0WcKSup1/AnLq8bn76s
-	sxngSCSmHyswva4LA7kE1T4DXu5hLzOM/6qFhQ+IzrQaEPv0F8NlvxQXZnGeyVvu+i3pS2XfgqlUb
-	s98Ck9Vqb95Gt3B0zwDMsqWQwawrJwYhqLao4UC8Zw+5WdEisB8qE5tzPjdoGRIJRTl+VYPGCiIWw
-	y48pRzxQ==;
+	bh=pQ9+eYIa3koGa9nJ9xSyRsblWAgk1th0pidYgWpZwSo=; b=4a+1Z0fyeN1oeUT8RSwtuUo6rA
+	gwJ/lX/B/MADIksklvM0+45KHAffd+f1mfw4NBdfqreUU2oJ1nuql7hBUwiit77mTPLLoTCUyn3ai
+	8/a2xEKOXGL2NWgulsWo6VDEzdM9FXGpl2+gfVr5NZiYyvh9Z3ABNNZov0aZ4dR89/QzJll78NWXU
+	IlAtE5OG/PctH9GyoBCPa1tCLyCziPnA2ADQR3MpdC+SssZpRkku7ce5xsqI0f9rMBnkxk7g4u3pB
+	2hb4Qqwdvb4qp5+q9bvsXhH0TPliZOfX5eSgjm2m8DlGXHjz+OIl35JDA7a/JQm8yZGz0yLxtgCOP
+	rMJXBXKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEofM-000000071EL-46F6;
-	Mon, 20 Apr 2026 13:27:56 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wEogo-000000071eC-2od3;
+	Mon, 20 Apr 2026 13:29:26 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEofL-000000071DG-2Vhj;
-	Mon, 20 Apr 2026 13:27:55 +0000
+	id 1wEogm-000000071dV-39Ky;
+	Mon, 20 Apr 2026 13:29:24 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id EAE7660172;
-	Mon, 20 Apr 2026 13:27:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 40E1AC2BCB6;
-	Mon, 20 Apr 2026 13:27:53 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id F001761146;
+	Mon, 20 Apr 2026 13:29:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CEFD9C19425;
+	Mon, 20 Apr 2026 13:29:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776691674;
-	bh=ToJ7ExQdL7HGWIM0YNB8YbaFQr4RMeEJEHcofk681Ak=;
+	s=k20201202; t=1776691763;
+	bh=ncGXnGfwyNBIummgKXfDWCBtxlIZHxp6orVYnEbfNTc=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=u4p/m19+KdhrsW6n9CU0qLU2k/kq3NHpIZov1Oun133SaRRB577xARhp6i/pwUFG8
-	 5TvK9P5V1iMxhxHumH6+LVnCRHKSrVdhvDpyvFAmngY+SDNddbPn8ygwrbphKWsKVW
-	 EebPCLZD69BqDcgMrJHhnP+0nk/jBCOnRqMbzwy6p4g4UOiu2uDraYhjz7/q8g/ofD
-	 /OR89YZkB08oNZmw24vNrJZuF/UCyBasRO4i5PHqbEMG1XBMXGsjtiR3r19aKYIkrA
-	 swzTpQKdBZ0XXUDFs5NOwdyNcvASMPGqK61y7OulR06c+jdBc0g6VaejeDDx+aW1+X
-	 ecs4XuBI2Ax+g==
+	b=o26TWoPJW9cR2sRp7tw6yydEGOXvXrtDv0Dk9SVBWafrT1zJVaqAHoxWQLGgcdoGd
+	 ATVJrm5TSXT01hlxtxZ9SQSMB/cr7yhM3Pxw8yX6i0f7wh+xfalc24R9mdKaVpfa52
+	 /Wrb2BZDSIVrgLcw7zJdaGkmi+46H2wGLK5NBSZCTMwJkny9kjisQ08LGU6Su+RqS2
+	 OsODhm9u8GkwKCWqlQ1QHaeOh6q80UR4Ceuj31ZU9ZDoNstXQO3+adf6A1HnspGA2M
+	 yTfn4dN8HJkkqrs4mDGWNiuUXo47oMiEu1xzYTpfZFrDQ4XoNZ6fyN6yKvFdCju0Hl
+	 HSIU8glSFYL9w==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
+Cc: Michael Lo <michael.lo@mediatek.com>,
 	Felix Fietkau <nbd@nbd.name>,
 	Sasha Levin <sashal@kernel.org>,
 	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
 	linux-wireless@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 7.0-6.18] wifi: mt76: mt7996: Disable Rx hdr_trans in monitor mode
-Date: Mon, 20 Apr 2026 09:19:20 -0400
-Message-ID: <20260420132314.1023554-166-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 7.0-6.12] wifi: mt76: mt7925: Skip scan process during suspend.
+Date: Mon, 20 Apr 2026 09:19:33 -0400
+Message-ID: <20260420132314.1023554-179-sashal@kernel.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260420132314.1023554-1-sashal@kernel.org>
 References: <20260420132314.1023554-1-sashal@kernel.org>
@@ -80,368 +81,327 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ryder Lee <ryder.lee@mediatek.com>
+From: Michael Lo <michael.lo@mediatek.com>
 
-[ Upstream commit 947d63d8cd3b03c7be16875ca90273edbdbe7ce5 ]
+[ Upstream commit 8c7e19612b01567f641d3ffe21e47fa21c331171 ]
 
-Ensure raw frames are captured without header modification.
+We are experiencing command timeouts because an upper layer triggers
+an unexpected scan while the system/device is in suspend.
+The upper layer should not initiate scans until the NIC has fully resumed.
+We want to prevent scans during suspend and avoid timeouts without harming
+power management or user experience.
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-Link: https://patch.msgid.link/04008426d6cd5de3995beefb98f9d13f35526c25.1770969275.git.ryder.lee@mediatek.com
+Signed-off-by: Michael Lo <michael.lo@mediatek.com>
+Link: https://patch.msgid.link/20260112114007.2115873-1-leon.yen@mediatek.com
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
 LLM Generated explanations, may be completely bogus:
 
-Good. Now I have all the information needed. Let me compile my analysis.
+Now I have a comprehensive understanding. Let me compile my analysis.
 
 ---
 
 ## PHASE 1: COMMIT MESSAGE FORENSICS
 
 **Step 1.1: Subject Line**
-- Subsystem: `wifi: mt76: mt7996:` (MediaTek MT7996 WiFi driver)
-- Action verb: "Disable" — implies correcting a misconfiguration
-- Summary: Disable Rx header translation when monitor mode is active
-
-Record: [wifi: mt76: mt7996] [Disable] [Disable Rx header translation in
-monitor mode to ensure raw frames]
+- Subsystem: `wifi: mt76: mt7925:`
+- Action: "Skip" — implies avoiding an undesired operation during a
+  specific state
+- Summary: Skip scan processing during suspend to prevent command
+  timeouts
+- Record: [wifi/mt76/mt7925] [skip/prevent] [avoid scan work execution
+  during suspend to prevent command timeouts]
 
 **Step 1.2: Tags**
-- `Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>` — MediaTek
-  employee, regular mt76 contributor
-- `Link:` to patch.msgid.link (submission URL)
+- `Signed-off-by: Michael Lo <michael.lo@mediatek.com>` — MediaTek
+  employee, driver vendor
+- `Link: https://patch.msgid.link/20260112114007.2115873-1-
+  leon.yen@mediatek.com` — original submission by Leon Yen
 - `Signed-off-by: Felix Fietkau <nbd@nbd.name>` — mt76 subsystem
-  maintainer who merged it
-- No Fixes: tag, no Reported-by:, no Cc: stable
-
-Record: Author is a MediaTek contributor. Maintainer Felix Fietkau
-merged it.
+  maintainer, applied the patch
+- No Fixes: tag (expected for autosel candidates)
+- No Reported-by: tag
+- Record: Author from MediaTek (driver vendor), applied by subsystem
+  maintainer Felix Fietkau.
 
 **Step 1.3: Commit Body**
-"Ensure raw frames are captured without header modification." This is
-terse but clearly states: without this fix, monitor mode frames are
-modified (translated from 802.11 to Ethernet format), which makes
-captured frames incorrect/useless.
-
-Record: [Bug: monitor mode captures frames with modified (translated)
-headers instead of raw 802.11 frames] [Symptom: packet capture tools see
-Ethernet headers instead of 802.11 headers] [Root cause: RX header
-translation not disabled when entering monitor mode]
+- Bug: Command timeouts during suspend because upper layer triggers a
+  scan while device is suspended
+- Symptom: Command timeouts
+- Root cause: Scan work runs when device is in suspended state and can't
+  respond to firmware commands
+- Record: [Bug: command timeout during suspend from unexpected scan]
+  [Symptom: timeout errors] [Root cause: scan work executing while
+  device is powered down]
 
 **Step 1.4: Hidden Bug Fix Detection**
-This IS a bug fix. "Ensure raw frames are captured" means they currently
-are NOT captured correctly. Monitor mode is broken without this fix — it
-produces unusable output.
-
-Record: [Yes, this is a clear bug fix. Monitor mode produces incorrectly
-formatted frames.]
+- Despite using "Skip" rather than "fix," this directly addresses a
+  command timeout — a real functional bug. Users would experience
+  suspend failures or WiFi errors after resume.
+- Record: Yes, this is a bug fix. The "skip" phrasing masks a fix for
+  command timeouts during suspend.
 
 ## PHASE 2: DIFF ANALYSIS
 
 **Step 2.1: Inventory**
-- `mt7996/regs.h`: +3 lines (register and bit definitions)
-- `mt7996/main.c`: +2 lines (register write to disable/enable hdr_trans)
-- Total: +5 lines, 0 removed
-- Functions modified: `mt7996_set_monitor()` only
-- Scope: Single-file surgical fix (+ supporting register defines)
+- 1 file modified: `drivers/net/wireless/mediatek/mt76/mt7925/main.c`
+- +8 lines added (3 variable declarations, 5 lines for the pm->suspended
+  check)
+- Function modified: `mt7925_scan_work()`
+- Scope: Single-file, single-function surgical fix
+- Record: [1 file, +8 lines, mt7925_scan_work(), surgical fix]
 
-Record: [2 files, +5 lines, 0 removed] [mt7996_set_monitor()] [Single-
-function surgical fix]
-
-**Step 2.2: Code Flow**
-Before: `mt7996_set_monitor()` sets `MT_DMA_DCR0_RXD_G5_EN`, updates rx
-filter, and sets sniffer mode — but does NOT disable hardware header
-translation.
-After: Additionally toggles `MT_MDP_DCR0_RX_HDR_TRANS_EN` — disabling it
-when monitor=enabled, enabling it when monitor=disabled.
-
-Record: [Before: hdr_trans stays enabled in monitor mode → corrupted
-captures. After: hdr_trans properly toggled with monitor mode]
+**Step 2.2: Code Flow Change**
+- BEFORE: `mt7925_scan_work()` always processes queued scan events from
+  `scan_event_list`, regardless of device power state
+- AFTER: `mt7925_scan_work()` first checks `pm->suspended`; if true,
+  returns immediately without processing events
+- This affects the scan event processing path during suspend
+- Record: [Before: always processes scan events; After: skips processing
+  if device is suspended]
 
 **Step 2.3: Bug Mechanism**
-Category: (g) Logic/correctness fix — missing hardware configuration
-step.
-The hardware's RX header translation converts 802.11 frame headers to
-Ethernet headers. In monitor mode, raw 802.11 frames must be captured
-unmodified. Not disabling this translation makes monitor mode output
-incorrect.
-
-Record: [Missing hardware configuration] [hdr_trans not toggled →
-monitor mode frames have wrong headers]
+- Category: Logic/correctness fix + timing issue
+- The race: `mt7925_suspend()` cancels scan_work at line 1476, but
+  `mt7925_mcu_scan_event()` can re-queue scan_work after cancellation.
+  Between `cancel_delayed_work_sync()` and full device suspension, the
+  MCU can still generate scan events, re-queuing scan_work. When
+  scan_work runs against the suspended device, firmware commands time
+  out.
+- The `pm->suspended` flag is set in PCI/USB suspend
+  (`mt7925_pci_suspend()` line 452) and cleared in resume
+  (`_mt7925_pci_resume()` line 590)
+- Record: [Logic/timing fix: scan work can run against suspended device
+  causing command timeouts]
 
 **Step 2.4: Fix Quality**
-- Obviously correct: The mt7915 sibling driver does the exact same thing
-  (verified at `mt7915/main.c:496`)
-- Minimal/surgical: 2 lines of functional code + 3 register defs
-- Regression risk: Very low — only affects monitor mode path, standard
-  register toggle
-- No red flags
+- Obviously correct: checks a well-established flag (`pm->suspended`)
+  that is used consistently throughout the mt76 driver family
+- Minimal and surgical: adds only an early return
+- Minor concern: skbs in `scan_event_list` are not freed on early
+  return, but they would be processed on resume or cleaned up on device
+  removal
+- Pattern is consistent with other uses of `pm->suspended` in the driver
+  (e.g., `mt792x_mac.c:278`, `mt76_connac_mac.c:47,73`,
+  `mt7925/regd.c:196`)
+- Record: [Fix is obviously correct, minimal, follows established driver
+  patterns. Minor skb leak concern is acceptable.]
 
-Record: [Obviously correct, mirrors mt7915. Minimal. Very low regression
-risk.]
-
-## PHASE 3: GIT HISTORY
+## PHASE 3: GIT HISTORY INVESTIGATION
 
 **Step 3.1: Blame**
-The `mt7996_set_monitor()` function was introduced by commit
-`69d54ce7491d04` ("wifi: mt76: mt7996: switch to single multi-radio
-wiphy") by Felix Fietkau, first appearing in v6.14-rc1. Before v6.14,
-monitor mode was handled inline in `mt7996_config()` — also missing
-hdr_trans disable.
+- The `mt7925_scan_work()` function was introduced in commit
+  `c948b5da6bbec` by Deren Wu on 2023-09-18, the initial commit adding
+  the mt7925 driver
+- This is the initial code — the bug has existed since the driver was
+  created
+- Record: [Buggy code from c948b5da6bbec (initial mt7925 driver, v6.7)]
 
-Record: [Buggy code introduced in 69d54ce7491d04, v6.14. Older code
-(v6.12 and before) also lacked this but had different code structure.]
-
-**Step 3.2: Fixes tag**
-No Fixes: tag present (expected).
+**Step 3.2: Fixes Tag**
+- No Fixes: tag present (expected for autosel candidate)
+- Record: N/A
 
 **Step 3.3: File History**
-Recent changes to main.c show numerous MLO/MLD fixes. The
-`cb423ddad0f6e` commit fixed a NULL deref in the same
-`mt7996_set_monitor()` function (moved `dev = phy->dev` after the NULL
-check). This prerequisite is already in the current tree.
-
-Record: [cb423ddad0f6e is a prerequisite that's already applied. No
-other dependencies found.]
+- Multiple related suspend/resume fixes for mt7925 exist:
+  `bf39813599b03` (simplify HIF suspend), `2d5630b0c9466` (fix low power
+  mode entry), `1b97fc8443aea` (fix regd_notifier before suspend)
+- Related scan fix: `122f270aca2c8` (prevent multiple scan commands)
+- No prerequisites identified for this specific fix
+- Record: [Multiple suspend-related fixes indicate ongoing suspend
+  reliability improvements. Fix is standalone.]
 
 **Step 3.4: Author**
-Ryder Lee is a regular MediaTek contributor to mt76 with multiple
-accepted patches.
-
-Record: [Regular MediaTek contributor to the subsystem]
+- Michael Lo / Leon Yen are MediaTek employees and regular mt76
+  contributors
+- Multiple suspend/resume and scan-related fixes from the same team
+- Record: [Authors are driver vendor engineers with deep knowledge of
+  the hardware]
 
 **Step 3.5: Dependencies**
-The patch adds `MT_MDP_DCR0` and `MT_MDP_DCR0_RX_HDR_TRANS_EN` register
-definitions and uses them. Self-contained — no external dependencies
-beyond the function already existing.
-
-The function `mt7996_set_monitor()` only exists from v6.14+. For v6.14.y
-backport, the NULL deref fix `cb423ddad0f6e` would need to be present
-first (or the patch adapted to the pre-fix code).
-
-Record: [Self-contained. Applies to v6.14+ where mt7996_set_monitor()
-exists.]
+- The `pm->suspended` flag and `struct mt76_connac_pm` are well-
+  established infrastructure present since the mt7921 driver
+- No new functions or structures needed
+- Record: [No dependencies. Fix uses existing infrastructure available
+  in all versions with mt7925.]
 
 ## PHASE 4: MAILING LIST RESEARCH
 
-**Step 4.1-4.5:**
-Lore was not accessible due to anti-bot protection. The Link: in the
-commit points to `patch.msgid.link/04008426d6cd5de3995beefb98f9d13f35526
-c25.1770969275.git.ryder.lee@mediatek.com`. B4 dig did not find the
-commit (likely not in the local repo under that hash).
-
-Record: [UNVERIFIED: Could not access lore or b4 dig results. However,
-Felix Fietkau (mt76 maintainer) signed off on the merge, confirming
-maintainer review.]
+**Step 4.1-4.5**: Lore is blocked by anti-scraping protection. b4 dig
+could not find the commit. However, the patch was applied by Felix
+Fietkau (mt76 maintainer), indicating it passed review.
+- Record: [Could not access lore discussion. Patch was accepted by
+  subsystem maintainer.]
 
 ## PHASE 5: CODE SEMANTIC ANALYSIS
 
-**Step 5.1: Functions modified**
-`mt7996_set_monitor()` — a static function in main.c.
+**Step 5.1: Functions Modified**
+- `mt7925_scan_work()` — delayed work handler for processing scan events
 
 **Step 5.2: Callers**
-`mt7996_set_monitor()` is called from:
-- `mt7996_add_interface()` when `vif->type == NL80211_IFTYPE_MONITOR`
-  (line 501)
-- `mt7996_remove_interface()` when monitor mask changes (line 547)
+- Registered as delayed work via `INIT_DELAYED_WORK(&dev->phy.scan_work,
+  mt7925_scan_work)` in init.c:214
+- Queued by `mt7925_mcu_scan_event()` in mcu.c:415 via
+  `ieee80211_queue_delayed_work()`
+- Cancelled in `mt7925_suspend()` at main.c:1476
 
-These are standard mac80211 callbacks triggered when a user adds/removes
-a monitor interface (e.g., `iw dev wlan0 set type monitor`).
+**Step 5.3-5.4: Call Chain**
+- MCU receives scan event from firmware -> `mt7925_mcu_scan_event()`
+  queues skb and schedules `scan_work` -> `mt7925_scan_work()` processes
+  scan results
+- This is a common path triggered during WiFi scanning, which mac80211
+  can trigger automatically
 
-Record: [Called from mac80211 interface add/remove — standard user-
-triggered path]
-
-**Step 5.3: What it calls**
-`mt76_rmw_field()` — standard register read-modify-write. This is a
-well-tested primitive.
-
-**Step 5.4: Reachability**
-User creates a monitor interface → mac80211 → `mt7996_add_interface()` →
-`mt7996_set_monitor()`. Fully reachable from userspace.
-
-Record: [Reachable via standard WiFi monitor mode interface creation]
-
-**Step 5.5: Similar patterns**
-The mt7915 driver has the exact same pattern at `mt7915/main.c:496`:
-
-```494:495:drivers/net/wireless/mediatek/mt76/mt7915/main.c
-                mt76_rmw_field(dev, MT_DMA_DCR0(band),
-MT_MDP_DCR0_RX_HDR_TRANS_EN,
-                               !dev->monitor_mask);
-```
-
-This confirms the fix is correct and needed — the mt7996 was simply
-missing this step.
-
-Record: [mt7915 already has this exact pattern. mt7996 was missing it.]
+**Step 5.5: Similar Patterns**
+- `pm->suspended` checks exist in: `mt792x_mac.c:278` (reset),
+  `mt76_connac_mac.c:47,73` (pm_wake, power_save_sched),
+  `mt7925/regd.c:196` (regd_change), `mt7921/init.c:147`
+- The mt7921 `mt7921_scan_work()` does NOT have this check, which is
+  consistent with it being a fix specific to the mt7925 suspend flow
+  timing
+- Record: [Pattern is well-established across mt76 drivers. mt7921
+  doesn't have this check but has different timing characteristics.]
 
 ## PHASE 6: STABLE TREE ANALYSIS
 
-**Step 6.1: Does buggy code exist in stable trees?**
-- `mt7996_set_monitor()` was introduced in v6.14 (commit
-  `69d54ce7491d04`)
-- Does NOT exist in v6.12 or v6.13 (confirmed via `git show v6.12:...`
-  and `git show v6.13:...`)
-- The older monitor code path (in `mt7996_config()`) also lacked
-  hdr_trans disable, but has different structure
-- Applicable stable trees: v6.14.y and later (v6.14 has active stable
-  releases through v6.14.11)
+**Step 6.1: Code Existence**
+- mt7925 driver was added in `c948b5da6bbec` which is in v6.7+
+- Not in v6.6 (verified: `git merge-base` confirms)
+- Present in v6.12 (verified)
+- For stable tree 7.0.y (the target here), the driver definitely exists
+- Record: [mt7925 exists in v6.7+. Bug present since driver creation.
+  Applicable to 6.7.y and later stable trees.]
 
-Record: [Buggy code exists in 6.14.y. Older trees have different code
-structure with same bug.]
+**Step 6.2: Backport Complications**
+- The file has had recent changes (regd_change in scan_work at line
+  1361), but the fix adds code at the beginning of the function, which
+  should apply cleanly to most versions
+- Record: [Expected to apply cleanly — adds code at function entry
+  point]
 
-**Step 6.2: Backport complications**
-- For 6.14.y: The `dev` initialization is before the NULL check
-  (pre-`cb423ddad0f6e`), but the patch insertion point is identical.
-  Minor context difference but patch should apply or need trivial
-  adjustment.
-- `MT_MDP_DCR0` register definitions don't exist in 6.14.y's regs.h
-  (confirmed), so the register defs must come with the patch (they do).
+**Step 6.3: Related Fixes in Stable**
+- No evidence that this specific fix is already in stable
+- Record: [No prior fix for this issue found in stable]
 
-Record: [6.14.y: Near-clean apply, minor context difference from NULL
-deref fix]
+## PHASE 7: SUBSYSTEM CONTEXT
 
-**Step 6.3: Related fixes already in stable**
-No evidence of a different fix for this same issue in any stable tree.
+**Step 7.1**: WiFi driver (drivers/net/wireless/mediatek/mt76/mt7925) —
+IMPORTANT subsystem
+- MediaTek mt7925 is a common WiFi 7 chip in modern laptops
+- Record: [Driver-specific, but widely deployed WiFi hardware. IMPORTANT
+  criticality.]
 
-Record: [No prior fix found]
-
-## PHASE 7: SUBSYSTEM AND MAINTAINER CONTEXT
-
-**Step 7.1:** WiFi driver (mt76/mt7996) — IMPORTANT subsystem. MT7996 is
-MediaTek's WiFi 7 chipset used in access points and routers.
-
-**Step 7.2:** Very active subsystem — 73 changes between v6.14 and v7.0
-in this single file.
-
-Record: [IMPORTANT subsystem, very active development]
+**Step 7.2**: Actively developed subsystem with many recent commits
+- Record: [Active development, many suspend/resume fixes indicate real-
+  world usage and bug reports]
 
 ## PHASE 8: IMPACT AND RISK ASSESSMENT
 
-**Step 8.1: Affected users**
-All users of MT7996/MT7992 WiFi hardware who use monitor mode for packet
-capture or WiFi analysis.
+**Step 8.1**: Affected: Users of mt7925 WiFi hardware who suspend/resume
+their systems (common laptop use case)
 
-**Step 8.2: Trigger conditions**
-Trigger: Enable monitor mode on an mt7996 device. Every user of monitor
-mode is affected. Common operation for network administrators, WiFi
-developers, and security researchers.
+**Step 8.2**: Trigger: System suspend while WiFi is active and mac80211
+triggers a scan. This is a common scenario on laptops.
 
-**Step 8.3: Failure mode severity**
-Not a crash — but monitor mode produces incorrect/corrupted frame
-captures. The feature is essentially non-functional. Severity: MEDIUM-
-HIGH (complete functional failure of a core WiFi feature).
+**Step 8.3**: Failure mode: Command timeouts during suspend — can cause
+suspend failures, WiFi functionality loss after resume. Severity: HIGH
+(suspend/resume reliability).
 
-**Step 8.4: Risk-benefit**
-- BENEFIT: HIGH — fixes completely broken monitor mode on mt7996
-  hardware
-- RISK: VERY LOW — 2 lines toggling a hardware register bit, same
-  pattern as mt7915, only affects monitor mode code path
-- Ratio: Very favorable
-
-Record: [Benefit HIGH, Risk VERY LOW. 5-line patch fixing broken monitor
-mode.]
+**Step 8.4**:
+- BENEFIT: HIGH — prevents command timeouts during suspend for common
+  laptop hardware
+- RISK: VERY LOW — 8 lines, single early return, follows established
+  driver patterns
+- Ratio: Strongly favorable
 
 ## PHASE 9: FINAL SYNTHESIS
 
-**Step 9.1: Evidence compilation**
+**Step 9.1: Evidence FOR**
+- Fixes a real command timeout bug during suspend/resume (common laptop
+  scenario)
+- Small, surgical, obviously correct fix (8 lines, single function)
+- Uses well-established `pm->suspended` pattern from the driver family
+- Author is driver vendor (MediaTek), applied by subsystem maintainer
+  (Felix Fietkau)
+- Bug has existed since driver creation (affects all stable trees with
+  mt7925)
+- No dependencies, standalone fix
 
-FOR backporting:
-- Fixes a real functional bug: monitor mode captures are corrupted
-- Small, surgical fix: +5 lines total (2 functional + 3 register defs)
-- Obviously correct: mirrors mt7915 sibling driver behavior
-- Maintainer-reviewed: Felix Fietkau signed off
-- Author is a MediaTek contributor who knows the hardware
-- Low regression risk: only affects monitor mode path
-- Reachable from userspace via standard WiFi operations
+**Evidence AGAINST**
+- No Fixes: tag (expected)
+- Minor concern about queued skbs not being freed on early return
+  (acceptable trade-off)
+- UNVERIFIED: Could not access lore discussion to check for reviewer
+  concerns
 
-AGAINST backporting:
-- No crash/security/data corruption — "just" broken monitor mode output
-- No Fixes: tag, no Reported-by: (no evidence of user complaints)
-- Only applies to v6.14+ (limited stable tree scope)
-- Terse commit message doesn't call this a "fix"
+**Step 9.2: Stable Rules Checklist**
+1. Obviously correct? YES — simple flag check following established
+   pattern
+2. Fixes real bug? YES — command timeouts during suspend
+3. Important issue? YES — suspend/resume reliability on laptop hardware
+4. Small and contained? YES — 8 lines, 1 file, 1 function
+5. No new features? YES — purely defensive check
+6. Can apply to stable? YES — uses existing infrastructure
 
-**Step 9.2: Stable rules checklist**
-1. Obviously correct and tested? YES — mirrors mt7915, accepted by
-   maintainer
-2. Fixes a real bug? YES — monitor mode doesn't work correctly
-3. Important issue? MEDIUM-HIGH — complete functional failure of monitor
-   mode
-4. Small and contained? YES — 5 lines, 1 function
-5. No new features/APIs? CORRECT — no new features
-6. Can apply to stable? YES for v6.14.y (with possible minor context
-   adaptation)
-
-**Step 9.3: Exception categories**
-This is a hardware configuration bug fix, not an exception category.
+**Step 9.3: Exception Categories**
+- Not an exception category; this is a standard bug fix
 
 **Step 9.4: Decision**
-This is a small, obviously correct bug fix that restores monitor mode
-functionality on MT7996 hardware. The fix mirrors what the mt7915 driver
-already does, is reviewed by the subsystem maintainer, and has very low
-regression risk. While it doesn't fix a crash, it fixes complete
-functional breakage of a core WiFi feature (monitor mode).
+This is a small, well-targeted fix for a real suspend/resume bug
+affecting common WiFi hardware. The fix follows established patterns in
+the driver family, was accepted by the subsystem maintainer, and carries
+minimal regression risk.
 
-**Verification:**
-- [Phase 1] Parsed tags: Signed-off-by from MediaTek employee and mt76
-  maintainer. No Fixes/Reported-by.
-- [Phase 2] Diff analysis: +2 lines in mt7996_set_monitor() toggling
-  MT_MDP_DCR0_RX_HDR_TRANS_EN, +3 lines register definitions in regs.h
-- [Phase 3] git blame: mt7996_set_monitor() introduced in 69d54ce7491d04
-  (v6.14-rc1)
-- [Phase 3] Verified mt7996_set_monitor() does NOT exist in v6.12 or
-  v6.13 (git show confirmed)
-- [Phase 3] cb423ddad0f6e is a prerequisite NULL deref fix already in
-  tree
-- [Phase 4] UNVERIFIED: Lore/b4 not accessible due to anti-bot
-  protection
-- [Phase 5] grep confirmed mt7915/main.c:496 has identical hdr_trans
-  disable pattern
-- [Phase 5] Callers: mt7996_add_interface() and
-  mt7996_remove_interface() — standard mac80211 callbacks
-- [Phase 6] v6.14 regs.h confirmed: MT_MDP_DCR0 not defined, MT_MDP_DCR2
-  exists at line 136
-- [Phase 6] v6.14.y is the earliest applicable stable tree
-- [Phase 7] Active subsystem: 73 commits between v6.14 and v7.0 in
-  main.c
-- [Phase 8] Failure mode: monitor mode captures have translated (wrong)
-  headers — feature non-functional
+## Verification
+
+- [Phase 1] Parsed tags: SOB from MediaTek author, applied by Felix
+  Fietkau (mt76 maintainer)
+- [Phase 2] Diff: +8 lines in mt7925_scan_work(), adds pm->suspended
+  early return check
+- [Phase 3] git blame: buggy code from c948b5da6bbec (initial mt7925
+  driver, Sep 2023, v6.7)
+- [Phase 3] git merge-base: confirmed mt7925 NOT in v6.6, IS in v6.7 and
+  v6.12
+- [Phase 3] Related commits: multiple suspend fixes (bf39813599b03,
+  2d5630b0c9466, 1b97fc8443aea)
+- [Phase 5] Grep for pm->suspended: found 15+ uses across mt76 driver
+  family, established pattern
+- [Phase 5] Grep for scan_work callers: queued by mcu.c:415, cancelled
+  in suspend main.c:1476
+- [Phase 6] Code exists in v6.7+ stable trees
+- [Phase 8] Failure mode: command timeout during suspend, severity HIGH
+- UNVERIFIED: Could not access lore.kernel.org discussion due to anti-
+  bot protection
 
 **YES**
 
- drivers/net/wireless/mediatek/mt76/mt7996/main.c | 2 ++
- drivers/net/wireless/mediatek/mt76/mt7996/regs.h | 3 +++
- 2 files changed, 5 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt7925/main.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index f16135f0b7f94..110b9a32e5ec8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -472,6 +472,8 @@ static void mt7996_set_monitor(struct mt7996_phy *phy, bool enabled)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+index 2d358a96640c9..38474cd2c38d6 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+@@ -1323,10 +1323,18 @@ void mt7925_mlo_pm_work(struct work_struct *work)
+ void mt7925_scan_work(struct work_struct *work)
+ {
+ 	struct mt792x_phy *phy;
++	struct mt792x_dev *dev;
++	struct mt76_connac_pm *pm;
  
- 	mt76_rmw_field(dev, MT_DMA_DCR0(phy->mt76->band_idx),
- 		       MT_DMA_DCR0_RXD_G5_EN, enabled);
-+	mt76_rmw_field(dev, MT_MDP_DCR0,
-+		       MT_MDP_DCR0_RX_HDR_TRANS_EN, !enabled);
- 	mt7996_phy_set_rxfilter(phy);
- 	mt7996_mcu_set_sniffer_mode(phy, enabled);
- }
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/regs.h b/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
-index e48e0e575b646..393faae2d52b6 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
-@@ -159,6 +159,9 @@ enum offs_rev {
- #define MT_MDP_BASE				0x820cc000
- #define MT_MDP(ofs)				(MT_MDP_BASE + (ofs))
+ 	phy = (struct mt792x_phy *)container_of(work, struct mt792x_phy,
+ 						scan_work.work);
  
-+#define MT_MDP_DCR0				MT_MDP(0x800)
-+#define MT_MDP_DCR0_RX_HDR_TRANS_EN		BIT(19)
++	dev = phy->dev;
++	pm = &dev->pm;
 +
- #define MT_MDP_DCR2				MT_MDP(0x8e8)
- #define MT_MDP_DCR2_RX_TRANS_SHORT		BIT(2)
- 
++	if (pm->suspended)
++		return;
++
+ 	while (true) {
+ 		struct sk_buff *skb;
+ 		struct tlv *tlv;
 -- 
 2.53.0
 
