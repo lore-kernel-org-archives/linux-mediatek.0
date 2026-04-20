@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47443F588C6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 13:33:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A379F588C6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 13:33:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xXCbdJebo0B+zrwACAidBc4ya+1HLtxvMrtrqOHVIEc=; b=V9LvfDwEJNLIbCIpKF1NIZOai4
-	Z7YUjw3wxZh9M6rF0vQ0kAff87LigdGbSePVCz3b4qCRdfNsohiU69sltC8uvifyr/lseXPesxlzs
-	0HGu6qCLwOnsnie3mgPNmFqNK3Tydji7tf1bclAXXiUSSTxuX3rWp0tniC/1z4nek4H8sjdN/fzTv
-	aQYhO2+YL6FPm8qF8hR/75vJ4ROAiJetO2MwYWty6y+TJJgN8boTLD7gyamK7dtiXt+uKiE5GgWlE
-	TrTonFZqtw4+VInQPcSrf/hD+tDenXJJhoFCBk6o2UIPBN2Xv3j+gAlrOPIhM95z7mM9R61zxo8o8
-	4A8eW0bA==;
+	bh=o7i4MOjjjJrGvGQdMbRRql7PuBiTh8DQvmm4WTjzPf8=; b=Q4H1WeijOCWoRQ3JJMZAZmM/yz
+	U8SSYIIfCkvXz/5JWV/urC3b5ID9zOEbvuQ/KYbuAaz2mFbjNolmDXLVekAuE8L9XKF6i3R2MmfvV
+	+hgtvkT28GinbvUaHoyFxjynwHiNbddFANDy6X4cFRcO+EEHKy84EN1VhQPia0XOd931iCu89/xPW
+	dSHhaho6wtg9Txr38RfwWlvgZbj8mN7+kGTVYznid8Z6H2FWUKw0/A/z1NkqSq7q4FCwcBqpKxp70
+	Qt4auYQZRzOjaszbMaKVYQh1aHlCLwUophfElLsbbjW8ydxj+1CyNYJpMGEGbYBFnnkpkN6J8Lpl1
+	14CWabsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEokc-000000073QE-12H6;
-	Mon, 20 Apr 2026 13:33:22 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wEolC-000000073dD-1MZ6;
+	Mon, 20 Apr 2026 13:33:58 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEokY-000000073Oo-1b7t;
-	Mon, 20 Apr 2026 13:33:19 +0000
+	id 1wEol9-000000073be-2HfQ;
+	Mon, 20 Apr 2026 13:33:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 0391C41974;
-	Mon, 20 Apr 2026 13:33:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 35A96C2BCB4;
-	Mon, 20 Apr 2026 13:33:16 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 3B87043562;
+	Mon, 20 Apr 2026 13:33:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8263C2BCB6;
+	Mon, 20 Apr 2026 13:33:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776691997;
-	bh=BePUomKvvkrM4BNzUrfaEwFz9bdlcwZGtKaMzr9TL2E=;
+	s=k20201202; t=1776692035;
+	bh=i3rhWaKMYSrIbCXhEhMYTiNtIcwSGsFJBwm31q++mJY=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=hipX0xjKlSz5QyIV03cdH2iHNbOUrgeY4tVkPRNF59kZn7ttDpppJ3PQL9TP76yer
-	 lSNNH679RcIxA9SdaV0qE5p/WUKAWsQI5KiVxcmbhxwuIQt7YbBRCBgVeW0C0CcqbG
-	 /jTyBMVM39kf9Mm1bn7eyjMqF8P6xtoAXomUIZBQ4PBdQJF+VMnTGxINO1NK727n1L
-	 M7vVrfTLkah8QRIxS3/HS0RhX01/e9Jn+lEV9ehgxgQH7pOmsVRdcj9NYJK2Emf9F5
-	 4Gysktro777TCEUOa+iXcGxJZf85/Vqr45LEMJlYdp7Nn/8axhpCmMKO43HKwvNyJU
-	 3skkTf/o2oUYg==
+	b=SO8niLhRl4/p2u024WoM113oBgra7Xun4h8QLhr0rqQ9bh34YcGR611Pu01jqRNBN
+	 XVBRQMdV7Xd7LBmlfWhGqPP7Y32KH8joxiGxMqVZCdTTi9+a1Ume7Ou9osBK89ZoEc
+	 FcJHNyx8DlR8lH83SHwU11WSDS3ECH1sLIqLL6Z9wzPokibUO0MTHuaZAGwKfrrDr0
+	 kCBB3S3XBR/X7iKYcx5E4UCIustFJYzTtTwxyB8gNLe1y8AYgVTywOpk7iphb5Pcyc
+	 K3NqBtECZfRGdvgvTDLZ9V+Ap3UPMzRzDDwZ2OBNBAyLJqs85hPkZafHq55pFXHXCL
+	 X+7FQgoN384XA==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Peter Chiu <chui-hao.chiu@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Felix Fietkau <nbd@nbd.name>,
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Simon Horman <horms@kernel.org>,
+	Jakub Kicinski <kuba@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
-	ryder.lee@mediatek.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	andrew+netdev@lunn.ch,
+	davem@davemloft.net,
+	edumazet@google.com,
+	pabeni@redhat.com,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 7.0-6.18] wifi: mt76: mt7996: fix frequency separation for station STR mode
-Date: Mon, 20 Apr 2026 09:21:47 -0400
-Message-ID: <20260420132314.1023554-313-sashal@kernel.org>
+	linux-mediatek@lists.infradead.org,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH AUTOSEL 6.18] net: airoha: Fix memory leak in airoha_qdma_rx_process()
+Date: Mon, 20 Apr 2026 09:22:10 -0400
+Message-ID: <20260420132314.1023554-336-sashal@kernel.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260420132314.1023554-1-sashal@kernel.org>
 References: <20260420132314.1023554-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 7.0
-Content-Type: text/plain; charset=UTF-8
+X-stable-base: Linux 6.18.23
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260420_063318_574541_00977646 
-X-CRM114-Status: GOOD (  23.10  )
+X-CRM114-CacheID: sfid-20260420_063355_602294_3FA87FA2 
+X-CRM114-Status: GOOD (  13.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,298 +84,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Chiu <chui-hao.chiu@mediatek.com>
+From: Lorenzo Bianconi <lorenzo@kernel.org>
 
-[ Upstream commit 59a295335021f6973a34566554b2b9371f1c6f7d ]
+[ Upstream commit 285fa6b1e03cff78ead0383e1b259c44b95faf90 ]
 
-Fix frequency separation field for STR in MLD capabilities to get the
-correct chip capability.
+If an error occurs on the subsequents buffers belonging to the
+non-linear part of the skb (e.g. due to an error in the payload length
+reported by the NIC or if we consumed all the available fragments for
+the skb), the page_pool fragment will not be linked to the skb so it will
+not return to the pool in the airoha_qdma_rx_process() error path. Fix the
+memory leak partially reverting commit 'd6d2b0e1538d ("net: airoha: Fix
+page recycling in airoha_qdma_rx_process()")' and always running
+page_pool_put_full_page routine in the airoha_qdma_rx_process() error
+path.
 
-Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Fixes: d6d2b0e1538d ("net: airoha: Fix page recycling in airoha_qdma_rx_process()")
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Link: https://patch.msgid.link/20260316-mt7996-sta-str-v1-1-666814e6ab2d@kernel.org
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
+Reviewed-by: Simon Horman <horms@kernel.org>
+Link: https://patch.msgid.link/20260402-airoha_qdma_rx_process-mem-leak-fix-v1-1-b5706f402d3c@kernel.org
+Signed-off-by: Jakub Kicinski <kuba@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
 LLM Generated explanations, may be completely bogus:
 
-Now I have enough information to complete the full analysis.
+Error: Failed to generate final synthesis
 
----
+ drivers/net/ethernet/airoha/airoha_eth.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-## PHASE 1: COMMIT MESSAGE FORENSICS
-
-### Step 1.1: Subject Line
-- **Subsystem**: `wifi: mt76: mt7996:` — MediaTek mt7996 WiFi 7 wireless
-  driver
-- **Action verb**: "fix" — explicitly a bug fix
-- **Summary**: Corrects frequency separation field for station STR mode
-  in MLD capabilities
-
-### Step 1.2: Tags
-- `Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>` — author from
-  MediaTek (the chip vendor)
-- `Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>` — co-
-  author/maintainer of mt76
-- `Link:` to patch.msgid.link — mailing list submission link
-- `Signed-off-by: Felix Fietkau <nbd@nbd.name>` — mt76 maintainer
-  applied the patch
-- No Fixes: tag, no Cc: stable, no Reported-by — expected for candidate
-  review
-
-### Step 1.3: Commit Body
-The message says: "Fix frequency separation field for STR in MLD
-capabilities to get the correct chip capability." The bug is that the
-station's MLD capabilities struct was missing the `FREQ_SEP_TYPE_IND`
-field, causing the driver to advertise incorrect STR capabilities during
-(Re)Association Request frames.
-
-### Step 1.4: Hidden Bug Fix?
-This is an explicit fix — the word "fix" is in the subject. The missing
-capability field causes incorrect WiFi frame content to be advertised to
-the AP during MLD association.
-
-Record: Genuine bug fix — incorrect WiFi capability advertisement.
-
----
-
-## PHASE 2: DIFF ANALYSIS
-
-### Step 2.1: Inventory
-- **1 file** changed: `drivers/net/wireless/mediatek/mt76/mt7996/init.c`
-- **1 line added**:
-  `FIELD_PREP_CONST(IEEE80211_MLD_CAP_OP_FREQ_SEP_TYPE_IND, 1) |`
-- Scope: Single-file, static initializer change
-
-### Step 2.2: Code Flow
-- **Before**: Station iftype entry in `iftypes_ext_capa[]` only sets
-  `IEEE80211_MLD_CAP_OP_MAX_SIMUL_LINKS`
-- **After**: Station entry additionally sets
-  `IEEE80211_MLD_CAP_OP_FREQ_SEP_TYPE_IND` to value 1
-- The `mld_capa_and_ops` field is consumed by mac80211 in `mlme.c`
-  (lines 2069 and 10612-10613) and included directly in MLD capability
-  elements of association frames
-
-### Step 2.3: Bug Mechanism
-This is a **logic/correctness fix** — a missing capability field in a
-static const initializer. `IEEE80211_MLD_CAP_OP_FREQ_SEP_TYPE_IND` (mask
-`0x0f80`, bits 7-11) was not set, meaning the station reported frequency
-separation type = 0 to the AP, which does not reflect the actual mt7996
-hardware STR capability.
-
-### Step 2.4: Fix Quality
-- Trivially correct — adding a missing field to a bitfield OR expression
-- Cannot introduce a regression — it's a static const initializer
-- Minimal and surgical
-- No red flags
-
-Record: 1 line added, static initializer, zero regression risk.
-
----
-
-## PHASE 3: GIT HISTORY INVESTIGATION
-
-### Step 3.1: Blame
-The station entry was introduced by commit `f5160304d57c55` ("wifi:
-mt76: mt7996: Enable MLO support for client interfaces") by Lorenzo
-Bianconi on 2025-09-01. The base `iftypes_ext_capa[]` array was
-introduced by `a9eae65d97f3cb` ("Export MLO AP capabilities to
-mac80211") on 2025-08-27.
-
-### Step 3.2: Fixes Target
-No explicit Fixes: tag, but the implicit target is `f5160304d57c55`
-which first introduced the station MLD capabilities. That commit was
-first present in **v6.18** (confirmed via `git merge-base --is-
-ancestor`). NOT in v6.17 or earlier.
-
-### Step 3.3: File History
-The file has 20 recent commits, many related to MLO/MLD enablement. This
-fix appears standalone — no series dependencies.
-
-### Step 3.4: Author
-- Peter Chiu is from MediaTek (the silicon vendor) — strong authority on
-  hardware capabilities
-- Lorenzo Bianconi is the mt76 co-maintainer who also signed off
-- Felix Fietkau (nbd) is the mt76 maintainer who applied the patch
-
-Record: Author is from the chip vendor. Both mt76 maintainers signed
-off. Bug introduced in v6.18.
-
-### Step 3.5: Dependencies
-The fix only adds a line to an existing OR expression in a static
-initializer. No functional dependencies. The prerequisite code
-(`iftypes_ext_capa` with the station entry) exists in v6.18 and v7.0.
-
----
-
-## PHASE 4: MAILING LIST
-
-### Step 4.1-4.5
-Lore/WebFetch was blocked by Anubis protection. `b4 dig` for the
-message-id didn't find a match by commit hash (the commit hasn't been
-applied to the tree I'm on). The link
-`https://patch.msgid.link/20260316-mt7996-sta-
-str-v1-1-666814e6ab2d@kernel.org` indicates this was a v1 single-patch
-submission from Lorenzo Bianconi.
-
-Record: Could not fetch discussion. Patch submitted as v1, single patch.
-
----
-
-## PHASE 5: CODE SEMANTIC ANALYSIS
-
-### Step 5.1-5.4
-The `iftypes_ext_capa[]` array is assigned to `wiphy->iftype_ext_capab`
-at line 497 of `init.c`. This is consumed by mac80211's `mlme.c` via
-`cfg80211_get_iftype_ext_capa()` — the `mld_capa_and_ops` field is
-directly encoded into (Re)Association Request frames and MLD
-reconfiguration frames. This is a hot path for any MLD station
-association.
-
-### Step 5.5: Similar Patterns
-The AP section of the same array does NOT include `FREQ_SEP_TYPE_IND`
-either, but only the station section is fixed here (STR is a station-
-side mode). The mt7925 driver also sets `mld_capa_and_ops` but
-dynamically.
-
-Record: Capability is directly embedded in WiFi management frames during
-association.
-
----
-
-## PHASE 6: STABLE TREE ANALYSIS
-
-### Step 6.1: Does the buggy code exist in stable trees?
-- The buggy commit `f5160304d57c55` is in **v6.18 and v7.0 only**
-- NOT in v6.17 or earlier — so this fix is irrelevant for all current
-  LTS trees (6.12.y, 6.6.y, 6.1.y, 5.15.y)
-- Only relevant for **7.0.y** stable and potentially 6.18.y if that is
-  still maintained
-
-### Step 6.2: Backport Complications
-- 1 line addition to a static initializer — will apply cleanly to 7.0.y
-- No conflicting changes expected
-
-### Step 6.3: No related fixes already in stable
-
----
-
-## PHASE 7: SUBSYSTEM CONTEXT
-
-### Step 7.1
-- **Subsystem**: WiFi drivers / MediaTek mt76 / mt7996
-- **Criticality**: PERIPHERAL (specific WiFi hardware) but WiFi is
-  important for many users
-
-### Step 7.2
-- Very active subsystem — 188 mt7996 commits since v6.12
-- mt7996 is a WiFi 7 chip with active MLO development
-
----
-
-## PHASE 8: IMPACT AND RISK ASSESSMENT
-
-### Step 8.1: Affected Users
-- Mt7996 WiFi 7 hardware users attempting MLD (Multi-Link Device)
-  operation in station mode
-
-### Step 8.2: Trigger Conditions
-- Triggered whenever a mt7996 station performs MLD association (common
-  for WiFi 7 users)
-- The wrong capability is always advertised
-
-### Step 8.3: Failure Mode
-- Incorrect WiFi capability in association frames → potentially
-  incorrect STR mode negotiation, possible performance degradation or
-  failed MLD operation
-- Severity: **MEDIUM** — functional correctness issue, not a crash or
-  security vulnerability
-
-### Step 8.4: Risk-Benefit
-- **Benefit**: Medium — corrects WiFi MLD capability for mt7996 users
-- **Risk**: Very low — 1-line static initializer change, cannot regress
-- **Ratio**: Favorable
-
----
-
-## PHASE 9: FINAL SYNTHESIS
-
-### Step 9.1: Evidence
-**FOR backporting:**
-- Genuine correctness fix (missing capability field)
-- Trivially small (1 line) and obviously correct
-- Zero regression risk (static const initializer)
-- Written by chip vendor (MediaTek), signed by both mt76 maintainers
-- Fixes real functional issue for WiFi 7 MLD users
-- Buggy code exists in 7.0
-
-**AGAINST backporting:**
-- Not a crash, security, or data corruption fix
-- Only affects mt7996 MLD station mode users (relatively narrow)
-- Relatively new code (v6.18+)
-
-### Step 9.2: Stable Rules Checklist
-1. Obviously correct and tested? **Yes** — trivially correct 1-line
-   addition
-2. Fixes a real bug? **Yes** — incorrect WiFi capability advertisement
-3. Important issue? **Medium** — functional correctness for WiFi MLD
-4. Small and contained? **Yes** — 1 line in 1 file
-5. No new features? **Correct** — fixes existing code
-6. Can apply to stable? **Yes** — clean apply expected
-
-### Step 9.3: Exception Categories
-Not an exception category; this is a standard driver bug fix.
-
-### Step 9.4: Decision
-The fix is a genuine 1-line correctness fix that corrects incorrect WiFi
-MLD capability advertisement for mt7996 hardware. It's written by the
-chip vendor, reviewed by both subsystem maintainers, and has zero
-regression risk. While it's not a crash or security fix, it corrects
-real WiFi functionality for mt7996 users in MLD/STR mode. The extremely
-small scope and zero risk make this appropriate for stable.
-
----
-
-## Verification
-
-- [Phase 1] Parsed tags: Author from MediaTek, co-signed by mt76 co-
-  maintainer and maintainer
-- [Phase 2] Diff analysis: 1 line added to static const initializer,
-  adds missing `IEEE80211_MLD_CAP_OP_FREQ_SEP_TYPE_IND` field
-- [Phase 3] git blame: Station MLD caps introduced by `f5160304d57c55`
-  (v6.18), confirmed via `git merge-base`
-- [Phase 3] git merge-base: Buggy commit NOT in v6.17 or earlier, IS in
-  v6.18 and v7.0
-- [Phase 5] grep callers: `mld_capa_and_ops` consumed in
-  `net/mac80211/mlme.c` lines 2069 and 10612-10613 for association
-  frames
-- [Phase 5] grep definition: `IEEE80211_MLD_CAP_OP_FREQ_SEP_TYPE_IND` =
-  0x0f80 in `include/linux/ieee80211-eht.h`
-- [Phase 6] Buggy code only in v6.18+ and v7.0; irrelevant for older LTS
-  trees
-- [Phase 7] Peter Chiu confirmed as MediaTek contributor; Lorenzo
-  Bianconi and Felix Fietkau are mt76 maintainers
-- UNVERIFIED: Could not access lore.kernel.org discussion due to Anubis
-  protection
-
-**YES**
-
- drivers/net/wireless/mediatek/mt76/mt7996/init.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-index 00a8286bd1368..d940ca84bd0f1 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-@@ -85,6 +85,7 @@ static const struct wiphy_iftype_ext_capab iftypes_ext_capa[] = {
- 		.extended_capabilities_mask = if_types_ext_capa_ap,
- 		.extended_capabilities_len = sizeof(if_types_ext_capa_ap),
- 		.mld_capa_and_ops =
-+			FIELD_PREP_CONST(IEEE80211_MLD_CAP_OP_FREQ_SEP_TYPE_IND, 1) |
- 			FIELD_PREP_CONST(IEEE80211_MLD_CAP_OP_MAX_SIMUL_LINKS,
- 					 MT7996_MAX_RADIOS - 1),
- 	},
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 4fc6bd282b465..bdf600fea9508 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -709,9 +709,8 @@ static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
+ 		if (q->skb) {
+ 			dev_kfree_skb(q->skb);
+ 			q->skb = NULL;
+-		} else {
+-			page_pool_put_full_page(q->page_pool, page, true);
+ 		}
++		page_pool_put_full_page(q->page_pool, page, true);
+ 	}
+ 	airoha_qdma_fill_rx_queue(q);
+ 
 -- 
 2.53.0
 
