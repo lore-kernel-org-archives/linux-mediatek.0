@@ -4,63 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE164F588D4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 13:56:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9E84F588DE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2026 14:07:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KH4wlOTtaGpAG5J48/iEhjMU1BkjNSldMrsyCHnmmSk=; b=dhTNftPyaJcSy+DBGoIM73fAfn
-	BDKFhnSr8tR2HiOMyXH+H0gzC79cTlSnEnaKjMlyKq07hU5C9tbcZUsfvLZ27co6WhttkRwD5P5hv
-	fhz6YM2XU0rQe8p2M5gtO4tO8UjTCzahxYVdAzy2bTjXlBQbjWpkEw0iPQxbpI7t8oXLzfY9EtXMH
-	CTHC3mdgnwGJiF18955ukuowjdi95jKPbiJeaUzcxfQfHXImvYqyd1H7t3LmIWPTI2660oOfRvJxp
-	T2xob5yQNswde4+uW6qC6C7SSJaz6p0diGommc3A6cU2brukYwAuGQoOSnmrBZ0Cyc8oTv55013gX
-	20Mignqw==;
+	bh=zNIYCAMzw62p1IGwSngcgeqRZ5SaZxl+3Vcyiow/Dk8=; b=iSA/qNVWgDq5WYSrtCH1i+YGBM
+	NkMMg1qqYhle4DfGuAtlyy9ymNJ9gKn549xfXKWaeXzetXAoEG0kOTK4RKo7DSYvhWYOJIBANQYGD
+	o7MT6AQ+95Q6Ll3ehO2A5sXGVkwgdqxgPygfYuh5woOJMJQ0hvpJNoK3j+xWMLCxQ9CzN8bxnLLQ/
+	pP6wky4gZAQM2hl1lCMV2zfb0+UQuizSTSnv23b6So96VWXi71fwkZryiKkBDTFq1r4VBeTki50el
+	O8yrGbcA0eIP3RtYcd4EEB9LzECuitc01F68LUV4CDaunMY+RhqQCoBgK4bOlKewd2rYMy92fD7Y0
+	zJZ5pQnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEp75-000000077dg-06bk;
-	Mon, 20 Apr 2026 13:56:35 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wEpHl-000000078rG-3nPo;
+	Mon, 20 Apr 2026 14:07:37 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEp71-000000077co-2Ai2;
-	Mon, 20 Apr 2026 13:56:32 +0000
+	id 1wEpHk-000000078r3-2Y4S;
+	Mon, 20 Apr 2026 14:07:36 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 42C7642D7F;
-	Mon, 20 Apr 2026 13:56:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 21CB0C19425;
-	Mon, 20 Apr 2026 13:56:27 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id C71C560141;
+	Mon, 20 Apr 2026 14:07:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EFD59C19425;
+	Mon, 20 Apr 2026 14:07:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776693390;
-	bh=xf0tTaO3Gm8Xjis1WLnRLgpsFcTzaHDM0gKsVSqZMNU=;
+	s=k20201202; t=1776694055;
+	bh=d80QDEnxF/ilpFms2KfQO1UNLF3wo4wPPu1B5+qU10o=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=MVl48ex9RER8/JzKxBkveYrE2ellMnaOAMPIczfkVEb1EpZPZgr9KZPsv9HRLl48G
-	 QFlUHOAsaIUMvYpd/MPSkBKE+MCj0UCqW7rguc2HCUGkdRWFOES6FiB7jM6pcCYi18
-	 IZZG7I+1J+DP9uwF7qeTPJikPlw0G8xmdyIlNDlj+jP75S00I0bKE5p63nvR6Wa7lt
-	 1BscwQCskJB2r4C8rsiHiGt5uyW1/2JmDX8nLcahuXa7kIZyF1u9FZB7Aiiw9WqFRZ
-	 6hqvpd0UGceMhUMGSNQ6mtb31U4X1Ig26789VT56Y8o72E2Oni9SalLfHss7LdzuVR
-	 RjAOnddA/Nyuw==
-Date: Mon, 20 Apr 2026 14:56:25 +0100
-From: Simon Horman <horms@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net v4 0/2] net: airoha: Fix
- airoha_qdma_cleanup_tx_queue() processing
-Message-ID: <20260420135625.GQ280379@horms.kernel.org>
-References: <20260417-airoha_qdma_cleanup_tx_queue-fix-net-v4-0-e04bcc2c9642@kernel.org>
+	b=J2Wb67bqeB63dy4hokMUqABHv9VGNfMqKSK/q1/tAXRpen3mpHhP93s0Ag0Aokafh
+	 weU1wnR8UDgRJYke/yAJLQtumXxCtuVELwNr4AC86mjMYnI454BGXmg4OwurXq9wni
+	 RX62PVCzhG0XdwT9OF/063G9U8AbRG2qBjvwo8nMnXwRYrE/FTLbJZNBEfmHQ7eKXY
+	 HILp2bgoRGP4oArlsX2frM8fa9xaQEKTc567Hbtbl7WgrtRti5bwZtaLWuTDbyaMRm
+	 cVznFsS1ZmW+B3k5KkZAQ6qxI9OoCxD2oR6h06qp4WPo5nlNDCViiNJszT//lNT1Uo
+	 An5H/uCq9nQ7g==
+Date: Mon, 20 Apr 2026 16:07:33 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Olivia Mackall <olivia@selenic.com>, 
+	Herbert Xu <herbert@gondor.apana.org.au>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sean Wang <sean.wang@mediatek.com>, linux-crypto@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v3 1/2] dt-bindings: rng: mtk-rng: add SMC-based TRNG
+ variants
+Message-ID: <20260420-flat-rook-of-hail-bbede5@quoll>
+References: <585fc832e4e5d3656bd25ecee6bafb636993104a.1776600269.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20260417-airoha_qdma_cleanup_tx_queue-fix-net-v4-0-e04bcc2c9642@kernel.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260420_065631_586162_B0835DB3 
-X-CRM114-Status: GOOD (  13.60  )
+In-Reply-To: <585fc832e4e5d3656bd25ecee6bafb636993104a.1776600269.git.daniel@makrotopia.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,47 +73,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 17, 2026 at 08:36:30AM +0200, Lorenzo Bianconi wrote:
-> Add missing bits in airoha_qdma_cleanup_tx_queue routine.
-> Fix airoha_qdma_cleanup_tx_queue processing errors intorduced in commit
-> '3f47e67dff1f7 ("net: airoha: Add the capability to consume out-of-order
-> DMA tx descriptors")'.
-> 
-> ---
-> Changes in v4:
-> - Drop patch 2/3 to move entries to queue head in case of DMA mapping
->   failure in airoha_dev_xmit().
-> - Link to v3: https://lore.kernel.org/r/20260416-airoha_qdma_cleanup_tx_queue-fix-net-v3-0-2b69f5788580@kernel.org
-> 
-> Changes in v3:
-> - Move ndesc initialization fix in a dedicated patch.
-> - Add patch 2/3 to move entries to queue head in case of DMA mapping
->   failure in airoha_dev_xmit().
-> - Cosmetics.
-> - Link to v2: https://lore.kernel.org/r/20260414-airoha_qdma_cleanup_tx_queue-fix-net-v2-1-875de57cc022@kernel.org
-> 
-> Changes in v2:
-> - Move q->ndesc initialization at end of airoha_qdma_init_tx routine in
->   order to avoid any possible NULL pointer dereference in
->   airoha_qdma_cleanup_tx_queue()
-> - Check if q->tx_list is empty in airoha_qdma_cleanup_tx_queue()
-> - Link to v1: https://lore.kernel.org/r/20260410-airoha_qdma_cleanup_tx_queue-fix-net-v1-1-b7171c8f1e78@kernel.org
-> 
-> ---
-> Lorenzo Bianconi (2):
->       net: airoha: Move ndesc initialization at end of airoha_qdma_init_tx()
->       net: airoha: Add missing bits in airoha_qdma_cleanup_tx_queue()
-> 
->  drivers/net/ethernet/airoha/airoha_eth.c | 40 +++++++++++++++++++++++++++-----
->  1 file changed, 34 insertions(+), 6 deletions(-)
+On Sun, Apr 19, 2026 at 01:05:01PM +0100, Daniel Golle wrote:
+> +    rng {
+> +            compatible = "mediatek,mt7981-rng";
 
-Thanks for the updates, this series looks good to me:
+I asked at v1. Reminded at v2. Nothing serious, but repeating myself is
+pointless and kind of waste of time.
 
-Reviewed-by: Simon Horman <horms@kernel.org>
-
-
-As is the way of things, Sashiko has some feedback on this patchset.
-Please consider looking over it for potential follow-up changes.
-I do not think that needs to block progress of this patchset.
+Best regards,
+Krzysztof
 
 
