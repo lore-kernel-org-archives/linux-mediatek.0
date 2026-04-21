@@ -4,62 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 838C5F327AD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2026 06:43:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6095F327AD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2026 07:13:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=X0m1NUvqw2gT7j+B3KcKS2rxFkHNWKeKj7YCN024hGs=; b=glz+ZJLW9FyZN//3a7RkufJ8Ab
-	/P4C3Ffd9T0eZQ0A1ivONfPFX2MMKrnW2iSrJrvtlBaGiMCZkFYr9h0WCj5zi++HUTmP2AqVT0QaE
-	hSzWxXsQBLL8XUIxx7AQnbr9D6Dxy6yezucWw6fbwX/eVPMVu5q9BQnDfjn+f5gZcFgXiWoIy3V63
-	vsP+u+VrmuhvCW7bgEu2Zk58xq46+Hud0NVjzYWmkO+uP6OsvEcs6J5GcC8RQ7S2mM4mR8QQax8LE
-	W3HgtZJ1iK5wJTYyKclbtzqgiQkDVCg5gNp9nDCUXPJa6JFxijRcYXNrPnEjFzTzONX0cQjYrRgEs
-	MhMfr/Yg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8Y0D3jaBnWCsLbtQTO3GiG49iAZd8M/wl+Vd+jEWykA=; b=yPnSfJDE3QuKzqc3O9/g1pNPG5
+	7V1PNzkSJYgNbOX6s3nlysRTf0Q6I6Rmrc2Qa/WSPrZk1N3zBk8tYb9qHh2ITyl2ehV1fbUFK7ur7
+	/l9EOF69HFfwfGV5p8u9KlvCkyGBx0909AiaGa2oBzX/o826rUdRBahgAU6axywPSofH5Ml3CY7W0
+	IPGgGZ6q+IlCYmtdxLJ6F5uNMfTW/FUsVA97N5qZWtDQfoBwVnjmXEKsfyBWv56u/rC20YbucGYJR
+	g3PGopbQkXMaFyFTj8DXdC8syOQKCCvszwPgPsaM8+WTdML/xfr7HkRoeqmCZMkwpfNaBpuOsbRsB
+	VC987kLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wF4pU-000000087Uk-2hw7;
-	Tue, 21 Apr 2026 06:43:28 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wF5If-0000000895K-1zVV;
+	Tue, 21 Apr 2026 07:13:37 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wF4pR-000000087Tv-2UFt;
-	Tue, 21 Apr 2026 06:43:25 +0000
+	id 1wF5Id-0000000894m-1LGW;
+	Tue, 21 Apr 2026 07:13:36 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id BAE5760018;
-	Tue, 21 Apr 2026 06:43:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F32B3C2BCB0;
-	Tue, 21 Apr 2026 06:43:23 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 5903B44517;
+	Tue, 21 Apr 2026 07:13:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1872C2BCB0;
+	Tue, 21 Apr 2026 07:13:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776753804;
-	bh=ZKZG+O0J9kV7ldRJcMabcJRwOJQwoGJwOtsehsIKW+Q=;
-	h=From:Date:Subject:To:Cc:From;
-	b=S6CZ42TNemFsGJ28k4IRpJ+UpPcHGjRTYozI1fnJHUuYU7Hsul5zU4Fdy+6GQwfpS
-	 txFENVglu/DsDsyrjf7APABe27rQrbHxBMhuFDZ24YzrpnkfQhTIdFosNgmEkbcT3O
-	 8eJSsHEBUHI6J4rsCe0qqijarKgU+AS/0zH2y9F2Z+4IYbY5x3NNuynzz2TZ0J4BqA
-	 Ce5hbmsR0+USuYkQZlS4H4DAh4arZYrQbwV03bl0rQfKEgI4VuEgBOObDw4oha90QJ
-	 bQgvPkqnsUPdvbZylAavVsSIU19H//hro1TJ429V4Dfrr40SxAFP5LdX+eGQaWwOoR
-	 OVsVJxPEEPDTQ==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 21 Apr 2026 08:43:07 +0200
-Subject: [PATCH net] net: airoha: stop net_device TX queue before updating
- CPU index
+	s=k20201202; t=1776755614;
+	bh=FBWfjsIqM+7TuqnxYjhjiUQj1QqggKY45UCCbcTaQWs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Rk54KrE161LTqGHyDseDnQJW9W+VdRSX+EJ2x09B826Rm888eSnDOS65Ig+dvbr2U
+	 M48YutSEbjzxtKF8DliJ9DYkjPxNv7U2xOZAyvzdfKzxLKMYamaehk6QIOd5gfumYp
+	 IJpMwY2dnTATYIoGB3I/ncrVLTwVKcvY0ycF/HNKq5vBZ73vOXKmS+w3N2Cs7vgrue
+	 im3cJtO4Jq8B7eAPaNx8d/rLJAN10ajV0wZYd6zy580tUCsJSRlO1lLsw0HL1dbcTg
+	 iNIctkMIRQPn1nx34cpV6hRMZDGgm5YQU8JPq8rbt5P8D1qpCkEPSo9q/aFxJLhN1a
+	 +8t7yT/JtC7jg==
+Date: Tue, 21 Apr 2026 09:13:31 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, Fabien Parent <parent.f@gmail.com>, 
+	Val Packett <val@packett.cool>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>, 
+	Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Linus Walleij <linusw@kernel.org>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+	Gary Bisson <bisson.gary@gmail.com>, Julien Massot <julien.massot@collabora.com>, 
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, Akari Tsuyukusa <akkun11.open@gmail.com>, 
+	Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-gpio@vger.kernel.org
+Subject: Re: [PATCH v5 1/9] dt-bindings: mfd: mt6397: Add MT6392 PMIC
+Message-ID: <20260421-sincere-cherry-waxbill-1aada6@quoll>
+References: <20260420213529.1645560-1-l.scorcia@gmail.com>
+ <20260420213529.1645560-2-l.scorcia@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260421-airoha-xmit-stop-condition-v1-1-e670d6a48467@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MQQqAIBBA0avErBvQSYK6SrQQnWoWaahEEN49a
- fkW/7+QOQlnmLsXEt+SJYYG3XfgDht2RvHNQIpGZUijlRQPi88pBXOJF7oYvJSW4WCMd4omsnq
- CNrgSb/L88wUCF1hr/QDdzUd0cQAAAA==
-X-Change-ID: 20260421-airoha-xmit-stop-condition-344dc0292a19
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.3
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20260420213529.1645560-2-l.scorcia@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260421_001335_403425_28759C58 
+X-CRM114-Status: GOOD (  17.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,53 +82,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently, airoha_eth driver updates the CPU index register prior of
-verifying whether the number of free descriptors has fallen below the
-threshold.
-Move net_device TX queue length check before updating the TX CPU index
-in order to update TX CPU index even if there are more packets to be
-transmitted but the net_device TX queue is going to be stopped
-accounting the inflight packets.
+On Mon, Apr 20, 2026 at 10:30:00PM +0100, Luca Leonardo Scorcia wrote:
+> From: Fabien Parent <parent.f@gmail.com>
+> 
+> Add the currently supported bindings for the MT6392 PMIC. Its MFD driver
+> does not use the compatible property to bind the regulator driver, so
+> don't mark it as required.
+> 
+> Signed-off-by: Fabien Parent <parent.f@gmail.com>
+> Signed-off-by: Val Packett <val@packett.cool>
+> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+> ---
+>  .../bindings/mfd/mediatek,mt6397.yaml         | 27 ++++++++++++++++---
+>  1 file changed, 24 insertions(+), 3 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+> index 05c121b0cb3d..2866e95e338b 100644
+> --- a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+> +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+> @@ -40,6 +40,10 @@ properties:
+>            - mediatek,mt6358
+>            - mediatek,mt6359
+>            - mediatek,mt6397
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt6392
+> +          - const: mediatek,mt6323
+>        - items:
+>            - enum:
+>                - mediatek,mt6366
+> @@ -68,6 +72,10 @@ properties:
+>                - mediatek,mt6331-rtc
+>                - mediatek,mt6358-rtc
+>                - mediatek,mt6397-rtc
+> +          - items:
+> +              - enum:
+> +                  - mediatek,mt6392-rtc
+> +              - const: mediatek,mt6323-rtc
+>            - items:
+>                - enum:
+>                    - mediatek,mt6366-rtc
+> @@ -99,9 +107,6 @@ properties:
+>                    - mediatek,mt6366-regulator
+>                - const: mediatek,mt6358-regulator
+>  
+> -    required:
+> -      - compatible
 
-Fixes: 1d304174106c ("net: airoha: Implement BQL support")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
+Please create a new binding file for your device. Having two ways to
+define child is not making this binding easier to follow.
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 19f67c7dd8e1..5d327237e274 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -2058,17 +2058,16 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
- 
- 	skb_tx_timestamp(skb);
- 	netdev_tx_sent_queue(txq, skb->len);
-+	if (q->ndesc - q->queued < q->free_thr) {
-+		netif_tx_stop_queue(txq);
-+		q->txq_stopped = true;
-+	}
- 
- 	if (netif_xmit_stopped(txq) || !netdev_xmit_more())
- 		airoha_qdma_rmw(qdma, REG_TX_CPU_IDX(qid),
- 				TX_RING_CPU_IDX_MASK,
- 				FIELD_PREP(TX_RING_CPU_IDX_MASK, index));
- 
--	if (q->ndesc - q->queued < q->free_thr) {
--		netif_tx_stop_queue(txq);
--		q->txq_stopped = true;
--	}
--
- 	spin_unlock_bh(&q->lock);
- 
- 	return NETDEV_TX_OK;
-
----
-base-commit: a663bac71a2f0b3ac6c373168ca57b2a6e6381aa
-change-id: 20260421-airoha-xmit-stop-condition-344dc0292a19
+The style of defining children with compatibles should be followed by
+"requierd: compatible". I am rather against of exceptions, unless needed
+and this is not such case where you need one.
 
 Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+Krzysztof
 
 
