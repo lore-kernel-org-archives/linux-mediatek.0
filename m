@@ -4,67 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95768F5A8D9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2026 02:44:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B713F327AD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2026 06:35:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=x74P/xP7mH34XJ8aunPnT9EFJkhy0I0k3ymO2xJHrr0=; b=ffebTjeIVneF3WIi7t/N7vd8/0
-	h2FNIsxGsEEDVDKTVuGt7eV02f+te+ePBvWS+dHoxGonxNPamZ2iE4YGdvOaFziDt/dOjeL8oIiWm
-	SlHkV9AZWbnB8kMU7fJRuOqhvUg5AOW205fGgJvYt9Ga1MEvBUPYLMC0wDlnrDKxAsiuf/YEu5/gO
-	GijabmwB92ymQfrbwvYhuJFph6gY9ZnBaX30BCbuJBuaVqmHUtQ0G1fgrGHogO9gv4IwDXZmSrfj+
-	K55cqTA77A3d8WQ2rIfKZzXV5HLlzM72Eo6KNZ/6DyaMMNPtQXMB1fffOnokgOZkvgjLn5NfcKCnm
-	7R/kjBPg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=4kXr04xPQupD3IbEqKXAANHc14Vb5ok50ScuvHUg79U=; b=Ir95SLVCNRHo7mZtBE4AYD9t8J
+	F11nd963QXq6ikdvSDd9vvh8w5uVbNd3i4D80n9gFpqjsLrdI56XltSNWv9vVYL3a84zKvOsV+DOW
+	qkBt7xa6oVu/SuKzTvAWUVODnVK4fSP0zGFTGm9lQBPC4JRfDTWTmK8gzzPlk7K10unE9CMVSX5HV
+	XrEAT4N6Hu15gAExfC6VxxUp2xjy2xmGZOD3Ln4UuqHlOfTPoP3fL3dTKwAEu6blY4cL3eDwlaIzi
+	is4RrveMWlpFG/HhEmzXLDcBDqZeyrOWS/Y3cm7ktRBLo9DEkckidQ8L10aDM9Dd6GBgRLVTZz3Xx
+	hm7wgQ/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wF16G-00000007xC6-3ISy;
-	Tue, 21 Apr 2026 02:44:32 +0000
-Received: from n169-112.mail.139.com ([120.232.169.112])
-	by bombadil.infradead.org with smtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wF16D-00000007x9q-1yrO;
-	Tue, 21 Apr 2026 02:44:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=139.com; s=dkim; l=0;
-	h=from:subject:message-id:to:cc:mime-version;
-	bh=47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=;
-	b=nv0pVy81nB8ijr8fH/wOse2fCi/ONoInZF85o3Fb1jlrQymUSl4NbDzKock5oHcGJqGHQm8DOy1Wd
-	 VYxRttoC2UAM95932WAvYz2D+x8a5JUcB3Xxo7TcZNsl/M9o8lmRHBLfJu+gHZPfYogpgc8N1lb9Sa
-	 9BSTmHVrH/WLE9AU=
-X-RM-TagInfo: emlType=0                                       
-X-RM-SPAM: 
-X-RM-SPAM-FLAG: 00000000
-Received: from NTT-kernel-dev (unknown[60.247.85.88])
-	by rmsmtp-lg-appmail-20-12023 (RichMail) with SMTP id 2ef769e6e487384-013a1;
-	Tue, 21 Apr 2026 10:44:26 +0800 (CST)
-X-RM-TRANSID: 2ef769e6e487384-013a1
-From: Li hongliang <1468888505@139.com>
-To: gregkh@linuxfoundation.org,
-	stable@vger.kernel.org,
-	nbd@nbd.name
-Cc: patches@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	toke@toke.dk,
-	kvalo@kernel.org,
-	johannes@sipsolutions.net,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	nbd@openwrt.org,
-	linux-wireless@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	johannes.berg@intel.com
-Subject: [PATCH 5.10.y] wifi: mac80211: always free skb on ieee80211_tx_prepare_skb() failure
-Date: Tue, 21 Apr 2026 10:44:25 +0800
-Message-Id: <20260421024425.3133110-1-1468888505@139.com>
-X-Mailer: git-send-email 2.34.1
+	id 1wF4hv-000000086gN-0ret;
+	Tue, 21 Apr 2026 06:35:39 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1wF4ht-000000086fs-0BQB;
+	Tue, 21 Apr 2026 06:35:37 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 0DC1C60018;
+	Tue, 21 Apr 2026 06:35:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 405FBC2BCB0;
+	Tue, 21 Apr 2026 06:35:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1776753335;
+	bh=HFRROKnDutWrDUQ/r5EJQStec0lggxTMibf91XTkYuk=;
+	h=From:Date:Subject:To:Cc:From;
+	b=MP50jThUvzNGx0PUcXjmv7mIOARG3zBySFo5paK3DNunG/Sen7sttndf8JSAmjDt0
+	 5nwj3V/xu8DVn4INc0A0l4VtBfG74GR2jUy/XkbAV2Cqy2HpfgtKbcvV429w9X/r4P
+	 D7Opi/NsoL06ACklTc9aBOfWoSEz4N4x3NOpaXAGvBc1nix7DvgvnFbGovCu53Uui8
+	 NBcwmt41X2aht08casV2T+9vVvP92oOIaXCMFlQSYXDh1P6FXVONcVNdFX5cl+sQoo
+	 1qFxY55vIv7V2TvqOAmeq6vv/Kwdu3G+96bmlniBRdMGFZm6kI3APDsp/81t8L1Vjv
+	 HgOpFkL3mpd3g==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Tue, 21 Apr 2026 08:35:11 +0200
+Subject: [PATCH net] net: airoha: fix BQL imbalance in TX path
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260420_194430_060841_A391E198 
-X-CRM114-Status: GOOD (  12.47  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260421-airoha-fix-bql-v1-1-f135afe4275b@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MQQqAIBAAvxJ7bsEkkvpKdFBbcyGsNCIQ/550H
+ IaZDIkiU4KpyRDp4cRHqNC1DVivw0bIa2WQQg6ilx1qjofX6PhFc+2onHPKkjF21FCjM1JV/3C
+ GQDcspXzouyTAZQAAAA==
+X-Change-ID: 20260421-airoha-fix-bql-7fff7cebbc9a
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Hariprasad Kelam <hkelam@marvell.com>
+Cc: Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.3
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,106 +74,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Felix Fietkau <nbd@nbd.name>
+Fix a possible BQL imbalance in airoha_dev_xmit(), where inflight
+packets are accounted only for the AIROHA_NUM_TX_RING netdev TX
+queues. The queue index is computed as:
 
-[ Upstream commit d5ad6ab61cbd89afdb60881f6274f74328af3ee9 ]
+    qid = skb_get_queue_mapping(skb) % ARRAY_SIZE(qdma->q_tx)
+    txq = netdev_get_tx_queue(dev, qid);
 
-ieee80211_tx_prepare_skb() has three error paths, but only two of them
-free the skb. The first error path (ieee80211_tx_prepare() returning
-TX_DROP) does not free it, while invoke_tx_handlers() failure and the
-fragmentation check both do.
+However, airoha_qdma_tx_napi_poll() accounts completions across all
+netdev TX queues (num_tx_queues), leading to inconsistent BQL
+accounting.
 
-Add kfree_skb() to the first error path so all three are consistent,
-and remove the now-redundant frees in callers (ath9k, mt76,
-mac80211_hwsim) to avoid double-free.
+Also reset all netdev TX queues in the ndo_stop callback.
 
-Document the skb ownership guarantee in the function's kdoc.
-
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
-Link: https://patch.msgid.link/20260314065455.2462900-1-nbd@nbd.name
-Fixes: 06be6b149f7e ("mac80211: add ieee80211_tx_prepare_skb() helper function")
-Signed-off-by: Johannes Berg <johannes.berg@intel.com>
-[ Exclude changes to drivers/net/wireless/mediatek/mt76/scan.c as this file is first
- introduced by commit 31083e38548f("wifi: mt76: add code for emulating hardware scanning")
- after linux-6.14.]
-Signed-off-by: Li hongliang <1468888505@139.com>
+Fixes: 1d304174106c ("net: airoha: Implement BQL support")
+Fixes: c9f947769b77 ("net: airoha: Reset BQL stopping the netdevice")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/wireless/ath/ath9k/channel.c | 6 ++----
- drivers/net/wireless/mac80211_hwsim.c    | 1 -
- include/net/mac80211.h                   | 4 ++++
- net/mac80211/tx.c                        | 4 +++-
- 4 files changed, 9 insertions(+), 6 deletions(-)
+ drivers/net/ethernet/airoha/airoha_eth.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/wireless/ath/ath9k/channel.c b/drivers/net/wireless/ath/ath9k/channel.c
-index 6cf087522157..31b7921bf34f 100644
---- a/drivers/net/wireless/ath/ath9k/channel.c
-+++ b/drivers/net/wireless/ath/ath9k/channel.c
-@@ -1011,7 +1011,7 @@ static void ath_scan_send_probe(struct ath_softc *sc,
- 	skb_set_queue_mapping(skb, IEEE80211_AC_VO);
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 19f67c7dd8e1..6c7390f0de5d 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -929,10 +929,9 @@ static int airoha_qdma_tx_napi_poll(struct napi_struct *napi, int budget)
+ 		q->queued--;
  
- 	if (!ieee80211_tx_prepare_skb(sc->hw, vif, skb, band, NULL))
--		goto error;
-+		return;
+ 		if (skb) {
+-			u16 queue = skb_get_queue_mapping(skb);
+ 			struct netdev_queue *txq;
  
- 	txctl.txq = sc->tx.txq_map[IEEE80211_AC_VO];
- 	if (ath_tx_start(sc->hw, skb, &txctl))
-@@ -1124,10 +1124,8 @@ ath_chanctx_send_vif_ps_frame(struct ath_softc *sc, struct ath_vif *avp,
+-			txq = netdev_get_tx_queue(skb->dev, queue);
++			txq = skb_get_tx_queue(skb->dev, skb);
+ 			netdev_tx_completed_queue(txq, 1, skb->len);
+ 			dev_kfree_skb_any(skb);
+ 		}
+@@ -1711,7 +1710,7 @@ static int airoha_dev_stop(struct net_device *dev)
+ 	if (err)
+ 		return err;
  
- 		skb->priority = 7;
- 		skb_set_queue_mapping(skb, IEEE80211_AC_VO);
--		if (!ieee80211_tx_prepare_skb(sc->hw, vif, skb, band, &sta)) {
--			dev_kfree_skb_any(skb);
-+		if (!ieee80211_tx_prepare_skb(sc->hw, vif, skb, band, &sta))
- 			return false;
--		}
- 		break;
- 	default:
- 		return false;
-diff --git a/drivers/net/wireless/mac80211_hwsim.c b/drivers/net/wireless/mac80211_hwsim.c
-index 037358606a51..865bbe029343 100644
---- a/drivers/net/wireless/mac80211_hwsim.c
-+++ b/drivers/net/wireless/mac80211_hwsim.c
-@@ -2275,7 +2275,6 @@ static void hw_scan_work(struct work_struct *work)
- 						      hwsim->tmp_chan->band,
- 						      NULL)) {
- 				rcu_read_unlock();
--				kfree_skb(probe);
- 				continue;
- 			}
+-	for (i = 0; i < ARRAY_SIZE(qdma->q_tx); i++)
++	for (i = 0; i < dev->num_tx_queues; i++)
+ 		netdev_tx_reset_subqueue(dev, i);
  
-diff --git a/include/net/mac80211.h b/include/net/mac80211.h
-index 8f91609f928c..70ee982f08d9 100644
---- a/include/net/mac80211.h
-+++ b/include/net/mac80211.h
-@@ -6337,6 +6337,10 @@ void ieee80211_report_wowlan_wakeup(struct ieee80211_vif *vif,
-  * @band: the band to transmit on
-  * @sta: optional pointer to get the station to send the frame to
-  *
-+ * Return: %true if the skb was prepared, %false otherwise.
-+ * On failure, the skb is freed by this function; callers must not
-+ * free it again.
-+ *
-  * Note: must be called under RCU lock
-  */
- bool ieee80211_tx_prepare_skb(struct ieee80211_hw *hw,
-diff --git a/net/mac80211/tx.c b/net/mac80211/tx.c
-index 30ad46cfcad8..b923cd755a68 100644
---- a/net/mac80211/tx.c
-+++ b/net/mac80211/tx.c
-@@ -1869,8 +1869,10 @@ bool ieee80211_tx_prepare_skb(struct ieee80211_hw *hw,
- 	struct ieee80211_tx_data tx;
- 	struct sk_buff *skb2;
+ 	airoha_set_gdm_port_fwd_cfg(qdma->eth, REG_GDM_FWD_CFG(port->id),
+@@ -2002,7 +2001,7 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
  
--	if (ieee80211_tx_prepare(sdata, &tx, NULL, skb) == TX_DROP)
-+	if (ieee80211_tx_prepare(sdata, &tx, NULL, skb) == TX_DROP) {
-+		kfree_skb(skb);
- 		return false;
-+	}
+ 	spin_lock_bh(&q->lock);
  
- 	info->band = band;
- 	info->control.vif = vif;
+-	txq = netdev_get_tx_queue(dev, qid);
++	txq = skb_get_tx_queue(dev, skb);
+ 	nr_frags = 1 + skb_shinfo(skb)->nr_frags;
+ 
+ 	if (q->queued + nr_frags >= q->ndesc) {
+
+---
+base-commit: a663bac71a2f0b3ac6c373168ca57b2a6e6381aa
+change-id: 20260421-airoha-fix-bql-7fff7cebbc9a
+
+Best regards,
 -- 
-2.34.1
-
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
