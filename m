@@ -4,99 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84FA9F327BF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2026 08:12:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FEB5F327C8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2026 08:53:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RXcEsPkaE3nBchm7YaHAcD5u2O6FyVBqda9tZxmDoL4=; b=g5mMbBcME6YhQ1bKaJAsy3qBGQ
-	IEeHWzBGpWtXb0oFx+czjVdcRHs4l44W5a6zaZee3wVlYGPT6wATNPna4gkZMlMUKE4kI4kebuIeZ
-	Rc+q6f+HlfmYXUthK7+LFOau7IMNIuaeIyuTHNtsi5BM/LcDtXP7NU1WFYWOPSEFXklIwUgyPCusn
-	pTa573uaTYTpriVdhbglm5Msz9md0wO8GkZHH0AGlJmHacSUfOZRmxun+a5WzIqBq2J+D8s5L6534
-	ng6C16lQlrrmtqxqZkK+fxry0IhRALCzBhAM2WEWt+3z8MAr+VI619Zb7zzx6hMGEcpX9vLWZHId9
-	bmb+QmPA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=h5qgamQh+jPgJ1Emn+TKK5MC4m+XUZLyTR/uBaXk5LU=; b=dLqIJTynLe2FS3Ft3tvXchrw6P
+	5Gv9S5Q0DIZbl6hCi+HiSjRUQKtui1n18Dzpk94aUOFrsFh3I7iY2cq07P3cP4PZtgFk6kA43RqHT
+	EVhZo1uRzSutJpXl0lNYXA2o3rLs/kbJCfQBpafaBoWIUtP8F26HIzXDRkAun0pkzFGFVSGcXyENY
+	f+UYnKAk3QhW+wotNKCat7PmLcTraoPr4DEOT1WVxKBQU/PJx1WU77pcdVf4J3REc/vLAfUwhu+n8
+	Vn5cxAj1LGWelRgTGdZuaSh3YfTEOuqX72DruDC08ZPWAggoMY5jrbd3k/99BDLhofQdA8nBejtD8
+	zVF3rP4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wF6Dy-00000008Ejc-08jj;
-	Tue, 21 Apr 2026 08:12:50 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1wF6rZ-00000008Ha9-2PCe;
+	Tue, 21 Apr 2026 08:53:45 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wF6Dt-00000008Ej3-49xs
-	for linux-mediatek@lists.infradead.org;
-	Tue, 21 Apr 2026 08:12:48 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-488af96f6b2so50656665e9.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 21 Apr 2026 01:12:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20251104.gappssmtp.com; s=20251104; t=1776759164; x=1777363964; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=RXcEsPkaE3nBchm7YaHAcD5u2O6FyVBqda9tZxmDoL4=;
-        b=Y/HmjvwazseNH1xdPctSqf1c1+47piXdzSi28ol9wETw8/53TYeMuygwFHdqlcSrK1
-         NYcQQasmtg5yiWqcv5DOBf1fecKk2d8GoHd98FyZhYy8lbiBj/TI0bZRALwAlFEmGBzq
-         DIx/PU+p2wlLXjHRFzXcKus6KsbUZ6Lg4P9gCHMP5SglAcbTot0PL/Ep+bsub5S/mXnf
-         QBYpCoB4+0XSsXxnaY9OjIXLqK+3mK3bhOFRRrRa8W97HtrdwMYulzK1CeAPW+UBk/Iw
-         9KArHYVCjGlhFHgbjQGlT7r4k0Y12Cu6hudybzDFbEvzHB+B39cDdqgTmpsn9AwPnhSQ
-         wamA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1776759164; x=1777363964;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=RXcEsPkaE3nBchm7YaHAcD5u2O6FyVBqda9tZxmDoL4=;
-        b=Dq74zQ0PGB0qP8xcaeZqTG8NTAYOL1u3RHz7QxjtJIBvW+XopGIUd685ukExLh1MfS
-         vCjCK+qjzE9xHl4mhL/lVMw/1TmlS+ZNZCGEKeQOX9g+lRaQqN/uQ+1SG9w+szfhnAZp
-         UREAF+vCKpJlB31ZC+0drgRPcrYumryQkRXYR/N+eAMEyQ+yhz+QLMI+NhHEAaNOThrQ
-         YeVDYiLQEuh4qXeI4YEqq1QRVaXHbG5F4x9VkKWfJ/HO2JokvV1gxNhGFCqdpi0FYXd4
-         C0joGdQObqBkJt1GCZ2bD5fFTA34wBX5gvz99EF30VY8SYQUxOHKMcCRqxvPeXBHaGGB
-         k3CA==
-X-Forwarded-Encrypted: i=1; AFNElJ9E9SC6Fo4GofTXe7hh7JW1vwbeFjRPR5C2fhUI8508B8p10sdrLw5Rswkf8SoBeBjdUK931LEaIDVho8m7GQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxsu7KJuE6KrsQ6rz6xTPYnVHTtFjVbLcpTaWEkP8+PChCDIMT4
-	C5gJZnETiHRnsOt0DpTwx709jzWNsMVuN60FTMzda4/vpXL/OAus6GlpPak5doS4f30=
-X-Gm-Gg: AeBDievT2+qaT5lufiIBNe8KjsGZ4Z8Tqme8oWrWk06/pcu5duNVPRq4W9eUwIeDotF
-	foJxskhhouavvD3DMMF2s60AmIkUjy3kxlDA7NH1LcDlRFuQcCxFRXJtNaRngFaWyQD4o5ZnQFl
-	OmEO3VPWpH7tWIo9CFfZRNudX8jK+VW1nk6wa4cR3r0Q/Rtfe4mK0oj8nAUkzSiWMAsO9zolhef
-	7sIXKTtaEyvhQBuCYR3On3nF4Xzkbf2IiOqJZrqVB6ZNhsPskRSBUQ9stnR0sdBpJ7CGBovyRUx
-	wg3L5q73KDxyxYgctovd7fkFCd/Rgepij0zGpKQIhsWICuf+nb7ZY76KeXTfCIAu9r0eUl9Yk/j
-	hSuMzaca2CWxvRcoQ7fl939w9xOjz7CyYUeXmdg30QrHHaSv9XNMCxTXaggXLYrswOcDIw8ThcM
-	YcJ7cVI+R3nAdHK5NG9Rn/arQrpuZ5TVnzNC2YtqE=
-X-Received: by 2002:a05:600d:1b:b0:483:8062:b43 with SMTP id 5b1f17b1804b1-488fb771438mr205335215e9.19.1776759163884;
-        Tue, 21 Apr 2026 01:12:43 -0700 (PDT)
-Received: from localhost ([2a02:8071:b783:6940:1d24:d58d:2b65:c291])
-        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-4891bb3d121sm239274565e9.14.2026.04.21.01.12.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Apr 2026 01:12:42 -0700 (PDT)
-Date: Tue, 21 Apr 2026 10:12:41 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>
-To: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-Cc: Ulf Hansson <ulfh@kernel.org>, 
-	"Christian A. Ehrhardt" <christian.ehrhardt@codasip.com>, linux-mmc@vger.kernel.org, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Wolfram Sang <wsa+renesas@sang-engineering.com>, 
-	linux-kernel@vger.kernel.org, Marcel Holtmann <marcel@holtmann.org>, 
-	linux-bluetooth@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mediatek@lists.infradead.org, 
-	Ping-Ke Shih <pkshih@realtek.com>, linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
-	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
-	Brian Norris <briannorris@chromium.org>, Francesco Dolcini <francesco@dolcini.it>, 
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Subject: Re: [PATCH v1 1/6] sdio: Add syntactic sugar to store a pointer in
- sdio_driver_id
-Message-ID: <aecu1ixyHP2hQvgE@monoceros>
-References: <cover.1776429984.git.u.kleine-koenig@baylibre.com>
- <c830049dcfcd99f005e2ff6742aace9341c61f13.1776429984.git.u.kleine-koenig@baylibre.com>
- <aeaMkfk_1t98e7SU@monoceros>
- <CABBYNZJzbEmYzTk2m+Y8SoHVouTMA6Gje_55iJsQ6cYtDLftbQ@mail.gmail.com>
+	id 1wF6rX-00000008HZS-2xMK;
+	Tue, 21 Apr 2026 08:53:44 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id D253E600AE;
+	Tue, 21 Apr 2026 08:53:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0B1DFC2BCB5;
+	Tue, 21 Apr 2026 08:53:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1776761622;
+	bh=aZT8+RjuUD+glDzBq4Jw2xxfNL/4kIryQSIGXkNI1xI=;
+	h=From:Date:Subject:To:Cc:From;
+	b=gtgE3DSZmxbKHqvljeBTE4VkSpsaCQcfqK77jf8BpxOBJu2+QcK+1UCw8KZwAH7X1
+	 cjWp8o/bVOL04vJtwowMv5M5XiXfPAt0n9G4JjcyapBl5LjFIaHsWpYldijXROhO5i
+	 oRVDl9vQcd8p2yTh8rKvmElBh64sYRjdQohWHX1zBGJ3CVbJSKZlT9IgCIVVhQUZ/x
+	 KtOXjgFFtg3ZcamjhkMvXuQES9je+AtuPqLrrtJpNLAv67310o9jhXVY9SzOkNgFPB
+	 Mn7+HK9lXOMaLueRs4KZrp1wPFpI3L34+WlRUsqYLfhuTqlNmo3GNUax7uXlehTo5i
+	 SyCAnt4583wwQ==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Tue, 21 Apr 2026 10:53:33 +0200
+Subject: [PATCH net] net: airoha: Do not wake all netdev TX queues in
+ airoha_qdma_wake_netdev_txqs()
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ou2vweurizbmr2mn"
-Content-Disposition: inline
-In-Reply-To: <CABBYNZJzbEmYzTk2m+Y8SoHVouTMA6Gje_55iJsQ6cYtDLftbQ@mail.gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260421_011246_307240_4C8AFFA7 
-X-CRM114-Status: GOOD (  31.06  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260421-airoha-wake_netdev_txqs-optmization-v1-1-e0be95115d53@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2NwQrCMBAFf6Xs2YUm1Ar+ikhZm6ddxKQmoRZL/
+ 93F4xxmZqOCrCh0bjbKWLRoigbu0NA4SXyANRiTb33fdt6xaE6T8EeeGCJqwDLU9V04zfWlX6n
+ mc390Jzeiw00CWWnOuOv6v1zIJLru+w8sfKiDegAAAA==
+X-Change-ID: 20260421-airoha-wake_netdev_txqs-optmization-65171ce4ebad
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Simon Horman <horms@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.3
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,96 +75,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Do not wake every netdev TX queue across all ports sharing the QDMA
+running netif_tx_wake_all_queues routine in airoha_qdma_wake_netdev_txqs()
+but only the ones that are mapped the specific QDMA stopped hw TX queue.
+This patch can potentially avoid waking already stopped netdev TX queues
+that are mapped to a different QDMA hw TX queue.
+Introduce airoha_qdma_get_txq utility routine.
 
---ou2vweurizbmr2mn
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v1 1/6] sdio: Add syntactic sugar to store a pointer in
- sdio_driver_id
-MIME-Version: 1.0
+Fixes: b94769eb2f30 ("net: airoha: Fix possible TX queue stall in airoha_qdma_tx_napi_poll()")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/ethernet/airoha/airoha_eth.c | 19 +++++++++++++++----
+ drivers/net/ethernet/airoha/airoha_eth.h |  5 +++++
+ 2 files changed, 20 insertions(+), 4 deletions(-)
 
-Hello Luiz,
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 19f67c7dd8e1..2ca569501045 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -847,13 +847,24 @@ static void airoha_qdma_wake_netdev_txqs(struct airoha_queue *q)
+ {
+ 	struct airoha_qdma *qdma = q->qdma;
+ 	struct airoha_eth *eth = qdma->eth;
+-	int i;
++	int i, qid = q - &qdma->q_tx[0];
+ 
+ 	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
+ 		struct airoha_gdm_port *port = eth->ports[i];
++		int j;
++
++		if (!port)
++			continue;
+ 
+-		if (port && port->qdma == qdma)
+-			netif_tx_wake_all_queues(port->dev);
++		if (port->qdma != qdma)
++			continue;
++
++		for (j = 0; j < port->dev->num_tx_queues; j++) {
++			if (airoha_qdma_get_txq(qdma, j) != qid)
++				continue;
++
++			netif_wake_subqueue(port->dev, j);
++		}
+ 	}
+ 	q->txq_stopped = false;
+ }
+@@ -1965,7 +1976,7 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
+ 	u16 index;
+ 	u8 fport;
+ 
+-	qid = skb_get_queue_mapping(skb) % ARRAY_SIZE(qdma->q_tx);
++	qid = airoha_qdma_get_txq(qdma, skb_get_queue_mapping(skb));
+ 	tag = airoha_get_dsa_tag(skb, dev);
+ 
+ 	msg0 = FIELD_PREP(QDMA_ETH_TXMSG_CHAN_MASK,
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
+index 87b328cfefb0..c3ea7aadbd82 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.h
++++ b/drivers/net/ethernet/airoha/airoha_eth.h
+@@ -631,6 +631,11 @@ u32 airoha_rmw(void __iomem *base, u32 offset, u32 mask, u32 val);
+ #define airoha_qdma_clear(qdma, offset, val)			\
+ 	airoha_rmw((qdma)->regs, (offset), (val), 0)
+ 
++static inline u16 airoha_qdma_get_txq(struct airoha_qdma *qdma, u16 qid)
++{
++	return qid % ARRAY_SIZE(qdma->q_tx);
++}
++
+ static inline bool airoha_is_lan_gdm_port(struct airoha_gdm_port *port)
+ {
+ 	/* GDM1 port on EN7581 SoC is connected to the lan dsa switch.
 
-On Mon, Apr 20, 2026 at 04:46:56PM -0400, Luiz Augusto von Dentz wrote:
-> On Mon, Apr 20, 2026 at 4:31=E2=80=AFPM Uwe Kleine-K=C3=B6nig (The Capabl=
-e Hub)
-> <u.kleine-koenig@baylibre.com> wrote:
-> > On Fri, Apr 17, 2026 at 03:10:47PM +0200, Uwe Kleine-K=C3=B6nig (The Ca=
-pable Hub) wrote:
-> > > On all current Linux architectures sizeof(long) =3D=3D sizeof(void *)=
- and
-> > > this is used a lot through the kernel. For example it enables the usu=
-al
-> > > practice to store pointers in sdio_driver_id's .driver_data member.
-> > >
-> > > This works fine, but involves casting and thus isn't type-safe.
+---
+base-commit: a663bac71a2f0b3ac6c373168ca57b2a6e6381aa
+change-id: 20260421-airoha-wake_netdev_txqs-optmization-65171ce4ebad
 
-To be honest, with the involved void* this isn't really type-safe
-either, but at least the data keeps being a pointer which is really
-helpful on CHERI. FTR: The alternative would be to use uintptr_t instead
-of unsigned long, which also has proponents in the CHERI community and
-which is used in the current vendor patch stack.
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
-> > > Additionally with the CHERI architecture extension there are machines
-> > > with sizeof(void *) > sizeof(long) for with the traditional approach =
-of
-> > > storing a pointer in .driver_data doesn't work.
-> > >
-> > > By replacing the plain unsigned long .driver_data by an anonymous uni=
-on,
-> > > most of the casting can be dropped and it yields a working solution f=
-or
-> > > CHERI.
-> > >
-> > > All users of struct sdio_driver_id are initialized in a way that is
-> > > compatible with the new definition, so no adaptions are needed there.
-> >
-> > sashiko.dev found s/sdio_driver_id/sdio_device_id/ twice in the commit
-> > log and once in the short log. If you consider applying this patch
-> > please adapt the commit message accordingly.
->=20
-> No problem I can fix them up once applying.
-
-Thanks! If a new revision should be needed, of course I'll fix that,
-too.
-
-> > Many thanks to those who created sashiko.dev!
-> >
-> > Best regards
-> > Uwe
->=20
-> We only received 1-3 of the 6:
->=20
-> https://patchwork.kernel.org/project/bluetooth/list/?series=3D1082520
->=20
-> Or is this on purpose, and we should consider the set complete?
-
-The remaining patches are for wifi. My expectation was that they go in
-via wifi+netdev once the first patch is in their base. But of course I'm
-open for maintainer coordination to let the series go in in less steps
-than I expected. If that helps I can also create an immutable branch,
-but I have no urge here, so if only the first patch goes in during the
-next merge window, I won't have problems to keep track of the remaining
-bits.
-
-Best regards
-Uwe
-
---ou2vweurizbmr2mn
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmnnMXcACgkQj4D7WH0S
-/k44bwgAnoMan1Imv3flaHCO3huDhjM34bPslVMZz9O3wxMMwFGStgpU3tDvAlFl
-FisTZf//q5YDKDMU8QV1lWvbQoFEpQzTG9y9T3kx535oPPgxlG2VOVssH/fhxPgC
-5WRR74C/5X9vCV6KRMHrD8GhGNsn2S9si+AjSVxGC6NWrVOrbIyK1lRHOACx6rFV
-eM3s+J44T3ZGK60m180+bEFUfCsmOqCLoOTOJ2dB4hxddm0VF0MLiuby8b4v8RvB
-/IPA8CqsKTVcj01EMr5853cJiCZjfq5CHdo2tTK9JScUUBXv0Azi7Rv3s3P0hV22
-e9swpLSspOKoPqq6qBNNDtr19tQDTg==
-=Mg7P
------END PGP SIGNATURE-----
-
---ou2vweurizbmr2mn--
 
