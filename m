@@ -4,106 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20DDDF8FA90
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2026 17:32:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2661F327D9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2026 17:40:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UmtPtPbnl4AV5j+ij+q4DGBojJ4/yQwbp4U1xRsU4aQ=; b=HtTeOp3KUNFvjnixNoIeNqgTFX
-	Z3gOiLFNZsgTbD9bvr8AdCIs4TT6cpMhpL8uRYGFhk/s2cTbS+/duSzm2xvF4ZOHAEFuYVY/EYAK7
-	o2QMbjiX5GBuSHqq2HQ73Xcr7coLU0go7nua7O5KNUCOSNt0R+sLDjhex1wT/RaENHl74Z4WR/FvO
-	gaIY0oxkBWd+9U9ZAHjz0uLIicWB4MkdzbhP2LJdPkvONc1pogI+GrPrjcu6WG78+MCe/kPkJ6wUR
-	dOsFRrAe2Jhc9UPB6JeAt1AwTPvVegCAuCJRTw/qwJdQ0g7IzDdkxHHy6hr2XmlqSxLT/Q/+Wa6MM
-	IfjdbO1w==;
+	bh=wKrFvpe9cMWWIzvNzGGk0ZJtry+Q6yT9WwP8XE2EM6Q=; b=ddb9y7ap22u4NT8bfoWJRb5J8K
+	U+l1JPl2q+W2ov607wrsEKrIwpr4PQ5BtGoXcv2hdB2Yotw0eHTt4FAcSHqoeFoUhP/IFdR5FkAOC
+	YKVyaN/p67kIcAPbQTxXmfW6YbBZVXbYUJGxGoEwslwmkVxMCkGncGCZuF8wAl4Uwh5oPkz+LfM26
+	XNXCd2MVeihFmkWJvyT+SMeW1w/f+PeXDH8Cco7yY9acpiE4/TVAvwMA5wx6aBPXwikY2QLIdZaWO
+	ZQdrmC/OGLsP2AqPX/P2vRl/RnqIuHtv/cATORBM0ra/u1MEuXvc+Nh3LpYfHOWYhaucRncKou4fr
+	A/b44gow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFExj-00000008yO6-0dgn;
-	Tue, 21 Apr 2026 17:32:39 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1wFF5c-00000008yw3-17gL;
+	Tue, 21 Apr 2026 17:40:48 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFExg-00000008yNL-3yXR
+	id 1wFF5Z-00000008yvA-3EJc
 	for linux-mediatek@lists.infradead.org;
-	Tue, 21 Apr 2026 17:32:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1776792756;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=UmtPtPbnl4AV5j+ij+q4DGBojJ4/yQwbp4U1xRsU4aQ=;
-	b=h0YUd/O8xPulR4Z9xjURbJbH4Y5TNfk0SJZMHApM2RlGN1brllARQH2oU0mWVC6tPE76Y4
-	pftUU4QdqQ4BDj0+uJZ3703MK5VG56qHfdE3pCopACSfX3zLGC/9sVgEuOoFj409e24aiM
-	PzUAR5Xp44Oj4DwiVnOsWgH0XoaA1t4=
-Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
- [209.85.214.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-263-H16n-7sOOUOelxuWz3otvg-1; Tue, 21 Apr 2026 13:32:34 -0400
-X-MC-Unique: H16n-7sOOUOelxuWz3otvg-1
-X-Mimecast-MFC-AGG-ID: H16n-7sOOUOelxuWz3otvg_1776792754
-Received: by mail-pl1-f198.google.com with SMTP id d9443c01a7336-2b4530a90fdso90105225ad.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 21 Apr 2026 10:32:34 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1776792753; x=1777397553;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=UmtPtPbnl4AV5j+ij+q4DGBojJ4/yQwbp4U1xRsU4aQ=;
-        b=o6sdK9JT7BipMHvnfdjpem0dCJ5ijAmYSSePDCh3uc8qBdpiuKwZZ33JC0BLeO4Jye
-         BoMDjqIY7FrdItUJpWCJqfb+jDZwv5jG5BjwA5p+ps4718Vmf8mWqgfvT33xFoXQhvR6
-         fo4q5LYUxnlgiGuSdJeCKC3pi2JptbOZIxnIBqWtAvCWVyOowyWlIUzntsTEQ5yBWpgb
-         DLy92SIJ+OJXKn6zhkA6GixiWxmofkIFoOuxOvWqcd8UYnfP6R84FVoZH+3GE01TN+GB
-         qGnADVbodRdHVMkTamL1vsJUM3JOH7kzVtPYI//he9w+sT24XSreRr/egXLmxOiEbiPe
-         I5EA==
-X-Forwarded-Encrypted: i=1; AFNElJ/VypN95yu1UPnFNMIohB86V3n/j+2X67l5nv+7eT7gyHOMRqtp9lDkQLUvlhghpzkdhQp0HBoals/o6BOboQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzTtqoNaFBvKbiYWWz4DR7tsnKSULhJnsrwNss2sH/uGrdzGzF4
-	q1MwHLsShs4Ubjqgu+ScHqQeyZTcJVMEZaETeFLsCeseXuZ4oNkNwSKEg50mNPTCz1vPZnOgIxA
-	t+xec6FpRBeN1sqPFEBnzd6dQjw0/mf/pw2pJr5ohAT3yxGtYK6oPA80r5soZUzlmWnlJHpLubg
-	==
-X-Gm-Gg: AeBDieuPUI5KnnhyFb3zmiOH3tE7x6oEg/wuE89IEuOfzGa76AV5sCkzdTtTWJZv347
-	uH+ItU/FSChMeIKjKpz1U4P42EYYuGm9wu/97Jo/XKvrUgw5bAGr6Oz+3t73Y1MFXViwBlZSnXK
-	iXASd35i8DxFBnXfPn9Fx5TD6h+Jz8g7Er/aZeBf5prsSSBph7YFuIEPFX5fGMdaNp+ON8k1ECE
-	qAmw1pSmCzIDdtaAnnOFxldr59IPYjD2DD6tTirtTjUQrI/MzNOIewR2zayBD/bfpSiBS7yDRKI
-	aAUwgM6utXqs69nhxVGIW8DXEVw0lbq5KCCeRH18K75uNb+0im/R5nD2VajnATa69fSWR7wjiUE
-	vLPApzDjuVzFDYxIfnx0iw4T7q5nRBRgT48jTP3rWqNVWLpglUICMn/WvB0YAOO5tXXc=
-X-Received: by 2002:a17:903:b4f:b0:2b2:ae89:fd44 with SMTP id d9443c01a7336-2b5f9eaf3d6mr212359695ad.6.1776792753283;
-        Tue, 21 Apr 2026 10:32:33 -0700 (PDT)
-X-Received: by 2002:a17:903:b4f:b0:2b2:ae89:fd44 with SMTP id d9443c01a7336-2b5f9eaf3d6mr212359275ad.6.1776792752543;
-        Tue, 21 Apr 2026 10:32:32 -0700 (PDT)
-Received: from [192.168.88.32] ([150.228.25.104])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2b5fa9ff3bfsm175412135ad.7.2026.04.21.10.32.25
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 21 Apr 2026 10:32:31 -0700 (PDT)
-Message-ID: <b9d1e3b6-ad3c-4bdc-98aa-2e00a2937585@redhat.com>
-Date: Tue, 21 Apr 2026 19:32:23 +0200
+	Tue, 21 Apr 2026 17:40:46 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2A63444014;
+	Tue, 21 Apr 2026 17:40:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0EA17C2BCB0;
+	Tue, 21 Apr 2026 17:40:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1776793244;
+	bh=9fNB/J0Q/DfdEmhtekKZrAUhlEBm1e4+GeehOrO87RA=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=AzygYIIS8Nbn3H5iNbPSOEa2LWEOkd4Rxykv7RB52e81y8qX0XWMcSw1tnUPgWlGz
+	 A89c3kz1tvlvWBynl2+CJLXQJqLX9u1K4C7GlNBvUkQjOQHVhaDRaQg8UHKv9OaONk
+	 ZDBY7FME1CoNcvOCNq4fCSk/fc27uUD/wYrpKCflnG1pNbQdBIioEOVwTZhBvpXaEr
+	 iVtOU7n70zmpZKfFFwmX4FUL/SwOmjHo0UWuMpq0DoKpeXZJKR7hezQ3yf0i6MBPTW
+	 rKmuMNWO3LMBgZudGJAfFmI7F70rRuq7g2HYI4EltIZAWyDWvYhbuEODaZ1X38f9We
+	 qEca8hz/yQK9g==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id B9DF539301B9;
+	Tue, 21 Apr 2026 17:40:08 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net v4 2/2] net: airoha: Add missing bits in
- airoha_qdma_cleanup_tx_queue()
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Simon Horman <horms@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org
-References: <20260417-airoha_qdma_cleanup_tx_queue-fix-net-v4-0-e04bcc2c9642@kernel.org>
- <20260417-airoha_qdma_cleanup_tx_queue-fix-net-v4-2-e04bcc2c9642@kernel.org>
- <210f5d0b-6232-4c0f-adff-3a97d54159b3@redhat.com>
- <aeewoVjN7EHLZTW_@lore-desk>
-From: Paolo Abeni <pabeni@redhat.com>
-In-Reply-To: <aeewoVjN7EHLZTW_@lore-desk>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 10aFOKG-4fZXMznJI5MK6NW3PPyuqIPzk_rIbV0eFrw_1776792754
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH v4] Bluetooth: btmtk: validate WMT event SKB length before
+ struct access
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <177679320754.2928707.14796411684619815619.git-patchwork-notify@kernel.org>
+Date: Tue, 21 Apr 2026 17:40:07 +0000
+References: <20260421111454.3403059-1-tristmd@gmail.com>
+In-Reply-To: <20260421111454.3403059-1-tristmd@gmail.com>
+To: Tristan Madani <tristmd@gmail.com>
+Cc: luiz.dentz@gmail.com, marcel@holtmann.org, sean.wang@mediatek.com,
+ mark-yw.chen@mediatek.com, linux-mediatek@lists.infradead.org,
+ stable@vger.kernel.org, linux-bluetooth@vger.kernel.org,
+ tristan@talencesecurity.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260421_103237_081702_D4886022 
-X-CRM114-Status: GOOD (  19.46  )
+X-CRM114-CacheID: sfid-20260421_104045_850945_6603C377 
+X-CRM114-Status: UNSURE (   6.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,49 +78,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 4/21/26 7:15 PM, Lorenzo Bianconi wrote:
->> On 4/17/26 8:36 AM, Lorenzo Bianconi wrote:
->>> @@ -1055,8 +1058,33 @@ static void airoha_qdma_cleanup_tx_queue(struct airoha_queue *q)
->>>  		e->dma_addr = 0;
->>>  		e->skb = NULL;
->>>  		list_add_tail(&e->list, &q->tx_list);
->>> +
->>> +		/* Reset DMA descriptor */
->>> +		WRITE_ONCE(desc->ctrl, 0);
->>> +		WRITE_ONCE(desc->addr, 0);
->>> +		WRITE_ONCE(desc->data, 0);
->>> +		WRITE_ONCE(desc->msg0, 0);
->>> +		WRITE_ONCE(desc->msg1, 0);
->>> +		WRITE_ONCE(desc->msg2, 0);
->>
->> Sashiko has some complains on this patch that look legit to me.
->>
->> Also the pre-existing issues mentioned WRT patch 1/2 makes such patch
->> IMHO almost ineffective, I think you should address them in the same series.
->>
->> Note that you should have commented on sashiko review on the ML, it
->> would have saved a significant amount of time on us.
-> 
-> Since this series is marked as 'Changes Requested', it is not clear to me what
-> next steps are. I guess we have two possible approach here:
-> 
-> 1) - Post patch 1/2 ("net: airoha: Move ndesc initialization at
->      end of airoha_qdma_init_tx()") with the series available upstream
->      (not merged yet) in [0] where I am fixing similar issues for
->      airoha_qdma_init_rx_queue() and airoha_qdma_tx_irq_init().
->    - Post patch 2/2 ("net: airoha: Add missing bits in
->      airoha_qdma_cleanup_tx_queue()") with a fix for airoha_ndo_stop() waiting
->      for TX/RX DMA engine to complete before running
->      airoha_qdma_cleanup_tx_queue().
-> 
-> 2) - Since all the issues rised by Sashiko are not strictly related to this
->      series and they are already fixed in pending patches, just apply the fixes
->      separately without the needs to repost this series.
+Hello:
 
-Given the current flood on the ML I think option 2 could be the better.
-Note that the tree is currently in Jakub's hands and he can very legitly
-disagree.
+This patch was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-/P
+On Tue, 21 Apr 2026 11:14:54 +0000 you wrote:
+> From: Tristan Madani <tristan@talencesecurity.com>
+> 
+> btmtk_usb_hci_wmt_sync() casts the WMT event response SKB data to
+> struct btmtk_hci_wmt_evt (7 bytes) and struct btmtk_hci_wmt_evt_funcc
+> (9 bytes) without first checking that the SKB contains enough data.
+> A short firmware response causes out-of-bounds reads from SKB tailroom.
+> 
+> [...]
+
+Here is the summary with links:
+  - [v4] Bluetooth: btmtk: validate WMT event SKB length before struct access
+    https://git.kernel.org/bluetooth/bluetooth-next/c/006b9943b982
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
