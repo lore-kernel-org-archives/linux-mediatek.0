@@ -4,63 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FEB5F327C8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2026 08:53:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F43EF327C2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2026 08:59:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=h5qgamQh+jPgJ1Emn+TKK5MC4m+XUZLyTR/uBaXk5LU=; b=dLqIJTynLe2FS3Ft3tvXchrw6P
-	5Gv9S5Q0DIZbl6hCi+HiSjRUQKtui1n18Dzpk94aUOFrsFh3I7iY2cq07P3cP4PZtgFk6kA43RqHT
-	EVhZo1uRzSutJpXl0lNYXA2o3rLs/kbJCfQBpafaBoWIUtP8F26HIzXDRkAun0pkzFGFVSGcXyENY
-	f+UYnKAk3QhW+wotNKCat7PmLcTraoPr4DEOT1WVxKBQU/PJx1WU77pcdVf4J3REc/vLAfUwhu+n8
-	Vn5cxAj1LGWelRgTGdZuaSh3YfTEOuqX72DruDC08ZPWAggoMY5jrbd3k/99BDLhofQdA8nBejtD8
-	zVF3rP4Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=J1XYr9r2Q9xuv3Vej9XTSXH7J6VkMPzH3/V08F/9nAA=; b=RtGIQ10SkjUrs2C4en9dJ8/3ij
+	QfPoCH7+63el09ftUC8VcR/ZTou0ZO6ewkS98IAUjJr7kxSECJ+VzCPuIkid/TXhi6SY+DX1fS7TP
+	zZBwuxPznwTHEDvkaw5RwQq2PqmZe75WNi28DQ2mB1jHt+A8vPiuKf4PvDspySCJdI3B2FPzmmPIu
+	TlJHB6tIZXNqSynnz8DtD7xnnmAIhPFfQwQH8vzuawQ1dIzW0UnORrbOhhX9pvjIz6iOaBvGUOQOn
+	E/qKbN6DtVDYJX2MuuckagtBOg3+kmHCmNu49CrCujc0igdmYXtzlUumZkwVR2qyPflqo3Sf/Pykv
+	OJ4m85UQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wF6rZ-00000008Ha9-2PCe;
-	Tue, 21 Apr 2026 08:53:45 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wF6ww-00000008IHd-2ZGu;
+	Tue, 21 Apr 2026 08:59:18 +0000
+Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wF6rX-00000008HZS-2xMK;
-	Tue, 21 Apr 2026 08:53:44 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id D253E600AE;
-	Tue, 21 Apr 2026 08:53:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0B1DFC2BCB5;
-	Tue, 21 Apr 2026 08:53:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776761622;
-	bh=aZT8+RjuUD+glDzBq4Jw2xxfNL/4kIryQSIGXkNI1xI=;
-	h=From:Date:Subject:To:Cc:From;
-	b=gtgE3DSZmxbKHqvljeBTE4VkSpsaCQcfqK77jf8BpxOBJu2+QcK+1UCw8KZwAH7X1
-	 cjWp8o/bVOL04vJtwowMv5M5XiXfPAt0n9G4JjcyapBl5LjFIaHsWpYldijXROhO5i
-	 oRVDl9vQcd8p2yTh8rKvmElBh64sYRjdQohWHX1zBGJ3CVbJSKZlT9IgCIVVhQUZ/x
-	 KtOXjgFFtg3ZcamjhkMvXuQES9je+AtuPqLrrtJpNLAv67310o9jhXVY9SzOkNgFPB
-	 Mn7+HK9lXOMaLueRs4KZrp1wPFpI3L34+WlRUsqYLfhuTqlNmo3GNUax7uXlehTo5i
-	 SyCAnt4583wwQ==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 21 Apr 2026 10:53:33 +0200
-Subject: [PATCH net] net: airoha: Do not wake all netdev TX queues in
- airoha_qdma_wake_netdev_txqs()
+	id 1wF6wt-00000008IHA-38V1
+	for linux-mediatek@lists.infradead.org;
+	Tue, 21 Apr 2026 08:59:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
+	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
+	Resent-Cc:Resent-Message-ID; bh=J1XYr9r2Q9xuv3Vej9XTSXH7J6VkMPzH3/V08F/9nAA=;
+	t=1776761955; x=1777971555; b=h6blffoT6EvO9lY7y8H0Wk5ySCeqTZQz6x+vafxI3mht4yX
+	HI1THLp3ph13h6H5lsP/ObPYqvcralzmq1lABUJhGigVq17JtQh0P88dQp/VsC3zP5TPaCP7qWFw2
+	dvz2fUfmFo4XYEAWZOWoWyKACj4xsZiIvaMbsC/SfvDMPEh1hlT3LsW3zgoUN0lUm85JSDIU5IomL
+	fAGOvVTg84jVNDYED2LUKnsVbneJ3gerHOkwaYQCFGwoL/r8pHxUylQdXA3hkpirKWYm/v1tqfwn4
+	9476CF/qAQ31tNw8YGE1kYTDqyMBVp7YkzY+br7zwalvmF8FxHsAPlwSabrB10SQ==;
+Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+	(Exim 4.98.2)
+	(envelope-from <johannes@sipsolutions.net>)
+	id 1wF6wj-00000004kyw-3B8o;
+	Tue, 21 Apr 2026 10:59:05 +0200
+Message-ID: <2d6e902083d693cdbb15fc62c6bf92db34fc734a.camel@sipsolutions.net>
+Subject: Re: [PATCH v1 1/6] sdio: Add syntactic sugar to store a pointer in
+ sdio_driver_id
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= "(The Capable Hub)"	
+ <u.kleine-koenig@baylibre.com>, Luiz Augusto von Dentz
+ <luiz.dentz@gmail.com>
+Cc: Ulf Hansson <ulfh@kernel.org>, "Christian A. Ehrhardt"	
+ <christian.ehrhardt@codasip.com>, linux-mmc@vger.kernel.org, Greg
+ Kroah-Hartman	 <gregkh@linuxfoundation.org>, Wolfram Sang
+ <wsa+renesas@sang-engineering.com>, 	linux-kernel@vger.kernel.org, Marcel
+ Holtmann <marcel@holtmann.org>, 	linux-bluetooth@vger.kernel.org, Matthias
+ Brugger <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,
+ linux-mediatek@lists.infradead.org, Ping-Ke Shih	 <pkshih@realtek.com>,
+ linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>,  Lorenzo
+ Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne
+ Chen <shayne.chen@mediatek.com>,  Sean Wang <sean.wang@mediatek.com>, Brian
+ Norris <briannorris@chromium.org>, Francesco Dolcini	
+ <francesco@dolcini.it>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Date: Tue, 21 Apr 2026 10:59:04 +0200
+In-Reply-To: <aecu1ixyHP2hQvgE@monoceros>
+References: <cover.1776429984.git.u.kleine-koenig@baylibre.com>
+	 <c830049dcfcd99f005e2ff6742aace9341c61f13.1776429984.git.u.kleine-koenig@baylibre.com>
+	 <aeaMkfk_1t98e7SU@monoceros>
+	 <CABBYNZJzbEmYzTk2m+Y8SoHVouTMA6Gje_55iJsQ6cYtDLftbQ@mail.gmail.com>
+	 <aecu1ixyHP2hQvgE@monoceros>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260421-airoha-wake_netdev_txqs-optmization-v1-1-e0be95115d53@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2NwQrCMBAFf6Xs2YUm1Ar+ikhZm6ddxKQmoRZL/
- 93F4xxmZqOCrCh0bjbKWLRoigbu0NA4SXyANRiTb33fdt6xaE6T8EeeGCJqwDLU9V04zfWlX6n
- mc390Jzeiw00CWWnOuOv6v1zIJLru+w8sfKiDegAAAA==
-X-Change-ID: 20260421-airoha-wake_netdev_txqs-optmization-65171ce4ebad
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Simon Horman <horms@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.3
+X-malware-bazaar: not-scanned
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260421_015915_804936_FB9CE65D 
+X-CRM114-Status: GOOD (  16.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,84 +91,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Do not wake every netdev TX queue across all ports sharing the QDMA
-running netif_tx_wake_all_queues routine in airoha_qdma_wake_netdev_txqs()
-but only the ones that are mapped the specific QDMA stopped hw TX queue.
-This patch can potentially avoid waking already stopped netdev TX queues
-that are mapped to a different QDMA hw TX queue.
-Introduce airoha_qdma_get_txq utility routine.
+On Tue, 2026-04-21 at 10:12 +0200, Uwe Kleine-K=C3=B6nig (The Capable Hub)
+wrote:
+> >=20
+> > We only received 1-3 of the 6:
+> >=20
+> > https://patchwork.kernel.org/project/bluetooth/list/?series=3D1082520
+> >=20
+> > Or is this on purpose, and we should consider the set complete?
+>=20
+> The remaining patches are for wifi. My expectation was that they go in
+> via wifi+netdev once the first patch is in their base. But of course I'm
+> open for maintainer coordination to let the series go in in less steps
+> than I expected. If that helps I can also create an immutable branch,
+> but I have no urge here, so if only the first patch goes in during the
+> next merge window, I won't have problems to keep track of the remaining
+> bits.
 
-Fixes: b94769eb2f30 ("net: airoha: Fix possible TX queue stall in airoha_qdma_tx_napi_poll()")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c | 19 +++++++++++++++----
- drivers/net/ethernet/airoha/airoha_eth.h |  5 +++++
- 2 files changed, 20 insertions(+), 4 deletions(-)
+It's probably better for everything all around, including the various
+automations that test patch series, if you just flip a coin, send these
+to either BT or WiFi, and then resend the others later :)
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 19f67c7dd8e1..2ca569501045 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -847,13 +847,24 @@ static void airoha_qdma_wake_netdev_txqs(struct airoha_queue *q)
- {
- 	struct airoha_qdma *qdma = q->qdma;
- 	struct airoha_eth *eth = qdma->eth;
--	int i;
-+	int i, qid = q - &qdma->q_tx[0];
- 
- 	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
- 		struct airoha_gdm_port *port = eth->ports[i];
-+		int j;
-+
-+		if (!port)
-+			continue;
- 
--		if (port && port->qdma == qdma)
--			netif_tx_wake_all_queues(port->dev);
-+		if (port->qdma != qdma)
-+			continue;
-+
-+		for (j = 0; j < port->dev->num_tx_queues; j++) {
-+			if (airoha_qdma_get_txq(qdma, j) != qid)
-+				continue;
-+
-+			netif_wake_subqueue(port->dev, j);
-+		}
- 	}
- 	q->txq_stopped = false;
- }
-@@ -1965,7 +1976,7 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
- 	u16 index;
- 	u8 fport;
- 
--	qid = skb_get_queue_mapping(skb) % ARRAY_SIZE(qdma->q_tx);
-+	qid = airoha_qdma_get_txq(qdma, skb_get_queue_mapping(skb));
- 	tag = airoha_get_dsa_tag(skb, dev);
- 
- 	msg0 = FIELD_PREP(QDMA_ETH_TXMSG_CHAN_MASK,
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index 87b328cfefb0..c3ea7aadbd82 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -631,6 +631,11 @@ u32 airoha_rmw(void __iomem *base, u32 offset, u32 mask, u32 val);
- #define airoha_qdma_clear(qdma, offset, val)			\
- 	airoha_rmw((qdma)->regs, (offset), (val), 0)
- 
-+static inline u16 airoha_qdma_get_txq(struct airoha_qdma *qdma, u16 qid)
-+{
-+	return qid % ARRAY_SIZE(qdma->q_tx);
-+}
-+
- static inline bool airoha_is_lan_gdm_port(struct airoha_gdm_port *port)
- {
- 	/* GDM1 port on EN7581 SoC is connected to the lan dsa switch.
+All assuming we get an ACK from whoever is responsible for patch 1 to
+merge it through some other tree :)
 
----
-base-commit: a663bac71a2f0b3ac6c373168ca57b2a6e6381aa
-change-id: 20260421-airoha-wake_netdev_txqs-optmization-65171ce4ebad
-
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
-
+johannes
 
