@@ -4,64 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA2A2F8FA9A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2026 16:12:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DE38F8FA9A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2026 17:15:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RqpQikDlnXI/o4z2qAGnMALiu2A30Tb7AXrEH7i7OW8=; b=xL2Z4GQBynaLiM8JgiVy3e+XdS
-	eI3wkQG7Prf0lUF0+2oU8KSJw1n5LTVcBanE4Eru23QmKSnzlb3IViLyzgvxJgCikcMSiBh1bQEDV
-	dvdumHvK2lnfcH0t1RC1yFvsKAliPKO6rUWPCWPWzQXhcAlWWTOkYV5W5tsjvJS6YhrxFBPsQti3Y
-	5Ju4dwrGhfMGBmo9WlRH0FmKTX5KIgscF3UOC2HU0hwD78PoU6SprLhr/pb0Bo+wkTW7PXR95EiVt
-	VIK/Aqv9aJ8QHwJlHNBL4HLiuc2SzwwBhnTD8zTJ6/bXcBTvFAIpVPy/RLawNyo8v6jSmh85W3r+y
-	p7yYYcwg==;
+	bh=0+yqfVtUit0z28T25n+OJ23yNpKTcEeVWYfw6CCe+Zw=; b=TZ0bKwiIBjR0dJxtajdveMI0Q6
+	C5tbvBd3FRywJlllPYHjDpjpuPJdjni8p5/uT8NcQ4KOsj2NBKRNZI+UB73SwB8SRCOOeBlK+y5Rb
+	zxD46WcM+0DSmKYQ2vzuFiJ83AXOSolDCzNw59uIJLH+h7jzQzTH3N+v5rR1D2MUKIcfCq5tHhgMW
+	vdsXmiCBMIzVFPY3aDJgLKCSM5ylbuBPeCbbsCzcw3XAzq8HwWi8dAr4tM1DkRuc46XBB6WEx9fhV
+	PVcCXxhlTlm4s+Ih3nhhNeMVCA97PbjDkhECvZi2nhnglczuUgH6kRXpdqh1h5DrV+SRuoCPyoTOz
+	6jqwuo8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFDiJ-00000008tfV-2l9e;
-	Tue, 21 Apr 2026 16:12:39 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1wFEgw-00000008xbU-3rly;
+	Tue, 21 Apr 2026 17:15:18 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFDiH-00000008teu-124x;
-	Tue, 21 Apr 2026 16:12:38 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.99)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1wFDi2-000000003X7-2yFJ;
-	Tue, 21 Apr 2026 16:12:22 +0000
-Date: Tue, 21 Apr 2026 17:12:17 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Mark Brown <broonie@kernel.org>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Arnd Bergmann <arnd@arndb.de>, Cyril Chao <Cyril.Chao@mediatek.com>,
-	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
-	Eugen Hristev <eugen.hristev@linaro.org>,
-	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 5/9] ASoC: mediatek: mt2701: add HDMI audio memif, FE
- and BE DAIs
-Message-ID: <aeeh4TW0IHLU5zB6@makrotopia.org>
-References: <cover.1776646435.git.daniel@makrotopia.org>
- <59f911bb1a855a00c0d9dd4760f10ff0030fedb6.1776646435.git.daniel@makrotopia.org>
- <95e1067c-3c8e-4dd4-997d-f3be9d2cba29@sirena.org.uk>
+	id 1wFEgu-00000008xap-3XIO;
+	Tue, 21 Apr 2026 17:15:18 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 1556E419C6;
+	Tue, 21 Apr 2026 17:15:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 929A2C2BCB9;
+	Tue, 21 Apr 2026 17:15:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1776791715;
+	bh=RqhR1ifSH6h4hvW6eeD7CwMBkMSMvldNwfsFYP4qNmA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=rUWlT5Q+3y+u3fqIKUlf0nWl/6k7hCOiuN29BFQbtY2bjazd9bj/k9ITK+ij7fnrx
+	 nhvL+hsakPFUmPNV4Kmf6QWFsUayVjeJwbHcBqSQjx/LqrUGkdQaJfsQPhgGMWuauH
+	 /IHtsxUrdSL+FnY7BVlwdAqH5BD5IKcaI6Mi2mEhfDfcFDAFNDOjlaqLWENyxciLkY
+	 iLR6x66KoRKltZflLw4FEuJD9mT3Z07bN/DVe6yrHspaiRCrlSoaGU30GFLDO7EfDJ
+	 of5x6ouRdD5DaLzW1ArbRrNF9J81ypTFqND92qC14mV/QZBFJsX9sroJqLK1CG4+L1
+	 iruZLVKTvKvLg==
+Date: Tue, 21 Apr 2026 19:15:13 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Paolo Abeni <pabeni@redhat.com>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Simon Horman <horms@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net v4 2/2] net: airoha: Add missing bits in
+ airoha_qdma_cleanup_tx_queue()
+Message-ID: <aeewoVjN7EHLZTW_@lore-desk>
+References: <20260417-airoha_qdma_cleanup_tx_queue-fix-net-v4-0-e04bcc2c9642@kernel.org>
+ <20260417-airoha_qdma_cleanup_tx_queue-fix-net-v4-2-e04bcc2c9642@kernel.org>
+ <210f5d0b-6232-4c0f-adff-3a97d54159b3@redhat.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="pghGe5VQSM39F6vG"
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="l/XyUOK+TbmoSNvA"
 Content-Disposition: inline
-In-Reply-To: <95e1067c-3c8e-4dd4-997d-f3be9d2cba29@sirena.org.uk>
+In-Reply-To: <210f5d0b-6232-4c0f-adff-3a97d54159b3@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260421_091237_283380_DED98C58 
-X-CRM114-Status: GOOD (  16.61  )
+X-CRM114-CacheID: sfid-20260421_101516_922981_6F67D340 
+X-CRM114-Status: GOOD (  17.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,47 +79,76 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---pghGe5VQSM39F6vG
+--l/XyUOK+TbmoSNvA
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Mon, Apr 20, 2026 at 07:08:01PM +0100, Mark Brown wrote:
-> On Mon, Apr 20, 2026 at 02:13:34AM +0100, Daniel Golle wrote:
->=20
-> > +static int mt2701_afe_hdmi_trigger(struct snd_pcm_substream *substream=
-, int cmd,
-> > +				   struct snd_soc_dai *dai)
-> > +{
-> > +	struct mtk_base_afe *afe =3D snd_soc_dai_get_drvdata(dai);
+> On 4/17/26 8:36 AM, Lorenzo Bianconi wrote:
+> > @@ -1055,8 +1058,33 @@ static void airoha_qdma_cleanup_tx_queue(struct =
+airoha_queue *q)
+> >  		e->dma_addr =3D 0;
+> >  		e->skb =3D NULL;
+> >  		list_add_tail(&e->list, &q->tx_list);
 > > +
-> > +	switch (cmd) {
-> > +	case SNDRV_PCM_TRIGGER_START:
-> > +	case SNDRV_PCM_TRIGGER_RESUME:
-> > +		/* Ungate HDMI and SPDIF power islands. */
-> > +		regmap_update_bits(afe->regmap, AUDIO_TOP_CON0,
-> > +				   AUDIO_TOP_CON0_PDN_HDMI_CK |
-> > +				   AUDIO_TOP_CON0_PDN_SPDIF_CK, 0);
+> > +		/* Reset DMA descriptor */
+> > +		WRITE_ONCE(desc->ctrl, 0);
+> > +		WRITE_ONCE(desc->addr, 0);
+> > +		WRITE_ONCE(desc->data, 0);
+> > +		WRITE_ONCE(desc->msg0, 0);
+> > +		WRITE_ONCE(desc->msg1, 0);
+> > +		WRITE_ONCE(desc->msg2, 0);
 >=20
-> It looks like we have clock API clocks for HDMI and S/PDIF on this SoC
-> (see clk-mt2701-aud.c) - are there going to be problem with peering
-> directly at the register?  We do manage some clocks via the clock API
-> but not those ones.
+> Sashiko has some complains on this patch that look legit to me.
+>=20
+> Also the pre-existing issues mentioned WRT patch 1/2 makes such patch
+> IMHO almost ineffective, I think you should address them in the same seri=
+es.
+>=20
+> Note that you should have commented on sashiko review on the ML, it
+> would have saved a significant amount of time on us.
 
-Yeah, you are right. That came from a super-old vendor driver and I
-didn't realise the exact same gate bits are alrady driven by the
-clock driver. I'll drop that and prepare v3...
+Since this series is marked as 'Changes Requested', it is not clear to me w=
+hat
+next steps are. I guess we have two possible approach here:
 
---pghGe5VQSM39F6vG
+1) - Post patch 1/2 ("net: airoha: Move ndesc initialization at
+     end of airoha_qdma_init_tx()") with the series available upstream
+     (not merged yet) in [0] where I am fixing similar issues for
+     airoha_qdma_init_rx_queue() and airoha_qdma_tx_irq_init().
+   - Post patch 2/2 ("net: airoha: Add missing bits in
+     airoha_qdma_cleanup_tx_queue()") with a fix for airoha_ndo_stop() wait=
+ing
+     for TX/RX DMA engine to complete before running
+     airoha_qdma_cleanup_tx_queue().
+
+2) - Since all the issues rised by Sashiko are not strictly related to this
+     series and they are already fixed in pending patches, just apply the f=
+ixes
+     separately without the needs to repost this series.
+
+Which approach do you prefer?
+
+Regards,
+Lorenzo
+
+[0] https://patchwork.kernel.org/project/netdevbpf/cover/20260420-airoha_qd=
+ma_init_rx_queue-fix-v2-0-d99347e5c18d@kernel.org/
+
+>=20
+> /P
+>=20
+
+--l/XyUOK+TbmoSNvA
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABEIAB0WIQQ8WXOkSQLJP/KOu5qX7zeyq+FyywUCaeeh3gAKCRCX7zeyq+Fy
-y111AP0QTyLAlHpoP5/XuWLbe7t/+Ru+GlYU61Ygpcl8Nz3O7AD/UuXFl5391unL
-s39J8r1DHhIewBnqoLCXVLsvqeLMKUw=
-=j9TW
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaeewoQAKCRA6cBh0uS2t
+rEaHAQCcKtKEMHUCG+eY2o4NV0BnCt9GTc/hVJ/zktJkukChSAD+OUbxW5LM+Bve
+eEnUENXdlph4WMO5XEHV38IciwKqQw0=
+=Rgkr
 -----END PGP SIGNATURE-----
 
---pghGe5VQSM39F6vG--
+--l/XyUOK+TbmoSNvA--
 
