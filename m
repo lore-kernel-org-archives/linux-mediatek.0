@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B713F327AD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2026 06:35:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 838C5F327AD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2026 06:43:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=4kXr04xPQupD3IbEqKXAANHc14Vb5ok50ScuvHUg79U=; b=Ir95SLVCNRHo7mZtBE4AYD9t8J
-	F11nd963QXq6ikdvSDd9vvh8w5uVbNd3i4D80n9gFpqjsLrdI56XltSNWv9vVYL3a84zKvOsV+DOW
-	qkBt7xa6oVu/SuKzTvAWUVODnVK4fSP0zGFTGm9lQBPC4JRfDTWTmK8gzzPlk7K10unE9CMVSX5HV
-	XrEAT4N6Hu15gAExfC6VxxUp2xjy2xmGZOD3Ln4UuqHlOfTPoP3fL3dTKwAEu6blY4cL3eDwlaIzi
-	is4RrveMWlpFG/HhEmzXLDcBDqZeyrOWS/Y3cm7ktRBLo9DEkckidQ8L10aDM9Dd6GBgRLVTZz3Xx
-	hm7wgQ/g==;
+	bh=X0m1NUvqw2gT7j+B3KcKS2rxFkHNWKeKj7YCN024hGs=; b=glz+ZJLW9FyZN//3a7RkufJ8Ab
+	/P4C3Ffd9T0eZQ0A1ivONfPFX2MMKrnW2iSrJrvtlBaGiMCZkFYr9h0WCj5zi++HUTmP2AqVT0QaE
+	hSzWxXsQBLL8XUIxx7AQnbr9D6Dxy6yezucWw6fbwX/eVPMVu5q9BQnDfjn+f5gZcFgXiWoIy3V63
+	vsP+u+VrmuhvCW7bgEu2Zk58xq46+Hud0NVjzYWmkO+uP6OsvEcs6J5GcC8RQ7S2mM4mR8QQax8LE
+	W3HgtZJ1iK5wJTYyKclbtzqgiQkDVCg5gNp9nDCUXPJa6JFxijRcYXNrPnEjFzTzONX0cQjYrRgEs
+	MhMfr/Yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wF4hv-000000086gN-0ret;
-	Tue, 21 Apr 2026 06:35:39 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wF4pU-000000087Uk-2hw7;
+	Tue, 21 Apr 2026 06:43:28 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wF4ht-000000086fs-0BQB;
-	Tue, 21 Apr 2026 06:35:37 +0000
+	id 1wF4pR-000000087Tv-2UFt;
+	Tue, 21 Apr 2026 06:43:25 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 0DC1C60018;
-	Tue, 21 Apr 2026 06:35:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 405FBC2BCB0;
-	Tue, 21 Apr 2026 06:35:35 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id BAE5760018;
+	Tue, 21 Apr 2026 06:43:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F32B3C2BCB0;
+	Tue, 21 Apr 2026 06:43:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776753335;
-	bh=HFRROKnDutWrDUQ/r5EJQStec0lggxTMibf91XTkYuk=;
+	s=k20201202; t=1776753804;
+	bh=ZKZG+O0J9kV7ldRJcMabcJRwOJQwoGJwOtsehsIKW+Q=;
 	h=From:Date:Subject:To:Cc:From;
-	b=MP50jThUvzNGx0PUcXjmv7mIOARG3zBySFo5paK3DNunG/Sen7sttndf8JSAmjDt0
-	 5nwj3V/xu8DVn4INc0A0l4VtBfG74GR2jUy/XkbAV2Cqy2HpfgtKbcvV429w9X/r4P
-	 D7Opi/NsoL06ACklTc9aBOfWoSEz4N4x3NOpaXAGvBc1nix7DvgvnFbGovCu53Uui8
-	 NBcwmt41X2aht08casV2T+9vVvP92oOIaXCMFlQSYXDh1P6FXVONcVNdFX5cl+sQoo
-	 1qFxY55vIv7V2TvqOAmeq6vv/Kwdu3G+96bmlniBRdMGFZm6kI3APDsp/81t8L1Vjv
-	 HgOpFkL3mpd3g==
+	b=S6CZ42TNemFsGJ28k4IRpJ+UpPcHGjRTYozI1fnJHUuYU7Hsul5zU4Fdy+6GQwfpS
+	 txFENVglu/DsDsyrjf7APABe27rQrbHxBMhuFDZ24YzrpnkfQhTIdFosNgmEkbcT3O
+	 8eJSsHEBUHI6J4rsCe0qqijarKgU+AS/0zH2y9F2Z+4IYbY5x3NNuynzz2TZ0J4BqA
+	 Ce5hbmsR0+USuYkQZlS4H4DAh4arZYrQbwV03bl0rQfKEgI4VuEgBOObDw4oha90QJ
+	 bQgvPkqnsUPdvbZylAavVsSIU19H//hro1TJ429V4Dfrr40SxAFP5LdX+eGQaWwOoR
+	 OVsVJxPEEPDTQ==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 21 Apr 2026 08:35:11 +0200
-Subject: [PATCH net] net: airoha: fix BQL imbalance in TX path
+Date: Tue, 21 Apr 2026 08:43:07 +0200
+Subject: [PATCH net] net: airoha: stop net_device TX queue before updating
+ CPU index
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260421-airoha-fix-bql-v1-1-f135afe4275b@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MQQqAIBAAvxJ7bsEkkvpKdFBbcyGsNCIQ/550H
- IaZDIkiU4KpyRDp4cRHqNC1DVivw0bIa2WQQg6ilx1qjofX6PhFc+2onHPKkjF21FCjM1JV/3C
- GQDcspXzouyTAZQAAAA==
-X-Change-ID: 20260421-airoha-fix-bql-7fff7cebbc9a
+Message-Id: <20260421-airoha-xmit-stop-condition-v1-1-e670d6a48467@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MQQqAIBBA0avErBvQSYK6SrQQnWoWaahEEN49a
+ fkW/7+QOQlnmLsXEt+SJYYG3XfgDht2RvHNQIpGZUijlRQPi88pBXOJF7oYvJSW4WCMd4omsnq
+ CNrgSb/L88wUCF1hr/QDdzUd0cQAAAA==
+X-Change-ID: 20260421-airoha-xmit-stop-condition-344dc0292a19
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
  "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Hariprasad Kelam <hkelam@marvell.com>
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
 Cc: Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
  Lorenzo Bianconi <lorenzo@kernel.org>
@@ -74,64 +74,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix a possible BQL imbalance in airoha_dev_xmit(), where inflight
-packets are accounted only for the AIROHA_NUM_TX_RING netdev TX
-queues. The queue index is computed as:
-
-    qid = skb_get_queue_mapping(skb) % ARRAY_SIZE(qdma->q_tx)
-    txq = netdev_get_tx_queue(dev, qid);
-
-However, airoha_qdma_tx_napi_poll() accounts completions across all
-netdev TX queues (num_tx_queues), leading to inconsistent BQL
-accounting.
-
-Also reset all netdev TX queues in the ndo_stop callback.
+Currently, airoha_eth driver updates the CPU index register prior of
+verifying whether the number of free descriptors has fallen below the
+threshold.
+Move net_device TX queue length check before updating the TX CPU index
+in order to update TX CPU index even if there are more packets to be
+transmitted but the net_device TX queue is going to be stopped
+accounting the inflight packets.
 
 Fixes: 1d304174106c ("net: airoha: Implement BQL support")
-Fixes: c9f947769b77 ("net: airoha: Reset BQL stopping the netdevice")
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/ethernet/airoha/airoha_eth.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/airoha/airoha_eth.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 19f67c7dd8e1..6c7390f0de5d 100644
+index 19f67c7dd8e1..5d327237e274 100644
 --- a/drivers/net/ethernet/airoha/airoha_eth.c
 +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -929,10 +929,9 @@ static int airoha_qdma_tx_napi_poll(struct napi_struct *napi, int budget)
- 		q->queued--;
+@@ -2058,17 +2058,16 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
  
- 		if (skb) {
--			u16 queue = skb_get_queue_mapping(skb);
- 			struct netdev_queue *txq;
+ 	skb_tx_timestamp(skb);
+ 	netdev_tx_sent_queue(txq, skb->len);
++	if (q->ndesc - q->queued < q->free_thr) {
++		netif_tx_stop_queue(txq);
++		q->txq_stopped = true;
++	}
  
--			txq = netdev_get_tx_queue(skb->dev, queue);
-+			txq = skb_get_tx_queue(skb->dev, skb);
- 			netdev_tx_completed_queue(txq, 1, skb->len);
- 			dev_kfree_skb_any(skb);
- 		}
-@@ -1711,7 +1710,7 @@ static int airoha_dev_stop(struct net_device *dev)
- 	if (err)
- 		return err;
+ 	if (netif_xmit_stopped(txq) || !netdev_xmit_more())
+ 		airoha_qdma_rmw(qdma, REG_TX_CPU_IDX(qid),
+ 				TX_RING_CPU_IDX_MASK,
+ 				FIELD_PREP(TX_RING_CPU_IDX_MASK, index));
  
--	for (i = 0; i < ARRAY_SIZE(qdma->q_tx); i++)
-+	for (i = 0; i < dev->num_tx_queues; i++)
- 		netdev_tx_reset_subqueue(dev, i);
+-	if (q->ndesc - q->queued < q->free_thr) {
+-		netif_tx_stop_queue(txq);
+-		q->txq_stopped = true;
+-	}
+-
+ 	spin_unlock_bh(&q->lock);
  
- 	airoha_set_gdm_port_fwd_cfg(qdma->eth, REG_GDM_FWD_CFG(port->id),
-@@ -2002,7 +2001,7 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
- 
- 	spin_lock_bh(&q->lock);
- 
--	txq = netdev_get_tx_queue(dev, qid);
-+	txq = skb_get_tx_queue(dev, skb);
- 	nr_frags = 1 + skb_shinfo(skb)->nr_frags;
- 
- 	if (q->queued + nr_frags >= q->ndesc) {
+ 	return NETDEV_TX_OK;
 
 ---
 base-commit: a663bac71a2f0b3ac6c373168ca57b2a6e6381aa
-change-id: 20260421-airoha-fix-bql-7fff7cebbc9a
+change-id: 20260421-airoha-xmit-stop-condition-344dc0292a19
 
 Best regards,
 -- 
