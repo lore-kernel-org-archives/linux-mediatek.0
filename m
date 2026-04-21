@@ -4,93 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B96ABF8FA90
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2026 15:46:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1F34F8FA98
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2026 15:54:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Pm67qKOM3Exkx05WtLYkzfFidvA4Ig/U45KGlldfDxA=; b=S8Lr1weTwX0Q1Ep+/opZVStiE9
-	1WzIgLPFBh+IrBK2ya5bue2U8aMSixyL8365p/eWGAMcjIGrbRpYRPLY6Xe9yaMaBVxKoisJd8LmW
-	2c0BEvoFtxz0cXyPnT7UofsaCD0nStA1Hy+HeXrftJZtWrdKHAgdKVybghgC4CKMHR7gJ9ichb2sx
-	JLz2ka6dSKU9uFwbjNUivYiO9P7vrJ0MvF7Gfqg6aVD1ajRnyQb952qjWf6Hv/PJa6EuABGNS2VKe
-	dnyQkWx3Ad06NdT29p6R66/82spmUYq/3mczOfalhalGMhMxdjcj2MrqerB5daS2YsFyOdNkl9HLg
-	G4gD+PYA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sNNpnXmhChBY9D0sH+a4YdWwThfUoA6af4qc1j3CSvE=; b=glq1gHczPunxgGIqwyI+t/a0sq
+	Ae2+XIlrTVHrIfZoUB5UEwir+4yqBP+1vz0DuKvW6kIZDLqOKwRJeLp0vDjOpea+lhQRDzPzM4qWt
+	ixpi02qwD6u/9Iq2TuukyRx8LIvQQ1bD/LwJpNMkKATK/UArq4Fc5z/DnPCf4SwCzvO2ecxo7PcGA
+	kJzjVPb1BjTQ7b0eK86Cya9w7t8piRW4LWMsqjHIz+JA6YNScvH1gSk150QH2Q2FAtA1kRuatz61p
+	i6Vofls7p8sU++7V2jI6EQb9Um2oln0sfHEqgr9G/tFn0n6A69XCCeehYrCy6nRiuF4jS165wPGpd
+	ZcK3mKEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFDJD-00000008qid-31da;
-	Tue, 21 Apr 2026 15:46:43 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1wFDQf-00000008ree-05Iz;
+	Tue, 21 Apr 2026 15:54:26 +0000
+Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFDJA-00000008qhV-1W52
+	id 1wFDQb-00000008raS-47s2
 	for linux-mediatek@lists.infradead.org;
-	Tue, 21 Apr 2026 15:46:42 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-488af96f6b2so56570015e9.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 21 Apr 2026 08:46:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1776786398; x=1777391198; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Pm67qKOM3Exkx05WtLYkzfFidvA4Ig/U45KGlldfDxA=;
-        b=EnHBhdFUKSF9zzwG5mrwwE4HKThYSYfBl8UD+qZXWPebzJ2F7PM+OhiiWSuNE+YoUK
-         05cvvSJqquvCZiJTYgQgPJwJudUBwfJskBGYhzMmBkGyjYL0zO/p0zorofr9pEWLrLH0
-         Xf+oMY8NlXkDpj9JV5nh7tlrOt0LDnZHIVpep7YoZ3XdgulMfPaTZ8ZmC7Qw1oQuv4LM
-         qiWTGFaZRLf58oWqVe9KHpW6aFsEgCCTCSIW90QwrmdfVlVNlEjombFqH3h/KsqThyoI
-         ePKzdglnrKISsbyEvLTq41k6Xg/CHNvrOOYAKgCBeY3iIESgUl+T4jOnGmvSmwljhj+6
-         IUNw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1776786398; x=1777391198;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Pm67qKOM3Exkx05WtLYkzfFidvA4Ig/U45KGlldfDxA=;
-        b=Ul8XKuNbP+5s/Un7IMIpuSQY4+VwzNGcVRazgZjh9yrusjo7oOcvbkb/S/3Hs72ws1
-         jbojtofNANdWAJL8SHSAb75SJnaxFfKFB4FGwpAxF2ilKK4bhMki0nLK4LAotHKTh8IB
-         hTDQr3BpK/y86HRf4bsU6S9tYlPtU8NAjhECPGq85bATuMO93LZpkIeQSQCafmb2OSPP
-         h+TZC0n1FLP4+Hfwk5DAAHmMiYZTOzN7HSvkk75RXJjZHuHlrvwKj/krsfvBkwhYQuNH
-         LX6NqMy4JPJnqQo5big5LWGPXJFVHqp7JA6hsBDmFkS6K51XOAz50XGaPBqBmlf476HJ
-         F0tw==
-X-Forwarded-Encrypted: i=1; AFNElJ97yRIKZyJYNtLb3sWUwhy4S1xXHuerGtyRED0YPJASns6ThwEzqH5LTiBQZRlDv4IuzGmXJPZMTY97hTC1RQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx9Jh7X67wYmGvP4x42AAPskb74g0G8BFe/52qgOM69M9vYCyn0
-	tWGg8WRUJv/0iQumCqwDZAVG8IX3SDVsGtpAM2OGHZZo/Y0n/kvvRx4L
-X-Gm-Gg: AeBDietX82RMVscv+gC5TvQSjkbeRR/6wIe+cBVNbHzAyMXYiqLJ8BAy/yd2qYuW90I
-	YK67ZYdHJhVEF7fvdpJ8JznsdV8O71DLN9XtIkkWLsPPd5JRzpVdGQ3RpbUV/VWiX9C7TSc9tVI
-	fVeBNjGKUlPJ8cZF4ZXiOmtSeFqamsxW9AJzcd6M1rNfCAQv5PV+S7LIi/07GPpmauaJfof9hzQ
-	6D2w5CzYwYMTcfki6Ap72OLH81jq11GXthZUvdkQ+sISocwyfrCex8X2s5JPi8sQYRHc5Ppkt71
-	WOIRbxIR/BhkBu2dHb29YKcvmXfmd5xFuQCX5KHQeqGyiv+fBFGGEYKsk45nb+BWd8ILdYVqVgy
-	gMJ7m+bxBCuHGWADmZ1t4yMnVf5vLcfyF9hDG5mIoHgZmDieBGkMeI2LuaL/5RsLNwxfW2oEvM+
-	4AAZAe/KOpVWu/YxDfGeBhTOZVJHzJZQ==
-X-Received: by 2002:a05:600c:4ec6:b0:489:1f98:71e3 with SMTP id 5b1f17b1804b1-4891f987487mr114165495e9.28.1776786397946;
-        Tue, 21 Apr 2026 08:46:37 -0700 (PDT)
-Received: from luca-vm.lan ([154.61.61.58])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4891c318636sm174759655e9.7.2026.04.21.08.46.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Apr 2026 08:46:37 -0700 (PDT)
-From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-To: linux-sound@vger.kernel.org
-Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2] ASoC: dt-bindings: mediatek: Convert mtk-btcvsd-snd to DT Schema
-Date: Tue, 21 Apr 2026 16:46:07 +0100
-Message-ID: <20260421154619.227039-1-l.scorcia@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	Tue, 21 Apr 2026 15:54:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
+	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
+	Resent-Cc:Resent-Message-ID; bh=sNNpnXmhChBY9D0sH+a4YdWwThfUoA6af4qc1j3CSvE=;
+	t=1776786861; x=1777996461; b=nLO9zPwt97+otPIii85A8rLVPtZ6/1Q/Y1CBYCdU/RyWoCP
+	MdzjYnxlcBcsPvlPfByiEleS68ZkZ8REJETFTbXW3Q2EEW67q0fPlo8oNizudNRb2iPceYSCp9gb9
+	xDSLL6RFu4Ksuf1fdJRSvt7IFg2ZhZcw9WQ2j6J4E1CRmyg8a0+qf2zvpkKeuzzZ9ZfkxUXHH9rm4
+	2JKoUxSuko3h3m46QuqW+pr3/749gYpy0Q+IIItOU0AHonbVfyi0DdedBiDspP6P2EX5bfJc1gVjP
+	cRa91IB1RV6Hp2JysURgHNXBOvbvnlWLx84A1Fv6YEOLlGxfxTbYCqC6VFz2sBKg==;
+Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+	(Exim 4.98.2)
+	(envelope-from <johannes@sipsolutions.net>)
+	id 1wFDQO-00000005Jsx-0j48;
+	Tue, 21 Apr 2026 17:54:08 +0200
+Message-ID: <6facdf8e06bc107d68086ac8db3330def09aaa6e.camel@sipsolutions.net>
+Subject: Re: [PATCH v1 1/6] sdio: Add syntactic sugar to store a pointer in
+ sdio_driver_id
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= "(The Capable Hub)"
+	 <u.kleine-koenig@baylibre.com>, Ulf Hansson <ulfh@kernel.org>
+Cc: Luiz Augusto von Dentz <luiz.dentz@gmail.com>, "Christian A. Ehrhardt"	
+ <christian.ehrhardt@codasip.com>, linux-mmc@vger.kernel.org, Greg
+ Kroah-Hartman	 <gregkh@linuxfoundation.org>, Wolfram Sang
+ <wsa+renesas@sang-engineering.com>, 	linux-kernel@vger.kernel.org, Marcel
+ Holtmann <marcel@holtmann.org>, 	linux-bluetooth@vger.kernel.org, Matthias
+ Brugger <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,
+ linux-mediatek@lists.infradead.org, Ping-Ke Shih	 <pkshih@realtek.com>,
+ linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>,  Lorenzo
+ Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne
+ Chen <shayne.chen@mediatek.com>,  Sean Wang <sean.wang@mediatek.com>, Brian
+ Norris <briannorris@chromium.org>, Francesco Dolcini	
+ <francesco@dolcini.it>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Date: Tue, 21 Apr 2026 17:54:06 +0200
+In-Reply-To: <aeeFun4zdz360GCb@monoceros> (sfid-20260421_162828_161184_36113A7A)
+References: <cover.1776429984.git.u.kleine-koenig@baylibre.com>
+	 <c830049dcfcd99f005e2ff6742aace9341c61f13.1776429984.git.u.kleine-koenig@baylibre.com>
+	 <aeaMkfk_1t98e7SU@monoceros>
+	 <CABBYNZJzbEmYzTk2m+Y8SoHVouTMA6Gje_55iJsQ6cYtDLftbQ@mail.gmail.com>
+	 <aecu1ixyHP2hQvgE@monoceros>
+	 <2d6e902083d693cdbb15fc62c6bf92db34fc734a.camel@sipsolutions.net>
+	 <aeeFun4zdz360GCb@monoceros> (sfid-20260421_162828_161184_36113A7A)
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-malware-bazaar: not-scanned
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260421_084640_453135_A017910A 
-X-CRM114-Status: GOOD (  14.59  )
+X-CRM114-CacheID: sfid-20260421_085422_025329_C71A70CE 
+X-CRM114-Status: GOOD (  24.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,117 +92,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert the mtk-btcvsd-snd.txt DT binding to DT Schema format.
+Hi Uwe,
 
-Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
----
-Changes in v2:
-- Fixed issues from make dt_binding_check
-- Set myself as maintainer for the binding
+> > It's probably better for everything all around, including the various
+> > automations that test patch series, if you just flip a coin, send these
+> > to either BT or WiFi, and then resend the others later :)
+>=20
+> The first patch of this series adapting sdio_device_id is technically
+> mmc material.=C2=A0
 
- .../sound/mediatek,mtk-btcvsd-snd.yaml        | 60 +++++++++++++++++++
- .../bindings/sound/mtk-btcvsd-snd.txt         | 24 --------
- 2 files changed, 60 insertions(+), 24 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mtk-btcvsd-snd.yaml
- delete mode 100644 Documentation/devicetree/bindings/sound/mtk-btcvsd-snd.txt
+Right.
 
-diff --git a/Documentation/devicetree/bindings/sound/mediatek,mtk-btcvsd-snd.yaml b/Documentation/devicetree/bindings/sound/mediatek,mtk-btcvsd-snd.yaml
-new file mode 100644
-index 000000000000..1ec50c7611df
---- /dev/null
-+++ b/Documentation/devicetree/bindings/sound/mediatek,mtk-btcvsd-snd.yaml
-@@ -0,0 +1,60 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/sound/mediatek,mtk-btcvsd-snd.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek ALSA BT SCO CVSD/MSBC Driver
-+
-+maintainers:
-+  - Luca Leonardo Scorcia <l.scorcia@gmail.com>
-+
-+properties:
-+  compatible:
-+    const: mediatek,mtk-btcvsd-snd
-+
-+  reg:
-+    items:
-+      - description: Register location and size of PKV
-+      - description: Register location and size of SRAM_BANK2
-+
-+  interrupts:
-+    items:
-+      - description: BT-SCO interrupt
-+
-+  mediatek,infracfg:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description: The phandle of the infracfg controller
-+
-+  mediatek,offset:
-+    $ref: /schemas/types.yaml#/definitions/uint32-array
-+    description: Array of register offsets and masks
-+    items:
-+      - description: infra_misc_offset
-+      - description: infra_conn_bt_cvsd_mask
-+      - description: cvsd_mcu_read_offset
-+      - description: cvsd_mcu_write_offset
-+      - description: cvsd_packet_indicator_offset
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - mediatek,infracfg
-+  - mediatek,offset
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+
-+    mtk-btcvsd-snd@18000000 {
-+      compatible = "mediatek,mtk-btcvsd-snd";
-+      reg = <0x18000000 0x1000>,
-+            <0x18080000 0x8000>;
-+      interrupts = <GIC_SPI 286 IRQ_TYPE_LEVEL_LOW>;
-+      mediatek,infracfg = <&infrasys>;
-+      mediatek,offset = <0xf00 0x800 0xfd0 0xfd4 0xfd8>;
-+    };
-diff --git a/Documentation/devicetree/bindings/sound/mtk-btcvsd-snd.txt b/Documentation/devicetree/bindings/sound/mtk-btcvsd-snd.txt
-deleted file mode 100644
-index 679e44839b48..000000000000
---- a/Documentation/devicetree/bindings/sound/mtk-btcvsd-snd.txt
-+++ /dev/null
-@@ -1,24 +0,0 @@
--Mediatek ALSA BT SCO CVSD/MSBC Driver
--
--Required properties:
--- compatible = "mediatek,mtk-btcvsd-snd";
--- reg: register location and size of PKV and SRAM_BANK2
--- interrupts: should contain BTSCO interrupt
--- mediatek,infracfg: the phandles of INFRASYS
--- mediatek,offset: Array contains of register offset and mask
--    infra_misc_offset,
--    infra_conn_bt_cvsd_mask,
--    cvsd_mcu_read_offset,
--    cvsd_mcu_write_offset,
--    cvsd_packet_indicator_offset
--
--Example:
--
--	mtk-btcvsd-snd@18000000 {
--		compatible = "mediatek,mtk-btcvsd-snd";
--		reg=<0 0x18000000 0 0x1000>,
--		    <0 0x18080000 0 0x8000>;
--		interrupts = <GIC_SPI 286 IRQ_TYPE_LEVEL_LOW>;
--		mediatek,infracfg = <&infrasys>;
--		mediatek,offset = <0xf00 0x800 0xfd0 0xfd4 0xfd8>;
--	};
--- 
-2.43.0
+> However to demonstrate the upside of this patch you also
+> have to look at at least one of bluetooth and wifi. So even if I drop
+> one of those there are still two subsystems involved.
 
+Sure, that's fair.
+
+> And then in my
+> subjective view it doesn't matter much if I involve two or three
+> subsystems. Regarding test automations I would assume that if the
+> bluetooth bot sees patches #1-#4 of this series it can do something
+> already (involving either testing the series only partially or finding
+> all 6 patches on lore).
+
+Yeah, that's a fair assumption, except at least for wifi, the
+automations (like netdev, the nipa software) only ever runs on series
+that it receives completely, since everyone gets CC'ed on random things
+too much and having the full series is a proxy for "should be applied
+here."
+
+> Having said that, I'm happy if the first patch is merged and patches #2
+> to #6 are discarded by the bluetooth and wifi people. I'll come back to
+> them once the first patch is in a release.
+>=20
+> > All assuming we get an ACK from whoever is responsible for patch 1 to
+> > merge it through some other tree :)
+>=20
+> To make this more explicit: That would be Ulf as MMC maintainer.
+
+I'm also happy to merge the MMC (with Ulf's ACK) and WiFi parts, though
+that's even scattered with my sub-maintainers, but that just needs some
+coordination... I'd just like to then have a complete series on the list
+so I don't have to all the (build) testing manually.
+
+If either BT or WiFi merge the relevant patches then we can sync via
+net-next pretty quickly and get all of it done soon, if the first patch
+is via MMC then it'll probably take a whole other release cycle ...
+
+johannes
 
