@@ -4,64 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84415F94CD8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Apr 2026 07:23:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3604AF9B5E4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Apr 2026 08:39:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vQ4lYIsklJpho+gwVJ2tZGCbgPrwwsFyBkAacjdzrys=; b=NlIAlLMlPHbKJI+nshCnzj0M4D
-	6O/maBpf1A13mIFVWSKOIOByOdNz+7UrtO+j4C/Tqd6Vd9wIV9XtSOlB6pvRU11+HMxY1iTrwWUM0
-	D+mL0pwmeO7EsChnZdiMm9MLBgSkUkCCA9T6BpR7ow6XABgc4HCsz0yhMoYx73wCuKYrHetQ3o/Ua
-	iSlyt5qIsOnCEqjX7P/PDqR3mUkRQCdek0e24HGZXG8T8CjIuyr8SyFS8w8U4TsMAmJS5boCQAnLx
-	oXzpp7rNdq0R0cwr4o7W9jkunlGOxVH410Mwp4Rm62j8Ig1yg8bzsuKQ4r6zumIZiQIXTFdTP5Bc9
-	YBKWh0Gw==;
+	bh=aD5ZKvzwCJWOAYfguqrWQTS2cpGeKYz2zFLAh1cyFuE=; b=uwbGwyXgM2gmSdMCZiW8rFL7rC
+	a9xgVNqeCV2fWGv75mmm1oCpBfIFtLL8Z/+AubUArvyF2reME24Ol1b7v3Uhf6duoDrJRV5BmFyjk
+	/bS9JQH9WXvlTHA09gqBoHXSk1KR0J6ONpXsacyI2bCMrtjf1bl0tSS7Qg0CibUnDeFCaRlbzmElc
+	fOj7/FZgyM1h7izI507jD0+3MbZcLy5yfgQlBeisJmzqF8FfGAnD5FnMXHINm8ATxT/+zRfantnhJ
+	W891PjCKx/50L1XHTbLa0xWKcxYIigXbvr7hPcJvMRO90/YvqFeu21CfObCa4f3uw6tVDNhiM4yNJ
+	3USZtXxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFRw2-00000009in6-2Ng2;
-	Wed, 22 Apr 2026 07:23:46 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wFT76-00000009n2Q-3CZg;
+	Wed, 22 Apr 2026 08:39:16 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFRw1-00000009imh-2elN;
-	Wed, 22 Apr 2026 07:23:45 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id EE3CF60018;
-	Wed, 22 Apr 2026 07:23:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1DFACC19425;
-	Wed, 22 Apr 2026 07:23:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776842624;
-	bh=U1ij765Jsgyab3m+Pw8LxQtm6XxGjDqoXz6QoaxBu5Q=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=B2sMocZos1sITvRnYLPtTnqR8duPdHl9cgcOtp6ykjMRmHSZyCrR+zbs++sZEQ1Ex
-	 +yR2IS8MfjCyZi/Fsl30hYJJpTqC5mNl0mtxXGhFJmKiq6U0nRXWmWF892rgytsxUB
-	 +rfq+yAhL7TyzK7TqlxtDBh1M1vZwgrMxHX2jOkO+3wj9QoQSphxh4gBE/9QrzAa32
-	 SOlfPLNZUB+0Ik71N+hUGflS/Ma0wIgqXaveVeZZ7CFX2FlvN+woX30hxBOPWbwwja
-	 RcBQttTqKdVeuP/XZvZJ0i3Au5w9p8mDkjRHz4nzDQS+d1xmaklSa22JMija0wIqnV
-	 shZWoQyTmDjNw==
-Date: Wed, 22 Apr 2026 09:23:42 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Arnd Bergmann <arnd@arndb.de>, Cyril Chao <Cyril.Chao@mediatek.com>, 
-	=?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, 
-	Eugen Hristev <eugen.hristev@linaro.org>, linux-sound@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 2/9] ASoC: dt-bindings: mediatek,mt2701-hdmi-audio:
- add MT2701 HDMI audio
-Message-ID: <20260422-mighty-rainbow-porpoise-c98f96@quoll>
-References: <cover.1776646435.git.daniel@makrotopia.org>
- <072c4db4a01ac125e9ee5e34f992cd169c78e117.1776646435.git.daniel@makrotopia.org>
+	id 1wFT74-00000009n25-0D3w
+	for linux-mediatek@lists.infradead.org;
+	Wed, 22 Apr 2026 08:39:16 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-48909558b3aso42974145e9.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 22 Apr 2026 01:39:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20251104.gappssmtp.com; s=20251104; t=1776847152; x=1777451952; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=aD5ZKvzwCJWOAYfguqrWQTS2cpGeKYz2zFLAh1cyFuE=;
+        b=OeNfdVrSgSCBEpxfgR0a9CjCuISBq9FxfLNcf4oqQ/z75Dw9QrBKvsk4ZR056/e0C8
+         iaHGDoucHsHA4KvDGAp5T8yVt6EDzokPfowj24KtaDULngww3nc5RgDJIgYXhIat74bp
+         N8CvBqkiB2Fu0L1aTvdO+wWQdcICKPW03OPtm9VtsRgDAStpLTclTwkOm8cQTzrHaprJ
+         URIzJiiPFjQF5Gdrvbu0CqYWEAnTjWvNmbPcYPj8QE5vBLp92VYeQ1uHiqKPo69fHMAx
+         6IPhX1n82FLxsEget82yPBSiFNWTcy5MntefyjxVXNTsrs8eEUDTgPvGIL2eN+GbKjFJ
+         Qg5w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1776847152; x=1777451952;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=aD5ZKvzwCJWOAYfguqrWQTS2cpGeKYz2zFLAh1cyFuE=;
+        b=pQSLgfZ/bju/CW7xC/HhCWwQ4f4Kvd1/uRPzV5xT0sdzEpU7/bZVVWeJrrfDHFIvPh
+         nvydt5EutkdhRoWVco/0y8oz0XIPjTvhrBWeFTHAKIf58iIW74FEZTWNUiLAOukqZGwt
+         BozkeGmMNM62JSVfMNMr8w0shna7kpV0Qg/u0rAqZOB06C9oYr3Ug5bk7gH6rrgfBDK3
+         csWqHfEcvlRbWLm5V2W6Mbn9bD6dHQy7hamqeRoAJleqeioBIwFK4C4aXBEjNjE4ylbv
+         +7iOhCVrqBwPAFsKQBKISpGD/jVekSzILw31YvyeTZjpkySxrR7gHCFtDwzWyu3sRMfT
+         6gaA==
+X-Forwarded-Encrypted: i=1; AFNElJ9/c+khLYrFU6oC7NidXhTUeC1HvMGrU8mSzukmO0P7hwvPHME+8uSVyBndFNRbhEVPTVbSAGKxF8Doyo3v7w==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy34QBxloW3OBE7UBF5pdYyHvN3zr9NnLYO1YnbIks3gFlFVGSo
+	BsMA4dw2kFefv1wPxT1A5a5IOEInrfy/vrX5dKfebJtVgC0wyGxqd2g/u1kpd9kvsMo=
+X-Gm-Gg: AeBDievcszXVbtJNvJH2WkgtmRPi6xYJmZAi/MmMYICht+snyAwc+fzXLDOYF7C+74h
+	KWeOpVweCWLwEepYuzmx2sAr/6DpDSFGufTTO2BR7WH5dOV+Fsm/qEk4349qn10zjGlRfrnY4q+
+	f3qVws6a7WD/5mkQRDdVx5ppGpmQ68c1coIxENRF2m4v3z9XoNKBPpTVzFO+apqbu4MEcoqaY6y
+	om3jNbiP82MAHXvF3FakvlOLvG1FRQcaxh0NVoaG5BkoWtiaSXvNDYBT1SgW5JW0sy0JOEPRYfF
+	HdsuF1/rmv022M3WK3xHhx/pmOblBDtjnSMY1xFm6/5j0pA6oDTY5jsQV/XW/v6+Ne5llZ+5Nhq
+	tZeZCaeYEQVaOS+cB6Nbcql6QgA29xO35LWbWOIm8F+L0PLl3WsGAIdhAuY42R2HdW/PECTDyOn
+	ylb2tbqqE1UrjQfdp/+7QlLsv+MmQNHjJDJCtot7bA9QjOanEVZD/ZWLr3/4UBfIoLQ4kV4yYyx
+	q7La2CzYv7Pgf0JLXkUbroTHg==
+X-Received: by 2002:a05:600c:890c:b0:487:1108:48af with SMTP id 5b1f17b1804b1-488fb7389a6mr245381575e9.4.1776847151437;
+        Wed, 22 Apr 2026 01:39:11 -0700 (PDT)
+Received: from localhost (p200300f65f114e08a760282010012dc7.dip0.t-ipconnect.de. [2003:f6:5f11:4e08:a760:2820:1001:2dc7])
+        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-488fc0f8188sm455887645e9.2.2026.04.22.01.39.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 22 Apr 2026 01:39:10 -0700 (PDT)
+Date: Wed, 22 Apr 2026 10:39:09 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
+	Ulf Hansson <ulfh@kernel.org>, "Christian A. Ehrhardt" <christian.ehrhardt@codasip.com>, 
+	linux-mmc@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Wolfram Sang <wsa+renesas@sang-engineering.com>, linux-kernel@vger.kernel.org, 
+	Marcel Holtmann <marcel@holtmann.org>, linux-bluetooth@vger.kernel.org, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mediatek@lists.infradead.org, 
+	Ping-Ke Shih <pkshih@realtek.com>, linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
+	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+	Brian Norris <briannorris@chromium.org>, Francesco Dolcini <francesco@dolcini.it>
+Subject: Re: [PATCH v1 1/6] sdio: Add syntactic sugar to store a pointer in
+ sdio_driver_id
+Message-ID: <aeiHTPOA9jQrNWkX@monoceros>
+References: <cover.1776429984.git.u.kleine-koenig@baylibre.com>
+ <c830049dcfcd99f005e2ff6742aace9341c61f13.1776429984.git.u.kleine-koenig@baylibre.com>
+ <aeaMkfk_1t98e7SU@monoceros>
+ <CABBYNZJzbEmYzTk2m+Y8SoHVouTMA6Gje_55iJsQ6cYtDLftbQ@mail.gmail.com>
+ <aecu1ixyHP2hQvgE@monoceros>
+ <aehwG2Egt93-sPVB@ashevche-desk.local>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="vqsqetyrnjrxwten"
 Content-Disposition: inline
-In-Reply-To: <072c4db4a01ac125e9ee5e34f992cd169c78e117.1776646435.git.daniel@makrotopia.org>
+In-Reply-To: <aehwG2Egt93-sPVB@ashevche-desk.local>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260422_013914_380435_ACBB6983 
+X-CRM114-Status: GOOD (  22.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,31 +114,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 20, 2026 at 02:13:13AM +0100, Daniel Golle wrote:
-> Describe the sound card node that routes the MT2701/MT7623N AFE
-> HDMI playback path to the on-chip HDMI transmitter. This is
-> separate from the AFE platform binding (mediatek,mt2701-audio)
-> because it represents board-level audio routing between the AFE
-> and the HDMI codec, not an additional IP block. MT7623N boards
-> carry the same IP and use the mt7623n- compatible as a fallback
-> to mt2701-.
-> 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
-> v2:
->  * Fix subject prefix to use schema filename (Krzysztof Kozlowski)
->  * Rewrite title and description to describe hardware, not driver
->    (Krzysztof Kozlowski)
->  * Clarify in commit message why this is a separate binding from
->    mediatek,mt2701-audio (Krzysztof Kozlowski)
-> 
->  .../sound/mediatek,mt2701-hdmi-audio.yaml     | 48 +++++++++++++++++++
->  1 file changed, 48 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt2701-hdmi-audio.yaml
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+--vqsqetyrnjrxwten
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v1 1/6] sdio: Add syntactic sugar to store a pointer in
+ sdio_driver_id
+MIME-Version: 1.0
 
-Best regards,
-Krzysztof
+On Wed, Apr 22, 2026 at 09:52:11AM +0300, Andy Shevchenko wrote:
+> On Tue, Apr 21, 2026 at 10:12:41AM +0200, Uwe Kleine-K=C3=B6nig (The Capa=
+ble Hub) wrote:
+> > On Mon, Apr 20, 2026 at 04:46:56PM -0400, Luiz Augusto von Dentz wrote:
+> > > On Mon, Apr 20, 2026 at 4:31=E2=80=AFPM Uwe Kleine-K=C3=B6nig (The Ca=
+pable Hub)
+> > > <u.kleine-koenig@baylibre.com> wrote:
+> > > > On Fri, Apr 17, 2026 at 03:10:47PM +0200, Uwe Kleine-K=C3=B6nig (Th=
+e Capable Hub) wrote:
+> > > > > On all current Linux architectures sizeof(long) =3D=3D sizeof(voi=
+d *) and
+> > > > > this is used a lot through the kernel. For example it enables the=
+ usual
+> > > > > practice to store pointers in sdio_driver_id's .driver_data membe=
+r.
+> > > > >
+> > > > > This works fine, but involves casting and thus isn't type-safe.
+> >=20
+> > To be honest, with the involved void* this isn't really type-safe
+> > either, but at least the data keeps being a pointer which is really
+> > helpful on CHERI. FTR: The alternative would be to use uintptr_t instead
+> > of unsigned long, which also has proponents in the CHERI community and
+> > which is used in the current vendor patch stack.
+>=20
+> FWIW, Linus categorically told that it has to be no uintptr_t in the Linu=
+x kernel.
 
+Then I'm lucky that this patch set doesn't introduce uintptr_t and so we
+can delay the discussion with Linus about that. (And we will have to
+hold that discussion at some point, because on CHERI we have
+sizeof(unsigned long) =3D 8 < sizeof(void *) =3D 16. I didn't check, but I
+think also unsigned long long cannot hold a void*.
+
+Best regards
+Uwe
+
+--vqsqetyrnjrxwten
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmnoiSsACgkQj4D7WH0S
+/k74eggAtKiYZRohFpdNo44fvylrlq/Mfus5ZHYrI8EWLZuC+qMr7/LiHwZ8cxVQ
+atxZNwrK0qRyfjUM/lFUKvVOSQwTQzqaMGF0dNjfTVALktKCe6sLNr+gOXDqofhx
+UZn90knvTDOO5WfcrIf1K/ojUlgsGJ/4r63JkF3ZXPn8I3zd3NFFjhgn/ZzJkx74
+5CJywELP1+kmz3pLRw0rHztfMl3gmPTsxCWqHmxLNsNtSVskl2dRZH9FMfvNKCQo
+KwuE7hCxtAWO4py/igcaNXz/fS0nMSCqIo3IbxAzqfJAnHgPpGrvAKSOB4GLVCoc
+hmaPoy6M67vqAg5NjGB4uniPlgvymw==
+=8Fwl
+-----END PGP SIGNATURE-----
+
+--vqsqetyrnjrxwten--
 
