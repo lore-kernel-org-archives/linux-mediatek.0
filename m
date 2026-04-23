@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED6D2F9937E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 11:59:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE150F9937E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 11:59:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0Yo9wZsFFE9sHJLLCvELIs6e+T0vsT5uBdV5hkdpgr0=; b=PC5QoOzWPOxcgWol3CZc6pRc/B
-	nEBn+dY/6N1yJRmjhYUCStBsllkUMA5IanQBn2hBEXJJcyYunbseAWnOrkSUuj55qLK+24OblZUy8
-	GEe2BZhQQaZMOE1mdQcgXq4Rw3ks1fje+kJpubsOoppklad7gVZAsBUlsbXyMQywdYg0hgErZfZO1
-	0QFsdxyG4+yY6LcCnRro329gfRvTS7yIjyV5Q0qJmLw+DHv1yobBOdlcBIrVcXas2gITsdQsKeWVZ
-	1y2sFLFcoDT8tKwlwaV9ZKo1I0WnduJDg09UUtb+d/Xd0sottJOpXs5DKQP1g3wPWbK4adAP0ujLF
-	mLdtqUGQ==;
+	bh=0cIzziXQXBlswI5he/Z1p9UVN9gXfIafkur4yQLuNKM=; b=aIaar22IgC1HEGH8PUfeWkQV09
+	9vMiAO/WUoFMiR4P9H+ZI2ul0hQ2nsPfp+syPCedoRIBdcaWQvyaQfcxMBwi0RkkOVA4mNsqcn4bG
+	zb5f26nbA/2wQu+V8fdKr4ZfvHpAiPKzD5qRL+Q7mZYRQbmql9kreQH7zBymauev7b/l4UKyqHYw9
+	exUo1miqQiUFhmq/XeAMigspf/rL1pbNZiPPUI/RMbE37RyEBmLBKhUmMAEJVfTBTtO9w7LIcKTAc
+	WuiAZi897CIoZcu0Wvd5GqWLD+/Gre1jmY59ZxvWWSpbuZGRv4yD250g2AdCZCmWbT98xl2g3f+bZ
+	jNNpqfGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFsiF-0000000BZe5-0Bp4;
-	Thu, 23 Apr 2026 11:59:19 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1wFsiS-0000000BZk0-42q2;
+	Thu, 23 Apr 2026 11:59:33 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFsiA-0000000BZbV-3wZ7;
-	Thu, 23 Apr 2026 11:59:17 +0000
+	id 1wFsiP-0000000BZhm-1CAD;
+	Thu, 23 Apr 2026 11:59:31 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 45B2B4E42AC9;
-	Thu, 23 Apr 2026 11:59:13 +0000 (UTC)
+	by smtpout-02.galae.net (Postfix) with ESMTPS id A698B1A33C5;
+	Thu, 23 Apr 2026 11:59:27 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 189DE60495;
-	Thu, 23 Apr 2026 11:59:13 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 848A910460B5E;
-	Thu, 23 Apr 2026 13:58:53 +0200 (CEST)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 69C9260495;
+	Thu, 23 Apr 2026 11:59:27 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 5309B10460BF2;
+	Thu, 23 Apr 2026 13:59:09 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1776945549; h=from:subject:date:message-id:to:cc:mime-version:
+	t=1776945564; h=from:subject:date:message-id:to:cc:mime-version:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=0Yo9wZsFFE9sHJLLCvELIs6e+T0vsT5uBdV5hkdpgr0=;
-	b=RxLtjtbttWJnRHn5HAhuZhKI4xu2K0A1azRLLkOYXuHgJYcSWVRrxTxqH3VqLE/WgW1R2n
-	DBWm5uRgj+6xXoURdAu3MvXQO6c+oQSmeFqe2dW0ijV57EL2AqhFQM8mUTdo1UbpUW7UTE
-	heUXpwDvmJyOcKZZ3rO1SD5KONtnv/GaXX2O3HEvG7d8NTGAX53hB8754MwA9ISb9PPJFd
-	9ywffc63zSxwy3AfIGGlXHFXHTpPWiVbqdtJ2p8meG5A69x4XjeT2ZrvDenBvcvX1G30Ej
-	/4mBDcMM4p1iGPkZJAquNPsTX80DEPJovHvqTHjjFETSr07VY5ZgreKhA1okXQ==
+	bh=0cIzziXQXBlswI5he/Z1p9UVN9gXfIafkur4yQLuNKM=;
+	b=WlStTxqGzva9+UFSYhFfXw4/eyvnNhgwpre83ebDV7irThXx3jpNRYnWO16QrVNcMMUvPa
+	FtqvwIEFzz1tDTi3nQMemL7s2ni2N5ABm2DKLe/xjA9s9AGh/vfXXFmQ+Ix5neYQpUggUE
+	ZkZ21Yrus5l3d9xGjFkYkOvTZpps9BvhfTY2TQgvgGgOjnl7ZVfUyrQEb88q3IfxCsNhlP
+	OFyLzhp9rcJGWmKKtalqgU7Zg963yUOKfMu+Yf0/VXh1SnUEd9dPdKa1GHuQ5iAzalT8L2
+	gWTTR+Ma0QEQnp454zzEqKiIy5BYmW0LpXZy4mqze37S9YM/iIdSVAQFxUomwQ==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
@@ -122,9 +122,9 @@ Cc: Hui Pu <Hui.Pu@gehealthcare.com>,
 	linux-samsung-soc@vger.kernel.org,
 	linux-renesas-soc@vger.kernel.org,
 	Luca Ceresoli <luca.ceresoli@bootlin.com>
-Subject: [PATCH v2 40/41] drm/rockchip: rgb: remove now-redundant call to drm_connector_attach_encoder()
-Date: Thu, 23 Apr 2026 13:55:49 +0200
-Message-ID: <20260423115550.444930-6-luca.ceresoli@bootlin.com>
+Subject: [PATCH v2 41/41] drm: renesas: shmobile: remove now-redundant call to drm_connector_attach_encoder()
+Date: Thu, 23 Apr 2026 13:55:50 +0200
+Message-ID: <20260423115550.444930-7-luca.ceresoli@bootlin.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 References: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
@@ -132,9 +132,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_045915_234520_E9261655 
-X-CRM114-Status: UNSURE (   8.55  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260423_045929_585181_498E0C9D 
+X-CRM114-Status: GOOD (  14.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,36 +148,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-drm_connector_attach_encoder() is now called by
-drm_bridge_connector_init().
+shmob_drm_connector_create() can init the connector in two ways, based on
+the 'if (sdev->pdata)':
+
+ 1. manually in shmob_drm_connector_create(), or
+ 2. delegating to drm_bridge_connector_init()
+
+Whichever branch is taken, drm_connector_attach_encoder() is called
+immediately after to attach the connector to the encoder.
+
+Now drm_bridge_connector_init() calls drm_connector_attach_encoder() on the
+connector so it is not needed anymore in case 2 and should be removed, but
+it is still needed in case 1. Move drm_connector_attach_encoder() from the
+common path to inside shmob_drm_connector_create() in order to get back to
+a single drm_connector_attach_encoder() in both cases.
 
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
----
- drivers/gpu/drm/rockchip/rockchip_rgb.c | 9 ---------
- 1 file changed, 9 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_rgb.c b/drivers/gpu/drm/rockchip/rockchip_rgb.c
-index 5c0c6e2cc28d..add3123e5ce7 100644
---- a/drivers/gpu/drm/rockchip/rockchip_rgb.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_rgb.c
-@@ -162,17 +162,8 @@ struct rockchip_rgb *rockchip_rgb_init(struct device *dev,
+---
+
+Changes in v2:
+- rewrote completely, fixing potential ERR_PTR deref and ending up with
+  a cleaner patch
+- also wrote more extensive commit message
+---
+ .../gpu/drm/renesas/shmobile/shmob_drm_crtc.c    | 16 +++++++---------
+ 1 file changed, 7 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/gpu/drm/renesas/shmobile/shmob_drm_crtc.c b/drivers/gpu/drm/renesas/shmobile/shmob_drm_crtc.c
+index 5f460b38596c..815c770147ed 100644
+--- a/drivers/gpu/drm/renesas/shmobile/shmob_drm_crtc.c
++++ b/drivers/gpu/drm/renesas/shmobile/shmob_drm_crtc.c
+@@ -583,6 +583,13 @@ shmob_drm_connector_init(struct shmob_drm_device *sdev,
  
- 	rgb->encoder.crtc_endpoint_id = endpoint_id;
+ 	drm_connector_helper_add(connector, &connector_helper_funcs);
+ 
++	ret = drm_connector_attach_encoder(connector, encoder);
++	if (ret < 0) {
++		drm_connector_cleanup(connector);
++		kfree(scon);
++		return ERR_PTR(ret);
++	}
++
+ 	return connector;
+ }
+ 
+@@ -594,7 +601,6 @@ int shmob_drm_connector_create(struct shmob_drm_device *sdev,
+ 			       struct drm_encoder *encoder)
+ {
+ 	struct drm_connector *connector;
+-	int ret;
+ 
+ 	if (sdev->pdata)
+ 		connector = shmob_drm_connector_init(sdev, encoder);
+@@ -606,17 +612,9 @@ int shmob_drm_connector_create(struct shmob_drm_device *sdev,
+ 		return PTR_ERR(connector);
+ 	}
  
 -	ret = drm_connector_attach_encoder(connector, encoder);
--	if (ret < 0) {
--		DRM_DEV_ERROR(drm_dev->dev,
--			      "failed to attach encoder: %d\n", ret);
--		goto err_free_connector;
--	}
+-	if (ret < 0)
+-		goto error;
 -
- 	return rgb;
+ 	connector->dpms = DRM_MODE_DPMS_OFF;
  
--err_free_connector:
+ 	sdev->connector = connector;
+ 
+ 	return 0;
+-
+-error:
 -	drm_connector_cleanup(connector);
- err_free_encoder:
- 	drm_encoder_cleanup(encoder);
- 	return ERR_PTR(ret);
+-	return ret;
+ }
 -- 
 2.53.0
 
