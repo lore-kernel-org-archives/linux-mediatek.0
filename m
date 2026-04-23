@@ -4,81 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F61CF99362
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 09:47:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA347F99362
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 10:50:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l86b3wFQLp7qqyYC3UYkYG48yFwPuGR6BvkHaLpMrlk=; b=J9gkZ461gxNIg21uKkYE8MELJi
-	Io3xZQaLZbn4P7h6IscwfI5zEm0a1FT1VJJOyrubjDpdTvUe4CGKArpqVXK6GeXn4esRepLd1zIaf
-	c2uBm824LcMTVIW1f7JEaE/E6uusUkZ5Yf+gMEzQwezT0ewH7B2+kx7CWLM9mTuQI6PxjXV5PQB/t
-	6P6dtyAQ74/e6YTROZE3XO//+4d8vh3PPuhw7ApJrB+DQWpBSMoNf9qFGlBqefysbRzQCDAGYmuOj
-	D8riJj/SRrayplp7k4AAjaEJ9AUcsNNnmEFAAuzrvw6B14FxrfNxMiyWUJBqgJevwEifRcGzi7JJq
-	ac85tnXw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=f0fdzmxU8YfuAWaMqai29dgANO/jKXm8VFbNVoHKDHU=; b=f41H8rCS+TcmlgNgsuJOZPzPTH
+	q2wOro9xomRNeuVtGBtsO4IaTbQzXJB0j0CXnSNjqKOqFwWWbHXnnmWxZmcMoZ5Wu335MJ1p8U7t0
+	Vw08erb+4eDDPw4QRuTgTc9QlxQALaX23ax+7umopTguS+zaZBtth4pqdX2J9zVU7Q7HoD2hwg3Es
+	e1TaePir3dcjC7ZWvt2Odw6DHtWB6KURrsRp9wgNJIVyuB9nnc8hsJXSv7iPi/mYpSDiFJUtqsNXM
+	DKndZXTGvk0A6Osvm5iVzaOcrXNT7hSOLM3cy+/7fbDiMHAppYsMUwN1knZb/zJi5y9Fze4K9TlJo
+	i8jFYCrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqep-0000000BQa0-2XMm;
-	Thu, 23 Apr 2026 09:47:39 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1wFre2-0000000BVDF-1Z51;
+	Thu, 23 Apr 2026 10:50:54 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqeT-0000000BQ6Z-31Ja;
-	Thu, 23 Apr 2026 09:47:18 +0000
-X-UUID: 675f36463ef911f19e7563141e833ce8-20260423
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=l86b3wFQLp7qqyYC3UYkYG48yFwPuGR6BvkHaLpMrlk=;
-	b=k+rkIqbDXQ0d/Qksa+6Dc+gmpG4R61hUFzZ55MNuZq59V1n9/ixtQIvhXohouTWCbLsUIkEKPcam1Gmt9pSs4Mj0fh/gW5sgE2zGtewqj+qMNGJ+TKZTIi+4vZUAMCwwKhQqmyiEgc4bsnicOICZgPUR2Jnkn02B+sZZDlY6OeE=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:8d4626f1-cfa9-40d9-8923-cd16339b4f00,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:-30
-X-CID-META: VersionHash:e7bac3a,CLOUDID:2096cb8f-6df4-4a3d-a7a4-fbdc42d669ce,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|865|888|898,TC:-5,Cont
-	ent:0|15|50,EDM:2,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,
-	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 675f36463ef911f19e7563141e833ce8-20260423
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
-	(envelope-from <kyrie.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 42432703; Thu, 23 Apr 2026 02:47:12 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Thu, 23 Apr 2026 17:47:10 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Thu, 23 Apr 2026 17:47:09 +0800
-From: Kyrie Wu <kyrie.wu@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
-	<krzk+dt@kernel.org>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Kyrie Wu <kyrie.wu@mediatek.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-CC: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v14 10/12] media: dt-bindings: mediatek,jpeg: Add mediatek, mt8196-jpgenc compatible
-Date: Thu, 23 Apr 2026 17:46:54 +0800
-Message-ID: <20260423094656.32044-11-kyrie.wu@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20260423094656.32044-1-kyrie.wu@mediatek.com>
-References: <20260423094656.32044-1-kyrie.wu@mediatek.com>
+	id 1wFrdz-0000000BVD1-3s45;
+	Thu, 23 Apr 2026 10:50:51 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id A295760125;
+	Thu, 23 Apr 2026 10:50:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 52E6DC2BCB2;
+	Thu, 23 Apr 2026 10:50:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1776941449;
+	bh=OoQqwn2Iom7hNKT4z8ZQdCpip2kOL8Jkaka02RiKb3c=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=dH6bjqKIYbxUSinZQaMk4rNByUSI11UsgfVAvZxk/SOQM9DNSYbCxJuvR+3fOTQ4i
+	 zBHLinJ2iRmExO9ERrcWOxzoQk1aFXcitbdSfUHQbaoUVcv37rOdwekTq+NzeWQX9b
+	 ZOVhezlNPkwitrF1NnyvskTVkPdMgXSTB114B0ET3ZmzDfbE3XhSNyTKIcOys1ytWu
+	 4Qsx8ZpPphF5x+TmkR+GTsiSWxNcPz1+tiFI3C13bWqJDRi7ShoHBIpj18SfydrTnI
+	 Hp6joLSONp77J1YZSDM8jgE5UF6gGwnmo3IMtMjQFehthzEjoip0LoH93noN1b7/Dd
+	 ZfTPeT4aOJgeQ==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 3FD93380CFFD;
+	Thu, 23 Apr 2026 10:50:12 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_024717_761090_A2ED7BFD 
-X-CRM114-Status: UNSURE (   9.59  )
-X-CRM114-Notice: Please train this message.
+Subject: Re: [PATCH net v2 0/2] net: airoha: Fix NULL pointer derefrences in
+ airoha_qdma_cleanup()
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <177694141104.106550.318427383838791397.git-patchwork-notify@kernel.org>
+Date: Thu, 23 Apr 2026 10:50:11 +0000
+References: <20260420-airoha_qdma_init_rx_queue-fix-v2-0-d99347e5c18d@kernel.org>
+In-Reply-To: <20260420-airoha_qdma_init_rx_queue-fix-v2-0-d99347e5c18d@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, horms@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,44 +73,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Compared to the previous generation IC, the MT8196 uses SMMU
-instead of IOMMU and supports features such as dynamic voltage
-and frequency scaling. Therefore, add "mediatek,mt8196-jpgenc"
-compatible to the binding document.
+Hello:
 
-Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- .../bindings/media/mediatek,mt8195-jpegenc.yaml           | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+This series was applied to netdev/net.git (main)
+by Paolo Abeni <pabeni@redhat.com>:
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
-index 596186497b68..e2d772ea0fb0 100644
---- a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
-@@ -14,7 +14,9 @@ description:
- 
- properties:
-   compatible:
--    const: mediatek,mt8195-jpgenc
-+    enum:
-+      - mediatek,mt8195-jpgenc
-+      - mediatek,mt8196-jpgenc
- 
-   power-domains:
-     maxItems: 1
-@@ -44,7 +46,9 @@ patternProperties:
- 
-     properties:
-       compatible:
--        const: mediatek,mt8195-jpgenc-hw
-+        enum:
-+          - mediatek,mt8195-jpgenc-hw
-+          - mediatek,mt8196-jpgenc-hw
- 
-       reg:
-         maxItems: 1
+On Mon, 20 Apr 2026 10:07:46 +0200 you wrote:
+> Fix two possible NULL pointer derefrences in airoha_qdma_cleanup routine
+> if airoha_qdma_init() fails.
+> 
+> ---
+> Changes in v2:
+> - Move page_pool allocation after desc list allocation in
+>   airoha_qdma_init_rx_queue()
+> - Move netif_napi_add_tx() after irq desc queue allocation in
+>   airoha_qdma_tx_irq_init()
+> - Link to v1: https://lore.kernel.org/r/20260417-airoha_qdma_init_rx_queue-fix-v1-0-db9fa5e468e5@kernel.org
+> 
+> [...]
+
+Here is the summary with links:
+  - [net,v2,1/2] net: airoha: Move ndesc initialization at end of airoha_qdma_init_rx_queue()
+    https://git.kernel.org/netdev/net/c/379050947a18
+  - [net,v2,2/2] net: airoha: Add size check for TX NAPIs in airoha_qdma_cleanup()
+    https://git.kernel.org/netdev/net/c/4b91cb65789b
+
+You are awesome, thank you!
 -- 
-2.45.2
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
