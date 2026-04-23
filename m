@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EA08F99340
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 07:42:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73031F99344
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 07:48:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FsfuGHZDri/iJURdY36DhJJvfAS9GH91sXYIPM7TNLc=; b=zR5it3/yf0kWJ5+ZlE6eFsO1zZ
-	IjUQkHpURtaGdM36XWhtvPuiTAVrdC6sONfk7e1jEcZBthq/B7goD1h4bKDzHjgCRZwun0h+JeA3L
-	68Za4FINuISK/KnAcZErfUmrJPfmMqToMsqasZbKzGa+yXMuNkPl4OWuUePznwvHLlX+5oYGbnsgl
-	dYzANtJA3J9Ucez3+R0XOjhFfM9p64mfQO/0GTvgJrLLADtkwFKrVREBUxOx7awjDIguXjDX81d0p
-	USgz5F6fmYUJjhdVSBmyFRIsI2J9s+YGUZmm6Ox423sc5Sym2Yl8MQx9f1jGySGNXevo8HnFPkrgs
-	ldilkopA==;
+	bh=FfrbCjB7w88uI2Dj57WhJkGhdKypkR0ANHfG37QWHTA=; b=IFAUP/koAmNp0XeafpEqqb9ptg
+	KRHHJt/AFeyxbTA121eTLg1tYUNlVQFAIsI2AR1ls7Nx4iOK8biNxeeF1/d4v+g9dQJEFeL3onRO5
+	idv1WeRzqx/h2PxYEwyYS1zEmFRB+FAMMVcJB7ylri82J7WQhdoh6v1r9khCVxF242seely8xMJdp
+	ESP4bNPTyvcnfMFsfY1BPzNDSo+hAKzwYrfsmyqoF/g9Y9LEtnjN9CgsyDuTslJDk71jvZKcZAVRN
+	zdVCmxSDqMvDLx9JpPngASbn1QDkBDrlRcrs+tbEUvvhajXWbTgio59A6O8cI64Z6u73Hr59WmOak
+	sy2Y3d6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFohq-0000000BAaG-0FfZ;
-	Thu, 23 Apr 2026 07:42:38 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wFonl-0000000BBKS-1muU;
+	Thu, 23 Apr 2026 07:48:45 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFohk-0000000BAZl-00Lm;
-	Thu, 23 Apr 2026 07:42:36 +0000
+	id 1wFoni-0000000BBJf-1SJy;
+	Thu, 23 Apr 2026 07:48:43 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5CAC0404F4;
-	Thu, 23 Apr 2026 07:42:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DC7C2C2BCAF;
-	Thu, 23 Apr 2026 07:42:30 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6044D434DE;
+	Thu, 23 Apr 2026 07:48:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A4791C2BCB2;
+	Thu, 23 Apr 2026 07:48:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776930151;
-	bh=XRdpb9nVRkqJctOt0Dfi0nllkU3AoSVeiFDjds5RJCA=;
+	s=k20201202; t=1776930518;
+	bh=6q8zIzEyZvqhWWWK8S5N+7p4Cs/FMvgTjRNWpvfJeBQ=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=CY+i9rXP7j/oBVjARa/Hga/mWJYfWrYij6Ejp9K8Fmx0Fw52s4dCXIhvCr4xf4AjC
-	 FTw+atqA7j65Cn7ygGjeEL27vpc0HE1LEpl9kwxrUt6m/TmN6E055rWYx2vlycLXgH
-	 jdwz/9GyxoyZWXWYQ0Ink7GFquEUAiigkToZ/84M7crxVGd4r7DcWI93Rs5xWvZknE
-	 HaO/yxJ0/LpHzxR3I3UNkOJd8s1jMt3Vh2WJhCoUmVW1ti3bHRrN7cjsL+L87uABsU
-	 APkFOfhiQsdu7qcAHL4wPA+BiMgpXi4oWVzwVSAVhYMj11JKDf4bvq5Mg4z2OQkA38
-	 UiLHj27jE0X5w==
-Date: Thu, 23 Apr 2026 09:42:28 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net] net: airoha: stop net_device TX queue before
- updating CPU index
-Message-ID: <aenNZELmY3Z7VP7j@lore-desk>
-References: <20260421-airoha-xmit-stop-condition-v1-1-e670d6a48467@kernel.org>
+	b=qHd57ItaEmf10jqH349WgU6KbiwNqr9kFRIjKXvp0QDGTrCJn9B61WZPLMOG74YDd
+	 iEheuSTiX08B/dO7G2M+SdhsXgyfUWZEDLc0zOnxg5WCjNhRMfdeFxA82AVG+Ng+2O
+	 cWlBrsTZ5qB8qOkEi3QhNCD81y6z4Cdwb0szzhQXNUvhMwrEHmEwUBXOS7ln6fQr7y
+	 h8hf1qm68trGq73rPVt81u2JV99TmNuwt8+3E6IK8ZL/ybT7Fb7O3H5dv01IrjDfXf
+	 hDe1gu0vsYGnZNIF4Gt76laJ+3AGQncsQ7WFAnLpSk2UnPwF0iV7Qc03iHuwx4fQnB
+	 8T0TolAYS5CKA==
+Date: Thu, 23 Apr 2026 09:48:35 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Cc: linux-sound@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, 
+	Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v3] ASoC: dt-bindings: mediatek: Convert mtk-btcvsd-snd
+ to DT Schema
+Message-ID: <20260423-scrupulous-stoat-of-perception-0a3d9b@quoll>
+References: <20260421193858.347258-1-l.scorcia@gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="n+fdmW4T+/Z6vLY1"
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20260421-airoha-xmit-stop-condition-v1-1-e670d6a48467@kernel.org>
+In-Reply-To: <20260421193858.347258-1-l.scorcia@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_004233_038283_AB9858A4 
-X-CRM114-Status: GOOD (  22.55  )
+X-CRM114-CacheID: sfid-20260423_004842_401233_541ECA48 
+X-CRM114-Status: UNSURE (   9.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,106 +76,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Apr 21, 2026 at 08:38:35PM +0100, Luca Leonardo Scorcia wrote:
+> +title: Mediatek ALSA BT SCO CVSD/MSBC Driver
 
---n+fdmW4T+/Z6vLY1
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+s/Driver//
 
-> Currently, airoha_eth driver updates the CPU index register prior of
-> verifying whether the number of free descriptors has fallen below the
-> threshold.
-> Move net_device TX queue length check before updating the TX CPU index
-> in order to update TX CPU index even if there are more packets to be
-> transmitted but the net_device TX queue is going to be stopped
-> accounting the inflight packets.
->=20
-> Fixes: 1d304174106c ("net: airoha: Implement BQL support")
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  drivers/net/ethernet/airoha/airoha_eth.c | 9 ++++-----
->  1 file changed, 4 insertions(+), 5 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
-net/airoha/airoha_eth.c
-> index 19f67c7dd8e1..5d327237e274 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -2058,17 +2058,16 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff=
- *skb,
-> =20
->  	skb_tx_timestamp(skb);
->  	netdev_tx_sent_queue(txq, skb->len);
-> +	if (q->ndesc - q->queued < q->free_thr) {
-> +		netif_tx_stop_queue(txq);
-> +		q->txq_stopped =3D true;
-> +	}
-> =20
->  	if (netif_xmit_stopped(txq) || !netdev_xmit_more())
->  		airoha_qdma_rmw(qdma, REG_TX_CPU_IDX(qid),
->  				TX_RING_CPU_IDX_MASK,
->  				FIELD_PREP(TX_RING_CPU_IDX_MASK, index));
-> =20
-> -	if (q->ndesc - q->queued < q->free_thr) {
-> -		netif_tx_stop_queue(txq);
-> -		q->txq_stopped =3D true;
-> -	}
-> -
->  	spin_unlock_bh(&q->lock);
-> =20
->  	return NETDEV_TX_OK;
->=20
-> ---
-> base-commit: a663bac71a2f0b3ac6c373168ca57b2a6e6381aa
-> change-id: 20260421-airoha-xmit-stop-condition-344dc0292a19
->=20
-> Best regards,
-> --=20
-> Lorenzo Bianconi <lorenzo@kernel.org>
->=20
+> +
+> +maintainers:
+> +  - Luca Leonardo Scorcia <l.scorcia@gmail.com>
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mtk-btcvsd-snd
+> +
+> +  reg:
+> +    minItems: 2
 
-commenting on Sashiko retported issues:
-https://sashiko.dev/#/patchset/20260421-airoha-xmit-stop-condition-v1-1-e67=
-0d6a48467%40kernel.org
+Drop
 
-- Could this cause a deadlock if exactly q->free_thr descriptors are free?
-  This does not seem a problem to me since, even if the netdev tx queue is
-  stopped as described in the report, the airoha_qdma_tx_napi_poll() will f=
-ree
-  space in the queue and subsequent packets will update REG_TX_CPU_IDX regi=
-ster.
+> +    maxItems: 2
 
-- Is it possible for this loop to read past the end of the frags array?
-  As pointed out by Sashiko, this issue is not introduced by this patch and=
- I
-  will fix with a dedicated patch.
+and actually drop this too and list the items with description - PKV and
+SRAM_BANK2 regions
 
-- Might this lead to memory corruption if the tcp header is not in the line=
-ar area?
-  This issue is not introduced by this patch and I will fix with a dedicate=
-d patch.
+> +
+> +  reg-names:
+> +    items:
+> +      - const: pkv
+> +      - const: sram-bank2
 
-- If an error occurs during transmission, the driver jumps to the error lab=
-el
-  frees the skb, and returns NETDEV_TX_OK without ringing the qdma cpu inde=
-x doorbell?
-  Similar to the first issue, this does not seem a problem to me since subs=
-equent
-  packets will update REG_TX_CPU_IDX register.
+Old binding did not have reg-names and nothing in commit msg explains
+changes done to the binding.
 
-Regards,
-Lorenzo
+To remind: if you change the binding, you must mention it and explain
+WHY.
 
---n+fdmW4T+/Z6vLY1
-Content-Type: application/pgp-signature; name=signature.asc
+I don't see any use of that, so why did you add it?
 
------BEGIN PGP SIGNATURE-----
+Best regards,
+Krzysztof
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaenNZAAKCRA6cBh0uS2t
-rC1vAP9MtTmL8U3BdrfMedc+Vlc+MTA91gnMBQG8HOGouOvAdgEA1r1ltUGjtato
-t0YBtofFZLtW7ijWbfS45I4FIwGzKAo=
-=N6KP
------END PGP SIGNATURE-----
-
---n+fdmW4T+/Z6vLY1--
 
