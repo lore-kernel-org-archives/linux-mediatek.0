@@ -4,63 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8501CF99351
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 08:12:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F620F99352
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 08:31:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=knOefttnIyPWl2d+eqYXv+SUsJugMspNXMYMja8kCag=; b=s5Wq6rvwiFZv/AypZ+2r9hYPBV
-	ymsz2mjFRooW4siKby6EMVuk+QxpylB1AhAWvv66+u1wkT0jJcYev3NG1Ks640GE8KCZ2IefD3tkS
-	GJ5M+nKF59THXoUijw3royHsZkJagr3paVVJ5XpKPkMUx/89XCHRG6Dyufv7LoxHQYLec+lt3gVF1
-	8FS5IxqZkGdfJhEsFMJmM6naittx7xvx8Soj8PsTEfaQTzhNmlhOCbzJ2iGm69yIg5dDFVdz0eqRu
-	P0McPgqXJtIMS2CJpnBr8qJt2Dz4+T6QGCJmAaww/+nOKkUnuUUrclLh4DrVVQ131TgXwYrCjKVWI
-	y1SUDovQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gLQ2QJLY+AQR6FFwHQfI1wULr2cHcwHy9LUPLxUKoMQ=; b=l3P3lA4LyLmRf+mAMkMlGaQusx
+	uGf7eGMIt/+jdmQVhA5g4QRaCqthWGdiOxYRurWFfMiTo+E412xDCOBJUIqSwNzNprZubO2beSfev
+	rtrZfHUg7jfiXB+UU34jCrVsoeLa9Zvp/ql49eNEZ1ur/bfAVmBqDugFzOWI7w3yF6fvEpNh+05CI
+	DSXxiBGksFTk7VDRJ9kRlJtVHdU+OSxZ5of5tGESuqP8QDGJHJukfkJ8FCgn/pY2qLILWkC8F7gYc
+	A4L6BFs+vFAI1wVat81rQtxbbUQ3oWUrOOF6hb/HQsRYitpl7ILcSC6rzFDoDg0uFltUwI0Jo29R+
+	GYzSJK+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFpAk-0000000BD6m-44q2;
-	Thu, 23 Apr 2026 08:12:30 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wFpSn-0000000BFuc-3ZdH;
+	Thu, 23 Apr 2026 08:31:09 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFpAe-0000000BD5K-1x7i;
-	Thu, 23 Apr 2026 08:12:29 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E664643B24;
-	Thu, 23 Apr 2026 08:12:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 712BCC2BCAF;
-	Thu, 23 Apr 2026 08:12:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776931943;
-	bh=iEcYAM0VwzzlUdBWlgBenv9RwXM4rAx4T+7N+FRLWSQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ABr3DnpMiq0MaldPMg3udYOvaz02Da8BaHqPFrDJJvdIQu6rX4u1n80nNj85WCRkS
-	 75QaPBYbDsvs+SQWIHNn4vbdEG2DJuDCutTTDclvCanI9VqhwfNbofQ7qQErKoILTn
-	 yv+3KlbN9Lm+M1Ov6Yv6xWmvS6EESQFZjT87DeXBI5f9RCMGJVg9avF1JNChp22TSK
-	 /+dletROj0tX1pLtgoa12poN5h9xK38mu4qJO/yRyQ7zbtcf3qLHsJIJLCFZRQMbBJ
-	 eEY72aKJQVg1Zi1ahz6S1l3h6epEH+BBMj/JXz0HWlCBHYjul2CaiNPhw144AEKdNp
-	 PnDtcUOfMpoxA==
-Date: Thu, 23 Apr 2026 10:12:21 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Hariprasad Kelam <hkelam@marvell.com>
-Cc: Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net] net: airoha: fix BQL imbalance in TX path
-Message-ID: <aenUZc6mSBuSvWbz@lore-desk>
-References: <20260421-airoha-fix-bql-v1-1-f135afe4275b@kernel.org>
+	id 1wFpSf-0000000BFtJ-1NkB
+	for linux-mediatek@lists.infradead.org;
+	Thu, 23 Apr 2026 08:31:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1776933045;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=gLQ2QJLY+AQR6FFwHQfI1wULr2cHcwHy9LUPLxUKoMQ=;
+	b=P50L9eOlRbhoB3L+jCQk4RLbT4C0Id43EMbtCLnHOWX9BNxUfYIVA5t6UC+lLXXUDhSwTa
+	GBHyTBUpktPQYnKkqvSgHcswzp1BoNm1X/mubw+BGpozJUIJTopLl2tvwxytNtDDmadTjf
+	uD+NwrWxJhLR3R+FwtWSr1gduv3G33s=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-606-d05caBWNOKWv8FQxGPDCxg-1; Thu, 23 Apr 2026 04:30:42 -0400
+X-MC-Unique: d05caBWNOKWv8FQxGPDCxg-1
+X-Mimecast-MFC-AGG-ID: d05caBWNOKWv8FQxGPDCxg_1776933042
+Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-48919890a95so30516155e9.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 23 Apr 2026 01:30:42 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1776933041; x=1777537841;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=gLQ2QJLY+AQR6FFwHQfI1wULr2cHcwHy9LUPLxUKoMQ=;
+        b=gUCI+xgsVrqIRAzp1h2Nlhr1iPYuIcxkVgO7IFOtyQmqcinFdE7OOoDE27I+EcqTE2
+         Wn1Vwfd+e1ImDAT+NrfmMMatPmSQT4VY12Y3xA17/0HwW+Mse2Hv4gE2EuMF1NddtcY2
+         vMto0K14SlfnF4QY2gIg3RpwffWPEJf8zoPK1eW7uoTtcZY03ohy3Z8tpymbjsNzi5NA
+         mTKdJ6QNe4zTtTOAuUveD7ZTH2ZAGo2gtTGFwe2yAWUh/p8ehyiKA5W1yfsKRFOBl5qK
+         QmbYUlVfcWfyc12+t0zB9o3ejG7DFcHcj8+eRcAN1Y/7L66731GeKkqDJBQzrMND0Nxf
+         CIEA==
+X-Forwarded-Encrypted: i=1; AFNElJ98/0TEM02PiriUgmViygP5DTPuyWO9sf9R/3hvJd4vtwsdVYC/d/iFo5JFESSh8ojBoFOpG1/7n+NxND5Kzg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzIgm48k/2UeJlMP79z7wWBj+fSe7n7a3cVwiv7t6UkDzjlwvME
+	X9/vxr5/WoDxOOkkKUMO1MiKSMoNsdyXKo0rQMitosQPYzmd4K0RUidL0O2B3eYrO787hwm0zfU
+	S16Wgsy4HrZ8drUJ2VsIlbE17sHZeUzqjscHM8aWvNOeFGfOQYj/1Apr+/zOx9HLufDlofUZv5A
+	==
+X-Gm-Gg: AeBDievM4ykVM3pC68qkxbCM0tL8wC5jv+/u0GlCUDECjwBRksmtkR3m1ZV5gBOewKM
+	RTtLWlyXKGUPeBeDO3yi7Mb5G9AvTMGzL6YCa6omppjW9vzPijgO/t2Oj3DHczwJhZ9W5mffZxO
+	qABO1+CqHjbUjGBznsVVfbYJw13fbIBky1zOmE8bJAbJ7dlu6uzaP3xXUNkcj5ceSmQeCJwHvFF
+	LF4/ggnvHbQRr6875RL5wXZ+xXsW8WuzjYsCxy2KDCfDuTV6PyPPmisN0d6Ustq4iqqocXWiIbF
+	5Neo44+GGN9EAa8w7EToQB3NTvrb1yFJtFyRwvuwty9HaZ+Etkk8ceRc3Bct6gsn90uYiIORLNH
+	kUG3VN9aI11wTykzT5IJxVZQaI49akz/Zqs39a1STI0IPyi49OvNdfvXgqr3lLhSzDI4=
+X-Received: by 2002:a05:600c:64c7:b0:488:a2ac:a334 with SMTP id 5b1f17b1804b1-488fb73aa3bmr388953895e9.3.1776933041303;
+        Thu, 23 Apr 2026 01:30:41 -0700 (PDT)
+X-Received: by 2002:a05:600c:64c7:b0:488:a2ac:a334 with SMTP id 5b1f17b1804b1-488fb73aa3bmr388952835e9.3.1776933040577;
+        Thu, 23 Apr 2026 01:30:40 -0700 (PDT)
+Received: from [192.168.88.32] ([150.228.93.216])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-488fb77b001sm238148475e9.3.2026.04.23.01.30.38
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 23 Apr 2026 01:30:40 -0700 (PDT)
+Message-ID: <31829d8e-f760-4460-8f38-613f26206d87@redhat.com>
+Date: Thu, 23 Apr 2026 10:30:37 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="UnahIpJ2gghwFW0k"
-Content-Disposition: inline
-In-Reply-To: <20260421-airoha-fix-bql-v1-1-f135afe4275b@kernel.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net v2] net: dsa: mt7530: fix .get_stats64 sleeping in
+ atomic context
+To: Daniel Golle <daniel@makrotopia.org>,
+ "Chester A. Unal" <chester.a.unal@arinc9.com>, Andrew Lunn <andrew@lunn.ch>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Russell King <linux@armlinux.org.uk>,
+ Christian Marangi <ansuelsmth@gmail.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Cc: Frank Wunderlich <frank.wunderlich@linux.dev>,
+ John Crispin <john@phrozen.org>
+References: <58aff8b5b1d691872342a6ffd3315f27854788a6.1776595131.git.daniel@makrotopia.org>
+From: Paolo Abeni <pabeni@redhat.com>
+In-Reply-To: <58aff8b5b1d691872342a6ffd3315f27854788a6.1776595131.git.daniel@makrotopia.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: tk_ltffbDbNAZtUOdBza8-mukcKyRLEEmwzauKUZfeE_1776933042
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_011224_547385_159511A7 
-X-CRM114-Status: GOOD (  26.62  )
+X-CRM114-CacheID: sfid-20260423_013102_398043_17F226B8 
+X-CRM114-Status: GOOD (  23.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,134 +121,139 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---UnahIpJ2gghwFW0k
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> Fix a possible BQL imbalance in airoha_dev_xmit(), where inflight
-> packets are accounted only for the AIROHA_NUM_TX_RING netdev TX
-> queues. The queue index is computed as:
->=20
->     qid =3D skb_get_queue_mapping(skb) % ARRAY_SIZE(qdma->q_tx)
->     txq =3D netdev_get_tx_queue(dev, qid);
->=20
-> However, airoha_qdma_tx_napi_poll() accounts completions across all
-> netdev TX queues (num_tx_queues), leading to inconsistent BQL
-> accounting.
->=20
-> Also reset all netdev TX queues in the ndo_stop callback.
->=20
-> Fixes: 1d304174106c ("net: airoha: Implement BQL support")
-> Fixes: c9f947769b77 ("net: airoha: Reset BQL stopping the netdevice")
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+On 4/19/26 12:43 PM, Daniel Golle wrote:
+> The .get_stats64 callback runs in atomic context, but on
+> MDIO-connected switches every register read acquires the MDIO bus
+> mutex, which can sleep:
+> [   12.645973] BUG: sleeping function called from invalid context at kernel/locking/mutex.c:609
+> [   12.654442] in_atomic(): 0, irqs_disabled(): 0, non_block: 0, pid: 759, name: grep
+> [   12.663377] preempt_count: 0, expected: 0
+> [   12.667410] RCU nest depth: 1, expected: 0
+> [   12.671511] INFO: lockdep is turned off.
+> [   12.675441] CPU: 0 UID: 0 PID: 759 Comm: grep Tainted: G S      W           7.0.0+ #0 PREEMPT
+> [   12.675453] Tainted: [S]=CPU_OUT_OF_SPEC, [W]=WARN
+> [   12.675456] Hardware name: Bananapi BPI-R64 (DT)
+> [   12.675459] Call trace:
+> [   12.675462]  show_stack+0x14/0x1c (C)
+> [   12.675477]  dump_stack_lvl+0x68/0x8c
+> [   12.675487]  dump_stack+0x14/0x1c
+> [   12.675495]  __might_resched+0x14c/0x220
+> [   12.675504]  __might_sleep+0x44/0x80
+> [   12.675511]  __mutex_lock+0x50/0xb10
+> [   12.675523]  mutex_lock_nested+0x20/0x30
+> [   12.675532]  mt7530_get_stats64+0x40/0x2ac
+> [   12.675542]  dsa_user_get_stats64+0x2c/0x40
+> [   12.675553]  dev_get_stats+0x44/0x1e0
+> [   12.675564]  dev_seq_printf_stats+0x24/0xe0
+> [   12.675575]  dev_seq_show+0x14/0x3c
+> [   12.675583]  seq_read_iter+0x37c/0x480
+> [   12.675595]  seq_read+0xd0/0xec
+> [   12.675605]  proc_reg_read+0x94/0xe4
+> [   12.675615]  vfs_read+0x98/0x29c
+> [   12.675625]  ksys_read+0x54/0xdc
+> [   12.675633]  __arm64_sys_read+0x18/0x20
+> [   12.675642]  invoke_syscall.constprop.0+0x54/0xec
+> [   12.675653]  do_el0_svc+0x3c/0xb4
+> [   12.675662]  el0_svc+0x38/0x200
+> [   12.675670]  el0t_64_sync_handler+0x98/0xdc
+> [   12.675679]  el0t_64_sync+0x158/0x15c
+> 
+> For MDIO-connected switches, poll MIB counters asynchronously using a
+> delayed workqueue every second and let .get_stats64 return the cached
+> values under a spinlock. A mod_delayed_work() call on each read
+> triggers an immediate refresh so counters stay responsive when queried
+> more frequently.
+> 
+> MMIO-connected switches (MT7988, EN7581, AN7583) are not affected
+> because their regmap does not sleep, so they continue to read MIB
+> counters directly in .get_stats64.
+> 
+> Fixes: 88c810f35ed5 ("net: dsa: mt7530: implement .get_stats64")
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> Acked-by: Chester A. Unal <chester.a.unal@arinc9.com>
+> Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 > ---
->  drivers/net/ethernet/airoha/airoha_eth.c | 7 +++----
->  1 file changed, 3 insertions(+), 4 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
-net/airoha/airoha_eth.c
-> index 19f67c7dd8e1..6c7390f0de5d 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -929,10 +929,9 @@ static int airoha_qdma_tx_napi_poll(struct napi_stru=
-ct *napi, int budget)
->  		q->queued--;
-> =20
->  		if (skb) {
-> -			u16 queue =3D skb_get_queue_mapping(skb);
->  			struct netdev_queue *txq;
-> =20
-> -			txq =3D netdev_get_tx_queue(skb->dev, queue);
-> +			txq =3D skb_get_tx_queue(skb->dev, skb);
->  			netdev_tx_completed_queue(txq, 1, skb->len);
->  			dev_kfree_skb_any(skb);
->  		}
-> @@ -1711,7 +1710,7 @@ static int airoha_dev_stop(struct net_device *dev)
->  	if (err)
->  		return err;
-> =20
-> -	for (i =3D 0; i < ARRAY_SIZE(qdma->q_tx); i++)
-> +	for (i =3D 0; i < dev->num_tx_queues; i++)
->  		netdev_tx_reset_subqueue(dev, i);
-> =20
->  	airoha_set_gdm_port_fwd_cfg(qdma->eth, REG_GDM_FWD_CFG(port->id),
-> @@ -2002,7 +2001,7 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *=
-skb,
-> =20
->  	spin_lock_bh(&q->lock);
-> =20
-> -	txq =3D netdev_get_tx_queue(dev, qid);
-> +	txq =3D skb_get_tx_queue(dev, skb);
->  	nr_frags =3D 1 + skb_shinfo(skb)->nr_frags;
-> =20
->  	if (q->queued + nr_frags >=3D q->ndesc) {
->=20
-> ---
-> base-commit: a663bac71a2f0b3ac6c373168ca57b2a6e6381aa
-> change-id: 20260421-airoha-fix-bql-7fff7cebbc9a
->=20
-> Best regards,
-> --=20
-> Lorenzo Bianconi <lorenzo@kernel.org>
->=20
+> v2:
+>  * use spin_lock_bh()/spin_unlock_bh() to prevent potential deadlock
+>  * rate-limit mod_delayed_work() refresh to at most once per 100ms
+>  * move cancel_delayed_work_sync() after dsa_unregister_switch()
+>  * add mt753x_teardown() callback to cancel the stats work
+>  * fix commit message
+> 
+>  drivers/net/dsa/mt7530.c | 66 ++++++++++++++++++++++++++++++++++++++--
+>  drivers/net/dsa/mt7530.h |  8 +++++
+>  2 files changed, 71 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index b9423389c2ef0..8c1186ba2279b 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -25,6 +25,9 @@
+>  
+>  #include "mt7530.h"
+>  
+> +#define MT7530_STATS_POLL_INTERVAL	(1 * HZ)
+> +#define MT7530_STATS_RATE_LIMIT		(HZ / 10)
+> +
+>  static struct mt753x_pcs *pcs_to_mt753x_pcs(struct phylink_pcs *pcs)
+>  {
+>  	return container_of(pcs, struct mt753x_pcs, pcs);
+> @@ -906,10 +909,9 @@ static void mt7530_get_rmon_stats(struct dsa_switch *ds, int port,
+>  	*ranges = mt7530_rmon_ranges;
+>  }
+>  
+> -static void mt7530_get_stats64(struct dsa_switch *ds, int port,
+> -			       struct rtnl_link_stats64 *storage)
+> +static void mt7530_read_port_stats64(struct mt7530_priv *priv, int port,
+> +				     struct rtnl_link_stats64 *storage)
+>  {
+> -	struct mt7530_priv *priv = ds->priv;
+>  	uint64_t data;
+>  
+>  	/* MIB counter doesn't provide a FramesTransmittedOK but instead
+> @@ -951,6 +953,45 @@ static void mt7530_get_stats64(struct dsa_switch *ds, int port,
+>  			       &storage->rx_crc_errors);
+>  }
+>  
+> +static void mt7530_stats_poll(struct work_struct *work)
+> +{
+> +	struct mt7530_priv *priv = container_of(work, struct mt7530_priv,
+> +						stats_work.work);
+> +	struct rtnl_link_stats64 stats = {};
+> +	struct dsa_port *dp;
+> +	int port;
+> +
+> +	dsa_switch_for_each_user_port(dp, priv->ds) {
+> +		port = dp->index;
+> +
+> +		mt7530_read_port_stats64(priv, port, &stats);
+> +
+> +		spin_lock_bh(&priv->stats_lock);
+> +		priv->ports[port].stats = stats;
+> +		spin_unlock_bh(&priv->stats_lock);
+> +	}
+> +
+> +	priv->stats_last = jiffies;
+> +	schedule_delayed_work(&priv->stats_work,
+> +			      MT7530_STATS_POLL_INTERVAL);
+> +}
+> +
+> +static void mt7530_get_stats64(struct dsa_switch *ds, int port,
+> +			       struct rtnl_link_stats64 *storage)
+> +{
+> +	struct mt7530_priv *priv = ds->priv;
+> +
+> +	if (priv->bus) {
+> +		spin_lock_bh(&priv->stats_lock);
+> +		*storage = priv->ports[port].stats;
+> +		spin_unlock_bh(&priv->stats_lock);
+> +		if (time_after(jiffies, priv->stats_last + MT7530_STATS_RATE_LIMIT))
 
-commenting on Sashiko reported issues:
-https://sashiko.dev/#/patchset/20260421-airoha-fix-bql-v1-1-f135afe4275b%40=
-kernel.org
+Since both the `stats_last` access and read are lockless, it looks like
+they may race leading wrong/unexpected delay. I think it would be better
+move both under the spinlock (yes, the write will happen multiple times
+per stats update, I don't think it will matter).
 
-- This isn't a bug in this patch, but does using 0xff as a sentinel value c=
-ause a permanent stall?
-  I do not think this is a real issue since, according to my understanding,=
- the NIC
-  never writes 0xff in irq_q queue.
+/P
 
-- This is another pre-existing issue, but does freeing the SKB here cause a=
- DMA use-after-free
-  for multi-fragment packets?
-  This issue is not related to this patch, and I will fix it in a dedicated
-  patch storing the skb pointer in the last descriptor in airoha_dev_xmit()
-
-- Since the QDMA hardware and NAPI instance are shared among multiple ports=
- (qdma->users),
-  could active NAPI polling cause a BUG_ON() in dql_completed()?
-  This is not an issue related to this patch since here we are just resetti=
-ng
-  all the netdev tx queues instead of just the first ARRAY_SIZE(qdma->q_tx)
-  ones.
-
-- This isn't a bug in this patch, but does failing to wait for the DMA engi=
-nes to become
-  idle before unmapping buffers cause memory corruption?
-  This issue is not related to this patch and it will be fixed with a dedic=
-ated
-  patch.
-
-- This is also pre-existing, but can this mapping cause a kernel panic on h=
-ighmem systems?
-  Can we have fragments in high memory? e.g on ARM architecture? Anyway, as
-  pointed out by Sashiko, this issue is not related to this patch.
-
-- This isn't introduced here, but does this logic cause a permanent TX stal=
-l?
-  this issue is already fixed in the following patch:
-  https://patchwork.kernel.org/project/netdevbpf/patch/20260421-airoha-xmit=
--stop-condition-v1-1-e670d6a48467@kernel.org/
-
-Regards,
-Lorenzo
-
---UnahIpJ2gghwFW0k
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaenUZQAKCRA6cBh0uS2t
-rG34AP9NRfrm2/98XzQnX8x/rvejxWGK4oyc/yAPXY8BBSwGWgEA0/gbqM6hiF2B
-TP2H8hOsiFsTF5in8IVx3jPq3E8e7Qk=
-=ET9C
------END PGP SIGNATURE-----
-
---UnahIpJ2gghwFW0k--
 
