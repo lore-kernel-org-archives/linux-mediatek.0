@@ -4,117 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE4CCF9935C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 09:26:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1D92F99362
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 09:47:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Vg4xk0BL9Vx4AIBY/T0FrCStojWIiXvnfyD7V05c31A=; b=ypbrXasijScGLEEWt6sHyeuJ6m
-	il5/iQoErzXFU/bGOmmmtG3C6ned9kCxrkIq1ZRjemuNp8ylJevxr4RirjfqBxdvkECDoE25GMZh8
-	tQVOYXAuGIJ2bT20rtNMLgYUbt7xpcmiXhTHDz64OwwEKm5j9QNNbkhYZGG/2KjUCa6/1YH+hhH/0
-	pvSp7C3Noaj0YlWKup8ZFZtL55GwDdQgNQ8WmXyJH1bYcWFEzfNXc+1BZagZuEPld8+l8e2Lh04UE
-	/xMVWWtIl72i9TkvzMbG8qTEdKM1AH2+fhJN5y3si7dbYiXTN5mIIFdVdJ+mImAzYTpyO/abj91WK
-	ZlaHzjHw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=j3F/IU0CHjkdSjzzM41sj0gPBrpyytgNYmXgRyWNTEE=; b=KHHwavVL7CoEFP5DybLVxZV3db
+	i2XyKeC8nZ9wa5OgR5TwcBgV/YqjZUevKCrmVD6h1imHUXpBGalmyfQJDDYT0qO1+J0W8DOT/1kjT
+	PVfydXyDf69Z2OYkJ+lItVt+MdikECbT2zzWOhUcZ1zhmTur4pBJ1q9BJDJBZu2lYTsyoSRp5zaFt
+	rjpj26zOH6Tmwe3ItB1Jk8gBR6ISHe+zjN5mI85vJyItMrcgiamp4EZ1P6yCHN6w0Hm1QuVC5fO3G
+	04Isl7UAJft9no9ajG32BwdDL8rPBucDH1Wr1xrAynLZNVfs9CVPUBAXjVmwyfXYRBxPWI0qdrfl4
+	x1PsvAkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqKa-0000000BOMF-41v1;
-	Thu, 23 Apr 2026 09:26:44 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1wFqeN-0000000BPzz-2m8T;
+	Thu, 23 Apr 2026 09:47:11 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqKX-0000000BOK3-3uZW;
-	Thu, 23 Apr 2026 09:26:43 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 42DE44E42A97;
-	Thu, 23 Apr 2026 09:26:40 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 13CBB60495;
-	Thu, 23 Apr 2026 09:26:40 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 0C98910460B45;
-	Thu, 23 Apr 2026 11:26:22 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1776936396; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=Vg4xk0BL9Vx4AIBY/T0FrCStojWIiXvnfyD7V05c31A=;
-	b=MbRwzF1RKivDu9bPqrlwuig+QvzBShR5Qm4bzeer4rlUTd/VkEfPYVkgQt0dIFHTYVIxBL
-	7uy8hIGh0JcidF9EBhClpBsWLfPaSNz2P5H+pUiiSsrRrUKKls8FCitgNNTqFNxwdjuFmI
-	E8G/b5YW0whkI92QeVxeOn1CYBh+G5ryE97MzM5ozIh+dckbWCx7SO+OPydyWLQBZ87bFY
-	4rz7gtomP33u4jmQr3TfNqKG7l/WZhuUz9GPxB5TPq6H02YR0ja6XdAxWFvDWACfXL3eRV
-	HrLFE75DsWEEKPqSsr5w32y5ECCP7JRX5NuIxNTPm5AyZikOYqSJ7uAn3r7bYg==
-From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Thu, 23 Apr 2026 11:17:28 +0200
-Subject: [PATCH v2 34/41] drm/mxsfb/lcdif: remove now-redundant call to
- drm_connector_attach_encoder()
+	id 1wFqeL-0000000BPyZ-1Lud;
+	Thu, 23 Apr 2026 09:47:10 +0000
+X-UUID: 631d0c163ef911f19e7563141e833ce8-20260423
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From; bh=j3F/IU0CHjkdSjzzM41sj0gPBrpyytgNYmXgRyWNTEE=;
+	b=MySK/MWP+Wk9w0Rn8lVgUYhiIMTAAHKkCDhU7v0LJicgzB9dDgZuifR614oYr78BvToWkWsGBOIXjBUq4YdWuz+ymfK7eK4M76xlvyRvssAc8UDwflHh6ivqX4kG9pNFRnEWLWNHQjKkm2Nt3oi5oHwJZgcRzfZZWB7jz5KtfRo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.12,REQID:0ec039f2-fbb6-461e-b3f2-d3a8ac9e4f95,IP:0,U
+	RL:0,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:e7bac3a,CLOUDID:9795cb8f-6df4-4a3d-a7a4-fbdc42d669ce,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|865|888|898,TC:-5,Cont
+	ent:0|15|50,EDM:2,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,
+	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 631d0c163ef911f19e7563141e833ce8-20260423
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <kyrie.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1593709922; Thu, 23 Apr 2026 02:47:05 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Thu, 23 Apr 2026 17:47:03 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Thu, 23 Apr 2026 17:47:02 +0800
+From: Kyrie Wu <kyrie.wu@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+	<krzk+dt@kernel.org>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Kyrie Wu <kyrie.wu@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH v14 02/12] media: mediatek: jpeg: fix jpeg buffer payload size setting
+Date: Thu, 23 Apr 2026 17:46:46 +0800
+Message-ID: <20260423094656.32044-3-kyrie.wu@mediatek.com>
+X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20260423094656.32044-1-kyrie.wu@mediatek.com>
+References: <20260423094656.32044-1-kyrie.wu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-34-2ae6ca69b390@bootlin.com>
-References: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
-In-Reply-To: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
- Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Sasha Finkelstein <fnkl.kernel@gmail.com>, Janne Grunau <j@jannau.net>, 
- Liu Ying <victor.liu@nxp.com>, Douglas Anderson <dianders@chromium.org>, 
- Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, 
- Lucas Stach <l.stach@pengutronix.de>, Frank Li <Frank.Li@nxp.com>, 
- Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
- Paul Cercueil <paul@crapouillou.net>, 
- Anitha Chrisanthus <anitha.chrisanthus@intel.com>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
- Rob Clark <robin.clark@oss.qualcomm.com>, 
- Dmitry Baryshkov <lumag@kernel.org>, 
- Abhinav Kumar <abhinav.kumar@linux.dev>, 
- Jessica Zhang <jesszhan0024@gmail.com>, Sean Paul <sean@poorly.run>, 
- Marijn Suijten <marijn.suijten@somainline.org>, 
- Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
- Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Thierry Reding <thierry.reding@gmail.com>, 
- Mikko Perttunen <mperttunen@nvidia.com>, 
- Jonathan Hunter <jonathanh@nvidia.com>, 
- Icenowy Zheng <zhengxingda@iscas.ac.cn>, Jingoo Han <jingoohan1@gmail.com>, 
- Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
- Kyungmin Park <kyungmin.park@samsung.com>, 
- Krzysztof Kozlowski <krzk@kernel.org>, 
- Alim Akhtar <alim.akhtar@samsung.com>, 
- Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
- Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, 
- Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
- Geert Uytterhoeven <geert+renesas@glider.be>, 
- Magnus Damm <magnus.damm@gmail.com>, Biju Das <biju.das.jz@bp.renesas.com>, 
- Marek Vasut <marex@denx.de>, Stefan Agner <stefan@agner.ch>, 
- Jyri Sarha <jyri.sarha@iki.fi>, Michal Simek <michal.simek@amd.com>
-Cc: Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>, 
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>, asahi@lists.linux.dev, 
- imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
- linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
- freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
- linux-tegra@vger.kernel.org, linux-samsung-soc@vger.kernel.org, 
- linux-renesas-soc@vger.kernel.org
-X-Mailer: b4 0.15.2
-X-Last-TLS-Session-Version: TLSv1.3
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_022642_207162_ACACE9A1 
-X-CRM114-Status: UNSURE (   8.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260423_024709_369886_EE471FFD 
+X-CRM114-Status: GOOD (  13.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,33 +91,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-drm_connector_attach_encoder() is now called by
-drm_bridge_connector_init().
+For multi-core jpegdec, if one core gets resolution change event,
+the payload size, representing the size of Y/C data, needs to change.
+But others are decoding at the same time and it can not be changed
+immediately, which results in the payload size to not match the real
+buffer length.
+The payload size must less than the real buffer length to remove
+the warnning logs.
 
-Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Fixes: 0fa49df4222f ("media: mtk-jpegdec: support jpegdec multi-hardware")
+Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
 ---
- drivers/gpu/drm/mxsfb/lcdif_drv.c | 6 ------
- 1 file changed, 6 deletions(-)
+ .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 19 ++++++++++++++-----
+ 1 file changed, 14 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/gpu/drm/mxsfb/lcdif_drv.c b/drivers/gpu/drm/mxsfb/lcdif_drv.c
-index 7f07ae24e0dc..f5bb59cd5028 100644
---- a/drivers/gpu/drm/mxsfb/lcdif_drv.c
-+++ b/drivers/gpu/drm/mxsfb/lcdif_drv.c
-@@ -99,12 +99,6 @@ static int lcdif_attach_bridge(struct lcdif_drm_private *lcdif)
- 			return dev_err_probe(dev, PTR_ERR(connector),
- 					     "Failed to init bridge_connector for endpoint%u\n",
- 					     of_ep.id);
--
--		ret = drm_connector_attach_encoder(connector, encoder);
--		if (ret)
--			return dev_err_probe(dev, ret,
--					     "Failed to attach connector for endpoint%u\n",
--					     of_ep.id);
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index 30f684ac9318..10d3bfd7ddd5 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -702,6 +702,7 @@ static int mtk_jpeg_buf_prepare(struct vb2_buffer *vb)
+ 	struct mtk_jpeg_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
+ 	struct mtk_jpeg_q_data *q_data = NULL;
+ 	struct v4l2_plane_pix_format plane_fmt = {};
++	size_t max_size;
+ 	int i;
+ 
+ 	q_data = mtk_jpeg_get_q_data(ctx, vb->vb2_queue->type);
+@@ -710,12 +711,20 @@ static int mtk_jpeg_buf_prepare(struct vb2_buffer *vb)
+ 
+ 	for (i = 0; i < q_data->fmt->colplanes; i++) {
+ 		plane_fmt = q_data->pix_mp.plane_fmt[i];
++		max_size = plane_fmt.sizeimage;
++
+ 		if (ctx->enable_exif &&
+-		    q_data->fmt->fourcc == V4L2_PIX_FMT_JPEG)
+-			vb2_set_plane_payload(vb, i, plane_fmt.sizeimage +
+-					      MTK_JPEG_MAX_EXIF_SIZE);
+-		else
+-			vb2_set_plane_payload(vb, i,  plane_fmt.sizeimage);
++			q_data->fmt->fourcc == V4L2_PIX_FMT_JPEG) {
++			max_size += MTK_JPEG_MAX_EXIF_SIZE;
++
++			vb2_set_plane_payload(vb, i,
++					      MIN(vb->planes[i].length,
++						  max_size));
++		} else {
++			vb2_set_plane_payload(vb, i,
++					      MIN(plane_fmt.sizeimage,
++						  vb->planes[i].length));
++		}
  	}
  
  	return 0;
-
 -- 
-2.53.0
+2.45.2
 
 
