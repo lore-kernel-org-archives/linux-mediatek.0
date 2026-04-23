@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A986F99344
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 09:19:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 360F6F9935C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 09:19:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JPQ1lTMTq7lc8ZTbKcFmQ9424xb17x4CJbO7aXHEFro=; b=O1nbTgFCzUWhUS3gbYO81Qpn2z
-	U5uuloZ5jTMSYKTK2TsFgZr3L9lzx8MZ2CIzV1XS4zXI3r+aXBWEeIG8WimjOUg38EdzDcdTyhVwy
-	e+Q76xY8IW8+4PeNbzoCSgsndlP50DkYIxXDBkWxdpEJUYJyxG5zZkNKHmAj0YsDcop00vXux2B/j
-	HxC29xOq1y27GwShAoN7Mamlc9v4L6fX1zL9OjjrV1/IwvEFrvYu0ZBL6JoqCaePxxsxGUEy0vTyY
-	GLp7kCU5YaezI94ZOQJ3vNpMmEc+zsogDjOQ0hmdzcmRN+QQe/Ivy1GP4CWrfRKtnEWzyYDSsaBG+
-	gnihTgAw==;
+	bh=Py4ZG9Ve+vGABiHsnZoLgOkRYw2LydVB8/VbDibAN1o=; b=FHzAuxSgzN7ltag9YjAMtHoxhc
+	lfj3LEENLKWoDMlZeKc5i2x3iq/Ju9mgcP9xRC5bNVM/9160THxIGmUIoXd7VcQvy13xWhXsObXi6
+	0e8aTHY+C1xRbmPz4rvPyZt406422/bPPcLE9Zklq8kXXtyZVG3V2yl16gxHPo4OTQMMPl3n6gwsA
+	IBGkt840Qh3nzu+KNuFkKgJxIm/gUyjNXEL3kWPIwlnE+gbT+/++Jc4ia7apDyt7RcAbWl2T/Dxjj
+	1D3ES3nFFRZ5uQtwJrH3JRnDobXV+Jd0F2hUCu9Ft+H0HIsgsKNbjNCIPNKm8cmhFJm5kdsDRU3sF
+	LwljHy/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqDO-0000000BKrX-15Dd;
-	Thu, 23 Apr 2026 09:19:18 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+	id 1wFqDg-0000000BL0A-15bC;
+	Thu, 23 Apr 2026 09:19:36 +0000
+Received: from smtpout-04.galae.net ([185.171.202.116])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqDL-0000000BKpk-09FR;
-	Thu, 23 Apr 2026 09:19:16 +0000
+	id 1wFqDc-0000000BKxZ-1SDB;
+	Thu, 23 Apr 2026 09:19:34 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id 57D341A33BC;
-	Thu, 23 Apr 2026 09:19:13 +0000 (UTC)
+	by smtpout-04.galae.net (Postfix) with ESMTPS id CBC67C5EF0B;
+	Thu, 23 Apr 2026 09:20:11 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 2B28D60495;
-	Thu, 23 Apr 2026 09:19:13 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id D0E5D10460B12;
-	Thu, 23 Apr 2026 11:18:52 +0200 (CEST)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 94BE4604EB;
+	Thu, 23 Apr 2026 09:19:30 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 89CC310460A92;
+	Thu, 23 Apr 2026 11:19:09 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1776935948; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1776935965; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=JPQ1lTMTq7lc8ZTbKcFmQ9424xb17x4CJbO7aXHEFro=;
-	b=UrVP9s5jR78/wcgnU6LYrYQBepfnSfyB3s+SXA1xkoxjWgU96RHBI9uV8zS9eL3f+cdCPY
-	bmFbWmr/42tPkKZEY7TU9fitL2MzIx412Mr5FdGIArXCwd41wjK1THwWbRs6KNZPU263oo
-	oKsYpgctzN2mUbmiIxpAtufHCssDEhGdC00Ltk4mKWnnKkHEH6DeP2c2JjEkgT7sNNEVaB
-	PGrK4uXxx2DSj5qdKsXeYrs3ZfSqNK7t2XeZO5Ih7b5tBlN6nAsp4E1Gm1OphnUE5qKmNR
-	NhIkxEk8vF+dE/Y0TsL47w+WuFcgq4xsY/8OIRUzqfOxrg2Ls/eQ829iZgSp5Q==
+	bh=Py4ZG9Ve+vGABiHsnZoLgOkRYw2LydVB8/VbDibAN1o=;
+	b=Fyomd8ys8EnQEnUJxZBlYtJJsdkbunm0P6CT7b02ptLVXPfmap79ONk4+5Ths2T7202amI
+	kMaK8Fs2G+jb14Y9RU2DssCbpOln14t15Yhq96OWWVwefBL8uj67qnK4ijhYRIZIVPTBBf
+	peSIpypSnEzX+e4zoSkGg9TNRXMMkUcmfodRD9hbH9ULfql9D7gq7+J0besijlQz33DZ7p
+	ni/l5ceQjD9tJ8b5DwttN5bm1FJDWqRFIrQcYSO9qnZ7Yeuosp/AcX+AZP2zPDRy6f4tuf
+	2Fxa/5SCnRLeV7430xTovNZ4Mw9uDC9oDqEc6kqUDo1T63fRhd4lCz3AQMkZcw==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Thu, 23 Apr 2026 11:16:59 +0200
-Subject: [PATCH v2 05/41] drm/bridge: ti-sn65dsi86: remove now-redundant
- call to drm_connector_attach_encoder()
+Date: Thu, 23 Apr 2026 11:17:00 +0200
+Subject: [PATCH v2 06/41] drm/imx/dcss: remove now-redundant call to
+ drm_connector_attach_encoder()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-5-2ae6ca69b390@bootlin.com>
+Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-6-2ae6ca69b390@bootlin.com>
 References: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 In-Reply-To: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
@@ -112,8 +112,8 @@ Cc: Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>,
 X-Mailer: b4 0.15.2
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_021915_231842_3DF68DDF 
-X-CRM114-Status: UNSURE (   7.96  )
+X-CRM114-CacheID: sfid-20260423_021932_535783_BFA09EB6 
+X-CRM114-Status: UNSURE (   8.61  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -134,22 +134,22 @@ drm_bridge_connector_init().
 
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
- drivers/gpu/drm/bridge/ti-sn65dsi86.c | 2 --
+ drivers/gpu/drm/imx/dcss/dcss-kms.c | 2 --
  1 file changed, 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/ti-sn65dsi86.c b/drivers/gpu/drm/bridge/ti-sn65dsi86.c
-index 98d64ad791d0..1336ffab103f 100644
---- a/drivers/gpu/drm/bridge/ti-sn65dsi86.c
-+++ b/drivers/gpu/drm/bridge/ti-sn65dsi86.c
-@@ -776,8 +776,6 @@ static int ti_sn_bridge_attach(struct drm_bridge *bridge,
- 		goto err_initted_aux;
+diff --git a/drivers/gpu/drm/imx/dcss/dcss-kms.c b/drivers/gpu/drm/imx/dcss/dcss-kms.c
+index 3633e8f3aff6..50bd7f36d36d 100644
+--- a/drivers/gpu/drm/imx/dcss/dcss-kms.c
++++ b/drivers/gpu/drm/imx/dcss/dcss-kms.c
+@@ -103,8 +103,6 @@ static int dcss_kms_bridge_connector_init(struct dcss_kms_dev *kms)
+ 		return PTR_ERR(kms->connector);
  	}
  
--	drm_connector_attach_encoder(pdata->connector, pdata->bridge.encoder);
+-	drm_connector_attach_encoder(kms->connector, encoder);
 -
  	return 0;
+ }
  
- err_initted_aux:
 
 -- 
 2.53.0
