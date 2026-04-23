@@ -4,67 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11330F99344
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 09:23:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10345F99344
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 09:23:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9rSCpGcHOa1+mXR0a2bgn/kZdo39DrzyrKDarx7ZrvQ=; b=WrFZtMoR5QfAbrf1Y+/xCRc9MP
-	WEcbjs6BgL8ZhTc0bRjuVMf6GBXT/rJmXazbqXxfGJpR9uQ94XVoL0q0rDgEXlMBsep5iufepB/z2
-	O3OADPOXVKKY9GD1fFngxAJlNM4BDIGuT/mVKmZuo/rPdOEuKPhO/ffvOAaGbZtG7e3tn4HunFJ/k
-	oTOK0NnEI+LCZE6IA0g9GX6zQCV4ca5e6WBiYC9qP3ZyrY3mkkcxhIxL1GKnNB5W4g0Vh+Od5JNDW
-	N0Wh2rG0iudtjQ2ryfQ53cFz6TVE4Fo3jenAmLI8bRT+h9YVzGgMiarWrslXXOImbIDXYkOCJ5Eqj
-	XFI2/G7Q==;
+	bh=zuskyB/Ofn9FQlEl+3ISgazhLidutYQWgyeE9Pw9W30=; b=jcrBcyg8dNLf/XLOPDLnrz6mll
+	C3W0dOtYP56eeKJV/Cu7+hRQluyvaYdPbl2L5aENztbZEENujPLDPIdLhsIWcjGnBxjvxCV59VIxO
+	wSQrWTCDhBmGewsk0sP6dTi2Poeq2IT8USiGGtJJto0uVEQec79n5F6xH9ZwPfjLc7QAx19ZahtHG
+	CF4BVlCBPAA+ioZbx/CuD4wyNj+jCUqJKjOsy5Mkts+BXYZVPf2BYFNn9Fz+TG73FYb6FFJPjolZy
+	Mkf/lSLRIJxBPRxSgFZYsGzW4jaABCRPa3+2kpTRTAipkBWT+UKnhBRHwdWhhnNRkjIlFlBWowtJn
+	SqJU6OIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqHF-0000000BMox-0q4x;
-	Thu, 23 Apr 2026 09:23:17 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wFqHV-0000000BMvI-0bdW;
+	Thu, 23 Apr 2026 09:23:33 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqHD-0000000BMoG-227t;
-	Thu, 23 Apr 2026 09:23:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=9rSCpGcHOa1+mXR0a2bgn/kZdo39DrzyrKDarx7ZrvQ=; b=gkpn51Rp7Z0tlN4B3GvWtcKcmT
-	LzYNmrVACLz4x1BMv8BZYLhKcg77B+xS891vOxe/1QPdnrh7M6Az//adb3ZzIXBGWtUH6XaeDj2aO
-	+sdvOOe064j3rdZFfh7tsejYoPAL2KSVx5JZNDd4shEfF9s7gt3XbwrxGZY/eaf0i5iwvYN8kZ5BI
-	oFl6uXbub0m5u5zfZti/SaQw11RhwRn3qexrlehSnD78WJGec8wfoYVT4FQBRT2pikx/0SoEH/1dD
-	1nCIazQUi1cRfDqeJYosUNinRcFksoi5rK1LHuOBanK62EuZEc0iO5RUcmnB2WPODJD/16bKRCcVU
-	9MXJFiHA==;
-Received: from smtpout-03.galae.net ([185.246.85.4])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqHA-0000000Cj6h-2Mx5;
-	Thu, 23 Apr 2026 09:23:14 +0000
+	id 1wFqHR-0000000BMt7-2yA5;
+	Thu, 23 Apr 2026 09:23:31 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id E9AB54E42AC1;
-	Thu, 23 Apr 2026 09:23:11 +0000 (UTC)
+	by smtpout-02.galae.net (Postfix) with ESMTPS id B67711A33BB;
+	Thu, 23 Apr 2026 09:23:27 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id BBE28604EB;
-	Thu, 23 Apr 2026 09:23:11 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id E1CE210460C10;
-	Thu, 23 Apr 2026 11:22:49 +0200 (CEST)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 8123C60495;
+	Thu, 23 Apr 2026 09:23:27 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 5890F10460A92;
+	Thu, 23 Apr 2026 11:23:08 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1776936187; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1776936203; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=9rSCpGcHOa1+mXR0a2bgn/kZdo39DrzyrKDarx7ZrvQ=;
-	b=Dela7PCeCwV0XP6Eyi/vlbmf9cbREWrhYbwPnig4s4rcV3znSzlbNANpR+ipalBu07dagp
-	7j8/FU1+/maQzP3BUPWOI6nmYPQlbyGFnBJ4lK/m5/sqBuzaFN7DeHLfRMyF4zgqoEMGoH
-	sJfzVnRGTwaTTQMcjm9Y0saGEOkpMT8Wv0xFpiRzpxVE4ph+WvNHtofcRHZ2UomfXz+mN8
-	kYlLp9KzVZwdQVCjy64+ebMaeeTzmtyxoHMAyh+6ZJMbWp1G8yjnC6Nk9p3fHVaPeDloIx
-	UxmZsqyPDFGPFOETUlH8ZFjR4jziTdzrNCahwz08HonIgA/IQuJjddG8gcdmDQ==
+	bh=zuskyB/Ofn9FQlEl+3ISgazhLidutYQWgyeE9Pw9W30=;
+	b=DgLcSltqddZ3BB0ynH7ct5WsU/8SdSikELjoxYCnaPzY8xtRPeQuKGmBGPZC9lW9fQ96u5
+	P/pQAJW/pSkAR9wdbq6iwJ/3zsIhpxf8e857W/P7qFLFTJ4y9S6bTavlNhjhigb6H/O59C
+	viPUSkphixvnCvVU8UqX+kuCnvZf+Fjhxv2/J9e2cYR/N2XNam5QCpUuAtt3d9WsIJpyj+
+	wceSsnXejQqvEorJs6sG9VnyEOpAlF+XG5UdIOryeZ89At1OWzCiQkLA2lPEFhH4sf2Xhw
+	YPaBKaSBMzFXaRbU+dVjMfczGIOBelZ3a+iaDya+hewPLkF0ferLkEy//Jn4bw==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Thu, 23 Apr 2026 11:17:14 +0200
-Subject: [PATCH v2 20/41] drm/rockchip: rk3066_hdmi: remove now-redundant
- call to drm_connector_attach_encoder()
+Date: Thu, 23 Apr 2026 11:17:15 +0200
+Subject: [PATCH v2 21/41] drm/tegra: hdmi: remove now-redundant call to
+ drm_connector_attach_encoder()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-20-2ae6ca69b390@bootlin.com>
+Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-21-2ae6ca69b390@bootlin.com>
 References: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 In-Reply-To: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
@@ -126,8 +112,8 @@ Cc: Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>,
 X-Mailer: b4 0.15.2
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_102312_839778_34088CBB 
-X-CRM114-Status: UNSURE (   7.74  )
+X-CRM114-CacheID: sfid-20260423_022329_875904_2955B067 
+X-CRM114-Status: UNSURE (   8.54  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -148,22 +134,22 @@ drm_bridge_connector_init().
 
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
- drivers/gpu/drm/rockchip/rk3066_hdmi.c | 2 --
+ drivers/gpu/drm/tegra/hdmi.c | 2 --
  1 file changed, 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rk3066_hdmi.c b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-index 9066ee2d1dff..b64cbed26312 100644
---- a/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-+++ b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-@@ -731,8 +731,6 @@ rk3066_hdmi_register(struct drm_device *drm, struct rk3066_hdmi *hdmi)
- 		return ret;
- 	}
- 
--	drm_connector_attach_encoder(hdmi->connector, encoder);
+diff --git a/drivers/gpu/drm/tegra/hdmi.c b/drivers/gpu/drm/tegra/hdmi.c
+index 0adcd4244a42..10f02f35c866 100644
+--- a/drivers/gpu/drm/tegra/hdmi.c
++++ b/drivers/gpu/drm/tegra/hdmi.c
+@@ -1576,8 +1576,6 @@ static int tegra_hdmi_init(struct host1x_client *client)
+ 				connector);
+ 			return PTR_ERR(connector);
+ 		}
 -
- 	return 0;
- }
- 
+-		drm_connector_attach_encoder(connector, &hdmi->output.encoder);
+ 	} else {
+ 		drm_connector_init_with_ddc(drm, &hdmi->output.connector,
+ 					    &tegra_hdmi_connector_funcs,
 
 -- 
 2.53.0
