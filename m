@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 291B3F99360
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 09:24:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56AAFF9935C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 09:25:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=r0h0s7YDyJyC9H8LCIfiFkqD68Ja76vmnmg5ZXo2XJk=; b=fuEPKE6H+iwRUiwofALs0R/C7E
-	GIaBYgfnk5QHXshnRi2fJzeFwi2Wa30CkoLapE8sZGw6HcA5+NUxWVECzjxMM/e36Ni1JdCNiFmhw
-	7TG4w5NB29T2UzBoj6XFS9bPvUph84F0zmUqGtJ6MwDJAY76OunAx3VhkgEf9b2fzVKwHgBy9zYTs
-	9CApE5MFhczkdYRYuju6w6t/cLUigQT1PXrQy1WQkFDCoEXrIC59I50EbSEU6UyJ/luZuY0SdbLnB
-	Gxg5ZeDTVagGSW0i6MiLu+3NDphYSY7aKulYoqHD9eByUGrV5u4tqAG3eSs29O9taYJO/K1s0AE3y
-	lAz8zgdA==;
+	bh=ysFpOYHxK4XxRDe6j44Obp+iG3FlC4d6w1g6Nublw6Q=; b=qouTq106QqIV5iN6JNAmGfUN2v
+	Z+DAj4eoY/xR1yhTEcavO+zMEIM3cGgxh+FTLNrqJAHPIb5CSTwMrKMa/7hmneO0XfZTPOD4ZK8Pa
+	xXvcejCixp1LAoJb8GSMMetLIJlrXn6y6sPzwrf907pHnsVUxgoqKKc1Wl1jOM+X1Q57pUXpX1Oah
+	xtOBNdX6gwpxJYv6rZlXhy0D58/gTtXeGyxVY5srRFvUyBxBO+f1kBLBD1nugaxWlWOcXvLqvWCfz
+	KsXZc9UWLUCratdsQIlGfEJJFdr6ep71D9gO9XYJ5XGLKKjmWXB8tc9marT7JotPn4hDHaQE0DG+t
+	Ghutejmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqIg-0000000BNOs-1ckj;
-	Thu, 23 Apr 2026 09:24:46 +0000
+	id 1wFqIv-0000000BNVg-2Wkj;
+	Thu, 23 Apr 2026 09:25:01 +0000
 Received: from smtpout-04.galae.net ([185.171.202.116])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqId-0000000BNMr-1go1;
-	Thu, 23 Apr 2026 09:24:44 +0000
+	id 1wFqIr-0000000BNSr-48Re;
+	Thu, 23 Apr 2026 09:24:59 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id B5C96C5EF0D;
-	Thu, 23 Apr 2026 09:25:22 +0000 (UTC)
+	by smtpout-04.galae.net (Postfix) with ESMTPS id 6A74CC5EF0B;
+	Thu, 23 Apr 2026 09:25:37 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 7E981604EB;
-	Thu, 23 Apr 2026 09:24:41 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 25BA810460B45;
-	Thu, 23 Apr 2026 11:24:24 +0200 (CEST)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 34D7E60495;
+	Thu, 23 Apr 2026 09:24:56 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 03BC410460A92;
+	Thu, 23 Apr 2026 11:24:38 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1776936278; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1776936292; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=r0h0s7YDyJyC9H8LCIfiFkqD68Ja76vmnmg5ZXo2XJk=;
-	b=lJ5BUIl6jzyCIPBW14RSkt+AhFJ18npjsk9n4Tkdpmc6n4Uu64oFZe9YUvanHhSum6Sm/e
-	6yfMyRJxbuRXHDey+CuShL/DoWK2p/mKyCyDw0FKekOWzTxVSRI88q/o2GuryhvHXnQvtS
-	AjroJA+GX5iVF5XrI9FEJKZeo5T1/ko/yjzsFN/fJU4gH548dLInDtGSVTtLi+MFRRpYi2
-	Sg7l9IyZw/z8IddM4vFBXxnzgahc5J0Mk3j7ZKapVsW8/xCL744lilMZp7fgb2zD65/UiD
-	Aw2EcZ3ZSq+jmBPh4nLNUwbS6nUyiWDI2CvdCRES7fCTVW6UjrK6/vct6Rartg==
+	bh=ysFpOYHxK4XxRDe6j44Obp+iG3FlC4d6w1g6Nublw6Q=;
+	b=ZvGASxaHNC2qWhIDA78OWO9GP0xCgFtVn8q0hxmxfgCYs+3fFH2o/ghYKT2KADZhEXccuy
+	dFGF6kA7wUpy1inSEOg0yV3irbRgakCpwT9HrOVWgEUcVIxzxaCUzFfxBgRETgRWTwA+1x
+	ua5A7LHRDTlPRDmnZmJBhm0j6gldpkXn8z1+MZb/CrdV4BxrRSbaPtG9Y9uu7wWkih6/W6
+	cHdtfD654duy+oGPFAnrbF15qOLHKJQcAOxr8mWLnODvzsFsRIKY7bzBHYwjuQrbvBY52t
+	IgbaErECkV3UHyGbRWNrWGVYfNeewbo4ct+zDkko2BqHkcaCxgG8lydA5dvB9g==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Thu, 23 Apr 2026 11:17:20 +0200
-Subject: [PATCH v2 26/41] drm: rcar-du: encoder: remove now-redundant call
- to drm_connector_attach_encoder()
+Date: Thu, 23 Apr 2026 11:17:21 +0200
+Subject: [PATCH v2 27/41] drm: renesas: rz-du: rzg2l_du_encoder: remove
+ now-redundant call to drm_connector_attach_encoder()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-26-2ae6ca69b390@bootlin.com>
+Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-27-2ae6ca69b390@bootlin.com>
 References: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 In-Reply-To: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
@@ -112,9 +112,8 @@ Cc: Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>,
 X-Mailer: b4 0.15.2
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_022443_585827_343F08FF 
-X-CRM114-Status: UNSURE (   9.70  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260423_022458_170738_646A07D3 
+X-CRM114-Status: GOOD (  10.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,22 +133,20 @@ drm_bridge_connector_init().
 
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
- drivers/gpu/drm/renesas/rcar-du/rcar_du_encoder.c | 2 +-
+ drivers/gpu/drm/renesas/rz-du/rzg2l_du_encoder.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/renesas/rcar-du/rcar_du_encoder.c b/drivers/gpu/drm/renesas/rcar-du/rcar_du_encoder.c
-index 32ea09d65d76..db2088529b48 100644
---- a/drivers/gpu/drm/renesas/rcar-du/rcar_du_encoder.c
-+++ b/drivers/gpu/drm/renesas/rcar-du/rcar_du_encoder.c
-@@ -142,7 +142,7 @@ int rcar_du_encoder_init(struct rcar_du_device *rcdu,
+diff --git a/drivers/gpu/drm/renesas/rz-du/rzg2l_du_encoder.c b/drivers/gpu/drm/renesas/rz-du/rzg2l_du_encoder.c
+index d53068733c66..0e567b57a408 100644
+--- a/drivers/gpu/drm/renesas/rz-du/rzg2l_du_encoder.c
++++ b/drivers/gpu/drm/renesas/rz-du/rzg2l_du_encoder.c
+@@ -129,5 +129,5 @@ int rzg2l_du_encoder_init(struct rzg2l_du_device  *rcdu,
  		return PTR_ERR(connector);
  	}
  
 -	return drm_connector_attach_encoder(connector, &renc->base);
 +	return 0;
  }
- 
- void rcar_du_encoder_cleanup(struct rcar_du_device *rcdu)
 
 -- 
 2.53.0
