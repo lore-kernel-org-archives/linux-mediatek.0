@@ -4,109 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F620F99352
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 08:31:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E60C1F99351
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 09:08:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gLQ2QJLY+AQR6FFwHQfI1wULr2cHcwHy9LUPLxUKoMQ=; b=l3P3lA4LyLmRf+mAMkMlGaQusx
-	uGf7eGMIt/+jdmQVhA5g4QRaCqthWGdiOxYRurWFfMiTo+E412xDCOBJUIqSwNzNprZubO2beSfev
-	rtrZfHUg7jfiXB+UU34jCrVsoeLa9Zvp/ql49eNEZ1ur/bfAVmBqDugFzOWI7w3yF6fvEpNh+05CI
-	DSXxiBGksFTk7VDRJ9kRlJtVHdU+OSxZ5of5tGESuqP8QDGJHJukfkJ8FCgn/pY2qLILWkC8F7gYc
-	A4L6BFs+vFAI1wVat81rQtxbbUQ3oWUrOOF6hb/HQsRYitpl7ILcSC6rzFDoDg0uFltUwI0Jo29R+
-	GYzSJK+A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=x0ZBE4dg5MTSDcUZ11xcU79ovb1gqZ+Yi/Qx0+lbeYA=; b=ne//wIuaJieWDItu+HDVjZz+5D
+	rNUH7xaMM4lS2NtQ0UYR0V9I62jLAlFcapJQ0qR9scf/W5Cgkl2QBO1p6WZJlPuhD6hHQMFdv17Sc
+	8FUImfWdQdapk73WVy5ijc0LUOQi4dbkFsK/NYE8IypG7/pqzUehkxHlXy95BjfoGGaNPcpThcKzU
+	w5fj863ePOUI6Ke99pHY/gI4lUHr8ZrjvVgqAhvzVyj7GDYhA/sKv5meoPee00NRoxueAQb6bp9g5
+	iO8jW7kOS7HQFolvf5u0ZtDOcc+G+LQzhe7RxsejznvJX32fv/RAhnHelhokGWpQUpmUXVprSFxHI
+	g45aF0gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFpSn-0000000BFuc-3ZdH;
-	Thu, 23 Apr 2026 08:31:09 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1wFq3N-0000000BJJr-44Yj;
+	Thu, 23 Apr 2026 09:08:57 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFpSf-0000000BFtJ-1NkB
-	for linux-mediatek@lists.infradead.org;
-	Thu, 23 Apr 2026 08:31:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1776933045;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=gLQ2QJLY+AQR6FFwHQfI1wULr2cHcwHy9LUPLxUKoMQ=;
-	b=P50L9eOlRbhoB3L+jCQk4RLbT4C0Id43EMbtCLnHOWX9BNxUfYIVA5t6UC+lLXXUDhSwTa
-	GBHyTBUpktPQYnKkqvSgHcswzp1BoNm1X/mubw+BGpozJUIJTopLl2tvwxytNtDDmadTjf
-	uD+NwrWxJhLR3R+FwtWSr1gduv3G33s=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-606-d05caBWNOKWv8FQxGPDCxg-1; Thu, 23 Apr 2026 04:30:42 -0400
-X-MC-Unique: d05caBWNOKWv8FQxGPDCxg-1
-X-Mimecast-MFC-AGG-ID: d05caBWNOKWv8FQxGPDCxg_1776933042
-Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-48919890a95so30516155e9.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 23 Apr 2026 01:30:42 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1776933041; x=1777537841;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=gLQ2QJLY+AQR6FFwHQfI1wULr2cHcwHy9LUPLxUKoMQ=;
-        b=gUCI+xgsVrqIRAzp1h2Nlhr1iPYuIcxkVgO7IFOtyQmqcinFdE7OOoDE27I+EcqTE2
-         Wn1Vwfd+e1ImDAT+NrfmMMatPmSQT4VY12Y3xA17/0HwW+Mse2Hv4gE2EuMF1NddtcY2
-         vMto0K14SlfnF4QY2gIg3RpwffWPEJf8zoPK1eW7uoTtcZY03ohy3Z8tpymbjsNzi5NA
-         mTKdJ6QNe4zTtTOAuUveD7ZTH2ZAGo2gtTGFwe2yAWUh/p8ehyiKA5W1yfsKRFOBl5qK
-         QmbYUlVfcWfyc12+t0zB9o3ejG7DFcHcj8+eRcAN1Y/7L66731GeKkqDJBQzrMND0Nxf
-         CIEA==
-X-Forwarded-Encrypted: i=1; AFNElJ98/0TEM02PiriUgmViygP5DTPuyWO9sf9R/3hvJd4vtwsdVYC/d/iFo5JFESSh8ojBoFOpG1/7n+NxND5Kzg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzIgm48k/2UeJlMP79z7wWBj+fSe7n7a3cVwiv7t6UkDzjlwvME
-	X9/vxr5/WoDxOOkkKUMO1MiKSMoNsdyXKo0rQMitosQPYzmd4K0RUidL0O2B3eYrO787hwm0zfU
-	S16Wgsy4HrZ8drUJ2VsIlbE17sHZeUzqjscHM8aWvNOeFGfOQYj/1Apr+/zOx9HLufDlofUZv5A
-	==
-X-Gm-Gg: AeBDievM4ykVM3pC68qkxbCM0tL8wC5jv+/u0GlCUDECjwBRksmtkR3m1ZV5gBOewKM
-	RTtLWlyXKGUPeBeDO3yi7Mb5G9AvTMGzL6YCa6omppjW9vzPijgO/t2Oj3DHczwJhZ9W5mffZxO
-	qABO1+CqHjbUjGBznsVVfbYJw13fbIBky1zOmE8bJAbJ7dlu6uzaP3xXUNkcj5ceSmQeCJwHvFF
-	LF4/ggnvHbQRr6875RL5wXZ+xXsW8WuzjYsCxy2KDCfDuTV6PyPPmisN0d6Ustq4iqqocXWiIbF
-	5Neo44+GGN9EAa8w7EToQB3NTvrb1yFJtFyRwvuwty9HaZ+Etkk8ceRc3Bct6gsn90uYiIORLNH
-	kUG3VN9aI11wTykzT5IJxVZQaI49akz/Zqs39a1STI0IPyi49OvNdfvXgqr3lLhSzDI4=
-X-Received: by 2002:a05:600c:64c7:b0:488:a2ac:a334 with SMTP id 5b1f17b1804b1-488fb73aa3bmr388953895e9.3.1776933041303;
-        Thu, 23 Apr 2026 01:30:41 -0700 (PDT)
-X-Received: by 2002:a05:600c:64c7:b0:488:a2ac:a334 with SMTP id 5b1f17b1804b1-488fb73aa3bmr388952835e9.3.1776933040577;
-        Thu, 23 Apr 2026 01:30:40 -0700 (PDT)
-Received: from [192.168.88.32] ([150.228.93.216])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-488fb77b001sm238148475e9.3.2026.04.23.01.30.38
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 23 Apr 2026 01:30:40 -0700 (PDT)
-Message-ID: <31829d8e-f760-4460-8f38-613f26206d87@redhat.com>
-Date: Thu, 23 Apr 2026 10:30:37 +0200
+	id 1wFq3I-0000000BJHx-0M1T;
+	Thu, 23 Apr 2026 09:08:56 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 1F54743B05;
+	Thu, 23 Apr 2026 09:08:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 68B21C2BCB2;
+	Thu, 23 Apr 2026 09:08:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1776935331;
+	bh=AajPNYE6TFj2rP8H0CMm3qNBnbsYRpDyKEMrNNFlxC4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=buIvE1hsbJLLTrrhVVInDJ2ppacZAzbWKDKaPq3D5fxir4QDSzXw5/bUi94QI/gB/
+	 agTq+n3xUnZk53cML3ywFrnM4fs/MthZL2HqxNpPgf85zeFi/iJLjj7q5S2odwMwOD
+	 EHbLwoBU/D+5yj/MiVV8baAq1sbM8fTmy/B6d775kLk9BMH3DOCVLcEJ1yVgprGcoO
+	 EmGFxkXuI2NxafoVx9x47wz9AqD5m3wp/lGtspAYLxgo2vjB3ZcuBX03TSj9JmtVBs
+	 +97FFXhfu8t2J2SiFzeUB8Fw600HWOK1cC8YFZQmraCTuwFXriNPrTY8g8U69VIaSB
+	 eMQ9nIQPKTOMw==
+Date: Thu, 23 Apr 2026 11:08:43 +0200
+From: Lorenzo Pieralisi <lpieralisi@kernel.org>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Linus Walleij <linusw@kernel.org>, Lei Xue <lei.xue@mediatek.com>,
+	Hanjun Guo <guohanjun@huawei.com>,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	Sean Wang <sean.wang@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	yong.mao@mediatek.com, qingliang.li@mediatek.com,
+	Fred-WY.Chen@mediatek.com, ot_cathy.xu@mediatek.com,
+	ot_shunxi.zhang@mediatek.com, ot_yaoy.wang@mediatek.com,
+	ot_ye.wang@mediatek.com, linux-acpi@vger.kernel.org,
+	robh@kernel.org
+Subject: Re: [PATCH 2/3] pinctrl: mediatek: Add acpi support
+Message-ID: <aenhm/YOAMwjiBzh@lpieralisi>
+References: <20251125023639.2416546-1-lei.xue@mediatek.com>
+ <20251125023639.2416546-3-lei.xue@mediatek.com>
+ <CAD++jL=h4ZEgrjgGOfgFyAXBM7EL91ZD-La82UQ7GPOXv8h9WQ@mail.gmail.com>
+ <aScwaxBG53dnZ4a4@lpieralisi>
+ <aSdBu-B9mwU2-1_S@smile.fi.intel.com>
+ <aSgipbe75hrwhTD7@lpieralisi>
+ <aShgYukPRfDkq_Z0@smile.fi.intel.com>
+ <aSh0EyGm9ZHAc3dN@lpieralisi>
+ <aeHSl9MYGq0bRXsu@ashevche-desk.local>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net v2] net: dsa: mt7530: fix .get_stats64 sleeping in
- atomic context
-To: Daniel Golle <daniel@makrotopia.org>,
- "Chester A. Unal" <chester.a.unal@arinc9.com>, Andrew Lunn <andrew@lunn.ch>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Russell King <linux@armlinux.org.uk>,
- Christian Marangi <ansuelsmth@gmail.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Cc: Frank Wunderlich <frank.wunderlich@linux.dev>,
- John Crispin <john@phrozen.org>
-References: <58aff8b5b1d691872342a6ffd3315f27854788a6.1776595131.git.daniel@makrotopia.org>
-From: Paolo Abeni <pabeni@redhat.com>
-In-Reply-To: <58aff8b5b1d691872342a6ffd3315f27854788a6.1776595131.git.daniel@makrotopia.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: tk_ltffbDbNAZtUOdBza8-mukcKyRLEEmwzauKUZfeE_1776933042
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <aeHSl9MYGq0bRXsu@ashevche-desk.local>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_013102_398043_17F226B8 
-X-CRM114-Status: GOOD (  23.55  )
+X-CRM114-CacheID: sfid-20260423_020852_175305_4BE332FB 
+X-CRM114-Status: GOOD (  63.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,139 +91,170 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 4/19/26 12:43 PM, Daniel Golle wrote:
-> The .get_stats64 callback runs in atomic context, but on
-> MDIO-connected switches every register read acquires the MDIO bus
-> mutex, which can sleep:
-> [   12.645973] BUG: sleeping function called from invalid context at kernel/locking/mutex.c:609
-> [   12.654442] in_atomic(): 0, irqs_disabled(): 0, non_block: 0, pid: 759, name: grep
-> [   12.663377] preempt_count: 0, expected: 0
-> [   12.667410] RCU nest depth: 1, expected: 0
-> [   12.671511] INFO: lockdep is turned off.
-> [   12.675441] CPU: 0 UID: 0 PID: 759 Comm: grep Tainted: G S      W           7.0.0+ #0 PREEMPT
-> [   12.675453] Tainted: [S]=CPU_OUT_OF_SPEC, [W]=WARN
-> [   12.675456] Hardware name: Bananapi BPI-R64 (DT)
-> [   12.675459] Call trace:
-> [   12.675462]  show_stack+0x14/0x1c (C)
-> [   12.675477]  dump_stack_lvl+0x68/0x8c
-> [   12.675487]  dump_stack+0x14/0x1c
-> [   12.675495]  __might_resched+0x14c/0x220
-> [   12.675504]  __might_sleep+0x44/0x80
-> [   12.675511]  __mutex_lock+0x50/0xb10
-> [   12.675523]  mutex_lock_nested+0x20/0x30
-> [   12.675532]  mt7530_get_stats64+0x40/0x2ac
-> [   12.675542]  dsa_user_get_stats64+0x2c/0x40
-> [   12.675553]  dev_get_stats+0x44/0x1e0
-> [   12.675564]  dev_seq_printf_stats+0x24/0xe0
-> [   12.675575]  dev_seq_show+0x14/0x3c
-> [   12.675583]  seq_read_iter+0x37c/0x480
-> [   12.675595]  seq_read+0xd0/0xec
-> [   12.675605]  proc_reg_read+0x94/0xe4
-> [   12.675615]  vfs_read+0x98/0x29c
-> [   12.675625]  ksys_read+0x54/0xdc
-> [   12.675633]  __arm64_sys_read+0x18/0x20
-> [   12.675642]  invoke_syscall.constprop.0+0x54/0xec
-> [   12.675653]  do_el0_svc+0x3c/0xb4
-> [   12.675662]  el0_svc+0x38/0x200
-> [   12.675670]  el0t_64_sync_handler+0x98/0xdc
-> [   12.675679]  el0t_64_sync+0x158/0x15c
+On Fri, Apr 17, 2026 at 09:26:31AM +0300, Andy Shevchenko wrote:
+> On Thu, Nov 27, 2025 at 04:53:55PM +0100, Lorenzo Pieralisi wrote:
+> > On Thu, Nov 27, 2025 at 04:29:54PM +0200, Andy Shevchenko wrote:
+> > > On Thu, Nov 27, 2025 at 11:06:29AM +0100, Lorenzo Pieralisi wrote:
+> > > > On Wed, Nov 26, 2025 at 08:06:51PM +0200, Andy Shevchenko wrote:
 > 
-> For MDIO-connected switches, poll MIB counters asynchronously using a
-> delayed workqueue every second and let .get_stats64 return the cached
-> values under a spinlock. A mod_delayed_work() call on each read
-> triggers an immediate refresh so counters stay responsive when queried
-> more frequently.
+> [...]
 > 
-> MMIO-connected switches (MT7988, EN7581, AN7583) are not affected
-> because their regmap does not sleep, so they continue to read MIB
-> counters directly in .get_stats64.
+> > > > > > I also assume/hope that we don't want to add a "reg-names" _DSD property either
+> > > > > > in ACPI to deal with this seamlessly in DT/ACPI (that was done for
+> > > > > > "interrupt-names"):
+> > > > > > 
+> > > > > > https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/firmware-guide/acpi/enumeration.rst?h=v6.18-rc7#n188
+> > > > > 
+> > > > > Hmm... Why not?
+> > > > 
+> > > > What's the policy there ?
+> > > 
+> > > > Half of the ACPI bindings for an interrupt
+> > > > descriptor are defined in the ACPI specs (ie _CRS) and the other half
+> > > > (ie "interrupt-names") is documented in the Linux kernel (or are we
+> > > > documenting this elsewhere ?) ?
+> > > 
+> > > Yeah, nobody pursued ACPI specification updates / addendum to make it fully
+> > > official. _De facto_ we have established practice for GPIOs enumeration
+> > > (as most used resources in the OSes), Linux official for PWM, I²C muxes,
+> > > multi-functional HW (such as Diolan DLN-2, LJCA), Microsoft defined for
+> > > so called "USB hardwired" devices, Linux defined for LEDs and GPIO keys,
+> > > sensor mount matrix as per "most used" cases + DT analogue works just
+> > > because we have agnostic APIs in IIO to retrieve that. There are maybe
+> > > more, but don't remember
+> > > 
+> > > So, I think the practical "policies" are that:
+> > > - if it's defined in ACPI spec, we use the spec
+> > > - if there is Microsoft addendum, we rely on what Windows does
+> > > - WMI, EFI, and other "windoze"-like vendor defined cases
+> > > - if it makes sense, we establish practice from Linux perspective
+> > > - the rest, every vendor does what it does
+> > > 
+> > > That said, for the first two we expect OEMs to follow, for the third one
+> > > depends, but there are established WMI calls and other more or less "standard"
+> > > interfaces, so like the first two.
+> > > 
+> > > For the fourth one (Linux) we do, but living in the expectation that some or
+> > > more vendors fall to the fifth category and we might need to support that if
+> > > we want their HW work in Linux.
+> > > 
+> > > > Or we are saying that "interrupt-names" properties are added by kernel
+> > > > code _only_ (through software nodes, to make parsing seamless between DT
+> > > > and ACPI) based on hardcoded name values in drivers ?
+> > > 
+> > > No, the idea behind software nodes is to "fix" the FW nodes in case the FW
+> > > description can not be modified (and that might well happen to even DT in some
+> > > cases AFAIH). So, if some driver hard codes "interrupt-names" we expect that
+> > > new versions of the FW that support the HW that needs the property will be
+> > > amended accordingly.
+> > > 
+> > > "interrupt-names" has been established for ACPI to support a separate SMB alert
+> > > interrupt. However, I haven't heard any development of that IRL (for real
+> > > devices in ACPI environment).
+> > > 
+> > > > I don't think I can grok any example of the latter in the mainline.
+> > > > 
+> > > > I am asking because I'd need to add something similar shortly to make parsing
+> > > > of platform devices created out of ACPI static tables easier (I guess we
+> > > > can postpone discussion till I post the code but I thought I'd ask).
+> > > 
+> > > Oh, I can go ahead and tell you, try to avoid that. Why?! Whatever,
+> > > indeed, please Cc me to that, I will be glad to study the case and
+> > > try to be helpful.
+> > > 
+> > > (Have you considered DT overlays instead? There is a big pending support for
+> > >  that for _ACPI_ platforms.)
+> > 
+> > Long story short: we do need to create platform devices out of static
+> > table (eg ARM64 IORT) entries. Current code parses the table entries and
+> > try to map the devices IRQs (ie acpi_register_gsi()) when the platform
+> > device is created. Now, the interrupt controller that device IRQ's is
+> > routed to might not have probed yet. We have to defer probing and later,
+> > when the platform driver probes, map the IRQ.
+> > 
+> > Issue is: for OF nodes and ACPI devices, behind the platform device
+> > firmware node there is a standard firmware object, so implementing
+> > fwnode_irq_get() is trivial. For the devices I am talking about,
+> > the data providing GSI info (hwirq, trigger/polarity) is static
+> > table specific, so the idea was to stash that data and embed it in
+> > fwnode_static along with a irq_get() fwnode_operations function
+> > specific to that piece of data so that device drivers can actually do:
+> > 
+> > fwnode_irq_get()
+> > 
+> > on the fwnode _seamlessly_ (if you still do wonder: those platform
+> > devices created out of static table entries in ACPI in OF are
+> > of_node(s)).
+> > 
+> > There is a less convoluted solution (that is what some platform
+> > drivers in ACPI do today), that is, we pass the static table
+> > data in pdev->dev.platform_data and each platform_driver parses it differently.
+> > 
+> > That works but that also means the in the respective device drivers
+> > OF and ACPI IRQ (and MMIO) parsing differ (which is not necessarily
+> > a problem I just have to rewrite them all).
 > 
-> Fixes: 88c810f35ed5 ("net: dsa: mt7530: implement .get_stats64")
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> Acked-by: Chester A. Unal <chester.a.unal@arinc9.com>
-> Reviewed-by: Andrew Lunn <andrew@lunn.ch>
-> ---
-> v2:
->  * use spin_lock_bh()/spin_unlock_bh() to prevent potential deadlock
->  * rate-limit mod_delayed_work() refresh to at most once per 100ms
->  * move cancel_delayed_work_sync() after dsa_unregister_switch()
->  * add mt753x_teardown() callback to cancel the stats work
->  * fix commit message
+> Hmm... The parsing inside drivers is quite a custom case. I would avoid doing
+> it if it's not device specific (I mean if it's not related to the very unique
+> device or family of the devices which most likely won't appear again in the
+> future). In other words, I prefer agnostic solutions over custom ones.
 > 
->  drivers/net/dsa/mt7530.c | 66 ++++++++++++++++++++++++++++++++++++++--
->  drivers/net/dsa/mt7530.h |  8 +++++
->  2 files changed, 71 insertions(+), 3 deletions(-)
+> > Now - when it comes to "interrupt-names". Some of the device drivers
+> > I mention do:
+> > 
+> > eg platform_get_irq_byname_optional()
+> > 
+> > that expects the IRQ to be mapped and stored in a named platform device resource.
+> > 
+> > That's easy in DT - for two reasons:
+> > 
+> > (1) "interrupt-names"
+> > (2) standard properties behind the of_node
+> > 
+> > how to do that for fwnodes that aren't backed by either OF nodes or ACPI
+> > devices (that do use "interrupt-names" _DSD property) is a question.
+> > 
+> > Mind, the "interrupt-names" thing is a detail in the whole mechanism.
+> > 
+> > DT overlays to represent in ACPI those static table entries ?
+> > 
+> > I vividly remember the days ACPI for ARM64 was being merged - that's what
+> > our crystal ball predicted :)
 > 
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index b9423389c2ef0..8c1186ba2279b 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -25,6 +25,9 @@
->  
->  #include "mt7530.h"
->  
-> +#define MT7530_STATS_POLL_INTERVAL	(1 * HZ)
-> +#define MT7530_STATS_RATE_LIMIT		(HZ / 10)
-> +
->  static struct mt753x_pcs *pcs_to_mt753x_pcs(struct phylink_pcs *pcs)
->  {
->  	return container_of(pcs, struct mt753x_pcs, pcs);
-> @@ -906,10 +909,9 @@ static void mt7530_get_rmon_stats(struct dsa_switch *ds, int port,
->  	*ranges = mt7530_rmon_ranges;
->  }
->  
-> -static void mt7530_get_stats64(struct dsa_switch *ds, int port,
-> -			       struct rtnl_link_stats64 *storage)
-> +static void mt7530_read_port_stats64(struct mt7530_priv *priv, int port,
-> +				     struct rtnl_link_stats64 *storage)
->  {
-> -	struct mt7530_priv *priv = ds->priv;
->  	uint64_t data;
->  
->  	/* MIB counter doesn't provide a FramesTransmittedOK but instead
-> @@ -951,6 +953,45 @@ static void mt7530_get_stats64(struct dsa_switch *ds, int port,
->  			       &storage->rx_crc_errors);
->  }
->  
-> +static void mt7530_stats_poll(struct work_struct *work)
-> +{
-> +	struct mt7530_priv *priv = container_of(work, struct mt7530_priv,
-> +						stats_work.work);
-> +	struct rtnl_link_stats64 stats = {};
-> +	struct dsa_port *dp;
-> +	int port;
-> +
-> +	dsa_switch_for_each_user_port(dp, priv->ds) {
-> +		port = dp->index;
-> +
-> +		mt7530_read_port_stats64(priv, port, &stats);
-> +
-> +		spin_lock_bh(&priv->stats_lock);
-> +		priv->ports[port].stats = stats;
-> +		spin_unlock_bh(&priv->stats_lock);
-> +	}
-> +
-> +	priv->stats_last = jiffies;
-> +	schedule_delayed_work(&priv->stats_work,
-> +			      MT7530_STATS_POLL_INTERVAL);
-> +}
-> +
-> +static void mt7530_get_stats64(struct dsa_switch *ds, int port,
-> +			       struct rtnl_link_stats64 *storage)
-> +{
-> +	struct mt7530_priv *priv = ds->priv;
-> +
-> +	if (priv->bus) {
-> +		spin_lock_bh(&priv->stats_lock);
-> +		*storage = priv->ports[port].stats;
-> +		spin_unlock_bh(&priv->stats_lock);
-> +		if (time_after(jiffies, priv->stats_last + MT7530_STATS_RATE_LIMIT))
+> So, the idea is to translate ACPI static table entries (which comes from IORT)
+> to the IRQ fwnodes at initialisation (parsing) time?
 
-Since both the `stats_last` access and read are lockless, it looks like
-they may race leading wrong/unexpected delay. I think it would be better
-move both under the spinlock (yes, the write will happen multiple times
-per stats update, I don't think it will matter).
+They don't come from IORT only but that does not matter much. The point is,
+we have got to have a standard way for device drivers to retrieve a HW
+IRQ number for devices created out of static tables (and only code that
+knows what a static table represents can initialize such fwnodes because
+the interrupt fields are different in different static tables).
 
-/P
+Lorenzo
 
+> > This delayed IRQ mapping notwithstanding, I read what you wrote and took
+> > note. The worry is, this fwnode_*() (on ACPI nodes) interface trickling
+> > into subsystems where it should not (ie PCI, clocks, regulators) - hopefully
+> > the respective maintainers are keeping an eye on it.
+> > 
+> > > > Are we going to do the same for "reg-names" ?
+> > > 
+> > > If it makes sense and we expect some vendor to follow that _in ACPI_,
+> > > why not?
+> > > 
+> > > > Most importantly, what is DT maintainers stance on the matter ?
+> > > 
+> > > AFAIK They don't care as long as there is a schema provided, accepted and
+> > > used in DT, if it's ACPI-only thing, then it most likely should be done
+> > > in ACPI-like way (see above the first two / three items: spec, MS, WMI/EFI).
+> > > 
+> > > > > > I am sorry I have got more questions than answers here - it would be good
+> > > > > > to understand where the line is drawn when it comes to OF/ACPI and fwnode
+> > > > > > heuristics compatibility.
+> 
+> -- 
+> With Best Regards,
+> Andy Shevchenko
+> 
+> 
 
