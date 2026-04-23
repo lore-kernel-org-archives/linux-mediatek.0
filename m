@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73031F99344
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 07:48:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2297FF9934D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 07:51:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FfrbCjB7w88uI2Dj57WhJkGhdKypkR0ANHfG37QWHTA=; b=IFAUP/koAmNp0XeafpEqqb9ptg
-	KRHHJt/AFeyxbTA121eTLg1tYUNlVQFAIsI2AR1ls7Nx4iOK8biNxeeF1/d4v+g9dQJEFeL3onRO5
-	idv1WeRzqx/h2PxYEwyYS1zEmFRB+FAMMVcJB7ylri82J7WQhdoh6v1r9khCVxF242seely8xMJdp
-	ESP4bNPTyvcnfMFsfY1BPzNDSo+hAKzwYrfsmyqoF/g9Y9LEtnjN9CgsyDuTslJDk71jvZKcZAVRN
-	zdVCmxSDqMvDLx9JpPngASbn1QDkBDrlRcrs+tbEUvvhajXWbTgio59A6O8cI64Z6u73Hr59WmOak
-	sy2Y3d6Q==;
+	bh=Mm/pakeAzupfO1i5sqZ0RGC2KTrwNYJUHugBC8VAOfk=; b=dZhdFK9eiHz3NlzoygSOhNgLJl
+	lNyvYWV+0ql/pA5Y2LEyTVvSfa+4ARspwOiEKZgbgwPFtvpI341HcEcKvkMzM8sxSIkT2GZMw/jWC
+	ctMr78qyxMz2YIyJcdANlLwtYIJfSvhivuQknvk9bXsqhuhRDMjgO1n2zVfIioOuiAtn2jr6YHLci
+	b8qFLv4YLex4GwXI9rBmMEJ1Of+teVXioGwFY5g5v6xTSBSpkbQL6AcZzA/V1b9wB+PP4Ow7926iB
+	JRqQB2cSmTF42fGhZaapcqF/zC/zhMq96VLFQNFt3eoECsD1Kh6ETGVgpNqPZeDz0xMB1Qu17eHJh
+	mGZhO2zA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFonl-0000000BBKS-1muU;
-	Thu, 23 Apr 2026 07:48:45 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wFoqa-0000000BBce-45Qy;
+	Thu, 23 Apr 2026 07:51:40 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFoni-0000000BBJf-1SJy;
-	Thu, 23 Apr 2026 07:48:43 +0000
+	id 1wFoqV-0000000BBba-3FBj;
+	Thu, 23 Apr 2026 07:51:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6044D434DE;
-	Thu, 23 Apr 2026 07:48:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A4791C2BCB2;
-	Thu, 23 Apr 2026 07:48:37 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id ECC484437F;
+	Thu, 23 Apr 2026 07:51:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 78698C2BCB2;
+	Thu, 23 Apr 2026 07:51:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776930518;
-	bh=6q8zIzEyZvqhWWWK8S5N+7p4Cs/FMvgTjRNWpvfJeBQ=;
+	s=k20201202; t=1776930694;
+	bh=rdiTke8XyX0S2GN9uBMDJp0R3HUEvjW7NtSpQ2rhGKw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qHd57ItaEmf10jqH349WgU6KbiwNqr9kFRIjKXvp0QDGTrCJn9B61WZPLMOG74YDd
-	 iEheuSTiX08B/dO7G2M+SdhsXgyfUWZEDLc0zOnxg5WCjNhRMfdeFxA82AVG+Ng+2O
-	 cWlBrsTZ5qB8qOkEi3QhNCD81y6z4Cdwb0szzhQXNUvhMwrEHmEwUBXOS7ln6fQr7y
-	 h8hf1qm68trGq73rPVt81u2JV99TmNuwt8+3E6IK8ZL/ybT7Fb7O3H5dv01IrjDfXf
-	 hDe1gu0vsYGnZNIF4Gt76laJ+3AGQncsQ7WFAnLpSk2UnPwF0iV7Qc03iHuwx4fQnB
-	 8T0TolAYS5CKA==
-Date: Thu, 23 Apr 2026 09:48:35 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-sound@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v3] ASoC: dt-bindings: mediatek: Convert mtk-btcvsd-snd
- to DT Schema
-Message-ID: <20260423-scrupulous-stoat-of-perception-0a3d9b@quoll>
-References: <20260421193858.347258-1-l.scorcia@gmail.com>
+	b=NiS3vX7FA0vFcZHdxMZ/EqcQFsnGykfFjh6Z+n41wUOhfrGEmXu1A8GOMpmxEcYS0
+	 A+UD0jMdRL4gNUSrevsxzuPsQ0fKhQjzP/WBF5QGMBqpxRe2IZVcKDXLeF8hEKrazt
+	 3VvCPzHUpF2F5M5KaGIVteQ8Z8R0QiL/V148XkTj5r+Olgy+jOWG4PnkClC47ecRIB
+	 Ric0d45vDj/x7Ek6/Y3MNrNWggMgH7WM7dx3b20trZ7W9Zqn1qhc4Eo5UwZZCZyGQP
+	 7d/tha8OVklBWmRoaA+TtwLM4frNnYNH1DwbFuZRv0C14KUOrTunxZOjMMCsI3SgXd
+	 AVv9E8+NpsZ/A==
+Date: Thu, 23 Apr 2026 09:51:32 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Simon Horman <horms@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net] net: airoha: Do not wake all netdev TX queues in
+ airoha_qdma_wake_netdev_txqs()
+Message-ID: <aenPhDotJMJ1pxG-@lore-desk>
+References: <20260421-airoha-wake_netdev_txqs-optmization-v1-1-e0be95115d53@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="XIMRgkZKP4wfW4rh"
 Content-Disposition: inline
-In-Reply-To: <20260421193858.347258-1-l.scorcia@gmail.com>
+In-Reply-To: <20260421-airoha-wake_netdev_txqs-optmization-v1-1-e0be95115d53@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_004842_401233_541ECA48 
-X-CRM114-Status: UNSURE (   9.55  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260423_005135_852988_82AB392E 
+X-CRM114-Status: GOOD (  22.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,44 +76,122 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 21, 2026 at 08:38:35PM +0100, Luca Leonardo Scorcia wrote:
-> +title: Mediatek ALSA BT SCO CVSD/MSBC Driver
 
-s/Driver//
+--XIMRgkZKP4wfW4rh
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+> Do not wake every netdev TX queue across all ports sharing the QDMA
+> running netif_tx_wake_all_queues routine in airoha_qdma_wake_netdev_txqs()
+> but only the ones that are mapped the specific QDMA stopped hw TX queue.
+> This patch can potentially avoid waking already stopped netdev TX queues
+> that are mapped to a different QDMA hw TX queue.
+> Introduce airoha_qdma_get_txq utility routine.
+>=20
+> Fixes: b94769eb2f30 ("net: airoha: Fix possible TX queue stall in airoha_=
+qdma_tx_napi_poll()")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  drivers/net/ethernet/airoha/airoha_eth.c | 19 +++++++++++++++----
+>  drivers/net/ethernet/airoha/airoha_eth.h |  5 +++++
+>  2 files changed, 20 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
+net/airoha/airoha_eth.c
+> index 19f67c7dd8e1..2ca569501045 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+> @@ -847,13 +847,24 @@ static void airoha_qdma_wake_netdev_txqs(struct air=
+oha_queue *q)
+>  {
+>  	struct airoha_qdma *qdma =3D q->qdma;
+>  	struct airoha_eth *eth =3D qdma->eth;
+> -	int i;
+> +	int i, qid =3D q - &qdma->q_tx[0];
+> =20
+>  	for (i =3D 0; i < ARRAY_SIZE(eth->ports); i++) {
+>  		struct airoha_gdm_port *port =3D eth->ports[i];
+> +		int j;
 > +
-> +maintainers:
-> +  - Luca Leonardo Scorcia <l.scorcia@gmail.com>
+> +		if (!port)
+> +			continue;
+> =20
+> -		if (port && port->qdma =3D=3D qdma)
+> -			netif_tx_wake_all_queues(port->dev);
+> +		if (port->qdma !=3D qdma)
+> +			continue;
 > +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mtk-btcvsd-snd
+> +		for (j =3D 0; j < port->dev->num_tx_queues; j++) {
+> +			if (airoha_qdma_get_txq(qdma, j) !=3D qid)
+> +				continue;
 > +
-> +  reg:
-> +    minItems: 2
-
-Drop
-
-> +    maxItems: 2
-
-and actually drop this too and list the items with description - PKV and
-SRAM_BANK2 regions
-
+> +			netif_wake_subqueue(port->dev, j);
+> +		}
+>  	}
+>  	q->txq_stopped =3D false;
+>  }
+> @@ -1965,7 +1976,7 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *=
+skb,
+>  	u16 index;
+>  	u8 fport;
+> =20
+> -	qid =3D skb_get_queue_mapping(skb) % ARRAY_SIZE(qdma->q_tx);
+> +	qid =3D airoha_qdma_get_txq(qdma, skb_get_queue_mapping(skb));
+>  	tag =3D airoha_get_dsa_tag(skb, dev);
+> =20
+>  	msg0 =3D FIELD_PREP(QDMA_ETH_TXMSG_CHAN_MASK,
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
+net/airoha/airoha_eth.h
+> index 87b328cfefb0..c3ea7aadbd82 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.h
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
+> @@ -631,6 +631,11 @@ u32 airoha_rmw(void __iomem *base, u32 offset, u32 m=
+ask, u32 val);
+>  #define airoha_qdma_clear(qdma, offset, val)			\
+>  	airoha_rmw((qdma)->regs, (offset), (val), 0)
+> =20
+> +static inline u16 airoha_qdma_get_txq(struct airoha_qdma *qdma, u16 qid)
+> +{
+> +	return qid % ARRAY_SIZE(qdma->q_tx);
+> +}
 > +
-> +  reg-names:
-> +    items:
-> +      - const: pkv
-> +      - const: sram-bank2
+>  static inline bool airoha_is_lan_gdm_port(struct airoha_gdm_port *port)
+>  {
+>  	/* GDM1 port on EN7581 SoC is connected to the lan dsa switch.
+>=20
+> ---
+> base-commit: a663bac71a2f0b3ac6c373168ca57b2a6e6381aa
+> change-id: 20260421-airoha-wake_netdev_txqs-optmization-65171ce4ebad
+>=20
+> Best regards,
+> --=20
+> Lorenzo Bianconi <lorenzo@kernel.org>
+>=20
 
-Old binding did not have reg-names and nothing in commit msg explains
-changes done to the binding.
+commenting on Sashiko retported issues:
+https://sashiko.dev/#/patchset/20260421-airoha-wake_netdev_txqs-optmization=
+-v1-1-e0be95115d53%40kernel.org
 
-To remind: if you change the binding, you must mention it and explain
-WHY.
+- Can this cause an infinite NETDEV_TX_BUSY livelock when a QDMA hardware q=
+ueue is full?
+  The issue is already fixed in the following patch:
+  https://patchwork.kernel.org/project/netdevbpf/patch/20260421-airoha-fix-=
+bql-v1-1-f135afe4275b@kernel.org/
 
-I don't see any use of that, so why did you add it?
+Regards,
+Lorenzo
 
-Best regards,
-Krzysztof
+--XIMRgkZKP4wfW4rh
+Content-Type: application/pgp-signature; name=signature.asc
 
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaenPhAAKCRA6cBh0uS2t
+rHJIAP0RzHPxXsooTEbHddLt9AmAIV7hyhy8/FTGlixGmdPCaAD8CiQD9SYwaFzL
+ze4QoY9encRv73xcr4oY4lM9zMag5gc=
+=Z0sJ
+-----END PGP SIGNATURE-----
+
+--XIMRgkZKP4wfW4rh--
 
