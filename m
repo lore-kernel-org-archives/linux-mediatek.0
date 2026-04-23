@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D82EEF9935C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 09:19:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A986F99344
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 09:19:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6gpUsC6lDjNzt/YijaD07G77mGEQjp4FP2wsZCfPAjE=; b=SPK9LHVeJP/A6kvCS/f23+GRV8
-	yrc/q7hnYqG/4EYYS2/te6qZ9/0LVr9xkOdAM9yoWD+5ufI/aSKmzI/JMTCBJqL5HNwl6LiYsO0a7
-	CbC5r2cNbvNhCiLvkz0srQohkQDrePrtIQnyobbAz6h4J+hbg6Ma1iEcFK9zKfleUALCD6O5guYCB
-	MSddpVITMYctMgNvM+tVztX37rDLWK7w3FIfDokbKtj6qYGTG3eBQEfN990u+hzG1NGo+6BZP1tp9
-	BCSxHFQQh6QoujD8VWiDFe/hmSAbl4fRdRiYuKlKEX92oc2UD/j8VtC+gGoRWu1diQkOFnrzDRsgl
-	85+flvkg==;
+	bh=JPQ1lTMTq7lc8ZTbKcFmQ9424xb17x4CJbO7aXHEFro=; b=O1nbTgFCzUWhUS3gbYO81Qpn2z
+	U5uuloZ5jTMSYKTK2TsFgZr3L9lzx8MZ2CIzV1XS4zXI3r+aXBWEeIG8WimjOUg38EdzDcdTyhVwy
+	e+Q76xY8IW8+4PeNbzoCSgsndlP50DkYIxXDBkWxdpEJUYJyxG5zZkNKHmAj0YsDcop00vXux2B/j
+	HxC29xOq1y27GwShAoN7Mamlc9v4L6fX1zL9OjjrV1/IwvEFrvYu0ZBL6JoqCaePxxsxGUEy0vTyY
+	GLp7kCU5YaezI94ZOQJ3vNpMmEc+zsogDjOQ0hmdzcmRN+QQe/Ivy1GP4CWrfRKtnEWzyYDSsaBG+
+	gnihTgAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqD8-0000000BKkx-1xiL;
-	Thu, 23 Apr 2026 09:19:02 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1wFqDO-0000000BKrX-15Dd;
+	Thu, 23 Apr 2026 09:19:18 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqD4-0000000BKhv-0SLd;
-	Thu, 23 Apr 2026 09:18:59 +0000
+	id 1wFqDL-0000000BKpk-09FR;
+	Thu, 23 Apr 2026 09:19:16 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 683144E42AC4;
-	Thu, 23 Apr 2026 09:18:56 +0000 (UTC)
+	by smtpout-02.galae.net (Postfix) with ESMTPS id 57D341A33BC;
+	Thu, 23 Apr 2026 09:19:13 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 3040D604EB;
-	Thu, 23 Apr 2026 09:18:56 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 542A210460BE8;
-	Thu, 23 Apr 2026 11:18:34 +0200 (CEST)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 2B28D60495;
+	Thu, 23 Apr 2026 09:19:13 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id D0E5D10460B12;
+	Thu, 23 Apr 2026 11:18:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1776935932; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1776935948; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=6gpUsC6lDjNzt/YijaD07G77mGEQjp4FP2wsZCfPAjE=;
-	b=2uMOlouziIfMkKvpsuq3Be1WfRv6Q9Wmih7F1CKkC8JSAQTjGs1R2/NTKpg5/PdcDxIxwv
-	NLfOlAArnhD1TTHxx5XUxbxDtP5lTV67Ly+oVY3REtfcdW4Ai9oxBS/C2SZMkdzhIYoEl0
-	o7+32v07VZm+5YLQUviXeNCN5o4YltlvJ3AQMG1X14kyh8yCjHBBBP0LOFf33nqJec/ezR
-	Afc5UsKSYO+tlwesNMZpiSGTAB9KOvJGZIj0CbqVOfqQmjcc4RwnULKoaoaXwsen2Q0mLE
-	utaR85PFCGuk/GuujhgxM9WCXt0TQVJcyBaUwgzBh4nfsXzwpsLZNMyY8JMXTw==
+	bh=JPQ1lTMTq7lc8ZTbKcFmQ9424xb17x4CJbO7aXHEFro=;
+	b=UrVP9s5jR78/wcgnU6LYrYQBepfnSfyB3s+SXA1xkoxjWgU96RHBI9uV8zS9eL3f+cdCPY
+	bmFbWmr/42tPkKZEY7TU9fitL2MzIx412Mr5FdGIArXCwd41wjK1THwWbRs6KNZPU263oo
+	oKsYpgctzN2mUbmiIxpAtufHCssDEhGdC00Ltk4mKWnnKkHEH6DeP2c2JjEkgT7sNNEVaB
+	PGrK4uXxx2DSj5qdKsXeYrs3ZfSqNK7t2XeZO5Ih7b5tBlN6nAsp4E1Gm1OphnUE5qKmNR
+	NhIkxEk8vF+dE/Y0TsL47w+WuFcgq4xsY/8OIRUzqfOxrg2Ls/eQ829iZgSp5Q==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Thu, 23 Apr 2026 11:16:58 +0200
-Subject: [PATCH v2 04/41] drm/bridge: ite-it6263: remove now-redundant call
- to drm_connector_attach_encoder()
+Date: Thu, 23 Apr 2026 11:16:59 +0200
+Subject: [PATCH v2 05/41] drm/bridge: ti-sn65dsi86: remove now-redundant
+ call to drm_connector_attach_encoder()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-4-2ae6ca69b390@bootlin.com>
+Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-5-2ae6ca69b390@bootlin.com>
 References: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 In-Reply-To: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
@@ -112,8 +112,8 @@ Cc: Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>,
 X-Mailer: b4 0.15.2
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_021858_318743_72309CF0 
-X-CRM114-Status: UNSURE (   8.60  )
+X-CRM114-CacheID: sfid-20260423_021915_231842_3DF68DDF 
+X-CRM114-Status: UNSURE (   7.96  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -134,22 +134,22 @@ drm_bridge_connector_init().
 
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
- drivers/gpu/drm/bridge/ite-it6263.c | 2 --
+ drivers/gpu/drm/bridge/ti-sn65dsi86.c | 2 --
  1 file changed, 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/ite-it6263.c b/drivers/gpu/drm/bridge/ite-it6263.c
-index 4f3ebb7af4d4..2ea49245e700 100644
---- a/drivers/gpu/drm/bridge/ite-it6263.c
-+++ b/drivers/gpu/drm/bridge/ite-it6263.c
-@@ -697,8 +697,6 @@ static int it6263_bridge_attach(struct drm_bridge *bridge,
- 		return ret;
+diff --git a/drivers/gpu/drm/bridge/ti-sn65dsi86.c b/drivers/gpu/drm/bridge/ti-sn65dsi86.c
+index 98d64ad791d0..1336ffab103f 100644
+--- a/drivers/gpu/drm/bridge/ti-sn65dsi86.c
++++ b/drivers/gpu/drm/bridge/ti-sn65dsi86.c
+@@ -776,8 +776,6 @@ static int ti_sn_bridge_attach(struct drm_bridge *bridge,
+ 		goto err_initted_aux;
  	}
  
--	drm_connector_attach_encoder(connector, encoder);
+-	drm_connector_attach_encoder(pdata->connector, pdata->bridge.encoder);
 -
  	return 0;
- }
  
+ err_initted_aux:
 
 -- 
 2.53.0
