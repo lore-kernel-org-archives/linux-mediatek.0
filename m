@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2FC5F99344
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 09:47:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E791F99364
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 09:47:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dlFo/OUZ+BhjoObEHPFahPsli0bI3gdE5YYwqL5Qcpc=; b=ZKNZzqlGxRgWX+X3/oACZb7GIb
-	4VZbuCqIehuMTUJk6aNNjF6raQMpmTxF5t9AtsgSNyBKZhks5LmvAFL6zNFdGPfAw79nvaA3XMMzy
-	CSCobtXo+5anFveNArpCHrZJJCc0bc19tCD6gKZLacy9msNsEd37/C7bP1vmKLi0zFKPrqvpfY2qk
-	AI1TXzrLTMEUAZeHze+oIKSLgQ3TjjROYPsFn4rY/0MleFrnX5QgRRc+xnPfzZQ2QL5AUJQpfiV4R
-	mcPtpfkrps5YCoRQvp8UqEcwdGrK1byRAISYNTSUpw6QByzQR2bK5fDDMLb7R4YVumYL5d/am53UF
-	3YWvb+Dg==;
+	bh=uTBXwuHcKDtg3GVJur0+WmjyNjN36KouHB+B4PWNBys=; b=UfkiBcDWNfPejqzBTakMoEyPsW
+	U5TL2/5Bnb1Q4Knaijq9fye/GnfatGAHx5vhKXvI++DNhOMyhXAV2rl0EXzOSBomXNpm9Tqo5Vdv4
+	WnZq5zfSJ+j6bH0FtSC0Poa0C6n88/Th7uwX+Bx7R5gWpCaADHUaPR9lBOH+aqRpZdh0Drlg6SBx3
+	GFO2oOsna+gH3DTiJ80JCqcoj3L9guXMUITnUPKGNSdj4O9OvxiiMhaffELAggIIaPVWON1PHl4CB
+	/y4mKWPPPUxS5G9v/x3obeR0Q8afMWhBIWh3ZlYJoJpH78olpvRgfXgxu1HPnbF+cZ8ska/st5T4U
+	FCUCemIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqeS-0000000BQ5H-3dsY;
-	Thu, 23 Apr 2026 09:47:16 +0000
+	id 1wFqeU-0000000BQ7r-0kHm;
+	Thu, 23 Apr 2026 09:47:18 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqeN-0000000BPzP-03xx;
-	Thu, 23 Apr 2026 09:47:12 +0000
-X-UUID: 64bc40003ef911f1a6de359d7043e138-20260423
+	id 1wFqeO-0000000BPzP-0bFI;
+	Thu, 23 Apr 2026 09:47:13 +0000
+X-UUID: 642597c23ef911f1a6de359d7043e138-20260423
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From; bh=dlFo/OUZ+BhjoObEHPFahPsli0bI3gdE5YYwqL5Qcpc=;
-	b=Z5WKo4ldU0p19Mlx6+B+FwYpjgClGsmvxQMMvVLon/MPNt+V7XhjAxDsRHOSHtKII3MvvL89IXAAPeUf0udtOSETPaEOZSEvTzBKB92slQg12MJCeDVXC4/Ynj3sc2L9DD+jH6MfXJdiUd15fPdSG3V3PeHuYQd5nCY47kMz5uA=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From; bh=uTBXwuHcKDtg3GVJur0+WmjyNjN36KouHB+B4PWNBys=;
+	b=GkgWOMDEejL30UnQe4r/ByLx+RqrvMqeEjbcQLhuafzupd13V9GjplctHs9dDxRmDfgimSHYnyTXvKCJY4jVb9MWmnzSUpLU3lBveHML6PCjxIQXoU5oNfV0tHk7h8/IcJxIviZgFEusA/udyWb8vEcx3z4DNWnjgZviTwuExmE=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:d0285b45-731e-4c16-af8c-1d195d60669e,IP:0,U
+X-CID-O-INFO: VERSION:1.3.12,REQID:454658d5-eef4-4fb2-b402-66dbc5bfb597,IP:0,U
 	RL:0,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:e7bac3a,CLOUDID:db95cb8f-6df4-4a3d-a7a4-fbdc42d669ce,B
+X-CID-META: VersionHash:e7bac3a,CLOUDID:dd95cb8f-6df4-4a3d-a7a4-fbdc42d669ce,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|865|888|898,TC:-5,Cont
 	ent:0|15|50,EDM:2,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,
 	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -42,18 +42,18 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 64bc40003ef911f1a6de359d7043e138-20260423
+X-UUID: 642597c23ef911f1a6de359d7043e138-20260423
 Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
 	(envelope-from <kyrie.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 561314235; Thu, 23 Apr 2026 02:47:08 -0700
+	with ESMTP id 338180832; Thu, 23 Apr 2026 02:47:07 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Thu, 23 Apr 2026 17:47:07 +0800
+ 15.2.2562.29; Thu, 23 Apr 2026 17:47:04 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Thu, 23 Apr 2026 17:47:06 +0800
+ 15.2.2562.29 via Frontend Transport; Thu, 23 Apr 2026 17:47:04 +0800
 From: Kyrie Wu <kyrie.wu@mediatek.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
 	<mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
@@ -64,9 +64,9 @@ To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
 	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH v14 07/12] media: mediatek: jpeg: fix resolution change event handling in decoder
-Date: Thu, 23 Apr 2026 17:46:51 +0800
-Message-ID: <20260423094656.32044-8-kyrie.wu@mediatek.com>
+Subject: [PATCH v14 04/12] media: mediatek: jpeg: Fix buffer completion on multi-core streaming stop
+Date: Thu, 23 Apr 2026 17:46:48 +0800
+Message-ID: <20260423094656.32044-5-kyrie.wu@mediatek.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20260423094656.32044-1-kyrie.wu@mediatek.com>
 References: <20260423094656.32044-1-kyrie.wu@mediatek.com>
@@ -75,8 +75,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_024711_055356_C319D366 
-X-CRM114-Status: GOOD (  13.36  )
+X-CRM114-CacheID: sfid-20260423_024712_188764_2EE84926 
+X-CRM114-Status: GOOD (  13.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,43 +91,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch refines the handling of resolution change events within
-JPEG decoder worker. The `mtk_jpeg_set_queue_data` function is now
-called to set up queue data before signaling a source change through
-`mtk_jpeg_queue_src_chg_event`. By reorganizing these calls, the
-patch ensures that necessary queue information is updated prior to
-transitioning the context state to `MTK_JPEG_SOURCE_CHANGE`.
-A condition is added to exit early if the context is already in the
-`MTK_JPEG_SOURCE_CHANGE` state, preventing redundant operations and
-improving processing efficiency.
+Enhances the Mediatek JPEG driver's stability and reliability by ensuring
+that all queued buffers are processed before stopping the streaming in
+multi-core environments. It introduces a call to
+`vb2_wait_for_all_buffers()` in the `mtk_jpeg_enc_stop_streaming()` and
+`mtk_jpeg_dec_stop_streaming()` functions when the `multi_core` variant
+is enabled. This change ensures that no buffers are left unprocessed,
+preventing potential data loss or corruption during multi-core flow.
 
+Fixes: 0fa49df4222f ("media: mtk-jpegdec: support jpegdec multi-hardware")
 Fixes: dedc21500334 ("media: mtk-jpegdec: add jpeg decode worker interface")
+Fixes: 934e8bccac95 ("mtk-jpegenc: support jpegenc multi-hardware")
+Fixes: 5fb1c2361e56 ("mtk-jpegenc: add jpeg encode worker interface")
 Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
 ---
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
 diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index 99f3f3b4d081..7e176a91404c 100644
+index ef7362feb697..6e5de2680e3a 100644
 --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
 +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -1736,11 +1736,15 @@ static void mtk_jpegdec_worker(struct work_struct *work)
+@@ -850,8 +850,12 @@ static struct vb2_v4l2_buffer *mtk_jpeg_buf_remove(struct mtk_jpeg_ctx *ctx,
+ static void mtk_jpeg_enc_stop_streaming(struct vb2_queue *q)
+ {
+ 	struct mtk_jpeg_ctx *ctx = vb2_get_drv_priv(q);
++	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+ 	struct vb2_v4l2_buffer *vb;
  
- 	if (mtk_jpeg_check_resolution_change(ctx,
- 					     &jpeg_src_buf->dec_param)) {
--		mtk_jpeg_queue_src_chg_event(ctx);
-+		mtk_jpeg_set_queue_data(ctx, &jpeg_src_buf->dec_param);
- 		ctx->state = MTK_JPEG_SOURCE_CHANGE;
-+		mtk_jpeg_queue_src_chg_event(ctx);
- 		goto getbuf_fail;
- 	}
- 
-+	if (ctx->state == MTK_JPEG_SOURCE_CHANGE)
-+		goto getbuf_fail;
++	if (jpeg->variant->multi_core)
++		vb2_wait_for_all_buffers(q);
 +
- 	mtk_jpegdec_set_hw_param(ctx, hw_id, src_buf, dst_buf);
- 	ret = pm_runtime_resume_and_get(comp_jpeg[hw_id]->dev);
- 	if (ret < 0) {
+ 	while ((vb = mtk_jpeg_buf_remove(ctx, q->type)))
+ 		v4l2_m2m_buf_done(vb, VB2_BUF_STATE_ERROR);
+ }
+@@ -859,6 +863,7 @@ static void mtk_jpeg_enc_stop_streaming(struct vb2_queue *q)
+ static void mtk_jpeg_dec_stop_streaming(struct vb2_queue *q)
+ {
+ 	struct mtk_jpeg_ctx *ctx = vb2_get_drv_priv(q);
++	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+ 	struct vb2_v4l2_buffer *vb;
+ 
+ 	/*
+@@ -866,6 +871,9 @@ static void mtk_jpeg_dec_stop_streaming(struct vb2_queue *q)
+ 	 * Before STREAMOFF, we still have to return the old resolution and
+ 	 * subsampling. Update capture queue when the stream is off.
+ 	 */
++	if (jpeg->variant->multi_core)
++		vb2_wait_for_all_buffers(q);
++
+ 	if (ctx->state == MTK_JPEG_SOURCE_CHANGE &&
+ 	    V4L2_TYPE_IS_CAPTURE(q->type)) {
+ 		struct mtk_jpeg_src_buf *src_buf;
 -- 
 2.45.2
 
