@@ -4,79 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E60C1F99351
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 09:08:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5E75F9935C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 09:17:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x0ZBE4dg5MTSDcUZ11xcU79ovb1gqZ+Yi/Qx0+lbeYA=; b=ne//wIuaJieWDItu+HDVjZz+5D
-	rNUH7xaMM4lS2NtQ0UYR0V9I62jLAlFcapJQ0qR9scf/W5Cgkl2QBO1p6WZJlPuhD6hHQMFdv17Sc
-	8FUImfWdQdapk73WVy5ijc0LUOQi4dbkFsK/NYE8IypG7/pqzUehkxHlXy95BjfoGGaNPcpThcKzU
-	w5fj863ePOUI6Ke99pHY/gI4lUHr8ZrjvVgqAhvzVyj7GDYhA/sKv5meoPee00NRoxueAQb6bp9g5
-	iO8jW7kOS7HQFolvf5u0ZtDOcc+G+LQzhe7RxsejznvJX32fv/RAhnHelhokGWpQUpmUXVprSFxHI
-	g45aF0gw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fg+cfL7RFhXRqyxQ+5IEhbipfMHZKY0UpIKJXrJ9fFQ=; b=DxnoOwC1t/2dMf
+	1VGbOJ2WHG3hbWxjxtTfyO4xC7GAAKcRGICZ8y1t0LHvWbfKqtEr8YMBRuKyx9KrOya3V6u9NRoH+
+	5egeDXl0JeqBgjmS66y3E/2NHMOcKKj0L78InYnxwqopkFICj79XMYfeLC5itE0aJWON6mlzzgjcT
+	3RtgWIOvuoxZ5zdnivcFldjZ6uI12Ery2EJ0V6s8E7FWkaHurBwbhrG/Sh1VJQTV2uLz/73f6oaqZ
+	9ihp6URdazzWcFzuG49YtoVL2IIQ6/BzGYR8EL+f98ebnuCrDJjq/Q66ROzwOarWTuVYRKDHfq8C8
+	smK5b0yue+UIhRd0+Tnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFq3N-0000000BJJr-44Yj;
-	Thu, 23 Apr 2026 09:08:57 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wFqC2-0000000BKB8-2VyD;
+	Thu, 23 Apr 2026 09:17:54 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFq3I-0000000BJHx-0M1T;
-	Thu, 23 Apr 2026 09:08:56 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1F54743B05;
-	Thu, 23 Apr 2026 09:08:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 68B21C2BCB2;
-	Thu, 23 Apr 2026 09:08:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776935331;
-	bh=AajPNYE6TFj2rP8H0CMm3qNBnbsYRpDyKEMrNNFlxC4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=buIvE1hsbJLLTrrhVVInDJ2ppacZAzbWKDKaPq3D5fxir4QDSzXw5/bUi94QI/gB/
-	 agTq+n3xUnZk53cML3ywFrnM4fs/MthZL2HqxNpPgf85zeFi/iJLjj7q5S2odwMwOD
-	 EHbLwoBU/D+5yj/MiVV8baAq1sbM8fTmy/B6d775kLk9BMH3DOCVLcEJ1yVgprGcoO
-	 EmGFxkXuI2NxafoVx9x47wz9AqD5m3wp/lGtspAYLxgo2vjB3ZcuBX03TSj9JmtVBs
-	 +97FFXhfu8t2J2SiFzeUB8Fw600HWOK1cC8YFZQmraCTuwFXriNPrTY8g8U69VIaSB
-	 eMQ9nIQPKTOMw==
-Date: Thu, 23 Apr 2026 11:08:43 +0200
-From: Lorenzo Pieralisi <lpieralisi@kernel.org>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Linus Walleij <linusw@kernel.org>, Lei Xue <lei.xue@mediatek.com>,
-	Hanjun Guo <guohanjun@huawei.com>,
-	Sudeep Holla <sudeep.holla@arm.com>,
-	Sean Wang <sean.wang@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	yong.mao@mediatek.com, qingliang.li@mediatek.com,
-	Fred-WY.Chen@mediatek.com, ot_cathy.xu@mediatek.com,
-	ot_shunxi.zhang@mediatek.com, ot_yaoy.wang@mediatek.com,
-	ot_ye.wang@mediatek.com, linux-acpi@vger.kernel.org,
-	robh@kernel.org
-Subject: Re: [PATCH 2/3] pinctrl: mediatek: Add acpi support
-Message-ID: <aenhm/YOAMwjiBzh@lpieralisi>
-References: <20251125023639.2416546-1-lei.xue@mediatek.com>
- <20251125023639.2416546-3-lei.xue@mediatek.com>
- <CAD++jL=h4ZEgrjgGOfgFyAXBM7EL91ZD-La82UQ7GPOXv8h9WQ@mail.gmail.com>
- <aScwaxBG53dnZ4a4@lpieralisi>
- <aSdBu-B9mwU2-1_S@smile.fi.intel.com>
- <aSgipbe75hrwhTD7@lpieralisi>
- <aShgYukPRfDkq_Z0@smile.fi.intel.com>
- <aSh0EyGm9ZHAc3dN@lpieralisi>
- <aeHSl9MYGq0bRXsu@ashevche-desk.local>
+	id 1wFqBz-0000000BKA7-1xwp
+	for linux-mediatek@lists.infradead.org;
+	Thu, 23 Apr 2026 09:17:53 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-03.galae.net (Postfix) with ESMTPS id EDB3D4E42AC1;
+	Thu, 23 Apr 2026 09:17:47 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id B05A060495;
+	Thu, 23 Apr 2026 09:17:47 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 8ED6210460A92;
+	Thu, 23 Apr 2026 11:17:22 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1776935862; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding; bh=fg+cfL7RFhXRqyxQ+5IEhbipfMHZKY0UpIKJXrJ9fFQ=;
+	b=q5bujtbykq4zXmP/ViiTPdoLiG5rI0IaZoAA1hMcWIsLUIjEVEl28d937PxTSzkcMAo/iZ
+	FfPwWtnuuqp+IknsHgvp3qm2VGtVpuHNGfMwGTXr2NkdUJOEtPHMV4UHRqdwWxLZYY/52V
+	TZjndhPSGi4MLc5sduluxvM9nY9F6d73IxJ7XGYOWbGdcr5LPkjFcaZUqMHKClI3ggDkmt
+	vv2RfEgf0BziLtsSNwVeni3K0HcfWG0FFpxhXmTS2A0O9EMNfYm5uB4MovAIlAdrmlJuqv
+	x5G5QDqMA5j0QJvF0aKhDcR51xqodoTterNKBN6akBGsCUESvx0TKhaoHu4wbA==
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Subject: [PATCH v2 00/41] drm/display: bridge-connector: attach encoder to
+ the connector
+Date: Thu, 23 Apr 2026 11:16:54 +0200
+Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <aeHSl9MYGq0bRXsu@ashevche-desk.local>
+X-B4-Tracking: v=1; b=H4sIAIbj6WkC/42OQQ7CIBBFr9KwFkOJhcaV9zCNgWFqx1gwgI2m6
+ d2lNe5dvsz/78/MEkbCxI7VzCJOlCj4AnJXMRiMvyInV5hJIZU41Iq7OHIbyZULBO8Rcojc5Gx
+ guKCH4DByUE1tQDRaND0rpkfEnl7byrn7cnraW+mu6jUxUCqe9/bGVK+536L+a3GqueBK29a2v
+ W21NCcbQr6T30MYWbcsywfd2mBG6gAAAA==
+X-Change-ID: 20260416-drm-bridge-connector-attach_encoder-c651ac05705f
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Sasha Finkelstein <fnkl.kernel@gmail.com>, Janne Grunau <j@jannau.net>, 
+ Liu Ying <victor.liu@nxp.com>, Douglas Anderson <dianders@chromium.org>, 
+ Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, 
+ Lucas Stach <l.stach@pengutronix.de>, Frank Li <Frank.Li@nxp.com>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
+ Paul Cercueil <paul@crapouillou.net>, 
+ Anitha Chrisanthus <anitha.chrisanthus@intel.com>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+ Rob Clark <robin.clark@oss.qualcomm.com>, 
+ Dmitry Baryshkov <lumag@kernel.org>, 
+ Abhinav Kumar <abhinav.kumar@linux.dev>, 
+ Jessica Zhang <jesszhan0024@gmail.com>, Sean Paul <sean@poorly.run>, 
+ Marijn Suijten <marijn.suijten@somainline.org>, 
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Thierry Reding <thierry.reding@gmail.com>, 
+ Mikko Perttunen <mperttunen@nvidia.com>, 
+ Jonathan Hunter <jonathanh@nvidia.com>, 
+ Icenowy Zheng <zhengxingda@iscas.ac.cn>, Jingoo Han <jingoohan1@gmail.com>, 
+ Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, 
+ Alim Akhtar <alim.akhtar@samsung.com>, 
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
+ Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, 
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
+ Geert Uytterhoeven <geert+renesas@glider.be>, 
+ Magnus Damm <magnus.damm@gmail.com>, Biju Das <biju.das.jz@bp.renesas.com>, 
+ Marek Vasut <marex@denx.de>, Stefan Agner <stefan@agner.ch>, 
+ Jyri Sarha <jyri.sarha@iki.fi>, Michal Simek <michal.simek@amd.com>
+Cc: Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>, 
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, asahi@lists.linux.dev, 
+ imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+ linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+ freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
+ linux-tegra@vger.kernel.org, linux-samsung-soc@vger.kernel.org, 
+ linux-renesas-soc@vger.kernel.org
+X-Mailer: b4 0.15.2
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_020852_175305_4BE332FB 
-X-CRM114-Status: GOOD (  63.97  )
+X-CRM114-CacheID: sfid-20260423_021751_806885_76DBCE0C 
+X-CRM114-Status: GOOD (  19.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,170 +131,282 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 17, 2026 at 09:26:31AM +0300, Andy Shevchenko wrote:
-> On Thu, Nov 27, 2025 at 04:53:55PM +0100, Lorenzo Pieralisi wrote:
-> > On Thu, Nov 27, 2025 at 04:29:54PM +0200, Andy Shevchenko wrote:
-> > > On Thu, Nov 27, 2025 at 11:06:29AM +0100, Lorenzo Pieralisi wrote:
-> > > > On Wed, Nov 26, 2025 at 08:06:51PM +0200, Andy Shevchenko wrote:
-> 
-> [...]
-> 
-> > > > > > I also assume/hope that we don't want to add a "reg-names" _DSD property either
-> > > > > > in ACPI to deal with this seamlessly in DT/ACPI (that was done for
-> > > > > > "interrupt-names"):
-> > > > > > 
-> > > > > > https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/firmware-guide/acpi/enumeration.rst?h=v6.18-rc7#n188
-> > > > > 
-> > > > > Hmm... Why not?
-> > > > 
-> > > > What's the policy there ?
-> > > 
-> > > > Half of the ACPI bindings for an interrupt
-> > > > descriptor are defined in the ACPI specs (ie _CRS) and the other half
-> > > > (ie "interrupt-names") is documented in the Linux kernel (or are we
-> > > > documenting this elsewhere ?) ?
-> > > 
-> > > Yeah, nobody pursued ACPI specification updates / addendum to make it fully
-> > > official. _De facto_ we have established practice for GPIOs enumeration
-> > > (as most used resources in the OSes), Linux official for PWM, I�C muxes,
-> > > multi-functional HW (such as Diolan DLN-2, LJCA), Microsoft defined for
-> > > so called "USB hardwired" devices, Linux defined for LEDs and GPIO keys,
-> > > sensor mount matrix as per "most used" cases + DT analogue works just
-> > > because we have agnostic APIs in IIO to retrieve that. There are maybe
-> > > more, but don't remember
-> > > 
-> > > So, I think the practical "policies" are that:
-> > > - if it's defined in ACPI spec, we use the spec
-> > > - if there is Microsoft addendum, we rely on what Windows does
-> > > - WMI, EFI, and other "windoze"-like vendor defined cases
-> > > - if it makes sense, we establish practice from Linux perspective
-> > > - the rest, every vendor does what it does
-> > > 
-> > > That said, for the first two we expect OEMs to follow, for the third one
-> > > depends, but there are established WMI calls and other more or less "standard"
-> > > interfaces, so like the first two.
-> > > 
-> > > For the fourth one (Linux) we do, but living in the expectation that some or
-> > > more vendors fall to the fifth category and we might need to support that if
-> > > we want their HW work in Linux.
-> > > 
-> > > > Or we are saying that "interrupt-names" properties are added by kernel
-> > > > code _only_ (through software nodes, to make parsing seamless between DT
-> > > > and ACPI) based on hardcoded name values in drivers ?
-> > > 
-> > > No, the idea behind software nodes is to "fix" the FW nodes in case the FW
-> > > description can not be modified (and that might well happen to even DT in some
-> > > cases AFAIH). So, if some driver hard codes "interrupt-names" we expect that
-> > > new versions of the FW that support the HW that needs the property will be
-> > > amended accordingly.
-> > > 
-> > > "interrupt-names" has been established for ACPI to support a separate SMB alert
-> > > interrupt. However, I haven't heard any development of that IRL (for real
-> > > devices in ACPI environment).
-> > > 
-> > > > I don't think I can grok any example of the latter in the mainline.
-> > > > 
-> > > > I am asking because I'd need to add something similar shortly to make parsing
-> > > > of platform devices created out of ACPI static tables easier (I guess we
-> > > > can postpone discussion till I post the code but I thought I'd ask).
-> > > 
-> > > Oh, I can go ahead and tell you, try to avoid that. Why?! Whatever,
-> > > indeed, please Cc me to that, I will be glad to study the case and
-> > > try to be helpful.
-> > > 
-> > > (Have you considered DT overlays instead? There is a big pending support for
-> > >  that for _ACPI_ platforms.)
-> > 
-> > Long story short: we do need to create platform devices out of static
-> > table (eg ARM64 IORT) entries. Current code parses the table entries and
-> > try to map the devices IRQs (ie acpi_register_gsi()) when the platform
-> > device is created. Now, the interrupt controller that device IRQ's is
-> > routed to might not have probed yet. We have to defer probing and later,
-> > when the platform driver probes, map the IRQ.
-> > 
-> > Issue is: for OF nodes and ACPI devices, behind the platform device
-> > firmware node there is a standard firmware object, so implementing
-> > fwnode_irq_get() is trivial. For the devices I am talking about,
-> > the data providing GSI info (hwirq, trigger/polarity) is static
-> > table specific, so the idea was to stash that data and embed it in
-> > fwnode_static along with a irq_get() fwnode_operations function
-> > specific to that piece of data so that device drivers can actually do:
-> > 
-> > fwnode_irq_get()
-> > 
-> > on the fwnode _seamlessly_ (if you still do wonder: those platform
-> > devices created out of static table entries in ACPI in OF are
-> > of_node(s)).
-> > 
-> > There is a less convoluted solution (that is what some platform
-> > drivers in ACPI do today), that is, we pass the static table
-> > data in pdev->dev.platform_data and each platform_driver parses it differently.
-> > 
-> > That works but that also means the in the respective device drivers
-> > OF and ACPI IRQ (and MMIO) parsing differ (which is not necessarily
-> > a problem I just have to rewrite them all).
-> 
-> Hmm... The parsing inside drivers is quite a custom case. I would avoid doing
-> it if it's not device specific (I mean if it's not related to the very unique
-> device or family of the devices which most likely won't appear again in the
-> future). In other words, I prefer agnostic solutions over custom ones.
-> 
-> > Now - when it comes to "interrupt-names". Some of the device drivers
-> > I mention do:
-> > 
-> > eg platform_get_irq_byname_optional()
-> > 
-> > that expects the IRQ to be mapped and stored in a named platform device resource.
-> > 
-> > That's easy in DT - for two reasons:
-> > 
-> > (1) "interrupt-names"
-> > (2) standard properties behind the of_node
-> > 
-> > how to do that for fwnodes that aren't backed by either OF nodes or ACPI
-> > devices (that do use "interrupt-names" _DSD property) is a question.
-> > 
-> > Mind, the "interrupt-names" thing is a detail in the whole mechanism.
-> > 
-> > DT overlays to represent in ACPI those static table entries ?
-> > 
-> > I vividly remember the days ACPI for ARM64 was being merged - that's what
-> > our crystal ball predicted :)
-> 
-> So, the idea is to translate ACPI static table entries (which comes from IORT)
-> to the IRQ fwnodes at initialisation (parsing) time?
+This series simplifies using the bridge-connector by removing the need to
+attach the newly created connector to the encoder.
 
-They don't come from IORT only but that does not matter much. The point is,
-we have got to have a standard way for device drivers to retrieve a HW
-IRQ number for devices created out of static tables (and only code that
-knows what a static table represents can initialize such fwnodes because
-the interrupt fields are different in different static tables).
+== Series description
 
-Lorenzo
+Currently all users of the bridge-connector must call
+drm_connector_attach_encoder() immediately after a successful
+drm_bridge_connector_init().
 
-> > This delayed IRQ mapping notwithstanding, I read what you wrote and took
-> > note. The worry is, this fwnode_*() (on ACPI nodes) interface trickling
-> > into subsystems where it should not (ie PCI, clocks, regulators) - hopefully
-> > the respective maintainers are keeping an eye on it.
-> > 
-> > > > Are we going to do the same for "reg-names" ?
-> > > 
-> > > If it makes sense and we expect some vendor to follow that _in ACPI_,
-> > > why not?
-> > > 
-> > > > Most importantly, what is DT maintainers stance on the matter ?
-> > > 
-> > > AFAIK They don't care as long as there is a schema provided, accepted and
-> > > used in DT, if it's ACPI-only thing, then it most likely should be done
-> > > in ACPI-like way (see above the first two / three items: spec, MS, WMI/EFI).
-> > > 
-> > > > > > I am sorry I have got more questions than answers here - it would be good
-> > > > > > to understand where the line is drawn when it comes to OF/ACPI and fwnode
-> > > > > > heuristics compatibility.
-> 
-> -- 
-> With Best Regards,
-> Andy Shevchenko
-> 
-> 
+This is an unnecessary burden for users. Move the call to the end of
+drm_bridge_connector_init() so all callers can be simplified.
+
+ * Patch 1 adds a drm_connector_attach_encoder() call at the end of
+   drm_bridge_connector_init()
+ * The other patches remove drm_connector_attach_encoder() after all
+   drm_bridge_connector_init() calls, ordered from the simplest ones
+   (only the last one is somewhat non-obvious)
+
+The Cc list is huge due to the many drivers touched. I sent v1 to a reduced
+Cc list to ensure there is an agreement about the overall idea. That seems
+to be the case, so now it's time to copy all drivers maintainers.
+
+It would be nice to apply all of this series at once to avoid duplicated
+calls to drm_connector_attach_encoder() in the interim. That would be
+harmless beacuse drm_connector_attach_encoder() is idempotent, but
+unpleasant.
+
+== Additional rationale (for the curious)
+
+Besides making the usage of the bridge-connector a bit simpler, this series
+is in preparation for DRM bridge hotplug. Here's why, feel free to skip if
+you don't care.
+
+The old bridge hotplug proposals I have sent in the past [1] were based on
+a hotplug-bridge driver to sit between the last fixed bridge and the first
+hotplugged bridge. Discussion with the community led to the need of
+removing the hotplug-bridge and let common DRM code handle hotplug. The
+common place of code that appears the most suitable for hotplug handling is
+the bridge-connector, which is by now the recommended way to handle
+connector instantiation after a bridge chain.
+
+So I'm in the process of extending the bridge-connector to be the central
+point to handle bridge hotplug. Turns out the need to call
+drm_connector_attach_encoder() after drm_bridge_connector_init() has
+returned is adding big headaches to such work. So I'm send this long but
+simple series to both simplify bridge-connector usage and remove one
+obstacle from the bridge hotplug work. This series is relevant by itself
+anyway.
+
+[1] https://lore.kernel.org/lkml/20250206-hotplug-drm-bridge-v6-26-9d6f2c9c3058@bootlin.com/
+
+== Grand plan
+
+This is part of the work to support hotplug of DRM bridges. The grand plan
+was discussed in [0].
+
+Here's the work breakdown (➜ marks the current series):
+
+ 1. … add refcounting to DRM bridges struct drm_bridge,
+      based on devm_drm_bridge_alloc()
+    A. ✔ add new alloc API and refcounting (v6.16)
+    B. ✔ convert all bridge drivers to new API (v6.17)
+    C. ✔ kunit tests (v6.17)
+    D. ✔ add get/put to drm_bridge_add/remove() + attach/detach()
+         and warn on old allocation pattern (v6.17)
+    E. … add get/put on drm_bridge accessors
+       1. ✔ drm_bridge_chain_get_first_bridge(), add cleanup action (v6.18)
+       2. ✔ drm_bridge_get_prev_bridge() (v6.18)
+       3. ✔ drm_bridge_get_next_bridge() (v6.19)
+       4. ✔ drm_for_each_bridge_in_chain() (v6.19)
+       5. ✔ drm_bridge_connector_init (v6.19)
+       6. ✔ protect encoder bridge chain with a mutex (v7.2)
+       7. … of_drm_find_bridge
+          a. ✔ add of_drm_get_bridge() (v7.0),
+	       convert basic direct users (v7.0-v7.1)
+	  b. ✔ convert direct of_drm_get_bridge() users, part 2 (v7.0)
+	  c. ✔ convert direct of_drm_get_bridge() users, part 3 (v7.0)
+	  d. ✔ convert direct of_drm_get_bridge() users, part 4 (v7.1-v7.2)
+	  e. … convert bridge-only drm_of_find_panel_or_bridge() users
+       8. drm_of_find_panel_or_bridge, *_of_get_bridge
+       9. ✔ enforce drm_bridge_add before drm_bridge_attach (v6.19)
+    F. ✔ debugfs improvements
+       1. ✔ add top-level 'bridges' file (v6.16)
+       2. ✔ show refcount and list lingering bridges (v6.19)
+ 2. … handle gracefully atomic updates during bridge removal
+    A. ✔ Add drm_bridge_enter/exit() to protect device resources (v7.0)
+    B. … protect private_obj removal from list
+    C. ✔ Add drm_bridge_clear_and_put() (v7.1)
+ 3. … DSI host-device driver interaction
+ 4. ✔ removing the need for the "always-disconnected" connector
+ 5. ✔ Migrate i.MX LCDIF driver to bridge-connector (v7.2)
+ 6. ➜ DRM bridge hotplug
+    A. ➜ Bridge hotplug management in the DRM core
+       1. ➜ bridge-connector: attach encoder to the connector
+    B.   Device tree description
+
+[0] https://lore.kernel.org/lkml/20250206-hotplug-drm-bridge-v6-0-9d6f2c9c3058@bootlin.com/#t
+
+Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+---
+Changes in v2:
+- patch 1: update kdoc
+- patch 41: fix by rewriting it fully
+- update cover letter
+- Link to v1: https://patch.msgid.link/20260417-drm-bridge-connector-attach_encoder-v1-0-67b8b8fb872a@bootlin.com
+
+To: Andrzej Hajda <andrzej.hajda@intel.com>
+To: Neil Armstrong <neil.armstrong@linaro.org>
+To: Robert Foss <rfoss@kernel.org>
+To: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
+To: Jonas Karlman <jonas@kwiboo.se>
+To: Jernej Skrabec <jernej.skrabec@gmail.com>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+To: Maxime Ripard <mripard@kernel.org>
+To: Thomas Zimmermann <tzimmermann@suse.de>
+To: David Airlie <airlied@gmail.com>
+To: Simona Vetter <simona@ffwll.ch>
+To: Sasha Finkelstein <fnkl.kernel@gmail.com>
+To: Janne Grunau <j@jannau.net>
+To: Liu Ying <victor.liu@nxp.com>
+To: Douglas Anderson <dianders@chromium.org>
+To: Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>
+To: Lucas Stach <l.stach@pengutronix.de>
+To: Frank Li <Frank.Li@nxp.com>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+To: Pengutronix Kernel Team <kernel@pengutronix.de>
+To: Fabio Estevam <festevam@gmail.com>
+To: Philipp Zabel <p.zabel@pengutronix.de>
+To: Paul Cercueil <paul@crapouillou.net>
+To: Anitha Chrisanthus <anitha.chrisanthus@intel.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Kevin Hilman <khilman@baylibre.com>
+To: Jerome Brunet <jbrunet@baylibre.com>
+To: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+To: Rob Clark <robin.clark@oss.qualcomm.com>
+To: Dmitry Baryshkov <lumag@kernel.org>
+To: Abhinav Kumar <abhinav.kumar@linux.dev>
+To: Jessica Zhang <jesszhan0024@gmail.com>
+To: Sean Paul <sean@poorly.run>
+To: Marijn Suijten <marijn.suijten@somainline.org>
+To: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+To: Sandy Huang <hjc@rock-chips.com>
+To: Heiko Stübner <heiko@sntech.de>
+To: Andy Yan <andy.yan@rock-chips.com>
+To: Thierry Reding <thierry.reding@gmail.com>
+To: Mikko Perttunen <mperttunen@nvidia.com>
+To: Jonathan Hunter <jonathanh@nvidia.com>
+To: Icenowy Zheng <zhengxingda@iscas.ac.cn>
+To: Jingoo Han <jingoohan1@gmail.com>
+To: Inki Dae <inki.dae@samsung.com>
+To: Seung-Woo Kim <sw0312.kim@samsung.com>
+To: Kyungmin Park <kyungmin.park@samsung.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+To: Alim Akhtar <alim.akhtar@samsung.com>
+To: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
+To: Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>
+To: Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
+To: Geert Uytterhoeven <geert+renesas@glider.be>
+To: Magnus Damm <magnus.damm@gmail.com>
+To: Biju Das <biju.das.jz@bp.renesas.com>
+To: Marek Vasut <marex@denx.de>
+To: Stefan Agner <stefan@agner.ch>
+To: Jyri Sarha <jyri.sarha@iki.fi>
+To: Michal Simek <michal.simek@amd.com>
+Cc: Hui Pu <Hui.Pu@gehealthcare.com>
+Cc: Ian Ray <ian.ray@gehealthcare.com>
+Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
+Cc: dri-devel@lists.freedesktop.org
+Cc: linux-kernel@vger.kernel.org
+Cc: asahi@lists.linux.dev
+Cc: imx@lists.linux.dev
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mips@vger.kernel.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-amlogic@lists.infradead.org
+Cc: linux-arm-msm@vger.kernel.org
+Cc: freedreno@lists.freedesktop.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-tegra@vger.kernel.org
+Cc: linux-samsung-soc@vger.kernel.org
+Cc: linux-renesas-soc@vger.kernel.org
+
+---
+Luca Ceresoli (41):
+      drm/display: bridge-connector: attach the encoder to the created connector
+      drm: adp: remove now-redundant call to drm_connector_attach_encoder()
+      drm/bridge: adv7511: remove now-redundant call to drm_connector_attach_encoder()
+      drm/bridge: ite-it6263: remove now-redundant call to drm_connector_attach_encoder()
+      drm/bridge: ti-sn65dsi86: remove now-redundant call to drm_connector_attach_encoder()
+      drm/imx/dcss: remove now-redundant call to drm_connector_attach_encoder()
+      drm/imx: ldb: remove now-redundant call to drm_connector_attach_encoder()
+      drm/imx: parallel-display: remove now-redundant call to drm_connector_attach_encoder()
+      drm/imx/lcdc: remove now-redundant call to drm_connector_attach_encoder()
+      drm/ingenic: remove now-redundant call to drm_connector_attach_encoder()
+      drm/kmb/dsi: remove now-redundant call to drm_connector_attach_encoder()
+      drm/mediatek: mtk_dpi: remove now-redundant call to drm_connector_attach_encoder()
+      drm/mediatek: mtk_dsi: remove now-redundant call to drm_connector_attach_encoder()
+      drm/meson: encoder_cvbs: remove now-redundant call to drm_connector_attach_encoder()
+      drm/meson: encoder_hdmi: remove now-redundant call to drm_connector_attach_encoder()
+      drm/msm/dp: remove now-redundant call to drm_connector_attach_encoder()
+      drm/msm/hdmi: remove now-redundant call to drm_connector_attach_encoder()
+      drm/omapdrm: remove now-redundant call to drm_connector_attach_encoder()
+      rm/rockchip: cdn-dp: remove now-redundant call to drm_connector_attach_encoder()
+      drm/rockchip: rk3066_hdmi: remove now-redundant call to drm_connector_attach_encoder()
+      drm/tegra: hdmi: remove now-redundant call to drm_connector_attach_encoder()
+      drm/tegra: rgb: remove now-redundant call to drm_connector_attach_encoder()
+      drm/tests: bridge: remove now-redundant call to drm_connector_attach_encoder()
+      drm: verisilicon: remove now-redundant call to drm_connector_attach_encoder()
+      drm/exynos: exynos_dp: remove now-redundant call to drm_connector_attach_encoder()
+      drm: rcar-du: encoder: remove now-redundant call to drm_connector_attach_encoder()
+      drm: renesas: rz-du: rzg2l_du_encoder: remove now-redundant call to drm_connector_attach_encoder()
+      drm/rockchip: analogix_dp: remove now-redundant call to drm_connector_attach_encoder()
+      drm/rockchip: dw_dp: remove now-redundant call to drm_connector_attach_encoder()
+      drm/rockchip: dw_hdmi_qp: remove now-redundant call to drm_connector_attach_encoder()
+      drm/rockchip: inno-hdmi: remove now-redundant call to drm_connector_attach_encoder()
+      drm/msm/mdp4: remove now-redundant call to drm_connector_attach_encoder()
+      drm/msm/dsi: remove now-redundant call to drm_connector_attach_encoder()
+      drm/mxsfb/lcdif: remove now-redundant call to drm_connector_attach_encoder()
+      drm/rockchip: lvds: remove now-redundant call to drm_connector_attach_encoder()
+      drm/tidss: remove now-redundant call to drm_connector_attach_encoder()
+      drm/tilcdc: remove now-redundant call to drm_connector_attach_encoder()
+      drm: zynqmp_kms: remove now-redundant call to drm_connector_attach_encoder()
+      drm/imx: remove now-redundant call to drm_connector_attach_encoder()
+      drm/rockchip: rgb: remove now-redundant call to drm_connector_attach_encoder()
+      drm: renesas: shmobile: remove now-redundant call to drm_connector_attach_encoder()
+
+ drivers/gpu/drm/adp/adp_drv.c                     |  2 --
+ drivers/gpu/drm/bridge/adv7511/adv7511_drv.c      |  2 --
+ drivers/gpu/drm/bridge/ite-it6263.c               |  2 --
+ drivers/gpu/drm/bridge/ti-sn65dsi86.c             |  2 --
+ drivers/gpu/drm/display/drm_bridge_connector.c    | 11 +++++++++--
+ drivers/gpu/drm/exynos/exynos_dp.c                |  2 +-
+ drivers/gpu/drm/imx/dc/dc-kms.c                   |  8 +-------
+ drivers/gpu/drm/imx/dcss/dcss-kms.c               |  2 --
+ drivers/gpu/drm/imx/ipuv3/imx-ldb.c               |  2 --
+ drivers/gpu/drm/imx/ipuv3/parallel-display.c      |  2 --
+ drivers/gpu/drm/imx/lcdc/imx-lcdc.c               |  2 --
+ drivers/gpu/drm/ingenic/ingenic-drm-drv.c         |  2 --
+ drivers/gpu/drm/kmb/kmb_dsi.c                     |  2 +-
+ drivers/gpu/drm/mediatek/mtk_dpi.c                |  1 -
+ drivers/gpu/drm/mediatek/mtk_dsi.c                |  1 -
+ drivers/gpu/drm/meson/meson_encoder_cvbs.c        |  2 --
+ drivers/gpu/drm/meson/meson_encoder_hdmi.c        |  2 --
+ drivers/gpu/drm/msm/disp/mdp4/mdp4_kms.c          |  7 -------
+ drivers/gpu/drm/msm/dp/dp_drm.c                   |  2 --
+ drivers/gpu/drm/msm/dsi/dsi_manager.c             |  4 ----
+ drivers/gpu/drm/msm/hdmi/hdmi.c                   |  2 --
+ drivers/gpu/drm/mxsfb/lcdif_drv.c                 |  6 ------
+ drivers/gpu/drm/omapdrm/omap_drv.c                |  2 --
+ drivers/gpu/drm/renesas/rcar-du/rcar_du_encoder.c |  2 +-
+ drivers/gpu/drm/renesas/rz-du/rzg2l_du_encoder.c  |  2 +-
+ drivers/gpu/drm/renesas/shmobile/shmob_drm_crtc.c | 16 +++++++---------
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c   |  2 +-
+ drivers/gpu/drm/rockchip/cdn-dp-core.c            |  2 --
+ drivers/gpu/drm/rockchip/dw_dp-rockchip.c         |  2 +-
+ drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c    |  2 +-
+ drivers/gpu/drm/rockchip/inno_hdmi-rockchip.c     |  2 +-
+ drivers/gpu/drm/rockchip/rk3066_hdmi.c            |  2 --
+ drivers/gpu/drm/rockchip/rockchip_lvds.c          |  6 ------
+ drivers/gpu/drm/rockchip/rockchip_rgb.c           |  9 ---------
+ drivers/gpu/drm/tegra/hdmi.c                      |  2 --
+ drivers/gpu/drm/tegra/rgb.c                       |  2 --
+ drivers/gpu/drm/tests/drm_bridge_test.c           |  2 --
+ drivers/gpu/drm/tidss/tidss_encoder.c             |  6 ------
+ drivers/gpu/drm/tilcdc/tilcdc_encoder.c           |  6 ------
+ drivers/gpu/drm/verisilicon/vs_bridge.c           |  1 -
+ drivers/gpu/drm/xlnx/zynqmp_kms.c                 |  6 ------
+ 41 files changed, 25 insertions(+), 117 deletions(-)
+---
+base-commit: 77fec37c895fcbdefbcec97cefd6d1f5cfdf1e3a
+change-id: 20260416-drm-bridge-connector-attach_encoder-c651ac05705f
+
+Best regards,
+--  
+Luca Ceresoli <luca.ceresoli@bootlin.com>
+
 
