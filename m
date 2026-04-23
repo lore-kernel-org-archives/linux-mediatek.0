@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80FF1F99344
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 09:24:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7200F99344
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 09:24:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hHreTF5UsM+/5KFOm8ixdx5rwjisLGM2O64i/IkGzAY=; b=GbyxLNoPYrhGHA9DT4yjzIz0RQ
-	RawOxEZx02lajKdgZLkivDo0gFC4ct9EEujUl7dVizikAjhYCpCHW+cs/CnGgqA786jww80PcKCsy
-	zNnmeuKWUbKeLRbdZFHzG8yEzgwdmdFSUanDUX4n/uc5C82IYkSzMbrRa3S94cZ79ArgGpIJKhnuY
-	EId0UTv++w9zglIq3nKS83wk5uXGl6e6wB6iiSXYAV9lbdf1Z+UQQY0iIVXHuUBojKWbEJX8H1iER
-	KUQJUEncHxPd13KNNrA2/+N2uXVWV8RS87tpQAgM+VDy5DPcPWP34G4pwC1q5MXBw5nnW5Iujljuz
-	+H3IZgrw==;
+	bh=j2LmI/f7V/mWd2ohfL021OYM/85ERPVQO+LtXKIb7T8=; b=XlZ2kCCr3RVbPesxYFrgugDo34
+	ptBWKb/l6bQzutUPjmN++wweIpDkSoVjM82umGFmQdCnMNzv+5SsUwpB64FkjkcIKMAAlmIaysZdN
+	iWjipdrDLf4CTVnKaTA9Bi3Ag1SXNPCvT/t+NpfhSMbz1gE2PjHR0w+v4CVxu5JPAGSQvNmmVz3hA
+	NPYT/O5BEbdr74VoZjD5ofYz99VUWD3iHZhaczf6DfEvKpeOBP3jsfSmCa19lWCaLFI8p9mKEjMML
+	fjg9lfNFBLHckmXgY8T6UC4aoMY1JRXhL49XXzfJonGyTKvZjDODFIY5ulImGtMucJPdJxsEOO3HC
+	vxXwyjTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqIE-0000000BNDF-2Qq1;
-	Thu, 23 Apr 2026 09:24:18 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+	id 1wFqIU-0000000BNJ0-0Rwd;
+	Thu, 23 Apr 2026 09:24:34 +0000
+Received: from smtpout-04.galae.net ([185.171.202.116])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqIA-0000000BNB7-33s7;
-	Thu, 23 Apr 2026 09:24:16 +0000
+	id 1wFqIQ-0000000BNGm-2how;
+	Thu, 23 Apr 2026 09:24:32 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id 2E7991A33BB;
-	Thu, 23 Apr 2026 09:24:13 +0000 (UTC)
+	by smtpout-04.galae.net (Postfix) with ESMTPS id CBD41C5EF0D;
+	Thu, 23 Apr 2026 09:25:09 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 0031A60495;
-	Thu, 23 Apr 2026 09:24:13 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 5942D10460B12;
-	Thu, 23 Apr 2026 11:23:54 +0200 (CEST)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 92B0E60495;
+	Thu, 23 Apr 2026 09:24:28 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 41D4B10460A92;
+	Thu, 23 Apr 2026 11:24:09 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1776936249; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1776936264; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=hHreTF5UsM+/5KFOm8ixdx5rwjisLGM2O64i/IkGzAY=;
-	b=n74CTXJU78zzsgPjKkGkghfxZ9OtKVBW5Bn3VfQOrmW213MFdXW84egqu1ul/3W/jxfqhP
-	jp42EpKbXOVvBnQGS3VivkrIeOnTCBFos5/Yvvy32eRi3uPTRjWZs9pZlNIJJ/IFa7sX5/
-	nBBbHWDhqge9+iIfRGIGqUA3O1bFXoQg9IkqRWh6H0PMaWVPJDV0HeVF0HxgxbnM0+fZjf
-	ZeM7T46FVWR6mD1cg+NLqYsLM1C4aXLtvUREbzaKYfVpZOMfczWkDKF213l1O0t8a4yafT
-	xcTFjd/tOvxMwT5cIDa1WYYIuA1Ngng4tmYCmFQHCoE6tirpaBysjSfCmWn6mA==
+	bh=j2LmI/f7V/mWd2ohfL021OYM/85ERPVQO+LtXKIb7T8=;
+	b=zG08pZWqS3rETrGk1bFI1yRRiK+EZh1ahGJF0Z90c//Dh0ELKRBK3HBS9/P2kS2NThErlc
+	txssIWicoduAqj+5KvAQSLdCeu/Bd+PtuJChtlBXU4idsfV6MEHAbsq4Zm2kSqgQ0ENCRa
+	0pareqbIbEEmgaHiuji9w9XOEptVa6XWlj/lp0hbyCBkKcmw9YjOINnphlggtTh26TQXOi
+	oW4HoM/VBfsG6TOF1npduiVhAmHEGFegOwJQrnbWHN3+L22k1T+Umy1x1hP1NSlihUrfVR
+	UVN8r3xV4DkerxpIGzyxcQQQ+lVDnQdSR2onu8UU6IOsdXPBArLb4Y7jckE4zA==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Thu, 23 Apr 2026 11:17:18 +0200
-Subject: [PATCH v2 24/41] drm: verisilicon: remove now-redundant call to
- drm_connector_attach_encoder()
+Date: Thu, 23 Apr 2026 11:17:19 +0200
+Subject: [PATCH v2 25/41] drm/exynos: exynos_dp: remove now-redundant call
+ to drm_connector_attach_encoder()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-24-2ae6ca69b390@bootlin.com>
+Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-25-2ae6ca69b390@bootlin.com>
 References: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 In-Reply-To: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
@@ -112,9 +112,8 @@ Cc: Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>,
 X-Mailer: b4 0.15.2
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_022414_909374_850DF377 
-X-CRM114-Status: UNSURE (   8.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260423_022430_821192_72254863 
+X-CRM114-Status: GOOD (  10.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,21 +133,22 @@ drm_bridge_connector_init().
 
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
- drivers/gpu/drm/verisilicon/vs_bridge.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/gpu/drm/exynos/exynos_dp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/verisilicon/vs_bridge.c b/drivers/gpu/drm/verisilicon/vs_bridge.c
-index 2a0ad00a94d6..83c91d5ce397 100644
---- a/drivers/gpu/drm/verisilicon/vs_bridge.c
-+++ b/drivers/gpu/drm/verisilicon/vs_bridge.c
-@@ -365,7 +365,6 @@ struct vs_bridge *vs_bridge_init(struct drm_device *drm_dev,
- 		ret = PTR_ERR(bridge->conn);
- 		return ERR_PTR(ret);
+diff --git a/drivers/gpu/drm/exynos/exynos_dp.c b/drivers/gpu/drm/exynos/exynos_dp.c
+index 6884ea6d04eb..b80540328150 100644
+--- a/drivers/gpu/drm/exynos/exynos_dp.c
++++ b/drivers/gpu/drm/exynos/exynos_dp.c
+@@ -118,7 +118,7 @@ static int exynos_dp_bind(struct device *dev, struct device *master, void *data)
+ 		return ret;
  	}
--	drm_connector_attach_encoder(bridge->conn, bridge->enc);
  
- 	return bridge;
+-	return drm_connector_attach_encoder(connector, dp->plat_data.encoder);
++	return 0;
  }
+ 
+ static void exynos_dp_unbind(struct device *dev, struct device *master,
 
 -- 
 2.53.0
