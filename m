@@ -4,57 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48875FED3C1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Apr 2026 12:38:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D2AEFED3E2
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Apr 2026 15:15:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=mLLV/k7JNPJXBHlWlKu+jNKCwYhFGp68N1BkyABl1kA=; b=4EebEoX35R8N35lfHAgP1UTbuB
-	yA9OWPjhNaAIMHLhZ/D2XeeRQbOP1XkUGGnhnH1dIIzdFREnq7NdmCIOt+xouu+VSpwXavbc1E/U/
-	GkXoN8ND968cVfBjS1lYu15L57QMl/Ks2hwMSyeThk5ERu3hbjVyy3kseek9Xb1jhpknnuIKr0sAm
-	W7OCPEvJIkTAp+4uAoinrLRtYdH0V4ksU6HbE5KgkIQ17tdhpGcM4uMTxZUPxHOrabapDxWtmE/Za
-	6bMWL2NW9L8Jfz7t0BsT21NI4DWoK+EapUfEapX2Wn2QtwH1MjfcjWMqGO9PepBNXM+VmJfN70weF
-	XZBJOirQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XSxlKFIeNK6UZ+zgOcNeSOcSDg/ZVpbaHIVyYTslZsw=; b=aSCx92J73acN4iU0m3sg/q+iIj
+	IrusJW1a7rVx/Mbcihi+aPBwohQUTGUEnvc/icoHDZ8i+uIrg7/H2DDNk3s0XZ9iUKRt9eOCQHZmr
+	fjFLCct7qHFBdWJGct0oQkcE4l1GPY8voFV1bJX+FpM5f7DVlTG0TmB/2NSfGJqUwCZAoJoQbImgH
+	iI4hBZeGWcPOlXUL85UNU2SNuH8L4mczbLZKWhi3jV7ePjpK9BzFRKxkEJUVlaV9tDd0H2Nr9gJS3
+	U3rZPzkh6NYy+iLu1aow4FsTVhM3Co0eXGzfI8YvwCofOpt7rYyrL17/JeJrRjSVlhJfqT7h55cJR
+	0V03j0MQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wGFnJ-0000000DC6M-1Fpa;
-	Fri, 24 Apr 2026 12:38:05 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1wGIFA-0000000DNAT-1cwA;
+	Fri, 24 Apr 2026 15:15:00 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wGFnF-0000000DC42-027m;
-	Fri, 24 Apr 2026 12:38:04 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.99)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1wGFmu-000000006ip-1f0B;
-	Fri, 24 Apr 2026 12:37:40 +0000
-Date: Fri, 24 Apr 2026 13:37:32 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Christian Marangi <ansuelsmth@gmail.com>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net v3] net: dsa: mt7530: fix .get_stats64 sleeping in atomic
- context
-Message-ID: <8c407b36d8a597c1449ff9335dfdc250d76311c3.1777034225.git.daniel@makrotopia.org>
+	id 1wGIF8-0000000DNA5-1EF7;
+	Fri, 24 Apr 2026 15:14:59 +0000
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 63OAEsQv2447126;
+	Fri, 24 Apr 2026 15:14:34 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:date:from:in-reply-to:message-id
+	:mime-version:references:subject:to; s=qcppdkim1; bh=XSxlKFIeNK6
+	UZ+zgOcNeSOcSDg/ZVpbaHIVyYTslZsw=; b=eQNc/XZXE8zX+nPeVVAp8oVoCog
+	T1xKJLGx7twDUtiNDKQDzr/XO1azL/GE9dfLmRpQrZN3UzaIsOn7GULe7pHGA0X/
+	ELXw8GbfJxaGMKHYh+tt3Wo5kutEA9Q414djlJ1aE3y8K7UyeJ6B4TlOu2mA62UU
+	j0TyHgEhHZYSPQCOUu5wzJsywOk6EqwCPfnP1WdWySeZ/shKI2E4ePW9ReUJLYaw
+	D7bFAKX4jlYHHohVFWE7chx/+rXfU98xXUhD5XZcrMiw+r3kMrzBMidOMf1re00U
+	/O+OZhA65ZG6oBJi20o1p5cFrtJPnbeJNa8eWH3jxi+halba1Lb7xGaY2NQ==
+Received: from nalasppmta03.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4dr6kps7kv-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 24 Apr 2026 15:14:33 +0000 (GMT)
+Received: from pps.filterd (NALASPPMTA03.qualcomm.com [127.0.0.1])
+	by NALASPPMTA03.qualcomm.com (8.18.1.7/8.18.1.7) with ESMTP id 63OFDZ9t020591;
+	Fri, 24 Apr 2026 15:14:33 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by NALASPPMTA03.qualcomm.com (PPS) with ESMTPS id 4draepg8vp-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 24 Apr 2026 15:14:33 +0000 (GMT)
+Received: from NALASPPMTA03.qualcomm.com (NALASPPMTA03.qualcomm.com [127.0.0.1])
+	by pps.reinject (8.18.1.12/8.18.1.12) with ESMTP id 63OFEWQY021907;
+	Fri, 24 Apr 2026 15:14:32 GMT
+Received: from hu-devc-lv-u22-c.qualcomm.com (hu-cang-lv.qualcomm.com [10.81.25.255])
+	by NALASPPMTA03.qualcomm.com (PPS) with ESMTPS id 63OFEWkp021900
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 24 Apr 2026 15:14:32 +0000 (GMT)
+Received: by hu-devc-lv-u22-c.qualcomm.com (Postfix, from userid 359480)
+	id 6BDD35D0; Fri, 24 Apr 2026 08:14:32 -0700 (PDT)
+From: Can Guo <can.guo@oss.qualcomm.com>
+To: avri.altman@wdc.com, bvanassche@acm.org, beanhuo@micron.com,
+        peter.wang@mediatek.com, martin.petersen@oracle.com, mani@kernel.org
+Cc: linux-scsi@vger.kernel.org, Can Guo <can.guo@oss.qualcomm.com>,
+        Alim Akhtar <alim.akhtar@samsung.com>,
+        "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Neil Armstrong <neil.armstrong@linaro.org>,
+        Ram Kumar Dwivedi <ram.dwivedi@oss.qualcomm.com>,
+        Zhongqiu Han <zhongqiu.han@oss.qualcomm.com>,
+        Huan Tang <tanghuan@vivo.com>, Daniel Lee <chullee@google.com>,
+        Liu Song <liu.song13@zte.com.cn>, Bean Huo <huobean@gmail.com>,
+        vamshi gajjela <vamshigajjela@google.com>,
+        "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
+        Adrian Hunter <adrian.hunter@intel.com>,
+        linux-kernel@vger.kernel.org (open list),
+        linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek),
+        linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek)
+Subject: [PATCH v2 1/2] scsi: ufs: core: Introduce function ufshcd_query_attr_qword()
+Date: Fri, 24 Apr 2026 08:14:19 -0700
+Message-Id: <20260424151420.111675-2-can.guo@oss.qualcomm.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260424151420.111675-1-can.guo@oss.qualcomm.com>
+References: <20260424151420.111675-1-can.guo@oss.qualcomm.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+X-QCInternal: smtphost
+X-QCInternal: smtphost
+X-Authority-Analysis: v=2.4 cv=cdDiaHDM c=1 sm=1 tr=0 ts=69eb88d9 cx=c_pps
+ a=ouPCqIW2jiPt+lZRy3xVPw==:117 a=ouPCqIW2jiPt+lZRy3xVPw==:17
+ a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
+ a=eoimf2acIAo5FJnRuUoq:22 a=mpaa-ttXAAAA:8 a=EUspDBNiAAAA:8
+ a=NbVfUCxmoLbEYo6_3H4A:9
+X-Proofpoint-GUID: Rqkoq6GcDINpTj4SKP5vl-U4J16gcqYk
+X-Proofpoint-ORIG-GUID: Rqkoq6GcDINpTj4SKP5vl-U4J16gcqYk
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDI0MDE0NyBTYWx0ZWRfXxN4Aj9ZwblC/
+ /3Cq8OChRC78rTSN8goJQeUpdcLRC9bgvZJ4bTYInqVL1pcIyTC+5quoCOfiUgYsIk4KkkUakSK
+ q1uAQhK81GlDcvTOYd0wcxYzTLJ/yX3NCSE8FpOxJ3tj5cOkVPPdV+xMlp3Y6edMdQBLQD0ke02
+ mf2IrrSXU4+r91Rxuo8vfIdPK3O5UEo/oWLUOdb3XOwKz8t9xngFYlHHJbFdr9Cj7LQvQFYs8Wa
+ FYRjROSDkXeRJEw/tMj5qmWh2ftJ0czaHzKVgbcK4mnkAc7ch8wJQMA1B6gaftiOVOSrVla6BoI
+ +9CBy4ntz864WsJUoxbrbqholIS26JiLIv/jmXcaK4qPWPavYUNZGXeEGcO3gUdKtcPBWjZ0CJ5
+ WiNBTWPT6PI4soer0TYm00zTxmZZszh6h+3Et5iU6uQ7sqMrffbVPKEiQsXWJvVHzlq/kvwTVLc
+ cTKV1MsyhR5LaivbddA==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-04-24_01,2026-04-21_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1011 malwarescore=0 spamscore=0 impostorscore=0 lowpriorityscore=0
+ suspectscore=0 phishscore=0 bulkscore=0 adultscore=0 priorityscore=1501
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2604200000 definitions=main-2604240147
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260424_053801_203405_E951EA2F 
-X-CRM114-Status: GOOD (  17.30  )
+X-CRM114-CacheID: sfid-20260424_081458_338838_16342F25 
+X-CRM114-Status: GOOD (  19.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,230 +127,269 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The .get_stats64 callback runs in atomic context, but on
-MDIO-connected switches every register read acquires the MDIO bus
-mutex, which can sleep:
-[   12.645973] BUG: sleeping function called from invalid context at kernel/locking/mutex.c:609
-[   12.654442] in_atomic(): 0, irqs_disabled(): 0, non_block: 0, pid: 759, name: grep
-[   12.663377] preempt_count: 0, expected: 0
-[   12.667410] RCU nest depth: 1, expected: 0
-[   12.671511] INFO: lockdep is turned off.
-[   12.675441] CPU: 0 UID: 0 PID: 759 Comm: grep Tainted: G S      W           7.0.0+ #0 PREEMPT
-[   12.675453] Tainted: [S]=CPU_OUT_OF_SPEC, [W]=WARN
-[   12.675456] Hardware name: Bananapi BPI-R64 (DT)
-[   12.675459] Call trace:
-[   12.675462]  show_stack+0x14/0x1c (C)
-[   12.675477]  dump_stack_lvl+0x68/0x8c
-[   12.675487]  dump_stack+0x14/0x1c
-[   12.675495]  __might_resched+0x14c/0x220
-[   12.675504]  __might_sleep+0x44/0x80
-[   12.675511]  __mutex_lock+0x50/0xb10
-[   12.675523]  mutex_lock_nested+0x20/0x30
-[   12.675532]  mt7530_get_stats64+0x40/0x2ac
-[   12.675542]  dsa_user_get_stats64+0x2c/0x40
-[   12.675553]  dev_get_stats+0x44/0x1e0
-[   12.675564]  dev_seq_printf_stats+0x24/0xe0
-[   12.675575]  dev_seq_show+0x14/0x3c
-[   12.675583]  seq_read_iter+0x37c/0x480
-[   12.675595]  seq_read+0xd0/0xec
-[   12.675605]  proc_reg_read+0x94/0xe4
-[   12.675615]  vfs_read+0x98/0x29c
-[   12.675625]  ksys_read+0x54/0xdc
-[   12.675633]  __arm64_sys_read+0x18/0x20
-[   12.675642]  invoke_syscall.constprop.0+0x54/0xec
-[   12.675653]  do_el0_svc+0x3c/0xb4
-[   12.675662]  el0_svc+0x38/0x200
-[   12.675670]  el0t_64_sync_handler+0x98/0xdc
-[   12.675679]  el0t_64_sync+0x158/0x15c
+Introduce a new generic function ufshcd_query_attr_qword() to handle
+quad-word (64-bit) UFS attribute operations. This consolidates the
+handling of 64-bit attributes which was previously scattered across
+multiple specialized functions.
 
-For MDIO-connected switches, poll MIB counters asynchronously using a
-delayed workqueue every second and let .get_stats64 return the cached
-values under a spinlock. A mod_delayed_work() call on each read
-triggers an immediate refresh so counters stay responsive when queried
-more frequently.
-
-MMIO-connected switches (MT7988, EN7581, AN7583) are not affected
-because their regmap does not sleep, so they continue to read MIB
-counters directly in .get_stats64.
-
-Fixes: 88c810f35ed5 ("net: dsa: mt7530: implement .get_stats64")
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-Acked-by: Chester A. Unal <chester.a.unal@arinc9.com>
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+Reviewed-by: Peter Wang <peter.wang@mediatek.com>
+Signed-off-by: Can Guo <can.guo@oss.qualcomm.com>
 ---
-v3:
- * move `stats_last` access under the spinlock to avoid potential race
+ drivers/ufs/core/ufs-sysfs.c   |  30 ++++++--
+ drivers/ufs/core/ufshcd-priv.h |   3 +-
+ drivers/ufs/core/ufshcd.c      | 126 +++++++++++++++++----------------
+ 3 files changed, 94 insertions(+), 65 deletions(-)
 
-v2:
- * use spin_lock_bh()/spin_unlock_bh() to prevent potential deadlock
- * rate-limit mod_delayed_work() refresh to at most once per 100ms
- * move cancel_delayed_work_sync() after dsa_unregister_switch()
- * add mt753x_teardown() callback to cancel the stats work
- * fix commit message
-
- drivers/net/dsa/mt7530.c | 69 ++++++++++++++++++++++++++++++++++++++--
- drivers/net/dsa/mt7530.h |  8 +++++
- 2 files changed, 74 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index b9423389c2ef..9733ff9fc322 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -25,6 +25,9 @@
+diff --git a/drivers/ufs/core/ufs-sysfs.c b/drivers/ufs/core/ufs-sysfs.c
+index 99af3c73f1af..d9dc4cc3452e 100644
+--- a/drivers/ufs/core/ufs-sysfs.c
++++ b/drivers/ufs/core/ufs-sysfs.c
+@@ -594,8 +594,13 @@ static ssize_t device_lvl_exception_id_show(struct device *dev,
+ 	u64 exception_id;
+ 	int err;
  
- #include "mt7530.h"
- 
-+#define MT7530_STATS_POLL_INTERVAL	(1 * HZ)
-+#define MT7530_STATS_RATE_LIMIT		(HZ / 10)
++	if (hba->dev_info.wspecversion < 0x410)
++		return -EOPNOTSUPP;
 +
- static struct mt753x_pcs *pcs_to_mt753x_pcs(struct phylink_pcs *pcs)
- {
- 	return container_of(pcs, struct mt753x_pcs, pcs);
-@@ -906,10 +909,9 @@ static void mt7530_get_rmon_stats(struct dsa_switch *ds, int port,
- 	*ranges = mt7530_rmon_ranges;
+ 	ufshcd_rpm_get_sync(hba);
+-	err = ufshcd_read_device_lvl_exception_id(hba, &exception_id);
++	err = ufshcd_query_attr_qword(hba, UPIU_QUERY_OPCODE_READ_ATTR,
++				      QUERY_ATTR_IDN_DEV_LVL_EXCEPTION_ID,
++				      0, 0, &exception_id);
+ 	ufshcd_rpm_put_sync(hba);
+ 
+ 	if (err)
+@@ -1670,6 +1675,12 @@ static inline bool ufshcd_is_wb_attrs(enum attr_idn idn)
+ 		idn <= QUERY_ATTR_IDN_CURR_WB_BUFF_SIZE;
  }
  
--static void mt7530_get_stats64(struct dsa_switch *ds, int port,
--			       struct rtnl_link_stats64 *storage)
-+static void mt7530_read_port_stats64(struct mt7530_priv *priv, int port,
-+				     struct rtnl_link_stats64 *storage)
- {
--	struct mt7530_priv *priv = ds->priv;
- 	uint64_t data;
- 
- 	/* MIB counter doesn't provide a FramesTransmittedOK but instead
-@@ -951,6 +953,48 @@ static void mt7530_get_stats64(struct dsa_switch *ds, int port,
- 			       &storage->rx_crc_errors);
- }
- 
-+static void mt7530_stats_poll(struct work_struct *work)
++static inline bool ufshcd_is_qword_attr(enum attr_idn idn)
 +{
-+	struct mt7530_priv *priv = container_of(work, struct mt7530_priv,
-+						stats_work.work);
-+	struct rtnl_link_stats64 stats = {};
-+	struct dsa_port *dp;
-+	int port;
-+
-+	dsa_switch_for_each_user_port(dp, priv->ds) {
-+		port = dp->index;
-+
-+		mt7530_read_port_stats64(priv, port, &stats);
-+
-+		spin_lock_bh(&priv->stats_lock);
-+		priv->ports[port].stats = stats;
-+		priv->stats_last = jiffies;
-+		spin_unlock_bh(&priv->stats_lock);
-+	}
-+
-+	schedule_delayed_work(&priv->stats_work,
-+			      MT7530_STATS_POLL_INTERVAL);
++	return idn == QUERY_ATTR_IDN_TIMESTAMP ||
++	       idn == QUERY_ATTR_IDN_DEV_LVL_EXCEPTION_ID;
 +}
 +
-+static void mt7530_get_stats64(struct dsa_switch *ds, int port,
-+			       struct rtnl_link_stats64 *storage)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+	bool refresh;
-+
-+	if (priv->bus) {
-+		spin_lock_bh(&priv->stats_lock);
-+		*storage = priv->ports[port].stats;
-+		refresh = time_after(jiffies, priv->stats_last +
-+					      MT7530_STATS_RATE_LIMIT);
-+		spin_unlock_bh(&priv->stats_lock);
-+		if (refresh)
-+			mod_delayed_work(system_wq, &priv->stats_work, 0);
-+	} else {
-+		mt7530_read_port_stats64(priv, port, storage);
-+	}
-+}
-+
- static void mt7530_get_eth_ctrl_stats(struct dsa_switch *ds, int port,
- 				      struct ethtool_eth_ctrl_stats *ctrl_stats)
+ static int wb_read_resize_attrs(struct ufs_hba *hba,
+ 			enum attr_idn idn, u32 *attr_val)
  {
-@@ -3137,9 +3181,24 @@ mt753x_setup(struct dsa_switch *ds)
- 	if (ret && priv->irq_domain)
- 		mt7530_free_mdio_irq(priv);
+@@ -1736,6 +1747,7 @@ static ssize_t _name##_show(struct device *dev,				\
+ 	struct device_attribute *attr, char *buf)			\
+ {									\
+ 	struct ufs_hba *hba = dev_get_drvdata(dev);			\
++	u64 qword_value;						\
+ 	u32 value;							\
+ 	int ret;							\
+ 	u8 index = 0;							\
+@@ -1748,14 +1760,24 @@ static ssize_t _name##_show(struct device *dev,				\
+ 	if (ufshcd_is_wb_attrs(QUERY_ATTR_IDN##_uname))			\
+ 		index = ufshcd_wb_get_query_index(hba);			\
+ 	ufshcd_rpm_get_sync(hba);					\
+-	ret = ufshcd_query_attr(hba, UPIU_QUERY_OPCODE_READ_ATTR,	\
+-		QUERY_ATTR_IDN##_uname, index, 0, &value);		\
++	if (ufshcd_is_qword_attr(QUERY_ATTR_IDN##_uname))		\
++		ret = ufshcd_query_attr_qword(hba,			\
++			UPIU_QUERY_OPCODE_READ_ATTR,			\
++			QUERY_ATTR_IDN##_uname,				\
++			index, 0, &qword_value);			\
++	else								\
++		ret = ufshcd_query_attr(hba,				\
++			UPIU_QUERY_OPCODE_READ_ATTR,			\
++			QUERY_ATTR_IDN##_uname, index, 0, &value);	\
+ 	ufshcd_rpm_put_sync(hba);					\
+ 	if (ret) {							\
+ 		ret = -EINVAL;						\
+ 		goto out;						\
+ 	}								\
+-	ret = sysfs_emit(buf, "0x%08X\n", value);			\
++	if (ufshcd_is_qword_attr(QUERY_ATTR_IDN##_uname))		\
++		ret = sysfs_emit(buf, "0x%016llX\n", qword_value);	\
++	else								\
++		ret = sysfs_emit(buf, "0x%08X\n", value);		\
+ out:									\
+ 	up(&hba->host_sem);						\
+ 	return ret;							\
+diff --git a/drivers/ufs/core/ufshcd-priv.h b/drivers/ufs/core/ufshcd-priv.h
+index 0a72148cb053..ed1adeb22ec6 100644
+--- a/drivers/ufs/core/ufshcd-priv.h
++++ b/drivers/ufs/core/ufshcd-priv.h
+@@ -60,6 +60,8 @@ int ufshcd_query_attr_retry(struct ufs_hba *hba, enum query_opcode opcode,
+ 			    u32 *attr_val);
+ int ufshcd_query_attr(struct ufs_hba *hba, enum query_opcode opcode,
+ 		      enum attr_idn idn, u8 index, u8 selector, u32 *attr_val);
++int ufshcd_query_attr_qword(struct ufs_hba *hba, enum query_opcode opcode,
++			    enum attr_idn idn, u8 index, u8 sel, u64 *attr_val);
+ int ufshcd_query_flag(struct ufs_hba *hba, enum query_opcode opcode,
+ 	enum flag_idn idn, u8 index, bool *flag_res);
+ void ufshcd_auto_hibern8_update(struct ufs_hba *hba, u32 ahit);
+@@ -106,7 +108,6 @@ int ufshcd_exec_raw_upiu_cmd(struct ufs_hba *hba,
+ 			     enum query_opcode desc_op);
  
-+	if (!ret && priv->bus) {
-+		spin_lock_init(&priv->stats_lock);
-+		INIT_DELAYED_WORK(&priv->stats_work, mt7530_stats_poll);
-+		schedule_delayed_work(&priv->stats_work,
-+				      MT7530_STATS_POLL_INTERVAL);
-+	}
-+
+ int ufshcd_wb_toggle(struct ufs_hba *hba, bool enable);
+-int ufshcd_read_device_lvl_exception_id(struct ufs_hba *hba, u64 *exception_id);
+ 
+ int ufshcd_uic_tx_eqtr(struct ufs_hba *hba, int gear);
+ void ufshcd_apply_valid_tx_eq_settings(struct ufs_hba *hba);
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index 4805e40ed4d7..c92e0409c793 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -3611,6 +3611,67 @@ int ufshcd_query_attr_retry(struct ufs_hba *hba,
  	return ret;
  }
  
-+static void mt753x_teardown(struct dsa_switch *ds)
++/**
++ * ufshcd_query_attr_qword - Function of sending query requests for quad-word attributes
++ * @hba: per-adapter instance
++ * @opcode: attribute opcode
++ * @idn: attribute idn to access
++ * @index: index field
++ * @sel: selector field
++ * @attr_val: the attribute value after the query request completes
++ *
++ * Return: 0 for success, non-zero in case of failure.
++ */
++int ufshcd_query_attr_qword(struct ufs_hba *hba, enum query_opcode opcode,
++			    enum attr_idn idn, u8 index, u8 sel, u64 *attr_val)
 +{
-+	struct mt7530_priv *priv = ds->priv;
++	struct utp_upiu_query_v4_0 *upiu_req;
++	struct utp_upiu_query_v4_0 *upiu_resp;
++	struct ufs_query_req *request = NULL;
++	struct ufs_query_res *response = NULL;
++	int err;
 +
-+	if (priv->bus)
-+		cancel_delayed_work_sync(&priv->stats_work);
++	if (!attr_val) {
++		dev_err(hba->dev, "%s: attribute value required for opcode 0x%x\n",
++			__func__, opcode);
++		return -EINVAL;
++	}
++
++	ufshcd_dev_man_lock(hba);
++
++	ufshcd_init_query(hba, &request, &response, opcode, idn, index, sel);
++
++	switch (opcode) {
++	case UPIU_QUERY_OPCODE_WRITE_ATTR:
++		request->query_func = UPIU_QUERY_FUNC_STANDARD_WRITE_REQUEST;
++		upiu_req = (struct utp_upiu_query_v4_0 *)&request->upiu_req;
++		put_unaligned_be64(*attr_val, &upiu_req->osf3);
++		break;
++	case UPIU_QUERY_OPCODE_READ_ATTR:
++		request->query_func = UPIU_QUERY_FUNC_STANDARD_READ_REQUEST;
++		break;
++	default:
++		dev_err(hba->dev, "%s: Expected query attr opcode but got = 0x%.2x\n",
++			__func__, opcode);
++		err = -EINVAL;
++		goto out_unlock;
++	}
++
++	err = ufshcd_exec_dev_cmd(hba, DEV_CMD_TYPE_QUERY, dev_cmd_timeout);
++	if (err) {
++		dev_err(hba->dev, "%s: opcode 0x%.2x for idn %d failed, index %d, selector %d, err = %d\n",
++			__func__, opcode, idn, index, sel, err);
++		goto out_unlock;
++	}
++
++	upiu_resp = (struct utp_upiu_query_v4_0 *)response;
++	*attr_val = get_unaligned_be64(&upiu_resp->osf3);
++
++out_unlock:
++	ufshcd_dev_man_unlock(hba);
++	return err;
 +}
 +
- static int mt753x_set_mac_eee(struct dsa_switch *ds, int port,
- 			      struct ethtool_keee *e)
- {
-@@ -3257,6 +3316,7 @@ static int mt7988_setup(struct dsa_switch *ds)
- static const struct dsa_switch_ops mt7530_switch_ops = {
- 	.get_tag_protocol	= mtk_get_tag_protocol,
- 	.setup			= mt753x_setup,
-+	.teardown		= mt753x_teardown,
- 	.preferred_default_local_cpu_port = mt753x_preferred_default_local_cpu_port,
- 	.get_strings		= mt7530_get_strings,
- 	.get_ethtool_stats	= mt7530_get_ethtool_stats,
-@@ -3409,6 +3469,9 @@ mt7530_remove_common(struct mt7530_priv *priv)
- 
- 	dsa_unregister_switch(priv->ds);
- 
-+	if (priv->bus)
-+		cancel_delayed_work_sync(&priv->stats_work);
-+
- 	mutex_destroy(&priv->reg_mutex);
+ /*
+  * Return: 0 upon success; > 0 in case the UFS device reported an OCS error;
+  * < 0 if another error occurred.
+@@ -6224,46 +6285,6 @@ static void ufshcd_bkops_exception_event_handler(struct ufs_hba *hba)
+ 				__func__, err);
  }
- EXPORT_SYMBOL_GPL(mt7530_remove_common);
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index 3e0090bed298..dd33b0df3419 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -796,6 +796,7 @@ struct mt7530_fdb {
-  * @pvid:	The VLAN specified is to be considered a PVID at ingress.  Any
-  *		untagged frames will be assigned to the related VLAN.
-  * @sgmii_pcs:	Pointer to PCS instance for SerDes ports
-+ * @stats:	Cached port statistics for MDIO-connected switches
-  */
- struct mt7530_port {
- 	bool enable;
-@@ -803,6 +804,7 @@ struct mt7530_port {
- 	u32 pm;
- 	u16 pvid;
- 	struct phylink_pcs *sgmii_pcs;
-+	struct rtnl_link_stats64 stats;
- };
  
- /* Port 5 mode definitions of the MT7530 switch */
-@@ -875,6 +877,9 @@ struct mt753x_info {
-  * @create_sgmii:	Pointer to function creating SGMII PCS instance(s)
-  * @active_cpu_ports:	Holding the active CPU ports
-  * @mdiodev:		The pointer to the MDIO device structure
-+ * @stats_lock:		Protects cached per-port stats from concurrent access
-+ * @stats_work:		Delayed work for polling MIB counters on MDIO switches
-+ * @stats_last:		Jiffies timestamp of last MIB counter poll
-  */
- struct mt7530_priv {
- 	struct device		*dev;
-@@ -900,6 +905,9 @@ struct mt7530_priv {
- 	int (*create_sgmii)(struct mt7530_priv *priv);
- 	u8 active_cpu_ports;
- 	struct mdio_device *mdiodev;
-+	spinlock_t stats_lock; /* protects cached stats counters */
-+	struct delayed_work stats_work;
-+	unsigned long stats_last;
- };
+-/*
+- * Return: 0 upon success; > 0 in case the UFS device reported an OCS error;
+- * < 0 if another error occurred.
+- */
+-int ufshcd_read_device_lvl_exception_id(struct ufs_hba *hba, u64 *exception_id)
+-{
+-	struct utp_upiu_query_v4_0 *upiu_resp;
+-	struct ufs_query_req *request = NULL;
+-	struct ufs_query_res *response = NULL;
+-	int err;
+-
+-	if (hba->dev_info.wspecversion < 0x410)
+-		return -EOPNOTSUPP;
+-
+-	ufshcd_hold(hba);
+-	mutex_lock(&hba->dev_cmd.lock);
+-
+-	ufshcd_init_query(hba, &request, &response,
+-			  UPIU_QUERY_OPCODE_READ_ATTR,
+-			  QUERY_ATTR_IDN_DEV_LVL_EXCEPTION_ID, 0, 0);
+-
+-	request->query_func = UPIU_QUERY_FUNC_STANDARD_READ_REQUEST;
+-
+-	err = ufshcd_exec_dev_cmd(hba, DEV_CMD_TYPE_QUERY, dev_cmd_timeout);
+-
+-	if (err) {
+-		dev_err(hba->dev, "%s: failed to read device level exception %d\n",
+-			__func__, err);
+-		goto out;
+-	}
+-
+-	upiu_resp = (struct utp_upiu_query_v4_0 *)response;
+-	*exception_id = get_unaligned_be64(&upiu_resp->osf3);
+-out:
+-	mutex_unlock(&hba->dev_cmd.lock);
+-	ufshcd_release(hba);
+-
+-	return err;
+-}
+-
+ static int __ufshcd_wb_toggle(struct ufs_hba *hba, bool set, enum flag_idn idn)
+ {
+ 	u8 index;
+@@ -9113,35 +9134,20 @@ static int ufshcd_device_params_init(struct ufs_hba *hba)
  
- struct mt7530_hw_vlan_entry {
+ static void ufshcd_set_timestamp_attr(struct ufs_hba *hba)
+ {
+-	int err;
+-	struct ufs_query_req *request = NULL;
+-	struct ufs_query_res *response = NULL;
+ 	struct ufs_dev_info *dev_info = &hba->dev_info;
+-	struct utp_upiu_query_v4_0 *upiu_data;
++	u64 ts_ns;
++	int err;
+ 
+ 	if (dev_info->wspecversion < 0x400 ||
+ 	    hba->dev_quirks & UFS_DEVICE_QUIRK_NO_TIMESTAMP_SUPPORT)
+ 		return;
+ 
+-	ufshcd_dev_man_lock(hba);
+-
+-	ufshcd_init_query(hba, &request, &response,
+-			  UPIU_QUERY_OPCODE_WRITE_ATTR,
+-			  QUERY_ATTR_IDN_TIMESTAMP, 0, 0);
+-
+-	request->query_func = UPIU_QUERY_FUNC_STANDARD_WRITE_REQUEST;
+-
+-	upiu_data = (struct utp_upiu_query_v4_0 *)&request->upiu_req;
+-
+-	put_unaligned_be64(ktime_get_real_ns(), &upiu_data->osf3);
+-
+-	err = ufshcd_exec_dev_cmd(hba, DEV_CMD_TYPE_QUERY, dev_cmd_timeout);
+-
++	ts_ns = ktime_get_real_ns();
++	err = ufshcd_query_attr_qword(hba, UPIU_QUERY_OPCODE_WRITE_ATTR,
++				      QUERY_ATTR_IDN_TIMESTAMP, 0, 0, &ts_ns);
+ 	if (err)
+ 		dev_err(hba->dev, "%s: failed to set timestamp %d\n",
+ 			__func__, err);
+-
+-	ufshcd_dev_man_unlock(hba);
+ }
+ 
+ /**
 -- 
-2.54.0
+2.34.1
+
 
