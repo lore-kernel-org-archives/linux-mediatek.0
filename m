@@ -4,115 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D2AEFED3E2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Apr 2026 15:15:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 267BDFED3FA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Apr 2026 19:25:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XSxlKFIeNK6UZ+zgOcNeSOcSDg/ZVpbaHIVyYTslZsw=; b=aSCx92J73acN4iU0m3sg/q+iIj
-	IrusJW1a7rVx/Mbcihi+aPBwohQUTGUEnvc/icoHDZ8i+uIrg7/H2DDNk3s0XZ9iUKRt9eOCQHZmr
-	fjFLCct7qHFBdWJGct0oQkcE4l1GPY8voFV1bJX+FpM5f7DVlTG0TmB/2NSfGJqUwCZAoJoQbImgH
-	iI4hBZeGWcPOlXUL85UNU2SNuH8L4mczbLZKWhi3jV7ePjpK9BzFRKxkEJUVlaV9tDd0H2Nr9gJS3
-	U3rZPzkh6NYy+iLu1aow4FsTVhM3Co0eXGzfI8YvwCofOpt7rYyrL17/JeJrRjSVlhJfqT7h55cJR
-	0V03j0MQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=r5s4ITLzucb1NombRG39OYMqsz80PblAoilF2T+Vi8I=; b=xcHlmOEOn1eys0UD6Q28TgzLNC
+	CaWgCI6VgDN7vMtaS+XSuHiqXdbws3j4t064d6Xk6E0oGXLPXPxEoM4XCBPdX/KuKRg1M/BNqum5y
+	PGBy0C8e6tkD80UNVI7LruHRx0d4esMIRRvQ8bIGWrCMM9XptoJzY2Wxd08b3RtldAwRcdz/xUJw6
+	hJQhYH8J45+CMQCTbMbuwjQtK7Ae56SZZiUSB6XI6BnnN37QoZZY492kWHEinGtTHGlHOFU5tzglL
+	2OJSR0MFqly3O8pEdEnH0PVUGFP7ESD1W6cn6v6OBRl6tjVKyO60SXPehPoyO6BmulE73iSEIMHvG
+	TjMkgOmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wGIFA-0000000DNAT-1cwA;
-	Fri, 24 Apr 2026 15:15:00 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1wGM9N-0000000DhdC-1h5O;
+	Fri, 24 Apr 2026 19:25:17 +0000
+Received: from meesny.iki.fi ([2001:67c:2b0:1c1::201])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wGIF8-0000000DNA5-1EF7;
-	Fri, 24 Apr 2026 15:14:59 +0000
-Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 63OAEsQv2447126;
-	Fri, 24 Apr 2026 15:14:34 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:date:from:in-reply-to:message-id
-	:mime-version:references:subject:to; s=qcppdkim1; bh=XSxlKFIeNK6
-	UZ+zgOcNeSOcSDg/ZVpbaHIVyYTslZsw=; b=eQNc/XZXE8zX+nPeVVAp8oVoCog
-	T1xKJLGx7twDUtiNDKQDzr/XO1azL/GE9dfLmRpQrZN3UzaIsOn7GULe7pHGA0X/
-	ELXw8GbfJxaGMKHYh+tt3Wo5kutEA9Q414djlJ1aE3y8K7UyeJ6B4TlOu2mA62UU
-	j0TyHgEhHZYSPQCOUu5wzJsywOk6EqwCPfnP1WdWySeZ/shKI2E4ePW9ReUJLYaw
-	D7bFAKX4jlYHHohVFWE7chx/+rXfU98xXUhD5XZcrMiw+r3kMrzBMidOMf1re00U
-	/O+OZhA65ZG6oBJi20o1p5cFrtJPnbeJNa8eWH3jxi+halba1Lb7xGaY2NQ==
-Received: from nalasppmta03.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4dr6kps7kv-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 24 Apr 2026 15:14:33 +0000 (GMT)
-Received: from pps.filterd (NALASPPMTA03.qualcomm.com [127.0.0.1])
-	by NALASPPMTA03.qualcomm.com (8.18.1.7/8.18.1.7) with ESMTP id 63OFDZ9t020591;
-	Fri, 24 Apr 2026 15:14:33 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
-	by NALASPPMTA03.qualcomm.com (PPS) with ESMTPS id 4draepg8vp-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 24 Apr 2026 15:14:33 +0000 (GMT)
-Received: from NALASPPMTA03.qualcomm.com (NALASPPMTA03.qualcomm.com [127.0.0.1])
-	by pps.reinject (8.18.1.12/8.18.1.12) with ESMTP id 63OFEWQY021907;
-	Fri, 24 Apr 2026 15:14:32 GMT
-Received: from hu-devc-lv-u22-c.qualcomm.com (hu-cang-lv.qualcomm.com [10.81.25.255])
-	by NALASPPMTA03.qualcomm.com (PPS) with ESMTPS id 63OFEWkp021900
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 24 Apr 2026 15:14:32 +0000 (GMT)
-Received: by hu-devc-lv-u22-c.qualcomm.com (Postfix, from userid 359480)
-	id 6BDD35D0; Fri, 24 Apr 2026 08:14:32 -0700 (PDT)
-From: Can Guo <can.guo@oss.qualcomm.com>
-To: avri.altman@wdc.com, bvanassche@acm.org, beanhuo@micron.com,
-        peter.wang@mediatek.com, martin.petersen@oracle.com, mani@kernel.org
-Cc: linux-scsi@vger.kernel.org, Can Guo <can.guo@oss.qualcomm.com>,
-        Alim Akhtar <alim.akhtar@samsung.com>,
-        "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Neil Armstrong <neil.armstrong@linaro.org>,
-        Ram Kumar Dwivedi <ram.dwivedi@oss.qualcomm.com>,
-        Zhongqiu Han <zhongqiu.han@oss.qualcomm.com>,
-        Huan Tang <tanghuan@vivo.com>, Daniel Lee <chullee@google.com>,
-        Liu Song <liu.song13@zte.com.cn>, Bean Huo <huobean@gmail.com>,
-        vamshi gajjela <vamshigajjela@google.com>,
-        "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
-        Adrian Hunter <adrian.hunter@intel.com>,
-        linux-kernel@vger.kernel.org (open list),
-        linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek),
-        linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek)
-Subject: [PATCH v2 1/2] scsi: ufs: core: Introduce function ufshcd_query_attr_qword()
-Date: Fri, 24 Apr 2026 08:14:19 -0700
-Message-Id: <20260424151420.111675-2-can.guo@oss.qualcomm.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260424151420.111675-1-can.guo@oss.qualcomm.com>
-References: <20260424151420.111675-1-can.guo@oss.qualcomm.com>
+	id 1wGM9K-0000000Dhc8-2wpH
+	for linux-mediatek@lists.infradead.org;
+	Fri, 24 Apr 2026 19:25:15 +0000
+Received: from monolith (unknown [193.138.7.192])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: pav)
+	by meesny.iki.fi (Postfix) with ESMTPSA id 4g2NFl5mFPzyV6;
+	Fri, 24 Apr 2026 22:24:59 +0300 (EEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=meesny;
+	t=1777058701;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=r5s4ITLzucb1NombRG39OYMqsz80PblAoilF2T+Vi8I=;
+	b=lYm9Sz8Su6evx9NdAj+NTRpFmH+VaKSbfnNYiWy4GiQ5Hq0VtDwqofaeRgDuf/CaL3EeId
+	KktWdt9Z0/Ma4m/q9mN/7Hn9Mfmr+AldJctIalDiGFSuaKn2NJHZ3+elK7nLQv2mpgjx15
+	plpWMgSS9NFXnF5fzK6Nzgfn5j6oKnc=
+ARC-Seal: i=1; a=rsa-sha256; d=iki.fi; s=meesny; cv=none; t=1777058701;
+	b=lVKRQcw71A0X2HmW6qGRuOXSvX42hQANcV+YaO/NEZgIQDEDKF8RSBwHaaSfskQ2C68kQm
+	2G+olXdqYAK5cNR7wLCbVtaApRKz7DQ8jlLUE2XGx5Zf9fcQrtbQP6JtiknC106r79jgHT
+	Na2R5PWieWtQ6AWyHqe/9fnI+n1z5e8=
+ARC-Authentication-Results: i=1;
+	ORIGINATING;
+	auth=pass smtp.auth=pav smtp.mailfrom=pav@iki.fi
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
+	s=meesny; t=1777058701;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=r5s4ITLzucb1NombRG39OYMqsz80PblAoilF2T+Vi8I=;
+	b=sNFrQ2sbGtdQ2cyjNtHKrjvkm+m2fpUXJwSc9VLf5WJMx/Mi354s3/MQ+SlzQU7kmGy1z/
+	E7kXDc7alHpSzgqeZDCuj45cJzgACS7GQ1OHOWNKciEGuEHyin9PRn5oJLOlVoxUIon8zd
+	I81LJwj81aGsyPCvbxRbk/RX3AHhsTE=
+From: Pauli Virtanen <pav@iki.fi>
+To: linux-bluetooth@vger.kernel.org
+Cc: Pauli Virtanen <pav@iki.fi>,
+	marcel@holtmann.org,
+	luiz.dentz@gmail.com,
+	tristan@talencesecurity.com,
+	linux-mediatek@lists.infradead.org,
+	sean.wang@mediatek.com,
+	mark-yw.chen@mediatek.com
+Subject: [PATCH] Bluetooth: btmtk: accept too short WMT FUNC_CTRL events
+Date: Fri, 24 Apr 2026 22:24:29 +0300
+Message-ID: <770d36b07311bf88210c187923f243fb9f126f04.1777058551.git.pav@iki.fi>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-QCInternal: smtphost
-X-QCInternal: smtphost
-X-Authority-Analysis: v=2.4 cv=cdDiaHDM c=1 sm=1 tr=0 ts=69eb88d9 cx=c_pps
- a=ouPCqIW2jiPt+lZRy3xVPw==:117 a=ouPCqIW2jiPt+lZRy3xVPw==:17
- a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
- a=eoimf2acIAo5FJnRuUoq:22 a=mpaa-ttXAAAA:8 a=EUspDBNiAAAA:8
- a=NbVfUCxmoLbEYo6_3H4A:9
-X-Proofpoint-GUID: Rqkoq6GcDINpTj4SKP5vl-U4J16gcqYk
-X-Proofpoint-ORIG-GUID: Rqkoq6GcDINpTj4SKP5vl-U4J16gcqYk
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDI0MDE0NyBTYWx0ZWRfXxN4Aj9ZwblC/
- /3Cq8OChRC78rTSN8goJQeUpdcLRC9bgvZJ4bTYInqVL1pcIyTC+5quoCOfiUgYsIk4KkkUakSK
- q1uAQhK81GlDcvTOYd0wcxYzTLJ/yX3NCSE8FpOxJ3tj5cOkVPPdV+xMlp3Y6edMdQBLQD0ke02
- mf2IrrSXU4+r91Rxuo8vfIdPK3O5UEo/oWLUOdb3XOwKz8t9xngFYlHHJbFdr9Cj7LQvQFYs8Wa
- FYRjROSDkXeRJEw/tMj5qmWh2ftJ0czaHzKVgbcK4mnkAc7ch8wJQMA1B6gaftiOVOSrVla6BoI
- +9CBy4ntz864WsJUoxbrbqholIS26JiLIv/jmXcaK4qPWPavYUNZGXeEGcO3gUdKtcPBWjZ0CJ5
- WiNBTWPT6PI4soer0TYm00zTxmZZszh6h+3Et5iU6uQ7sqMrffbVPKEiQsXWJvVHzlq/kvwTVLc
- cTKV1MsyhR5LaivbddA==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-04-24_01,2026-04-21_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1011 malwarescore=0 spamscore=0 impostorscore=0 lowpriorityscore=0
- suspectscore=0 phishscore=0 bulkscore=0 adultscore=0 priorityscore=1501
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2604200000 definitions=main-2604240147
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260424_081458_338838_16342F25 
-X-CRM114-Status: GOOD (  19.55  )
+X-CRM114-CacheID: sfid-20260424_122514_938553_E16999D0 
+X-CRM114-Status: GOOD (  10.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,269 +91,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce a new generic function ufshcd_query_attr_qword() to handle
-quad-word (64-bit) UFS attribute operations. This consolidates the
-handling of 64-bit attributes which was previously scattered across
-multiple specialized functions.
+MT7925 (USB ID 0e8d:e025) on fw version 20260106153314 sends WMT
+FUNC_CTRL events that are missing the status field.
 
-Reviewed-by: Peter Wang <peter.wang@mediatek.com>
-Signed-off-by: Can Guo <can.guo@oss.qualcomm.com>
+Prior to commit 006b9943b982 ("Bluetooth: btmtk: validate WMT event SKB
+length before struct access") the status was read from out-of-bounds of
+SKB data, which usually would result to success with
+BTMTK_WMT_ON_UNDONE, although I don't know the intent here.  The bounds
+check added in that commit returns with error instead, producing
+"Bluetooth: hci0: Failed to send wmt func ctrl (-22)" and makes the
+device unusable.
+
+Fix the regression by interpreting too short packet as status
+BTMTK_WMT_ON_UNDONE, which makes the device work normally again.
+
+Fixes: 006b9943b982 ("Bluetooth: btmtk: validate WMT event SKB length before struct access")
+Signed-off-by: Pauli Virtanen <pav@iki.fi>
 ---
- drivers/ufs/core/ufs-sysfs.c   |  30 ++++++--
- drivers/ufs/core/ufshcd-priv.h |   3 +-
- drivers/ufs/core/ufshcd.c      | 126 +++++++++++++++++----------------
- 3 files changed, 94 insertions(+), 65 deletions(-)
 
-diff --git a/drivers/ufs/core/ufs-sysfs.c b/drivers/ufs/core/ufs-sysfs.c
-index 99af3c73f1af..d9dc4cc3452e 100644
---- a/drivers/ufs/core/ufs-sysfs.c
-+++ b/drivers/ufs/core/ufs-sysfs.c
-@@ -594,8 +594,13 @@ static ssize_t device_lvl_exception_id_show(struct device *dev,
- 	u64 exception_id;
- 	int err;
+Notes:
+    AFAICS the commit is not yet pulled and is only in bluetooth-next, so
+    maybe this should be just fixup?
+
+ drivers/bluetooth/btmtk.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index ab34f1dd42bc..68a32d11e5ec 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -719,8 +719,8 @@ static int btmtk_usb_hci_wmt_sync(struct hci_dev *hdev,
+ 	case BTMTK_WMT_FUNC_CTRL:
+ 		if (!skb_pull_data(data->evt_skb,
+ 				   sizeof(wmt_evt_funcc->status))) {
+-			err = -EINVAL;
+-			goto err_free_skb;
++			status = BTMTK_WMT_ON_UNDONE;
++			break;
+ 		}
  
-+	if (hba->dev_info.wspecversion < 0x410)
-+		return -EOPNOTSUPP;
-+
- 	ufshcd_rpm_get_sync(hba);
--	err = ufshcd_read_device_lvl_exception_id(hba, &exception_id);
-+	err = ufshcd_query_attr_qword(hba, UPIU_QUERY_OPCODE_READ_ATTR,
-+				      QUERY_ATTR_IDN_DEV_LVL_EXCEPTION_ID,
-+				      0, 0, &exception_id);
- 	ufshcd_rpm_put_sync(hba);
- 
- 	if (err)
-@@ -1670,6 +1675,12 @@ static inline bool ufshcd_is_wb_attrs(enum attr_idn idn)
- 		idn <= QUERY_ATTR_IDN_CURR_WB_BUFF_SIZE;
- }
- 
-+static inline bool ufshcd_is_qword_attr(enum attr_idn idn)
-+{
-+	return idn == QUERY_ATTR_IDN_TIMESTAMP ||
-+	       idn == QUERY_ATTR_IDN_DEV_LVL_EXCEPTION_ID;
-+}
-+
- static int wb_read_resize_attrs(struct ufs_hba *hba,
- 			enum attr_idn idn, u32 *attr_val)
- {
-@@ -1736,6 +1747,7 @@ static ssize_t _name##_show(struct device *dev,				\
- 	struct device_attribute *attr, char *buf)			\
- {									\
- 	struct ufs_hba *hba = dev_get_drvdata(dev);			\
-+	u64 qword_value;						\
- 	u32 value;							\
- 	int ret;							\
- 	u8 index = 0;							\
-@@ -1748,14 +1760,24 @@ static ssize_t _name##_show(struct device *dev,				\
- 	if (ufshcd_is_wb_attrs(QUERY_ATTR_IDN##_uname))			\
- 		index = ufshcd_wb_get_query_index(hba);			\
- 	ufshcd_rpm_get_sync(hba);					\
--	ret = ufshcd_query_attr(hba, UPIU_QUERY_OPCODE_READ_ATTR,	\
--		QUERY_ATTR_IDN##_uname, index, 0, &value);		\
-+	if (ufshcd_is_qword_attr(QUERY_ATTR_IDN##_uname))		\
-+		ret = ufshcd_query_attr_qword(hba,			\
-+			UPIU_QUERY_OPCODE_READ_ATTR,			\
-+			QUERY_ATTR_IDN##_uname,				\
-+			index, 0, &qword_value);			\
-+	else								\
-+		ret = ufshcd_query_attr(hba,				\
-+			UPIU_QUERY_OPCODE_READ_ATTR,			\
-+			QUERY_ATTR_IDN##_uname, index, 0, &value);	\
- 	ufshcd_rpm_put_sync(hba);					\
- 	if (ret) {							\
- 		ret = -EINVAL;						\
- 		goto out;						\
- 	}								\
--	ret = sysfs_emit(buf, "0x%08X\n", value);			\
-+	if (ufshcd_is_qword_attr(QUERY_ATTR_IDN##_uname))		\
-+		ret = sysfs_emit(buf, "0x%016llX\n", qword_value);	\
-+	else								\
-+		ret = sysfs_emit(buf, "0x%08X\n", value);		\
- out:									\
- 	up(&hba->host_sem);						\
- 	return ret;							\
-diff --git a/drivers/ufs/core/ufshcd-priv.h b/drivers/ufs/core/ufshcd-priv.h
-index 0a72148cb053..ed1adeb22ec6 100644
---- a/drivers/ufs/core/ufshcd-priv.h
-+++ b/drivers/ufs/core/ufshcd-priv.h
-@@ -60,6 +60,8 @@ int ufshcd_query_attr_retry(struct ufs_hba *hba, enum query_opcode opcode,
- 			    u32 *attr_val);
- int ufshcd_query_attr(struct ufs_hba *hba, enum query_opcode opcode,
- 		      enum attr_idn idn, u8 index, u8 selector, u32 *attr_val);
-+int ufshcd_query_attr_qword(struct ufs_hba *hba, enum query_opcode opcode,
-+			    enum attr_idn idn, u8 index, u8 sel, u64 *attr_val);
- int ufshcd_query_flag(struct ufs_hba *hba, enum query_opcode opcode,
- 	enum flag_idn idn, u8 index, bool *flag_res);
- void ufshcd_auto_hibern8_update(struct ufs_hba *hba, u32 ahit);
-@@ -106,7 +108,6 @@ int ufshcd_exec_raw_upiu_cmd(struct ufs_hba *hba,
- 			     enum query_opcode desc_op);
- 
- int ufshcd_wb_toggle(struct ufs_hba *hba, bool enable);
--int ufshcd_read_device_lvl_exception_id(struct ufs_hba *hba, u64 *exception_id);
- 
- int ufshcd_uic_tx_eqtr(struct ufs_hba *hba, int gear);
- void ufshcd_apply_valid_tx_eq_settings(struct ufs_hba *hba);
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 4805e40ed4d7..c92e0409c793 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -3611,6 +3611,67 @@ int ufshcd_query_attr_retry(struct ufs_hba *hba,
- 	return ret;
- }
- 
-+/**
-+ * ufshcd_query_attr_qword - Function of sending query requests for quad-word attributes
-+ * @hba: per-adapter instance
-+ * @opcode: attribute opcode
-+ * @idn: attribute idn to access
-+ * @index: index field
-+ * @sel: selector field
-+ * @attr_val: the attribute value after the query request completes
-+ *
-+ * Return: 0 for success, non-zero in case of failure.
-+ */
-+int ufshcd_query_attr_qword(struct ufs_hba *hba, enum query_opcode opcode,
-+			    enum attr_idn idn, u8 index, u8 sel, u64 *attr_val)
-+{
-+	struct utp_upiu_query_v4_0 *upiu_req;
-+	struct utp_upiu_query_v4_0 *upiu_resp;
-+	struct ufs_query_req *request = NULL;
-+	struct ufs_query_res *response = NULL;
-+	int err;
-+
-+	if (!attr_val) {
-+		dev_err(hba->dev, "%s: attribute value required for opcode 0x%x\n",
-+			__func__, opcode);
-+		return -EINVAL;
-+	}
-+
-+	ufshcd_dev_man_lock(hba);
-+
-+	ufshcd_init_query(hba, &request, &response, opcode, idn, index, sel);
-+
-+	switch (opcode) {
-+	case UPIU_QUERY_OPCODE_WRITE_ATTR:
-+		request->query_func = UPIU_QUERY_FUNC_STANDARD_WRITE_REQUEST;
-+		upiu_req = (struct utp_upiu_query_v4_0 *)&request->upiu_req;
-+		put_unaligned_be64(*attr_val, &upiu_req->osf3);
-+		break;
-+	case UPIU_QUERY_OPCODE_READ_ATTR:
-+		request->query_func = UPIU_QUERY_FUNC_STANDARD_READ_REQUEST;
-+		break;
-+	default:
-+		dev_err(hba->dev, "%s: Expected query attr opcode but got = 0x%.2x\n",
-+			__func__, opcode);
-+		err = -EINVAL;
-+		goto out_unlock;
-+	}
-+
-+	err = ufshcd_exec_dev_cmd(hba, DEV_CMD_TYPE_QUERY, dev_cmd_timeout);
-+	if (err) {
-+		dev_err(hba->dev, "%s: opcode 0x%.2x for idn %d failed, index %d, selector %d, err = %d\n",
-+			__func__, opcode, idn, index, sel, err);
-+		goto out_unlock;
-+	}
-+
-+	upiu_resp = (struct utp_upiu_query_v4_0 *)response;
-+	*attr_val = get_unaligned_be64(&upiu_resp->osf3);
-+
-+out_unlock:
-+	ufshcd_dev_man_unlock(hba);
-+	return err;
-+}
-+
- /*
-  * Return: 0 upon success; > 0 in case the UFS device reported an OCS error;
-  * < 0 if another error occurred.
-@@ -6224,46 +6285,6 @@ static void ufshcd_bkops_exception_event_handler(struct ufs_hba *hba)
- 				__func__, err);
- }
- 
--/*
-- * Return: 0 upon success; > 0 in case the UFS device reported an OCS error;
-- * < 0 if another error occurred.
-- */
--int ufshcd_read_device_lvl_exception_id(struct ufs_hba *hba, u64 *exception_id)
--{
--	struct utp_upiu_query_v4_0 *upiu_resp;
--	struct ufs_query_req *request = NULL;
--	struct ufs_query_res *response = NULL;
--	int err;
--
--	if (hba->dev_info.wspecversion < 0x410)
--		return -EOPNOTSUPP;
--
--	ufshcd_hold(hba);
--	mutex_lock(&hba->dev_cmd.lock);
--
--	ufshcd_init_query(hba, &request, &response,
--			  UPIU_QUERY_OPCODE_READ_ATTR,
--			  QUERY_ATTR_IDN_DEV_LVL_EXCEPTION_ID, 0, 0);
--
--	request->query_func = UPIU_QUERY_FUNC_STANDARD_READ_REQUEST;
--
--	err = ufshcd_exec_dev_cmd(hba, DEV_CMD_TYPE_QUERY, dev_cmd_timeout);
--
--	if (err) {
--		dev_err(hba->dev, "%s: failed to read device level exception %d\n",
--			__func__, err);
--		goto out;
--	}
--
--	upiu_resp = (struct utp_upiu_query_v4_0 *)response;
--	*exception_id = get_unaligned_be64(&upiu_resp->osf3);
--out:
--	mutex_unlock(&hba->dev_cmd.lock);
--	ufshcd_release(hba);
--
--	return err;
--}
--
- static int __ufshcd_wb_toggle(struct ufs_hba *hba, bool set, enum flag_idn idn)
- {
- 	u8 index;
-@@ -9113,35 +9134,20 @@ static int ufshcd_device_params_init(struct ufs_hba *hba)
- 
- static void ufshcd_set_timestamp_attr(struct ufs_hba *hba)
- {
--	int err;
--	struct ufs_query_req *request = NULL;
--	struct ufs_query_res *response = NULL;
- 	struct ufs_dev_info *dev_info = &hba->dev_info;
--	struct utp_upiu_query_v4_0 *upiu_data;
-+	u64 ts_ns;
-+	int err;
- 
- 	if (dev_info->wspecversion < 0x400 ||
- 	    hba->dev_quirks & UFS_DEVICE_QUIRK_NO_TIMESTAMP_SUPPORT)
- 		return;
- 
--	ufshcd_dev_man_lock(hba);
--
--	ufshcd_init_query(hba, &request, &response,
--			  UPIU_QUERY_OPCODE_WRITE_ATTR,
--			  QUERY_ATTR_IDN_TIMESTAMP, 0, 0);
--
--	request->query_func = UPIU_QUERY_FUNC_STANDARD_WRITE_REQUEST;
--
--	upiu_data = (struct utp_upiu_query_v4_0 *)&request->upiu_req;
--
--	put_unaligned_be64(ktime_get_real_ns(), &upiu_data->osf3);
--
--	err = ufshcd_exec_dev_cmd(hba, DEV_CMD_TYPE_QUERY, dev_cmd_timeout);
--
-+	ts_ns = ktime_get_real_ns();
-+	err = ufshcd_query_attr_qword(hba, UPIU_QUERY_OPCODE_WRITE_ATTR,
-+				      QUERY_ATTR_IDN_TIMESTAMP, 0, 0, &ts_ns);
- 	if (err)
- 		dev_err(hba->dev, "%s: failed to set timestamp %d\n",
- 			__func__, err);
--
--	ufshcd_dev_man_unlock(hba);
- }
- 
- /**
+ 		wmt_evt_funcc = (struct btmtk_hci_wmt_evt_funcc *)wmt_evt;
 -- 
-2.34.1
+2.53.0
 
 
