@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DF86F34C45
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Apr 2026 02:50:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D2CCF34C45
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Apr 2026 02:51:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7cF5J/v6rQdhUFmUuEjCBZJNw7RXUCzBj6Y8GcaqTms=; b=RvbGvUd7Os14VMN1N9hX01PUDQ
-	eDkqADSWwRQfwbBSNVf+c4tqCTviOMKHyI1gHQtfLEVLe1BAoOi284zpI+FJbOXCzVXP49tHhig5t
-	KwEdPQ/74xBATz3CJZtVRXl1XVcJiSCTm+M3GvCr9fupQnPQIGeyClfi6EWeam6SwGMQ1DdCk8bMb
-	3k97GuXuunNp0mNG2q/DarxLsoxsrDbytL02oOhNYfrSm+joWXac4+NzCrDBXMQIUYmONEPzqySzz
-	8WXpGri3puMGPO/vfRRzuze2qVTe0KIecGmfNwX5KcV3hY+ZtE57EOMScp+HcZvn4HyvZrV5t+SpA
-	LLLATqvA==;
+	bh=RswL7+a6AHBCX2B/QSjc/IP4X10yzdYVMk5X7vkoIbU=; b=buBzJoCJFLyfQEvoVtsOS7nPMn
+	q8XfqTUsDj2rn3zZUZincCpeMJ7L2PTm15pxoXVsj89l71GSNx3ll8LdKRuGHyuobjg3yzgdVc27x
+	CeFpIRyR9IkrIiMfmfO6M4iOTHNxqcFFGgtdEhk2JkTmDc4yzmGSqrotIo8N7QRbrzXVUV341F8DN
+	SbxmdLCP42ev/I6bJju1nIfPdlOF9G6eygvjC8bMhjieH0sMTHTOTV+ba97weKvN5XzRQIz2OhdDU
+	nphi/f/TO95B8zyaIrDyAireGoA8awtNT6yIsYOMKNIDlTAjfPuscWvtHXhULuuxH9qhAHKYKqCTS
+	BfGiSMAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wG6d2-0000000CX9X-0VMH;
-	Fri, 24 Apr 2026 02:50:52 +0000
+	id 1wG6dE-0000000CXG9-37wv;
+	Fri, 24 Apr 2026 02:51:04 +0000
 Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wG6cz-0000000CX7g-2dTL;
-	Fri, 24 Apr 2026 02:50:51 +0000
+	id 1wG6dB-0000000CXEE-1aBH;
+	Fri, 24 Apr 2026 02:51:03 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.99)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1wG6cs-000000002R9-47ZH;
-	Fri, 24 Apr 2026 02:50:43 +0000
-Date: Fri, 24 Apr 2026 03:50:35 +0100
+	id 1wG6d4-000000002Ri-1eCA;
+	Fri, 24 Apr 2026 02:50:54 +0000
+Date: Fri, 24 Apr 2026 03:50:46 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
 	Rob Herring <robh@kernel.org>,
@@ -49,17 +49,17 @@ To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
 	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 7/9] ARM: dts: mediatek: mt2701: wire HDMI audio path
+Subject: [PATCH v3 8/9] ARM: dts: mediatek: mt7623: wire HDMI audio path
  clocks into AFE
-Message-ID: <99fb10ae55dd26e1086b6d865f2f12d75dc7ac61.1776998727.git.daniel@makrotopia.org>
+Message-ID: <5dba44c0f9b63c6b97119eabaaff92768d6295bf.1776998727.git.daniel@makrotopia.org>
 References: <cover.1776998727.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1776998727.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_195049_671371_E94DF0C4 
-X-CRM114-Status: GOOD (  10.67  )
+X-CRM114-CacheID: sfid-20260423_195101_434471_F0BEC019 
+X-CRM114-Status: GOOD (  11.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,25 +74,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the HADDS2 PLL 294 MHz root, the audio_hdmi and audio_spdf
-interface gates and the audio_apll gate to the MT2701 AFE node,
-and reparent the AUDPLL mux to HADDS2PLL_98M so the HDMI audio
-serial clock path has a stable 294.912 MHz source. The clock
-names match the updated mediatek,mt2701-audio binding.
+Mirror the MT2701 change for the MT7623 SoC dtsi: add HADDS2PLL,
+audio_hdmi, audio_spdf and audio_apll to the AFE clocks list and
+reparent the AUDPLL mux to HADDS2PLL_98M. Required for HDMI audio
+on MT7623N boards via the shared mt2701 AFE driver.
 
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
 v3: no changes
 v2: no changes
 
- arch/arm/boot/dts/mediatek/mt2701.dtsi | 21 ++++++++++++++++-----
+ arch/arm/boot/dts/mediatek/mt7623.dtsi | 21 ++++++++++++++++-----
  1 file changed, 16 insertions(+), 5 deletions(-)
 
-diff --git a/arch/arm/boot/dts/mediatek/mt2701.dtsi b/arch/arm/boot/dts/mediatek/mt2701.dtsi
-index 128b87229f3d..80c8c7e6a422 100644
---- a/arch/arm/boot/dts/mediatek/mt2701.dtsi
-+++ b/arch/arm/boot/dts/mediatek/mt2701.dtsi
-@@ -464,7 +464,11 @@ afe: audio-controller {
+diff --git a/arch/arm/boot/dts/mediatek/mt7623.dtsi b/arch/arm/boot/dts/mediatek/mt7623.dtsi
+index 71ac2b94c6ba..4eb028ffee6f 100644
+--- a/arch/arm/boot/dts/mediatek/mt7623.dtsi
++++ b/arch/arm/boot/dts/mediatek/mt7623.dtsi
+@@ -665,7 +665,11 @@ afe: audio-controller {
  				 <&audsys CLK_AUD_AFE_CONN>,
  				 <&audsys CLK_AUD_A1SYS>,
  				 <&audsys CLK_AUD_A2SYS>,
@@ -105,7 +104,7 @@ index 128b87229f3d..80c8c7e6a422 100644
  
  			clock-names = "infra_sys_audio_clk",
  				      "top_audio_mux1_sel",
-@@ -499,15 +503,22 @@ afe: audio-controller {
+@@ -700,15 +704,22 @@ afe: audio-controller {
  				      "audio_afe_conn_pd",
  				      "audio_a1sys_pd",
  				      "audio_a2sys_pd",
