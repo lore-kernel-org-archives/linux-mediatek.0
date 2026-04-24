@@ -4,111 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0217FDEE2F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2026 17:59:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B61E2F34C45
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Apr 2026 02:49:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5Dg8nHiIvvENzbRLC7UZe4skErzOTFmrIxR760/y1lI=; b=fefDCXZRY1gJvNYnG8Zxkgrlzg
-	BaTvMnn1UtH6QWpwljKiSg5E5MqaWtj4m6kf+OzaVvB1FZaF/vSQzUVXA2XnX8DFkMFf5ZwiuT8bi
-	kMpVVKT4bvGQXYz4SRmZgMtzb+1OcI2fDNabTmhvUG20jd6Yi0b9MEBZ2TwoK7T878FYMeINJdSlU
-	zJbNkN8v61YOZBYbie+qOtbnKzgiLrXk/UafOHH6tb7qrxksUYKhvbAznfvoe++G3mV/3Z/WkXPil
-	2LoTnyEatBngHEpdB3Qbg0p03FEn48dSwIMmdujTPXcJ1qmSIPF0IQlPFlRWkGxvzFunU3gSYfT8s
-	E/g2Jsvw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=/2pAwMAFmII+05/iqELk3U3xe8+pyA5sL/UCGh11WoQ=; b=r7z8ZANZX8fvtztxC6S3ygKux7
+	c8lp2SOjntaXgwDjXKEOcA0sFV1QHUSvVrODLzXcSBIs9TfMZKXawyNbn9z0Lmqscoe/xF7+tcFQr
+	QzGsYcb0+1cgY38b1xM86EJHd3Abnf5EgOIggguQBZaHMbyFOxk2xKDbi+e2pS/m2Gu3AzJ+igGqc
+	uYJi/PLVkKABXgtKRhoQFXXfWoHrSfVt0O6dfbYwYgdrQU5tsE0veMLR6j7eGb4/8DJM7g0bOD7QF
+	eVLsyAso80fFW/4qPH2RzUG2+JWUH2f1gXy6rG8q/j0xo8XKWewiP+ofMgRp4q44B7WA8ujGnZQWM
+	OsAQSjgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFyKw-0000000C5aA-3s1O;
-	Thu, 23 Apr 2026 17:59:38 +0000
-Received: from aposti.net ([185.119.170.32])
+	id 1wG6bD-0000000CWSK-1gej;
+	Fri, 24 Apr 2026 02:48:59 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFyKt-0000000C5Yg-2DxO;
-	Thu, 23 Apr 2026 17:59:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=crapouillou.net;
-	s=mail; t=1776967168;
-	bh=QGXWKH7JhojDk/vCfoesF6wdkbcwasz+b8TzqgsvnEY=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=VidnwjpKlxAHpZXdZ5M8HqNp1+KLzj/lVqpTUjnVCvvI0AlMOvy6xLPjbVADW6Z7T
-	 zX2omNSMnvzMFu+5OaTkic3YSw0JBpTj1pMqKOxAH5KG+vq/PHkgVXLcKBhtSsGmGS
-	 Vrdc/osIcU6MzDXs3blATAtRvZpS57uE18zfDmjI=
-Message-ID: <6bdce57340942334cf7d3c7f7ed0215458717495.camel@crapouillou.net>
-Subject: Re: [PATCH v2 10/41] drm/ingenic: remove now-redundant call to
- drm_connector_attach_encoder()
-From: Paul Cercueil <paul@crapouillou.net>
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>, Dmitry Baryshkov	
- <dmitry.baryshkov@oss.qualcomm.com>, Andrzej Hajda
- <andrzej.hajda@intel.com>,  Neil Armstrong <neil.armstrong@linaro.org>,
- Robert Foss <rfoss@kernel.org>, Laurent Pinchart	
- <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>,
- Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst
- <maarten.lankhorst@linux.intel.com>,  Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>, Sasha Finkelstein <fnkl.kernel@gmail.com>,
- Janne Grunau <j@jannau.net>, Liu Ying <victor.liu@nxp.com>, Douglas
- Anderson <dianders@chromium.org>, Laurentiu Palcu	
- <laurentiu.palcu@oss.nxp.com>, Lucas Stach <l.stach@pengutronix.de>, Frank
- Li	 <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix
- Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>,
- Philipp Zabel	 <p.zabel@pengutronix.de>, Anitha Chrisanthus
- <anitha.chrisanthus@intel.com>,  Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Kevin Hilman
- <khilman@baylibre.com>,  Jerome Brunet <jbrunet@baylibre.com>, Martin
- Blumenstingl <martin.blumenstingl@googlemail.com>, Rob Clark	
- <robin.clark@oss.qualcomm.com>, Dmitry Baryshkov <lumag@kernel.org>,
- Abhinav Kumar <abhinav.kumar@linux.dev>, Jessica Zhang
- <jesszhan0024@gmail.com>, Sean Paul	 <sean@poorly.run>, Marijn Suijten
- <marijn.suijten@somainline.org>, Tomi Valkeinen
- <tomi.valkeinen@ideasonboard.com>, Sandy Huang <hjc@rock-chips.com>, Heiko
- =?ISO-8859-1?Q?St=FCbner?=	 <heiko@sntech.de>, Andy Yan
- <andy.yan@rock-chips.com>, Thierry Reding	 <thierry.reding@gmail.com>,
- Mikko Perttunen <mperttunen@nvidia.com>,  Jonathan Hunter
- <jonathanh@nvidia.com>, Icenowy Zheng <zhengxingda@iscas.ac.cn>, Jingoo Han
- <jingoohan1@gmail.com>,  Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim
- <sw0312.kim@samsung.com>, Kyungmin Park	 <kyungmin.park@samsung.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar	
- <alim.akhtar@samsung.com>, Laurent Pinchart	
- <laurent.pinchart+renesas@ideasonboard.com>, Tomi Valkeinen	
- <tomi.valkeinen+renesas@ideasonboard.com>, Kieran Bingham	
- <kieran.bingham+renesas@ideasonboard.com>, Geert Uytterhoeven	
- <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, Biju Das	
- <biju.das.jz@bp.renesas.com>, Marek Vasut <marex@denx.de>, Stefan Agner	
- <stefan@agner.ch>, Jyri Sarha <jyri.sarha@iki.fi>, Michal Simek	
- <michal.simek@amd.com>
-Cc: Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>, 
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	asahi@lists.linux.dev, imx@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, 	linux-mips@vger.kernel.org,
- linux-mediatek@lists.infradead.org, 	linux-amlogic@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, 	freedreno@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org, 	linux-tegra@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org, 	linux-renesas-soc@vger.kernel.org
-Date: Thu, 23 Apr 2026 19:59:21 +0200
-In-Reply-To: <20260423-drm-bridge-connector-attach_encoder-v2-10-2ae6ca69b390@bootlin.com>
-References: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
-	 <20260423-drm-bridge-connector-attach_encoder-v2-10-2ae6ca69b390@bootlin.com>
-Autocrypt: addr=paul@crapouillou.net; prefer-encrypt=mutual;
- keydata=mQENBF0KhcEBCADkfmrzdTOp/gFOMQX0QwKE2WgeCJiHPWkpEuPH81/HB2dpjPZNW03ZM
- LQfECbbaEkdbN4YnPfXgcc1uBe5mwOAPV1MBlaZcEt4M67iYQwSNrP7maPS3IaQJ18ES8JJ5Uf5Uz
- FZaUawgH+oipYGW+v31cX6L3k+dGsPRM0Pyo0sQt52fsopNPZ9iag0iY7dGNuKenaEqkYNjwEgTtN
- z8dt6s3hMpHIKZFL3OhAGi88wF/21isv0zkF4J0wlf9gYUTEEY3Eulx80PTVqGIcHZzfavlWIdzhe
- +rxHTDGVwseR2Y1WjgFGQ2F+vXetAB8NEeygXee+i9nY5qt9c07m8mzjABEBAAG0JFBhdWwgQ2VyY
- 3VlaWwgPHBhdWxAY3JhcG91aWxsb3UubmV0PokBTgQTAQoAOBYhBNdHYd8OeCBwpMuVxnPua9InSr
- 1BBQJdCoXBAhsDBQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEHPua9InSr1BgvIH/0kLyrI3V0f
- 33a6D3BJwc1grbygPVYGuC5l5eMnAI+rDmLR19E2yvibRpgUc87NmPEQPpbbtAZt8On/2WZoE5OIP
- dlId/AHNpdgAtGXo0ZX4LGeVPjxjdkbrKVHxbcdcnY+zzaFglpbVSvp76pxqgVg8PgxkAAeeJV+ET
- 4t0823Gz2HzCL/6JZhvKAEtHVulOWoBh368SYdolp1TSfORWmHzvQiCCCA+j0cMkYVGzIQzEQhX7U
- rf9N/nhU5/SGLFEi9DcBfXoGzhyQyLXflhJtKm3XGB1K/pPulbKaPcKAl6rIDWPuFpHkSbmZ9r4KF
- lBwgAhlGy6nqP7O3u7q23hRU=
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+	id 1wG6bA-0000000CWR8-2DCM;
+	Fri, 24 Apr 2026 02:48:57 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.99)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1wG6ar-000000002MP-2gbT;
+	Fri, 24 Apr 2026 02:48:37 +0000
+Date: Fri, 24 Apr 2026 03:48:29 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Cyril Chao <Cyril.Chao@mediatek.com>, Arnd Bergmann <arnd@arndb.de>,
+	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Eugen Hristev <eugen.hristev@linaro.org>,
+	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v3 0/9] ASoC: mediatek: mt2701: HDMI audio support
+Message-ID: <cover.1776998727.git.daniel@makrotopia.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_105936_039950_FA501F06 
-X-CRM114-Status: GOOD (  11.39  )
+X-CRM114-CacheID: sfid-20260423_194856_570257_49256BEE 
+X-CRM114-Status: GOOD (  13.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,37 +71,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Luca,
+This series wires up on-chip HDMI audio on MT2701 and MT7623N, from the
+DRM bridge down through the AFE into a small machine driver that binds
+the AFE HDMI BE to the HDMI TX codec already exposed by the
+mediatek-drm-hdmi driver. Bindings, DT and a BananaPi R2 board node
+are included.
 
-Le jeudi 23 avril 2026 =C3=A0 11:17 +0200, Luca Ceresoli a =C3=A9crit=C2=A0=
-:
-> drm_connector_attach_encoder() is now called by
-> drm_bridge_connector_init().
->=20
-> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+In order to survive vblank or late hotplug of the monitor, the fix
+submitted separately [1] is required as well.
 
-Acked-by: Paul Cercueil <paul@crapouillou.net>
+Everything here was developed for and tested on a BananaPi R2
+(MT7623N), which turns ten years old this year -- a nice occasion to
+finally land HDMI audio for a SoC which was truly ahead of its time.
 
-Cheers,
--Paul
+[1]: https://patchwork.kernel.org/project/linux-mediatek/patch/a3e22cbae528c9a38d854a586d1736b860998d41.1776265222.git.daniel@makrotopia.org/
 
-> ---
-> =C2=A0drivers/gpu/drm/ingenic/ingenic-drm-drv.c | 2 --
-> =C2=A01 file changed, 2 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
-> b/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
-> index 4068114adf8c..70088db34f69 100644
-> --- a/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
-> +++ b/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
-> @@ -1330,8 +1330,6 @@ static int ingenic_drm_bind(struct device *dev,
-> bool has_components)
-> =C2=A0			ret =3D PTR_ERR(connector);
-> =C2=A0			goto err_drvdata;
-> =C2=A0		}
-> -
-> -		drm_connector_attach_encoder(connector, encoder);
-> =C2=A0	}
-> =C2=A0
-> =C2=A0	drm_for_each_encoder(encoder, drm) {
+Changes since v2:
+ * allOf goes before additionalProperties
+ * remove now unused clk bits
+ * remove redundant clock un-gating via regmap access
+
+Changes since v1:
+ * Restrict the four HDMI clocks to mediatek,mt2701-audio only
+   using an allOf/if/then conditional; MT7622 is capped at 34
+   clocks (Krzysztof Kozlowski)
+ * Fix subject prefix to use schema filename (Krzysztof Kozlowski)
+ * Rewrite title and description to describe hardware, not driver
+   (Krzysztof Kozlowski)
+ * Clarify in commit message why this is a separate binding from
+   mediatek,mt2701-audio (Krzysztof Kozlowski)
+ * use named masks and explicitly set BIT_WIDTH_16 when
+   programming AFE_HDMI_OUT_CON0 channel count (Mark Brown)
+ * add AUDIO_TOP_CON3, AFE_HDMI_OUT_CON0, AFE_HDMI_CONN0,
+   AFE_8CH_I2S_OUT_CON to suspend/resume backup list
+   (Mark Brown)
+
+Daniel Golle (9):
+  ASoC: dt-bindings: mt2701-afe-pcm: add HDMI audio path clocks
+  ASoC: dt-bindings: mediatek,mt2701-hdmi-audio: add MT2701 HDMI audio
+  ASoC: mediatek: mt2701: add AFE HDMI register definitions
+  ASoC: mediatek: mt2701: add optional HDMI audio path clocks
+  ASoC: mediatek: mt2701: add HDMI audio memif, FE and BE DAIs
+  ASoC: mediatek: mt2701: add machine driver for on-chip HDMI codec
+  ARM: dts: mediatek: mt2701: wire HDMI audio path clocks into AFE
+  ARM: dts: mediatek: mt7623: wire HDMI audio path clocks into AFE
+  ARM: dts: mediatek: mt7623n-bananapi-bpi-r2: add HDMI audio machine
+    node
+
+ .../bindings/sound/mediatek,mt2701-audio.yaml |  23 ++
+ .../sound/mediatek,mt2701-hdmi-audio.yaml     |  48 +++
+ arch/arm/boot/dts/mediatek/mt2701.dtsi        |  21 +-
+ arch/arm/boot/dts/mediatek/mt7623.dtsi        |  21 +-
+ .../dts/mediatek/mt7623n-bananapi-bpi-r2.dts  |   7 +
+ sound/soc/mediatek/Kconfig                    |  10 +
+ sound/soc/mediatek/mt2701/Makefile            |   1 +
+ .../mediatek/mt2701/mt2701-afe-clock-ctrl.c   |  22 ++
+ sound/soc/mediatek/mt2701/mt2701-afe-common.h |   6 +
+ sound/soc/mediatek/mt2701/mt2701-afe-pcm.c    | 284 +++++++++++++++++-
+ sound/soc/mediatek/mt2701/mt2701-hdmi.c       | 114 +++++++
+ sound/soc/mediatek/mt2701/mt2701-reg.h        |  29 ++
+ 12 files changed, 575 insertions(+), 11 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt2701-hdmi-audio.yaml
+ create mode 100644 sound/soc/mediatek/mt2701/mt2701-hdmi.c
+
+-- 
+2.54.0
 
