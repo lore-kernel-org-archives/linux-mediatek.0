@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05B9FFF885C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Apr 2026 19:51:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3266FFF8863
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Apr 2026 19:51:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gSvcfLBOpoUTWN4tbv5S8Vjt79qJpmtw6Uk94nia/cU=; b=gf/4B/fJNRj2rEXMPXfRNkt60P
-	H4aoZRhM5IV80PqaeZLBZV5Db+qm96LiFJu+ePwnbWKTHuszCO0zlblApQavEn9vtIU40tKN68aPW
-	GcnY75teDO2bkhwifNsSzjebI/yL2x9PDXeTskNXD4W4thJsLtpwqi2o5R7/zqbgXBUsDUSB1nQN+
-	zF06iQTtA64pFsECqcCIja+L8h5mNa9UNeZfDGYvIRCludJscDbZGkyl01w6rtz6wlqBNhSwk+MeU
-	q8RWdg1veOPl4o5jEkSQFEVBlFZG2MOKxHBlxYa7eH24EGlemW6SFnSwuIRMZ4yL0YfxJLFkx3hZc
-	N3HQbV3w==;
+	bh=Nn0IDzT+W9CDGbojhoLfTqkBiBGELCUWb519tH5lz+U=; b=lqUYqdgUQ7/9pUZRE1p0VfTPbh
+	h/UsW5MQ7qaZuwr5YJOvuL+MwPwbT6DTx5ap65VqlR7VslH5L1YaXQ8s9cipFJNWHKDnKiAvj9/Fe
+	eGWpW+szubGdv+VmEqyJW64obz2Cj/hTmhTP1MDGoEgFLmrEtfr0wHFishkQhUf7+Fg/ayn6kQmSo
+	J9if1qKhkSO2Kg1pMGfPlm879VjyKF7hWrra2GooOdkMG89NJ1aDjF5tsSxaxwXhBGPEZgLo7/Hsd
+	FdK17HTsjQePAZPdvX9uSPtso822F3UNEntHexJV5zbLrJJrl3+P6YCM7Ud7nSlwZWlyAE2XD2Q91
+	AvH5qGvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wGj2I-0000000EmOx-3341;
-	Sat, 25 Apr 2026 19:51:30 +0000
-Received: from mail-ot1-f50.google.com ([209.85.210.50])
+	id 1wGj2L-0000000EmQE-1qGT;
+	Sat, 25 Apr 2026 19:51:33 +0000
+Received: from mail-ot1-f42.google.com ([209.85.210.42])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wGj2G-0000000EmO7-1DEh
+	id 1wGj2J-0000000EmPF-1bwk
 	for linux-mediatek@lists.infradead.org;
-	Sat, 25 Apr 2026 19:51:29 +0000
-Received: by mail-ot1-f50.google.com with SMTP id 46e09a7af769-7d4be94eeacso9234913a34.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 25 Apr 2026 12:51:28 -0700 (PDT)
+	Sat, 25 Apr 2026 19:51:32 +0000
+Received: by mail-ot1-f42.google.com with SMTP id 46e09a7af769-7d4be94eeacso9234945a34.2
+        for <linux-mediatek@lists.infradead.org>; Sat, 25 Apr 2026 12:51:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777146687; x=1777751487;
+        d=1e100.net; s=20251104; t=1777146690; x=1777751490;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=gSvcfLBOpoUTWN4tbv5S8Vjt79qJpmtw6Uk94nia/cU=;
-        b=BxDk3Uz0A6enwMEOpNlF4PINKEAWRPlrqhdJu1pJ0IsJCt0eHP0DSUkijR6CGw1cHe
-         j5jkcJpi+BcNSMqgXMXZ02NM2918CozYFkfUwgDdodHN5B3v3DurmiuCVClxykXa6x2g
-         6xcHAaYdb7/XJIPIeaduiOCXMM48cIhZZnoQyB9GubSQXR1SzaNRmQlKmjJyhFauMoeV
-         Mx4tm0L0OEpziwJV+FcHDTPbM5jAx4ZFPrxYmd0gIr6IzOh9c775Dib81H3JPt9D2DPb
-         2xMeMg0JIyXX17TlooYb1m9IhMocSVkB7843K4CbHURwEbO2a4/vBC2FlUgYrt/MLxaM
-         PYFA==
-X-Forwarded-Encrypted: i=1; AFNElJ9gFtTtEb1l2sALlyfYZBIWLCekEIOfbUKNl7NmpWWFRqs6a5CkJPxo+Utkc5ZG8mxliOVJ70ucgUU7x45TZg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwlanPoI9NuZ14LgcbtP7Bi3wocJ9Ca6dqM4DiySOm+wHZrT1wM
-	xxxjVy3AKWzWUdQDRxFzXppy/2hwBiaYK0cP5wtVwIQJ4fCTJBeF+c4e
-X-Gm-Gg: AeBDieuc51DUslkkT69+Ga/EfDwYjhXj79bQlazwTkZVBVD2xXVc1iKWEGFe7BiKlF/
-	rVZA8RFu3xwgT3r7YCaXjFaasuF1u4tvygXyxVm8EylBhkLuPEMzZJ75TBRPbAe4NhhrPBIbLFF
-	JUXclbM3UbSfWQvDingq0iLfJBafYtsnNLnThwOfSf4oRlpWzneVrO5iWm7sOrywKAhabvsq4OR
-	uQOZ3MQdnYsD+se6K+cy8I+PC5/qj+6ISTVBBUbFeBuUPzSU+7V4ky/fwWwUcJMAVfb+J3LOCcM
-	D4fF/lx7zRZPK3xcydrFNi2nWnVyS0RFUw4d9jZ7ZHicpt6rajoPJDdixUNX/k9BLpcMxp1Tz+D
-	pOjwK8xQoeXv16OPptzk1PBXqHCgxw0/FHuqdYDRj7g7KKmv+J9zJFq8auCb+d4L3pcL1aB2YfJ
-	cAOqbbJJlQMdDTCmVdIc2cQaB051sXszrYYG6pAqE0KhUutulqP6mMZdnOhKqLCJxevEHk4nqqT
-	PTpMjz6OCgW
-X-Received: by 2002:a05:6830:7315:b0:7db:a832:b329 with SMTP id 46e09a7af769-7dc9521f8f4mr22143740a34.21.1777146687361;
-        Sat, 25 Apr 2026 12:51:27 -0700 (PDT)
+        bh=Nn0IDzT+W9CDGbojhoLfTqkBiBGELCUWb519tH5lz+U=;
+        b=NPFhFYgurIx5x4dj0G0XTW6NQXjpd+vcm/Pt+K+LKbmuqOO48HJ3+bIqvJLufyqzRe
+         9aHPUVIUfHEfaFYu4CiGEgyZDPtQrvCi0o+Kzde7lQM50570NU0j3ycMA4fcCiA3ZJHO
+         JkDwc7Q9Hx3p5gdURfL6V/7mSaNqUcAFlGu+NoX3e5s5o293CI/FndGBxV4jB0aiU3N7
+         0adwxpCmnnthJpX9t5rwwBYV8sWmfd2J25ijbT3sAZiNl0JWQhAyk4sbb/RzhNdD60vK
+         GFEhmhwuONAuJtoZxve2/bcuxWME7zrpYlO76mkE2fl+gPgAPE7B4hQ1BMS3YV4cWTlm
+         MI1Q==
+X-Forwarded-Encrypted: i=1; AFNElJ+P991Qdon3yyovMq9a9qXStB4bI0zCSzouvddLn+ih6v0rzxb0luWjTR44Mp0h+hka8Qu9hR4PofhvHtmzvw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyAxbbBhgw2pvpWuifZRTPiSmHN7wd7VlUx5Fg7pFY4ydn99dxE
+	qKN555lzuTzcnlVnnjGRjNEke0tg35qzTrTD+cxq6auKWrInO+fhdpJ/
+X-Gm-Gg: AeBDies8aa/AmZ02pSBqDXsCgmYNgxdArOeZ+IHo4p2CEpcn2A2NG1fWuFYbK5tuJIr
+	JljC1/gls6lXS26RKRD7QkLs7yjP6xxLauqdwQUcbQK+MKrm5J6FRQPslaG7ihs8YtsaYLqbLxJ
+	tKZPpK5gVSuAHykMMS+V1M5aq/nVinseLJF3nVLu9iGC+LjxvbbJfFrAKMqlBdG5Wui3npXzzC1
+	6qMMZ2iFTV8ZjzEmnkjjM1RPNGlP6AyCBLB5g7ZsPeNq23bkZeypyxEKbJK1ZeCXHsbBQ0ct4eP
+	zWQ5o3yaoq/QIc0Ww0VgC6EZlGqBWw/jAyPW3O8sBqs2n+MDDzRNF5WjgvU+Fu4tiYP1BLIYFrj
+	xDOOHJqRJji3gKkcFps4/EvhzMpKKSREqn5I+/wTK1J6dOtLW86+R4L/q++3pd3eaSQE4ju4m9t
+	n3BW6khz4wEjTdF6B6aN5Ux4xhzT3pWsoJTZ5UTKw7Qr4OtGgtIv8l14zUovpbOwvLKs4tXpCNZ
+	g==
+X-Received: by 2002:a05:6830:4c12:b0:7dc:cefa:1c37 with SMTP id 46e09a7af769-7dccefa1e5dmr11880631a34.23.1777146690330;
+        Sat, 25 Apr 2026 12:51:30 -0700 (PDT)
 Received: from sean-HP-EliteBook-830-G6.attlocal.net ([2600:1702:5083:7610:2e29:c3c3:de27:ce76])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7dcd164d2c3sm13987624a34.24.2026.04.25.12.51.26
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7dcd164d2c3sm13987624a34.24.2026.04.25.12.51.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 25 Apr 2026 12:51:26 -0700 (PDT)
+        Sat, 25 Apr 2026 12:51:28 -0700 (PDT)
 From: Sean Wang <sean.wang@kernel.org>
 To: nbd@nbd.name,
 	lorenzo.bianconi@redhat.com
 Cc: linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH v5 11/21] wifi: mt76: mt7925: use link-specific removal for non-MLD STA
-Date: Sat, 25 Apr 2026 14:50:01 -0500
-Message-ID: <20260425195011.790265-12-sean.wang@kernel.org>
+Subject: [PATCH v5 12/21] wifi: mt76: connac: tolerate inactive BSS deactivation
+Date: Sat, 25 Apr 2026 14:50:02 -0500
+Message-ID: <20260425195011.790265-13-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260425195011.790265-1-sean.wang@kernel.org>
 References: <20260425195011.790265-1-sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260425_125128_354615_CF2833B4 
-X-CRM114-Status: GOOD (  10.94  )
+X-CRM114-CacheID: sfid-20260425_125131_548176_8CE7C1FA 
+X-CRM114-Status: GOOD (  13.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,39 +91,105 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Use the default link removal path for non-MLD STA instead of the
-multi-link flow.
+Firmware may return wlan_failure when deactivating a BSS that is already
+inactive. This is a valid teardown case and should not fail the remove
+path.
+
+Keep activation failures unchanged since they still indicate that firmware
+failed to create or activate the BSS state.
 
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7925/main.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ .../wireless/mediatek/mt76/mt76_connac_mcu.c  |  9 +++++++-
+ .../wireless/mediatek/mt76/mt76_connac_mcu.h  | 23 +++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7925/mcu.c   |  6 +++--
+ 3 files changed, 35 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index bf38d6502970..044043a8768d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -1338,14 +1338,14 @@ void mt7925_mac_sta_remove(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 	struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
- 	struct mt792x_sta *msta = (struct mt792x_sta *)sta->drv_priv;
- 	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
--	unsigned long rem;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index 2b1c887d6709..0f2d580c7b4a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -1227,6 +1227,9 @@ int mt76_connac_mcu_uni_add_dev(struct mt76_phy *phy,
+ 	len = enable ? sizeof(dev_req) : sizeof(basic_req);
  
--	rem = ieee80211_vif_is_mld(vif) ? msta->valid_links : BIT(0);
--
--	mt7925_mac_sta_remove_links(dev, vif, sta, rem);
--
--	if (ieee80211_vif_is_mld(vif))
-+	if (ieee80211_vif_is_mld(vif)) {
-+		mt7925_mac_sta_remove_links(dev, vif, sta, msta->valid_links);
- 		mt7925_mcu_del_dev(mdev, vif);
-+	} else {
-+		mt7925_mac_link_sta_remove(mdev, vif, &sta->deflink,
-+					   &msta->deflink);
+ 	err = mt76_mcu_send_msg(dev, cmd, data, len, true);
++	if (err && cmd == MCU_UNI_CMD(BSS_INFO_UPDATE))
++		err = mt76_connac_mcu_bss_deact_err(dev, err, enable);
++
+ 	if (err < 0)
+ 		return err;
+ 
+@@ -1234,7 +1237,11 @@ int mt76_connac_mcu_uni_add_dev(struct mt76_phy *phy,
+ 	data = enable ? (void *)&basic_req : (void *)&dev_req;
+ 	len = enable ? sizeof(basic_req) : sizeof(dev_req);
+ 
+-	return mt76_mcu_send_msg(dev, cmd, data, len, true);
++	err = mt76_mcu_send_msg(dev, cmd, data, len, true);
++	if (err && cmd == MCU_UNI_CMD(BSS_INFO_UPDATE))
++		err = mt76_connac_mcu_bss_deact_err(dev, err, enable);
++
++	return err;
+ }
+ EXPORT_SYMBOL_GPL(mt76_connac_mcu_uni_add_dev);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index 552cb94edaa0..4691b9b5e2be 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -1906,6 +1906,29 @@ mt76_connac_mcu_get_wlan_idx(struct mt76_dev *dev, struct mt76_wcid *wcid,
+ 	}
+ }
+ 
++#define MT76_CONNAC_MCU_STATUS_WLAN_FAILURE	0xc0000001
++
++static inline int
++mt76_connac_mcu_bss_deact_err(struct mt76_dev *mdev, int err, bool enable)
++{
++	if (err != (int)MT76_CONNAC_MCU_STATUS_WLAN_FAILURE)
++		return err;
++
++	/* Ignore wlan_failure state false alarm when deactivating an
++	 * inactive network. It does not harm the firmware state.
++	 */
++	if (!enable) {
++		dev_dbg(mdev->dev,
++			"ignore wlan_failure when bss is deactivated\n");
++		return 0;
 +	}
++
++	dev_warn(mdev->dev,
++		 "wlan_failure when bss is activated\n");
++
++	return err;
++}
++
+ struct sk_buff *
+ __mt76_connac_mcu_alloc_sta_req(struct mt76_dev *dev, struct mt76_vif_link *mvif,
+ 				struct mt76_wcid *wcid, int len);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index f403d9d925e3..b338d6bf02f5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -2832,6 +2832,7 @@ int mt7925_mcu_add_bss_info_sta(struct mt792x_phy *phy,
+ 	struct mt792x_bss_conf *mconf = mt792x_link_conf_to_mconf(link_conf);
+ 	struct mt792x_dev *dev = phy->dev;
+ 	struct sk_buff *skb;
++	int err;
  
- 	if (vif->type == NL80211_IFTYPE_STATION) {
- 		mvif->wep_sta = NULL;
+ 	skb = __mt7925_mcu_alloc_bss_req(&dev->mt76, &mconf->mt76,
+ 					 MT7925_BSS_UPDATE_MAX_SIZE);
+@@ -2857,8 +2858,9 @@ int mt7925_mcu_add_bss_info_sta(struct mt792x_phy *phy,
+ 		mt7925_mcu_bss_mbssid_tlv(skb, link_conf, enable);
+ 	}
+ 
+-	return mt76_mcu_skb_send_msg(&dev->mt76, skb,
+-				     MCU_UNI_CMD(BSS_INFO_UPDATE), true);
++	err = mt76_mcu_skb_send_msg(&dev->mt76, skb,
++				    MCU_UNI_CMD(BSS_INFO_UPDATE), true);
++	return mt76_connac_mcu_bss_deact_err(&dev->mt76, err, enable);
+ }
+ 
+ int mt7925_mcu_add_bss_info(struct mt792x_phy *phy,
 -- 
 2.43.0
 
