@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9779AFF885C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Apr 2026 19:51:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39576FF885C
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Apr 2026 19:51:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gKvYGV4TMUrux9536qByVnjjRcmL717VnswYtd09SmM=; b=4CQX6qyrBqRGpWHBVZEivXMOo+
-	fdx4qS1t81BgBdF2lQmoeCOnanB8X22qoa5zg+e++s9fo4gvH7mqPD17i0IQUofRic+F32jGr51iD
-	ebhyAcfRjRH8N5bCojKWM33NJrJ6q+WFxgC2L5DsM69x+atVkuDD36yYGDACNtD9IONRpPL+N5qMb
-	4cQK0ypSvfERR88NFe4/chhReRKO+fZgrmYij8mYs6Zz3e1asliufEe/584ViClK2OrxxDGpgc4ej
-	CDv1HULTB1Qh7bJWSEZt8+4vgSQb06Ndhrk1e9xPFOjEe+E7vuJs6GwuADFbRTHoMwq1I+iaSmOx9
-	fniFSl7g==;
+	bh=MKK1TQu05IOvJzqk2ZSwsaHyP8UgKdpSWF9oEwSI2Ks=; b=a6EDHzNuwHku4LE8D/C5Kp9srV
+	Xdu855sBXk/z1gFheRtcQVSQNXZ/L2aZtKrwr0JV6i8N0AEyDJk6OVSX2T4z6sNH/jp+lFnKlUPPK
+	hjJkHdexkmg08hfTQ26cAzgMiokffKCt6u3N2rywT6ojwYEWTTZ1UWq1SWMdM3fJ6aYbILpk1JU2l
+	TS7Z48pw699bs/qrmKkbb/FAvIJoKBw6CauI+5XSgr/lzC22UHP1B858VvccxHEVq3BvwMnw4niSH
+	YBjxgNxhMWj+OV2IStAYclJoifNLLTgSSzmsFn5hpDE2bF9u07N2SAYrqG/zz/7aIYOhA1aSICNl+
+	nDXd0Xxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wGj2O-0000000EmRu-2t4b;
-	Sat, 25 Apr 2026 19:51:36 +0000
-Received: from mail-ot1-f47.google.com ([209.85.210.47])
+	id 1wGj2Q-0000000EmT5-3tZ3;
+	Sat, 25 Apr 2026 19:51:38 +0000
+Received: from mail-ot1-f46.google.com ([209.85.210.46])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wGj2M-0000000EmQb-15Lv
+	id 1wGj2O-0000000EmRo-4AAM
 	for linux-mediatek@lists.infradead.org;
-	Sat, 25 Apr 2026 19:51:35 +0000
-Received: by mail-ot1-f47.google.com with SMTP id 46e09a7af769-7dcdca9dd6cso4891984a34.3
-        for <linux-mediatek@lists.infradead.org>; Sat, 25 Apr 2026 12:51:33 -0700 (PDT)
+	Sat, 25 Apr 2026 19:51:38 +0000
+Received: by mail-ot1-f46.google.com with SMTP id 46e09a7af769-7de5badb627so1000016a34.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 25 Apr 2026 12:51:36 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777146693; x=1777751493;
+        d=1e100.net; s=20251104; t=1777146696; x=1777751496;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=gKvYGV4TMUrux9536qByVnjjRcmL717VnswYtd09SmM=;
-        b=ES/LamyL9lYzvby81+n/ieDmaWCrSBWNu3ln9hH8cw8v7eRNqZtXCSp9Z/uCdP7N5u
-         YSx4OkHZTH8ukX06i5C0PmrNo949bnIoph7qYaslK85olS0vyvzI1XLZyMp0VTa5VQk3
-         kSdUgVF0tErNV6VYrTowk0SNawJ7Ihp2q+Iqv+j+Ccod+teW0E6vmg0ZzDpP45pX+20F
-         ygfvmjFlR7EzEokNhuLiiLb9ZYca5q+xL0idHYnGkeMY7HGqbQ1Jz5nORJqh1OE5QYzj
-         2yLawVxKG7WN5fRkaKxlhybPFjHm7ivFoPoP8zG2wmqXGw0AWEkENyEZb1l0J9POf7Bg
-         4O+A==
-X-Forwarded-Encrypted: i=1; AFNElJ8ZPpTsxhjFM9XTe81I6AhPjvbxibFmX+qNlrATXw6Ckr1h6i+eJ+8hKC1dhMULQbVbqptJg+oLPZP+3o+EZg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzk0sHC9tvGTMkjJ/1Ij7fX72WPpXjas/P/wH3DEGyGSjRvzMlh
-	oNRWf1qx9LmHeXhVutrRmojUtJ4ox6WdluTNOjA143D6qbpbBWscWLIL
-X-Gm-Gg: AeBDieu958MrIMPL19VqArvSJzQ1qQKP3IPZMnSxbVq/mRHPb3pl0ELw/Sso75DKejK
-	nEEMdenVb+geEptbndDsZyI1wv1pA2IPrd5ZQk6XpeFUMcoofgdgnxj92ZNzOw1v5NZG7h/j+vt
-	mSAlmIrg5nv0hMghroBgaFOG0HkQrWJejk/OuWmyhyXiKKHL8DUMSxPuCR8Wb989/f2EY8JnGin
-	7+d3wZag8tcLPl8qxgy4arENzq78/yFR1UfdnPLHgotH6kIqudUa8rXnFZEAT2fcYw5YxOH0fna
-	0+FPxH9R4yiE8MBzaGzD4WHf3eit+8yXYZOyVJCblhMtxNFiNcvKHqsQNytHBAJagjGV0A4S6ER
-	h7ZgogE3CFhMscA7dfAlCvl5pnr5AoqTT7UDYIfejVm+e64vFhDhnkfN5p9xhlU1Rc41TIDPCeo
-	v4gSmKsHSXe0+RZE5HsrzUOb0Mn+k0aVTYnYpDN4ezcu6gPZuNpePU2jhy87Xqi8MaYsxSMYsLv
-	g==
-X-Received: by 2002:a05:6830:4392:b0:7de:298:5332 with SMTP id 46e09a7af769-7de029856acmr10430239a34.27.1777146693226;
-        Sat, 25 Apr 2026 12:51:33 -0700 (PDT)
+        bh=MKK1TQu05IOvJzqk2ZSwsaHyP8UgKdpSWF9oEwSI2Ks=;
+        b=gCfBMJ9WGz5B1O305QmKdyTSc7GjjusepNjDR3oA3/LsGY6gTifpCyZe6EcruIpYuJ
+         qc3vauAtescNAkUHo1SxIo6YVPRI7Bk6SJxhZv73sKbnGspN91MEOve6hH9U9p02Fm51
+         //D26c8re8zKQUWkn/ssmCQD3NEojJ37Hhp+rixAfiH8MBb9TUSlQMkuhV5eznHKzdcm
+         ZR2SI8PgqvQ6jY/YNmN3MRnLSXr1cUhBJNXxlw2ZTAYhnQ6Pp13rCu+VkgsxvPKwzd6J
+         s2wjnjY2EBby5MxQ7kJAxN0GuebQT2r2Fyhxg45WQS3gcf1JIVFuU1cWXGZP3JSX7oXB
+         AaMQ==
+X-Forwarded-Encrypted: i=1; AFNElJ/VeIencJlroLTe/XfkjEeDQqc01QDCM8TxbZsa1y5BzbFtIOhKKSIPJT1c7kJXt9wGYm0/zz3ovrqDX3d+Tw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxGYjpTB++S12J6cQ7TcaPwlwygAWV2TDcH1oEgqXxBjfUfMl2o
+	JJf+f778cERwNON4Wy2eSNWL9mdmJGzxWGcKQH3QSo6+KEtJTjdVrv+O
+X-Gm-Gg: AeBDieuKyvJiavywlhmiL+CMe+MDE+1eTlsU0B7waWPrLue6lLkayWfDWNd5bRacoRX
+	OflcLF2rCj6TDYp1+pwU66GFDgSInKwpQ6QSpy/2NcSmwB2d4TxqtPxDKZyhvbSo+7QBFtz8ahR
+	BQm4xPxW+UgZlL0rHPs2w2qKItF037hkDat0pnnoFWbFnflG55DPXyXunIF5d0rqrsw7PQ4LBbu
+	SMv+9ZCr+EPXHZIa6JCSEj0n8eu+lDtjbhJZoTuX4x/VTxKu4MzzVeR/50yYqQSrV4kw6UZkRU1
+	NgL8Im51XfM5bn4CCj3yTgbgBPYpMvdbXY+iq01iJgX/RAw/gnqVGka50WEqhkGhCzBL/93Og8x
+	SJMTc2gFGIxaJTSORk5jiHaMGhmQP3+SPsMiuD58KL3C8wSPVrXPkHSwdIghXlBFez0COyyqh/N
+	lfR3K3oVfMFX/HtutjtFJ0Hp/q54cpf3OBkCZ7qcSsDTu3S/chCnVPDFcDhc4sW8cpqjTF4xaTm
+	w==
+X-Received: by 2002:a05:6830:3883:b0:7dc:db04:d30b with SMTP id 46e09a7af769-7dcdb04db39mr12370327a34.9.1777146695928;
+        Sat, 25 Apr 2026 12:51:35 -0700 (PDT)
 Received: from sean-HP-EliteBook-830-G6.attlocal.net ([2600:1702:5083:7610:2e29:c3c3:de27:ce76])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7dcd164d2c3sm13987624a34.24.2026.04.25.12.51.31
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7dcd164d2c3sm13987624a34.24.2026.04.25.12.51.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 25 Apr 2026 12:51:31 -0700 (PDT)
+        Sat, 25 Apr 2026 12:51:35 -0700 (PDT)
 From: Sean Wang <sean.wang@kernel.org>
 To: nbd@nbd.name,
 	lorenzo.bianconi@redhat.com
 Cc: linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH v5 13/21] wifi: mt76: mt792x: add MT7927 WFSYS reset support
-Date: Sat, 25 Apr 2026 14:50:03 -0500
-Message-ID: <20260425195011.790265-14-sean.wang@kernel.org>
+Subject: [PATCH v5 14/21] wifi: mt76: mt792x: factor out common DMA queue allocation
+Date: Sat, 25 Apr 2026 14:50:04 -0500
+Message-ID: <20260425195011.790265-15-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260425195011.790265-1-sean.wang@kernel.org>
 References: <20260425195011.790265-1-sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260425_125134_308056_C0379885 
-X-CRM114-Status: GOOD (  13.41  )
+X-CRM114-CacheID: sfid-20260425_125137_037770_06132593 
+X-CRM114-Status: GOOD (  11.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,117 +91,125 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Add a dedicated MT7927 WFSYS reset path in mt792x_wfsys_reset().
+The mt792x PCIe DMA setup uses the same standard queue allocation
+sequence for data, MCU, firmware download and RX rings.
 
-Unlike the existing connac2/connac3 reset flow that toggles the WFSYS
-software reset bit and waits for init-done, MT7927 reset is driven
-through CBInfra and requires polling ROMCODE_INDEX until the MCU returns
-to the idle value after reset.
+Factor this part out into a small common helper so later chip support
+can reuse the existing flow without duplicating the queue setup logic.
 
-Keep this dormant for now: no MT7927 PCI IDs are added by this patch, so
-it only prepares the reset logic without making the driver bind to MT7927
-hardware yet.
+This keeps the common DMA skeleton in one place and makes follow-up
+chip-specific DMA changes smaller and easier to review.
 
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt792x_dma.c   | 57 ++++++++++++++++++-
- .../net/wireless/mediatek/mt76/mt792x_regs.h  | 11 ++++
- 2 files changed, 67 insertions(+), 1 deletion(-)
+ drivers/net/wireless/mediatek/mt76/mt792x.h   | 19 +++++++
+ .../net/wireless/mediatek/mt76/mt792x_dma.c   | 56 +++++++++++++++++++
+ 2 files changed, 75 insertions(+)
 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
+index 09840483fe2a..59562567cc13 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x.h
++++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
+@@ -206,6 +206,23 @@ struct mt792x_irq_map {
+ 	} rx;
+ };
+ 
++struct mt792x_dma_ring {
++	u8 qid;
++	u16 n_desc;
++	u32 ring_base;
++};
++
++struct mt792x_dma_layout {
++	struct mt792x_dma_ring tx_data0;
++	struct mt792x_dma_ring tx_mcu;
++	struct mt792x_dma_ring tx_fwdl;
++	struct mt792x_dma_ring rx_data;
++	struct mt792x_dma_ring rx_mcu;
++};
++
++#define mt792x_dma_ring(_qid, _n_desc, _ring_base) \
++	{ .qid = (_qid), .n_desc = (_n_desc), .ring_base = (_ring_base) }
++
+ #define mt792x_init_reset(dev)		((dev)->hif_ops->init_reset(dev))
+ #define mt792x_dev_reset(dev)		((dev)->hif_ops->reset(dev))
+ #define mt792x_mcu_init(dev)		((dev)->hif_ops->mcu_init(dev))
+@@ -421,6 +438,8 @@ void mt792x_sta_statistics(struct ieee80211_hw *hw,
+ void mt792x_set_coverage_class(struct ieee80211_hw *hw, int radio_idx,
+ 			       s16 coverage_class);
+ void mt792x_dma_cleanup(struct mt792x_dev *dev);
++int mt792x_dma_alloc_queues(struct mt792x_dev *dev,
++			    const struct mt792x_dma_layout *layout);
+ int mt792x_dma_enable(struct mt792x_dev *dev);
+ int mt792x_wpdma_reset(struct mt792x_dev *dev, bool force);
+ int mt792x_wpdma_reinit_cond(struct mt792x_dev *dev);
 diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_dma.c b/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
-index 002aece857b2..2835bf273154 100644
+index 2835bf273154..c52d0c85913c 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
-@@ -370,7 +370,54 @@ int mt792x_poll_rx(struct napi_struct *napi, int budget)
+@@ -87,6 +87,62 @@ void mt792x_rx_poll_complete(struct mt76_dev *mdev, enum mt76_rxq_id q)
  }
- EXPORT_SYMBOL_GPL(mt792x_poll_rx);
+ EXPORT_SYMBOL_GPL(mt792x_rx_poll_complete);
  
--int mt792x_wfsys_reset(struct mt792x_dev *dev)
-+static void mt7927_sema_status_read(struct mt792x_dev *dev, u32 addr)
++int mt792x_dma_alloc_queues(struct mt792x_dev *dev,
++			    const struct mt792x_dma_layout *layout)
 +{
-+	u32 remap;
++	int ret;
 +
-+	remap = mt76_rr(dev, MT7927_PCIE2AP_REMAP_WF_0_54);
-+	mt76_wr(dev, MT7927_PCIE2AP_REMAP_WF_0_54,
-+		(remap & ~MT7927_PCIE2AP_REMAP_WF_0_54_MASK) |
-+		MT7927_PCIE2AP_REMAP_WF_0_54_VAL);
-+	usleep_range(10, 20);
++	mt76_dma_attach(&dev->mt76);
 +
-+	mt76_rr(dev, addr);
++	ret = mt792x_dma_disable(dev, true);
++	if (ret)
++		return ret;
 +
-+	mt76_wr(dev, MT7927_PCIE2AP_REMAP_WF_0_54, remap);
-+	usleep_range(10, 20);
++	/* init tx queue */
++	ret = mt76_connac_init_tx_queues(dev->phy.mt76, layout->tx_data0.qid,
++					 layout->tx_data0.n_desc,
++					 layout->tx_data0.ring_base,
++					 NULL, 0);
++	if (ret)
++		return ret;
++
++	mt76_wr(dev, MT_WFDMA0_TX_RING0_EXT_CTRL, 0x4);
++
++	/* command to WM */
++	ret = mt76_init_mcu_queue(&dev->mt76, MT_MCUQ_WM,
++				  layout->tx_mcu.qid,
++				  layout->tx_mcu.n_desc,
++				  layout->tx_mcu.ring_base);
++	if (ret)
++		return ret;
++
++	/* firmware download */
++	ret = mt76_init_mcu_queue(&dev->mt76, MT_MCUQ_FWDL,
++				  layout->tx_fwdl.qid,
++				  layout->tx_fwdl.n_desc,
++				  layout->tx_fwdl.ring_base);
++	if (ret)
++		return ret;
++
++	/* rx event */
++	ret = mt76_queue_alloc(dev, &dev->mt76.q_rx[MT_RXQ_MCU],
++			       layout->rx_mcu.qid,
++			       layout->rx_mcu.n_desc,
++			       MT_RX_BUF_SIZE,
++			       layout->rx_mcu.ring_base);
++	if (ret)
++		return ret;
++
++	/* rx data */
++	ret = mt76_queue_alloc(dev, &dev->mt76.q_rx[MT_RXQ_MAIN],
++			       layout->rx_data.qid,
++			       layout->rx_data.n_desc,
++			       MT_RX_BUF_SIZE,
++			       layout->rx_data.ring_base);
++	return ret;
 +}
++EXPORT_SYMBOL_GPL(mt792x_dma_alloc_queues);
 +
-+static int mt7927_wfsys_reset(struct mt792x_dev *dev)
-+{
-+	struct mt76_dev *mdev = &dev->mt76;
-+	u32 val;
-+
-+	mt7927_sema_status_read(dev, MT7927_SEMA_OWN_STA);
-+
-+	mt76_set(dev, MT7927_CBINFRA_RGU_WF_RST,
-+		 MT7927_CBINFRA_RGU_WF_RST_WF_SUBSYS);
-+	usleep_range(1000, 2000);
-+
-+	mt76_clear(dev, MT7927_CBINFRA_RGU_WF_RST,
-+		   MT7927_CBINFRA_RGU_WF_RST_WF_SUBSYS);
-+	usleep_range(5000, 10000);
-+
-+	mt76_wr(dev, MT7927_CBINFRA_MCU_OWN_SET, BIT(0));
-+
-+	if (!__mt76_poll_msec(mdev, MT7927_ROMCODE_INDEX, 0xffff,
-+			      MT7927_MCU_IDLE_VALUE, 200)) {
-+		val = mt76_rr(dev, MT7927_ROMCODE_INDEX);
-+		dev_err(mdev->dev,
-+			"MT7927 WFSYS reset timeout (ROMCODE_INDEX=0x%04x)\n",
-+			val & 0xffff);
-+		return -ETIMEDOUT;
-+	}
-+
-+	mt7927_sema_status_read(dev, MT7927_SEMA_OWN_STA_REP);
-+
-+	return 0;
-+}
-+
-+static int mt792x_wfsys_reset_default(struct mt792x_dev *dev)
+ #define PREFETCH(base, depth)	((base) << 16 | (depth))
+ static void mt792x_dma_prefetch(struct mt792x_dev *dev)
  {
- 	u32 addr = is_connac2(&dev->mt76) ? 0x18000140 : 0x7c000140;
- 
-@@ -384,5 +431,13 @@ int mt792x_wfsys_reset(struct mt792x_dev *dev)
- 
- 	return 0;
- }
-+
-+int mt792x_wfsys_reset(struct mt792x_dev *dev)
-+{
-+	if (is_mt7927(&dev->mt76))
-+		return mt7927_wfsys_reset(dev);
-+
-+	return mt792x_wfsys_reset_default(dev);
-+}
- EXPORT_SYMBOL_GPL(mt792x_wfsys_reset);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_regs.h b/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
-index 20d27ae89aca..17504ef8e80d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
-@@ -493,4 +493,15 @@
- #define WFSYS_SW_RST_B			BIT(0)
- #define WFSYS_SW_INIT_DONE		BIT(4)
- 
-+/* CBInfra registers - MT7927 combo chip */
-+#define MT7927_CBINFRA_RGU_WF_RST		0x1f8600
-+#define MT7927_CBINFRA_RGU_WF_RST_WF_SUBSYS	BIT(4)
-+#define MT7927_CBINFRA_MCU_OWN_SET		0x1f5034
-+#define MT7927_ROMCODE_INDEX			0xc1604
-+#define MT7927_MCU_IDLE_VALUE			0x1d1e
-+#define MT7927_PCIE2AP_REMAP_WF_0_54		0x21008
-+#define MT7927_PCIE2AP_REMAP_WF_0_54_MASK	GENMASK(15, 0)
-+#define MT7927_PCIE2AP_REMAP_WF_0_54_VAL	0x00001807
-+#define MT7927_SEMA_OWN_STA			0x40000
-+#define MT7927_SEMA_OWN_STA_REP			0x40400
- #endif /* __MT792X_REGS_H */
 -- 
 2.43.0
 
