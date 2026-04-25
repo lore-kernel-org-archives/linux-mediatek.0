@@ -4,77 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9ABCBFF885C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Apr 2026 12:56:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB181FF885C
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Apr 2026 14:11:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=SZuM00xQCJ9SQ2uX+LJVCZK3MPfrZawFfZ2Xb8E/2s4=; b=xGJhKGnxSGZpT/oNF/Yhd8cQL8
-	xr6au2AK5teRSRhIdReOIRDr3rhw21jDf5axcLxOmC0Ea6xh/OsUbDnPJEHq971qyc29FPK72za9c
-	82cWBVBYKa+f/IL9GujI7GQcWjkPAg3+HWz2T+iJ94CVJInHT2Gsv+DTnS75VFgQdU+3dyih1qGg0
-	mM/V9iiKjnEtmSnf6hcXNqo63cnBYOKQUKkp63eUlas77KGJt0H+ARQ4OajUDfhYHFetCaMaEW48l
-	6Em2UQFgW7ITF3Cunep1JkC2ZSby6LEimGEyTCF/ypHwQXMQlh9GvrCyWFydILvDVgd8RiqFVMyfj
-	SGGPZMBQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oCDRnSN4R5hdrw6p/Z2MSp7JmFvMbvRG5SIix8Wk020=; b=GfCejaVdtp1WF/xF6J/mNBVkB7
+	7100ck4ErLZfTUSuXH8UpF+7AS94k/0qtIKjcReigAWIP0EzZFfuvdJ1JWXnsif6XEeY2pSWd3LKo
+	SU4lP72bPtzxqChYXOxH2wfC52P14UyjOq2kCr3Duubv5Ixr+yGnhzZYgH4wUD2fMbRvfnBFcQd7S
+	b71qWfJYgP4KWnzWD08b8qu13YK8DzboGWVEuIvPIXnCDXPM/Ewys7cZrIeSz/VqWI9hTlV1z2xUy
+	gOFu52se90iHIVh+T/u4j0Dy4LBauFp1MMCgpEReXViv/+qTJLOzCg0wzbJCM9Dxun3rI+AnwX09r
+	lOcKlDoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wGcYM-0000000ES2D-1Ud6;
-	Sat, 25 Apr 2026 12:56:10 +0000
-Received: from meesny.iki.fi ([2001:67c:2b0:1c1::201])
+	id 1wGdii-0000000EV0S-0yP9;
+	Sat, 25 Apr 2026 14:10:56 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wGcYK-0000000ES0s-0L5Z
-	for linux-mediatek@lists.infradead.org;
-	Sat, 25 Apr 2026 12:56:09 +0000
-Received: from monolith (unknown [193.138.7.192])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: pav)
-	by meesny.iki.fi (Postfix) with ESMTPSA id 4g2qZW6WSBzyQH;
-	Sat, 25 Apr 2026 15:56:03 +0300 (EEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=meesny;
-	t=1777121764;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=SZuM00xQCJ9SQ2uX+LJVCZK3MPfrZawFfZ2Xb8E/2s4=;
-	b=aKMtkm0EaI52qzj7Tl97eYU70YCX3LuTbA5qnhu/EIXueIjFgswiPxU8QYIbElGW2/tniS
-	tsTuQaQxLYEuBSIat+ESy568ELmRXWbo57pnTwtsgBs+sFen04cYuC6V4PR1a/84YCwq8m
-	vZDvqLXCBp262QebZ89qhCzDs/fT6SY=
-ARC-Seal: i=1; a=rsa-sha256; d=iki.fi; s=meesny; cv=none; t=1777121764;
-	b=C8USSztDHHl4b0/mNjUxEpE0vabil+YQZ6KJlJ0m6LYUhrV2a72jMY+b1yqY+DdFxhNKVr
-	gopjokNI8PkyQmtCwHXjh6Lp1ZbQyuaj6XUgwhDoYxP9ZGA1IwXeP0hn3aZJmUTTsGi8JT
-	2SdrCCHRQklVfcI8ioonGSelisrG3fg=
-ARC-Authentication-Results: i=1;
-	ORIGINATING;
-	auth=pass smtp.auth=pav smtp.mailfrom=pav@iki.fi
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
-	s=meesny; t=1777121764;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=SZuM00xQCJ9SQ2uX+LJVCZK3MPfrZawFfZ2Xb8E/2s4=;
-	b=xc6OBqPcbyfZtUChCGiipyP5Niu1l3RHNRkCMiAB5D7sg5xJkI0AqyrML93EtdCZmIfzpA
-	PJP8zhGu/8fICDBrVqFTSTxF07i2/Ww8V4tALwJI5frK/wDO4XFpRKx7xXs5TH+S5uekAF
-	NP2TBfen40C2+7pIIBgn74SLlu4SzgM=
-From: Pauli Virtanen <pav@iki.fi>
-To: linux-bluetooth@vger.kernel.org
-Cc: Pauli Virtanen <pav@iki.fi>,
-	marcel@holtmann.org,
-	luiz.dentz@gmail.com,
-	linux-mediatek@lists.infradead.org,
-	chris.lu@mediatek.com
-Subject: [PATCH v2] Bluetooth: btmtk: don't generate bogus ISO packets from zero padding
-Date: Sat, 25 Apr 2026 15:55:31 +0300
-Message-ID: <621d8a2b651aba8e3c2197017ca94f06ec77b824.1777121590.git.pav@iki.fi>
-X-Mailer: git-send-email 2.53.0
+	id 1wGdih-0000000EV03-0vFC;
+	Sat, 25 Apr 2026 14:10:55 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 0DF0D6011F;
+	Sat, 25 Apr 2026 14:10:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3F892C2BCB0;
+	Sat, 25 Apr 2026 14:10:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1777126253;
+	bh=wagJbOabzBX4c3I3/fpQnk3/gb9n7mhfA2RWn9EY5NU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=avcVIe9uVideLxvgqZdXGOU5N0OIGskkLBJJMVEnRmjir9GW7F6hRNAesMAwospOe
+	 1P4JdGVEWbL15vJm4SllIZ0PZ4pZJx07Q6AY0OdTosB6pD7iIVk0rrezENQ60C/lc2
+	 RyIKmNA+q6xorvq1Yh31gIL1lFJL7BFlIpLOXJwjApA5efUMdqVc3AIwoG+0cCgWto
+	 nLtLiBO3hD6pn+dhZZa+lWDBNTYSU7HnDEQDdFwUrP7Y9y1caJJrmpupbqqSfr6pqe
+	 P3Va2G3zCVcjaKMHUCUtigVuy561vO5g7XICgO0cnWF04SW7kjgMx2qEZ8B1Tio0aZ
+	 RM3vNuIeW0ghg==
+Date: Sat, 25 Apr 2026 16:10:51 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Cc: Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net] net: airoha: Do not read uninitialized fragment
+ address in airoha_dev_xmit()
+Message-ID: <aezLa2POvT0It5AA@lore-desk>
+References: <20260424-airoha-xmit-fix-read-frag-v1-1-fdc0a83c79e8@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260425_055608_321572_016C7FDF 
-X-CRM114-Status: GOOD (  15.44  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="0VgauHS1AwOXXx5H"
+Content-Disposition: inline
+In-Reply-To: <20260424-airoha-xmit-fix-read-frag-v1-1-fdc0a83c79e8@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,116 +72,121 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-With MT7925, received URBs for ISO have urb->actual_length of
-MTK_ISO_THRESHOLD (264) and contain ISO packet data followed by zero
-padding.
 
-btmtk driver ISO handling added in commit ceac1cb0259d ("Bluetooth:
-btusb: mediatek: add ISO data transmission functions") assumes the data
-contains only payload, and generates bogus packets to hci_core from the
-padding, resulting to printk errors "Bluetooth: hci0: ISO packet for
-unknown connection handle 0"
+--0VgauHS1AwOXXx5H
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Add check in btmtk that a new packet is not started if we have only
-trailing zeros left in the URB. If so, skip them and emit an error once
-per hdev, since this doesn't seem to be the intended behavior. This
-reduces spam to user logs.
+> The transmit loop in airoha_dev_xmit() reads fragment address and length
+> during its final iteration, when the loop index equals
+> skb_shinfo(skb)->nr_frags, at which point the fragment data is
+> uninitialized. While these values are never consumed, the read itself is
+> unsafe and may trigger a page fault. Fix this by avoiding the fragment
+> read on the last iteration.
+> Additionally, move the skb pointer from the first to the last used packet
+> descriptor, so that airoha_qdma_tx_napi_poll() defers freeing the skb
+> until the final descriptor is processed.
+>=20
+> Fixes: 23020f0493270 ("net: airoha: Introduce ethernet support for EN7581=
+ SoC")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  drivers/net/ethernet/airoha/airoha_eth.c | 9 ++++++---
+>  1 file changed, 6 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
+net/airoha/airoha_eth.c
+> index 2bb0a3ff9810..d3a841908c82 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+> @@ -1997,8 +1997,8 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *=
+skb,
+>  	struct netdev_queue *txq;
+>  	struct airoha_queue *q;
+>  	LIST_HEAD(tx_list);
+> +	int i =3D 0, qid;
+>  	void *data;
+> -	int i, qid;
+>  	u16 index;
+>  	u8 fport;
+> =20
+> @@ -2057,7 +2057,7 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *=
+skb,
+>  			     list);
+>  	index =3D e - q->entry;
+> =20
+> -	for (i =3D 0; i < nr_frags; i++) {
+> +	while (true) {
+>  		struct airoha_qdma_desc *desc =3D &q->desc[index];
+>  		skb_frag_t *frag =3D &skb_shinfo(skb)->frags[i];
+>  		dma_addr_t addr;
+> @@ -2069,7 +2069,7 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *=
+skb,
+>  			goto error_unmap;
+> =20
+>  		list_move_tail(&e->list, &tx_list);
+> -		e->skb =3D i ? NULL : skb;
+> +		e->skb =3D i =3D=3D nr_frags - 1 ? skb : NULL;
+>  		e->dma_addr =3D addr;
+>  		e->dma_len =3D len;
+> =20
+> @@ -2088,6 +2088,9 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *=
+skb,
+>  		WRITE_ONCE(desc->msg1, cpu_to_le32(msg1));
+>  		WRITE_ONCE(desc->msg2, cpu_to_le32(0xffff));
+> =20
+> +		if (++i =3D=3D nr_frags)
+> +			break;
+> +
+>  		data =3D skb_frag_address(frag);
+>  		len =3D skb_frag_size(frag);
+>  	}
+>=20
+> ---
+> base-commit: e728258debd553c95d2e70f9cd97c9fde27c7130
+> change-id: 20260423-airoha-xmit-fix-read-frag-dc6aa001ca4b
+>=20
+> Best regards,
+> --=20
+> Lorenzo Bianconi <lorenzo@kernel.org>
+>=20
 
-Limit this behavior to the 7925 model.
+Commenting on Sashiko reported issues:
+https://sashiko.dev/#/patchset/20260424-airoha-xmit-fix-read-frag-v1-1-fdc0=
+a83c79e8%40kernel.org
 
-Signed-off-by: Pauli Virtanen <pav@iki.fi>
----
+- Does the TSO checksum calculation earlier in this function ensure the
+  TCP header is in the linear portion of the SKB?
+  This issue is not related to the current patch. Moreover, can we have a T=
+SO
+  packet where the tcp header is not in the linear area of the skb?
 
-Notes:
-    v2:
-    - limit this to the 7925 model, as that is the only one tested
-    
-    If there's confirmation from Mediatek the zero padding instead of short
-    USB read is intentional, the warning is not needed.
+- If dma_map_single() fails partway through a multi-fragment packet and
+  triggers this goto error_unmap, will it break the Tx ring contiguity?
+  This issue is not related to the current patch. Moreover, I guess the hw =
+is
+  capable of managing out-of-order descriptors.
 
- drivers/bluetooth/btmtk.c | 35 +++++++++++++++++++++++++++++++++++
- drivers/bluetooth/btmtk.h |  2 ++
- 2 files changed, 37 insertions(+)
+- Is it safe to map fragment data using dma_map_single() instead of
+  skb_frag_dma_map()?
+  This issue is not related to the current patch. I will post a dedicated p=
+atch
+  for it.
 
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index ab34f1dd42bc..934daf004dd6 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -1088,11 +1088,34 @@ struct urb *alloc_mtk_intr_urb(struct hci_dev *hdev, struct sk_buff *skb,
- }
- EXPORT_SYMBOL_GPL(alloc_mtk_intr_urb);
- 
-+static bool check_isopkt(struct hci_dev *hdev, void *buffer, int count,
-+			 int pktsize)
-+{
-+	struct btmtk_data *btmtk_data = hci_get_priv(hdev);
-+
-+	/* With MT7925 we receive URBs that have size MTK_ISO_THRESHOLD, with
-+	 * trailing zero padding following the ISO packet data. This appears not
-+	 * intentional, so flag an error, and skip rest of the URB to not
-+	 * generate ISO packets from the padding.
-+	 */
-+	if (btmtk_data->isopkt_rx_pad && pktsize == MTK_ISO_THRESHOLD &&
-+	    count < pktsize && mem_is_zero(buffer, count)) {
-+		if (!btmtk_data->isopkt_padding_seen) {
-+			btmtk_data->isopkt_padding_seen = true;
-+			bt_dev_err(hdev, "Zero ISO data (only first reported)");
-+		}
-+		return false;
-+	}
-+
-+	return true;
-+}
-+
- static int btmtk_recv_isopkt(struct hci_dev *hdev, void *buffer, int count)
- {
- 	struct btmtk_data *btmtk_data = hci_get_priv(hdev);
- 	struct sk_buff *skb;
- 	unsigned long flags;
-+	int pktsize = count;
- 	int err = 0;
- 
- 	spin_lock_irqsave(&btmtk_data->isorxlock, flags);
-@@ -1102,6 +1125,9 @@ static int btmtk_recv_isopkt(struct hci_dev *hdev, void *buffer, int count)
- 		int len;
- 
- 		if (!skb) {
-+			if (!check_isopkt(hdev, buffer, count, pktsize))
-+				break;
-+
- 			skb = bt_skb_alloc(HCI_MAX_ISO_SIZE, GFP_ATOMIC);
- 			if (!skb) {
- 				err = -ENOMEM;
-@@ -1250,6 +1276,15 @@ static int btmtk_usb_isointf_init(struct hci_dev *hdev)
- 
- 	spin_lock_init(&btmtk_data->isorxlock);
- 
-+	switch (btmtk_data->dev_id) {
-+	case 0x7925:
-+		btmtk_data->isopkt_rx_pad = true;
-+		break;
-+	default:
-+		btmtk_data->isopkt_rx_pad = false;
-+		break;
-+	}
-+
- 	__set_mtk_intr_interface(hdev);
- 
- 	err = btmtk_submit_intr_urb(hdev, GFP_KERNEL);
-diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
-index c83c24897c95..bd97e37afd99 100644
---- a/drivers/bluetooth/btmtk.h
-+++ b/drivers/bluetooth/btmtk.h
-@@ -177,6 +177,8 @@ struct btmtk_data {
- 	struct usb_interface *isopkt_intf;
- 	struct usb_anchor isopkt_anchor;
- 	struct sk_buff *isopkt_skb;
-+	bool isopkt_rx_pad;
-+	bool isopkt_padding_seen;
- 
- 	/* spinlock for ISO data transmission */
- 	spinlock_t isorxlock;
--- 
-2.53.0
+Regards,
+Lorenzo
 
+--0VgauHS1AwOXXx5H
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaezLawAKCRA6cBh0uS2t
+rCSVAP4hJXo5r610dexifSQ7HqAQwgINCipaQyT6j0sTiA11XwD/a4KlozQd3xg7
+gPp2llCfFkiPrwcWIN60uNLYuPWkrAE=
+=4VRT
+-----END PGP SIGNATURE-----
+
+--0VgauHS1AwOXXx5H--
 
