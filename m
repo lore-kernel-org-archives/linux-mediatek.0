@@ -4,60 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB181FF885C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Apr 2026 14:11:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7901BFF8860
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Apr 2026 14:47:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oCDRnSN4R5hdrw6p/Z2MSp7JmFvMbvRG5SIix8Wk020=; b=GfCejaVdtp1WF/xF6J/mNBVkB7
-	7100ck4ErLZfTUSuXH8UpF+7AS94k/0qtIKjcReigAWIP0EzZFfuvdJ1JWXnsif6XEeY2pSWd3LKo
-	SU4lP72bPtzxqChYXOxH2wfC52P14UyjOq2kCr3Duubv5Ixr+yGnhzZYgH4wUD2fMbRvfnBFcQd7S
-	b71qWfJYgP4KWnzWD08b8qu13YK8DzboGWVEuIvPIXnCDXPM/Ewys7cZrIeSz/VqWI9hTlV1z2xUy
-	gOFu52se90iHIVh+T/u4j0Dy4LBauFp1MMCgpEReXViv/+qTJLOzCg0wzbJCM9Dxun3rI+AnwX09r
-	lOcKlDoA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=rlJascMYcEVmDvEn/UdsWocmJsfAuvfdDTt2p2Jdu2g=; b=2lvgLwHac1eVYdjPIOdltOhjze
+	PbaP5l9Z4w0RF5EI5uSmfOjt6eZkXj6xiPVUua5r0zU3/WinnnzDfspHAOpfxb/veM7zSF1qKF1Ud
+	5/qgpcR6d6wuqXis48YgfwIfHPdlGqENtISjGr8WMrzSp7G4mbj7MKDNdjbJG/obSgxL+A/7USOpU
+	9QxjneOPI0JXQ0081o3VQF25KbQrEV1cfip2j88kNEsMczcPJ9w12zoDacHShnTAwIdwAjqs+469w
+	ej/AsNVJo17jC01ygotlMvU1MzkPGJR+cWSQeelZvruobTyiEiShG7JrbQYMQ9Bf6Wk9l03w9/Ymp
+	7iS3hWwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wGdii-0000000EV0S-0yP9;
-	Sat, 25 Apr 2026 14:10:56 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wGeHt-0000000EWTj-3Sje;
+	Sat, 25 Apr 2026 14:47:17 +0000
+Received: from mail-ot1-f45.google.com ([209.85.210.45])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wGdih-0000000EV03-0vFC;
-	Sat, 25 Apr 2026 14:10:55 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 0DF0D6011F;
-	Sat, 25 Apr 2026 14:10:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3F892C2BCB0;
-	Sat, 25 Apr 2026 14:10:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777126253;
-	bh=wagJbOabzBX4c3I3/fpQnk3/gb9n7mhfA2RWn9EY5NU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=avcVIe9uVideLxvgqZdXGOU5N0OIGskkLBJJMVEnRmjir9GW7F6hRNAesMAwospOe
-	 1P4JdGVEWbL15vJm4SllIZ0PZ4pZJx07Q6AY0OdTosB6pD7iIVk0rrezENQ60C/lc2
-	 RyIKmNA+q6xorvq1Yh31gIL1lFJL7BFlIpLOXJwjApA5efUMdqVc3AIwoG+0cCgWto
-	 nLtLiBO3hD6pn+dhZZa+lWDBNTYSU7HnDEQDdFwUrP7Y9y1caJJrmpupbqqSfr6pqe
-	 P3Va2G3zCVcjaKMHUCUtigVuy561vO5g7XICgO0cnWF04SW7kjgMx2qEZ8B1Tio0aZ
-	 RM3vNuIeW0ghg==
-Date: Sat, 25 Apr 2026 16:10:51 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net] net: airoha: Do not read uninitialized fragment
- address in airoha_dev_xmit()
-Message-ID: <aezLa2POvT0It5AA@lore-desk>
-References: <20260424-airoha-xmit-fix-read-frag-v1-1-fdc0a83c79e8@kernel.org>
+	id 1wGeHr-0000000EWTP-1Mu6
+	for linux-mediatek@lists.infradead.org;
+	Sat, 25 Apr 2026 14:47:16 +0000
+Received: by mail-ot1-f45.google.com with SMTP id 46e09a7af769-7dbd23bc684so4938683a34.2
+        for <linux-mediatek@lists.infradead.org>; Sat, 25 Apr 2026 07:47:14 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1777128433; x=1777733233;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=rlJascMYcEVmDvEn/UdsWocmJsfAuvfdDTt2p2Jdu2g=;
+        b=MpY9IcuvY5CMLzHaZ5W1jOcQWnY8DQBtPI1TYk9jlz+7AsArWXP6MwHj7BJo3kn8Zs
+         ZbqyrbTMPs1sXwB+ZDLTiJ0q90L4dNeyhkLUjS4QlVJCRHXZZC11Wv91ljM6Xs3qlDcj
+         H9rI42m8euTzG6iYc8GLjcw5++Qaw2hydhkQmwm5uHQzdiKQK8m3UoRe77uN/NVS2wII
+         ZLgGoVLdthrj4rHhx+JkA4x0bD/NbyysRlORGt35b8vagVeFXYRd56IMa/OIdN2KqEt5
+         X74LrBSzs1FYm5g4oWwKeJPjU3IsIj2Mq/y/d8WdcR1GWingTRQGcOm0PYvkkOSIX5nd
+         zEUA==
+X-Forwarded-Encrypted: i=1; AFNElJ8J57gM0do1h43I9AtFIDt/idTFxnmbfBZTFDTJsWsQqaiC95RIfMmlE6Mwh+0PrmUtjN9Qxw85G2e6BXBydg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw092rFYT1i3LJO3m4bcfL729rdGIQQVOVp+zRmbpJezm/Jppw7
+	vRgLKWYv4cY1fWBT3XcTlx7jLl7KveD65qwp/9rUbU5Xu/yLFL0k43td
+X-Gm-Gg: AeBDies7Qlyz8EPmveAOMocN5eTFt7MeETTN0ptgMNHMJ8rLW/ruD1W9TQbuyR5WPX6
+	EEt6hnwz8n1xHLP6XQbk+lOHV96asxX+rcI/uLXnVxK1TP4AqMVQXGMdmgUpgm7E8nlKbXlY6HW
+	0NJVtpxkuLxIMHSv7FHsQkFhYfvPn/sHEeeRgCfve3ii328pBaawb5KOqkUNTDlkB9RcK0vgmFQ
+	+h8Ip/0RQx3SEr6UTinDdQA7d2BUYA3EqYfhC13SjBKri1VjFP+6sXGvNOrRqz+WpD+jzbvabR5
+	4Uf8nFUlkT1E86nRK61mLlQGRI3uywvrQOZFeUh4EXnKfjVn5DUEjxn9Ba3Iuy4RgvbycA6xsAQ
+	y6wzmtrSJJj62ho5/ckMMENTGVkLnXpMu/TPF5qHxM8Lvd7wSo20J0uRJe5DEZAZr/oifXFq5qv
+	TeF9yUQJwn+8EhJhsqdgagB/d0Un0ZSy3p9ThGztztY3To1EwPRb79hyv+s+jWKWs0RKYl9bBlN
+	FbR1Xphiidg
+X-Received: by 2002:a05:6830:388c:b0:7dc:d3fb:5a34 with SMTP id 46e09a7af769-7dcd3fb5b2cmr13907048a34.10.1777128433452;
+        Sat, 25 Apr 2026 07:47:13 -0700 (PDT)
+Received: from sean-HP-EliteBook-830-G6.attlocal.net ([2600:1702:5083:7610:9f96:11d3:5f6c:5582])
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7dcd5408b5asm12577480a34.11.2026.04.25.07.47.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 25 Apr 2026 07:47:13 -0700 (PDT)
+From: Sean Wang <sean.wang@kernel.org>
+To: nbd@nbd.name,
+	lorenzo.bianconi@redhat.com
+Cc: linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Sean Wang <sean.wang@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt792x: skip MLD header rewrite for 802.3 encap TX
+Date: Sat, 25 Apr 2026 09:46:48 -0500
+Message-ID: <20260425144648.734030-1-sean.wang@kernel.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="0VgauHS1AwOXXx5H"
-Content-Disposition: inline
-In-Reply-To: <20260424-airoha-xmit-fix-read-frag-v1-1-fdc0a83c79e8@kernel.org>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260425_074715_372364_28253F74 
+X-CRM114-Status: UNSURE (   9.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,121 +88,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Sean Wang <sean.wang@mediatek.com>
 
---0VgauHS1AwOXXx5H
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+mt792x_tx() rewrites addr1/addr2/addr3 by treating skb->data as
+an 802.11 header for MLD traffic.
 
-> The transmit loop in airoha_dev_xmit() reads fragment address and length
-> during its final iteration, when the loop index equals
-> skb_shinfo(skb)->nr_frags, at which point the fragment data is
-> uninitialized. While these values are never consumed, the read itself is
-> unsafe and may trigger a page fault. Fix this by avoiding the fragment
-> read on the last iteration.
-> Additionally, move the skb pointer from the first to the last used packet
-> descriptor, so that airoha_qdma_tx_napi_poll() defers freeing the skb
-> until the final descriptor is processed.
->=20
-> Fixes: 23020f0493270 ("net: airoha: Introduce ethernet support for EN7581=
- SoC")
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  drivers/net/ethernet/airoha/airoha_eth.c | 9 ++++++---
->  1 file changed, 6 insertions(+), 3 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
-net/airoha/airoha_eth.c
-> index 2bb0a3ff9810..d3a841908c82 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -1997,8 +1997,8 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *=
-skb,
->  	struct netdev_queue *txq;
->  	struct airoha_queue *q;
->  	LIST_HEAD(tx_list);
-> +	int i =3D 0, qid;
->  	void *data;
-> -	int i, qid;
->  	u16 index;
->  	u8 fport;
-> =20
-> @@ -2057,7 +2057,7 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *=
-skb,
->  			     list);
->  	index =3D e - q->entry;
-> =20
-> -	for (i =3D 0; i < nr_frags; i++) {
-> +	while (true) {
->  		struct airoha_qdma_desc *desc =3D &q->desc[index];
->  		skb_frag_t *frag =3D &skb_shinfo(skb)->frags[i];
->  		dma_addr_t addr;
-> @@ -2069,7 +2069,7 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *=
-skb,
->  			goto error_unmap;
-> =20
->  		list_move_tail(&e->list, &tx_list);
-> -		e->skb =3D i ? NULL : skb;
-> +		e->skb =3D i =3D=3D nr_frags - 1 ? skb : NULL;
->  		e->dma_addr =3D addr;
->  		e->dma_len =3D len;
-> =20
-> @@ -2088,6 +2088,9 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *=
-skb,
->  		WRITE_ONCE(desc->msg1, cpu_to_le32(msg1));
->  		WRITE_ONCE(desc->msg2, cpu_to_le32(0xffff));
-> =20
-> +		if (++i =3D=3D nr_frags)
-> +			break;
-> +
->  		data =3D skb_frag_address(frag);
->  		len =3D skb_frag_size(frag);
->  	}
->=20
-> ---
-> base-commit: e728258debd553c95d2e70f9cd97c9fde27c7130
-> change-id: 20260423-airoha-xmit-fix-read-frag-dc6aa001ca4b
->=20
-> Best regards,
-> --=20
-> Lorenzo Bianconi <lorenzo@kernel.org>
->=20
+That is only valid for native 802.11 frames. Direct 802.3 TX can also
+reach this path with IEEE80211_TX_CTL_HW_80211_ENCAP set, where
+skb->data is not an 802.11 header.
 
-Commenting on Sashiko reported issues:
-https://sashiko.dev/#/patchset/20260424-airoha-xmit-fix-read-frag-v1-1-fdc0=
-a83c79e8%40kernel.org
+Skip the MLD header rewrite for HW-encap packets to avoid corrupting
+802.3 frame contents.
 
-- Does the TSO checksum calculation earlier in this function ensure the
-  TCP header is in the linear portion of the SKB?
-  This issue is not related to the current patch. Moreover, can we have a T=
-SO
-  packet where the tcp header is not in the linear area of the skb?
+Fixes: ebb1406813c6 ("wifi: mt76: mt7925: add link handling to txwi")
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt792x_core.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-- If dma_map_single() fails partway through a multi-fragment packet and
-  triggers this goto error_unmap, will it break the Tx ring contiguity?
-  This issue is not related to the current patch. Moreover, I guess the hw =
-is
-  capable of managing out-of-order descriptors.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+index 152cfcca2f90..157e48e33412 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+@@ -105,7 +105,8 @@ void mt792x_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
+ 		wcid = &mvif->sta.deflink.wcid;
+ 	}
+ 
+-	if (vif && control->sta && ieee80211_vif_is_mld(vif)) {
++	if (vif && control->sta && ieee80211_vif_is_mld(vif) &&
++	    !(info->flags & IEEE80211_TX_CTL_HW_80211_ENCAP)) {
+ 		struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
+ 		struct ieee80211_link_sta *link_sta;
+ 		struct ieee80211_bss_conf *conf;
 
-- Is it safe to map fragment data using dma_map_single() instead of
-  skb_frag_dma_map()?
-  This issue is not related to the current patch. I will post a dedicated p=
-atch
-  for it.
+base-commit: e8c819df02436f2c2379766946735e1f06a7c923
+-- 
+2.43.0
 
-Regards,
-Lorenzo
-
---0VgauHS1AwOXXx5H
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaezLawAKCRA6cBh0uS2t
-rCSVAP4hJXo5r610dexifSQ7HqAQwgINCipaQyT6j0sTiA11XwD/a4KlozQd3xg7
-gPp2llCfFkiPrwcWIN60uNLYuPWkrAE=
-=4VRT
------END PGP SIGNATURE-----
-
---0VgauHS1AwOXXx5H--
 
