@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2264FF885C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Apr 2026 19:51:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 310DBFF885C
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Apr 2026 19:51:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0CVP2NI4wEGcr08f75y7514rRrWBedST0NWFV3z/OKM=; b=FXcZHDT3h5jIw4VvbK0hj/s9kC
-	VC5IKLZNR5JIYEsgwvn2zeQXY/npdXLtnN1Eaboj0prZ8OcFgZZrhbPWH7glEURmeQMYmcJQPP8rp
-	KhX1gk7hisubANjSzxgYnyRYjR2MVJ45XqzjI+Q/nr3jDouulhbIQ/hdkElOJW/ZBeyy7ay0xwq11
-	m8JtINrZWjO6llQGZ9FnReOrpST9uX6LvSr8zhqfkrK0Fyz2iD4qOQQmviozl5ZlqmYkW/Ganqjri
-	VJLtBrbVHsXbym1wsRaqND96uy4EIN6j7TCDLaB4BykSntwHfIGKy0jmA8cE/k5W+v3CXHJx9V8Zq
-	87Lo+X3g==;
+	bh=MXD39Wztx5B19vyUuBgtwPNQEXtFgeFRMISpC6sm7Hw=; b=q/4ramdXfmMOOG6V0Uzib/k6gV
+	JBjlagBUzh7AC2/JyE5Mq6fFDY+DPXziri5mXPxdxVD6A/4GIXZDJX7BksIdZ4UMxyHnZksAaxUaK
+	gBlPYZCqGCtQTDKgFXvRBd8YsMWCbKFJphFS6PpLoibgJWwy6aca75VsyAMn/6fUoHG51l6KczeM9
+	vPsXj4CGArS8DDxqUXRLEU8gwJ0GLrXxyhE5frly9FVaWqeCWe88Yd2PzLMGpZFYUAebCJ9qxMZUB
+	iZGPrK7yobHEuw6XWTroK81GGy4mjS5n75vCkE0R6dP8zm/HcVDDsqXEL6ihS+i48BMPvDcipWKKb
+	MAR24sQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wGj1w-0000000EmHj-46MR;
-	Sat, 25 Apr 2026 19:51:08 +0000
-Received: from mail-ot1-f54.google.com ([209.85.210.54])
+	id 1wGj21-0000000EmJ7-0wRd;
+	Sat, 25 Apr 2026 19:51:13 +0000
+Received: from mail-ot1-f41.google.com ([209.85.210.41])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wGj1u-0000000EmGp-0auQ
+	id 1wGj1z-0000000EmIC-0ESJ
 	for linux-mediatek@lists.infradead.org;
-	Sat, 25 Apr 2026 19:51:07 +0000
-Received: by mail-ot1-f54.google.com with SMTP id 46e09a7af769-7dcdd1b492eso4789881a34.1
-        for <linux-mediatek@lists.infradead.org>; Sat, 25 Apr 2026 12:51:05 -0700 (PDT)
+	Sat, 25 Apr 2026 19:51:12 +0000
+Received: by mail-ot1-f41.google.com with SMTP id 46e09a7af769-7dbe437b072so5074786a34.2
+        for <linux-mediatek@lists.infradead.org>; Sat, 25 Apr 2026 12:51:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777146665; x=1777751465;
+        d=1e100.net; s=20251104; t=1777146670; x=1777751470;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=0CVP2NI4wEGcr08f75y7514rRrWBedST0NWFV3z/OKM=;
-        b=gdsktbv5y/tgX0H/y53N3gak1Hd5lg8dL1VXaxx1KTCAUh4pd3cphMUG9cnp7N6CyH
-         sUDaTtN17ouqrvsXh5ok5JwED8Gye5t5tOErDSwuoNcQIO7XLw8zD07XnOEaOZORCoBa
-         9HgHpNBX1CMWKmvC9ywZ9yzXpz0kUCfZLruK1hyiY0FeyrBotqx81GlUlzD7gEcJxUEv
-         BeL9pTMIi+OSQ07p4W1fChvOOUJcuJN/FvJfivqqy9XwbiPcZQjDvr2xlRl/wS4TQCKj
-         T/IuU3XKzYYh8MP2G1DX8RucISFJMkjPf02/ZwTkAMTEE1SBSfJwaaWb18ENWMLyG4X5
-         iDaQ==
-X-Forwarded-Encrypted: i=1; AFNElJ/v5DheZHq0ThEHvlhvsnhr4sySxrjnR89G5CwTsJyoTbWGw8b7HDX3R39T72jtW4vQLZ0HnAoeuaL3Xu8g5g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzMKCS8+labZ1CCrnNycxEPRJgIpNaVlGZQLRpMMz49ZuD6nPct
-	/4w9ATI2seyfasb/ZG6t2/hvj9CdcY5NIzla0hTFoi3ItsXpVxPObAuU
-X-Gm-Gg: AeBDietTCfRfJGH5AdeIK01sAfQWpnAsXSx+QjU0/hfljITIlR1ALnfZ81b6Px1OhFo
-	YBAraNvHbXOzdqDHgnLI97GHtGFcGF100HOqFYChnK/E0rtjODJweMlcBaPO50sYxKEfKm9FD7C
-	0efKU4FFsdInCRUpP1g5yW4fryzfbgUks06sZZt9F1XR003zWYE1mXxxMPawkMIQzx/3cBUdtUW
-	ahNwrnSfYX/YuoM3Yn/B1Rq99PP3Z36YBi6sDNS8y00SKE4jBtUq8l/JEkY39C0NzIPblZHzLUJ
-	1Tw776A9THQ9ErIVpR5PhUGoZeOIqlPL71U1Is8AFknen1RhsImJBxWzzvClcWFRz+a14eM9Zr9
-	6rej+xCE9WVEF0WaBHyWpWHhvuJA+6IDYUsnS5Ab1l7FTU6BTN+2qOUDsIg+bQ59YstuCHsVRhR
-	nasn16AY8zyywr/LUPL7IPOnfJ+lFlBbYY/q+dvNPk614Okw/T3sTIMvtvhszcRjyCcZrtrZ2Zx
-	Q==
-X-Received: by 2002:a05:6830:2782:b0:7d7:dcbb:280b with SMTP id 46e09a7af769-7dc954b47ebmr19354311a34.1.1777146665303;
-        Sat, 25 Apr 2026 12:51:05 -0700 (PDT)
+        bh=MXD39Wztx5B19vyUuBgtwPNQEXtFgeFRMISpC6sm7Hw=;
+        b=A0jr7NCXe8Nxw8JYQLN63Uw7fnbuZ664eF+mT3+bxqFBpiYj5qe0g3lvPAMPSmpvW1
+         gtf23FVOWBTsR0AwrOez1NsCUhQ8eziY48xzseg08aNOex9Wk1Y0JS8rXhBb/4D7me0Z
+         5raSUAm4hFCJSiKq7sf6nT/JOzlTrk6/d/Ek8FxW9oL6mIA5eC9Knu5+bpShl7lQb0CE
+         twzphbvQeyD3zzzRlMPmr9O8kmj71yUn53FRl4fJEqBBOUfwdeH3d/dUn5Kjb4JUrfBx
+         Pp/VRaxjiL7FFZHnB4aBYzLAQ9+cJGVDHRK+rYXpUzSIuZ3K79OKhekPaCgzcueJfptJ
+         2Etg==
+X-Forwarded-Encrypted: i=1; AFNElJ8YWQNcipyW3ig38aCR//kClJP+Tm88Rcuz0egbjeSAo27CteZlDJSUwMqIY4wAyEnYf/BiUF6XGNhGNn7wew==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywm10sWObMHo6xg4OrntrPzg62+psSj/bBm/CuYcLzSyVZs6kfH
+	4yYVkR3DW2P5KVdrvHlA+lVFQK6DNs3PW4Uu+HQLtHLpgc57R6E+n/W/
+X-Gm-Gg: AeBDievElG8vNA+83TaIRCefLRfId6Etu9YLzeyKc1GaQb0BRqizQfEe7um+srUIb9p
+	MeBt8itaF4/XoRJIcY9401OVZRhTHU9LaSALRkBqoQr0UkCUNwl0kpizdQb6JO6jx/Sm/XmY2uA
+	LO0BcJ0SXbzvzOjzF5r/py3Sfv5MC9G/JgDq6ohJEPRwg2b+/IRZWH8STRq02Zwkz0p7sxWRXHx
+	McNxJmIlqjmBOVgLhejAgpswEOO4NoXU3MGcUNVxChVGsuTWB7QBFDwzZoQTIS+u82rkApl5XhW
+	G9pcCdZD51M7MzUdFwL4C4GBus+XuFtuF3AVR1PFqzPWYU9n3w5lkbgJQDgG4kz0/yIBEJscuuB
+	CllPQ0BHhnjed9Z5z7QBrY6x/fFqxSLtqVp4kjpLesNXnP4Ua9xNh8nFphXwyTTcNMrJiqCLq3h
+	ZusopIXFDwq+eXOzrlk0kj2r+GrAyQSoFddiOyMMrdnER74URzQuSWtY8kWyYYxPxuM+o0KuKN2
+	w==
+X-Received: by 2002:a05:6830:668e:b0:7dc:cdea:7d9 with SMTP id 46e09a7af769-7dccdea1007mr15389398a34.22.1777146670115;
+        Sat, 25 Apr 2026 12:51:10 -0700 (PDT)
 Received: from sean-HP-EliteBook-830-G6.attlocal.net ([2600:1702:5083:7610:2e29:c3c3:de27:ce76])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7dcd164d2c3sm13987624a34.24.2026.04.25.12.51.02
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7dcd164d2c3sm13987624a34.24.2026.04.25.12.51.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 25 Apr 2026 12:51:03 -0700 (PDT)
+        Sat, 25 Apr 2026 12:51:09 -0700 (PDT)
 From: Sean Wang <sean.wang@kernel.org>
 To: nbd@nbd.name,
 	lorenzo.bianconi@redhat.com
@@ -74,9 +74,9 @@ Cc: linux-wireless@vger.kernel.org,
 	=?UTF-8?q?Thibaut=20Fran=C3=A7ois?= <tibo@humeurlibre.fr>,
 	=?UTF-8?q?=E5=BC=A0=E6=97=AD=E6=B6=B5?= <Loong.0x00@gmail.com>,
 	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH v5 06/21] wifi: mt76: mt7925: add MT7927 chip ID helpers
-Date: Sat, 25 Apr 2026 14:49:56 -0500
-Message-ID: <20260425195011.790265-7-sean.wang@kernel.org>
+Subject: [PATCH v5 07/21] wifi: mt76: mt7925: add MT7927 firmware paths
+Date: Sat, 25 Apr 2026 14:49:57 -0500
+Message-ID: <20260425195011.790265-8-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260425195011.790265-1-sean.wang@kernel.org>
 References: <20260425195011.790265-1-sean.wang@kernel.org>
@@ -84,8 +84,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260425_125106_184612_6F5ACD39 
-X-CRM114-Status: UNSURE (   9.56  )
+X-CRM114-CacheID: sfid-20260425_125111_102119_F1B3C945 
+X-CRM114-Status: UNSURE (   9.79  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -103,12 +103,13 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Javier Tia <floss@jetm.me>
 
-The MediaTek MT7927 (Filogic 380) combo chip uses MT7927 WiFi silicon
-that is architecturally compatible with MT7925. Extend is_mt7925() to
-match chip ID 0x7927, and add is_mt7927() for code paths that need
-MT7927-specific handling.
+Add firmware path definitions for MT7927 WiFi firmware (WIFI_RAM_CODE
+and PATCH_MCU) and the corresponding MODULE_FIRMWARE declarations. Add
+MT7927 cases to mt792x_ram_name() and mt792x_patch_name() so the driver
+loads the correct firmware for the 0x7927 chip ID.
 
-Also add 0x7927 to is_mt76_fw_txp() to match MT7925's TXP format.
+PCI device table entries are deferred to a later patch to allow
+infrastructure setup before device enablement.
 
 Tested-by: Marcin FM <marcin@lgic.pl>
 Tested-by: Cristian-Florin Radoi <radoi.chris@gmail.com>
@@ -122,35 +123,60 @@ Tested-by: 张旭涵 <Loong.0x00@gmail.com>
 Reviewed-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
 ---
- drivers/net/wireless/mediatek/mt76/mt76_connac.h | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
+ drivers/net/wireless/mediatek/mt76/mt7925/pci.c | 2 ++
+ drivers/net/wireless/mediatek/mt76/mt792x.h     | 6 ++++++
+ 2 files changed, 8 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac.h b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-index 802cb26ed6e3..45479cc29134 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-@@ -174,7 +174,12 @@ extern const struct wiphy_wowlan_support mt76_connac_wowlan_support;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+index c4161754c01d..f820d5aeb723 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+@@ -633,6 +633,8 @@ module_pci_driver(mt7925_pci_driver);
+ MODULE_DEVICE_TABLE(pci, mt7925_pci_device_table);
+ MODULE_FIRMWARE(MT7925_FIRMWARE_WM);
+ MODULE_FIRMWARE(MT7925_ROM_PATCH);
++MODULE_FIRMWARE(MT7927_FIRMWARE_WM);
++MODULE_FIRMWARE(MT7927_ROM_PATCH);
+ MODULE_AUTHOR("Deren Wu <deren.wu@mediatek.com>");
+ MODULE_AUTHOR("Lorenzo Bianconi <lorenzo@kernel.org>");
+ MODULE_DESCRIPTION("MediaTek MT7925E (PCIe) wireless driver");
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
+index 4ff93f2cd624..09840483fe2a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x.h
++++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
+@@ -46,12 +46,14 @@
+ #define MT7921_FIRMWARE_WM	"mediatek/WIFI_RAM_CODE_MT7961_1.bin"
+ #define MT7922_FIRMWARE_WM	"mediatek/WIFI_RAM_CODE_MT7922_1.bin"
+ #define MT7925_FIRMWARE_WM	"mediatek/mt7925/WIFI_RAM_CODE_MT7925_1_1.bin"
++#define MT7927_FIRMWARE_WM	"mediatek/mt7927/WIFI_RAM_CODE_MT6639_2_1.bin"
  
- static inline bool is_mt7925(struct mt76_dev *dev)
- {
--	return mt76_chip(dev) == 0x7925;
-+	return mt76_chip(dev) == 0x7925 || mt76_chip(dev) == 0x7927;
-+}
-+
-+static inline bool is_mt7927(struct mt76_dev *dev)
-+{
-+	return mt76_chip(dev) == 0x7927;
- }
+ #define MT7902_ROM_PATCH	"mediatek/WIFI_MT7902_patch_mcu_1_1_hdr.bin"
+ #define MT7920_ROM_PATCH	"mediatek/WIFI_MT7961_patch_mcu_1a_2_hdr.bin"
+ #define MT7921_ROM_PATCH	"mediatek/WIFI_MT7961_patch_mcu_1_2_hdr.bin"
+ #define MT7922_ROM_PATCH	"mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin"
+ #define MT7925_ROM_PATCH	"mediatek/mt7925/WIFI_MT7925_PATCH_MCU_1_1_hdr.bin"
++#define MT7927_ROM_PATCH	"mediatek/mt7927/WIFI_MT6639_PATCH_MCU_2_1_hdr.bin"
  
- static inline bool is_320mhz_supported(struct mt76_dev *dev)
-@@ -284,6 +289,7 @@ static inline bool is_mt76_fw_txp(struct mt76_dev *dev)
- 	case 0x7922:
- 	case 0x7902:
+ #define MT792x_SDIO_HDR_TX_BYTES	GENMASK(15, 0)
+ #define MT792x_SDIO_HDR_PKT_TYPE	GENMASK(17, 16)
+@@ -459,6 +461,8 @@ static inline char *mt792x_ram_name(struct mt792x_dev *dev)
+ 		return MT7922_FIRMWARE_WM;
  	case 0x7925:
+ 		return MT7925_FIRMWARE_WM;
 +	case 0x7927:
- 	case 0x7663:
- 	case 0x7622:
- 		return false;
++		return MT7927_FIRMWARE_WM;
+ 	default:
+ 		return MT7921_FIRMWARE_WM;
+ 	}
+@@ -475,6 +479,8 @@ static inline char *mt792x_patch_name(struct mt792x_dev *dev)
+ 		return MT7922_ROM_PATCH;
+ 	case 0x7925:
+ 		return MT7925_ROM_PATCH;
++	case 0x7927:
++		return MT7927_ROM_PATCH;
+ 	default:
+ 		return MT7921_ROM_PATCH;
+ 	}
 -- 
 2.43.0
 
