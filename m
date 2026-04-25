@@ -4,79 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E0FAFF885A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Apr 2026 22:56:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74B9CFF885C
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Apr 2026 10:49:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lqL2mlSpUN8CVPORkmc2oKWN9yGLQSNrcwCUuZmT0D4=; b=QSuxUE6Tf9HdYCZzPR9bAI29YU
-	fpbLt2ARcmuWBq4M8Q9iEIgX9qtCdg9izszt0GkK/0DWfBoXJNmDYr8j6i0JLjyK8Ro2vPJhHAIBE
-	gfH1PFs3W9JrtukzDTVqd0ibfB1l1/IgPKzBFqnXPnUcP+kZTeozQFunjxZSdT26eVAZyL5yAZOKQ
-	qVhVJMCZzGbHayjuBZ81JF3OnaTzlez9gLa/Ig+lKZ7++lV/mYOIpI+oKW7L4Ji/m8Sbcn5vwDY9m
-	8S0UMbPnQdDt1syxHoMPAotbyrgKzo/orfTVqPU7uU2OY2BtPiug/jpT2AuX52O5v6BjVXpWYyLyw
-	R5tpc+kQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=R0RDApUvTDSQuO7JvFyT884tiIpjJP6ULN7AmzTd54M=; b=KaDdSd1d3yP+xIKvag9khL1X9X
+	q1CpqxIw917e0Y8G2VYRMo59HXfk5pyuob3fkS6R4v6OaDA2X8B3GIsiDbBJ1nZUncGoMqk9bf+Jz
+	WxYF2Gxrugqdz39z9JZ/duhovQtxQaIOx9g4Fln20EWzhpzpqhPImaFzTMEX1LShJj5L0cwLC0B8S
+	zDx8LCI1w9Dby2xsJhqy3ndXsdO2u2Wev/PjxsJcgyg9wL/l4F09did3ShXxWfMOF95NUwW6dJQiM
+	ZXYLlVHYMR2YQ+Wo6QRwnK/Q7lLNaBYvU3VnaJhRrpQ3KrBeGvZohtxY7kz5qeM/7hmHT7XnAr12o
+	3yni0Wrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wGPRT-0000000DrT9-47Gh;
-	Fri, 24 Apr 2026 22:56:11 +0000
-Received: from 011.lax.mailroute.net ([199.89.1.14])
+	id 1wGaa8-0000000EMZN-3lkE;
+	Sat, 25 Apr 2026 10:49:52 +0000
+Received: from meesny.iki.fi ([195.140.195.201])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wGPRR-0000000DrSI-14WO;
-	Fri, 24 Apr 2026 22:56:10 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 011.lax.mailroute.net (Postfix) with ESMTP id 4g2SxN4ZKsz1XM0nq;
-	Fri, 24 Apr 2026 22:56:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1777071361; x=1779663362; bh=lqL2mlSpUN8CVPORkmc2oKWN
-	9yGLQSNrcwCUuZmT0D4=; b=MaZ7L+BVDIGalsO2C+WMEUaOVXljHEzOzXoIN0gf
-	rHH4rLLwldCCavvU//v2uWVb8vKV9/lU0K4wLEOJ/zEET93cz/4/ZDxbsorCuV/K
-	lr0fHZWY/69m4uFLZQXIbh1Tv8sOPoFWCxvvKUw6PIFlheYRJiq67dYL9Li9kKPV
-	wN/MxK3JLXCik76EpganxgnUlVk6FC9zGIVFc01NdK66v4FC8jpcgzC0zQCq9Ujd
-	ZudzmHryZa/xQreq6gmExLm3/4LjIBMp1m9fuVrBExkiQNfn52qZmwDjMaTcatRF
-	cP3GLhmf+3c8pw68hD8Nj448uolKIAsWObabFjpaoxH0Ig==
-X-Virus-Scanned: by MailRoute
-Received: from 011.lax.mailroute.net ([127.0.0.1])
- by localhost (011.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id GasHTLTR0J09; Fri, 24 Apr 2026 22:56:01 +0000 (UTC)
-Received: from [100.119.48.131] (unknown [104.135.180.219])
+	id 1wGaa6-0000000EMYb-1Kkq
+	for linux-mediatek@lists.infradead.org;
+	Sat, 25 Apr 2026 10:49:51 +0000
+Received: from monolith (unknown [193.138.7.192])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	 key-exchange x25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 011.lax.mailroute.net (Postfix) with ESMTPSA id 4g2Sx93WmYz1XM2FN;
-	Fri, 24 Apr 2026 22:55:55 +0000 (UTC)
-Message-ID: <a496a84b-66c8-452e-99b6-622550afeae5@acm.org>
-Date: Fri, 24 Apr 2026 15:55:54 -0700
+	(Authenticated sender: pav)
+	by meesny.iki.fi (Postfix) with ESMTPSA id 4g2mmn3GqjzyWV;
+	Sat, 25 Apr 2026 13:49:45 +0300 (EEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=meesny;
+	t=1777114186;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=R0RDApUvTDSQuO7JvFyT884tiIpjJP6ULN7AmzTd54M=;
+	b=oOk5CuEh2p11ar3Hj96LElgYwPOO+nOZp8pGkvUQ1bKLAE0HUCpEyrHyacZleyDBcyj5/b
+	z++sURvlNrEAouFD8oIqXMsrJZKyyztOyyYZmmL6NRFFBhU/UHKlBEUVHFkICRCfoFz5Ed
+	z/WVFuPR8+cLKkE5Bb/t3ZSSwIZVyl8=
+ARC-Seal: i=1; a=rsa-sha256; d=iki.fi; s=meesny; cv=none; t=1777114186;
+	b=JCFxzYzOxuy0+oes+EdVVODvdTy4kxdVGjZsfcV/NRUav8D+3sSTl1zqM3tkt5QTW/0f9D
+	U0Ytqk1vwsEdmnBl3gpr74t9uVW12W2AjTVE1XoEZZJScXTZrxDVRejiPtKuRqHNGodxsu
+	PtNT6IK+aEVsZ+lN2WgrqKIC/BYn2Qc=
+ARC-Authentication-Results: i=1;
+	ORIGINATING;
+	auth=pass smtp.auth=pav smtp.mailfrom=pav@iki.fi
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
+	s=meesny; t=1777114186;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=R0RDApUvTDSQuO7JvFyT884tiIpjJP6ULN7AmzTd54M=;
+	b=Zghijovk9HiOuly/GCfsCHI2dDpdM6veVsFO3AJQOngrYgjtNSUcfbJP/7fUYf4p7cYUqT
+	kMSYliTqxqTQv+yZGpv7lZa28IBsubHlWUw/WzIjLTnDKFbh5dngw8mNMaSoULRoqLo15x
+	YNtcgHALAl4leyfBRWLnzfBRkuP4Xag=
+From: Pauli Virtanen <pav@iki.fi>
+To: linux-bluetooth@vger.kernel.org
+Cc: Pauli Virtanen <pav@iki.fi>,
+	marcel@holtmann.org,
+	luiz.dentz@gmail.com,
+	linux-mediatek@lists.infradead.org,
+	chris.lu@mediatek.com
+Subject: [PATCH] Bluetooth: btmtk: don't generate bogus ISO packets from zero padding
+Date: Sat, 25 Apr 2026 13:49:13 +0300
+Message-ID: <8f988c1ccaaddf60c259890a2ca636830f7e4578.1777113390.git.pav@iki.fi>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/1] Revert "scsi: ufs: Use pre-calculated offsets in
- ufshcd_init_lrb()"
-To: ed.tsai@mediatek.com, Alim Akhtar <alim.akhtar@samsung.com>,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Avri Altman <avri.altman@sandisk.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com,
- peter.wang@mediatek.com, alice.chao@mediatek.com, naomi.chu@mediatek.com,
- chun-hung.wu@mediatek.com, linux-scsi@vger.kernel.org
-References: <20260424063603.382328-2-ed.tsai@mediatek.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20260424063603.382328-2-ed.tsai@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260424_155609_337469_F72E63DB 
-X-CRM114-Status: UNSURE (   6.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260425_034950_539784_77B5AEE5 
+X-CRM114-Status: GOOD (  14.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,14 +89,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 4/23/26 11:35 PM, ed.tsai@mediatek.com wrote:
-> Note that these DMA addresses are only used in ufshcd_print_tr() for
-> error logging, so the impact is limited to misleading error logs.
+With MT7925, received URBs for ISO have urb->actual_length of
+MTK_ISO_THRESHOLD (264) and contain ISO packet data followed by zero
+padding.
 
-Instead of fixing these offsets, please remove the ucd_rsp_dma_addr and
-ucd_prdt_dma_addr members from struct ufshcd_lrb.
+btmtk driver ISO handling added in commit ceac1cb0259d ("Bluetooth:
+btusb: mediatek: add ISO data transmission functions") assumes the data
+contains only payload, and generates bogus packets to hci_core from the
+padding, resulting to printk errors "Bluetooth: hci0: ISO packet for
+unknown connection handle 0"
 
-Thanks,
+Add check in btmtk that a new packet is not started if we have only
+trailing zeros left in the URB. If so, skip them and emit an error once
+per hdev, since this doesn't seem to be the intended behavior. This
+reduces spam to user logs.
 
-Bart.
+Signed-off-by: Pauli Virtanen <pav@iki.fi>
+---
+
+Notes:
+    If there's confirmation from Mediatek the zero padding instead of short
+    USB read is intentional, the warning is not needed.
+
+ drivers/bluetooth/btmtk.c | 26 ++++++++++++++++++++++++++
+ drivers/bluetooth/btmtk.h |  1 +
+ 2 files changed, 27 insertions(+)
+
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index ab34f1dd42bc..397caacbe9fd 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -1088,11 +1088,34 @@ struct urb *alloc_mtk_intr_urb(struct hci_dev *hdev, struct sk_buff *skb,
+ }
+ EXPORT_SYMBOL_GPL(alloc_mtk_intr_urb);
+ 
++static bool check_isopkt(struct hci_dev *hdev, void *buffer, int count,
++			 int pktsize)
++{
++	struct btmtk_data *btmtk_data = hci_get_priv(hdev);
++
++	/* With MT7925 we receive URBs that have size MTK_ISO_THRESHOLD, with
++	 * zero padding following the ISO packet data. This appears not
++	 * intentional, so flag an error, and skip rest of the URB to not
++	 * generate ISO packets from the padding.
++	 */
++	if (pktsize == MTK_ISO_THRESHOLD && count < pktsize &&
++	    mem_is_zero(buffer, count)) {
++		if (!btmtk_data->isopkt_padding_seen) {
++			btmtk_data->isopkt_padding_seen = true;
++			bt_dev_err(hdev, "Zero ISO data (only first reported)");
++		}
++		return false;
++	}
++
++	return true;
++}
++
+ static int btmtk_recv_isopkt(struct hci_dev *hdev, void *buffer, int count)
+ {
+ 	struct btmtk_data *btmtk_data = hci_get_priv(hdev);
+ 	struct sk_buff *skb;
+ 	unsigned long flags;
++	int pktsize = count;
+ 	int err = 0;
+ 
+ 	spin_lock_irqsave(&btmtk_data->isorxlock, flags);
+@@ -1102,6 +1125,9 @@ static int btmtk_recv_isopkt(struct hci_dev *hdev, void *buffer, int count)
+ 		int len;
+ 
+ 		if (!skb) {
++			if (!check_isopkt(hdev, buffer, count, pktsize))
++				break;
++
+ 			skb = bt_skb_alloc(HCI_MAX_ISO_SIZE, GFP_ATOMIC);
+ 			if (!skb) {
+ 				err = -ENOMEM;
+diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
+index c83c24897c95..46fbdb98a716 100644
+--- a/drivers/bluetooth/btmtk.h
++++ b/drivers/bluetooth/btmtk.h
+@@ -177,6 +177,7 @@ struct btmtk_data {
+ 	struct usb_interface *isopkt_intf;
+ 	struct usb_anchor isopkt_anchor;
+ 	struct sk_buff *isopkt_skb;
++	bool isopkt_padding_seen;
+ 
+ 	/* spinlock for ISO data transmission */
+ 	spinlock_t isorxlock;
+-- 
+2.53.0
+
 
