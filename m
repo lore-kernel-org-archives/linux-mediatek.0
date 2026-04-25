@@ -4,78 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59513FF885C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Apr 2026 19:52:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A18A3FF885C
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Apr 2026 19:52:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hZVhJi8Une3Tz7psy9kzkLO8wUTe2QsM/r5CE8L6bO0=; b=QX0eG1Xs+i1pv73qEhUY5rDWXb
-	BDXEX3/XesUNJUMiiul+DEUAiZE1VBv7VHmiS0YIYim0TQcC8Z3DGynEnc1ONOqcn9DPQndIJjYoZ
-	GrPVuiocnEVE7aE+zzK5W+CrKn5nnOcgI8+f0TX3FDD9P5mwUj+a5cFdccumgv/5+eGjAzb+FHI51
-	fPLPeAm1CaggfsT+HwanNDTLiwI75tjmq3U0KOBEVHTDrQCCrB9VH7q28IvcsXKyX5v/XPpjstEaP
-	0NCNXK/o5LjvOYU5JQKpA7dSxgfMdK0STHDA+P/tcphtY9H5xlJ24kMRq6dq5gU1BWoELSOr4Cif7
-	Pnr77a7w==;
+	bh=NMAgSidrHOjcG4s8cbGWbijYESRhf2FNOdS6mzEMeJs=; b=h9GtdJzW8aPcNyNjRozzEzTyg0
+	Wfm31EAZrFEsFKpVXmP0QCCFhUfOtLr7cBSLtpGjUNnjHfuCSeB3bOiMQeyxmpesnLIn9GYT/NTkB
+	UiyDQCGC/yVe9w/ZEHzQcY3oUFNuirddivGKNazlZIS89V6LBP8VQ2zxAFEbRyLx39ShejCcWU4az
+	NDInAABhtLCsnrrtF0gY33IMZfXdMq20FshmJwU5VpNSN2/WfSzyanTaukQ7u8OgcmO5CstQV6hi6
+	CN6VCXBwOKHt2qgancV3hHvYETX5tFe6dXuhmltTmZG9D3Hi6AEGeuZzE2wnWiO8Xo1/JGbdN399f
+	7LltAP/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wGj2p-0000000Emck-1vjU;
-	Sat, 25 Apr 2026 19:52:03 +0000
-Received: from mail-ot1-f46.google.com ([209.85.210.46])
+	id 1wGj2x-0000000EmeQ-328X;
+	Sat, 25 Apr 2026 19:52:11 +0000
+Received: from mail-ot1-f44.google.com ([209.85.210.44])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wGj2m-0000000Embi-3M8p
+	id 1wGj2v-0000000Eme3-3Ghn
 	for linux-mediatek@lists.infradead.org;
-	Sat, 25 Apr 2026 19:52:01 +0000
-Received: by mail-ot1-f46.google.com with SMTP id 46e09a7af769-7dcdd1b492eso4790387a34.1
-        for <linux-mediatek@lists.infradead.org>; Sat, 25 Apr 2026 12:52:00 -0700 (PDT)
+	Sat, 25 Apr 2026 19:52:10 +0000
+Received: by mail-ot1-f44.google.com with SMTP id 46e09a7af769-7de4a9cb8eeso2896600a34.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 25 Apr 2026 12:52:09 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777146720; x=1777751520;
+        d=1e100.net; s=20251104; t=1777146729; x=1777751529;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=hZVhJi8Une3Tz7psy9kzkLO8wUTe2QsM/r5CE8L6bO0=;
-        b=Auz9+MLSSkodRh9gFKuJwhx7Pez1ri1OGI1B/jhLTWHzpO2ZID09WSeZC8sVODJc0n
-         Hcsqsys99jFdF+wS4OqvXJtFobhQhTliavJrCNjEXqEnQxFh+Vk/0mGloPPZ4Vhe01GK
-         0zsLfUsd/Rx0qHdE+6ZNDdB83mCNqdHm3g/00DRbNIqKKUixaIweSbg1GQCWSH0H5wrV
-         V4tR+wNbY5G28dB8hOj1maEqimyGz6jGf7q/8fQAcZVOyckQbTKxKju5dduWyG2KVhEs
-         hV2P17ariifIbe0HNIezNd/tEok44OZI3FJDbZuO1it9yuVJGltAkTnDzVvZBqE3M3xQ
-         v9gA==
-X-Forwarded-Encrypted: i=1; AFNElJ/5a/fIFfczHkBVdD+V+HozEFd4l3orMCBl4Zy4NAzQpoeHvuXSZ0kAQbw0SGuTMi2OUTkrIHlsHCgVeHNkXg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyAcnKZ8shY01JA9hSnewF1UwfR14Hc7WkfLtCG0IooxRrmhpFK
-	usaq82vbCLfir+chnyWJb/qnDZz1zEQ3+4RcE332IKlynVvhdG+197it
-X-Gm-Gg: AeBDievOU8mbwvrTENljb4QwBbB6VVeGzfMglN8t2spuO4jnnhyujAd3YL7nMM9H35C
-	k66Cd4zvWLoWEqPyiVwiMK9t/1DnwTanzPefTE9lx7AglQMbWGvIIsguK1QQywwwLxW1yL4p2F9
-	RWkYPnOEh+NjfbeaB8liU2J7+vAuARHr5OBDHuNK7i1eG1PAavOrpf3HtYKX79OR74ThYGh6f17
-	XCpAEOWelKjpt5jH3RhtmQq4PqPVQezhCL6Tc+Mjq1vL6rxxZEcacDa+NwvICpu/dPh4YVBPrEd
-	tzypl2MB593usFhtlbudZ0DyNaSdu+jDkPSeB7PglYjDf92t3+It4rVI2YHmF/3wA7WjoZ1N1U3
-	6wDih203T9O3zyeCQU5WA4QGjidkXOcEpLRtgslEt+U7gxj4noUTMa5c2Mru8kq34hnTnOoKQoP
-	rXp4vwjVgOHsWTOiw8mIreaMPLAK89dA3Fbft7TXhmghMrl3c505WceIz2IF0bYJaWG7SDb4Owj
-	g==
-X-Received: by 2002:a05:6830:910:b0:7d7:ec47:79f6 with SMTP id 46e09a7af769-7dc956d9a71mr20139924a34.13.1777146719977;
-        Sat, 25 Apr 2026 12:51:59 -0700 (PDT)
+        bh=NMAgSidrHOjcG4s8cbGWbijYESRhf2FNOdS6mzEMeJs=;
+        b=tDZQh7eknesd5CQZ+o7CATYNe4snYUcagk4Z6/DdVP5bzfPwSg1TRLC5S23IAkgJg8
+         MgX+svIfLowzNrS3oLxW4sSVspY/Bm7JnY42qYRuzCdAtT31mtNfMTv8nWDdNZGNtg4l
+         m+xPLlvRMGdyaq4j58vAoc4zkDVrO+VCF5R0HS/1RMdrLgqUTyAyXnBS/abOyojDas/m
+         uki+GBaCr0RP/cpRunEj8axmRuFb9r+Xe8afhxfYONTtECW/M44G+PfnLaARqUnvay5j
+         erPlN/4AOEcCinuoN8Qlbp2b4WmZp+wOqOyCpTEsVaJcDEXDC6LT1j9lWmYV6iPMu6GK
+         Znsw==
+X-Forwarded-Encrypted: i=1; AFNElJ9tjvgOjvYNdQY85BKB/lLALcN9NgR3rVb/y+WeOXzznECQ8OhLnMfzRCVrwCRjwhFIDQI33l7g9ra9/Mq1zQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy6QTZOFLipFs8qk11PY4fGu/HG4r2Hshb1uTeJl9WLMbjnjARW
+	Cbjw+LS4ifUOOTWan3pJ2VEUOXVh0tfjFJ7RGe36QG1PUSatNw/c0ixd
+X-Gm-Gg: AeBDiett/tjlGscB2mAVBvCJshAV2+MuQ1MI9el8N3TxxWVKZ8aXz9lskN5w20kBNS3
+	KWmyKQtGHYe0SIgeTBY2017k5hRdcBT9kECCEefUI81hfo4WGq+Wg2GRgYd+BYbvCFC6oiul57a
+	77kvgScmANfeaO/Kqij+SEsPHxaDRNpv4coXvZtF+JYMnMvT4Tc9y/noT9tGachUrhoNgWGKak5
+	LCA7TG5CoGlQY0klXPBduWxPnmE+MgWe9jgY2Ykt/7/H6w2p7MCSNlWnBf4vl59U33o2OeuJE/F
+	7xXr+vUe0Zo2v1rr2Bv6JnZ80HYOsPCNWHBBtQDN8n8W2A+99RSOeNX/w7stsEho/tM6QEpJLvY
+	/L4caxRtsWvVABRz3eOBzz0X9NneDDaSUl3oXbWoICdgu5gwmTHOrknoycAlUkzRB6HCX4YYysh
+	bAXOCP+tvzwf7e//jOa8lJGxe/4Ggc2XoxBs1NVVyUWmqjKs1p6I4Oe06w4PT5tXgukt/0jWjkr
+	Q==
+X-Received: by 2002:a05:6830:411a:b0:7d7:570b:6800 with SMTP id 46e09a7af769-7dc951fc052mr23532285a34.23.1777146728925;
+        Sat, 25 Apr 2026 12:52:08 -0700 (PDT)
 Received: from sean-HP-EliteBook-830-G6.attlocal.net ([2600:1702:5083:7610:2e29:c3c3:de27:ce76])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7dcd164d2c3sm13987624a34.24.2026.04.25.12.51.58
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7dcd164d2c3sm13987624a34.24.2026.04.25.12.52.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 25 Apr 2026 12:51:59 -0700 (PDT)
+        Sat, 25 Apr 2026 12:52:07 -0700 (PDT)
 From: Sean Wang <sean.wang@kernel.org>
 To: nbd@nbd.name,
 	lorenzo.bianconi@redhat.com
 Cc: linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	Sean Wang <sean.wang@mediatek.com>,
-	Javier Tia <floss@jetm.me>
-Subject: [PATCH v5 20/21] wifi: mt76: mt7925: add MT7927 PCIe support
-Date: Sat, 25 Apr 2026 14:50:10 -0500
-Message-ID: <20260425195011.790265-21-sean.wang@kernel.org>
+	Sean Wang <sean.wang@mediatek.com>
+Subject: [PATCH v5 21/21] wifi: mt76: mt7925: add MT7927 USB support
+Date: Sat, 25 Apr 2026 14:50:11 -0500
+Message-ID: <20260425195011.790265-22-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260425195011.790265-1-sean.wang@kernel.org>
 References: <20260425195011.790265-1-sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260425_125200_868824_EA1A6A1E 
-X-CRM114-Status: GOOD (  12.05  )
+X-CRM114-CacheID: sfid-20260425_125209_821404_EFD369D3 
+X-CRM114-Status: GOOD (  13.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,58 +91,70 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Add the missing MT7927 device support in the mt7925 PCI path.
-This ensures MT7927 is identified correctly and uses the proper
-initialization flow.
+Add the MT7927 USB device ID and normalize the raw 0x6639 CHIPID to
+MT7927 so the shared mt7925u code can use the proper chip-specific paths.
 
-Co-developed-by: Javier Tia <floss@jetm.me>
-Signed-off-by: Javier Tia <floss@jetm.me>
+Restore the required band setup after USB MAC reset before restarting
+the device.
+
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7925/pci.c | 16 +++++++++++++++-
- 1 file changed, 15 insertions(+), 1 deletion(-)
+ drivers/net/wireless/mediatek/mt76/mt7925/usb.c | 15 +++++++++++++++
+ drivers/net/wireless/mediatek/mt76/usb.c        |  1 +
+ 2 files changed, 16 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-index 7455cf7eddc5..41e6ec9223e9 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-@@ -16,6 +16,12 @@ static const struct pci_device_id mt7925_pci_device_table[] = {
- 		.driver_data = (kernel_ulong_t)MT7925_FIRMWARE_WM },
- 	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x0717),
- 		.driver_data = (kernel_ulong_t)MT7925_FIRMWARE_WM },
-+	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7927),
-+		.driver_data = (kernel_ulong_t)MT7927_FIRMWARE_WM },
-+	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x6639),
-+		.driver_data = (kernel_ulong_t)MT7927_FIRMWARE_WM },
-+	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x0738),
-+		.driver_data = (kernel_ulong_t)MT7927_FIRMWARE_WM },
- 	{ },
- };
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/usb.c b/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
+index d9968f03856d..7c64f3c1a2d9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
+@@ -10,6 +10,8 @@
+ #include "mac.h"
  
-@@ -376,7 +382,8 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
- 	if (ret)
- 		goto err_free_pci_vec;
+ static const struct usb_device_id mt7925u_device_table[] = {
++	{ USB_DEVICE_AND_INTERFACE_INFO(0x0e8d, 0x6639, 0xff, 0xff, 0xff),
++		.driver_info = (kernel_ulong_t)MT7925_FIRMWARE_WM },
+ 	{ USB_DEVICE_AND_INTERFACE_INFO(0x0e8d, 0x7925, 0xff, 0xff, 0xff),
+ 		.driver_info = (kernel_ulong_t)MT7925_FIRMWARE_WM },
+ 	/* Netgear, Inc. A9000 */
+@@ -120,6 +122,12 @@ static int mt7925u_mac_reset(struct mt792x_dev *dev)
+ 	if (err)
+ 		goto out;
  
--	is_mt7927_hw = (pdev->device == 0x6639 || pdev->device == 0x7927);
-+	is_mt7927_hw = (pdev->device == 0x6639 || pdev->device == 0x7927 ||
-+			pdev->device == 0x0738);
++	if (is_mt7927(&dev->mt76)) {
++		err = mt7925_mcu_set_dbdc(&dev->mphy, true);
++		if (err)
++			goto out;
++	}
++
+ 	err = __mt7925_start(&dev->phy);
+ out:
+ 	clear_bit(MT76_RESET, &dev->mphy.state);
+@@ -198,6 +206,13 @@ static int mt7925u_probe(struct usb_interface *usb_intf,
+ 		    (mt76_rr(dev, MT_HW_REV) & 0xff);
+ 	dev_dbg(mdev->dev, "ASIC revision: %04x\n", mdev->rev);
  
- 	/* MT7927: ASPM L1 causes unreliable WFDMA register access */
- 	if (mt7925_disable_aspm || is_mt7927_hw)
-@@ -436,6 +443,13 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
- 
- 	dev_info(mdev->dev, "ASIC revision: %04x\n", mdev->rev);
- 
-+	if (is_mt7927_hw && mt76_chip(mdev) != 0x7927) {
-+		dev_info(mdev->dev,
-+			 "MT7927 raw CHIPID=0x%04x, forcing chip=0x7927\n",
-+			 mt76_chip(mdev));
++	if (mt76_chip(mdev) == 0x6639) {
++		dev_dbg(mdev->dev,
++			"MT7927 raw CHIPID=0x%04x, forcing chip=0x7927\n",
++			mt76_chip(mdev));
 +		mdev->rev = (0x7927 << 16) | (mdev->rev & 0xff);
 +	}
 +
- 	mt76_rmw_field(dev, MT_HW_EMI_CTL, MT_HW_EMI_CTL_SLPPROT_EN, 1);
- 
- 	ret = mt792x_wfsys_reset(dev);
+ 	if (mt76_get_field(dev, MT_CONN_ON_MISC, MT_TOP_MISC2_FW_N9_RDY)) {
+ 		ret = mt792xu_wfsys_reset(dev);
+ 		if (ret)
+diff --git a/drivers/net/wireless/mediatek/mt76/usb.c b/drivers/net/wireless/mediatek/mt76/usb.c
+index 632ae755c7a6..9bd61c9e94ed 100644
+--- a/drivers/net/wireless/mediatek/mt76/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/usb.c
+@@ -925,6 +925,7 @@ mt76u_ac_to_hwq(struct mt76_dev *dev, struct mt76_queue *q, u8 qid)
+ 		q->ep = q->hw_idx + 1;
+ 		break;
+ 	}
++	case 0x6639:
+ 	case 0x7961:
+ 	case 0x7925:
+ 		q->hw_idx = mt76_ac_to_hwq(ac);
 -- 
 2.43.0
 
