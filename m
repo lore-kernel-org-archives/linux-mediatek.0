@@ -4,95 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFB99FF885E
-	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Apr 2026 14:37:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90729FF8850
+	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Apr 2026 23:22:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Zp95h01o2/Wl98SnFb+AukwrIEiz+o1jaPsbSAEFOD4=; b=1NHSuIgpAG7Gq7KshH+i8nw1uJ
-	INsezJwlbdchzTwujQO4so6Z+MU4WKkLstIBkR+ZYGhC95e0TLC4j1SKf0lOz3lf+YibCxsec22Uh
-	fHfDdXI6MWiFg0lQrC2eQ3nNGMBXErTPnckxHNfi1/eB50hxoN7U+Pg28d70vG7zuxbTKmeaAGehn
-	OdtjKMsaI07utUFnrGQPQiQz9Ngn++mCMBboP3B55ZcXa2iRCrOLLzAPbK6jNkBTRdZIzP681tuH7
-	qbDIpMqqIWFslYW1I8ek1dH1t/UQ//Bht3oG6YHCHqYzYaK7UFoWyqcFXPe31pPATPCzMRIraO9V4
-	Pl/YQEBg==;
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yHmRpheChnnsyaf0Fu8oTmfR5ycf3JOSEouN7NBJXTM=; b=iQJ5FjjjYpCA7RmrSxgwCvzbLt
+	wMuvfQy7Sgoafqfx4J2yC1LKkuo7MUJfbzvyaYvgMFOsxtMjjd3r9cQU60B6JjryLuDCkBvnFp6M+
+	UKPw8DiayeOJtZGrU1o/f+csJC37yd8iLelyFyVK0CxEgu8/UQ1BlTS1rBdmXH/luxvgY3blk985q
+	jivafMEdX9h5R26E7vFfrw1BIB3r/Ji6MOVu4YT47ROHsCHH7u+JejS6HGmNUpFcO1owhBFw5GqEC
+	SZeitg80UvLwRUWwnpHCs8hMVMKaTkHBELT0GICAuxgaDpLCqZeLWFm4n0xj66yfgZH4chwQKOAOR
+	V+i0lG9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wH0c9-0000000FcVI-2BgU;
-	Sun, 26 Apr 2026 14:37:41 +0000
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+	id 1wH8nY-0000000FvPV-143S;
+	Sun, 26 Apr 2026 23:22:00 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wH0c6-0000000FcUT-3Ctx
-	for linux-mediatek@lists.infradead.org;
-	Sun, 26 Apr 2026 14:37:40 +0000
-Received: by mail-pf1-x42a.google.com with SMTP id d2e1a72fcca58-82418b0178cso5730170b3a.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 26 Apr 2026 07:37:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1777214257; x=1777819057; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Zp95h01o2/Wl98SnFb+AukwrIEiz+o1jaPsbSAEFOD4=;
-        b=tCG/3ug3UJUzCR1enQNV/iUhdJCWzSGsT08ioFiB7oC+SQUH6k7r0rTkvISAIGH6Ka
-         Xaahbdu/yD+P0HFSmdkwl2yXdZRIct54YZP5kgSrVcj0f7YfixM9TSCzzZ1RkEZEyLDX
-         O3ETdMHXRyizzlkerg0vBKBhgh1Ij3+e9w48iQ8eVlEf4yWmkVPu93reaFgsubCtySIF
-         1QWzoDU48mzbHJrfxz2P1g2Oh4L+Od4vq8i/A1890I/eKAODFnmv/+mK0AdHvlrAXhUQ
-         xvDBugE2KePPF2mAVmow7JhSW3/J13gWw7wXkuZPEoNN2cSwLf49kI1z8XXn9sPW/SeR
-         4rhQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777214257; x=1777819057;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Zp95h01o2/Wl98SnFb+AukwrIEiz+o1jaPsbSAEFOD4=;
-        b=PbBTsLwp6DXM0peNomNfxbO31znN5Yo3+4oIfLjYj49/mNgVlDkDJLjhvKK8IQyxE2
-         nUUhW+5aCX45BIFnvJ/ljiBVYy3XRWNMIiw3J1r0edpKY83hoK4TQpFNu4egpd1RUNWn
-         b7tea9rhqZSKTK7dsdwv9q2Is8zlRbDALNTeGXLObMqPwbQA6UKvkfVSN7ICwsx7ecZF
-         rkzku3EaFdH94bJ3ays8GbblluyTRx5+CEn8JdZva9+bZ7PThNd9ihvaDp6tCAgRzmPO
-         yopuTIHdPfQZchwO5Qq5i8v7Czh4pLCJ+3DH89cMCPRomw1ODCscNE1wi7n1j+zBfEtD
-         WcRg==
-X-Forwarded-Encrypted: i=1; AFNElJ/mPXRya7PeQjPkvMEv46LVoAF3HUm0N1bim4/US785PqJjOqNiEgL2hpPndXv7gNxdqdjn2svxOZQlGgauJA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzCPCv7+njG4X8XA7+lkeAGYh57hXBC9gIo5cJgZf1D4QxRo7o3
-	z/PjS/2Mu/l/nu29zzzalQwJD2qwxoKdZJWd5dQFnf0FXDuFB1VzP8Q=
-X-Gm-Gg: AeBDieu/i9+9F/SmcOmJbZHwgJFcpx9ETLrUG8HqFbjTluxjAPVviOvpTvwKDF0FFX3
-	cpmJrous4luZn1zu2JK5PVI8YcCFpBRnfYRrgnwtTP6tx88sTBrROwIduzS+WT/mdoT9bNYw1Id
-	NLgutNG7lHA04Gwm5VRZxiMylwjj+1xmIxj7miMH0O0vhaMyzLwQVQNvqiRmjgAryYXTfK8FRC9
-	qCdYqIfcBzYw5p9RAtdwqp+ti53Eruqol/Im1mAL1K+piYtnb1fac9TPNd8zk0d0iL97sgtfXG4
-	UOcPFu5mMNydk9828Sq9CLGzB0bPnUNhvoCI0flbUErHYffMwc4bpdCbOgwuzYpAIj7XSH2hyim
-	LXJFFXGdSwjdr9wBVXJNBg4Utq3jOTJnAC8IPIdbexqx/K/opnKLIw5wC0+VTvKwPxQ8KShcuj/
-	nNAp2WX6PZ63N9Vzm6CzcL33Y+3R22Y/vExnTT7dCFheCmgQfIfrIjdHku++jv/68f32imaGjLZ
-	2N1irkPLxsUDOU+/V6tSUMWqm+zVu9Je4vWV3uPBsmvUbU=
-X-Received: by 2002:a05:6a00:7484:b0:82f:4a4d:3792 with SMTP id d2e1a72fcca58-82f99814b42mr31000118b3a.4.1777214257392;
-        Sun, 26 Apr 2026 07:37:37 -0700 (PDT)
-Received: from localhost.localdomain ([1.226.165.54])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-82f8e9d35acsm30061828b3a.15.2026.04.26.07.37.33
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Sun, 26 Apr 2026 07:37:36 -0700 (PDT)
-From: "=?UTF-8?q?=EB=B0=95=EB=AA=85=ED=9B=88?=" <mhun512@gmail.com>
-X-Google-Original-From: =?UTF-8?q?=EB=B0=95=EB=AA=85=ED=9B=88?= <pakmyeonghun@bagmyeonghun-ui-MacBookPro.local>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ijae Kim <ae878000@gmail.com>
-Cc: linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Myeonghun Pak <mhun512@gmail.com>
-Subject: [PATCH] wifi: mt76: mt7925: clean up DMA on probe failure
-Date: Sun, 26 Apr 2026 23:33:36 +0900
-Message-ID: <20260426143728.41534-1-pakmyeonghun@bagmyeonghun-ui-MacBookPro.local>
-X-Mailer: git-send-email 2.47.1
+	id 1wH8nW-0000000FvOs-1lY5;
+	Sun, 26 Apr 2026 23:21:58 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 13CAA60145;
+	Sun, 26 Apr 2026 23:21:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3D66EC2BCAF;
+	Sun, 26 Apr 2026 23:21:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1777245716;
+	bh=rA86lA0g7W/+V7BO/FVvGSvEuTg3X2fgF21kbHGVYgo=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=JoCrGdD3YOaO1Yk1P3J7IOlXL66bvP/5+YTJhI2rldp6s2OaEPH1R6XjYzQmMTuH/
+	 HH45cpNz7VrG+fuzWz8by4DqC0JZWyPmKFt4hRJUaZa8ZddGLFD8hhGmnmyhGRtXmJ
+	 uLRoUZ3wiHX9kwMqCSHiDuAO+VEhm9CCu+j2vNArLuxvItw0mb9qbReQhC3gdie3Z9
+	 FS04F0t93/kUZb7Ifz+LriW83o2y584m2Vjn8369M9No6m0nbg1nI0/kYoT1teMAUb
+	 Z/MQh19RP6WpAHseo88+dGKMbnv5tXGsh0mKC1LvLVSLYA2vYjiG5ykDxk/RE49QGq
+	 YCDOLXJKF0+pg==
+From: Mark Brown <broonie@kernel.org>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Gene Chen <gene_chen@richtek.com>, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20260414-mtk-g1200-pmic-cleanup-v1-0-2a7193ed4e93@collabora.com>
+References: <20260414-mtk-g1200-pmic-cleanup-v1-0-2a7193ed4e93@collabora.com>
+Subject: Re: (subset) [PATCH 0/3] Mediatek Genio 1200-EVK: MT6315/MT6360
+ PMIC regulator supply cleanup
+Message-Id: <177724330298.266775.14132313883869438377.b4-ty@b4>
+Date: Mon, 27 Apr 2026 07:41:42 +0900
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260426_073738_810459_ABF5A058 
-X-CRM114-Status: GOOD (  10.79  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.16-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1756; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=rA86lA0g7W/+V7BO/FVvGSvEuTg3X2fgF21kbHGVYgo=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBp7p4RN+O47GpsvyrSWQ01EVchEW48pBlZVoTbr
+ uiw1p0XiXyJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCae6eEQAKCRAk1otyXVSH
+ 0CRAB/wL2SMaWjRhWwuhdNYcG4TzAg1zkfTQqVHM79iM+l9cygxMo2mcBEhZ1Cc2/VJGxgPxQ6d
+ irFFH+YlHSWmH8ReXi/9AQshr6NRvVfpVG3+bbko9WweZdMVCSuyNChqShzZz890FZOxFkIrmBn
+ z9mpTTcvOdpmrRS4d6jzYUlnSzPZ/IZLbRLO7vrcY1GrVpp/Yf4PvGtJlx0IkSAwczvpsb6r7ur
+ p9r73MUc6r3oLH9LPk5NnFs/yNpV7dxWvUApOKHQ0mnMKjzlApi3wdMIxgaRyFm8ztAmZ1mzji+
+ 4Ms8Dwn/lELwQu7M6xOleeg+qrcbQ5eknSANDHyd54uMaayA
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,42 +86,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Myeonghun Pak <mhun512@gmail.com>
+On Tue, 14 Apr 2026 13:44:09 +0200, Louis-Alexis Eyraud wrote:
+> Mediatek Genio 1200-EVK: MT6315/MT6360 PMIC regulator supply cleanup
+> 
+> This series goal is to cleanup the power supplies of MT6315 and MT6360
+> PMIC regulators, that are either missing or incorrect in the Mediatek
+> Genio 1200-EVK board devicetree.
+> 
+> Patch 1 completes the MT6360 dt-bindings by adding the missing power
+> supply descriptions for its buck regulators, that already handled by
+> the mt6360 regulator driver.
+> Patch 2 adds for the board the MT6315 regulator supply properties, that
+> were added in the dt-bindings by [1].
+> Patch 3 adds for the board the MT6360 regulator supply properties and
+> fixes the existing one.
+> 
+> [...]
 
-mt7925_pci_probe() initializes DMA before registering the device. If
-mt7925_register_device() fails, probe returns through err_free_irq without
-tearing down DMA state.
+Applied to
 
-That leaves the TX NAPI instance enabled and skips the DMA queue cleanup
-that the normal remove path performs through mt7925e_unregister_device().
-Add a dedicated unwind label for failures after mt7925_dma_init() succeeds.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-7.2
 
-Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for mt7925 chips")
-Co-developed-by: Ijae Kim <ae878000@gmail.com>
-Signed-off-by: Ijae Kim <ae878000@gmail.com>
-Signed-off-by: Myeonghun Pak <mhun512@gmail.com>
----
- drivers/net/wireless/mediatek/mt76/mt7925/pci.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+Thanks!
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-index c4161754c0..4883772302 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-@@ -415,10 +415,12 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
- 
- 	ret = mt7925_register_device(dev);
- 	if (ret)
--		goto err_free_irq;
-+		goto err_free_dma;
- 
- 	return 0;
- 
-+err_free_dma:
-+	mt792x_dma_cleanup(dev);
- err_free_irq:
- 	devm_free_irq(&pdev->dev, pdev->irq, dev);
- err_free_dev:
--- 
-2.39.5
+[1/3] regulator: dt-bindings: mt6360: add buck regulator supplies
+      https://git.kernel.org/broonie/regulator/c/a8fccc792f42
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
