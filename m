@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34C2CFF8861
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 07:05:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C11C7FF8861
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 07:05:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=imlk/dy6Lz3mR5J/hI0+bG0ANdJD9kwhYAgyc3iWdEY=; b=sFOFOTaEiWrYWLdZ8BKvlMKfY4
-	pLBoabxvI5GAqrCCn+C3S19C/XK2Qkxji8PSLOutRub5ykirCP9AdR2+ObcIAY/zvpBQSmkt7nGPw
-	Gp+iVBWoSQeVbNblro2dWUW8dENEKDu0uOuTugHGShhxFmfxttpa0nXKTbu6q4jKQc5Wid55h66ux
-	lH9R+sukuVVXqm+rxs6F4cAfp6ZICvTR9BeMUF7xAG5od3Rz1qaN/kg7DfyRNTG0Hi7KkMJFX86c0
-	TC19IRqaG6+OESaSlyFhWeEzolZdxXvKr/U9p5AURdvQlP6y9vflCPPQb4j+v52Sbh4vBxvRDU/6m
-	7xrtY3nA==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rr/9loWzTCnuzbqIycr7oDXTTISYfg5Ae1uSICJW5Ho=; b=ylLazblWeNYn281O4XAuhozYex
+	fY25PTKNaUta0MGIormIPd5Va0awdcOx5ykZ1hL4kSeThpRY3hQD43a73HKtzL9WMr0T6m8wx8Lox
+	dvzJ0XoSo0l3felRwhN6r/p8Y1+h13NCN0i+pP2eOksEKuwotHrc521l5xMrSzV8/k5rCSPj+g32z
+	HRQuSRQy1DznLkI7RkNnaT3X0BPgtoKhepnzcJCXWNIs9dC4bk5MdfhGwfFfpD3pM3v6OMbxePqW7
+	zPz61riT00apeZRFJjBDQ+4N74xuc4TvC0PU9hftmkdd2KaPvWsLvmNGtbtfyymjeICY7zfYDolwd
+	iasj5u2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHG1q-0000000GKf6-1CfP;
-	Mon, 27 Apr 2026 07:05:14 +0000
+	id 1wHG20-0000000GKik-3eml;
+	Mon, 27 Apr 2026 07:05:24 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHG1n-0000000GKeQ-36uq;
-	Mon, 27 Apr 2026 07:05:12 +0000
-X-UUID: 6b1ab510420711f1a6de359d7043e138-20260427
+	id 1wHG1x-0000000GKhK-2g1w;
+	Mon, 27 Apr 2026 07:05:22 +0000
+X-UUID: 7340bcda420711f1a6de359d7043e138-20260427
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=imlk/dy6Lz3mR5J/hI0+bG0ANdJD9kwhYAgyc3iWdEY=;
-	b=gfAdRDFdbimUT/we2NIvY7Z2sjWeYvBeml3i2OVM7+dP9e6jN1/SyXsBv/Hk3rMHuLLsp948zwHNkcNjO92PIGXq8EiiKwvGwW58S+t1+vcq4QYyNUWF3byB0npSkgUCApx1J7oJd985L9toXSRtZkecf6/KG8A0azqiwyyD3oY=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=rr/9loWzTCnuzbqIycr7oDXTTISYfg5Ae1uSICJW5Ho=;
+	b=gm4RQL34QwCnjs15OkJloqifimmHdv+EKvRzIE7U8O4MwjETygGf/okbXdCtvtGNHNlxtjZGp147eTK0OwC0cx8HaLlCALJk55W8pc/pgW+NErDVLJNXqHqtLWDH9V3hlHp0dkSAfc0irjgM+QtNXapvURuytQ/RH5+uJfVlFYs=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:7b6798b0-eaf3-4c39-a8c5-fd75debbb06e,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:e7bac3a,CLOUDID:a8b9a764-469e-4eb6-aeb8-4b21454b0f32,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|865|888|898,TC:-5,Content:0|
-	15|50,EDM:-3,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OS
-	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.3.12,REQID:69650daf-2971-4235-8fdb-6c23e51ebfc1,IP:0,U
+	RL:0,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:e7bac3a,CLOUDID:5b187fbe-65a8-4b41-ac18-3671578a914d,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|865|888|898,TC:-5,Cont
+	ent:0|15|50,EDM:2,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,
+	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 6b1ab510420711f1a6de359d7043e138-20260427
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: 7340bcda420711f1a6de359d7043e138-20260427
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
 	(envelope-from <zhengnan.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1928079149; Mon, 27 Apr 2026 00:05:05 -0700
+	with ESMTP id 1068630829; Mon, 27 Apr 2026 00:05:19 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 27 Apr 2026 15:05:02 +0800
+ 15.2.2562.29; Mon, 27 Apr 2026 15:05:16 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 27 Apr 2026 15:05:02 +0800
+ 15.2.2562.29 via Frontend Transport; Mon, 27 Apr 2026 15:05:15 +0800
 From: mtk20898 <zhengnan.chen@mediatek.com>
 To: Yong Wu <yong.wu@mediatek.com>, Krzysztof Kozlowski <krzk@kernel.org>, Rob
  Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
@@ -61,19 +61,20 @@ To: Yong Wu <yong.wu@mediatek.com>, Krzysztof Kozlowski <krzk@kernel.org>, Rob
 	<angelogioacchino.delregno@collabora.com>
 CC: <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
 	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, mtk20898
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Zhengnan Chen
 	<zhengnan.chen@mediatek.com>
-Subject: [RESEND,v2 0/2] MT8189 SMI SUPPORT
-Date: Mon, 27 Apr 2026 15:04:27 +0800
-Message-ID: <20260427070444.20247-1-zhengnan.chen@mediatek.com>
+Subject: [RESEND,v2 1/2] dt-bindings: memory-controllers: mtk-smi: Add support for mt8189
+Date: Mon, 27 Apr 2026 15:04:28 +0800
+Message-ID: <20260427070444.20247-2-zhengnan.chen@mediatek.com>
 X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20260427070444.20247-1-zhengnan.chen@mediatek.com>
+References: <20260427070444.20247-1-zhengnan.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260427_000511_781506_641451C0 
-X-CRM114-Status: UNSURE (   8.40  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260427_000521_684829_EC9213C9 
+X-CRM114-Status: GOOD (  13.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,29 +89,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Based on tag: next-20260424, linux-next/master
+From: Zhengnan Chen <zhengnan.chen@mediatek.com>
 
-This patchset add mt8189 smi support.
+Add binding description for mt8189.
 
+The clocks number of mt8189 smi-sub common has a bit difference.
+Its clock count is 2, while mt8195 has 3. Therefore, the minimum
+number of clocks is changed to 2, with the third one being optional.
+
+About what smi-sub-common is, please check the below diagram,
+we add it in mediatek,smi-common.yaml file.
+
+Signed-off-by: Zhengnan Chen <zhengnan.chen@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
-Changes in v2:
-Just modify the mediatek,smi-common.yaml file as follows:
-- Add schematic diagram explanation between smi-common and smi-sub-common
-- Change the clock numbers of smi-sub-common to minimum 2, the third clock
-  is optional
-- Link to v1:
-  https://lore.kernel.org/all/20250919081014.14100-1-zhengnan.chen@mediatek.com/
----
+ .../mediatek,smi-common.yaml                  | 25 +++++++++++++++++--
+ .../memory-controllers/mediatek,smi-larb.yaml |  3 +++
+ 2 files changed, 26 insertions(+), 2 deletions(-)
 
-Zhengnan Chen (2):
-  dt-bindings: memory-controllers: mtk-smi: Add support for mt8189
-  memory: mtk-smi: Add mt8189 support
-
- .../mediatek,smi-common.yaml                  | 25 ++++++++++-
- .../memory-controllers/mediatek,smi-larb.yaml |  3 ++
- drivers/memory/mtk-smi.c                      | 44 +++++++++++++++++++
- 3 files changed, 70 insertions(+), 2 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+index 0762e0ff66ef..454d11a83973 100644
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+@@ -25,6 +25,21 @@ description: |
+   SMI generation 1 to transform the smi clock into emi clock domain, but that is
+   not needed for SMI generation 2.
+ 
++  The smi-common connects with smi-larb and IOMMU. The maximum inputs number of
++  a smi-common is 8. In SMI generation 2, the engines number may be over 8.
++  In this case, we use a smi-sub-common to merge some larbs.
++  The block diagram something is like:
++
++                          IOMMU
++                           | |
++                       smi-common
++              ---------------------------
++               |          |           ...
++              larb0   sub-common      ...  <-max number is 8
++                   ----------------
++                    |     |    ...
++                  larb1 larbX  ...  <-max number is 8
++
+ properties:
+   compatible:
+     oneOf:
+@@ -40,6 +55,8 @@ properties:
+           - mediatek,mt8186-smi-common
+           - mediatek,mt8188-smi-common-vdo
+           - mediatek,mt8188-smi-common-vpp
++          - mediatek,mt8189-smi-common
++          - mediatek,mt8189-smi-sub-common
+           - mediatek,mt8192-smi-common
+           - mediatek,mt8195-smi-common-vdo
+           - mediatek,mt8195-smi-common-vpp
+@@ -108,19 +125,23 @@ allOf:
+         compatible:
+           contains:
+             enum:
++              - mediatek,mt8189-smi-sub-common
+               - mediatek,mt8195-smi-sub-common
+     then:
+       required:
+         - mediatek,smi
+       properties:
+         clocks:
+-          minItems: 3
++          minItems: 2
+           maxItems: 3
+         clock-names:
++          minItems: 2
++          maxItems: 3
+           items:
+             - const: apb
+             - const: smi
+-            - const: gals0
++          additionalItems:
++            const: gals0
+     else:
+       properties:
+         mediatek,smi: false
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+index 2e7fac4b5094..9a5dafd7c07e 100644
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+@@ -27,6 +27,7 @@ properties:
+           - mediatek,mt8183-smi-larb
+           - mediatek,mt8186-smi-larb
+           - mediatek,mt8188-smi-larb
++          - mediatek,mt8189-smi-larb
+           - mediatek,mt8192-smi-larb
+           - mediatek,mt8195-smi-larb
+ 
+@@ -85,6 +86,7 @@ allOf:
+             - mediatek,mt8183-smi-larb
+             - mediatek,mt8186-smi-larb
+             - mediatek,mt8188-smi-larb
++            - mediatek,mt8189-smi-larb
+             - mediatek,mt8195-smi-larb
+ 
+     then:
+@@ -119,6 +121,7 @@ allOf:
+               - mediatek,mt6779-smi-larb
+               - mediatek,mt8186-smi-larb
+               - mediatek,mt8188-smi-larb
++              - mediatek,mt8189-smi-larb
+               - mediatek,mt8192-smi-larb
+               - mediatek,mt8195-smi-larb
+ 
 -- 
 2.46.0
 
