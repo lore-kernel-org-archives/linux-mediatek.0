@@ -4,67 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C08DFF8862
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 07:00:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34C2CFF8861
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 07:05:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/UpfWzzlS+wWtg5CRsO2Vrz/eOat72hB7FM8+ABI9aw=; b=zSouQ0j/aXtcMgizh8fHk7MyF9
-	miapZzzXRmHo+c+FX9AcDRvDuUX+bBy30Rsm8QmT31mS7b+O95UvKliYwEHwBfFYw7/PburbQ8NNO
-	fObCc97azLT7qJrFs1oPvhlSep8B+tpF0Z6FtdWwsUbHGT9dEtAARoyTr29RtuwVBpW7xsK+iSOQu
-	YRayaT9nomWOMQnAnMQ4G4i1oPLNYr3y9GGLmdcLjeXwxMY47gKGgUKtyXeMaZ3xNSQ+/Hls7eOmK
-	RYMXvcIzikBrMy0DbERLKHFsUXbdDVMVrRHAdw3eD/kIZSFtrTN30MC/dySFqoD0TnuVoYPbRbTTr
-	sfVYS+mQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=imlk/dy6Lz3mR5J/hI0+bG0ANdJD9kwhYAgyc3iWdEY=; b=sFOFOTaEiWrYWLdZ8BKvlMKfY4
+	pLBoabxvI5GAqrCCn+C3S19C/XK2Qkxji8PSLOutRub5ykirCP9AdR2+ObcIAY/zvpBQSmkt7nGPw
+	Gp+iVBWoSQeVbNblro2dWUW8dENEKDu0uOuTugHGShhxFmfxttpa0nXKTbu6q4jKQc5Wid55h66ux
+	lH9R+sukuVVXqm+rxs6F4cAfp6ZICvTR9BeMUF7xAG5od3Rz1qaN/kg7DfyRNTG0Hi7KkMJFX86c0
+	TC19IRqaG6+OESaSlyFhWeEzolZdxXvKr/U9p5AURdvQlP6y9vflCPPQb4j+v52Sbh4vBxvRDU/6m
+	7xrtY3nA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHFxP-0000000GJyy-4B71;
-	Mon, 27 Apr 2026 07:00:40 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wHG1q-0000000GKf6-1CfP;
+	Mon, 27 Apr 2026 07:05:14 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHFxJ-0000000GJyS-3u7y;
-	Mon, 27 Apr 2026 07:00:38 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id AEA2144361;
-	Mon, 27 Apr 2026 07:00:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3A383C2BCB8;
-	Mon, 27 Apr 2026 07:00:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777273232;
-	bh=hscgZXrH/5hlVlI4joz/OwlsC/ItzGkqY+r3g/tMh6g=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=r/UO8nr5TQ7PliWjUKlAZqvmtgQU+FEMkbRmmSgrIX7+9ZgK/HIdX4NYWVZ4rngKw
-	 PLBQ0/wMFxTjBXytc8sMx2PcAaIJUCNUNus9UpAS0DhvvpIolB2CfnSbt8y6g3u783
-	 4e6eNxqixT4kTNhHFlxBIuqeVX3NZhfdHxj4Z+nudtcjnondSnBuoupFAF3EdjoALF
-	 56TK9X9uH+Uv7gDR6L3FJ17myhK+nPEb2Xzx7pPVYCMqiKLog4QTEgJPM54KXGoI5h
-	 b0RP6hj3HJCTnvpSJs4bTwtNGexQKcRoLqkpcafByY/22j7sIulWa9Q1ER6iZY0/q5
-	 ceI/MVWjDbmJw==
-Date: Mon, 27 Apr 2026 09:00:30 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Rosen Penev <rosenp@gmail.com>
-Cc: linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH wireless-next] wifi: mt76: fix of_get_mac_address error
- handling
-Message-ID: <ae8JjhGXn4RmHSF1@lore-desk>
-References: <20260427051746.954704-1-rosenp@gmail.com>
+	id 1wHG1n-0000000GKeQ-36uq;
+	Mon, 27 Apr 2026 07:05:12 +0000
+X-UUID: 6b1ab510420711f1a6de359d7043e138-20260427
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=imlk/dy6Lz3mR5J/hI0+bG0ANdJD9kwhYAgyc3iWdEY=;
+	b=gfAdRDFdbimUT/we2NIvY7Z2sjWeYvBeml3i2OVM7+dP9e6jN1/SyXsBv/Hk3rMHuLLsp948zwHNkcNjO92PIGXq8EiiKwvGwW58S+t1+vcq4QYyNUWF3byB0npSkgUCApx1J7oJd985L9toXSRtZkecf6/KG8A0azqiwyyD3oY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.12,REQID:7b6798b0-eaf3-4c39-a8c5-fd75debbb06e,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:e7bac3a,CLOUDID:a8b9a764-469e-4eb6-aeb8-4b21454b0f32,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|865|888|898,TC:-5,Content:0|
+	15|50,EDM:-3,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OS
+	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 6b1ab510420711f1a6de359d7043e138-20260427
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <zhengnan.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1928079149; Mon, 27 Apr 2026 00:05:05 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Mon, 27 Apr 2026 15:05:02 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Mon, 27 Apr 2026 15:05:02 +0800
+From: mtk20898 <zhengnan.chen@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>, Krzysztof Kozlowski <krzk@kernel.org>, Rob
+ Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, mtk20898
+	<zhengnan.chen@mediatek.com>
+Subject: [RESEND,v2 0/2] MT8189 SMI SUPPORT
+Date: Mon, 27 Apr 2026 15:04:27 +0800
+Message-ID: <20260427070444.20247-1-zhengnan.chen@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="VmDJMRbZHv0Lzy9p"
-Content-Disposition: inline
-In-Reply-To: <20260427051746.954704-1-rosenp@gmail.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260427_000033_999939_04E750B9 
-X-CRM114-Status: GOOD (  14.49  )
+X-CRM114-CacheID: sfid-20260427_000511_781506_641451C0 
+X-CRM114-Status: UNSURE (   8.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,51 +88,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Based on tag: next-20260424, linux-next/master
 
---VmDJMRbZHv0Lzy9p
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This patchset add mt8189 smi support.
 
-> Check return value instead of is_valid_ether_addr. The latter is handled
-> by the former.
->=20
-> Signed-off-by: Rosen Penev <rosenp@gmail.com>
+---
+Changes in v2:
+Just modify the mediatek,smi-common.yaml file as follows:
+- Add schematic diagram explanation between smi-common and smi-sub-common
+- Change the clock numbers of smi-sub-common to minimum 2, the third clock
+  is optional
+- Link to v1:
+  https://lore.kernel.org/all/20250919081014.14100-1-zhengnan.chen@mediatek.com/
+---
 
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Zhengnan Chen (2):
+  dt-bindings: memory-controllers: mtk-smi: Add support for mt8189
+  memory: mtk-smi: Add mt8189 support
 
-> ---
->  drivers/net/wireless/mediatek/mt76/eeprom.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wi=
-reless/mediatek/mt76/eeprom.c
-> index 93d91264687f..0f6ccf6ed53d 100644
-> --- a/drivers/net/wireless/mediatek/mt76/eeprom.c
-> +++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
-> @@ -93,7 +93,7 @@ mt76_eeprom_override(struct mt76_phy *phy)
->  	if (err =3D=3D -EPROBE_DEFER)
->  		return err;
-> =20
-> -	if (!is_valid_ether_addr(phy->macaddr)) {
-> +	if (err) {
->  		eth_random_addr(phy->macaddr);
->  		dev_info(dev->dev,
->  			 "Invalid MAC address, using random address %pM\n",
-> --=20
-> 2.54.0
->=20
+ .../mediatek,smi-common.yaml                  | 25 ++++++++++-
+ .../memory-controllers/mediatek,smi-larb.yaml |  3 ++
+ drivers/memory/mtk-smi.c                      | 44 +++++++++++++++++++
+ 3 files changed, 70 insertions(+), 2 deletions(-)
 
---VmDJMRbZHv0Lzy9p
-Content-Type: application/pgp-signature; name=signature.asc
+-- 
+2.46.0
 
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCae8JjgAKCRA6cBh0uS2t
-rBXWAP9XbNiVEDpyQr3wYwK6yy95P7sLbl7oGeiTS3olm3X2sQEAn6TCQaIm/1uu
-vNVMiJbIVrmUHHeTG560ExFWwjBmTQQ=
-=lAlv
------END PGP SIGNATURE-----
-
---VmDJMRbZHv0Lzy9p--
 
