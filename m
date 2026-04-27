@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37265FF8860
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 03:44:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE7E8FF8861
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 03:44:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=X2qzCgeGAG/9ExzGWv8XT18Hv2KRSoOvDRLW3k4Gl2g=; b=2bjjYISNDN4cKZJ23ZoFzf3Uih
-	qou/ypRQXKLsxoRbcqaNt6TPKQhRfdBvmjBQvPei9eIT1VDNDOk9/5sElUnfYHJntyOm8VtqxzVYc
-	Vuwa7BlIMVIDqQDvXANK9nnOZuCtVdTBo2SFssc9lRDPIeGXHlpGfKsS+xMC6BhP/LXZOlgSnha69
-	rnocHkEvWZ0nVLqKb3K2nuXGzqFo8s6gnDtt2wLD+ZvogLPuzrRCXREOq/CYm3Hd8RH/9vM8B89eF
-	kgCg7uokVEothwT6crK/0ri9uuWokS9gm7TOyQBt/J3P+VLYaNKsPR9yuhNtd+xQ92v96XrIhDg9O
-	MNdfM5Zw==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6LnJZvLH9bwq8rkIs+Lcwlv8aSN2xQ6iGFhBeGaXxuk=; b=NkTlI+rNzy31pkOsfar41NF3jc
+	YQQJkudjFcubtPNtgJ+O8v+Gu9Ppw1/VsD9sfyWcq5Rc+/s1JuabKyUQmIrmXfBmGbYFcYHR1Vq1G
+	Cqst5KZoEVLdBB/HVvl+k15cfKO7trFAhefvqVPbUnym9JKngGG1CNjft4yBgAz5Xm6gAR0XNHEEd
+	w/BriCSqwFg1ub8tsWLbg4US524V7dyK4bTO1S1j49Q9iZTjdt9n2kds/reiT1JF5TiZciQml80/k
+	7mUPwsoEz4h+WCiM6TP4wdu4rp8/O4VylmcwL87PqFHfRJU6on/GFNoDP7MbL6DQ9GS5pZ33sTKng
+	U7N4+IXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHCtu-0000000G70g-0dy1;
-	Mon, 27 Apr 2026 03:44:50 +0000
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+	id 1wHCtz-0000000G73v-0BtV;
+	Mon, 27 Apr 2026 03:44:55 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHCtr-0000000G6zV-1lK5
+	id 1wHCts-0000000G6zz-2RxK
 	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Apr 2026 03:44:48 +0000
-Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-2b2429f98d0so56003225ad.2
-        for <linux-mediatek@lists.infradead.org>; Sun, 26 Apr 2026 20:44:46 -0700 (PDT)
+	Mon, 27 Apr 2026 03:44:50 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-2b2503753efso101132625ad.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 26 Apr 2026 20:44:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1777261486; x=1777866286; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=X2qzCgeGAG/9ExzGWv8XT18Hv2KRSoOvDRLW3k4Gl2g=;
-        b=C5jWIzB4a4Hac985RQUP3GExZ1RkB1WX27umfK8PVvus6UWw4441O8p+sODsqS0FJu
-         7J/UjOKOrajMPhogXa06lcMTbLyaPT6dwsGLC6Wkav4BJDwIO/BdaekHOl5De10AsbjT
-         LCn9mF2snXgGDXG2jq7LxeR6AbaVykTFNePqcnZUS/K0UdO6qr6O2uAdazeIUxAeLIRe
-         FnUMe+xwKag8H+ieUOIgpv0BwiRMGGA6h84t4zEOWlrGmBBT5ZeMOCdzAuIrK3lsoThl
-         3vnA8uVPSVdou6smfxBlrQL4IjDLfNo+GIaCEU5r5ozkiwRiCVAasY49pdr9REKfKuQJ
-         WTXQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777261486; x=1777866286;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20251104; t=1777261488; x=1777866288; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=X2qzCgeGAG/9ExzGWv8XT18Hv2KRSoOvDRLW3k4Gl2g=;
-        b=USFAvyB2LZ8z1Nz5dWMeYNpt1ts3aAsuzeROByg3y/tH7ZrPr7xcUIXqzTjmPmGVAT
-         id+jbtYWpTRMHFz3MmpyB1r7ZBBWEydZqZDzy69aeTCXudalEkJ1olj+xXejgvf1kkZM
-         x+9+jsCP9VplEw5QL6ihmiWK63ehU/cctbKWRA0n6TkhccYBZ3iwttMZyR1m1pKcg5gl
-         xRdkobP3wRzvsCnZtfP68BPU3v0XDBujZ5b3A9SDSj5koXrgtHzX23ewzC2nrQxP29+H
-         yPpj10Yg5fJzUgKvNLcS4cBE/c6zOxBh+oNx65tRHm8xZe5P7PtX6xXFd08QLutGvMjh
-         aryg==
-X-Forwarded-Encrypted: i=1; AFNElJ9WtVKD4Cs9XSNhbsMM5/9HdWBWL6Ky4Z51ZiWgOcna8cTIy50EK2++FT14PYfbk2HTkiWzFgwoRXSLi6yj/A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyYp5jn2xQNsw7BZBf9GfAoxcuRe/l/kWv4IQQAWkRmHXCb6Egp
-	jKK74O7KYvVfcIvXAc0O2SFvXfSno1HI9lpIJw6L4fUxZAchqk4IwZZ4
-X-Gm-Gg: AeBDiesa78d1ErYuFrenwZyRrQcMBC3QlD2F2Cob7eBH4ETqwj6UhaTRxR5AOdZSKL6
-	Kz1JBw0Bm6VEIBzJD7TzIswIfkuNAuIq4H7DUlv8E5QY0NF7ckuLhKBQIHaYjeq0HTTPXanWbbw
-	qB3JDkh/2NBEjBcvFUtSsQKFJJ/Hpf513Ww7L6F8M5Q51qysdHxbWSBDSY7hjqEy41KdK4W5HRV
-	x6cMJkLZBDZx1bosFEOcUpeMbR4aG7oyrrDx8rMa7WKzJGoCky5YhTeGiNLDMBKggfTgt7J63D1
-	qe6SpWJRAAMCr3tzBzKHwcHtpYH0vbh5K1leKkelxM9Mst4Ix7ZSDA9+MsSSht5n9Eb6t8gUcMl
-	OJ2elIi5jIaeSurkYwcnfvd4AkR2SV0/+p2nENTRsGECZkGHVHIrl0KqI1O0v3dJf/6OxLzhuhV
-	CMmDcs/tYJyagHlHMIfJrNhi5fMQ5+n6axftOfhjIpcG/4EIpeZSoAg7SCRqaBd1gHdAGfWKvX5
-	/OYUsZePez2pHMliqr3wx4zCg==
-X-Received: by 2002:a17:903:1ac8:b0:2b0:70c8:ccea with SMTP id d9443c01a7336-2b5f9eaeba2mr422778205ad.13.1777261485859;
-        Sun, 26 Apr 2026 20:44:45 -0700 (PDT)
+        bh=6LnJZvLH9bwq8rkIs+Lcwlv8aSN2xQ6iGFhBeGaXxuk=;
+        b=h7bfdYjm8YgkGBWEpVDiEckwYxS90bHhEsuuOHV/I/gERxDazbWDSk/m1eDgRbYb50
+         nBV5jfTnmOKHMbPncY82Ws6yF918k+KafmBqIl9TiI9HwShr7sQpD6aGQnH4Kks8juNl
+         Qx2RbRQ+tN5hHJWmNaMDhFfYARURA56ZE7riPe5WVcVix1XmC1oCRFin5XuWrN9Q6ohc
+         0/65Dwi4eJz6eTtrlkASoVRBzabU1h+Qqoycq3Ql/+JotZiW84EUxkk6nyclbI3/Jty1
+         fzrIXY5A7cRI7fHIopMaUOOiCR4qFXyDRFdRHmpWJABLBbS7WANY7D/BFAXGtUuSYEC7
+         MNaw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1777261488; x=1777866288;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=6LnJZvLH9bwq8rkIs+Lcwlv8aSN2xQ6iGFhBeGaXxuk=;
+        b=qsevnpswrPKrSMFJGZz3ibf8oXI1bnwI4tBWEWDR38EiDhoNWSBpIXnOjiM7IpBT7q
+         KTuH3YmKVt0dAEP2p+6j+yYLkfELK/NlfeG7F2RX19aPrdWdo63yi0i1jMxbWkEX47+9
+         wVZGD1hbxMhxQFxjec9bUJDYUPiPgzcTQyHgUHpbMJ2gYuqF1MjVTdNmno5nSvjC5CK8
+         KEA9MJCxhLgVYfAASbFRP6YlCf2lff7DLqDTkPF6C5LayiabNkS2Od3YB/rTcdJRosWo
+         WBjPLiIcXlqJBPvvRQVQ8v0ndx5aP6S7TL5UUiTlsupBXUji/uK04JP+2qGDcKym7nIo
+         7bLQ==
+X-Forwarded-Encrypted: i=1; AFNElJ/3jsvQKj7GHOD6N7JPT1n2lUxAwXupcViAthQLOsw7wgHDx1bphFG/il0eURQtEkwhgqOjx4acWRwBnzfErQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyzOpku5QvwN5F+e0eNOAvv8GCFfC3S8lniD0jE85iPc9ut/W5v
+	qeJs9bWtBvnKOhhioaUIUvt8Vdi/c3az9FkqGN3rvcSRUyiLI98RJJa+
+X-Gm-Gg: AeBDievZmKxevEWKNrOmgIC+T0r+LrZc7PRj67AhHscYceGT4Gg4qzx5UiWLqmpjGEq
+	G/pRFZFa8n+XSAWag0bfQzv1dVtNdMdabBcS+RQ7AgXsyRgjzQ6p02CRW0u+qeHq+c6Ah/ftnRA
+	auFf+7fHZT+CI/uYI4WG4uTveZne6IztDXsyxrdrIVyMA8AOBvMW08bzcSJKoY6lJt3LU+iIaHM
+	E+fezY+34qRJ3goB6zStFPf2Oa2K05Ym2WTFFM3swG2OYBgC5f7mJ++3p8qIdeN9aatV1uyCDqP
+	BrPkeqWD24M/NPSPDyA48X5ni4NWPlshSKWL9fahArL4n9lwMbSkUVzgrNK0yBN1JhkEkHZddDq
+	KvyCHEQ0PzIitqVxQLaWWWKFNAke38DfqIwGwTFxrBQMXd06Pw04u95HNt0MABaQ/yAEUXCAreF
+	Sioz1kug0i5canMG3Ouckg76FbeDW0i7+79Bsq2UFUiz1/yzhH0rzuuPuQbMP4jnkKunWRojmwx
+	3Bcwemjy5AUhHc3CeneN+S6tw==
+X-Received: by 2002:a17:903:120d:b0:2b2:489a:f46a with SMTP id d9443c01a7336-2b5f9fbc5a1mr463142335ad.36.1777261487655;
+        Sun, 26 Apr 2026 20:44:47 -0700 (PDT)
 Received: from ryzen ([2601:644:8000:5b5d::8bd])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2b5faa4f092sm290610585ad.36.2026.04.26.20.44.44
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2b5faa4f092sm290610585ad.36.2026.04.26.20.44.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 26 Apr 2026 20:44:45 -0700 (PDT)
+        Sun, 26 Apr 2026 20:44:46 -0700 (PDT)
 From: Rosen Penev <rosenp@gmail.com>
 To: devicetree@vger.kernel.org
 Cc: Felix Fietkau <nbd@nbd.name>,
@@ -88,16 +89,17 @@ Cc: Felix Fietkau <nbd@nbd.name>,
 	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
 	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
 	linux-mips@vger.kernel.org (open list:MIPS)
-Subject: [PATCH 0/3] wifi: mt76: remove mediatek,mtd-eeprom
-Date: Sun, 26 Apr 2026 20:44:24 -0700
-Message-ID: <20260427034427.881389-1-rosenp@gmail.com>
+Subject: [PATCH 1/3] MIPS: dts: ralink: gardena_smart_gateway_mt7688: use nvmem for EEPROM
+Date: Sun, 26 Apr 2026 20:44:25 -0700
+Message-ID: <20260427034427.881389-2-rosenp@gmail.com>
 X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20260427034427.881389-1-rosenp@gmail.com>
+References: <20260427034427.881389-1-rosenp@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260426_204447_461890_A213C8E1 
-X-CRM114-Status: UNSURE (   6.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260426_204448_652687_7426DF97 
+X-CRM114-Status: GOOD (  10.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,25 +114,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mediatek,mtd-eeprom predates nvmem which is used everywhere to grab
-eeprom and mac-address data from MTD devices.
+mediatek,mtd-eeprom is a deprecated binding for extracting data on MTD
+devices which has been replaced by NVMEM.
 
-Transition the one place to nvmem and remove the binding to discourage
-use.
+The latter is already in wide use with mt76. As this is the only user,
+transition to NVMEM.
 
-Rosen Penev (3):
-  MIPS: dts: ralink: gardena_smart_gateway_mt7688: use nvmem for EEPROM
-  dt-bindings: net: wireless: mt76: remove mediatek,mtd-eeprom
-  wifi: mt76: remove mt76_get_of_data_from_mtd
+Signed-off-by: Rosen Penev <rosenp@gmail.com>
+---
+ .../dts/ralink/gardena_smart_gateway_mt7688.dts | 17 +++++++++++++++--
+ 1 file changed, 15 insertions(+), 2 deletions(-)
 
- .../bindings/net/wireless/mediatek,mt76.yaml  | 19 +---
- .../ralink/gardena_smart_gateway_mt7688.dts   | 17 +++-
- drivers/net/wireless/mediatek/mt76/eeprom.c   | 87 -------------------
- drivers/net/wireless/mediatek/mt76/mt76.h     |  1 -
- .../wireless/mediatek/mt76/mt7915/eeprom.c    |  4 -
- 5 files changed, 17 insertions(+), 111 deletions(-)
-
---
+diff --git a/arch/mips/boot/dts/ralink/gardena_smart_gateway_mt7688.dts b/arch/mips/boot/dts/ralink/gardena_smart_gateway_mt7688.dts
+index 0bfb1dde9764..a8a8efbaf527 100644
+--- a/arch/mips/boot/dts/ralink/gardena_smart_gateway_mt7688.dts
++++ b/arch/mips/boot/dts/ralink/gardena_smart_gateway_mt7688.dts
+@@ -155,10 +155,20 @@ partition@b0000 {
+ 				reg = <0xb0000 0x10000>;
+ 			};
+ 
+-			factory: partition@c0000 {
++			partition@c0000 {
+ 				label = "factory";
+ 				reg = <0xc0000 0x10000>;
+ 				read-only;
++
++				nvmem-layout {
++					compatible = "fixed-layout";
++					#address-cells = <1>;
++					#nvmem-cell-cells = <1>;
++
++					eeprom_factory_0: eeprom@0 {
++						reg = <0x0 0x400>;
++					};
++				};
+ 			};
+ 		};
+ 	};
+@@ -201,5 +211,8 @@ &watchdog {
+ 
+ &wmac {
+ 	status = "okay";
+-	mediatek,mtd-eeprom = <&factory 0x0000>;
++
++	nvmem-cells = <&eeprom_factory_0>;
++	nvmem-cell-names = "eeprom"
++
+ };
+-- 
 2.54.0
 
 
