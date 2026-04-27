@@ -4,87 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F58BFF8850
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 06:17:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 607AAFF8861
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 06:53:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=EIIdNRJ9w0CAu5OepNld+STP1bHH56eIhQu2O8kdVlY=; b=XuMdNaibeT8zVoiA6K6DvctYpW
-	ZO1iUr643uDtbwdWjate9vf+o7pCsue4WxOQHO0w79/wuQJ1pkn5lxLeTiFB1YPdwjZ089PSm06/Q
-	U6Oz82FCNMXZvpqXJpCZFZuXgSGwKfXDv68rL/LTxgNROVi8/rF+BQL3h1NI49XHNeUoz4Jp91A+2
-	CKHbOS1bbXfu+KY8gD0qrka3CI6589DB9xYrp7V0Bj3sYa8c5kcxNFPbvnqGl/CNHKFk7apgR2wbF
-	BCFgrX7kWpxDu8IZS7gmkPf/bv6oDHRfzzhslm3t4DPwdIeXOvWwFBGGfteGpO6Za/iexsP4n6gSo
-	kOn8thQw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Ss2cj82M0/89oGj9sC/6bQnm3td5UO2hvLaBpDMWa60=; b=WkAS03fNxn1RajL9WFlV7I8srz
+	N414vO8q4/7YuOKhd9OiIIJ5h0B19dSym3f+8MpBaKrdknr6elTYIt4245mXkD+cmOMHWKDUu3qlG
+	nQB91LKP4vrFQN2D+oQFwgmH1Hg3xAghdVmh2mD/xye0BakYIT+q2aZR4yyLGMVGuBf09xMDTOsit
+	CX2mSUMWCn1WdoZuPQsDO2WcfaP6KeGgAAqB/QBGVxclT4xri9Ppddkqdzliddn5b0P9HarMuNVvl
+	ToNH9Yb2U6/EaIXasgWKapLLQIBBF9Se4BTScX2bK6wHAxfhLTi0AyADa5OGt2ix9XrGJUHB5NQxZ
+	XgKPzWpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHFHg-0000000GFTd-10z9;
-	Mon, 27 Apr 2026 06:17:32 +0000
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+	id 1wHFqG-0000000GJAK-3yxs;
+	Mon, 27 Apr 2026 06:53:16 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHFHe-0000000GFSh-1MU5
-	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Apr 2026 06:17:31 +0000
-Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-82fbf5d4dc2so6027153b3a.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 26 Apr 2026 23:17:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1777270649; x=1777875449; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=EIIdNRJ9w0CAu5OepNld+STP1bHH56eIhQu2O8kdVlY=;
-        b=RP561/yG/6CSPDRu0FJt46WplLRvwITHqYx3RABtmMh587bTBIQoKsJccRtDgj/1Jp
-         q9sinLSwltTu0D3TIJlorNAEwmu/N10HMe0SdIapdHS0L9mKE/jC666DZmWNsIOHHLnH
-         wXIRr74qbnzCnU/hA8FTTy8kpKJAloWnbCI7o=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777270649; x=1777875449;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=EIIdNRJ9w0CAu5OepNld+STP1bHH56eIhQu2O8kdVlY=;
-        b=Gm6v56EK1iR8sTJTILvsr8C0O4Ltshu8HZOG61ByS4M1IstQXokeSp+gM5No+x9Mtb
-         kxv2/mDXAKQ5OfUU090Svb4e1joxlvwktx25orUKOPlwr+4Yu/vrQ8mLxHiCMb0K58Ex
-         yR4gtfAM2LPzdPbSlBX96YC5tEG9ZQoSIoKBG3K7macEJBDohxtKTH1RKauMwy4TXD7J
-         rI5j0Dkv2ozaF/2XFWb5mtk+ZNChlOOW2KHJEm7VV+sFq/1+EulgGm9MwZcGvJyT/J5J
-         nwBopozoTwGUPK96RHg8MAXV09AYrVcv1WbMm+ImYgNFkwnLdsJweTgTbDsldpolaWBT
-         6q/A==
-X-Forwarded-Encrypted: i=1; AFNElJ/GYUSGwQdRfPuF5dXyRBXqsQEXTC1uDwXNibK/8jkm+zlkSstaySKiCwbiJgYBqaPfERFP9mWFD6/6jMXsxg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzjejmROwaKGfqMl81epxv6PG7ixBQQOz7w7go3BC9VHbfVhV1H
-	mV8l05hBgA6Jaa0icZj8yBYHL3JWeEVYBGK6zOW6AG+dGu9hzaFM44pf2S2jOZ2vXQ==
-X-Gm-Gg: AeBDiesxBH7+pIDXzDVpVGfstWbZBYkxbkmE0K72guMvRbkVf9IXP00VZ4cYIjYPCgW
-	m28mdqj6vQB5V6NVV2NQCUIXkEYCaGLUp8pjhiPorQO6HeRFOASn25B5OdMm7Lj6yvUBQXb/jYt
-	xv1ckQViYxFFBbdMMrl3vXeF3seGJzJZzwVW+C2eMlP3GBY2qhj2u4RH2FPSXwMk47ZKSxk9iZq
-	/5boWtKfmFo35v4nAhQyHsLosYbkHlgObEkpF+WWqfOWfq2CqgypDK3NbkAZzF1EbYppyYnRDnG
-	vt5Zj66sGwn1YMxLu0MCExJn3YZbick9plj0SUqqDGthQ0iJ9gD6mPkGGfh/Tc06rFfyB0G7hNP
-	Q4x00/AzkGNye7FZprv0z54BB4ckA3pkSxdKFGmtmSwRtfTcRUlEBOeD0kCum3mx85crrtCNNML
-	4DSJ9zPruIMdkcGl6rUwiTh1E+Mk+qyU2OjIDUZU7/1LUrDJme5ouUbH+tuUt8wpYizbCT7rzLD
-	42/JDfl+pFp2WLuLp19bjjsCTeYNg==
-X-Received: by 2002:a05:6a00:4b4d:b0:82c:6b46:271d with SMTP id d2e1a72fcca58-82f8c93a983mr44134092b3a.48.1777270649269;
-        Sun, 26 Apr 2026 23:17:29 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:8f3b:cb24:e20a:84bd])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-82f8ea02ef7sm28824635b3a.25.2026.04.26.23.17.27
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 26 Apr 2026 23:17:28 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Linus Walleij <linusw@kernel.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	linux-mediatek@lists.infradead.org,
-	linux-gpio@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] pinctrl: mediatek: common-v1: Directly modify registers to set GPIO direction
-Date: Mon, 27 Apr 2026 14:17:17 +0800
-Message-ID: <20260427061720.2393355-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.54.0.rc2.544.gc7ae2d5bb8-goog
+	id 1wHFq7-0000000GJ0H-0Bkn;
+	Mon, 27 Apr 2026 06:53:15 +0000
+X-UUID: bac97c24420511f1a6de359d7043e138-20260426
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Ss2cj82M0/89oGj9sC/6bQnm3td5UO2hvLaBpDMWa60=;
+	b=awhpednUdviT4JTNQMf2bSgBpOkE3bktTP9Exc/eIowf5YPWHgEQDZ6m9uxwsQMIsPM85VpPV7PWSlfP07zgT5xi6Zicb0vXOWgeO2FBAzzz/IIKdAwrlB4RfrlLk4g+Ii1NXnmZGMw3boyOFoFRwLzDH5jKjX/IXrud7Hmlnn0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.12,REQID:6c2c1cda-bb65-47cf-9e3f-44cbc2358fff,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:e7bac3a,CLOUDID:adbff48f-6df4-4a3d-a7a4-fbdc42d669ce,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|865|888|898,TC:-5,Content:0|
+	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0
+	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: bac97c24420511f1a6de359d7043e138-20260426
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
+	(envelope-from <kuanfu.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 455706387; Sun, 26 Apr 2026 23:53:00 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Mon, 27 Apr 2026 14:52:57 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Mon, 27 Apr 2026 14:52:57 +0800
+From: mtk36707 <kuanfu.lu@mediatek.com>
+To: "Rafael J . Wysocki" <rafael@kernel.org>, Daniel Lezcano
+	<daniel.lezcano@kernel.org>, Zhang Rui <rui.zhang@intel.com>, Lukasz Luba
+	<lukasz.luba@arm.com>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Philipp Zabel
+	<p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Balsam
+ CHIHI <bchihi@baylibre.com>
+CC: <linux-pm@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <jarried.lin@mediatek.com>,
+	<vince-wl.liu@mediatek.com>, <justin.yeh@mediatek.com>, Kuanfu Lu
+	<kuanfu.lu@mediatek.com>
+Subject: [PATCH 1/2] dt-bindings: thermal: mediatek: Add MT8189 LVTS bindings
+Date: Mon, 27 Apr 2026 14:48:29 +0800
+Message-ID: <20260427065236.1685057-1-kuanfu.lu@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260426_231730_503363_D37BFD3C 
-X-CRM114-Status: GOOD (  13.59  )
+X-CRM114-CacheID: sfid-20260426_235307_137865_B18F0EC8 
+X-CRM114-Status: GOOD (  10.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,67 +92,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-pinctrl_gpio_direction_input() / pinctrl_gpio_direction_output() take
-the pinctrl mutex. This causes a gpiochip operations to need to sleep.
-Worse yet, the .can_sleep field in the gpiochip is not set. This causes
-the shared GPIO proxy to trip over, as it uses gpiod_cansleep() to check
-whether it can use a spinlock or needs a mutex. In this case, it ends
-up taking a spinlock, then calls pinctrl_gpio_direction_output(), which
-takes a mutex. This causes a huge warning.
+From: Kuanfu Lu <kuanfu.lu@mediatek.com>
 
-Since the Mediatek hardware has separate clear/set registers, there is
-no risk of clobbering other bits like with a read-modify-write pattern.
-Switch to directly setting the GPIO direction register bits to avoid
-the mutex.
+Add support for the MediaTek MT8189 LVTS thermal controller to
+the device tree bindings. This includes new compatible strings
+and required properties for MT8189.
 
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Signed-off-by: Kuanfu Lu <kuanfu.lu@mediatek.com>
 ---
-Only compile tested. Accidentally fixed the wrong file when my target
-actually used pinctrl-paris.c
----
- drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 12 ++++++++++--
- 1 file changed, 10 insertions(+), 2 deletions(-)
+ .../thermal/mediatek,lvts-thermal.yaml        | 27 +++++++++++++++++--
+ .../thermal/mediatek,lvts-thermal.h           | 20 ++++++++++++++
+ 2 files changed, 45 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-index 3f518dce6d23..9c258e205e39 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-@@ -806,16 +806,24 @@ static const struct pinmux_ops mtk_pmx_ops = {
- 	.gpio_request_enable	= mtk_pmx_gpio_request_enable,
- };
+diff --git a/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml b/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
+index 975235130670..64fc6b5385de 100644
+--- a/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
++++ b/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
+@@ -23,6 +23,8 @@ properties:
+       - mediatek,mt8186-lvts
+       - mediatek,mt8188-lvts-ap
+       - mediatek,mt8188-lvts-mcu
++      - mediatek,mt8189-lvts-ap
++      - mediatek,mt8189-lvts-mcu
+       - mediatek,mt8192-lvts-ap
+       - mediatek,mt8192-lvts-mcu
+       - mediatek,mt8195-lvts-ap
+@@ -61,6 +63,21 @@ properties:
+ allOf:
+   - $ref: thermal-sensor.yaml#
  
-+static int mtk_gpio_direction_input(struct gpio_chip *chip, unsigned offset)
-+{
-+	struct mtk_pinctrl *pctl = gpiochip_get_data(chip);
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt8189-lvts-ap
++              - mediatek,mt8189-lvts-mcu
++    then:
++      properties:
++        nvmem-cells:
++          minItems: 2
 +
-+	return mtk_pmx_gpio_set_direction(pctl->pctl_dev, NULL, offset, true);
-+}
++        nvmem-cell-names:
++          minItems: 2
 +
- static int mtk_gpio_direction_output(struct gpio_chip *chip,
- 					unsigned offset, int value)
- {
-+	struct mtk_pinctrl *pctl = gpiochip_get_data(chip);
- 	int ret;
+   - if:
+       properties:
+         compatible:
+@@ -78,6 +95,10 @@ allOf:
+         nvmem-cell-names:
+           maxItems: 1
  
- 	ret = mtk_gpio_set(chip, offset, value);
- 	if (ret)
- 		return ret;
++      required:
++          - clocks
++          - resets
++
+   - if:
+       properties:
+         compatible:
+@@ -94,12 +115,14 @@ allOf:
+         nvmem-cell-names:
+           minItems: 2
  
--	return pinctrl_gpio_direction_output(chip, offset);
-+	return mtk_pmx_gpio_set_direction(pctl->pctl_dev, NULL, offset, true);
- }
++      required:
++          - clocks
++          - resets
++
+ required:
+   - compatible
+   - reg
+   - interrupts
+-  - clocks
+-  - resets
+   - nvmem-cells
+   - nvmem-cell-names
  
- static int mtk_gpio_get_direction(struct gpio_chip *chip, unsigned offset)
-@@ -895,7 +903,7 @@ static const struct gpio_chip mtk_gpio_chip = {
- 	.request		= gpiochip_generic_request,
- 	.free			= gpiochip_generic_free,
- 	.get_direction		= mtk_gpio_get_direction,
--	.direction_input	= pinctrl_gpio_direction_input,
-+	.direction_input	= mtk_gpio_direction_input,
- 	.direction_output	= mtk_gpio_direction_output,
- 	.get			= mtk_gpio_get,
- 	.set			= mtk_gpio_set,
+diff --git a/include/dt-bindings/thermal/mediatek,lvts-thermal.h b/include/dt-bindings/thermal/mediatek,lvts-thermal.h
+index 350f98178b26..3f493d7f13b3 100644
+--- a/include/dt-bindings/thermal/mediatek,lvts-thermal.h
++++ b/include/dt-bindings/thermal/mediatek,lvts-thermal.h
+@@ -45,6 +45,26 @@
+ #define MT8188_AP_CAM1		6
+ #define MT8188_AP_CAM2		7
+ 
++#define MT8189_MCU_BIG_CPU1     0
++#define MT8189_MCU_BIG_CPU2     1
++#define MT8189_MCU_BIG_CPU3     2
++#define MT8189_MCU_BIG_CPU4     3
++#define MT8189_MCU_LITTLE_CPU1  4
++#define MT8189_MCU_LITTLE_CPU2  5
++#define MT8189_MCU_LITTLE_CPU3  6
++#define MT8189_MCU_LITTLE_CPU4  7
++#define MT8189_MCU_LITTLE_CPU5  8
++#define MT8189_MCU_LITTLE_CPU6  9
++#define MT8189_MCU_LITTLE_CPU7  10
++#define MT8189_MCU_LITTLE_CPU8  11
++
++#define MT8189_AP_SOC1          12
++#define MT8189_AP_SOC2          13
++#define MT8189_AP_SOC3          14
++#define MT8189_AP_APU           15
++#define MT8189_AP_GPU1          16
++#define MT8189_AP_GPU2          17
++
+ #define MT8195_MCU_BIG_CPU0     0
+ #define MT8195_MCU_BIG_CPU1     1
+ #define MT8195_MCU_BIG_CPU2     2
 -- 
-2.54.0.rc2.544.gc7ae2d5bb8-goog
+2.45.2
 
 
