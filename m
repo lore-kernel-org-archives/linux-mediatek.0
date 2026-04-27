@@ -4,81 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B13D4FF8868
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 11:22:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19D7EFF8860
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 11:31:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WVMP13AqW+8vsvNiprb+sLTerRElQjeibUZgvRaskGQ=; b=ITk9qQFB8/K0ML9DKghnEkWuLy
-	+8A3emaXbsBaTAa1krVMxuX7rtRWc+6MXaGjuNu8PujPAzWC6T6sDiW0J8W52FRclhNAODvDktsQC
-	J2kIVvK5/MEhrGyduhBJqh8BF/29ykZ1PX+w8kDOrWZmeYy7WmuxWwgxv8IpZOKsiJW2v/8jAkoqE
-	oey5Tygo+0KMGab1Yer5tGuEalnbHravbLEkcOfpYGtmp4fZzl21gznu8Tkkh2fEpZ5PXIjJRl/Na
-	MMTdv2XuP1+v+I7sWXvnvoEYmmhuEitlKclkeYqB4sHfpUTHztIrU4XSJVcQzRET1xEJMyKq6Nclh
-	KZMYIUqg==;
+	bh=oczoMnPReZaIdQXexoCfPQETvMC08e4WB9/AECl0kH0=; b=j00b3jHN/09FLylsFelLWuEUWw
+	tVqg941BM+HORMs614jf46ApNxk5jz19gXBpeAe5iaUSj3jWHiLq7ReIuhc3ym0J1UAKgW4UOVbO5
+	LTunqkA8SfsuBEI98dse6braUf36UC+Ji+fftKv1BthIgWXLJ30eMndSsdpcK4XezIONjcOhZ0YeY
+	17+OWJNznr6s6HdNpwjRxdvUHq3dLunX3fUH4ZxdE/NQl5i1GDZ7j6t1B1lYE5DMkykSRoq8FU8w9
+	hDbSctU2R4J0/d3415WHRpM0fTU+EsaixeYi/fXtbb4DTpB+UiSzOG1u4diDV+qSOwFD/KBr6xuxa
+	KIj2lq2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHK2W-0000000Gmj7-2LXq;
-	Mon, 27 Apr 2026 11:22:12 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1wHKBj-0000000Gnq3-3aUv;
+	Mon, 27 Apr 2026 11:31:43 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHK2O-0000000Gmb5-3fuI;
-	Mon, 27 Apr 2026 11:22:06 +0000
-X-UUID: 5074fa4e422b11f1a6de359d7043e138-20260427
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=WVMP13AqW+8vsvNiprb+sLTerRElQjeibUZgvRaskGQ=;
-	b=oSHbBolwiwbRE0o0oIt7HzrnPSS6EXuuITyM2sUwbCduIsRi4+6jJWFMFcedBZxz43tKwmk2G0SvxbAzyHk3hsDZCaZaYXeFQMR/AmirrO5PGKH6AbY+vbB+M33vSy8Gk+ZuLuvI3tapqxonYw1F9fi6WzqEqw5OqztMkfkXLmc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:4fb8b8af-67b2-4420-b37f-50fcb2b16573,IP:0,U
-	RL:0,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:e7bac3a,CLOUDID:942cab64-469e-4eb6-aeb8-4b21454b0f32,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|865|888|898,TC:-5,Cont
-	ent:0|15|50,EDM:2,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,
-	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 5074fa4e422b11f1a6de359d7043e138-20260427
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
-	(envelope-from <jay.liu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1580109404; Mon, 27 Apr 2026 04:22:02 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 27 Apr 2026 19:21:59 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 27 Apr 2026 19:21:58 +0800
-From: Jay Liu <jay.liu@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
-	<p.zabel@pengutronix.de>, Maarten Lankhorst
-	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Krzysztof
- Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, Jay Liu <jay.liu@mediatek.com>, CK Hu
-	<ck.hu@mediatek.com>
-Subject: [PATCH v5 6/6] drm/mediatek: Add TDSHP component support for MT8196
-Date: Mon, 27 Apr 2026 19:20:20 +0800
-Message-ID: <20260427112131.23423-7-jay.liu@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20260427112131.23423-1-jay.liu@mediatek.com>
-References: <20260427112131.23423-1-jay.liu@mediatek.com>
+	id 1wHKBh-0000000GnoS-0UvL
+	for linux-mediatek@lists.infradead.org;
+	Mon, 27 Apr 2026 11:31:42 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-488ba840146so91822905e9.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 27 Apr 2026 04:31:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1777289499; x=1777894299; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=oczoMnPReZaIdQXexoCfPQETvMC08e4WB9/AECl0kH0=;
+        b=LodDXEkCAyP6uzan+Rt1xbHXkvY8g8wmluuprKXSBPVztQRYAQjCwm7PQQs+LtSPiz
+         TKpKrrue4yGv4DnyEJOMEIHPspA8/ZDoo13cx1KxnuawqHdFfbYLdX1u0w0e6YvsHIGB
+         lI4JzenJsRnZiByPhYM6hPO0Z6lwBnl1iPpQAJ25s4gslQQIGE96hV5/UdDlMuBVbRW+
+         clJo5aaHXCMkBHYGyJFVmn98QVKoS5zhpAUT6ob+XLEPZFFOsBai36NFZ5kJAqLn0pPf
+         3TX1N6RQ4BjvkiCnzNwhqgAXtwSORxVax1DmtfdAncTXfDWV57+dNApf3VErPCYli4+3
+         4YzA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1777289499; x=1777894299;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=oczoMnPReZaIdQXexoCfPQETvMC08e4WB9/AECl0kH0=;
+        b=kqUPQgDivG/3D2KfK3ZAUtZ+qQO25+ggihZmSWItIZs96jdWSZ9dhtdA9NoS3oUQQE
+         hgNSvjsBIyuscnCFg72ee3JgXnZBtRaNAjtbIhS3WylQAdSpsjot42uSxOoF2B+fr5+K
+         HmtH79fEWur7ooCmZLqdsTnipvHltw7ZNCDtX6y7xVUfv5h/H5f/kQVU7NwBC2h/bj3v
+         LCu6jsUjkxG/hdG/fH9Fby5LK2dfZVeRg2/4j7To8ysJ/oPbjSrpWAeg5Y1QNA7L091r
+         dDyg3AIHStgOh6ynKONpEfGqRdG4zR4STGRzSUbvYx4UGzRcbh+eP1lJuhfqY/wEpmUq
+         trUw==
+X-Forwarded-Encrypted: i=1; AFNElJ80nRX1YgXRQLKKAXCHtWkjBNksIutJj12yiM40/Z6m6lNNd1oeQjhUEdhl3C1t4NI4HyIqDZy7GhL2LNLvWw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx/Izou2tPB+nPEmCiJnOq5BcU9kvRv9+wgMGUblYDk5ucca8mR
+	W0sUwrLmtWo8oD7W8/I3SgYg74EvKuCT7P0yA78gxOtN8DQmiymRftoF
+X-Gm-Gg: AeBDieutXcTKnmpnONLwwTfXohBahjQ0w1vscGtUsIhZRt8VzJpWiwi0jbwUnqEIhNB
+	m6wEy8NJu34oSES8/+t4MoOZYcWKEsPcZRdRogmEld6qHlmeYa6vS5R6PHCaBd7Uq0tG3jYtCX+
+	OoQ8I3RwRS5eqJD7FNKZ6ZCrdZ2rZiC0TyY24hw+W5ZpZVCbH1pQVI38lBe/PVPOuocrfHuFZmj
+	XTpV7hTLiR4SykCE3c1wfsvaE+NDHtY/3CLzrEKutr1IxFwVtWKA/YLLt8ouK48P8CwiaFEP0A1
+	wcmBRGwe+z7YZp56Rb9U016zIe5bvq85VMKrjQ4LG27txy2RgC5X7ogS787zHMMA/KdNM86daaI
+	6BF1gEQAr6O0jDMJDYJXB+Df3e6UT2QRYRJ0jLYa+chABiC47cynwKiwe25+x1KsWLwfA2ZD3kr
+	GPfdRFZ3TrSzAxpQeshmwW5Ph3766liRw4jw==
+X-Received: by 2002:a05:600c:a31a:b0:488:b241:2c5f with SMTP id 5b1f17b1804b1-488fb785b7emr456261975e9.26.1777289498891;
+        Mon, 27 Apr 2026 04:31:38 -0700 (PDT)
+Received: from pc ([196.235.239.18])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-48a59816b71sm221145305e9.1.2026.04.27.04.31.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 27 Apr 2026 04:31:38 -0700 (PDT)
+Date: Mon, 27 Apr 2026 12:31:34 +0100
+From: Salah Triki <salah.triki@gmail.com>
+To: Andy Shevchenko <andriy.shevchenko@intel.com>
+Cc: Jonathan Cameron <jic23@kernel.org>,
+	David Lechner <dlechner@baylibre.com>,
+	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
+	Andy Shevchenko <andy@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] iio: adc: mt6359: fix unchecked return value in
+ mt6358_read_imp
+Message-ID: <ae9JFucpXBPwwGzr@pc>
+References: <20260427085458.38546-1-salah.triki@gmail.com>
+ <ae8pAGBGGOvsURka@ashevche-desk.local>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ae8pAGBGGOvsURka@ashevche-desk.local>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260427_042204_969011_F33C90A3 
-X-CRM114-Status: GOOD (  12.84  )
+X-CRM114-CacheID: sfid-20260427_043141_187822_17AABDCB 
+X-CRM114-Status: GOOD (  20.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,134 +106,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add TDSHP component support for MT8196.
-TDSHP is a hardware module designed to enhance the sharpness and
-clarity of displayed images by analyzing and improving edges and
-fine details in frames.
+On Mon, Apr 27, 2026 at 12:14:40PM +0300, Andy Shevchenko wrote:
+> On Mon, Apr 27, 2026 at 09:54:57AM +0100, Salah Triki wrote:
+> > In mt6358_read_imp(), the return value of regmap_read() is currently
+> > ignored. This is problematic because if the bus read fails the variable
+> > val_v remains uninitialized.
+> > 
+> > The function subsequently assigns this uninitialized stack value to
+> > *vbat, leading to incorrect measurement results being reported to
+> > the IIO subsystem without any error indication.
+> > 
+> > Update the function to check the return value of regmap_read(). Ensure
+> > that mt6358_stop_imp_conv() is still called to clean up the hardware
+> > state before returning the error code.
+> 
+> Sounds like this deserves a Fixes tag, but the problem is that the whole driver
+> is written like this. Why does having this fixed make it special?
+> 
+> -- 
+> With Best Regards,
+> Andy Shevchenko
+> 
+> 
 
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Jay Liu <jay.liu@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_ddp_comp.c | 49 +++++++++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_ddp_comp.h |  1 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.c  |  2 +
- 3 files changed, 52 insertions(+)
+You are right, Andy. I noticed that several other functions in this driver
+share the same issue. I will send a V2 that addresses all unchecked
+regmap_read() calls in this file and I will include the Fixes tag. Thanks
+for the feedback.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-index 5cbc4b995d66..bd2b288938bf 100644
---- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-@@ -57,6 +57,14 @@
- #define POSTMASK_RELAY_MODE				BIT(0)
- #define DISP_REG_POSTMASK_SIZE			0x0030
- 
-+#define DISP_REG_TDSHP_CTRL			0x0100
-+#define DISP_TDSHP_CTRL_EN			BIT(0)
-+#define DISP_REG_TDSHP_CFG			0x0110
-+#define DISP_TDSHP_RELAY_MODE			BIT(0)
-+#define DISP_REG_TDSHP_INPUT_SIZE		0x0120
-+#define DISP_REG_TDSHP_OUTPUT_OFFSET		0x0124
-+#define DISP_REG_TDSHP_OUTPUT_SIZE		0x0128
-+
- #define DISP_REG_UFO_START			0x0000
- #define UFO_BYPASS				BIT(2)
- 
-@@ -261,6 +269,37 @@ static void mtk_postmask_stop(struct device *dev)
- 	writel_relaxed(0x0, priv->regs + DISP_REG_POSTMASK_EN);
- }
- 
-+static void mtk_disp_tdshp_config(struct device *dev, unsigned int w,
-+				  unsigned int h, unsigned int vrefresh,
-+				  unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
-+{
-+	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
-+
-+	mtk_ddp_write(cmdq_pkt, w << 16 | h, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_TDSHP_INPUT_SIZE);
-+	mtk_ddp_write(cmdq_pkt, w << 16 | h, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_TDSHP_OUTPUT_SIZE);
-+	mtk_ddp_write(cmdq_pkt, 0x0, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_TDSHP_OUTPUT_OFFSET);
-+
-+	mtk_ddp_write(cmdq_pkt, DISP_TDSHP_RELAY_MODE, &priv->cmdq_reg,
-+		      priv->regs, DISP_REG_TDSHP_CFG);
-+}
-+
-+static void mtk_disp_tdshp_start(struct device *dev)
-+{
-+	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
-+
-+	writel(DISP_TDSHP_CTRL_EN, priv->regs + DISP_REG_TDSHP_CTRL);
-+}
-+
-+static void mtk_disp_tdshp_stop(struct device *dev)
-+{
-+	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
-+
-+	writel(0, priv->regs + DISP_REG_TDSHP_CTRL);
-+}
-+
- static void mtk_ufoe_start(struct device *dev)
- {
- 	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
-@@ -268,6 +307,14 @@ static void mtk_ufoe_start(struct device *dev)
- 	writel(UFO_BYPASS, priv->regs + DISP_REG_UFO_START);
- }
- 
-+static const struct mtk_ddp_comp_funcs ddp_tdshp = {
-+	.clk_enable = mtk_ddp_clk_enable,
-+	.clk_disable = mtk_ddp_clk_disable,
-+	.config = mtk_disp_tdshp_config,
-+	.start = mtk_disp_tdshp_start,
-+	.stop = mtk_disp_tdshp_stop,
-+};
-+
- static const struct mtk_ddp_comp_funcs ddp_aal = {
- 	.clk_enable = mtk_aal_clk_enable,
- 	.clk_disable = mtk_aal_clk_disable,
-@@ -441,6 +488,7 @@ static const char * const mtk_ddp_comp_stem[MTK_DDP_COMP_TYPE_MAX] = {
- 	[MTK_DISP_POSTMASK] = "postmask",
- 	[MTK_DISP_PWM] = "pwm",
- 	[MTK_DISP_RDMA] = "rdma",
-+	[MTK_DISP_TDSHP] = "tdshp",
- 	[MTK_DISP_UFOE] = "ufoe",
- 	[MTK_DISP_WDMA] = "wdma",
- 	[MTK_DP_INTF] = "dp-intf",
-@@ -496,6 +544,7 @@ static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_DRM_ID_MAX]
- 	[DDP_COMPONENT_RDMA1]		= { MTK_DISP_RDMA,		1, &ddp_rdma },
- 	[DDP_COMPONENT_RDMA2]		= { MTK_DISP_RDMA,		2, &ddp_rdma },
- 	[DDP_COMPONENT_RDMA4]		= { MTK_DISP_RDMA,		4, &ddp_rdma },
-+	[DDP_COMPONENT_TDSHP0]		= { MTK_DISP_TDSHP,		0, &ddp_tdshp },
- 	[DDP_COMPONENT_UFOE]		= { MTK_DISP_UFOE,		0, &ddp_ufoe },
- 	[DDP_COMPONENT_WDMA0]		= { MTK_DISP_WDMA,		0, NULL },
- 	[DDP_COMPONENT_WDMA1]		= { MTK_DISP_WDMA,		1, NULL },
-diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
-index 7244b55f6732..cf79b6f689d0 100644
---- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
-@@ -38,6 +38,7 @@ enum mtk_ddp_comp_type {
- 	MTK_DISP_POSTMASK,
- 	MTK_DISP_PWM,
- 	MTK_DISP_RDMA,
-+	MTK_DISP_TDSHP,
- 	MTK_DISP_UFOE,
- 	MTK_DISP_WDMA,
- 	MTK_DPI,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index c86a3f54f35b..1006834780e4 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -794,6 +794,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	  .data = (void *)MTK_DISP_RDMA },
- 	{ .compatible = "mediatek,mt8195-disp-rdma",
- 	  .data = (void *)MTK_DISP_RDMA },
-+	{ .compatible = "mediatek,mt8196-disp-tdshp",
-+	  .data = (void *)MTK_DISP_TDSHP },
- 	{ .compatible = "mediatek,mt8173-disp-ufoe",
- 	  .data = (void *)MTK_DISP_UFOE },
- 	{ .compatible = "mediatek,mt8173-disp-wdma",
--- 
-2.46.0
-
+Best Regards
+Salah Triki
 
