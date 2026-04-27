@@ -4,83 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F388FF8862
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 11:15:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BC12FF8861
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 11:21:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=86q4Zuo6aBd/L3i4NYi1P6U8VCnSNpXDSdHTFbafsWg=; b=Po728Q14krdWZxZy+sevNzcqQ9
-	K4zgER94gk7EJW+hBbrdUp//MR0LzPAo5VcDOAmiarxC++AJoz3/UbSftYosTfmZDDFQw/3FXGDLG
-	iDkX7lwuPmNepLkjqbyolIfQmXo+PAtY4QYZxeMP32cArmlpE8vgwRDmvKoNIH0NsQMVcaCGSOxqN
-	ghVFurn+Yx5SIoBh9MKeEzalOaIGGx0hGttInhikEnqFDAvZBzI86q5gSmmU98l+SQrEmpkR4eexW
-	mkP0gglF3iPVYu9Tvj10ZGOKFBsB6zggTlju7I6BPvdFBbgH/vBcS5Dr30ugd7uwJqPGhlunmNiLv
-	XxY+lMEA==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=uzzuWVlj0FYbiNj+F9T4fZDJbrozBaIDhDqFdpxQrv0=; b=lFuKM2sAX8hN/6IQIjGSVb2sh3
+	vHR6MUQVPlToSmQh/BnHgaiwMdZ3/AKgcXxp6omm09XzGV9Ncke6tFNDJT2M+9m4NeEPUA7mbYdyV
+	Kkp9V2f8pyPJ78M54alf6K3LeuEyqy5cgbx3BgGm732XDKM+nHnzV5IpOTEb6yczdl/WAL9k6TEuy
+	RPBJ/9FVEXqfBJokiOvmQOJB1eSXW1jZF7MZ8J/vHJDccY6MkTkqjWMIiVvt0E30S1eQSflk02EPD
+	q711U/8xBU50wG6x0kWdvH4rrs4V6D1czyAvrfcmQEeIyqDSrSK2M5JpdxVk9XMVCj31aUzpdxPdJ
+	NaMEdn6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHJw6-0000000GlQH-2TDg;
-	Mon, 27 Apr 2026 11:15:34 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1wHK28-0000000GmTj-0Uwg;
+	Mon, 27 Apr 2026 11:21:48 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHJvr-0000000GlCT-460T;
-	Mon, 27 Apr 2026 11:15:21 +0000
-X-UUID: 5ceb1f3e422a11f19e7563141e833ce8-20260427
+	id 1wHK24-0000000GmSj-3zvk;
+	Mon, 27 Apr 2026 11:21:46 +0000
+X-UUID: 418c3772422b11f1a6de359d7043e138-20260427
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=86q4Zuo6aBd/L3i4NYi1P6U8VCnSNpXDSdHTFbafsWg=;
-	b=OVQjYj+ZiDTkPz7CvtX5vf23V0npAozbQ0hR4J0zVbzWt0nZQKK4CH3nzAjyJ0daZBD8l5G/tByEmJsspmOEbkTKzlIG4VTVgQZugDg/uu8cb61DNuu0ri86W/Zzm9AbOv9ug4y8EPRP671g92/sSbXry5exTJNXficWbYhilMo=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=uzzuWVlj0FYbiNj+F9T4fZDJbrozBaIDhDqFdpxQrv0=;
+	b=WrX7tz0SWb1hckN8mnyw6gmTQiX3taGOFWKcMQ0KsTeIHVAsNOd+sGlnMXfDMl9YQS4mhk1HrYNlF4r4ASy7QMMSSPvL1vHIO3zeCufN82hzZ2baDqftwaFU5vGAVAP8hdmXedgCrTRqhywN/Q9fqut7r6XEL7owF9FC0rH3R40=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:efa2ca92-1e4c-4318-81d5-fad02c382d34,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:e7bac3a,CLOUDID:607d82be-65a8-4b41-ac18-3671578a914d,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|865|888|898,TC:-5,Cont
-	ent:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0
-	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.3.12,REQID:34ff783f-1431-4633-982a-4175d993aaa8,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACT
+	ION:release,TS:-50
+X-CID-META: VersionHash:e7bac3a,CLOUDID:c12bab64-469e-4eb6-aeb8-4b21454b0f32,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|865|888|898,TC:-5,Content:0|
+	15|50,EDM:2,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
+	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 5ceb1f3e422a11f19e7563141e833ce8-20260427
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <xiangzhi.tang@mediatek.com>)
+X-UUID: 418c3772422b11f1a6de359d7043e138-20260427
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
+	(envelope-from <jay.liu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 976948990; Mon, 27 Apr 2026 04:15:14 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+	with ESMTP id 2066642690; Mon, 27 Apr 2026 04:21:37 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 27 Apr 2026 19:15:11 +0800
+ 15.2.2562.29; Mon, 27 Apr 2026 19:21:34 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 27 Apr 2026 19:15:10 +0800
-From: Xiangzhi Tang <xiangzhi.tang@mediatek.com>
-To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
-	<mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>, Krzysztof
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Mon, 27 Apr 2026 19:21:33 +0800
+From: Jay Liu <jay.liu@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+	<p.zabel@pengutronix.de>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Krzysztof
  Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
  Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Xiangzhi Tang
-	<Xiangzhi.Tang@mediatek.com>
-CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Hailong Fan
-	<Hailong.Fan@mediatek.com>, Huayu Zong <Huayu.Zong@mediatek.com>, Jarried Lin
-	<Jarried.Lin@mediatek.com>, Justin Yeh <Justin.Yeh@mediatek.com>, Vince-WL
- Liu <Vince-WL.Liu@mediatek.com>, Xiangzhi Tang <xiangzhi.tang@mediatek.com>
-Subject: [PATCH v4 7/7] MAINTAINERS: Add entry for MediaTek VCP remoteproc driver
-Date: Mon, 27 Apr 2026 19:04:46 +0800
-Message-ID: <20260427111446.22955-8-xiangzhi.tang@mediatek.com>
+	<angelogioacchino.delregno@collabora.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, Jay Liu <jay.liu@mediatek.com>
+Subject: [PATCH v5 0/6] drm/mediatek: Add PQ components support for MT8196
+Date: Mon, 27 Apr 2026 19:20:14 +0800
+Message-ID: <20260427112131.23423-1-jay.liu@mediatek.com>
 X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20260427111446.22955-1-xiangzhi.tang@mediatek.com>
-References: <20260427111446.22955-1-xiangzhi.tang@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260427_041520_117754_67002338 
-X-CRM114-Status: UNSURE (   8.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260427_042144_996378_153979EB 
+X-CRM114-Status: GOOD (  13.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,40 +90,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add maintainer entry for the MediaTek Video Companion Processor
-(VCP) remoteproc driver, including the device tree bindings,
-firmware IPC interface, remoteproc driver, and public headers.
+This series adds Picture Quality (PQ) component support for the MT8196 SoC,
+including device tree bindings and driver implementations for GAMMA, DITHER,
+CCORR, and TDSHP modules.
 
-Signed-off-by: Xiangzhi Tang <xiangzhi.tang@mediatek.com>
----
- MAINTAINERS | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+Patch 1: Add GAMMA compatible string for MT8196
+Patch 2: Add DITHER compatible string for MT8196
+Patch 3: Add CCORR compatible string for MT8196
+Patch 4: Add TDSHP dt-binding documentation
+Patch 5: Add support for multiple CCORR components
+Patch 6: Add TDSHP driver support for MT8196
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 62b89d0013d2..4e27fcca28f8 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3065,6 +3065,20 @@ N:	mtk
- N:	mt[2678]
- K:	mediatek
- 
-+ARM/MEDIATEK VCP REMOTEPROC DRIVER
-+M:	Xiangzhi Tang <xiangzhi.tang@mediatek.com>
-+M:	Matthias Brugger <matthias.bgg@gmail.com>
-+M:	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+L:	linux-remoteproc@vger.kernel.org
-+L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
-+L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
-+S:	Maintained
-+F:	Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.yaml
-+F:	drivers/firmware/mtk-vcp-ipc.c
-+F:	drivers/remoteproc/mtk_vcp*
-+F:	include/linux/firmware/mediatek/mtk-vcp-ipc.h
-+F:	include/linux/remoteproc/mtk_vcp_public.h
-+
- ARM/Mediatek USB3 PHY DRIVER
- M:	Chunfeng Yun <chunfeng.yun@mediatek.com>
- L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
+Architecture notes:
+MT8196 display pipeline includes two CCORR instances that must be chained
+in the hardware path, but the CTM API only configures one. Patch 5 ensures
+the second CCORR instance does not interfere with the configured one.
+
+Testing:
+- Verified dt-bindings pass dt_binding_check
+- Tested display pipeline with all PQ components on MT8196 EVB
+- Confirmed color correction (CCORR CTM and GAMMA LUT) functionality
+- Confirmed sharpness enhancement (TDSHP) functionality in relay mode
+- Note: dtbs_check will be validated when MT8196 DTS is upstreamed
+
+Changes in v5:
+- Cover letter: Fix subject spelling and add subsystem prefix
+- tdshp dt-binding: Replace 'disp-tdshp' with 'tdshp' in dt-binding (suggested by Krzysztof)
+- Add complete version history and lore links for tracking (suggested by Krzysztof)
+
+Changes in v4:
+- tdshp dt-binding: Remove unused 'Sibling' description (suggested by Krzysztof)
+- tdshp dt-binding: Use enum directly instead of items list for compatible property
+- tdshp dt-binding: Fix indentation and remove extra blank line in example section
+- ccorr driver: Rebase on linux-next to resolve conflicts
+
+Changes in v3:
+- Fix dt_binding_check errors in all binding patches
+- Remove incorrect Signed-off-by line
+- Move standalone ccorr fix out of this series
+
+Changes in v2:
+- Optimize ccorr ctm_set process to avoid affecting other SoCs
+- Remove unnecessary code from tdshp driver
+- Update tdshp dt-bindings (clocks, description, examples)
+
+Link to v4: https://lore.kernel.org/all/20260324125315.4715-1-jay.liu@mediatek.com/
+Link to v3: https://lore.kernel.org/all/20250808125512.9788-1-jay.liu@mediatek.com/
+Link to v2: https://lore.kernel.org/all/20250727071609.26037-1-jay.liu@mediatek.com/
+Link to v1: https://lore.kernel.org/all/20250219092040.11227-1-jay.liu@mediatek.com/
+
+Dependencies:
+This series depends on the MT8196 display pipeline foundation patches [1].
+
+[1] "Add display path components support for MT8196"
+    https://patchwork.kernel.org/project/linux-mediatek/list/?series=955361
+
+Jay Liu (6):
+  dt-bindings: display: mediatek: gamma: Add support for MT8196
+  dt-bindings: display: mediatek: dither: Add support for MT8196
+  dt-bindings: display: mediatek: ccorr: Add support for MT8196
+  dt-bindings: display: mediatek: tdshp: Add support for MT8196
+  drm/mediatek: Support multiple CCORR component
+  drm/mediatek: Add TDSHP component support for MT8196
+
+ .../display/mediatek/mediatek,ccorr.yaml      |  1 +
+ .../display/mediatek/mediatek,dither.yaml     |  1 +
+ .../display/mediatek/mediatek,gamma.yaml      |  1 +
+ .../display/mediatek/mediatek,tdshp.yaml      | 46 ++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_crtc.c           |  5 +-
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.c       | 52 ++++++++++++++++++-
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.h       |  8 +--
+ drivers/gpu/drm/mediatek/mtk_disp_ccorr.c     |  6 ++-
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  2 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  2 +
+ 10 files changed, 116 insertions(+), 8 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,tdshp.yaml
+
 -- 
 2.46.0
 
