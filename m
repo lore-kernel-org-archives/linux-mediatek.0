@@ -4,73 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5FC7FF8861
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 09:15:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C461FF8861
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 10:33:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kX3akctXS5o2mju3h0uKTaPUyivHAkjE2bG1GzpTBXQ=; b=iXboN3SS2YCZO/2lwaYkLnc8R7
-	7g1xV5fbh1wHIXJoylIYfaCkTEQH1+8CSuDW2rMuk6UkVK82etZ5pcyjCjG0dsYNTnSfEbI9sZrKE
-	4RfPQxTsC+wGaT4dlD14da94KffDycWtzyRkwcSAThrRfm5p4ZALZgzXd35OmQADMAd5ZxINovFCr
-	hoFJ+/PwmLX44glMdavsVTxbCK5smzWFsLghhvAlePBJ8NtvZOUetZU2xH2ZCGbo1g5ns8IhGsrjg
-	bb3gZz85Elgls1pgcRBZ1ei6P61FjoNEH71pJBBGF9gWzumJaKDR7mDgq/6JP5rdtXZ/o0YHEv/xj
-	hYWKwNhw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=rjUe+40tU8KgywhMGb5EBcnInYwRid7F76KcJIk5PoY=; b=BWvMgklrkeDT+G
+	GZ/1qPaxj6cijoSVNfMkKRkMdn9EKBIPjv5vuSMY2YqgyFSUQtv2HOX8Vn2VwflA2vXuaMp7iKn2P
+	ncw19sa9WfBGOG/zLrm6GGPWhT/mXnCNCFH7iwtDharVoDW/kNka/kP/wE+Hce5qeyqHqaxUaqI3E
+	c7KkaV0TS+z0Hym+PsGu2rVBb2HIRGkP9hWeW7GNvK92/T4OqWL018fb/8VvprFtdwhmEmLjEU6Yt
+	kPSBHp9oajtba2Kjb7vpEM1mRfinGsvdol9B08uEQNkofi1/x8c578tgFneNsdq7yoiwrnXK7Sfkt
+	sIkhT+mQNOs3OJaDGUyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHI3U-0000000GYHf-3eba;
-	Mon, 27 Apr 2026 09:15:04 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1wHJH6-0000000GhUQ-29u8;
+	Mon, 27 Apr 2026 10:33:12 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHI3S-0000000GYFX-2jx1
+	id 1wHJH3-0000000GhTY-0PzT
 	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Apr 2026 09:15:03 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1wHI31-000151-3b; Mon, 27 Apr 2026 11:14:35 +0200
-Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1wHI2y-007Sug-0S;
-	Mon, 27 Apr 2026 11:14:32 +0200
-Received: from pza by lupine with local (Exim 4.98.2)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1wHI2y-000000004DH-0Dxa;
-	Mon, 27 Apr 2026 11:14:32 +0200
-Message-ID: <871996c5a57223294c584c0ff344efd30b3b982b.camel@pengutronix.de>
-Subject: Re: [PATCH 2/2] thermal: mediatek: lvts: Add MT8189 support
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: mtk36707 <kuanfu.lu@mediatek.com>, "Rafael J . Wysocki"
- <rafael@kernel.org>,  Daniel Lezcano <daniel.lezcano@kernel.org>, Zhang Rui
- <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,  Rob Herring
- <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>,  Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Balsam CHIHI <bchihi@baylibre.com>
-Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, jarried.lin@mediatek.com, 
-	vince-wl.liu@mediatek.com, justin.yeh@mediatek.com
-Date: Mon, 27 Apr 2026 11:14:31 +0200
-In-Reply-To: <20260427065236.1685057-2-kuanfu.lu@mediatek.com>
-References: <20260427065236.1685057-1-kuanfu.lu@mediatek.com>
-	 <20260427065236.1685057-2-kuanfu.lu@mediatek.com>
+	Mon, 27 Apr 2026 10:33:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id C257344539
+	for <linux-mediatek@lists.infradead.org>; Mon, 27 Apr 2026 10:33:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9899AC2BCC6
+	for <linux-mediatek@lists.infradead.org>; Mon, 27 Apr 2026 10:33:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1777285987;
+	bh=sZdY/36jbKK4QMgRBN3Be3QYPzzEjzIo9WdGSHUOuZ8=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=Y0XBdBb6tsh/ct062e3s+3bE94qJ7F0kHpyLoBxLkCN+lfEar/pvjFUd/RKMGyheD
+	 vFw6NYZCVZwYZgk2dntGAr3q/a3O4D0X1ZYamoL6uv/3fjk/449FT/AZ4mFdKBAVLA
+	 nGpH723lrtieknWZbvSUM0wyrqUxqC7B5BO4Eir4/errEGTlMlSvRE07ngkuYcdcu1
+	 NYe3pbVngxZA9cdwKycU7w4eBTBiawdIh5bWStdkIBtrAFuawAifW2OnY2/x0T+BE2
+	 B4XTykxZYm0/rAc5TkD16t7UbtyWEasojnVV55gbxpyzfDyCQMxRq5C/E4ORal1Sv2
+	 3CEvHOLViU28A==
+Received: by mail-lf1-f44.google.com with SMTP id 2adb3069b0e04-5a3af1b7549so12474089e87.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 27 Apr 2026 03:33:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AFNElJ+ggJWv0RifJtu+R2Bij9Lv1PZdTJIqdgSPWKPjlBpZr4DJViPfwhIR0jKCCT41FuivA6gwnzn8gW6MYElwBQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyMdYbkb3E6sW+q4NeB3bGEllVBMaXl1sRrHTmsAMt8mGVAIrnr
+	Qp3+rkbjDrdSzkDmTPzzmD6DtJHKIdTKhp4cjRW58E8pHBxa+isnEdRquDecETyzz0wqktBGfms
+	EtPvWsRgz2xfiDR2h0wMrJFIjVUJ3cSuv9VGkNupGpw==
+X-Received: by 2002:a05:6512:3b91:b0:5a3:f2ed:87cd with SMTP id
+ 2adb3069b0e04-5a4172d0085mr15446256e87.10.1777285986242; Mon, 27 Apr 2026
+ 03:33:06 -0700 (PDT)
+MIME-Version: 1.0
+References: <20260410070935.9540-1-bartosz.golaszewski@oss.qualcomm.com>
+ <trinity-5e6f6a95-e576-4f97-9085-c6de21945eab-1775813076268@trinity-msg-rest-gmx-gmx-live-5cf7d7879b-qwfn5>
+ <CAD++jLnjN-gUdCbmdmLaMYck=sP9wrhT2fFRB0TGCAVGvSsY1w@mail.gmail.com>
+ <dc46f7d784281642aad6d47e79a3e91652eec667@linux.dev> <CAD++jLkz189qT1kJr34ratZT_n20oWEAQg8q0ttQ-VrsFchp7g@mail.gmail.com>
+In-Reply-To: <CAD++jLkz189qT1kJr34ratZT_n20oWEAQg8q0ttQ-VrsFchp7g@mail.gmail.com>
+From: Bartosz Golaszewski <brgl@kernel.org>
+Date: Mon, 27 Apr 2026 12:32:52 +0200
+X-Gmail-Original-Message-ID: <CAMRc=McRuH5Fi-5UQWLRe4+wXKH8qikaYqiqbGXrPOgaifEesw@mail.gmail.com>
+X-Gm-Features: AVHnY4IwzDLYhHPbIaUAVZBlf2N-kg8RzncpCvZK6axdzsTP8InukubITrev7X0
+Message-ID: <CAMRc=McRuH5Fi-5UQWLRe4+wXKH8qikaYqiqbGXrPOgaifEesw@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: mediatek: moore: implement gpio_chip::get_direction()
+To: Linus Walleij <linusw@kernel.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.2-0+deb13u1 
-MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: p.zabel@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260427_021502_684262_4B547A1E 
-X-CRM114-Status: GOOD (  20.22  )
+X-CRM114-CacheID: sfid-20260427_033309_220974_8A636EE6 
+X-CRM114-Status: GOOD (  16.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,75 +80,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: sean.wang@kernel.org, Frank Wunderlich <frank.wunderlich@linux.dev>, bartosz.golaszewski@oss.qualcomm.com, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux@fw-web.de, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mo, 2026-04-27 at 14:48 +0800, mtk36707 wrote:
-> From: Kuanfu Lu <kuanfu.lu@mediatek.com>
->=20
-> Add LVTS thermal support for MediaTek MT8189 by adding MT8189-specific
-> controller/sensor topology and platform data for the MCU and AP domains.
->=20
-> MT8189 differs from previous SoCs in a few aspects, so extend the driver
-> to handle these variations:
-> - Program the hardware thermal shutdown threshold (tshut) using raw units=
-.
-> - Add per-SoC feature flags to skip clock gating and reset control when
->   they are not required, and to enable Stage-3 monitor interrupt setup.
-> - Pass SoC data into lvts_irq_init() and lvts_ctrl_configure() so the
->   initialization can be configured per platform.
->=20
-> This enables monitoring of MT8189 CPU clusters and AP domain sensors
-> (SOC/APU/GPU) with the existing LVTS driver.
->=20
-> Signed-off-by: Kuanfu Lu <kuanfu.lu@mediatek.com>
-> ---
->  drivers/thermal/mediatek/lvts_thermal.c | 142 +++++++++++++++++++++---
->  1 file changed, 129 insertions(+), 13 deletions(-)
->=20
-> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/me=
-diatek/lvts_thermal.c
-> index a9617d5e0077..9dbd9191e3ba 100644
-> --- a/drivers/thermal/mediatek/lvts_thermal.c
-> +++ b/drivers/thermal/mediatek/lvts_thermal.c
-[...]
-> @@ -1470,10 +1482,12 @@ static int lvts_probe(struct platform_device *pde=
-v)
->  	if (IS_ERR(lvts_td->base))
->  		return dev_err_probe(dev, PTR_ERR(lvts_td->base), "Failed to map io re=
-source\n");
-> =20
-> -	lvts_td->reset =3D devm_reset_control_get_by_index(dev, 0);
+On Sun, Apr 19, 2026 at 11:25=E2=80=AFPM Linus Walleij <linusw@kernel.org> =
+wrote:
+>
+> On Mon, Apr 13, 2026 at 6:59=E2=80=AFPM Frank Wunderlich
+> <frank.wunderlich@linux.dev> wrote:
+> > Am 13. April 2026 um 10:01 schrieb "Linus Walleij" <linusw@kernel.org m=
+ailto:linusw@kernel.org?to=3D%22Linus%20Walleij%22%20%3Clinusw%40kernel.org=
+%3E >:
+> > >
+> > > On Fri, Apr 10, 2026 at 11:24 AM Frank Wunderlich
+> > > <frank-w@public-files.de> wrote:
+> > >
+> > > >
+> > > > Gesendet: Freitag, 10. April 2026 um 09:09
+> > > >  Von: "Bartosz Golaszewski" <bartosz.golaszewski@oss.qualcomm.com>
+> > > >  An: "Frank Wunderlich" <linux@fw-web.de>, "Sean Wang" <sean.wang@k=
+ernel.org>, "Linus Walleij" <linusw@kernel.org>, "Matthias Brugger" <matthi=
+as.bgg@gmail.com>, "AngeloGioacchino Del Regno" <angelogioacchino.delregno@=
+collabora.com>, "Bartosz Golaszewski" <brgl@kernel.org>
+> > > >  CC: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org=
+, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, "Bart=
+osz Golaszewski" <bartosz.golaszewski@oss.qualcomm.com>
+> > > >  Betreff: [PATCH] pinctrl: mediatek: moore: implement gpio_chip::ge=
+t_direction()
+> > > >
+> > > >  If the gpio_chip::get_direction() callback is not implemented by t=
+he GPIO
+> > > >  controller driver, GPIOLIB emits a warning.
+> > > >
+> > > >  Implement get_direction() for the GPIO part of pinctrl-moore.
+> > > >
+> > > >  Fixes: 471e998c0e31 ("gpiolib: remove redundant callback check")
+> > > >  Fixes: e623c4303ed1 ("gpiolib: sanitize the return value of gpio_c=
+hip::get_direction()")
+> > > >  Reported-by: Frank Wunderlich <linux@fw-web.de>
+> > > >
+> > > >  please use the email i used for SoB in my linked patch (closes lin=
+k below), the other email i use only for sending patches due to mail provid=
+er limitation.
+> > > >
+> > > I can't fix this up because the closes link isn't working right now.
+> > > Is it the same
+> > > as the one this mail came from frank-w@public-files.de?
+> >
+> > yes, closes-link works for me
+>
+> Fixed up and applied. Will be going in as fix for v7.1.
+>
+> Yours,
+> Linus Walleij
+>
 
-First of all, this should have been:
+Hi Linus!
 
-	lvts_td->reset =3D devm_reset_control_get_exclusive(dev, NULL);
+It seems this one got lost somewhere along the way? I don't see it in
+mainline nor next.
 
-since there is only a single reset control defined in the binding.
-
-> -	if (IS_ERR(lvts_td->reset))
-> -		return dev_err_probe(dev, PTR_ERR(lvts_td->reset), "Failed to get rese=
-t control\n");
-> -
-> +	if (!lvts_data->reset_no_need) {
-> +		lvts_td->reset =3D devm_reset_control_get_by_index(dev, 0);
-
-So this can be changed to
-
-	lvts_td->reset =3D devm_reset_control_get_optional_exclusive(dev, NULL);
-
-instead. There is no need for the reset_no_need parameter at all.
-Whether the reset control is required or not is already specified in
-the device tree bindings.
-
-> +		if (IS_ERR(lvts_td->reset))
-> +			return dev_err_probe(dev, PTR_ERR(lvts_td->reset),
-> +					     "Failed to get reset control\n");
-> +	}
->  	irq =3D platform_get_irq(pdev, 0);
->  	if (irq < 0)
->  		return irq;
-
-regards
-Philipp
+Bart
 
