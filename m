@@ -4,91 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A38CEFF8868
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 20:13:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F897FF8867
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 20:20:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=XX52kU6I+oTtnTaZWgm7ccpRK71cywO/xadAPHW06nA=; b=l0YGz1Yj8QVHkUgejPtJWSmEyI
-	kIQZq3tvI+ohkwmAYTgyIPgwqqN5qYBOZ65mmG9nHl2YYAa3GMSLzmj8ZLxWj1EEafBscMQVyNl3F
-	E1yr7ZG9APZrc/e+w0vE6hCCHtVTPInI8wM9eIRXYucbK3ZfsvjqWhi+AWn+Eu3Lrne5/mi1kVRa5
-	4UniurjqkYsfoQWqQvPXoNC0xLYBMTWecFFHqj/l0TswA30ZHOFkI/agUEWdoB9i3Zn5xJLaFHEbY
-	Eo97BKOgUekKu8sahBj6gaIotrWdnWJNslvU0byKmHJPI6jCnAqQ9Anlb7TvDcEMkb8DnJo3+ipbp
-	DJcsFgUQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=X2bI2UoaLvX4gCevaU7qNOHhhCPcAax0k/u3+iPwhos=; b=VaJJ1GFExCpG7s
+	3w2zVwTeZxsNWlbTPOR38B+y6MYctQltCVL699YgIZgK97a1E1vkwKazKWF0qEMJShh+wUwdi9T/m
+	lmYGZAz4ve93Nysccq1wD4sob9atsJpELZXnJYDiUU+9e+kuLKJOICT196UK8rT5QHFkbypE3gXY/
+	CRNeydEgu5aHZxKGgKfcUpiYDkE3cRuCg/zg6U6zvgUijlxwcFUW2mRZtn7jRt/3ds04ate+FbVUu
+	8ilch64Pwyu7qPz5ka/IVIDvAq5zKdtNzHCM5w+RmQxgZNnJL/0ijuEkOvf0bt9C3Xdr6CeIUKBQ9
+	LAhr6lUJ1Xpb7QV/Ah5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHSKE-0000000061o-1UOf;
-	Mon, 27 Apr 2026 20:13:02 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1wHSRC-000000007Lv-0LlC;
+	Mon, 27 Apr 2026 20:20:14 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHSKC-000000005zs-1DC0
+	id 1wHSRA-000000007Li-1xsR
 	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Apr 2026 20:13:01 +0000
-Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-43d77f6092eso7436049f8f.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Apr 2026 13:12:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1777320778; x=1777925578; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=XX52kU6I+oTtnTaZWgm7ccpRK71cywO/xadAPHW06nA=;
-        b=bfDgfoCjhCydKOopKWJFtcgbRiPJNZLQgOvxvqOmKgsOofgkE/EWouzAv5GH6J2SKO
-         IZjGGChaXtcm4TmYE98Bt3oC/yH+HpRISoybp2jeHP7Qb5JuQZvng7PvLTKRhn0wLC7t
-         rzBw2y7f/D3rKpJo8OxyfcAc2ZPzlS0Ehax/eoXERyX8xodqUw6eLgr0HJD5Gt834xB/
-         vol4Mg/9kN+7s/duwUoNliki1yuJZKopBhk+uDv+K4fytRB03V5zOmcX/+JqxXZRmWD0
-         bD/DZMCrl9nstBjrxviGQ1XE8XCB6rKX6P5lEJrTK4eNYnJzN8ZySPLpbMrFBcLte5ZY
-         s3fg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777320778; x=1777925578;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=XX52kU6I+oTtnTaZWgm7ccpRK71cywO/xadAPHW06nA=;
-        b=L1rV/nIbqDNYtIjPhdnGqCArb9tAf+ARGMUIdyNC45X951hWWDn9cNkbKviQf0nvKh
-         /mrEicUIOetTPKKM6sENWVdVRuCzn4uAOrTIsIlKsxZqte6PGCO5JADABnuHYefDy7KC
-         WMM2miuC+cOgM5KwvgIcqFID4kkSYMw4QtN8s/dMt/sHoE+ucr+dEijadSM5coeUm/4u
-         HMZPx+Mym2A0FxbhJyPsBZWubLlztOvM0TS7RqjaGzCzTVP2DW1CGl3JPauiiid5jnA+
-         LtGpnMMOscruX1uY51E5luCIDHVaDX4b6Q/YL7VjcKJCU91QH/I02+pn75mi1JKbnQ3q
-         qLMg==
-X-Forwarded-Encrypted: i=1; AFNElJ8QDJYDWhOIUQLVLRGZyXaH518oUJxCskWxifYO5DYgTwwaAd6BKLZHbGTsXxzzCN9892fYNwoqLzPQV17+WQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyygjrzT5nn/WAYrpW2ZPhbbpQDqfYJteAOA+vOiSkgpFuu3ThU
-	iYZQOPpfcJ150ld6xkZ1578u8Dg/yXx9zAsYH5qIiAzyiLQ7bV8Mo6qK
-X-Gm-Gg: AeBDievz8buYEFGqB1epp6I17hQ6TOzD0ZnZSWfHc8BQsAA9/kKRFaxr+kUvE2oD+Ur
-	Z3WBvJ00RzDC8PquDmRIWxhNflhAdvqQsrMoQ0TLXkLRuwHoQJoXqSbNNFCLkoshoxvynRrVeGZ
-	4WfVnolIUSHNQ1wdlafd1OyQFmEJBMY8FqjurQyHj6igDCZGIit+mCn1h4WdTwK5IGDTfGex2AX
-	gi9tynZwXx+O8E3gGMvA6dlcqU30rb+EruvMI5EVOh8xMNLV2Gh+bQedefuDqpzcXxDe8FdWcf+
-	NfhZkwDMww6RYFswWjPo2TOwSzWCvxCT1Whscu2qDuEgG+QaNteoFT/+NR4xUqbDR8LA3xo5NYL
-	WANHGCFuGWo5c4Dmy2Q+fb4l0dW0wA3CMXZeUtK49K2wV8Wc10FHzVNpMOeI5xHQjGpSfaW6EzD
-	iy6rc+DYzjoxjhHmaGNVrcm0HoXZZFVeJuD7aiEWkqnvRMXEwQ
-X-Received: by 2002:a05:6000:26d3:b0:43d:7d6f:f535 with SMTP id ffacd0b85a97d-4464b1b84e6mr423171f8f.35.1777320778397;
-        Mon, 27 Apr 2026 13:12:58 -0700 (PDT)
-Received: from localhost.localdomain ([196.235.239.18])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4463d02f270sm726826f8f.9.2026.04.27.13.12.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Apr 2026 13:12:57 -0700 (PDT)
-From: Salah Triki <salah.triki@gmail.com>
-To: Jonathan Cameron <jic23@kernel.org>,
-	David Lechner <dlechner@baylibre.com>,
-	=?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>,
-	Andy Shevchenko <andy@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-iio@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Salah Triki <salah.triki@gmail.com>
-Subject: [PATCH v4] iio: adc: mt6359: fix unchecked return value in mt6358_read_imp
-Date: Mon, 27 Apr 2026 21:12:38 +0100
-Message-ID: <20260427201238.20823-1-salah.triki@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	Mon, 27 Apr 2026 20:20:12 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id E462B60141
+	for <linux-mediatek@lists.infradead.org>; Mon, 27 Apr 2026 20:20:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 99596C2BCB7
+	for <linux-mediatek@lists.infradead.org>; Mon, 27 Apr 2026 20:20:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1777321211;
+	bh=X2bI2UoaLvX4gCevaU7qNOHhhCPcAax0k/u3+iPwhos=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=hy+7mITxsY3RF9VGJWL98ljKzomsIoVK2oIa2YDlwLMIUaCCYD4eNixLrsMYXtsmR
+	 AIRHtSZWpFRDRDqp3k65eLE984AYxIAWHqla3UNhGY2HBXHCsii4MunlzQZPCD+elC
+	 UF+zR0neDgrXsafnEilm7MpJOD9/wzaWVLXgIjK3UH5X14DlAqXYCK7EzfQ4en9htp
+	 VPw+61liIAZGZATE2rXPbohATDSeqQGDdji0bgp+lHA3+mp4fPFKgb3uFPKrZfM9jm
+	 4u2PmyhX+YD4cn5gmYBoeKpdICvenvNqPk0fnTJGpV1ex6n8wtThP313jPv1ECjBkJ
+	 n0suIDTqNI5ZQ==
+Received: by mail-lf1-f49.google.com with SMTP id 2adb3069b0e04-5a402b2d102so11212588e87.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 27 Apr 2026 13:20:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AFNElJ9qUPb5Pp0vDRmfGRA4khKr9w/u5pnPBhYmWxTUgEjVZ/3Cy91jwTw4GzpFtb7YWULryyeDK89LQM97b7TV3A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyXr2Yqqks37jL5mEpBvIH1AAx9WK+n2W7Qu7KZZbX7xqVmae3X
+	6HyeDfuVA5mfWzg7+MDj/nLb1d6/Zsx0tLYpyGatZ/ShAtx6Ii5Ep5pGMX8uYTpY17N+IwuLJZV
+	O/oaQzJHLRJp1l80VNxUtuehcahN9eog=
+X-Received: by 2002:a05:6512:2203:b0:5a3:cc81:efdb with SMTP id
+ 2adb3069b0e04-5a7466234c2mr101158e87.21.1777321210358; Mon, 27 Apr 2026
+ 13:20:10 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260427_131300_388504_09E316C5 
-X-CRM114-Status: GOOD (  14.01  )
+References: <20260410070935.9540-1-bartosz.golaszewski@oss.qualcomm.com>
+ <trinity-5e6f6a95-e576-4f97-9085-c6de21945eab-1775813076268@trinity-msg-rest-gmx-gmx-live-5cf7d7879b-qwfn5>
+ <CAD++jLnjN-gUdCbmdmLaMYck=sP9wrhT2fFRB0TGCAVGvSsY1w@mail.gmail.com>
+ <dc46f7d784281642aad6d47e79a3e91652eec667@linux.dev> <CAD++jLkz189qT1kJr34ratZT_n20oWEAQg8q0ttQ-VrsFchp7g@mail.gmail.com>
+ <CAMRc=McRuH5Fi-5UQWLRe4+wXKH8qikaYqiqbGXrPOgaifEesw@mail.gmail.com>
+In-Reply-To: <CAMRc=McRuH5Fi-5UQWLRe4+wXKH8qikaYqiqbGXrPOgaifEesw@mail.gmail.com>
+From: Linus Walleij <linusw@kernel.org>
+Date: Mon, 27 Apr 2026 22:19:58 +0200
+X-Gmail-Original-Message-ID: <CAD++jL=m6RGc8Lv0Cn2xsnn8kzV-paAMos4saYNFTpjUcxwcvg@mail.gmail.com>
+X-Gm-Features: AVHnY4I-QfyRqRKRQSMK3sajFg1wZNjagZwtf7cBxvDJnumElCFBOdrk7T_ZX5A
+Message-ID: <CAD++jL=m6RGc8Lv0Cn2xsnn8kzV-paAMos4saYNFTpjUcxwcvg@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: mediatek: moore: implement gpio_chip::get_direction()
+To: Bartosz Golaszewski <brgl@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,56 +78,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: sean.wang@kernel.org, Frank Wunderlich <frank.wunderlich@linux.dev>, bartosz.golaszewski@oss.qualcomm.com, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux@fw-web.de, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In mt6358_read_imp(), the variable val_v is passed to regmap_read()
-but the return value is not checked. If the read fails, val_v remains
-uninitialized and its random stack content is subsequently reported
-as a measurement result.
+On Mon, Apr 27, 2026 at 12:33=E2=80=AFPM Bartosz Golaszewski <brgl@kernel.o=
+rg> wrote:
 
-Initialize val_v to zero to ensure a predictable value is reported
-in case of bus failure and to prevent potential stack data leakage.
-This also satisfies static analyzers that might otherwise flag the
-variable as used uninitialized.
+> > Fixed up and applied. Will be going in as fix for v7.1.
+> >
+> > Yours,
+> > Linus Walleij
+> >
+>
+> Hi Linus!
+>
+> It seems this one got lost somewhere along the way? I don't see it in
+> mainline nor next.
 
-Fixes: 3587914bf61 ("iio: adc: Add support for MediaTek MT6357/8/9 Auxiliary ADC")
-Signed-off-by: Salah Triki <salah.triki@gmail.com>
----
-Changes in v4:
-- Move val_v initialization just before regmap_read() call as suggested 
-  by Andy Shevchenko to improve maintainability.
+I'm just slow at pushing out my tree, it's on its way!
 
-Changes in v3:
-- Initialize val_v to zero at declaration instead of checking regmap_read()
-  return value, as suggested by Jonathan Cameron and Andy Shevchenko.
-- Update commit message to reflect this new approach
-
-Changes in v2:
-- Added Fixes tag.
-- Re-examined the entire driver for unchecked regmap operations.
-  While several regmap_write() and regmap_set_bits() calls also ignore
-  return values, I focused on this specific regmap_read() in
-  mt6358_read_imp() because it leads to an uninitialized variable usage
-  (val_v). This makes this fix critical for reporting correct data
-  to userspace
-
- drivers/iio/adc/mt6359-auxadc.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/iio/adc/mt6359-auxadc.c b/drivers/iio/adc/mt6359-auxadc.c
-index 6b9ed9b1fde2..1d9724ef0983 100644
---- a/drivers/iio/adc/mt6359-auxadc.c
-+++ b/drivers/iio/adc/mt6359-auxadc.c
-@@ -497,6 +497,7 @@ static int mt6358_read_imp(struct mt6359_auxadc *adc_dev,
- 		return ret;
- 
- 	/* Read the params before stopping */
-+	val_v = 0;
- 	regmap_read(regmap, reg_adc0 + (cinfo->imp_adc_num << 1), &val_v);
- 
- 	mt6358_stop_imp_conv(adc_dev);
--- 
-2.43.0
-
+Yours,
+Linus Walleij
 
