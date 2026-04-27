@@ -4,79 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18307FF8860
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 04:00:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 492ABFF8860
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 05:18:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HLfP7RQwgpPifnMM74MC5Zii/CVwx7iM9Oh2BZUeh4k=; b=uj34G8+7dpoNvsKJ+ouzBzW2TN
-	wc+DGvxWgTFsuAYmK2j8HMrQws8j0hBlO9hy9a6dptRfUNgMOpA9vYcNz6jMN5JSGijvcKxe2J5yq
-	irgS6uBZBRaxV7VowfN6eMyThAbca2ecsW0StGrWwWv+400XIJm+mdorwVm6ekqrGkWLt3PIG3hKi
-	UAKA8bqFBPw9O92WQHlGdUzMZiXsYDDSd4kOn6pApAnzGcQOa/tNLvEfwkLbYYuqg/i116ZeB3bTk
-	0CdGZ7+/jG4CEkYyU/oklNvYZfxZbhUBXeUcbJF7wSb7MPc9FbhVXyC8daNfG6KaBWaS/GGdBMz9i
-	eJIu1KBw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=IrWP5CDvZT0EW03kM+B3gbb16k7M4gE4dJ/XgHLlCEY=; b=aeZzfSqFOrlJ3HT8C/WgIoKAn/
+	qpaIZ/CSY41wUPzIlmB7eELZ6oM1IXY7UAVLhndovKX2MRxMP9c+CI3PO2+FQpIzLSxEzOybdCXWH
+	j8/Lw/rFyLTtgVBPX8yhaDef1/qtcnFBWCjDMcaXxk2OHEchy7E4nGoxWTVA8j3oc17IBAGWkUsqO
+	lsowyx/nCrEh6j9yyyMPtjjqgdrzLqd+rgONs1Z0wSyIFuyqRYBQNDnZw6mpJz6F4G/ol5YYP6qMZ
+	oUJPVw+YHSD2sKvSLoJHJ9rRzuwBRBE+imPXbInhV1daDEGCXNEzYmV6E+BY//XucMc4Yoy0AHBA3
+	2Ft8RXLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHD8n-0000000G83a-04TG;
-	Mon, 27 Apr 2026 04:00:13 +0000
-Received: from [216.200.240.185] (helo=mailgw02.mediatek.com)
+	id 1wHEMC-0000000GAbs-3T1k;
+	Mon, 27 Apr 2026 05:18:08 +0000
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHD8b-0000000G82Y-32FI;
-	Mon, 27 Apr 2026 04:00:11 +0000
-X-UUID: 8d6c8b4441ed11f1a6de359d7043e138-20260426
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=HLfP7RQwgpPifnMM74MC5Zii/CVwx7iM9Oh2BZUeh4k=;
-	b=uODj5HGn0m42tVVvtlDYuEQIpMyjh7Ys85E5eQCX9J5wsA3LFeaA2usK6L7h28Q+d8k2xnIPOnj72LZqVFySAjjBQAbQxB0v7OKQMFv4K6HAvtsF52OyK3X4qzyIv9zDhYOkutqMUcJDTtuN9iqizRg0anlG56nE3UNG27w9K6o=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:584e36c2-965f-4e5e-89a2-37cab44dd8d5,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACT
-	ION:release,TS:-50
-X-CID-META: VersionHash:e7bac3a,CLOUDID:1b74f28f-6df4-4a3d-a7a4-fbdc42d669ce,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|123|836|865|888|898,TC:-5,Conten
-	t:0|15|50,EDM:2,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0
-	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULS,TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 8d6c8b4441ed11f1a6de359d7043e138-20260426
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <ed.tsai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1701368154; Sun, 26 Apr 2026 20:59:56 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 27 Apr 2026 11:59:53 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 27 Apr 2026 11:59:53 +0800
-From: <ed.tsai@mediatek.com>
-To: <bvanassche@acm.org>, Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman
-	<avri.altman@wdc.com>, "James E.J. Bottomley"
-	<James.Bottomley@HansenPartnership.com>, "Martin K. Petersen"
-	<martin.petersen@oracle.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <wsd_upstream@mediatek.com>,
-	<peter.wang@mediatek.com>, <alice.chao@mediatek.com>,
-	<naomi.chu@mediatek.com>, <chun-hung.wu@mediatek.com>, Ed Tsai
-	<ed.tsai@mediatek.com>, <stable@vger.kernel.org>,
-	<linux-scsi@vger.kernel.org>
-Subject: [PATCH 1/1] scsi: ufs: remove ucd_rsp_dma_addr and ucd_prdt_dma_addr from ufshcd_lrb
-Date: Mon, 27 Apr 2026 11:58:41 +0800
-Message-ID: <20260427035856.1610363-1-ed.tsai@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1wHEM8-0000000GAYD-1a5u
+	for linux-mediatek@lists.infradead.org;
+	Mon, 27 Apr 2026 05:18:05 +0000
+Received: by mail-pj1-x1033.google.com with SMTP id 98e67ed59e1d1-3590042fa8eso7462525a91.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 26 Apr 2026 22:18:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1777267083; x=1777871883; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=IrWP5CDvZT0EW03kM+B3gbb16k7M4gE4dJ/XgHLlCEY=;
+        b=Mw+8px4H2WtUKG3/IuynUQgmuczghK3oR79d3x7WfwuhA4nuk+jHMKmuNSPrpDl5xv
+         YO6MU5IDicwUDt7zed88LZpOjO3ruVIEOiCO6XP8w39CBwQaJAbexAHcIvzvdsdSzDTF
+         7SFc2yC0udca7T/EmqHNUEGLdczIXLm1PXy6tE5FRzdAaWzs/yY4OiOoE5AbGVJZctPI
+         3kUyKQnjshXHkoxr48idoRMZCuY0h/62bhdz7D1P13RE4Ra8+mVJc63N+9qSuGde7j48
+         hZPt/iY+toajEy62d/8rsHFKBpDcSGALYv9csJz9SRuZhCoCMTuMtbWshT4qKbdTvC9S
+         8Iug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1777267083; x=1777871883;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=IrWP5CDvZT0EW03kM+B3gbb16k7M4gE4dJ/XgHLlCEY=;
+        b=lQxUeE1CnGhJUM260Wgxkw19jElooCmCEffgLnjdP8Pp4s+XmLUJJCMwepU2nnUQat
+         fLKh5jGri//OvH00M5K2nne8oqqGZIDQPLH68xvr6p1elgif9oa4M1durX6RnA8oJwQo
+         r9rjHHmrR4tEZUAMB/F7eM2sN2bpBIW31M/fVFAm/8K8q+wvu1fOTc4OhrD+2VVrgyrA
+         KJc/qbU+ALkf1ZX+j9p2P/m4HziYmE+KqQfv00pIMdf/XxjvyhkwkPkeH0GiMVd5luU5
+         NqgUost0q9MtOYRuLuIkX1023Hvy0SUbhasrbsP4H5FSClQ46qV5gAf5NAaGnx+ty8et
+         Pwgw==
+X-Forwarded-Encrypted: i=1; AFNElJ95xIvecT8EigiY+7dGoPRFKqFjVCqOwJ9N6jD9fMtm8lQQZCt/5R1stAGvKbcv2yTeclNcge/34xFEudSbSw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwWZKcYv8E45OctqH23m3Up5wmnVw4R3Uxkl2YpG7HhAMwdSwjx
+	4h6yFg+iTAAm1iy15ZxghnIqIqXBeTGE9yiHBygfoV2UDfKw2u8ZodYi
+X-Gm-Gg: AeBDievXnet3y/Z/BP0NM/Ommh6/zHHMfFoXuv5I7W8qsTID13UH59NO9LvAqf5bZco
+	INwS8S2Hqg8VfFL+pAu0gL0CP34RcT4uM2E+U7MARX6A2zf6RDbuF9PVEarg/YIo6p3U1BV/6m8
+	TfUvB7fo2BK6H4JAVP6I9nGQBtLwpaxdYC/x6CrZUEW2BAymdGWIm92VSCFywRh52lZQ9vVOLhd
+	BTlbl+3sxR5YXglEmcPrK4tGxTnRbl5x6iB6r0+HTBuDbN701mIAiegn/6w5Qt0ul+C7OSL3wZG
+	rWcxeFAYzafrn/wKeGkzDbAUT4q9H4vx/aWi7heBknitzTpe9fzLe0cAkBShbGiI8Pu0AcW4CuV
+	76uNYllEcm/DkHs0l+8R9HhyieeTC1nQqiZGYGQH0Dl/TE/5fmaHJLmwAplqemeKcIMe4QoVdgw
+	/pRV8SDMVZPfy4pXJk7fj5lTIxRx3RO0hDiwvfGu4r/LLn2614iChCJUpsHDDKZJyfkzgJgaovg
+	i2VByL6ELy3rB/I4rNrDAmyjg==
+X-Received: by 2002:a17:90a:e7ca:b0:35d:8fdb:4f36 with SMTP id 98e67ed59e1d1-3614048a21bmr43367074a91.18.1777267083487;
+        Sun, 26 Apr 2026 22:18:03 -0700 (PDT)
+Received: from ryzen ([2601:644:8000:5b5d::8bd])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2b5fab2112csm280636685ad.62.2026.04.26.22.18.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 26 Apr 2026 22:18:02 -0700 (PDT)
+From: Rosen Penev <rosenp@gmail.com>
+To: linux-wireless@vger.kernel.org
+Cc: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH wireless-next] wifi: mt76: fix of_get_mac_address error handling
+Date: Sun, 26 Apr 2026 22:17:46 -0700
+Message-ID: <20260427051746.954704-1-rosenp@gmail.com>
+X-Mailer: git-send-email 2.54.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260426_210002_323488_551528DE 
-X-CRM114-Status: GOOD (  13.00  )
+X-CRM114-CacheID: sfid-20260426_221804_769323_1AE9298E 
+X-CRM114-Status: GOOD (  10.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,92 +104,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ed Tsai <ed.tsai@mediatek.com>
+Check return value instead of is_valid_ether_addr. The latter is handled
+by the former.
 
-The offsets stored in utp_transfer_req_desc are in double words on
-hosts without UFSHCD_QUIRK_PRDT_BYTE_GRAN, using them directly to
-compute ucd_rsp_dma_addr and ucd_prdt_dma_addr results in incorrect
-DMA addresses.
-
-Since these fields are only used for error logging, remove them from
-struct ufshcd_lrb and compute directly in ufshcd_print_tr() using
-offsetof(struct utp_transfer_cmd_desc, ...) instead.
-
-Fixes: d5130c5a0932 ("scsi: ufs: Use pre-calculated offsets in ufshcd_init_lrb()")
-Cc: stable@vger.kernel.org
-Link: https://lore.kernel.org/all/20260424063603.382328-2-ed.tsai@mediatek.com/
-Signed-off-by: Ed Tsai <ed.tsai@mediatek.com>
+Signed-off-by: Rosen Penev <rosenp@gmail.com>
 ---
- drivers/ufs/core/ufshcd.c | 10 ++++------
- include/ufs/ufshcd.h      |  4 ----
- 2 files changed, 4 insertions(+), 10 deletions(-)
+ drivers/net/wireless/mediatek/mt76/eeprom.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 4805e40ed4d7..02fa61322e77 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -621,7 +621,8 @@ static void ufshcd_print_tr(struct ufs_hba *hba, struct scsi_cmnd *cmd,
- 	ufshcd_hex_dump("UPIU REQ: ", lrbp->ucd_req_ptr,
- 			sizeof(struct utp_upiu_req));
- 	dev_err(hba->dev, "UPIU[%d] - Response UPIU phys@0x%llx\n", tag,
--		(u64)lrbp->ucd_rsp_dma_addr);
-+		(u64)(lrbp->ucd_req_dma_addr +
-+		offsetof(struct utp_transfer_cmd_desc, response_upiu)));
- 	ufshcd_hex_dump("UPIU RSP: ", lrbp->ucd_rsp_ptr,
- 			sizeof(struct utp_upiu_rsp));
+diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
+index 93d91264687f..0f6ccf6ed53d 100644
+--- a/drivers/net/wireless/mediatek/mt76/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
+@@ -93,7 +93,7 @@ mt76_eeprom_override(struct mt76_phy *phy)
+ 	if (err == -EPROBE_DEFER)
+ 		return err;
  
-@@ -633,7 +634,8 @@ static void ufshcd_print_tr(struct ufs_hba *hba, struct scsi_cmnd *cmd,
- 	dev_err(hba->dev,
- 		"UPIU[%d] - PRDT - %d entries  phys@0x%llx\n",
- 		tag, prdt_length,
--		(u64)lrbp->ucd_prdt_dma_addr);
-+		(u64)(lrbp->ucd_req_dma_addr +
-+		offsetof(struct utp_transfer_cmd_desc, prd_table)));
- 
- 	if (pr_prdt)
- 		ufshcd_hex_dump("UPIU PRDT: ", lrbp->ucd_prdt_ptr,
-@@ -2971,8 +2973,6 @@ static void ufshcd_init_lrb(struct ufs_hba *hba, struct scsi_cmnd *cmd)
- 	struct utp_transfer_req_desc *utrdlp = hba->utrdl_base_addr;
- 	dma_addr_t cmd_desc_element_addr =
- 		hba->ucdl_dma_addr + i * ufshcd_get_ucd_size(hba);
--	u16 response_offset = le16_to_cpu(utrdlp[i].response_upiu_offset);
--	u16 prdt_offset = le16_to_cpu(utrdlp[i].prd_table_offset);
- 	struct ufshcd_lrb *lrb = scsi_cmd_priv(cmd);
- 
- 	lrb->utr_descriptor_ptr = utrdlp + i;
-@@ -2981,9 +2981,7 @@ static void ufshcd_init_lrb(struct ufs_hba *hba, struct scsi_cmnd *cmd)
- 	lrb->ucd_req_ptr = (struct utp_upiu_req *)cmd_descp->command_upiu;
- 	lrb->ucd_req_dma_addr = cmd_desc_element_addr;
- 	lrb->ucd_rsp_ptr = (struct utp_upiu_rsp *)cmd_descp->response_upiu;
--	lrb->ucd_rsp_dma_addr = cmd_desc_element_addr + response_offset;
- 	lrb->ucd_prdt_ptr = (struct ufshcd_sg_entry *)cmd_descp->prd_table;
--	lrb->ucd_prdt_dma_addr = cmd_desc_element_addr + prdt_offset;
- }
- 
- static void __ufshcd_setup_cmd(struct ufs_hba *hba, struct scsi_cmnd *cmd,
-diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-index cfbc75d8df83..8cb845534e63 100644
---- a/include/ufs/ufshcd.h
-+++ b/include/ufs/ufshcd.h
-@@ -158,8 +158,6 @@ struct ufs_pm_lvl_states {
-  * @ucd_rsp_ptr: Response UPIU address for this command
-  * @ucd_prdt_ptr: PRDT address of the command
-  * @utrd_dma_addr: UTRD dma address for debug
-- * @ucd_prdt_dma_addr: PRDT dma address for debug
-- * @ucd_rsp_dma_addr: UPIU response dma address for debug
-  * @ucd_req_dma_addr: UPIU request dma address for debug
-  * @scsi_status: SCSI status of the command
-  * @command_type: SCSI, UFS, Query.
-@@ -182,8 +180,6 @@ struct ufshcd_lrb {
- 
- 	dma_addr_t utrd_dma_addr;
- 	dma_addr_t ucd_req_dma_addr;
--	dma_addr_t ucd_rsp_dma_addr;
--	dma_addr_t ucd_prdt_dma_addr;
- 
- 	int scsi_status;
- 
+-	if (!is_valid_ether_addr(phy->macaddr)) {
++	if (err) {
+ 		eth_random_addr(phy->macaddr);
+ 		dev_info(dev->dev,
+ 			 "Invalid MAC address, using random address %pM\n",
 -- 
-2.45.2
+2.54.0
 
 
