@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40756FF885E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 11:21:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0586AFF8861
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 11:22:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0fvyuyAt2gFWDy6PURWp+uraKKmO5UbNvwFFrASmncg=; b=V4eNbDNfc8Ffa0y2KrGWhpBub8
-	dDQr+FrCwijSrT6RgekjyxqzOfoM0gQhHP9X+TO7G1QVud7e0Bf8iswxXtoAmrT+YbiEUU6Du1kfH
-	tJd/TYejXFMd314qYEFarZpT/YgZeQBj8CSFzS4wt+j+jp+wwg/o3tp3ic5U76xqaJXcTjcJdSfLx
-	7fqCw2eRBogfPWSaghOR4x6mSMZYijYyPCXRjaLXkPkvV9SbfwxzGbmibXIhQFLLnWt2JyEYjbR+3
-	SMeXGH5XdSdNwIP3rz9cJmQbAZIbwFEC53BW8zQxG6rMVvBylw8TWwr4GxnL70ZtrfstkveT5N0Y7
-	i4WRsKfw==;
+	bh=b6ZRNZ1uyc40eGTynrpn2LbGVE4wJKZzCH33Oh8n5Xw=; b=NMbdPpuvPuAFZe1NW7oaV+WDTH
+	t0/wuXR84Iumd7IU5fTTxSLGPtktZIS71qf9Rz9w1k6bF5bbicQYycNw0v6453sgj8hcnZ1VPWHUi
+	WVDOwQEFCf5gkXQAkycMGwTJswHQ0hTG81OG1Nc+FsPwyYCNdP8tV03vhLvgI7tSKOMNNaVj0oWBx
+	nEpOmdxfHFb1SIEMwY/PrC1VLrpjezw2ca84wCMTSzAGvMzWSj5mdMIG5QjMp4NwW/G9lkEuBmlge
+	Vgq1KZ0qG1cw+X1vFhRGZ5oNDiOLyOjeWm726KzFvI57GIsZ9szyivdrPA9ZsNDLfHUf9LDk5eJiB
+	vn1gqdwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHK29-0000000GmUD-1ZHE;
-	Mon, 27 Apr 2026 11:21:49 +0000
+	id 1wHK2J-0000000GmYK-0Hc4;
+	Mon, 27 Apr 2026 11:21:59 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHK27-0000000GmTE-0y2t;
-	Mon, 27 Apr 2026 11:21:48 +0000
-X-UUID: 43c4b348422b11f19e7563141e833ce8-20260427
+	id 1wHK2F-0000000GmXU-470G;
+	Mon, 27 Apr 2026 11:21:57 +0000
+X-UUID: 4a453684422b11f19e7563141e833ce8-20260427
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=0fvyuyAt2gFWDy6PURWp+uraKKmO5UbNvwFFrASmncg=;
-	b=HLD1g08VCb4MKX1AzcEDvaIOChM6CVkmBeTsGihkWLLyIRQus3iwDHdzKQFUklUQPd6ZDDdAVIEl9a/CnI2XgNneliWf35unS0aVxd27s/cIhj+ARvUebBp+Vdap+GOfQjeag4hlarsqfJMWR06A4ZbhmdvXsQv6jofXnge8ynE=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=b6ZRNZ1uyc40eGTynrpn2LbGVE4wJKZzCH33Oh8n5Xw=;
+	b=eFmFt/BCJ5wKr81FID3SP4OCCi4KZuPzrBza1oseDZBgvFUo765KzbE5cPzRSpCKplko8WKLT1eOeIQY08dd6VMbkS+q9wCCSVZylTD/7BZkUtVozk0YKSYZPQpB4Fp5sgZz+Ehr9shtSSpaqfD0toEyBPYkPvd6DX9DQSMx4tY=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:7c9bfe16-7266-432f-9bcb-47373f216069,IP:0,U
+X-CID-O-INFO: VERSION:1.3.12,REQID:24636aca-146f-43b9-91cd-e2481d869c4c,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:e7bac3a,CLOUDID:a264f88f-6df4-4a3d-a7a4-fbdc42d669ce,B
+X-CID-META: VersionHash:e7bac3a,CLOUDID:3b2cab64-469e-4eb6-aeb8-4b21454b0f32,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|865|888|898,TC:-5,Cont
 	ent:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0
 	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -42,18 +42,18 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 43c4b348422b11f19e7563141e833ce8-20260427
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+X-UUID: 4a453684422b11f19e7563141e833ce8-20260427
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
 	(envelope-from <jay.liu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 17605758; Mon, 27 Apr 2026 04:21:41 -0700
+	with ESMTP id 1572493446; Mon, 27 Apr 2026 04:21:52 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 27 Apr 2026 19:21:38 +0800
+ 15.2.2562.29; Mon, 27 Apr 2026 19:21:49 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 27 Apr 2026 19:21:37 +0800
+ 15.2.2562.29 via Frontend Transport; Mon, 27 Apr 2026 19:21:48 +0800
 From: Jay Liu <jay.liu@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
 	<p.zabel@pengutronix.de>, Maarten Lankhorst
@@ -67,9 +67,9 @@ CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, Jay Liu <jay.liu@mediatek.com>,
 	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v5 1/6] dt-bindings: display: mediatek: gamma: Add support for MT8196
-Date: Mon, 27 Apr 2026 19:20:15 +0800
-Message-ID: <20260427112131.23423-2-jay.liu@mediatek.com>
+Subject: [PATCH v5 2/6] dt-bindings: display: mediatek: dither: Add support for MT8196
+Date: Mon, 27 Apr 2026 19:20:16 +0800
+Message-ID: <20260427112131.23423-3-jay.liu@mediatek.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20260427112131.23423-1-jay.liu@mediatek.com>
 References: <20260427112131.23423-1-jay.liu@mediatek.com>
@@ -77,7 +77,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260427_042147_280931_2FFE9664 
+X-CRM114-CacheID: sfid-20260427_042156_029041_0641DA1D 
 X-CRM114-Status: UNSURE (   9.00  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -94,29 +94,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a compatible string for the GAMMA IP found in the MT8196 SoC.
-Each GAMMA IP of this SoC is fully compatible with the ones found
-in MT8195.
+Add a compatible string for the DITHER IP found in the MT8196 SoC.
+Each DITHER IP of this SoC is fully compatible with the ones found
+in MT8183.
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Signed-off-by: Jay Liu <jay.liu@mediatek.com>
 ---
- .../devicetree/bindings/display/mediatek/mediatek,gamma.yaml     | 1 +
+ .../devicetree/bindings/display/mediatek/mediatek,dither.yaml    | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
-index ec1054bb06d4..fff17b9e39b2 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
-@@ -41,6 +41,7 @@ properties:
-       - items:
-           - enum:
-               - mediatek,mt8188-disp-gamma
-+              - mediatek,mt8196-disp-gamma
-           - const: mediatek,mt8195-disp-gamma
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
+index 891c95be15b9..d2e45223693d 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
+@@ -31,6 +31,7 @@ properties:
+               - mediatek,mt8188-disp-dither
+               - mediatek,mt8192-disp-dither
+               - mediatek,mt8195-disp-dither
++              - mediatek,mt8196-disp-dither
+               - mediatek,mt8365-disp-dither
+           - const: mediatek,mt8183-disp-dither
  
-   reg:
 -- 
 2.46.0
 
