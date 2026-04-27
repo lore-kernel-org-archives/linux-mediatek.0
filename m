@@ -4,94 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19D7EFF8860
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 11:31:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18574FF885E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 12:39:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oczoMnPReZaIdQXexoCfPQETvMC08e4WB9/AECl0kH0=; b=j00b3jHN/09FLylsFelLWuEUWw
-	tVqg941BM+HORMs614jf46ApNxk5jz19gXBpeAe5iaUSj3jWHiLq7ReIuhc3ym0J1UAKgW4UOVbO5
-	LTunqkA8SfsuBEI98dse6braUf36UC+Ji+fftKv1BthIgWXLJ30eMndSsdpcK4XezIONjcOhZ0YeY
-	17+OWJNznr6s6HdNpwjRxdvUHq3dLunX3fUH4ZxdE/NQl5i1GDZ7j6t1B1lYE5DMkykSRoq8FU8w9
-	hDbSctU2R4J0/d3415WHRpM0fTU+EsaixeYi/fXtbb4DTpB+UiSzOG1u4diDV+qSOwFD/KBr6xuxa
-	KIj2lq2A==;
+	bh=w38CNbfpTIhzkEDDUqc0w67jztq2m2LTaiL2MV7vWfo=; b=GHGYITF6jON0S16AwfM9jXsury
+	FdF3NUXxUv/4+475jG161F+p6uV22eZzsJOpUja0ouQy3FN+iJnXZRINdFJyCh7K7s+1K0Ggg4sFD
+	6uHmwyik43IpuPv3QFdZVdyH5DwVNXELiKHbS/TsBTfxnPDwS9oZe3pgbvx11Mq0ZjRGOy6Q5R2RB
+	zUeijCnf/kvfL7KTpgB6eYX/0Udi/YxYo1vhdJD3L7Vu2aYNNUweOMfqJ0Q2C/FCyOTlSikrkKbPy
+	inrOb8f9wW7HmoNG5krvyBN4DIQF6UEMcTcc/HaLxv8hubR25ufGQQBL6G1COwQckcsQwlym7fhHu
+	NLG2VFcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHKBj-0000000Gnq3-3aUv;
-	Mon, 27 Apr 2026 11:31:43 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1wHLFi-0000000GvUD-21wx;
+	Mon, 27 Apr 2026 12:39:54 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHKBh-0000000GnoS-0UvL
-	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Apr 2026 11:31:42 +0000
-Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-488ba840146so91822905e9.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Apr 2026 04:31:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1777289499; x=1777894299; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=oczoMnPReZaIdQXexoCfPQETvMC08e4WB9/AECl0kH0=;
-        b=LodDXEkCAyP6uzan+Rt1xbHXkvY8g8wmluuprKXSBPVztQRYAQjCwm7PQQs+LtSPiz
-         TKpKrrue4yGv4DnyEJOMEIHPspA8/ZDoo13cx1KxnuawqHdFfbYLdX1u0w0e6YvsHIGB
-         lI4JzenJsRnZiByPhYM6hPO0Z6lwBnl1iPpQAJ25s4gslQQIGE96hV5/UdDlMuBVbRW+
-         clJo5aaHXCMkBHYGyJFVmn98QVKoS5zhpAUT6ob+XLEPZFFOsBai36NFZ5kJAqLn0pPf
-         3TX1N6RQ4BjvkiCnzNwhqgAXtwSORxVax1DmtfdAncTXfDWV57+dNApf3VErPCYli4+3
-         4YzA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777289499; x=1777894299;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=oczoMnPReZaIdQXexoCfPQETvMC08e4WB9/AECl0kH0=;
-        b=kqUPQgDivG/3D2KfK3ZAUtZ+qQO25+ggihZmSWItIZs96jdWSZ9dhtdA9NoS3oUQQE
-         hgNSvjsBIyuscnCFg72ee3JgXnZBtRaNAjtbIhS3WylQAdSpsjot42uSxOoF2B+fr5+K
-         HmtH79fEWur7ooCmZLqdsTnipvHltw7ZNCDtX6y7xVUfv5h/H5f/kQVU7NwBC2h/bj3v
-         LCu6jsUjkxG/hdG/fH9Fby5LK2dfZVeRg2/4j7To8ysJ/oPbjSrpWAeg5Y1QNA7L091r
-         dDyg3AIHStgOh6ynKONpEfGqRdG4zR4STGRzSUbvYx4UGzRcbh+eP1lJuhfqY/wEpmUq
-         trUw==
-X-Forwarded-Encrypted: i=1; AFNElJ80nRX1YgXRQLKKAXCHtWkjBNksIutJj12yiM40/Z6m6lNNd1oeQjhUEdhl3C1t4NI4HyIqDZy7GhL2LNLvWw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx/Izou2tPB+nPEmCiJnOq5BcU9kvRv9+wgMGUblYDk5ucca8mR
-	W0sUwrLmtWo8oD7W8/I3SgYg74EvKuCT7P0yA78gxOtN8DQmiymRftoF
-X-Gm-Gg: AeBDieutXcTKnmpnONLwwTfXohBahjQ0w1vscGtUsIhZRt8VzJpWiwi0jbwUnqEIhNB
-	m6wEy8NJu34oSES8/+t4MoOZYcWKEsPcZRdRogmEld6qHlmeYa6vS5R6PHCaBd7Uq0tG3jYtCX+
-	OoQ8I3RwRS5eqJD7FNKZ6ZCrdZ2rZiC0TyY24hw+W5ZpZVCbH1pQVI38lBe/PVPOuocrfHuFZmj
-	XTpV7hTLiR4SykCE3c1wfsvaE+NDHtY/3CLzrEKutr1IxFwVtWKA/YLLt8ouK48P8CwiaFEP0A1
-	wcmBRGwe+z7YZp56Rb9U016zIe5bvq85VMKrjQ4LG27txy2RgC5X7ogS787zHMMA/KdNM86daaI
-	6BF1gEQAr6O0jDMJDYJXB+Df3e6UT2QRYRJ0jLYa+chABiC47cynwKiwe25+x1KsWLwfA2ZD3kr
-	GPfdRFZ3TrSzAxpQeshmwW5Ph3766liRw4jw==
-X-Received: by 2002:a05:600c:a31a:b0:488:b241:2c5f with SMTP id 5b1f17b1804b1-488fb785b7emr456261975e9.26.1777289498891;
-        Mon, 27 Apr 2026 04:31:38 -0700 (PDT)
-Received: from pc ([196.235.239.18])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-48a59816b71sm221145305e9.1.2026.04.27.04.31.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Apr 2026 04:31:38 -0700 (PDT)
-Date: Mon, 27 Apr 2026 12:31:34 +0100
-From: Salah Triki <salah.triki@gmail.com>
-To: Andy Shevchenko <andriy.shevchenko@intel.com>
-Cc: Jonathan Cameron <jic23@kernel.org>,
-	David Lechner <dlechner@baylibre.com>,
-	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
-	Andy Shevchenko <andy@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] iio: adc: mt6359: fix unchecked return value in
- mt6358_read_imp
-Message-ID: <ae9JFucpXBPwwGzr@pc>
-References: <20260427085458.38546-1-salah.triki@gmail.com>
- <ae8pAGBGGOvsURka@ashevche-desk.local>
+	id 1wHLFf-0000000GvTl-1H6s;
+	Mon, 27 Apr 2026 12:39:52 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 49B20440AD;
+	Mon, 27 Apr 2026 12:39:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EA629C19425;
+	Mon, 27 Apr 2026 12:39:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1777293590;
+	bh=B6VXB3n93X8gQas+e8Yh7Mmm6pVyLJdNvfAKeHZtWuI=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=SEdolQrkY49wv+MM4qEkvALcwMpbb0oXZH16A8bc8mYX5c+E7xMGPIxt06/5wBMk2
+	 xhswo/oTLqCb2cOsjDqgTHUhr2pvauHIITQNBY2qmsm0308ZmnEPDszb2o8huKxCNN
+	 f5CCUvp9jlbjuhCT3ZdQkmTJiVsCdkmVO2aNL5mkwNfhKi1Ko/aJcmLmwYxlT7Vwsw
+	 RzZGzuzwE7jJciqCr9ar7VMpi8vOBjkMZbTGaN2nSHvJuDs0Mz/bFlUrb8tXzZgUYN
+	 7zGBgT2/OW/aQrUdd9p/kkFHGy+YWBb+dXpyHwj61BXnsvTS1BMAbothMwKyCT5CEM
+	 vYJw0fb2MhYHg==
+Date: Mon, 27 Apr 2026 07:39:48 -0500
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ae8pAGBGGOvsURka@ashevche-desk.local>
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Hailong Fan <Hailong.Fan@mediatek.com>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ devicetree@vger.kernel.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com, 
+ Justin Yeh <Justin.Yeh@mediatek.com>, Conor Dooley <conor+dt@kernel.org>, 
+ Xiangzhi Tang <Xiangzhi.Tang@mediatek.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-remoteproc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ Vince-WL Liu <Vince-WL.Liu@mediatek.com>, 
+ Huayu Zong <Huayu.Zong@mediatek.com>, 
+ Jarried Lin <Jarried.Lin@mediatek.com>, 
+ Bjorn Andersson <andersson@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Xiangzhi Tang <xiangzhi.tang@mediatek.com>
+In-Reply-To: <20260427111446.22955-2-xiangzhi.tang@mediatek.com>
+References: <20260427111446.22955-1-xiangzhi.tang@mediatek.com>
+ <20260427111446.22955-2-xiangzhi.tang@mediatek.com>
+Message-Id: <177729358821.1983670.16657208241339249962.robh@kernel.org>
+Subject: Re: [PATCH v4 1/7] dt-bindings: remoteproc: Add MediaTek mt8196
+ VCP binding
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260427_043141_187822_17AABDCB 
-X-CRM114-Status: GOOD (  20.23  )
+X-CRM114-CacheID: sfid-20260427_053951_446903_16FEA3D9 
+X-CRM114-Status: GOOD (  14.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,34 +85,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 27, 2026 at 12:14:40PM +0300, Andy Shevchenko wrote:
-> On Mon, Apr 27, 2026 at 09:54:57AM +0100, Salah Triki wrote:
-> > In mt6358_read_imp(), the return value of regmap_read() is currently
-> > ignored. This is problematic because if the bus read fails the variable
-> > val_v remains uninitialized.
-> > 
-> > The function subsequently assigns this uninitialized stack value to
-> > *vbat, leading to incorrect measurement results being reported to
-> > the IIO subsystem without any error indication.
-> > 
-> > Update the function to check the return value of regmap_read(). Ensure
-> > that mt6358_stop_imp_conv() is still called to clean up the hardware
-> > state before returning the error code.
+
+On Mon, 27 Apr 2026 19:04:40 +0800, Xiangzhi Tang wrote:
+> Add device tree binding for the MediaTek Video Companion Processor
+> (VCP), a RISC-V based coprocessor used for video processing and
+> multimedia tasks on mt8196 and future MediaTek SoCs.
 > 
-> Sounds like this deserves a Fixes tag, but the problem is that the whole driver
-> is written like this. Why does having this fixed make it special?
+> The VCP is a heterogeneous multi-core processor that can contain
+> multiple RISC-V cores with different hart (hardware thread)
+> configurations. Key features:
 > 
-> -- 
-> With Best Regards,
-> Andy Shevchenko
+> - Supports both single-core and multi-core VCP configurations
+> - Each core can have 1 or 2 harts (hardware threads)
+> - Shared SRAM memory space partitioned among cores
+> - Communication via 5 dedicated mailbox channels for IPI messaging
+> - Integrated with SoC IOMMU for multimedia memory management
+> - Boot and power management coordinated with ARM Trusted Firmware
 > 
+> The binding defines both the top-level VCP device (with mailboxes,
+> interrupts, and power domains) and child nodes for individual VCP
+> cores (with SRAM allocation and hart configuration).
+> 
+> Signed-off-by: Xiangzhi Tang <xiangzhi.tang@mediatek.com>
+> ---
+>  .../remoteproc/mediatek,mt8196-vcp.yaml       | 166 ++++++++++++++++++
+>  1 file changed, 166 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.yaml
 > 
 
-You are right, Andy. I noticed that several other functions in this driver
-share the same issue. I will send a V2 that addresses all unchecked
-regmap_read() calls in this file and I will include the Fixes tag. Thanks
-for the feedback.
+My bot found errors running 'make dt_binding_check' on your patch:
 
-Best Regards
-Salah Triki
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.example.dts:26:18: fatal error: dt-bindings/power/mt8196-power.h: No such file or directory
+   26 |         #include <dt-bindings/power/mt8196-power.h>
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make[2]: *** [scripts/Makefile.dtbs:140: Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.example.dtb] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[1]: *** [/builds/robherring/dt-review-ci/linux/Makefile:1635: dt_binding_check] Error 2
+make: *** [Makefile:248: __sub-make] Error 2
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.kernel.org/project/devicetree/patch/20260427111446.22955-2-xiangzhi.tang@mediatek.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
+
 
