@@ -4,71 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C461FF8861
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 10:33:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48EE9FF885E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 11:15:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rjUe+40tU8KgywhMGb5EBcnInYwRid7F76KcJIk5PoY=; b=BWvMgklrkeDT+G
-	GZ/1qPaxj6cijoSVNfMkKRkMdn9EKBIPjv5vuSMY2YqgyFSUQtv2HOX8Vn2VwflA2vXuaMp7iKn2P
-	ncw19sa9WfBGOG/zLrm6GGPWhT/mXnCNCFH7iwtDharVoDW/kNka/kP/wE+Hce5qeyqHqaxUaqI3E
-	c7KkaV0TS+z0Hym+PsGu2rVBb2HIRGkP9hWeW7GNvK92/T4OqWL018fb/8VvprFtdwhmEmLjEU6Yt
-	kPSBHp9oajtba2Kjb7vpEM1mRfinGsvdol9B08uEQNkofi1/x8c578tgFneNsdq7yoiwrnXK7Sfkt
-	sIkhT+mQNOs3OJaDGUyg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BjBoE/eELfGcy+c4cqtV+JxXHfww4jP3U0dh+zL8bEA=; b=yqy/G0JS603bVTIMtaEyhnIBCv
+	uJEUenoD6CGoeEdgZ6jWKMcpwe9kcITDRTgdT08oQTjIYXJZVw8Bx4kILatcvUyfFZIvTzHiqt44y
+	fsAx3OVbE1EuITSCKLfpEfApGAA/Xf5i7t0lAURxu26ORGpYdsyCF2wbUH08ezW2Xla/F0d2LvFDK
+	3trcQ818ZGyTfQTNoQ9ehuHjbgb9UPpFEGwDZz6NVmMk5kft91JJvdrGWLMhBC/bukA52N3bZuTcn
+	+X0n22pTp77Hc+hZRQBqLkI51F13jAchrA5Hfbq1DW0vwafs4ycz324xU5/tHdx/tBpKYd6fkVsPe
+	6gCUe4cA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHJH6-0000000GhUQ-29u8;
-	Mon, 27 Apr 2026 10:33:12 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wHJvp-0000000Gl9F-0xuu;
+	Mon, 27 Apr 2026 11:15:17 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHJH3-0000000GhTY-0PzT
-	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Apr 2026 10:33:10 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id C257344539
-	for <linux-mediatek@lists.infradead.org>; Mon, 27 Apr 2026 10:33:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9899AC2BCC6
-	for <linux-mediatek@lists.infradead.org>; Mon, 27 Apr 2026 10:33:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777285987;
-	bh=sZdY/36jbKK4QMgRBN3Be3QYPzzEjzIo9WdGSHUOuZ8=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=Y0XBdBb6tsh/ct062e3s+3bE94qJ7F0kHpyLoBxLkCN+lfEar/pvjFUd/RKMGyheD
-	 vFw6NYZCVZwYZgk2dntGAr3q/a3O4D0X1ZYamoL6uv/3fjk/449FT/AZ4mFdKBAVLA
-	 nGpH723lrtieknWZbvSUM0wyrqUxqC7B5BO4Eir4/errEGTlMlSvRE07ngkuYcdcu1
-	 NYe3pbVngxZA9cdwKycU7w4eBTBiawdIh5bWStdkIBtrAFuawAifW2OnY2/x0T+BE2
-	 B4XTykxZYm0/rAc5TkD16t7UbtyWEasojnVV55gbxpyzfDyCQMxRq5C/E4ORal1Sv2
-	 3CEvHOLViU28A==
-Received: by mail-lf1-f44.google.com with SMTP id 2adb3069b0e04-5a3af1b7549so12474089e87.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Apr 2026 03:33:07 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AFNElJ+ggJWv0RifJtu+R2Bij9Lv1PZdTJIqdgSPWKPjlBpZr4DJViPfwhIR0jKCCT41FuivA6gwnzn8gW6MYElwBQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyMdYbkb3E6sW+q4NeB3bGEllVBMaXl1sRrHTmsAMt8mGVAIrnr
-	Qp3+rkbjDrdSzkDmTPzzmD6DtJHKIdTKhp4cjRW58E8pHBxa+isnEdRquDecETyzz0wqktBGfms
-	EtPvWsRgz2xfiDR2h0wMrJFIjVUJ3cSuv9VGkNupGpw==
-X-Received: by 2002:a05:6512:3b91:b0:5a3:f2ed:87cd with SMTP id
- 2adb3069b0e04-5a4172d0085mr15446256e87.10.1777285986242; Mon, 27 Apr 2026
- 03:33:06 -0700 (PDT)
+	id 1wHJvl-0000000Gl68-0pHY;
+	Mon, 27 Apr 2026 11:15:14 +0000
+X-UUID: 57f26b7c422a11f1a6de359d7043e138-20260427
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=BjBoE/eELfGcy+c4cqtV+JxXHfww4jP3U0dh+zL8bEA=;
+	b=u4yKOCo+okjuEMBzPvVm8jfnU0M2kRxI1axXdPPQsg0UjW+jLJ927FFY+VWJsEKXyJC8oPwOJuRZQZPnx3DLv3jVNiRWOYx4a+nKWvp18WFTmKAs9cwkgmvJwgWPT4llHey84RZDLiYyeUUZEeJV0x3Xq+kTIhZ8LMVbBvPQZAs=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.12,REQID:caac60aa-b11f-4ffc-806e-9b4cc2a52945,IP:0,U
+	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:25
+X-CID-META: VersionHash:e7bac3a,CLOUDID:fc1dab64-469e-4eb6-aeb8-4b21454b0f32,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|865|888|898,TC:-5,Cont
+	ent:0|15|50,EDM:-3,IP:nil,URL:11|97|99|83|106|1,File:130,RT:0,Bulk:nil,QS:
+	nil,BEC:-1,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC
+	:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 57f26b7c422a11f1a6de359d7043e138-20260427
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <xiangzhi.tang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1773422070; Mon, 27 Apr 2026 04:15:05 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Mon, 27 Apr 2026 19:15:03 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Mon, 27 Apr 2026 19:15:02 +0800
+From: Xiangzhi Tang <xiangzhi.tang@mediatek.com>
+To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
+	<mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Xiangzhi Tang
+	<Xiangzhi.Tang@mediatek.com>
+CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Hailong Fan
+	<Hailong.Fan@mediatek.com>, Huayu Zong <Huayu.Zong@mediatek.com>, Jarried Lin
+	<Jarried.Lin@mediatek.com>, Justin Yeh <Justin.Yeh@mediatek.com>, Vince-WL
+ Liu <Vince-WL.Liu@mediatek.com>, Xiangzhi Tang <xiangzhi.tang@mediatek.com>
+Subject: [PATCH v4 1/7] dt-bindings: remoteproc: Add MediaTek mt8196 VCP binding
+Date: Mon, 27 Apr 2026 19:04:40 +0800
+Message-ID: <20260427111446.22955-2-xiangzhi.tang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20260427111446.22955-1-xiangzhi.tang@mediatek.com>
+References: <20260427111446.22955-1-xiangzhi.tang@mediatek.com>
 MIME-Version: 1.0
-References: <20260410070935.9540-1-bartosz.golaszewski@oss.qualcomm.com>
- <trinity-5e6f6a95-e576-4f97-9085-c6de21945eab-1775813076268@trinity-msg-rest-gmx-gmx-live-5cf7d7879b-qwfn5>
- <CAD++jLnjN-gUdCbmdmLaMYck=sP9wrhT2fFRB0TGCAVGvSsY1w@mail.gmail.com>
- <dc46f7d784281642aad6d47e79a3e91652eec667@linux.dev> <CAD++jLkz189qT1kJr34ratZT_n20oWEAQg8q0ttQ-VrsFchp7g@mail.gmail.com>
-In-Reply-To: <CAD++jLkz189qT1kJr34ratZT_n20oWEAQg8q0ttQ-VrsFchp7g@mail.gmail.com>
-From: Bartosz Golaszewski <brgl@kernel.org>
-Date: Mon, 27 Apr 2026 12:32:52 +0200
-X-Gmail-Original-Message-ID: <CAMRc=McRuH5Fi-5UQWLRe4+wXKH8qikaYqiqbGXrPOgaifEesw@mail.gmail.com>
-X-Gm-Features: AVHnY4IwzDLYhHPbIaUAVZBlf2N-kg8RzncpCvZK6axdzsTP8InukubITrev7X0
-Message-ID: <CAMRc=McRuH5Fi-5UQWLRe4+wXKH8qikaYqiqbGXrPOgaifEesw@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: mediatek: moore: implement gpio_chip::get_direction()
-To: Linus Walleij <linusw@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260427_033309_220974_8A636EE6 
-X-CRM114-Status: GOOD (  16.30  )
+X-CRM114-CacheID: sfid-20260427_041513_294612_7290F924 
+X-CRM114-Status: GOOD (  16.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,66 +92,207 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: sean.wang@kernel.org, Frank Wunderlich <frank.wunderlich@linux.dev>, bartosz.golaszewski@oss.qualcomm.com, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux@fw-web.de, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Apr 19, 2026 at 11:25=E2=80=AFPM Linus Walleij <linusw@kernel.org> =
-wrote:
->
-> On Mon, Apr 13, 2026 at 6:59=E2=80=AFPM Frank Wunderlich
-> <frank.wunderlich@linux.dev> wrote:
-> > Am 13. April 2026 um 10:01 schrieb "Linus Walleij" <linusw@kernel.org m=
-ailto:linusw@kernel.org?to=3D%22Linus%20Walleij%22%20%3Clinusw%40kernel.org=
-%3E >:
-> > >
-> > > On Fri, Apr 10, 2026 at 11:24 AM Frank Wunderlich
-> > > <frank-w@public-files.de> wrote:
-> > >
-> > > >
-> > > > Gesendet: Freitag, 10. April 2026 um 09:09
-> > > >  Von: "Bartosz Golaszewski" <bartosz.golaszewski@oss.qualcomm.com>
-> > > >  An: "Frank Wunderlich" <linux@fw-web.de>, "Sean Wang" <sean.wang@k=
-ernel.org>, "Linus Walleij" <linusw@kernel.org>, "Matthias Brugger" <matthi=
-as.bgg@gmail.com>, "AngeloGioacchino Del Regno" <angelogioacchino.delregno@=
-collabora.com>, "Bartosz Golaszewski" <brgl@kernel.org>
-> > > >  CC: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org=
-, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, "Bart=
-osz Golaszewski" <bartosz.golaszewski@oss.qualcomm.com>
-> > > >  Betreff: [PATCH] pinctrl: mediatek: moore: implement gpio_chip::ge=
-t_direction()
-> > > >
-> > > >  If the gpio_chip::get_direction() callback is not implemented by t=
-he GPIO
-> > > >  controller driver, GPIOLIB emits a warning.
-> > > >
-> > > >  Implement get_direction() for the GPIO part of pinctrl-moore.
-> > > >
-> > > >  Fixes: 471e998c0e31 ("gpiolib: remove redundant callback check")
-> > > >  Fixes: e623c4303ed1 ("gpiolib: sanitize the return value of gpio_c=
-hip::get_direction()")
-> > > >  Reported-by: Frank Wunderlich <linux@fw-web.de>
-> > > >
-> > > >  please use the email i used for SoB in my linked patch (closes lin=
-k below), the other email i use only for sending patches due to mail provid=
-er limitation.
-> > > >
-> > > I can't fix this up because the closes link isn't working right now.
-> > > Is it the same
-> > > as the one this mail came from frank-w@public-files.de?
-> >
-> > yes, closes-link works for me
->
-> Fixed up and applied. Will be going in as fix for v7.1.
->
-> Yours,
-> Linus Walleij
->
+Add device tree binding for the MediaTek Video Companion Processor
+(VCP), a RISC-V based coprocessor used for video processing and
+multimedia tasks on mt8196 and future MediaTek SoCs.
 
-Hi Linus!
+The VCP is a heterogeneous multi-core processor that can contain
+multiple RISC-V cores with different hart (hardware thread)
+configurations. Key features:
 
-It seems this one got lost somewhere along the way? I don't see it in
-mainline nor next.
+- Supports both single-core and multi-core VCP configurations
+- Each core can have 1 or 2 harts (hardware threads)
+- Shared SRAM memory space partitioned among cores
+- Communication via 5 dedicated mailbox channels for IPI messaging
+- Integrated with SoC IOMMU for multimedia memory management
+- Boot and power management coordinated with ARM Trusted Firmware
 
-Bart
+The binding defines both the top-level VCP device (with mailboxes,
+interrupts, and power domains) and child nodes for individual VCP
+cores (with SRAM allocation and hart configuration).
+
+Signed-off-by: Xiangzhi Tang <xiangzhi.tang@mediatek.com>
+---
+ .../remoteproc/mediatek,mt8196-vcp.yaml       | 166 ++++++++++++++++++
+ 1 file changed, 166 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.yaml
+
+diff --git a/Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.yaml b/Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.yaml
+new file mode 100644
+index 000000000000..8ecb643cbdc5
+--- /dev/null
++++ b/Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.yaml
+@@ -0,0 +1,166 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/remoteproc/mediatek,mt8196-vcp.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek Video Companion Processor (VCP)
++
++maintainers:
++  - Xiangzhi Tang <xiangzhi.tang@mediatek.com>
++
++description:
++  This binding provides support for the MediaTek Video Companion Processor
++  (VCP), a Risc-V coprocessor found on some MediaTek SoCs.
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt8196-vcp
++
++  reg:
++    items:
++      - description: sram base
++      - description: cfg group IO
++      - description: cfg core group IO
++      - description: cfg sec group IO
++
++  reg-names:
++    items:
++      - const: sram
++      - const: cfg
++      - const: cfg-core
++      - const: cfg-sec
++
++  interrupts:
++    maxItems: 1
++
++  mboxes:
++    maxItems: 5
++
++  mbox-names:
++    items:
++      - const: mbox0
++      - const: mbox1
++      - const: mbox2
++      - const: mbox3
++      - const: mbox4
++
++  power-domains:
++    maxItems: 1
++
++  iommus:
++    description:
++      Using MediaTek IOMMU to apply larb ports for Multimedia Memory
++      Management Unit and address translation.
++    maxItems: 1
++
++  memory-region:
++    maxItems: 1
++
++patternProperties:
++  "^vcp@[a-f0-9]+$":
++    type: object
++    description:
++      The MediaTek VCP integrated to SoC might be a multi-core version.
++      The other cores are represented as child nodes of the boot core.
++      There are some integration differences for the IP like the usage of
++      address translator for translating SoC bus addresses into address
++      space for the processor.
++
++      The SRAM is shared by all cores, each VCP core only using a piece of
++      SRAM memory. The power of SRAM should be enabled before booting VCP cores.
++      The size of SRAM varies on different SoCs.
++
++      The VCP cores have differences on different SoCs for Hart support.
++
++    properties:
++      compatible:
++        enum:
++          - mediatek,vcp-core
++
++      reg:
++        description: The base address and size of SRAM.
++        maxItems: 1
++
++      reg-names:
++        const: sram
++
++      mediatek,vcp-core-harts:
++        $ref: /schemas/types.yaml#/definitions/uint32
++        description: Number of harts in this VCP core.
++        enum: [1, 2]
++
++      mediatek,vcp-core-sram-offset:
++        $ref: /schemas/types.yaml#/definitions/uint32
++        description:
++          Offset of the allocated SRAM memory for this VCP core.
++
++    required:
++      - compatible
++      - reg
++      - reg-names
++      - mediatek,vcp-core-harts
++      - mediatek,vcp-core-sram-offset
++
++    additionalProperties: false
++
++required:
++  - compatible
++  - reg
++  - reg-names
++  - interrupts
++  - mboxes
++  - mbox-names
++  - power-domains
++  - iommus
++  - memory-region
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/power/mt8196-power.h>
++
++    vcp: vcp@31800000 {
++        compatible = "mediatek,mt8196-vcp";
++        reg = <0x31800000 0x60000>,
++              <0x31a04000 0xa000>,
++              <0x31bd0000 0x1000>,
++              <0x31a70020 0x100>;
++        reg-names = "sram",
++                    "cfg",
++                    "cfg-core",
++                    "cfg-sec";
++
++        interrupts = <GIC_SPI 787 IRQ_TYPE_LEVEL_HIGH 0>;
++
++        mboxes = <&vcp_mailbox0>,
++                 <&vcp_mailbox1>,
++                 <&vcp_mailbox2>,
++                 <&vcp_mailbox3>,
++                 <&vcp_mailbox4>;
++        mbox-names = "mbox0", "mbox1", "mbox2", "mbox3", "mbox4";
++
++        power-domains = <&scpsys MT8196_POWER_DOMAIN_MM_PROC_DORMANT>;
++        iommus = <&mm_smmu 160>;
++        memory-region = <&vcp_resv_mem>;
++
++        vcp@0 {
++            compatible = "mediatek,vcp-core";
++            reg = <0x0 0x31000>;
++            reg-names = "sram";
++            mediatek,vcp-core-harts = <2>;
++            mediatek,vcp-core-sram-offset = <0x0>;
++        };
++
++        vcp@31000 {
++            compatible = "mediatek,vcp-core";
++            reg = <0x31000 0x60000>;
++            reg-names = "sram";
++            mediatek,vcp-core-harts = <1>;
++            mediatek,vcp-core-sram-offset = <0x31000>;
++        };
++    };
+-- 
+2.46.0
+
 
