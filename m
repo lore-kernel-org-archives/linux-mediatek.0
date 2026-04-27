@@ -4,106 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CDD7FF885E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 13:13:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9289FF885E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2026 13:51:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L7//5ece1DlWDMT1aLpKgGFyRfsm8Y+IqHoNcwNLtWg=; b=mlUt/D2pGQMGg6SN+bjE6L4NT6
-	gei9UvSSChUNLLlKB/jVxGXRq+H0JlPI8g6A/sNxbQKf4uHpEEtLfKxCeRVnp7uSk5HqO0GDxemg9
-	fgOB+bzYUdnPtccgKDqNrzqCfBFN6lDHyW42MbzF+Ahg0sp0NQvvYCgW3rippJ3B+XXHCu4EFq2ku
-	wACEPav9l4cn9+4Rvi53O2wl3K87QACIau4/fHlN+WjXePfUfLe5r3w5tE/T1Akm5ZnX2IcDmdJQk
-	pyON/n4Yvtn2T+0Ro046B5hBaQVR3dAwdEeCCwQRMgXkaJqjczeEcPX7zvQH+/3XoZd8+/7kANxh+
-	mcx03/EQ==;
+	bh=8A8c5EaUo5IoDVaBozvn/C7Rmnc8Mb33RmetMp8FsMQ=; b=X/NGpwsbZ7s1jCysDTrAvFWF9z
+	zuLIogj6e6vTxZ04WyzS9T4HAHon9LoR09hzqs8yBnzEbyPz66fOedfKg2EBEZHES3/0IcE4+s472
+	C5PpB6W9kcxm3+0U+dRbZl1riwBzPD2aobPeGDheuheY9yZ3ltfOSECphEdBZVsYo5EwaRZEEWLkT
+	lpy0FspR+JSGvb7AEhIsj4usFEnwOnHmA335rQhRWxAiDX2HTn0EKkBz+nNQILgDHNo3s+xRfJhzT
+	0OFxdlBvO956dv8vQ7Myq0wdaA23btonOelePsTEpYZ2ZihdgAQz+1Leq6KX/9TFuH62LVfabbmZe
+	IPONdVHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHLmd-0000000Gz8D-1ZfJ;
-	Mon, 27 Apr 2026 13:13:55 +0000
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+	id 1wHMMx-0000000H1yu-1LkF;
+	Mon, 27 Apr 2026 13:51:27 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHLmZ-0000000Gz5s-1ibO
-	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Apr 2026 13:13:52 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-5a2b5ea59a1so15433545e87.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Apr 2026 06:13:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1777295629; cv=none;
-        d=google.com; s=arc-20240605;
-        b=kKmN7b/zaH2yWFXQrCKKcuJodiQMbEbLfKV8ge6aCbTgOGmnLOh7Kts2kUwSWD4Vof
-         kF4PiTbRuFWj5KmTVrzBredOubsaUBwL4sQNMveANuu4UXSVa0Pj6oQRyWC9rgSbjXh6
-         gym3FqdAxHiH1R6mFRcLvw1NgIrnIu75Cf6sIn/Wmkj2SxsLv9NYQea2IAq0LgppR98y
-         uDpgABC9ybQIo/0RvCperMUau72DtEUrEsIyQVGcPmGUqItWYu2nFyfj8qTAC1x0LHh8
-         leycHO6ResZNOq0MYkHYa0yUGlscEqwKU7plvFUi5PZhkykosJUWzPubCbNwMZjdJXRT
-         5j0A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=L7//5ece1DlWDMT1aLpKgGFyRfsm8Y+IqHoNcwNLtWg=;
-        fh=+kmt29LGt9jqLJF2BSWqXjqdFOygzpxD9bHi8RwzsbM=;
-        b=TQSWcfWZmWop8rclxzQZPK/wRffvbGwY8JEWHSRMXRqVSVJBqqdVH0/qGD/FnpyH+V
-         1OcODBkS0kRpHZomWnuiSgPntp/O8IAGqfd3UoxnLrrOFZb51coKe1oL2gvPlNhuQMnJ
-         Ys4oOF9OZ6IDfScWABN9VZtEtkLA83P3GBM0t2jYugIunOjy9FvGiY269fZ8KOP163Ze
-         1Ru1DYhw25yJHz0e3HQaFukFZUmM9VGqTG8CT1kEZnLsBGVcNofPqyURhv0jDzDJRkA0
-         DbMQd57iteluDMrfeE4jJHVvBJD9powsAZNX3nn2e6HAb1DQkrs4tzitXZK9g4TLE96L
-         okQg==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1777295629; x=1777900429; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=L7//5ece1DlWDMT1aLpKgGFyRfsm8Y+IqHoNcwNLtWg=;
-        b=V3HdL5ujHrahwb6LcApHXUMfbFDGgGRPtl/hG3jDYZa1dBln/ktelGF1qFzGcRLMmT
-         R4JDhuN8C/Lg/6CTiXN+2xcKFXvbkwspo15s+7GM8VEMDYTrPN7qk1qWnYWnHh2qLuMR
-         pPruKMnpzMc+IfeDwcjRSAnn2SniFeTWsDvoRT0NCiSktREK1EIBFKF6ycE2L4PllDe/
-         7/IxRwc/0n6N3yAxATiHj8PlKumSC3vPC4TSrmu8B8q4itwCr3n9JFsuNATkmVRTwSJO
-         5pLWPX8qiad6jgpVRunBQ79j4ZX2hFewk2rjYgjY+bASWDq4N5LZ/YA42T7a50lDmCkC
-         cvBQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777295629; x=1777900429;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=L7//5ece1DlWDMT1aLpKgGFyRfsm8Y+IqHoNcwNLtWg=;
-        b=jBJHhTdhj+EW98E+WCfHYNT029kJBtvYl4HZENfZbymeIfSj5vRoucBJr7SqlucUyX
-         aKqRzSjUlq8y3Lz05iuPW7x1IWqxevoGl84rgRiJXj2ijDjHVBoOAcz2d2xIQnR+n1kc
-         3Q9ZPNVBhgbvevnU3ZXTkuqoTqWMQXZxDn7xnJMR4xncPR2lfm6Uo3UVCR+INNb7kBAM
-         CO7z5aYP2+S3MhAc+sttPHRugLOpQBctp2wkrX0R69wu9tFcKhpw+7UiW0hqBRwvI3bt
-         L/+REqBaTQQRpT4Nnk8lD7hIt6yMlkA/n5y5/KwmgRj3ZDzkOd0uz6DzOlAuJhK6PQAL
-         o20A==
-X-Forwarded-Encrypted: i=1; AFNElJ9tAO9oRf+IxekZDFayrujNXCOImyfntwMr1pycYCdDCEdl3BRzzr6TSthXSG8OpZy0KP1FCDe/OnUX/EYtJw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzhPM3q8aIzu9JWioI+HH8jUGHemkM75BfHepH5oQyZ67tUbLLV
-	5ijY8o4tlttbhnedBCwVuy35jYJTPXWzWnLMUkWXmZJiyjDHrr4rPfkQTZxEJrgkFgyjOecgl3I
-	nw0ZL9ZNWb12uWkeX2SG0k0DUpTLpMC5BhGuIOYuHxQ==
-X-Gm-Gg: AeBDietVFOcazLSMduCRRhrky4uv6RQmihPtibSIshPSRJm49Fga/YsQxYI3chyWLx3
-	/WWybvRCCeHgRc5kx/w3BZ8RD9iUdCOYh4jajR+xOPSJAU7O7sSyfKZyWshkMcjzDtxqfc0yXa3
-	+6myUooEqECqVTRozzcfl55pU0sh6sCCjAfYzNXPqB82SMEmrqN66LHo+fqvRmOWkgoFPfUFQOQ
-	OlLiJ5PKp+tVoG/YOVUf//3kr0Q/Ks2Rm5YcbwOJRleqqoI8pfZlYlveSj86IjskyiyWrOn5gI/
-	5Z/m3jNi3X8+64Z3DWo=
-X-Received: by 2002:a05:6512:3193:b0:5a4:1672:59e0 with SMTP id
- 2adb3069b0e04-5a4172cd574mr14121153e87.19.1777295629037; Mon, 27 Apr 2026
- 06:13:49 -0700 (PDT)
+	id 1wHMMv-0000000H1yS-2qUm;
+	Mon, 27 Apr 2026 13:51:25 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id A44D061141;
+	Mon, 27 Apr 2026 13:51:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4E43BC2BCB4;
+	Mon, 27 Apr 2026 13:51:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1777297884;
+	bh=lc2dFE2do90KeKyX8qyoFkG1PvpHS4hbDdHzs4tyRag=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=krNIz+YgbUJQ+HQIxonDgleTHi9ZbHyd4RJdhrla2R1K+mTPLOUiL6TuW+1bSuOHq
+	 fFIyFshK6yLb+B6V554dRg03U3t6i3aJIv0Zt5V06WyZ6KG42pj+imi0uk5iCIrZjl
+	 VMcImRdayHHcz2kFcn7gE4/fgz9QHiCi7MyTfF2ByAfHLv4xRSd93jFycAPaaF0b3B
+	 T6bkzxX/2/0EjAiIPQeusMRROsOI8R6wZbFqRZIZD1RZnd8ntWtHq06Mfe5GygdbT1
+	 1Nmlt2LZOaIE/Tccw0RKpgK4hEdMuMykamFbTGXOm7RIRpztVzk1UprHAsMcMJ5dzg
+	 zuFA4LiWuP8Ww==
+Date: Mon, 27 Apr 2026 08:51:22 -0500
+From: Rob Herring <robh@kernel.org>
+To: Xiangzhi Tang <xiangzhi.tang@mediatek.com>
+Cc: Bjorn Andersson <andersson@kernel.org>,
+	Mathieu Poirier <mathieu.poirier@linaro.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	Hailong Fan <Hailong.Fan@mediatek.com>,
+	Huayu Zong <Huayu.Zong@mediatek.com>,
+	Jarried Lin <Jarried.Lin@mediatek.com>,
+	Justin Yeh <Justin.Yeh@mediatek.com>,
+	Vince-WL Liu <Vince-WL.Liu@mediatek.com>
+Subject: Re: [PATCH v4 1/7] dt-bindings: remoteproc: Add MediaTek mt8196 VCP
+ binding
+Message-ID: <20260427135122.GA2322791-robh@kernel.org>
+References: <20260427111446.22955-1-xiangzhi.tang@mediatek.com>
+ <20260427111446.22955-2-xiangzhi.tang@mediatek.com>
 MIME-Version: 1.0
-References: <20260408141121.386522-1-vulab@iscas.ac.cn>
-In-Reply-To: <20260408141121.386522-1-vulab@iscas.ac.cn>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Mon, 27 Apr 2026 15:13:12 +0200
-X-Gm-Features: AVHnY4KIw0y71PHOTou49MhZ1vsAm_GUfrl6yfolmci7Zff-_TktbzdbSpL-x1c
-Message-ID: <CAPDyKFrTG6tp9XbuiUYjgMYkHYQwVsyXBuggCc3Lp=J_NcKTyA@mail.gmail.com>
-Subject: Re: [PATCH] pmdomain: mediatek: fix use-after-free in scpsys_get_bus_protection_legacy()
-To: Wentao Liang <vulab@iscas.ac.cn>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, nfraprado@collabora.com, 
-	Macpaul Lin <macpaul.lin@mediatek.com>, Adam Ford <aford173@gmail.com>, 
-	Chen-Yu Tsai <wenst@chromium.org>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	stable@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260427_061351_543535_048A9688 
-X-CRM114-Status: GOOD (  20.74  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260427111446.22955-2-xiangzhi.tang@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,64 +82,225 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 8 Apr 2026 at 16:11, Wentao Liang <vulab@iscas.ac.cn> wrote:
->
-> In scpsys_get_bus_protection_legacy(), of_find_node_with_property()
-> returns a device node with its reference count incremented. The function
-> then calls of_node_put(node) before checking whether
-> syscon_regmap_lookup_by_phandle() returns an error. If an error occurs,
-> dev_err_probe() dereferences the node pointer to print diagnostic
-> information, but the node memory may have already been freed due to the
-> earlier of_node_put(), leading to a use-after-free vulnerability.
->
-> Fix this by moving the of_node_put() call after the error check, ensuring
-> the node is still valid when accessed in the error path.
->
-> Fixes: c29345fa5f66 ("pmdomain: mediatek: Refactor bus protection regmaps retrieval")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
-
-Applied for fixes, thanks!
-
-Kind regards
-Uffe
-
-
+On Mon, Apr 27, 2026 at 07:04:40PM +0800, Xiangzhi Tang wrote:
+> Add device tree binding for the MediaTek Video Companion Processor
+> (VCP), a RISC-V based coprocessor used for video processing and
+> multimedia tasks on mt8196 and future MediaTek SoCs.
+> 
+> The VCP is a heterogeneous multi-core processor that can contain
+> multiple RISC-V cores with different hart (hardware thread)
+> configurations. Key features:
+> 
+> - Supports both single-core and multi-core VCP configurations
+> - Each core can have 1 or 2 harts (hardware threads)
+> - Shared SRAM memory space partitioned among cores
+> - Communication via 5 dedicated mailbox channels for IPI messaging
+> - Integrated with SoC IOMMU for multimedia memory management
+> - Boot and power management coordinated with ARM Trusted Firmware
+> 
+> The binding defines both the top-level VCP device (with mailboxes,
+> interrupts, and power domains) and child nodes for individual VCP
+> cores (with SRAM allocation and hart configuration).
+> 
+> Signed-off-by: Xiangzhi Tang <xiangzhi.tang@mediatek.com>
 > ---
->  drivers/pmdomain/mediatek/mtk-pm-domains.c | 10 +++++++---
->  1 file changed, 7 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-> index e2800aa1bc59..d3b36f32417c 100644
-> --- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
-> +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-> @@ -993,6 +993,7 @@ static int scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *s
->         struct device_node *node, *smi_np;
->         int num_regmaps = 0, i, j;
->         struct regmap *regmap[3];
-> +       int ret = 0;
->
->         /*
->          * Legacy code retrieves a maximum of three bus protection handles:
-> @@ -1043,11 +1044,14 @@ static int scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *s
->         if (node) {
->                 regmap[2] = syscon_regmap_lookup_by_phandle(node, "mediatek,infracfg-nao");
->                 num_regmaps++;
-> -               of_node_put(node);
-> -               if (IS_ERR(regmap[2]))
-> -                       return dev_err_probe(dev, PTR_ERR(regmap[2]),
-> +               if (IS_ERR(regmap[2])) {
-> +                       ret = dev_err_probe(dev, PTR_ERR(regmap[2]),
->                                              "%pOF: failed to get infracfg regmap\n",
->                                              node);
-> +                       of_node_put(node);
-> +                       return ret;
-> +               }
-> +               of_node_put(node);
->         } else {
->                 regmap[2] = NULL;
->         }
-> --
-> 2.34.1
->
+>  .../remoteproc/mediatek,mt8196-vcp.yaml       | 166 ++++++++++++++++++
+>  1 file changed, 166 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.yaml b/Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.yaml
+> new file mode 100644
+> index 000000000000..8ecb643cbdc5
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.yaml
+> @@ -0,0 +1,166 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/remoteproc/mediatek,mt8196-vcp.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek Video Companion Processor (VCP)
+> +
+> +maintainers:
+> +  - Xiangzhi Tang <xiangzhi.tang@mediatek.com>
+> +
+> +description:
+> +  This binding provides support for the MediaTek Video Companion Processor
+> +  (VCP), a Risc-V coprocessor found on some MediaTek SoCs.
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt8196-vcp
+> +
+> +  reg:
+> +    items:
+> +      - description: sram base
+> +      - description: cfg group IO
+> +      - description: cfg core group IO
+> +      - description: cfg sec group IO
+> +
+> +  reg-names:
+> +    items:
+> +      - const: sram
+> +      - const: cfg
+> +      - const: cfg-core
+> +      - const: cfg-sec
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  mboxes:
+> +    maxItems: 5
+
+You have to define what each one is.
+
+> +
+> +  mbox-names:
+> +    items:
+> +      - const: mbox0
+> +      - const: mbox1
+> +      - const: mbox2
+> +      - const: mbox3
+> +      - const: mbox4
+
+name plus an index is not useful.
+
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  iommus:
+> +    description:
+> +      Using MediaTek IOMMU to apply larb ports for Multimedia Memory
+> +      Management Unit and address translation.
+> +    maxItems: 1
+> +
+> +  memory-region:
+> +    maxItems: 1
+> +
+> +patternProperties:
+> +  "^vcp@[a-f0-9]+$":
+> +    type: object
+> +    description:
+
+You need '>' for paragraphs.
+
+> +      The MediaTek VCP integrated to SoC might be a multi-core version.
+> +      The other cores are represented as child nodes of the boot core.
+> +      There are some integration differences for the IP like the usage of
+> +      address translator for translating SoC bus addresses into address
+> +      space for the processor.
+> +
+> +      The SRAM is shared by all cores, each VCP core only using a piece of
+> +      SRAM memory. The power of SRAM should be enabled before booting VCP cores.
+> +      The size of SRAM varies on different SoCs.
+> +
+> +      The VCP cores have differences on different SoCs for Hart support.
+> +
+> +    properties:
+> +      compatible:
+> +        enum:
+> +          - mediatek,vcp-core
+> +
+> +      reg:
+> +        description: The base address and size of SRAM.
+> +        maxItems: 1
+
+This is memory mapped, right? If so you need 'ranges' in the parent 
+node.
+
+> +
+> +      reg-names:
+> +        const: sram
+> +
+> +      mediatek,vcp-core-harts:
+> +        $ref: /schemas/types.yaml#/definitions/uint32
+> +        description: Number of harts in this VCP core.
+> +        enum: [1, 2]
+> +
+> +      mediatek,vcp-core-sram-offset:
+> +        $ref: /schemas/types.yaml#/definitions/uint32
+> +        description:
+> +          Offset of the allocated SRAM memory for this VCP core.
+
+Why do you have this and SRAM for the core defined in reg? It should 
+only be in reg.
+
+> +
+> +    required:
+> +      - compatible
+> +      - reg
+> +      - reg-names
+> +      - mediatek,vcp-core-harts
+> +      - mediatek,vcp-core-sram-offset
+> +
+> +    additionalProperties: false
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - reg-names
+> +  - interrupts
+> +  - mboxes
+> +  - mbox-names
+> +  - power-domains
+> +  - iommus
+> +  - memory-region
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    #include <dt-bindings/power/mt8196-power.h>
+> +
+> +    vcp: vcp@31800000 {
+
+Drop unused labels.
+
+> +        compatible = "mediatek,mt8196-vcp";
+> +        reg = <0x31800000 0x60000>,
+> +              <0x31a04000 0xa000>,
+> +              <0x31bd0000 0x1000>,
+> +              <0x31a70020 0x100>;
+> +        reg-names = "sram",
+> +                    "cfg",
+> +                    "cfg-core",
+> +                    "cfg-sec";
+> +
+> +        interrupts = <GIC_SPI 787 IRQ_TYPE_LEVEL_HIGH 0>;
+> +
+> +        mboxes = <&vcp_mailbox0>,
+> +                 <&vcp_mailbox1>,
+> +                 <&vcp_mailbox2>,
+> +                 <&vcp_mailbox3>,
+> +                 <&vcp_mailbox4>;
+> +        mbox-names = "mbox0", "mbox1", "mbox2", "mbox3", "mbox4";
+> +
+> +        power-domains = <&scpsys MT8196_POWER_DOMAIN_MM_PROC_DORMANT>;
+> +        iommus = <&mm_smmu 160>;
+> +        memory-region = <&vcp_resv_mem>;
+> +
+> +        vcp@0 {
+> +            compatible = "mediatek,vcp-core";
+> +            reg = <0x0 0x31000>;
+> +            reg-names = "sram";
+> +            mediatek,vcp-core-harts = <2>;
+> +            mediatek,vcp-core-sram-offset = <0x0>;
+> +        };
+> +
+> +        vcp@31000 {
+> +            compatible = "mediatek,vcp-core";
+> +            reg = <0x31000 0x60000>;
+> +            reg-names = "sram";
+> +            mediatek,vcp-core-harts = <1>;
+> +            mediatek,vcp-core-sram-offset = <0x31000>;
+> +        };
+> +    };
+> -- 
+> 2.46.0
+> 
 
