@@ -4,96 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 468BCFF886D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Apr 2026 17:17:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5741FF886D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Apr 2026 19:22:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=7QVnrg5T5fwP5chnWeWOK6cyXsKrSBxIvGHnvHH3/V4=; b=WkLYny+NsvH5roUseM7n1OP99J
-	9lO7ZR5ucvZ5wust+uKz4T4nP4roO1fkrSn8bzx02Aa/8nMtZnKx9AExrGp+/okF/y0o+moqNJr+H
-	oftmudsLaJsrSr1DI/qWnnMc+iwxBuUtoyS94E8CJOA+GaCrPSZh0VQ2jmL0VI3mh3Q8pcKCKTwTS
-	eATo+5phl2bInms++oLPKsb2oT9wsNswrOWcN8wYDx6rks/IMpU4J73IJ7AwryF9wzDnJCgAu28MB
-	KkpJbjzmT91PpBVWRUughAtaui1I0lfK1ZMx3xM3LDp8tpxwABXZtJP0rdwoh9OsnvEzmG919uPF7
-	y419kulw==;
+	bh=fRBTVtb7VHeglAHXqHrDRxqCIft9Mc07dM462EhUPT8=; b=qaBJnd8TamMUlNe33hPE4wQMBr
+	vsRpnhLXPgC3dy+pC/B/tfix92Ja2a1ofzSckTMInAivWFFbkFkl5ZwU4AG3c8E7oicBp1Wqu7Lsj
+	qnxKgIhYDqA18Qndl5i84GcXI7BuZ7ZaY3UBqZySzZgrQc7U6ohShHzmr7YRAe0Hbj/ti7SU5hu4m
+	u7WIG9LSrIl1NQmoaTen8yud0F4JjELBHDDYePRtWg5IKH/Uph8v8Tj/R00bSich9jFz1Xx5UlcFT
+	TsfvxbahQr9rVll5fvMTikY0j8kRgNLtaTP5seto2fZ60Jf7OJXIbgDVyxwGnMhOUX3IlVPBWF8+S
+	XfQ4rnwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHm3T-000000020XS-1kM6;
-	Tue, 28 Apr 2026 17:17:03 +0000
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+	id 1wHo1A-000000029N5-41YX;
+	Tue, 28 Apr 2026 19:22:48 +0000
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHm3Q-000000020WV-1CwF
+	id 1wHo18-000000029Mg-1juf
 	for linux-mediatek@lists.infradead.org;
-	Tue, 28 Apr 2026 17:17:01 +0000
-Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-82748257f5fso29552b3a.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 28 Apr 2026 10:16:59 -0700 (PDT)
+	Tue, 28 Apr 2026 19:22:47 +0000
+Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-2b23fcf90b2so112834685ad.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 28 Apr 2026 12:22:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1777396619; x=1778001419; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1777404164; x=1778008964; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=7QVnrg5T5fwP5chnWeWOK6cyXsKrSBxIvGHnvHH3/V4=;
-        b=OkCQAY0KG640HuVntFS7mVUqZynqtXlvtyWj2XpXm9ESk+ZseNDRygEu4GagtdG8ko
-         YL/Km+wqSoP2D3EdqA1MLjiqVV2BRbTUV05xMy/bZNFHYYCuegMRHe1Ean/NDvvahRaD
-         X/bzExpX7S9A1adHzTzcGWkoQi1FEhCpw6Rce9GsG5g6/3HDwBhTkygpHN9X5MHAXzxy
-         AmhNs4DhZKy8931Cs5GXX8s6MQicgAMffmLSzpnOZ8Eav4S5UUSJMZfK5ZFf0uyHRiPz
-         Uxv++2TJGfxrKb7eRo052H2NxmTfzBE73a+p+xOUw36EoBFQIUZ6Q/L5LR41hk4rIzvL
-         A78Q==
+        bh=fRBTVtb7VHeglAHXqHrDRxqCIft9Mc07dM462EhUPT8=;
+        b=V/0PUW3YYBM0EsW+fj+UGFB3mB88zqeTt/i1kqtcVRmkfFypKZRhVQYad6/eC5iAUO
+         LeDMCSuaqANWQZTL2XQ6yhb2nbtUr+mIV/qv769JRMr3SFEjb0O7LZrMGwmauaOlm8RH
+         gXQm2Tf+k4woKG87Fv+cHXHkFeU3yfvSnSmIRHaGCgYZUGtJS/Zpu61AfQKmfTXGfgsn
+         0m2LtNorsNOqA3EcrLNRHCgf00D2OPom5v9yPM7GF7DIeF3oBo6JbP5bJqkYnxWCgOA7
+         S+nipAl8lvmXyhczCAV/08aXaPmlQYOdU2EOgjna3l8tsAjY/DeacxTKN1W4IyOQLja/
+         Y85Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777396619; x=1778001419;
+        d=1e100.net; s=20251104; t=1777404164; x=1778008964;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=7QVnrg5T5fwP5chnWeWOK6cyXsKrSBxIvGHnvHH3/V4=;
-        b=PFfA56NjEm26hhcDi/2qbpDNaZHp5tvIUHdfI0sX9avrDFgUGMJL1ySUThqJVfnZkq
-         Lly9BkS6Gvgl7pynkCNRBed1yzQWzIZ4eEMh0aZJPOMzT/JfVZYE5Ie0Kw5LqzMwZFeO
-         FpjuaOeiYyEBmhDQ6I/K4sq4uqkoSYhQmuXfOCvz1gh4502bm1EvzPgrK84r8Q4XqF5b
-         qCY4AFBN03nEPmmG6tr1Lm3MQV1TS6uJ2X+cCsROkpId4y5YLYQnTZhYCLbyFziYeuov
-         T7jxkLOHY3Pcz92abmS2NLrsAe3MmPURCtLedlZ6LYBqzD3DCwRYFYjUHbmkEGejom2u
-         DUvw==
-X-Forwarded-Encrypted: i=1; AFNElJ8wP7Gus7fa0ttPYioNGdc3qu2kXH4KOXn+7g57HxMT1aiW5H0XuTlAaKss8SThG8TrZ9gXZ3ycKcsoGZW7hw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxb7QPzR8+o/kljHyzBLFmGtNlLXnv+/q6UywOSRmHO+mxfDfX2
-	R3ovIkvoqVJvKY1Esuzf0LcVqGbusa5VBOuHadSzyeaDT/0tWwFmr7G7
-X-Gm-Gg: AeBDiev3PP01c/xO3jV/wdetIfYZExUowAFj7W2SsAZawDk2gSCoRAEry+kV5Mh0zfR
-	LlamwkBJcMCwbkWGwlg1nJUANHwzxWDl9zwulrejudTT00ECkuR3ENDwlcbpFK9tdrImac30bF+
-	tvBD+MIAlyq+QT/vtmBrX/VUa+HcXBl3cQAlMIJ6MuIPatIoI5gix5hScG/oH9aC4CQOEd8A8nn
-	VUoWCJ3E/o07ubG0Vt7niSCeOrEx6a1/oV3LJCn6tpU4fMOKX+5VeJNmYounz0eFQsrbdKabNoU
-	R+EjqjCIB499W/7b4C+t/ExJqdhBEZGKqOID5Vcuz1j8uYsPpZK6Yr13xWdN95DVhcDaPgTglOL
-	uqcoaCQPcrtX2xDXSZNYayU3nBuwmIEv06jAAnwkfKzxoix619nKbsz1fufwnxO1oIdCunEp9Or
-	d4tO7dSrCn6ncZZn8zTTxuWZd63sm/Vl33A3195goroiMJOFE6lEmGCWBY6POus7pFvcLndZZ5E
-	BMw4A==
-X-Received: by 2002:a05:6a00:4fcf:b0:7a9:d8a8:992a with SMTP id d2e1a72fcca58-834dcb99cafmr3645484b3a.13.1777396618489;
-        Tue, 28 Apr 2026 10:16:58 -0700 (PDT)
-Received: from Ubuntu.. ([49.37.171.184])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-834dae2226bsm3370743b3a.18.2026.04.28.10.16.53
+        bh=fRBTVtb7VHeglAHXqHrDRxqCIft9Mc07dM462EhUPT8=;
+        b=A9ToZXxEgv/DBA93ZeuQ6rg5cA4BR7BUsRHJlxM4czzM0TOXhBGw7xWUhhTiovVeoo
+         pZec6yXCC1OiEvA5LUeBnb6RFqlzURLTuipuVR8ZK7W7JMc0aZrsJ7JhbkXGXbLbcgwA
+         r5JLg2++WjeyU5z/qiHBUamK1Fa7swceqHAxDZqXDITOMyNPdFf4bZ7mjqviMKe5BQyN
+         Q0JR7X7aMznf8gvIQKOOAlhyGQmCadjYtWaA5YC0teAYRJi62DGxBd5/M6rvJfghyslb
+         ac/CzVD50/GpPk+4Wual+39ZBDHLmQryjZr141bVyKsLpoSGrA0XXKAswe3fyRt3x0QS
+         HGOQ==
+X-Forwarded-Encrypted: i=1; AFNElJ+fIfvT2Sk2tGkGqgddlKL5+/o0OBA70syLlWDvTb0CS2Oxd85ZVIqrMaBOMfiRGKdSn84XS1/+7/Mgg5Mq3g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwjHhJkCqaZAk3kdf+RP5zxW4vI7ZN7+dmyacpP0DS8SmX+z9VW
+	nG6IgsPQ1Zi+TFzPkeS/o5R77Qz+8FVu5njQ5s6hWAi/YLCZQEX3dupO
+X-Gm-Gg: AeBDiesoGDDQ0FmCVrGAp21vNPwVWF3zcRZMXzSVWAYt2klSYENvNy2HH7S5saSlj3D
+	yZ0swCxOWwSUAs/Wss189U7aUgdK/wKMM/xpgGz/9Ov/6a1xWXHMNoOsbQlwRTtw3NvmQyZWnA3
+	MqTnbG1ZEaL4mumHbvvd1bvXWtsHu0NHP37VsePX4jvv49HesvonjmeGLmJf/naUOGuMtgVr+vI
+	/VQVoW87xJYcCoyq/yEI8dh0QscdpHkzk8re10c6O8AWcmKacox6RHSwDhRlap6J2UCPIhIX+CR
+	2BROiRbfFc5EpP/TalDm5WShsNdIacmjAZ5I60bvlKqJHGhATT5rEkgLCZ87mY7ChvijTDrk26H
+	ek2HoSMUiJWAhD9ABqDV/FbYPPDH/eYZM78QhRh+k0i7SDqwDdT1qvohNdKn/NrPSUp63jQZOef
+	6yZOo80hhG3PZu8zk5gk6/KHhk8cWdGj2sHVPCIXjr0HyYxcz5
+X-Received: by 2002:a17:902:f90d:b0:2b2:4ded:954e with SMTP id d9443c01a7336-2b97c4624f4mr28534005ad.24.1777404164217;
+        Tue, 28 Apr 2026 12:22:44 -0700 (PDT)
+Received: from ideapad.. ([2401:4900:881c:789e:c457:196:87e5:7368])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-c7fc29b1fd5sm3885467a12.9.2026.04.28.12.22.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Apr 2026 10:16:57 -0700 (PDT)
-From: Manish Baing <manishbaing2789@gmail.com>
-To: lgirdwood@gmail.com,
-	broonie@kernel.org
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	kaichieh.chuang@mediatek.com,
-	linux-sound@vger.kernel.org,
-	devicetree@vger.kernel.org,
+        Tue, 28 Apr 2026 12:22:43 -0700 (PDT)
+From: Ankit Dange <ankitdange37@gmail.com>
+To: nbd@nbd.name,
+	lorenzo@kernel.org,
+	linux-wireless@vger.kernel.org
+Cc: ryder.lee@mediatek.com,
 	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	manishbaing2789@gmail.com,
-	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Subject: [PATCH v2] ASoC: dt-bindings: mediatek,mt6351: convert to DT schema
-Date: Tue, 28 Apr 2026 17:16:44 +0000
-Message-ID: <20260428171644.5703-1-manishbaing2789@gmail.com>
+	ankitdange37@gmail.com
+Subject: [PATCH] wifi: mt76: mt7915: fix GENMASK for chain 3 RSSI in mt7915_mac_sta_poll()
+Date: Wed, 29 Apr 2026 00:52:28 +0530
+Message-ID: <20260428192228.144654-1-ankitdange37@gmail.com>
 X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260428_101700_334651_2F436B02 
-X-CRM114-Status: GOOD (  13.09  )
+X-CRM114-CacheID: sfid-20260428_122246_456400_68F7ADAD 
+X-CRM114-Status: GOOD (  11.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,88 +99,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert MediaTek MT6351 Audio CODEC bindings from text format to
-YAML schema to enable dtbs_check validation.
+The RCPI values of response frames are stored as four consecutive
+bytes in WTBL DW30. The bitmask for extracting chain 3 RCPI uses
+GENMASK(31, 14) which is an 18-bit field overlapping with chains 1
+and 2. Fix it to GENMASK(31, 24) to correctly extract the 8-bit
+RCPI value for chain 3.
 
-Signed-off-by: Manish Baing <manishbaing2789@gmail.com>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+On devices with fewer than 4 antenna chains this bug is masked
+because mt76_rx_signal() skips chains not present in antenna_mask.
+On 4x4 configurations the corrupted chain 3 value feeds into the
+combined ACK signal strength calculation.
+
+Tested on Yuncore AX820 (MT7915, 2x2) by reading raw DW30 register
+values and comparing FIELD_GET results for both masks. With
+GENMASK(31, 14), chain 3 produces garbage values (e.g., -112 dBm
+from a register value of 0xFFFF4248 where the correct result is
++17, indicating an unused chain). No regression on 2x2 operation.
+
+Fixes: 94b335fa88e1 ("wifi: mt76: mt7915: add ack signal support")
+Signed-off-by: Ankit Dange <ankitdange37@gmail.com>
 ---
-Changes in v2:
-  - Switch to unevaluatedProperties.
-  - Add missing #sound-dai-cells to properties and required list.
-  - Update example to include #sound-dai-cells.
+ mt7915/mac.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- .../bindings/sound/mediatek,mt6351-sound.yaml | 37 +++++++++++++++++++
- .../devicetree/bindings/sound/mt6351.txt      | 16 --------
- 2 files changed, 37 insertions(+), 16 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt6351-sound.yaml
- delete mode 100644 Documentation/devicetree/bindings/sound/mt6351.txt
-
-diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt6351-sound.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt6351-sound.yaml
-new file mode 100644
-index 000000000000..b422e238b512
---- /dev/null
-+++ b/Documentation/devicetree/bindings/sound/mediatek,mt6351-sound.yaml
-@@ -0,0 +1,37 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/sound/mediatek,mt6351-sound.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek MT6351 Audio CODEC
-+
-+maintainers:
-+  - KaiChieh Chuang <kaichieh.chuang@mediatek.com>
-+
-+description:
-+  MT6351 Audio CODEC is a part of the MediaTek MT6351 PMIC.
-+  It communicates with the SoC through the MediaTek PMIC wrapper(pwrap).
-+
-+allOf:
-+  - $ref: dai-common.yaml#
-+
-+properties:
-+  compatible:
-+    const: mediatek,mt6351-sound
-+
-+  "#sound-dai-cells":
-+    const: 0
-+
-+required:
-+  - compatible
-+  - "#sound-dai-cells"
-+
-+unevaluatedProperties: false
-+
-+examples:
-+  - |
-+    sound {
-+       compatible = "mediatek,mt6351-sound";
-+       #sound-dai-cells = <0>;
-+    };
-diff --git a/Documentation/devicetree/bindings/sound/mt6351.txt b/Documentation/devicetree/bindings/sound/mt6351.txt
-deleted file mode 100644
-index 7fb2cb99245e..000000000000
---- a/Documentation/devicetree/bindings/sound/mt6351.txt
-+++ /dev/null
-@@ -1,16 +0,0 @@
--Mediatek MT6351 Audio Codec
--
--The communication between MT6351 and SoC is through Mediatek PMIC wrapper.
--For more detail, please visit Mediatek PMIC wrapper documentation.
--
--Must be a child node of PMIC wrapper.
--
--Required properties:
--
--- compatible : "mediatek,mt6351-sound".
--
--Example:
--
--mt6351_snd {
--	compatible = "mediatek,mt6351-sound";
--};
+diff --git a/mt7915/mac.c b/mt7915/mac.c
+index b581d8f9..3d7d71ac 100644
+--- a/mt7915/mac.c
++++ b/mt7915/mac.c
+@@ -221,7 +221,7 @@ static void mt7915_mac_sta_poll(struct mt7915_dev *dev)
+ 		rssi[0] = to_rssi(GENMASK(7, 0), val);
+ 		rssi[1] = to_rssi(GENMASK(15, 8), val);
+ 		rssi[2] = to_rssi(GENMASK(23, 16), val);
+-		rssi[3] = to_rssi(GENMASK(31, 14), val);
++		rssi[3] = to_rssi(GENMASK(31, 24), val);
+ 
+ 		msta->ack_signal =
+ 			mt76_rx_signal(msta->vif->phy->mt76->antenna_mask, rssi);
 -- 
 2.43.0
 
