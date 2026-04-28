@@ -4,54 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEEBFFF8864
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2026 03:47:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F304FF8864
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2026 04:19:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:From:
-	Subject:References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WRWWBVBpJfyHUbcXC5KjEtdEc+bw539Wu5/xgbbyIoA=; b=x4qScqB7sJuTgsQXreXyj2dug8
-	t/RMRzyoAwYxdD3BlQEbTRW3uYaA/BWXtW8xjsyEOuoJ72x2e5w4F591xfu9X+AeORZcayUHiLXeq
-	ZLDmlDSPUuIzreNycgF9H8GEpw9OWA1NoLCxCm+1q+tsMSgntJ1zQX98BlZ0GhpCSC/ELX5WYlmB2
-	eCsr907MODRtfI78d92+eRqomGi/ewLiF7BAKcjPTEPgKF53XAJv4/UVXy/gnVl0U4AXq/C1vw2NY
-	Z38u7mVUVkDNT80iXr7y4n82ohRvlV9wwdpZoTWNXCyzX5acviyHT7pNyIfdIsiiGqGFwNIZvIXs3
-	B8uB8wGQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TCtJEGrJNdlx6qQ2+LU0bmM5ePfd8ECthmOEVZ/llRw=; b=BFTWWgYSM8a7XYAmCInFUL+Oz4
+	QRX6815I5m2FizaLO8Owa4E+/LZ+d6JmP3TNYfRLw12Ia4fgLI4Ca23tKlTza10XYCYHHE2xj5Q8a
+	ERbikJnsrlF2oKZEUn6om7UIhxZkHUO7n4UTRcfvOCKVPo1fFZxJU6nIGMadeT0BL8yXSdnuawvth
+	v4nqxZshtHVLKpvnfTDqZD7M3YxMvo97pyiLXYLddDLPp8UejpbKXLx9l52eRwcR5RCFbFBTtI/EL
+	D7arRvuD0E5Hh/nbvsxGCf0J/2eXmAlho+/ghRrUiuPtXO/f2u9YvZmTgI+fJQBcLztDtftBON+/6
+	YrmpN/ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHvtM-00000002s0r-0JYT;
-	Wed, 29 Apr 2026 03:47:16 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wHwOr-00000002v9d-1HJK;
+	Wed, 29 Apr 2026 04:19:49 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHvtB-00000002rqT-22hg;
-	Wed, 29 Apr 2026 03:47:05 +0000
+	id 1wHwOp-00000002v97-0l7y;
+	Wed, 29 Apr 2026 04:19:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E77C261334;
-	Wed, 29 Apr 2026 03:47:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B2637C2BCC6;
-	Wed, 29 Apr 2026 03:47:04 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 4DF766015B;
+	Wed, 29 Apr 2026 04:19:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BA8C4C19425;
+	Wed, 29 Apr 2026 04:19:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777434424;
-	bh=WRWWBVBpJfyHUbcXC5KjEtdEc+bw539Wu5/xgbbyIoA=;
-	h=In-Reply-To:References:Subject:From:To:Date:From;
-	b=Fi3MoCxr8XQyo389WKmKUe9eDdIw6NSPMsEZa/pfS1cucSAdx6joi7OqxGDyvXxgK
-	 iEGMzvMJqvwMIAUBOFGGq7r6mnfHmFZae4ZmvpWU4maL8CxbOxolmVe2FTdKXNkqs0
-	 AIAU6VVZU6huhv94JYn7TiVEya2tzAtNjIHUaUJ4a/Ri2fDKYhjEExUfmjJtoa1jWd
-	 HnMiZ13t8RsCNomw+o+DneoY+xD6YjZc4jplUJ7xpQJTQQpo6susmbo90+raEr23Qo
-	 j60NF64OL/LuUH45T/DfP25TE9K3zWyeac77sPIoSa85lTU1zxA0o6oPgB8CjRy6l/
-	 Nt6oLFtF8yGuA==
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1777436386;
+	bh=fLkUNRG3XzNi2vIwOAcnS+7uMsvjo7QmjxTi8juHVQM=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=us3hP0iE/GxjQ14Em1xVk943gZomAFPEgNDYhHuBLhRr/XIxyI+eb3t9jhemN8i/U
+	 h0B1JMHB2lmye5Ex0imvUD+eGqpYT+8eP6apWtUdKcC/LvPgdW/9TVhnyHKYIfWnV9
+	 HedGNYTden3fuvy9/9Hdga+NzVWgXL4OVC0Fl85I8vtHI5hiJJFJ3pOWbygMVpEi6y
+	 068hJ4VGf7E8qs20NwKpgOhhaB95FRCGR6ygCDlZzQc3kFhNwTE7OcHGY8F7dwAlKf
+	 jirIczD0MRWfPUz5sJTZC7hRsJTgkgkZ+UvafC6I+0CJzduOwIEEX2r+jAiijPEZOW
+	 DilO3Y7pJsN0Q==
+From: Mark Brown <broonie@kernel.org>
+To: lgirdwood@gmail.com, robh@kernel.org, krzk+dt@kernel.org, 
+ conor+dt@kernel.org, Manish Baing <manishbaing2789@gmail.com>
+Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+ kaichieh.chuang@mediatek.com, linux-sound@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <20260424210302.39972-1-manishbaing2789@gmail.com>
+References: <20260424210302.39972-1-manishbaing2789@gmail.com>
+Subject: Re: [PATCH] ASoC: dt-bindings: mediatek,mt6351: convert to DT
+ schema
+Message-Id: <177736327649.363516.9564887357760635920.b4-ty@b4>
+Date: Tue, 28 Apr 2026 17:01:16 +0900
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <65e504ac2c2d19b4baba6b79a241788220b19b34.1774499536.git.daniel@makrotopia.org>
-References: <cover.1774499536.git.daniel@makrotopia.org> <65e504ac2c2d19b4baba6b79a241788220b19b34.1774499536.git.daniel@makrotopia.org>
-Subject: Re: [PATCH v2 1/3] clk: mediatek: add MUX_CLR_SET macro
-From: Stephen Boyd <sboyd@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>, Chun-Jie Chen <chun-jie.chen@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, Ikjoon Jang <ikjn@chromium.org>, Laura Nao <laura.nao@collabora.com>, Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>, =?utf-8?q?N=C3=ADcolas?= F. R. A. Prado <nfraprado@collabora.com>, Sam Shih <sam.shih@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Date: Tue, 28 Apr 2026 19:06:14 -0700
-Message-ID: <177742837413.5403.1187117954638508299@localhost.localdomain>
-User-Agent: alot/0.12
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.16-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1129; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=fLkUNRG3XzNi2vIwOAcnS+7uMsvjo7QmjxTi8juHVQM=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBp8YbdA1/LjEVGI9CN1pUs7Qfnz3Mp/buprmIT4
+ DdKFSKULvKJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCafGG3QAKCRAk1otyXVSH
+ 0I6dB/9o6DjEA3Q+Kl/BtNHLQQzbaLkdI1VD0OdhzSJaHV1ZJ3GayaaJ/jpZ9ItcEbPkRMVxC0C
+ Qy+Fj597SFlGvHfF2JpLQaxfBW6U6gpmstvTorf25pHSi+Qwn2F8n4BACIxbQnSeIPLOgmdqA9Q
+ HErwzn1TvkjkJBHMRJSxGdnxLIkU+7fa/PJ3xP1FDheQJz0ztMTMbD9pWX2XCs/yGlGNKC3L1PA
+ l1brn0ue6CfPBjxt2HTfn+K/q+42kN7dDnn9j+gphhh05hWtmsRAjva/EJqwnED2hxpFC1T4op1
+ +6epv3XjfENVWwXUUrV/zd3k4kPp7Bizt3dotkN9qn1t84La
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,17 +83,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Daniel Golle (2026-03-25 22:09:35)
-> Some MediaTek SoCs (e.g. MT7988) define infra muxes that have neither
-> a clock gate nor an update register.
->=20
-> Add a MUX_CLR_SET convenience macro that takes only the mux register
-> offsets, bit shift, and width, hardcoding upd_ofs =3D 0 and
-> upd_shift =3D -1 so callers cannot accidentally pass bogus sentinel
-> values to wrongly-typed fields.
->=20
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
+On Fri, 24 Apr 2026 21:03:02 +0000, Manish Baing wrote:
+> ASoC: dt-bindings: mediatek,mt6351: convert to DT schema
 
-Applied to clk-next
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.2
+
+Thanks!
+
+[1/1] ASoC: dt-bindings: mediatek,mt6351: convert to DT schema
+      https://git.kernel.org/broonie/asoc/c/0770899ca192
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
