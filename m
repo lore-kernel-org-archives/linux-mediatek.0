@@ -4,69 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE5E3FF885A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Apr 2026 07:33:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C594EFF885D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Apr 2026 08:45:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f6JQRY/TB7lrdWItc9QstnyijSZASNOxZVp+OY/fTZQ=; b=aiT9H5bYZPqyN82FP1D7e7G5Tw
-	ExPUEUBn67/mM3n8ftrYS0PcknFsRo+dGdRWNWLwEXYwVibuUVkb3J3aC6A6ELD5RN+MCoEEEiK6z
-	5DzJXdRhU/Luj+SI79RXAZUEfjRga+X9yQzK6TDscKbggkUmMw5pMCGBcEkXbnI+PFi+0C6GHOiTQ
-	2rwM91dqZvJdITF9zyk2+Uy824sU8NI8ln9m+GaQKgA3/bA0WABnMs3AxtD962bbBoyIUdzLDKtKS
-	2v6KKRnrCx13XhrCUCJYCs/o61VxJYq6EUtRXYo3x/k7QvzWMGJbE+n/sZxbuGhxLSePUmT0Nn0R3
-	Y3X+4TTw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=xe5brPMVO+9g1Dw+xvEM8fY4F+u3qXzfLKVLAqh40G0=; b=pL3LAU9O44nZD3c7B4WV70uS9v
+	ZkqFK06KTXIqaSc43tPR8KkZ719IKkE4XvRZz3lPzNrk5rysiMVcnM4OlUst/mFz/SogbxBG73wTY
+	Lg2e4xBxG6mfP6d7IEG4NQuTcm4UFxzOmPcThPMuYpyvx7kP0O6LpypZJQNTafHuReHQI7AjAz4pF
+	EJoFfdYsg/5GrdnqfbbN9j0SyC7fTDQlCp8Ep4PJTaZhIF8ZP1BV6LP/DDVtAoCqm/0qc7m6rMgLp
+	H2fTu04hU0c7T29crRzORj6IdARZQfV/2ffMx2ktbFCPWMg08BPDEwSU7myK8Q+f8lskUB8VIJrnQ
+	PBnVHZ7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHcwT-00000000mcM-0BXX;
-	Tue, 28 Apr 2026 07:33:13 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wHe4H-00000000uTo-2RlR;
+	Tue, 28 Apr 2026 08:45:21 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHcwP-00000000maf-2cKW;
-	Tue, 28 Apr 2026 07:33:11 +0000
+	id 1wHe4F-00000000uT8-0SuC;
+	Tue, 28 Apr 2026 08:45:20 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8C0894010A;
-	Tue, 28 Apr 2026 07:33:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1A9AC2BCB8;
-	Tue, 28 Apr 2026 07:33:02 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id BF8AA448AC;
+	Tue, 28 Apr 2026 08:45:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CE61DC2BCB5;
+	Tue, 28 Apr 2026 08:45:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777361583;
-	bh=6fTlJi+u/tA4P3ALw32S+WETC0LTfCt2D17LQA//3Lo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=MpGy7DVFCqc2tz+PaWmZ2p7pRNgg8LFETk0UaUVr5ifYJTOWvPRBN+vpeP22WoWDq
-	 C56OEtBNx7Q1r3apdzOEvOAq1SMo8UctK/m1K2F1bGNwyIU+N1WEjfDXxisU1KM4xg
-	 BjlHJzkvzY3wzGUoPkAmSdvm5YxZgECJPhZ9OMPH6fdM+B+h4498MOM+78ScIjw5/u
-	 fB46I4mKXaiN4n4YiZgYyk58xm3XVdkWLXwNVlXTGehM53Xc9jRizBsA4LXTZxredB
-	 6a1BmClEmFGmfrQPJPr1IVj8i7gFV4T4F850Sg0qTXIIw8fAJLEPqQgHbD8Y9B80F1
-	 TCH5DwTMzfA1Q==
-Date: Tue, 28 Apr 2026 09:33:00 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Rosen Penev <rosenp@gmail.com>
-Cc: devicetree@vger.kernel.org, Felix Fietkau <nbd@nbd.name>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
-	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
-	Johannes Berg <johannes@sipsolutions.net>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Thomas Bogendoerfer <tsbogend@alpha.franken.de>, 
-	"open list:MEDIATEK MT76 WIRELESS LAN DRIVER" <linux-wireless@vger.kernel.org>, 
-	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "open list:MIPS" <linux-mips@vger.kernel.org>
-Subject: Re: [PATCH 2/3] dt-bindings: net: wireless: mt76: remove
- mediatek,mtd-eeprom
-Message-ID: <20260428-mustang-of-therapeutic-upgrade-a95f9a@quoll>
-References: <20260427034427.881389-1-rosenp@gmail.com>
- <20260427034427.881389-3-rosenp@gmail.com>
+	s=k20201202; t=1777365912;
+	bh=7fk0VA5+cNoW7sx+mkYAgp0ak+eEVYN/A1DKtFhUDzQ=;
+	h=From:Date:Subject:To:Cc:From;
+	b=hhefmOqFMk/lzYcUZloW9IrHT1yZMBQfu/PqbsK7uGhhhWUhYzurKYnCzOsjzwNmP
+	 YGmkzWeBflNEs83iQV5a0GgmCShd2HykxBSieNCQ1ihXsAciKJZbcWEVHsKQeYXO6T
+	 /2ajj69aF1bVnq1IEO522qEb/exjULeLeot6AY3AT/DyubuUzBR7YxkYY1hWqAki5s
+	 iFkRMsnXd/O8gY95usOUtxuUCCk3JLT7pjo48BgmhyTyxVwqpNuXGXQclq8MCIzVo1
+	 dTnGwpeOCMnvUhwOXT6wvDMHXDhfGLqKIlCmaNUvevpITkiLFuuem2y0FLDKMJJ6le
+	 HoXR8pIfVFD9Q==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Tue, 28 Apr 2026 10:44:21 +0200
+Subject: [PATCH net] net: airoha: Move entries to queue head in case of DMA
+ mapping failure in airoha_dev_xmit()
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20260427034427.881389-3-rosenp@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260428-airoha-xmit-unmap-error-path-v1-1-aec44c6765c1@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MOw6DMAwA0Ksgz7UE5iPaq1QMpjXEA0nkBISEu
+ Hujjm95FyQxlQSv6gKTQ5MGX9A8Kvg49qugfouBahrqjkZkteAYz00z7n7jiGIWDCNnh2NDff/
+ sZJmphVJEk0XPf/8GLxmm+/4BL6nh0nMAAAA=
+X-Change-ID: 20260428-airoha-xmit-unmap-error-path-8125594efb23
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Jacob Keller <jacob.e.keller@intel.com>
+Cc: Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260428_003310_446714_498121C8 
-X-CRM114-Status: GOOD (  10.73  )
+X-CRM114-CacheID: sfid-20260428_014519_202907_7E1AC011 
+X-CRM114-Status: GOOD (  10.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,22 +78,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Apr 26, 2026 at 08:44:26PM -0700, Rosen Penev wrote:
-> mediatek,mtd-eeprom is a widely unused binding that predates and has
+In order to respect the original descriptor order and avoid any
+potential IOMMU fault or memory corruption, move pending queue entries
+to the head of hw queue tx_list if the DMA mapping of current inflight
+packet fails in airoha_dev_xmit routine.
 
-I clearly see a user. Please use `git grep`.
+Fixes: 3f47e67dff1f7 ("net: airoha: Add the capability to consume out-of-order DMA tx descriptors")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/ethernet/airoha/airoha_eth.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 5effb4a4ae84..82018a085e46 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -2123,14 +2123,14 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
+ 	return NETDEV_TX_OK;
  
-> been replaced by NVMEM. As there are no users, remove it.
-> 
-> Signed-off-by: Rosen Penev <rosenp@gmail.com>
-> ---
->  .../bindings/net/wireless/mediatek,mt76.yaml  | 19 ++-----------------
->  1 file changed, 2 insertions(+), 17 deletions(-)
-> 
+ error_unmap:
+-	while (!list_empty(&tx_list)) {
++	list_for_each_entry(e, &tx_list, list) {
+ 		e = list_first_entry(&tx_list, struct airoha_queue_entry,
+ 				     list);
+ 		dma_unmap_single(dev->dev.parent, e->dma_addr, e->dma_len,
+ 				 DMA_TO_DEVICE);
+ 		e->dma_addr = 0;
+-		list_move_tail(&e->list, &q->tx_list);
+ 	}
++	list_splice(&tx_list, &q->tx_list);
+ 
+ 	spin_unlock_bh(&q->lock);
+ error:
 
-Wrong order of patches, you have undocumented ABI.
+---
+base-commit: 3bc179bc7146c26c9dff75d2943d10528274e301
+change-id: 20260428-airoha-xmit-unmap-error-path-8125594efb23
 
 Best regards,
-Krzysztof
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
