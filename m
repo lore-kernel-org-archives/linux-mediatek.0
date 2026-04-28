@@ -4,73 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A63B4FF8868
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Apr 2026 10:49:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A7E1FF885A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Apr 2026 13:25:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qHhfWXmBi9f2pbmB6rekkaOm/gySHmHH52D/IQ4QzJk=; b=qcTxTuJKPppgTl1g+ZaYsjZutt
-	TsfQQlVvFyl6E9Z28G/f+BvWO9O9pnluuh84qEY4NzRHxD/TRP88sGpTrxz2j8sVOMAvOXlyy5Xhq
-	QVfFRCb9r7wncG2IKj37FvGTCAao8vCmoLXPyv4nkta86Ct3d+t3FhF0iZIOqJX7GhrJ5SfiF4nue
-	JHVe5L4j13TM5LQJkeKG8/Ypm6oRk1fZroS0hqigxiwnQV/yAEgqoAb0HuHGlvMaG8ZgSgDab0Sw9
-	y61cTC9Gtlr3K4gIDea6Q8Tdkm0yOfRiZ5YKQsyyj903H9YA/Hgh+cSkByDJce0w6CNojVMHnj4Cs
-	QBF/kwTg==;
+	bh=/VoR+r0EdztbuqvfyfykBdYULmnz7rnigVpq7HE85tk=; b=tGNdBrLFFw3szsIzfcsCKii7id
+	RWu3plVGoDJ85mOnSfn+nICf8HNOUNRCCyBTASHBYWP6vOvvo56DSHVJ8KYs97WszHJLRa08x7o6+
+	CnYMoAYCP/iobCgP25+oj3KlOyEbnBQEVfvhuASK2hAdsbO+yAhhpzi2lidL4uHu0l1lLKnQnoiwR
+	f8g7aoqOoh4D19Uy8O1Zu56jy1KYJhYGyyO7kzOcftvXfJUxA3bUxCOfKD21LFzhSFObroTX3MxsW
+	YCp4blPt9yp5QfUyUMUZFXwHgNmJ+N5Bjvtmz7K+RglMevE1LYe+SEXHLOge1hpirGuCZg6Z/ZXOp
+	QnvwJb0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHfzw-00000001DGL-3Qyc;
-	Tue, 28 Apr 2026 10:49:00 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wHiRH-00000001XHT-4417;
+	Tue, 28 Apr 2026 13:25:23 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHfzu-00000001DFS-3GYr
+	id 1wHiRF-00000001XGq-2Ht3
 	for linux-mediatek@lists.infradead.org;
-	Tue, 28 Apr 2026 10:48:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 24BA943AB5
-	for <linux-mediatek@lists.infradead.org>; Tue, 28 Apr 2026 10:48:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 07C95C2BCB6
-	for <linux-mediatek@lists.infradead.org>; Tue, 28 Apr 2026 10:48:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777373338;
-	bh=zRRLxCTMFdXGHczu7lhZcXF7CCENkqKUh9uDDOxrXZY=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=JtnZOetvlFS6qtORFdprF1g2YD3cl16GGsklOWk9R6hwUoiF4mPOfGg8SjchUjDUY
-	 YE8tNvHSZSd61CPZDl9HODthjK8WGDX2463+x4w00sG//19j2ZWGaG+o8tP7rUOhUh
-	 wfSy6wJmlC4y21kO3gzQroPIrHw/Vc8Vue3wlDK6z9WQbOBDfeU4hru7Nli1C3dK1N
-	 7BHwzRSOfNwu/QOUUX6Sz9Fy9cLbVS6QjE67dV+H8LAJcVuZs0hwgMroMaXY46eNw8
-	 GKuGREU9gjvzr9TgZC3iXJsJTHauOnYPSsOQ4XoxPNP+oeCu9JiNSPw6C40/KU1SX1
-	 37IyBs2Ciie3w==
-Received: by mail-lj1-f170.google.com with SMTP id 38308e7fff4ca-38ce0ab821cso95898771fa.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 28 Apr 2026 03:48:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AFNElJ/QgY00qbRKG9Vb5Nrwot566qRT/rU/w9QanOCLMWngbJ6OvRERiYcJkFKQK/mcXPCijRO4ND/hXdnQvx7yuQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxbuT1Hq3o2IkWqBk0d7RVXvI4eqmhp29mJJvAheV6kDo+u4uaP
-	8tbfoFOQ7fUIw65SxVOXWAKOg2N8jno9OlFbxzcJguIdDidHFZ1S4DB/djQe/QiXU6o4zSQSn21
-	mtAaAQ0uGSXGcx2To2kW/cZptaP6HuxQ=
-X-Received: by 2002:a2e:a994:0:b0:38e:9277:6990 with SMTP id
- 38308e7fff4ca-39241005c6dmr8960211fa.30.1777373336622; Tue, 28 Apr 2026
- 03:48:56 -0700 (PDT)
+	Tue, 28 Apr 2026 13:25:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1777382720;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=/VoR+r0EdztbuqvfyfykBdYULmnz7rnigVpq7HE85tk=;
+	b=DQqL1ppBPXvGrj+eMtC+Xd1NZZdy+F10GIS3/ReRvO/FrqVpMPpBuYea+LJDh5Bjux/lkR
+	wErJK9j7R/XKpiS9lJ2/5na6nmj227NJTtSn4um0c4LRdWSLFTgEhZLt5mkzTbAnXwUvfL
+	il58aBcBwScxZ9yXbP9g2KZiP2vRShw=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-2-p60w9_GiPpSVotePhC-iyA-1; Tue, 28 Apr 2026 09:25:19 -0400
+X-MC-Unique: p60w9_GiPpSVotePhC-iyA-1
+X-Mimecast-MFC-AGG-ID: p60w9_GiPpSVotePhC-iyA_1777382718
+Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-488ba2f4094so73095765e9.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 28 Apr 2026 06:25:19 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1777382718; x=1777987518;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=/VoR+r0EdztbuqvfyfykBdYULmnz7rnigVpq7HE85tk=;
+        b=YoG0M270SzmbexDSEsFDj+EfkTr0wFa3QdbpTluJjz4NcvP9eMufDpm1vKZ20n0hvD
+         ym08lj6N1Miw+/JCNI8wWQQOrSgtDDNJ3SBn+brx5raUZ/shcbFmwhOtWGv6KtbT0xm1
+         UHSFxotYfTPKUYQm4bftVqGZ6B7amG7aPCoyROnRTxyRb3YgxIppyFZLJSnyHKJRR/7A
+         kxhsyJqQCLdAFWxNwNKOL+YnEL3nMT6JtJMIGKMWhQhVFzgo3Xb1XWY/P7tBiZTF/T3+
+         IuK2lhwrN3QdYNr2dvWGLi/KT/BZYTt7LKAU+bkFs0atc7uyw0ZGT2XOpjjkp3pMIeu4
+         AjWw==
+X-Forwarded-Encrypted: i=1; AFNElJ+L65BAuzGFriEKMZbPhFq5Z73w7S4AZxLQNk2jfcrL6HGyycWgmFgkvwRBnmPGcAPSwlngFFnQ73BZnlSPhg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yys0QyZimqHa/4Xh4zqbDtdsg2xPAuTbdp+vsN/oNBMAPy4tdWD
+	ZjCF+IYZBjaLDPZPyniIx9g9Bvl5uIOwAN/FZN43cMoCF/VQ6Su5Wdi7n5f3h1xlqjShB4ZSeQa
+	tD6EI1Sqas5w8E65YekyeJSGpYDHd/d/4zf7mOxm43Enx8rNQXHc70qMxaoZNVXHbpvW2rtO9dw
+	==
+X-Gm-Gg: AeBDietgjnmg8qtbvWOuKoCjN6o84CT6kiv+IBIHvunpqTXG4uPT3lQ9O74EAH8eo0U
+	2MkwMj8FnNyUT+/o4xGQA1tcz/NdfXQyc6WMyu2kuo/lW01ZiN3qsAc0N74ao6B3bNBIPjWXTLa
+	9mSY1ckZFGoc5X7IbiV/nxS1BNqiYoEpnLSbkNOuCvmyv77IH5uZI15p5ekPPLe5+kKs+zkeBg7
+	r9mAymF/m8jQTmEkU7gIbJd2p4GbxRbiBvWxu96puF0Ne+luaftMF0RPdI18QbVjLEcbB7i1+D5
+	REs/GAWbEuXHXcVxaJ4tpFRBkCpmz58DsipnXesRGEkoqbEdFfHzocfl1jYB6WoENurFGhKSwky
+	zHsYjn9/xalOWBwzFI1Th0T3E9hSGq98gcGWJgNOHxaxCvg5/uL4ceARL2ZahI6d0hw==
+X-Received: by 2002:a05:600c:3f16:b0:487:55c:e0c1 with SMTP id 5b1f17b1804b1-48a77b1da5emr55604805e9.14.1777382717849;
+        Tue, 28 Apr 2026 06:25:17 -0700 (PDT)
+X-Received: by 2002:a05:600c:3f16:b0:487:55c:e0c1 with SMTP id 5b1f17b1804b1-48a77b1da5emr55604145e9.14.1777382717385;
+        Tue, 28 Apr 2026 06:25:17 -0700 (PDT)
+Received: from [192.168.88.32] ([216.128.9.114])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-48a773a874asm72235935e9.3.2026.04.28.06.25.16
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 28 Apr 2026 06:25:16 -0700 (PDT)
+Message-ID: <679ebe0a-5889-4a84-afd6-3da50a07bced@redhat.com>
+Date: Tue, 28 Apr 2026 15:25:15 +0200
 MIME-Version: 1.0
-References: <20260427061720.2393355-1-wenst@chromium.org>
-In-Reply-To: <20260427061720.2393355-1-wenst@chromium.org>
-From: Linus Walleij <linusw@kernel.org>
-Date: Tue, 28 Apr 2026 12:48:44 +0200
-X-Gmail-Original-Message-ID: <CAD++jLkjDozkjL-136ut4OsX5PoCe4aKrfXVyq0jtEOc4LX1dw@mail.gmail.com>
-X-Gm-Features: AVHnY4IQ9pWQR3XwMVHEmg2y70n-2Cqf_AoJsV8Bvhx3LjreKPa329xly69LAug
-Message-ID: <CAD++jLkjDozkjL-136ut4OsX5PoCe4aKrfXVyq0jtEOc4LX1dw@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: mediatek: common-v1: Directly modify registers
- to set GPIO direction
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net] net: airoha: Move entries to queue head in case of
+ DMA mapping failure in airoha_dev_xmit()
+To: Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn
+ <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Jacob Keller <jacob.e.keller@intel.com>
+Cc: Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+References: <20260428-airoha-xmit-unmap-error-path-v1-1-aec44c6765c1@kernel.org>
+From: Paolo Abeni <pabeni@redhat.com>
+In-Reply-To: <20260428-airoha-xmit-unmap-error-path-v1-1-aec44c6765c1@kernel.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: Cb660y8spFL2BmjOhbwTpgjRHvWRdtdDm-thvX0Qy2g_1777382718
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260428_034858_838706_476F29B8 
-X-CRM114-Status: GOOD (  12.73  )
+X-CRM114-CacheID: sfid-20260428_062521_658520_7690730C 
+X-CRM114-Status: GOOD (  14.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,37 +115,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 27, 2026 at 8:17=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org> w=
-rote:
+On 4/28/26 10:44 AM, Lorenzo Bianconi wrote:
+> In order to respect the original descriptor order and avoid any
+> potential IOMMU fault or memory corruption, move pending queue entries
+> to the head of hw queue tx_list if the DMA mapping of current inflight
+> packet fails in airoha_dev_xmit routine.
+> 
+> Fixes: 3f47e67dff1f7 ("net: airoha: Add the capability to consume out-of-order DMA tx descriptors")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  drivers/net/ethernet/airoha/airoha_eth.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+> index 5effb4a4ae84..82018a085e46 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+> @@ -2123,14 +2123,14 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
+>  	return NETDEV_TX_OK;
+>  
+>  error_unmap:
+> -	while (!list_empty(&tx_list)) {
+> +	list_for_each_entry(e, &tx_list, list) {
+>  		e = list_first_entry(&tx_list, struct airoha_queue_entry,
+>  				     list);
 
-> pinctrl_gpio_direction_input() / pinctrl_gpio_direction_output() take
-> the pinctrl mutex. This causes a gpiochip operations to need to sleep.
-> Worse yet, the .can_sleep field in the gpiochip is not set. This causes
-> the shared GPIO proxy to trip over, as it uses gpiod_cansleep() to check
-> whether it can use a spinlock or needs a mutex. In this case, it ends
-> up taking a spinlock, then calls pinctrl_gpio_direction_output(), which
-> takes a mutex. This causes a huge warning.
->
-> Since the Mediatek hardware has separate clear/set registers, there is
-> no risk of clobbering other bits like with a read-modify-write pattern.
-> Switch to directly setting the GPIO direction register bits to avoid
-> the mutex.
->
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Coccinelle says:
 
-Here you need to at least delete the assignment of mtk_pmx_gpio_set_directi=
-on()
-from:
++/srv/nipa-builds-contest/testing/wt-cocci/drivers/net/ethernet/airoha/airoha_eth.c:2123:1-20:
+iterator with update on line 2124
 
-static const struct pinmux_ops mtk_pmx_ops =3D {
-        .get_functions_count    =3D mtk_pmx_get_funcs_cnt,
-        .get_function_name      =3D mtk_pmx_get_func_name,
-        .get_function_groups    =3D mtk_pmx_get_func_groups,
-        .set_mux                =3D mtk_pmx_set_mux,
-        .gpio_set_direction     =3D mtk_pmx_gpio_set_direction,
+I guess you should additionally drop the statement above.
 
-^ Here, it should no longer be used, right?
+/P
 
-Yours,
-Linus Walleij
 
