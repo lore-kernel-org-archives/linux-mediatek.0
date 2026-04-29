@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 519CCCD1297
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2026 09:45:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BECBCD13CF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2026 09:45:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=efvhBIKI7yRYjgKzdnapFzRDqJruP+cFsxx0GxF3eYI=; b=GvSNpZ3vyFtXDO7GWkITKow/nd
-	DuH4KOUYa3qGv+8KtsvyDSG2zmsAwscHekEWWqiCqACT3/IUCCCPFevSol+kdjeejbUgpssJh/iqI
-	D9C3+G5lIqLoPFGRLs1Ty8AEYDbMXkjtGmNFJiDf6qIXu/aWgQqvPOWIH8BfXlWSzmEI8jM0DjaSL
-	NJ1cWALasfWcM5WeYkGmEijB8H0DOOzO20GN57RWbt7w2E9/hq/k5q8urjbhupBmLJxrSum9fc6pG
-	20fPHs9rxTz3c+uWfrGsBF9hnPRY5uwpaCQ5ktXILwaikmzBxbWfUO4k5Ct3k2a1QtqJCJOBXFGQa
-	tFlo5Onw==;
+	bh=ebmhm07Z4B+P1+sX9uf4GFsH9ixtfu42gfvtAQMjYL0=; b=beP+tma90/l2ZCEcNyU7X0M7Iv
+	XfZiwVuVrseTtuPh51J7/t82Je7g5ncOktJGfIDBQBncnWwYj4s9uRlAV3Jdl1bdXWxY1ydyn63/0
+	BVKrSyz6/NKGYjArMRMOl3VdHc/Yx7eyINE77qUWAFCqCQNYUl+Xz4/QgztiiZQPHV0/TEPG0s+Gz
+	XZOtFXZEDPAofdA589Hjv8EjH828PeYgxinKUrjOId12gab8goWqKvC1TPR/xdv2ni5F+spT+x5uo
+	LQ91C8USJW6pbCPgNrn/bstuvcL+MgQRKaCLLjCbYXszy+1k+icyPEYtX9IEep22WgcoCxYIlfcmU
+	ToB3ecTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wI1U4-00000003N5d-1wrw;
-	Wed, 29 Apr 2026 09:45:32 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wI1U5-00000003N8S-46nn;
+	Wed, 29 Apr 2026 09:45:33 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wI1Ts-00000003MrZ-2DnV;
-	Wed, 29 Apr 2026 09:45:21 +0000
+	id 1wI1Tu-00000003Msd-02Bq;
+	Wed, 29 Apr 2026 09:45:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1777455918;
-	bh=SAHaTTN0o8iSHVoz4k1Wj+QoNXNDXkB6el3hzjXShiY=;
+	s=mail; t=1777455920;
+	bh=LZSXpva6oG9AsEcsoWrDUJOYVDYzK7Fn+c63sWst9h8=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=RwUA7zhmGWrujBV3Ks2QMSYQCwgMBX3XSb0gyhqfKluPF8qp1tGUCU30pRHa/i4dx
-	 wJTKZB1kWEEct4950wrozu9DrdSztcM5Y7CwEhsMavk+6r7gPYaStlxS3V/63aRjMp
-	 mwxCv+5q1uWWYyyrZQk5t8sSOsWwVhNgde4ZXnA6vO10iOWnC/XPOfLh5TFgxGzLGM
-	 4z40dPVNae4VDndrX4GEwl06klEQEB0jYR4zEQTJI+0wRImQ+VUsxKRdLIMP3HQYRR
-	 WrkGusjbFIkzA/xlwu5/EZMFMao+OS4WyYmaXKpWWq7rHQx3+NOHaASE4LQ9AG6ik1
-	 u0fgNRcYpB3dw==
+	b=Yb7VlYqzkY8wc9ZiMP2UgMZSeqTGRBU6WPJAZV8/bPbS0mH+meaLDWkg3ABDPS29/
+	 QwY2C2ViVBqrJAjGqc4fZu3iAtRm3jtnKSWTXlxRKP06w8SneZsD+Apcn+lula8Y3S
+	 bfLogmbk1NJ6j8BZOiqPze4qgxjgIVf+p5KtcbqF9cYwk8C7oxvb+3He0na8G5SG2l
+	 SIYdKBfxQhXi0wq79rBnVJC30yBSzaRjxgSM+PkvYw6zCBR3ufGwqq6n6dm8ePg3c9
+	 1TYSErcMS4THzJX3wkrEvKHmy5xoqO/FuGJXy5wZu26XuChYA4O4zGe8IXmtD+yUs4
+	 4TRQJOZOHVLDA==
 Received: from yukiji.home (unknown [100.64.0.131])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EF87617E12E5;
-	Wed, 29 Apr 2026 11:45:16 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BF30E17E131F;
+	Wed, 29 Apr 2026 11:45:18 +0200 (CEST)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Wed, 29 Apr 2026 11:44:21 +0200
-Subject: [PATCH 8/9] arm64: dts: mediatek: mt8395-genio-common: use MT6365
+Date: Wed, 29 Apr 2026 11:44:22 +0200
+Subject: [PATCH 9/9] arm64: dts: mediatek: mt8395-radxa-nio-12l: use MT6365
  PMIC definitions
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260429-mediatek-genio-mt6365-cleanup-v1-8-6f43838be92f@collabora.com>
+Message-Id: <20260429-mediatek-genio-mt6365-cleanup-v1-9-6f43838be92f@collabora.com>
 References: <20260429-mediatek-genio-mt6365-cleanup-v1-0-6f43838be92f@collabora.com>
 In-Reply-To: <20260429-mediatek-genio-mt6365-cleanup-v1-0-6f43838be92f@collabora.com>
 To: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
@@ -70,16 +70,16 @@ Cc: kernel@collabora.com, linux-pm@vger.kernel.org,
  linux-input@vger.kernel.org, linux-iio@vger.kernel.org, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1777455902; l=1686;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1777455902; l=1354;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=SAHaTTN0o8iSHVoz4k1Wj+QoNXNDXkB6el3hzjXShiY=;
- b=K8Jf6OjYx3bqGDaaGsaioQRvIxXwQ+xH0j9faGjPlJV1UoLf3/6NJramdtuPmoxX/n+rrAyaX
- 1gi555dXuOgCQhv9V5dLvsaPNoHHXT6/ybwPuxe4sUave75hnDXLq0Q
+ bh=LZSXpva6oG9AsEcsoWrDUJOYVDYzK7Fn+c63sWst9h8=;
+ b=PiLPTEDUjttvvITHiqe0IzMQ5Kj84Yl3Crww3pY7fvSDjC3aAVrBqpErDRIWSgvx1NBwz1mOs
+ RZtAEl6k8KKDzZxn9QhmCKqe6G8Os4clkfk8CiFrLEbaIHeJw2gRyqE
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260429_024520_722345_23F7AD3A 
-X-CRM114-Status: GOOD (  11.50  )
+X-CRM114-CacheID: sfid-20260429_024522_211320_367003F5 
+X-CRM114-Status: GOOD (  11.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,25 +94,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Mediatek Genio 1200 EVK board integrates a MT6365 PMIC, compatible
-with MT6359, but the board common definition include file (for the eMMC
-and UFS configurations) used the mt6359.dtsi to enable its support
-since the board support was introduced.
+Radxa NIO-12L EVK board integrates a MT6365 PMIC, compatible with
+MT6359, but its devicetree used mt6359.dtsi to enable its support since
+the board support was introduced.
 
 Now that mt6365.dtsi has been created, include it instead of mt6359.dtsi
 and use MT6365 labels and pmic key compatible too.
 
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi
-index 62c336e21500..6df614c471fc 100644
---- a/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi
-@@ -7,7 +7,7 @@
- /dts-v1/;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+index bf91305e8e4a..8bd3b3250b87 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+@@ -6,7 +6,7 @@
+  */
  
  #include "mt8195.dtsi"
 -#include "mt6359.dtsi"
@@ -120,16 +119,7 @@ index 62c336e21500..6df614c471fc 100644
  #include <dt-bindings/gpio/gpio.h>
  #include <dt-bindings/input/input.h>
  #include <dt-bindings/interrupt-controller/irq.h>
-@@ -728,7 +728,7 @@ &mt6359_vsram_others_ldo_reg {
- 	regulator-max-microvolt = <750000>;
- };
- 
--&mt6359codec {
-+&mt6365codec {
- 	mediatek,mic-type-0 = <1>; /* ACC */
- 	mediatek,mic-type-1 = <3>; /* DCC */
- 	mediatek,mic-type-2 = <1>; /* ACC */
-@@ -1151,8 +1151,8 @@ pins {
+@@ -1034,8 +1034,8 @@ &pciephy {
  &pmic {
  	interrupts-extended = <&pio 222 IRQ_TYPE_LEVEL_HIGH>;
  
