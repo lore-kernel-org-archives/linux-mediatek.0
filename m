@@ -4,52 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3621FF8875
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2026 09:45:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10FCEFF8875
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2026 09:45:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U1d15i6og3I88ECfJFbuD3kiHLeEb+YMylBXRnfS+5I=; b=pTO8stM9AQNN2tryv6OJqAsBSx
-	8ZDRKQjFNk1Tw6Mx6bhsiipGIP74PAwpkE0gjekDKGk7WzUSk8HjrAXd1tY/xpal0+jHjq0bQvZN8
-	P/s70g3UDNbydAi3ACYJh0AkrV3p9BCTGd3BJMdGjUfDa+FHCrj38VhxB4842wBn3dl6TOiuK1Qq4
-	XWizbxwvJ7CKWmK3JkEGGpiYsTvKOMbpUr9l138Z+4AqViAJeoX/npd8ACVnjNQXrJTrx/jP5rW9r
-	VtHX65J1mZSvxuOmIFjuFYQxqnq8O//v7fqGQjAcvDi/8m/cVephOoDKuMcEYrN8HE59W7C7pT70u
-	bP5L4+Tg==;
+	bh=HtqTk2a/QxzJW1z1N3fiM7yleFu3pVjArf28ybYi7Bs=; b=wUcsLCDtfq+J6DbDp5Ut/B1FBq
+	6aRK9HQdlSEkEu79k/GgryIHfuMg5KV/87ahOmmbOVcCbh1bXIHqBCPfQ6Ih62MceSiFMj/+ht+5J
+	pe4XDtsmFmx/wLb8HOUWy2mxNi5PT+3GDpxUusxoj4bXoBbJGbkRnN8IrTdXpPOmbqYwJZdvZnx2I
+	5J0MQFjNRe/AaaerczUHcxqaUM1TkM8zrkRFnJ8jvbVfrYyAZU1SpXmqHBYORLurCMAgM5TDeR449
+	iIJJIclsi6Z3+0n+Zflrzr6Wypx+OPJIgH9xJMHNB2x+YpL05WoOQYTPmcSGiGlPZbGrEGqNfVNNe
+	QfUslItg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wI1Tj-00000003Mky-2M5m;
-	Wed, 29 Apr 2026 09:45:11 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wI1Ts-00000003Ms5-0UZT;
+	Wed, 29 Apr 2026 09:45:20 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wI1Tg-00000003MiQ-1jP0;
-	Wed, 29 Apr 2026 09:45:09 +0000
+	id 1wI1Tj-00000003MjE-0Zq4;
+	Wed, 29 Apr 2026 09:45:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1777455906;
-	bh=q+A0nPBQFvkrIuJrsyjnlh7ztGoUgI2vF8ZPdTgCh6M=;
+	s=mail; t=1777455908;
+	bh=7OjqtC5nux3H7Fom9W3SHcIbBLK9+ElLhz5UxcD6yRc=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=IffD0BE5cdoKPv1N2T1S7/tVF+WxEfnag2ya3IpIUQF1psgubeBd0ute8rUA8GyQN
-	 9Wv9qCy1mDFkWAohSU4CUj48WyBQX04ljloQPbW7EARGOv+vxvbpVEVPz4C5RLsF8Y
-	 puJ2M8H7txDfLrk4jDZk1zpirr4z95JGUmGAYaZdaY8ARFwUWRHEpaKbPceVPy7XTv
-	 PUeU1xVmLnaSDXZGYSGA3Qai9j020hBzFNy7uDjeNxfDk8HdASmHj3t/vgpY5g9rl3
-	 dZm0im9/v+F6dmu36XVU9rOFthBOo0dgcwSOhApcc+OrOR6iKJkAecMV5rq7mkTP1+
-	 PNVsBmjtTEYnw==
+	b=QO5CM+6k04Xc8Hh2wXASoRvgLKfjb21/fj92l0kkr9htMzpnjKE0JRhmRvJSUvM3l
+	 n3iHLvRcf9UUbOK+0Hh3dmZ/atpw/LOXDPflxYi7XrTGl4heJHhLY+z8yF10yPBJuV
+	 BVC6CfpmsVN7TBDDQzkjIsWgZSOP5KOrFa+IK5HqLUxN7tUJM5qquis7pFQR/oiHL2
+	 qQ+1fc6/LucoaI/qeC/Hew5+ADn1DZdoJT864va5nE8PT7Y88K0vjhDCydChHFot2U
+	 5P5LRjDSmfY7BIfV+JRyHfi/xaCys7QpRIj0sZTuvlo8WFFy4j0XEtrPPKTxfZUWk/
+	 mVJ0dmIWAanPQ==
 Received: from yukiji.home (unknown [100.64.0.131])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B468317E131F;
-	Wed, 29 Apr 2026 11:45:04 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 78D7217E0610;
+	Wed, 29 Apr 2026 11:45:06 +0200 (CEST)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Wed, 29 Apr 2026 11:44:14 +0200
-Subject: [PATCH 1/9] dt-bindings: mfd: mediatek: mt6397: Add rtc for MT6359
+Date: Wed, 29 Apr 2026 11:44:15 +0200
+Subject: [PATCH 2/9] dt-bindings: mfd: mediatek: mt6397: Add MT6365 PMIC
+ support
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260429-mediatek-genio-mt6365-cleanup-v1-1-6f43838be92f@collabora.com>
+Message-Id: <20260429-mediatek-genio-mt6365-cleanup-v1-2-6f43838be92f@collabora.com>
 References: <20260429-mediatek-genio-mt6365-cleanup-v1-0-6f43838be92f@collabora.com>
 In-Reply-To: <20260429-mediatek-genio-mt6365-cleanup-v1-0-6f43838be92f@collabora.com>
 To: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
@@ -69,16 +70,17 @@ Cc: kernel@collabora.com, linux-pm@vger.kernel.org,
  linux-input@vger.kernel.org, linux-iio@vger.kernel.org, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1777455902; l=944;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1777455902; l=1831;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=q+A0nPBQFvkrIuJrsyjnlh7ztGoUgI2vF8ZPdTgCh6M=;
- b=cH9zfo8/F+L9VyCuhm6yP4jQnsZTfb1o69JGpuvont2C9AHoiLy74ampVamrThGevdcY+sxbs
- 6wRupzWS56mAas7GTpPJeQDpABzu/8ywoRCEYigUW9DZTkDQEmD2OFX
+ bh=7OjqtC5nux3H7Fom9W3SHcIbBLK9+ElLhz5UxcD6yRc=;
+ b=QHE3sDIoeLErxc6ns18g57+AuXPkUD82A7HUQsFDM3G8GezjcRt/4/tsatgB5ul2G04y0PsMa
+ 6Zs7Qqak6oMCTxd6gY+8x8gvI6ji63FqiawT2RmMSSbtd0LqB64DTKA
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260429_024508_597981_433807C1 
-X-CRM114-Status: GOOD (  10.20  )
+X-CRM114-CacheID: sfid-20260429_024511_367898_7CDB0A66 
+X-CRM114-Status: UNSURE (   9.10  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,27 +95,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The rtc block of MT6359 PMIC is compatible with the one found in MT6358
-but this compatibility was never expressed in the dt-bindings, so add
-the missing compatible string for the rtc subnode.
+MT6365 PMIC is compatible with MT6359, so add the compatible strings
+for the main and sub devices (regulator, rtc, audio codec).
 
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
 diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-index 05c121b0cb3d..dc2b38cf285d 100644
+index dc2b38cf285d..122aba7a54f8 100644
 --- a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
 +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-@@ -70,6 +70,7 @@ properties:
-               - mediatek,mt6397-rtc
+@@ -44,6 +44,10 @@ properties:
+           - enum:
+               - mediatek,mt6366
+           - const: mediatek,mt6358
++      - items:
++          - enum:
++              - mediatek,mt6365
++          - const: mediatek,mt6359
+ 
+   interrupts:
+     maxItems: 1
+@@ -71,6 +75,7 @@ properties:
            - items:
                - enum:
-+                  - mediatek,mt6359-rtc
+                   - mediatek,mt6359-rtc
++                  - mediatek,mt6365-rtc
                    - mediatek,mt6366-rtc
                - const: mediatek,mt6358-rtc
  
+@@ -99,6 +104,10 @@ properties:
+               - enum:
+                   - mediatek,mt6366-regulator
+               - const: mediatek,mt6358-regulator
++          - items:
++              - enum:
++                  - mediatek,mt6365-regulator
++              - const: mediatek,mt6359-regulator
+ 
+     required:
+       - compatible
+@@ -125,6 +134,10 @@ properties:
+               - enum:
+                   - mediatek,mt6366-sound
+               - const: mediatek,mt6358-sound
++          - items:
++              - enum:
++                  - mediatek,mt6365-codec
++              - const: mediatek,mt6359-codec
+ 
+     required:
+       - compatible
 
 -- 
 2.54.0
