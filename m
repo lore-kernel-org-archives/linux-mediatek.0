@@ -4,94 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2ADFFF8864
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2026 07:01:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C050BFF8864
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2026 07:41:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=/JL70GXKn5s+hfezfz9Rkgqv8RBnS7tjEj5remHa41A=; b=2lfAs4MV/mera2eQkPiSeBbt2L
-	2UdibFElBr8PmE20HbU9AzH+mO6VgwOPogt9TJeb63159oKs186rCeHQSN1y7jRLJWrq2wgCQ9bj4
-	ALBjxjLw4Tcxa4YsKPzGjrBAmgjadtFpWLrr9A2as011QOUXehWtQfwvD6eul1D8i35ky0+K+xzWm
-	I+C4NKKcsRW6kf9usa6q0WO4OGdNjuxErjLtdd0fuPHvIKKljuwX6U55E3eV80ogmGwiuHhzd3WLw
-	A2qBaP6uK68gpxGrtCMBHuXorI0d6XNjhNushf6dvEt9K017y+ONpkMN6ghRMFtiJJ3Nk709wxXgD
-	yjzXoRoA==;
+	bh=RFZhSnSnaJvbVAF8eyUqTOgahKo+NC7KLHnE9JI0jEw=; b=qA0+5alZIdKhoI5fWbpzJr817R
+	p6TCrDjgeaJjSTGlKORPqz3NgC9FmTT9NFA6AvEalfC56wNwFrHP374OzPNTxJQdERnVD6GEugH+y
+	RtJ+SqHP+5UoaetJqb/GiKfRpQZI5akBpFWGBbhAt0lt5IVOPueQYduR+0FvY8Prn04ImT4b/OYEf
+	1THMRMe7KaxSFKlBTbCjjaGlsN6Ojbf+9SciWId7GN9kym1Jk1rEwkQBwcJY8/qJxiqV1TPsvOou1
+	CoqL7hWpzyczmPJevHciDoFfG4xRGlMHsb7BbCP8QDH6CZnrLD14k5ZuChTpT3rPshTRT0u/eM7yo
+	EjJSwY8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHyvi-0000000376r-07tr;
-	Wed, 29 Apr 2026 07:01:54 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wHzY5-00000003AjI-1ocN;
+	Wed, 29 Apr 2026 07:41:33 +0000
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHyvg-00000003760-25lA;
-	Wed, 29 Apr 2026 07:01:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=/JL70GXKn5s+hfezfz9Rkgqv8RBnS7tjEj5remHa41A=; b=E0tArqkCNwxoDZ8HXunxFfdUOo
-	wgcj8VMe4+Kwa3bm0Oq9aLjD8LOn6ngluizlhBN18qLst4X4FA9p4RwhwqBlmv+Cl/IlFByzeoToR
-	+1YDijfWIMaJxSMRQ2clerA0Jt82eBSv3b1Up3O3NiVUWOunk61GB3gNTzpRGKfRlkqrLg8lGaY2U
-	sf+Oz8xcriAvdZl3gZ/fewuErQOHtMdqPzHT2quTLnmpQzC5Zb8+hAxivtA2m/BLgx3rhgdlcxYy+
-	F9ZpCzqaDLYa5WkPSmAE4I+YmdBojlGmKomWVPkaLKdr4QDGOqeED+qfgM4ifjay4NknMeWUPEaf7
-	0LGyqvrg==;
-Received: from smtp81.cstnet.cn ([159.226.251.81] helo=cstnet.cn)
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHyvU-00000004iVS-2aVX;
-	Wed, 29 Apr 2026 07:01:50 +0000
-Received: from localhost.localdomain (unknown [36.112.3.223])
-	by APP-03 (Coremail) with SMTP id rQCowADX+N_ArPFpIhWJDw--.271S2;
-	Wed, 29 Apr 2026 15:01:20 +0800 (CST)
-From: Haoxiang Li <lihaoxiang@isrc.iscas.ac.cn>
-To: tiffany.lin@mediatek.com,
-	andrew-ct.chen@mediatek.com,
-	yunfei.dong@mediatek.com,
-	mchehab@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	laurent.pinchart@ideasonboard.com,
-	hverkuil+cisco@kernel.org,
-	p.zabel@pengutronix.de,
-	benjamin.gaignard@collabora.com,
-	xiaoyong.lu@mediatek.com,
-	mingjia.zhang@mediatek.com,
-	nicolas@ndufresne.ca
-Cc: linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	id 1wHzY2-00000003Ahu-2N69
+	for linux-mediatek@lists.infradead.org;
+	Wed, 29 Apr 2026 07:41:32 +0000
+Received: by mail-pj1-x1034.google.com with SMTP id 98e67ed59e1d1-35691a231a7so8179016a91.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 29 Apr 2026 00:41:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1777448490; x=1778053290; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=RFZhSnSnaJvbVAF8eyUqTOgahKo+NC7KLHnE9JI0jEw=;
+        b=n23eYsaIk+uLth7Avh+i9KYkshX14qJi3QFvWidcRzhRqCYphxYJFyk2OZcIkcmidh
+         qUXHXx9ZmDd59MTih+WDttXwk3dS5UpuNQckNg6JEmIFRXyFGNggTRog79CbzSEoFcSz
+         Z9B4QEBETYF9MF3quORjnFX8QIDzYhen8h9/4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1777448490; x=1778053290;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=RFZhSnSnaJvbVAF8eyUqTOgahKo+NC7KLHnE9JI0jEw=;
+        b=DAxEG4UQzadDB+bpMvrpIyKKCvPskIeDNXlb9+M5SoP10EsUOY3r67rc9dXBscPj43
+         pLIxF/W4NSORjyqHfR7PbdrkwR5Rlj6RwKkC7bBW7zr3CFnbkcqk7YUsfs5EVaYw7oz6
+         CiRcMTBu+lm0zU6f0Q3DDs3vaLiaRVzONXzM28mekwix/N3sWZokGftExM/2cUfgTvIx
+         MBj6S4I9qbavGDFvivwI6+rwhiRZLVQzFmIR7eNliMqhp2DPRCw4XgEL7U+RV4Uu9pV6
+         OIlQSU76cvWKvWVRxDXrtuvu0euZAGVHhStsmZAFuDgstnDOQl150sfBEtipn2xpDAbi
+         b02A==
+X-Forwarded-Encrypted: i=1; AFNElJ/B5ut8i2qMsga1BYGc3bKUTIbeupu4sP085qJpvRTabpeeJT4T0ZcrUX2iHqg/PhaeXsYUNRJ+ln3NVINU5Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyuONiLGjZuNblQBGyGa4cdz69VItF4eprwt/FnJ7O2BpiNrp2O
+	PND2MLCl1Xi1UqiKBpHndKLvGwH24YfOEcYkY+ZtRhLje1c05HSfkSvjILQXMHCrHA==
+X-Gm-Gg: AeBDievG/F++HV3RY7TvVcKRCly9sQbHYu5hmJrhZrql4mhTHjuFNOHfMiDaa4/RZkK
+	IWoNrkI1FQrPneYaNFi2E1kNm6A6MeLUJU5FOWikL+uHQbgCakUuerZf0btpAA2fOYkW8jBqTH/
+	Q0tdxWQgci7rKera7JL4ns3NgnFW9LdE2Gfl3stRX5YmdtDR80v0b7e7k2q385atW7Id5JN2isx
+	tGK34GGoDh5/VP0Ktnmg9WESpaIGFS5x6pyzkdGyepUvWKm7GiwF44QRHm5GgDIt6mXQIrIJHhx
+	2YZbq+Dv7Zkob2RzW4rf78MPcV6ouCeioiT0B+2t64ZCqR2KfEVKRLCRthVNk8TgEO9GL92/u5z
+	ef/8PxsLM7XixeXycAzaez6Y5Td2svbh5VHrKrfUxKL9GLjNqj97bWRVj+hgIz8fw0GtyCp6eS9
+	uaxRWhy6/pN5KNg+2AXouJTH2BQt1G8Ggk4c12CIGNfxFt+WpWpiS6qicu25PlG5UGfbYid8PPP
+	iuruZH1qnh6lXuUxXc=
+X-Received: by 2002:a17:90b:2fc5:b0:35c:b02:b5c1 with SMTP id 98e67ed59e1d1-364a0b2b59bmr2680846a91.2.1777448489640;
+        Wed, 29 Apr 2026 00:41:29 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:e49b:67f9:cdcb:8366])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-364a439248fsm1341528a91.9.2026.04.29.00.41.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 29 Apr 2026 00:41:29 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Mark Brown <broonie@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	Haoxiang Li <lihaoxiang@isrc.iscas.ac.cn>,
-	stable@vger.kernel.org
-Subject: [PATCH v2] media: mediatek: vcodec: free working buf in vdec_vp9_slice_setup_single()
-Date: Wed, 29 Apr 2026 15:01:19 +0800
-Message-Id: <20260429070119.181876-1-lihaoxiang@isrc.iscas.ac.cn>
-X-Mailer: git-send-email 2.25.1
+	devicetree@vger.kernel.org
+Subject: [PATCH v2 0/6] regulator: mt6359: cleanup and add supplies
+Date: Wed, 29 Apr 2026 15:41:06 +0800
+Message-ID: <20260429074113.3720271-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.54.0.545.g6539524ca2-goog
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: rQCowADX+N_ArPFpIhWJDw--.271S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7uFWxKw15Cr4kCw47WrWfXwb_yoW8WrWfpF
-	s0krWUZFyjyFnFva18Ja1xuayrC3ySvryxWw4a9w1Yyr98tr4xXryIyFya9F4UCrn2ka48
-	ur1qqry8WFW3Aw7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUU9014x267AKxVW5JVWrJwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
-	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
-	1l84ACjcxK6xIIjxv20xvE14v26r1j6r1xM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
-	6F4UM28EF7xvwVC2z280aVAFwI0_Jr0_Gr1l84ACjcxK6I8E87Iv6xkF7I0E14v26r4j6r
-	4UJwAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0
-	I7IYx2IY67AKxVWUGVWUXwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r
-	4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwACI402YVCY1x02628v
-	n2kIc2xKxwCY1x0262kKe7AKxVW8ZVWrXwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7x
-	kEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E
-	67AF67kF1VAFwI0_GFv_WrylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCw
-	CI42IY6xIIjxv20xvEc7CjxVAFwI0_Gr0_Cr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1x
-	MIIF0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr0_Gr1UYxBIda
-	VFxhVjvjDU0xZFpf9x0pRiSdgUUUUU=
-X-Originating-IP: [36.112.3.223]
-X-CM-SenderInfo: 5olkt0x0ld0ww6lv2u4olvutnvoduhdfq/1tbiBgsME2nxk7Bl3QAAsR
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260429_080142_113999_37F8DEA7 
-X-CRM114-Status: UNSURE (   8.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260429_004130_675797_3C514092 
+X-CRM114-Status: GOOD (  19.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,48 +101,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add an error path label in vdec_vp9_slice_setup_single()
-and call vdec_vp9_slice_free_working_buffer() to free
-working buffer.
+Hi,
 
-Fixes: b0f407c19648 ("media: mediatek: vcodec: add vp9 decoder driver for mt8186")
-Cc: stable@vger.kernel.org
-Signed-off-by: Haoxiang Li <lihaoxiang@isrc.iscas.ac.cn>
----
-Changes in v2:
- - Remove vdec_vp9_slice_setup_prob_buffer()'s return
-   value, since it never fails. Thanks, Nicolas!
----
- .../mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c   | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
+This is v2 of my "MT6359 PMIC cleanup and add supplies" series.
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-index cd1935014d76..d034d84ad7f1 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-@@ -1808,17 +1808,16 @@ static int vdec_vp9_slice_setup_single(struct vdec_vp9_slice_instance *instance,
- 
- 	vdec_vp9_slice_setup_single_buffer(instance, pfc, vsi, bs, fb);
- 	vdec_vp9_slice_setup_seg_buffer(instance, vsi, &instance->seg[0]);
--
--	ret = vdec_vp9_slice_setup_prob_buffer(instance, vsi);
--	if (ret)
--		goto err;
-+	vdec_vp9_slice_setup_prob_buffer(instance, vsi);
- 
- 	ret = vdec_vp9_slice_setup_tile_buffer(instance, vsi, bs);
- 	if (ret)
--		goto err;
-+		goto alloc_err;
- 
- 	return 0;
- 
-+alloc_err:
-+	vdec_vp9_slice_free_working_buffer(instance);
- err:
- 	return ret;
- }
+Changes since v1:
+- Moved regulator supply properties up to the PMIC mfd node
+  - This requires moving the properties to the mfd bindings
+- deprecated vcn33_[12]_(bt|wifi) regulators and added vcn33_[12]
+- model the deprecated ones as downstream to the new ones
+  (vcn33_[12] -> vcn33_[12]_(bt|wifi)
+- Handle internal supply of vbbck directly in the driver, instead of
+  specifying it in the binding
+- Added patch to constify data structures in the regulator driver
+
+This series is part of a broader collection of regulator related
+cleanups for MediaTek Chromebooks. This one covers the MT6359 PMIC.
+
+The MT6359 PMIC is similar to the MT6358 and MT6366 PMICs. I've done
+cleanups for those in the past.
+
+Patch 1 adds the names of the power supply inputs to the binding.
+
+Patch 2 drops the restrictions on the regulator-name property from the
+binding. The name of the supply rail ideally should match the design
+schematics, not the PMIC's output name. The DT should be free to set
+whatever name it needs.
+
+Patch 3 deprecates the vcn33_[12]_(bt|wifi) regulators, and adds new
+proper vcn33_[12] regulators. The two *real* VCN33 regulator outputs
+each have two enable bits that are OR-ed together to control the
+output. This allowed WiFi and BT stacks to separately control power
+output without coordination.
+
+Patch 4 constifies the data structures used throughout the regulator
+driver. While not directly related, it touches the same context and
+it is easier to include it in the series.
+
+Patch 5 adds the supply names from the DT binding change in patch 2
+to the regulator descriptions in the driver. This patch has a whole
+bunch of checkpatch.pl warnings, but I wonder if it's because the
+context size for checking complex macros is not large enough.
+
+Patch 6 implements the changes of the DT binding change in patch 3.
+
+
+One part not yet covered in this series is the removal of the *_sshub
+regulators. These are not actual regulators, but a set of separate
+configurations to be used by the low power sensor hub or embedded
+controller. How these combine with the standard set of configurations
+set by the main processor is TBD.
+
+Device tree changes will be sent separately. The goal is to get the
+regulator tree as complete as possible. This includes adding supply
+names to other regulator DT bindings, and adding all the supply links
+to the existing DTs.
+
+Please have a look.
+
+
+Thanks
+ChenYu
+
+Chen-Yu Tsai (6):
+  mfd: dt-bindings: mt6397: Add regulator supplies
+  regulator: dt-bindings: mt6359: Drop regulator-name pattern
+    restrictions
+  regulator: dt-bindings: mt6359: Deprecate bogus vcn33_[12]_* split
+    regulators
+  regulator: mt6359: const-ify regulator descriptions
+  regulator: mt6359: Add regulator supply names
+  regulator: mt6359: Add proper ldo_vcn33_[12] regulators
+
+ .../bindings/mfd/mediatek,mt6397.yaml         |  50 +++
+ .../bindings/regulator/mt6359-regulator.yaml  |  52 +--
+ drivers/regulator/mt6359-regulator.c          | 400 ++++++++++++------
+ include/linux/regulator/mt6359-regulator.h    |  10 +-
+ 4 files changed, 339 insertions(+), 173 deletions(-)
+
 -- 
-2.25.1
+2.54.0.545.g6539524ca2-goog
 
 
