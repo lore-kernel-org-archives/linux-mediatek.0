@@ -4,90 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D065FF8877
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2026 09:59:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65C68FF8867
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2026 10:51:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LPz8EtPttRNik2gDn7LY1dwUIcxfRjp5MXUD4jIgaQg=; b=QVN5tqs/2vGTPN33tmZaX+H0LO
-	tPgiyuHxxhWOGoSLQf98RyjdPnvKBQ86yruAXl//j8fnipu32KVuBX1cg9gyWmZjwxoik70HXs7ve
-	/wk3LBRYQCrR4vCj33b5TXCgP1zW6laHk1EK8q8JCOkepXh/eul66dDOp22jrOOCpPwNrJihj5AUx
-	K4hn94vrAEqfgGayqboQMV+SR+AqUKOovNMZWkzPxcIC2nEPyGDP9NFfYXie02xwfbtsvAq5rzquF
-	Ug40aE9epSGiLsaIYFh8eIzwLHXQOllVGlZepA+JkfipaFtDCvX25jkXnTCirznp8KYFFo/8JhI58
-	hNYS3TsA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mg5dUmVXW70nARKkf3AaQz9TWpOfP9f+A5wXwI/yp2U=; b=NxhsjxJsY4Myz1qle8r8n9UxIF
+	I0qCcJr/QzPDQi/xzcNGoIKtQtfnFG6EdRocRgOHO2/Pn+N51mbaFEjZyO2nxalE41EyQx/9U89LU
+	pKTvcr8COza0DdSheyybw/0xaLHhEioOhA4bZChez/D0ZondPJtOH8ao1rVipkAHUgWGI7Tp37LQO
+	cfFUBT01fwIx4lUsb8ocD+8KF4g62O/EYozRWMfXKTzb6hSTITMcn8xArH+ZhTlbYxP27gpOGQIcs
+	MeTZLTr/iLSEkW+yx42kd90kV15sI5Qtu14OSmMH/P5+sW2tRDWg+xrC7l6hWCEQCeELT3FeFRXYw
+	jXP8HTJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wI1hb-00000003Po1-44Bu;
-	Wed, 29 Apr 2026 09:59:31 +0000
+	id 1wI2WL-00000003U7X-1MQe;
+	Wed, 29 Apr 2026 10:51:57 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wI1hY-00000003Pk7-3jiL;
-	Wed, 29 Apr 2026 09:59:28 +0000
+	id 1wI2WJ-00000003U75-0vif;
+	Wed, 29 Apr 2026 10:51:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=LPz8EtPttRNik2gDn7LY1dwUIcxfRjp5MXUD4jIgaQg=; b=FZScfUZPSl+TlTaaW4sefTKZAE
-	xONJIAprYinXpXZ6XuQy4O3vtvOUFHtdx9aOdAOPuiW7OJc4E0kk9N1khhoFKXLdSKVIIA2BLV7Va
-	3ZTvZbKZua/NhBNo+8eOuoXg4hogRarujDJgLezjI0/X2F4GEBLN/kV4xjaSUCH/8zSJKuLowr9g1
-	hnj0MgusBS3xyl0/CAZie1PrBxwam7crQyugrzpijC3nFP4f0wPHdqy+Uu0fWM4pupcYz7Zh7pb41
-	RoRrrht8/EB5qRE8eIcRJK8mH2urY+JqzMGyNaruAMKaMWn8Tlv0+hN5TCra+409+Y7kS01AZrOUI
-	oclLqd4w==;
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=mg5dUmVXW70nARKkf3AaQz9TWpOfP9f+A5wXwI/yp2U=; b=TAR3o+fEj1wS019jYhgAZg0QDS
+	qQNpxaMRGAhashqWPX4YqR/ept/Eh9pjGuWiA1FodSWYrip3zQOYe92ljF2mz85tv5Vmujju2MOMV
+	1tZPizvKW18AOkN4Ba6WmYg1seeI9BpFgLaeByQlFYP5YVB65Ne/caSKfhgx9Kl7xVaoMY21Hxhwh
+	SOvU4T5vFIA5ufCf9uxNEXHjeYJB/0Jwkb+8n0sNL79H7vy8C0q4LrxjgSsibfjk2sOhdV+9YeFzM
+	Xq7XJuhs2jNf++dxGAYBzbYTMBAfiJKNQPvWp25pBsC35/9V5a1jPWjpt5lBCO0+Gz4jpIaaUwFwD
+	tgAKydyg==;
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wI1hU-000000053B2-2UAm;
-	Wed, 29 Apr 2026 09:59:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1777456759;
-	bh=XWxApOAHBnX242cqzf8MT9L8rPe2HmxQVPIPOJhxGQ4=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Eg4Al2I+jfscKrFx2zJm7cH2gxxvXb3mkAzhwRDryBPjklwNmKVI7c2Q4ESTsCsSt
-	 A5wOlgDMe2I4kxyZb2UuPVjGVFlIUWYbG6jIYf//NY8rAa1uys2jDG2voKEw+UXcge
-	 18RDpuzAlykAzXLtnkHgQeCLIB51TPzsVPAm5zLZXJMlCO7Kzp6FRW9mr4takTuzoc
-	 BXh+88RKhYZKzF5gzQ6puKejqSw4vgirUQZwBUmdp9bK4iZTDzdfi4IK5UjBy9+K42
-	 nVKgQQQ27QrmCfVrNKK80ccgn5XGa/jkcJygldmXwrGe+7Z3iPRUYKTKc5IHduZf/L
-	 cKL6G7lJBsV+g==
-Received: from yukiji.home (unknown [100.64.0.131])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 11C1617E1523;
-	Wed, 29 Apr 2026 11:59:18 +0200 (CEST)
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Wed, 29 Apr 2026 11:59:00 +0200
-Subject: [PATCH 2/4] drm/mediatek: mtk_hdmi_v2: Fix non-static global
- variable
+	id 1wI2WF-000000059Zc-41Pw;
+	Wed, 29 Apr 2026 10:51:54 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 54E59419C1;
+	Wed, 29 Apr 2026 10:51:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D8C21C19425;
+	Wed, 29 Apr 2026 10:51:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1777459908;
+	bh=IEpJtV+tE48jfZ1d3ouiVAaVu5r4QSmmJlWBgtD8agg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=uiprtXmdndHcJSdejaMEvKV0in2eRzc1+pRNt85QLE7SkWJe7ouxHVd7lZ9KnAxmO
+	 Eh7sAfUr44un9XK5sY7203C1VDIleWvdAHmHQIFjrL6HyH/PZvVWbmnjqDmEnVNex3
+	 cJoI3dKy0FZt3XYI2nHQFWYSRiwX1D+Yvp46PoxIh2pEumGKRUYgGrY+5ec7KZe30n
+	 MF50mT4ALtujmNL6a2wSzy0AzkbG6XpPT1ARK68nuVsLhJ9ljKaJQCwyY96me5qSck
+	 vuovF+h66qy4dY5MeuVJbIz7dYLdP/AMfcmsP5oaTF1kA8d9D9Gwj9iabkjPxdl57y
+	 5xff0CYt/Mddw==
+Date: Wed, 29 Apr 2026 12:51:45 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Cc: Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net-next] net: airoha: Introduce
+ airoha_fe_get()/airoha_qdma_get() register read helpers
+Message-ID: <afHiwU7QJGd3YPYT@lore-desk>
+References: <20260428-airoha_fe_get-airoha_qdma_get-v1-1-6cfbdeb42743@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260429-mediatek-drm-fix-sparse-warnings-v1-2-d95c4d118b83@collabora.com>
-References: <20260429-mediatek-drm-fix-sparse-warnings-v1-0-d95c4d118b83@collabora.com>
-In-Reply-To: <20260429-mediatek-drm-fix-sparse-warnings-v1-0-d95c4d118b83@collabora.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- CK Hu <ck.hu@mediatek.com>, Alexandre Mergnat <amergnat@baylibre.com>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
- kernel test robot <lkp@intel.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1777456755; l=1257;
- i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=XWxApOAHBnX242cqzf8MT9L8rPe2HmxQVPIPOJhxGQ4=;
- b=RyBHFiDAavGRNw9ff4r8IqpXhk1Jiqr3WHM4BeGNRRp74IL5//9frl7utdvF+Dx25zgEe/Ys5
- pKO1jU80E4jBefWnmNuljuFZ3mlyrBZnviVdEwSWeuEfonj7W7M4MrK
-X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
- pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="GpI9ZJHIC4pWk8Uc"
+Content-Disposition: inline
+In-Reply-To: <20260428-airoha_fe_get-airoha_qdma_get-v1-1-6cfbdeb42743@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260429_105924_789669_05E7DF45 
-X-CRM114-Status: GOOD (  11.48  )
+X-CRM114-CacheID: sfid-20260429_115152_361420_B2AD4E58 
+X-CRM114-Status: GOOD (  19.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,36 +89,148 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The struct 'mtk_hdmi_v2_clk_names' is not used outside of the
-mtk_hdmi_v2.c file, so make it static to silence sparse warning:
-```
-drivers/gpu/drm/mediatek/mtk_hdmi_v2.c:53:12: sparse: warning: symbol
-'mtk_hdmi_v2_clk_names' was not declared. Should it be static?
-```
 
-Fixes: 8d0f79886273 ("drm/mediatek: Introduce HDMI/DDC v2 for MT8195/MT8188")
-Reported-by: kernel test robot <lkp@intel.com>
-Closes: https://lore.kernel.org/oe-kbuild-all/202604132044.fcYjEcU8-lkp@intel.com/
-Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
----
- drivers/gpu/drm/mediatek/mtk_hdmi_v2.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+--GpI9ZJHIC4pWk8Uc
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c b/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
-index b5c738380dc2..a8eb6fd0908b 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
-@@ -50,7 +50,7 @@ enum mtk_hdmi_v2_clk_id {
- 	MTK_HDMI_V2_CLK_COUNT,
- };
- 
--const char *const mtk_hdmi_v2_clk_names[MTK_HDMI_V2_CLK_COUNT] = {
-+static const char *const mtk_hdmi_v2_clk_names[MTK_HDMI_V2_CLK_COUNT] = {
- 	[MTK_HDMI_V2_CLK_HDMI_APB_SEL] = "bus",
- 	[MTK_HDMI_V2_CLK_HDCP_SEL] = "hdcp",
- 	[MTK_HDMI_V2_CLK_HDCP_24M_SEL] = "hdcp24m",
+> Add airoha_fe_get() and airoha_qdma_get() as utility routines for reading
+> a masked field from a specified register.
+> This is a non-functional refactor, no logical changes are introduced to
+> the existing codebase.
+>=20
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  drivers/net/ethernet/airoha/airoha_eth.c | 13 ++++---------
+>  drivers/net/ethernet/airoha/airoha_eth.h |  4 ++++
+>  drivers/net/ethernet/airoha/airoha_ppe.c |  5 ++---
+>  3 files changed, 10 insertions(+), 12 deletions(-)
+>=20
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
+net/airoha/airoha_eth.c
+> index 2bb0a3ff9810..40b7a00c7d95 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+> @@ -201,15 +201,13 @@ static void airoha_fe_vip_setup(struct airoha_eth *=
+eth)
+>  static u32 airoha_fe_get_pse_queue_rsv_pages(struct airoha_eth *eth,
+>  					     u32 port, u32 queue)
+>  {
+> -	u32 val;
+> -
+>  	airoha_fe_rmw(eth, REG_FE_PSE_QUEUE_CFG_WR,
+>  		      PSE_CFG_PORT_ID_MASK | PSE_CFG_QUEUE_ID_MASK,
+>  		      FIELD_PREP(PSE_CFG_PORT_ID_MASK, port) |
+>  		      FIELD_PREP(PSE_CFG_QUEUE_ID_MASK, queue));
+> -	val =3D airoha_fe_rr(eth, REG_FE_PSE_QUEUE_CFG_VAL);
+> =20
+> -	return FIELD_GET(PSE_CFG_OQ_RSV_MASK, val);
+> +	return airoha_fe_get(eth, REG_FE_PSE_QUEUE_CFG_VAL,
+> +			     PSE_CFG_OQ_RSV_MASK);
+>  }
+> =20
+>  static void airoha_fe_set_pse_queue_rsv_pages(struct airoha_eth *eth,
+> @@ -227,9 +225,7 @@ static void airoha_fe_set_pse_queue_rsv_pages(struct =
+airoha_eth *eth,
+> =20
+>  static u32 airoha_fe_get_pse_all_rsv(struct airoha_eth *eth)
+>  {
+> -	u32 val =3D airoha_fe_rr(eth, REG_FE_PSE_BUF_SET);
+> -
+> -	return FIELD_GET(PSE_ALLRSV_MASK, val);
+> +	return airoha_fe_get(eth, REG_FE_PSE_BUF_SET, PSE_ALLRSV_MASK);
+>  }
+> =20
+>  static int airoha_fe_set_pse_oq_rsv(struct airoha_eth *eth,
+> @@ -247,8 +243,7 @@ static int airoha_fe_set_pse_oq_rsv(struct airoha_eth=
+ *eth,
+>  		      FIELD_PREP(PSE_ALLRSV_MASK, all_rsv));
+> =20
+>  	/* modify hthd */
+> -	tmp =3D airoha_fe_rr(eth, PSE_FQ_CFG);
+> -	fq_limit =3D FIELD_GET(PSE_FQ_LIMIT_MASK, tmp);
+> +	fq_limit =3D airoha_fe_get(eth, PSE_FQ_CFG, PSE_FQ_LIMIT_MASK);
+>  	tmp =3D fq_limit - all_rsv - 0x20;
+>  	airoha_fe_rmw(eth, REG_PSE_SHARE_USED_THD,
+>  		      PSE_SHARE_USED_HTHD_MASK,
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
+net/airoha/airoha_eth.h
+> index e389d2fe3b86..c81433d44e3e 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.h
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
+> @@ -619,6 +619,8 @@ u32 airoha_rmw(void __iomem *base, u32 offset, u32 ma=
+sk, u32 val);
+>  	airoha_rmw((eth)->fe_regs, (offset), 0, (val))
+>  #define airoha_fe_clear(eth, offset, val)			\
+>  	airoha_rmw((eth)->fe_regs, (offset), (val), 0)
+> +#define airoha_fe_get(eth, offset, mask)			\
+> +	FIELD_GET((mask), airoha_fe_rr((eth), (offset)))
+> =20
+>  #define airoha_qdma_rr(qdma, offset)				\
+>  	airoha_rr((qdma)->regs, (offset))
+> @@ -630,6 +632,8 @@ u32 airoha_rmw(void __iomem *base, u32 offset, u32 ma=
+sk, u32 val);
+>  	airoha_rmw((qdma)->regs, (offset), 0, (val))
+>  #define airoha_qdma_clear(qdma, offset, val)			\
+>  	airoha_rmw((qdma)->regs, (offset), (val), 0)
+> +#define airoha_qdma_get(eth, offset, mask)			\
+> +	FIELD_GET((mask), airoha_qdma_rr((eth), (offset)))
 
--- 
-2.54.0
+commenting on Sashiko's report:
+https://sashiko.dev/#/patchset/20260428-airoha_fe_get-airoha_qdma_get-v1-1-=
+6cfbdeb42743%40kernel.org
 
+- This isn't a bug, but is the first parameter of airoha_qdma_get() supposed
+  to be named qdma instead of eth?
+  This is correct, I will fix it in v2.
+
+Regards,
+Lorenzo
+
+
+> =20
+>  static inline bool airoha_is_lan_gdm_port(struct airoha_gdm_port *port)
+>  {
+> diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ether=
+net/airoha/airoha_ppe.c
+> index 5c9dff6bccd1..697af6fdd4c3 100644
+> --- a/drivers/net/ethernet/airoha/airoha_ppe.c
+> +++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+> @@ -80,9 +80,8 @@ bool airoha_ppe_is_enabled(struct airoha_eth *eth, int =
+index)
+> =20
+>  static u32 airoha_ppe_get_timestamp(struct airoha_ppe *ppe)
+>  {
+> -	u16 timestamp =3D airoha_fe_rr(ppe->eth, REG_FE_FOE_TS);
+> -
+> -	return FIELD_GET(AIROHA_FOE_IB1_BIND_TIMESTAMP, timestamp);
+> +	return airoha_fe_get(ppe->eth, REG_FE_FOE_TS,
+> +			     AIROHA_FOE_IB1_BIND_TIMESTAMP);
+>  }
+> =20
+>  void airoha_ppe_set_cpu_port(struct airoha_gdm_port *port, u8 ppe_id, u8=
+ fport)
+>=20
+> ---
+> base-commit: 790ead9394860e7d70c5e0e50a35b243e909a618
+> change-id: 20260428-airoha_fe_get-airoha_qdma_get-7a087a23aef4
+>=20
+> Best regards,
+> --=20
+> Lorenzo Bianconi <lorenzo@kernel.org>
+>=20
+
+--GpI9ZJHIC4pWk8Uc
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCafHiwQAKCRA6cBh0uS2t
+rGO1AQD9EhkXvmgjx5KZl7StlDhHzDJLBGQgiwWzDQjacOOVNQEAm2A5EKnJ6WOc
+bRXSgX1qxX2zmE3c8lyer9r7jQv4gQY=
+=oaxY
+-----END PGP SIGNATURE-----
+
+--GpI9ZJHIC4pWk8Uc--
 
