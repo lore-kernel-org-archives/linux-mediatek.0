@@ -4,63 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD4B6FF8867
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2026 09:42:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDEB9FF8867
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2026 09:45:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:To:Subject:From:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vRSTvAjZfu7K9fiQSB3Ep0oWJak8xVdn/Xl9VAisUQM=; b=myVHAMa7BISglwQRqbxyLtHeVL
-	CvDAdf8Bd20ExqPXnRwNIWLxmUYvVnec8e59D0Ni1IHsqOIN3rKcajCy7ZidBFvbQBNmDlgL3sXAC
-	TOmfgfwMdwdjjjNklIgzjITkE1lDxavyVYC5rp7GRCn5HBgJymB+WoUsiyXFPvETiMSgp/8+eRunG
-	nH1nxsMPJPZgkzC9+P5STm7rRuqjlxtIbmhlAJJRSIXZV3xDVpbOBw/qTVfIGCAk7wYHvx+IhCdRr
-	IAXWiJEUi9o5ZUAxUMe1Qvwuqpax/ne9JjFcZxzxex4dsKHpIe0CeFTlF/7cO/EaIQO7ebe94D+1k
-	NxoR6TYw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Bpnoez2NGQmvCzUSolqwnCKtIwauKm5spi5xIDs11As=; b=F9cWoY7wVIMmcT
+	0QM4TopG9iLiBYQiJ8gxgVmiieSqWVqYnHDpuLlVCzekFGJqPMSQ/TeeIg1FTYTRtRxk5LlMlXGdg
+	WWteaAXafSudzyQ0waUI9CtTECgk47E0Nzsbc3sUZSaGe909oWB3urY0gy66DbDEJzOeZGr1fPX8S
+	PPQ44BouJbhkE4ZKhrExLW0XCa3wTEKGddILTvETqDLJU4mpp600p3b2OWJoEvaUFIN4d7EfXv+IT
+	TZ5WWEGrtlHLikchb7eiZQTjbmu4tTlmd10MdEnfXVoRckXOYxelCOaG4ur9CNUN+dL01SwFbmN6l
+	X2TqYSe6wDXVvRciexHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wI1Qr-00000003MHS-1LvP;
-	Wed, 29 Apr 2026 09:42:13 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wI1Ti-00000003Mjz-43PA;
+	Wed, 29 Apr 2026 09:45:10 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wI1Qp-00000003MGm-0NnU;
-	Wed, 29 Apr 2026 09:42:12 +0000
+	id 1wI1Tf-00000003MiJ-2Rzd;
+	Wed, 29 Apr 2026 09:45:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1777455728;
-	bh=qacrdInfJDRgJywanIsHYkdfJi7YKcb1x05Pu8oRmXk=;
-	h=Date:From:Subject:To:References:In-Reply-To:From;
-	b=UaGJZjDMsH8tHhGBx8l6nwZ01zDV/zKQUNd2k8y0wwy48Ik7GpioIyPIrR4KippiF
-	 loOiEIx9bagh9JMNV32uEvbXxf7C0sr4gHQS77zKVVjyDCQVZe0uXz5FsBGyxtq6CH
-	 ct9tymdb+K6/eRMUp6SQLxPLrHATL7PEYaneEb8g3mo2pifVyTWTjZDp09hMWj3anK
-	 +EZVlhwWDF1hX9Pvknm3VE+sHkLHVZNKBnafkOhVYzVQb9YqHy3xw5X9jeP5S2a9c+
-	 YznisSHnl3zI81EfBx6GHxxHxI4Vynfbzc7LhERn2VzYbfdDu2NLSNXwZuPKdR9kxJ
-	 568TjuvAAZgrQ==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1777455904;
+	bh=lq7N+2TMLsd9INSTBHiMUUyVQJXO3AKC2EQZHsgXO4Q=;
+	h=From:Subject:Date:To:Cc:From;
+	b=OjJHnibvt90JzFz9DoM6y7imNJLIYUNK0ExTlH1LfxLIX/tjy9/3jJ009JpuWruoF
+	 vzJ18QZSfEO94XppPh6W3IdssYhzPO/ZYL/wCjXnBO12ceNF97wREOJ6YzJgsIDKXT
+	 18ZVh3Wbo1uzpXb3+v+m5TWkdQ9xeKwZf0V1B48mFCGh163kcZMm1t2mORVezE5okd
+	 vb6gTzpa/Nq+nWiIalJKj8s8CjosvK/lyezTVy/SOrGcmbha3aa20znbYnBtcf+rJu
+	 Yd0dOlKu1JD4OaOataB/NIgne+U9NV8vjsSyog7XczfYikpLmAXtHNwXXsRdsOfr/P
+	 AOXYhWm19ddqQ==
+Received: from yukiji.home (unknown [100.64.0.131])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CD74F17E0610;
-	Wed, 29 Apr 2026 11:42:07 +0200 (CEST)
-Message-ID: <b95b8342-5438-4f44-a5fc-b5a6cf3e90f5@collabora.com>
-Date: Wed, 29 Apr 2026 11:42:07 +0200
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 04C7A17E12E5;
+	Wed, 29 Apr 2026 11:45:02 +0200 (CEST)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Subject: [PATCH 0/9] MT6365 PMIC support cleanup
+Date: Wed, 29 Apr 2026 11:44:13 +0200
+Message-Id: <20260429-mediatek-genio-mt6365-cleanup-v1-0-6f43838be92f@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v2] arm: mediatek: MAINTAINERS: Include SoC bindings
-To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20260329085353.8649-2-krzysztof.kozlowski@oss.qualcomm.com>
- <bb0e5f69-d451-4d95-8a4e-38d18582ccb2@oss.qualcomm.com>
-Content-Language: en-US
-In-Reply-To: <bb0e5f69-d451-4d95-8a4e-38d18582ccb2@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/zWNQQ7CIBAAv9Ls2U2QVoL9iukBYVs3ClSgpknTv
+ 0tsPM4cZjbIlJgy9M0GiT6cOYYK51MD9mHCRMiuMkghleikRk+OTaEnThQ4oi+qVRe0LzJhmVF
+ Z53Rn21FcNdTGnGjk9de/DQcnei91Uw4Jd5MJbfSeS98EWgv+VzDs+xcBiL26oAAAAA==
+X-Change-ID: 20260428-mediatek-genio-mt6365-cleanup-6cdd84c3f098
+To: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
+ Chen Zhong <chen.zhong@mediatek.com>, Jonathan Cameron <jic23@kernel.org>, 
+ David Lechner <dlechner@baylibre.com>, 
+ =?utf-8?q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, 
+ Andy Shevchenko <andy@kernel.org>
+Cc: kernel@collabora.com, linux-pm@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-input@vger.kernel.org, linux-iio@vger.kernel.org, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1777455902; l=2418;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=lq7N+2TMLsd9INSTBHiMUUyVQJXO3AKC2EQZHsgXO4Q=;
+ b=HJi/WQP85IC64GbSSISNtK93roWE/r528Oy00lWKTLscMvosH0AUECdbPfAGGlPy3SY0FzFgw
+ VK4zU5VAE5sCa1yzCNGFRUVJSJx6wU/4OwUQXavHv1nepfMc3vv2Bl1
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260429_024211_285093_6E981096 
-X-CRM114-Status: GOOD (  11.42  )
+X-CRM114-CacheID: sfid-20260429_024507_777098_36F4BB30 
+X-CRM114-Status: GOOD (  11.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,29 +95,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 28/04/26 17:07, Krzysztof Kozlowski ha scritto:
-> On 29/03/2026 10:53, Krzysztof Kozlowski wrote:
->> The ARM/ARM64 Mediatek SoC maintainer entry misses bindings directory
->> for SoC devices.
->>
->> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
->>
->> ---
->>
->> FYI, there are already patches on the list which used get_maintainers.pl
->> script and did not CC Mediatek maintainers, so they might get
->> forgotten/missed.
->>
-> 
-> This patch did not receive any comments from Mediatek maintainers - do
-> you plan to apply it?
-> 
-> Best regards,
-> Krzysztof
+Several Mediatek and Radxa boards, based on MT8370, MT8390 or MT8395
+SoC, integrate the MT6365 PMIC, that is a MT6359P variant:
+ - Mediatek Genio 1200-EVK
+ - Mediatek Genio 700-EVK
+ - Mediatek Genio 510-EVK
+ - Radxa NIO-12L
+It is compatible with the MT6359 PMIC.
 
-Sorry, pretty-crazy-busy days around here.
+But both MT6365 PMIC support and compatibility were never expressed in
+the dt-bindings and there is no MT6365 include file as well.
+So, since these board support was introduced, their devicetrees use the
+mt6359 include file to enable this PMIC support. 
 
-I can take it or if Arnd wants to take that directly, I'm as well fine.
+The goal of this series is to clean this support by adding the missing
+compatible strings for this MFD main and subdevices in the dt-bindings,
+and add a include for MT6365 definitions to replace the MT6359 include
+in these board devicetrees and for future ones (like Genio 520/720
+EVKs).
 
-Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+The series is based on linux-next tree (tag: next-20260428) and has
+been tested on Mediatek Genio 510, 700 and 1200-EVK boards.
+
+---
+Louis-Alexis Eyraud (9):
+      dt-bindings: mfd: mediatek: mt6397: Add rtc for MT6359
+      dt-bindings: mfd: mediatek: mt6397: Add MT6365 PMIC support
+      dt-bindings: input: mediatek,pmic-keys: Add MT6365 support
+      dt-bindings: iio: adc: mt6359: Add MT6365 PMIC AuxADC
+      arm64: dts: mediatek: mt6359: use proper compatible for rtc
+      arm64: dts: mediatek: add MT6365 PMIC include
+      arm64: dts: mediatek: mt8390-genio-common: use MT6365 PMIC definitions
+      arm64: dts: mediatek: mt8395-genio-common: use MT6365 PMIC definitions
+      arm64: dts: mediatek: mt8395-radxa-nio-12l: use MT6365 PMIC definitions
+
+ .../bindings/iio/adc/mediatek,mt6359-auxadc.yaml   | 17 +++++++++-----
+ .../bindings/input/mediatek,pmic-keys.yaml         | 21 ++++++++++-------
+ .../devicetree/bindings/mfd/mediatek,mt6397.yaml   | 14 ++++++++++++
+ arch/arm64/boot/dts/mediatek/mt6359.dtsi           |  4 ++--
+ arch/arm64/boot/dts/mediatek/mt6365.dtsi           | 26 ++++++++++++++++++++++
+ .../boot/dts/mediatek/mt8390-genio-common.dtsi     |  8 +++----
+ .../boot/dts/mediatek/mt8395-genio-common.dtsi     |  8 +++----
+ .../boot/dts/mediatek/mt8395-radxa-nio-12l.dts     |  6 ++---
+ 8 files changed, 77 insertions(+), 27 deletions(-)
+---
+base-commit: 0f3ef35b0747832b58b97171bad99011d084c6b1
+change-id: 20260428-mediatek-genio-mt6365-cleanup-6cdd84c3f098
+
+Best regards,
+-- 
+Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+
 
