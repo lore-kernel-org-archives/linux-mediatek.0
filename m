@@ -4,75 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB1A6FF8867
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2026 04:19:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B619FF8864
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2026 06:52:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1NqJo0wjNu8ltd0SR2CPbJx09lDcoNAeWopaxM6LH2c=; b=YQhYJkAllrhkpQfUxVx01Oqqm7
-	UAJaIvdBlFRBu1/LHqa9RidTH7Qx19oFsh88w++U45CgMQg4IBqLIXor4VF4wntTy91W2A0/D2wfm
-	FIPhNJdAJJi7BKca1xSVZTjC3W0+FbP0FeQvkv+Hgqk7CCzkgk9Yr0FgdonhbpDypMoMOX7cQjMuU
-	dbaSU9K4xpdzUrGvPdcBhsP8K05GbrlLRDv6ScA0+IJAbRjRdPUCFZGfZxq7zVGZzjN8dDGfcsLce
-	d20P8ST7gdEH8F4MA76nMgXdQAnJ0cLttpw6bUNcl9Ch8xgtIpw/GHwPxvN+EBeYp7PuKla/a8y5Y
-	4yTTRUyQ==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=4s1zZ4Pxv53M66tGBQPDoRz+QuHUKz3hJDhILYCrhAo=; b=EY2GxLtIUZwu29SK5/M1VpU7t4
+	XLd8i4n8Jy0tAscGfmZjhnhoAGmtDsW9ZphshvqVp59DsMcL/jSX5Sau4ISzQWcqAo8SJ5iAWh7/4
+	naSfK7tKHzL4wnUuDy2OtP1IIcsZhq6Z2JeJ4z1Rtr5Q2JNoB+xY/QhZsiJdt6yQ5X4PDLqWcPHcR
+	8QV/+iAS+ZavKp3iaRw3DzWziy69rMZG0b18nPwQ43ik79RTfpPkUkEN3zB2l660dw4VFOBD1mh6D
+	xqEn0ygbWD3rKtLoe3BzukfC9Ii2yupKnAOaSWZetiYhOPihX3OCqHi1WEhURtQj1wlhbE+/Uqw7r
+	uzTJYL3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHwOy-00000002vCt-3gva;
-	Wed, 29 Apr 2026 04:19:56 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wHymi-0000000345Y-45Qr;
+	Wed, 29 Apr 2026 06:52:36 +0000
+Received: from smtp81.cstnet.cn ([159.226.251.81] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHwOw-00000002vBe-2Wmw;
-	Wed, 29 Apr 2026 04:19:55 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5343D42AE4;
-	Wed, 29 Apr 2026 04:19:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1E197C2BCB4;
-	Wed, 29 Apr 2026 04:19:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777436392;
-	bh=AmD4vqaT2uUvRTUm6AyJgjIJNJLVUy55SkGkTF49aMQ=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=cnLaDfumluBRuImtdokXh4ERk0qYVsC+bj2tEcf2BK0yh7Xia87nSp1T1ouJ/mlne
-	 Mfg5oV0QjF6QOdgAakpqdKAuX21qceXVtTOd59nhQlXdsk0YKMcmvDk2yI39vUglR3
-	 2tgKxpFRxGTLy47vQ207oMOAUtZ21vqwThC9W5gZQ0yZgpuzgxLhl0LYYLq9jV+fqk
-	 aVUDIuZWaatTUIoC8yC+KpmeJ4AO93Bho1hjgZw/xz4FV+E9rybRsRgia1WVVY9eQr
-	 /qSJzDSeaxZuFJH9QDl8KDECEXplYL6OKex9HxfYbiwvN105IMxQ2DgqVIvSYI7eFt
-	 Ywx14L+qYwi5w==
-From: Mark Brown <broonie@kernel.org>
-To: lgirdwood@gmail.com, Manish Baing <manishbaing2789@gmail.com>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
- kaichieh.chuang@mediatek.com, linux-sound@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-In-Reply-To: <20260428171644.5703-1-manishbaing2789@gmail.com>
-References: <20260428171644.5703-1-manishbaing2789@gmail.com>
-Subject: Re: [PATCH v2] ASoC: dt-bindings: mediatek,mt6351: convert to DT
- schema
-Message-Id: <177741830306.363516.10918867152857147398.b4-ty@b4>
-Date: Wed, 29 Apr 2026 08:18:23 +0900
+	id 1wHyme-0000000343v-2Z8f;
+	Wed, 29 Apr 2026 06:52:35 +0000
+Received: from localhost.localdomain (unknown [36.112.3.223])
+	by APP-03 (Coremail) with SMTP id rQCowACHqN+mqvFpkeGIDw--.597S2;
+	Wed, 29 Apr 2026 14:52:23 +0800 (CST)
+From: Haoxiang Li <lihaoxiang@isrc.iscas.ac.cn>
+To: tiffany.lin@mediatek.com,
+	andrew-ct.chen@mediatek.com,
+	yunfei.dong@mediatek.com,
+	mchehab@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	laurent.pinchart@ideasonboard.com,
+	hverkuil+cisco@kernel.org,
+	benjamin.gaignard@collabora.com,
+	p.zabel@pengutronix.de,
+	george.sun@mediatek.com,
+	nicolas@ndufresne.ca
+Cc: linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Haoxiang Li <lihaoxiang@isrc.iscas.ac.cn>,
+	stable@vger.kernel.org
+Subject: [PATCH v2] media: mediatek: vcodec: free working buf on error path in vdec_vp9_slice_setup_lat()
+Date: Wed, 29 Apr 2026 14:52:21 +0800
+Message-Id: <20260429065221.175159-1-lihaoxiang@isrc.iscas.ac.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.16-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1130; i=broonie@kernel.org;
- h=from:subject:message-id; bh=AmD4vqaT2uUvRTUm6AyJgjIJNJLVUy55SkGkTF49aMQ=;
- b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBp8YbjsZ1LJmGgZqCojzF1xlJO7LUOaQtvFgSPB
- oYB1ACcsHqJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCafGG4wAKCRAk1otyXVSH
- 0KSgB/4tV5PGktpNn5RUJqR6GvCP1Gg4ClOhRGo+4xsjo6d3QDrgQYWGh+k7sHjnZ0whup/bleN
- ZAQ8rZ1cWU3ljz98jPwzILKB92yEL5nc4wVorZmV4jfJmcuuLTTjJcEe2KxRVnuuCSRGMj0rA91
- lyoU+dcYwElbS5E7xLIcjTn2PQDR6B7bDlPwgl9LoE+gKe0r4freqjJg4upNCQAQmfmVO8Uxj7E
- hsg+tuy0noKZk5oHGZVMJtzFS6qhfdMN5l/mRkUbgY+rc+NhIxbVG4b6xnyovT9mu/mDuy2FV0X
- Ha6X1ic3NkSFi63+eth81l/6Pf5NGmmGzSdy2+8ZYLpRmAos
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: rQCowACHqN+mqvFpkeGIDw--.597S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7ArWktr4UXr4DXr45Jr1rtFb_yoW8AFWrpF
+	s0krW5ZFy0yFnFyay8JF4xua1rC3ySvryxWw4ag34IyryYqr4xXr1IyFyakr45Aws2ya48
+	ur1qqry8uFW5AaUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUU9014x267AKxVW5JVWrJwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
+	1l84ACjcxK6xIIjxv20xvE14v26r1j6r1xM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
+	6F4UM28EF7xvwVC2z280aVAFwI0_Jr0_Gr1l84ACjcxK6I8E87Iv6xkF7I0E14v26r4j6r
+	4UJwAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0
+	I7IYx2IY67AKxVWUJVWUGwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r
+	4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwACI402YVCY1x02628v
+	n2kIc2xKxwCY1x0262kKe7AKxVW8ZVWrXwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7x
+	kEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E
+	67AF67kF1VAFwI0_GFv_WrylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCw
+	CI42IY6xIIjxv20xvEc7CjxVAFwI0_Gr0_Cr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1x
+	MIIF0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr0_Gr1UYxBIda
+	VFxhVjvjDU0xZFpf9x0pRHUDLUUUUU=
+X-Originating-IP: [36.112.3.223]
+X-CM-SenderInfo: 5olkt0x0ld0ww6lv2u4olvutnvoduhdfq/1tbiCRAME2nxk-dc3gAAs4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260428_211954_673386_B3F32CB2 
-X-CRM114-Status: UNSURE (   8.57  )
+X-CRM114-CacheID: sfid-20260428_235233_021014_252B1CC7 
+X-CRM114-Status: UNSURE (   9.34  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,35 +91,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 28 Apr 2026 17:16:44 +0000, Manish Baing wrote:
-> ASoC: dt-bindings: mediatek,mt6351: convert to DT schema
+Add an error path label in vdec_vp9_slice_setup_lat()
+and call vdec_vp9_slice_free_working_buffer() to free
+working buffer to prevent potential memory leak.
 
-Applied to
+Fixes: 5d418351ca8f ("media: mediatek: vcodec: support stateless VP9 decoding")
+Cc: stable@vger.kernel.org
+Signed-off-by: Haoxiang Li <lihaoxiang@isrc.iscas.ac.cn>
+---
+Changes in v2:
+ - Remove two functions' return value check and error
+   code, since these never fails. Thanks, Nicolas!
+---
+ .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c        | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.2
-
-Thanks!
-
-[1/1] ASoC: dt-bindings: mediatek,mt6351: convert to DT schema
-      https://git.kernel.org/broonie/sound/c/f103e6c27fa2
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
+index cd1935014d76..5a424d738fed 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
+@@ -1166,24 +1166,22 @@ static int vdec_vp9_slice_setup_lat(struct vdec_vp9_slice_instance *instance,
+ 	if (ret)
+ 		goto err;
+ 
+-	ret = vdec_vp9_slice_setup_lat_buffer(instance, vsi, bs, lat_buf);
+-	if (ret)
+-		goto err;
++	vdec_vp9_slice_setup_lat_buffer(instance, vsi, bs, lat_buf);
+ 
+ 	vdec_vp9_slice_setup_seg_buffer(instance, vsi, &instance->seg[0]);
+ 
+ 	/* setup prob/tile buffers for LAT */
+ 
+-	ret = vdec_vp9_slice_setup_prob_buffer(instance, vsi);
+-	if (ret)
+-		goto err;
++	vdec_vp9_slice_setup_prob_buffer(instance, vsi);
+ 
+ 	ret = vdec_vp9_slice_setup_tile_buffer(instance, vsi, bs);
+ 	if (ret)
+-		goto err;
++		goto alloc_err;
+ 
+ 	return 0;
+ 
++alloc_err:
++	vdec_vp9_slice_free_working_buffer(instance);
+ err:
+ 	return ret;
+ }
+-- 
+2.25.1
 
 
