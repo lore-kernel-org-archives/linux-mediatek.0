@@ -4,82 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BECBCD13CF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2026 09:45:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C0BACCFA13
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2026 09:59:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ebmhm07Z4B+P1+sX9uf4GFsH9ixtfu42gfvtAQMjYL0=; b=beP+tma90/l2ZCEcNyU7X0M7Iv
-	XfZiwVuVrseTtuPh51J7/t82Je7g5ncOktJGfIDBQBncnWwYj4s9uRlAV3Jdl1bdXWxY1ydyn63/0
-	BVKrSyz6/NKGYjArMRMOl3VdHc/Yx7eyINE77qUWAFCqCQNYUl+Xz4/QgztiiZQPHV0/TEPG0s+Gz
-	XZOtFXZEDPAofdA589Hjv8EjH828PeYgxinKUrjOId12gab8goWqKvC1TPR/xdv2ni5F+spT+x5uo
-	LQ91C8USJW6pbCPgNrn/bstuvcL+MgQRKaCLLjCbYXszy+1k+icyPEYtX9IEep22WgcoCxYIlfcmU
-	ToB3ecTA==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=L3ysSGByzXfJqF7r5cfOYLrvPBu+c4z/i1q4JuXDig4=; b=J627m2llMHCVCC
+	4ZvbKQPWgeqtHj3nM1/sofViXBNgQKsb9h4bhn6m2H1B1uWYLHtZaGHmH/cN7aHuxNnCpO7phwmcV
+	3/CulvlsI1gUUvzemTIt4jZGp55ZRLvFVH70AMsFMWYnS/pMqFZ+DU+6ynjUAcuwoE3Swx0F6EH9g
+	iRn4ru39Z29/MgnbLX1omCk32/cRnu14mbBXWHjwY+Uc5bO5tx+QHsvjScYGrJgpdUufz/2kl0FvT
+	6t3REhGXDcCARONPBKpu0OyMbgvobeV3fqB94tY2kc5f4Fb3I4SCH5Cq+67YQWVGVQuvJ470J0t1y
+	w3dGQ37/BhP8RL5mcLpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wI1U5-00000003N8S-46nn;
-	Wed, 29 Apr 2026 09:45:33 +0000
+	id 1wI1hS-00000003Pfu-0sgT;
+	Wed, 29 Apr 2026 09:59:22 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wI1Tu-00000003Msd-02Bq;
-	Wed, 29 Apr 2026 09:45:23 +0000
+	id 1wI1hO-00000003Pec-3ZJf;
+	Wed, 29 Apr 2026 09:59:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1777455920;
-	bh=LZSXpva6oG9AsEcsoWrDUJOYVDYzK7Fn+c63sWst9h8=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Yb7VlYqzkY8wc9ZiMP2UgMZSeqTGRBU6WPJAZV8/bPbS0mH+meaLDWkg3ABDPS29/
-	 QwY2C2ViVBqrJAjGqc4fZu3iAtRm3jtnKSWTXlxRKP06w8SneZsD+Apcn+lula8Y3S
-	 bfLogmbk1NJ6j8BZOiqPze4qgxjgIVf+p5KtcbqF9cYwk8C7oxvb+3He0na8G5SG2l
-	 SIYdKBfxQhXi0wq79rBnVJC30yBSzaRjxgSM+PkvYw6zCBR3ufGwqq6n6dm8ePg3c9
-	 1TYSErcMS4THzJX3wkrEvKHmy5xoqO/FuGJXy5wZu26XuChYA4O4zGe8IXmtD+yUs4
-	 4TRQJOZOHVLDA==
+	s=mail; t=1777456756;
+	bh=TF5ce7a1hK8I+tQv5MlsWOrZ1SFQR0W0h74iMjRsckg=;
+	h=From:Subject:Date:To:Cc:From;
+	b=MZlO9R2BIZUsr5JLlzrvbxrG+OIEu7C3PV9K7g/F2uC3d4pmMr6DVAd0hjuc8rN7C
+	 g6bZ1djAxhyNniADCcHeIv1sZi7VXs/nmaYwv7yArlEWIXWZYSlgUWyVTy8ucPcKoT
+	 W2tQbon3d5vd9CetHO+o1jB1JNsKm5YFn4O/9BRvVtDwtCJShvT0AVkz4gEfsj3HCe
+	 dM3DHP/rgdPTr+zaXcJOnb7fZbPDTeCzCPjfVpdYB2lmQ08V3wf9SDwTN7E+RNqPyw
+	 OtIG8YYWRSIE/ada6qiN8CN9gX2V79K99X60jKT4X1v3uGm51mYIKn1VevfN2cVo1w
+	 /nIoI/NH/O9ow==
 Received: from yukiji.home (unknown [100.64.0.131])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id BF30E17E131F;
-	Wed, 29 Apr 2026 11:45:18 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9C6D617E131F;
+	Wed, 29 Apr 2026 11:59:15 +0200 (CEST)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Wed, 29 Apr 2026 11:44:22 +0200
-Subject: [PATCH 9/9] arm64: dts: mediatek: mt8395-radxa-nio-12l: use MT6365
- PMIC definitions
+Subject: [PATCH 0/4] drm/mediatek: fix sparse warnings
+Date: Wed, 29 Apr 2026 11:58:58 +0200
+Message-Id: <20260429-mediatek-drm-fix-sparse-warnings-v1-0-d95c4d118b83@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260429-mediatek-genio-mt6365-cleanup-v1-9-6f43838be92f@collabora.com>
-References: <20260429-mediatek-genio-mt6365-cleanup-v1-0-6f43838be92f@collabora.com>
-In-Reply-To: <20260429-mediatek-genio-mt6365-cleanup-v1-0-6f43838be92f@collabora.com>
-To: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/y2NwQrCMBBEf6Xs2YU0BC39FekhJmtdJGndpFoo/
+ XcX6/ENM/M2KCRMBfpmA6E3F56yQntqIDx8Hgk5KoM19mycdZgosq/0xCgJ77ximb0Uwo+XzHk
+ seHHGRWo7a1wAvZmFtPZTXIeDhV6LmuoRws3rPkwpce2bTGvFv62DYd+/oMRrvaMAAAA=
+X-Change-ID: 20260424-mediatek-drm-fix-sparse-warnings-7404de18204c
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
- Chen Zhong <chen.zhong@mediatek.com>, Jonathan Cameron <jic23@kernel.org>, 
- David Lechner <dlechner@baylibre.com>, 
- =?utf-8?q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, 
- Andy Shevchenko <andy@kernel.org>
-Cc: kernel@collabora.com, linux-pm@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-input@vger.kernel.org, linux-iio@vger.kernel.org, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+ CK Hu <ck.hu@mediatek.com>, Alexandre Mergnat <amergnat@baylibre.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
+ kernel test robot <lkp@intel.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1777455902; l=1354;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1777456755; l=1136;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=LZSXpva6oG9AsEcsoWrDUJOYVDYzK7Fn+c63sWst9h8=;
- b=PiLPTEDUjttvvITHiqe0IzMQ5Kj84Yl3Crww3pY7fvSDjC3aAVrBqpErDRIWSgvx1NBwz1mOs
- RZtAEl6k8KKDzZxn9QhmCKqe6G8Os4clkfk8CiFrLEbaIHeJw2gRyqE
+ bh=TF5ce7a1hK8I+tQv5MlsWOrZ1SFQR0W0h74iMjRsckg=;
+ b=LxfQX0tyMzx/jWdvideYpWdeIBEBaeVsm7QmrVnk+VO54njMPWiGYzvbVKzTiX/NgWQ0MrP0N
+ pgKBYWIGs2vBGuC/xlPL6sc6eAHLQbG+mekspcZ1lSe3uw5RmNRaPTL
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260429_024522_211320_367003F5 
-X-CRM114-Status: GOOD (  11.17  )
+X-CRM114-CacheID: sfid-20260429_025919_049058_81206057 
+X-CRM114-Status: UNSURE (   7.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,44 +90,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Radxa NIO-12L EVK board integrates a MT6365 PMIC, compatible with
-MT6359, but its devicetree used mt6359.dtsi to enable its support since
-the board support was introduced.
-
-Now that mt6365.dtsi has been created, include it instead of mt6359.dtsi
-and use MT6365 labels and pmic key compatible too.
+This series fixes in the mediatek-drm driver the sparse warnings
+reported by [1] and two others introduced during v6.16 development
+cycle.
+    
+The series has compile-tested and is based on linux-next (tag:
+next-2040428).
+    
+[1]: https://lore.kernel.org/all/202604132044.fcYjEcU8-lkp@intel.com/
 
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Louis-Alexis Eyraud (4):
+      drm/mediatek: mtk_hdmi_ddc_v2: Fix non-static global variable
+      drm/mediatek: mtk_hdmi_v2: Fix non-static global variable
+      drm/mediatek: mtk_cec: Fix non-static global variable
+      drm/mediatek: mtk_hdmi_ddc: Fix non-static global variable
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-index bf91305e8e4a..8bd3b3250b87 100644
---- a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-@@ -6,7 +6,7 @@
-  */
- 
- #include "mt8195.dtsi"
--#include "mt6359.dtsi"
-+#include "mt6365.dtsi"
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/input/input.h>
- #include <dt-bindings/interrupt-controller/irq.h>
-@@ -1034,8 +1034,8 @@ &pciephy {
- &pmic {
- 	interrupts-extended = <&pio 222 IRQ_TYPE_LEVEL_HIGH>;
- 
--	mt6359keys: keys {
--		compatible = "mediatek,mt6359-keys";
-+	mt6365keys: keys {
-+		compatible = "mediatek,mt6365-keys", "mediatek,mt6359-keys";
- 		mediatek,long-press-mode = <1>;
- 		power-off-time-sec = <0>;
- 
+ drivers/gpu/drm/mediatek/mtk_cec.c         | 2 +-
+ drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c    | 2 +-
+ drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c | 2 +-
+ drivers/gpu/drm/mediatek/mtk_hdmi_v2.c     | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+---
+base-commit: 0f3ef35b0747832b58b97171bad99011d084c6b1
+change-id: 20260424-mediatek-drm-fix-sparse-warnings-7404de18204c
 
+Best regards,
 -- 
-2.54.0
+Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
 
