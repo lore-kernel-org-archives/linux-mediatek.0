@@ -4,53 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49D94FF8867
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2026 09:59:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A316FCCFA1E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2026 09:59:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zl9XgC3TfyOqXWuiClERpmBwbbrr/I0CkpxRLL3CCak=; b=Zw7xXDXnYEzKDoqJICbJk6BLX+
-	unmnuwFjdKV3L9LAfs+aBoQaiaRvC5bRurFppO8vLSyWUnBFWZ7OczoBYjOSyVXb/dzpV5LfkUGLK
-	Xxuf1ZBGYowfHxS8jF8DD5M2cw8pW6zRG6r3tiijE2pxJog9ekCJs6NB+O+k/324ZmKbQvv9DyoMi
-	nOOAaf2u4F+cZl6wUvo4HPsFvvMfUrqXPU91YQqWqVxGU+klQsCsYVcEBBws+ik31iYiKquZV6R9p
-	CFDwHoFHjUtyK/0Yk15iRzBAq7qoqmoGR6drjwDO6sBGDCAbr/IWDLNTKePRxR6ATwhPtchy1gYhO
-	q7YcY+lQ==;
+	bh=ZEg9f387SRbUVumzQmAniddAAh5dL9jI19yOPZVRTKo=; b=T/6EvPz8QOfnlLVKH5sb5V5lpx
+	oHy0gFoSvcngMxTy7NHDzFZ6/JLLBIWTt9ZZq49eoTKnmnDPEnAASMBTMKiqzmKRKnxwXGCrYjEre
+	qGcCexOymD/vll2LyRUWiztrABxB13AGC1Y4Rl4YP+uwKITovkKR1HUm8ormj0kYMATCzcatIeFjX
+	Ledq9rr43m60/bS+itaJR7ih/c+mRjLgVu6yOCCdGYTFzC5nUDTV/770I47+qT6mbqAByWnNC4vYp
+	HuhbxqBDh9PgHhy8H+xKZoincP9FMdt7WQUkRG55xS9iTOjM2SBQ/OJVrpW6x1ZIzlyEQEPVHCweQ
+	V7Xtl0mQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wI1hX-00000003Pj5-1Bbv;
-	Wed, 29 Apr 2026 09:59:27 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wI1ha-00000003Pm2-3S8R;
+	Wed, 29 Apr 2026 09:59:30 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wI1hQ-00000003Pef-1ipC;
-	Wed, 29 Apr 2026 09:59:21 +0000
+	id 1wI1hX-00000003Pj4-3zzn;
+	Wed, 29 Apr 2026 09:59:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=ZEg9f387SRbUVumzQmAniddAAh5dL9jI19yOPZVRTKo=; b=q4QLjr2Rhmql8JSHWbGZczvGj7
+	EU9fWXvsFPZhVRBaSdA+T+dZgWgC5uws+mAqFuyEDubCwiNiNiFpnhxPV3VSXUeW2NAahPeN11bM7
+	AqvofMiKP2xNyMjIcqEkVh3G52p4H+L2d+IAWOR+SU4RCYlPMX8MfLsgqvyO5cULEaEYohsghCHP4
+	L80mnaH3EACKP1PxOywniJTbPof9uOU4/HbX4NO/8VE/fh3KA4NDoZgykzJrXj58uF79jzhS+u9B8
+	W585JTpsMgdmx1r6gh+4+l7yWzCrp+owM9WhEop1q3TnGU3K1H8QiFoB5wZzh+i1y3Rxdbp68p/3f
+	aeJtRv4w==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1wI1hU-000000053BX-13vQ;
+	Wed, 29 Apr 2026 09:59:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1777456757;
-	bh=LyfP3fNgBZbx3Y7bMZIcMNk42pMyUhQMoz9M6xKuTBU=;
+	s=mail; t=1777456760;
+	bh=WUlL1O/45PQI6YKuEzmypF/5DpmvpKtJakBpcNDoaiI=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Sn1c1ARpDTFmUw6OvH8jUoV7ESk11yWm/zJ/tSePIlq2U2WEU9iV05grUeHDFt6YX
-	 +rtDQbWBh6QeNSOYpSM2Pb66Cl16nPZezJpJqqApzVpbPKLx88Ca2Okw/q5cHkUEzj
-	 3nQfaeAjUyUwde8AjBsGyNws+eHwRYEa0HksFAnmoPsrmYfcVYPBuxZ1EVGojpwb09
-	 u56b18ImAS51f1urLUN5e8lMSByF4AxHxmaHQZ5zOzn5VgfW4ei4X58baJJm3lAf3a
-	 9nwAR1KXaXqMSXF8AMRcbLD7l88WUcJWTqsszx/fGroUTSWx8UTBIk4hD5QDxeYAzM
-	 7dnYOPGEdnVvg==
+	b=ZjkxoXqktEVbE0bhJKqDg0CDtE1hvDgwqLe0pebXFaT9jV1aWFyMlcVj40dA0owVX
+	 KGlvw7QzYqNQo0VxWuVzf7Z89OoURQDbFKwnW7TIlaXyxWliNYrmN1jXoprst1RB00
+	 EAharlZ8lS1Hfzp/XBGzlphyvGmFpxITEsItAIrwfG7hFqdmy6p0To2pTLXp2MpG3N
+	 DJHBfUg921py4QXic2hj4fpr04oK2EcDHuVJ78qN222+GUFTxVuZWbs+C1UoanLGfh
+	 tJ4yYOy2igaH/XM5he4IGIu29dzIHmAW/qw4OTHPdZwY7TBr07aUDeTWsDeQ3xlf0k
+	 7KSXWXtSvaemg==
 Received: from yukiji.home (unknown [100.64.0.131])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D514717E1502;
-	Wed, 29 Apr 2026 11:59:16 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4297B17E1525;
+	Wed, 29 Apr 2026 11:59:19 +0200 (CEST)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Wed, 29 Apr 2026 11:58:59 +0200
-Subject: [PATCH 1/4] drm/mediatek: mtk_hdmi_ddc_v2: Fix non-static global
- variable
+Date: Wed, 29 Apr 2026 11:59:01 +0200
+Subject: [PATCH 3/4] drm/mediatek: mtk_cec: Fix non-static global variable
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260429-mediatek-drm-fix-sparse-warnings-v1-1-d95c4d118b83@collabora.com>
+Message-Id: <20260429-mediatek-drm-fix-sparse-warnings-v1-3-d95c4d118b83@collabora.com>
 References: <20260429-mediatek-drm-fix-sparse-warnings-v1-0-d95c4d118b83@collabora.com>
 In-Reply-To: <20260429-mediatek-drm-fix-sparse-warnings-v1-0-d95c4d118b83@collabora.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
@@ -61,19 +74,18 @@ To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
- kernel test robot <lkp@intel.com>
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1777456755; l=1276;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1777456755; l=1036;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=LyfP3fNgBZbx3Y7bMZIcMNk42pMyUhQMoz9M6xKuTBU=;
- b=BneHREU+huFw3thbhe7FS2zvw8FvXQGPmcNzalvbNjY2xpbm0QYcyQaHN8eLPMrkSBRDFKtAK
- fnKnQV1qajKAYGBCAB3bRtU7C3/2NLCzmOpIGO1w3sEpRrhpCepm+/o
+ bh=WUlL1O/45PQI6YKuEzmypF/5DpmvpKtJakBpcNDoaiI=;
+ b=iIaunPXI8/mSHHSEdzvELTQBbAki1NTo21lTLhSQyH3syWWXZU8L2UXh0M7PxCJonDtE4B2Ew
+ FqP+UdB/Rc3CVDgbJj6leEDGI9abojfHiwDdeMYGOvxkC50vmbZnV7p
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260429_025920_641030_7B4230A2 
-X-CRM114-Status: GOOD (  13.43  )
+X-CRM114-CacheID: sfid-20260429_105924_635617_82D4EE8A 
+X-CRM114-Status: GOOD (  12.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,35 +100,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The struct 'mtk_hdmi_ddc_v2_driver' is not used outside of the
-mtk_hdmi_ddc_v2.c file, so make it static to silence sparse warning:
+The struct 'mtk_cec_driver' is not used outside of the
+mtk_cec.c file, so make it static to silence sparse warning:
 ```
-drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c:392:24: sparse: warning:
-  symbol 'mtk_hdmi_ddc_v2_driver' was not declared. Should it be
-  static?
+drivers/gpu/drm/mediatek/mtk_cec.c:243:24: sparse: warning: symbol
+'mtk_cec_driver' was not declared. Should it be static?
 ```
 
-Fixes: 8d0f79886273 ("drm/mediatek: Introduce HDMI/DDC v2 for MT8195/MT8188")
-Reported-by: kernel test robot <lkp@intel.com>
-Closes: https://lore.kernel.org/oe-kbuild-all/202604132044.fcYjEcU8-lkp@intel.com/
+Fixes: 1e914a89ab7e ("drm/mediatek: mtk_cec: Switch to register as module_platform_driver")
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c | 2 +-
+ drivers/gpu/drm/mediatek/mtk_cec.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c b/drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c
-index d937219fdb7e..31e81a6de6d8 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c
-@@ -389,7 +389,7 @@ static const struct of_device_id mtk_hdmi_ddc_v2_match[] = {
+diff --git a/drivers/gpu/drm/mediatek/mtk_cec.c b/drivers/gpu/drm/mediatek/mtk_cec.c
+index c7be530ca041..b8ccd6e55bed 100644
+--- a/drivers/gpu/drm/mediatek/mtk_cec.c
++++ b/drivers/gpu/drm/mediatek/mtk_cec.c
+@@ -240,7 +240,7 @@ static const struct of_device_id mtk_cec_of_ids[] = {
  };
- MODULE_DEVICE_TABLE(of, mtk_hdmi_ddc_v2_match);
+ MODULE_DEVICE_TABLE(of, mtk_cec_of_ids);
  
--struct platform_driver mtk_hdmi_ddc_v2_driver = {
-+static struct platform_driver mtk_hdmi_ddc_v2_driver = {
- 	.probe = mtk_hdmi_ddc_v2_probe,
+-struct platform_driver mtk_cec_driver = {
++static struct platform_driver mtk_cec_driver = {
+ 	.probe = mtk_cec_probe,
+ 	.remove = mtk_cec_remove,
  	.driver = {
- 		.name = "mediatek-hdmi-ddc-v2",
 
 -- 
 2.54.0
