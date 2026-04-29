@@ -4,68 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98BF6FF885A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Apr 2026 22:48:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8515BFF885A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2026 03:15:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Xswwtzad7rvDteRWu0qhZE+fNx0Z3gHT3572TPLV83U=; b=fGsYzZp4JLNI6oerLenII5/ZEV
-	MqVA0U+WUSENZw8QQ1ol3U7SvAghsKviCB8iymUOVSrBxe9QekszAS96hVfiUvUPHQFZ9sLGC/s5c
-	dgHAm5EoFsfSIigWMZNrMuj5cF2psNImYzTyxv9vsfTP8QQ1PH5Yx7ztVtFDXRAB5JQD0vlep13Kv
-	HvObr/nWYDgJB848AyrlUxNORhpzTDKuUpP3yh3QdjuhdSERR5UTg5/cwltSEyRyvqKmCrqSRQKAX
-	93RqOy5ak/t/I+I0b7OauBs9AuO9WhO7+zvbJH51YW2Cz6AEW3iuydB865H7T+b5caQVzrCqia2dw
-	AaY+qZSQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=i5BgMUGkEMsFG9ZLf3D3wZ4BkF4xp5R206VdwWcIrhk=; b=UMe1xbGmWsGnGmLQAzUpM6iPte
+	iK9HwGmtlMU5hCA08xNWvm1wQi4wc9m8iDbjepfR5rnQxZw5L6Bf5W2GwU4qbtgeBeqehQrbWSUGs
+	0w5GtZovg9zslOBPZcwGJ7Ddr9k6UrEMX6vCFXhw/f/I5tKxj1bimEUxUieSdiVKI2PuQ+chSYfSR
+	7a4iPGiHcWKggD8YLGdwsmHbGRHPkPpVZQRhJ3nh/MuPkcdwaoPY/ce8XoKr5oGAGffwEsWUroIyu
+	b7/kWrHZr7tQpPZwWf5TbgcSSy+azRgXML5uloonwwd38xWez5eaOu83PF5vw/XdYm/GBTi0sCmLv
+	taLAoE2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHrDt-00000002aFT-2AtP;
-	Tue, 28 Apr 2026 22:48:09 +0000
-Received: from mx3.wp.pl ([212.77.101.10])
+	id 1wHvOT-00000002qNr-3Spv;
+	Wed, 29 Apr 2026 03:15:21 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHrDq-00000002aE7-0CfP
-	for linux-mediatek@lists.infradead.org;
-	Tue, 28 Apr 2026 22:48:07 +0000
-Received: (wp-smtpd smtp.wp.pl 48429 invoked from network); 29 Apr 2026 00:47:59 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wp.pl; s=20241105;
-          t=1777416479; bh=Xswwtzad7rvDteRWu0qhZE+fNx0Z3gHT3572TPLV83U=;
-          h=From:To:Cc:Subject;
-          b=OdOuHSl88j6WGUcECjLjwCpXzlhDihv2yzS4gkGZm7bg9CkgHPjpmcqHV+DuXktSY
-           GUq73+1pNp8Iyvh7mCPqUS8u03QD1fMVjcgd18pxke3aT8IRo2BW67LRB0sMZZhy0C
-           wOFA9zHQgjEAqhqcucjif04KFeV9mpZ1hjAraGL6vQ9HyT2PR4ylUPLiuC0Lzrajt+
-           MrMCMXT8ZFWWFWvKjOJcgWQ16KObem4jTrwIymirCcTIvaDmJkhr8JltZhK43A42LN
-           CAKN/4jlxGQvKw/d++X5LwY4MMvxNbKiH0qTUo39mCeMtivq+yoS+osWLk0gNOxwYP
-           ArGJhwFUaFv5g==
-Received: from 83.24.138.167.ipv4.supernova.orange.pl (HELO abajkowski.lan) (olek2@wp.pl@[83.24.138.167])
-          (envelope-sender <olek2@wp.pl>)
-          by smtp.wp.pl (WP-SMTPD) with TLS_AES_256_GCM_SHA384 encrypted SMTP
-          for <robh@kernel.org>; 29 Apr 2026 00:47:59 +0200
-From: Aleksander Jan Bajkowski <olek2@wp.pl>
-To: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	id 1wHvOS-00000002qNL-087h;
+	Wed, 29 Apr 2026 03:15:20 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 322CE6015B;
+	Wed, 29 Apr 2026 03:15:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 757F4C2BCB7;
+	Wed, 29 Apr 2026 03:15:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1777432518;
+	bh=PqScKcFoPPgpexhKPsSgcvCiB53igOl/DrNGGj6eMVE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=UyoSKuJPYIHp4A95gcJi+VB1NyBhcON/g+p4FYn3wIZho8+01Wz4iTQokfHMVV/CZ
+	 GHMsDPuCBQisRarBORul2isa19te8QbuNqVem/9QZ4y/qRfSQZBu4ayJUEEZnJ1+WG
+	 pXndTlo1kvwJ4vScP0dB7/zpRW71iKpkrdV52gFyUQwsRixdaVD9PoLPENcXiTK12e
+	 BQz3p6FReX0V1HHUPByxTb559LYC9VKUMPjrP4NBHkFztwEYXXTypUgFtGQ2KRn8a/
+	 EDcZ+BJDw5OmkwXm4mjPOkIojnmgEt2qZXiHkoGdBETJAYwJslXffdKJM/JlqRGeNn
+	 Aph20qS6mErUQ==
+Date: Wed, 29 Apr 2026 03:15:15 +0000
+From: Tzung-Bi Shih <tzungbi@kernel.org>
+To: Sergey Senozhatsky <senozhatsky@chromium.org>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>,
+	YC Hung <yc.hung@mediatek.com>, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Cc: Aleksander Jan Bajkowski <olek2@wp.pl>
-Subject: [PATCH v3] arm64: dts: mediatek: add crypto offload support on MT7981
-Date: Wed, 29 Apr 2026 00:47:43 +0200
-Message-ID: <20260428224755.336843-1-olek2@wp.pl>
-X-Mailer: git-send-email 2.53.0
+Subject: Re: [PATCH] mailbox: mtk-adsp: fix UAF during device teardown
+Message-ID: <afF3w2QS8P-8LPMt@google.com>
+References: <20260428025614.1094085-1-senozhatsky@chromium.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-WP-DKIM-Status: good (id: wp.pl)                                                      
-X-WP-MailID: c4c1a66eb78616786b6a9a28261e39cd
-X-WP-AV: skaner antywirusowy Poczty Wirtualnej Polski
-X-WP-SPAM: NO 0000008 [IeuH]                               
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260428_154806_574267_D0221345 
-X-CRM114-Status: UNSURE (   7.10  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <20260428025614.1094085-1-senozhatsky@chromium.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,42 +73,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT7981 as well as the MT7986 have a built-in EIP-97 rev 2.3p0 crypto
-accelerator. This commit adds the missing entry in the dts.
+On Tue, Apr 28, 2026 at 11:55:44AM +0900, Sergey Senozhatsky wrote:
+> When the SOF audio driver fails to initialize (e.g. firmware boot
+> timeout), its devres unwind frees the snd_sof_dev object that the
+> mailbox client (mtk-adsp-ipc) reaches via chan->cl->rx_callback.
+> The mtk-adsp-mailbox shutdown clears the mailbox command registers
+> but leaves the IRQ line unmasked, so a late interrupt can still
+> queue a threaded handler after mbox_free_channel() had cleared
+> chan->cl, and mbox_chan_received_data() would then trigger UAF:
+> 
+>   BUG: KASAN: slab-use-after-free in sof_ipc3_validate_fw_version
+>    sof_ipc3_validate_fw_version
+>    sof_ipc3_do_rx_work
+>    sof_ipc3_rx_msg
+>    mt8196_dsp_handle_request
+>    mtk_adsp_ipc_recv
+>    mbox_chan_received_data
+>    mtk_adsp_mbox_isr
+>    irq_thread_fn
+>   Freed by task ...:
+>    kfree
+>    devres_release_all
+>    really_probe
+>    ... (sof-audio-of-mt8196 probe failure)
+> 
+> The crash was observed roughly three seconds after the failed probe.
+> 
+> disable_irq() in shutdown and enable_irq() in startup. disable_irq()
+> also waits for any in-flight interrupts, so by the time
+> mbox_free_channel() proceeds to clear chan->cl no rx_callback can run.
+> 
+> In addition, request the IRQ with IRQF_NO_AUTOEN so it stays masked
+> between probe and the first client bind — otherwise an early interrupt
+> can crash on chan->cl == NULL in mbox_chan_received_data().
+> 
+> Fixes: af2dfa96c52d ("mailbox: mediatek: add support for adsp mailbox controller")
+> Signed-off-by: Sergey Senozhatsky <senozhatsky@chromium.org>
 
-Signed-off-by: Aleksander Jan Bajkowski <olek2@wp.pl>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt7981b.dtsi | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-index 1bbe219380f9..e63ba3ae395e 100644
---- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-@@ -150,6 +150,21 @@ sgmiisys1: syscon@10070000 {
- 			#clock-cells = <1>;
- 		};
- 
-+		crypto@10320000 {
-+			compatible = "mediatek,mt7981-crypto",
-+				"inside-secure,safexcel-eip97ies";
-+			reg = <0 0x10320000 0 0x40000>;
-+			interrupts = <GIC_SPI 116 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 118 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 119 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-names = "ring0", "ring1", "ring2", "ring3";
-+			clocks = <&topckgen CLK_TOP_EIP97B>;
-+			clock-names = "core";
-+			assigned-clocks = <&topckgen CLK_TOP_EIP97B_SEL>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_CB_NET1_D5>;
-+		};
-+
- 		uart0: serial@11002000 {
- 			compatible = "mediatek,mt7981-uart", "mediatek,mt6577-uart";
- 			reg = <0 0x11002000 0 0x100>;
--- 
-2.53.0
-
+Reviewed-by: Tzung-Bi Shih <tzungbi@kernel.org>
 
