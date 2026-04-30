@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D157CD13D3
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D199CD13DE
 	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2026 16:40:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8LR2nmJ62loXDtxlHutXhsVIE0IN6VZYRDDuR+Lj7rE=; b=pPKlTul3+HMquz8iUaG/7tFB9c
-	s44xDw1lydculgBxE9duayYoVgsz2tsujnF+2M0vSR8ed5jDKoFGv7Ij14EnXSFplTNQmqKLiKw+z
-	wMNSr5X+dR1wARTtdgIiaWDTF6WAHSkRIbs6HZxKs7ypmlqVl1kabodPSpxkamz4dkBonIN7Jsa0Y
-	sBR9qdKimdfA4HX8qDL+tJVHAOYHnH7FgC1XuGksqQvquzfXHYnqIagOdYQI/l3aNRbUePtAFjrVI
-	PlCFW9oOaf7fwB89vB98azIxXpPo4fpsVus1Ey9HmAMGvO3M/ZWXZ0lbJyXRx8Msm7O0nqvbOA60d
-	MX4b61Lg==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Pdm0Q5wvmCn6GgEqOUMjbFnoJ2kFK5BaF9LzslBFdQE=; b=GB3MoAAAwKlX5ozx1JlZ4r4+wW
+	nidBRUjs9LdAj/3zGbl0N8u1LqXejHr6GIXKxFGUQ1ViKx06DSws49qeyXU8MF73PI91rOhr6o/gf
+	7YZeMtEidGJTcB8Ae6z2J8YSRdslFq7Uz4ny0i61KSvnc7CBSiYDZcFm3aEuajRAopDUcMoIYtKLC
+	vg14zn9IBx2qEKoAK50u3riBaec4ns0bhPuFSXo7xB0vfY4vxDgcXjaBbJ17RBtVNO0XP1GyMqYae
+	pygXy7XTGbzH8IhEtpORpOcvkLV9wZWuMhZrdOikv3lhR+cy32nUC3rKkhRQ8UcuA0j0nfo0P+fOe
+	rmwKKRfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wIUQy-00000005k7W-0Nvi;
-	Thu, 30 Apr 2026 16:40:16 +0000
+	id 1wIUQx-00000005k73-2Gv2;
+	Thu, 30 Apr 2026 16:40:15 +0000
 Received: from m16.mail.163.com ([220.197.31.5])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wIUQu-00000005k5K-1u60;
+	id 1wIUQt-00000005k5H-3qoF;
 	Thu, 30 Apr 2026 16:40:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=8L
-	R2nmJ62loXDtxlHutXhsVIE0IN6VZYRDDuR+Lj7rE=; b=dYCPvYtvGlhcQPpKyi
-	69+S6+sI3KzxYSFm1SLj0ihlOiYuQkqwdCRnUuYlp7/EyjE/HOEx8xA8LFWix+mJ
-	P2vDM+TBBFCwIszaC/SckWPh3hRyIiIZvTDGXw4L64gP+7eZha4lIMwFtEIHTshT
-	/D5F6Kiz52GfApUlOjZtE/mTY=
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=Pd
+	m0Q5wvmCn6GgEqOUMjbFnoJ2kFK5BaF9LzslBFdQE=; b=TCAFEOLoYE9t+l126j
+	uiN+UYc+AS0VC7guWxrC55BnHg12MgNlGinScfkU2dxPFg6kHgRKAXeAYuQ7YXvF
+	ObdfoQ+Mlq7+Dmnwf6K9pbFDRuz4m4LvxVzz04WxWWZQvr8RZz3JM8HnkBJza/nD
+	j85BWvzv1qRavZaFLvDOfS7y0=
 Received: from zhb.. (unknown [])
-	by gzga-smtp-mtada-g0-3 (Coremail) with SMTP id _____wDnUmm+hfNptZrZCg--.19910S7;
-	Fri, 01 May 2026 00:39:31 +0800 (CST)
+	by gzga-smtp-mtada-g0-3 (Coremail) with SMTP id _____wDnUmm+hfNptZrZCg--.19910S2;
+	Fri, 01 May 2026 00:39:27 +0800 (CST)
 From: Hans Zhang <18255117159@163.com>
 To: Thinh.Nguyen@synopsys.com,
 	gregkh@linuxfoundation.org,
@@ -53,24 +53,22 @@ Cc: linux-usb@vger.kernel.org,
 	linux-samsung-soc@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Hans Zhang <18255117159@163.com>
-Subject: [PATCH 5/6] usb: xhci-mtk: Use FIELD_MODIFY()
-Date: Fri,  1 May 2026 00:39:18 +0800
-Message-Id: <20260430163919.47372-6-18255117159@163.com>
+Subject: [PATCH 0/6] usb: Use FIELD_MODIFY() for bitfield operations
+Date: Fri,  1 May 2026 00:39:13 +0800
+Message-Id: <20260430163919.47372-1-18255117159@163.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260430163919.47372-1-18255117159@163.com>
-References: <20260430163919.47372-1-18255117159@163.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wDnUmm+hfNptZrZCg--.19910S7
-X-Coremail-Antispam: 1Uf129KBjvdXoWrur17tw4rtFyftFyruw15Arb_yoWfXrg_Cr
-	95Cr1xJas0kwsxCr4DCF15ArWqkrykXw48ZasFqrW3Ka4Utr1Sqryvkry8tFy3ZF4fGrn5
-	GanIgry8Kw4FvjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7sRMTmS3UUUUU==
+X-CM-TRANSID: _____wDnUmm+hfNptZrZCg--.19910S2
+X-Coremail-Antispam: 1Uf129KBjvdXoW7JryfZFyfCF45tw1UWF4rXwb_yoWftrb_AF
+	ykuF4ftw1DWFWakFyUC3savrZ8urWkZrnYvF1vq3W3K3srKr1rXr1vyrW8J3W3ZFW8uF1v
+	qF4DWryS9FZ7AjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7sRKFALPUUUUU==
 X-Originating-IP: [240e:b8f:927e:5900:c497:d540:b00d:97f4]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbC7APojGnzhcPaBgAA3L
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbC7B-ni2nzhb-ZWQAA3-
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260430_094012_864422_819E6E6A 
-X-CRM114-Status: UNSURE (   8.59  )
+X-CRM114-CacheID: sfid-20260430_094012_339446_D0EBCF40 
+X-CRM114-Status: UNSURE (   4.92  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,31 +84,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use FIELD_MODIFY() to remove open-coded bit manipulation.
-No functional change intended.
+Replace open-coded bitfield modifications with the standard FIELD_MODIFY()
+macro across multiple USB drivers (dwc3, xhci, typec). This improves
+readability and adds compile-time checking without functional changes.
 
-Signed-off-by: Hans Zhang <18255117159@163.com>
 ---
- drivers/usb/host/xhci-mtk.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Hi, If the Maintainers think it's not necessary, please ignore it.
+---
 
-diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-index 06043c7c3100..d9b865546a67 100644
---- a/drivers/usb/host/xhci-mtk.c
-+++ b/drivers/usb/host/xhci-mtk.c
-@@ -185,9 +185,9 @@ static void xhci_mtk_rxfifo_depth_set(struct xhci_hcd_mtk *mtk)
- 		return;
- 
- 	value = readl(hcd->regs + HSCH_CFG1);
--	value &= ~SCH3_RXFIFO_DEPTH_MASK;
--	value |= FIELD_PREP(SCH3_RXFIFO_DEPTH_MASK,
--			    SCH_FIFO_TO_KB(mtk->rxfifo_depth) - 1);
-+	FIELD_MODIFY(SCH3_RXFIFO_DEPTH_MASK, &value,
-+		     SCH_FIFO_TO_KB(mtk->rxfifo_depth) - 1);
-+
- 	writel(value, hcd->regs + HSCH_CFG1);
- }
- 
+Hans Zhang (6):
+  usb: dwc3: Use FIELD_MODIFY()
+  usb: dwc3: google: Use FIELD_MODIFY()
+  usb: dwc3: dwc3-octeon: Use FIELD_MODIFY()
+  usb: xhci: Use FIELD_MODIFY()
+  usb: xhci-mtk: Use FIELD_MODIFY()
+  usb: typec: Use FIELD_MODIFY()
+
+ drivers/usb/dwc3/core.c        | 12 ++++--------
+ drivers/usb/dwc3/dwc3-google.c |  5 ++---
+ drivers/usb/dwc3/dwc3-octeon.c | 11 ++++-------
+ drivers/usb/host/xhci-hub.c    |  5 ++---
+ drivers/usb/host/xhci-mtk.c    |  6 +++---
+ drivers/usb/typec/tcpm/tcpci.c | 11 ++++-------
+ 6 files changed, 19 insertions(+), 31 deletions(-)
+
+
+base-commit: 3b3bea6d4b9c162f9e555905d96b8c1da67ecd5b
 -- 
 2.34.1
 
