@@ -4,80 +4,184 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F32ACD13DA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2026 02:25:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E30FFF886F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2026 04:09:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mpAQ9sXpD+4fZDaSdmO/Z5hPnqbSCj0WlNfuwOs0bbI=; b=waxYLXxZ/YVOrBdxcN8JVO8eu7
-	6wqIv5pPl7gYgvFs3zkUQYtMSaev6fxLYowaQHMGfXisI4g+HKt2TYhutMvBCF2WJS2bTwY6IpnHE
-	2Cp1sHAXMP3p7Z/AFZy+bPIXXLItE/sIIuTlb4YPUCmBOpLZ/f4uRQakpwVyVSUj3pNIrG23a6O0s
-	vOSpsO+mSa1eqg/1TcvKjK/XhHai3P0BpKULmPwyG8FXE3OrB/3lCExCzOadF6peiz/ulFZfMdB8O
-	LsqDmyN3/ZgqaBi2gqXdqSKdoBVxp+/9dmnIGcQqVfO45+AkJOoiYktOp3xnBln7F5n6qYKyoNrPa
-	lKFtHcLQ==;
+	bh=J9lpM2zKOAU7l8BBSVrSt8t1dA5xx082noxD7mRAakk=; b=fi8l5soHehiSlc7SU2z5rKI7pj
+	J1OrBq8lMi6UExLBoNCqyu8we6qJaeTiMt5sZHwSkl8yZdh7neyEUzBghmFeF2dOpac8j0T8EpUBB
+	8Qb5vo6ETibk0TqrgeYw/Oa5fPSKh/ZEXhWVeYkhjKpoWcb54+goRTo7imkRFIy92YNntWfSHem95
+	1TqdY5pXWic6Ccq/QJaQmQnRUnBg9kPdqqHRYZ5m+AQXivnSp4B0mXXP/aN8Ec1him9/yyciv3FAV
+	/Uo0sEZJMAsUlMwX/A1MXns3TUnl+jlFRkvsjuMWSuxwpqKtfQzsk0fFXYJvQVRbwVz3cx0modWql
+	m985lCFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wIH5M-00000004ROh-1fYe;
-	Thu, 30 Apr 2026 02:25:04 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1wIIi6-00000004dyD-1wvE;
+	Thu, 30 Apr 2026 04:09:10 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wIH58-00000004R9h-31a4;
-	Thu, 30 Apr 2026 02:24:54 +0000
-X-UUID: bfda96e8443b11f1a6de359d7043e138-20260429
+	id 1wIIi3-00000004dwj-0wbb;
+	Thu, 30 Apr 2026 04:09:08 +0000
+X-UUID: 50f6c6ac444a11f19e7563141e833ce8-20260429
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=mpAQ9sXpD+4fZDaSdmO/Z5hPnqbSCj0WlNfuwOs0bbI=;
-	b=YXdcoiXTyFAdpQh191bjoqe8x33U/QctmoZE0LulwU0DAJs1S9oRRk5R8hinTf2zd7NXUgJS4QasfLYMkW4tA7ADnFnh2m11Ch8T2WyZfarB5k1OCNd35ci/CGxK1CiQSe3MIlHJ0K8fuFGVFah7xG+Bry9FRK2aWqyXQoGq+PY=;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=J9lpM2zKOAU7l8BBSVrSt8t1dA5xx082noxD7mRAakk=;
+	b=aGd5aqaic3nssb1WyM+dcmJt4dAIheldg90hc7uuDQ1Ai/9X8qpqlpSN3EDDFCuXWcAmYeQzx3qpxdtMB2+KVZajLcoNTwt4bpdbunSp/g89A8oAgyitbNGJDVFmoUYJigLWByAhz8VbrxdCEqF6AZ+QcODRqFHDSM5nXFIRPZY=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:6ac0a1d2-f42f-476a-b05c-03126bfb4fed,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:e7bac3a,CLOUDID:deb2ba70-3b7f-4b26-b2f9-40f0deecb36d,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|865|888|898,TC:-5,Cont
-	ent:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:1
-	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.3.12,REQID:b55b85fb-2e63-4381-b066-d72c3f32227e,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:e7bac3a,CLOUDID:11b7a9be-65a8-4b41-ac18-3671578a914d,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111|836|865|888|
+	898,TC:-5,Content:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:ni
+	l,BEC:-1,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: bfda96e8443b11f1a6de359d7043e138-20260429
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
-	(envelope-from <cyril.chao@mediatek.com>)
+X-UUID: 50f6c6ac444a11f19e7563141e833ce8-20260429
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <irui.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 913366453; Wed, 29 Apr 2026 19:24:43 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+	with ESMTP id 1418170644; Wed, 29 Apr 2026 21:09:00 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Thu, 30 Apr 2026 10:24:41 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Thu, 30 Apr 2026 10:24:40 +0800
-From: Cyril Chao <Cyril.Chao@mediatek.com>
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Rob
- Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
- Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>
-CC: <linux-sound@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Cyril Chao <cyril.chao@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Darren Ye
-	<darren.ye@mediatek.com>, Cyril Chao <Cyril.Chao@mediatek.com>
-Subject: [PATCH v9 08/10] ASoC: mediatek: mt8196: add platform driver
-Date: Thu, 30 Apr 2026 10:23:21 +0800
-Message-ID: <20260430022417.32282-9-Cyril.Chao@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20260430022417.32282-1-Cyril.Chao@mediatek.com>
-References: <20260430022417.32282-1-Cyril.Chao@mediatek.com>
+ 15.2.2562.29; Thu, 30 Apr 2026 12:08:57 +0800
+Received: from SG2PR04CU010.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Thu, 30 Apr 2026 12:08:57 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=AHU+VbmxSvMI3GpoMHprmqMtnlZ3l2iGK3B8nWyAvuj19Q3tnyGD79ccALbd+iG5yrURtbi7NYpYCq98xai1dH8ULR+WXNITi+pZ2958AawsK2ROPYOe4hhnpYsnwrdVE7HjFdLh+Pqy+1xDIzqukNe6xVXD0k4cvV08wEeD9ifBNZiPJeS5uZt9tUP5HVKJoGGhKY9ejPDnZIKxu8DBwkf+6AEgXKbcZVrYQs11ChfmrxcIpRPr6KvFG4r3stiXbWj8S7/IzApwUtKaAJ4umwQaO4L6JNoqnxbFesNnfoJZhtC1+I/S8WoY4FI/yiH61ctJs/6ZL2RugDYGGxGEIg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=J9lpM2zKOAU7l8BBSVrSt8t1dA5xx082noxD7mRAakk=;
+ b=VGwnYlpzx9N7kgU2iXPjmqV9gU6aok1qlzswpz0e2BlPxiyvxpxaXOtyjzmNsvDoeGEbEoN4/9HZPYe2odaPk3n8q8lcaYmvlt224Urn7S7wXAeg2PRvVt+MUK2X3qexAVUfwfMMXETcdSmY6I0goMkvzK0T2hQakvbl3UMUBSHdNMtX5RAMiojoH2bJZ7Y5mOv463QJjLced2/PrwAd4V0l0JbUK4UZBb701Rc/OekEKOT5x5Cyhv1k/aO67XxDDN2JfK9Y+3BGI59e5Tmm0rBSNaNuj+J9eiFIVOYiJvkkwj++LuSRAl8Xe9Q/Lv1V+5qsRQy/CL3b0va7Wdlh7g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=J9lpM2zKOAU7l8BBSVrSt8t1dA5xx082noxD7mRAakk=;
+ b=PF9ibTTRhXK7QgrgTh9YXqaGT1/MEH7J10RsB9pmOhtbADnECFrUZtxCyqujqZYkqnxzP5/oxUctU0BNhYyNYXyuCIT07vcm7G5758ZSD+NhwILOT0c+W7D+j7ffwR/39I4+UY/mCxzwTzn7yjZsoqOw3NFxEMGwsgRYzgLixf8=
+Received: from SEZPR03MB7947.apcprd03.prod.outlook.com (2603:1096:101:187::6)
+ by TYZPR03MB8784.apcprd03.prod.outlook.com (2603:1096:405:6f::6) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9870.18; Thu, 30 Apr
+ 2026 04:08:52 +0000
+Received: from SEZPR03MB7947.apcprd03.prod.outlook.com
+ ([fe80::b481:9458:6a7:b356]) by SEZPR03MB7947.apcprd03.prod.outlook.com
+ ([fe80::b481:9458:6a7:b356%3]) with mapi id 15.20.9870.016; Thu, 30 Apr 2026
+ 04:08:51 +0000
+From: =?utf-8?B?SXJ1aSBXYW5nICjnjovnkZ4p?= <Irui.Wang@mediatek.com>
+To: "robh+dt@kernel.org" <robh+dt@kernel.org>,
+	=?utf-8?B?VGlmZmFueSBMaW4gKOael+aFp+ePiik=?= <tiffany.lin@mediatek.com>,
+	"mchehab@kernel.org" <mchehab@kernel.org>, "nicolas.dufresne@collabora.com"
+	<nicolas.dufresne@collabora.com>, =?utf-8?B?S3lyaWUgV3UgKOWQtOaZlyk=?=
+	<Kyrie.Wu@mediatek.com>, "hverkuil-cisco@xs4all.nl"
+	<hverkuil-cisco@xs4all.nl>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	=?utf-8?B?TG9uZ2ZlaSBXYW5nICjnjovpvpnpo54p?= <Longfei.Wang@mediatek.com>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	=?utf-8?B?TWFvZ3VhbmcgTWVuZyAo5a2f5q+b5bm/KQ==?=
+	<Maoguang.Meng@mediatek.com>, =?utf-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?=
+	<Yunfei.Dong@mediatek.com>, Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Subject: Re: [PATCH v6 4/6] media: mediatek: encoder: Add support for VCP
+ encode process
+Thread-Topic: [PATCH v6 4/6] media: mediatek: encoder: Add support for VCP
+ encode process
+Thread-Index: AQHc0vObti38vdpUOEyeS2xGECpCZLX2KtWAgADdW4A=
+Date: Thu, 30 Apr 2026 04:08:51 +0000
+Message-ID: <b23942f5007457ddcd1a0b23e7fc5c3101fd05c7.camel@mediatek.com>
+References: <20260423073345.27402-1-irui.wang@mediatek.com>
+	 <20260423073345.27402-5-irui.wang@mediatek.com>
+	 <62415d732ccaed02bf12a8e68e10ac8d58b87fa9.camel@collabora.com>
+In-Reply-To: <62415d732ccaed02bf12a8e68e10ac8d58b87fa9.camel@collabora.com>
+Accept-Language: zh-CN, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SEZPR03MB7947:EE_|TYZPR03MB8784:EE_
+x-ms-office365-filtering-correlation-id: 721a77cb-bf3c-4921-4b8a-08dea66e2fef
+x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|366016|1800799024|376014|7416014|38070700021|56012099003|22082099003|18002099003;
+x-microsoft-antispam-message-info: 7scy5nTu2FEH3tHRGtfCOhhdVycdThVQqHrLke8DsRFosMTiRDhpcDMslmfJWPMcnpSgpNVWo5Hbq+Qw6PHtnx0LEzCmqEs+6QS+wK2AB8+CI6Tt6+OKs7FOBKJZvUqz/mI8TbV4WxAiar79vuq7vFhNOC5XIFQUzh7OyWpw1/C8Tlg/Z2LTiwRb8zLBhq0hU3fbOQmKFjYLAEpajXR1pUbODjIKrFMIrlRJcRio5CnNgsxsrb/xoTt+qnpi/y8QkW/BZnEuoigrUpUWb0gNd4Vqhm5UzuzUuB6Rh22mcj9ZHZj1XhHquKetH0R0Xui6Hu8c9bWyp63jwDAG81lyoTAvOnBmYovF8nA+N9+Qfa/6wUcKLzhJ67yaJE1w3fOWGIFE03msakJOJoediZh2WPCVG1bCMavWsBj2RQ5RHnhcRn54Qjmc6pLiRb7cfppe4cLwDv3Z9+qOheZQmfcVswFZ2qaIzdaXCWhQi06HAQmhUG8VgYh93mEa6kg4HlVWsOsqoRZtP/zmiqWNzqwdOnTHQlQAQ2xf7cShxtA8d2LiBwhdE8zsgjsd6miju1B9LjRTwLBYy7yIJ3Lrr97BMI97got/DEn+XO7DWMELvIrCC5UJxt1lDjv2HkPufmMetUUZVw77mKDzalzrOS9kuTkr2bkEop9SGTjGzNTA25UU041LMYQwskmHEJp9ERrbtnOpuUXTmckndwaxvuQOSPzU8m/yZm/Ej9Myb6yUHSFaBiqaJeL3WGnFy7Rfw4fBuGK2MK/eW1lt5ocQmdsz3+jXAoa5M4acTMU5Wo1Rtmk=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR03MB7947.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(376014)(7416014)(38070700021)(56012099003)(22082099003)(18002099003);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?ZVQ2ek9WSVdmdGpqRTFrQ3h5Zk1pUDFGU0lzYTJTU0djOFJCdEcrTXp3YWZW?=
+ =?utf-8?B?TzNja0hoK25YMk9HcEh3eTN4aG0xbXFUdEJUaEFHbS9jS3NLa1lHMGlHZ1J2?=
+ =?utf-8?B?RWc2UmE1Q0JYMGVPRXV2ZHkzYWJLUGM5WDNjWitHZGFBSVVEMEFFTUE4US9s?=
+ =?utf-8?B?TnIydlBoWDl3dmdNL0orM0lOWnlwc3N5amZlclBYdUFUY2g0cFdsVUZ3UjB0?=
+ =?utf-8?B?OG1tSkh2SjZsTGgvYUR4TkY0S2kyYzVsa0N2eVV0U0ZSZVBsc0tabHNQTkpw?=
+ =?utf-8?B?anZwZTVTOCt5cTc0V0p4TVh4aFBnbVJ6SXNHcXpFQXkyK0JEQVA2S1VQMHVx?=
+ =?utf-8?B?YWQ4MGJ2MllBaHVBRTZBUzlJU1Y2T2VTN3l2R0doL016bWhlZDJvbG4zWkNs?=
+ =?utf-8?B?Z25lakhZR203TnJtYVY2aXc1aWUrdTJ3cmExL3I4Mk5uZkdUS1l5YUZCcFBD?=
+ =?utf-8?B?ZEZES2l0K0Z5dFh1MDlaT2o1RHRwcGlKSmN5clBvK0o3Q1E0cGN1TmxYbjgw?=
+ =?utf-8?B?c2tFN1gwLzVyV2pyYk8yRFJjWUhXRUx5Lzc5anNRQVZmanUwU3pqT2dZNEpy?=
+ =?utf-8?B?VGxXTnZKNlRIMDV6QUhCNmFUTXJpZys3bkVzZmo4RU1VSmgxZkNSWlpBMUdy?=
+ =?utf-8?B?MjNzaVpQdFdCSGwvbWM3K0FQdHBOTEVkR29JMDRsZVRZVDZMY0Y0c1NndE9P?=
+ =?utf-8?B?cXhaOERIVlZOS1lsRTNFR1RHd0RSOHU4eVh6NmJVeGh6blhMUHYwQkRZVm9H?=
+ =?utf-8?B?Zk1MOExyMURUVElNa3VobHBKeVZZcGV3cFdTTTQ0SHBMT29sVkdydGFURDJJ?=
+ =?utf-8?B?TUhBdldtSE9CWVpWeThlSE1CVmhwNTF5UmVhNXFlbXhZVHJGVkdHUllpcmIx?=
+ =?utf-8?B?Z1k4c2dqNWJIb2hDdG5DRVQxb0ZhTUwrMGY3dUdyYnpvWTVIalhXOEtvdlQy?=
+ =?utf-8?B?dlowTEpucWxxdlFhZVFyQmdncVFkK0lwNkVkQXJFQm11VkM4c3RIbDRnTVlp?=
+ =?utf-8?B?TlRyeEJaUXRPcVhBS1Q2Zlgwd3Z1QnowYmdjWGwwZ3hKTUp1YVpBbVhwMTNX?=
+ =?utf-8?B?RVJoMWtSbzVmeGRyQ25RVFgxUFNxNkxhZlFZeDlTV09YMEIyMDJYYWJCZ3ZV?=
+ =?utf-8?B?QllCdlBodWQzRTEyUC84QnJrTWNXaGFyVENpYzdweDNFUWdGTS8rV01LS3JC?=
+ =?utf-8?B?cUo3MVpWaVRmVCt6Y3k1U09qc09hUS9JaTE1YlpVeTZFekFoYnFMY3ZoaTQ3?=
+ =?utf-8?B?OHV5N2pMWldZZ0FTRTArN1gwbFVlVXJ0aTJpZkFiUzVHVlJPcnZZTzlrazQ4?=
+ =?utf-8?B?bEhFV2hkMUk2aTBvdXJPSzY3YW5aZmhiOW1RdUIvMFE3WnZwYWE0YzZBVnRh?=
+ =?utf-8?B?NWUvQndJdkhGT0oyMks5dnB5ZDVFS1RGZldoc3ZXQTJrRmtSQ2h0SzhlTllx?=
+ =?utf-8?B?QzZsaGJpQmRzN21TT1J1a1VLYmVxaG9yWjJWeEZzejh4Wml2Nzl6OWFkMUpT?=
+ =?utf-8?B?eGhmajdEQlNKalFhNXoySFRxQlo3SHVqT1cvd0pwc0JjMm5QVFFtZGNPd1Vx?=
+ =?utf-8?B?bWkvTTNZMi9GLzUveFJMcUluYjdDcjZaQXVibUxzR2VHSWpMWkJaUnYzeUVq?=
+ =?utf-8?B?MzhKckI5NFRPbUk5a0did08vaTkybGtQcmRHZUdhQ0taaC8rLzdVSDh2b2J6?=
+ =?utf-8?B?TGJhcXNzWDZLNkpyZ1ZpVms5c3hYMDR2aFBpb2JyRlRtRy9BRkF6dzI1LzFX?=
+ =?utf-8?B?RFlrYzdKVnVTLzlUUEoxZWZHZE14YnhJSmU5MXdNbGhuK09CRXg3TVc5cmdW?=
+ =?utf-8?B?K0hYU3pmalo5cUdMeVJyekIvamlYRmlSM2c0WlZoK0E4ZXF0LzA4anNSRDRY?=
+ =?utf-8?B?WDJmSWRpclpvaHh1bzdGOVFONUlENGdXcWFuSFRYOHN5Q1Zrb0ZpM3QraFBR?=
+ =?utf-8?B?eHBKdUREUWIxdnVraktmdVVCS2VQM3owUE1VMTRqeWlyc1B1elNXQ0JCZzZj?=
+ =?utf-8?B?Zm9pVnhmbzhsQ3JRRDhkdlJvUy9mVmtuck8rMFNQWkUyWk9wMkplYWorYWc4?=
+ =?utf-8?B?TXJSTThLeFhZTFZyWnEzUm5GdHgrZGI5RjBtK1A2WkZOWWhPdEREWEtqb09m?=
+ =?utf-8?B?OWd5clpRV01wM1F4eVJuTDVSNXNNWDdha0JCZUE1cmdHQkJmK1pnZGwrSitr?=
+ =?utf-8?B?K20rQjN5TWdVT1dTZ3RlYTJSYlRJajVoSEVXakRsZVZDTlFaZ3MwdW9saFk2?=
+ =?utf-8?B?eXdBaU05QkxuRXIxemJyVUZaTlIvSU9SbjZpRkRxMTJkMWN3bnUxQVhsUVdC?=
+ =?utf-8?B?em8yTzF1RmJqbmU3cVE1YmRiL0taejdIcDlvcmRlMUVTdCtKN1NXUT09?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <FE25C54C7D2FA0448A35737582C5B63D@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+X-Exchange-RoutingPolicyChecked: QmZbzDHrHpkneNLr2GXljfSn8sTCrpfA47bxNRIsM8OHQkFch4V2Ol3YjDDp3lWZ3kCv/vnoTVpZkCpvjodGUVOxEs2nEFJTCulgsZjDNhhVBQn2+QtL/wp9CLY/Yp3Ue5cFuQJq0BaawD8j5/ecr5OJA7KGtIIaBa+UiSapXVvrMg5qGiw5a/V2gilRGNT5ghEnBv2pNWxD0VWuJXUk8CViog29wnRc6ZNOBHXCfc8rdIRVMHuI+XUqlq/y/HcK/Z6jSpeMCUZdlPo45I32EmZhQVE9Pd/f+e8K5oLmmyJnUZ+fjGaWtSg3rsJtBijeFGAc0m2ls8uU6czWOUhVcg==
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR03MB7947.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 721a77cb-bf3c-4921-4b8a-08dea66e2fef
+X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Apr 2026 04:08:51.3693
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: mIpx+jXVcT/uZE6K/Pf1ZYouzIUNcFrj0N2wzBJCbURWtpMaUQXxHtwo6zWswpzsM7SVACmcDWmMj0EJHkqZ0g==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB8784
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260429_192452_115374_3F90F679 
-X-CRM114-Status: GOOD (  26.02  )
+X-CRM114-CacheID: sfid-20260429_210907_291435_41A15495 
+X-CRM114-Status: GOOD (  17.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,2577 +196,180 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Darren Ye <darren.ye@mediatek.com>
-
-Add mt8196 platform driver.
-
-Signed-off-by: Darren Ye <darren.ye@mediatek.com>
-Signed-off-by: Cyril Chao <Cyril.Chao@mediatek.com>
----
- sound/soc/mediatek/Kconfig                 |   10 +
- sound/soc/mediatek/Makefile                |    1 +
- sound/soc/mediatek/mt8196/Makefile         |   12 +
- sound/soc/mediatek/mt8196/mt8196-afe-pcm.c | 2503 ++++++++++++++++++++
- 4 files changed, 2526 insertions(+)
- create mode 100644 sound/soc/mediatek/mt8196/Makefile
- create mode 100644 sound/soc/mediatek/mt8196/mt8196-afe-pcm.c
-
-diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
-index 3a1e1fa3fe5c..dc41e5860eb0 100644
---- a/sound/soc/mediatek/Kconfig
-+++ b/sound/soc/mediatek/Kconfig
-@@ -353,4 +353,14 @@ config SND_SOC_MT8365_MT6357
- 	  Select Y if you have such device.
- 	  If unsure select "N".
- 
-+config SND_SOC_MT8196
-+	tristate "ASoC support for Mediatek MT8196 chip"
-+	depends on ARCH_MEDIATEK
-+	select SND_SOC_MEDIATEK
-+	help
-+	  This adds ASoC driver for Mediatek MT8196 boards
-+	  that can be used with other codecs.
-+	  Select Y if you have such device.
-+	  If unsure select "N".
-+
- endmenu
-diff --git a/sound/soc/mediatek/Makefile b/sound/soc/mediatek/Makefile
-index 7cd67bce92e9..a6815a3c5988 100644
---- a/sound/soc/mediatek/Makefile
-+++ b/sound/soc/mediatek/Makefile
-@@ -11,3 +11,4 @@ obj-$(CONFIG_SND_SOC_MT8192) += mt8192/
- obj-$(CONFIG_SND_SOC_MT8195) += mt8195/
- obj-$(CONFIG_SND_SOC_MT8365) += mt8365/
- obj-$(CONFIG_SND_SOC_MT8189) += mt8189/
-+obj-$(CONFIG_SND_SOC_MT8196) += mt8196/
-diff --git a/sound/soc/mediatek/mt8196/Makefile b/sound/soc/mediatek/mt8196/Makefile
-new file mode 100644
-index 000000000000..0c6a018190a2
---- /dev/null
-+++ b/sound/soc/mediatek/mt8196/Makefile
-@@ -0,0 +1,12 @@
-+# SPDX-License-Identifier: GPL-2.0
-+
-+# platform driver
-+snd-soc-mt8196-afe-objs += \
-+	mt8196-afe-pcm.o \
-+	mt8196-afe-clk.o \
-+	mt8196-dai-adda.o \
-+	mt8196-dai-i2s.o \
-+	mt8196-dai-tdm.o
-+
-+obj-$(CONFIG_SND_SOC_MT8196) += snd-soc-mt8196-afe.o
-+
-diff --git a/sound/soc/mediatek/mt8196/mt8196-afe-pcm.c b/sound/soc/mediatek/mt8196/mt8196-afe-pcm.c
-new file mode 100644
-index 000000000000..511e888567be
---- /dev/null
-+++ b/sound/soc/mediatek/mt8196/mt8196-afe-pcm.c
-@@ -0,0 +1,2503 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ *  Mediatek ALSA SoC AFE platform driver for 8196
-+ *
-+ *  Copyright (c) 2025 MediaTek Inc.
-+ *  Author: Darren Ye <darren.ye@mediatek.com>
-+ */
-+
-+#include <linux/delay.h>
-+#include <linux/dma-mapping.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/of_address.h>
-+#include <linux/of_device.h>
-+#include <linux/of_reserved_mem.h>
-+#include <linux/pm_runtime.h>
-+#include <linux/regmap.h>
-+
-+#include <sound/pcm.h>
-+#include <sound/soc.h>
-+
-+#include "mt8196-afe-clk.h"
-+#include "mt8196-afe-common.h"
-+#include "mt8196-interconnection.h"
-+
-+#include "../common/mtk-afe-fe-dai.h"
-+#include "../common/mtk-afe-platform-driver.h"
-+
-+static const struct snd_pcm_hardware mt8196_afe_hardware = {
-+	.info = (SNDRV_PCM_INFO_MMAP |
-+		 SNDRV_PCM_INFO_NO_PERIOD_WAKEUP |
-+		 SNDRV_PCM_INFO_INTERLEAVED |
-+		 SNDRV_PCM_INFO_MMAP_VALID),
-+	.formats = (SNDRV_PCM_FMTBIT_S16_LE |
-+		    SNDRV_PCM_FMTBIT_S24_LE |
-+		    SNDRV_PCM_FMTBIT_S32_LE),
-+	.period_bytes_min = 96,
-+	.period_bytes_max = 4 * 48 * 1024,
-+	.periods_min = 2,
-+	.periods_max = 256,
-+	.buffer_bytes_max = 256 * 1024,
-+	.fifo_size = 0,
-+};
-+
-+static unsigned int mt8196_rate_transform(struct device *dev,
-+					  unsigned int rate)
-+{
-+	switch (rate) {
-+	case 8000:
-+		return MTK_AFE_IPM2P0_RATE_8K;
-+	case 11025:
-+		return MTK_AFE_IPM2P0_RATE_11K;
-+	case 12000:
-+		return MTK_AFE_IPM2P0_RATE_12K;
-+	case 16000:
-+		return MTK_AFE_IPM2P0_RATE_16K;
-+	case 22050:
-+		return MTK_AFE_IPM2P0_RATE_22K;
-+	case 24000:
-+		return MTK_AFE_IPM2P0_RATE_24K;
-+	case 32000:
-+		return MTK_AFE_IPM2P0_RATE_32K;
-+	case 44100:
-+		return MTK_AFE_IPM2P0_RATE_44K;
-+	case 48000:
-+		return MTK_AFE_IPM2P0_RATE_48K;
-+	case 88200:
-+		return MTK_AFE_IPM2P0_RATE_88K;
-+	case 96000:
-+		return MTK_AFE_IPM2P0_RATE_96K;
-+	case 176400:
-+		return MTK_AFE_IPM2P0_RATE_176K;
-+	case 192000:
-+		return MTK_AFE_IPM2P0_RATE_192K;
-+	/* not support 260K */
-+	case 352800:
-+		return MTK_AFE_IPM2P0_RATE_352K;
-+	case 384000:
-+		return MTK_AFE_IPM2P0_RATE_384K;
-+	default:
-+		dev_err(dev, "rate %u invalid, use %d!!!\n",
-+			rate, MTK_AFE_IPM2P0_RATE_48K);
-+		return MTK_AFE_IPM2P0_RATE_48K;
-+	}
-+}
-+
-+static int mt8196_set_cm(struct mtk_base_afe *afe, int id,
-+			 bool update, bool swap, unsigned int ch)
-+{
-+	struct mt8196_afe_private *afe_priv = afe->platform_priv;
-+	unsigned int rate = afe_priv->cm_rate[id];
-+	unsigned int rate_val = mt8196_rate_transform(afe->dev, rate);
-+	unsigned int ch_pair = ch / 2;
-+	unsigned int update_val;
-+	int reg = AFE_CM0_CON0 + 0x10 * id;
-+
-+	if (update && ch_pair)
-+		update_val = (26000000 / rate - 10) / ch_pair - 1;
-+	else
-+		update_val = 0x64;
-+
-+	dev_dbg(afe->dev, "CM%d, rate %d, update %d, swap %d, ch %d, update_val: %d\n",
-+		id, rate, update, swap, ch, update_val);
-+
-+	/* update cnt */
-+	regmap_update_bits(afe->regmap, reg,
-+			   AFE_CM_UPDATE_CNT_MASK << AFE_CM_UPDATE_CNT_SFT,
-+			   update_val << AFE_CM_UPDATE_CNT_SFT);
-+
-+	/* rate */
-+	regmap_update_bits(afe->regmap, reg,
-+			   AFE_CM_1X_EN_SEL_FS_MASK << AFE_CM_1X_EN_SEL_FS_SFT,
-+			   rate_val << AFE_CM_1X_EN_SEL_FS_SFT);
-+
-+	/* ch num */
-+	ch = ch - 1;
-+	regmap_update_bits(afe->regmap, reg,
-+			   AFE_CM_CH_NUM_MASK << AFE_CM_CH_NUM_SFT,
-+			   ch << AFE_CM_CH_NUM_SFT);
-+
-+	/* swap */
-+	regmap_update_bits(afe->regmap, reg,
-+			   AFE_CM_BYTE_SWAP_MASK << AFE_CM_BYTE_SWAP_SFT,
-+			   swap << AFE_CM_BYTE_SWAP_SFT);
-+
-+	return 0;
-+}
-+
-+static int mt8196_enable_cm_bypass(struct mtk_base_afe *afe, int id, bool en)
-+{
-+	return regmap_update_bits(afe->regmap,
-+				  AFE_CM0_CON0 + 0x10 * id,
-+				  AFE_CM_BYPASS_MODE_MASK << AFE_CM_BYPASS_MODE_SFT,
-+				  en << AFE_CM_BYPASS_MODE_SFT);
-+}
-+
-+static int mt8196_fe_startup(struct snd_pcm_substream *substream,
-+			     struct snd_soc_dai *dai)
-+{
-+	struct snd_soc_pcm_runtime *rtd = snd_soc_substream_to_rtd(substream);
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+	struct snd_pcm_runtime *runtime = substream->runtime;
-+	struct snd_soc_dai *cpu_dai = snd_soc_rtd_to_cpu(rtd, 0);
-+	int memif_num = cpu_dai->id;
-+	struct mtk_base_afe_memif *memif = &afe->memif[memif_num];
-+	const struct snd_pcm_hardware *mtk_afe_hardware = afe->mtk_afe_hardware;
-+	int ret;
-+
-+	dev_dbg(afe->dev, "memif_num: %d.\n", memif_num);
-+
-+	memif->substream = substream;
-+
-+	snd_pcm_hw_constraint_step(substream->runtime, 0,
-+				   SNDRV_PCM_HW_PARAM_BUFFER_BYTES, 16);
-+
-+	if (memif_num == MT8196_MEMIF_VUL_CM0)
-+		snd_pcm_hw_constraint_step(substream->runtime, 0,
-+					   SNDRV_PCM_HW_PARAM_PERIOD_BYTES, 16);
-+
-+	snd_soc_set_runtime_hwparams(substream, mtk_afe_hardware);
-+
-+	ret = snd_pcm_hw_constraint_integer(runtime,
-+					    SNDRV_PCM_HW_PARAM_PERIODS);
-+	if (ret < 0)
-+		dev_warn(afe->dev, "snd_pcm_hw_constraint_integer failed\n");
-+
-+	/* dynamic allocate irq to memif */
-+	if (memif->irq_usage < 0) {
-+		int irq_id = mtk_dynamic_irq_acquire(afe);
-+
-+		if (irq_id != afe->irqs_size) {
-+			/* link */
-+			memif->irq_usage = irq_id;
-+		} else {
-+			dev_err(afe->dev, "no more asys irq\n");
-+			ret = -EBUSY;
-+		}
-+	}
-+	return ret;
-+}
-+
-+static void mt8196_fe_shutdown(struct snd_pcm_substream *substream,
-+			       struct snd_soc_dai *dai)
-+{
-+	struct snd_soc_pcm_runtime *rtd = snd_soc_substream_to_rtd(substream);
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+	struct snd_soc_dai *cpu_dai = snd_soc_rtd_to_cpu(rtd, 0);
-+	int memif_num = cpu_dai->id;
-+	struct mtk_base_afe_memif *memif = &afe->memif[memif_num];
-+	int irq_id = memif->irq_usage;
-+
-+	dev_dbg(afe->dev, "memif_num: %d.\n", memif_num);
-+
-+	memif->substream = NULL;
-+
-+	if (!memif->const_irq) {
-+		mtk_dynamic_irq_release(afe, irq_id);
-+		memif->irq_usage = -1;
-+		memif->substream = NULL;
-+	}
-+}
-+
-+static int mt8196_fe_hw_params(struct snd_pcm_substream *substream,
-+			       struct snd_pcm_hw_params *params,
-+			       struct snd_soc_dai *dai)
-+{
-+	struct snd_soc_pcm_runtime *rtd = snd_soc_substream_to_rtd(substream);
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+	unsigned int channels = params_channels(params);
-+	struct mt8196_afe_private *afe_priv = afe->platform_priv;
-+	int id = snd_soc_rtd_to_cpu(rtd, 0)->id;
-+	struct mtk_base_afe_memif *memif = &afe->memif[id];
-+	const struct mtk_base_memif_data *data = memif->data;
-+	int cm;
-+
-+	afe_priv->cm_channels = channels;
-+
-+	/* set channels */
-+	if (data->ch_num_shift >= 0) {
-+		regmap_update_bits(afe->regmap, data->ch_num_reg,
-+				   data->ch_num_maskbit << data->ch_num_shift,
-+				   channels << data->ch_num_shift);
-+	}
-+
-+	switch (id) {
-+	case MT8196_MEMIF_VUL8:
-+	case MT8196_MEMIF_VUL_CM0:
-+		cm = CM0;
-+		break;
-+	case MT8196_MEMIF_VUL9:
-+	case MT8196_MEMIF_VUL_CM1:
-+		cm = CM1;
-+		break;
-+	case MT8196_MEMIF_VUL10:
-+	case MT8196_MEMIF_VUL_CM2:
-+		cm = CM2;
-+		break;
-+	default:
-+		cm = CM0;
-+		break;
-+	}
-+
-+	afe_priv->cm_rate[cm] = params_rate(params);
-+
-+	return mtk_afe_fe_hw_params(substream, params, dai);
-+}
-+
-+static int mt8196_fe_trigger(struct snd_pcm_substream *substream, int cmd,
-+			     struct snd_soc_dai *dai)
-+{
-+	struct snd_soc_pcm_runtime *rtd = snd_soc_substream_to_rtd(substream);
-+	struct snd_pcm_runtime *const runtime = substream->runtime;
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+	int id = snd_soc_rtd_to_cpu(rtd, 0)->id;
-+	struct mtk_base_afe_memif *memif = &afe->memif[id];
-+	int irq_id = memif->irq_usage;
-+	struct mtk_base_afe_irq *irqs = &afe->irqs[irq_id];
-+	const struct mtk_base_irq_data *irq_data = irqs->irq_data;
-+	unsigned int counter = runtime->period_size;
-+	unsigned int rate = runtime->rate;
-+	unsigned int tmp_reg;
-+	int fs;
-+	int ret;
-+
-+	dev_dbg(afe->dev, "%s cmd %d, irq_id %d\n", memif->data->name, cmd, irq_id);
-+
-+	switch (cmd) {
-+	case SNDRV_PCM_TRIGGER_START:
-+	case SNDRV_PCM_TRIGGER_RESUME:
-+		dev_dbg(afe->dev, "%s cmd %d, id %d\n", memif->data->name, cmd, id);
-+
-+		ret = mtk_memif_set_enable(afe, id);
-+		if (ret) {
-+			dev_err(afe->dev, "id %d, memif enable fail.\n", id);
-+			return ret;
-+		}
-+
-+		/*
-+		 * for small latency record
-+		 * ul memif need read some data before irq enable.
-+		 * the context of this ops triger is atmoic, so it cannot sleep.
-+		 */
-+		if (substream->stream == SNDRV_PCM_STREAM_CAPTURE)
-+			if ((runtime->period_size * 1000) / rate <= 10)
-+				udelay(300);
-+
-+		regmap_update_bits(afe->regmap,
-+				   irq_data->irq_cnt_reg,
-+				   irq_data->irq_cnt_maskbit << irq_data->irq_cnt_shift,
-+				   counter << irq_data->irq_cnt_shift);
-+
-+		/* set irq fs */
-+		fs = afe->irq_fs(substream, rate);
-+		if (fs < 0)
-+			return -EINVAL;
-+
-+		if (irq_data->irq_fs_reg >= 0)
-+			regmap_update_bits(afe->regmap,
-+					   irq_data->irq_fs_reg,
-+					   irq_data->irq_fs_maskbit << irq_data->irq_fs_shift,
-+					   fs << irq_data->irq_fs_shift);
-+
-+		/* enable interrupt */
-+		regmap_update_bits(afe->regmap,
-+				   irq_data->irq_en_reg,
-+				   1 << irq_data->irq_en_shift,
-+				   1 << irq_data->irq_en_shift);
-+
-+		return 0;
-+	case SNDRV_PCM_TRIGGER_STOP:
-+	case SNDRV_PCM_TRIGGER_SUSPEND:
-+		ret = mtk_memif_set_disable(afe, id);
-+		if (ret)
-+			dev_warn(afe->dev, "id %d, memif disable fail\n", id);
-+
-+		/* disable interrupt */
-+		regmap_update_bits(afe->regmap,
-+				   irq_data->irq_en_reg,
-+				   1 << irq_data->irq_en_shift,
-+				   0 << irq_data->irq_en_shift);
-+
-+		/*
-+		 * clear pending IRQ, if the register read as one, there is no need to write
-+		 * one to clear operaton.
-+		 */
-+		regmap_read(afe->regmap, irq_data->irq_clr_reg, &tmp_reg);
-+		regmap_update_bits(afe->regmap, irq_data->irq_clr_reg,
-+				   AFE_IRQ_CLR_CFG_MASK_SFT | AFE_IRQ_MISS_FLAG_CLR_CFG_MASK_SFT,
-+				   tmp_reg ^ (AFE_IRQ_CLR_CFG_MASK_SFT |
-+				   AFE_IRQ_MISS_FLAG_CLR_CFG_MASK_SFT));
-+
-+		return ret;
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+
-+static int mt8196_memif_fs(struct snd_pcm_substream *substream,
-+			   unsigned int rate)
-+{
-+	struct snd_soc_pcm_runtime *rtd = snd_soc_substream_to_rtd(substream);
-+	struct snd_soc_component *component =
-+		snd_soc_rtdcom_lookup(rtd, AFE_PCM_NAME);
-+	struct mtk_base_afe *afe = NULL;
-+	unsigned int rate_reg;
-+
-+	if (!component)
-+		return -EINVAL;
-+
-+	afe = snd_soc_component_get_drvdata(component);
-+	if (!afe)
-+		return -EINVAL;
-+
-+	rate_reg = mt8196_rate_transform(afe->dev, rate);
-+
-+	return rate_reg;
-+}
-+
-+static int mt8196_get_dai_fs(struct mtk_base_afe *afe,
-+			     int dai_id, unsigned int rate)
-+{
-+	return mt8196_rate_transform(afe->dev, rate);
-+}
-+
-+static int mt8196_irq_fs(struct snd_pcm_substream *substream, unsigned int rate)
-+{
-+	struct snd_soc_pcm_runtime *rtd = snd_soc_substream_to_rtd(substream);
-+	struct snd_soc_component *component =
-+		snd_soc_rtdcom_lookup(rtd, AFE_PCM_NAME);
-+	struct mtk_base_afe *afe = NULL;
-+
-+	if (!component)
-+		return -EINVAL;
-+	afe = snd_soc_component_get_drvdata(component);
-+	return mt8196_rate_transform(afe->dev, rate);
-+}
-+
-+static int mt8196_get_memif_pbuf_size(struct snd_pcm_substream *substream)
-+{
-+	struct snd_pcm_runtime *runtime = substream->runtime;
-+
-+	if ((runtime->period_size * 1000) / runtime->rate > 10)
-+		return MT8196_MEMIF_PBUF_SIZE_256_BYTES;
-+	else
-+		return MT8196_MEMIF_PBUF_SIZE_32_BYTES;
-+}
-+
-+/* FE DAIs */
-+static const struct snd_soc_dai_ops mt8196_memif_dai_ops = {
-+	.startup        = mt8196_fe_startup,
-+	.shutdown       = mt8196_fe_shutdown,
-+	.hw_params      = mt8196_fe_hw_params,
-+	.hw_free        = mtk_afe_fe_hw_free,
-+	.prepare        = mtk_afe_fe_prepare,
-+	.trigger        = mt8196_fe_trigger,
-+};
-+
-+#define MTK_PCM_RATES (SNDRV_PCM_RATE_8000_48000 |\
-+		       SNDRV_PCM_RATE_88200 |\
-+		       SNDRV_PCM_RATE_96000 |\
-+		       SNDRV_PCM_RATE_176400 |\
-+		       SNDRV_PCM_RATE_192000)
-+
-+#define MTK_PCM_DAI_RATES (SNDRV_PCM_RATE_8000 |\
-+			   SNDRV_PCM_RATE_16000 |\
-+			   SNDRV_PCM_RATE_32000 |\
-+			   SNDRV_PCM_RATE_48000)
-+
-+#define MTK_PCM_FORMATS (SNDRV_PCM_FMTBIT_S16_LE |\
-+			 SNDRV_PCM_FMTBIT_S24_LE |\
-+			 SNDRV_PCM_FMTBIT_S32_LE)
-+
-+#define MT8196_FE_DAI(_name, _id, max_ch, dir) \
-+{ \
-+	.name = #_name, \
-+	.id = _id, \
-+	.dir = { \
-+		.stream_name = #_name, \
-+		.channels_min = 1, \
-+		.channels_max = max_ch, \
-+		.rates = MTK_PCM_RATES, \
-+		.formats = MTK_PCM_FORMATS, \
-+	}, \
-+	.ops = &mt8196_memif_dai_ops, \
-+}
-+
-+static struct snd_soc_dai_driver mt8196_memif_dai_driver[] = {
-+	/* FE DAIs: memory intefaces to CPU */
-+	/* Playback */
-+	MT8196_FE_DAI(DL0, MT8196_MEMIF_DL0, 2, playback),
-+	MT8196_FE_DAI(DL1, MT8196_MEMIF_DL1, 2, playback),
-+	MT8196_FE_DAI(DL2, MT8196_MEMIF_DL2, 2, playback),
-+	MT8196_FE_DAI(DL3, MT8196_MEMIF_DL3, 2, playback),
-+	MT8196_FE_DAI(DL4, MT8196_MEMIF_DL4, 2, playback),
-+	MT8196_FE_DAI(DL5, MT8196_MEMIF_DL5, 2, playback),
-+	MT8196_FE_DAI(DL6, MT8196_MEMIF_DL6, 2, playback),
-+	MT8196_FE_DAI(DL7, MT8196_MEMIF_DL7, 2, playback),
-+	MT8196_FE_DAI(DL8, MT8196_MEMIF_DL8, 2, playback),
-+	MT8196_FE_DAI(DL23, MT8196_MEMIF_DL23, 2, playback),
-+	MT8196_FE_DAI(DL24, MT8196_MEMIF_DL24, 2, playback),
-+	MT8196_FE_DAI(DL25, MT8196_MEMIF_DL25, 2, playback),
-+	MT8196_FE_DAI(DL26, MT8196_MEMIF_DL26, 2, playback),
-+	MT8196_FE_DAI(DL_4CH, MT8196_MEMIF_DL_4CH, 4, playback),
-+	MT8196_FE_DAI(DL_24CH, MT8196_MEMIF_DL_24CH, 8, playback),
-+	MT8196_FE_DAI(HDMI, MT8196_MEMIF_HDMI, 8, playback),
-+	/* Capture */
-+	MT8196_FE_DAI(UL0, MT8196_MEMIF_VUL0, 2, capture),
-+	MT8196_FE_DAI(UL1, MT8196_MEMIF_VUL1, 2, capture),
-+	MT8196_FE_DAI(UL2, MT8196_MEMIF_VUL2, 2, capture),
-+	MT8196_FE_DAI(UL3, MT8196_MEMIF_VUL3, 2, capture),
-+	MT8196_FE_DAI(UL4, MT8196_MEMIF_VUL4, 2, capture),
-+	MT8196_FE_DAI(UL5, MT8196_MEMIF_VUL5, 2, capture),
-+	MT8196_FE_DAI(UL6, MT8196_MEMIF_VUL6, 2, capture),
-+	MT8196_FE_DAI(UL7, MT8196_MEMIF_VUL7, 2, capture),
-+	MT8196_FE_DAI(UL8, MT8196_MEMIF_VUL8, 2, capture),
-+	MT8196_FE_DAI(UL9, MT8196_MEMIF_VUL9, 16, capture),
-+	MT8196_FE_DAI(UL10, MT8196_MEMIF_VUL10, 2, capture),
-+	MT8196_FE_DAI(UL24, MT8196_MEMIF_VUL24, 2, capture),
-+	MT8196_FE_DAI(UL25, MT8196_MEMIF_VUL25, 2, capture),
-+	MT8196_FE_DAI(UL26, MT8196_MEMIF_VUL26, 2, capture),
-+	MT8196_FE_DAI(UL_CM0, MT8196_MEMIF_VUL_CM0, 8, capture),
-+	MT8196_FE_DAI(UL_CM1, MT8196_MEMIF_VUL_CM1, 16, capture),
-+	MT8196_FE_DAI(UL_CM2, MT8196_MEMIF_VUL_CM2, 32, capture),
-+	MT8196_FE_DAI(UL_ETDM_IN0, MT8196_MEMIF_ETDM_IN0, 2, capture),
-+	MT8196_FE_DAI(UL_ETDM_IN1, MT8196_MEMIF_ETDM_IN1, 2, capture),
-+	MT8196_FE_DAI(UL_ETDM_IN2, MT8196_MEMIF_ETDM_IN2, 2, capture),
-+	MT8196_FE_DAI(UL_ETDM_IN3, MT8196_MEMIF_ETDM_IN3, 2, capture),
-+	MT8196_FE_DAI(UL_ETDM_IN4, MT8196_MEMIF_ETDM_IN4, 2, capture),
-+	MT8196_FE_DAI(UL_ETDM_IN6, MT8196_MEMIF_ETDM_IN6, 2, capture),
-+};
-+
-+static int ul_cm0_event(struct snd_soc_dapm_widget *w,
-+			struct snd_kcontrol *kcontrol,
-+			int event)
-+{
-+	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-+	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
-+	struct mt8196_afe_private *afe_priv = afe->platform_priv;
-+	unsigned int channels = afe_priv->cm_channels;
-+
-+	dev_dbg(afe->dev, "event 0x%x, name %s, channels %u\n",
-+		event, w->name, channels);
-+
-+	switch (event) {
-+	case SND_SOC_DAPM_PRE_PMU:
-+		mt8196_enable_cm_bypass(afe, CM0, false);
-+		mt8196_set_cm(afe, CM0, true, false, channels);
-+		regmap_update_bits(afe->regmap, AUDIO_TOP_CON0,
-+				   PDN_CM0_MASK_SFT, 0 << PDN_CM0_SFT);
-+		break;
-+	case SND_SOC_DAPM_POST_PMD:
-+		mt8196_enable_cm_bypass(afe, CM0, true);
-+		regmap_update_bits(afe->regmap, AUDIO_TOP_CON0,
-+				   PDN_CM0_MASK_SFT, 1 << PDN_CM0_SFT);
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
-+static int ul_cm1_event(struct snd_soc_dapm_widget *w,
-+			struct snd_kcontrol *kcontrol,
-+			int event)
-+{
-+	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-+	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
-+	struct mt8196_afe_private *afe_priv = afe->platform_priv;
-+	unsigned int channels = afe_priv->cm_channels;
-+
-+	dev_dbg(afe->dev, "event 0x%x, name %s, channels %u\n",
-+		event, w->name, channels);
-+
-+	switch (event) {
-+	case SND_SOC_DAPM_PRE_PMU:
-+		mt8196_enable_cm_bypass(afe, CM1, false);
-+		mt8196_set_cm(afe, CM1, true, false, channels);
-+		regmap_update_bits(afe->regmap, AUDIO_TOP_CON0,
-+				   PDN_CM1_MASK_SFT, 0 << PDN_CM1_SFT);
-+		break;
-+	case SND_SOC_DAPM_POST_PMD:
-+		mt8196_enable_cm_bypass(afe, CM1, true);
-+		regmap_update_bits(afe->regmap, AUDIO_TOP_CON0,
-+				   PDN_CM1_MASK_SFT, 1 << PDN_CM1_SFT);
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
-+static int ul_cm2_event(struct snd_soc_dapm_widget *w,
-+			struct snd_kcontrol *kcontrol,
-+			int event)
-+{
-+	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-+	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
-+	struct mt8196_afe_private *afe_priv = afe->platform_priv;
-+	unsigned int channels = afe_priv->cm_channels;
-+
-+	dev_dbg(afe->dev, "event 0x%x, name %s, channels %u\n",
-+		event, w->name, channels);
-+
-+	switch (event) {
-+	case SND_SOC_DAPM_PRE_PMU:
-+		mt8196_enable_cm_bypass(afe, CM2, false);
-+		mt8196_set_cm(afe, CM2, true, false, channels);
-+		regmap_update_bits(afe->regmap, AUDIO_TOP_CON0,
-+				   PDN_CM2_MASK_SFT, 0 << PDN_CM2_SFT);
-+		break;
-+	case SND_SOC_DAPM_POST_PMD:
-+		mt8196_enable_cm_bypass(afe, CM2, true);
-+		regmap_update_bits(afe->regmap, AUDIO_TOP_CON0,
-+				   PDN_CM2_MASK_SFT, 1 << PDN_CM2_SFT);
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
-+/*
-+ * dma widget & routes
-+ * The mixer controls and routes are by no means fully implemented,
-+ * only the ones that are intended to be used are, as other wise a fully
-+ * interconnected switch bar mixer would introduce way too many unused
-+ * controls.
-+ */
-+static const struct snd_kcontrol_new memif_ul0_ch1_mix[] = {
-+	/* Normal record */
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN018_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul0_ch2_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN019_0,
-+				    I_ADDA_UL_CH2, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul1_ch1_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN4_CH1", AFE_CONN020_4,
-+				    I_I2SIN4_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN6_CH1", AFE_CONN020_5,
-+				    I_I2SIN6_CH1, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul1_ch2_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN4_CH2", AFE_CONN021_4,
-+				    I_I2SIN4_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN6_CH2", AFE_CONN021_5,
-+				    I_I2SIN6_CH2, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul2_ch1_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN022_0,
-+				    I_ADDA_UL_CH3, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul2_ch2_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN023_0,
-+				    I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul3_ch1_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN0_CH1", AFE_CONN024_4,
-+				    I_I2SIN0_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN1_CH1", AFE_CONN024_4,
-+				    I_I2SIN1_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN3_CH1", AFE_CONN024_4,
-+				    I_I2SIN3_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN4_CH1", AFE_CONN024_4,
-+				    I_I2SIN4_CH1, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul3_ch2_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN0_CH2", AFE_CONN025_4,
-+				    I_I2SIN0_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN1_CH2", AFE_CONN025_4,
-+				    I_I2SIN1_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN3_CH2", AFE_CONN025_4,
-+				    I_I2SIN3_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN4_CH2", AFE_CONN025_4,
-+				    I_I2SIN4_CH2, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul4_ch1_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN026_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("DL0_CH1", AFE_CONN026_1,
-+				    I_DL0_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("DL1_CH1", AFE_CONN026_1,
-+				    I_DL1_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("DL6_CH1", AFE_CONN026_1,
-+				    I_DL6_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("DL2_CH1", AFE_CONN026_1,
-+				    I_DL2_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("DL3_CH1", AFE_CONN026_1,
-+				    I_DL3_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("DL_24CH_CH1", AFE_CONN026_1,
-+				    I_DL_24CH_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN0_CH1", AFE_CONN026_4,
-+				    I_I2SIN0_CH1, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul4_ch2_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN027_0,
-+				    I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("DL0_CH2", AFE_CONN027_1,
-+				    I_DL0_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("DL1_CH2", AFE_CONN027_1,
-+				    I_DL1_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("DL6_CH2", AFE_CONN027_1,
-+				    I_DL6_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("DL2_CH2", AFE_CONN027_1,
-+				    I_DL2_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("DL3_CH2", AFE_CONN027_1,
-+				    I_DL3_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("DL_24CH_CH2", AFE_CONN027_1,
-+				    I_DL_24CH_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN0_CH2", AFE_CONN027_4,
-+				    I_I2SIN0_CH2, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul5_ch1_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN3_CH1", AFE_CONN028_4,
-+				    I_I2SIN3_CH1, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul5_ch2_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN3_CH2", AFE_CONN029_4,
-+				    I_I2SIN3_CH2, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul6_ch1_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN030_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul6_ch2_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN031_0,
-+				    I_ADDA_UL_CH2, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul7_ch1_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN032_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul7_ch2_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN033_0,
-+				    I_ADDA_UL_CH2, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul8_ch1_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN034_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul8_ch2_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN035_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul9_ch1_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN036_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul9_ch2_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN037_0,
-+				    I_ADDA_UL_CH2, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul10_ch1_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN038_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul10_ch2_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN039_0,
-+				    I_ADDA_UL_CH2, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul24_ch1_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN0_CH1", AFE_CONN066_4,
-+				    I_I2SIN0_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN6_CH1", AFE_CONN066_5,
-+				    I_I2SIN6_CH1, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul24_ch2_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN0_CH2", AFE_CONN067_4,
-+				    I_I2SIN0_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN6_CH2", AFE_CONN067_5,
-+				    I_I2SIN6_CH2, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul25_ch1_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN0_CH1", AFE_CONN068_4,
-+				    I_I2SIN0_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN6_CH1", AFE_CONN068_5,
-+				    I_I2SIN6_CH1, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul25_ch2_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN0_CH2", AFE_CONN069_4,
-+				    I_I2SIN0_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN6_CH2", AFE_CONN069_5,
-+				    I_I2SIN6_CH2, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul26_ch1_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN0_CH1", AFE_CONN070_4,
-+				    I_I2SIN0_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN6_CH1", AFE_CONN070_5,
-+				    I_I2SIN6_CH1, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul26_ch2_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN0_CH2", AFE_CONN071_4,
-+				    I_I2SIN0_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2SIN6_CH2", AFE_CONN071_5,
-+				    I_I2SIN6_CH2, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm0_ch1_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN040_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm0_ch2_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN041_0,
-+				    I_ADDA_UL_CH2, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm0_ch3_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN042_0,
-+				    I_ADDA_UL_CH3, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm0_ch4_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN043_0,
-+				    I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm0_ch5_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN044_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm0_ch6_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN045_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm0_ch7_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN046_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm0_ch8_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN047_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm1_ch1_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN048_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm1_ch2_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN049_0,
-+				    I_ADDA_UL_CH2, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm1_ch3_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN050_0,
-+				    I_ADDA_UL_CH3, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm1_ch4_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN051_0,
-+				    I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm1_ch5_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN052_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN052_0,
-+				    I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN052_0,
-+				    I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN052_0,
-+				    I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm1_ch6_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN053_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN053_0,
-+				    I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN053_0,
-+				    I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN053_0,
-+				    I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm1_ch7_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN054_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN054_0,
-+				    I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN054_0,
-+				    I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN054_0,
-+				    I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm1_ch8_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN055_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN055_0,
-+				    I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN055_0,
-+				    I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN055_0,
-+				    I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm1_ch9_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN056_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN056_0,
-+				    I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN056_0,
-+				    I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN056_0,
-+				    I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm1_ch10_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN057_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN057_0,
-+				    I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN057_0,
-+				    I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN057_0,
-+				    I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm1_ch11_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN058_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN058_0,
-+				    I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN058_0,
-+				    I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN058_0,
-+				    I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm1_ch12_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN059_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN059_0,
-+				    I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN059_0,
-+				    I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN059_0,
-+				    I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm1_ch13_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN060_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN060_0,
-+				    I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN060_0,
-+				    I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN060_0,
-+				    I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm1_ch14_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN061_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN061_0,
-+				    I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN061_0,
-+				    I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN061_0,
-+				    I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm1_ch15_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN062_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN062_0,
-+				    I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN062_0,
-+				    I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN062_0,
-+				    I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm1_ch16_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN063_0,
-+				    I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN063_0,
-+				    I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN063_0,
-+				    I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN063_0,
-+				    I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch1_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN064_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN064_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN064_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN064_0, I_ADDA_UL_CH4, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH5", AFE_CONN064_0, I_ADDA_UL_CH5, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH6", AFE_CONN064_0, I_ADDA_UL_CH6, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch2_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN065_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN065_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN065_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN065_0, I_ADDA_UL_CH4, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH5", AFE_CONN065_0, I_ADDA_UL_CH5, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH6", AFE_CONN065_0, I_ADDA_UL_CH6, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch3_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN066_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN066_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN066_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN066_0, I_ADDA_UL_CH4, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH5", AFE_CONN066_0, I_ADDA_UL_CH5, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH6", AFE_CONN066_0, I_ADDA_UL_CH6, 1, 0)
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch4_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN067_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN067_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN067_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN067_0, I_ADDA_UL_CH4, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH5", AFE_CONN067_0, I_ADDA_UL_CH5, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH6", AFE_CONN067_0, I_ADDA_UL_CH6, 1, 0)
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch5_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN068_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN068_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN068_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN068_0, I_ADDA_UL_CH4, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH5", AFE_CONN068_0, I_ADDA_UL_CH5, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH6", AFE_CONN068_0, I_ADDA_UL_CH6, 1, 0)
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch6_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN069_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN069_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN069_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN069_0, I_ADDA_UL_CH4, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH5", AFE_CONN069_0, I_ADDA_UL_CH5, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH6", AFE_CONN069_0, I_ADDA_UL_CH6, 1, 0)
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch7_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN070_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN070_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN070_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN070_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch8_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN071_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN071_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN071_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN071_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch9_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN072_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN072_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN072_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN072_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch10_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN073_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN073_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN073_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN073_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch11_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN074_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN074_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN074_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN074_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch12_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN075_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN075_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN075_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN075_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch13_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN076_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN076_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN076_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN076_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch14_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN077_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN077_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN077_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN077_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch15_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN078_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN078_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN078_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN078_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch16_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN079_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN079_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN079_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN079_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch17_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN080_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN080_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN080_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN080_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch18_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN081_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN081_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN081_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN081_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch19_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN082_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN082_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN082_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN082_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch20_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN083_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN083_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN083_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN083_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch21_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN084_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN084_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN084_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN084_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch22_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN085_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN085_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN085_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN085_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch23_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN086_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN086_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN086_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN086_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch24_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN087_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN087_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN087_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN087_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch25_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN088_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN088_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN088_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN088_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch26_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN089_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN089_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN089_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN089_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch27_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN090_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN090_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN090_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN090_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch28_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN091_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN091_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN091_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN091_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch29_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN092_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN092_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN092_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN092_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch30_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN093_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN093_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN093_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN093_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch31_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN094_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN094_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN094_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN094_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new memif_ul_cm2_ch32_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1", AFE_CONN095_0, I_ADDA_UL_CH1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN095_0, I_ADDA_UL_CH2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH3", AFE_CONN095_0, I_ADDA_UL_CH3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH4", AFE_CONN095_0, I_ADDA_UL_CH4, 1, 0),
-+};
-+
-+static const char * const cm0_mux_map[] = {
-+	"UL8_2CH_PATH",
-+	"CM0_8CH_PATH",
-+};
-+
-+static const char * const cm1_mux_map[] = {
-+	"UL9_2CH_PATH",
-+	"CM1_16CH_PATH",
-+};
-+
-+static const char * const cm2_mux_map[] = {
-+	"UL10_2CH_PATH",
-+	"CM2_32CH_PATH",
-+};
-+
-+static SOC_ENUM_SINGLE_DECL(ul_cm0_mux_map_enum, AFE_CM0_CON0,
-+	AFE_CM0_OUTPUT_MUX_SFT, cm0_mux_map);
-+
-+static SOC_ENUM_SINGLE_DECL(ul_cm1_mux_map_enum, AFE_CM1_CON0,
-+	AFE_CM1_OUTPUT_MUX_SFT, cm1_mux_map);
-+
-+static SOC_ENUM_SINGLE_DECL(ul_cm2_mux_map_enum, AFE_CM2_CON0,
-+	AFE_CM2_OUTPUT_MUX_SFT, cm2_mux_map);
-+
-+static const struct snd_kcontrol_new ul_cm0_mux_control =
-+	SOC_DAPM_ENUM("CM0_UL_MUX Route", ul_cm0_mux_map_enum);
-+
-+static const struct snd_kcontrol_new ul_cm1_mux_control =
-+	SOC_DAPM_ENUM("CM1_UL_MUX Route", ul_cm1_mux_map_enum);
-+
-+static const struct snd_kcontrol_new ul_cm2_mux_control =
-+	SOC_DAPM_ENUM("CM2_UL_MUX Route", ul_cm2_mux_map_enum);
-+
-+static const struct snd_soc_dapm_widget mt8196_memif_widgets[] = {
-+	/* inter-connections */
-+	SND_SOC_DAPM_MIXER("UL0_CH1", SND_SOC_NOPM, 0, 0,
-+			   memif_ul0_ch1_mix, ARRAY_SIZE(memif_ul0_ch1_mix)),
-+	SND_SOC_DAPM_MIXER("UL0_CH2", SND_SOC_NOPM, 0, 0,
-+			   memif_ul0_ch2_mix, ARRAY_SIZE(memif_ul0_ch2_mix)),
-+
-+	SND_SOC_DAPM_MIXER("UL1_CH1", SND_SOC_NOPM, 0, 0,
-+			   memif_ul1_ch1_mix, ARRAY_SIZE(memif_ul1_ch1_mix)),
-+	SND_SOC_DAPM_MIXER("UL1_CH2", SND_SOC_NOPM, 0, 0,
-+			   memif_ul1_ch2_mix, ARRAY_SIZE(memif_ul1_ch2_mix)),
-+
-+	SND_SOC_DAPM_MIXER("UL2_CH1", SND_SOC_NOPM, 0, 0,
-+			   memif_ul2_ch1_mix, ARRAY_SIZE(memif_ul2_ch1_mix)),
-+	SND_SOC_DAPM_MIXER("UL2_CH2", SND_SOC_NOPM, 0, 0,
-+			   memif_ul2_ch2_mix, ARRAY_SIZE(memif_ul2_ch2_mix)),
-+
-+	SND_SOC_DAPM_MIXER("UL3_CH1", SND_SOC_NOPM, 0, 0,
-+			   memif_ul3_ch1_mix, ARRAY_SIZE(memif_ul3_ch1_mix)),
-+	SND_SOC_DAPM_MIXER("UL3_CH2", SND_SOC_NOPM, 0, 0,
-+			   memif_ul3_ch2_mix, ARRAY_SIZE(memif_ul3_ch2_mix)),
-+
-+	SND_SOC_DAPM_MIXER("UL4_CH1", SND_SOC_NOPM, 0, 0,
-+			   memif_ul4_ch1_mix, ARRAY_SIZE(memif_ul4_ch1_mix)),
-+	SND_SOC_DAPM_MIXER("UL4_CH2", SND_SOC_NOPM, 0, 0,
-+			   memif_ul4_ch2_mix, ARRAY_SIZE(memif_ul4_ch2_mix)),
-+
-+	SND_SOC_DAPM_MIXER("UL5_CH1", SND_SOC_NOPM, 0, 0,
-+			   memif_ul5_ch1_mix, ARRAY_SIZE(memif_ul5_ch1_mix)),
-+	SND_SOC_DAPM_MIXER("UL5_CH2", SND_SOC_NOPM, 0, 0,
-+			   memif_ul5_ch2_mix, ARRAY_SIZE(memif_ul5_ch2_mix)),
-+
-+	SND_SOC_DAPM_MIXER("UL6_CH1", SND_SOC_NOPM, 0, 0,
-+			   memif_ul6_ch1_mix, ARRAY_SIZE(memif_ul6_ch1_mix)),
-+	SND_SOC_DAPM_MIXER("UL6_CH2", SND_SOC_NOPM, 0, 0,
-+			   memif_ul6_ch2_mix, ARRAY_SIZE(memif_ul6_ch2_mix)),
-+
-+	SND_SOC_DAPM_MIXER("UL7_CH1", SND_SOC_NOPM, 0, 0,
-+			   memif_ul7_ch1_mix, ARRAY_SIZE(memif_ul7_ch1_mix)),
-+	SND_SOC_DAPM_MIXER("UL7_CH2", SND_SOC_NOPM, 0, 0,
-+			   memif_ul7_ch2_mix, ARRAY_SIZE(memif_ul7_ch2_mix)),
-+
-+	SND_SOC_DAPM_MIXER("UL8_CH1", SND_SOC_NOPM, 0, 0,
-+			   memif_ul8_ch1_mix, ARRAY_SIZE(memif_ul8_ch1_mix)),
-+	SND_SOC_DAPM_MIXER("UL8_CH2", SND_SOC_NOPM, 0, 0,
-+			   memif_ul8_ch2_mix, ARRAY_SIZE(memif_ul8_ch2_mix)),
-+
-+	SND_SOC_DAPM_MIXER("UL9_CH1", SND_SOC_NOPM, 0, 0,
-+			   memif_ul9_ch1_mix, ARRAY_SIZE(memif_ul9_ch1_mix)),
-+	SND_SOC_DAPM_MIXER("UL9_CH2", SND_SOC_NOPM, 0, 0,
-+			   memif_ul9_ch2_mix, ARRAY_SIZE(memif_ul9_ch2_mix)),
-+
-+	SND_SOC_DAPM_MIXER("UL10_CH1", SND_SOC_NOPM, 0, 0,
-+			   memif_ul10_ch1_mix, ARRAY_SIZE(memif_ul10_ch1_mix)),
-+	SND_SOC_DAPM_MIXER("UL10_CH2", SND_SOC_NOPM, 0, 0,
-+			   memif_ul10_ch2_mix, ARRAY_SIZE(memif_ul10_ch2_mix)),
-+
-+	SND_SOC_DAPM_MIXER("UL24_CH1", SND_SOC_NOPM, 0, 0,
-+			   memif_ul24_ch1_mix, ARRAY_SIZE(memif_ul24_ch1_mix)),
-+	SND_SOC_DAPM_MIXER("UL24_CH2", SND_SOC_NOPM, 0, 0,
-+			   memif_ul24_ch2_mix, ARRAY_SIZE(memif_ul24_ch2_mix)),
-+
-+	SND_SOC_DAPM_MIXER("UL25_CH1", SND_SOC_NOPM, 0, 0,
-+			   memif_ul25_ch1_mix, ARRAY_SIZE(memif_ul25_ch1_mix)),
-+	SND_SOC_DAPM_MIXER("UL25_CH2", SND_SOC_NOPM, 0, 0,
-+			   memif_ul25_ch2_mix, ARRAY_SIZE(memif_ul25_ch2_mix)),
-+
-+	SND_SOC_DAPM_MIXER("UL26_CH1", SND_SOC_NOPM, 0, 0,
-+			   memif_ul26_ch1_mix, ARRAY_SIZE(memif_ul26_ch1_mix)),
-+	SND_SOC_DAPM_MIXER("UL26_CH2", SND_SOC_NOPM, 0, 0,
-+			   memif_ul26_ch2_mix, ARRAY_SIZE(memif_ul26_ch2_mix)),
-+
-+	SND_SOC_DAPM_MIXER("UL_CM0_CH1", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm0_ch1_mix, ARRAY_SIZE(memif_ul_cm0_ch1_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM0_CH2", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm0_ch2_mix, ARRAY_SIZE(memif_ul_cm0_ch2_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM0_CH3", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm0_ch3_mix, ARRAY_SIZE(memif_ul_cm0_ch3_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM0_CH4", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm0_ch4_mix, ARRAY_SIZE(memif_ul_cm0_ch4_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM0_CH5", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm0_ch5_mix, ARRAY_SIZE(memif_ul_cm0_ch5_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM0_CH6", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm0_ch6_mix, ARRAY_SIZE(memif_ul_cm0_ch6_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM0_CH7", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm0_ch7_mix, ARRAY_SIZE(memif_ul_cm0_ch7_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM0_CH8", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm0_ch8_mix, ARRAY_SIZE(memif_ul_cm0_ch8_mix)),
-+	SND_SOC_DAPM_MUX("CM0_UL_MUX", SND_SOC_NOPM, 0, 0,
-+			 &ul_cm0_mux_control),
-+
-+	SND_SOC_DAPM_MIXER("UL_CM1_CH1", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm1_ch1_mix, ARRAY_SIZE(memif_ul_cm1_ch1_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM1_CH2", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm1_ch2_mix, ARRAY_SIZE(memif_ul_cm1_ch2_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM1_CH3", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm1_ch3_mix, ARRAY_SIZE(memif_ul_cm1_ch3_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM1_CH4", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm1_ch4_mix, ARRAY_SIZE(memif_ul_cm1_ch4_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM1_CH5", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm1_ch5_mix, ARRAY_SIZE(memif_ul_cm1_ch5_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM1_CH6", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm1_ch6_mix, ARRAY_SIZE(memif_ul_cm1_ch6_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM1_CH7", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm1_ch7_mix, ARRAY_SIZE(memif_ul_cm1_ch7_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM1_CH8", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm1_ch8_mix, ARRAY_SIZE(memif_ul_cm1_ch8_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM1_CH9", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm1_ch9_mix, ARRAY_SIZE(memif_ul_cm1_ch9_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM1_CH10", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm1_ch10_mix, ARRAY_SIZE(memif_ul_cm1_ch10_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM1_CH11", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm1_ch11_mix, ARRAY_SIZE(memif_ul_cm1_ch11_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM1_CH12", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm1_ch12_mix, ARRAY_SIZE(memif_ul_cm1_ch12_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM1_CH13", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm1_ch13_mix, ARRAY_SIZE(memif_ul_cm1_ch13_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM1_CH14", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm1_ch14_mix, ARRAY_SIZE(memif_ul_cm1_ch14_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM1_CH15", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm1_ch15_mix, ARRAY_SIZE(memif_ul_cm1_ch15_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM1_CH16", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm1_ch16_mix, ARRAY_SIZE(memif_ul_cm1_ch16_mix)),
-+	SND_SOC_DAPM_MUX("CM1_UL_MUX", SND_SOC_NOPM, 0, 0,
-+			 &ul_cm1_mux_control),
-+
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH1", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch1_mix, ARRAY_SIZE(memif_ul_cm2_ch1_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH2", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch2_mix, ARRAY_SIZE(memif_ul_cm2_ch2_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH3", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch3_mix, ARRAY_SIZE(memif_ul_cm2_ch3_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH4", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch4_mix, ARRAY_SIZE(memif_ul_cm2_ch4_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH5", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch5_mix, ARRAY_SIZE(memif_ul_cm2_ch5_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH6", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch6_mix, ARRAY_SIZE(memif_ul_cm2_ch6_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH7", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch7_mix, ARRAY_SIZE(memif_ul_cm2_ch7_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH8", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch8_mix, ARRAY_SIZE(memif_ul_cm2_ch8_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH9", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch9_mix, ARRAY_SIZE(memif_ul_cm2_ch9_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH10", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch10_mix, ARRAY_SIZE(memif_ul_cm2_ch10_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH11", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch11_mix, ARRAY_SIZE(memif_ul_cm2_ch11_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH12", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch12_mix, ARRAY_SIZE(memif_ul_cm2_ch12_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH13", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch13_mix, ARRAY_SIZE(memif_ul_cm2_ch13_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH14", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch14_mix, ARRAY_SIZE(memif_ul_cm2_ch14_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH15", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch15_mix, ARRAY_SIZE(memif_ul_cm2_ch15_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH16", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch16_mix, ARRAY_SIZE(memif_ul_cm2_ch16_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH17", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch17_mix, ARRAY_SIZE(memif_ul_cm2_ch17_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH18", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch18_mix, ARRAY_SIZE(memif_ul_cm2_ch18_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH19", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch19_mix, ARRAY_SIZE(memif_ul_cm2_ch19_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH20", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch20_mix, ARRAY_SIZE(memif_ul_cm2_ch20_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH21", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch21_mix, ARRAY_SIZE(memif_ul_cm2_ch21_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH22", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch22_mix, ARRAY_SIZE(memif_ul_cm2_ch22_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH23", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch23_mix, ARRAY_SIZE(memif_ul_cm2_ch23_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH24", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch24_mix, ARRAY_SIZE(memif_ul_cm2_ch24_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH25", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch25_mix, ARRAY_SIZE(memif_ul_cm2_ch25_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH26", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch26_mix, ARRAY_SIZE(memif_ul_cm2_ch26_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH27", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch27_mix, ARRAY_SIZE(memif_ul_cm2_ch27_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH28", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch28_mix, ARRAY_SIZE(memif_ul_cm2_ch28_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH29", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch29_mix, ARRAY_SIZE(memif_ul_cm2_ch29_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH30", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch30_mix, ARRAY_SIZE(memif_ul_cm2_ch30_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH31", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch31_mix, ARRAY_SIZE(memif_ul_cm2_ch31_mix)),
-+	SND_SOC_DAPM_MIXER("UL_CM2_CH32", SND_SOC_NOPM, 0, 0,
-+			   memif_ul_cm2_ch32_mix, ARRAY_SIZE(memif_ul_cm2_ch32_mix)),
-+	SND_SOC_DAPM_MUX("CM2_UL_MUX", SND_SOC_NOPM, 0, 0,
-+			 &ul_cm2_mux_control),
-+
-+	SND_SOC_DAPM_SUPPLY("CM0_Enable",
-+			    AFE_CM0_CON0, AFE_CM0_ON_SFT, 0,
-+			    ul_cm0_event,
-+			    SND_SOC_DAPM_PRE_PMU |
-+			    SND_SOC_DAPM_PRE_PMD),
-+
-+	SND_SOC_DAPM_SUPPLY("CM1_Enable",
-+			    AFE_CM1_CON0, AFE_CM1_ON_SFT, 0,
-+			    ul_cm1_event,
-+			    SND_SOC_DAPM_PRE_PMU |
-+			    SND_SOC_DAPM_PRE_PMD),
-+
-+	SND_SOC_DAPM_SUPPLY("CM2_Enable",
-+			    AFE_CM2_CON0, AFE_CM2_ON_SFT, 0,
-+			    ul_cm2_event,
-+			    SND_SOC_DAPM_PRE_PMU |
-+			    SND_SOC_DAPM_PRE_PMD),
-+
-+	/* dynamic pinctrl */
-+	SND_SOC_DAPM_PINCTRL("I2S3_PIN", "aud-gpio-i2s3-on", "aud-gpio-i2s3-off"),
-+	SND_SOC_DAPM_PINCTRL("I2S4_PIN", "aud-gpio-i2s4-on", "aud-gpio-i2s4-off"),
-+	SND_SOC_DAPM_PINCTRL("I2S6_PIN", "aud-gpio-i2s6-on", "aud-gpio-i2s6-off"),
-+	SND_SOC_DAPM_PINCTRL("AP_DMIC0_PIN", "aud-gpio-ap-dmic-on", "aud-gpio-ap-dmic-off"),
-+	SND_SOC_DAPM_PINCTRL("AP_DMIC1_PIN", "aud-gpio-ap-dmic1-on", "aud-gpio-ap-dmic1-off"),
-+};
-+
-+static const struct snd_soc_dapm_route mt8196_memif_routes[] = {
-+	{"UL0", NULL, "UL0_CH1"},
-+	{"UL0", NULL, "UL0_CH2"},
-+	/* Normal record */
-+	{"UL0_CH1", "ADDA_UL_CH1", "ADDA_UL_Mux"},
-+	{"UL0_CH2", "ADDA_UL_CH2", "ADDA_UL_Mux"},
-+
-+	{"UL1", NULL, "UL1_CH1"},
-+	{"UL1", NULL, "UL1_CH2"},
-+	{"UL1_CH1", "I2SIN4_CH1", "I2SIN4"},
-+	{"UL1_CH2", "I2SIN4_CH2", "I2SIN4"},
-+	{"UL1_CH1", "I2SIN6_CH1", "I2SIN6"},
-+	{"UL1_CH2", "I2SIN6_CH2", "I2SIN6"},
-+
-+	{"UL2", NULL, "UL2_CH1"},
-+	{"UL2", NULL, "UL2_CH2"},
-+	{"UL2_CH1", "ADDA_UL_CH3", "ADDA_CH34_UL_Mux"},
-+	{"UL2_CH2", "ADDA_UL_CH4", "ADDA_CH34_UL_Mux"},
-+
-+	{"UL3", NULL, "UL3_CH1"},
-+	{"UL3", NULL, "UL3_CH2"},
-+	{"UL3_CH1", "I2SIN0_CH1", "I2SIN0"},
-+	{"UL3_CH2", "I2SIN0_CH2", "I2SIN0"},
-+	{"UL3_CH1", "I2SIN1_CH1", "I2SIN1"},
-+	{"UL3_CH2", "I2SIN1_CH2", "I2SIN1"},
-+	{"UL3_CH1", "I2SIN3_CH1", "I2SIN3"},
-+	{"UL3_CH2", "I2SIN3_CH2", "I2SIN3"},
-+	{"UL3_CH1", "I2SIN4_CH1", "I2SIN4"},
-+	{"UL3_CH2", "I2SIN4_CH2", "I2SIN4"},
-+
-+	{"UL4", NULL, "UL4_CH1"},
-+	{"UL4", NULL, "UL4_CH2"},
-+	{"UL4_CH1", "ADDA_UL_CH1", "ADDA_UL_Mux"},
-+	{"UL4_CH2", "ADDA_UL_CH2", "ADDA_UL_Mux"},
-+	{"UL4_CH1", "I2SIN0_CH1", "I2SIN0"},
-+	{"UL4_CH2", "I2SIN0_CH2", "I2SIN0"},
-+
-+	{"UL5", NULL, "UL5_CH1"},
-+	{"UL5", NULL, "UL5_CH2"},
-+	{"UL5_CH1", "I2SIN3_CH1", "I2SIN3"},
-+	{"UL5_CH2", "I2SIN3_CH2", "I2SIN3"},
-+
-+	{"UL6", NULL, "UL6_CH1"},
-+	{"UL6", NULL, "UL6_CH2"},
-+	{"UL6_CH1", "ADDA_UL_CH1", "ADDA_UL_Mux"},
-+	{"UL6_CH2", "ADDA_UL_CH2", "ADDA_UL_Mux"},
-+
-+	{"UL7", NULL, "UL7_CH1"},
-+	{"UL7", NULL, "UL7_CH2"},
-+	{"UL7_CH1", "ADDA_UL_CH1", "ADDA_UL_Mux"},
-+	{"UL7_CH2", "ADDA_UL_CH2", "ADDA_UL_Mux"},
-+
-+	{"UL8", NULL, "CM0_UL_MUX"},
-+	{"CM0_UL_MUX", "UL8_2CH_PATH", "UL8_CH1"},
-+	{"CM0_UL_MUX", "UL8_2CH_PATH", "UL8_CH2"},
-+	{"CM0_UL_MUX", "CM0_8CH_PATH", "UL_CM0_CH1"},
-+	{"CM0_UL_MUX", "CM0_8CH_PATH", "UL_CM0_CH2"},
-+	{"CM0_UL_MUX", "CM0_8CH_PATH", "UL_CM0_CH3"},
-+	{"CM0_UL_MUX", "CM0_8CH_PATH", "UL_CM0_CH4"},
-+	{"CM0_UL_MUX", "CM0_8CH_PATH", "UL_CM0_CH5"},
-+	{"CM0_UL_MUX", "CM0_8CH_PATH", "UL_CM0_CH6"},
-+	{"CM0_UL_MUX", "CM0_8CH_PATH", "UL_CM0_CH7"},
-+	{"CM0_UL_MUX", "CM0_8CH_PATH", "UL_CM0_CH8"},
-+
-+	{"UL_CM0", NULL, "CM0_Enable"},
-+
-+	/* UL9 */
-+	{"UL9", NULL, "CM1_UL_MUX"},
-+	{"CM1_UL_MUX", "UL9_2CH_PATH", "UL9_CH1"},
-+	{"CM1_UL_MUX", "UL9_2CH_PATH", "UL9_CH2"},
-+	{"CM1_UL_MUX", "CM1_16CH_PATH", "UL_CM1_CH1"},
-+	{"CM1_UL_MUX", "CM1_16CH_PATH", "UL_CM1_CH2"},
-+	{"CM1_UL_MUX", "CM1_16CH_PATH", "UL_CM1_CH3"},
-+	{"CM1_UL_MUX", "CM1_16CH_PATH", "UL_CM1_CH4"},
-+	{"CM1_UL_MUX", "CM1_16CH_PATH", "UL_CM1_CH5"},
-+	{"CM1_UL_MUX", "CM1_16CH_PATH", "UL_CM1_CH6"},
-+	{"CM1_UL_MUX", "CM1_16CH_PATH", "UL_CM1_CH7"},
-+	{"CM1_UL_MUX", "CM1_16CH_PATH", "UL_CM1_CH8"},
-+	{"CM1_UL_MUX", "CM1_16CH_PATH", "UL_CM1_CH9"},
-+	{"CM1_UL_MUX", "CM1_16CH_PATH", "UL_CM1_CH10"},
-+	{"CM1_UL_MUX", "CM1_16CH_PATH", "UL_CM1_CH11"},
-+	{"CM1_UL_MUX", "CM1_16CH_PATH", "UL_CM1_CH12"},
-+	{"CM1_UL_MUX", "CM1_16CH_PATH", "UL_CM1_CH13"},
-+	{"CM1_UL_MUX", "CM1_16CH_PATH", "UL_CM1_CH14"},
-+	{"CM1_UL_MUX", "CM1_16CH_PATH", "UL_CM1_CH15"},
-+	{"CM1_UL_MUX", "CM1_16CH_PATH", "UL_CM1_CH16"},
-+
-+	{"UL_CM1", NULL, "CM1_Enable"},
-+
-+	{"UL9_CH1", "ADDA_UL_CH1", "ADDA_UL_Mux"},
-+	{"UL9_CH2", "ADDA_UL_CH2", "ADDA_UL_Mux"},
-+
-+	{"UL10", NULL, "CM2_UL_MUX"},
-+	{"CM2_UL_MUX", "UL10_2CH_PATH", "UL10_CH1"},
-+	{"CM2_UL_MUX", "UL10_2CH_PATH", "UL10_CH2"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH1"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH2"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH3"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH4"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH5"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH6"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH7"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH8"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH9"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH10"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH11"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH12"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH13"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH14"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH15"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH16"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH17"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH18"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH19"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH20"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH21"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH22"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH23"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH24"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH25"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH26"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH27"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH28"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH29"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH30"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH31"},
-+	{"CM2_UL_MUX", "CM2_32CH_PATH", "UL_CM2_CH32"},
-+
-+	{"UL_CM2", NULL, "CM2_Enable"},
-+
-+	{"UL10_CH1", "ADDA_UL_CH1", "ADDA_UL_Mux"},
-+	{"UL10_CH2", "ADDA_UL_CH2", "ADDA_UL_Mux"},
-+
-+	{"UL24", NULL, "UL24_CH1"},
-+	{"UL24", NULL, "UL24_CH2"},
-+	{"UL24_CH1", "I2SIN6_CH1", "I2SIN6"},
-+	{"UL24_CH2", "I2SIN6_CH2", "I2SIN6"},
-+	{"UL24_CH1", "I2SIN0_CH1", "I2SIN0"},
-+	{"UL24_CH2", "I2SIN0_CH2", "I2SIN0"},
-+
-+	{"UL25", NULL, "UL25_CH1"},
-+	{"UL25", NULL, "UL25_CH2"},
-+	{"UL25_CH1", "I2SIN6_CH1", "I2SIN6"},
-+	{"UL25_CH2", "I2SIN6_CH2", "I2SIN6"},
-+	{"UL25_CH1", "I2SIN0_CH1", "I2SIN0"},
-+	{"UL25_CH2", "I2SIN0_CH2", "I2SIN0"},
-+
-+	{"UL26", NULL, "UL26_CH1"},
-+	{"UL26", NULL, "UL26_CH2"},
-+	{"UL26_CH1", "I2SIN6_CH1", "I2SIN6"},
-+	{"UL26_CH2", "I2SIN6_CH2", "I2SIN6"},
-+	{"UL26_CH1", "I2SIN0_CH1", "I2SIN0"},
-+	{"UL26_CH2", "I2SIN0_CH2", "I2SIN0"},
-+
-+	{"UL_CM0", NULL, "UL_CM0_CH1"},
-+	{"UL_CM0", NULL, "UL_CM0_CH2"},
-+	{"UL_CM0", NULL, "UL_CM0_CH3"},
-+	{"UL_CM0", NULL, "UL_CM0_CH4"},
-+	{"UL_CM0", NULL, "UL_CM0_CH5"},
-+	{"UL_CM0", NULL, "UL_CM0_CH6"},
-+	{"UL_CM0", NULL, "UL_CM0_CH7"},
-+	{"UL_CM0", NULL, "UL_CM0_CH8"},
-+	{"UL_CM0_CH1", "ADDA_UL_CH1", "ADDA_UL_Mux"},
-+	{"UL_CM0_CH2", "ADDA_UL_CH2", "ADDA_UL_Mux"},
-+	{"UL_CM0_CH3", "ADDA_UL_CH3", "ADDA_CH34_UL_Mux"},
-+	{"UL_CM0_CH4", "ADDA_UL_CH4", "ADDA_CH34_UL_Mux"},
-+
-+	{"UL_CM1", NULL, "UL_CM1_CH1"},
-+	{"UL_CM1", NULL, "UL_CM1_CH2"},
-+	{"UL_CM1", NULL, "UL_CM1_CH3"},
-+	{"UL_CM1", NULL, "UL_CM1_CH4"},
-+	{"UL_CM1", NULL, "UL_CM1_CH5"},
-+	{"UL_CM1", NULL, "UL_CM1_CH6"},
-+	{"UL_CM1", NULL, "UL_CM1_CH7"},
-+	{"UL_CM1", NULL, "UL_CM1_CH8"},
-+	{"UL_CM1", NULL, "UL_CM1_CH9"},
-+	{"UL_CM1", NULL, "UL_CM1_CH10"},
-+	{"UL_CM1", NULL, "UL_CM1_CH11"},
-+	{"UL_CM1", NULL, "UL_CM1_CH12"},
-+	{"UL_CM1", NULL, "UL_CM1_CH13"},
-+	{"UL_CM1", NULL, "UL_CM1_CH14"},
-+	{"UL_CM1", NULL, "UL_CM1_CH15"},
-+	{"UL_CM1", NULL, "UL_CM1_CH16"},
-+	{"UL_CM1_CH1", "ADDA_UL_CH1", "ADDA_UL_Mux"},
-+	{"UL_CM1_CH2", "ADDA_UL_CH2", "ADDA_UL_Mux"},
-+	{"UL_CM1_CH3", "ADDA_UL_CH3", "ADDA_CH34_UL_Mux"},
-+	{"UL_CM1_CH4", "ADDA_UL_CH4", "ADDA_CH34_UL_Mux"},
-+
-+	{"UL_CM2", NULL, "UL_CM2_CH1"},
-+	{"UL_CM2", NULL, "UL_CM2_CH2"},
-+	{"UL_CM2", NULL, "UL_CM2_CH3"},
-+	{"UL_CM2", NULL, "UL_CM2_CH4"},
-+	{"UL_CM2", NULL, "UL_CM2_CH5"},
-+	{"UL_CM2", NULL, "UL_CM2_CH6"},
-+	{"UL_CM2", NULL, "UL_CM2_CH7"},
-+	{"UL_CM2", NULL, "UL_CM2_CH8"},
-+	{"UL_CM2", NULL, "UL_CM2_CH9"},
-+	{"UL_CM2", NULL, "UL_CM2_CH10"},
-+	{"UL_CM2", NULL, "UL_CM2_CH11"},
-+	{"UL_CM2", NULL, "UL_CM2_CH12"},
-+	{"UL_CM2", NULL, "UL_CM2_CH13"},
-+	{"UL_CM2", NULL, "UL_CM2_CH14"},
-+	{"UL_CM2", NULL, "UL_CM2_CH15"},
-+	{"UL_CM2", NULL, "UL_CM2_CH16"},
-+	{"UL_CM2", NULL, "UL_CM2_CH17"},
-+	{"UL_CM2", NULL, "UL_CM2_CH18"},
-+	{"UL_CM2", NULL, "UL_CM2_CH19"},
-+	{"UL_CM2", NULL, "UL_CM2_CH20"},
-+	{"UL_CM2", NULL, "UL_CM2_CH21"},
-+	{"UL_CM2", NULL, "UL_CM2_CH22"},
-+	{"UL_CM2", NULL, "UL_CM2_CH23"},
-+	{"UL_CM2", NULL, "UL_CM2_CH24"},
-+	{"UL_CM2", NULL, "UL_CM2_CH25"},
-+	{"UL_CM2", NULL, "UL_CM2_CH26"},
-+	{"UL_CM2", NULL, "UL_CM2_CH27"},
-+	{"UL_CM2", NULL, "UL_CM2_CH28"},
-+	{"UL_CM2", NULL, "UL_CM2_CH29"},
-+	{"UL_CM2", NULL, "UL_CM2_CH30"},
-+	{"UL_CM2", NULL, "UL_CM2_CH31"},
-+	{"UL_CM2", NULL, "UL_CM2_CH32"},
-+	{"UL_CM2_CH1", "ADDA_UL_CH1", "ADDA_UL_Mux"},
-+	{"UL_CM2_CH2", "ADDA_UL_CH2", "ADDA_UL_Mux"},
-+	{"UL_CM2_CH3", "ADDA_UL_CH3", "ADDA_CH34_UL_Mux"},
-+	{"UL_CM2_CH4", "ADDA_UL_CH4", "ADDA_CH34_UL_Mux"},
-+
-+	/* Audio Pin */
-+	{"I2SOUT4", NULL, "I2S4_PIN"},
-+	{"I2SIN4", NULL, "I2S4_PIN"},
-+	{"I2SOUT6", NULL, "I2S6_PIN"},
-+	{"I2SIN6", NULL, "I2S6_PIN"},
-+	{"I2SOUT3", NULL, "I2S3_PIN"},
-+	{"I2SIN3", NULL, "I2S3_PIN"},
-+	{"AP DMIC Capture", NULL, "AP_DMIC0_PIN"},
-+	{"AP DMIC CH34 Capture", NULL, "AP_DMIC1_PIN"},
-+};
-+
-+#define MT8196_DL_MEMIF(_id) \
-+	[MT8196_MEMIF_##_id] = { \
-+		.name = #_id, \
-+		.id = MT8196_MEMIF_##_id, \
-+		.reg_ofs_base = AFE_##_id##_BASE, \
-+		.reg_ofs_cur = AFE_##_id##_CUR, \
-+		.reg_ofs_end = AFE_##_id##_END, \
-+		.reg_ofs_base_msb = AFE_##_id##_BASE_MSB, \
-+		.reg_ofs_cur_msb = AFE_##_id##_CUR_MSB, \
-+		.reg_ofs_end_msb = AFE_##_id##_END_MSB, \
-+		.fs_reg = AFE_##_id##_CON0, \
-+		.fs_shift = _id##_SEL_FS_SFT, \
-+		.fs_maskbit = _id##_SEL_FS_MASK, \
-+		.mono_reg = AFE_##_id##_CON0, \
-+		.mono_shift = _id##_MONO_SFT, \
-+		.enable_reg = AFE_##_id##_CON0, \
-+		.enable_shift = _id##_ON_SFT, \
-+		.hd_reg = AFE_##_id##_CON0, \
-+		.hd_shift = _id##_HD_MODE_SFT, \
-+		.hd_align_reg = AFE_##_id##_CON0, \
-+		.hd_align_mshift = _id##_HALIGN_SFT, \
-+		.agent_disable_reg = -1, \
-+		.agent_disable_shift = -1, \
-+		.msb_reg = -1, \
-+		.msb_shift = -1, \
-+		.pbuf_reg = AFE_##_id##_CON0, \
-+		.pbuf_mask = _id##_PBUF_SIZE_MASK, \
-+		.pbuf_shift = _id##_PBUF_SIZE_SFT, \
-+		.minlen_reg = AFE_##_id##_CON0, \
-+		.minlen_mask = _id##_MINLEN_MASK, \
-+		.minlen_shift = _id##_MINLEN_SFT, \
-+}
-+
-+#define MT8196_MULTI_DL_MEMIF(_id) \
-+	[MT8196_MEMIF_##_id] = { \
-+		.name = #_id, \
-+		.id = MT8196_MEMIF_##_id, \
-+		.reg_ofs_base = AFE_##_id##_BASE, \
-+		.reg_ofs_cur = AFE_##_id##_CUR, \
-+		.reg_ofs_end = AFE_##_id##_END, \
-+		.reg_ofs_base_msb = AFE_##_id##_BASE_MSB, \
-+		.reg_ofs_cur_msb = AFE_##_id##_CUR_MSB, \
-+		.reg_ofs_end_msb = AFE_##_id##_END_MSB, \
-+		.fs_reg = AFE_##_id##_CON0, \
-+		.fs_shift = _id##_SEL_FS_SFT, \
-+		.fs_maskbit = _id##_SEL_FS_MASK, \
-+		.mono_reg = -1, \
-+		.mono_shift = -1, \
-+		.enable_reg = AFE_##_id##_CON0, \
-+		.enable_shift = _id##_ON_SFT, \
-+		.hd_reg = AFE_##_id##_CON0, \
-+		.hd_shift = _id##_HD_MODE_SFT, \
-+		.hd_align_reg = AFE_##_id##_CON0, \
-+		.hd_align_mshift = _id##_HALIGN_SFT, \
-+		.agent_disable_reg = -1, \
-+		.agent_disable_shift = -1, \
-+		.msb_reg = -1, \
-+		.msb_shift = -1, \
-+		.pbuf_reg = AFE_##_id##_CON0, \
-+		.pbuf_mask = _id##_PBUF_SIZE_MASK, \
-+		.pbuf_shift = _id##_PBUF_SIZE_SFT, \
-+		.minlen_reg = AFE_##_id##_CON0, \
-+		.minlen_mask = _id##_MINLEN_MASK, \
-+		.minlen_shift = _id##_MINLEN_SFT, \
-+		.ch_num_reg = AFE_##_id##_CON0, \
-+		.ch_num_maskbit = _id##_NUM_MASK, \
-+		.ch_num_shift = _id##_NUM_SFT, \
-+}
-+
-+#define MT8196_UL_MEMIF(_id, _fs_shift, _fs_maskbit, _mono_shift) \
-+	[MT8196_MEMIF_##_id] = { \
-+		.name = #_id, \
-+		.id = MT8196_MEMIF_##_id, \
-+		.reg_ofs_base = AFE_##_id##_BASE, \
-+		.reg_ofs_cur = AFE_##_id##_CUR, \
-+		.reg_ofs_end = AFE_##_id##_END, \
-+		.reg_ofs_base_msb = AFE_##_id##_BASE_MSB, \
-+		.reg_ofs_cur_msb = AFE_##_id##_CUR_MSB, \
-+		.reg_ofs_end_msb = AFE_##_id##_END_MSB, \
-+		.fs_reg = AFE_##_id##_CON0, \
-+		.fs_shift = _fs_shift, \
-+		.fs_maskbit = _fs_maskbit, \
-+		.mono_reg = AFE_##_id##_CON0, \
-+		.mono_shift = _mono_shift, \
-+		.enable_reg = AFE_##_id##_CON0, \
-+		.enable_shift = _id##_ON_SFT, \
-+		.hd_reg = AFE_##_id##_CON0, \
-+		.hd_shift = _id##_HD_MODE_SFT, \
-+		.hd_align_reg = AFE_##_id##_CON0, \
-+		.hd_align_mshift = _id##_HALIGN_SFT, \
-+		.agent_disable_reg = -1, \
-+		.agent_disable_shift = -1, \
-+		.msb_reg = -1, \
-+		.msb_shift = -1, \
-+	}
-+
-+/* For convenience with macros: missing register fields */
-+#define HDMI_SEL_FS_SFT			-1
-+#define HDMI_SEL_FS_MASK		-1
-+
-+/* For convenience with macros: register name differences */
-+#define AFE_HDMI_BASE			AFE_HDMI_OUT_BASE
-+#define AFE_HDMI_CUR			AFE_HDMI_OUT_CUR
-+#define AFE_HDMI_END			AFE_HDMI_OUT_END
-+#define AFE_HDMI_BASE_MSB		AFE_HDMI_OUT_BASE_MSB
-+#define AFE_HDMI_CUR_MSB		AFE_HDMI_OUT_CUR_MSB
-+#define AFE_HDMI_END_MSB		AFE_HDMI_OUT_END_MSB
-+#define AFE_HDMI_CON0			AFE_HDMI_OUT_CON0
-+#define HDMI_ON_SFT				HDMI_OUT_ON_SFT
-+#define HDMI_HD_MODE_SFT		HDMI_OUT_HD_MODE_SFT
-+#define HDMI_HALIGN_SFT			HDMI_OUT_HALIGN_SFT
-+#define HDMI_PBUF_SIZE_MASK		HDMI_OUT_PBUF_SIZE_MASK
-+#define HDMI_PBUF_SIZE_SFT		HDMI_OUT_PBUF_SIZE_SFT
-+#define HDMI_MINLEN_MASK		HDMI_OUT_MINLEN_MASK
-+#define HDMI_MINLEN_SFT			HDMI_OUT_MINLEN_SFT
-+#define HDMI_NUM_MASK			HDMI_CH_NUM_MASK
-+#define HDMI_NUM_SFT			HDMI_CH_NUM_SFT
-+
-+static const struct mtk_base_memif_data memif_data[MT8196_MEMIF_NUM] = {
-+	MT8196_DL_MEMIF(DL0),
-+	MT8196_DL_MEMIF(DL1),
-+	MT8196_DL_MEMIF(DL2),
-+	MT8196_DL_MEMIF(DL3),
-+	MT8196_DL_MEMIF(DL4),
-+	MT8196_DL_MEMIF(DL5),
-+	MT8196_DL_MEMIF(DL6),
-+	MT8196_DL_MEMIF(DL7),
-+	MT8196_DL_MEMIF(DL8),
-+	MT8196_DL_MEMIF(DL23),
-+	MT8196_DL_MEMIF(DL24),
-+	MT8196_DL_MEMIF(DL25),
-+	MT8196_DL_MEMIF(DL26),
-+	MT8196_MULTI_DL_MEMIF(DL_4CH),
-+	MT8196_MULTI_DL_MEMIF(DL_24CH),
-+	MT8196_MULTI_DL_MEMIF(HDMI),
-+	MT8196_UL_MEMIF(VUL0, VUL0_SEL_FS_SFT, VUL0_SEL_FS_MASK, VUL0_MONO_SFT),
-+	MT8196_UL_MEMIF(VUL1, VUL1_SEL_FS_SFT, VUL1_SEL_FS_MASK, VUL1_MONO_SFT),
-+	MT8196_UL_MEMIF(VUL2, VUL2_SEL_FS_SFT, VUL2_SEL_FS_MASK, VUL2_MONO_SFT),
-+	MT8196_UL_MEMIF(VUL3, VUL3_SEL_FS_SFT, VUL3_SEL_FS_MASK, VUL3_MONO_SFT),
-+	MT8196_UL_MEMIF(VUL4, VUL4_SEL_FS_SFT, VUL4_SEL_FS_MASK, VUL4_MONO_SFT),
-+	MT8196_UL_MEMIF(VUL5, VUL5_SEL_FS_SFT, VUL5_SEL_FS_MASK, VUL5_MONO_SFT),
-+	MT8196_UL_MEMIF(VUL6, VUL6_SEL_FS_SFT, VUL6_SEL_FS_MASK, VUL6_MONO_SFT),
-+	MT8196_UL_MEMIF(VUL7, VUL7_SEL_FS_SFT, VUL7_SEL_FS_MASK, VUL7_MONO_SFT),
-+	MT8196_UL_MEMIF(VUL8, VUL8_SEL_FS_SFT, VUL8_SEL_FS_MASK, VUL8_MONO_SFT),
-+	MT8196_UL_MEMIF(VUL9, VUL9_SEL_FS_SFT, VUL9_SEL_FS_MASK, VUL9_MONO_SFT),
-+	MT8196_UL_MEMIF(VUL10, VUL10_SEL_FS_SFT, VUL10_SEL_FS_MASK, VUL10_MONO_SFT),
-+	MT8196_UL_MEMIF(VUL24, VUL24_SEL_FS_SFT, VUL24_SEL_FS_MASK, VUL24_MONO_SFT),
-+	MT8196_UL_MEMIF(VUL25, VUL25_SEL_FS_SFT, VUL25_SEL_FS_MASK, VUL25_MONO_SFT),
-+	MT8196_UL_MEMIF(VUL26, VUL26_SEL_FS_SFT, VUL26_SEL_FS_MASK, VUL26_MONO_SFT),
-+	MT8196_UL_MEMIF(VUL_CM0, -1, -1, -1),
-+	MT8196_UL_MEMIF(VUL_CM1, -1, -1, -1),
-+	MT8196_UL_MEMIF(VUL_CM2, -1, -1, -1),
-+	MT8196_UL_MEMIF(ETDM_IN0, REG_FS_TIMING_SEL_SFT, REG_FS_TIMING_SEL_MASK, -1),
-+	MT8196_UL_MEMIF(ETDM_IN1, REG_FS_TIMING_SEL_SFT, REG_FS_TIMING_SEL_MASK, -1),
-+	MT8196_UL_MEMIF(ETDM_IN2, REG_FS_TIMING_SEL_SFT, REG_FS_TIMING_SEL_MASK, -1),
-+	MT8196_UL_MEMIF(ETDM_IN3, REG_FS_TIMING_SEL_SFT, REG_FS_TIMING_SEL_MASK, -1),
-+	MT8196_UL_MEMIF(ETDM_IN4, REG_FS_TIMING_SEL_SFT, REG_FS_TIMING_SEL_MASK, -1),
-+	MT8196_UL_MEMIF(ETDM_IN6, REG_FS_TIMING_SEL_SFT, REG_FS_TIMING_SEL_MASK, -1),
-+};
-+
-+#define MT8196_AFE_IRQ(_id)	\
-+	[MT8196_IRQ_##_id] = { \
-+		.id = MT8196_IRQ_##_id, \
-+		.irq_cnt_reg = AFE_IRQ##_id##_MCU_CFG1, \
-+		.irq_cnt_shift = AFE_IRQ_CNT_SHIFT, \
-+		.irq_cnt_maskbit = AFE_IRQ_CNT_MASK, \
-+		.irq_fs_reg = AFE_IRQ##_id##_MCU_CFG0, \
-+		.irq_fs_shift = AFE_IRQ##_id##_MCU_FS_SFT, \
-+		.irq_fs_maskbit = AFE_IRQ##_id##_MCU_FS_MASK, \
-+		.irq_en_reg = AFE_IRQ##_id##_MCU_CFG0, \
-+		.irq_en_shift = AFE_IRQ##_id##_MCU_ON_SFT, \
-+		.irq_clr_reg = AFE_IRQ##_id##_MCU_CFG1, \
-+		.irq_clr_shift = AFE_IRQ##_id##_CLR_CFG_SFT, \
-+	}
-+
-+#define MT8196_AFE_TDM_IRQ(_id)	\
-+	[MT8196_IRQ_##_id] = { \
-+		.id = MT8196_CUS_IRQ_TDM, \
-+		.irq_cnt_reg = AFE_CUSTOM_IRQ0_MCU_CFG1, \
-+		.irq_cnt_shift = AFE_CUSTOM_IRQ0_MCU_CNT_SFT, \
-+		.irq_cnt_maskbit = AFE_CUSTOM_IRQ0_MCU_CNT_MASK, \
-+		.irq_fs_reg = -1, \
-+		.irq_fs_shift = -1, \
-+		.irq_fs_maskbit = -1, \
-+		.irq_en_reg = AFE_CUSTOM_IRQ0_MCU_CFG0, \
-+		.irq_en_shift = AFE_CUSTOM_IRQ0_MCU_ON_SFT, \
-+		.irq_clr_reg = AFE_CUSTOM_IRQ0_MCU_CFG1, \
-+		.irq_clr_shift = AFE_CUSTOM_IRQ0_CLR_CFG_SFT, \
-+	}
-+
-+static const struct mtk_base_irq_data irq_data[MT8196_IRQ_NUM] = {
-+	MT8196_AFE_IRQ(0),
-+	MT8196_AFE_IRQ(1),
-+	MT8196_AFE_IRQ(2),
-+	MT8196_AFE_IRQ(3),
-+	MT8196_AFE_IRQ(4),
-+	MT8196_AFE_IRQ(5),
-+	MT8196_AFE_IRQ(6),
-+	MT8196_AFE_IRQ(7),
-+	MT8196_AFE_IRQ(8),
-+	MT8196_AFE_IRQ(9),
-+	MT8196_AFE_IRQ(10),
-+	MT8196_AFE_IRQ(11),
-+	MT8196_AFE_IRQ(12),
-+	MT8196_AFE_IRQ(13),
-+	MT8196_AFE_IRQ(14),
-+	MT8196_AFE_IRQ(15),
-+	MT8196_AFE_IRQ(16),
-+	MT8196_AFE_IRQ(17),
-+	MT8196_AFE_IRQ(18),
-+	MT8196_AFE_IRQ(19),
-+	MT8196_AFE_IRQ(20),
-+	MT8196_AFE_IRQ(21),
-+	MT8196_AFE_IRQ(22),
-+	MT8196_AFE_IRQ(23),
-+	MT8196_AFE_IRQ(24),
-+	MT8196_AFE_IRQ(25),
-+	MT8196_AFE_IRQ(26),
-+	MT8196_AFE_TDM_IRQ(31),
-+};
-+
-+static const int memif_irq_usage[MT8196_MEMIF_NUM] = {
-+	/* TODO: verify each memif & irq */
-+	[MT8196_MEMIF_DL0] = MT8196_IRQ_0,
-+	[MT8196_MEMIF_DL1] = MT8196_IRQ_1,
-+	[MT8196_MEMIF_DL2] = MT8196_IRQ_2,
-+	[MT8196_MEMIF_DL3] = MT8196_IRQ_3,
-+	[MT8196_MEMIF_DL4] = MT8196_IRQ_4,
-+	[MT8196_MEMIF_DL5] = MT8196_IRQ_5,
-+	[MT8196_MEMIF_DL6] = MT8196_IRQ_6,
-+	[MT8196_MEMIF_DL7] = MT8196_IRQ_7,
-+	[MT8196_MEMIF_DL8] = MT8196_IRQ_8,
-+	[MT8196_MEMIF_DL23] = MT8196_IRQ_9,
-+	[MT8196_MEMIF_DL24] = MT8196_IRQ_10,
-+	[MT8196_MEMIF_DL25] = MT8196_IRQ_11,
-+	[MT8196_MEMIF_DL26] = MT8196_IRQ_0,
-+	[MT8196_MEMIF_DL_4CH] = MT8196_IRQ_0,
-+	[MT8196_MEMIF_DL_24CH] = MT8196_IRQ_12,
-+	[MT8196_MEMIF_VUL0] = MT8196_IRQ_13,
-+	[MT8196_MEMIF_VUL1] = MT8196_IRQ_14,
-+	[MT8196_MEMIF_VUL2] = MT8196_IRQ_15,
-+	[MT8196_MEMIF_VUL3] = MT8196_IRQ_16,
-+	[MT8196_MEMIF_VUL4] = MT8196_IRQ_17,
-+	[MT8196_MEMIF_VUL5] = MT8196_IRQ_18,
-+	[MT8196_MEMIF_VUL6] = MT8196_IRQ_19,
-+	[MT8196_MEMIF_VUL7] = MT8196_IRQ_20,
-+	[MT8196_MEMIF_VUL8] = MT8196_IRQ_21,
-+	[MT8196_MEMIF_VUL9] = MT8196_IRQ_22,
-+	[MT8196_MEMIF_VUL10] = MT8196_IRQ_23,
-+	[MT8196_MEMIF_VUL24] = MT8196_IRQ_24,
-+	[MT8196_MEMIF_VUL25] = MT8196_IRQ_25,
-+	[MT8196_MEMIF_VUL26] = MT8196_IRQ_0,
-+	[MT8196_MEMIF_VUL_CM0] = MT8196_IRQ_26,
-+	[MT8196_MEMIF_VUL_CM1] = MT8196_IRQ_0,
-+	[MT8196_MEMIF_VUL_CM2] = MT8196_IRQ_0,
-+	[MT8196_MEMIF_ETDM_IN0] = MT8196_IRQ_0,
-+	[MT8196_MEMIF_ETDM_IN1] = MT8196_IRQ_0,
-+	[MT8196_MEMIF_ETDM_IN2] = MT8196_IRQ_0,
-+	[MT8196_MEMIF_ETDM_IN3] = MT8196_IRQ_0,
-+	[MT8196_MEMIF_ETDM_IN4] = MT8196_IRQ_0,
-+	[MT8196_MEMIF_ETDM_IN6] = MT8196_IRQ_0,
-+	[MT8196_MEMIF_HDMI] = MT8196_IRQ_31
-+};
-+
-+static bool mt8196_is_volatile_reg(struct device *dev, unsigned int reg)
-+{
-+	/* these auto-gen reg has read-only bit, so put it as volatile */
-+	/* volatile reg cannot be cached, so cannot be set when power off */
-+	switch (reg) {
-+	case AUDIO_TOP_CON0 ... AUDIO_TOP_CON4:
-+	case AFE_APLL1_TUNER_MON0:
-+	case AFE_APLL2_TUNER_MON0:
-+	case AFE_SPM_CONTROL_ACK:
-+	case AUDIO_TOP_IP_VERSION:
-+	case AUDIO_ENGEN_CON0_MON:
-+	case AUD_TOP_MON_RG:
-+	case AFE_CONNSYS_I2S_IPM_VER_MON:
-+	case AFE_CONNSYS_I2S_MON:
-+	case AFE_PCM_INTF_MON:
-+	case AFE_PCM_TOP_IP_VERSION:
-+	case AFE_IRQ_MCU_STATUS:
-+	case AFE_CUSTOM_IRQ_MCU_STATUS:
-+	case AFE_IRQ_MCU_MON0 ... AFE_IRQ26_CNT_MON:
-+	case AFE_CUSTOM_IRQ0_CNT_MON:
-+	case AFE_STF_MON:
-+	case AFE_STF_IP_VERSION:
-+	case AFE_CM0_MON:
-+	case AFE_CM0_IP_VERSION:
-+	case AFE_CM1_MON:
-+	case AFE_CM1_IP_VERSION:
-+	case AFE_ADDA_UL0_SRC_DEBUG_MON0 ... AFE_ADDA_UL0_SRC_MON1:
-+	case AFE_ADDA_UL0_IP_VERSION:
-+	case AFE_ADDA_UL1_SRC_DEBUG_MON0 ... AFE_ADDA_UL1_SRC_MON1:
-+	case AFE_ADDA_UL1_IP_VERSION:
-+	case AFE_MTKAIF_IPM_VER_MON:
-+	case AFE_MTKAIF_MON:
-+	case AFE_AUD_PAD_TOP_MON:
-+	case AFE_ADDA_MTKAIFV4_MON0 ... AFE_ADDA6_MTKAIFV4_MON0:
-+	case ETDM_IN0_MON:
-+	case ETDM_IN1_MON:
-+	case ETDM_IN2_MON:
-+	case ETDM_IN4_MON:
-+	case ETDM_IN6_MON:
-+	case ETDM_OUT0_MON:
-+	case ETDM_OUT1_MON:
-+	case ETDM_OUT2_MON:
-+	case ETDM_OUT4_MON:
-+	case ETDM_OUT6_MON:
-+	case AFE_DPTX_MON:
-+	case AFE_TDM_TOP_IP_VERSION:
-+	case AFE_CONN_MON0 ... AFE_CONN_MON5:
-+	case AFE_CBIP_SLV_DECODER_MON0 ... AFE_CBIP_SLV_MUX_MON1:
-+	case AFE_DL0_CUR_MSB ... AFE_DL0_CUR:
-+	case AFE_DL0_RCH_MON ... AFE_DL0_LCH_MON:
-+	case AFE_DL1_CUR_MSB ... AFE_DL1_CUR:
-+	case AFE_DL1_RCH_MON ... AFE_DL1_LCH_MON:
-+	case AFE_DL2_CUR_MSB ... AFE_DL2_CUR:
-+	case AFE_DL2_RCH_MON ... AFE_DL2_LCH_MON:
-+	case AFE_DL3_CUR_MSB ... AFE_DL3_CUR:
-+	case AFE_DL3_RCH_MON ... AFE_DL3_LCH_MON:
-+	case AFE_DL4_CUR_MSB ... AFE_DL4_CUR:
-+	case AFE_DL4_RCH_MON ... AFE_DL4_LCH_MON:
-+	case AFE_DL5_CUR_MSB ... AFE_DL5_CUR:
-+	case AFE_DL5_RCH_MON ... AFE_DL5_LCH_MON:
-+	case AFE_DL6_CUR_MSB ... AFE_DL6_CUR:
-+	case AFE_DL6_RCH_MON ... AFE_DL6_LCH_MON:
-+	case AFE_DL7_CUR_MSB ... AFE_DL7_CUR:
-+	case AFE_DL7_RCH_MON ... AFE_DL7_LCH_MON:
-+	case AFE_DL8_CUR_MSB ... AFE_DL8_CUR:
-+	case AFE_DL8_RCH_MON ... AFE_DL8_LCH_MON:
-+	case AFE_DL_24CH_CUR_MSB ... AFE_DL_24CH_CUR:
-+	case AFE_DL_4CH_CUR_MSB ... AFE_DL_4CH_CUR:
-+	case AFE_DL23_CUR_MSB ... AFE_DL23_CUR:
-+	case AFE_DL23_RCH_MON ... AFE_DL23_LCH_MON:
-+	case AFE_DL24_CUR_MSB ... AFE_DL24_CUR:
-+	case AFE_DL24_RCH_MON ... AFE_DL24_LCH_MON:
-+	case AFE_DL25_CUR_MSB ... AFE_DL25_CUR:
-+	case AFE_DL25_RCH_MON ... AFE_DL25_LCH_MON:
-+	case AFE_DL26_CUR_MSB ... AFE_DL26_CUR:
-+	case AFE_DL26_RCH_MON ... AFE_DL26_LCH_MON:
-+	case AFE_VUL0_CUR_MSB ... AFE_VUL0_CUR:
-+	case AFE_VUL1_CUR_MSB ... AFE_VUL1_CUR:
-+	case AFE_VUL2_CUR_MSB ... AFE_VUL2_CUR:
-+	case AFE_VUL3_CUR_MSB ... AFE_VUL3_CUR:
-+	case AFE_VUL4_CUR_MSB ... AFE_VUL4_CUR:
-+	case AFE_VUL5_CUR_MSB ... AFE_VUL5_CUR:
-+	case AFE_VUL6_CUR_MSB ... AFE_VUL6_CUR:
-+	case AFE_VUL7_CUR_MSB ... AFE_VUL7_CUR:
-+	case AFE_VUL8_CUR_MSB ... AFE_VUL8_CUR:
-+	case AFE_VUL9_CUR_MSB ... AFE_VUL9_CUR:
-+	case AFE_VUL10_CUR_MSB ... AFE_VUL10_CUR:
-+	case AFE_VUL24_CUR_MSB ... AFE_VUL24_CUR:
-+	case AFE_VUL25_CUR_MSB ... AFE_VUL25_CUR:
-+	case AFE_VUL25_RCH_MON ... AFE_VUL25_LCH_MON:
-+	case AFE_VUL26_CUR_MSB ... AFE_VUL26_CUR:
-+	case AFE_VUL_CM0_BASE_MSB ... AFE_VUL_CM0_CON0:
-+	case AFE_VUL_CM1_CUR_MSB ... AFE_VUL_CM1_CUR:
-+	case AFE_VUL_CM2_CUR_MSB ... AFE_VUL_CM2_CUR:
-+	case AFE_ETDM_IN0_CUR_MSB ... AFE_ETDM_IN0_CUR:
-+	case AFE_ETDM_IN1_CUR_MSB ... AFE_ETDM_IN1_CUR:
-+	case AFE_ETDM_IN2_CUR_MSB ... AFE_ETDM_IN2_CUR:
-+	case AFE_ETDM_IN3_CUR_MSB ... AFE_ETDM_IN3_CUR:
-+	case AFE_ETDM_IN4_CUR_MSB ... AFE_ETDM_IN4_CUR:
-+	case AFE_ETDM_IN6_CUR_MSB ... AFE_ETDM_IN6_CUR:
-+	case AFE_HDMI_OUT_CUR_MSB ... AFE_HDMI_OUT_CUR:
-+	case AFE_HDMI_OUT_END:
-+	case AFE_PROT_SIDEBAND0_MON ... AFE_DOMAIN_SIDEBAND9_MON:
-+	case AFE_PCM0_INTF_CON1_MASK_MON ... AFE_ADDA_UL1_SRC_CON0_MASK_MON:
-+	case AFE_IRQ_MCU_EN ... AFE_IRQ_MCU_DSP2_EN:
-+	case AFE_CUSTOM_IRQ_MCU_EN:
-+	case AFE_DL5_CON0:
-+	case AFE_DL6_CON0:
-+	case AFE_DL23_CON0:
-+	case AFE_DL_24CH_CON0:
-+	case AFE_VUL1_CON0:
-+	case AFE_VUL3_CON0:
-+	case AFE_VUL4_CON0:
-+	case AFE_VUL5_CON0:
-+	case AFE_VUL9_CON0:
-+	case AFE_VUL25_CON0:
-+	case AFE_IRQ0_MCU_CFG0 ... AFE_IRQ26_MCU_CFG1:
-+		return true;
-+	default:
-+		return false;
-+	};
-+}
-+
-+static const struct regmap_config mt8196_afe_regmap_config = {
-+	.reg_bits = 32,
-+	.reg_stride = 4,
-+	.val_bits = 32,
-+
-+	.volatile_reg = mt8196_is_volatile_reg,
-+
-+	.max_register = AFE_MAX_REGISTER,
-+	.num_reg_defaults_raw = AFE_MAX_REGISTER,
-+
-+	.cache_type = REGCACHE_FLAT,
-+};
-+
-+static irqreturn_t mt8196_afe_irq_handler(int irq_id, void *dev)
-+{
-+	struct mtk_base_afe *afe = dev;
-+	struct mtk_base_afe_irq *irq;
-+	u32 status;
-+	u32 status_mcu;
-+	u32 mcu_en;
-+	u32 cus_status;
-+	u32 cus_status_mcu;
-+	u32 cus_mcu_en;
-+	u32 tmp_reg;
-+	int ret, cus_ret;
-+	int i;
-+	struct timespec64 ts64;
-+	u64 t1, t2;
-+	/* one interrupt period = 5ms */
-+	const u64 timeout_limit = 5000000;
-+
-+	/* get irq that is sent to MCU */
-+	regmap_read(afe->regmap, AFE_IRQ_MCU_EN, &mcu_en);
-+	regmap_read(afe->regmap, AFE_CUSTOM_IRQ_MCU_EN, &cus_mcu_en);
-+
-+	ret = regmap_read(afe->regmap, AFE_IRQ_MCU_STATUS, &status);
-+	cus_ret = regmap_read(afe->regmap, AFE_CUSTOM_IRQ_MCU_STATUS, &cus_status);
-+	/* only care IRQ which is sent to MCU */
-+	status_mcu = status & mcu_en & AFE_IRQ_STATUS_BITS;
-+	cus_status_mcu = cus_status & cus_mcu_en & AFE_IRQ_STATUS_BITS;
-+	if ((ret || !status_mcu) && (cus_ret || !cus_status_mcu)) {
-+		dev_err(afe->dev, "ret %d, sat 0x%x, en 0x%x,csat 0x%x, cen 0x%x\n",
-+			ret, status, mcu_en, cus_status_mcu, cus_mcu_en);
-+		return IRQ_NONE;
-+	}
-+
-+	ktime_get_ts64(&ts64);
-+	t1 = ktime_get_ns();
-+
-+	for (i = 0; i < MT8196_MEMIF_NUM; i++) {
-+		struct mtk_base_afe_memif *memif = &afe->memif[i];
-+
-+		if (!memif->substream)
-+			continue;
-+
-+		if (memif->irq_usage < 0)
-+			continue;
-+		irq = &afe->irqs[memif->irq_usage];
-+
-+		if (i == MT8196_MEMIF_HDMI) {
-+			if (cus_status_mcu & BIT(irq->irq_data->id))
-+				snd_pcm_period_elapsed(memif->substream);
-+		} else {
-+			if (status_mcu & BIT(irq->irq_data->id))
-+				snd_pcm_period_elapsed(memif->substream);
-+		}
-+	}
-+
-+	ktime_get_ts64(&ts64);
-+	t2 = ktime_get_ns();
-+	t2 = t2 - t1; /* in ns (10^9) */
-+
-+	if (t2 > timeout_limit)
-+		dev_warn(afe->dev, "IRQ handler exceeded time limit by %llu ns\n",
-+			 t2 - timeout_limit);
-+
-+	/* clear irq */
-+	for (i = 0; i < MT8196_IRQ_NUM; ++i) {
-+		/* cus_status_mcu only bit0 is used for TDM */
-+		if ((status_mcu & BIT(i)) || (cus_status_mcu & 0x1)) {
-+			regmap_read(afe->regmap, irq_data[i].irq_clr_reg, &tmp_reg);
-+			regmap_update_bits(afe->regmap, irq_data[i].irq_clr_reg,
-+					   AFE_IRQ_CLR_CFG_MASK_SFT |
-+					   AFE_IRQ_MISS_FLAG_CLR_CFG_MASK_SFT,
-+					   tmp_reg ^ (AFE_IRQ_CLR_CFG_MASK_SFT |
-+					   AFE_IRQ_MISS_FLAG_CLR_CFG_MASK_SFT));
-+		}
-+	}
-+
-+	return IRQ_HANDLED;
-+}
-+
-+static int mt8196_afe_runtime_suspend(struct device *dev)
-+{
-+	struct mtk_base_afe *afe = dev_get_drvdata(dev);
-+	unsigned int value;
-+	unsigned int tmp_reg;
-+	int ret, i;
-+
-+	if (!afe->regmap) {
-+		dev_err(afe->dev, "skip regmap\n");
-+		goto skip_regmap;
-+	}
-+
-+	/* disable AFE */
-+	mt8196_afe_disable_main_clock(afe);
-+
-+	ret = regmap_read_poll_timeout(afe->regmap,
-+				       AUDIO_ENGEN_CON0_MON,
-+				       value,
-+				       (value & AUDIO_ENGEN_MON_SFT) == 0,
-+				       20,
-+				       1 * 1000 * 1000);
-+	dev_dbg(afe->dev, "read_poll ret %d\n", ret);
-+	if (ret)
-+		dev_warn(afe->dev, "ret %d\n", ret);
-+
-+	/* make sure all irq status are cleared */
-+	for (i = 0; i < MT8196_IRQ_NUM; ++i) {
-+		regmap_read(afe->regmap, irq_data[i].irq_clr_reg, &tmp_reg);
-+		regmap_update_bits(afe->regmap, irq_data[i].irq_clr_reg,
-+				   AFE_IRQ_CLR_CFG_MASK_SFT | AFE_IRQ_MISS_FLAG_CLR_CFG_MASK_SFT,
-+				   tmp_reg ^ (AFE_IRQ_CLR_CFG_MASK_SFT |
-+				   AFE_IRQ_MISS_FLAG_CLR_CFG_MASK_SFT));
-+	}
-+
-+	/* reset audio 26M request */
-+	regmap_update_bits(afe->regmap,
-+			   AFE_SPM_CONTROL_REQ, 0x1, 0x0);
-+
-+	/* cache only */
-+	regcache_cache_only(afe->regmap, true);
-+	regcache_mark_dirty(afe->regmap);
-+
-+skip_regmap:
-+	mt8196_afe_disable_reg_rw_clk(afe);
-+	return 0;
-+}
-+
-+static int mt8196_afe_runtime_resume(struct device *dev)
-+{
-+	struct mtk_base_afe *afe = dev_get_drvdata(dev);
-+	int ret = 0;
-+
-+	ret = mt8196_afe_enable_reg_rw_clk(afe);
-+	if (ret)
-+		return ret;
-+
-+	if (!afe->regmap) {
-+		dev_warn(afe->dev, "skip regmap\n");
-+		goto skip_regmap;
-+	}
-+	regcache_cache_only(afe->regmap, false);
-+	regcache_sync(afe->regmap);
-+
-+	/* set audio 26M request */
-+	regmap_update_bits(afe->regmap, AFE_SPM_CONTROL_REQ, 0x1, 0x1);
-+	regmap_update_bits(afe->regmap, AFE_CBIP_CFG0, 0x1, 0x1);
-+
-+	/* force cpu use 8_24 format when writing 32bit data */
-+	regmap_update_bits(afe->regmap, AFE_MEMIF_CON0,
-+			   CPU_HD_ALIGN_MASK_SFT, 0 << CPU_HD_ALIGN_SFT);
-+
-+	/* enable AFE */
-+	mt8196_afe_enable_main_clock(afe);
-+
-+skip_regmap:
-+	return 0;
-+}
-+
-+static int mt8196_afe_component_probe(struct snd_soc_component *component)
-+{
-+	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
-+
-+	if (component) {
-+		/* enable clock for regcache get default value from hw */
-+		pm_runtime_get_sync(afe->dev);
-+		mtk_afe_add_sub_dai_control(component);
-+		pm_runtime_put_sync(afe->dev);
-+	}
-+	return 0;
-+}
-+
-+static int mt8196_afe_pcm_open(struct snd_soc_component *component,
-+			       struct snd_pcm_substream *substream)
-+{
-+	/* set the wait_for_avail to 2 sec*/
-+	substream->wait_time = msecs_to_jiffies(2 * 1000);
-+
-+	return 0;
-+}
-+
-+static void mt8196_afe_pcm_free(struct snd_soc_component *component, struct snd_pcm *pcm)
-+{
-+	snd_pcm_lib_preallocate_free_for_all(pcm);
-+}
-+
-+static const struct snd_soc_component_driver mt8196_afe_component = {
-+	.name = AFE_PCM_NAME,
-+	.probe = mt8196_afe_component_probe,
-+	.pcm_new = mtk_afe_pcm_new,
-+	.pcm_free = mt8196_afe_pcm_free,
-+	.open = mt8196_afe_pcm_open,
-+	.pointer = mtk_afe_pcm_pointer,
-+};
-+
-+static int mt8196_dai_memif_register(struct mtk_base_afe *afe)
-+{
-+	struct mtk_base_afe_dai *dai;
-+
-+	dai = devm_kzalloc(afe->dev, sizeof(*dai), GFP_KERNEL);
-+	if (!dai)
-+		return -ENOMEM;
-+
-+	list_add(&dai->list, &afe->sub_dais);
-+
-+	dai->dai_drivers = mt8196_memif_dai_driver;
-+	dai->num_dai_drivers = ARRAY_SIZE(mt8196_memif_dai_driver);
-+	dai->dapm_widgets = mt8196_memif_widgets;
-+	dai->num_dapm_widgets = ARRAY_SIZE(mt8196_memif_widgets);
-+	dai->dapm_routes = mt8196_memif_routes;
-+	dai->num_dapm_routes = ARRAY_SIZE(mt8196_memif_routes);
-+	return 0;
-+}
-+
-+typedef int (*dai_register_cb)(struct mtk_base_afe *);
-+static const dai_register_cb dai_register_cbs[] = {
-+	mt8196_dai_adda_register,
-+	mt8196_dai_i2s_register,
-+	mt8196_dai_tdm_register,
-+	mt8196_dai_memif_register,
-+};
-+
-+static const struct reg_sequence mt8196_cg_patch[] = {
-+	{ AUDIO_TOP_CON4, 0x361c },
-+};
-+
-+static int mt8196_afe_pcm_dev_probe(struct platform_device *pdev)
-+{
-+	int ret, i;
-+	unsigned int tmp_reg;
-+	int irq_id;
-+	struct mtk_base_afe *afe;
-+	struct mt8196_afe_private *afe_priv;
-+	struct device *dev = &pdev->dev;
-+
-+	ret = dma_set_mask_and_coherent(dev, DMA_BIT_MASK(34));
-+	if (ret)
-+		return ret;
-+
-+	ret = of_reserved_mem_device_init(dev);
-+	if (ret)
-+		dev_err(dev, "failed to assign memory region: %d\n", ret);
-+
-+	afe = devm_kzalloc(dev, sizeof(*afe), GFP_KERNEL);
-+	if (!afe)
-+		return -ENOMEM;
-+
-+	platform_set_drvdata(pdev, afe);
-+
-+	afe->platform_priv = devm_kzalloc(dev, sizeof(*afe_priv),
-+					  GFP_KERNEL);
-+	if (!afe->platform_priv)
-+		return -ENOMEM;
-+
-+	afe_priv = afe->platform_priv;
-+	afe->dev = dev;
-+
-+	afe->base_addr = devm_platform_ioremap_resource(pdev, 0);
-+	if (IS_ERR(afe->base_addr))
-+		return dev_err_probe(dev, PTR_ERR(afe->base_addr),
-+				     "AFE base_addr not found\n");
-+
-+	/* init audio related clock */
-+	ret = mt8196_init_clock(afe);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "init clock error.\n");
-+
-+	/* init memif */
-+	/* IPM2.0 no need banding */
-+	afe->memif_32bit_supported = 1;
-+	afe->memif_size = MT8196_MEMIF_NUM;
-+	afe->memif = devm_kcalloc(dev, afe->memif_size, sizeof(*afe->memif),
-+				  GFP_KERNEL);
-+
-+	if (!afe->memif)
-+		return -ENOMEM;
-+
-+	for (i = 0; i < afe->memif_size; i++) {
-+		afe->memif[i].data = &memif_data[i];
-+		afe->memif[i].irq_usage = memif_irq_usage[i];
-+		afe->memif[i].const_irq = 1;
-+	}
-+
-+	mutex_init(&afe->irq_alloc_lock);
-+
-+	/* init irq */
-+	afe->irqs_size = MT8196_IRQ_NUM;
-+	afe->irqs = devm_kcalloc(dev, afe->irqs_size, sizeof(*afe->irqs),
-+				 GFP_KERNEL);
-+
-+	if (!afe->irqs)
-+		return -ENOMEM;
-+
-+	for (i = 0; i < afe->irqs_size; i++)
-+		afe->irqs[i].irq_data = &irq_data[i];
-+
-+	/* request irq */
-+	irq_id = platform_get_irq(pdev, 0);
-+	if (irq_id < 0)
-+		return dev_err_probe(dev, irq_id, "no irq found");
-+
-+	ret = devm_request_irq(dev, irq_id, mt8196_afe_irq_handler,
-+			       IRQF_TRIGGER_NONE,
-+			       "Afe_ISR_Handle", afe);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "could not request_irq for Afe_ISR_Handle\n");
-+
-+	/* init sub_dais */
-+	INIT_LIST_HEAD(&afe->sub_dais);
-+
-+	for (i = 0; i < ARRAY_SIZE(dai_register_cbs); i++) {
-+		ret = dai_register_cbs[i](afe);
-+		if (ret)
-+			return dev_err_probe(dev, ret, "dai register i %d fail\n", i);
-+	}
-+
-+	/* init dai_driver and component_driver */
-+	ret = mtk_afe_combine_sub_dai(afe);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "mtk_afe_combine_sub_dai fail\n");
-+
-+	/* others */
-+	afe->mtk_afe_hardware = &mt8196_afe_hardware;
-+	afe->memif_fs = mt8196_memif_fs;
-+	afe->irq_fs = mt8196_irq_fs;
-+	afe->get_dai_fs = mt8196_get_dai_fs;
-+	afe->get_memif_pbuf_size = mt8196_get_memif_pbuf_size;
-+
-+	afe->runtime_resume = mt8196_afe_runtime_resume;
-+	afe->runtime_suspend = mt8196_afe_runtime_suspend;
-+
-+	ret = devm_pm_runtime_enable(dev);
-+	if (ret)
-+		return ret;
-+
-+/*
-+ * Audio device is part of genpd. Registering it as a syscore device ensure
-+ * the proper power-on sequence of the AFE device.
-+ */
-+	dev_pm_syscore_device(dev, true);
-+
-+	/* enable clock for regcache get default value from hw */
-+	pm_runtime_get_sync(dev);
-+
-+	afe->regmap = devm_regmap_init_mmio(dev, afe->base_addr,
-+					    &mt8196_afe_regmap_config);
-+	if (IS_ERR(afe->regmap))
-+		return PTR_ERR(afe->regmap);
-+
-+	ret = regmap_register_patch(afe->regmap, mt8196_cg_patch,
-+				    ARRAY_SIZE(mt8196_cg_patch));
-+	if (ret < 0) {
-+		dev_err(dev, "Failed to apply cg patch\n");
-+		goto err_pm_disable;
-+	}
-+
-+	regmap_read(afe->regmap, AFE_IRQ_MCU_EN, &tmp_reg);
-+	regmap_write(afe->regmap, AFE_IRQ_MCU_EN, 0xffffffff);
-+	regmap_read(afe->regmap, AFE_IRQ_MCU_EN, &tmp_reg);
-+
-+	pm_runtime_put_sync(dev);
-+
-+	regcache_cache_only(afe->regmap, true);
-+	regcache_mark_dirty(afe->regmap);
-+
-+	/* register component */
-+	ret = devm_snd_soc_register_component(dev,
-+					      &mt8196_afe_component,
-+					      afe->dai_drivers,
-+					      afe->num_dai_drivers);
-+	if (ret) {
-+		dev_err(dev, "afe component err\n");
-+		goto err_pm_disable;
-+	}
-+
-+	return 0;
-+
-+err_pm_disable:
-+	pm_runtime_put_sync(dev);
-+	return ret;
-+}
-+
-+static void mt8196_afe_pcm_dev_remove(struct platform_device *pdev)
-+{
-+	struct mtk_base_afe *afe = platform_get_drvdata(pdev);
-+	struct device *dev = &pdev->dev;
-+
-+	pm_runtime_put_sync(dev);
-+	if (!pm_runtime_status_suspended(dev))
-+		mt8196_afe_runtime_suspend(dev);
-+
-+	mt8196_afe_disable_main_clock(afe);
-+	/* disable afe clock */
-+	mt8196_afe_disable_reg_rw_clk(afe);
-+}
-+
-+static const struct of_device_id mt8196_afe_pcm_dt_match[] = {
-+	{ .compatible = "mediatek,mt8196-afe", },
-+	{ /* sentinel */ },
-+};
-+MODULE_DEVICE_TABLE(of, mt8196_afe_pcm_dt_match);
-+
-+static const struct dev_pm_ops mt8196_afe_pm_ops = {
-+	SET_RUNTIME_PM_OPS(mt8196_afe_runtime_suspend,
-+			   mt8196_afe_runtime_resume, NULL)
-+};
-+
-+static struct platform_driver mt8196_afe_pcm_driver = {
-+	.driver = {
-+		.name = "mt8196-afe",
-+		.of_match_table = mt8196_afe_pcm_dt_match,
-+		.pm = &mt8196_afe_pm_ops,
-+	},
-+	.probe = mt8196_afe_pcm_dev_probe,
-+	.remove = mt8196_afe_pcm_dev_remove,
-+};
-+module_platform_driver(mt8196_afe_pcm_driver);
-+
-+MODULE_DESCRIPTION("Mediatek ALSA SoC AFE platform driver for 8196");
-+MODULE_AUTHOR("Darren Ye <darren.ye@mediatek.com>");
-+MODULE_LICENSE("GPL");
--- 
-2.45.2
-
+RGVhciBOaWNvbGFzLA0KDQpUaGFuayB5b3UgZ3JlYXRseSBmb3IgdGFraW5nIHRoZSB0aW1lIHRv
+IGhlbHAgcmV2aWV3IHRoZSBwYXRjaC4NCg0KT24gV2VkLCAyMDI2LTA0LTI5IGF0IDEwOjU2IC0w
+NDAwLCBOaWNvbGFzIER1ZnJlc25lIHdyb3RlOg0KPiBMZSBqZXVkaSAyMyBhdnJpbCAyMDI2IMOg
+IDE1OjMzICswODAwLCBJcnVpIFdhbmcgYSDDqWNyaXQgOg0KPiA+IEFkYXB0IHRoZSBlbmNvZGVy
+IGRyaXZlciB0byBzdXBwb3J0IFZDUCBmaXJtd2FyZSBpbnRlcmZhY2UuDQo+ID4gDQo+ID4gU2V0
+IHRoZSBlbmNvZGVyIGRyaXZlciBmaXJtd2FyZSB0eXBlIHRvICdWQ1AnLg0KPiA+IEFsbG9jYXRl
+IFJDIGJ1ZmZlcnMgdXNpbmcgdGhlIFZDUCBkZXZpY2UuDQo+ID4gU2VuZCB0aGUgc2hhcmVkIG1l
+bW9yeSBhZGRyZXNzIHRvIFZDUCBhbmQgbWFwIHRoZSBlbmNvZGVyIFZTSQ0KPiA+IGFkZHJlc3MN
+Cj4gPiB0byB0aGUgQ1BVIGFkZHJlc3Mgc3BhY2UgdXNpbmcgdGhlIFZDUCBzaGFyZWQgbWVtb3J5
+IGFkZHJlc3MuDQo+ID4gDQo+ID4gU2lnbmVkLW9mZi1ieTogSXJ1aSBXYW5nIDxpcnVpLndhbmdA
+bWVkaWF0ZWsuY29tPg0KPiA+IC0tLQ0KPiA+ICAuLi4vbWVkaWF0ZWsvdmNvZGVjL2NvbW1vbi9t
+dGtfdmNvZGVjX2Z3LmMgICAgfCAgNiArKysrKw0KPiA+ICAuLi4vbWVkaWF0ZWsvdmNvZGVjL2Nv
+bW1vbi9tdGtfdmNvZGVjX2Z3LmggICAgfCAgMSArDQo+ID4gIC4uLi92Y29kZWMvY29tbW9uL210
+a192Y29kZWNfZndfcHJpdi5oICAgICAgICB8ICAxICsNCj4gPiAgLi4uL3Zjb2RlYy9jb21tb24v
+bXRrX3Zjb2RlY19md192Y3AuYyAgICAgICAgIHwgIDYgKysrKysNCj4gPiAgLi4uL3Zjb2RlYy9l
+bmNvZGVyL210a192Y29kZWNfZW5jX2Rydi5jICAgICAgIHwgIDMgKysrDQo+ID4gIC4uLi92Y29k
+ZWMvZW5jb2Rlci92ZW5jL3ZlbmNfY29tbW9uX2lmLmMgICAgICB8IDIzICsrKysrKysrKysrKysr
+LQ0KPiA+IC0tLS0NCj4gPiAgLi4uL21lZGlhdGVrL3Zjb2RlYy9lbmNvZGVyL3ZlbmNfdnB1X2lm
+LmMgICAgIHwgMTQgKysrKysrKysrKy0NCj4gPiAgNyBmaWxlcyBjaGFuZ2VkLCA0NyBpbnNlcnRp
+b25zKCspLCA3IGRlbGV0aW9ucygtKQ0KPiA+IA0KPiA+IGRpZmYgLS1naXQNCj4gPiBhL2RyaXZl
+cnMvbWVkaWEvcGxhdGZvcm0vbWVkaWF0ZWsvdmNvZGVjL2NvbW1vbi9tdGtfdmNvZGVjX2Z3LmMN
+Cj4gPiBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbWVkaWF0ZWsvdmNvZGVjL2NvbW1vbi9tdGtf
+dmNvZGVjX2Z3LmMNCj4gPiBpbmRleCAwMzgxYWNjZWRhMjUuLjdhNTA0ZjA5M2JkOCAxMDA2NDQN
+Cj4gPiAtLS0gYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL21lZGlhdGVrL3Zjb2RlYy9jb21tb24v
+bXRrX3Zjb2RlY19mdy5jDQo+ID4gKysrIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tZWRpYXRl
+ay92Y29kZWMvY29tbW9uL210a192Y29kZWNfZncuYw0KPiA+IEBAIC0xMDUsMyArMTA1LDkgQEAg
+aW50IG10a192Y29kZWNfZndfZ2V0X3R5cGUoc3RydWN0IG10a192Y29kZWNfZncNCj4gPiAqZncp
+DQo+ID4gIAlyZXR1cm4gZnctPnR5cGU7DQo+ID4gIH0NCj4gPiAgRVhQT1JUX1NZTUJPTF9HUEwo
+bXRrX3Zjb2RlY19md19nZXRfdHlwZSk7DQo+ID4gKw0KPiA+ICtzdHJ1Y3QgZGV2aWNlICptdGtf
+dmNvZGVjX2Z3X2dldF9kZXYoc3RydWN0IG10a192Y29kZWNfZncgKmZ3KQ0KPiA+ICt7DQo+ID4g
+KwlyZXR1cm4gZnctPm9wcy0+Z2V0X2Z3X2Rldihmdyk7DQo+ID4gK30NCj4gPiArRVhQT1JUX1NZ
+TUJPTF9HUEwobXRrX3Zjb2RlY19md19nZXRfZGV2KTsNCj4gPiBkaWZmIC0tZ2l0DQo+ID4gYS9k
+cml2ZXJzL21lZGlhL3BsYXRmb3JtL21lZGlhdGVrL3Zjb2RlYy9jb21tb24vbXRrX3Zjb2RlY19m
+dy5oDQo+ID4gYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL21lZGlhdGVrL3Zjb2RlYy9jb21tb24v
+bXRrX3Zjb2RlY19mdy5oDQo+ID4gaW5kZXggZTczMDRhN2RkM2UwLi41NmMyNmI5MTY1MWUgMTAw
+NjQ0DQo+ID4gLS0tIGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tZWRpYXRlay92Y29kZWMvY29t
+bW9uL210a192Y29kZWNfZncuaA0KPiA+ICsrKyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbWVk
+aWF0ZWsvdmNvZGVjL2NvbW1vbi9tdGtfdmNvZGVjX2Z3LmgNCj4gPiBAQCAtNDMsNSArNDMsNiBA
+QCBpbnQgbXRrX3Zjb2RlY19md19pcGlfc2VuZChzdHJ1Y3QgbXRrX3Zjb2RlY19mdw0KPiA+ICpm
+dywgaW50IGlkLA0KPiA+ICBpbnQgbXRrX3Zjb2RlY19md19nZXRfdHlwZShzdHJ1Y3QgbXRrX3Zj
+b2RlY19mdyAqZncpOw0KPiA+ICBpbnQgbXRrX3Zjb2RlY19md19nZXRfaXBpKGVudW0gbXRrX3Zj
+b2RlY19md190eXBlIHR5cGUsIGludA0KPiA+IGh3X2lkKTsNCj4gPiAgaW50IG10a192Y29kZWNf
+ZndfZ2V0X3ZlbmNfaXBpKGVudW0gbXRrX3Zjb2RlY19md190eXBlIHR5cGUpOw0KPiA+ICtzdHJ1
+Y3QgZGV2aWNlICptdGtfdmNvZGVjX2Z3X2dldF9kZXYoc3RydWN0IG10a192Y29kZWNfZncgKmZ3
+KTsNCj4gPiAgDQo+ID4gICNlbmRpZiAvKiBfTVRLX1ZDT0RFQ19GV19IXyAqLw0KPiA+IGRpZmYg
+LS1naXQNCj4gPiBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbWVkaWF0ZWsvdmNvZGVjL2NvbW1v
+bi9tdGtfdmNvZGVjX2Z3X3ByaXYuDQo+ID4gaA0KPiA+IGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9y
+bS9tZWRpYXRlay92Y29kZWMvY29tbW9uL210a192Y29kZWNfZndfcHJpdi4NCj4gPiBoDQo+ID4g
+aW5kZXggMGEyYTliMDEwMjQ0Li43MTBjODNjODcxZjQgMTAwNjQ0DQo+ID4gLS0tDQo+ID4gYS9k
+cml2ZXJzL21lZGlhL3BsYXRmb3JtL21lZGlhdGVrL3Zjb2RlYy9jb21tb24vbXRrX3Zjb2RlY19m
+d19wcml2Lg0KPiA+IGgNCj4gPiArKysNCj4gPiBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbWVk
+aWF0ZWsvdmNvZGVjL2NvbW1vbi9tdGtfdmNvZGVjX2Z3X3ByaXYuDQo+ID4gaA0KPiA+IEBAIC0y
+OSw2ICsyOSw3IEBAIHN0cnVjdCBtdGtfdmNvZGVjX2Z3X29wcyB7DQo+ID4gIAlpbnQgKCppcGlf
+c2VuZCkoc3RydWN0IG10a192Y29kZWNfZncgKmZ3LCBpbnQgaWQsIHZvaWQgKmJ1ZiwNCj4gPiAg
+CQkJdW5zaWduZWQgaW50IGxlbiwgdW5zaWduZWQgaW50IHdhaXQpOw0KPiA+ICAJdm9pZCAoKnJl
+bGVhc2UpKHN0cnVjdCBtdGtfdmNvZGVjX2Z3ICpmdyk7DQo+ID4gKwlzdHJ1Y3QgZGV2aWNlICoo
+KmdldF9md19kZXYpKHN0cnVjdCBtdGtfdmNvZGVjX2Z3ICpmdyk7DQo+ID4gIH07DQo+ID4gIA0K
+PiA+ICAjaWYgSVNfRU5BQkxFRChDT05GSUdfVklERU9fTUVESUFURUtfVkNPREVDX1ZQVSkNCj4g
+PiBkaWZmIC0tZ2l0DQo+ID4gYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL21lZGlhdGVrL3Zjb2Rl
+Yy9jb21tb24vbXRrX3Zjb2RlY19md192Y3AuYw0KPiA+IGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9y
+bS9tZWRpYXRlay92Y29kZWMvY29tbW9uL210a192Y29kZWNfZndfdmNwLmMNCj4gPiBpbmRleCA2
+YjY5Y2U0NGQ0YmIuLjI4NTlmZTc4ZjY3ZCAxMDA2NDQNCj4gPiAtLS0NCj4gPiBhL2RyaXZlcnMv
+bWVkaWEvcGxhdGZvcm0vbWVkaWF0ZWsvdmNvZGVjL2NvbW1vbi9tdGtfdmNvZGVjX2Z3X3ZjcC5j
+DQo+ID4gKysrDQo+ID4gYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL21lZGlhdGVrL3Zjb2RlYy9j
+b21tb24vbXRrX3Zjb2RlY19md192Y3AuYw0KPiA+IEBAIC01MDAsNiArNTAwLDExIEBAIHN0YXRp
+YyB2b2lkIG10a192Y29kZWNfdmNwX3JlbGVhc2Uoc3RydWN0DQo+ID4gbXRrX3Zjb2RlY19mdyAq
+ZncpDQo+ID4gIA0KPiA+ICB9DQo+ID4gIA0KPiA+ICtzdGF0aWMgc3RydWN0IGRldmljZSAqbXRr
+X3Zjb2RlY192Y3BfZ2V0X2Z3X2RldihzdHJ1Y3QNCj4gPiBtdGtfdmNvZGVjX2Z3ICpmdykNCj4g
+PiArew0KPiA+ICsJcmV0dXJuIGZ3LT52Y3AtPnZjcF9kZXZpY2UtPmRldjsNCj4gPiArfQ0KPiA+
+ICsNCj4gPiAgc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfdmNvZGVjX2Z3X29wcyBtdGtfdmNvZGVj
+X3ZjcF9tc2cgPSB7DQo+ID4gIAkubG9hZF9maXJtd2FyZSA9IG10a192Y29kZWNfdmNwX2xvYWRf
+ZmlybXdhcmUsDQo+ID4gIAkuZ2V0X3ZkZWNfY2FwYSA9IG10a192Y29kZWNfdmNwX2dldF92ZGVj
+X2NhcGEsDQo+ID4gQEAgLTUwOCw2ICs1MTMsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IG10a192
+Y29kZWNfZndfb3BzDQo+ID4gbXRrX3Zjb2RlY192Y3BfbXNnID0gew0KPiA+ICAJLmlwaV9yZWdp
+c3RlciA9IG10a192Y29kZWNfdmNwX3NldF9pcGlfcmVnaXN0ZXIsDQo+ID4gIAkuaXBpX3NlbmQg
+PSBtdGtfdmNvZGVjX3ZjcF9pcGlfc2VuZCwNCj4gPiAgCS5yZWxlYXNlID0gbXRrX3Zjb2RlY192
+Y3BfcmVsZWFzZSwNCj4gPiArCS5nZXRfZndfZGV2ID0gbXRrX3Zjb2RlY192Y3BfZ2V0X2Z3X2Rl
+diwNCj4gPiAgfTsNCj4gPiAgDQo+ID4gIHN0cnVjdCBtdGtfdmNvZGVjX2Z3ICptdGtfdmNvZGVj
+X2Z3X3ZjcF9pbml0KHZvaWQgKnByaXYsIGVudW0NCj4gPiBtdGtfdmNvZGVjX2Z3X3VzZSBmd191
+c2UpDQo+ID4gZGlmZiAtLWdpdA0KPiA+IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tZWRpYXRl
+ay92Y29kZWMvZW5jb2Rlci9tdGtfdmNvZGVjX2VuY19kcnYNCj4gPiAuYw0KPiA+IGIvZHJpdmVy
+cy9tZWRpYS9wbGF0Zm9ybS9tZWRpYXRlay92Y29kZWMvZW5jb2Rlci9tdGtfdmNvZGVjX2VuY19k
+cnYNCj4gPiAuYw0KPiA+IGluZGV4IDRlNDU0MWIyZmM4ZS4uMmY2ZWUwY2QxNWUzIDEwMDY0NA0K
+PiA+IC0tLQ0KPiA+IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tZWRpYXRlay92Y29kZWMvZW5j
+b2Rlci9tdGtfdmNvZGVjX2VuY19kcnYNCj4gPiAuYw0KPiA+ICsrKw0KPiA+IGIvZHJpdmVycy9t
+ZWRpYS9wbGF0Zm9ybS9tZWRpYXRlay92Y29kZWMvZW5jb2Rlci9tdGtfdmNvZGVjX2VuY19kcnYN
+Cj4gPiAuYw0KPiA+IEBAIC0yNjIsNiArMjYyLDkgQEAgc3RhdGljIGludCBtdGtfdmNvZGVjX3By
+b2JlKHN0cnVjdA0KPiA+IHBsYXRmb3JtX2RldmljZSAqcGRldikNCj4gPiAgCX0gZWxzZSBpZiAo
+IW9mX3Byb3BlcnR5X3JlYWRfdTMyKHBkZXYtPmRldi5vZl9ub2RlLA0KPiA+ICJtZWRpYXRlayxz
+Y3AiLA0KPiA+ICAJCQkJCSAmcnByb2NfcGhhbmRsZSkpIHsNCj4gPiAgCQlmd190eXBlID0gU0NQ
+Ow0KPiA+ICsJfSBlbHNlIGlmICghb2ZfcHJvcGVydHlfcmVhZF91MzIocGRldi0+ZGV2Lm9mX25v
+ZGUsDQo+ID4gIm1lZGlhdGVrLHZjcCIsDQo+ID4gKwkJCQkJICZycHJvY19waGFuZGxlKSkgew0K
+PiA+ICsJCWZ3X3R5cGUgPSBWQ1A7DQo+IA0KPiBTaW1pbGFyIGNvbW1lbnQgb24gdGhlIHBhdGNo
+c2V0IHlvdSBkZXBlbmQgb24sIGl0cyB0aGlyZCBmaXJtd2FyZQ0KPiB0eXBlLCBhbmQgdGltZQ0K
+PiB0byBjbGVhbnVwLiBUaGUgb2ZfZGV2aWNlX2dldF9tYXRjaF9kYXRhKCkgc2hvdWxkIGJlIHN1
+ZmZpY2llbnQgZm9yDQo+IHRoaXMgc2ltcGxlDQo+IGNhc2UsIHRoZXJlIGlzIG5vdCByZWFzb24g
+Zm9yIGN1c3RvbSBEVCBwYXJzaW5nIGhlcmUuIFBMYWNlIHRoZQ0KPiBmd190eXBlIGluIHRoZQ0K
+PiBwZGF0YSwgYW5kIG1vdmUgb2ZfZGV2aWNlX2dldF9tYXRjaF9kYXRhKCkgY2FsbCBlYXJsaWVy
+Lg0KPiANCj4gUGxlYXNlIGFwcGx5IHRoZSBzYW1lIGxvZ2ljIGZvciB0aGUgZW50aXJlIHBhdGNo
+c2V0LiBFdmVyeSBiaXQgb2YNCj4gaW5mb3JtYXRpb24NCj4gdGhhdCBpcyBwdXJlbHkgc3RhdGlj
+IHRvIHlvdXIgZGV2aWNlIGlzIGJldHRlciBwbGFjZWQgaW4gdGhlIHBkYXRhDQo+IHRoZW4gdGhy
+b3VnaA0KPiBhZGRpdGlvbiBvZiBpZi9lbHNlIGNvbmRpdGlvbnMgYWxsIG92ZXIgdGhlIHBsYWNl
+LiBUaGUgcGRhdGEgY2FuIGFsc28NCj4gaGF2ZSBvcHMNCj4gaW4gaXQsIGxldHRpbmcgZWFzaWx5
+IGZpcm13YXJlIHNwZWNpZmljIGNvZGUgd2l0aG91dCBoYXZpbmcgdG8gZG8NCj4gaWYvZWxzZQ0K
+PiBldmVyeXdoZXJlLg0KPiANCj4gTmljb2xhcw0KDQpJIHdpbGwgY2xlYW4gdXAgdGhpcyBpZi9l
+bHNlIGluIG5leHQgcGF0Y2gsIGFuZCB3aXRoIHRoZSBsb2dpYywgSSB3aWxsDQpyZXZpZXcgYW5k
+IG1vZGlmeSB0aGUgZW50aXJlIHBhdGNoIHNldCBpZiBuZWVkZWQuDQoNClRoYW5rcw0KQmVzdCBS
+ZWdhcmRzDQoNCj4gDQo+ID4gIAl9IGVsc2Ugew0KPiA+ICAJCWRldl9lcnIoJnBkZXYtPmRldiwg
+IltNVEsgVkNPREVDXSBDb3VsZCBub3QgZ2V0IHZlbmMNCj4gPiBJUEkgZGV2aWNlIik7DQo+ID4g
+IAkJcmV0dXJuIC1FTk9ERVY7DQo+ID4gZGlmZiAtLWdpdA0KPiA+IGEvZHJpdmVycy9tZWRpYS9w
+bGF0Zm9ybS9tZWRpYXRlay92Y29kZWMvZW5jb2Rlci92ZW5jL3ZlbmNfY29tbW9uX2kNCj4gPiBm
+LmMNCj4gPiBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbWVkaWF0ZWsvdmNvZGVjL2VuY29kZXIv
+dmVuYy92ZW5jX2NvbW1vbl9pDQo+ID4gZi5jDQo+ID4gaW5kZXggMDUwYjgyN2YwZmQwLi5kOTgx
+MTU1YWViOGMgMTAwNjQ0DQo+ID4gLS0tDQo+ID4gYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL21l
+ZGlhdGVrL3Zjb2RlYy9lbmNvZGVyL3ZlbmMvdmVuY19jb21tb25faQ0KPiA+IGYuYw0KPiA+ICsr
+Kw0KPiA+IGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tZWRpYXRlay92Y29kZWMvZW5jb2Rlci92
+ZW5jL3ZlbmNfY29tbW9uX2kNCj4gPiBmLmMNCj4gPiBAQCAtNDgwLDggKzQ4MCwxMyBAQCBzdGF0
+aWMgdm9pZCB2ZW5jX2ZyZWVfcmNfYnVmKHN0cnVjdCB2ZW5jX2luc3QNCj4gPiAqaW5zdCwNCj4g
+PiAgew0KPiA+ICAJaW50IGk7DQo+ID4gIAlzdHJ1Y3QgZGV2aWNlICpkZXY7DQo+ID4gKwlzdHJ1
+Y3QgbXRrX3Zjb2RlY19mdyAqZncgPSBpbnN0LT5jdHgtPmRldi0+ZndfaGFuZGxlcjsNCj4gPiAr
+DQo+ID4gKwlpZiAobXRrX3Zjb2RlY19md19nZXRfdHlwZShmdykgPT0gVkNQKQ0KPiA+ICsJCWRl
+diA9IG10a192Y29kZWNfZndfZ2V0X2Rldihmdyk7DQo+ID4gKwllbHNlDQo+ID4gKwkJZGV2ID0g
+Jmluc3QtPmN0eC0+ZGV2LT5wbGF0X2Rldi0+ZGV2Ow0KPiA+ICANCj4gPiAtCWRldiA9ICZpbnN0
+LT5jdHgtPmRldi0+cGxhdF9kZXYtPmRldjsNCj4gPiAgCW10a192ZW5jX21lbV9mcmVlKGluc3Qs
+IGRldiwgJmJ1ZnMtPnJjX2NvZGUpOw0KPiA+ICANCj4gPiAgCWZvciAoaSA9IDA7IGkgPCBjb3Jl
+X251bTsgaSsrKQ0KPiA+IEBAIC01MzAsMTIgKzUzNSwxOCBAQCBzdGF0aWMgaW50IHZlbmNfYWxs
+b2NfcmNfYnVmKHN0cnVjdCB2ZW5jX2luc3QNCj4gPiAqaW5zdCwNCj4gPiAgCXN0cnVjdCBkZXZp
+Y2UgKmRldjsNCj4gPiAgCXZvaWQgKnRtcF92YTsNCj4gPiAgDQo+ID4gLQlkZXYgPSAmaW5zdC0+
+Y3R4LT5kZXYtPnBsYXRfZGV2LT5kZXY7DQo+ID4gLQlpZiAobXRrX3ZlbmNfbWVtX2FsbG9jKGlu
+c3QsIGRldiwgJmJ1ZnMtPnJjX2NvZGUpKQ0KPiA+IC0JCXJldHVybiAtRU5PTUVNOw0KPiA+ICsJ
+aWYgKG10a192Y29kZWNfZndfZ2V0X3R5cGUoZncpID09IFZDUCkgew0KPiA+ICsJCWRldiA9IG10
+a192Y29kZWNfZndfZ2V0X2Rldihmdyk7DQo+ID4gKwkJaWYgKG10a192ZW5jX21lbV9hbGxvYyhp
+bnN0LCBkZXYsICZidWZzLT5yY19jb2RlKSkNCj4gPiArCQkJcmV0dXJuIC1FTk9NRU07DQo+ID4g
+Kwl9IGVsc2Ugew0KPiA+ICsJCWRldiA9ICZpbnN0LT5jdHgtPmRldi0+cGxhdF9kZXYtPmRldjsN
+Cj4gPiArCQlpZiAobXRrX3ZlbmNfbWVtX2FsbG9jKGluc3QsIGRldiwgJmJ1ZnMtPnJjX2NvZGUp
+KQ0KPiA+ICsJCQlyZXR1cm4gLUVOT01FTTsNCj4gPiAgDQo+ID4gLQl0bXBfdmEgPSBtdGtfdmNv
+ZGVjX2Z3X21hcF9kbV9hZGRyKGZ3LCBidWZzLT5yY19jb2RlLnBhKTsNCj4gPiAtCW1lbWNweShi
+dWZzLT5yY19jb2RlLnZhLCB0bXBfdmEsIGJ1ZnMtPnJjX2NvZGUuc2l6ZSk7DQo+ID4gKwkJdG1w
+X3ZhID0gbXRrX3Zjb2RlY19md19tYXBfZG1fYWRkcihmdywgYnVmcy0NCj4gPiA+cmNfY29kZS5w
+YSk7DQo+ID4gKwkJbWVtY3B5KGJ1ZnMtPnJjX2NvZGUudmEsIHRtcF92YSwgYnVmcy0+cmNfY29k
+ZS5zaXplKTsNCj4gPiArCX0NCj4gPiAgDQo+ID4gIAlmb3IgKGkgPSAwOyBpIDwgY29yZV9udW07
+IGkrKykgew0KPiA+ICAJCWlmIChtdGtfdmVuY19tZW1fYWxsb2MoaW5zdCwgZGV2LCAmYnVmcy0+
+cmNfaW5mb1tpXSkpDQo+ID4gZGlmZiAtLWdpdA0KPiA+IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9y
+bS9tZWRpYXRlay92Y29kZWMvZW5jb2Rlci92ZW5jX3ZwdV9pZi5jDQo+ID4gYi9kcml2ZXJzL21l
+ZGlhL3BsYXRmb3JtL21lZGlhdGVrL3Zjb2RlYy9lbmNvZGVyL3ZlbmNfdnB1X2lmLmMNCj4gPiBp
+bmRleCA3NzcyYjg0NDJlYmMuLjBmNDY5M2UwNGE5ZiAxMDA2NDQNCj4gPiAtLS0gYS9kcml2ZXJz
+L21lZGlhL3BsYXRmb3JtL21lZGlhdGVrL3Zjb2RlYy9lbmNvZGVyL3ZlbmNfdnB1X2lmLmMNCj4g
+PiArKysgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL21lZGlhdGVrL3Zjb2RlYy9lbmNvZGVyL3Zl
+bmNfdnB1X2lmLmMNCj4gPiBAQCAtOCwxMyArOCwyMyBAQA0KPiA+ICAjaW5jbHVkZSAidmVuY19p
+cGlfbXNnLmgiDQo+ID4gICNpbmNsdWRlICJ2ZW5jX3ZwdV9pZi5oIg0KPiA+ICANCj4gPiArI2Rl
+ZmluZSBWU0lfT0ZGU0VUX01BU0sgMHgwRkZGRkZGRg0KPiA+ICsNCj4gPiAgc3RhdGljIHZvaWQg
+aGFuZGxlX2VuY19pbml0X21zZyhzdHJ1Y3QgdmVuY192cHVfaW5zdCAqdnB1LCBjb25zdA0KPiA+
+IHZvaWQgKmRhdGEpDQo+ID4gIHsNCj4gPiAgCWNvbnN0IHN0cnVjdCB2ZW5jX3ZwdV9pcGlfbXNn
+X2luaXRfY29tbSAqbXNnID0gZGF0YTsNCj4gPiAgCXN0cnVjdCBtdGtfdmNvZGVjX2Z3ICpmdyA9
+IHZwdS0+Y3R4LT5kZXYtPmZ3X2hhbmRsZXI7DQo+ID4gKwl1NjQgcGFfc3RhcnQsIHZzaV9vZmZz
+ZXQ7DQo+ID4gIA0KPiA+ICAJdnB1LT5pbnN0X2FkZHIgPSBtc2ctPmluaXRfYWNrLnZwdV9pbnN0
+X2FkZHI7DQo+ID4gLQl2cHUtPnZzaSA9IG10a192Y29kZWNfZndfbWFwX2RtX2FkZHIoZncsIHZw
+dS0+aW5zdF9hZGRyKTsNCj4gPiArDQo+ID4gKwlpZiAobXRrX3Zjb2RlY19md19nZXRfdHlwZShm
+dykgPT0gVkNQKSB7DQo+ID4gKwkJcGFfc3RhcnQgPSAodTY0KWZ3LT52Y3AtPmlvdmFfYWRkcjsN
+Cj4gPiArCQl2c2lfb2Zmc2V0ID0gKG1zZy0+dnB1X3ZzaV9hZGRyICYgVlNJX09GRlNFVF9NQVNL
+KSAtDQo+ID4gKHBhX3N0YXJ0ICYgVlNJX09GRlNFVF9NQVNLKTsNCj4gPiArCQl2cHUtPnZzaSA9
+IG10a192Y29kZWNfZndfbWFwX2RtX2FkZHIoZncsIEVOQ09ERVJfTUVNKSArDQo+ID4gdnNpX29m
+ZnNldDsNCj4gPiArCX0gZWxzZSB7DQo+ID4gKwkJdnB1LT52c2kgPSBtdGtfdmNvZGVjX2Z3X21h
+cF9kbV9hZGRyKGZ3LCBtc2ctDQo+ID4gPnZwdV92c2lfYWRkcik7DQo+ID4gKwl9DQo+ID4gIA0K
+PiA+ICAJLyogRmlybXdhcmUgdmVyc2lvbiBmaWVsZCB2YWx1ZSBpcyB1bnNwZWNpZmllZCBvbiBN
+VDgxNzMuICovDQo+ID4gIAlpZiAobXRrX3Zjb2RlY19md19nZXRfdHlwZShmdykgPT0gVlBVKQ0K
+PiA+IEBAIC0xNTUsNiArMTY1LDggQEAgaW50IHZwdV9lbmNfaW5pdChzdHJ1Y3QgdmVuY192cHVf
+aW5zdCAqdnB1KQ0KPiA+ICAJb3V0LmJhc2UudmVuY19pbnN0ID0gKHVuc2lnbmVkIGxvbmcpdnB1
+Ow0KPiA+ICAJaWYgKE1US19FTkNfRFJWX0lTX0NPTU0odnB1LT5jdHgpKSB7DQo+ID4gIAkJb3V0
+LmNvZGVjX3R5cGUgPSB2cHUtPmN0eC0+cV9kYXRhW01US19RX0RBVEFfRFNUXS5mbXQtDQo+ID4g
+PmZvdXJjYzsNCj4gPiArCQlpZiAobXRrX3Zjb2RlY19md19nZXRfdHlwZSh2cHUtPmN0eC0+ZGV2
+LT5md19oYW5kbGVyKQ0KPiA+ID09IFZDUCkNCj4gPiArCQkJb3V0LnNoYXJlZF9pb3ZhID0gdnB1
+LT5jdHgtPmRldi0+ZndfaGFuZGxlci0NCj4gPiA+dmNwLT5pb3ZhX2FkZHI7DQo+ID4gIAkJbXNn
+X3NpemUgPSBzaXplb2Yoc3RydWN0IHZlbmNfYXBfaXBpX21zZ19pbml0X2NvbW0pOw0KPiA+ICAJ
+fSBlbHNlIHsNCj4gPiAgCQltc2dfc2l6ZSA9IHNpemVvZihzdHJ1Y3QgdmVuY19hcF9pcGlfbXNn
+X2luaXQpOw0K
 
