@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DAA9CD13DA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2026 15:33:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C679CD13DA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2026 15:34:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xza7tjKe0WIZzKnB2Al3z6s+TPFBl75DvGCOUNdu48I=; b=PORDfYQrpC+uf3ssBITOVOpJm7
-	wP0IdjTy4luEfznrIhwvZwrf+0bZyfMxPy9TNsVZ3LPVUX6rtXf/u80zaA0ZxZu0GxUdmWOaoWFu4
-	sDXKH6/B45ZgB4IbQBImwWqO7nKIjHwXGWoh2K1dbbmk3uA7Hch+wAzZgLZ3OfTAa8REnQ0A9HkBd
-	tg6ikVuk0Coe+ZsD5lXyKiauDBSbKNdnwngqtF0NjHzMdrQ0MD1A7aXUUM9xm8JNRA0CQmUpzLitG
-	B1OHseeLsYUYEWvc+pxP7qVw4ncQvwRlRZbslmWoV+J7mI5HKlOEJ12TMvdgwHFn9aUMXznO9g7tY
-	rjjvyX0w==;
+	bh=BH2eMwmDXpvou/fq3WbwrmyD7sCikHzZTFRhPhW/Tu4=; b=XgU6fWPTFlbB4UXF/vFclBH/QS
+	pWWEn7AFUKXkbiCRGVielq8jVcWHf/pWgCWUkIgrXA11IRM+jxRFy0iFGgPd8IKBlQ2gflywm3y1E
+	YfzlLG37ks4fxOlWpeGkLdSPg0ag72eAZWM1Vc6yNc7xyCvysC9nVgGDmt9t6Ykm/gnec/679Zpnn
+	o61AaM1GQfDtEsFb70hVIzyzwFMeJktv8rBQxv/YY2Ga7BDmr9F7OD1IJ2XYMSpkkBDqyMDuN+RHH
+	iuNtC/9JHp7yTzjnKVSugV67qXTSM4YsZWa9E8P1QNI7ZGByyclhaEh2i6ZqGG3T/6zjExvx7pmJy
+	/TtXUBlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wITOk-00000005e99-1rth;
-	Thu, 30 Apr 2026 15:33:54 +0000
+	id 1wITOp-00000005eCZ-06mF;
+	Thu, 30 Apr 2026 15:33:59 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wITOd-00000005e4A-3rjH;
-	Thu, 30 Apr 2026 15:33:48 +0000
+	id 1wITOh-00000005e75-49Ix;
+	Thu, 30 Apr 2026 15:33:53 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 930844427A;
+	by sea.source.kernel.org (Postfix) with ESMTP id A0152441CA;
+	Thu, 30 Apr 2026 15:33:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E97E7C2BCB9;
 	Thu, 30 Apr 2026 15:33:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1EABC2BCB3;
-	Thu, 30 Apr 2026 15:33:43 +0000 (UTC)
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Linus Walleij <linusw@kernel.org>,
 	Lorenzo Bianconi <lorenzo@kernel.org>,
@@ -49,17 +49,17 @@ Cc: linux-gpio@vger.kernel.org,
 	linux-omap@vger.kernel.org,
 	linux-renesas-soc@vger.kernel.org,
 	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH 3/7] pinctrl: ingenic: Fix type in .pin_config_group_get() callback
-Date: Thu, 30 Apr 2026 17:33:14 +0200
-Message-ID: <9f50c234c44af9075b5252ee7e59452ed2179b27.1777562725.git.geert+renesas@glider.be>
+Subject: [PATCH 4/7] pinctrl: mediatek: moore: Fix type in .pin_config_group_get() callback
+Date: Thu, 30 Apr 2026 17:33:15 +0200
+Message-ID: <ebdc02536f922f2261d6d338a6afa234015621ff.1777562725.git.geert+renesas@glider.be>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1777562725.git.geert+renesas@glider.be>
 References: <cover.1777562725.git.geert+renesas@glider.be>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260430_083347_979361_B4A16C28 
-X-CRM114-Status: GOOD (  11.13  )
+X-CRM114-CacheID: sfid-20260430_083352_055057_036B88A7 
+X-CRM114-Status: GOOD (  10.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,20 +78,17 @@ On 64-bit platforms, "unsigned long" is 64-bit.  Hence checking if all
 "unsigned long" configuration values are equal should be done using an
 "unsigned long" temporary.
 
-While Ingenic is a 32-bit platform, it is still better to use the
-correct type, to serve as an example.
-
 Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
- drivers/pinctrl/pinctrl-ingenic.c | 3 ++-
+ drivers/pinctrl/mediatek/pinctrl-moore.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/pinctrl/pinctrl-ingenic.c b/drivers/pinctrl/pinctrl-ingenic.c
-index c7f14546de0528de..29d7f4e54bc7b126 100644
---- a/drivers/pinctrl/pinctrl-ingenic.c
-+++ b/drivers/pinctrl/pinctrl-ingenic.c
-@@ -4334,7 +4334,8 @@ static int ingenic_pinconf_group_get(struct pinctrl_dev *pctldev,
- 		unsigned int group, unsigned long *config)
+diff --git a/drivers/pinctrl/mediatek/pinctrl-moore.c b/drivers/pinctrl/mediatek/pinctrl-moore.c
+index 071ba849e5322396..17e30f83dc1972c0 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-moore.c
++++ b/drivers/pinctrl/mediatek/pinctrl-moore.c
+@@ -402,7 +402,8 @@ static int mtk_pinconf_group_get(struct pinctrl_dev *pctldev,
+ 				 unsigned int group, unsigned long *config)
  {
  	const unsigned int *pins;
 -	unsigned int i, npins, old = 0;
