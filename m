@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DE52CCFA13
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4FDBCD13DA
 	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2026 08:34:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,39 +12,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E++F7xCOqjfxI/oocjAqRAHIiwcZjg018Vxw5dfNXuM=; b=bhZyeFWv8b2dDuqU6HGlfT2RQw
-	BgksT9TY1u4NnQhj2xlMr805upaj/JnnQhhNYPWGvR5A4j/ZrD9BwdjMX1FsZrPwuzWy1YTPzBfFU
-	tNv6sqSIpSy8kZdt0xH1DNbniZj7VoasTuXC27BUnnI7mKo2C/cwjE6x8mSFIS7fqGFwi5+3KMfLr
-	dpoRBhJ8q+q27zHP/+OYW1ixdOosTw7TMlGSUr+my0Wylmp57zF1YvSU6wNsQgX9d5tv+bniFcJsl
-	J4sH2GCHBn0463Sq0odqmdUwHnTVi5tqPuT0kPwZBKc1tv1KvMrGMjtNvMEoKRYwgKQom7wrAvzPk
-	tOHuHtlQ==;
+	bh=cCuYwhfHV/ikt3n7JHXBY2RTS4geNXNRPHiqjNDQ3Kw=; b=42yiF+dbzP4umOxT8pF4oRe1gn
+	nKNGvyvNJsGpsTeZJRl5JpTBCtq2ZWGlAiGj7DXUUsSKLipbUrzzrboLq4+4s0CsdPvA+da/U83GH
+	E6YEZ0PFB7kE5KBcwE/oEVkDHYK6SkpWMioTZg0xgpjEYc+UPueiOcc0c5BMelWtA5zaXwF6+k6lK
+	BO2GSAtOgml4QbkdkLEW/bggK2y9vX0cKUQEP1mEk2ofY28e/FGNoNF8DLQ5pRDJUAS3OfBcjkEUM
+	Tz/CPcWdtYPH6KY1ZfhsU1JHJzg4/0sPF6Y1y7z/Vsmwq6LNF86Y20e2CmYjsVYfMUNX5YCTtdjD/
+	qSdEwwFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wIMqO-0000000514n-01sH;
+	id 1wIMqO-0000000515c-2GoH;
 	Thu, 30 Apr 2026 08:34:00 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wIMqJ-0000000510y-1Y1N
+	id 1wIMqJ-0000000510w-1YE3
 	for linux-mediatek@lists.infradead.org;
 	Thu, 30 Apr 2026 08:33:57 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 18A3A441DA;
+	by sea.source.kernel.org (Postfix) with ESMTP id 10D6644100;
 	Thu, 30 Apr 2026 08:33:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D0E42C2BCC7;
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CE90FC2BCC6;
 	Thu, 30 Apr 2026 08:33:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1777538033;
-	bh=JCt6tWeOBXoxgLUmoQyal2hT8O3E6cJwSDW9MnTpiqk=;
+	bh=vxD9xO6E6gxI2jN1+uuURcxBVAKWmSKLybdcQnknBu0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=EubHyBUCQggaxhwStKQb2aj2yoDp5sa+R3y63rWzbrbiZGRLjFSFn6u44Vzfqyulz
-	 71jthDqzU6zIECne1eoG9VPFAW6dzKHdYO90CbocmjGvduXF+szcd5saqxapKX7v47
-	 k5SCPP6dyvtrQ6+laqCByU/jOklpx+OjmH/oQxxcdQjjaZd9gN3qrS2JlEBcLfcSDA
-	 eZSvMIANbZ3mx9xDaiUlMJTc+E5N2Ml6/PUCRlNsZ28H4MLqGANOA0xDbMf55ABaKV
-	 SIwWQB0PLjMvFy7gu8RO4zLs15rvVC4+yJf4lSaPdObSpFkKslhLlynOenccsasUig
-	 9otq6D9SBEWlQ==
+	b=Udrd04/GFekpcWkAbRf/DTZeYGDjPZ10LeYx0lyl78iRMOLH2LjsubMJ2JZv+gfBo
+	 jpd3fDuzxLGgZSJIEo68r4DVjkRPbrVhTQLfmYv3cN3s11ZgrbFGC/gg8rKaoZQyXc
+	 hBDlXSWV9ZR830TT0mtp1blKFrvymmUEFBFMcTQyuwyfrwP/inHW4V+fsMimDFv96T
+	 e/W+WUh7aCP5QMmM73UtB5Hm21Dl5XK0hhhkVTt87hpJIR4GO3B2X7s7RQx8Ui1w/B
+	 HSKILqEZ+gZPcJ+y/agypuJ1MceBh2iKgdXiMCWHH2jjTz9nNyZvPGYpzA+XFXI7i2
+	 6wBLY21Lo87NQ==
 Received: from johan by xi.lan with local (Exim 4.98.2)
 	(envelope-from <johan@kernel.org>)
-	id 1wIMqF-00000000u0E-1qgX;
+	id 1wIMqF-00000000u0I-1vYF;
 	Thu, 30 Apr 2026 10:33:51 +0200
 From: Johan Hovold <johan@kernel.org>
 To: Felix Fietkau <nbd@nbd.name>,
@@ -59,17 +59,17 @@ Cc: Shayne Chen <shayne.chen@mediatek.com>,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Johan Hovold <johan@kernel.org>
-Subject: [PATCH v2 RESEND 3/5] wifi: mt76x2u: drop redundant device reference
-Date: Thu, 30 Apr 2026 10:33:33 +0200
-Message-ID: <20260430083335.215239-4-johan@kernel.org>
+Subject: [PATCH v2 RESEND 5/5] wifi: mt7601u: drop redundant device reference
+Date: Thu, 30 Apr 2026 10:33:35 +0200
+Message-ID: <20260430083335.215239-6-johan@kernel.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260430083335.215239-1-johan@kernel.org>
 References: <20260430083335.215239-1-johan@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260430_013355_426539_13B6337B 
-X-CRM114-Status: GOOD (  12.22  )
+X-CRM114-CacheID: sfid-20260430_013355_432856_4D17DC51 
+X-CRM114-Status: GOOD (  11.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,44 +95,37 @@ the risk of memory leaks when drivers fail to release it.
 
 Signed-off-by: Johan Hovold <johan@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76x2/usb.c | 4 ----
- 1 file changed, 4 deletions(-)
+ drivers/net/wireless/mediatek/mt7601u/usb.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c b/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
-index 01cb3b2830f3..8af360bca643 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
-@@ -57,7 +57,6 @@ static int mt76x2u_probe(struct usb_interface *intf,
+diff --git a/drivers/net/wireless/mediatek/mt7601u/usb.c b/drivers/net/wireless/mediatek/mt7601u/usb.c
+index c41ae251cb95..9306870cbc91 100644
+--- a/drivers/net/wireless/mediatek/mt7601u/usb.c
++++ b/drivers/net/wireless/mediatek/mt7601u/usb.c
+@@ -274,7 +274,6 @@ static int mt7601u_probe(struct usb_interface *usb_intf,
+ 	if (!dev)
+ 		return -ENOMEM;
  
- 	dev = container_of(mdev, struct mt76x02_dev, mt76);
+-	usb_dev = usb_get_dev(usb_dev);
+ 	usb_reset_device(usb_dev);
  
--	udev = usb_get_dev(udev);
- 	usb_reset_device(udev);
+ 	usb_set_intfdata(usb_intf, dev);
+@@ -319,7 +318,6 @@ static int mt7601u_probe(struct usb_interface *usb_intf,
+ 	mt7601u_cleanup(dev);
+ err:
+ 	usb_set_intfdata(usb_intf, NULL);
+-	usb_put_dev(interface_to_usbdev(usb_intf));
  
- 	usb_set_intfdata(intf, dev);
-@@ -84,14 +83,12 @@ static int mt76x2u_probe(struct usb_interface *intf,
- 	mt76u_queues_deinit(&dev->mt76);
- 	mt76_free_device(&dev->mt76);
- 	usb_set_intfdata(intf, NULL);
--	usb_put_dev(udev);
+ 	destroy_workqueue(dev->stat_wq);
+ 	ieee80211_free_hw(dev->hw);
+@@ -334,7 +332,6 @@ static void mt7601u_disconnect(struct usb_interface *usb_intf)
+ 	mt7601u_cleanup(dev);
  
- 	return err;
- }
+ 	usb_set_intfdata(usb_intf, NULL);
+-	usb_put_dev(interface_to_usbdev(usb_intf));
  
- static void mt76x2u_disconnect(struct usb_interface *intf)
- {
--	struct usb_device *udev = interface_to_usbdev(intf);
- 	struct mt76x02_dev *dev = usb_get_intfdata(intf);
- 	struct ieee80211_hw *hw = mt76_hw(dev);
- 
-@@ -100,7 +97,6 @@ static void mt76x2u_disconnect(struct usb_interface *intf)
- 	mt76x2u_cleanup(dev);
- 	mt76_free_device(&dev->mt76);
- 	usb_set_intfdata(intf, NULL);
--	usb_put_dev(udev);
- }
- 
- static int __maybe_unused mt76x2u_suspend(struct usb_interface *intf,
+ 	destroy_workqueue(dev->stat_wq);
+ 	ieee80211_free_hw(dev->hw);
 -- 
 2.53.0
 
