@@ -4,66 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83FB8FF8875
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2026 01:29:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AF35FF8875
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2026 01:40:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WW5+pyeIE8PJ5bvKs+bHI18ZKTMJxRWuN32oC6MumwE=; b=aBtYV7RmPyHIyJCFU56EISyWrF
-	Ndhe7+JJAdu4/VW+q5klUbErPwjNlDFmAmU/GFTj1vX76WqyEUo4hmDQLG3GFM0nXI7qQek+AL0I9
-	PFebiB2qmhdc3xPFcDQfCXo0hxxMz/nv6miEgAoD5SzqPC/q/18R56ov8HkmX43nD5TrrZb3qaQQ3
-	Vs9L2LV3v5XuwSzOj2TIyhe0Rh/Ad1OS1RpKZzzgpLe/n33gH7ov7UDs5U+P1sGuX65FKFc8kFqO5
-	mL6hZuQZzy9FJGLNSNDguenU2+bAcXn5GEMX1Ff4Ahk+L3e7paEunskOZq8DocCUCSWd7OnCkNXZq
-	OjngBr4w==;
+	bh=8L31XZijdm8/CpLQjhyDooI3X/o2dKty09m+rp3Ms8g=; b=IzI45M/2gXVIlK6lh66FJe/DIM
+	qaUNb7KX4/aEL4oGhhw15nhGwaEdLwjlXex2j/mN/PHplILw+eAUNaO3C4MMeSsp80NwBKs+Y2lKM
+	TBmO24w+CCqBU193enDzxlHMyGHt2nkI7cukdUQZd/EuQuTZ5CBRr2tk4xSfeOv91E+paham9ZdvU
+	0vL0EG8vNWqxhRvj3+EzzYhN7HJx1qopPAHqaqfONycMUcijodb7FodiCo3fBblRvMhJvJR9W3pd/
+	lPdabVIwQrmrXF7Vv0C68nAYHl958zwYM/gnlriDn9QE8eFsztHD3UMDUItK4sw39Q9ihHLOES4Q5
+	z87e00dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wIGDT-00000004NUl-38Eo;
-	Thu, 30 Apr 2026 01:29:23 +0000
+	id 1wIGOd-00000004O0Q-2qM8;
+	Thu, 30 Apr 2026 01:40:55 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wIGDQ-00000004NUF-44wg;
-	Thu, 30 Apr 2026 01:29:22 +0000
+	id 1wIGOZ-00000004O00-1cyv;
+	Thu, 30 Apr 2026 01:40:53 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2281842AFE;
-	Thu, 30 Apr 2026 01:29:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 68C96C19425;
-	Thu, 30 Apr 2026 01:29:18 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 3AE7541A97;
+	Thu, 30 Apr 2026 01:40:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 165D8C19425;
+	Thu, 30 Apr 2026 01:40:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777512559;
-	bh=7AMc2xtDJZHbbx6E8fFOl3b0dTV0r3JCWZmEz2YDezw=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=F+thYEcL7OQllfsHv+cY0yB8u4ltpP5XuVjLsny8ZVjwN8/Irz//7rBQvixZSDRiQ
-	 C13Ap4OyGAT9ar7euxeciGUxZf1hUWfBdakhQpTChm6f6cm3RIHv0FxKoIY+u/wIsI
-	 yaRFD92HSOjHkHGs+PVfKMQTrQLrOGOu/nXg6buZOfhqwDzhvWLaSIav7EAZUZx1jF
-	 95dpfFFf6HrYx2kw+vtofa71zP+so3E2AuWEfeZXCFVppogPeBW6wHTJ/RVR1qTj4M
-	 d5d+h9FMf+9OKsV7JKhAknvI1uqPrJ43OqMm0GOD+uu1vJKG+XnhHr7LZ2V87Rq0aq
-	 A4nH1ZFISwR/g==
-Date: Wed, 29 Apr 2026 18:29:17 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Daniel Golle <daniel@makrotopia.org>, chester.a.unal@arinc9.com,
- olteanv@gmail.com, davem@davemloft.net, edumazet@google.com,
- pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, linux@armlinux.org.uk,
- ansuelsmth@gmail.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net v4] net: dsa: mt7530: fix .get_stats64 sleeping in
- atomic context
-Message-ID: <20260429182917.20f96df5@kernel.org>
-In-Reply-To: <52d69a5d-a951-4a65-a947-7aaf41bc3daf@lunn.ch>
-References: <16efd278e4f17776ccfbf8491e5be71a4689c137.1777385305.git.daniel@makrotopia.org>
-	<20260429234612.2240476-2-kuba@kernel.org>
-	<afKaVQ27GUQiWZTb@makrotopia.org>
-	<52d69a5d-a951-4a65-a947-7aaf41bc3daf@lunn.ch>
+	s=k20201202; t=1777513250;
+	bh=pADFW97s8ZAWiuq7aYrAylX+v7UiOD00KyYmiR8D28Y=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=j8GGDnc2gQWvGdulSV0ssXIDv7sRTO/JReua58HqR2+xHmsKcLy+it/P8HMhtJ/sd
+	 leSgJ9pdKTiyLgePIEk9PgCw9uDZlx6ZLxDh+5maD2tYJxmCU3j9aBnvFwN9ZjP0aX
+	 mw3siJjChRI44qEMuXWzjs4TRzAyevZWsIWa3dvsxION2Ln1z83+av0EToJ7Yswwyt
+	 XpJHhvxmZIptbvypf9z85WdYhb/h1maYlE0BPJvy3RAMMslo9nDofT2VOvrJx+NBnR
+	 tpDAYe9X+BWA0tGJR8aSEAggVNxQsWxQRxrPO+oCbVzcSb/GBHwsnzbI3I9v89AytZ
+	 /UIiz1QjRnZLA==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 7D0B63809A33;
+	Thu, 30 Apr 2026 01:40:06 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net] net: airoha: Do not return err in ndo_stop() callback
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <177751320505.2255030.5166228559357523797.git-patchwork-notify@kernel.org>
+Date: Thu, 30 Apr 2026 01:40:05 +0000
+References: <20260428-airoha-ndo-stop-not-err-v1-1-674506d29a91@kernel.org>
+In-Reply-To: <20260428-airoha-ndo-stop-not-err-v1-1-674506d29a91@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, horms@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260429_182921_058442_B8779C69 
-X-CRM114-Status: GOOD (  12.23  )
+X-CRM114-CacheID: sfid-20260429_184051_448332_726003BD 
+X-CRM114-Status: UNSURE (   9.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,19 +76,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 30 Apr 2026 02:12:47 +0200 Andrew Lunn wrote:
-> > > The priv->bus pointer is initialized during probe. However,
-> > > INIT_DELAYED_WORK() is only called in mt753x_setup(), which might never
-> > > execute if the DSA tree remains incomplete.  
+Hello:
+
+This patch was applied to netdev/net.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Tue, 28 Apr 2026 08:53:16 +0200 you wrote:
+> Always complete the airoha_dev_stop() routine regardless of the
+> airoha_set_vip_for_gdm_port() return value, since errors from
+> ndo_stop() are ignored by the networking stack and the interface is
+> always considered down after the call.
 > 
-> The opposite of .setup() is .teardown(). So if the delayed work is
-> setup is setup() it should be cancelled in .teardown, to keeps things
-> symmetric.
+> Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 SoC")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> 
+> [...]
 
-The code does that, but also cancels again in remove.
-IDK if that's just "for good measure", or motivated by a previous AI
-complaint :(
+Here is the summary with links:
+  - [net] net: airoha: Do not return err in ndo_stop() callback
+    https://git.kernel.org/netdev/net/c/4ca01292ea2f
 
-But I think your point stands, as is the driver is not symmetric,
-if we want to cancel in .remove it has to init in .probe.
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
