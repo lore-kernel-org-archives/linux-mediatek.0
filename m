@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B032CCFA13
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2026 08:48:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00B08FF8875
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2026 08:58:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=v1ugXYXMmjmd+Z6V22xUvDw1QbvmvSk+0KAB6yET0W8=; b=0ESHmII9g+pWWhg7Lcs7HK/83i
-	VINTNj5ohvG81JV8x7hULMJ1n3MJR7eofL1J8qYE3idXo3Z6vkXgZ0YMVfJVghCrKUulbYtm2WEB2
-	DxKG61i9brZtdbDwqGt0NyCreRZQBtu+dc52IMD1VTKbdSC6PLk7eBhHmdhXcWntgVnATOmGVg0Af
-	Ywl+8v8Bwb+jOLxW8wr5BMly/jwIwcZH1hk5YEg+jRC4es/5BPTKl9ibmxPsQjipsf+oswFIl6oCi
-	N2sjmNS/tibw7CcMjJw5DZdx+NFRh3lWlKbenT4RelrDLyi3EFA7QFHto5z3rFEilWgZblw9BXw84
-	TGsUWy0g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kfLn2iS+FBCi6ciBwhdlqe+rP0NBiVyvlOcEWwFVHAo=; b=zXLfsJI/zZMo7OfqFay7krYQNu
+	4tVmomBXrFZliAr8zEohB9557lUw89G62kDn90HiN4+BLC+Iu5fVuPGCt+m45B4BbK7xrHBsAFW9g
+	ln5WiGTiM3txdjNrJnRamwX4a4I5uRTXsh/Aa7GDo6IzUqfKtVG+pduVasAt1wtUezOI7d+2XgzcA
+	5CB7yJqtW4mhuS6EH2ec1vbY+WOs8plXP8R6BJKdmjNmfWk04QJrNE+SGFEWBqSjoiH6Pe55umRHb
+	y3fQiQjilcJqxo31fhN02Hkbo7aWkYopPXBCaJyMe0a1z5gw3XZ/FCUVRZo+UtAzkFGSMbrIFbe12
+	B3O1RyoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wIN4X-000000053Bg-0wF2;
-	Thu, 30 Apr 2026 08:48:37 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wINDx-00000005449-3iJs;
+	Thu, 30 Apr 2026 08:58:21 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wIN4W-000000053BA-1fIj;
-	Thu, 30 Apr 2026 08:48:36 +0000
+	id 1wINDv-0000000543D-0pSf;
+	Thu, 30 Apr 2026 08:58:20 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id C96566015B;
-	Thu, 30 Apr 2026 08:48:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2BFB7C2BCB3;
-	Thu, 30 Apr 2026 08:48:35 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 7094C40E49;
+	Thu, 30 Apr 2026 08:58:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B51C3C2BCB3;
+	Thu, 30 Apr 2026 08:58:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777538915;
-	bh=7OeD59OdzKyKkLN3zxmRWfWtI2Bv5S/MdGDTrvAu31Q=;
-	h=From:Date:Subject:To:Cc:From;
-	b=GVCREku1ukvqt8N4RNykuP6nr7zNsC+U7+PuTyxYZNhud0V8sgFcovXw6dj2lUhwc
-	 GNkByp91U3Owlpj9NOoS2F624lnVah/y+melenx1Z17luy5UqiTxoFOwt/I7wljMFY
-	 taGsWCibUc1BB2s0W5tNCHTkg8utiq3C1Oqtd976KRAHHY62My8pqaexSjTCRIGOCj
-	 QO2eAPJ+F9K0z668gBrpNGK/VSaBaLueH9zdVu7FtnveAGF3zDol2Er8diVYTI2s+4
-	 4F1sNmjPRR/pUCqzPeP2YIXvZN3y4UoF7JLgYNLbLLkIZbRGp+Fo2nVVcZIuEwgV2i
-	 /lbrMvrBYtSzQ==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Thu, 30 Apr 2026 10:47:38 +0200
-Subject: [PATCH net-next] net: airoha: configure QoS channel for HW
- accelerated flowtable traffic
+	s=k20201202; t=1777539498;
+	bh=FKRvXDmPBLG+u9plyLD3bSdEFfuRpy675/I3iaHbLo8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=gcWL/woOe2AFuTD/DaDClgOBoV4m8Cj4B124gB4lVfDzXj97tfLnQDPYGhEt7SiNF
+	 YZzUZ5Y2fFBS4dAkCs38JqCDuN0hgdb50tf9MMU4FlHk2f7Z6mcuMnTnuXXza+OCeT
+	 TCVw74qqOaIzeQ6E96P5dX/lj1dzfqgJ+jZDSNEwJgdKmjjgeuqc1FxcYJWlVbgG5k
+	 EGUDlVbN4AKIyHJWQg00Q0M/dRTTTytwFHIT64Om4DGOA2kVddf06LcyKWInk4lCgR
+	 hkT5Cx5ff1Tanjh6pQ0G2NWYedadPlCAnOzm21OTvhya9c8k3b6DXfw2+jerT47W+p
+	 geC3Zcz1437aw==
+Date: Thu, 30 Apr 2026 10:58:15 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+Subject: Re: [PATCH v2 3/6] regulator: dt-bindings: mt6359: Deprecate bogus
+ vcn33_[12]_* split regulators
+Message-ID: <20260430-sapphire-skunk-of-acceptance-dfbcde@quoll>
+References: <20260429074113.3720271-1-wenst@chromium.org>
+ <20260429074113.3720271-4-wenst@chromium.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260430-airoha-ppe-qos-channel-v1-1-5ef9221e85c1@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MwQqDMBAFf0X23IWYSCn9FfGw6LMulE2aSBHEf
- zd6HJiZnQqyotC72Snjr0WjVWgfDY2L2AesU2Xyzj9dFxyL5rgIpwT+xcKXZPiyD9K1wcvLiVC
- NU8as2z3uybCyYVtpOI4T0svhNXIAAAA=
-X-Change-ID: 20260430-airoha-ppe-qos-channel-23a4132a80aa
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-X-Mailer: b4 0.14.3
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20260429074113.3720271-4-wenst@chromium.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260430_015819_254525_1F95E95C 
+X-CRM114-Status: GOOD (  10.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,51 +75,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-As done for the SW path, configure the QoS channel for HW accelerated
-traffic according to the user port index when forwarding to a DSA port,
-or rely on the GDM port identifier otherwise. This allows HTB shaping
-to be applied to HW accelerated traffic.
+On Wed, Apr 29, 2026 at 03:41:09PM +0800, Chen-Yu Tsai wrote:
+> vcn33_[12]_bt and vcn33_[12]_wifi refer to the same output. There are
+> two enable bits in the registers so that BT and WiFi drivers can toggle
+> them separately without any coordination. If either bit is set, then the
+> regulator output is enabled.
+> 
+> Deprecate the existing regulators, and add proper regulators matching
+> the outputs: vcn33_1 and vcn33_2.
+> 
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+> Changes since v1:
+> - deprecate the bogus regulators and add proper ones, instead of
+>   removing one and keeping the other
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_ppe.c | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index 5c9dff6bccd1..e833c50ac35f 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -334,7 +334,7 @@ static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
- 						info.wcid);
- 		} else {
- 			struct airoha_gdm_port *port = netdev_priv(dev);
--			u8 pse_port;
-+			u8 pse_port, channel;
- 
- 			if (!airoha_is_valid_gdm_port(eth, port))
- 				return -EINVAL;
-@@ -347,6 +347,14 @@ static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
- 					       * loopback
- 					       */
- 
-+			/* For traffic forwarded to DSA devices select QoS
-+			 * channel according to the DSA user port index, rely
-+			 * on port id otherwise.
-+			 */
-+			channel = dsa_port >= 0 ? dsa_port : port->id;
-+			channel = channel % AIROHA_NUM_QOS_CHANNELS;
-+			qdata |= FIELD_PREP(AIROHA_FOE_CHANNEL, channel);
-+
- 			val |= FIELD_PREP(AIROHA_FOE_IB2_PSE_PORT, pse_port) |
- 			       AIROHA_FOE_IB2_PSE_QOS;
- 			/* For downlink traffic consume SRAM memory for hw
-
----
-base-commit: 28df22acc2751abf6e6316a9f1f9cd422741bd03
-change-id: 20260430-airoha-ppe-qos-channel-23a4132a80aa
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
 Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+Krzysztof
 
 
