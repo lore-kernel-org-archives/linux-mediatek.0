@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD3F4CD13D3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2026 16:40:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8943DFF8873
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2026 16:40:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+y6l1pdaoPallINfZ97mYoBt0a1nOeHpavNgPm3SNZU=; b=JdM+eS7MyHbtt4V+t8/jN4qmlU
-	RgH+HCEn0dPr+TXkQ/5QMkQuoP1mg7pfkjiJ+rW0z6Fi/457u4CFuHBIp7cwaZT2JGrhRX/b/hNKr
-	UsGgb6e7tKqZcg2TUiqCaqGTBHpfvOmBdRk4KYfaIwjz+hlJtC0DwBVaXK1sR/5KWEx7SvdtBYbYI
-	5ovfOykf5FohJZkUpOwmZyr+zWlh/Ceb8l0rZRtWzD2xQ/CKLbzvAxsxjFu2XXWxATpwatMEcBBVM
-	lChta7TCt4e2FIIXqu3+lvg/5Hiwn4Mr852NNX0ve2ZJiKnwUbFNahHZSZgut10XA+G832wrIji3X
-	jbWWmPHg==;
+	bh=883GNpBzpZT0kzzAWtcd9tO1xmCz7U41eOWRk1IoUcE=; b=nazPAtXGifBuOrT+fhN7/QVCTE
+	4WWtRhPRR98qvm20LO+k3opCvBZHyJndnxTygU6TnEjVkoQmq1ghzTPvAR+7KD2uPstZ0rqEEfyU+
+	eeJq4wAUJaDo1BSHFBUtFDuFDMJUuTyYA4dd44WU9ECKNe372uAq3D1hZvDN4vloVTe0JqJXu73ow
+	45Kn/uV3pSOfAzef2YCcBxSwZkZ8iQKf4pcjebx5K34qGyfjvjgKGNBxzkol6Fwy6No2cttwXIQ3b
+	CfyM5QP79hUpTFiWXh+t3LLtz36L2V/rLGCkzFhk3NET02dumFmapcaUFnEIZO+8aWQgCvKjzghDH
+	hTZQFwPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wIUR6-00000005kBy-2dlF;
-	Thu, 30 Apr 2026 16:40:24 +0000
-Received: from m16.mail.163.com ([220.197.31.3])
+	id 1wIUR7-00000005kCo-2G6e;
+	Thu, 30 Apr 2026 16:40:25 +0000
+Received: from m16.mail.163.com ([220.197.31.2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wIUQv-00000005k5S-22wi;
-	Thu, 30 Apr 2026 16:40:14 +0000
+	id 1wIUQy-00000005k6c-1OPL;
+	Thu, 30 Apr 2026 16:40:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=+y
-	6l1pdaoPallINfZ97mYoBt0a1nOeHpavNgPm3SNZU=; b=A4+Y8GswvRq4Q6OR/R
-	XJ0wL77xFznNKE3+KXDYF9hgEPKh70hDL/7zq8/Q7lvBhA+yIn0vKXROtKF+X4NA
-	vMcA5moJRaLcM+punh/dQAWSAOvfyOejRIxvI3Lu6F0dkRr2vtIOMpRV8IYMKAxm
-	SlwlnxwrUw96sYfqXXbMQOFjE=
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=88
+	3GNpBzpZT0kzzAWtcd9tO1xmCz7U41eOWRk1IoUcE=; b=aBApgiEBRCh8GzVMLy
+	sYAoVuCiAGbqNJcc7dwTsdqcy5YuCx3TX3zgJNtGzX5N9/hKFb/C+KMomq9mKTa6
+	24S/FWE+ZpeXof0dISgzC74Co3jjfwtR58/OAHFrtIa6Olem0V8VtXxDViYDgyFJ
+	GffQj64057y+SfMYmnXG7iuSs=
 Received: from zhb.. (unknown [])
-	by gzga-smtp-mtada-g0-3 (Coremail) with SMTP id _____wDnUmm+hfNptZrZCg--.19910S4;
-	Fri, 01 May 2026 00:39:28 +0800 (CST)
+	by gzga-smtp-mtada-g0-3 (Coremail) with SMTP id _____wDnUmm+hfNptZrZCg--.19910S5;
+	Fri, 01 May 2026 00:39:29 +0800 (CST)
 From: Hans Zhang <18255117159@163.com>
 To: Thinh.Nguyen@synopsys.com,
 	gregkh@linuxfoundation.org,
@@ -53,24 +53,24 @@ Cc: linux-usb@vger.kernel.org,
 	linux-samsung-soc@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Hans Zhang <18255117159@163.com>
-Subject: [PATCH 2/6] usb: dwc3: google: Use FIELD_MODIFY()
-Date: Fri,  1 May 2026 00:39:15 +0800
-Message-Id: <20260430163919.47372-3-18255117159@163.com>
+Subject: [PATCH 3/6] usb: dwc3: dwc3-octeon: Use FIELD_MODIFY()
+Date: Fri,  1 May 2026 00:39:16 +0800
+Message-Id: <20260430163919.47372-4-18255117159@163.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260430163919.47372-1-18255117159@163.com>
 References: <20260430163919.47372-1-18255117159@163.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wDnUmm+hfNptZrZCg--.19910S4
-X-Coremail-Antispam: 1Uf129KBjvdXoWrur17tw4fCFy3CF4DCw17Wrg_yoWDWwc_W3
-	45Ar1Svr1Dua9xtF1qk34fZryqqw10q34xuF1jqay3Gr1UKFW8WrWvvryktryrZry7Zrn2
-	kr4DuryY93srtjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7sRu89K3UUUUU==
+X-CM-TRANSID: _____wDnUmm+hfNptZrZCg--.19910S5
+X-Coremail-Antispam: 1Uf129KBjvJXoW7urW7uF4fKFyxAryfZFyrWFg_yoW8Aw4rpw
+	n8C3WSyFnFkrn5uw45Gay8Aryrtay2krW8KryDJ3yxZw4DXrn7Wayqkw4rtrn8Wa4xtF10
+	k3yvyrW3uFW5AF7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zi-B_bUUUUU=
 X-Originating-IP: [240e:b8f:927e:5900:c497:d540:b00d:97f4]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbC6wDojGnzhcDQDgAA3O
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbC7AHojGnzhcHZvgAA3w
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260430_094013_834520_0DF67463 
-X-CRM114-Status: UNSURE (   7.99  )
+X-CRM114-CacheID: sfid-20260430_094016_690352_2A4D1EFD 
+X-CRM114-Status: UNSURE (   8.02  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,25 +91,41 @@ No functional change intended.
 
 Signed-off-by: Hans Zhang <18255117159@163.com>
 ---
- drivers/usb/dwc3/dwc3-google.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ drivers/usb/dwc3/dwc3-octeon.c | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/usb/dwc3/dwc3-google.c b/drivers/usb/dwc3/dwc3-google.c
-index 4ca567ec01d0..60ee4cc99b28 100644
---- a/drivers/usb/dwc3/dwc3-google.c
-+++ b/drivers/usb/dwc3/dwc3-google.c
-@@ -104,9 +104,8 @@ static int dwc3_google_set_pmu_state(struct dwc3_google *google, int state)
- 	regmap_read(google->usb_cfg_regmap,
- 		    google->host_cfg_offset + HOST_CFG1_OFFSET, &reg);
+diff --git a/drivers/usb/dwc3/dwc3-octeon.c b/drivers/usb/dwc3/dwc3-octeon.c
+index 42bfc14ae0c4..2201f0f34abb 100644
+--- a/drivers/usb/dwc3/dwc3-octeon.c
++++ b/drivers/usb/dwc3/dwc3-octeon.c
+@@ -296,8 +296,7 @@ static int dwc3_octeon_setup(struct dwc3_octeon *octeon,
+ 		return div;
+ 	}
+ 	val = dwc3_octeon_readq(uctl_ctl_reg);
+-	val &= ~USBDRD_UCTL_CTL_H_CLKDIV_SEL;
+-	val |= FIELD_PREP(USBDRD_UCTL_CTL_H_CLKDIV_SEL, div);
++	FIELD_MODIFY(USBDRD_UCTL_CTL_H_CLKDIV_SEL, &val, div);
+ 	val |= USBDRD_UCTL_CTL_H_CLK_EN;
+ 	dwc3_octeon_writeq(uctl_ctl_reg, val);
+ 	val = dwc3_octeon_readq(uctl_ctl_reg);
+@@ -314,14 +313,11 @@ static int dwc3_octeon_setup(struct dwc3_octeon *octeon,
+ 	/* Step 5a: Reference clock configuration. */
+ 	val = dwc3_octeon_readq(uctl_ctl_reg);
+ 	val &= ~USBDRD_UCTL_CTL_REF_CLK_DIV2;
+-	val &= ~USBDRD_UCTL_CTL_REF_CLK_SEL;
+-	val |= FIELD_PREP(USBDRD_UCTL_CTL_REF_CLK_SEL, ref_clk_sel);
++	FIELD_MODIFY(USBDRD_UCTL_CTL_REF_CLK_SEL, &val, ref_clk_sel);
  
--	reg &= ~HOST_CFG1_PM_POWER_STATE_REQUEST;
--	reg |= (FIELD_PREP(HOST_CFG1_PM_POWER_STATE_REQUEST, state) |
--		HOST_CFG1_PME_EN);
-+	FIELD_MODIFY(HOST_CFG1_PM_POWER_STATE_REQUEST, &reg, state);
-+	reg |= HOST_CFG1_PME_EN;
- 	regmap_write(google->usb_cfg_regmap,
- 		     google->host_cfg_offset + HOST_CFG1_OFFSET, reg);
+-	val &= ~USBDRD_UCTL_CTL_REF_CLK_FSEL;
+-	val |= FIELD_PREP(USBDRD_UCTL_CTL_REF_CLK_FSEL, ref_clk_fsel);
++	FIELD_MODIFY(USBDRD_UCTL_CTL_REF_CLK_FSEL, &val, ref_clk_fsel);
  
+-	val &= ~USBDRD_UCTL_CTL_MPLL_MULTIPLIER;
+-	val |= FIELD_PREP(USBDRD_UCTL_CTL_MPLL_MULTIPLIER, mpll_mul);
++	FIELD_MODIFY(USBDRD_UCTL_CTL_MPLL_MULTIPLIER, &val, mpll_mul);
+ 
+ 	/* Step 5b: Configure and enable spread-spectrum for SuperSpeed. */
+ 	val |= USBDRD_UCTL_CTL_SSC_EN;
 -- 
 2.34.1
 
