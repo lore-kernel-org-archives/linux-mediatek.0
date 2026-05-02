@@ -4,61 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14A35CCFA13
-	for <linux-mediatek@archiver.kernel.org>; Sat,  2 May 2026 01:01:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F03DCD13DA
+	for <linux-mediatek@archiver.kernel.org>; Sat,  2 May 2026 07:50:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=r6hubUrqaY3SlO73nuIZaAs/DwK/skxT2mYPNKEiXNM=; b=rzmGw8JKN5HaovqjHtwMs51Mak
-	F3XaP5il1czTO3FHoGd7/isPtyfjPGBIW3j+jtQ+Ry66gRC5wv6yaflTIZv4yrt7MLBw7h5aaliaP
-	KWbTUpeD2nLMP0xQ1NaBl1mJ8UgXAaEDJMjZN2MQssctMZAdgbe7Chl4OBKThAW7tUZwjw6cnG7s2
-	OlZE1GRnpRFAtxfswCxSUtRZdq+5XhmeXiVJJ6z9ODXaGSvpqJ6mg6cGY8/Jyf73M+BJwk0ymz0qM
-	3hx4LtcWypzxOpbWix2H55FsGOyhyZ5MEh+enpqk1+kdV1ALk0RPMJgQ4n8AYw5HIti1yGlHvRvUl
-	rZ5trL0g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=m+ZeSxbLTHdUprUeLJ8FV3dNcTYT+WtrO6078xK0XsY=; b=mB4kCMnJPErBhQLBkAVwJnMHxd
+	N3WgEeYLMpVV7nwZWDD8RHwaU2K59wUAZSjIDzFC4b1gT9A8ye6DD1EY3X7oq8P5oKxYVvTnj17EK
+	AHcnQEjg8lJfCHQaR/7JUhQUGYB4qNBGTZTSrXXUQ4lTO8WyIO5NZ9slWQ20CHmeKZpNvEoNNft41
+	OrNXF5rPaolzS/XOlVdtCuXENvS1fQVfHqCGCb8f64GoopSTHqm0EGPon/5fxqPvYGL2R5oxusGeh
+	x74NEeu1uapfK5fHTvJI4AJB/gfHvxGzgWV8Ny2qMGFYGvOy+cFlFuyTqWu7N/09wnMbnoVGEwAxl
+	YTy8qQMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wIyjH-00000007xMv-1eud;
-	Sat, 02 May 2026 01:01:11 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wJ56q-00000008YXL-1Nn3;
+	Sat, 02 May 2026 07:49:56 +0000
+Received: from mail-dy1-x132b.google.com ([2607:f8b0:4864:20::132b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wIyjF-00000007xMO-2VK6;
-	Sat, 02 May 2026 01:01:09 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 0B7F6600CB;
-	Sat,  2 May 2026 01:01:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B349AC2BCB9;
-	Sat,  2 May 2026 01:01:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777683667;
-	bh=6VxoKM+xTphV5Dzqikjy6BS2+apjk1/Pd+6jaI3/rDk=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=KdBb/OezBkC3rFemJHFe2g2Bpkz5ODr6rF21oCUQkbNNxuFza8k4WMcuf9euYgUPJ
-	 ro08CB4FyazyKTZyvgOnqdNYAiDvC083nyTMks6IRhbVTRgRv3S7uB6hhg1frqJkIf
-	 3lBc2ViM7F4XlpeElxzZzOEBkR/E0gFgocjagrMLG4M3+UysKz+SZBh16LpAApm3Lj
-	 y9cVOnpy5GBQjU+nazInwrEESY95rD+wjQ9j4QFNQLkcflQ3iDTioJX8A7QJA7JQ9G
-	 J7o5/LeXOU9AHbEoqTUqTxXa9WRRJUvtseynqF2HKgvOncwS4eG5zQwHEmeLWNqpTo
-	 yvn3BiKLBgSXg==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 03193380CEF5;
-	Sat,  2 May 2026 01:00:22 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1wJ56n-00000008YW9-0hIc
+	for linux-mediatek@lists.infradead.org;
+	Sat, 02 May 2026 07:49:54 +0000
+Received: by mail-dy1-x132b.google.com with SMTP id 5a478bee46e88-2ee990e8597so3334224eec.1
+        for <linux-mediatek@lists.infradead.org>; Sat, 02 May 2026 00:49:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pcc-me-uk.20251104.gappssmtp.com; s=20251104; t=1777708192; x=1778312992; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=m+ZeSxbLTHdUprUeLJ8FV3dNcTYT+WtrO6078xK0XsY=;
+        b=z6vxzO4HgNC/Vkww7IS+I719SC98LIxX2D+5kQ1T2wLEH60+J8WOIgkmvRTYWT98di
+         FU8feqb3in26NokVyLl606BYV26Z4KRnPCEvUBvFybM9PRxdmQP9PP7/poh+uJD52G7q
+         dan0eXwIES+oBQkts3MLV9KG8eXtHjwYlgqpUOLPT2zTPZF2E251E+nhnAABdDGtZe1I
+         Zfnso+R4OCZAaTPb+4S7yuTXj/qjueP3XmcnYY38ht4dazfE84tRCBIbIgk9i0MxSAUR
+         gXXp85zcIS/UqbZZXOm+OH8ghPWuQYIqhnSLP9M93prqSzzfK1DZO/17N8cuwf3V71pv
+         kE3Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1777708192; x=1778312992;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=m+ZeSxbLTHdUprUeLJ8FV3dNcTYT+WtrO6078xK0XsY=;
+        b=jYOLZznVRbvNIylwHyh8MUEXOWR2f0rdbPoFjv0cK/ywyDpM4B9NhedFuAlY7yTYWg
+         JPCxBDwr9c4WpxdlJA+/5EdCLN1C7kG1Ey2eOUqfKz54w5zUq66dITOEie/R/4fe9IIG
+         /qSpfAgPca79kMaY/HO9/hFv8pMIlirKHXTIcq0LNkti3Ciq6yhQieX24YdjstoX4LGv
+         lDEOSbKhcLEEQtNws8s1RfHYYaLvrutfN1uq2i6hUhRMAzMPRrMP1s3C2yLD1W3zs9Dj
+         iwlRAUzaKLb8oAnWUpkt9LRFSE3Jszev8e71lyBfQqnHHMJL1KDfMk01fSp0D9C66cGx
+         zgsg==
+X-Forwarded-Encrypted: i=1; AFNElJ+yXyB1THuZRsg+bDOmxo2WGQAEo0H/6cXJ0tpN/k/hvfGYo6zdF59M8YpCcOgOtP3JKWDfzYV91lEZ4U31DQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzBXJKVdjxfzbr4dI/jXCKcGRawdSQO1yX+1GQrYAjLbNA0d9cS
+	Ew4v+7r/nk0VTA3NkFFQwjP/tCPAVIse+0OfW2KedXbUPH+xGaydznq/MCX8CGdWEQQ=
+X-Gm-Gg: AeBDiesqJzNj3jAVpYacuwH7QpamJ+KBEYsbf9sC8ygFO9K4axNKxAnk9N1xFQBLNFo
+	T60nME7iNSNc6KnjbAkiI0b5Cbs088V/PnhlWYiGBvUh+lnyJgIrijjL8xnG4WJCa7rMtgIJ/Sh
+	0oP2VqpvV8hJDgRKjknA0/8k/Sg4T/WmUff14lNvVAHt5APlrLdYJK3hMoNS+D2mKbdDtWydxJs
+	3jpYUnYbHnVJjG47m/3Qy4ZZCG/7B3QZOFFJ6LYJu4uRT2jrJsLg4u+lYwVDLMM+Hfwe5NGNkGT
+	A3IDNLCDgEdqX6OxozxR0LvFm+9sFHNbYvmKPWgVcKobIdqLdEuVF1k9qpXgZzh6S/mgaR0BjxL
+	YxAW19eWqDeNKDkV1vG7ZDN9JBchmARB9JRhGJ7bhe6O5tgvYlPm6BFTFNmQv820re0U2rKwuog
+	nvAJqZmJF/Qd9MqdqW7J50RfXaWMEOyqVzHuh3ZQbAyatqY4URinyAYP0StpkPnCLVkw==
+X-Received: by 2002:a05:7301:6706:b0:2ef:1d11:18ae with SMTP id 5a478bee46e88-2efbb29039bmr1022967eec.28.1777708191723;
+        Sat, 02 May 2026 00:49:51 -0700 (PDT)
+Received: from localhost (c-67-180-161-137.hsd1.ca.comcast.net. [67.180.161.137])
+        by smtp.gmail.com with UTF8SMTPSA id 5a478bee46e88-2ee3bb63c5fsm7422380eec.25.2026.05.02.00.49.50
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 02 May 2026 00:49:51 -0700 (PDT)
+From: Peter Collingbourne <peter@pcc.me.uk>
+To: Sjoerd Simons <sjoerd@collabora.com>
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Peter Collingbourne <peter@pcc.me.uk>
+Subject: [PATCH] arm64: dts: mediatek: mt7981b: Add PMU
+Date: Sat,  2 May 2026 00:49:12 -0700
+Message-ID: <20260502074912.12193-1-peter@pcc.me.uk>
+X-Mailer: git-send-email 2.54.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next] net: airoha: configure QoS channel for HW
- accelerated flowtable traffic
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <177768362079.3679774.17100157322999621672.git-patchwork-notify@kernel.org>
-Date: Sat, 02 May 2026 01:00:20 +0000
-References: <20260430-airoha-ppe-qos-channel-v1-1-5ef9221e85c1@kernel.org>
-In-Reply-To: <20260430-airoha-ppe-qos-channel-v1-1-5ef9221e85c1@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, horms@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260502_004953_455325_88D4DC8E 
+X-CRM114-Status: UNSURE (   8.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,29 +104,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+The interrupt number was taken from a downstream DTS of the similar MT7987
+[1] and verified on my OpenWrt One.
 
-This patch was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+Signed-off-by: Peter Collingbourne <peter@pcc.me.uk>
+Link: [1] https://github.com/openwrt/openwrt/blob/e4b3d5c799aef3be20b7f6079e8e5a14b215c116/target/linux/mediatek/dts/mt7987.dtsi#L246
+---
+ arch/arm64/boot/dts/mediatek/mt7981b.dtsi | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-On Thu, 30 Apr 2026 10:47:38 +0200 you wrote:
-> As done for the SW path, configure the QoS channel for HW accelerated
-> traffic according to the user port index when forwarding to a DSA port,
-> or rely on the GDM port identifier otherwise. This allows HTB shaping
-> to be applied to HW accelerated traffic.
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> 
-> [...]
-
-Here is the summary with links:
-  - [net-next] net: airoha: configure QoS channel for HW accelerated flowtable traffic
-    https://git.kernel.org/netdev/net-next/c/286efd34d1a1
-
-You are awesome, thank you!
+diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+index 4084f4dfa3e5..3c6fbb6c5333 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+@@ -38,6 +38,12 @@ oscillator-40m {
+ 		#clock-cells = <0>;
+ 	};
+ 
++	pmu {
++		compatible = "arm,cortex-a53-pmu";
++		interrupt-parent = <&gic>;
++		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW>;
++	};
++
+ 	psci {
+ 		compatible = "arm,psci-1.0";
+ 		method = "smc";
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.54.0
 
 
