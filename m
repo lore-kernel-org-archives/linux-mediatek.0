@@ -4,64 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 167D1CCFA13
-	for <linux-mediatek@archiver.kernel.org>; Sat,  2 May 2026 10:22:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CFF7CD3423
+	for <linux-mediatek@archiver.kernel.org>; Sat,  2 May 2026 10:55:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Cc:To
-	:Subject:Message-ID:From:Content-Transfer-Encoding:Content-Type:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BbnEszm/PmeV98ZXBrarbNHFdx3a5ydIzCvCJ4oa3xg=; b=E7j9q86KvtndigorJvL64F7zEs
-	bFFwoN06sjXrq5/vAVbAvu6VOM31XKilEcG+AzIuvmBVbo4MxV9+00VZFwDmHPNUf+7w97aJIE7X6
-	CLDDqhyvPReLSQ0uAXTd1HBZPpRH0wXYEoiWnorpDQOIiSDmVnA8R9dmG7p87uQCStNHovdRCo1Ea
-	7qrWQbK8GLxTvIVlNistdUhXHtdh1dTPeuEwOdl98b3CyeS3ma6JgSeXrhpZFeHMndzPIAEoT0BD6
-	0zOabWRl+pxAFH5ouUE61ZaqHUOMrlnYOK9K4KpoOtD09zqjxVeMsrQa9S7amAqEzl0BQjez9c/MM
-	HSFQ7h2A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XhqVMUUIb7W2eRy6D+EHtUd8kFacUr1u3kbCzthvlKY=; b=MXD2TUOsUWCceSsm6Z3ohKFSqL
+	y1n25krxSiltGiOuCMYbXtdmntMLYpFp0PkHROGWfC8ioiJgfa3YUlUm414/L+pzJ5t7nci5SC66Z
+	ax+oBfqPuqSzhp8A4iEvjYEaGcXdMUtHR7QO3l2nyI/hh2OeTCRPsnbzEbA7SPpuP96jyx2FY4z/L
+	SpTLM2SxYKKiRoiupNEl2c07XIlpNUwuJNUd6X26YUU51PUweNPq5H6nLlX13kg0R/rSFzpS8MZ/0
+	Mpy1zNwDYYLRIJciUYv4ydaAOJ1/Jr3fAmtWP5Qiwk9P+be4pb6IuWK9s3/gCBMIQfN/tPCLEvifg
+	HlwBp5eA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJ7Uk-00000008nbO-1uQv;
-	Sat, 02 May 2026 10:22:46 +0000
-Received: from out-172.mta0.migadu.com ([2001:41d0:1004:224b::ac])
+	id 1wJ80a-00000008qcM-2VIo;
+	Sat, 02 May 2026 10:55:40 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJ7Uh-00000008nZo-2sVd
-	for linux-mediatek@lists.infradead.org;
-	Sat, 02 May 2026 10:22:45 +0000
+	id 1wJ80X-00000008qbK-1Rzf;
+	Sat, 02 May 2026 10:55:38 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.99)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1wJ80C-000000007J3-2knb;
+	Sat, 02 May 2026 10:55:16 +0000
+Date: Sat, 2 May 2026 11:55:02 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Christian Marangi <ansuelsmth@gmail.com>, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net v6] net: dsa: mt7530: fix .get_stats64 sleeping in atomic
+ context
+Message-ID: <6940b913da2c29156f0feff74b678d3c526ee84c.1777719253.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1777717349;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=BbnEszm/PmeV98ZXBrarbNHFdx3a5ydIzCvCJ4oa3xg=;
-	b=DZ+RtjeOqUIRi7xLXEr2nmh+M7SqhdoverehoZWlI9YrMO0UF9jumTDJB1ZzEZP+54X9QG
-	ivwkbLBRErJisC9xJDm478D8cYtLjO82TLc4HmMGf3piEglx4uF3FV64j1Or6aF+8754V5
-	pRaASGAWwj5Prm01IHLeg7nqanlmIUI=
-Date: Sat, 02 May 2026 10:22:25 +0000
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Frank Wunderlich" <frank.wunderlich@linux.dev>
-Message-ID: <7a4d6015e991aaf80b9ffcaaf8fa76799d56649a@linux.dev>
-TLS-Required: No
-Subject: Re: [PATCH v2 0/4] some BPI-R4Pro dts updates
-To: "Frank Wunderlich" <linux@fw-web.de>, "Matthias Brugger"
- <matthias.bgg@gmail.com>, "AngeloGioacchino Del Regno"
- <angelogioacchino.delregno@collabora.com>, "Rob Herring"
- <robh@kernel.org>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor
- Dooley" <conor+dt@kernel.org>
-Cc: devicetree@vger.kernel.org, "Daniel Golle" <daniel@makrotopia.org>,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, "Andrew
- LaMarche" <andrewjlamarche@gmail.com>,
- linux-arm-kernel@lists.infradead.org
-In-Reply-To: <20260412092333.6371-1-linux@fw-web.de>
-References: <20260412092333.6371-1-linux@fw-web.de>
-X-Migadu-Flow: FLOW_OUT
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260502_032243_859610_E1842507 
-X-CRM114-Status: UNSURE (   9.24  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260502_035537_539608_1ABC6BD0 
+X-CRM114-Status: GOOD (  18.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,50 +69,254 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
+The .get_stats64 callback runs in atomic context, but on
+MDIO-connected switches every register read acquires the MDIO bus
+mutex, which can sleep:
+[   12.645973] BUG: sleeping function called from invalid context at kernel/locking/mutex.c:609
+[   12.654442] in_atomic(): 0, irqs_disabled(): 0, non_block: 0, pid: 759, name: grep
+[   12.663377] preempt_count: 0, expected: 0
+[   12.667410] RCU nest depth: 1, expected: 0
+[   12.671511] INFO: lockdep is turned off.
+[   12.675441] CPU: 0 UID: 0 PID: 759 Comm: grep Tainted: G S      W           7.0.0+ #0 PREEMPT
+[   12.675453] Tainted: [S]=CPU_OUT_OF_SPEC, [W]=WARN
+[   12.675456] Hardware name: Bananapi BPI-R64 (DT)
+[   12.675459] Call trace:
+[   12.675462]  show_stack+0x14/0x1c (C)
+[   12.675477]  dump_stack_lvl+0x68/0x8c
+[   12.675487]  dump_stack+0x14/0x1c
+[   12.675495]  __might_resched+0x14c/0x220
+[   12.675504]  __might_sleep+0x44/0x80
+[   12.675511]  __mutex_lock+0x50/0xb10
+[   12.675523]  mutex_lock_nested+0x20/0x30
+[   12.675532]  mt7530_get_stats64+0x40/0x2ac
+[   12.675542]  dsa_user_get_stats64+0x2c/0x40
+[   12.675553]  dev_get_stats+0x44/0x1e0
+[   12.675564]  dev_seq_printf_stats+0x24/0xe0
+[   12.675575]  dev_seq_show+0x14/0x3c
+[   12.675583]  seq_read_iter+0x37c/0x480
+[   12.675595]  seq_read+0xd0/0xec
+[   12.675605]  proc_reg_read+0x94/0xe4
+[   12.675615]  vfs_read+0x98/0x29c
+[   12.675625]  ksys_read+0x54/0xdc
+[   12.675633]  __arm64_sys_read+0x18/0x20
+[   12.675642]  invoke_syscall.constprop.0+0x54/0xec
+[   12.675653]  do_el0_svc+0x3c/0xb4
+[   12.675662]  el0_svc+0x38/0x200
+[   12.675670]  el0t_64_sync_handler+0x98/0xdc
+[   12.675679]  el0t_64_sync+0x158/0x15c
 
-just a gentle ping
+For MDIO-connected switches, poll MIB counters asynchronously using a
+delayed workqueue every second and let .get_stats64 return the cached
+values under a spinlock. A mod_delayed_work() call on each read
+triggers an immediate refresh so counters stay responsive when queried
+more frequently.
 
-do i need to change anything? i wonder why i do not see this series in de=
-vicetree patchwork...
+MMIO-connected switches (MT7988, EN7581, AN7583) are not affected
+because their regmap does not sleep, so they continue to read MIB
+counters directly in .get_stats64.
 
-Am 12. April 2026 um 11:23 schrieb "Frank Wunderlich" <linux@fw-web.de ma=
-ilto:linux@fw-web.de?to=3D%22Frank%20Wunderlich%22%20%3Clinux%40fw-web.de=
-%3E >:
->=20
->=20From: Frank Wunderlich <frank-w@public-files.de>
->=20
->=20There are some parts of BPI-R4Pro DTS that need to be changed. Curren=
-tly
-> there should be not much users of the mainline-dts and we noticed some
-> things while openwrt integration.
->=20
->=20v2:
-> - added mgmt port renaming as this patch is still outstanding to keep
->  all in one series
->  https://patchwork.kernel.org/project/linux-mediatek/patch/202603032020=
-06.37515-1-linux@fw-web.de/
-> - dropped default-state in gpio-leds patch as suggested by daniel
->=20
->=20Frank Wunderlich (4):
->  arm64: dts: mediatek: mt7988a-bpi-r4pro: rename mgmt port to lan5
->  arm64: dts: mediatek: mt7988a-bpi-r4pro: drop duplicate fan properties
->  arm64: dts: mediatek: mt7988a-bpi-r4pro: update gpio-leds
->  arm64: dts: mediatek: mt7988a-bpi-r4pro: rework pcie gpio-hog handling
->=20
->=20 arch/arm64/boot/dts/mediatek/Makefile | 8 ++++++++
->  .../mt7988a-bananapi-bpi-r4-pro-cn13.dtso | 20 +++++++++++++++++++
->  .../mt7988a-bananapi-bpi-r4-pro-cn14.dtso | 20 +++++++++++++++++++
->  .../mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi | 15 +++-----------
->  4 files changed, 51 insertions(+), 12 deletions(-)
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r=
-4-pro-cn13.dtso
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r=
-4-pro-cn14.dtso
->=20
->=20--=20
->=202.43.0
->=20
+Fixes: 88c810f35ed5 ("net: dsa: mt7530: implement .get_stats64")
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Acked-by: Chester A. Unal <chester.a.unal@arinc9.com>
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+---
+v6:
+ * reintroduce .teardown() for cancel_delayed_work_sync(), drop
+   cancel_delayed_work_sync() from .remove()
 
-regards=20Frank
+v5:
+ * spin_lock_init() and INIT_DELAYED_WORK() in probe()
+ * drop teardown as cancel_delayed_work_sync() in remove() is
+   sufficient and now symmetric with init happening in probe()
+
+v4:
+ * extract mt7530_stats_refresh() helper from mt7530_stats_poll()
+   -> mt7530_stats_poll() now just refreshes and re-arms
+ * call helper synchronously in mt753x_setup() to seed the cache
+ * avoid zeroed counters during the first poll interval
+ * avoid INITIAL_JIFFIES vs stats_last==0 wraparound on 32-bit
+ * swap deprecated system_wq for system_percpu_wq in get_stats64
+ * keeps on-demand refresh on the same queue as schedule_*_work
+
+v3:
+ * move `stats_last` access under the spinlock to avoid potential race
+
+v2:
+ * use spin_lock_bh()/spin_unlock_bh() to prevent potential deadlock
+ * rate-limit mod_delayed_work() refresh to at most once per 100ms
+ * move cancel_delayed_work_sync() after dsa_unregister_switch()
+ * add mt753x_teardown() callback to cancel the stats work
+ * fix commit message
+
+ drivers/net/dsa/mt7530.c | 75 ++++++++++++++++++++++++++++++++++++++--
+ drivers/net/dsa/mt7530.h |  8 +++++
+ 2 files changed, 80 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index b9423389c2ef..44d670904ad8 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -25,6 +25,9 @@
+ 
+ #include "mt7530.h"
+ 
++#define MT7530_STATS_POLL_INTERVAL	(1 * HZ)
++#define MT7530_STATS_RATE_LIMIT		(HZ / 10)
++
+ static struct mt753x_pcs *pcs_to_mt753x_pcs(struct phylink_pcs *pcs)
+ {
+ 	return container_of(pcs, struct mt753x_pcs, pcs);
+@@ -906,10 +909,9 @@ static void mt7530_get_rmon_stats(struct dsa_switch *ds, int port,
+ 	*ranges = mt7530_rmon_ranges;
+ }
+ 
+-static void mt7530_get_stats64(struct dsa_switch *ds, int port,
+-			       struct rtnl_link_stats64 *storage)
++static void mt7530_read_port_stats64(struct mt7530_priv *priv, int port,
++				     struct rtnl_link_stats64 *storage)
+ {
+-	struct mt7530_priv *priv = ds->priv;
+ 	uint64_t data;
+ 
+ 	/* MIB counter doesn't provide a FramesTransmittedOK but instead
+@@ -951,6 +953,54 @@ static void mt7530_get_stats64(struct dsa_switch *ds, int port,
+ 			       &storage->rx_crc_errors);
+ }
+ 
++static void mt7530_stats_refresh(struct mt7530_priv *priv)
++{
++	struct rtnl_link_stats64 stats = {};
++	struct dsa_port *dp;
++	int port;
++
++	dsa_switch_for_each_user_port(dp, priv->ds) {
++		port = dp->index;
++
++		mt7530_read_port_stats64(priv, port, &stats);
++
++		spin_lock_bh(&priv->stats_lock);
++		priv->ports[port].stats = stats;
++		priv->stats_last = jiffies;
++		spin_unlock_bh(&priv->stats_lock);
++	}
++}
++
++static void mt7530_stats_poll(struct work_struct *work)
++{
++	struct mt7530_priv *priv = container_of(work, struct mt7530_priv,
++						stats_work.work);
++
++	mt7530_stats_refresh(priv);
++	schedule_delayed_work(&priv->stats_work,
++			      MT7530_STATS_POLL_INTERVAL);
++}
++
++static void mt7530_get_stats64(struct dsa_switch *ds, int port,
++			       struct rtnl_link_stats64 *storage)
++{
++	struct mt7530_priv *priv = ds->priv;
++	bool refresh;
++
++	if (priv->bus) {
++		spin_lock_bh(&priv->stats_lock);
++		*storage = priv->ports[port].stats;
++		refresh = time_after(jiffies, priv->stats_last +
++					      MT7530_STATS_RATE_LIMIT);
++		spin_unlock_bh(&priv->stats_lock);
++		if (refresh)
++			mod_delayed_work(system_percpu_wq,
++					 &priv->stats_work, 0);
++	} else {
++		mt7530_read_port_stats64(priv, port, storage);
++	}
++}
++
+ static void mt7530_get_eth_ctrl_stats(struct dsa_switch *ds, int port,
+ 				      struct ethtool_eth_ctrl_stats *ctrl_stats)
+ {
+@@ -3137,9 +3187,24 @@ mt753x_setup(struct dsa_switch *ds)
+ 	if (ret && priv->irq_domain)
+ 		mt7530_free_mdio_irq(priv);
+ 
++	if (!ret && priv->bus) {
++		mt7530_stats_refresh(priv);
++		schedule_delayed_work(&priv->stats_work,
++				      MT7530_STATS_POLL_INTERVAL);
++	}
++
+ 	return ret;
+ }
+ 
++static void
++mt753x_teardown(struct dsa_switch *ds)
++{
++	struct mt7530_priv *priv = ds->priv;
++
++	if (priv->bus)
++		cancel_delayed_work_sync(&priv->stats_work);
++}
++
+ static int mt753x_set_mac_eee(struct dsa_switch *ds, int port,
+ 			      struct ethtool_keee *e)
+ {
+@@ -3257,6 +3322,7 @@ static int mt7988_setup(struct dsa_switch *ds)
+ static const struct dsa_switch_ops mt7530_switch_ops = {
+ 	.get_tag_protocol	= mtk_get_tag_protocol,
+ 	.setup			= mt753x_setup,
++	.teardown		= mt753x_teardown,
+ 	.preferred_default_local_cpu_port = mt753x_preferred_default_local_cpu_port,
+ 	.get_strings		= mt7530_get_strings,
+ 	.get_ethtool_stats	= mt7530_get_ethtool_stats,
+@@ -3395,6 +3461,9 @@ mt7530_probe_common(struct mt7530_priv *priv)
+ 	priv->ds->ops = &mt7530_switch_ops;
+ 	priv->ds->phylink_mac_ops = &mt753x_phylink_mac_ops;
+ 	mutex_init(&priv->reg_mutex);
++	spin_lock_init(&priv->stats_lock);
++	INIT_DELAYED_WORK(&priv->stats_work, mt7530_stats_poll);
++
+ 	dev_set_drvdata(dev, priv);
+ 
+ 	return 0;
+diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+index 3e0090bed298..dd33b0df3419 100644
+--- a/drivers/net/dsa/mt7530.h
++++ b/drivers/net/dsa/mt7530.h
+@@ -796,6 +796,7 @@ struct mt7530_fdb {
+  * @pvid:	The VLAN specified is to be considered a PVID at ingress.  Any
+  *		untagged frames will be assigned to the related VLAN.
+  * @sgmii_pcs:	Pointer to PCS instance for SerDes ports
++ * @stats:	Cached port statistics for MDIO-connected switches
+  */
+ struct mt7530_port {
+ 	bool enable;
+@@ -803,6 +804,7 @@ struct mt7530_port {
+ 	u32 pm;
+ 	u16 pvid;
+ 	struct phylink_pcs *sgmii_pcs;
++	struct rtnl_link_stats64 stats;
+ };
+ 
+ /* Port 5 mode definitions of the MT7530 switch */
+@@ -875,6 +877,9 @@ struct mt753x_info {
+  * @create_sgmii:	Pointer to function creating SGMII PCS instance(s)
+  * @active_cpu_ports:	Holding the active CPU ports
+  * @mdiodev:		The pointer to the MDIO device structure
++ * @stats_lock:		Protects cached per-port stats from concurrent access
++ * @stats_work:		Delayed work for polling MIB counters on MDIO switches
++ * @stats_last:		Jiffies timestamp of last MIB counter poll
+  */
+ struct mt7530_priv {
+ 	struct device		*dev;
+@@ -900,6 +905,9 @@ struct mt7530_priv {
+ 	int (*create_sgmii)(struct mt7530_priv *priv);
+ 	u8 active_cpu_ports;
+ 	struct mdio_device *mdiodev;
++	spinlock_t stats_lock; /* protects cached stats counters */
++	struct delayed_work stats_work;
++	unsigned long stats_last;
+ };
+ 
+ struct mt7530_hw_vlan_entry {
+-- 
+2.53.0
 
