@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44151FF885A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2026 18:25:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C36D4CD3436
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2026 18:25:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6Y6/gFcY++NPP2blZmkaz/4FJAhnY+UzuGdBYbIz6n4=; b=UkEkTRGdD/QVCSTQ7qWrwlwIJ7
-	cTtNxLzIa4lrinXBmw+bpEp5P401F52DEAtuuKqdu3ue6DKDIxxoJjPuccJopSqENQlfdYJz//mc2
-	JzhQ/e2p8fcOanHyY+aXxLpT9az10Ogq3aZiyCC/ZHs0wXvp5MVQCP/Ra/rBmCngb7s3IfkKaZkjd
-	hZY5SmWiFigG8QB6pjlbApMPeLX3JfLTSo73rZexHoou1jkl/9Wzt7kPgoazTRhXRqc7DN0QcPjPU
-	dnSD5hIezCw6Ospmmh8LKM5jl3Sf26RpwvhVe0B65stBmU7c46KBK4gDKyfzI2/Zl4DGgFDTEr1da
-	khTaPu7g==;
+	bh=Rm6Ih6nJGIfJrnkCEIbTS09ttY6g/AXvX5xa/VDozEU=; b=eZKRv3AS4f7Y6XvItqm15PDLhl
+	U9HSmtz3XWz8y2yyzNaWWSfMV6k6cSDprSN+sRxaxh5M6Lek6QHi9SyDSjNcyGbVD5KQjWA/nuxsv
+	2buaOuc1WwhmybCqaPOxozyGIkoEjTleVMi3qwU7ECFqZbogm8vF49tp6kxZPzlXJqsBhcGEBg9XH
+	LfJ8IR0LLycz8u/jkT5T1AbubjQUGavHleCxvRRu2T5DfQaxxZ3QsM2bK5IScVaJn0GRwXBIi75bs
+	upB4bmUfUmVQfO7RmEt8oJmFHyNz2MKXwc4WVZWPLgEyaY9XqPux+dj//kyMI6qusqlQYN4n/K87d
+	uixZzwew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJxyj-0000000DyX6-0Jev;
-	Mon, 04 May 2026 18:25:13 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wJxyk-0000000DyZU-2ArT;
+	Mon, 04 May 2026 18:25:14 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJxyV-0000000DyBj-3Zxd;
+	id 1wJxyV-0000000DyB4-3mcw;
 	Mon, 04 May 2026 18:25:02 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E68E44456A;
+	by sea.source.kernel.org (Postfix) with ESMTP id C875844546;
 	Mon,  4 May 2026 18:24:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id BC6F8C2BCFA;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 99BB2C2BCF4;
 	Mon,  4 May 2026 18:24:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1777919098;
-	bh=jiEnga835ZWXljUXe/gp5QJ2hFyU8WTdUMfjkirRE5w=;
+	bh=W43pjjd8uh4BI2x+5IpU0y5Die/7tvfOKOBvAMHfunY=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=bTRQjEB7bj0hUtK9nRed0VLss17YpaFzU6bQO/XFJdWEWDEUvsrxSO6WEOtP1nNEO
-	 rgbzU2mFHYWmKB77ycdA8+/lAuxFrTcYUfMNF9bresvUKjsX8Xh8cJSXmz+isZOs69
-	 sQyKaw847kiAq/dCJImXt0lvAO5v3Hi8oBZTjvAKCCMICBSTYlzFKge0bQ01yImJOS
-	 gITDcIsj2rJ9Ad7mlGxxOcnjb7FlAzReSeNgI97fG9jqFmdfTshAYe4Izrn9IUUTeZ
-	 WfxQp67ItPV1wGfFb6wJN82icE3C4HkH67bIhsOQCwYBmoNGefcMyoTaaJzvxTS8fr
-	 2Jt9A+/dQZeow==
+	b=Rq098v9BBFWBFErf3qi+SI7ApW+gj1W7Xv2V883I11+t/gvSdX7QG+7HbsbUreUWi
+	 U+6Wxw0lzw4VWMZL73kPt1ztOQ8hpjkh5LVLWe/f7y9TZ8pcMXj4qqx9n1Faa7t00m
+	 zoK4l5OfASOoLPzNI77r2yYrrmJUY9RtS4FyZw3P1fLetmyZoSOtNNKHaXeKHn0RoX
+	 hDj27HwPD/4S6wb7o1bEVtH9ALgbGMPQ+si+NKXNcT69fWm+zVHw4ih6uEdGwD0+lA
+	 MxuA2ucFiA0jNi2a5tVOcKHQpSeNVDADFenyFsqpT/32I2Ey2xkOz8BnhKUK2sk0cp
+	 9g2IO9dhir4WA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B47CBCD3436;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 87DA1CD3430;
 	Mon,  4 May 2026 18:24:58 +0000 (UTC)
 From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Mon, 04 May 2026 21:24:56 +0300
-Subject: [PATCH 04/13] iio: adc: mediatek: add mt6323 PMIC AUXADC driver
+Date: Mon, 04 May 2026 21:24:54 +0300
+Subject: [PATCH 02/13] dt-bindings: nvmem: add mt6323 PMIC EFUSE
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260504-mt6323-v1-4-799b58b355ff@protonmail.com>
+Message-Id: <20260504-mt6323-v1-2-799b58b355ff@protonmail.com>
 References: <20260504-mt6323-v1-0-799b58b355ff@protonmail.com>
 In-Reply-To: <20260504-mt6323-v1-0-799b58b355ff@protonmail.com>
 To: Jonathan Cameron <jic23@kernel.org>, 
@@ -71,19 +71,19 @@ Cc: linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
  Ben Grisdale <bengris32@protonmail.ch>, 
  Roman Vivchar <rva333@protonmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1777919095; l=12347;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1777919095; l=1691;
  i=rva333@protonmail.com; s=20260325; h=from:subject:message-id;
- bh=ntbXW4JgcRRKUQ/pbraWJLDHLEhabTwURPdUBQZOVzI=;
- b=xMJnNoS8/Lw4YMf50KV1e0r4lDkQSQ1sV5zI54Be7RLHVPZWuNA1bm+U0PAOi7XT89oUN0Oc9
- 945wYVty4spBfzm2htQ8dzpQgTqMKyf/hnOkqMKTXAzPWHYMQdU2jzY
+ bh=TDwKTKu2cZc7u9klkOVCAaJXpSXuuDnK80oaDp3s4XA=;
+ b=QyRCwIcC2yywc1uTzzTmOq3WgWRG+kGrwQhuXwmDoOFKdugyeRblC9dKhWN8q8RWrceuFq49w
+ Grz9bOIPSeKDqHtlQqd4XA5nA/MyjxaIfEQNl7XerI3ta4FAhYIr4P3
 X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
  pk=euuVBZGtA2Cqb8Dju84qpQPhvwxyUirJlXpqEPQWKBM=
 X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260325 with
  auth_id=695
 X-Original-From: Roman Vivchar <rva333@protonmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260504_112500_031759_165A491B 
-X-CRM114-Status: GOOD (  25.90  )
+X-CRM114-CacheID: sfid-20260504_112500_065051_14A27952 
+X-CRM114-Status: GOOD (  11.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,433 +101,65 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Roman Vivchar <rva333@protonmail.com>
 
-The mt6323 AUXADC is a 15-bit ADC used for system monitoring. This driver
-provides support for reading various channels including battery and
-charger voltages, battery and chip temperature, current sensing and
-accessory detection.
+The MediaTek mt6323 PMIC includes an EFUSE used for storing calibration
+data.
 
-Add a driver for the AUXADC found in the MediaTek mt6323 PMIC.
+Add the device tree binding documentation for the MediaTek mt6323 EFUSE.
 
 Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
 Signed-off-by: Roman Vivchar <rva333@protonmail.com>
 ---
- drivers/iio/adc/Kconfig         |  11 ++
- drivers/iio/adc/Makefile        |   1 +
- drivers/iio/adc/mt6323-auxadc.c | 372 ++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 384 insertions(+)
+ .../bindings/nvmem/mediatek,mt6323-efuse.yaml      | 42 ++++++++++++++++++++++
+ 1 file changed, 42 insertions(+)
 
-diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
-index 60038ae8dfc4..a03614b46041 100644
---- a/drivers/iio/adc/Kconfig
-+++ b/drivers/iio/adc/Kconfig
-@@ -1137,6 +1137,17 @@ config MCP3911
- 	  This driver can also be built as a module. If so, the module will be
- 	  called mcp3911.
- 
-+config MEDIATEK_MT6323_AUXADC
-+	tristate "MediaTek MT6323 PMIC AUXADC driver"
-+	depends on MFD_MT6397
-+	help
-+	  Say yes here to enable support for MediaTek MT6323 PMIC Auxiliary ADC.
-+	  This driver provides multiple channels for system monitoring,
-+	  such as battery voltage, PMIC temperature, and others.
-+
-+	  This driver can also be built as a module. If so, the module will be
-+	  called mt6323-auxadc.
-+
- config MEDIATEK_MT6359_AUXADC
- 	tristate "MediaTek MT6359 PMIC AUXADC driver"
- 	depends on MFD_MT6397
-diff --git a/drivers/iio/adc/Makefile b/drivers/iio/adc/Makefile
-index c76550415ff1..58161750d6e3 100644
---- a/drivers/iio/adc/Makefile
-+++ b/drivers/iio/adc/Makefile
-@@ -99,6 +99,7 @@ obj-$(CONFIG_MCP320X) += mcp320x.o
- obj-$(CONFIG_MCP3422) += mcp3422.o
- obj-$(CONFIG_MCP3564) += mcp3564.o
- obj-$(CONFIG_MCP3911) += mcp3911.o
-+obj-$(CONFIG_MEDIATEK_MT6323_AUXADC) += mt6323-auxadc.o
- obj-$(CONFIG_MEDIATEK_MT6359_AUXADC) += mt6359-auxadc.o
- obj-$(CONFIG_MEDIATEK_MT6360_ADC) += mt6360-adc.o
- obj-$(CONFIG_MEDIATEK_MT6370_ADC) += mt6370-adc.o
-diff --git a/drivers/iio/adc/mt6323-auxadc.c b/drivers/iio/adc/mt6323-auxadc.c
+diff --git a/Documentation/devicetree/bindings/nvmem/mediatek,mt6323-efuse.yaml b/Documentation/devicetree/bindings/nvmem/mediatek,mt6323-efuse.yaml
 new file mode 100644
-index 000000000000..97b4ad4e7b47
+index 000000000000..eb2437b0c1f0
 --- /dev/null
-+++ b/drivers/iio/adc/mt6323-auxadc.c
-@@ -0,0 +1,372 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (c) 2026 Roman Vivchar <rva333@protonmail.com>
-+ *
-+ * Based on drivers/iio/adc/mt6359-auxadc.c
-+ */
-+
-+#include <linux/bitfield.h>
-+#include <linux/bits.h>
-+#include <linux/cleanup.h>
-+#include <linux/delay.h>
-+#include <linux/iio/iio.h>
-+#include <linux/mod_devicetable.h>
-+#include <linux/module.h>
-+#include <linux/platform_device.h>
-+#include <linux/property.h>
-+#include <linux/regmap.h>
-+#include <linux/types.h>
-+
-+#include <linux/mfd/mt6397/core.h>
-+#include <linux/mfd/mt6323/registers.h>
-+
-+#include <dt-bindings/iio/adc/mediatek,mt6323-auxadc.h>
-+
-+#define AUXADC_RSTB_SEL		BIT(7)
-+#define AUXADC_RSTB_SW		BIT(5)
-+
-+#define AUXADC_CTL_CK		BIT(5)
-+
-+#define AUXADC_TRIM_CH2		(3 << 10)
-+#define AUXADC_TRIM_CH4		(3 << 8)
-+#define AUXADC_TRIM_CH5		(3 << 4)
-+#define AUXADC_TRIM_CH6		(3 << 2)
-+
-+#define AUXADC_VREF18_ENB_MD	BIT(15)
-+#define AUXADC_MD_STATUS	BIT(0)
-+
-+#define AUXADC_GPS_STATUS	BIT(1)
-+
-+#define AUXADC_VREF18_SELB	BIT(1)
-+#define AUXADC_DECI_GDLY_SEL	BIT(0)
-+
-+#define AUXADC_VBUF_EN		BIT(4)
-+
-+#define AUXADC_DECI_GDLY_MASK		GENMASK(15, 14)
-+#define AUXADC_ADC19_BUSY_MASK		GENMASK(15, 0)
-+#define AUXADC_RDY_MASK			BIT(15)
-+#define AUXADC_DATA_MASK		GENMASK(14, 0)
-+#define AUXADC_OSR_MASK			GENMASK(12, 10)
-+#define AUXADC_LOW_CHANNEL_MASK		GENMASK(9, 0)
-+#define AUXADC_AUDIO_CHANNEL_MASK	GENMASK(8, 0)
-+
-+#define MTK_PMIC_IIO_CHAN(_name, _idx, _ch_type) \
-+	{ .type = _ch_type,                              \
-+	  .indexed = 1,                                  \
-+	  .channel = _idx,                               \
-+	  .address = _idx,                               \
-+	  .datasheet_name = __stringify(_name),          \
-+	  .info_mask_separate = BIT(IIO_CHAN_INFO_RAW) | \
-+				BIT(IIO_CHAN_INFO_SCALE) }
-+
-+static const struct iio_chan_spec mt6323_auxadc_channels[] = {
-+	MTK_PMIC_IIO_CHAN(baton2, MT6323_AUXADC_BATON2, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(ch6, MT6323_AUXADC_CH6, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(bat_temp, MT6323_AUXADC_BAT_TEMP, IIO_TEMP),
-+	MTK_PMIC_IIO_CHAN(chip_temp, MT6323_AUXADC_CHIP_TEMP, IIO_TEMP),
-+	MTK_PMIC_IIO_CHAN(vcdt, MT6323_AUXADC_VCDT, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(baton1, MT6323_AUXADC_BATON1, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(isense, MT6323_AUXADC_ISENSE, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(batsns, MT6323_AUXADC_BATSNS, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(accdet, MT6323_AUXADC_ACCDET, IIO_VOLTAGE),
-+};
-+
-+/**
-+ * struct mt6323_auxadc - Main driver structure
-+ * @dev:           Device pointer
-+ * @regmap:        Regmap from PWRAP
-+ * @lock:          Mutex to serialize AUXADC reading vs configuration
-+ */
-+struct mt6323_auxadc {
-+	struct device *dev;
-+	struct regmap *regmap;
-+	struct mutex lock;
-+};
-+
-+static u32 mt6323_auxadc_channel_to_reg(unsigned long channel)
-+{
-+	switch (channel) {
-+	case 0:
-+		return MT6323_AUXADC_ADC6;
-+	case 1:
-+		return MT6323_AUXADC_ADC11;
-+	case 2:
-+		return MT6323_AUXADC_ADC5;
-+	case 3:
-+		return MT6323_AUXADC_ADC4;
-+	case 4:
-+		return MT6323_AUXADC_ADC2;
-+	case 5:
-+		return MT6323_AUXADC_ADC3;
-+	case 6:
-+		return MT6323_AUXADC_ADC1;
-+	case 7:
-+		return MT6323_AUXADC_ADC0;
-+	case 8:
-+		return MT6323_AUXADC_ADC7;
-+	default:
-+		return MT6323_AUXADC_ADC17;
-+	}
-+}
-+
-+static int mt6323_auxadc_check_if_stuck(struct mt6323_auxadc *auxadc)
-+{
-+	int i, ret;
-+	u32 val;
-+
-+	for (i = 0; i < 50; i++) {
-+		ret = regmap_read(auxadc->regmap, MT6323_AUXADC_CON19, &val);
-+		if (ret)
-+			return ret;
-+
-+		if (FIELD_GET(AUXADC_DECI_GDLY_MASK, val)) {
-+			ret = regmap_read(auxadc->regmap, MT6323_AUXADC_ADC19,
-+					  &val);
-+			if (ret)
-+				return ret;
-+
-+			if (!FIELD_GET(AUXADC_ADC19_BUSY_MASK, val)) {
-+				ret = regmap_update_bits(
-+					auxadc->regmap, MT6323_AUXADC_CON19,
-+					FIELD_PREP(AUXADC_DECI_GDLY_MASK, 3),
-+					0x0);
-+				if (ret)
-+					return ret;
-+			}
-+		} else {
-+			return 0;
-+		}
-+
-+		fsleep(10);
-+	}
-+
-+	return -ETIMEDOUT;
-+}
-+
-+static int mt6323_auxadc_request(struct mt6323_auxadc *auxadc,
-+				 unsigned long channel)
-+{
-+	int ret;
-+	u32 pmic_val, adc_val;
-+
-+	if (channel < 9) {
-+		ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON11,
-+					 AUXADC_VBUF_EN, AUXADC_VBUF_EN);
-+		if (ret)
-+			return ret;
-+
-+		ret = regmap_read(auxadc->regmap, MT6323_AUXADC_CON22,
-+				  &pmic_val);
-+		if (ret)
-+			return ret;
-+
-+		adc_val = FIELD_GET(AUXADC_LOW_CHANNEL_MASK, pmic_val);
-+		adc_val &= ~BIT(channel);
-+
-+		ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON22,
-+					 AUXADC_LOW_CHANNEL_MASK, adc_val);
-+		if (ret)
-+			return ret;
-+
-+		ret = regmap_read(auxadc->regmap, MT6323_AUXADC_CON22,
-+				  &pmic_val);
-+		if (ret)
-+			return ret;
-+
-+		adc_val = FIELD_GET(AUXADC_LOW_CHANNEL_MASK, pmic_val);
-+		adc_val |= BIT(channel);
-+
-+		ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON22,
-+					 AUXADC_LOW_CHANNEL_MASK, adc_val);
-+
-+	} else {
-+		ret = regmap_read(auxadc->regmap, MT6323_AUXADC_CON23,
-+				  &pmic_val);
-+		if (ret)
-+			return ret;
-+
-+		adc_val = FIELD_GET(AUXADC_AUDIO_CHANNEL_MASK, pmic_val);
-+		adc_val &= ~BIT(channel - 9);
-+
-+		ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON23,
-+					 AUXADC_AUDIO_CHANNEL_MASK, adc_val);
-+		if (ret)
-+			return ret;
-+
-+		ret = regmap_read(auxadc->regmap, MT6323_AUXADC_CON23,
-+				  &pmic_val);
-+		if (ret)
-+			return ret;
-+
-+		adc_val = FIELD_GET(AUXADC_AUDIO_CHANNEL_MASK, pmic_val);
-+		adc_val |= BIT(channel - 9);
-+
-+		ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON23,
-+					 AUXADC_AUDIO_CHANNEL_MASK, adc_val);
-+	}
-+
-+	return ret;
-+}
-+
-+static int mt6323_auxadc_read(struct mt6323_auxadc *auxadc,
-+			      const struct iio_chan_spec *chan, int *out)
-+{
-+	int ret;
-+	u32 reg = mt6323_auxadc_channel_to_reg(chan->address);
-+	u32 val;
-+
-+	ret = regmap_read_poll_timeout(auxadc->regmap, reg, val,
-+				       (val & AUXADC_RDY_MASK), 1000, 100000);
-+	if (ret)
-+		return ret;
-+
-+	*out = FIELD_GET(AUXADC_DATA_MASK, val);
-+
-+	return 0;
-+}
-+
-+static int mt6323_auxadc_read_raw(struct iio_dev *indio_dev,
-+				  const struct iio_chan_spec *chan, int *val,
-+				  int *val2, long mask)
-+{
-+	struct mt6323_auxadc *auxadc = iio_priv(indio_dev);
-+	int ret, mult = 1;
-+
-+	if (mask == IIO_CHAN_INFO_RAW) {
-+		scoped_guard(mutex, &auxadc->lock)
-+		{
-+			ret = mt6323_auxadc_check_if_stuck(auxadc);
-+			if (ret)
-+				return ret;
-+
-+			ret = mt6323_auxadc_request(auxadc, chan->address);
-+			if (ret)
-+				return ret;
-+
-+			usleep_range(300, 500);
-+
-+			ret = mt6323_auxadc_read(auxadc, chan, val);
-+			if (ret)
-+				return ret;
-+			return IIO_VAL_INT;
-+		}
-+	} else if (mask == IIO_CHAN_INFO_SCALE) {
-+		if (chan->channel == MT6323_AUXADC_ISENSE ||
-+		    chan->address == MT6323_AUXADC_BATSNS)
-+			mult = 4;
-+
-+		*val = mult * 1800;
-+		*val2 = 32768;
-+
-+		return IIO_VAL_FRACTIONAL;
-+	} else
-+		return -EINVAL;
-+}
-+
-+static int mt6323_auxadc_init(struct mt6323_auxadc *auxadc)
-+{
-+	int ret;
-+
-+	ret = regmap_update_bits(auxadc->regmap, MT6323_STRUP_CON10,
-+				 AUXADC_RSTB_SW | AUXADC_RSTB_SEL,
-+				 AUXADC_RSTB_SW | AUXADC_RSTB_SEL);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_update_bits(auxadc->regmap, MT6323_TOP_CKPDN2,
-+				 AUXADC_CTL_CK, AUXADC_CTL_CK);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON10,
-+				 AUXADC_TRIM_CH2 | AUXADC_TRIM_CH4 |
-+					 AUXADC_TRIM_CH5 | AUXADC_TRIM_CH6,
-+				 AUXADC_TRIM_CH2 | AUXADC_TRIM_CH4 |
-+					 AUXADC_TRIM_CH5 | AUXADC_TRIM_CH6);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON27,
-+				 AUXADC_VREF18_ENB_MD | AUXADC_MD_STATUS,
-+				 AUXADC_VREF18_ENB_MD | AUXADC_MD_STATUS);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON19,
-+				 AUXADC_GPS_STATUS, AUXADC_GPS_STATUS);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON26,
-+				 AUXADC_VREF18_SELB | AUXADC_DECI_GDLY_SEL,
-+				 AUXADC_VREF18_SELB | AUXADC_DECI_GDLY_SEL);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON9,
-+				 AUXADC_OSR_MASK,
-+				 FIELD_PREP(AUXADC_OSR_MASK, 3));
-+	return ret;
-+}
-+
-+static const struct iio_info mt6323_auxadc_iio_info = {
-+	.read_raw = mt6323_auxadc_read_raw,
-+};
-+
-+static int mt6323_auxadc_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct mt6323_auxadc *auxadc;
-+	struct iio_dev *iio;
-+	struct regmap *regmap;
-+	int ret;
-+
-+	/* mfd->pwrap regmap */
-+	regmap = dev_get_regmap(dev->parent->parent, NULL);
-+	if (!regmap)
-+		return dev_err_probe(dev, -ENODEV, "failed to get regmap\n");
-+
-+	iio = devm_iio_device_alloc(dev, sizeof(*auxadc));
-+	if (!iio)
-+		return -ENOMEM;
-+
-+	auxadc = iio_priv(iio);
-+	auxadc->regmap = regmap;
-+	auxadc->dev = dev;
-+	mutex_init(&auxadc->lock);
-+
-+	ret = mt6323_auxadc_init(auxadc);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "failed to initialize auxadc\n");
-+
-+	iio->name = "mt6323-auxadc";
-+	iio->info = &mt6323_auxadc_iio_info;
-+	iio->modes = INDIO_DIRECT_MODE;
-+	iio->channels = mt6323_auxadc_channels;
-+	iio->num_channels = ARRAY_SIZE(mt6323_auxadc_channels);
-+
-+	ret = devm_iio_device_register(dev, iio);
-+	if (ret)
-+		return dev_err_probe(dev, ret,
-+				     "failed to register iio device\n");
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id mt6323_auxadc_of_match[] = {
-+	{ .compatible = "mediatek,mt6323-auxadc" },
-+	{}
-+};
-+MODULE_DEVICE_TABLE(of, mt6323_auxadc_of_match);
-+
-+static struct platform_driver mt6323_auxadc_driver = {
-+	.driver = {
-+		.name = "mt6323-auxadc",
-+		.of_match_table = mt6323_auxadc_of_match,
-+	},
-+	.probe	= mt6323_auxadc_probe,
-+};
-+module_platform_driver(mt6323_auxadc_driver);
-+
-+MODULE_LICENSE("GPL");
-+MODULE_DESCRIPTION("MediaTek MT6323 PMIC AUXADC Driver");
++++ b/Documentation/devicetree/bindings/nvmem/mediatek,mt6323-efuse.yaml
+@@ -0,0 +1,42 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/nvmem/mediatek,mt6323-efuse.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MT6323 PMIC EFUSE
++
++description: |
++  MT6323 efuse is used for storing calibration data, such as thermal sensor
++  calibration.
++
++maintainers:
++  - Roman Vivchar <rva333@protonmail.com>
++
++allOf:
++  - $ref: nvmem.yaml#
++
++properties:
++  compatible:
++    const: mediatek,mt6323-efuse
++
++required:
++  - compatible
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    mt6323_efuse: efuse {
++      compatible = "mediatek,mt6323-efuse";
++
++      nvmem-layout {
++        compatible = "fixed-layout";
++        #address-cells = <1>;
++        #size-cells = <1>;
++
++        mt6323_thermal_calibration_data: thermal-data@14 {
++          reg = <0x14 0x4>;
++        };
++      };
++    };
 
 -- 
 2.53.0
