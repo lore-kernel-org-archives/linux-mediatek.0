@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C804CD343B
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2026 18:25:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C052CD3436
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2026 18:25:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZuY99vSObz5VCLlTZfK8leLOWS0j6nbGxEccw6x7Zt8=; b=iXJ/xSdFEqgsCRr/bQpog2luvI
-	TBssQMEVWICJzLOhcGmdVFPl+9lHEJy1yiiOfFjPUPrc+Bktb+hj2oScVAqU0aNPebmjyaKTcUY1M
-	fTS8Xr97P4UTR4G4kTpavi6zDWS02OemCnfR1agqG+JmX093yvYt2Q0CPnvAZlWvTEtR3v2eHpgKZ
-	6Ehuvu2Ne2gVWrRqEihAaQsXDmyu1v94mahf1PG8Cc4sMqVA2qmuG8j2tcoIew83IJ+To7IM0wMNb
-	BpkoZRBcRxkw8yo2/7f7nitrLj9STrhe2gAmQoDpMoJXO6G0SnK1G0R3OADqRk6s3Rzio1u9uVQzp
-	fZwrXixg==;
+	bh=R/A+ksG9EMYP+aQ5G//wzuZokqsDVh9YvLyCK1HKays=; b=OdHrIZdo79TZdmZp1LBFUsIzX4
+	rRBpaM7CuqZxi1/3LcwhF+eczVvwxVCj+fCruizM6yeJcHMA6eblgnTpf0DFT2GqzIhUOgU/MXqpB
+	6i7vuzXS3FB1ujHcYnnK4f/I/Zs60UMfZXW5zbJlL2Fp89LOB0UC5vi0P6u0x7WUR07KHsgkFduMb
+	HDyp4je0yNaG3yHCzPiH4m4DEQfp+rkqtYrnjPjvy3TWMTJgEvLyJwmQl+zsL99QeAUhzfEPpmIyl
+	vyCYZ6wPm54YrJzHc5tPE5+JbN5OexWujpFg8y5Bh888+kjJj7Y9JGm2QQpmLPffemdlji6bRMCoT
+	x7C34sDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJxyn-0000000DyeJ-00XB;
-	Mon, 04 May 2026 18:25:17 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wJxyo-0000000DyhJ-1XbO;
+	Mon, 04 May 2026 18:25:18 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJxyX-0000000DyEx-2Eq6;
-	Mon, 04 May 2026 18:25:04 +0000
+	id 1wJxyZ-0000000DyH1-0SwY;
+	Mon, 04 May 2026 18:25:05 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 0103944577;
+	by sea.source.kernel.org (Postfix) with ESMTP id 75427445AD;
 	Mon,  4 May 2026 18:24:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id D0621C2BCFF;
-	Mon,  4 May 2026 18:24:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 3241EC2BCFA;
+	Mon,  4 May 2026 18:24:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777919098;
-	bh=SFyDTRyWZjDxmsFtAqwCPfeazjDIIWp9P+6ztku6jaM=;
+	s=k20201202; t=1777919099;
+	bh=0fwwYNeYc3kr+antF5NrKzPSvQ6OoHbAnhgXEJEye30=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=s2UAt5ovqGlDNFbvBTOq9Ul3dNhnc8+V4nJQ46Am+zdgmiXhdKT+g0jZ0Q8ix3IZj
-	 O2/VeKbMqjR3qc7N/pLMAiC2vLZfx7v8A1TDWEPO7mzEnMe6iuLR7Z4bt08xQVfoqx
-	 +g47+4YP6+SaIvYJik8QeCbV86R+KhJVsfZ3acj9IqauGEuo4Cay6pSTSurvHmG4B9
-	 QQeAEpk0E8PmMKb919W7ExNurr5gq0+GVF3tu4NTCGHVbztRVypUfhSjcX5p9Ep2rv
-	 HV/8B4b4aqHbekZ7A70x8he6Tad6ccU5VeYc2vGLY+ywBYgrIP3JgX8TRtqqoz+iFt
-	 l14GrneLJz23A==
+	b=QkRYfLSpf98W7hQ4ObbEW1P7mNvxg0uTiNgwI3is1u4TqGRHjMiiCysDYbGlpvVH4
+	 sE3NHndNy09z1N+ONPBEnxhlSFDQHCx2hVCFgyGf018Rv3mV8H6QAoqRQIsEr+Ta1b
+	 AiiSRl/+pU5ZcNP+mKWCz/TvUA85+fPnxqtnJ92I1xXYIpA/3laMq9HZ/FmtcoCsIv
+	 8mo3+fmi2Naih0QAYTtXf4jCm1UbLooH6ylk3Dr35BH3Ro648LhDMyinsW5/4kfVyw
+	 GXckxmtOTkT+vdctqOR2lgqI7EMUB9zDpFB+vFEWuJDZN18q0LQ8UQHRzRuiakku5g
+	 a2V3dsFurWRsg==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C5DBDCD3427;
-	Mon,  4 May 2026 18:24:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 286F0CD3436;
+	Mon,  4 May 2026 18:24:59 +0000 (UTC)
 From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Mon, 04 May 2026 21:24:57 +0300
-Subject: [PATCH 05/13] nvmem: add mt6323 PMIC EFUSE driver
+Date: Mon, 04 May 2026 21:25:02 +0300
+Subject: [PATCH 10/13] ARM: dts: mediatek: mt6323: add support for AUXADC
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260504-mt6323-v1-5-799b58b355ff@protonmail.com>
+Message-Id: <20260504-mt6323-v1-10-799b58b355ff@protonmail.com>
 References: <20260504-mt6323-v1-0-799b58b355ff@protonmail.com>
 In-Reply-To: <20260504-mt6323-v1-0-799b58b355ff@protonmail.com>
 To: Jonathan Cameron <jic23@kernel.org>, 
@@ -71,19 +71,20 @@ Cc: linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
  Ben Grisdale <bengris32@protonmail.ch>, 
  Roman Vivchar <rva333@protonmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1777919095; l=4311;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1777919095; l=814;
  i=rva333@protonmail.com; s=20260325; h=from:subject:message-id;
- bh=1nnD8x2/YfoddlKavtCr39AhwjwKkPATibCGf0JcRFk=;
- b=CI5X+E7LWYk0XH+OzSwni+MoWgPTu5HtndpDXnOqF9faEAkuaULlKcmd0lygCathpvFdBASrg
- 4bDRnzyx1tNB1bkDi+UHEUCBKymKHiNPndUPXJqGBcyuGzcbcrQiVoC
+ bh=La2MB3KRVqMYMwKFh7B+QquLap8lejJsUVONHZ0oCfM=;
+ b=If4UY3kmkGiEJJtVFcFrKYvQsaQvfITJvuCaHU1csy8WFVf6gx+wsgv7vYyM5HTJ73TbQgOTx
+ WkNqaEcst4fCb1ix8Y3iJ4sOMMXOH9KGgZQl8YBm0mb/AlQVmgIlyRm
 X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
  pk=euuVBZGtA2Cqb8Dju84qpQPhvwxyUirJlXpqEPQWKBM=
 X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260325 with
  auth_id=695
 X-Original-From: Roman Vivchar <rva333@protonmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260504_112501_733670_37E1F0E8 
-X-CRM114-Status: GOOD (  20.14  )
+X-CRM114-CacheID: sfid-20260504_112503_277936_B0FA4556 
+X-CRM114-Status: UNSURE (   9.30  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,145 +102,30 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Roman Vivchar <rva333@protonmail.com>
 
-Add support for the EFUSE controller found in the Mediatek MT6323 PMIC.
-The MT6323 EFUSE stores 24 bytes of hardware-related data, such as
-thermal sensor calibration values.
+Add the devicetree node for the mt6323 AUXADC.
 
 Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
 Signed-off-by: Roman Vivchar <rva333@protonmail.com>
 ---
- drivers/nvmem/Kconfig        | 11 ++++++
- drivers/nvmem/Makefile       |  2 ++
- drivers/nvmem/mt6323-efuse.c | 86 ++++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 99 insertions(+)
+ arch/arm/boot/dts/mediatek/mt6323.dtsi | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/drivers/nvmem/Kconfig b/drivers/nvmem/Kconfig
-index 74ddbd0f79b0..db248a3c4e87 100644
---- a/drivers/nvmem/Kconfig
-+++ b/drivers/nvmem/Kconfig
-@@ -227,6 +227,17 @@ config NVMEM_MTK_EFUSE
- 	  This driver can also be built as a module. If so, the module
- 	  will be called efuse-mtk.
+diff --git a/arch/arm/boot/dts/mediatek/mt6323.dtsi b/arch/arm/boot/dts/mediatek/mt6323.dtsi
+index c230c865116d..c070f4b0936c 100644
+--- a/arch/arm/boot/dts/mediatek/mt6323.dtsi
++++ b/arch/arm/boot/dts/mediatek/mt6323.dtsi
+@@ -14,6 +14,11 @@ pmic: mt6323 {
+ 		interrupt-controller;
+ 		#interrupt-cells = <2>;
  
-+config NVMEM_MT6323_EFUSE
-+	tristate "Mediatek MT6323 PMIC EFUSE support"
-+	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	depends on MFD_MT6397
-+	help
-+	  This is a driver to access hardware related data like sensor
-+	  calibration, etc.
++		mt6323_adc: adc {
++			compatible = "mediatek,mt6323-auxadc";
++			#io-channel-cells = <1>;
++		};
 +
-+	  This driver can also be built as a module. If so, the module
-+	  will be called efuse-mt6323.
-+
- config NVMEM_MXS_OCOTP
- 	tristate "Freescale MXS On-Chip OTP Memory Support"
- 	depends on ARCH_MXS || COMPILE_TEST
-diff --git a/drivers/nvmem/Makefile b/drivers/nvmem/Makefile
-index 7252b8ec88d4..0e2b73f42b25 100644
---- a/drivers/nvmem/Makefile
-+++ b/drivers/nvmem/Makefile
-@@ -48,6 +48,8 @@ obj-$(CONFIG_NVMEM_MICROCHIP_OTPC)	+= nvmem-microchip-otpc.o
- nvmem-microchip-otpc-y			:= microchip-otpc.o
- obj-$(CONFIG_NVMEM_MTK_EFUSE)		+= nvmem_mtk-efuse.o
- nvmem_mtk-efuse-y			:= mtk-efuse.o
-+obj-$(CONFIG_NVMEM_MT6323_EFUSE)		+= nvmem_mt6323-efuse.o
-+nvmem_mt6323-efuse-y			:= mt6323-efuse.o
- obj-$(CONFIG_NVMEM_MXS_OCOTP)		+= nvmem-mxs-ocotp.o
- nvmem-mxs-ocotp-y			:= mxs-ocotp.o
- obj-$(CONFIG_NVMEM_NINTENDO_OTP)	+= nvmem-nintendo-otp.o
-diff --git a/drivers/nvmem/mt6323-efuse.c b/drivers/nvmem/mt6323-efuse.c
-new file mode 100644
-index 000000000000..0c1b405fbc89
---- /dev/null
-+++ b/drivers/nvmem/mt6323-efuse.c
-@@ -0,0 +1,86 @@
-+// SPDX-License-Identifier: GPL-2.0+
-+/*
-+ * Copyright (c) 2026 Roman Vivchar <rva333@protonmail.com>
-+ */
-+
-+#include <linux/device.h>
-+#include <linux/io.h>
-+#include <linux/mfd/mt6323/registers.h>
-+#include <linux/mod_devicetable.h>
-+#include <linux/module.h>
-+#include <linux/nvmem-provider.h>
-+#include <linux/platform_device.h>
-+#include <linux/property.h>
-+#include <linux/regmap.h>
-+
-+#define MT6323_EFUSE_DOUT_BASE MT6323_EFUSE_DOUT_0_15
-+#define MT6323_EFUSE_SIZE 24
-+
-+struct mt6323_efuse {
-+	struct regmap *regmap;
-+};
-+
-+static int mt6323_efuse_read(void *context, unsigned int offset, void *val,
-+			     size_t bytes)
-+{
-+	struct mt6323_efuse *efuse = context;
-+	u32 tmp;
-+	u16 *buf = val;
-+	int i, ret;
-+
-+	for (i = 0; i < bytes; i += 2) {
-+		ret = regmap_read(efuse->regmap,
-+				  MT6323_EFUSE_DOUT_BASE + offset + i, &tmp);
-+		if (ret)
-+			return ret;
-+		buf[i / 2] = tmp;
-+	}
-+	return 0;
-+}
-+
-+static int mt6323_efuse_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct mt6323_efuse *priv;
-+	struct nvmem_config config = {
-+		.name = "mt6323-efuse",
-+		.stride = 2,
-+		.word_size = 2,
-+		.size = MT6323_EFUSE_SIZE,
-+		.reg_read = mt6323_efuse_read,
-+	};
-+	struct nvmem_device *nvmem;
-+
-+	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+
-+	/* efuse -> mfd -> pwrap */
-+	priv->regmap = dev_get_regmap(dev->parent->parent, NULL);
-+	if (!priv->regmap)
-+		return -ENODEV;
-+
-+	config.dev = dev;
-+	config.priv = priv;
-+
-+	nvmem = devm_nvmem_register(dev, &config);
-+	return PTR_ERR_OR_ZERO(nvmem);
-+}
-+
-+static const struct of_device_id mt6323_efuse_of_match[] = {
-+	{ .compatible = "mediatek,mt6323-efuse" },
-+	{ /* sentinel */ },
-+};
-+MODULE_DEVICE_TABLE(of, mt6323_efuse_of_match);
-+
-+static struct platform_driver mt6323_efuse_driver = {
-+	.probe = mt6323_efuse_probe,
-+	.driver = {
-+		.name = "mt6323-efuse",
-+		.of_match_table = mt6323_efuse_of_match,
-+	},
-+};
-+module_platform_driver(mt6323_efuse_driver);
-+
-+MODULE_DESCRIPTION("Mediatek MT6323 PMIC EFUSE driver");
-+MODULE_LICENSE("GPL");
+ 		mt6323_leds: leds {
+ 			compatible = "mediatek,mt6323-led";
+ 			#address-cells = <1>;
 
 -- 
 2.53.0
