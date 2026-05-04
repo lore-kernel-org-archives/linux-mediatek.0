@@ -4,104 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83F0AFF885A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2026 09:41:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C0CCCD342C
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2026 10:26:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pPRPoG0bnXrUp5Oogbu+VyQo8WCBzCtv1bsnZQz2h4s=; b=BZrL/fbI4yDIiCZkHCxfDei/VD
-	V4ND4O4FEO1in8935oKGXwcKg40Fu3JyXype3HNXARqtrkF6AHjVvoFCjQkUZtQSf7APowoZKcfO0
-	5cDhHxuAeQw72qM/jjM7OlJ23IDuY+R32TVo/3+c6DfGEMqMb0VXr5HfIlJTeBSPo/DfBLOOuVDDy
-	AFK/bEIsvADnhFUjtHsl5Izw0noNBI0NrPjJTg6fGu3oK76XILpKilDsieTXRCRPf0+yxZ2Dr6oCz
-	+caavwf5BjCh14RNePr0IBSp8gYvKOsOvtYRJJjOhvxJPN8UuarUhDs8tVA9Qp1xQmwaX5dxD4wfw
-	frYDwZMw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uXXxsUugmn169X4drUM7RzLPrz/lxhlOeiRpBENJVew=; b=x8MQkGfegp/vYDf9xDpz4Kvm6A
+	5/X7d/NF07gxa8qXNgCl6B9eXbrwrjW/DER6Qk5v4+chPOkSxX3OiPmRCHJrByicqu+U5nbMLvojW
+	q2E0/SKRk/P7coq17CdrMIoc7c8OLybuKoAtrFIVdZHquEFOvDUyARDLwniYNYs22sbKmhiWSDW6a
+	rmPdw5iuJAwj8guUTeUy4QSu+BlH6UQxE2xibfTibFd2zAt/cTmlqiJ5KGtK/Rj53FHLpXlZEEiXM
+	SJteDW82bcURbQge0dFXT96DKePHWVK/VGGXUafFqhe1z7feOB0VuUeWfyntdyXlSpBIWCoCPGmXJ
+	id5zs7Dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJpni-0000000CqKa-01JJ;
-	Mon, 04 May 2026 09:41:18 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1wJqVU-0000000CvWc-0wnQ;
+	Mon, 04 May 2026 10:26:32 +0000
+Received: from aposti.net ([185.119.170.32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJpne-0000000CqJ5-267E
-	for linux-mediatek@lists.infradead.org;
-	Mon, 04 May 2026 09:41:16 +0000
-Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-5a8704dc3a8so769626e87.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 04 May 2026 02:41:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1777887672; cv=none;
-        d=google.com; s=arc-20240605;
-        b=a4/LWqFgp6iaCR0IaJZXA2ObnoQ7gV4BWAo22EZucXj1xpqrxptorz2Edn20dHWf3p
-         Y65fDIrGlXz2RpKoCkRXQc5PRpaFJN7KthJJr9Tdny8WhXkJg48X3Jn385Dt+HyYun3G
-         8VILOq+5sBLF1dVJIV+7K0Yzww3hfB69lFy5zAdDAwoYJ9Kf0TULYko7cQ6vfVJa7xXv
-         yj7C3ZmvcaEn80QjA5fXQrX4Y5x6XVxtcl5goQBg4L4OxE0Up9xoBVoMZFCDFYO+LKRR
-         C0RZnjLp3cUxmcoT2VTq9rVEiRy+NYbmOya2UJgToBBGFyqg5OeejEwGgCP+0wwhoBrQ
-         By7w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=pPRPoG0bnXrUp5Oogbu+VyQo8WCBzCtv1bsnZQz2h4s=;
-        fh=RhRHjl/gshHxWl5Tv+dpzZwwJem5i9BrJEnVcJlDAOI=;
-        b=kIpzqKQ4ZqfL4WhpXc1uXgOWmwG1l5SfOfwGJXehb5bQw0m5G97HR0iZifFFNgVpf4
-         6my/N9LelOjIZKYgvfzq53Wdcf3cY0DPEwPCPK8h+M2+6YGIenKl0fp7fYrJ2AbDnj2Y
-         w7J90fTJswpLBOW7rueoOJy+DuVOVYD+pvUTgXN3dcmxzCDGCJw7AZcKW/qkGg1Ua/jL
-         X3a0Ou/ovy1xs3DTLp174gpUhtILCgwJCQQe/X2CTcjPcS6JndLJGDN0F7tNOsa273q3
-         GV8RCBsicph69H5NqtlVKPyRYVrgT8XDXTZwOC5BqCSoGZrUTO/B0PKpUCdAGkZ56vVq
-         0I0g==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1777887672; x=1778492472; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=pPRPoG0bnXrUp5Oogbu+VyQo8WCBzCtv1bsnZQz2h4s=;
-        b=IdSPxoqVRaXS29cHfHUtbMxqlzfalyYRGLddSPSBKKlyuEY9oAbVSGuLEL49AnmzeZ
-         Cs5htAmY4eJuha+EeTxEo1D+55hwhl3gsxFQn/WEYLfxHebN0WoowWWikLXc0TEpC2r1
-         yaTIqiYT1un4nxGjT9V3kXPPy+bVBLe3aZJJk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777887672; x=1778492472;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=pPRPoG0bnXrUp5Oogbu+VyQo8WCBzCtv1bsnZQz2h4s=;
-        b=Pj+MpRIcKsdVp/fv58IHpKwP+W6MdRK1p0gFJDl4mXISmqjEpK2BvE65SA0uZ882nM
-         z7khzTtBu0wOdarT63uVQEzSsdwQPCtwXNsWPoU/W14bmzsNl30vHv9i2X+S6T45MO6m
-         ag3PiN/p7BW7dpR7N3+d/OOAmJbbhTmR3Ubw4ReDBJldp4ytoSMyu/n8FuB5gVcvDoSH
-         dSjGHr148re5qWs9YYSl7YBnj6o1A4CsnFQnbu7KSQW3PL9JbcF2MZWsUH7K5fs7CH/D
-         7wabNRPyivkU9gxcd2VwfV1tJFY7zmYeCuFpDP0+Nmuot9T7BR7mTRiK2UfmOMD83BrP
-         zmpA==
-X-Forwarded-Encrypted: i=1; AFNElJ8aoAqWV5+idt1dpFtHz7I5jsV4lcvyUoyBHqSVvvPBKIa+BVkGKH3c1NXnWlT1Iib6NHtcVjSHzebihHhmXw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YypdnPhFFxEfaXiwxoIPcrxEZsxsMKSj7okmVfvzYkLF38QafUn
-	7NJSXYOxedoZKtlj48JErgxnGADxtFFZVSAYkx9GhEuaVLIys8hTUjr/kyrYlf5++AYy6kCoo8p
-	bQ6KiXfokYbhjDZH0dP9bYtmEGZzAoBGD6vykXalk
-X-Gm-Gg: AeBDieu8HKLOv8JW51hLT3aRNNyS/4NyuFch6Xr6RQKPiZda9LzjqoU8mmlhlexGYnz
-	+qWahT9/cNVWDMZYTUPkWVKL5PAvLa2vv6/URj+MYAsK36tEZwnSBHd6+JcklLVlx2aid6c/y68
-	XTUgNExUVRcQ4dGCH47nFZrgKOewJ13Gw9kFmlYtNNWZEdrsYl8/Wz+9eJRBe7jfRT15pltB35I
-	xQg2wUPb4TDacMYPt4Lv3rNcdZ8/tWIi4ZIhh0CAH4ntofhPQrr/RGTCJ/ER4NHtVjnP/XI9XNt
-	L2cRKdm6+nc25LRwKN2VGqHCUiNK92vvguqCut8BTtVf0yq1
-X-Received: by 2002:a05:6512:400f:b0:5a4:304:43c9 with SMTP id
- 2adb3069b0e04-5a862fbd635mr2676512e87.14.1777887672100; Mon, 04 May 2026
- 02:41:12 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260504072846.2581096-1-zhengxingda@iscas.ac.cn>
-In-Reply-To: <20260504072846.2581096-1-zhengxingda@iscas.ac.cn>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 4 May 2026 17:41:01 +0800
-X-Gm-Features: AVHnY4L9QFY2fxGccmoY4I5c6vHRXkexmo_pKFyAww1n-29lZtiDvf1w1FXMeYk
-Message-ID: <CAGXv+5FvdufzjqBRQnnG3y8FVW9bHL47CVv_=e7GbVv2d3eEuA@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8188-geralt: enable touchpad
-To: Icenowy Zheng <zhengxingda@iscas.ac.cn>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
+	id 1wJqVP-0000000CvTt-07kB;
+	Mon, 04 May 2026 10:26:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=crapouillou.net;
+	s=mail; t=1777890378;
+	bh=8pMt52NWWR9RsCZPU2OIuMb9huhWDEe19E7XadE/oGY=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=D6/tAwb94e2bfjbOT6gXMv62PDYUFCvTYNI5GD49aO+3mid8eqAtUrRfHYV2okf94
+	 Z71J+pmeGym/hzHMNk0YKBitVdt7MPmIX8h5pjnpweXoCOnJqmEhO580qf27fvjIij
+	 5vESKsQjz1D1j+mIZmSYSbgRrW5SXq1Gp+Kn9gQ8=
+Message-ID: <3eeb3094f1a763ec42a24f0d0edaa0321397543b.camel@crapouillou.net>
+Subject: Re: [PATCH 3/7] pinctrl: ingenic: Fix type in
+ .pin_config_group_get() callback
+From: Paul Cercueil <paul@crapouillou.net>
+To: Geert Uytterhoeven <geert+renesas@glider.be>, Linus Walleij	
+ <linusw@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang	
+ <sean.wang@kernel.org>, Tony Lindgren <tony@atomide.com>, Haojian Zhuang	
+ <haojian.zhuang@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Lad
+ Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
+Cc: linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-omap@vger.kernel.org, 
+	linux-renesas-soc@vger.kernel.org
+Date: Mon, 04 May 2026 12:26:11 +0200
+In-Reply-To: <9f50c234c44af9075b5252ee7e59452ed2179b27.1777562725.git.geert+renesas@glider.be>
+References: <cover.1777562725.git.geert+renesas@glider.be>
+	 <9f50c234c44af9075b5252ee7e59452ed2179b27.1777562725.git.geert+renesas@glider.be>
+Autocrypt: addr=paul@crapouillou.net; prefer-encrypt=mutual;
+ keydata=mQENBF0KhcEBCADkfmrzdTOp/gFOMQX0QwKE2WgeCJiHPWkpEuPH81/HB2dpjPZNW03ZM
+ LQfECbbaEkdbN4YnPfXgcc1uBe5mwOAPV1MBlaZcEt4M67iYQwSNrP7maPS3IaQJ18ES8JJ5Uf5Uz
+ FZaUawgH+oipYGW+v31cX6L3k+dGsPRM0Pyo0sQt52fsopNPZ9iag0iY7dGNuKenaEqkYNjwEgTtN
+ z8dt6s3hMpHIKZFL3OhAGi88wF/21isv0zkF4J0wlf9gYUTEEY3Eulx80PTVqGIcHZzfavlWIdzhe
+ +rxHTDGVwseR2Y1WjgFGQ2F+vXetAB8NEeygXee+i9nY5qt9c07m8mzjABEBAAG0JFBhdWwgQ2VyY
+ 3VlaWwgPHBhdWxAY3JhcG91aWxsb3UubmV0PokBTgQTAQoAOBYhBNdHYd8OeCBwpMuVxnPua9InSr
+ 1BBQJdCoXBAhsDBQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEHPua9InSr1BgvIH/0kLyrI3V0f
+ 33a6D3BJwc1grbygPVYGuC5l5eMnAI+rDmLR19E2yvibRpgUc87NmPEQPpbbtAZt8On/2WZoE5OIP
+ dlId/AHNpdgAtGXo0ZX4LGeVPjxjdkbrKVHxbcdcnY+zzaFglpbVSvp76pxqgVg8PgxkAAeeJV+ET
+ 4t0823Gz2HzCL/6JZhvKAEtHVulOWoBh368SYdolp1TSfORWmHzvQiCCCA+j0cMkYVGzIQzEQhX7U
+ rf9N/nhU5/SGLFEi9DcBfXoGzhyQyLXflhJtKm3XGB1K/pPulbKaPcKAl6rIDWPuFpHkSbmZ9r4KF
+ lBwgAhlGy6nqP7O3u7q23hRU=
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260504_024114_661785_ABE6D01B 
-X-CRM114-Status: GOOD (  21.97  )
+X-CRM114-CacheID: sfid-20260504_032627_540770_DB92CD1F 
+X-CRM114-Status: GOOD (  13.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,86 +84,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 4, 2026 at 3:28=E2=80=AFPM Icenowy Zheng <zhengxingda@iscas.ac.=
-cn> wrote:
->
-> Despite the Ciri device's touchpad is on the detachable keyboard, the
-> I2C HID device seen by Linux is emulated by ChromeOS EC and always
-> present regardless of the presence of physical touchpad.
+Hi Geert,
 
-AFAIK it is actually an I2C HID device on the detachable keyboard.
-The I2C bus is "tunneled" across the EC-EC connection. And if you
-detach the keyboard, the I2C device will stop responding.
+Le jeudi 30 avril 2026 =C3=A0 17:33 +0200, Geert Uytterhoeven a =C3=A9crit=
+=C2=A0:
+> On 64-bit platforms, "unsigned long" is 64-bit.=C2=A0 Hence checking if
+> all
+> "unsigned long" configuration values are equal should be done using
+> an
+> "unsigned long" temporary.
+>=20
+> While Ingenic is a 32-bit platform, it is still better to use the
+> correct type, to serve as an example.
+>=20
+> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 
-We have some downstream trickery to deal with this:
+Acked-by: Paul Cercueil <paul@crapouillou.net>
 
-    https://crrev.com/c/6040044
-    https://crrev.com/c/6040045
+Cheers,
+-Paul
 
-It basically involves registering the I2C device when the keyboard is
-attached, and removing it when it is detached. We haven't gotten around
-to upstreaming it though. I talked to Krzysztof about this design last
-year, and I believe it was at least acceptable from DT point of view.
-
-So this patch is somewhat incorrect, in that the trackpad should be
-disabled by default, and its status should be toggled at runtime based
-on the detachable keyboard events.
-
-Otherwise if you boot the system without the keyboard, the driver will
-probably fail to read the HID descriptor.
-
-
-ChenYu
-
-> Enable the device in the device tree.
->
-> Signed-off-by: Icenowy Zheng <zhengxingda@iscas.ac.cn>
 > ---
->  .../boot/dts/mediatek/mt8188-geralt.dtsi      | 20 +++++++++++++++++++
->  1 file changed, 20 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi b/arch/arm64=
-/boot/dts/mediatek/mt8188-geralt.dtsi
-> index 8e423504ec052..8f801454bf84c 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
-> @@ -460,6 +460,18 @@ &i2c4 {
->         pinctrl-0 =3D <&i2c4_pins>;
->         clock-frequency =3D <400000>;
->         status =3D "okay";
-> +
-> +       /* The touchpad HID device is emulated by EC so it's always prese=
-nt */
-> +       touchpad: touchpad@56 {
-> +               compatible =3D "hid-over-i2c";
-> +               reg =3D <0x56>;
-> +               hid-descr-addr =3D <0x0001>;
-> +               interrupt-parent =3D <&pio>;
-> +               interrupts =3D <148 IRQ_TYPE_LEVEL_LOW>;
-> +               pinctrl-names =3D "default";
-> +               pinctrl-0 =3D <&touchpad_int>;
-> +               wakeup-source;
-> +       };
->  };
->
->  &i2c5 {
-> @@ -1131,6 +1143,14 @@ pins-bus {
->                 };
->         };
->
-> +       touchpad_int: touchpad-int-pins {
-> +               pins-ec-ap-touchpad-int-odl {
-> +                       pinmux =3D <PINMUX_GPIO148__FUNC_B_GPIO148>;
-> +                       input-enable;
-> +                       bias-disable;
-> +               };
-> +       };
-> +
->         uart0_pins: uart0-pins {
->                 pins-bus {
->                         pinmux =3D <PINMUX_GPIO31__FUNC_O_UTXD0>,
-> --
-> 2.52.0
->
->
+> =C2=A0drivers/pinctrl/pinctrl-ingenic.c | 3 ++-
+> =C2=A01 file changed, 2 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/pinctrl/pinctrl-ingenic.c
+> b/drivers/pinctrl/pinctrl-ingenic.c
+> index c7f14546de0528de..29d7f4e54bc7b126 100644
+> --- a/drivers/pinctrl/pinctrl-ingenic.c
+> +++ b/drivers/pinctrl/pinctrl-ingenic.c
+> @@ -4334,7 +4334,8 @@ static int ingenic_pinconf_group_get(struct
+> pinctrl_dev *pctldev,
+> =C2=A0		unsigned int group, unsigned long *config)
+> =C2=A0{
+> =C2=A0	const unsigned int *pins;
+> -	unsigned int i, npins, old =3D 0;
+> +	unsigned int i, npins;
+> +	unsigned long old =3D 0;
+> =C2=A0	int ret;
+> =C2=A0
+> =C2=A0	ret =3D pinctrl_generic_get_group_pins(pctldev, group, &pins,
+> &npins);
 
