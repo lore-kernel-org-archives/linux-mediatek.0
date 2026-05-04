@@ -4,72 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C0CCCD342C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2026 10:26:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA6ADFF886F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2026 12:43:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uXXxsUugmn169X4drUM7RzLPrz/lxhlOeiRpBENJVew=; b=x8MQkGfegp/vYDf9xDpz4Kvm6A
-	5/X7d/NF07gxa8qXNgCl6B9eXbrwrjW/DER6Qk5v4+chPOkSxX3OiPmRCHJrByicqu+U5nbMLvojW
-	q2E0/SKRk/P7coq17CdrMIoc7c8OLybuKoAtrFIVdZHquEFOvDUyARDLwniYNYs22sbKmhiWSDW6a
-	rmPdw5iuJAwj8guUTeUy4QSu+BlH6UQxE2xibfTibFd2zAt/cTmlqiJ5KGtK/Rj53FHLpXlZEEiXM
-	SJteDW82bcURbQge0dFXT96DKePHWVK/VGGXUafFqhe1z7feOB0VuUeWfyntdyXlSpBIWCoCPGmXJ
-	id5zs7Dw==;
+	bh=1PMEvjlLQCF+IhJSDR+OfV1rOuww5+zhdmbObo+aXic=; b=sOfH75OkeTDeh2GAM71dPKuWLt
+	cnlNwDDgWTCk5s5T8GCVBhj4doNAoFNCxUMAaAd7rtjBhdwbEzWHWLLfu0Vwco4StKqp4CMG3eXzo
+	rNK2kOzV8nScymlIyDnkXbCLtpweU3SiNdjzVd6ldBiRL1OOrbmKvowWHbzg5KzFVuY7Tf5F1INBu
+	0SewQUivyX3A7wQ9ZcWNZoUuf5XTQQwtg7RE8vzBbEAsCCTyHMZz5OTN9ZmhmMFyVX/TVdYbhtPwh
+	cPGEVUSWE4KQ+F8YWI4aGNpqYkuSX+642lx9fy/sVbmGimlN0kDao6jOlFj1bQli6aFt0IkmGXymm
+	gFADWAjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJqVU-0000000CvWc-0wnQ;
-	Mon, 04 May 2026 10:26:32 +0000
-Received: from aposti.net ([185.119.170.32])
+	id 1wJse8-0000000DC5y-0nQO;
+	Mon, 04 May 2026 12:43:36 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJqVP-0000000CvTt-07kB;
-	Mon, 04 May 2026 10:26:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=crapouillou.net;
-	s=mail; t=1777890378;
-	bh=8pMt52NWWR9RsCZPU2OIuMb9huhWDEe19E7XadE/oGY=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=D6/tAwb94e2bfjbOT6gXMv62PDYUFCvTYNI5GD49aO+3mid8eqAtUrRfHYV2okf94
-	 Z71J+pmeGym/hzHMNk0YKBitVdt7MPmIX8h5pjnpweXoCOnJqmEhO580qf27fvjIij
-	 5vESKsQjz1D1j+mIZmSYSbgRrW5SXq1Gp+Kn9gQ8=
-Message-ID: <3eeb3094f1a763ec42a24f0d0edaa0321397543b.camel@crapouillou.net>
-Subject: Re: [PATCH 3/7] pinctrl: ingenic: Fix type in
- .pin_config_group_get() callback
-From: Paul Cercueil <paul@crapouillou.net>
-To: Geert Uytterhoeven <geert+renesas@glider.be>, Linus Walleij	
- <linusw@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang	
- <sean.wang@kernel.org>, Tony Lindgren <tony@atomide.com>, Haojian Zhuang	
- <haojian.zhuang@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Lad
- Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
-Cc: linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-omap@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org
-Date: Mon, 04 May 2026 12:26:11 +0200
-In-Reply-To: <9f50c234c44af9075b5252ee7e59452ed2179b27.1777562725.git.geert+renesas@glider.be>
-References: <cover.1777562725.git.geert+renesas@glider.be>
-	 <9f50c234c44af9075b5252ee7e59452ed2179b27.1777562725.git.geert+renesas@glider.be>
-Autocrypt: addr=paul@crapouillou.net; prefer-encrypt=mutual;
- keydata=mQENBF0KhcEBCADkfmrzdTOp/gFOMQX0QwKE2WgeCJiHPWkpEuPH81/HB2dpjPZNW03ZM
- LQfECbbaEkdbN4YnPfXgcc1uBe5mwOAPV1MBlaZcEt4M67iYQwSNrP7maPS3IaQJ18ES8JJ5Uf5Uz
- FZaUawgH+oipYGW+v31cX6L3k+dGsPRM0Pyo0sQt52fsopNPZ9iag0iY7dGNuKenaEqkYNjwEgTtN
- z8dt6s3hMpHIKZFL3OhAGi88wF/21isv0zkF4J0wlf9gYUTEEY3Eulx80PTVqGIcHZzfavlWIdzhe
- +rxHTDGVwseR2Y1WjgFGQ2F+vXetAB8NEeygXee+i9nY5qt9c07m8mzjABEBAAG0JFBhdWwgQ2VyY
- 3VlaWwgPHBhdWxAY3JhcG91aWxsb3UubmV0PokBTgQTAQoAOBYhBNdHYd8OeCBwpMuVxnPua9InSr
- 1BBQJdCoXBAhsDBQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEHPua9InSr1BgvIH/0kLyrI3V0f
- 33a6D3BJwc1grbygPVYGuC5l5eMnAI+rDmLR19E2yvibRpgUc87NmPEQPpbbtAZt8On/2WZoE5OIP
- dlId/AHNpdgAtGXo0ZX4LGeVPjxjdkbrKVHxbcdcnY+zzaFglpbVSvp76pxqgVg8PgxkAAeeJV+ET
- 4t0823Gz2HzCL/6JZhvKAEtHVulOWoBh368SYdolp1TSfORWmHzvQiCCCA+j0cMkYVGzIQzEQhX7U
- rf9N/nhU5/SGLFEi9DcBfXoGzhyQyLXflhJtKm3XGB1K/pPulbKaPcKAl6rIDWPuFpHkSbmZ9r4KF
- lBwgAhlGy6nqP7O3u7q23hRU=
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+	id 1wJse0-0000000DC1i-3r5V;
+	Mon, 04 May 2026 12:43:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=1PMEvjlLQCF+IhJSDR+OfV1rOuww5+zhdmbObo+aXic=; b=MWni85lCQoXDMVP6bhjc2GczaN
+	d2l5A5HEaNUgy12XQ4iQZtIe76OLfLdlkr+3UkGGsN91//fZs9i34a7a6W2d0B4l5DUg4Jj0gzZuE
+	E8fkLl9+/Q/NH8aebCYfcaS4GPk+jTY4AS0wwKnvqR+S4pMzK5PXQlXYyPzY2UVvNpjA=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1wJsdl-001GDe-KX; Mon, 04 May 2026 14:43:13 +0200
+Date: Mon, 4 May 2026 14:43:13 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Rosen Penev <rosenp@gmail.com>
+Cc: netdev@vger.kernel.org, Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH net-next] net: mtk_star_emac: use of_get_ethdev_address
+Message-ID: <64c2b026-88b1-4560-8763-9f6696d854a5@lunn.ch>
+References: <20260504031019.607682-1-rosenp@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260504031019.607682-1-rosenp@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260504_032627_540770_DB92CD1F 
-X-CRM114-Status: GOOD (  13.08  )
+X-CRM114-CacheID: sfid-20260504_054329_005469_9E564B48 
+X-CRM114-Status: GOOD (  10.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,45 +75,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Geert,
+On Sun, May 03, 2026 at 08:10:19PM -0700, Rosen Penev wrote:
+> The platform_ variant calls arch_get_platform_mac_address which is only
+> implemented under SPARC.
 
-Le jeudi 30 avril 2026 =C3=A0 17:33 +0200, Geert Uytterhoeven a =C3=A9crit=
-=C2=A0:
-> On 64-bit platforms, "unsigned long" is 64-bit.=C2=A0 Hence checking if
-> all
-> "unsigned long" configuration values are equal should be done using
-> an
-> "unsigned long" temporary.
->=20
-> While Ingenic is a 32-bit platform, it is still better to use the
-> correct type, to serve as an example.
->=20
-> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+platform_get_ethdev_address() calls eth_platform_get_mac_address().
 
-Acked-by: Paul Cercueil <paul@crapouillou.net>
+int eth_platform_get_mac_address(struct device *dev, u8 *mac_addr)
+{
+	unsigned char *addr;
+	int ret;
 
-Cheers,
--Paul
+	ret = of_get_mac_address(dev->of_node, mac_addr);
+	if (!ret)
+		return 0;
 
-> ---
-> =C2=A0drivers/pinctrl/pinctrl-ingenic.c | 3 ++-
-> =C2=A01 file changed, 2 insertions(+), 1 deletion(-)
->=20
-> diff --git a/drivers/pinctrl/pinctrl-ingenic.c
-> b/drivers/pinctrl/pinctrl-ingenic.c
-> index c7f14546de0528de..29d7f4e54bc7b126 100644
-> --- a/drivers/pinctrl/pinctrl-ingenic.c
-> +++ b/drivers/pinctrl/pinctrl-ingenic.c
-> @@ -4334,7 +4334,8 @@ static int ingenic_pinconf_group_get(struct
-> pinctrl_dev *pctldev,
-> =C2=A0		unsigned int group, unsigned long *config)
-> =C2=A0{
-> =C2=A0	const unsigned int *pins;
-> -	unsigned int i, npins, old =3D 0;
-> +	unsigned int i, npins;
-> +	unsigned long old =3D 0;
-> =C2=A0	int ret;
-> =C2=A0
-> =C2=A0	ret =3D pinctrl_generic_get_group_pins(pctldev, group, &pins,
-> &npins);
+	addr = arch_get_platform_mac_address();
+	if (!addr)
+		return -ENODEV;
+
+	ether_addr_copy(mac_addr, addr);
+
+	return 0;
+}
+ 
+> Switch to the of variant as of functions are used in the surrounding
+> code and to get EPROBE_DEFER support in order to handle NVMEM MAC
+> address specifications.
+
+So there is a call to of_get_mac_address(). And it calls
+arch_get_platform_mac_address() as well. If you only call
+of_get_mac_address(), don't you break SPARC?
+
+If EPROBE_DEFER is what you are trying to get, please change
+eth_platform_get_mac_address() to actually return it, not break SPARC.
+
+    Andrew
+
+---
+pw-bot: cr
 
