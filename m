@@ -4,72 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53B58FF885A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2026 13:46:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E17A1FF885A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2026 14:50:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aqA8j284nR9EwEunyRE/Z5TkjJEqRCgTaWrf0ir56eA=; b=kQleEPLCxKCbVXCu6J0rEJSQQf
-	UjGUgwiqIAtqbjr9e2x7o0KDjUqQMX8m7v3rKFtm/yoSZZCcoNCvAaGp+WZ2ysLY0/iEa8EHgAJ7A
-	Ydl2zPP/4bJuMhqJHfH4IbWyB2lWn9WZDZA35jBEmGi2QaLflzqPRrgWB8Znh81Pf3YHWE4qqDJWK
-	nKxTNltD2VvvoC6dujxQ2cRjxKXzE382lM5Fh/OtsjlhvUoArXACsDmSUTFNwKHUCkFZbuhCtlv1b
-	fS6d9fCs84KZj0l1mPfUHDqLwiWsAYhoNJE6/UOBWDC51ueGQsYOlpJLmIuJabIMW1Ob4kU7DC3ia
-	LcwTQvUg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xngNxV41BEhvXFxOC/XG5a3Q7ux1yO0k1gMe7RtR7BI=; b=0OD3DTjsFE9YgSWCQWL9+oiTFJ
+	uw+kplAOrjt3+hOOdW0TfDOGmFZxU89weagiL52rz2u7GS3EcgO70wMQH3YPp2ILpeKLsKK4QMlJz
+	F+gA/K3w1LVVQnaKg1QJZazSKunTnk7mxGtrlMwx0SGH+87DDEh6OUMSrCgaFjavZwEabdv7wovEX
+	xXqJFCA4mKls+aANanZMkWN6/2Rg7UJ1BxzRHzrf58tVG9XNY0LQuWUX9Gm/9McUXvVvali+ZZgBn
+	nbQDyh4UwY9nmhaPVgOmbT+UInZ947tpQr73Ct0WTUQUlmCZ1KdQR8zDJrsj8l51hcXmDQ/qz78gq
+	SVLwWn+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJtdL-0000000DLWg-0WrM;
-	Mon, 04 May 2026 13:46:51 +0000
-Received: from smtp21.cstnet.cn ([159.226.251.21] helo=cstnet.cn)
+	id 1wJucV-0000000DW9v-2cv4;
+	Mon, 04 May 2026 14:50:03 +0000
+Received: from mgamail.intel.com ([198.175.65.19])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJtdH-0000000DLVX-14BB;
-	Mon, 04 May 2026 13:46:50 +0000
-Received: from edelgard.fodlan.icenowy.me (unknown [112.94.100.82])
-	by APP-01 (Coremail) with SMTP id qwCowABHs249o_hpSL9ADw--.53082S2;
-	Mon, 04 May 2026 21:46:38 +0800 (CST)
-Message-ID: <b91f527f5ef7999300dd6f7df36dd2d31aa89bc2.camel@iscas.ac.cn>
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8188-geralt: enable touchpad
-From: Icenowy Zheng <zhengxingda@iscas.ac.cn>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-  Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
- <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Date: Mon, 04 May 2026 21:46:37 +0800
-In-Reply-To: <CAGXv+5FvdufzjqBRQnnG3y8FVW9bHL47CVv_=e7GbVv2d3eEuA@mail.gmail.com>
-References: <20260504072846.2581096-1-zhengxingda@iscas.ac.cn>
-	 <CAGXv+5FvdufzjqBRQnnG3y8FVW9bHL47CVv_=e7GbVv2d3eEuA@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: base64
-User-Agent: Evolution 3.58.3 
+	id 1wJucS-0000000DW8y-3mwd
+	for linux-mediatek@lists.infradead.org;
+	Mon, 04 May 2026 14:50:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1777906201; x=1809442201;
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=tqvm43wvsR8GFjbtDI0arKFPhNLZMxt0mILMOUmpHSg=;
+  b=cXjU6gRA3o7uQEEdumV9+rNqttQvTiqytiOcp6zGpLyiBQlaz2JCPVk3
+   lt2gZyLcPgRno0X9mQY5bMON7lSWVQ+dil9aSi7wFaA6Dsk3eS+efGsqQ
+   3MWDh5g2b4riEDvRf5lQPSoz1AsFcxnRRwZeCj4HKq/OodxMr4Cui9Xc3
+   82iBV72LJ1FolA6Tk0I4Ja8Kgjn5QAs9h+j30BG0Z2wxI5han5zUYyVZg
+   NDzBDWUAsj3lM8x2CxJ2UheTImGFSKrDwcFs4QGskAyAtqMVD0xw7bWkO
+   yn3Kk6tPskgmEipFcses0PjvY83HGCsNOTqKagrhKLYNi7dwr8rBJKHdR
+   Q==;
+X-CSE-ConnectionGUID: xT7ZwQiDTvqv7KrLsdAflw==
+X-CSE-MsgGUID: VEK5Wj9VS7+9t57PCwWzEw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11776"; a="78694444"
+X-IronPort-AV: E=Sophos;i="6.23,215,1770624000"; 
+   d="scan'208";a="78694444"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 May 2026 07:49:59 -0700
+X-CSE-ConnectionGUID: +uDe2K0MQBSPIEWH2B6HyQ==
+X-CSE-MsgGUID: vhYZaEyuS1mbc55hKie8qg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,215,1770624000"; 
+   d="scan'208";a="259182110"
+Received: from arjan-box.jf.intel.com ([10.88.27.153])
+  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 May 2026 07:49:58 -0700
+From: Arjan van de Ven <arjan@linux.intel.com>
+To: linux-wireless@vger.kernel.org
+Cc: Arjan van de Ven <arjan@linux.intel.com>,
+	Bongani Hlope <developer@hlope.org.za>,
+	linux-mediatek@lists.infradead.org,
+	Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7921/mt7925: fix NULL dereference in CSA beacon
+Date: Mon,  4 May 2026 07:51:06 -0700
+Message-ID: <20260504145107.1329197-1-arjan@linux.intel.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260502125824.425d7159@bongani-mini.home.org.za>
+References: <20260502125824.425d7159@bongani-mini.home.org.za>
 MIME-Version: 1.0
-X-CM-TRANSID: qwCowABHs249o_hpSL9ADw--.53082S2
-X-Coremail-Antispam: 1UD129KBjvJXoWxAw48AFWfAr4ftw15Gw4rKrg_yoWrWF1Upr
-	97trWUtryUGrn7Jr15Xr1UJFy5Ar1kJ3W5Gr18XFyUJw1UJr1jqr4Yqrn0gr1UJr48Jw1U
-	Jr1jqry7ur17JrJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUUPlb7Iv0xC_Kw4lb4IE77IF4wAFF20E14v26r4j6ryUM7CY07I2
-	0VC2zVCF04k26cxKx2IYs7xG6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rw
-	A2F7IY1VAKz4vEj48ve4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_Gr0_Xr1l84ACjcxK6xII
-	jxv20xvEc7CjxVAFwI0_Gr0_Cr1l84ACjcxK6I8E87Iv67AKxVW0oVCq3wA2z4x0Y4vEx4
-	A2jsIEc7CjxVAFwI0_GcCE3s1le2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IE
-	w4CE5I8CrVC2j2WlYx0E2Ix0cI8IcVAFwI0_Jr0_Jr4lYx0Ex4A2jsIE14v26r1j6r4UMc
-	vjeVCFs4IE7xkEbVWUJVW8JwACjcxG0xvEwIxGrwACY4xI67k04243AVAKzVAKj4xxM4xv
-	F2IEb7IF0Fy26I8I3I1lFIxGxcIEc7CjxVA2Y2ka0xkIwI1lc7CjxVAaw2AFwI0_Jw0_GF
-	yl42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxVWU
-	JVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r1q6r43MIIYrxkI7V
-	AKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF4lIxAIcVC0I7IYx2IY6xkF7I0E14v26r1j
-	6r4UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI42IY6I8E87Iv67AKxVWUJVW8JwCI42
-	IY6I8E87Iv6xkF7I0E14v26r4j6r4UJwCE64xvF2IEb7IF0Fy7YxBIdaVFxhVjvjDU0xZF
-	pf9x07b5Xd8UUUUU=
-X-Originating-IP: [112.94.100.82]
-X-CM-SenderInfo: x2kh0wp0lqwv3d6l2u1dvotugofq/
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260504_064647_715114_D4D5C870 
-X-CRM114-Status: GOOD (  28.66  )
+X-CRM114-CacheID: sfid-20260504_075001_056085_DA0C825E 
+X-CRM114-Status: GOOD (  11.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,74 +87,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-5ZyoIDIwMjYtMDUtMDTkuIDnmoQgMTc6NDEgKzA4MDDvvIxDaGVuLVl1IFRzYWnlhpnpgZPvvJoK
-PiBPbiBNb24sIE1heSA0LCAyMDI2IGF0IDM6MjjigK9QTSBJY2Vub3d5IFpoZW5nCj4gPHpoZW5n
-eGluZ2RhQGlzY2FzLmFjLmNuPiB3cm90ZToKPiA+IAo+ID4gRGVzcGl0ZSB0aGUgQ2lyaSBkZXZp
-Y2UncyB0b3VjaHBhZCBpcyBvbiB0aGUgZGV0YWNoYWJsZSBrZXlib2FyZCwKPiA+IHRoZQo+ID4g
-STJDIEhJRCBkZXZpY2Ugc2VlbiBieSBMaW51eCBpcyBlbXVsYXRlZCBieSBDaHJvbWVPUyBFQyBh
-bmQgYWx3YXlzCj4gPiBwcmVzZW50IHJlZ2FyZGxlc3Mgb2YgdGhlIHByZXNlbmNlIG9mIHBoeXNp
-Y2FsIHRvdWNocGFkLgo+IAo+IEFGQUlLIGl0IGlzIGFjdHVhbGx5IGFuIEkyQyBISUQgZGV2aWNl
-IG9uIHRoZSBkZXRhY2hhYmxlIGtleWJvYXJkLgo+IFRoZSBJMkMgYnVzIGlzICJ0dW5uZWxlZCIg
-YWNyb3NzIHRoZSBFQy1FQyBjb25uZWN0aW9uLiBBbmQgaWYgeW91Cj4gZGV0YWNoIHRoZSBrZXli
-b2FyZCwgdGhlIEkyQyBkZXZpY2Ugd2lsbCBzdG9wIHJlc3BvbmRpbmcuCgpObywgaXQgbG9va3Mg
-dGhhdCB3aGVuIHRoZSBrZXlib2FyZCBpc24ndCBhdHRhY2hlZCwgdGhlIEkyQyBISUQKZGVzY3Jp
-cHRvciBjYW4gc3RpbGwgYmUgcmV0cmlldmVkIHN1Y2Nlc3NmdWxseS4gSXRzIGRldmljZSBJRCBp
-cyBldmVuCmFzc2lnbmVkIGluIHRoZSBDaHJvbWVPUyBFQyBkZXZpY2UgKGFuZCBhIFRPRE8gcmVt
-YWlucyB0aGVyZSwgd2l0aCBhCnBsYWNlaG9sZGVyIDB4NTA5OSBnZXRzIHNoaXBwZWQpIFsxXS4K
-ClsxXQpodHRwczovL2dpdGh1Yi5jb20vY29yZWJvb3QvY2hyb21lLWVjL2Jsb2IvbWFpbi96ZXBo
-eXIvcHJvZ3JhbS9nZXJhbHQvaTJjLmR0c2kjTDE2MQoKPiAKPiBXZSBoYXZlIHNvbWUgZG93bnN0
-cmVhbSB0cmlja2VyeSB0byBkZWFsIHdpdGggdGhpczoKPiAKPiDCoMKgwqAgaHR0cHM6Ly9jcnJl
-di5jb20vYy82MDQwMDQ0Cj4gwqDCoMKgIGh0dHBzOi8vY3JyZXYuY29tL2MvNjA0MDA0NQo+IAo+
-IEl0IGJhc2ljYWxseSBpbnZvbHZlcyByZWdpc3RlcmluZyB0aGUgSTJDIGRldmljZSB3aGVuIHRo
-ZSBrZXlib2FyZCBpcwo+IGF0dGFjaGVkLCBhbmQgcmVtb3ZpbmcgaXQgd2hlbiBpdCBpcyBkZXRh
-Y2hlZC4gV2UgaGF2ZW4ndCBnb3R0ZW4KPiBhcm91bmQKPiB0byB1cHN0cmVhbWluZyBpdCB0aG91
-Z2guIEkgdGFsa2VkIHRvIEtyenlzenRvZiBhYm91dCB0aGlzIGRlc2lnbgo+IGxhc3QKPiB5ZWFy
-LCBhbmQgSSBiZWxpZXZlIGl0IHdhcyBhdCBsZWFzdCBhY2NlcHRhYmxlIGZyb20gRFQgcG9pbnQg
-b2Ygdmlldy4KPiAKPiBTbyB0aGlzIHBhdGNoIGlzIHNvbWV3aGF0IGluY29ycmVjdCwgaW4gdGhh
-dCB0aGUgdHJhY2twYWQgc2hvdWxkIGJlCj4gZGlzYWJsZWQgYnkgZGVmYXVsdCwgYW5kIGl0cyBz
-dGF0dXMgc2hvdWxkIGJlIHRvZ2dsZWQgYXQgcnVudGltZQo+IGJhc2VkCj4gb24gdGhlIGRldGFj
-aGFibGUga2V5Ym9hcmQgZXZlbnRzLgo+IAo+IE90aGVyd2lzZSBpZiB5b3UgYm9vdCB0aGUgc3lz
-dGVtIHdpdGhvdXQgdGhlIGtleWJvYXJkLCB0aGUgZHJpdmVyCj4gd2lsbAo+IHByb2JhYmx5IGZh
-aWwgdG8gcmVhZCB0aGUgSElEIGRlc2NyaXB0b3IuCgpUaGlzIGRvZXNuJ3QgaGFwcGVuIG9uIG15
-IGRldmljZS4gV2hlbiBJIGJvb3Qgdy9vIGEga2V5Ym9hcmQgYXR0YWNoZWQsCmEgYGhpZC1vdmVy
-LWkyYyAxOEQxOjUwRkZgIGRldmljZSBzdGlsbCBhcHBlYXJzLCBhbmQgYWZ0ZXIgSSBhdHRhY2gg
-dGhlCmtleWJvYXJkIGl0IGNvcnJlY3RseSBkZWxpdmVycyB0cmFja3BhZCBldmVudHMuCgpUaGFu
-a3MsCkljZW5vd3kKCj4gCj4gCj4gQ2hlbll1Cj4gCj4gPiBFbmFibGUgdGhlIGRldmljZSBpbiB0
-aGUgZGV2aWNlIHRyZWUuCj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IEljZW5vd3kgWmhlbmcgPHpo
-ZW5neGluZ2RhQGlzY2FzLmFjLmNuPgo+ID4gLS0tCj4gPiDCoC4uLi9ib290L2R0cy9tZWRpYXRl
-ay9tdDgxODgtZ2VyYWx0LmR0c2nCoMKgwqDCoMKgIHwgMjAKPiA+ICsrKysrKysrKysrKysrKysr
-KysKPiA+IMKgMSBmaWxlIGNoYW5nZWQsIDIwIGluc2VydGlvbnMoKykKPiA+IAo+ID4gZGlmZiAt
-LWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTg4LWdlcmFsdC5kdHNpCj4g
-PiBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTg4LWdlcmFsdC5kdHNpCj4gPiBp
-bmRleCA4ZTQyMzUwNGVjMDUyLi44ZjgwMTQ1NGJmODRjIDEwMDY0NAo+ID4gLS0tIGEvYXJjaC9h
-cm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxODgtZ2VyYWx0LmR0c2kKPiA+ICsrKyBiL2FyY2gv
-YXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTg4LWdlcmFsdC5kdHNpCj4gPiBAQCAtNDYwLDYg
-KzQ2MCwxOCBAQCAmaTJjNCB7Cj4gPiDCoMKgwqDCoMKgwqDCoCBwaW5jdHJsLTAgPSA8JmkyYzRf
-cGlucz47Cj4gPiDCoMKgwqDCoMKgwqDCoCBjbG9jay1mcmVxdWVuY3kgPSA8NDAwMDAwPjsKPiA+
-IMKgwqDCoMKgwqDCoMKgIHN0YXR1cyA9ICJva2F5IjsKPiA+ICsKPiA+ICvCoMKgwqDCoMKgwqAg
-LyogVGhlIHRvdWNocGFkIEhJRCBkZXZpY2UgaXMgZW11bGF0ZWQgYnkgRUMgc28gaXQncyBhbHdh
-eXMKPiA+IHByZXNlbnQgKi8KPiA+ICvCoMKgwqDCoMKgwqAgdG91Y2hwYWQ6IHRvdWNocGFkQDU2
-IHsKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGNvbXBhdGlibGUgPSAiaGlkLW92
-ZXItaTJjIjsKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJlZyA9IDwweDU2PjsK
-PiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGhpZC1kZXNjci1hZGRyID0gPDB4MDAw
-MT47Cj4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBpbnRlcnJ1cHQtcGFyZW50ID0g
-PCZwaW8+Owo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgaW50ZXJydXB0cyA9IDwx
-NDggSVJRX1RZUEVfTEVWRUxfTE9XPjsKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-IHBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoCBwaW5jdHJsLTAgPSA8JnRvdWNocGFkX2ludD47Cj4gPiArwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoCB3YWtldXAtc291cmNlOwo+ID4gK8KgwqDCoMKgwqDCoCB9Owo+ID4gwqB9Owo+
-ID4gCj4gPiDCoCZpMmM1IHsKPiA+IEBAIC0xMTMxLDYgKzExNDMsMTQgQEAgcGlucy1idXMgewo+
-ID4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIH07Cj4gPiDCoMKgwqDCoMKgwqDCoCB9
-Owo+ID4gCj4gPiArwqDCoMKgwqDCoMKgIHRvdWNocGFkX2ludDogdG91Y2hwYWQtaW50LXBpbnMg
-ewo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgcGlucy1lYy1hcC10b3VjaHBhZC1p
-bnQtb2RsIHsKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oCBwaW5tdXggPSA8UElOTVVYX0dQSU8xNDhfX0ZVTkNfQl9HUElPMTQ4PjsKPiA+ICvCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBpbnB1dC1lbmFibGU7Cj4gPiAr
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgYmlhcy1kaXNhYmxl
-Owo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfTsKPiA+ICvCoMKgwqDCoMKgwqAg
-fTsKPiA+ICsKPiA+IMKgwqDCoMKgwqDCoMKgIHVhcnQwX3BpbnM6IHVhcnQwLXBpbnMgewo+ID4g
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHBpbnMtYnVzIHsKPiA+IMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgcGlubXV4ID0gPFBJTk1VWF9HUElP
-MzFfX0ZVTkNfT19VVFhEMD4sCj4gPiAtLQo+ID4gMi41Mi4wCj4gPiAKPiA+IAo=
+This patch is based on a BUG as reported by Bongani Hlope at
+https://lore.kernel.org/all/20260502125824.425d7159@bongani-mini.home.org.za/
 
+When a channel-switch announcement (CSA) beacon is received,
+cfg80211 queues a wiphy work item that eventually calls
+mt7921_channel_switch_rx_beacon(). If the station disconnects
+(or the channel context is otherwise torn down) between the
+time the work is queued and the time it runs, the driver's
+dev->new_ctx pointer can already have been cleared to NULL.
+mt7921_channel_switch_rx_beacon() then dereferences new_ctx
+unconditionally, triggering a NULL pointer dereference at
+address 0x0:
+
+  BUG: kernel NULL pointer dereference, address: 0000000000000000
+  RIP: 0010:mt7921_channel_switch_rx_beacon+0x1f/0x100 [mt7921_common]
+
+The same missing guard exists in mt7925_channel_switch_rx_beacon(),
+which shares the same code pattern introduced by the same commit.
+
+Add an early-return NULL check for dev->new_ctx in both
+mt7921_channel_switch_rx_beacon() and
+mt7925_channel_switch_rx_beacon(). When new_ctx is NULL there is
+no pending channel switch to process, so returning immediately is
+the correct and safe action.
+
+Fixes: 8aa2f59260eb ("wifi: mt76: mt7921: introduce CSA support")
+Reported-by: Bongani Hlope <developer@hlope.org.za>
+Oops-Analysis: http://oops.fenrus.org/reports/lkml/20260502125824.425d7159@bongani-mini.home.org.za/report.html
+Link: https://lore.kernel.org/all/20260502125824.425d7159@bongani-mini.home.org.za/
+Signed-off-by: Arjan van de Ven <arjan@linux.intel.com>
+Cc: linux-wireless@vger.kernel.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: Felix Fietkau <nbd@nbd.name>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>
+
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/main.c |    3 +++
+ drivers/net/wireless/mediatek/mt76/mt7925/main.c |    3 +++
+ 2 files changed, 6 insertions(+)
+
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -1503,6 +1503,9 @@ static void mt7921_channel_switch_rx_beacon(struct ieee80211_hw *hw,
+ 	struct mt792x_dev *dev = mt792x_hw_dev(hw);
+ 	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
+ 	u16 beacon_interval = vif->bss_conf.beacon_int;
++
++	if (!dev->new_ctx)
++		return;
+ 
+ 	if (cfg80211_chandef_identical(&chsw->chandef,
+ 				       &dev->new_ctx->def) &&
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+@@ -2392,6 +2392,9 @@ static void mt7925_channel_switch_rx_beacon(struct ieee80211_hw *hw,
+ 	u16 beacon_interval;
+ 
+ 	if (ieee80211_vif_is_mld(vif))
+ 		return;
++
++	if (!dev->new_ctx)
++		return;
+ 
+ 	beacon_interval = vif->bss_conf.beacon_int;
+ 
 
