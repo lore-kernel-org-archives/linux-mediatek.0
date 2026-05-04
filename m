@@ -4,106 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08B43CD3427
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2026 07:34:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83F0AFF885A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2026 09:41:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zmqoE5sH6WuPce4B+/6WncWE7pwXnMFKOobdKhulk1E=; b=ZVZkasepBZE3XhNX6AFNMgUYRw
-	WrwwYDW/rhVPZ+whte0d9HmddQ29iKRhWI8FETHss6kq2VnK4FJH4yLJl2LnpbtM+AKVchu3VFiOD
-	lu4v62BfwfiKLflUBzIZIc/3YiinHjKBD6HyjGw7CU5bANiiEc0pStwv7fvbybHBHXtZraCbICNQz
-	vpbbvufW42Sp4PloPlsfkZTLl9yWtGHFsKjQvWO9opnmSVuByaOnTgiCdgCkfHlAfXYHujN6MTDqr
-	IwCEhUKjublKvkU48tk0U8487XWB1YjqAuwqYtyP99XrhqKJuQ9E9C8O5/ArLlRto1LTH2xHsnhHg
-	y2cypKrg==;
+	bh=pPRPoG0bnXrUp5Oogbu+VyQo8WCBzCtv1bsnZQz2h4s=; b=BZrL/fbI4yDIiCZkHCxfDei/VD
+	V4ND4O4FEO1in8935oKGXwcKg40Fu3JyXype3HNXARqtrkF6AHjVvoFCjQkUZtQSf7APowoZKcfO0
+	5cDhHxuAeQw72qM/jjM7OlJ23IDuY+R32TVo/3+c6DfGEMqMb0VXr5HfIlJTeBSPo/DfBLOOuVDDy
+	AFK/bEIsvADnhFUjtHsl5Izw0noNBI0NrPjJTg6fGu3oK76XILpKilDsieTXRCRPf0+yxZ2Dr6oCz
+	+caavwf5BjCh14RNePr0IBSp8gYvKOsOvtYRJJjOhvxJPN8UuarUhDs8tVA9Qp1xQmwaX5dxD4wfw
+	frYDwZMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJnpO-0000000CcPP-0N4p;
-	Mon, 04 May 2026 07:34:54 +0000
-Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
+	id 1wJpni-0000000CqKa-01JJ;
+	Mon, 04 May 2026 09:41:18 +0000
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJnpL-0000000CcNw-10d5
+	id 1wJpne-0000000CqJ5-267E
 	for linux-mediatek@lists.infradead.org;
-	Mon, 04 May 2026 07:34:52 +0000
-Received: by mail-lj1-x22a.google.com with SMTP id 38308e7fff4ca-38e7c3a2deaso34594541fa.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 04 May 2026 00:34:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1777880087; cv=none;
+	Mon, 04 May 2026 09:41:16 +0000
+Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-5a8704dc3a8so769626e87.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 04 May 2026 02:41:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1777887672; cv=none;
         d=google.com; s=arc-20240605;
-        b=TSe8OCrnxzA+KK8utQpjWey5F/9V2NvPp4QTkjZIyZxDARpp1g324QkpRshqvlPZJC
-         PCvSlN0LmcvuTOW1saauZgggg1kpjcxoE4OKf6zkTz5VFkUnWsr0h05nOxw+5wNWbOKQ
-         9USnBsrBv9ID8ptSm90mDwz+21z2Z/kEfxoaRYMsJAiMiK3xOin61NKU2S33gHQOmSPD
-         QwC3kwwFR3A6qDjUwabGNEbbHB7u8DymcbgDrDARsXZsYJykrfXzjwjInQVNwzz5XlIV
-         q5x06UMOuL2Ur2mhdLaBuf0ptj6GFTycyf66QCRW0v6zmspq2GbiNJ4jPtmnIqd1aa5V
-         xm9w==
+        b=a4/LWqFgp6iaCR0IaJZXA2ObnoQ7gV4BWAo22EZucXj1xpqrxptorz2Edn20dHWf3p
+         Y65fDIrGlXz2RpKoCkRXQc5PRpaFJN7KthJJr9Tdny8WhXkJg48X3Jn385Dt+HyYun3G
+         8VILOq+5sBLF1dVJIV+7K0Yzww3hfB69lFy5zAdDAwoYJ9Kf0TULYko7cQ6vfVJa7xXv
+         yj7C3ZmvcaEn80QjA5fXQrX4Y5x6XVxtcl5goQBg4L4OxE0Up9xoBVoMZFCDFYO+LKRR
+         C0RZnjLp3cUxmcoT2VTq9rVEiRy+NYbmOya2UJgToBBGFyqg5OeejEwGgCP+0wwhoBrQ
+         By7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=zmqoE5sH6WuPce4B+/6WncWE7pwXnMFKOobdKhulk1E=;
-        fh=/22lpxjzdmw3n5IDshKJLobCW2OW5OdHCK2CFg3Ez9U=;
-        b=U+fzjANMJ8StjCcINxi/JG3ji7noc9j9IQ47cEDEwXEQFcDHBjBr4mpYTF8RFkDhJz
-         ESKI5J2YRZ56raPHc1MbNQcOaUI8PhK6FSM16jPA5MdbaXmd1sIlq3Igwks05WW53g2B
-         R0Yb/gY5/w6KkpaJ05iRqjEBT1721+YHCPuvxFJOlH9tQCFGy4Efyv4hNUVNpWmWUlfA
-         GlYlkJH9vF4fkOfnfY/iiMZFMfuRbO67b0MHcFrJLHpvF2aA1jaTmEGSodOZPv4j/l3d
-         cJgCtuOrmuf/W6lq9jMayxcXKYXnfVZfUS3wKFxGZuaFRu+bkuEprXwsmha/r2lZ6l6B
-         SPuA==;
+        bh=pPRPoG0bnXrUp5Oogbu+VyQo8WCBzCtv1bsnZQz2h4s=;
+        fh=RhRHjl/gshHxWl5Tv+dpzZwwJem5i9BrJEnVcJlDAOI=;
+        b=kIpzqKQ4ZqfL4WhpXc1uXgOWmwG1l5SfOfwGJXehb5bQw0m5G97HR0iZifFFNgVpf4
+         6my/N9LelOjIZKYgvfzq53Wdcf3cY0DPEwPCPK8h+M2+6YGIenKl0fp7fYrJ2AbDnj2Y
+         w7J90fTJswpLBOW7rueoOJy+DuVOVYD+pvUTgXN3dcmxzCDGCJw7AZcKW/qkGg1Ua/jL
+         X3a0Ou/ovy1xs3DTLp174gpUhtILCgwJCQQe/X2CTcjPcS6JndLJGDN0F7tNOsa273q3
+         GV8RCBsicph69H5NqtlVKPyRYVrgT8XDXTZwOC5BqCSoGZrUTO/B0PKpUCdAGkZ56vVq
+         0I0g==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1777880087; x=1778484887; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1777887672; x=1778492472; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=zmqoE5sH6WuPce4B+/6WncWE7pwXnMFKOobdKhulk1E=;
-        b=Ifi/TiOSGzDW3KbDNlOM6ujNPb9ch44wQZErMA8PEvDaqgUxSzyvG1OXLJDSmhpZo2
-         XBrAtWHs3Mt8goXxzyLxsz5JKH0il4UcNPsZMyq1pnYDnsGcBD78vBw+E9E/P/PYBx5f
-         Vshcop5NS9hlVyzz4P2JE6FBd/idqM+yIqhwA=
+        bh=pPRPoG0bnXrUp5Oogbu+VyQo8WCBzCtv1bsnZQz2h4s=;
+        b=IdSPxoqVRaXS29cHfHUtbMxqlzfalyYRGLddSPSBKKlyuEY9oAbVSGuLEL49AnmzeZ
+         Cs5htAmY4eJuha+EeTxEo1D+55hwhl3gsxFQn/WEYLfxHebN0WoowWWikLXc0TEpC2r1
+         yaTIqiYT1un4nxGjT9V3kXPPy+bVBLe3aZJJk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777880087; x=1778484887;
+        d=1e100.net; s=20251104; t=1777887672; x=1778492472;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=zmqoE5sH6WuPce4B+/6WncWE7pwXnMFKOobdKhulk1E=;
-        b=Hvb7X4HGnQ2wCrLFHMJQsEBtAQDraV2RAO2OEPOtPkgC9+AeD0lH/WEWpDoxOHOXZa
-         HGxpASBypq2qBvrzGbU1T8CQ4qG6q74FUhYzffiFoYgWNlxVgJBf7EP82QG9DHNO0i89
-         j3+7r7VIvOXtyIgiZ+FTCNxu0EdzCfE6SEdtEf9slfXSzDEA+4NgOFhqDv5VDlABT5x7
-         dPtgHJFYTikHo1Hy3fTNRzQBW8PsWsXbDCW7S/93JMRkrkwQiT0YPWUg6o4hFESSXkvx
-         TTNltx3FLbL8PN1+L5BLu5aiRriB4JvxJrhUZpDmPO0uwMljXS+rQN6AKJBM7IJ8knNl
-         qfnA==
-X-Forwarded-Encrypted: i=1; AFNElJ9WgO1PKpQz4C3MI+RPMMKeQ6z4EzMUlxdwpPTv+H9UJAQYu3om0p+JfgwuXj57LSETUfTjaq2b0sgUZ4EMuw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxVGsCofxPHFzZDGJQeVIeG4CJtkvOCxbOJegdqiXizjdjnhQLt
-	JENeiEBZ3KtPGO+N/OaUosh4X8I4z74n1YJMiQyTB2uE+WcgoVIqyB1CBckg6WNuR02B7t5quiN
-	RENyA3b94kMHepfw5D181lSpnXt3VacV1NMl9iyB+
-X-Gm-Gg: AeBDiev4QDYzvlSzW7/GEx9TPTrZXiBDR2sikwGmzslamgCj1ClQR7cbarmVOXhDTux
-	V7NcVTpr+XulB+tDrXdR7AsHMJk20XI1jsbZ/IWxNkCgSLNDhAsIRKvtZlMOWTTCK5QConm/OV8
-	Jbn8waluS3O3891CwB8Y5C1dqY+Q+AUsCnXgrl6OYNoJ4qBmEcX3QrmytDzMA+1UoydQg6tgASt
-	U4yNRY8+h9pDwwQWuS67T3iP2LRQdLeJngdY9peiJS432wCwKylYipcSOVYRwvF/VWQMDW8G8Bx
-	PRcAtVZ4NfvSdUR4KJakj7D1MXbU0eDQaJUjxPP83W8/b4zU
-X-Received: by 2002:a05:6512:3b84:b0:5a2:a3dc:51e3 with SMTP id
- 2adb3069b0e04-5a862ec11b8mr2434888e87.12.1777880087115; Mon, 04 May 2026
- 00:34:47 -0700 (PDT)
+        bh=pPRPoG0bnXrUp5Oogbu+VyQo8WCBzCtv1bsnZQz2h4s=;
+        b=Pj+MpRIcKsdVp/fv58IHpKwP+W6MdRK1p0gFJDl4mXISmqjEpK2BvE65SA0uZ882nM
+         z7khzTtBu0wOdarT63uVQEzSsdwQPCtwXNsWPoU/W14bmzsNl30vHv9i2X+S6T45MO6m
+         ag3PiN/p7BW7dpR7N3+d/OOAmJbbhTmR3Ubw4ReDBJldp4ytoSMyu/n8FuB5gVcvDoSH
+         dSjGHr148re5qWs9YYSl7YBnj6o1A4CsnFQnbu7KSQW3PL9JbcF2MZWsUH7K5fs7CH/D
+         7wabNRPyivkU9gxcd2VwfV1tJFY7zmYeCuFpDP0+Nmuot9T7BR7mTRiK2UfmOMD83BrP
+         zmpA==
+X-Forwarded-Encrypted: i=1; AFNElJ8aoAqWV5+idt1dpFtHz7I5jsV4lcvyUoyBHqSVvvPBKIa+BVkGKH3c1NXnWlT1Iib6NHtcVjSHzebihHhmXw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YypdnPhFFxEfaXiwxoIPcrxEZsxsMKSj7okmVfvzYkLF38QafUn
+	7NJSXYOxedoZKtlj48JErgxnGADxtFFZVSAYkx9GhEuaVLIys8hTUjr/kyrYlf5++AYy6kCoo8p
+	bQ6KiXfokYbhjDZH0dP9bYtmEGZzAoBGD6vykXalk
+X-Gm-Gg: AeBDieu8HKLOv8JW51hLT3aRNNyS/4NyuFch6Xr6RQKPiZda9LzjqoU8mmlhlexGYnz
+	+qWahT9/cNVWDMZYTUPkWVKL5PAvLa2vv6/URj+MYAsK36tEZwnSBHd6+JcklLVlx2aid6c/y68
+	XTUgNExUVRcQ4dGCH47nFZrgKOewJ13Gw9kFmlYtNNWZEdrsYl8/Wz+9eJRBe7jfRT15pltB35I
+	xQg2wUPb4TDacMYPt4Lv3rNcdZ8/tWIi4ZIhh0CAH4ntofhPQrr/RGTCJ/ER4NHtVjnP/XI9XNt
+	L2cRKdm6+nc25LRwKN2VGqHCUiNK92vvguqCut8BTtVf0yq1
+X-Received: by 2002:a05:6512:400f:b0:5a4:304:43c9 with SMTP id
+ 2adb3069b0e04-5a862fbd635mr2676512e87.14.1777887672100; Mon, 04 May 2026
+ 02:41:12 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260504072748.2580172-1-zhengxingda@iscas.ac.cn> <20260504072748.2580172-2-zhengxingda@iscas.ac.cn>
-In-Reply-To: <20260504072748.2580172-2-zhengxingda@iscas.ac.cn>
+References: <20260504072846.2581096-1-zhengxingda@iscas.ac.cn>
+In-Reply-To: <20260504072846.2581096-1-zhengxingda@iscas.ac.cn>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 4 May 2026 15:34:35 +0800
-X-Gm-Features: AVHnY4IuKDBbAkS85uOVR5vEB6IDbpI4Sjzup8SfiFFfaDlz9Xmq5t63cjYsvnU
-Message-ID: <CAGXv+5F6BSmqq5HEybuCSwt75LVzh5gvs2wQpqy3vgfLi60Dcg@mail.gmail.com>
-Subject: Re: [PATCH 2/2] arm64: dts: mediatek: mt8188-geralt: enable Wi-Fi card
+Date: Mon, 4 May 2026 17:41:01 +0800
+X-Gm-Features: AVHnY4L9QFY2fxGccmoY4I5c6vHRXkexmo_pKFyAww1n-29lZtiDvf1w1FXMeYk
+Message-ID: <CAGXv+5FvdufzjqBRQnnG3y8FVW9bHL47CVv_=e7GbVv2d3eEuA@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8188-geralt: enable touchpad
 To: Icenowy Zheng <zhengxingda@iscas.ac.cn>
-Cc: Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Hui Liu <hui.liu@mediatek.com>, 
-	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, 
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260504_003451_297586_A7D20980 
-X-CRM114-Status: GOOD (  20.66  )
+X-CRM114-CacheID: sfid-20260504_024114_661785_ABE6D01B 
+X-CRM114-Status: GOOD (  21.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,61 +116,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
 On Mon, May 4, 2026 at 3:28=E2=80=AFPM Icenowy Zheng <zhengxingda@iscas.ac.=
 cn> wrote:
 >
-> The mainline pcie-mediatek-gen3 driver does not have code managing
-> downstream device power / reset.
->
-> As the Wi-Fi card on ciri is a fixed device, set the related regulator
-> to always-on and use GPIO hog to set the status of its reset pin.
+> Despite the Ciri device's touchpad is on the detachable keyboard, the
+> I2C HID device seen by Linux is emulated by ChromeOS EC and always
+> present regardless of the presence of physical touchpad.
 
-The plan now is to model it as an M.2 E-key slot (even though the chip
-is actually soldered on the main board).
+AFAIK it is actually an I2C HID device on the detachable keyboard.
+The I2C bus is "tunneled" across the EC-EC connection. And if you
+detach the keyboard, the I2C device will stop responding.
 
-I have some of the patches ready, but I'm still working out the USB
-side of it.
+We have some downstream trickery to deal with this:
+
+    https://crrev.com/c/6040044
+    https://crrev.com/c/6040045
+
+It basically involves registering the I2C device when the keyboard is
+attached, and removing it when it is detached. We haven't gotten around
+to upstreaming it though. I talked to Krzysztof about this design last
+year, and I believe it was at least acceptable from DT point of view.
+
+So this patch is somewhat incorrect, in that the trackpad should be
+disabled by default, and its status should be toggled at runtime based
+on the detachable keyboard events.
+
+Otherwise if you boot the system without the keyboard, the driver will
+probably fail to read the HID descriptor.
 
 
 ChenYu
 
+> Enable the device in the device tree.
+>
 > Signed-off-by: Icenowy Zheng <zhengxingda@iscas.ac.cn>
 > ---
->  arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi | 11 +++++++++++
->  1 file changed, 11 insertions(+)
+>  .../boot/dts/mediatek/mt8188-geralt.dtsi      | 20 +++++++++++++++++++
+>  1 file changed, 20 insertions(+)
 >
 > diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi b/arch/arm64=
 /boot/dts/mediatek/mt8188-geralt.dtsi
-> index 8e423504ec052..c25780098103b 100644
+> index 8e423504ec052..8f801454bf84c 100644
 > --- a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
 > +++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
-> @@ -544,6 +544,11 @@ &mt6359codec {
->         mediatek,mic-type-2 =3D <2>; /* DMIC */
->  };
->
-> +&mt6359_vcn18_ldo_reg {
-> +       /* Used by WLAN */
-> +       regulator-always-on;
-> +};
+> @@ -460,6 +460,18 @@ &i2c4 {
+>         pinctrl-0 =3D <&i2c4_pins>;
+>         clock-frequency =3D <400000>;
+>         status =3D "okay";
 > +
->  &mt6359_vcore_buck_reg {
->         regulator-always-on;
->  };
-> @@ -1145,6 +1150,12 @@ pins-en-pp3300-wlan {
->                         output-low;
->                 };
->         };
-> +
-> +       wlan-reset-hog {
-> +               gpio-hog;
-> +               gpios =3D <145 GPIO_ACTIVE_HIGH>;
-> +               output-high;
+> +       /* The touchpad HID device is emulated by EC so it's always prese=
+nt */
+> +       touchpad: touchpad@56 {
+> +               compatible =3D "hid-over-i2c";
+> +               reg =3D <0x56>;
+> +               hid-descr-addr =3D <0x0001>;
+> +               interrupt-parent =3D <&pio>;
+> +               interrupts =3D <148 IRQ_TYPE_LEVEL_LOW>;
+> +               pinctrl-names =3D "default";
+> +               pinctrl-0 =3D <&touchpad_int>;
+> +               wakeup-source;
 > +       };
 >  };
 >
->  &pmic {
+>  &i2c5 {
+> @@ -1131,6 +1143,14 @@ pins-bus {
+>                 };
+>         };
+>
+> +       touchpad_int: touchpad-int-pins {
+> +               pins-ec-ap-touchpad-int-odl {
+> +                       pinmux =3D <PINMUX_GPIO148__FUNC_B_GPIO148>;
+> +                       input-enable;
+> +                       bias-disable;
+> +               };
+> +       };
+> +
+>         uart0_pins: uart0-pins {
+>                 pins-bus {
+>                         pinmux =3D <PINMUX_GPIO31__FUNC_O_UTXD0>,
 > --
 > 2.52.0
 >
