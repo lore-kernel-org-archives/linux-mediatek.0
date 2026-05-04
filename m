@@ -4,94 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3FC7FF885A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2026 03:10:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF8FBFF885A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2026 07:28:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Bdq1ceputFrd5lb1OAnfe46lFGDJ7zZ8wPiQreEQXNE=; b=qr9fOzKmPt/7sKJfE/pNEED8Gr
-	DJLh0T5cHPEyKn5bHYKNBfYokFSdrne5ztbOOsHcwiNJua/dOjpdeksn5CNwVXYzl6LbV9mIAPAm5
-	9dc4nN18EnLVn38jmk8g5xQBeq92xTtVLDkm/VvTg+FfEWqHk6XC7sTRVthzcYnLB7NWJGuitGJks
-	lXQopMlh3RDB+oLx1myYOoZhYlX4bEiiGHLvC2btTxKxAaXXsDb0LtBSquy1Vnpdd7jXvA3T27zd3
-	dJBO2xgzXPst2Cf0aljSY7CMZVdPD5ukcAvLRWhAhiihJWbvvegzRxfkeI+NjYm1DUzI9fHbMR7PY
-	NiAZTwIw==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5iKqur3ja74PhGaUPe440KyKKTAXWz8nTk8pUHDc8Ck=; b=V/9jaVAtprlw/OvMqKiD3Volif
+	G8XL1ikso42HpUJf/I6L8X0RaZZM9Oqaq/BvqCspZpZdRNe/FbfdvrgXlPScSN5TCxioLAIgYSC8T
+	JkDreLgRQB1buewHLb+XGduziD+f64TZ5vbOHcWpKfui+IcgtjhVWkBvdumfZvuTEvW4E/GYJlC3k
+	+tDnpxwybAnG9lK7VI+PhdDa86ECvXRKRnXwI0gSrN9piI+jGcVTHSpMVdsCH4Ld1YleVChTOmJUI
+	JkCGz61YLJbxkIpvOLIEL9eIxrhbSMy8lcmRYI0fFi4VK40f4ODnt1vAaXdfPGYgVaBRH8mGs1XUw
+	UgBzNbHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJjhk-0000000CEAe-2iDu;
-	Mon, 04 May 2026 03:10:44 +0000
-Received: from mail-qv1-xf32.google.com ([2607:f8b0:4864:20::f32])
+	id 1wJnim-0000000CbS4-2s2o;
+	Mon, 04 May 2026 07:28:04 +0000
+Received: from smtp81.cstnet.cn ([159.226.251.81] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJjhh-0000000CE9Z-3i48
-	for linux-mediatek@lists.infradead.org;
-	Mon, 04 May 2026 03:10:43 +0000
-Received: by mail-qv1-xf32.google.com with SMTP id 6a1803df08f44-8b81586dff3so13992696d6.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 03 May 2026 20:10:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1777864240; x=1778469040; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Bdq1ceputFrd5lb1OAnfe46lFGDJ7zZ8wPiQreEQXNE=;
-        b=J+ozIrd7zqdH8f5M58HEbnEdwzfnqNdfzTBdPP4yWdJefdI0n7nykr0MJ60pbSIqnE
-         bANHf9hx0P2yuQhgzkaZ+T64ON8D8l1a1ANnxE/iSkLRiROO9wTORcE/3fi1guE+yG9K
-         v6COXLIm/4SYnOYjQ4dFKKgmKVm0B4BOJinr50IHS8n/NDsbmC45bpmA6/VsGTkbBJLU
-         JU/tUYbYlkGL6vDiTbKXtEFYDeKq+zerdyB4yF6DOaA7IwFbf1d6bT5aF1iPQS/IDTRK
-         FXv+eRTv4KDlZOZfaxJAKpFcUTsmq4EzUJ4vQ+9+MajLQfiEwVvXs3hGuo16t9uwdnfR
-         LsJg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777864240; x=1778469040;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Bdq1ceputFrd5lb1OAnfe46lFGDJ7zZ8wPiQreEQXNE=;
-        b=l3RCB/B5nCO/QM/lGexc39Ob7SEoXm1GYN9MjlIDJ6qRVHKJZXIwJWX225ZakiAZHR
-         Q0RHAnvfCsEL4yhRYpU3TXvoVQgjv7BLCMNwep8okiKtDX4PKwv7NKmkdRPK8yMmUEd/
-         ZJN+5A6ZhlMt3xVSqsJ+8ErHb1WB7510FsJxaDjpd3auLl77ev6P+VQO+v2pvWHy1Hvo
-         Zh2l2mbfbdog7Rk6WUN4Up/UL8FP/ySEmWRz95y+aMCiO7rWDNl2YpVR0ojANFf1/Vds
-         k4go4yQ/N4EdUrA0TGzM1wMOdGCBoATNqz2JmvbuVhX3LGDdX6M956F3+R9N9I3qKucU
-         AlVw==
-X-Forwarded-Encrypted: i=1; AFNElJ8n/gtHt4vk9Ndyp6plqxz2JtoRErZEt1Mi6Tm+U+WjSMmArob74VIgi7aXYYK4n8vZypgvduV4o7eIDZHz+A==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz6w6CPRucBOn4Ak4QA3kXIaZU1ewPdYkSxsiCuTlIpvpMyjKPx
-	W5+tzdeLgRSVfcvaGsgDP/7xx6L5pn2RWpwZP1gYo6/OxK3CmRC7NCeu
-X-Gm-Gg: AeBDies+/YuzCqS0853nPrGyUuAmzA3z9V4sbIBkU9i59MfxPY03Cm+RNXMwaRbWr8b
-	UFwQNA7sym4S+2wJxay+GTu0eP9rSllc4WfMtqdYEousVw1QSkP3vTyV4ZhJt4eD6Co40ApWzS6
-	740q1loEj/qJTTJWUKEJxmw034W9McYv/pSr5Nu5Q0AnzuKJXFmrfeOCXf1b19V09xSM26NM0hU
-	Bcl48+HVKyjkTozDZbb8Ayhh079Q0+XBhTLuiyu8XS3m/+vxeQ3AdpdtY66MFW8OkzSxypTjdUh
-	mmTKCHhLoQ+2sUEjq9ednkF9WoxdKNBVmpiYf2SHvK8Fb1Dqf5zHloU54xAlcOv+BNNu6+OpT3E
-	evxH1mN2TVuWppoxEvxBI5tGZBH/vxdaaLkuv0GYmxu3ZtQRiiiTTsxWkUpPXfFU+mfrG46BWkG
-	+8YHGQ/Q3vNCl6jmHFVkhKmNMGPyrTLHGmAGZY8+F0/ThYgYh/wIqWYLH2j9zNM/B11BNdoKKOL
-	0FOXVzozsjyy+wq3EDLPz98sTxZM/zlfR/0TMMf7S3/w0+1ooaChkmL
-X-Received: by 2002:a0c:f10c:0:b0:89c:de0e:263b with SMTP id 6a1803df08f44-8b6694eb760mr112988026d6.42.1777864239741;
-        Sun, 03 May 2026 20:10:39 -0700 (PDT)
-Received: from ryzen ([2601:644:8000:5b5d:7285:c2ff:fe45:8a32])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-8b538b1d833sm119089176d6.10.2026.05.03.20.10.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 03 May 2026 20:10:38 -0700 (PDT)
-From: Rosen Penev <rosenp@gmail.com>
-To: netdev@vger.kernel.org
-Cc: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
+	id 1wJnih-0000000CbQR-3ozr;
+	Mon, 04 May 2026 07:28:02 +0000
+Received: from edelgard.fodlan.icenowy.me (unknown [112.94.100.82])
+	by APP-03 (Coremail) with SMTP id rQCowAD3GOB4SvhpVioHEA--.54421S3;
+	Mon, 04 May 2026 15:27:55 +0800 (CST)
+From: Icenowy Zheng <zhengxingda@iscas.ac.cn>
+To: Linus Walleij <linusw@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
-	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
-Subject: [PATCH net-next] net: mtk_star_emac: use of_get_ethdev_address
-Date: Sun,  3 May 2026 20:10:19 -0700
-Message-ID: <20260504031019.607682-1-rosenp@gmail.com>
-X-Mailer: git-send-email 2.54.0
+	Hui Liu <hui.liu@mediatek.com>
+Cc: linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Icenowy Zheng <zhengxingda@iscas.ac.cn>
+Subject: [PATCH 2/2] arm64: dts: mediatek: mt8188-geralt: enable Wi-Fi card
+Date: Mon,  4 May 2026 15:27:48 +0800
+Message-ID: <20260504072748.2580172-2-zhengxingda@iscas.ac.cn>
+X-Mailer: git-send-email 2.52.0
+In-Reply-To: <20260504072748.2580172-1-zhengxingda@iscas.ac.cn>
+References: <20260504072748.2580172-1-zhengxingda@iscas.ac.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: rQCowAD3GOB4SvhpVioHEA--.54421S3
+X-Coremail-Antispam: 1UD129KBjvdXoW7GrW5Jr15uF4kKrWkJrWDurg_yoWkJrg_X3
+	ZrC3WUZa1rCF15uryftFWDCFy2q3y5X34xJFWrXr4DJ347Ar1UZ39Fvasxur4UJ39a9rW3
+	WrZxZF18AFnI9jkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUIcSsGvfJTRUUUbkxFF20E14v26rWj6s0DM7CY07I20VC2zVCF04k26cxKx2IYs7xG
+	6rWj6s0DM7CIcVAFz4kK6r1j6r18M28IrcIa0xkI8VA2jI8067AKxVWUGwA2048vs2IY02
+	0Ec7CjxVAFwI0_Gr0_Xr1l8cAvFVAK0II2c7xJM28CjxkF64kEwVA0rcxSw2x7M28EF7xv
+	wVC0I7IYx2IY67AKxVW8JVW5JwA2z4x0Y4vE2Ix0cI8IcVCY1x0267AKxVW8JVWxJwA2z4
+	x0Y4vEx4A2jsIE14v26F4UJVW0owA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_Cr1j6rxdM2AI
+	xVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj6xIIjxv20x
+	vE14v26r1j6r18McIj6I8E87Iv67AKxVWUJVW8JwAm72CE4IkC6x0Yz7v_Jr0_Gr1lF7xv
+	r2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAGYxC7M4IIrI8v6xkF7I0E8cxan2IY04
+	v7MxkF7I0En4kS14v26r1q6r43MxAIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4AY6r1j
+	6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7
+	AF67AKxVWUtVW8ZwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1j6r1xMIIF0xvE
+	2Ix0cI8IcVCY1x0267AKxVW8JVWxJwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4lIxAIcV
+	C2z280aVAFwI0_Jr0_Gr1lIxAIcVC2z280aVCY1x0267AKxVW8JVW8JrUvcSsGvfC2Kfnx
+	nUUI43ZEXa7VUjrHUDUUUUU==
+X-Originating-IP: [112.94.100.82]
+X-CM-SenderInfo: x2kh0wp0lqwv3d6l2u1dvotugofq/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260503_201041_955318_9A0A4CD0 
-X-CRM114-Status: GOOD (  11.67  )
+X-CRM114-CacheID: sfid-20260504_002800_360889_AC92E621 
+X-CRM114-Status: GOOD (  10.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,34 +88,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The platform_ variant calls arch_get_platform_mac_address which is only
-implemented under SPARC.
+The mainline pcie-mediatek-gen3 driver does not have code managing
+downstream device power / reset.
 
-Switch to the of variant as of functions are used in the surrounding
-code and to get EPROBE_DEFER support in order to handle NVMEM MAC
-address specifications.
+As the Wi-Fi card on ciri is a fixed device, set the related regulator
+to always-on and use GPIO hog to set the status of its reset pin.
 
-Signed-off-by: Rosen Penev <rosenp@gmail.com>
+Signed-off-by: Icenowy Zheng <zhengxingda@iscas.ac.cn>
 ---
- drivers/net/ethernet/mediatek/mtk_star_emac.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-index b83886a41121..774ecc98ebe1 100644
---- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
-+++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-@@ -1640,7 +1640,9 @@ static int mtk_star_probe(struct platform_device *pdev)
- 	if (ret)
- 		return ret;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
+index 8e423504ec052..c25780098103b 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
+@@ -544,6 +544,11 @@ &mt6359codec {
+ 	mediatek,mic-type-2 = <2>; /* DMIC */
+ };
  
--	ret = platform_get_ethdev_address(dev, ndev);
-+	ret = of_get_ethdev_address(of_node, ndev);
-+	if (ret == -EPROBE_DEFER)
-+		return ret;
- 	if (ret || !is_valid_ether_addr(ndev->dev_addr))
- 		eth_hw_addr_random(ndev);
++&mt6359_vcn18_ldo_reg {
++	/* Used by WLAN */
++	regulator-always-on;
++};
++
+ &mt6359_vcore_buck_reg {
+ 	regulator-always-on;
+ };
+@@ -1145,6 +1150,12 @@ pins-en-pp3300-wlan {
+ 			output-low;
+ 		};
+ 	};
++
++	wlan-reset-hog {
++		gpio-hog;
++		gpios = <145 GPIO_ACTIVE_HIGH>;
++		output-high;
++	};
+ };
  
+ &pmic {
 -- 
-2.54.0
+2.52.0
 
 
