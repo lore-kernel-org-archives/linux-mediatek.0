@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43C62CD342F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2026 18:25:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C87ECD3427
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2026 18:25:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2qsN8wdW0Zho15qs48pheYqjkONPaUEerRAaR4V5SSo=; b=gPr7To//AqLdFV48+nbE2TwJC/
-	gup2wrZ8bsajxdaupXpibsw2ryUmwGcUWWWOPCQV29Z97gbZb/xSEedwijuAzHaJXGcyHiCYwCopE
-	+YIcgf4FOh+YBZxcklIFCFybNKxVEz1ktYPaIWygNJwAjnR294aj/bmo4er+X4rJsAp0pnLe5YraA
-	UD0Oh1dAzLt4Cq7fLndjPdflplFTMsgHSyCjuWCmqEX6nCuQtRmZgmmwY7K5oYyDiou3OokPZUjCW
-	kp4x9uYTJbQbD7BVNeYBKggYuM7I21OuDYzeqq+EVUeipuoWJ7KAG/eJO8BVhu3FVgkFqh3zfrcmR
-	/tnNXpMg==;
+	bh=aV6JI2NCXR9LGakBzEOkzipF9sttMt23RZp8k5tIWEc=; b=5AtqbGp+N7TmeiTxkdhbF8BRus
+	jhn//o9WjS6ZC6HHDs0eafVaMbU4v7JHgwdbdqeH20fWsPCRY3DLIbf5aANUVC5lw8dA+Kn4EFTSv
+	SiLhCPGNWGSojA2pyHc4I1n2ezz4mV6U4RP6iiP6XBDiw2CuHDnvkDEALeEU3tdrC4vaTUuSy7vBQ
+	noGmZFz193npI7AExolnc8eHWuaV0opmA7ZH89ApK2qKIz6ovV8T8Umt/Kiu3qBghRVN0ri1LbBUH
+	twPVtuQze7M3Mx6cYszWZ93t6A8akwDTrowc4YgvpRhXfMEj3a6tSMQAiLIhKF4WF8czGAGVWCUcf
+	6bzTD+/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJxyx-0000000Dz0n-0fc5;
-	Mon, 04 May 2026 18:25:27 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wJxyy-0000000Dz2G-0FaC;
+	Mon, 04 May 2026 18:25:28 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJxyY-0000000DyGx-48NP;
-	Mon, 04 May 2026 18:25:06 +0000
+	id 1wJxyY-0000000DyGz-49TJ;
+	Mon, 04 May 2026 18:25:05 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3043D4459C;
+	by sea.source.kernel.org (Postfix) with ESMTP id 734B0445AC;
 	Mon,  4 May 2026 18:24:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 10564C2BCF5;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 204ACC2BCC4;
 	Mon,  4 May 2026 18:24:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1777919099;
-	bh=WDFhxjJb9z+ifSIY6a5Dfa4xTAgGcmZYrk7QDVq6rdw=;
+	bh=wMsaPJTluTOvZFL0m5jH60KdVathnpyRBOWpiXT7BKk=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=iQ1yVBTXJiCZTxeXqFTfDys3JxsA1Pw59lZyiDiS5yQ71zemGW+Nk3GyMsfc8EOwu
-	 gfz9rZnZvJRb2BjwkkE9VQ9ebmxLkYgD/FLxqqpMYXChOQUqgcyZ9EnO5JvK2t+f8E
-	 dBtHg4/IbOEC8zWgvHXwfFf6mcnKbJhEFSoWkkYLTSqRePYSI8PTsui9PowoLX4JXk
-	 rbKEhmDTlUpZ58itFdV8uW8Td5pbXCiSCDu1DOmyH9Kyp7jhgxQJpOh/smehWmw2Hw
-	 TiKnXjfnbqgUHK3X75NTVpYbADsQZAwMrAFfK9oG6Yc1A3+Ug0v3v1xrsSFvSdq/31
-	 llLaiNjmTPSZQ==
+	b=QCnLNbmmWof8Rok38vimSq3yfhpYRhsZAPXK4G23WrDHwrY68/ebOnrMabSFzDzp3
+	 TwwljkP+gXxfWiqepRdkBst5Bz4qom16o58qb+152eoRQtwGOsyWfo3WqALmO8mSvs
+	 G9kqgErY5FJmte1VBF3M+ObKj+NyulqOghKx8oSoSDyjpAOigJnQeiz70wPL+OxXVp
+	 0hAwZeq7vzl7lXjGyh9haqdAjgG68dMJW0JDgOjirY/fnbnnmOegEXWiwvMprUb7RM
+	 5ipOMAIPb0pfYdzJ+GsnVp94xH4NP7Z5/Tnde1wwA2XZ1yHCRb9MBQQGcOlmQWpePC
+	 /Q8llwSLUxRQw==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 05D67CD3430;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 176F9CD3427;
 	Mon,  4 May 2026 18:24:59 +0000 (UTC)
 From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Mon, 04 May 2026 21:25:00 +0300
-Subject: [PATCH 08/13] mfd: mt6397-core: add support for mt6323 efuse
+Date: Mon, 04 May 2026 21:25:01 +0300
+Subject: [PATCH 09/13] mfd: mt6397-core: add support for mt6323 thermal
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260504-mt6323-v1-8-799b58b355ff@protonmail.com>
+Message-Id: <20260504-mt6323-v1-9-799b58b355ff@protonmail.com>
 References: <20260504-mt6323-v1-0-799b58b355ff@protonmail.com>
 In-Reply-To: <20260504-mt6323-v1-0-799b58b355ff@protonmail.com>
 To: Jonathan Cameron <jic23@kernel.org>, 
@@ -71,19 +71,19 @@ Cc: linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
  Ben Grisdale <bengris32@protonmail.ch>, 
  Roman Vivchar <rva333@protonmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1777919095; l=882;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1777919095; l=903;
  i=rva333@protonmail.com; s=20260325; h=from:subject:message-id;
- bh=KHZcH06TkyVO2TQwIZCbwT+DwvWV7qLrxAW86+Uky0E=;
- b=aHVrflr5+/NWv4HshdZg/E1DtkavRTPohIu568wUne7D2WRSQLE/Wpo2rHBief8PxE2fLxMSf
- 3r0EjqDGRw4AmxaZ/tU/z4ItF2gRc7OdTVaeoeyRS5blCnvcu5unomK
+ bh=1GBl1TpFBcVXYGizGdKi1F7hlRKLPxUy3Qzy4DpQjMM=;
+ b=8nyO1z82QxMlj6H0WEVe86aCBbZcH4auRH3dTb7ryxt+R5BbJ1NJpZ0rlhv416KiWWfCYbyhM
+ VaAhTEw+tP3ChoTAZAIFSwzFtWpJxazwDOCBgmDQ680MNhJw61JUEO0
 X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
  pk=euuVBZGtA2Cqb8Dju84qpQPhvwxyUirJlXpqEPQWKBM=
 X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260325 with
  auth_id=695
 X-Original-From: Roman Vivchar <rva333@protonmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260504_112503_242117_BEEC798C 
-X-CRM114-Status: GOOD (  11.66  )
+X-CRM114-CacheID: sfid-20260504_112503_195014_94FCD7C5 
+X-CRM114-Status: GOOD (  11.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,9 +101,9 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Roman Vivchar <rva333@protonmail.com>
 
-The mt6323 PMIC includes an EFUSE. Register the EFUSE in the mt6323
-devices array to allow the corresponding driver to probe using compatible
-string.
+The mt6323 PMIC temperature can be measured using AUXADC channel.
+Register the thermal in the mt6323 devices array to allow the
+corresponding driver to probe using compatible string.
 
 Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
 Signed-off-by: Roman Vivchar <rva333@protonmail.com>
@@ -112,19 +112,19 @@ Signed-off-by: Roman Vivchar <rva333@protonmail.com>
  1 file changed, 3 insertions(+)
 
 diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-index 013b0857fb54..2d9419b80a5c 100644
+index 2d9419b80a5c..061ac242f1f8 100644
 --- a/drivers/mfd/mt6397-core.c
 +++ b/drivers/mfd/mt6397-core.c
-@@ -127,6 +127,9 @@ static const struct mfd_cell mt6323_devs[] = {
- 	{
- 		.name = "mt6323-auxadc",
- 		.of_compatible = "mediatek,mt6323-auxadc",
+@@ -151,6 +151,9 @@ static const struct mfd_cell mt6323_devs[] = {
+ 		.num_resources = ARRAY_SIZE(mt6323_pwrc_resources),
+ 		.resources = mt6323_pwrc_resources,
+ 		.of_compatible = "mediatek,mt6323-pwrc"
 +	}, {
-+		.name = "mt6323-efuse",
-+		.of_compatible = "mediatek,mt6323-efuse",
- 	}, {
- 		.name = "mt6323-rtc",
- 		.num_resources = ARRAY_SIZE(mt6323_rtc_resources),
++		.name = "mt6323-thermal",
++		.of_compatible = "mediatek,mt6323-thermal",
+ 	},
+ };
+ 
 
 -- 
 2.53.0
