@@ -4,75 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E17A1FF885A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2026 14:50:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54F3DCD3427
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2026 18:25:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xngNxV41BEhvXFxOC/XG5a3Q7ux1yO0k1gMe7RtR7BI=; b=0OD3DTjsFE9YgSWCQWL9+oiTFJ
-	uw+kplAOrjt3+hOOdW0TfDOGmFZxU89weagiL52rz2u7GS3EcgO70wMQH3YPp2ILpeKLsKK4QMlJz
-	F+gA/K3w1LVVQnaKg1QJZazSKunTnk7mxGtrlMwx0SGH+87DDEh6OUMSrCgaFjavZwEabdv7wovEX
-	xXqJFCA4mKls+aANanZMkWN6/2Rg7UJ1BxzRHzrf58tVG9XNY0LQuWUX9Gm/9McUXvVvali+ZZgBn
-	nbQDyh4UwY9nmhaPVgOmbT+UInZ947tpQr73Ct0WTUQUlmCZ1KdQR8zDJrsj8l51hcXmDQ/qz78gq
-	SVLwWn+Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=EDF6hUkZ0lywwZvFhw0Nk/fYqOoq7apBZafqB0ONLuU=; b=3eiO0VIH+gq7yXv7q8lWJJcCNS
+	wqKs2xVfis91H1/acuk7Telu5gqe/K1CdG7Gox/x8shZTLuRiy9lxD0zN8+R+thZRS/9SD8HOe9gb
+	ru/QuvJHbqOvxl3Q4IdznfxokBi4ZUphY79qXJYkUL6dxhgDzQxWaAsMRa8LRG8lmMQKW+UEgLCL+
+	XMrgxCykEOTsbn0lwcGR1QetDIzQRqEy18tUehHVkqNPtu2vq/zgyo5yYFp+mjeee1xU0jdFEqcMU
+	ty5UJcd/K+dZYmy5dgfDjVoncundqKom4P16SBWA8GY2beHU6JwNr2tNQHkfsagu2YDDRNnfcP81B
+	IeQYfz+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJucV-0000000DW9v-2cv4;
-	Mon, 04 May 2026 14:50:03 +0000
-Received: from mgamail.intel.com ([198.175.65.19])
+	id 1wJxya-0000000DyK5-0oED;
+	Mon, 04 May 2026 18:25:04 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJucS-0000000DW8y-3mwd
-	for linux-mediatek@lists.infradead.org;
-	Mon, 04 May 2026 14:50:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1777906201; x=1809442201;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=tqvm43wvsR8GFjbtDI0arKFPhNLZMxt0mILMOUmpHSg=;
-  b=cXjU6gRA3o7uQEEdumV9+rNqttQvTiqytiOcp6zGpLyiBQlaz2JCPVk3
-   lt2gZyLcPgRno0X9mQY5bMON7lSWVQ+dil9aSi7wFaA6Dsk3eS+efGsqQ
-   3MWDh5g2b4riEDvRf5lQPSoz1AsFcxnRRwZeCj4HKq/OodxMr4Cui9Xc3
-   82iBV72LJ1FolA6Tk0I4Ja8Kgjn5QAs9h+j30BG0Z2wxI5han5zUYyVZg
-   NDzBDWUAsj3lM8x2CxJ2UheTImGFSKrDwcFs4QGskAyAtqMVD0xw7bWkO
-   yn3Kk6tPskgmEipFcses0PjvY83HGCsNOTqKagrhKLYNi7dwr8rBJKHdR
-   Q==;
-X-CSE-ConnectionGUID: xT7ZwQiDTvqv7KrLsdAflw==
-X-CSE-MsgGUID: VEK5Wj9VS7+9t57PCwWzEw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11776"; a="78694444"
-X-IronPort-AV: E=Sophos;i="6.23,215,1770624000"; 
-   d="scan'208";a="78694444"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
-  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 May 2026 07:49:59 -0700
-X-CSE-ConnectionGUID: +uDe2K0MQBSPIEWH2B6HyQ==
-X-CSE-MsgGUID: vhYZaEyuS1mbc55hKie8qg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,215,1770624000"; 
-   d="scan'208";a="259182110"
-Received: from arjan-box.jf.intel.com ([10.88.27.153])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 May 2026 07:49:58 -0700
-From: Arjan van de Ven <arjan@linux.intel.com>
-To: linux-wireless@vger.kernel.org
-Cc: Arjan van de Ven <arjan@linux.intel.com>,
-	Bongani Hlope <developer@hlope.org.za>,
-	linux-mediatek@lists.infradead.org,
-	Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH] wifi: mt76: mt7921/mt7925: fix NULL dereference in CSA beacon
-Date: Mon,  4 May 2026 07:51:06 -0700
-Message-ID: <20260504145107.1329197-1-arjan@linux.intel.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260502125824.425d7159@bongani-mini.home.org.za>
-References: <20260502125824.425d7159@bongani-mini.home.org.za>
+	id 1wJxyV-0000000DyAr-3Zsd;
+	Mon, 04 May 2026 18:25:01 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id A653D44366;
+	Mon,  4 May 2026 18:24:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 78D87C2BCB8;
+	Mon,  4 May 2026 18:24:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1777919098;
+	bh=QYhlAZ3CmOdhVVfeWniyHMUkBmi9/VkBz61p37XrddE=;
+	h=From:Subject:Date:To:Cc:Reply-To:From;
+	b=qu7pVB5Z+Fti0eh5R7o4ePLqloDkhg/rPuNC+jm++mu5LEGORB67ThZlaB4Ri6REd
+	 h9k3PZDK50VzbGjjW6to0CZ3WYG0JKpKddijq3iBM/j6MUBj6IS8JeP2QGBV/AmJ/f
+	 opBFVbpeJQwBStAro4VeWFGJi7YCpHj639JioMKBtknoJcM+/nAT1OknxZbHmuhOo8
+	 g5FRyEkINzqEhfHst5RqbQN1DzzxF9nv8pANcmBAq/erH8+f9Z/ucGfsZPMRJsIYkJ
+	 MOTHJyj0MIwgo8a09bKuJelLt2gmZ4rLYLlnREHi3n7hdc/WGqlT/+WWEa1H77BwF5
+	 4vjunr/b3eLzg==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 452C2CD342F;
+	Mon,  4 May 2026 18:24:58 +0000 (UTC)
+From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
+Subject: [PATCH 00/13] add AUXADC, EFUSE and thermal drivers for the
+ MediaTek mt6323 PMIC
+Date: Mon, 04 May 2026 21:24:52 +0300
+Message-Id: <20260504-mt6323-v1-0-799b58b355ff@protonmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIzMDUwMj3dwSM2MjY11Lk1TDNKMUo8SkJGMloOKCotS0zAqwQdGxEH5xaVJ
+ WanIJSLdSbS0AsRoavGoAAAA=
+X-Change-ID: 20260502-mt6323-94e1f2d2abb3
+To: Jonathan Cameron <jic23@kernel.org>, 
+ David Lechner <dlechner@baylibre.com>, 
+ =?utf-8?q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, 
+ Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Srinivas Kandagatla <srini@kernel.org>, 
+ "Rafael J. Wysocki" <rafael@kernel.org>, 
+ Daniel Lezcano <daniel.lezcano@kernel.org>, Zhang Rui <rui.zhang@intel.com>, 
+ Lukasz Luba <lukasz.luba@arm.com>, Lee Jones <lee@kernel.org>
+Cc: linux-iio@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, 
+ Ben Grisdale <bengris32@protonmail.ch>, 
+ Roman Vivchar <rva333@protonmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1777919095; l=2679;
+ i=rva333@protonmail.com; s=20260325; h=from:subject:message-id;
+ bh=QYhlAZ3CmOdhVVfeWniyHMUkBmi9/VkBz61p37XrddE=;
+ b=HnPIZLJxYhQb7c7hv5WLcTV2Su7mCxPFsQG4AYkl+FX9MpAm+P9sqwlSxYaIA8rUnf5jsv0hA
+ hEI5QMSVOeAAjC+pse0XZEk6Ve0do2DE/vjHgpCOLUXF/3zs0ZaWYhy
+X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
+ pk=euuVBZGtA2Cqb8Dju84qpQPhvwxyUirJlXpqEPQWKBM=
+X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260325 with
+ auth_id=695
+X-Original-From: Roman Vivchar <rva333@protonmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260504_075001_056085_DA0C825E 
-X-CRM114-Status: GOOD (  11.36  )
+X-CRM114-CacheID: sfid-20260504_112459_974492_B4927850 
+X-CRM114-Status: GOOD (  10.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,73 +98,65 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch is based on a BUG as reported by Bongani Hlope at
-https://lore.kernel.org/all/20260502125824.425d7159@bongani-mini.home.org.za/
+This series adds support for AUXADC, EFUSE and thermal drivers for the
+MediaTek mt6323 PMIC
 
-When a channel-switch announcement (CSA) beacon is received,
-cfg80211 queues a wiphy work item that eventually calls
-mt7921_channel_switch_rx_beacon(). If the station disconnects
-(or the channel context is otherwise torn down) between the
-time the work is queued and the time it runs, the driver's
-dev->new_ctx pointer can already have been cleared to NULL.
-mt7921_channel_switch_rx_beacon() then dereferences new_ctx
-unconditionally, triggering a NULL pointer dereference at
-address 0x0:
+Usually vendor downstream kernels for devices with mt6323 include various
+useful drivers like AUXADC, thermal, fuel gauge etc. Bring it to the
+upstream kernel by rewriting some drivers from 3.18 vendor tree.
 
-  BUG: kernel NULL pointer dereference, address: 0000000000000000
-  RIP: 0010:mt7921_channel_switch_rx_beacon+0x1f/0x100 [mt7921_common]
+Currently dt-bindings limit some values like ADC channel count and names
+to what mt6323 has, but the drivers were designed in a way to support
+other PMICs like mt6358 (which has very similar thermal logic).
 
-The same missing guard exists in mt7925_channel_switch_rx_beacon(),
-which shares the same code pattern introduced by the same commit.
+Tested on the MediaTek mt6572 and mt8163 SoCs, both paired with mt6323.
 
-Add an early-return NULL check for dev->new_ctx in both
-mt7921_channel_switch_rx_beacon() and
-mt7925_channel_switch_rx_beacon(). When new_ctx is NULL there is
-no pending channel switch to process, so returning immediately is
-the correct and safe action.
-
-Fixes: 8aa2f59260eb ("wifi: mt76: mt7921: introduce CSA support")
-Reported-by: Bongani Hlope <developer@hlope.org.za>
-Oops-Analysis: http://oops.fenrus.org/reports/lkml/20260502125824.425d7159@bongani-mini.home.org.za/report.html
-Link: https://lore.kernel.org/all/20260502125824.425d7159@bongani-mini.home.org.za/
-Signed-off-by: Arjan van de Ven <arjan@linux.intel.com>
-Cc: linux-wireless@vger.kernel.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: Felix Fietkau <nbd@nbd.name>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>
-
+Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
+Signed-off-by: Roman Vivchar <rva333@protonmail.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7921/main.c |    3 +++
- drivers/net/wireless/mediatek/mt76/mt7925/main.c |    3 +++
- 2 files changed, 6 insertions(+)
+Roman Vivchar (13):
+      dt-bindings: iio: adc: add mt6323 PMIC AUXADC
+      dt-bindings: nvmem: add mt6323 PMIC EFUSE
+      dt-bindings: thermal: add mt6323 PMIC thermal
+      iio: adc: mediatek: add mt6323 PMIC AUXADC driver
+      nvmem: add mt6323 PMIC EFUSE driver
+      thermal: mediatek: add pmic thermal support
+      mfd: mt6397-core: add mt6323 AUXADC support
+      mfd: mt6397-core: add support for mt6323 efuse
+      mfd: mt6397-core: add support for mt6323 thermal
+      ARM: dts: mediatek: mt6323: add support for AUXADC
+      ARM: dts: mediatek: mt6323: add support for EFUSE
+      ARM: dts: mediatek: mt6323: add support for thermal
+      MAINTAINERS: add mt6323 drivers maintainer
 
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -1503,6 +1503,9 @@ static void mt7921_channel_switch_rx_beacon(struct ieee80211_hw *hw,
- 	struct mt792x_dev *dev = mt792x_hw_dev(hw);
- 	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
- 	u16 beacon_interval = vif->bss_conf.beacon_int;
-+
-+	if (!dev->new_ctx)
-+		return;
- 
- 	if (cfg80211_chandef_identical(&chsw->chandef,
- 				       &dev->new_ctx->def) &&
---- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -2392,6 +2392,9 @@ static void mt7925_channel_switch_rx_beacon(struct ieee80211_hw *hw,
- 	u16 beacon_interval;
- 
- 	if (ieee80211_vif_is_mld(vif))
- 		return;
-+
-+	if (!dev->new_ctx)
-+		return;
- 
- 	beacon_interval = vif->bss_conf.beacon_int;
- 
+ .../bindings/iio/adc/mediatek,mt6323-auxadc.yaml   |  39 +++
+ .../bindings/nvmem/mediatek,mt6323-efuse.yaml      |  42 +++
+ .../bindings/thermal/mediatek,mt6323-thermal.yaml  |  63 ++++
+ MAINTAINERS                                        |  18 +
+ arch/arm/boot/dts/mediatek/mt6323.dtsi             |  42 +++
+ drivers/iio/adc/Kconfig                            |  11 +
+ drivers/iio/adc/Makefile                           |   1 +
+ drivers/iio/adc/mt6323-auxadc.c                    | 372 +++++++++++++++++++++
+ drivers/mfd/mt6397-core.c                          |   9 +
+ drivers/nvmem/Kconfig                              |  11 +
+ drivers/nvmem/Makefile                             |   2 +
+ drivers/nvmem/mt6323-efuse.c                       |  86 +++++
+ drivers/thermal/mediatek/Kconfig                   |   9 +
+ drivers/thermal/mediatek/Makefile                  |   1 +
+ drivers/thermal/mediatek/pmic_thermal.c            | 274 +++++++++++++++
+ .../dt-bindings/iio/adc/mediatek,mt6323-auxadc.h   |  16 +
+ 16 files changed, 996 insertions(+)
+---
+base-commit: 028ef9c96e96197026887c0f092424679298aae8
+change-id: 20260502-mt6323-94e1f2d2abb3
+
+Best regards,
+--  
+Roman Vivchar <rva333@protonmail.com>
+
+
 
