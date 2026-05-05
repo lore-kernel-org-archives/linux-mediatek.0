@@ -4,104 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D1D2FF885A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 10:15:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 782B8FF885A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 10:15:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l8Eah5020XPyWcD+00bfEGevAL0MUbbOqWk8LFNDCIU=; b=Gp0VXZU6nABPKaAyjsIXtfT3ya
-	tAtX5siX6WKsr+MgSi3HMdhGLbgdGJ9ZWxw/RwXUk+JUTmq8xzoimTFnWDBgZ01AtZSkf+EdkIyvF
-	CWp/eMM6/55m2CnZWuOXiba0TYyfoDMjeYCQLA6x2AvAIqvXMu3CNUrBtixADGCCVOG5zVR/NNS5/
-	v97xqgnJxWzMPhUM9yht9jSFFsggkIcQKsc1xWmCIkVYDu5LEj2b9vTVDOdJtKWJGriR0X/oR51BF
-	kQWe51Xxv289KTOku5BrvJA9lLfFlhM0/bMfSG6rN+C6sUOMVer2m33ArEsH3e4lrYsm9NZFAdGWa
-	r5Ptlueg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=OCkbLWM0T7ihDsfGf8HM6rffZAvlpjoVa/cZRXt588I=; b=2LowFTsPC5iyqy
+	DWDlTiFbEni3bGi2AStt6cJ7wBxOSub5DAQ/FJ0YN47GSYerV6GHZ6Uddhjy5TZyP5Epcr363UArM
+	fi2dofPVN1ibE8JN5N9QZ616j/kKNJ7RzRcCsjbhL2wvWzljmdmyYNkgSNC/oe9a+EXq937R7k82f
+	qLKtQQsI4LzMEZw+qXp8bHuho8apqzqPYMV00lA/Nw+NfDZR1kTvVuPdVH3z8Bw/5VOuRM/A7uTDe
+	U5mKA/NrI5NACgjDYutsJJDGOyopUgmK63FOKBgERhXf2xntflDVZI1DRN6TZdrpCPhpnrwxfwVj3
+	usF4qVad4+bzaT4rd7CA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKCnt-0000000FrRx-3oHh;
-	Tue, 05 May 2026 10:15:01 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wKCny-0000000FrZR-0OyH;
+	Tue, 05 May 2026 10:15:06 +0000
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKCns-0000000FrNn-115W
-	for linux-mediatek@bombadil.infradead.org;
-	Tue, 05 May 2026 10:15:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=l8Eah5020XPyWcD+00bfEGevAL0MUbbOqWk8LFNDCIU=; b=PvYR3KuMKAj0BvWvK/3b5VC9Pc
-	pIvFJAzpXH5fcHZ6LPqxXzEKQWrqdaqlfwhsv7d4R3JDjvMlWqzsFJ59vckONXIvkoheAYfckjO6h
-	4WRkpxNotcwydMVNm9ndG7fpav+iZoCs69z9Ihb0GtyI2nmIYxnixgXtn1qTmmAGfSTTNPyJ+5C7S
-	gmlGHnprRFcgW86hmktThoTW00R9O3NPvSoSfAR/06D9jDPlTrM0sXnPGZJyewUzXk63gVPdsfu6i
-	VDat0rtS+06a6esMIuQuAQw1i/GKPjXmnWBdHNqDDgO5/wxqgWADsW0sdnUgZS4960cC2PMzxHRhk
-	DTw/7B6w==;
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKCnp-0000000D9fD-28h5
+	id 1wKCnu-0000000FrSP-2srM
 	for linux-mediatek@lists.infradead.org;
-	Tue, 05 May 2026 10:14:59 +0000
-Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-8353dfdad62so1664232b3a.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 05 May 2026 03:14:57 -0700 (PDT)
+	Tue, 05 May 2026 10:15:03 +0000
+Received: by mail-pg1-x52b.google.com with SMTP id 41be03b00d2f7-c80291e6237so1453377a12.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 05 May 2026 03:15:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1777976096; x=1778580896; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1777976102; x=1778580902; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=l8Eah5020XPyWcD+00bfEGevAL0MUbbOqWk8LFNDCIU=;
-        b=K9VCMVdfEfA8YfP7TSO1Xbq5ZviccTmumeH7BhWlpiPBGbasfBIGoodccGCbVYTHmu
-         v+eZkA0m03QE0i8LrfAJwvPuzlncWAppsx0puWHX1mzrbQbMLwPJggEKGy8PqbtL2//V
-         79jZ75dMkOTT8GKbe0MdUsG1QNNaRjqvBbblM=
+        bh=OCkbLWM0T7ihDsfGf8HM6rffZAvlpjoVa/cZRXt588I=;
+        b=gyw6UPzhzyhvVdn5qoShOBYW9xKVsmjh4wMvZQOe04JQ+fpjz3sQvNNoBE3+t/1rvS
+         nvZnzFia3OfA6CBHyxo32/lNeKW2mj0u8IJuh9HKSCWj8OyvjwAIVYgz2zgVJxgyy5Y7
+         8kDz/txGEYkiCJ7FhP8sgI/F9+JLvJHMhtLbc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777976096; x=1778580896;
+        d=1e100.net; s=20251104; t=1777976102; x=1778580902;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=l8Eah5020XPyWcD+00bfEGevAL0MUbbOqWk8LFNDCIU=;
-        b=DJUgDihvrp3KGcNa0vDmawxtuL3YVJWlzT7ss0vYp6ZaKbO0d3z130Fpme3Q4g0anm
-         7uaxWoAhAx+xfjJW129ydaPK4UZKpdlrpSgbd1XRYSlGjI5JvejoeAbbJOhoFJFFMkD6
-         MB0gm4s9zuV2pAqUHv841B7nwZMEcaKeUaAk3S/O0Isd79QcEWy3q267fBxj1qeQTyYg
-         Gg97iAwlMuO8gkwzel59qrutxIm8so+JNwhW1tgtB81dGn4QGsUZ6QnZIPM29CzoRvvU
-         muUw1gwhCqdOuIk1zxoP/ebG6Jknp42TbDD5kqWgry1NxgHhLEogKNkJS1F+iCr861fE
-         4EZg==
-X-Forwarded-Encrypted: i=1; AFNElJ9OLueYbhHEExZcl03y820T6dy2cllueKrfd4y4io55YxiUVjZNtEX5rNsGaLjXVLq2LYVxzkUwdBl7OcKkmg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzE2GsO8O1m7jPAIwtqJxkyT9RXUlu2eTiviubIC3mbNLl96Xrz
-	mvcTKrU0+ZBVIXeH7pVMiwPoa1UDHDftHYq312Ym0t5M2Cxd7IKxRlp/BexnOR4SAlt9W7vtivw
-	nrAI=
-X-Gm-Gg: AeBDievFWl0f0ytn3z3RcvsmVwEMtpXKJO27JlVtRubzDynb29O5tmZiCAMeERPqz+w
-	T1BYbkNnGaQjV0fPkDBXDJo4bN1n+wktbdPKCTSwpTT2aQCcoL22tqFXjVYu3bD7s8h1iFTqC33
-	2hkhP1ksqb/D9Hr1HIgRaXCX8Wv70w+CwEzb+BK+SV8ZnPGFtPgKgVgHDl+HS4XaugqnTWGVrIH
-	sNlVbzItiuf47wPqMyv0/sqCvBgNVm8g3nU7TY3zbdvUVBVie5QQPcPd7s7NIrDueto5hI8Y1b2
-	7IsOp1Yie5MPuCjSuqR7jjz22c5whREWoaZmJli/tqJUlN/WG2ZGY/anxUpxIE+hP6t3c0zahw9
-	50KCdw7E8o2qivP+FvV7pblS4R5H/Q+JXCV0FBdCioRKMJJ2wJCWG4i9CHXKSOGr9V9YgMi+uQd
-	vs/IUyRZeE2J2xFq+MxxpJBVdGdqIuxMp0ZLS7xC1v+z4S3Ys6BumPq+oUJLvL+q/XQow4C4DkW
-	E73ErC2kShaNZTEZAs=
-X-Received: by 2002:a05:6a00:2d9d:b0:82f:425b:4c27 with SMTP id d2e1a72fcca58-8352d16ed31mr14109597b3a.14.1777976096134;
-        Tue, 05 May 2026 03:14:56 -0700 (PDT)
+        bh=OCkbLWM0T7ihDsfGf8HM6rffZAvlpjoVa/cZRXt588I=;
+        b=PoaI8/GQy6SifPgYxBZ/DZx3uPWEiRedN5JIn56Dkq2qQ9mZnJZkcJWBG/Rt12Mwno
+         T/6mTl4tREIdClJRvZ3/+iUbeT9qaqaBfy1Vyra/tGxEiPC2JzrUJSWz6N2LNngsSNBo
+         IIiLDdOu6iff4gT8oVmXIy4Mkl2duwpp95+ytBNqGglQAWqPD8Qm8/rh26FbihXHQOeY
+         b+LFK8C0hq8Tmw8nYCIexjmvRdmbr6RR6tbua+5LjropAR/mOD26ie2EDtax5pFGGojD
+         6Xej3+OO/BXQfYxBT6hVnHTze5gURFVxDBZJugjAWmPqSy7nP0JaiA5NvtYQmfLEA1vT
+         Bvbw==
+X-Forwarded-Encrypted: i=1; AFNElJ8XQ8fMWzQsmm9as1z2lKKOGTzR9ZUdp3hIBA8fyEigrDyowiuEnLYD7yZG2+rjbDoYn6sUW2oi9ASFlGei4A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzIGZlb+V3qmLVbV2JbcSZ/fTpqmRQOU8NVkhm0MbT7jkXBTYjC
+	NXqnVb1eYRTXB83pAkvMOBDg8v+Xa+HMEplhPDMln2FtK2I+blnXKzelI6AtLH/U8A==
+X-Gm-Gg: AeBDies7/mwVSLOJOA5HQaZPzkNcGy6zPQvf9s7F76ISfO/AjxesghPQennwHEsIgX6
+	ky4+uXgcEBMQQJHntq8IbXEEVbZSk8ozo0uf6P1+jQAoDYRM3r1bqnixKSk8xCy0iRKlIzsTIyC
+	Izb4n7QZU8OYR97Y0oDUkRYown4WvjXiqGLpqii7XWw18kdcOfshM9DHaFkfIAv2WlvZlhIbl65
+	GSaGEMYxk+h3+32n4rwdIWDd54LIPXIipJB+72SBV/7sk00MehRgn0rOX3C/ae2kbvaVOads+eV
+	O/iCc4HcdQpn+SVqSB6vauVRGft6/DHCmf2yVCasddDIeRWJsUekrIRQDCmeGA0J8shMAyc9lH6
+	DoaTZuDkSuGQYaHuIBhBPguuBHcUPxybpzupGuI2sen60xh+bJPQe/BoEETI1Cju1QbXzS8UJod
+	Lgvt+pFCwEFUm2rtRKuF5Z9TiC4JRh6sE1GWoC1zmF57BcnBLDn6PVxAL6hDhKOGRXY81KGdqrb
+	mym7dtgGl/BHUuCxxQ=
+X-Received: by 2002:a05:6a20:a122:b0:3a3:3d95:507e with SMTP id adf61e73a8af0-3aa3b6279a1mr2621746637.28.1777976101728;
+        Tue, 05 May 2026 03:15:01 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:f1d4:2ef0:7d08:9dd8])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-839679c8462sm1666121b3a.38.2026.05.05.03.14.54
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-839679c8462sm1666121b3a.38.2026.05.05.03.14.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 05 May 2026 03:14:55 -0700 (PDT)
+        Tue, 05 May 2026 03:15:00 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 13/16] arm64: dts: mediatek: mt8195-cherry: Add supply for SPI NOR flash
-Date: Tue,  5 May 2026 18:14:03 +0800
-Message-ID: <20260505101408.1796563-14-wenst@chromium.org>
+Subject: [PATCH v2 15/16] arm64: dts: mediatek: mt8188-geralt: Add MT6359 PMIC supplies
+Date: Tue,  5 May 2026 18:14:05 +0800
+Message-ID: <20260505101408.1796563-16-wenst@chromium.org>
 X-Mailer: git-send-email 2.54.0.545.g6539524ca2-goog
 In-Reply-To: <20260505101408.1796563-1-wenst@chromium.org>
 References: <20260505101408.1796563-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260505_111457_665716_03C6E8F8 
-X-CRM114-Status: GOOD (  10.94  )
+X-CRM114-CacheID: sfid-20260505_031502_751250_5E823844 
+X-CRM114-Status: UNSURE (   9.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,50 +93,53 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Chen-Yu Tsai <wenst@chromium.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The SPI NOR flash is powered by a separate "always on" 1.8V LDO
-regulated power rail. This rail is fed from the system 3.3V rail.
+The MT6359 PMIC has a number of power inputs for its various buck and
+LDO regulators. The binding recently gained property definitions for
+them.
 
+Add the supplies for the PMIC regulators to the common design dtsi file.
+
+Reviewed-by: Fei Shao <fshao@chromium.org>
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
 Changes since v1:
-- New patch
+- Moved supplies to top level PMIC node
 ---
- arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-index dc1ba143ccf2..62e2d7616f20 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-@@ -47,6 +47,17 @@ memory@40000000 {
- 		reg = <0 0x40000000 0 0x80000000>;
- 	};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
+index 8e423504ec05..d57e0eec676a 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
+@@ -1149,6 +1149,23 @@ pins-en-pp3300-wlan {
  
-+	/* system critical LDO 1.8V power rail */
-+	pp1800_ldo_z2: regulator-pp1800-ldo-z2 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "pp1800_ldo_z2";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&pp3300_z2>;
-+	};
-+
- 	pp3300_disp_x: regulator-pp3300-disp-x {
- 		compatible = "regulator-fixed";
- 		regulator-name = "pp3300_disp_x";
-@@ -762,6 +773,7 @@ flash@0 {
- 		spi-max-frequency = <52000000>;
- 		spi-rx-bus-width = <2>;
- 		spi-tx-bus-width = <2>;
-+		vcc-supply = <&pp1800_ldo_z2>;
- 	};
+ &pmic {
+ 	interrupts-extended = <&pio 222 IRQ_TYPE_LEVEL_HIGH>;
++	vsys-smps-supply = <&pp4200_s5>;
++	vsys-vcore-supply = <&pp4200_s5>;
++	vsys-vgpu11-supply = <&pp4200_s5>;
++	vsys-vgpu12-supply = <&pp4200_s5>;
++	vsys-vpa-supply = <&pp4200_s5>;
++	vsys-vproc1-supply = <&pp4200_s5>;
++	vsys-vproc2-supply = <&pp4200_s5>;
++	vsys-vpu-supply = <&pp4200_s5>;
++	vsys-vs1-supply = <&pp4200_s5>;
++	vsys-vs2-supply = <&pp4200_s5>;
++	vsys-vmodem-supply = <&pp4200_s5>;
++	vsys-ldo1-supply = <&pp4200_s5>;
++	vsys-ldo2-supply = <&pp4200_s5>;
++	vs1-ldo1-supply = <&mt6359_vs1_buck_reg>;
++	vs1-ldo2-supply = <&mt6359_vs1_buck_reg>;
++	vs2-ldo1-supply = <&mt6359_vs2_buck_reg>;
++	vs2-ldo2-supply = <&mt6359_vs2_buck_reg>;
  };
  
+ &postmask0_in {
 -- 
 2.54.0.545.g6539524ca2-goog
 
