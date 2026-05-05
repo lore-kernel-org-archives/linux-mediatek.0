@@ -4,88 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2199FF885A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 12:24:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 045E9FF8855
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 14:05:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=pJN4xgktXM6wJnQx9ssoJ0Unj4TTmMJ3sFePOxUzWmw=; b=mL4+5wFwL2f09QyKtHwFOnL2GR
-	QZvKGSg9AxkKzKYehrQroB5EhVADtWM5wSy9bm04XDnSzidHjMg/oCin+ZflS6bmVlum5/i7RXRtB
-	md6R8WOOF9HgGeDQ7F3syn8u3XGrhuv5niuilpJ8HUpU5RGhOnSTQUGrqNMHbVrq/WtNKksNpBltG
-	oovBXly2OF/RFOOmlwjiaCBPZrlkUx13sQ/NNY1pQ//T5UHOuYXgOmLrfore5vSaf/YRZD1uRDHgL
-	ijnlO5DD+XLuYwPSnAgEnGjImdSevVY8NGVyoWe7SSLMePVWTnHztFm2rumKLppheeT/iIFELRTWg
-	hrxJTDBw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=R9UhueCsToG9z9J1FILdkdXdvfW7VXqChds4WrjXcqc=; b=XrQ4avQ4P97TPwAbmBWvWC3en7
+	Zndn5UDzz2GllJOzwj3Z6IJdEKlTbdCsuee3j7YvqM94b0Bfw2rErBMzDUt9WyeUQ6SmivIKihxtf
+	/XMcDEattngb1t0//FEK3M+HHboEVtuf0fJ+ws0Viu2jU9aUygH0H4xetGQeF/6xeBO602P1/a2bx
+	1arjg+n6pRA9w1lxLuVIHvxkgukauL6lUzhM85JEB+oOi+jHXcsfmq0BtQqSKj5Z9ZL8Wd0X5Tx0P
+	4HNbFl3vbrbndlVXmVD2pEQfa/pGV9eL0+Wj/yOtezNDI1OmjcgMpgJNveYRmBs0B3WNsJkUHhB0L
+	1iXfm55Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKEpH-0000000GAOO-3n4z;
-	Tue, 05 May 2026 12:24:35 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1wKGOu-0000000GR0J-3OAh;
+	Tue, 05 May 2026 14:05:28 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKEpF-0000000GAMu-2PrA
-	for linux-mediatek@lists.infradead.org;
-	Tue, 05 May 2026 12:24:34 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-48984d29fe3so75582885e9.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 05 May 2026 05:24:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1777983871; x=1778588671; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=pJN4xgktXM6wJnQx9ssoJ0Unj4TTmMJ3sFePOxUzWmw=;
-        b=HsjBwTUmmy7TGj7K8QhqUy9Jso8RMsCPEYj+sdWfyboPpQ95RXLXqnACAnG5SnO1bI
-         4F/sQa5w3Vd0nB9+oqA6o5HtS+sh7mYJps3C/AsJNRZD7rnWbBgpL52846qCo2TltB9N
-         mdbKRZYMxJ73kQ3g7/YrMeb7yROieOqU0ZVx7FPHAHHWXpbS9igxu+3QXz4gUoYSBAAE
-         w9Tzkcqdxhrois0M7RHHZCJgyaPFvFI56TC6wT1zT1g2N5LdlSkc/BKg9bJMDFlXOUAb
-         Y+C9X3yPAm2N+w4jKQHJ2ai1QEinzyIL5rdqVA/IdxW3xGaOZLxNT3wBUXxltqvFQS5x
-         KewQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777983871; x=1778588671;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=pJN4xgktXM6wJnQx9ssoJ0Unj4TTmMJ3sFePOxUzWmw=;
-        b=elam25o9aKVjFzntSzXSsnK+hkb0ZwuNNc5IQbfVt0xiAALkOBP4HD0vaJfQhUT/yR
-         0BW4FieCu6PCWc3g9/RHQ1FqOQlPLYGdfSY3/SvpoY0hytUpIrkYP/RUM0JICb+LRiZa
-         5dMm5eEte5oB5unzDg9GP1CABmYbjBDKAr2c0j8+JjeZJsaJctNjD33ccjrQuHqjwhKc
-         slHaE9o8yhW2Jg0RFIqIE02KHl9WrxLxtEydf+/dbTRa6T57zFEf/B9q2ICV3PeFa8Gx
-         1WgXBS8Wxy4hv/Phk6d32/pB8lFcBOf24QvM4gbryPR/MXov83gRqscwUSxtGlpq9mFV
-         OetA==
-X-Forwarded-Encrypted: i=1; AFNElJ/tEmBiWvb0JQFaVACJ9cnFJYo/LWqV3Bm0ft97JK6HnS8X4WU/f5G6HAejPvi+jKUGo+LHmIMNcx+mw1sGQg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxkE7ohmEhOiz2NTONaO5SrUgDzIE3XOVwBXDxFwPrkZl0lzQpM
-	NTbfpJtIlf0dzI6gK5VrqkQ2mTUFEOP4hGLsz2y8irCa9myLOD1IU1MR3DnviQ==
-X-Gm-Gg: AeBDieuTwfO+OQX2z6TmNrCel0RVxQq//ZD3hmmLnh9OMQ90urtAMPmpJ8SkZ787dXD
-	lOEMK1Ut43B2D8CWRqY53dhTLlHknDYRe+6iNYjkhrUWKdtSc63GjMoBUrMMrxMwkz9l2YjRlWo
-	WrAr0PFqiSxoJxfVrGuQkPWyH62bHTq22FCHjlC42kZtP+iuahs6vTlFX9PUgF+3NsRyl+SrSi/
-	6rhiJdKct+xOVNkmkfpPE0Qz046rQH1t2ClP9XdHb3J432l2wn6BPoP+ezqY5bN4j0RWlIE2+dC
-	t2zoS1PX8y045leehyojlp5WYVMFQ1gPx9F588wDaE87HL5LqS+CBu5Kx6e1XQZHbhpCqIJWSxB
-	cPyWzVGIFrnaQuDYqKCH0e5Qp0wN+OTeHPMS4nXRtd0v4DLp9DXKVD2dbU3A0Je4S9mmpZkLBMd
-	Ad1eJ2HFyOk3FfBDQykORi5VLMfh92PVRLRuVQHXFsmT09ozWAff0lxCnO8V7NswMOWIXexiSvA
-	df+Z4M=
-X-Received: by 2002:a05:600c:4f05:b0:488:c683:be89 with SMTP id 5b1f17b1804b1-48d188dcc95mr48291535e9.9.1777983871233;
-        Tue, 05 May 2026 05:24:31 -0700 (PDT)
-Received: from Ansuel-XPS24 (host-82-59-227-65.retail.telecomitalia.it. [82.59.227.65])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-45054b03df9sm4170411f8f.24.2026.05.05.05.24.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 05 May 2026 05:24:30 -0700 (PDT)
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1wKGOq-0000000GQz6-2pfi;
+	Tue, 05 May 2026 14:05:27 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id D42CC40139;
+	Tue,  5 May 2026 14:05:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6FCECC2BCF5;
+	Tue,  5 May 2026 14:05:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1777989923;
+	bh=LtbcojIUM+o0f4bAbDoLjPUTjXd3D3xyp8t7jWxs0rw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=gAPTNzsaNflEqXufrYulPtvNPFBTTlt9QvloeM6BzK2VfliIpd6vjz9XttRK2pclW
+	 2XF7R6hOXPQ5VKmvGUPUF9FrB+Z2tPCJ/JlxUyDlIwlGMOH26CYWwLALfkuY5uSdxR
+	 wMFFsP925o/uGZEWQ2fum87MCcvVJBDgKClfW2JyoUZzkNljWudgJ1pzVgcYNkT9qW
+	 9kzkwyuwmz3XvO4doiNMQCCQxee4qLj60JNKP0usrNmn3/KGBvMGw+Ja7gFLcTy3eg
+	 KyTAe93pxrdjIVd0cMm5ticTnv3fFME7PO/GyFH7DGctUC5cIwzdiqk8Ft2Qelh+4e
+	 KCfnrEF0LI+QQ==
+Date: Tue, 5 May 2026 09:05:21 -0500
+From: Rob Herring <robh@kernel.org>
+To: Roman Vivchar <rva333@protonmail.com>
+Cc: Jonathan Cameron <jic23@kernel.org>,
+	David Lechner <dlechner@baylibre.com>,
+	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
+	Andy Shevchenko <andy@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org,
+	Srinivas Kandagatla <srini@kernel.org>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@kernel.org>,
+	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
+	Lee Jones <lee@kernel.org>, linux-iio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Christian Marangi <ansuelsmth@gmail.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>
-Subject: [PATCH] MAINTAINERS: add myself and Lorenzo Bianconi as Airoha SoC co-maintainers
-Date: Tue,  5 May 2026 14:24:13 +0200
-Message-ID: <20260505122416.2609-1-ansuelsmth@gmail.com>
-X-Mailer: git-send-email 2.53.0
+	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
+	Ben Grisdale <bengris32@protonmail.ch>
+Subject: Re: [PATCH 03/13] dt-bindings: thermal: add mt6323 PMIC thermal
+Message-ID: <20260505140521.GA2515943-robh@kernel.org>
+References: <20260504-mt6323-v1-0-799b58b355ff@protonmail.com>
+ <20260504-mt6323-v1-3-799b58b355ff@protonmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260504-mt6323-v1-3-799b58b355ff@protonmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260505_052433_664883_28CF9617 
-X-CRM114-Status: GOOD (  13.44  )
+X-CRM114-CacheID: sfid-20260505_070525_940121_18C8BA46 
+X-CRM114-Status: GOOD (  18.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,43 +86,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The development and integration of patches for the Airoha SoC stalled a
-bit lately with the result of some patches getting lost, not applied or
-even flagged as accepted, archived but never merged. The Airoha SoC, given
-the similarities with the Mediatek SoC, all goes through the mediatek tree
-and it's understandable, given the amount of traffic, that some patch for
-a different SoC are missed.
+On Mon, May 04, 2026 at 09:24:55PM +0300, Roman Vivchar wrote:
+> The MediaTek mt6323 PMIC temperature can be read using AUXADC channel.
+> 
+> Add the devicetree binding documentation for the MediaTek mt6323 thermal.
+> Due similarities with newer PMICs like mt6358, which include more than
+> one thermal sensor, the #thermal-sensor-cells should be set to 1, to
+> avoid breaking devicetree ABI in future.
+> 
+> Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
+> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+> ---
+>  .../bindings/thermal/mediatek,mt6323-thermal.yaml  | 63 ++++++++++++++++++++++
+>  1 file changed, 63 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/thermal/mediatek,mt6323-thermal.yaml b/Documentation/devicetree/bindings/thermal/mediatek,mt6323-thermal.yaml
+> new file mode 100644
+> index 000000000000..1882816ba274
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/thermal/mediatek,mt6323-thermal.yaml
+> @@ -0,0 +1,63 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/thermal/mediatek,mt6323-thermal.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek PMIC thermal
+> +
+> +maintainers:
+> +  - Roman Vivchar <rva333@protonmail.com>
+> +
+> +description:
+> +  The MediaTek PMIC thermal sensor uses an AUXADC channel to read raw
+> +  temperature data and applies calibration data from NVMEM.
+> +
+> +allOf:
+> +  - $ref: thermal-sensor.yaml#
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mt6323-thermal
+> +
+> +  io-channels:
+> +    description: >
 
-To help and improve the situation, add myself and Lorenzo Bianconi as
-co-maintainers of the Airoha SoC.
+Don't need '>'.
 
-While at it also change the status from "Odd fixes" to "Maintained" as
-there is an active effort of maintaining this SoC.
+> +      IIO channel for the AUXADC to read raw data from.
+> +    maxItems: 1
+> +
+> +  io-channel-names:
+> +    const: vts
 
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
----
- MAINTAINERS | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+-names properties are pointless for a single entry.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 21c0ef0b9ce5..bd814f20213d 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2385,9 +2385,11 @@ N:	owl
- ARM/AIROHA SOC SUPPORT
- M:	Matthias Brugger <matthias.bgg@gmail.com>
- M:	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+M:	Christian Marangi <ansuelsmth@gmail.com>
-+M:	Lorenzo Bianconi <lorenzo@kernel.org>
- L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
- L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
--S:	Odd Fixes
-+S:	Maintained
- F:	arch/arm/boot/dts/airoha/
- F:	arch/arm64/boot/dts/airoha/
- 
--- 
-2.53.0
+> +
+> +  nvmem-cells:
+> +    description: >
+> +      NVMEM cell with phandle to the calibration data provided by the
+> +      NVMEM device. If unspecified default values will be used.
 
+Drop. Don't need generic descriptions.
+
+> +    maxItems: 1
+> +
+> +  nvmem-cell-names:
+> +    const: calibration-data
+> +
+> +  "#thermal-sensor-cells":
+> +    const: 1
+> +
+> +required:
+> +  - compatible
+> +  - io-channels
+> +  - io-channel-names
+> +  - "#thermal-sensor-cells"
+> +
+> +unevaluatedProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/iio/adc/mediatek,mt6323-auxadc.h>
+> +
+> +    mt6323_thermal: thermal {
+
+Drop unused labels.
+
+> +      compatible = "mediatek,mt6323-thermal";
+> +      nvmem-cells = <&mt6323_thermal_calibration_data>;
+> +      nvmem-cell-names = "calibration-data";
+> +
+> +      io-channels = <&mt6323_adc MT6323_AUXADC_CHIP_TEMP>;
+> +      io-channel-names = "vts";
+> +      #thermal-sensor-cells = <1>;
+> +    };
+> 
+> -- 
+> 2.53.0
+> 
 
