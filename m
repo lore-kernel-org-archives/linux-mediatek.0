@@ -4,76 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32DADCD3427
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 19:41:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 615ADCD3427
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 21:14:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=myyP/h7YJHzBCyHZcnY9GFOxX17BX8+dP2EzQjjAJlM=; b=nieUh8ANE2ivKcU+Y4oF48iLK/
-	RDFsGGgU+9CnM/3+fRSnQ7MoYz/PDETHH6PnRbtWOJpBPc+42snro4i7hRcjlgs0a/iAWvxo+LVtR
-	UshsD2WepbjDEPXgQWbAm0bBnu0wZJOdSQ9cD7NZcP2TIHSoEwvx2Sz2S5HfsYNNFgvtub3WGu3aj
-	5ozbFJUIInQVxd/M+8byFpzqHSqj2it2A3dHkZqeqOZydjsxszvnwou8+RBt6uqsoh0Bney3duh7N
-	X/L+Rx3o+gA3uc+TjTlwSsdyTE+nUH8CwbXLQ5XQDWR1pTZo2gXHsGtnXIOugC3v12zA0kCnpHXrU
-	f0htslkw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=rNuMGfmxMip0cWapRhuAN/YH+anSCWLVtZVC9Uw49jg=; b=MxEYHxM7cAPrRs77VnPM/7ftn7
+	3PSr22Fkg/enO8Ihx4X/UwtbOJ8H2CPm48pCEtX+c4f0QWjvLGaXgxpHdMklkPLz0ZIAvIwrXKI6V
+	+HVU1Wv5ptdZfMYD+E7d3TYtbDcT99jmqXSzXqDUWJtKa1ebPST5kvpSvHn/fRc/gF+KA1XwA1DJ0
+	3CzjZmeBs2URjfBjA8fgSHG2C18bW3Hx8XXeV6mDxdGaJwpHx7yACb0w2GgOGtIvTuDe2R/8ZNsNE
+	QQ1YZwTqX3Aj5TLIuTNkwLj+/hozPtA6Nr0lcqnv39MwghCDxMCj43rE6ls2GdOxV2ZfBAyJpLejV
+	3MNvymwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKLeQ-0000000HKAr-0m8V;
-	Tue, 05 May 2026 19:41:50 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wKN5o-0000000HViE-2Xrq;
+	Tue, 05 May 2026 21:14:12 +0000
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKLeO-0000000HKAF-3RRd;
-	Tue, 05 May 2026 19:41:48 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id A407560181;
-	Tue,  5 May 2026 19:41:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1E4BCC2BCB4;
-	Tue,  5 May 2026 19:41:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778010107;
-	bh=f+zthwuppfpFTa8b8uyHJmInP9s5La5GZHSH/CQEOa4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=NUROvmTjlsPg6l30xYj3CqxY+c99n1i7qfItZZvbymBEeQr2WwOY4HVw6KGNUhXmm
-	 8pDlHR+A6EOAZcTEsVmjf+1MKasze01GDQSdeieKoxSyiGO+f1b7vN9LdhJEghaxYv
-	 Fw5pbBkw6/tnsG7Z0HzR/Kg0RhjQJHHniCNFY81vIXm+E/dkLtEMY8OeVTHByaBWSo
-	 PclJN70pGhz8Jqqgu2KF1DUJKy47haFlJKfRxXkmF2D3NUrPBVn4Edw7sQaM6u1sNm
-	 /xcljRt7QpHTRVa0meiOobjQZEIC0i5ma2Q9jUMFn3N+swNB3Eedvyj6Rc483sPx1o
-	 ownyMgcLaNoTw==
-Date: Tue, 5 May 2026 14:41:45 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: Sen Chu <sen.chu@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Gary Bisson <bisson.gary@gmail.com>,
+	id 1wKN5m-0000000HVh4-1ann
+	for linux-mediatek@lists.infradead.org;
+	Tue, 05 May 2026 21:14:11 +0000
+Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-44e1ebb3122so1367980f8f.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 05 May 2026 14:14:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1778015648; x=1778620448; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=rNuMGfmxMip0cWapRhuAN/YH+anSCWLVtZVC9Uw49jg=;
+        b=eSjNudTnKwxillJ6HsaMXEC/dHOMmX8X1SMUxbvvTJbzoZRB0P7NwhLHqO00sa/Klg
+         MuMQr+dJezRaPIdo00YZndv2uOVAO2RIx2xXoAexK5BGiSzBmHxgaK1WcIgBrce2FiZ8
+         kuMJTG4UY7jt2AVtc+8gjWEPh6n4TuW5hHPBy5Gez8qm1fK+pSa1LeD5HK1PBUyCIghJ
+         FBGugoauJHJ72Rp1n/kosAu+PuvyIJhnNWMyh5K7CGi02g4aE4uxCY3vrysJ9Pble1Pg
+         vTfzcJpqE18cy226ICL/6E5bsuTIu3CZ7mLLxBJHpvx+RUV3O6pxXjBorQ4MmnD7nGR4
+         RwSg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1778015648; x=1778620448;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=rNuMGfmxMip0cWapRhuAN/YH+anSCWLVtZVC9Uw49jg=;
+        b=P00fpAqhknX+fb7eiuClwDvXVd3xsOA2zb95tl/Zgv+v+bcLv4OSS09lUTx3lhaRw9
+         95Z3QSktiUKNuLuR6KFjXTNcEg6JZIX3BuFamynQTCKTQiUm7OeiWhajJ6sFmS9kCM4g
+         KV5UaxSGOIQ8ygDFCYQr9qAK+0mPVhvDFVxNO4wNWqo1l9ntbprjor7P3DV+4f64IlMX
+         zTSSyUChGsMDC3N+KFUi1QeX43I758khAk1KTEqYICR3e/AgEVJu+f4fF9Del9xtMqWV
+         YI6aCAslkvG8wYPIFdbMLOcrZ3Uh5DlWEEMNFmItixm+7IjLL2me1BazFhZM9dqXrSji
+         5bFw==
+X-Gm-Message-State: AOJu0Yy9hYBY+8EalzYG+x3Q3rpdwuRdPPhh5CwWLiu0FGiqNgh3FuDy
+	rf0cS8+QQvxDiXP/P6W61PuBxLIFEicwBl57NRw5/XmObO5aYtc9W/k17jbl0HbS
+X-Gm-Gg: AeBDieut3obutlVCT2HvcmrJn5tnjROLz4wfIpE81K1K9XMviXh4cGl1Ap9SIA/aqhx
+	OqfgAZG0Wz0pGaKnl0xujdnsv9l847khFXPjRtI/WzYVVIBp+LubR5xFLBTqg7T0kMOOhnLV8Aq
+	JwiymQYEIcowvXpIX1HZCfJ4dFmtinXp6cuHbsNawgqx3TD5XHiE3eMgykz8jhgmnyyNDJ7MLod
+	PfeueH0unn/kIpnXp4rocQ0oeXSD1kdsMfRRpBtLMXf7p4NmONpDHlxDGfIuAWhB4YCP6Igi8tW
+	8vnL2VcYRWXFBSK0ti64eUF3ujdhaBGgda6DAEwCw15ajEC48seIARXtk1UhozlzYLZiwgoz8kf
+	CzO4OV/V7yM5wMGf4/TKMGgv4zIA1o4aNV751Y30s6/2rY0+GICdRDeJ6WrECLV5hZ9KOFR4QJV
+	C1gS3eNkHWzbBw2RTUCbSGdFFRRBcMHdmdhWCuXI1U
+X-Received: by 2002:a05:6000:4010:b0:450:d4f4:ade7 with SMTP id ffacd0b85a97d-451579a640dmr1159505f8f.0.1778015647581;
+        Tue, 05 May 2026 14:14:07 -0700 (PDT)
+Received: from luca-vm.lan ([154.61.61.58])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-45054b03e04sm7493786f8f.21.2026.05.05.14.14.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 05 May 2026 14:14:07 -0700 (PDT)
+From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+To: linux-mediatek@lists.infradead.org
+Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Lee Jones <lee@kernel.org>, linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-input@vger.kernel.org,
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
-	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	Julien Massot <julien.massot@collabora.com>,
-	Fabien Parent <parent.f@gmail.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>,
-	Val Packett <val@packett.cool>, Liam Girdwood <lgirdwood@gmail.com>,
-	Linus Walleij <linusw@kernel.org>, linux-pm@vger.kernel.org,
-	Sean Wang <sean.wang@mediatek.com>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Akari Tsuyukusa <akkun11.open@gmail.com>,
-	Chen Zhong <chen.zhong@mediatek.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>
-Subject: Re: [PATCH v5 4/9] dt-bindings: pinctrl: mediatek,mt65xx: Add MT6392
- pinctrl
-Message-ID: <177801010490.3801319.4232280510868698517.robh@kernel.org>
-References: <20260420213529.1645560-1-l.scorcia@gmail.com>
- <20260420213529.1645560-5-l.scorcia@gmail.com>
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Fabien Parent <fparent@baylibre.com>,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [RESEND v2] soc: mediatek: mtk-mmsys: Restore MT8167 routing masks lost during merge
+Date: Tue,  5 May 2026 22:13:16 +0100
+Message-ID: <20260505211345.318647-1-l.scorcia@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260420213529.1645560-5-l.scorcia@gmail.com>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260505_141410_427559_A029B34E 
+X-CRM114-Status: UNSURE (   9.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,20 +99,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The original patch that was sent to the mailing lists included the values
+for the route masks, but they got lost during merge: add back the full
+register masks where missing.
 
-On Mon, 20 Apr 2026 22:30:03 +0100, Luca Leonardo Scorcia wrote:
-> Add a compatible for the pinctrl device of the MT6392 PMIC, a variant of
-> the already supported MT6397.
-> 
-> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../pinctrl/mediatek,mt65xx-pinctrl.yaml      |  1 +
->  .../pinctrl/mediatek,mt6392-pinfunc.h         | 39 +++++++++++++++++++
->  2 files changed, 40 insertions(+)
->  create mode 100644 include/dt-bindings/pinctrl/mediatek,mt6392-pinfunc.h
-> 
+Fixes: 060f7875bd23 ("soc: mediatek: mmsys: Add support for MT8167 SoC")
+Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+Link to the original patch from 2020:
+https://lore.kernel.org/all/20201027160631.608503-2-fparent@baylibre.com/
 
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
+ drivers/soc/mediatek/mt8167-mmsys.h | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/soc/mediatek/mt8167-mmsys.h b/drivers/soc/mediatek/mt8167-mmsys.h
+index c468926561b4..eef14083c47b 100644
+--- a/drivers/soc/mediatek/mt8167-mmsys.h
++++ b/drivers/soc/mediatek/mt8167-mmsys.h
+@@ -10,24 +10,29 @@
+ #define MT8167_DISP_REG_CONFIG_DISP_RDMA0_SOUT_SEL_IN	0x06c
+ 
+ #define MT8167_DITHER_MOUT_EN_RDMA0			0x1
++#define MT8167_DITHER_MOUT_EN_MASK			0x7
++
+ #define MT8167_RDMA0_SOUT_DSI0				0x2
++#define MT8167_RDMA0_SOUT_MASK				0x3
++
+ #define MT8167_DSI0_SEL_IN_RDMA0			0x1
++#define MT8167_DSI0_SEL_IN_MASK				0x3
+ 
+ static const struct mtk_mmsys_routes mt8167_mmsys_routing_table[] = {
+ 	MMSYS_ROUTE(OVL0, COLOR0,
+ 		    MT8167_DISP_REG_CONFIG_DISP_OVL0_MOUT_EN, OVL0_MOUT_EN_COLOR0,
+ 		    OVL0_MOUT_EN_COLOR0),
+ 	MMSYS_ROUTE(DITHER0, RDMA0,
+-		    MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN, MT8167_DITHER_MOUT_EN_RDMA0,
++		    MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN, MT8167_DITHER_MOUT_EN_MASK,
+ 		    MT8167_DITHER_MOUT_EN_RDMA0),
+ 	MMSYS_ROUTE(OVL0, COLOR0,
+ 		    MT8167_DISP_REG_CONFIG_DISP_COLOR0_SEL_IN, COLOR0_SEL_IN_OVL0,
+ 		    COLOR0_SEL_IN_OVL0),
+ 	MMSYS_ROUTE(RDMA0, DSI0,
+-		    MT8167_DISP_REG_CONFIG_DISP_DSI0_SEL_IN, MT8167_DSI0_SEL_IN_RDMA0,
++		    MT8167_DISP_REG_CONFIG_DISP_DSI0_SEL_IN, MT8167_DSI0_SEL_IN_MASK,
+ 		    MT8167_DSI0_SEL_IN_RDMA0),
+ 	MMSYS_ROUTE(RDMA0, DSI0,
+-		    MT8167_DISP_REG_CONFIG_DISP_RDMA0_SOUT_SEL_IN, MT8167_RDMA0_SOUT_DSI0,
++		    MT8167_DISP_REG_CONFIG_DISP_RDMA0_SOUT_SEL_IN, MT8167_RDMA0_SOUT_MASK,
+ 		    MT8167_RDMA0_SOUT_DSI0),
+ };
+ 
+-- 
+2.43.0
 
 
