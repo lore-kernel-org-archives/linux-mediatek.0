@@ -4,69 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 911C7CD342F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 10:14:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29C84CD3436
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 10:14:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZjcVEJCK/cwTNvVbr5CQaLiCjWyMPPoiyKPAoaxLvx8=; b=hwkSBVnxGglhdjErGWrrvlNDJk
-	+p8vKdWLF8UNbM0gu0o1Geya7GsWsLuV38a/dNqy9bg7ctXigAqNMhWhB9z7wExwvSFIbxTTkUxqI
-	meUzpvgRI1Yc0FFX6AhuOPMKYck4xewkqUaoizBi6NqkBnT7r2EOLHU5BCc2fCBd/Uivr75fwCRso
-	E+cwmBfbEJS2lavXXF11/y8eNoianYg6EhDpFFMu0lKx0y6+dskVD7/4OqiBSF42RtLzJlHETcJvM
-	ohCncNKCf8fVOqfn0/WBOQsvyHtGh+7Qaa1vkh7+OFoaFL6AWSP8/MapTulUejVBznrfUKKsPdkIS
-	jp7WPmVw==;
+	bh=V7vxAk1TH3X8VxMHCXDqcaxDDLSkTFFCGTuW7z7dSFM=; b=nVcMB4/+T64cR9nrQLut2RYdyc
+	NCpQUdGc1H2a+BMvdguFzI9Rqbs+jblnxtfvpDbn1koO3znaPF84o9oSsz9ZsUSSisqpg+lfKg8cW
+	9MW1VqJ0Oz1jtZVCabkn3wOrO2FKJ2wLVnNeFHdDfP9v+rKvdIeJdV420HmZ+JYjEocXPx0jF2SDS
+	aEnYNMYr98joOQOpG0t/2qv6Je8Amgfnw50UnxVfLjk2x+nHXks4UmZKkCunJ/6mk+OtyFVq5oJ2e
+	q/WwmloABetJjEwtHhIsZs8e6SHpsP/76F86dtRudoWxtgTkOqgE4zICRFkCsqPackE6RRYkCKMNq
+	6pBlpVeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKCnL-0000000Fqig-2RZB;
-	Tue, 05 May 2026 10:14:27 +0000
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+	id 1wKCnT-0000000Fqr8-0Hhr;
+	Tue, 05 May 2026 10:14:35 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKCnI-0000000FqfH-1fPD
+	id 1wKCnS-0000000FqpW-04m5
+	for linux-mediatek@bombadil.infradead.org;
+	Tue, 05 May 2026 10:14:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=V7vxAk1TH3X8VxMHCXDqcaxDDLSkTFFCGTuW7z7dSFM=; b=a+R7Fd8fi6qIYVkdnG4VZHwi01
+	932hQTk6NOepvxIeayTozlmfCD/reHGaRVWZF8RYa/4AEtdYmRgbj+xQEXL67kYL8oEkFiGLY6Ryd
+	RXwTM973F6l+tH+/R4vGuBRPRlZho+6/r9UJVvdVimieDLc1gNbI0lSq5ZYlMssk8ABLpKffAyatt
+	XtEGtBonvzDw62D7WYXizZMRMXS9QqWCVI9A2t7CVWKgSunv9+M6MOngC+v7DpvIpUphj3LTmyaRw
+	U47gia6AcaDgDzBVnmDV/P2fxodXxhh84wUA4qHMwYXw01BeSv7X5XZsjoA0NDtEv0xw8zrt6arak
+	baa1N42g==;
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1wKCnP-0000000D9Vn-1L0z
 	for linux-mediatek@lists.infradead.org;
-	Tue, 05 May 2026 10:14:25 +0000
-Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-82faf871346so3111439b3a.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 05 May 2026 03:14:24 -0700 (PDT)
+	Tue, 05 May 2026 10:14:32 +0000
+Received: by mail-pf1-x42b.google.com with SMTP id d2e1a72fcca58-82418b0178cso2411756b3a.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 05 May 2026 03:14:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1777976063; x=1778580863; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1777976069; x=1778580869; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ZjcVEJCK/cwTNvVbr5CQaLiCjWyMPPoiyKPAoaxLvx8=;
-        b=mN9RPnMr0RRixrBIOq899wKM6zcYa4J3YcY6j/+/lVyDSPLE7+yqfModunxHSopKSx
-         PRcXSftbJPi/RCLgY/CJeAK0I9HBBTeHN6Cb58u9r1DFbbielnMZ9sAd2Q7o6oE2+Ylj
-         1Sq7CccpGZA/e7ma5n0wc44FfaSs0vjLkBADc=
+        bh=V7vxAk1TH3X8VxMHCXDqcaxDDLSkTFFCGTuW7z7dSFM=;
+        b=oQXULrN4vYJyKvjGLGGkeWgvvcjinEX8doK6Ada1RA02ynZfZ5NrwobUthHk2yLS26
+         Sa7fvRd33KZEt1T4BYtJhNNzniGzsQtLMNrdKugRdWeC+mhAgRapIvHvKaQj2dip+qum
+         97VWr9XvVXFarbEP63mvv1B5meVpJLxpKINoM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777976063; x=1778580863;
+        d=1e100.net; s=20251104; t=1777976069; x=1778580869;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=ZjcVEJCK/cwTNvVbr5CQaLiCjWyMPPoiyKPAoaxLvx8=;
-        b=ToQjw/PFB5r8fEO7/4EwMyNU7MxKc2vVOrRKYTNedpebE5CkOzZO5vJ0SPxrv34AV6
-         nb+i8QQcyoUE1oa+iWuO/uTrElSR8rpakfLy8Pe7zWFfw6GikSO0TlJwbX5LGMUStmOg
-         EDqCsCbEg4WM7XsGiG6lO+pLlJXfh9q0pwo/hD0hbowdu7Yjnw0XebGu0suB3snIXOTU
-         B5ojdhviInzTlo/gpXDxqqKKwLCNg3yjcJVyJezqSUIo65zD1REGblfqJHNMhAO9tB5q
-         RmgSthcTHoUc1V8bYpEvZ06/fswFy6Ibn2L6CL7jTYxCNNu8oiUsNgqnaH0uog1W6PZl
-         lhsA==
-X-Forwarded-Encrypted: i=1; AFNElJ/oN9tMVpwzYdt5PK913bMlTUbKvk7yxBuWgvSFueDo98Sox0WSICWjkbQKYcd1TFjcsIt8M50mDsqmIKzVlQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwJWz/VpX3LBJvWE2AQYRZcz0FVc4tLfBT63VTGcdKr5WquBDbG
-	RY0BRRnRh2mLO2+xN1jWJ0QDlVmnG9iAepjrig9dPKwYifdN0oE7t4cmjk+NI0Ik5w==
-X-Gm-Gg: AeBDieuBzZtiFlzo/YNdWv3q1NDPnGgrLISr0yuR2YWLnAIvMmTIMrnPUiBzwvP8yci
-	ULBEohe7T7gfCmupzwxKXFyb16zHqANVIYkeZAKBEsVzVjbTbvIU3r2NJFUjBTSuyPFDw07WSiI
-	5hDpx6UOoAxzeGKeCDJomSgaDweslCI2fCbQ+GVlLxLT3RiCZQA7cFjLJBMtdXR3kdHsoOfYYFy
-	Wn4PxN37wpLRg+hb0WUOU5IkZhKbwzmIjGiXMETvy1lsXS+OC/zljiWNS8GaAZ3zkOpvTlrVqcH
-	9jnGLgWBaUpVT16MSOF9BKTcEC6OXQV169G11RK4F/tt5ZxmaGEU2Rsw2bpurT16RX/xeqOsTIE
-	dvlTumW71JxbAUDlbGY6yVMo9x2LvMhDs13WNaBA95+U2iLILlJCnWC2iUtzZSzrcndxSARAWSA
-	767B+qPMh6E6H0PHbj6axKqjm5t7qEbpBRi+YzBy0dHqJjD1O8dMpHAw4kGvnRuzwZ7RoUaGHOp
-	31Ij+zKPEuAIwSDLOg=
-X-Received: by 2002:a05:6a00:3a19:b0:827:2a07:231d with SMTP id d2e1a72fcca58-839228c94bamr2443788b3a.17.1777976063465;
-        Tue, 05 May 2026 03:14:23 -0700 (PDT)
+        bh=V7vxAk1TH3X8VxMHCXDqcaxDDLSkTFFCGTuW7z7dSFM=;
+        b=eH4dKrDM354CYYKH4WIYOv9ipjyJVv9yfSFl2dstrDhM/lrm6NxbtkKDrZWdisTbqs
+         L4/dClZI4Dz8KRO8pApchRWSsaqINEfDgQc85u+coyH1c54o8jk6Fw7krk2KFiK6v5s/
+         dAowN9Zm2+KL/oWX5EfPE2wOq7HOYvQFomHpDoYzP+gaRWUsTfmNeta+s0kzQyEv8GS7
+         +sTiJHQp36aPszlqnYwa6jXGJAp3D849tx05AT4qKd5EhSsm7OJ50tiDg+/gpFzNdtIP
+         s/VxUG/ui7nIdBThavqKTH208SMEp9vzCqqwxtMbUostEVX9dEh19KOMZg2VE/xj1two
+         aMLA==
+X-Forwarded-Encrypted: i=1; AFNElJ8SgaBllrSZ6TtKICcRl/BmzHAagNhxkIHFIxN1TEkoco+BNjopa64moTTzEV95EIubbp3IE8bzPa98Kk71Pw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxd5hMK/MDVSdT7d7++fMIrimV027+fmMW5qLm6IQjKN4uwPF0e
+	0m0k6m5nqTbE8OG9S5TBbIW4Jo8qCIqwDq5gSW9RKWzcz/U12WVrodRADFOd8j3SLA==
+X-Gm-Gg: AeBDievSqtDbjnFcIzHxCkZye4uCoSedIAOq0+Z/RSxBz2D0Xn4YVmmT//c9+MICuJX
+	ov/HtBk3O6hTBzGAlcRC+YA0DmI8Whd5YBCioY4L7rCXEU1k0ddPVHqe/SAn5oAYyFPFooX8zLg
+	sRqU+1txwRgwnlcb4ejAV2WzVTPPiCIf53p3pF9Ieajo/WA8dtHpUAXjduOpsQa8HX6KZ/1RJSf
+	30/tc2GciDM1mTdB3cuz2LV4elOlhAAT6ZAS2QvU6I5Sma51vhd979M/cueZsyXMS9y2xFKJJCk
+	AhAkuckaIe8SPYssDRVYFgOAeFCr9X2LZ3phFX9NcaNEMz7rIy8vKM3XFB8JyG2h8yzZRNBzG4d
+	xR+sWlWFcJW7Ynr1cIzAZ5NzmWobfeOjf0jfiZ7nURjHgycqM+uwvblTU19l4nLTWfCk//2kQrc
+	7blhWu2wgEnf5qlpC55RQ3DKC3vVMZ1e1resG5N1neugtYyUJnXKH6HQp6Y1IBm67KZbOiFaoLp
+	7AWOmegJd7Xv76S4e0=
+X-Received: by 2002:a05:6a00:1783:b0:820:2f9b:fe31 with SMTP id d2e1a72fcca58-8352d2024f6mr12963934b3a.30.1777976069323;
+        Tue, 05 May 2026 03:14:29 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:f1d4:2ef0:7d08:9dd8])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-839679c8462sm1666121b3a.38.2026.05.05.03.14.21
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-839679c8462sm1666121b3a.38.2026.05.05.03.14.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 05 May 2026 03:14:22 -0700 (PDT)
+        Tue, 05 May 2026 03:14:28 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
@@ -75,17 +90,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 02/16] arm64: dts: mediatek: mt6359: Switch to proper ldo_vcn33_[12] regulators
-Date: Tue,  5 May 2026 18:13:52 +0800
-Message-ID: <20260505101408.1796563-3-wenst@chromium.org>
+Subject: [PATCH v2 04/16] arm64: dts: mediatek: mt8192-asurada: Add MT6315 PMIC supplies
+Date: Tue,  5 May 2026 18:13:54 +0800
+Message-ID: <20260505101408.1796563-5-wenst@chromium.org>
 X-Mailer: git-send-email 2.54.0.545.g6539524ca2-goog
 In-Reply-To: <20260505101408.1796563-1-wenst@chromium.org>
 References: <20260505101408.1796563-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260505_031424_442496_56D2ADB7 
-X-CRM114-Status: GOOD (  13.20  )
+X-CRM114-CacheID: sfid-20260505_111431_455710_1B319B59 
+X-CRM114-Status: GOOD (  10.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,195 +115,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The ldo_vcn33_[12]_wifi and ldo_vcn33_[12]_bt are just two regulator
-outputs instead of four. The wifi and bt parts refer to separate enable
-bits that are OR-ed together to affect the actual regulator output. The
-separate bits allow the wifi and bt stacks to enable their power without
-coordination between them. These have been deprecated in favor of proper
-nodes matching the output.
+There are two MT6315 PMICs in the MT8192 Asurada design. One has two
+outputs ganged together and two outputs unused. The other has three
+outputs ganged together, and one left independent.
 
-Add proper ldo_vcn33_[12] nodes and drop the old ones. No default voltage
-ranges are given as they don't make sense, and the existing ranges are
-about to be removed. In-tree users of the existing *_(wifi|bt) regulator
-nodes are converted over to use the new ones.
+Add supplies for all the used regulators. In the case of ganged outputs,
+add the supply for just the first output.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
 Changes since v1:
-- Use non-suffixed names (ldo_vcn33_[12]) instead
-- Convert existing users
----
- arch/arm64/boot/dts/mediatek/mt6359.dtsi      | 22 ++++---------------
- .../dts/mediatek/mt8390-genio-common.dtsi     |  4 ++--
- .../dts/mediatek/mt8390-grinn-genio-som.dtsi  |  2 +-
- .../dts/mediatek/mt8390-tungsten-smarc.dtsi   |  6 ++---
- .../dts/mediatek/mt8395-genio-common.dtsi     |  6 ++---
- .../mt8395-radxa-nio-12l-8-hd-panel.dtso      |  4 ++--
- .../dts/mediatek/mt8395-radxa-nio-12l.dts     |  2 +-
- 7 files changed, 16 insertions(+), 30 deletions(-)
+- Fixed pp_4200_g regulator name
+- Moved supplies to PMIC top level node
+- Added all supplies
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6359.dtsi b/arch/arm64/boot/dts/mediatek/mt6359.dtsi
-index 45ad69ee49ed..a953fb527b69 100644
---- a/arch/arm64/boot/dts/mediatek/mt6359.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt6359.dtsi
-@@ -164,15 +164,8 @@ mt6359_vcn13_ldo_reg: ldo_vcn13 {
- 				regulator-min-microvolt = <900000>;
- 				regulator-max-microvolt = <1300000>;
- 			};
--			mt6359_vcn33_1_bt_ldo_reg: ldo_vcn33_1_bt {
--				regulator-name = "vcn33_1_bt";
--				regulator-min-microvolt = <2800000>;
--				regulator-max-microvolt = <3500000>;
--			};
--			mt6359_vcn33_1_wifi_ldo_reg: ldo_vcn33_1_wifi {
--				regulator-name = "vcn33_1_wifi";
--				regulator-min-microvolt = <2800000>;
--				regulator-max-microvolt = <3500000>;
-+			mt6359_vcn33_1_ldo_reg: ldo_vcn33_1 {
-+				regulator-name = "vcn33_1";
- 			};
- 			mt6359_vaux18_ldo_reg: ldo_vaux18 {
- 				regulator-name = "vaux18";
-@@ -231,15 +224,8 @@ mt6359_vemc_1_ldo_reg: ldo_vemc_1 {
- 				regulator-min-microvolt = <2500000>;
- 				regulator-max-microvolt = <3300000>;
- 			};
--			mt6359_vcn33_2_bt_ldo_reg: ldo_vcn33_2_bt {
--				regulator-name = "vcn33_2_bt";
--				regulator-min-microvolt = <2800000>;
--				regulator-max-microvolt = <3500000>;
--			};
--			mt6359_vcn33_2_wifi_ldo_reg: ldo_vcn33_2_wifi {
--				regulator-name = "vcn33_2_wifi";
--				regulator-min-microvolt = <2800000>;
--				regulator-max-microvolt = <3500000>;
-+			mt6359_vcn33_2_ldo_reg: ldo_vcn33_2 {
-+				regulator-name = "vcn33_2";
- 			};
- 			mt6359_va12_ldo_reg: ldo_va12 {
- 				regulator-name = "va12";
-diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-index 2062506f6cc5..ae11cd73e333 100644
---- a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-@@ -445,7 +445,7 @@ typec-mux@48 {
- 		mode-switch;
- 		orientation-switch;
- 
--		vcc-supply = <&mt6359_vcn33_1_bt_ldo_reg>;
-+		vcc-supply = <&mt6359_vcn33_1_ldo_reg>;
- 
- 		port {
- 			it5205_sbu_mux: endpoint {
-@@ -637,7 +637,7 @@ &mt6359_vcn18_ldo_reg {
- 	regulator-always-on;
- };
- 
--&mt6359_vcn33_2_bt_ldo_reg {
-+&mt6359_vcn33_2_ldo_reg {
- 	regulator-name = "vcn33_2_pmu";
- 	regulator-always-on;
- };
-diff --git a/arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-som.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-som.dtsi
-index 8da47c916313..84064511fa0d 100644
---- a/arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-som.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-som.dtsi
-@@ -58,7 +58,7 @@ &mt6359_vcn18_ldo_reg {
- 	regulator-always-on;
- };
- 
--&mt6359_vcn33_2_bt_ldo_reg {
-+&mt6359_vcn33_2_ldo_reg {
- 	regulator-name = "vcn33_2_pmu";
- 	regulator-always-on;
- };
-diff --git a/arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dtsi
-index 40b381d4cc35..2e68e997dff3 100644
---- a/arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dtsi
-@@ -592,7 +592,7 @@ &mmc2 {
- 	interrupt-names = "msdc", "sdio_wakeup";
- 	interrupts-extended = <&gic GIC_SPI 136 IRQ_TYPE_LEVEL_HIGH 0>,
- 			      <&pio 172 IRQ_TYPE_LEVEL_LOW>;
--	vmmc-supply = <&mt6359_vcn33_2_bt_ldo_reg>;
-+	vmmc-supply = <&mt6359_vcn33_2_ldo_reg>;
- 	vqmmc-supply = <&mt6359_vcn18_ldo_reg>;
- 	mmc-pwrseq = <&wifi_pwrseq>;
- 	status = "okay";
-@@ -617,12 +617,12 @@ &mt6359_vcn18_ldo_reg {
- 	regulator-boot-on;
- };
- 
--&mt6359_vcn33_1_bt_ldo_reg {
-+&mt6359_vcn33_1_ldo_reg {
- 	regulator-name = "vcn33_1_pmu";
- 	regulator-always-on;
- };
- 
--&mt6359_vcn33_2_bt_ldo_reg {
-+&mt6359_vcn33_2_ldo_reg {
- 	regulator-name = "vcn33_2_pmu";
- 	regulator-min-microvolt = <3300000>;
- 	regulator-max-microvolt = <3300000>;
-diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi
-index 62c336e21500..4259291a52a3 100644
---- a/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi
-@@ -701,7 +701,7 @@ &mt6359_vcamio_ldo_reg {
- 	regulator-always-on;
- };
- 
--&mt6359_vcn33_2_bt_ldo_reg {
-+&mt6359_vcn33_2_ldo_reg {
- 	regulator-min-microvolt = <3300000>;
- 	regulator-max-microvolt = <3300000>;
- };
-@@ -1216,8 +1216,8 @@ can0: can@0 {
- 		clocks = <&can_clk>;
- 		spi-max-frequency = <20000000>;
- 		interrupts-extended = <&pio 16 IRQ_TYPE_LEVEL_LOW>;
--		vdd-supply = <&mt6359_vcn33_2_bt_ldo_reg>;
--		xceiver-supply = <&mt6359_vcn33_2_bt_ldo_reg>;
-+		vdd-supply = <&mt6359_vcn33_2_ldo_reg>;
-+		xceiver-supply = <&mt6359_vcn33_2_ldo_reg>;
+All supplies are connected, but since the regulators are ganged
+together, only one regulator node is present.
+---
+ .../boot/dts/mediatek/mt8192-asurada.dtsi     | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+index 8054e2d20bf1..13960d1c8a02 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+@@ -175,6 +175,17 @@ pp3300_wlan: regulator-3v3-wlan {
+ 		gpio = <&pio 143 GPIO_ACTIVE_HIGH>;
  	};
- };
  
-diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l-8-hd-panel.dtso b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l-8-hd-panel.dtso
-index 0389c9cb8581..ecc9fd27b82d 100644
---- a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l-8-hd-panel.dtso
-+++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l-8-hd-panel.dtso
-@@ -29,7 +29,7 @@ panel@0 {
- 		compatible = "radxa,display-8hd-ad002", "jadard,jd9365da-h3";
- 		reg = <0>;
- 		backlight = <&backlight>;
--		vdd-supply = <&mt6359_vcn33_2_bt_ldo_reg>;
-+		vdd-supply = <&mt6359_vcn33_2_ldo_reg>;
- 		vccio-supply = <&mt6360_ldo2>;
- 		reset-gpios = <&pio 108 GPIO_ACTIVE_LOW>;
- 		pinctrl-names = "default";
-@@ -57,7 +57,7 @@ touchscreen@14 {
- 		interrupts-extended = <&pio 132 IRQ_TYPE_EDGE_RISING>;
- 		irq-gpios = <&pio 132 GPIO_ACTIVE_HIGH>;
- 		reset-gpios = <&pio 133 GPIO_ACTIVE_HIGH>;
--		VDDIO-supply = <&mt6359_vcn33_2_bt_ldo_reg>;
-+		VDDIO-supply = <&mt6359_vcn33_2_ldo_reg>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&touch_pins>;
- 	};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-index bf91305e8e4a..4530434015a5 100644
---- a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-@@ -614,7 +614,7 @@ &mt6359_vcamio_ldo_reg {
- 	regulator-always-on;
- };
++	/* system wide switching 4.2V power rail */
++	pp4200_g: regulator-4v2-g {
++		compatible = "regulator-fixed";
++		regulator-name = "pp4200_g";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <4200000>;
++		regulator-max-microvolt = <4200000>;
++		vin-supply = <&ppvar_sys>;
++	};
++
+ 	/* system wide switching 5.0V power rail */
+ 	pp5000_a: regulator-5v0-a {
+ 		compatible = "regulator-fixed";
+@@ -1604,6 +1615,10 @@ &spmi {
+ 	mt6315_6: pmic@6 {
+ 		compatible = "mediatek,mt6315-regulator";
+ 		reg = <0x6 SPMI_USID>;
++		pvdd1-supply = <&pp4200_g>;
++		pvdd2-supply = <&pp4200_g>;
++		pvdd3-supply = <&pp4200_g>;
++		pvdd4-supply = <&pp4200_g>;
  
--&mt6359_vcn33_2_bt_ldo_reg {
-+&mt6359_vcn33_2_ldo_reg {
- 	regulator-min-microvolt = <3300000>;
- 	regulator-max-microvolt = <3300000>;
- };
+ 		regulators {
+ 			mt6315_6_vbuck1: vbuck1 {
+@@ -1629,6 +1644,10 @@ mt6315_6_vbuck3: vbuck3 {
+ 	mt6315_7: pmic@7 {
+ 		compatible = "mediatek,mt6315-regulator";
+ 		reg = <0x7 SPMI_USID>;
++		pvdd1-supply = <&pp4200_g>;
++		pvdd2-supply = <&pp4200_g>;
++		pvdd3-supply = <&pp4200_g>;
++		pvdd4-supply = <&pp4200_g>;
+ 
+ 		regulators {
+ 			mt6315_7_vbuck1: vbuck1 {
 -- 
 2.54.0.545.g6539524ca2-goog
 
