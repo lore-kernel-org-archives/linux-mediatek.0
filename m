@@ -4,69 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B44DCD3427
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2026 19:41:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 684D8CD342C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 02:41:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qiOOHof4Vo2I4sXwfMWcS9+HW2z4f7V2Cm0uyfPa1kA=; b=XnSsXHxf234C36mj9B2QZNinwE
-	StzHQZNNphq0C7gEeb8TEi49JNFO9l2e1OqCCXf9h4f0UEcTTQkj+fv/MyMuEYz99fW7Q9JLhbP8N
-	9SmtiYxn4qkSR+WBaxXjyiVHApn9mQJB34qOXbIwDqkRPH9l6LrrvIuRdk9xZ8kXhAC9Ggfm1JHXm
-	40KXg3OFRx/9dQSdo0Hf9EB1ROOJ1s3AnA/1ORO41CF3cy1T1UZOh+U8kiBeGO3gzdQk2M6Gro0At
-	ZnZq8pYJBzvYkc3gadCHQkYHEXZ5XQaf5wrrDSzfqYP8tkedZPI/1Xipy5Y1u2Mr8juV1/bXdpz6c
-	l3GoCxtQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UZ9C1cGKi3QolnoyKB7mQU4uVgu69LgZP4fkUy44Jp4=; b=ZMaGnEv+Obc/Kg2nh2hnqzpYni
+	JjBrK1NZ/ExBsDLzQMepD3zeAl52U+T3ZfuZRxQ5wJGD9ASZbva9f8EVUvri9gIVTOP/1JZBDaopg
+	4Yn6z0ijhPG6vhpppqQPvWaEAljtzVr7s7wU7+r4hRLknu82ldWRFP1rSDOzaZQ1C72RLcuvRsu9U
+	GtpjXs4bQWsEIYv9GDo6Sbz8g+iQhuvoa8XSpxm71y3+E/4dzfaNvJGvwCXfZYJgwFwjWYfCYO9q9
+	5iuQFFaGnOxfp4bpPAxoKIpVhfwIHH8Sk8jGF/kiSLuVYGqz1I8+zjf82KTG45kNJLV1ncBI5PzJm
+	fpAPaT4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJzAl-0000000EB4b-2lXu;
-	Mon, 04 May 2026 19:41:43 +0000
+	id 1wK5ia-0000000Evr4-1ODo;
+	Tue, 05 May 2026 02:41:04 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJzAj-0000000EB43-2v7I;
-	Mon, 04 May 2026 19:41:41 +0000
+	id 1wK5iY-0000000Evps-1oiA;
+	Tue, 05 May 2026 02:41:02 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id BF25B6001A;
-	Mon,  4 May 2026 19:41:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3B22FC2BCB8;
-	Mon,  4 May 2026 19:41:40 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 584826012A;
+	Tue,  5 May 2026 02:41:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 06164C2BCB8;
+	Tue,  5 May 2026 02:41:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777923700;
-	bh=mgdlbKlEQOWDLqR92Whq5tURhflQ2Yr9KuyXqkV/fOc=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=bXDisUINjwgG9lK4I/Zqy+kk2M+5q38IGKVNjSDriMrjWELbxnJlkuM5RDqwoBYWR
-	 lfAY1WaarsJU5oxnO15BRLy3rZmOWDgFmZG6eckX6eUQRbnQGDcSiLYFJcFhnAOOYA
-	 Cgt/FlhKZqkjxxT3PWe1Nf81n/pYY5BW88eMoPg3GD70VoEZyh/zZ0666xWTWqhiFx
-	 AHLCL5+1TzKcYpIKvZx3v9fiqkrvHd8hgrhf4ksarSL/AG7dW5PvcXnhcgwZu5/hH/
-	 n1z95QK/UCsjVOpdF6t4WhT5kJnjMhy5YXZxA/aVuxabP6ViC9shu3G8Cs9M/ATX/P
-	 iD6hvGg1cWrFg==
-Date: Mon, 04 May 2026 14:41:38 -0500
+	s=k20201202; t=1777948861;
+	bh=ddU8USgzjzQyVZN71U7F/arM8/K2SIdvmClFGkdxcMk=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=VQJeyo6k6QXy5XPxqDOOZW240PDY8mh5WHJ/6vKUobp8ijj4r2E1sp6EhiZd+2SFn
+	 pDHsljLFMHZrIVN9af0K2seKULF8Rp9tPuDlVnIa8OTgG6JnbMEXnpW/vowQtc2YTU
+	 RCQ6BbIp2r3UxOJ/jTIxn4g4cAS/NiBdw5m3Rmu6vRKuQcJmKJZNwC6agaoSwCvZao
+	 juFbYlaJKSsxOBlB8skgAQ9IoT+SHLmVlwU7bN4pxGlx4AH8/o/tMrTU3CkFr+tWkM
+	 QN8G07wjzqp231nBUYTtfsovTMCyWQpXX2X1M2NNAWwpRiNTaLyiLI0AiL+bWCCPsK
+	 +rdyRFB26lSrQ==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 02D3039301A2;
+	Tue,  5 May 2026 02:40:13 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: David Lechner <dlechner@baylibre.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-pm@vger.kernel.org, Lee Jones <lee@kernel.org>, 
- =?utf-8?q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, 
- Zhang Rui <rui.zhang@intel.com>, Ben Grisdale <bengris32@protonmail.ch>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- "Rafael J. Wysocki" <rafael@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Daniel Lezcano <daniel.lezcano@kernel.org>, 
- linux-mediatek@lists.infradead.org, Andy Shevchenko <andy@kernel.org>, 
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, Jonathan Cameron <jic23@kernel.org>, 
- Lukasz Luba <lukasz.luba@arm.com>, Srinivas Kandagatla <srini@kernel.org>, 
- linux-iio@vger.kernel.org
-To: Roman Vivchar <rva333@protonmail.com>
-In-Reply-To: <20260504-mt6323-v1-3-799b58b355ff@protonmail.com>
-References: <20260504-mt6323-v1-0-799b58b355ff@protonmail.com>
- <20260504-mt6323-v1-3-799b58b355ff@protonmail.com>
-Message-Id: <177792369830.4148180.15587020526695376827.robh@kernel.org>
-Subject: Re: [PATCH 03/13] dt-bindings: thermal: add mt6323 PMIC thermal
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net v6] net: dsa: mt7530: fix .get_stats64 sleeping in
+ atomic
+ context
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <177794881154.1397274.8560598975981620800.git-patchwork-notify@kernel.org>
+Date: Tue, 05 May 2026 02:40:11 +0000
+References: <6940b913da2c29156f0feff74b678d3c526ee84c.1777719253.git.daniel@makrotopia.org>
+In-Reply-To: <6940b913da2c29156f0feff74b678d3c526ee84c.1777719253.git.daniel@makrotopia.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: chester.a.unal@arinc9.com, andrew@lunn.ch, olteanv@gmail.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ linux@armlinux.org.uk, ansuelsmth@gmail.com, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,47 +76,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hello:
 
-On Mon, 04 May 2026 21:24:55 +0300, Roman Vivchar wrote:
-> The MediaTek mt6323 PMIC temperature can be read using AUXADC channel.
+This patch was applied to netdev/net.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Sat, 2 May 2026 11:55:02 +0100 you wrote:
+> The .get_stats64 callback runs in atomic context, but on
+> MDIO-connected switches every register read acquires the MDIO bus
+> mutex, which can sleep:
+> [   12.645973] BUG: sleeping function called from invalid context at kernel/locking/mutex.c:609
+> [   12.654442] in_atomic(): 0, irqs_disabled(): 0, non_block: 0, pid: 759, name: grep
+> [   12.663377] preempt_count: 0, expected: 0
+> [   12.667410] RCU nest depth: 1, expected: 0
+> [   12.671511] INFO: lockdep is turned off.
+> [   12.675441] CPU: 0 UID: 0 PID: 759 Comm: grep Tainted: G S      W           7.0.0+ #0 PREEMPT
+> [   12.675453] Tainted: [S]=CPU_OUT_OF_SPEC, [W]=WARN
+> [   12.675456] Hardware name: Bananapi BPI-R64 (DT)
+> [   12.675459] Call trace:
+> [   12.675462]  show_stack+0x14/0x1c (C)
+> [   12.675477]  dump_stack_lvl+0x68/0x8c
+> [   12.675487]  dump_stack+0x14/0x1c
+> [   12.675495]  __might_resched+0x14c/0x220
+> [   12.675504]  __might_sleep+0x44/0x80
+> [   12.675511]  __mutex_lock+0x50/0xb10
+> [   12.675523]  mutex_lock_nested+0x20/0x30
+> [   12.675532]  mt7530_get_stats64+0x40/0x2ac
+> [   12.675542]  dsa_user_get_stats64+0x2c/0x40
+> [   12.675553]  dev_get_stats+0x44/0x1e0
+> [   12.675564]  dev_seq_printf_stats+0x24/0xe0
+> [   12.675575]  dev_seq_show+0x14/0x3c
+> [   12.675583]  seq_read_iter+0x37c/0x480
+> [   12.675595]  seq_read+0xd0/0xec
+> [   12.675605]  proc_reg_read+0x94/0xe4
+> [   12.675615]  vfs_read+0x98/0x29c
+> [   12.675625]  ksys_read+0x54/0xdc
+> [   12.675633]  __arm64_sys_read+0x18/0x20
+> [   12.675642]  invoke_syscall.constprop.0+0x54/0xec
+> [   12.675653]  do_el0_svc+0x3c/0xb4
+> [   12.675662]  el0_svc+0x38/0x200
+> [   12.675670]  el0t_64_sync_handler+0x98/0xdc
+> [   12.675679]  el0t_64_sync+0x158/0x15c
 > 
-> Add the devicetree binding documentation for the MediaTek mt6323 thermal.
-> Due similarities with newer PMICs like mt6358, which include more than
-> one thermal sensor, the #thermal-sensor-cells should be set to 1, to
-> avoid breaking devicetree ABI in future.
-> 
-> Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
-> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
-> ---
->  .../bindings/thermal/mediatek,mt6323-thermal.yaml  | 63 ++++++++++++++++++++++
->  1 file changed, 63 insertions(+)
-> 
+> [...]
 
-My bot found errors running 'make dt_binding_check' on your patch:
+Here is the summary with links:
+  - [net,v6] net: dsa: mt7530: fix .get_stats64 sleeping in atomic context
+    https://git.kernel.org/netdev/net/c/07d995873960
 
-yamllint warnings/errors:
-./Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.yaml:52:2: [warning] wrong indentation: expected 2 but found 1 (indentation)
-./Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.yaml:84:1: [warning] too many blank lines (2 > 1) (empty-lines)
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/net/renesas,ether.example.dtb: ethernet-phy@1 (ethernet-phy-id0022.1537): compatible: ['ethernet-phy-id0022.1537', 'ethernet-phy-ieee802.3-c22'] is too long
-	from schema $id: http://devicetree.org/schemas/net/micrel.yaml
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.kernel.org/project/devicetree/patch/20260504-mt6323-v1-3-799b58b355ff@protonmail.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
 
 
