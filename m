@@ -4,78 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4468CD3427
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 15:21:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1028CCD3427
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 15:37:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=g60majm7MIGx8fN5HDNHE+DvCVrvkOOCx6X0a2qXQQc=; b=Piwi9is+BzigQQsCvgyMiIdPmh
-	XhDQaWfBCpbTYtkZ9BY0C9AARu9h75o6hkVvh+ss0TLgT0KdKJDpPrq6c4/E6OVp7GludMOouNSi1
-	9igP2Sgqd+H5NNvzGNMKdbRCbl++B3+0jDO7mbae1LemBGP77LR/5VMZtNTMPvM0+7/TYOUlAXYIA
-	HcHDR23MpHJPGMKqkp76ixDnRxUPAQjd8OM7i497ji+mw3lOIkOtnNNq2TW2AiFn6Y0WLcI06iyrc
-	NTlWcf8nZ1Nn7lyeypEcm+WLcGilbkl9Otzl7S4D5iGyzGiLLviebs/ac07/i1eB3euwptWb6ZY+J
-	EN6dhKXg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=qVt3lmzQ7N6PZH719ot9HwSZfxNbFLse3Q7BGP9gLo0=; b=wYfBlxxc/8za6f
+	AK7IoiG10S3pdFGybOFbVV0aBYepnimsLSnlpCkcz3b0fkI0+rLoOOvRMtRurZeMB1ByVUJSGVMz+
+	IYaDAKppJhyJHQC4ZZep078629l0JivtnHyt6ymX/lnsbcS5/uEShRTXJHLRTec9N7A7wcHRZrwg9
+	1M2AoTnd/4qrKz6Tii6SVcMyBX//9xjYDjukgUJq1kaUBHhqwR4aNW7R5oa+MayBl847wd3ltxmt+
+	cWS6OFzAjGrqKLVlGKuQYMqRPOj42vcdRy9D3l3PYtnfd4e+jPBNnLy+mFTaRH4btp9Zl9ZwDCaFZ
+	2vagX+ilakLo2GIl5ClQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKHa2-0000000GdkE-0fig;
-	Tue, 05 May 2026 15:21:02 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wKHqG-0000000Gfwg-3bWT;
+	Tue, 05 May 2026 15:37:48 +0000
+Received: from elephant.ash.relay.mailchannels.net ([23.83.222.57])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKHZy-0000000GdjV-48Op;
-	Tue, 05 May 2026 15:21:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1777994455;
-	bh=GB3l17/ekg1P4sEApX6f/ITXv7X2gefB+5c4kZ5bdhQ=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=HZ4LnhKuimVBHwguEpzHzUmKIga1uo5dFOtEZyWUTnmmq5oSmrqc6vzHcWnZmPR34
-	 ISBs/7vrXXLNNZ4GzSz1AJXYG8mPv7GKqln6yQNsn7XEidgQgN3pkpnmUMh9E0By+E
-	 zjJnyB/DCGYC3Db1gUTZLhyIJZHavG7xhlYHNvBDaTBBeHP54ab0vkUtayjvGW3SXh
-	 U3zsKmmcKDqZX6/TTlXzVZGRMyLzcOvVBrNbm7mZ2626RA7Z4h0vMRsAI54zUqDGO5
-	 G6+irU6LumaJMQzuJp99XhlFz158BBAuV1vb71KFVgPXYymXDUkC3hcxqWANL5gyVo
-	 vIVXPlsHRlI0w==
-Received: from fedora (unknown [100.64.0.11])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bbrezillon)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 35D1417E13B2;
-	Tue,  5 May 2026 17:20:54 +0200 (CEST)
-Date: Tue, 5 May 2026 17:20:48 +0200
-From: Boris Brezillon <boris.brezillon@collabora.com>
-To: Ketil Johnsen <ketil.johnsen@arm.com>
-Cc: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
- <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, Jonathan
- Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, Sumit
- Semwal <sumit.semwal@linaro.org>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>,
- John Stultz <jstultz@google.com>, "T.J. Mercier" <tjmercier@google.com>,
- Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>, Steven Price
- <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, Daniel Almeida
- <daniel.almeida@collabora.com>, Alice Ryhl <aliceryhl@google.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Yong Wu <yong.wu@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>,
- Florent Tomasin <florent.tomasin@arm.com>
-Subject: Re: [PATCH 1/8] dma-heap: Add proper kref handling on dma-buf heaps
-Message-ID: <20260505172048.1c48e030@fedora>
-In-Reply-To: <20260505140516.1372388-2-ketil.johnsen@arm.com>
-References: <20260505140516.1372388-1-ketil.johnsen@arm.com>
-	<20260505140516.1372388-2-ketil.johnsen@arm.com>
-Organization: Collabora
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
+	id 1wKHqC-0000000GfsL-2fS6;
+	Tue, 05 May 2026 15:37:46 +0000
+X-Sender-Id: hostingeremail|x-authuser|chester.a.unal@arinc9.com
+Received: from relay.mailchannels.net (localhost [127.0.0.1])
+	by relay.mailchannels.net (Postfix) with ESMTP id 7CDFB802AFE;
+	Tue, 05 May 2026 15:37:35 +0000 (UTC)
+Received: from de-fra-smtpout10.hostinger.io (100-97-142-130.trex-nlb.outbound.svc.cluster.local [100.97.142.130])
+	(Authenticated sender: hostingeremail)
+	by relay.mailchannels.net (Postfix) with ESMTPA id 33CBC802AD9;
+	Tue, 05 May 2026 15:37:32 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; d=mailchannels.net; s=arc-2022; cv=none;
+	t=1777995455;
+	b=xCnlpjAaETZZ8nB6SHCx3uKHKF8gy+I0b8kIjK1SV84Nm7mr8kN3yQ/Bmv3zfScALbXL32
+	D5utVoQithYoiwZafCH//fStWO43iF8/Ra80x591Umb+NdUYSmvvRQwyWDrhKeANzNBxKR
+	ScKKAlKyDPFBvMA6zg66D2HC3zgzG1+DmhlSr/FRWDI/47Ij8rimVot3QP6jh4UvFs0dqW
+	fsc6mGtJ25RuYhpMpacUA5LLAbuL3Ym2iHKpeWOqD+lV6oDVB7QWhBtCCaja3d/vLT65tG
+	/RIexo9YoI5clp/Hdx3gbfabxD16WwoSQlhn4hupuTnGVEA8GIMHybE+faZeiA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mailchannels.net;
+	s=arc-2022; t=1777995455;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:dkim-signature;
+	bh=qVt3lmzQ7N6PZH719ot9HwSZfxNbFLse3Q7BGP9gLo0=;
+	b=gkdE1mw+RZR9o4dfnfLlPxauQN3/RDP4M2R0bemfmlpvKtMDXJX9EO4BgFUzp6XYHuCHr5
+	fphQ4lzkndpIP9nC8oJ9ja9MEtglZgDclAhs3Ow3AsnARgJR0baSQX52sJLBbQ7oydtggJ
+	7WvXdIRvmmO8KOsC2sYqajMmYvwhmlro2sD1s38RWLqRaEX4ifNJn6wAx5xUL/kUzLMFI8
+	jXf/ZjZsXGqPqbmzSr9FqyHloDIG5aO0MGyp56rxWb601WtxwiAfC6CIFka5J58dbztCF3
+	Do3fRdTtAFhEUohsSrvrGgZJ+Mrp1/JgGYedIyubmt0PXFrYMR04mpqmWem+Rg==
+ARC-Authentication-Results: i=1;
+	rspamd-859c89884f-8lmrr;
+	auth=pass smtp.auth=hostingeremail smtp.mailfrom=chester.a.unal@arinc9.com
+X-Sender-Id: hostingeremail|x-authuser|chester.a.unal@arinc9.com
+X-MC-Relay: Neutral
+X-MailChannels-SenderId: hostingeremail|x-authuser|chester.a.unal@arinc9.com
+X-MailChannels-Auth-Id: hostingeremail
+X-Juvenile-Stretch: 5e85dd1b5d2d99ef_1777995455411_2547369502
+X-MC-Loop-Signature: 1777995455411:900885652
+X-MC-Ingress-Time: 1777995455411
+Received: from de-fra-smtpout10.hostinger.io (de-fra-smtpout10.hostinger.io
+ [148.222.55.9])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384)
+	by 100.97.142.130 (trex/7.1.5);
+	Tue, 05 May 2026 15:37:35 +0000
+Received: from [10.10.10.3] (unknown [109.228.203.208])
+	(Authenticated sender: chester.a.unal@arinc9.com)
+	by smtp.hostinger.com (smtp.hostinger.com) with ESMTPSA id 4g92h93Jbrz405w;
+	Tue,  5 May 2026 15:37:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com;
+	s=hostingermail-a; t=1777995450;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=qVt3lmzQ7N6PZH719ot9HwSZfxNbFLse3Q7BGP9gLo0=;
+	b=OA9pK6JkqwuJkBC+Lq+VgLCL3oEA3PmUnLE0lzbyZ1xTPUXiGdZjaaZU0J/ENZ4Uqowz21
+	9XL/4EcTiKKIO2L33pdCYLntrKcExyiqBl++T7gG39FOqJ8lH5QOQatAQyFmdXE40WCDm7
+	w7l7Y5QpsdDGEj8Vukspph9Ry+AOzzjPJzNEP3A58CHNWYE2vCxsSGtOQrIc9vZrKvFaYf
+	mHW3Yb5h5q/y/vW6cXLmeRN2BLytuFanPMFhsJs/TZbVMSWw4B1A40FmFiQ1p6tkyo4alT
+	LhIJuERJceb7zLJMsOh0lAMR5FKCQZALMmH3UQ9eybEzMqT7jc0W2XGHXQWmbA==
+Message-ID: <46071c08-d85f-4157-9d61-6a0feef56747@arinc9.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net 2/5] net: dsa: mt7530: preserve VLAN tags on trapped
+ link-local frames
+To: Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ DENG Qingfang <dqfext@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
+ =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+ Sean Wang <sean.wang@mediatek.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <cover.1777986341.git.daniel@makrotopia.org>
+ <3ad4b724d7ae6250b8429d50fe913d2dca07a3f9.1777986341.git.daniel@makrotopia.org>
+Content-Language: en-GB
+From: "Chester A. Unal" <chester.a.unal@arinc9.com>
+In-Reply-To: <3ad4b724d7ae6250b8429d50fe913d2dca07a3f9.1777986341.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
+Date: Tue,  5 May 2026 15:37:29 +0000 (UTC)
+X-CM-Analysis: v=2.4 cv=Ceda56rl c=1 sm=1 tr=0 ts=69fa0eba a=CS7yVHPVoEopjVSexcYCQA==:117 a=CS7yVHPVoEopjVSexcYCQA==:17 a=IkcTkHD0fZMA:10 a=VwQbUJbxAAAA:8 a=VT4XjZGOAAAA:8 a=b-zwJ4yWfF2n_vrUc9gA:9 a=QEXdDO2ut3YA:10 a=6CpsfURP9XNmmWg3j1mJ:22
+X-CM-Envelope: MS4xfKevdoLEsxmpx10pKfk+csh2waOq6MgMEWDN9OPOgqtKBQ6a+CfiVfyz0RAK+HWO2338y9SoLUXXzQmIZHlwm/h4SaeL6E6NGBhsz1bCYQhQipE6Ja3v QKIYit66gJaTE43yJrGJ81W53ozrNCPScbIhy30OVoH0M1tF4AMBCk/9KaMHXFaZXm/7ti0DKX2CBaTAmSqr5+j0dAXVNLP/8NR+J1sZKqYzia636LPlp2om 8xd2nSTWGAm3UBp4QDfXne7l+hDgqnaybhYar5ubdrztmXc2z5neorRu5OqUMsq8CjM3BWoiVIoAN7NdLY+KpKdD9f8tXpVSw/j8QghojOW9zDBR0In4HPPK RdrNEeGfTLOBEra8wZUvKeqHG8aawJ0NToAzksH3WJjLf0FBDgLGUSVq/OgssgwZ266jM9wgJyOJZHmABwzfd9N94MhMgECu2f6AoWI/XcMX6SOvmUXJzF1k fzYzDiVSXBiiIsEhY8a+7NIaZ+k0u5daHZ+zHi22w8RTR/FDy1T9LkNSvpu5mkB114IpbpR+PRXM+Y/7AHUGi+clPfAtz3JP8C9IadOeJ+CqJn6k0TD6v9+K ddBDsnci/bQ27jdT1+h3Lu6laUyjTWNSNwKNa2KEmXZna7YiEzzUrxHD9W5BnpV+efNBh1w4b1ZZNjVWyWmsQhgMaagfD4NKXvWnuWjzMfQIur6kRLBlxFNF 30atd3eNxtKdbCz5RwNU6BwidLZoO03Pi8KYIwgLr44V3mKSjBg//A==
+X-AuthUser: chester.a.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260505_082059_186639_E392D0E7 
-X-CRM114-Status: GOOD (  30.21  )
+X-CRM114-CacheID: sfid-20260505_083744_839379_4DFB454F 
+X-CRM114-Status: GOOD (  11.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,150 +129,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Ketil,
+Hey Daniel.
 
-On Tue,  5 May 2026 16:05:07 +0200
-Ketil Johnsen <ketil.johnsen@arm.com> wrote:
-
-> From: John Stultz <jstultz@google.com>
+On 05/05/2026 15:16, Daniel Golle wrote:
+> The BPC, RGAC1 and RGAC2 registers control the handling of link-local
+> frames with reserved MAC DAs (01:80:C2:00:00:0x). These frames are
+> correctly trapped to the CPU port, but the egress VLAN tag attribute was
+> set to MT7530_VLAN_EG_UNTAGGED which causes the switch to strip any
+> VLAN tags from trapped frames before they reach the CPU.
 > 
-> Add proper reference counting on the dma_heap structure. While
-> existing heaps are built-in, we may eventually have heaps loaded
-> from modules, and we'll need to be able to properly handle the
-> references to the heaps
-
-It's weird that this "heap as module" thing is mentioned here, but
-actual robustness to make this safe is not added in the commit or any
-of the following ones.
-
+> This causes VLAN-tagged link-local frames (STP BPDUs, LLDP, PTP Peer
+> Delay Requests) to arrive at the CPU without their VLAN tag, so they
+> are delivered to the base network interface instead of the VLAN
+> sub-interface. The DSA local_termination selftest confirms this: all
+> link-local protocol tests on VLAN upper interfaces fail.
 > 
-> Signed-off-by: John Stultz <jstultz@google.com>
-> Signed-off-by: T.J. Mercier <tjmercier@google.com>
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> [Yong: Just add comment for "minor" and "refcount"]
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> [Yunfei: Change reviewer's comments]
-> Signed-off-by: Florent Tomasin <florent.tomasin@arm.com>
-> [Florent: Rebase]
-> Signed-off-by: Ketil Johnsen <ketil.johnsen@arm.com>
-> [Ketil: Rebase]
-> ---
->  drivers/dma-buf/dma-heap.c | 29 +++++++++++++++++++++++++++++
->  include/linux/dma-heap.h   |  2 ++
->  2 files changed, 31 insertions(+)
+> Set the EG_TAG attribute to MT7530_VLAN_EG_DISABLED (system default)
+> so that the switch does not modify VLAN tags in trapped frames. This
+> way VLAN-tagged frames retain their original tag and are delivered to
+> the correct VLAN sub-interface, matching the behavior of non-trapped
+> frames which pass through without VLAN tag modification.
 > 
-> diff --git a/drivers/dma-buf/dma-heap.c b/drivers/dma-buf/dma-heap.c
-> index ac5f8685a6494..9fd365ddbd517 100644
-> --- a/drivers/dma-buf/dma-heap.c
-> +++ b/drivers/dma-buf/dma-heap.c
-> @@ -12,6 +12,7 @@
->  #include <linux/dma-heap.h>
->  #include <linux/err.h>
->  #include <linux/export.h>
-> +#include <linux/kref.h>
->  #include <linux/list.h>
->  #include <linux/nospec.h>
->  #include <linux/syscalls.h>
-> @@ -31,6 +32,7 @@
->   * @heap_devt:		heap device node
->   * @list:		list head connecting to list of heaps
->   * @heap_cdev:		heap char device
-> + * @refcount:		reference counter for this heap device
->   *
->   * Represents a heap of memory from which buffers can be made.
->   */
-> @@ -41,6 +43,7 @@ struct dma_heap {
->  	dev_t heap_devt;
->  	struct list_head list;
->  	struct cdev heap_cdev;
-> +	struct kref refcount;
->  };
->  
->  static LIST_HEAD(heap_list);
-> @@ -248,6 +251,7 @@ struct dma_heap *dma_heap_add(const struct dma_heap_export_info *exp_info)
->  	if (!heap)
->  		return ERR_PTR(-ENOMEM);
->  
-> +	kref_init(&heap->refcount);
->  	heap->name = exp_info->name;
->  	heap->ops = exp_info->ops;
->  	heap->priv = exp_info->priv;
-> @@ -313,6 +317,31 @@ struct dma_heap *dma_heap_add(const struct dma_heap_export_info *exp_info)
->  }
->  EXPORT_SYMBOL_NS_GPL(dma_heap_add, "DMA_BUF_HEAP");
->  
-> +static void dma_heap_release(struct kref *ref)
-> +{
-> +	struct dma_heap *heap = container_of(ref, struct dma_heap, refcount);
-> +	unsigned int minor = MINOR(heap->heap_devt);
-> +
-> +	mutex_lock(&heap_list_lock);
-> +	list_del(&heap->list);
-> +	mutex_unlock(&heap_list_lock);
-> +
-> +	device_destroy(dma_heap_class, heap->heap_devt);
-> +	cdev_del(&heap->heap_cdev);
-> +	xa_erase(&dma_heap_minors, minor);
-> +
-> +	kfree(heap);
+> Fixes: 69ddba9d170b ("net: dsa: mt7530: fix handling of all link-local frames")
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
-That's actually problematic, because cdev_del() doesn't guarantee that
-all opened FDs have been closed [1], it just guarantees that no new ones
-can materialize. In order to make that safe, we'd need a
+Thank you for this patch. Could you please confirm that it conforms to the
+findings documented on this patch log?
 
-1. kref_get_unless_zero() in dma_heap_open(), with proper locking around
-   the xa_load() to protect against the heap removal that's happening
-   here
-2. a dma_heap_put() in a new dma_heap_close() implementation
-3. a guarantee that heap implementations won't go away until the last
-   ref is dropped, which means ops and all the data needed for this heap
-   to satisfy ioctl()s (and more generally every passed at
-   dma_heap_add() time) have to stay valid until the last ref is
-   dropped. Alternatively, we could restrict this only to in-flight
-   ioctl()s, and have the ops replaced by some dummy ops using RCU or a
-   rwlock. But I guess live dmabufs allocated on this heap have to
-   retain the heap and its implementation anyway.
+https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/commit/?id=e8bf353577f382c7066c661fed41b2adc0fc7c40
 
-For record, #3 is already not satisfied by the current tee_heap
-implementation (tee_dma_heap objects can vanish before the dma_heap
-object is gone). The other implementations seem to be fine because they
-are statically linked, and they either have exp_info.priv set to NULL,
-or something that's never released.
-
-TLDR; the whole assumption that adding refcounting to dma_heap is
-enough to guarantee safety around device/module removal is not holding,
-and adding in-kernel users acquiring dma_heap refs on top of this
-design is just going to make it even more painful to fix.
-
-I see two way forward from here, either we get the
-dma_heap/dma_heap-producer lifetime right from the start the way I
-suggested above (I might have missed corner cases there BTW), or we keep
-assuming that heaps can only ever be created, never destroyed/removed
-(which is basically what the current dma_heap.c logic does, except
-tee_heap.c broke that), and just let dma_heap_find() return dma_heap
-pointers whose lifetime is assumed to be static.
-
-> +}
-> +
-> +/**
-> + * dma_heap_put - drops a reference to a dmabuf heap, potentially freeing it
-> + * @heap: DMA-Heap whose reference count to decrement
-> + */
-> +void dma_heap_put(struct dma_heap *heap)
-> +{
-> +	kref_put(&heap->refcount, dma_heap_release);
-
-nit: I'd go
-
-	if (heap)
-		kref_put(&heap->refcount, dma_heap_release);
-
-so users can call dma_heap_put() on NULL heaps, which usually simplify
-error paths and/or destruction of partially initialized objects.
-
-Regards,
-
-Boris
-
-[1]https://elixir.bootlin.com/linux/v7.0.1/source/fs/char_dev.c#L594
+Cheers.
+Chester A.
 
