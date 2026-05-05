@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94574CD342F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 07:53:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40372CD342F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 08:00:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8oXAH0eGtLQlI6L2R3mxURT9r70v9JyXlcee2nEX1e0=; b=JK/Hi+sgS02Jke0Mmd2FfARm4y
-	fTKdIOiiK3ry5k6+hF0d19hAmfGaTgqLhzbl0CD3qpIyFiYXRvHWc5g0btL6arRwXQudpVJ04PSHY
-	pm8oUwtDdjwAF8QiQtX+cMZd1VJ14d9He+DPPB1t8xUreQKLcRNHNxqvHDgb1vG8lsfecDbyJydjG
-	WTTX22lXf5EdIregQ9CcTcEIS4pJ9fNfHVpM43vuHwWmupjdYP43sH5dt5bEDJNwfPb8XxGSUoB2L
-	aRDHkCizKJ1evN2NMWDcPzdZij5Qoj3VhDKCERaKPPls7B1R4AYvE+NUUnDRjM3oI5w1TunBK1oZq
-	1pXNFKtQ==;
+	bh=ljC0rX/6kR+YLwHCh+ohNYlzkNz2nTF18vqzelk0SCQ=; b=kTGMb/gMAFyDiTqsYQ07335BCz
+	By/jPKuSLqZ/YmmMzi+aE73/swyS39ptNnAm55Hu4vmXjaZpIpMgSsfrIPQQPEV6F7xZZO5MuBFAO
+	KeXre9g9fjf65KCFp8si3FhKCkv0OtdqaZMmIsDti1udQNfVZLdY/ZHSlRst51kP0tgttCjujVK5o
+	WiXgMB/0SS7uytf4ad2aF8Am2My2oHfEaTKLy6k64lGo76MBBE7o2OnNaxNaZHj4ykfkg9M9seU6B
+	OqNHI+68z9K94PrsM4kDtZLIe78cjnmX35sEZWKFMevTj9hEUZNl/8iUYc39P2F8JSvT8F3odYgTb
+	Be+qD6ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKAax-0000000FSMQ-0QHL;
-	Tue, 05 May 2026 07:53:31 +0000
-Received: from mgamail.intel.com ([192.198.163.12])
+	id 1wKAhN-0000000FTKS-1OLo;
+	Tue, 05 May 2026 08:00:09 +0000
+Received: from mgamail.intel.com ([198.175.65.9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKAat-0000000FSLj-3qH1;
-	Tue, 05 May 2026 07:53:29 +0000
+	id 1wKAhK-0000000FTJ0-3CGd;
+	Tue, 05 May 2026 08:00:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1777967608; x=1809503608;
+  t=1777968007; x=1809504007;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=BrhuC8t53vfsZNJjtxaRQN0b4ACZgyma1EephQqZQUw=;
-  b=fzpvzG52hRnE/F+t3YARJHiZ+A1zJwEKdZSI5OmR3hWYUFOy0cLQ9Dex
-   fElvjWatSuFbGJlmQHcoDfvW4cUieD1yJzT/ZhGokWuCuki3JGCExLd46
-   fzNNyjQwuYrOlBkgJkkzm8wRlSIBG0C8T0DpHubXZT4TOWwlJdb1Zr/eB
-   wcOD9qKCyrTAS9/MHYD8djU0ekl7U4ZB4NIsyJ/Usld4pC1bCY/TrgrYR
-   jb0DUPcCjYHhCti24vzas4xos1ki+MetXhgEyLSTE5iFt6YWENXJbYETD
-   DIaD8Hb8u/RF/mkFpy20IYQZwYgpGXx/tmYQ2wD9XYHrgxo1f2SshwIjv
-   Q==;
-X-CSE-ConnectionGUID: 5uvnfLUPRcW5mGgbbmEueg==
-X-CSE-MsgGUID: WeGq+pR7Q5KJhP6vwzSjWw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11776"; a="82683930"
+  bh=e5TdMMMshQ/NUER+c6FHekX5QCigzt9bH/+8TPl1gr4=;
+  b=NslxZJSFxswAMOIt5yPZ6dLo7q1JgMIq/WGlegkwuVA1WHlIUml4wB9h
+   3JCysagYIstCNZNBO/ybhKaWDpRnzyaFfusYS0mdb7D4M6vyOo3yaGTNQ
+   1H0gLmsXFa3N7kxUnMzYf/9mtMY45emwwDDMmmtxJtfO5I3CdhkUF4mXQ
+   2ZyHZumvhwH1OTRzHUPX7DycAFN1rPPTUK5zfXdQW1MJljq4IkttJWMwW
+   0y0/MmQkZes1SkunyRjtAY0yOZe6ijsffOH/ojkg0eGuxzMvj8IPs6JXx
+   l5jKIBN0CCWJbogTIpr1uuOF0lC3k2nEUKK8KWxfirUwXF+UZcwtZpeKr
+   g==;
+X-CSE-ConnectionGUID: HnMLZE/oQY6dEAkGHr/iJw==
+X-CSE-MsgGUID: PoVdb/SGTgiqUKUItR8anw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11776"; a="101498995"
 X-IronPort-AV: E=Sophos;i="6.23,217,1770624000"; 
-   d="scan'208";a="82683930"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
-  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 May 2026 00:53:27 -0700
-X-CSE-ConnectionGUID: /9NJwlwzR4Kea1pYqYJg7A==
-X-CSE-MsgGUID: NwoG24f0TemA++QJBz92ZQ==
+   d="scan'208";a="101498995"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 May 2026 01:00:06 -0700
+X-CSE-ConnectionGUID: hxN2Bkm8R72rAe/47L/e8g==
+X-CSE-MsgGUID: 9D/82zBaSFapcfnhxHpoQw==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.23,217,1770624000"; 
-   d="scan'208";a="235614542"
+   d="scan'208";a="266089021"
 Received: from vpanait-mobl.ger.corp.intel.com (HELO localhost) ([10.245.244.5])
-  by orviesa008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 May 2026 00:53:21 -0700
-Date: Tue, 5 May 2026 10:53:19 +0300
+  by orviesa002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 May 2026 01:00:00 -0700
+Date: Tue, 5 May 2026 10:59:57 +0300
 From: Andy Shevchenko <andriy.shevchenko@intel.com>
 To: rva333@protonmail.com
 Cc: Jonathan Cameron <jic23@kernel.org>,
@@ -73,19 +73,19 @@ Cc: Jonathan Cameron <jic23@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
 	Ben Grisdale <bengris32@protonmail.ch>
-Subject: Re: [PATCH 04/13] iio: adc: mediatek: add mt6323 PMIC AUXADC driver
-Message-ID: <afmh70niEmjl53g9@ashevche-desk.local>
+Subject: Re: [PATCH 05/13] nvmem: add mt6323 PMIC EFUSE driver
+Message-ID: <afmjfWtt7Vii6xfH@ashevche-desk.local>
 References: <20260504-mt6323-v1-0-799b58b355ff@protonmail.com>
- <20260504-mt6323-v1-4-799b58b355ff@protonmail.com>
+ <20260504-mt6323-v1-5-799b58b355ff@protonmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260504-mt6323-v1-4-799b58b355ff@protonmail.com>
+In-Reply-To: <20260504-mt6323-v1-5-799b58b355ff@protonmail.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
  krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260505_005327_974964_391ED0CD 
-X-CRM114-Status: GOOD (  29.28  )
+X-CRM114-CacheID: sfid-20260505_010006_874841_41535C95 
+X-CRM114-Status: GOOD (  17.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,342 +100,88 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 04, 2026 at 09:24:56PM +0300, Roman Vivchar via B4 Relay wrote:
+On Mon, May 04, 2026 at 09:24:57PM +0300, Roman Vivchar via B4 Relay wrote:
 
-> The mt6323 AUXADC is a 15-bit ADC used for system monitoring. This driver
-> provides support for reading various channels including battery and
-> charger voltages, battery and chip temperature, current sensing and
-> accessory detection.
-> 
-> Add a driver for the AUXADC found in the MediaTek mt6323 PMIC.
+> Add support for the EFUSE controller found in the Mediatek MT6323 PMIC.
+> The MT6323 EFUSE stores 24 bytes of hardware-related data, such as
+> thermal sensor calibration values.
+
+Besides below comments, check for the similar issues that previous patches in
+the series have.
 
 ...
 
-> +#include <linux/bitfield.h>
-> +#include <linux/bits.h>
-> +#include <linux/cleanup.h>
-> +#include <linux/delay.h>
-> +#include <linux/iio/iio.h>
+> +#include <linux/device.h>
+
+Not needed as platform_device.h implies this ("is this good or bad?" is a
+different story).
+
+> +#include <linux/io.h>
+> +#include <linux/mfd/mt6323/registers.h>
 > +#include <linux/mod_devicetable.h>
 > +#include <linux/module.h>
+> +#include <linux/nvmem-provider.h>
 > +#include <linux/platform_device.h>
 > +#include <linux/property.h>
 > +#include <linux/regmap.h>
-> +#include <linux/types.h>
 
-Follow IWYU. At least stringify.h is missing.
-
-...
-
-> +#define MTK_PMIC_IIO_CHAN(_name, _idx, _ch_type) \
-> +	{ .type = _ch_type,                              \
-> +	  .indexed = 1,                                  \
-> +	  .channel = _idx,                               \
-> +	  .address = _idx,                               \
-> +	  .datasheet_name = __stringify(_name),          \
-> +	  .info_mask_separate = BIT(IIO_CHAN_INFO_RAW) | \
-> +				BIT(IIO_CHAN_INFO_SCALE) }
-
-Make {} each to occupy a single line.
+Follow IWYU. At least missing types.h.
 
 ...
 
-> +/**
-> + * struct mt6323_auxadc - Main driver structure
-> + * @dev:           Device pointer
-> + * @regmap:        Regmap from PWRAP
-> + * @lock:          Mutex to serialize AUXADC reading vs configuration
-
- *
- * ...put struct decription here... See below why.
- *
-
-> + */
-> +struct mt6323_auxadc {
-> +	struct device *dev;
+> +struct mt6323_efuse {
 > +	struct regmap *regmap;
-
-Do you need both? Are they different? (I mean that regmap may be derived from
-device and vice versa depending on the case.)
-
-Ok, it seems the dev is the current platform device, while regmap comes from
-parent->parent to it (2 levels up!). This needs a good comment in the struct
-description explaining the hierarchy.
-
-> +	struct mutex lock;
 > +};
 
+Do you really need a custom wrapper data structure? Can't regmap be used
+directly?
+
 ...
 
-> +static int mt6323_auxadc_check_if_stuck(struct mt6323_auxadc *auxadc)
+> +static int mt6323_efuse_read(void *context, unsigned int offset, void *val,
+> +			     size_t bytes)
 > +{
+> +	struct mt6323_efuse *efuse = context;
+> +	u32 tmp;
+
+> +	u16 *buf = val;
+
+Really? CPU order all the time?
+
 > +	int i, ret;
 
 Why is 'i' signed?
 
-> +	u32 val;
-> +
-> +	for (i = 0; i < 50; i++) {
+> +	for (i = 0; i < bytes; i += 2) {
 
-Magic 50 and the whole thing is reinvention of something from iopoll.h.
+sizeof()?
 
-> +		ret = regmap_read(auxadc->regmap, MT6323_AUXADC_CON19, &val);
+And since 'i' is used only inside the loop
+
+	for (size_t i = 0; i < bytes; i += sizeof(*buf)) {
+
+> +		ret = regmap_read(efuse->regmap,
+> +				  MT6323_EFUSE_DOUT_BASE + offset + i, &tmp);
 > +		if (ret)
 > +			return ret;
-> +
-> +		if (FIELD_GET(AUXADC_DECI_GDLY_MASK, val)) {
-> +			ret = regmap_read(auxadc->regmap, MT6323_AUXADC_ADC19,
-> +					  &val);
-> +			if (ret)
-> +				return ret;
-> +
-> +			if (!FIELD_GET(AUXADC_ADC19_BUSY_MASK, val)) {
-> +				ret = regmap_update_bits(
-
-Bad indentation, there is a room for parameter on the previous line.
-
-> +					auxadc->regmap, MT6323_AUXADC_CON19,
-> +					FIELD_PREP(AUXADC_DECI_GDLY_MASK, 3),
-> +					0x0);
-> +				if (ret)
-> +					return ret;
-> +			}
-> +		} else {
-> +			return 0;
-> +		}
-> +
-> +		fsleep(10);
+> +		buf[i / 2] = tmp;
 > +	}
-> +
-> +	return -ETIMEDOUT;
-> +}
 
-TL;DR: Find a suitable macro in iopoll.h and use it.
++ blank line.
 
-...
-
-> +static int mt6323_auxadc_request(struct mt6323_auxadc *auxadc,
-> +				 unsigned long channel)
-> +{
-> +	int ret;
-> +	u32 pmic_val, adc_val;
-> +
-> +	if (channel < 9) {
-> +		ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON11,
-> +					 AUXADC_VBUF_EN, AUXADC_VBUF_EN);
-> +		if (ret)
-> +			return ret;
-> +
-> +		ret = regmap_read(auxadc->regmap, MT6323_AUXADC_CON22,
-> +				  &pmic_val);
-> +		if (ret)
-> +			return ret;
-> +
-> +		adc_val = FIELD_GET(AUXADC_LOW_CHANNEL_MASK, pmic_val);
-> +		adc_val &= ~BIT(channel);
-
-We also have FIELD_MODIFY(). Use it in all cases where appropriate.
-
-> +		ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON22,
-> +					 AUXADC_LOW_CHANNEL_MASK, adc_val);
-> +		if (ret)
-> +			return ret;
-> +
-> +		ret = regmap_read(auxadc->regmap, MT6323_AUXADC_CON22,
-> +				  &pmic_val);
-> +		if (ret)
-> +			return ret;
-> +
-> +		adc_val = FIELD_GET(AUXADC_LOW_CHANNEL_MASK, pmic_val);
-> +		adc_val |= BIT(channel);
-> +
-> +		ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON22,
-> +					 AUXADC_LOW_CHANNEL_MASK, adc_val);
-
-> +
-
-Stray blank line.
-
-> +	} else {
-
-Redundant 'else' as this may be returned directly. So, refactor each branch to
-a helper and use this as a small wrapper.
-
-	if (channel < 9)
-		return ...helper_for_chan_<_9...;
-
-	return ...otherwise...;
-
-> +		ret = regmap_read(auxadc->regmap, MT6323_AUXADC_CON23,
-> +				  &pmic_val);
-> +		if (ret)
-> +			return ret;
-> +
-> +		adc_val = FIELD_GET(AUXADC_AUDIO_CHANNEL_MASK, pmic_val);
-> +		adc_val &= ~BIT(channel - 9);
-> +
-> +		ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON23,
-> +					 AUXADC_AUDIO_CHANNEL_MASK, adc_val);
-> +		if (ret)
-> +			return ret;
-> +
-> +		ret = regmap_read(auxadc->regmap, MT6323_AUXADC_CON23,
-> +				  &pmic_val);
-> +		if (ret)
-> +			return ret;
-> +
-> +		adc_val = FIELD_GET(AUXADC_AUDIO_CHANNEL_MASK, pmic_val);
-> +		adc_val |= BIT(channel - 9);
-> +
-> +		ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON23,
-> +					 AUXADC_AUDIO_CHANNEL_MASK, adc_val);
-> +	}
-> +
-> +	return ret;
-> +}
-
-...
-
-> +static int mt6323_auxadc_read(struct mt6323_auxadc *auxadc,
-> +			      const struct iio_chan_spec *chan, int *out)
-> +{
-> +	int ret;
-> +	u32 reg = mt6323_auxadc_channel_to_reg(chan->address);
-> +	u32 val;
-> +
-> +	ret = regmap_read_poll_timeout(auxadc->regmap, reg, val,
-> +				       (val & AUXADC_RDY_MASK), 1000, 100000);
-
-Redundant parentheses, also use multipliers from time.h
-
-	struct regmap *map = ... // use this trick elsewhere as well
-
-	ret = regmap_read_poll_timeout(map, reg, val, val & AUXADC_RDY_MASK,
-				       1 * USEC_PER_MSEC, 100 * USEC_PER_MSEC);
-
-> +	if (ret)
-> +		return ret;
-> +
-> +	*out = FIELD_GET(AUXADC_DATA_MASK, val);
-> +
-> +	return 0;
-> +}
-
-...
-
-> +static int mt6323_auxadc_read_raw(struct iio_dev *indio_dev,
-> +				  const struct iio_chan_spec *chan, int *val,
-> +				  int *val2, long mask)
-> +{
-> +	struct mt6323_auxadc *auxadc = iio_priv(indio_dev);
-> +	int ret, mult = 1;
-> +
-> +	if (mask == IIO_CHAN_INFO_RAW) {
-> +		scoped_guard(mutex, &auxadc->lock)
-> +		{
-
-Why? It's not a switch-case, the guard()() should be fine.
-
-> +			ret = mt6323_auxadc_check_if_stuck(auxadc);
-> +			if (ret)
-> +				return ret;
-> +
-> +			ret = mt6323_auxadc_request(auxadc, chan->address);
-> +			if (ret)
-> +				return ret;
-> +
-> +			usleep_range(300, 500);
-
-We have fsleep().
-
-> +			ret = mt6323_auxadc_read(auxadc, chan, val);
-> +			if (ret)
-> +				return ret;
-> +			return IIO_VAL_INT;
-> +		}
-> +	} else if (mask == IIO_CHAN_INFO_SCALE) {
-> +		if (chan->channel == MT6323_AUXADC_ISENSE ||
-> +		    chan->address == MT6323_AUXADC_BATSNS)
-> +			mult = 4;
-> +
-> +		*val = mult * 1800;
-> +		*val2 = 32768;
-> +
-> +		return IIO_VAL_FRACTIONAL;
-> +	} else
-> +		return -EINVAL;
-> +}
-
-...
-
-> +	ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON10,
-> +				 AUXADC_TRIM_CH2 | AUXADC_TRIM_CH4 |
-> +					 AUXADC_TRIM_CH5 | AUXADC_TRIM_CH6,
-> +				 AUXADC_TRIM_CH2 | AUXADC_TRIM_CH4 |
-> +					 AUXADC_TRIM_CH5 | AUXADC_TRIM_CH6);
-> +	if (ret)
-> +		return ret;
-
-We have _set_bits()/_clear_bits()/_assign_bits() of regmap API. Use them here
-and in many other cases in this driver (and probably in the entire series.
-I'm not going to comment each of the cases.
-
-...
-
-> +static int mt6323_auxadc_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct mt6323_auxadc *auxadc;
-> +	struct iio_dev *iio;
-> +	struct regmap *regmap;
-> +	int ret;
-> +
-> +	/* mfd->pwrap regmap */
-> +	regmap = dev_get_regmap(dev->parent->parent, NULL);
-> +	if (!regmap)
-> +		return dev_err_probe(dev, -ENODEV, "failed to get regmap\n");
-> +
-> +	iio = devm_iio_device_alloc(dev, sizeof(*auxadc));
-> +	if (!iio)
-> +		return -ENOMEM;
-> +
-> +	auxadc = iio_priv(iio);
-> +	auxadc->regmap = regmap;
-> +	auxadc->dev = dev;
-
-> +	mutex_init(&auxadc->lock);
-
-devm.
-
-> +	ret = mt6323_auxadc_init(auxadc);
-> +	if (ret)
-> +		return dev_err_probe(dev, ret, "failed to initialize auxadc\n");
-> +
-> +	iio->name = "mt6323-auxadc";
-> +	iio->info = &mt6323_auxadc_iio_info;
-> +	iio->modes = INDIO_DIRECT_MODE;
-> +	iio->channels = mt6323_auxadc_channels;
-> +	iio->num_channels = ARRAY_SIZE(mt6323_auxadc_channels);
-> +
-> +	ret = devm_iio_device_register(dev, iio);
-> +	if (ret)
-
-> +		return dev_err_probe(dev, ret,
-> +				     "failed to register iio device\n");
-
-One line
+Isn't this reimplementation of bulk read? Why the latter may not be used?
 
 > +	return 0;
 > +}
 
 ...
 
-> +static const struct of_device_id mt6323_auxadc_of_match[] = {
-> +	{ .compatible = "mediatek,mt6323-auxadc" },
-> +	{}
+> +static const struct of_device_id mt6323_efuse_of_match[] = {
+> +	{ .compatible = "mediatek,mt6323-efuse" },
+> +	{ /* sentinel */ },
 
-
-IIRC we use { } (with space) in IIO for the terminator entry in ID tables.
+Having trailing comma in the terminator is nonsense. Do we expect anything
+behind it?
 
 > +};
 
