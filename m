@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F8CAFF885A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 11:58:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B3A1FF885A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 12:07:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bndECe7tVksSz5MoZ2EIWK0CTKacoiB1e4ynpEjmeO4=; b=hL7DSjU80kbaPZ+OqKXP+0sUzQ
-	Sgg+6KPGKYifs1Am+3qK5d73TqUXb6oR4K7Pwrs9bHdtzoznM+4anLjsAze+GbmRBjJ3QWhs1rYqu
-	Px8/9kHHJVk8vovCkSp9jTbUO795HtObsg8Nb5YX9g/c3tLlACV05g4WWmC8awVs89B1PgIcSwyvB
-	fgPeOSbRKBTrna3du8PxNhTRmgBVSVxyzsq2PCecIW65Dmzr1Hk0TjecjYaGOMst75nKC+a09sjQj
-	0dSwrattraOrrY+8v/HPiP9poBMNxznwMiDAw0f1GO768lyLgaEmYEGJ5zO6yXdG83rReDz16ZmBt
-	DFpOb/zw==;
+	bh=HF4fDcfZat7jzEungAgHCl0mvU7H+c7SfgOO0OVEcBE=; b=rCvsasISdoBVtejjrtdwyB8X1q
+	k8Q12DGeVs8Nac69nnsTn5PHjkX+FzL215Veoob3FwodyAxeGSs98lGhW8TlrQXAA5lqpIMRBh05R
+	9Es1ZOTaygk4BW+PRz7Iu0E6fdut9Mojr16CFdl/uHOvcPV6rKxaEfOuWSChJ6TBPfhla3pZ6DM/r
+	oVSHrEBn6YsGk/w+HFsL+Es/awhzXEFbpampCqpaE8J/1McjiXoigX3510i9T1f93fUzlXVjZFL65
+	u1o2+xqsQUg+UN6Fh10Fzg51VToj+6ssivR3l8doPQjas9987MpYM5tZBTr7RBDLU1ChHRyNdxnpj
+	yR1fWOOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKEPs-0000000G79Z-33So;
-	Tue, 05 May 2026 11:58:20 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wKEYE-0000000G8DA-3A5r;
+	Tue, 05 May 2026 12:06:58 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKEPq-0000000G78U-2WpZ;
-	Tue, 05 May 2026 11:58:18 +0000
+	id 1wKEYD-0000000G8Cu-1LMe;
+	Tue, 05 May 2026 12:06:57 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id AE0EF60133;
-	Tue,  5 May 2026 11:58:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 10004C2BCB4;
-	Tue,  5 May 2026 11:58:13 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 63B3F60141;
+	Tue,  5 May 2026 12:06:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EF650C2BCB4;
+	Tue,  5 May 2026 12:06:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777982297;
-	bh=zpz/IBCMJ9rlEr5yvIog9kP6PEwlQCzTVEu7FEW2KM4=;
+	s=k20201202; t=1777982816;
+	bh=EvcaFmZ3SemGSNQwfe2IqD0C3HrRr8Eraf8WWgh4zRU=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=cEzCYbvzlQqVwbMHf3QKF3rgBoeN0/DldW50hQ2kCJwawcZw3c7FeP99QGUIKKRRf
-	 rPVlDpcd7kZOIlxtgbE3kljytwC7tCAeSQ/Oe9dHJMV+y1Tx+wj4xwCrIPl0KMOfMu
-	 caR/laiD6TwQHFfXueIMSjPmgX0Z5vmewf8IQkm2W8a8p/hk29v+A+qRB4coQANeWV
-	 w3Xi9OkfUjN5HFv1LQtwjwWoPxjwTag61ifSccoKkQMWXmo6ordqP2qVvs91CGi+b1
-	 C6uyHTmQoCDprRlbP8k92QxZXn7CQsIWUlx0u4zPh0Jtv+3pd0jF4IWTD3yCWrMpJ1
-	 m96mKYj83UOhg==
+	b=BcqsIg5EChrpTYw+1mkCeRZNKk0ebPUvdtgicO05R5BTyrMFZ1KbCNFm7k5aXLh+v
+	 0Fhz5g9dZA5ePmxLooBKaY1WdSQEyAjrc+FbcF9wl05Z0kUl9Fc1z/gegCZCD6DJ6M
+	 fHd8U1cgAwcIAJpA9oQsUQo+C9RNsWFB9DLPbs0y+2q0yEZjl3CI7LIkzbDs+Uc9cS
+	 E5l7+ccGhzT2iDzfB4G6rYYkEM3GjX/+Du0+Tl/IqVJV3u5OEnFrE1/WRK3tO5KlW7
+	 CH/JIre/oli+cfRoLCgD3H3SZHx5kJWLXgIfxvKTo38A0iXhxdETIHAA0QXZs9ANqI
+	 zFl2w5VzMJA9g==
 From: Mark Brown <broonie@kernel.org>
 To: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>, 
  Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -48,20 +48,31 @@ To: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
  Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Bartosz Golaszewski <brgl@bgdev.pl>, Linus Walleij <linusw@kernel.org>, 
- "Darren.Ye" <darren.ye@mediatek.com>
+ Cyril Chao <Cyril.Chao@mediatek.com>
 Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org, 
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org
-In-Reply-To: <20250822125301.12333-1-darren.ye@mediatek.com>
-References: <20250822125301.12333-1-darren.ye@mediatek.com>
-Subject: Re: [PATCH v7 00/10] ASoC: mediatek: Add support for MT8196 SoC
-Message-Id: <177798229351.597350.5415197464438946507.b4-ty@b4>
-Date: Tue, 05 May 2026 20:58:13 +0900
+ linux-mediatek@lists.infradead.org, Cyril Chao <cyril.chao@mediatek.com>, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+In-Reply-To: <20260430022417.32282-1-Cyril.Chao@mediatek.com>
+References: <20260430022417.32282-1-Cyril.Chao@mediatek.com>
+Subject: Re: [PATCH v9 00/10] ASoC: mediatek: Add support for MT8196 SoC
+Message-Id: <177794601708.568329.5706730296147006187.b4-ty@b4>
+Date: Tue, 05 May 2026 10:53:37 +0900
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.16-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2541; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=EvcaFmZ3SemGSNQwfe2IqD0C3HrRr8Eraf8WWgh4zRU=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBp+d1b+imK4W+OLIW4agEVcJncBcrDG50aFRvJI
+ 1ZXQWIype+JATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCafndWwAKCRAk1otyXVSH
+ 0JksB/0bq9itAWEAmXSTpnL4jGlTXrf6FE2oxQTrsoA5VKlc//N/hafJMmKe1pklS3uRc2epzcx
+ AqFnusgzPUsSBjxbStPioCyF0QKuCnbtFxWRjLvE0U6CC3Z8nKp+UPCKflMAKEWVcGXp/fv0E13
+ GMz5ejem2tqbtwt89/7ebYCo2b+Yfvd9gmELqInRHMp6zUdESrYilJUPFtPuw8a9t+z4P1/TWsJ
+ IdOoO7Hh6L/xsddtzwekY7X4bou0WP3fZKBZ0IQkXIMbLcz1sYzjn1xTgBNNPi4XYQBqIkX8Fkf
+ TSAU9HDof/2e5ZkF8NHafLrRpaJTD9ypVJQEfiHh2hqsvnXX
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,49 +87,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 22 Aug 2025 20:52:29 +0800, Darren.Ye wrote:
+On Thu, 30 Apr 2026 10:23:13 +0800, Cyril Chao wrote:
+> ASoC: mediatek: Add support for MT8196 SoC
+> 
 > This series of patches adds support for Mediatek AFE of MT8196 SoC.
 > Patches are based on broonie tree "for-next" branch.
 > 
-> Changes since v6:
->  - optimize mtk_afe_pcm_pointer interface and improved logic checks.
->  - update mt8196_afe_private structure by removing unused member variables.
->  - only reference clocks directly supplied to afe and set required frequencies directly.
->  - update adda driver according to reviewer suggestions.
->  - update i2s driver according to reviewer suggestions.
->  - update tdm driver according to reviewer suggestions.
->  - optimize platform driver and update widget rotues.
->  - move the sof route from platform driver to the machine driver, and moved pinctrl to platform driver.
->  - update the afe yaml file to remove unnecessary clock references.
+> This v9 series is based on the v8 version:
+> Link: https://patchwork.kernel.org/project/alsa-devel/patch/20260324015719.17543-2-Cyril.Chao@mediatek.com/
 > 
 > [...]
 
 Applied to
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.2
 
 Thanks!
 
 [01/10] ASoC: mediatek: common: modify mtk afe platform driver for mt8196
-        https://git.kernel.org/broonie/misc/c/1aadc0147b42
+        https://git.kernel.org/broonie/sound/c/1aadc0147b42
 [02/10] ASoC: mediatek: mt8196: add common header
-        https://git.kernel.org/broonie/misc/c/33eda2c14ff7
+        https://git.kernel.org/broonie/sound/c/33eda2c14ff7
 [03/10] ASoC: mediatek: mt8196: support audio clock control
-        https://git.kernel.org/broonie/misc/c/7384ecab34eb
+        https://git.kernel.org/broonie/sound/c/7384ecab34eb
 [04/10] ASoC: mediatek: mt8196: support ADDA in platform driver
-        https://git.kernel.org/broonie/misc/c/9a5881402c6e
+        https://git.kernel.org/broonie/sound/c/9a5881402c6e
 [05/10] ASoC: mediatek: mt8196: support I2S in platform driver
-        https://git.kernel.org/broonie/misc/c/65a195132669
+        https://git.kernel.org/broonie/sound/c/65a195132669
 [06/10] ASoC: mediatek: mt8196: support TDM in platform driver
-        https://git.kernel.org/broonie/misc/c/ede4d841111a
-[07/10] ASoC: mediatek: mt8196: add platform driver
-        https://git.kernel.org/broonie/misc/c/57513aabfe5b
-[08/10] ASoC: dt-bindings: mediatek,mt8196-afe: add audio AFE
-        https://git.kernel.org/broonie/misc/c/5cd03440c0d4
-[09/10] ASoC: mediatek: mt8196: add machine driver with nau8825
-        https://git.kernel.org/broonie/misc/c/de764b0d1838
-[10/10] ASoC: dt-bindings: mediatek,mt8196-nau8825: Add audio sound card
-        https://git.kernel.org/broonie/misc/c/1c65cc451873
+        https://git.kernel.org/broonie/sound/c/ede4d841111a
+[07/10] ASoC: dt-bindings: mediatek,mt8196-afe: add audio AFE
+        https://git.kernel.org/broonie/sound/c/5cd03440c0d4
+[08/10] ASoC: mediatek: mt8196: add platform driver
+        https://git.kernel.org/broonie/sound/c/57513aabfe5b
+[09/10] ASoC: dt-bindings: mediatek,mt8196-nau8825: Add audio sound card
+        https://git.kernel.org/broonie/sound/c/1c65cc451873
+[10/10] ASoC: mediatek: mt8196: add machine driver with nau8825
+        https://git.kernel.org/broonie/sound/c/de764b0d1838
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
