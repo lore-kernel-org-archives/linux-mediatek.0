@@ -4,64 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9B8CCD342C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 02:41:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0DBACD13DA
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 05:53:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9C4YQiTr1heKLzM5wcYC994nNBRKDFtPuR7TzCPolqc=; b=uZjTQ3kANWGAEpDjGIcTPfa6Jq
-	lQ/lcKZ7s+4GcSbnlY00dlq7uhJD/AkqNfUfoM78cIS+2jVdoHCgBtV3ue0dvEfMg/vvTGxgdLnKm
-	jTocGtRQik+Kjx7Uh2rWpubFprdjqKzSQXTttK+GtSVIozhbWNMF9TGyDWezV+/SBvYedvDRFUEAi
-	jAB/rBJfJDidn/PYou/0fo5i3ptulOZtX1NKsyifjHy7pwcWtc914xbYT81vy0BKKTWQUT8IW/FWh
-	UTcgr7xRgOl1DUTT3KuTWDsZDBAXU8FUz9DwrvNysazcE53H/RUcWwJ/tL14eK60kHmRYd7dMhF9i
-	PM+02XNw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ZE4VB3odtA5SwhFGu6lkLTutzyz/UJ2uSkUrtsWrnts=; b=03lCcCWJe8K/1m4kqTvJSJCfR+
+	nXkh6KL33TFW4jI8C1l8KKC6mJgTspUG0Z73ad+bnEOM+WY8xxDUsxzIBx2iHCM6HmnJgR7skQZEu
+	M3ZFZ7YZ8abEv8IMmtP7ORXWgq2J7+ZCuSYLGCJylWX92FYVtWTxHgpQ9CGFW6ZQj7GUVmRb+WrI/
+	IFOd0PfW+zLxo7nuK4SAoNUUY7JyGyGlV62A5ZQ8zqGLpcov8wFrUImmOK8LQrrf1yQWY97fVmRy5
+	t2NO4oauLnf/7XrSIZnbPkgZHCZpv/xJbFDuEaMlUBaTZ2pMprdFE7rhnu/onh4F5f5k6vw7SbOX9
+	TlJEIVtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wK5ij-0000000Evve-3hCp;
-	Tue, 05 May 2026 02:41:13 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wK8iQ-0000000FEIO-3YPp;
+	Tue, 05 May 2026 05:53:06 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wK5ih-0000000Evu6-2Yw1;
-	Tue, 05 May 2026 02:41:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9D11344516;
-	Tue,  5 May 2026 02:41:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7E6A5C2BCC4;
-	Tue,  5 May 2026 02:41:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777948870;
-	bh=cz9PCzZLbGqRc2okSEJXwOQyt7dx65kZ5KjOSudA1Jk=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=cU/GhPcLoOamlka9r0DQet3iRt8gZ2zjfr+DAQcwSdM6y2VkMIX5H2zjx1a4TJYVc
-	 7vq2t+OFrD/+inDWqWn2COiXLLa6SzGymBBQe+q/Zkj55C2LRHkGaVSe5ufnNPW044
-	 m6y7gVs9zb2UOTph6bL+t/3HF8vfx0jqwqUGCbSnQFY3Cj3ZS/dvsOm5X312KroaTT
-	 fMH0i7KdUf++XpERCNAjtdl3AIZ6dig5q6kV8dVVrBWgOBNiaZm5xPLsXPKbnu4Amb
-	 OtH2KyKUr2e3/UcATnuIyigbBwL+0RhQ0iOAvz1WWa48ApFevmvnmFMIosFejVaAnP
-	 jlbE1Q9WLe1yA==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 7CE7739301A2;
-	Tue,  5 May 2026 02:40:22 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1wK8iO-0000000FEI1-2YfK
+	for linux-mediatek@lists.infradead.org;
+	Tue, 05 May 2026 05:53:05 +0000
+X-UUID: a9f569b6484611f19f231fa534c5cac8-20260504
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=ZE4VB3odtA5SwhFGu6lkLTutzyz/UJ2uSkUrtsWrnts=;
+	b=Al1ZZamuzh8e/h49EYAKmTLNZcqhhXiSkhkNTvvUtnKSxWcoBiGTgqU30NxXGZTnQfGDEKFlEGVbTjros+eZOn2FSWtuKg177hiEini5Fm1+SCzusm0C5xnboOgaPjf0ThNcGNmQ9azMmIU/DHtpYdFVlfKn4NuMT7T/8jhdCBM=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.12,REQID:0eba47ef-fb8d-4b7e-9735-24c9d4f3dcc6,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:e7bac3a,CLOUDID:213ef370-3b7f-4b26-b2f9-40f0deecb36d,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|865|888|898,TC:-5,Content:0|
+	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0
+	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: a9f569b6484611f19f231fa534c5cac8-20260504
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <jb.tsai@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 136267338; Mon, 04 May 2026 22:52:56 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Tue, 5 May 2026 13:52:53 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Tue, 5 May 2026 13:52:53 +0800
+From: JB Tsai <jb.tsai@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<Deren.Wu@mediatek.com>, <Sean.Wang@mediatek.com>, <Quan.Zhou@mediatek.com>,
+	<Ryder.Lee@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<litien.chang@mediatek.com>, <jeff.hsu@mediatek.com>, <jb.tsai@mediatek.com>,
+	Jeff Hsu <Jeff.Hsu@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7925: Add coredump callback in pci_driver
+Date: Tue, 5 May 2026 13:52:52 +0800
+Message-ID: <20260505055252.2558613-1-jb.tsai@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next v3] net: airoha: Introduce
- airoha_fe_get()/airoha_qdma_get() register read helpers
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <177794882129.1397274.6642429130537078994.git-patchwork-notify@kernel.org>
-Date: Tue, 05 May 2026 02:40:21 +0000
-References: <20260501-airoha_fe_get-airoha_qdma_get-v3-1-126c6f647ccb@kernel.org>
-In-Reply-To: <20260501-airoha_fe_get-airoha_qdma_get-v3-1-126c6f647ccb@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, horms@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260504_194111_671432_B92737A2 
-X-CRM114-Status: UNSURE (   8.91  )
+X-CRM114-CacheID: sfid-20260504_225304_655613_27B4C245 
+X-CRM114-Status: UNSURE (   6.68  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,29 +88,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+From: Jeff Hsu <Jeff.Hsu@mediatek.com>=0D
 
-This patch was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
-
-On Fri, 01 May 2026 09:49:11 +0200 you wrote:
-> Add airoha_fe_get() and airoha_qdma_get() as utility routines for reading
-> a masked field from a specified register.
-> This is a non-functional refactor, no logical changes are introduced to
-> the existing codebase.
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> 
-> [...]
-
-Here is the summary with links:
-  - [net-next,v3] net: airoha: Introduce airoha_fe_get()/airoha_qdma_get() register read helpers
-    https://git.kernel.org/netdev/net-next/c/98e490930de3
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+Register coredump callback(mt7925_coredump) in pci_driver,=0D
+it can let platform can trigger core dump to collect the=0D
+log and recover back after coredump complete without debugfs=0D
+=0D
+Some platform not have debugfs=0D
+=0D
+Signed-off-by: Jeff Hsu <Jeff.Hsu@mediatek.com>=0D
+---=0D
+ drivers/net/wireless/mediatek/mt76/mt7925/mcu.c |  1 +=0D
+ drivers/net/wireless/mediatek/mt76/mt7925/pci.c | 12 ++++++++++++=0D
+ 2 files changed, 13 insertions(+)=0D
+=0D
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/=
+wireless/mediatek/mt76/mt7925/mcu.c=0D
+index 37cdf3e8a067..cd502166a7f9 100644=0D
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c=0D
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c=0D
+@@ -1014,6 +1014,7 @@ int mt7925_mcu_chip_config(struct mt792x_dev *dev, co=
+nst char *cmd)=0D
+ 	return mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD(CHIP_CONFIG),=0D
+ 				 &req, sizeof(req), false);=0D
+ }=0D
++EXPORT_SYMBOL_GPL(mt7925_mcu_chip_config);=0D
+ =0D
+ int mt7925_mcu_set_deep_sleep(struct mt792x_dev *dev, bool enable)=0D
+ {=0D
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/=
+wireless/mediatek/mt76/mt7925/pci.c=0D
+index c4161754c01d..5b3e62e5f157 100644=0D
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c=0D
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c=0D
+@@ -610,6 +610,17 @@ static int mt7925_pci_restore(struct device *device)=0D
+ 	return _mt7925_pci_resume(device, true);=0D
+ }=0D
+ =0D
++static void mt7925_coredump(struct device *dev)=0D
++{=0D
++	struct pci_dev *pdev =3D to_pci_dev(device);=0D
++	struct mt76_dev *mdev =3D pci_get_drvdata(pdev);=0D
++	struct mt792x_dev *dev_792x =3D container_of(mdev, struct mt792x_dev, mt7=
+6);=0D
++=0D
++	mt792x_mutex_acquire(dev_792x);=0D
++	mt7925_mcu_chip_config(dev_792x, "assert");=0D
++	mt792x_mutex_release(dev_792x);=0D
++}=0D
++=0D
+ static const struct dev_pm_ops mt7925_pm_ops =3D {=0D
+ 	.suspend =3D pm_sleep_ptr(mt7925_pci_suspend),=0D
+ 	.resume  =3D pm_sleep_ptr(mt7925_pci_resume),=0D
+@@ -626,6 +637,7 @@ static struct pci_driver mt7925_pci_driver =3D {=0D
+ 	.remove		=3D mt7925_pci_remove,=0D
+ 	.shutdown       =3D mt7925_pci_shutdown,=0D
+ 	.driver.pm	=3D pm_sleep_ptr(&mt7925_pm_ops),=0D
++	.driver.coredump =3D mt7925_coredump,=0D
+ };=0D
+ =0D
+ module_pci_driver(mt7925_pci_driver);=0D
+-- =0D
+2.45.2=0D
+=0D
 
