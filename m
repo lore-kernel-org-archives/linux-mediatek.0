@@ -4,117 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1028CCD3427
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 15:37:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53248CD3440
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 15:39:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qVt3lmzQ7N6PZH719ot9HwSZfxNbFLse3Q7BGP9gLo0=; b=wYfBlxxc/8za6f
-	AK7IoiG10S3pdFGybOFbVV0aBYepnimsLSnlpCkcz3b0fkI0+rLoOOvRMtRurZeMB1ByVUJSGVMz+
-	IYaDAKppJhyJHQC4ZZep078629l0JivtnHyt6ymX/lnsbcS5/uEShRTXJHLRTec9N7A7wcHRZrwg9
-	1M2AoTnd/4qrKz6Tii6SVcMyBX//9xjYDjukgUJq1kaUBHhqwR4aNW7R5oa+MayBl847wd3ltxmt+
-	cWS6OFzAjGrqKLVlGKuQYMqRPOj42vcdRy9D3l3PYtnfd4e+jPBNnLy+mFTaRH4btp9Zl9ZwDCaFZ
-	2vagX+ilakLo2GIl5ClQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yqPG+F/cQhevBJzzeHrios0S0GTQOoEFxBAhqr9zAn8=; b=tui7I4b21IhGanJELdTqoBnPEN
+	dthraA9KCljCRT03zbq12Qme49fFLx7Do2L/7LqwiL6tTpt1hvvlxpmtsQwOP8uMuSOHHWQi6g35I
+	3ffir7toXfsTw7CMtV1yJTGh0EUb/W3cwWFh5S1iQ2A6LfpRlHubmpWbkP/Qy0f90RPpaxvgCemoi
+	mtUxQ3NRYb/lYkih86b+pxpn+1B008GgbQvJAn+GDWjjT1QCmjmikWhvyeoO4NBKWStCkGMm9+1oh
+	/xVykIQKSoHMHAabmjmn4NvPLNYWKjhMAQIdlxdVV3fHBfhXycFe6w+Clfu3BBZNAgAZ8oVPxmBO7
+	5cGOdQng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKHqG-0000000Gfwg-3bWT;
-	Tue, 05 May 2026 15:37:48 +0000
-Received: from elephant.ash.relay.mailchannels.net ([23.83.222.57])
+	id 1wKHrm-0000000GgR5-0oNW;
+	Tue, 05 May 2026 15:39:22 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKHqC-0000000GfsL-2fS6;
-	Tue, 05 May 2026 15:37:46 +0000
-X-Sender-Id: hostingeremail|x-authuser|chester.a.unal@arinc9.com
-Received: from relay.mailchannels.net (localhost [127.0.0.1])
-	by relay.mailchannels.net (Postfix) with ESMTP id 7CDFB802AFE;
-	Tue, 05 May 2026 15:37:35 +0000 (UTC)
-Received: from de-fra-smtpout10.hostinger.io (100-97-142-130.trex-nlb.outbound.svc.cluster.local [100.97.142.130])
-	(Authenticated sender: hostingeremail)
-	by relay.mailchannels.net (Postfix) with ESMTPA id 33CBC802AD9;
-	Tue, 05 May 2026 15:37:32 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; d=mailchannels.net; s=arc-2022; cv=none;
-	t=1777995455;
-	b=xCnlpjAaETZZ8nB6SHCx3uKHKF8gy+I0b8kIjK1SV84Nm7mr8kN3yQ/Bmv3zfScALbXL32
-	D5utVoQithYoiwZafCH//fStWO43iF8/Ra80x591Umb+NdUYSmvvRQwyWDrhKeANzNBxKR
-	ScKKAlKyDPFBvMA6zg66D2HC3zgzG1+DmhlSr/FRWDI/47Ij8rimVot3QP6jh4UvFs0dqW
-	fsc6mGtJ25RuYhpMpacUA5LLAbuL3Ym2iHKpeWOqD+lV6oDVB7QWhBtCCaja3d/vLT65tG
-	/RIexo9YoI5clp/Hdx3gbfabxD16WwoSQlhn4hupuTnGVEA8GIMHybE+faZeiA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mailchannels.net;
-	s=arc-2022; t=1777995455;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:dkim-signature;
-	bh=qVt3lmzQ7N6PZH719ot9HwSZfxNbFLse3Q7BGP9gLo0=;
-	b=gkdE1mw+RZR9o4dfnfLlPxauQN3/RDP4M2R0bemfmlpvKtMDXJX9EO4BgFUzp6XYHuCHr5
-	fphQ4lzkndpIP9nC8oJ9ja9MEtglZgDclAhs3Ow3AsnARgJR0baSQX52sJLBbQ7oydtggJ
-	7WvXdIRvmmO8KOsC2sYqajMmYvwhmlro2sD1s38RWLqRaEX4ifNJn6wAx5xUL/kUzLMFI8
-	jXf/ZjZsXGqPqbmzSr9FqyHloDIG5aO0MGyp56rxWb601WtxwiAfC6CIFka5J58dbztCF3
-	Do3fRdTtAFhEUohsSrvrGgZJ+Mrp1/JgGYedIyubmt0PXFrYMR04mpqmWem+Rg==
-ARC-Authentication-Results: i=1;
-	rspamd-859c89884f-8lmrr;
-	auth=pass smtp.auth=hostingeremail smtp.mailfrom=chester.a.unal@arinc9.com
-X-Sender-Id: hostingeremail|x-authuser|chester.a.unal@arinc9.com
-X-MC-Relay: Neutral
-X-MailChannels-SenderId: hostingeremail|x-authuser|chester.a.unal@arinc9.com
-X-MailChannels-Auth-Id: hostingeremail
-X-Juvenile-Stretch: 5e85dd1b5d2d99ef_1777995455411_2547369502
-X-MC-Loop-Signature: 1777995455411:900885652
-X-MC-Ingress-Time: 1777995455411
-Received: from de-fra-smtpout10.hostinger.io (de-fra-smtpout10.hostinger.io
- [148.222.55.9])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384)
-	by 100.97.142.130 (trex/7.1.5);
-	Tue, 05 May 2026 15:37:35 +0000
-Received: from [10.10.10.3] (unknown [109.228.203.208])
-	(Authenticated sender: chester.a.unal@arinc9.com)
-	by smtp.hostinger.com (smtp.hostinger.com) with ESMTPSA id 4g92h93Jbrz405w;
-	Tue,  5 May 2026 15:37:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com;
-	s=hostingermail-a; t=1777995450;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=qVt3lmzQ7N6PZH719ot9HwSZfxNbFLse3Q7BGP9gLo0=;
-	b=OA9pK6JkqwuJkBC+Lq+VgLCL3oEA3PmUnLE0lzbyZ1xTPUXiGdZjaaZU0J/ENZ4Uqowz21
-	9XL/4EcTiKKIO2L33pdCYLntrKcExyiqBl++T7gG39FOqJ8lH5QOQatAQyFmdXE40WCDm7
-	w7l7Y5QpsdDGEj8Vukspph9Ry+AOzzjPJzNEP3A58CHNWYE2vCxsSGtOQrIc9vZrKvFaYf
-	mHW3Yb5h5q/y/vW6cXLmeRN2BLytuFanPMFhsJs/TZbVMSWw4B1A40FmFiQ1p6tkyo4alT
-	LhIJuERJceb7zLJMsOh0lAMR5FKCQZALMmH3UQ9eybEzMqT7jc0W2XGHXQWmbA==
-Message-ID: <46071c08-d85f-4157-9d61-6a0feef56747@arinc9.com>
+	id 1wKHrj-0000000GgPg-1ZI6;
+	Tue, 05 May 2026 15:39:19 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 4086D61337;
+	Tue,  5 May 2026 15:39:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E15F1C4AF68;
+	Tue,  5 May 2026 15:39:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1777995557;
+	bh=oW8urFywtBGgYaeMzaIycjm0Q5Khia2Ux8S+ZavJSDg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Dv9yHYRgzZv41bUtSLycllT8iK2c+R7z7vKDCgLlrV/ijr4Z89tg6jsesE+d7pmVM
+	 oAnbtFi5CCmdht7TUaKcSSsaR04DR5I3gnEqcH0yCNJuIgpfKfF18LAY2XjFtl7DjI
+	 EzPi0uWgNdokNqp+F2keeVSvop6FZSM0YTKoWbK6T8nNPzX8r1zWR/cVHCxTD0+/cE
+	 Nyy6Y2rSsetT4s4/kTjLCODtQoGY14LrgsVYYbeukxea71DKQNNDHztqNJP3rKjWS/
+	 zKz0+Vm8M+OVCp5H/V+tJBkgopEzWZT3jTlb/nLfK7FSs67xNxxxen2wNUcjNbRO+I
+	 ptzvwufIm2hkA==
+Date: Tue, 5 May 2026 17:39:13 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Boris Brezillon <boris.brezillon@collabora.com>
+Cc: Ketil Johnsen <ketil.johnsen@arm.com>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, 
+	Sumit Semwal <sumit.semwal@linaro.org>, Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+	Brian Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, 
+	"T.J. Mercier" <tjmercier@google.com>, Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, 
+	Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, 
+	Daniel Almeida <daniel.almeida@collabora.com>, Alice Ryhl <aliceryhl@google.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Yong Wu <yong.wu@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, 
+	Florent Tomasin <florent.tomasin@arm.com>
+Subject: Re: [PATCH 1/8] dma-heap: Add proper kref handling on dma-buf heaps
+Message-ID: <20260505-spaniel-of-scientific-warranty-ca075e@houat>
+References: <20260505140516.1372388-1-ketil.johnsen@arm.com>
+ <20260505140516.1372388-2-ketil.johnsen@arm.com>
+ <20260505172048.1c48e030@fedora>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net 2/5] net: dsa: mt7530: preserve VLAN tags on trapped
- link-local frames
-To: Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- DENG Qingfang <dqfext@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
- =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
- Sean Wang <sean.wang@mediatek.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <cover.1777986341.git.daniel@makrotopia.org>
- <3ad4b724d7ae6250b8429d50fe913d2dca07a3f9.1777986341.git.daniel@makrotopia.org>
-Content-Language: en-GB
-From: "Chester A. Unal" <chester.a.unal@arinc9.com>
-In-Reply-To: <3ad4b724d7ae6250b8429d50fe913d2dca07a3f9.1777986341.git.daniel@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Date: Tue,  5 May 2026 15:37:29 +0000 (UTC)
-X-CM-Analysis: v=2.4 cv=Ceda56rl c=1 sm=1 tr=0 ts=69fa0eba a=CS7yVHPVoEopjVSexcYCQA==:117 a=CS7yVHPVoEopjVSexcYCQA==:17 a=IkcTkHD0fZMA:10 a=VwQbUJbxAAAA:8 a=VT4XjZGOAAAA:8 a=b-zwJ4yWfF2n_vrUc9gA:9 a=QEXdDO2ut3YA:10 a=6CpsfURP9XNmmWg3j1mJ:22
-X-CM-Envelope: MS4xfKevdoLEsxmpx10pKfk+csh2waOq6MgMEWDN9OPOgqtKBQ6a+CfiVfyz0RAK+HWO2338y9SoLUXXzQmIZHlwm/h4SaeL6E6NGBhsz1bCYQhQipE6Ja3v QKIYit66gJaTE43yJrGJ81W53ozrNCPScbIhy30OVoH0M1tF4AMBCk/9KaMHXFaZXm/7ti0DKX2CBaTAmSqr5+j0dAXVNLP/8NR+J1sZKqYzia636LPlp2om 8xd2nSTWGAm3UBp4QDfXne7l+hDgqnaybhYar5ubdrztmXc2z5neorRu5OqUMsq8CjM3BWoiVIoAN7NdLY+KpKdD9f8tXpVSw/j8QghojOW9zDBR0In4HPPK RdrNEeGfTLOBEra8wZUvKeqHG8aawJ0NToAzksH3WJjLf0FBDgLGUSVq/OgssgwZ266jM9wgJyOJZHmABwzfd9N94MhMgECu2f6AoWI/XcMX6SOvmUXJzF1k fzYzDiVSXBiiIsEhY8a+7NIaZ+k0u5daHZ+zHi22w8RTR/FDy1T9LkNSvpu5mkB114IpbpR+PRXM+Y/7AHUGi+clPfAtz3JP8C9IadOeJ+CqJn6k0TD6v9+K ddBDsnci/bQ27jdT1+h3Lu6laUyjTWNSNwKNa2KEmXZna7YiEzzUrxHD9W5BnpV+efNBh1w4b1ZZNjVWyWmsQhgMaagfD4NKXvWnuWjzMfQIur6kRLBlxFNF 30atd3eNxtKdbCz5RwNU6BwidLZoO03Pi8KYIwgLr44V3mKSjBg//A==
-X-AuthUser: chester.a.unal@arinc9.com
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260505_083744_839379_4DFB454F 
-X-CRM114-Status: GOOD (  11.98  )
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="qg76aku2mqm5lrt5"
+Content-Disposition: inline
+In-Reply-To: <20260505172048.1c48e030@fedora>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,35 +83,154 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hey Daniel.
 
-On 05/05/2026 15:16, Daniel Golle wrote:
-> The BPC, RGAC1 and RGAC2 registers control the handling of link-local
-> frames with reserved MAC DAs (01:80:C2:00:00:0x). These frames are
-> correctly trapped to the CPU port, but the egress VLAN tag attribute was
-> set to MT7530_VLAN_EG_UNTAGGED which causes the switch to strip any
-> VLAN tags from trapped frames before they reach the CPU.
-> 
-> This causes VLAN-tagged link-local frames (STP BPDUs, LLDP, PTP Peer
-> Delay Requests) to arrive at the CPU without their VLAN tag, so they
-> are delivered to the base network interface instead of the VLAN
-> sub-interface. The DSA local_termination selftest confirms this: all
-> link-local protocol tests on VLAN upper interfaces fail.
-> 
-> Set the EG_TAG attribute to MT7530_VLAN_EG_DISABLED (system default)
-> so that the switch does not modify VLAN tags in trapped frames. This
-> way VLAN-tagged frames retain their original tag and are delivered to
-> the correct VLAN sub-interface, matching the behavior of non-trapped
-> frames which pass through without VLAN tag modification.
-> 
-> Fixes: 69ddba9d170b ("net: dsa: mt7530: fix handling of all link-local frames")
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+--qg76aku2mqm5lrt5
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 1/8] dma-heap: Add proper kref handling on dma-buf heaps
+MIME-Version: 1.0
 
-Thank you for this patch. Could you please confirm that it conforms to the
-findings documented on this patch log?
+Hi Boris,
 
-https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/commit/?id=e8bf353577f382c7066c661fed41b2adc0fc7c40
+On Tue, May 05, 2026 at 05:20:48PM +0200, Boris Brezillon wrote:
+> Hi Ketil,
+>=20
+> On Tue,  5 May 2026 16:05:07 +0200
+> Ketil Johnsen <ketil.johnsen@arm.com> wrote:
+>=20
+> > From: John Stultz <jstultz@google.com>
+> >=20
+> > Add proper reference counting on the dma_heap structure. While
+> > existing heaps are built-in, we may eventually have heaps loaded
+> > from modules, and we'll need to be able to properly handle the
+> > references to the heaps
+>=20
+> It's weird that this "heap as module" thing is mentioned here, but
+> actual robustness to make this safe is not added in the commit or any
+> of the following ones.
+>=20
+> >=20
+> > Signed-off-by: John Stultz <jstultz@google.com>
+> > Signed-off-by: T.J. Mercier <tjmercier@google.com>
+> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> > [Yong: Just add comment for "minor" and "refcount"]
+> > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> > [Yunfei: Change reviewer's comments]
+> > Signed-off-by: Florent Tomasin <florent.tomasin@arm.com>
+> > [Florent: Rebase]
+> > Signed-off-by: Ketil Johnsen <ketil.johnsen@arm.com>
+> > [Ketil: Rebase]
+> > ---
+> >  drivers/dma-buf/dma-heap.c | 29 +++++++++++++++++++++++++++++
+> >  include/linux/dma-heap.h   |  2 ++
+> >  2 files changed, 31 insertions(+)
+> >=20
+> > diff --git a/drivers/dma-buf/dma-heap.c b/drivers/dma-buf/dma-heap.c
+> > index ac5f8685a6494..9fd365ddbd517 100644
+> > --- a/drivers/dma-buf/dma-heap.c
+> > +++ b/drivers/dma-buf/dma-heap.c
+> > @@ -12,6 +12,7 @@
+> >  #include <linux/dma-heap.h>
+> >  #include <linux/err.h>
+> >  #include <linux/export.h>
+> > +#include <linux/kref.h>
+> >  #include <linux/list.h>
+> >  #include <linux/nospec.h>
+> >  #include <linux/syscalls.h>
+> > @@ -31,6 +32,7 @@
+> >   * @heap_devt:		heap device node
+> >   * @list:		list head connecting to list of heaps
+> >   * @heap_cdev:		heap char device
+> > + * @refcount:		reference counter for this heap device
+> >   *
+> >   * Represents a heap of memory from which buffers can be made.
+> >   */
+> > @@ -41,6 +43,7 @@ struct dma_heap {
+> >  	dev_t heap_devt;
+> >  	struct list_head list;
+> >  	struct cdev heap_cdev;
+> > +	struct kref refcount;
+> >  };
+> > =20
+> >  static LIST_HEAD(heap_list);
+> > @@ -248,6 +251,7 @@ struct dma_heap *dma_heap_add(const struct dma_heap=
+_export_info *exp_info)
+> >  	if (!heap)
+> >  		return ERR_PTR(-ENOMEM);
+> > =20
+> > +	kref_init(&heap->refcount);
+> >  	heap->name =3D exp_info->name;
+> >  	heap->ops =3D exp_info->ops;
+> >  	heap->priv =3D exp_info->priv;
+> > @@ -313,6 +317,31 @@ struct dma_heap *dma_heap_add(const struct dma_hea=
+p_export_info *exp_info)
+> >  }
+> >  EXPORT_SYMBOL_NS_GPL(dma_heap_add, "DMA_BUF_HEAP");
+> > =20
+> > +static void dma_heap_release(struct kref *ref)
+> > +{
+> > +	struct dma_heap *heap =3D container_of(ref, struct dma_heap, refcount=
+);
+> > +	unsigned int minor =3D MINOR(heap->heap_devt);
+> > +
+> > +	mutex_lock(&heap_list_lock);
+> > +	list_del(&heap->list);
+> > +	mutex_unlock(&heap_list_lock);
+> > +
+> > +	device_destroy(dma_heap_class, heap->heap_devt);
+> > +	cdev_del(&heap->heap_cdev);
+> > +	xa_erase(&dma_heap_minors, minor);
+> > +
+> > +	kfree(heap);
+>=20
+> That's actually problematic, because cdev_del() doesn't guarantee that
+> all opened FDs have been closed [1], it just guarantees that no new ones
+> can materialize. In order to make that safe, we'd need a
+>=20
+> 1. kref_get_unless_zero() in dma_heap_open(), with proper locking around
+>    the xa_load() to protect against the heap removal that's happening
+>    here
+> 2. a dma_heap_put() in a new dma_heap_close() implementation
+> 3. a guarantee that heap implementations won't go away until the last
+>    ref is dropped, which means ops and all the data needed for this heap
+>    to satisfy ioctl()s (and more generally every passed at
+>    dma_heap_add() time) have to stay valid until the last ref is
+>    dropped. Alternatively, we could restrict this only to in-flight
+>    ioctl()s, and have the ops replaced by some dummy ops using RCU or a
+>    rwlock. But I guess live dmabufs allocated on this heap have to
+>    retain the heap and its implementation anyway.
+>=20
+> For record, #3 is already not satisfied by the current tee_heap
+> implementation (tee_dma_heap objects can vanish before the dma_heap
+> object is gone). The other implementations seem to be fine because they
+> are statically linked, and they either have exp_info.priv set to NULL,
+> or something that's never released.
 
-Cheers.
-Chester A.
+That statement won't hold for long, see:
+https://lore.kernel.org/r/20260427-dma-buf-heaps-as-modules-v5-0-b6f5678fee=
+fc@kernel.org
+
+However, all upstream heaps can be loaded as module, but not unloaded.
+So once you get a reference to it, you can assume it will live forever.
+That's why we didn't merge that patch before, even though it was discussed:
+
+https://lore.kernel.org/all/CANDhNCqk9Uk4aXHhUsL4hR1GHNmWZnH3C9Np-A02wdi+J3=
+D7tA@mail.gmail.com/
+
+Maxime
+
+--qg76aku2mqm5lrt5
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCafoPGQAKCRAnX84Zoj2+
+dvfDAYDCsqac+NUBBH3QPhD6jhb/xgsDVQpBWYAvr98JjIDj3r2oBlStiGGj/l40
+GNBQd5MBf0dz2ZC/qasewer2z68+KtIIlG5X6Wmi/MNZs5nI6DOk70W68K3hw0lL
+bLXqOrzshA==
+=kct9
+-----END PGP SIGNATURE-----
+
+--qg76aku2mqm5lrt5--
 
