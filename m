@@ -4,91 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8B46CD3427
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 16:19:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0581FF8855
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 16:24:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
+	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fW7NqakYneF5bS/bTX0omL7VxFP9NAlhoaqpZHQwX1g=; b=vpCI5IgTtc8dWFpn/4gCVum9Kg
-	PPYIbWiOHXDSrDxQ8t+7JE30Kxcgx4WHrenKTaxMYHJOkmSloxHCxSsc3bg2GtmfwF9aXs+vxZVUG
-	kPln6SDKQlNDiKTdERdIy1CvD1aSufNW7DWOdEmGV8zL13e35z5ZtkLfDU3kseYZO+bRCIdwYq1Jp
-	e4nUjkksMd3qxEhsaO56E6g9YOOVELGTZNLS6qYYHKwoS5N/RUEmtgInVh0LNOkWza+VdyQ3lQl6i
-	oPOK6s2Jt/imkR/UW8XPh2uvdVvj4r5kGbNGUVtAEGeBaQZCqKqQi6X6BELBb9i6GqxQlqf43j1Ax
-	z31jasWw==;
+	bh=ASWqzKjXrD7GPPPq7eqcATqg6A70mPRmdB4ZyDBwEK0=; b=3WwQSmuHp5zhIhEJmwCes54ia8
+	Jdd9wExlBLRXkbuKqA+MoMgBlAIjVmzP9zd+F2U7eswRX1VNw+VQUL/+mJVjK0rMSZYAYJn9V1ohq
+	ao6+BnmDO5WvGaVr3jwViAiT8dYqcRCTCxBHB6uFzMm2a6YneAQrsEnohWiZB0Bgb43Sbrd2iXLC3
+	XcvUEkkYxl/pHWHzu1UPoKXqWkwWBdKMFadXL+RzPw0x0qnrtCjylRHgBJs0KOxFCjUhIjtOeFDBB
+	4NQF1JfsV9saNLEiCFF7xWEjvYiMGO7TfHOp4dXxhljRFb+Q5cUwVk2QOzK+vC+oRxW+coAuXl3+2
+	US3UlP8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKIV4-0000000GrDN-2vtm;
-	Tue, 05 May 2026 16:19:58 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wKIZq-0000000Gs0b-3TEZ;
+	Tue, 05 May 2026 16:24:54 +0000
+Received: from mail-24425.protonmail.ch ([109.224.244.25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKIV2-0000000GrCT-1yCi;
-	Tue, 05 May 2026 16:19:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:From:Date:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=fW7NqakYneF5bS/bTX0omL7VxFP9NAlhoaqpZHQwX1g=; b=dvmFHnkEG7SuPcnlNHUOeztIpF
-	MmzzaDUNnCRSInSVvY17xjBwmxe2ykxsEJhTqNaqgI9YKatbdNBFg3vnjcTPj8vgzy7foXrcA2UhW
-	fwwe4ljHun392atth9ceWMMHZJEkNlQ3VU+MyZrN9WCzqfEEfPNwaCek4hx9F6hIF/xZrC17wxxi0
-	/g8wKBXfvhhg8PaVprUBQw69TxsiPL1iR55tTBk5o4zKmhlb7Iwj5nminRJ+gvy/pr5sUt/jRe+qv
-	M3e0AFGAv8U9Hb/VGmQ8iRBB986Ya1OZhHieo/lr/cebXONjZXztnxCjG0pFMVyPeTU1/imUzSdkJ
-	I0V+isHg==;
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKIUz-0000000E1Vv-1MbJ;
-	Tue, 05 May 2026 16:19:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1777997988;
-	bh=ct+0LQJfiP0a76ZVpKPMTYaMUAt8WLfizRJsqD8mMFc=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=bswlFhwTjjhVxn7wuoKSwCTat2SaFzmZZRz9n8JqyDofy3vc0C1w6W54OR0vH2rj4
-	 HoxK+ajljZznWk0E13iQzUn/OmHIf4gDLDGzkVr/9EUr21R1I9p1t0tVcTxxBvfpm/
-	 rWvNMRjIDzEGca0fx6JeludtWH9JT2TvffWiBHlKhmOw4322nKUafKC2IylJvCZDck
-	 8MJSIf0XV8cfJTFE3cr/ZPGz6Uk1MuRUv0soCOJnZI1tTYdB9lKhB2g6Xf0HDGBUCn
-	 5VIJLO43+c2PbUnxHDHhUbnar7zprEiimwj84fSo3rXNaElLQTAFG0gGn/h5/Eea7W
-	 hpE8WS1cOsx7Q==
-Received: from fedora (unknown [100.64.0.11])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bbrezillon)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1C9E717E0F07;
-	Tue,  5 May 2026 18:19:47 +0200 (CEST)
-Date: Tue, 5 May 2026 18:19:42 +0200
-From: Boris Brezillon <boris.brezillon@collabora.com>
-To: Ketil Johnsen <ketil.johnsen@arm.com>
-Cc: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
- <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, Jonathan
- Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, Sumit
- Semwal <sumit.semwal@linaro.org>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>,
- John Stultz <jstultz@google.com>, "T.J. Mercier" <tjmercier@google.com>,
- Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>, Steven Price
- <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, Daniel Almeida
- <daniel.almeida@collabora.com>, Alice Ryhl <aliceryhl@google.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Florent Tomasin <florent.tomasin@arm.com>
-Subject: Re: [PATCH 5/8] drm/panthor: Minor scheduler refactoring
-Message-ID: <20260505181942.317f5205@fedora>
-In-Reply-To: <20260505140516.1372388-6-ketil.johnsen@arm.com>
-References: <20260505140516.1372388-1-ketil.johnsen@arm.com>
-	<20260505140516.1372388-6-ketil.johnsen@arm.com>
-Organization: Collabora
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
+	id 1wKIZn-0000000Grye-48Nq
+	for linux-mediatek@lists.infradead.org;
+	Tue, 05 May 2026 16:24:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail3; t=1777998287; x=1778257487;
+	bh=ASWqzKjXrD7GPPPq7eqcATqg6A70mPRmdB4ZyDBwEK0=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector;
+	b=M+F3yhx7dJ2rhFSJAZcFeXyevkNolOGRHAyGx9L5V9zEwV48mNW0/j1DxaK2EZV3A
+	 sOI77K5RJdv6vOQ4iT0XOz7d7KLFmOkC+jHajqCLIfMwCKTNmoZk26ZlwEiaoyoM9j
+	 b0Jm6p/Ff5EtNIHmXiEyFH/VfiVWcUCBVrOwkIFsGzbQoFISKrRmmTf1YBwE6BKG50
+	 jEC/Wpla8r4KX6aKV8Ln+iyPz5DRcWZf6WmD+D+yqDdYEw+FuY37PxcYMtVcMYDeHg
+	 ZFaIG7dN5yXP2FY+Ojke22qfg31drHoBz2zpt6/kca1w+FzeqPMI0bs85GKPo37cug
+	 sJC/bk/aU+nQA==
+Date: Tue, 05 May 2026 16:24:41 +0000
+To: Andy Shevchenko <andriy.shevchenko@intel.com>
+From: Roman Vivchar <rva333@protonmail.com>
+Cc: Jonathan Cameron <jic23@kernel.org>, David Lechner <dlechner@baylibre.com>, =?utf-8?Q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Srinivas Kandagatla <srini@kernel.org>, "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@kernel.org>, Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>, Lee Jones <lee@kernel.org>, linux-iio@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, Ben Grisdale <bengris32@protonmail.ch>
+Subject: Re: [PATCH 05/13] nvmem: add mt6323 PMIC EFUSE driver
+Message-ID: <Bn1O24yJ2aBvKUTpiFUzxnqbuuybRirR73G7R38ghYtwhFvQqWJb3HPgcikEa1otDw6n07nX_g8khZUHXJ_QRA--LrV5yj5Mcg1QzrWt6vA=@protonmail.com>
+In-Reply-To: <afmjfWtt7Vii6xfH@ashevche-desk.local>
+References: <20260504-mt6323-v1-0-799b58b355ff@protonmail.com> <20260504-mt6323-v1-5-799b58b355ff@protonmail.com> <afmjfWtt7Vii6xfH@ashevche-desk.local>
+Feedback-ID: 173184497:user:proton
+X-Pm-Message-ID: 70e68a78b3333f71307d661d5a8c93410d5d2dc7
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260505_171953_505771_61DE6924 
-X-CRM114-Status: GOOD (  22.41  )
+X-CRM114-CacheID: sfid-20260505_092452_172689_AD1035C3 
+X-CRM114-Status: GOOD (  20.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,234 +69,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue,  5 May 2026 16:05:11 +0200
-Ketil Johnsen <ketil.johnsen@arm.com> wrote:
+On Tuesday, May 5th, 2026 at 11:00 AM, Andy Shevchenko <andriy.shevchenko@i=
+ntel.com> wrote:
 
-> From: Florent Tomasin <florent.tomasin@arm.com>
-> 
-> Refactor parts of the group scheduling logic into new helper functions.
-> This will simplify addition of the protected mode feature.
-> 
-> Remove redundant assignments of csg_slot.
-> 
-> Signed-off-by: Florent Tomasin <florent.tomasin@arm.com>
-> Co-developed-by: Ketil Johnsen <ketil.johnsen@arm.com>
-> Signed-off-by: Ketil Johnsen <ketil.johnsen@arm.com>
+> On Mon, May 04, 2026 at 09:24:57PM +0300, Roman Vivchar via B4 Relay wrot=
+e:
+>=20
+> > Add support for the EFUSE controller found in the Mediatek MT6323 PMIC.
+> > The MT6323 EFUSE stores 24 bytes of hardware-related data, such as
+> > thermal sensor calibration values.
+>=20
+> Besides below comments, check for the similar issues that previous patche=
+s in
+> the series have.
+>=20
+> ...
+>=20
+> > +#include <linux/device.h>
+>=20
+> Not needed as platform_device.h implies this ("is this good or bad?" is a
+> different story).
+>=20
+> > +#include <linux/io.h>
+> > +#include <linux/mfd/mt6323/registers.h>
+> > +#include <linux/mod_devicetable.h>
+> > +#include <linux/module.h>
+> > +#include <linux/nvmem-provider.h>
+> > +#include <linux/platform_device.h>
+> > +#include <linux/property.h>
+> > +#include <linux/regmap.h>
+>=20
+> Follow IWYU. At least missing types.h.
+>=20
+> ...
+>=20
+> > +struct mt6323_efuse {
+> > +=09struct regmap *regmap;
+> > +};
+>=20
+> Do you really need a custom wrapper data structure? Can't regmap be used
+> directly?
+>=20
+> ...
+>=20
+> > +static int mt6323_efuse_read(void *context, unsigned int offset, void =
+*val,
+> > +=09=09=09     size_t bytes)
+> > +{
+> > +=09struct mt6323_efuse *efuse =3D context;
+> > +=09u32 tmp;
+>=20
+> > +=09u16 *buf =3D val;
+>=20
+> Really? CPU order all the time?
+>=20
+> > +=09int i, ret;
+>=20
+> Why is 'i' signed?
+>=20
+> > +=09for (i =3D 0; i < bytes; i +=3D 2) {
+>=20
+> sizeof()?
+>=20
+> And since 'i' is used only inside the loop
+>=20
+> =09for (size_t i =3D 0; i < bytes; i +=3D sizeof(*buf)) {
+>=20
+> > +=09=09ret =3D regmap_read(efuse->regmap,
+> > +=09=09=09=09  MT6323_EFUSE_DOUT_BASE + offset + i, &tmp);
+> > +=09=09if (ret)
+> > +=09=09=09return ret;
+> > +=09=09buf[i / 2] =3D tmp;
+> > +=09}
+>=20
+> + blank line.
+>=20
+> Isn't this reimplementation of bulk read? Why the latter may not be used?
 
-Glad to see this big tick_ctx_apply() function split into smaller
-pieces.
+Yes, but the PWRAP (the regmap which the driver uses) doesn't support read
+callback, only reg_read is implemented in the driver.
+It hits the map->cache_type =3D=3D REGCACHE_NONE in the regmap_read_raw, an=
+d falls
+for the !map->read check, so regmap_bulk_read neither the regmap_read_raw
+can be used.
 
-Reviewed-by: Boris Brezillon <boris.brezillon@collabora.com>
+Technically the PMIC is not continuous address space, but rather non-MMIO F=
+SM,
+so it makes sense to not implement the read callback. I guess the custom
+implementation is fine then?
 
-> ---
->  drivers/gpu/drm/panthor/panthor_sched.c | 135 +++++++++++++++---------
->  1 file changed, 86 insertions(+), 49 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/panthor/panthor_sched.c b/drivers/gpu/drm/panthor/panthor_sched.c
-> index 5ee386338005c..987072bd867c4 100644
-> --- a/drivers/gpu/drm/panthor/panthor_sched.c
-> +++ b/drivers/gpu/drm/panthor/panthor_sched.c
-> @@ -1934,6 +1934,12 @@ static void csgs_upd_ctx_init(struct panthor_csg_slots_upd_ctx *ctx)
->  	memset(ctx, 0, sizeof(*ctx));
->  }
->  
-> +static void csgs_upd_ctx_ring_doorbell(struct panthor_csg_slots_upd_ctx *ctx,
-> +				       u32 csg_id)
-> +{
-> +	ctx->update_mask |= BIT(csg_id);
-> +}
-> +
->  static void csgs_upd_ctx_queue_reqs(struct panthor_device *ptdev,
->  				    struct panthor_csg_slots_upd_ctx *ctx,
->  				    u32 csg_id, u32 value, u32 mask)
-> @@ -1944,7 +1950,8 @@ static void csgs_upd_ctx_queue_reqs(struct panthor_device *ptdev,
->  
->  	ctx->requests[csg_id].value = (ctx->requests[csg_id].value & ~mask) | (value & mask);
->  	ctx->requests[csg_id].mask |= mask;
-> -	ctx->update_mask |= BIT(csg_id);
-> +
-> +	csgs_upd_ctx_ring_doorbell(ctx, csg_id);
->  }
->  
->  static int csgs_upd_ctx_apply_locked(struct panthor_device *ptdev,
-> @@ -1961,8 +1968,12 @@ static int csgs_upd_ctx_apply_locked(struct panthor_device *ptdev,
->  	while (update_slots) {
->  		struct panthor_fw_csg_iface *csg_iface;
->  		u32 csg_id = ffs(update_slots) - 1;
-> +		u32 req_mask = ctx->requests[csg_id].mask;
->  
->  		update_slots &= ~BIT(csg_id);
-> +		if (!req_mask)
-> +			continue;
-> +
->  		csg_iface = panthor_fw_get_csg_iface(ptdev, csg_id);
->  		panthor_fw_update_reqs(csg_iface, req,
->  				       ctx->requests[csg_id].value,
-> @@ -1979,6 +1990,9 @@ static int csgs_upd_ctx_apply_locked(struct panthor_device *ptdev,
->  		int ret;
->  
->  		update_slots &= ~BIT(csg_id);
-> +		if (!req_mask)
-> +			continue;
-> +
->  		csg_iface = panthor_fw_get_csg_iface(ptdev, csg_id);
->  
->  		ret = panthor_fw_csg_wait_acks(ptdev, csg_id, req_mask, &acked, 100);
-> @@ -2266,12 +2280,76 @@ tick_ctx_cleanup(struct panthor_scheduler *sched,
->  	}
->  }
->  
-> +static void
-> +tick_ctx_evict_group(struct panthor_scheduler *sched,
-> +		     struct panthor_csg_slots_upd_ctx *upd_ctx,
-> +		     struct panthor_group *group)
-> +{
-> +	struct panthor_device *ptdev = sched->ptdev;
-> +
-> +	if (drm_WARN_ON(&ptdev->base, group->csg_id < 0))
-> +		return;
-> +
-> +	csgs_upd_ctx_queue_reqs(ptdev, upd_ctx, group->csg_id,
-> +				group_can_run(group) ?
-> +				CSG_STATE_SUSPEND : CSG_STATE_TERMINATE,
-> +				CSG_STATE_MASK);
-> +}
-> +
-> +
-> +static void
-> +tick_ctx_reschedule_group(struct panthor_scheduler *sched,
-> +			  struct panthor_csg_slots_upd_ctx *upd_ctx,
-> +			  struct panthor_group *group,
-> +			  int new_csg_prio)
-> +{
-> +	struct panthor_device *ptdev = sched->ptdev;
-> +	struct panthor_fw_csg_iface *csg_iface;
-> +	struct panthor_csg_slot *csg_slot;
-> +
-> +	if (group->csg_id < 0)
-> +		return;
-> +
-> +	csg_iface = panthor_fw_get_csg_iface(ptdev, group->csg_id);
-> +	csg_slot = &sched->csg_slots[group->csg_id];
-> +
-> +	if (csg_slot->priority != new_csg_prio) {
-> +		panthor_fw_update_reqs(csg_iface, endpoint_req,
-> +				       CSG_EP_REQ_PRIORITY(new_csg_prio),
-> +				       CSG_EP_REQ_PRIORITY_MASK);
-> +		csgs_upd_ctx_queue_reqs(ptdev, upd_ctx, group->csg_id,
-> +					csg_iface->output->ack ^ CSG_ENDPOINT_CONFIG,
-> +					CSG_ENDPOINT_CONFIG);
-> +	}
-> +}
-> +
-> +static void
-> +tick_ctx_schedule_group(struct panthor_scheduler *sched,
-> +			struct panthor_sched_tick_ctx *ctx,
-> +			struct panthor_csg_slots_upd_ctx *upd_ctx,
-> +			struct panthor_group *group,
-> +			int csg_id, int csg_prio)
-> +{
-> +	struct panthor_device *ptdev = sched->ptdev;
-> +	struct panthor_fw_csg_iface *csg_iface = panthor_fw_get_csg_iface(ptdev, csg_id);
-> +
-> +	group_bind_locked(group, csg_id);
-> +	csg_slot_prog_locked(ptdev, csg_id, csg_prio);
-> +
-> +	csgs_upd_ctx_queue_reqs(ptdev, upd_ctx, csg_id,
-> +				group->state == PANTHOR_CS_GROUP_SUSPENDED ?
-> +				CSG_STATE_RESUME : CSG_STATE_START,
-> +				CSG_STATE_MASK);
-> +	csgs_upd_ctx_queue_reqs(ptdev, upd_ctx, csg_id,
-> +				csg_iface->output->ack ^ CSG_ENDPOINT_CONFIG,
-> +				CSG_ENDPOINT_CONFIG);
-> +}
-> +
->  static void
->  tick_ctx_apply(struct panthor_scheduler *sched, struct panthor_sched_tick_ctx *ctx)
->  {
->  	struct panthor_group *group, *tmp;
->  	struct panthor_device *ptdev = sched->ptdev;
-> -	struct panthor_csg_slot *csg_slot;
->  	int prio, new_csg_prio = MAX_CSG_PRIO, i;
->  	u32 free_csg_slots = 0;
->  	struct panthor_csg_slots_upd_ctx upd_ctx;
-> @@ -2282,42 +2360,12 @@ tick_ctx_apply(struct panthor_scheduler *sched, struct panthor_sched_tick_ctx *c
->  	for (prio = PANTHOR_CSG_PRIORITY_COUNT - 1; prio >= 0; prio--) {
->  		/* Suspend or terminate evicted groups. */
->  		list_for_each_entry(group, &ctx->old_groups[prio], run_node) {
-> -			bool term = !group_can_run(group);
-> -			int csg_id = group->csg_id;
-> -
-> -			if (drm_WARN_ON(&ptdev->base, csg_id < 0))
-> -				continue;
-> -
-> -			csg_slot = &sched->csg_slots[csg_id];
-> -			csgs_upd_ctx_queue_reqs(ptdev, &upd_ctx, csg_id,
-> -						term ? CSG_STATE_TERMINATE : CSG_STATE_SUSPEND,
-> -						CSG_STATE_MASK);
-> +			tick_ctx_evict_group(sched, &upd_ctx, group);
->  		}
->  
->  		/* Update priorities on already running groups. */
->  		list_for_each_entry(group, &ctx->groups[prio], run_node) {
-> -			struct panthor_fw_csg_iface *csg_iface;
-> -			int csg_id = group->csg_id;
-> -
-> -			if (csg_id < 0) {
-> -				new_csg_prio--;
-> -				continue;
-> -			}
-> -
-> -			csg_slot = &sched->csg_slots[csg_id];
-> -			csg_iface = panthor_fw_get_csg_iface(ptdev, csg_id);
-> -			if (csg_slot->priority == new_csg_prio) {
-> -				new_csg_prio--;
-> -				continue;
-> -			}
-> -
-> -			panthor_fw_csg_endpoint_req_update(ptdev, csg_iface,
-> -							   CSG_EP_REQ_PRIORITY(new_csg_prio),
-> -							   CSG_EP_REQ_PRIORITY_MASK);
-> -			csgs_upd_ctx_queue_reqs(ptdev, &upd_ctx, csg_id,
-> -						csg_iface->output->ack ^ CSG_ENDPOINT_CONFIG,
-> -						CSG_ENDPOINT_CONFIG);
-> -			new_csg_prio--;
-> +			tick_ctx_reschedule_group(sched, &upd_ctx, group, new_csg_prio--);
->  		}
->  	}
->  
-> @@ -2354,28 +2402,17 @@ tick_ctx_apply(struct panthor_scheduler *sched, struct panthor_sched_tick_ctx *c
->  	for (prio = PANTHOR_CSG_PRIORITY_COUNT - 1; prio >= 0; prio--) {
->  		list_for_each_entry(group, &ctx->groups[prio], run_node) {
->  			int csg_id = group->csg_id;
-> -			struct panthor_fw_csg_iface *csg_iface;
-> +			int csg_prio = new_csg_prio--;
->  
-> -			if (csg_id >= 0) {
-> -				new_csg_prio--;
-> +			if (csg_id >= 0)
->  				continue;
-> -			}
->  
->  			csg_id = ffs(free_csg_slots) - 1;
->  			if (drm_WARN_ON(&ptdev->base, csg_id < 0))
->  				break;
->  
-> -			csg_iface = panthor_fw_get_csg_iface(ptdev, csg_id);
-> -			csg_slot = &sched->csg_slots[csg_id];
-> -			group_bind_locked(group, csg_id);
-> -			csg_slot_prog_locked(ptdev, csg_id, new_csg_prio--);
-> -			csgs_upd_ctx_queue_reqs(ptdev, &upd_ctx, csg_id,
-> -						group->state == PANTHOR_CS_GROUP_SUSPENDED ?
-> -						CSG_STATE_RESUME : CSG_STATE_START,
-> -						CSG_STATE_MASK);
-> -			csgs_upd_ctx_queue_reqs(ptdev, &upd_ctx, csg_id,
-> -						csg_iface->output->ack ^ CSG_ENDPOINT_CONFIG,
-> -						CSG_ENDPOINT_CONFIG);
-> +			tick_ctx_schedule_group(sched, ctx, &upd_ctx, group, csg_id, csg_prio);
-> +
->  			free_csg_slots &= ~BIT(csg_id);
->  		}
->  	}
+All other suggestions will be applied for v2.
 
+>=20
+> > +=09return 0;
+> > +}
+>=20
+> ...
+>=20
+> > +static const struct of_device_id mt6323_efuse_of_match[] =3D {
+> > +=09{ .compatible =3D "mediatek,mt6323-efuse" },
+> > +=09{ /* sentinel */ },
+>=20
+> Having trailing comma in the terminator is nonsense. Do we expect anythin=
+g
+> behind it?
+>=20
+> > +};
+>=20
+> --
+> With Best Regards,
+> Andy Shevchenko
+>=20
+>=20
+>
+
+Best regards,
+Roman
 
