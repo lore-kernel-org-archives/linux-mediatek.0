@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDBDBFF8855
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 14:16:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E805ECD3427
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 14:16:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DQyYlCFSCFKmwco3eE+KC4eUxSyLW/tniSiDEiBpUBg=; b=IsDkv3LpZeH+fOqc21Pc1mNnXK
-	gaY5b13l1+xDXVdC/FRx+wWKRiGh2OLKIyHTakf76Pth29SKkHaSbsayoyhXr/7O5KSfAlRHamZRC
-	pK41dvVqM2g2klH1jt4SP+i0rnPAAN5tmHCoIgf5pMqpwI7uxQS+ro/pF+TV2iaaq6zzE2z/SSqqN
-	1J4v+3/BQzJtZ2QMWkpc4hqu3q+3b5h+xjezArEeYQO4BAk1OcVuZNfR2bVTTVct/PlyQHbExwnxe
-	J3Wzwhi9Sh38ycyJbOCze+pqANiubCsyd51OtDVuIiOMMbTrd4rcpGs79n5H6wHAY8u7xVeKe24KF
-	4xxEqKxw==;
+	bh=i83n7NuT2pQ/Akq17/SCbs9ONTxlHA2pYmlE9jzOXWk=; b=pIAGRDbHeIA6c/mYyL8FNlDSWZ
+	8ekxvHxGJ2evBGvKfMVVVzW2VXLqGcx8uYQZokFq7LHiZ1r2P0NoGX3GJnSgKG8uhitZsd1tKgEcV
+	naS3klv/4RsRfGZrq4GlDPzrOoRTEIfu/6oNDAcsjnXTnKfacarFYnubZZ/AgG1CAm8PUfORa2TjT
+	n8AHzks9a4DPMv+15kajIMr7Pv9Z19DnwlFW0E8h3F/DfGSrorElNsSSfySvBBLQg+CN8LOuW/pxf
+	2f9utnOQ7J1Oy1Bc6VU9qGtyfzjTXel1kSCHjFOyOqyF34xQTXZK1OwGjTTpbqNePPPEz/7ednwBC
+	lVfpJuhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKGZV-0000000GTLT-1epN;
-	Tue, 05 May 2026 14:16:25 +0000
+	id 1wKGZi-0000000GTSM-1y7z;
+	Tue, 05 May 2026 14:16:38 +0000
 Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKGZS-0000000GTKI-28Mo;
-	Tue, 05 May 2026 14:16:23 +0000
+	id 1wKGZf-0000000GTQN-24JB;
+	Tue, 05 May 2026 14:16:36 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.99)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1wKGZK-000000008Qu-3Q6t;
-	Tue, 05 May 2026 14:16:14 +0000
-Date: Tue, 5 May 2026 15:16:11 +0100
+	id 1wKGZZ-000000008RH-2sqA;
+	Tue, 05 May 2026 14:16:29 +0000
+Date: Tue, 5 May 2026 15:16:26 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
 	Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
@@ -48,17 +48,17 @@ To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
 	Sean Wang <sean.wang@mediatek.com>, netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net 1/5] net: dsa: mt7530: fix FDB entries not aging out with
- short timeout
-Message-ID: <f285707e09a0febffd1b987f204ff4eb71736489.1777986341.git.daniel@makrotopia.org>
+Subject: [PATCH net 2/5] net: dsa: mt7530: preserve VLAN tags on trapped
+ link-local frames
+Message-ID: <3ad4b724d7ae6250b8429d50fe913d2dca07a3f9.1777986341.git.daniel@makrotopia.org>
 References: <cover.1777986341.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1777986341.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260505_071622_544837_87B9A497 
-X-CRM114-Status: GOOD (  13.54  )
+X-CRM114-CacheID: sfid-20260505_071635_935590_174E642E 
+X-CRM114-Status: GOOD (  14.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,45 +73,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When setting a low ageing time such as 10 seconds, the algorithm in
-mt7530_set_ageing_time() finds AGE_CNT=0 and AGE_UNIT=9 as the first
-exact match (starting the search from tmp_age_count=0).
+The BPC, RGAC1 and RGAC2 registers control the handling of link-local
+frames with reserved MAC DAs (01:80:C2:00:00:0x). These frames are
+correctly trapped to the CPU port, but the egress VLAN tag attribute was
+set to MT7530_VLAN_EG_UNTAGGED which causes the switch to strip any
+VLAN tags from trapped frames before they reach the CPU.
 
-On the MT7530/MT7531 hardware, the per-entry aging counter is
-initialized to AGE_CNT when a MAC address is learned. With AGE_CNT=0,
-new entries start with a counter value of 0, which the hardware treats
-as "already aged" and never removes, effectively disabling aging.
+This causes VLAN-tagged link-local frames (STP BPDUs, LLDP, PTP Peer
+Delay Requests) to arrive at the CPU without their VLAN tag, so they
+are delivered to the base network interface instead of the VLAN
+sub-interface. The DSA local_termination selftest confirms this: all
+link-local protocol tests on VLAN upper interfaces fail.
 
-Fix this by starting the search from tmp_age_count=1 to ensure entries
-always have a non-zero initial aging counter. For a 10-second ageing
-time this yields AGE_CNT=1 and AGE_UNIT=4 instead: the timer ticks
-every 5 seconds and entries are removed after 2 ticks.
+Set the EG_TAG attribute to MT7530_VLAN_EG_DISABLED (system default)
+so that the switch does not modify VLAN tags in trapped frames. This
+way VLAN-tagged frames retain their original tag and are delivered to
+the correct VLAN sub-interface, matching the behavior of non-trapped
+frames which pass through without VLAN tag modification.
 
-Fixes: ea6d5c924e39 ("net: dsa: mt7530: support setting ageing time")
+Fixes: 69ddba9d170b ("net: dsa: mt7530: fix handling of all link-local frames")
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
- drivers/net/dsa/mt7530.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ drivers/net/dsa/mt7530.c | 27 +++++++++++++++------------
+ 1 file changed, 15 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 44d670904ad8..b1903da7d500 100644
+index b1903da7d500..a696c8736982 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -1027,8 +1027,12 @@ mt7530_set_ageing_time(struct dsa_switch *ds, unsigned int msecs)
- 	if (secs < 1 || secs > (AGE_CNT_MAX + 1) * (AGE_UNIT_MAX + 1))
- 		return -ERANGE;
+@@ -1300,37 +1300,40 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
+ static void
+ mt753x_trap_frames(struct mt7530_priv *priv)
+ {
+-	/* Trap 802.1X PAE frames and BPDUs to the CPU port(s) and egress them
+-	 * VLAN-untagged.
++	/* Trap 802.1X PAE frames and BPDUs to the CPU port(s) and egress
++	 * them with the EG_TAG attribute set to disabled (system default)
++	 * so that any VLAN tags in the frame are not modified by the
++	 * switch egress VLAN tag processing. This preserves VLAN tags
++	 * for reception on VLAN sub-interfaces.
+ 	 */
+ 	mt7530_rmw(priv, MT753X_BPC,
+ 		   PAE_BPDU_FR | PAE_EG_TAG_MASK | PAE_PORT_FW_MASK |
+ 			   BPDU_EG_TAG_MASK | BPDU_PORT_FW_MASK,
+-		   PAE_BPDU_FR | PAE_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
++		   PAE_BPDU_FR | PAE_EG_TAG(MT7530_VLAN_EG_DISABLED) |
+ 			   PAE_PORT_FW(TO_CPU_FW_CPU_ONLY) |
+-			   BPDU_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
++			   BPDU_EG_TAG(MT7530_VLAN_EG_DISABLED) |
+ 			   TO_CPU_FW_CPU_ONLY);
  
--	/* iterate through all possible age_count to find the closest pair */
--	for (tmp_age_count = 0; tmp_age_count <= AGE_CNT_MAX; ++tmp_age_count) {
-+	/* Iterate through all possible age_count values to find the closest
-+	 * pair. Start from 1 because the per-entry aging counter is
-+	 * initialized to AGE_CNT and a value of 0 means the entry will
-+	 * never be aged out.
-+	 */
-+	for (tmp_age_count = 1; tmp_age_count <= AGE_CNT_MAX; ++tmp_age_count) {
- 		unsigned int tmp_age_unit = secs / (tmp_age_count + 1) - 1;
+-	/* Trap frames with :01 and :02 MAC DAs to the CPU port(s) and egress
+-	 * them VLAN-untagged.
++	/* Trap frames with :01 and :02 MAC DAs to the CPU port(s) and
++	 * egress them with EG_TAG disabled.
+ 	 */
+ 	mt7530_rmw(priv, MT753X_RGAC1,
+ 		   R02_BPDU_FR | R02_EG_TAG_MASK | R02_PORT_FW_MASK |
+ 			   R01_BPDU_FR | R01_EG_TAG_MASK | R01_PORT_FW_MASK,
+-		   R02_BPDU_FR | R02_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
++		   R02_BPDU_FR | R02_EG_TAG(MT7530_VLAN_EG_DISABLED) |
+ 			   R02_PORT_FW(TO_CPU_FW_CPU_ONLY) | R01_BPDU_FR |
+-			   R01_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
++			   R01_EG_TAG(MT7530_VLAN_EG_DISABLED) |
+ 			   TO_CPU_FW_CPU_ONLY);
  
- 		if (tmp_age_unit <= AGE_UNIT_MAX) {
+-	/* Trap frames with :03 and :0E MAC DAs to the CPU port(s) and egress
+-	 * them VLAN-untagged.
++	/* Trap frames with :03 and :0E MAC DAs to the CPU port(s) and
++	 * egress them with EG_TAG disabled.
+ 	 */
+ 	mt7530_rmw(priv, MT753X_RGAC2,
+ 		   R0E_BPDU_FR | R0E_EG_TAG_MASK | R0E_PORT_FW_MASK |
+ 			   R03_BPDU_FR | R03_EG_TAG_MASK | R03_PORT_FW_MASK,
+-		   R0E_BPDU_FR | R0E_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
++		   R0E_BPDU_FR | R0E_EG_TAG(MT7530_VLAN_EG_DISABLED) |
+ 			   R0E_PORT_FW(TO_CPU_FW_CPU_ONLY) | R03_BPDU_FR |
+-			   R03_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
++			   R03_EG_TAG(MT7530_VLAN_EG_DISABLED) |
+ 			   TO_CPU_FW_CPU_ONLY);
+ }
+ 
 -- 
 2.54.0
 
