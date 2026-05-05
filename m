@@ -4,76 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E37E9CD343F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 15:47:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2F32FF8855
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 16:03:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0BlUIvajVVZjwDFT+u8DujFiAoSkX6zSEMepdkLSaXI=; b=hrVFRAAatj6kh0AySl6cmKMXU3
-	CY86A63OdhodWwoIvc+KOX8jTXqdE/GRZSPwQAQgbwewafRN+PkNitzgqfvYWqv48zdYIPo9SeH7J
-	i8JrT8pCWQ8xQDCVLT/pEVAjuRnHniUlTdoYAseKZ6086aHA+3dRGuxDd1/XJcVaZ1OVOhhs82QWF
-	jafIW6g1Kvx6VwPy7wZ6tosaP4GIpaM4yETfsw1CRzB9rUC8631NeM8CjcAVt98QSqG2rFcuDg/dB
-	cDS5NXVnXLScx+nLXKitTF55yWQX4goOuzdZrjgxycCNjNl9hijOd8nCaGzQjqorKrbdYzsvTopQO
-	Pijkp+sw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6hpDxpUfc5XAie7Di0S8Tb4d+7wqZtFI2aWrbn/wVb4=; b=BBH5ML5zYOI2g64clS+8GrjbnU
+	OlUtDlXF+qsHfda+Ogdt5fwoHjX2cCeA2GdkDTne6uznzTTU6BIbuOfTcSwfIHOGuZaFVaznnCzps
+	BqGMOCIw61Hr+PU5Nl2nNuEVvm3bH6xNyxm7I+bxos0mQziEmudPFt2wMK3nEkD73Ld0pUx89/p6s
+	7W4VGYhbmN/3VeGr9sgHDMQz7XjeurX00pELdz+8LslrOdsIDxAuH42R/USLv5aXUhZUFryL2IX++
+	v+WVplqKNppLscs4iMKVtg/zLSdiVp7BE1DJ2gYQXTmQO6QTKL8wzmvBCZjITjS4BihMlYt9ZnDpQ
+	om5AaKhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKI05-0000000GiQ2-3kq5;
-	Tue, 05 May 2026 15:47:57 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wKIF4-0000000GloQ-1NYs;
+	Tue, 05 May 2026 16:03:26 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKI02-0000000GiOr-37bM;
-	Tue, 05 May 2026 15:47:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1777996072;
-	bh=H4hfN0oMllcNEjPVcnu5mtrqlmjlS8rr/h+c93usT34=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=R2dNc5lIkfxzRIdZj5bE8Pht0wT+bdc6exMlFXhdxJPXapmX818okKAW7mgW1UrYb
-	 8URaR1dfHXkCp7xtrPHFWe2ueSq5ODIvOPNSGEGz9qtMftbWPaYkYWNPP/l9aRoyai
-	 71B+VdiYYtw6yBQdsLnY1GzSCftSI1ZSlc6Tnwhjy45MEg+NgIVngeyb1aBBlAEkxA
-	 +fd/A5I9KZ0tpKdG20e7dlT8nu1X94pzHbUyJXkN6GESzab2ksAA2eeVE/9g1pXD+3
-	 pDtyD7zPhFi1UUaEW+14i0+wICfppaGGofhpheacoMmeKqr6Kvks84NZOPdxeYTBXL
-	 +gUM9nF3JSs6g==
-Received: from fedora (unknown [100.64.0.11])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bbrezillon)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 362F817E05FC;
-	Tue,  5 May 2026 17:47:51 +0200 (CEST)
-Date: Tue, 5 May 2026 17:47:47 +0200
-From: Boris Brezillon <boris.brezillon@collabora.com>
-To: Ketil Johnsen <ketil.johnsen@arm.com>
-Cc: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
- <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, Jonathan
- Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, Sumit
- Semwal <sumit.semwal@linaro.org>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>,
- John Stultz <jstultz@google.com>, "T.J. Mercier" <tjmercier@google.com>,
- Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>, Steven Price
- <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, Daniel Almeida
- <daniel.almeida@collabora.com>, Alice Ryhl <aliceryhl@google.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 3/8] drm/panthor: De-duplicate FW memory section sync
-Message-ID: <20260505174747.3c199a81@fedora>
-In-Reply-To: <20260505140516.1372388-4-ketil.johnsen@arm.com>
-References: <20260505140516.1372388-1-ketil.johnsen@arm.com>
-	<20260505140516.1372388-4-ketil.johnsen@arm.com>
-Organization: Collabora
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
+	id 1wKIF1-0000000GlnC-0pXq;
+	Tue, 05 May 2026 16:03:24 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.99)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1wKIEm-000000000lR-04fy;
+	Tue, 05 May 2026 16:03:08 +0000
+Date: Tue, 5 May 2026 17:03:03 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: "Chester A. Unal" <chester.a.unal@arinc9.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	=?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+	Sean Wang <sean.wang@mediatek.com>, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net 2/5] net: dsa: mt7530: preserve VLAN tags on trapped
+ link-local frames
+Message-ID: <afoUt46gGwAC33ZU@makrotopia.org>
+References: <cover.1777986341.git.daniel@makrotopia.org>
+ <3ad4b724d7ae6250b8429d50fe913d2dca07a3f9.1777986341.git.daniel@makrotopia.org>
+ <46071c08-d85f-4157-9d61-6a0feef56747@arinc9.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <46071c08-d85f-4157-9d61-6a0feef56747@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260505_084754_928564_E2004DC7 
-X-CRM114-Status: GOOD (  20.43  )
+X-CRM114-CacheID: sfid-20260505_090323_236901_61354479 
+X-CRM114-Status: GOOD (  19.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,88 +74,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue,  5 May 2026 16:05:09 +0200
-Ketil Johnsen <ketil.johnsen@arm.com> wrote:
-
-> Handle the sync to device of FW memory sections inside
-> panthor_fw_init_section_mem() so that the callers do not have to.
+On Tue, May 05, 2026 at 03:37:29PM +0000, Chester A. Unal wrote:
+> Hey Daniel.
 > 
-> This small improvement is also critical for protected FW sections,
-> so we avoid issuing memory transactions to protected memory from
-> CPU running in normal mode.
+> On 05/05/2026 15:16, Daniel Golle wrote:
+> > The BPC, RGAC1 and RGAC2 registers control the handling of link-local
+> > frames with reserved MAC DAs (01:80:C2:00:00:0x). These frames are
+> > correctly trapped to the CPU port, but the egress VLAN tag attribute was
+> > set to MT7530_VLAN_EG_UNTAGGED which causes the switch to strip any
+> > VLAN tags from trapped frames before they reach the CPU.
+> > 
+> > This causes VLAN-tagged link-local frames (STP BPDUs, LLDP, PTP Peer
+> > Delay Requests) to arrive at the CPU without their VLAN tag, so they
+> > are delivered to the base network interface instead of the VLAN
+> > sub-interface. The DSA local_termination selftest confirms this: all
+> > link-local protocol tests on VLAN upper interfaces fail.
+> > 
+> > Set the EG_TAG attribute to MT7530_VLAN_EG_DISABLED (system default)
+> > so that the switch does not modify VLAN tags in trapped frames. This
+> > way VLAN-tagged frames retain their original tag and are delivered to
+> > the correct VLAN sub-interface, matching the behavior of non-trapped
+> > frames which pass through without VLAN tag modification.
+> > 
+> > Fixes: 69ddba9d170b ("net: dsa: mt7530: fix handling of all link-local frames")
+> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 > 
-> Signed-off-by: Ketil Johnsen <ketil.johnsen@arm.com>
-
-Reviewed-by: Boris Brezillon <boris.brezillon@collabora.com>
-
-> ---
->  drivers/gpu/drm/panthor/panthor_fw.c | 22 ++++++----------------
->  1 file changed, 6 insertions(+), 16 deletions(-)
+> Thank you for this patch. Could you please confirm that it conforms to the
+> findings documented on this patch log?
 > 
-> diff --git a/drivers/gpu/drm/panthor/panthor_fw.c b/drivers/gpu/drm/panthor/panthor_fw.c
-> index be0da5b1f3abf..0d07a133dc3af 100644
-> --- a/drivers/gpu/drm/panthor/panthor_fw.c
-> +++ b/drivers/gpu/drm/panthor/panthor_fw.c
-> @@ -446,6 +446,7 @@ static void panthor_fw_init_section_mem(struct panthor_device *ptdev,
->  					struct panthor_fw_section *section)
->  {
->  	bool was_mapped = !!section->mem->kmap;
-> +	struct sg_table *sgt;
->  	int ret;
->  
->  	if (!section->data.size &&
-> @@ -464,6 +465,11 @@ static void panthor_fw_init_section_mem(struct panthor_device *ptdev,
->  
->  	if (!was_mapped)
->  		panthor_kernel_bo_vunmap(section->mem);
-> +
-> +	/* An sgt should have been requested when the kernel BO was GPU-mapped. */
-> +	sgt = to_panthor_bo(section->mem->obj)->dmap.sgt;
-> +	if (!drm_WARN_ON_ONCE(&ptdev->base, !sgt))
-> +		dma_sync_sgtable_for_device(ptdev->base.dev, sgt, DMA_TO_DEVICE);
->  }
->  
->  /**
-> @@ -626,7 +632,6 @@ static int panthor_fw_load_section_entry(struct panthor_device *ptdev,
->  	section_size = hdr.va.end - hdr.va.start;
->  	if (section_size) {
->  		u32 cache_mode = hdr.flags & CSF_FW_BINARY_IFACE_ENTRY_CACHE_MODE_MASK;
-> -		struct panthor_gem_object *bo;
->  		u32 vm_map_flags = 0;
->  		u64 va = hdr.va.start;
->  
-> @@ -663,14 +668,6 @@ static int panthor_fw_load_section_entry(struct panthor_device *ptdev,
->  		}
->  
->  		panthor_fw_init_section_mem(ptdev, section);
-> -
-> -		bo = to_panthor_bo(section->mem->obj);
-> -
-> -		/* An sgt should have been requested when the kernel BO was GPU-mapped. */
-> -		if (drm_WARN_ON_ONCE(&ptdev->base, !bo->dmap.sgt))
-> -			return -EINVAL;
-> -
-> -		dma_sync_sgtable_for_device(ptdev->base.dev, bo->dmap.sgt, DMA_TO_DEVICE);
->  	}
->  
->  	if (hdr.va.start == CSF_MCU_SHARED_REGION_START)
-> @@ -724,17 +721,10 @@ panthor_reload_fw_sections(struct panthor_device *ptdev, bool full_reload)
->  	struct panthor_fw_section *section;
->  
->  	list_for_each_entry(section, &ptdev->fw->sections, node) {
-> -		struct sg_table *sgt;
-> -
->  		if (!full_reload && !(section->flags & CSF_FW_BINARY_IFACE_ENTRY_WR))
->  			continue;
->  
->  		panthor_fw_init_section_mem(ptdev, section);
-> -
-> -		/* An sgt should have been requested when the kernel BO was GPU-mapped. */
-> -		sgt = to_panthor_bo(section->mem->obj)->dmap.sgt;
-> -		if (!drm_WARN_ON_ONCE(&ptdev->base, !sgt))
-> -			dma_sync_sgtable_for_device(ptdev->base.dev, sgt, DMA_TO_DEVICE);
->  	}
->  }
->  
+> https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/commit/?id=e8bf353577f382c7066c661fed41b2adc0fc7c40
 
+Yes. Combining VLAN CTAG and DSA tag into single "mess" tag is what the
+MT7530 hardware does, and also what tag_mtk.c expects, and mtk_eth_soc
+"special tag" feature handles well.
+
+I've found, addressed and verified all the issues in the series using
+the DSA selftests in tools/testing/selftest/drivers/net/dsa, ie. running
+bridge_vlan_aware.sh, bridge_vlan_unaware.sh and local_termination.sh
+in a loop, and random order, on BPi-R3 (MT7531) and BPi-R4 (MT7988).
+
+With the series applied many of the previously failing tests are now
+passing.
 
