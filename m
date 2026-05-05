@@ -4,39 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B6B5FF8855
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 14:16:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDBDBFF8855
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 14:16:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ewlfab5TlMI3g+5lyde8COFy0B8myj0hnkYTWeKU9os=; b=S76qm0Uoxy5YGQWgQCdjlbhAY+
-	QK5E8j8y2VEzIgcOiR4i4syMpSyl+jsyEF/mbM2XeZswc9DEmNq07ZPzVrwJeLPAeeGFeKsLNQQ+J
-	KOO/cArt9dP76t3eyGby7gAaihQF5FtfJJ3llLkxccjk/EFGtyaOAyIrqp6aT8zFijwGi4ok9A9KS
-	Vu7zmOf+Y2SQUi2CqqWMmN04Avsmjrq+kbo8uibRexo48mA7h63mAy1gvZKHEJk/SG0IupJSI7Dts
-	SUyFEiFbs5x3bOnGEGuoUJRPpEpCKfBDCtP/7WN06l9Axvd5ADuVRyYTF0mfvfm1thYqo9d4rtiXL
-	fnuN4PRA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DQyYlCFSCFKmwco3eE+KC4eUxSyLW/tniSiDEiBpUBg=; b=IsDkv3LpZeH+fOqc21Pc1mNnXK
+	gaY5b13l1+xDXVdC/FRx+wWKRiGh2OLKIyHTakf76Pth29SKkHaSbsayoyhXr/7O5KSfAlRHamZRC
+	pK41dvVqM2g2klH1jt4SP+i0rnPAAN5tmHCoIgf5pMqpwI7uxQS+ro/pF+TV2iaaq6zzE2z/SSqqN
+	1J4v+3/BQzJtZ2QMWkpc4hqu3q+3b5h+xjezArEeYQO4BAk1OcVuZNfR2bVTTVct/PlyQHbExwnxe
+	J3Wzwhi9Sh38ycyJbOCze+pqANiubCsyd51OtDVuIiOMMbTrd4rcpGs79n5H6wHAY8u7xVeKe24KF
+	4xxEqKxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKGZD-0000000GTGV-3aVq;
-	Tue, 05 May 2026 14:16:07 +0000
+	id 1wKGZV-0000000GTLT-1epN;
+	Tue, 05 May 2026 14:16:25 +0000
 Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKGZB-0000000GTEs-1J6O;
-	Tue, 05 May 2026 14:16:06 +0000
+	id 1wKGZS-0000000GTKI-28Mo;
+	Tue, 05 May 2026 14:16:23 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.99)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1wKGYt-000000008Q8-0upW;
-	Tue, 05 May 2026 14:15:47 +0000
-Date: Tue, 5 May 2026 15:15:40 +0100
+	id 1wKGZK-000000008Qu-3Q6t;
+	Tue, 05 May 2026 14:16:14 +0000
+Date: Tue, 5 May 2026 15:16:11 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Edward Parker <edward@topnotchit.com>, Andrew Lunn <andrew@lunn.ch>,
+	Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
 	Vladimir Oltean <olteanv@gmail.com>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
@@ -49,15 +48,17 @@ To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
 	Sean Wang <sean.wang@mediatek.com>, netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net 0/5] net: dsa: mt7530: assorted fixes
-Message-ID: <cover.1777986341.git.daniel@makrotopia.org>
+Subject: [PATCH net 1/5] net: dsa: mt7530: fix FDB entries not aging out with
+ short timeout
+Message-ID: <f285707e09a0febffd1b987f204ff4eb71736489.1777986341.git.daniel@makrotopia.org>
+References: <cover.1777986341.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <cover.1777986341.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260505_071605_352931_FECD4F01 
-X-CRM114-Status: UNSURE (   5.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260505_071622_544837_87B9A497 
+X-CRM114-Status: GOOD (  13.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,23 +73,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-A batch of small, independent fixes for the MediaTek MT7530 family DSA
-driver, addressing long-standing correctness issues that surface on
-hardware with bridge VLAN filtering enabled, on link-local frame
-reception, and during bridge join/leave transitions.
+When setting a low ageing time such as 10 seconds, the algorithm in
+mt7530_set_ageing_time() finds AGE_CNT=0 and AGE_UNIT=9 as the first
+exact match (starting the search from tmp_age_count=0).
 
-Daniel Golle (4):
-  net: dsa: mt7530: fix FDB entries not aging out with short timeout
-  net: dsa: mt7530: preserve VLAN tags on trapped link-local frames
-  net: dsa: mt7530: fix CPU port VLAN not being reset to unaware
-  net: dsa: mt7530: clear flood flags on bridge leave
+On the MT7530/MT7531 hardware, the per-entry aging counter is
+initialized to AGE_CNT when a MAC address is learned. With AGE_CNT=0,
+new entries start with a counter value of 0, which the hardware treats
+as "already aged" and never removes, effectively disabling aging.
 
-Edward Parker (1):
-  net: dsa: mt7530: untag VLAN-aware bridge PVID
+Fix this by starting the search from tmp_age_count=1 to ensure entries
+always have a non-zero initial aging counter. For a 10-second ageing
+time this yields AGE_CNT=1 and AGE_UNIT=4 instead: the timer ticks
+every 5 seconds and entries are removed after 2 ticks.
 
- drivers/net/dsa/mt7530.c | 153 +++++++++++++++++++++++----------------
- 1 file changed, 90 insertions(+), 63 deletions(-)
+Fixes: ea6d5c924e39 ("net: dsa: mt7530: support setting ageing time")
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ drivers/net/dsa/mt7530.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 44d670904ad8..b1903da7d500 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -1027,8 +1027,12 @@ mt7530_set_ageing_time(struct dsa_switch *ds, unsigned int msecs)
+ 	if (secs < 1 || secs > (AGE_CNT_MAX + 1) * (AGE_UNIT_MAX + 1))
+ 		return -ERANGE;
+ 
+-	/* iterate through all possible age_count to find the closest pair */
+-	for (tmp_age_count = 0; tmp_age_count <= AGE_CNT_MAX; ++tmp_age_count) {
++	/* Iterate through all possible age_count values to find the closest
++	 * pair. Start from 1 because the per-entry aging counter is
++	 * initialized to AGE_CNT and a value of 0 means the entry will
++	 * never be aged out.
++	 */
++	for (tmp_age_count = 1; tmp_age_count <= AGE_CNT_MAX; ++tmp_age_count) {
+ 		unsigned int tmp_age_unit = secs / (tmp_age_count + 1) - 1;
+ 
+ 		if (tmp_age_unit <= AGE_UNIT_MAX) {
 -- 
 2.54.0
 
