@@ -4,79 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADEF0CD3427
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 17:12:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EB6FCD3427
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 18:27:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
+	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=A8T4OCYYhHgLaIwb8kVQUoYVy5c+G8mkFJf4ADWfuEQ=; b=CK5z94RdVSyNweTdIDMMKuQqPd
-	1KTOglRBH3HWy47rqn/AANULEEUi3/Znl3iiHy93qqDB/U33a3fW1CCQUkKzGAfCjaCIBanMg1z/B
-	HqgQn0ugqgdgmTBXD+z0YXCe4FqfBUOkuwMzrS1U6rjSj9EJc8i1SQTpu2mZx9BuE+TLCfw+ZLvvm
-	+SnwHXux2wCX+ht4B1HOur73tMl/oBlmNfkxg5ntaApXWuiVf32QCxf5M0P+1B2EtPXf9G2q6iS9M
-	V+4D70lr9IhjlntUzL35eak680ahwkhV4tupF2w/uPf/dBWbBx8b2N2M/L8UumNxw8ULequyXF6D+
-	AtgFYf/A==;
+	bh=Q0DEjqI/MjSZk63smQxo8R3imVIUNR3yg/nfskjDHjk=; b=mPmimWU28gnk3G3xzYUkrZH9G5
+	emCh2b5bb3kpdbfZCzMxloq1BoF7uzXXXZvk54776aYLG9TH3aPWrqch9xMqNaaMWFvqcMsLq1ew+
+	3V5w7MMvE1JnDl3m7mCSkUsCt23mWvhlU3ui31+BIGr8Woh5UeaJ9Mf80nrbw21rpB/D/ZuvOat/u
+	nFnMTH3h7DQL/rLZxFoYAuZLb7F+qvpIWaJPYtzompGlpfa0jgULHoaximZuuauN6O1NDxsLSfdC9
+	sei5Uw/GI15HrAYFwTGeRlPU4zic6A5TR8bNnToY+cs7wa5JracKlbOoLhHGeRGqi8wv0Ka2bgVM8
+	0DsRqz/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKJJf-0000000H0q0-1sz6;
-	Tue, 05 May 2026 17:12:15 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wKKUV-0000000HAGS-2iTB;
+	Tue, 05 May 2026 18:27:31 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKJJd-0000000H0pL-02li;
-	Tue, 05 May 2026 17:12:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1778001124;
-	bh=l0cSBZtY8v8/BXAKjOef5rDCo9Ch/FtnYTeDMKLxKf8=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=Xk1TcFWWz+b4FqFamS1MxscOyUDHkM5B+1fXmOorHcQCB8J4fuK7O4MEuyUNnU6gs
-	 7QRX71N6cQOJgDgjyLFAHe+iVXQMuhaX5QTAH0iQ8ApUpSpZGreexSbVVJVIojQt3u
-	 bGxTv8egBbuPyX60cADHbo0NrgNMmXAu3klzJ1Rdp/+LwKlWHTUwBQnv13AjBdTTLT
-	 h5wWO1IVGMUSqulMu6FqHl9Aydn9W2OWWCdLTAFCfWyoV9vSF3r8cvH7P1m5qf/N+9
-	 8Kq5kP3GQLttM6oQNn4G8ywaFJPDTO7ygW3lA+ZNI3q1mdXjZw76hRFCpSdeI1qYDk
-	 WKxLeeWxUC1GQ==
-Received: from fedora (unknown [100.64.0.11])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bbrezillon)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C575A17E1313;
-	Tue,  5 May 2026 19:12:03 +0200 (CEST)
-Date: Tue, 5 May 2026 19:11:59 +0200
-From: Boris Brezillon <boris.brezillon@collabora.com>
-To: Ketil Johnsen <ketil.johnsen@arm.com>
-Cc: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
- <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, Jonathan
- Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, Sumit
- Semwal <sumit.semwal@linaro.org>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>,
- John Stultz <jstultz@google.com>, "T.J. Mercier" <tjmercier@google.com>,
- Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>, Steven Price
- <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, Daniel Almeida
- <daniel.almeida@collabora.com>, Alice Ryhl <aliceryhl@google.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Florent Tomasin <florent.tomasin@arm.com>, Paul Toadere
- <paul.toadere@arm.com>, Samuel Percival <samuel.percival@arm.com>
-Subject: Re: [PATCH 7/8] drm/panthor: Add support for entering and exiting
- protected mode
-Message-ID: <20260505191159.0b9a0c0b@fedora>
-In-Reply-To: <20260505140516.1372388-8-ketil.johnsen@arm.com>
-References: <20260505140516.1372388-1-ketil.johnsen@arm.com>
-	<20260505140516.1372388-8-ketil.johnsen@arm.com>
-Organization: Collabora
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
+	id 1wKKUS-0000000HAE8-24OV
+	for linux-mediatek@lists.infradead.org;
+	Tue, 05 May 2026 18:27:29 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-4893940bb5eso30721885e9.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 05 May 2026 11:27:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1778005647; x=1778610447; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Q0DEjqI/MjSZk63smQxo8R3imVIUNR3yg/nfskjDHjk=;
+        b=AWoehVONG9DGPMvf+fdC7DNrEyO1IQLqlTWV027K8l1gietfsIXS8VMbCXhjfdsjHj
+         ZOjovU4bZGWTRoZwF1SM2qVNA/5/lQC8Zg9vm2xGcPigyqGT8at3+B0MebrpfyEn1wV6
+         TnmwcCupWbKanJlOR+7tO2XVxtXK5xT4NLqcWKVsL95jut25nenO7OxemVPLgBVpNlr9
+         8KEwvHkcn7G/0UgaVN17nXY/n5vNJ03qMjv/deU3K14SkQlYhIqRaE06K1s6pkKJyeuX
+         kExvsEvucF+J9FQSbi+5vQU2ovIixhOfs1FJA9US9ptLD9wGwZ6O+sDJGrfe7xP17t9u
+         qxog==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1778005647; x=1778610447;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=Q0DEjqI/MjSZk63smQxo8R3imVIUNR3yg/nfskjDHjk=;
+        b=e2J+t0mo+grEnK5QI1/ETJYt5/KWXY6oykpL8nPUbeFiC48zzNkxdiGbmrug9Itzx/
+         USSo3TPxMIL+BJXaopKRFrKOWVSHqrIIq0yofYWGskQBY36Vv3Z/jWel0W7VQDc6QZLx
+         B9CcP9VrIML/DoI5Tg+5jcRgR6f6yQO6NHe1YrjTo+NeqK7GKMYKjALwAvpc6Yb3FdR4
+         myfmyvmfeSZgRlkoONk50//zCO/Nilr8ueokZgvk5LYoyljCXqf7AJrQtZdvVnl2vtkY
+         LGTI1X/ntM84sLi+91WItz4yiliX2pqboxH9nok4lysCXIuog6KOcSI+pzGLTaIruf6y
+         Kfwg==
+X-Forwarded-Encrypted: i=1; AFNElJ8zHiUDWWCHH31wAllzNwt4MatBx3eY3qblVEOTCE7qMjnajQ22isjqdxRsXByytHJ6VOAT4NeOA9mGh+OzBg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx3ChHTajlkVyRDVL3I3WQTS+Nfu+MRIfQ41vSMPftUHfa/SRxQ
+	SHR0M9fZqQpeOY//kAUzWYMOEOEFTnSUYwqQ0cM2ldm/tbMszyjLX+00
+X-Gm-Gg: AeBDieu2xpT11GNL9pMSKUixrI+bHGHn+spOsda2mGJFUr2Km0ysECj9sgR2zuIuuPO
+	Olj+BAFaGOCC9uetlB1xeO4M98mWpjlhFzhsslLZc+phu1uBOR23gcRF0dGDofdx3JgCLY/X/mq
+	mVtcvUHCgXmlDjGrK/QA3oxXhiq0Nqjmh2LWXh6x+ci8IeYSjqRpj4Dq0kAsv2v7DKvyZBn+4kv
+	vZzVhYxlX8tBSZyur80q16P49IvMscveh76QsAqenFXOwYF2Gqea5zj/QfrkGFmVVEGhp/j6/Y3
+	lur15BDStojuKRB0DitVJB1hH3lZgcWk65MtOnxXEasOm3Mi90hN7VgRx9IFBLODp+mPkyaKBlw
+	hCEzSBsp3mdgw/r0KGljRZDlmgXa9BFGP9NxQTgXCdKWlzMqxi6fz9AXEFEDln5NiNLulAPRZQ7
+	J7BDpenA2iLanjr+Mud9ruut30sQUUAgoDroitW4uOBXFGsCZxdDDrIr2G8uRPcK5fuhlL3CU6k
+	U7WmM0=
+X-Received: by 2002:a05:600c:a412:b0:48b:339:73cf with SMTP id 5b1f17b1804b1-48e51f184ebmr5001945e9.1.1778005646464;
+        Tue, 05 May 2026 11:27:26 -0700 (PDT)
+Received: from Ansuel-XPS24 (host-82-59-227-65.retail.telecomitalia.it. [82.59.227.65])
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-48a820c865esm408208245e9.5.2026.05.05.11.27.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 05 May 2026 11:27:26 -0700 (PDT)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Nathan Chancellor <nathan@kernel.org>,
+	Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
+	Bill Wendling <morbo@google.com>,
+	Justin Stitt <justinstitt@google.com>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	netdev@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	llvm@lists.linux.dev
+Subject: [net-next RFC PATCH v5 01/10] net: phylink: keep and use MAC supported_interfaces in phylink struct
+Date: Tue,  5 May 2026 20:27:02 +0200
+Message-ID: <20260505182713.27644-2-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260505182713.27644-1-ansuelsmth@gmail.com>
+References: <20260505182713.27644-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260505_101213_236595_3B7FF210 
-X-CRM114-Status: GOOD (  48.09  )
+X-CRM114-CacheID: sfid-20260505_112728_576263_4B817C43 
+X-CRM114-Status: GOOD (  18.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,252 +120,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue,  5 May 2026 16:05:13 +0200
-Ketil Johnsen <ketil.johnsen@arm.com> wrote:
+Add in phylink struct a copy of supported_interfaces from phylink_config
+and make use of that instead of relying on phylink_config value.
 
-> From: Florent Tomasin <florent.tomasin@arm.com>
-> 
-> This patch modifies the Panthor driver code to allow handling
-> of the GPU HW protected mode enter and exit.
-> 
-> The logic added by this patch includes:
-> - the mechanisms needed for entering and exiting protected mode.
-> - the handling of protected mode IRQs and FW interactions.
-> - the scheduler changes needed to decide when to enter
->   protected mode based on CSG scheduling.
-> 
-> Note that the submission of a protected mode jobs are done
-> from the user space.
-> 
-> The following is a summary of how protected mode is entered
-> and exited:
-> - When the GPU detects a protected mode job needs to be
->   executed, an IRQ is sent to the CPU to notify the kernel
->   driver that the job is blocked until the GPU has entered
->   protected mode. The entering of protected mode is controlled
->   by the kernel driver.
-> - The Mali Panthor CSF driver will schedule a tick and evaluate
->   which CS in the CSG to schedule on slot needs protected mode.
->   If the priority of the CSG is not sufficiently high, the
->   protected mode job will not progress until the CSG is
->   scheduled at top priority.
-> - The Panthor scheduler notifies the GPU that the blocked
->   protected jobs will soon be able to progress.
-> - Once all CSG and CS slots are updated, the scheduler
->   requests the GPU to enter protected mode and waits for
->   it to be acknowledged.
-> - If successful, all protected mode jobs will resume execution
->   while normal mode jobs block until the GPU exits
->   protected mode, or the kernel driver rotates the CSGs
->   and forces the GPU to exit protected mode.
-> - If unsuccessful, the scheduler will request a GPU reset.
-> - When a protected mode job is suspended as a result of
->   the CSGs rotation, the GPU will send an IRQ to the CPU
->   to notify that the protected mode job needs to resume.
-> 
-> This sequence will continue so long the user space is
-> submitting protected mode jobs.
-> 
-> Signed-off-by: Florent Tomasin <florent.tomasin@arm.com>
-> Co-developed-by: Paul Toadere <paul.toadere@arm.com>
-> Signed-off-by: Paul Toadere <paul.toadere@arm.com>
-> Co-developed-by: Samuel Percival <samuel.percival@arm.com>
-> Signed-off-by: Samuel Percival <samuel.percival@arm.com>
-> Co-developed-by: Ketil Johnsen <ketil.johnsen@arm.com>
-> Signed-off-by: Ketil Johnsen <ketil.johnsen@arm.com>
-> ---
->  drivers/gpu/drm/panthor/panthor_device.c |   1 +
->  drivers/gpu/drm/panthor/panthor_device.h |   9 +
->  drivers/gpu/drm/panthor/panthor_fw.c     |  86 ++++++++-
->  drivers/gpu/drm/panthor/panthor_fw.h     |   5 +
->  drivers/gpu/drm/panthor/panthor_gpu.c    |  14 +-
->  drivers/gpu/drm/panthor/panthor_gpu.h    |   6 +
->  drivers/gpu/drm/panthor/panthor_mmu.c    |  10 +
->  drivers/gpu/drm/panthor/panthor_sched.c  | 224 +++++++++++++++++++++--
->  8 files changed, 339 insertions(+), 16 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/panthor/panthor_device.c b/drivers/gpu/drm/panthor/panthor_device.c
-> index 3a5cdfa99e5fe..449f17b0f4c5c 100644
-> --- a/drivers/gpu/drm/panthor/panthor_device.c
-> +++ b/drivers/gpu/drm/panthor/panthor_device.c
-> @@ -207,6 +207,7 @@ int panthor_device_init(struct panthor_device *ptdev)
->  
->  	ptdev->soc_data = of_device_get_match_data(ptdev->base.dev);
->  
-> +	init_rwsem(&ptdev->protm.lock);
->  	init_completion(&ptdev->unplug.done);
->  	ret = drmm_mutex_init(&ptdev->base, &ptdev->unplug.lock);
->  	if (ret)
-> diff --git a/drivers/gpu/drm/panthor/panthor_device.h b/drivers/gpu/drm/panthor/panthor_device.h
-> index d51fec97fc5fa..ebeec45cf60a1 100644
-> --- a/drivers/gpu/drm/panthor/panthor_device.h
-> +++ b/drivers/gpu/drm/panthor/panthor_device.h
-> @@ -334,6 +334,15 @@ struct panthor_device {
->  	struct {
->  		/** @heap: Pointer to the protected heap */
->  		struct dma_heap *heap;
-> +
-> +		/**
-> +		 * @lock: Lock to prevent VM operations during protected mode.
+This in preparation for support of PCS handling internally to phylink
+where a PCS can be removed or added after the phylink is created and we
+need both a reference of the supported_interfaces value from
+phylink_config and an internal value that can be updated with the new
+PCS info.
 
-Here it says the lock prevents VM ops while the GPU is in protected
-mode, but...
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+---
+ drivers/net/phy/phylink.c | 22 +++++++++++++++-------
+ 1 file changed, 15 insertions(+), 7 deletions(-)
 
-> +		 *
-> +		 * The MMU will not execute commands when the GPU is in
-> +		 * protected mode, so we use this RW lock to sync access
-> +		 * between VM_BIND and GPU protected mode.
-> +		 */
-> +		struct rw_semaphore lock;
->  	} protm;
->  };
->  
-> diff --git a/drivers/gpu/drm/panthor/panthor_fw.c b/drivers/gpu/drm/panthor/panthor_fw.c
-> index 1aba29b9779b6..281556530ddab 100644
-> --- a/drivers/gpu/drm/panthor/panthor_fw.c
-> +++ b/drivers/gpu/drm/panthor/panthor_fw.c
-> @@ -1057,7 +1057,9 @@ static void panthor_fw_init_global_iface(struct panthor_device *ptdev)
->  					 GLB_CFG_PROGRESS_TIMER |
->  					 GLB_CFG_POWEROFF_TIMER |
->  					 GLB_IDLE_EN |
-> -					 GLB_IDLE;
-> +					 GLB_IDLE |
-> +					 GLB_PROTM_ENTER |
-> +					 GLB_PROTM_EXIT;
->  
->  	if (panthor_fw_has_glb_state(ptdev))
->  		glb_iface->input->ack_irq_mask |= GLB_STATE_MASK;
-> @@ -1456,6 +1458,88 @@ static void panthor_fw_ping_work(struct work_struct *work)
->  	}
->  }
->  
-> +int panthor_fw_protm_enter(struct panthor_device *ptdev)
-> +{
-> +	struct panthor_fw_global_iface *glb_iface;
-> +	u32 acked;
-> +	u32 status;
-> +	int ret;
-> +
-> +	down_write(&ptdev->protm.lock);
-> +
-> +	glb_iface = panthor_fw_get_glb_iface(ptdev);
-> +
-> +	panthor_fw_toggle_reqs(glb_iface, req, ack, GLB_PROTM_ENTER);
-> +	gpu_write(ptdev, CSF_DOORBELL(CSF_GLB_DOORBELL_ID), 1);
-> +
-> +	ret = panthor_fw_glb_wait_acks(ptdev, GLB_PROTM_ENTER, &acked, 4000);
-> +	if (ret) {
-> +		drm_err(&ptdev->base, "Wait for FW protected mode acknowledge timed out");
-> +		up_write(&ptdev->protm.lock);
-> +		return ret;
-> +	}
-> +
-> +	/* Wait for the GPU to actually enter protected mode.
-> +	 * There would be some time gap between FW sending the
-> +	 * ACK for GLB_PROTM_ENTER and GPU entering protected mode.
-> +	 */
-> +	if (gpu_read_poll_timeout(ptdev, GPU_STATUS, status,
-> +				  (status & GPU_STATUS_PROTM_ACTIVE) ||
-> +					  ((glb_iface->input->req ^ glb_iface->output->ack) &
-> +					   GLB_PROTM_EXIT),
-> +				  10, 500000)) {
-> +		drm_err(&ptdev->base, "Wait for GPU protected mode enter timed out");
-> +		ret = -ETIMEDOUT;
-> +	}
-> +
-> +	up_write(&ptdev->protm.lock);
+diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
+index 087ac63f9193..4d59c0dd78db 100644
+--- a/drivers/net/phy/phylink.c
++++ b/drivers/net/phy/phylink.c
+@@ -60,6 +60,11 @@ struct phylink {
+ 	/* The link configuration settings */
+ 	struct phylink_link_state link_config;
+ 
++	/* What interface are supported by the current link.
++	 * Can change on removal or addition of new PCS.
++	 */
++	DECLARE_PHY_INTERFACE_MASK(supported_interfaces);
++
+ 	/* The current settings */
+ 	phy_interface_t cur_interface;
+ 
+@@ -629,7 +634,7 @@ static int phylink_validate_mask(struct phylink *pl, struct phy_device *phy,
+ static int phylink_validate(struct phylink *pl, unsigned long *supported,
+ 			    struct phylink_link_state *state)
+ {
+-	const unsigned long *interfaces = pl->config->supported_interfaces;
++	const unsigned long *interfaces = pl->supported_interfaces;
+ 
+ 	if (state->interface == PHY_INTERFACE_MODE_NA)
+ 		return phylink_validate_mask(pl, NULL, supported, state,
+@@ -1868,6 +1873,9 @@ struct phylink *phylink_create(struct phylink_config *config,
+ 	mutex_init(&pl->state_mutex);
+ 	INIT_WORK(&pl->resolve, phylink_resolve);
+ 
++	phy_interface_copy(pl->supported_interfaces,
++			   config->supported_interfaces);
++
+ 	pl->config = config;
+ 	if (config->type == PHYLINK_NETDEV) {
+ 		pl->netdev = to_net_dev(config->dev);
+@@ -2026,7 +2034,7 @@ static int phylink_validate_phy(struct phylink *pl, struct phy_device *phy,
+ 		 * those which the host supports.
+ 		 */
+ 		phy_interface_and(interfaces, phy->possible_interfaces,
+-				  pl->config->supported_interfaces);
++				  pl->supported_interfaces);
+ 
+ 		if (phy_interface_empty(interfaces)) {
+ 			phylink_err(pl, "PHY has no common interfaces\n");
+@@ -2828,12 +2836,12 @@ static phy_interface_t phylink_sfp_select_interface(struct phylink *pl,
+ 		return interface;
+ 	}
+ 
+-	if (!test_bit(interface, pl->config->supported_interfaces)) {
++	if (!test_bit(interface, pl->supported_interfaces)) {
+ 		phylink_err(pl,
+ 			    "selection of interface failed, SFP selected %s (%u) but MAC supports %*pbl\n",
+ 			    phy_modes(interface), interface,
+ 			    (int)PHY_INTERFACE_MODE_MAX,
+-			    pl->config->supported_interfaces);
++			    pl->supported_interfaces);
+ 		return PHY_INTERFACE_MODE_NA;
+ 	}
+ 
+@@ -3761,14 +3769,14 @@ static int phylink_sfp_config_optical(struct phylink *pl)
+ 
+ 	phylink_dbg(pl, "optical SFP: interfaces=[mac=%*pbl, sfp=%*pbl]\n",
+ 		    (int)PHY_INTERFACE_MODE_MAX,
+-		    pl->config->supported_interfaces,
++		    pl->supported_interfaces,
+ 		    (int)PHY_INTERFACE_MODE_MAX,
+ 		    pl->sfp_interfaces);
+ 
+ 	/* Find the union of the supported interfaces by the PCS/MAC and
+ 	 * the SFP module.
+ 	 */
+-	phy_interface_and(pl->sfp_interfaces, pl->config->supported_interfaces,
++	phy_interface_and(pl->sfp_interfaces, pl->supported_interfaces,
+ 			  pl->sfp_interfaces);
+ 	if (phy_interface_empty(pl->sfp_interfaces)) {
+ 		phylink_err(pl, "unsupported SFP module: no common interface modes\n");
+@@ -3939,7 +3947,7 @@ static int phylink_sfp_connect_phy(void *upstream, struct phy_device *phy)
+ 
+ 	/* Set the PHY's host supported interfaces */
+ 	phy_interface_and(phy->host_interfaces, phylink_sfp_interfaces,
+-			  pl->config->supported_interfaces);
++			  pl->supported_interfaces);
+ 
+ 	/* Do the initial configuration */
+ 	return phylink_sfp_config_phy(pl, phy);
+-- 
+2.53.0
 
-... here I see the lock being released right after we've entered
-protected mode. Meaning the MMU layer can proceed with any pending VM
-ops even though the GPU only exists PROTM when panthor_fw_protm_exit()
-is called. If this is expected, the protm::lock doc should be updated to
-reflect that.
-
-Also, I don't think a rw_semaphore alone is enough to cover the kind of
-critical section you're trying to declare, because it requires that the
-lock is taken/released from the same thread, and
-panthor_fw_protm_enter()/panthor_fw_protm_exit() will be called from
-different work items. This probably explains why the doc no longer
-matches the implementation.
-
-I guess this could be reworked to use a combination of rwlock+completion,
-where the VM logic does something like:
-
-	down_read(protm.lock);
-	while (!try_wait_for_completion(protm.complete)) {
-		up_read(protm.lock);
-		if (!wait_for_completion_timeout(protm.complete, timeout)) {
-			schedule_reset();
-			return -ETIMEDOUT;
-		}
-		down_read(protm.lock);
-	}
-
-	// proceed with the VM op
-
-	up_read(protm.lock);
-
-in panthor_fw_protm_enter(), you'd take the lock in write mode,
-reinit the completion object, release the lock, and proceed with
-the PROTM operation. If it fails, you call complete_all()
-immediately, if it works, you defer the complete_all() to the
-panthor_fw_protm_exit() path.
-
-> +
-> +	return ret;
-> +}
-> +
-> +void panthor_fw_protm_exit(struct panthor_device *ptdev)
-> +{
-> +	struct panthor_fw_global_iface *glb_iface = panthor_fw_get_glb_iface(ptdev);
-> +
-> +	/* Acknowledge the protm exit. */
-> +	panthor_fw_update_reqs(glb_iface, req, glb_iface->output->ack, GLB_PROTM_EXIT);
-> +}
-> +
-> +int panthor_fw_protm_exit_wait_event_timeout(struct panthor_device *ptdev)
-> +{
-> +	struct panthor_fw_global_iface *glb_iface = panthor_fw_get_glb_iface(ptdev);
-> +	int ret = 0;
-> +
-> +	/* Send PING request to force an exit */
-> +	panthor_fw_toggle_reqs(glb_iface, req, ack, GLB_PING);
-
-Uh, if a PING triggers a PROTM exit, we should probably pause the PING
-(or reschedule it) right before entering PROTM, otherwise timings might
-make it so PROTM is exited almost immediately after enter.
-
-> +	gpu_write(ptdev, CSF_DOORBELL(CSF_GLB_DOORBELL_ID), 1);
-> +
-> +	ret = wait_event_timeout(ptdev->fw->req_waitqueue,
-> +				 !(gpu_read(ptdev, GPU_STATUS) & GPU_STATUS_PROTM_ACTIVE),
-> +				 msecs_to_jiffies(500));
-> +
-> +	if (!ret) {
-> +		drm_err(&ptdev->base, "Wait for forced protected mode exit timed out");
-> +		panthor_device_schedule_reset(ptdev);
-> +		return -ETIMEDOUT;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +void panthor_fw_protm_exit_sync(struct panthor_device *ptdev)
-> +{
-> +	u32 status;
-> +
-> +	/* Busy-wait (5ms) for FW to exit protected mode on its own */
-> +	if (!gpu_read_poll_timeout(ptdev, GPU_STATUS, status,
-> +				   !(status & GPU_STATUS_PROTM_ACTIVE), 10,
-> +				   5000))
-> +		return;
-> +
-> +	panthor_fw_protm_exit_wait_event_timeout(ptdev);
-> +}
-
-I'll stop there for now.
-
-Regards,
-
-Boris
 
