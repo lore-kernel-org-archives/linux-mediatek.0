@@ -4,57 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0581FF8855
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 16:24:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C9D7FF8855
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 16:32:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
-	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ASWqzKjXrD7GPPPq7eqcATqg6A70mPRmdB4ZyDBwEK0=; b=3WwQSmuHp5zhIhEJmwCes54ia8
-	Jdd9wExlBLRXkbuKqA+MoMgBlAIjVmzP9zd+F2U7eswRX1VNw+VQUL/+mJVjK0rMSZYAYJn9V1ohq
-	ao6+BnmDO5WvGaVr3jwViAiT8dYqcRCTCxBHB6uFzMm2a6YneAQrsEnohWiZB0Bgb43Sbrd2iXLC3
-	XcvUEkkYxl/pHWHzu1UPoKXqWkwWBdKMFadXL+RzPw0x0qnrtCjylRHgBJs0KOxFCjUhIjtOeFDBB
-	4NQF1JfsV9saNLEiCFF7xWEjvYiMGO7TfHOp4dXxhljRFb+Q5cUwVk2QOzK+vC+oRxW+coAuXl3+2
-	US3UlP8w==;
+	bh=5cxk//KUPJSoEx14fWOBCbzpWhXsaa82/9VwpdEGmrc=; b=sKdVL4j5RTeWTo64GR04UUbOYF
+	tcPtml66teg+C2WmyZ5QVZY/eQUojBkN/u0J0OjsDUnN4zs2Y+2p5GrHN2IOuF63xSdvvFpKM3bP1
+	vmc+5GBRC2E9kvfVpE7ZlzutndeKiAdF80WGqMB95yzReOTlrjZoHaE49zk8jn7lnwjtDYjmbnIwq
+	7OR/jG4SZ7u2R63PwT/5aGvjh10YQsVH+wq1b2RSiGz8KKk0r2Eb0G4M7sWB5op8bXdTAlC42PBgc
+	VgQvKa3rEcBBAyhdzioTTpkXXDdLbTlqtcUMDRkLXVdI1vh/Kh6kaS4uyKDEwr6Tyjdx+MHpz1h6i
+	+i0wklGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKIZq-0000000Gs0b-3TEZ;
-	Tue, 05 May 2026 16:24:54 +0000
-Received: from mail-24425.protonmail.ch ([109.224.244.25])
+	id 1wKIhc-0000000Gtml-0LZV;
+	Tue, 05 May 2026 16:32:56 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKIZn-0000000Grye-48Nq
-	for linux-mediatek@lists.infradead.org;
-	Tue, 05 May 2026 16:24:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail3; t=1777998287; x=1778257487;
-	bh=ASWqzKjXrD7GPPPq7eqcATqg6A70mPRmdB4ZyDBwEK0=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=M+F3yhx7dJ2rhFSJAZcFeXyevkNolOGRHAyGx9L5V9zEwV48mNW0/j1DxaK2EZV3A
-	 sOI77K5RJdv6vOQ4iT0XOz7d7KLFmOkC+jHajqCLIfMwCKTNmoZk26ZlwEiaoyoM9j
-	 b0Jm6p/Ff5EtNIHmXiEyFH/VfiVWcUCBVrOwkIFsGzbQoFISKrRmmTf1YBwE6BKG50
-	 jEC/Wpla8r4KX6aKV8Ln+iyPz5DRcWZf6WmD+D+yqDdYEw+FuY37PxcYMtVcMYDeHg
-	 ZFaIG7dN5yXP2FY+Ojke22qfg31drHoBz2zpt6/kca1w+FzeqPMI0bs85GKPo37cug
-	 sJC/bk/aU+nQA==
-Date: Tue, 05 May 2026 16:24:41 +0000
-To: Andy Shevchenko <andriy.shevchenko@intel.com>
-From: Roman Vivchar <rva333@protonmail.com>
-Cc: Jonathan Cameron <jic23@kernel.org>, David Lechner <dlechner@baylibre.com>, =?utf-8?Q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Srinivas Kandagatla <srini@kernel.org>, "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@kernel.org>, Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>, Lee Jones <lee@kernel.org>, linux-iio@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, Ben Grisdale <bengris32@protonmail.ch>
-Subject: Re: [PATCH 05/13] nvmem: add mt6323 PMIC EFUSE driver
-Message-ID: <Bn1O24yJ2aBvKUTpiFUzxnqbuuybRirR73G7R38ghYtwhFvQqWJb3HPgcikEa1otDw6n07nX_g8khZUHXJ_QRA--LrV5yj5Mcg1QzrWt6vA=@protonmail.com>
-In-Reply-To: <afmjfWtt7Vii6xfH@ashevche-desk.local>
-References: <20260504-mt6323-v1-0-799b58b355ff@protonmail.com> <20260504-mt6323-v1-5-799b58b355ff@protonmail.com> <afmjfWtt7Vii6xfH@ashevche-desk.local>
-Feedback-ID: 173184497:user:proton
-X-Pm-Message-ID: 70e68a78b3333f71307d661d5a8c93410d5d2dc7
+	id 1wKIhZ-0000000GtkN-1TfQ;
+	Tue, 05 May 2026 16:32:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1777998770;
+	bh=dnfLGzurewhGYmAkfx0e1+N3a4xmKjPSdyc6YJYICe0=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=chnNGEJP+I5Tqr/+EzV+BAGa2W8876nPXG15BSzH3+oTObFtVw/uGnWFO4iEfi6Yu
+	 qjVJu+SBs/mo/Sk7SE3fHq+sYl6hc9nf05jEVXaxQ0cR2WLGatLnbs2uyeBwE3/aND
+	 hPWcmnyKFANowsOdgQrWSSRX5HuTRQJWzrUOmENA5qa4LqYsM1N1mfdKOXp3ZrkQLl
+	 1cfuK86dMDOdfh1iedj/t8nURvTzZQRQyNPGBFwpt35AlXQk1bcM/ikK9HdqWi765l
+	 ElVgV22rH5VsA7nb4eBu3bdhO9NoRLdMYZaMe1aI7S9wmGx7xHEbvKlpJGoSAiu6xm
+	 5UrIfFmlWFH5w==
+Received: from fedora (unknown [100.64.0.11])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bbrezillon)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B811917E0F07;
+	Tue,  5 May 2026 18:32:49 +0200 (CEST)
+Date: Tue, 5 May 2026 18:32:44 +0200
+From: Boris Brezillon <boris.brezillon@collabora.com>
+To: Ketil Johnsen <ketil.johnsen@arm.com>
+Cc: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
+ <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, Jonathan
+ Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, Sumit
+ Semwal <sumit.semwal@linaro.org>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>,
+ John Stultz <jstultz@google.com>, "T.J. Mercier" <tjmercier@google.com>,
+ Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>, Steven Price
+ <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, Daniel Almeida
+ <daniel.almeida@collabora.com>, Alice Ryhl <aliceryhl@google.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org,
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 6/8] drm/panthor: Explicit expansion of locked VM region
+Message-ID: <20260505183244.0830c34c@fedora>
+In-Reply-To: <20260505140516.1372388-7-ketil.johnsen@arm.com>
+References: <20260505140516.1372388-1-ketil.johnsen@arm.com>
+	<20260505140516.1372388-7-ketil.johnsen@arm.com>
+Organization: Collabora
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260505_092452_172689_AD1035C3 
-X-CRM114-Status: GOOD (  20.39  )
+X-CRM114-CacheID: sfid-20260505_093253_579732_1A18D90A 
+X-CRM114-Status: GOOD (  34.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,120 +88,136 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tuesday, May 5th, 2026 at 11:00 AM, Andy Shevchenko <andriy.shevchenko@i=
-ntel.com> wrote:
+On Tue,  5 May 2026 16:05:12 +0200
+Ketil Johnsen <ketil.johnsen@arm.com> wrote:
 
-> On Mon, May 04, 2026 at 09:24:57PM +0300, Roman Vivchar via B4 Relay wrot=
-e:
->=20
-> > Add support for the EFUSE controller found in the Mediatek MT6323 PMIC.
-> > The MT6323 EFUSE stores 24 bytes of hardware-related data, such as
-> > thermal sensor calibration values.
->=20
-> Besides below comments, check for the similar issues that previous patche=
-s in
-> the series have.
->=20
-> ...
->=20
-> > +#include <linux/device.h>
->=20
-> Not needed as platform_device.h implies this ("is this good or bad?" is a
-> different story).
->=20
-> > +#include <linux/io.h>
-> > +#include <linux/mfd/mt6323/registers.h>
-> > +#include <linux/mod_devicetable.h>
-> > +#include <linux/module.h>
-> > +#include <linux/nvmem-provider.h>
-> > +#include <linux/platform_device.h>
-> > +#include <linux/property.h>
-> > +#include <linux/regmap.h>
->=20
-> Follow IWYU. At least missing types.h.
->=20
-> ...
->=20
-> > +struct mt6323_efuse {
-> > +=09struct regmap *regmap;
-> > +};
->=20
-> Do you really need a custom wrapper data structure? Can't regmap be used
-> directly?
->=20
-> ...
->=20
-> > +static int mt6323_efuse_read(void *context, unsigned int offset, void =
-*val,
-> > +=09=09=09     size_t bytes)
-> > +{
-> > +=09struct mt6323_efuse *efuse =3D context;
-> > +=09u32 tmp;
->=20
-> > +=09u16 *buf =3D val;
->=20
-> Really? CPU order all the time?
->=20
-> > +=09int i, ret;
->=20
-> Why is 'i' signed?
->=20
-> > +=09for (i =3D 0; i < bytes; i +=3D 2) {
->=20
-> sizeof()?
->=20
-> And since 'i' is used only inside the loop
->=20
-> =09for (size_t i =3D 0; i < bytes; i +=3D sizeof(*buf)) {
->=20
-> > +=09=09ret =3D regmap_read(efuse->regmap,
-> > +=09=09=09=09  MT6323_EFUSE_DOUT_BASE + offset + i, &tmp);
-> > +=09=09if (ret)
-> > +=09=09=09return ret;
-> > +=09=09buf[i / 2] =3D tmp;
-> > +=09}
->=20
-> + blank line.
->=20
-> Isn't this reimplementation of bulk read? Why the latter may not be used?
+> Currently the panthor_vm_lock_region() function will implicitly expand
+> an already locked VM region. This can be problematic because the caller
+> do not reliably know if it needs to call panthor_vm_unlock_region()
+> or not.
+> 
+> Worth noting, there is currently no known issues with this as the code
+> is written today.
+> 
+> This change introduces panthor_vm_expand_region() which will only work
+> if there is already a locked VM region. This again means that the
+> original lock and unlock functions can work as a pair. This pairing is
+> needed for subsequent protected memory changes.
+> 
+> Signed-off-by: Ketil Johnsen <ketil.johnsen@arm.com>
+> ---
+>  drivers/gpu/drm/panthor/panthor_mmu.c | 69 +++++++++++++++++++--------
+>  1 file changed, 50 insertions(+), 19 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/panthor/panthor_mmu.c b/drivers/gpu/drm/panthor/panthor_mmu.c
+> index fc930ee158a52..07f54176ec1bf 100644
+> --- a/drivers/gpu/drm/panthor/panthor_mmu.c
+> +++ b/drivers/gpu/drm/panthor/panthor_mmu.c
+> @@ -1701,15 +1701,36 @@ static int panthor_vm_lock_region(struct panthor_vm *vm, u64 start, u64 size)
+>  	struct panthor_device *ptdev = vm->ptdev;
+>  	int ret = 0;
+>  
+> -	/* sm_step_remap() can call panthor_vm_lock_region() to account for
+> -	 * the wider unmap needed when doing a partial huge page unamp. We
+> -	 * need to ignore the lock if it's already part of the locked region.
+> -	 */
+> -	if (start >= vm->locked_region.start &&
+> -	    start + size <= vm->locked_region.start + vm->locked_region.size)
+> -		return 0;
+> +	if (drm_WARN_ON(&ptdev->base, vm->locked_region.size))
+> +		return -EINVAL;
 
-Yes, but the PWRAP (the regmap which the driver uses) doesn't support read
-callback, only reg_read is implemented in the driver.
-It hits the map->cache_type =3D=3D REGCACHE_NONE in the regmap_read_raw, an=
-d falls
-for the !map->read check, so regmap_bulk_read neither the regmap_read_raw
-can be used.
+How about we have a helper called panthor_vm_apply_as_lock() that would
+only take care of the AS_LOCKADDR() sequence. panthor_vm_lock_region()
+would have this WARN_ON(), the pack_region_range() and a call to
+panthor_vm_apply_as_lock(). Similarly,
+panthor_vm_expand_locked_region() would rely on
+panthor_vm_apply_as_lock() to apply the expanded lock.
 
-Technically the PMIC is not continuous address space, but rather non-MMIO F=
-SM,
-so it makes sense to not implement the read callback. I guess the custom
-implementation is fine then?
+> +
+> +	mutex_lock(&ptdev->mmu->as.slots_lock);
+> +	if (vm->as.id >= 0 && size) {
+> +		/* Lock the region that needs to be updated */
+> +		gpu_write64(ptdev, AS_LOCKADDR(vm->as.id),
+> +			    pack_region_range(ptdev, &start, &size));
+> +
+> +		/* If the lock succeeded, update the locked_region info. */
+> +		ret = as_send_cmd_and_wait(ptdev, vm->as.id, AS_COMMAND_LOCK);
+> +	}
+>  
+> -	/* sm_step_remap() may need a locked region that isn't a strict superset
+> +	if (!ret) {
+> +		vm->locked_region.start = start;
+> +		vm->locked_region.size = size;
+> +	}
+> +	mutex_unlock(&ptdev->mmu->as.slots_lock);
+> +
+> +	return ret;
+> +}
+> +
+> +static int panthor_vm_expand_region(struct panthor_vm *vm, u64 start, u64 size)
 
-All other suggestions will be applied for v2.
+s/panthor_vm_expand_region/panthor_vm_expand_locked_region/
 
->=20
-> > +=09return 0;
-> > +}
->=20
-> ...
->=20
-> > +static const struct of_device_id mt6323_efuse_of_match[] =3D {
-> > +=09{ .compatible =3D "mediatek,mt6323-efuse" },
-> > +=09{ /* sentinel */ },
->=20
-> Having trailing comma in the terminator is nonsense. Do we expect anythin=
-g
-> behind it?
->=20
-> > +};
->=20
-> --
-> With Best Regards,
-> Andy Shevchenko
->=20
->=20
->
+> +{
+> +	struct panthor_device *ptdev = vm->ptdev;
+> +	u64 end;
+> +	int ret = 0;
+> +
+> +	/* This function is here to handle the following case:
+> +	 * sm_step_remap() may need a locked region that isn't a strict superset
+>  	 * of the original one because of having to extend unmap boundaries beyond
+>  	 * it to deal with partial unmaps of transparent huge pages. What we want
+>  	 * in those cases is to lock the union of both regions. The new region must
+> @@ -1717,16 +1738,24 @@ static int panthor_vm_lock_region(struct panthor_vm *vm, u64 start, u64 size)
+>  	 * boundaries in a remap operation can only shift up or down respectively,
+>  	 * but never otherwise.
+>  	 */
+> -	if (vm->locked_region.size) {
+> -		u64 end = max(vm->locked_region.start + vm->locked_region.size,
+> -			      start + size);
+>  
+> -		drm_WARN_ON_ONCE(&vm->ptdev->base, (start + size <= vm->locked_region.start) ||
+> -				 (start >= vm->locked_region.start + vm->locked_region.size));
+> +	/* This function can only expand an already locked region */
+> +	if (drm_WARN_ON(&ptdev->base, !vm->locked_region.size))
+> +		return -EINVAL;
+>  
+> -		start = min(start, vm->locked_region.start);
+> -		size = end - start;
+> -	}
+> +	/* Early out if requested range is already locked */
+> +	if (start >= vm->locked_region.start &&
+> +	    start + size <= vm->locked_region.start + vm->locked_region.size)
+> +		return 0;
+> +
+> +	end = max(vm->locked_region.start + vm->locked_region.size,
+> +		  start + size);
+> +
+> +	drm_WARN_ON_ONCE(&ptdev->base, (start + size <= vm->locked_region.start) ||
+> +			 (start >= vm->locked_region.start + vm->locked_region.size));
+> +
+> +	start = min(start, vm->locked_region.start);
+> +	size = end - start;
+>  
+>  	mutex_lock(&ptdev->mmu->as.slots_lock);
+>  	if (vm->as.id >= 0 && size) {
+> @@ -2252,11 +2281,13 @@ static int panthor_gpuva_sm_step_remap(struct drm_gpuva_op *op,
+>  	unmap_hugepage_align(&op->remap, &unmap_start, &unmap_range);
+>  
+>  	/* If the range changed, we might have to lock a wider region to guarantee
+> -	 * atomicity. panthor_vm_lock_region() bails out early if the new region
+> -	 * is already part of the locked region, so no need to do this check here.
+> +	 * atomicity.
+>  	 */
+>  	if (!unmap_vma->evicted) {
+> -		panthor_vm_lock_region(vm, unmap_start, unmap_range);
+> +		ret = panthor_vm_expand_region(vm, unmap_start, unmap_range);
+> +		if (ret)
+> +			return ret;
+> +
+>  		panthor_vm_unmap_pages(vm, unmap_start, unmap_range);
+>  	}
+>  
 
-Best regards,
-Roman
 
