@@ -4,98 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDF11CD3436
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 10:15:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77353CD342F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 10:40:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iAonctQOxYmxWwndqnNFpeNxU3FDX0KHXQsR2pNC/7w=; b=FIUqeKE8+oa3sF
-	5C4JQDD3PcITodqUq4P4j5NfNJYwt4mkjIKruj6OF/igo+WTgUrEGBf0KF1g5bq9W0QVPt6KmXfU5
-	y/Wly6RNLKL/onyc+z6mdOL51YqVHbrcH+P7AtaxRHCnP+WzaEnGbdnn97Pa0/KCVdcB0uKaCsH16
-	N2Wv1iqtqO9yzo8Yvk11By/86BQGoNLehOdQvz9NUkaJfW8qkpcV2imeyoExS9kuewFah7mRt7viZ
-	aK8yNQ6IiYUT14fl73XCOvtf/QTNstPUckYW0QW1L91ytk9hD75hDn5Oaw1KHFlra0Csf8FKSCCwr
-	TrBuVeTXo5BAYjyMSzKw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Ca+XUMwON/y8z0Ya9sLBgz3BNFKT0t9cdvMxmASzxGQ=; b=A9z0E+FVYgQRSejSMMCLKyBi4T
+	BdOY2Wi5y9cJt7vs+r59eYh9wJIWR+ZtZFVsAx5H703R/+9IdiU0wNb0VCffxBSNv6jd58sWSCu3S
+	jKC04FeWGiwx3LIgTQw8ygzjHZGQ5rRUPJYRSOks9BM40t4CA3wF4K5S4rkPizNO69oUGtb9Lwx79
+	A2hJC22Uqdvm3MlvHDYpS8OYxwMWoZRP64VMjl0FOsk3Q4F0aCJccjjH68BVYXJOPyRGL9PRPU8fB
+	4+4DUIbZl599JR0/CH0yckCDlQHKss1JqAgNOz7wnWU0e/g002f181DnEPDPdHrKSlGx14rTQsGzg
+	wt73OkgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKCo3-0000000FriK-1z9n;
-	Tue, 05 May 2026 10:15:11 +0000
+	id 1wKDCV-0000000FuyK-28ZX;
+	Tue, 05 May 2026 10:40:27 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKCo1-0000000FreU-2OnT
+	id 1wKDCU-0000000FuxU-1ZdY
 	for linux-mediatek@bombadil.infradead.org;
-	Tue, 05 May 2026 10:15:09 +0000
+	Tue, 05 May 2026 10:40:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=iAonctQOxYmxWwndqnNFpeNxU3FDX0KHXQsR2pNC/7w=; b=M7rkvl2aPA5HY8dZm/33s02p05
-	y69zLsQFLJYkoH2CQeAbwbgcuLNccQlqnqBL5jMKowxdn9WhhuW5Ab3YxFAwh5QXGPc9iODWZPkiW
-	x070PiWfZwevBB3orCPCUa7VemrPAkI+JcasUc/87NfD1ZYrJ7IFfnFHl/VyR3xrTcd46/MseiBbJ
-	e5a1vx4gwGJyTGnqazwixfJa5vCe5Cr8bxklGuC3Dhmjji+cVVxomgbcY7Xv05y9N/VyONUohgCmL
-	LyP44NAM6VyoTUt6upd+fkX86NfrGTqHtaEEM6QiL8XRyexCqWCIW12IEcPWdixD452VUXYO7bSut
-	E09ajwMQ==;
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=Ca+XUMwON/y8z0Ya9sLBgz3BNFKT0t9cdvMxmASzxGQ=; b=NGxANIaeKeoPFZMThlVfbw1phG
+	ogRBMqqlWCWkf96WH0J1ElRm6qdYDKsZVqQQn/gIYJ2qddAsBhfncNIhf/Z07zvtrxvSo2thwtuvQ
+	CGDIvMN1Ih6c1l+yYh3gNGOprNnLjSD6d8WCZLMwM/0lCwbgEUnwuevKICwg/r04lYk9cnHt/Ax/T
+	z5HKeJrvCTbe9/dhbYc2+6eMouEWQdWKJ6GzkVSHovIRqRCmpikCSZJGO4qcqJ4LNfd8GfyfG618S
+	fyYsqx78BYECUM+U/y0H+GjFV+DfS6RnjePU07ozoWQb226IKBVgz1QHn5WG3jax3/VsgmC/D3ZiP
+	b4JB5bfg==;
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKCny-0000000D9kJ-2lAO
+	id 1wKDCP-0000000DECs-2OSL
 	for linux-mediatek@lists.infradead.org;
-	Tue, 05 May 2026 10:15:08 +0000
-Received: by mail-pg1-x533.google.com with SMTP id 41be03b00d2f7-c80167f5716so990127a12.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 05 May 2026 03:15:06 -0700 (PDT)
+	Tue, 05 May 2026 10:40:25 +0000
+Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-2ba21d32776so14716135ad.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 05 May 2026 03:40:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1777976105; x=1778580905; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=iAonctQOxYmxWwndqnNFpeNxU3FDX0KHXQsR2pNC/7w=;
-        b=UG2+qGHE8zShE04SwXmFRVOmlEFDCCOJTLZC3YcVIxGWJOVvUcsZgqpSMt4UAB/FhE
-         4Rg1c5+tUbY+1/G9dcVF8cUAxd6mbzz5drs649As+83tolmTTuFvzKY+GmnkQNBYusTz
-         ZaCSisoTUpcvWyJfAjdXh5xwvAiithqUthY3E=
+        d=chromium.org; s=google; t=1777977619; x=1778582419; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Ca+XUMwON/y8z0Ya9sLBgz3BNFKT0t9cdvMxmASzxGQ=;
+        b=IsUMyHyFbX46oGFto2ijAIwdkPvWBl+uHLWLJsCrLWRuMWH+JlCRjws156x7TbIu5W
+         d3N8vZYVhQHbzIEfh7MPcJMq3NvhFuQEZqmoJXz5VcXRnbWrP5zF8S7bX4WWt8g56bdl
+         JH45ogzePsjMC+qLFvWAERFNiXP8NQCaSsznc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777976105; x=1778580905;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=iAonctQOxYmxWwndqnNFpeNxU3FDX0KHXQsR2pNC/7w=;
-        b=Cr1XA1U44rDu07P/JfyE7IyXwtvy3+/ejpBcp0TmH06RLTfmaqWcgnLm/j7Jm0L5cQ
-         52Wo4uxfcwMeTn5p92jyrMMz/qwWgMenjsJN8SPr0tSOUfwawJDdmnCCiewkfHFZT5Ef
-         iDHcLuIBTOrBeF561cCTM8q9XWBTEIQh6yw72G3qeqUlwg5HegULmZmYZQowxPnCeYCI
-         U6/ZeA5wivr8ahuJ7guGqS5M4Cn6SWEf0h+YJ6AlhQwA+fAXYfAEf3/jn75I8faAPT87
-         IvCXfDBPSL0r/NLq0X+0VZvwXjh0ZeQqBWcO/sLmSWZt4HU2OPZwUV7DqZW6gJD9VNe9
-         zDaQ==
-X-Forwarded-Encrypted: i=1; AFNElJ9SrlMFMR9BkSOwDq2R9GxMdFy2QJhvH5TmgLGvSsDoxuwGHCW3h1UgKfLJHNf6/3NlBsHjUcaYoTtjJmkiWg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywzp5jOQgvb5GOS4Gv5QRvnCHhsRdiwJLxlzqPq307SkqkedIUe
-	+jM6es6E/ZHCe4NDEIsPSrJuB/TiY2Fid6nV+MiW4gflgemDJZWhr/PwFkj0KfvtKg==
-X-Gm-Gg: AeBDieuwxpe63M/ofXrRDJ6aL/I1GT4xj0YWom1nL4xkS1vO/zRsKzHbS8NDO/H5XES
-	NbSNWfkgP93aE9w1H0b3Fo9cepuX56LDzP3r8tB6SZrLpt1ORm6lbl+VoNMRQrH+V1nGoaGafi+
-	n9IZF7a/PXoz52fL0H2PpNraCudoOaIdlBk8m25VnWalfCGiRuAHFLm/baz4LKZEDdcy2iN6/F9
-	UBFSdZxUJzo6EKxcia5/QE09/4lO5ztVh6glxFBDno/iMnlBeIEpEXYsK3N3EqvKgA17OcGJG5t
-	NSfT7JraVAG5wiVFgSYWoFEGtaEgHupKVxguAbCmLRxrYDSPy1d2q/8XJV2r6UhM7LXQ+7/aHFY
-	crjBbPagSRqelr5JyjxiDt9GaZgYULPGZulZYVdDRB7vQdc2bmu9EFfopfvXbin+V6FwnXEJg4D
-	im52YlC3YQnsxZZVWOsUkilQIePH1q35CB8QdjN8RzP5OQp1s+4GZgIWsVgzLg9nZSrs/h16/9c
-	13EYBCHCIVTc1dMrBY=
-X-Received: by 2002:a05:6a20:9143:b0:398:7912:cb05 with SMTP id adf61e73a8af0-3a7f1c4a82fmr13892686637.38.1777976104687;
-        Tue, 05 May 2026 03:15:04 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1777977619; x=1778582419;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Ca+XUMwON/y8z0Ya9sLBgz3BNFKT0t9cdvMxmASzxGQ=;
+        b=Ti/xqfVfJ0zKaWp3YDIWiF8vSfk2pLzVbIbxTwJMlMfuGY2kvwDAJ/dqvMtJl12bhx
+         bhNn02h90paslWCZtfsVtOIoIyjyoH98CI1EZ/2S7utwnH8DAymGWSARRsorBeu2ooCy
+         E5xczPDN6dsOJdix+gpfWHn9GU9YvJoOv6Wx5jQmV54yh/QsEn/F4T573mX07I0dd0f9
+         LSTB7cHis4ogvhYlk0uIUt6mVR8FGWPXMvqxd5GuyhXY9TBDYwYR2D8G6SbpaY18F/2r
+         Z2Tax+6M90XAylfN5jDQk8ePAEl0g3gvoh+YIk/nHOwoL7WzgDQuNKZEiH6c8q1c4lmm
+         GDtg==
+X-Forwarded-Encrypted: i=1; AFNElJ87alTmYJxtib5SD+MUsYUwJ4wjK84Kyaj9ZSWFsaiF7kWHyejyHGh2rDHL4KuLcyhI/wPzXqMWJ19hxwUiog==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzWuM9o1GdHguVEUHeeEJ0TJkZ1DNly3OZh6lJRrA/FX02bY+rq
+	8Ygs8SdOYOGX6g2pObZr8PeJblohz8xIHbVE0ojOk6IlsxVz4QtJUKHUfeGgVc55CA==
+X-Gm-Gg: AeBDietaONLwOB6MKstzyhL8hCRExC921yXPLoAGjFAUtBiXh6WUuXZq0dH8ABTv4GG
+	C862On+d4iIx48gy7b35dGJmtKNUK6RCDCCKmt1hsycPAFbhT6+StsRGZ2eP74Qr8py99fBktgD
+	0LkXXassLK+esFNLzHih6BScwbKiBwlkTkz2BeW9GQSiALrGHLNdT3N9fPbtsRmaUEP9/fQTwVK
+	LddvRqwbqcFtq8AQF6uRUCgosS3MpT36UdW8B+Y50qoxz5AJ8jRtPLAmgbENNIB2PWpLmTShRvX
+	gHoqGdoCWxO9HCO/2FWFgbguzJJT0T9IpxMmKTBkGCVSflGJqTEAx56kbEH8YYvhgBZ4j2oFeVa
+	OFR/Mnl/+K7oc98vzFDqHQsUe5eTPp+kR9ref9MOkvSjYhY3bhI6Cp0evY0nwqa8CvMEZbxot9D
+	z5aalpJmAWYRWl5lXDe8tLrQoEM7wm0mzvZdHrhfjcGJQZQCyfvnUQx6cRJi1Mz+zXT0GlZVb1t
+	TA0yYNhy7b0O+LSacc=
+X-Received: by 2002:a17:902:d585:b0:2b4:5e65:5d0e with SMTP id d9443c01a7336-2ba535db45fmr22307405ad.10.1777977619585;
+        Tue, 05 May 2026 03:40:19 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:f1d4:2ef0:7d08:9dd8])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-839679c8462sm1666121b3a.38.2026.05.05.03.15.02
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2b9cae1e293sm141015395ad.45.2026.05.05.03.40.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 05 May 2026 03:15:03 -0700 (PDT)
+        Tue, 05 May 2026 03:40:19 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 16/16] arm64: dts: mediatek: mt8188-geralt: Add little core CPU power supplies
-Date: Tue,  5 May 2026 18:14:06 +0800
-Message-ID: <20260505101408.1796563-17-wenst@chromium.org>
+To: Sean Wang <sean.wang@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Linus Walleij <linusw@kernel.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2] pinctrl: mediatek: paris: bypass pinctrl GPIO layer in set GPIO direction
+Date: Tue,  5 May 2026 18:39:57 +0800
+Message-ID: <20260505104003.1811841-1-wenst@chromium.org>
 X-Mailer: git-send-email 2.54.0.545.g6539524ca2-goog
-In-Reply-To: <20260505101408.1796563-1-wenst@chromium.org>
-References: <20260505101408.1796563-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260505_111506_871918_2299EDCB 
-X-CRM114-Status: GOOD (  12.53  )
+X-CRM114-CacheID: sfid-20260505_114021_733652_38D4E48A 
+X-CRM114-Status: GOOD (  16.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,61 +111,83 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Chen-Yu Tsai <wenst@chromium.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The device tree for the MT8188 Geralt is missing power supplies for all
-the CPU cores. Power for the little cores is fed from the MT6359 PMIC.
-Power for the big cores is fed from an MT6319 PMIC on SPMI. The latter
-is currently not working in Linux.
+pinctrl_gpio_direction_input() / pinctrl_gpio_direction_output() take
+the pinctrl mutex. This causes a gpiochip operations to need to sleep.
+Worse yet, the .can_sleep field in the gpiochip is not set. This causes
+the shared GPIO proxy to trip over, as it uses gpiod_cansleep() to check
+whether it can use a spinlock or needs a mutex. In this case, it ends
+up taking a spinlock, then calls pinctrl_gpio_direction_output(), which
+takes a mutex. This causes a huge warning.
 
-Add the power supplies for the little cores.
+While this class of Mediatek hardware does not have separate clear/set
+registers, the pinctrl context has a spinlock that is taken whenever
+a register read-modify-write is done. Also, once the GPIO function is
+selected / muxed in, further GPIO operations do not involve pinctrl
+operations or state. The GPIO direction and level values do not require
+toggling the pinmux or any other pin config options.
 
-Supplies for the big cores will be added once the issue with SPMI is
-resolved.
+Switch to directly calling mtk_pinmux_gpio_set_direction() in the GPIO
+set direction callbacks to avoid taking the pinctrl mutex. Drop the
+.gpio_set_direction field in mtk_pmxops to signal we are no longer using
+the pinctrl GPIO layer for setting the direction.
 
-Reviewed-by: Fei Shao <fshao@chromium.org>
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- .../boot/dts/mediatek/mt8188-geralt.dtsi      | 24 +++++++++++++++++++
- 1 file changed, 24 insertions(+)
+This was
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
-index d57e0eec676a..4cb23595d17b 100644
---- a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
-@@ -217,6 +217,30 @@ &cam_vcore {
- 	domain-supply = <&mt6359_vproc1_buck_reg>;
+    pinctrl: mediatek: paris: Directly modify registers to set GPIO direction
+
+Changes since v1:
+- Dropped .gpio_set_direction field in mtk_pmxops
+- Call mtk_pinmux_gpio_set_direction() from
+  mtk_gpio_direction_(output|input)()
+- Updated commit subject and message
+- Link to v1:
+  https://lore.kernel.org/all/20260427021021.2049015-1-wenst@chromium.org/
+---
+ drivers/pinctrl/mediatek/pinctrl-paris.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+index 6bf37d8085fa..23f04b24fd65 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-paris.c
++++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+@@ -771,7 +771,6 @@ static const struct pinmux_ops mtk_pmxops = {
+ 	.get_function_name	= mtk_pmx_get_func_name,
+ 	.get_function_groups	= mtk_pmx_get_func_groups,
+ 	.set_mux		= mtk_pmx_set_mux,
+-	.gpio_set_direction	= mtk_pinmux_gpio_set_direction,
+ 	.gpio_request_enable	= mtk_pinmux_gpio_request_enable,
  };
  
-+&cpu0 {
-+	cpu-supply = <&mt6359_vcore_buck_reg>;
-+};
+@@ -886,19 +885,22 @@ static int mtk_gpio_set(struct gpio_chip *chip, unsigned int gpio, int value)
+ 
+ static int mtk_gpio_direction_input(struct gpio_chip *chip, unsigned int gpio)
+ {
+-	return pinctrl_gpio_direction_input(chip, gpio);
++	struct mtk_pinctrl *hw = gpiochip_get_data(chip);
 +
-+&cpu1 {
-+	cpu-supply = <&mt6359_vcore_buck_reg>;
-+};
-+
-+&cpu2 {
-+	cpu-supply = <&mt6359_vcore_buck_reg>;
-+};
-+
-+&cpu3 {
-+	cpu-supply = <&mt6359_vcore_buck_reg>;
-+};
-+
-+&cpu4 {
-+	cpu-supply = <&mt6359_vcore_buck_reg>;
-+};
-+
-+&cpu5 {
-+	cpu-supply = <&mt6359_vcore_buck_reg>;
-+};
-+
- /*
-  * Geralt is the reference design and doesn't have target TDP.
-  * Ciri is (currently) the only device following Geralt, and its
++	return mtk_pinmux_gpio_set_direction(hw->pctrl, NULL, gpio, true);
+ }
+ 
+ static int mtk_gpio_direction_output(struct gpio_chip *chip, unsigned int gpio,
+ 				     int value)
+ {
++	struct mtk_pinctrl *hw = gpiochip_get_data(chip);
+ 	int ret;
+ 
+ 	ret = mtk_gpio_set(chip, gpio, value);
+ 	if (ret)
+ 		return ret;
+ 
+-	return pinctrl_gpio_direction_output(chip, gpio);
++	return mtk_pinmux_gpio_set_direction(hw->pctrl, NULL, gpio, false);
+ }
+ 
+ static int mtk_gpio_to_irq(struct gpio_chip *chip, unsigned int offset)
 -- 
 2.54.0.545.g6539524ca2-goog
 
