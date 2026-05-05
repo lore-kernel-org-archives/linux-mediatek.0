@@ -4,61 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF7CBCD3427
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 14:17:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8ADF3CD3427
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 14:50:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jfM4NvdvryCmOJVCLqFWvSmVDCVw+NV/K5dXudnJRKY=; b=UPW41MKyUq9pPg/FLI4vpcMRKw
-	Rq+RgXDfe5CH9KXFH3vy2Mo1LHLHbRmGKe1ps0QZaV9LvrECiXH1Sz2wDBOthB1cb/7bTl8ke/FAf
-	bOquU5SOKt5+Yf7uGnniEyaMa/OVsjg1R/lvpiweSeZDPhnK568K9MeOxnDW8fK0bRdHJfDOx2CvO
-	8YGK9dB7MlkbFQZLlIXH7ebamPTSFxzHudMNR95kv0GC7cB2ycSsdo79z9qwd+ya554pPNw8Pc4Xf
-	osAd2pMe8mXqp+j/3FpaOuOPpk+zTMDE/Z8gVYwme3u3bVY8/s95Lxfr6H2Bh+8ZtyT2FgI+rY8wv
-	7rh1iIqw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=svEpIf1Kcmml3y0QJfTwkzjkdFGohK0EUwGv35/HraY=; b=oDY62lR85n+RPJ
+	Wa6A+E/wx4f/uSu/FjpFAi4EClFV2bhKSHTaryIpEQZrpmCPn51U/LVUIoSKGl3VLspHiaWo91big
+	yP4fkjX7LLjpZeI2cx5QYkFl4ZWytDKfVo22vV/yFJhhMln447YcFD2yJ9QK+iYD9XrK9MTCh5b2i
+	azZd/fLFI1I1jNcnqUp5lXgxPdJKMPp6gFx1VuMoLA+c1qtoh0ro45+RCAqsf/QoJ2rON6sIkwlN2
+	eR0qYfiJgBFrw4iq1p9Db2ejIIEqWdpqpf+xpXXAzPNBj2hIIu34eNCszDQEw96gcwxiBOCXMW4eI
+	0Uwjw+sBszD7TmAUwUSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKGaE-0000000GTpV-0zHu;
-	Tue, 05 May 2026 14:17:10 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1wKH5z-0000000GZ4U-25io;
+	Tue, 05 May 2026 14:49:59 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKGa9-0000000GTlJ-0Uhr;
-	Tue, 05 May 2026 14:17:08 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.99)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1wKGa3-000000008T3-1K8F;
-	Tue, 05 May 2026 14:16:59 +0000
-Date: Tue, 5 May 2026 15:16:56 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Edward Parker <edward@topnotchit.com>, Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	=?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
-	Sean Wang <sean.wang@mediatek.com>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net 5/5] net: dsa: mt7530: untag VLAN-aware bridge PVID
-Message-ID: <79d4032a475ad94569669a330bc1a731b85db962.1777986341.git.daniel@makrotopia.org>
-References: <cover.1777986341.git.daniel@makrotopia.org>
+	id 1wKH5y-0000000GZ49-1Zb0;
+	Tue, 05 May 2026 14:49:58 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 71191601EE;
+	Tue,  5 May 2026 14:49:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C6E58C2BCC7;
+	Tue,  5 May 2026 14:49:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1777992597;
+	bh=dZ/+jnil6Pu/MzChOQY4FGpZ4ETygGepo3YkBb//DOU=;
+	h=From:Subject:Date:To:Cc:From;
+	b=qCdgi/kqpOSKIkcN2M2bOppgyEmBdd3gB+Uy93hCkGXWyulcXhIxs69MYZwKoSWA+
+	 4bnGly2PdGxR+1M1uAYvBdIZiPRaYND3dZL/XQgxC3YZNfMbXnThkWFIxYn285si6J
+	 fsPms9mTVUNo1Ra1F/HawX204kqO0TSDqOegf8UFPlvzMercqjLMnkTmBMZEFvCpMd
+	 wgY1Gt3/pfxDWglSfS5ec3X12vpjxeTauazkHCzlT2sI9Wr5b9Uoggjunpml6uY2Az
+	 uZHtwdIJkCyF6Xf4Yc8usR7qBBeRViVwk8iLP4m6bxJRkykef5zFF+oYwXLa3vxE9K
+	 CF61PbXkLrnxw==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH nf-next 0/4] Add IPv4 over IPv6 flowtable SW acceleration
+Date: Tue, 05 May 2026 16:49:22 +0200
+Message-Id: <20260505-b4-flowtable-sw-accel-ip6ip-v1-0-9ac39ccc9ea9@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1777986341.git.daniel@makrotopia.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260505_071705_166306_A2892EBF 
-X-CRM114-Status: GOOD (  13.07  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MQQqFIBAA0KvErBsY+1bQVaKF2VgDYqLxC6K7J
+ y3f5t2QOQlnGKobEv8lyx4KVF2B3UxYGWUphoaajlpqcdbo/H4eZvaM+URjLXuU2EnEXpGin7a
+ L0j2UISZ2cn37CMFh4OuA6XlelXqnD3YAAAA=
+X-Change-ID: 20260505-b4-flowtable-sw-accel-ip6ip-7101034cd147
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Felix Fietkau <nbd@nbd.name>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Simon Horman <horms@kernel.org>, David Ahern <dsahern@kernel.org>, 
+ Ido Schimmel <idosch@nvidia.com>, Pablo Neira Ayuso <pablo@netfilter.org>, 
+ Florian Westphal <fw@strlen.de>, Phil Sutter <phil@nwl.cc>, 
+ Shuah Khan <shuah@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ netfilter-devel@vger.kernel.org, coreteam@netfilter.org, 
+ linux-kselftest@vger.kernel.org, Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.3
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,56 +80,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Edward Parker <edward@topnotchit.com>
+Similar to IPIP and IP6I6 tunnels, introduce sw acceleration for IPv4 over
+IPv6 tunnels in the netfilter flowtable infrastructure.
 
-With bridge VLAN filtering enabled on a port configured as untagged
-member of the bridge PVID, ingress untagged frames do not reach the
-corresponding bridge VLAN upper interface (br-lan.<vid>). ARP and
-similar traffic is visible on the physical port but not delivered
-to the VLAN sub-interface.
-
-The MT7530/MT7531 forwards frames to the CPU port with the user
-port's PVID tag applied even when the frame ingressed untagged on
-the wire, because the CPU port is set to MT7530_VLAN_EG_CONSISTENT
-and is a tagged member of the VLAN entry created for the bridge
-VLAN. The DSA core then sees a hwaccel-tagged frame whose VID
-matches the port's PVID, which the bridge does not treat as the
-untagged-on-the-wire frame that the user expects.
-
-Set ds->untag_vlan_aware_bridge_pvid in the mt7530 and mt7531
-setup paths so the DSA core strips that hwaccel tag in software
-when the parsed VID matches the bridge port's PVID, restoring the
-on-the-wire frame as the bridge expects to see it.
-
-Link: https://github.com/openwrt/openwrt/issues/18576
-Fixes: 83163f7dca56 ("net: dsa: mediatek: add VLAN support for MT7530")
-Signed-off-by: Edward Parker <edward@topnotchit.com>
-[daniel@makrotopia.org: improve commit message]
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
- drivers/net/dsa/mt7530.c | 2 ++
- 1 file changed, 2 insertions(+)
+Lorenzo Bianconi (4):
+      net: netfilter: Add ether_type to net_device_path_ctx
+      net: netfilter: Add encap_proto to flow_offload_tunnel
+      net: netfilter: Add IPv4 over IPv6 tunnel flowtable acceleration
+      selftests: netfilter: nft_flowtable.sh: Add IPv4 over IPv6 flowtable selftest
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 2e5337186800..4b7e5398b211 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -2452,6 +2452,7 @@ mt7530_setup(struct dsa_switch *ds)
- 	}
- 
- 	ds->assisted_learning_on_cpu_port = true;
-+	ds->untag_vlan_aware_bridge_pvid = true;
- 	ds->mtu_enforcement_ingress = true;
- 
- 	if (priv->id == ID_MT7530) {
-@@ -2641,6 +2642,7 @@ mt7531_setup_common(struct dsa_switch *ds)
- 	int ret, i;
- 
- 	ds->assisted_learning_on_cpu_port = true;
-+	ds->untag_vlan_aware_bridge_pvid = true;
- 	ds->mtu_enforcement_ingress = true;
- 
- 	mt753x_trap_frames(priv);
+ drivers/net/ethernet/airoha/airoha_ppe.c           |  14 ++-
+ drivers/net/ethernet/mediatek/mtk_ppe_offload.c    |  13 ++-
+ include/linux/netdevice.h                          |   5 +-
+ include/net/netfilter/nf_flow_table.h              |   1 +
+ net/core/dev.c                                     |   6 +-
+ net/ipv4/ipip.c                                    |   1 +
+ net/ipv6/ip6_tunnel.c                              |   6 +-
+ net/netfilter/nf_flow_table_core.c                 |  14 ++-
+ net/netfilter/nf_flow_table_ip.c                   | 129 ++++++++++++++++-----
+ net/netfilter/nf_flow_table_path.c                 |  16 +--
+ .../selftests/net/netfilter/nft_flowtable.sh       |  26 +++++
+ 11 files changed, 174 insertions(+), 57 deletions(-)
+---
+base-commit: c1e5127b577c6b88fa48e532616932ae978528d5
+change-id: 20260505-b4-flowtable-sw-accel-ip6ip-7101034cd147
+
+Best regards,
 -- 
-2.54.0
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
