@@ -4,42 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5090DCD343B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 16:17:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C00BCD342C
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 16:22:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MYNkE5RiNNntbiGIE16X7Ew1NsSOD35A4toWoL44TXo=; b=cWDjGa02vqY/XWsZe1Qz2oRq6v
-	4KvVSIxsmieHhdqluyUv+S94Yah3GpQEVLP7ZESsV6jEG2LStht/P7j83o7IqzvPHE51GJ60QgbtM
-	7uF5hKiQerQj2zkbFCDxW7rhltE77vls28WAil8vJkJgFZaJIXvX6y/pYUCyZ3f+NffOYxY0hN17a
-	JhiKCB/1mIrfs+ClRAMCQCTDK2DG1+pZ8jYsIO6xB9mti4/isWcz/9/QJjOHVXyzkRyhs4oGM9pWh
-	xA2MDfGMisWkZaGRIZ6sceGV5In2wThjA4yDnDGxZdqmkdEOmirq4Fmge8guDPU15cQgDNbqHq2ci
-	BivTCcvg==;
+	bh=LJLe84Gk4h6y8PoVQ/eoWWYBLTFetFxQ4/izT5KcC/Q=; b=4sXLCTaP82rqfYDXWLiTXpejv0
+	H2E/f+FVg/FkNJ0qmIqh3Hya+0C93Iqq1ht0D37AT57+KK4ctLgFWhfsMjhsf78RomOjBeYa3Vq5K
+	xYjqrbxlEibXOZXt4LT0LPjn3XmR3OM+x0CeeuIGyJ3vgnXelCEHZ3y/j5GvhnZtVvHZ+opxV0zbj
+	3W7Jzs4fyem5jMX3x9pZ2ECXVuQPLKQ0LIZIYUkZwOeHxzlG01dg9nD0mGsUtTGEzyAwzPSEXCxvc
+	sMK/BF6YM9sXVb2Y1zIP9ziUMtK/+xZytcu+rfZ6ass8q9/YcEBloan4nnRd8PHSmFODZo0h1fY20
+	DLR06uTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKewT-00000001UEE-0Wux;
-	Wed, 06 May 2026 16:17:45 +0000
-Received: from m16.mail.163.com ([117.135.210.4])
+	id 1wKf0h-00000001UvC-2Sag;
+	Wed, 06 May 2026 16:22:07 +0000
+Received: from m16.mail.163.com ([117.135.210.3])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKewQ-00000001UBq-3uZ7;
-	Wed, 06 May 2026 16:17:43 +0000
+	id 1wKf0f-00000001UuQ-1e8F;
+	Wed, 06 May 2026 16:22:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
 	s=s110527; h=Message-ID:Date:MIME-Version:Subject:To:From:
-	Content-Type; bh=MYNkE5RiNNntbiGIE16X7Ew1NsSOD35A4toWoL44TXo=;
-	b=gYAMi3Lf8HE9qlJdRGnWVPmm+EaDf0Ln/YZF5qFyffTiA+gD6h9VfKYBAOXxXn
-	Docp4vrg+axGk+h/WsUjDoJ7HGUap6GLvWFSbdj+duBRXfzxafRPeMdZOGCmYshA
-	q/sm1mQPeA00IYcGJ1zxSLNiiOzNdTlz1VfJG4l+xyvqY=
+	Content-Type; bh=LJLe84Gk4h6y8PoVQ/eoWWYBLTFetFxQ4/izT5KcC/Q=;
+	b=Ou3/SwMOI3j2gFHY3Qlhek+FocO4RBkhi+1MIn32FhKCwaaT2XnG53a7ekI/d3
+	Qq1XrSrh/lVToWyzq62Qjp9jwk+uF+HoIvAwkX/f+WMBY7OfGXXXhzAP7Q4xxsWG
+	AQYtmN6ytbVaATEhhHDKwKz7TPD1BEVqngaPe0Zv28ILQ=
 Received: from [IPV6:240e:b8f:927e:5900:dbee:26f0:1b68:48a4] (unknown [])
-	by gzsmtp4 (Coremail) with SMTP id PygvCgBXJO14aftp0jLqCg--.226S2;
-	Thu, 07 May 2026 00:16:58 +0800 (CST)
-Message-ID: <a74306a3-ad87-424b-aa27-f078523ee1ce@163.com>
-Date: Thu, 7 May 2026 00:16:56 +0800
+	by gzga-smtp-mtada-g0-2 (Coremail) with SMTP id _____wBnO1xyavtpJhIDDw--.14523S2;
+	Thu, 07 May 2026 00:21:07 +0800 (CST)
+Message-ID: <8932a3a4-ede9-464e-985b-f9b0ab90c830@163.com>
+Date: Thu, 7 May 2026 00:21:06 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/8] PCI: Add pcie_wait_after_link_train() helper
+Subject: Re: [PATCH v2 2/8] PCI: cadence: LGA: Add max_link_speed field and
+ 100 ms delay after link training
 To: Biju Das <biju.das.jz@bp.renesas.com>,
  "bhelgaas@google.com" <bhelgaas@google.com>,
  "lpieralisi@kernel.org" <lpieralisi@kernel.org>,
@@ -62,23 +63,23 @@ Cc: "robh@kernel.org" <robh@kernel.org>,
  "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 References: <20260506152346.166056-1-18255117159@163.com>
- <20260506152346.166056-2-18255117159@163.com>
- <TY3PR01MB1134694C0F3D14E4A69EFB8CA863F2@TY3PR01MB11346.jpnprd01.prod.outlook.com>
+ <20260506152346.166056-3-18255117159@163.com>
+ <TY3PR01MB11346620B7637A16120FDED26863F2@TY3PR01MB11346.jpnprd01.prod.outlook.com>
 Content-Language: en-US
 From: Hans Zhang <18255117159@163.com>
-In-Reply-To: <TY3PR01MB1134694C0F3D14E4A69EFB8CA863F2@TY3PR01MB11346.jpnprd01.prod.outlook.com>
+In-Reply-To: <TY3PR01MB11346620B7637A16120FDED26863F2@TY3PR01MB11346.jpnprd01.prod.outlook.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-CM-TRANSID: PygvCgBXJO14aftp0jLqCg--.226S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7ZrW3Cw4rAr47ZFyfZF4rGrg_yoW8Zw43pF
-	Z5GF1YkF48XFW3Wan3Ja43uFyYgFs3tFy7CryxG348CF9xur13KF4Fg3y3Wr92qrs8Zr12
-	yw15t3W7CFWYyFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UIQ6XUUUUU=
+X-CM-TRANSID: _____wBnO1xyavtpJhIDDw--.14523S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxGw4Utw1DJr4UAr15trW8WFg_yoW5tF1xpa
+	ykGFWfGF1xXrWY93WkZ3W5XryYqas8C347Jws3Ka4xWr12kr43JF1IgF1fXF9xKrZFvr17
+	AF1DtF9rCr4ayFUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UN18QUUUUU=
 X-Originating-IP: [240e:b8f:927e:5900:dbee:26f0:1b68:48a4]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbC7BvRdWn7aXspgAAA36
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbCwxMQs2n7anOSxwAA3t
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260506_091743_486688_3E922C53 
-X-CRM114-Status: GOOD (  15.94  )
+X-CRM114-CacheID: sfid-20260506_092205_894021_DC14A68E 
+X-CRM114-Status: GOOD (  15.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,69 +96,114 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 5/6/26 23:34, Biju Das wrote:
+On 5/6/26 23:31, Biju Das wrote:
 > 
 > 
 >> -----Original Message-----
->> From: Hans Zhang <18255117159@163.com>
+>> From: linux-arm-kernel <linux-arm-kernel-bounces@lists.infradead.org> On Behalf Of Hans Zhang
 >> Sent: 06 May 2026 16:24
->> Subject: [PATCH v2 1/8] PCI: Add pcie_wait_after_link_train() helper
+>> Subject: [PATCH v2 2/8] PCI: cadence: LGA: Add max_link_speed field and 100 ms delay after link
+>> training
 >>
->> PCIe r6.0, sec 6.6.1 (Conventional Reset) requires that for a Downstream Port supporting Link speeds
->> greater than 5.0 GT/s, software must wait a minimum of 100 ms after Link training completes before
->> sending any Configuration Request.
+>> The Cadence LGA (Legacy Architecture IP) PCIe host controller currently lacks the mandatory 100 ms
+>> delay after link training completes for speeds
+>>> 5.0 GT/s, as required by PCIe r6.0 sec 6.6.1.
 >>
->> Introduce a static inline helper pcie_wait_after_link_train() that checks the given max_link_speed (2 =
->> 5.0 GT/s, 3 = 8.0 GT/s, etc.) and calls
->> msleep(100) only when the speed is greater than 5.0 GT/s. The helper uses the existing
->> PCIE_RESET_CONFIG_WAIT_MS macro defined in pci.h.
+>> Add a 'max_link_speed' field to struct cdns_pcie to record the maximum supported link speed (or the
+>> currently configured speed). In the common host layer function cdns_pcie_host_start_link(), after the
+>> link has been successfully established, call pcie_wait_after_link_train() to insert the required delay
+>> if max_link_speed > 2.
 >>
->> This allows multiple host controller drivers to share the same mandatory delay without duplicating the
->> logic.
+>> Glue drivers must set max_link_speed appropriately (e.g., from the device tree property "max-link-
+>> speed") to enable the delay.
 >>
 >> Signed-off-by: Hans Zhang <18255117159@163.com>
 >> ---
->>   drivers/pci/pci.h | 13 +++++++++++++
->>   1 file changed, 13 insertions(+)
+>>   drivers/pci/controller/cadence/pcie-cadence-host-common.c | 4 ++++
+>>   drivers/pci/controller/cadence/pcie-cadence.h             | 2 ++
+>>   2 files changed, 6 insertions(+)
 >>
->> diff --git a/drivers/pci/pci.h b/drivers/pci/pci.h index 4a14f88e543a..a8705a2a2d85 100644
->> --- a/drivers/pci/pci.h
->> +++ b/drivers/pci/pci.h
->> @@ -60,6 +60,19 @@ struct pcie_tlp_log;
->>    */
->>   #define PCIE_RESET_CONFIG_WAIT_MS	100
+>> diff --git a/drivers/pci/controller/cadence/pcie-cadence-host-common.c
+>> b/drivers/pci/controller/cadence/pcie-cadence-host-common.c
+>> index 2b0211870f02..51376f69d007 100644
+>> --- a/drivers/pci/controller/cadence/pcie-cadence-host-common.c
+>> +++ b/drivers/pci/controller/cadence/pcie-cadence-host-common.c
+>> @@ -14,6 +14,7 @@
 >>
->> +/**
->> + * pcie_wait_after_link_train - Wait 100 ms if link speed > 5 GT/s
->> + * @max_link_speed: the maximum link speed (2 = 5.0 GT/s, 3 = 8.0 GT/s,
->> +...)
->> + *
->> + * Must be called after Link training completes and before the first
->> + * Configuration Request is sent.
->> + */
->> +static inline void pcie_wait_after_link_train(int max_link_speed) {
->> +	if (max_link_speed > 2)
->> +		msleep(PCIE_RESET_CONFIG_WAIT_MS);
->> +}
+>>   #include "pcie-cadence.h"
+>>   #include "pcie-cadence-host-common.h"
+>> +#include "../../pci.h"
+>>
+>>   #define LINK_RETRAIN_TIMEOUT HZ
+>>
+>> @@ -115,6 +116,9 @@ int cdns_pcie_host_start_link(struct cdns_pcie_rc *rc,
+>>   	if (!ret && rc->quirk_retrain_flag)
+>>   		ret = cdns_pcie_retrain(pcie, pcie_link_up);
+>>
+>> +	if (!ret)
+>> +		pcie_wait_after_link_train(pcie->max_link_speed);
+>> +
+>>   	return ret;
+>>   }
+>>   EXPORT_SYMBOL_GPL(cdns_pcie_host_start_link);
+>> diff --git a/drivers/pci/controller/cadence/pcie-cadence.h b/drivers/pci/controller/cadence/pcie-
+>> cadence.h
+>> index 574e9cf4d003..e222b095d2b6 100644
+>> --- a/drivers/pci/controller/cadence/pcie-cadence.h
+>> +++ b/drivers/pci/controller/cadence/pcie-cadence.h
+>> @@ -86,6 +86,7 @@ struct cdns_plat_pcie_of_data {
+>>    * @ops: Platform-specific ops to control various inputs from Cadence PCIe
+>>    *       wrapper
+>>    * @cdns_pcie_reg_offsets: Register bank offsets for different SoC
+>> + * @max_link_speed: maximum supported link speed
 > 
-> Maybe move this patch to the user??
+> Maximum to make consistent with other comments?
 
 Hi Biju,
 
-Just as Mani's reply stated, I am more inclined to place it in the 
-common header file.
+The reference I used is:
+
+drivers/pci/controller/pcie-rzg3s-host.c
+/**
+  ......
+  * @max_link_speed: maximum supported link speed
+  */
+struct rzg3s_pcie_host {
+......
+
+
+> 
+> 
+>>    */
+>>   struct cdns_pcie {
+>>   	void __iomem		             *reg_base;
+>> @@ -98,6 +99,7 @@ struct cdns_pcie {
+>>   	struct device_link	             **link;
+>>   	const  struct cdns_pcie_ops          *ops;
+>>   	const  struct cdns_plat_pcie_of_data *cdns_pcie_reg_offsets;
+>> +	int				     max_link_speed;
+> 
+> unsigned int as speed cannot be negative??
+
+The following file referred to:
+
+drivers/pci/controller/dwc/pcie-designware.h
+struct dw_pcie {
+     ......
+     int			max_link_speed;
+     ......
+};
+
 
 Best regards,
 Hans
-
 > 
 > Cheers,
 > Biju
 > 
->> +
->>   /* Parameters for the waiting for link up routine */
->>   #define PCIE_LINK_WAIT_MAX_RETRIES	10
->>   #define PCIE_LINK_WAIT_SLEEP_MS		90
+>>   };
+>>
+>>   /**
 >> --
 >> 2.34.1
 >>
