@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CE60CD342C
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 08:42:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22CDACD3424
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 08:42:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u/IJs98Hajll7Hvgo8Kcg+WgdbIxPibyariY5TUIpfU=; b=n8CpRVH5d7jKeI7gneJTvDL127
-	tfsIATU0Esohqkk2stF+r91xDkCzMLgGxq5yaMlZsdFGOapuoyxRJfnFRi2Wd9P4OCKwFrSYsgQWE
-	y8gClxLgHHvYhsTCjHZ5IOBzyIC2hfY10UENKUjix1JxNl4RcA/P2v4w+pmTQH+wbHdUbIekOWJTU
-	Vbguj02Mr2TnYVDdGBQabjfY55GXxSxz5RNxfaI/sudCJrRKbaepMD26iu2n+nBUQb3nCaymfYMnQ
-	QqkneAORasCwrIoQ7TLXRqNeltz6042Ubap4Q3bZi8ii3DdHPkO+r3P4GLo4EX8gmqWKU/Y0rDKUT
-	x7LrJ9VQ==;
+	bh=259RECfU5l4xEKmLBVEtfLMfXJTvMI4ib3+cSzU77dE=; b=VLokT7UdXiCv5kRzibd3xSHN3/
+	KmPNTJ1Q9Khd+KxgUpfyVt178BK+e9ImIaeLK6XOqq2EWbmKl1t5vrS5V6ZpOI4xj0OjJPKId1Ic6
+	z2ZzIifqrQbrVHPD2YOApHfHmtIsOWABQpvvVpFnbjed0PbPJxhV4ohIjry4ehvw0JdWa/zO3xjkn
+	3DIpZbWxtG0Z8JfGV9mB3joYSvk/rTtzrwOQpPcSaO8bRQLNbcbj4TLN68a6nAuJ+s/KHH8mcUwX5
+	spZKCFqcdUW3LTh6WyYwmYNvjvXIFfp55Ea33vvfyZxwb4hzo284CAcJGIlFQpGqLpbFGrHwkIHhv
+	hPUangUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKXpw-00000000CFV-2Dwz;
-	Wed, 06 May 2026 08:42:32 +0000
+	id 1wKXq1-00000000CKt-47lI;
+	Wed, 06 May 2026 08:42:37 +0000
 Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKXpv-00000000CCo-02wC;
-	Wed, 06 May 2026 08:42:31 +0000
+	id 1wKXpz-00000000CFv-0cz8;
+	Wed, 06 May 2026 08:42:35 +0000
 Received: from localhost.localdomain (unknown [36.112.3.223])
-	by APP-05 (Coremail) with SMTP id zQCowABn9Qjn_vppWvGIDw--.2900S4;
-	Wed, 06 May 2026 16:42:19 +0800 (CST)
+	by APP-05 (Coremail) with SMTP id zQCowABn9Qjn_vppWvGIDw--.2900S5;
+	Wed, 06 May 2026 16:42:21 +0800 (CST)
 From: Haoxiang Li <lihaoxiang@isrc.iscas.ac.cn>
 To: tiffany.lin@mediatek.com,
 	andrew-ct.chen@mediatek.com,
@@ -45,38 +45,39 @@ Cc: linux-media@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	Haoxiang Li <lihaoxiang@isrc.iscas.ac.cn>
-Subject: [PATCH 2/4] media: mediatek: vcodec: remove redundant return value of vdec_vp9_slice_setup_prob_buffer()
-Date: Wed,  6 May 2026 16:42:01 +0800
-Message-Id: <20260506084203.202882-3-lihaoxiang@isrc.iscas.ac.cn>
+	Haoxiang Li <lihaoxiang@isrc.iscas.ac.cn>,
+	stable@vger.kernel.org
+Subject: [PATCH 3/4] media: mediatek: vcodec: free working buf on error path in vdec_vp9_slice_setup_lat()
+Date: Wed,  6 May 2026 16:42:02 +0800
+Message-Id: <20260506084203.202882-4-lihaoxiang@isrc.iscas.ac.cn>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20260506084203.202882-1-lihaoxiang@isrc.iscas.ac.cn>
 References: <20260506084203.202882-1-lihaoxiang@isrc.iscas.ac.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: zQCowABn9Qjn_vppWvGIDw--.2900S4
-X-Coremail-Antispam: 1UD129KBjvJXoW7uryrWrWxGF1xArWfKr4Durg_yoW5JFyfpr
-	4YkrWUZFyjyFs2yaykXF48ua1rCrWSqry0gw4ak34Fyr98tr1UXr1Iyr9IyF45Grn2ka4r
-	uw1jqry8WFW3Jw7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUUmj14x267AKxVWrJVCq3wAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
-	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2048vs2IY020E87I2jVAFwI0_Jryl82xGYIkIc2
+X-CM-TRANSID: zQCowABn9Qjn_vppWvGIDw--.2900S5
+X-Coremail-Antispam: 1UD129KBjvJXoWrZF4fXFykWrW8XF17WF18uFg_yoW8Jr1DpF
+	s0krW7ZFyjy3ZFvw48Ja1xuay5C3yS9rWxWw1a9347Ar90qr47XryIya43Zr48A3Zava45
+	Zr1qqryUWr43ZaUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUUmY14x267AKxVWrJVCq3wAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2048vs2IY020E87I2jVAFwI0_JrWl82xGYIkIc2
 	x26xkF7I0E14v26ryj6s0DM28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8wA2z4x0
-	Y4vE2Ix0cI8IcVAFwI0_Jr0_JF4l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Gr0_Cr1l84
-	ACjcxK6I8E87Iv67AKxVWUJVW8JwA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_Gr0_Gr1UM2AI
-	xVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj6xIIjxv20x
-	vE14v26r1j6r18McIj6I8E87Iv67AKxVWUJVW8JwAm72CE4IkC6x0Yz7v_Jr0_Gr1lF7xv
-	r2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAGYxC7M4IIrI8v6xkF7I0E8cxan2IY04
-	v7MxkF7I0En4kS14v26r1q6r43MxAIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4AY6r1j
-	6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7
-	AF67AKxVW8ZVWrXwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1j6r1xMIIF0xvE
-	2Ix0cI8IcVCY1x0267AKxVW8JVWxJwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4lIxAIcV
-	C2z280aVAFwI0_Jr0_Gr1lIxAIcVC2z280aVCY1x0267AKxVW8JVW8JrUvcSsGvfC2Kfnx
-	nUUI43ZEXa7VUbH5lUUUUUU==
+	Y4vE2Ix0cI8IcVAFwI0_Jr0_JF4l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Cr0_Gr1UM2
+	8EF7xvwVC2z280aVAFwI0_Jr0_Gr1l84ACjcxK6I8E87Iv6xkF7I0E14v26r4j6r4UJwAS
+	0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0I7IYx2
+	IY67AKxVWUJVWUGwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r4UM4x0
+	Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwACI402YVCY1x02628vn2kIc2
+	xKxwCY1x0262kKe7AKxVW8ZVWrXwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7xkEbVWU
+	JVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E67AF67
+	kF1VAFwI0_GFv_WrylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCwCI42IY
+	6xIIjxv20xvEc7CjxVAFwI0_Cr0_Gr1UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI42
+	IY6I8E87Iv67AKxVWUJVW8JwCI42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJbIYCTnIWIev
+	Ja73UjIFyTuYvjTRM6wCDUUUU
 X-Originating-IP: [36.112.3.223]
-X-CM-SenderInfo: 5olkt0x0ld0ww6lv2u4olvutnvoduhdfq/1tbiBwwTE2n6yxrNzwAAsL
+X-CM-SenderInfo: 5olkt0x0ld0ww6lv2u4olvutnvoduhdfq/1tbiBwoTE2n6yxrN1wAAsV
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260506_014231_430437_9A1DC5E0 
-X-CRM114-Status: UNSURE (   9.88  )
+X-CRM114-CacheID: sfid-20260506_014235_613677_1A02D584 
+X-CRM114-Status: UNSURE (   9.20  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,61 +93,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-vdec_vp9_slice_setup_prob_buffer() never fails, remove 'return 0' from
-vdec_vp9_slice_setup_prob_buffer() and modify its signature.
-Also, remove the return value check in vdec_vp9_slice_setup_single()
-and vdec_vp9_slice_setup_lat().
+Add an error path label in vdec_vp9_slice_setup_lat()
+and call vdec_vp9_slice_free_working_buffer() to free
+working buffer to prevent potential memory leak.
 
+Fixes: 5d418351ca8f ("media: mediatek: vcodec: support stateless VP9 decoding")
+Cc: stable@vger.kernel.org
 Signed-off-by: Haoxiang Li <lihaoxiang@isrc.iscas.ac.cn>
 ---
- .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c       | 13 +++----------
- 1 file changed, 3 insertions(+), 10 deletions(-)
+ .../mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c        | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-index 092fd34e21d2..0f47b2671353 100644
+index 0f47b2671353..673b17d0dd8d 100644
 --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
 +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-@@ -1013,7 +1013,7 @@ static void vdec_vp9_slice_setup_lat_buffer(struct vdec_vp9_slice_instance *inst
- 	vsi->row_info.size = 0;
- }
- 
--static int vdec_vp9_slice_setup_prob_buffer(struct vdec_vp9_slice_instance *instance,
-+static void vdec_vp9_slice_setup_prob_buffer(struct vdec_vp9_slice_instance *instance,
- 					    struct vdec_vp9_slice_vsi *vsi)
- {
- 	struct vdec_vp9_slice_frame_ctx *frame_ctx;
-@@ -1030,8 +1030,6 @@ static int vdec_vp9_slice_setup_prob_buffer(struct vdec_vp9_slice_instance *inst
- 	else
- 		frame_ctx = vdec_vp9_slice_default_frame_ctx;
- 	memcpy(instance->prob.va, frame_ctx, sizeof(*frame_ctx));
--
--	return 0;
- }
- 
- static void vdec_vp9_slice_setup_seg_buffer(struct vdec_vp9_slice_instance *instance,
-@@ -1170,9 +1168,7 @@ static int vdec_vp9_slice_setup_lat(struct vdec_vp9_slice_instance *instance,
- 
- 	/* setup prob/tile buffers for LAT */
- 
--	ret = vdec_vp9_slice_setup_prob_buffer(instance, vsi);
--	if (ret)
--		goto err;
-+	vdec_vp9_slice_setup_prob_buffer(instance, vsi);
+@@ -1172,10 +1172,12 @@ static int vdec_vp9_slice_setup_lat(struct vdec_vp9_slice_instance *instance,
  
  	ret = vdec_vp9_slice_setup_tile_buffer(instance, vsi, bs);
  	if (ret)
-@@ -1804,10 +1800,7 @@ static int vdec_vp9_slice_setup_single(struct vdec_vp9_slice_instance *instance,
- 
- 	vdec_vp9_slice_setup_single_buffer(instance, pfc, vsi, bs, fb);
- 	vdec_vp9_slice_setup_seg_buffer(instance, vsi, &instance->seg[0]);
--
--	ret = vdec_vp9_slice_setup_prob_buffer(instance, vsi);
--	if (ret)
 -		goto err;
-+	vdec_vp9_slice_setup_prob_buffer(instance, vsi);
++		goto alloc_err;
  
- 	ret = vdec_vp9_slice_setup_tile_buffer(instance, vsi, bs);
- 	if (ret)
+ 	return 0;
+ 
++alloc_err:
++	vdec_vp9_slice_free_working_buffer(instance);
+ err:
+ 	return ret;
+ }
 -- 
 2.25.1
 
