@@ -4,76 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1C88CD342C
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 09:15:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DA7CCD342C
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 10:08:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B5KN6GqBVmS3HFaSXfEabO5+ODZ7LndeOXcfpw7vD/o=; b=fvjaL2KjobqrDdh+GyfBocI0iD
-	ptu41uV6x5+lFBpAR2VlD5mWKA6O//r2uedSJb8EJAA6iZ4LmaASEaDXlJZSx5qdjswgqXz22WOIL
-	pvBNibjTORuQDQmtGW0teujBxKScjYVGVS0OkYeGCp0EVm+VhvJ5qq6l3WCnKcHh5o9aVAvnJgKdh
-	IxosK5E0JvoLeap0DmtIqwY1N+qj6dwsp7xrJWnu4gTWCY4WB4jDktonIJaxf1RrtP9DZRQEuYJhG
-	SgXyKvhmumWPOzrPzyj1j9OY9VyACmDBmicSQ3KkxRrQ0xA7MAJvj23wqSpqPcGOF7n8XndqRp3DD
-	mLCqMOIQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=n0Me2Dz9gz4W0QEKvHP7gmEyiPwUNnBm3/obBtPnSDY=; b=d48VJBgQYL/quiZ/0D1/t0GEQ5
+	M9h/4P617mQyHYV9jmy9Z1JFdXssAPDF9NbAUEgrCPO9spDCWqgAlgF1S8IsOMiDsSv0FiSr/EdXa
+	/Lz8ujywwWP4JDmCK4hJN3EQnXo13nyUJv8mTsexWy5oMpBioMri5tMneZdgo/yLb9i3kXxZzjT8m
+	mi1ne81AjCTtYwRNwTvL9WgJqpVG1GWUYjD1Q1amGxud94J+znIut9DgL9AhQ6pmGKly/oXR9gItK
+	38XKDFCHX/LnMrXDsXD2aqiglqhQBchzoTwKxshbGC49C1CQt+KB+VXvb2C+Ch1BWs8Fh0VLDc2Xi
+	3TVkRT+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKYLS-00000000Jn6-3i7B;
-	Wed, 06 May 2026 09:15:06 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wKZB8-00000000RpL-1ey7;
+	Wed, 06 May 2026 10:08:30 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKYLQ-00000000Jlp-21P5;
-	Wed, 06 May 2026 09:15:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1778058901;
-	bh=06C2qHH59OhXzqVMBdMq/suIja8tImr+yasYlUa5fI8=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=DVsaldBtO6Cm41DSMAvyFjU2Qn9rmDgR+Tv/wv7rF8hnNrvb5wffdwNG3nrbHUNBl
-	 2IW12heqWSfFUGLOoFx3+nq+LcBcolYjNeUKURcdBfh0XBCSG9nTNnpBwmORWeNpCQ
-	 pGAVT2ViRzhK4qj8NQopsGR8QcMwbXWDfbXliWKoxOdNJnMi7ythH4QYOMf/sZVV7q
-	 MLWscdAGpmjrrZIuvwG0dAwFi2SGU1hXIopcX5Et59FVo/IHPLRMt6VAyRZkbSa/fN
-	 Fwiqcscz2IhFU5YVzMqMpOFe0nGE1zPxHWp9mdjWJfFGgdCupCp8Y3NL3F3urgynhG
-	 DCAhfAb/K9/aQ==
-Received: from fedora (unknown [100.64.0.11])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bbrezillon)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CD44617E1525;
-	Wed,  6 May 2026 11:15:00 +0200 (CEST)
-Date: Wed, 6 May 2026 11:14:56 +0200
-From: Boris Brezillon <boris.brezillon@collabora.com>
+	id 1wKZB6-00000000RoZ-4554;
+	Wed, 06 May 2026 10:08:29 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id BA27540728;
+	Wed,  6 May 2026 10:08:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1B330C2BCB8;
+	Wed,  6 May 2026 10:08:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1778062107;
+	bh=nZfzghg9raBxGwuKMfOIWHSA+G1JIUmQ1fcBxRlBfWg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=oFkGu383UAaW75R93fVSjEMMqQxImk1WhOeGq3XmlMxt3RERxCCOKdijAT1RgWjwe
+	 NFjFSQngx3fbEzsXhnmCnXPtSylbKo9eCMB+/LRQuBa0CcExkEyZWs0RgjPaXMuwhl
+	 eJ59DOUK79ncDdnxtDrKxY6BhzuUfjrhrspnaSoR/WmLGuGYOIBOZEwcsEbn+2fKQq
+	 xC+abC70rOGVB21uZSMyBO7wohlbnIoDcgGfIUdfxOX0zV+m58rS2m8QXHy61U92i+
+	 wPkQx+daa9KbhlV/w/3PvD+t9QVJi4QwlKwjXeZ+uD8foC+z9XaE5Tp+z5L7dEB0MX
+	 a3qn6yw6o+Yjw==
+Date: Wed, 6 May 2026 12:08:24 +0200
+From: Maxime Ripard <mripard@kernel.org>
 To: Ketil Johnsen <ketil.johnsen@arm.com>
-Cc: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
- <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, Jonathan
- Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, Sumit
- Semwal <sumit.semwal@linaro.org>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>,
- John Stultz <jstultz@google.com>, "T.J. Mercier" <tjmercier@google.com>,
- Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>, Steven Price
- <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, Daniel Almeida
- <daniel.almeida@collabora.com>, Alice Ryhl <aliceryhl@google.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 8/8] drm/panthor: Expose protected rendering features
-Message-ID: <20260506111456.70721b13@fedora>
-In-Reply-To: <20260505140516.1372388-9-ketil.johnsen@arm.com>
+Cc: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, 
+	Sumit Semwal <sumit.semwal@linaro.org>, Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+	Brian Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, 
+	"T.J. Mercier" <tjmercier@google.com>, Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, 
+	Boris Brezillon <boris.brezillon@collabora.com>, Steven Price <steven.price@arm.com>, 
+	Liviu Dudau <liviu.dudau@arm.com>, Daniel Almeida <daniel.almeida@collabora.com>, 
+	Alice Ryhl <aliceryhl@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Florent Tomasin <florent.tomasin@arm.com>
+Subject: Re: [PATCH 4/8] drm/panthor: Add support for protected memory
+ allocation in panthor
+Message-ID: <20260506-energetic-azure-pig-2b6ec4@houat>
 References: <20260505140516.1372388-1-ketil.johnsen@arm.com>
-	<20260505140516.1372388-9-ketil.johnsen@arm.com>
-Organization: Collabora
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
+ <20260505140516.1372388-5-ketil.johnsen@arm.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="bm3tokjqjresnbu6"
+Content-Disposition: inline
+In-Reply-To: <20260505140516.1372388-5-ketil.johnsen@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260506_021504_690753_BC4310F6 
-X-CRM114-Status: GOOD (  33.65  )
+X-CRM114-CacheID: sfid-20260506_030829_054245_BF1C1FED 
+X-CRM114-Status: GOOD (  23.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,253 +84,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue,  5 May 2026 16:05:14 +0200
-Ketil Johnsen <ketil.johnsen@arm.com> wrote:
 
-> Add query for protected rendering capability.
-> Add flag to group creation to specify need for protected rendering.
-> Bump panthor version number.
-> 
-> Signed-off-by: Ketil Johnsen <ketil.johnsen@arm.com>
-> ---
->  drivers/gpu/drm/panthor/panthor_drv.c   | 21 +++++++++++-
->  drivers/gpu/drm/panthor/panthor_sched.c | 21 +++++++-----
->  include/uapi/drm/panthor_drm.h          | 45 +++++++++++++++++++++++--
->  3 files changed, 76 insertions(+), 11 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/panthor/panthor_drv.c b/drivers/gpu/drm/panthor/panthor_drv.c
-> index 73fc983dc9b44..817df17f31f15 100644
-> --- a/drivers/gpu/drm/panthor/panthor_drv.c
-> +++ b/drivers/gpu/drm/panthor/panthor_drv.c
-> @@ -177,6 +177,7 @@ panthor_get_uobj_array(const struct drm_panthor_obj_array *in, u32 min_stride,
->  		 PANTHOR_UOBJ_DECL(struct drm_panthor_csif_info, pad), \
->  		 PANTHOR_UOBJ_DECL(struct drm_panthor_timestamp_info, current_timestamp), \
->  		 PANTHOR_UOBJ_DECL(struct drm_panthor_group_priorities_info, pad), \
-> +		 PANTHOR_UOBJ_DECL(struct drm_panthor_protected_info, features), \
->  		 PANTHOR_UOBJ_DECL(struct drm_panthor_sync_op, timeline_value), \
->  		 PANTHOR_UOBJ_DECL(struct drm_panthor_queue_submit, syncs), \
->  		 PANTHOR_UOBJ_DECL(struct drm_panthor_queue_create, ringbuf_size), \
-> @@ -928,12 +929,20 @@ static void panthor_query_group_priorities_info(struct drm_file *file,
->  	}
->  }
->  
-> +static void panthor_query_protected_info(struct panthor_device *ptdev,
-> +					 struct drm_panthor_protected_info *arg)
-> +{
-> +	arg->features =
-> +		ptdev->protm.heap ? DRM_PANTHOR_PROTECTED_FEATURE_BASIC : 0;
-> +}
-> +
->  static int panthor_ioctl_dev_query(struct drm_device *ddev, void *data, struct drm_file *file)
->  {
->  	struct panthor_device *ptdev = container_of(ddev, struct panthor_device, base);
->  	struct drm_panthor_dev_query *args = data;
->  	struct drm_panthor_timestamp_info timestamp_info;
->  	struct drm_panthor_group_priorities_info priorities_info;
-> +	struct drm_panthor_protected_info protected_info;
->  	int ret;
->  
->  	if (!args->pointer) {
-> @@ -954,6 +963,10 @@ static int panthor_ioctl_dev_query(struct drm_device *ddev, void *data, struct d
->  			args->size = sizeof(priorities_info);
->  			return 0;
->  
-> +		case DRM_PANTHOR_DEV_QUERY_PROTECTED_INFO:
-> +			args->size = sizeof(protected_info);
-> +			return 0;
-> +
->  		default:
->  			return -EINVAL;
->  		}
-> @@ -984,6 +997,11 @@ static int panthor_ioctl_dev_query(struct drm_device *ddev, void *data, struct d
->  		panthor_query_group_priorities_info(file, &priorities_info);
->  		return PANTHOR_UOBJ_SET(args->pointer, args->size, priorities_info);
->  
-> +	case DRM_PANTHOR_DEV_QUERY_PROTECTED_INFO:
-> +		panthor_query_protected_info(ptdev, &protected_info);
-> +		return PANTHOR_UOBJ_SET(args->pointer, args->size,
-> +					protected_info);
-> +
->  	default:
->  		return -EINVAL;
->  	}
-> @@ -1779,6 +1797,7 @@ static void panthor_debugfs_init(struct drm_minor *minor)
->   *       - adds DRM_IOCTL_PANTHOR_BO_QUERY_INFO ioctl
->   *       - adds drm_panthor_gpu_info::selected_coherency
->   * - 1.8 - extends DEV_QUERY_TIMESTAMP_INFO with flags
-> + * - 1.9 - adds DEV_QUERY_PROTECTED_INFO query
+--bm3tokjqjresnbu6
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 4/8] drm/panthor: Add support for protected memory
+ allocation in panthor
+MIME-Version: 1.0
 
-It's adding more than just DEV_QUERY_PROTECTED_INFO (it also adds a new
-flags field to group_create and a flag that tells that the group intends
-to use protected mode).
+Hi,
 
->   */
->  static const struct drm_driver panthor_drm_driver = {
->  	.driver_features = DRIVER_RENDER | DRIVER_GEM | DRIVER_SYNCOBJ |
-> @@ -1792,7 +1811,7 @@ static const struct drm_driver panthor_drm_driver = {
->  	.name = "panthor",
->  	.desc = "Panthor DRM driver",
->  	.major = 1,
-> -	.minor = 8,
-> +	.minor = 9,
->  
->  	.gem_prime_import_sg_table = panthor_gem_prime_import_sg_table,
->  	.gem_prime_import = panthor_gem_prime_import,
-> diff --git a/drivers/gpu/drm/panthor/panthor_sched.c b/drivers/gpu/drm/panthor/panthor_sched.c
-> index acb04250c7def..0e8a1059de589 100644
-> --- a/drivers/gpu/drm/panthor/panthor_sched.c
-> +++ b/drivers/gpu/drm/panthor/panthor_sched.c
-> @@ -3868,6 +3868,7 @@ static void add_group_kbo_sizes(struct panthor_device *ptdev,
->  }
->  
->  #define MAX_GROUPS_PER_POOL		128
-> +#define GROUP_CREATE_FLAGS DRM_PANTHOR_GROUP_CREATE_PROTECTED
->  
->  int panthor_group_create(struct panthor_file *pfile,
->  			 const struct drm_panthor_group_create *group_args,
-> @@ -3882,10 +3883,10 @@ int panthor_group_create(struct panthor_file *pfile,
->  	u32 gid, i, suspend_size;
->  	int ret;
->  
-> -	if (group_args->pad)
-> +	if (group_args->priority >= PANTHOR_CSG_PRIORITY_COUNT)
->  		return -EINVAL;
->  
-> -	if (group_args->priority >= PANTHOR_CSG_PRIORITY_COUNT)
-> +	if (group_args->flags & ~GROUP_CREATE_FLAGS)
->  		return -EINVAL;
->  
->  	if ((group_args->compute_core_mask & ~ptdev->gpu_info.shader_present) ||
-> @@ -3937,12 +3938,16 @@ int panthor_group_create(struct panthor_file *pfile,
->  		goto err_put_group;
->  	}
->  
-> -	suspend_size = csg_iface->control->protm_suspend_size;
-> -	group->protm_suspend_buf = panthor_fw_alloc_protm_suspend_buf_mem(ptdev, suspend_size);
-> -	if (IS_ERR(group->protm_suspend_buf)) {
-> -		ret = PTR_ERR(group->protm_suspend_buf);
-> -		group->protm_suspend_buf = NULL;
-> -		goto err_put_group;
-> +	if (group_args->flags & DRM_PANTHOR_GROUP_CREATE_PROTECTED) {
-> +		suspend_size = csg_iface->control->protm_suspend_size;
-> +		group->protm_suspend_buf =
-> +			panthor_fw_alloc_protm_suspend_buf_mem(ptdev,
-> +							       suspend_size);
-> +		if (IS_ERR(group->protm_suspend_buf)) {
-> +			ret = PTR_ERR(group->protm_suspend_buf);
-> +			group->protm_suspend_buf = NULL;
-> +			goto err_put_group;
-> +		}
->  	}
->  
->  	group->syncobjs = panthor_kernel_bo_create(ptdev, group->vm,
-> diff --git a/include/uapi/drm/panthor_drm.h b/include/uapi/drm/panthor_drm.h
-> index 0e455d91e77d4..914110003bcd1 100644
-> --- a/include/uapi/drm/panthor_drm.h
-> +++ b/include/uapi/drm/panthor_drm.h
-> @@ -253,6 +253,11 @@ enum drm_panthor_dev_query_type {
->  	 * @DRM_PANTHOR_DEV_QUERY_GROUP_PRIORITIES_INFO: Query allowed group priorities information.
->  	 */
->  	DRM_PANTHOR_DEV_QUERY_GROUP_PRIORITIES_INFO,
-> +
-> +	/**
-> +	 * @DRM_PANTHOR_DEV_QUERY_PROTECTED_INFO: Query supported protected rendering information.
-> +	 */
-> +	DRM_PANTHOR_DEV_QUERY_PROTECTED_INFO,
->  };
->  
->  /**
-> @@ -504,6 +509,28 @@ struct drm_panthor_group_priorities_info {
->  	__u8 pad[3];
->  };
->  
-> +/**
-> + * enum drm_panthor_protected_feature_flags - Supported protected rendering features
+On Tue, May 05, 2026 at 04:05:10PM +0200, Ketil Johnsen wrote:
+> From: Florent Tomasin <florent.tomasin@arm.com>
+>=20
+> This patch allows Panthor to allocate buffer objects from a
+> protected heap. The Panthor driver should be seen as a consumer
+> of the heap and not an exporter.
+>=20
+> Protected memory buffers needed by the Panthor driver:
+> - On CSF FW load, the Panthor driver must allocate a protected
+>   buffer object to hold data to use by the FW when in protected
+>   mode. This protected buffer object is owned by the device
+>   and does not belong to a process.
+> - On CSG creation, the Panthor driver must allocate a protected
+>   suspend buffer object for the FW to store data when suspending
+>   the CSG while in protected mode. The kernel owns this allocation
+>   and does not allow user space mapping. The format of the data
+>   in this buffer is only known by the FW and does not need to be
+>   shared with other entities.
+>=20
+> The driver will retrieve the protected heap using the name of the
+> heap provided to the driver as module parameter.
 
-Protected rendering is a bit vague, especially since it's usually
-referred as protected memory/content in graphics APIs. Maybe we should
-have a short paragraph explaining what we mean by that (access of
-protected memory from the GPU).
+I know it's what dma_heap_find asks for, but I wonder if it wouldn't be
+better in the device tree and lookup through the device node? heaps are
+going to have a node anyway, right?
 
-> + *
-> + * Place new types at the end, don't re-order, don't remove or replace.
-> + */
-> +enum drm_panthor_protected_feature_flags {
-> +	/** @DRM_PANTHOR_PROTECTED_FEATURE_BASIC: Protected rendering available */
-> +	DRM_PANTHOR_PROTECTED_FEATURE_BASIC = 1 << 0,
+This would allow you to have a default that works and not mess to much
+with the kernel parameters that aren't always easy to change for
+end-users.
 
-I'm not a huge fan of this _BASIC specifier, since it doesn't
-tell much about the actual implementation, and what the UMD
-has to do to access protected memory from the GPU. Given the
-feature/CS-instruction is named _PROTM, I'd go for
+Maxime
 
-	/**
-	 * @DRM_PANTHOR_PROTECTED_FEATURE_PROTM: Protected memory access
-	 * based on PROTM CS instructions
-	 *
-	 * This is currently the only option to access protected
-	 * memory from the GPU. Other modes or advanced features might
-	 * be added at some point.
-	 */
-	DRM_PANTHOR_PROTECTED_FEATURE_PROTM = 1 << 0,
-> +};
-> +
-> +/**
-> + * struct drm_panthor_protected_info - protected support information
-> + *
-> + * Structure grouping all queryable information relating to the allowed group priorities.
-> + */
-> +struct drm_panthor_protected_info {
-> +	/**
-> +	 * @features: Combination of enum drm_panthor_protected_feature_flags flags.
-> +	 */
-> +	__u32 features;
-> +};
-> +
->  /**
->   * struct drm_panthor_dev_query - Arguments passed to DRM_PANTHOR_IOCTL_DEV_QUERY
->   */
-> @@ -843,6 +870,18 @@ enum drm_panthor_group_priority {
->  	PANTHOR_GROUP_PRIORITY_REALTIME,
->  };
->  
-> +/**
-> + * enum drm_panthor_group_create_flags - Group create flags
-> + */
-> +enum drm_panthor_group_create_flags {
+--bm3tokjqjresnbu6
+Content-Type: application/pgp-signature; name="signature.asc"
 
-s/drm_panthor_group_create_flags/drm_panthor_group_feature_flags/
+-----BEGIN PGP SIGNATURE-----
 
-> +	/**
-> +	 * @DRM_PANTHOR_GROUP_CREATE_PROTECTED: Support protected mode
-> +	 *
-> +	 * Enable protected rendering work to be executed on this group.
-> +	 */
-> +	DRM_PANTHOR_GROUP_CREATE_PROTECTED = 1 << 0,
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCafsTGAAKCRAnX84Zoj2+
+dscNAYCT5tPA6wlA50913tROdb0/8GBVIaNWCZzIVCmmtw6XdanUV+Ek43qdrnbM
+nAndNMcBgJJ8V9DZNE2zzCU0FXXXjTfOFOjGy0zdjmyQH3dGoy80XCbxq4XUI4fe
+u8+zbKdHWA==
+=zppB
+-----END PGP SIGNATURE-----
 
-I'd go directly DRM_PANTHOR_GROUP_FEATURE_PROTM, since this is the
-instruction the group will use to enter protected mode. If we ever have
-multiple ways to do protected rendering, I guess it would materialize
-as a different flag, allowing the KMD to know exactly the way
-protected rendering is going to be done.
-
-> +};
-> +
->  /**
->   * struct drm_panthor_group_create - Arguments passed to DRM_IOCTL_PANTHOR_GROUP_CREATE
->   */
-> @@ -877,8 +916,10 @@ struct drm_panthor_group_create {
->  	/** @priority: Group priority (see enum drm_panthor_group_priority). */
->  	__u8 priority;
->  
-> -	/** @pad: Padding field, MBZ. */
-> -	__u32 pad;
-> +	/**
-> +	 * @flags: Flags. Must be a combination of drm_panthor_group_create_flags flags.
-> +	 */
-> +	__u32 flags;
->  
->  	/**
->  	 * @compute_core_mask: Mask encoding cores that can be used for compute jobs.
-
+--bm3tokjqjresnbu6--
 
