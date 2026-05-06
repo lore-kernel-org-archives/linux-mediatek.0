@@ -4,71 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEA9FCD342C
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 15:46:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E67CACD342C
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 15:55:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gfdBybtRppeE1KvRbZrzufC/NV+OTkc8viJlVMQwDSw=; b=ohPueB2nfGKaBFdAGIVaaQm1Nv
-	G8lVwhxPcDVi9ALSd+hCqbvpNB9p3ZpXC0bSIq5JNWPb7HmBZmbHXmPHNt+eTzx4ivHtDPYltcTJF
-	3nDmvEOMzyu+iENZwM2GA6eej2gE7Ytx4MvIWCArJKemN6lpvyFFW6ytF410Bz1jA1OXX44ZqQvlO
-	v9KPC3hhZ/R5sR70wprAGItNvV1a9TTilERQpxzMF9b+ySYdNAoURUUzY8KxoUPomrqzpPBK1ZPyU
-	tAXYr/5seU+yw0qy8xUlqSMbssWHncH5eVcYqc6fmIplYoVgx4zeqzjKBGbr/hj4sACTxCr1X/G1p
-	7MGUBvWQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ip87XqR80jt83yUmNJq2gBZhTL+2Zm0472LsBd8FCnw=; b=lDyss5fVz0gZ2AFhXjdl7hJjWB
+	fklcVY73KCqClRPROJp2Sw4ot7T0sZK2HHYWYC03hTFep8m3BNaOjqifoHxm7cRfmWS2qW1fX/Dyp
+	2LF9+WMStyaQkVspJHBN2hD1vBrgUitGCRTT02y5o80qSPxS0CsIVJ+u4XEP5o7aZLImE9meKjtx1
+	T2og1NSPBNiCwLd0VdtfF294ryvVh7DNyzLkjxbE1BZGPnlDOlAvmC+WXS+/0rwvkSwqkjcD7ZGW7
+	rI8yaA86+lCcVEXzE1rZT3aw9o4J7771/dJByv8kPrMk6FpX2sGPPHjws9g2lSI6jVx4z7LeBgDHG
+	DAJGyyPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKeSJ-00000001ODR-1qfW;
-	Wed, 06 May 2026 15:46:35 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wKebJ-00000001QAG-3X2q;
+	Wed, 06 May 2026 15:55:53 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKeSH-00000001OCa-0WMC;
-	Wed, 06 May 2026 15:46:33 +0000
+	id 1wKebI-00000001Q9W-3X0r;
+	Wed, 06 May 2026 15:55:52 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9B4EF42AE5;
-	Wed,  6 May 2026 15:46:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 482C2C2BCB8;
-	Wed,  6 May 2026 15:46:23 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 1970343D63;
+	Wed,  6 May 2026 15:55:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F2252C2BCB0;
+	Wed,  6 May 2026 15:55:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778082392;
-	bh=OaJWjamc6kWNh1B4kT6JEeX0RWTw5B2ryP/Qeb2SLqI=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=bw+h6YwP+WQqhFBn5HlBoswhd3ysx6X4monJg25zfK0XT4NRi0HBcANF9k/umJUPP
-	 hK/SVCcVmO9CCQBA0ZeOINqcMOHI/Ilb7iOOUPWoT4zUMtWN7utj07QJdhc/za6pEI
-	 6mbNTO8t9UBLSrV2CSYQWaAaObkiu7QTv0eMTbuhem+GoT4U92+RuL7lOstqJ41lh3
-	 ZAnpBljjOZP6j8QcL4Iwp8Vj3rWIe/r2Erm3gqDRroDhMC3ufuvMXpv1b4Casu/uKM
-	 O7pqIG8UMj/kHRegSGMN50Z6W8EFNuiglMUMxeWOaoi6dYjG0ZuZcj3FOBiOn/cHt8
-	 0YBfH4CiIbNMg==
-Date: Wed, 6 May 2026 16:46:19 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Cc: rva333@protonmail.com, David Lechner <dlechner@baylibre.com>, Nuno
- =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Srinivas Kandagatla
- <srini@kernel.org>, "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano
- <daniel.lezcano@kernel.org>, Zhang Rui <rui.zhang@intel.com>, Lukasz Luba
- <lukasz.luba@arm.com>, Lee Jones <lee@kernel.org>,
- linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, Ben Grisdale
- <bengris32@protonmail.ch>
-Subject: Re: [PATCH 04/13] iio: adc: mediatek: add mt6323 PMIC AUXADC driver
-Message-ID: <20260506164619.63ebc626@jic23-huawei>
-In-Reply-To: <20260504-mt6323-v1-4-799b58b355ff@protonmail.com>
-References: <20260504-mt6323-v1-0-799b58b355ff@protonmail.com>
-	<20260504-mt6323-v1-4-799b58b355ff@protonmail.com>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+	s=k20201202; t=1778082952;
+	bh=Ph5NSUFFQWfRFBXRYCMYPAzIJbj1RVi6AHZ+xntAAFw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=tfEeQw/dEE9ZvynULyLEVP7NROJ17+o5Zid3jA3XxADKGiWLaVX6pA0Mc4EGbzUoy
+	 grMbANHbWa/oRAll7VELcgEWxYM1xYjMAZCGhPn23K9ro5Ac9esX1ZmctTY3cGhVfg
+	 O9D5dMOSkMfTQ+UkDhil5Dl6ugh5eqyCsDiS1Ex3j/XvLoqICT5jjfoh8lTugrDQqa
+	 C+/ozpmkDU0zWqx1jD3zzF6TShiKT4Ug0LkW8VSyMnm2vv+99PvgFcm8CCk/ah5qqx
+	 IN07dtX8NXTP1CmuNGlVnw8tIcjd8iEMKjFLibvSqWMWxVIQkkbSS40xb64aosafnp
+	 8EyEtHW5sEN5g==
+Date: Wed, 6 May 2026 21:25:41 +0530
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Hans Zhang <18255117159@163.com>
+Cc: bhelgaas@google.com, lpieralisi@kernel.org, kwilczynski@kernel.org, 
+	vigneshr@ti.com, jingoohan1@gmail.com, thomas.petazzoni@bootlin.com, 
+	pali@kernel.org, ryder.lee@mediatek.com, jianjun.wang@mediatek.com, 
+	claudiu.beznea.uj@bp.renesas.com, mpillai@cadence.com, robh@kernel.org, s-vadapalli@ti.com, 
+	linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-pci@vger.kernel.org, 
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 1/8] PCI: Add pcie_wait_after_link_train() helper
+Message-ID: <qryvbq7tn7gpkx63ljauddp3qxczgbzlpfkxiula7vq6f23yaz@oi2pal2ynzgv>
+References: <20260506152346.166056-1-18255117159@163.com>
+ <20260506152346.166056-2-18255117159@163.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20260506152346.166056-2-18255117159@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260506_084633_213588_6C0039A2 
-X-CRM114-Status: GOOD (  34.86  )
+X-CRM114-CacheID: sfid-20260506_085552_898733_FA8A0731 
+X-CRM114-Status: GOOD (  16.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,267 +77,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 04 May 2026 21:24:56 +0300
-Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org> wrote:
-
-> From: Roman Vivchar <rva333@protonmail.com>
+On Wed, May 06, 2026 at 11:23:39PM +0800, Hans Zhang wrote:
+> PCIe r6.0, sec 6.6.1 (Conventional Reset) requires that for a Downstream
+> Port supporting Link speeds greater than 5.0 GT/s, software must wait a
+> minimum of 100 ms after Link training completes before sending any
+> Configuration Request.
 > 
-> The mt6323 AUXADC is a 15-bit ADC used for system monitoring. This driver
-> provides support for reading various channels including battery and
-> charger voltages, battery and chip temperature, current sensing and
-> accessory detection.
+> Introduce a static inline helper pcie_wait_after_link_train() that checks
+> the given max_link_speed (2 = 5.0 GT/s, 3 = 8.0 GT/s, etc.) and calls
+> msleep(100) only when the speed is greater than 5.0 GT/s. The helper uses
+> the existing PCIE_RESET_CONFIG_WAIT_MS macro defined in pci.h.
 > 
-> Add a driver for the AUXADC found in the MediaTek mt6323 PMIC.
+> This allows multiple host controller drivers to share the same mandatory
+> delay without duplicating the logic.
 > 
-> Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
-> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+> Signed-off-by: Hans Zhang <18255117159@163.com>
+> ---
+>  drivers/pci/pci.h | 13 +++++++++++++
+>  1 file changed, 13 insertions(+)
+> 
+> diff --git a/drivers/pci/pci.h b/drivers/pci/pci.h
+> index 4a14f88e543a..a8705a2a2d85 100644
+> --- a/drivers/pci/pci.h
+> +++ b/drivers/pci/pci.h
 
-A few things inline that might not entirely overlap with other reviews
+Since this helper is for host controller drivers, this needs to be defined in
+pci-host-common.h.
 
-Also make sure to check:
-https://sashiko.dev/#/patchset/20260504-mt6323-v1-0-799b58b355ff%40protonmail.com
-It may well have made some stuff up, but in general it does find stuff
-humans have missed. I've called out a few more interesting ones inline
-(I looked after doing my initial review)
-
-
-Thanks,
-
-Jonathan
-
-> diff --git a/drivers/iio/adc/mt6323-auxadc.c b/drivers/iio/adc/mt6323-auxadc.c
-> new file mode 100644
-> index 000000000000..97b4ad4e7b47
-> --- /dev/null
-> +++ b/drivers/iio/adc/mt6323-auxadc.c
-
+> @@ -60,6 +60,19 @@ struct pcie_tlp_log;
+>   */
+>  #define PCIE_RESET_CONFIG_WAIT_MS	100
+>  
 > +/**
-> + * struct mt6323_auxadc - Main driver structure
-> + * @dev:           Device pointer
-> + * @regmap:        Regmap from PWRAP
-> + * @lock:          Mutex to serialize AUXADC reading vs configuration
+> + * pcie_wait_after_link_train - Wait 100 ms if link speed > 5 GT/s
+> + * @max_link_speed: the maximum link speed (2 = 5.0 GT/s, 3 = 8.0 GT/s, ...)
+> + *
+> + * Must be called after Link training completes and before the first
+> + * Configuration Request is sent.
 > + */
-> +struct mt6323_auxadc {
-> +	struct device *dev;
-> +	struct regmap *regmap;
-> +	struct mutex lock;
-> +};
+> +static inline void pcie_wait_after_link_train(int max_link_speed)
 
-> +static int mt6323_auxadc_check_if_stuck(struct mt6323_auxadc *auxadc)
-> +{
-> +	int i, ret;
-> +	u32 val;
-> +
-> +	for (i = 0; i < 50; i++) {
-> +		ret = regmap_read(auxadc->regmap, MT6323_AUXADC_CON19, &val);
-> +		if (ret)
-> +			return ret;
-> +
-> +		if (FIELD_GET(AUXADC_DECI_GDLY_MASK, val)) {
-Flip to reduce indent.
-		if (!FIELD_GET(AUXADC_DECI_GDLY_MASK, val))
-			return 0;
+pci_host_common_link_train_delay()?
 
-		ret = regmap_read(auxadc->regmap, MT6323_AUXADC_ADC19, &val);
-		if (ret)
-			return ret;
+- Mani
 
-		if (!FIELD_GET(AUXADC_ADC19_BUSY_MASK, val)) {
-			ret = regmap_update_bits(auxadc->regmap,
-						 MT6323_AUXADC_CON19,
-						 FIELD_PREP(AUXADC_DECI_GDLY_MASK, 3),
-// no idea what the magic 3 is. Might need a define to make that clear.
-// fine to go a bit long on code like this for readability.  Also rather
-// odd for a regmap mask to be made up of some bits of a larger mask.
-// rather implies that a field needs breaking up into two.
-
-						 0x0);
-			if (ret)
-				return ret;
-		}
-		fsleep(10);
-	}
-
-> +			ret = regmap_read(auxadc->regmap, MT6323_AUXADC_ADC19,
-> +					  &val);
-> +			if (ret)
-> +				return ret;
-> +
-> +			if (!FIELD_GET(AUXADC_ADC19_BUSY_MASK, val)) {
-> +				ret = regmap_update_bits(
-> +					auxadc->regmap, MT6323_AUXADC_CON19,
-> +					FIELD_PREP(AUXADC_DECI_GDLY_MASK, 3),
-> +					0x0);
-> +				if (ret)
-> +					return ret;
-> +			}
-> +		} else {
-> +			return 0;
-> +		}
-> +
-> +		fsleep(10);
-> +	}
-> +
-> +	return -ETIMEDOUT;
-> +}
-> +
-> +static int mt6323_auxadc_request(struct mt6323_auxadc *auxadc,
-> +				 unsigned long channel)
-> +{
-> +	int ret;
-> +	u32 pmic_val, adc_val;
-> +
-> +	if (channel < 9) {
-> +		ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON11,
-> +					 AUXADC_VBUF_EN, AUXADC_VBUF_EN);
-> +		if (ret)
-> +			return ret;
-> +
-> +		ret = regmap_read(auxadc->regmap, MT6323_AUXADC_CON22,
-> +				  &pmic_val);
-> +		if (ret)
-> +			return ret;
-> +
-> +		adc_val = FIELD_GET(AUXADC_LOW_CHANNEL_MASK, pmic_val);
-> +		adc_val &= ~BIT(channel);
-> +
-> +		ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON22,
-> +					 AUXADC_LOW_CHANNEL_MASK, adc_val);
-
-Given you have the full register value I'd do regmap_write() rather than
-update_bits() that may trigger another read. Matters less if you having
-caching enabled.
-
-> +		if (ret)
-> +			return ret;
-> +
-> +		ret = regmap_read(auxadc->regmap, MT6323_AUXADC_CON22,
-> +				  &pmic_val);
-> +		if (ret)
-> +			return ret;
-> +
-> +		adc_val = FIELD_GET(AUXADC_LOW_CHANNEL_MASK, pmic_val);
-> +		adc_val |= BIT(channel);
-> +
-> +		ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON22,
-> +					 AUXADC_LOW_CHANNEL_MASK, adc_val);
-
-as above for a full write.
-
-		return regmap_update_bits() so we don't have to read on
-to see what else happens.  You could drop the else but I think it
-does have some value in showing they are of 'equal' likelihood.
-
-> +
-> +	} else {
-Sashiko points out that we only have channels 0-9 defined, so how do
-we get here?
-
-> +		ret = regmap_read(auxadc->regmap, MT6323_AUXADC_CON23,
-> +				  &pmic_val);
-> +		if (ret)
-> +			return ret;
-> +
-> +		adc_val = FIELD_GET(AUXADC_AUDIO_CHANNEL_MASK, pmic_val);
-> +		adc_val &= ~BIT(channel - 9);
-> +
-> +		ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON23,
-> +					 AUXADC_AUDIO_CHANNEL_MASK, adc_val);
-> +		if (ret)
-> +			return ret;
-> +
-> +		ret = regmap_read(auxadc->regmap, MT6323_AUXADC_CON23,
-> +				  &pmic_val);
-> +		if (ret)
-> +			return ret;
-> +
-> +		adc_val = FIELD_GET(AUXADC_AUDIO_CHANNEL_MASK, pmic_val);
-> +		adc_val |= BIT(channel - 9);
-> +
-> +		ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON23,
-> +					 AUXADC_AUDIO_CHANNEL_MASK, adc_val);
-return regmap_update_bits() here as well because we might as well.
-
-> +	}
-> +
-> +	return ret;
-> +}
-
-> +static int mt6323_auxadc_read_raw(struct iio_dev *indio_dev,
-> +				  const struct iio_chan_spec *chan, int *val,
-> +				  int *val2, long mask)
-> +{
-> +	struct mt6323_auxadc *auxadc = iio_priv(indio_dev);
-> +	int ret, mult = 1;
-
-Move declaration of mult into the scope where it's used.
-That will mean this default is near the point of use. Mind you
-I'd probably but the assignment in and else to make it even
-more obvious.
-
-> +
-> +	if (mask == IIO_CHAN_INFO_RAW) {
-> +		scoped_guard(mutex, &auxadc->lock)
-> +		{
-		guard(mutex)(&auxadc->lock);
-preferred where not necessary to use scoped_guard() as it
-means we don't end up with large code indents.
-
-Though if you did { on the line above.
-
-As sashiko notes, this will trip up compilers anyway due
-to an oddity of how scoped_guard() is implemented. You have
-to have a return after it.
-
-> +			ret = mt6323_auxadc_check_if_stuck(auxadc);
-> +			if (ret)
-> +				return ret;
-> +
-> +			ret = mt6323_auxadc_request(auxadc, chan->address);
-> +			if (ret)
-> +				return ret;
-> +
-> +			usleep_range(300, 500);
-
-Smells like fsleep() is appropriate.
-
-> +
-> +			ret = mt6323_auxadc_read(auxadc, chan, val);
-> +			if (ret)
-> +				return ret;
-> +			return IIO_VAL_INT;
-> +		}
-> +	} else if (mask == IIO_CHAN_INFO_SCALE) {
-> +		if (chan->channel == MT6323_AUXADC_ISENSE ||
-> +		    chan->address == MT6323_AUXADC_BATSNS)
-Probably pick channel or address.  Mind you not much point in
-setting them both to the same thing (another one sashiko got
-that I missed)
-
-> +			mult = 4;
-> +
-> +		*val = mult * 1800;
-> +		*val2 = 32768;
-> +
-> +		return IIO_VAL_FRACTIONAL;
-> +	} else 
-
-{} for all legs if any need it.
-
-> +		return -EINVAL;
-> +}
-> +
-> +static int mt6323_auxadc_init(struct mt6323_auxadc *auxadc)
-> +{
-
-> +
-> +	ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON9,
-> +				 AUXADC_OSR_MASK,
-> +				 FIELD_PREP(AUXADC_OSR_MASK, 3));
-
-I'm going to guess something to do with sampling rate?  That 3 is non
-obvious so I'd suggest defines for the values AUXADC_OSR can take.
-
-> +	return ret;
-> +}
+-- 
+மணிவண்ணன் சதாசிவம்
 
