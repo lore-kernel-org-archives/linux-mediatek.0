@@ -4,74 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2C2CCD342C
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 14:14:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AF03CD342C
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 15:02:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Pm0+Gh1N3CQZmo80V9svpnAeqF+PlXCFFDOgCkyNM1Q=; b=S4Oq6aUWvx8ozoIqAITj0bRSmx
-	zLU7phkcDlq00P2xB+lMSD40oeXT8BXQGOl7Eqi87eXujXklBqszSDqc76DNYP/7KMgOo5LbAEUXc
-	I4nwrKw66zWytib05SHttV9n2XK44YQs6lqThBNyWhCJypD4LYMHrdJDvbW+CmU02+jL0WJGxhFR/
-	yUD72kwuTo/oYsDW3cPM/+akA8jxGy+pvpnaJY88+b8XhscjkSHQKayichjIwbIOsjv+wxfRhi0vB
-	NVvcZRySQp3evPt38yWhCPuCa+FlT7PlnPtpmauwq9qRQgAUz720rHjxUwXvZVdWeb/r5I5pDrCz7
-	B3riZHgw==;
+	bh=NVtokff+FgN7c5YjfBm+qv9hmUVsT8Ucvu2C0waL2bE=; b=ZBNWFZ8+K/xSAGZsiu52lyzuPt
+	I4uJhfvRl+bJZB93i2DqihoqXj/qHN7HPGUPtmFgsf1mxqmAoEX2PdEpKTdq1GZjJ1i4xD2tdd0Ol
+	V2+xFnmrrf0bXtXEmilwSnZefhK7B0eDTuzWxfPWKQI5dAUNvsxHfqJ9IoijpyfR+FoVjZ1LBdjJA
+	9kbFOWewWd/dSrR/ByD9rHxQStlXWTzFwfLwQtoz6vqNBaS00/GqmGLUjzkhHN86YeRX2rTNW0Vmz
+	TMABzZOXQzMptciCtFpksfLp6nfWFeyfKaKRPorQ62gh8cZnYDEspcGTi/HG4noUpM51xS1K1g1NJ
+	RXndzoKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKd1a-000000012Ng-2U37;
-	Wed, 06 May 2026 14:14:54 +0000
-Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
+	id 1wKdlm-00000001DpR-0KIp;
+	Wed, 06 May 2026 15:02:38 +0000
+Received: from mail-oo1-xc30.google.com ([2607:f8b0:4864:20::c30])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKd1X-000000012MC-3ViU;
-	Wed, 06 May 2026 14:14:52 +0000
-Received: from edelgard.fodlan.icenowy.me (unknown [112.94.100.82])
-	by APP-05 (Coremail) with SMTP id zQCowABH2AvSTPtpLvWNDw--.25404S2;
-	Wed, 06 May 2026 22:14:42 +0800 (CST)
-Message-ID: <4a43edb8c7ae3f96f77272db89ec6450ffa28876.camel@iscas.ac.cn>
-Subject: Re: [PATCH 2/2] arm64: dts: mediatek: mt8188-geralt: enable Wi-Fi
- card
-From: Icenowy Zheng <zhengxingda@iscas.ac.cn>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski	 <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger	 <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno	 <angelogioacchino.delregno@collabora.com>, Hui
- Liu <hui.liu@mediatek.com>, 	linux-gpio@vger.kernel.org,
- devicetree@vger.kernel.org, 	linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, 	linux-mediatek@lists.infradead.org
-Date: Wed, 06 May 2026 22:14:41 +0800
-In-Reply-To: <CAGXv+5F6BSmqq5HEybuCSwt75LVzh5gvs2wQpqy3vgfLi60Dcg@mail.gmail.com>
-References: <20260504072748.2580172-1-zhengxingda@iscas.ac.cn>
-	 <20260504072748.2580172-2-zhengxingda@iscas.ac.cn>
-	 <CAGXv+5F6BSmqq5HEybuCSwt75LVzh5gvs2wQpqy3vgfLi60Dcg@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.58.3 
+	id 1wKdlk-00000001DoN-3TZe
+	for linux-mediatek@lists.infradead.org;
+	Wed, 06 May 2026 15:02:36 +0000
+Received: by mail-oo1-xc30.google.com with SMTP id 006d021491bc7-679f6ee3fb0so2670967eaf.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 06 May 2026 08:02:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20251104.gappssmtp.com; s=20251104; t=1778079755; x=1778684555; darn=lists.infradead.org;
+        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
+         :from:subject:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=NVtokff+FgN7c5YjfBm+qv9hmUVsT8Ucvu2C0waL2bE=;
+        b=A/EvMKQ37cRsbsYXngNOrc0aeKV9KjnboR1CTUZWAdEj0e8IsUrN+EV/nwlnh/c5qr
+         QMtp2fhrdrBsj49a20S5lCg23/3gPGmbsgizshzIu3cvc9L6zLJI9fO6C/JBEcaCZ6fs
+         W46b8VqAXoJ48VJ00efAHbzCJNGR2rwwXyV1yflvXqFqNXWCqd+3HKDnVwUEGUdvI53z
+         yqUNqIpf6K3tZ+M74BjdUsAQNqudsrcHBf19+56uG7D4kAeZG40wO+urnm2BoUHswVNv
+         A0kg1DnkiyougBDsVRRTuC1hUzyYcKvPag5W5c7MGv2V6DdMhpogusHOf0eja6zzYmuL
+         405Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1778079755; x=1778684555;
+        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
+         :from:subject:message-id:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=NVtokff+FgN7c5YjfBm+qv9hmUVsT8Ucvu2C0waL2bE=;
+        b=OYDJcCxwqgU5T8MWOfj/o8oIoL8Xf5sSiZIQYEjWeMjdXLDfXwNex9ZARVg2RZRedT
+         ne1iJ5TD+mb50uiu6yyB5V9RcRTrXwEA5neWQpCIG/FDUcxmXtI/v/7sBrJ1G94c17gq
+         QU2rhEPBDXhVCCJT9P4zMRAlJMIkSWq8mQ3iVk9btiVJ29iPgEo42NL53y6TDfZLBpE2
+         PYMyuJaFbLseYlBOjr8RAQWt3Wrx9ONmYJdZonp9mcV9ELDyrRCyHesctgR5plkHqLtU
+         LjZdot8QOxvHKzZgawAzDO6yjZyDlZh7sT/HfRn1SSvGV9DS+G+FBuyzcMHlLPL9V8MB
+         dDTA==
+X-Forwarded-Encrypted: i=1; AFNElJ+4ht5JlGDw56oOu10AIGVYWKb14qmFRmuu7khiXU3iNApfE/GUMz1ZiEedtCbz+hRBT3tzJY8tXaqFrfhuyQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxAjQtru6ozRCsRy9N9xNHufEjm1KsF+MHnndWmL1vguz7Ulj9B
+	KxJp7/DxEa3MZqJpignDwMQWSpSe0PuPmp1FvBMzh6RsXHXa24fKlmfPcM+SqYAFnpM=
+X-Gm-Gg: AeBDieuQiXgTr4eNj7GNdWCK8Cniw8V3WJtO8hPGmED5k40RfH3VZdzFA/peNl2IhQk
+	3d/fkkYuA56GeApzA5Z8U2659nSZRqguqQlGuJ9mBugiCzk6dL76NWaerNXxpRXCcBxtv1o7hcd
+	cUTgJLsRLtmjhw12JAVRu4gJT4ics+HCoNfegCwIVV3PokV1eCHZ6Qq2xZfqazlayAAdL07L0MC
+	67q/F34QQWktgD0GTZEa4igsirR9aJliF/X0q5rsHhVquLSinDvc081AVBxWwDsuOs2PPHPc/cU
+	dC4JWjSmKdr1FkgMlFrNoETaK6EmH/QV5EFwYbtKjNmhsId28v6ddMGeP+tHZk+gyu785JvLumT
+	MJLM1+6G0BP53il+WRy77eGR1yIjRAm8Jo/zVpsWYRbmTfCmhcKHl8Ia+9WnwpOhMqdIUME4rnK
+	6Dfg2vwsaee+bjxz1BxkIjisfh2B7likNjGGm25ps=
+X-Received: by 2002:a05:6820:1529:b0:696:1fae:fb83 with SMTP id 006d021491bc7-69998d175dfmr1837181eaf.34.1778079754570;
+        Wed, 06 May 2026 08:02:34 -0700 (PDT)
+Received: from ?IPv6:2606:6d00:15:e06b::c41? ([2606:6d00:15:e06b::c41])
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-696896e72cfsm10117264eaf.10.2026.05.06.08.02.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 06 May 2026 08:02:32 -0700 (PDT)
+Message-ID: <71e36717853798d292f01d40fc48566456152397.camel@ndufresne.ca>
+Subject: Re: [PATCH 0/4] media: mediatek: vcodec: VP9 slice setup cleanups
+ and fixes
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Haoxiang Li <lihaoxiang@isrc.iscas.ac.cn>, tiffany.lin@mediatek.com, 
+	andrew-ct.chen@mediatek.com, yunfei.dong@mediatek.com, mchehab@kernel.org, 
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+	hverkuil+cisco@kernel.org, laurent.pinchart@ideasonboard.com, 
+	p.zabel@pengutronix.de, benjamin.gaignard@collabora.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Date: Wed, 06 May 2026 11:02:29 -0400
+In-Reply-To: <20260506084203.202882-1-lihaoxiang@isrc.iscas.ac.cn>
+References: <20260506084203.202882-1-lihaoxiang@isrc.iscas.ac.cn>
+Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-aCXV78f8vUia3AirisRd"
+User-Agent: Evolution 3.60.1 (3.60.1-1.fc44) 
 MIME-Version: 1.0
-X-CM-TRANSID: zQCowABH2AvSTPtpLvWNDw--.25404S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7try8Xw1Dtw4DWF47JrWfuFg_yoW8uFWxpr
-	1ktFWUtryUGrs7JF45Xr17JFW5Ar1fJwn8Cr1xXFy8tr15Ar1jqr98Xr909w4UJr48Jw1F
-	qr10vry7ur1UZFDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUUvqb7Iv0xC_tr1lb4IE77IF4wAFF20E14v26r4j6ryUM7CY07I2
-	0VC2zVCF04k26cxKx2IYs7xG6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rw
-	A2F7IY1VAKz4vEj48ve4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_JFI_Gr1l84ACjcxK6xII
-	jxv20xvEc7CjxVAFwI0_Gr0_Cr1l84ACjcxK6I8E87Iv67AKxVW0oVCq3wA2z4x0Y4vEx4
-	A2jsIEc7CjxVAFwI0_GcCE3s1le2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IE
-	w4CE5I8CrVC2j2WlYx0E2Ix0cI8IcVAFwI0_Jr0_Jr4lYx0Ex4A2jsIE14v26r1j6r4UMc
-	vjeVCFs4IE7xkEbVWUJVW8JwACjcxG0xvEwIxGrwACI402YVCY1x02628vn2kIc2xKxwCY
-	1x0262kKe7AKxVWUtVW8ZwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7xkEbVWUJVW8Jw
-	C20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E67AF67kF1VAF
-	wI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCwCI42IY6xIIjx
-	v20xvEc7CjxVAFwI0_Gr0_Cr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1xMIIF0xvEx4A2
-	jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr0_Gr1UYxBIdaVFxhVjvjDU0x
-	ZFpf9x07j8KsUUUUUU=
-X-Originating-IP: [112.94.100.82]
-X-CM-SenderInfo: x2kh0wp0lqwv3d6l2u1dvotugofq/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260506_071452_249317_42B62974 
-X-CRM114-Status: GOOD (  22.51  )
+X-CRM114-CacheID: sfid-20260506_080236_887050_98A1D386 
+X-CRM114-Status: GOOD (  14.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,84 +116,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-=E5=9C=A8 2026-05-04=E4=B8=80=E7=9A=84 15:34 +0800=EF=BC=8CChen-Yu Tsai=E5=
-=86=99=E9=81=93=EF=BC=9A
-> Hi,
->=20
-> On Mon, May 4, 2026 at 3:28=E2=80=AFPM Icenowy Zheng
-> <zhengxingda@iscas.ac.cn> wrote:
-> >=20
-> > The mainline pcie-mediatek-gen3 driver does not have code managing
-> > downstream device power / reset.
-> >=20
-> > As the Wi-Fi card on ciri is a fixed device, set the related
-> > regulator
-> > to always-on and use GPIO hog to set the status of its reset pin.
->=20
-> The plan now is to model it as an M.2 E-key slot (even though the
-> chip
-> is actually soldered on the main board).
 
-Interestingly I saw a "PCI_PWRCTRL_GENERIC" driver in 7.1, although it
-does not support toggling #PERST now -- maybe this should be done and
-used instead? (Well it looks like the driver had existed for some time,
-but it was for "slots" previously)
+--=-aCXV78f8vUia3AirisRd
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Thanks,
-Icenowy
+Hi,
+
+Le mercredi 06 mai 2026 =C3=A0 16:41 +0800, Haoxiang Li a =C3=A9crit=C2=A0:
+> Patches 1 and 2 change the signatures of two functions to void, removing
+> the now-unnecessary return value and its associated dead error checks.
+> Patches 3 and 4 add missing memory release operations in error paths,
+> fixing resource leaks.
+>=20
+> These patches are carried out under the guidance of Nicolas Dufresne.
+> Thanks, Nicolas!
+
+Thanks a lot for the patches. Something to improve, as I suppose you are fa=
+irly
+knew to this, is that when sending a new version of a existing patch, we tr=
+y and
+make it clear and make version the subjects (e.g. [PATCH v2 ...) and in the
+cover letter, we summarize the changes from v1 -> v2. If you use tools like=
+ b4,
+the process become painless. Meanwhile, this is fresh in my memory, so its =
+fine.
+
+cheers,
+Nicolas
 
 >=20
-> I have some of the patches ready, but I'm still working out the USB
-> side of it.
+> Haoxiang Li (4):
+> =C2=A0 media: mediatek: vcodec: remove redundant return value of
+> =C2=A0=C2=A0=C2=A0 vdec_vp9_slice_setup_lat_buffer()
+> =C2=A0 media: mediatek: vcodec: remove redundant return value of
+> =C2=A0=C2=A0=C2=A0 vdec_vp9_slice_setup_prob_buffer()
+> =C2=A0 media: mediatek: vcodec: free working buf on error path in
+> =C2=A0=C2=A0=C2=A0 vdec_vp9_slice_setup_lat()
+> =C2=A0 media: mediatek: vcodec: free working buf in
+> =C2=A0=C2=A0=C2=A0 vdec_vp9_slice_setup_single()
 >=20
->=20
-> ChenYu
->=20
-> > Signed-off-by: Icenowy Zheng <zhengxingda@iscas.ac.cn>
-> > ---
-> > =C2=A0arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi | 11 +++++++++++
-> > =C2=A01 file changed, 11 insertions(+)
-> >=20
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
-> > b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
-> > index 8e423504ec052..c25780098103b 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
-> > @@ -544,6 +544,11 @@ &mt6359codec {
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 mediatek,mic-type-2 =3D <2>;=
- /* DMIC */
-> > =C2=A0};
-> >=20
-> > +&mt6359_vcn18_ldo_reg {
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* Used by WLAN */
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 regulator-always-on;
-> > +};
-> > +
-> > =C2=A0&mt6359_vcore_buck_reg {
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 regulator-always-on;
-> > =C2=A0};
-> > @@ -1145,6 +1150,12 @@ pins-en-pp3300-wlan {
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 outpu=
-t-low;
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 };
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 };
-> > +
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 wlan-reset-hog {
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 gpio-hog;
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 gpios =3D <145 GPIO_ACTIVE_HIGH>;
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 output-high;
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 };
-> > =C2=A0};
-> >=20
-> > =C2=A0&pmic {
-> > --
-> > 2.52.0
-> >=20
-> >=20
+> =C2=A0.../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c | 29 +++++++---------=
+---
+> =C2=A01 file changed, 11 insertions(+), 18 deletions(-)
 
+--=-aCXV78f8vUia3AirisRd
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaftYBQAKCRDZQZRRKWBy
+9H5uAQD5iErjoa19qX645IZyDFpDOl+SfeQ9tlDuByFz7QhXpQEA1ZamfAAkcf3b
+gObBxdlpTm71LJSa0qRUAw4fhwkj2As=
+=hUse
+-----END PGP SIGNATURE-----
+
+--=-aCXV78f8vUia3AirisRd--
 
