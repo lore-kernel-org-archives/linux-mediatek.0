@@ -4,72 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DA7CCD342C
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 10:08:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 968C4CD3436
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 10:33:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n0Me2Dz9gz4W0QEKvHP7gmEyiPwUNnBm3/obBtPnSDY=; b=d48VJBgQYL/quiZ/0D1/t0GEQ5
-	M9h/4P617mQyHYV9jmy9Z1JFdXssAPDF9NbAUEgrCPO9spDCWqgAlgF1S8IsOMiDsSv0FiSr/EdXa
-	/Lz8ujywwWP4JDmCK4hJN3EQnXo13nyUJv8mTsexWy5oMpBioMri5tMneZdgo/yLb9i3kXxZzjT8m
-	mi1ne81AjCTtYwRNwTvL9WgJqpVG1GWUYjD1Q1amGxud94J+znIut9DgL9AhQ6pmGKly/oXR9gItK
-	38XKDFCHX/LnMrXDsXD2aqiglqhQBchzoTwKxshbGC49C1CQt+KB+VXvb2C+Ch1BWs8Fh0VLDc2Xi
-	3TVkRT+A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=THuZBEwOiMJtTU+w/7+LqDOas+PoM5CQi/ijMRA93Jg=; b=3POUaIOuGH+F2dEQyGxkSrZtp+
+	rRwzceIEnYFdpjAErKGkbK6xXV0PWAWBlVTyfbEBM+2w+zdtZYJGLBka/X/insO/l+Gz2oemhheR9
+	FDwTHUjm3ditMlx1JhCxA2LC9pGC5T9vW5bV7HCh5iFE3mu0Fpye/+UAhgMo1LNyBjzf3PNfCvxDQ
+	9OkRK8UEd+uA+1crKLgjuN9vzJqABOMYNgB/GNgXykN74XT+2V4P/j54gObHv8iatArKOyRhm9Oy8
+	iLiqoP6UbRB3tRnJnzTQet4/RBMm1/x6MdSl8IoZZJZA+GRAQrRyGiy5+PTLCCh/rFfSrFLPHsU8x
+	fW0vf/2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKZB8-00000000RpL-1ey7;
-	Wed, 06 May 2026 10:08:30 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wKZZG-00000000V9z-09Er;
+	Wed, 06 May 2026 10:33:26 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKZB6-00000000RoZ-4554;
-	Wed, 06 May 2026 10:08:29 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id BA27540728;
-	Wed,  6 May 2026 10:08:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1B330C2BCB8;
-	Wed,  6 May 2026 10:08:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778062107;
-	bh=nZfzghg9raBxGwuKMfOIWHSA+G1JIUmQ1fcBxRlBfWg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=oFkGu383UAaW75R93fVSjEMMqQxImk1WhOeGq3XmlMxt3RERxCCOKdijAT1RgWjwe
-	 NFjFSQngx3fbEzsXhnmCnXPtSylbKo9eCMB+/LRQuBa0CcExkEyZWs0RgjPaXMuwhl
-	 eJ59DOUK79ncDdnxtDrKxY6BhzuUfjrhrspnaSoR/WmLGuGYOIBOZEwcsEbn+2fKQq
-	 xC+abC70rOGVB21uZSMyBO7wohlbnIoDcgGfIUdfxOX0zV+m58rS2m8QXHy61U92i+
-	 wPkQx+daa9KbhlV/w/3PvD+t9QVJi4QwlKwjXeZ+uD8foC+z9XaE5Tp+z5L7dEB0MX
-	 a3qn6yw6o+Yjw==
-Date: Wed, 6 May 2026 12:08:24 +0200
-From: Maxime Ripard <mripard@kernel.org>
+	id 1wKZZE-00000000V8v-090A;
+	Wed, 06 May 2026 10:33:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1778063599;
+	bh=M5o+/YaupNYZyxmeKf2QjXgCKV0qcMjr7DPzv7F8Sv0=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=dHhX2DDEb+wKn+xBlaCHlq6jRa1HZj+2R0vY7hAlUA+C+Zoap/YG7alIUX6QF2JuH
+	 iGWo984ywb6LITJ7cafk4pbvn2DS/7wUBPMhH0nXlMzQqSjx/ELpj6PTtYAsCFnprr
+	 gHgGF7r77Z50yxDgoF7V15ATETV17WYz10R+IypMMoEHxmYpyVhUW9244GtR4aZMrr
+	 px8CHnxYwp40tbLvffOrKczuvdf6qie1oISR6ZEtvS5p0MbMQKQPIaTW3bZYPYkoSG
+	 N1SjfcJWB9w5YQr31HrOSqFKu4oT6y4u7ppxfzDwvm3pdxYZGHcoyntDpuvIYjP6BP
+	 Jn9toahZwrSNw==
+Received: from fedora (unknown [100.64.0.11])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bbrezillon)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 64F3617E1227;
+	Wed,  6 May 2026 12:33:18 +0200 (CEST)
+Date: Wed, 6 May 2026 12:33:14 +0200
+From: Boris Brezillon <boris.brezillon@collabora.com>
 To: Ketil Johnsen <ketil.johnsen@arm.com>
-Cc: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, 
-	Sumit Semwal <sumit.semwal@linaro.org>, Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
-	Brian Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, 
-	"T.J. Mercier" <tjmercier@google.com>, Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, 
-	Boris Brezillon <boris.brezillon@collabora.com>, Steven Price <steven.price@arm.com>, 
-	Liviu Dudau <liviu.dudau@arm.com>, Daniel Almeida <daniel.almeida@collabora.com>, 
-	Alice Ryhl <aliceryhl@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Florent Tomasin <florent.tomasin@arm.com>
-Subject: Re: [PATCH 4/8] drm/panthor: Add support for protected memory
- allocation in panthor
-Message-ID: <20260506-energetic-azure-pig-2b6ec4@houat>
+Cc: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
+ <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, Jonathan
+ Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, Sumit
+ Semwal <sumit.semwal@linaro.org>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>,
+ John Stultz <jstultz@google.com>, "T.J. Mercier" <tjmercier@google.com>,
+ Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>, Steven Price
+ <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, Daniel Almeida
+ <daniel.almeida@collabora.com>, Alice Ryhl <aliceryhl@google.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org,
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Florent Tomasin <florent.tomasin@arm.com>
+Subject: Re: [PATCH 5/8] drm/panthor: Minor scheduler refactoring
+Message-ID: <20260506123314.0f1c01cb@fedora>
+In-Reply-To: <20260505140516.1372388-6-ketil.johnsen@arm.com>
 References: <20260505140516.1372388-1-ketil.johnsen@arm.com>
- <20260505140516.1372388-5-ketil.johnsen@arm.com>
+	<20260505140516.1372388-6-ketil.johnsen@arm.com>
+Organization: Collabora
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="bm3tokjqjresnbu6"
-Content-Disposition: inline
-In-Reply-To: <20260505140516.1372388-5-ketil.johnsen@arm.com>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260506_030829_054245_BF1C1FED 
-X-CRM114-Status: GOOD (  23.27  )
+X-CRM114-CacheID: sfid-20260506_033324_233590_E494E055 
+X-CRM114-Status: GOOD (  19.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,60 +89,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue,  5 May 2026 16:05:11 +0200
+Ketil Johnsen <ketil.johnsen@arm.com> wrote:
 
---bm3tokjqjresnbu6
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 4/8] drm/panthor: Add support for protected memory
- allocation in panthor
-MIME-Version: 1.0
-
-Hi,
-
-On Tue, May 05, 2026 at 04:05:10PM +0200, Ketil Johnsen wrote:
 > From: Florent Tomasin <florent.tomasin@arm.com>
->=20
-> This patch allows Panthor to allocate buffer objects from a
-> protected heap. The Panthor driver should be seen as a consumer
-> of the heap and not an exporter.
->=20
-> Protected memory buffers needed by the Panthor driver:
-> - On CSF FW load, the Panthor driver must allocate a protected
->   buffer object to hold data to use by the FW when in protected
->   mode. This protected buffer object is owned by the device
->   and does not belong to a process.
-> - On CSG creation, the Panthor driver must allocate a protected
->   suspend buffer object for the FW to store data when suspending
->   the CSG while in protected mode. The kernel owns this allocation
->   and does not allow user space mapping. The format of the data
->   in this buffer is only known by the FW and does not need to be
->   shared with other entities.
->=20
-> The driver will retrieve the protected heap using the name of the
-> heap provided to the driver as module parameter.
+> 
+> Refactor parts of the group scheduling logic into new helper functions.
+> This will simplify addition of the protected mode feature.
+> 
+> Remove redundant assignments of csg_slot.
+> 
+> Signed-off-by: Florent Tomasin <florent.tomasin@arm.com>
+> Co-developed-by: Ketil Johnsen <ketil.johnsen@arm.com>
+> Signed-off-by: Ketil Johnsen <ketil.johnsen@arm.com>
+> ---
+>  drivers/gpu/drm/panthor/panthor_sched.c | 135 +++++++++++++++---------
+>  1 file changed, 86 insertions(+), 49 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/panthor/panthor_sched.c b/drivers/gpu/drm/panthor/panthor_sched.c
+> index 5ee386338005c..987072bd867c4 100644
+> --- a/drivers/gpu/drm/panthor/panthor_sched.c
+> +++ b/drivers/gpu/drm/panthor/panthor_sched.c
+> @@ -1934,6 +1934,12 @@ static void csgs_upd_ctx_init(struct panthor_csg_slots_upd_ctx *ctx)
+>  	memset(ctx, 0, sizeof(*ctx));
+>  }
+>  
+> +static void csgs_upd_ctx_ring_doorbell(struct panthor_csg_slots_upd_ctx *ctx,
+> +				       u32 csg_id)
+> +{
+> +	ctx->update_mask |= BIT(csg_id);
+> +}
+> +
+>  static void csgs_upd_ctx_queue_reqs(struct panthor_device *ptdev,
+>  				    struct panthor_csg_slots_upd_ctx *ctx,
+>  				    u32 csg_id, u32 value, u32 mask)
+> @@ -1944,7 +1950,8 @@ static void csgs_upd_ctx_queue_reqs(struct panthor_device *ptdev,
+>  
+>  	ctx->requests[csg_id].value = (ctx->requests[csg_id].value & ~mask) | (value & mask);
+>  	ctx->requests[csg_id].mask |= mask;
+> -	ctx->update_mask |= BIT(csg_id);
+> +
+> +	csgs_upd_ctx_ring_doorbell(ctx, csg_id);
+>  }
+>  
+>  static int csgs_upd_ctx_apply_locked(struct panthor_device *ptdev,
+> @@ -1961,8 +1968,12 @@ static int csgs_upd_ctx_apply_locked(struct panthor_device *ptdev,
+>  	while (update_slots) {
+>  		struct panthor_fw_csg_iface *csg_iface;
+>  		u32 csg_id = ffs(update_slots) - 1;
+> +		u32 req_mask = ctx->requests[csg_id].mask;
+>  
+>  		update_slots &= ~BIT(csg_id);
+> +		if (!req_mask)
+> +			continue;
 
-I know it's what dma_heap_find asks for, but I wonder if it wouldn't be
-better in the device tree and lookup through the device node? heaps are
-going to have a node anyway, right?
+Looks like something that should be in patch 7, where you update the
+doorbell_req register, and then call csgs_upd_ctx_ring_doorbell(),
+meaning req_mask can be zero. The other option would be to teach
+panthor_csg_slots_upd_ctx about CS doorbells, and let
+csgs_upd_ctx_apply_locked() toggle the doorbell_req.
 
-This would allow you to have a default that works and not mess to much
-with the kernel parameters that aren't always easy to change for
-end-users.
-
-Maxime
-
---bm3tokjqjresnbu6
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCafsTGAAKCRAnX84Zoj2+
-dscNAYCT5tPA6wlA50913tROdb0/8GBVIaNWCZzIVCmmtw6XdanUV+Ek43qdrnbM
-nAndNMcBgJJ8V9DZNE2zzCU0FXXXjTfOFOjGy0zdjmyQH3dGoy80XCbxq4XUI4fe
-u8+zbKdHWA==
-=zppB
------END PGP SIGNATURE-----
-
---bm3tokjqjresnbu6--
+> +
+>  		csg_iface = panthor_fw_get_csg_iface(ptdev, csg_id);
+>  		panthor_fw_update_reqs(csg_iface, req,
+>  				       ctx->requests[csg_id].value,
+> @@ -1979,6 +1990,9 @@ static int csgs_upd_ctx_apply_locked(struct panthor_device *ptdev,
+>  		int ret;
+>  
+>  		update_slots &= ~BIT(csg_id);
+> +		if (!req_mask)
+> +			continue;
+> +
+>  		csg_iface = panthor_fw_get_csg_iface(ptdev, csg_id);
+>  
+>  		ret = panthor_fw_csg_wait_acks(ptdev, csg_id, req_mask, &acked, 100);
 
