@@ -4,111 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9349FF8855
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 13:36:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2C2CCD342C
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 14:14:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HMqtzthmmxcj8980T7+TeoJ+yGWILo8EmSubHe/kC1o=; b=ONBc8mnwMrl8u0ykGw6JkYIjVl
-	rKfA+lHbJj6QjCQVNdDUvkKo9evk6UOSi+Y2NMkW6WJ9iHYGYqT+zPjl8u4uiBaY3pAQ4/JCz4sxP
-	0wbMFppEPgAmdWRMsjcag4GBm8UpXZ2Ajrhw/ApwG03N/QJAbAHvU4exqQb2bYzhLzrbENV0FvTD5
-	PJTwpq5plNGP2+gShqXNCS5XuHHSrpDFg9g7rbkhW+/WtcqwOPKbxeQj/lj6DXpLY011go83WAmgG
-	M8IFpQIfcrKpt77w+mLQJblVUv0KVVBMl0xc+IDJNlMRIURhh2u0AZmbEDI8bJxnfUrr4cTHhF9Po
-	/TDlRkVw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Pm0+Gh1N3CQZmo80V9svpnAeqF+PlXCFFDOgCkyNM1Q=; b=S4Oq6aUWvx8ozoIqAITj0bRSmx
+	zLU7phkcDlq00P2xB+lMSD40oeXT8BXQGOl7Eqi87eXujXklBqszSDqc76DNYP/7KMgOo5LbAEUXc
+	I4nwrKw66zWytib05SHttV9n2XK44YQs6lqThBNyWhCJypD4LYMHrdJDvbW+CmU02+jL0WJGxhFR/
+	yUD72kwuTo/oYsDW3cPM/+akA8jxGy+pvpnaJY88+b8XhscjkSHQKayichjIwbIOsjv+wxfRhi0vB
+	NVvcZRySQp3evPt38yWhCPuCa+FlT7PlnPtpmauwq9qRQgAUz720rHjxUwXvZVdWeb/r5I5pDrCz7
+	B3riZHgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKcQh-00000000uxj-1HyN;
-	Wed, 06 May 2026 13:36:47 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wKd1a-000000012Ng-2U37;
+	Wed, 06 May 2026 14:14:54 +0000
+Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKcQf-00000000uww-3Xfc;
-	Wed, 06 May 2026 13:36:45 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4F2CD43703;
-	Wed,  6 May 2026 13:36:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C9692C2BCB8;
-	Wed,  6 May 2026 13:36:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778074605;
-	bh=7I7M1eUDVF5088ev2jyWTqkJf4GORVg6OfRPDZkIzIU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=EJbOClFHa2CcPRVkMYmz3+QesZYjQNBc5i5M+WR8ZnFT9UmFA+x50oAQQSJHu+wKe
-	 CKDdBcu44jNL7MH1Pyrr3IenoyMDkNSEABAhwHqFAn/+ZNZ/Ru37bg++86Ty4aioHL
-	 N5IHrimxJBe6wi+A/9kPXXbRDlqhk8j7H69HKEnsRDr+nKqVonKkbB6FioOrf5bMWj
-	 9HGQy1nIB2gw9ozVOnTFkBJvuNpLhFXBGunovGg103oANtLK7ie1csTZoX2AXucpP1
-	 pD8b2yqX9SOWfN/J6LLnlsAkljS7Ud+emFKAVa3IviQ4g5dCqsvTx79S+JR1fMJmhu
-	 Rt40RKlmr6k9A==
-Message-ID: <f4212885-fcfe-4687-ba1f-b8713b1ecdad@kernel.org>
-Date: Wed, 6 May 2026 15:36:39 +0200
+	id 1wKd1X-000000012MC-3ViU;
+	Wed, 06 May 2026 14:14:52 +0000
+Received: from edelgard.fodlan.icenowy.me (unknown [112.94.100.82])
+	by APP-05 (Coremail) with SMTP id zQCowABH2AvSTPtpLvWNDw--.25404S2;
+	Wed, 06 May 2026 22:14:42 +0800 (CST)
+Message-ID: <4a43edb8c7ae3f96f77272db89ec6450ffa28876.camel@iscas.ac.cn>
+Subject: Re: [PATCH 2/2] arm64: dts: mediatek: mt8188-geralt: enable Wi-Fi
+ card
+From: Icenowy Zheng <zhengxingda@iscas.ac.cn>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski	 <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger	 <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno	 <angelogioacchino.delregno@collabora.com>, Hui
+ Liu <hui.liu@mediatek.com>, 	linux-gpio@vger.kernel.org,
+ devicetree@vger.kernel.org, 	linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, 	linux-mediatek@lists.infradead.org
+Date: Wed, 06 May 2026 22:14:41 +0800
+In-Reply-To: <CAGXv+5F6BSmqq5HEybuCSwt75LVzh5gvs2wQpqy3vgfLi60Dcg@mail.gmail.com>
+References: <20260504072748.2580172-1-zhengxingda@iscas.ac.cn>
+	 <20260504072748.2580172-2-zhengxingda@iscas.ac.cn>
+	 <CAGXv+5F6BSmqq5HEybuCSwt75LVzh5gvs2wQpqy3vgfLi60Dcg@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.58.3 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] dt-bindings: remoteproc: mtk,scp: Allow multiple memory
- regions
-To: Arnab Layek <arnab.layek@mediatek.com>,
- Bjorn Andersson <andersson@kernel.org>,
- Mathieu Poirier <mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20260506133157.3283204-1-arnab.layek@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20260506133157.3283204-1-arnab.layek@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+X-CM-TRANSID: zQCowABH2AvSTPtpLvWNDw--.25404S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7try8Xw1Dtw4DWF47JrWfuFg_yoW8uFWxpr
+	1ktFWUtryUGrs7JF45Xr17JFW5Ar1fJwn8Cr1xXFy8tr15Ar1jqr98Xr909w4UJr48Jw1F
+	qr10vry7ur1UZFDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUUvqb7Iv0xC_tr1lb4IE77IF4wAFF20E14v26r4j6ryUM7CY07I2
+	0VC2zVCF04k26cxKx2IYs7xG6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rw
+	A2F7IY1VAKz4vEj48ve4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_JFI_Gr1l84ACjcxK6xII
+	jxv20xvEc7CjxVAFwI0_Gr0_Cr1l84ACjcxK6I8E87Iv67AKxVW0oVCq3wA2z4x0Y4vEx4
+	A2jsIEc7CjxVAFwI0_GcCE3s1le2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IE
+	w4CE5I8CrVC2j2WlYx0E2Ix0cI8IcVAFwI0_Jr0_Jr4lYx0Ex4A2jsIE14v26r1j6r4UMc
+	vjeVCFs4IE7xkEbVWUJVW8JwACjcxG0xvEwIxGrwACI402YVCY1x02628vn2kIc2xKxwCY
+	1x0262kKe7AKxVWUtVW8ZwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7xkEbVWUJVW8Jw
+	C20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E67AF67kF1VAF
+	wI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCwCI42IY6xIIjx
+	v20xvEc7CjxVAFwI0_Gr0_Cr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1xMIIF0xvEx4A2
+	jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr0_Gr1UYxBIdaVFxhVjvjDU0x
+	ZFpf9x07j8KsUUUUUU=
+X-Originating-IP: [112.94.100.82]
+X-CM-SenderInfo: x2kh0wp0lqwv3d6l2u1dvotugofq/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260506_063645_930780_6C13A352 
-X-CRM114-Status: GOOD (  14.63  )
+X-CRM114-CacheID: sfid-20260506_071452_249317_42B62974 
+X-CRM114-Status: GOOD (  22.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,44 +86,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 06/05/2026 15:31, Arnab Layek wrote:
-> Update the memory-region property to support 1-2 reserved memory
-> regions instead of exactly one. This is needed for newer MediaTek
-> SoCs like MT8188 which require additional memory regions for SCP
-> operation.
+=E5=9C=A8 2026-05-04=E4=B8=80=E7=9A=84 15:34 +0800=EF=BC=8CChen-Yu Tsai=E5=
+=86=99=E9=81=93=EF=BC=9A
+> Hi,
+>=20
+> On Mon, May 4, 2026 at 3:28=E2=80=AFPM Icenowy Zheng
+> <zhengxingda@iscas.ac.cn> wrote:
+> >=20
+> > The mainline pcie-mediatek-gen3 driver does not have code managing
+> > downstream device power / reset.
+> >=20
+> > As the Wi-Fi card on ciri is a fixed device, set the related
+> > regulator
+> > to always-on and use GPIO hog to set the status of its reset pin.
+>=20
+> The plan now is to model it as an M.2 E-key slot (even though the
+> chip
+> is actually soldered on the main board).
 
-So where is the compatible? Already there?
+Interestingly I saw a "PCI_PWRCTRL_GENERIC" driver in 7.1, although it
+does not support toggling #PERST now -- maybe this should be done and
+used instead? (Well it looks like the driver had existed for some time,
+but it was for "slots" previously)
 
-> 
-> Tested on MT8188 Geralt platform.
+Thanks,
+Icenowy
 
-You cannot test binding.
+>=20
+> I have some of the patches ready, but I'm still working out the USB
+> side of it.
+>=20
+>=20
+> ChenYu
+>=20
+> > Signed-off-by: Icenowy Zheng <zhengxingda@iscas.ac.cn>
+> > ---
+> > =C2=A0arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi | 11 +++++++++++
+> > =C2=A01 file changed, 11 insertions(+)
+> >=20
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
+> > b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
+> > index 8e423504ec052..c25780098103b 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
+> > @@ -544,6 +544,11 @@ &mt6359codec {
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 mediatek,mic-type-2 =3D <2>;=
+ /* DMIC */
+> > =C2=A0};
+> >=20
+> > +&mt6359_vcn18_ldo_reg {
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* Used by WLAN */
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 regulator-always-on;
+> > +};
+> > +
+> > =C2=A0&mt6359_vcore_buck_reg {
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 regulator-always-on;
+> > =C2=A0};
+> > @@ -1145,6 +1150,12 @@ pins-en-pp3300-wlan {
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 outpu=
+t-low;
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 };
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 };
+> > +
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 wlan-reset-hog {
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 gpio-hog;
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 gpios =3D <145 GPIO_ACTIVE_HIGH>;
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 output-high;
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 };
+> > =C2=A0};
+> >=20
+> > =C2=A0&pmic {
+> > --
+> > 2.52.0
+> >=20
+> >=20
 
-> 
-> Signed-off-by: Arnab Layek <arnab.layek@mediatek.com>
-> ---
->  .../devicetree/bindings/remoteproc/mtk,scp.yaml        | 10 ++++++++--
->  1 file changed, 8 insertions(+), 2 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> index bdbb12118da4..9f6dca94ff40 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> @@ -55,7 +55,10 @@ properties:
->        initializing SCP.
->  
->    memory-region:
-> -    maxItems: 1
-> +    description:
-> +      Phandle to the reserved memory regions.
-> +    minItems: 1
-> +    maxItems: 2
-
-Just like I sent some patches long time ago for iommus Mediatek media
-bindings - fix it the same way. Pity the patches were not picked up,
-even though sending twice, but that does not give you easier way to get
-incorrect code in. You just multiple poor patterns...
-
-Best regards,
-Krzysztof
 
