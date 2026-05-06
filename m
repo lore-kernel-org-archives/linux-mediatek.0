@@ -4,75 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A233DCD342C
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 13:12:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD088CD342C
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 13:26:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=v3cEXfTEC35OBGTAvXMdlUfq2yKQ05ixejC1cKxDMmg=; b=1qigiRQk5LTZMpw/UKEavdaCoL
-	goA2c4ZdUcIb+Glhj17XBKygDX8Czr82H2+CEuoKMNl5DHgDZErhE3UaI5fG0uNqtwtQQrOOtVTKS
-	B8+D94ibxCh7y45hCjip8tjhNsWfjRr7BhHy1ZhFx+y266IOJ7jC5WJa5PMNXXF9B/VRyB77SpVcd
-	blzcmPYMEKmjS+X58LeHwXIBzncJHoRmitRtHrSCZTVpYzCK4Jcy3+f+2elkHweg4XCCLqwZFm4hT
-	Xo8Jfv2FYdcpjTuOQFNnaaXYNgdB3tuB64m1xrfqbLhm1yCopWoCdmbEtl3p9NYktw0qcYg6Djx1/
-	Ch26ySiA==;
+	bh=ulyP7ADu2BSwXDSuFyyD2l6/0HJtlIJFL1sFzeCyW14=; b=qBWdInFuEl9z1mLSkKZZ3RrUQM
+	LQVKfnUWdJDXjlkcp/1KrJ6gBtXLmkYHdgGqNVOUzD+7+LULbeRGgmljZnr3dHKT9K27E5Afpx/XT
+	chYxKOBp6T1M9qDlCo89i4lyTeqCVBFsCPfK0gpj9rNXeQYLKfWNpK4346Agim6KJo1sA14lau8Tf
+	KtdCypuiss6atl7v5qut+Rz3hbSuTEvKj7it+7kecujB64uUMcGIvMBDbfnOakN5bos7RVZYOaidO
+	0R8z0Zat6nhzdpZtf+vxFXO/wvNb/blkBxOo2CsDMnDoX4Vasggw1LxtBchZ5WcIFzxpzCU2yUyuQ
+	c9uznSew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKc3O-00000000rO0-3ZF4;
-	Wed, 06 May 2026 13:12:42 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wKcGg-00000000tON-2IO6;
+	Wed, 06 May 2026 13:26:26 +0000
+Received: from mgamail.intel.com ([198.175.65.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKc3N-00000000rNM-2Qsv;
-	Wed, 06 May 2026 13:12:41 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id CF457442CA;
-	Wed,  6 May 2026 13:12:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 326C0C2BCF6;
-	Wed,  6 May 2026 13:12:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778073160;
-	bh=6zgK85Psgb7v1JIE4C66zEivfyBHwwFQ3efCNdsjulc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=AKPmIlxBPl17FHX9eU6Y03CHlL1kHunU2HwcFaSaH7T+ZPqg/w8f6/nqgMzptpyAk
-	 YzL+yGG906Pkp/5O9MHKzS/q/vR9Pirlwr1Mi0px1zIV+12NXOblyIJDbutm/B6yFx
-	 d/Bt9+6yqS4clBaG5KurgIRzPtVHcGu2iBYyMdxk9EG6t1IgvRSKsLj/P5ZT88jMcK
-	 WLmkjfwR7rHlHfEPs9MzFMJjTIUedHJZSuUwNTwChx4j0WvKOt2JZytfozCOPYnwuK
-	 FPW9ukJ/NsyFAiLq9AhI4BXd0at+zUD5J8gnR85dxwqEUsxVYfdvfT3Cm60m6PKBh4
-	 RXLmaJ4fIuPRg==
-Date: Wed, 6 May 2026 15:12:37 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Boris Brezillon <boris.brezillon@collabora.com>
-Cc: Ketil Johnsen <ketil.johnsen@arm.com>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, 
-	Sumit Semwal <sumit.semwal@linaro.org>, Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
-	Brian Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, 
-	"T.J. Mercier" <tjmercier@google.com>, Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, 
-	Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, 
-	Daniel Almeida <daniel.almeida@collabora.com>, Alice Ryhl <aliceryhl@google.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Florent Tomasin <florent.tomasin@arm.com>
-Subject: Re: [PATCH 4/8] drm/panthor: Add support for protected memory
- allocation in panthor
-Message-ID: <20260506-golden-python-of-aptitude-ff972a@houat>
-References: <20260505140516.1372388-1-ketil.johnsen@arm.com>
- <20260505140516.1372388-5-ketil.johnsen@arm.com>
- <20260506-energetic-azure-pig-2b6ec4@houat>
- <20260506125015.0108ef44@fedora>
+	id 1wKcGf-00000000tNg-0JOd;
+	Wed, 06 May 2026 13:26:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1778073985; x=1809609985;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=xaKcmCC+I9v/E09bRdoBMaTkVzosR8rUiWNrEUV6lAg=;
+  b=a8I6/ZHQDWGZQ0Z1fIGrADIXKkSAR/wfx28ZD6ffkFqL45cIUB4p1x5N
+   CDdIxvpj6rS3ZP0g3nrKLmppBeeMPMUsIW/xe4rIcwEKIlKpp2bmgymP7
+   bVpQctR2qdwsLIZo4CgMwYBln/qqLHzeaqjTgtCpqjMli1oNRLz4TFGCg
+   qCUw0H4f5VRYTzgvL9SgytnwNn2GnqdTk3tzb9OVohUt/wtfUFxFu+FCM
+   k3hvMqklEG+zip+fIY5MHUgyDyvXD/KbrSDiu2Vdflq3Ljc5urhhKCFuy
+   7xSSZZeYkqBxSPWkSzFcY6Ct9UVdgTV4vVllXJuvTGSkc2aLHWWkkAmId
+   A==;
+X-CSE-ConnectionGUID: XfhOVfx0TB2w/MdFvIzcWw==
+X-CSE-MsgGUID: TS/ydS+LQoKSo5sBiW/2PQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11777"; a="89312835"
+X-IronPort-AV: E=Sophos;i="6.23,219,1770624000"; 
+   d="scan'208";a="89312835"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 May 2026 06:26:23 -0700
+X-CSE-ConnectionGUID: 1H3000o9TMadDzDQXXLY9Q==
+X-CSE-MsgGUID: tL+QbN0HRuqstpiz/lB/YA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,219,1770624000"; 
+   d="scan'208";a="235306952"
+Received: from abityuts-desk.ger.corp.intel.com (HELO localhost) ([10.245.244.183])
+  by orviesa010-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 May 2026 06:26:19 -0700
+Date: Wed, 6 May 2026 16:26:16 +0300
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
+To: Roman Vivchar <rva333@protonmail.com>
+Cc: Jonathan Cameron <jic23@kernel.org>,
+	David Lechner <dlechner@baylibre.com>,
+	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
+	Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Srinivas Kandagatla <srini@kernel.org>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@kernel.org>,
+	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
+	Lee Jones <lee@kernel.org>, linux-iio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
+	Ben Grisdale <bengris32@protonmail.ch>
+Subject: Re: [PATCH 06/13] thermal: mediatek: add pmic thermal support
+Message-ID: <aftBeFbVIap59FFS@ashevche-desk.local>
+References: <20260504-mt6323-v1-0-799b58b355ff@protonmail.com>
+ <20260504-mt6323-v1-6-799b58b355ff@protonmail.com>
+ <afmnUG8dG0N0HpV6@ashevche-desk.local>
+ <cgsML96DsJh_Ow9XsSnyrZ3NhlCnNj1rKegzYNR3eQzkWoF5xQB5-aU6Zi7pKcT8GfUnO3B-D71je60APUtorB7p_A3GtUCp2oer3KYLn6k=@protonmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="jsgwzb7lbdee6dei"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260506125015.0108ef44@fedora>
+In-Reply-To: <cgsML96DsJh_Ow9XsSnyrZ3NhlCnNj1rKegzYNR3eQzkWoF5xQB5-aU6Zi7pKcT8GfUnO3B-D71je60APUtorB7p_A3GtUCp2oer3KYLn6k=@protonmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260506_061241_665103_FF922877 
-X-CRM114-Status: GOOD (  43.62  )
+X-CRM114-CacheID: sfid-20260506_062625_257318_6BE39B28 
+X-CRM114-Status: GOOD (  19.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,97 +102,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, May 06, 2026 at 11:22:15AM +0000, Roman Vivchar wrote:
+> On Tuesday, May 5th, 2026 at 11:16 AM, Andy Shevchenko <andriy.shevchenko@intel.com> wrote:
+> > On Mon, May 04, 2026 at 09:24:58PM +0300, Roman Vivchar via B4 Relay wrote:
 
---jsgwzb7lbdee6dei
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 4/8] drm/panthor: Add support for protected memory
- allocation in panthor
-MIME-Version: 1.0
+...
 
-On Wed, May 06, 2026 at 12:50:15PM +0200, Boris Brezillon wrote:
-> On Wed, 6 May 2026 12:08:24 +0200
-> Maxime Ripard <mripard@kernel.org> wrote:
->=20
-> > Hi,
-> >=20
-> > On Tue, May 05, 2026 at 04:05:10PM +0200, Ketil Johnsen wrote:
-> > > From: Florent Tomasin <florent.tomasin@arm.com>
-> > >=20
-> > > This patch allows Panthor to allocate buffer objects from a
-> > > protected heap. The Panthor driver should be seen as a consumer
-> > > of the heap and not an exporter.
-> > >=20
-> > > Protected memory buffers needed by the Panthor driver:
-> > > - On CSF FW load, the Panthor driver must allocate a protected
-> > >   buffer object to hold data to use by the FW when in protected
-> > >   mode. This protected buffer object is owned by the device
-> > >   and does not belong to a process.
-> > > - On CSG creation, the Panthor driver must allocate a protected
-> > >   suspend buffer object for the FW to store data when suspending
-> > >   the CSG while in protected mode. The kernel owns this allocation
-> > >   and does not allow user space mapping. The format of the data
-> > >   in this buffer is only known by the FW and does not need to be
-> > >   shared with other entities.
-> > >=20
-> > > The driver will retrieve the protected heap using the name of the
-> > > heap provided to the driver as module parameter. =20
-> >=20
-> > I know it's what dma_heap_find asks for, but I wonder if it wouldn't be
-> > better in the device tree and lookup through the device node? heaps are
-> > going to have a node anyway, right?
->=20
-> I'm not too sure. Take the PROTMEM (name=3D"protected,xxxx") dma_heaps
-> instantiated by optee for instance, I don't think the originating
-> tee_device comes from a device node, nor is the underlying heap
-> described as a device node. The reserved memory pool this protected heap
-> comes from is most likely defined somewhere as reserved memory in the
-> DT, but there's nothing to correlate this range of reserved mem to some
-> sub-range that the TEE implementation is carving out to provide
-> protected memory.
+> > > +struct mtk_pmic_sensor {
+> > > +	struct mtk_pmic_thermal *mt;
+> > > +	int id;
+> > > +	struct iio_channel *adc_channel;
+> > > +	struct thermal_zone_device *tzdev;
+> > > +};
+> > 
+> > Can you confirm with `pahole` that this is the best layout (taking into account
+> > the use in the below data structure)?
+> > 
+> > > +struct mtk_pmic_thermal {
+> > > +	struct device *dev;
+> > > +	struct regmap *regmap;
+> > > +	struct mtk_pmic_sensor sensors[MAX_SENSORS];
+> > > +
+> > > +	s32 t_slope1;
+> > > +	s32 t_slope2;
+> > > +	s32 t_intercept;
+> > > +
+> > > +	const struct mtk_thermal_data *data;
+> > > +};
+> 
+> On the ARMv7 it shouldn't be an issue, because pointer size equals to
+> the s32 or int. However, I've reordered the fields to group pointers
+> and integers together.
+> 
+> struct mtk_pmic_sensor {
+> 	struct mtk_pmic_thermal *  mt;                   /*     0     4 */
+> 	struct iio_channel *       adc_channel;          /*     4     4 */
+> 	struct thermal_zone_device * tzdev;              /*     8     4 */
+> 	int                        id;                   /*    12     4 */
+> 
+> 	/* size: 16, cachelines: 1, members: 4 */
+> 	/* last cacheline: 16 bytes */
+> };
+> 
+> struct mtk_pmic_thermal {
+> 	struct device *            dev;                  /*     0     4 */
+> 	struct regmap *            regmap;               /*     4     4 */
+> 	const struct mtk_thermal_data  * data;           /*     8     4 */
+> 	s32                        t_slope1;             /*    12     4 */
+> 	s32                        t_slope2;             /*    16     4 */
+> 	s32                        t_intercept;          /*    20     4 */
+> 	struct mtk_pmic_sensor     sensors[1];           /*    24    16 */
+> 
+> 	/* size: 40, cachelines: 1, members: 7 */
+> 	/* last cacheline: 40 bytes */
+> };
+> 
+> The compiler will still add some padding on the AArch64 though.
+> 
+> struct mtk_pmic_sensor {
+> 	struct mtk_pmic_thermal *  mt;                   /*     0     8 */
+> 	struct iio_channel *       adc_channel;          /*     8     8 */
+> 	struct thermal_zone_device * tzdev;              /*    16     8 */
+> 	int                        id;                   /*    24     4 */
+> 
+> 	/* size: 32, cachelines: 1, members: 4 */
+> 	/* padding: 4 */
+> 	/* last cacheline: 32 bytes */
+> };
+> 
+> struct mtk_pmic_thermal {
+> 	struct device *            dev;                  /*     0     8 */
+> 	struct regmap *            regmap;               /*     8     8 */
+> 	const struct mtk_thermal_data  * data;           /*    16     8 */
+> 	s32                        t_slope1;             /*    24     4 */
+> 	s32                        t_slope2;             /*    28     4 */
+> 	s32                        t_intercept;          /*    32     4 */
+> 
+> 	/* XXX 4 bytes hole, try to pack */
 
-Maybe we should be working on a dt bindings for heaps then? Something
-simple like we have for clocks with a phandle and an ID would probably
-be enough. In optee's case, it looks like it would map nicely with
-TEE_DMA_HEAP_* flags too.
+^^^^
 
-The only two that wouldn't be covered would be the system and default
-CMA heap if not setup in the DT, which shouldn't be too bad for this
-particular use-case.
+> 	struct mtk_pmic_sensor     sensors[1];           /*    40    32 */
+> 
+> 	/* size: 72, cachelines: 2, members: 7 */
+> 	/* sum members: 68, holes: 1, sum holes: 4 */
+> 	/* last cacheline: 8 bytes */
+> };
+> 
+> Is this good enough?
 
-> > This would allow you to have a default that works and not mess to much
-> > with the kernel parameters that aren't always easy to change for
-> > end-users.
->=20
-> I guess we can have a default list of heaps that we know provide
-> protected memory for GPU rendering if that helps. Right now this list
-> would contain only "protected,trusted-ui" :D. The other option would be
-> to make this list a panthor Kconfig option and not expose it as a module
-> param.
+In the last it seems moving the s32 members to be the last will removes
+the 4-byte hole.
 
-My main concern is that firmware builds are board specific, and thus its
-capabilities isn't something we can reasonably expect to be consistent
-across boards, SoCs and platforms. Kernel images (and the kernel
-parameters) however can be made generic and unreasonably hard for users
-to modify once you start playing with things like secure boot or
-measured boot.
 
-The only thing bridging the gap between the two is the DT.
+-- 
+With Best Regards,
+Andy Shevchenko
 
-Maxime
 
---jsgwzb7lbdee6dei
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCafs+PAAKCRAnX84Zoj2+
-do/dAYCsFzskHm3rONL7gbWKGNrMZhZjrhqTYx/ppxLU2/mdI1esaru0x+30gIoH
-nAbsF0cBfRycq8wqS/81+OsbptnyvCrcfE8WBuuTjYVh1soyjUZwMGn7aT+MO70j
-Za2ft8aPZg==
-=ON6G
------END PGP SIGNATURE-----
-
---jsgwzb7lbdee6dei--
 
