@@ -4,82 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DA04CD342C
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 12:44:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84532CD342C
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 13:08:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4WOETdo7BhC8/fmfwEMHN4WnoE6JbrZL+S0o9p8CuQg=; b=pTX6sV2rCp5wZ0tsyLFUPVD4XM
-	ZsBzLMTivGasRprfzxlFO6CgxzU1VY/dVcOAfM28piZNaw+Vg5jvhgtBZ+HZE92KedQDSCT1Z5DOO
-	LBGDDNn/RojJeFP2/mZEpGfY0ENoeWba5EEwH/5omMj9qSijk1EIMPA+lOPmVc9PydEd131ow/Zg6
-	ckdvzkzvsf9dlvt3gasTwkxFkcMdcM7koXymmFr4wcuJ+HtBoWTQWocszb0PrgUEBe1SkoVvkTn7a
-	NPA2cEMpxotyXvBZFUDTZ7EH1BsC2lYzlc0u73E4rGP+OHawu3pnk1hiltTBtwrp8zxqpOl1AfC8O
-	5n/oQ8TA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=c/5EzhkX4VhVrxlEPSoGVv0zUzILo0f3XHzo15cF+1M=; b=dgNWC2Pqa4nTGMHdBdAHZYORlD
+	p01bxgpPg0TFS3tbfQGEomxWFan2Gu9pTNKd5QPLjCYwvka+O1jWrsfDaUlgVHMuKWluQnX2WKWHF
+	PUGw0U930VHIeGLDupRln31OujhqrLKRZWxokzTRb+D8mgpGGyFBwdrbFM3mQx32b6Qk7QHk6xsIS
+	6xZn2yz4xKLf+kGuToUz3cKQ5VSXlpW4y0q0TPqhDMYXCMCRPLoLwQjf71+/WdFoR32nrlis0xLvD
+	AymMvVGH3wj0lrU65Mp10rMl2i75o+lxl1Urz7yfq20Na1VmxRPTomlFoLrh+Ycw6L2sh6J4W6iHN
+	FFfF65LQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKbbu-00000000nq7-3vOF;
-	Wed, 06 May 2026 12:44:18 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1wKbz9-00000000qvW-0qxW;
+	Wed, 06 May 2026 13:08:19 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKbbt-00000000npL-1Abm;
-	Wed, 06 May 2026 12:44:17 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1778071430; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=lwcAHOQ9qKgB6gd/9on1FXLK0UkDSvYUDqw8dWjksSDlhrGY71mr6dLuvD+Juxe7xZVjqeJdePgX0oelI7eQUHqqowgB8a6OMxv6o1UV6i0eChNz60qd+WnKM+eJoBrwIjImFw07Yt0V27nCcqSlbOo6ShtG+Fo4J4K4qq2kCS8=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1778071430; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=4WOETdo7BhC8/fmfwEMHN4WnoE6JbrZL+S0o9p8CuQg=; 
-	b=QQtT0Z2HOlpHk1d9Psdmk2ZCNNPApPHJlD8+9lgEYkTjwIU+QWETNPS0/0co+QVLUGW99oqJLrb2APT0E4slFtgSK84HyYQSTdb7+WUFt9JJi0L0l9LJFfnCCLxwnWo5UvjBeYpz5WfQatVYER/N+9ert4DqpakFi/YFAGl6j+8=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1778071430;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=4WOETdo7BhC8/fmfwEMHN4WnoE6JbrZL+S0o9p8CuQg=;
-	b=bpzqFq8ZonERTui7D7EsOZ4TgLTnWPmS5jc1gVcCh9oknNoPr4foc8lVt6qDxno8
-	NEFNeYkeNwiwAWclb9gxJan+sWCuuXr5s7umaNf7RGIRgmWvVTXIMxOC8jV1DLLjjvM
-	Nm1YHD+K9808tVd7G2lSqrJ4FTNe1uXI84ums7Cw=
-Received: by mx.zohomail.com with SMTPS id 1778071429188905.6876124875138;
-	Wed, 6 May 2026 05:43:49 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Ketil Johnsen <ketil.johnsen@arm.com>, Maxime Ripard <mripard@kernel.org>
-Cc: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, Jonathan Corbet <corbet@lwn.net>,
- Shuah Khan <skhan@linuxfoundation.org>,
- Sumit Semwal <sumit.semwal@linaro.org>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Brian Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>,
- "T.J. Mercier" <tjmercier@google.com>,
- Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
- Daniel Almeida <daniel.almeida@collabora.com>,
- Alice Ryhl <aliceryhl@google.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
- linaro-mm-sig@lists.linaro.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Florent Tomasin <florent.tomasin@arm.com>
-Subject: Re: [PATCH 4/8] drm/panthor: Add support for protected memory allocation in
- panthor
-Date: Wed, 06 May 2026 14:43:42 +0200
-Message-ID: <SurytM7FTOazQNVXXqCU7g@collabora.com>
-In-Reply-To: <20260506-energetic-azure-pig-2b6ec4@houat>
-References: <20260505140516.1372388-1-ketil.johnsen@arm.com>
- <20260505140516.1372388-5-ketil.johnsen@arm.com>
- <20260506-energetic-azure-pig-2b6ec4@houat>
+	id 1wKbz8-00000000qv6-1CKG;
+	Wed, 06 May 2026 13:08:18 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id A5EF960103;
+	Wed,  6 May 2026 13:08:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 66834C2BCB8;
+	Wed,  6 May 2026 13:08:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1778072896;
+	bh=9OVWyBMTIv1qHfDj+4mWQFWJ5hA9S8PB01gNeTpSYIk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=X3MQEhj8vCdODlxuWRmr5O8HzDG49l2HcZ68ZY0ECM3hGwG5dkTB2mfgWfrmGfXAN
+	 e6d94OtkGskFTKry7c0STFF/YimcRvEWzABRm+qVXsdaelGxB0iXiBNRsiTbgTDeie
+	 fJxAMLPP7mcvpnyO8czmABY9qhI6PmQwyC7gixNbnTkhVSb7ISywri3TP0YBSdQ5rZ
+	 6/loiLf9WvC1F2GeANrqz0w5vPlMSxj6HYnYWnXUNw+7zg0+Oolv33UvqkfFlcP+6m
+	 1Nlq8FflD1efVzEGikYLg2L2xMaowkwPLmQ//piaUvGQODaxDWGZ/a7bMxcSaGd3+/
+	 nMnzESkFuOIaw==
+Message-ID: <b66ec605-d120-46b8-89b4-89bc40c1575e@kernel.org>
+Date: Wed, 6 May 2026 15:08:07 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="utf-8"
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260506_054417_355036_20B0A061 
-X-CRM114-Status: GOOD (  33.53  )
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 01/13] dt-bindings: iio: adc: add mt6323 PMIC AUXADC
+To: Roman Vivchar <rva333@protonmail.com>
+Cc: Jonathan Cameron <jic23@kernel.org>, David Lechner
+ <dlechner@baylibre.com>, =?UTF-8?Q?Nuno_S=C3=A1?= <nuno.sa@analog.com>,
+ Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Srinivas Kandagatla <srini@kernel.org>, "Rafael J. Wysocki"
+ <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@kernel.org>,
+ Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
+ Lee Jones <lee@kernel.org>, linux-iio@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-pm@vger.kernel.org, Ben Grisdale <bengris32@protonmail.ch>
+References: <20260504-mt6323-v1-0-799b58b355ff@protonmail.com>
+ <20260504-mt6323-v1-1-799b58b355ff@protonmail.com>
+ <389917bb-c64c-4ac2-ab8f-b28ab0a89ecb@kernel.org>
+ <evJBbJD1B9GjUyj5xyiJVUw-Ufib330tbUxxamM8-e4kJeNlwcENufbYZHdDWb0ZItz1fsEAbDaSFk0ObL4y0zenRr4vA4KOn6IHxuBP4VQ=@protonmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <evJBbJD1B9GjUyj5xyiJVUw-Ufib330tbUxxamM8-e4kJeNlwcENufbYZHdDWb0ZItz1fsEAbDaSFk0ObL4y0zenRr4vA4KOn6IHxuBP4VQ=@protonmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,66 +126,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wednesday, 6 May 2026 12:08:24 Central European Summer Time Maxime Ripard wrote:
-> Hi,
+On 06/05/2026 12:59, Roman Vivchar wrote:
+> On Wednesday, May 6th, 2026 at 10:56 AM, Krzysztof Kozlowski <krzk@kernel.org> wrote:
 > 
-> On Tue, May 05, 2026 at 04:05:10PM +0200, Ketil Johnsen wrote:
-> > From: Florent Tomasin <florent.tomasin@arm.com>
-> > 
-> > This patch allows Panthor to allocate buffer objects from a
-> > protected heap. The Panthor driver should be seen as a consumer
-> > of the heap and not an exporter.
-> > 
-> > Protected memory buffers needed by the Panthor driver:
-> > - On CSF FW load, the Panthor driver must allocate a protected
-> >   buffer object to hold data to use by the FW when in protected
-> >   mode. This protected buffer object is owned by the device
-> >   and does not belong to a process.
-> > - On CSG creation, the Panthor driver must allocate a protected
-> >   suspend buffer object for the FW to store data when suspending
-> >   the CSG while in protected mode. The kernel owns this allocation
-> >   and does not allow user space mapping. The format of the data
-> >   in this buffer is only known by the FW and does not need to be
-> >   shared with other entities.
-> > 
-> > The driver will retrieve the protected heap using the name of the
-> > heap provided to the driver as module parameter.
+>> On 04/05/2026 20:24, Roman Vivchar via B4 Relay wrote:
+>>> From: Roman Vivchar <rva333@protonmail.com>
+>>>
+>>> The MediaTek mt6323 PMIC includes an AUXADC used for battery voltage,
+>>> temperature, and other internal measurements.
+>>>
 > 
-> I know it's what dma_heap_find asks for, but I wonder if it wouldn't be
-> better in the device tree and lookup through the device node? heaps are
-> going to have a node anyway, right?
+> ...
 > 
-> This would allow you to have a default that works and not mess to much
-> with the kernel parameters that aren't always easy to change for
-> end-users.
-
-Hopefully the kernel parameters aren't easy to change for end-users on
-systems that deploy this. :) The use-case is copy protection for embedded
-devices running on locked-down systems. Though admittedly the mechanism
-works even on "tampered"-with systems, as long as the underlying hardware
-implements the access restrictions properly.
-
-I'm a bit hesitant about making this DT myself. It would solve the problem
-that panthor could probe before the heap provider and needs to handle
-deferral by itself, but it does mean that we'd be putting software
-configuration into the device tree. Having the secure heap be a node with
-no address would allow the tee (or whatever else) to still dynamically
-allocate it wherever, and let us handle the dependency relationship
-between dma heap and GPU, but then we require that tee heap driver
-implementations play nice with this scheme, and bring OF into the
-dma_heap APIs.
-
-I'm not against making the dma heap a phandle property for the GPU
-node and then extending the dma-heap API to get a heap by name or
-by index from a user device's standardised phandle property/names
-property, but that's potentially a very large can of worms to open.
-
+>>> +
+>>> +properties:
+>>> +  compatible:
+>>> +    const: mediatek,mt6323-auxadc
+>>> +
+>>> +  "#io-channel-cells":
+>>> +    const: 1
+>>> +
+>>> +required:
+>>> +  - compatible
+>>> +  - "#io-channel-cells"
+>>
+>>
+>> This is heavily incomplete node... or unnecessarily split. Why it cannot
+>> be part of parent binding? Or even parent node?
+>>
 > 
-> Maxime
-> 
-
-Kind regards,
-Nicolas Frattaroli
+> The MediaTek mt6359 AUXADC also has a very similar binding. The mt6323
+> cannot be merged there because it has a different hardware.
 
 
+I did not propose that, but since you are mentioning it: it is 100% the
+same, so I do not understand why it cannot be merged. That would save
+you a few questions :/
+
+Best regards,
+Krzysztof
 
