@@ -4,76 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B269FCD342C
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 08:43:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37BADCD3439
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 08:51:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=humccsQZRLPhiFI1zqRCBfs9PZwBCFeAYH5aG2f5ZMw=; b=q3wBJbERtUJBuU5nrdbTRtb/mz
-	JJ+7WpS1GI4jGpRhcV92NWOi/smVN6WWDV5rLjhPKD3B4gEXw2wKczC2IOtdLpayZXoQQv9dYpZHM
-	GtJHWMe2+jyMHG4oe39ieWkazNNOs0jYYi1/J/D2Vvk3bEDciXYlXdAnNVPK7r77BRI09UKAOUa8f
-	2DND3WlzMWXlX8yBVGmCcKWa2DXYYnHavDQTgmfRWkDxLYYOzMv3PfFLfC76syZqrlp7RsnDxfUDU
-	IFkPWm3DWOoVXJBBspzBtn/2da2z6Nezy5ssy7VKWGmbev2X0tyT+oH5wPyTJnGjdu0zbMXLU+v1n
-	NOeovXjA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tH7xxIuhqD+9Sy5dU19N19XHk/4Xtiy4tjfr1syXBzE=; b=vRXVYWvebRk+F2KLpm2CMO2WuH
+	Ri7x0Thn6ommY+ASgNv7vm0ic99OSwpdMLFVCc2s3HwzhOOXcuobWwH2Nodk19d9HDE9HR/F5UnR8
+	l+KFKCNNiNILc/5byToCINcNZ5VumilHMXi5kuS0jmIEpQwrwkMPweD4xLQWJCTiEE9HxnvIWsNFO
+	m0qIgh63fq+rmle5U8jfXTOJI53N35bvvL7sL21HBJYKJExreFF7rAapEWzIBQidGF/kZaEG1PbqL
+	gF9SrOKXoHDsYFbtNeZjYzcD/K0q5PxEOaDZzqhqd5luoQIbtshNyF8A/CpKFxka45t4smh8xnpCU
+	MHv5A0RA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKXqq-00000000Clo-1nlU;
-	Wed, 06 May 2026 08:43:28 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1wKXz2-00000000Ed9-05cx;
+	Wed, 06 May 2026 08:51:56 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKXqn-00000000Ckz-3zFu
-	for linux-mediatek@lists.infradead.org;
-	Wed, 06 May 2026 08:43:26 +0000
-X-UUID: a1b7011a492711f1bf888deae2ea5f9b-20260506
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=humccsQZRLPhiFI1zqRCBfs9PZwBCFeAYH5aG2f5ZMw=;
-	b=pgRVT9I2s+0pq1HhPqLJLdM9jCar0GQMNO2V+Gj6fxzui1BSAffCnb/8E6WmftiDte8sKkES5hVAGTWbb4w7P1YHJrcaFvPVsz+pw6ILUEf5OruMpVfKuNIwfM/M8Eb/z4Uu4PzboLj39MA/ydw8Oh7r+6QUN/EVjUnbHRDPvxw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:6bb483ba-cde9-4d98-bc1f-a0bb26d5306e,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:e7bac3a,CLOUDID:5e1b2e45-8360-4d24-8500-9b9380fa4b0d,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|865|888|898,TC:-5,Content:0|
-	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0
-	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: a1b7011a492711f1bf888deae2ea5f9b-20260506
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
-	(envelope-from <jb.tsai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 186346279; Wed, 06 May 2026 01:43:19 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 6 May 2026 16:43:16 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 6 May 2026 16:43:16 +0800
-From: JB Tsai <jb.tsai@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<Deren.Wu@mediatek.com>, <Sean.Wang@mediatek.com>, <Quan.Zhou@mediatek.com>,
-	<Ryder.Lee@mediatek.com>, <Leon.Yen@mediatek.com>,
-	<litien.chang@mediatek.com>, <eason.lai@mediatek.com>,
-	<jb.tsai@mediatek.com>, Eason Lai <Eason.Lai@mediatek.com>
-Subject: [PATCH v3] wifi: mt76: mt792x: fix use-after-free in
-  mt76_rx_poll_complete
-Date: Wed, 6 May 2026 16:43:15 +0800
-Message-ID: <20260506084315.3143553-1-jb.tsai@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1wKXyz-00000000EZH-40DN;
+	Wed, 06 May 2026 08:51:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1778057510;
+	bh=qn8hCXeok/i1qfKg2+apfL6WRVPA2S3XWp9AscVrXqY=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=lKCgYU5q+LWXj791/sVDxiKvYI4BFPtsXRvttcatIxuqT3J1yAni62KB0nbdUOxLk
+	 v4ivYv29NjLOBkUC2QBpKm9WbmcgfBFie34FXsFNNZYxPCL8Pmq/M/miBfkkboBu2t
+	 6R6uOqNJ0/wXMkvRsMAy+thzbYcQW40ZDDNpqgtY0Dcq2Da8ddgHFaD+M9xXoW53ZZ
+	 fRNgKmf/5ddJU9wqgVEocXO3lvgDxbsqSbgdir2cLL3ccBtHwrfSvIv088woF/ln6K
+	 Oj/3co90eLSWpB933nfuKazT99hfaDovfSpZefjzk5c+dc1GzIilxOlkSWuhVYjJdb
+	 GSmnSlW1VQ1Gw==
+Received: from fedora (unknown [100.64.0.11])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bbrezillon)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D164117E1321;
+	Wed,  6 May 2026 10:51:48 +0200 (CEST)
+Date: Wed, 6 May 2026 10:51:45 +0200
+From: Boris Brezillon <boris.brezillon@collabora.com>
+To: Ketil Johnsen <ketil.johnsen@arm.com>
+Cc: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
+ <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, Jonathan
+ Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, Sumit
+ Semwal <sumit.semwal@linaro.org>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>,
+ John Stultz <jstultz@google.com>, "T.J. Mercier" <tjmercier@google.com>,
+ Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>, Steven Price
+ <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, Daniel Almeida
+ <daniel.almeida@collabora.com>, Alice Ryhl <aliceryhl@google.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org,
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Florent Tomasin <florent.tomasin@arm.com>, Paul Toadere
+ <paul.toadere@arm.com>, Samuel Percival <samuel.percival@arm.com>
+Subject: Re: [PATCH 7/8] drm/panthor: Add support for entering and exiting
+ protected mode
+Message-ID: <20260506105145.6f25181d@fedora>
+In-Reply-To: <20260505140516.1372388-8-ketil.johnsen@arm.com>
+References: <20260505140516.1372388-1-ketil.johnsen@arm.com>
+	<20260505140516.1372388-8-ketil.johnsen@arm.com>
+Organization: Collabora
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260506_014326_015342_616F209C 
-X-CRM114-Status: GOOD (  12.27  )
+X-CRM114-CacheID: sfid-20260506_015154_315913_02BC79B0 
+X-CRM114-Status: GOOD (  42.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,797 +91,631 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Eason Lai <Eason.Lai@mediatek.com>=0D
+On Tue,  5 May 2026 16:05:13 +0200
+Ketil Johnsen <ketil.johnsen@arm.com> wrote:
 
-A use-after-free issue occurs in mt76_rx_poll_complete due to a race=0D
-condition. The STA has already been removed, but the rx_status still=0D
-had a pointer to the wcid in the STA.=0D
-=0D
-Use wcid_idx instead of storing the wcid pointer, and look up the wcid=0D
-via rcu_dereference() by wcid_idx.=0D
-=0D
-BUG: KASAN: invalid-access in mt76_rx_poll_complete+0x280/0x470 [mt76]=0D
-Call trace:=0D
-dump_backtrace+0xec/0x128=0D
-show_stack+0x18/0x28=0D
-dump_stack_lvl+0x40/0xc8=0D
-print_report+0x1b8/0x710=0D
-kasan_report+0xe0/0x144=0D
-do_bad_area+0x120/0x260=0D
-do_tag_check_fault+0x20/0x34=0D
-do_mem_abort+0x54/0xa8=0D
-el1_abort+0x3c/0x5c=0D
-el1h_64_sync_handler+0x40/0xcc=0D
-el1h_64_sync+0x7c/0x80=0D
-mt76_rx_poll_complete+0x280/0x470=0D
-mt76_dma_rx_poll+0x114/0x51c=0D
-mt792x_poll_rx+0x60/0xf8=0D
-napi_threaded_poll_loop+0xe0/0x450=0D
-napi_threaded_poll+0x80/0x9c=0D
-kthread+0x11c/0x158=0D
-ret_from_fork+0x10/0x20=0D
-=0D
-Fixes: 9c68a57bc22d ("mt76: get station pointer by wcid and pass it to mac8=
-0211")=0D
-Signed-off-by: Eason Lai <Eason.Lai@mediatek.com>=0D
----=0D
-v2: fix mt76x02 build errors=0D
-v3: fix mt76x02 build error due to variable set but not used=0D
----=0D
- drivers/net/wireless/mediatek/mt76/agg-rx.c   | 18 ++++---=0D
- drivers/net/wireless/mediatek/mt76/mac80211.c | 47 ++++++++-----------=0D
- drivers/net/wireless/mediatek/mt76/mt76.h     |  9 ++--=0D
- .../net/wireless/mediatek/mt76/mt7603/mac.c   |  6 ++-=0D
- .../net/wireless/mediatek/mt76/mt7615/mac.c   | 19 +++++---=0D
- .../net/wireless/mediatek/mt76/mt76_connac.h  |  3 +-=0D
- .../wireless/mediatek/mt76/mt76_connac_mac.c  | 12 ++++-=0D
- .../net/wireless/mediatek/mt76/mt76x02_mac.c  |  9 ++--=0D
- .../net/wireless/mediatek/mt76/mt7915/mac.c   | 16 +++++--=0D
- .../net/wireless/mediatek/mt76/mt7921/mac.c   | 13 +++--=0D
- .../net/wireless/mediatek/mt76/mt7925/mac.c   | 19 +++++---=0D
- .../net/wireless/mediatek/mt76/mt7996/mac.c   | 29 ++++++++----=0D
- 12 files changed, 118 insertions(+), 82 deletions(-)=0D
-=0D
-diff --git a/drivers/net/wireless/mediatek/mt76/agg-rx.c b/drivers/net/wire=
-less/mediatek/mt76/agg-rx.c=0D
-index bf1babac3895..b72d13975466 100644=0D
---- a/drivers/net/wireless/mediatek/mt76/agg-rx.c=0D
-+++ b/drivers/net/wireless/mediatek/mt76/agg-rx.c=0D
-@@ -116,14 +116,15 @@ mt76_rx_aggr_reorder_work(struct work_struct *work)=0D
- }=0D
- =0D
- static void=0D
--mt76_rx_aggr_check_ctl(struct sk_buff *skb, struct sk_buff_head *frames)=0D
-+mt76_rx_aggr_check_ctl(struct mt76_dev *dev, struct sk_buff *skb,=0D
-+		       struct sk_buff_head *frames)=0D
- {=0D
- 	struct mt76_rx_status *status =3D (struct mt76_rx_status *)skb->cb;=0D
- 	struct ieee80211_bar *bar =3D mt76_skb_get_hdr(skb);=0D
--	struct mt76_wcid *wcid =3D status->wcid;=0D
- 	struct mt76_rx_tid *tid;=0D
--	u8 tidno;=0D
-+	struct mt76_wcid *wcid;=0D
- 	u16 seqno;=0D
-+	u8 tidno;=0D
- =0D
- 	if (!ieee80211_is_ctl(bar->frame_control))=0D
- 		return;=0D
-@@ -131,6 +132,10 @@ mt76_rx_aggr_check_ctl(struct sk_buff *skb, struct sk_=
-buff_head *frames)=0D
- 	if (!ieee80211_is_back_req(bar->frame_control))=0D
- 		return;=0D
- =0D
-+	wcid =3D __mt76_wcid_ptr(dev, status->wcid_idx);=0D
-+	if (!wcid)=0D
-+		return;=0D
-+=0D
- 	status->qos_ctl =3D tidno =3D le16_to_cpu(bar->control) >> 12;=0D
- 	seqno =3D IEEE80211_SEQ_TO_SN(le16_to_cpu(bar->start_seq_num));=0D
- 	tid =3D rcu_dereference(wcid->aggr[tidno]);=0D
-@@ -145,10 +150,11 @@ mt76_rx_aggr_check_ctl(struct sk_buff *skb, struct sk=
-_buff_head *frames)=0D
- 	spin_unlock_bh(&tid->lock);=0D
- }=0D
- =0D
--void mt76_rx_aggr_reorder(struct sk_buff *skb, struct sk_buff_head *frames=
-)=0D
-+void mt76_rx_aggr_reorder(struct mt76_dev *dev, struct sk_buff *skb,=0D
-+			  struct sk_buff_head *frames)=0D
- {=0D
- 	struct mt76_rx_status *status =3D (struct mt76_rx_status *)skb->cb;=0D
--	struct mt76_wcid *wcid =3D status->wcid;=0D
-+	struct mt76_wcid *wcid =3D __mt76_wcid_ptr(dev, status->wcid_idx);=0D
- 	struct ieee80211_sta *sta;=0D
- 	struct mt76_rx_tid *tid;=0D
- 	bool sn_less;=0D
-@@ -164,7 +170,7 @@ void mt76_rx_aggr_reorder(struct sk_buff *skb, struct s=
-k_buff_head *frames)=0D
- =0D
- 	if (!status->aggr) {=0D
- 		if (!(status->flag & RX_FLAG_8023))=0D
--			mt76_rx_aggr_check_ctl(skb, frames);=0D
-+			mt76_rx_aggr_check_ctl(dev, skb, frames);=0D
- 		return;=0D
- 	}=0D
- =0D
-diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wi=
-reless/mediatek/mt76/mac80211.c=0D
-index 4ae5e4715a9c..2933b29782d3 100644=0D
---- a/drivers/net/wireless/mediatek/mt76/mac80211.c=0D
-+++ b/drivers/net/wireless/mediatek/mt76/mac80211.c=0D
-@@ -1283,21 +1283,24 @@ mt76_rx_convert(struct mt76_dev *dev, struct sk_buf=
-f *skb,=0D
- 	memcpy(status->chain_signal, mstat.chain_signal,=0D
- 	       sizeof(mstat.chain_signal));=0D
- =0D
--	if (mstat.wcid) {=0D
--		status->link_valid =3D mstat.wcid->link_valid;=0D
--		status->link_id =3D mstat.wcid->link_id;=0D
--	}=0D
-+	if (mstat.wcid_idx !=3D MT76_WCID_IDX_INVALID) {=0D
-+		struct mt76_wcid *wcid =3D __mt76_wcid_ptr(dev, mstat.wcid_idx);=0D
- =0D
--	*sta =3D wcid_to_sta(mstat.wcid);=0D
-+		if (wcid) {=0D
-+			status->link_valid =3D wcid->link_valid;=0D
-+			status->link_id =3D wcid->link_id;=0D
-+			*sta =3D wcid_to_sta(wcid);=0D
-+		}=0D
-+	}=0D
- 	*hw =3D mt76_phy_hw(dev, mstat.phy_idx);=0D
- }=0D
- =0D
- static void=0D
--mt76_check_ccmp_pn(struct sk_buff *skb)=0D
-+mt76_check_ccmp_pn(struct mt76_dev *dev, struct sk_buff *skb)=0D
- {=0D
- 	struct mt76_rx_status *status =3D (struct mt76_rx_status *)skb->cb;=0D
--	struct mt76_wcid *wcid =3D status->wcid;=0D
- 	struct ieee80211_hdr *hdr;=0D
-+	struct mt76_wcid *wcid;=0D
- 	int security_idx;=0D
- 	int ret;=0D
- =0D
-@@ -1307,6 +1310,7 @@ mt76_check_ccmp_pn(struct sk_buff *skb)=0D
- 	if (status->flag & RX_FLAG_ONLY_MONITOR)=0D
- 		return;=0D
- =0D
-+	wcid =3D __mt76_wcid_ptr(dev, status->wcid_idx);=0D
- 	if (!wcid || !wcid->rx_check_pn)=0D
- 		return;=0D
- =0D
-@@ -1354,7 +1358,7 @@ static void=0D
- mt76_airtime_report(struct mt76_dev *dev, struct mt76_rx_status *status,=0D
- 		    int len)=0D
- {=0D
--	struct mt76_wcid *wcid =3D status->wcid;=0D
-+	struct mt76_wcid *wcid =3D __mt76_wcid_ptr(dev, status->wcid_idx);=0D
- 	struct ieee80211_rx_status info =3D {=0D
- 		.enc_flags =3D status->enc_flags,=0D
- 		.rate_idx =3D status->rate_idx,=0D
-@@ -1382,19 +1386,9 @@ mt76_airtime_report(struct mt76_dev *dev, struct mt7=
-6_rx_status *status,=0D
- static void=0D
- mt76_airtime_flush_ampdu(struct mt76_dev *dev)=0D
- {=0D
--	struct mt76_wcid *wcid;=0D
--	int wcid_idx;=0D
--=0D
- 	if (!dev->rx_ampdu_len)=0D
- 		return;=0D
- =0D
--	wcid_idx =3D dev->rx_ampdu_status.wcid_idx;=0D
--	if (wcid_idx < ARRAY_SIZE(dev->wcid))=0D
--		wcid =3D rcu_dereference(dev->wcid[wcid_idx]);=0D
--	else=0D
--		wcid =3D NULL;=0D
--	dev->rx_ampdu_status.wcid =3D wcid;=0D
--=0D
- 	mt76_airtime_report(dev, &dev->rx_ampdu_status, dev->rx_ampdu_len);=0D
- =0D
- 	dev->rx_ampdu_len =3D 0;=0D
-@@ -1405,7 +1399,7 @@ static void=0D
- mt76_airtime_check(struct mt76_dev *dev, struct sk_buff *skb)=0D
- {=0D
- 	struct mt76_rx_status *status =3D (struct mt76_rx_status *)skb->cb;=0D
--	struct mt76_wcid *wcid =3D status->wcid;=0D
-+	struct mt76_wcid *wcid =3D __mt76_wcid_ptr(dev, status->wcid_idx);=0D
- =0D
- 	if (!(dev->drv->drv_flags & MT_DRV_SW_RX_AIRTIME))=0D
- 		return;=0D
-@@ -1418,8 +1412,6 @@ mt76_airtime_check(struct mt76_dev *dev, struct sk_bu=
-ff *skb)=0D
- =0D
- 		if (!ether_addr_equal(hdr->addr1, dev->phy.macaddr))=0D
- 			return;=0D
--=0D
--		wcid =3D NULL;=0D
- 	}=0D
- =0D
- 	if (!(status->flag & RX_FLAG_AMPDU_DETAILS) ||=0D
-@@ -1430,7 +1422,6 @@ mt76_airtime_check(struct mt76_dev *dev, struct sk_bu=
-ff *skb)=0D
- 		if (!dev->rx_ampdu_len ||=0D
- 		    status->ampdu_ref !=3D dev->rx_ampdu_ref) {=0D
- 			dev->rx_ampdu_status =3D *status;=0D
--			dev->rx_ampdu_status.wcid_idx =3D wcid ? wcid->idx : 0xff;=0D
- 			dev->rx_ampdu_ref =3D status->ampdu_ref;=0D
- 		}=0D
- =0D
-@@ -1448,7 +1439,7 @@ mt76_check_sta(struct mt76_dev *dev, struct sk_buff *=
-skb)=0D
- 	struct ieee80211_hdr *hdr =3D mt76_skb_get_hdr(skb);=0D
- 	struct ieee80211_sta *sta;=0D
- 	struct ieee80211_hw *hw;=0D
--	struct mt76_wcid *wcid =3D status->wcid;=0D
-+	struct mt76_wcid *wcid =3D __mt76_wcid_ptr(dev, status->wcid_idx);=0D
- 	u8 tidno =3D status->qos_ctl & IEEE80211_QOS_CTL_TID_MASK;=0D
- 	bool ps;=0D
- =0D
-@@ -1456,8 +1447,10 @@ mt76_check_sta(struct mt76_dev *dev, struct sk_buff =
-*skb)=0D
- 	if (ieee80211_is_pspoll(hdr->frame_control) && !wcid &&=0D
- 	    !(status->flag & RX_FLAG_8023)) {=0D
- 		sta =3D ieee80211_find_sta_by_ifaddr(hw, hdr->addr2, NULL);=0D
--		if (sta)=0D
--			wcid =3D status->wcid =3D (struct mt76_wcid *)sta->drv_priv;=0D
-+		if (sta) {=0D
-+			wcid =3D (struct mt76_wcid *)sta->drv_priv;=0D
-+			status->wcid_idx =3D wcid->idx;=0D
-+		}=0D
- 	}=0D
- =0D
- 	mt76_airtime_check(dev, skb);=0D
-@@ -1521,7 +1514,7 @@ void mt76_rx_complete(struct mt76_dev *dev, struct sk=
-_buff_head *frames,=0D
- 	while ((skb =3D __skb_dequeue(frames)) !=3D NULL) {=0D
- 		struct sk_buff *nskb =3D skb_shinfo(skb)->frag_list;=0D
- =0D
--		mt76_check_ccmp_pn(skb);=0D
-+		mt76_check_ccmp_pn(dev, skb);=0D
- 		skb_shinfo(skb)->frag_list =3D NULL;=0D
- 		mt76_rx_convert(dev, skb, &hw, &sta);=0D
- 		ieee80211_rx_list(hw, sta, skb, &list);=0D
-@@ -1563,7 +1556,7 @@ void mt76_rx_poll_complete(struct mt76_dev *dev, enum=
- mt76_rxq_id q,=0D
- 		    mt76_npu_device_active(dev))=0D
- 			__skb_queue_tail(&frames, skb);=0D
- 		else=0D
--			mt76_rx_aggr_reorder(skb, &frames);=0D
-+			mt76_rx_aggr_reorder(dev, skb, &frames);=0D
- 	}=0D
- =0D
- 	mt76_rx_complete(dev, &frames, napi);=0D
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wirele=
-ss/mediatek/mt76/mt76.h=0D
-index 527bef97e122..1e1bd410a7a7 100644=0D
---- a/drivers/net/wireless/mediatek/mt76/mt76.h=0D
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h=0D
-@@ -364,6 +364,7 @@ enum mt76_wcid_flags {=0D
- };=0D
- =0D
- #define MT76_N_WCIDS 1088=0D
-+#define MT76_WCID_IDX_INVALID		0xffff=0D
- #define MT76_BEACON_MON_MAX_MISS	7=0D
- =0D
- /* stored in ieee80211_tx_info::hw_queue */=0D
-@@ -728,10 +729,7 @@ struct mt76_mmio {=0D
- };=0D
- =0D
- struct mt76_rx_status {=0D
--	union {=0D
--		struct mt76_wcid *wcid;=0D
--		u16 wcid_idx;=0D
--	};=0D
-+	u16 wcid_idx;=0D
- =0D
- 	u32 reorder_time;=0D
- =0D
-@@ -1793,7 +1791,8 @@ void mt76_rx_complete(struct mt76_dev *dev, struct sk=
-_buff_head *frames,=0D
- 		      struct napi_struct *napi);=0D
- void mt76_rx_poll_complete(struct mt76_dev *dev, enum mt76_rxq_id q,=0D
- 			   struct napi_struct *napi);=0D
--void mt76_rx_aggr_reorder(struct sk_buff *skb, struct sk_buff_head *frames=
-);=0D
-+void mt76_rx_aggr_reorder(struct mt76_dev *dev, struct sk_buff *skb,=0D
-+			  struct sk_buff_head *frames);=0D
- void mt76_testmode_tx_pending(struct mt76_phy *phy);=0D
- void mt76_queue_tx_complete(struct mt76_dev *dev, struct mt76_queue *q,=0D
- 			    struct mt76_queue_entry *e);=0D
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c b/drivers/net/=
-wireless/mediatek/mt76/mt7603/mac.c=0D
-index d3110eeb45d7..aeb890df808e 100644=0D
---- a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c=0D
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/mac.c=0D
-@@ -513,6 +513,7 @@ mt7603_mac_fill_rx(struct mt7603_dev *dev, struct sk_bu=
-ff *skb)=0D
- 	u32 rxd2 =3D le32_to_cpu(rxd[2]);=0D
- 	bool unicast =3D rxd1 & MT_RXD1_NORMAL_U2M;=0D
- 	bool insert_ccmp_hdr =3D false;=0D
-+	struct mt76_wcid *wcid;=0D
- 	bool remove_pad;=0D
- 	int idx;=0D
- 	int i;=0D
-@@ -524,7 +525,8 @@ mt7603_mac_fill_rx(struct mt7603_dev *dev, struct sk_bu=
-ff *skb)=0D
- 	i >>=3D 1;=0D
- =0D
- 	idx =3D FIELD_GET(MT_RXD2_NORMAL_WLAN_IDX, rxd2);=0D
--	status->wcid =3D mt7603_rx_get_wcid(dev, idx, unicast);=0D
-+	wcid =3D mt7603_rx_get_wcid(dev, idx, unicast);=0D
-+	status->wcid_idx =3D wcid ? wcid->idx : MT76_WCID_IDX_INVALID;=0D
- =0D
- 	status->band =3D sband->band;=0D
- 	if (i < sband->n_channels)=0D
-@@ -672,7 +674,7 @@ mt7603_mac_fill_rx(struct mt7603_dev *dev, struct sk_bu=
-ff *skb)=0D
- 	}=0D
- =0D
- 	hdr =3D (struct ieee80211_hdr *)skb->data;=0D
--	if (!status->wcid || !ieee80211_is_data_qos(hdr->frame_control))=0D
-+	if (!wcid || !ieee80211_is_data_qos(hdr->frame_control))=0D
- 		return 0;=0D
- =0D
- 	status->aggr =3D unicast &&=0D
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/=
-wireless/mediatek/mt76/mt7615/mac.c=0D
-index ce0051468501..84be00a13930 100644=0D
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c=0D
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c=0D
-@@ -246,17 +246,20 @@ static void mt7615_mac_fill_tm_rx(struct mt7615_phy *=
-phy, __le32 *rxv)=0D
- }=0D
- =0D
- /* The HW does not translate the mac header to 802.3 for mesh point */=0D
--static int mt7615_reverse_frag0_hdr_trans(struct sk_buff *skb, u16 hdr_gap=
-)=0D
-+static int mt7615_reverse_frag0_hdr_trans(struct mt7615_dev *dev,=0D
-+					  struct sk_buff *skb, u16 hdr_gap)=0D
- {=0D
- 	struct mt76_rx_status *status =3D (struct mt76_rx_status *)skb->cb;=0D
- 	struct ethhdr *eth_hdr =3D (struct ethhdr *)(skb->data + hdr_gap);=0D
--	struct mt7615_sta *msta =3D (struct mt7615_sta *)status->wcid;=0D
- 	__le32 *rxd =3D (__le32 *)skb->data;=0D
- 	struct ieee80211_sta *sta;=0D
- 	struct ieee80211_vif *vif;=0D
- 	struct ieee80211_hdr hdr;=0D
-+	struct mt7615_sta *msta;=0D
- 	u16 frame_control;=0D
- =0D
-+	msta =3D (struct mt7615_sta *)mt76_wcid_ptr(dev, status->wcid_idx);=0D
-+=0D
- 	if (le32_get_bits(rxd[1], MT_RXD1_NORMAL_ADDR_TYPE) !=3D=0D
- 	    MT_RXD1_NORMAL_U2M)=0D
- 		return -EINVAL;=0D
-@@ -335,6 +338,7 @@ static int mt7615_mac_fill_rx(struct mt7615_dev *dev, s=
-truct sk_buff *skb)=0D
- 	struct ieee80211_supported_band *sband;=0D
- 	struct ieee80211_hdr *hdr;=0D
- 	struct mt7615_phy *phy2;=0D
-+	struct mt76_wcid *wcid;=0D
- 	__le32 *rxd =3D (__le32 *)skb->data;=0D
- 	u32 rxd0 =3D le32_to_cpu(rxd[0]);=0D
- 	u32 rxd1 =3D le32_to_cpu(rxd[1]);=0D
-@@ -378,12 +382,13 @@ static int mt7615_mac_fill_rx(struct mt7615_dev *dev,=
- struct sk_buff *skb)=0D
- =0D
- 	unicast =3D (rxd1 & MT_RXD1_NORMAL_ADDR_TYPE) =3D=3D MT_RXD1_NORMAL_U2M;=
-=0D
- 	idx =3D FIELD_GET(MT_RXD2_NORMAL_WLAN_IDX, rxd2);=0D
--	status->wcid =3D mt7615_rx_get_wcid(dev, idx, unicast);=0D
-+	wcid =3D mt7615_rx_get_wcid(dev, idx, unicast);=0D
-+	status->wcid_idx =3D wcid ? wcid->idx : MT76_WCID_IDX_INVALID;=0D
- =0D
--	if (status->wcid) {=0D
-+	if (wcid) {=0D
- 		struct mt7615_sta *msta;=0D
- =0D
--		msta =3D container_of(status->wcid, struct mt7615_sta, wcid);=0D
-+		msta =3D container_of(wcid, struct mt7615_sta, wcid);=0D
- 		mt76_wcid_add_poll(&dev->mt76, &msta->wcid);=0D
- 	}=0D
- =0D
-@@ -590,7 +595,7 @@ static int mt7615_mac_fill_rx(struct mt7615_dev *dev, s=
-truct sk_buff *skb)=0D
- =0D
- 	hdr_gap =3D (u8 *)rxd - skb->data + 2 * remove_pad;=0D
- 	if (hdr_trans && ieee80211_has_morefrags(fc)) {=0D
--		if (mt7615_reverse_frag0_hdr_trans(skb, hdr_gap))=0D
-+		if (mt7615_reverse_frag0_hdr_trans(dev, skb, hdr_gap))=0D
- 			return -EINVAL;=0D
- 		hdr_trans =3D false;=0D
- 	} else {=0D
-@@ -638,7 +643,7 @@ static int mt7615_mac_fill_rx(struct mt7615_dev *dev, s=
-truct sk_buff *skb)=0D
- 		status->flag |=3D RX_FLAG_8023;=0D
- 	}=0D
- =0D
--	if (!status->wcid || !ieee80211_is_data_qos(fc))=0D
-+	if (!wcid || !ieee80211_is_data_qos(fc))=0D
- 		return 0;=0D
- =0D
- 	status->aggr =3D unicast &&=0D
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac.h b/drivers/net=
-/wireless/mediatek/mt76/mt76_connac.h=0D
-index 51423c7740bd..d9ae8d204442 100644=0D
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h=0D
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h=0D
-@@ -448,7 +448,8 @@ bool mt76_connac2_mac_add_txs_skb(struct mt76_dev *dev,=
- struct mt76_wcid *wcid,=0D
- void mt76_connac2_mac_decode_he_radiotap(struct mt76_dev *dev,=0D
- 					 struct sk_buff *skb,=0D
- 					 __le32 *rxv, u32 mode);=0D
--int mt76_connac2_reverse_frag0_hdr_trans(struct ieee80211_vif *vif,=0D
-+int mt76_connac2_reverse_frag0_hdr_trans(struct mt76_dev *dev,=0D
-+					 struct ieee80211_vif *vif,=0D
- 					 struct sk_buff *skb, u16 hdr_offset);=0D
- int mt76_connac2_mac_fill_rx_rate(struct mt76_dev *dev,=0D
- 				  struct mt76_rx_status *status,=0D
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c b/drivers=
-/net/wireless/mediatek/mt76/mt76_connac_mac.c=0D
-index 0339e2e7ab60..376d59d517cc 100644=0D
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c=0D
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c=0D
-@@ -952,7 +952,8 @@ void mt76_connac2_mac_decode_he_radiotap(struct mt76_de=
-v *dev,=0D
- EXPORT_SYMBOL_GPL(mt76_connac2_mac_decode_he_radiotap);=0D
- =0D
- /* The HW does not translate the mac header to 802.3 for mesh point */=0D
--int mt76_connac2_reverse_frag0_hdr_trans(struct ieee80211_vif *vif,=0D
-+int mt76_connac2_reverse_frag0_hdr_trans(struct mt76_dev *dev,=0D
-+					 struct ieee80211_vif *vif,=0D
- 					 struct sk_buff *skb, u16 hdr_offset)=0D
- {=0D
- 	struct mt76_rx_status *status =3D (struct mt76_rx_status *)skb->cb;=0D
-@@ -960,6 +961,7 @@ int mt76_connac2_reverse_frag0_hdr_trans(struct ieee802=
-11_vif *vif,=0D
- 	__le32 *rxd =3D (__le32 *)skb->data;=0D
- 	struct ieee80211_sta *sta;=0D
- 	struct ieee80211_hdr hdr;=0D
-+	struct mt76_wcid *wcid;=0D
- 	u16 frame_control;=0D
- =0D
- 	if (le32_get_bits(rxd[3], MT_RXD3_NORMAL_ADDR_TYPE) !=3D=0D
-@@ -969,7 +971,13 @@ int mt76_connac2_reverse_frag0_hdr_trans(struct ieee80=
-211_vif *vif,=0D
- 	if (!(le32_to_cpu(rxd[1]) & MT_RXD1_NORMAL_GROUP_4))=0D
- 		return -EINVAL;=0D
- =0D
--	sta =3D container_of((void *)status->wcid, struct ieee80211_sta, drv_priv=
-);=0D
-+	wcid =3D __mt76_wcid_ptr(dev, status->wcid_idx);=0D
-+	if (!wcid)=0D
-+		return -EINVAL;=0D
-+=0D
-+	sta =3D container_of((void *)wcid, struct ieee80211_sta, drv_priv);=0D
-+	if (!sta)=0D
-+		return -EINVAL;=0D
- =0D
- 	/* store the info from RXD and ethhdr to avoid being overridden */=0D
- 	frame_control =3D le32_get_bits(rxd[6], MT_RXD6_FRAME_CONTROL);=0D
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c b/drivers/net=
-/wireless/mediatek/mt76/mt76x02_mac.c=0D
-index 14ee5b3b94d3..0bcc3417ae6a 100644=0D
---- a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c=0D
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c=0D
-@@ -774,16 +774,14 @@ int mt76x02_mac_process_rx(struct mt76x02_dev *dev, s=
-truct sk_buff *skb,=0D
- 	struct mt76_rx_status *status =3D (struct mt76_rx_status *)skb->cb;=0D
- 	struct ieee80211_hdr *hdr;=0D
- 	struct mt76x02_rxwi *rxwi =3D rxi;=0D
--	struct mt76x02_sta *sta;=0D
- 	u32 rxinfo =3D le32_to_cpu(rxwi->rxinfo);=0D
- 	u32 ctl =3D le32_to_cpu(rxwi->ctl);=0D
- 	u16 rate =3D le16_to_cpu(rxwi->rate);=0D
- 	u16 tid_sn =3D le16_to_cpu(rxwi->tid_sn);=0D
--	bool unicast =3D rxwi->rxinfo & cpu_to_le32(MT_RXINFO_UNICAST);=0D
- 	int pad_len =3D 0, nstreams =3D dev->mphy.chainmask & 0xf;=0D
-+	u8 wcid_idx;=0D
- 	s8 signal;=0D
- 	u8 pn_len;=0D
--	u8 wcid;=0D
- 	int len;=0D
- =0D
- 	if (!test_bit(MT76_STATE_RUNNING, &dev->mphy.state))=0D
-@@ -799,9 +797,8 @@ int mt76x02_mac_process_rx(struct mt76x02_dev *dev, str=
-uct sk_buff *skb,=0D
- 		status->flag |=3D RX_FLAG_IV_STRIPPED;=0D
- 	}=0D
- =0D
--	wcid =3D FIELD_GET(MT_RXWI_CTL_WCID, ctl);=0D
--	sta =3D mt76x02_rx_get_sta(&dev->mt76, wcid);=0D
--	status->wcid =3D mt76x02_rx_get_sta_wcid(sta, unicast);=0D
-+	wcid_idx =3D FIELD_GET(MT_RXWI_CTL_WCID, ctl);=0D
-+	status->wcid_idx =3D wcid_idx;=0D
- =0D
- 	len =3D FIELD_GET(MT_RXWI_CTL_MPDU_LEN, ctl);=0D
- 	pn_len =3D FIELD_GET(MT_RXINFO_PN_LEN, rxinfo);=0D
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/=
-wireless/mediatek/mt76/mt7915/mac.c=0D
-index cec2c4208255..30672713323f 100644=0D
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c=0D
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c=0D
-@@ -280,6 +280,7 @@ mt7915_mac_fill_rx(struct mt7915_dev *dev, struct sk_bu=
-ff *skb,=0D
- 	u8 mode =3D 0, qos_ctl =3D 0;=0D
- 	struct mt7915_sta *msta =3D NULL;=0D
- 	u32 csum_status =3D *(u32 *)skb->cb;=0D
-+	struct mt76_wcid *wcid;=0D
- 	bool hdr_trans;=0D
- 	u16 hdr_gap;=0D
- 	u16 seq_ctrl =3D 0;=0D
-@@ -313,10 +314,13 @@ mt7915_mac_fill_rx(struct mt7915_dev *dev, struct sk_=
-buff *skb,=0D
- =0D
- 	unicast =3D FIELD_GET(MT_RXD3_NORMAL_ADDR_TYPE, rxd3) =3D=3D MT_RXD3_NORM=
-AL_U2M;=0D
- 	idx =3D FIELD_GET(MT_RXD1_NORMAL_WLAN_IDX, rxd1);=0D
--	status->wcid =3D mt7915_rx_get_wcid(dev, idx, unicast);=0D
- =0D
--	if (status->wcid) {=0D
--		msta =3D container_of(status->wcid, struct mt7915_sta, wcid);=0D
-+	wcid =3D mt7915_rx_get_wcid(dev, idx, unicast);=0D
-+=0D
-+	status->wcid_idx =3D wcid ? wcid->idx : MT76_WCID_IDX_INVALID;=0D
-+=0D
-+	if (wcid) {=0D
-+		msta =3D container_of(wcid, struct mt7915_sta, wcid);=0D
- 		mt76_wcid_add_poll(&dev->mt76, &msta->wcid);=0D
- 	}=0D
- =0D
-@@ -475,7 +479,8 @@ mt7915_mac_fill_rx(struct mt7915_dev *dev, struct sk_bu=
-ff *skb,=0D
- =0D
- 		vif =3D container_of((void *)msta->vif, struct ieee80211_vif,=0D
- 				   drv_priv);=0D
--		err =3D mt76_connac2_reverse_frag0_hdr_trans(vif, skb, hdr_gap);=0D
-+		err =3D mt76_connac2_reverse_frag0_hdr_trans(&dev->mt76, vif,=0D
-+							   skb, hdr_gap);=0D
- 		if (err)=0D
- 			return err;=0D
- =0D
-@@ -532,7 +537,8 @@ mt7915_mac_fill_rx(struct mt7915_dev *dev, struct sk_bu=
-ff *skb,=0D
- 	if (rxv && mode >=3D MT_PHY_TYPE_HE_SU && !(status->flag & RX_FLAG_8023))=
-=0D
- 		mt76_connac2_mac_decode_he_radiotap(&dev->mt76, skb, rxv, mode);=0D
- =0D
--	if (!status->wcid || !ieee80211_is_data_qos(fc))=0D
-+	if (status->wcid_idx =3D=3D MT76_WCID_IDX_INVALID ||=0D
-+	    !ieee80211_is_data_qos(fc))=0D
- 		return 0;=0D
- =0D
- 	status->aggr =3D unicast &&=0D
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/=
-wireless/mediatek/mt76/mt7921/mac.c=0D
-index 03b4960db73f..59c64b951678 100644=0D
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c=0D
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c=0D
-@@ -184,6 +184,7 @@ mt7921_mac_fill_rx(struct mt792x_dev *dev, struct sk_bu=
-ff *skb)=0D
- 	u32 rxd4 =3D le32_to_cpu(rxd[4]);=0D
- 	struct mt792x_sta *msta =3D NULL;=0D
- 	struct mt792x_link_sta *mlink;=0D
-+	struct mt76_wcid *wcid;=0D
- 	u16 seq_ctrl =3D 0;=0D
- 	__le16 fc =3D 0;=0D
- 	u8 mode =3D 0;=0D
-@@ -211,10 +212,11 @@ mt7921_mac_fill_rx(struct mt792x_dev *dev, struct sk_=
-buff *skb)=0D
- 	chfreq =3D FIELD_GET(MT_RXD3_NORMAL_CH_FREQ, rxd3);=0D
- 	unicast =3D FIELD_GET(MT_RXD3_NORMAL_ADDR_TYPE, rxd3) =3D=3D MT_RXD3_NORM=
-AL_U2M;=0D
- 	idx =3D FIELD_GET(MT_RXD1_NORMAL_WLAN_IDX, rxd1);=0D
--	status->wcid =3D mt792x_rx_get_wcid(dev, idx, unicast);=0D
-+	wcid =3D mt792x_rx_get_wcid(dev, idx, unicast);=0D
-+	status->wcid_idx =3D wcid ? wcid->idx : MT76_WCID_IDX_INVALID;=0D
- =0D
--	if (status->wcid) {=0D
--		mlink =3D container_of(status->wcid, struct mt792x_link_sta, wcid);=0D
-+	if (wcid) {=0D
-+		mlink =3D container_of(wcid, struct mt792x_link_sta, wcid);=0D
- 		msta =3D container_of(mlink, struct mt792x_sta, deflink);=0D
- 		mt76_wcid_add_poll(&dev->mt76, &mlink->wcid);=0D
- 	}=0D
-@@ -395,7 +397,8 @@ mt7921_mac_fill_rx(struct mt792x_dev *dev, struct sk_bu=
-ff *skb)=0D
- =0D
- 		vif =3D container_of((void *)msta->vif, struct ieee80211_vif,=0D
- 				   drv_priv);=0D
--		err =3D mt76_connac2_reverse_frag0_hdr_trans(vif, skb, hdr_gap);=0D
-+		err =3D mt76_connac2_reverse_frag0_hdr_trans(&dev->mt76, vif,=0D
-+							   skb, hdr_gap);=0D
- 		if (err)=0D
- 			return err;=0D
- =0D
-@@ -433,7 +436,7 @@ mt7921_mac_fill_rx(struct mt792x_dev *dev, struct sk_bu=
-ff *skb)=0D
- 	if (rxv && mode >=3D MT_PHY_TYPE_HE_SU && !(status->flag & RX_FLAG_8023))=
-=0D
- 		mt76_connac2_mac_decode_he_radiotap(&dev->mt76, skb, rxv, mode);=0D
- =0D
--	if (!status->wcid || !ieee80211_is_data_qos(fc))=0D
-+	if (!wcid || !ieee80211_is_data_qos(fc))=0D
- 		return 0;=0D
- =0D
- 	status->aggr =3D unicast && !ieee80211_is_qos_nullfunc(fc);=0D
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c b/drivers/net/=
-wireless/mediatek/mt76/mt7925/mac.c=0D
-index c47bd812b66b..e429f78596e2 100644=0D
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c=0D
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c=0D
-@@ -166,17 +166,20 @@ void mt7925_mac_set_fixed_rate_table(struct mt792x_de=
-v *dev,=0D
- }=0D
- =0D
- /* The HW does not translate the mac header to 802.3 for mesh point */=0D
--static int mt7925_reverse_frag0_hdr_trans(struct sk_buff *skb, u16 hdr_gap=
-)=0D
-+static int mt7925_reverse_frag0_hdr_trans(struct mt792x_dev *dev,=0D
-+					  struct sk_buff *skb, u16 hdr_gap)=0D
- {=0D
- 	struct mt76_rx_status *status =3D (struct mt76_rx_status *)skb->cb;=0D
- 	struct ethhdr *eth_hdr =3D (struct ethhdr *)(skb->data + hdr_gap);=0D
--	struct mt792x_sta *msta =3D (struct mt792x_sta *)status->wcid;=0D
- 	__le32 *rxd =3D (__le32 *)skb->data;=0D
- 	struct ieee80211_sta *sta;=0D
- 	struct ieee80211_vif *vif;=0D
- 	struct ieee80211_hdr hdr;=0D
-+	struct mt792x_sta *msta;=0D
- 	u16 frame_control;=0D
- =0D
-+	msta =3D (struct mt792x_sta *)mt76_wcid_ptr(dev, status->wcid_idx);=0D
-+=0D
- 	if (le32_get_bits(rxd[3], MT_RXD3_NORMAL_ADDR_TYPE) !=3D=0D
- 	    MT_RXD3_NORMAL_U2M)=0D
- 		return -EINVAL;=0D
-@@ -368,6 +371,7 @@ mt7925_mac_fill_rx(struct mt792x_dev *dev, struct sk_bu=
-ff *skb)=0D
- 	u32 rxd3 =3D le32_to_cpu(rxd[3]);=0D
- 	u32 rxd4 =3D le32_to_cpu(rxd[4]);=0D
- 	struct mt792x_link_sta *mlink;=0D
-+	struct mt76_wcid *wcid;=0D
- 	u8 mode =3D 0; /* , band_idx; */=0D
- 	u16 seq_ctrl =3D 0;=0D
- 	__le16 fc =3D 0;=0D
-@@ -392,10 +396,11 @@ mt7925_mac_fill_rx(struct mt792x_dev *dev, struct sk_=
-buff *skb)=0D
- 	chfreq =3D FIELD_GET(MT_RXD3_NORMAL_CH_FREQ, rxd3);=0D
- 	unicast =3D FIELD_GET(MT_RXD3_NORMAL_ADDR_TYPE, rxd3) =3D=3D MT_RXD3_NORM=
-AL_U2M;=0D
- 	idx =3D FIELD_GET(MT_RXD1_NORMAL_WLAN_IDX, rxd1);=0D
--	status->wcid =3D mt792x_rx_get_wcid(dev, idx, unicast);=0D
-+	wcid =3D mt792x_rx_get_wcid(dev, idx, unicast);=0D
-+	status->wcid_idx =3D wcid ? wcid->idx : MT76_WCID_IDX_INVALID;=0D
- =0D
--	if (status->wcid) {=0D
--		mlink =3D container_of(status->wcid, struct mt792x_link_sta, wcid);=0D
-+	if (wcid) {=0D
-+		mlink =3D container_of(wcid, struct mt792x_link_sta, wcid);=0D
- 		mt76_wcid_add_poll(&dev->mt76, &mlink->wcid);=0D
- 	}=0D
- =0D
-@@ -545,7 +550,7 @@ mt7925_mac_fill_rx(struct mt792x_dev *dev, struct sk_bu=
-ff *skb)=0D
- =0D
- 	hdr_gap =3D (u8 *)rxd - skb->data + 2 * remove_pad;=0D
- 	if (hdr_trans && ieee80211_has_morefrags(fc)) {=0D
--		if (mt7925_reverse_frag0_hdr_trans(skb, hdr_gap))=0D
-+		if (mt7925_reverse_frag0_hdr_trans(dev, skb, hdr_gap))=0D
- 			return -EINVAL;=0D
- 		hdr_trans =3D false;=0D
- 	} else {=0D
-@@ -608,7 +613,7 @@ mt7925_mac_fill_rx(struct mt792x_dev *dev, struct sk_bu=
-ff *skb)=0D
- 		}=0D
- 	}=0D
- =0D
--	if (!status->wcid || !ieee80211_is_data_qos(fc))=0D
-+	if (!wcid || !ieee80211_is_data_qos(fc))=0D
- 		return 0;=0D
- =0D
- 	status->aggr =3D unicast && !ieee80211_is_qos_nullfunc(fc);=0D
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/=
-wireless/mediatek/mt76/mt7996/mac.c=0D
-index e2a83da3a09c..98c30957dd76 100644=0D
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c=0D
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c=0D
-@@ -186,17 +186,19 @@ static void mt7996_mac_sta_poll(struct mt7996_dev *de=
-v)=0D
- }=0D
- =0D
- /* The HW does not translate the mac header to 802.3 for mesh point */=0D
--static int mt7996_reverse_frag0_hdr_trans(struct sk_buff *skb, u16 hdr_gap=
-)=0D
-+static int mt7996_reverse_frag0_hdr_trans(struct mt7996_dev *dev,=0D
-+					  struct sk_buff *skb, u16 hdr_gap)=0D
- {=0D
- 	struct mt76_rx_status *status =3D (struct mt76_rx_status *)skb->cb;=0D
- 	struct ethhdr *eth_hdr =3D (struct ethhdr *)(skb->data + hdr_gap);=0D
--	struct mt7996_sta_link *msta_link =3D (void *)status->wcid;=0D
--	struct mt7996_sta *msta =3D msta_link->sta;=0D
-+	struct mt76_wcid *wcid =3D mt76_wcid_ptr(dev, status->wcid_idx);=0D
-+	struct mt7996_sta_link *msta_link;=0D
- 	struct ieee80211_bss_conf *link_conf;=0D
- 	__le32 *rxd =3D (__le32 *)skb->data;=0D
- 	struct ieee80211_sta *sta;=0D
- 	struct ieee80211_vif *vif;=0D
- 	struct ieee80211_hdr hdr;=0D
-+	struct mt7996_sta *msta;=0D
- 	u16 frame_control;=0D
- =0D
- 	if (le32_get_bits(rxd[3], MT_RXD3_NORMAL_ADDR_TYPE) !=3D=0D
-@@ -206,10 +208,16 @@ static int mt7996_reverse_frag0_hdr_trans(struct sk_b=
-uff *skb, u16 hdr_gap)=0D
- 	if (!(le32_to_cpu(rxd[1]) & MT_RXD1_NORMAL_GROUP_4))=0D
- 		return -EINVAL;=0D
- =0D
-+	if (!wcid)=0D
-+		return -EINVAL;=0D
-+=0D
-+	msta_link =3D container_of(wcid, struct mt7996_sta_link, wcid);=0D
-+	msta =3D msta_link->sta;=0D
-+=0D
- 	if (!msta || !msta->vif)=0D
- 		return -EINVAL;=0D
- =0D
--	sta =3D wcid_to_sta(status->wcid);=0D
-+	sta =3D wcid_to_sta(wcid);=0D
- 	vif =3D container_of((void *)msta->vif, struct ieee80211_vif, drv_priv);=
-=0D
- 	link_conf =3D rcu_dereference(vif->link_conf[msta_link->wcid.link_id]);=0D
- 	if (!link_conf)=0D
-@@ -429,6 +437,7 @@ mt7996_mac_fill_rx(struct mt7996_dev *dev, enum mt76_rx=
-q_id q,=0D
- 	bool unicast, insert_ccmp_hdr =3D false;=0D
- 	u8 remove_pad, amsdu_info, band_idx;=0D
- 	u8 mode =3D 0, qos_ctl =3D 0;=0D
-+	struct mt76_wcid *wcid;=0D
- 	bool hdr_trans;=0D
- 	u16 hdr_gap;=0D
- 	u16 seq_ctrl =3D 0;=0D
-@@ -461,12 +470,14 @@ mt7996_mac_fill_rx(struct mt7996_dev *dev, enum mt76_=
-rxq_id q,=0D
- =0D
- 	unicast =3D FIELD_GET(MT_RXD3_NORMAL_ADDR_TYPE, rxd3) =3D=3D MT_RXD3_NORM=
-AL_U2M;=0D
- 	idx =3D FIELD_GET(MT_RXD1_NORMAL_WLAN_IDX, rxd1);=0D
--	status->wcid =3D mt7996_rx_get_wcid(dev, idx, band_idx);=0D
- =0D
--	if (status->wcid) {=0D
-+	wcid =3D mt7996_rx_get_wcid(dev, idx, band_idx);=0D
-+	status->wcid_idx =3D wcid ? wcid->idx : MT76_WCID_IDX_INVALID;=0D
-+=0D
-+	if (wcid) {=0D
- 		struct mt7996_sta_link *msta_link;=0D
- =0D
--		msta_link =3D container_of(status->wcid, struct mt7996_sta_link,=0D
-+		msta_link =3D container_of(wcid, struct mt7996_sta_link,=0D
- 					 wcid);=0D
- 		msta =3D msta_link->sta;=0D
- 		mt76_wcid_add_poll(&dev->mt76, &msta_link->wcid);=0D
-@@ -620,7 +631,7 @@ mt7996_mac_fill_rx(struct mt7996_dev *dev, enum mt76_rx=
-q_id q,=0D
- =0D
- 	hdr_gap =3D (u8 *)rxd - skb->data + 2 * remove_pad;=0D
- 	if (hdr_trans && ieee80211_has_morefrags(fc)) {=0D
--		if (mt7996_reverse_frag0_hdr_trans(skb, hdr_gap))=0D
-+		if (mt7996_reverse_frag0_hdr_trans(dev, skb, hdr_gap))=0D
- 			return -EINVAL;=0D
- 		hdr_trans =3D false;=0D
- 	} else {=0D
-@@ -697,7 +708,7 @@ mt7996_mac_fill_rx(struct mt7996_dev *dev, enum mt76_rx=
-q_id q,=0D
- 		}=0D
- 	}=0D
- =0D
--	if (!status->wcid || !ieee80211_is_data_qos(fc) || hw_aggr)=0D
-+	if (!wcid || !ieee80211_is_data_qos(fc) || hw_aggr)=0D
- 		return 0;=0D
- =0D
- 	status->aggr =3D unicast &&=0D
--- =0D
-2.45.2=0D
-=0D
+Here comes the second part of the review :-).
+
+> diff --git a/drivers/gpu/drm/panthor/panthor_gpu.c b/drivers/gpu/drm/panthor/panthor_gpu.c
+> index 2ab444ee8c710..e93042eaf3fc8 100644
+> --- a/drivers/gpu/drm/panthor/panthor_gpu.c
+> +++ b/drivers/gpu/drm/panthor/panthor_gpu.c
+> @@ -100,8 +100,11 @@ static void panthor_gpu_irq_handler(struct panthor_device *ptdev, u32 status)
+>  			 fault_status, panthor_exception_name(ptdev, fault_status & 0xFF),
+>  			 address);
+>  	}
+> -	if (status & GPU_IRQ_PROTM_FAULT)
+> +	if (status & GPU_IRQ_PROTM_FAULT) {
+>  		drm_warn(&ptdev->base, "GPU Fault in protected mode\n");
+> +		panthor_gpu_disable_protm_fault_interrupt(ptdev);
+
+It's only used in a single place, so I'd just inline the content of
+panthor_gpu_disable_protm_fault_interrupt() here. Also, I think
+panthor_gpu_disable_protm_fault_interrupt() is not taking the right
+lock (see below).
+
+> +		panthor_device_schedule_reset(ptdev);
+> +	}
+>  
+>  	spin_lock(&ptdev->gpu->reqs_lock);
+>  	if (status & ptdev->gpu->pending_reqs) {
+> @@ -367,6 +370,10 @@ int panthor_gpu_soft_reset(struct panthor_device *ptdev)
+>  	unsigned long flags;
+>  
+>  	spin_lock_irqsave(&ptdev->gpu->reqs_lock, flags);
+> +
+> +	/** Re-enable the protm_irq_fault when reset is complete */
+> +	ptdev->gpu->irq.mask |= GPU_IRQ_PROTM_FAULT;
+
+panthor_irq::mask should only be modified with the
+panthor_irq::mask_lock held. Besides, we have a helper for
+that:
+
+	panthor_gpu_irq_enable_events(&ptdev->gpu->irq,	GPU_IRQ_PROTM_FAULT);
+
+> +
+>  	if (!drm_WARN_ON(&ptdev->base,
+>  			 ptdev->gpu->pending_reqs & GPU_IRQ_RESET_COMPLETED)) {
+>  		ptdev->gpu->pending_reqs |= GPU_IRQ_RESET_COMPLETED;
+> @@ -427,3 +434,8 @@ void panthor_gpu_resume(struct panthor_device *ptdev)
+>  	panthor_hw_l2_power_on(ptdev);
+>  }
+>  
+> +void panthor_gpu_disable_protm_fault_interrupt(struct panthor_device *ptdev)
+> +{
+> +	scoped_guard(spinlock_irqsave, &ptdev->gpu->reqs_lock)
+> +		ptdev->gpu->irq.mask &= ~GPU_IRQ_PROTM_FAULT;
+
+Same problem with wrong lock being taken to modify the mask, and
+panthor_gpu_irq_disable_events() probably being a better option?
+
+> +}
+> diff --git a/drivers/gpu/drm/panthor/panthor_gpu.h b/drivers/gpu/drm/panthor/panthor_gpu.h
+> index 12c263a399281..ca66c73f543e6 100644
+> --- a/drivers/gpu/drm/panthor/panthor_gpu.h
+> +++ b/drivers/gpu/drm/panthor/panthor_gpu.h
+> @@ -54,4 +54,10 @@ int panthor_gpu_soft_reset(struct panthor_device *ptdev);
+>  void panthor_gpu_power_changed_off(struct panthor_device *ptdev);
+>  int panthor_gpu_power_changed_on(struct panthor_device *ptdev);
+>  
+> +/**
+> + * panthor_gpu_disable_protm_fault_interrupt() - Disable GPU_PROTECTED_FAULT interrupt
+> + * @ptdev: Device.
+> + */
+> +void panthor_gpu_disable_protm_fault_interrupt(struct panthor_device *ptdev);
+> +
+>  #endif
+> diff --git a/drivers/gpu/drm/panthor/panthor_mmu.c b/drivers/gpu/drm/panthor/panthor_mmu.c
+> index 07f54176ec1bf..702f537905b56 100644
+> --- a/drivers/gpu/drm/panthor/panthor_mmu.c
+> +++ b/drivers/gpu/drm/panthor/panthor_mmu.c
+> @@ -31,6 +31,7 @@
+>  #include <linux/sizes.h>
+>  
+>  #include "panthor_device.h"
+> +#include "panthor_fw.h"
+>  #include "panthor_gem.h"
+>  #include "panthor_gpu.h"
+>  #include "panthor_heap.h"
+> @@ -1704,8 +1705,12 @@ static int panthor_vm_lock_region(struct panthor_vm *vm, u64 start, u64 size)
+>  	if (drm_WARN_ON(&ptdev->base, vm->locked_region.size))
+>  		return -EINVAL;
+>  
+> +	down_read(&ptdev->protm.lock);
+> +
+>  	mutex_lock(&ptdev->mmu->as.slots_lock);
+>  	if (vm->as.id >= 0 && size) {
+> +		panthor_fw_protm_exit_sync(ptdev);
+> +
+>  		/* Lock the region that needs to be updated */
+>  		gpu_write64(ptdev, AS_LOCKADDR(vm->as.id),
+>  			    pack_region_range(ptdev, &start, &size));
+> @@ -1720,6 +1725,9 @@ static int panthor_vm_lock_region(struct panthor_vm *vm, u64 start, u64 size)
+>  	}
+>  	mutex_unlock(&ptdev->mmu->as.slots_lock);
+>  
+> +	if (ret)
+> +		up_read(&ptdev->protm.lock);
+
+Let's try to keep the locked section local to a function: the protm.lock
+should, IMHO, be taken/released in panthor_vm_exec_op(). If we go for
+that, this also makes the panthor_vm_lock_region() vs
+panthor_vm_expand_locked_region() distinction useless, though it's
+probably fine to keep it for clarity.
+
+> +
+>  	return ret;
+>  }
+>  
+> @@ -1805,6 +1813,8 @@ static void panthor_vm_unlock_region(struct panthor_vm *vm)
+>  	vm->locked_region.start = 0;
+>  	vm->locked_region.size = 0;
+>  	mutex_unlock(&ptdev->mmu->as.slots_lock);
+> +
+> +	up_read(&ptdev->protm.lock);
+>  }
+>  
+>  static void panthor_mmu_irq_handler(struct panthor_device *ptdev, u32 status)
+> diff --git a/drivers/gpu/drm/panthor/panthor_sched.c b/drivers/gpu/drm/panthor/panthor_sched.c
+> index 987072bd867c4..acb04250c7def 100644
+> --- a/drivers/gpu/drm/panthor/panthor_sched.c
+> +++ b/drivers/gpu/drm/panthor/panthor_sched.c
+> @@ -308,6 +308,15 @@ struct panthor_scheduler {
+>  		 */
+>  		struct list_head stopped_groups;
+>  	} reset;
+> +
+> +	/** @protm: Protected mode related fields. */
+> +	struct {
+> +		/** @protected_mode: True if GPU is in protected mode. */
+> +		bool protected_mode;
+
+nit: s/protected_mode/enabled/s. But do we even need that boolean?
+Isn't active_group != NULL providing the same info?
+
+> +
+> +		/** @active_group: The active protected group. */
+> +		struct panthor_group *active_group;
+> +	} protm;
+>  };
+>  
+>  /**
+> @@ -570,6 +579,16 @@ struct panthor_group {
+>  	/** @fatal_queues: Bitmask reflecting the queues that hit a fatal exception. */
+>  	u32 fatal_queues;
+>  
+> +	/**
+> +	 * @protm_pending_queues: Bitmask reflecting the queues that are waiting
+> +	 *                        on a CS_PROTM_PENDING.
+> +	 *
+> +	 * The GPU will set the bit associated to the queue pending protected mode
+> +	 * when a PROT_REGION command is executing or when trying to resume previously
+> +	 * suspended protected mode jobs.
+> +	 */
+> +	u32 protm_pending_queues;
+> +
+>  	/** @tiler_oom: Mask of queues that have a tiler OOM event to process. */
+>  	atomic_t tiler_oom;
+>  
+> @@ -1176,6 +1195,7 @@ queue_resume_timeout(struct panthor_queue *queue)
+>   * @ptdev: Device.
+>   * @csg_id: Group slot ID.
+>   * @cs_id: Queue slot ID.
+> + * @protm_ack: Acknowledge pending protected mode queues
+>   *
+>   * Program a queue slot with the queue information so things can start being
+>   * executed on this queue.
+> @@ -1472,6 +1492,34 @@ csg_slot_prog_locked(struct panthor_device *ptdev, u32 csg_id, u32 priority)
+>  	return 0;
+>  }
+>  
+> +static void
+> +cs_slot_process_protm_pending_event_locked(struct panthor_device *ptdev,
+> +					   u32 csg_id, u32 cs_id)
+> +{
+> +	struct panthor_scheduler *sched = ptdev->scheduler;
+> +	struct panthor_csg_slot *csg_slot = &sched->csg_slots[csg_id];
+> +	struct panthor_group *group = csg_slot->group;
+> +
+> +	lockdep_assert_held(&sched->lock);
+> +
+> +	if (!group)
+> +		return;
+> +
+> +	/* No protected memory heap, a user space program tried to
+> +	 * submit a protected mode jobs resulting in the GPU raising
+> +	 * a CS_PROTM_PENDING request.
+> +	 *
+> +	 * This scenario is invalid and the protected mode jobs must
+> +	 * not be allowed to progress.
+> +	 */
+> +	if (!ptdev->protm.heap)
+> +		return;
+
+Should we flag the group unusable when that happens and schedule it out
+as soon as possible?
+
+	if (!ptdev->protm.heap)
+		group->fatal_queues |= BIT(cs_id);
+	else
+		group->protm_pending_queues |= BIT(cs_id);
+
+	sched_queue_delayed_work(sched, tick, 0);
+
+> +
+> +	group->protm_pending_queues |= BIT(cs_id);
+> +
+> +	sched_queue_delayed_work(sched, tick, 0);
+> +}
+> +
+>  static void
+>  cs_slot_process_fatal_event_locked(struct panthor_device *ptdev,
+>  				   u32 csg_id, u32 cs_id)
+> @@ -1718,6 +1766,9 @@ static bool cs_slot_process_irq_locked(struct panthor_device *ptdev,
+>  	if (events & CS_TILER_OOM)
+>  		cs_slot_process_tiler_oom_event_locked(ptdev, csg_id, cs_id);
+>  
+> +	if (events & CS_PROTM_PENDING)
+> +		cs_slot_process_protm_pending_event_locked(ptdev, csg_id, cs_id);
+> +
+>  	/* We don't acknowledge the TILER_OOM event since its handling is
+>  	 * deferred to a separate work.
+>  	 */
+> @@ -1848,6 +1899,17 @@ static void sched_process_idle_event_locked(struct panthor_device *ptdev)
+>  	sched_queue_delayed_work(ptdev->scheduler, tick, 0);
+>  }
+>  
+> +static void sched_process_protm_exit_event_locked(struct panthor_device *ptdev)
+> +{
+> +	lockdep_assert_held(&ptdev->scheduler->lock);
+> +
+> +	/* Acknowledge the protm exit and schedule a tick. */
+> +	panthor_fw_protm_exit(ptdev);
+
+Let's just inline the content of panthor_fw_protm_exit() here.*
+It doesn't make sense to have all these indirections, especially
+since PROTM and scheduling are intertwined anyway, so I consider
+it part of the scheduler responsibility (just like the scheduler
+deals with other GLB events).
+
+The same goes for the other panthor_fw_protm_ helpers defined in
+panthor_fw.c, I think panthor_sched.c would be a better fit for
+those, or even inlining their content if they are only used in
+a single place.
+
+> +	sched_queue_delayed_work(ptdev->scheduler, tick, 0);
+> +	ptdev->scheduler->protm.protected_mode = false;
+> +	ptdev->scheduler->protm.active_group = NULL;
+> +}
+> +
+>  /**
+>   * sched_process_global_irq_locked() - Process the scheduling part of a global IRQ
+>   * @ptdev: Device.
+> @@ -1863,6 +1925,9 @@ static void sched_process_global_irq_locked(struct panthor_device *ptdev)
+>  	ack = READ_ONCE(glb_iface->output->ack);
+>  	evts = (req ^ ack) & GLB_EVT_MASK;
+>  
+> +	if (evts & GLB_PROTM_EXIT)
+> +		sched_process_protm_exit_event_locked(ptdev);
+> +
+>  	if (evts & GLB_IDLE)
+>  		sched_process_idle_event_locked(ptdev);
+>  }
+> @@ -1872,23 +1937,71 @@ static void process_fw_events_work(struct work_struct *work)
+>  	struct panthor_scheduler *sched = container_of(work, struct panthor_scheduler,
+>  						      fw_events_work);
+>  	u32 events = atomic_xchg(&sched->fw_events, 0);
+> +	u32 csg_events = events & ~JOB_INT_GLOBAL_IF;
+>  	struct panthor_device *ptdev = sched->ptdev;
+>  
+>  	mutex_lock(&sched->lock);
+>  
+> +	while (csg_events) {
+> +		u32 csg_id = ffs(csg_events) - 1;
+> +
+> +		sched_process_csg_irq_locked(ptdev, csg_id);
+> +		csg_events &= ~BIT(csg_id);
+> +	}
+
+I'm sure you have a good reason to re-order the processing
+of CSG and GLB events, and it'd be good to have it documented
+in a comment.
+
+> +
+>  	if (events & JOB_INT_GLOBAL_IF) {
+>  		sched_process_global_irq_locked(ptdev);
+>  		events &= ~JOB_INT_GLOBAL_IF;
+>  	}
+>  
+> -	while (events) {
+> -		u32 csg_id = ffs(events) - 1;
+> +	mutex_unlock(&sched->lock);
+> +}
+>  
+> -		sched_process_csg_irq_locked(ptdev, csg_id);
+> -		events &= ~BIT(csg_id);
+> +static void handle_protm_fault(struct panthor_device *ptdev)
+
+This is a bit of a misnomer, I think. It doesn't seem to be triggered
+by a FAULT event, it's more a timeout on a PROTM section that would
+lead to a reset being scheduled, and this "blocked-in-protm" situation
+being detected as part of the reset.
+
+> +{
+> +	struct panthor_scheduler *sched = ptdev->scheduler;
+> +	u32 csg_id;
+> +	struct panthor_group *protm_group;
+> +
+> +	guard(mutex)(&sched->lock);
+> +
+> +	if (!sched->protm.protected_mode)
+> +		return;
+> +
+> +	protm_group = sched->protm.active_group;
+> +
+> +	if (drm_WARN_ON(&ptdev->base, !protm_group))
+> +		return;
+
+See, that's a perfect example of sched->protm.protected_mode being redundant.
+Now you're left with a potential protected_mode=true,active_group=NULL
+inconsistency you don't expect.
+
+> +
+> +	/* Group will be terminated by the device reset */
+> +	protm_group->fatal_queues |= GENMASK(protm_group->queue_count - 1, 0);
+> +
+> +	if (!panthor_fw_protm_exit_wait_event_timeout(ptdev))
+> +		goto cleanup_protm;
+> +
+> +	/**
+> +	 * GPU failed to exit protected mode. Mark all non-protected mode CSGs
+
+	/* GPU failed to exit protected mode. Mark all non-protected mode CSGs
+
+> +	 * as suspended so that they are unaffected by the GPU reset.
+> +	 */
+> +
+> +	for (csg_id = 0; csg_id < sched->csg_slot_count; csg_id++) {
+> +		struct panthor_group *group = sched->csg_slots[csg_id].group;
+> +
+> +		if (!group || group == protm_group)
+> +			continue;
+> +
+> +		group->state = PANTHOR_CS_GROUP_SUSPENDED;
+> +
+> +		group_unbind_locked(group);
+> +
+> +		list_move(&group->run_node, group_is_idle(group) ?
+> +						&sched->groups.idle[group->priority] :
+> +						&sched->groups.runnable[group->priority]);
+
+nit: Let's use a local struct list_head * variable to select the right list.
+
+>  	}
+>  
+> -	mutex_unlock(&sched->lock);
+> +cleanup_protm:
+> +	sched->protm.protected_mode = false;
+> +	sched->protm.active_group = NULL;
+>  }
+>  
+>  /**
+> @@ -2029,6 +2142,7 @@ struct panthor_sched_tick_ctx {
+>  	bool immediate_tick;
+>  	bool stop_tick;
+>  	u32 csg_upd_failed_mask;
+> +	struct panthor_group *protm_group;
+>  };
+>  
+>  static bool
+> @@ -2299,6 +2413,7 @@ tick_ctx_evict_group(struct panthor_scheduler *sched,
+>  
+>  static void
+>  tick_ctx_reschedule_group(struct panthor_scheduler *sched,
+> +			  struct panthor_sched_tick_ctx *ctx,
+>  			  struct panthor_csg_slots_upd_ctx *upd_ctx,
+>  			  struct panthor_group *group,
+>  			  int new_csg_prio)
+> @@ -2321,6 +2436,30 @@ tick_ctx_reschedule_group(struct panthor_scheduler *sched,
+>  					csg_iface->output->ack ^ CSG_ENDPOINT_CONFIG,
+>  					CSG_ENDPOINT_CONFIG);
+>  	}
+> +
+> +	if (ctx->protm_group == group) {
+> +		for (u32 q = 0; q < group->queue_count; q++) {
+> +			struct panthor_fw_cs_iface *cs_iface;
+> +
+> +			if (!(group->protm_pending_queues & BIT(q)))
+> +				continue;
+> +
+> +			cs_iface = panthor_fw_get_cs_iface(ptdev, group->csg_id, q);
+> +			panthor_fw_update_reqs(cs_iface, req, cs_iface->output->ack,
+> +					       CS_PROTM_PENDING);
+> +		}
+> +
+> +		panthor_fw_toggle_reqs(csg_iface, doorbell_req, doorbell_ack,
+> +				       group->protm_pending_queues);
+> +		csgs_upd_ctx_ring_doorbell(upd_ctx, group->csg_id);
+> +		group->protm_pending_queues = 0;
+> +
+> +		/*
+> +		 * We only allow one protected group to run at same time,
+> +		 * as it makes it easier to handle faults in protected mode.
+
+It's more something to document in the panthor_scheduler::protm::active_group
+section.
+
+> +		 */
+> +		sched->protm.active_group = group;
+
+Would it make sense to move this logic to a tick_ctx_handle_protm_group()
+helper that's called before/after tick_ctx_reschedule_group()? This way
+there's no extra if (ctx->protm_group == group) conditional branch in here.
+
+
+static void
+tick_ctx_handle_protm_group(struct panthor_scheduler *sched,
+			    struct panthor_sched_tick_ctx *ctx,
+ 			    struct panthor_csg_slots_upd_ctx *upd_ctx)
+{
+	struct panthor_device *ptdev = sched->ptdev;
+	struct panthor_group *group = ctx->protm_group;
+	struct panthor_fw_csg_iface *csg_iface;
+
+	if (!group || drm_WARN_ON(&ptdev->base, group->csg_id < 0))
+		return;
+
+	csg_iface = panthor_fw_get_csg_iface(ptdev, group->csg_id);
+	for (u32 q = 0; q < group->queue_count; q++) {
+		struct panthor_fw_cs_iface *cs_iface;
+
+		if (!(group->protm_pending_queues & BIT(q)))
+			continue;
+
+		cs_iface = panthor_fw_get_cs_iface(ptdev, group->csg_id, q);
+		panthor_fw_update_reqs(cs_iface, req, cs_iface->output->ack,
+				       CS_PROTM_PENDING);
+	}
+
+	panthor_fw_toggle_reqs(csg_iface, doorbell_req, doorbell_ack,
+			       group->protm_pending_queues);
+	csgs_upd_ctx_ring_doorbell(upd_ctx, group->csg_id);
+	group->protm_pending_queues = 0;
+	sched->protm.active_group = group;
+}
+
+> +	}
+>  }
+>  
+>  static void
+> @@ -2336,6 +2475,17 @@ tick_ctx_schedule_group(struct panthor_scheduler *sched,
+>  	group_bind_locked(group, csg_id);
+>  	csg_slot_prog_locked(ptdev, csg_id, csg_prio);
+>  
+> +	/* If the group was waiting for protected mode before suspension,
+> +	 * and the tick context enters this mode, it should be serviced
+> +	 * immediately because the slot reset should have set the
+> +	 * CS_PROTM_PENDING bit to zero, and cs_prog_slot_locked() sets it to
+> +	 * zero too.
+> +	 * It's not clear if we will get a new CS_PROTM_PENDING event in that
+> +	 * case, but it should be safe either way.
+> +	 */
+> +	if (group->protm_pending_queues && ctx->protm_group)
+> +		group->protm_pending_queues = 0;
+
+I'd move this to the path where we do the SUSPEND, or group_unbind(), even.
+
+> +
+>  	csgs_upd_ctx_queue_reqs(ptdev, upd_ctx, csg_id,
+>  				group->state == PANTHOR_CS_GROUP_SUSPENDED ?
+>  				CSG_STATE_RESUME : CSG_STATE_START,
+> @@ -2365,7 +2515,7 @@ tick_ctx_apply(struct panthor_scheduler *sched, struct panthor_sched_tick_ctx *c
+>  
+>  		/* Update priorities on already running groups. */
+>  		list_for_each_entry(group, &ctx->groups[prio], run_node) {
+> -			tick_ctx_reschedule_group(sched, &upd_ctx, group, new_csg_prio--);
+> +			tick_ctx_reschedule_group(sched, ctx, &upd_ctx, group, new_csg_prio--);
+>  		}
+>  	}
+>  
+> @@ -2457,6 +2607,15 @@ tick_ctx_apply(struct panthor_scheduler *sched, struct panthor_sched_tick_ctx *c
+>  
+>  	sched->used_csg_slot_count = ctx->group_count;
+>  	sched->might_have_idle_groups = ctx->idle_group_count > 0;
+> +
+> +	if (ctx->protm_group) {
+> +		ret = panthor_fw_protm_enter(ptdev);
+> +		if (ret) {
+> +			panthor_device_schedule_reset(ptdev);
+> +			ctx->csg_upd_failed_mask = U32_MAX;
+
+It's weird to flag it as all CSGs update failed. Should we instead
+have
+
+			/* If we failed to enter PROTM, consider the group who
+			 * requested it as failed.
+			 */
+			ctx->csg_upd_failed_mask |= BIT(ctx->protm_group->csg_id);
+
+> +		}
+> +		sched->protm.protected_mode = true;
+
+I'd move that to a tick_ctx_service_protm_req() helper that has the
+panthor_fw_protm_enter() inlined, because again, it doesn't make
+sense to have this defined in panthor_fw.c if the only user lives
+in panthor_sched.c
+
+> +	}
+>  }
+>  
+>  static u64
+> @@ -2490,7 +2649,7 @@ static void tick_work(struct work_struct *work)
+>  	u64 resched_target = sched->resched_target;
+>  	u64 remaining_jiffies = 0, resched_delay;
+>  	u64 now = get_jiffies_64();
+> -	int prio, ret, cookie;
+> +	int prio, protm_prio, ret, cookie;
+>  	bool full_tick;
+>  
+>  	if (!drm_dev_enter(&ptdev->base, &cookie))
+> @@ -2564,14 +2723,49 @@ static void tick_work(struct work_struct *work)
+>  		}
+>  	}
+>  
+> +	/* Check if the highest priority group want to switch to protected mode */
+> +	for (protm_prio = PANTHOR_CSG_PRIORITY_COUNT - 1; protm_prio >= 0; protm_prio--) {
+> +		struct panthor_group *group;
+> +
+> +		group = list_first_entry_or_null(&ctx.groups[protm_prio],
+> +						 struct panthor_group,
+> +						 run_node);
+> +		if (group) {
+> +			ctx.protm_group = group;
+> +			break;
+> +		}
+
+Should this be
+
+		if (group) {
+			if (group->protm_pending_queues)
+				ctx.protm_group = group;
+
+			break;
+		}
+
+?
+
+> +	}
+> +
+>  	/* If we have free CSG slots left, pick idle groups */
+> -	for (prio = PANTHOR_CSG_PRIORITY_COUNT - 1;
+> -	     prio >= 0 && !tick_ctx_is_full(sched, &ctx);
+> -	     prio--) {
+
+How about we keep it a single indentation level and skip higher prios if
+PROTM is requested:
+
+		/* Pick only idle groups with equal or lower priority than the
+		 * group triggering protected mode. Do not bother picking
+		 * unscheduled idle groups.
+		 */
+		if (ctx.protm_group && prio < protm_prio)
+			continue;
+
+This saves us an indentation level and limits the code duplication.
+
+> -		/* Check the old_group queue first to avoid reprogramming the slots */
+> -		tick_ctx_pick_groups_from_list(sched, &ctx, &ctx.old_groups[prio], false, true);
+> -		tick_ctx_pick_groups_from_list(sched, &ctx, &sched->groups.idle[prio],
+> -					       false, false);
+> +	if (ctx.protm_group) {
+> +		/* Pick only idle groups with equal or lower priority than the
+> +		 * group triggering protected mode. Do not bother picking
+> +		 * unscheduled idle groups.
+> +		 */
+> +		for (prio = protm_prio;
+> +		     prio >= 0 && !tick_ctx_is_full(sched, &ctx);
+> +		     prio--)
+> +			tick_ctx_pick_groups_from_list(sched, &ctx,
+> +						       &ctx.old_groups[prio],
+> +						       false, true);
+> +	} else {
+> +		/* No switch to protected, just pick any idle group according
+> +		 * to priority
+> +		 */
+> +		for (prio = PANTHOR_CSG_PRIORITY_COUNT - 1;
+> +		     prio >= 0 && !tick_ctx_is_full(sched, &ctx);
+> +		     prio--) {
+> +			/* Check the old_group queue first to avoid
+> +			 * reprogramming the slots
+> +			 */
+> +			tick_ctx_pick_groups_from_list(sched, &ctx,
+> +						       &ctx.old_groups[prio],
+> +						       false, true);
+> +			tick_ctx_pick_groups_from_list(sched, &ctx,
+> +						       &sched->groups.idle[prio],
+> +						       false, false);
+> +		}
+> +
+>  	}
+>  
+>  	tick_ctx_apply(sched, &ctx);
+> @@ -2993,6 +3187,8 @@ void panthor_sched_pre_reset(struct panthor_device *ptdev)
+>  	cancel_work_sync(&sched->sync_upd_work);
+>  	cancel_delayed_work_sync(&sched->tick_work);
+>  
+> +	handle_protm_fault(ptdev);
+
+I actually wonder if this should be part of the panthor_sched_suspend()
+logic. That is, we would automatically flag all non-protm groups as
+suspended if the GPU was in PROTM mode at the time the hang happened.
+
+> +
+>  	panthor_sched_suspend(ptdev);
+>  
+>  	/* Stop all groups that might still accept jobs, so we don't get passed
+
+Regards,
+
+Boris
 
