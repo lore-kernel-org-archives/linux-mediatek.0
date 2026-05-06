@@ -4,78 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BADBBCD343B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 15:25:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEE2ACD343B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 15:31:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LszCurdEFO+gZG00jUn6BF5va881gN4RYCn+EeYYN5U=; b=OPC0IE/SMrr/RtUIbvg2UOgCfE
-	BgW6DBCCuU67mb+oSq/PQEu6IQ3Ug2GAhhzi8i9oAeWQ9xNiP0FFv/E67NyE6PnFwqE6I5zVrQyzQ
-	k5njQ4eeUnASGfc8LopjSViBrkz5347x1zFp4za8Xpkwj2KC82fMyxt3PaLeGDKihFlt7JN7K4EEv
-	Kll4OUIrIjgfvNQAFyyHedze4yl4HQtL9JpeArfVtctFVssEOn0+7m6PmpAiKSh1b8abRbi6z6vQS
-	22Mict5R4A9Rw+IOulzju9jAyyvKsy6GfEQzjagNLuEoc6sTmSu1vmLkPREBHyE+GC0QTyhG1pelO
-	V563iNuA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LpMiaMn6dAmQVtExkum+YevLhvle5EftrSlfv8b97nA=; b=QmxjLF4DhgVK2tBN3y+EhUzPCa
+	k9vsmHKmGah5+ONE3eOVWc53Xm1w4t58ANdpst/AdSgrXmvXdNYOMa5XjQ3/5EOTf8SqRC8yAVJwx
+	mqDAboZZCj9fAKI0bp8vg9xgoapqH/guqS8pP/sBnP/3tLxpayN8DCM5ZRsaQunglI00+jBjNCwmL
+	yIdkmu3psScd59H1844JauJzauid38GJ8xlzpuKbGfOjC9IVd3KtH3ksB7SabjUxfmBN8QRq6Eqe6
+	2OPjNTcqbPU36J773Nd89Xmy4NhzBnniAwMbox7KoPM1+g7wn0ZCfW8ia7WUMNJupONfriLHmGkaN
+	CDgS6Xhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKe7Y-00000001JMO-2Vru;
-	Wed, 06 May 2026 15:25:08 +0000
-Received: from m16.mail.163.com ([117.135.210.2])
+	id 1wKeDj-00000001KtB-3KqW;
+	Wed, 06 May 2026 15:31:31 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKe7T-00000001J9P-1SYB;
-	Wed, 06 May 2026 15:25:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=Ls
-	zCurdEFO+gZG00jUn6BF5va881gN4RYCn+EeYYN5U=; b=JFRLZgkFncbn0mZNVg
-	bgNHubQd2aPL4LijHJB40HyofKtgnKXK/l/zOe/rxEUlfEd81kJOJUgRm0+pP/OV
-	P+jjvmAXcXOFBsV5KwowqixbwwbfdRbSKDDHtyQ2drM4edrLxursidDltRtTZVYg
-	1b40+r7YCxWL/6hNT6OdZz2S0=
-Received: from zhb.. (unknown [])
-	by gzga-smtp-mtada-g0-0 (Coremail) with SMTP id _____wCHAqsXXftpv5CgDg--.43926S5;
-	Wed, 06 May 2026 23:24:12 +0800 (CST)
-From: Hans Zhang <18255117159@163.com>
-To: bhelgaas@google.com,
-	lpieralisi@kernel.org,
-	kwilczynski@kernel.org,
-	mani@kernel.org,
-	vigneshr@ti.com,
-	jingoohan1@gmail.com,
-	thomas.petazzoni@bootlin.com,
-	pali@kernel.org,
-	ryder.lee@mediatek.com,
-	jianjun.wang@mediatek.com,
-	claudiu.beznea.uj@bp.renesas.com,
-	mpillai@cadence.com
-Cc: robh@kernel.org,
-	s-vadapalli@ti.com,
-	linux-omap@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1wKeDh-00000001KsI-3Ywf;
+	Wed, 06 May 2026 15:31:29 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 4580043C48;
+	Wed,  6 May 2026 15:31:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E6784C2BCB0;
+	Wed,  6 May 2026 15:31:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1778081489;
+	bh=IgHqoBvpmtUA7FgXX/Le9CmNm36RAHe0VSyPKzaNLfU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Qapj2ZbJvROo6HMGSV8FORvgrI9+0dhDdr5aft67gXjbpw92uNrsHG5vt8FhEeQ3e
+	 ItYO/Aowm+Dg6y/ZaoLVCdxffOSyqnVLui0pLHwEAmCpkH7F84xGgW2fH2weUl6uU/
+	 TFGVlgx9gljReqc2Leb7nX1UO/vL9CHvZLQKhtER/RISgk1ylzCBe9/VeTrAcVJDWI
+	 B8NHnsRILYZYFUo0bPIbQhBe4NwJ7RUIll/oC2Aa9bLprg4Nxl81L5lk2uwN57SHnI
+	 0XHdf1CF/wXotjhxzx1lVcWaA6XOrzkb3miEXU25G+R/2k/mQ+197EnuUOS7iVeCW7
+	 0PU+5kX9UVJGw==
+Date: Wed, 6 May 2026 10:31:26 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: Sen Chu <sen.chu@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Lee Jones <lee@kernel.org>,
 	linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Hans Zhang <18255117159@163.com>
-Subject: [PATCH v2 3/8] PCI: cadence: HPA: Add 100 ms delay after link training
-Date: Wed,  6 May 2026 23:23:41 +0800
-Message-Id: <20260506152346.166056-4-18255117159@163.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260506152346.166056-1-18255117159@163.com>
-References: <20260506152346.166056-1-18255117159@163.com>
+	Jonathan Cameron <jic23@kernel.org>, devicetree@vger.kernel.org,
+	kernel@collabora.com,
+	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
+	linux-input@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
+	David Lechner <dlechner@baylibre.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	Chen Zhong <chen.zhong@mediatek.com>, linux-pm@vger.kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	linux-iio@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Andy Shevchenko <andy@kernel.org>, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/9] dt-bindings: mfd: mediatek: mt6397: Add rtc for
+ MT6359
+Message-ID: <177808148601.2163979.5712342936678937427.robh@kernel.org>
+References: <20260429-mediatek-genio-mt6365-cleanup-v1-0-6f43838be92f@collabora.com>
+ <20260429-mediatek-genio-mt6365-cleanup-v1-1-6f43838be92f@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wCHAqsXXftpv5CgDg--.43926S5
-X-Coremail-Antispam: 1Uf129KBjvJXoW7ZF1xur47GryfZF47ZFy3XFb_yoW8XF18pa
-	yDGF1xCF1xZr4Y9an5A3W3Xr1aqasxA3srt3yv9w1xZF9xCrWDtF4IgF13Xa45KFZFvr17
-	Xw1DtF9rGr45ZFUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07U1SoXUUUUU=
-X-Originating-IP: [240e:b8f:927e:5900:dbee:26f0:1b68:48a4]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbCwx23W2n7XR0yzQAA3f
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260429-mediatek-genio-mt6365-cleanup-v1-1-6f43838be92f@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260506_082503_803684_7DD911DF 
-X-CRM114-Status: UNSURE (   9.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260506_083129_908584_E70C0F97 
+X-CRM114-Status: GOOD (  11.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,43 +85,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Cadence HPA (High Performance Architecture IP) specific link setup
-function cdns_pcie_hpa_host_link_setup() waits for the link to come up
-but does not implement the required 100 ms delay after link training
-completes for speeds > 5.0 GT/s (PCIe r6.0 sec 6.6.1).
 
-Add a call to pcie_wait_after_link_train() immediately after the link is
-confirmed to be up, using the max_link_speed previously stored in struct
-cdns_pcie. This ensures compliance with the specification regardless of
-whether the HPA or LGA path is used.
+On Wed, 29 Apr 2026 11:44:14 +0200, Louis-Alexis Eyraud wrote:
+> The rtc block of MT6359 PMIC is compatible with the one found in MT6358
+> but this compatibility was never expressed in the dt-bindings, so add
+> the missing compatible string for the rtc subnode.
+> 
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+> ---
+>  Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+> 
 
-Signed-off-by: Hans Zhang <18255117159@163.com>
----
- drivers/pci/controller/cadence/pcie-cadence-host-hpa.c | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/drivers/pci/controller/cadence/pcie-cadence-host-hpa.c b/drivers/pci/controller/cadence/pcie-cadence-host-hpa.c
-index 0f540bed58e8..62e939906785 100644
---- a/drivers/pci/controller/cadence/pcie-cadence-host-hpa.c
-+++ b/drivers/pci/controller/cadence/pcie-cadence-host-hpa.c
-@@ -15,6 +15,7 @@
- 
- #include "pcie-cadence.h"
- #include "pcie-cadence-host-common.h"
-+#include "../../pci.h"
- 
- static u8 bar_aperture_mask[] = {
- 	[RP_BAR0] = 0x3F,
-@@ -304,6 +305,8 @@ int cdns_pcie_hpa_host_link_setup(struct cdns_pcie_rc *rc)
- 	ret = cdns_pcie_host_wait_for_link(pcie, cdns_pcie_hpa_link_up);
- 	if (ret)
- 		dev_dbg(dev, "PCIe link never came up\n");
-+	else
-+		pcie_wait_after_link_train(pcie->max_link_speed);
- 
- 	return ret;
- }
--- 
-2.34.1
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
 
