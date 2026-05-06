@@ -4,80 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0368CCD342C
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 15:15:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E9E7CD343B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 15:24:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bFMYULcpZyad3lOGrB5sIpSUs1w1oVFnhviqEt0JPQ4=; b=SIHi8o95ruPjeIpCjeMaSpd6nz
-	NWSZohZ11WEcGctgQNEIBTwpWCjb1Yjqtiu9+VVtEfc86KvuTrPS25XDfSynKccoQrifZvosYOOxi
-	fqnhCPBnNCio61eNxXdebslqtnc2r1b0a6R0qSIFYlMvkd8KzDZa1dGfH57LM0T4Ihfv+zsXgKblg
-	nJns4GF1LoTZvOBaRr5fa6ewP2to5YwuNVJMf55xltQzndaZ/bDzUJDS52eIemEhoYs+y1fK0nMR/
-	XfKSe/f4ijjKaTvscOrYM+a8ldn3k48FcXKz5SlmvYrRiItFWLO5RNyJvzCfuPfPAwDNmx7Hw1USh
-	MbhYNGDw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BNGiJZhgTLPluypgzeJ1aG/d9sbWAAhxnbKSoRw5x1o=; b=pIbcrHbfPhIUVBvQqwn5E2Z1G8
+	27S3Dp5V816JfonCKBHyg1Hc0MmAa0uGhgrmJetTBFMqxC095zjYboRKwTbyEC5vtsnHPE533Sm7H
+	gK+x6mTe4C33OpgT63OeCM9nPvk9b6BGpjvgc4FKec2RKBH/wsSE4NNHalTBaDiW8DCcrENPBEJtr
+	fNwv661md3B2viI0ZYM9zhwLoI7930RFeK8u/5LIO+YuvDfUfozVhezZBKW8avyKtao6KI+lD+4yB
+	nFRbsDSZkfXa1dUJ3EDwTPwLamnSYsuRzkrX/nsNnjHS/XpOAu+awN5TCxX4BbSFG+j5NIzizzw7c
+	2SW0VI8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKdy3-00000001Gwa-3Xp5;
-	Wed, 06 May 2026 15:15:19 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1wKe7H-00000001Iwu-44L1;
+	Wed, 06 May 2026 15:24:51 +0000
+Received: from m16.mail.163.com ([220.197.31.5])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKdy2-00000001Gvf-0CeO;
-	Wed, 06 May 2026 15:15:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1778080494; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=ixS5eLvs7I2dnfRcs+L+HtR6kGENPZFsVABEe4tsnh2HUo5IJt2fCYZ7shtqrsWQuf626cIXVW5wO/YeBr7Ncnx5RUaKXld9ONSi3PEiNpCRb6hh89p06Cw9AA1Kx1+VODFvEZR+VA5YHzDYsYthhK6b8lMoO1hn5ncKhjn6wjI=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1778080494; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=bFMYULcpZyad3lOGrB5sIpSUs1w1oVFnhviqEt0JPQ4=; 
-	b=Q0O59o3IB0rqq6w26v2iWVbikXTNZIo+zRhSCvugTq2aqKDdwhwECflKwpJO5iJnCx1mBiATr2/th+yxNNsjCTRJOM0xabfYmHixQG3Y0T3CrBuskPYsIOJLh4z0rEtAcU2IQiJdIA6lUnoM9TUQPc+WOgYi3YkakGrazdz0Z2w=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1778080494;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=bFMYULcpZyad3lOGrB5sIpSUs1w1oVFnhviqEt0JPQ4=;
-	b=KVpt6Hx66oRhBOLlcguyPd8qg8/xaTUSp/8d1rw/uMMKYqnqKqp1p+Vy88lTEFZp
-	vQlQ21VlfSYQwE8pXCYkeiwCQ2OV4y3CCBMuEy2BQUDZKTgTRyQCTHSCQBPOy3kHc6J
-	J769PGroPn+YM5DmZ+m5aGqUQE/pRB4cbNVvURyI=
-Received: by mx.zohomail.com with SMTPS id 177808049351924.671974264945334;
-	Wed, 6 May 2026 08:14:53 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>,
- Sumit Semwal <sumit.semwal@linaro.org>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Brian Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>,
- "T.J. Mercier" <tjmercier@google.com>,
- Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
- Daniel Almeida <daniel.almeida@collabora.com>,
- Alice Ryhl <aliceryhl@google.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Ketil Johnsen <ketil.johnsen@arm.com>, Ketil Johnsen <ketil.johnsen@arm.com>
-Cc: dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
- linaro-mm-sig@lists.linaro.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 6/8] drm/panthor: Explicit expansion of locked VM region
-Date: Wed, 06 May 2026 17:14:45 +0200
-Message-ID: <kC1hpRBAS8uGaw7vVFyW2g@collabora.com>
-In-Reply-To: <20260505140516.1372388-7-ketil.johnsen@arm.com>
-References: <20260505140516.1372388-1-ketil.johnsen@arm.com>
- <20260505140516.1372388-7-ketil.johnsen@arm.com>
+	id 1wKe7F-00000001Iu6-48dK;
+	Wed, 06 May 2026 15:24:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=BN
+	GiJZhgTLPluypgzeJ1aG/d9sbWAAhxnbKSoRw5x1o=; b=lgrgDVctqQNdhZIm1t
+	PcEbxw4/HmqAapBQyeaO8ydZ1v915P9ACRci6PFsg1rsX/KPMVEbYTfocgsylCtR
+	u6Gce0AmIoirQwtAuLx8wuzT5nrymkOjbCKp1BRUrhDHT3oWq3Qb9zfcWFVpoKSQ
+	75ceAByEc1iuse/J93QGXRVH4=
+Received: from zhb.. (unknown [])
+	by gzga-smtp-mtada-g0-0 (Coremail) with SMTP id _____wCHAqsXXftpv5CgDg--.43926S4;
+	Wed, 06 May 2026 23:24:11 +0800 (CST)
+From: Hans Zhang <18255117159@163.com>
+To: bhelgaas@google.com,
+	lpieralisi@kernel.org,
+	kwilczynski@kernel.org,
+	mani@kernel.org,
+	vigneshr@ti.com,
+	jingoohan1@gmail.com,
+	thomas.petazzoni@bootlin.com,
+	pali@kernel.org,
+	ryder.lee@mediatek.com,
+	jianjun.wang@mediatek.com,
+	claudiu.beznea.uj@bp.renesas.com,
+	mpillai@cadence.com
+Cc: robh@kernel.org,
+	s-vadapalli@ti.com,
+	linux-omap@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Hans Zhang <18255117159@163.com>
+Subject: [PATCH v2 2/8] PCI: cadence: LGA: Add max_link_speed field and 100 ms delay after link training
+Date: Wed,  6 May 2026 23:23:40 +0800
+Message-Id: <20260506152346.166056-3-18255117159@163.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260506152346.166056-1-18255117159@163.com>
+References: <20260506152346.166056-1-18255117159@163.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: _____wCHAqsXXftpv5CgDg--.43926S4
+X-Coremail-Antispam: 1Uf129KBjvJXoW7ZFWfZryUWw43Wr43uw17ZFb_yoW5JFWfpa
+	yDWryfGF1IqrWY9a1kZa4UXryaq3Z8C347tws2k34xWr17CrW5JF42gF1fJFy3KrZrZry7
+	ZF1DtF9rGr4ayFUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0ziM7KxUUUUU=
+X-Originating-IP: [240e:b8f:927e:5900:dbee:26f0:1b68:48a4]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbCxBu2Wmn7XRs43gAA3B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260506_081518_117524_BA46C3F5 
-X-CRM114-Status: GOOD (  13.89  )
+X-CRM114-CacheID: sfid-20260506_082450_549781_F38B0510 
+X-CRM114-Status: GOOD (  11.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,132 +89,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tuesday, 5 May 2026 16:05:12 Central European Summer Time Ketil Johnsen =
-wrote:
-> Currently the panthor_vm_lock_region() function will implicitly expand
-> an already locked VM region. This can be problematic because the caller
-> do not reliably know if it needs to call panthor_vm_unlock_region()
-> or not.
->=20
-> Worth noting, there is currently no known issues with this as the code
-> is written today.
->=20
-> This change introduces panthor_vm_expand_region() which will only work
-> if there is already a locked VM region. This again means that the
-> original lock and unlock functions can work as a pair. This pairing is
-> needed for subsequent protected memory changes.
->=20
-> Signed-off-by: Ketil Johnsen <ketil.johnsen@arm.com>
-> ---
->  drivers/gpu/drm/panthor/panthor_mmu.c | 69 +++++++++++++++++++--------
->  1 file changed, 50 insertions(+), 19 deletions(-)
->=20
+The Cadence LGA (Legacy Architecture IP) PCIe host controller currently
+lacks the mandatory 100 ms delay after link training completes for speeds
+> 5.0 GT/s, as required by PCIe r6.0 sec 6.6.1.
 
-While trying this series, I attempted my usual
-`modprobe -r panthor && modprobe panthor protected_heap_name=3Ddefault_cma_=
-region`.
+Add a 'max_link_speed' field to struct cdns_pcie to record the maximum
+supported link speed (or the currently configured speed). In the common
+host layer function cdns_pcie_host_start_link(), after the link has been
+successfully established, call pcie_wait_after_link_train() to insert the
+required delay if max_link_speed > 2.
 
-Unfortunately, it oopses when attempting to unmap the sg for a bo labeled
-"FW section" on panthor module unload, and I bisected it to this patch.
+Glue drivers must set max_link_speed appropriately (e.g., from the device
+tree property "max-link-speed") to enable the delay.
 
-The oops:
+Signed-off-by: Hans Zhang <18255117159@163.com>
+---
+ drivers/pci/controller/cadence/pcie-cadence-host-common.c | 4 ++++
+ drivers/pci/controller/cadence/pcie-cadence.h             | 2 ++
+ 2 files changed, 6 insertions(+)
 
-[  598.515550] Unable to handle kernel paging request at virtual address 00=
-00000000400267
-[  598.516864] Mem abort info:
-[  598.517676]   ESR =3D 0x0000000096000004
-[  598.518560]   EC =3D 0x25: DABT (current EL), IL =3D 32 bits
-[  598.520414]   SET =3D 0, FnV =3D 0
-[  598.521275]   EA =3D 0, S1PTW =3D 0
-[  598.522099]   FSC =3D 0x04: level 0 translation fault
-[  598.523069] Data abort info:
-[  598.524311]   ISV =3D 0, ISS =3D 0x00000004, ISS2 =3D 0x00000000
-[  598.525566]   CM =3D 0, WnR =3D 0, TnD =3D 0, TagAccess =3D 0
-[  598.526850]   GCS =3D 0, Overlay =3D 0, DirtyBit =3D 0, Xs =3D 0
-[  598.527905] user pgtable: 4k pages, 48-bit VAs, pgdp=3D0000000104056000
-[  598.529019] [0000000000400267] pgd=3D0000000000000000, p4d=3D00000000000=
-00000
-[  598.530170] Internal error: Oops: 0000000096000004 [#1]  SMP
-[  598.531158] Modules linked in: btusb btrtl btmtk btintel btbcm bluetooth=
- ecdh_generic ecc kpp snd_soc_hdmi_codec cfg80211 r8169 rfkill_gpio pwm_fan=
- rfkill snd_soc_es8316 rtc_hym8563 rk805_pwrkey at24 fusb302 tcpm aux_hpd_b=
-ridge display_connector snd_soc_simple_card phy_rockchip_samsung_hdptx phy_=
-rockchip_usbdp rockchip_thermal typec phy_rockchip_naneng_combphy rockchip_=
-saradc industrialio_triggered_buffer kfifo_buf rockchipdrm inno_hdmi dw_dp =
-hantro_vpu rockchip_vdec dw_mipi_dsi2 v4l2_jpeg v4l2_vp9 rockchip_rga dw_mi=
-pi_dsi v4l2_h264 synopsys_hdmirx v4l2_dv_timings spi_rockchip_sfc videobuf2=
-_dma_contig videobuf2_dma_sg v4l2_mem2mem videobuf2_memops dw_hdmi_qp onboa=
-rd_usb_dev analogix_dp videobuf2_v4l2 videobuf2_common snd_soc_rockchip_i2s=
-_tdm dw_hdmi videodev mc drm_display_helper nvme cec panthor(-) drm_gpuvm d=
-rm_exec gpu_sched drm_dp_aux_bus drm_dma_helper drm_client_lib nvme_core dr=
-m_kms_helper drm pci_endpoint_test backlight snd_soc_audio_graph_card snd_s=
-oc_simple_card_utils fuse dm_mod
-[  598.541237] CPU: 6 UID: 0 PID: 806 Comm: modprobe Not tainted 7.1.0-rc2-=
-00726-g8ab0a3092b56-dirty #2 PREEMPT
-[  598.542733] Hardware name: Radxa ROCK 5T (DT)
-[  598.543746] pstate: 80400009 (Nzcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=
-=3D--)
-[  598.544991] pc : dma_unmap_sg_attrs (kernel/dma/mapping.c:0)
-[  598.546021] lr : panthor_gem_free_object (include/linux/dma-mapping.h:56=
-5 drivers/gpu/drm/panthor/panthor_gem.c:308 drivers/gpu/drm/panthor/panthor=
-_gem.c:469) panthor
-[  598.547180] sp : ffff80008835bb90
-[  598.548123] x29: ffff80008835bb90 x28: ffff00012610bf00 x27: 00000000000=
-00000
-[  598.549412] x26: 0000000000000000 x25: 0000000000000000 x24: 00000000000=
-00000
-[  598.550696] x23: ffff000127194600 x22: ffff0001271943d0 x21: ffff0001186=
-71000
-[  598.551984] x20: ffff000127194200 x19: ffff000127194600 x18: 00000000002=
-ab980
-[  598.553273] x17: 00000000002ab980 x16: ffffa39a6b372a04 x15: 00000000000=
-00000
-[  598.554568] x14: 0000000000000010 x13: 0000000000000000 x12: 00000000000=
-0003c
-[  598.555864] x11: 0000000000000002 x10: ffff000100a5d000 x9 : ffff0001186=
-71000
-[  598.557164] x8 : ffff000102f8b490 x7 : ffff000149569000 x6 : ffff0001495=
-69000
-[  598.558461] x5 : ffff000100faa7e8 x4 : 0000000000000000 x3 : 00000000000=
-00000
-[  598.559763] x2 : 0000000000000010 x1 : ffff000127194000 x0 : 00000000004=
-0000f
-[  598.561069] Call trace:
-[  598.561961]  dma_unmap_sg_attrs (kernel/dma/mapping.c:0) (P)
-[  598.563038] panthor_gem_free_object (include/linux/dma-mapping.h:565 dri=
-vers/gpu/drm/panthor/panthor_gem.c:308 drivers/gpu/drm/panthor/panthor_gem.=
-c:469) panthor
-[  598.564218] drm_gem_object_free (drivers/gpu/drm/drm_gem.c:1148) drm
-[  598.565386] panthor_kernel_bo_destroy (include/linux/kref.h:65 include/d=
-rm/drm_gem.h:565 include/drm/drm_gem.h:578 drivers/gpu/drm/panthor/panthor_=
-gem.c:1317) panthor
-[  598.566575] panthor_fw_unplug (drivers/gpu/drm/panthor/panthor_fw.c:1306=
-) panthor
-[  598.567705] panthor_device_unplug (drivers/gpu/drm/panthor/panthor_devic=
-e.c:103) panthor
-[  598.568878] panthor_remove (drivers/gpu/drm/panthor/panthor_drv.c:1846) =
-panthor
-[  598.569991]  platform_remove (drivers/base/platform.c:1435)
-[  598.571029]  device_release_driver_internal (drivers/base/dd.c:619 drive=
-rs/base/dd.c:1352 drivers/base/dd.c:1375)
-[  598.572209]  driver_detach (drivers/base/dd.c:1438)
-[  598.573237]  bus_remove_driver (drivers/base/bus.c:825)
-[  598.574304]  driver_unregister (drivers/base/driver.c:277)
-[  598.575363]  platform_driver_unregister (drivers/base/platform.c:920)
-[  598.576494] cleanup_module (drivers/gpu/drm/panthor/panthor_devfreq.c:13=
-4) panthor
-[  598.577617]  __arm64_sys_delete_module (kernel/module/main.c:863 kernel/=
-module/main.c:804 kernel/module/main.c:804)
-[  598.578751]  invoke_syscall (arch/arm64/kernel/syscall.c:35 arch/arm64/k=
-ernel/syscall.c:49)
-[  598.579794]  el0_svc_common (arch/arm64/kernel/syscall.c:121)
-[  598.580842]  do_el0_svc (arch/arm64/kernel/syscall.c:140)
-[  598.581862]  el0_svc (arch/arm64/kernel/entry-common.c:723)
-[  598.582853]  el0t_64_sync_handler (arch/arm64/kernel/entry-common.c:742)
-[  598.583949]  el0t_64_sync (arch/arm64/kernel/entry.S:594)
-
-Kind regards,
-Nicolas Frattaroli
-
+diff --git a/drivers/pci/controller/cadence/pcie-cadence-host-common.c b/drivers/pci/controller/cadence/pcie-cadence-host-common.c
+index 2b0211870f02..51376f69d007 100644
+--- a/drivers/pci/controller/cadence/pcie-cadence-host-common.c
++++ b/drivers/pci/controller/cadence/pcie-cadence-host-common.c
+@@ -14,6 +14,7 @@
+ 
+ #include "pcie-cadence.h"
+ #include "pcie-cadence-host-common.h"
++#include "../../pci.h"
+ 
+ #define LINK_RETRAIN_TIMEOUT HZ
+ 
+@@ -115,6 +116,9 @@ int cdns_pcie_host_start_link(struct cdns_pcie_rc *rc,
+ 	if (!ret && rc->quirk_retrain_flag)
+ 		ret = cdns_pcie_retrain(pcie, pcie_link_up);
+ 
++	if (!ret)
++		pcie_wait_after_link_train(pcie->max_link_speed);
++
+ 	return ret;
+ }
+ EXPORT_SYMBOL_GPL(cdns_pcie_host_start_link);
+diff --git a/drivers/pci/controller/cadence/pcie-cadence.h b/drivers/pci/controller/cadence/pcie-cadence.h
+index 574e9cf4d003..e222b095d2b6 100644
+--- a/drivers/pci/controller/cadence/pcie-cadence.h
++++ b/drivers/pci/controller/cadence/pcie-cadence.h
+@@ -86,6 +86,7 @@ struct cdns_plat_pcie_of_data {
+  * @ops: Platform-specific ops to control various inputs from Cadence PCIe
+  *       wrapper
+  * @cdns_pcie_reg_offsets: Register bank offsets for different SoC
++ * @max_link_speed: maximum supported link speed
+  */
+ struct cdns_pcie {
+ 	void __iomem		             *reg_base;
+@@ -98,6 +99,7 @@ struct cdns_pcie {
+ 	struct device_link	             **link;
+ 	const  struct cdns_pcie_ops          *ops;
+ 	const  struct cdns_plat_pcie_of_data *cdns_pcie_reg_offsets;
++	int				     max_link_speed;
+ };
+ 
+ /**
+-- 
+2.34.1
 
 
