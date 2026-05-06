@@ -4,59 +4,148 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E9F3FF8855
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2026 21:57:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A095CD3427
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 00:00:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fSFWp3erMZ3YNZR58ox5Qm8i/vph5WjE6Z6SZf5MXoA=; b=CLydq6NY8H6hIvAPfz/BqGSKhY
-	oCn/HyOqDn09hn+F7ywAGMvbqx1JH2/Q6+iIUSf/J9FUG+GyWEjpvFaQOliHRKbJcK4RwbVPPt8MI
-	OVsalOBkCRZP/QHskDj5m3q+3eJ0vgaSm4+6cKFRIr1iEvRwSaW/6BKEXQ3bQwvrWc6wOS7D6qVo+
-	2tFMDvRwcSRiWTvFpngaaf+VDuggfrTIAV+sKd5AFL66TcV57jPx0cvNOIbnCLe9GoWe8gGfHCn7h
-	jwqLK8sQOHoZMLpxmKh1M2E1vKOkFh4CB2F4GbY4JMBPbWq0HRgUthQsuw/sV3CHeMGrse2xkGbg7
-	63ZnRwiQ==;
+	bh=1YNIUtYOAEzFl5jRvxqILmZomuAINmo2Khle6yMwqNg=; b=RyBkHRhw/ek4AYTUdxkSlrQQ0e
+	U3V5vp/pgBIl8mRKS48WwLxnGMnYXll9JrYnayfuKX7QEZagLuamLdBopQCdz4aRqgYvxtWBHAr9T
+	NOtwE6WkE+kAh2JefLg+3YEda264J3Kuc7lrS2hCMvKPJyawhGYMhnsZwR4CxPU4Vp15hS9/axfq5
+	aQjVQSK6MOvAthc003Ddb6T5kbm+jYy8vVjFPPsgTe1AxFwY/e7mGMcYv5QdJWZOkWZVLVjZG3aEj
+	lxw2YmR9SFTRoenRf6lzGSGCqDCIByZcZeRBTGx3gDgE/M9c1DJNBPoPr/DJuAwAJTUHyNLjTCQlB
+	NNsGbrtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKNly-0000000Hb0L-0z1L;
-	Tue, 05 May 2026 21:57:46 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKNlx-0000000Hazd-1Khl;
-	Tue, 05 May 2026 21:57:45 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 518796024D;
-	Tue,  5 May 2026 21:57:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A6846C2BCB4;
-	Tue,  5 May 2026 21:57:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778018264;
-	bh=19QX2DAOb5GW7mj1Ise2H6sMk8IFcDd7mtrS9rwTSNI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LouK213KjLKRgizKh9mSQ5gog/EDLXt1h/VOfmoDGf+rQ43AedS0+KhancFJBKe43
-	 r8Y0geTA+aNfyTCNS//mhuXbhipEnX6xytHJyq3s9GN2gIkYq8KaWPNwY7swOlZ1yj
-	 V8W4S45BtrImyyfUNMNbYxlTn0vv3JzC0AKQhJ21Tb2PNkyMVwM3DAzfWdHKx2zlnK
-	 0SBNecfkb9j2blcLjM33nWNvoIQGOS6/5FbFbVG+v9q43+YQuyx4yg75f3301L2sET
-	 ssis6JDZkeHjZOtbLvAbxwwSrfUChKchMcK/pMAwCyX3S6mhz+SGqG5Vh4uLGlp7nc
-	 GFlshaPtmFyzQ==
-Date: Tue, 5 May 2026 23:57:41 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] MAINTAINERS: add myself and Lorenzo Bianconi as Airoha
- SoC co-maintainers
-Message-ID: <afpn1QKMV3fGqsyl@lore-desk>
-References: <20260505122416.2609-1-ansuelsmth@gmail.com>
+	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1wKPgp-00000000Gs3-2BlS;
+	Wed, 06 May 2026 00:00:35 +0000
+Received: from mail-francecentralazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c20a::7] helo=PA4PR04CU001.outbound.protection.outlook.com)
+	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1wKPgm-00000000Gqz-2OdT;
+	Wed, 06 May 2026 00:00:33 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=SOllEwp6DeG/eyRZXCgBb5tIfMaTa9j/DdNJ6/74ON66j9exOapw+J8wBN1OojSNs97rKofU8B/v4D2V1ndpis5v/g0iLwZ5wiVIjPpnb+RCSt3o2wZ5J3Wda2atIq+pA1ZSKJIjmBrr6bCBzbFLCO54hlG1FAZTW3UDopyCpJzvZTodseumZWm1VcSx2cSE0CyueaH0LEbNdYMCRG7PfedauD5Ol1r4IGiiisLG+Ykk6s7taD59grcSc79MQSkj9Ye3SXIAZbw2ljOMyDQWI58VgNTU8iOSWOkka3Eq1I3aFiBv8e4ZecwP8oXnCgOgT+EnM0HYXJjs9Xcr7Xq0zQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=1YNIUtYOAEzFl5jRvxqILmZomuAINmo2Khle6yMwqNg=;
+ b=JPe6pFI7H8I8LltszQLOlI2XacAiePnoyUIfxYtpPoxkgUTjAuUXmYz0ZvXoBaZ+dmuDN3oV199R/Eu/eW6XRNl1PRvdl3aJugvb9RJauG3UBpOXpI8TReJcnKJVWpU3mXPuov3MXdr6PX67U0wZsWx0jhe4oMnuZmhPNeWdhFf2+79FsLduvcJiLk2Bk/VXOsvt+iVnGmG4WffmNp/VC5wYIioFNObCjipPdNML2aex/HpsDscfLrZ1SI953QJuZG92xSnW9ts05B+C66k1fwcZqlPf3W5U4yrnuxrBdu6H8Mbe0RXPLLY9sFG82OvmEgtqMX6awQGpmt32JAxECQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=genexis.eu;
+ dkim=pass header.d=genexis.eu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=genexis.eu;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=1YNIUtYOAEzFl5jRvxqILmZomuAINmo2Khle6yMwqNg=;
+ b=mZhCMiXoWVk2Xi5CXnCoZrKdsRta7vcB9T6mm4uXlEET14tVtf6GZyBt8CoiNJ+PaKUuB/cDCngZIHsWs/KPv6tNIsMQv+6zsfAJpLmAFGFgYOlgxLfqM7Pj37pCUahbSqyXUOghl1zcBfaAOCjAs4P5SkD8yKOZUqU97gyjPbVSgOnOmMUqBb57gtJrbUCaUNmKioPbg67PDuhgQ6ZNivH42qjVyoY/2qTfU4hcbh1AA8mwSXDkIAWhVWHazu5bkkghctL9gBikqnyELwtcgdzB3nnIDvG9Qhzr+FuXxAx+eLCfZFmsc4ZAY0VgB8yBH0QY0549BI1CTHkd0vqFEw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=genexis.eu;
+Received: from DB9PR08MB6697.eurprd08.prod.outlook.com (2603:10a6:10:2ad::14)
+ by DU2PR08MB10132.eurprd08.prod.outlook.com (2603:10a6:10:49a::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9870.25; Wed, 6 May
+ 2026 00:00:23 +0000
+Received: from DB9PR08MB6697.eurprd08.prod.outlook.com
+ ([fe80::bdec:3e95:6614:441f]) by DB9PR08MB6697.eurprd08.prod.outlook.com
+ ([fe80::bdec:3e95:6614:441f%6]) with mapi id 15.20.9870.023; Wed, 6 May 2026
+ 00:00:23 +0000
+Message-ID: <5f3b3b38-1b53-4b9a-9673-de4ca321b3f1@genexis.eu>
+Date: Wed, 6 May 2026 02:00:20 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [net-next RFC PATCH v5 08/10] dt-bindings: net: pcs: Document
+ support for Airoha Ethernet PCS
+To: Christian Marangi <ansuelsmth@gmail.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Russell King
+ <linux@armlinux.org.uk>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Nathan Chancellor <nathan@kernel.org>,
+ Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
+ Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>,
+ Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ llvm@lists.linux.dev
+References: <20260505182713.27644-1-ansuelsmth@gmail.com>
+ <20260505182713.27644-9-ansuelsmth@gmail.com>
+Content-Language: en-US
+From: Benjamin Larsson <benjamin.larsson@genexis.eu>
+In-Reply-To: <20260505182713.27644-9-ansuelsmth@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: GVZP280CA0081.SWEP280.PROD.OUTLOOK.COM
+ (2603:10a6:150:274::8) To DB9PR08MB6697.eurprd08.prod.outlook.com
+ (2603:10a6:10:2ad::14)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="MAEa3y0gXLrhHdXZ"
-Content-Disposition: inline
-In-Reply-To: <20260505122416.2609-1-ansuelsmth@gmail.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DB9PR08MB6697:EE_|DU2PR08MB10132:EE_
+X-MS-Office365-Filtering-Correlation-Id: e881d99e-7dcf-45e2-c583-08deab027849
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|7416014|376014|1800799024|921020|56012099003|18002099003|22082099003;
+X-Microsoft-Antispam-Message-Info: AtjM9YpRxieDJ5F7seLmYaefnBV6lXyaCcoJEFalH5uSETeGUFIwLmx88rRUedRwBztN1WbAht/+oXqPeE+6vg3Xx71/r8G+pNe8o8uOfKe1i37vN6GrL43POxdR66kIzVinXHHLSBHeeiYz/5n4M613s2PuMPsjqVKMAPZHjOF/SqJ3+xvkVWK9DsKb/PSRPOcbx5iolzNxpqrfGII+cEApvIva3XaFHqrJ6YL2jkSY+N0UjlfChGpSV9JFwwgb9/b0XdjlODB6GD07hofUEddabnMeDa7HFPgbiMl1vF/MTXlRwsHLw0XgtvhzScjNCU0oLImqc7kBeIlhhM/H5xe4+8/bQ+lS/N3wJC3pqcBWK9RjUObVJEJK9uPxfH3yYXtmgtvQrOROkeyJNHUaElI1e8MiPf3+zcbei0k8AM0alnus3l0EFdH2K3HwA+FVj+5YVOqo6ltl6Q/3lzJxt3WOrkxOFIMNQigZ1eaBvaZnPT9NiWb9wMHhgj27rMdNlv070Q1JUNGpecy8yo9Knuciz966h6J2MW68H1teE7y1Yy5r2MTisQ6ebxm9LqfcUiLmydh85vF9Cot83QiVzDAtzNuIewEa7HTR2vvG0xz8DOcixot6YanwxnM0RO3qVpXJn7luFIVj7F/Yp1kJbahtP5KiqHxsh7wdrnG/JL2yni3F4Jy5QamzJDRsh4T1
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DB9PR08MB6697.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(7416014)(376014)(1800799024)(921020)(56012099003)(18002099003)(22082099003);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Q3VhV0lpZ296VS9SdEo3RWs3NDVWZTYwaGNPWHA3alNOaEdhS1JNUkpDb1hC?=
+ =?utf-8?B?SGpsdnl0eDdRUWFYSzVteHc1VGk2QWZQbW95bWhsL1UxVjZEWmlHakVhbXp2?=
+ =?utf-8?B?T05xMEw4MGFJRmZMamQ3akRocW0zNnc1L21UaEdBdk05YXJ1VHE1VzBGQ0tV?=
+ =?utf-8?B?bFFjMnUwTmsxbEd2QzV5Y1M1cG1mYUZuRTJPL2FYRFJTOUcwYzNkZ09yWHhZ?=
+ =?utf-8?B?T3hsNnQvbGpQU0xjVjVNRlZhRk9rbEhIZjk5QzV3elZ4SmtCUmNVNEozUXhV?=
+ =?utf-8?B?YTZJTzVxVU1FRy85cENCdW9iNy9UcjhqZUtNcXZQWVBPQ2d6TStJb1loa2Fw?=
+ =?utf-8?B?Z0FRcThpVmFUaTRVSmh3eUhVV2pQOGYxWjNRQ2hIaVFiR2lIUmM2QWxRY0th?=
+ =?utf-8?B?eGd2bFU3Y2ZPSFp5MlJlNW41VVc0b1FpY1dzRld0Z1pDK3NtbXphdE5FNnlU?=
+ =?utf-8?B?V1llbmcwTm1acmRBSGRvWVhCWTErelJPdGtzak5sL2dWYmh1RFFVdXhzVDh4?=
+ =?utf-8?B?eUZqTDQzcGtZRjJSMHRwTlVqUzBQMHMvM2RaTTdSWitDdndEK0RGMzRDNzc2?=
+ =?utf-8?B?eFc2RDl1dUl4Q2xaWUZvaDU5cmlZVUU4MUdlVHVGZ0YyTFptM0dtMjlRQ0hx?=
+ =?utf-8?B?RmZpOHkrc2hlUHdkQ3VYbXFTVENKWHNHUjRPOVRzT2h4SUR2QThENWdNd1dJ?=
+ =?utf-8?B?YStHNFlha0lrMnJBOTA1MmxsZHNqTmZEeWRhZ1NmbUJJZkpWdi9qb3VnTVhZ?=
+ =?utf-8?B?THFNQ05RbjJkS2xpQWlYWjdxclpDbFZrSzh0dUZscGdka05Rem45WG56NmxX?=
+ =?utf-8?B?dWhPSzR6R084UEFtME9wQjF0VXBFUUdlV3RFcFNSLy9yVkhxV1NOcXNveTdF?=
+ =?utf-8?B?cUFGTE9HRWtLZnp3VWVJei8vSnFBcGF5NnYxM3oxSmVkWHpua1M2WktKN25q?=
+ =?utf-8?B?YUtGZWhQWkVOTDBTcFpwdUgyeWVsQm1jNitHVmNyRGNFSzRmaGZlUUxBQ1J1?=
+ =?utf-8?B?S1JvZHFaTjlYcmttQ2pMNTR1bEF6dk1pdXB0cmpTOGJ4amU2N1k3c0h4aTQw?=
+ =?utf-8?B?QmhLbTd5alFtRDJHQUdkZWowY1JiN09ZUnpkM1NIOS9meDUyUFhDdy9acjcv?=
+ =?utf-8?B?N2w3TjFGZS9iZEpVUUhNR1JMRlRYd1FpaEJxbGsyOTJwWkhxbk5MODd3UnlQ?=
+ =?utf-8?B?RlViODdVWXAwTmtqNi9vS2E0U0pyWnFBVWJnY0NpbWdrbEsvNndmZmpMR3JE?=
+ =?utf-8?B?WHh5T2JjaVdNdHBrT3B3VTRnTHFTUHRoRkFPd3krOUluNUxnREg5MXVuZWlC?=
+ =?utf-8?B?a01GdkV2c1pVTEJWbmJSazNjRVFoaFpBNDFJalFHUjNLU1dnOEUwT1NXaHdW?=
+ =?utf-8?B?SStIWERPZVpkTHRJTmNyYkszcm1xRENodDMwdHZnMlhyVVhwNkZyTForaEpy?=
+ =?utf-8?B?OVZLOVEyeGtjbVByc0pOaVhsV3ZVWmQ2bWt3WWJsS2pMTmdUYTZCOVVQSWZC?=
+ =?utf-8?B?NnMvMEg5MVdEZ2ZsMWFVeUpoSGlXRSthc2Fkc2xvd0lmNkp2TDlmUGhCNmo1?=
+ =?utf-8?B?Zm51RDBlYk95enZoM3JIdCtMKzgvWTU1L21QMGg4eWs3dVc4eHRUZ1FJNy85?=
+ =?utf-8?B?UlhtSktQSlJoT2MvdGZKYkVUVVQxbnp1TlJHNHZRZDFQVklsMHd3alU5dkJK?=
+ =?utf-8?B?ZEZBWU1saHJOaXFOOHdoQmllWS93QmthdlczbVA5WitJL2VVMGRad082Rllo?=
+ =?utf-8?B?ZjZVczE4aU55dzFhVVU1M29uV3pKcmhidStPeHl1ZmtJWGpBbzFROXhIVzg5?=
+ =?utf-8?B?c29FdWt5QXE0dkJrUEVpK3RSYkdPbUZQd0ExZGgxL29ITGVPSnlxbU9rZkFF?=
+ =?utf-8?B?eEpXdjhJemV2bmQ1Vi9oN00zUG5sUW05c09EWjdlZGtFQnJEQXp2ZzFOajlh?=
+ =?utf-8?B?cjBvSEhLSWNSamhDRjIvdCtMSkxQM2UrZlhhaWF1VHYwS1BHbC9uTDRRc2Uz?=
+ =?utf-8?B?UVZLR3BkZGM0Mnc5MFIyRXNFMS81NENQamt5d3RXVjZFMEc2eXA1aUhhSFlQ?=
+ =?utf-8?B?TUhzRFFxZDkrVUpaancrWERCc2pTaStQMnVkMTQyWXQ0cDFRM0hDQzBDQ2tL?=
+ =?utf-8?B?V201bHVxTTNSUVBtMGhDTlROaW82dFBOWGVvVnpVQ2pURTJiSlkzeWxrbG5x?=
+ =?utf-8?B?VDdjZ3lXMXBBV3FvdkZrNzNmUjdNM2REWlNMNTlvYVAvdkxhcUJWOFFMcU9Q?=
+ =?utf-8?B?Rk5nblIxanM5SlpDczNKQ0xvTERMOUFNOWhNTE80VnFSZHNoOUJmcngrNUdF?=
+ =?utf-8?B?Z1RaaWNRRXFoNmhvaGhzcWRLa3pPZEtBSnUrVHVxYjJsUi9XOUlTYjlpVkNw?=
+ =?utf-8?Q?nhfJ2Qa1qKr1ul0c=3D?=
+X-OriginatorOrg: genexis.eu
+X-MS-Exchange-CrossTenant-Network-Message-Id: e881d99e-7dcf-45e2-c583-08deab027849
+X-MS-Exchange-CrossTenant-AuthSource: DB9PR08MB6697.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 May 2026 00:00:23.4866
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: AfaybxIm3fCPu3JQQY2hV5/l8xWNE7VTzBbc3q88hHQ81bkYN9/Bz/7sj/BMaGyH1rvrngbr9Y61B/V3aKOBA1jEHZYpYQboNylIiWYGQyQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU2PR08MB10132
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260505_170032_645339_658685A3 
+X-CRM114-Status: GOOD (  13.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,65 +160,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi.
 
---MAEa3y0gXLrhHdXZ
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On 05/05/2026 20:27, Christian Marangi wrote:
+> Document support for Airoha Ethernet PCS for AN7581 SoC.
+>
+> Airoha AN7581 SoC expose multiple Physical Coding Sublayer (PCS) for
+> the various Serdes port supporting different Media Independent Interface
+> (10BASE-R, USXGMII, 2500BASE-X, 1000BASE-X, SGMII).
 
-> The development and integration of patches for the Airoha SoC stalled a
-> bit lately with the result of some patches getting lost, not applied or
-> even flagged as accepted, archived but never merged. The Airoha SoC, given
-> the similarities with the Mediatek SoC, all goes through the mediatek tree
-> and it's understandable, given the amount of traffic, that some patch for
-> a different SoC are missed.
->=20
-> To help and improve the situation, add myself and Lorenzo Bianconi as
-> co-maintainers of the Airoha SoC.
->=20
-> While at it also change the status from "Odd fixes" to "Maintained" as
-> there is an active effort of maintaining this SoC.
+10GBASE-R
 
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
-
->=20
-> Cc: Lorenzo Bianconi <lorenzo@kernel.org>
+> This follow the new PCS provider with the use of #pcs-cells property.
+>
 > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 > ---
->  MAINTAINERS | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
->=20
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 21c0ef0b9ce5..bd814f20213d 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -2385,9 +2385,11 @@ N:	owl
->  ARM/AIROHA SOC SUPPORT
->  M:	Matthias Brugger <matthias.bgg@gmail.com>
->  M:	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> +M:	Christian Marangi <ansuelsmth@gmail.com>
-> +M:	Lorenzo Bianconi <lorenzo@kernel.org>
->  L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
->  L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
-> -S:	Odd Fixes
-> +S:	Maintained
->  F:	arch/arm/boot/dts/airoha/
->  F:	arch/arm64/boot/dts/airoha/
-> =20
-> --=20
-> 2.53.0
->=20
+>   .../bindings/net/pcs/airoha,pcs.yaml          | 112 ++++++++++++++++++
+>   1 file changed, 112 insertions(+)
+>   create mode 100644 Documentation/devicetree/bindings/net/pcs/airoha,pcs.yaml
+>
+> diff --git a/Documentation/devicetree/bindings/net/pcs/airoha,pcs.yaml b/Documentation/devicetree/bindings/net/pcs/airoha,pcs.yaml
+> new file mode 100644
+> index 000000000000..8bcf7757c728
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/net/pcs/airoha,pcs.yaml
+> @@ -0,0 +1,112 @@
+> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/net/pcs/airoha,pcs.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Airoha Ethernet PCS and Serdes
+> +
+> +maintainers:
+> +  - Christian Marangi <ansuelsmth@gmail.com>
+> +
+> +description:
+> +  Airoha AN7581 SoC expose multiple Physical Coding Sublayer (PCS) for
+> +  the various Serdes port supporting different Media Independent Interface
+> +  (10BASE-R, USXGMII, 2500BASE-X, 1000BASE-X, SGMII).
 
---MAEa3y0gXLrhHdXZ
-Content-Type: application/pgp-signature; name=signature.asc
+10GBASE-R
 
------BEGIN PGP SIGNATURE-----
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - airoha,an7581-pcs-eth
+> +      - airoha,an7581-pcs-pon
+> +
+> +  reg:
+> +    items:
+> +      - description: XFI MAC reg
+> +      - description: HSGMII AN reg
+> +      - description: HSGMII PCS reg
+> +      - description: MULTI SGMII reg
+> +      - description: USXGMII reg
+> +      - description: HSGMII rate adaption reg
+> +      - description: XFI Analog register
+> +      - description: XFI PMA (Physical Medium Attachment) register
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCafpn1QAKCRA6cBh0uS2t
-rBQsAP41fwEIU1qNAMBinI+XVpNsQh3A6FnlkdpojwP/m50TQwEAqCFv1I/rbTi9
-yBfKpoQ1M5UlTikfxWb4IKxzPChvdAs=
-=dKry
------END PGP SIGNATURE-----
+reg or register ?
 
---MAEa3y0gXLrhHdXZ--
+
+MvH
+
+Benjamin Larsson
+
+
 
