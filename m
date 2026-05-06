@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4529CCD342F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 01:40:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 699A9CD343B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 01:40:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=wR2Thhm3Jq6hlQLmRsOOuFA0pevOR+HEZ2FYTK0h4IE=; b=CToVkqWgagSkQL
-	LLTlFIt6miLvnMjecUL+JtqSjm7+iaYkTvqRareOFUxJo9gKNuqs7FRWsmn53i5Iu9RlOQmvW+nrI
-	F3ks7MFY3Gu4XrDdvwSDZMcxpgvzbtQ+kL62mncgOXgI0u0PrFmhDZWayXmAtkSbMfDdzAGjtyPSG
-	ge/nfVsBe0mUtq8A8Ym4wKIpl2L3R1X3EVk1/su33W25ZbrrGwFeuJIi3nAtATIY3YU09b5CPefLg
-	PuD6SdBYO5g5vzYJIqKjemkRd+4RH+MYU95nGOOHiW16IvTMGoX2v0zvtXtXB++DOYvM+JqLNNISh
-	bz2w1XjojpMjYFuUz10Q==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=04ncidu2w9RP0dQrMmKnvCZ7U/5L1OOGEwGtLj11dxw=; b=R2bDgECeP3Pm+jgiR9GIFvOeQQ
+	xiUTm1qeQK3icj93nnD2og/n0OA56DR7DmZnyOab21/EwJ9UeiC4w5e8aOJXcZp9A5ULuO5eD0fbt
+	rjQf3ZBgzuJJyQYx2ZwQi3R0YXz+Kw2/3ISHRp+i1rdyaRrPtQp3ULZlHdX0w3FSebX6Egv7bv85H
+	WsnOsAGdxY968RhWvK9xP6T4L+FJc4WMIBYo5LAnFhKKTmCL//YfVZWjeJ53aPo803bI+GDA6eCmt
+	Fmt/Ya42a7qaC8Z2hSTCaUjoNtKyJ2mbCUVjwq5ZjVbVinXmyNbigHytFs9XPdCgE7bLJJnrYmmPg
+	vM/C+C6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKRF5-00000000Qem-0lVE;
-	Wed, 06 May 2026 01:40:03 +0000
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+	id 1wKRF6-00000000Qgc-2HHi;
+	Wed, 06 May 2026 01:40:04 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKRF2-00000000QcL-2XHf
+	id 1wKRF3-00000000Qcc-2cUp
 	for linux-mediatek@lists.infradead.org;
-	Wed, 06 May 2026 01:40:01 +0000
-Received: by mail-ed1-x533.google.com with SMTP id 4fb4d7f45d1cf-65c4152313fso8451835a12.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 05 May 2026 18:39:59 -0700 (PDT)
+	Wed, 06 May 2026 01:40:03 +0000
+Received: by mail-ed1-x530.google.com with SMTP id 4fb4d7f45d1cf-67c2d57a5ceso5694147a12.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 05 May 2026 18:40:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1778031598; x=1778636398; darn=lists.infradead.org;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=wR2Thhm3Jq6hlQLmRsOOuFA0pevOR+HEZ2FYTK0h4IE=;
-        b=ZIK9JH7aBTOdriABWT8WwfyGDDxcv4lb28g4cFoUDP+sIUaVjBI4br+c2lAcsMui2o
-         7uqZ7qCKcFliUfC5DUha+TdcfrrOf7AzlYBAvIrrG7mWKNB79v9CPg+BFZGNC1eqNisJ
-         TF3VAlTzKYJO8iCX1wnC7KrmAvDxE9SmI0dwni1hryLkhHNBMbpYEtWBsE6xfJoUgHq4
-         4/KTU9hCtGmQXLTjT46U1tKzu5ERf2oMKNtexEWEVSD3oJPfH2rBUgQrI7vUqNJVIrtS
-         dc1us60WFDJXkL9GIKU0tOirIMx5Dgz3xR7dx6nQiucLpFf+bXykSPfyGXG/bv7TFqZO
-         I/BQ==
+        d=gmail.com; s=20251104; t=1778031600; x=1778636400; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=04ncidu2w9RP0dQrMmKnvCZ7U/5L1OOGEwGtLj11dxw=;
+        b=Y+RBKYsrDInDIcWtKWqZjAGfBzwhvCoRqSnJKkfGmpDj9OOnWtCHLHQGvCwfqPtcrL
+         xsfT8PpXsczJ0ky4d6iQnEODryOq9nG6sb5nxF1oCLCWrXjtJQTYEo3fKG6RDvcPsaP6
+         s9PJO7j4612bE1JIW+P0t+00UtxZpbghVEx23kJzQrA20ts5uCqKLYH+doD+HdaySDxb
+         bn5xGhiRo9EPjafRD9bIbnlLJ2ldkFzHLmneKAgpWYzgJm+uXH80kQdpTabYe0ytt83F
+         Dsx49t57Ow095TGtsc1Sei1xXWHGnT18yKaj/AEmNl3Idzxvwhc0ksSg0qwE4lhOy074
+         gHUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1778031598; x=1778636398;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=wR2Thhm3Jq6hlQLmRsOOuFA0pevOR+HEZ2FYTK0h4IE=;
-        b=BAItD0zu4xX+/Kd1TzM9RVR632EnVnitIMm5SkJeLcoALns8cnGgiKW71g5vk7yNRv
-         Dhd2AUIvdqc5kCeipFFQfzjD+C5f0kqhW278jwxbeOS4dr2V7s10cqs7RggAfJ0a6Gtr
-         TlKPlXg+qJUy1mOfl54Co6LBwLlYSm1vgE3mnOTjqACWy58sbZVFV+bauOHMqDY3rFdb
-         1utWaDiA/2gErq4CksM4sNK0RfvJwi9MDMJ8BamNjSnhWXIR5dVaEt67yfVvzvzLMZDs
-         fFT9HgI772w1pMTDFR/eEz8oUrqjWYH89AaD9AYOo8hfa4azqjmw1/lNG9cGgAh8Lr3G
-         A9Gw==
-X-Forwarded-Encrypted: i=1; AFNElJ+bx3I1Q1snmBU1lt7/H7UD4cNg8mFwJ11/FWxTTAWj4aB+2NP2KLphsNUonLW4n96okimZ6yR4ZEzI1qI+WA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzeZD/wcwkEGVsBVvJzfKi2nSQBeK24M8vgy3gounqTI9dKvzVH
-	Dl0izUfbqZSFjhuPtYPYlo4HR1/Ms07U8FAyXF3J7JxnHu0Wmplq8TmV
-X-Gm-Gg: AeBDiesklslLqpjmx478NuiMfbfyLbbbed6Y+xuvYvS1M8CJChfZoEif6u2Jn4yJbyD
-	MDIux05/ufZj+7/JXHmS8wLta6ozEdvaLunrK7QGk6mYTvv/bH2qhTGFRWLTry5Vc/aTN85j/so
-	i9ZtINYYuHpQ1XgwQxRr7jwHlAglsuVtkN36rKckRsGdxBK9YY0dBP8YjlfPRoYitqj/zHMNivO
-	3G1b1owgL7DlEHLQTkX5NfIUzTrtBhEfZYSXFM7aHGCtmDfMlGB69f+s+L6DHHn/bu9Y2gGdvLc
-	T3i16BB8J1l47gg64ZktwLMu7dZ2X091SsmmcrrBgJWkl8dIlEPUDHeRABYmrxXJwREtq8xcQVP
-	05w/ac2Q9FRSRGhhMQ+iyC7LjOXQzj113G6Z3NwizNf5jIS25lrZQNpbFByOljJbxosa70h1RAA
-	5F+V1tkz7yp7Afl89efRKSnR+o8Sq04ECsggEH5PqTs1VoeiVrpyONGpA1Xaf+J90j4Tnj8fta3
-	olgrL8wDqnxKhA/faMmG3xTe2qVIjGlphDu6IuZtUgL
-X-Received: by 2002:a05:6402:2420:b0:672:2995:be37 with SMTP id 4fb4d7f45d1cf-67d63a9e9f4mr429366a12.1.1778031597549;
-        Tue, 05 May 2026 18:39:57 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1778031600; x=1778636400;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=04ncidu2w9RP0dQrMmKnvCZ7U/5L1OOGEwGtLj11dxw=;
+        b=PMYKKYJlJmeizRJ34nGumaDyA2jhYhX3arOZAIMOT4Ejq5eZLCcvX1up2JJ5LHJdZj
+         Ooz7YMJ+5+T84bHEfMQdRKkQlEqlYOxFCQcAPaoR6I67wNAzp7pxYGgvrqtvVxdyFL1c
+         uNu8k6fqHErAKW5tVjM2sQ+PLQsVLOj3tvybMpdwEre3TEmzL4joVBNOYLs9c1Q8h7Bb
+         6d6VCFKwf0MnQqcfoGOB77JmL8SRHWbfzaQeEtCvDV3ysnZ9X4G3YnyiIzfXBg4pxy6S
+         REok1rAUAvEBfZZ6bae9FgFz+URf/qzE2Y/OtTKmJ4g3dj23slObarnCIX3NVk1ExFhv
+         UQFA==
+X-Forwarded-Encrypted: i=1; AFNElJ+cT7Ls9dxoo9aWQc/h6mCHlulO0IE9khJcdq3H2BGGyqkSCdgAQpcN9AiCtkd6LgVYXjBnUS4/CSFQYeSVNg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyO/qpzipS61q9TktJh/CtS5vK7laRdUkwFCESOAqRiJOaOLJGx
+	Ih5Z6lPmW6auy0yEU1loDW0rStc4XiETb3ddCYKGkD7bLWuuhEQyAS2/BAbmEGtd
+X-Gm-Gg: AeBDiesQih6pnH2mVkbD5hJ/WwCswpFEBxtMJROG+cm3dDUkyMMGgLefjByNzLPPSGK
+	6SP/zbX/QLR2ieCVKInWdcO5V6iFneZCAaSByonQM0nZ6cAxWkgSCdjCG8kVBToxHciSZqDBW9a
+	Z/pZuGxjlXIS30sG8w3DJlSGNiG9TGVKqE3DvGAzODJKZHfOovQz6RCKGacq/x5ppf4YJVK//Bq
+	FRdR0mcg2SyF3n2Kqmn+xkes4gfi7mbgtxJgYmIC5lNaCHk7xCTC6RYM9XJhp5QrePN2a7XhDnu
+	R1nFCt6WfOoCEJX4mjLkLQLDnrtN/XvEn45/n76IdX8oQpDNGJxeih+MMnCu3xYfieWLbjXjP4n
+	shjbOc1jZ6ryBJ/+uL5AI1ahPH/0lfbWCqD35QpPiX+n2SeSyqoQuorzJPUqjCtCwNkpuZ0YnmJ
+	aPkOItcid6UpvLcb0my56yu2P6s7cH+sSl3/e9OC4IozjV/9OHRayj6bvd2B7yZsNMu7S9btVRD
+	qOOO59XFvNveCQkyVUwEpWEPPABVsGOHA==
+X-Received: by 2002:a05:6402:a58b:20b0:676:d85a:5faf with SMTP id 4fb4d7f45d1cf-67d63d855e2mr287194a12.9.1778031599366;
+        Tue, 05 May 2026 18:39:59 -0700 (PDT)
 Received: from KURWA.angora-ide.ts.net (mm-195-107-126-178.vitebsk.dynamic.pppoe.byfly.by. [178.126.107.195])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-67cd904fe68sm849388a12.0.2026.05.05.18.39.56
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-67cd904fe68sm849388a12.0.2026.05.05.18.39.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 05 May 2026 18:39:57 -0700 (PDT)
+        Tue, 05 May 2026 18:39:58 -0700 (PDT)
 From: ElXreno <elxreno@gmail.com>
-Subject: [PATCH v2 0/2] wifi: mt76: fix TDLS direct-link on MediaTek MT7925
-Date: Wed, 06 May 2026 04:39:14 +0300
-Message-Id: <20260506-mt7925-tdls-fixes-v2-0-46aa826ba8bb@gmail.com>
+Date: Wed, 06 May 2026 04:39:15 +0300
+Subject: [PATCH v2 1/2] wifi: mt76: route TDLS-peer frames as 3-addr non-DS
+ in HW encap
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAMKb+mkC/yXM0Q6CMAyF4VchvbZJKSCZr2K4EFa1RtGsk5Ase
- 3eGXn45+U8Ck6BicKoSBFnU9D0X8KGC6X6Zb4Lqi4GJj9RRg6/YO+4w+qfhVVcxrH3duL5lckR
- Quk+Q31Cy8/C3fceHTHE/gpw3hQekznUAAAA=
-X-Change-ID: 20260503-mt7925-tdls-fixes-1d1397420900
+Message-Id: <20260506-mt7925-tdls-fixes-v2-1-46aa826ba8bb@gmail.com>
+References: <20260506-mt7925-tdls-fixes-v2-0-46aa826ba8bb@gmail.com>
+In-Reply-To: <20260506-mt7925-tdls-fixes-v2-0-46aa826ba8bb@gmail.com>
 To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, 
  Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
  Sean Wang <sean.wang@mediatek.com>, 
@@ -89,19 +89,19 @@ To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
  Deren Wu <deren.wu@mediatek.com>
 Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- ElXreno <elxreno@gmail.com>, stable@vger.kernel.org
+ ElXreno <elxreno@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4575; i=elxreno@gmail.com;
- h=from:subject:message-id; bh=XR+QR8Bfz1SKiot7jHliEJvocZwK2smxEIxpKgP5K6U=;
- b=owJ4nJvAy8zAJXa0WDmKX5v/EeNptSSGzF+z3/TIRVV/nXhHZNeznBKJjw5v36sYMax8sqzuw
- ra9l4WsZ8V0lLIwiHExyIopsvCc21ubs6xuyeR6rgyYOaxMIEMYuDgFYCJmPxn+KSXZZR+a2WN1
- 7c2RjcIm4pVCSZstn+Zc/f764WkTRp1VSxgZHnfOVE15kHVT/eyfT3nnnr6+59bYFTq7d+/yasF
- Ig+f7GAHIeU2p
+X-Developer-Signature: v=1; a=openpgp-sha256; l=7203; i=elxreno@gmail.com;
+ h=from:subject:message-id; bh=P5GGRaMT2aaO6cv++PtfWsFBVuVNFRyIWoxv/wx8yfg=;
+ b=owJ4nJvAy8zAJXa0WDmKX5v/EeNptSSGzF+z37CkRks8YFK1O3i6MfHWBs38PUVOqrP26k6r3
+ OJ977nJoS8dpSwMYlwMsmKKLDzn9tbmLKtbMrmeKwNmDisTyBAGLk4BmMgCHoafjDOtp26wYNxz
+ Kzg7cdfWd8xmjgvrFonlvHN9zeFS4GG7lpHhno1S27m34vs2//vjuJ7d1TtvY+Qy2ZzrPQ3bVzT
+ kS7jwAAA/IkcZ
 X-Developer-Key: i=elxreno@gmail.com; a=openpgp;
  fpr=0CCEBD7D6CA67EA4937F0A68C573235A0F2B0FE2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260505_184000_698656_59D94653 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20260505_184001_792300_B3F246D5 
+X-CRM114-Status: GOOD (  13.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,98 +116,175 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series fixes two TDLS direct-link issues on the MediaTek mt76
-driver, observed reproducibly with Samsung phones and other peers
-that auto-initiate TDLS direct links on a shared BSS.
+With HW TX encap offload enabled, the mt76 firmware builds the 802.11
+header for the 802.3 frame using the per-WCID context. For a STATION
+vif the HDR_TRANS TLV currently sets ToDS=1, which makes the firmware
+default to the BSSID as A1 and emit STA->AP-formatted frames
+regardless of which peer the WCID points to.
 
-Patch 1 fixes silent loss of TDLS-peer data on mt76 chips with HW
-TX encap offload. The HDR_TRANS TLV defaults to ToDS=1 for STATION
-vifs, which makes the firmware build A1=BSSID for every WCID under
-that vif -- including TDLS-peer WCIDs. Frames bound for a TDLS
-peer therefore go on air to the AP, the AP silently discards them
-per IEEE 802.11z, and no user data flows over the TDLS direct
-link. v2 adds an MT_WCID_FLAG_TDLS_PEER flag (set in sta-add when
-sta->tdls is true) and overrides the HDR_TRANS TLV to ToDS=0/
-FromDS=0 (3-addr non-DS, per 802.11z) only for those peers. HW
-encap stays on for AP and non-TDLS traffic. The override is
-applied in three HDR_TRANS helpers:
-  - mt76_connac_mcu_wtbl_hdr_trans_tlv() for mt7915/mt7921/mt7922
-  - mt7925_mcu_sta_hdr_trans_tlv() for mt7925
-  - mt7996_mcu_sta_hdr_trans_tlv() for mt7996
-Verified on mt7925e + a Samsung phone over 5 GHz HE 80 MHz:
-iperf3 -t 30 transferred 2.90 GBytes at 830 Mbit/s with 0 TCP
-retransmits. The other chips are not regression-tested for lack
-of hardware; their HDR_TRANS handling mirrors the verified
-mt7925 change.
+For TDLS-paired peers this is wrong. Data frames go on air addressed
+to the AP, the AP MAC-ACKs and silently drops them per IEEE 802.11z
+(an AP must not forward to a TDLS-paired peer). Management and
+control frames bypass the HW encap path and still reach the peer;
+only user data fails.
 
-Patch 2 fixes a regression introduced by the MLO refactor in
-commit 3878b4333602 ("wifi: mt76: mt7925: update
-mt7925_mac_link_sta_[add, assoc, remove] for MLO"): the cleanup
-loop in mt7925_mac_sta_remove_links() unconditionally calls
-mt7925_mcu_add_bss_info(..., enable=false) for every link of the
-station being removed, including TDLS peers on a STATION vif which
-share the AP's bss_conf -- wiping the AP-side rate-control context
-on every TDLS teardown and collapsing rx bitrate to 6 Mbit/s for
-tens of seconds.
+Add MT_WCID_FLAG_TDLS_PEER, set it in mt7915, mt7921, mt7925 and
+mt7996 sta-add paths when sta->tdls is true, and override the
+HDR_TRANS TLV in mt76_connac_mcu_wtbl_hdr_trans_tlv() (Connac2 -
+mt7915 / mt7921 / mt7922), mt7925_mcu_sta_hdr_trans_tlv() (mt7925)
+and mt7996_mcu_sta_hdr_trans_tlv() (mt7996) to set ToDS=0, FromDS=0
+when the flag is set. The 3-addr non-DS form matches what 802.11z
+uses for direct links; the firmware then constructs the frame with
+A1=peer rather than A1=BSSID. HW encap offload remains enabled for
+AP and any non-TDLS traffic.
 
-v2 design notes:
+Verified on mt7925e + Samsung S938B over a 5 GHz HE 80 MHz channel
+with iperf3 -t 30 to the TDLS peer:
 
-I tried adding the TDLS-aware firmware-facing peer setup that
-v1's commit message identified as missing first -- defining
-CONNECTION_TDLS = (STA_TYPE_STA | NETWORK_INFRA | BIT(3)) and
-setting it in mt76_connac_mcu_sta_basic_tlv() for sta->tdls peers
-hung the MCU on STA_REC_UPDATE within ~5 seconds of iperf3
-traffic, requiring a chip reset. The proprietary out-of-tree
-mt_wifi driver also defines CONNECTION_TDLS in mt_cmd.h but never
-assigns it; TDLS there is implemented purely as an 802.11
-action-frame state machine on top of CONNECTION_INFRA_STA, with
-no TDLS-specific MCU command, and is gated to Connac1-era chips
-only -- no firmware-facing TDLS peer setup to align to. The
-HDR_TRANS ToDS override is the simplest per-peer correction that
-works.
+  before fix:  over the TDLS direct link, 7 TDLS Setup action
+               frames and 3 RTS frames reach the peer; 0 QoS
+               Data frames make it through (mgmt/control paths
+               bypass HW encap, the data path does not). iperf3
+               stalls.
+  after fix:   2.90 GBytes transferred at 830 Mbit/s sustained,
+               0 TCP retransmits.
 
-A note on the methodology behind the misroute observation: my
-v1 captures used an RTL8821AU USB monitor which is single-stream
-and cannot decode mt7925's 2-stream HE data frames. The
-misroute-to-AP pattern only became visible after swapping to a
-2x2 Intel AC 7265 in monitor mode on a separate host -- frames
-go on air with A1=BSSID to the AP, the AP MAC-ACKs and discards
-per 802.11z, which matches the iw counters (tx_packets++ but no
-TCP ACKs returning).
-
-v2:
-  - patch 1 rewritten per Sean Wang's v1 NACK: per-TDLS-peer
-    HDR_TRANS override instead of global SUPPORTS_TX_ENCAP_OFFLOAD
-    removal in mt792x_init_wiphy(). Coverage extended to mt7915
-    and mt7996.
-  - patch 1 dropped Fixes: 5c14a5f944b9 and Cc: stable -- the new
-    fix introduces a flag plus three helper overrides; not
-    realistic for a clean cherry-pick into older stables.
-  - patch 2 unchanged in logic; inline comment trimmed.
-
-v1: https://lore.kernel.org/linux-wireless/20260503-mt7925-tdls-fixes-v1-0-dde847e21081@gmail.com/
+mt7915, mt7921, mt7922 and mt7996 are not regression-tested in this
+change for lack of hardware. Their HDR_TRANS handling mirrors the
+verified mt7925 change; the firmware behavior is shared across these
+chips.
 
 Signed-off-by: ElXreno <elxreno@gmail.com>
+Assisted-by: Claude:claude-opus-4-7 bpftrace tcpdump
 ---
-ElXreno (2):
-      wifi: mt76: route TDLS-peer frames as 3-addr non-DS in HW encap
-      wifi: mt76: mt7925: don't disable AP BSS when removing TDLS peer
-
  drivers/net/wireless/mediatek/mt76/mt76.h            | 1 +
  drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 5 +++++
  drivers/net/wireless/mediatek/mt76/mt7915/main.c     | 3 +++
  drivers/net/wireless/mediatek/mt76/mt7921/main.c     | 3 +++
- drivers/net/wireless/mediatek/mt76/mt7925/main.c     | 6 ++++++
+ drivers/net/wireless/mediatek/mt76/mt7925/main.c     | 3 +++
  drivers/net/wireless/mediatek/mt76/mt7925/mcu.c      | 5 +++++
  drivers/net/wireless/mediatek/mt76/mt7996/main.c     | 3 +++
  drivers/net/wireless/mediatek/mt76/mt7996/mcu.c      | 5 +++++
- 8 files changed, 31 insertions(+)
----
-base-commit: d2ffdadd4aca41d120e25f6a675dd6a4d77ce360
-change-id: 20260503-mt7925-tdls-fixes-1d1397420900
+ 8 files changed, 28 insertions(+)
 
-Best regards,
---  
-ElXreno <elxreno@gmail.com>
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 527bef97e122..07955555f84d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -361,6 +361,7 @@ enum mt76_wcid_flags {
+ 	MT_WCID_FLAG_PS,
+ 	MT_WCID_FLAG_4ADDR,
+ 	MT_WCID_FLAG_HDR_TRANS,
++	MT_WCID_FLAG_TDLS_PEER,
+ };
+ 
+ #define MT76_N_WCIDS 1088
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index 89bd52ea8bf7..f61d0625ef51 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -491,6 +491,11 @@ void mt76_connac_mcu_wtbl_hdr_trans_tlv(struct sk_buff *skb,
+ 		htr->to_ds = true;
+ 		htr->from_ds = true;
+ 	}
++
++	if (test_bit(MT_WCID_FLAG_TDLS_PEER, &wcid->flags)) {
++		htr->to_ds = false;
++		htr->from_ds = false;
++	}
+ }
+ EXPORT_SYMBOL_GPL(mt76_connac_mcu_wtbl_hdr_trans_tlv);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+index e1d83052aa6d..51643a48ed15 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+@@ -760,6 +760,9 @@ int mt7915_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 	msta->wcid.phy_idx = ext_phy;
+ 	msta->jiffies = jiffies;
+ 
++	if (sta->tdls)
++		set_bit(MT_WCID_FLAG_TDLS_PEER, &msta->wcid.flags);
++
+ 	ewma_avg_signal_init(&msta->avg_ack_signal);
+ 
+ 	mt7915_mac_wtbl_update(dev, idx,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index 3d74fabe7408..d39cb881d75e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -828,6 +828,9 @@ int mt7921_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 	msta->deflink.last_txs = jiffies;
+ 	msta->deflink.sta = msta;
+ 
++	if (sta->tdls)
++		set_bit(MT_WCID_FLAG_TDLS_PEER, &msta->deflink.wcid.flags);
++
+ 	ret = mt76_connac_pm_wake(&dev->mphy, &dev->pm);
+ 	if (ret)
+ 		return ret;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+index 73d3722739d0..61330e3c18b2 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+@@ -887,6 +887,9 @@ static int mt7925_mac_link_sta_add(struct mt76_dev *mdev,
+ 	mlink->wcid.link_valid = !!link_sta->sta->valid_links;
+ 	mlink->sta = msta;
+ 
++	if (link_sta->sta->tdls)
++		set_bit(MT_WCID_FLAG_TDLS_PEER, &mlink->wcid.flags);
++
+ 	wcid = &mlink->wcid;
+ 	ewma_signal_init(&wcid->rssi);
+ 	rcu_assign_pointer(dev->mt76.wcid[wcid->idx], wcid);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index 22bad3cba8df..333cacfaca9c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -1091,6 +1091,11 @@ mt7925_mcu_sta_hdr_trans_tlv(struct sk_buff *skb,
+ 		hdr_trans->to_ds = true;
+ 		hdr_trans->from_ds = true;
+ 	}
++
++	if (test_bit(MT_WCID_FLAG_TDLS_PEER, &wcid->flags)) {
++		hdr_trans->to_ds = false;
++		hdr_trans->from_ds = false;
++	}
+ }
+ 
+ int mt7925_mcu_wtbl_update_hdr_trans(struct mt792x_dev *dev,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+index a8a6552d49f6..9b8db6efb5ac 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+@@ -1164,6 +1164,9 @@ mt7996_mac_sta_init_link(struct mt7996_dev *dev,
+ 	msta_link->wcid.link_valid = !!sta->valid_links;
+ 	msta_link->wcid.def_wcid = &msta->deflink.wcid;
+ 
++	if (link_sta->sta->tdls)
++		set_bit(MT_WCID_FLAG_TDLS_PEER, &msta_link->wcid.flags);
++
+ 	ewma_avg_signal_init(&msta_link->avg_ack_signal);
+ 	ewma_signal_init(&msta_link->wcid.rssi);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index 16420375112d..6aaf3ed94221 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -2139,6 +2139,11 @@ mt7996_mcu_sta_hdr_trans_tlv(struct mt7996_dev *dev, struct sk_buff *skb,
+ 		hdr_trans->from_ds = true;
+ 		hdr_trans->mesh = true;
+ 	}
++
++	if (test_bit(MT_WCID_FLAG_TDLS_PEER, &wcid->flags)) {
++		hdr_trans->to_ds = false;
++		hdr_trans->from_ds = false;
++	}
+ }
+ 
+ static enum mcu_mmps_mode
+
+-- 
+2.53.0
 
 
