@@ -4,78 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7B64CD342C
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 07:05:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A112DCD3424
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 07:30:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=btOsksgvyHLdtmt37uoAfhcP2ZOCHruYw58r8wY8K48=; b=FKXJhSStFHnOXGS6euEHYw9jpD
-	BJUiNWT2pJurxMJl5Q7VJYLOkT+FS12BUYqDEl+ZH50eCKTQZM+2V+BsjwwtFAxA3LmE0Php8Xb/W
-	rtyrI2PHNvAZh5dm1Hz7QikQfMbI0otkWqxgP3UCDE1pypZjzIVPBNk12EbZ4hQMEqFKvq3C1bbfA
-	rCnt3YQgHG23O54GT/IE6/KhiPHWf/MDFTqUnyjMbYGv8+MICKjfnDAJwKsaO5kybBwTn5L58HXu/
-	wEwzOthxgAfA8b3vbM4y3fhZR/0ZBewzJ1my5dGV8MS0plYufuGiFnrvl0uQ+6PiHvaZIlSKZHpYg
-	aa3/+GQQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+0ie9STlWQ+N9rLxYq5rCZ0kF0/QkuZDhQykabuC4OQ=; b=jCgTjSPfNG3fn9rb9rwaFWP/lu
+	F1KPJl53wADoT80ogisq1bfQrKRhwijy7McIyf6qxCRX/ifzL26FowbVGWeXgEix4Ze1lBRLPCe2H
+	8KwG22GMnQaST+HfU9efPtlVXjkAcvW5OyqYgslw6b2nuBr7ycxguugqkNw+2tKW0YcuC/mIxjAOi
+	d+Ylsi6uqWAzzGOL086nRx5CD1cIGpJNfC03HhvAPSAnF6tlLOqo5zWmG+iJMthXq5kJO+UdqNrWf
+	1bwmuqe74Qi73kpJ37Cy/otWyOgpTN7XG1XGFBQ/YLnmrvPKcBQhA/YmcWBwIgux8QmxQh90CPIQY
+	B+ZqhVkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKWJm-00000000xSy-3A5t;
-	Wed, 06 May 2026 07:05:14 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1wKWiE-00000000261-1Fuh;
+	Wed, 06 May 2026 07:30:30 +0000
+Received: from mgamail.intel.com ([192.198.163.13])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKWJk-00000000xSP-1iPv
-	for linux-mediatek@lists.infradead.org;
-	Wed, 06 May 2026 07:05:13 +0000
-X-UUID: e741b454491911f19f231fa534c5cac8-20260506
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=btOsksgvyHLdtmt37uoAfhcP2ZOCHruYw58r8wY8K48=;
-	b=or+NM3gIhg/pfQIkGL5HMJVDf+hjUoHrPZf8K5lm1U+H8rgtrWawL7dIzOIahT6xBi8iW0hpw1kGiaQBAriRJlBR+C8SGfw0sZLGuBQ5q1LX+3ceA+knffRBraAb0oIJAq9liTMHu/Pp4/LGwuE4EMjsSDFk5tIcow8k2nEKCIs=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:54bd6a80-a524-4ccb-9473-6373a97b949d,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:e7bac3a,CLOUDID:ba3d0371-3b7f-4b26-b2f9-40f0deecb36d,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|865|888|898,TC:-5,Content:0|
-	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0
-	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: e741b454491911f19f231fa534c5cac8-20260506
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
-	(envelope-from <jb.tsai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 536813651; Wed, 06 May 2026 00:05:02 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 6 May 2026 15:05:00 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 6 May 2026 15:05:00 +0800
-From: JB Tsai <jb.tsai@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<Deren.Wu@mediatek.com>, <Sean.Wang@mediatek.com>, <Quan.Zhou@mediatek.com>,
-	<Ryder.Lee@mediatek.com>, <Leon.Yen@mediatek.com>,
-	<litien.chang@mediatek.com>, <eason.lai@mediatek.com>,
-	<jb.tsai@mediatek.com>, Eason Lai <Eason.Lai@mediatek.com>, Sean Wang
-	<sean.wang@mediatek.com>, Jeff Hsu <jeff.hsu@mediatek.com>, Michael Lo
-	<michael.lo@mediatek.com>
-Subject: [PATCH v3] wifi: mt76: mt7921: Add PCIe AER handler support to
-  prevent system crash
-Date: Wed, 6 May 2026 15:04:58 +0800
-Message-ID: <20260506070458.3096180-1-jb.tsai@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1wKWiC-00000000257-3cFE;
+	Wed, 06 May 2026 07:30:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1778052629; x=1809588629;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=vCLaey9OpjFpEdYt8M8cmjBiqJz+wr5dw2RBMYVEuTg=;
+  b=IEC4WtYSVhZIrYOjuPoVrWLEurTPwQ5Rqp+Nd7EbSomJXZc5oNNV1CPt
+   X4+SS0/afhpoe3utb1qfFdDBvKc5G3Pxz33hSQ92CywMQYrHo8WkJHkTr
+   ttVJNSxM1nypyLv5cbM3JuSK4liGjwhJgCkoa3ESUVkFTtia2Ngolp+aD
+   dCkAmrBObeVC7x+hLiMqKisBlCXbX3JioISSI2sY2Vdx/SqmyN1hZIBhg
+   X7epJqMBGUXKSbAs9qx7n5NMneyk9GZ9AAWudg+AdXRhPcs9b2396q0j9
+   xb9X0U2Ac7VDtg4VaTPIXWIls9V++l2XPSJ1qxh1yAi0v1rRCMuVQU8UL
+   Q==;
+X-CSE-ConnectionGUID: Gv4oC7MNTDaGW294vQAfJg==
+X-CSE-MsgGUID: pHj3HjwBQUmzv9gHUTlNdw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11777"; a="81538832"
+X-IronPort-AV: E=Sophos;i="6.23,219,1770624000"; 
+   d="scan'208";a="81538832"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+  by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 May 2026 00:30:26 -0700
+X-CSE-ConnectionGUID: ZorZsCONRaOy1EKm4bJdsA==
+X-CSE-MsgGUID: EE77A/rMTuCutPrAFu7/Sw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,219,1770624000"; 
+   d="scan'208";a="241044287"
+Received: from abityuts-desk.ger.corp.intel.com (HELO localhost) ([10.245.244.183])
+  by fmviesa005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 May 2026 00:30:21 -0700
+Date: Wed, 6 May 2026 10:30:18 +0300
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
+To: Roman Vivchar <rva333@protonmail.com>
+Cc: Jonathan Cameron <jic23@kernel.org>,
+	David Lechner <dlechner@baylibre.com>,
+	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
+	Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Srinivas Kandagatla <srini@kernel.org>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@kernel.org>,
+	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
+	Lee Jones <lee@kernel.org>, linux-iio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
+	Ben Grisdale <bengris32@protonmail.ch>
+Subject: Re: [PATCH 05/13] nvmem: add mt6323 PMIC EFUSE driver
+Message-ID: <afruCjvTluKgI-tV@ashevche-desk.local>
+References: <20260504-mt6323-v1-0-799b58b355ff@protonmail.com>
+ <20260504-mt6323-v1-5-799b58b355ff@protonmail.com>
+ <afmjfWtt7Vii6xfH@ashevche-desk.local>
+ <Bn1O24yJ2aBvKUTpiFUzxnqbuuybRirR73G7R38ghYtwhFvQqWJb3HPgcikEa1otDw6n07nX_g8khZUHXJ_QRA--LrV5yj5Mcg1QzrWt6vA=@protonmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Bn1O24yJ2aBvKUTpiFUzxnqbuuybRirR73G7R38ghYtwhFvQqWJb3HPgcikEa1otDw6n07nX_g8khZUHXJ_QRA--LrV5yj5Mcg1QzrWt6vA=@protonmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260506_000512_462647_F4EE8E38 
-X-CRM114-Status: GOOD (  14.96  )
+X-CRM114-CacheID: sfid-20260506_003028_941246_2CB56B72 
+X-CRM114-Status: GOOD (  22.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,327 +102,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Eason Lai <Eason.Lai@mediatek.com>=0D
+On Tue, May 05, 2026 at 04:24:41PM +0000, Roman Vivchar wrote:
+> On Tuesday, May 5th, 2026 at 11:00 AM, Andy Shevchenko <andriy.shevchenko@intel.com> wrote:
+> > On Mon, May 04, 2026 at 09:24:57PM +0300, Roman Vivchar via B4 Relay wrote:
 
-When an AER error occurs and the bus is hung, the register reads return=0D
-0xFFFFFFFF, causing the DMA queue state to be corrupted and resulting in=0D
-an invalid memory access when accessing q->desc[] or q->entry[].=0D
-=0D
-Unable to handle kernel paging request at virtual address=0D
-ffffffc01099eac0=0D
-pc : mt76_dma_add_buf+0x124/0x188 [mt76]=0D
-lr : mt76_dma_rx_fill+0x11c/0x1d8 [mt76]=0D
-sp : ffffffc016d9bbf0=0D
-x29: ffffffc016d9bc10 x28: 0000000000000000=0D
-x27: 0000000000000000 x26: ffffffb7855e50b8=0D
-x25: ffffffb80d04f000 x24: 0000000000000000=0D
-x23: 0000000000000ec0 x22: ffffffb796803648=0D
-x21: ffffffb796801f80 x20: ffffffb7968035f8=0D
-x19: 0000000000000ec0 x18: 0000000000000000=0D
-x17: 000000004ec00000 x16: 000000000ec00000=0D
-x15: ffffffc01099eac0 x14: 000000004ec00000=0D
-x13: 00000000ffc5a000 x12: ffffffc016d9bc32=0D
-x11: 00000000ffffffff x10: 0000000000000002=0D
-x9 : 0000000000000000 x8 : 000000000000b4ac=0D
-x7 : 0000000000000a20 x6 : ffffffb6c1806400=0D
-x5 : 0000000000000000 x4 : ffffffb80d04f000=0D
-x3 : 0000000000000000 x2 : 0000000000000001=0D
-x1 : 000000000ec04000 x0 : ffffffb7968035f8=0D
-Call trace:=0D
- mt76_dma_add_buf+0x124/0x188 [mt76 (HASH:1029 4)]=0D
- mt76_dma_rx_reset+0xe8/0xfc [mt76 (HASH:1029 4)]=0D
- mt7921_wpdma_reset+0x188/0x1b0 [mt7921e (HASH:ee48 5)]=0D
- mt7921e_mac_reset+0x128/0x418 [mt7921e (HASH:ee48 5)]=0D
- mt7921_mac_reset_work+0xac/0x1a8 [mt7921_common (HASH:f721 6)]=0D
- process_one_work+0x188/0x514=0D
- worker_thread+0x12c/0x300=0D
- kthread+0x140/0x1fc=0D
- ret_from_fork+0x10/0x30=0D
-=0D
-Fix this by checking the bus_hung flag in mt7921_mac_reset_work() before=0D
-attempting the reset sequence, and by installing no-op bus operations=0D
-when an unrecoverable AER error is detected, preventing further invalid=0D
-hardware accesses.=0D
-=0D
-Due to hardware limitations - such as the lack of a connected hardware=0D
-reset pin or the absence of host re-probe functionality - affected Wi-Fi=0D
-devices may not fully recover to a normal operational state after=0D
-certain errors, even with AER enabled.=0D
-=0D
-Fixes: 17f1de56df05 ("mt76: add common code shared between multiple chipset=
-s")=0D
-Co-developed-by: Sean Wang <sean.wang@mediatek.com>=0D
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>=0D
-Co-developed-by: Jeff Hsu <jeff.hsu@mediatek.com>=0D
-Signed-off-by: Jeff Hsu <jeff.hsu@mediatek.com>=0D
-Signed-off-by: Eason Lai <Eason.Lai@mediatek.com>=0D
-Co-developed-by: Michael Lo <michael.lo@mediatek.com>=0D
----=0D
-v2: remove the timestamp of error call trace=0D
-v3: fix bus hung and causing invalid access issue=0D
----=0D
- drivers/net/wireless/mediatek/mt76/dma.c      |  10 +-=0D
- drivers/net/wireless/mediatek/mt76/dma.h      |  16 ++-=0D
- drivers/net/wireless/mediatek/mt76/mcu.c      |  12 +-=0D
- .../net/wireless/mediatek/mt76/mt76_connac.h  |   5 +=0D
- .../net/wireless/mediatek/mt76/mt7921/mac.c   |   3 +=0D
- .../net/wireless/mediatek/mt76/mt7921/pci.c   | 103 ++++++++++++++++++=0D
- 6 files changed, 140 insertions(+), 9 deletions(-)=0D
-=0D
-diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireles=
-s/mediatek/mt76/dma.c=0D
-index f8c2fe5f2f58..ec84961b11db 100644=0D
---- a/drivers/net/wireless/mediatek/mt76/dma.c=0D
-+++ b/drivers/net/wireless/mediatek/mt76/dma.c=0D
-@@ -189,6 +189,8 @@ mt76_dma_queue_magic_cnt_init(struct mt76_dev *dev, str=
-uct mt76_queue *q)=0D
- static void=0D
- mt76_dma_sync_idx(struct mt76_dev *dev, struct mt76_queue *q)=0D
- {=0D
-+	int last =3D 0;=0D
-+=0D
- 	if ((q->flags & MT_QFLAG_WED_RRO_EN) &&=0D
- 	    (!is_mt7992(dev) || !mt76_npu_device_active(dev)))=0D
- 		Q_WRITE(q, ring_size, MT_DMA_RRO_EN | q->ndesc);=0D
-@@ -201,7 +203,9 @@ mt76_dma_sync_idx(struct mt76_dev *dev, struct mt76_que=
-ue *q)=0D
- 	}=0D
- =0D
- 	Q_WRITE(q, desc_base, q->desc_dma);=0D
--	q->head =3D Q_READ(q, dma_idx);=0D
-+=0D
-+	last =3D Q_READ(q, dma_idx);=0D
-+	q->head =3D (last >=3D 0 && last < q->ndesc) ? last : 0;=0D
- 	q->tail =3D q->head;=0D
- }=0D
- =0D
-@@ -625,8 +629,8 @@ mt76_dma_tx_queue_skb_raw(struct mt76_dev *dev, struct =
-mt76_queue *q,=0D
- 	buf.len =3D skb->len;=0D
- =0D
- 	spin_lock_bh(&q->lock);=0D
--	mt76_dma_add_buf(dev, q, &buf, 1, tx_info, skb, NULL);=0D
--	mt76_dma_kick_queue(dev, q);=0D
-+	if (mt76_dma_add_buf(dev, q, &buf, 1, tx_info, skb, NULL) >=3D 0)=0D
-+		mt76_dma_kick_queue(dev, q);=0D
- 	spin_unlock_bh(&q->lock);=0D
- =0D
- 	return 0;=0D
-diff --git a/drivers/net/wireless/mediatek/mt76/dma.h b/drivers/net/wireles=
-s/mediatek/mt76/dma.h=0D
-index 2a0226c83f3c..7f395a4c509f 100644=0D
---- a/drivers/net/wireless/mediatek/mt76/dma.h=0D
-+++ b/drivers/net/wireless/mediatek/mt76/dma.h=0D
-@@ -108,8 +108,20 @@=0D
- =0D
- #else=0D
- =0D
--#define Q_READ(_q, _field)		readl(&(_q)->regs->_field)=0D
--#define Q_WRITE(_q, _field, _val)	writel(_val, &(_q)->regs->_field)=0D
-+#define Q_READ(_q, _field) ({						\=0D
-+	u32 _val;							\=0D
-+	if (unlikely(atomic_read(&(_q)->dev->bus_hung)))		\=0D
-+		_val =3D 0;						\=0D
-+	else								\=0D
-+		_val =3D readl(&(_q)->regs->(_field));			\=0D
-+	_val;								\=0D
-+})=0D
-+=0D
-+#define Q_WRITE(_q, _field, _val) do {					\=0D
-+	if (unlikely(atomic_read(&(_q)->dev->bus_hung)))		\=0D
-+		break;							\=0D
-+	writel(_val, &(_q)->regs->(_field));				\=0D
-+} while (0)=0D
- =0D
- #endif=0D
- =0D
-diff --git a/drivers/net/wireless/mediatek/mt76/mcu.c b/drivers/net/wireles=
-s/mediatek/mt76/mcu.c=0D
-index cbfb3bbec503..7149b2f7aafd 100644=0D
---- a/drivers/net/wireless/mediatek/mt76/mcu.c=0D
-+++ b/drivers/net/wireless/mediatek/mt76/mcu.c=0D
-@@ -78,15 +78,19 @@ int mt76_mcu_skb_send_and_get_msg(struct mt76_dev *dev,=
- struct sk_buff *skb,=0D
- 	unsigned long expires;=0D
- 	int ret, seq;=0D
- =0D
--	if (mt76_is_sdio(dev))=0D
--		if (test_bit(MT76_RESET, &dev->phy.state) && atomic_read(&dev->bus_hung)=
-)=0D
--			return -EIO;=0D
--=0D
- 	if (ret_skb)=0D
- 		*ret_skb =3D NULL;=0D
- =0D
- 	mutex_lock(&dev->mcu.mutex);=0D
- =0D
-+	if ((mt76_is_mmio(dev) && atomic_read(&dev->bus_hung)) ||=0D
-+	    (mt76_is_sdio(dev) && test_bit(MT76_RESET, &dev->phy.state) &&=0D
-+	    atomic_read(&dev->bus_hung))) {=0D
-+		orig_skb =3D skb;=0D
-+		ret =3D -EIO;=0D
-+		goto out;=0D
-+	}=0D
-+=0D
- 	if (dev->mcu_ops->mcu_skb_prepare_msg) {=0D
- 		orig_skb =3D skb;=0D
- 		ret =3D dev->mcu_ops->mcu_skb_prepare_msg(dev, skb, cmd, &seq);=0D
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac.h b/drivers/net=
-/wireless/mediatek/mt76/mt76_connac.h=0D
-index 51423c7740bd..17f9c6e65849 100644=0D
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h=0D
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h=0D
-@@ -48,6 +48,11 @@ enum rx_pkt_type {=0D
- #define MT_TXD_LEN_MSDU_LAST		BIT(14)=0D
- #define MT_TXD_LEN_AMSDU_LAST		BIT(15)=0D
- =0D
-+/* PCIE part */=0D
-+#define PCIE_AER_UNC_STATUS_OFFSET  0x204=0D
-+#define PCIE_AER_UNC_MASK_OFFSET    0x208=0D
-+#define PCIE_AER_CO_STATUS_OFFSET   0x210=0D
-+=0D
- enum {=0D
- 	CMD_CBW_20MHZ =3D IEEE80211_STA_RX_BW_20,=0D
- 	CMD_CBW_40MHZ =3D IEEE80211_STA_RX_BW_40,=0D
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/=
-wireless/mediatek/mt76/mt7921/mac.c=0D
-index 03b4960db73f..30f431896b1c 100644=0D
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c=0D
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c=0D
-@@ -668,6 +668,9 @@ void mt7921_mac_reset_work(struct work_struct *work)=0D
- 	cancel_work_sync(&pm->wake_work);=0D
- =0D
- 	for (i =3D 0; i < 10; i++) {=0D
-+		if (atomic_read(&dev->mt76.bus_hung))=0D
-+			return;=0D
-+=0D
- 		mutex_lock(&dev->mt76.mutex);=0D
- 		ret =3D mt792x_dev_reset(dev);=0D
- 		mutex_unlock(&dev->mt76.mutex);=0D
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/=
-wireless/mediatek/mt76/mt7921/pci.c=0D
-index 7a790ddf43bb..6b9d267a7e7b 100644=0D
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c=0D
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c=0D
-@@ -594,6 +594,108 @@ static int mt7921_pci_resume(struct device *device)=0D
- 	return err;=0D
- }=0D
- =0D
-+static u32 mt7921_aer_rr(struct mt76_dev *mdev, u32 offset)=0D
-+{=0D
-+	return 0;=0D
-+}=0D
-+=0D
-+static void mt7921_aer_wr(struct mt76_dev *mdev, u32 offset, u32 val)=0D
-+{=0D
-+	;=0D
-+}=0D
-+=0D
-+static u32 mt791_aer_rmw(struct mt76_dev *mdev, u32 offset, u32 mask, u32 =
-val)=0D
-+{=0D
-+	return 0;=0D
-+}=0D
-+=0D
-+static const struct mt76_bus_ops mt7921_aer_bus_hung_ops =3D {=0D
-+	.rr =3D mt7921_aer_rr,=0D
-+	.wr =3D mt7921_aer_wr,=0D
-+	.rmw =3D mt791_aer_rmw,=0D
-+	.type =3D MT76_BUS_MMIO=0D
-+};=0D
-+=0D
-+static void mt7921_pci_set_aer_bus_hung_ops(struct mt792x_dev *dev)=0D
-+{=0D
-+	if (READ_ONCE(dev->mt76.bus) =3D=3D &mt7921_aer_bus_hung_ops)=0D
-+		return;=0D
-+=0D
-+	atomic_set(&dev->mt76.bus_hung, true);=0D
-+	WRITE_ONCE(dev->mt76.bus, &mt7921_aer_bus_hung_ops);=0D
-+}=0D
-+=0D
-+static pci_ers_result_t mt7921_error_detected(struct pci_dev *pdev,=0D
-+					      pci_channel_state_t state)=0D
-+{=0D
-+	struct mt76_dev *mdev =3D pci_get_drvdata(pdev);=0D
-+	struct mt792x_dev *dev =3D container_of(mdev, struct mt792x_dev, mt76);=0D
-+	u32 aer_unc_val =3D 0, aer_co_val =3D 0;=0D
-+=0D
-+	dev_err(mdev->dev, "PCIE error detect state: %d\n", state);=0D
-+=0D
-+	/* Clear SW IRQ tasklet first */=0D
-+	tasklet_kill(&mdev->irq_tasklet);=0D
-+=0D
-+	if (state =3D=3D pci_channel_io_perm_failure) {=0D
-+		mt7921_pci_set_aer_bus_hung_ops(dev);=0D
-+		return PCI_ERS_RESULT_DISCONNECT;=0D
-+	}=0D
-+=0D
-+	pci_read_config_dword(pdev, PCIE_AER_UNC_STATUS_OFFSET, &aer_unc_val);=0D
-+	pci_read_config_dword(pdev, PCIE_AER_CO_STATUS_OFFSET, &aer_co_val);=0D
-+=0D
-+	dev_warn(mdev->dev, "PCIE_AER_UNC_STATUS_OFFSET: 0x%x\n", aer_unc_val);=0D
-+	dev_warn(mdev->dev, "PCIE_AER_CO_STATUS_OFFSET: 0x%x\n", aer_co_val);=0D
-+=0D
-+	/**=0D
-+	 * Due to this error is from link error and this AER is un-correctable,=0D
-+	 * so can't covered by device=0D
-+	 **/=0D
-+	if (aer_unc_val !=3D 0) {=0D
-+		mt7921_pci_set_aer_bus_hung_ops(dev);=0D
-+		return PCI_ERS_RESULT_DISCONNECT;=0D
-+	}=0D
-+=0D
-+	/**=0D
-+	 * Try to recover it when state is pci_channel_io_frozen or=0D
-+	 * AER is correctable error=0D
-+	 **/=0D
-+	if (state =3D=3D pci_channel_io_frozen || aer_co_val !=3D 0) {=0D
-+		/* Disable PCIE activity first. */=0D
-+		pci_disable_device(pdev);=0D
-+		return PCI_ERS_RESULT_NEED_RESET;=0D
-+	}=0D
-+=0D
-+	return PCI_ERS_RESULT_NONE;=0D
-+}=0D
-+=0D
-+static pci_ers_result_t mt7921_slot_reset(struct pci_dev *pdev)=0D
-+{=0D
-+	struct mt76_dev *mdev =3D pci_get_drvdata(pdev);=0D
-+	int ret =3D 0;=0D
-+=0D
-+	ret =3D pci_enable_device_mem(pdev);=0D
-+=0D
-+	if (ret) {=0D
-+		dev_err(mdev->dev, "pci_enable_device_mem failed: %d\n", ret);=0D
-+		return PCI_ERS_RESULT_DISCONNECT;=0D
-+	}=0D
-+=0D
-+	pci_set_master(pdev);=0D
-+	pci_restore_state(pdev);=0D
-+	pci_save_state(pdev);=0D
-+	/* Also try do the vendor reset to let it more clear. */=0D
-+	mt792x_reset(mdev);=0D
-+=0D
-+	return PCI_ERS_RESULT_RECOVERED;=0D
-+}=0D
-+=0D
-+static const struct pci_error_handlers mt7921_err_handler =3D {=0D
-+	.error_detected =3D mt7921_error_detected,=0D
-+	.slot_reset     =3D mt7921_slot_reset,=0D
-+};=0D
-+=0D
- static void mt7921_pci_shutdown(struct pci_dev *pdev)=0D
- {=0D
- 	mt7921_pci_remove(pdev);=0D
-@@ -608,6 +710,7 @@ static struct pci_driver mt7921_pci_driver =3D {=0D
- 	.remove		=3D mt7921_pci_remove,=0D
- 	.shutdown	=3D mt7921_pci_shutdown,=0D
- 	.driver.pm	=3D pm_sleep_ptr(&mt7921_pm_ops),=0D
-+	.err_handler    =3D &mt7921_err_handler,=0D
- };=0D
- =0D
- module_pci_driver(mt7921_pci_driver);=0D
--- =0D
-2.45.2=0D
-=0D
+First of all, please drop the pieces you are agree with or not going to comment
+on (for whatever reason). It makes easier not miss anything important and saves
+reviewer's time on doing that for you.
+
+...
+
+> > 	for (size_t i = 0; i < bytes; i += sizeof(*buf)) {
+> > 
+> > > +		ret = regmap_read(efuse->regmap,
+> > > +				  MT6323_EFUSE_DOUT_BASE + offset + i, &tmp);
+> > > +		if (ret)
+> > > +			return ret;
+> > > +		buf[i / 2] = tmp;
+> > > +	}
+> > 
+> > + blank line.
+> > 
+> > Isn't this reimplementation of bulk read? Why the latter may not be used?
+> 
+> Yes, but the PWRAP (the regmap which the driver uses) doesn't support read
+> callback, only reg_read is implemented in the driver.
+> It hits the map->cache_type == REGCACHE_NONE in the regmap_read_raw, and falls
+> for the !map->read check, so regmap_bulk_read neither the regmap_read_raw
+> can be used.
+> 
+> Technically the PMIC is not continuous address space, but rather non-MMIO FSM,
+> so it makes sense to not implement the read callback. I guess the custom
+> implementation is fine then?
+
+No objections from me, but please make sure the summary of this is mentioned
+in the comment in the code and/or in the commit message.
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
+
 
