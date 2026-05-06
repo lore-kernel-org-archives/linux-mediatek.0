@@ -4,141 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29861CD342C
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 15:34:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEA9FCD342C
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 15:46:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3B9YW1Ck4qu2cjRy/tdGiyuUBQqV/sa7sjOilg8iEYU=; b=vECdEvtoUEmAtOjFoRlX4AiQZS
-	gnJucqg163tlNbtEDlwmK2LUnx5OUAHmeC1JMagC7+UEsm24Q8Wj0PfjWpI8Tsz0sSid3Hzb9PSYH
-	7durYomRSrjBIRiyxbbpbyGKdhV8M1iSdwgqx8kEKuMUiFvPbnvKhI3OUZ22y5HP4F7aWi6ucpO85
-	I4n+WdV2Z5yToltSVpFJoII8ch2/GlztiMcbdfp3sHx86yT+XwMKiE06gt/fiJjfNktl72nNoHmxS
-	qB9+Uh59QumZzoKVi+s6XYBNqxLZUDzhPlJGpp40f4CH76zw+uRk/e38nvMkPN8BQxolKa4AZWaMK
-	tYtZerpw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gfdBybtRppeE1KvRbZrzufC/NV+OTkc8viJlVMQwDSw=; b=ohPueB2nfGKaBFdAGIVaaQm1Nv
+	G8lVwhxPcDVi9ALSd+hCqbvpNB9p3ZpXC0bSIq5JNWPb7HmBZmbHXmPHNt+eTzx4ivHtDPYltcTJF
+	3nDmvEOMzyu+iENZwM2GA6eej2gE7Ytx4MvIWCArJKemN6lpvyFFW6ytF410Bz1jA1OXX44ZqQvlO
+	v9KPC3hhZ/R5sR70wprAGItNvV1a9TTilERQpxzMF9b+ySYdNAoURUUzY8KxoUPomrqzpPBK1ZPyU
+	tAXYr/5seU+yw0qy8xUlqSMbssWHncH5eVcYqc6fmIplYoVgx4zeqzjKBGbr/hj4sACTxCr1X/G1p
+	7MGUBvWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKeGR-00000001LvL-0CGz;
-	Wed, 06 May 2026 15:34:19 +0000
-Received: from mail-japanwestazlp170100003.outbound.protection.outlook.com ([2a01:111:f403:c407::3] helo=OS0P286CU011.outbound.protection.outlook.com)
+	id 1wKeSJ-00000001ODR-1qfW;
+	Wed, 06 May 2026 15:46:35 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKeGQ-00000001LuP-0SOR;
-	Wed, 06 May 2026 15:34:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Ija0YOG4T+Kk/07ZVui716yBO9OUruC65lls4+0xymBAqOcQ5gDkMYOs7oEUKgiKn2VqbT3GCls7qCgyZ7kj2ClpaHbFTDHMphGolDIcjdSEoF39hp4Zyce6rsQ/09SfHjNiEdfIJKOd5tbN/HyQ2P2vhIAHqm5YyzWbr3VsMIy2GzHPOvSn/uCy7R0dL4dEHGuTnzfgTSQdZXzlVd2GRagE3Iy1PLj0OUx3t1jsYkXEVkPzaeMTlbjTSpHj7YVbaWb2imeWRC3S5THHo8LczNlV71DjYoM9jgFT6HHMd421JZxwmDvxSrsjO7ErSDY7Vnns/sX54Jm68xrp8EgGMA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=3B9YW1Ck4qu2cjRy/tdGiyuUBQqV/sa7sjOilg8iEYU=;
- b=xnsuhzOOH02px7P/TRyvyJ5HNB925/zUfOz3F/6ubyYcXSzBKVFTxrutlB4oyd35Y2bABZulHWQ3JmcO95let1wRBnhIHsvaDVWyWYGhkQ88nlg+cQXbM20YS/WzLwR+AL2fnEqyXfWMc8Cghfj9czCz5JBWFt51EZmPdACQN79sKO15FFTrwv4APHu9tyaDmu9oQk1Bi6FzJnC7n8xiZBuTkZdGld1qdoiRCMGr2wg3tIezTZP7utQ7we2qFD9I6ZHJc4H7FoIrKGvMCXGsBbhDfu9kkvitnCjZxy2TRnScZ3DJbKk6KYHy5BLyZuJqe6NmGzhwWfzyTBY8eh1Prg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=bp.renesas.com; dmarc=pass action=none
- header.from=bp.renesas.com; dkim=pass header.d=bp.renesas.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bp.renesas.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=3B9YW1Ck4qu2cjRy/tdGiyuUBQqV/sa7sjOilg8iEYU=;
- b=RtPJ61aJnw//JHMREBv8+34o9+0SLiu6/jBNQESu7dPp8Iq/xVc/LY0xsjygGI0S6np19Ya4uTDDvWugY3ZBLlNeSqZUuiVLe4l5NeehQ6jsO3BBMnQT0r+7+Wxbokae3fBjAkKuJgTwL2FsrIydQ9WUPeValu9/4DGmyVUfwvI=
-Received: from TY3PR01MB11346.jpnprd01.prod.outlook.com (2603:1096:400:3d0::7)
- by OSZPR01MB8218.jpnprd01.prod.outlook.com (2603:1096:604:1a7::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9891.17; Wed, 6 May
- 2026 15:34:15 +0000
-Received: from TY3PR01MB11346.jpnprd01.prod.outlook.com
- ([fe80::87d1:4928:d55:97de]) by TY3PR01MB11346.jpnprd01.prod.outlook.com
- ([fe80::87d1:4928:d55:97de%4]) with mapi id 15.20.9891.008; Wed, 6 May 2026
- 15:34:15 +0000
-From: Biju Das <biju.das.jz@bp.renesas.com>
-To: Hans Zhang <18255117159@163.com>, "bhelgaas@google.com"
-	<bhelgaas@google.com>, "lpieralisi@kernel.org" <lpieralisi@kernel.org>,
-	"kwilczynski@kernel.org" <kwilczynski@kernel.org>, "mani@kernel.org"
-	<mani@kernel.org>, "vigneshr@ti.com" <vigneshr@ti.com>,
-	"jingoohan1@gmail.com" <jingoohan1@gmail.com>, "thomas.petazzoni@bootlin.com"
-	<thomas.petazzoni@bootlin.com>, "pali@kernel.org" <pali@kernel.org>,
-	"ryder.lee@mediatek.com" <ryder.lee@mediatek.com>,
-	"jianjun.wang@mediatek.com" <jianjun.wang@mediatek.com>, Claudiu Beznea
-	<claudiu.beznea.uj@bp.renesas.com>, "mpillai@cadence.com"
-	<mpillai@cadence.com>
-CC: "robh@kernel.org" <robh@kernel.org>, "s-vadapalli@ti.com"
-	<s-vadapalli@ti.com>, "linux-omap@vger.kernel.org"
-	<linux-omap@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "linux-renesas-soc@vger.kernel.org"
-	<linux-renesas-soc@vger.kernel.org>, "linux-pci@vger.kernel.org"
-	<linux-pci@vger.kernel.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>
-Subject: RE: [PATCH v2 1/8] PCI: Add pcie_wait_after_link_train() helper
-Thread-Topic: [PATCH v2 1/8] PCI: Add pcie_wait_after_link_train() helper
-Thread-Index: AQHc3WypLYbFrTGQQEK3Lt/fnk7ymbYBIExA
-Date: Wed, 6 May 2026 15:34:14 +0000
-Message-ID: <TY3PR01MB1134694C0F3D14E4A69EFB8CA863F2@TY3PR01MB11346.jpnprd01.prod.outlook.com>
-References: <20260506152346.166056-1-18255117159@163.com>
- <20260506152346.166056-2-18255117159@163.com>
-In-Reply-To: <20260506152346.166056-2-18255117159@163.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=bp.renesas.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TY3PR01MB11346:EE_|OSZPR01MB8218:EE_
-x-ms-office365-filtering-correlation-id: b1f5b8f9-eaab-4b5c-c3fd-08deab84edf1
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|366016|7416014|376014|921020|38070700021|18002099003|56012099003|22082099003;
-x-microsoft-antispam-message-info: xAntCA+hOnGYLejX/VhdJvJSy6xuw1AkmAnuzvOTs27Rhh+goC16tpX+9xfeA+tkctJYvZAn1zBRz4XgSg1gACiI3sjjHY0GG0yf1wwFTtii1UL7RVzlgJjRnFSJ1RMpK2DpEWUyCMq5Xp/ErQjYPOc67sVBipsjkatNts8ibA6U6W3sVH3tgzSmvMCWZJNHGqcRYBlS7+WTBrkJsqOk3mttq0qLAMtjvqVM1h7oCzzeankoqJlrJuSKb74ryRv69wjZZyXF6aFTVVqwytPdoy1F3UGcDIriwOYBH88nIuKeIVi4AVHrFgJizuwPtEX12EJZtonYnls9RBCBFWy1Rd1Ftltzb6TA+GH9bCd6Bu25GMrIkIVJpMoFQQOuyTbkEVtn/gib26YDEK0P8gMjd4c7ZcdcIHQs+lQnGZLmAHvLOi/rCTGjD3EQVIvAoFRwtabFpjWVMRtKsza4MVXP68b7byN4/U1AyvzyW3uhrsJsQsXs7hf1FKi5IzwufEpMe0X2lImNU+8VxBe40GX8/jiroTI7kzcbQ9yxCNiBkrej0LmxjvdX18Wiwr7v1xJUbMPrYQwGxg6DS89jzXxKrtAQOmNMOcTgzXpyTBctMd5t22I9HSX8qo45F8S+viowKElQlZJC4q7TmtY3AwJsYjA1MV1zFI6k4Nl5LrcKX/Lko6tnnzqXbbl0ZsXpBOVnE/m6BpcMkcTSpbT2cLLwYLlb2XS875oUulpY/V07Fmx8J5x7Gns/MHw4s390thlXBqhQYqrtdgo5m31NBrh8iA==
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY3PR01MB11346.jpnprd01.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(7416014)(376014)(921020)(38070700021)(18002099003)(56012099003)(22082099003);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?QBb8NPB88SppxanmO4JYuzSCFcKdkbPU7Rnyy75ZJdGgjwpbWq4o+Q9IGK4r?=
- =?us-ascii?Q?/3wCXcHSnJZr088BQIN8HtygQJToCLZ6CTNPGv3ed0ZTtUZm+NkqJffCijvq?=
- =?us-ascii?Q?Z1LGCALoO3dXjj8VR/rqre3IDmcPhCW4OCT3kgir7R7StRqIPMMpEtriAZ42?=
- =?us-ascii?Q?9ngGFfKQ6+eUa0iwHmZEu9xZwt0iXpsBsfZ7RubkXAHw+9xaBey0kyM8/Rsf?=
- =?us-ascii?Q?4Xacg4kyl5plDGIeS1KXAqcBTVV0BQvUbSrh4HVReSghoAhi44aCnrBWQ9Ff?=
- =?us-ascii?Q?OLfoDnxDujJ1FA7gyy2WR4/K4MCCWNRFegH9afVz7Ptiw26B2Hn8Rh1IBiM7?=
- =?us-ascii?Q?h/0+yZg6+Jyb3bJhJnq5skTrEah7I1ZXk/ttrcSO9x1iouYkqIUctpVDNOKi?=
- =?us-ascii?Q?3F6BWTvQLZa9oSFKfib2tDMisN7ZyaRUi9chLrkHWhp4M3KtDaXnl9zjj47T?=
- =?us-ascii?Q?i/fQIhO9uOvZyGlNPcHuTAvzKlCwe9spyjeJPTyC8TMpUbBVjX7eAIb52LYJ?=
- =?us-ascii?Q?pO3W+Imoiq4WXvbGXI482BG05x4QcZLMFFjHIjjCE241mRSuOuS4QPiSvxWg?=
- =?us-ascii?Q?i1E8/TzcA7u7QmL4nq8BjBNCF1S7F5a+3a5oAjkJZG5PNLkXjU1s82KpnRKG?=
- =?us-ascii?Q?XLBNwhazxexoo/V3UXNWvMRFq+KAsfKDqwUqtF2TKopW6o4FqfZH4z85cb+k?=
- =?us-ascii?Q?myU64LsscpHtnUDx9+5f5sPyNWxdN2715Ta+9S7pnr6DGYQTW54rAD4+9tUi?=
- =?us-ascii?Q?SX0//Joqj2MMQxRmj8RDVrUKV5Xt5f5gkLYKXUDOJow39LZ6OVNCUu2vCZrr?=
- =?us-ascii?Q?ovTgfPs0zWom+52LaYyJBvFVWrOsnDzzzk3cW3SV+Cl6koLa2+y9WjxyopH0?=
- =?us-ascii?Q?j7LUjiLwioJFTOcqQDfgO4ryg7B/K71pVDpy7LTAQS0gxj9OkgLa5RmCD+fo?=
- =?us-ascii?Q?eQSdMlHMVLwl4o+WjyR27xV/T1BB/Of2YBkwM3kr6bFAVY8Irwb7/U2eQ5a8?=
- =?us-ascii?Q?fBvI893ECTTqdWdodAIGZv24WLatr1VtjlaiKGv41DHhI0PNH1JA8riyrrjt?=
- =?us-ascii?Q?GMfudPxMM2Ss4aBqQRYIZxceTMheeY0sVLuPXgbuZoYSERw701D8cMvXZxZd?=
- =?us-ascii?Q?gZ3reTUprwuyEUvnEEKSlDFUyz1dm33kE/D97yeEJt2XD4LhlRxkTy4fDU3x?=
- =?us-ascii?Q?y+q9Eriq9Sb5Xz7i6pTBmRZCmj7rK9Q+vo7glgVl6HiT+nsO2s7Y2R4lzr/j?=
- =?us-ascii?Q?jMHOes/HG+95UiOxWWw2/NiDTaHBcAX1CuM7A3QEupoJvUj1E04jjugLcWrb?=
- =?us-ascii?Q?ya8bIUuH2OfGR+paR6UE04ULSLJWStTL/07e23bx9ycQvjScje5bft+Kkzm/?=
- =?us-ascii?Q?krtdNfYRSs8jj6Bdl4vnOwEGuHlCBt1fJHTlF+cZ3DtGjfJhJyTTIuba/yTG?=
- =?us-ascii?Q?E82L1U19t0dYeoPqxS4+AduH18S2vpz+ZtFDczn5WfKXHwvvMI0tqLk/8AuX?=
- =?us-ascii?Q?s5XHtFQ1IBIHUQgTJ8IGs6STTG3vk5ml+IqI9X7sv/ZNpooKxgDXbaplSRpr?=
- =?us-ascii?Q?BuLz4meNJCEZRLAxPKeWNQ3r2wvNe9/UcGTEhY/pzUQO08jc8bEdosKT6vY4?=
- =?us-ascii?Q?PczllOdswOnMXRzcHujF1MdH9tfs8/RG59xp8YXzDJ4/gGISO+P3rPaPsmen?=
- =?us-ascii?Q?cyhLmU/TcTfHSwcgho7DLS/+xsfvN2otd0Ft5kpwhhDDlTKioSI5bRZm3GJc?=
- =?us-ascii?Q?sBLiNTLIWA=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+	id 1wKeSH-00000001OCa-0WMC;
+	Wed, 06 May 2026 15:46:33 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 9B4EF42AE5;
+	Wed,  6 May 2026 15:46:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 482C2C2BCB8;
+	Wed,  6 May 2026 15:46:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1778082392;
+	bh=OaJWjamc6kWNh1B4kT6JEeX0RWTw5B2ryP/Qeb2SLqI=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=bw+h6YwP+WQqhFBn5HlBoswhd3ysx6X4monJg25zfK0XT4NRi0HBcANF9k/umJUPP
+	 hK/SVCcVmO9CCQBA0ZeOINqcMOHI/Ilb7iOOUPWoT4zUMtWN7utj07QJdhc/za6pEI
+	 6mbNTO8t9UBLSrV2CSYQWaAaObkiu7QTv0eMTbuhem+GoT4U92+RuL7lOstqJ41lh3
+	 ZAnpBljjOZP6j8QcL4Iwp8Vj3rWIe/r2Erm3gqDRroDhMC3ufuvMXpv1b4Casu/uKM
+	 O7pqIG8UMj/kHRegSGMN50Z6W8EFNuiglMUMxeWOaoi6dYjG0ZuZcj3FOBiOn/cHt8
+	 0YBfH4CiIbNMg==
+Date: Wed, 6 May 2026 16:46:19 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
+Cc: rva333@protonmail.com, David Lechner <dlechner@baylibre.com>, Nuno
+ =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Srinivas Kandagatla
+ <srini@kernel.org>, "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano
+ <daniel.lezcano@kernel.org>, Zhang Rui <rui.zhang@intel.com>, Lukasz Luba
+ <lukasz.luba@arm.com>, Lee Jones <lee@kernel.org>,
+ linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, Ben Grisdale
+ <bengris32@protonmail.ch>
+Subject: Re: [PATCH 04/13] iio: adc: mediatek: add mt6323 PMIC AUXADC driver
+Message-ID: <20260506164619.63ebc626@jic23-huawei>
+In-Reply-To: <20260504-mt6323-v1-4-799b58b355ff@protonmail.com>
+References: <20260504-mt6323-v1-0-799b58b355ff@protonmail.com>
+	<20260504-mt6323-v1-4-799b58b355ff@protonmail.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-X-OriginatorOrg: bp.renesas.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TY3PR01MB11346.jpnprd01.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b1f5b8f9-eaab-4b5c-c3fd-08deab84edf1
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 May 2026 15:34:14.9080
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 53d82571-da19-47e4-9cb4-625a166a4a2a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: rAgYJl/hNfUgvRRCRKf/2QNzW7ogANDgj3KxYI5SSb0CkwX1XSBZUfv7gDj/+Ro8+RjvGjkb//5bQ16/uy+i+SEU7r/Kpccff6mZRhOG1eE=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: OSZPR01MB8218
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260506_083418_149128_3266D79E 
-X-CRM114-Status: GOOD (  19.50  )
+X-CRM114-CacheID: sfid-20260506_084633_213588_6C0039A2 
+X-CRM114-Status: GOOD (  34.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -153,68 +83,267 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, 04 May 2026 21:24:56 +0300
+Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org> wrote:
+
+> From: Roman Vivchar <rva333@protonmail.com>
+> 
+> The mt6323 AUXADC is a 15-bit ADC used for system monitoring. This driver
+> provides support for reading various channels including battery and
+> charger voltages, battery and chip temperature, current sensing and
+> accessory detection.
+> 
+> Add a driver for the AUXADC found in the MediaTek mt6323 PMIC.
+> 
+> Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
+> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+
+A few things inline that might not entirely overlap with other reviews
+
+Also make sure to check:
+https://sashiko.dev/#/patchset/20260504-mt6323-v1-0-799b58b355ff%40protonmail.com
+It may well have made some stuff up, but in general it does find stuff
+humans have missed. I've called out a few more interesting ones inline
+(I looked after doing my initial review)
 
 
-> -----Original Message-----
-> From: Hans Zhang <18255117159@163.com>
-> Sent: 06 May 2026 16:24
-> Subject: [PATCH v2 1/8] PCI: Add pcie_wait_after_link_train() helper
->=20
-> PCIe r6.0, sec 6.6.1 (Conventional Reset) requires that for a Downstream =
-Port supporting Link speeds
-> greater than 5.0 GT/s, software must wait a minimum of 100 ms after Link =
-training completes before
-> sending any Configuration Request.
->=20
-> Introduce a static inline helper pcie_wait_after_link_train() that checks=
- the given max_link_speed (2 =3D
-> 5.0 GT/s, 3 =3D 8.0 GT/s, etc.) and calls
-> msleep(100) only when the speed is greater than 5.0 GT/s. The helper uses=
- the existing
-> PCIE_RESET_CONFIG_WAIT_MS macro defined in pci.h.
->=20
-> This allows multiple host controller drivers to share the same mandatory =
-delay without duplicating the
-> logic.
->=20
-> Signed-off-by: Hans Zhang <18255117159@163.com>
-> ---
->  drivers/pci/pci.h | 13 +++++++++++++
->  1 file changed, 13 insertions(+)
->=20
-> diff --git a/drivers/pci/pci.h b/drivers/pci/pci.h index 4a14f88e543a..a8=
-705a2a2d85 100644
-> --- a/drivers/pci/pci.h
-> +++ b/drivers/pci/pci.h
-> @@ -60,6 +60,19 @@ struct pcie_tlp_log;
->   */
->  #define PCIE_RESET_CONFIG_WAIT_MS	100
->=20
+Thanks,
+
+Jonathan
+
+> diff --git a/drivers/iio/adc/mt6323-auxadc.c b/drivers/iio/adc/mt6323-auxadc.c
+> new file mode 100644
+> index 000000000000..97b4ad4e7b47
+> --- /dev/null
+> +++ b/drivers/iio/adc/mt6323-auxadc.c
+
 > +/**
-> + * pcie_wait_after_link_train - Wait 100 ms if link speed > 5 GT/s
-> + * @max_link_speed: the maximum link speed (2 =3D 5.0 GT/s, 3 =3D 8.0 GT=
-/s,
-> +...)
-> + *
-> + * Must be called after Link training completes and before the first
-> + * Configuration Request is sent.
+> + * struct mt6323_auxadc - Main driver structure
+> + * @dev:           Device pointer
+> + * @regmap:        Regmap from PWRAP
+> + * @lock:          Mutex to serialize AUXADC reading vs configuration
 > + */
-> +static inline void pcie_wait_after_link_train(int max_link_speed) {
-> +	if (max_link_speed > 2)
-> +		msleep(PCIE_RESET_CONFIG_WAIT_MS);
+> +struct mt6323_auxadc {
+> +	struct device *dev;
+> +	struct regmap *regmap;
+> +	struct mutex lock;
+> +};
+
+> +static int mt6323_auxadc_check_if_stuck(struct mt6323_auxadc *auxadc)
+> +{
+> +	int i, ret;
+> +	u32 val;
+> +
+> +	for (i = 0; i < 50; i++) {
+> +		ret = regmap_read(auxadc->regmap, MT6323_AUXADC_CON19, &val);
+> +		if (ret)
+> +			return ret;
+> +
+> +		if (FIELD_GET(AUXADC_DECI_GDLY_MASK, val)) {
+Flip to reduce indent.
+		if (!FIELD_GET(AUXADC_DECI_GDLY_MASK, val))
+			return 0;
+
+		ret = regmap_read(auxadc->regmap, MT6323_AUXADC_ADC19, &val);
+		if (ret)
+			return ret;
+
+		if (!FIELD_GET(AUXADC_ADC19_BUSY_MASK, val)) {
+			ret = regmap_update_bits(auxadc->regmap,
+						 MT6323_AUXADC_CON19,
+						 FIELD_PREP(AUXADC_DECI_GDLY_MASK, 3),
+// no idea what the magic 3 is. Might need a define to make that clear.
+// fine to go a bit long on code like this for readability.  Also rather
+// odd for a regmap mask to be made up of some bits of a larger mask.
+// rather implies that a field needs breaking up into two.
+
+						 0x0);
+			if (ret)
+				return ret;
+		}
+		fsleep(10);
+	}
+
+> +			ret = regmap_read(auxadc->regmap, MT6323_AUXADC_ADC19,
+> +					  &val);
+> +			if (ret)
+> +				return ret;
+> +
+> +			if (!FIELD_GET(AUXADC_ADC19_BUSY_MASK, val)) {
+> +				ret = regmap_update_bits(
+> +					auxadc->regmap, MT6323_AUXADC_CON19,
+> +					FIELD_PREP(AUXADC_DECI_GDLY_MASK, 3),
+> +					0x0);
+> +				if (ret)
+> +					return ret;
+> +			}
+> +		} else {
+> +			return 0;
+> +		}
+> +
+> +		fsleep(10);
+> +	}
+> +
+> +	return -ETIMEDOUT;
 > +}
+> +
+> +static int mt6323_auxadc_request(struct mt6323_auxadc *auxadc,
+> +				 unsigned long channel)
+> +{
+> +	int ret;
+> +	u32 pmic_val, adc_val;
+> +
+> +	if (channel < 9) {
+> +		ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON11,
+> +					 AUXADC_VBUF_EN, AUXADC_VBUF_EN);
+> +		if (ret)
+> +			return ret;
+> +
+> +		ret = regmap_read(auxadc->regmap, MT6323_AUXADC_CON22,
+> +				  &pmic_val);
+> +		if (ret)
+> +			return ret;
+> +
+> +		adc_val = FIELD_GET(AUXADC_LOW_CHANNEL_MASK, pmic_val);
+> +		adc_val &= ~BIT(channel);
+> +
+> +		ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON22,
+> +					 AUXADC_LOW_CHANNEL_MASK, adc_val);
 
-Maybe move this patch to the user??
+Given you have the full register value I'd do regmap_write() rather than
+update_bits() that may trigger another read. Matters less if you having
+caching enabled.
 
-Cheers,
-Biju
+> +		if (ret)
+> +			return ret;
+> +
+> +		ret = regmap_read(auxadc->regmap, MT6323_AUXADC_CON22,
+> +				  &pmic_val);
+> +		if (ret)
+> +			return ret;
+> +
+> +		adc_val = FIELD_GET(AUXADC_LOW_CHANNEL_MASK, pmic_val);
+> +		adc_val |= BIT(channel);
+> +
+> +		ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON22,
+> +					 AUXADC_LOW_CHANNEL_MASK, adc_val);
+
+as above for a full write.
+
+		return regmap_update_bits() so we don't have to read on
+to see what else happens.  You could drop the else but I think it
+does have some value in showing they are of 'equal' likelihood.
 
 > +
->  /* Parameters for the waiting for link up routine */
->  #define PCIE_LINK_WAIT_MAX_RETRIES	10
->  #define PCIE_LINK_WAIT_SLEEP_MS		90
-> --
-> 2.34.1
->=20
+> +	} else {
+Sashiko points out that we only have channels 0-9 defined, so how do
+we get here?
 
+> +		ret = regmap_read(auxadc->regmap, MT6323_AUXADC_CON23,
+> +				  &pmic_val);
+> +		if (ret)
+> +			return ret;
+> +
+> +		adc_val = FIELD_GET(AUXADC_AUDIO_CHANNEL_MASK, pmic_val);
+> +		adc_val &= ~BIT(channel - 9);
+> +
+> +		ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON23,
+> +					 AUXADC_AUDIO_CHANNEL_MASK, adc_val);
+> +		if (ret)
+> +			return ret;
+> +
+> +		ret = regmap_read(auxadc->regmap, MT6323_AUXADC_CON23,
+> +				  &pmic_val);
+> +		if (ret)
+> +			return ret;
+> +
+> +		adc_val = FIELD_GET(AUXADC_AUDIO_CHANNEL_MASK, pmic_val);
+> +		adc_val |= BIT(channel - 9);
+> +
+> +		ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON23,
+> +					 AUXADC_AUDIO_CHANNEL_MASK, adc_val);
+return regmap_update_bits() here as well because we might as well.
+
+> +	}
+> +
+> +	return ret;
+> +}
+
+> +static int mt6323_auxadc_read_raw(struct iio_dev *indio_dev,
+> +				  const struct iio_chan_spec *chan, int *val,
+> +				  int *val2, long mask)
+> +{
+> +	struct mt6323_auxadc *auxadc = iio_priv(indio_dev);
+> +	int ret, mult = 1;
+
+Move declaration of mult into the scope where it's used.
+That will mean this default is near the point of use. Mind you
+I'd probably but the assignment in and else to make it even
+more obvious.
+
+> +
+> +	if (mask == IIO_CHAN_INFO_RAW) {
+> +		scoped_guard(mutex, &auxadc->lock)
+> +		{
+		guard(mutex)(&auxadc->lock);
+preferred where not necessary to use scoped_guard() as it
+means we don't end up with large code indents.
+
+Though if you did { on the line above.
+
+As sashiko notes, this will trip up compilers anyway due
+to an oddity of how scoped_guard() is implemented. You have
+to have a return after it.
+
+> +			ret = mt6323_auxadc_check_if_stuck(auxadc);
+> +			if (ret)
+> +				return ret;
+> +
+> +			ret = mt6323_auxadc_request(auxadc, chan->address);
+> +			if (ret)
+> +				return ret;
+> +
+> +			usleep_range(300, 500);
+
+Smells like fsleep() is appropriate.
+
+> +
+> +			ret = mt6323_auxadc_read(auxadc, chan, val);
+> +			if (ret)
+> +				return ret;
+> +			return IIO_VAL_INT;
+> +		}
+> +	} else if (mask == IIO_CHAN_INFO_SCALE) {
+> +		if (chan->channel == MT6323_AUXADC_ISENSE ||
+> +		    chan->address == MT6323_AUXADC_BATSNS)
+Probably pick channel or address.  Mind you not much point in
+setting them both to the same thing (another one sashiko got
+that I missed)
+
+> +			mult = 4;
+> +
+> +		*val = mult * 1800;
+> +		*val2 = 32768;
+> +
+> +		return IIO_VAL_FRACTIONAL;
+> +	} else 
+
+{} for all legs if any need it.
+
+> +		return -EINVAL;
+> +}
+> +
+> +static int mt6323_auxadc_init(struct mt6323_auxadc *auxadc)
+> +{
+
+> +
+> +	ret = regmap_update_bits(auxadc->regmap, MT6323_AUXADC_CON9,
+> +				 AUXADC_OSR_MASK,
+> +				 FIELD_PREP(AUXADC_OSR_MASK, 3));
+
+I'm going to guess something to do with sampling rate?  That 3 is non
+obvious so I'd suggest defines for the values AUXADC_OSR can take.
+
+> +	return ret;
+> +}
 
