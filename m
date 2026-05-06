@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 915FBCD3424
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 07:57:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8F09CD3424
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 07:59:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=p3/EADdmMNEyzs6reOc1JSR1ahb/Jkvzimw+1gullJI=; b=kMi5SunxDeCgA4ZPQWQoQE/YMW
-	yQCKxMrOGnccbMsnkyhL4Zn6uVAtx28eBZeVtPjcdybK9b+i0Zo9uIYkokLWbDyf3i0h0W8kUcZlW
-	JgRbIWVZpY9QatxFJ61XwrVB/UuupiGGIWYSPaGY7ynT2oqCPhJQgePym5tfMlJ/3hGAJILCoJGSU
-	ve/+84smX7+7hvRWKZWx+Z6+IlvvBK2oTGsdDVPx0cjNKYjTGOL/ki78qzMyGagyQxo+GUJck3H/M
-	UPwqDCLrmafb4xnY22NoCFDa0jXTx6d+rjPBwChN97UbGKkp3q1igiIg8HVa2z72YjPK7p7DDx4Ez
-	eXqAZtNQ==;
+	bh=M26NbGB497LgTw5mb28TPnR4jZHytVwknG+FDRVyXlE=; b=wWK9qOtiDtyXsvIp7vlKzVzTAy
+	MXDGD+0ZsRs29GeBZo9MT2NFhu6rMKnFXjmEB4jWpB+XBHaZw/8v0GtCO1uMJvuAofO0cn19W8tZk
+	2oVCTRv6TFjmse0pGtuVLlz7/wxeVNTZgzzP9/m/irTM8k9Xv/MUR+8ggRy1tD/Vo43ToZAfJhCia
+	vHZXLfT0ythiE1EOY+sqWs82UqvNj/qp3tJy0LCxux8wXJkPzJ4vVCrtxa7wcihf5+soy71UksjKT
+	zrs/HHmzRJh4GYT8P2Lhw+7LxO/Ioap684Qn87PQiOD/NdF0fERpig86cl/JTFwm9YR8xaMsiP3Tu
+	8GDMiohA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKX8V-000000005eB-1Qat;
-	Wed, 06 May 2026 07:57:39 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wKXA9-000000005sM-2QAy;
+	Wed, 06 May 2026 07:59:21 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKX8T-000000005d9-1Gjs;
-	Wed, 06 May 2026 07:57:37 +0000
+	id 1wKXA8-000000005rw-3Svj;
+	Wed, 06 May 2026 07:59:20 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1CE2743832;
-	Wed,  6 May 2026 07:57:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E69A9C2BCB8;
-	Wed,  6 May 2026 07:57:30 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 0DBE043A40;
+	Wed,  6 May 2026 07:59:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2C1F0C2BCB8;
+	Wed,  6 May 2026 07:59:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778054256;
-	bh=ckP/O7E/RV7oPB0vyQ9xjZ9ZUW9/8/F/FAoMbJhQbGQ=;
+	s=k20201202; t=1778054359;
+	bh=pB30BlcIrCXz0IZNJpuu/INS+jtNlnSuRPHllEtjWfg=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=dP2kmVEVUDa9jE6VB4gFSSqD9E7xFUc0+00VkR6ObBUunHN3TupH5S0qgLMkizV9W
-	 O+3wngyJHgdpUsRpQKwudpNF115TzWnvXgDHgd7rX0bhf6LKmjuDG5Ua2+zJxnM/yx
-	 lZYi9pGsgsj2wZPcx68M128hBsPNTp7XwEItGX1Mtebe9h2jRxeH7i8VjiXJHQ62Xb
-	 wpLObFov8YYtNAHQd3hPb0xecyo+l5e25BEiH4ZYSbXsxkDnqsSRLolETg1T7qiq7V
-	 Rnf1SjMsWh8rQkd6mnkSIryK3GtiG4zrAg1WLCq51Z4jJwng+E1a0FQwiSW2n69L+i
-	 EgIrrt8wnySng==
-Message-ID: <210109d6-4255-42c2-8fc2-f986f26f7d5a@kernel.org>
-Date: Wed, 6 May 2026 09:57:29 +0200
+	b=Iv5qbtu1aQmatclyLbOnRdZorbsoXE7y2ppNXNy34OM6i9761Xg+WKQnfdZlGxlia
+	 92iQUrE1QtFtJBST3md8W10xrtPWegNrwvkjD7n3m1HXGC5cPrOyMPjDf7Qi8HxxJy
+	 uU9Zv0ZruzQStGhl6oqRU4KTCHHW7xnDX80y5N7cIuVUfRBeu6U8Divh5TAeZhIcB/
+	 S9qw0f4LmK7vWEmUCZ3maE7SQCAu54v/AirJGs+B7r1r/y46QiPf6xAx+iaKiWrjfA
+	 CO5q+IZe31PRbHE8FqBqy2aCaMMovBxUFgngHxsgqWOit4ckEi9aGSEodiMTDAM3a4
+	 oTOV8O1p20VCQ==
+Message-ID: <80d8a2ff-9b5d-4318-b806-1fed38f66983@kernel.org>
+Date: Wed, 6 May 2026 09:59:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 02/13] dt-bindings: nvmem: add mt6323 PMIC EFUSE
+Subject: Re: [PATCH 11/13] ARM: dts: mediatek: mt6323: add support for EFUSE
 To: rva333@protonmail.com, Jonathan Cameron <jic23@kernel.org>,
  David Lechner <dlechner@baylibre.com>, =?UTF-8?Q?Nuno_S=C3=A1?=
  <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>,
@@ -62,7 +62,7 @@ Cc: linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
  Ben Grisdale <bengris32@protonmail.ch>
 References: <20260504-mt6323-v1-0-799b58b355ff@protonmail.com>
- <20260504-mt6323-v1-2-799b58b355ff@protonmail.com>
+ <20260504-mt6323-v1-11-799b58b355ff@protonmail.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -108,12 +108,13 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20260504-mt6323-v1-2-799b58b355ff@protonmail.com>
+In-Reply-To: <20260504-mt6323-v1-11-799b58b355ff@protonmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260506_005737_537595_98FD98B0 
-X-CRM114-Status: GOOD (  14.85  )
+X-CRM114-CacheID: sfid-20260506_005920_911452_A581AF1F 
+X-CRM114-Status: UNSURE (   9.28  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,62 +129,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 04/05/2026 20:24, Roman Vivchar via B4 Relay wrote:
-> From: Roman Vivchar <rva333@protonmail.com>
-> 
-> The MediaTek mt6323 PMIC includes an EFUSE used for storing calibration
-> data.
-> 
-> Add the device tree binding documentation for the MediaTek mt6323 EFUSE.
-> 
-> Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
+On 04/05/2026 20:25, Roman Vivchar via B4 Relay wrote:
+> diff --git a/arch/arm/boot/dts/mediatek/mt6323.dtsi b/arch/arm/boot/dts/mediatek/mt6323.dtsi
+> index c070f4b0936c..3fe6a5e35e70 100644
+> --- a/arch/arm/boot/dts/mediatek/mt6323.dtsi
+> +++ b/arch/arm/boot/dts/mediatek/mt6323.dtsi
+> @@ -19,6 +19,12 @@ mt6323_adc: adc {
+>  			#io-channel-cells = <1>;
+>  		};
+>  
+> +		mt6323_efuse: efuse {
+> +			compatible = "mediatek,mt6323-efuse";
 
-Drop.
+You clearly did not checked the DTS with tools. This will fail, because
+mt6323 schema does not allow such nodes.
 
-I actually wonder how v1 could even receive such tags.
-
-> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
-> ---
->  .../bindings/nvmem/mediatek,mt6323-efuse.yaml      | 42 ++++++++++++++++++++++
->  1 file changed, 42 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/nvmem/mediatek,mt6323-efuse.yaml b/Documentation/devicetree/bindings/nvmem/mediatek,mt6323-efuse.yaml
-> new file mode 100644
-> index 000000000000..eb2437b0c1f0
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/nvmem/mediatek,mt6323-efuse.yaml
-> @@ -0,0 +1,42 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/nvmem/mediatek,mt6323-efuse.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek MT6323 PMIC EFUSE
-> +
-> +description: |
-
-Do not need '|' unless you need to preserve formatting.
-
-> +  MT6323 efuse is used for storing calibration data, such as thermal sensor
-> +  calibration.
-> +
-> +maintainers:
-> +  - Roman Vivchar <rva333@protonmail.com>
-> +
-> +allOf:
-> +  - $ref: nvmem.yaml#
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt6323-efuse
-> +
-> +required:
-> +  - compatible
-
-Again, heavily incomplete binding. How do you access the efuse memory if
-device has no resources?
-
+All bindings patch are incomplete or oddly organized. You need to
+provide AND TEST complete picture.
 
 Best regards,
 Krzysztof
