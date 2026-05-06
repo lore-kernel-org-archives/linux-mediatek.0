@@ -4,58 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE2E7CD3436
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 10:59:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 616C1CD3436
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2026 11:22:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
 	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Vp0YaEHA+Vz07FZCGn4HZFYiAua40SZzSJgjDcDx34I=; b=dcgrH7Gd8NNjRxWAdh2MfMMp3Q
-	8a87QnH5jpL905LmUIpcwfWk4CxFYTIRUE5/7Urt9qVJFqQczM5gy7BHbJO3a0JxbaGFeJYI2Pgg2
-	EckLKI0ovchXwLoE1zEaYXjEW2dS2beSP1gIO1rLVXd1iVTQDNd5X5qC9201J5C3eVRCAuQw5hhHW
-	4r5jZz0hT5PN2ZHV7XOutwQex9vzADKEZQSTIYMB0TR/Q40AS/X4KN48DQRyOlbo3tFI0p38JQJMq
-	nNb0zSFEGhaOJubFNkXAZz/ZH9BjQY2zk65ms517iY6xeyaBcIQQaQ4MzgsSQlsCZ0Yl6UzXdiwAB
-	T+Nqg7fg==;
+	bh=kZtsny8NCeAj/GASj1HlxIQBODAnth4j1tzCDBSh6zU=; b=0iZPXU9uz6+1GrnFPzGDHSqEgE
+	zPifMfPKUlNWMiWEZBGOMhG8EF0pI4BMGmwB2JDLpx1Kv6yDwQNY1SXzLoSACVGgjIJ+nb8SPKaQX
+	xNAUyu5bPyu50LFLtrqBrSkgXRAVAEIQh7VYz0qqHJJA0iigvLU47a/blecQEFQLHdd7xxq9JB9qE
+	g/za9MycjZ9BFCcO1TC/y9Jd6XWD1ByJqiNUX6vGzusSLyZLGG3ukWNt77ZON1cJcNlkKIT2NGzIK
+	qULxBej2Lpb5HnAqMQOAl2DhCEetoKKqLJzaT8SGfgsWgkNbP/e7R+r5Cuoi/62RurO43IPSPP0x+
+	jYljcqJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKZye-00000000Yv3-38HQ;
-	Wed, 06 May 2026 10:59:40 +0000
-Received: from mail-4325.protonmail.ch ([185.70.43.25])
+	id 1wKaKh-00000000c2W-12UU;
+	Wed, 06 May 2026 11:22:27 +0000
+Received: from mail-24424.protonmail.ch ([109.224.244.24])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKZyc-00000000Ytk-47N0
-	for linux-mediatek@lists.infradead.org;
-	Wed, 06 May 2026 10:59:39 +0000
+	id 1wKaKf-00000000c1k-44dh;
+	Wed, 06 May 2026 11:22:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail3; t=1778065173; x=1778324373;
-	bh=Vp0YaEHA+Vz07FZCGn4HZFYiAua40SZzSJgjDcDx34I=;
+	s=protonmail3; t=1778066543; x=1778325743;
+	bh=kZtsny8NCeAj/GASj1HlxIQBODAnth4j1tzCDBSh6zU=;
 	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
 	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
 	 Message-ID:BIMI-Selector;
-	b=EGvbsrKRp1zTJyOrjN5rl3dTlWGFVpAz7bq3iUMc856yy0WajiUiNmBoE98uFZwHb
-	 ykdM8CowM5+bdvhIWDGn/bOquMNDH3qQbBNbUNYYcIHks6ZiSyKRAeUST60HSRvX5R
-	 IlMYZxq5ha+Wqiwhpy7e9xNrZ3jSD0BIdSKDvFzoG3PvI39J4aXFoIF3zq/WXKsvBH
-	 gPaae4kOBbCZUEaxc5fCn+oX6Y2+g+8dn73HAu5zkr5dedRensLsNleyTMlI9B0L+/
-	 Y1N1N1tC6rchd1GSkbGloTh1k10xUJGSBmwk1HK1A9n/iqg4Pezkz87lRXumhtE1HT
-	 H5LqCYAtGqxlQ==
-Date: Wed, 06 May 2026 10:59:29 +0000
-To: Krzysztof Kozlowski <krzk@kernel.org>
+	b=IzHhikTWfQDBTr23vgWJSTLdr5y+9NN/h3i887KjjWpZeA8mc76VXZO9vWyMfmZ7l
+	 2FOHhTPlaj2aO7kjZzeawb9JjNYBxFDZuRcUBRs6K3QBAa3KxglgXHuebKrk6kUD8M
+	 +b6wNyHjiKSymVqdw7bvKrYvhVBPL+LgY/dV70GM5V9iudGYIT4ZNZRiBl3xmPC8Na
+	 hwRZFyTleFHpHYy/Dpe6r6LW6lUfuZOrOL9FWH2MmAbcw5rLOjiK7iku80jqGB2uI/
+	 72Fg+8g97SEdOW7U8vN00SxmJsnrxc1IGhgH4xErpL7I/CR/2A+akispojEbDHR4I2
+	 ZP9QdjW0dQo1w==
+Date: Wed, 06 May 2026 11:22:15 +0000
+To: Andy Shevchenko <andriy.shevchenko@intel.com>
 From: Roman Vivchar <rva333@protonmail.com>
 Cc: Jonathan Cameron <jic23@kernel.org>, David Lechner <dlechner@baylibre.com>, =?utf-8?Q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Srinivas Kandagatla <srini@kernel.org>, "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@kernel.org>, Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>, Lee Jones <lee@kernel.org>, linux-iio@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, Ben Grisdale <bengris32@protonmail.ch>
-Subject: Re: [PATCH 01/13] dt-bindings: iio: adc: add mt6323 PMIC AUXADC
-Message-ID: <evJBbJD1B9GjUyj5xyiJVUw-Ufib330tbUxxamM8-e4kJeNlwcENufbYZHdDWb0ZItz1fsEAbDaSFk0ObL4y0zenRr4vA4KOn6IHxuBP4VQ=@protonmail.com>
-In-Reply-To: <389917bb-c64c-4ac2-ab8f-b28ab0a89ecb@kernel.org>
-References: <20260504-mt6323-v1-0-799b58b355ff@protonmail.com> <20260504-mt6323-v1-1-799b58b355ff@protonmail.com> <389917bb-c64c-4ac2-ab8f-b28ab0a89ecb@kernel.org>
+Subject: Re: [PATCH 06/13] thermal: mediatek: add pmic thermal support
+Message-ID: <cgsML96DsJh_Ow9XsSnyrZ3NhlCnNj1rKegzYNR3eQzkWoF5xQB5-aU6Zi7pKcT8GfUnO3B-D71je60APUtorB7p_A3GtUCp2oer3KYLn6k=@protonmail.com>
+In-Reply-To: <afmnUG8dG0N0HpV6@ashevche-desk.local>
+References: <20260504-mt6323-v1-0-799b58b355ff@protonmail.com> <20260504-mt6323-v1-6-799b58b355ff@protonmail.com> <afmnUG8dG0N0HpV6@ashevche-desk.local>
 Feedback-ID: 173184497:user:proton
-X-Pm-Message-ID: c2fe990d4bbda504abf775e2c63ea9d8db350fca
+X-Pm-Message-ID: b57442d521fe1c3d5c9f5812d1b7a6c448998847
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260506_035939_169936_750C8747 
-X-CRM114-Status: UNSURE (   9.29  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260506_042226_166911_5B2F2198 
+X-CRM114-Status: GOOD (  11.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,42 +68,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wednesday, May 6th, 2026 at 10:56 AM, Krzysztof Kozlowski <krzk@kernel.o=
-rg> wrote:
+On Tuesday, May 5th, 2026 at 11:16 AM, Andy Shevchenko <andriy.shevchenko@i=
+ntel.com> wrote:
 
-> On 04/05/2026 20:24, Roman Vivchar via B4 Relay wrote:
-> > From: Roman Vivchar <rva333@protonmail.com>
-> >
-> > The MediaTek mt6323 PMIC includes an AUXADC used for battery voltage,
-> > temperature, and other internal measurements.
-> >
+> On Mon, May 04, 2026 at 09:24:58PM +0300, Roman Vivchar via B4 Relay wrot=
+e:
 
 ...
 
-> > +
-> > +properties:
-> > +  compatible:
-> > +    const: mediatek,mt6323-auxadc
-> > +
-> > +  "#io-channel-cells":
-> > +    const: 1
-> > +
-> > +required:
-> > +  - compatible
-> > +  - "#io-channel-cells"
+> > +struct mtk_pmic_sensor {
+> > +=09struct mtk_pmic_thermal *mt;
+> > +=09int id;
+> > +=09struct iio_channel *adc_channel;
+> > +=09struct thermal_zone_device *tzdev;
+> > +};
 >=20
+> Can you confirm with `pahole` that this is the best layout (taking into a=
+ccount
+> the use in the below data structure)?
 >=20
-> This is heavily incomplete node... or unnecessarily split. Why it cannot
-> be part of parent binding? Or even parent node?
->
+> > +struct mtk_pmic_thermal {
+> > +=09struct device *dev;
+> > +=09struct regmap *regmap;
+> > +=09struct mtk_pmic_sensor sensors[MAX_SENSORS];
+> > +
+> > +=09s32 t_slope1;
+> > +=09s32 t_slope2;
+> > +=09s32 t_intercept;
+> > +
+> > +=09const struct mtk_thermal_data *data;
+> > +};
+>=20
 
-The MediaTek mt6359 AUXADC also has a very similar binding. The mt6323
-cannot be merged there because it has a different hardware.
+On the ARMv7 it shouldn't be an issue, because pointer size equals to
+the s32 or int. However, I've reordered the fields to group pointers
+and integers together.
 
-Should this go as a child for the mt6397 mfd like mediatek,mt6323-led?
-It currently references only mediatek,mt6359-auxadc.yaml, so perhaps
-the mt6359 should be merged to the mfd, and then use oneOf for the
-compatible property?
+struct mtk_pmic_sensor {
+=09struct mtk_pmic_thermal *  mt;                   /*     0     4 */
+=09struct iio_channel *       adc_channel;          /*     4     4 */
+=09struct thermal_zone_device * tzdev;              /*     8     4 */
+=09int                        id;                   /*    12     4 */
+
+=09/* size: 16, cachelines: 1, members: 4 */
+=09/* last cacheline: 16 bytes */
+};
+
+struct mtk_pmic_thermal {
+=09struct device *            dev;                  /*     0     4 */
+=09struct regmap *            regmap;               /*     4     4 */
+=09const struct mtk_thermal_data  * data;           /*     8     4 */
+=09s32                        t_slope1;             /*    12     4 */
+=09s32                        t_slope2;             /*    16     4 */
+=09s32                        t_intercept;          /*    20     4 */
+=09struct mtk_pmic_sensor     sensors[1];           /*    24    16 */
+
+=09/* size: 40, cachelines: 1, members: 7 */
+=09/* last cacheline: 40 bytes */
+};
+
+The compiler will still add some padding on the AArch64 though.
+
+struct mtk_pmic_sensor {
+=09struct mtk_pmic_thermal *  mt;                   /*     0     8 */
+=09struct iio_channel *       adc_channel;          /*     8     8 */
+=09struct thermal_zone_device * tzdev;              /*    16     8 */
+=09int                        id;                   /*    24     4 */
+
+=09/* size: 32, cachelines: 1, members: 4 */
+=09/* padding: 4 */
+=09/* last cacheline: 32 bytes */
+};
+
+struct mtk_pmic_thermal {
+=09struct device *            dev;                  /*     0     8 */
+=09struct regmap *            regmap;               /*     8     8 */
+=09const struct mtk_thermal_data  * data;           /*    16     8 */
+=09s32                        t_slope1;             /*    24     4 */
+=09s32                        t_slope2;             /*    28     4 */
+=09s32                        t_intercept;          /*    32     4 */
+
+=09/* XXX 4 bytes hole, try to pack */
+
+=09struct mtk_pmic_sensor     sensors[1];           /*    40    32 */
+
+=09/* size: 72, cachelines: 2, members: 7 */
+=09/* sum members: 68, holes: 1, sum holes: 4 */
+=09/* last cacheline: 8 bytes */
+};
+
+Is this good enough?
+
+Other comments will be fixed in the v2.
 
 Best regards,
 Roman
