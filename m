@@ -4,78 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A140CD3427
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2026 12:12:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 325DFCD343F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2026 13:33:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZrnqX96u+Flxd2Q9FYBoadC2ai7BMu/bBuPcHTaRBc8=; b=nzZEjwRVKpKw176vn/QKAxUt+s
-	B+5Kvv6mTQHg13zwm+DHqbcjlfQIRXmsDPfGpzAo5gIFCgi8fE3/mKY1LRhn3NKfpdhBMmBGteh4L
-	dqZAIRxXaMb+78+vcZ5rGTrnLZiU/7fGm6ETUtm5JFlamYXrdIUVipLB3gG6/vUwJBsq5vXLpn77d
-	r9USUPSV8KfrHYoY2X4Rxl1esQns+Ph3RL8/jkcphZGqdnJ5RMoQ6aMV/gvIvBEd7OrCpcyHHxWI/
-	n1U44CvL56+kLu9UrjlZ6rUbDdpT+zA0UJXvN6ljJpJGmGDWe4TlslEq9g69WFw7BOtnUnmYadliR
-	Y2BnMZHg==;
+	bh=QdSOPYHhbIllJ5J2g4DcN9wLr71AjbsQu05Yehlq92o=; b=0XCuRxs2jnZL/Z9K7hMRwqKPAQ
+	Fk4bhglsaT6k3SJKCYCmjnNYJs57f3INENfpPbyVotXnp3WxV5xTzECEH5DEPlmElzPWhyU7OUSSQ
+	de5UrjddZQdYn4OXbNN2DjmbnvzzqjS1jpDhXoumQuOOFHUzxNIPtGArwPGmw8qm+Efj0+IipG08k
+	/6+qIYDHNfz8unGxJ5hVx8sv4SGEnunkGdSazDZ8oy4FzlJ70Vx6wn1M0y9ED6Cq1GTclkEifOh9d
+	jkQnqPJ21e1ZNOgShng9i4x1IMiNn/83hTX8kWHh6brL5RfJYx4eWAD5sxLUEkMm7q507EOQeZhKb
+	unpZO6jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKxaj-00000003kff-3v1b;
-	Thu, 07 May 2026 12:12:33 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1wKyqc-00000003uhg-3OYH;
+	Thu, 07 May 2026 13:33:02 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKxah-00000003kf0-3Xyd;
-	Thu, 07 May 2026 12:12:32 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1778155922; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=SDqglZccFbVPk9LWQ0GXBIIjb5MTR7/+sA4n+fjXZXzD2J20OQUNcGzzI8P2ThMpfbxK0suJSqw8KJoBxUETcpz+Zc1EsGX5POHky3de0r5e5g2HHPRZpf/A66O4+k6/I53xMY74F7R0YsQ7AfWTkzcr6RKxCUardLqYkuBWWMo=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1778155922; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=ZrnqX96u+Flxd2Q9FYBoadC2ai7BMu/bBuPcHTaRBc8=; 
-	b=LYk7OweCiBXGFeROcxl94OQydGvYw21aGDkgLo+D1qZw4lSgNAKmsD4LBq99l0c5nxOdVNjUcxb0ZORrKWKRllaWvWOfa0SAtujSYSDKZH9OzQ6BH22mvkJUimyAsUyQzusXbCKMgQ88pUXTz/BGOjLc2qrjZW5lRU70bdIpoIM=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
-	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1778155922;
-	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=ZrnqX96u+Flxd2Q9FYBoadC2ai7BMu/bBuPcHTaRBc8=;
-	b=Z25JEbRAuz4jHpuHjKB0FLBVYYQUt9rboPSOl82e/pL+qjfex4RSH2vRvdYw63Ix
-	zq4cfxq08lheqbLqpsL6cC/SUNOrT3BXqQr9WSwsjFWj+f5KbYlmn6rw960vb09NAzS
-	ER90yeFBhvryN8yxHZfczpNpOZdDwFMWxNGocsm4=
-Received: by mx.zohomail.com with SMTPS id 1778155920789528.3783773258275;
-	Thu, 7 May 2026 05:12:00 -0700 (PDT)
-Message-ID: <9f569ba00b959b701a7a51bcd7347c1a108a15ee.camel@collabora.com>
-Subject: Re: [PATCH net-next v2 3/4] net: phy: air_phy_lib: Factorize
- BuckPBus register accessors
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>,  Eric Dumazet <edumazet@google.com>, Jakub Kicinski
- <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring
- <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley	
- <conor+dt@kernel.org>, AngeloGioacchino Del Regno	
- <angelogioacchino.delregno@collabora.com>, Heiner Kallweit	
- <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>, 
-	kevin-kw.huang@airoha.com, macpaul.lin@mediatek.com,
- matthias.bgg@gmail.com, 	kernel@collabora.com, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, 	linux-kernel@vger.kernel.org
-Date: Thu, 07 May 2026 14:11:54 +0200
-In-Reply-To: <3bd7803d-4c4a-4f61-9434-a6bf25627b58@lunn.ch>
-References: <20260326-add-airoha-an8801-support-v2-0-1a42d6b6050f@collabora.com>
-	 <20260326-add-airoha-an8801-support-v2-3-1a42d6b6050f@collabora.com>
-	 <3bd7803d-4c4a-4f61-9434-a6bf25627b58@lunn.ch>
-Organization: Collabora Ltd
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
+	id 1wKyqa-00000003ugH-39IO;
+	Thu, 07 May 2026 13:33:01 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.99)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1wKyqO-000000005G2-3cSu;
+	Thu, 07 May 2026 13:32:48 +0000
+Date: Thu, 7 May 2026 14:32:45 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Junzhi Zhao <junzhi.zhao@mediatek.com>,
+	Jie Qiu <jie.qiu@mediatek.com>, dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 2/2] drm/mediatek: hdmi: report jack plugged state from
+ bridge enable/disable
+Message-ID: <afyUfcr8HuFs6EKF@makrotopia.org>
+References: <a3e22cbae528c9a38d854a586d1736b860998d41.1776265222.git.daniel@makrotopia.org>
+ <c4d62fc2244fb72207855c5a366ff10fad419f2d.1776265222.git.daniel@makrotopia.org>
+ <lhxivpwo6aq3ehgzsnkgxnqis5tptmey4dtbhaokyckkl7ghbn@dzaj225pnpk3>
 MIME-Version: 1.0
-X-ZohoMailClient: External
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <lhxivpwo6aq3ehgzsnkgxnqis5tptmey4dtbhaokyckkl7ghbn@dzaj225pnpk3>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260507_051231_945786_568347FA 
-X-CRM114-Status: GOOD (  11.54  )
+X-CRM114-CacheID: sfid-20260507_063300_799434_0917143F 
+X-CRM114-Status: GOOD (  18.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,43 +71,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi=C2=A0Andrew,
+On Thu, May 07, 2026 at 12:51:56PM +0300, Dmitry Baryshkov wrote:
+> On Wed, Apr 15, 2026 at 04:04:16PM +0100, Daniel Golle wrote:
+> > Notify hdmi-codec of the current sink plugged state from
+> > mtk_hdmi_bridge_atomic_enable() and mtk_hdmi_bridge_atomic_disable()
+> > via mtk_hdmi_update_plugged_status(). This matches the pattern used
+> > by dw-hdmi, which invokes handle_plugged_change() from the bridge
+> > enable and disable paths so that ASoC jack state stays in sync with
+> > the actual sink presence across atomic commit cycles, and not only
+> > on CEC HPD transitions.
+> > 
+> > Userspace audio daemons (e.g. pipewire) rely on the jack state to
+> > route streams, restore per-sink volume levels, and recover the last
+> > used device after a reconnect. Without this, those transitions are
+> > missed whenever the sink change is driven by a mode set rather than
+> > by a bare HPD event.
+> 
+> I can only hope to see mtk_hdmi to migrate to DRM_BRIDGE_OP_HDMI and
+> DRM_BRIDGE_OP_HDMI_AUDIO...
+> 
+> I think the correct timing was discussed several times and the overall
+> conclusion was that the correct time is when the actual HDMI cable is
+> being plugged / unplugged. See the discussion around [1] and the
+> captured response of Mark Brown.
 
-On Thu, 2026-03-26 at 13:30 +0100, Andrew Lunn wrote:
-> > @@ -480,8 +287,8 @@ static int en8811h_wait_mcu_ready(struct
-> > phy_device *phydev)
-> > =C2=A0{
-> > =C2=A0	int ret, reg_value;
-> > =C2=A0
-> > -	ret =3D air_buckpbus_reg_write(phydev, EN8811H_FW_CTRL_1,
-> > -				=C2=A0=C2=A0=C2=A0=C2=A0 EN8811H_FW_CTRL_1_FINISH);
-> > +	ret =3D air_phy_buckpbus_reg_write(phydev,
-> > EN8811H_FW_CTRL_1,
-> > +				=09
-> > EN8811H_FW_CTRL_1_FINISH);
->=20
-> Is a rename required? Is the namespace air_buckpbus_ used somewhere
-> else?
->=20
-> 	Andrew
-Sorry for the delay.
-
-The air_buckpbus_ namespace is only used in the air_en8811h driver.
-It seemed better to me that in the new air_phy_lib, all functions (the
-buckpbus accessors and air_phy_read/write_page functions) started with
-the same prefix. That is the reason I renamed them, even if not
-required.
-
-As an alternative, to avoid renaming those buckpbus function calls on
-air_en8811h driver and reduce this patch changes, I can add macros at
-the beginning of the file such as:
-```
-#define air_buckpbus_reg_write(_phydev, _pbus_address, _pbus_data) \
-	air_phy_buckpbus_reg_write(_phydev, _pbus_address, _pbus_data)
-```
-
-Would it be okay?
-
-Best regards,
-Louis-Alexis
+Thank you for bringing this to my attention. I'll follow up on it.
+Meanwhile, can (independent) patch 1/2 already be merged, or at least
+get reviewed?
 
