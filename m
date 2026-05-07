@@ -4,64 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A569CD37AA
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2026 21:22:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E67FACD37AA
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2026 21:36:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CU5hc1DA1CiGChg4fsggJp0axPdZ5rWF4k15UEJ0d14=; b=lLsHlVfNMXq3YDYoF30b5dx50H
-	oYSqUdCWRCSy3cmwQB8ImD0+8AcSt94eurDw0TL8C6Jps1uVyFOO8VO7UgoGNVKXa5uEDZs2SIZB+
-	g54th+lOtF8FFPwOQf1d8H04i428u8X6ISlpHeAYwbEooKvXM7xCZ0eiezw3PF9N2ObHqPEyZYE1g
-	77y97uyW+wf8oASBPDCFr14LlLUi+ma5LXRpCLIM8eebSWOdvo8taBtuQ6RU84eLHTVTRgRTDyjmP
-	+TtV/0NGM4qtMDyLZQ/ez9Y8PvMJQs/X85IcZBHxuVxpUY7WHJ4PsPZVksxo672xjR9lIiK0+JMXi
-	jQRqaWkw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EGD8JspjmSP80eMiWCiz+GZtznF5vZ7uaGhPmePdXwA=; b=EIABDP7X7gMLHUE35fshOxaHDk
+	gZZ5jItdSoIlaaJfhI2SoythMiwZ9iJi2MbcaW9kXekOyC90Q3Xarp4Qpq7/accxeXwgd2NgJHM55
+	sV7Udg7ZHTCF0YdBor/1QBI0gXgoUoKbB7xk/PoazZ39pnVoZV61VX+030QvCGSko8Lwx+WiFe/Gp
+	UAZKWoMzM4S9FB+aM1WsnqhROyCjbeawOq4xtyg53EenJyyEQWWVIpDPMYOLytRTtCMV8J31ioA2d
+	NMEAGwklDQQdAiY1p/1jt/1v5kuNEJdxFqzzh2V3tJKyBWXVdFXtAhTpiZeT9G/Q2+KZYvXhqMHc0
+	9f8Gm49Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wL6BM-00000004ulV-0niM;
-	Thu, 07 May 2026 21:22:56 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wL6OS-00000004xHp-45E7;
+	Thu, 07 May 2026 21:36:28 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wL6BI-00000004ueG-1kj2;
-	Thu, 07 May 2026 21:22:52 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id D5C9660181;
-	Thu,  7 May 2026 21:22:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 31FFBC2BCF5;
-	Thu,  7 May 2026 21:22:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778188971;
-	bh=fcQuV8WMZWguNDOAHbXa5lYO/Ui/98EqaE3hlGtG44Q=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Fm2Gguc/CP29SWELe5aR27miAGHD2sKbHJxjOSO75cX+a9JZ/ttCWEpYK8h4ypTfS
-	 PqNOfQzmZBWWehIHrNRWLl7WhpOCe1wxeVUJl/gDQniKdzneE5NLsuCmTWexZFBiIw
-	 rlDI7o2OS8U+2proT2vNEKDp18oYeooiS28VhN45y8c+BdIXXlpoOf204Ey3AATXAq
-	 7ohK0B8dtjAuSREsFH7RQfNocorPPPjG7Y1iMzU2GWiPOD509deh+KJmtmuRDLmVa2
-	 QGKGq0Q9kd9EjLqyMqSy21uG8NKSy8ku9IDRc0MYMAUAyNzTIRcABxW01Yo6jjA7H9
-	 F37sIzNB1SG0Q==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Thu, 07 May 2026 23:21:53 +0200
-Subject: [PATCH net-next v4 10/10] net: airoha: Support multiple LAN/WAN
- interfaces for hw MAC address configuration
+	id 1wL6OQ-00000004xHA-2rbS;
+	Thu, 07 May 2026 21:36:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Disposition:
+	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:
+	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
+	In-Reply-To:References; bh=EGD8JspjmSP80eMiWCiz+GZtznF5vZ7uaGhPmePdXwA=; b=ax
+	2WpD9Ob8DtriFO3GDwHPYC3Ncwa+gpynnAQ+4hmtkSIpOyUzG5g0UVfxxXCg9p6MguhSVilkZCaTj
+	aW/gry1sjeMoGSCmIinzbRZPPgvV6wv9Iw7VyXF1xpz8v3y72HK7LaKta313siWMhGgP9d3EKuySO
+	IwLHdeLowl0KnWo=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1wL6O5-001s1n-AV; Thu, 07 May 2026 23:36:05 +0200
+Date: Thu, 7 May 2026 23:36:05 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>, kevin-kw.huang@airoha.com,
+	macpaul.lin@mediatek.com, matthias.bgg@gmail.com,
+	kernel@collabora.com, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH net-next v2 3/4] net: phy: air_phy_lib: Factorize
+ BuckPBus register accessors
+Message-ID: <d7580b92-f165-4135-85b9-ec89a2568949@lunn.ch>
+References: <20260326-add-airoha-an8801-support-v2-0-1a42d6b6050f@collabora.com>
+ <20260326-add-airoha-an8801-support-v2-3-1a42d6b6050f@collabora.com>
+ <3bd7803d-4c4a-4f61-9434-a6bf25627b58@lunn.ch>
+ <9f569ba00b959b701a7a51bcd7347c1a108a15ee.camel@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260507-airoha-eth-multi-serdes-v4-10-af613b61ae02@kernel.org>
-References: <20260507-airoha-eth-multi-serdes-v4-0-af613b61ae02@kernel.org>
-In-Reply-To: <20260507-airoha-eth-multi-serdes-v4-0-af613b61ae02@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Christian Marangi <ansuelsmth@gmail.com>, 
- Benjamin Larsson <benjamin.larsson@genexis.eu>, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- netdev@vger.kernel.org, devicetree@vger.kernel.org, 
- Madhur Agrawal <madhur.agrawal@airoha.com>
-X-Mailer: b4 0.14.3
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <9f569ba00b959b701a7a51bcd7347c1a108a15ee.camel@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260507_143626_721711_3E5B6A84 
+X-CRM114-Status: GOOD (  18.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,149 +84,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The EN7581 and AN7583 SoCs provide registers to configure hardware LAN/WAN
-MAC addresses, used to determine whether received traffic is destined for
-this host or should be forwarded to another device.
-The SoC hardware design assumes all interfaces configured as LAN (or WAN)
-share a common upper MAC address, which is programmed into the
-REG_FE_{LAN,WAN}_MAC_H register. The lower bytes of 'local' addresses can
-be expressed as a range via the REG_FE_MAC_LMIN and REG_FE_MAC_LMAX
-registers.
-Previously, only a single interface was considered when programming these
-registers. Extend the logic to derive the correct minimum and maximum
-values for REG_FE_MAC_LMIN/REG_FE_MAC_LMAX when two or more interfaces are
-configured as LAN or WAN.
+On Thu, May 07, 2026 at 02:11:54PM +0200, Louis-Alexis Eyraud wrote:
+> Hi Andrew,
+> 
+> On Thu, 2026-03-26 at 13:30 +0100, Andrew Lunn wrote:
+> > > @@ -480,8 +287,8 @@ static int en8811h_wait_mcu_ready(struct
+> > > phy_device *phydev)
+> > >  {
+> > >  	int ret, reg_value;
+> > >  
+> > > -	ret = air_buckpbus_reg_write(phydev, EN8811H_FW_CTRL_1,
+> > > -				     EN8811H_FW_CTRL_1_FINISH);
+> > > +	ret = air_phy_buckpbus_reg_write(phydev,
+> > > EN8811H_FW_CTRL_1,
+> > > +					
+> > > EN8811H_FW_CTRL_1_FINISH);
+> > 
+> > Is a rename required? Is the namespace air_buckpbus_ used somewhere
+> > else?
+> > 
+> > 	Andrew
+> Sorry for the delay.
+> 
+> The air_buckpbus_ namespace is only used in the air_en8811h driver.
+> It seemed better to me that in the new air_phy_lib, all functions (the
+> buckpbus accessors and air_phy_read/write_page functions) started with
+> the same prefix. That is the reason I renamed them, even if not
+> required.
+> 
+> As an alternative, to avoid renaming those buckpbus function calls on
+> air_en8811h driver and reduce this patch changes, I can add macros at
+> the beginning of the file such as:
+> ```
+> #define air_buckpbus_reg_write(_phydev, _pbus_address, _pbus_data) \
+> 	air_phy_buckpbus_reg_write(_phydev, _pbus_address, _pbus_data)
 
-Tested-by: Madhur Agrawal <madhur.agrawal@airoha.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c | 73 +++++++++++++++++++++++++++-----
- 1 file changed, 63 insertions(+), 10 deletions(-)
+No don't do this.
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 8617dd4f7932..fbfefd0ec355 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -71,20 +71,67 @@ static void airoha_qdma_irq_disable(struct airoha_irq_bank *irq_bank,
- 	airoha_qdma_set_irqmask(irq_bank, index, mask, 0);
- }
- 
--static void airoha_set_macaddr(struct airoha_gdm_dev *dev, const u8 *addr)
-+static int airoha_set_macaddr(struct airoha_gdm_dev *dev, const u8 *addr)
- {
- 	struct airoha_eth *eth = dev->eth;
--	u32 val, reg;
-+	u8 ref_addr[ETH_ALEN] = {};
-+	u32 reg, val, lmin, lmax;
-+	int i;
-+
-+	lmin = (addr[3] << 16) | (addr[4] << 8) | addr[5];
-+	lmax = lmin;
-+
-+	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
-+		struct airoha_gdm_port *port = eth->ports[i];
-+		int j;
-+
-+		if (!port)
-+			continue;
-+
-+		for (j = 0; j < ARRAY_SIZE(port->devs); j++) {
-+			struct airoha_gdm_dev *iter_dev;
-+			struct net_device *netdev;
-+
-+			iter_dev = port->devs[j];
-+			if (!iter_dev || iter_dev == dev)
-+				continue;
-+
-+			if (airoha_is_lan_gdm_dev(iter_dev) !=
-+			    airoha_is_lan_gdm_dev(dev))
-+				continue;
-+
-+			netdev = iter_dev->dev;
-+			if (netdev->reg_state != NETREG_REGISTERED)
-+				continue;
-+
-+			ether_addr_copy(ref_addr, netdev->dev_addr);
-+			val = (netdev->dev_addr[3] << 16) |
-+			      (netdev->dev_addr[4] << 8) | netdev->dev_addr[5];
-+			if (val < lmin)
-+				lmin = val;
-+			if (val > lmax)
-+				lmax = val;
-+		}
-+	}
-+
-+	if (!is_zero_ether_addr(ref_addr) && memcmp(ref_addr, addr, 3)) {
-+		/* According to the HW design, hw mac address MS bits
-+		 * must be the same for each net_device with the same
-+		 * LAN/WAN configuration.
-+		 */
-+		return -EINVAL;
-+	}
- 
- 	reg = airoha_is_lan_gdm_dev(dev) ? REG_FE_LAN_MAC_H : REG_FE_WAN_MAC_H;
- 	val = (addr[0] << 16) | (addr[1] << 8) | addr[2];
- 	airoha_fe_wr(eth, reg, val);
- 
--	val = (addr[3] << 16) | (addr[4] << 8) | addr[5];
--	airoha_fe_wr(eth, REG_FE_MAC_LMIN(reg), val);
--	airoha_fe_wr(eth, REG_FE_MAC_LMAX(reg), val);
-+	airoha_fe_wr(eth, REG_FE_MAC_LMIN(reg), lmin);
-+	airoha_fe_wr(eth, REG_FE_MAC_LMAX(reg), lmax);
- 
- 	airoha_ppe_init_upd_mem(dev);
-+
-+	return 0;
- }
- 
- static void airoha_set_gdm_port_fwd_cfg(struct airoha_eth *eth, u32 addr,
-@@ -1792,13 +1839,18 @@ static int airoha_dev_stop(struct net_device *netdev)
- static int airoha_dev_set_macaddr(struct net_device *netdev, void *p)
- {
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
-+	struct sockaddr *addr = p;
- 	int err;
- 
--	err = eth_mac_addr(netdev, p);
-+	err = eth_prepare_mac_addr_change(netdev, p);
- 	if (err)
- 		return err;
- 
--	airoha_set_macaddr(dev, netdev->dev_addr);
-+	err = airoha_set_macaddr(dev, addr->sa_data);
-+	if (err)
-+		return err;
-+
-+	eth_commit_mac_addr_change(netdev, p);
- 
- 	return 0;
- }
-@@ -1903,6 +1955,7 @@ static int airoha_dev_init(struct net_device *netdev)
- {
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
- 	struct airoha_gdm_port *port = dev->port;
-+	int err;
- 
- 	switch (port->id) {
- 	case AIROHA_GDM3_IDX:
-@@ -1922,12 +1975,12 @@ static int airoha_dev_init(struct net_device *netdev)
- 	}
- 
- 	airoha_dev_set_qdma(dev);
--	airoha_set_macaddr(dev, netdev->dev_addr);
-+	err = airoha_set_macaddr(dev, netdev->dev_addr);
-+	if (err)
-+		return err;
- 
- 	if (!airoha_is_lan_gdm_dev(dev) &&
- 	    (port->id == AIROHA_GDM3_IDX || port->id == AIROHA_GDM4_IDX)) {
--		int err;
--
- 		err = airoha_set_gdm2_loopback(dev);
- 		if (err) {
- 			dev->flags &= ~PRIV_FLAG_WAN;
+If you want to rename them, rename them. But do it in a patch which
+only contains a rename. That is easier to review, and more obviously
+correct.
 
--- 
-2.54.0
-
+	Andrew
 
