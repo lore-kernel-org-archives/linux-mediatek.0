@@ -4,110 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 151E7CD343F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2026 14:08:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A1D6CD343F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2026 14:52:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w2nhovRvFw1+XQcDcRJ+2hvlsNXDoa4sYKL7qfbTHmc=; b=AbzM5aRZfNyH4aji9UYyhNK5X5
-	h5AUG+ttQKaTAW8E1hfzJfGcWWaHqrsZ1MoMADEGoHZfLWi3GAE0trQ4NyMP++SejvlPEDO92j95U
-	aQEkNEbe1bqx4KPg093oeJRvoxINyIvaekyjQqIOqb61zKbaXNyeIIMlbcu9xmAt1BHRbzl8CyKJo
-	rirV3NpqlpfiDJkCNmwzaVKU1XqnqIO4y05s9xHYLHAqL4FTbOqcLPxN6C+aPDSZg0HpjHoUFj71D
-	8SskVRiMUrFn024qvZlfjelbc2X5jVJc7R4vST1KLRHu3TUL/vUKnlLj1DvuIu086Mv1ZHSFCd+I/
-	Y63XXTuw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mD80HyVHazAI7zY5u5ppiXiv/kRQLmFGurqGNhp1Zzg=; b=gtZJ8mHw/9inFYCdr8sSJtqoq8
+	L3soYgjjSZGGdkT6gKtndBFUlZPliveYvlglJNF2RJZ+5+h7XlLOp9xQXqg7RjPUUci+n9elu9WL7
+	vSCffQjX7QZjEPQJbmyQev/k7yN879FVjj48Q/DkyQ46+3DiAsNGKhvpysPLesnzAWMrL+EKiOd3D
+	rp8egK2LX4XPl8QqDNzLpSzN6kXr1KKjzojpQc3hN2d+szNv/aqgUeTPYVX/oH4hHxlm06qhvGUHE
+	lWswPFMEtQFFfRkOpp/dOhM0dr2efcoHJTp4rKqMbl+dQIi3ONoGDpya29GqYsre5mrRSn16w09jo
+	KZeYb+Rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKzPE-00000004101-3Kax;
-	Thu, 07 May 2026 14:08:48 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1wL05v-000000046j6-0Bzo;
+	Thu, 07 May 2026 14:52:55 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKzPC-000000040zV-1Spt
-	for linux-mediatek@lists.infradead.org;
-	Thu, 07 May 2026 14:08:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1778162925;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=w2nhovRvFw1+XQcDcRJ+2hvlsNXDoa4sYKL7qfbTHmc=;
-	b=ba9NRdwtNchs3C1yZ5WACCJnB5cEx7w/p7jb9La71BElniHsLPh+ZT0j6ph4EyWoekbZYZ
-	3Pd69vtoeAuv8WwdXrBTJTJqM7Qs/RjD0tTcJsC5TfOZh2Ahg6t8G04fgT3fIqpXjsLNuM
-	0vY583ff+W64BRwokPZsVXIXtcysj5A=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-617--D5vdnnaNeqXOJlsvJRUcA-1; Thu, 07 May 2026 10:08:43 -0400
-X-MC-Unique: -D5vdnnaNeqXOJlsvJRUcA-1
-X-Mimecast-MFC-AGG-ID: -D5vdnnaNeqXOJlsvJRUcA_1778162919
-Received: by mail-wr1-f72.google.com with SMTP id ffacd0b85a97d-43d789cebcfso1445272f8f.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 07 May 2026 07:08:40 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1778162919; x=1778767719;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=w2nhovRvFw1+XQcDcRJ+2hvlsNXDoa4sYKL7qfbTHmc=;
-        b=SAH7O9Wn0zD31p2TuSb/9eeYJr9R+0LahvBhwcExceNeQutX3rDQDrVFjZzM7MKt4e
-         b+pV5uW+/tMzYTaZBqKuPoJSjTbvGYd2J2D95UqDQ/eb90BU8dXa8Jro+UkLyV7GZOAI
-         zj3d67IPeVJe8kUjw5p7yQQeXH2XGE9WqdtfrlT2BsEy6/ze+1JzAa2b9qHgvHIDV3sN
-         FIyEogV0WX4nTgNtgMvtHimCWrjmTUasEuO/SURm2olrifWzHneIqfaT+MXA+B4L+rPU
-         kmC28ucFR/2COUp/ABUY9Cfy6ILFLuA6vKgizi1GXfcxYFoL6fFGGPNPskJwBqYHKj7K
-         pE7Q==
-X-Forwarded-Encrypted: i=1; AFNElJ+4QXdihpRX70mDH8Ma5C0rfx5LqAuxXWcDCdR4cA1VSVfWVwYhsyD/CkfxiWUvFaznz72zXUIL8HQ3UWoMAw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwS4fA7CAg5aEzFY1Y4FNSS9ZvzLldV8GC/nbB4z2dcpRTVze7x
-	bCaVS5e39yHgrqRcG2GvpcsQPSIdbjOkkOevprZMu2WhHdyi8r2fnPaWWGxyPcInxbVGGFhPSyX
-	btJ+0sS341QENTQjU9ici5G7un/WIZv+RmfhpzgEX42qzJb0EDUVViL/8HnHuwd3Ww4nF3LFxhQ
-	==
-X-Gm-Gg: AeBDievPkpLxMrEal2L6NuwEszXB7suWJxAxJRw2ZfkmdeiW+9WoT2uwFzTUZ9c2rxl
-	lNXXbqxY00zDxxdzcdFU3h/BkqSKtsWviUWVAfPKwaiYu7mpD2T2fmBAe+DMYwNgDDBZqQBKAjy
-	e/MTH+NZFkOvQg5y6U/zed+GSYvX7pTq6M/ZZ3nT2dDc2D1+jxvGYLt/sJLm2oWdahDME2WmXTU
-	QvWHUhnv9jSkNBO9tMZQT65/gWwUI6B4xAAmS+0DvgFwsX+p+mhJEMpBO0rtdtv9jh0gIDyXVXu
-	UFVYWdgCpWXCoTyqVtN2rRNHcFe3Bdf7zahFIahF4AY1kmVgDucJ9dmn3LzwN7Pjwk/8NJfimJ7
-	P3+gkj3nMahTHR6KflOIEBK1qjTjYXuER+M+pUwpW0M9WQMbfIOuNCXciFQzeyehvh7QJhti16H
-	Wv
-X-Received: by 2002:a05:600c:3e86:b0:48a:5339:a46 with SMTP id 5b1f17b1804b1-48e5dffabcamr46917735e9.9.1778162918802;
-        Thu, 07 May 2026 07:08:38 -0700 (PDT)
-X-Received: by 2002:a05:600c:3e86:b0:48a:5339:a46 with SMTP id 5b1f17b1804b1-48e5dffabcamr46917155e9.9.1778162918260;
-        Thu, 07 May 2026 07:08:38 -0700 (PDT)
-Received: from [192.168.88.32] ([150.228.93.82])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-48e530d8691sm91116195e9.2.2026.05.07.07.08.36
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 07 May 2026 07:08:37 -0700 (PDT)
-Message-ID: <dc0f052e-797e-4849-87c4-a98b8ede19d3@redhat.com>
-Date: Thu, 7 May 2026 16:08:35 +0200
+	id 1wL05t-000000046iP-0ZgP;
+	Thu, 07 May 2026 14:52:54 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1778165549; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=gnoQamEnOtplYB0I+IAslgQbn8pbGYB69jQehTFsGfodQdyEq9N8s+8IaNQKwXL/NDNsawSM/Z24cn1OYsoIL42X1HyPLDQRnaqTCp8EbXe1KuvMvk5LtH+mEi7GRXP3W5KPsCWtActawG/STVReMfEy/yqHt7lFbvRLBwzGCUM=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1778165549; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=mD80HyVHazAI7zY5u5ppiXiv/kRQLmFGurqGNhp1Zzg=; 
+	b=AhxTDMRqMIdHYGdQlIxOWo/w5Yz5yPQybWfRB7KQ1G+XgIQR5AJA3uWTDk39YfBwadzwFfM+oo75B9ALzq5a14hn5rLGvoIvrTx3fI+FWIlw96uB17G4kVkwssUehgccD4OFIVq/EeR8ESEfE98d1Z0/BybHWz4mqdIF6H4BYTo=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
+	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1778165549;
+	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
+	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
+	bh=mD80HyVHazAI7zY5u5ppiXiv/kRQLmFGurqGNhp1Zzg=;
+	b=fOdineQxBdsWNaByWoVgw199d+7PDlanFfm3mIwEsyWRlUH/RmGfoI/q97LzGnFF
+	Pmgf2QzTPK0zhkSxGjMMGx7TbjLzXoS0N7L2tSBhWBqurBEKHhmumI2uDwqlYmkXsm6
+	ki/LIERCJEAVU8uJ1GOsXQbZSpcwpdfMack/cvjY=
+Received: by mx.zohomail.com with SMTPS id 1778165548105701.1379238259724;
+	Thu, 7 May 2026 07:52:28 -0700 (PDT)
+Message-ID: <2c441d51f6a865ddb6e67b63cd26a651ed3ff058.camel@collabora.com>
+Subject: Re: [PATCH net-next v2 4/4] net: phy: Introduce Airoha AN8801/R
+ Gigabit Ethernet PHY driver
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>,  Eric Dumazet <edumazet@google.com>, Jakub Kicinski
+ <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring
+ <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley	
+ <conor+dt@kernel.org>, AngeloGioacchino Del Regno	
+ <angelogioacchino.delregno@collabora.com>, Heiner Kallweit	
+ <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>, 
+	kevin-kw.huang@airoha.com, macpaul.lin@mediatek.com,
+ matthias.bgg@gmail.com, 	kernel@collabora.com, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, 	linux-kernel@vger.kernel.org
+Date: Thu, 07 May 2026 16:52:22 +0200
+In-Reply-To: <3688a285-7f98-4afa-80ad-697094cd7b97@lunn.ch>
+References: <20260326-add-airoha-an8801-support-v2-0-1a42d6b6050f@collabora.com>
+	 <20260326-add-airoha-an8801-support-v2-4-1a42d6b6050f@collabora.com>
+	 <3688a285-7f98-4afa-80ad-697094cd7b97@lunn.ch>
+Organization: Collabora Ltd
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net 1/5] net: dsa: mt7530: fix FDB entries not aging out
- with short timeout
-To: Daniel Golle <daniel@makrotopia.org>,
- "Chester A. Unal" <chester.a.unal@arinc9.com>, Andrew Lunn <andrew@lunn.ch>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- DENG Qingfang <dqfext@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
- =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
- Sean Wang <sean.wang@mediatek.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <cover.1777986341.git.daniel@makrotopia.org>
- <f285707e09a0febffd1b987f204ff4eb71736489.1777986341.git.daniel@makrotopia.org>
-From: Paolo Abeni <pabeni@redhat.com>
-In-Reply-To: <f285707e09a0febffd1b987f204ff4eb71736489.1777986341.git.daniel@makrotopia.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: tgHdP5CnX4ocMERdK6RciVeBUt8ksnLWorLnz0Y0d_k_1778162919
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260507_070846_464559_41C81F86 
-X-CRM114-Status: GOOD (  22.31  )
+X-CRM114-CacheID: sfid-20260507_075253_239084_28F390DA 
+X-CRM114-Status: GOOD (  23.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,63 +90,149 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/5/26 4:16 PM, Daniel Golle wrote:
-> When setting a low ageing time such as 10 seconds, the algorithm in
-> mt7530_set_ageing_time() finds AGE_CNT=0 and AGE_UNIT=9 as the first
-> exact match (starting the search from tmp_age_count=0).
-> 
-> On the MT7530/MT7531 hardware, the per-entry aging counter is
-> initialized to AGE_CNT when a MAC address is learned. With AGE_CNT=0,
-> new entries start with a counter value of 0, which the hardware treats
-> as "already aged" and never removes, effectively disabling aging.
-> 
-> Fix this by starting the search from tmp_age_count=1 to ensure entries
-> always have a non-zero initial aging counter. For a 10-second ageing
-> time this yields AGE_CNT=1 and AGE_UNIT=4 instead: the timer ticks
-> every 5 seconds and entries are removed after 2 ticks.
-> 
-> Fixes: ea6d5c924e39 ("net: dsa: mt7530: support setting ageing time")
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
->  drivers/net/dsa/mt7530.c | 8 ++++++--
->  1 file changed, 6 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index 44d670904ad8..b1903da7d500 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -1027,8 +1027,12 @@ mt7530_set_ageing_time(struct dsa_switch *ds, unsigned int msecs)
->  	if (secs < 1 || secs > (AGE_CNT_MAX + 1) * (AGE_UNIT_MAX + 1))
->  		return -ERANGE;
->  
-> -	/* iterate through all possible age_count to find the closest pair */
-> -	for (tmp_age_count = 0; tmp_age_count <= AGE_CNT_MAX; ++tmp_age_count) {
-> +	/* Iterate through all possible age_count values to find the closest
-> +	 * pair. Start from 1 because the per-entry aging counter is
-> +	 * initialized to AGE_CNT and a value of 0 means the entry will
-> +	 * never be aged out.
-> +	 */
-> +	for (tmp_age_count = 1; tmp_age_count <= AGE_CNT_MAX; ++tmp_age_count) {
->  		unsigned int tmp_age_unit = secs / (tmp_age_count + 1) - 1;
->  
->  		if (tmp_age_unit <= AGE_UNIT_MAX) {
+Hi Andrew,
 
-Sashiko noted that the above will have problem with secs == 1:
+On Thu, 2026-03-26 at 13:47 +0100, Andrew Lunn wrote:
+> > +static int an8801r_led_blink_set(struct phy_device *phydev, u8
+> > index,
+> > +				 unsigned long *delay_on,
+> > +				 unsigned long *delay_off)
+> > +{
+>=20
+> ...
+>=20
+> > +	ret =3D phy_modify_mmd(phydev, MDIO_MMD_VEND2,
+> > LED_ON_CTRL(index),
+> > +			=C2=A0=C2=A0=C2=A0=C2=A0 LED_ON_EN, blink ? LED_ON_EN : 0);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	return 0;
+>=20
+> Just
+>=20
+>=20
+> 	return phy_modify_mmd(phydev, MDIO_MMD_VEND2,
+> LED_ON_CTRL(index),
+> 			=C2=A0=C2=A0=C2=A0=C2=A0 LED_ON_EN, blink ? LED_ON_EN : 0);
+>=20
+> > +		if (!led_trigger)
+> > +			continue;
+> > +
+> > +		ret =3D an8801r_led_hw_control_set(phydev, led_id,
+> > led_trigger);
+> > +		if (ret)
+> > +			return ret;
+> > +	}
+> > +	return 0;
+> > +}
+>=20
+>=20
+> Please take a look at all your functions. Can the last error check be
+> removed and just use return ret, etc.
+I'll fix this in the next version.
 
-What happens here if secs is 1?
-Since the bounds check at the start of the function allows secs == 1,
-tmp_age_unit would be calculated as 1 / (1 + 1) - 1, which evaluates to
-0 - 1, resulting in an unsigned underflow to UINT_MAX.
->  		if (tmp_age_unit <= AGE_UNIT_MAX) {
-Because UINT_MAX is greater than AGE_UNIT_MAX, this condition will fail for
-all iterations of the loop.
-[ ... ]
->  	mt7530_write(priv, MT7530_AAC, AGE_CNT(age_count) | AGE_UNIT(age_unit));
-If the loop exits without ever finding a match and entering the if block,
-age_count and age_unit will remain uninitialized. Could this result in
-uninitialized stack variables being written to the MT7530_AAC hardware
-register?
+>=20
+> > +static int an8801r_of_init_leds(struct phy_device *phydev, u8
+> > *led_cfg)
+> > +{
+> > +	struct device *dev =3D &phydev->mdio.dev;
+> > +	struct device_node *np =3D dev->of_node;
+> > +	struct device_node *leds;
+> > +	u32 function_enum_idx;
+> > +	int ret;
+> > +
+> > +	if (!np)
+> > +		return 0;
+> > +
+> > +	/* If devicetree is present, leds configuration is
+> > required */
+> > +	leds =3D of_get_child_by_name(np, "leds");
+> > +	if (!leds)
+> > +		return 0;
+> > +
+> > +	for_each_available_child_of_node_scoped(leds, led) {
+> > +		u32 led_idx;
+> > +
+> > +		ret =3D of_property_read_u32(led, "reg", &led_idx);
+> > +		if (ret)
+> > +			goto out;
+> > +
+> > +		if (led_idx >=3D AN8801R_NUM_LEDS) {
+> > +			ret =3D -EINVAL;
+> > +			goto out;
+> > +		}
+> > +
+> > +		ret =3D of_property_read_u32(led, "function-
+> > enumerator",
+> > +					=C2=A0=C2=A0 &function_enum_idx);
+> > +		if (ret)
+> > +			function_enum_idx =3D AN8801R_LED_FN_NONE;
+> > +
+>=20
+> What is this doing? Is this documented in the binding?
+The `function-enumerator` property is only documented in the led common
+dt-binding file. The an8801 dt-bindings inherits this property from the
+ethernet-phy dt-bindings.
 
-/P
+We aimed to have this PHY have its led behaviour (how many to enable
+and what their role shall be) configurable using devicetree and not to
+rely on a default configuration, hard-coded in the driver (like the
+air_en8811h driver did) and also make use of the led hardware
+offloading (for functions like 100/1000, activity blinking, and others)
+that this PHY is capable of.
 
+From the available property list for the led node, this one seems to be
+appropriate to distinguish between the possible LAN functions, that=20
+would mean that a specific LED has either a link or RX/Tx activity=20
+role.=C2=A0That is why we used it but we could be wrong.
+
+The an8801 dt-bindings (in patch 1) misses the possible values and
+should improved in that regard and I'll fix them in next version if
+this implementation seems acceptable to you.
+>=20
+> > +		if (function_enum_idx >=3D AN8801R_LED_FN_MAX) {
+> > +			ret =3D -EINVAL;
+> > +			goto out;
+> > +		}
+> > +
+> > +		led_cfg[led_idx] =3D function_enum_idx;
+> > +	}
+> > +out:
+> > +	of_node_put(leds);
+> > +	return ret;
+> > +}
+>=20
+> > +static int an8801r_read_status(struct phy_device *phydev)
+> > +{
+> > +	int prev_speed, ret;
+> > +	u32 val;
+> > +
+> > +	prev_speed =3D phydev->speed;
+> > +
+> > +	ret =3D genphy_read_status(phydev);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	if (phydev->link && prev_speed !=3D phydev->speed) {
+> > +		val =3D phydev->speed =3D=3D SPEED_1000 ?
+> > +		=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AN8801_BPBUS_LINK_MODE_1000 : 0;
+> > +
+> > +		return an8801_buckpbus_reg_rmw(phydev,
+> > +					=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0
+> > AN8801_BPBUS_REG_LINK_MODE,
+> > +					=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0
+> > AN8801_BPBUS_LINK_MODE_1000,
+> > +					=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 val);
+> > +	};
+>=20
+> This is unusual. What is it doing? Please add a comment.
+This call is to ensure that the PHY switches to the expected 1Gbps=20
+speed when available.=C2=A0
+I'll confirm it and add a comment in v3.
+
+Best regards,
+Louis-Alexis
+>=20
+> 	Andrew
 
