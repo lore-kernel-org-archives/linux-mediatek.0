@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E67FACD37AA
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2026 21:36:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 481A6CD343F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2026 21:43:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EGD8JspjmSP80eMiWCiz+GZtznF5vZ7uaGhPmePdXwA=; b=EIABDP7X7gMLHUE35fshOxaHDk
-	gZZ5jItdSoIlaaJfhI2SoythMiwZ9iJi2MbcaW9kXekOyC90Q3Xarp4Qpq7/accxeXwgd2NgJHM55
-	sV7Udg7ZHTCF0YdBor/1QBI0gXgoUoKbB7xk/PoazZ39pnVoZV61VX+030QvCGSko8Lwx+WiFe/Gp
-	UAZKWoMzM4S9FB+aM1WsnqhROyCjbeawOq4xtyg53EenJyyEQWWVIpDPMYOLytRTtCMV8J31ioA2d
-	NMEAGwklDQQdAiY1p/1jt/1v5kuNEJdxFqzzh2V3tJKyBWXVdFXtAhTpiZeT9G/Q2+KZYvXhqMHc0
-	9f8Gm49Q==;
+	bh=aX36hdB/vSHiUML6vh4mSgGpvQJsS+iDpluEkRtR6aE=; b=X1FI8+emVWSaEXxCjxYXRJe1QB
+	poEvcIW2todPN5XKVu/4+y2qE3xfbviy7b/cAxYs0U1a6YzY6kOvbdvHJCOX6NikPnI5uJ1nyAJNn
+	Xc6PLvSwZhjD4Mnc5WbFCPZQYvBF1oRhM2TYZfx2kyiBsiRuOCuU3XcDBqz4F/5YetgmmjjEFjj5u
+	yMmCRvQCGmtdpwiApn0ClRB6uaZw5yMVYUZewHw5ChetFguEh1gg6AAoBoukBudQZpEE96yRR8837
+	BO03Vm4KCxPeTp51cyVxyzFyxm90UG/nZ6XM5poLzYZtHZG4+OV0NWkUQH5s5W0M8Nge2KfERpTpN
+	ay25jPUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wL6OS-00000004xHp-45E7;
-	Thu, 07 May 2026 21:36:28 +0000
+	id 1wL6VL-00000004yEX-13Mm;
+	Thu, 07 May 2026 21:43:35 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wL6OQ-00000004xHA-2rbS;
-	Thu, 07 May 2026 21:36:27 +0000
+	id 1wL6VJ-00000004yDo-02ek;
+	Thu, 07 May 2026 21:43:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Disposition:
 	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:
 	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
-	In-Reply-To:References; bh=EGD8JspjmSP80eMiWCiz+GZtznF5vZ7uaGhPmePdXwA=; b=ax
-	2WpD9Ob8DtriFO3GDwHPYC3Ncwa+gpynnAQ+4hmtkSIpOyUzG5g0UVfxxXCg9p6MguhSVilkZCaTj
-	aW/gry1sjeMoGSCmIinzbRZPPgvV6wv9Iw7VyXF1xpz8v3y72HK7LaKta313siWMhGgP9d3EKuySO
-	IwLHdeLowl0KnWo=;
+	In-Reply-To:References; bh=aX36hdB/vSHiUML6vh4mSgGpvQJsS+iDpluEkRtR6aE=; b=ea
+	atdxi3jr/eOn1JZiw5IZVBQjFj2PpSS0+PANzy7hG8LX3Cof1djFbbSkIoFJKTsaNiESIybpaHIIe
+	buaeR2RXDSAyOuFwT5gM/AM+ocltCTsm9NhZjsJHbKdR5+QZuKl6QS5yDCxRxujASK7zvvB9tHBCI
+	S7vBzmszdEb7zrQ=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1wL6O5-001s1n-AV; Thu, 07 May 2026 23:36:05 +0200
-Date: Thu, 7 May 2026 23:36:05 +0200
+	id 1wL6V6-001s5C-G8; Thu, 07 May 2026 23:43:20 +0200
+Date: Thu, 7 May 2026 23:43:20 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
@@ -55,21 +55,21 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	kernel@collabora.com, netdev@vger.kernel.org,
 	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH net-next v2 3/4] net: phy: air_phy_lib: Factorize
- BuckPBus register accessors
-Message-ID: <d7580b92-f165-4135-85b9-ec89a2568949@lunn.ch>
+Subject: Re: [PATCH net-next v2 4/4] net: phy: Introduce Airoha AN8801/R
+ Gigabit Ethernet PHY driver
+Message-ID: <27ca6b71-18df-4e47-9117-0e503f7e7d5f@lunn.ch>
 References: <20260326-add-airoha-an8801-support-v2-0-1a42d6b6050f@collabora.com>
- <20260326-add-airoha-an8801-support-v2-3-1a42d6b6050f@collabora.com>
- <3bd7803d-4c4a-4f61-9434-a6bf25627b58@lunn.ch>
- <9f569ba00b959b701a7a51bcd7347c1a108a15ee.camel@collabora.com>
+ <20260326-add-airoha-an8801-support-v2-4-1a42d6b6050f@collabora.com>
+ <3688a285-7f98-4afa-80ad-697094cd7b97@lunn.ch>
+ <2c441d51f6a865ddb6e67b63cd26a651ed3ff058.camel@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <9f569ba00b959b701a7a51bcd7347c1a108a15ee.camel@collabora.com>
+In-Reply-To: <2c441d51f6a865ddb6e67b63cd26a651ed3ff058.camel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260507_143626_721711_3E5B6A84 
-X-CRM114-Status: GOOD (  18.06  )
+X-CRM114-CacheID: sfid-20260507_144333_073827_B03BE784 
+X-CRM114-Status: GOOD (  22.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,46 +84,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 07, 2026 at 02:11:54PM +0200, Louis-Alexis Eyraud wrote:
-> Hi Andrew,
-> 
-> On Thu, 2026-03-26 at 13:30 +0100, Andrew Lunn wrote:
-> > > @@ -480,8 +287,8 @@ static int en8811h_wait_mcu_ready(struct
-> > > phy_device *phydev)
-> > >  {
-> > >  	int ret, reg_value;
-> > >  
-> > > -	ret = air_buckpbus_reg_write(phydev, EN8811H_FW_CTRL_1,
-> > > -				     EN8811H_FW_CTRL_1_FINISH);
-> > > +	ret = air_phy_buckpbus_reg_write(phydev,
-> > > EN8811H_FW_CTRL_1,
-> > > +					
-> > > EN8811H_FW_CTRL_1_FINISH);
+> > > +static int an8801r_of_init_leds(struct phy_device *phydev, u8
+> > > *led_cfg)
+> > > +{
+> > > +	struct device *dev = &phydev->mdio.dev;
+> > > +	struct device_node *np = dev->of_node;
+> > > +	struct device_node *leds;
+> > > +	u32 function_enum_idx;
+> > > +	int ret;
+> > > +
+> > > +	if (!np)
+> > > +		return 0;
+> > > +
+> > > +	/* If devicetree is present, leds configuration is
+> > > required */
+> > > +	leds = of_get_child_by_name(np, "leds");
+> > > +	if (!leds)
+> > > +		return 0;
+> > > +
+> > > +	for_each_available_child_of_node_scoped(leds, led) {
+> > > +		u32 led_idx;
+> > > +
+> > > +		ret = of_property_read_u32(led, "reg", &led_idx);
+> > > +		if (ret)
+> > > +			goto out;
+> > > +
+> > > +		if (led_idx >= AN8801R_NUM_LEDS) {
+> > > +			ret = -EINVAL;
+> > > +			goto out;
+> > > +		}
+> > > +
+> > > +		ret = of_property_read_u32(led, "function-
+> > > enumerator",
+> > > +					   &function_enum_idx);
+> > > +		if (ret)
+> > > +			function_enum_idx = AN8801R_LED_FN_NONE;
+> > > +
 > > 
-> > Is a rename required? Is the namespace air_buckpbus_ used somewhere
-> > else?
+> > What is this doing? Is this documented in the binding?
+> The `function-enumerator` property is only documented in the led common
+> dt-binding file. The an8801 dt-bindings inherits this property from the
+> ethernet-phy dt-bindings.
+> 
+> We aimed to have this PHY have its led behaviour (how many to enable
+> and what their role shall be) configurable using devicetree and not to
+> rely on a default configuration, hard-coded in the driver (like the
+> air_en8811h driver did) and also make use of the led hardware
+> offloading (for functions like 100/1000, activity blinking, and others)
+> that this PHY is capable of.
+
+What other drivers do is leave the configuration with its reset
+default. They are often sensible. When the netdev trigger loads, it
+should ask the LED how it is configured, and the values in sysfs will
+reflect it. After that you can change it, via udev rules, etc.
+
+You have to be careful about what you put in DT. DT describes
+hardware, not configuration or policy. How the LED blinks is probably
+configuration, so it does not belong in DT.
+
+> > > +static int an8801r_read_status(struct phy_device *phydev)
+> > > +{
+> > > +	int prev_speed, ret;
+> > > +	u32 val;
+> > > +
+> > > +	prev_speed = phydev->speed;
+> > > +
+> > > +	ret = genphy_read_status(phydev);
+> > > +	if (ret)
+> > > +		return ret;
+> > > +
+> > > +	if (phydev->link && prev_speed != phydev->speed) {
+> > > +		val = phydev->speed == SPEED_1000 ?
+> > > +		      AN8801_BPBUS_LINK_MODE_1000 : 0;
+> > > +
+> > > +		return an8801_buckpbus_reg_rmw(phydev,
+> > > +					      
+> > > AN8801_BPBUS_REG_LINK_MODE,
+> > > +					      
+> > > AN8801_BPBUS_LINK_MODE_1000,
+> > > +					       val);
+> > > +	};
 > > 
-> > 	Andrew
-> Sorry for the delay.
-> 
-> The air_buckpbus_ namespace is only used in the air_en8811h driver.
-> It seemed better to me that in the new air_phy_lib, all functions (the
-> buckpbus accessors and air_phy_read/write_page functions) started with
-> the same prefix. That is the reason I renamed them, even if not
-> required.
-> 
-> As an alternative, to avoid renaming those buckpbus function calls on
-> air_en8811h driver and reduce this patch changes, I can add macros at
-> the beginning of the file such as:
-> ```
-> #define air_buckpbus_reg_write(_phydev, _pbus_address, _pbus_data) \
-> 	air_phy_buckpbus_reg_write(_phydev, _pbus_address, _pbus_data)
+> > This is unusual. What is it doing? Please add a comment.
+> This call is to ensure that the PHY switches to the expected 1Gbps 
+> speed when available. 
 
-No don't do this.
+So this is an errata workaround? Please add this in a patch of its
+own, described the problem in the commit message, list the errata etc.
 
-If you want to rename them, rename them. But do it in a patch which
-only contains a rename. That is easier to review, and more obviously
-correct.
-
-	Andrew
+     Andrew
 
