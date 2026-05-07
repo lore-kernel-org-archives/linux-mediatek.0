@@ -4,105 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 363B9CD343F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2026 13:39:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 151E7CD343F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2026 14:08:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MirORJ/xODrUNsE9K1GDry31szTlmO/Fh+672eoJv6Y=; b=hSiuxmV1IEONVvZY0W8KI3JgeI
-	gRsU47tkZlQzQT+NbzM8FTjmLp3f4I4UwJBzoex1Rbl+rvGCxj8ib+OJzeXNnovwSjyqOdvGj6BiP
-	JEDsAt3H4Hp0l4f/tZiQwDjLsd1qFKr3IQTuzFPaqLN1STI28hQIt2ernPEMX3lRrxpOobJbozPOR
-	g6bUVJmYcbVKlQwxtCKfeQ8TR+zdPuzPIcY5v8eF6dXr7fQY/Vhg70LG7BqgMeSc/cCJP4y2tykEE
-	2uV6MInNSiOaUnIbKbta3+NjgOTBjUzZLuCHtUHO69ThtQm6EmWxGUCudzZYF56TVi3RKV53YSgpj
-	TivaUUtw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=w2nhovRvFw1+XQcDcRJ+2hvlsNXDoa4sYKL7qfbTHmc=; b=AbzM5aRZfNyH4aji9UYyhNK5X5
+	h5AUG+ttQKaTAW8E1hfzJfGcWWaHqrsZ1MoMADEGoHZfLWi3GAE0trQ4NyMP++SejvlPEDO92j95U
+	aQEkNEbe1bqx4KPg093oeJRvoxINyIvaekyjQqIOqb61zKbaXNyeIIMlbcu9xmAt1BHRbzl8CyKJo
+	rirV3NpqlpfiDJkCNmwzaVKU1XqnqIO4y05s9xHYLHAqL4FTbOqcLPxN6C+aPDSZg0HpjHoUFj71D
+	8SskVRiMUrFn024qvZlfjelbc2X5jVJc7R4vST1KLRHu3TUL/vUKnlLj1DvuIu086Mv1ZHSFCd+I/
+	Y63XXTuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKywo-00000003vjJ-3jjZ;
-	Thu, 07 May 2026 13:39:26 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1wKzPE-00000004101-3Kax;
+	Thu, 07 May 2026 14:08:48 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKywm-00000003viG-0OlH
+	id 1wKzPC-000000040zV-1Spt
 	for linux-mediatek@lists.infradead.org;
-	Thu, 07 May 2026 13:39:25 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-444826c16ffso814339f8f.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 07 May 2026 06:39:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1778161161; x=1778765961; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=MirORJ/xODrUNsE9K1GDry31szTlmO/Fh+672eoJv6Y=;
-        b=MN5GkFGg6Iq3V90Lb5on8mdtk0XkOm5IftZVKbmCV865D+si/6hvGkEvHXfG0Zac12
-         LIhf5uBrQQrar9VTF4930mok5qm1JzfGNmZsUk6mZ9UwkN1MKJMXGqWa+D4bQIslVYrI
-         PO8Sy1g8kEv5vMGdAz9/Czs2V95uRG06IG9LUiPDzy//YlYEnUs45Ywzh96rQjtxg8oh
-         QfHxiWsz2YEx19UOz/GiXY/1HycIZGoMJ+ijNsViWgqXPisyvYi2UYnqha2yyGIuOur6
-         T9rD19D5n6J1eUaaVdR56bZSe5SHrJ713r3m/y17C0xG8p/snDSk58rQypBfdUUbO/PC
-         knPA==
+	Thu, 07 May 2026 14:08:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1778162925;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=w2nhovRvFw1+XQcDcRJ+2hvlsNXDoa4sYKL7qfbTHmc=;
+	b=ba9NRdwtNchs3C1yZ5WACCJnB5cEx7w/p7jb9La71BElniHsLPh+ZT0j6ph4EyWoekbZYZ
+	3Pd69vtoeAuv8WwdXrBTJTJqM7Qs/RjD0tTcJsC5TfOZh2Ahg6t8G04fgT3fIqpXjsLNuM
+	0vY583ff+W64BRwokPZsVXIXtcysj5A=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-617--D5vdnnaNeqXOJlsvJRUcA-1; Thu, 07 May 2026 10:08:43 -0400
+X-MC-Unique: -D5vdnnaNeqXOJlsvJRUcA-1
+X-Mimecast-MFC-AGG-ID: -D5vdnnaNeqXOJlsvJRUcA_1778162919
+Received: by mail-wr1-f72.google.com with SMTP id ffacd0b85a97d-43d789cebcfso1445272f8f.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 07 May 2026 07:08:40 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1778161161; x=1778765961;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=MirORJ/xODrUNsE9K1GDry31szTlmO/Fh+672eoJv6Y=;
-        b=jily0A8o4FDXeKE9RRyPGO7Povk4tz9YzS6Pfkl/b+0psJ3xwB7WodTiptG97Jpphe
-         61T0OeC65/D8a417N+w1t0FPdwTETryxG5BNBPoS1zGopKOwjvRp0Fp55IetgwsEdMl4
-         WH4IsqkoNtR7pasrITkNwnKxJxpM7SFs7tF4b9iZcYU7sBnOT15J8LbT06lrvZ86TQ6f
-         ZeSmD0/2JAsZpG8XnU6aDPSvpYKPsHH66O5/3RXnuHqI/4t0ZhZRVQIWm4TuyfJTMLG7
-         9WjP/+x4ranfTrPkhg4RRn3SfXtXYY9A9l2VPa+tIxWgALiKTar/88dlYLjDTm4bL7Un
-         1GZg==
-X-Forwarded-Encrypted: i=1; AFNElJ+JS8QhsOifTVAXYv1LgcuQd0/SbcCPuW6NzxNhPomiHwgAf1tfx93sAI+OLvNxOKu3vkv8TYJ2AfvxI4pBTQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzdcQt2CDQaHudybPbmZmAjOGUeUTiOT6qZfcCAB8SqVXH8qS2Z
-	ySNX4LA0ayPsBHY8Kjn4atqB69a4Sgq4Z15ZfK1ZZQrAyMo6qzMQBnsK
-X-Gm-Gg: AeBDievX0QMZD5uSXDQVbmN1LYrsT2OHkSY3bYs7GkHC2YFglnDp3TlRq64dBIyOJ3i
-	9TwC0X0iL38IFg1wQQE9dZg3ONXMnVxMthgKISkuHAFndsNPv+YeuWgfK3pJ3rEVEkXUQeS13yH
-	bcRg2DnxCs93dtn4q6BI7pvi5OH/Y6tNdwqeEPzphVjpMLH8HqXtwMs4lDxaOTP/1lmYIM5Djf3
-	MXL3CUATK9ybYgBcVwq+cSRo0pdAT+IzVhwxo+CpAIAQ2W6Y0O0V+UACtsmcp3OhcJv4DqYfPRZ
-	v6JHk2PzK4+WzQwLYMJMyx6E3cvi4AZOPECOREi6scNd28Rt1ExBfet8wj9O8CYktkP/2MVwbtr
-	5L3e7vuf6VIclSdSH+FYAGF0EyM68a+bDCT7lD+LwkTaYiK19XXDC/pLcLEaaW1ns7lSQaNxWqb
-	zdZMOBdkBNDaDLUhsTAuA5MtLedQRSqeGMkaPQaSvQ1C8UivfX357m9qdOTGlOCHl3/OJLU/WPB
-	a4ytDPF/6liXtKGQa+tQYmw
-X-Received: by 2002:a05:6000:200b:b0:43d:7b85:6c95 with SMTP id ffacd0b85a97d-4515d5c567emr13185884f8f.33.1778161161071;
-        Thu, 07 May 2026 06:39:21 -0700 (PDT)
-Received: from orome (p200300e41f1c9800f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f1c:9800:f22f:74ff:fe1f:3a53])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-45054b02802sm20939063f8f.17.2026.05.07.06.39.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 07 May 2026 06:39:19 -0700 (PDT)
-Date: Thu, 7 May 2026 15:39:16 +0200
-From: Thierry Reding <thierry.reding@gmail.com>
-To: Boris Brezillon <boris.brezillon@collabora.com>
-Cc: Maxime Ripard <mripard@kernel.org>, 
-	Ketil Johnsen <ketil.johnsen@arm.com>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Jonathan Corbet <corbet@lwn.net>, 
-	Shuah Khan <skhan@linuxfoundation.org>, Sumit Semwal <sumit.semwal@linaro.org>, 
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>, 
-	John Stultz <jstultz@google.com>, "T.J. Mercier" <tjmercier@google.com>, 
-	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, Steven Price <steven.price@arm.com>, 
-	Liviu Dudau <liviu.dudau@arm.com>, Daniel Almeida <daniel.almeida@collabora.com>, 
-	Alice Ryhl <aliceryhl@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Florent Tomasin <florent.tomasin@arm.com>
-Subject: Re: [PATCH 4/8] drm/panthor: Add support for protected memory
- allocation in panthor
-Message-ID: <afyU2Doug7zK_p2r@orome>
-References: <20260505140516.1372388-1-ketil.johnsen@arm.com>
- <20260505140516.1372388-5-ketil.johnsen@arm.com>
- <20260506-energetic-azure-pig-2b6ec4@houat>
- <20260506125015.0108ef44@fedora>
- <20260506-golden-python-of-aptitude-ff972a@houat>
- <20260506170515.2d8511c3@fedora>
+        d=1e100.net; s=20251104; t=1778162919; x=1778767719;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=w2nhovRvFw1+XQcDcRJ+2hvlsNXDoa4sYKL7qfbTHmc=;
+        b=SAH7O9Wn0zD31p2TuSb/9eeYJr9R+0LahvBhwcExceNeQutX3rDQDrVFjZzM7MKt4e
+         b+pV5uW+/tMzYTaZBqKuPoJSjTbvGYd2J2D95UqDQ/eb90BU8dXa8Jro+UkLyV7GZOAI
+         zj3d67IPeVJe8kUjw5p7yQQeXH2XGE9WqdtfrlT2BsEy6/ze+1JzAa2b9qHgvHIDV3sN
+         FIyEogV0WX4nTgNtgMvtHimCWrjmTUasEuO/SURm2olrifWzHneIqfaT+MXA+B4L+rPU
+         kmC28ucFR/2COUp/ABUY9Cfy6ILFLuA6vKgizi1GXfcxYFoL6fFGGPNPskJwBqYHKj7K
+         pE7Q==
+X-Forwarded-Encrypted: i=1; AFNElJ+4QXdihpRX70mDH8Ma5C0rfx5LqAuxXWcDCdR4cA1VSVfWVwYhsyD/CkfxiWUvFaznz72zXUIL8HQ3UWoMAw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwS4fA7CAg5aEzFY1Y4FNSS9ZvzLldV8GC/nbB4z2dcpRTVze7x
+	bCaVS5e39yHgrqRcG2GvpcsQPSIdbjOkkOevprZMu2WhHdyi8r2fnPaWWGxyPcInxbVGGFhPSyX
+	btJ+0sS341QENTQjU9ici5G7un/WIZv+RmfhpzgEX42qzJb0EDUVViL/8HnHuwd3Ww4nF3LFxhQ
+	==
+X-Gm-Gg: AeBDievPkpLxMrEal2L6NuwEszXB7suWJxAxJRw2ZfkmdeiW+9WoT2uwFzTUZ9c2rxl
+	lNXXbqxY00zDxxdzcdFU3h/BkqSKtsWviUWVAfPKwaiYu7mpD2T2fmBAe+DMYwNgDDBZqQBKAjy
+	e/MTH+NZFkOvQg5y6U/zed+GSYvX7pTq6M/ZZ3nT2dDc2D1+jxvGYLt/sJLm2oWdahDME2WmXTU
+	QvWHUhnv9jSkNBO9tMZQT65/gWwUI6B4xAAmS+0DvgFwsX+p+mhJEMpBO0rtdtv9jh0gIDyXVXu
+	UFVYWdgCpWXCoTyqVtN2rRNHcFe3Bdf7zahFIahF4AY1kmVgDucJ9dmn3LzwN7Pjwk/8NJfimJ7
+	P3+gkj3nMahTHR6KflOIEBK1qjTjYXuER+M+pUwpW0M9WQMbfIOuNCXciFQzeyehvh7QJhti16H
+	Wv
+X-Received: by 2002:a05:600c:3e86:b0:48a:5339:a46 with SMTP id 5b1f17b1804b1-48e5dffabcamr46917735e9.9.1778162918802;
+        Thu, 07 May 2026 07:08:38 -0700 (PDT)
+X-Received: by 2002:a05:600c:3e86:b0:48a:5339:a46 with SMTP id 5b1f17b1804b1-48e5dffabcamr46917155e9.9.1778162918260;
+        Thu, 07 May 2026 07:08:38 -0700 (PDT)
+Received: from [192.168.88.32] ([150.228.93.82])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-48e530d8691sm91116195e9.2.2026.05.07.07.08.36
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 07 May 2026 07:08:37 -0700 (PDT)
+Message-ID: <dc0f052e-797e-4849-87c4-a98b8ede19d3@redhat.com>
+Date: Thu, 7 May 2026 16:08:35 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="asfzz3x46tacowfj"
-Content-Disposition: inline
-In-Reply-To: <20260506170515.2d8511c3@fedora>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net 1/5] net: dsa: mt7530: fix FDB entries not aging out
+ with short timeout
+To: Daniel Golle <daniel@makrotopia.org>,
+ "Chester A. Unal" <chester.a.unal@arinc9.com>, Andrew Lunn <andrew@lunn.ch>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ DENG Qingfang <dqfext@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
+ =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+ Sean Wang <sean.wang@mediatek.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <cover.1777986341.git.daniel@makrotopia.org>
+ <f285707e09a0febffd1b987f204ff4eb71736489.1777986341.git.daniel@makrotopia.org>
+From: Paolo Abeni <pabeni@redhat.com>
+In-Reply-To: <f285707e09a0febffd1b987f204ff4eb71736489.1777986341.git.daniel@makrotopia.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: tgHdP5CnX4ocMERdK6RciVeBUt8ksnLWorLnz0Y0d_k_1778162919
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260507_063924_178587_01630305 
-X-CRM114-Status: GOOD (  46.92  )
+X-CRM114-CacheID: sfid-20260507_070846_464559_41C81F86 
+X-CRM114-Status: GOOD (  22.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,111 +122,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 5/5/26 4:16 PM, Daniel Golle wrote:
+> When setting a low ageing time such as 10 seconds, the algorithm in
+> mt7530_set_ageing_time() finds AGE_CNT=0 and AGE_UNIT=9 as the first
+> exact match (starting the search from tmp_age_count=0).
+> 
+> On the MT7530/MT7531 hardware, the per-entry aging counter is
+> initialized to AGE_CNT when a MAC address is learned. With AGE_CNT=0,
+> new entries start with a counter value of 0, which the hardware treats
+> as "already aged" and never removes, effectively disabling aging.
+> 
+> Fix this by starting the search from tmp_age_count=1 to ensure entries
+> always have a non-zero initial aging counter. For a 10-second ageing
+> time this yields AGE_CNT=1 and AGE_UNIT=4 instead: the timer ticks
+> every 5 seconds and entries are removed after 2 ticks.
+> 
+> Fixes: ea6d5c924e39 ("net: dsa: mt7530: support setting ageing time")
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+>  drivers/net/dsa/mt7530.c | 8 ++++++--
+>  1 file changed, 6 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index 44d670904ad8..b1903da7d500 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -1027,8 +1027,12 @@ mt7530_set_ageing_time(struct dsa_switch *ds, unsigned int msecs)
+>  	if (secs < 1 || secs > (AGE_CNT_MAX + 1) * (AGE_UNIT_MAX + 1))
+>  		return -ERANGE;
+>  
+> -	/* iterate through all possible age_count to find the closest pair */
+> -	for (tmp_age_count = 0; tmp_age_count <= AGE_CNT_MAX; ++tmp_age_count) {
+> +	/* Iterate through all possible age_count values to find the closest
+> +	 * pair. Start from 1 because the per-entry aging counter is
+> +	 * initialized to AGE_CNT and a value of 0 means the entry will
+> +	 * never be aged out.
+> +	 */
+> +	for (tmp_age_count = 1; tmp_age_count <= AGE_CNT_MAX; ++tmp_age_count) {
+>  		unsigned int tmp_age_unit = secs / (tmp_age_count + 1) - 1;
+>  
+>  		if (tmp_age_unit <= AGE_UNIT_MAX) {
 
---asfzz3x46tacowfj
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 4/8] drm/panthor: Add support for protected memory
- allocation in panthor
-MIME-Version: 1.0
+Sashiko noted that the above will have problem with secs == 1:
 
-On Wed, May 06, 2026 at 05:05:15PM +0200, Boris Brezillon wrote:
-> On Wed, 6 May 2026 15:12:37 +0200
-> Maxime Ripard <mripard@kernel.org> wrote:
->=20
-> > On Wed, May 06, 2026 at 12:50:15PM +0200, Boris Brezillon wrote:
-> > > On Wed, 6 May 2026 12:08:24 +0200
-> > > Maxime Ripard <mripard@kernel.org> wrote:
-> > >  =20
-> > > > Hi,
-> > > >=20
-> > > > On Tue, May 05, 2026 at 04:05:10PM +0200, Ketil Johnsen wrote: =20
-> > > > > From: Florent Tomasin <florent.tomasin@arm.com>
-> > > > >=20
-> > > > > This patch allows Panthor to allocate buffer objects from a
-> > > > > protected heap. The Panthor driver should be seen as a consumer
-> > > > > of the heap and not an exporter.
-> > > > >=20
-> > > > > Protected memory buffers needed by the Panthor driver:
-> > > > > - On CSF FW load, the Panthor driver must allocate a protected
-> > > > >   buffer object to hold data to use by the FW when in protected
-> > > > >   mode. This protected buffer object is owned by the device
-> > > > >   and does not belong to a process.
-> > > > > - On CSG creation, the Panthor driver must allocate a protected
-> > > > >   suspend buffer object for the FW to store data when suspending
-> > > > >   the CSG while in protected mode. The kernel owns this allocation
-> > > > >   and does not allow user space mapping. The format of the data
-> > > > >   in this buffer is only known by the FW and does not need to be
-> > > > >   shared with other entities.
-> > > > >=20
-> > > > > The driver will retrieve the protected heap using the name of the
-> > > > > heap provided to the driver as module parameter.   =20
-> > > >=20
-> > > > I know it's what dma_heap_find asks for, but I wonder if it wouldn'=
-t be
-> > > > better in the device tree and lookup through the device node? heaps=
- are
-> > > > going to have a node anyway, right? =20
-> > >=20
-> > > I'm not too sure. Take the PROTMEM (name=3D"protected,xxxx") dma_heaps
-> > > instantiated by optee for instance, I don't think the originating
-> > > tee_device comes from a device node, nor is the underlying heap
-> > > described as a device node. The reserved memory pool this protected h=
-eap
-> > > comes from is most likely defined somewhere as reserved memory in the
-> > > DT, but there's nothing to correlate this range of reserved mem to so=
-me
-> > > sub-range that the TEE implementation is carving out to provide
-> > > protected memory. =20
-> >=20
-> > Maybe we should be working on a dt bindings for heaps then? Something
-> > simple like we have for clocks with a phandle and an ID would probably
-> > be enough. In optee's case, it looks like it would map nicely with
-> > TEE_DMA_HEAP_* flags too.
->=20
-> Sure.
->=20
-> >=20
-> > The only two that wouldn't be covered would be the system and default
-> > CMA heap if not setup in the DT, which shouldn't be too bad for this
-> > particular use-case.
->=20
-> I'm not opposed to the idea of describing the association through the
-> DT (with a <phandle, ID> pair). My main fear is that it drags us into
-> endless discussions around what's considered HW description and what's
-> not (PTSD of all those DT-bindings discussions I suppose :-)), which
-> ends up delaying the merging of Panthor's protected memory support.
+What happens here if secs is 1?
+Since the bounds check at the start of the function allows secs == 1,
+tmp_age_unit would be calculated as 1 / (1 + 1) - 1, which evaluates to
+0 - 1, resulting in an unsigned underflow to UINT_MAX.
+>  		if (tmp_age_unit <= AGE_UNIT_MAX) {
+Because UINT_MAX is greater than AGE_UNIT_MAX, this condition will fail for
+all iterations of the loop.
+[ ... ]
+>  	mt7530_write(priv, MT7530_AAC, AGE_CNT(age_count) | AGE_UNIT(age_unit));
+If the loop exits without ever finding a match and entering the if block,
+age_count and age_unit will remain uninitialized. Could this result in
+uninitialized stack variables being written to the MT7530_AAC hardware
+register?
 
-FWIW, I plan on doing exactly that for Tegra. The way we wire things up
-there is by referencing the protected memory by phandle via the memory-
-region property (and a memory-region-names =3D "protected" for context).
+/P
 
-It doesn't support passing a specifier along with the phandle, but maybe
-that can be added (using something like a #memory-region-cells property
-to mirror other similar bindings).
-
-Thierry
-
---asfzz3x46tacowfj
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmn8lgQACgkQ3SOs138+
-s6G3+g/9HA74siLrq2Ig7isjRJFtRcHmFnjq8EblmmVUlYSar61ejku2o14ju81i
-ybe025hgJcVIPKuiYXscduXk8eOdVzix8Os/oFh3ZPHyMP0tuG8zC1HNjqsnLWPd
-eha1cnD27rsFPgnSmhFFIYiThWDUzf2ynteIeul4Ax4z1LL1oqSpD3WH+9brO9fC
-aUZOdU16WSEK6O5Yx/g8zX3id2trZzYfWCDueg0tGGLwcMvfXTuuSbz9e59C5EBj
-SyMPiOrwT+EERP4FUfqPEnbt0CLnjhZnxekp//Lv2DwjzSSNIlFoeTczP/qjoeTf
-iIf4FfLI1FA4zODWgX+OWlD9iq1QyDEIjzM0EHsSz9Fr1QTZeuvEN8C4gwMF8ZJP
-nfejV/U9HvsE4jOuv25o6XSpVUXVulF8cAmWSb2gzEe0L2r3S7SJvc5fin5zY+ui
-X4VlDMkw1XflRl+fte35xoi829RIFJkYC8drCV/mrP/ORzUwa/cO1MDhn7yougGH
-bEoX4HFA1dl+rscnYASEUeoQP+1z+7IMdifsCZTMRUkPEOPmYXqVSIQkFEL/S00Z
-46wlyQT1DP+De2fxipN4WUpaKmS61pjCibQYO/RO3sRSXUEUt/Hz2MabLrSy9QHx
-J6PCv2dsBoF9pjVW2+kRPnxCm4AsjRJ3lQFHjh5HIZHWWs7ir6A=
-=H2su
------END PGP SIGNATURE-----
-
---asfzz3x46tacowfj--
 
