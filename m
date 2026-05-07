@@ -4,81 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08B08CD3427
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2026 11:54:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A140CD3427
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2026 12:12:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jAW3SqBHkrLFhHli0X0A0K7Zkr/1/cw1gsdqcyZhvzE=; b=NXOWC1D6/bwtVOi0mvKlM02AMQ
-	XhYDje9Jlcc0PbaDWly09yka4ZSlBC3Zu94HnhO5k5njKarxB5x+jMP25rj4bk+uU8KoSre8dYnKq
-	sctKtQNuLE25+sZTRE2KPXkyb0DHqUZjZH01x9ukyvqvRelkO4Gl7Fwdyxwt2QO9PJ5O947MYyk9s
-	EH/mN0XiqIvvGncvf8i2o9NSKXBpEy6Gsk4sevlhQg8N+Ft8GGGE7LeDhNukojqbE66EQMyjdmfkn
-	Zw3RQ/P+7kACegi/coTK4COWcPUg9ZXq4D5QG6IuTcIoetMCRLkQE/xWKyssiOUEF8wsc3HUP/VG1
-	rSjr0qRw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZrnqX96u+Flxd2Q9FYBoadC2ai7BMu/bBuPcHTaRBc8=; b=nzZEjwRVKpKw176vn/QKAxUt+s
+	B+5Kvv6mTQHg13zwm+DHqbcjlfQIRXmsDPfGpzAo5gIFCgi8fE3/mKY1LRhn3NKfpdhBMmBGteh4L
+	dqZAIRxXaMb+78+vcZ5rGTrnLZiU/7fGm6ETUtm5JFlamYXrdIUVipLB3gG6/vUwJBsq5vXLpn77d
+	r9USUPSV8KfrHYoY2X4Rxl1esQns+Ph3RL8/jkcphZGqdnJ5RMoQ6aMV/gvIvBEd7OrCpcyHHxWI/
+	n1U44CvL56+kLu9UrjlZ6rUbDdpT+zA0UJXvN6ljJpJGmGDWe4TlslEq9g69WFw7BOtnUnmYadliR
+	Y2BnMZHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKxIv-00000003iM7-4BKf;
-	Thu, 07 May 2026 11:54:10 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wKxaj-00000003kff-3v1b;
+	Thu, 07 May 2026 12:12:33 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKxIt-00000003iLM-2vEv;
-	Thu, 07 May 2026 11:54:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1778154843;
-	bh=6BJjaGOruHF5NtcX/6zf6Bu/wTeaT/tj56yBW3eKEjU=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=fPmUsP6Biz1SZnJghN6tCtUsycAXbfsN/MzfNobVHwNqgB9kUdtzRDrm7ogE3kUmV
-	 1KDDDRUWg2fjogTnUTYzgF84lYdKCv6j/In8onWuNjag38GBGDvUnROplZj2yWZhfL
-	 NkM1qmranfx0+bTAFnW3K5+3qzk/cZ6W9Vmu4X+KK7wK0pOHDN34U4vAiHVUfXeg6Z
-	 VV+J44rQsAIf+Bk6E7Pe3FkLjB/Wl1R5/SFqZlP8qc3JfmltvLQveBlZNxBGuINO9h
-	 +ICAiSORgAbWgWhwR5Dc7w958IByNyyynEWatcnxaomqoIEzijteBXQrJZekWZmmyG
-	 cp7GXoQgAYdmA==
-Received: from fedora (unknown [100.64.0.11])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bbrezillon)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E4C6717E131F;
-	Thu,  7 May 2026 13:54:02 +0200 (CEST)
-Date: Thu, 7 May 2026 13:53:56 +0200
-From: Boris Brezillon <boris.brezillon@collabora.com>
-To: Marcin =?UTF-8?B?xZpsdXNhcno=?= <marcin.slusarz@arm.com>
-Cc: Ketil Johnsen <ketil.johnsen@arm.com>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Maarten Lankhorst
- <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>, Jonathan Corbet <corbet@lwn.net>,
- Shuah Khan <skhan@linuxfoundation.org>, Sumit Semwal
- <sumit.semwal@linaro.org>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>,
- John Stultz <jstultz@google.com>, "T.J. Mercier" <tjmercier@google.com>,
- Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>, Steven Price
- <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, Daniel Almeida
- <daniel.almeida@collabora.com>, Alice Ryhl <aliceryhl@google.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Florent Tomasin <florent.tomasin@arm.com>, nd@arm.com
-Subject: Re: [PATCH 4/8] drm/panthor: Add support for protected memory
- allocation in panthor
-Message-ID: <20260507135356.5428d50d@fedora>
-In-Reply-To: <afxVIuVVPisBQ9p_@e129842.arm.com>
-References: <20260505140516.1372388-1-ketil.johnsen@arm.com>
-	<20260505140516.1372388-5-ketil.johnsen@arm.com>
-	<20260505181523.49a3d85c@fedora>
-	<afxVIuVVPisBQ9p_@e129842.arm.com>
-Organization: Collabora
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+	id 1wKxah-00000003kf0-3Xyd;
+	Thu, 07 May 2026 12:12:32 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1778155922; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=SDqglZccFbVPk9LWQ0GXBIIjb5MTR7/+sA4n+fjXZXzD2J20OQUNcGzzI8P2ThMpfbxK0suJSqw8KJoBxUETcpz+Zc1EsGX5POHky3de0r5e5g2HHPRZpf/A66O4+k6/I53xMY74F7R0YsQ7AfWTkzcr6RKxCUardLqYkuBWWMo=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1778155922; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=ZrnqX96u+Flxd2Q9FYBoadC2ai7BMu/bBuPcHTaRBc8=; 
+	b=LYk7OweCiBXGFeROcxl94OQydGvYw21aGDkgLo+D1qZw4lSgNAKmsD4LBq99l0c5nxOdVNjUcxb0ZORrKWKRllaWvWOfa0SAtujSYSDKZH9OzQ6BH22mvkJUimyAsUyQzusXbCKMgQ88pUXTz/BGOjLc2qrjZW5lRU70bdIpoIM=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
+	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1778155922;
+	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
+	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
+	bh=ZrnqX96u+Flxd2Q9FYBoadC2ai7BMu/bBuPcHTaRBc8=;
+	b=Z25JEbRAuz4jHpuHjKB0FLBVYYQUt9rboPSOl82e/pL+qjfex4RSH2vRvdYw63Ix
+	zq4cfxq08lheqbLqpsL6cC/SUNOrT3BXqQr9WSwsjFWj+f5KbYlmn6rw960vb09NAzS
+	ER90yeFBhvryN8yxHZfczpNpOZdDwFMWxNGocsm4=
+Received: by mx.zohomail.com with SMTPS id 1778155920789528.3783773258275;
+	Thu, 7 May 2026 05:12:00 -0700 (PDT)
+Message-ID: <9f569ba00b959b701a7a51bcd7347c1a108a15ee.camel@collabora.com>
+Subject: Re: [PATCH net-next v2 3/4] net: phy: air_phy_lib: Factorize
+ BuckPBus register accessors
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>,  Eric Dumazet <edumazet@google.com>, Jakub Kicinski
+ <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring
+ <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley	
+ <conor+dt@kernel.org>, AngeloGioacchino Del Regno	
+ <angelogioacchino.delregno@collabora.com>, Heiner Kallweit	
+ <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>, 
+	kevin-kw.huang@airoha.com, macpaul.lin@mediatek.com,
+ matthias.bgg@gmail.com, 	kernel@collabora.com, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, 	linux-kernel@vger.kernel.org
+Date: Thu, 07 May 2026 14:11:54 +0200
+In-Reply-To: <3bd7803d-4c4a-4f61-9434-a6bf25627b58@lunn.ch>
+References: <20260326-add-airoha-an8801-support-v2-0-1a42d6b6050f@collabora.com>
+	 <20260326-add-airoha-an8801-support-v2-3-1a42d6b6050f@collabora.com>
+	 <3bd7803d-4c4a-4f61-9434-a6bf25627b58@lunn.ch>
+Organization: Collabora Ltd
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
+MIME-Version: 1.0
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260507_045407_881888_6D57154F 
-X-CRM114-Status: GOOD (  24.84  )
+X-CRM114-CacheID: sfid-20260507_051231_945786_568347FA 
+X-CRM114-Status: GOOD (  11.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,63 +90,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 7 May 2026 11:02:26 +0200
-Marcin =C5=9Alusarz <marcin.slusarz@arm.com> wrote:
+Hi=C2=A0Andrew,
 
-> On Tue, May 05, 2026 at 06:15:23PM +0200, Boris Brezillon wrote:
-> > > @@ -277,9 +286,21 @@ int panthor_device_init(struct panthor_device *p=
-tdev)
-> > >  			return ret;
-> > >  	}
-> > > =20
-> > > +	/* If a protected heap name is specified but not found, defer the p=
-robe until created */
-> > > +	if (protected_heap_name && strlen(protected_heap_name)) { =20
-> >=20
-> > Do we really need this strlen() > 0? Won't dma_heap_find() fail is the
-> > name is "" already? =20
+On Thu, 2026-03-26 at 13:30 +0100, Andrew Lunn wrote:
+> > @@ -480,8 +287,8 @@ static int en8811h_wait_mcu_ready(struct
+> > phy_device *phydev)
+> > =C2=A0{
+> > =C2=A0	int ret, reg_value;
+> > =C2=A0
+> > -	ret =3D air_buckpbus_reg_write(phydev, EN8811H_FW_CTRL_1,
+> > -				=C2=A0=C2=A0=C2=A0=C2=A0 EN8811H_FW_CTRL_1_FINISH);
+> > +	ret =3D air_phy_buckpbus_reg_write(phydev,
+> > EN8811H_FW_CTRL_1,
+> > +				=09
+> > EN8811H_FW_CTRL_1_FINISH);
 >=20
-> If dma_heap_find() will fail, then the whole probe with fail too.
-> This check prevents that.
-
-Yeah, that's also a questionable design choice. I mean, we can
-currently probe and boot the FW even though we never setup the
-protected FW sections, so why should we defer the probe here? Can't we
-just retry the next time a group with the protected bit is created and
-fail if we can find a protected heap?
-
-> I'm not sure why it's needed at all, but if
-> it is really needed, then s/strlen(protected_heap_name)/protected_heap_na=
-me[0]/
-> would simplify this.
-
-It's not so much about how you do the test, and more about the case
-you're trying to protect against. I guess here you assume that
-panthor.protected_heap_name=3D"" means "I don't have a protected heap for
-you". If it's deemed acceptable, this should most certainly be
-described somewhere.
-
+> Is a rename required? Is the namespace air_buckpbus_ used somewhere
+> else?
 >=20
-> > > +		ptdev->protm.heap =3D dma_heap_find(protected_heap_name);
-> > > +		if (!ptdev->protm.heap) {
-> > > +			drm_warn(&ptdev->base,
-> > > +				 "Protected heap \'%s\' not (yet) available - deferring probe",
-> > > +				 protected_heap_name);
-> > > +			ret =3D -EPROBE_DEFER;
-> > > +			goto err_rpm_put; =20
-> >=20
-> > If you move the heap retrieval before the rpm enablement, you can get
-> > rid of this goto err_rpm_put.
-> >  =20
-> > > +		}
-> > > +	}
-> > > +
-> > >  	ret =3D panthor_hw_init(ptdev);
-> > >  	if (ret)
-> > > -		goto err_rpm_put;
-> > > +		goto err_dma_heap_put;
-> > > =20
-> > >  	ret =3D panthor_pwr_init(ptdev);
-> > >  	if (ret) =20
+> 	Andrew
+Sorry for the delay.
 
+The air_buckpbus_ namespace is only used in the air_en8811h driver.
+It seemed better to me that in the new air_phy_lib, all functions (the
+buckpbus accessors and air_phy_read/write_page functions) started with
+the same prefix. That is the reason I renamed them, even if not
+required.
+
+As an alternative, to avoid renaming those buckpbus function calls on
+air_en8811h driver and reduce this patch changes, I can add macros at
+the beginning of the file such as:
+```
+#define air_buckpbus_reg_write(_phydev, _pbus_address, _pbus_data) \
+	air_phy_buckpbus_reg_write(_phydev, _pbus_address, _pbus_data)
+```
+
+Would it be okay?
+
+Best regards,
+Louis-Alexis
 
