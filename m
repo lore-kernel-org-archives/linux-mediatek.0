@@ -4,179 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37702CD3442
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2026 09:04:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D1BCCD3442
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2026 09:52:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mKRDwNHO9CCOWjAuV2t7h3EkjZpo/JcMPvzaQJBw8UE=; b=U59/esmFG9bZDdyo/PkzZwyMEy
-	qfpHq0Lktcp9+W2nSuGXIkTshqq50TuV4aiLrNNHSQONFdB28gYNha6T63ikJ/pPxLnEeDeBtjuP0
-	NnixMGdPevqKyZHaq+abm+NN5ZKbrgeaIpt+m5tPNyXbhOyRTqf529000xZq86gGyBzEg2PGjuh4Z
-	m6LzIL5pv1RcgXppyz6mMPu3LPl2qioEiHnoRmCnytwmIYYKP9SWCuAtbSmt3WYtMcuY/H5pu7Nd0
-	0LxwUWSpK/twl9bbz4LF4ZqHOIs18QC4sW7ahynCmBRz9OFpZuaObJOaQx4JuzDPku8KYV+UgfSI5
-	JFDgbnNw==;
+	bh=n2r+8tONPidRwC+bDiqTgIec2G+NFWKd4YQ4XHysQOU=; b=rKJTnFrZplbwEm7l9ndY++B2r7
+	FDk7VImKcC7i/m5Oh6iP4d9GohNKW9H6hh97aWkKiSl24p7iGQqSJQZ9e/Onz/xcjj3mWVyhR7830
+	CUvhykRb7s9nmJy9aqGzinNvq560T2WA/I0OEOSq5WcnkDXG0EuBKJ4xQQ4sKHb21D7fdaQrS9H0G
+	eIRn5PUgQKyl8qPvveNPS+j7g3ZTn4UoMU3bCjzGKZO142JOYn12bLstQihC2sP3CfE69BTP43ujI
+	IQY4AnIycx0gPRoNfmQZoXfJclTXNt3Yp0+D54SLOA3GVw5NlUCoI7FRugIDf/PY9toC/Ih6Rh/B6
+	t9+s8oKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKueK-00000003HIl-1VTT;
-	Thu, 07 May 2026 09:04:04 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wKvOo-00000003P6h-3eFK;
+	Thu, 07 May 2026 09:52:06 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKueI-00000003HIK-11BP;
-	Thu, 07 May 2026 09:04:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:In-Reply-To:Content-Type:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=mKRDwNHO9CCOWjAuV2t7h3EkjZpo/JcMPvzaQJBw8UE=; b=l9UpdGBgNyleY/PYSWTo1CP4MF
-	Z33DOitNUEpuzIHmorJWZzBa5WTCaL/X7xXBBI7IljP0xki/yj75cizThdaGOhDX+J1n5yX1fPtRz
-	+VrurCBAlM6ENJzNbqu8iD0BT8p8tmbw69RgXVB5WmGeIr4R7BNSW03LshgxlGc3VcZ+3sQXlX1N6
-	0MXPPn97Lr9LKjtUEu4cni1QxKoFqkCGBXmBjWQFvGw5BzOsBMaaC6zNbmsV10z6EzZTPhoTgZNwy
-	HurinOYK1MSCx9TMTSkw9BqpGWGXZ+rrO3BEXEnPdPwe1ryH9TXoJHcVQK6sTNPlxsULSMRjySwAX
-	dgYHyJuw==;
-Received: from mail-francesouthazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c207::3] helo=MRWPR03CU001.outbound.protection.outlook.com)
-	by desiato.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKueE-000000030iC-0Sbc;
-	Thu, 07 May 2026 09:04:00 +0000
-ARC-Seal: i=2; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=pass;
- b=JaVPDLzoFMGlVWswQI90aXUWM5ym9xObmWHYQwpRKvNf4VDe9PX5mIfH8Sn/sPQN0J3Qvd/QP5M36PKJh8hBegY19ciVepxShUJSyTJ7shaVHFcbIL72Pyf4Qz4dPo8CJ3hR/37LUMSy/0aHbWdy+2rvwiP7/RXyP4XjpuaEW0WRxkSS3G1KyiXIhfg4qnW4TY2yTEbKpwjQxYfLTW/AwSPPVJHw+TLSDFwlUxWnclgS6CNUwcQyu/5lrIjY7HppVgOlUT05GisuGoDtDuZdqGrzp9lOO8ZJqMQqbldxZBqYHIs46TOA/4mDFGL/G5/BLPC37mbOBpQFlaI1X8iXuA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=mKRDwNHO9CCOWjAuV2t7h3EkjZpo/JcMPvzaQJBw8UE=;
- b=AIMt1TIB1WGdYbZMiGI3MiWDjZjxozw9wvzDnhQn4PJNzoOoAlsvkHf5+h4xLu0SXYLswsnAsChqktjVoTDYB9wSBNWqSe6AcC7AAnleS9IICVVnF3fwREzV6gd+Ndqt1vG+LMUBtWFTS5c8rOpGYGTONdd+acmHAl8gRTg2HYpBHKo5J5KWwGbMmel4i2KKfojHkohZ8qJiBPfDKTH9g0SkBfeVpOVwMYCYLtGASNFb9/7RA2o3FhQQJR5COUn2AviX8UsAM8cC0/hHpGBMMEO20bMmC+ojBQOheSl8Su9fbFsyuWVTgv7zS4XPbBAMHCW7U6mDrA8tt0AEjAaQgg==
-ARC-Authentication-Results: i=2; mx.microsoft.com 1; spf=pass (sender ip is
- 4.158.2.129) smtp.rcpttodomain=collabora.com smtp.mailfrom=arm.com;
- dmarc=pass (p=none sp=none pct=100) action=none header.from=arm.com;
- dkim=pass (signature was verified) header.d=arm.com; arc=pass (0 oda=1 ltdi=1
- spf=[1,1,smtp.mailfrom=arm.com] dkim=[1,1,header.d=arm.com]
- dmarc=[1,1,header.from=arm.com])
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arm.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mKRDwNHO9CCOWjAuV2t7h3EkjZpo/JcMPvzaQJBw8UE=;
- b=UmXr930SmYZf8KzIPx5ni4l7KoRwmJhd1dB7ffQ5AuZJ8wCQTA7OPlC5jEl8W66ginn4h+4p9/x1giNAZkSLK+0Yc+AQldDxWNoGF33ff+smcHGlH3NL2hl5xMcB3a6NOV/8gvxqWQDgVBoNFgYjdiBAstcHQfj5uJ9jmFhgoEo=
-Received: from DU7P194CA0013.EURP194.PROD.OUTLOOK.COM (2603:10a6:10:553::29)
- by AS8PR08MB5896.eurprd08.prod.outlook.com (2603:10a6:20b:294::17) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9891.15; Thu, 7 May
- 2026 09:03:50 +0000
-Received: from DB5PEPF00014B9A.eurprd02.prod.outlook.com
- (2603:10a6:10:553:cafe::13) by DU7P194CA0013.outlook.office365.com
- (2603:10a6:10:553::29) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9891.17 via Frontend Transport; Thu,
- 7 May 2026 09:03:50 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 4.158.2.129)
- smtp.mailfrom=arm.com; dkim=pass (signature was verified)
- header.d=arm.com;dmarc=pass action=none header.from=arm.com;
-Received-SPF: Pass (protection.outlook.com: domain of arm.com designates
- 4.158.2.129 as permitted sender) receiver=protection.outlook.com;
- client-ip=4.158.2.129; helo=outbound-uk1.az.dlp.m.darktrace.com; pr=C
-Received: from outbound-uk1.az.dlp.m.darktrace.com (4.158.2.129) by
- DB5PEPF00014B9A.mail.protection.outlook.com (10.167.8.167) with Microsoft
- SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9891.9
- via Frontend Transport; Thu, 7 May 2026 09:03:50 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=vchLfvXcp1FeT5MRB1Rymxi8FdCVkBZtar8yMCBJAxZaalf0AoudpP3VKcM4q1VmzDYKaNnsH8woNXluAKmc/96onwY9xecT+c6sxS18rl/kQeq6p4pp1LC7oIAcsX2+4U7pUNtn1ra9fH4tmBWO+y5q+2gzbcTToTtg8T4WaWpjbVU0eUHQEKqwicyJJWF/1lyYAk68sjVQwKmJG7keplpnsm2XhNXPzWpu3uMs49gTdpls1Hf/GzWgzKYutqXw1GUbOGeUKxS6pqYj6fdNV9vf3ghN/dkr+ktDzrBLr+dzwEf6EYh9L6j4ke562oHkIABJdTrkUPAbm/8hj2kmzw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=mKRDwNHO9CCOWjAuV2t7h3EkjZpo/JcMPvzaQJBw8UE=;
- b=uBWLjFiXpoHsTxGpU/vbLdZDPf9eNsLwIhhH65b+b8PHmS5B8eypQ4CnwYzApsDm1R9b60USpg2dQ/Sf+fZWYPcdNOWtfXA5waGjV3mstbXBFrjWZK/LBmGNjkaA9OM/i8jGgj5ck+rb+MNq8Q6ZZ2w+SAFxbs9jpsMWP4vIf5bDOSyqkU1rxM4haWUiyA35Uq4WZQbziMiKYhVj5C19TPeYPcoUi3OVRY4dkzqMdjwwMNcnfiA12YiCaPV0iypOb1VzbOh2KMi3pPow51vOsUSNImqJcCHMUlTIKvQU2qeW8LP4Fsx5kRxIKxC03lvXsoI8JulVAkOq8X1IiWa7MQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=arm.com; dmarc=pass action=none header.from=arm.com; dkim=pass
- header.d=arm.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arm.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mKRDwNHO9CCOWjAuV2t7h3EkjZpo/JcMPvzaQJBw8UE=;
- b=UmXr930SmYZf8KzIPx5ni4l7KoRwmJhd1dB7ffQ5AuZJ8wCQTA7OPlC5jEl8W66ginn4h+4p9/x1giNAZkSLK+0Yc+AQldDxWNoGF33ff+smcHGlH3NL2hl5xMcB3a6NOV/8gvxqWQDgVBoNFgYjdiBAstcHQfj5uJ9jmFhgoEo=
-Authentication-Results-Original: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=arm.com;
-Received: from PAWPR08MB9996.eurprd08.prod.outlook.com (2603:10a6:102:35a::11)
- by GV1PR08MB11050.eurprd08.prod.outlook.com (2603:10a6:150:1f4::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9891.15; Thu, 7 May
- 2026 09:02:44 +0000
-Received: from PAWPR08MB9996.eurprd08.prod.outlook.com
- ([fe80::5856:8db5:9ee6:414f]) by PAWPR08MB9996.eurprd08.prod.outlook.com
- ([fe80::5856:8db5:9ee6:414f%6]) with mapi id 15.20.9891.016; Thu, 7 May 2026
- 09:02:43 +0000
-Date: Thu, 7 May 2026 11:02:26 +0200
-From: Marcin =?utf-8?Q?=C5=9Alusarz?= <marcin.slusarz@arm.com>
-To: Boris Brezillon <boris.brezillon@collabora.com>
-Cc: Ketil Johnsen <ketil.johnsen@arm.com>, David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Jonathan Corbet <corbet@lwn.net>,
-	Shuah Khan <skhan@linuxfoundation.org>,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Brian Starkey <Brian.Starkey@arm.com>,
-	John Stultz <jstultz@google.com>,
-	"T.J. Mercier" <tjmercier@google.com>,
-	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
-	Steven Price <steven.price@arm.com>,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Daniel Almeida <daniel.almeida@collabora.com>,
-	Alice Ryhl <aliceryhl@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
-	linaro-mm-sig@lists.linaro.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Florent Tomasin <florent.tomasin@arm.com>, nd@arm.com
-Subject: Re: [PATCH 4/8] drm/panthor: Add support for protected memory
- allocation in panthor
-Message-ID: <afxVIuVVPisBQ9p_@e129842.arm.com>
-References: <20260505140516.1372388-1-ketil.johnsen@arm.com>
- <20260505140516.1372388-5-ketil.johnsen@arm.com>
- <20260505181523.49a3d85c@fedora>
+	id 1wKvOl-00000003P5Q-0IOg
+	for linux-mediatek@lists.infradead.org;
+	Thu, 07 May 2026 09:52:05 +0000
+Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6475MRva3157859
+	for <linux-mediatek@lists.infradead.org>; Thu, 7 May 2026 09:52:01 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to; s=qcppdkim1; bh=n2r+8tONPidRwC+bDiqTgIec
+	2G+NFWKd4YQ4XHysQOU=; b=hk7CjrAbJWAFwoncPo8nXNSnkdWhlPzugC0Vuvbz
+	oIs0tE86AQcPzXfDNbxNpJJC2h6m8Kzu3bYkDemd7XS6rc9QehjtbuV9ZL/FxZhz
+	V+9VdE0I6Z812O4YAeCm1QCkhhgvRXznAYBODvtx/HrBInLvd9ON/OlZBCRKmYo7
+	l/S6DiNpwzeIpQg7lnGhTiRTO6IgvYJII+56JS59usJiElGT3k/oskeLJ0/Tdman
+	IZQ+h9pvhK2OYgmUrQjH/DSz4DzKha+cWGlUNod8b7bB3Jfb27siJT2aHK6A84mh
+	hdrgVyyxuyMM3C92Ib81826vOMOkMOIUlSep3lVWR5Dqog==
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com [209.85.222.197])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4e0mhf10uc-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Thu, 07 May 2026 09:52:01 +0000 (GMT)
+Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-8ebe2c596c6so122286185a.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 07 May 2026 02:52:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1778147521; x=1778752321; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=n2r+8tONPidRwC+bDiqTgIec2G+NFWKd4YQ4XHysQOU=;
+        b=XvsHLTa9D4ctJraFPhoXcot5XyYA1GXSb/N070dk4IU+RsAsmhtiLA4+nDhLVkMdaJ
+         rgaPcqfSFNMTV6OGr1Jzu1WG7RO32nAnNH0k9FY4O231kNJOGeusTYGxq9VxUPBKNbui
+         6RnBe6u6TmwGmMm00JcMjpuC9q1rctDWSUyRVCmuCfq1XU6zfcu1NkgQXT5yeENn8/nA
+         iHr3LaxKfyMCEVk/pi8Wmm/j3rLtjbAc8yOqjuLlLbGVdGtTvHmtlPc3VVzlYdGn6Gm7
+         M0vq7vDKBuSIhxXygv0mu5Y4tO07bdOos/vj2KHIJIfttxZmE3wUrgKD+NexdkggxTJB
+         sMwQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1778147521; x=1778752321;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=n2r+8tONPidRwC+bDiqTgIec2G+NFWKd4YQ4XHysQOU=;
+        b=KtpD7aSed21hpZqSUFM6X8lHhHHsS33wGKrHnLAMx28MUKCaW5u70KZdCsSAuz7ucR
+         yKqSQR3b1UXkPffIHB6beCDPoaPRaOFiuovrstO7cO9z4Zx3h2Tc2JBMHBy3Nx7NK5vc
+         DE1OJaiLqW2py5wGFEGs+/KXlOYGNEHljMlxOAoWM3+H07LxvL3DSRzKn6IITUT2Rp6p
+         VUv3Tq/KsmkKwAPbLFgd6HGLsi8qOp22Rl1xUPFCEi1fDQGfVeK6BAciYUjjTmW6ADeO
+         05JonNYL36sQ8duc25rd4wMlenjB/0Po9Iugi3UdWMt3IKqZTNI+gHfA/fIcBbBEBx0s
+         53sw==
+X-Forwarded-Encrypted: i=1; AFNElJ+KuJhN7ZrxN1XTRkJ5JNdvziiX8tFiYEOFXETvgD4sZQQOpxxGqdr9CMfJeCmzglNigMQDYZLtxbJ6R3NlHg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx+HcpJrNQ6rErbCOMqvz7umC/b3V4OAOEPySPBZpW7v8pFaAqK
+	IcFJFuKujM0LWMoBS7Igqv8vacPBXVe/tVfAjrJYVmhLIdGPDv8MvUSQ5X2YIvJEcnUaGQey3oa
+	1dbgjHYR4kwkKzgW+6pmyz20hGSS/Fo88gR+SOBwjbyKYdRAIObZanXU2H83vQxJHsuyr2UFwYu
+	M=
+X-Gm-Gg: AeBDiesqfCDgj+a4igKuCp5IiTP9V/Mi+OaMIrCeeFmCQec+f5cFJsuVs8PQ5wYxHcS
+	BOroWN+YhHMF9SFM/gpvXOOfixeiajQfrE1TIcG0bER+06dQQve2TP+v/bwzjznA70nD5ohzkNg
+	qbx1oohdzwGxBYMWUxXPXQ41Xvi5FdnYL7Klfe+k9UTyTrESRjWkZVDDfqTp0VkQXyuGjbhpJAU
+	k4MJ3JHuc5ks7EwAZPMZbgD9n88raM7extAHIIhpn/7Am3fO/GCDih1wfbgIyi7a+KXk2jPTem9
+	tbI7Y17S8Uk7nA9MsPCOPMwAAszmyz5lnEydFRuwt5CGQ1w/eTl8i6VK9pwuNveByaTXnV5l7TT
+	YzkvKr73mKdohn3vu+ooAzjZz1IArcLYnRhMvTGdwaaJj/88/r8o1YGtn24xhToXhw30zwpzTSG
+	mxbjGH+c6pLuitkYOc4V1Eu7aLDt7DqrWOnzW25W6zZbeRLw==
+X-Received: by 2002:a05:620a:1a20:b0:8fc:5e81:28eb with SMTP id af79cd13be357-904d65e1e89mr1081203285a.42.1778147520961;
+        Thu, 07 May 2026 02:52:00 -0700 (PDT)
+X-Received: by 2002:a05:620a:1a20:b0:8fc:5e81:28eb with SMTP id af79cd13be357-904d65e1e89mr1081198385a.42.1778147520392;
+        Thu, 07 May 2026 02:52:00 -0700 (PDT)
+Received: from umbar.lan (2001-14ba-a073-af00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a073:af00:264b:feff:fe8b:be8a])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5a85c33c8a3sm5505238e87.54.2026.05.07.02.51.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 07 May 2026 02:51:58 -0700 (PDT)
+Date: Thu, 7 May 2026 12:51:56 +0300
+From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+        Philipp Zabel <p.zabel@pengutronix.de>,
+        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Junzhi Zhao <junzhi.zhao@mediatek.com>, Jie Qiu <jie.qiu@mediatek.com>,
+        dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 2/2] drm/mediatek: hdmi: report jack plugged state from
+ bridge enable/disable
+Message-ID: <lhxivpwo6aq3ehgzsnkgxnqis5tptmey4dtbhaokyckkl7ghbn@dzaj225pnpk3>
+References: <a3e22cbae528c9a38d854a586d1736b860998d41.1776265222.git.daniel@makrotopia.org>
+ <c4d62fc2244fb72207855c5a366ff10fad419f2d.1776265222.git.daniel@makrotopia.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260505181523.49a3d85c@fedora>
-X-ClientProxiedBy: LO6P123CA0002.GBRP123.PROD.OUTLOOK.COM
- (2603:10a6:600:338::6) To PAWPR08MB9996.eurprd08.prod.outlook.com
- (2603:10a6:102:35a::11)
-MIME-Version: 1.0
-X-MS-TrafficTypeDiagnostic: PAWPR08MB9996:EE_|GV1PR08MB11050:EE_|DB5PEPF00014B9A:EE_|AS8PR08MB5896:EE_
-X-MS-Office365-Filtering-Correlation-Id: ad911ab8-5169-4bd0-8354-08deac178e16
-X-LD-Processed: f34e5979-57d9-4aaa-ad4d-b122a662184d,ExtAddr,ExtAddr
-x-checkrecipientrouted: true
-NoDisclaimer: true
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam-Untrusted: BCL:0;ARA:13230040|366016|7416014|1800799024|376014|22082099003|56012099003|18002099003;
-X-Microsoft-Antispam-Message-Info-Original: K2xq1PP1A6l1UvXWdW+Bj3nc83B+6K+LRaqYD+uZ3voE28di9ZdhYBdJ+10lN0zlphXI7fWHUKsHiSo8xKRGY45ZpNodTZJ8cuBZgt6WIUiw5r8PqsTFSxY81ZEG9OmVruVbyqdcJrLej/kwzLtEupdhZiaFFAwQA2ZD7ktQFC5VrQpnexOP7/VjMyDS0Ma+Rud5eg8TkO+qxkiIRXgUygEYc0mK0YVKi/pGw78nIY6LqcUCNM04zfq1Lm2u8q7bSZ5wjrCGJmUpuWj0mGqZT/lVn3ij6mxzHCLxU38m5N96dSq6QCgnVI9QQ21Ah4aVMbxWvuT1CClG4utEilBmnxV/acmr2/ahJzYOChXIW/nMA3g5mjDoqwbeTot4lhfq9x9i4dSKLJoN2NcUTAwtH6ZycNkv8/mRM8oC4qKz6OG31i/n8K2mSSPlyJCrLv1JqJkGfwphZTiPOIE3gc8QrtDbTdlweqRqMzSsglTZPVIWflyrXgu/0LdHyWTCsbo3408kdolhybyi7Qivo3+nx6qAHwQkzHV3YOwe/vI2aWeHv6vt/Bt8dqF3m++ubE2tag2NrcsVYWRpRv+BT0ircb+Wg+grvBlnRdeFEmUmD31wSRDX9aQ9IWVlr+amVxx7z10EXySFtnHjoFwnuLwwrCKT/zKTKwT/Fr740vOTzeKBwMIvGIbWEpBtF2Kft78J
-X-Forefront-Antispam-Report-Untrusted: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PAWPR08MB9996.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(7416014)(1800799024)(376014)(22082099003)(56012099003)(18002099003);DIR:OUT;SFP:1101;
-X-Exchange-RoutingPolicyChecked: XJ1T6EoheAt6U+FREPkCNk9lmTPcfzSATSqW1yw+CL0VauPjAPvg0atTwGy6E2XOscgZriGtllJzvEMDByJ4mXxl/Ewd17+joUZcDGAkkNpoorbenAno8gaoJzpGnd7tBaucC1+bzNRn2jLbBwjfwuAj4DuBctHLOiNP3BFJ0924yDQhuVvuzerWRC3DBzOMlXTwNn+ocgGK+qu7RLmxsTOn2HXVIofFOfw8ZFtSeVo+D3yPyzzdrCxlEm+y9q52IoryKTY8yY5td+OF83hiRJWkaZwxBNKp4aCORgcJPmzxpzAwQj89zk9lpksBqnqxrRQ+mwyr1BnUbNO5VI/XOw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV1PR08MB11050
-X-EOPAttributedMessage: 0
-X-MS-Exchange-Transport-CrossTenantHeadersStripped: DB5PEPF00014B9A.eurprd02.prod.outlook.com
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id-Prvs: a30f35dd-b7e1-4ff8-fb75-08deac176625
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|35042699022|376014|36860700016|7416014|14060799003|82310400026|56012099003|18002099003|22082099003;
-X-Microsoft-Antispam-Message-Info: 4PMk609cGl8yM/iCXDNq5MjFLTeHOukpC5pJhnfVbfogGwBsn5pIpif3fJhaCOG9DbPAuTTMEuA6IfI2Q0HZsPj5q7U1Ji+KAOM8FteiWOL5bgewPeYl/k2w2Md/Vi3gzTybGSFUUxkFM0llVyEPrxEyDSQzY7CkLIXVhA4mYeJWF1I6KteFe5XCKM07NTIwGWF0wDp8P7LRrY5hEgOZ9aPI+5Hn03JIA5o4kD5wYPlY7AEC5oCyOK2zKyferyuw8GFn4DRJzwBSmGc3JR2OBtwpMDHF/+ycijpTdfVGRRUdMDg/FvnhIZJ5ESo69SO4DrrgL0N2avMSm2EmtkYjGrEctdglGVZRzDx0ttq8OR5TNggQG1qW8k0xsx3UvBa48p6WBTWCPGkv93W7wJUMaA3zEjAykwnB5IMen0mmiIdmwphVpmpWt0s2S80WVKWFrMA+LYecfMgLxwmTg3xLWM8XjsxIZsemBKlTd7E6oke6Ejn3sZifEizoQofBt2dA0Zis2tstRAQ8uKX8vrCJ+kUiECCYcZhJgBXqlulbXbA5DVwREYK2XNWUWN0qlmIcFEmygQAiNVdVFt67mtPimnJG4yH3EpnKvvo5hxoOw8heYVnY4NAr0xjBSPzDE6mDIFl7wXPQhLdOcTq2RTHYLl65psdzQDNbyYVZdx/wAA1Uz0kLogqsJ7z5wyHctR1LrSPDw74THoT5b3dE+cj7ZKO2eVglJpNevoNi+5xG9wo=
-X-Forefront-Antispam-Report: CIP:4.158.2.129;CTRY:GB;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:outbound-uk1.az.dlp.m.darktrace.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(1800799024)(35042699022)(376014)(36860700016)(7416014)(14060799003)(82310400026)(56012099003)(18002099003)(22082099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: QJWvgALR1WNRC/tRN7VrsCzAf3Sm1moslUv4ThmlKKZEXxBFtSs3iaYs3DQarPjewgLny9TBYL7//x2E5/Rkzq6lSTm2fe9fdT1tWdMnPrsUkqcXYEtCX8nJ+xtnbVmZqrPEOY/I6MsfHaVkIpE5G0mlMCsNeQ+j7mqLvACpwIEqMC+06VuElmspkuE403j6m3vHZ1VZ+BE1YyPOTUPpyLz9rbwZ64WMZMWZliJ+sXtoDR5Z2rzXTXpsYmaPA8P09wuP5u1V1ejspl+jxwICVbreAq7GebtqHXWlovOtIw4vPEAkO7hXpgpCIVx/xY6ysq3IxDEO/gVW9V4K1BBigyebMooHZ7J2ebjniigoc9BAI+nbLG6lcBWzSIjIezAF/MfMM6GVT6G4OVo8xwMT+/PMDONZUrB/MKnaTXMIcDWP/r/U+qO5u9D45kH1roa7
-X-OriginatorOrg: arm.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 May 2026 09:03:50.0262
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: ad911ab8-5169-4bd0-8354-08deac178e16
-X-MS-Exchange-CrossTenant-Id: f34e5979-57d9-4aaa-ad4d-b122a662184d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=f34e5979-57d9-4aaa-ad4d-b122a662184d;Ip=[4.158.2.129];Helo=[outbound-uk1.az.dlp.m.darktrace.com]
-X-MS-Exchange-CrossTenant-AuthSource: DB5PEPF00014B9A.eurprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR08MB5896
+In-Reply-To: <c4d62fc2244fb72207855c5a366ff10fad419f2d.1776265222.git.daniel@makrotopia.org>
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTA3MDA5OCBTYWx0ZWRfX3FMdk8fn7tl7
+ bSmK8+WKzkcH/gawnnhbth7hN93mikQ1fpcQvbJFBtgSmlVcjiWClyTe5aZc8ZVM7Ph1QHPBPSJ
+ 7il8+zJ8I8I15Ayyq6VBgsTxwwguPqAggthBKA8S3WBqbiczaIDRPj12wAeT60Q9zPIV8Rpo6O1
+ px/uNDV6qtKUw4rtlfZhougGvPo/9FqiD9BvqdcUEYZTmSEOQ1iNY6/adrQGKjCvt92at1MSSqQ
+ JFKabUShmc/04JuKapg/wc3Bk/2VDHpYAViAAhOWMMjmgb14oH/dUjUi9okTh6GcLiwqLV9v8Wx
+ L/vzqOtuY1FxFpYr9VUMJZzfyQP0xI2GeVFMuZMCpMpYVaQBpZJhWUT9kj/sJo8MgHrCpAG1nNW
+ LElrwa9nEt+4IjUL83iycoHndy82XSDgIXMKxqX/mV+EnCjBXWqdRl1tjblXrT/Rhu7ddNHCh1U
+ Uq1OIBpXErS5PVcfxzg==
+X-Proofpoint-ORIG-GUID: ZysWsRtHQUewWodOFHpHKyGb689E-eWO
+X-Authority-Analysis: v=2.4 cv=SuagLvO0 c=1 sm=1 tr=0 ts=69fc60c1 cx=c_pps
+ a=50t2pK5VMbmlHzFWWp8p/g==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
+ a=NGcC8JguVDcA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22 a=VwQbUJbxAAAA:8
+ a=VT4XjZGOAAAA:8 a=_OD9tO1ZYgXKlZaMhT4A:9 a=CjuIK1q_8ugA:10
+ a=IoWCM6iH3mJn3m4BftBB:22 a=6CpsfURP9XNmmWg3j1mJ:22
+X-Proofpoint-GUID: ZysWsRtHQUewWodOFHpHKyGb689E-eWO
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-05-06_02,2026-05-06_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 malwarescore=0 suspectscore=0 bulkscore=0 lowpriorityscore=0
+ impostorscore=0 spamscore=0 adultscore=0 phishscore=0 priorityscore=1501
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2604200000 definitions=main-2605070098
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260507_100358_559249_583FB201 
-X-CRM114-Status: GOOD (  18.05  )
+X-CRM114-CacheID: sfid-20260507_025203_226616_005ABE89 
+X-CRM114-Status: GOOD (  23.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -191,41 +149,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 05, 2026 at 06:15:23PM +0200, Boris Brezillon wrote:
-> > @@ -277,9 +286,21 @@ int panthor_device_init(struct panthor_device *ptdev)
-> >  			return ret;
-> >  	}
-> >  
-> > +	/* If a protected heap name is specified but not found, defer the probe until created */
-> > +	if (protected_heap_name && strlen(protected_heap_name)) {
+On Wed, Apr 15, 2026 at 04:04:16PM +0100, Daniel Golle wrote:
+> Notify hdmi-codec of the current sink plugged state from
+> mtk_hdmi_bridge_atomic_enable() and mtk_hdmi_bridge_atomic_disable()
+> via mtk_hdmi_update_plugged_status(). This matches the pattern used
+> by dw-hdmi, which invokes handle_plugged_change() from the bridge
+> enable and disable paths so that ASoC jack state stays in sync with
+> the actual sink presence across atomic commit cycles, and not only
+> on CEC HPD transitions.
 > 
-> Do we really need this strlen() > 0? Won't dma_heap_find() fail is the
-> name is "" already?
+> Userspace audio daemons (e.g. pipewire) rely on the jack state to
+> route streams, restore per-sink volume levels, and recover the last
+> used device after a reconnect. Without this, those transitions are
+> missed whenever the sink change is driven by a mode set rather than
+> by a bare HPD event.
 
-If dma_heap_find() will fail, then the whole probe with fail too.
-This check prevents that. I'm not sure why it's needed at all, but if
-it is really needed, then s/strlen(protected_heap_name)/protected_heap_name[0]/
-would simplify this.
+I can only hope to see mtk_hdmi to migrate to DRM_BRIDGE_OP_HDMI and
+DRM_BRIDGE_OP_HDMI_AUDIO...
 
-> > +		ptdev->protm.heap = dma_heap_find(protected_heap_name);
-> > +		if (!ptdev->protm.heap) {
-> > +			drm_warn(&ptdev->base,
-> > +				 "Protected heap \'%s\' not (yet) available - deferring probe",
-> > +				 protected_heap_name);
-> > +			ret = -EPROBE_DEFER;
-> > +			goto err_rpm_put;
+I think the correct timing was discussed several times and the overall
+conclusion was that the correct time is when the actual HDMI cable is
+being plugged / unplugged. See the discussion around [1] and the
+captured response of Mark Brown.
+
+[1] https://lore.kernel.org/dri-devel/cwxmu5a37qaqerpaolohxw57nzerkvlumx4dsqwmqwx5t7xhxo@kq6j63hfydra/
+
 > 
-> If you move the heap retrieval before the rpm enablement, you can get
-> rid of this goto err_rpm_put.
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_hdmi.c | 4 ++++
+>  1 file changed, 4 insertions(+)
 > 
-> > +		}
-> > +	}
-> > +
-> >  	ret = panthor_hw_init(ptdev);
-> >  	if (ret)
-> > -		goto err_rpm_put;
-> > +		goto err_dma_heap_put;
-> >  
-> >  	ret = panthor_pwr_init(ptdev);
-> >  	if (ret)
+> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> index 9050d7785f109..565bb72c9b63a 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> @@ -1013,6 +1013,8 @@ static void mtk_hdmi_bridge_atomic_disable(struct drm_bridge *bridge,
+>  	hdmi->curr_conn = NULL;
+>  
+>  	hdmi->enabled = false;
+> +
+> +	mtk_hdmi_update_plugged_status(hdmi);
+>  }
+>  
+>  static void mtk_hdmi_bridge_atomic_post_disable(struct drm_bridge *bridge,
+> @@ -1082,6 +1084,8 @@ static void mtk_hdmi_bridge_atomic_enable(struct drm_bridge *bridge,
+>  	mtk_hdmi_clk_enable_audio(hdmi);
+>  
+>  	hdmi->enabled = true;
+> +
+> +	mtk_hdmi_update_plugged_status(hdmi);
+>  }
+>  
+>  static const struct drm_bridge_funcs mtk_hdmi_bridge_funcs = {
+> -- 
+> 2.53.0
+
+-- 
+With best wishes
+Dmitry
 
