@@ -4,81 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23088CD343F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2026 14:55:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE624CD3439
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2026 15:33:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tNetuxkRt+N+4b2uSrH5ou0P5bOjAaDGsQRXbP0f+Xw=; b=YTvq/i8G5HBmJhH8TlBZGjFZCz
-	XV+RGxAM5EzABCkj5whymnW5GVffqIYzrcChXgRiagKo0xbmcZ0zGKMeA18tyUNCKABcnZHl5sSEb
-	X1wXFMp3n91bUAumgDIqJBKDCsORenQuG9Mtt+PNF8HuZ2+miL64BZQVw1nRGVQArnkSFPx8xhrV6
-	QE2a1Z1C7vexVuXNQF/AnWWip+s58mp+Y6GvoNmQ6EgSj2EQhAfQn0VC0aKXsnSBgF/4/Oq5Ae4Sr
-	M27v23J4+zGwvbPz/SNzeosZJHA2Trzj3ddyskznfDCptL1kbfRI20idEGAp5y1zfhaX5oorc69re
-	VeWjJWsQ==;
+	bh=V3kywgQAqmnu9ZGU7Lg3CjTk+ay/WRxtCI26PPsDcX4=; b=LItdSgb5sY1KUbnHcynDQt0OwI
+	+0QpVaolXGJofw1vtyc875RyN7dmne4z7pBi2kEopMkdS4YIPvd7eJMHZhxKCFYPxpdJSXiahV0lH
+	030iHB7PiTrksNSwW6fbHX9wprsm353jwk+FLFzhCFaE0NsoyLyeQgwyx2H5vIsafq3efTO/9likY
+	OEXX5ezjUC9AjtVpV6ONVsCNcTd25dqNRnsGqBN0glzwrK1dR/q7wiw2XmdospAOx4kWq3Bi9TEQU
+	JF72jSLZzcIN3tMNLoF8GQ3DZ32HcXVdkTF4YcRPwKkrAO/DwefNCQKRdnZ55MUCPX08krKVLX90U
+	I9ra8hig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wL07w-000000047AJ-27FM;
-	Thu, 07 May 2026 14:55:00 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1wL0ip-00000004CXp-1DkJ;
+	Thu, 07 May 2026 15:33:07 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wL07t-0000000479I-1xGD;
-	Thu, 07 May 2026 14:54:58 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1778165671; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=T8Ex0I6R6Kc95dgWSzf49Nw5eDqQnUIdIobggoG+yhFnDI14pX3v/So6Ofta8XQ7LfDF+jMnt/vJzzybHqvSTMUz3qGpHhFWlc78ZOCDxTyWC8obSsd/FiEBkw+9C1sBr14sbDYwjfXzN/UFY4UZx25trcMM7jq5bNfMBa1okZI=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1778165671; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=tNetuxkRt+N+4b2uSrH5ou0P5bOjAaDGsQRXbP0f+Xw=; 
-	b=bbqTPH4v2MNwkXrRMOvT0NWaeya0EUs1bWLuGn9FHYPtY7NKv8+qoDv+Wu1u3OTOzB+pfGI7shTRh/o/1Yy/9QUs7y6INH9nHZLxiVkanOIuPyKOx6U7ayAD5juPBknsuu49KXFo0X+IaqhcdMypji6BLWRnUofWiFm7FV6tKl4=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1778165671;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=tNetuxkRt+N+4b2uSrH5ou0P5bOjAaDGsQRXbP0f+Xw=;
-	b=biSdJiwecFJhgMX9AlCKB0S+0fCEKx89Auy+BkwYYsIwiTPt4cXifAV3ZgPlscQS
-	vZwoGuYKPiNTxB3P3zMTUv/yR+zGXHbBxmZlnO4BYgCTo20ErY1EehOIAYv+1qwv5w2
-	ay8jEoqxvcEtC+f4kjHZ5A9yJ7sqJWMPdn99460M=
-Received: by mx.zohomail.com with SMTPS id 1778165669942952.534754209186;
-	Thu, 7 May 2026 07:54:29 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>,
- Sumit Semwal <sumit.semwal@linaro.org>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Brian Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>,
- "T.J. Mercier" <tjmercier@google.com>,
- Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
- Daniel Almeida <daniel.almeida@collabora.com>,
- Alice Ryhl <aliceryhl@google.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Ketil Johnsen <ketil.johnsen@arm.com>, Ketil Johnsen <ketil.johnsen@arm.com>
-Cc: dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
- linaro-mm-sig@lists.linaro.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 6/8] drm/panthor: Explicit expansion of locked VM region
-Date: Thu, 07 May 2026 16:54:21 +0200
-Message-ID: <vq-4uSFHRCWR0Whm98eJ2Q@collabora.com>
-In-Reply-To: <kC1hpRBAS8uGaw7vVFyW2g@collabora.com>
+	id 1wL0im-00000004CWN-0LFh;
+	Thu, 07 May 2026 15:33:05 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 574B340101;
+	Thu,  7 May 2026 15:33:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AF0FCC2BCB2;
+	Thu,  7 May 2026 15:33:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1778167983;
+	bh=bGFuzFNBmWQ++Cqr0wCwwrQj4yFByartBwvFLjKOROA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=IMik015OizlxxJ9XrdK5XDZRfGoJ1MW6WAIBT/JbrAuUsDAvrD5ploKjLWx8K6cHU
+	 UJSMihXALFzKXaWpBDaGQXcUqx1djJgGXUUvBOgFpYSGv1o9kD+BZ7N7ieyVqctdVC
+	 2oYOOayiJ+i4u28RgQqNq9Hb+AGpPio/J+QchYfICPqKGmkOBHl958t10kHzUMyEGk
+	 DumUEtyVhCWDSL5xRnPym2izxf4O7buZXuX1lzEpMW2y2KgIGrb+tM0BF15MX0wr0X
+	 tIwZnCh5D8zC3eUjdPy43M1TdPLyxuxOBIoZmLdjsHuh3lk3qctVTD8Yae2+z8LVFS
+	 2tTRTg59vdluw==
+Date: Thu, 7 May 2026 17:33:00 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Boris Brezillon <boris.brezillon@collabora.com>
+Cc: Ketil Johnsen <ketil.johnsen@arm.com>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, 
+	Sumit Semwal <sumit.semwal@linaro.org>, Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+	Brian Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, 
+	"T.J. Mercier" <tjmercier@google.com>, Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, 
+	Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, 
+	Daniel Almeida <daniel.almeida@collabora.com>, Alice Ryhl <aliceryhl@google.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Yong Wu <yong.wu@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, 
+	Florent Tomasin <florent.tomasin@arm.com>
+Subject: Re: [PATCH 1/8] dma-heap: Add proper kref handling on dma-buf heaps
+Message-ID: <20260507-strict-raptor-of-glee-2fd0df@houat>
 References: <20260505140516.1372388-1-ketil.johnsen@arm.com>
- <20260505140516.1372388-7-ketil.johnsen@arm.com>
- <kC1hpRBAS8uGaw7vVFyW2g@collabora.com>
+ <20260505140516.1372388-2-ketil.johnsen@arm.com>
+ <20260505172048.1c48e030@fedora>
+ <20260505-spaniel-of-scientific-warranty-ca075e@houat>
+ <20260505184021.3676f9af@fedora>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="lt53jirsatoosmgv"
+Content-Disposition: inline
+In-Reply-To: <20260505184021.3676f9af@fedora>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260507_075457_556673_988B118E 
-X-CRM114-Status: GOOD (  19.38  )
+X-CRM114-CacheID: sfid-20260507_083304_164160_A296887E 
+X-CRM114-Status: GOOD (  45.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,152 +88,170 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wednesday, 6 May 2026 17:14:45 Central European Summer Time Nicolas Frat=
-taroli wrote:
-> On Tuesday, 5 May 2026 16:05:12 Central European Summer Time Ketil Johnse=
-n wrote:
-> > Currently the panthor_vm_lock_region() function will implicitly expand
-> > an already locked VM region. This can be problematic because the caller
-> > do not reliably know if it needs to call panthor_vm_unlock_region()
-> > or not.
+
+--lt53jirsatoosmgv
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 1/8] dma-heap: Add proper kref handling on dma-buf heaps
+MIME-Version: 1.0
+
+On Tue, May 05, 2026 at 06:40:21PM +0200, Boris Brezillon wrote:
+> On Tue, 5 May 2026 17:39:13 +0200
+> Maxime Ripard <mripard@kernel.org> wrote:
+>=20
+> > Hi Boris,
 > >=20
-> > Worth noting, there is currently no known issues with this as the code
-> > is written today.
+> > On Tue, May 05, 2026 at 05:20:48PM +0200, Boris Brezillon wrote:
+> > > Hi Ketil,
+> > >=20
+> > > On Tue,  5 May 2026 16:05:07 +0200
+> > > Ketil Johnsen <ketil.johnsen@arm.com> wrote:
+> > >  =20
+> > > > From: John Stultz <jstultz@google.com>
+> > > >=20
+> > > > Add proper reference counting on the dma_heap structure. While
+> > > > existing heaps are built-in, we may eventually have heaps loaded
+> > > > from modules, and we'll need to be able to properly handle the
+> > > > references to the heaps =20
+> > >=20
+> > > It's weird that this "heap as module" thing is mentioned here, but
+> > > actual robustness to make this safe is not added in the commit or any
+> > > of the following ones.
+> > >  =20
+> > > >=20
+> > > > Signed-off-by: John Stultz <jstultz@google.com>
+> > > > Signed-off-by: T.J. Mercier <tjmercier@google.com>
+> > > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> > > > [Yong: Just add comment for "minor" and "refcount"]
+> > > > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> > > > [Yunfei: Change reviewer's comments]
+> > > > Signed-off-by: Florent Tomasin <florent.tomasin@arm.com>
+> > > > [Florent: Rebase]
+> > > > Signed-off-by: Ketil Johnsen <ketil.johnsen@arm.com>
+> > > > [Ketil: Rebase]
+> > > > ---
+> > > >  drivers/dma-buf/dma-heap.c | 29 +++++++++++++++++++++++++++++
+> > > >  include/linux/dma-heap.h   |  2 ++
+> > > >  2 files changed, 31 insertions(+)
+> > > >=20
+> > > > diff --git a/drivers/dma-buf/dma-heap.c b/drivers/dma-buf/dma-heap.c
+> > > > index ac5f8685a6494..9fd365ddbd517 100644
+> > > > --- a/drivers/dma-buf/dma-heap.c
+> > > > +++ b/drivers/dma-buf/dma-heap.c
+> > > > @@ -12,6 +12,7 @@
+> > > >  #include <linux/dma-heap.h>
+> > > >  #include <linux/err.h>
+> > > >  #include <linux/export.h>
+> > > > +#include <linux/kref.h>
+> > > >  #include <linux/list.h>
+> > > >  #include <linux/nospec.h>
+> > > >  #include <linux/syscalls.h>
+> > > > @@ -31,6 +32,7 @@
+> > > >   * @heap_devt:		heap device node
+> > > >   * @list:		list head connecting to list of heaps
+> > > >   * @heap_cdev:		heap char device
+> > > > + * @refcount:		reference counter for this heap device
+> > > >   *
+> > > >   * Represents a heap of memory from which buffers can be made.
+> > > >   */
+> > > > @@ -41,6 +43,7 @@ struct dma_heap {
+> > > >  	dev_t heap_devt;
+> > > >  	struct list_head list;
+> > > >  	struct cdev heap_cdev;
+> > > > +	struct kref refcount;
+> > > >  };
+> > > > =20
+> > > >  static LIST_HEAD(heap_list);
+> > > > @@ -248,6 +251,7 @@ struct dma_heap *dma_heap_add(const struct dma_=
+heap_export_info *exp_info)
+> > > >  	if (!heap)
+> > > >  		return ERR_PTR(-ENOMEM);
+> > > > =20
+> > > > +	kref_init(&heap->refcount);
+> > > >  	heap->name =3D exp_info->name;
+> > > >  	heap->ops =3D exp_info->ops;
+> > > >  	heap->priv =3D exp_info->priv;
+> > > > @@ -313,6 +317,31 @@ struct dma_heap *dma_heap_add(const struct dma=
+_heap_export_info *exp_info)
+> > > >  }
+> > > >  EXPORT_SYMBOL_NS_GPL(dma_heap_add, "DMA_BUF_HEAP");
+> > > > =20
+> > > > +static void dma_heap_release(struct kref *ref)
+> > > > +{
+> > > > +	struct dma_heap *heap =3D container_of(ref, struct dma_heap, refc=
+ount);
+> > > > +	unsigned int minor =3D MINOR(heap->heap_devt);
+> > > > +
+> > > > +	mutex_lock(&heap_list_lock);
+> > > > +	list_del(&heap->list);
+> > > > +	mutex_unlock(&heap_list_lock);
+> > > > +
+> > > > +	device_destroy(dma_heap_class, heap->heap_devt);
+> > > > +	cdev_del(&heap->heap_cdev);
+> > > > +	xa_erase(&dma_heap_minors, minor);
+> > > > +
+> > > > +	kfree(heap); =20
+> > >=20
+> > > That's actually problematic, because cdev_del() doesn't guarantee that
+> > > all opened FDs have been closed [1], it just guarantees that no new o=
+nes
+> > > can materialize. In order to make that safe, we'd need a
+> > >=20
+> > > 1. kref_get_unless_zero() in dma_heap_open(), with proper locking aro=
+und
+> > >    the xa_load() to protect against the heap removal that's happening
+> > >    here
+> > > 2. a dma_heap_put() in a new dma_heap_close() implementation
+> > > 3. a guarantee that heap implementations won't go away until the last
+> > >    ref is dropped, which means ops and all the data needed for this h=
+eap
+> > >    to satisfy ioctl()s (and more generally every passed at
+> > >    dma_heap_add() time) have to stay valid until the last ref is
+> > >    dropped. Alternatively, we could restrict this only to in-flight
+> > >    ioctl()s, and have the ops replaced by some dummy ops using RCU or=
+ a
+> > >    rwlock. But I guess live dmabufs allocated on this heap have to
+> > >    retain the heap and its implementation anyway.
+> > >=20
+> > > For record, #3 is already not satisfied by the current tee_heap
+> > > implementation (tee_dma_heap objects can vanish before the dma_heap
+> > > object is gone). The other implementations seem to be fine because th=
+ey
+> > > are statically linked, and they either have exp_info.priv set to NULL,
+> > > or something that's never released. =20
 > >=20
-> > This change introduces panthor_vm_expand_region() which will only work
-> > if there is already a locked VM region. This again means that the
-> > original lock and unlock functions can work as a pair. This pairing is
-> > needed for subsequent protected memory changes.
+> > That statement won't hold for long, see:
+> > https://lore.kernel.org/r/20260427-dma-buf-heaps-as-modules-v5-0-b6f567=
+8feefc@kernel.org
 > >=20
-> > Signed-off-by: Ketil Johnsen <ketil.johnsen@arm.com>
-> > ---
-> >  drivers/gpu/drm/panthor/panthor_mmu.c | 69 +++++++++++++++++++--------
-> >  1 file changed, 50 insertions(+), 19 deletions(-)
+> > However, all upstream heaps can be loaded as module, but not unloaded.
+> > So once you get a reference to it, you can assume it will live forever.
+> > That's why we didn't merge that patch before, even though it was discus=
+sed:
 > >=20
+> > https://lore.kernel.org/all/CANDhNCqk9Uk4aXHhUsL4hR1GHNmWZnH3C9Np-A02wd=
+i+J3D7tA@mail.gmail.com/
 >=20
-> While trying this series, I attempted my usual
-> `modprobe -r panthor && modprobe panthor protected_heap_name=3Ddefault_cm=
-a_region`.
->=20
-> Unfortunately, it oopses when attempting to unmap the sg for a bo labeled
-> "FW section" on panthor module unload, and I bisected it to this patch.
+> Hm, not too sure that makes the tee_heap implementation sane WRT
+> tee_heap removal though, unless we have a guarantee that
+> tee_device_unregister() will never be called...
 
-Okay, so this one is due to the iomem access rework having landed
-in drm-misc-next already, but this series being based on something
-before that, so now all the new gpu_read(_.*)? and gpu_write.* calls
-pass a panthor_device to something that expects the iomem. Since the
-iomem uses void pointers, this wasn't caught by the compiler.
+I missed that part. You're totally right then :)
 
-So, no "real" bug here, just an incredible dice roll for luck from my side.
+Maxime
 
-Kind regards
-Nicolas Frattaroli
+--lt53jirsatoosmgv
+Content-Type: application/pgp-signature; name="signature.asc"
 
->=20
-> The oops:
->=20
-> [  598.515550] Unable to handle kernel paging request at virtual address =
-0000000000400267
-> [  598.516864] Mem abort info:
-> [  598.517676]   ESR =3D 0x0000000096000004
-> [  598.518560]   EC =3D 0x25: DABT (current EL), IL =3D 32 bits
-> [  598.520414]   SET =3D 0, FnV =3D 0
-> [  598.521275]   EA =3D 0, S1PTW =3D 0
-> [  598.522099]   FSC =3D 0x04: level 0 translation fault
-> [  598.523069] Data abort info:
-> [  598.524311]   ISV =3D 0, ISS =3D 0x00000004, ISS2 =3D 0x00000000
-> [  598.525566]   CM =3D 0, WnR =3D 0, TnD =3D 0, TagAccess =3D 0
-> [  598.526850]   GCS =3D 0, Overlay =3D 0, DirtyBit =3D 0, Xs =3D 0
-> [  598.527905] user pgtable: 4k pages, 48-bit VAs, pgdp=3D0000000104056000
-> [  598.529019] [0000000000400267] pgd=3D0000000000000000, p4d=3D000000000=
-0000000
-> [  598.530170] Internal error: Oops: 0000000096000004 [#1]  SMP
-> [  598.531158] Modules linked in: btusb btrtl btmtk btintel btbcm bluetoo=
-th ecdh_generic ecc kpp snd_soc_hdmi_codec cfg80211 r8169 rfkill_gpio pwm_f=
-an rfkill snd_soc_es8316 rtc_hym8563 rk805_pwrkey at24 fusb302 tcpm aux_hpd=
-_bridge display_connector snd_soc_simple_card phy_rockchip_samsung_hdptx ph=
-y_rockchip_usbdp rockchip_thermal typec phy_rockchip_naneng_combphy rockchi=
-p_saradc industrialio_triggered_buffer kfifo_buf rockchipdrm inno_hdmi dw_d=
-p hantro_vpu rockchip_vdec dw_mipi_dsi2 v4l2_jpeg v4l2_vp9 rockchip_rga dw_=
-mipi_dsi v4l2_h264 synopsys_hdmirx v4l2_dv_timings spi_rockchip_sfc videobu=
-f2_dma_contig videobuf2_dma_sg v4l2_mem2mem videobuf2_memops dw_hdmi_qp onb=
-oard_usb_dev analogix_dp videobuf2_v4l2 videobuf2_common snd_soc_rockchip_i=
-2s_tdm dw_hdmi videodev mc drm_display_helper nvme cec panthor(-) drm_gpuvm=
- drm_exec gpu_sched drm_dp_aux_bus drm_dma_helper drm_client_lib nvme_core =
-drm_kms_helper drm pci_endpoint_test backlight snd_soc_audio_graph_card snd=
-_soc_simple_card_utils fuse dm_mod
-> [  598.541237] CPU: 6 UID: 0 PID: 806 Comm: modprobe Not tainted 7.1.0-rc=
-2-00726-g8ab0a3092b56-dirty #2 PREEMPT
-> [  598.542733] Hardware name: Radxa ROCK 5T (DT)
-> [  598.543746] pstate: 80400009 (Nzcv daif +PAN -UAO -TCO -DIT -SSBS BTYP=
-E=3D--)
-> [  598.544991] pc : dma_unmap_sg_attrs (kernel/dma/mapping.c:0)
-> [  598.546021] lr : panthor_gem_free_object (include/linux/dma-mapping.h:=
-565 drivers/gpu/drm/panthor/panthor_gem.c:308 drivers/gpu/drm/panthor/panth=
-or_gem.c:469) panthor
-> [  598.547180] sp : ffff80008835bb90
-> [  598.548123] x29: ffff80008835bb90 x28: ffff00012610bf00 x27: 000000000=
-0000000
-> [  598.549412] x26: 0000000000000000 x25: 0000000000000000 x24: 000000000=
-0000000
-> [  598.550696] x23: ffff000127194600 x22: ffff0001271943d0 x21: ffff00011=
-8671000
-> [  598.551984] x20: ffff000127194200 x19: ffff000127194600 x18: 000000000=
-02ab980
-> [  598.553273] x17: 00000000002ab980 x16: ffffa39a6b372a04 x15: 000000000=
-0000000
-> [  598.554568] x14: 0000000000000010 x13: 0000000000000000 x12: 000000000=
-000003c
-> [  598.555864] x11: 0000000000000002 x10: ffff000100a5d000 x9 : ffff00011=
-8671000
-> [  598.557164] x8 : ffff000102f8b490 x7 : ffff000149569000 x6 : ffff00014=
-9569000
-> [  598.558461] x5 : ffff000100faa7e8 x4 : 0000000000000000 x3 : 000000000=
-0000000
-> [  598.559763] x2 : 0000000000000010 x1 : ffff000127194000 x0 : 000000000=
-040000f
-> [  598.561069] Call trace:
-> [  598.561961]  dma_unmap_sg_attrs (kernel/dma/mapping.c:0) (P)
-> [  598.563038] panthor_gem_free_object (include/linux/dma-mapping.h:565 d=
-rivers/gpu/drm/panthor/panthor_gem.c:308 drivers/gpu/drm/panthor/panthor_ge=
-m.c:469) panthor
-> [  598.564218] drm_gem_object_free (drivers/gpu/drm/drm_gem.c:1148) drm
-> [  598.565386] panthor_kernel_bo_destroy (include/linux/kref.h:65 include=
-/drm/drm_gem.h:565 include/drm/drm_gem.h:578 drivers/gpu/drm/panthor/pantho=
-r_gem.c:1317) panthor
-> [  598.566575] panthor_fw_unplug (drivers/gpu/drm/panthor/panthor_fw.c:13=
-06) panthor
-> [  598.567705] panthor_device_unplug (drivers/gpu/drm/panthor/panthor_dev=
-ice.c:103) panthor
-> [  598.568878] panthor_remove (drivers/gpu/drm/panthor/panthor_drv.c:1846=
-) panthor
-> [  598.569991]  platform_remove (drivers/base/platform.c:1435)
-> [  598.571029]  device_release_driver_internal (drivers/base/dd.c:619 dri=
-vers/base/dd.c:1352 drivers/base/dd.c:1375)
-> [  598.572209]  driver_detach (drivers/base/dd.c:1438)
-> [  598.573237]  bus_remove_driver (drivers/base/bus.c:825)
-> [  598.574304]  driver_unregister (drivers/base/driver.c:277)
-> [  598.575363]  platform_driver_unregister (drivers/base/platform.c:920)
-> [  598.576494] cleanup_module (drivers/gpu/drm/panthor/panthor_devfreq.c:=
-134) panthor
-> [  598.577617]  __arm64_sys_delete_module (kernel/module/main.c:863 kerne=
-l/module/main.c:804 kernel/module/main.c:804)
-> [  598.578751]  invoke_syscall (arch/arm64/kernel/syscall.c:35 arch/arm64=
-/kernel/syscall.c:49)
-> [  598.579794]  el0_svc_common (arch/arm64/kernel/syscall.c:121)
-> [  598.580842]  do_el0_svc (arch/arm64/kernel/syscall.c:140)
-> [  598.581862]  el0_svc (arch/arm64/kernel/entry-common.c:723)
-> [  598.582853]  el0t_64_sync_handler (arch/arm64/kernel/entry-common.c:74=
-2)
-> [  598.583949]  el0t_64_sync (arch/arm64/kernel/entry.S:594)
->=20
-> Kind regards,
-> Nicolas Frattaroli
->=20
->=20
->=20
+-----BEGIN PGP SIGNATURE-----
 
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCafywrAAKCRAnX84Zoj2+
+dlrEAYDUWefxt16Ub+Wp0zpIpxumXimJURzQDBuzgGyAiEJHfEPu5vzqZ+lW0o0v
+HuXvVd8BgN4T3DXXQhia3Am5Yv8L2DwsJgJ/x/u6CyeDO7mD4McOqe5R0yPZ9LZW
+06tk6Ye0qA==
+=poOT
+-----END PGP SIGNATURE-----
 
-
-
+--lt53jirsatoosmgv--
 
