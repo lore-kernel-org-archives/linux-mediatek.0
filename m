@@ -4,65 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A82E4CD3445
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 May 2026 17:54:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C1C9CD3445
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 May 2026 18:25:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=mOAxWxpUPy9FBXgfzjnGjbAnA9h9XMEoNIzyTeOB6zM=; b=vg3FVN6QYC/LIC
-	1mrPi1qc3IEfXCoZ9yV/tD8MWYGdPMMM9Ab+bcwk8RH0ZzJmZ3iuMrmxsdhKdNlsEyRtREiYGwtMJ
-	45cPK2d3KUOt1rjb9PWR9XyESpbXBahmjc9L3CWRVEGSORAeiNYl9hBhx3zhWnLcfRMbffZKcJAFK
-	BT5r3oJYixSpDDepAU4nlDlQ19NULaOJ/XXq4xNd9R7f3a/gWrxWQ+4hmi01ta3y0asZe7EEXZ2DG
-	BpTJ6nhNAbdnMvsm29zE0cG48ZsnjRuPktvteEHwgcwhlTBiPNWErt3TTR/KXUTnBbkg07WlqI1D5
-	xXiEnZjLW8JF3Fi+acHw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=cPj84Tu8BF6qy4RKMMsF+Hr7TXtFHQOOzHnyh0mLOaY=; b=YLN2cx9VYUhUUtKQ83sLn5CgS2
+	rCVp7jbxpVH/kMWKnV+cVxxj3cWgbl4RkEcTuOS2cID/3xw/w1kTN0FKGc+Eg+jP1/nhS+qo7Ouro
+	zB+6uZV7nOlutLmRTa+leua6wNXGPaaIEwSY6TrBQAQW6pC5TWCImyReQ5RJbTXt3K7iqAjA3PYrj
+	kYoPZ4aJglFS8qXCToTKEr1fbwYxLDD1LT068yfirM58CEA+ZfvPQhLnu+89TY7abt93MsFP0qB5v
+	68kEZAqnQB5gJe2dOI7lLOHTa50iQZKVYCdo54Ep5Sa5fObBwssJ1xro1Exchbm7XtFT+S+JDgRi6
+	5CywSWWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLPP3-00000007CUO-49gw;
-	Fri, 08 May 2026 17:54:21 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wLPsl-00000007Ftw-0tRN;
+	Fri, 08 May 2026 18:25:03 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLPP3-00000007CU9-0HEo
-	for linux-mediatek@lists.infradead.org;
-	Fri, 08 May 2026 17:54:21 +0000
+	id 1wLPsi-00000007FsU-2p0x;
+	Fri, 08 May 2026 18:25:01 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3E6F160052;
-	Fri,  8 May 2026 17:54:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C9552C2BCB0;
-	Fri,  8 May 2026 17:54:19 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id CB36543889;
+	Fri,  8 May 2026 18:24:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 70DADC2BCB0;
+	Fri,  8 May 2026 18:24:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778262860;
-	bh=kixTyVjo/edOBEApZc+Tf9KkN7fI8m9XCJYuC6DL0gY=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=fKmrLQ16eK05i/QO1VXuWsPYdtSj6bzom61rpm59pP+9WOgE7TX9jD9bCjBLqjpsW
-	 m1ud7CTnsuFwjZNdTwj+AOEzwngPrhIui1Sj5Gq6odROxCDgmPiiDfHf2IG6EYN6dU
-	 kS4N6Vn8A0wkPJeWPpJU6TLz5ztJpx1vb9azRtJ3nPBuioJmQc1pNiaDfkqKIPmy8r
-	 I+A+Y6Q/hPIXZYxe6RqWnJGnWGVyz1ay5XzMYixL/fQEdOIdnS3YegpX1aSa01jOQU
-	 gyXOM3rPVrAhjbGVaonlUeQu5VNAcyFxtR3f7bUC0tuoEwF7zlOhBjeGF6UYUm5S8A
-	 SP3gmi5aHiC7A==
-Date: Fri, 8 May 2026 12:54:18 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	s=k20201202; t=1778264699;
+	bh=+dDy4Sjqq5AY6pLl2Yy/ilVxUFJJMhwEepfe/mxYN+U=;
+	h=From:To:Cc:Subject:Date:From;
+	b=KZUOR7Ing3rdhsLuUrw4FcOylMyjfhSqv26DIBxKllJHtmrIAwFCX3cj2fQWSLciq
+	 2bUwnYamwoBe/M+kOxA3MHbmITsntF+1a3eY8qMmPOiFv950xhGGoBb1/eiuroSLG8
+	 q4YZTx2hxjIDZKYzfF9kvu3QVoVNITKVXkuxF41qCrB1Jy8QVlpWuDHbyzbWuYaugJ
+	 0ql5k38YgybsJPeUftnOPqIuN6qbR1r+laFaU//A6Sv+FSHSGND2Dk6eLju5Uxp/91
+	 CXfa1KdOWykUyMD0BTfHDpucFqUdfx8OjUuaOh50PCLK3JWYXyZ/Omk/n4SOoaTK4+
+	 NJwFQgPTDpLOQ==
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
-	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] dt-bindings: PCI: mediatek-gen3: Allow memory-region for
- restricted DMA buffer
-Message-ID: <20260508175418.GA97653@bhelgaas>
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Koro Chen <koro.chen@mediatek.com>,
+	Khushal Chitturi <khushalchitturi@gmail.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
+	linux-sound@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] ASoC; dt-bindings: mediatek,mt8173-rt5650-rt5514: Fix mediatek,audio-codec constraints
+Date: Fri,  8 May 2026 13:24:37 -0500
+Message-ID: <20260508182438.1757394-1-robh@kernel.org>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260508063633.3894348-1-wenst@chromium.org>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260508_112500_739655_D3EB010A 
+X-CRM114-Status: UNSURE (   8.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,54 +80,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 08, 2026 at 02:36:32PM +0800, Chen-Yu Tsai wrote:
-> On some SoCs without an IOMMU behind the PCIe controller, the PCIe
-> controller memory access could be limited to a small region by the
-> firmware configuring a memory protection unit. This memory region
-> must be assigned to the PCIe controller so that the OS knows to
-> use that region. Otherwise PCIe devices would not work properly.
-> 
-> Allow the memory-region property with one item pointing to a
-> restricted DMA buffer.
-> 
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
-> This patch compliments another patch that moved the memory-region from
-> the PCIe device to the PCIe controller [1].
-> 
-> [1] https://lore.kernel.org/all/20260430120725.241779-1-wenst@chromium.org/
-> 
->  Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> index 4db700fc36ba..4a9e41d01628 100644
-> --- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> @@ -115,6 +115,10 @@ properties:
->    power-domains:
->      maxItems: 1
->  
-> +  memory-region:
-> +    maxItems: 1
-> +    description: phandle to restricted DMA buffer
+A phandle-array is really a matrix and needs constraints on the number
+of elements for both the inner and outer dimensions. Add the missing
+inner constraints.
 
-I guess this is similar to
-https://lore.kernel.org/linux-pci/20250716053950.199079-1-huaqian.li@siemens.com/
-and uses
-https://github.com/devicetree-org/dt-schema/blob/main/dtschema/schemas/reserved-memory/shared-dma-pool.yaml?
+Fixes: 472d77bdc511 ("ASoC: dt-bindings: mediatek,mt8173-rt5650-rt5514: convert to DT schema")
+Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+---
+ .../bindings/sound/mediatek,mt8173-rt5650-rt5514.yaml           | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Looks like those keystone changes were never merged; I don't know what
-happened to them.  But it will be good if everybody does it the same
-way.
+diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8173-rt5650-rt5514.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8173-rt5650-rt5514.yaml
+index ed698c9ff42b..becc7a11f8dc 100644
+--- a/Documentation/devicetree/bindings/sound/mediatek,mt8173-rt5650-rt5514.yaml
++++ b/Documentation/devicetree/bindings/sound/mediatek,mt8173-rt5650-rt5514.yaml
+@@ -18,7 +18,9 @@ properties:
+     description: Phandles of rt5650 and rt5514 codecs
+     items:
+       - description: phandle of rt5650 codec
++        maxItems: 1
+       - description: phandle of rt5514 codec
++        maxItems: 1
+ 
+   mediatek,platform:
+     $ref: /schemas/types.yaml#/definitions/phandle
+-- 
+2.53.0
 
-I wish there were a simple way to grep for this restricted DMA
-concept.  Maybe there is and I just haven't found it :)
-
->    mediatek,pbus-csr:
->      $ref: /schemas/types.yaml#/definitions/phandle-array
->      items:
-> -- 
-> 2.54.0.563.g4f69b47b94-goog
-> 
 
