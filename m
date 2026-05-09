@@ -4,101 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BF91CD3447
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 May 2026 17:55:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAADECD3447
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 May 2026 19:09:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=CllBL8xoJh4IglhZocsMiJYl6zMjGoSZL3uJ5PhEPoU=; b=W7AqDcF5jqOU2O4+jI+1MAYm54
-	SWE6hIIx+i4ALtmZwR/4zBK3+bFEv6i5u5rM7PjbXdz0VWAA1g+WXYzgmzx7aIAhiDLs2PtW0fmTs
-	XdHHmuU4K5vkDvHNrLKtVsxtgf8cbEY38j78zN8okxENxe5A7Nsn8aU7I1ahv6G5iuogvWPXQS1sK
-	VGecyGe9tyMxvKIxhe+SXaZjbAyVQGCA8y+k+vr7LMC+OSkNcWNGKOOp92s12rA6oAu5cKp/pr/kv
-	Qs44u1MQiSQNUnUKIzetsYxcg0ecKZPKNiSum/HX4rBXl6RMhinNA2fVSNLear5QRpyCbssFBshTB
-	fZg7o6Ew==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=EKnlnckxkADslXtJokLa5AGNX78GYEKcN/BuvSjY7yo=; b=mApLsrKBo5cGp2
+	pRlk6jjmYG39tv84gnRHV/+ZtJxEPje8q+zU2yBBIKLhTEToO7IlRABc/RLMhQB/OPuRKUxSk2xs5
+	1H+79FHBOKykJrLyZndm5UdnB7dyM5pbE+l8RhF5Gb+YHwwlWfqr0QFLrId4ND5ajh0yCjYG0BryC
+	8tFHCm9yzj5HGkoBDE/12MhIRnHiqcHIXbYn3z0S5zGXvMMoIUyZkF4z7tnwrgAg8+j23Qx1dVqRm
+	QUXYl6Lq9WkNvkR07nHwS5fehJzkvDTYq5A5olGhHMLzS0fQEdxFMemTrSQWz00tvx/MlOUWlFdFO
+	cxCRWnHv2ra+bOZ+vjYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLltx-00000009NgP-2nbd;
-	Sat, 09 May 2026 17:55:45 +0000
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+	id 1wLn3l-00000009Unu-3hCi;
+	Sat, 09 May 2026 19:09:57 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLltv-00000009Nfc-0UJ5
-	for linux-mediatek@lists.infradead.org;
-	Sat, 09 May 2026 17:55:44 +0000
-Received: by mail-pj1-x1034.google.com with SMTP id 98e67ed59e1d1-3664df32e91so1549207a91.3
-        for <linux-mediatek@lists.infradead.org>; Sat, 09 May 2026 10:55:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1778349342; x=1778954142; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=CllBL8xoJh4IglhZocsMiJYl6zMjGoSZL3uJ5PhEPoU=;
-        b=J6A0pVaXEogiSS5qM1BYf3MjJD7vugIVnsBzJ06IX9g+uu0cCMMpzCnNv6d4ADFd0N
-         4G027IEW8sh6qBIjgJsKaOagxfOGV0mmanZBjb3+oGyKvzpOqRZiCNwFcrH4Ts8HQeop
-         vnMbJBPYEoIqRmn2d/l/lf9ajhbF8uqTrDS5YVE/lNYLZ+MrqtfqZWKkDeBhBKp/WNyY
-         nGnt02li7WG9368jVMrGJa1F67ddBy8bFgBpKh9rxAFE5Ks6PX4YxB2E/0TgIMKSZWn6
-         W4NAjqZWNEp9oChPKustgxY7dLDORIUY7PE8+GGwhYjunQdMwXYyttX/ULfw3S5YPZsq
-         fmHQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1778349342; x=1778954142;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=CllBL8xoJh4IglhZocsMiJYl6zMjGoSZL3uJ5PhEPoU=;
-        b=JjdTd1J6cKCM5APmd0I8sSL6C38SN+OkMvuoN/VEm/1ju1Y/sDvTnoCCdBbFuf9wcX
-         c/04qB6nWfS2nfeLXeekkS2TXEAM2aavLDTX4nS8imlXd43ebaTTjCZXc39viMiLGgOF
-         xx+NDBKuxG7mZEde2EN9A7yCYrL4TSyUU8yAUOIGdubiGvTkfsCVQ9PAjIJymFMMc9Md
-         wXBe0SjJ1ycRVgcBD+IDWJ1EEy0O0ERZluReBZI8f4Dn8OMsdHyBcQw4r++GXe3YsigQ
-         dy3f0ZoincnHwuI3gZXw4EoM/6LCPlYmyuETc7gMuTkTuP/Kp8ydrbvUI9iDc5aq0gUu
-         wpXQ==
-X-Forwarded-Encrypted: i=1; AFNElJ/zIdI5epL2Uw5mVLmbhOyH1vVX/VZdhqni6mL4c+SfBdlkqZanmkueekRTrhYo+7E0Co9gLbVSrfBkcPVO2g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwrMHhiXeznz73XZJyfkyxMdAGjegNNpUNOoSkZjSPNxSa3aOkQ
-	wXLuNXGBhlQTv1o/l4TNrzMVqsbinyn4xkgIWXkDGz4q34SCGPN0cQDO
-X-Gm-Gg: Acq92OFUr5DNx2Mukgg/f63rA659OV1w0W4yELAN92LTWih886iw1OxrlH4vUYYRVVR
-	u7IkIp9eRvH68lybMHH2AlJJl5me5z4E3h7zIR40gLu+4IlCwzSN+9hmAM1r+LUCngAmH7nvnYv
-	rjGQX1Y1xirhxsHXMFwxwkWhFSiW5fFz/kRGis5zg3GfCGVE6G6V4mAAiQ050S+QNuhjnrMTHZu
-	OwpGRVa4W+mNQsYfTaJs3abT6sE7IYNt6oQu9L31ifikZ84bT4AJYj3EuPCBVD7HRbdmHB8Nhiw
-	YBGjnzPiUlCGnSoGBuVzt5i22ovx4ovmx55u13knM+32cUr6U55y4WFaj0T1BHwwTddIRHpqEuK
-	PvTUqeLYv0GqxUHw4XBSLZRM2kLJbpRwgzVUK84iVY60mVLFtq1M6NzodLuiRjsYYEq9XqUmB5X
-	MwGkkzpTobViBmI2FJrPhRw64W4QcSBDX9OAayx1AiTgS4GcFnTVtx4VR1bH49O06hVdfSkMbiO
-	zxyFn+VE/3MHPPNROmrkkm6zFWjXQ==
-X-Received: by 2002:a17:90b:54cb:b0:366:5c38:fd61 with SMTP id 98e67ed59e1d1-367d46cf57bmr3438337a91.12.1778349341817;
-        Sat, 09 May 2026 10:55:41 -0700 (PDT)
-Received: from junjungu-PC.localdomain ([223.166.246.30])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-367d627bc2bsm2657564a91.7.2026.05.09.10.55.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 09 May 2026 10:55:41 -0700 (PDT)
-From: Felix Gu <ustc.gu@gmail.com>
-Date: Sun, 10 May 2026 01:55:37 +0800
-Subject: [PATCH] spi: mtk-snfi: Fix resource leak in
- mtk_snand_read_page_cache()
+	id 1wLn3g-00000009UkU-3GP4;
+	Sat, 09 May 2026 19:09:55 +0000
+Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
+	by mxout2.routing.net (Postfix) with ESMTP id AEA365FC5A;
+	Sat,  9 May 2026 19:09:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=routing; t=1778353786;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=EKnlnckxkADslXtJokLa5AGNX78GYEKcN/BuvSjY7yo=;
+	b=JIyIYh3D0cLYIYGhraKVBwFzRh30NYLao4sogDADXfU7YlttF96e8Omu2P7gRpxhDksry2
+	2GevANviVXcmwOO/KBtufa7gO9ogC8xErua3A2IaH6xZ5thuk48eZKxFK7AktD9h96gH6e
+	XHmy2V00CQMKy1sJxnyj05aN1GzYUOE=
+Received: from frank-u24.. (fttx-pool-217.61.152.172.bambit.de [217.61.152.172])
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 707611226E6;
+	Sat,  9 May 2026 19:09:46 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <linux@armlinux.org.uk>
+Subject: [net-next v8 0/3] Add RSS and LRO support
+Date: Sat,  9 May 2026 21:09:29 +0200
+Message-ID: <20260509190938.169290-1-linux@fw-web.de>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260510-snfi-v1-1-bc375cf1af8e@gmail.com>
-X-B4-Tracking: v=1; b=H4sIABh1/2kC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIzMDUwNL3eK8tEzdZIsUQ3MDU0NjSwtzJaDSgqLUtMwKsDHRsbW1AHZnNMF
- WAAAA
-X-Change-ID: 20260509-snfi-c8d170513987
-To: Mark Brown <broonie@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Chuanhong Guo <gch981213@gmail.com>
-Cc: linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Felix Gu <ustc.gu@gmail.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1778349338; l=1056;
- i=ustc.gu@gmail.com; h=from:subject:message-id;
- bh=lzDchxhHtPBQa1sKrWzU7ln4zgtB68T8z64OOY1Zf9A=;
- b=HbtX3JjNE9/jOKrWHby/HPxknGm2rdz0M2k5cyqeMlF6IqYdlnAEwyswtC2+TX2xR1+vNf7Yo
- wpuwsjCInqSCHzzwBS1Zt/2GOyefeCnYKyuDCkLjSjM0FwxSIRKaC6r
-X-Developer-Key: i=ustc.gu@gmail.com; a=ed25519;
- pk=fjUXwmjchVN7Ja6KGP55IXOzFeCl9edaHoQIEUA+/hw=
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260509_105543_193761_F88D5C64 
-X-CRM114-Status: GOOD (  11.39  )
+X-CRM114-CacheID: sfid-20260509_120953_163644_0F36A8C9 
+X-CRM114-Status: GOOD (  10.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,39 +72,77 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Mason Chang <mason-cw.chang@mediatek.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When DMA read times out in mtk_snand_read_page_cache(), the original code
-erroneously jumped to cleanup label which skips DMA unmapping and ECC
-disable, causing a resource leak.
+From: Frank Wunderlich <frank-w@public-files.de>
 
-Fixes: 764f1b748164 ("spi: add driver for MTK SPI NAND Flash Interface")
-Signed-off-by: Felix Gu <ustc.gu@gmail.com>
----
- drivers/spi/spi-mtk-snfi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+This series add RSS and LRO hardware acceleration for terminating
+traffic on MT798x.
 
-diff --git a/drivers/spi/spi-mtk-snfi.c b/drivers/spi/spi-mtk-snfi.c
-index e616e6800e92..6e96e50fedad 100644
---- a/drivers/spi/spi-mtk-snfi.c
-+++ b/drivers/spi/spi-mtk-snfi.c
-@@ -961,7 +961,7 @@ static int mtk_snand_read_page_cache(struct mtk_snand *snf,
- 		    &snf->op_done, usecs_to_jiffies(SNFI_POLL_INTERVAL))) {
- 		dev_err(snf->dev, "DMA timed out for reading from cache.\n");
- 		ret = -ETIMEDOUT;
--		goto cleanup;
-+		goto cleanup2;
- 	}
- 
- 	// Wait for BUS_SEC_CNTR returning expected value
+patches are upported from mtk SDK:
+- https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/refs/heads/master/master/files/target/linux/mediatek/patches-6.12/999-eth-08-mtk_eth_soc-add-register-definitions-for-rss-lro-reg.patch
+- https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/refs/heads/master/master/files/target/linux/mediatek/patches-6.12/999-eth-09-mtk_eth_soc-add-rss-support.patch
+- https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/refs/heads/master/master/files/target/linux/mediatek/patches-6.12/999-eth-10-mtk_eth_soc-add-hw-lro-support.patch
+with additional fixes
 
----
-base-commit: e98d21c170b01ddef366f023bbfcf6b31509fa83
-change-id: 20260509-snfi-c8d170513987
+changes:
+  v8:
+  - fix more sparse errors, should be all touched lines now
 
-Best regards,
+  v7:
+  - fix u32 vs. be32 reported by patchwork check
+  - add L4 PSH check
+    https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/7521c42b0bd5be20d52e20b110daea8c756fc069%5E%21/#F1
+  - Add HW LRO max 4-depth VLAN support including switch special tag.
+    https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/35490cec6a2e5982532935fb0a1c884f7c4efdb0%5E%21/#F2
+
+  v6:
+    - no RFC
+    - rebase on netnext (7.1-rc1)
+    - drop unused MTK_CTRL_DW0_SDL_MASK
+    - e33bd8dd7f1f ("net: mediatek: convert to use .get_rx_ring_count") moved
+      ETHTOOL_GRXRINGS handling from mtk_get_rxnfc to mtk_get_rx_ring_count
+      move changes to this new function too
+    - fix some Macro argument '...' may be better as '(...)' to avoid precedence issues
+  v5:
+    - fix too long lines after macro changes reported by checkpatch
+  v4:
+    - drop unrelated file
+    - rss-changes suggested by andrew
+    - fix MTK_HW_LRO_RING_NUM macro (add eth)
+    - fix MTK_LRO_CTRL_DW[123]_CFG (add reg_map param)
+    - fix MTK_RX_DONE_INT (add eth param)
+    - fix lro reverse christmas tree and LRO params suggested by andrew
+    - drop mtk_hwlro_stats_ebl and unused IS_HW_LRO_RING (only used in
+      properitary debugfs)
+  v3:
+    - readded the change dropped in v2 because it was a fix
+      for getting RSS working on mt7986
+    - changes requested by jakub
+    - reworked coverletter (dropped instructions for configuration)
+    - name all PDMA-IRQ the same way
+    - retested on
+      - BPI-R3/mt7986 (RSS needs to be enabled)
+      - BPI-R4/mt7988
+      - BPI-R64/mt7622 and BPI-R2/mt7623 for not breaking network functionality
+
+  v2:
+    - drop wrong change (MTK_CDMP_IG_CTRL is only netsys v1)
+    - Fix immutable string IRQ setup (thx to Emilia Schotte)
+    - drop links to 6.6 patches/commits in sdk in comments
+
+Mason Chang (3):
+  net: ethernet: mtk_eth_soc: Add register definitions for RSS and LRO
+  net: ethernet: mtk_eth_soc: Add RSS support
+  net: ethernet: mtk_eth_soc: Add LRO support
+
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 828 ++++++++++++++++----
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 177 +++--
+ 2 files changed, 792 insertions(+), 213 deletions(-)
+
 -- 
-Felix Gu <ustc.gu@gmail.com>
+2.43.0
 
 
