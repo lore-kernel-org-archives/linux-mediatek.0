@@ -4,71 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C7A7CD37AC
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 May 2026 01:46:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B5B3CD3447
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 May 2026 06:09:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wFqI/ZH5xbw0gTo8tzcSdZMlHs/RAGE4P4F0Pqymzuo=; b=ZV/I+yYJ7GgKGqzRwuVMYlmGQu
-	5qW9czp46WVfytA4vmD+sUULGC1OcZCZzG7oMJhWU+Vis4YaTjEj1Hl33DLc/cKFGyCbzJ5yfAQRT
-	lq0Jgen9RhZG4eZL+k91a6udFpiqZnnLVM2Iuvw+Dmsj5xZ/GoI5MBXOvlQZBQHRwHheL5jDZ5yV5
-	HOCkWZOKqHv9V6iA3eUnsUFj8nnVjKfWd001v6HzLsgzR5bMrni/uR97JiXeL6oM0NB2tw0eA04EY
-	4dgM0Xgqb8IfZXZNHsuRFunYED2rxkyuWOgdYXe4DiWb7rwXxZRvpZcSHIzuCz1gupnu43swDP+zT
-	8J/i0VnA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=7inpwn0HtKtqYpktRAtU9KUks5rNpZST1fRF96g/GZs=; b=4GPZdYaR775nvF
+	FIyhJKwRWc3V/a+eqr2wEgk+IKojoAnyz/0iBxJS01Gi2/hVRNec2S78rDYAhXH6HNpU7WCPKZV5s
+	HhC1m9HhJ1pLDyfZz4MrwZlBKGpe6QBoD5FoyC6LaL/pe9Fv7HHJOYebRusGG4OmBTL9T+jBc1jtj
+	8VBMRfyvK9cAvFai1w+q69kbE70L8Pa9Xk2gDwHXuikwaPPwVH1Axm5Y8Y1is1GlzZpNG/Ud5jdjQ
+	mgW0X1v6/giZ55OO6JJNEdvdWbe01367XA7Bi6xLzRZJm7ZY6eOvjAAkr3wIwizuRR6+V4WPklqn4
+	/Lx/8jRr2VMqFHORxkAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLWlt-00000007vnw-45tQ;
-	Sat, 09 May 2026 01:46:25 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wLasG-00000008Mkb-3mV3;
+	Sat, 09 May 2026 06:09:16 +0000
+Received: from mout.gmx.net ([212.227.15.19])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLWln-00000007vfe-1kwv;
-	Sat, 09 May 2026 01:46:20 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 23B9E43B9E;
-	Sat,  9 May 2026 01:46:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 62948C2BCB0;
-	Sat,  9 May 2026 01:46:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778291179;
-	bh=iGaG0hbnBggkXGo2+ZH9xqq0NqNOcHcRTvyvOIt57KY=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=FxwZ31Gn80QTNO5KvQSyIowUIEW715f7W3UyjCiV5yE7p+CyiOwdQ2GpW0wJrI0/h
-	 rxQg/D7TbOHiEbNOC6Qu0H3d/ZDacNYxEJgSIjR0QXya9BOdMq1WfUaI/53GVaxZLi
-	 UWHJFIo2FBZ04wDNf54HPaN+sWVHWomdt0i+RVpoq6dQueC0+O7Yz+IITB0f1HGM4j
-	 7RWqR1ptf0Y5T5oH2G9fDS9JVxt7mkZT8Kv6CxrXWoObvvrp51M8Jnb1KRg/LXU5/I
-	 7o4mPYK5b9pObYWUenYIsPRdMgoU6kQmiKU5yMQ6XagTCItgM5c8AOlCpJ6xw+OLBv
-	 Siq0QgLHUUYEw==
-From: Jakub Kicinski <kuba@kernel.org>
-To: lorenzo@kernel.org
-Cc: Jakub Kicinski <kuba@kernel.org>,
-	andrew+netdev@lunn.ch,
-	davem@davemloft.net,
-	edumazet@google.com,
-	pabeni@redhat.com,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	ansuelsmth@gmail.com,
-	benjamin.larsson@genexis.eu,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	netdev@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	madhur.agrawal@airoha.com
-Subject: Re: [PATCH net-next v4 10/10] net: airoha: Support multiple LAN/WAN interfaces for hw MAC address configuration
-Date: Fri,  8 May 2026 18:46:17 -0700
-Message-ID: <20260509014617.3558185-1-kuba@kernel.org>
-X-Mailer: git-send-email 2.54.0
-In-Reply-To: <20260507-airoha-eth-multi-serdes-v4-10-af613b61ae02@kernel.org>
-References: <20260507-airoha-eth-multi-serdes-v4-10-af613b61ae02@kernel.org>
+	id 1wLasD-00000008Mjk-1qvB;
+	Sat, 09 May 2026 06:09:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1778306926; x=1778911726; i=frank-w@public-files.de;
+	bh=7inpwn0HtKtqYpktRAtU9KUks5rNpZST1fRF96g/GZs=;
+	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
+	 References:Message-ID:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=lEQy6HL0oNWn1EB1BQHCtIXOrjFU0w9kg4Hms6OvXhyNILbltLlm+SIsNFc4qF84
+	 Ve3kspb9Itjk+NBgCqGnKUSLqE98im4IzBbs2Q5L1RTp6AQqE3SfGB38IY5m7E2hm
+	 SoG9Azc5uHeTUXRa32Zcgmag0Ph+EFugZRsMNVwkHRRna7U6X7MB/Mv3Dt6viMaMz
+	 fs8k+6PeBN5srYynKl9NVSRYcdx0UVZdSRTGKOYeLB+ZWpM7y9XkD5mCzLtdP67Di
+	 9Q9bd1KJ/cSkuOS5vchSqIRcguD6NjGXtV1NsY4Gam6NzkI75EUOCyjSjewIy2iBU
+	 4V+gOhK6B6yezBHdog==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from client.hidden.invalid by mail.gmx.net (mrgmx005
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1N3siA-1vLpGQ0oL2-00sLA3; Sat, 09
+ May 2026 08:08:46 +0200
+Date: Sat, 09 May 2026 08:08:32 +0200
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Jakub Kicinski <kuba@kernel.org>, Frank Wunderlich <linux@fw-web.de>
+CC: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Mason Chang <mason-cw.chang@mediatek.com>,
+ Daniel Golle <daniel@makrotopia.org>
+Subject: Re: [net-next v7 3/3] net: ethernet: mtk_eth_soc: Add LRO support
+User-Agent: K-9 Mail for Android
+In-Reply-To: <20260508153702.69b89021@kernel.org>
+References: <20260506192806.143725-1-linux@fw-web.de> <20260506192806.143725-4-linux@fw-web.de> <20260508153702.69b89021@kernel.org>
+Message-ID: <F846A09C-2976-45BA-82E1-43A72C61F06F@public-files.de>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:9Fw+uGzBVIce8BVQJfSzFIjv0sVC0ga0ESLDoMetxLliCW4iTv6
+ PMiDXJCRv8sx9oe98AiRrerjaW83pSBefZdVD1YnJuYQ0rYGYAUH1wmAWHIHPTFB81T1dnI
+ hYjGV51B/9gOJ3J90tCpDdoOMWR3l6L8zdeAXbgAuV0JAi2bMB2n4dO2DWbOPXAvRe0GCfx
+ G1dz000Mv33jnogCDmfwA==
+UI-OutboundReport: notjunk:1;M01:P0:yfrTgDzM90A=;mVGM7PZe/mCFeoOmxSTbdZVM8eV 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 NDtoGp8jTmrA3Jg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260508_184619_672858_66A770A1 
-X-CRM114-Status: GOOD (  25.59  )
+X-CRM114-CacheID: sfid-20260508_230913_858116_A330727B 
+X-CRM114-Status: UNSURE (   9.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,197 +87,31 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is an AI-generated review of your patch. The human sending this
-email has considered the AI review valid, or at least plausible.
----
-net: airoha: Support multiple LAN/WAN interfaces for hw MAC address configuration
+Am 9=2E Mai 2026 00:37:02 MESZ schrieb Jakub Kicinski <kuba@kernel=2Eorg>:
+>On Wed,  6 May 2026 21:28:03 +0200 Frank Wunderlich wrote:
+>> - fix u32 vs=2E be32 reported by patchwork check
 
-This patch extends airoha_set_macaddr() to derive REG_FE_MAC_LMIN and
-REG_FE_MAC_LMAX by iterating over all sibling LAN/WAN net_devices, and
-rejects addresses whose upper 3 bytes do not match the already-registered
-peers. airoha_dev_set_macaddr() is also changed to split eth_mac_addr()
-into eth_prepare_mac_addr_change() and eth_commit_mac_addr_change() around
-the hardware programming step.
+>Have you tested this? I still see an extra sparse warning
+>(install sparse and build with make C=3D1)
 
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-> index 8617dd4f7932..fbfefd0ec355 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -71,20 +71,67 @@ static void airoha_qdma_irq_disable(struct airoha_irq_bank *irq_bank,
->  	airoha_qdma_set_irqmask(irq_bank, index, mask, 0);
->  }
->  
-> -static void airoha_set_macaddr(struct airoha_gdm_dev *dev, const u8 *addr)
-> +static int airoha_set_macaddr(struct airoha_gdm_dev *dev, const u8 *addr)
->  {
->  	struct airoha_eth *eth = dev->eth;
-> -	u32 val, reg;
-> +	u8 ref_addr[ETH_ALEN] = {};
-> +	u32 reg, val, lmin, lmax;
-> +	int i;
-> +
-> +	lmin = (addr[3] << 16) | (addr[4] << 8) | addr[5];
-> +	lmax = lmin;
-> +
-> +	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
-> +		struct airoha_gdm_port *port = eth->ports[i];
-> +		int j;
-> +
-> +		if (!port)
-> +			continue;
-> +
-> +		for (j = 0; j < ARRAY_SIZE(port->devs); j++) {
-> +			struct airoha_gdm_dev *iter_dev;
-> +			struct net_device *netdev;
-> +
-> +			iter_dev = port->devs[j];
-> +			if (!iter_dev || iter_dev == dev)
-> +				continue;
-> +
-> +			if (airoha_is_lan_gdm_dev(iter_dev) !=
-> +			    airoha_is_lan_gdm_dev(dev))
-> +				continue;
-> +
-> +			netdev = iter_dev->dev;
-> +			if (netdev->reg_state != NETREG_REGISTERED)
-> +				continue;
-> +
-> +			ether_addr_copy(ref_addr, netdev->dev_addr);
-> +			val = (netdev->dev_addr[3] << 16) |
-> +			      (netdev->dev_addr[4] << 8) | netdev->dev_addr[5];
-> +			if (val < lmin)
-> +				lmin = val;
-> +			if (val > lmax)
-> +				lmax = val;
-> +		}
-> +	}
-> +
-> +	if (!is_zero_ether_addr(ref_addr) && memcmp(ref_addr, addr, 3)) {
-> +		/* According to the HW design, hw mac address MS bits
-> +		 * must be the same for each net_device with the same
-> +		 * LAN/WAN configuration.
-> +		 */
-> +		return -EINVAL;
-> +	}
+I only tested functionality as i had not figured
+ out how to reproduce
+these errors till v7 but already noticed that there are still some open=2E
+I had to self compile sparse and call like you mention=2E
+But I already prepare v8 where these are really fixed=2E
+I just testing 16bit versions of ntoh/hton vs beX_to_cpu=2E
 
-[Medium]
-The NETREG_REGISTERED filter here means the check only sees peers that
-have already completed register_netdev(). airoha_dev_init() is invoked
-as ndo_init from register_netdev() before dev->reg_state transitions
-to NETREG_REGISTERED, so the constraint is only enforced across
-already-registered siblings.
+Sorry for extra version here=2E
 
-When the device tree does not supply a mac-address property,
-airoha_alloc_gdm_device() falls back to eth_hw_addr_random() and each
-sibling gets an independently generated random MAC. With two or more
-LAN (or two or more WAN) net_devices going through this fallback, the
-second and later siblings' upper 3 bytes will almost always differ
-from the first, so airoha_set_macaddr() returns -EINVAL:
+>It'd probably be good to fix the pre-exisiting warnings as the first
+>patch in the series while at it=2E
 
-	if (!is_zero_ether_addr(ref_addr) && memcmp(ref_addr, addr, 3))
-		return -EINVAL;
+I send out v8 today=2E But good to know that no other parts
+need to be changed :)
 
-airoha_dev_init() now propagates that error, which fails
-register_netdev() and airoha_register_gdm_devices(), aborting probe.
-
-Before this patch the same configuration still came up (with the single
-REG_FE_{LAN,WAN}_MAC_H being last-writer-wins). Should the random
-fallback path derive sibling MACs from a shared base, or should the
-upper-3-bytes constraint only be enforced for user-triggered
-ndo_set_mac_address rather than for init-time programming?
-
->  
->  	reg = airoha_is_lan_gdm_dev(dev) ? REG_FE_LAN_MAC_H : REG_FE_WAN_MAC_H;
->  	val = (addr[0] << 16) | (addr[1] << 8) | addr[2];
->  	airoha_fe_wr(eth, reg, val);
->  
-> -	val = (addr[3] << 16) | (addr[4] << 8) | addr[5];
-> -	airoha_fe_wr(eth, REG_FE_MAC_LMIN(reg), val);
-> -	airoha_fe_wr(eth, REG_FE_MAC_LMAX(reg), val);
-> +	airoha_fe_wr(eth, REG_FE_MAC_LMIN(reg), lmin);
-> +	airoha_fe_wr(eth, REG_FE_MAC_LMAX(reg), lmax);
->  
->  	airoha_ppe_init_upd_mem(dev);
-> +
-> +	return 0;
->  }
->  
->  static void airoha_set_gdm_port_fwd_cfg(struct airoha_eth *eth, u32 addr,
-> @@ -1792,13 +1839,18 @@ static int airoha_dev_stop(struct net_device *netdev)
->  static int airoha_dev_set_macaddr(struct net_device *netdev, void *p)
->  {
->  	struct airoha_gdm_dev *dev = netdev_priv(netdev);
-> +	struct sockaddr *addr = p;
->  	int err;
->  
-> -	err = eth_mac_addr(netdev, p);
-> +	err = eth_prepare_mac_addr_change(netdev, p);
->  	if (err)
->  		return err;
->  
-> -	airoha_set_macaddr(dev, netdev->dev_addr);
-> +	err = airoha_set_macaddr(dev, addr->sa_data);
-> +	if (err)
-> +		return err;
-> +
-> +	eth_commit_mac_addr_change(netdev, p);
->  
->  	return 0;
->  }
-
-[High]
-After this reordering, does airoha_ppe_init_upd_mem() end up
-programming the PPE update memory with the old MAC rather than the new
-one?
-
-eth_prepare_mac_addr_change() only validates the sockaddr and does not
-touch netdev->dev_addr; the actual write to netdev->dev_addr happens in
-eth_commit_mac_addr_change() via eth_hw_addr_set():
-
-net/ethernet/eth.c:eth_prepare_mac_addr_change() {
-	if (!(dev->priv_flags & IFF_LIVE_ADDR_CHANGE) && netif_running(dev))
-		return -EBUSY;
-	if (!is_valid_ether_addr(addr->sa_data))
-		return -EADDRNOTAVAIL;
-	return 0;
-}
-
-net/ethernet/eth.c:eth_commit_mac_addr_change() {
-	eth_hw_addr_set(dev, addr->sa_data);
-}
-
-airoha_set_macaddr() is invoked between those two, so when it reaches
-airoha_ppe_init_upd_mem(dev) the commit has not yet run. That helper
-reads netdev->dev_addr directly rather than using the addr argument:
-
-drivers/net/ethernet/airoha/airoha_ppe.c:airoha_ppe_init_upd_mem() {
-	const u8 *addr = netdev->dev_addr;
-	...
-	val = (addr[2] << 24) | (addr[3] << 16) | (addr[4] << 8) | addr[5];
-	airoha_fe_wr(eth, REG_UPDMEM_DATA(0), val);
-	...
-	val = (addr[0] << 8) | addr[1];
-	airoha_fe_wr(eth, REG_UPDMEM_DATA(0), val);
-	...
-}
-
-So the FE registers REG_FE_{LAN,WAN}_MAC_H / REG_FE_MAC_LMIN /
-REG_FE_MAC_LMAX are written from the new addr parameter, but the PPE
-REG_UPDMEM_DATA/REG_UPDMEM_CTRL entries are written from the still-old
-netdev->dev_addr.
-
-Previously eth_mac_addr() (prepare + commit combined) ran first, so
-netdev->dev_addr was the new MAC by the time airoha_set_macaddr() and
-airoha_ppe_init_upd_mem() ran, keeping the two blocks in sync.
-
-Would it be cleaner to either pass addr through to
-airoha_ppe_init_upd_mem(), or invoke eth_commit_mac_addr_change() before
-airoha_set_macaddr() (with a rollback path if the hardware programming
-fails)?
-
-> @@ -1903,6 +1955,7 @@ static int airoha_dev_init(struct net_device *netdev)
-[ ... ]
+regards Frank
 
