@@ -4,67 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B2DBCD343F
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 May 2026 13:08:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EE46CD3447
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 May 2026 16:26:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=roviyF+BYGD9DTaZSkqetdNf9KJGskeTAkxCnljeeF0=; b=EYeeBXkH65Tovs7jsjWDOxpVwr
-	jLtKN2PLEwfwy7ARzWRcjdZPtYBlCOU0/toUzpkZGjVdBhWNzcs6kSETUvakdfbXUsNzEtdZhCTVK
-	7ysyc8Z1/E6ee/aTI9NcrK3Lm8ZBvt1j4b3cQGtzieCZOodVFkKefW2plzAXC0pC24rNsNFHqQ3fo
-	p3t6Ver9l3DU+Zp9mw57LzWdMm6miPhqBzteziu1KYygCCNNRbumTJwXvWJMYmXvztD8vUAwU3t5z
-	M3h0/isSpjISUFsa5qhMYf8yhjQ/b1EQi6WPyjMsdZ7OYxhs5CdcC8EA/y6d8IFH4oebQN2cimY1b
-	XzPNbW4g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Yolk7fPVSsosJ3+V1HG/g+3kb5mEYUGoiAatqyto7So=; b=KrB1HOaJoAkiQq65uDisKiDNoD
+	4yjXbxt5mb2AFrtJ1cNXXvZzT7r8R/+T/vjtr2z5Qk7wCw8qAxgnKYi+uX1XWjzH0hSU61zlcYn1r
+	TBEPY738sMz1SYAAMCL4Z7x/gNeutGwScJOxjLCM5AMdIV2JErjHQJ1KIcRAKY8zuJfan8vKd8VBY
+	Dv1xjJ61u+DkCMjA8npyRihJDFWQXj6Z5+PoEDDXeJz3nf2a4McGfluCKsTPOrHp8el5arbjhY+Fr
+	hfGPRs78WRG0N6Lq6mO8pERCD+c47ddOoGk19iQnzM0AxFHl/6LofjFm9LXFvnfLzRovTvX4ns7eN
+	c/MmY6yA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLhPq-00000008zmA-0pHK;
-	Sat, 09 May 2026 13:08:22 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wLkVF-00000009G2u-2x87;
+	Sat, 09 May 2026 16:26:09 +0000
+Received: from m16.mail.163.com ([220.197.31.2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLhPo-00000008zlO-1rOQ;
-	Sat, 09 May 2026 13:08:20 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E02BF60120;
-	Sat,  9 May 2026 13:08:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4289DC2BCB2;
-	Sat,  9 May 2026 13:08:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778332099;
-	bh=BnXg7oDTKGqcvqPrItjaoCjleu1iH4Sghq/W+/2oNE0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=j7Rzhe0FpJSKpeKTuYfkF0Xw9kOvuVZlJlx3x33ZsadDuO8HdWWlunAgb7wc94EnR
-	 F6J04L49kAFzfKpAlcztxNrAslS4FtAw9U5uLel5LD8giYwTw34or3D8NYukmJPKnf
-	 EQPk9MP0blnwafKSG8fG25DfZ9lM1okwabjOB7EKB9CGhp57WBSMCWFU1tGnqDd0zC
-	 oncvDbNBlzsCOVv/542TJxF0FInWCM6ZxMpHTgnRNd33PWjTF0noOvJ89PPzM5zhM5
-	 J6Ly3gE8UcP4L7Hg85unMrKvmWRBYTaO/0usBQq5ZYMUQ2iUFUBjGU+l/WMhGDl7TG
-	 NqVJT7AfNKDFw==
-Date: Sat, 9 May 2026 15:08:17 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: Christian Marangi <ansuelsmth@gmail.com>,
-	Benjamin Larsson <benjamin.larsson@genexis.eu>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH net-next v4 05/10] net: airoha: Move qos_sq_bmap in
- airoha_qdma struct
-Message-ID: <af8xwXjDQ1vHz0dd@lore-desk>
-References: <20260507-airoha-eth-multi-serdes-v4-0-af613b61ae02@kernel.org>
- <20260507-airoha-eth-multi-serdes-v4-5-af613b61ae02@kernel.org>
+	id 1wLkV9-00000009G1q-0VFU;
+	Sat, 09 May 2026 16:26:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Message-ID:Date:MIME-Version:Subject:To:From:
+	Content-Type; bh=Yolk7fPVSsosJ3+V1HG/g+3kb5mEYUGoiAatqyto7So=;
+	b=QNwnNxprHHJUW4PbRByVgKv8H/imUdQGoJjvkX/EUA+Eo4EOgoN3fXXG/YFjUD
+	RCZw7p7hHvAFaD7xgsZA0twZgcRMC0emc+V0FzVJidZqk4Clo93Xmta7ExoLcWQ1
+	mMZ1Fx0EyXnaAa2I8HKBo3TN9DpBamsrne72PUdUBxsnk=
+Received: from [192.168.50.71] (unknown [])
+	by gzga-smtp-mtada-g0-1 (Coremail) with SMTP id _____wBnQtTpX_9pIRSmAQ--.47405S2;
+	Sun, 10 May 2026 00:25:14 +0800 (CST)
+Message-ID: <4f063568-0f5c-42ad-acc5-2d6ca5b546ad@163.com>
+Date: Sun, 10 May 2026 00:25:13 +0800
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="dHDRJGPLDrB0Lpqz"
-Content-Disposition: inline
-In-Reply-To: <20260507-airoha-eth-multi-serdes-v4-5-af613b61ae02@kernel.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 8/8] PCI: rzg3s-host: Add 100 ms delay after link
+ training
+To: Claudiu Beznea <claudiu.beznea@tuxon.dev>, bhelgaas@google.com,
+ lpieralisi@kernel.org, kwilczynski@kernel.org, mani@kernel.org,
+ vigneshr@ti.com, jingoohan1@gmail.com, thomas.petazzoni@bootlin.com,
+ pali@kernel.org, ryder.lee@mediatek.com, jianjun.wang@mediatek.com,
+ claudiu.beznea.uj@bp.renesas.com, mpillai@cadence.com
+Cc: robh@kernel.org, s-vadapalli@ti.com, linux-omap@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+References: <20260506152346.166056-1-18255117159@163.com>
+ <20260506152346.166056-9-18255117159@163.com>
+ <bd0f4589-b586-4f01-b12c-6ae5c19ec21b@tuxon.dev>
+Content-Language: en-US
+From: Hans Zhang <18255117159@163.com>
+In-Reply-To: <bd0f4589-b586-4f01-b12c-6ae5c19ec21b@tuxon.dev>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: _____wBnQtTpX_9pIRSmAQ--.47405S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7AFWxAF13Cr4xKF48ArW8Zwb_yoW8Wry3pF
+	ZYv3WjyF1UXr4Y9a17X3Z8uFyYq3Z8A34UJ3s3Wa47ZwnxuFZrWF98uF4fJ3Z2grZ7XrW3
+	t3W5t3WUGa15AFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UEPfQUUUUU=
+X-Originating-IP: [140.206.53.66]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbC7ApsEGn-X+qp5wAA33
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260509_092603_526952_0C908907 
+X-CRM114-Status: GOOD (  14.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,156 +83,52 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---dHDRJGPLDrB0Lpqz
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On May 07, Lorenzo Bianconi wrote:
-> Since now multiple net_devices connected to different QDMA blocks can
-> share the same GDM port, qos_sq_bmap field can be overwritten with the
-> configuration obtained from a net_device connected to a different QDMA
-> block. In order to fix the issue move qos_sq_bmap field from
-> airoha_gdm_port struct to airoha_qdma one.
->=20
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  drivers/net/ethernet/airoha/airoha_eth.c | 20 ++++++++++----------
->  drivers/net/ethernet/airoha/airoha_eth.h |  4 ++--
->  2 files changed, 12 insertions(+), 12 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
-net/airoha/airoha_eth.c
-> index 080705e2f58d..69a4c2e0d58b 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -2600,7 +2600,7 @@ static int airoha_tc_htb_alloc_leaf_queue(struct ne=
-t_device *netdev,
->  	u32 rate =3D div_u64(opt->rate, 1000) << 3; /* kbps */
->  	int err, num_tx_queues =3D netdev->real_num_tx_queues;
->  	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
-> -	struct airoha_gdm_port *port =3D dev->port;
-> +	struct airoha_qdma *qdma =3D dev->qdma;
-> =20
->  	if (opt->parent_classid !=3D TC_HTB_CLASSID_ROOT) {
->  		NL_SET_ERR_MSG_MOD(opt->extack, "invalid parent classid");
-> @@ -2627,7 +2627,7 @@ static int airoha_tc_htb_alloc_leaf_queue(struct ne=
-t_device *netdev,
->  		return err;
->  	}
-> =20
-> -	set_bit(channel, port->qos_sq_bmap);
-> +	set_bit(channel, qdma->qos_sq_bmap);
->  	opt->qid =3D AIROHA_NUM_TX_RING + channel;
-> =20
->  	return 0;
-> @@ -2811,11 +2811,11 @@ static int airoha_dev_setup_tc_block(struct net_d=
-evice *dev,
->  static void airoha_tc_remove_htb_queue(struct net_device *netdev, int qu=
-eue)
->  {
->  	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
-> -	struct airoha_gdm_port *port =3D dev->port;
-> +	struct airoha_qdma *qdma =3D dev->qdma;
-> =20
->  	netif_set_real_num_tx_queues(netdev, netdev->real_num_tx_queues - 1);
->  	airoha_qdma_set_tx_rate_limit(netdev, queue + 1, 0, 0);
-> -	clear_bit(queue, port->qos_sq_bmap);
-> +	clear_bit(queue, qdma->qos_sq_bmap);
->  }
-> =20
->  static int airoha_tc_htb_delete_leaf_queue(struct net_device *netdev,
-> @@ -2823,9 +2823,9 @@ static int airoha_tc_htb_delete_leaf_queue(struct n=
-et_device *netdev,
->  {
->  	u32 channel =3D TC_H_MIN(opt->classid) % AIROHA_NUM_QOS_CHANNELS;
->  	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
-> -	struct airoha_gdm_port *port =3D dev->port;
-> +	struct airoha_qdma *qdma =3D dev->qdma;
-> =20
-> -	if (!test_bit(channel, port->qos_sq_bmap)) {
-> +	if (!test_bit(channel, qdma->qos_sq_bmap)) {
->  		NL_SET_ERR_MSG_MOD(opt->extack, "invalid queue id");
->  		return -EINVAL;
->  	}
-> @@ -2838,10 +2838,10 @@ static int airoha_tc_htb_delete_leaf_queue(struct=
- net_device *netdev,
->  static int airoha_tc_htb_destroy(struct net_device *netdev)
->  {
->  	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
-> -	struct airoha_gdm_port *port =3D dev->port;
-> +	struct airoha_qdma *qdma =3D dev->qdma;
->  	int q;
-> =20
-> -	for_each_set_bit(q, port->qos_sq_bmap, AIROHA_NUM_QOS_CHANNELS)
-> +	for_each_set_bit(q, qdma->qos_sq_bmap, AIROHA_NUM_QOS_CHANNELS)
->  		airoha_tc_remove_htb_queue(netdev, q);
-> =20
->  	return 0;
-> @@ -2852,9 +2852,9 @@ static int airoha_tc_get_htb_get_leaf_queue(struct =
-net_device *netdev,
->  {
->  	u32 channel =3D TC_H_MIN(opt->classid) % AIROHA_NUM_QOS_CHANNELS;
->  	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
-> -	struct airoha_gdm_port *port =3D dev->port;
-> +	struct airoha_qdma *qdma =3D dev->qdma;
-> =20
-> -	if (!test_bit(channel, port->qos_sq_bmap)) {
-> +	if (!test_bit(channel, qdma->qos_sq_bmap)) {
->  		NL_SET_ERR_MSG_MOD(opt->extack, "invalid queue id");
->  		return -EINVAL;
->  	}
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
-net/airoha/airoha_eth.h
-> index 18a9dfd75d44..34f1fef51640 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.h
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
-> @@ -531,6 +531,8 @@ struct airoha_qdma {
-> =20
->  	struct airoha_queue q_tx[AIROHA_NUM_TX_RING];
->  	struct airoha_queue q_rx[AIROHA_NUM_RX_RING];
-> +
-> +	DECLARE_BITMAP(qos_sq_bmap, AIROHA_NUM_QOS_CHANNELS);
->  };
-> =20
->  struct airoha_gdm_dev {
-> @@ -547,8 +549,6 @@ struct airoha_gdm_port {
-> =20
->  	struct airoha_hw_stats stats;
-> =20
-> -	DECLARE_BITMAP(qos_sq_bmap, AIROHA_NUM_QOS_CHANNELS);
-> -
->  	/* qos stats counters */
->  	u64 cpu_tx_packets;
->  	u64 fwd_tx_packets;
->=20
-> --=20
-> 2.54.0
->=20
+On 5/7/26 00:52, Claudiu Beznea wrote:
+> Hi, Hans,
+> 
+> On 5/6/26 18:23, Hans Zhang wrote:
+>> The Renesas RZ/G3S PCIe host driver currently does not enforce the
+>> mandatory 100 ms delay after link training completes for speeds > 5.0 
+>> GT/s,
+>> required by PCIe r6.0 sec 6.6.1.
+>>
+>> The driver already has a 'max_link_speed' field (derived from the device
+>> tree). Add a call to pcie_wait_after_link_train() in
+>> rzg3s_pcie_host_init() after reading the link status, ensuring that the
+>> delay is applied before any Configuration Request is sent downstream.
+>>
+>> Signed-off-by: Hans Zhang <18255117159@163.com>
+>> ---
+>>   drivers/pci/controller/pcie-rzg3s-host.c | 2 ++
+>>   1 file changed, 2 insertions(+)
+>>
+>> diff --git a/drivers/pci/controller/pcie-rzg3s-host.c b/drivers/pci/ 
+>> controller/pcie-rzg3s-host.c
+>> index d86e7516dcc2..6ab59c5464cf 100644
+>> --- a/drivers/pci/controller/pcie-rzg3s-host.c
+>> +++ b/drivers/pci/controller/pcie-rzg3s-host.c
+>> @@ -1390,6 +1390,8 @@ static int rzg3s_pcie_host_init(struct 
+>> rzg3s_pcie_host *host)
+>>       val = readl_relaxed(host->axi + RZG3S_PCI_PCSTAT2);
+>>       dev_info(host->dev, "PCIe link status [0x%x]\n", val);
+>> +    pcie_wait_after_link_train(host->max_link_speed);
+> 
+> There is an msleep(PCIE_RESET_CONFIG_WAIT_MS) after 
+> rzg3s_pcie_set_max_link_speed() call. Shouldn't that msleep() call be 
+> replaced with your pcie_wait_after_link_train() ?
 
-commenting on sashiko report:
-https://sashiko.dev/#/patchset/20260507-airoha-eth-multi-serdes-v4-0-af613b=
-61ae02%40kernel.org
+Hi Claudiu,
 
-- Following up on the real_num_tx_queues logic above, does blindly decremen=
-ting
-  this by 1 dynamically shrink the queue range and instantly invalidate oth=
-er
-  active queues whose qid might now fall out of bounds?
-  - This issue has not been introduced by this series and I will fix it wit=
-h a
-    separated patch
+Sorry for the late reply. Thank you for pointing it out. It will be 
+replaced.
 
---dHDRJGPLDrB0Lpqz
-Content-Type: application/pgp-signature; name=signature.asc
+Best regards,
+Hans
 
------BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaf8xwQAKCRA6cBh0uS2t
-rJdFAP4uuTScfjUpWbrBtp7/7/oQvyzht9ogH7+h+si7G95UhgEAx5Y05bUEo5tp
-Gk8fZnS6hq3dyXyA6blQHy2/5uS2YgE=
-=vwfA
------END PGP SIGNATURE-----
+> 
+> Thank you,
+> Claudiu
 
---dHDRJGPLDrB0Lpqz--
 
