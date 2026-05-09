@@ -4,42 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAADECD3447
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 May 2026 19:09:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08407CD3445
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 May 2026 19:09:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=EKnlnckxkADslXtJokLa5AGNX78GYEKcN/BuvSjY7yo=; b=mApLsrKBo5cGp2
-	pRlk6jjmYG39tv84gnRHV/+ZtJxEPje8q+zU2yBBIKLhTEToO7IlRABc/RLMhQB/OPuRKUxSk2xs5
-	1H+79FHBOKykJrLyZndm5UdnB7dyM5pbE+l8RhF5Gb+YHwwlWfqr0QFLrId4ND5ajh0yCjYG0BryC
-	8tFHCm9yzj5HGkoBDE/12MhIRnHiqcHIXbYn3z0S5zGXvMMoIUyZkF4z7tnwrgAg8+j23Qx1dVqRm
-	QUXYl6Lq9WkNvkR07nHwS5fehJzkvDTYq5A5olGhHMLzS0fQEdxFMemTrSQWz00tvx/MlOUWlFdFO
-	cxCRWnHv2ra+bOZ+vjYQ==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=pQOo6i5L4AWlWVMmz8x/g6xSz6/gFVtG0BN+RVJuYk8=; b=wl/BB3q1sX7uzH
+	HUZitjb4Va+PWaYSQNPjrITc7uKtJMo+KX7KgtV+qZPbfMgXkCsvOSCxvLEWfFN9u2hth9KIedqgR
+	OEpVKYK97lThGPsvZOgLIADTKlaNXmVbheViqGCSq/C3kJYHT3YXbe5GTsNrLR0yt14yprnhKGJPO
+	w9//Bl8dQ+Ft9RBS9v9oC50EbeqFVgEK1l1PIQJFTBsr2IKor/s0+hbYUcS8x8VDaF0D1GT9YxbdO
+	26TLqoJhnUov6xYEqgRicFaOiI7UBhJLRm6qTHu8GPTV9vK25/3Hdw0aZ/Hq31/1SLyo6dUECfzn8
+	RF1DbHh3CjKaxpzB+24g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLn3l-00000009Unu-3hCi;
-	Sat, 09 May 2026 19:09:57 +0000
-Received: from mxout2.routing.net ([2a03:2900:1:a::b])
+	id 1wLn3k-00000009UmV-0JtP;
+	Sat, 09 May 2026 19:09:56 +0000
+Received: from mxout4.routing.net ([2a03:2900:1:a::9])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLn3g-00000009UkU-3GP4;
-	Sat, 09 May 2026 19:09:55 +0000
+	id 1wLn3g-00000009UkV-3HhT;
+	Sat, 09 May 2026 19:09:54 +0000
 Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout2.routing.net (Postfix) with ESMTP id AEA365FC5A;
+	by mxout4.routing.net (Postfix) with ESMTP id EE10A100824;
 	Sat,  9 May 2026 19:09:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=routing; t=1778353786;
+	s=routing; t=1778353787;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=EKnlnckxkADslXtJokLa5AGNX78GYEKcN/BuvSjY7yo=;
-	b=JIyIYh3D0cLYIYGhraKVBwFzRh30NYLao4sogDADXfU7YlttF96e8Omu2P7gRpxhDksry2
-	2GevANviVXcmwOO/KBtufa7gO9ogC8xErua3A2IaH6xZ5thuk48eZKxFK7AktD9h96gH6e
-	XHmy2V00CQMKy1sJxnyj05aN1GzYUOE=
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=pQOo6i5L4AWlWVMmz8x/g6xSz6/gFVtG0BN+RVJuYk8=;
+	b=JNGmpuwEV9Mg+FDXbQ/EUqQeuaJjNR9uQ9d92VPzzr1lQLx2ebuAPftiQq7725x92Pc3WI
+	kaRMRvX3UQhb36v3uHUoPwZpeTsv0g3lUDxL/0OrVYreeW1WO7+Xz9m8NcJziKo6b2t+D6
+	hTfbSE3EifM84F7jPE6iM/Dd/5UUJW0=
 Received: from frank-u24.. (fttx-pool-217.61.152.172.bambit.de [217.61.152.172])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 707611226E6;
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id B2F011226F2;
 	Sat,  9 May 2026 19:09:46 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: Felix Fietkau <nbd@nbd.name>,
@@ -52,15 +53,17 @@ To: Felix Fietkau <nbd@nbd.name>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Russell King <linux@armlinux.org.uk>
-Subject: [net-next v8 0/3] Add RSS and LRO support
-Date: Sat,  9 May 2026 21:09:29 +0200
-Message-ID: <20260509190938.169290-1-linux@fw-web.de>
+Subject: [net-next v8 1/3] net: ethernet: mtk_eth_soc: Add register definitions for RSS and LRO
+Date: Sat,  9 May 2026 21:09:30 +0200
+Message-ID: <20260509190938.169290-2-linux@fw-web.de>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260509190938.169290-1-linux@fw-web.de>
+References: <20260509190938.169290-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260509_120953_163644_0F36A8C9 
-X-CRM114-Status: GOOD (  10.83  )
+X-CRM114-CacheID: sfid-20260509_120953_155823_74B99A0E 
+X-CRM114-Status: GOOD (  10.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,72 +79,127 @@ Cc: Mason Chang <mason-cw.chang@mediatek.com>, netdev@vger.kernel.org, linux-ker
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+From: Mason Chang <mason-cw.chang@mediatek.com>
 
-This series add RSS and LRO hardware acceleration for terminating
-traffic on MT798x.
+Add definitions for Receive Side Scaling and Large Receive Offload support.
 
-patches are upported from mtk SDK:
-- https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/refs/heads/master/master/files/target/linux/mediatek/patches-6.12/999-eth-08-mtk_eth_soc-add-register-definitions-for-rss-lro-reg.patch
-- https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/refs/heads/master/master/files/target/linux/mediatek/patches-6.12/999-eth-09-mtk_eth_soc-add-rss-support.patch
-- https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/refs/heads/master/master/files/target/linux/mediatek/patches-6.12/999-eth-10-mtk_eth_soc-add-hw-lro-support.patch
-with additional fixes
+Signed-off-by: Mason Chang <mason-cw.chang@mediatek.com>
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 23 +++++++++++++++
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 32 +++++++++++++++------
+ 2 files changed, 46 insertions(+), 9 deletions(-)
 
-changes:
-  v8:
-  - fix more sparse errors, should be all touched lines now
-
-  v7:
-  - fix u32 vs. be32 reported by patchwork check
-  - add L4 PSH check
-    https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/7521c42b0bd5be20d52e20b110daea8c756fc069%5E%21/#F1
-  - Add HW LRO max 4-depth VLAN support including switch special tag.
-    https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/35490cec6a2e5982532935fb0a1c884f7c4efdb0%5E%21/#F2
-
-  v6:
-    - no RFC
-    - rebase on netnext (7.1-rc1)
-    - drop unused MTK_CTRL_DW0_SDL_MASK
-    - e33bd8dd7f1f ("net: mediatek: convert to use .get_rx_ring_count") moved
-      ETHTOOL_GRXRINGS handling from mtk_get_rxnfc to mtk_get_rx_ring_count
-      move changes to this new function too
-    - fix some Macro argument '...' may be better as '(...)' to avoid precedence issues
-  v5:
-    - fix too long lines after macro changes reported by checkpatch
-  v4:
-    - drop unrelated file
-    - rss-changes suggested by andrew
-    - fix MTK_HW_LRO_RING_NUM macro (add eth)
-    - fix MTK_LRO_CTRL_DW[123]_CFG (add reg_map param)
-    - fix MTK_RX_DONE_INT (add eth param)
-    - fix lro reverse christmas tree and LRO params suggested by andrew
-    - drop mtk_hwlro_stats_ebl and unused IS_HW_LRO_RING (only used in
-      properitary debugfs)
-  v3:
-    - readded the change dropped in v2 because it was a fix
-      for getting RSS working on mt7986
-    - changes requested by jakub
-    - reworked coverletter (dropped instructions for configuration)
-    - name all PDMA-IRQ the same way
-    - retested on
-      - BPI-R3/mt7986 (RSS needs to be enabled)
-      - BPI-R4/mt7988
-      - BPI-R64/mt7622 and BPI-R2/mt7623 for not breaking network functionality
-
-  v2:
-    - drop wrong change (MTK_CDMP_IG_CTRL is only netsys v1)
-    - Fix immutable string IRQ setup (thx to Emilia Schotte)
-    - drop links to 6.6 patches/commits in sdk in comments
-
-Mason Chang (3):
-  net: ethernet: mtk_eth_soc: Add register definitions for RSS and LRO
-  net: ethernet: mtk_eth_soc: Add RSS support
-  net: ethernet: mtk_eth_soc: Add LRO support
-
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 828 ++++++++++++++++----
- drivers/net/ethernet/mediatek/mtk_eth_soc.h | 177 +++--
- 2 files changed, 792 insertions(+), 213 deletions(-)
-
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 8d225bc9f063..d25e0b96c26e 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -50,13 +50,18 @@ static const struct mtk_reg_map mtk_reg_map = {
+ 		.rx_ptr		= 0x0900,
+ 		.rx_cnt_cfg	= 0x0904,
+ 		.pcrx_ptr	= 0x0908,
++		.lro_ctrl_dw0   = 0x0980,
+ 		.glo_cfg	= 0x0a04,
+ 		.rst_idx	= 0x0a08,
+ 		.delay_irq	= 0x0a0c,
+ 		.irq_status	= 0x0a20,
+ 		.irq_mask	= 0x0a28,
+ 		.adma_rx_dbg0	= 0x0a38,
++		.lro_alt_score_delta	= 0x0a4c,
+ 		.int_grp	= 0x0a50,
++		.lro_rx1_dly_int	= 0x0a70,
++		.lro_ring_dip_dw0	= 0x0b04,
++		.lro_ring_ctrl_dw1	= 0x0b28,
+ 	},
+ 	.qdma = {
+ 		.qtx_cfg	= 0x1800,
+@@ -113,6 +118,7 @@ static const struct mtk_reg_map mt7986_reg_map = {
+ 	.tx_irq_mask		= 0x461c,
+ 	.tx_irq_status		= 0x4618,
+ 	.pdma = {
++		.rss_glo_cfg    = 0x2800,
+ 		.rx_ptr		= 0x4100,
+ 		.rx_cnt_cfg	= 0x4104,
+ 		.pcrx_ptr	= 0x4108,
+@@ -123,6 +129,12 @@ static const struct mtk_reg_map mt7986_reg_map = {
+ 		.irq_mask	= 0x4228,
+ 		.adma_rx_dbg0	= 0x4238,
+ 		.int_grp	= 0x4250,
++		.int_grp3	= 0x422c,
++		.lro_ctrl_dw0	= 0x4180,
++		.lro_alt_score_delta	= 0x424c,
++		.lro_rx1_dly_int	= 0x4270,
++		.lro_ring_dip_dw0	= 0x4304,
++		.lro_ring_ctrl_dw1	= 0x4328,
+ 	},
+ 	.qdma = {
+ 		.qtx_cfg	= 0x4400,
+@@ -170,10 +182,21 @@ static const struct mtk_reg_map mt7988_reg_map = {
+ 		.glo_cfg	= 0x6a04,
+ 		.rst_idx	= 0x6a08,
+ 		.delay_irq	= 0x6a0c,
++		.rx_cfg		= 0x6a10,
+ 		.irq_status	= 0x6a20,
+ 		.irq_mask	= 0x6a28,
+ 		.adma_rx_dbg0	= 0x6a38,
+ 		.int_grp	= 0x6a50,
++		.int_grp3	= 0x6a58,
++		.tx_delay_irq	= 0x6ab0,
++		.rx_delay_irq	= 0x6ac0,
++		.lro_ctrl_dw0	= 0x6c08,
++		.lro_alt_score_delta	= 0x6c1c,
++		.lro_ring_dip_dw0	= 0x6c14,
++		.lro_ring_ctrl_dw1	= 0x6c38,
++		.lro_alt_dbg	= 0x6c40,
++		.lro_alt_dbg_data	= 0x6c44,
++		.rss_glo_cfg	= 0x7000,
+ 	},
+ 	.qdma = {
+ 		.qtx_cfg	= 0x4400,
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index 0168e2fbc619..334625814b97 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -1143,16 +1143,30 @@ struct mtk_reg_map {
+ 	u32	tx_irq_mask;
+ 	u32	tx_irq_status;
+ 	struct {
+-		u32	rx_ptr;		/* rx base pointer */
+-		u32	rx_cnt_cfg;	/* rx max count configuration */
+-		u32	pcrx_ptr;	/* rx cpu pointer */
+-		u32	glo_cfg;	/* global configuration */
+-		u32	rst_idx;	/* reset index */
+-		u32	delay_irq;	/* delay interrupt */
+-		u32	irq_status;	/* interrupt status */
+-		u32	irq_mask;	/* interrupt mask */
++		u32	rx_ptr;			/* rx base pointer */
++		u32	rx_cnt_cfg;		/* rx max count configuration */
++		u32	pcrx_ptr;		/* rx cpu pointer */
++		u32	pdrx_ptr;		/* rx dma pointer */
++		u32	glo_cfg;		/* global configuration */
++		u32	rst_idx;		/* reset index */
++		u32	rx_cfg;			/* rx dma configuration */
++		u32	delay_irq;		/* delay interrupt */
++		u32	irq_status;		/* interrupt status */
++		u32	irq_mask;		/* interrupt mask */
+ 		u32	adma_rx_dbg0;
+-		u32	int_grp;
++		u32	int_grp;		/* interrupt group1 */
++		u32	int_grp3;		/* interrupt group3 */
++		u32	tx_delay_irq;		/* tx delay interrupt */
++		u32	rx_delay_irq;		/* rx delay interrupt */
++		u32	lro_ctrl_dw0;		/* lro ctrl dword0 */
++		u32	lro_alt_score_delta;	/* lro auto-learn score delta */
++		u32	lro_rx1_dly_int;	/* lro rx ring1 delay interrupt */
++		u32	lro_ring_dip_dw0;	/* lro ring dip dword0 */
++		u32	lro_ring_ctrl_dw1;	/* lro ring ctrl dword1 */
++		u32	lro_alt_dbg;		/* lro auto-learn debug */
++		u32	lro_alt_dbg_data;	/* lro auto-learn debug data */
++		u32	rss_glo_cfg;		/* rss global configuration */
++
+ 	} pdma;
+ 	struct {
+ 		u32	qtx_cfg;	/* tx queue configuration */
 -- 
 2.43.0
 
