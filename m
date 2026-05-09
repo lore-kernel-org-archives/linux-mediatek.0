@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE3BFCD37B2
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 May 2026 08:26:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51592CD343F
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 May 2026 09:00:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=34cesB0P22WcI/oVO6Og7H3r+yfNQHtFVNEEqxhn6sk=; b=ye2QYOMgSLhPXVmduaH5Or1Vah
-	yEjWzDeskxl6F3rDgQPfHqtB/2KXwsiC9yP4HtPPjm9LNb8FatGS+r96IFmfHc80sn8BT5xOhhExW
-	oziwGourfjZ+tTOus5Q1WFCVhr1WTq787KkJRZWgnfdPiNjr2aDviZd97NJKSwU1EKsC2BLQBnLj5
-	deE6w/wHMfcbz9Vyh7UI3r8hQOpLxcs9yYXrNYJqYSqMAwq2CxsWWowAt/zTgQwxa0IfXhNOaDkO8
-	SfiGgWi5YzZV8xwg9LorxcO91FzU/zSYEstYnXNhq8ulzRAvBjdsezwBeBONcYae+7BvlNGz7iOP1
-	ILJqmKqg==;
+	bh=i6GQT7Ejkt7iBdRGPtp3Ii2iOHNhQCuXivgT3YxHTso=; b=fBgmCJMqwrjCxq3BajqSZy9Lxx
+	p7hEmfOfVRI6kWfAXnHtraH4OOV+K3yriWUVIqT4JeoeqdbwwGZJMkcjfE3do+aSbQ5Q0RaDHd3l9
+	Nx0ljxNMKlvMVh+8Zqlb27CedSJX/ESGUe46YyP9IHCjaZpnBzI33y1GfevdjLoD8IkT0EIGvifke
+	EXpe2ejiOmTv25H2Kqn2OaoSqhUWYfw1mymxVzj317O1lTdUDovd8tS0/YPjoui/5Aa2NfeqfEjnT
+	9T375ufaTycUcgdT5bjD4gd5rC/fOfxg/yx2Ukpf0cSjmeZfgMFeE1QJ+YFwBESzw4Toeyy0Wlkz+
+	yVzqBsmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLd0a-00000008ZXQ-121W;
-	Sat, 09 May 2026 08:26:00 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wLdY5-00000008dZT-0g4m;
+	Sat, 09 May 2026 09:00:37 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLd0Z-00000008ZX1-0Mly;
-	Sat, 09 May 2026 08:25:59 +0000
+	id 1wLdY3-00000008dZ4-2TDk;
+	Sat, 09 May 2026 09:00:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id CB3B26024D;
-	Sat,  9 May 2026 08:25:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 077A5C2BCB4;
-	Sat,  9 May 2026 08:25:56 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 546F560008;
+	Sat,  9 May 2026 09:00:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87068C2BCB2;
+	Sat,  9 May 2026 09:00:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778315157;
-	bh=nczlNiIr/A9xdNyg6rE5uVSARRuTIZ7Uz1A5NFRANqE=;
+	s=k20201202; t=1778317233;
+	bh=ZqLpz2CFj28iASBq5rq8tyYLR7o5ybdmwFhd94Td2m0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=eCVVtO4GspLXm5oU2Y+5HmrgHaQiFURcpPBaQjKOGDVaLDRBN27A8bkvOo394mwtJ
-	 a6liRN/2eMOSZd7Df3DCnUreka/54xDgLu7tAQgtk9B3j//rIFq6oyH9gspoGn2BdC
-	 MWSo54itWTgPWgCNMmXHNez2IsZKTgvMY2K7hvh83lhaXIPQYBu91IFSyluwh+luiD
-	 +ZPIxUoKXYry1c6j30Ut5bhLHkeOmIxbPdhf7cuJXv11GTHNAN6rza+tR2/rC5ABwB
-	 v3TZ0LerSeoUsT4CB9hSHcMcH8CghGTX/VJ1QsgxDqrat8iP7iKHoHUf0G+xw9/n3p
-	 kHIu7Om+b2lTg==
-Date: Sat, 9 May 2026 10:25:54 +0200
+	b=pP5r8Bhpm0NTMhVIzUfWOtGIwxDRr+p9wyNO5ZIeT0iScG9QjezvbYUzRJIH6hos/
+	 LV1CTwl0sCAFeVQudLmrYvT+gMk1zNxdf+dq12q0Kdw26VkxWuaru4xA0u65jLr4ps
+	 2rtxmqu1gQZpgHQ/zkgGJvGZOJ8O/zpJz1L3UeLs1H0wIPeKLe3V5v0kAigf+/D3V6
+	 S72mUlJbtwzA9rnCzqnkmcRT9AtoxXiwEjFX1M8Igj1wiPHkijfBahVrAfAL6pH3AQ
+	 nSZHmF1177Rk6g5rX9IFvJG3I2qbw7K6KUDSbV3fAABWfQWFhMoJ1uU0pCy2VBj2G2
+	 XJsSFDSNoBGYA==
+Date: Sat, 9 May 2026 11:00:30 +0200
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: Jakub Kicinski <kuba@kernel.org>
 Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
@@ -50,16 +50,16 @@ Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
 	benjamin.larsson@genexis.eu, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
 	devicetree@vger.kernel.org, madhur.agrawal@airoha.com
-Subject: Re: [PATCH net-next v4 07/10] net: airoha: Support multiple
- net_devices for a single FE GDM port
-Message-ID: <af7vkpjEY5FhlEyc@lore-desk>
-References: <20260507-airoha-eth-multi-serdes-v4-7-af613b61ae02@kernel.org>
- <20260509014611.3558060-1-kuba@kernel.org>
+Subject: Re: [PATCH net-next v4 08/10] net: airoha: Do not stop GDM port if
+ it is shared
+Message-ID: <af73rqYK1xCL-XsK@lore-desk>
+References: <20260507-airoha-eth-multi-serdes-v4-8-af613b61ae02@kernel.org>
+ <20260509014613.3558087-1-kuba@kernel.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="YnCVD7Lr1XicTVN0"
+	protocol="application/pgp-signature"; boundary="Lk/TFdVeNBlgNVPK"
 Content-Disposition: inline
-In-Reply-To: <20260509014611.3558060-1-kuba@kernel.org>
+In-Reply-To: <20260509014613.3558087-1-kuba@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,7 +75,7 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---YnCVD7Lr1XicTVN0
+--Lk/TFdVeNBlgNVPK
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
@@ -83,173 +83,176 @@ Content-Transfer-Encoding: quoted-printable
 > This is an AI-generated review of your patch. The human sending this
 > email has considered the AI review valid, or at least plausible.
 > ---
-> net: airoha: Support multiple net_devices for a single FE GDM port
+> net: airoha: Do not stop GDM port if it is shared
 >=20
-> This commit introduces support for multiple net_devices connected to the
-> same Frame Engine (FE) GDM port (GDM3 or GDM4) via an external hardware
-> arbiter on EN7581 or AN7583 SoCs, and adds a get_dev_from_sport callback
-> to differentiate between the net_devices attached to each port.
+> This patch adds a per-port users refcount so the GDM forward configuration
+> is only reset to FE_PSE_PORT_DROP when the last netdev attached to the
+> shared GDM port stops, and it adjusts the MTU/length register updates to
+> cope with the shared case.
 >=20
 > > diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/eth=
 ernet/airoha/airoha_eth.c
-> > index 786bc677af3c..0253919714e0 100644
+> > index 0253919714e0..1c4927c1aeb0 100644
 > > --- a/drivers/net/ethernet/airoha/airoha_eth.c
 > > +++ b/drivers/net/ethernet/airoha/airoha_eth.c
->=20
-> [ ... ]
->=20
-> > @@ -3188,14 +3257,23 @@ static int airoha_probe(struct platform_device =
-*pdev)
+> > @@ -1714,8 +1714,8 @@ static int airoha_dev_open(struct net_device *net=
+dev)
+> >  	int err, len =3D ETH_HLEN + netdev->mtu + ETH_FCS_LEN;
+> >  	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
+> >  	struct airoha_gdm_port *port =3D dev->port;
+> > +	u32 cur_len, pse_port =3D FE_PSE_PORT_PPE1;
+> >  	struct airoha_qdma *qdma =3D dev->qdma;
+> > -	u32 pse_port =3D FE_PSE_PORT_PPE1;
 > > =20
-> >  	for (i =3D 0; i < ARRAY_SIZE(eth->ports); i++) {
-> >  		struct airoha_gdm_port *port =3D eth->ports[i];
-> > -		struct airoha_gdm_dev *dev;
-> > +		int j;
+> >  	netif_tx_start_all_queues(netdev);
+> >  	err =3D airoha_set_vip_for_gdm_port(dev, true);
+> > @@ -1729,10 +1729,14 @@ static int airoha_dev_open(struct net_device *n=
+etdev)
+> >  		airoha_fe_clear(qdma->eth, REG_GDM_INGRESS_CFG(port->id),
+> >  				GDM_STAG_EN_MASK);
 > > =20
-> >  		if (!port)
-> >  			continue;
-> > =20
-> > -		dev =3D port->dev;
-> > -		if (dev && dev->dev->reg_state =3D=3D NETREG_REGISTERED)
-> > -			unregister_netdev(dev->dev);
-> > +		for (j =3D 0; j < ARRAY_SIZE(port->devs); j++) {
-> > +			struct airoha_gdm_dev *dev =3D port->devs[j];
-> > +			struct net_device *netdev;
-> > +
-> > +			if (!dev)
-> > +				continue;
-> > +
-> > +			netdev =3D dev->dev;
-> > +			of_node_put(netdev->dev.of_node);
-> > +			if (netdev->reg_state =3D=3D NETREG_REGISTERED)
-> > +				unregister_netdev(netdev);
-> > +		}
-> >  		airoha_metadata_dst_free(port);
-> >  	}
-> >  	airoha_hw_cleanup(eth);
+> > -	airoha_fe_rmw(qdma->eth, REG_GDM_LEN_CFG(port->id),
+> > -		      GDM_SHORT_LEN_MASK | GDM_LONG_LEN_MASK,
+> > -		      FIELD_PREP(GDM_SHORT_LEN_MASK, 60) |
+> > -		      FIELD_PREP(GDM_LONG_LEN_MASK, len));
+> > +	cur_len =3D airoha_fe_get(qdma->eth, REG_GDM_LEN_CFG(port->id),
+> > +				GDM_LONG_LEN_MASK);
+> > +	if (!atomic_read(&port->users) || len > cur_len)
+> > +		airoha_fe_rmw(qdma->eth, REG_GDM_LEN_CFG(port->id),
+> > +			      GDM_SHORT_LEN_MASK | GDM_LONG_LEN_MASK,
+> > +			      FIELD_PREP(GDM_SHORT_LEN_MASK, 60) |
+> > +			      FIELD_PREP(GDM_LONG_LEN_MASK, len));
+> > +	atomic_inc(&port->users);
 >=20
 > [Medium]
-> Is the ordering of of_node_put() and unregister_netdev() here correct?
+> When a second netdev opens with a larger MTU, this unconditionally
+> widens GDM_LONG_LEN_MASK for the already-running sibling that has a
+> smaller MTU:
 >=20
-> airoha_alloc_gdm_device() now does:
+> 	if (!atomic_read(&port->users) || len > cur_len)
+> 		airoha_fe_rmw(qdma->eth, REG_GDM_LEN_CFG(port->id),
+> 			      GDM_SHORT_LEN_MASK | GDM_LONG_LEN_MASK,
+> 			      FIELD_PREP(GDM_SHORT_LEN_MASK, 60) |
+> 			      FIELD_PREP(GDM_LONG_LEN_MASK, len));
 >=20
-> 	netdev->dev.of_node =3D of_node_get(np);
->=20
-> so the netdev holds its own reference to the of_node for its entire
-> registered lifetime. In this error unwind the of_node_put() runs before
-> unregister_netdev(), and netdev->dev.of_node is not cleared, so any
-> subsequent access to netdev->dev.of_node during unregistration (netdev
-> notifiers, sysfs, overlay-aware code) would be looking at a node whose
-> reference count has already been dropped.
->=20
-> Other drivers (e.g., drivers/net/ethernet/hisilicon/hns/hns_enet.c in
-> hns_nic_dev_remove()) put the node only after unregister_netdev().
->=20
-> Would swapping the order to call unregister_netdev() first, then
-> of_node_put(), be more appropriate here?
+> Meanwhile airoha_dev_change_mtu() rejects shrinks (len < cur_len) with
+> -EBUSY when the port is shared. Is this asymmetry intentional?
 
-ack, I will fix it in v5.
+This is done intentionally since we do not want to break traffic of already
+running net_device if we want to increase the MTU on a sibling net_device.
 
 >=20
-> > @@ -3216,14 +3294,22 @@ static void airoha_remove(struct platform_devic=
-e *pdev)
+> With the new policy the hardware long-length ends up as the maximum of
+> the two MTUs, so the smaller-MTU sibling silently accepts frames larger
+> than its advertised MTU at the MAC level. Should opens that would
+> increase the shared length also be gated (symmetric policy), or should
+> the commit message and a comment document the chosen ceiling/floor
+> behaviour?
+
+I will add a comment in the code in v5.
+
+>=20
 > > =20
-> >  	for (i =3D 0; i < ARRAY_SIZE(eth->ports); i++) {
-> >  		struct airoha_gdm_port *port =3D eth->ports[i];
-> > -		struct airoha_gdm_dev *dev;
-> > +		int j;
+> >  	airoha_qdma_set(qdma, REG_QDMA_GLOBAL_CFG,
+> >  			GLOBAL_CFG_TX_DMA_EN_MASK |
+> > @@ -1762,8 +1766,12 @@ static int airoha_dev_stop(struct net_device *ne=
+tdev)
+> >  	for (i =3D 0; i < netdev->num_tx_queues; i++)
+> >  		netdev_tx_reset_subqueue(netdev, i);
 > > =20
-> >  		if (!port)
-> >  			continue;
+> > -	airoha_set_gdm_port_fwd_cfg(qdma->eth, REG_GDM_FWD_CFG(port->id),
+> > -				    FE_PSE_PORT_DROP);
+> > +	if (atomic_dec_and_test(&port->users)) {
+> > +		airoha_set_vip_for_gdm_port(dev, false);
+> > +		airoha_set_gdm_port_fwd_cfg(qdma->eth,
+> > +					    REG_GDM_FWD_CFG(port->id),
+> > +					    FE_PSE_PORT_DROP);
+> > +	}
+>=20
+> [Low]
+> Is the airoha_set_vip_for_gdm_port(dev, false) call inside the
+> atomic_dec_and_test() block intentional?
+>=20
+> Looking at airoha_dev_stop() as a whole, the same call is already made
+> unconditionally a few lines above:
+>=20
+> 	netif_tx_disable(netdev);
+> 	airoha_set_vip_for_gdm_port(dev, false);
+> 	for (i =3D 0; i < netdev->num_tx_queues; i++)
+> 		netdev_tx_reset_subqueue(netdev, i);
+>=20
+> 	if (atomic_dec_and_test(&port->users)) {
+> 		airoha_set_vip_for_gdm_port(dev, false);
+> 		...
+> 	}
+>=20
+> Since get_vip_port() derives the bit mask per-(port, dev->nbq) and
+> airoha_fe_clear() of already-cleared bits is a no-op, the second call
+> looks like dead code today. The commit log only mentions the
+> FE_PSE_PORT_DROP gating, not VIP handling. Should the duplicate be
+> dropped in v2?
+
+ack, I will fix in v5.
+
+>=20
 > > =20
-> > -		dev =3D port->dev;
-> > -		if (dev)
-> > -			unregister_netdev(dev->dev);
-> > +		for (j =3D 0; j < ARRAY_SIZE(port->devs); j++) {
-> > +			struct airoha_gdm_dev *dev =3D port->devs[j];
-> > +			struct net_device *netdev;
+> >  	if (atomic_dec_and_test(&qdma->users)) {
+> >  		airoha_qdma_clear(qdma, REG_QDMA_GLOBAL_CFG,
+> > @@ -1915,10 +1923,22 @@ static void airoha_dev_get_stats64(struct net_d=
+evice *netdev,
+> >  static int airoha_dev_change_mtu(struct net_device *netdev, int mtu)
+> >  {
+> >  	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
+> > +	u32 cur_len, len =3D ETH_HLEN + mtu + ETH_FCS_LEN;
+> >  	struct airoha_gdm_port *port =3D dev->port;
+> > -	u32 len =3D ETH_HLEN + mtu + ETH_FCS_LEN;
+> >  	struct airoha_eth *eth =3D dev->eth;
+> > =20
+> > +	cur_len =3D airoha_fe_get(eth, REG_GDM_LEN_CFG(port->id),
+> > +				GDM_LONG_LEN_MASK);
+> > +	if (len < cur_len) {
+> > +		u8 port_refcnt =3D atomic_read(&port->users);
 > > +
-> > +			if (!dev)
-> > +				continue;
+> > +		/* We can decrease the device MTU just if the GDM port is
+> > +		 * not shared or if the other device is not running.
+> > +		 */
+> > +		if (port_refcnt > 1 || (port_refcnt && !netif_running(netdev)))
+> > +			return -EBUSY;
+> > +	}
 > > +
-> > +			netdev =3D dev->dev;
-> > +			of_node_put(netdev->dev.of_node);
-> > +			unregister_netdev(netdev);
-> > +		}
-> >  		airoha_metadata_dst_free(port);
-> >  	}
-> >  	airoha_hw_cleanup(eth);
 >=20
-> [Medium]
-> Same question in airoha_remove(): the of_node_put() fires before
-> unregister_netdev(), while netdev->dev.of_node is still assigned. Would
-> this be safer with the unregister first and the put afterwards?
+> [Low]
+> Why is port_refcnt typed as u8 here when atomic_read() returns int?
+>=20
+> 	u8 port_refcnt =3D atomic_read(&port->users);
+>=20
+> With AIROHA_MAX_NUM_GDM_DEVS currently 2 this cannot overflow, but a
+> future bump of AIROHA_MAX_NUM_GDM_DEVS, or a refcount leak, that pushed
+> port->users to 256 would wrap to 0 and quietly bypass both the
+> port_refcnt > 1 and port_refcnt && !netif_running(netdev) checks,
+> permitting MTU shrinks that are meant to be rejected. Would using int
+> here (the type atomic_read() returns) be preferable?
 
-ack, I will fix it in v5.
-
->=20
-> > diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/eth=
-ernet/airoha/airoha_eth.h
-> > index 3e93919a175c..207c75152fde 100644
-> > --- a/drivers/net/ethernet/airoha/airoha_eth.h
-> > +++ b/drivers/net/ethernet/airoha/airoha_eth.h
->=20
-> [ ... ]
->=20
-> > @@ -542,14 +543,15 @@ struct airoha_qdma {
-> >  struct airoha_gdm_dev {
-> >  	struct airoha_gdm_port *port;
-> >  	struct airoha_qdma *qdma;
-> > -	struct net_device *dev;
-> >  	struct airoha_eth *eth;
-> > +	struct net_device *dev;
-> > +
-> > +	int nbq;
-> >  };
-> > =20
-> >  struct airoha_gdm_port {
-> > -	struct airoha_gdm_dev *dev;
-> > +	struct airoha_gdm_dev *devs[AIROHA_MAX_NUM_GDM_DEVS];
-> >  	int id;
-> > -	int nbq;
-> > =20
-> >  	struct airoha_hw_stats stats;
->=20
-> [Medium]
-> With multiple airoha_gdm_dev instances now sharing a single
-> airoha_gdm_port, do the per-netdev statistics need to become per-netdev
-> rather than per-port?
->=20
-> airoha_dev_get_stats64(), airoha_ethtool_get_mac_stats() and
-> airoha_ethtool_get_rmon_stats() all read from dev->port->stats, and the
-> underlying hardware counters at REG_FE_GDM_*_CNT(port->id) are per-GDM
-> port rather than per-netdev. When two netdevs share a port (for example
-> PCIE0/PCIE1 on EN7581 GDM3, or ETH/USB on GDM4), both netdevs would
-> report identical port-wide counters via rtnl_link_stats64 (ip -s link
-> show) and via the get_eth_mac_stats/get_rmon_stats ethtool callbacks,
-> and summing across the two netdevs would double-count.
->=20
-> Would it make sense to maintain per-netdev software counters in the
-> xmit/RX paths for the multi-dev case so each netdev reports its own
-> traffic through the standard uAPI?
-
-We have already a separated patch to address this issue that is not part of=
- the
-series. I will add it to the v5 in the next iteration.
+ack, I will fix in v5.
 
 Regards,
 Lorenzo
 
---YnCVD7Lr1XicTVN0
+>=20
+> >  	airoha_fe_rmw(eth, REG_GDM_LEN_CFG(port->id),
+> >  		      GDM_LONG_LEN_MASK,
+> >  		      FIELD_PREP(GDM_LONG_LEN_MASK, len));
+
+--Lk/TFdVeNBlgNVPK
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaf7vkgAKCRA6cBh0uS2t
-rNx6AP4vp7fBv+mMgpov4j4sMb2X2lfK18z7Rdr86kjr3iuVkQEA2v2JFYUsriWf
-RBzOd9kloGcV9h2okyFY1MsyXDH1uAY=
-=LwTq
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaf73rgAKCRA6cBh0uS2t
+rGHbAQCU4qZQKNGV5iqcff0D6MaDhyAsSLJmi/W5EouwYcqncAEAmNiuT5ZIzpcH
+4Mt+NqzHqJyEkeLUhvnoyxX86GhLUg8=
+=akYS
 -----END PGP SIGNATURE-----
 
---YnCVD7Lr1XicTVN0--
+--Lk/TFdVeNBlgNVPK--
 
