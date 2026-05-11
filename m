@@ -4,61 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4106CD37B7
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91F7ACD37B5
 	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2026 09:36:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HTh+tXr46//GOyd7Vcd0mrE3XkaJndURpnazP5uiamU=; b=IHC0t0SjwqV5fX
-	yN1i7Pll4oZCzu1MArkqet5zCDPFVOhfTMA0iwUaIU2tkb3Czk4ppFQr6ULj/AtFZHJCxRL+9f/ZA
-	z/buhhUjLXlCnIziVYvYW99vSKnv2PByOdFXbHwZn3A/SFF1QFAwiRU8tgtoVblxW4OioG2J04h+D
-	TwjMNj2Pl33ig04Bj+/ahWX3p+TFAVG3I6hia8avoLXf8dZosXasKbbF7vK+ZmXceQ3vRTaiHLfG+
-	Q8Ww/V/9n8cy9DSSKG/1OEFva07clU89HUGhmqQbzzC0Zobbgo/+zFxwq1U4apkj13yqC0Vcg4zBv
-	qEUojY2JwntaOOieRxfQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3xEd7M9h2Cbss66G5Zn5D05u0Eic3TX3YV8Uit/1EGg=; b=NRNwWJ9BRXVzuf0PerQtCa5rMX
+	i1DSbmkoWVQnjgoPlnemj0BCEtHN5JxGRfoOX3NAWCEGzKcmR1a+Hl5CZmXTJ5JBURqqHMg9F3TOf
+	6VsQomgzm8yK0Wu+k/kG5FsCca3EZgOw+IaQ1fEcZHbuWQUlXLuWvzk6B/3h5dPMFbcbZ+vqXRSXk
+	e7SjXxfbjQDOukTuk4hWaQsPRK7IKjp/vCvF+LLPLijN1TmH916cdgADBR4t+mQ7ImlqwGlz0jKkN
+	WfMOfQgBvfOgcX3IXijCj38T3LIp1VU7MMD0Wgd1Dy56uIzizhSUVAOA5htiZbzx2V5EqvPaBhunz
+	T3EbieOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMN4D-0000000Cx0a-3UUh;
+	id 1wMN4D-0000000Cx09-2gIS;
 	Mon, 11 May 2026 09:36:49 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMN43-0000000Cwvo-2N2Y;
+	id 1wMN44-0000000Cwvu-1PZp;
 	Mon, 11 May 2026 09:36:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1778492197;
-	bh=5jGiJLidsSBB080XIP887x11ViSwlqcV9GjyoUO70lQ=;
+	bh=p1144q5uGIWy4jprhL+Oqk7paSk0FQJqwCjykWivi20=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=oliBWciVS1A3g8/cdFc2H162/uUG9zbvTWQSxj+bk3twuhewNz5Ar6sIKtbHxfUfu
-	 inpPHTeqG8+bwjEqjOn+R+JpkLGbh//PiSwRltPyVpSNkUgCDLKYbnelxh1rWa3xSV
-	 COSXaMpVNsrc9FKHIOZVZ9fiHi72rGkew//4OpXhR/fBNAZG8I7XoTJjPjCobARrie
-	 uI58icH1lm+tYvFk2pQ6Sl/C9kYk5Ebo/u2rcaWgk4hJvLC/2DfcCsORNb34w9evOr
-	 HhNb2eBbg3fzNDqt9TJOzuj6PM6FTkxcrP/bR7JXyCkFOEYBk2tUFBX5MkuC1V9SsP
-	 p4WGmeNMeY2Ug==
+	b=TEsigOM2GBpsAxpa1hfcmZuTtLMe1BsizvwXPFqWCMG0ESFomiYFSENGctOred0R9
+	 sC0bqf/l7TkKPHoFzmuUA6iucfJ4bCR+vOyqpaP9/cUeZbKjymllgtfT76iGo2ZRAx
+	 ySFsUv1b4QWz4cNprkyIHqaqvJ5Wa7517jl+LEA0gpRZ6K7/dWL0YT3mmOCCykTON9
+	 /py+3s5PKHLQRQVAwh6LY9XG1T7sBEz/MTvgHcYNgv40mACl4tSGEAhxvI1oBGJE+/
+	 5yFQBOiGJmr3A86ogsQvv+ZIs6nCdJkv3E630kfI+g33qbMX3XvrT17L/i5/26+QAk
+	 MqHCkQSmihiDQ==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D106417E0CA9;
-	Mon, 11 May 2026 11:36:36 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7DACD17E12E5;
+	Mon, 11 May 2026 11:36:37 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Frank Wunderlich <linux@fw-web.de>
-In-Reply-To: <20260412092333.6371-1-linux@fw-web.de>
-References: <20260412092333.6371-1-linux@fw-web.de>
-Subject: Re: [PATCH v2 0/4] some BPI-R4Pro dts updates
-Message-Id: <177849219680.115964.494791829955697509.b4-ty@collabora.com>
-Date: Mon, 11 May 2026 11:36:36 +0200
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20260414-mtk-g510-700-cpu-supplies-v1-0-3b8313e5ca8d@collabora.com>
+References: <20260414-mtk-g510-700-cpu-supplies-v1-0-3b8313e5ca8d@collabora.com>
+Subject: Re: [PATCH 0/3] Mediatek Genio 510/700-EVK: add CPU power supplies
+Message-Id: <177849219746.115964.3278328697060309658.b4-ty@collabora.com>
+Date: Mon, 11 May 2026 11:36:37 +0200
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260511_023639_799422_3065FE5D 
-X-CRM114-Status: GOOD (  10.19  )
+X-CRM114-CacheID: sfid-20260511_023640_548312_97319666 
+X-CRM114-Status: UNSURE (   7.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,35 +75,27 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Andrew LaMarche <andrewjlamarche@gmail.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 12 Apr 2026 11:23:28 +0200, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
+On Tue, 14 Apr 2026 12:33:30 +0200, Louis-Alexis Eyraud wrote:
+> This series adds for the Mediatek Genio 510-EVK (MT8370) and 700-EVK
+> (MT8390) boards the CPU power supply definitions in their devicetree
+> that are missing for all their CPU cores.
 > 
-> There are some parts of BPI-R4Pro DTS that need to be changed. Currently
-> there should be not much users of the mainline-dts and we noticed some
-> things while openwrt integration.
-> 
-> v2:
-> - added mgmt port renaming as this patch is still outstanding to keep
->   all in one series
->   https://patchwork.kernel.org/project/linux-mediatek/patch/20260303202006.37515-1-linux@fw-web.de/
-> - dropped default-state in gpio-leds patch as suggested by daniel
+> On the boards, the big core power is supplied by a MT6319 (sub PMIC)
+> and little core power by a MT6365 (main PMIC).
 > 
 > [...]
 
 Applied to v7.1-next/dts64, thanks!
 
-[1/4] arm64: dts: mediatek: mt7988a-bpi-r4pro: rename mgmt port to lan5
-      commit: 3ee1389fb19691cddc437dd6ba9979100d691051
-[2/4] arm64: dts: mediatek: mt7988a-bpi-r4pro: drop duplicate fan properties
-      commit: f639e17553da08eff5957e8a2657253a26d47c12
-[3/4] arm64: dts: mediatek: mt7988a-bpi-r4pro: update gpio-leds
-      commit: 993d54a4f987959998cb47d9cf5f9bb1d35287df
-[4/4] arm64: dts: mediatek: mt7988a-bpi-r4pro: rework pcie gpio-hog handling
-      commit: 2df54c0b376c2691f6887a4f445d36935b9e8f87
+[1/3] arm64: dts: mediatek: mt8390-genio-common: add MT6319 PMIC support
+      commit: b049df10aea8222a42d42433b675b7b0d013c4dd
+[2/3] arm64: dts: mediatek: mt8390-genio-common: add CPU power supplies
+      commit: 728a38437d8268a9a43405d476fb678d37f86cd7
+[3/3] arm64: dts: mediatek: mt8390-genio-700-evk: add specific CPU power supplies
+      commit: e6bc454bb7ec547ccd371482b8692a87c5b58245
 
 Cheers,
 Angelo
