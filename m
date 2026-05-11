@@ -4,71 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43470CD37B5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2026 09:43:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C481CD37B5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2026 09:47:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=psZjTHIopw9a6IFu+CQ4yK+10MJWL8m4+o/esLc7kPY=; b=gsrQtMZL4nerbO6+D9RHPrfKAy
-	eQvqUEwmeP3/Y/dPnuj+FUYfCY32N00JGwwzmunJVmLxcX7BIbF7i6dAUgvp4L+o9OKtVs/mp5hoX
-	uRQdtx23qoE0pFsyPVYNqiw+ih5EciA2uq+J+MmGRzbRazepIRst1yc2DHb5eJZ4kSftlBpmFvkTn
-	xYS9HOEtTgagwPDxE5+CfBmbeSAytGQ2yHRQFiZFnic580XiUjdV/NvijmxNfhdaMO3SmtJBCCS2h
-	nZwsl70jIP+ZWi1Wx+/naA0j/HdySkTCwuPgu3j74K9IC9+qhYwc9u/T/OdEzPKsEUYcZW8GLh0XG
-	DuTdywQQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=v3V6A5lDiavzZwLllD/c1kzY8BzxthpvBTQz20JmIds=; b=hesOtU93PVddTd1sjf1XjfdHWk
+	WyE4RnLPopHz2S6Hvx0pXLWgwDpTHE9JONtQb1ulQXCpNPe2eUtIc93WkiLe5IhvEK5qomEoL2ivh
+	Pgrb4yKpUFBMTzBRcmr2lkGMXgnr/8IJV8FdjvJsJIrUr3/VRLJ1IjKctiBil78KMZJHB+7GW9yS2
+	cUUugrJVO5VEEAscM+gtvmMS4e9boEoHn5n9H4k6lCInoJh6z5B6P+6iKFPId1Bwd45RC3wt1L1Aj
+	7no0P6Vy2wjM3W63aYf5xZXpPXz79AByGGmtubhglZEPlBjnWSUgyl7zd3vOaARgiilhMSfXSYQNW
+	8lKHJ9dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMNAo-0000000Cz0t-49u8;
-	Mon, 11 May 2026 09:43:38 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wMNE8-0000000CzV6-1IYI;
+	Mon, 11 May 2026 09:47:04 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMNAl-0000000Cyy3-2kgL;
-	Mon, 11 May 2026 09:43:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1778492613;
-	bh=yRisWRad3Z1sTyLfN1Qf89CUE4mBX1+7idpxxzAXLV4=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=Dy6RZcvEQz+N2xg+8J96IKI3Wh86vGsWIfPyzwn5b4rOrZffCMdtFXQeZQBtckrTa
-	 tMqQjX+peub31FChPsX9mCTyJg2q3uUPz0t5y0j6fAWrOLbDtJEOq4jemBhbeMnC0n
-	 +fwfJg14f9jxBDd6/Kezslc/mOKjwL4Wq1lX5HpBkmXgY3s64IxWjXX83w4D0nuJSa
-	 B7mEwl0oHPqECLWBf9YEinoWnMbxjwZAiLLLiGtjukdxCUvWSvqg2QgkIpAXQWPmCl
-	 4FpqFyHlLfnxcHMQK5N9LJnuWP5hVLVHdfb3XtWhYL/agbdchSuGbFHXjbEN9+peqX
-	 +u5Tf7GKORtJA==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4DCDF17E040C;
-	Mon, 11 May 2026 11:43:32 +0200 (CEST)
-Message-ID: <a17c683e-bf8e-4216-8459-66eb85329b17@collabora.com>
-Date: Mon, 11 May 2026 11:43:31 +0200
+	id 1wMNE6-0000000CzUZ-2I04;
+	Mon, 11 May 2026 09:47:02 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id B1F85600C3;
+	Mon, 11 May 2026 09:47:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 99EADC2BCB0;
+	Mon, 11 May 2026 09:46:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1778492821;
+	bh=BNrk5xl69HBmuVU58US/4LQ9osluyk+emTVHe4tINHo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=KwPjA9tVszv+OUAwQN1ulEdIgTWu3AHXQt9h9NAuldKp+C3KvVbtbcnnAMSTOQwdf
+	 69JkGOXvMgQT6hHSLdtLtABhu5bVFl7WM5I7prPR7p05hIVpBfA5RRS5cC5N5bA5gy
+	 HHkZSP05haKe3vHuLp0BMX07E9u5dKURbtzoa2mA/J4qOgDDmLQH0uKFiE7wzavtLt
+	 KOfyqOKcDx4HCf8CCM6w2sUHF8tX91fL4tRHYHiogvxn8POBnYMlDyIn5bhMc2J21N
+	 HRSGf+W6Gnqi75SlaiU/m9x9GWtIVmJEgB2beZPbFQIX7gK5QmGWn+WRLCLFDkamzc
+	 a8IFouTzyU8lw==
+Message-ID: <556b78d3-f353-4f0b-993b-d4566f55a9b1@kernel.org>
+Date: Mon, 11 May 2026 11:46:56 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 0/9] ASoC: mediatek: mt2701: HDMI audio support
-To: Daniel Golle <daniel@makrotopia.org>, Liam Girdwood
- <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+Subject: Re: [PATCH v4 2/2] drm/mediatek: dsi: Add compatible for mt8167-dsi
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+ linux-mediatek@lists.infradead.org
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, Cyril Chao <Cyril.Chao@mediatek.com>,
- Arnd Bergmann <arnd@arndb.de>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
- Eugen Hristev <eugen.hristev@linaro.org>, linux-sound@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <cover.1776998727.git.daniel@makrotopia.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+ <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ dri-devel@lists.freedesktop.org
+References: <20260505214541.333657-1-l.scorcia@gmail.com>
+ <20260505214541.333657-3-l.scorcia@gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@kernel.org>
 Content-Language: en-US
-In-Reply-To: <cover.1776998727.git.daniel@makrotopia.org>
+In-Reply-To: <20260505214541.333657-3-l.scorcia@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260511_024335_881302_52DAE414 
-X-CRM114-Status: GOOD (  11.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,32 +76,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 4/24/26 04:48, Daniel Golle wrote:
-> This series wires up on-chip HDMI audio on MT2701 and MT7623N, from the
-> DRM bridge down through the AFE into a small machine driver that binds
-> the AFE HDMI BE to the HDMI TX codec already exposed by the
-> mediatek-drm-hdmi driver. Bindings, DT and a BananaPi R2 board node
-> are included.
+On 5/5/26 23:45, Luca Leonardo Scorcia wrote:
+> The mt8167 DSI controller is fully compatible with the one found in
+> mt2701. Unfortunately the device tree has a dedicated compatible for
+> mt8167 since 2022 and it cannot be changed with a fallback nor removed at
+> this point. The only way to get the device to work is to add the
+> compatible to the driver.
 > 
-> In order to survive vblank or late hotplug of the monitor, the fix
-> submitted separately [1] is required as well.
-> 
-> Everything here was developed for and tested on a BananaPi R2
-> (MT7623N), which turns ten years old this year -- a nice occasion to
-> finally land HDMI audio for a SoC which was truly ahead of its time.
-> 
-> [1]: https://patchwork.kernel.org/project/linux-mediatek/patch/a3e22cbae528c9a38d854a586d1736b860998d41.1776265222.git.daniel@makrotopia.org/
-> 
-
-Whole series is
-
+> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-I'll pick the devicetree bits after the ASoC and bindings bits get picked.
-
-Cheers,
-Angelo
-
-
-
 
