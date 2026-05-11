@@ -4,68 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3877ECD37BE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2026 16:27:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2138ECD37BE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2026 16:59:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VUhpsjQrH/mckZs2t7/2owZF+Xb+aJbtam5fG6bKFfw=; b=Yyb/pyV2hY4HfwqxG/UUMjPlr9
-	8WNAu8wqMmrnprlvo7eyHvwAygYDTwXQkaRHYZXRj5+wqVNHVCvtC5SI2OSYUuaeNPE9Z64bcQBQP
-	xi10Dycwp/ug3u9/UEOGMpjNqEB6TyaMS3yWlM2364IlXHO5VkOnSlvKrR5r6DFVUZniZdQTcWJeS
-	Va2EJJgM3oiiC21xrAIHdElVXDZfHsF65G1d0A0J1lqbx9BeXV0xQ/P5QX/tP/zOnfD8ieYwJ+ZyF
-	DNSdh7EgWrveA9T31jb8g45PKAGoYWUysVo4OLT431oY/Hyn+1U08XVcOh4xalCbdI6ActYVFy529
-	nCXu/TBA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=88iOHqE1kYmf+gL7w8gHUgBxhl99PlXLuvbTzS+iaao=; b=Rrp+IJChrjEiBwqawBum637d2x
+	RETYlFXzxLsq3sOvTkmFC+KHBoTBIkRz2mQC0VW7DycLqSE1pELw/qn0J6EV+QThf1O8SEuRdTpGz
+	E9SFc7IsdBjjN27EnK97bn8qqroy1cBbPBpuyB08yUQBHz21Ebn7OkfMx8S/zuuVcBvHy+FqLI8AM
+	EqjeNsXxz2yy9qSLRQAh0W3rXazQvX2gHhjM2X0juXOTCMi+zbcMPTh/Qb9vGdOYJaDQuptp655bh
+	TvWihka37cGGt4vRUW3QPi2agfMtG/FFfHImTR/2ty5Wg12mKolZQElJO7s3T2SVDuWb1QuM/MXdW
+	yxwMW/sA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMTU4-0000000ECfc-2N8n;
-	Mon, 11 May 2026 16:27:56 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wMTyx-0000000EILi-2pyo;
+	Mon, 11 May 2026 16:59:53 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMTU2-0000000ECem-1k6v;
-	Mon, 11 May 2026 16:27:54 +0000
+	id 1wMTyv-0000000EIL5-2uiC;
+	Mon, 11 May 2026 16:59:49 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id D9AB860120;
-	Mon, 11 May 2026 16:27:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 05BBCC2BCB0;
-	Mon, 11 May 2026 16:27:50 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id CFBA06001A;
+	Mon, 11 May 2026 16:59:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3812DC2BCB0;
+	Mon, 11 May 2026 16:59:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778516873;
-	bh=V0wLh5KRspfOQ3ibRR/1QYF8R6kmly0cfDdqmRIJqvQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=gcmyAxHAKFs6NB3meRHb14KoC6R9ksltSt15rHaXzZGZv3SOCwBupe3Q67oel5/qb
-	 hMr4Q0I75R456Sean1nvn2ql0Nv/q/NKL/jC1Hsco3Td8/+uB0HIRTYeq1wy0KrVHJ
-	 3/xT33SBXpz13eLPMF9CcEKP3UbhDX0t0qEsmzSwishRclNtw88eAZH0nIxnaQR+ZU
-	 zcWleaZH9FTxJde+jDXQPhnFBFqhtk2GlcNAMgH2dy86LrHK8hQoXO7MctjL4zMFAs
-	 nGFoSEGnTTLKfHtSopIXrClD54+3IG/wR+B8JApKw0cuRc2f1RMh0qrGp9PxIaBOal
-	 zRUinbWJtU2Qg==
-Date: Mon, 11 May 2026 17:27:48 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Arnab Layek <arnab.layek@mediatek.com>
-Cc: Bjorn Andersson <andersson@kernel.org>,
-	Mathieu Poirier <mathieu.poirier@linaro.org>,
-	Rob Herring <robh@kernel.org>,
+	s=k20201202; t=1778518788;
+	bh=XCVn6RziZXVihYEFqIeP8m66Oyw0QaFmhoU3koOf/AY=;
+	h=From:To:Cc:Subject:Date:From;
+	b=BzJ5aeOTpZV3u26f0FQl4pnm+DEAWEsff44MB9jh9lafaKbeGz+2Fa1QLMVbMHLS7
+	 a/KPT6ALSR0N0ukFPN+MTMleVzwVYchvkFpUcFZOS5bw38dHbhSFd1AJkxo0nyzskv
+	 SHtO2cTULh0UeGS7lqGm+nmexEhkXWpzfXXl6GHzdWc45J9/2YZPbgu46R7yTnzWge
+	 1rdI6daDcQ4jWaZpeC/yPKfFW0P3pALOmE/ozzH9ayhEBtUMWSaztYvAzuCFap+15F
+	 FBGQf9g9EKSE2m6ke4dW3tdurkZ/xMEpyf6eKt2fcjrN/4JUWnOLBxmDg98lrVexIi
+	 eJsfpsuD+Q/4w==
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Liu Ying <victor.liu@nxp.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
+	Frank Li <Frank.Li@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Rob Clark <robin.clark@oss.qualcomm.com>,
+	Sean Paul <sean@poorly.run>,
+	Konrad Dybcio <konradybcio@kernel.org>,
+	Akhil P Oommen <akhilpo@oss.qualcomm.com>,
+	Dmitry Baryshkov <lumag@kernel.org>,
+	Abhinav Kumar <abhinav.kumar@linux.dev>,
+	Jessica Zhang <jesszhan0024@gmail.com>,
+	Marijn Suijten <marijn.suijten@somainline.org>,
+	Vinod Koul <vkoul@kernel.org>,
+	Nas Chung <nas.chung@chipsnmedia.com>,
+	Jackson Lee <jackson.lee@chipsnmedia.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Mirela Rabulea <mirela.rabulea@nxp.com>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Hugues Fruchet <hugues.fruchet@foss.st.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	MD Danish Anwar <danishanwar@ti.com>,
+	Roger Quadros <rogerq@kernel.org>,
+	Parvathi Pudi <parvathi@couthit.com>,
+	Mohan Reddy Putluru <pmohan@couthit.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Mathieu Poirier <mathieu.poirier@linaro.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Michal Simek <michal.simek@amd.com>,
+	Mark Brown <broonie@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v2 1/1] dt-bindings: remoteproc: mtk,scp: Allow multiple
- memory regions for MT8188
-Message-ID: <20260511-uncouth-pandemic-080dccd30f4b@spud>
-References: <20260506133157.3283204-1-arnab.layek@mediatek.com>
- <20260511121004.2984149-1-arnab.layek@mediatek.com>
- <20260511121004.2984149-2-arnab.layek@mediatek.com>
+	Linus Walleij <linusw@kernel.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Felix Fietkau <nbd@nbd.name>,
+	"Andrew F. Davis" <afd@ti.com>,
+	Hussain Khaja <basharath@couthit.com>,
+	Suman Anna <s-anna@ti.com>,
+	Ben Levinsky <ben.levinsky@amd.com>,
+	Tanmay Shah <tanmay.shah@amd.com>,
+	Erwan Leray <erwan.leray@foss.st.com>,
+	Fabrice Gasnier <fabrice.gasnier@foss.st.com>
+Cc: Roger Quadros <rogerq@ti.com>,
+	dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org,
+	imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org,
+	freedreno@lists.freedesktop.org,
+	dmaengine@vger.kernel.org,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	netdev@vger.kernel.org,
+	linux-remoteproc@vger.kernel.org,
+	linux-amlogic@lists.infradead.org,
+	linux-spi@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] dt-bindings: Consolidate "sram" property definition
+Date: Mon, 11 May 2026 11:59:36 -0500
+Message-ID: <20260511165942.2774868-1-robh@kernel.org>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Cth8D7RmP7y3OUje"
-Content-Disposition: inline
-In-Reply-To: <20260511121004.2984149-2-arnab.layek@mediatek.com>
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,85 +141,327 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The "sram" property has become a de facto standard property, so create a
+common schema for it and drop all the duplicated definitions.
 
---Cth8D7RmP7y3OUje
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+---
+ .../imx/fsl,imx8qxp-dc-command-sequencer.yaml |  2 +-
+ .../devicetree/bindings/display/msm/gpu.yaml  |  6 +----
+ .../bindings/dma/stericsson,dma40.yaml        |  8 ++----
+ .../bindings/media/cnm,wave521c.yaml          |  2 +-
+ .../bindings/media/nxp,imx8-jpeg.yaml         |  6 ++---
+ .../bindings/media/rockchip,vdec.yaml         |  5 ++--
+ .../bindings/media/st,stm32-dcmi.yaml         |  6 ++---
+ .../devicetree/bindings/net/mediatek,net.yaml |  3 +--
+ .../bindings/net/ti,icssg-prueth.yaml         |  2 +-
+ .../bindings/net/ti,icssm-prueth.yaml         |  2 +-
+ .../remoteproc/amlogic,meson-mx-ao-arc.yaml   |  7 +----
+ .../bindings/remoteproc/ti,k3-dsp-rproc.yaml  |  8 ------
+ .../bindings/remoteproc/ti,k3-r5f-rproc.yaml  |  8 ------
+ .../remoteproc/xlnx,zynqmp-r5fss.yaml         |  9 +------
+ .../devicetree/bindings/spi/st,stm32-spi.yaml | 10 +++----
+ .../bindings/sram/sram-consumer.yaml          | 26 +++++++++++++++++++
+ 16 files changed, 48 insertions(+), 62 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/sram/sram-consumer.yaml
 
-On Mon, May 11, 2026 at 08:10:04PM +0800, Arnab Layek wrote:
-> The MT8188 SCP requires two reserved memory regions:
-> 1. Main SCP SRAM memory region (required)
-> 2. SCP L1TCM memory region (optional, for additional memory)
->=20
-> Some other MediaTek SoCs only use a single memory region. This patch adds
-> a conditional schema using if/then to allow 1-2 memory regions
-> specifically for mediatek,mt8188-scp and mediatek,mt8188-scp-dual
-> compatibles, while keeping the default maxItems: 1 for other
-> SoCs.
->=20
-> Each memory region is documented with descriptions to
-> clarify their purpose, following the pattern used in other bindings.
->=20
-> Signed-off-by: Arnab Layek <arnab.layek@mediatek.com>
-> ---
->  .../bindings/remoteproc/mtk,scp.yaml          | 21 +++++++++++++++++++
->  1 file changed, 21 insertions(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/=
-Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> index bdbb12118da4..df13be2026a6 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> @@ -205,6 +205,27 @@ allOf:
->            items:
->              - const: cfg
->              - const: l1tcm
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          enum:
-> +            - mediatek,mt8188-scp
-> +            - mediatek,mt8188-scp-dual
-> +    then:
-> +      properties:
-> +        memory-region:
-> +          minItems: 1
-> +          items:
-> +            - description: Main SCP SRAM memory region
-> +            - description: Optional SCP L1TCM memory region
-> +      patternProperties:
-> +        "^scp@[a-f0-9]+$":
-> +          properties:
-> +            memory-region:
-> +              minItems: 1
-> +              items:
-> +                - description: Main SCP SRAM memory region
-> +                - description: Optional SCP L1TCM memory region
+diff --git a/Documentation/devicetree/bindings/display/imx/fsl,imx8qxp-dc-command-sequencer.yaml b/Documentation/devicetree/bindings/display/imx/fsl,imx8qxp-dc-command-sequencer.yaml
+index 27118f4c0d28..fd095e5742c5 100644
+--- a/Documentation/devicetree/bindings/display/imx/fsl,imx8qxp-dc-command-sequencer.yaml
++++ b/Documentation/devicetree/bindings/display/imx/fsl,imx8qxp-dc-command-sequencer.yaml
+@@ -41,7 +41,7 @@ properties:
+       - const: sw3
+ 
+   sram:
+-    $ref: /schemas/types.yaml#/definitions/phandle
++    maxItems: 1
+     description: phandle pointing to the mmio-sram device node
+ 
+ required:
+diff --git a/Documentation/devicetree/bindings/display/msm/gpu.yaml b/Documentation/devicetree/bindings/display/msm/gpu.yaml
+index 04b2328903ca..358759fad8dc 100644
+--- a/Documentation/devicetree/bindings/display/msm/gpu.yaml
++++ b/Documentation/devicetree/bindings/display/msm/gpu.yaml
+@@ -84,13 +84,9 @@ properties:
+     maxItems: 64
+ 
+   sram:
+-    $ref: /schemas/types.yaml#/definitions/phandle-array
+     minItems: 1
+     maxItems: 4
+-    items:
+-      maxItems: 1
+-    description: |
+-      phandles to one or more reserved on-chip SRAM regions.
++    description:
+       phandle to the On Chip Memory (OCMEM) that's present on some a3xx and
+       a4xx Snapdragon SoCs. See
+       Documentation/devicetree/bindings/sram/qcom,ocmem.yaml
+diff --git a/Documentation/devicetree/bindings/dma/stericsson,dma40.yaml b/Documentation/devicetree/bindings/dma/stericsson,dma40.yaml
+index 607da11e7baa..d8f92838f4c9 100644
+--- a/Documentation/devicetree/bindings/dma/stericsson,dma40.yaml
++++ b/Documentation/devicetree/bindings/dma/stericsson,dma40.yaml
+@@ -136,13 +136,9 @@ properties:
+     maxItems: 1
+ 
+   sram:
+-    $ref: /schemas/types.yaml#/definitions/phandle-array
+-    description: A phandle array with inner size 1 (no arg cells).
+-      First phandle is the LCPA (Logical Channel Parameter Address) memory.
+-      Second phandle is the  LCLA (Logical Channel Link base Address) memory.
+-    maxItems: 2
+     items:
+-      maxItems: 1
++      - description: LCPA (Logical Channel Parameter Address) memory.
++      - description: LCLA (Logical Channel Link base Address) memory.
+ 
+   memcpy-channels:
+     $ref: /schemas/types.yaml#/definitions/uint32-array
+diff --git a/Documentation/devicetree/bindings/media/cnm,wave521c.yaml b/Documentation/devicetree/bindings/media/cnm,wave521c.yaml
+index 6a11c1d11fb5..6cd33dfd095d 100644
+--- a/Documentation/devicetree/bindings/media/cnm,wave521c.yaml
++++ b/Documentation/devicetree/bindings/media/cnm,wave521c.yaml
+@@ -37,7 +37,7 @@ properties:
+     maxItems: 1
+ 
+   sram:
+-    $ref: /schemas/types.yaml#/definitions/phandle
++    maxItems: 1
+     description:
+       The VPU uses the SRAM to store some of the reference data instead of
+       storing it on DMA memory. It is mainly used for the purpose of reducing
+diff --git a/Documentation/devicetree/bindings/media/nxp,imx8-jpeg.yaml b/Documentation/devicetree/bindings/media/nxp,imx8-jpeg.yaml
+index 18cc6315a821..6ba668aa633d 100644
+--- a/Documentation/devicetree/bindings/media/nxp,imx8-jpeg.yaml
++++ b/Documentation/devicetree/bindings/media/nxp,imx8-jpeg.yaml
+@@ -56,10 +56,10 @@ properties:
+     maxItems: 5               # Wrapper and 4 slots
+ 
+   sram:
+-    $ref: /schemas/types.yaml#/definitions/phandle
++    maxItems: 1
+     description:
+-      Optional phandle to a reserved on-chip SRAM regions. The SRAM can
+-      be used for descriptor storage, which may improve bus utilization.
++      The SRAM can be used for descriptor storage, which may improve bus
++      utilization.
+ 
+ required:
+   - compatible
+diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+index 42022401d0ff..4f38a0ef29d8 100644
+--- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
++++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+@@ -91,9 +91,8 @@ properties:
+     maxItems: 1
+ 
+   sram:
+-    $ref: /schemas/types.yaml#/definitions/phandle
+-    description: |
+-      phandle to a reserved on-chip SRAM regions.
++    maxItems: 1
++    description:
+       Some SoCs, like rk3588 provide on-chip SRAM to store temporary
+       buffers during decoding.
+ 
+diff --git a/Documentation/devicetree/bindings/media/st,stm32-dcmi.yaml b/Documentation/devicetree/bindings/media/st,stm32-dcmi.yaml
+index d9fbb90b0977..7c2ddd27780f 100644
+--- a/Documentation/devicetree/bindings/media/st,stm32-dcmi.yaml
++++ b/Documentation/devicetree/bindings/media/st,stm32-dcmi.yaml
+@@ -47,10 +47,10 @@ properties:
+     maxItems: 1
+ 
+   sram:
+-    $ref: /schemas/types.yaml#/definitions/phandle
++    maxItems: 1
+     description:
+-      phandle to a reserved SRAM region which is used as temporary
+-      storage memory between DMA and MDMA engines.
++      SRAM region which is used as temporary storage memory between DMA and
++      MDMA engines.
+ 
+   port:
+     $ref: /schemas/graph.yaml#/$defs/port-base
+diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+index cc346946291a..6bbd83c6aaf7 100644
+--- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
++++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+@@ -67,8 +67,7 @@ properties:
+       - const: ppe
+ 
+   sram:
+-    $ref: /schemas/types.yaml#/definitions/phandle
+-    description: phandle to mmio SRAM
++    maxItems: 1
+ 
+   mediatek,ethsys:
+     $ref: /schemas/types.yaml#/definitions/phandle
+diff --git a/Documentation/devicetree/bindings/net/ti,icssg-prueth.yaml b/Documentation/devicetree/bindings/net/ti,icssg-prueth.yaml
+index c296e5711848..883033b19b8f 100644
+--- a/Documentation/devicetree/bindings/net/ti,icssg-prueth.yaml
++++ b/Documentation/devicetree/bindings/net/ti,icssg-prueth.yaml
+@@ -21,7 +21,7 @@ properties:
+       - ti,am654-sr1-icssg-prueth  # for AM65x SoC family, SR1.0
+ 
+   sram:
+-    $ref: /schemas/types.yaml#/definitions/phandle
++    maxItems: 1
+     description:
+       phandle to MSMC SRAM node
+ 
+diff --git a/Documentation/devicetree/bindings/net/ti,icssm-prueth.yaml b/Documentation/devicetree/bindings/net/ti,icssm-prueth.yaml
+index a98ad45ca66f..9370c43bc66a 100644
+--- a/Documentation/devicetree/bindings/net/ti,icssm-prueth.yaml
++++ b/Documentation/devicetree/bindings/net/ti,icssm-prueth.yaml
+@@ -24,7 +24,7 @@ properties:
+       - ti,am3359-prueth   # for AM33x SoC family
+ 
+   sram:
+-    $ref: /schemas/types.yaml#/definitions/phandle
++    maxItems: 1
+     description:
+       phandle to OCMC SRAM node
+ 
+diff --git a/Documentation/devicetree/bindings/remoteproc/amlogic,meson-mx-ao-arc.yaml b/Documentation/devicetree/bindings/remoteproc/amlogic,meson-mx-ao-arc.yaml
+index 76e8ca44906a..3f710433e937 100644
+--- a/Documentation/devicetree/bindings/remoteproc/amlogic,meson-mx-ao-arc.yaml
++++ b/Documentation/devicetree/bindings/remoteproc/amlogic,meson-mx-ao-arc.yaml
+@@ -48,12 +48,7 @@ properties:
+     minItems: 1
+ 
+   sram:
+-    $ref: /schemas/types.yaml#/definitions/phandle
+-    description:
+-      phandles to a reserved SRAM region which is used as the memory of
+-      the ARC core. The region should be defined as child nodes of the
+-      AHB SRAM node as per the generic bindings in
+-      Documentation/devicetree/bindings/sram/sram.yaml
++    maxItems: 1
+ 
+   amlogic,secbus2:
+     $ref: /schemas/types.yaml#/definitions/phandle
+diff --git a/Documentation/devicetree/bindings/remoteproc/ti,k3-dsp-rproc.yaml b/Documentation/devicetree/bindings/remoteproc/ti,k3-dsp-rproc.yaml
+index b51bb863d759..8b1ed384ef22 100644
+--- a/Documentation/devicetree/bindings/remoteproc/ti,k3-dsp-rproc.yaml
++++ b/Documentation/devicetree/bindings/remoteproc/ti,k3-dsp-rproc.yaml
+@@ -75,16 +75,8 @@ properties:
+ # --------------------
+ 
+   sram:
+-    $ref: /schemas/types.yaml#/definitions/phandle-array
+     minItems: 1
+     maxItems: 4
+-    items:
+-      maxItems: 1
+-    description: |
+-      phandles to one or more reserved on-chip SRAM regions. The regions
+-      should be defined as child nodes of the respective SRAM node, and
+-      should be defined as per the generic bindings in,
+-      Documentation/devicetree/bindings/sram/sram.yaml
+ 
+ allOf:
+   - if:
+diff --git a/Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml b/Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml
+index 775e9b3a1938..14e6b2f817b3 100644
+--- a/Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml
++++ b/Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml
+@@ -224,16 +224,8 @@ patternProperties:
+           at 0x0) or 0 (BTCM at 0x0), default value is 1 if omitted.
+ 
+       sram:
+-        $ref: /schemas/types.yaml#/definitions/phandle-array
+         minItems: 1
+         maxItems: 4
+-        items:
+-          maxItems: 1
+-        description: |
+-          phandles to one or more reserved on-chip SRAM regions. The regions
+-          should be defined as child nodes of the respective SRAM node, and
+-          should be defined as per the generic bindings in,
+-          Documentation/devicetree/bindings/sram/sram.yaml
+ 
+     required:
+       - compatible
+diff --git a/Documentation/devicetree/bindings/remoteproc/xlnx,zynqmp-r5fss.yaml b/Documentation/devicetree/bindings/remoteproc/xlnx,zynqmp-r5fss.yaml
+index ee63c03949c9..c7d5e58330d6 100644
+--- a/Documentation/devicetree/bindings/remoteproc/xlnx,zynqmp-r5fss.yaml
++++ b/Documentation/devicetree/bindings/remoteproc/xlnx,zynqmp-r5fss.yaml
+@@ -106,20 +106,13 @@ patternProperties:
+           - const: rx
+ 
+       sram:
+-        $ref: /schemas/types.yaml#/definitions/phandle-array
+         minItems: 1
+         maxItems: 8
+-        items:
+-          maxItems: 1
+-        description: |
++        description:
+           phandles to one or more reserved on-chip SRAM regions. Other than TCM,
+           the RPU can execute instructions and access data from the OCM memory,
+           the main DDR memory, and other system memories.
+ 
+-          The regions should be defined as child nodes of the respective SRAM
+-          node, and should be defined as per the generic bindings in
+-          Documentation/devicetree/bindings/sram/sram.yaml
+-
+       memory-region:
+         description: |
+           List of phandles to the reserved memory regions associated with the
+diff --git a/Documentation/devicetree/bindings/spi/st,stm32-spi.yaml b/Documentation/devicetree/bindings/spi/st,stm32-spi.yaml
+index 472e92974714..6d7d595e4ab3 100644
+--- a/Documentation/devicetree/bindings/spi/st,stm32-spi.yaml
++++ b/Documentation/devicetree/bindings/spi/st,stm32-spi.yaml
+@@ -89,12 +89,10 @@ properties:
+       - const: rxm2m
+ 
+   sram:
+-    $ref: /schemas/types.yaml#/definitions/phandle
+-    description: |
+-      Phandles to a reserved SRAM region which is used as temporary
+-      storage memory between DMA and MDMA engines.
+-      The region should be defined as child node of the AHB SRAM node
+-      as per the generic bindings in Documentation/devicetree/bindings/sram/sram.yaml
++    maxItems: 1
++    description:
++      SRAM region which is used as temporary storage memory between DMA and
++      MDMA engines.
+ 
+   power-domains:
+     maxItems: 1
+diff --git a/Documentation/devicetree/bindings/sram/sram-consumer.yaml b/Documentation/devicetree/bindings/sram/sram-consumer.yaml
+new file mode 100644
+index 000000000000..f00087bd2879
+--- /dev/null
++++ b/Documentation/devicetree/bindings/sram/sram-consumer.yaml
+@@ -0,0 +1,26 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/sram/sram-consumer.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: SRAM Consumers
++
++maintainers:
++  - Rob Herring <robh@kernel.org>
++
++select: true
++
++properties:
++  sram:
++    description:
++      Phandles to one or more reserved on-chip SRAM regions. The regions
++      should be defined as child nodes of the respective SRAM node, and
++      should be defined as per the generic bindings in,
++      Documentation/devicetree/bindings/sram/sram.yaml
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      maxItems: 1
++
++additionalProperties: true
++...
+-- 
+2.53.0
 
-Does this even work, given that memory-region has maxItems: 1 outside
-the conditional section?
-
-Cheers,
-Conor.
-
-> =20
->  additionalProperties: false
-> =20
-> --=20
-> 2.45.2
->=20
-
---Cth8D7RmP7y3OUje
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCagIDhAAKCRB4tDGHoIJi
-0l1KAP4ogMR4hY4vl2iFHrcWq1THHYzittMIqmeoOyXVWNsTAAEAuFti4lcrCBUc
-+MZz9rCNT0pG273MQ05Xxrr/JE7IJgc=
-=tkTv
------END PGP SIGNATURE-----
-
---Cth8D7RmP7y3OUje--
 
