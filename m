@@ -4,64 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 721D0CD37B9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2026 10:50:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30DF0CD4842
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2026 11:51:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=45B19tzlcb1eQxq5RCHV443ZWMwDzZJUp0XGjAZ3iYQ=; b=fmGSmHke5lwlczJNSo/CNVfvUM
-	q3PmDWhCvgyR1jjkPikrv+A49U0U+/9H3gmJOneei8sLS7kJFXfM62FU8QDQQNw00Ztske6ZhD2Ml
-	IVxVUWvE+PuoIsL/KIXozVlkNgiGj9czuYduzYywcRHeZv/uxd+jOSjs+RgzwG+P6yN9PHQ9Nu0EE
-	Ae3dmvDvViZbWs3np1BCRDnozHfkbnVmyzdrJOO4WdubTi8wiIQ0iZY7yJfvFMHASEmVjatLx3FRj
-	ah2meMCgFUyKBLv+PdAoqVU3/ph8Qzl0wqPtGCS62fOJlql5SMh/f7uE5i28P4UOHjBXDiXr/MjnF
-	P5Caq0Mg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4vWqIXrpE2Ly8encEK5XElKZl+8B0OQogZgUPoAVNec=; b=GyCg1nPkjGzstooPMCzNPZk7YY
+	oOVMDEw4V/KQRG7dTyP8Qo/izHlz8PvUTHNWztOuiA4PWoba9YGa1wGQq+wqmKukTQ4cCiXsBFuSX
+	DUaTkANlRon4b6pX7fFM7c61yycNvGcAAQBu3bFXaqz8w8C/rlJBzeRi/nwquheEHKsM8DsNeaZWx
+	XKQ29SM4BMcl0QcVMBkhFRBbZR4fw5RlLVrpvPKQZz7vVeNJLbHPPOjyLz+5g+PuWtBWuIl0Pia1T
+	bcFffT0uDl2KykouECphjFuzWV0NwFZRfKOPh8z7g6kp8GUWMhXXXDFMSAYVllIto4EdYQvXVETwo
+	EsKtqw1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMODj-0000000DAxg-0JPa;
-	Mon, 11 May 2026 10:50:43 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wMPAd-0000000DOo4-45cA;
+	Mon, 11 May 2026 11:51:35 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMODP-0000000DAXj-34Cv;
-	Mon, 11 May 2026 10:50:23 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 24F78600CB;
-	Mon, 11 May 2026 10:50:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5077AC2BCFA;
-	Mon, 11 May 2026 10:50:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778496622;
-	bh=LHuLiEolYKUzxJUo+YmvV8UYqrSTqc7J321GJlxqssU=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=YtcaN6MRexdPS5DOMZXFrIcMP5oTYKkVuigSIe5ECDg/ANoCqXsgULSvQCuwqGaCt
-	 lTCdzDyHy0FcYVENCzNIkVd9U9fA8DR4qPQ/YJXFJTEmLR/GTnHp6rxxmFWn/8Bn6D
-	 QOlyJzWGGywl6WYo3iPaArg+jx3hmcmdmEkCcAkcm+/4rIgWGmsxVGXqjDgT4cN61R
-	 EKEemRH/ZmWaZxBSza2hXTvQfKM58ipgFnzhP0hiA4ys5++GBtCI6cGmB/Lrg2LANW
-	 jo675R6DvKuVkp6ITfNx6Tde4eXiUEDjJHZJQW1SAO6LnugujKuFRypMDmrS0uf6RS
-	 bEF+cXFZ9ftyw==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Mon, 11 May 2026 12:49:38 +0200
-Subject: [PATCH net-next v6 12/12] net: airoha: Better handle MIB for GDM
- with multiple port attached
+	id 1wMPAb-0000000DOmW-0W05
+	for linux-mediatek@lists.infradead.org;
+	Mon, 11 May 2026 11:51:34 +0000
+Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-488ab2db91aso46296325e9.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 11 May 2026 04:51:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1778500291; x=1779105091; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=4vWqIXrpE2Ly8encEK5XElKZl+8B0OQogZgUPoAVNec=;
+        b=ZS25NZrDAzFXdN/Ngo21BKH4R2kWvG+Flm+l+PjPLjbv2zv3pKZlOdqV00xN/jS2II
+         s0nL2DuW3JKHbF3mTNEbXkbdjKkZK5fjkE6VBuyggwNfYmdm46oKy6loiJLoDczhkI+a
+         AI/uc8TpgEQI4JDKOBDWyWIEoDXHfyMrE3Pc1porWN0mMQcAdkB0M3a9VguNvQ5Tdog9
+         fxUmF4Bv0DcffmnN0qNoKIXI20/ErRN/qXX9n7sOo0HrMWIGG0P8ZHPIE2iRDxmZR5dy
+         WH2yvbXBm+nqDLbyiNpydQH3QWYvJiS5DveGd3pzRCcBKaR3hpuBBj71ACqsFj3zi1U1
+         zuuA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1778500291; x=1779105091;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=4vWqIXrpE2Ly8encEK5XElKZl+8B0OQogZgUPoAVNec=;
+        b=effBIlZyWFThyKmiLzVmMl4UUCvHk8eOuUeNiaJ4mZuS3GLlBlwUIBy/MnsbfvUEcM
+         o1uLRT/jFjuvOqLJjWmsFXqKlVGHR7AUS1u5UZAiDVKV8lUqXILswrB3UwCaOTolxW0z
+         651mlUWRPI+tUcIY6N7am4I1uIgNEsvXZ2h6W/qEs9VDXlZmEWByWwnb/cxkYnRVF3kk
+         SK1yjTjcUgn+Ur/PTBxRdC369h7dGbR2GRYoDzl8LBanntB9iPsRBUHXJr26E3xfMu3o
+         P1RK6cWDfb75JOt0etybt607WwixW/Ml5Ghv4wfPRPG307cfeY5UIx5sqkhz5vLkEyF5
+         9z7g==
+X-Forwarded-Encrypted: i=1; AFNElJ+h5GCNT8JdBUxxCzaJARHf76pQ3GOKH8ADCu4Cw1v5MhQ9mMGSv4/iCnuJ5/dwDCl/DEq/83yjx+V9BK5JQw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy04Z8RcAURWQd3t1bQMVzidEFsVYfN7holNoOCf9Iwhl7SgXjn
+	jOsvxboc2LhD4gV6r4k5r7RZidJif3Zz1hzrHI7siZd7hAr5twE41lkoAe4s0w==
+X-Gm-Gg: Acq92OGZsE/eaT01SIcFqRQNMVVlQSxPRC0PPgM5jCZKDLLK4vQYQq8gOSNVihggBt/
+	9fOF/5rjN36s1n8DN/q03I0r49pxV6i5sDUeNJO7bpFWATBrlMyV+aunO7WxSrfLWCUjcDJIYOZ
+	QgKBkW+VBQwDiU9V632G7emCtBLJ/sHjWlZck7c0eco5VUh7Sp5OFJKJfwavCr7KHnIuhKOlB5d
+	fCYz9Tgrx2KAz+m9WAHAVF/Lxl8qZ4MW1E6v7tVPYnS1NJgBQ+VgEgJ8QddDsDrHjyqrNOOFuhx
+	a/ThPJ4zfEaENaVbtDmIWS0BzgDiUrFwpA5EYtYplwwl1B9Of890BEEExCH4a1QzKTUoiBYTlPU
+	QVDHFdy7oppT8MwZFcxW+gwKgwES/CS5xIpCgogxmOzmpwvVZnz+4j6XmVuqv/dZwN4FYm2PfAK
+	LraHSeIuwfZB3c5WF/6IDuP6Z0BlU=
+X-Received: by 2002:a05:600c:4512:b0:489:284:44ab with SMTP id 5b1f17b1804b1-48e51e1deedmr372311795e9.12.1778500290423;
+        Mon, 11 May 2026 04:51:30 -0700 (PDT)
+Received: from owl5 ([2001:861:3201:3d10:d26e:45c6:70b:8eb])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4548ec6cd75sm23966132f8f.16.2026.05.11.04.51.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 11 May 2026 04:51:29 -0700 (PDT)
+Date: Mon, 11 May 2026 13:51:28 +0200
+From: Gary Bisson <bisson.gary@gmail.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] arm64: defconfig: Enable MT7921S support
+Message-ID: <agHCwC9U1YHFBBuF@owl5>
+References: <20260310-mtkdefconfig-v1-1-717eb3e6eea7@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260511-airoha-eth-multi-serdes-v6-12-c899462c4f75@kernel.org>
-References: <20260511-airoha-eth-multi-serdes-v6-0-c899462c4f75@kernel.org>
-In-Reply-To: <20260511-airoha-eth-multi-serdes-v6-0-c899462c4f75@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Christian Marangi <ansuelsmth@gmail.com>, 
- Benjamin Larsson <benjamin.larsson@genexis.eu>, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- netdev@vger.kernel.org, devicetree@vger.kernel.org, 
- Brown Huang <Brown.huang@airoha.com>
-X-Mailer: b4 0.14.3
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260310-mtkdefconfig-v1-1-717eb3e6eea7@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260511_045133_171643_59588084 
+X-CRM114-Status: GOOD (  14.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,397 +98,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Christian Marangi <ansuelsmth@gmail.com>
+Hi,
 
-In the context of a GDM that can have multiple port attached (GDM3/4)
-the HW counter (MIB) are global for the GDM port. This cause duplicated
-stats reported to the kernel for the related interface.
+On Tue, Mar 10, 2026 at 04:52:12PM +0100, Gary Bisson wrote:
+> Enable MT7921S which is the SDIO variant of the MT7921, also called
+> Filogic 320 [1].
+> This driver is now used by Tungsten510/700 platforms which are now
+> included upstream.
+> 
+> [1] https://www.mediatek.com/products/broadband-wifi/mediatek-filogic-320
+> 
+> Signed-off-by: Gary Bisson <bisson.gary@gmail.com>
+> ---
+>  arch/arm64/configs/defconfig | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+> index b67d5b1fc45b..d469ad15dc69 100644
+> --- a/arch/arm64/configs/defconfig
+> +++ b/arch/arm64/configs/defconfig
+> @@ -200,6 +200,7 @@ CONFIG_BT_HCIUART_QCA=y
+>  CONFIG_BT_HCIUART_MRVL=y
+>  CONFIG_BT_MRVL=m
+>  CONFIG_BT_MRVL_SDIO=m
+> +CONFIG_BT_MTKSDIO=m
+>  CONFIG_BT_QCOMSMD=m
+>  CONFIG_BT_NXPUART=m
+>  CONFIG_CFG80211=m
+> @@ -462,6 +463,7 @@ CONFIG_MWIFIEX_SDIO=m
+>  CONFIG_MWIFIEX_PCIE=m
+>  CONFIG_MWIFIEX_USB=m
+>  CONFIG_MT7921E=m
+> +CONFIG_MT7921S=m
+>  CONFIG_RSI_91X=m
+>  CONFIG_WL18XX=m
+>  CONFIG_WLCORE_SDIO=m
+> 
+> ---
+> base-commit: 6de23f81a5e08be8fbf5e8d7e9febc72a5b5f27f
+> change-id: 20260310-mtkdefconfig-5d9626f242c7
+> 
+> Best regards,
 
-The SoC supports a split MIB feature where each counter is tracked based
-on the relevant HW channel (NBQ) to account for this scenario and
-provide a way to select the related counter on accessing the MIB
-registers.
+Gentle ping on this request. Let me know if anything is missing.
 
-Enable this feature for GDM3 and GDM4 and configure the relevant HW
-channel before updating the HW stats to report correct HW counter to the
-kernel for the related interface.
-
-Also move the stats struct from port to dev since HW counter are
-now specific to the network interface instead of the GDM port.
-
-Co-developed-by: Brown Huang <Brown.huang@airoha.com>
-Signed-off-by: Brown Huang <Brown.huang@airoha.com>
-Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
----
- drivers/net/ethernet/airoha/airoha_eth.c | 173 ++++++++++++++++---------------
- drivers/net/ethernet/airoha/airoha_eth.h |   7 +-
- 2 files changed, 93 insertions(+), 87 deletions(-)
-
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 533ffe20f833..27ccc636d800 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -1621,143 +1621,146 @@ static void airoha_update_hw_stats(struct airoha_gdm_dev *dev)
- 	struct airoha_eth *eth = dev->eth;
- 	u32 val, i = 0;
- 
--	spin_lock(&port->stats.lock);
--	u64_stats_update_begin(&port->stats.syncp);
-+	spin_lock(&port->stats_lock);
-+	u64_stats_update_begin(&dev->stats.syncp);
-+
-+	/* Read relevant MIB for GDM with multiple port attached */
-+	if (port->id == AIROHA_GDM3_IDX || port->id == AIROHA_GDM4_IDX)
-+		airoha_fe_rmw(eth, REG_FE_GDM_MIB_CFG(port->id),
-+			      FE_TX_MIB_ID_MASK | FE_RX_MIB_ID_MASK,
-+			      FIELD_PREP(FE_TX_MIB_ID_MASK, dev->nbq) |
-+			      FIELD_PREP(FE_RX_MIB_ID_MASK, dev->nbq));
- 
- 	/* TX */
- 	val = airoha_fe_rr(eth, REG_FE_GDM_TX_OK_PKT_CNT_H(port->id));
--	port->stats.tx_ok_pkts += ((u64)val << 32);
-+	dev->stats.tx_ok_pkts = (u64)val << 32;
- 	val = airoha_fe_rr(eth, REG_FE_GDM_TX_OK_PKT_CNT_L(port->id));
--	port->stats.tx_ok_pkts += val;
-+	dev->stats.tx_ok_pkts += val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_TX_OK_BYTE_CNT_H(port->id));
--	port->stats.tx_ok_bytes += ((u64)val << 32);
-+	dev->stats.tx_ok_bytes = (u64)val << 32;
- 	val = airoha_fe_rr(eth, REG_FE_GDM_TX_OK_BYTE_CNT_L(port->id));
--	port->stats.tx_ok_bytes += val;
-+	dev->stats.tx_ok_bytes += val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_DROP_CNT(port->id));
--	port->stats.tx_drops += val;
-+	dev->stats.tx_drops = val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_BC_CNT(port->id));
--	port->stats.tx_broadcast += val;
-+	dev->stats.tx_broadcast = val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_MC_CNT(port->id));
--	port->stats.tx_multicast += val;
-+	dev->stats.tx_multicast = val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_RUNT_CNT(port->id));
--	port->stats.tx_len[i] += val;
-+	dev->stats.tx_len[i] = val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_E64_CNT_H(port->id));
--	port->stats.tx_len[i] += ((u64)val << 32);
-+	dev->stats.tx_len[i] = (u64)val << 32;
- 	val = airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_E64_CNT_L(port->id));
--	port->stats.tx_len[i++] += val;
-+	dev->stats.tx_len[i++] += val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L64_CNT_H(port->id));
--	port->stats.tx_len[i] += ((u64)val << 32);
-+	dev->stats.tx_len[i] = (u64)val << 32;
- 	val = airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L64_CNT_L(port->id));
--	port->stats.tx_len[i++] += val;
-+	dev->stats.tx_len[i++] += val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L127_CNT_H(port->id));
--	port->stats.tx_len[i] += ((u64)val << 32);
-+	dev->stats.tx_len[i] = (u64)val << 32;
- 	val = airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L127_CNT_L(port->id));
--	port->stats.tx_len[i++] += val;
-+	dev->stats.tx_len[i++] += val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L255_CNT_H(port->id));
--	port->stats.tx_len[i] += ((u64)val << 32);
-+	dev->stats.tx_len[i] = (u64)val << 32;
- 	val = airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L255_CNT_L(port->id));
--	port->stats.tx_len[i++] += val;
-+	dev->stats.tx_len[i++] += val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L511_CNT_H(port->id));
--	port->stats.tx_len[i] += ((u64)val << 32);
-+	dev->stats.tx_len[i] = (u64)val << 32;
- 	val = airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L511_CNT_L(port->id));
--	port->stats.tx_len[i++] += val;
-+	dev->stats.tx_len[i++] += val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L1023_CNT_H(port->id));
--	port->stats.tx_len[i] += ((u64)val << 32);
-+	dev->stats.tx_len[i] = (u64)val << 32;
- 	val = airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L1023_CNT_L(port->id));
--	port->stats.tx_len[i++] += val;
-+	dev->stats.tx_len[i++] += val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_LONG_CNT(port->id));
--	port->stats.tx_len[i++] += val;
-+	dev->stats.tx_len[i++] = val;
- 
- 	/* RX */
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_OK_PKT_CNT_H(port->id));
--	port->stats.rx_ok_pkts += ((u64)val << 32);
-+	dev->stats.rx_ok_pkts = (u64)val << 32;
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_OK_PKT_CNT_L(port->id));
--	port->stats.rx_ok_pkts += val;
-+	dev->stats.rx_ok_pkts += val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_OK_BYTE_CNT_H(port->id));
--	port->stats.rx_ok_bytes += ((u64)val << 32);
-+	dev->stats.rx_ok_bytes = (u64)val << 32;
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_OK_BYTE_CNT_L(port->id));
--	port->stats.rx_ok_bytes += val;
-+	dev->stats.rx_ok_bytes += val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_DROP_CNT(port->id));
--	port->stats.rx_drops += val;
-+	dev->stats.rx_drops = val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_BC_CNT(port->id));
--	port->stats.rx_broadcast += val;
-+	dev->stats.rx_broadcast = val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_MC_CNT(port->id));
--	port->stats.rx_multicast += val;
-+	dev->stats.rx_multicast = val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_ERROR_DROP_CNT(port->id));
--	port->stats.rx_errors += val;
-+	dev->stats.rx_errors = val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_CRC_ERR_CNT(port->id));
--	port->stats.rx_crc_error += val;
-+	dev->stats.rx_crc_error = val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_OVERFLOW_DROP_CNT(port->id));
--	port->stats.rx_over_errors += val;
-+	dev->stats.rx_over_errors = val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_FRAG_CNT(port->id));
--	port->stats.rx_fragment += val;
-+	dev->stats.rx_fragment = val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_JABBER_CNT(port->id));
--	port->stats.rx_jabber += val;
-+	dev->stats.rx_jabber = val;
- 
- 	i = 0;
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_RUNT_CNT(port->id));
--	port->stats.rx_len[i] += val;
-+	dev->stats.rx_len[i] = val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_E64_CNT_H(port->id));
--	port->stats.rx_len[i] += ((u64)val << 32);
-+	dev->stats.rx_len[i] = (u64)val << 32;
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_E64_CNT_L(port->id));
--	port->stats.rx_len[i++] += val;
-+	dev->stats.rx_len[i++] += val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L64_CNT_H(port->id));
--	port->stats.rx_len[i] += ((u64)val << 32);
-+	dev->stats.rx_len[i] = (u64)val << 32;
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L64_CNT_L(port->id));
--	port->stats.rx_len[i++] += val;
-+	dev->stats.rx_len[i++] += val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L127_CNT_H(port->id));
--	port->stats.rx_len[i] += ((u64)val << 32);
-+	dev->stats.rx_len[i] = (u64)val << 32;
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L127_CNT_L(port->id));
--	port->stats.rx_len[i++] += val;
-+	dev->stats.rx_len[i++] += val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L255_CNT_H(port->id));
--	port->stats.rx_len[i] += ((u64)val << 32);
-+	dev->stats.rx_len[i] = (u64)val << 32;
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L255_CNT_L(port->id));
--	port->stats.rx_len[i++] += val;
-+	dev->stats.rx_len[i++] += val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L511_CNT_H(port->id));
--	port->stats.rx_len[i] += ((u64)val << 32);
-+	dev->stats.rx_len[i] = (u64)val << 32;
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L511_CNT_L(port->id));
--	port->stats.rx_len[i++] += val;
-+	dev->stats.rx_len[i++] += val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L1023_CNT_H(port->id));
--	port->stats.rx_len[i] += ((u64)val << 32);
-+	dev->stats.rx_len[i] = (u64)val << 32;
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L1023_CNT_L(port->id));
--	port->stats.rx_len[i++] += val;
-+	dev->stats.rx_len[i++] += val;
- 
- 	val = airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_LONG_CNT(port->id));
--	port->stats.rx_len[i++] += val;
--
--	/* reset mib counters */
--	airoha_fe_set(eth, REG_FE_GDM_MIB_CLEAR(port->id),
--		      FE_GDM_MIB_RX_CLEAR_MASK | FE_GDM_MIB_TX_CLEAR_MASK);
-+	dev->stats.rx_len[i++] = val;
- 
--	u64_stats_update_end(&port->stats.syncp);
--	spin_unlock(&port->stats.lock);
-+	u64_stats_update_end(&dev->stats.syncp);
-+	spin_unlock(&port->stats_lock);
- }
- 
- static int airoha_dev_open(struct net_device *netdev)
-@@ -1984,6 +1987,11 @@ static int airoha_dev_init(struct net_device *netdev)
- 	case AIROHA_GDM4_IDX: {
- 		struct airoha_eth *eth = dev->eth;
- 
-+		/* Enable split MIB for GDM with multiple port attached */
-+		airoha_fe_set(eth, REG_FE_GDM_MIB_CFG(port->id),
-+			      FE_GDM_TX_MIB_SPLIT_EN_MASK |
-+			      FE_GDM_RX_MIB_SPLIT_EN_MASK);
-+
- 		/* GDM2 supports a single net_device */
- 		if (eth->ports[1] && eth->ports[1]->devs[0])
- 			break;
-@@ -2022,23 +2030,22 @@ static void airoha_dev_get_stats64(struct net_device *netdev,
- 				   struct rtnl_link_stats64 *storage)
- {
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
--	struct airoha_gdm_port *port = dev->port;
- 	unsigned int start;
- 
- 	airoha_update_hw_stats(dev);
- 	do {
--		start = u64_stats_fetch_begin(&port->stats.syncp);
--		storage->rx_packets = port->stats.rx_ok_pkts;
--		storage->tx_packets = port->stats.tx_ok_pkts;
--		storage->rx_bytes = port->stats.rx_ok_bytes;
--		storage->tx_bytes = port->stats.tx_ok_bytes;
--		storage->multicast = port->stats.rx_multicast;
--		storage->rx_errors = port->stats.rx_errors;
--		storage->rx_dropped = port->stats.rx_drops;
--		storage->tx_dropped = port->stats.tx_drops;
--		storage->rx_crc_errors = port->stats.rx_crc_error;
--		storage->rx_over_errors = port->stats.rx_over_errors;
--	} while (u64_stats_fetch_retry(&port->stats.syncp, start));
-+		start = u64_stats_fetch_begin(&dev->stats.syncp);
-+		storage->rx_packets = dev->stats.rx_ok_pkts;
-+		storage->tx_packets = dev->stats.tx_ok_pkts;
-+		storage->rx_bytes = dev->stats.rx_ok_bytes;
-+		storage->tx_bytes = dev->stats.tx_ok_bytes;
-+		storage->multicast = dev->stats.rx_multicast;
-+		storage->rx_errors = dev->stats.rx_errors;
-+		storage->rx_dropped = dev->stats.rx_drops;
-+		storage->tx_dropped = dev->stats.tx_drops;
-+		storage->rx_crc_errors = dev->stats.rx_crc_error;
-+		storage->rx_over_errors = dev->stats.rx_over_errors;
-+	} while (u64_stats_fetch_retry(&dev->stats.syncp, start));
- }
- 
- static int airoha_dev_change_mtu(struct net_device *netdev, int mtu)
-@@ -2297,20 +2304,19 @@ static void airoha_ethtool_get_mac_stats(struct net_device *netdev,
- 					 struct ethtool_eth_mac_stats *stats)
- {
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
--	struct airoha_gdm_port *port = dev->port;
- 	unsigned int start;
- 
- 	airoha_update_hw_stats(dev);
- 	do {
--		start = u64_stats_fetch_begin(&port->stats.syncp);
--		stats->FramesTransmittedOK = port->stats.tx_ok_pkts;
--		stats->OctetsTransmittedOK = port->stats.tx_ok_bytes;
--		stats->MulticastFramesXmittedOK = port->stats.tx_multicast;
--		stats->BroadcastFramesXmittedOK = port->stats.tx_broadcast;
--		stats->FramesReceivedOK = port->stats.rx_ok_pkts;
--		stats->OctetsReceivedOK = port->stats.rx_ok_bytes;
--		stats->BroadcastFramesReceivedOK = port->stats.rx_broadcast;
--	} while (u64_stats_fetch_retry(&port->stats.syncp, start));
-+		start = u64_stats_fetch_begin(&dev->stats.syncp);
-+		stats->FramesTransmittedOK = dev->stats.tx_ok_pkts;
-+		stats->OctetsTransmittedOK = dev->stats.tx_ok_bytes;
-+		stats->MulticastFramesXmittedOK = dev->stats.tx_multicast;
-+		stats->BroadcastFramesXmittedOK = dev->stats.tx_broadcast;
-+		stats->FramesReceivedOK = dev->stats.rx_ok_pkts;
-+		stats->OctetsReceivedOK = dev->stats.rx_ok_bytes;
-+		stats->BroadcastFramesReceivedOK = dev->stats.rx_broadcast;
-+	} while (u64_stats_fetch_retry(&dev->stats.syncp, start));
- }
- 
- static const struct ethtool_rmon_hist_range airoha_ethtool_rmon_ranges[] = {
-@@ -2330,8 +2336,7 @@ airoha_ethtool_get_rmon_stats(struct net_device *netdev,
- 			      const struct ethtool_rmon_hist_range **ranges)
- {
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
--	struct airoha_gdm_port *port = dev->port;
--	struct airoha_hw_stats *hw_stats = &port->stats;
-+	struct airoha_hw_stats *hw_stats = &dev->stats;
- 	unsigned int start;
- 
- 	BUILD_BUG_ON(ARRAY_SIZE(airoha_ethtool_rmon_ranges) !=
-@@ -2344,7 +2349,7 @@ airoha_ethtool_get_rmon_stats(struct net_device *netdev,
- 	do {
- 		int i;
- 
--		start = u64_stats_fetch_begin(&port->stats.syncp);
-+		start = u64_stats_fetch_begin(&dev->stats.syncp);
- 		stats->fragments = hw_stats->rx_fragment;
- 		stats->jabbers = hw_stats->rx_jabber;
- 		for (i = 0; i < ARRAY_SIZE(airoha_ethtool_rmon_ranges) - 1;
-@@ -2352,7 +2357,7 @@ airoha_ethtool_get_rmon_stats(struct net_device *netdev,
- 			stats->hist[i] = hw_stats->rx_len[i];
- 			stats->hist_tx[i] = hw_stats->tx_len[i];
- 		}
--	} while (u64_stats_fetch_retry(&port->stats.syncp, start));
-+	} while (u64_stats_fetch_retry(&dev->stats.syncp, start));
- }
- 
- static int airoha_qdma_set_chan_tx_sched(struct net_device *netdev,
-@@ -3189,6 +3194,7 @@ static int airoha_alloc_gdm_device(struct airoha_eth *eth,
- 
- 	netdev->dev.of_node = of_node_get(np);
- 	dev = netdev_priv(netdev);
-+	u64_stats_init(&dev->stats.syncp);
- 	dev->dev = netdev;
- 	dev->port = port;
- 	dev->eth = eth;
-@@ -3229,9 +3235,8 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
- 	if (!port)
- 		return -ENOMEM;
- 
--	u64_stats_init(&port->stats.syncp);
--	spin_lock_init(&port->stats.lock);
- 	port->id = id;
-+	spin_lock_init(&port->stats_lock);
- 	eth->ports[p] = port;
- 
- 	err = airoha_metadata_dst_alloc(port);
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index 364ca76eb3a6..1e9cd899b7cb 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -215,8 +215,6 @@ struct airoha_tx_irq_queue {
- };
- 
- struct airoha_hw_stats {
--	/* protect concurrent hw_stats accesses */
--	spinlock_t lock;
- 	struct u64_stats_sync syncp;
- 
- 	/* get_stats64 */
-@@ -555,6 +553,8 @@ struct airoha_gdm_dev {
- 
- 	u32 flags;
- 	int nbq;
-+
-+	struct airoha_hw_stats stats;
- };
- 
- struct airoha_gdm_port {
-@@ -562,7 +562,8 @@ struct airoha_gdm_port {
- 	int id;
- 	int users;
- 
--	struct airoha_hw_stats stats;
-+	/* protect concurrent hw_stats accesses */
-+	spinlock_t stats_lock;
- 
- 	struct metadata_dst *dsa_meta[AIROHA_MAX_DSA_PORTS];
- };
-
--- 
-2.54.0
-
+Regards,
+Gary
 
