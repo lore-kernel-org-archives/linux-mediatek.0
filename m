@@ -4,81 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C177CD37AC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2026 12:10:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F336FCD37AC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2026 12:19:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nXOcXWZt96hThPXB+sE3GMaB18OCUhMorcdX5oKA3A8=; b=l6j3KsTDLm+ubuAWDRwLDFDIeE
-	DICkNCJ2VyeBK+m8e/JJ893nfmYzIEJXjDcyY7ScnvxYlMOeAl2gD6f7ziAJUWXupv8AIwdJMtLct
-	djSI2ZShLvoCT6CiahQ7Sq9C5K4b1Wmn4u85qPPDJssWcdswhSlDxpZsBZVMLGvKp3Xe+1nCfm38g
-	qS8qXoHXSiRnTEJlFnqQDEGubtnvDR7+him/5hGKA2CjIV5QhWK0IeVyc2EhP6DEkAV1EWjL4EzR1
-	Rlv8q/ToSiWCZkJzA5noq59+DJoUrRXcXLxaeBdE2ma/F8Vb9fL20BO8z8oQFrklagAAME9R8liJS
-	Op1awNAg==;
+	bh=e3KpDXgFCAnQkBfYlVPDB0FnslGkY39PA015X6zVYj0=; b=JLQIIql/Q3WPfwyg2WQINomi5P
+	Xc7EfAqUtiUrkaXdztgrEhwmD40G9+ZrzovvHBF2SgU2//0fMhvb7GEhUd+JhcK3xzOTjxYP4LhgE
+	Xgf6A+6NxsC2mAyygzBkIwqSraRQWghUWrYRxnji8vlFtOVEGExR4YR5/ttxC1q2vnbfc/wX/dMO1
+	nLtDUw0MQ15qeM7dMvM2hp7NsZBhwjjLTfV1C+QwcN04SZz3InACihsxWAKi6CB2JHZfLOwC9mfMt
+	5HocC5eVZoqvGkF/R2Uki+s8lhCTEv2z49BtU9/7j7dZzOhrP5vhX+2ze7hYMZgw1fAi3uK62tquM
+	fnGwa8yA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMPT8-0000000DTod-1hg2;
-	Mon, 11 May 2026 12:10:42 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1wMPbi-0000000DVKw-1e2w;
+	Mon, 11 May 2026 12:19:34 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMPT5-0000000DTmQ-0xML;
-	Mon, 11 May 2026 12:10:40 +0000
-X-UUID: 68b21c924d3211f19f231fa534c5cac8-20260511
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=nXOcXWZt96hThPXB+sE3GMaB18OCUhMorcdX5oKA3A8=;
-	b=RzohBPWpUHOeEZBwNNiUpBmOjxeA8JUGqbliRuEpL31FiIUTBKTFuUEmMVWN+uYknKX0Qjm13RcvgkxLlISItJweC39/v7nbGf4UYUWOOsxmnu1BVwigqQkB6MSDjU+d2n8YOjw+QAkytaYWIKGkoO4qzrM3KqzwjoZyKBZ7dLM=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:5f0f677f-90c0-41c6-9500-14f1913339b7,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:e7bac3a,CLOUDID:f4d331bf-65a8-4b41-ac18-3671578a914d,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|865|888|898,TC:-5,Cont
-	ent:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0
-	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 68b21c924d3211f19f231fa534c5cac8-20260511
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <arnab.layek@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1997454439; Mon, 11 May 2026 05:10:32 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 11 May 2026 20:10:30 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 11 May 2026 20:10:30 +0800
-From: Arnab Layek <arnab.layek@mediatek.com>
-To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
-	<mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>, Krzysztof
- Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Arnab Layek
-	<arnab.layek@mediatek.com>
-Subject: [PATCH v2 1/1] dt-bindings: remoteproc: mtk,scp: Allow multiple memory regions for MT8188
-Date: Mon, 11 May 2026 20:10:04 +0800
-Message-ID: <20260511121004.2984149-2-arnab.layek@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20260511121004.2984149-1-arnab.layek@mediatek.com>
-References: <20260506133157.3283204-1-arnab.layek@mediatek.com>
- <20260511121004.2984149-1-arnab.layek@mediatek.com>
+	id 1wMPbe-0000000DVJO-0KRp;
+	Mon, 11 May 2026 12:19:31 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1778501937; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=YzVK4hvLbtCl9NpyRB3GWuSOYS3kV0KUDNWZi9XZNTt2iYuf6UYHbbNYZWsRuDzQPEv/VsrcpLL9z5Mt+LPnfKEePnvt0MkjUaBLX1QgTQ3VjMwhyvBdGPLA8rh0gUDXGmAYp2ZW1Bh+CzSyeYElwWMmo1TofX2vVEbUY0GXc8A=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1778501937; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=e3KpDXgFCAnQkBfYlVPDB0FnslGkY39PA015X6zVYj0=; 
+	b=DzRpRTKFrXjL+nwK9M/yODt8RUaLXrvsopbDOLQydTLTMGODfKiTufvJqoRMsVBEOBllX08F58iglJwkykK5ZbIl3dDbW7JoW2sg5Xs8wAYAgpXJ8ZINBP0E9LLu9zqS1M0mFy4V0Xd8iIkPS2guQJz8cpd3xpNGWFkEmMd6lR4=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
+	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1778501937;
+	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
+	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
+	bh=e3KpDXgFCAnQkBfYlVPDB0FnslGkY39PA015X6zVYj0=;
+	b=kWM8oXpVV/vf2I9SOZYxwamB054/t0Z4fI6yzV92fBRgFDBs/r/2Io2pMytOw8En
+	2jT5A8YJo1a0XlciPSxIQFMXy6T+9rVro6CrDIN9x95RkZLlVngsPB6srKULRi21ClG
+	YESxMCb8hQowltd6AaESLw1zanniqhGuPXp5JtOg=
+Received: by mx.zohomail.com with SMTPS id 1778501935318366.15850500485783;
+	Mon, 11 May 2026 05:18:55 -0700 (PDT)
+Message-ID: <c7349f39fd10feed71e1188bcbb24f348451ab75.camel@collabora.com>
+Subject: Re: [PATCH net-next v2 3/4] net: phy: air_phy_lib: Factorize
+ BuckPBus register accessors
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>,  Eric Dumazet <edumazet@google.com>, Jakub Kicinski
+ <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring
+ <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley	
+ <conor+dt@kernel.org>, AngeloGioacchino Del Regno	
+ <angelogioacchino.delregno@collabora.com>, Heiner Kallweit	
+ <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>, 
+	kevin-kw.huang@airoha.com, macpaul.lin@mediatek.com,
+ matthias.bgg@gmail.com, 	kernel@collabora.com, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, 	linux-kernel@vger.kernel.org
+Date: Mon, 11 May 2026 14:18:49 +0200
+In-Reply-To: <d7580b92-f165-4135-85b9-ec89a2568949@lunn.ch>
+References: <20260326-add-airoha-an8801-support-v2-0-1a42d6b6050f@collabora.com>
+	 <20260326-add-airoha-an8801-support-v2-3-1a42d6b6050f@collabora.com>
+	 <3bd7803d-4c4a-4f61-9434-a6bf25627b58@lunn.ch>
+	 <9f569ba00b959b701a7a51bcd7347c1a108a15ee.camel@collabora.com>
+	 <d7580b92-f165-4135-85b9-ec89a2568949@lunn.ch>
+Organization: Collabora Ltd
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260511_051039_413717_2E49338B 
-X-CRM114-Status: GOOD (  10.06  )
+X-CRM114-CacheID: sfid-20260511_051930_171653_61BD8FC7 
+X-CRM114-Status: GOOD (  22.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,57 +92,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT8188 SCP requires two reserved memory regions:
-1. Main SCP SRAM memory region (required)
-2. SCP L1TCM memory region (optional, for additional memory)
+Hi Andrew,
 
-Some other MediaTek SoCs only use a single memory region. This patch adds
-a conditional schema using if/then to allow 1-2 memory regions
-specifically for mediatek,mt8188-scp and mediatek,mt8188-scp-dual
-compatibles, while keeping the default maxItems: 1 for other
-SoCs.
+On Thu, 2026-05-07 at 23:36 +0200, Andrew Lunn wrote:
+> On Thu, May 07, 2026 at 02:11:54PM +0200, Louis-Alexis Eyraud wrote:
+> > Hi=C2=A0Andrew,
+> >=20
+> > On Thu, 2026-03-26 at 13:30 +0100, Andrew Lunn wrote:
+> > > > @@ -480,8 +287,8 @@ static int en8811h_wait_mcu_ready(struct
+> > > > phy_device *phydev)
+> > > > =C2=A0{
+> > > > =C2=A0	int ret, reg_value;
+> > > > =C2=A0
+> > > > -	ret =3D air_buckpbus_reg_write(phydev,
+> > > > EN8811H_FW_CTRL_1,
+> > > > -				=C2=A0=C2=A0=C2=A0=C2=A0
+> > > > EN8811H_FW_CTRL_1_FINISH);
+> > > > +	ret =3D air_phy_buckpbus_reg_write(phydev,
+> > > > EN8811H_FW_CTRL_1,
+> > > > +				=09
+> > > > EN8811H_FW_CTRL_1_FINISH);
+> > >=20
+> > > Is a rename required? Is the namespace air_buckpbus_ used
+> > > somewhere
+> > > else?
+> > >=20
+> > > 	Andrew
+> > Sorry for the delay.
+> >=20
+> > The air_buckpbus_ namespace is only used in the air_en8811h driver.
+> > It seemed better to me that in the new air_phy_lib, all functions
+> > (the
+> > buckpbus accessors and air_phy_read/write_page functions) started
+> > with
+> > the same prefix. That is the reason I renamed them, even if not
+> > required.
+> >=20
+> > As an alternative, to avoid renaming those buckpbus function calls
+> > on
+> > air_en8811h driver and reduce this patch changes, I can add macros
+> > at
+> > the beginning of the file such as:
+> > ```
+> > #define air_buckpbus_reg_write(_phydev, _pbus_address, _pbus_data)
+> > \
+> > 	air_phy_buckpbus_reg_write(_phydev, _pbus_address,
+> > _pbus_data)
+>=20
+> No don't do this.
+>=20
+> If you want to rename them, rename them. But do it in a patch which
+> only contains a rename. That is easier to review, and more obviously
+> correct.
+I'll add in v3 a new patch to rename the functions and the calls in
+air_en8811h.c then.
 
-Each memory region is documented with descriptions to
-clarify their purpose, following the pattern used in other bindings.
+Best regards,
+Louis-Alexis
 
-Signed-off-by: Arnab Layek <arnab.layek@mediatek.com>
----
- .../bindings/remoteproc/mtk,scp.yaml          | 21 +++++++++++++++++++
- 1 file changed, 21 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-index bdbb12118da4..df13be2026a6 100644
---- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-+++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-@@ -205,6 +205,27 @@ allOf:
-           items:
-             - const: cfg
-             - const: l1tcm
-+  - if:
-+      properties:
-+        compatible:
-+          enum:
-+            - mediatek,mt8188-scp
-+            - mediatek,mt8188-scp-dual
-+    then:
-+      properties:
-+        memory-region:
-+          minItems: 1
-+          items:
-+            - description: Main SCP SRAM memory region
-+            - description: Optional SCP L1TCM memory region
-+      patternProperties:
-+        "^scp@[a-f0-9]+$":
-+          properties:
-+            memory-region:
-+              minItems: 1
-+              items:
-+                - description: Main SCP SRAM memory region
-+                - description: Optional SCP L1TCM memory region
- 
- additionalProperties: false
- 
--- 
-2.45.2
-
+>=20
+> 	Andrew
 
