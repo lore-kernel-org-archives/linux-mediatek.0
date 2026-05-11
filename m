@@ -4,64 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89972CD37AC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2026 09:23:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53A86CD37AC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2026 09:25:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rPyxbZ3AcCD75LMHae2uAmjEIPXHNYPin6mLYOVDV3w=; b=pGqhCygPCgxFzV
-	Oo5ULq806bzEMSfQS/xndnUZOV/eY+cH3vtPRV6jL6IsnnSID4fvuOVLrwiiLt3p6bMJLxXeWCHlC
-	ZoQ+XHgyAJk8omj+eD0bcI1mNUXd6ZMjbiVGDclfUsnmAmYbPbb0ipq3X4XzAQ/2xTjsDbcBQLkI9
-	laNYc2FECbTMrUKsrZcOAmhjOgBUjMgRzLNX3zG3/leQZ1r9wz9sLbMhWcVwpNurVL6kgqHRFqlR4
-	3M0yVfncX1uM+opexKhyW+POqy08s9jLvaIfPATzijC5zM4BqnF4X9ycgjw6/kOYHgH+0VZ2EDFu0
-	WACjyIaVBsuNTy55Mb/g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Jx2/+k5Wa8zS0wl5jDt5pX7ToqvNsurkfM6xiapOE0k=; b=KC1EJkeo8NWGm54NIUqARAChme
+	hkebeQcfbqzvez2LcwEqXx5laM6XDwYswhMYXFsEZhnWkvdmzHEbSFsFY8DOOI2QW62ySIGnoMCGs
+	FwRd3pVIvM2maNFFTWujdWpj6+8plTkOFGP5/Q03nDXXBFHCn58fzu60Ww54QGMcSSmJyxNTX4/40
+	QcknGbmmrd/Z5YZgvlcVx9Jun8dI2jD/MvRV4o/LA32DjCrhPgL3niDVtxVasQMnsHUjiPa7U2Pbr
+	/Tpf/Q7PGCs9KBjy+JkuBHPHjTTsDJJRxENi+MF+nFOt30YGkkp0Exgfkt/dbQpz5ecdUzCDr74v/
+	+gkLYAtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMMrF-0000000Cu7H-224Q;
-	Mon, 11 May 2026 09:23:28 +0000
+	id 1wMMtI-0000000CulD-0Vzd;
+	Mon, 11 May 2026 09:25:32 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMMqz-0000000Ctsp-0p3I;
-	Mon, 11 May 2026 09:23:11 +0000
+	id 1wMMtF-0000000Cujk-3BUy;
+	Mon, 11 May 2026 09:25:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1778491384;
-	bh=z53vm2qhXxvQAfXzZc2lskc12FPIJfghOzT0pM/FsXg=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=b+sb6Rz8q5ernh10wlrWjcVxrJLoTmJjff0Me+riFzRlRcKE4mOqNAopZmXdd+IdQ
-	 UkDdDVFNlCC022mlFV95pur9+/eJKEnspSTdWscj+6kn7oOqB6V7qnQ/Vh6+8IZaT0
-	 SeQyJlHVHvf97wMw1LBLrHpR/+wf3+y0TjFAOIxlPkEIbUGFQ1WUEU9ObbxF+I1mSh
-	 38taxprdieWSRekc4M2nI8nbfV422Re9vW+ycsmMj18/GYRkpG1yK9ubnihX1FjgK6
-	 Zb0tgNpgFKCywxTNyDk8086qo+btK187Gmo06A+Gu7Vzy+7gCHE6OA9kS/o76g69dh
-	 Irq0JLRmRlRfg==
-Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1778491527;
+	bh=pO/xrPSg65FYo/gA2pRRqpmuvg9jN8z+/J7WeN3Kn6E=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=LrM0grUDkRHlaY9gpXL0GF6fUb9FprNGIxJP6Lp6kB4aDWgC89gHTprnaKvxgyaLm
+	 RBdWrpd7te9oxavQobVegnCxs3IV37LX9n8wVZ57j0u99Hq7XmFFkvWBjHPRjz/7iZ
+	 9tr9inuglXvvcBy66acZN4y5XoX2RTkRbPyhfxIMRmJg5T20NCgAfLeWaMfWZs0TBD
+	 IERHmfvvZLvQhui3laF7/hDxqn8erZ4teqxCh/cET1H6OBKzum0DjbWvZw9fYTgj5m
+	 HdGBHB5ZVG0pkNV0pJtSgWcq12e5fn1r0DokGNP/gShjBFJw6qFS+/179xfUPq9tWR
+	 ml9uqndWWb93g==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0C58517E05FC;
-	Mon, 11 May 2026 11:23:04 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Jassi Brar <jassisinghbrar@gmail.com>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Nicolas Dufresne <nicolas@ndufresne.ca>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Jason-JH Lin <jason-jh.lin@mediatek.com>
-In-Reply-To: <20260325035836.2110757-1-jason-jh.lin@mediatek.com>
-References: <20260325035836.2110757-1-jason-jh.lin@mediatek.com>
-Subject: Re: (subset) [PATCH v2 0/5] Migrate soc, drm-mediatek, mdp3 to new
- CMDQ APIs (series 2/4)
-Message-Id: <177849138397.112419.16661288513842004996.b4-ty@collabora.com>
-Date: Mon, 11 May 2026 11:23:03 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B6C7517E12E5;
+	Mon, 11 May 2026 11:25:26 +0200 (CEST)
+Message-ID: <d8aa4ab1-74c4-45b6-a60e-9ecce5d5e3c7@collabora.com>
+Date: Mon, 11 May 2026 11:25:26 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 4/9] dt-bindings: iio: adc: mt6359: Add MT6365 PMIC AuxADC
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+ Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Chen Zhong <chen.zhong@mediatek.com>, Jonathan Cameron <jic23@kernel.org>,
+ David Lechner <dlechner@baylibre.com>, =?UTF-8?Q?Nuno_S=C3=A1?=
+ <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>
+Cc: kernel@collabora.com, linux-pm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-input@vger.kernel.org, linux-iio@vger.kernel.org
+References: <20260429-mediatek-genio-mt6365-cleanup-v1-0-6f43838be92f@collabora.com>
+ <20260429-mediatek-genio-mt6365-cleanup-v1-4-6f43838be92f@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260429-mediatek-genio-mt6365-cleanup-v1-4-6f43838be92f@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260511_022309_433218_1C66C447 
-X-CRM114-Status: UNSURE (   6.61  )
+X-CRM114-CacheID: sfid-20260511_022529_947646_73919B1B 
+X-CRM114-Status: UNSURE (   7.00  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -74,30 +83,16 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Moudy Ho <moudy.ho@mediatek.com>, Xiandong Wang <xiandong.wang@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 25 Mar 2026 11:57:37 +0800, Jason-JH Lin wrote:
-> This series migrates the MediaTek SoC, DRM, and MDP3 drivers to the new
-> CMDQ APIs introduced for MT8196.
+On 4/29/26 11:44, Louis-Alexis Eyraud wrote:
+> Add compatible string for the AuxADC block found on the MT6365 PMIC,
+> that is compatible with the one found in MT6359.
 > 
-> Series application order:
->   1. [Series V2 2/4] Migrate subsystems to new CMDQ APIs (this series)
->   2. [Series V2 3/4] Remove shift_pa from CMDQ jump functions
->   3. [Series V2 4/4] Remove deprecated CMDQ APIs
-> 
-> [...]
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
-Applied to v7.1-next/soc, thanks!
-
-[1/5] soc: mediatek: Use pkt_write function pointer for subsys ID compatibility
-      commit: 004361f01625fda9f6d4009d0dc5a59e32b7be7d
-[2/5] soc: mediatek: mtk-cmdq: Add cmdq_pkt_jump_rel_temp() for removing shift_pa
-      commit: a4656aef98dd6f163c55063c36297d45912737f4
-
-Cheers,
-Angelo
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
 
