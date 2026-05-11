@@ -4,123 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83369CD37B7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2026 05:16:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B3E5CD37BE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2026 06:00:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=akkiEFtz33SlVQRBU3vV8aupDFCE2BQOw1/swe6zPGA=; b=PryV5BMvWV6VLVEwTOD9oMw+yO
-	1xDoxw0sRDoMrpjyJpwTtjzfgndQhZjKmtkhs7L0EbHUiq6/9qr9yvilxIfTHo5BqQ8DeEcNPiJEH
-	zhSy+dR37tuuTqJohRTLY+lNZJe2VSBQNRlqotWUVlm31UbIYuojS12wrt1w9KUAWw563n+Eujqwd
-	ewQisKuZiNhnveumfA3h6aLEUOIjwgWNw8ixVWE0LbSBjoWbKRR4VoZcz+FISXPhUzvoJ8e6O2Hfi
-	U64MxHRHmGMx/knNcY/kORSQOU6ynlgxQpM/2uujPU/+R7F7YnuN9XxpA/0zQq4IPBD58Y9vor8VV
-	kjr8XwBA==;
+	bh=hv/1t/xGsQygAr/vopI1Yy4bj8nhzgu3manFIYqiKFY=; b=qN0+BlaSKCL+TMUiAnoudJbZ2R
+	208xO/Q5MWztp1rFyfr2UQ8NAPhzsallF5KJLuCkEyO0nOU9MhrOFYmYmCAi3STcjLH170uLoqdlX
+	oiv+zeQYQel5mKXrGO03XT5hhU6C93aRTHvoX53aKfhWNP1WQUd9z0qytqtP8D40e85w4dJ63qMzY
+	omfgYXbGO/GrOzBjsOfuR76XRkFB1JcE51sNfql2DGOPMQjRh/+yzyyDUOGulZC2PKAxqFCAqvVRA
+	oTmzCLrW4jccnuV2nCbGUH6jOmolVYzW8QQJF50Ud89S1dXjHkHU4moZwLZEoT4+vNnBNV96DCAom
+	wIVLXBwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMIzt-0000000CMes-0xHv;
-	Mon, 11 May 2026 05:16:05 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wMJgf-0000000CQba-2oVq;
+	Mon, 11 May 2026 06:00:17 +0000
+Received: from m16.mail.163.com ([117.135.210.2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMIzs-0000000CMeS-1Fj4
-	for linux-mediatek@bombadil.infradead.org;
-	Mon, 11 May 2026 05:16:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=akkiEFtz33SlVQRBU3vV8aupDFCE2BQOw1/swe6zPGA=; b=oyG/hrmEnfp7WKx8wIlbTKp7Ik
-	eBrqetlaMvCOLKNyUJu1c6So2yQBd2plYBWqbD7UcGwPhX0LczKP/XZI2/0bEtqqTJFMFkWMKSF/i
-	XY0e3TIQ/IIWLdHSIfDPH56UPUoi1Ek5ErD7p0dIpvyeAyxl4edkk5zaAcPDXswcmGOU5temkbCgi
-	XqQD5IwD06LLeBHsdhzy0vHL61f4L8blcAHYmsCv+jOQgdP3EvnzCDXhwXu69KQZdhCc5yXQQAuXq
-	q5zMwHqKsI+AJbDSzorxpEjN0/7NcxWV7zBsoGdpOm7FGfP6ST4ydVKs7WQr5UiPXywWl+MPmnciJ
-	4IUPQa8A==;
-Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
-	by desiato.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMIzk-0000000Aewq-40iS
-	for linux-mediatek@lists.infradead.org;
-	Mon, 11 May 2026 05:16:03 +0000
-Received: by mail-lj1-x22e.google.com with SMTP id 38308e7fff4ca-38e800deae4so29421891fa.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 10 May 2026 22:15:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1778476552; cv=none;
-        d=google.com; s=arc-20240605;
-        b=lyIlpV91MkIHx+OO4v7mqR7l/1hQFvP8lTkfZdQXp8HoJlZDdJvyjg5paGwk3iPAz4
-         giunkT78FdTP1j8zhQLp8M5bWauY9eDud6GbfGQzxhJr879ANQ/MQLhv3w7UuQCHvlyc
-         tLfoJn5tWDAZ7cVDcEod+AII5i7SmImv4wWHgM7/sWGrYynABjJqBC2lVPd4OwbewggH
-         904Y0SHvzF2q+OBew7x3jg3KKJR70PihthqpbygWL4BJljcnq2vI5ix7JSb/O9QHukMR
-         7+kOK7MNjNu/lgqmcJIskJCQRApgOSSTTSzOx7YOtWwCBt5ccsChhnvS3kaCHY0nGzLs
-         uOnQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=akkiEFtz33SlVQRBU3vV8aupDFCE2BQOw1/swe6zPGA=;
-        fh=51Tx6xHiwg+ptUsyAt3ngV3i1PXL2StQHS8QzzL3yIE=;
-        b=eWvuPGxferOMkPHb3qOREGIjG+SNouspk1utqQpOYMqq8pGYWGwvqNklk3pnRFeJ10
-         wp7RL36kG331k2hidX8AVnJ3OS3OUUGp5WZlu8QfvdVOUqWNGsi3y7XLFB3tKL6rp1lV
-         5GsPm5Jy/qJrfp1FXzq8fgQMih5j+URk54xxSDIZNtoeepo/PMyDDwor2sC+WqXCXbpK
-         wRjZ7yGO6W+7y2Jomj7ulzrWQqKCIrrQC8QSX46jzYL/DACH4k/fBdIC9+rHk7HEwRv3
-         0Hb5cHFNkZkFYARXER93Ihq7K37N0xW7VLABi1SPdLPmhbGpbG9v/o0f5r3ScFPjU20z
-         ONVw==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1778476552; x=1779081352; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=akkiEFtz33SlVQRBU3vV8aupDFCE2BQOw1/swe6zPGA=;
-        b=KLJgTVkx91/j9Jw7a34LLRUPt3eN1Wf6npyq/xmHz0qmnJou8FnpvLTvZAG8uHitWI
-         tQXAuJKwXrh0JnQ/rvDMQwV4BPIDkjrfu3aqgIGJiiWHvM5YHMwUs4xWme0we/2VQFGw
-         18xKccUncQCHn/w267QWkBlIWr9Ic/b5eW9Ms=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1778476552; x=1779081352;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=akkiEFtz33SlVQRBU3vV8aupDFCE2BQOw1/swe6zPGA=;
-        b=JYkzzBRkHuVuXK74t44RDrgWqYJre+srOuqsKWSD/PqBevAFGdImZb8x6Lti0s6Nck
-         XUtvzO9/wKpdO5v7gdu6mxDJKcoNWjREBVV0+4NsUeHuBdgJ4ahpL6McCzYVeLWmQgAE
-         MYrFpN6RZrpTzXvea2DZYNJcN0L6HKOJ7fOpOEjgw3V7p69o769xTtPKeBXW8FedwmFG
-         GMRF3WJiAgReT2KsLnc9Ht8hYWB7wZEOGor62xCg8R62VlHEJkNkLjMusJdaI7mIJEso
-         nqnaAPlLEKeIBHP98gPy1p2i4ass5jD/juty/WQkOfLz/zhhG5zlEbVWj6AIEyrMyOxF
-         sJOA==
-X-Forwarded-Encrypted: i=1; AFNElJ/Sas1TAE9WC/fOJ04ABg+3tbj6hvgaF62G7l7rrI2vOqSI/ZDbxR2BudsWsErUWlTeoX/i0ZTFlni7+Wb2Eg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyG4+oaelDU4EOwowrKIxS8vba9LgDKcaCVRC5IsvChdCTQj8pU
-	uEI2z3yZbPp5EggcVIHKUiQZGjxhN0hnFR/ahUFXDlWOjAmrTrATSDurRi3pKbRkykyvqgpMlkS
-	Nc4p162aeUfYV1ERYv42InokOOIOAI4cUFslS/OoQ
-X-Gm-Gg: Acq92OE1IQz3soycNM9+Dy57bYK6v9aeHBDQjq+1Yl13sBMHBy4VNHYYqtKcPCRsHo7
-	tLINH5Ck+aXz9WbnjKHpYndMANtJBYikEYPiiQBWUbVJqVqBV70BhYCvC9Ads4jOvS76CGOmbe2
-	4KD1cuHLVHmAA3kwRJ+3YXKKHogUXY85YM5Fwb8cKEOVj9rHuwcsoSv+Gcos8K48zTM+fEYyvzg
-	Zj297kvRddj/ycqHAZw4PkZVvjVJ1T63CPktA0vRgfJSQt5mlQLeBBFmtbx9yIZchpzS77UODCe
-	CCf/HKWz4WbBv3Woqtu58XIZVMaKCod8kxTWbA==
-X-Received: by 2002:a05:6512:6d0:b0:5a8:74c3:5d9b with SMTP id
- 2adb3069b0e04-5a8b6c5f46fmr2281211e87.0.1778476552163; Sun, 10 May 2026
- 22:15:52 -0700 (PDT)
+	id 1wMJgc-0000000CQZX-1fsI;
+	Mon, 11 May 2026 06:00:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=hv
+	/1t/xGsQygAr/vopI1Yy4bj8nhzgu3manFIYqiKFY=; b=He7KE0CXg8bR10NsVH
+	pcJV9X76hZYnFm/9lfgZrZ5UIaZhx2VpNgb/D3HxSRwOzoTvHiEFOSQ5/Uliw50z
+	/JGdpUgP+ryZyY+LkzknGzUbyh+tQZFM+1QFuLCHO2l5b3ZvqF8pORJ7yZBwBF2k
+	I0QId1gYDu34JLI+Wl1JfrA2E=
+Received: from Precision-7960.. (unknown [])
+	by gzga-smtp-mtada-g1-4 (Coremail) with SMTP id _____wDn9yk8cAFqPHQVAw--.46705S8;
+	Mon, 11 May 2026 13:59:33 +0800 (CST)
+From: Hans Zhang <18255117159@163.com>
+To: bhelgaas@google.com,
+	lpieralisi@kernel.org,
+	kwilczynski@kernel.org,
+	mani@kernel.org,
+	vigneshr@ti.com,
+	jingoohan1@gmail.com,
+	thomas.petazzoni@bootlin.com,
+	pali@kernel.org,
+	ryder.lee@mediatek.com,
+	claudiu.beznea.uj@bp.renesas.com,
+	mpillai@cadence.com
+Cc: robh@kernel.org,
+	s-vadapalli@ti.com,
+	linux-omap@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	claudiu.beznea@tuxon.dev,
+	linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Hans Zhang <18255117159@163.com>
+Subject: [PATCH v3 6/7] PCI: mediatek-gen3: Add 100 ms delay after link up
+Date: Mon, 11 May 2026 13:59:22 +0800
+Message-Id: <20260511055923.37117-7-18255117159@163.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260511055923.37117-1-18255117159@163.com>
+References: <20260511055923.37117-1-18255117159@163.com>
 MIME-Version: 1.0
-References: <20260508063633.3894348-1-wenst@chromium.org> <20260508175418.GA97653@bhelgaas>
-In-Reply-To: <20260508175418.GA97653@bhelgaas>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 11 May 2026 13:15:40 +0800
-X-Gm-Features: AVHnY4LZjBv6gGSmOK6fCKQuMDYhc9G69oS06Omds3Eto3-e9S9bD2qEZifR9TI
-Message-ID: <CAGXv+5GBd_RiAiJRbjE82j_fFPdhan+W2z7tx3o8HAKvsrD0zg@mail.gmail.com>
-Subject: Re: [PATCH] dt-bindings: PCI: mediatek-gen3: Allow memory-region for
- restricted DMA buffer
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Ryder Lee <ryder.lee@mediatek.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
-	Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
-	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: _____wDn9yk8cAFqPHQVAw--.46705S8
+X-Coremail-Antispam: 1Uf129KBjvdXoW7Jr4kWw4fAw18WF4rJF1kZrb_yoWkKrcE9a
+	yxZFWfZayjkrySkFnayFyrZr9Yy3s7Wr10qF4fKF13Aa48urn0qrZavryDAF4kGw43tF12
+	yryqk3W8WFykCjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7xRAJ5r3UUUUU==
+X-Originating-IP: [140.206.53.66]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbC6wUIq2oBcEXJTQAA3X
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260511_061557_681056_5650B1A4 
-X-CRM114-Status: GOOD (  27.25  )
+X-CRM114-CacheID: sfid-20260510_230014_885678_B85551BA 
+X-CRM114-Status: UNSURE (   9.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,72 +90,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, May 9, 2026 at 1:54=E2=80=AFAM Bjorn Helgaas <helgaas@kernel.org> w=
-rote:
->
-> On Fri, May 08, 2026 at 02:36:32PM +0800, Chen-Yu Tsai wrote:
-> > On some SoCs without an IOMMU behind the PCIe controller, the PCIe
-> > controller memory access could be limited to a small region by the
-> > firmware configuring a memory protection unit. This memory region
-> > must be assigned to the PCIe controller so that the OS knows to
-> > use that region. Otherwise PCIe devices would not work properly.
-> >
-> > Allow the memory-region property with one item pointing to a
-> > restricted DMA buffer.
-> >
-> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> > ---
-> > This patch compliments another patch that moved the memory-region from
-> > the PCIe device to the PCIe controller [1].
-> >
-> > [1] https://lore.kernel.org/all/20260430120725.241779-1-wenst@chromium.=
-org/
-> >
-> >  Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml | 4 ++++
-> >  1 file changed, 4 insertions(+)
-> >
-> > diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.y=
-aml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> > index 4db700fc36ba..4a9e41d01628 100644
-> > --- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> > +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> > @@ -115,6 +115,10 @@ properties:
-> >    power-domains:
-> >      maxItems: 1
-> >
-> > +  memory-region:
-> > +    maxItems: 1
-> > +    description: phandle to restricted DMA buffer
->
-> I guess this is similar to
-> https://lore.kernel.org/linux-pci/20250716053950.199079-1-huaqian.li@siem=
-ens.com/
-> and uses
-> https://github.com/devicetree-org/dt-schema/blob/main/dtschema/schemas/re=
-served-memory/shared-dma-pool.yaml?
+The MediaTek Gen3 PCIe host driver lacks the required 100 ms delay after
+link training completes for speeds > 5.0 GT/s, as specified in PCIe r6.0
+sec 6.6.1.
 
-Correct.
+The driver already stores max_link_speed (from the device tree). After
+mtk_pcie_startup_port() successfully brings up the link, call
+pci_host_common_link_train_delay() to comply with the specification.
 
-> Looks like those keystone changes were never merged; I don't know what
-> happened to them.  But it will be good if everybody does it the same
-> way.
+Signed-off-by: Hans Zhang <18255117159@163.com>
+---
+ drivers/pci/controller/pcie-mediatek-gen3.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Not sure what you mean. "dt-bindings: PCI: ti,am65: Extend for use with
-PVU" was merged as commit 57a48a2619c5. Maybe you are referring to the
-last patch in that series that adds a DT overlay?
+diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+index b0accd828589..5abddec4e9be 100644
+--- a/drivers/pci/controller/pcie-mediatek-gen3.c
++++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+@@ -30,6 +30,7 @@
+ #include <linux/regmap.h>
+ #include <linux/reset.h>
+ 
++#include "pci-host-common.h"
+ #include "../pci.h"
+ 
+ #define PCIE_BASE_CFG_REG		0x14
+@@ -570,6 +571,8 @@ static int mtk_pcie_startup_port(struct mtk_gen3_pcie *pcie)
+ 		goto err_power_down_device;
+ 	}
+ 
++	pci_host_common_link_train_delay(pcie->max_link_speed);
++
+ 	return 0;
+ 
+ err_power_down_device:
+-- 
+2.34.1
 
-> I wish there were a simple way to grep for this restricted DMA
-> concept.  Maybe there is and I just haven't found it :)
-
-Probably just grepping for "restricted" in the PCI bindings. :|
-
-
-ChenYu
-
-> >    mediatek,pbus-csr:
-> >      $ref: /schemas/types.yaml#/definitions/phandle-array
-> >      items:
-> > --
-> > 2.54.0.563.g4f69b47b94-goog
-> >
 
