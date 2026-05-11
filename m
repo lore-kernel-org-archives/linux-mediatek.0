@@ -4,80 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 758C1CD37BE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2026 15:50:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3877ECD37BE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2026 16:27:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XLRqHHn0hwJYYFSTUINWa18jofeRC1qm9JrrGQiF80s=; b=sCbTVlPb5pfmnN8BPqQ/sOpR31
-	S8jA7HAunP8jWxXdNVzwb9zT4LTGjVMHThUZcUf5tSqNJDJlI/rPWLR2IQSNS37/tL2PZTZxNBZtc
-	eA/mV90KKHcz8AhD5bkBD73Kw1zT0SEfQki8epsVUoCJ69i5toCXdN7fLiLzOX/lE5FLBFRSEAEOb
-	QYcqeFeYmtTEl8y9uQcXzJGEa0r0fjMOU/+AIgeeK6Q7G36I/sNTh3PoNrhbbyElrCX0L4Y2nfxhm
-	MUvXje+foxwgXXH6as8exJ2eHFii72UetrfK2X1tTlSsFTW8yuIRAGAT2dBm14AJwIUmrwRlKLuiI
-	JVZ53KZw==;
+	bh=VUhpsjQrH/mckZs2t7/2owZF+Xb+aJbtam5fG6bKFfw=; b=Yyb/pyV2hY4HfwqxG/UUMjPlr9
+	8WNAu8wqMmrnprlvo7eyHvwAygYDTwXQkaRHYZXRj5+wqVNHVCvtC5SI2OSYUuaeNPE9Z64bcQBQP
+	xi10Dycwp/ug3u9/UEOGMpjNqEB6TyaMS3yWlM2364IlXHO5VkOnSlvKrR5r6DFVUZniZdQTcWJeS
+	Va2EJJgM3oiiC21xrAIHdElVXDZfHsF65G1d0A0J1lqbx9BeXV0xQ/P5QX/tP/zOnfD8ieYwJ+ZyF
+	DNSdh7EgWrveA9T31jb8g45PKAGoYWUysVo4OLT431oY/Hyn+1U08XVcOh4xalCbdI6ActYVFy529
+	nCXu/TBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMSte-0000000E6l7-3jEZ;
-	Mon, 11 May 2026 15:50:18 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1wMTU4-0000000ECfc-2N8n;
+	Mon, 11 May 2026 16:27:56 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMStc-0000000E6kK-28tf;
-	Mon, 11 May 2026 15:50:17 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1778514593; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=JtR96WeqT7mANZWYH5Oq/SrWkMVZMHEbjdysUv/IDO4KZwoDNDvREeBHkIj51zpAmurnQdC08F2XjOERSeMmOUucOa/EQHyhYMAf2nwLR+YpK/sv1eIXWC5lYuCs1C/2k61b9w7swjzlLd+nbhC4mkys+J5UDiJl5hYA2KK45lM=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1778514593; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=XLRqHHn0hwJYYFSTUINWa18jofeRC1qm9JrrGQiF80s=; 
-	b=gqVx98psmTKrKlqyPBaggNuqabHo96QX5RdambdyF9d0G93YbduIFF1ajBv0b3svQONPy+0P31NxXL9D6iwvqyjvpfc60hW7irJKOs0UMUGqOA7pOeSheMkBy6vNYmCxF9qNSTxRzBJQVJtmc+Nv6lHLNlNoEi8su71z/YDnZ/E=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
-	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1778514593;
-	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=XLRqHHn0hwJYYFSTUINWa18jofeRC1qm9JrrGQiF80s=;
-	b=lXQwuqDEHkE93zSFEP0C/7F7bsb2cpIzNR+y4WCSN/TJXYD78zHt1AwDilCol32u
-	q9O+paBosqN1PAeJoIvEVFQwsiR/ZgvPKnIjEBYTbSjRHj+sgQmEIbN79VCs8BT75sq
-	9/iVOyqpkucv2LWwu2iJCgU5UqmYIJzriORdTJ7E=
-Received: by mx.zohomail.com with SMTPS id 1778514590556214.59633215458769;
-	Mon, 11 May 2026 08:49:50 -0700 (PDT)
-Message-ID: <7d5bcbe907456e4ada4401251eb05c3d5378dcb0.camel@collabora.com>
-Subject: Re: [PATCH net-next v2 4/4] net: phy: Introduce Airoha AN8801/R
- Gigabit Ethernet PHY driver
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>,  Eric Dumazet <edumazet@google.com>, Jakub Kicinski
- <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring
- <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley	
- <conor+dt@kernel.org>, AngeloGioacchino Del Regno	
- <angelogioacchino.delregno@collabora.com>, Heiner Kallweit	
- <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>, 
-	kevin-kw.huang@airoha.com, macpaul.lin@mediatek.com,
- matthias.bgg@gmail.com, 	kernel@collabora.com, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, 	linux-kernel@vger.kernel.org
-Date: Mon, 11 May 2026 17:49:44 +0200
-In-Reply-To: <27ca6b71-18df-4e47-9117-0e503f7e7d5f@lunn.ch>
-References: <20260326-add-airoha-an8801-support-v2-0-1a42d6b6050f@collabora.com>
-	 <20260326-add-airoha-an8801-support-v2-4-1a42d6b6050f@collabora.com>
-	 <3688a285-7f98-4afa-80ad-697094cd7b97@lunn.ch>
-	 <2c441d51f6a865ddb6e67b63cd26a651ed3ff058.camel@collabora.com>
-	 <27ca6b71-18df-4e47-9117-0e503f7e7d5f@lunn.ch>
-Organization: Collabora Ltd
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
+	id 1wMTU2-0000000ECem-1k6v;
+	Mon, 11 May 2026 16:27:54 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id D9AB860120;
+	Mon, 11 May 2026 16:27:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 05BBCC2BCB0;
+	Mon, 11 May 2026 16:27:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1778516873;
+	bh=V0wLh5KRspfOQ3ibRR/1QYF8R6kmly0cfDdqmRIJqvQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=gcmyAxHAKFs6NB3meRHb14KoC6R9ksltSt15rHaXzZGZv3SOCwBupe3Q67oel5/qb
+	 hMr4Q0I75R456Sean1nvn2ql0Nv/q/NKL/jC1Hsco3Td8/+uB0HIRTYeq1wy0KrVHJ
+	 3/xT33SBXpz13eLPMF9CcEKP3UbhDX0t0qEsmzSwishRclNtw88eAZH0nIxnaQR+ZU
+	 zcWleaZH9FTxJde+jDXQPhnFBFqhtk2GlcNAMgH2dy86LrHK8hQoXO7MctjL4zMFAs
+	 nGFoSEGnTTLKfHtSopIXrClD54+3IG/wR+B8JApKw0cuRc2f1RMh0qrGp9PxIaBOal
+	 zRUinbWJtU2Qg==
+Date: Mon, 11 May 2026 17:27:48 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Arnab Layek <arnab.layek@mediatek.com>
+Cc: Bjorn Andersson <andersson@kernel.org>,
+	Mathieu Poirier <mathieu.poirier@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v2 1/1] dt-bindings: remoteproc: mtk,scp: Allow multiple
+ memory regions for MT8188
+Message-ID: <20260511-uncouth-pandemic-080dccd30f4b@spud>
+References: <20260506133157.3283204-1-arnab.layek@mediatek.com>
+ <20260511121004.2984149-1-arnab.layek@mediatek.com>
+ <20260511121004.2984149-2-arnab.layek@mediatek.com>
 MIME-Version: 1.0
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260511_085016_598949_3F0CA3B7 
-X-CRM114-Status: GOOD (  34.35  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="Cth8D7RmP7y3OUje"
+Content-Disposition: inline
+In-Reply-To: <20260511121004.2984149-2-arnab.layek@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,135 +80,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andrew,
 
-On Thu, 2026-05-07 at 23:43 +0200, Andrew Lunn wrote:
-> > > > +static int an8801r_of_init_leds(struct phy_device *phydev, u8
-> > > > *led_cfg)
-> > > > +{
-> > > > +	struct device *dev =3D &phydev->mdio.dev;
-> > > > +	struct device_node *np =3D dev->of_node;
-> > > > +	struct device_node *leds;
-> > > > +	u32 function_enum_idx;
-> > > > +	int ret;
-> > > > +
-> > > > +	if (!np)
-> > > > +		return 0;
-> > > > +
-> > > > +	/* If devicetree is present, leds configuration is
-> > > > required */
-> > > > +	leds =3D of_get_child_by_name(np, "leds");
-> > > > +	if (!leds)
-> > > > +		return 0;
-> > > > +
-> > > > +	for_each_available_child_of_node_scoped(leds, led) {
-> > > > +		u32 led_idx;
-> > > > +
-> > > > +		ret =3D of_property_read_u32(led, "reg",
-> > > > &led_idx);
-> > > > +		if (ret)
-> > > > +			goto out;
-> > > > +
-> > > > +		if (led_idx >=3D AN8801R_NUM_LEDS) {
-> > > > +			ret =3D -EINVAL;
-> > > > +			goto out;
-> > > > +		}
-> > > > +
-> > > > +		ret =3D of_property_read_u32(led, "function-
-> > > > enumerator",
-> > > > +					=C2=A0=C2=A0
-> > > > &function_enum_idx);
-> > > > +		if (ret)
-> > > > +			function_enum_idx =3D
-> > > > AN8801R_LED_FN_NONE;
-> > > > +
-> > >=20
-> > > What is this doing? Is this documented in the binding?
-> > The `function-enumerator` property is only documented in the led
-> > common
-> > dt-binding file. The an8801 dt-bindings inherits this property from
-> > the
-> > ethernet-phy dt-bindings.
-> >=20
-> > We aimed to have this PHY have its led behaviour (how many to
-> > enable
-> > and what their role shall be) configurable using devicetree and not
-> > to
-> > rely on a default configuration, hard-coded in the driver (like the
-> > air_en8811h driver did) and also make use of the led hardware
-> > offloading (for functions like 100/1000, activity blinking, and
-> > others)
-> > that this PHY is capable of.
+--Cth8D7RmP7y3OUje
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, May 11, 2026 at 08:10:04PM +0800, Arnab Layek wrote:
+> The MT8188 SCP requires two reserved memory regions:
+> 1. Main SCP SRAM memory region (required)
+> 2. SCP L1TCM memory region (optional, for additional memory)
 >=20
-> What other drivers do is leave the configuration with its reset
-> default. They are often sensible. When the netdev trigger loads, it
-> should ask the LED how it is configured, and the values in sysfs will
-> reflect it. After that you can change it, via udev rules, etc.
-When you say "reset default", do you mean the default PHY register
-values, the ones that may have been set by the bootloader or by the
-driver with a default hardcoded functional config?
+> Some other MediaTek SoCs only use a single memory region. This patch adds
+> a conditional schema using if/then to allow 1-2 memory regions
+> specifically for mediatek,mt8188-scp and mediatek,mt8188-scp-dual
+> compatibles, while keeping the default maxItems: 1 for other
+> SoCs.
 >=20
-> You have to be careful about what you put in DT. DT describes
-> hardware, not configuration or policy. How the LED blinks is probably
-> configuration, so it does not belong in DT.
-I agree.
-What I meant as configuration was only the leds node presence and the
-led function properties, as the devicetree should describe what/how
-many LED are connected to the PHY and they represent (or mean) for a
-given board.
-Parameters like off/on delay or trigger events are indeed not really
-appropriate for devicetree and the AN8801 dt-bindings patch do not add
-any such property.
-
-And even, if technically the LEDs are reconfigurable with netdev or any
-other LED trigger, the configuration is somehow hardware bound, because
-the different colors of LEDs do kind-of bind a specific function to a
-specific LED (amber vs green).
-
-This is why the an8801r_of_init_leds function read those LED-related
-properties (leds/led/function-enumerator) to set a default led config
-behaviour (that can of course be overridden by an user with a led
-trigger) rather than relying on bootloader or use a hardcoded led
-register config in the driver.
-
-What implementation would be preferred for this driver?
-
+> Each memory region is documented with descriptions to
+> clarify their purpose, following the pattern used in other bindings.
 >=20
-> > > > +static int an8801r_read_status(struct phy_device *phydev)
-> > > > +{
-> > > > +	int prev_speed, ret;
-> > > > +	u32 val;
-> > > > +
-> > > > +	prev_speed =3D phydev->speed;
-> > > > +
-> > > > +	ret =3D genphy_read_status(phydev);
-> > > > +	if (ret)
-> > > > +		return ret;
-> > > > +
-> > > > +	if (phydev->link && prev_speed !=3D phydev->speed) {
-> > > > +		val =3D phydev->speed =3D=3D SPEED_1000 ?
-> > > > +		=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AN8801_BPBUS_LINK_MODE_1000 : 0;
-> > > > +
-> > > > +		return an8801_buckpbus_reg_rmw(phydev,
-> > > > +					=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0
-> > > > AN8801_BPBUS_REG_LINK_MODE,
-> > > > +					=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0
-> > > > AN8801_BPBUS_LINK_MODE_1000,
-> > > > +					=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 val);
-> > > > +	};
-> > >=20
-> > > This is unusual. What is it doing? Please add a comment.
-> > This call is to ensure that the PHY switches to the expected 1Gbps=20
-> > speed when available.=C2=A0
+> Signed-off-by: Arnab Layek <arnab.layek@mediatek.com>
+> ---
+>  .../bindings/remoteproc/mtk,scp.yaml          | 21 +++++++++++++++++++
+>  1 file changed, 21 insertions(+)
 >=20
-> So this is an errata workaround? Please add this in a patch of its
-> own, described the problem in the commit message, list the errata
-> etc.
+> diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/=
+Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+> index bdbb12118da4..df13be2026a6 100644
+> --- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+> +++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+> @@ -205,6 +205,27 @@ allOf:
+>            items:
+>              - const: cfg
+>              - const: l1tcm
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          enum:
+> +            - mediatek,mt8188-scp
+> +            - mediatek,mt8188-scp-dual
+> +    then:
+> +      properties:
+> +        memory-region:
+> +          minItems: 1
+> +          items:
+> +            - description: Main SCP SRAM memory region
+> +            - description: Optional SCP L1TCM memory region
+> +      patternProperties:
+> +        "^scp@[a-f0-9]+$":
+> +          properties:
+> +            memory-region:
+> +              minItems: 1
+> +              items:
+> +                - description: Main SCP SRAM memory region
+> +                - description: Optional SCP L1TCM memory region
+
+Does this even work, given that memory-region has maxItems: 1 outside
+the conditional section?
+
+Cheers,
+Conor.
+
+> =20
+>  additionalProperties: false
+> =20
+> --=20
+> 2.45.2
 >=20
-OK, I'll add this in a separate patch in v3.
 
-Best regards,
-Louis-Alexis
+--Cth8D7RmP7y3OUje
+Content-Type: application/pgp-signature; name="signature.asc"
 
-> =C2=A0=C2=A0=C2=A0=C2=A0 Andrew
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCagIDhAAKCRB4tDGHoIJi
+0l1KAP4ogMR4hY4vl2iFHrcWq1THHYzittMIqmeoOyXVWNsTAAEAuFti4lcrCBUc
++MZz9rCNT0pG273MQ05Xxrr/JE7IJgc=
+=tkTv
+-----END PGP SIGNATURE-----
+
+--Cth8D7RmP7y3OUje--
 
