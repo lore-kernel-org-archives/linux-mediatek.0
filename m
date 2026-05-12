@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10E18CD4F26
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2026 05:21:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 902FDCD4F25
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2026 05:21:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ckPzHuhEPNnmeCgVk39hKH+apPSTppueJckvSDJkwY0=; b=f5Kt/mJOhuTz8pWMpB/btQ85o9
-	7s4c8m01VT6Ad9f0JEE0KcHam4C1C8j96nEptwxDNffWz0TV5RkGhXKPeYZC7Tx+2RMfwQD7EHEtG
-	O5WZttmL6oeueoEesf9arw/zxnDX7VF78T88Qwe+SmxCOkVXw65LBKuYJoBAM5lRwEfJBtWei8etk
-	HEEbZDFO1tO6hAt5E6O5rr7k7H7QDoUEoZbcwkqkRAb3g77w4z3eh9ycrwx5aTDsEYq49g/KurZaq
-	CtcLvClxa71nOz/qRcUDw4iOyQ3lHWQB5O4GxXCefTahZ9b1QcqBWvSKZwgc6LMfoFbwEVJKg8RKT
-	sFfySGGw==;
+	bh=5EMDnAmzJXMhptfde38v32KWV6AtxnMi0N9/i1Gt4W0=; b=XFxxTiRc6rwZkPnCP1y0J78lS0
+	9DD5faaDHRkpbIlr1dvKsTuWjT1FyQSXgvDk9M7z0NNoKAyW2CZ2JHIxusmsE/MWIKlYxnGAMztFi
+	VCWei/lejUR34ZOFLZFnyGTpVW9RWiyBDPHx8yNGgni71SweeyqRoDnsnMygkWw74j4XjU1nSa7uT
+	rvvNCiqBARDWnqxWfyeFIZYZMs6ov2vu2fchUqul4XFeyGuntg5yoW/q/8NPch9aOgBSoD0qqNlPC
+	0oiLhZnK/UKGyHj/E3GcnrC10zjVi/QB43rni4DavPBGPpSbLc+7s6t92t7Fjv6Wh9Qr+dTGF7H4L
+	dUfhJEow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMfZ4-0000000FZ9q-3TPX;
+	id 1wMfZ4-0000000FZ8W-1Mab;
 	Tue, 12 May 2026 05:21:54 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMfYs-0000000FYp5-2WOY;
-	Tue, 12 May 2026 05:21:45 +0000
+	id 1wMfYr-0000000FYmx-1jQu;
+	Tue, 12 May 2026 05:21:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7D8094457C;
+	by sea.source.kernel.org (Postfix) with ESMTP id 6709144552;
 	Tue, 12 May 2026 05:21:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 59145C2BD05;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 389F6C32786;
 	Tue, 12 May 2026 05:21:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1778563300;
-	bh=7+NIL8s8rac2kVXUMdZhh8CbH3qQ8E2j0Y+7NfsYQ9Q=;
+	bh=D3ikDb5iz89iLJ6uZVHjbY5rTXXDcPWKbnxCOlfwCxY=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=aGu34qDq5MRF0rfEXNQpIzWG9yNMJQI6PJzMZ9cSb1Su4KtXKOJBWXukxKhQWzmeR
-	 8eoY7+gZyV4yA4l+v7htuafCZIE4KNkzwLj4YfJfG3ksczmh4HGjy1hVISr3L1bkvK
-	 VJXmMVwivRCJ/AAZCs47Ee2R/g5IStzAlgONeBBMgTE5bXewBocUzASeJbXxOFEeXN
-	 ctcjR6utcLDalcfzwl5QcG5+UUft9yVVU+6U6pVYdX8IqaZVmoWQsLUerhbKowgZAa
-	 2/o825hcvxwNn5tdksX7CiTtgH3lAXmKneOFplcL9c/0T9UXwEsEK62NEJwoGwSGO6
-	 bY4QN2QKv6B7w==
+	b=tCz+zz1HjQsTJEFiYXRKogdCaF7JPWdg+UtxOHvL4T2D6RHR8vPymfzVn/5DpQ0XP
+	 HEqXz3BfagtNQyv0YOtvAvsii4DvEVyrl/G1gWRasjIh4ihbwyHRv3ygcqATQFl8/H
+	 QXqsooE/arZhsxEwMIstdTrkqxSEEcnm3pJN5ELwa/wWSIzCanIn0WXqPiGNnsuKFz
+	 E479nIF65kJY7ZD7KqPuBliT0H5cf7kg1m8F+psFBG6Wz3ZngjlK0v52P0ksR0WhUn
+	 JePZGE8xqRvxDTaW/nx4ybdlFxwsgYyMA7G3iOdLPiGgVU69AikT9lY2Bm9N4ej6dF
+	 YNBy89M8mLUjA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4DC7BCD4851;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2B9DBCD4F21;
 	Tue, 12 May 2026 05:21:40 +0000 (UTC)
 From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Tue, 12 May 2026 08:18:24 +0300
-Subject: [PATCH v2 10/16] mfd: mt6397-core: add mt6323 thermal support
+Date: Tue, 12 May 2026 08:18:22 +0300
+Subject: [PATCH v2 08/16] mfd: mt6397-core: add mt6323 AUXADC support
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260512-mt6323-v2-10-3efcba579e88@protonmail.com>
+Message-Id: <20260512-mt6323-v2-8-3efcba579e88@protonmail.com>
 References: <20260512-mt6323-v2-0-3efcba579e88@protonmail.com>
 In-Reply-To: <20260512-mt6323-v2-0-3efcba579e88@protonmail.com>
 To: Jonathan Cameron <jic23@kernel.org>, 
@@ -75,17 +75,17 @@ Cc: linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
 X-Mailer: b4 0.15.2
 X-Developer-Signature: v=1; a=ed25519-sha256; t=1778563297; l=903;
  i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=f25MLIxZo0sPtnvFl6vrSY704ngfNfhTeXij+CteVzw=;
- b=gyPil4oXfmTpgD/7W0i+3qHrxuUh6dVoPL7OX6gtnwVi4yQJxCuZdxkC+ZFZx3i2k8xcdKil4
- zhRoRic8tRhBYWeYzWDOqy8bAWNm86j5fGNDpkxfACex+zoC3Qug76Z
+ bh=AtpQuSBNMLgpeH1t4ADFZid08i2lKNvKchWt3/88KCc=;
+ b=CuuD+NcafOOWOnzD4gAzv4G+oQMeaNEqepGujqJAyjg0Fp7F4zUaoi+IKcpL2KxTTSA2Sdbsj
+ pHiclbcM/m9B6YhYoPuAL8FrVBvXxn4HLVAZ0IW2g6YWP2X/XvD3/rI
 X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
  pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
 X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
  auth_id=777
 X-Original-From: Roman Vivchar <rva333@protonmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260511_222142_776025_F878848F 
-X-CRM114-Status: GOOD (  11.52  )
+X-CRM114-CacheID: sfid-20260511_222141_552838_194924BA 
+X-CRM114-Status: GOOD (  11.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,9 +103,9 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Roman Vivchar <rva333@protonmail.com>
 
-The mt6323 PMIC temperature can be measured using AUXADC channel.
-Register the thermal in the mt6323 devices array to allow the
-corresponding driver to probe using compatible string.
+The mt6323 PMIC includes an AUXADC. Register the AUXADC in the mt6323
+devices array to allow the corresponding driver to probe using compatible
+string.
 
 Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
 Signed-off-by: Roman Vivchar <rva333@protonmail.com>
@@ -114,19 +114,19 @@ Signed-off-by: Roman Vivchar <rva333@protonmail.com>
  1 file changed, 3 insertions(+)
 
 diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-index 2d9419b80a5c..061ac242f1f8 100644
+index 3e58d0764c7e..013b0857fb54 100644
 --- a/drivers/mfd/mt6397-core.c
 +++ b/drivers/mfd/mt6397-core.c
-@@ -151,6 +151,9 @@ static const struct mfd_cell mt6323_devs[] = {
- 		.num_resources = ARRAY_SIZE(mt6323_pwrc_resources),
- 		.resources = mt6323_pwrc_resources,
- 		.of_compatible = "mediatek,mt6323-pwrc"
-+	}, {
-+		.name = "mt6323-thermal",
-+		.of_compatible = "mediatek,mt6323-thermal",
- 	},
- };
+@@ -125,6 +125,9 @@ static const struct resource mt6323_pwrc_resources[] = {
  
+ static const struct mfd_cell mt6323_devs[] = {
+ 	{
++		.name = "mt6323-auxadc",
++		.of_compatible = "mediatek,mt6323-auxadc",
++	}, {
+ 		.name = "mt6323-rtc",
+ 		.num_resources = ARRAY_SIZE(mt6323_rtc_resources),
+ 		.resources = mt6323_rtc_resources,
 
 -- 
 2.54.0
