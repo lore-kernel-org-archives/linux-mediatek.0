@@ -4,142 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AFB1CD343F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2026 17:49:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 370C7CD343F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2026 20:31:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nTQUKqM283xGtHTfjYygHRu4ql5sawTzbHkoS2BzFwc=; b=h4PFzhUj4cO2/+yp/xgcsW5zWz
-	pRtBXE4eL34PqRT8dmNoEew8GRG7Zedg/wpSv7NroTzwsjuZSzkPx44sTBumDL9ePdwUayEJST6tl
-	Qk8hygoBQfeVbIMNC/88bdBMxwYHgY3fUM0lWV87VXAoUZc2ZzxIgQ0lBQIf3e6AtDD85T4yDc1Hq
-	1NLxtKEzBKU1ZBldb/+acF3csFMjtoaAzK1OF0tAozVT5puCq5yht6HibwZdn2tHsOlBSpzaN0LRZ
-	Jte8Dchb6xO0e4iKcVGz8KMS9Y6dPzJ0dOy1/3don5VlIcpnOwbafb36JYI3KDiyw7POCpQNatuTL
-	NGWslD6w==;
+	bh=Tg4Djrl74YT/GwwzOrQUNp0R5Byl2aTJTljA89ekXv8=; b=a91VxIhsy+0dVz5H42GYtpkdd7
+	WH8Fx+ptEv67xc2915bX6TQLCtb81exlwIcH7jLLQ2XG+K5rFAnaLzi008HRjCfRLTAFifYWvft5S
+	mEtvZBWlyLt17wRPnwE49XnE8qGDo2yI19aRcBJZYWyDoiMNwrFOgYvIuJTKK/VvT/ltvjPOEWNH/
+	JYgqHp+bscls8vHC2TLyGlnVHYifmITpX7zH8fh8XfFmFwPBSFUCIv0ZTgMLaq5QuEWgLL21RB2tF
+	BjYMVQNHVgXXT6DLffeNQSlo15GFJ08KAMQlTaT5+cjSN89ygaKnHAH+vtJipLacIp2tQtahOKH+V
+	Ph9Lcr+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMrEz-0000000HawI-0k5P;
-	Tue, 12 May 2026 17:49:57 +0000
-Received: from mail-northeuropeazon11022099.outbound.protection.outlook.com ([52.101.66.99] helo=DUZPR83CU001.outbound.protection.outlook.com)
+	id 1wMtlj-00000000LZP-3Ote;
+	Tue, 12 May 2026 20:31:55 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMrEx-0000000Hauf-0CaN;
-	Tue, 12 May 2026 17:49:56 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=g/ZUy8HqpKm18I/YyydISLE1rOYGteBHb4SorW0WS8glfQNpcsoOXJ67KPHxrxXqdlPo96B0Kz5xIbi29uz8TaiKJxsqNKqdTakPainCndS/QRG31J2G62PDPyh9mLuJK7yXMvpIPl/EjNuwwJgl5h1yBVgDFVFu6SCANA5H6NhV6P6SNMb6TrdaECkMiX1KCFYugxqEWGBMVOOgTsbD7zFGUEpJNgnA0KulSq+3joF79sKgnqNjuiT6/sWP0yCTdyGXDie35ipXp/wiqpotdpKWBq0ce9Y9+sjaW+sJocyn7QGAcsNyyFKVoVJCEWZVHEWJrMyHusG2fS8W9bpdGw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=nTQUKqM283xGtHTfjYygHRu4ql5sawTzbHkoS2BzFwc=;
- b=VDui0+Q+4KrBCKork/noYnSUbQv8KAQe80+69qZmJu/JIJxFPzbBJup6lge+VUvylKOqA2pGiRidoG6Yqh6RVNnjdGYsaiWtZay5ILSkBHxh7YB50YI4+WK+y5bB5xPA8SNiEe8L97Uy9JRLwqOPth7qeC4o2NTWLuoWGCiihAbC3KbViv9WwZ2ianpjWOdYEogdqXAYXQ6w5kFBz8g1MyJBqAQeGhx+VDblytwBQzG8+y4Pg4xRjTmmxSZCGB29TlqPndR+vjOtGPoOCzGA5i7WWwSdz0OLe2TZbaiXblum9/YIpW4R0lildqo7O7AfVzpLRzpb9t9F34h8Dgdzpw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=genexis.eu;
- dkim=pass header.d=genexis.eu; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=genexis.eu;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=nTQUKqM283xGtHTfjYygHRu4ql5sawTzbHkoS2BzFwc=;
- b=MLG8gJ1XoMG4M4LLgDS8bzTwyMwqVxBAqz1p3wbIoo1PEq5TZqGUP1QYBa6TJU3SwPpQ31Jitw3mZRCf0UGDBYD5tkOQG/ukohHT4F2P0xfNpG90jNqw7yM2oGt9UPDCA7woaXZ8fpMD2/aZ4+YQjmLsIlLOhXk+ZQ0bCIbhzSNU+jSKRHoH98qEpwrw+IpK6SIxpO+gKVLneo0lNG+FQccwPyKuY+NDe1r7kaVWiweTZFElGp/Jq9YXdKW7YxRDc8SSBLGkKiXB6hU8XwUhWTQ/LhUFAqM4K3FPM1Q7nrHjPYkedcXRvu+XfLDpkc9jHDH3hTJ3FqwWg0kyWpsvzQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=genexis.eu;
-Received: from DB9PR08MB6697.eurprd08.prod.outlook.com (2603:10a6:10:2ad::14)
- by DB8PR08MB5324.eurprd08.prod.outlook.com (2603:10a6:10:11e::19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9913.11; Tue, 12 May
- 2026 17:49:45 +0000
-Received: from DB9PR08MB6697.eurprd08.prod.outlook.com
- ([fe80::bdec:3e95:6614:441f]) by DB9PR08MB6697.eurprd08.prod.outlook.com
- ([fe80::bdec:3e95:6614:441f%6]) with mapi id 15.20.9891.021; Tue, 12 May 2026
- 17:49:45 +0000
-Message-ID: <f4a11830-8a3f-4cc3-ab82-e6f02ca34ae8@genexis.eu>
-Date: Tue, 12 May 2026 19:49:42 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v6 11/12] net: airoha: Support multiple LAN/WAN
- interfaces for hw MAC address configuration
-To: Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn
- <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
+	id 1wMtlg-00000000LYK-2pXI;
+	Tue, 12 May 2026 20:31:54 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 8CEAE43459;
+	Tue, 12 May 2026 20:31:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E5BDEC2BCB0;
+	Tue, 12 May 2026 20:31:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1778617911;
+	bh=V71zFNi7F3e+R7/dBjLOtPApPvnjD2YIfhm5M85nDfQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=WCTu3Y1eda32Ya+9Wq+DNFrfDSFhyBHnhYZDkhrFzkDZzP8KhCBfb7GjDMmH1eqm9
+	 c6Dyi97gHPT/Ok5rD6wRxsJfbe9+rscxhD8GuEhuqJijVV1YYB6vswuXoZ2jw3J8qc
+	 cKIOCosZ4diJV62XkJXa08orZaR7Bdi3QIzr2DXPRLVwZFAfHIbV7qlrapF1bzOrkK
+	 jVCY0rc7fwVjh5QbPhrQbcDtUqBZzAc/fP10rIadEsBf7cTxssxLd+Y2Dm7Gy/Uj50
+	 s7+RzykdBuVc2WyE7YR2sd6ivAEikSnwwYiksX35yJNrdv39q7gEefCzhNnhbPxoML
+	 k07u/vEgagQBw==
+Date: Tue, 12 May 2026 22:31:48 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
 Cc: Christian Marangi <ansuelsmth@gmail.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- Madhur Agrawal <madhur.agrawal@airoha.com>
+	Benjamin Larsson <benjamin.larsson@genexis.eu>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, Xuegang Lu <xuegang.lu@airoha.com>
+Subject: Re: [PATCH net-next v6 02/12] net: airoha: Reserve RX headroom to
+ avoid skb reallocation
+Message-ID: <agOONOLeIVbErlXD@lore-desk>
 References: <20260511-airoha-eth-multi-serdes-v6-0-c899462c4f75@kernel.org>
- <20260511-airoha-eth-multi-serdes-v6-11-c899462c4f75@kernel.org>
-Content-Language: en-US
-From: Benjamin Larsson <benjamin.larsson@genexis.eu>
-In-Reply-To: <20260511-airoha-eth-multi-serdes-v6-11-c899462c4f75@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: GV2PEPF0002397A.SWEP280.PROD.OUTLOOK.COM
- (2603:10a6:158:400::370) To DB9PR08MB6697.eurprd08.prod.outlook.com
- (2603:10a6:10:2ad::14)
+ <20260511-airoha-eth-multi-serdes-v6-2-c899462c4f75@kernel.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DB9PR08MB6697:EE_|DB8PR08MB5324:EE_
-X-MS-Office365-Filtering-Correlation-Id: 5e5cbffd-da1f-468b-e47a-08deb04ed9be
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|376014|7416014|11063799003|18002099003|22082099003|56012099003;
-X-Microsoft-Antispam-Message-Info: PJEAHGpnsS7dms6zLVE9GM/XXiq2aRmj4VSje2BrZYymnthasd21C/YCb5s3JaBpzGwZfmERooUibYjx6VrTsE/JMPccDcu2VGeB7kztDlrMrf/Wp4X9n1NiJiZsMdxDrPb/D0E0/YlepJGp21Hh3FIx1I9VN2M7hLDbOa4xKEmY+qo2XPAK7FSh4webFisusthJHLibIBImFZSeqc+dEfI9zGf7ze8fXa3or3bbEMuagXSpGf1MNH7fNrwX4p1+hsDuF4hlHQslEqEkOkYIb3Cpfsj/s2F3YwHTaJc12LsFqgXfTzVo0M58uoNd1G8wUGFhUeZxVmZAV3Ef+ysQr0+PJz6sVaEeCRbHtAOEL67otzHoZvd8Uc15/SLyFbROqTojCRobC6PYezEUbGfuz6HfArguscCPpC+QO5MlgcnhzRvqV035n8r9vDnSUBqfHk8aF/FAz4M1o2I75kJIo9FG57f/DXQpj0DCdS+Q1zoV92b3HcEBO90yKpmoklQ7cXE/WScq5LV/EMKjSuI0At3jMbD3LKiXQ3XR0Zq75V27yZa8noK+dd5vVFTdBI2ELI8mvfNJ3RLF4Bp7oNubaO2aurRZZj1dcsFqnWDY+plWtq3qFoq73dKGTmQI+4OsoJn5hdvRs3yEaqKq+pIs0eH7rT7RYulVpM9o6IJixmHB9x85I7NWuieJlFIpvoGm
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DB9PR08MB6697.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014)(7416014)(11063799003)(18002099003)(22082099003)(56012099003);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?SElOR2pkdG1OZW0xMmk0NGdvZVVWUFVMbFJqS3lHQ21PY0hweHdiZDlpeGFP?=
- =?utf-8?B?UUpOUXMwcWcyMmpJUi84WkhzN0pMcFJ4OGQ5OEVqUC9vV0dPeWgwNXluSEgx?=
- =?utf-8?B?WW5DT2RRUTRwRmR1TldYZm9CRUhJU0lKaU1KRjkreDVMaFcrVjNLb08wZ3Zq?=
- =?utf-8?B?QXczM2E1ZitONEZBMjA2VU1KZi91L1dnVFNzdXFmTXFpblU3VlFxVFFVeFN1?=
- =?utf-8?B?dDBtS2s3OWdmLzVDRW1mMlVBS0FQNm1YdmtYS0oxWG52Y3NzU1R3YUhlc2ll?=
- =?utf-8?B?Z3ZDamVpcFRnSW53ejFXakF2NDQ4TTFtR3ptd1FtSjBnK1lITW4vQWFEMHlE?=
- =?utf-8?B?am1uNlF0WVFwQklSRCtnRTg4WW5YbnN1QjgwU3dyTDZYUVRKeUpZeGxSakht?=
- =?utf-8?B?YmV3SjFlTkQyMFhvZm5uL2FXdGFYUUJwajFSb1RBYWlCMW1XdCtWbTkwQVVQ?=
- =?utf-8?B?SFNEUC9yd2RXaEtjT1JOU3ZzRnhoa2thNFJzbFREU3RucG5IbVVYVU82Lytv?=
- =?utf-8?B?Zi9VZGVNdEZkYlZJR2FYcXM1UGJMZkl2ZDQzMnovckdOVUpXSy9KbWoxSjh5?=
- =?utf-8?B?VUZ2TzFkWHNNYjZod2I0bkswYXNsSk9wVXYrMW8yL1A3UlZGQU4zQkt5RTlL?=
- =?utf-8?B?ZTJvOE1vUkc2YUJaektJZ0U3aVdCMW90L0xmS210b21yV3F0cENmZ09QNmRL?=
- =?utf-8?B?QVlOSlZVdTBya2ZzMzBpc0wzRlVaQi9LTm5jN3c5SzR5aUk3cGZvWWRqZFk5?=
- =?utf-8?B?eTBQaEZSYVh4cWxkbmdHOVpKdnhIOXhib3g0RTVCUDh4QnVQM0tOaHRjcG9x?=
- =?utf-8?B?b1dUOVcrZ0VsbjhRM1hIc0lOWVZWbEErNk1XRllSM1J1eDdvb1RSRVZvYUI5?=
- =?utf-8?B?eUozbEhmeTVnL2lFbnhIUXorRzhvSVJaZlNqR1U5MFdNUkRCOWkyQXhPZEo5?=
- =?utf-8?B?K0pwbCtLU2dmTDI5dHFhZHVKZlo0VFE5MkwwYkE5RW5YOUhXaTB4NmZrcVdS?=
- =?utf-8?B?T1RtL25VVmZxQjJ5WXR1bXVtaS9FdytnbW5IaFlRcXJEeUQrajJ0Um1EQjhB?=
- =?utf-8?B?MEo4SUgzbFdaMjFmTVVEZjFHV0JOZklJaTZiVHc0cit5Ri9TbHVTS2ZNNGR6?=
- =?utf-8?B?VUZEV0NHaUNoK3ZPbmxYSkttU2tBWjJ1cXNGY3o4UHB4c2crSEJxOGhJdEQ2?=
- =?utf-8?B?WUdhUWFKUndJb2hzekZtVlJYd0R3TEFiSFE0VHJMZndqNUQ5T3MzT0lWZ3pU?=
- =?utf-8?B?Rml4WmI4YmdyTU5uYXdrNnV5NHVUeVlMckRjeFNBTVhCd21ndFpVZ2RpbUNv?=
- =?utf-8?B?a2JCU29yelRvWUZhT3B1TzUyVldJT1BGTDZzOGlhZkxZTWdJYW9HZzVmSEtE?=
- =?utf-8?B?K3gvS3UrVUZIRlcwdzFSa3Rlc1lSNGdqNGs5eGUzbkJaSisyRDJVZEhuMmZq?=
- =?utf-8?B?dHFFQjc3QWt3a0dNQ1ZIV1QraCtFVnM0aTFRU2JqeTh0K1FwU3I5bkZ6YW80?=
- =?utf-8?B?KytlRWxCa2JvZXUzeHJOOFl6MWF1QjQ0d3dWY1J5ZXkwbEcrWGxvcTd0MVhi?=
- =?utf-8?B?c0o3RUNYNWdYSk03dFdFT0dpdFV2MmNsNFBqcE5saUxDRlhnaFFKR2hMalJE?=
- =?utf-8?B?aEJ6bnN0cTJCeXlaWDk0N3pFdHdjdTlSd2dEanNyQ29CeHVsS0x1THljaUFx?=
- =?utf-8?B?Unp5YURkc1EyV2xLZUtPd1Z6TnpiL05CeENsb0k1K29GV0J6azI0VVdDdWxt?=
- =?utf-8?B?SlpuOXpGS2Q5RDlnYm54NHRkanB2VklISlUzQXhMTGhINjJJVXRLbmwvZ1FR?=
- =?utf-8?B?NFpURTRBZVVkc0tJSFRxRDdtSzdJM29leFJjcFJvTWxlS2ZHeldiV2pKa3F4?=
- =?utf-8?B?dlNuRis3SjNoMko0Ylp2VU4zR0c4WDQ1WEJ3RFZaU1ZpanNad1pFSktLd2Jo?=
- =?utf-8?B?RUlvelBUam9wdUR6Y3lWRWV2Mm1ZRUh6aGs5UmwzeHVpWHkrT2hiNnppK3pY?=
- =?utf-8?B?MWdWcVc3cVVGclBmM0VNMVpQRHRGaGUzeUVhMWEzTFBvT3YrOUlGb0dvWndy?=
- =?utf-8?B?aTE1d2FmcHdidG9aZ0t5dlZjWENoMlZmZW4weE0zaVhTY24ya29TWmUvL1p4?=
- =?utf-8?B?UWVkNEQwUWJDTVBCRUltZXp2bTRWLzdlTFhEdzFWUTAzMGJEOUlxY3VOOFFK?=
- =?utf-8?B?OGJxd00ySXZjSXYzVlpnMzhmNDBtUjdxM2VSUXlZTFJvbXRSdkZVQ2wwWDFw?=
- =?utf-8?B?NXlsZHZ1MHlRVitFVnZKclF6K0Y1aVRCY1F4emtVemtyd0pGSXZNclV1UXFW?=
- =?utf-8?B?ODJ0TnZvV0dJMHAzWnVCZC9QZ1hYWmtUSmNYT2ptNUFNTk0zQStwM0tzZXRu?=
- =?utf-8?Q?qyHiUWKWADweKx7I=3D?=
-X-OriginatorOrg: genexis.eu
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5e5cbffd-da1f-468b-e47a-08deb04ed9be
-X-MS-Exchange-CrossTenant-AuthSource: DB9PR08MB6697.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 May 2026 17:49:45.2933
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: HLzGGbXntPEluqWXGJSSn66lCUDNNdbtye0iCgkXomEmVpKpAZTj+NsQ42HNi/8LeZrLlU65fH3adMDvvQtbxEkkP6W1qmAatORg9/yKQbI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB8PR08MB5324
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="TR0CKm29FXXTLKXr"
+Content-Disposition: inline
+In-Reply-To: <20260511-airoha-eth-multi-serdes-v6-2-c899462c4f75@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260512_104955_117486_0877ADB2 
-X-CRM114-Status: GOOD (  22.84  )
+X-CRM114-CacheID: sfid-20260512_133152_754886_540083C4 
+X-CRM114-Status: GOOD (  18.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -154,95 +82,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi.
 
-On 11/05/2026 12:49, Lorenzo Bianconi wrote:
-> The EN7581 and AN7583 SoCs provide registers to configure hardware LAN/WAN
-> MAC addresses, used to determine whether received traffic is destined for
-> this host or should be forwarded to another device.
-> The SoC hardware design assumes all interfaces configured as LAN (or WAN)
-> share a common upper MAC address, which is programmed into the
-> REG_FE_{LAN,WAN}_MAC_H register. The lower bytes of 'local' addresses can
-> be expressed as a range via the REG_FE_MAC_LMIN and REG_FE_MAC_LMAX
-> registers.
-> Previously, only a single interface was considered when programming these
-> registers. Extend the logic to derive the correct minimum and maximum
-> values for REG_FE_MAC_LMIN/REG_FE_MAC_LMAX when two or more interfaces are
-> configured as LAN or WAN.
->
-> Tested-by: Madhur Agrawal <madhur.agrawal@airoha.com>
+--TR0CKm29FXXTLKXr
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On May 11, Lorenzo Bianconi wrote:
+> Reserve NET_SKB_PAD + NET_IP_ALIGN bytes of headroom for received packets
+> to avoid skb head reallocation when pushing protocol headers into the skb.
+>=20
+> Tested-by: Xuegang Lu <xuegang.lu@airoha.com>
 > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > ---
->   drivers/net/ethernet/airoha/airoha_eth.c | 75 +++++++++++++++++++++++++++-----
->   drivers/net/ethernet/airoha/airoha_eth.h |  2 +-
->   drivers/net/ethernet/airoha/airoha_ppe.c |  4 +-
->   3 files changed, 66 insertions(+), 15 deletions(-)
->
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-> index 16c0ff9999da..533ffe20f833 100644
+>  drivers/net/ethernet/airoha/airoha_eth.c | 12 ++++++++----
+>  drivers/net/ethernet/airoha/airoha_eth.h |  2 ++
+>  2 files changed, 10 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
+net/airoha/airoha_eth.c
+> index f71fb18197ec..3fe2561c85f1 100644
 > --- a/drivers/net/ethernet/airoha/airoha_eth.c
 > +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -71,20 +71,67 @@ static void airoha_qdma_irq_disable(struct airoha_irq_bank *irq_bank,
->   	airoha_qdma_set_irqmask(irq_bank, index, mask, 0);
->   }
->   
-> -static void airoha_set_macaddr(struct airoha_gdm_dev *dev, const u8 *addr)
-> +static int airoha_set_macaddr(struct airoha_gdm_dev *dev, const u8 *addr)
->   {
->   	struct airoha_eth *eth = dev->eth;
-> -	u32 val, reg;
-> +	u8 ref_addr[ETH_ALEN] = {};
-> +	u32 reg, val, lmin, lmax;
-> +	int i;
-> +
-> +	lmin = (addr[3] << 16) | (addr[4] << 8) | addr[5];
-> +	lmax = lmin;
-> +
-> +	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
-> +		struct airoha_gdm_port *port = eth->ports[i];
-> +		int j;
-> +
-> +		if (!port)
-> +			continue;
-> +
-> +		for (j = 0; j < ARRAY_SIZE(port->devs); j++) {
-> +			struct airoha_gdm_dev *iter_dev;
-> +			struct net_device *netdev;
-> +
-> +			iter_dev = port->devs[j];
-> +			if (!iter_dev || iter_dev == dev)
-> +				continue;
-> +
-> +			if (airoha_is_lan_gdm_dev(iter_dev) !=
-> +			    airoha_is_lan_gdm_dev(dev))
-> +				continue;
-> +
-> +			netdev = iter_dev->dev;
-> +			if (netdev->reg_state != NETREG_REGISTERED)
-> +				continue;
-> +
-> +			ether_addr_copy(ref_addr, netdev->dev_addr);
-> +			val = (netdev->dev_addr[3] << 16) |
-> +			      (netdev->dev_addr[4] << 8) | netdev->dev_addr[5];
-> +			if (val < lmin)
-> +				lmin = val;
-> +			if (val > lmax)
-> +				lmax = val;
-> +		}
-> +	}
-> +
-> +	if (!is_zero_ether_addr(ref_addr) && memcmp(ref_addr, addr, 3)) {
-> +		/* According to the HW design, hw mac address MS bits
-> +		 * must be the same for each net_device with the same
-> +		 * LAN/WAN configuration.
-> +		 */
-> +		return -EINVAL;
-> +	}
+> @@ -543,9 +543,10 @@ static int airoha_qdma_fill_rx_queue(struct airoha_q=
+ueue *q)
+>  		q->queued++;
+>  		nframes++;
+> =20
+> +		offset +=3D AIROHA_RX_HEADROOM;
+>  		e->buf =3D page_address(page) + offset;
+>  		e->dma_addr =3D page_pool_get_dma_addr(page) + offset;
+> -		e->dma_len =3D SKB_WITH_OVERHEAD(q->buf_size);
+> +		e->dma_len =3D SKB_WITH_OVERHEAD(AIROHA_RX_LEN(q->buf_size));
+> =20
+>  		val =3D FIELD_PREP(QDMA_DESC_LEN_MASK, e->dma_len);
+>  		WRITE_ONCE(desc->ctrl, cpu_to_le32(val));
+> @@ -616,8 +617,9 @@ static int airoha_qdma_rx_process(struct airoha_queue=
+ *q, int budget)
+> =20
+>  		page =3D virt_to_head_page(e->buf);
+>  		len =3D FIELD_GET(QDMA_DESC_LEN_MASK, desc_ctrl);
+> -		data_len =3D q->skb ? q->buf_size
+> -				  : SKB_WITH_OVERHEAD(q->buf_size);
+> +		data_len =3D q->skb
+> +			   ? AIROHA_RX_LEN(q->buf_size)
+> +			   : SKB_WITH_OVERHEAD(AIROHA_RX_LEN(q->buf_size));
+>  		if (!len || data_len < len)
+>  			goto free_frag;
+> =20
+> @@ -627,10 +629,12 @@ static int airoha_qdma_rx_process(struct airoha_que=
+ue *q, int budget)
+> =20
+>  		port =3D eth->ports[p];
+>  		if (!q->skb) { /* first buffer */
+> -			q->skb =3D napi_build_skb(e->buf, q->buf_size);
+> +			q->skb =3D napi_build_skb(e->buf - AIROHA_RX_HEADROOM,
+> +						q->buf_size);
+>  			if (!q->skb)
+>  				goto free_frag;
+> =20
+> +			skb_reserve(q->skb, AIROHA_RX_HEADROOM);
+>  			__skb_put(q->skb, len);
+>  			skb_mark_for_recycle(q->skb);
+>  			q->skb->dev =3D port->dev;
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
+net/airoha/airoha_eth.h
+> index 58530d096de7..d3781103abb5 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.h
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
+> @@ -32,6 +32,8 @@
+>  #define AIROHA_FE_MC_MAX_VLAN_TABLE	64
+>  #define AIROHA_FE_MC_MAX_VLAN_PORT	16
+>  #define AIROHA_NUM_TX_IRQ		2
+> +#define AIROHA_RX_HEADROOM		(NET_SKB_PAD + NET_IP_ALIGN)
+> +#define AIROHA_RX_LEN(_n)		((_n) - AIROHA_RX_HEADROOM)
+>  #define HW_DSCP_NUM			2048
+>  #define IRQ_QUEUE_LEN(_n)		((_n) ? 1024 : 2048)
+>  #define TX_DSCP_NUM			1024
+>=20
+> --=20
+> 2.54.0
+>=20
 
-Maybe this information should be relayed to the user somehow?
+commenting on sashiko's report:
+https://sashiko.dev/#/patchset/20260511-airoha-eth-multi-serdes-v6-0-c89946=
+2c4f75%40kernel.org
 
-MvH
+- Does the length passed to dma_sync_single_for_cpu() also need to be updat=
+ed
+  to match the new DMA length?
+  I will fix it in v7.
 
-Benjamin Larsson
+Regards,
+Lorenzo
 
+--TR0CKm29FXXTLKXr
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCagOONAAKCRA6cBh0uS2t
+rKGaAQDJBFUqVKCNJOmGIhF2q0V3siWnJZZJ0yQN3UeaMOX2dQD/Ub3cCxWe1pCg
+P1grqoWgyEKmfQ6xFJ6PGy4FF1zA+AA=
+=57t/
+-----END PGP SIGNATURE-----
+
+--TR0CKm29FXXTLKXr--
 
