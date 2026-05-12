@@ -4,71 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE26ECD4851
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2026 10:42:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 047F1CD4851
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2026 11:05:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LmFvmlOx2BLdUyJ4yewuhyKhlGjbS/4yGn66ucZ8zh4=; b=wkP4DhEXlhwxOI6G5HmXDosf5F
-	x8i0b8QkYuywZy6O853us0uwXpTICYevyVpun48BsAQziERKp5sXF9g5qfi+r2qiP/5hbseZ6zlMC
-	9OODmnvhm7SJ81EnehYSNOSQXcycbAzi/E3BF35xD/uEeEyFGs4941jh1GbWrw4W7Y0MRdsyO+90p
-	hgMB9cSwB5XgZzjumxG/VWAd5aB2bUnKj2S7LYcsTh5P5bg2ZvQlZUMFDAh0FCW9lkkg0VsTpPaFa
-	agVi/KFfuOvbjihasnUNVeKOrYykSme9GXzCihKcu5Lii08zumkzIZUUr47d2Q/HB1O1Fv/ZS/OH0
-	/BYUS42Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=J4mIgacZbaZ/EYyQp1qEhWM3L40+B/IK5WJW6oJR8pc=; b=JFyjeIG95gmkpJYavNezJ1Dgz1
+	f4NLum42RZrncWT0UJIwP+4LC3jceSpmyw4DkEHajDVg9ajXeyvsI0n5cpwuooQECzslcLHmCX7oS
+	ls3yXQEH8ZZ6H/vcGAqUP4iMZSMvNyylosWh3ECH2reoKArkiZzv1hxSH22xMgnYMAC8lB+NNGSLt
+	NBApSzN9xUDm63PBLJUqSRrAU6CF2fbWvO+uPdG+8eeCrvhG5Zcjcuh8rUWmGXBkpYNKrBg7vS73q
+	bOxSuAWOB2QhHT8D8zH3NCunohn7ssskyKuxFJIVOaZFBy3818v5ducRJasL+NgmW9tm+DS1zpgkd
+	IJMlEtUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMkZP-0000000GSzb-3lyT;
-	Tue, 12 May 2026 10:42:35 +0000
-Received: from m16.mail.163.com ([220.197.31.4])
+	id 1wMkv9-0000000GWCh-2zCS;
+	Tue, 12 May 2026 11:05:03 +0000
+Received: from mgamail.intel.com ([198.175.65.17])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMkZM-0000000GSyt-3oJf
-	for linux-mediatek@lists.infradead.org;
-	Tue, 12 May 2026 10:42:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Message-ID:Date:MIME-Version:Subject:To:From:
-	Content-Type; bh=LmFvmlOx2BLdUyJ4yewuhyKhlGjbS/4yGn66ucZ8zh4=;
-	b=etIvsHbxSod4Uuck08SumNoE7SF6uTjLvqRgyoU9a5ma4K5nRaZ34QQWK+PtFw
-	eGKhpc/7Pr4kEub1QkEclz8J5OY/UZdyFHXA3hPDYxr88bvftLwCw4dgqVG+wb4X
-	I39ZukDllVZoh3q9raTp2KPtHyNXYFctxjpHIRmx62iTk=
-Received: from [192.168.50.71] (unknown [])
-	by gzga-smtp-mtada-g1-0 (Coremail) with SMTP id _____wC3KAnjAwNqLBufAw--.49467S2;
-	Tue, 12 May 2026 18:41:40 +0800 (CST)
-Message-ID: <8e5dacab-9698-4d65-8101-f5d680760cbd@163.com>
-Date: Tue, 12 May 2026 18:41:39 +0800
+	id 1wMkv6-0000000GW0Z-2SwB;
+	Tue, 12 May 2026 11:05:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1778583901; x=1810119901;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=211a2Vxapw/LkkPIC3ja7VhK866mFfc0k18gWRdnhG4=;
+  b=KnqhyLsrYkf9hYzSjpFfZ3DX6irx2pFYGz254LWkIxdRgujW8AP6PWhB
+   AB8ulnSqUoGjNlBuIyN4/lwtTWGwm4VbtwJ/OdIcqTZmV5DcYxAXiHGdx
+   IxGeH5qqTwNE6m9FQHdiew+xBMD2XnmO89wmp02GNCM9O09ai9y7Yuh9R
+   zPgS2/H80HereVrivV970aSaeh5q4sPCbjacjCoXiaxKbZklT4kp3nSGm
+   w9sY49DJYJUssxCN7LsWNNLdKE3PyXrLlmOQVpjvRXCSRZ5YLd6A6RZxN
+   v1AX9VHs5oT5gNQXahRf/yGQcBxQ/qPC8fRn82Y4dmwYIfzgD72OJ3Wwb
+   g==;
+X-CSE-ConnectionGUID: T50HCmdJQTO6hEuBiWTm/Q==
+X-CSE-MsgGUID: p8GTC68MTVC1zwcTrnW/lg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11783"; a="79472981"
+X-IronPort-AV: E=Sophos;i="6.23,230,1770624000"; 
+   d="scan'208";a="79472981"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 May 2026 04:03:00 -0700
+X-CSE-ConnectionGUID: W3uW7XpITSGWtGxlCqug2g==
+X-CSE-MsgGUID: o+ExLhcIQcmFTXdW7A7Y+g==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,230,1770624000"; 
+   d="scan'208";a="242733224"
+Received: from kniemiec-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.245.112])
+  by orviesa005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 May 2026 04:02:54 -0700
+Date: Tue, 12 May 2026 14:02:50 +0300
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
+To: Roman Vivchar <rva333@protonmail.com>
+Cc: Andy Shevchenko <andy.shevchenko@gmail.com>,
+	Jonathan Cameron <jic23@kernel.org>,
+	David Lechner <dlechner@baylibre.com>,
+	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
+	Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
+	Srinivas Kandagatla <srini@kernel.org>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@kernel.org>,
+	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
+	linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
+	Ben Grisdale <bengris32@protonmail.ch>
+Subject: Re: [PATCH v2 07/16] thermal: mediatek: add PMIC thermal support
+Message-ID: <agMI2phk0AQF6QP9@ashevche-desk.local>
+References: <20260512-mt6323-v2-0-3efcba579e88@protonmail.com>
+ <20260512-mt6323-v2-7-3efcba579e88@protonmail.com>
+ <CAHp75VfgrbEDLavMKFp2maFCH08RBUxF2wYhh56GG1HCq4ogmA@mail.gmail.com>
+ <j2uhavC9edilBoD6VJnlz8cCmMPhE9rQavh1epqLk61zrlZ3k1rqlyj8fVYWnkddIY1fEfPk1DfcW09i39hd-Q7I9Y8Vxd0w8C2eCjVGLc4=@protonmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] PCI: mediatek-gen3: fix incorrectly skipped pwrctrl error
- message
-To: Chen-Yu Tsai <wenst@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Ryder Lee <ryder.lee@mediatek.com>, Lorenzo Pieralisi
- <lpieralisi@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?=
- <kwilczynski@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>,
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-pci@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Dan Carpenter <error27@gmail.com>
-References: <20260512103347.1751080-1-wenst@chromium.org>
-Content-Language: en-US
-From: Hans Zhang <18255117159@163.com>
-In-Reply-To: <20260512103347.1751080-1-wenst@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-CM-TRANSID: _____wC3KAnjAwNqLBufAw--.49467S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7Kr15tF48tr48ur1xKrWfKrg_yoW8GF4xpa
-	yDKFyfAF95trs8ZFsFk3W3u3WYgwnxurW8Gan7Ww1fArZxCFyDK342934FgF4xtrWv9w17
-	X3ZFya48GrsxuF7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zRK-ewUUUUU=
-X-Originating-IP: [140.206.53.66]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbCwwVV+GoDA+Wi8wAA31
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <j2uhavC9edilBoD6VJnlz8cCmMPhE9rQavh1epqLk61zrlZ3k1rqlyj8fVYWnkddIY1fEfPk1DfcW09i39hd-Q7I9Y8Vxd0w8C2eCjVGLc4=@protonmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260512_034233_305789_D8A68E44 
-X-CRM114-Status: GOOD (  15.69  )
+X-CRM114-CacheID: sfid-20260512_040500_677991_577AC884 
+X-CRM114-Status: GOOD (  21.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,40 +105,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, May 12, 2026 at 08:55:44AM +0000, Roman Vivchar wrote:
+> On Tuesday, May 12th, 2026 at 10:05 AM, Andy Shevchenko <andy.shevchenko@gmail.com> wrote:
+> > On Tue, May 12, 2026 at 8:21 AM Roman Vivchar via B4 Relay
+> > <devnull+rva333.protonmail.com@kernel.org> wrote:
 
+...
 
-On 5/12/26 18:33, Chen-Yu Tsai wrote:
-> When pwrctrl integration was added, the error message for when
-> pci_pwrctrl_create_devices() fails was incorrectly put after the error
-> goto statement, causing it to be skipped.
+> > > +#include <linux/kernel.h>
+> >
+> > No way the driver(s) nowadays use this header. Please, drop it and add
+> > the ones that are really in use (there are missing ones).
 > 
-> Move the goto statement after the dev_err_probe() call so that the
-> error message actually gets printed (or saved if probe is deferred).
-> 
-> Reported-by: Dan Carpenter <error27@gmail.com>
-> Closes: https://lore.kernel.org/all/adjNaKB5KGpl6qIp@stanley.mountain/
-> Fixes: 1a152e21940a ("PCI: mediatek-gen3: Integrate new pwrctrl API")
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> Is there a tool or script that can check for IWYU?
 
-Reviewed-by: Hans Zhang <18255117159@163.com>
+The `iwyu` tool with customised configuration is the closest what we have
+(but quite far from ideal), you can read this thread [2].
 
-> ---
->   drivers/pci/controller/pcie-mediatek-gen3.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+> For example,
+> the u32 and s32 types are defined in the asm-generic/int-ll64.h, which
+> is not used by any device driver. Instead, types.h should be used.
+> It's difficult to guess which header to use for a given type/function.
+
+I know. I got this knowledge because:
+- I do a lot of reviews and patches and gathered it from the experience
+- I am the one who reshuffled *some* of the headers
+
+> I've tried include-what-you-use [1], but it gives bad results like
+> "add #include <asm-generic/int-ll64.h> // for u32".
+
+See above.
+
+> > > +#include <linux/module.h>
+> > > +#include <linux/nvmem-consumer.h>
+> > > +#include <linux/platform_device.h>
+> > > +#include <linux/property.h>
+> > > +#include <linux/regmap.h>
+> >
+> > > +#include <linux/slab.h>
+> >
+> > Is it used?
 > 
-> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-> index 6f0ae946d501..ef64778bbf8b 100644
-> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
-> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> @@ -1221,8 +1221,8 @@ static int mtk_pcie_probe(struct platform_device *pdev)
->   
->   	err = pci_pwrctrl_create_devices(pcie->dev);
->   	if (err) {
-> -		goto err_tear_down_irq;
->   		dev_err_probe(dev, err, "failed to create pwrctrl devices\n");
-> +		goto err_tear_down_irq;
->   	}
->   
->   	err = mtk_pcie_setup(pcie);
+> Yes, without slab.h the __free would complain about missing __free_kfree,
+> which is DEFINE_FREE(kfree, void *, if (!IS_ERR_OR_NULL(_T)) kfree(_T)).
+
+Ah, indeed. I forgot that this is not the part of cleanup.h.
+
+...
+
+> 1: https://github.com/include-what-you-use/include-what-you-use
+[2]: https://lore.kernel.org/all/20260512073505.1310-1-joshua.crofts1@gmail.com/
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
 
 
