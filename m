@@ -4,72 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EBF7CD4F21
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2026 20:58:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1633CD343F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2026 21:25:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5vSXzbfxiDayi3uLMoENhtSVkT6Xt07qc9dfSIxaHTQ=; b=GYMfiu5inlhcNOGYKP/rko+o9L
-	kQ+hGG+jqL4vxcpeqrUjnvSKZazZkdcKZbEBrkdcUvRkp+Qr1C9p0NYFW+qy3Ms5PUK8F/WOtOTn+
-	0U5kuOM5nEnazSvu3J+6nQeKK2OuaTq9cTbO0VaxLE88FjrfDSTs6jDKm6QX3OezoHRLs+0TGMEaN
-	vqTs78+4o3WUSAotYqHv5KgeeOzwf2Cn3KsgyO6rrAL5Ah3vvZiUnsGQxR1RLWIT9mqFO4qFwcPKB
-	jOuDUTR1PKrjLWJTXsyezdHvP0KzYHu8aWjan4casOgIYYdj4zbG1XbSegqkdtM0gKbrTTyB0Bsjs
-	U9U5IO2A==;
+	bh=lm/7gIzsXHp+NFpsQj5+tpVoJNOyI5TFBCPv5UKpT94=; b=r9V5qbsExHQTlw7ywY8QpN2tLD
+	l4mZFyMTOGsckRERVkXfCBDk81JTZgN5kxX5I40csD0GGDRd/0LDaMPZ+6dkUCiqxgvMlgBawluQx
+	7ON3kK9p2D8viQJEljEwCrrahmsKlyt6KwIBtQDc9kBqXcKWHPjObQwR/yxpSqUVsiUSV2dBe2Ueo
+	7oXm5bEAKSzzv4lQadez8l/PyolFOsLb24oVgpRCDsAvFNIY8ANy82dW+4BQIzUHiRUSP0GJ5fsBy
+	ZKV4JzHTK1Ov3sbm7DOq26FLDhyshBGYNy+pMB/UB4u66ox8nLbr6HGepZD3GaWwDEY+lt5LeHWPu
+	KwonjtCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMuBj-00000000PLs-1A4P;
-	Tue, 12 May 2026 20:58:47 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wMubo-00000000Twy-03RU;
+	Tue, 12 May 2026 21:25:44 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMuBg-00000000PKv-3rrW;
-	Tue, 12 May 2026 20:58:46 +0000
+	id 1wMubm-00000000TwS-2USL;
+	Tue, 12 May 2026 21:25:42 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9CC6840647;
-	Tue, 12 May 2026 20:58:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F35D8C2BCB0;
-	Tue, 12 May 2026 20:58:43 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 97A59600CB;
+	Tue, 12 May 2026 21:25:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 208D5C2BCB0;
+	Tue, 12 May 2026 21:25:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778619524;
-	bh=cwRYFJ8mo7xPr/Sm/kd6T4GfCK3h96cELX3tInSSqH4=;
+	s=k20201202; t=1778621141;
+	bh=EJnWDfRo+uPbHrOqa3qgWqMaN3gN4wh4Fsfhj1nSvLQ=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=aew4b/4EDTRlqlXHmm4ka53FQbHCXwfJFmy8x01qQqfmuztLbaflyIT6Z3KXDXwK2
-	 b5JiZYNgRlvCID3NhkRx3KDtWb4nCuI6wimqtfnIwAD1mAAd9SVaDC/JSFiX7UdSOg
-	 nBygmXFpmJNoPfEnWc4ul/IPZDtPZbA/n6+FpygRh3jpuCEYeD5hipGFrI1gxOs8M5
-	 mYoOME7LP9wAWubUPs6q5f6D+bABmxyF5wfHBRa4huykaC9maPfJwfYzzR7HaVSHzw
-	 ec5dE7LMCOooljRryEym8Iy191vRpFMtPYVbUYxXGVvdndmQCEXS+vjoUznhhOb1qg
-	 Oq1FYLT8tvPNg==
-Date: Tue, 12 May 2026 22:58:41 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Benjamin Larsson <benjamin.larsson@genexis.eu>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	Madhur Agrawal <madhur.agrawal@airoha.com>
-Subject: Re: [PATCH net-next v6 11/12] net: airoha: Support multiple LAN/WAN
- interfaces for hw MAC address configuration
-Message-ID: <agOUgVn24Ls5jiHq@lore-desk>
-References: <20260511-airoha-eth-multi-serdes-v6-0-c899462c4f75@kernel.org>
- <20260511-airoha-eth-multi-serdes-v6-11-c899462c4f75@kernel.org>
- <f4a11830-8a3f-4cc3-ab82-e6f02ca34ae8@genexis.eu>
+	b=Avt+EHCVMfTlk+wRz1p7d5iQ9oECUodk6IeA/e2U+soWUXY8AjlhsEDpTMMnR3Q09
+	 5NfG8l208seCxH/fqWx/SbhOPY4X375jr4U/+gR/wKrrZquUgQocXIOoZeYIY+z4e/
+	 YEJdarFRN4W+2E/gPLS6wJ8wjP7cgClBzWhi5f9U939wrj9lCpEVjHqK9pztnX7eB7
+	 5VGlzvJNRvs0vqpV558tHFtUlJDFhQuLvx5lofEmQ04MkPAPyElARm0O6CyQGwrn7l
+	 wG2lfhs2tRHwdjh+xGSxKLD6rRP9KVGLstZp9y9DYzdzyXn8F1xn/cceXiYRzWNNkq
+	 sQ/u3r0OL3DeA==
+Received: by pali.im (Postfix)
+	id 0526AB57; Tue, 12 May 2026 23:25:31 +0200 (CEST)
+Date: Tue, 12 May 2026 23:25:31 +0200
+From: Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>
+To: Hans Zhang <18255117159@163.com>
+Cc: bhelgaas@google.com, lpieralisi@kernel.org, kwilczynski@kernel.org,
+	mani@kernel.org, vigneshr@ti.com, jingoohan1@gmail.com,
+	thomas.petazzoni@bootlin.com, ryder.lee@mediatek.com,
+	jianjun.wang@mediatek.com, claudiu.beznea.uj@bp.renesas.com,
+	mpillai@cadence.com, robh@kernel.org, s-vadapalli@ti.com,
+	linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org, linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 6/8] PCI: aardvark: Add 100 ms delay after link
+ training
+Message-ID: <20260512212531.jupoocz7acv22qyg@pali>
+References: <20260506152346.166056-1-18255117159@163.com>
+ <20260506152346.166056-7-18255117159@163.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Wnpl3sdvUPuniOKw"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <f4a11830-8a3f-4cc3-ab82-e6f02ca34ae8@genexis.eu>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260512_135845_007062_0F1E20E4 
-X-CRM114-Status: GOOD (  24.79  )
+In-Reply-To: <20260506152346.166056-7-18255117159@163.com>
+User-Agent: NeoMutt/20180716
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,131 +79,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wednesday 06 May 2026 23:23:44 Hans Zhang wrote:
+> The Aardvark PCIe controller driver waits for the link to come up but
+> does not implement the mandatory 100 ms delay after link training
+> completes for speeds greater than 5.0 GT/s (PCIe r6.0 sec 6.6.1).
+> 
+> The driver already maintains a 'link_gen' field that holds the negotiated
+> link speed. Use it together with pcie_wait_after_link_train() to insert
+> the required delay immediately after confirming that the link is up.
+> 
+> Signed-off-by: Hans Zhang <18255117159@163.com>
+> ---
+>  drivers/pci/controller/pci-aardvark.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pci/controller/pci-aardvark.c b/drivers/pci/controller/pci-aardvark.c
+> index e34bea1ff0ac..526351c21c49 100644
+> --- a/drivers/pci/controller/pci-aardvark.c
+> +++ b/drivers/pci/controller/pci-aardvark.c
+> @@ -350,8 +350,10 @@ static int advk_pcie_wait_for_link(struct advk_pcie *pcie)
+>  
+>  	/* check if the link is up or not */
+>  	for (retries = 0; retries < LINK_WAIT_MAX_RETRIES; retries++) {
+> -		if (advk_pcie_link_up(pcie))
+> +		if (advk_pcie_link_up(pcie)) {
+> +			pcie_wait_after_link_train(pcie->link_gen);
+>  			return 0;
+> +		}
+>  
+>  		usleep_range(LINK_WAIT_USLEEP_MIN, LINK_WAIT_USLEEP_MAX);
+>  	}
+> -- 
+> 2.34.1
+> 
 
---Wnpl3sdvUPuniOKw
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Are you sure that this is correct to do? Have you checked the A3720
+Functional Specification which describes how to bring PCIe link up?
 
-On May 12, Benjamin Larsson wrote:
-> Hi.
->=20
-> On 11/05/2026 12:49, Lorenzo Bianconi wrote:
-> > The EN7581 and AN7583 SoCs provide registers to configure hardware LAN/=
-WAN
-> > MAC addresses, used to determine whether received traffic is destined f=
-or
-> > this host or should be forwarded to another device.
-> > The SoC hardware design assumes all interfaces configured as LAN (or WA=
-N)
-> > share a common upper MAC address, which is programmed into the
-> > REG_FE_{LAN,WAN}_MAC_H register. The lower bytes of 'local' addresses c=
-an
-> > be expressed as a range via the REG_FE_MAC_LMIN and REG_FE_MAC_LMAX
-> > registers.
-> > Previously, only a single interface was considered when programming the=
-se
-> > registers. Extend the logic to derive the correct minimum and maximum
-> > values for REG_FE_MAC_LMIN/REG_FE_MAC_LMAX when two or more interfaces =
-are
-> > configured as LAN or WAN.
-> >=20
-> > Tested-by: Madhur Agrawal <madhur.agrawal@airoha.com>
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > ---
-> >   drivers/net/ethernet/airoha/airoha_eth.c | 75 +++++++++++++++++++++++=
-++++-----
-> >   drivers/net/ethernet/airoha/airoha_eth.h |  2 +-
-> >   drivers/net/ethernet/airoha/airoha_ppe.c |  4 +-
-> >   3 files changed, 66 insertions(+), 15 deletions(-)
-> >=20
-> > diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/eth=
-ernet/airoha/airoha_eth.c
-> > index 16c0ff9999da..533ffe20f833 100644
-> > --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> > +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> > @@ -71,20 +71,67 @@ static void airoha_qdma_irq_disable(struct airoha_i=
-rq_bank *irq_bank,
-> >   	airoha_qdma_set_irqmask(irq_bank, index, mask, 0);
-> >   }
-> > -static void airoha_set_macaddr(struct airoha_gdm_dev *dev, const u8 *a=
-ddr)
-> > +static int airoha_set_macaddr(struct airoha_gdm_dev *dev, const u8 *ad=
-dr)
-> >   {
-> >   	struct airoha_eth *eth =3D dev->eth;
-> > -	u32 val, reg;
-> > +	u8 ref_addr[ETH_ALEN] =3D {};
-> > +	u32 reg, val, lmin, lmax;
-> > +	int i;
-> > +
-> > +	lmin =3D (addr[3] << 16) | (addr[4] << 8) | addr[5];
-> > +	lmax =3D lmin;
-> > +
-> > +	for (i =3D 0; i < ARRAY_SIZE(eth->ports); i++) {
-> > +		struct airoha_gdm_port *port =3D eth->ports[i];
-> > +		int j;
-> > +
-> > +		if (!port)
-> > +			continue;
-> > +
-> > +		for (j =3D 0; j < ARRAY_SIZE(port->devs); j++) {
-> > +			struct airoha_gdm_dev *iter_dev;
-> > +			struct net_device *netdev;
-> > +
-> > +			iter_dev =3D port->devs[j];
-> > +			if (!iter_dev || iter_dev =3D=3D dev)
-> > +				continue;
-> > +
-> > +			if (airoha_is_lan_gdm_dev(iter_dev) !=3D
-> > +			    airoha_is_lan_gdm_dev(dev))
-> > +				continue;
-> > +
-> > +			netdev =3D iter_dev->dev;
-> > +			if (netdev->reg_state !=3D NETREG_REGISTERED)
-> > +				continue;
-> > +
-> > +			ether_addr_copy(ref_addr, netdev->dev_addr);
-> > +			val =3D (netdev->dev_addr[3] << 16) |
-> > +			      (netdev->dev_addr[4] << 8) | netdev->dev_addr[5];
-> > +			if (val < lmin)
-> > +				lmin =3D val;
-> > +			if (val > lmax)
-> > +				lmax =3D val;
-> > +		}
-> > +	}
-> > +
-> > +	if (!is_zero_ether_addr(ref_addr) && memcmp(ref_addr, addr, 3)) {
-> > +		/* According to the HW design, hw mac address MS bits
-> > +		 * must be the same for each net_device with the same
-> > +		 * LAN/WAN configuration.
-> > +		 */
-> > +		return -EINVAL;
-> > +	}
->=20
-> Maybe this information should be relayed to the user somehow?
+A3720 PCIe controller is buggy and needs more timing hacks to make it
+behave. Playing with random sleeps can break its internal logic.
+I'm not sure if it could be safe without proper testing.
 
-netdev_err()?
-
-Regards,
-Lorenzo
-
->=20
-> MvH
->=20
-> Benjamin Larsson
->=20
-
---Wnpl3sdvUPuniOKw
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCagOUgQAKCRA6cBh0uS2t
-rIn+APwKpb4qxMrPaC5ng4+5c/Ub1S62RXR68TIg3As8A6JbIwD/RGedQbqaS9xg
-zxmKutUfiYEtLPbAvGErfwePBAN6Gws=
-=JHOg
------END PGP SIGNATURE-----
-
---Wnpl3sdvUPuniOKw--
+And IIRC A3720 PCIe controller is just PCIe2.0 with 5 GT/s.
 
