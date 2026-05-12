@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 778D3CD4F26
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2026 08:54:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77F57CD4F26
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2026 08:54:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=75WqDjeR/e8cdr8sYQMKFFH1AdK4iAEiulrhw3a0B6s=; b=DqzflEbYYNBMzHACk+4Fic5Llp
-	UsaO9KUgW8kvRa5E2JwfyXP9jXYwJqNGKP9I2TFxqq4uj5WxswldmAuFEMY2DQ7d5gMgZOZ9Uh6pA
-	Z+H0AmgFTHNYmVssMjfRHyS0Q0ghbcmTOmDefM7L7wb1wdZCrVRS/4Zc2myF059PVZnUKg5RruwAQ
-	J94kS+Vssj64ZwN4oFIAtKvugPdf74p6RLkjtOvdjObU5fnb3kJbLm+MN8KmSA7m3rZND545NWTHQ
-	eCH6Y1GTj/eGLUkQ9qCwKJCI9wWN6VWLfp1nS/JH0MA6TfGVSpwHteImV1VKHorScxZ/28JD2e/Sk
-	b2Ar/ejA==;
+	bh=59kt6aNwzcXJV4ZtVsWMaQLA4u7r8yoORDZ1L7mRnY0=; b=tPQCmQJfT5wAPiDW8ht5p2lQMN
+	xxaXMrYtZjIaHgoFOopoYn04GZLLSgdQKfjd7jJL5zfU/Q7KqytN2zgSAWEZwl4wCgdDjT3rLTg7J
+	XcR1DAo9r4f2y2aYR3Dtw5Me6/Ww8d6e+OkYuNn2lXjnnvZd1Viks9w7qb7Iz9lyaVLE/Cris/8OQ
+	fXeVC4+6OvcwhOsXpkN4umwmv53fKHs+B4dWFECcuxm5iKc+k8oC4SBd9I+790dOjj68wmxKnTV5t
+	BYFKKgzMB82JwznAv418L9mSpC7znlTfhE/JyhMTn6RmtrnRyRltHsr/SdIvVRy5PRRWbZ7frznzN
+	dU68lNNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMism-0000000G9G3-1fmt;
-	Tue, 12 May 2026 08:54:28 +0000
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
+	id 1wMisr-0000000G9NA-1xqv;
+	Tue, 12 May 2026 08:54:33 +0000
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMisk-0000000G9DK-10mG
+	id 1wMisn-0000000G9Gd-0syW
 	for linux-mediatek@lists.infradead.org;
-	Tue, 12 May 2026 08:54:27 +0000
-Received: by mail-pg1-x52b.google.com with SMTP id 41be03b00d2f7-c80167f56cdso2078404a12.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 12 May 2026 01:54:26 -0700 (PDT)
+	Tue, 12 May 2026 08:54:30 +0000
+Received: by mail-pg1-x536.google.com with SMTP id 41be03b00d2f7-c70e27e2b74so2082411a12.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 12 May 2026 01:54:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1778576066; x=1779180866; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1778576068; x=1779180868; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=75WqDjeR/e8cdr8sYQMKFFH1AdK4iAEiulrhw3a0B6s=;
-        b=D9PNGWXv8FGl0U7lrmDEAy4JDbQzcU4jEQAEV4wFfsndSMOVrNAg8aPTpb++dbcXNw
-         inIebDtyo2VT2UMXQlClEhTUTspDDq0b4/ARm4uqPbA8B08MEKCWZ2YNglj+d9kw9ZBH
-         a7KTNdP/QSc8tj544NG0tpC5KW70+ENIgeCYk=
+        bh=59kt6aNwzcXJV4ZtVsWMaQLA4u7r8yoORDZ1L7mRnY0=;
+        b=HFIyFBBBOIty+9glkLIqQ5ewGlTnOVVAf2yrS9rSEXBh+1GigXOzejJ1kh+R8b1BDR
+         WL82jG6ocSlmKzF1w4Of8sVdmFJsDhA3O8RsgKS6OX7EXYT4y7gauymSjdAuEk3F9kbY
+         Zka1Lc+BXfbhpq1vCQ9wj5rvu6Ms8G3G2yCr8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1778576066; x=1779180866;
+        d=1e100.net; s=20251104; t=1778576068; x=1779180868;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=75WqDjeR/e8cdr8sYQMKFFH1AdK4iAEiulrhw3a0B6s=;
-        b=G0X1vYzwXXonrbPsRG+Z5uVsHxzzdgGOmXCPOROuUn3B2OnwzmPBnwNChjrn5Htnj7
-         Bh/u0VmDl/xOteF6y/O7hTAE51BxpcD+tD5xHsN/LmJ/whcBlK2ch3aKONsEGtAGwCib
-         c3crOMzPPv+4PM1mu1FVMtMFpHKoSZ/cwuawegpQeyQXRcm52/KztqCVhDmotnvn1KZY
-         CwIF/AsR4CCpK5qfl5MEtoCvDWc2dcXj9UKvjfnbQq8yYd+/vIaxSC1xabXQtzJqa4jD
-         fwxynWv/IoVaFQ/DYuqi38rm5tLjKG2j7VLnMzyrkS6aY+oNpFc0jSoUdDgg5gc4Fy8k
-         7m/Q==
-X-Forwarded-Encrypted: i=1; AFNElJ8dBHXMit2f/+/LNFHDyrfQ4irUFoHLFQUdp1m8YgC0RP8gdjq9Ra2NJLzvw+6jtSQi/GfvbpDryomxW0AnNQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxK73YN1rFbyuhfr93eiQvq4UBa5LSbKPSKVkzf+B2zD4ro/Zsf
-	CloVF2tt2UTqqkwejbaF5o2OboIIbVAbEG+a5i1wGdI5cGIQ+HGm++/TuoVkFcHGOQ==
-X-Gm-Gg: Acq92OFQWIASwgjFBINQXx5EFRouMtEBWiNcrgcMeZ5CaA0qlrv7snsMDDF7nFZF6s/
-	l/AEStF2NYwitIKrQn5YF2p1TENJGayrPrLMQyxa65Qg4fr7FCVtlHTOfFBGXwbTGlCm8831ojY
-	1pYqCIWp6epCXQLbzUCiIcuectazxACpkUNEv4daooUuZ3fbAP0bromoDJATnIMpGPl6covYw6i
-	c6CodRtq9dR92WkQxXINiBQBl/GnhWAv2pn0FkD5nn1hOlN/4NsOdTIzQJy6YHonFzfHqldCMoy
-	9BK11Qm/iSiYvTJ3Qjq0QRUAcyUCzZFOfRjAiuKX1kdc1ltpTxJp+53FSuYA7dmUFMR5XE2QkRp
-	xTIexWkfv2R2Ei4qYFk/GyNUbAxAXSxc7LZHrUKpSd1dAUD8X4JIzieTDQy4TRMSytdtd+VWw0F
-	I2tzlrvDDhNQEtqUntkYBoZS4jOLrR5X54i4DdO1QT2rOBGc04OwG9DhI1XxwVrhjlgfAO8DUiA
-	Ktlr9ZRGoPHoDQodcE=
-X-Received: by 2002:a05:6a21:9983:b0:3a2:7ef4:81df with SMTP id adf61e73a8af0-3aa5ab71a24mr29852885637.26.1778576065529;
-        Tue, 12 May 2026 01:54:25 -0700 (PDT)
+        bh=59kt6aNwzcXJV4ZtVsWMaQLA4u7r8yoORDZ1L7mRnY0=;
+        b=o4sQ/uMnz3fslfrsU1HWlsQ4PqECD/WjSYf7NlJyzS1k4cJ4eLoWtC2K9Nz0dQd61N
+         pV4dvjI0+zvkuZLMWRW0m9BcwPzmaHD8y+8y34jwMhGgCVupLXwegYQQLI7+TPLVNaYd
+         nhxS2lnD5Eu5ETByhAOP41reubT8N/G/cmu0X9b50LHSDt8Jww+wq3V/Nv0dl8nc5fzD
+         ZUhC7XcyC80IWAXn87mZSSZF307xDeVB11kGNhqbIsAAeD022THPnGyXJVMOb9DNJ2SZ
+         +EovgGxfRyGSWcMhfInTOG4Y/oJSd9cqbpe8JpM71BPADB+tTibbbB3QLczwTAbjEJvZ
+         Weow==
+X-Forwarded-Encrypted: i=1; AFNElJ/Yl7j38RbYUsFVy7ANtzNPq3JnJMJP8dZvvY5SGRlYzhJNA5+ovs9bSMr0P87y0Vf/BQHECqgEBzhgNFQvuA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx2yL+sgswPqrSvCMFz1R5pBf+ybrF+AAAokB4vEiYtrfUKutwk
+	kvEnJP56wyv6b2zhO/n5n9ZdUWCV/NDSRkm45VJxG95oxHB15sTPjB6GyjfUjMuImQ==
+X-Gm-Gg: Acq92OGpb1mSSj9FZzt3xHl/tFAwspheEhrFTDbAIhSL0t1gOwytAAIbVT0e8IAl1GH
+	4i98b3QTOLbIRlnprIjuOJ6IEFBANSCGA67tL3wt+stjkaUUty5jEcVFGVwrrqgvF/C75HeyL9r
+	XtVszFX0TWUxdL9VROO63xqdtfXSDfuhe5840OD4rCev/US0Hwna8Jq7d0paHQjNoG6mGTjgNYI
+	dCD9t5zulJHprOlRWe7LHUKJsFElB48lH7ELn+8bTtRIUAt+GVSTToHDgNodKfuLg2FSLt/yHhO
+	D5bg8QZzyiCT6+0wsTQDKVJntjfUuET5KuNRXwwOq6moYgjZZB49KR+pa1strSZ071KM0t3ygmn
+	x/4KBty/goKFa2gK2XncIbe95OAQAaMFLmhTIxvy/oU597NvRLOc8T+0ufIj/sjm3KEyDOUjsPO
+	TKiARKoakzsEqcG6mELdMIbjGNS+NC/0US0OP+E03TrZWS4cU5SavXBj6XQqmZYDTpuXVvdv0Vp
+	6xqDzJY
+X-Received: by 2002:a05:6a21:e082:b0:39c:787:f197 with SMTP id adf61e73a8af0-3aab17186femr19074564637.36.1778576068336;
+        Tue, 12 May 2026 01:54:28 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:6606:2bd2:159a:55e3])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-c826771a8a1sm11136856a12.24.2026.05.12.01.54.22
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-c826771a8a1sm11136856a12.24.2026.05.12.01.54.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 12 May 2026 01:54:25 -0700 (PDT)
+        Tue, 12 May 2026 01:54:27 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Mark Brown <broonie@kernel.org>,
 	Liam Girdwood <lgirdwood@gmail.com>,
@@ -79,19 +79,18 @@ To: Mark Brown <broonie@kernel.org>,
 Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Subject: [PATCH v3 3/6] regulator: dt-bindings: mt6359: Deprecate bogus vcn33_[12]_* split regulators
-Date: Tue, 12 May 2026 16:53:51 +0800
-Message-ID: <20260512085358.1693208-4-wenst@chromium.org>
+	devicetree@vger.kernel.org
+Subject: [PATCH v3 4/6] regulator: mt6359: const-ify regulator descriptions
+Date: Tue, 12 May 2026 16:53:52 +0800
+Message-ID: <20260512085358.1693208-5-wenst@chromium.org>
 X-Mailer: git-send-email 2.54.0.563.g4f69b47b94-goog
 In-Reply-To: <20260512085358.1693208-1-wenst@chromium.org>
 References: <20260512085358.1693208-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260512_015426_289376_6A788E88 
-X-CRM114-Status: GOOD (  11.40  )
+X-CRM114-CacheID: sfid-20260512_015429_258838_6FFEE5BC 
+X-CRM114-Status: GOOD (  16.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,49 +105,104 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-vcn33_[12]_bt and vcn33_[12]_wifi refer to the same output. There are
-two enable bits in the registers so that BT and WiFi drivers can toggle
-them separately without any coordination. If either bit is set, then the
-regulator output is enabled.
+The regulator descriptions and extended descriptions don't change at
+runtime. The only reason they are not const is that the regulator
+driver data is non-const.
 
-Deprecate the existing regulators, and add proper regulators matching
-the outputs: vcn33_1 and vcn33_2.
+Const-ify the descriptions and all references to them. For the driver
+data, explicitly cast it to non-const void *.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 ---
- .../bindings/regulator/mt6359-regulator.yaml          | 11 ++++++++++-
- 1 file changed, 10 insertions(+), 1 deletion(-)
+ drivers/regulator/mt6359-regulator.c | 19 ++++++++++---------
+ 1 file changed, 10 insertions(+), 9 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml b/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml
-index ac925334ae83..eb62d6a0355d 100644
---- a/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml
-+++ b/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml
-@@ -30,7 +30,7 @@ patternProperties:
-     $ref: regulator.yaml#
-     unevaluatedProperties: false
+diff --git a/drivers/regulator/mt6359-regulator.c b/drivers/regulator/mt6359-regulator.c
+index c8a788858824..bcf9a476a34e 100644
+--- a/drivers/regulator/mt6359-regulator.c
++++ b/drivers/regulator/mt6359-regulator.c
+@@ -251,7 +251,7 @@ static int mt6359_get_status(struct regulator_dev *rdev)
+ {
+ 	int ret;
+ 	u32 regval;
+-	struct mt6359_regulator_info *info = rdev_get_drvdata(rdev);
++	const struct mt6359_regulator_info *info = rdev_get_drvdata(rdev);
  
--  "^ldo_vcn(18|13|33_1_bt|13_1_wifi|33_2_bt|33_2_wifi)$":
-+  "^ldo_vcn(18|13|33_[12])$":
-     type: object
-     $ref: regulator.yaml#
-     unevaluatedProperties: false
-@@ -55,6 +55,15 @@ patternProperties:
-     $ref: regulator.yaml#
-     unevaluatedProperties: false
+ 	ret = regmap_read(rdev->regmap, info->status_reg, &regval);
+ 	if (ret != 0) {
+@@ -267,7 +267,7 @@ static int mt6359_get_status(struct regulator_dev *rdev)
  
-+  "^ldo_vcn33_[12]_(bt|wifi)":
-+    type: object
-+    $ref: regulator.yaml#
-+    description:
-+      vcn33_[12]_(bt|wifi) are incorrect representations.
-+      Use vcn33_[12] instead.
-+    deprecated: true
-+    unevaluatedProperties: false
-+
- additionalProperties: false
+ static unsigned int mt6359_regulator_get_mode(struct regulator_dev *rdev)
+ {
+-	struct mt6359_regulator_info *info = rdev_get_drvdata(rdev);
++	const struct mt6359_regulator_info *info = rdev_get_drvdata(rdev);
+ 	int ret, regval;
  
- examples:
+ 	ret = regmap_read(rdev->regmap, info->modeset_reg, &regval);
+@@ -299,7 +299,7 @@ static unsigned int mt6359_regulator_get_mode(struct regulator_dev *rdev)
+ static int mt6359_regulator_set_mode(struct regulator_dev *rdev,
+ 				     unsigned int mode)
+ {
+-	struct mt6359_regulator_info *info = rdev_get_drvdata(rdev);
++	const struct mt6359_regulator_info *info = rdev_get_drvdata(rdev);
+ 	int ret = 0, val;
+ 	int curr_mode;
+ 
+@@ -354,7 +354,7 @@ static int mt6359_regulator_set_mode(struct regulator_dev *rdev,
+ static int mt6359p_vemc_set_voltage_sel(struct regulator_dev *rdev,
+ 					u32 sel)
+ {
+-	struct mt6359_regulator_info *info = rdev_get_drvdata(rdev);
++	const struct mt6359_regulator_info *info = rdev_get_drvdata(rdev);
+ 	int ret;
+ 	u32 val = 0;
+ 
+@@ -393,7 +393,7 @@ static int mt6359p_vemc_set_voltage_sel(struct regulator_dev *rdev,
+ 
+ static int mt6359p_vemc_get_voltage_sel(struct regulator_dev *rdev)
+ {
+-	struct mt6359_regulator_info *info = rdev_get_drvdata(rdev);
++	const struct mt6359_regulator_info *info = rdev_get_drvdata(rdev);
+ 	int ret;
+ 	u32 val = 0;
+ 
+@@ -469,7 +469,7 @@ static const struct regulator_ops mt6359p_vemc_ops = {
+ };
+ 
+ /* The array is indexed by id(MT6359_ID_XXX) */
+-static struct mt6359_regulator_info mt6359_regulators[] = {
++static const struct mt6359_regulator_info mt6359_regulators[] = {
+ 	MT6359_BUCK("buck_vs1", VS1, 800000, 2200000, 12500,
+ 		    MT6359_RG_BUCK_VS1_EN_ADDR,
+ 		    MT6359_DA_VS1_EN_ADDR, MT6359_RG_BUCK_VS1_VOSEL_ADDR,
+@@ -705,7 +705,7 @@ static struct mt6359_regulator_info mt6359_regulators[] = {
+ 			  MT6359_RG_LDO_VSRAM_OTHERS_SSHUB_VOSEL_SHIFT),
+ };
+ 
+-static struct mt6359_regulator_info mt6359p_regulators[] = {
++static const struct mt6359_regulator_info mt6359p_regulators[] = {
+ 	MT6359_BUCK("buck_vs1", VS1, 800000, 2200000, 12500,
+ 		    MT6359_RG_BUCK_VS1_EN_ADDR,
+ 		    MT6359_DA_VS1_EN_ADDR, MT6359_RG_BUCK_VS1_VOSEL_ADDR,
+@@ -950,7 +950,7 @@ static int mt6359_regulator_probe(struct platform_device *pdev)
+ 	struct mt6397_chip *mt6397 = dev_get_drvdata(pdev->dev.parent);
+ 	struct regulator_config config = {};
+ 	struct regulator_dev *rdev;
+-	struct mt6359_regulator_info *mt6359_info;
++	const struct mt6359_regulator_info *mt6359_info;
+ 	int i, hw_ver, ret;
+ 
+ 	ret = regmap_read(mt6397->regmap, MT6359P_HWCID, &hw_ver);
+@@ -965,7 +965,8 @@ static int mt6359_regulator_probe(struct platform_device *pdev)
+ 	config.dev = mt6397->dev;
+ 	config.regmap = mt6397->regmap;
+ 	for (i = 0; i < MT6359_MAX_REGULATOR; i++, mt6359_info++) {
+-		config.driver_data = mt6359_info;
++		/* drop const here, but all uses in the driver are const */
++		config.driver_data = (void *)mt6359_info;
+ 		rdev = devm_regulator_register(&pdev->dev, &mt6359_info->desc, &config);
+ 		if (IS_ERR(rdev)) {
+ 			dev_err(&pdev->dev, "failed to register %s\n", mt6359_info->desc.name);
 -- 
 2.54.0.563.g4f69b47b94-goog
 
