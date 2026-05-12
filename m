@@ -4,60 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC72ACD343F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2026 16:55:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5F19CD4F24
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2026 16:56:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=Q6IT5E7Il4nyknkcKKAIZ4aoS6qpMztYTA14HGTASg0=; b=ZwE/47UMzYeQDa
-	EEU0ixUm5tQXoDAW77ziFarCAo65U+e10YcGmns6DeLMEQH3eL30+019+zIdWo7BmB9ZpwWEvSJoP
-	5uzY/y7dliV754RD8ruyN2qY0SbkL3fuNHx/kvqxZ0VNHdAinINRX9OpkgM+4SzY4yX5+jHR7Hs3l
-	RGEL2sd0xzo3ZMQXjJuk4osqs7w5mGfinAeCZWPspzbO5k/Cj46GPrGfNoskmuIzfsjxCFHsmFZYx
-	OSidiPmSr+NRXcE+yUanUJgwNIDUWVCKN8itgCGEEsw+aZMWfltVOi855yWHiAzcI8GhbOUaVFem+
-	H8u6QEdfszE4fLv8eCNQ==;
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+Z4XofTmyrXM1eDUAnyoLPP8UjMjadHg57bVLtHnqZE=; b=ZzAp0DxwKhZFTwC9DH8q1xn1ge
+	zP/3Rq2Bd5Im8Jd1EC4LDtMc8SBmkgwnxSj4XD4Lc1fltUQP8b1/2K2H62SYDEkhq034J7tpWIhqi
+	KNpGDWus0blJBjJ5Ci8/aPfpsIYNWPkFbTSAm9zBjQFOq2z/raAWcl9l1Yiqh9E9dfp+1zwmShBQj
+	dE0lfX3cVvmPuV2n4+6j9jls6s6XT7kNCjc2vQ9GmEWBNgGAqN2P1LB3whuWOyz23qMzB7VlDuYIz
+	niWxmKbM/awiJUCjKHQiZdP19TIX3l6ApuMqSwHejrk0f6BZyb9ipEV5PWuvhq+LdcrNXHfCzpHuD
+	xlsrPwbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMqOM-0000000HRzg-2f0m;
-	Tue, 12 May 2026 16:55:34 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wMqP9-0000000HS6J-3Yvg;
+	Tue, 12 May 2026 16:56:23 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMqOL-0000000HRzU-25Xc
-	for linux-mediatek@lists.infradead.org;
-	Tue, 12 May 2026 16:55:33 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id A4D6F60055;
-	Tue, 12 May 2026 16:55:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2C933C2BCB0;
-	Tue, 12 May 2026 16:55:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778604932;
-	bh=pguv4GSXU7BP/JNG5kiQEzdZlyeJ+Sv9kgdzi0t0K8c=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=Gv4pzI/uNym+Mv45u+BRyY2N9xKTgbdjxcyZjvn8rG4ReH2QmMXQVZ6MI1RU676iI
-	 J+s+z/ek2a/IJjaf5BoQajRQOwcORVvDihPWbsuKv7303mNp71iDtshM3MUgFYtu7m
-	 HabnrAW2Oo7BaHUwYznx83HEVd1TToxW6zlTjFshhPqHxTngQJuNQ5mWR2e/6GzVjW
-	 CQZCq0UtMDJ0+vPX1cMQeGbujB9aK4xUhWPM7t1qciYK4BMhqJBqGw7liVa/vUYWpr
-	 q+vcOzPxZxWcIpIpWHg+jM2ckyFU7m/NZ51xg6QrwwBPhFcsyeI1C+XLG3JYHnJJ+l
-	 13jZHuoAKBI0w==
-Date: Tue, 12 May 2026 11:55:30 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Caleb James DeLisle <cjd@cjdns.fr>
-Cc: linux-pci@vger.kernel.org, linux-mips@vger.kernel.org,
-	naseefkm@gmail.com, ryder.lee@mediatek.com, lpieralisi@kernel.org,
-	kwilczynski@kernel.org, mani@kernel.org, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, ansuelsmth@gmail.com,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v5 2/2] PCI: mediatek: Add support for EcoNet EN7528 SoC
-Message-ID: <20260512165530.GA228087@bhelgaas>
+	id 1wMqP8-0000000HS61-1D8Z;
+	Tue, 12 May 2026 16:56:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=+Z4XofTmyrXM1eDUAnyoLPP8UjMjadHg57bVLtHnqZE=; b=gL4r811Tp7e8ubp7S0DAkgee51
+	LrSDrsiCRhowy1uDkIDgg3wYRdGerCUT9LGDHtqnCTcAHCZBW28bQvwR2gNcv8h4vEsa58tisFRKS
+	Ogeg01+eU2hk8/NzebkA5/4GTMYc5e7mTiNrydmi/p6KrXv5dPfXa6CLr/bUAkAo9/4Nzqg89ySEF
+	00DOySC3TO4SxvTah1XkdUzB3ksqigm675CmsEfaIJCf7XIMSyRIQsufkMieYpAY2UY8+EvL4lgDc
+	+15IUUY/p6PDzJbr/UXI6lvCshcfIIiG3k66YrqaXaBWp4Bh6GU5HkBCwBl8K0oh4QggK+Z/wZ8AL
+	RP2e+/aw==;
+Received: from mgamail.intel.com ([192.198.163.8])
+	by desiato.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1wMqP3-0000000FPwO-25mU;
+	Tue, 12 May 2026 16:56:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1778604978; x=1810140978;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=9JqXkD4oo5STPUWAnq9HH/ZMSx9akBEyLL9pFMj5Eto=;
+  b=AQZHyaEgFTJq1RztkgSK0/hQDVmgO7jts7JqJTvmbch9dI/V5rjda5UO
+   QyqL8a+rFaciBcSKqdc3eOLYPLmQx2rb5hI+LnI7sS8hNSq60AiumcB+k
+   CHXmUM4x8z49qsPZ42l3P6XA2XwBSVUFofA7WGd2pw3h6HV65I8D4NOu+
+   wKj3C73ZZcgixKRYVnOP7NYU0YXMy4ZZQPtREtX5SMr4D1EBv+lYzaMel
+   lrrX6H6jAi5Nu/Us7xbmYjvXRzJ4z2uBV0pVMhc4CTVssyx9ZobqtN5wt
+   yaW3Eov1YUN4M7b9vv6dPYoeQGFBJSqD6m2ABbfagfuThKdM0biwVa8Uf
+   A==;
+X-CSE-ConnectionGUID: 3O1BEVFnSjGIRo2a3JFVKQ==
+X-CSE-MsgGUID: RddlUAKLQgK6ILA9Q0TZdQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11784"; a="97090230"
+X-IronPort-AV: E=Sophos;i="6.23,231,1770624000"; 
+   d="scan'208";a="97090230"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 May 2026 09:56:11 -0700
+X-CSE-ConnectionGUID: eE/ZxnqvT+CkeJ6UrkNkkQ==
+X-CSE-MsgGUID: AtasLK9fTAie+dOmlPczyA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,231,1770624000"; 
+   d="scan'208";a="242171405"
+Received: from pgcooper-mobl3.ger.corp.intel.com (HELO localhost) ([10.245.245.244])
+  by orviesa004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 May 2026 09:56:05 -0700
+Date: Tue, 12 May 2026 19:56:03 +0300
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
+To: Roman Vivchar <rva333@protonmail.com>
+Cc: Jonathan Cameron <jic23@kernel.org>, Andy Shevchenko <andy@kernel.org>,
+	David Lechner <dlechner@baylibre.com>,
+	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
+	Srinivas Kandagatla <srini@kernel.org>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@kernel.org>,
+	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
+	linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
+	Ben Grisdale <bengris32@protonmail.ch>
+Subject: Re: [PATCH v2 05/16] iio: adc: mediatek: add mt6323 PMIC AUXADC
+ driver
+Message-ID: <agNbo39p6uACvQHd@ashevche-desk.local>
+References: <20260512-mt6323-v2-0-3efcba579e88@protonmail.com>
+ <20260512-mt6323-v2-5-3efcba579e88@protonmail.com>
+ <20260512142932.5c6801d1@jic23-huawei>
+ <gWxamwTKyUeOF4QCsiIsrnh7DSWzIKFaY0h83qKq_0vg786xv1uFYhypix7BVO_ruG_vw3DrIsRhIKv5NAzl8hK72rjzPAjwAGU-rhkMgeA=@protonmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260413140339.16238-3-cjd@cjdns.fr>
+In-Reply-To: <gWxamwTKyUeOF4QCsiIsrnh7DSWzIKFaY0h83qKq_0vg786xv1uFYhypix7BVO_ruG_vw3DrIsRhIKv5NAzl8hK72rjzPAjwAGU-rhkMgeA=@protonmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260512_175618_249173_58323813 
+X-CRM114-Status: GOOD (  17.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,101 +118,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 13, 2026 at 02:03:39PM +0000, Caleb James DeLisle wrote:
-> Add support for the PCIe present on the EcoNet EN7528 (and EN751221) SoCs.
+On Tue, May 12, 2026 at 02:34:55PM +0000, Roman Vivchar wrote:
+> On Tuesday, May 12th, 2026 at 4:29 PM, Jonathan Cameron <jic23@kernel.org> wrote:
+> > On Tue, 12 May 2026 08:18:19 +0300
+> > Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org> wrote:
+
+...
+
+> > > +#define VOLTAGE_FULL_RANGE	1800
+> > Probably better to have this inline - however if you do keep it
+> > prefix t he define  VOLTAGE_FULL_RANGE sounds too generic!
+> > 
+> > > +#define AUXADC_PRECISE		32768
+> > I'd put that inline.  Little benefit it in having it up here...
 > 
-> These SoCs have a mix of Gen1 and Gen2 capable ports, but the Gen2 ports
-> require re-training after startup.
+> There was a mention about magic values in the v1 for the thermal patch [1].
+> Andy, would it be better to use an inline style or a #define here?
+> If the former, I'll rename the first constant to something like
+> AUXADC_VOLTAGE_FULL_RANGE.
 
-> +#include <asm-generic/errno-base.h>
+If you use it inline, add a comment to explain the magic.
+It will be a good compromise.
 
-Looks odd; why is this here?  There are basically no other drivers
-that do this.
+> [1]: https://lore.kernel.org/linux-mediatek/afmnUG8dG0N0HpV6@ashevche-desk.local/
 
-> @@ -1149,6 +1234,46 @@ static int mtk_pcie_probe(struct platform_device *pdev)
->  	if (err)
->  		goto put_resources;
->  
-> +	/* EN7528 PCIe initially comes up as Gen1 even if Gen2 is supported.
-> +	 * The cannonical way to achieve Gen2 is to re-train the link
-> +	 * immediately after setup. However, to save a lot of duplicated code
-> +	 * we use pcie_retrain_link() which is usable once we have the pci_dev
-> +	 * struct for the bridge, i.e. after pci_host_probe(). */
+-- 
+With Best Regards,
+Andy Shevchenko
 
-s/cannonical/canonical/
 
-> +	if (pcie->soc->quirks & MTK_PCIE_RETRAIN) {
-> +		int slot = of_get_pci_domain_nr(dev->of_node);
-
-I suppose of_get_pci_domain_nr() is sort of an implicit way to
-identify the Gen2 ports?  Worth at least a comment about this DT
-connection.  Maybe it could be replaced by using
-pcie_get_supported_speeds() or similar?
-
-> +		struct pci_dev *rc = NULL;
-
-s/rc/rp/ to avoid confusing "root port" for "return code" or "root
-complex".
-
-> +		int ret = -ENOENT;
-> +
-> +		if (slot >= 0)
-> +			rc = pci_get_slot(host->bus, PCI_DEVFN(slot, 0));
-
-Instead of fiddling with pci_get_slot(), which adds refcount issues
-and artificial device/function number dependencies, I think it would
-be better to iterate over the devices on host->bus, e.g., with
-"for_each_pci_bridge(dev, host->bus)" as in iproc_pcie_setup().
-
-> +		if (rc) {
-> +			ret = -EOPNOTSUPP;
-> +
-> +			/* pcie_retrain_link() is not an exported symbol but
-> +			 * this driver supports being built as a loadable
-> +			 * module. Someone using this on an EN7528 should make
-> +			 * it builtin, or accept Gen1 PCI. */
-> +#if IS_BUILTIN(CONFIG_PCIE_MEDIATEK)
-> +			ret = pcie_retrain_link(rc, true);
-> +#endif
-
-This looks like a confusing user experience if built as a module, with
-no hint to the user about why the link is slower than it should be.
-I guess "failed to retrain" is a bit of a hint, but it's not really a
-clue about how to fix it.
-
-> +		}
-> +
-> +		if (ret) {
-> +			dev_info(dev, "port%d failed to retrain %pe\n", slot,
-> +				 ERR_PTR(ret));
-
-This is basically an error path and there's nothing else to do, so if
-you return directly here (especially if you factor this to a separate
-function), the "normal" path below can be unindented.
-
-> +		} else {
-> +			u16 lnksta;
-> +			u32 speed;
-> +
-> +			pcie_capability_read_word(rc, PCI_EXP_LNKSTA, &lnksta);
-> +			speed = lnksta & PCI_EXP_LNKSTA_CLS;
-> +
-> +			dev_info(dev, "port%d link retrained, speed %s\n", slot,
-> +				 pci_speed_string(pcie_link_speed[speed]));
-> +		}
-> +	}
-
-Maybe factor the retrain block into a helper function.
-
-I'm sort of squinting at this whole link retrain thing to begin with.
-After the controller is configured correctly, the hardware is supposed
-to train the link automatically by itself.
-
-Did something change between mtk_pcie_startup_port_en7528() and now
-that means the link will train at Gen2?  Whatever that change is,
-could it be done in mtk_pcie_startup_port_en7528()?
-
-What happens when the downstream device is put in D3cold and the link
-retrains after power is restored?  Does it train at Gen2 then, without
-assistance like this?
 
