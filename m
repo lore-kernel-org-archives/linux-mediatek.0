@@ -4,106 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5F19CD4F24
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2026 16:56:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0D62CD4F24
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2026 17:04:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+Z4XofTmyrXM1eDUAnyoLPP8UjMjadHg57bVLtHnqZE=; b=ZzAp0DxwKhZFTwC9DH8q1xn1ge
-	zP/3Rq2Bd5Im8Jd1EC4LDtMc8SBmkgwnxSj4XD4Lc1fltUQP8b1/2K2H62SYDEkhq034J7tpWIhqi
-	KNpGDWus0blJBjJ5Ci8/aPfpsIYNWPkFbTSAm9zBjQFOq2z/raAWcl9l1Yiqh9E9dfp+1zwmShBQj
-	dE0lfX3cVvmPuV2n4+6j9jls6s6XT7kNCjc2vQ9GmEWBNgGAqN2P1LB3whuWOyz23qMzB7VlDuYIz
-	niWxmKbM/awiJUCjKHQiZdP19TIX3l6ApuMqSwHejrk0f6BZyb9ipEV5PWuvhq+LdcrNXHfCzpHuD
-	xlsrPwbw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VZBLTK2DdwywAhDF0XTPjOVZtq1ja7uZBlKESzPWNGI=; b=L2337CbU2vbIlTGFi8PMxvWLYY
+	aZXzYpgT/dR9ihSWcBN0TWM374CQVffVgFacROJ9opyyU7ifKgslCKKncksNgkzGly5gYGtADjFGb
+	GzdRfGAWqzLHcJQuKBd/aVbA8/+656p8Xb/9lYTrsEeFzAmFrDwyXKaxnufUqZQwQ2aKLK6GJw9bZ
+	aqJriTfwbL56MZiRXVHmrbkYmS952oEne6EAK/yB5fRtsFDjA1oPWMzajr2a1dvFJTtsR167isvU4
+	r2BYjLtWnJkwXMNAEplu1aFRl0QP/cYlq7NvWs7d4Frqyp619H9/QwogT4mnYbyJ2Y7AdSU8bfAq0
+	xHZFx2Rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMqP9-0000000HS6J-3Yvg;
-	Tue, 12 May 2026 16:56:23 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wMqXD-0000000HTcr-2OnM;
+	Tue, 12 May 2026 17:04:43 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMqP8-0000000HS61-1D8Z;
-	Tue, 12 May 2026 16:56:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=+Z4XofTmyrXM1eDUAnyoLPP8UjMjadHg57bVLtHnqZE=; b=gL4r811Tp7e8ubp7S0DAkgee51
-	LrSDrsiCRhowy1uDkIDgg3wYRdGerCUT9LGDHtqnCTcAHCZBW28bQvwR2gNcv8h4vEsa58tisFRKS
-	Ogeg01+eU2hk8/NzebkA5/4GTMYc5e7mTiNrydmi/p6KrXv5dPfXa6CLr/bUAkAo9/4Nzqg89ySEF
-	00DOySC3TO4SxvTah1XkdUzB3ksqigm675CmsEfaIJCf7XIMSyRIQsufkMieYpAY2UY8+EvL4lgDc
-	+15IUUY/p6PDzJbr/UXI6lvCshcfIIiG3k66YrqaXaBWp4Bh6GU5HkBCwBl8K0oh4QggK+Z/wZ8AL
-	RP2e+/aw==;
-Received: from mgamail.intel.com ([192.198.163.8])
-	by desiato.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMqP3-0000000FPwO-25mU;
-	Tue, 12 May 2026 16:56:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1778604978; x=1810140978;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=9JqXkD4oo5STPUWAnq9HH/ZMSx9akBEyLL9pFMj5Eto=;
-  b=AQZHyaEgFTJq1RztkgSK0/hQDVmgO7jts7JqJTvmbch9dI/V5rjda5UO
-   QyqL8a+rFaciBcSKqdc3eOLYPLmQx2rb5hI+LnI7sS8hNSq60AiumcB+k
-   CHXmUM4x8z49qsPZ42l3P6XA2XwBSVUFofA7WGd2pw3h6HV65I8D4NOu+
-   wKj3C73ZZcgixKRYVnOP7NYU0YXMy4ZZQPtREtX5SMr4D1EBv+lYzaMel
-   lrrX6H6jAi5Nu/Us7xbmYjvXRzJ4z2uBV0pVMhc4CTVssyx9ZobqtN5wt
-   yaW3Eov1YUN4M7b9vv6dPYoeQGFBJSqD6m2ABbfagfuThKdM0biwVa8Uf
-   A==;
-X-CSE-ConnectionGUID: 3O1BEVFnSjGIRo2a3JFVKQ==
-X-CSE-MsgGUID: RddlUAKLQgK6ILA9Q0TZdQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11784"; a="97090230"
-X-IronPort-AV: E=Sophos;i="6.23,231,1770624000"; 
-   d="scan'208";a="97090230"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 May 2026 09:56:11 -0700
-X-CSE-ConnectionGUID: eE/ZxnqvT+CkeJ6UrkNkkQ==
-X-CSE-MsgGUID: AtasLK9fTAie+dOmlPczyA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,231,1770624000"; 
-   d="scan'208";a="242171405"
-Received: from pgcooper-mobl3.ger.corp.intel.com (HELO localhost) ([10.245.245.244])
-  by orviesa004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 May 2026 09:56:05 -0700
-Date: Tue, 12 May 2026 19:56:03 +0300
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
+	id 1wMqXB-0000000HTc3-2pQY;
+	Tue, 12 May 2026 17:04:41 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id C54E760139;
+	Tue, 12 May 2026 17:04:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5208EC2BCB0;
+	Tue, 12 May 2026 17:04:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1778605480;
+	bh=9Vq8ijFk8qJn7DB2+1iE5j4p/FmaoDocX6KgE6Vblx8=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=ckw8o3o0c0PfAJEyLSntxYwVU4AbfEuak91RBXrwRvyzNAIe4jv8elNEjpfjPY0PC
+	 MkPhOUg9mXjl6MShmhGCSrJ1Wi/YbhNZMV3OMkrZet37w7P7c78VHtD1BGnMduHl3w
+	 Tfmm5P5b4C7uOR4xgLVhKFhG4y+fiIzmQsbSbfBFORbEv6M6VS4q5qdE8n9xOg7185
+	 EfetoI9BoCOmRvpEw9cIDscSQ9sDtGLuvMyEGuMv9xXcpM4MH3RfGamDSrXuarfIWb
+	 B+x8jICCR3r04yE5fHgTYsCHm293bLNlNn46JSSWtoyneqS57vFmlHFeOUhd9JC/Zs
+	 Zp9b3Kve5z4jA==
+Date: Tue, 12 May 2026 18:04:26 +0100
+From: Jonathan Cameron <jic23@kernel.org>
 To: Roman Vivchar <rva333@protonmail.com>
-Cc: Jonathan Cameron <jic23@kernel.org>, Andy Shevchenko <andy@kernel.org>,
-	David Lechner <dlechner@baylibre.com>,
-	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
-	Srinivas Kandagatla <srini@kernel.org>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Daniel Lezcano <daniel.lezcano@kernel.org>,
-	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
-	linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
-	Ben Grisdale <bengris32@protonmail.ch>
+Cc: Andy Shevchenko <andy@kernel.org>, David Lechner
+ <dlechner@baylibre.com>, Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Rob
+ Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
+ Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sen
+ Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Macpaul Lin
+ <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, Srinivas Kandagatla
+ <srini@kernel.org>, "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano
+ <daniel.lezcano@kernel.org>, Zhang Rui <rui.zhang@intel.com>, Lukasz Luba
+ <lukasz.luba@arm.com>, linux-iio@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-pm@vger.kernel.org, Ben Grisdale <bengris32@protonmail.ch>
 Subject: Re: [PATCH v2 05/16] iio: adc: mediatek: add mt6323 PMIC AUXADC
  driver
-Message-ID: <agNbo39p6uACvQHd@ashevche-desk.local>
-References: <20260512-mt6323-v2-0-3efcba579e88@protonmail.com>
- <20260512-mt6323-v2-5-3efcba579e88@protonmail.com>
- <20260512142932.5c6801d1@jic23-huawei>
- <gWxamwTKyUeOF4QCsiIsrnh7DSWzIKFaY0h83qKq_0vg786xv1uFYhypix7BVO_ruG_vw3DrIsRhIKv5NAzl8hK72rjzPAjwAGU-rhkMgeA=@protonmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Message-ID: <20260512180426.04677461@jic23-huawei>
 In-Reply-To: <gWxamwTKyUeOF4QCsiIsrnh7DSWzIKFaY0h83qKq_0vg786xv1uFYhypix7BVO_ruG_vw3DrIsRhIKv5NAzl8hK72rjzPAjwAGU-rhkMgeA=@protonmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260512_175618_249173_58323813 
-X-CRM114-Status: GOOD (  17.35  )
+References: <20260512-mt6323-v2-0-3efcba579e88@protonmail.com>
+	<20260512-mt6323-v2-5-3efcba579e88@protonmail.com>
+	<20260512142932.5c6801d1@jic23-huawei>
+	<gWxamwTKyUeOF4QCsiIsrnh7DSWzIKFaY0h83qKq_0vg786xv1uFYhypix7BVO_ruG_vw3DrIsRhIKv5NAzl8hK72rjzPAjwAGU-rhkMgeA=@protonmail.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,33 +83,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 12, 2026 at 02:34:55PM +0000, Roman Vivchar wrote:
+On Tue, 12 May 2026 14:34:55 +0000
+Roman Vivchar <rva333@protonmail.com> wrote:
+
 > On Tuesday, May 12th, 2026 at 4:29 PM, Jonathan Cameron <jic23@kernel.org> wrote:
+> 
 > > On Tue, 12 May 2026 08:18:19 +0300
-> > Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org> wrote:
-
-...
-
-> > > +#define VOLTAGE_FULL_RANGE	1800
+> > Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org> wrote:  
+> 
+> ...
+> 
+> > > +#define VOLTAGE_FULL_RANGE	1800  
 > > Probably better to have this inline - however if you do keep it
 > > prefix t he define  VOLTAGE_FULL_RANGE sounds too generic!
-> > 
-> > > +#define AUXADC_PRECISE		32768
-> > I'd put that inline.  Little benefit it in having it up here...
+> >   
+> > > +#define AUXADC_PRECISE		32768  
+> > I'd put that inline.  Little benefit it in having it up here...  
 > 
 > There was a mention about magic values in the v1 for the thermal patch [1].
 > Andy, would it be better to use an inline style or a #define here?
 > If the former, I'll rename the first constant to something like
 > AUXADC_VOLTAGE_FULL_RANGE.
+FWIW that isn't a magic value - it's 2**resolution and the one is  a voltage
+in mV.  Those aren't normally the ones people care about defines for - those
+apply when they are weird and wonderful things not related directly to physical
+quantities.
 
-If you use it inline, add a comment to explain the magic.
-It will be a good compromise.
-
+Jonathan
+> 
 > [1]: https://lore.kernel.org/linux-mediatek/afmnUG8dG0N0HpV6@ashevche-desk.local/
-
--- 
-With Best Regards,
-Andy Shevchenko
-
+> 
+> Best regards,
+> Roman
 
 
