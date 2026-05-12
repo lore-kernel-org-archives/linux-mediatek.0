@@ -4,70 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B994CD4851
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2026 13:37:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B041BCD4851
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2026 13:37:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xnLTfDp68NkF+X3GgenzOQCUIlMmDDGlvtjzrPvr1ns=; b=ejyJCJEdTU/lBHQ4oLdr3kG4Ox
-	tFqGvg3KIRkJNGuv5WjVrjzqA7LFi84tg1QoXKjbhZbXl3NNZBqZveWYaT4CPGRR7zFZqA9eRuIXJ
-	vxAnagu00DWq1TtRJALJnywomOPOPB9sk0M7ib6WhrsdlL5o1pjS2vIEdTvG7oqHX9GOtIrfjk2B+
-	23s4i+NOIlIaSxagAFnffpBvIr5TWVH0BzvQDY7P1VJq+uYPhMCJTEPs2V1zeRpzjhAsjgbB2Oyef
-	jcRvoOinMGnO6U09mTMpBqxaZ7pn1C89lKfDx75YJkma3cAdlMhzHjEe+YvKPDWhhyA/i01W62Yab
-	6f4pcikg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=X0K/Mr//olzYxdXG3Wy8BYdN2fTftbgvAW7RSEPad2I=; b=vpHXLaUuqbDN6Ry9ZqnurFnvO0
+	BI8MOXVpKOcNW+pZttEKyOZszmmfeQy9odUjoA6K8PpIi/cm8VUwMx76tTmdW9NucH7LrNbXqDG82
+	ka4FI9ROv53k7MKzOpoXTDHYcTafhdnS6r5qN+m4lOnyPymsPBaqqrVu+BC9LMuB7LfkOBDoz1Ijk
+	e8+vEcmu+2q/z177rxEmqB7Fe0Ey84vf6pF4dk+mdm6HjQu7OaveR1s+EDLqRJUFLdyhl1ZB2ukvC
+	Ek5ZIRG9Vf2hoPVMOTa7ycdii+r5IDkoALmCjvb0J/Yt2Y2bRnvuwlX5oMh3fe0DJN+oiIeFrcoSD
+	A4LkcqkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMnIE-0000000GsHC-0280;
-	Tue, 12 May 2026 13:37:02 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
-	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMnIC-0000000GsGW-2lTG;
-	Tue, 12 May 2026 13:37:00 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 06B8561338;
-	Tue, 12 May 2026 13:37:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D73AFC2BCB0;
-	Tue, 12 May 2026 13:36:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778593019;
-	bh=x32bCq5aJ+bGmDmdT/N1et7DubPIFjtOHl9ouElgZW4=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=W5by0G01+CuK8d7NBzJ7Am772HxNBgv0MQ45OjkYM2HyR9uLFfPo5YZnaTf4XO95k
-	 ljIJvsMUfBmWw4l2OUDAjzteHlDwoLKOUFmxQkajXJV7apqBn1rSDhbozuOjdX0Lw4
-	 cOJ3xCgX495b0TvSaELMpDH0LSxT15WLzd5UFN96n2bQds6hSWbEU5cT5xOoSShfxM
-	 QcHAdDivIYMJI26fwH4cBBu5uHu16pUmiAqAQt8rT02zkM3sXGGaWlHrrXinNBbpTM
-	 ZepIwf1yL6aIsSGxxMH09Z/NWpistREYLPi0qUUCCsaJQoFDaQ1Pj84pWLtT/XH+XK
-	 5391L+ROVUElw==
-Date: Tue, 12 May 2026 14:36:46 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Cc: rva333@protonmail.com, David Lechner <dlechner@baylibre.com>, Nuno
- =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Sen Chu <sen.chu@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
- Lee Jones <lee@kernel.org>, Srinivas Kandagatla <srini@kernel.org>, "Rafael
- J. Wysocki" <rafael@kernel.org>, Daniel Lezcano
- <daniel.lezcano@kernel.org>, Zhang Rui <rui.zhang@intel.com>, Lukasz Luba
- <lukasz.luba@arm.com>, linux-iio@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-pm@vger.kernel.org, Ben Grisdale <bengris32@protonmail.ch>
-Subject: Re: [PATCH v2 14/16] MAINTAINERS: add MediaTek mt6323 PMIC AUXADC
- driver maintainer
-Message-ID: <20260512143646.15d0aa0e@jic23-huawei>
-In-Reply-To: <20260512-mt6323-v2-14-3efcba579e88@protonmail.com>
-References: <20260512-mt6323-v2-0-3efcba579e88@protonmail.com>
-	<20260512-mt6323-v2-14-3efcba579e88@protonmail.com>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+	id 1wMnJ5-0000000GsTo-2xAD;
+	Tue, 12 May 2026 13:37:55 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1wMnJ3-0000000GsSE-1iT6
+	for linux-mediatek@lists.infradead.org;
+	Tue, 12 May 2026 13:37:54 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 20F951691
+	for <linux-mediatek@lists.infradead.org>; Tue, 12 May 2026 06:37:44 -0700 (PDT)
+Received: from [192.168.0.1] (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 281353F85F
+	for <linux-mediatek@lists.infradead.org>; Tue, 12 May 2026 06:37:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=arm.com; s=foss;
+	t=1778593069; bh=Gvl4cEd1ZiXBIpJHrKLmqu+T8vzwYIr7JhCY27iDUns=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=WfVmVWqg6qBSmrNLmPyY05cS4GA9LayE7gHd3m30dlIHKu1/LwQlM/ft0GPs4LJlF
+	 hxUKzRklDmBpa2TwUOGDcSLJxYSIMFUHf7KmTWuF67tAVx6d1Hs+G1PCyZO9IwjFpe
+	 71fr+PBpz7EOYWRg/GHTGS/MVTSGrDB0BhnawSmY=
+Date: Tue, 12 May 2026 14:37:21 +0100
+From: Liviu Dudau <liviu.dudau@arm.com>
+To: Ketil Johnsen <ketil.johnsen@arm.com>
+Cc: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Jonathan Corbet <corbet@lwn.net>,
+	Shuah Khan <skhan@linuxfoundation.org>,
+	Sumit Semwal <sumit.semwal@linaro.org>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Brian Starkey <Brian.Starkey@arm.com>,
+	John Stultz <jstultz@google.com>,
+	"T.J. Mercier" <tjmercier@google.com>,
+	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>,
+	Boris Brezillon <boris.brezillon@collabora.com>,
+	Steven Price <steven.price@arm.com>,
+	Daniel Almeida <daniel.almeida@collabora.com>,
+	Alice Ryhl <aliceryhl@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+	linaro-mm-sig@lists.linaro.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 3/8] drm/panthor: De-duplicate FW memory section sync
+Message-ID: <agMtEXOqPGEwKuwt@e142607>
+References: <20260505140516.1372388-1-ketil.johnsen@arm.com>
+ <20260505140516.1372388-4-ketil.johnsen@arm.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20260505140516.1372388-4-ketil.johnsen@arm.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260512_063753_517926_B8E6BC7E 
+X-CRM114-Status: GOOD (  20.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,38 +91,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 12 May 2026 08:18:28 +0300
-Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org> wrote:
+On Tue, May 05, 2026 at 04:05:09PM +0200, Ketil Johnsen wrote:
+> Handle the sync to device of FW memory sections inside
+> panthor_fw_init_section_mem() so that the callers do not have to.
+> 
+> This small improvement is also critical for protected FW sections,
+> so we avoid issuing memory transactions to protected memory from
+> CPU running in normal mode.
+> 
+> Signed-off-by: Ketil Johnsen <ketil.johnsen@arm.com>
 
-> From: Roman Vivchar <rva333@protonmail.com>
-> 
-> Add myself as MediaTek mt6323 AUXADC driver maintainer.
-> 
-> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+Reviewed-by: Liviu Dudau <liviu.dudau@arm.com>
+
+Best regards,
+Liviu
+
 > ---
->  MAINTAINERS | 5 +++++
->  1 file changed, 5 insertions(+)
+>  drivers/gpu/drm/panthor/panthor_fw.c | 22 ++++++----------------
+>  1 file changed, 6 insertions(+), 16 deletions(-)
 > 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index d1cc0e12fe1f..52249c301633 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -16337,6 +16337,11 @@ S:	Orphan
->  F:	Documentation/devicetree/bindings/mtd/mediatek,mtk-nfc.yaml
->  F:	drivers/mtd/nand/raw/mtk_*
+> diff --git a/drivers/gpu/drm/panthor/panthor_fw.c b/drivers/gpu/drm/panthor/panthor_fw.c
+> index be0da5b1f3abf..0d07a133dc3af 100644
+> --- a/drivers/gpu/drm/panthor/panthor_fw.c
+> +++ b/drivers/gpu/drm/panthor/panthor_fw.c
+> @@ -446,6 +446,7 @@ static void panthor_fw_init_section_mem(struct panthor_device *ptdev,
+>  					struct panthor_fw_section *section)
+>  {
+>  	bool was_mapped = !!section->mem->kmap;
+> +	struct sg_table *sgt;
+>  	int ret;
 >  
-> +MEDIATEK PMIC AUXADC DRIVER
-
-Given this is one of quite a few Mediatek PMIC drivers, you either
-need to be more specific in that title or offer to handle them all.
-
-> +M:	Roman Vivchar <rva333@protonmail.com>
-> +S:	Odd Fixes
-> +F:	drivers/iio/adc/mt6323-auxadc.c
+>  	if (!section->data.size &&
+> @@ -464,6 +465,11 @@ static void panthor_fw_init_section_mem(struct panthor_device *ptdev,
+>  
+>  	if (!was_mapped)
+>  		panthor_kernel_bo_vunmap(section->mem);
 > +
->  MEDIATEK PMIC LED DRIVER
->  M:	Sen Chu <sen.chu@mediatek.com>
->  M:	Sean Wang <sean.wang@mediatek.com>
+> +	/* An sgt should have been requested when the kernel BO was GPU-mapped. */
+> +	sgt = to_panthor_bo(section->mem->obj)->dmap.sgt;
+> +	if (!drm_WARN_ON_ONCE(&ptdev->base, !sgt))
+> +		dma_sync_sgtable_for_device(ptdev->base.dev, sgt, DMA_TO_DEVICE);
+>  }
+>  
+>  /**
+> @@ -626,7 +632,6 @@ static int panthor_fw_load_section_entry(struct panthor_device *ptdev,
+>  	section_size = hdr.va.end - hdr.va.start;
+>  	if (section_size) {
+>  		u32 cache_mode = hdr.flags & CSF_FW_BINARY_IFACE_ENTRY_CACHE_MODE_MASK;
+> -		struct panthor_gem_object *bo;
+>  		u32 vm_map_flags = 0;
+>  		u64 va = hdr.va.start;
+>  
+> @@ -663,14 +668,6 @@ static int panthor_fw_load_section_entry(struct panthor_device *ptdev,
+>  		}
+>  
+>  		panthor_fw_init_section_mem(ptdev, section);
+> -
+> -		bo = to_panthor_bo(section->mem->obj);
+> -
+> -		/* An sgt should have been requested when the kernel BO was GPU-mapped. */
+> -		if (drm_WARN_ON_ONCE(&ptdev->base, !bo->dmap.sgt))
+> -			return -EINVAL;
+> -
+> -		dma_sync_sgtable_for_device(ptdev->base.dev, bo->dmap.sgt, DMA_TO_DEVICE);
+>  	}
+>  
+>  	if (hdr.va.start == CSF_MCU_SHARED_REGION_START)
+> @@ -724,17 +721,10 @@ panthor_reload_fw_sections(struct panthor_device *ptdev, bool full_reload)
+>  	struct panthor_fw_section *section;
+>  
+>  	list_for_each_entry(section, &ptdev->fw->sections, node) {
+> -		struct sg_table *sgt;
+> -
+>  		if (!full_reload && !(section->flags & CSF_FW_BINARY_IFACE_ENTRY_WR))
+>  			continue;
+>  
+>  		panthor_fw_init_section_mem(ptdev, section);
+> -
+> -		/* An sgt should have been requested when the kernel BO was GPU-mapped. */
+> -		sgt = to_panthor_bo(section->mem->obj)->dmap.sgt;
+> -		if (!drm_WARN_ON_ONCE(&ptdev->base, !sgt))
+> -			dma_sync_sgtable_for_device(ptdev->base.dev, sgt, DMA_TO_DEVICE);
+>  	}
+>  }
+>  
+> -- 
+> 2.43.0
 > 
 
+-- 
+====================
+| I would like to |
+| fix the world,  |
+| but they're not |
+| giving me the   |
+ \ source code!  /
+  ---------------
+    ¯\_(ツ)_/¯
 
