@@ -4,73 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98A6DCD4851
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2026 10:07:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54544CD4851
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2026 10:34:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rq4RL+Vka9BqWTh+n74cXJ8jiIkAjFYQA9ezbcVKwM8=; b=kgYppD4mCBktRYxJVwdl4UuYRV
-	T/JLvMpyGrWItSYY4v6J3CPxcHsjbLA415rVNN+JUfHKUt3MC+yxK5LtuAHSbJI4W7Kr5C+Kcrz0u
-	Ogt45o0f1czEqyG//8N3A0b4fc7n9lMCHoQiDZRqNvJv6LSgQ/VKo2AZc4OWzqPtPHJXL3GvPn91n
-	4U8SyHfUhjGiuxTv4W5jNOJXlMQpQRuAkMn7DT38wTb7/0Iyn1Vt35ta67Z3GFhSduQAuBiVLAmCY
-	qYMIDu7tvLF2d21eDV55JdbNUk07RY1WfKTghmruiy7pQtO1UvRvJeGnIaZG5PNovvfjGpv5If6rS
-	lm2ANQvw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XuGkJpO8zbwPjFwZbzuJaMrl051lxnUzmCTtle9Ojzg=; b=2YFbfnnHGRN1zCZ83isGh/rJHO
+	/faU2Mm80BDFvjUyrQ9JA/o+NQUvG6h4vsokwv297GNclo3udF/ndnWy5/KUCQg7Ht9K+B7FI0x7K
+	dpojypshgz7gsY94bt7XstTeWhr9vmSGq228Qqve9KvJBuVMz9HjGgz6sg1wwJUF/VOxuDv4e8A7r
+	7xxud7Z286s+4mxd0i8+wAOUONCv8vShSyQXYMYHk9oTghU4S3QNRy8mHkbMckAQq9wfVseSh9svL
+	XmhCqiiMPTfcR5qYmeiO2krgpqbg4Aol//tt9QqDV52pqnbN0omPV6WhcwuxZuJimP4huTnIxSmCm
+	1NRocA5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMk1T-0000000GNob-2ljR;
-	Tue, 12 May 2026 10:07:31 +0000
-Received: from m16.mail.163.com ([117.135.210.4])
+	id 1wMkRB-0000000GRZe-0PnT;
+	Tue, 12 May 2026 10:34:05 +0000
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMk1Q-0000000GNlb-1bTr;
-	Tue, 12 May 2026 10:07:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Message-ID:Date:MIME-Version:Subject:To:From:
-	Content-Type; bh=rq4RL+Vka9BqWTh+n74cXJ8jiIkAjFYQA9ezbcVKwM8=;
-	b=l11nVtHhS05LPBjraPnJUV3epcd49eg7vnfCSTy3DkvxfB/Iem6EvnQ4JrZ+O3
-	BhcY7irXVFlck61xjPG4X8Hus9w0cfkoycqGiyCMqQ/WFdniOD93FdgJ9AxJeoGe
-	dVHmA2apbi2ME13a7dgimnGQ49LaIn7Vkbs2WArMTitJE=
-Received: from [192.168.50.71] (unknown [])
-	by gzsmtp4 (Coremail) with SMTP id PygvCgB3yRC0+wJqHlnODQ--.89S2;
-	Tue, 12 May 2026 18:06:46 +0800 (CST)
-Message-ID: <a28b7442-8bd6-4a05-8864-af6c0ad35a2c@163.com>
-Date: Tue, 12 May 2026 18:06:44 +0800
+	id 1wMkR8-0000000GRYH-2iMS
+	for linux-mediatek@lists.infradead.org;
+	Tue, 12 May 2026 10:34:04 +0000
+Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-2bab82d75fdso29143865ad.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 12 May 2026 03:34:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1778582041; x=1779186841; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=XuGkJpO8zbwPjFwZbzuJaMrl051lxnUzmCTtle9Ojzg=;
+        b=NdkQSoGd78ctwNprKeR9hCT19LNdn2AafAUlzncsxomjusSrOBWWZ/gxKU0O/rujOp
+         37FMtENg9Ympg708SjhfQ24+XOkyerRFhDNFfogwRV0l+m9jjJEiScwdMscL5DagoaZ2
+         fXFujfpZIT/5CvCdjxjwysazFY+d/WhEI/CSg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1778582041; x=1779186841;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=XuGkJpO8zbwPjFwZbzuJaMrl051lxnUzmCTtle9Ojzg=;
+        b=Gi63/osho6eklAkgDoWoM55taXYYZFFwqOb1CSSc/2dCg2lyQ+QoibgufgKg0dpYOn
+         mktrEzBwsZzMvhgwaf0mBV+bmeoBEkjHVY3OBVwEi+4MwRPWqNsf8iu58I0sVudTIhtR
+         Gs/ArcRwsijcj7zEYWz2rJ29UINZ/TcBSh37d3p1VtahE09iE+zGr3HvGChF2vAF+u76
+         /ZvFIA7bxAcwcEHFkfVm3IAHRl3AZRpVWapcNyBVI/0VhQ0DdDEvkpAZnJiy6DtRdq+C
+         fFYgUnzYR05CvQJQN+DUO24wM/j6Ag81Sd99tAOvOTqFexMfcoIAMHGAubzy5KqNjNBL
+         mMHA==
+X-Forwarded-Encrypted: i=1; AFNElJ8Ub+HaKC8aUdNd0w5V+Yh4DeA4Ebrq3AOGmrwN/yAYT/t8dT7j/kQJoeYghjp5sqh5exwZomyYdYGMIsJFqA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy7SLj7/sN0orbsTR4VyoKC2ruUj+JOFnBh2HinWfq0rx9Ja4cR
+	UZL695ExKgLDL2err7CSSjyyB/FI18A1kfwSlLFhZWQL+OAf6DFOoDawlSFfkzjMCA==
+X-Gm-Gg: Acq92OF4xcJb+0IbEC0avQHrJkSJ9jGdNjjQnODFpwto1UdyPNeEku6DlzkBSaifJpn
+	r85Av7VOBRGqqAw3tsQVjBXJhlLhirggpIt9W6jJSjp0ZjdYoc6ebY1rt6SjfcaytLmwxJaCFSJ
+	t0p6fFuNywio1ciHavnuPAODod+htoBeujYVVSc+oyU+ZfREnSfH6jlq5sLAR1G4826tm8rZ3j6
+	TAIiC5sNBEQrN9VXh1zPCow8AbYapvmtWB30rUqx9chmkxSTtmUrZgDtlNvMrd1sUfb4jOcftbG
+	S8QkMCl0OG9t8L+HMbHo5MUOxCx6mkwzIHcrHgrPytXONvAdjabM0rht60CuH1SSwLj8kn/U+rI
+	ZUQ56vUS07v9QyHIuRMAQ7JpoMN9Z32KGyWWZq2DYi2aDr1CfFACBk2/zNCkr5pF/onaDptKB+C
+	YlcoB6bKkIGhQobTm4jwfUgSgVTOuerkpDfbdJNEz1qxKrs5MPiBBBKZyC3Zzk1ryAt0Xu/Bka5
+	Vp2EcCjHrTeLZe9TDM/pjwP43HPYQ==
+X-Received: by 2002:a17:902:f650:b0:2bd:1905:e8b7 with SMTP id d9443c01a7336-2bd1905e9ccmr1997075ad.13.1778582041152;
+        Tue, 12 May 2026 03:34:01 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:6606:2bd2:159a:55e3])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2baf1eafa62sm141597605ad.74.2026.05.12.03.33.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 12 May 2026 03:34:00 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	devicetree@vger.kernel.org,
+	linux-pci@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Dan Carpenter <error27@gmail.com>
+Subject: [PATCH] PCI: mediatek-gen3: fix incorrectly skipped pwrctrl error message
+Date: Tue, 12 May 2026 18:33:45 +0800
+Message-ID: <20260512103347.1751080-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.54.0.563.g4f69b47b94-goog
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 4/7] PCI: dwc: Use common
- pci_host_common_link_train_delay() helper
-To: =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>
-Cc: bhelgaas@google.com, lpieralisi@kernel.org, mani@kernel.org,
- vigneshr@ti.com, jingoohan1@gmail.com, thomas.petazzoni@bootlin.com,
- pali@kernel.org, ryder.lee@mediatek.com, claudiu.beznea.uj@bp.renesas.com,
- mpillai@cadence.com, robh@kernel.org, s-vadapalli@ti.com,
- linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- claudiu.beznea@tuxon.dev, linux-mediatek@lists.infradead.org,
- linux-renesas-soc@vger.kernel.org, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org
-References: <20260511055923.37117-1-18255117159@163.com>
- <20260511055923.37117-5-18255117159@163.com>
- <20260511070139.GA1096586@rocinante>
- <e600d0a4-b93e-425f-a5f1-c76802c65622@163.com>
- <20260512071328.GA3606279@rocinante>
-Content-Language: en-US
-From: Hans Zhang <18255117159@163.com>
-In-Reply-To: <20260512071328.GA3606279@rocinante>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: PygvCgB3yRC0+wJqHlnODQ--.89S2
-X-Coremail-Antispam: 1Uf129KBjvdXoW7Gr47XFW5ZryfKF15WryDWrg_yoWxuFg_u3
-	y8Awn7ur43XF93WwsIyrn8XFnxX34DuFWFqry0vrW2gw1jga1qyrsIgFs5ta1xC3y7JF47
-	JF1vkw1xKwn3ujkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IUjeT5PUUUUU==
-X-Originating-IP: [140.206.53.66]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbC6xZH6moC+7ZuEQAA3K
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260512_030728_774959_C2526ED0 
-X-CRM114-Status: UNSURE (   6.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260512_033402_713888_5EDD2EE9 
+X-CRM114-Status: GOOD (  13.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,38 +106,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+When pwrctrl integration was added, the error message for when
+pci_pwrctrl_create_devices() fails was incorrectly put after the error
+goto statement, causing it to be skipped.
 
+Move the goto statement after the dev_err_probe() call so that the
+error message actually gets printed (or saved if probe is deferred).
 
-On 5/12/26 15:14, Krzysztof Wilczyński wrote:
-> Hello,
-> 
->>>> -	/*
->>>> -	 * As per PCIe r6.0, sec 6.6.1, a Downstream Port that supports Link
->>>> -	 * speeds greater than 5.0 GT/s, software must wait a minimum of 100 ms
->>>> -	 * after Link training completes before sending a Configuration Request.
->>>> -	 */
->>>> -	if (pci->max_link_speed > 2)
->>>> -		msleep(PCIE_RESET_CONFIG_WAIT_MS);
->>>> +	pci_host_common_link_train_delay(pci->max_link_speed);
->>>
->>> This comment could move to the helper you added.
->>
->> Hi Krzysztof,
->>
->> Will add.
-> 
-> No need.  Per Mani's feedback about macro being well documented.
-> 
+Reported-by: Dan Carpenter <error27@gmail.com>
+Closes: https://lore.kernel.org/all/adjNaKB5KGpl6qIp@stanley.mountain/
+Fixes: 1a152e21940a ("PCI: mediatek-gen3: Integrate new pwrctrl API")
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ drivers/pci/controller/pcie-mediatek-gen3.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Hi Krzysztof,
-
-Okay.
-
-Best regards,
-Hans
-
-> Thank you nonetheless!
-> 
-> 	Krzysztof
+diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+index 6f0ae946d501..ef64778bbf8b 100644
+--- a/drivers/pci/controller/pcie-mediatek-gen3.c
++++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+@@ -1221,8 +1221,8 @@ static int mtk_pcie_probe(struct platform_device *pdev)
+ 
+ 	err = pci_pwrctrl_create_devices(pcie->dev);
+ 	if (err) {
+-		goto err_tear_down_irq;
+ 		dev_err_probe(dev, err, "failed to create pwrctrl devices\n");
++		goto err_tear_down_irq;
+ 	}
+ 
+ 	err = mtk_pcie_setup(pcie);
+-- 
+2.54.0.563.g4f69b47b94-goog
 
 
