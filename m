@@ -4,117 +4,178 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 485C2CD4855
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2026 09:15:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32B0FCD4855
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2026 09:26:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Qg9fzEj7V6PQb84gvAnraPS9I5UsL8rxUTIGB1/GYDU=; b=YIYlh5oCqhx4/Gp3TQS3odhyPY
-	VeIJ/5WmNG+L1e5UGMKJzJnP4S8d8bcy1sj4Hu7KZXE9FLDXcrGWEf8dz2Kbd5hnMwQd8pW2AMGXL
-	7Ha5E2v4Cfc8Jq8YY1sGSAM1Jimj7SaE/T8DXdSoh5Or29BHB0j2aW4BjQMp0yR3QE45RIWG2gdUi
-	SQhcm50APhrBfPJpL/NEXwBlN+1rkoq7hJ9pofXcrfVOnuhCejLDFVKjU9JQZKmTgzUD1hIGWAV56
-	6bBMbo6NsDpPSW8aDK/G2kemFzPfhhfSYdgJosDPXOhgP/cG5mV3e4tm9z22DO7Cq0n3WikxF7lH6
-	vpc6nDOA==;
+	bh=ltFFFZPryL/zK2L9iyBynGSHT3SJNTzLKOjRo6QTLbI=; b=OWZ1+6dVwJytX+y8S2C4rjy2+Q
+	gcUf1cFrH56iSxOmKvLi9vNjvJ/n/UV3ZYRIqCf899b5ZOPRP5eYElO9+s1BbWZIQiPWlwuBEpM/l
+	gthGaDkzIAwO5vK3QDzM0veOSF8V1NSQvZDpT4pdCxI8XJDLhC03tD0h7by0yjhfIk8Sv4QtFAuFT
+	Qzvt2c+rVCHpocufumlKaQ+ovEh7sk1CDlcWfF3lJqtUwG4gJ/s81PKnw9AtaSgKeRbQVectZQ8uu
+	q7JIic2lWXnuKNd+w+DeEF8UDeHjhtffjuCEH2slS8s5hEcn4pxduaJfzx24jSZ7Z5QAdkFqm4X3Y
+	AzLbVtWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMjCv-0000000GEIR-0nQp;
-	Tue, 12 May 2026 09:15:17 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wMjNd-0000000GFxs-0WEc;
+	Tue, 12 May 2026 09:26:21 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMjCt-0000000GEHu-3Ovk;
-	Tue, 12 May 2026 09:15:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 260ED600CB;
-	Tue, 12 May 2026 09:15:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 56EA8C2BCB0;
-	Tue, 12 May 2026 09:15:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778577314;
-	bh=tQrx4ZRS7IpQ4Yeb3zvXcMC5gRyGgc0EqCTTskuD72c=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=C0JSfZQZpjD/Tvilt+ZydSoCODb9Cfdg9R/yccRDlcfaoqRM8iSMCNxRaMjr8pF/7
-	 PxuXXBLtVyINXXEJr8VmMbnEE0/2uqGdkKSzC5ft2lBFgjHBi9yZiITxp1XcstcHE8
-	 EK0wfXtuOs/5/GoVOCWIbJO9H5aWRYiL2sW/8mKhWqyNPtknH75fuBTGJanoB7tqpX
-	 +cGkXvFkkkcFpNm7iZLpVnNQbTZqufS2LlzPV9BVyeUykqzjr9aaSWmCmrrMhNnzm9
-	 IA1oPOljf0GEIfzjcMt4eZSfvURwoY6rIUz8dwJ6TrRoOWfY0pZEi/8r4DRSb4tS/f
-	 A6nDUfzh5Gj5Q==
-Date: Tue, 12 May 2026 11:15:12 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Liu Ying <victor.liu@nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Frank Li <Frank.Li@nxp.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Rob Clark <robin.clark@oss.qualcomm.com>,
-	Sean Paul <sean@poorly.run>, Konrad Dybcio <konradybcio@kernel.org>,
-	Akhil P Oommen <akhilpo@oss.qualcomm.com>,
-	Dmitry Baryshkov <lumag@kernel.org>,
-	Abhinav Kumar <abhinav.kumar@linux.dev>,
-	Jessica Zhang <jesszhan0024@gmail.com>,
-	Marijn Suijten <marijn.suijten@somainline.org>,
-	Vinod Koul <vkoul@kernel.org>,
-	Nas Chung <nas.chung@chipsnmedia.com>,
-	Jackson Lee <jackson.lee@chipsnmedia.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Mirela Rabulea <mirela.rabulea@nxp.com>,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Hugues Fruchet <hugues.fruchet@foss.st.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	MD Danish Anwar <danishanwar@ti.com>,
-	Roger Quadros <rogerq@kernel.org>,
-	Parvathi Pudi <parvathi@couthit.com>,
-	Mohan Reddy Putluru <pmohan@couthit.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Mathieu Poirier <mathieu.poirier@linaro.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Michal Simek <michal.simek@amd.com>,
-	Mark Brown <broonie@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Linus Walleij <linusw@kernel.org>, Felix Fietkau <nbd@nbd.name>,
-	"Andrew F. Davis" <afd@ti.com>,
-	Hussain Khaja <basharath@couthit.com>, Suman Anna <s-anna@ti.com>,
-	Ben Levinsky <ben.levinsky@amd.com>,
-	Tanmay Shah <tanmay.shah@amd.com>,
-	Erwan Leray <erwan.leray@foss.st.com>,
-	Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
-	Roger Quadros <rogerq@ti.com>, dri-devel@lists.freedesktop.org,
-	devicetree@vger.kernel.org, imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
-	dmaengine@vger.kernel.org, linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com, netdev@vger.kernel.org,
-	linux-remoteproc@vger.kernel.org, linux-amlogic@lists.infradead.org,
-	linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: Consolidate "sram" property definition
-Message-ID: <agLvoBCkUf_TN5b-@lore-desk>
-References: <20260511165942.2774868-1-robh@kernel.org>
+	id 1wMjNa-0000000GFwQ-3oiv;
+	Tue, 12 May 2026 09:26:20 +0000
+X-UUID: 9e3febca4de411f19f231fa534c5cac8-20260512
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=ltFFFZPryL/zK2L9iyBynGSHT3SJNTzLKOjRo6QTLbI=;
+	b=YUspcif78d6dn1aXhu60RIXCND2LKhxkCcSFpruSn7T5Cp1sdsdrSUuvRXY+u4LZ7leMW+Dn9WG7kxSHbhB5borHvj/rUmfiva0C+0hsejG1Qt50KxXbDQ5hK3Ne3QsHccQC3wJi+fk2gQFKzZak57HnHPxVkmYhB2XIMchf4PU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.13,REQID:f58ea566-11a2-4914-a15b-c190f0afeb36,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:b1afecd,CLOUDID:a1963fbf-65a8-4b41-ac18-3671578a914d,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111|836|865|888|
+	898,TC:-5,Content:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:ni
+	l,BEC:-1,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 9e3febca4de411f19f231fa534c5cac8-20260512
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1792016006; Tue, 12 May 2026 02:26:12 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Tue, 12 May 2026 17:26:10 +0800
+Received: from SG2PR04CU009.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Tue, 12 May 2026 17:26:10 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=UflLvnZb7YTce2So/agLurJo/XFd9tUFDs5bxLltUDkR9mC/F7V4S4KmxydcqkQPuJDqIN2UVlLRpLIr3fWbMezOdcT/uytdSUWE94mPrSJWbZyDfzwTdoDnbqhvVfItOGcOOuFAJ8+yxTSF/dLm2VoboF0fRscvOITczIr+9ap8GpWj2q+DOj1Bgn2WDCOyPYCcOKSu0f8jvxmHideJ8dwmF7u/9DkItn4P3i6XZ37FHjqWDZiKyPpDbUnDVKtLdhTg3uZpBTTmAlyKiC6Y/bBFWSfLD+p5oAwaGhKcGzNviH7kGb6X1STWMjwZ8DIEdhID5qbDybmssdNamiHsCw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ltFFFZPryL/zK2L9iyBynGSHT3SJNTzLKOjRo6QTLbI=;
+ b=dy6QztgyOUXtYoTmNQO21eh0R7fYCYXvQCG/UCeY9Po3w818nPblt7Ct/xMQ6XH+q3bpPgySuFSXODl3I7hAtzdLbmCkkxELoNfb2dT6XuNfm84WroAy8rRYzfMvDRlzMztmXWBeVy/jg9wvnwYgeuF0xBFXidVpiC8GHVXcvhCrpV3TGE1/cB0jJrWo8D0N1lNgzoZrmBc++VYqr6810o1kgmIheELHS9u51hTC0iaHM40qmve8d/DQHJf4kcBtKG5Py/zyiV5nfucW2n6vE56ygXG3NJO4St1Uz25LZ67YQePA+q3z1qjfvkN/+Yp/M/L6gxeSIszE9o1SP6xVrQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ltFFFZPryL/zK2L9iyBynGSHT3SJNTzLKOjRo6QTLbI=;
+ b=YaR+NRijGBk7OIFWkYFjyutRuv+QxI6+YrmeTxJwkIoeBtB00hUbNnaIuolWi+dEA2nATXTROURh6CeYeccPlm8n8Vt0ZezWk+0h8xC2OEZKnRTFYKYnBIKzEvOlHCwDfId66UPgJlkVaVgkmACpcraSDeUKkjdTgQoxvjES1ys=
+Received: from TYZPR03MB6624.apcprd03.prod.outlook.com (2603:1096:400:1f4::13)
+ by OSNPR03MB9799.apcprd03.prod.outlook.com (2603:1096:604:470::16) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.25.15; Tue, 12 May
+ 2026 09:26:06 +0000
+Received: from TYZPR03MB6624.apcprd03.prod.outlook.com
+ ([fe80::a3c2:b94a:70f:e640]) by TYZPR03MB6624.apcprd03.prod.outlook.com
+ ([fe80::a3c2:b94a:70f:e640%4]) with mapi id 15.21.0025.012; Tue, 12 May 2026
+ 09:26:06 +0000
+From: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
+To: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"l.scorcia@gmail.com" <l.scorcia@gmail.com>
+CC: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, "simona@ffwll.ch"
+	<simona@ffwll.ch>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, "robh@kernel.org"
+	<robh@kernel.org>, "airlied@gmail.com" <airlied@gmail.com>,
+	"krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "p.zabel@pengutronix.de"
+	<p.zabel@pengutronix.de>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>
+Subject: Re: [PATCH v4 2/2] drm/mediatek: dsi: Add compatible for mt8167-dsi
+Thread-Topic: [PATCH v4 2/2] drm/mediatek: dsi: Add compatible for mt8167-dsi
+Thread-Index: AQHc3NjBl7fMmAyugkqrq3y/hUsLJLYKKQYA
+Date: Tue, 12 May 2026 09:26:06 +0000
+Message-ID: <c436ee09e3f3b9334a979b829fd5aaddf33b1d25.camel@mediatek.com>
+References: <20260505214541.333657-1-l.scorcia@gmail.com>
+	 <20260505214541.333657-3-l.scorcia@gmail.com>
+In-Reply-To: <20260505214541.333657-3-l.scorcia@gmail.com>
+Accept-Language: zh-TW, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+user-agent: Evolution 3.52.3-0ubuntu1 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR03MB6624:EE_|OSNPR03MB9799:EE_
+x-ms-office365-filtering-correlation-id: 46c73a9e-8bb1-4657-a55a-08deb0087ec0
+x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|376014|7416014|366016|1800799024|42112799006|22082099003|18002099003|11063799003|38070700021|56012099003;
+x-microsoft-antispam-message-info: MVycp8DptWsj/84HY30TQ5wShdcg7qgIsXLsuy8afEPTe+D/65EuMEZMrjDGI+Pg75/3kjOnqyOuhZdskse3H0od71v/YkFi4ONZ84MQnugjiUGHhp3PGhiu3pxYgAUlbaAuwrMNpFXPLUSy5vIUODDGcxqZ/c0kTKdTyF6Ilm1bBR2dOZNFpvoYk9wT44CqrDjTJqcdxVlD/qFx9UZo7a2LfVXG79/7u9rBaPqDS4SZQMtBYmtnHsbeJRN8mt1rqRzxYCJB2nqnijVYWIvRCE3Nc8o/qiMPzcgVVLw4Izicr/eXyva1P7CPFjCpLeaUZUR/dg3Vk7vG9GJ4oj6en0OqiH7YmN91J69Xqy6bFv2KI7EplfQHbQy2XgSr9HEW50n122YrD8ZIAbpUCIfu/xmOQDzYQ6CA1AqZieC1hFKKTZ2hOY85OZr6r5V5P2g2MgWtc8+GueFblfS6ZdGCMVfKQzNkEmIkyxhf+g/K8FTwTjweKbQYG03xhdr2x2vNCS69hpXIegmUKzvrujHaFWprGy3ygeCU2gfscpiI8QKAnYBkC8pc47VcrI3EPuS5+xZubqQ/qP6ikxy3qOatf222Yff8I+walKjsHxfky/eyORcNgTLlWGeJe7RXKYLFrhMTr1sR1JpRe9GIfNDq4MnZJ3vespdtToxsOiR/AFzLZ0Q+tUOJ1YEi8W4qZLv9cT5eaGAjOXDirFOAY+I3g6U6Xgm39Vunun1zeDeBOzFoRQj58uqww2gOPPEwVVNt
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6624.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(366016)(1800799024)(42112799006)(22082099003)(18002099003)(11063799003)(38070700021)(56012099003);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?Y1F0ajk3OHAxcUsyTE5YY2RSOEZlM3oxS2RMNE9ha0V3T2FDOVg3RkdkYWs3?=
+ =?utf-8?B?Y2Jrck4ya1VMTnhxdWNzMjNPUlAvbzVSUlUrRTZBdUNYaVVKakFyV1NhR1l3?=
+ =?utf-8?B?aTQ2bmxacHB6OThMbitrQXJ3VE53Wks0M25vVmlBRzFXUThLeG9VcDdpTlYy?=
+ =?utf-8?B?a2NFUjVKN0RQV1FXdk04a1JqOHNUd25lWUUvRHBSKzkzYy9kQ0xIcXRjelVk?=
+ =?utf-8?B?YTdkYkxvMGdmVmMxSDlNemN1SUVGM3hWa0VsZGRzY2pWRTZqYWtnWFFYcElP?=
+ =?utf-8?B?Qk9ONU9SeGtIdlVrZzhyV20zb3VhUUgzSjcyRTlMc0ZwNTJkSWdxQUY1UGJX?=
+ =?utf-8?B?Nkk3dktwakV1NXNDZlhwWUpqVnA3N0dqZGROZnN6Mlp6QXRDazFDWWVMRjVZ?=
+ =?utf-8?B?Rit6MG5qQlFVc2p0c0kydVR4dG14bHBLZlpVS2ZCVmQzUXNJVUZPRzZqb3ZM?=
+ =?utf-8?B?UW9WZ2lXTU1GK2JpWW1EYmVYV3hjKzNqcXFzbzNpNEtTQ3l0eVRLRC80U2Ew?=
+ =?utf-8?B?djlzZTJkT1FZUTc5b3JsWFZyUWduQnRJSVZ1SW8xa3VTSXBnNm9lMnRNQXRR?=
+ =?utf-8?B?dXluenFEM0tWU2tUN05UdkU5Nkpzd1gyZWVNZEtPc21ST05ORWh0eEU1RmY0?=
+ =?utf-8?B?c3NSeDJ0S2tOLzJ2WXVlaEZ4cHMwYXYxZEJKVnFVSm4yK2xETHYzMnBXSXBH?=
+ =?utf-8?B?SWRyL0VFNlBOUkhaL2lCRjVaa0JUMk9od2l4cm5Obm9XSk9TYlczZ2JRVGsz?=
+ =?utf-8?B?YURXWHRrTm1wdFVqWlJBZldqaUs4L1VUdkZ5Q25WNUFNTFpmdmM1bEc0M2My?=
+ =?utf-8?B?NFFyN3g3cUEvM20rcngrMDdSVS8rMnRmcFZhSjBIRm5IMklGNmRFVzg2eTJ6?=
+ =?utf-8?B?eGR6TGd0OVJRWUpuSnMxYUpob0ViTldOVHdvbCt4NXEzSWJnSTVzbE03aE9W?=
+ =?utf-8?B?Sm56R3BEbGVjTEF3T0JqcEd1RjkyMXpWQm1zSjdvcFRmeGtXVUZHcmIxY2JR?=
+ =?utf-8?B?N3JNRi9vVDFiejZLamd3NjB6L2t3UWEzU0pZak1TS0VsZVRyc2tEcFpJd1dF?=
+ =?utf-8?B?dTUxVDczREc0dXU5R0xHajk3V01QNVZIM1l4dVhRS0RTZWNEcTk5RFZKaWRC?=
+ =?utf-8?B?SkhtRGdMcThEZ1d6UjdWZDByZjJBTGpUc1diTHdZVU05Y3R5VjJTZUxVL1Nu?=
+ =?utf-8?B?bXk0WVFvUkNzUk1ObmFGdnNYZUFLVVJlZUhQSmVkTHZwN2RvTCtoMlc2a1Nv?=
+ =?utf-8?B?SGtXRnBlT1VsN1JmTVZWZ0JhdHVlUUdCb3B4OWFwV0pCSk9EVkJ4M2pKNjg1?=
+ =?utf-8?B?b3A1akpKTUFiODN2KzlkSGpxUWNVKzVjc0wvYzhZM3ZYSzZ1NU1IaEczZENK?=
+ =?utf-8?B?eVl4S2VDWHN2S3R2TmErNGV2TnNTbmkvTGwzTWRGK3pSZHFZL1ZUbjRCbHU1?=
+ =?utf-8?B?aVAxZGdrbENVM2dKSGhpdllrWm95WlhWbFRsUEwrQnpkWDJ0R0tSMkpJWkpC?=
+ =?utf-8?B?VUpkNWJlZm1CR2o3VWhmaFNvTlE3REkwRFFSL2NOM3ovWkM5ZU93QUFCTFJM?=
+ =?utf-8?B?c1Jyc2pPTWY4RVJ3QmppL3doSlA4Y1VaR2FvUmx4c1pmQ25xcTNqZkI0bXFr?=
+ =?utf-8?B?WEhFcVpvMnFvM1Q4VWZ1dS84bjl3SlplM1oyK3R0N0FMQ2lydThwbWxiZ3Z6?=
+ =?utf-8?B?QXVJcVlJZDR3cWNETE1MMElWTTBzbllXTUJJeEpuM3NERFJzZTg5YWxmcU5v?=
+ =?utf-8?B?Nm1udUYzTzRiZWFvdklPWnJpUHQ3T0Iyb1I1enU2U29UT1pCUzkrZ2JnV1N2?=
+ =?utf-8?B?bE1UeVg1bUs2K01aTjZaanZ1ZHVlOUQ4TW1VYVEwbURqNE9MT1lORThvQ3Zl?=
+ =?utf-8?B?OGZoSXNnTzBBRHRZbVVLVFVHM21WNkZORjZvU2wzQmFOektHSUo2ZWZLbytj?=
+ =?utf-8?B?WG1tcHNlTWJxOFc1NExGMWhXU0FpTXJkWWJwdTczTDR0dWQ2QlkycWoxOFlD?=
+ =?utf-8?B?K3RPYW5zQm5aUlZmMXhReVVOcjhuS1lCQ0lVaEZCbDZQMjFHZVpTM09jeW5m?=
+ =?utf-8?B?QktXbWdPTmhvNkEvWHBOZUMxd0NVVFB6NVpzdlRVRS9nK1BobmNTazRmcjhB?=
+ =?utf-8?B?akszcUl5K2JsM2xxWUowQW1ONnVhSHNRdjQrUUM0MVJoY2tGaDNrRFQrNGhU?=
+ =?utf-8?B?VDBFODBtYkRTc21kQXJielRpK2psSjBRQjM3RUx4cUUyQVFwbXIybjZUOUYr?=
+ =?utf-8?B?S0JlTlM4MHBGYWVDMWFKdGw0MzArZ0p6M0VnSXg1VkNDK0dpa0lNdmRvVFc0?=
+ =?utf-8?B?YVQyNUkzY1VoY2U2YlZzemJXQ2JNcFpIQ2dsd0tZeHROTktSMU1xZz09?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <9B20965DDF659A40AA05E1ED89959C2D@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="DRGrXT3EJq+RYIF3"
-Content-Disposition: inline
-In-Reply-To: <20260511165942.2774868-1-robh@kernel.org>
+X-Exchange-RoutingPolicyChecked: nq8YdE4apbwZAg07UxkvJYOY5xh7/lPJ+OXHfMcT5oBhMPcW+zynpJI/43+2vsY3F66NJpMOg8x/QyfCnkEQ5a9y2IiUbVCVrXr1qwj9hnmp8khCl5slL968Dy700gS1XxrYtA4fsiGSPI+WoIORuuOLTzBqPPINoh8SWbhvyzvYGN51tElnCzRjyS6sbtJkzGZq4bu4CGVXPBXAK7kHbIkaU40xXaj2DcRjiCfcfbR1CusyyknWv/zIM5chs41c8lXm+nVK0ohCWlM8t2a4u/s1SGoHXwgh1w/LVKQNVfrScsIiEVwyyzcYd7MzwEoMYXMaHYXsOArZdSBjgQlchQ==
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6624.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 46c73a9e-8bb1-4657-a55a-08deb0087ec0
+X-MS-Exchange-CrossTenant-originalarrivaltime: 12 May 2026 09:26:06.5604
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: oj0pilfG2z7fLkvd5n2Faf0P9mXPcGdSv7jc4dbkNyNjnNkTNCzSbLAgTjcgqlwDP50DnTtpHJhWCK0Nv79RiQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: OSNPR03MB9799
+X-MTK: N
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260512_022618_955260_F295F3F1 
+X-CRM114-Status: GOOD (  18.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,387 +190,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---DRGrXT3EJq+RYIF3
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> The "sram" property has become a de facto standard property, so create a
-> common schema for it and drop all the duplicated definitions.
->=20
-> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
-
-> ---
->  .../imx/fsl,imx8qxp-dc-command-sequencer.yaml |  2 +-
->  .../devicetree/bindings/display/msm/gpu.yaml  |  6 +----
->  .../bindings/dma/stericsson,dma40.yaml        |  8 ++----
->  .../bindings/media/cnm,wave521c.yaml          |  2 +-
->  .../bindings/media/nxp,imx8-jpeg.yaml         |  6 ++---
->  .../bindings/media/rockchip,vdec.yaml         |  5 ++--
->  .../bindings/media/st,stm32-dcmi.yaml         |  6 ++---
->  .../devicetree/bindings/net/mediatek,net.yaml |  3 +--
->  .../bindings/net/ti,icssg-prueth.yaml         |  2 +-
->  .../bindings/net/ti,icssm-prueth.yaml         |  2 +-
->  .../remoteproc/amlogic,meson-mx-ao-arc.yaml   |  7 +----
->  .../bindings/remoteproc/ti,k3-dsp-rproc.yaml  |  8 ------
->  .../bindings/remoteproc/ti,k3-r5f-rproc.yaml  |  8 ------
->  .../remoteproc/xlnx,zynqmp-r5fss.yaml         |  9 +------
->  .../devicetree/bindings/spi/st,stm32-spi.yaml | 10 +++----
->  .../bindings/sram/sram-consumer.yaml          | 26 +++++++++++++++++++
->  16 files changed, 48 insertions(+), 62 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/sram/sram-consumer.=
-yaml
->=20
-> diff --git a/Documentation/devicetree/bindings/display/imx/fsl,imx8qxp-dc=
--command-sequencer.yaml b/Documentation/devicetree/bindings/display/imx/fsl=
-,imx8qxp-dc-command-sequencer.yaml
-> index 27118f4c0d28..fd095e5742c5 100644
-> --- a/Documentation/devicetree/bindings/display/imx/fsl,imx8qxp-dc-comman=
-d-sequencer.yaml
-> +++ b/Documentation/devicetree/bindings/display/imx/fsl,imx8qxp-dc-comman=
-d-sequencer.yaml
-> @@ -41,7 +41,7 @@ properties:
->        - const: sw3
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle
-> +    maxItems: 1
->      description: phandle pointing to the mmio-sram device node
-> =20
->  required:
-> diff --git a/Documentation/devicetree/bindings/display/msm/gpu.yaml b/Doc=
-umentation/devicetree/bindings/display/msm/gpu.yaml
-> index 04b2328903ca..358759fad8dc 100644
-> --- a/Documentation/devicetree/bindings/display/msm/gpu.yaml
-> +++ b/Documentation/devicetree/bindings/display/msm/gpu.yaml
-> @@ -84,13 +84,9 @@ properties:
->      maxItems: 64
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle-array
->      minItems: 1
->      maxItems: 4
-> -    items:
-> -      maxItems: 1
-> -    description: |
-> -      phandles to one or more reserved on-chip SRAM regions.
-> +    description:
->        phandle to the On Chip Memory (OCMEM) that's present on some a3xx =
-and
->        a4xx Snapdragon SoCs. See
->        Documentation/devicetree/bindings/sram/qcom,ocmem.yaml
-> diff --git a/Documentation/devicetree/bindings/dma/stericsson,dma40.yaml =
-b/Documentation/devicetree/bindings/dma/stericsson,dma40.yaml
-> index 607da11e7baa..d8f92838f4c9 100644
-> --- a/Documentation/devicetree/bindings/dma/stericsson,dma40.yaml
-> +++ b/Documentation/devicetree/bindings/dma/stericsson,dma40.yaml
-> @@ -136,13 +136,9 @@ properties:
->      maxItems: 1
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle-array
-> -    description: A phandle array with inner size 1 (no arg cells).
-> -      First phandle is the LCPA (Logical Channel Parameter Address) memo=
-ry.
-> -      Second phandle is the  LCLA (Logical Channel Link base Address) me=
-mory.
-> -    maxItems: 2
->      items:
-> -      maxItems: 1
-> +      - description: LCPA (Logical Channel Parameter Address) memory.
-> +      - description: LCLA (Logical Channel Link base Address) memory.
-> =20
->    memcpy-channels:
->      $ref: /schemas/types.yaml#/definitions/uint32-array
-> diff --git a/Documentation/devicetree/bindings/media/cnm,wave521c.yaml b/=
-Documentation/devicetree/bindings/media/cnm,wave521c.yaml
-> index 6a11c1d11fb5..6cd33dfd095d 100644
-> --- a/Documentation/devicetree/bindings/media/cnm,wave521c.yaml
-> +++ b/Documentation/devicetree/bindings/media/cnm,wave521c.yaml
-> @@ -37,7 +37,7 @@ properties:
->      maxItems: 1
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle
-> +    maxItems: 1
->      description:
->        The VPU uses the SRAM to store some of the reference data instead =
-of
->        storing it on DMA memory. It is mainly used for the purpose of red=
-ucing
-> diff --git a/Documentation/devicetree/bindings/media/nxp,imx8-jpeg.yaml b=
-/Documentation/devicetree/bindings/media/nxp,imx8-jpeg.yaml
-> index 18cc6315a821..6ba668aa633d 100644
-> --- a/Documentation/devicetree/bindings/media/nxp,imx8-jpeg.yaml
-> +++ b/Documentation/devicetree/bindings/media/nxp,imx8-jpeg.yaml
-> @@ -56,10 +56,10 @@ properties:
->      maxItems: 5               # Wrapper and 4 slots
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle
-> +    maxItems: 1
->      description:
-> -      Optional phandle to a reserved on-chip SRAM regions. The SRAM can
-> -      be used for descriptor storage, which may improve bus utilization.
-> +      The SRAM can be used for descriptor storage, which may improve bus
-> +      utilization.
-> =20
->  required:
->    - compatible
-> diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml b=
-/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> index 42022401d0ff..4f38a0ef29d8 100644
-> --- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> +++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> @@ -91,9 +91,8 @@ properties:
->      maxItems: 1
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle
-> -    description: |
-> -      phandle to a reserved on-chip SRAM regions.
-> +    maxItems: 1
-> +    description:
->        Some SoCs, like rk3588 provide on-chip SRAM to store temporary
->        buffers during decoding.
-> =20
-> diff --git a/Documentation/devicetree/bindings/media/st,stm32-dcmi.yaml b=
-/Documentation/devicetree/bindings/media/st,stm32-dcmi.yaml
-> index d9fbb90b0977..7c2ddd27780f 100644
-> --- a/Documentation/devicetree/bindings/media/st,stm32-dcmi.yaml
-> +++ b/Documentation/devicetree/bindings/media/st,stm32-dcmi.yaml
-> @@ -47,10 +47,10 @@ properties:
->      maxItems: 1
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle
-> +    maxItems: 1
->      description:
-> -      phandle to a reserved SRAM region which is used as temporary
-> -      storage memory between DMA and MDMA engines.
-> +      SRAM region which is used as temporary storage memory between DMA =
-and
-> +      MDMA engines.
-> =20
->    port:
->      $ref: /schemas/graph.yaml#/$defs/port-base
-> diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Do=
-cumentation/devicetree/bindings/net/mediatek,net.yaml
-> index cc346946291a..6bbd83c6aaf7 100644
-> --- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
-> +++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
-> @@ -67,8 +67,7 @@ properties:
->        - const: ppe
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle
-> -    description: phandle to mmio SRAM
-> +    maxItems: 1
-> =20
->    mediatek,ethsys:
->      $ref: /schemas/types.yaml#/definitions/phandle
-> diff --git a/Documentation/devicetree/bindings/net/ti,icssg-prueth.yaml b=
-/Documentation/devicetree/bindings/net/ti,icssg-prueth.yaml
-> index c296e5711848..883033b19b8f 100644
-> --- a/Documentation/devicetree/bindings/net/ti,icssg-prueth.yaml
-> +++ b/Documentation/devicetree/bindings/net/ti,icssg-prueth.yaml
-> @@ -21,7 +21,7 @@ properties:
->        - ti,am654-sr1-icssg-prueth  # for AM65x SoC family, SR1.0
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle
-> +    maxItems: 1
->      description:
->        phandle to MSMC SRAM node
-> =20
-> diff --git a/Documentation/devicetree/bindings/net/ti,icssm-prueth.yaml b=
-/Documentation/devicetree/bindings/net/ti,icssm-prueth.yaml
-> index a98ad45ca66f..9370c43bc66a 100644
-> --- a/Documentation/devicetree/bindings/net/ti,icssm-prueth.yaml
-> +++ b/Documentation/devicetree/bindings/net/ti,icssm-prueth.yaml
-> @@ -24,7 +24,7 @@ properties:
->        - ti,am3359-prueth   # for AM33x SoC family
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle
-> +    maxItems: 1
->      description:
->        phandle to OCMC SRAM node
-> =20
-> diff --git a/Documentation/devicetree/bindings/remoteproc/amlogic,meson-m=
-x-ao-arc.yaml b/Documentation/devicetree/bindings/remoteproc/amlogic,meson-=
-mx-ao-arc.yaml
-> index 76e8ca44906a..3f710433e937 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/amlogic,meson-mx-ao-ar=
-c.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/amlogic,meson-mx-ao-ar=
-c.yaml
-> @@ -48,12 +48,7 @@ properties:
->      minItems: 1
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle
-> -    description:
-> -      phandles to a reserved SRAM region which is used as the memory of
-> -      the ARC core. The region should be defined as child nodes of the
-> -      AHB SRAM node as per the generic bindings in
-> -      Documentation/devicetree/bindings/sram/sram.yaml
-> +    maxItems: 1
-> =20
->    amlogic,secbus2:
->      $ref: /schemas/types.yaml#/definitions/phandle
-> diff --git a/Documentation/devicetree/bindings/remoteproc/ti,k3-dsp-rproc=
-=2Eyaml b/Documentation/devicetree/bindings/remoteproc/ti,k3-dsp-rproc.yaml
-> index b51bb863d759..8b1ed384ef22 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/ti,k3-dsp-rproc.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/ti,k3-dsp-rproc.yaml
-> @@ -75,16 +75,8 @@ properties:
->  # --------------------
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle-array
->      minItems: 1
->      maxItems: 4
-> -    items:
-> -      maxItems: 1
-> -    description: |
-> -      phandles to one or more reserved on-chip SRAM regions. The regions
-> -      should be defined as child nodes of the respective SRAM node, and
-> -      should be defined as per the generic bindings in,
-> -      Documentation/devicetree/bindings/sram/sram.yaml
-> =20
->  allOf:
->    - if:
-> diff --git a/Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc=
-=2Eyaml b/Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml
-> index 775e9b3a1938..14e6b2f817b3 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml
-> @@ -224,16 +224,8 @@ patternProperties:
->            at 0x0) or 0 (BTCM at 0x0), default value is 1 if omitted.
-> =20
->        sram:
-> -        $ref: /schemas/types.yaml#/definitions/phandle-array
->          minItems: 1
->          maxItems: 4
-> -        items:
-> -          maxItems: 1
-> -        description: |
-> -          phandles to one or more reserved on-chip SRAM regions. The reg=
-ions
-> -          should be defined as child nodes of the respective SRAM node, =
-and
-> -          should be defined as per the generic bindings in,
-> -          Documentation/devicetree/bindings/sram/sram.yaml
-> =20
->      required:
->        - compatible
-> diff --git a/Documentation/devicetree/bindings/remoteproc/xlnx,zynqmp-r5f=
-ss.yaml b/Documentation/devicetree/bindings/remoteproc/xlnx,zynqmp-r5fss.ya=
-ml
-> index ee63c03949c9..c7d5e58330d6 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/xlnx,zynqmp-r5fss.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/xlnx,zynqmp-r5fss.yaml
-> @@ -106,20 +106,13 @@ patternProperties:
->            - const: rx
-> =20
->        sram:
-> -        $ref: /schemas/types.yaml#/definitions/phandle-array
->          minItems: 1
->          maxItems: 8
-> -        items:
-> -          maxItems: 1
-> -        description: |
-> +        description:
->            phandles to one or more reserved on-chip SRAM regions. Other t=
-han TCM,
->            the RPU can execute instructions and access data from the OCM =
-memory,
->            the main DDR memory, and other system memories.
-> =20
-> -          The regions should be defined as child nodes of the respective=
- SRAM
-> -          node, and should be defined as per the generic bindings in
-> -          Documentation/devicetree/bindings/sram/sram.yaml
-> -
->        memory-region:
->          description: |
->            List of phandles to the reserved memory regions associated wit=
-h the
-> diff --git a/Documentation/devicetree/bindings/spi/st,stm32-spi.yaml b/Do=
-cumentation/devicetree/bindings/spi/st,stm32-spi.yaml
-> index 472e92974714..6d7d595e4ab3 100644
-> --- a/Documentation/devicetree/bindings/spi/st,stm32-spi.yaml
-> +++ b/Documentation/devicetree/bindings/spi/st,stm32-spi.yaml
-> @@ -89,12 +89,10 @@ properties:
->        - const: rxm2m
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle
-> -    description: |
-> -      Phandles to a reserved SRAM region which is used as temporary
-> -      storage memory between DMA and MDMA engines.
-> -      The region should be defined as child node of the AHB SRAM node
-> -      as per the generic bindings in Documentation/devicetree/bindings/s=
-ram/sram.yaml
-> +    maxItems: 1
-> +    description:
-> +      SRAM region which is used as temporary storage memory between DMA =
-and
-> +      MDMA engines.
-> =20
->    power-domains:
->      maxItems: 1
-> diff --git a/Documentation/devicetree/bindings/sram/sram-consumer.yaml b/=
-Documentation/devicetree/bindings/sram/sram-consumer.yaml
-> new file mode 100644
-> index 000000000000..f00087bd2879
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/sram/sram-consumer.yaml
-> @@ -0,0 +1,26 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/sram/sram-consumer.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: SRAM Consumers
-> +
-> +maintainers:
-> +  - Rob Herring <robh@kernel.org>
-> +
-> +select: true
-> +
-> +properties:
-> +  sram:
-> +    description:
-> +      Phandles to one or more reserved on-chip SRAM regions. The regions
-> +      should be defined as child nodes of the respective SRAM node, and
-> +      should be defined as per the generic bindings in,
-> +      Documentation/devicetree/bindings/sram/sram.yaml
-> +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> +    items:
-> +      maxItems: 1
-> +
-> +additionalProperties: true
-> +...
-> --=20
-> 2.53.0
->=20
-
---DRGrXT3EJq+RYIF3
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCagLvoAAKCRA6cBh0uS2t
-rB3PAQDUyipx/50v+HQH37ZQgQgNXN+WyuErXdljPkPOAGPQXQEA5AF8C1BtXXr0
-ThfwiDvqyao6viviV65dKTdINUDRXA4=
-=S+zT
------END PGP SIGNATURE-----
-
---DRGrXT3EJq+RYIF3--
+T24gVHVlLCAyMDI2LTA1LTA1IGF0IDIyOjQ1ICswMTAwLCBMdWNhIExlb25hcmRvIFNjb3JjaWEg
+d3JvdGU6DQo+IEV4dGVybmFsIGVtYWlsIDogUGxlYXNlIGRvIG5vdCBjbGljayBsaW5rcyBvciBv
+cGVuIGF0dGFjaG1lbnRzIHVudGlsIHlvdSBoYXZlIHZlcmlmaWVkIHRoZSBzZW5kZXIgb3IgdGhl
+IGNvbnRlbnQuDQo+IA0KPiANCj4gVGhlIG10ODE2NyBEU0kgY29udHJvbGxlciBpcyBmdWxseSBj
+b21wYXRpYmxlIHdpdGggdGhlIG9uZSBmb3VuZCBpbg0KPiBtdDI3MDEuIFVuZm9ydHVuYXRlbHkg
+dGhlIGRldmljZSB0cmVlIGhhcyBhIGRlZGljYXRlZCBjb21wYXRpYmxlIGZvcg0KPiBtdDgxNjcg
+c2luY2UgMjAyMiBhbmQgaXQgY2Fubm90IGJlIGNoYW5nZWQgd2l0aCBhIGZhbGxiYWNrIG5vciBy
+ZW1vdmVkIGF0DQo+IHRoaXMgcG9pbnQuIFRoZSBvbmx5IHdheSB0byBnZXQgdGhlIGRldmljZSB0
+byB3b3JrIGlzIHRvIGFkZCB0aGUNCj4gY29tcGF0aWJsZSB0byB0aGUgZHJpdmVyLg0KDQpSZXZp
+ZXdlZC1ieTogQ0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4NCg0KPiANCj4gU2lnbmVkLW9mZi1i
+eTogTHVjYSBMZW9uYXJkbyBTY29yY2lhIDxsLnNjb3JjaWFAZ21haWwuY29tPg0KPiAtLS0NCj4g
+IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgfCAxICsNCj4gIDEgZmlsZSBjaGFu
+Z2VkLCAxIGluc2VydGlvbigrKQ0KPiANCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jDQo+
+IGluZGV4IDVhYTcxZmNkY2ZhYi4uMTY3ZTMzZmVmMDI1IDEwMDY0NA0KPiAtLS0gYS9kcml2ZXJz
+L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jDQo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZHNpLmMNCj4gQEAgLTEzMDUsNiArMTMwNSw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1
+Y3QgbXRrX2RzaV9kcml2ZXJfZGF0YSBtdDgxODhfZHNpX2RyaXZlcl9kYXRhID0gew0KPiANCj4g
+IHN0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIG10a19kc2lfb2ZfbWF0Y2hbXSA9IHsN
+Cj4gICAgICAgICB7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10MjcwMS1kc2kiLCAuZGF0YSA9
+ICZtdDI3MDFfZHNpX2RyaXZlcl9kYXRhIH0sDQo+ICsgICAgICAgeyAuY29tcGF0aWJsZSA9ICJt
+ZWRpYXRlayxtdDgxNjctZHNpIiwgLmRhdGEgPSAmbXQyNzAxX2RzaV9kcml2ZXJfZGF0YSB9LA0K
+PiAgICAgICAgIHsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTczLWRzaSIsIC5kYXRhID0g
+Jm10ODE3M19kc2lfZHJpdmVyX2RhdGEgfSwNCj4gICAgICAgICB7IC5jb21wYXRpYmxlID0gIm1l
+ZGlhdGVrLG10ODE4My1kc2kiLCAuZGF0YSA9ICZtdDgxODNfZHNpX2RyaXZlcl9kYXRhIH0sDQo+
+ICAgICAgICAgeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxODYtZHNpIiwgLmRhdGEgPSAm
+bXQ4MTg2X2RzaV9kcml2ZXJfZGF0YSB9LA0KPiAtLQ0KPiAyLjQzLjANCj4gDQo+IA0KDQo=
 
