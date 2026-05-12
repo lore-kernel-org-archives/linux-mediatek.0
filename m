@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66191CD37BE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2026 01:25:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8817FCD4846
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2026 01:39:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WmI5uFHKfFnMJ69xxu5ilKDj30A+JvH9IgU8N+M0S5k=; b=cup+X4a2deSrwDycW/PwOKPYEg
-	o0y9S6817cbCccZSXtxGD0jf6QYlom8/jRX1lRid5jl3RpM0qGSMnYkPWNKYOjQ8qhoVkoHtmcybk
-	ZMbXpo6s7J05cEb9xt14VlpflMbjtc5WohJTNeXni4plt+K6lj701PD6qXYRjZvKOhD46v8rLexkS
-	Gk7Ji95dltBm/d4OR/pstaxi93v1YRgLjQ0TkC+DnvOyd2bS8r1pP6utWM44SXcZtMhcjSo4vOa1X
-	5sn5Y8F2HP+YJxFPY7QpkCrmE6RRPlYsppNMlAO9hCLer14sBNZ/s42CgYgoCe+tvJgCB+njwNetg
-	zZWFzEyw==;
+	bh=rop7wg0WUO7fllJzwFIlyP/VpMvCl1KehABXYLnbIE0=; b=z51OqB3KLekBYku6+hGz+5Z1Hi
+	i6iVgHPmZXBbAltHXAmL6FpeG1U6yP8QpToaXNi0rqDd2Az+t+dNMzwmxKrEGYlnLlfI9D3lK6HqY
+	fL+8rA6REVdd+PHcq3Cxwf4OoXPp494HwsfhwJc4Bdef7OkpTfqzDCggD20sjY8q3YaEpNxCDpRtW
+	NsF3rlUeEukDuojYnSsJF/QpoKhe4ihHiJIKrVn3nZD5U1R1wZOAF/jyKf5Wvat01JYu6qcLT6wOs
+	cGC4coKfxpzpXkYnRcw/TuSw1W5oPWInTUo1dPXljFgYUlrbaHW/+nXzYT+rLdIKZYMv3RULzXyrA
+	KvK/pDdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMbsW-0000000FAnN-0kzP;
-	Tue, 12 May 2026 01:25:44 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wMc5i-0000000FC4d-1Nvy;
+	Tue, 12 May 2026 01:39:22 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMbsT-0000000FAmV-2Ne3;
-	Tue, 12 May 2026 01:25:42 +0000
+	id 1wMc5f-0000000FC3x-1tie;
+	Tue, 12 May 2026 01:39:20 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A4E7142E09;
-	Tue, 12 May 2026 01:25:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 63B90C2BCB0;
-	Tue, 12 May 2026 01:25:40 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id CBADE43BC4;
+	Tue, 12 May 2026 01:39:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 887C8C2BCB0;
+	Tue, 12 May 2026 01:39:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778549140;
-	bh=MDx6wyxJnrpM3xEGYmY3gDJSK85ARjHDfhMiTGvsheY=;
+	s=k20201202; t=1778549958;
+	bh=rop7wg0WUO7fllJzwFIlyP/VpMvCl1KehABXYLnbIE0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LacaZ//coubQsRNc1+AzKM4LLAQnjbZPI3UjHyCQ44EwYCejFMzDNMIyW0OhqNvuL
-	 9y3ekVJ+rqxPYKmvBnxltPSQR36guKuhBxP5NnRcTxVBh6A23oIN55Qnbnhkm4uInv
-	 1c2W3MKUPsu4NTEbWDyeIu7c+7qeDDSUTgc8la4pXrjyoOKNP5HcbFJCMrIABuCOoo
-	 X0ZaPpQKe9KORWQjspPtC2QNrTlZnt2qN56NkqdiUyvNVlGgSpoqO03MEQwK5zBsmB
-	 SSAjQwb3D/SNB/kPVhoE3cdYelYQR1ZzNp/SdgbYAdpaNS0WiThQczlbHiK2VYaboP
-	 kkhDLQglFdJXA==
+	b=NrSXPphYYl/S6Laq9pMm43YpmnpmtFNawF427KQ/jseGo8NyU6vzFb/KY3t2kL+ht
+	 Nt7JBXMZV0fNQhVcOe+5o8HhiwUN4SP6HObnJeTz0TniAR3VBZTru6yTNdo+R2QSTK
+	 SiKjJ06nlvHJ3YX8N0SDj4F4VWVt7FnuRmtm5mLQA2CYeobAOlQrjqgdvTPQOtAtAD
+	 xS086KjhSL8UUuxFdLWTZ/kZOwucUdcp21MES++AtvjYk2O4cRN/lzUmWvNnoKBO5M
+	 gJEoMfpSAgRPNGkW/BjaAB/F3znbI2gntce2lHUbTbxJxrIY0zvwRsCD/iQRPDC6aA
+	 Myx7ub+Vkiu2w==
 Received: by finisterre.sirena.org.uk (Postfix, from userid 1000)
-	id F3EF01AC58C2; Tue, 12 May 2026 02:25:37 +0100 (BST)
-Date: Tue, 12 May 2026 10:25:37 +0900
+	id 2A88E1AC5843; Tue, 12 May 2026 02:39:16 +0100 (BST)
+Date: Tue, 12 May 2026 10:39:16 +0900
 From: Mark Brown <broonie@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: linux-mediatek@lists.infradead.org, lee@kernel.org, robh@kernel.org,
@@ -51,19 +51,20 @@ Cc: linux-mediatek@lists.infradead.org, lee@kernel.org, robh@kernel.org,
 	lgirdwood@gmail.com, devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com, wenst@chromium.org
-Subject: Re: [PATCH PARTIAL-RESEND v12 0/5] Add support MT6316/6363/MT6373
- PMICs regulators and MFD
-Message-ID: <agKBkUBVM81Y6MUk@sirena.co.uk>
+Subject: Re: [PATCH v12 1/5] dt-bindings: regulator: Document MediaTek MT6373
+ PMIC Regulators
+Message-ID: <agKExG7C9TXUQJuP@sirena.co.uk>
 References: <20260511101355.122478-1-angelogioacchino.delregno@collabora.com>
+ <20260511101355.122478-2-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ZO04f3tElFI8BsTK"
+	protocol="application/pgp-signature"; boundary="i54nV9tYspIyFftK"
 Content-Disposition: inline
-In-Reply-To: <20260511101355.122478-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20260511101355.122478-2-angelogioacchino.delregno@collabora.com>
 X-Cookie: Truckers welcome.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260511_182541_630112_C5A13A55 
-X-CRM114-Status: GOOD (  11.26  )
+X-CRM114-CacheID: sfid-20260511_183919_515352_F610EF0A 
+X-CRM114-Status: GOOD (  11.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,32 +80,36 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---ZO04f3tElFI8BsTK
+--i54nV9tYspIyFftK
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-On Mon, May 11, 2026 at 12:13:50PM +0200, AngeloGioacchino Del Regno wrote:
-> Changes in v12:
->  - This is a partial resend. MT6373 regulators and MFD patches were not picked.
->  - Rebased over next-20260508
+On Mon, May 11, 2026 at 12:13:51PM +0200, AngeloGioacchino Del Regno wrote:
+> Add bindings for the regulators found in the MediaTek MT6363 PMIC,
+> usually found in board designs using the MT6991 Dimensity 9400 and
+> on MT8196 Kompanio SoC for Chromebooks, along with the MT6316 and
+> MT6363 PMICs.
 
-Is there a reason why this is a single patch series, are there any
-interdependencies here?
+Please submit patches using subject lines reflecting the style for the
+subsystem, this makes it easier for people to identify relevant patches.
+Look at what existing commits in the area you're changing are doing and
+make sure your subject lines visually resemble what they're doing.
+There's no need to resubmit to fix this alone.
 
---ZO04f3tElFI8BsTK
+--i54nV9tYspIyFftK
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmoCgZEACgkQJNaLcl1U
-h9Cl7wf/eGQ+SEV4WqVTokc90PnMsjaK7jSAFGVrllzf7QEaXe5nO3B3fWEelwKE
-8t91+XH2mSW/YD/rSts6vFNTKBFZSKjCQ8SP2km1j5SxAxjN/SCIyXloy4MyPf4f
-SS0frCVFc9ZdmqYHVolKlRGvFObHCyZH8dXNmvs+WRgm4HlpJjWz2SycDxdZXtS9
-E/WEycZxxWMbuIJxesMr5hunbjozk1zbOKXDafHzjqzqEFiYXcvhvmTQV10CnJ3y
-iipRScZhn+35h1bkg/QTR/WE/Oui/uRumeFkKSMonav4lu1X2vac4CzTMhM6uchX
-oWUtt17l1wGDsLnlCCGF2cI5VwUP3w==
-=GoUg
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmoChMMACgkQJNaLcl1U
+h9Avpwf+JI9TioLyaNkiPZlz7DgXDocJ2eHlPUKlrSTNkqM+zJE6QBbzhvOljtej
+tiC1ACgMMVFBaM2hBDjN2HJnyhRulHcYanlgGN0sxe++7cdZgkohG0Q5IC8FQbEX
+XZLDDhAGHVM2inoGfjgck/yTF11wdEUH8VWjxR3T5eRA/C5rWpkBgnCAEafjEpkO
+SnnUhCHSC0P4/8loNAA7MzYbwVGagSW277aTgorcWHnP5W1N9FIkS+jYpS0e7XIB
+da+RzvSh9Tvi2CZ8ZmtLD6AgOSpsK70Tc9Gt142lMY6vE8Qh92J9beaRGE/i40+u
+FiHT2h/DpcrvgDlk6NusB3TVdDN+Tw==
+=nzPt
 -----END PGP SIGNATURE-----
 
---ZO04f3tElFI8BsTK--
+--i54nV9tYspIyFftK--
 
