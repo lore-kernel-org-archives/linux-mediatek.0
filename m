@@ -4,76 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 421F2CD37B6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2026 07:24:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93C91CD37B6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2026 07:36:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=fXhtRM5RjLRQdXVr5ShuzzkhGZfrC2llytA16/b+um8=; b=pLOT18MAZhv41knbZea8uB3jfK
-	xzfo1je0++azeRtgPT8HAfvvFa1rR2Mjfo2W9ehucoX9ONR5s23/XlYUD4jKPIn0TdWY4DvzYNYzi
-	5zP8LNrlrR4+iQMjcS2MbJCjnnJdgIdKKlzEOP+GJYoRuWHuCilYHSCPlfZHPXr36m/83ZUapTFC7
-	SkVP9Tgcj4e5/uSHhdWDuFOZgEV8/riPMFYQBdeUQNwl9FrqQef/CGVjfDKw3tYKPBdEhI0GUWLEI
-	9OXu5RS9MaQ5h0EqFdvJS73bdQy2APsiROOZAbkGfDBs9UImGt8u7TQ2dy8GJPyVExkyUVY/oIF35
-	UpiKvWKA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VijwG2fIs9LhVa8a8fRpWCP40TzL9ibkl6s9H7Eu2SA=; b=vwbOKCPuZxDWWaRQH9BwzbNypf
+	8+/u4m7GIxCO3p8XJEIX26piZsMJxQpFSm3JUPzvBtF+6pkVIDy+QuB417v9gBuToXfafk9lf+fnP
+	CCEeeayPId2YMr5TMCp97fP2X0o3kfkUW+O01RhbV+E2j5a0nxgx70SASdPkM0z8MpSC9an5pNWTj
+	DW0sY/dtu4g2VwIDTOFn4SaBgOI9pDrEagMSzujqs/6+4Zoi6MT6wxobSBkKC4OmGgOeDOtJQ9khS
+	u30WQ9gifYdH4x+Ilrf6T6izxNtkUDjp7j9chn54hcqfXQtT3zK0Ofpu7H6VPUtLcjBuugK+5UheM
+	R1wPRoSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wN3x1-00000001Yp1-0bVH;
-	Wed, 13 May 2026 07:24:15 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1wN48S-00000001aYw-30R7;
+	Wed, 13 May 2026 07:36:04 +0000
+Received: from m16.mail.163.com ([220.197.31.2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wN3wy-00000001Yo5-2yHb
-	for linux-mediatek@lists.infradead.org;
-	Wed, 13 May 2026 07:24:13 +0000
-X-UUID: b80a56544e9c11f1afed4741b24580c9-20260513
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=fXhtRM5RjLRQdXVr5ShuzzkhGZfrC2llytA16/b+um8=;
-	b=ZGoMH7G9YR0E/aNSHER/eeLONP846ZTHg2ltYLXBsDXx/FIfP+1d0WACgGnQy3w0TRjRMSw5YhWzXedGjgvGtaMkmNnIYQgHaEHfBLImkrqX/WQDmIbknKf26NILI4ZqR/FMCfO34dTo+eND2EGo8mQpiqOUH21hMOlc8GfRi6o=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.14,REQID:d2af2981-a5ac-4700-81ec-65880b8cd9d9,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:9091e75,CLOUDID:296dc543-11c5-46fd-96b8-8ddde212c99a,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|865|888|898,TC:-5,Content:0|
-	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0
-	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: b80a56544e9c11f1afed4741b24580c9-20260513
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
-	(envelope-from <jb.tsai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 876553349; Wed, 13 May 2026 00:24:03 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 13 May 2026 15:24:01 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 13 May 2026 15:24:01 +0800
-From: JB Tsai <jb.tsai@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<Deren.Wu@mediatek.com>, <Sean.Wang@mediatek.com>, <Quan.Zhou@mediatek.com>,
-	<Ryder.Lee@mediatek.com>, <Leon.Yen@mediatek.com>,
-	<litien.chang@mediatek.com>, <jeff.hsu@mediatek.com>, <jb.tsai@mediatek.com>,
-	Jeff Hsu <Jeff.Hsu@mediatek.com>
-Subject: [PATCH v2] wifi: mt76: mt7925: Add coredump callback in pci_driver
-Date: Wed, 13 May 2026 15:23:59 +0800
-Message-ID: <20260513072359.3943517-1-jb.tsai@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1wN48O-00000001aWd-0MIu;
+	Wed, 13 May 2026 07:36:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Message-ID:Date:MIME-Version:Subject:To:From:
+	Content-Type; bh=VijwG2fIs9LhVa8a8fRpWCP40TzL9ibkl6s9H7Eu2SA=;
+	b=e5KTyfYlAFGe/42vF2z8P7EXkacJhGfEpbHUW3Awoev0s0P91k3Z+NfTtXQEgn
+	9uMXTA8eHBgDYCY6c6yWdK/j/IKqOnESn7atUr3cBQdyRnFdejtOkQttakzNE1DM
+	qQuDf+g119YFLEA/Z5kqLP5P2HQgn/L64VqoP6KWzoMik=
+Received: from [192.168.50.71] (unknown [])
+	by gzga-smtp-mtada-g1-2 (Coremail) with SMTP id _____wC3bRWWKQRqHpJqBA--.6846S2;
+	Wed, 13 May 2026 15:34:47 +0800 (CST)
+Message-ID: <15532890-ce22-4b20-96d9-e7f7c47050d2@163.com>
+Date: Wed, 13 May 2026 15:34:46 +0800
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 6/8] PCI: aardvark: Add 100 ms delay after link
+ training
+To: =?UTF-8?Q?Pali_Roh=C3=A1r?= <pali@kernel.org>
+Cc: bhelgaas@google.com, lpieralisi@kernel.org, kwilczynski@kernel.org,
+ mani@kernel.org, vigneshr@ti.com, jingoohan1@gmail.com,
+ thomas.petazzoni@bootlin.com, ryder.lee@mediatek.com,
+ jianjun.wang@mediatek.com, claudiu.beznea.uj@bp.renesas.com,
+ mpillai@cadence.com, robh@kernel.org, s-vadapalli@ti.com,
+ linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
+ linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org
+References: <20260506152346.166056-1-18255117159@163.com>
+ <20260506152346.166056-7-18255117159@163.com>
+ <20260512212531.jupoocz7acv22qyg@pali>
+ <581e91fb-2e57-43ed-b79d-19dbf384b955@163.com>
+ <20260513072008.vol4htgbzquly2rb@pali>
+Content-Language: en-US
+From: Hans Zhang <18255117159@163.com>
+In-Reply-To: <20260513072008.vol4htgbzquly2rb@pali>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: _____wC3bRWWKQRqHpJqBA--.6846S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW3Ar48GrWDZFWUCw48tr1DJrb_yoW7AF4fpa
+	y7GasFyFs5Jr15u3WIq3WDXFyYqan8uFyUXr18Wry7XF9IyryUWF12krZI9FyDGr4vvF1j
+	vw4jqFyxu3WYva7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UEPfLUUUUU=
+X-Originating-IP: [140.206.53.66]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbCwxcLrmoEKZfYBwAA3+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260513_002412_765403_BAD51963 
-X-CRM114-Status: UNSURE (   7.06  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260513_003600_517409_29E8043E 
+X-CRM114-Status: GOOD (  29.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,67 +84,170 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jeff Hsu <Jeff.Hsu@mediatek.com>=0D
 
-Register coredump callback(mt7925_coredump) in pci_driver,=0D
-it can let platform can trigger core dump to collect the=0D
-log and recover back after coredump complete without debugfs=0D
-=0D
-Some platform not have debugfs=0D
-=0D
-Signed-off-by: Jeff Hsu <Jeff.Hsu@mediatek.com>=0D
----=0D
- drivers/net/wireless/mediatek/mt76/mt7925/mcu.c |  1 +=0D
- drivers/net/wireless/mediatek/mt76/mt7925/pci.c | 12 ++++++++++++=0D
- 2 files changed, 13 insertions(+)=0D
-=0D
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/=
-wireless/mediatek/mt76/mt7925/mcu.c=0D
-index 37cdf3e8a067..cd502166a7f9 100644=0D
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c=0D
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c=0D
-@@ -1014,6 +1014,7 @@ int mt7925_mcu_chip_config(struct mt792x_dev *dev, co=
-nst char *cmd)=0D
- 	return mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD(CHIP_CONFIG),=0D
- 				 &req, sizeof(req), false);=0D
- }=0D
-+EXPORT_SYMBOL_GPL(mt7925_mcu_chip_config);=0D
- =0D
- int mt7925_mcu_set_deep_sleep(struct mt792x_dev *dev, bool enable)=0D
- {=0D
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/=
-wireless/mediatek/mt76/mt7925/pci.c=0D
-index c4161754c01d..57006cd75b1c 100644=0D
---- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c=0D
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c=0D
-@@ -610,6 +610,17 @@ static int mt7925_pci_restore(struct device *device)=0D
- 	return _mt7925_pci_resume(device, true);=0D
- }=0D
- =0D
-+static void mt7925_coredump(struct device *dev)=0D
-+{=0D
-+	struct pci_dev *pdev =3D to_pci_dev(dev);=0D
-+	struct mt76_dev *mdev =3D pci_get_drvdata(pdev);=0D
-+	struct mt792x_dev *dev_792x =3D container_of(mdev, struct mt792x_dev, mt7=
-6);=0D
-+=0D
-+	mt792x_mutex_acquire(dev_792x);=0D
-+	mt7925_mcu_chip_config(dev_792x, "assert");=0D
-+	mt792x_mutex_release(dev_792x);=0D
-+}=0D
-+=0D
- static const struct dev_pm_ops mt7925_pm_ops =3D {=0D
- 	.suspend =3D pm_sleep_ptr(mt7925_pci_suspend),=0D
- 	.resume  =3D pm_sleep_ptr(mt7925_pci_resume),=0D
-@@ -626,6 +637,7 @@ static struct pci_driver mt7925_pci_driver =3D {=0D
- 	.remove		=3D mt7925_pci_remove,=0D
- 	.shutdown       =3D mt7925_pci_shutdown,=0D
- 	.driver.pm	=3D pm_sleep_ptr(&mt7925_pm_ops),=0D
-+	.driver.coredump =3D mt7925_coredump,=0D
- };=0D
- =0D
- module_pci_driver(mt7925_pci_driver);=0D
--- =0D
-2.45.2=0D
-=0D
+
+On 5/13/26 15:20, Pali Rohár wrote:
+> On Wednesday 13 May 2026 15:00:04 Hans Zhang wrote:
+>>
+>>
+>> On 5/13/26 05:25, Pali Rohár wrote:
+>>> On Wednesday 06 May 2026 23:23:44 Hans Zhang wrote:
+>>>> The Aardvark PCIe controller driver waits for the link to come up but
+>>>> does not implement the mandatory 100 ms delay after link training
+>>>> completes for speeds greater than 5.0 GT/s (PCIe r6.0 sec 6.6.1).
+>>>>
+>>>> The driver already maintains a 'link_gen' field that holds the negotiated
+>>>> link speed. Use it together with pcie_wait_after_link_train() to insert
+>>>> the required delay immediately after confirming that the link is up.
+>>>>
+>>>> Signed-off-by: Hans Zhang <18255117159@163.com>
+>>>> ---
+>>>>    drivers/pci/controller/pci-aardvark.c | 4 +++-
+>>>>    1 file changed, 3 insertions(+), 1 deletion(-)
+>>>>
+>>>> diff --git a/drivers/pci/controller/pci-aardvark.c b/drivers/pci/controller/pci-aardvark.c
+>>>> index e34bea1ff0ac..526351c21c49 100644
+>>>> --- a/drivers/pci/controller/pci-aardvark.c
+>>>> +++ b/drivers/pci/controller/pci-aardvark.c
+>>>> @@ -350,8 +350,10 @@ static int advk_pcie_wait_for_link(struct advk_pcie *pcie)
+>>>>    	/* check if the link is up or not */
+>>>>    	for (retries = 0; retries < LINK_WAIT_MAX_RETRIES; retries++) {
+>>>> -		if (advk_pcie_link_up(pcie))
+>>>> +		if (advk_pcie_link_up(pcie)) {
+>>>> +			pcie_wait_after_link_train(pcie->link_gen);
+>>>>    			return 0;
+>>>> +		}
+>>>>    		usleep_range(LINK_WAIT_USLEEP_MIN, LINK_WAIT_USLEEP_MAX);
+>>>>    	}
+>>>> -- 
+>>>> 2.34.1
+>>>>
+>>>
+>>> Are you sure that this is correct to do? Have you checked the A3720
+>>> Functional Specification which describes how to bring PCIe link up?
+>>>
+>>> A3720 PCIe controller is buggy and needs more timing hacks to make it
+>>> behave. Playing with random sleeps can break its internal logic.
+>>> I'm not sure if it could be safe without proper testing.
+>>>
+>>> And IIRC A3720 PCIe controller is just PCIe2.0 with 5 GT/s.
+>>
+>>
+>> Hi Pali,
+>>
+>> 1. This driver does not support A3720.
+>>
+>> static const struct of_device_id advk_pcie_of_match_table[] = {
+>> 	{ .compatible = "marvell,armada-3700-pcie", },
+>> 	{},
+>> };
+>> MODULE_DEVICE_TABLE(of, advk_pcie_of_match_table);
+>>
+>> If you need support for A3720, please submit the corresponding patch so that
+>> Bjorn and Mani can review it.
+> 
+> 3700 (or 37xx) is family and covers both a3710 and a3720. In most cases is the
+> a3720 dominant and hence identifiers 3700 and 3720 are begin mixed.
+> 
+>>
+>> 2. If A3720 only supports GEN2, you can configure "max-link-speed" to be 2
+>> in the DT. This will not affect the functionality of this patch.
+> 
+> Whole A37xx supports only GEN2. And in DT files for 37xx should be
+> already there max-link-speed.
+> 
+> Seems that in advk_pcie_of_match_table there is no GEN3 device
+> specified.
+> 
+
+Hi Pali,
+
+However, I saw many GEN3 assignments and conditions in the code.
+
+ret = of_pci_get_max_link_speed(dev->of_node);
+if (ret <= 0 || ret > 3)
+	pcie->link_gen = 3;
+else
+	pcie->link_gen = ret;
+
+
+static void advk_pcie_train_link(struct advk_pcie *pcie)
+{
+	struct device *dev = &pcie->pdev->dev;
+	u32 reg;
+	int ret;
+
+	/*
+	 * Setup PCIe rev / gen compliance based on device tree property
+	 * 'max-link-speed' which also forces maximal link speed.
+	 */
+	reg = advk_readl(pcie, PCIE_CORE_CTRL0_REG);
+	reg &= ~PCIE_GEN_SEL_MSK;
+	if (pcie->link_gen == 3)
+		reg |= SPEED_GEN_3;
+	else if (pcie->link_gen == 2)
+		reg |= SPEED_GEN_2;
+	else
+		reg |= SPEED_GEN_1;
+	advk_writel(pcie, reg, PCIE_CORE_CTRL0_REG);
+
+	/*
+	 * Set maximal link speed value also into PCIe Link Control 2 register.
+	 * Armada 3700 Functional Specification says that default value is based
+	 * on SPEED_GEN but tests showed that default value is always 8.0 GT/s.
+	 */
+	reg = advk_readl(pcie, PCIE_CORE_PCIEXP_CAP + PCI_EXP_LNKCTL2);
+	reg &= ~PCI_EXP_LNKCTL2_TLS;
+	if (pcie->link_gen == 3)
+		reg |= PCI_EXP_LNKCTL2_TLS_8_0GT;
+	else if (pcie->link_gen == 2)
+		reg |= PCI_EXP_LNKCTL2_TLS_5_0GT;
+	else
+		reg |= PCI_EXP_LNKCTL2_TLS_2_5GT;
+	advk_writel(pcie, reg, PCIE_CORE_PCIEXP_CAP + PCI_EXP_LNKCTL2);
+
+....
+
+
+If you are certain about the relevant information. Is it understandable 
+that we need to delete the code related to GEN3?
+
+
+Best regards,
+Hans
+
+
+>> 3. This patch is a common delay requirement stipulated by the PCIe
+>> specification. If it is greater than GEN2, then msleep(100) will be added;
+>> otherwise, there will be no such delay.
+>>
+>> 4. For instance, we often come across the situation where some common APIs
+>> are modified, and in many cases, their functionality does not require the
+>> actual development board for verification. I believe that many other
+>> developers and maintainers have modified different parts of the code. For
+>> example, the recent submission:
+> 
+> Switching one API to another is one thing. But changing code which looks
+> to be critical, specially when it is known that hw has bugs, can cause
+> breaking of existing boards.
+> 
+>> commit 750277048afe7ce8ebfc0b120de7dfbc745058a7
+>> Author: Nam Cao <namcao@linutronix.de>
+>> Date:   Thu Jun 26 16:47:53 2025 +0200
+>>
+>>      PCI: aardvark: Switch to msi_create_parent_irq_domain()
+>>
+>>      Switch to msi_create_parent_irq_domain() from
+>> pci_msi_create_irq_domain()
+>>      which was using legacy MSI domain setup.
+>>
+>>
+>> And many controller drivers have been modified.
+>>
+>>
+>> Best regards,
+>> Hans
+>>
+>>
+
 
