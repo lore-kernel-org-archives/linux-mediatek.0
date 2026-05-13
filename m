@@ -4,74 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26443CD484C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2026 02:15:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C81D6CD37B6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2026 07:01:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=74Cn4hg4RXxElIhSInZ/m7ZsUzxyX6/zI9dRPVJHie0=; b=XMIkMrCtOfTJOrhMG1IG7bDsjH
-	V1zWEkgWby45/gN9BPhACtJkJ07re+2POfydno3kyjwgEHWLxoNhvnzLzUMCJpB35vzp97rOux9Rs
-	l2/m8ejmzYBhGfhweLSWZwh72TfYdwNdhXQsJN/W+Hg6AXgI0NUCV6eMGL4YkZBliYhAp7Vb+wUPV
-	SSi9BxhiLCGf/raaXvDG49dtisXDSv8EuC77rSyWCmhUROsalQ75nQJaAxO8HFyeRd/gUKIfit8Do
-	z2Oa4uRcIA8FJ3qpsjg4L2UVcn/zTg9DpW6O/6n0ewSMxrcdsLHQpdAZZnIg0XzY7maqugyRbE/DG
-	FKB48m5A==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8eoo5QvpB4Eb9ga+kJJMqXt8kq4OH6TS43RPJ0eaFgI=; b=MU2l5ytSEE3ePhqbDjH6rDuqc4
+	pvIoNEhDFdqY1YaQMnn/vDFlKQLhNyqKOYtbbDJlY17mFu/+U5ze52EaRiRq7j/+ZhJq4eaS/wEdX
+	O/bwaB1TGWI4/rOwcdJG12bOZnxshVR332VeitAom+8nDYf7kymIzgFRM4yxlw9xVnZ6x7etovXEp
+	2cuDlhgZQIk7/o75VrXNI4k3CgAKN50MX7RpbKrA6O4xQX83PycNwLE96p8tRSjgY0DlRrSoVyHex
+	hIKe827PkBVGoEdzjYqPelybew54swLOgXwHGbu0xwgQiztgoX2O3ffgpZXX4VrtgcNxF1bAc7YHc
+	8kBRSHgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMz7w-00000000uzh-2ge5;
-	Wed, 13 May 2026 02:15:12 +0000
-Received: from mailgw.kylinos.cn ([124.126.103.232])
+	id 1wN3aW-00000001VMa-21Cy;
+	Wed, 13 May 2026 07:01:00 +0000
+Received: from m16.mail.163.com ([117.135.210.3])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMz7t-00000000uwg-0q8p;
-	Wed, 13 May 2026 02:15:11 +0000
-X-UUID: 8acc9a744e7111f1aa26b74ffac11d73-20260513
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:f90f73a6-8043-4526-90d4-b5098d380dba,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:e7bac3a,CLOUDID:654c1fa903bfe6f384811b843b57053b,BulkI
-	D:nil,BulkQuantity:0,Recheck:0,SF:102|850|898,TC:nil,Content:0|15|16|50,ED
-	M:-3,IP:nil,URL:99|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,O
-	SA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 8acc9a744e7111f1aa26b74ffac11d73-20260513
-X-User: zenghongling@kylinos.cn
-Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
-	(envelope-from <zenghongling@kylinos.cn>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 234632021; Wed, 13 May 2026 10:14:59 +0800
-From: Hongling Zeng <zenghongling@kylinos.cn>
-To: nbd@nbd.name,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	xiong.huang@mediatek.com,
-	madhurkumar004@gmail.com
-Cc: linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	zhongling0719@126.com,
-	Hongling Zeng <zenghongling@kylinos.cn>,
-	kernel test robot <lkp@intel.com>
-Subject: [PATCH] wifi: mt76: mt7921: fix uninitialized variable warning
-Date: Wed, 13 May 2026 10:14:55 +0800
-Message-Id: <20260513021455.80175-1-zenghongling@kylinos.cn>
-X-Mailer: git-send-email 2.25.1
+	id 1wN3aR-00000001VI5-1g5a;
+	Wed, 13 May 2026 07:00:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Message-ID:Date:MIME-Version:Subject:To:From:
+	Content-Type; bh=8eoo5QvpB4Eb9ga+kJJMqXt8kq4OH6TS43RPJ0eaFgI=;
+	b=RD99yJzu1OO09ZP8mmikLZxFnwdZQWaFTFeVn0Q4qXID1jguibJcDy+kX+1gYW
+	opV5fmUjR3oop3oNQ4+rrB7hBP5ScnplUnQE2q08Qvv/WyzgYcTtSpkrq1rC5dhH
+	MLX7jLYVcaioWBn4K7QvxOoeVYKRF8t770p+INk1exn8Y=
+Received: from [192.168.50.71] (unknown [])
+	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wD35zZ1IQRqoYBUBA--.57222S2;
+	Wed, 13 May 2026 15:00:06 +0800 (CST)
+Message-ID: <581e91fb-2e57-43ed-b79d-19dbf384b955@163.com>
+Date: Wed, 13 May 2026 15:00:04 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 6/8] PCI: aardvark: Add 100 ms delay after link
+ training
+To: =?UTF-8?Q?Pali_Roh=C3=A1r?= <pali@kernel.org>
+Cc: bhelgaas@google.com, lpieralisi@kernel.org, kwilczynski@kernel.org,
+ mani@kernel.org, vigneshr@ti.com, jingoohan1@gmail.com,
+ thomas.petazzoni@bootlin.com, ryder.lee@mediatek.com,
+ jianjun.wang@mediatek.com, claudiu.beznea.uj@bp.renesas.com,
+ mpillai@cadence.com, robh@kernel.org, s-vadapalli@ti.com,
+ linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
+ linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org
+References: <20260506152346.166056-1-18255117159@163.com>
+ <20260506152346.166056-7-18255117159@163.com>
+ <20260512212531.jupoocz7acv22qyg@pali>
+Content-Language: en-US
+From: Hans Zhang <18255117159@163.com>
+In-Reply-To: <20260512212531.jupoocz7acv22qyg@pali>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: _____wD35zZ1IQRqoYBUBA--.57222S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxXw15GF4xZw1kGr1DZryUtrb_yoW5Zryfpa
+	y3GF1SgFZ5tr45u3W7Xa1kuFyYganI9345Jrn7Kw13ZFnxCryUWF1jkrZavFy3Jw4kAF12
+	vw42qFy8ua13ZFDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UEPfLUUUUU=
+X-Originating-IP: [140.206.53.66]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbCwxYBpGoEIXa5zQAA39
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260512_191509_555248_C1D89F41 
-X-CRM114-Status: UNSURE (   9.12  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260513_000056_818597_5F0C7C6F 
+X-CRM114-Status: GOOD (  24.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,40 +82,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Move the initialization of 'dev' before the error path that uses it.
-This fixes the compiler warning:
-  drivers/net/wireless/mediatek/mt76/mt7921/pci.c:347:6: warning:
-  variable 'dev' is used uninitialized whenever 'if' condition is true
 
-Fixes: 0d56655a74ef ("wifi: mt76: mt7921: fix resource leak in probe error path")
-Reported-by: kernel test robot <lkp@intel.com>
-Closes: https://lore.kernel.org/oe-kbuild-all/202605130432.S8Ozipm2-lkp@intel.com/
-Signed-off-by: Hongling Zeng <zenghongling@kylinos.cn>
----
- drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-index 4bb436465a3d..49a37185f056 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -343,13 +343,14 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
- 
- 	pci_set_drvdata(pdev, mdev);
- 
-+	dev = container_of(mdev, struct mt792x_dev, mt76);
-+
- 	regs =  pcim_iomap_region(pdev, 0, pci_name(pdev));
- 	if (IS_ERR(regs)) {
- 		ret = PTR_ERR(regs);
- 		goto err_free_dev;
- 	}
- 
--	dev = container_of(mdev, struct mt792x_dev, mt76);
- 	dev->fw_features = features;
- 	dev->hif_ops = &mt7921_pcie_ops;
- 	dev->irq_map = &irq_map;
--- 
-2.25.1
+On 5/13/26 05:25, Pali Rohár wrote:
+> On Wednesday 06 May 2026 23:23:44 Hans Zhang wrote:
+>> The Aardvark PCIe controller driver waits for the link to come up but
+>> does not implement the mandatory 100 ms delay after link training
+>> completes for speeds greater than 5.0 GT/s (PCIe r6.0 sec 6.6.1).
+>>
+>> The driver already maintains a 'link_gen' field that holds the negotiated
+>> link speed. Use it together with pcie_wait_after_link_train() to insert
+>> the required delay immediately after confirming that the link is up.
+>>
+>> Signed-off-by: Hans Zhang <18255117159@163.com>
+>> ---
+>>   drivers/pci/controller/pci-aardvark.c | 4 +++-
+>>   1 file changed, 3 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/pci/controller/pci-aardvark.c b/drivers/pci/controller/pci-aardvark.c
+>> index e34bea1ff0ac..526351c21c49 100644
+>> --- a/drivers/pci/controller/pci-aardvark.c
+>> +++ b/drivers/pci/controller/pci-aardvark.c
+>> @@ -350,8 +350,10 @@ static int advk_pcie_wait_for_link(struct advk_pcie *pcie)
+>>   
+>>   	/* check if the link is up or not */
+>>   	for (retries = 0; retries < LINK_WAIT_MAX_RETRIES; retries++) {
+>> -		if (advk_pcie_link_up(pcie))
+>> +		if (advk_pcie_link_up(pcie)) {
+>> +			pcie_wait_after_link_train(pcie->link_gen);
+>>   			return 0;
+>> +		}
+>>   
+>>   		usleep_range(LINK_WAIT_USLEEP_MIN, LINK_WAIT_USLEEP_MAX);
+>>   	}
+>> -- 
+>> 2.34.1
+>>
+> 
+> Are you sure that this is correct to do? Have you checked the A3720
+> Functional Specification which describes how to bring PCIe link up?
+> 
+> A3720 PCIe controller is buggy and needs more timing hacks to make it
+> behave. Playing with random sleeps can break its internal logic.
+> I'm not sure if it could be safe without proper testing.
+> 
+> And IIRC A3720 PCIe controller is just PCIe2.0 with 5 GT/s.
+
+
+Hi Pali,
+
+1. This driver does not support A3720.
+
+static const struct of_device_id advk_pcie_of_match_table[] = {
+	{ .compatible = "marvell,armada-3700-pcie", },
+	{},
+};
+MODULE_DEVICE_TABLE(of, advk_pcie_of_match_table);
+
+If you need support for A3720, please submit the corresponding patch so 
+that Bjorn and Mani can review it.
+
+
+2. If A3720 only supports GEN2, you can configure "max-link-speed" to be 
+2 in the DT. This will not affect the functionality of this patch.
+
+3. This patch is a common delay requirement stipulated by the PCIe 
+specification. If it is greater than GEN2, then msleep(100) will be 
+added; otherwise, there will be no such delay.
+
+4. For instance, we often come across the situation where some common 
+APIs are modified, and in many cases, their functionality does not 
+require the actual development board for verification. I believe that 
+many other developers and maintainers have modified different parts of 
+the code. For example, the recent submission:
+
+commit 750277048afe7ce8ebfc0b120de7dfbc745058a7
+Author: Nam Cao <namcao@linutronix.de>
+Date:   Thu Jun 26 16:47:53 2025 +0200
+
+     PCI: aardvark: Switch to msi_create_parent_irq_domain()
+
+     Switch to msi_create_parent_irq_domain() from 
+pci_msi_create_irq_domain()
+     which was using legacy MSI domain setup.
+
+
+And many controller drivers have been modified.
+
+
+Best regards,
+Hans
+
 
 
