@@ -4,65 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A39BCD4F24
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2026 14:31:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0429CD4F24
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2026 14:44:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wGwrTVlpyBxr5qWW8aL6TnSMvsiSJT067Q2+nosA5bY=; b=LsO2QeTFqNaN0rVq4ejCSpxmz6
-	7dL07diq6YA+nsCF/jpLFYGzCp1tzk9kXc0ToTunZAS5t7Fn9o/MX8nGytzQfevS6EU94IC84g1Zs
-	OK/FjoOU5AagVgTVGo0HJTFz0wHAxxC7/IIBv96fBxLWSbSVPrQj9WfS1+ppsMOGWB3CQLjsMUNPW
-	FEmdQCIIMVDYX4rLKpYLT7wTOlzx0z49Zr0fWgmJjzBnSYbghvcaOjxUvOYff8ATVQbdEODIcU6g8
-	6BNoyaZxrxvHNcVZoEmHyFb3LVsuY0A56m5MtWbB45ube8W/kcd+U4rcnaHWb7xolbar7d+9KS2Ua
-	wgksprow==;
+	bh=H9fWAJmT4duqKNhGpNJ3D/Pmzw/4WJS1enftLK5nfnA=; b=lu3oo9YamZETc4eoXlwz5KBluX
+	7pPyvmrBkPCvtnrDI9uY90O5OXYCPQfQI4Kcobd65wzMyGD0e6yUaIR/i8o3g7hO0X0cPn2xaxxgg
+	fOyO7pcNpZ+leSjyKN5FqoQkSsieAUERs9aW0GJqKZy1in4vO7Rz2wYWPn/uqUXeGKcY8+BB1Pg7h
+	urG5fVaKgHnBS9w0XZSggTyfwkjz1wyKZh47ZrMJ+WsSQLe8FC1nYFkVDGvltHPdiSeZCaLwliMt9
+	VSJmJOUStktIkFtF+IJpbo28KTEFbM7KfxnxiltYtsImUXjQjMxtp/tcsVSRVZ8NKnTNXqPcQsR4y
+	PO5fv0Ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNAcr-00000002wOE-0r0M;
-	Wed, 13 May 2026 14:31:53 +0000
-Received: from mail.cjdns.fr ([5.135.140.105])
+	id 1wNApA-00000002xql-39x8;
+	Wed, 13 May 2026 14:44:36 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNAcn-00000002wN7-46VI
+	id 1wNAp5-00000002xoT-42rW
 	for linux-mediatek@lists.infradead.org;
-	Wed, 13 May 2026 14:31:51 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 718B23BAFBE;
-	Wed, 13 May 2026 16:31:36 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1778682702; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=wGwrTVlpyBxr5qWW8aL6TnSMvsiSJT067Q2+nosA5bY=;
-	b=B/XCR+DppU55EwSeXtuREkvRdYJcODV2tA4Bs+pSGoSOsZcxKQlZn49Y9eVK1VjaQBuULO
-	AAC/1kQThRW+65OdfiVAVA8bHancXLltsLEA7UxbqVilt8Y7kxTzFCQ89L+K9kyRD5mhCF
-	OpwGEShdNuRwHXCBnn/9Yo33iDHQvDMnypXTRAtsdLBDRad+aRdbX9/0bRkZgOAv+t3xQW
-	5bGyg5CdU3KYaDUvWkSekOwAwDHzM/CXVIDGSMsEX+9mFEEokHNR9RdZ2eqjKzDnx3vn5u
-	VDPHUsA4wc2z3DIZZBVH85Zkz2jmoMsaLywFmhdOex+0J2g2ThWLzyFBdm/NCA==
-Message-ID: <a4f84ba5-fe28-4674-b91b-33438f5478fb@cjdns.fr>
-Date: Wed, 13 May 2026 16:31:32 +0200
+	Wed, 13 May 2026 14:44:33 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id DFA97444C8
+	for <linux-mediatek@lists.infradead.org>; Wed, 13 May 2026 14:44:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C2C3DC2BCB3
+	for <linux-mediatek@lists.infradead.org>; Wed, 13 May 2026 14:44:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1778683470;
+	bh=AcQajWoyianxBFqe9+pwgEA3+MQbwflajHJBLxqkzsU=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=Ej3HW4OBwPIi6rJmznPSDxDaw7Cb4pzfnyS5VzLoN8nWrOWAoEZQqBnyG6+xEn+D0
+	 7yQ+0yN0qvgc8YDVK5iwmHHmsRarF1KnWXlq5HRNnhf7FVJxsqatR2ZfNZ+bAEASX7
+	 20w9peYQWVBPhZVdOSboBcbVaxQJoNTGnGylj4nMQmItWMJ1zYAhV1GnO1dy83mqoG
+	 oYneIX9I6M1IyEGummRuPudQ4xwc2UdgaUrUuieMxPESU59WuaYuxFNEAQLkLAa21b
+	 zhtZklZgUnYEhUzZaiKi0bKGFtnqx742GrBbwSeN6oxk78OHZxBMrye10FYGKq1u0k
+	 /Dz8Lcjt0vzzA==
+Received: by mail-dl1-f48.google.com with SMTP id a92af1059eb24-12c1a170a50so9396360c88.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 13 May 2026 07:44:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AFNElJ/7BughCZZ8eKGk2iJX8erXf9OZ5NHd8QKy0Qxn6Z+p9xAxHOdHsL2ucxp1do74u+na8R4RuKd8BST8qdGGRg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx+y8++PTlDKH3yg5g+BZqgWylFhjhMNGr2hT2pz0RLSiEBB8kX
+	2I2+Bpejt49iatMHCQfYbMDGt9L0zswPfg64+Axsajwl2RjNIq3f1qMGLVWdsBXdzi2c3nt7BhR
+	vMUyLkMdj7pxhDFBlHocHb7u4OqZrFg==
+X-Received: by 2002:a05:7022:45a5:b0:130:a257:f723 with SMTP id
+ a92af1059eb24-1349a703b38mr2163136c88.2.1778683469857; Wed, 13 May 2026
+ 07:44:29 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird Beta
-Subject: Re: [PATCH v5 2/2] PCI: mediatek: Add support for EcoNet EN7528 SoC
-To: Manivannan Sadhasivam <mani@kernel.org>
-Cc: linux-pci@vger.kernel.org, linux-mips@vger.kernel.org,
- naseefkm@gmail.com, ryder.lee@mediatek.com, helgaas@kernel.org,
- lpieralisi@kernel.org, kwilczynski@kernel.org, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, ansuelsmth@gmail.com,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org
-References: <20260413140339.16238-1-cjd@cjdns.fr>
- <20260413140339.16238-3-cjd@cjdns.fr>
- <duchbakmiuf4ffmhgkoioq3qpxaybcevtcdduwiv2gf56j5ncr@kszd5v54ph3q>
-Content-Language: en-US
-From: Caleb James DeLisle <cjd@cjdns.fr>
-In-Reply-To: <duchbakmiuf4ffmhgkoioq3qpxaybcevtcdduwiv2gf56j5ncr@kszd5v54ph3q>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Last-TLS-Session-Version: TLSv1.3
+References: <20260420064544.266478-1-suryasaimadhu369@gmail.com>
+In-Reply-To: <20260420064544.266478-1-suryasaimadhu369@gmail.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Wed, 13 May 2026 14:44:17 +0000
+X-Gmail-Original-Message-ID: <CAAOTY__-A_LAaDG5QBMVAaWh0QYiNETvF_uhVevGLQr0cfxV6w@mail.gmail.com>
+X-Gm-Features: AVHnY4KoaT4lFur0qX9u_4-uJObxdFb4r8bJVHNWvz9hHmWh3RXQFM5ONm8Jba4
+Message-ID: <CAAOTY__-A_LAaDG5QBMVAaWh0QYiNETvF_uhVevGLQr0cfxV6w@mail.gmail.com>
+Subject: Re: [PATCH v2] drm/mediatek: hdmi: Convert DRM_ERROR() to drm_err()
+To: sai madhu <suryasaimadhu369@gmail.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260513_073150_628800_CF482989 
-X-CRM114-Status: GOOD (  31.66  )
+X-CRM114-CacheID: sfid-20260513_074432_012943_4991DA7C 
+X-CRM114-Status: GOOD (  14.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,242 +83,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi, sai:
 
-On 12/05/2026 13:55, Manivannan Sadhasivam wrote:
-> On Mon, Apr 13, 2026 at 02:03:39PM +0000, Caleb James DeLisle wrote:
->> Add support for the PCIe present on the EcoNet EN7528 (and EN751221) SoCs.
->>
->> These SoCs have a mix of Gen1 and Gen2 capable ports, but the Gen2 ports
->> require re-training after startup.
->>
->> Co-developed-by: Ahmed Naseef <naseefkm@gmail.com>
->> Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
->> Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
->> ---
->>   drivers/pci/controller/Kconfig         |   2 +-
->>   drivers/pci/controller/pcie-mediatek.c | 133 +++++++++++++++++++++++++
->>   2 files changed, 134 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
->> index 686349e09cd3..5808d5e407fd 100644
->> --- a/drivers/pci/controller/Kconfig
->> +++ b/drivers/pci/controller/Kconfig
->> @@ -209,7 +209,7 @@ config PCI_MVEBU
->>   
->>   config PCIE_MEDIATEK
->>   	tristate "MediaTek PCIe controller"
->> -	depends on ARCH_AIROHA || ARCH_MEDIATEK || COMPILE_TEST
->> +	depends on ARCH_AIROHA || ARCH_MEDIATEK || ECONET || COMPILE_TEST
->>   	depends on OF
->>   	depends on PCI_MSI
->>   	select IRQ_MSI_LIB
->> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
->> index 75722524fe74..915a35825ce1 100644
->> --- a/drivers/pci/controller/pcie-mediatek.c
->> +++ b/drivers/pci/controller/pcie-mediatek.c
->> @@ -7,6 +7,7 @@
->>    *	   Honghui Zhang <honghui.zhang@mediatek.com>
->>    */
->>   
->> +#include <asm-generic/errno-base.h>
->>   #include <linux/clk.h>
->>   #include <linux/delay.h>
->>   #include <linux/iopoll.h>
->> @@ -14,6 +15,7 @@
->>   #include <linux/irqchip/chained_irq.h>
->>   #include <linux/irqchip/irq-msi-lib.h>
->>   #include <linux/irqdomain.h>
->> +#include <linux/kconfig.h>
->>   #include <linux/kernel.h>
->>   #include <linux/mfd/syscon.h>
->>   #include <linux/msi.h>
->> @@ -77,6 +79,7 @@
->>   
->>   #define PCIE_CONF_VEND_ID	0x100
->>   #define PCIE_CONF_DEVICE_ID	0x102
->> +#define PCIE_CONF_REV_CLASS	0x104
->>   #define PCIE_CONF_CLASS_ID	0x106
->>   
->>   #define PCIE_INT_MASK		0x420
->> @@ -89,6 +92,11 @@
->>   #define MSI_MASK		BIT(23)
->>   #define MTK_MSI_IRQS_NUM	32
->>   
->> +#define EN7528_HOST_MODE	0x00804201
->> +#define EN7528_LINKUP_REG	0x50
->> +#define EN7528_RC0_LINKUP	BIT(1)
->> +#define EN7528_RC1_LINKUP	BIT(2)
->> +
->>   #define PCIE_AHB_TRANS_BASE0_L	0x438
->>   #define PCIE_AHB_TRANS_BASE0_H	0x43c
->>   #define AHB2PCIE_SIZE(x)	((x) & GENMASK(4, 0))
->> @@ -148,12 +156,15 @@ struct mtk_pcie_port;
->>    * @MTK_PCIE_FIX_DEVICE_ID: host's device ID needed to be fixed
->>    * @MTK_PCIE_NO_MSI: Bridge has no MSI support, and relies on an external block
->>    * @MTK_PCIE_SKIP_RSTB: Skip calling RSTB bits on PCIe probe
->> + * @MTK_PCIE_RETRAIN: Re-train link to bridge after startup because some
->> + *                    Gen2-capable devices start as Gen1.
->>    */
->>   enum mtk_pcie_quirks {
->>   	MTK_PCIE_FIX_CLASS_ID = BIT(0),
->>   	MTK_PCIE_FIX_DEVICE_ID = BIT(1),
->>   	MTK_PCIE_NO_MSI = BIT(2),
->>   	MTK_PCIE_SKIP_RSTB = BIT(3),
->> +	MTK_PCIE_RETRAIN = BIT(4),
->>   };
->>   
->>   /**
->> @@ -753,6 +764,80 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
->>   	return 0;
->>   }
->>   
->> +static int mtk_pcie_startup_port_en7528(struct mtk_pcie_port *port)
->> +{
->> +	struct mtk_pcie *pcie = port->pcie;
->> +	struct pci_host_bridge *host = pci_host_bridge_from_priv(pcie);
->> +	struct resource *mem = NULL;
->> +	struct resource_entry *entry;
->> +	u32 val, link_mask;
->> +	int err;
->> +
->> +	entry = resource_list_first_type(&host->windows, IORESOURCE_MEM);
->> +	if (entry)
->> +		mem = entry->res;
->> +	if (!mem)
->> +		return -EINVAL;
->> +
->> +	if (!pcie->cfg) {
->> +		dev_err(pcie->dev, "EN7528: pciecfg syscon not available\n");
->> +		return -EINVAL;
->> +	}
->> +
->> +	/* Assert all reset signals */
->> +	writel(0, port->base + PCIE_RST_CTRL);
->> +
->> +	/*
->> +	 * Enable PCIe link down reset, if link status changed from link up to
->> +	 * link down, this will reset MAC control registers and configuration
->> +	 * space.
->> +	 */
->> +	writel(PCIE_LINKDOWN_RST_EN, port->base + PCIE_RST_CTRL);
->> +
->> +	msleep(PCIE_T_PVPERL_MS);
->> +
->> +	/* De-assert PHY, PE, PIPE, MAC and configuration reset */
->> +	val = readl(port->base + PCIE_RST_CTRL);
->> +	val |= PCIE_PHY_RSTB | PCIE_PERSTB | PCIE_PIPE_SRSTB |
->> +	       PCIE_MAC_SRSTB | PCIE_CRSTB;
->> +	writel(val, port->base + PCIE_RST_CTRL);
->> +
->> +	writel(PCIE_CLASS_CODE | PCIE_REVISION_ID,
->> +	       port->base + PCIE_CONF_REV_CLASS);
->> +	writel(EN7528_HOST_MODE, port->base);
->> +
->> +	link_mask = (port->slot == 0) ? EN7528_RC0_LINKUP : EN7528_RC1_LINKUP;
->> +
->> +	/* 100ms timeout value should be enough for Gen1/2 training */
->> +	err = regmap_read_poll_timeout(pcie->cfg, EN7528_LINKUP_REG, val,
->> +				       !!(val & link_mask), 20,
->> +				       PCI_PM_D3COLD_WAIT * USEC_PER_MSEC);
->> +	if (err) {
->> +		dev_err(pcie->dev, "EN7528: port%d link timeout\n", port->slot);
->> +		return -ETIMEDOUT;
->> +	}
->> +
->> +	/* Activate INTx interrupts */
->> +	val = readl(port->base + PCIE_INT_MASK);
->> +	val &= ~INTX_MASK;
->> +	writel(val, port->base + PCIE_INT_MASK);
->> +
->> +	if (IS_ENABLED(CONFIG_PCI_MSI))
->> +		mtk_pcie_enable_msi(port);
->> +
->> +	/* Set AHB to PCIe translation windows */
->> +	val = lower_32_bits(mem->start) |
->> +	      AHB2PCIE_SIZE(fls(resource_size(mem)));
->> +	writel(val, port->base + PCIE_AHB_TRANS_BASE0_L);
->> +
->> +	val = upper_32_bits(mem->start);
->> +	writel(val, port->base + PCIE_AHB_TRANS_BASE0_H);
->> +
->> +	writel(WIN_ENABLE, port->base + PCIE_AXI_WINDOW0);
->> +
->> +	return 0;
->> +}
->> +
->>   static void __iomem *mtk_pcie_map_bus(struct pci_bus *bus,
->>   				      unsigned int devfn, int where)
->>   {
->> @@ -1149,6 +1234,46 @@ static int mtk_pcie_probe(struct platform_device *pdev)
->>   	if (err)
->>   		goto put_resources;
->>   
->> +	/* EN7528 PCIe initially comes up as Gen1 even if Gen2 is supported.
->> +	 * The cannonical way to achieve Gen2 is to re-train the link
->> +	 * immediately after setup. However, to save a lot of duplicated code
->> +	 * we use pcie_retrain_link() which is usable once we have the pci_dev
->> +	 * struct for the bridge, i.e. after pci_host_probe(). */
-> Use below style:
+sai madhu <suryasaimadhu369@gmail.com> =E6=96=BC 2026=E5=B9=B44=E6=9C=8820=
+=E6=97=A5=E9=80=B1=E4=B8=80 =E4=B8=8A=E5=8D=886:45=E5=AF=AB=E9=81=93=EF=BC=
+=9A
 >
-> 	/*
-> 	 * ...
-> 	 */
-
-
-Right, sorry, thanks.
-
-
->> +	if (pcie->soc->quirks & MTK_PCIE_RETRAIN) {
->> +		int slot = of_get_pci_domain_nr(dev->of_node);
-> The returned value is not the slot number, but domain number. Both are different
-> numbering schemes.
+> The DRM_ERROR() macro is deprecated in favor of drm_err() which
+> provides device-specific logging.
 >
->> +		struct pci_dev *rc = NULL;
->> +		int ret = -ENOENT;
->> +
->> +		if (slot >= 0)
->> +			rc = pci_get_slot(host->bus, PCI_DEVFN(slot, 0));
-> This looks wrong. If your intention is to find the Root Port of the hierarchy,
-> then you should do:
+> Replace DRM_ERROR() with drm_err() in the Mediatek HDMI bridge
+> driver and pass the drm_device pointer via bridge->dev.
 >
-> 		pci_get_slot(host->bus, PCI_DEVFN(0, 0));
+> No functional change intended.
 
+Applied to mediatek-drm-next [1], thanks.
 
-Thank you for your review. What's happening here is the hardware exposes 
-two sets of registers for the two devices, but it expects that they 
-might all be controlled by one driver instance - so they hard-wired the 
-second root hub to slot 1. The Mediatek driver here wants to be 
-instantiated twice, so we end up with something like this:
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
+log/?h=3Dmediatek-drm-next
 
-
-0000:00:00.0 PCI bridge: MEDIATEK Corp. Device 0810 (rev 03)
-0000:01:00.0 Network controller: MEDIATEK Corp. MT7662E 802.11ac PCI 
-Express Wireless Network Adapter
-0001:00:01.0 PCI bridge: MEDIATEK Corp. Device 0811 (rev 02)
-0001:01:00.0 Network controller: MEDIATEK Corp. MT7603E 802.11bgn PCI 
-Express Wireless Network Adapter
-
-So when it's domain 1, it's also slot 1 (unless the DT is written 
-backwards).
-
-
-The original code from Ahmed Naseef used a loop with pci_get_class() to 
-get all of the bridges that were on the right bus, but it was pointed 
-out in an earlier review that this would also re-train any hypothetical 
-bridge downstream of the root. So the current code specifically 
-re-trains the right bridge.
-
-I can re-send with this explanation wrapped up in the comment, or I 
-guess I could write a loop that tries slot 0 and 1 to find the bridge, 
-but I feel like the loop is a bit hair-splitting so I think my 
-preference would be to just explain it better.
-
-WDYT?
-
-Caleb
-
+Regards,
+Chun-Kuang.
 
 >
-> - Mani
+> Signed-off-by: sai madhu <suryasaimadhu369@gmail.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_hdmi.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediat=
+ek/mtk_hdmi.c
+> index 1ea259854780..4ddcdbf7bc8c 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> @@ -981,8 +981,8 @@ static int mtk_hdmi_bridge_attach(struct drm_bridge *=
+bridge,
+>         int ret;
+>
+>         if (!(flags & DRM_BRIDGE_ATTACH_NO_CONNECTOR)) {
+> -               DRM_ERROR("%s: The flag DRM_BRIDGE_ATTACH_NO_CONNECTOR mu=
+st be supplied\n",
+> -                         __func__);
+> +               drm_err(bridge->dev,
+> +                       "DRM_BRIDGE_ATTACH_NO_CONNECTOR must be supplied\=
+n");
+>                 return -EINVAL;
+>         }
+>
+> --
+> 2.34.1
 >
 
