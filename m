@@ -4,72 +4,150 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B79C6CD4F21
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2026 18:54:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D07ADCD4F21
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2026 19:01:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6yOdBMJX3qkbxuevq7cYEIuXbZzxXoNaeAhX5OITx9c=; b=4QtSfgZjIqwzIlkYtC4n1AI4E8
-	SgNxmt8oDoKg5NLWXS0uCxjHSih1eFAMb6vhnZTXT9SGet5x34NwHRv26HwkAtdy1f/6ijTmtou3L
-	D2u7wiTUD3jjXPk20l9tG/noAQ0nOaJJ7w6/PzON1n4r2j2dFFlKmVAp8kyy+W3doS4KpeTbUA/Ay
-	RxtfE49957xkKTPrX8yMpWMFDkKriPothEx8igPVMoMncHJYIyb9XZkOVu3zAU+Wwz0ZL1bjxEu73
-	kxEkM3mRZusptMLXHEUiv2q93g0LVNe4aj99NfUnzZjd3ccbilHMnYZw+Wc84A5hEGvgTeSpCcEgI
-	s52INi6g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=C//L6UiyFzic+/e0l0xG9LH55wDOjx8AylJq1iUxE8c=; b=Ww2yCXfnL7xtIKRko+8fS8h5Ta
+	DZeWEhVEJ1Fy3Izr1yZ55QfGaeHhD/YeGo8oSLoGcJY0Rk1n5ZpVBpF9HQV8ZO4RSlLt2yhcqCG09
+	FtbOWMOuBpNvv4u221Udo89y9wp/NHieW8kVnv3jnIF9OatKIHLjUQTjved8UDrvs1rcE4o623zZV
+	mZ7bo/77+Edp+NWcR2z1F7gS/Z2s1ap4I1cxMD8ibiTtijt91Fia3vYgsXOSSjeGmhi48QChG9snq
+	BtqKpbz8EOaXgQS7Ndm+mtMZXvDQhjyd7UINTaTaFkY8DoX0znDPzop2QFINqjhtO/JqeV/crFO66
+	8ZIJ9GwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNEjO-00000003Vbc-2f6Y;
-	Wed, 13 May 2026 18:54:54 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wNEpS-00000003WPB-1xGa;
+	Wed, 13 May 2026 19:01:10 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNEjN-00000003Vb6-0JKs;
-	Wed, 13 May 2026 18:54:53 +0000
+	id 1wNEpJ-00000003WOG-3Zjd;
+	Wed, 13 May 2026 19:01:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 202E360126;
-	Wed, 13 May 2026 18:54:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 787BFC19425;
-	Wed, 13 May 2026 18:54:51 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 5E20B4357C;
+	Wed, 13 May 2026 19:01:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9CE55C19425;
+	Wed, 13 May 2026 19:00:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778698491;
-	bh=kaP87DtivSczZqw+sjMW+4NPzsWyqMYNWQHZ4e+4av0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ALrVBfJOiwW7RyTOVwB8Rf1h2H0oUSpuHSDRe78/sJ+yTDDl/258qnCOPe4zQQigJ
-	 lDHOENs8VTopvtUbNfTsb90WFhWSnYZa3LmFkYx78UF7vvlveCMikMvMfQriVEirZl
-	 QYxo0bZIYHyMFp1DgzdLxBb1qXLSyUJVVthymizfxMe/s/j7C6+Src4BkUbwcmzwkm
-	 whLcjM2JGeJaND5V3MBSpU1iMk4h9xwQZRsD/aOmcPGFjN5Gc4lrg86W6QetVKDAMd
-	 hUAxdiVVhsPfaS4mrdgEPAgckVARyI5qj+pU4orYbSg97SnCrKi3+e6GNgLygBzlEx
-	 /vARqIqTyoDkw==
-Received: by pali.im (Postfix)
-	id 8BF08BA0; Wed, 13 May 2026 20:54:42 +0200 (CEST)
-Date: Wed, 13 May 2026 20:54:42 +0200
-From: Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>
-To: Hans Zhang <18255117159@163.com>
-Cc: bhelgaas@google.com, lpieralisi@kernel.org, kwilczynski@kernel.org,
-	mani@kernel.org, vigneshr@ti.com, jingoohan1@gmail.com,
-	thomas.petazzoni@bootlin.com, ryder.lee@mediatek.com,
-	jianjun.wang@mediatek.com, claudiu.beznea.uj@bp.renesas.com,
-	mpillai@cadence.com, robh@kernel.org, s-vadapalli@ti.com,
-	linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org, linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 6/8] PCI: aardvark: Add 100 ms delay after link
- training
-Message-ID: <20260513185442.mw3md5te7dhojyd7@pali>
-References: <20260506152346.166056-1-18255117159@163.com>
- <20260506152346.166056-7-18255117159@163.com>
- <20260512212531.jupoocz7acv22qyg@pali>
- <581e91fb-2e57-43ed-b79d-19dbf384b955@163.com>
- <20260513072008.vol4htgbzquly2rb@pali>
- <15532890-ce22-4b20-96d9-e7f7c47050d2@163.com>
+	s=k20201202; t=1778698860;
+	bh=XOehGBgidKfU6vI12ZqEdcnFg/iDrDomxlDH4nK7ilk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=kZMt9uV+ChB2jbCqvHzbWwFlzmFPz+FEDmee3x4GjrHdXgHnIKHZzpaRkg8EF4rhl
+	 P0COar+Nkok+/eL159J+iA4VHWUKlu2H2DU64e4Inz9ugtyl7FDJ3YBPGu2m0vALXu
+	 F6Du75vef06EEFZBbLjXJEMKNL2m5dPba2owbtsHbewWaSkY/YZNZ5FKpQ5M/SdNqb
+	 KdGbZi2RWk0e4KO0EHqI2/JIOGJ8gdejK3WE2ziVDVza0P9pK2IUfx1nGMEk/AfJmj
+	 1k1AvBJcp7TbnxoG2GsVOvExTQXZ7Do/qzwtlEMzO1v3s0S98ni4NqUVzblFzoBLmz
+	 oed43+SOb/PJw==
+Message-ID: <65f6da30-eb20-4020-b13a-ac7d4c823dfc@kernel.org>
+Date: Wed, 13 May 2026 21:00:44 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 2/2] ASoC: Use named initializers for arrays of
+ i2c_device_data
+To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig_=28The_Capable_Hub=29?=
+ <u.kleine-koenig@baylibre.com>, Liam Girdwood <lgirdwood@gmail.com>,
+ Mark Brown <broonie@kernel.org>
+Cc: David Rhodes <david.rhodes@cirrus.com>,
+ Richard Fitzgerald <rf@opensource.cirrus.com>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
+ Baojun Xu <baojun.xu@ti.com>, Lars-Peter Clausen <lars@metafoo.de>,
+ =?UTF-8?Q?Nuno_S=C3=A1?= <nuno.sa@analog.com>,
+ =?UTF-8?Q?Martin_Povi=C5=A1er?= <povik+lin@cutebit.org>,
+ Support Opensource <support.opensource@diasemi.com>,
+ Nick Li <nick.li@foursemi.com>, M R Swami Reddy <mr.swami.reddy@ti.com>,
+ Vishwas A Deshpande <vishwas.a.deshpande@ti.com>,
+ Peter Rosin <peda@axentia.se>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Oder Chiou <oder_chiou@realtek.com>, Fabio Estevam <festevam@gmail.com>,
+ Kiseok Jo <kiseok.jo@irondevice.com>, Kevin Cernekee
+ <cernekee@chromium.org>, Steven Eckhoff
+ <steven.eckhoff.opensource@gmail.com>,
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+ Charles Keepax <ckeepax@opensource.cirrus.com>,
+ Thorsten Blum <thorsten.blum@linux.dev>,
+ Chris Morgan <macromorgan@hotmail.com>,
+ Dan Carpenter <dan.carpenter@linaro.org>,
+ Marco Crivellari <marco.crivellari@suse.com>,
+ Weidong Wang <wangweidong.a@awinic.com>, Aaron Kling
+ <webgeek1234@gmail.com>, Teguh Sobirin <teguh@sobir.in>,
+ Luca Weiss <luca.weiss@fairphone.com>,
+ Bharadwaj Raju <bharadwaj.raju@machinesoul.in>,
+ Hsieh Hung-En <hungen3108@gmail.com>, Binbin Zhou <zhoubinbin@loongson.cn>,
+ Shimrra Shai <shimrrashai@gmail.com>, Zhang Yi <zhangyi@everest-semi.com>,
+ Srinivas Kandagatla <srinivas.kandagatla@oss.qualcomm.com>,
+ Qasim Ijaz <qasdev00@gmail.com>, Sharique Mohammad <sharq0406@gmail.com>,
+ Chen Ni <nichen@iscas.ac.cn>, Neo Chang <YLCHANG2@nuvoton.com>,
+ Cezary Rojewski <cezary.rojewski@intel.com>,
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+ Kees Cook <kees@kernel.org>, Qianfeng Rong <rongqianfeng@vivo.com>,
+ Tim Bird <tim.bird@sony.com>,
+ Bram Vlerick <bram.vlerick@openpixelsystems.org>,
+ Peter Korsgaard <peter@korsgaard.com>, Linus Walleij <linusw@kernel.org>,
+ Wenyuan Li <2063309626@qq.com>, Bartosz Golaszewski <brgl@kernel.org>,
+ Shengjiu Wang <shengjiu.wang@nxp.com>,
+ Sebastian Krzyszkowiak <sebastian.krzyszkowiak@puri.sm>,
+ Xichao Zhao <zhao.xichao@vivo.com>, linux-sound@vger.kernel.org,
+ patches@opensource.cirrus.com, linux-kernel@vger.kernel.org,
+ asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Markus Schneider-Pargmann <msp@baylibre.com>
+References: <cover.1778692164.git.u.kleine-koenig@baylibre.com>
+ <ae2ff4898eb340bd8bcafb7b75443eb4a0ce3e76.1778692164.git.u.kleine-koenig@baylibre.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <ae2ff4898eb340bd8bcafb7b75443eb4a0ce3e76.1778692164.git.u.kleine-koenig@baylibre.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <15532890-ce22-4b20-96d9-e7f7c47050d2@163.com>
-User-Agent: NeoMutt/20180716
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260513_120101_943350_F92F2778 
+X-CRM114-Status: GOOD (  10.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,223 +162,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wednesday 13 May 2026 15:34:46 Hans Zhang wrote:
-> On 5/13/26 15:20, Pali Rohár wrote:
-> > On Wednesday 13 May 2026 15:00:04 Hans Zhang wrote:
-> > > 
-> > > 
-> > > On 5/13/26 05:25, Pali Rohár wrote:
-> > > > On Wednesday 06 May 2026 23:23:44 Hans Zhang wrote:
-> > > > > The Aardvark PCIe controller driver waits for the link to come up but
-> > > > > does not implement the mandatory 100 ms delay after link training
-> > > > > completes for speeds greater than 5.0 GT/s (PCIe r6.0 sec 6.6.1).
-> > > > > 
-> > > > > The driver already maintains a 'link_gen' field that holds the negotiated
-> > > > > link speed. Use it together with pcie_wait_after_link_train() to insert
-> > > > > the required delay immediately after confirming that the link is up.
-> > > > > 
-> > > > > Signed-off-by: Hans Zhang <18255117159@163.com>
-> > > > > ---
-> > > > >    drivers/pci/controller/pci-aardvark.c | 4 +++-
-> > > > >    1 file changed, 3 insertions(+), 1 deletion(-)
-> > > > > 
-> > > > > diff --git a/drivers/pci/controller/pci-aardvark.c b/drivers/pci/controller/pci-aardvark.c
-> > > > > index e34bea1ff0ac..526351c21c49 100644
-> > > > > --- a/drivers/pci/controller/pci-aardvark.c
-> > > > > +++ b/drivers/pci/controller/pci-aardvark.c
-> > > > > @@ -350,8 +350,10 @@ static int advk_pcie_wait_for_link(struct advk_pcie *pcie)
-> > > > >    	/* check if the link is up or not */
-> > > > >    	for (retries = 0; retries < LINK_WAIT_MAX_RETRIES; retries++) {
-> > > > > -		if (advk_pcie_link_up(pcie))
-> > > > > +		if (advk_pcie_link_up(pcie)) {
-> > > > > +			pcie_wait_after_link_train(pcie->link_gen);
-> > > > >    			return 0;
-> > > > > +		}
-> > > > >    		usleep_range(LINK_WAIT_USLEEP_MIN, LINK_WAIT_USLEEP_MAX);
-> > > > >    	}
-> > > > > -- 
-> > > > > 2.34.1
-> > > > > 
-> > > > 
-> > > > Are you sure that this is correct to do? Have you checked the A3720
-> > > > Functional Specification which describes how to bring PCIe link up?
-> > > > 
-> > > > A3720 PCIe controller is buggy and needs more timing hacks to make it
-> > > > behave. Playing with random sleeps can break its internal logic.
-> > > > I'm not sure if it could be safe without proper testing.
-> > > > 
-> > > > And IIRC A3720 PCIe controller is just PCIe2.0 with 5 GT/s.
-> > > 
-> > > 
-> > > Hi Pali,
-> > > 
-> > > 1. This driver does not support A3720.
-> > > 
-> > > static const struct of_device_id advk_pcie_of_match_table[] = {
-> > > 	{ .compatible = "marvell,armada-3700-pcie", },
-> > > 	{},
-> > > };
-> > > MODULE_DEVICE_TABLE(of, advk_pcie_of_match_table);
-> > > 
-> > > If you need support for A3720, please submit the corresponding patch so that
-> > > Bjorn and Mani can review it.
-> > 
-> > 3700 (or 37xx) is family and covers both a3710 and a3720. In most cases is the
-> > a3720 dominant and hence identifiers 3700 and 3720 are begin mixed.
-> > 
-> > > 
-> > > 2. If A3720 only supports GEN2, you can configure "max-link-speed" to be 2
-> > > in the DT. This will not affect the functionality of this patch.
-> > 
-> > Whole A37xx supports only GEN2. And in DT files for 37xx should be
-> > already there max-link-speed.
-> > 
-> > Seems that in advk_pcie_of_match_table there is no GEN3 device
-> > specified.
-> > 
-> 
-> Hi Pali,
-> 
-> However, I saw many GEN3 assignments and conditions in the code.
-> 
-> ret = of_pci_get_max_link_speed(dev->of_node);
-> if (ret <= 0 || ret > 3)
-> 	pcie->link_gen = 3;
-> else
-> 	pcie->link_gen = ret;
-> 
-> 
-> static void advk_pcie_train_link(struct advk_pcie *pcie)
-> {
-> 	struct device *dev = &pcie->pdev->dev;
-> 	u32 reg;
-> 	int ret;
-> 
-> 	/*
-> 	 * Setup PCIe rev / gen compliance based on device tree property
-> 	 * 'max-link-speed' which also forces maximal link speed.
-> 	 */
-> 	reg = advk_readl(pcie, PCIE_CORE_CTRL0_REG);
-> 	reg &= ~PCIE_GEN_SEL_MSK;
-> 	if (pcie->link_gen == 3)
-> 		reg |= SPEED_GEN_3;
-> 	else if (pcie->link_gen == 2)
-> 		reg |= SPEED_GEN_2;
-> 	else
-> 		reg |= SPEED_GEN_1;
-> 	advk_writel(pcie, reg, PCIE_CORE_CTRL0_REG);
-> 
-> 	/*
-> 	 * Set maximal link speed value also into PCIe Link Control 2 register.
-> 	 * Armada 3700 Functional Specification says that default value is based
-> 	 * on SPEED_GEN but tests showed that default value is always 8.0 GT/s.
-> 	 */
-> 	reg = advk_readl(pcie, PCIE_CORE_PCIEXP_CAP + PCI_EXP_LNKCTL2);
-> 	reg &= ~PCI_EXP_LNKCTL2_TLS;
-> 	if (pcie->link_gen == 3)
-> 		reg |= PCI_EXP_LNKCTL2_TLS_8_0GT;
-> 	else if (pcie->link_gen == 2)
-> 		reg |= PCI_EXP_LNKCTL2_TLS_5_0GT;
-> 	else
-> 		reg |= PCI_EXP_LNKCTL2_TLS_2_5GT;
-> 	advk_writel(pcie, reg, PCIE_CORE_PCIEXP_CAP + PCI_EXP_LNKCTL2);
-> 
-> ....
-> 
-> 
-> If you are certain about the relevant information. Is it understandable that
-> we need to delete the code related to GEN3?
+On 13/05/2026 19:23, Uwe Kleine-König (The Capable Hub) wrote:
+>  MODULE_DEVICE_TABLE(i2c, adau1372_i2c_ids);
+> diff --git a/sound/soc/codecs/adau1373.c b/sound/soc/codecs/adau1373.c
+> index 16b9b2658341..5dd961b233ce 100644
+> --- a/sound/soc/codecs/adau1373.c
+> +++ b/sound/soc/codecs/adau1373.c
+> @@ -1599,7 +1599,7 @@ static int adau1373_i2c_probe(struct i2c_client *client)
+>  }
+>  
+>  static const struct i2c_device_id adau1373_i2c_id[] = {
+> -	{ "adau1373" },
+> +	{ .name = "adau1373" },
+>  	{ }
+>  };
 
-Ok. So some explanation. pci-aardvark.c is implementing driver for PCIe
-controller with codename aardvark. I have no idea from what this
-codename comes and what is represents. What we know that the driver was
-written for A37xx SoC platform according to A37xx functional specification.
-As it is common in SoC world, vendors just buy some IP and integrate it
-into SoC. In this case Marvell bought this PCIe controller IP and
-integrated it into the A37xx. In past I tried to investigate what it
-could be and IIRC my assumption was that it was PCIe IP from Denali.
-Denali was acquired by Cadence, and when I compared Cadence PCIe
-controller registers and PCIe controller registers in A37xx functional
-specification there were large overlap. For me it looked like new
-Cadence PCIe controller is an evolution (or new version) of what is in
-A37xx. So this was some confirmation of my theory. Linux kernel has
-separate driver for PCIe controller from Cadence and for refactoring
-there were ideas to merge these two drivers... But there were more
-important things, fix issues related to A37xx PCIe, lot of changes
-which address these issues were sent to the list but they were not
-taken. I do not think that it makes sense to do refactoring or doing any
-other changes before addressing any existing issues with these
-drivers (like PCIe card is not working correctly).
+This is inconsistent with most (or all?) of other xx_device_id table
+usages and, IIUC, is not even necessary to achieve your goal (which
+itself is good).
 
-There are reported more HW erratas for this PCIe controller which needs
-to be addressed in the software (meaning in Linux kernel) to make PCIe
-card working properly. And there are more design HW decision which needs
-does not conform to the PCIe specification and those deviations needs to
-be "fixed" or "adjusted" in software (meaning in pci-aardvark.c driver)
-to make PCI/PCIe compatible drivers to work correctly.
-
-Now about GEN3. From register allocation it looks like that PCIe IP
-supports GEN3. A37xx does not support it (or at least officially). This
-does not mean that there cannot be some SoC with this "aardvark" PCIe IP
-that is GEN3 capable. Just we see that such SoC is not supported by Linux.
-Also as the comment in above code says, by default the speed is reported
-as 8.0 GT/s, so changing it to 5.0 GT/s or 2.5 GT/s is needed as so code
-some parts of GEN3 code in the driver is needed.
-
-Does it makes sense to remove it? Does it makes sense to spend time on
-such thing which does not address any existing issue? For me not.
-Because it does not fix any _real_ issue with existing PCIe cards. And
-for refactoring it is better to merge drivers as explained above and
-IIRC cadence driver has HW on which is GEN3 used.
-
-Now about your change. If you are sure that pcie_wait_after_link_train()
-function is noop for pcie->link_gen == 2 || pcie->link_gen == 1 then go
-ahead, I have no objects. I have not looked deeply at the change. I just
-spotted some change which is touching timing critical code path which
-was problematic in the past and broke many wifi cards. So I'm really
-careful to prevent breaking Linux support again.
-
-As maintainers decided to not take any new changes from me for this
-driver, I have no motivation to prepare any new changes. I will rather
-spend my free time on something which will make sense and not be wasting
-of my free time.
-
-> 
-> Best regards,
-> Hans
-> 
-> 
-> > > 3. This patch is a common delay requirement stipulated by the PCIe
-> > > specification. If it is greater than GEN2, then msleep(100) will be added;
-> > > otherwise, there will be no such delay.
-> > > 
-> > > 4. For instance, we often come across the situation where some common APIs
-> > > are modified, and in many cases, their functionality does not require the
-> > > actual development board for verification. I believe that many other
-> > > developers and maintainers have modified different parts of the code. For
-> > > example, the recent submission:
-> > 
-> > Switching one API to another is one thing. But changing code which looks
-> > to be critical, specially when it is known that hw has bugs, can cause
-> > breaking of existing boards.
-> > 
-> > > commit 750277048afe7ce8ebfc0b120de7dfbc745058a7
-> > > Author: Nam Cao <namcao@linutronix.de>
-> > > Date:   Thu Jun 26 16:47:53 2025 +0200
-> > > 
-> > >      PCI: aardvark: Switch to msi_create_parent_irq_domain()
-> > > 
-> > >      Switch to msi_create_parent_irq_domain() from
-> > > pci_msi_create_irq_domain()
-> > >      which was using legacy MSI domain setup.
-> > > 
-> > > 
-> > > And many controller drivers have been modified.
-> > > 
-> > > 
-> > > Best regards,
-> > > Hans
-> > > 
-> > > 
-> 
+Best regards,
+Krzysztof
 
