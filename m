@@ -4,144 +4,188 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 537E8CD4F24
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2026 12:26:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CC5DCD4851
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2026 13:26:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aQlZ/OjZycl8mO0qhkBjjI22KpQXTTVRLDnf5qieSXI=; b=nTMoAe3zWvNYp8znkbmrFEtYWt
-	EJ/cxgrxbb4RAjoVeRQq+32x2/HNNmCKu1NUL9BBikhJFgUTdQb1Dfum4YHNPjcZ40f0m7k9jl/Qc
-	Qeo2LWgLl9Gg2oD5VqiJ2txVVS3GjQw/JMYBwqILZNwxbzdpnOSqD7iu5n4hUNX7I8b0H7m4ksYtx
-	fFg2A0EEIt/nA+gctKkPQGFbGq9040KUHL37BvM+hnOFYoH1FiAF+Qf/jecVTlWOVox+tK4UQKVb6
-	GjfkDhtX8LK7OBE/R5nFQZShWR88JL0fBku5757PSuzwTOOrZtKjzQhS//znD8omhYg5s/WCL97D9
-	gmVokqaw==;
+	bh=1A2JIuivfxTHNE33J+4ZfrSnHuAPEzqRV86Vt32AWoc=; b=Hxjt2SbhqgWUxuhP6JLbLHbUxJ
+	b6oAU2Ivj4eFw8nI23EUL46H7GaCGYEtTXsNxW2dMWz8iLyxpP70C8WzZsiviFKAdCR3aQRTK3AQk
+	w/g2BAtRFSlbYaIRO/my+4FHHxmIAskKG13fJtTTNm4mwZD7C+W6gc9y3dYrXBo1r+KYm4cBgP1w+
+	kZbds/eQvMCOuTUtfUQBdk7NFaFQr6LH+rrIKP8/uEe+VgRlBQIrNBiuSGxZQETOe3ygEQY997uZZ
+	wpdBf8xkbiAd7LcuBu9W+vacp908cBPppRJxyPZOKAdpMSCaS7MSF/cKV7kUdGiT90GnUdGN5usi3
+	VyjJ8lOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wN8fK-00000002TqX-2hyk;
-	Wed, 13 May 2026 12:26:18 +0000
-Received: from mail-swedencentralazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c202::7] helo=GVXPR05CU001.outbound.protection.outlook.com)
+	id 1wN9bQ-00000002kHR-2Zs7;
+	Wed, 13 May 2026 13:26:20 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wN8fH-00000002TpZ-2zs3;
-	Wed, 13 May 2026 12:26:16 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=aqQK/zI8FTzyAbTZJcmCyTrHqZitcQxRawYa4nmUTL7Ruq7vcmoTSMHp2YjvsmJoxPizkdejtDn/6c0UgQuUn3JmO+NjlyRw+3B9WPJAVhW7oNEk2/HUNj+xC3roV9FUh6bw3UIWS0+hsIa+EcJkhHlJKHVwaTmLHrXXVEIb1Xsz/mhuAym0wWeMhAvJakvGeXzErYR6YmiSP1y56PXFnVKjgYb2C5sbFyynN6uuRIjcfnDNirdBiD75XmXKf4LWlFnBrXc2bV6tF9bBrKG5aiEnJVKs5lOKTdqAnLnjpboxI9jWbfGWk5yg3R7HsmCBrAp8iYs50LpdU1MH5kxaDg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=aQlZ/OjZycl8mO0qhkBjjI22KpQXTTVRLDnf5qieSXI=;
- b=kgVjtJaXmOvVkgvhpZ5hMPPAHPDrTmg+TJDgFYOx+sNLQ6HggyoY3wWSQuKDlfkUti2kP216W3S6FTDr5+o0rp0jWY6CVzBc/FT0TyM05GDnihnB4wmqMa2jO9g8JhrZ+9gs00oquSYRteWFHKiVh6QivOPlvDqJdeLOgb4LWvvOHV5c75BKZi3p3JXbut2uW6zUJMweITBn/aTJb7y8+ZofbVX/qR9ghWfmH6eyszhigyLScb46G375J9GsZyb1KPkXHEWYYGBhGx7FIiaDrRc994E0Foe/qIKogeGHc5uhWJnwBlD2MQLWO36grLtZ9n95yE2zstqOgebcNWJwGw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=genexis.eu;
- dkim=pass header.d=genexis.eu; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=genexis.eu;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=aQlZ/OjZycl8mO0qhkBjjI22KpQXTTVRLDnf5qieSXI=;
- b=uxQhabWoxjKwPJhsunr/5GaUYSF0QuaQ2SpuprNymZN8SHq+qRV5B7zWS4IqJK5El7OML1AQizlVkKmesc8T4CLdBMT1c5FM6S7R1WeWwD+p/Om8b9w68jQChvn1T0xFO/418aG7UT9LjI1bNHwHIEvFfemb5rHJt+I6ishuNcz/pu3LhrLmMd+WX/0Vxpde+KE3Q87oheT+yWt1vQTcC5Q5LDvPHjSHclnFs6adjs3wW6ChbGge3eearStuDFtz4KIO8hwNMCiVsUXLBb+IF0LHySxndIGIDnb+VIXtsz/JGrdt6m6PE9PDZlkHOsnqrDO3ltc3IynTpFmLvxBLmw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=genexis.eu;
-Received: from DB9PR08MB6697.eurprd08.prod.outlook.com (2603:10a6:10:2ad::14)
- by AM9PR08MB5906.eurprd08.prod.outlook.com (2603:10a6:20b:285::22) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9913.11; Wed, 13 May
- 2026 12:26:09 +0000
-Received: from DB9PR08MB6697.eurprd08.prod.outlook.com
- ([fe80::bdec:3e95:6614:441f]) by DB9PR08MB6697.eurprd08.prod.outlook.com
- ([fe80::bdec:3e95:6614:441f%6]) with mapi id 15.20.9891.021; Wed, 13 May 2026
- 12:26:09 +0000
-Message-ID: <383d1b22-7749-4278-a856-b8e29bc06e73@genexis.eu>
-Date: Wed, 13 May 2026 14:26:07 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v6 11/12] net: airoha: Support multiple LAN/WAN
- interfaces for hw MAC address configuration
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Christian Marangi
- <ansuelsmth@gmail.com>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, Madhur Agrawal <madhur.agrawal@airoha.com>
-References: <20260511-airoha-eth-multi-serdes-v6-0-c899462c4f75@kernel.org>
- <20260511-airoha-eth-multi-serdes-v6-11-c899462c4f75@kernel.org>
- <f4a11830-8a3f-4cc3-ab82-e6f02ca34ae8@genexis.eu>
- <agOUgVn24Ls5jiHq@lore-desk>
-Content-Language: en-US
-From: Benjamin Larsson <benjamin.larsson@genexis.eu>
-In-Reply-To: <agOUgVn24Ls5jiHq@lore-desk>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: GV3PEPF0001DC2F.SWEP280.PROD.OUTLOOK.COM
- (2603:10a6:158:400::116) To DB9PR08MB6697.eurprd08.prod.outlook.com
- (2603:10a6:10:2ad::14)
+	id 1wN9bN-00000002kEj-2Gq9
+	for linux-mediatek@lists.infradead.org;
+	Wed, 13 May 2026 13:26:19 +0000
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 64D8woaP4159611
+	for <linux-mediatek@lists.infradead.org>; Wed, 13 May 2026 13:26:17 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to; s=qcppdkim1; bh=1A2JIuivfxTHNE33J+4ZfrSn
+	HuAPEzqRV86Vt32AWoc=; b=k2+sVBYmVZ6IQNmSNTSEz1M1qd4wswCJFFvnyNxc
+	kR7lMnI/qoifc5tBfwJtdRKCTTiGgdsMz53yoebwClcfnY4u2z7KDVV8N0s5w8pM
+	W8cKzo6Pyw49XSwLNl/sGtES8RtxR5OCVPg+6l6DrndShstRX+wLtSHhICzhmews
+	uiyfDo5q4si49V20xzR96tc/NOXPeH4eyVCo+zdiJIPFh4emrffgdjOMqnK6ZoGV
+	oJ9ZRRaP4uFdbrNL+30g4uuGP9zSrK3seLT8SuPK1egfaPDPK2XirOkRWhQ/qoyn
+	8L7rD/LIjoc0YeAGlxRJ2/m/+QPHuV5C/YWW/sNOMVpgvg==
+Received: from mail-vs1-f69.google.com (mail-vs1-f69.google.com [209.85.217.69])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4e4p91ry2h-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Wed, 13 May 2026 13:26:17 +0000 (GMT)
+Received: by mail-vs1-f69.google.com with SMTP id ada2fe7eead31-6326fc1256aso5443719137.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 13 May 2026 06:26:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1778678776; x=1779283576; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=1A2JIuivfxTHNE33J+4ZfrSnHuAPEzqRV86Vt32AWoc=;
+        b=W/ikqESy1J4jWck6+0wbX8YI7sWKcMP9ASTe9zxORvPPh80jhPiT5pAaUyWDdY/Utl
+         rm0spFgq7dV8weEojQGUY/TO2iEx7ZYpzTtIfVPtlEjOwriAyqxTBXWtEJoE4ojVx+cg
+         UjjK+EdIHGyHDp6jRejN7swMUxPTgivoXr0sTIA4k5huexTt4QBBKpf/xtOFrtM0N3Ct
+         RR5R5PL85cBqMweBXFLejIizPBkwrpuIC29sXtkyfddYLhATIWFFc0nlWxpKuXHeKMDb
+         CPxS6//ndcrYjRr3vO7gVJ0c8BpCwSwJD/c95zPj87DUzqpiMryAPmzMjUr5/MMrLv9r
+         aHTw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1778678776; x=1779283576;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=1A2JIuivfxTHNE33J+4ZfrSnHuAPEzqRV86Vt32AWoc=;
+        b=lH/dEyA3r/FGdJ0T8ykDZcohfGSHn/bU/zUMCj7PXvZq3MhC6VyupgXKZboP8T8+r2
+         7LkY7myO1CWDmo+CKtaIeGx2BhFNAM7dJQvF5cTJT2ywc1qC+jNFhLt96/TLIIVw1Ram
+         N4l/Kbuq8BMW5HWMKyxzVKx7C4YFwXjTXmVOlCBRfhdUsBv1c9PglS5FRlR8hqa2nfYN
+         J112e/YM+6O1uV2sDuSpqvtEyRpysFD01FUxlRz9w1vXL5GwIZOhF3+0KB3MnGkuIOx8
+         ZaR7WJ610eiJfbDXMpPjTdf6VSZDkJQFWY2MKOOo3sK5vV2lfp7yRTfzufqMjICjyhdj
+         W3KQ==
+X-Forwarded-Encrypted: i=1; AFNElJ86P0yp4Z9n67+I2SVJApS5x2rPrWyfJOEpgjKLvpkR448AgXnFuO4zVVtmQ7DTj0kyKDiWHAKhrthEfJ1FYw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz+q2VkiiW5bqsnpwnBGNSarZgDY+dFGBI8r8baVhYl1xTjKgjl
+	8HsJx+hiarRqqh0trTNPiyr/RZDwHtJy34qCTmjDQLn1Xipy0aXqADj6EPxcl+TipR3fgg4+Te5
+	lc7wDh6qsmAlDy8kStv8vzQ+eQ+9jF2G1m7BYGz5qz0jN7ZoMlSdOXcFh1a2aC2CJb425zJhxKi
+	s=
+X-Gm-Gg: Acq92OFHOYNfEII0+T0XSsBv0TdmON9Krd8gWI3vHC1+UZir37Or/p58YNNZZzgpuCG
+	1Vi8Z4ohKr6HyJIIvnRoMtDBzhXLlXeBsrMnFEHK62jXEaXAeNf+at+rP6Z3kSsZ2vsaArRKOkp
+	74rStYsZVQV1pHLY6r4rC8g9+lKioac/8K8JPHtu8cH2ZOI37tgqll/99gNKVmKpDVPpBtGSRL+
+	zDL0uzlGRWT8/RirbJmne8dufLPxBwvN1Y0Ccul910wA0t+Gg1ClfYxhdReSm4OhTlDVtadwwiS
+	vdEVpiwU4UYWIXy95ud1BBpTjvm5MQpUKEAq8QBia9rjrAwV+qMtbBvRvGhEsYy3hzlDcEItFH2
+	uS+ccIwwpx01HJ9g2bkYxihXXI1snHHQ1yy9Un/qfUV/0RkoXR02pwHq6IWb798MDGxRqldC57i
+	/Tont6qcfHEdFb0z8quCV/o+7GDlcg6vTB2ck=
+X-Received: by 2002:a05:6102:c4c:b0:5fe:af0c:79f5 with SMTP id ada2fe7eead31-637733e73b9mr1509828137.5.1778678775961;
+        Wed, 13 May 2026 06:26:15 -0700 (PDT)
+X-Received: by 2002:a05:6102:c4c:b0:5fe:af0c:79f5 with SMTP id ada2fe7eead31-637733e73b9mr1509786137.5.1778678775359;
+        Wed, 13 May 2026 06:26:15 -0700 (PDT)
+Received: from umbar.lan (2001-14ba-a073-af00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a073:af00:264b:feff:fe8b:be8a])
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-393f60db2f3sm41011661fa.22.2026.05.13.06.26.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 13 May 2026 06:26:13 -0700 (PDT)
+Date: Wed, 13 May 2026 16:26:12 +0300
+From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+To: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Liu Ying <victor.liu@nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+        Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+        Maxime Ripard <mripard@kernel.org>,
+        Thomas Zimmermann <tzimmermann@suse.de>,
+        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+        Krzysztof Kozlowski <krzk+dt@kernel.org>,
+        Conor Dooley <conor+dt@kernel.org>, Frank Li <Frank.Li@nxp.com>,
+        Sascha Hauer <s.hauer@pengutronix.de>,
+        Pengutronix Kernel Team <kernel@pengutronix.de>,
+        Fabio Estevam <festevam@gmail.com>,
+        Rob Clark <robin.clark@oss.qualcomm.com>, Sean Paul <sean@poorly.run>,
+        Konrad Dybcio <konradybcio@kernel.org>,
+        Akhil P Oommen <akhilpo@oss.qualcomm.com>,
+        Dmitry Baryshkov <lumag@kernel.org>,
+        Abhinav Kumar <abhinav.kumar@linux.dev>,
+        Jessica Zhang <jesszhan0024@gmail.com>,
+        Marijn Suijten <marijn.suijten@somainline.org>,
+        Vinod Koul <vkoul@kernel.org>, Nas Chung <nas.chung@chipsnmedia.com>,
+        Jackson Lee <jackson.lee@chipsnmedia.com>,
+        Mauro Carvalho Chehab <mchehab@kernel.org>,
+        Mirela Rabulea <mirela.rabulea@nxp.com>,
+        Detlev Casanova <detlev.casanova@collabora.com>,
+        Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+        Heiko Stuebner <heiko@sntech.de>,
+        Hugues Fruchet <hugues.fruchet@foss.st.com>,
+        Alain Volmat <alain.volmat@foss.st.com>,
+        Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+        Alexandre Torgue <alexandre.torgue@foss.st.com>,
+        Andrew Lunn <andrew+netdev@lunn.ch>,
+        "David S. Miller" <davem@davemloft.net>,
+        Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+        Paolo Abeni <pabeni@redhat.com>, MD Danish Anwar <danishanwar@ti.com>,
+        Roger Quadros <rogerq@kernel.org>,
+        Parvathi Pudi <parvathi@couthit.com>,
+        Mohan Reddy Putluru <pmohan@couthit.com>,
+        Bjorn Andersson <andersson@kernel.org>,
+        Mathieu Poirier <mathieu.poirier@linaro.org>,
+        Neil Armstrong <neil.armstrong@linaro.org>,
+        Kevin Hilman <khilman@baylibre.com>,
+        Jerome Brunet <jbrunet@baylibre.com>,
+        Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+        Michal Simek <michal.simek@amd.com>, Mark Brown <broonie@kernel.org>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Linus Walleij <linusw@kernel.org>,
+        Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+        "Andrew F. Davis" <afd@ti.com>, Hussain Khaja <basharath@couthit.com>,
+        Suman Anna <s-anna@ti.com>, Ben Levinsky <ben.levinsky@amd.com>,
+        Tanmay Shah <tanmay.shah@amd.com>,
+        Erwan Leray <erwan.leray@foss.st.com>,
+        Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
+        Roger Quadros <rogerq@ti.com>, dri-devel@lists.freedesktop.org,
+        devicetree@vger.kernel.org, imx@lists.linux.dev,
+        linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+        linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
+        dmaengine@vger.kernel.org, linux-media@vger.kernel.org,
+        linux-rockchip@lists.infradead.org,
+        linux-stm32@st-md-mailman.stormreply.com, netdev@vger.kernel.org,
+        linux-remoteproc@vger.kernel.org, linux-amlogic@lists.infradead.org,
+        linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] dt-bindings: Consolidate "sram" property definition
+Message-ID: <ldpcnzvloffhiubmv6zxhfzqo4oz3ntkmav6zjprmbnsrxd46z@t72iga4xvaji>
+References: <20260511165942.2774868-1-robh@kernel.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DB9PR08MB6697:EE_|AM9PR08MB5906:EE_
-X-MS-Office365-Filtering-Correlation-Id: c5380dec-c4c0-489b-5466-08deb0ead020
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|376014|7416014|1800799024|18002099003|22082099003|11063799003|56012099003;
-X-Microsoft-Antispam-Message-Info: FhdIAkq37wAtndTGNARgCgtE4H80ZVQJSGdmDfIHdaOlbdtFK/jVbwQy3ZXSkb07+1X0RKD1n/XV/D9iCnJZGW5ImigOEnVIXGG3U4BVEJNYn+SPHQRy3BgLDBVr3UYHqlbhE6Sg2XyvC+gHt0DNedtsoSsfYZd2jtScdqqidPhohHbSEZfFwRHWXhe7ZEJ73D+NFcyhPMi2Y+WAUs3JvU+jzFwumalwgzeLgZMTRPmEPuklBjG2kNkBsva0hWE44HtMqMh8bSOSorNTw6X0FTe5lffjfrsWUSGzztHpaWqpWjyFKCGDrCG7KehZetNrvA7r1KN2tDdbgmgTWfpkOQj5JIY9xtyeVSfGixRZw83H2qwTgSwA4gV7JYP/K0fgjpdIblT3N1m/aC/VLxCDtX8RsHcxamGRLZeeBP+MdfV6wkCT5tqKFmpKLEmYDktrAumkuq8aCq73zWf4nz0dudtYEKo31pxfuoUHCW5Q2meCgNpMxDhNoA9INBeHN63r6GDo6j99JkvB/n/+hKZpybH5KtY2KT0woC2m3JkUBAPKheSfREiOTWfTNr25QzZCcBPTD660Lm2jWkjtQAtrlG8QuZjPFEQIlNG/pksgFadNSgeZgprSQ8LRBn83jm8RWQOfJmGRgt5H8GUv7AfHZPddjGTaxciKKxCSzQ/7Q2StdaE/5jFI9wYMfOvPP/ln
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DB9PR08MB6697.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(376014)(7416014)(1800799024)(18002099003)(22082099003)(11063799003)(56012099003);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?cVBaMm5hb2tEbmY5Z1lpSHJRRTJIVnZ6dUNOMWF1SUFwRDFIN0tvN2FiVHdO?=
- =?utf-8?B?RW8xSElsM0kyankwSkVrUklOT2Z4R0VkeXo1Y1ZjbVFKNmZBblZGWkJwYXFW?=
- =?utf-8?B?VUwxcTFCMW9GLzZHVzQwLzNERWVwZ1J4N2FFbUVrUW5GYzE1YWRnN0Q0czFp?=
- =?utf-8?B?RmtMVE85VmtidkxibW44aEJ5SlFOZGxPNTVBdWtiTW4xeFRTWm9IbjVEYmdw?=
- =?utf-8?B?aTZ6UWZKVm1xcERYM3h2YTNQTldqa2RRNGtWR1pBZlRvdU9RNFZQbzJFY2VN?=
- =?utf-8?B?UFViNThZY3JvSkFRd3dZU2JMQ1pnVk9odzY2QmFqK09PQ29QdW5HdEhJU0Rx?=
- =?utf-8?B?ZHJqaEZEaW84bFdITDVabmpXdzJZSnlLWjZmQzNmMVAzYUdpWDlRb2Y3OTdq?=
- =?utf-8?B?NERCSldFaS9PRFRQcFJ0c1JGSkdwTFRBY2lEZnNsVWRzWDAwN1R2b0tlQUp4?=
- =?utf-8?B?QVZyS0RxMVhmam9qNWRQR0M5L2ZsZWZRcUp0MG5KSy9qeWRjQjl2QVk1czQ3?=
- =?utf-8?B?eWJyT0FNSlBLdE96K0J5MVFNNmlhdXBoRk1zNDhrUXYwM1g4NDIvZUJqaFVD?=
- =?utf-8?B?NkZBbkZkc2pHSzVlZUhTa21ObUFhbXhKRmx6b3VmOGNBRVF6QUtsVjZFNU5Y?=
- =?utf-8?B?UkdnYzc1UzhFbEN4c3AvOGV6b0l6UHRzT21NTlVHcXRhYnRsRExtV1ZkbWhC?=
- =?utf-8?B?UWNFS3NkK1JzWEpkbHczYis0TGw2b3lraXJZUVc3VHF6ejdiMmdHM2VTbHlM?=
- =?utf-8?B?em1LOEdUaGxaek9MN1ZtL3V5VHlGeE9HTTJQLzYraFlHQTNsSk85Q1BlYjZL?=
- =?utf-8?B?YVREL2R0TFhWaGg4a3hjZUdLOUxlc29JTUdjYitwRE1HdWFQL2RidDZtWDZ0?=
- =?utf-8?B?d2Y4UlJ2L2pUK0prblV6bWllZ1had2hCb0xOYUFWS28xc2lsL2ZFVjhTSThW?=
- =?utf-8?B?MSszOEkyaXh6aXowaUxhRWR5UVNnTkljM01LOUdheU1iSFNwWHJVRGN5QlJW?=
- =?utf-8?B?T0ppUGV2cGlnenNqQVg2SitNaFA1L2UyV1l4azNEL0xCQWdYN3licmZEQ24x?=
- =?utf-8?B?ZW5YQmtXWDJWQjVxMDBqOUttVEtoSUpWSlZpN2hsc3pLZis0aWYxNGpNMHNT?=
- =?utf-8?B?eW92UDhrb3hQRURQWHJ2L2R4WDN3SFpUVkx6MWQ2L3ozcEJBOFNjaVBlRFBS?=
- =?utf-8?B?S04vUkw1ajhrZ3I5anQvQzNFS0VhS1B0eGo3ZVkraDRkZkpnenEvNDlPNjhJ?=
- =?utf-8?B?MW1QY2ZiMHpsVTBkbmN1YWVxMDFHQW14WldHR3RUT091YzA0aXNHZVVBYUlD?=
- =?utf-8?B?QVpXUlBzRkRObmN1Ui9jbzY3aGI5L3RtT0VwR0xDWmlVL09zditLL0JwMmp4?=
- =?utf-8?B?b25SMlpSNjVUS3ZBSGtTUUhLSjdEaXIrSVQ2TXVRSVFsbEI1K2lMT2ZVQWhm?=
- =?utf-8?B?YUhsTWVTekRGbU5mZzFELzJrczQzL0RVYWs1N0MwUVB1em91WWZFWGhtUFhv?=
- =?utf-8?B?WWM0SFBJdEh4V0RhTkptLzk5UlJzSmhhMmRoMnhPNml6dmJyUnlFbVJhVXRi?=
- =?utf-8?B?L0hZWFZvaVNVM04rVHFPRHpZUkJHakZTRzAwd3lkT05CUVlKWUsvK1pFWkZt?=
- =?utf-8?B?TGgvNFJYamlVV0J2eUplTUxQcUZtRkJDc1BHNk5sWHpXcC9BdGt3RGJxWXIw?=
- =?utf-8?B?YUdNWnVmOUprQkIzSTFxamZZWDY4T1hGeitpTUw5cGJacDk4dld3R2hvODlz?=
- =?utf-8?B?d25vYjY3MjA2UURCRE53Q2dlVHpSTTlpdDg3V2xXWmg0WGdlczFkMytZajFR?=
- =?utf-8?B?a2pCTEt1Z0hDT0pEYzRvMDFzRVJzZmRUY3hFOEw2cFg3SVI5TFE5eHJLbmxk?=
- =?utf-8?B?Yi9zcE04blBIdUdLN2dUdHZuOG5FemZRc0FzSVMzRGNXQlRKK045b2YyQWFB?=
- =?utf-8?B?TmoyejhoZUt6VEJOMWlXOVpmeDlYWUYxRER5OHRlYTFKMko3bVJrbVMyS1p3?=
- =?utf-8?B?MjZWek9YOCtML2VabElhV0lRVFJic2VlN2gyMnlxc3M3Nm9NSDR0UzJyVG1p?=
- =?utf-8?B?YkFhVmduc1pFSERBYys1dGkwc211aUNldVVneDFhRXR4RTFBdEl6TFJRb21o?=
- =?utf-8?B?NndQVkN0M3FoR3dwZmErdENSS0dLNG4ySU8zRUxaaGx3NElCRDdDSUFxSEcx?=
- =?utf-8?B?YVp0bnQ1cFpzSm9VdGd4ZHluamQxWEFIemIwODFpMGdJb1hrQ3BpQVo1Yk9i?=
- =?utf-8?B?K0ZTTncwcXlHaUFyZlYzMThuaUFxMWRBK3NXVWVCQjRSakpESjdtMVA3dFE4?=
- =?utf-8?B?MExxdHpPcVM3UGxjNHdOUnM2Q3dOMGcrUjJMeHF6MWhSV3l6ZGYvWU9TRWRK?=
- =?utf-8?Q?f1mPpISs8jBNVYOU=3D?=
-X-OriginatorOrg: genexis.eu
-X-MS-Exchange-CrossTenant-Network-Message-Id: c5380dec-c4c0-489b-5466-08deb0ead020
-X-MS-Exchange-CrossTenant-AuthSource: DB9PR08MB6697.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 May 2026 12:26:09.6243
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: vFCXV9g3rw7ta+xbP7sF7pQMOttI7R/Dzk3+vo1Sdw7GiDNBXtWhHKiCg/ROXL1WZuvFSmQ0AcqavOgkUR4u1LYO/ll7oGe6/vBQeFPqVt0=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM9PR08MB5906
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260511165942.2774868-1-robh@kernel.org>
+X-Proofpoint-ORIG-GUID: JZCjGm5tHT4HOVoACkWpZkHg4mPRgMiC
+X-Proofpoint-GUID: JZCjGm5tHT4HOVoACkWpZkHg4mPRgMiC
+X-Authority-Analysis: v=2.4 cv=G9Ys1dk5 c=1 sm=1 tr=0 ts=6a047bf9 cx=c_pps
+ a=5HAIKLe1ejAbszaTRHs9Ug==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
+ a=NGcC8JguVDcA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22 a=VwQbUJbxAAAA:8
+ a=EUspDBNiAAAA:8 a=VwfjHJzzgIKQiJfiZN8A:9 a=CjuIK1q_8ugA:10
+ a=gYDTvv6II1OnSo0itH1n:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTEzMDEzOCBTYWx0ZWRfXz5WCaDajKK/0
+ HV/PGB+4YwOsRsgPejg3aEqG4EbisrKTPfd4WIHEHWg4ANbP0xls0Fm1fwkYK1IwV65SDR0rpWB
+ qydFMxZQLWzG74HpjUj2CGOSdLUy6NYaerIbrF5ONi6Q7Sy9mBskfg1gIUa80NM66cpHvWF+YT3
+ u3eSdXwoMxtyX6SktgyNZNkaMKI6XpWR4yVSKDyy6ZBE3HeJr6+lD7nILFUiZEnhk4llGzavZ1v
+ kUXK8OL+We7Nhw9w3Oi44e1pRL08DzBAQnxCVQ9QJl9PlPM+0VxwgOskwpOjuG6ZJ7Be3RBrRwb
+ ehelThgYbWkw/bRxEn6wam04VVH7AfVioXsDvSMBS8xzdtoBJLAOsBrstZpCYl1XW6Yas5nXB3w
+ gaj6tzoWPbbs9W9cqLXEG7cg9JNLVCuouZegWmqiFd5O2q5nyl4bMkfj7CmH72vKLpimwVEOywX
+ GEKmMUWYnrm+v/USqhA==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-05-13_01,2026-05-08_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ suspectscore=0 malwarescore=0 adultscore=0 spamscore=0 phishscore=0
+ clxscore=1015 priorityscore=1501 lowpriorityscore=0 bulkscore=0
+ impostorscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2605050000
+ definitions=main-2605130138
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260513_052615_776968_042DF424 
-X-CRM114-Status: GOOD (  16.51  )
+X-CRM114-CacheID: sfid-20260513_062617_589394_D9EE1D58 
+X-CRM114-Status: GOOD (  15.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -156,108 +200,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/05/2026 22:58, Lorenzo Bianconi wrote:
-> On May 12, Benjamin Larsson wrote:
->> Hi.
->>
->> On 11/05/2026 12:49, Lorenzo Bianconi wrote:
->>> The EN7581 and AN7583 SoCs provide registers to configure hardware LAN/WAN
->>> MAC addresses, used to determine whether received traffic is destined for
->>> this host or should be forwarded to another device.
->>> The SoC hardware design assumes all interfaces configured as LAN (or WAN)
->>> share a common upper MAC address, which is programmed into the
->>> REG_FE_{LAN,WAN}_MAC_H register. The lower bytes of 'local' addresses can
->>> be expressed as a range via the REG_FE_MAC_LMIN and REG_FE_MAC_LMAX
->>> registers.
->>> Previously, only a single interface was considered when programming these
->>> registers. Extend the logic to derive the correct minimum and maximum
->>> values for REG_FE_MAC_LMIN/REG_FE_MAC_LMAX when two or more interfaces are
->>> configured as LAN or WAN.
->>>
->>> Tested-by: Madhur Agrawal <madhur.agrawal@airoha.com>
->>> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
->>> ---
->>>    drivers/net/ethernet/airoha/airoha_eth.c | 75 +++++++++++++++++++++++++++-----
->>>    drivers/net/ethernet/airoha/airoha_eth.h |  2 +-
->>>    drivers/net/ethernet/airoha/airoha_ppe.c |  4 +-
->>>    3 files changed, 66 insertions(+), 15 deletions(-)
->>>
->>> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
->>> index 16c0ff9999da..533ffe20f833 100644
->>> --- a/drivers/net/ethernet/airoha/airoha_eth.c
->>> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
->>> @@ -71,20 +71,67 @@ static void airoha_qdma_irq_disable(struct airoha_irq_bank *irq_bank,
->>>    	airoha_qdma_set_irqmask(irq_bank, index, mask, 0);
->>>    }
->>> -static void airoha_set_macaddr(struct airoha_gdm_dev *dev, const u8 *addr)
->>> +static int airoha_set_macaddr(struct airoha_gdm_dev *dev, const u8 *addr)
->>>    {
->>>    	struct airoha_eth *eth = dev->eth;
->>> -	u32 val, reg;
->>> +	u8 ref_addr[ETH_ALEN] = {};
->>> +	u32 reg, val, lmin, lmax;
->>> +	int i;
->>> +
->>> +	lmin = (addr[3] << 16) | (addr[4] << 8) | addr[5];
->>> +	lmax = lmin;
->>> +
->>> +	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
->>> +		struct airoha_gdm_port *port = eth->ports[i];
->>> +		int j;
->>> +
->>> +		if (!port)
->>> +			continue;
->>> +
->>> +		for (j = 0; j < ARRAY_SIZE(port->devs); j++) {
->>> +			struct airoha_gdm_dev *iter_dev;
->>> +			struct net_device *netdev;
->>> +
->>> +			iter_dev = port->devs[j];
->>> +			if (!iter_dev || iter_dev == dev)
->>> +				continue;
->>> +
->>> +			if (airoha_is_lan_gdm_dev(iter_dev) !=
->>> +			    airoha_is_lan_gdm_dev(dev))
->>> +				continue;
->>> +
->>> +			netdev = iter_dev->dev;
->>> +			if (netdev->reg_state != NETREG_REGISTERED)
->>> +				continue;
->>> +
->>> +			ether_addr_copy(ref_addr, netdev->dev_addr);
->>> +			val = (netdev->dev_addr[3] << 16) |
->>> +			      (netdev->dev_addr[4] << 8) | netdev->dev_addr[5];
->>> +			if (val < lmin)
->>> +				lmin = val;
->>> +			if (val > lmax)
->>> +				lmax = val;
->>> +		}
->>> +	}
->>> +
->>> +	if (!is_zero_ether_addr(ref_addr) && memcmp(ref_addr, addr, 3)) {
->>> +		/* According to the HW design, hw mac address MS bits
->>> +		 * must be the same for each net_device with the same
->>> +		 * LAN/WAN configuration.
->>> +		 */
->>> +		return -EINVAL;
->>> +	}
->> Maybe this information should be relayed to the user somehow?
-> netdev_err()?
-
-Ok with me.
-
-MvH
-
-Benjamin Larsson
+On Mon, May 11, 2026 at 11:59:36AM -0500, Rob Herring (Arm) wrote:
+> The "sram" property has become a de facto standard property, so create a
+> common schema for it and drop all the duplicated definitions.
+> 
+> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+> ---
+>  .../imx/fsl,imx8qxp-dc-command-sequencer.yaml |  2 +-
+>  .../devicetree/bindings/display/msm/gpu.yaml  |  6 +----
 
 
->
-> Regards,
-> Lorenzo
->
->> MvH
->>
->> Benjamin Larsson
->>
+Acked-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com> # display/msm
 
+
+>  .../bindings/dma/stericsson,dma40.yaml        |  8 ++----
+>  .../bindings/media/cnm,wave521c.yaml          |  2 +-
+>  .../bindings/media/nxp,imx8-jpeg.yaml         |  6 ++---
+>  .../bindings/media/rockchip,vdec.yaml         |  5 ++--
+>  .../bindings/media/st,stm32-dcmi.yaml         |  6 ++---
+>  .../devicetree/bindings/net/mediatek,net.yaml |  3 +--
+>  .../bindings/net/ti,icssg-prueth.yaml         |  2 +-
+>  .../bindings/net/ti,icssm-prueth.yaml         |  2 +-
+>  .../remoteproc/amlogic,meson-mx-ao-arc.yaml   |  7 +----
+>  .../bindings/remoteproc/ti,k3-dsp-rproc.yaml  |  8 ------
+>  .../bindings/remoteproc/ti,k3-r5f-rproc.yaml  |  8 ------
+>  .../remoteproc/xlnx,zynqmp-r5fss.yaml         |  9 +------
+>  .../devicetree/bindings/spi/st,stm32-spi.yaml | 10 +++----
+>  .../bindings/sram/sram-consumer.yaml          | 26 +++++++++++++++++++
+>  16 files changed, 48 insertions(+), 62 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/sram/sram-consumer.yaml
+> 
+
+-- 
+With best wishes
+Dmitry
 
