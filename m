@@ -4,69 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6E29CD4F21
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2026 21:30:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26443CD484C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2026 02:15:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KauRRGWWoPp9x/X8IyWNQoIFf417xrJIJuZhStW2+Kk=; b=w/ioi13KThYQqty3CR3sEPzz6H
-	VpBAlWzFt0DKOt34JZIVrdALipvTJEc9gFobNXx4QsjlA3T0vwIGEY/5eYK9Rb2u/Qql0ow1IVctN
-	J6qu/WKPQ6NW92IrhvuHn8AEY3/ekp4F8oyAFKaBzbGu0PMJD3ryoKG6Tw8gUdR+4jqHFeBZSKY24
-	WTBbXWgUidI/PLWNvDv24oT9U+k2UOGYbHYWgBO9QlfoRL1zEJOYYSsnO6yUDexpMVAADkTCpO2H3
-	HriGgEfNeMaqLdgYQ4LYrIrB8CnwKLXKvXh6SWikxHFvDSsi15TGCODvuam08r5ze98YMRVA7Vr/Z
-	Zl9RO/3w==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=74Cn4hg4RXxElIhSInZ/m7ZsUzxyX6/zI9dRPVJHie0=; b=XMIkMrCtOfTJOrhMG1IG7bDsjH
+	V1zWEkgWby45/gN9BPhACtJkJ07re+2POfydno3kyjwgEHWLxoNhvnzLzUMCJpB35vzp97rOux9Rs
+	l2/m8ejmzYBhGfhweLSWZwh72TfYdwNdhXQsJN/W+Hg6AXgI0NUCV6eMGL4YkZBliYhAp7Vb+wUPV
+	SSi9BxhiLCGf/raaXvDG49dtisXDSv8EuC77rSyWCmhUROsalQ75nQJaAxO8HFyeRd/gUKIfit8Do
+	z2Oa4uRcIA8FJ3qpsjg4L2UVcn/zTg9DpW6O/6n0ewSMxrcdsLHQpdAZZnIg0XzY7maqugyRbE/DG
+	FKB48m5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMugp-00000000Ugk-2EDG;
-	Tue, 12 May 2026 21:30:55 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wMz7w-00000000uzh-2ge5;
+	Wed, 13 May 2026 02:15:12 +0000
+Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMugo-00000000UgX-2ZfB
-	for linux-mediatek@lists.infradead.org;
-	Tue, 12 May 2026 21:30:54 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id AB52660128
-	for <linux-mediatek@lists.infradead.org>; Tue, 12 May 2026 21:30:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5EE34C4AF0B
-	for <linux-mediatek@lists.infradead.org>; Tue, 12 May 2026 21:30:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778621453;
-	bh=E4de2yJLbPlG+G4Xke/Sqplwk8ZyhA8kD3ynAicpMcY=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=poCD6UHQSQ0V1KWO1+D0bqL36p1rxQceY6vzgw3Nterodo1SakAgvi7SlkyxTnxyd
-	 1bSoRwGoDntmuHXyyYxrGwXWuwj/n64/Napoc3FK9QyHj2sUaMENwhXrY1UvgOaJNp
-	 EqStv5QDmT1bWunICSRdkdQ0ojoYgkmmxH/Zi5rSWpER/hhnkOMWn3N4YGV9oFiXIm
-	 xjpOfwpt8lUUldBnxDQb+Rn7W/xfVwYTEM0umseXuJDDM4Nff+dHw+f92bIWhtJ1WV
-	 6IskvCwsQIT/1f2X3sDubwQ+UBwd3PpArxm0XctFsWFxOTvQhC8DbVNIxdKwcDL9SV
-	 1S51jIbJB4BLA==
-Received: by mail-lj1-f169.google.com with SMTP id 38308e7fff4ca-393c40246afso62900201fa.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 12 May 2026 14:30:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AFNElJ+cLyRwI4FJHUIwLse7jtMVosMJuFV/rG1fs3YMfaqUiwNHJMyicj4WTyVQ8moOeeHNAV/oJzBynW/LWWRPww==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwxNLJgvyTM0cYitJZvWHB+kaJkouC+3MLaQYp7ZWHe5y6n5JR7
-	1DR56qOYVjU/FD9BtdgTXKiZtrXRO38YS7jA9nXJSBfR3p7KvS1Wi7guUE6Bza25Q5VzDQqcBfQ
-	CoSgToW3SyG8u/o4/b8dpILvWYCH9r8w=
-X-Received: by 2002:a05:651c:41ca:b0:38e:af87:8dee with SMTP id
- 38308e7fff4ca-3944b5e861amr1589261fa.22.1778621451654; Tue, 12 May 2026
- 14:30:51 -0700 (PDT)
+	id 1wMz7t-00000000uwg-0q8p;
+	Wed, 13 May 2026 02:15:11 +0000
+X-UUID: 8acc9a744e7111f1aa26b74ffac11d73-20260513
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.12,REQID:f90f73a6-8043-4526-90d4-b5098d380dba,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:e7bac3a,CLOUDID:654c1fa903bfe6f384811b843b57053b,BulkI
+	D:nil,BulkQuantity:0,Recheck:0,SF:102|850|898,TC:nil,Content:0|15|16|50,ED
+	M:-3,IP:nil,URL:99|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,O
+	SA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 8acc9a744e7111f1aa26b74ffac11d73-20260513
+X-User: zenghongling@kylinos.cn
+Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
+	(envelope-from <zenghongling@kylinos.cn>)
+	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
+	with ESMTP id 234632021; Wed, 13 May 2026 10:14:59 +0800
+From: Hongling Zeng <zenghongling@kylinos.cn>
+To: nbd@nbd.name,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	xiong.huang@mediatek.com,
+	madhurkumar004@gmail.com
+Cc: linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	zhongling0719@126.com,
+	Hongling Zeng <zenghongling@kylinos.cn>,
+	kernel test robot <lkp@intel.com>
+Subject: [PATCH] wifi: mt76: mt7921: fix uninitialized variable warning
+Date: Wed, 13 May 2026 10:14:55 +0800
+Message-Id: <20260513021455.80175-1-zenghongling@kylinos.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20260505055252.2558613-1-jb.tsai@mediatek.com>
-In-Reply-To: <20260505055252.2558613-1-jb.tsai@mediatek.com>
-From: Sean Wang <sean.wang@kernel.org>
-Date: Tue, 12 May 2026 16:30:39 -0500
-X-Gmail-Original-Message-ID: <CAGp9LzpTJLsU_TB+6Cvm1Nhdqkpb7fR0x2WvFBuJMx=M4YrOew@mail.gmail.com>
-X-Gm-Features: AVHnY4Lu3a-eF3cWb90dimr7Dumz8Hes-hAWpwnScfeLfC8Xde4ar-Ji9XMwUk0
-Message-ID: <CAGp9LzpTJLsU_TB+6Cvm1Nhdqkpb7fR0x2WvFBuJMx=M4YrOew@mail.gmail.com>
-Subject: Re: [PATCH] wifi: mt76: mt7925: Add coredump callback in pci_driver
-To: JB Tsai <jb.tsai@mediatek.com>
-Cc: nbd@nbd.name, lorenzo@kernel.org, linux-wireless@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, Deren.Wu@mediatek.com, 
-	Sean.Wang@mediatek.com, Quan.Zhou@mediatek.com, Ryder.Lee@mediatek.com, 
-	Leon.Yen@mediatek.com, litien.chang@mediatek.com, jeff.hsu@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260512_191509_555248_C1D89F41 
+X-CRM114-Status: UNSURE (   9.12  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,100 +86,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Move the initialization of 'dev' before the error path that uses it.
+This fixes the compiler warning:
+  drivers/net/wireless/mediatek/mt76/mt7921/pci.c:347:6: warning:
+  variable 'dev' is used uninitialized whenever 'if' condition is true
 
-On Tue, May 5, 2026 at 12:53=E2=80=AFAM JB Tsai <jb.tsai@mediatek.com> wrot=
-e:
->
-> From: Jeff Hsu <Jeff.Hsu@mediatek.com>
->
-> Register coredump callback(mt7925_coredump) in pci_driver,
-> it can let platform can trigger core dump to collect the
-> log and recover back after coredump complete without debugfs
->
-> Some platform not have debugfs
->
-> Signed-off-by: Jeff Hsu <Jeff.Hsu@mediatek.com>
-> ---
->  drivers/net/wireless/mediatek/mt76/mt7925/mcu.c |  1 +
->  drivers/net/wireless/mediatek/mt76/mt7925/pci.c | 12 ++++++++++++
->  2 files changed, 13 insertions(+)
->
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7925/mcu.c
-> index 37cdf3e8a067..cd502166a7f9 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-> @@ -1014,6 +1014,7 @@ int mt7925_mcu_chip_config(struct mt792x_dev *dev, =
-const char *cmd)
->         return mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD(CHIP_CONFIG),
->                                  &req, sizeof(req), false);
->  }
-> +EXPORT_SYMBOL_GPL(mt7925_mcu_chip_config);
->
->  int mt7925_mcu_set_deep_sleep(struct mt792x_dev *dev, bool enable)
->  {
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7925/pci.c
-> index c4161754c01d..5b3e62e5f157 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-> @@ -610,6 +610,17 @@ static int mt7925_pci_restore(struct device *device)
->         return _mt7925_pci_resume(device, true);
->  }
->
-> +static void mt7925_coredump(struct device *dev)
-> +{
-> +       struct pci_dev *pdev =3D to_pci_dev(device);
+Fixes: 0d56655a74ef ("wifi: mt76: mt7921: fix resource leak in probe error path")
+Reported-by: kernel test robot <lkp@intel.com>
+Closes: https://lore.kernel.org/oe-kbuild-all/202605130432.S8Ozipm2-lkp@intel.com/
+Signed-off-by: Hongling Zeng <zenghongling@kylinos.cn>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-There is a build error on this line.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+index 4bb436465a3d..49a37185f056 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+@@ -343,13 +343,14 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+ 
+ 	pci_set_drvdata(pdev, mdev);
+ 
++	dev = container_of(mdev, struct mt792x_dev, mt76);
++
+ 	regs =  pcim_iomap_region(pdev, 0, pci_name(pdev));
+ 	if (IS_ERR(regs)) {
+ 		ret = PTR_ERR(regs);
+ 		goto err_free_dev;
+ 	}
+ 
+-	dev = container_of(mdev, struct mt792x_dev, mt76);
+ 	dev->fw_features = features;
+ 	dev->hif_ops = &mt7921_pcie_ops;
+ 	dev->irq_map = &irq_map;
+-- 
+2.25.1
 
-../drivers/net/wireless/mediatek/mt76/mt7925/pci.c: In function
-=E2=80=98mt7925_coredump=E2=80=99:
-../drivers/net/wireless/mediatek/mt76/mt7925/pci.c:682:43: error:
-=E2=80=98device=E2=80=99 undeclared (first use in this function)
-  682 |         struct pci_dev *pdev =3D to_pci_dev(device);
-      |                                           ^~~~~~
-../include/linux/container_of.h:20:33: note: in definition of macro
-=E2=80=98container_of=E2=80=99
-   20 |         void *__mptr =3D (void *)(ptr);
-         \
-      |                                 ^~~
-../drivers/net/wireless/mediatek/mt76/mt7925/pci.c:682:32: note: in
-expansion of macro =E2=80=98to_pci_dev=E2=80=99
-  682 |         struct pci_dev *pdev =3D to_pci_dev(device);
-      |                                ^~~~~~~~~~
-../drivers/net/wireless/mediatek/mt76/mt7925/pci.c:682:43: note: each
-undeclared identifier is reported only once for each function it
-appears in
-  682 |         struct pci_dev *pdev =3D to_pci_dev(device);
-      |                                           ^~~~~~
-../include/linux/container_of.h:20:33: note: in definition of macro
-=E2=80=98container_of=E2=80=99
-   20 |         void *__mptr =3D (void *)(ptr);
-
-> +       struct mt76_dev *mdev =3D pci_get_drvdata(pdev);
-> +       struct mt792x_dev *dev_792x =3D container_of(mdev, struct mt792x_=
-dev, mt76);
-> +
-> +       mt792x_mutex_acquire(dev_792x);
-> +       mt7925_mcu_chip_config(dev_792x, "assert");
-> +       mt792x_mutex_release(dev_792x);
-> +}
-> +
->  static const struct dev_pm_ops mt7925_pm_ops =3D {
->         .suspend =3D pm_sleep_ptr(mt7925_pci_suspend),
->         .resume  =3D pm_sleep_ptr(mt7925_pci_resume),
-> @@ -626,6 +637,7 @@ static struct pci_driver mt7925_pci_driver =3D {
->         .remove         =3D mt7925_pci_remove,
->         .shutdown       =3D mt7925_pci_shutdown,
->         .driver.pm      =3D pm_sleep_ptr(&mt7925_pm_ops),
-> +       .driver.coredump =3D mt7925_coredump,
->  };
->
->  module_pci_driver(mt7925_pci_driver);
-> --
-> 2.45.2
->
->
 
