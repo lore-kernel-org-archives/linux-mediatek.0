@@ -4,188 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CC5DCD4851
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2026 13:26:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A39BCD4F24
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2026 14:31:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1A2JIuivfxTHNE33J+4ZfrSnHuAPEzqRV86Vt32AWoc=; b=Hxjt2SbhqgWUxuhP6JLbLHbUxJ
-	b6oAU2Ivj4eFw8nI23EUL46H7GaCGYEtTXsNxW2dMWz8iLyxpP70C8WzZsiviFKAdCR3aQRTK3AQk
-	w/g2BAtRFSlbYaIRO/my+4FHHxmIAskKG13fJtTTNm4mwZD7C+W6gc9y3dYrXBo1r+KYm4cBgP1w+
-	kZbds/eQvMCOuTUtfUQBdk7NFaFQr6LH+rrIKP8/uEe+VgRlBQIrNBiuSGxZQETOe3ygEQY997uZZ
-	wpdBf8xkbiAd7LcuBu9W+vacp908cBPppRJxyPZOKAdpMSCaS7MSF/cKV7kUdGiT90GnUdGN5usi3
-	VyjJ8lOQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wGwrTVlpyBxr5qWW8aL6TnSMvsiSJT067Q2+nosA5bY=; b=LsO2QeTFqNaN0rVq4ejCSpxmz6
+	7dL07diq6YA+nsCF/jpLFYGzCp1tzk9kXc0ToTunZAS5t7Fn9o/MX8nGytzQfevS6EU94IC84g1Zs
+	OK/FjoOU5AagVgTVGo0HJTFz0wHAxxC7/IIBv96fBxLWSbSVPrQj9WfS1+ppsMOGWB3CQLjsMUNPW
+	FEmdQCIIMVDYX4rLKpYLT7wTOlzx0z49Zr0fWgmJjzBnSYbghvcaOjxUvOYff8ATVQbdEODIcU6g8
+	6BNoyaZxrxvHNcVZoEmHyFb3LVsuY0A56m5MtWbB45ube8W/kcd+U4rcnaHWb7xolbar7d+9KS2Ua
+	wgksprow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wN9bQ-00000002kHR-2Zs7;
-	Wed, 13 May 2026 13:26:20 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1wNAcr-00000002wOE-0r0M;
+	Wed, 13 May 2026 14:31:53 +0000
+Received: from mail.cjdns.fr ([5.135.140.105])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wN9bN-00000002kEj-2Gq9
+	id 1wNAcn-00000002wN7-46VI
 	for linux-mediatek@lists.infradead.org;
-	Wed, 13 May 2026 13:26:19 +0000
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 64D8woaP4159611
-	for <linux-mediatek@lists.infradead.org>; Wed, 13 May 2026 13:26:17 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=qcppdkim1; bh=1A2JIuivfxTHNE33J+4ZfrSn
-	HuAPEzqRV86Vt32AWoc=; b=k2+sVBYmVZ6IQNmSNTSEz1M1qd4wswCJFFvnyNxc
-	kR7lMnI/qoifc5tBfwJtdRKCTTiGgdsMz53yoebwClcfnY4u2z7KDVV8N0s5w8pM
-	W8cKzo6Pyw49XSwLNl/sGtES8RtxR5OCVPg+6l6DrndShstRX+wLtSHhICzhmews
-	uiyfDo5q4si49V20xzR96tc/NOXPeH4eyVCo+zdiJIPFh4emrffgdjOMqnK6ZoGV
-	oJ9ZRRaP4uFdbrNL+30g4uuGP9zSrK3seLT8SuPK1egfaPDPK2XirOkRWhQ/qoyn
-	8L7rD/LIjoc0YeAGlxRJ2/m/+QPHuV5C/YWW/sNOMVpgvg==
-Received: from mail-vs1-f69.google.com (mail-vs1-f69.google.com [209.85.217.69])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4e4p91ry2h-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Wed, 13 May 2026 13:26:17 +0000 (GMT)
-Received: by mail-vs1-f69.google.com with SMTP id ada2fe7eead31-6326fc1256aso5443719137.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 13 May 2026 06:26:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1778678776; x=1779283576; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=1A2JIuivfxTHNE33J+4ZfrSnHuAPEzqRV86Vt32AWoc=;
-        b=W/ikqESy1J4jWck6+0wbX8YI7sWKcMP9ASTe9zxORvPPh80jhPiT5pAaUyWDdY/Utl
-         rm0spFgq7dV8weEojQGUY/TO2iEx7ZYpzTtIfVPtlEjOwriAyqxTBXWtEJoE4ojVx+cg
-         UjjK+EdIHGyHDp6jRejN7swMUxPTgivoXr0sTIA4k5huexTt4QBBKpf/xtOFrtM0N3Ct
-         RR5R5PL85cBqMweBXFLejIizPBkwrpuIC29sXtkyfddYLhATIWFFc0nlWxpKuXHeKMDb
-         CPxS6//ndcrYjRr3vO7gVJ0c8BpCwSwJD/c95zPj87DUzqpiMryAPmzMjUr5/MMrLv9r
-         aHTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1778678776; x=1779283576;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=1A2JIuivfxTHNE33J+4ZfrSnHuAPEzqRV86Vt32AWoc=;
-        b=lH/dEyA3r/FGdJ0T8ykDZcohfGSHn/bU/zUMCj7PXvZq3MhC6VyupgXKZboP8T8+r2
-         7LkY7myO1CWDmo+CKtaIeGx2BhFNAM7dJQvF5cTJT2ywc1qC+jNFhLt96/TLIIVw1Ram
-         N4l/Kbuq8BMW5HWMKyxzVKx7C4YFwXjTXmVOlCBRfhdUsBv1c9PglS5FRlR8hqa2nfYN
-         J112e/YM+6O1uV2sDuSpqvtEyRpysFD01FUxlRz9w1vXL5GwIZOhF3+0KB3MnGkuIOx8
-         ZaR7WJ610eiJfbDXMpPjTdf6VSZDkJQFWY2MKOOo3sK5vV2lfp7yRTfzufqMjICjyhdj
-         W3KQ==
-X-Forwarded-Encrypted: i=1; AFNElJ86P0yp4Z9n67+I2SVJApS5x2rPrWyfJOEpgjKLvpkR448AgXnFuO4zVVtmQ7DTj0kyKDiWHAKhrthEfJ1FYw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz+q2VkiiW5bqsnpwnBGNSarZgDY+dFGBI8r8baVhYl1xTjKgjl
-	8HsJx+hiarRqqh0trTNPiyr/RZDwHtJy34qCTmjDQLn1Xipy0aXqADj6EPxcl+TipR3fgg4+Te5
-	lc7wDh6qsmAlDy8kStv8vzQ+eQ+9jF2G1m7BYGz5qz0jN7ZoMlSdOXcFh1a2aC2CJb425zJhxKi
-	s=
-X-Gm-Gg: Acq92OFHOYNfEII0+T0XSsBv0TdmON9Krd8gWI3vHC1+UZir37Or/p58YNNZZzgpuCG
-	1Vi8Z4ohKr6HyJIIvnRoMtDBzhXLlXeBsrMnFEHK62jXEaXAeNf+at+rP6Z3kSsZ2vsaArRKOkp
-	74rStYsZVQV1pHLY6r4rC8g9+lKioac/8K8JPHtu8cH2ZOI37tgqll/99gNKVmKpDVPpBtGSRL+
-	zDL0uzlGRWT8/RirbJmne8dufLPxBwvN1Y0Ccul910wA0t+Gg1ClfYxhdReSm4OhTlDVtadwwiS
-	vdEVpiwU4UYWIXy95ud1BBpTjvm5MQpUKEAq8QBia9rjrAwV+qMtbBvRvGhEsYy3hzlDcEItFH2
-	uS+ccIwwpx01HJ9g2bkYxihXXI1snHHQ1yy9Un/qfUV/0RkoXR02pwHq6IWb798MDGxRqldC57i
-	/Tont6qcfHEdFb0z8quCV/o+7GDlcg6vTB2ck=
-X-Received: by 2002:a05:6102:c4c:b0:5fe:af0c:79f5 with SMTP id ada2fe7eead31-637733e73b9mr1509828137.5.1778678775961;
-        Wed, 13 May 2026 06:26:15 -0700 (PDT)
-X-Received: by 2002:a05:6102:c4c:b0:5fe:af0c:79f5 with SMTP id ada2fe7eead31-637733e73b9mr1509786137.5.1778678775359;
-        Wed, 13 May 2026 06:26:15 -0700 (PDT)
-Received: from umbar.lan (2001-14ba-a073-af00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a073:af00:264b:feff:fe8b:be8a])
-        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-393f60db2f3sm41011661fa.22.2026.05.13.06.26.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 13 May 2026 06:26:13 -0700 (PDT)
-Date: Wed, 13 May 2026 16:26:12 +0300
-From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-To: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Liu Ying <victor.liu@nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>,
-        Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-        Maxime Ripard <mripard@kernel.org>,
-        Thomas Zimmermann <tzimmermann@suse.de>,
-        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-        Krzysztof Kozlowski <krzk+dt@kernel.org>,
-        Conor Dooley <conor+dt@kernel.org>, Frank Li <Frank.Li@nxp.com>,
-        Sascha Hauer <s.hauer@pengutronix.de>,
-        Pengutronix Kernel Team <kernel@pengutronix.de>,
-        Fabio Estevam <festevam@gmail.com>,
-        Rob Clark <robin.clark@oss.qualcomm.com>, Sean Paul <sean@poorly.run>,
-        Konrad Dybcio <konradybcio@kernel.org>,
-        Akhil P Oommen <akhilpo@oss.qualcomm.com>,
-        Dmitry Baryshkov <lumag@kernel.org>,
-        Abhinav Kumar <abhinav.kumar@linux.dev>,
-        Jessica Zhang <jesszhan0024@gmail.com>,
-        Marijn Suijten <marijn.suijten@somainline.org>,
-        Vinod Koul <vkoul@kernel.org>, Nas Chung <nas.chung@chipsnmedia.com>,
-        Jackson Lee <jackson.lee@chipsnmedia.com>,
-        Mauro Carvalho Chehab <mchehab@kernel.org>,
-        Mirela Rabulea <mirela.rabulea@nxp.com>,
-        Detlev Casanova <detlev.casanova@collabora.com>,
-        Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-        Heiko Stuebner <heiko@sntech.de>,
-        Hugues Fruchet <hugues.fruchet@foss.st.com>,
-        Alain Volmat <alain.volmat@foss.st.com>,
-        Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-        Alexandre Torgue <alexandre.torgue@foss.st.com>,
-        Andrew Lunn <andrew+netdev@lunn.ch>,
-        "David S. Miller" <davem@davemloft.net>,
-        Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
-        Paolo Abeni <pabeni@redhat.com>, MD Danish Anwar <danishanwar@ti.com>,
-        Roger Quadros <rogerq@kernel.org>,
-        Parvathi Pudi <parvathi@couthit.com>,
-        Mohan Reddy Putluru <pmohan@couthit.com>,
-        Bjorn Andersson <andersson@kernel.org>,
-        Mathieu Poirier <mathieu.poirier@linaro.org>,
-        Neil Armstrong <neil.armstrong@linaro.org>,
-        Kevin Hilman <khilman@baylibre.com>,
-        Jerome Brunet <jbrunet@baylibre.com>,
-        Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-        Michal Simek <michal.simek@amd.com>, Mark Brown <broonie@kernel.org>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Linus Walleij <linusw@kernel.org>,
-        Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
-        "Andrew F. Davis" <afd@ti.com>, Hussain Khaja <basharath@couthit.com>,
-        Suman Anna <s-anna@ti.com>, Ben Levinsky <ben.levinsky@amd.com>,
-        Tanmay Shah <tanmay.shah@amd.com>,
-        Erwan Leray <erwan.leray@foss.st.com>,
-        Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
-        Roger Quadros <rogerq@ti.com>, dri-devel@lists.freedesktop.org,
-        devicetree@vger.kernel.org, imx@lists.linux.dev,
-        linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-        linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
-        dmaengine@vger.kernel.org, linux-media@vger.kernel.org,
-        linux-rockchip@lists.infradead.org,
-        linux-stm32@st-md-mailman.stormreply.com, netdev@vger.kernel.org,
-        linux-remoteproc@vger.kernel.org, linux-amlogic@lists.infradead.org,
-        linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: Consolidate "sram" property definition
-Message-ID: <ldpcnzvloffhiubmv6zxhfzqo4oz3ntkmav6zjprmbnsrxd46z@t72iga4xvaji>
-References: <20260511165942.2774868-1-robh@kernel.org>
+	Wed, 13 May 2026 14:31:51 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 718B23BAFBE;
+	Wed, 13 May 2026 16:31:36 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
+	t=1778682702; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=wGwrTVlpyBxr5qWW8aL6TnSMvsiSJT067Q2+nosA5bY=;
+	b=B/XCR+DppU55EwSeXtuREkvRdYJcODV2tA4Bs+pSGoSOsZcxKQlZn49Y9eVK1VjaQBuULO
+	AAC/1kQThRW+65OdfiVAVA8bHancXLltsLEA7UxbqVilt8Y7kxTzFCQ89L+K9kyRD5mhCF
+	OpwGEShdNuRwHXCBnn/9Yo33iDHQvDMnypXTRAtsdLBDRad+aRdbX9/0bRkZgOAv+t3xQW
+	5bGyg5CdU3KYaDUvWkSekOwAwDHzM/CXVIDGSMsEX+9mFEEokHNR9RdZ2eqjKzDnx3vn5u
+	VDPHUsA4wc2z3DIZZBVH85Zkz2jmoMsaLywFmhdOex+0J2g2ThWLzyFBdm/NCA==
+Message-ID: <a4f84ba5-fe28-4674-b91b-33438f5478fb@cjdns.fr>
+Date: Wed, 13 May 2026 16:31:32 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260511165942.2774868-1-robh@kernel.org>
-X-Proofpoint-ORIG-GUID: JZCjGm5tHT4HOVoACkWpZkHg4mPRgMiC
-X-Proofpoint-GUID: JZCjGm5tHT4HOVoACkWpZkHg4mPRgMiC
-X-Authority-Analysis: v=2.4 cv=G9Ys1dk5 c=1 sm=1 tr=0 ts=6a047bf9 cx=c_pps
- a=5HAIKLe1ejAbszaTRHs9Ug==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
- a=NGcC8JguVDcA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22 a=VwQbUJbxAAAA:8
- a=EUspDBNiAAAA:8 a=VwfjHJzzgIKQiJfiZN8A:9 a=CjuIK1q_8ugA:10
- a=gYDTvv6II1OnSo0itH1n:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTEzMDEzOCBTYWx0ZWRfXz5WCaDajKK/0
- HV/PGB+4YwOsRsgPejg3aEqG4EbisrKTPfd4WIHEHWg4ANbP0xls0Fm1fwkYK1IwV65SDR0rpWB
- qydFMxZQLWzG74HpjUj2CGOSdLUy6NYaerIbrF5ONi6Q7Sy9mBskfg1gIUa80NM66cpHvWF+YT3
- u3eSdXwoMxtyX6SktgyNZNkaMKI6XpWR4yVSKDyy6ZBE3HeJr6+lD7nILFUiZEnhk4llGzavZ1v
- kUXK8OL+We7Nhw9w3Oi44e1pRL08DzBAQnxCVQ9QJl9PlPM+0VxwgOskwpOjuG6ZJ7Be3RBrRwb
- ehelThgYbWkw/bRxEn6wam04VVH7AfVioXsDvSMBS8xzdtoBJLAOsBrstZpCYl1XW6Yas5nXB3w
- gaj6tzoWPbbs9W9cqLXEG7cg9JNLVCuouZegWmqiFd5O2q5nyl4bMkfj7CmH72vKLpimwVEOywX
- GEKmMUWYnrm+v/USqhA==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-05-13_01,2026-05-08_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 malwarescore=0 adultscore=0 spamscore=0 phishscore=0
- clxscore=1015 priorityscore=1501 lowpriorityscore=0 bulkscore=0
- impostorscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2605050000
- definitions=main-2605130138
+User-Agent: Mozilla Thunderbird Beta
+Subject: Re: [PATCH v5 2/2] PCI: mediatek: Add support for EcoNet EN7528 SoC
+To: Manivannan Sadhasivam <mani@kernel.org>
+Cc: linux-pci@vger.kernel.org, linux-mips@vger.kernel.org,
+ naseefkm@gmail.com, ryder.lee@mediatek.com, helgaas@kernel.org,
+ lpieralisi@kernel.org, kwilczynski@kernel.org, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, ansuelsmth@gmail.com,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+References: <20260413140339.16238-1-cjd@cjdns.fr>
+ <20260413140339.16238-3-cjd@cjdns.fr>
+ <duchbakmiuf4ffmhgkoioq3qpxaybcevtcdduwiv2gf56j5ncr@kszd5v54ph3q>
+Content-Language: en-US
+From: Caleb James DeLisle <cjd@cjdns.fr>
+In-Reply-To: <duchbakmiuf4ffmhgkoioq3qpxaybcevtcdduwiv2gf56j5ncr@kszd5v54ph3q>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260513_062617_589394_D9EE1D58 
-X-CRM114-Status: GOOD (  15.36  )
+X-CRM114-CacheID: sfid-20260513_073150_628800_CF482989 
+X-CRM114-Status: GOOD (  31.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -200,38 +77,242 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 11, 2026 at 11:59:36AM -0500, Rob Herring (Arm) wrote:
-> The "sram" property has become a de facto standard property, so create a
-> common schema for it and drop all the duplicated definitions.
-> 
-> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-> ---
->  .../imx/fsl,imx8qxp-dc-command-sequencer.yaml |  2 +-
->  .../devicetree/bindings/display/msm/gpu.yaml  |  6 +----
+
+On 12/05/2026 13:55, Manivannan Sadhasivam wrote:
+> On Mon, Apr 13, 2026 at 02:03:39PM +0000, Caleb James DeLisle wrote:
+>> Add support for the PCIe present on the EcoNet EN7528 (and EN751221) SoCs.
+>>
+>> These SoCs have a mix of Gen1 and Gen2 capable ports, but the Gen2 ports
+>> require re-training after startup.
+>>
+>> Co-developed-by: Ahmed Naseef <naseefkm@gmail.com>
+>> Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
+>> Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
+>> ---
+>>   drivers/pci/controller/Kconfig         |   2 +-
+>>   drivers/pci/controller/pcie-mediatek.c | 133 +++++++++++++++++++++++++
+>>   2 files changed, 134 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
+>> index 686349e09cd3..5808d5e407fd 100644
+>> --- a/drivers/pci/controller/Kconfig
+>> +++ b/drivers/pci/controller/Kconfig
+>> @@ -209,7 +209,7 @@ config PCI_MVEBU
+>>   
+>>   config PCIE_MEDIATEK
+>>   	tristate "MediaTek PCIe controller"
+>> -	depends on ARCH_AIROHA || ARCH_MEDIATEK || COMPILE_TEST
+>> +	depends on ARCH_AIROHA || ARCH_MEDIATEK || ECONET || COMPILE_TEST
+>>   	depends on OF
+>>   	depends on PCI_MSI
+>>   	select IRQ_MSI_LIB
+>> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+>> index 75722524fe74..915a35825ce1 100644
+>> --- a/drivers/pci/controller/pcie-mediatek.c
+>> +++ b/drivers/pci/controller/pcie-mediatek.c
+>> @@ -7,6 +7,7 @@
+>>    *	   Honghui Zhang <honghui.zhang@mediatek.com>
+>>    */
+>>   
+>> +#include <asm-generic/errno-base.h>
+>>   #include <linux/clk.h>
+>>   #include <linux/delay.h>
+>>   #include <linux/iopoll.h>
+>> @@ -14,6 +15,7 @@
+>>   #include <linux/irqchip/chained_irq.h>
+>>   #include <linux/irqchip/irq-msi-lib.h>
+>>   #include <linux/irqdomain.h>
+>> +#include <linux/kconfig.h>
+>>   #include <linux/kernel.h>
+>>   #include <linux/mfd/syscon.h>
+>>   #include <linux/msi.h>
+>> @@ -77,6 +79,7 @@
+>>   
+>>   #define PCIE_CONF_VEND_ID	0x100
+>>   #define PCIE_CONF_DEVICE_ID	0x102
+>> +#define PCIE_CONF_REV_CLASS	0x104
+>>   #define PCIE_CONF_CLASS_ID	0x106
+>>   
+>>   #define PCIE_INT_MASK		0x420
+>> @@ -89,6 +92,11 @@
+>>   #define MSI_MASK		BIT(23)
+>>   #define MTK_MSI_IRQS_NUM	32
+>>   
+>> +#define EN7528_HOST_MODE	0x00804201
+>> +#define EN7528_LINKUP_REG	0x50
+>> +#define EN7528_RC0_LINKUP	BIT(1)
+>> +#define EN7528_RC1_LINKUP	BIT(2)
+>> +
+>>   #define PCIE_AHB_TRANS_BASE0_L	0x438
+>>   #define PCIE_AHB_TRANS_BASE0_H	0x43c
+>>   #define AHB2PCIE_SIZE(x)	((x) & GENMASK(4, 0))
+>> @@ -148,12 +156,15 @@ struct mtk_pcie_port;
+>>    * @MTK_PCIE_FIX_DEVICE_ID: host's device ID needed to be fixed
+>>    * @MTK_PCIE_NO_MSI: Bridge has no MSI support, and relies on an external block
+>>    * @MTK_PCIE_SKIP_RSTB: Skip calling RSTB bits on PCIe probe
+>> + * @MTK_PCIE_RETRAIN: Re-train link to bridge after startup because some
+>> + *                    Gen2-capable devices start as Gen1.
+>>    */
+>>   enum mtk_pcie_quirks {
+>>   	MTK_PCIE_FIX_CLASS_ID = BIT(0),
+>>   	MTK_PCIE_FIX_DEVICE_ID = BIT(1),
+>>   	MTK_PCIE_NO_MSI = BIT(2),
+>>   	MTK_PCIE_SKIP_RSTB = BIT(3),
+>> +	MTK_PCIE_RETRAIN = BIT(4),
+>>   };
+>>   
+>>   /**
+>> @@ -753,6 +764,80 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+>>   	return 0;
+>>   }
+>>   
+>> +static int mtk_pcie_startup_port_en7528(struct mtk_pcie_port *port)
+>> +{
+>> +	struct mtk_pcie *pcie = port->pcie;
+>> +	struct pci_host_bridge *host = pci_host_bridge_from_priv(pcie);
+>> +	struct resource *mem = NULL;
+>> +	struct resource_entry *entry;
+>> +	u32 val, link_mask;
+>> +	int err;
+>> +
+>> +	entry = resource_list_first_type(&host->windows, IORESOURCE_MEM);
+>> +	if (entry)
+>> +		mem = entry->res;
+>> +	if (!mem)
+>> +		return -EINVAL;
+>> +
+>> +	if (!pcie->cfg) {
+>> +		dev_err(pcie->dev, "EN7528: pciecfg syscon not available\n");
+>> +		return -EINVAL;
+>> +	}
+>> +
+>> +	/* Assert all reset signals */
+>> +	writel(0, port->base + PCIE_RST_CTRL);
+>> +
+>> +	/*
+>> +	 * Enable PCIe link down reset, if link status changed from link up to
+>> +	 * link down, this will reset MAC control registers and configuration
+>> +	 * space.
+>> +	 */
+>> +	writel(PCIE_LINKDOWN_RST_EN, port->base + PCIE_RST_CTRL);
+>> +
+>> +	msleep(PCIE_T_PVPERL_MS);
+>> +
+>> +	/* De-assert PHY, PE, PIPE, MAC and configuration reset */
+>> +	val = readl(port->base + PCIE_RST_CTRL);
+>> +	val |= PCIE_PHY_RSTB | PCIE_PERSTB | PCIE_PIPE_SRSTB |
+>> +	       PCIE_MAC_SRSTB | PCIE_CRSTB;
+>> +	writel(val, port->base + PCIE_RST_CTRL);
+>> +
+>> +	writel(PCIE_CLASS_CODE | PCIE_REVISION_ID,
+>> +	       port->base + PCIE_CONF_REV_CLASS);
+>> +	writel(EN7528_HOST_MODE, port->base);
+>> +
+>> +	link_mask = (port->slot == 0) ? EN7528_RC0_LINKUP : EN7528_RC1_LINKUP;
+>> +
+>> +	/* 100ms timeout value should be enough for Gen1/2 training */
+>> +	err = regmap_read_poll_timeout(pcie->cfg, EN7528_LINKUP_REG, val,
+>> +				       !!(val & link_mask), 20,
+>> +				       PCI_PM_D3COLD_WAIT * USEC_PER_MSEC);
+>> +	if (err) {
+>> +		dev_err(pcie->dev, "EN7528: port%d link timeout\n", port->slot);
+>> +		return -ETIMEDOUT;
+>> +	}
+>> +
+>> +	/* Activate INTx interrupts */
+>> +	val = readl(port->base + PCIE_INT_MASK);
+>> +	val &= ~INTX_MASK;
+>> +	writel(val, port->base + PCIE_INT_MASK);
+>> +
+>> +	if (IS_ENABLED(CONFIG_PCI_MSI))
+>> +		mtk_pcie_enable_msi(port);
+>> +
+>> +	/* Set AHB to PCIe translation windows */
+>> +	val = lower_32_bits(mem->start) |
+>> +	      AHB2PCIE_SIZE(fls(resource_size(mem)));
+>> +	writel(val, port->base + PCIE_AHB_TRANS_BASE0_L);
+>> +
+>> +	val = upper_32_bits(mem->start);
+>> +	writel(val, port->base + PCIE_AHB_TRANS_BASE0_H);
+>> +
+>> +	writel(WIN_ENABLE, port->base + PCIE_AXI_WINDOW0);
+>> +
+>> +	return 0;
+>> +}
+>> +
+>>   static void __iomem *mtk_pcie_map_bus(struct pci_bus *bus,
+>>   				      unsigned int devfn, int where)
+>>   {
+>> @@ -1149,6 +1234,46 @@ static int mtk_pcie_probe(struct platform_device *pdev)
+>>   	if (err)
+>>   		goto put_resources;
+>>   
+>> +	/* EN7528 PCIe initially comes up as Gen1 even if Gen2 is supported.
+>> +	 * The cannonical way to achieve Gen2 is to re-train the link
+>> +	 * immediately after setup. However, to save a lot of duplicated code
+>> +	 * we use pcie_retrain_link() which is usable once we have the pci_dev
+>> +	 * struct for the bridge, i.e. after pci_host_probe(). */
+> Use below style:
+>
+> 	/*
+> 	 * ...
+> 	 */
 
 
-Acked-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com> # display/msm
+Right, sorry, thanks.
 
 
->  .../bindings/dma/stericsson,dma40.yaml        |  8 ++----
->  .../bindings/media/cnm,wave521c.yaml          |  2 +-
->  .../bindings/media/nxp,imx8-jpeg.yaml         |  6 ++---
->  .../bindings/media/rockchip,vdec.yaml         |  5 ++--
->  .../bindings/media/st,stm32-dcmi.yaml         |  6 ++---
->  .../devicetree/bindings/net/mediatek,net.yaml |  3 +--
->  .../bindings/net/ti,icssg-prueth.yaml         |  2 +-
->  .../bindings/net/ti,icssm-prueth.yaml         |  2 +-
->  .../remoteproc/amlogic,meson-mx-ao-arc.yaml   |  7 +----
->  .../bindings/remoteproc/ti,k3-dsp-rproc.yaml  |  8 ------
->  .../bindings/remoteproc/ti,k3-r5f-rproc.yaml  |  8 ------
->  .../remoteproc/xlnx,zynqmp-r5fss.yaml         |  9 +------
->  .../devicetree/bindings/spi/st,stm32-spi.yaml | 10 +++----
->  .../bindings/sram/sram-consumer.yaml          | 26 +++++++++++++++++++
->  16 files changed, 48 insertions(+), 62 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/sram/sram-consumer.yaml
-> 
+>> +	if (pcie->soc->quirks & MTK_PCIE_RETRAIN) {
+>> +		int slot = of_get_pci_domain_nr(dev->of_node);
+> The returned value is not the slot number, but domain number. Both are different
+> numbering schemes.
+>
+>> +		struct pci_dev *rc = NULL;
+>> +		int ret = -ENOENT;
+>> +
+>> +		if (slot >= 0)
+>> +			rc = pci_get_slot(host->bus, PCI_DEVFN(slot, 0));
+> This looks wrong. If your intention is to find the Root Port of the hierarchy,
+> then you should do:
+>
+> 		pci_get_slot(host->bus, PCI_DEVFN(0, 0));
 
--- 
-With best wishes
-Dmitry
+
+Thank you for your review. What's happening here is the hardware exposes 
+two sets of registers for the two devices, but it expects that they 
+might all be controlled by one driver instance - so they hard-wired the 
+second root hub to slot 1. The Mediatek driver here wants to be 
+instantiated twice, so we end up with something like this:
+
+
+0000:00:00.0 PCI bridge: MEDIATEK Corp. Device 0810 (rev 03)
+0000:01:00.0 Network controller: MEDIATEK Corp. MT7662E 802.11ac PCI 
+Express Wireless Network Adapter
+0001:00:01.0 PCI bridge: MEDIATEK Corp. Device 0811 (rev 02)
+0001:01:00.0 Network controller: MEDIATEK Corp. MT7603E 802.11bgn PCI 
+Express Wireless Network Adapter
+
+So when it's domain 1, it's also slot 1 (unless the DT is written 
+backwards).
+
+
+The original code from Ahmed Naseef used a loop with pci_get_class() to 
+get all of the bridges that were on the right bus, but it was pointed 
+out in an earlier review that this would also re-train any hypothetical 
+bridge downstream of the root. So the current code specifically 
+re-trains the right bridge.
+
+I can re-send with this explanation wrapped up in the comment, or I 
+guess I could write a loop that tries slot 0 and 1 to find the bridge, 
+but I feel like the loop is a bit hair-splitting so I think my 
+preference would be to just explain it better.
+
+WDYT?
+
+Caleb
+
+
+>
+> - Mani
+>
 
