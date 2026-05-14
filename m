@@ -4,61 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3318ECD4F25
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2026 16:18:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D764CD4F25
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2026 16:23:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mKBPPmTGx6FxRH9DDtxyeNDWGdiIPkDIWoOa/2YnFcw=; b=3kz4zO6bauDlLTT0FBpHkouu7e
-	lIAVZgvWOVVOLm7fGfI1+w71nA3y1e5/mi3KhQIH+30LVELwt3a7gzwyNGyBf0WXpEgfeBMygDyOC
-	ol3TSAkvCa/+bBEJiJxEp9SuUR1LUovVCkwKm4vNzF8E5dIte5yHqzmpe+nJUZf2x51dk4rGlAEJ1
-	U71VJr9VzQmbT2Lu6vSZK3JP21yI6NoTcphp5NMeaR/8vNLzBy1v2aGNOEO2nfkAP+yYKbn51yzIb
-	SiRafhzo9OMUsTuf5dWpbrSY7yU1x41m1DBfpDeJqnLa17uppIcaBaXTposF4ApKkkPzKzH6BLLgG
-	go3PH+pg==;
+	bh=swS16nnIbpByZs7OpRIN4lF8yu7slWPN+Qu1EPsvXms=; b=5A2JFIX1ilNPAwLsPzb83nr6xA
+	qbKDSE3gN8pwESEtmIAa9iFy8ldGD+uBDpZP9wLd8nKT9516j7MHPFkqBLTuN07n+u04bASNs0iLk
+	Vrq+iYQuRuxs0mL2pnFhM3XfPisyuRkegtsuJa+uvaJazfBIacqGvNmk/R8BFdTntTIaN76dvLxyP
+	SZRcVi48mfWXfekLC5c56BEB3rkfUv1HNq0bP7Kp4DVeoV63et+JvlIGQSeVYoPYx55ZGeBYtN/uj
+	1WIegvK9+PwKXzfFQdny5H2aB3GFFNSR3umgaix5FNlc7CfttllymgHJjz3DaNMdGWrtRzCLEsFZ1
+	VLt/Po2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNYlK-000000061gH-19eI;
-	Thu, 14 May 2026 16:18:14 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wNYq9-000000062yb-1fcE;
+	Thu, 14 May 2026 16:23:13 +0000
+Received: from 013.lax.mailroute.net ([199.89.1.16])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNYlI-000000061eB-1eq2;
-	Thu, 14 May 2026 16:18:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id D56566013B;
-	Thu, 14 May 2026 16:18:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4AEF4C2BCC9;
-	Thu, 14 May 2026 16:18:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778775491;
-	bh=a/iNaIKbVrm7Lqc4Lt8ICQ/ivXXWN6UgmrAPOdkJyC4=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=q6EqVblN3S5MrSn/05eDZ4ZNEj2+AOlv14F7JpPZWZDP9J5QPiTiIjT45VZBmwTS3
-	 yMYMTVO+famxCqRJ4F1vbVSyxE1EdqyvfUbi5aSFsAci6x1t/77eES4+dleYFfRi6v
-	 DnpbaKlZlWXCNd8mOzxdoI6jXO1riFZLZGSVTGq89/FFXbs3+Fre5iq4EKqmqrbAR+
-	 4snhUXUj1VJeqg+mwweOBVZxRKKrf0RMeWjG1HGj9svvSMU11VZFtFtTaE6qFX3OH+
-	 YcQoinzKvmKaOV0GeT3ywC0Xn9gDcJhq7E9ZGrN17akPKAOxrRmG5Bd0ji1CCOGnF3
-	 cbYS6KfdPd4MQ==
-From: Vinod Koul <vkoul@kernel.org>
-To: linux-phy@lists.infradead.org, Rosen Penev <rosenp@gmail.com>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Kees Cook <kees@kernel.org>, "Gustavo A. R. Silva" <gustavoars@kernel.org>, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-hardening@vger.kernel.org
-In-Reply-To: <20260304043420.14151-1-rosenp@gmail.com>
-References: <20260304043420.14151-1-rosenp@gmail.com>
-Subject: Re: [PATCH] phy: mediatek: xsphy: reduce main allocation
-Message-Id: <177877548793.1092446.559033310365842656.b4-ty@kernel.org>
-Date: Thu, 14 May 2026 21:48:07 +0530
+	id 1wNYq7-000000062xk-0OWR
+	for linux-mediatek@lists.infradead.org;
+	Thu, 14 May 2026 16:23:12 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 013.lax.mailroute.net (Postfix) with ESMTP id 4gGbGh3sdPzlgy27;
+	Thu, 14 May 2026 16:23:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1778775781; x=1781367782; bh=swS16nnIbpByZs7OpRIN4lF8
+	yu7slWPN+Qu1EPsvXms=; b=V86cVgdpdUjmZfuK5xfIZaWfL/D0YtlbkLAV+lO3
+	eM10N88ARsPt9rSnVRTWMWr2gSFy6RIa+BOpOYQ/PudepMAbdDyB4dvsYZNeEGqV
+	emehd18P3wsK32w2M+c+R3bkfNOyTuwj2R+NOQsf6OnSiX3MW0J1YhXje6LAvBS6
+	x0pGNR2+KzGXUQmexoT5ALnrQVVJavHxSWV08YIvafl1FAgs4AtaUld0fYZCjeJt
+	8XsUTaRXK9As5bpye6ugKEZjZdUzBL+khGirqRLyNTTE/p4xMXNlkKVsW5/Uw9lV
+	sLPVgjAaFjOUMHskGc5OstDi+8WMNkCVvfsgZqZRujAQKw==
+X-Virus-Scanned: by MailRoute
+Received: from 013.lax.mailroute.net ([127.0.0.1])
+ by localhost (013.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id NEgB9YlGvc2u; Thu, 14 May 2026 16:23:01 +0000 (UTC)
+Received: from [100.119.48.131] (unknown [104.135.180.219])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 013.lax.mailroute.net (Postfix) with ESMTPSA id 4gGbGR50XTzlgy4t;
+	Thu, 14 May 2026 16:22:55 +0000 (UTC)
+Message-ID: <382f6d79-c877-4dc8-813b-ee91ac5489f9@acm.org>
+Date: Thu, 14 May 2026 09:22:54 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1] ufs: core: decouple CQE processing from spinlock
+ critical section
+To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
+ martin.petersen@oracle.com, avri.altman@sandisk.com,
+ alim.akhtar@samsung.com, jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, tun-yu.yu@mediatek.com,
+ eddie.huang@mediatek.com, naomi.chu@mediatek.com, ed.tsai@mediatek.com,
+ quic_cang@guicinc.com, quic_asutoshd@guicinc.com, light.hsieh@mediatek.com
+References: <20260514082906.58593-1-peter.wang@mediatek.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20260514082906.58593-1-peter.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.13.0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260514_092311_147011_C5965AA4 
+X-CRM114-Status: UNSURE (   6.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,23 +90,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 5/14/26 1:26 AM, peter.wang@mediatek.com wrote:
+> 4. In both ufshcd_mcq_compl_all_cqes_lock() and
+>     ufshcd_mcq_poll_cqe_lock(), snapshot the starting CQE pointer before
+>     advancing the head slot under the spinlock, then process the collected
+>     CQEs after releasing the lock using the new helper.
 
-On Tue, 03 Mar 2026 20:34:20 -0800, Rosen Penev wrote:
-> Instead of kzalloc and kcalloc, we can use a flex array to reduce to a
-> single allocation.
-> 
-> Also added __counted_by() for extra possible analysis.
-> 
-> 
+This can't work reliably. ufshcd_mcq_poll_cqe_lock() may be called
+concurrently from different CPU cores, e.g. from a UFS completion
+interrupt and from ufshcd_poll(). Processing CQEs without holding
+hwq->cq_lock may lead to overwriting of CQEs before these have been
+processed.
 
-Applied, thanks!
+Thanks,
 
-[1/1] phy: mediatek: xsphy: reduce main allocation
-      commit: fd6cd05ceabdf67635a4cef5145f79d1217bf11b
-
-Best regards,
--- 
-~Vinod
-
-
+Bart.
 
