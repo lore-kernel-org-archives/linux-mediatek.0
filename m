@@ -4,80 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD696CD4F39
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2026 12:51:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8386CCD4F39
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2026 12:57:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4vlJytSidKc8snvL5MKYl+dzduZrKLBbLsJ0Hnrp9Ig=; b=fxSnK5kj5WSYq4VwuZeHNLIYeH
-	sy2RMHbT0T0vjnQXeCfLyGpZmpsoq+A6iBxaG9Bg+m39rkGxUYBK3JP1CJ42WVcXCrfKv39znC7ME
-	a9ePw2cYLsaY1CkBLtg4tU9il4PzbjfbIvjz+7IkMdsXI+aEmAopLaIACDm1CPDerVpGu2Bnw/w7G
-	eQHd1OahZqmXSCmp37t1r/QTeUn8KYyrjHIP7GjLtES3s5bRlR4xc9RnA6/D2/pztW6V27KmBHoLW
-	QU/gUT1FWnJqpUQo4/iMIE8giQmEYKYC59zwyU2GIRguDis/KBozI4TLYrKGVsui3vkAddoffSG+f
-	2Vaa+ZIA==;
+	bh=nVJtoJwHA1qaK/rVte5qaXvlJbiset/mhzA6ephutU0=; b=NnJNADPBT/SvsnSOPN18enKCzb
+	EDLs27J29GTeFFP1b9YcCjsvgWn46UglYqpMPGgREF3Y3XagT0PhaloMuXfjB3TNGODr2bdyOmfed
+	X6GcBm0Cv7NQ5uMtaeo9yTwKdJKUF6TQHGBok3ABMcLsXCOaiFcfHUx/jLCVlfwukDaL/PrN8Dc6d
+	3KTaW497d/sJM+O5uQOwbN8ujZG73qXLC/D6dP1CjOMCyP6yGqIibLpTB8BZiNd+alyqILY/O6Pui
+	AHeyK6vbg1/7T3BuCc1FpFGO/XMks+7od87agDcBD2O00MBrxo87P9nDIieyrPWJuEHWFj0oMe6lm
+	e2ojVbZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNVWt-00000005Vt4-2Uqd;
-	Thu, 14 May 2026 12:51:07 +0000
-Received: from mgamail.intel.com ([198.175.65.13])
+	id 1wNVd4-00000005X3m-2dld;
+	Thu, 14 May 2026 12:57:30 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNVWq-00000005VrY-22MW;
-	Thu, 14 May 2026 12:51:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1778763065; x=1810299065;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=T6e1Sy8/8NgyzN/WXbmfEYNcRDAnhEjQBXWZGy3LDwE=;
-  b=Rmd9myy/flWHh358IgFkWN/J1H7uG4wqyv8ieBOpBIFIpG2GHvHWSxNX
-   JzznPaB6sjX1oRgkMLn7RtJTrdNz5akjv7+Wr6swg2kERqW6/kjPHCeP7
-   J5ooeuKsk0os8wqcyCGp+QIGH8KjgCIY00MmNEZ4N/UWNq8Hgs2cfu1OU
-   EkdeENfDapk/EdSOmP0pLTbAbqcJ+PeZtUrQv8Skr32whUFGCf4oAlSTv
-   hR2SmplLvgxZAWSr58D8/HNRshUWoOISHNKvWejMzoZTqO6Sm0F5b6BoC
-   90HRHOViaE+wwZeGWT9B2i2ef4157dAgnk2xioQPPuDn+aUFTkx0CzaPd
-   w==;
-X-CSE-ConnectionGUID: AffopVhGSiGoOu+UBWD4/A==
-X-CSE-MsgGUID: 4/dF3KeXQfqLQ+HsP1oKlQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11785"; a="90806964"
-X-IronPort-AV: E=Sophos;i="6.23,234,1770624000"; 
-   d="scan'208";a="90806964"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
-  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 May 2026 05:51:04 -0700
-X-CSE-ConnectionGUID: OoEm0waPTuODUxq408AFCA==
-X-CSE-MsgGUID: pz6o/H9EThWOPESAHnbf6A==
-X-ExtLoop1: 1
-Received: from igk-lkp-server01.igk.intel.com (HELO bdf09bfdbd5f) ([10.211.93.152])
-  by fmviesa003.fm.intel.com with ESMTP; 14 May 2026 05:50:58 -0700
-Received: from kbuild by bdf09bfdbd5f with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1wNVWi-000000008ob-0WmY;
-	Thu, 14 May 2026 12:50:56 +0000
-Date: Thu, 14 May 2026 14:50:17 +0200
-From: kernel test robot <lkp@intel.com>
-To: Hans Zhang <18255117159@163.com>, bhelgaas@google.com,
-	lpieralisi@kernel.org, kwilczynski@kernel.org, mani@kernel.org,
-	vigneshr@ti.com, jingoohan1@gmail.com, thomas.petazzoni@bootlin.com,
-	pali@kernel.org, ryder.lee@mediatek.com, jianjun.wang@mediatek.com,
-	claudiu.beznea.uj@bp.renesas.com, mpillai@cadence.com
-Cc: oe-kbuild-all@lists.linux.dev, robh@kernel.org, s-vadapalli@ti.com,
-	linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org, linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org, Hans Zhang <18255117159@163.com>
-Subject: Re: [PATCH v2 8/8] PCI: rzg3s-host: Add 100 ms delay after link
- training
-Message-ID: <202605141445.2Ag4i8fZ-lkp@intel.com>
-References: <20260506152346.166056-9-18255117159@163.com>
+	id 1wNVd2-00000005X3B-2TK3;
+	Thu, 14 May 2026 12:57:28 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 9C9246013B;
+	Thu, 14 May 2026 12:57:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C39F1C2BCB3;
+	Thu, 14 May 2026 12:57:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1778763447;
+	bh=AKwZQs2wlVU5d66RzEN5Yeb4ReFmnHAO0+173C7d698=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=JWHqLlK/wIwM/uCBb2Q7orVLvYK+1zY65FUJExviSdXrbpFG3rZp2RkmRNGEA9xLy
+	 vUlzRSt2sjt4Omv2vT3nHOZV4QLnETOk8XwsbcrTVjjIHjMiAkdzNX9nAHPIZAPvBZ
+	 fvFTsNC2+etSzMbeMG1XqkGkCbeDivxa2L5MMOMvUYoEjqkk/4tNS0yh/BxO61h5WT
+	 jFYVylaVULZdpPU46QKFfiAn6jH7lantX+Qte39+kTFwjApgi+zhy9i2EAqPP7seqG
+	 4GbFfz+2ly06YxzppyjZ7D2JBdjUfgsOaS+fwyH84bFJaF1a8FXlUfUufs6zDZf5Qv
+	 aFSS24mrSXWlg==
+Date: Thu, 14 May 2026 14:57:25 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Roman Vivchar <rva333@protonmail.com>
+Cc: Jonathan Cameron <jic23@kernel.org>, 
+	David Lechner <dlechner@baylibre.com>, Nuno =?utf-8?B?U8Oh?= <nuno.sa@analog.com>, 
+	Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sen Chu <sen.chu@mediatek.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>, 
+	Lee Jones <lee@kernel.org>, Srinivas Kandagatla <srini@kernel.org>, 
+	"Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@kernel.org>, 
+	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>, linux-iio@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, 
+	Ben Grisdale <bengris32@protonmail.ch>
+Subject: Re: [PATCH v2 01/16] dt-bindings: iio: adc: mt6359: generalize
+ description for mt63xx series
+Message-ID: <20260514-abiding-honored-mammoth-78dda0@quoll>
+References: <20260512-mt6323-v2-0-3efcba579e88@protonmail.com>
+ <20260512-mt6323-v2-1-3efcba579e88@protonmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20260506152346.166056-9-18255117159@163.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260514_055104_564042_20B25778 
-X-CRM114-Status: GOOD (  10.34  )
+In-Reply-To: <20260512-mt6323-v2-1-3efcba579e88@protonmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,57 +80,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Hans,
+On Tue, May 12, 2026 at 08:18:15AM +0300, Roman Vivchar wrote:
+> Update binding title to the MT63xx, since the list of compatibles already
+> includes mt6363 and mt6373 which don't belong to the mt6350 family.
+> 
+> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+> ---
+>  Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml b/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml
+> index 5d4ab701f51a..2e8857e104f5 100644
+> --- a/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml
+> +++ b/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml
+> @@ -4,7 +4,7 @@
+>  $id: http://devicetree.org/schemas/iio/adc/mediatek,mt6359-auxadc.yaml#
+>  $schema: http://devicetree.org/meta-schemas/core.yaml#
+>  
+> -title: MediaTek MT6350 series PMIC AUXADC
+> +title: MediaTek MT63xx series PMIC AUXADC
 
-kernel test robot noticed the following build warnings:
+Honestly that's close to churn... Do it while adding new compatibles.
 
-[auto build test WARNING on a293ec25d59dd96309058c70df5a4dd0f889a1e4]
+Best regards,
+Krzysztof
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Hans-Zhang/PCI-Add-pcie_wait_after_link_train-helper/20260514-132815
-base:   a293ec25d59dd96309058c70df5a4dd0f889a1e4
-patch link:    https://lore.kernel.org/r/20260506152346.166056-9-18255117159%40163.com
-patch subject: [PATCH v2 8/8] PCI: rzg3s-host: Add 100 ms delay after link training
-config: x86_64-rhel-9.4 (https://download.01.org/0day-ci/archive/20260514/202605141445.2Ag4i8fZ-lkp@intel.com/config)
-compiler: gcc-14 (Debian 14.2.0-19) 14.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260514/202605141445.2Ag4i8fZ-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202605141445.2Ag4i8fZ-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   In file included from drivers/pci/hotplug/pciehp_ctrl.c:24:
-   drivers/pci/hotplug/../pci.h: In function 'pcie_wait_after_link_train':
-   drivers/pci/hotplug/../pci.h:73:17: error: implicit declaration of function 'msleep' [-Wimplicit-function-declaration]
-      73 |                 msleep(PCIE_RESET_CONFIG_WAIT_MS);
-         |                 ^~~~~~
-   In file included from drivers/pci/hotplug/pciehp.h:21,
-                    from drivers/pci/hotplug/pciehp_ctrl.c:25:
-   include/linux/delay.h: At top level:
->> include/linux/delay.h:61:6: warning: conflicting types for 'msleep'; have 'void(unsigned int)'
-      61 | void msleep(unsigned int msecs);
-         |      ^~~~~~
-   drivers/pci/hotplug/../pci.h:73:17: note: previous implicit declaration of 'msleep' with type 'void(unsigned int)'
-      73 |                 msleep(PCIE_RESET_CONFIG_WAIT_MS);
-         |                 ^~~~~~
-
-
-vim +61 include/linux/delay.h
-
-^1da177e4c3f41 Linus Torvalds   2005-04-16  56  
-f3f3149f35b919 Alok Kataria     2008-06-23  57  extern unsigned long lpj_fine;
-^1da177e4c3f41 Linus Torvalds   2005-04-16  58  void calibrate_delay(void);
-ad1a48301f659a Arnd Bergmann    2023-05-17  59  unsigned long calibrate_delay_is_known(void);
-8496ecd0bed4c7 Valdis Kletnieks 2019-03-07  60  void __attribute__((weak)) calibration_delay_done(void);
-^1da177e4c3f41 Linus Torvalds   2005-04-16 @61  void msleep(unsigned int msecs);
-^1da177e4c3f41 Linus Torvalds   2005-04-16  62  unsigned long msleep_interruptible(unsigned int msecs);
-e4779015fd5d2f SeongJae Park    2021-12-10  63  void usleep_range_state(unsigned long min, unsigned long max,
-e4779015fd5d2f SeongJae Park    2021-12-10  64  			unsigned int state);
-e4779015fd5d2f SeongJae Park    2021-12-10  65  
-
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 
