@@ -4,109 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ADAECD4F39
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2026 12:32:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD696CD4F39
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2026 12:51:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vD3hV+OoUwK3h4rdB/YumY6LjJFZUC1528EvHzKfT8o=; b=wUarnLkP1JF1X0hoLlAEhnK9Xu
-	fNYQarprZ73uSMZArDbFy1cuzVIBjwAMH2YJMTsegqsvc4jODdWqceExLCSV/FjV8IrmmhDEWFuFR
-	R9+/3wVRNAzWC+Jp9KLWwWs8SgWn6n+dEOV82XnqamSHe7k7h1kqwSPh/YezuUkNqP66i4B9NYLwU
-	gMh4goINCVWLEhFV4ozIcAu6vXnLTlp+M6f6UoiTZxLPdd9qiTGJ+wNdiaT/wOsEqANtNPIvA8Igc
-	S3u/ihoGnAfpfae7qeMwaCuk2dl/XzSV13yg+ZrLw3fzUexlaelWuGKTIorBkxQIb6ezz75caawB9
-	p0ME1ezg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4vlJytSidKc8snvL5MKYl+dzduZrKLBbLsJ0Hnrp9Ig=; b=fxSnK5kj5WSYq4VwuZeHNLIYeH
+	sy2RMHbT0T0vjnQXeCfLyGpZmpsoq+A6iBxaG9Bg+m39rkGxUYBK3JP1CJ42WVcXCrfKv39znC7ME
+	a9ePw2cYLsaY1CkBLtg4tU9il4PzbjfbIvjz+7IkMdsXI+aEmAopLaIACDm1CPDerVpGu2Bnw/w7G
+	eQHd1OahZqmXSCmp37t1r/QTeUn8KYyrjHIP7GjLtES3s5bRlR4xc9RnA6/D2/pztW6V27KmBHoLW
+	QU/gUT1FWnJqpUQo4/iMIE8giQmEYKYC59zwyU2GIRguDis/KBozI4TLYrKGVsui3vkAddoffSG+f
+	2Vaa+ZIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNVEy-00000005Srj-0JPr;
-	Thu, 14 May 2026 12:32:36 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wNVWt-00000005Vt4-2Uqd;
+	Thu, 14 May 2026 12:51:07 +0000
+Received: from mgamail.intel.com ([198.175.65.13])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNVEw-00000005SrQ-05b0;
-	Thu, 14 May 2026 12:32:34 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 778336012B;
-	Thu, 14 May 2026 12:32:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1E577C2BCB3;
-	Thu, 14 May 2026 12:32:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778761953;
-	bh=yUdL4HvV+GJY4HsxY8hBpdvOPdpVc1WRWzDtFXGeMGQ=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=RiRSJqz+bDpm/6dTKo+1l4NzeYaoytGfd3p8Uy5x2D+g0i4PfPv5YYyJxuVobLRRr
-	 PcvdOHltdcL/nTRl3vjquglt+/d65EY2vBG90s+326YXAqUMX/qNNPUritLAb27ZDL
-	 uztWAaHpFUaMixZE8EwCe8keA5qv5Lw+phL1qg+mrE6ODr9MomyblfY89z0ixrsf9p
-	 6bCXRKsYwXaEjg/A9yEXfQ+szHprTT4ikWiaNCgopJpSUJtUoESJQa2Gbjm/wCHpnW
-	 6289z29JLSER7uBnZPpCvjIpTAC3Q7TIfWtVyWdKge7zMiGf3AzPDbv8LBZBNUhUC3
-	 03ElOchIr7AYg==
-Message-ID: <38d29061-64a4-45e8-891f-d688716058a5@kernel.org>
-Date: Thu, 14 May 2026 14:32:28 +0200
+	id 1wNVWq-00000005VrY-22MW;
+	Thu, 14 May 2026 12:51:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1778763065; x=1810299065;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=T6e1Sy8/8NgyzN/WXbmfEYNcRDAnhEjQBXWZGy3LDwE=;
+  b=Rmd9myy/flWHh358IgFkWN/J1H7uG4wqyv8ieBOpBIFIpG2GHvHWSxNX
+   JzznPaB6sjX1oRgkMLn7RtJTrdNz5akjv7+Wr6swg2kERqW6/kjPHCeP7
+   J5ooeuKsk0os8wqcyCGp+QIGH8KjgCIY00MmNEZ4N/UWNq8Hgs2cfu1OU
+   EkdeENfDapk/EdSOmP0pLTbAbqcJ+PeZtUrQv8Skr32whUFGCf4oAlSTv
+   hR2SmplLvgxZAWSr58D8/HNRshUWoOISHNKvWejMzoZTqO6Sm0F5b6BoC
+   90HRHOViaE+wwZeGWT9B2i2ef4157dAgnk2xioQPPuDn+aUFTkx0CzaPd
+   w==;
+X-CSE-ConnectionGUID: AffopVhGSiGoOu+UBWD4/A==
+X-CSE-MsgGUID: 4/dF3KeXQfqLQ+HsP1oKlQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11785"; a="90806964"
+X-IronPort-AV: E=Sophos;i="6.23,234,1770624000"; 
+   d="scan'208";a="90806964"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 May 2026 05:51:04 -0700
+X-CSE-ConnectionGUID: OoEm0waPTuODUxq408AFCA==
+X-CSE-MsgGUID: pz6o/H9EThWOPESAHnbf6A==
+X-ExtLoop1: 1
+Received: from igk-lkp-server01.igk.intel.com (HELO bdf09bfdbd5f) ([10.211.93.152])
+  by fmviesa003.fm.intel.com with ESMTP; 14 May 2026 05:50:58 -0700
+Received: from kbuild by bdf09bfdbd5f with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1wNVWi-000000008ob-0WmY;
+	Thu, 14 May 2026 12:50:56 +0000
+Date: Thu, 14 May 2026 14:50:17 +0200
+From: kernel test robot <lkp@intel.com>
+To: Hans Zhang <18255117159@163.com>, bhelgaas@google.com,
+	lpieralisi@kernel.org, kwilczynski@kernel.org, mani@kernel.org,
+	vigneshr@ti.com, jingoohan1@gmail.com, thomas.petazzoni@bootlin.com,
+	pali@kernel.org, ryder.lee@mediatek.com, jianjun.wang@mediatek.com,
+	claudiu.beznea.uj@bp.renesas.com, mpillai@cadence.com
+Cc: oe-kbuild-all@lists.linux.dev, robh@kernel.org, s-vadapalli@ti.com,
+	linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org, linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org, Hans Zhang <18255117159@163.com>
+Subject: Re: [PATCH v2 8/8] PCI: rzg3s-host: Add 100 ms delay after link
+ training
+Message-ID: <202605141445.2Ag4i8fZ-lkp@intel.com>
+References: <20260506152346.166056-9-18255117159@163.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/1] dt-bindings: remoteproc: mtk,scp: Allow multiple
- memory regions for MT8188
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Arnab Layek <arnab.layek@mediatek.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- andersson@kernel.org, mathieu.poirier@linaro.org,
- linux-remoteproc@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20260506133157.3283204-1-arnab.layek@mediatek.com>
- <20260514114533.174008-1-arnab.layek@mediatek.com>
- <20260514114533.174008-2-arnab.layek@mediatek.com>
- <20260514-poised-green-beagle-79cb9c@quoll>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20260514-poised-green-beagle-79cb9c@quoll>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260506152346.166056-9-18255117159@163.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260514_055104_564042_20B25778 
+X-CRM114-Status: GOOD (  10.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,35 +92,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 14/05/2026 14:30, Krzysztof Kozlowski wrote:
-> On Thu, May 14, 2026 at 07:45:33PM +0800, Arnab Layek wrote:
->> The MT8188 SCP requires support for 1-2 reserved memory regions, while
->> other MediaTek SoCs use only a single memory region.
->>
->> The schema uses a permissive base with restrictive conditionals:
->> 1) Base schema allows all devices minItems: 1, maxItems: 2
->> 2) Non-MT8188 devices (mt8183, mt8186, mt8192, mt8195, mt8195-dual) are
->>    restricted to maxItems: 1, overriding the base
->> 3) MT8188 devices (mt8188, mt8188-dual) set minItems: 1 with item
->>    descriptions, inheriting maxItems: 2 from base, making the second
->>    L1TCM region optional
->>
->> This follows the same pattern as other MediaTek dt-bindings such as
->> mediatek,jpeg-encoder.yaml which uses conditional schemas to support
->> different numbers of iommus per device variant.
->>
-> 
-> So I just reviewed v2, because it appeared in patchwork thread...
-> because you just threaded v3 there.
-> 
-> No, really, this was repeated also to Mediatek so many times.
-> 
-> Implement v2 review.
->
+Hi Hans,
 
-Heh, and now I noticed that you just merged THREE versions in one thread
-leading to complete mess in this entire thread.
+kernel test robot noticed the following build warnings:
 
-Best regards,
-Krzysztof
+[auto build test WARNING on a293ec25d59dd96309058c70df5a4dd0f889a1e4]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Hans-Zhang/PCI-Add-pcie_wait_after_link_train-helper/20260514-132815
+base:   a293ec25d59dd96309058c70df5a4dd0f889a1e4
+patch link:    https://lore.kernel.org/r/20260506152346.166056-9-18255117159%40163.com
+patch subject: [PATCH v2 8/8] PCI: rzg3s-host: Add 100 ms delay after link training
+config: x86_64-rhel-9.4 (https://download.01.org/0day-ci/archive/20260514/202605141445.2Ag4i8fZ-lkp@intel.com/config)
+compiler: gcc-14 (Debian 14.2.0-19) 14.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260514/202605141445.2Ag4i8fZ-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202605141445.2Ag4i8fZ-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+   In file included from drivers/pci/hotplug/pciehp_ctrl.c:24:
+   drivers/pci/hotplug/../pci.h: In function 'pcie_wait_after_link_train':
+   drivers/pci/hotplug/../pci.h:73:17: error: implicit declaration of function 'msleep' [-Wimplicit-function-declaration]
+      73 |                 msleep(PCIE_RESET_CONFIG_WAIT_MS);
+         |                 ^~~~~~
+   In file included from drivers/pci/hotplug/pciehp.h:21,
+                    from drivers/pci/hotplug/pciehp_ctrl.c:25:
+   include/linux/delay.h: At top level:
+>> include/linux/delay.h:61:6: warning: conflicting types for 'msleep'; have 'void(unsigned int)'
+      61 | void msleep(unsigned int msecs);
+         |      ^~~~~~
+   drivers/pci/hotplug/../pci.h:73:17: note: previous implicit declaration of 'msleep' with type 'void(unsigned int)'
+      73 |                 msleep(PCIE_RESET_CONFIG_WAIT_MS);
+         |                 ^~~~~~
+
+
+vim +61 include/linux/delay.h
+
+^1da177e4c3f41 Linus Torvalds   2005-04-16  56  
+f3f3149f35b919 Alok Kataria     2008-06-23  57  extern unsigned long lpj_fine;
+^1da177e4c3f41 Linus Torvalds   2005-04-16  58  void calibrate_delay(void);
+ad1a48301f659a Arnd Bergmann    2023-05-17  59  unsigned long calibrate_delay_is_known(void);
+8496ecd0bed4c7 Valdis Kletnieks 2019-03-07  60  void __attribute__((weak)) calibration_delay_done(void);
+^1da177e4c3f41 Linus Torvalds   2005-04-16 @61  void msleep(unsigned int msecs);
+^1da177e4c3f41 Linus Torvalds   2005-04-16  62  unsigned long msleep_interruptible(unsigned int msecs);
+e4779015fd5d2f SeongJae Park    2021-12-10  63  void usleep_range_state(unsigned long min, unsigned long max,
+e4779015fd5d2f SeongJae Park    2021-12-10  64  			unsigned int state);
+e4779015fd5d2f SeongJae Park    2021-12-10  65  
+
+--
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
