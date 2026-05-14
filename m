@@ -4,108 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1591CD4851
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2026 08:12:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C9ADCD4851
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2026 09:01:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Mfi3vmziZCkgZK4Pj66Mr9HPjc3VrKkwC6hLHO+X+Ns=; b=Oc4OENZykKRW5/82/w/Talz8uC
-	CdqitMRariXD5AZ1m1BMY7jt8p8UPDTxTOFAmGUuaN9o9geH62R9Hof+kFqUWk6RjS//ThqXJirSs
-	A5fqPKpVOGOZVFssrDBf19dEwoIQrFaUJ6cY4LMIbT97kCcv7S6zLmYZdcRnyICE/K/5k9brC/obh
-	q0hG8t88LElwqHIidvQPd8z++ioiPbJki6+/NZJn7S81gT4+JbJ3ZmyZsi3iuc+XOWHxMDN60FlDg
-	mrjq6snoLEO/VmnEm6Vr58aykDIfVHrhkqy2c2bQmfzceAIRVa9bm41WTEM9hIDuJi8oZYe80iI7j
-	Fs9AiErg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=1HD9rxwTY1qIhGlY5kodoQ8SagKtKiWqYuGlUGSzJJ0=; b=PdzgMr+kyNovIG8P7iXxIvJcn+
+	9/dzqW+RPrAVBGB8f643n3RrPusBdGnv42wH1ljxEABxtAa9PMUyk67G11BQLdgaYNqKShnCkg+cM
+	D7FQnvnOhJb8DXq227QEfdH5i9ohCpYNLSKZ/hb5N6DnfZPQ8b36gRQGd4LH87nhAMUzmnCyXeZeP
+	yiAx0+YRlPskLjqjY2XaFvFNYGkD5DtZlofaRvO99sEOqKe3b9JqP4wxegtFB/2xDWgyKfSAili4Z
+	j4vGjiP1Y6ERi6UGXYtf3fACXFPpLWnK/4T+tX6pmZDWpeLPQrapUPGDE1zCELgDkzcwHXjol4OdJ
+	T23+ILcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNRBX-00000004udN-25Xf;
-	Thu, 14 May 2026 08:12:47 +0000
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+	id 1wNRwx-000000050Et-0bd5;
+	Thu, 14 May 2026 09:01:47 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNRBR-00000004uc8-45yy
+	id 1wNRwu-000000050Du-1poI
 	for linux-mediatek@lists.infradead.org;
-	Thu, 14 May 2026 08:12:43 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-5a8d1f43432so6742907e87.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 14 May 2026 01:12:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1778746360; cv=none;
-        d=google.com; s=arc-20240605;
-        b=H3mhwI1BBJgrBR11RDKUAcjRlKxiI1owS6a9l7+Y6sf6HyoiekwIQw/sNnmbOdxr9U
-         bMvr5DcDiliOd8mT+MPwNqmxSIvNt1zSAuoXI+OlhFEOwGAE88OCe/4AhQdju3z6tCeo
-         IXxcoo+KILymUiaisOVJwTgI3HXrH/ZINcnArfTLtNiNkeMyxayO9dj5DNoBeOTivvGe
-         iRX1qBZesspR+UjPQ3ZnrMidvtqvl1ETpIL/x2fmYYQyuIQu9n9kV4LIqHaQpp0Hn+Ce
-         FeZp9KfRG7MCXX7UJ9d80nbU9a6GnOrTLQXdTZZSEwJ37ymHbyHlWfyogLOtvniErIdI
-         0Mng==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Mfi3vmziZCkgZK4Pj66Mr9HPjc3VrKkwC6hLHO+X+Ns=;
-        fh=6eM6FjRo0aX4m8u5GWLCySzGE2byeeEvpI1qE+9Q2gE=;
-        b=SBQ4xpOqh4Fwxwz/iXfMI4NTIumnYsHOwMIwOl181wjL5kO243ZPBf7zKYHyh4dZ8f
-         LE75bYu9vccBDRjM22+rCNf7GXvNyZhNVoLYV5C3YIhou31amIfcO+cYi338qVA2txqc
-         q5Hn66Wt75amokhtmAfu6hlai/RsKq6ufXPkb1p8eamxcPWOrAtIsD/ohhr2vhtbw6Oj
-         C7oeLuiVz081bPo4JNiAnDgAZsMXzqx/StVYtQqaIa66KcSA79YWZejqd6G6REHEAwmF
-         DnDDPAT/7X8po5Qm3hdH4mVdI2WkA2JOwr/4I3crt2EcLmwjnInx9GmejAh6bIPzXmMV
-         HDvw==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1778746360; x=1779351160; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Mfi3vmziZCkgZK4Pj66Mr9HPjc3VrKkwC6hLHO+X+Ns=;
-        b=Cx97w4wBccycMktS9sy0dvYrPQGimpUCab39QpVXqf5kUzhtCBpnR32LK5Je3ZCmdU
-         i8nDutj6dc4Jg5NgAzy741h5Xpcl8HE8IhvdHVGfxvusTWTgP57ZHTIyOVPaZ15Qm1vy
-         psuCqMUGCngypNAq/eMyMODL7DkmbUn6jLoR0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1778746360; x=1779351160;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=Mfi3vmziZCkgZK4Pj66Mr9HPjc3VrKkwC6hLHO+X+Ns=;
-        b=D/1oO403lviJ7TcT9namMmos9N3yegJ2Km3Jcq7ONo0g2tkqRXLHWWBTEyPzrqR/QZ
-         TLdVg87X5NFx0SYOadQwbhqhYWKY1rFFxDUfg4BkZNmr4goZozsEg58lzferCWq92M9f
-         UFBUyu7WoyqNlrT9lDp22I/vEbLXKv4ortwhQ7gPXofoT5jcIrCWovtuvdBdxXk84QbA
-         H8YZ8T9WD2SSKm70b/iG62zWWqqgqpHQ26jwkCNhrv4P87uMmaJQeji65EExEjNDUPRR
-         RMNVgbiA1zqvFcyvmbYidEccPZfw3yN9Twp/7aJTy+x/4r3gXGMGTpDByWzqg4reLeDI
-         m39A==
-X-Forwarded-Encrypted: i=1; AFNElJ9oeDqb3buz35/5o087ZDKz1uVQuH/Bh0tB5Qni7bS1tFQj7K9aiqiF3rVZ9x1zhDAaJkDBq9JwfTjZJaoudQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywis2+0dLqmPzBM2Q6gGEJaudVQn8AzOCROkuaocykEo7UO6L2b
-	Lz+6dIe8qSRoYw7+rLRXGn7sivH2v8zCr3UyoIqzvToLonQFybxuVAj8+rac7qjBs44WGecrPtW
-	nNR1almJcWf4S8J/TeaglK4snAj5wQlYUR+k1+zG6
-X-Gm-Gg: Acq92OHF9IgrpoKVjrvwyPdiaeq8ophMs1N69L8uDNmFfFrelDrUlNrSbAHOP2Dg+MI
-	6eF7i7SpZce9di7+t6bIW9Hrt2MptH29V+j6EiCVF+pCAoYThATWEaXYnWIymIC1CBB5nydwJ7m
-	FedT5GxR9gHw5/hKXhR0Df9ssGc3ohOob1/g+D+Rs63pfZXSHm24hDL0v37ANZYQ2Hby+LI2bc9
-	DhbxsF7/zqyXhPXFtm59ss87Ah9WqH5DBYNhiBxjaNAGFixPXw5OOwHRP0rRaI00CaaKbKfE1TN
-	wcerrZZgltWGITyRdT+xfLRh0Vj+3VqrXAclaX6JKhTO+Qs+
-X-Received: by 2002:a05:6512:2309:b0:5a7:42e2:db4 with SMTP id
- 2adb3069b0e04-5a8f37c58abmr1953278e87.15.1778746359826; Thu, 14 May 2026
- 01:12:39 -0700 (PDT)
+	Thu, 14 May 2026 09:01:45 +0000
+X-UUID: 7cf946ce4f7311f1afed4741b24580c9-20260514
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=1HD9rxwTY1qIhGlY5kodoQ8SagKtKiWqYuGlUGSzJJ0=;
+	b=g95NK8WFRsikCJDh70BgJjTa/fsbNku+jQqvLA2Deg9MXs1Tyd7oDHQpsXlg78n3C7Ry2hTDkhMiuWEQI+GKmUJ37h55w09o7zDL/P/DEvAqWc4isviL4CtGnIVMPPrgF7J26A/PoAQ5HOHrLj7jJ9izmMOnCFUwZl0022vew64=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.14,REQID:e6c9bbce-352c-4a0a-8ad7-9745723678e4,IP:0,U
+	RL:0,TC:0,Content:0,EDM:-20,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-20
+X-CID-META: VersionHash:9091e75,CLOUDID:ecf1e640-4f1a-4cd1-8315-22e1f88ac479,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|123|836|865|888|898,TC:-5,Conten
+	t:0|15|50,EDM:1,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OS
+	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 7cf946ce4f7311f1afed4741b24580c9-20260514
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2017440906; Thu, 14 May 2026 02:01:26 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Thu, 14 May 2026 17:01:23 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Thu, 14 May 2026 17:01:23 +0800
+From: <peter.wang@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+	<avri.altman@sandisk.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <tun-yu.yu@mediatek.com>,
+	<eddie.huang@mediatek.com>, <naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>,
+	<bvanassche@acm.org>, <quic_cang@guicinc.com>, <quic_asutoshd@guicinc.com>,
+	<light.hsieh@mediatek.com>
+Subject: [PATCH v1] ufs: core: decouple CQE processing from spinlock critical section
+Date: Thu, 14 May 2026 16:26:39 +0800
+Message-ID: <20260514082906.58593-1-peter.wang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-References: <20260508063633.3894348-1-wenst@chromium.org> <20260513231550.GA2280946-robh@kernel.org>
-In-Reply-To: <20260513231550.GA2280946-robh@kernel.org>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 14 May 2026 16:12:28 +0800
-X-Gm-Features: AVHnY4KRPKUvW-Q_3NPzMqxJlma4P7nPyfNutA30R4nWp-TJgNSuE21IDg-csC8
-Message-ID: <CAGXv+5EXw4rXD7URhXvotxsPG81EGhhk6wqnFuVWig=dTdNCXA@mail.gmail.com>
-Subject: Re: [PATCH] dt-bindings: PCI: mediatek-gen3: Allow memory-region for
- restricted DMA buffer
-To: Rob Herring <robh@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Ryder Lee <ryder.lee@mediatek.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
-	Manivannan Sadhasivam <mani@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
-	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260514_011242_073833_B539956B 
-X-CRM114-Status: GOOD (  23.00  )
+X-CRM114-CacheID: sfid-20260514_020144_494204_096F616C 
+X-CRM114-Status: GOOD (  20.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,62 +90,166 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 14, 2026 at 7:15=E2=80=AFAM Rob Herring <robh@kernel.org> wrote=
-:
->
-> On Fri, May 08, 2026 at 02:36:32PM +0800, Chen-Yu Tsai wrote:
-> > On some SoCs without an IOMMU behind the PCIe controller, the PCIe
-> > controller memory access could be limited to a small region by the
-> > firmware configuring a memory protection unit. This memory region
-> > must be assigned to the PCIe controller so that the OS knows to
-> > use that region. Otherwise PCIe devices would not work properly.
-> >
->
-> What you are describing is dma-ranges. Why not use that?
+From: Peter Wang <peter.wang@mediatek.com>
 
-Answer from yesterday:
+Currently, ufshcd_mcq_process_cqe() is called while holding the CQ
+spinlock, which can lead to unnecessary lock contention since CQE
+processing may involve time-consuming operations like completing I/O
+requests and invoking callbacks.
 
-I didn't know about it. I was just moving the property from the WiFi
-controller node down to the PCIe controller in the other DT patch [1].
+Refactor the CQE processing flow to separate the lock-protected queue
+head/tail slot updates from the actual CQE processing:
 
-Answer from today:
+1. Add a new 'cqe_last_addr' field to 'ufs_hw_queue' to cache the
+   address of the last CQE entry, precomputed during memory allocation
+   in ufshcd_mcq_memory_alloc(). This avoids repeated recalculation
+   during the hot path.
 
-Also, it doesn't work. See my reply to Mani.
+2. Introduce ufshcd_mcq_inc_cqe_addr() helper in ufshcd-priv.h to
+   increment a CQE pointer with wraparound, using 'cqe_last_addr' for
+   boundary checking.
 
+3. Refactor ufshcd_mcq_process_cqe() to accept a 'struct cq_entry *'
+   directly instead of deriving it from the hardware queue, decoupling
+   it from queue state.
 
-ChenYu
+4. In both ufshcd_mcq_compl_all_cqes_lock() and
+   ufshcd_mcq_poll_cqe_lock(), snapshot the starting CQE pointer before
+   advancing the head slot under the spinlock, then process the collected
+   CQEs after releasing the lock using the new helper.
 
-> > Allow the memory-region property with one item pointing to a
-> > restricted DMA buffer.
-> >
-> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> > ---
-> > This patch compliments another patch that moved the memory-region from
-> > the PCIe device to the PCIe controller [1].
-> >
-> > [1] https://lore.kernel.org/all/20260430120725.241779-1-wenst@chromium.=
-org/
-> >
-> >  Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml | 4 ++++
-> >  1 file changed, 4 insertions(+)
-> >
-> > diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.y=
-aml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> > index 4db700fc36ba..4a9e41d01628 100644
-> > --- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> > +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> > @@ -115,6 +115,10 @@ properties:
-> >    power-domains:
-> >      maxItems: 1
-> >
-> > +  memory-region:
-> > +    maxItems: 1
-> > +    description: phandle to restricted DMA buffer
-> > +
-> >    mediatek,pbus-csr:
-> >      $ref: /schemas/types.yaml#/definitions/phandle-array
-> >      items:
-> > --
-> > 2.54.0.563.g4f69b47b94-goog
-> >
+This reduces the time spent holding the CQ spinlock to only the
+minimal queue slot management operations, improving concurrency and
+reducing latency under heavy I/O workloads.
+
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+---
+ drivers/ufs/core/ufs-mcq.c     | 23 ++++++++++++++++++-----
+ drivers/ufs/core/ufshcd-priv.h | 20 ++++++++++++++++++++
+ include/ufs/ufshcd.h           |  1 +
+ 3 files changed, 39 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
+index c1b1d67a1ddc..74a6595f9bda 100644
+--- a/drivers/ufs/core/ufs-mcq.c
++++ b/drivers/ufs/core/ufs-mcq.c
+@@ -248,6 +248,7 @@ int ufshcd_mcq_memory_alloc(struct ufs_hba *hba)
+ 			dev_err(hba->dev, "CQE allocation failed\n");
+ 			return -ENOMEM;
+ 		}
++		hwq->cqe_last_addr = hwq->cqe_base_addr + hwq->max_entries - 1;
+ 	}
+ 
+ 	return 0;
+@@ -307,10 +308,8 @@ static int ufshcd_mcq_get_tag(struct ufs_hba *hba, struct cq_entry *cqe)
+ }
+ 
+ static void ufshcd_mcq_process_cqe(struct ufs_hba *hba,
+-				   struct ufs_hw_queue *hwq)
++			           struct cq_entry *cqe)
+ {
+-	struct cq_entry *cqe = ufshcd_mcq_cur_cqe(hwq);
+-
+ 	if (cqe->command_desc_base_addr) {
+ 		int tag = ufshcd_mcq_get_tag(hba, cqe);
+ 
+@@ -335,10 +334,12 @@ void ufshcd_mcq_compl_all_cqes_lock(struct ufs_hba *hba,
+ {
+ 	unsigned long flags;
+ 	u32 entries = hwq->max_entries;
++	struct cq_entry *cqe;
++	int i;
+ 
+ 	spin_lock_irqsave(&hwq->cq_lock, flags);
++	cqe = ufshcd_mcq_cur_cqe(hwq);
+ 	while (entries > 0) {
+-		ufshcd_mcq_process_cqe(hba, hwq);
+ 		ufshcd_mcq_inc_cq_head_slot(hwq);
+ 		entries--;
+ 	}
+@@ -346,6 +347,11 @@ void ufshcd_mcq_compl_all_cqes_lock(struct ufs_hba *hba,
+ 	ufshcd_mcq_update_cq_tail_slot(hwq);
+ 	hwq->cq_head_slot = hwq->cq_tail_slot;
+ 	spin_unlock_irqrestore(&hwq->cq_lock, flags);
++
++	for (i = 0; i < hwq->max_entries; i++) {
++		ufshcd_mcq_process_cqe(hba, cqe);
++		cqe = ufshcd_mcq_inc_cqe_addr(hwq, cqe);
++	}
+ }
+ 
+ unsigned long ufshcd_mcq_poll_cqe_lock(struct ufs_hba *hba,
+@@ -353,11 +359,13 @@ unsigned long ufshcd_mcq_poll_cqe_lock(struct ufs_hba *hba,
+ {
+ 	unsigned long completed_reqs = 0;
+ 	unsigned long flags;
++	struct cq_entry *cqe;
++	int i;
+ 
+ 	spin_lock_irqsave(&hwq->cq_lock, flags);
++	cqe = ufshcd_mcq_cur_cqe(hwq);
+ 	ufshcd_mcq_update_cq_tail_slot(hwq);
+ 	while (!ufshcd_mcq_is_cq_empty(hwq)) {
+-		ufshcd_mcq_process_cqe(hba, hwq);
+ 		ufshcd_mcq_inc_cq_head_slot(hwq);
+ 		completed_reqs++;
+ 	}
+@@ -366,6 +374,11 @@ unsigned long ufshcd_mcq_poll_cqe_lock(struct ufs_hba *hba,
+ 		ufshcd_mcq_update_cq_head(hwq);
+ 	spin_unlock_irqrestore(&hwq->cq_lock, flags);
+ 
++	for (i = 0; i < completed_reqs; i++) {
++		ufshcd_mcq_process_cqe(hba, cqe);
++		cqe = ufshcd_mcq_inc_cqe_addr(hwq, cqe);
++	}
++
+ 	return completed_reqs;
+ }
+ EXPORT_SYMBOL_GPL(ufshcd_mcq_poll_cqe_lock);
+diff --git a/drivers/ufs/core/ufshcd-priv.h b/drivers/ufs/core/ufshcd-priv.h
+index 0a72148cb053..6d4d3e726a9a 100644
+--- a/drivers/ufs/core/ufshcd-priv.h
++++ b/drivers/ufs/core/ufshcd-priv.h
+@@ -440,6 +440,26 @@ static inline struct scsi_cmnd *ufshcd_tag_to_cmd(struct ufs_hba *hba, u32 tag)
+ 	return blk_mq_rq_to_pdu(rq);
+ }
+ 
++/**
++ * ufshcd_mcq_inc_cqe_addr - increment CQE pointer with wraparound
++ * @hwq: pointer to the hardware queue
++ * @cqe: current CQE pointer to increment
++ *
++ * Increments the CQE pointer to the next entry. If the pointer
++ * exceeds the last entry, it wraps around to the base address.
++ *
++ * Returns: pointer to the next cq_entry
++ */
++static inline struct cq_entry *ufshcd_mcq_inc_cqe_addr(struct ufs_hw_queue *q,
++	struct cq_entry *cqe)
++{
++        cqe++;
++        if (cqe > q->cqe_last_addr)
++                cqe = q->cqe_base_addr;
++
++        return cqe;
++}
++
+ static inline void ufshcd_inc_sq_tail(struct ufs_hw_queue *q)
+ 	__must_hold(&q->sq_lock)
+ {
+diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
+index cfbc75d8df83..1becb38e215e 100644
+--- a/include/ufs/ufshcd.h
++++ b/include/ufs/ufshcd.h
+@@ -1291,6 +1291,7 @@ struct ufs_hw_queue {
+ 	struct utp_transfer_req_desc *sqe_base_addr;
+ 	dma_addr_t sqe_dma_addr;
+ 	struct cq_entry *cqe_base_addr;
++	struct cq_entry *cqe_last_addr;
+ 	dma_addr_t cqe_dma_addr;
+ 	u32 max_entries;
+ 	u32 id;
+-- 
+2.45.2
+
 
