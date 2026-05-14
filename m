@@ -4,79 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21982CD4F39
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2026 12:01:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3047CD4F39
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2026 12:20:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kJQqS4PQIMT43o0/jBTZZXHcdzByOY4XAL5JDZHdgEc=; b=gjgji785d5Swe9e45hJ+Wxlobd
-	83/cJb6k91rOIECMu0FpnrKFNOY263bS1/CaEJhaPofpzG6C5mkpX71FxnUWaCuTH2HRr01F2AUKa
-	6vJdlJu/qW5LJWe4J3FtAhDL+Ze1aNri+W12QqDdtaHCjPWehZHCatOHRdlEYg3b+SCAamtp1h8KB
-	B/HZiVCB/QvcDEC4Gq4FEnMOmdMo8W71DVzJ6qaKJXkUpT+OiHY1bGJWVSwmQRiyT0XNJtvCv1+1H
-	0QWp0rtHhBQQWLPYfSuZ2Ru0W4ppATXvMltJUO8p7Otqc0kSmlqK051uprABpUv6YrggPW63ITR73
-	t3XuTnYQ==;
+	bh=daz4LMEo8nCEydnFK0zjrq9qJylLQxczPgtQdJUJrrA=; b=j7dIOC/k06BHWSk9lvq14GDQCq
+	CyIO6durXksV79GMKQO9g0Sh/uiAh5qnQtuj3kJia68nKUsEvVktHLw5cIQWNKEAXlpAYLoJmdx4k
+	guGhFq53Gzxg9T6lWZAGqEApG1MXDtMFagxHz7ha4csIrgChQ+laphnf60K6VfIZgbIZ3Og3JNvLA
+	YXFWRehb2XS8ypUDaVTwsOFWZQJoD1OkarGfcoVFt/61CCIA06xv5q/iHthwxmZm4lUVxeMrKRWEM
+	OeT2iyAHZlfVFzEFqwtnq3XyRuqrrduJneoJGaUOmT4qUOTBBPaKZcpPa1U3J+9kKEdBRLdAi6ugD
+	lnl6uEJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNUkV-00000005OsO-2SPb;
-	Thu, 14 May 2026 12:01:07 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1wNV2s-00000005RL4-2Tle;
+	Thu, 14 May 2026 12:20:06 +0000
+Received: from mgamail.intel.com ([192.198.163.10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNUkT-00000005Orq-17Z6;
-	Thu, 14 May 2026 12:01:06 +0000
-X-UUID: 6e38baa44f8a11f1afed4741b24580c9-20260514
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=kJQqS4PQIMT43o0/jBTZZXHcdzByOY4XAL5JDZHdgEc=;
-	b=LiS42PMWA29jcC+1YTjT4BR4uVMtg9kbQbm3WXFysvHGQ071UdTkpu0EB08Ro3hLXzhRsH//IUrsJnuYOXEW0o7Ia73EwQDNaDx5+kelrqnXzyURX3vePdqPjTYUW+88h9rVfwrcY41XCrj8IxaCW5j5CwdVBOXY8WfDqcJYc3Y=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.14,REQID:d7207048-9b50-4d26-bff6-16c91366ad6a,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:9091e75,CLOUDID:77bd41c8-ea23-4b4b-9221-06b52a563801,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|865|888|898,TC:-5,Cont
-	ent:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0
-	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 6e38baa44f8a11f1afed4741b24580c9-20260514
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
-	(envelope-from <arnab.layek@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 745868422; Thu, 14 May 2026 04:45:39 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Thu, 14 May 2026 19:45:37 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Thu, 14 May 2026 19:45:37 +0800
-From: Arnab Layek <arnab.layek@mediatek.com>
-To: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: <arnab.layek@mediatek.com>, <robh@kernel.org>, <krzk+dt@kernel.org>,
-	<conor+dt@kernel.org>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <andersson@kernel.org>,
-	<mathieu.poirier@linaro.org>, <linux-remoteproc@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v3 1/1] dt-bindings: remoteproc: mtk,scp: Allow multiple memory regions for MT8188
-Date: Thu, 14 May 2026 19:45:33 +0800
-Message-ID: <20260514114533.174008-2-arnab.layek@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20260514114533.174008-1-arnab.layek@mediatek.com>
-References: <20260506133157.3283204-1-arnab.layek@mediatek.com>
- <20260514114533.174008-1-arnab.layek@mediatek.com>
+	id 1wNV2p-00000005RKQ-3epQ;
+	Thu, 14 May 2026 12:20:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1778761204; x=1810297204;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=3d8DUSA04YEeeaSJDsq0tBuKoX/EgDy6elaulwtaoYI=;
+  b=EdMdUiaDZfUGiTIdB60cT8rkUYm/RKnxd8VCnb59IFrQc91jv+lPoza4
+   FHWD24cUhZvFK5x7EiBmLfgNJhf9MFfX3yJV9p0qyV/Uw9/UIdIg4S9tt
+   e0YYbpv2HG8fhoS8G4WnYgvLopJzNbX7ozU8YrqqHtO2WSXfGpPojIMgS
+   6ogYTRioHMyZj2d7puHCgomIX1af0rFnsU9eI9MIGDU/11lNjBwzihO1m
+   L0JlYq/FvxpPRnHX9Zw4ZOQLutFLmOq9eZzoudQi3tHZdVOg/DuV9ew5f
+   7eYDLpW2ykE3bfKPjn7yRvvqUVZ7VMVaR/L4OiRnFQXgF2b67il6PkvKP
+   w==;
+X-CSE-ConnectionGUID: EqlS5TwsTWGVnRkNI2PE6w==
+X-CSE-MsgGUID: fR2hGJnuSLGdQAXfzLqqeA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11785"; a="91087132"
+X-IronPort-AV: E=Sophos;i="6.23,234,1770624000"; 
+   d="scan'208";a="91087132"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 May 2026 05:20:02 -0700
+X-CSE-ConnectionGUID: SgABm03mTjmMHc+nrGJewg==
+X-CSE-MsgGUID: EJUbuaw/RnyDNWwkMBfBxQ==
+X-ExtLoop1: 1
+Received: from igk-lkp-server01.igk.intel.com (HELO bdf09bfdbd5f) ([10.211.93.152])
+  by fmviesa003.fm.intel.com with ESMTP; 14 May 2026 05:19:58 -0700
+Received: from kbuild by bdf09bfdbd5f with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1wNV2i-000000008oV-0F3n;
+	Thu, 14 May 2026 12:19:56 +0000
+Date: Thu, 14 May 2026 14:19:35 +0200
+From: kernel test robot <lkp@intel.com>
+To: Hans Zhang <18255117159@163.com>, bhelgaas@google.com,
+	lpieralisi@kernel.org, kwilczynski@kernel.org, mani@kernel.org,
+	vigneshr@ti.com, jingoohan1@gmail.com, thomas.petazzoni@bootlin.com,
+	pali@kernel.org, ryder.lee@mediatek.com, jianjun.wang@mediatek.com,
+	claudiu.beznea.uj@bp.renesas.com, mpillai@cadence.com
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev, robh@kernel.org,
+	s-vadapalli@ti.com, linux-omap@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org, linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org, Hans Zhang <18255117159@163.com>
+Subject: Re: [PATCH v2 8/8] PCI: rzg3s-host: Add 100 ms delay after link
+ training
+Message-ID: <202605141426.2RPW8nvf-lkp@intel.com>
+References: <20260506152346.166056-9-18255117159@163.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260506152346.166056-9-18255117159@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260514_050105_323214_22677EB1 
-X-CRM114-Status: UNSURE (   9.44  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260514_052003_954179_2C71E970 
+X-CRM114-Status: GOOD (  10.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,96 +93,88 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT8188 SCP requires support for 1-2 reserved memory regions, while
-other MediaTek SoCs use only a single memory region.
+Hi Hans,
 
-The schema uses a permissive base with restrictive conditionals:
-1) Base schema allows all devices minItems: 1, maxItems: 2
-2) Non-MT8188 devices (mt8183, mt8186, mt8192, mt8195, mt8195-dual) are
-   restricted to maxItems: 1, overriding the base
-3) MT8188 devices (mt8188, mt8188-dual) set minItems: 1 with item
-   descriptions, inheriting maxItems: 2 from base, making the second
-   L1TCM region optional
+kernel test robot noticed the following build errors:
 
-This follows the same pattern as other MediaTek dt-bindings such as
-mediatek,jpeg-encoder.yaml which uses conditional schemas to support
-different numbers of iommus per device variant.
+[auto build test ERROR on a293ec25d59dd96309058c70df5a4dd0f889a1e4]
 
-Signed-off-by: Arnab Layek <arnab.layek@mediatek.com>
----
- .../bindings/remoteproc/mtk,scp.yaml          | 45 ++++++++++++++++++-
- 1 file changed, 43 insertions(+), 2 deletions(-)
+url:    https://github.com/intel-lab-lkp/linux/commits/Hans-Zhang/PCI-Add-pcie_wait_after_link_train-helper/20260514-132815
+base:   a293ec25d59dd96309058c70df5a4dd0f889a1e4
+patch link:    https://lore.kernel.org/r/20260506152346.166056-9-18255117159%40163.com
+patch subject: [PATCH v2 8/8] PCI: rzg3s-host: Add 100 ms delay after link training
+config: x86_64-kexec (https://download.01.org/0day-ci/archive/20260514/202605141426.2RPW8nvf-lkp@intel.com/config)
+compiler: clang version 20.1.8 (https://github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260514/202605141426.2RPW8nvf-lkp@intel.com/reproduce)
 
-diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-index bdbb12118da4..fca9b0675eae 100644
---- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-+++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-@@ -55,7 +55,8 @@ properties:
-       initializing SCP.
- 
-   memory-region:
--    maxItems: 1
-+    minItems: 1
-+    maxItems: 2
- 
-   cros-ec-rpmsg:
-     $ref: /schemas/embedded-controller/google,cros-ec.yaml
-@@ -123,7 +124,8 @@ patternProperties:
-           initializing sub cores of multi-core SCP.
- 
-       memory-region:
--        maxItems: 1
-+        minItems: 1
-+        maxItems: 2
- 
-       cros-ec-rpmsg:
-         $ref: /schemas/embedded-controller/google,cros-ec.yaml
-@@ -205,6 +207,45 @@ allOf:
-           items:
-             - const: cfg
-             - const: l1tcm
-+  - if:
-+      properties:
-+        compatible:
-+          enum:
-+            - mediatek,mt8183-scp
-+            - mediatek,mt8186-scp
-+            - mediatek,mt8192-scp
-+            - mediatek,mt8195-scp
-+            - mediatek,mt8195-scp-dual
-+    then:
-+      properties:
-+        memory-region:
-+          maxItems: 1
-+      patternProperties:
-+        "^scp@[a-f0-9]+$":
-+          properties:
-+            memory-region:
-+              maxItems: 1
-+  - if:
-+      properties:
-+        compatible:
-+          enum:
-+            - mediatek,mt8188-scp
-+            - mediatek,mt8188-scp-dual
-+    then:
-+      properties:
-+        memory-region:
-+          minItems: 1
-+          items:
-+            - description: Main SCP SRAM memory region
-+            - description: Optional SCP L1TCM memory region
-+      patternProperties:
-+        "^scp@[a-f0-9]+$":
-+          properties:
-+            memory-region:
-+              minItems: 1
-+              items:
-+                - description: Main SCP SRAM memory region
-+                - description: Optional SCP L1TCM memory region
- 
- additionalProperties: false
- 
--- 
-2.45.2
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202605141426.2RPW8nvf-lkp@intel.com/
+
+All error/warnings (new ones prefixed by >>):
+
+   In file included from drivers/pci/access.c:8:
+>> drivers/pci/pci.h:73:3: error: call to undeclared function 'msleep'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+      73 |                 msleep(PCIE_RESET_CONFIG_WAIT_MS);
+         |                 ^
+   1 error generated.
+--
+   In file included from drivers/pci/rebar.c:17:
+>> drivers/pci/pci.h:73:3: error: call to undeclared function 'msleep'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+      73 |                 msleep(PCIE_RESET_CONFIG_WAIT_MS);
+         |                 ^
+>> drivers/pci/rebar.c:142:31: warning: implicit conversion from 'unsigned long long' to 'u32' (aka 'unsigned int') changes value from 140737488355328 to 0 [-Wconstant-conversion]
+     142 |         if (size < 0 || size > ilog2(SZ_128T) - ilog2(PCI_REBAR_MIN_SIZE))
+         |                                ~~~~~~^~~~~~~~
+   include/linux/sizes.h:70:20: note: expanded from macro 'SZ_128T'
+      70 | #define SZ_128T                         _AC(0x800000000000, ULL)
+         |                                         ^~~~~~~~~~~~~~~~~~~~~~~~
+   include/uapi/linux/const.h:21:18: note: expanded from macro '_AC'
+      21 | #define _AC(X,Y)        __AC(X,Y)
+         |                         ^~~~~~~~~
+   include/uapi/linux/const.h:20:20: note: expanded from macro '__AC'
+      20 | #define __AC(X,Y)       (X##Y)
+         |                          ^~~~
+   <scratch space>:37:1: note: expanded from here
+      37 | 0x800000000000ULL
+         | ^~~~~~~~~~~~~~~~~
+   include/linux/log2.h:162:14: note: expanded from macro 'ilog2'
+     162 |         __ilog2_u32(n) :                \
+         |         ~~~~~~~~~~~ ^
+   1 warning and 1 error generated.
+--
+   In file included from drivers/pci/msi/pcidev_msi.c:5:
+>> drivers/pci/msi/../pci.h:73:3: error: call to undeclared function 'msleep'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+      73 |                 msleep(PCIE_RESET_CONFIG_WAIT_MS);
+         |                 ^
+   1 error generated.
+--
+   In file included from drivers/pci/pcie/portdrv.c:22:
+>> drivers/pci/pcie/../pci.h:73:3: error: call to undeclared function 'msleep'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+      73 |                 msleep(PCIE_RESET_CONFIG_WAIT_MS);
+         |                 ^
+   1 error generated.
+
+
+vim +/msleep +73 drivers/pci/pci.h
+
+    62	
+    63	/**
+    64	 * pcie_wait_after_link_train - Wait 100 ms if link speed > 5 GT/s
+    65	 * @max_link_speed: the maximum link speed (2 = 5.0 GT/s, 3 = 8.0 GT/s, ...)
+    66	 *
+    67	 * Must be called after Link training completes and before the first
+    68	 * Configuration Request is sent.
+    69	 */
+    70	static inline void pcie_wait_after_link_train(int max_link_speed)
+    71	{
+    72		if (max_link_speed > 2)
+  > 73			msleep(PCIE_RESET_CONFIG_WAIT_MS);
+    74	}
+    75	
+
+--
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
