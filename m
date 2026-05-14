@@ -4,151 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F62FCD4F39
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2026 05:59:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C41CCD4851
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2026 06:45:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ed2vccsBMOgxTey0vDNHmSUEKQbdKWzKwSid02nWCLY=; b=L72QZr6ynqWnCyKP08owxhMkFl
-	7H/QFsu/4tjvV/6jwhfBOd3B3uNG7WkuspT8D/UDps3sqyyy3rs/qLa6RR547AzOj1wdV3mYg7+QI
-	XqzHDmv9u9ADw8qb0R0eaHH5CSdwXRiwRjiziPeZd7CyNGWSQniO6+qrE78W3GPSHzdwDML+X0LOs
-	4eGH82EWpOCICsfm8ZoK4SYJ6stx6O42MbsS9vDiAneU2FiNqnM8NlK6/Di88uhJjgslBUkfML5FI
-	8eOQh5sGtr4QVjMhwE2862fQ64+m7Gi+qUwVOFJLCGtJ7HLeh7PMIDwdWfhw8RyKCAonigglMxU/1
-	5fderX8Q==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=w02SH6PIRFOFu6YnjfK7owcWnXxBUkNw8szwIzUQj54=; b=nuEdQWYPS+FPCJ1XvW7JcLIhFu
+	4kGnbgSMBG/USF9wZeVlWfaTUteIhoHrZOYQsiQyRVeicjgJiEQAC6+uyfEP43ia+ACzLPOQmKTul
+	yaWjraQtRRFJS0zW515kaiQahIOv6w2EDuWh8QYeJ27rfXHIi0Ew0OD//9I0Fe9vnq6EtM9bNUlPs
+	bz+x8uVoVmlgMamcUCvyM91ubaCE2XkSwDdk/UAoieQNP3NS8EV126rwiELY9MRwJVk1owuw/ioHO
+	ajiWaZSWsSwl0lObcMgHZilpnDxUnN+pUHrvx8IyuDSTAYBH4RUcgTX6NyfuD4F38pHTAZLFXP1BK
+	qpVCDlBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNP6z-00000004faI-0Rj9;
-	Thu, 14 May 2026 05:59:57 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wNPoj-00000004kCA-3pQ2;
+	Thu, 14 May 2026 06:45:09 +0000
+Received: from mail-dy1-x1330.google.com ([2607:f8b0:4864:20::1330])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNP6w-00000004fZZ-0Ksv;
-	Thu, 14 May 2026 05:59:55 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 34F0143C2C;
-	Thu, 14 May 2026 05:59:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 84C3CC2BCB7;
-	Thu, 14 May 2026 05:59:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778738393;
-	bh=eekMyTGqaYzrA3edzem1c62xAm8OrTQXGIliLNmLT30=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=fYf8dvRkuuicNo7+mDHvKuYrb5yktnlgW/LSSKM7yEWet3C4jtpwJnGLC7216mVlJ
-	 Cu3SyIGPnxyjHwXSVbmWYd12oj9NeKZQgquMl9ID3VVZqvowbHuKiSDvEtl7frlxI8
-	 l0birNgJrSKb2rbUPJJM6Ihfd/tzNnLUuNgWekWvkXeUodixJlhDSd0hBj+FCJgmP/
-	 wVubcA6G1iMW2TaauIZHxux/JrbfcGdAmYM5NEnIAzDworKsxItZwn8OWiJxJ4ixp/
-	 lg16mkJDOeSngDb3dENhedQgSi/ozZKRgL3qFHejGYl75dtvLYY27QUHf6CnHzckHt
-	 oFsq6ixpH4FDQ==
-Message-ID: <28af26ab-bb6b-4763-8405-e36fe3ce68fd@kernel.org>
-Date: Thu, 14 May 2026 07:59:38 +0200
+	id 1wNPog-00000004kB4-0ee2
+	for linux-mediatek@lists.infradead.org;
+	Thu, 14 May 2026 06:45:07 +0000
+Received: by mail-dy1-x1330.google.com with SMTP id 5a478bee46e88-2c156c4a9efso10495795eec.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 13 May 2026 23:45:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pcc-me-uk.20251104.gappssmtp.com; s=20251104; t=1778741105; x=1779345905; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=w02SH6PIRFOFu6YnjfK7owcWnXxBUkNw8szwIzUQj54=;
+        b=a7Z9/U+92OadBnT3XYA1t1n/S1ulG1bCuFdj4jIwJJ2udgTJ80VwYPu7gHumYcFeyF
+         qwF1HJI+EfCPokCWZZ97Kp+JzhDiisOdE663q0JfcmcBpvvl8hHuby7f8A1H0M54mVp8
+         syAxux9DR9Cyj2uiBBta0OpspIjip05fFIGhHxE5JPA0IQhV7/qz8LPk6v0GccSzOG/2
+         Vy/qKK+XKdiYwSIli4K2zoGIGgBKaLRlzipQ34e3fWRs1+Whxts9s0ENz5Wuaa68saDB
+         t6v7VA8DlOtPGCn3Dc7zEmZLa2fPyc7Ecrua2u9F0reodf+mEh0yIPhVBjGrZcvMSHH2
+         wFaA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1778741105; x=1779345905;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=w02SH6PIRFOFu6YnjfK7owcWnXxBUkNw8szwIzUQj54=;
+        b=jBHcHD2vwFEbM3WnVNZAw/sVR4Pc6NvB2R5TYl0ZkjJ0Paoker5napekC1PHyFmUrc
+         palosV8F+iHHnSi14kVVTdPCVekVre6nBg8fLcrahBD4D9XULc3Yc+ZZtBALJEDSHVrW
+         /Vc210MDHd8Nswy5mC9i4cuUoHSl1sV9jcPfpFTEiyOPNE/MY5CA+NhMwwyZdg9G1HpQ
+         LYb67MP6gDANXXOfUWQVw4XpnZzUBcRqMn9+S2RAUvbcF5KpjnNaEoL//3HTgcdE+lQr
+         +osg+tG7VIJPoSSi0MHrQaO2stCBW1HcNCSIXQXLMqGJB4vAZhDDMonLCLkFCfhmo57B
+         7qrw==
+X-Forwarded-Encrypted: i=1; AFNElJ/IMmYXNmuJMUqYd8NUJn+2CsrZuZLqf+JU6rZzI6ZP1sHRtk0T1Psk/qAV7n60IcfEkZnothZEo9aGTkEIwA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzvgQfiA/Ul57DzCW4KRwXTM7cMs8xDewJws8hctmCoLbu7RoTB
+	2Kepdw9aBnsrDdTgmkYLzev2NRB+bI7F72iJh28FNtZ95MT3tQELJ+wS0WLUp55+EPo=
+X-Gm-Gg: Acq92OGpkWnZHXDs4GAg658OfvDCEhekc9pwyznTSWfk9nYhrGGthnwSxC0RzgqfR0U
+	QQlFuhu4NgEiCQCu7pVslOFs1q2/rqTs+BV+liB9GWLGDiT2MmC3M1e5WoS14PZK4izpX6QmnK6
+	tdJgjnMOrHKYa8Elt1/OBEFVahwIWsaVF+KSqELdwdF0fLBrvK7jEyUEGYfBhOUSfP+HN3RARW0
+	9B7N0F/m5XeSKm3X4/iBp5L8t0GW5n49rOHych7nBfhVzBW3U5hQwKPKKk7Yn0KIZL0dA6vFB23
+	ovJj3thXzRv0Y+AGDezxme2RPS2k9wqqmw9CJDTi3PKX5zWlZnGZUaIalm3OV4TIJ7yA7Jufoym
+	WiZH5y+W9CxCGGdJ2WdEGpBW0KK8sx948dho6beVKgzUjiqUJEATGkVfU38F+glNAKjr5wCmQJR
+	ZQczv8A/Rta452+aBlQjGo4p0pzZ7dQozyzgnLN05a2RGKF4AZOPHBCXc=
+X-Received: by 2002:a05:7301:3d0f:b0:2e6:ffa8:ef85 with SMTP id 5a478bee46e88-301512632c6mr3381953eec.0.1778741104665;
+        Wed, 13 May 2026 23:45:04 -0700 (PDT)
+Received: from localhost (c-67-180-161-137.hsd1.ca.comcast.net. [67.180.161.137])
+        by smtp.gmail.com with UTF8SMTPSA id 5a478bee46e88-302973bc8ddsm1807663eec.21.2026.05.13.23.45.03
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 13 May 2026 23:45:03 -0700 (PDT)
+From: Peter Collingbourne <peter@pcc.me.uk>
+To: Sjoerd Simons <sjoerd@collabora.com>
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Peter Collingbourne <peter@pcc.me.uk>
+Subject: [PATCH v2] arm64: dts: mediatek: mt7981b: Add PMU
+Date: Wed, 13 May 2026 23:44:45 -0700
+Message-ID: <20260514064445.83487-1-peter@pcc.me.uk>
+X-Mailer: git-send-email 2.54.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 2/2] ASoC: Use named initializers for arrays of
- i2c_device_data
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig_=28The_Capable_Hub=29?=
- <u.kleine-koenig@baylibre.com>, Liam Girdwood <lgirdwood@gmail.com>,
- Mark Brown <broonie@kernel.org>
-Cc: David Rhodes <david.rhodes@cirrus.com>,
- Richard Fitzgerald <rf@opensource.cirrus.com>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
- Baojun Xu <baojun.xu@ti.com>, Lars-Peter Clausen <lars@metafoo.de>,
- =?UTF-8?Q?Nuno_S=C3=A1?= <nuno.sa@analog.com>,
- =?UTF-8?Q?Martin_Povi=C5=A1er?= <povik+lin@cutebit.org>,
- Support Opensource <support.opensource@diasemi.com>,
- Nick Li <nick.li@foursemi.com>, M R Swami Reddy <mr.swami.reddy@ti.com>,
- Vishwas A Deshpande <vishwas.a.deshpande@ti.com>,
- Peter Rosin <peda@axentia.se>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Oder Chiou <oder_chiou@realtek.com>, Fabio Estevam <festevam@gmail.com>,
- Kiseok Jo <kiseok.jo@irondevice.com>, Kevin Cernekee
- <cernekee@chromium.org>, Steven Eckhoff
- <steven.eckhoff.opensource@gmail.com>,
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
- Charles Keepax <ckeepax@opensource.cirrus.com>,
- Thorsten Blum <thorsten.blum@linux.dev>,
- Chris Morgan <macromorgan@hotmail.com>,
- Dan Carpenter <dan.carpenter@linaro.org>,
- Marco Crivellari <marco.crivellari@suse.com>,
- Weidong Wang <wangweidong.a@awinic.com>, Aaron Kling
- <webgeek1234@gmail.com>, Teguh Sobirin <teguh@sobir.in>,
- Luca Weiss <luca.weiss@fairphone.com>,
- Bharadwaj Raju <bharadwaj.raju@machinesoul.in>,
- Hsieh Hung-En <hungen3108@gmail.com>, Binbin Zhou <zhoubinbin@loongson.cn>,
- Shimrra Shai <shimrrashai@gmail.com>, Zhang Yi <zhangyi@everest-semi.com>,
- Srinivas Kandagatla <srinivas.kandagatla@oss.qualcomm.com>,
- Qasim Ijaz <qasdev00@gmail.com>, Sharique Mohammad <sharq0406@gmail.com>,
- Chen Ni <nichen@iscas.ac.cn>, Neo Chang <YLCHANG2@nuvoton.com>,
- Cezary Rojewski <cezary.rojewski@intel.com>,
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
- Kees Cook <kees@kernel.org>, Qianfeng Rong <rongqianfeng@vivo.com>,
- Tim Bird <tim.bird@sony.com>,
- Bram Vlerick <bram.vlerick@openpixelsystems.org>,
- Peter Korsgaard <peter@korsgaard.com>, Linus Walleij <linusw@kernel.org>,
- Wenyuan Li <2063309626@qq.com>, Bartosz Golaszewski <brgl@kernel.org>,
- Shengjiu Wang <shengjiu.wang@nxp.com>,
- Sebastian Krzyszkowiak <sebastian.krzyszkowiak@puri.sm>,
- Xichao Zhao <zhao.xichao@vivo.com>, linux-sound@vger.kernel.org,
- patches@opensource.cirrus.com, linux-kernel@vger.kernel.org,
- asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Markus Schneider-Pargmann <msp@baylibre.com>
-References: <cover.1778692164.git.u.kleine-koenig@baylibre.com>
- <ae2ff4898eb340bd8bcafb7b75443eb4a0ce3e76.1778692164.git.u.kleine-koenig@baylibre.com>
- <65f6da30-eb20-4020-b13a-ac7d4c823dfc@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
- cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
- JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
- gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
- J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
- NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
- BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
- vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
- Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
- TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
- S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
- FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJoF1BKBQkWlnSaAAoJEBuTQ307
- QWKbHukP/3t4tRp/bvDnxJfmNdNVn0gv9ep3L39IntPalBFwRKytqeQkzAju0whYWg+R/rwp
- +r2I1Fzwt7+PTjsnMFlh1AZxGDmP5MFkzVsMnfX1lGiXhYSOMP97XL6R1QSXxaWOpGNCDaUl
- ajorB0lJDcC0q3xAdwzRConxYVhlgmTrRiD8oLlSCD5baEAt5Zw17UTNDnDGmZQKR0fqLpWy
- 786Lm5OScb7DjEgcA2PRm17st4UQ1kF0rQHokVaotxRM74PPDB8bCsunlghJl1DRK9s1aSuN
- hL1Pv9VD8b4dFNvCo7b4hfAANPU67W40AaaGZ3UAfmw+1MYyo4QuAZGKzaP2ukbdCD/DYnqi
- tJy88XqWtyb4UQWKNoQqGKzlYXdKsldYqrLHGoMvj1UN9XcRtXHST/IaLn72o7j7/h/Ac5EL
- 8lSUVIG4TYn59NyxxAXa07Wi6zjVL1U11fTnFmE29ALYQEXKBI3KUO1A3p4sQWzU7uRmbuxn
- naUmm8RbpMcOfa9JjlXCLmQ5IP7Rr5tYZUCkZz08LIfF8UMXwH7OOEX87Y++EkAB+pzKZNNd
- hwoXulTAgjSy+OiaLtuCys9VdXLZ3Zy314azaCU3BoWgaMV0eAW/+gprWMXQM1lrlzvwlD/k
- whyy9wGf0AEPpLssLVt9VVxNjo6BIkt6d1pMg6mHsUEVzsFNBFVDXDQBEADNkrQYSREUL4D3
- Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
- MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
- OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
- GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
- 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
- YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
- 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
- BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
- JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
- 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
- YpsFAmgXUF8FCRaWWyoACgkQG5NDfTtBYptO0w//dlXJs5/42hAXKsk+PDg3wyEFb4NpyA1v
- qmx7SfAzk9Hf6lWwU1O6AbqNMbh6PjEwadKUk1m04S7EjdQLsj/MBSgoQtCT3MDmWUUtHZd5
- RYIPnPq3WVB47GtuO6/u375tsxhtf7vt95QSYJwCB+ZUgo4T+FV4hquZ4AsRkbgavtIzQisg
- Dgv76tnEv3YHV8Jn9mi/Bu0FURF+5kpdMfgo1sq6RXNQ//TVf8yFgRtTUdXxW/qHjlYURrm2
- H4kutobVEIxiyu6m05q3e9eZB/TaMMNVORx+1kM3j7f0rwtEYUFzY1ygQfpcMDPl7pRYoJjB
- dSsm0ZuzDaCwaxg2t8hqQJBzJCezTOIkjHUsWAK+tEbU4Z4SnNpCyM3fBqsgYdJxjyC/tWVT
- AQ18NRLtPw7tK1rdcwCl0GFQHwSwk5pDpz1NH40e6lU+NcXSeiqkDDRkHlftKPV/dV+lQXiu
- jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
- zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
- XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <65f6da30-eb20-4020-b13a-ac7d4c823dfc@kernel.org>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260513_225954_163312_DEA28275 
-X-CRM114-Status: GOOD (  11.02  )
+X-CRM114-CacheID: sfid-20260513_234506_423496_5CDCEAB0 
+X-CRM114-Status: UNSURE (   9.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -163,31 +104,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13/05/2026 21:00, Krzysztof Kozlowski wrote:
-> On 13/05/2026 19:23, Uwe Kleine-König (The Capable Hub) wrote:
->>  MODULE_DEVICE_TABLE(i2c, adau1372_i2c_ids);
->> diff --git a/sound/soc/codecs/adau1373.c b/sound/soc/codecs/adau1373.c
->> index 16b9b2658341..5dd961b233ce 100644
->> --- a/sound/soc/codecs/adau1373.c
->> +++ b/sound/soc/codecs/adau1373.c
->> @@ -1599,7 +1599,7 @@ static int adau1373_i2c_probe(struct i2c_client *client)
->>  }
->>  
->>  static const struct i2c_device_id adau1373_i2c_id[] = {
->> -	{ "adau1373" },
->> +	{ .name = "adau1373" },
->>  	{ }
->>  };
-> 
-> This is inconsistent with most (or all?) of other xx_device_id table
-> usages and, IIUC, is not even necessary to achieve your goal (which
-> itself is good).
+The interrupt number was taken from a downstream DTS of the similar MT7987
+[1] and verified on my OpenWrt One.
 
-After talking on IRC, I see that actually many of platform_device_id use
-named initializers for '.name' and PCI uses macro for that, thus my
-"consistency" concern is not really valid. Especially that if you change
-i2c and spi tables, the named initializers might be more frequent...
+Signed-off-by: Peter Collingbourne <peter@pcc.me.uk>
+Link: [1] https://github.com/openwrt/openwrt/blob/e4b3d5c799aef3be20b7f6079e8e5a14b215c116/target/linux/mediatek/dts/mt7987.dtsi#L246
+---
+v2:
+* Remove interrupt-parent
 
-Best regards,
-Krzysztof
+ arch/arm64/boot/dts/mediatek/mt7981b.dtsi | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+index 1bbe219380f9..ba6720031908 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+@@ -38,6 +38,11 @@ oscillator-40m {
+ 		#clock-cells = <0>;
+ 	};
+ 
++	pmu {
++		compatible = "arm,cortex-a53-pmu";
++		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW>;
++	};
++
+ 	psci {
+ 		compatible = "arm,psci-1.0";
+ 		method = "smc";
+-- 
+2.54.0
+
 
