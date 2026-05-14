@@ -4,108 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C09F1CD4851
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2026 07:54:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1591CD4851
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2026 08:12:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XR8EnK64dtfqn5p2qNUwy1xl1ufX9OqaX2p8lb+U5Dc=; b=lnzvSLyNNP7n9jTjhVmI3vUoz1
-	kE09mmdo/zsDzPb2gz5dTp8Nl5vqf1VM1qbEadjp2XCBD/rh5QdyIMtW29TZtUK9yjt2kO/x0F48Q
-	AAyi0XywOQvCIwpQhn19UNWC9n2RhhiFUuTWmh/ceUtqqbvzQ3EG90bKW15YnJTzxsbYmdtoHhCyg
-	BNA/t/E7V8VlmZUytBhQs9wElFA0G1Xv5hlGp4WK1tmIvw+TUbf3Dtd26XEoB2bLUUcjnO166Rd0e
-	YNmA3OFBoUEKh+3Fmj9EHM3OhmkrdvEhzFMMeMls8OIlrQXMk3A0BthgGtQ0d/IwJgZRjGZ82rAmI
-	rzl9GzfQ==;
+	bh=Mfi3vmziZCkgZK4Pj66Mr9HPjc3VrKkwC6hLHO+X+Ns=; b=Oc4OENZykKRW5/82/w/Talz8uC
+	CdqitMRariXD5AZ1m1BMY7jt8p8UPDTxTOFAmGUuaN9o9geH62R9Hof+kFqUWk6RjS//ThqXJirSs
+	A5fqPKpVOGOZVFssrDBf19dEwoIQrFaUJ6cY4LMIbT97kCcv7S6zLmYZdcRnyICE/K/5k9brC/obh
+	q0hG8t88LElwqHIidvQPd8z++ioiPbJki6+/NZJn7S81gT4+JbJ3ZmyZsi3iuc+XOWHxMDN60FlDg
+	mrjq6snoLEO/VmnEm6Vr58aykDIfVHrhkqy2c2bQmfzceAIRVa9bm41WTEM9hIDuJi8oZYe80iI7j
+	Fs9AiErg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNQu6-00000004sEy-2iFi;
-	Thu, 14 May 2026 07:54:46 +0000
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+	id 1wNRBX-00000004udN-25Xf;
+	Thu, 14 May 2026 08:12:47 +0000
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNQu3-00000004sE8-28kO
+	id 1wNRBR-00000004uc8-45yy
 	for linux-mediatek@lists.infradead.org;
-	Thu, 14 May 2026 07:54:44 +0000
-Received: by mail-lj1-x234.google.com with SMTP id 38308e7fff4ca-38eab6cf7d8so55431511fa.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 14 May 2026 00:54:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1778745281; cv=none;
+	Thu, 14 May 2026 08:12:43 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-5a8d1f43432so6742907e87.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 14 May 2026 01:12:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1778746360; cv=none;
         d=google.com; s=arc-20240605;
-        b=DG/DtHjN+LhXZUl87365OGo4H/d3ax5fmOX58RbMlJ/8sgu5a6GQmxrfsUw81dX1Ic
-         YisXKsVR0PEHonQSTl/uzUs0CaYxaQkZQVvDsQcgBVQbV34PGKGcNk3Fa60p7bAY6uAR
-         kx3+m5qJ/8KUJ9uxHn0id4olbbbQ4jIJ9J66ADhBz5RCBa2troOWhi52o8fD1P8s68sT
-         9gUakZ+6t2zsjd1+rBXiZJ9z7P7U7G5mjOQ9ioetYIdDsc03QssCxkTre6HSrMJM1fFc
-         pyxqmEYPzAsFIqEvCpTPnPJlQHy6Ft3IXUXKirSD3+N30PDnmZHmqQmJcF5UG09LjnWu
-         mX/w==
+        b=H3mhwI1BBJgrBR11RDKUAcjRlKxiI1owS6a9l7+Y6sf6HyoiekwIQw/sNnmbOdxr9U
+         bMvr5DcDiliOd8mT+MPwNqmxSIvNt1zSAuoXI+OlhFEOwGAE88OCe/4AhQdju3z6tCeo
+         IXxcoo+KILymUiaisOVJwTgI3HXrH/ZINcnArfTLtNiNkeMyxayO9dj5DNoBeOTivvGe
+         iRX1qBZesspR+UjPQ3ZnrMidvtqvl1ETpIL/x2fmYYQyuIQu9n9kV4LIqHaQpp0Hn+Ce
+         FeZp9KfRG7MCXX7UJ9d80nbU9a6GnOrTLQXdTZZSEwJ37ymHbyHlWfyogLOtvniErIdI
+         0Mng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=XR8EnK64dtfqn5p2qNUwy1xl1ufX9OqaX2p8lb+U5Dc=;
-        fh=g8Zga33zH8tpm44F4M3so+txs1u7/CgU14MP3qMZciE=;
-        b=PLc15ttFtuxGe4IIfl5wgD5Bl1dGVNAfacph7ZJS4ZAGX4ktxVGvr2x8wneAarnXbe
-         BW5weRLgP0OFhNoYn4Nh9IfpvLKQ3pIEaho+M7tf3p/X9smKq8vah0FCLKPzs2yrxKMr
-         urX0FYaikVx03Emvat0vP6kmw8efFPdl52e1EzRDU0ewpIOuwAmBBiNfwCJLb8bteqj8
-         bp4ETQE4A5jtKXlBjiAq3t9231+29DBdqexXsxJonIq39oH6rSl/1Paxm62VCU+5bAmc
-         FBk1LeyAurLCmLn6dn5Gh21rZhsYBBa4BilXNH/xgPaZdfwdYAsTvX4ftmXtUHTvFU5Z
-         QvuA==;
+        bh=Mfi3vmziZCkgZK4Pj66Mr9HPjc3VrKkwC6hLHO+X+Ns=;
+        fh=6eM6FjRo0aX4m8u5GWLCySzGE2byeeEvpI1qE+9Q2gE=;
+        b=SBQ4xpOqh4Fwxwz/iXfMI4NTIumnYsHOwMIwOl181wjL5kO243ZPBf7zKYHyh4dZ8f
+         LE75bYu9vccBDRjM22+rCNf7GXvNyZhNVoLYV5C3YIhou31amIfcO+cYi338qVA2txqc
+         q5Hn66Wt75amokhtmAfu6hlai/RsKq6ufXPkb1p8eamxcPWOrAtIsD/ohhr2vhtbw6Oj
+         C7oeLuiVz081bPo4JNiAnDgAZsMXzqx/StVYtQqaIa66KcSA79YWZejqd6G6REHEAwmF
+         DnDDPAT/7X8po5Qm3hdH4mVdI2WkA2JOwr/4I3crt2EcLmwjnInx9GmejAh6bIPzXmMV
+         HDvw==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1778745281; x=1779350081; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1778746360; x=1779351160; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=XR8EnK64dtfqn5p2qNUwy1xl1ufX9OqaX2p8lb+U5Dc=;
-        b=iLLMJBP+7pfC94DAC0WiqyJmcB4rL3Lsm6g/NsEmZ3QsHhMyFLYlrvALaEDDDJ26mE
-         C8YFfuyPRxTBNYabDoqJNPcQLdL1pOtThgf9tOuMGmypvYourRmAhY2zNEU9d86FV+jM
-         gj6xidy1D/BEsrdyQQ/7I8UB1qqkZB+kPuQIo=
+        bh=Mfi3vmziZCkgZK4Pj66Mr9HPjc3VrKkwC6hLHO+X+Ns=;
+        b=Cx97w4wBccycMktS9sy0dvYrPQGimpUCab39QpVXqf5kUzhtCBpnR32LK5Je3ZCmdU
+         i8nDutj6dc4Jg5NgAzy741h5Xpcl8HE8IhvdHVGfxvusTWTgP57ZHTIyOVPaZ15Qm1vy
+         psuCqMUGCngypNAq/eMyMODL7DkmbUn6jLoR0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1778745281; x=1779350081;
+        d=1e100.net; s=20251104; t=1778746360; x=1779351160;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=XR8EnK64dtfqn5p2qNUwy1xl1ufX9OqaX2p8lb+U5Dc=;
-        b=rRVOvftM34hXHZvf0abMloXaVmVl7ZZSdHsg9yZgXti2yDV91qOMb0AQkQ0Qy2c10K
-         vjQ7LHnPK2lP2LppLWXZ86Uxm+qhIMJCR7zXOu/r4DhJjWodJsYbnnFxnnvomhfIrsEd
-         Dmr3dQjtwv2I5uC+63zo3dXDenWj8dAU6JM2XDksD9NLra2Q6lIsP78d+CkmjpDb946L
-         BvigvMUa1n/I7q1XApj7YAta3QiljENeb8rWyUWOWUxcxK5UPlaLDCLfpnGS6js/or12
-         eFVw2BOFTwBxqR5YwXosMp7/AL5njv4EyHp9PCFpEp8XSgfmDqVB3SD7MzZ9zeQuY6Dx
-         L3VA==
-X-Forwarded-Encrypted: i=1; AFNElJ8qu79lU0pITasiZ3tfUJ45KCJULIQsFaiAbba3vHvy08Yu/qKyWQ81GPSHCOWx/K6V4iz4+Yu/p04/EF7JDA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx4xw+AMvRN/b8HeTFY/ptBa6jlE8iFHopmGBCmkg4UTzeHqEzU
-	cLCFB4EvV1JViucaW5ITW2Nceaw2bTHNYzS0oLh3pTxiAn0cwjjvCgJ9TmISKNtGq1Q3tAyNlAQ
-	LC6d3/3RFVz1KC5AmuXXouEp2zo/fu+/ZkGOuiEQE
-X-Gm-Gg: Acq92OFYLWGdwM3fBQ1bZFwAcgG43EFe7xhWpJK1lPjZpQd7/91vBzdwgHNKXeQPNc1
-	/o6Di0ykLCio6w9NGQSSxuQCEIkxxOkEvBjZgwvdGHY7yNwqUhmdxMC5nFMcFCBVKVFRrhyDFoq
-	QoDLDn2dc0psvxZW9DaAKFsFXtpfALNqcvu6Ewx9cFkrpiuqo2vOBdggATrjbbbbqDXyMpM66bp
-	cl6+TU5tzocXRhqefe6oof3BuZqOMLEcbsxTH4ThKyWMPEGILNJFo5qPPtRpUmBOHEUOJ5rXhvC
-	xNQfqBk3MneI3RJZieCbnwE5DD/jxkgH7G0gjw==
-X-Received: by 2002:a05:6512:1307:b0:5a8:e363:6f7e with SMTP id
- 2adb3069b0e04-5a8ef947b4amr2826701e87.17.1778745280832; Thu, 14 May 2026
- 00:54:40 -0700 (PDT)
+        bh=Mfi3vmziZCkgZK4Pj66Mr9HPjc3VrKkwC6hLHO+X+Ns=;
+        b=D/1oO403lviJ7TcT9namMmos9N3yegJ2Km3Jcq7ONo0g2tkqRXLHWWBTEyPzrqR/QZ
+         TLdVg87X5NFx0SYOadQwbhqhYWKY1rFFxDUfg4BkZNmr4goZozsEg58lzferCWq92M9f
+         UFBUyu7WoyqNlrT9lDp22I/vEbLXKv4ortwhQ7gPXofoT5jcIrCWovtuvdBdxXk84QbA
+         H8YZ8T9WD2SSKm70b/iG62zWWqqgqpHQ26jwkCNhrv4P87uMmaJQeji65EExEjNDUPRR
+         RMNVgbiA1zqvFcyvmbYidEccPZfw3yN9Twp/7aJTy+x/4r3gXGMGTpDByWzqg4reLeDI
+         m39A==
+X-Forwarded-Encrypted: i=1; AFNElJ9oeDqb3buz35/5o087ZDKz1uVQuH/Bh0tB5Qni7bS1tFQj7K9aiqiF3rVZ9x1zhDAaJkDBq9JwfTjZJaoudQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywis2+0dLqmPzBM2Q6gGEJaudVQn8AzOCROkuaocykEo7UO6L2b
+	Lz+6dIe8qSRoYw7+rLRXGn7sivH2v8zCr3UyoIqzvToLonQFybxuVAj8+rac7qjBs44WGecrPtW
+	nNR1almJcWf4S8J/TeaglK4snAj5wQlYUR+k1+zG6
+X-Gm-Gg: Acq92OHF9IgrpoKVjrvwyPdiaeq8ophMs1N69L8uDNmFfFrelDrUlNrSbAHOP2Dg+MI
+	6eF7i7SpZce9di7+t6bIW9Hrt2MptH29V+j6EiCVF+pCAoYThATWEaXYnWIymIC1CBB5nydwJ7m
+	FedT5GxR9gHw5/hKXhR0Df9ssGc3ohOob1/g+D+Rs63pfZXSHm24hDL0v37ANZYQ2Hby+LI2bc9
+	DhbxsF7/zqyXhPXFtm59ss87Ah9WqH5DBYNhiBxjaNAGFixPXw5OOwHRP0rRaI00CaaKbKfE1TN
+	wcerrZZgltWGITyRdT+xfLRh0Vj+3VqrXAclaX6JKhTO+Qs+
+X-Received: by 2002:a05:6512:2309:b0:5a7:42e2:db4 with SMTP id
+ 2adb3069b0e04-5a8f37c58abmr1953278e87.15.1778746359826; Thu, 14 May 2026
+ 01:12:39 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260508063633.3894348-1-wenst@chromium.org> <locoul5wdzuvvmm7mqpuntjqu4o75gmyd5npgfqrw3zuwsrse6@dhrjggs4cihh>
-In-Reply-To: <locoul5wdzuvvmm7mqpuntjqu4o75gmyd5npgfqrw3zuwsrse6@dhrjggs4cihh>
+References: <20260508063633.3894348-1-wenst@chromium.org> <20260513231550.GA2280946-robh@kernel.org>
+In-Reply-To: <20260513231550.GA2280946-robh@kernel.org>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 14 May 2026 15:54:29 +0800
-X-Gm-Features: AVHnY4I-K0fe_Bfh0y4hR9dkGGPUD3Wz3qssE4qO52Iohr3iuH-UNE1unWWNmOk
-Message-ID: <CAGXv+5GAaMQbaoUVr5zcwtHaofyXwHz03TxBe-QyWj_sNoQZsg@mail.gmail.com>
+Date: Thu, 14 May 2026 16:12:28 +0800
+X-Gm-Features: AVHnY4KRPKUvW-Q_3NPzMqxJlma4P7nPyfNutA30R4nWp-TJgNSuE21IDg-csC8
+Message-ID: <CAGXv+5EXw4rXD7URhXvotxsPG81EGhhk6wqnFuVWig=dTdNCXA@mail.gmail.com>
 Subject: Re: [PATCH] dt-bindings: PCI: mediatek-gen3: Allow memory-region for
  restricted DMA buffer
-To: Manivannan Sadhasivam <mani@kernel.org>
+To: Rob Herring <robh@kernel.org>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
 	Ryder Lee <ryder.lee@mediatek.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
 	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
 	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
 	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, 
 	linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260514_005443_598678_82E55F37 
-X-CRM114-Status: GOOD (  17.75  )
+X-CRM114-CacheID: sfid-20260514_011242_073833_B539956B 
+X-CRM114-Status: GOOD (  23.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,8 +120,8 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 14, 2026 at 1:23=E2=80=AFPM Manivannan Sadhasivam <mani@kernel.=
-org> wrote:
+On Thu, May 14, 2026 at 7:15=E2=80=AFAM Rob Herring <robh@kernel.org> wrote=
+:
 >
 > On Fri, May 08, 2026 at 02:36:32PM +0800, Chen-Yu Tsai wrote:
 > > On some SoCs without an IOMMU behind the PCIe controller, the PCIe
@@ -131,44 +131,51 @@ org> wrote:
 > > use that region. Otherwise PCIe devices would not work properly.
 > >
 >
-> So this means, the PCIe devices can only access a specific carveout memor=
-y
-> configured by MPU for DMA? If so, you should use 'dma-ranges' as suggeste=
-d by
-> Rob.
->
-> 'memory-region' also serves the purpose, but for PCI, we have the dedicat=
-ed
-> 'dma-ranges' property.
+> What you are describing is dma-ranges. Why not use that?
 
-I think I need some sort of guide on writing the 'dma-ranges' property,
-because it is not working for me.
+Answer from yesterday:
 
-I'm adding
+I didn't know about it. I was just moving the property from the WiFi
+controller node down to the PCIe controller in the other DT patch [1].
 
-    dma-ranges =3D <0x42000000 0 0x00000000 0 0xc0000000 0 0x4000000>;
+Answer from today:
 
-to the PCIe controller node, and dropping the memory-region. The WiFi
-driver subsequently fails to allocate buffers:
-
-    rtw88_8822ce 0000:01:00.0: enabling device (0000 -> 0003)
-    rtw88_8822ce 0000:01:00.0: failed to allocate tx ring
-
-This is dma_alloc_coherent() failing.
-
-    rtw88_8822ce 0000:01:00.0: Firmware version 9.9.15, H2C version 15
-    rtw88_8822ce 0000:01:00.0: failed to allocate pci resources
-    rtw88_8822ce 0000:01:00.0: WOW Firmware version 9.9.4, H2C version 15
-    rtw88_8822ce 0000:01:00.0: failed to setup pci resources
-    rtw88_8822ce 0000:01:00.0: probe with driver rtw88_8822ce failed
-with error -12
+Also, it doesn't work. See my reply to Mani.
 
 
-Also, using memory-region seems more straight-forward: I have a region of
-memory dedicated to the PCIe controller. I describe the memory region,
-and assign it to the PCIe controller.
-
-
-Thanks
 ChenYu
+
+> > Allow the memory-region property with one item pointing to a
+> > restricted DMA buffer.
+> >
+> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> > ---
+> > This patch compliments another patch that moved the memory-region from
+> > the PCIe device to the PCIe controller [1].
+> >
+> > [1] https://lore.kernel.org/all/20260430120725.241779-1-wenst@chromium.=
+org/
+> >
+> >  Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml | 4 ++++
+> >  1 file changed, 4 insertions(+)
+> >
+> > diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.y=
+aml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> > index 4db700fc36ba..4a9e41d01628 100644
+> > --- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> > +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> > @@ -115,6 +115,10 @@ properties:
+> >    power-domains:
+> >      maxItems: 1
+> >
+> > +  memory-region:
+> > +    maxItems: 1
+> > +    description: phandle to restricted DMA buffer
+> > +
+> >    mediatek,pbus-csr:
+> >      $ref: /schemas/types.yaml#/definitions/phandle-array
+> >      items:
+> > --
+> > 2.54.0.563.g4f69b47b94-goog
+> >
 
