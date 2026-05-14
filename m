@@ -4,88 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57237CD4F25
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2026 10:13:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64BDFCD4851
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2026 11:45:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yo+sSnnnw2cgQ7ZHbjxHFE6KPW/XWkxC49iilF+VEa4=; b=Opvqy7+7eqRbpRYEDY+JBV8xlE
-	xTzvcEF+Bn3x3LLiJEJZHenyNA8jQRlXKRmdBFprCwZhSPTsMppnBkoG4+tz2esMcLBmRNiOm2ba8
-	ViVz3Mh+WmwGjhcxMTVF77ihnuIc6gEqGh9EBh0f7Nd5ehOYLj76dRtMVb0Qf4hFBN5M8Uq0qkeVm
-	00H0gK/fQelcSi+zHKGg97pkHbvkcgU6DbIyNWXl0u0C+0OqB8+RwZKgGlP00QEnWTFd+BlZnkVSo
-	SowfJKd1dPcS/VY6uu+8sl+jEKgKsfZJWc1MnAcYrEkgE9dVLzsxby331/BfNPBYqFmRSnJDXKsCc
-	xa4v8x4g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MuqNLnHQ7AjY34gb9tcmUNHMK6k8UlScLgrQcuj0G9I=; b=XdgHaA6jHpk0z1WcdDIEcRK/Y4
+	+iRNOiOx2uaHL/C4MuINKhz8FtT3Y1M1vv6ITZscLc2zyt/kXmt1BYS6DzfVaya8cOSUhFq8msSRW
+	IPVyagvx9VVGs07L9TjlDns+hNeEfMU9u2HnscmMO8kP8MK0cIfpvmNxbtu368GQs1c9yklVmXZ8Z
+	wRXvDUQ5TyLr1LfzOqqLAKkyhpEMNngKUKanIN9PuxkmV5DvgKMTyQcOW9eB6/PpwOw5SL2GYci+E
+	khPSQH1HIo1DmVKStoq/VM8ppk1ugZasYIN/LjRebEbPBZ7THDgQKpJdKFHhXXCi75N6857lAHbWL
+	xnfeR3/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNT4C-000000059wH-1o5U;
-	Thu, 14 May 2026 10:13:20 +0000
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+	id 1wNUVi-00000005NIn-3xrR;
+	Thu, 14 May 2026 11:45:50 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNT42-000000059mo-3dJy
-	for linux-mediatek@lists.infradead.org;
-	Thu, 14 May 2026 10:13:11 +0000
-Received: by mail-pf1-x433.google.com with SMTP id d2e1a72fcca58-83d31ac4017so3205807b3a.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 14 May 2026 03:13:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1778753590; x=1779358390; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=yo+sSnnnw2cgQ7ZHbjxHFE6KPW/XWkxC49iilF+VEa4=;
-        b=FPhjvyJAL3AcrtbYMU1zyuZOlPWSpU79w7XQqBExmwuVwuMmqcinhgq3kA5VV/pf4h
-         FS/fl5cR9UiSrql4G9b//HxGsOJHXMU46vSqzHrlGRcIvsIlxLrSjct/vZgAOsEb68d5
-         cNmQa4o/CltwSwRnoSLMT9jtLdA/XiYr/KBPU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1778753590; x=1779358390;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=yo+sSnnnw2cgQ7ZHbjxHFE6KPW/XWkxC49iilF+VEa4=;
-        b=ZD9dgCb6yC4HHYrm6YIhPPDwBCX0WxidH1Y3/0WsN+5nZKynwmPMtgO9b4yiK/3Xde
-         74FwlVpn1SMMEuMirL+CVnHTVL/9zW3G1E41i78EAt3tM2uR3EzDJk0sINxofg7PpwGP
-         pyrp60VNEHT9NenOYjoIRvVm+jOewvucKhANR2iqP6q5NOzyZoJ4QYO8MaQvAiFrlRfp
-         f+7mQrs07b8AVBsgh/+QpQEPQULpOqG2guCAlXcrwbeAwF/rqLs8TfWz+F5a7JjK6GbW
-         dWm4/0YtNNZX1YNniJ08J8hwr51P54NiSAT1gawW9csuVSzT8BTt7c97cf+jA6Q2F3dT
-         zurA==
-X-Forwarded-Encrypted: i=1; AFNElJ8KUWQWDDbNFm7tDwX+AeEcFWu20IXYr3r/lojOkEMIAUJBT4TpvuQGM3C82KoAgZveT2coQ6Y4m+mXF/w+iw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywnh8kqXvoVCpJy6qV63fVjapxWXfSeuQ61IVF0HkmfbjuYArT3
-	vD/534dE4vKXaKMzZcrb+Ui0R0tVzGIO3Dyu4HaPETh3C0ayGFamrgbtG++P60N77A==
-X-Gm-Gg: Acq92OF9IguEiUOFX0513TuPRrg/41pT49H5O6wY6RorxP3XEdHqPKmdnhowGkNyxHx
-	K9AIxSg4owcuBvnJ8y0law7hv4IygW5Ey4JudrxsJlj+zIVLV4ERySvYehI+X1qIXJuKB7McEIc
-	kMksZEp9NSYJEfwH7IA7QFTipV5PNubWQEF3WoBEiYmXn8Z3pnrEKw1pAqSCy3TOhtMU6CSh0tZ
-	hIR/CT37F6rLxeh6/OT51ig6GeGCKKLOQXYJMEPqL/IkGyCIaChCy45vMzhRQyslmP+W2AtIXFW
-	IOccikkS5JNq3onwQ/6r28MMPsgfnKOVPPG1uv48KzUL3Acg7o25U1BllN2tIVpRxD6IYH+AeFp
-	wofBLsOx63JONF182ILwvO/l3gkzJXrRHAWfdWbSeXoBu3FzcKJPwyzfhTUtJpjT0wJ+U+L/KGM
-	ymQwTqS4wzQibS7pgUcHnp8bBAoLQkivFbALGouHv/mA7vUr2Oa+z58nDjfGf7D1K6S/C3ecPxz
-	TXgw29Q
-X-Received: by 2002:a05:6a00:3990:b0:82d:62ed:b01d with SMTP id d2e1a72fcca58-83f05bec752mr7365461b3a.45.1778753589741;
-        Thu, 14 May 2026 03:13:09 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:3a91:2f7b:b635:8285])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-83f19664212sm2898427b3a.2.2026.05.14.03.13.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 14 May 2026 03:13:09 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH 3/4] arm64: dts: mediatek: mt8195-cherry: Fix names for EC controlled regulators
-Date: Thu, 14 May 2026 18:12:51 +0800
-Message-ID: <20260514101254.2749300-4-wenst@chromium.org>
-X-Mailer: git-send-email 2.54.0.563.g4f69b47b94-goog
-In-Reply-To: <20260514101254.2749300-1-wenst@chromium.org>
-References: <20260514101254.2749300-1-wenst@chromium.org>
+	id 1wNUVf-00000005NHf-33M9;
+	Thu, 14 May 2026 11:45:48 +0000
+X-UUID: 6d863e4c4f8a11f1afed4741b24580c9-20260514
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=MuqNLnHQ7AjY34gb9tcmUNHMK6k8UlScLgrQcuj0G9I=;
+	b=YwuNilMcvqbwn3NM8KYsuArtMfCGidrF44Vz1rotVL+drQrTJ57Ppkx/+ke64IUkqshilkIN6G0IRsag5X/4/W0Jl5u+xnwEPeyLzkXRqYohB+4Tr9n2xOYaSgdQDY2r/2LvsM5Gluc5eaSle+Omf7tkRGNN31nfjnMNyPKRX1M=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.14,REQID:5deb838e-415b-4769-995d-fe58bcdf67d4,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:9091e75,CLOUDID:76bd41c8-ea23-4b4b-9221-06b52a563801,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|865|888|898,TC:-5,Cont
+	ent:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0
+	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 6d863e4c4f8a11f1afed4741b24580c9-20260514
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <arnab.layek@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1672894135; Thu, 14 May 2026 04:45:38 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Thu, 14 May 2026 19:45:35 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Thu, 14 May 2026 19:45:36 +0800
+From: Arnab Layek <arnab.layek@mediatek.com>
+To: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: <arnab.layek@mediatek.com>, <robh@kernel.org>, <krzk+dt@kernel.org>,
+	<conor+dt@kernel.org>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <andersson@kernel.org>,
+	<mathieu.poirier@linaro.org>, <linux-remoteproc@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v3 0/1] dt-bindings: remoteproc: mtk,scp: Allow multiple memory regions for MT8188
+Date: Thu, 14 May 2026 19:45:32 +0800
+Message-ID: <20260514114533.174008-1-arnab.layek@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20260506133157.3283204-1-arnab.layek@mediatek.com>
+References: <20260506133157.3283204-1-arnab.layek@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260514_031310_912740_BD1669F0 
-X-CRM114-Status: GOOD (  11.57  )
+X-CRM114-CacheID: sfid-20260514_044547_781347_F34B8FE7 
+X-CRM114-Status: UNSURE (   7.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,56 +90,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The names currently given to the EC controlled regulators do not match
-what is used in the hardware design.
+This series updates the mtk,scp dt-binding schema to support MT8188's
+requirement for two memory regions while maintaining backward
+compatibility for other MediaTek SoCs.
 
-Fix the names and the labels.
+The schema uses a permissive base with restrictive conditionals:
+1) Base schema allows all devices minItems: 1, maxItems: 2
+2) Non-MT8188 devices (mt8183, mt8186, mt8192, mt8195, mt8195-dual) are
+   restricted to maxItems: 1, overriding the base
+3) MT8188 devices (mt8188, mt8188-dual) set minItems: 1 with item
+   descriptions, inheriting maxItems: 2 from base, making the second
+   L1TCM region optional
 
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
- arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+Changes in v3:
+- Removed "Tested on..." line per Krzysztof's feedback (bindings cannot be tested)
+- Added minItems: 1 to MT8188 conditional to make L1TCM region truly optional
+- Clarified commit message to specifically reference mediatek,jpeg-encoder.yaml pattern
+- Restructured schema per Conor's feedback: base allows maxItems: 2, conditionals restrict
+- Added explicit restrictions for non-MT8188 devices (maxItems: 1)
+- Added technical explanation of the permissive base + restrictive conditionals pattern
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-index ca2bb367ee68..538c46ada32b 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-@@ -717,8 +717,8 @@ &mmc1 {
- 	pinctrl-1 = <&mmc1_pins_default>;
- 	sd-uhs-sdr50;
- 	sd-uhs-sdr104;
--	vmmc-supply = <&mt_pmic_vmch_ldo_reg>;
--	vqmmc-supply = <&mt_pmic_vmc_ldo_reg>;
-+	vmmc-supply = <&pp3000_sd>;
-+	vqmmc-supply = <&pp3000_vmc_pmu>;
- };
- 
- &mt6359codec {
-@@ -1436,19 +1436,19 @@ i2c_tunnel: i2c-tunnel {
- 			#size-cells = <0>;
- 		};
- 
--		mt_pmic_vmc_ldo_reg: regulator@0 {
-+		pp3000_vmc_pmu: regulator@0 {
- 			compatible = "google,cros-ec-regulator";
- 			reg = <0>;
--			regulator-name = "mt_pmic_vmc_ldo";
-+			regulator-name = "pp3000_vmc_pmu";
- 			regulator-min-microvolt = <1200000>;
- 			regulator-max-microvolt = <3600000>;
- 			vin-supply = <&pp4200_z2>;
- 		};
- 
--		mt_pmic_vmch_ldo_reg: regulator@1 {
-+		pp3000_sd: regulator@1 {
- 			compatible = "google,cros-ec-regulator";
- 			reg = <1>;
--			regulator-name = "mt_pmic_vmch_ldo";
-+			regulator-name = "pp3000_sd";
- 			regulator-min-microvolt = <2700000>;
- 			regulator-max-microvolt = <3600000>;
- 			vin-supply = <&pp4200_z2>;
+Changes in v2:
+- Added conditional schema for MT8188 to allow 1-2 memory regions
+- Added descriptions for each memory region
+- Did not work: base maxItems: 1 conflicted with conditional trying to allow 2
+
+Arnab Layek (1):
+  dt-bindings: remoteproc: mtk,scp: Allow multiple memory regions for
+    MT8188
+
+ .../bindings/remoteproc/mtk,scp.yaml          | 45 ++++++++++++++++++-
+ 1 file changed, 43 insertions(+), 2 deletions(-)
+
 -- 
-2.54.0.563.g4f69b47b94-goog
+2.45.2
+
 
 
