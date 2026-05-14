@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD98CCD4F25
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2026 10:13:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A03ACD4F39
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2026 10:13:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z9fm8OjDakj3wm8FHoPAz9QnbfYJEtGv/K1EWte5dtk=; b=nJMUnRQdY+9A9317rDgWGIOUSB
-	ZH5x1hLE9SWYYIJMxN+t+qMJ/Dcz3BFf79vto1DeMwcWQRVk159sGDwD5e5c487kQ0a61GTTirhPn
-	xybrVK4/k+SImcO/QG7b/TiGfDARcokfdDoNy7CTF2k2ARksRli3h/hkMsu9Ct1+aETqdA3Tq2wzR
-	hboibs0IqMmrf65QLgd/Ff694eW0VDTgDHfCaXDVr4ygwWQVVnXJRHRxeVFvN7rsZAguTZswpC4UH
-	+LXgglnUzPdZ2bvUopOXdexK+SNhAU6z+JJ+q06KvcPSy2czcDixmLQugajKVDHSdrpB6bJbIP2nE
-	yXbGAz6g==;
+	bh=KvyM/JTQn7pVukPBdXTyBSsJUb+2exZa4gm3aMyZcTc=; b=eAU1tRv47xFS4do0+CufQwTo7m
+	fQSu6CwOScrxnERtrPNFB4P4inBngia37Dtu6Nh6TYmBqT7zE7b5J0U8fULGHQcEUeRE5W0paPkQM
+	Ta/HS28clsaK94PF0iZ8/F+0MAu3Chuc68JX+GVXpZte02PhAXt5OXPxOSupUm03FJyUZnX0bWnpp
+	0GWJ0MGUvi6qRAG7VN0YQjjEPZa26tEuXpVWHqRi0z5F5Nfdgzb5hmYS6crM1GuYJpgss5HHb2MhI
+	GvQ6QcyRSbjL46OcR9iRBxPOiLcZo/FtmpmZ9JmBJm1c3/3ETRZ0HIGUpjMG4osaZHpCLLuOMDOHp
+	uufK88nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNT42-000000059ny-4BuG;
+	id 1wNT43-000000059o6-0Mk3;
 	Thu, 14 May 2026 10:13:11 +0000
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNT3y-000000059j6-3EOu
+	id 1wNT40-000000059kn-1nBE
 	for linux-mediatek@lists.infradead.org;
-	Thu, 14 May 2026 10:13:08 +0000
-Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-82f9fdfc965so3521862b3a.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 14 May 2026 03:13:06 -0700 (PDT)
+	Thu, 14 May 2026 10:13:09 +0000
+Received: by mail-pg1-x535.google.com with SMTP id 41be03b00d2f7-c828daf83e2so2277095a12.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 14 May 2026 03:13:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1778753586; x=1779358386; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1778753588; x=1779358388; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Z9fm8OjDakj3wm8FHoPAz9QnbfYJEtGv/K1EWte5dtk=;
-        b=iFDUmJvTgrTA2QPjM4qyqEdi4a90b/jI1rdS72JCwYSz1W4PXMxNGJXDune+UASIFy
-         y6A7Lr1+f5Prz/D5lxvzgPxgsShINXwleWewEvHOFt7DZO3qS3hEaJxNBa5ZGWmH9xV2
-         Iv/bk+dnIuHbx3g5OA3l9iZsx2WqFYIwGvKz0=
+        bh=KvyM/JTQn7pVukPBdXTyBSsJUb+2exZa4gm3aMyZcTc=;
+        b=cOSk93O95aVG2vCqYOd8oItBsoDsS4BrXcVGtjCpMCdhONDY0rRvb2e4Ik6NxNkvc+
+         7F/5R3RuoU9Fn/GYCqgkpZEt2wWNl/BCBVBNavJe6F8YEz2RDZC8cXKmNiBsTySfVKU8
+         WwKTw+TdtW2xaDQyZNelHpNRX1hgYoTrHzAj0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1778753586; x=1779358386;
+        d=1e100.net; s=20251104; t=1778753588; x=1779358388;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=Z9fm8OjDakj3wm8FHoPAz9QnbfYJEtGv/K1EWte5dtk=;
-        b=Va6X8rONsZ41JFa1+f6zdIe5bvAPYVfDA3Zq1Pmk5wj4w0hPAkOeqyxMZIl4JSNFYg
-         OkjeQCljvRt0Q5Eop9NQyU0hyn0RlCmIpRZuWuuDn1SQNoDcoLT7Yieoc+Xyjj4SkRhv
-         fouwEt5Jky6OFGRP3wciWWVZ6laTLseOZZUVSSnkGU52ARW6ubbecM4aZH3+enUGAA/B
-         vQDzV1YT34eO6iSnvRNHNvciKTRrhohfLxjoHcJDcjb9uO4X/DUmDiaDCFTStcP39UOe
-         BoZ6CdGYGYXfxJEhK2if148MXLY46CWcUOxsTpmM7BDU9nJ07clqvato0Z1LI9fvvwhZ
-         MbAQ==
-X-Forwarded-Encrypted: i=1; AFNElJ/NVuxF0ZSxgBPNh6bXP01Lhbqk9sCibbi3+ncKP8D/cV9BL0lYDZZT3SbMnPSGPMEYwGQIdAuFJRTamU0csw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxPSbDD9ZoyI5lgT8IkLD02VlwiYEUDFNMtx+uUvTz7+u/h1PCb
-	pK5YqZspOCGubtmGvW/Z44z9PRvyUIFQ45BBX6++VnUwQd0rS0RQmLxuxwnQXJRdxQ==
-X-Gm-Gg: Acq92OE+cP50j4yuVq/rxIzJs5R3xgrR3VlFcY8y4K+DeHXNWbzMdAQXsBBY4c3+6C/
-	8LuNbFKnA5Uny1jAuge9n9mDf2oYZaP0X9usztQv4UUcfEgx8x9vxDtERsEVxYZMAWCtRySG92x
-	Pa9V4h8i7P8Xj1Q/bOJIbRqN9rzkoDLE/5R4gPgIAYuiGY+TTfpxmgcbgpBvclatH2MqUamlSWz
-	dKYaEI85Ajh1+esAiHsRT+i4eRzLMAcoNkQLxKwfbG2u53z8qBVntQbZv9Ubs+cm8zEFvsUcOb7
-	ViAg/vxenvTBHbsS4Cv/ysduEdkQ81XNRKCzrFS2kqpTQRtYauY51574Lk8cSGzk6LcjWspJ7NR
-	FZDc03cXRkvV0LLdOdJDeuldOUr9BBlc/UybbAW/bxB4/SgWbla8cIYj5SKqIm4jyTazuRnQknN
-	zQI8hMKQf1WT8p57COYLrX8Dw+VAi9crAD6olWqVNhI64i2psUNzZt0LTMZJQ2INTOQNGobjSN2
-	BP5kaPf
-X-Received: by 2002:a05:6a00:e11:b0:81e:f1c3:89df with SMTP id d2e1a72fcca58-83f0431542fmr7743449b3a.50.1778753585633;
-        Thu, 14 May 2026 03:13:05 -0700 (PDT)
+        bh=KvyM/JTQn7pVukPBdXTyBSsJUb+2exZa4gm3aMyZcTc=;
+        b=Z4p8feanm5bzzsXqmJEoMQFgky1ugdTbcRJa40d36YXfLYcszzkDB/1gDWOEb5ATAI
+         phz35zK7e7u4OW6C8vUQlCTcTK8eNi147iajTGOyDTQ+f6THm4yVv0qBFn/wz9C4ZiJr
+         yGVroLVCcmtuQLSv5XTXVZEp0mlTdHdTpQb++Tr7PC98CYi3y7rb5n0X7FR9ev9KEIRo
+         c5z8Z2rmZ22Mn1Hlu8Tt82TEDAOn+GztvyqmvhLbOF6gLIMuwUjfwQvVS8b0z8AuasLv
+         rZjPHoMGaOkheUb50WsjjZcQznspkVmaCGC15LVViYzztNIPy8DUiqXPbRazijE40RJ5
+         PYpA==
+X-Forwarded-Encrypted: i=1; AFNElJ/EE/ohlp+lBNuwgYG/J7CB+IR0cHMGFTiid/nJxwPe95f4QYKAsW04UjHsMhJLFNT4t2Rutf0QcEUuHBwVGg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzDACEFmiBEOh2mbzbwxQBVkyDzI+6Gpdq2+nCl7XFywQQ+BVUW
+	wwk1iEInMJSTdNNNp6LPvv7+i72obkfyRoG0gCDLJ9hIv63tp+zSmRugrkE6oSBWwA==
+X-Gm-Gg: Acq92OHEDvWBCx0p8iAl1NwU2h6soJa/bagktauozHRl3luc1l2D+IsD3a6ms0YHd5Y
+	caX9yZ5jka4SYxzje8MyFImYj0iAUmRt1I12e9O3BHgq7jzmA06DRQWW2qs0VPvXA9D1xM5KOa4
+	AZ0ns8HvvDayw7ZyNBYFhixS9g168W5qw7n5mlmdh80kLk5T2vos5RqdUGCqb5Ry1WcWEwECC7J
+	Dn2IsiqhwEipjSbqVtytKD8sTUMyPT2u1kUv6ERQhzXUejoLWbchRc13dGqkZNqG341npJGGA+x
+	F0gj5fewJD9o+toAJkXjsH0nvtvNR9sNb3HlVVPV9AwrkjD0/LLCzI8DSsmZ3NqZw/Lr7TQW4Mo
+	YHXg/LTSTnkb0b5yCXuGG4it8wBup3Mw/Sd9cLHWgFbDuU7NxzF4hftkNvbb15SyTfL6i3G28hy
+	Ystd92vYNhOIztFhW8+qt10XJaV2qgk0YVf3G0TsGivW1B85hQJ3eeMVbCdjBQrzmQgjcGppLYC
+	41/moQ2
+X-Received: by 2002:a05:6a20:7f8f:b0:398:a659:eb0 with SMTP id adf61e73a8af0-3afb1112a37mr8021299637.34.1778753587701;
+        Thu, 14 May 2026 03:13:07 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:3a91:2f7b:b635:8285])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-83f19664212sm2898427b3a.2.2026.05.14.03.13.03
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-83f19664212sm2898427b3a.2.2026.05.14.03.13.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 14 May 2026 03:13:05 -0700 (PDT)
+        Thu, 14 May 2026 03:13:07 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
@@ -75,17 +75,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 1/4] arm64: dts: mediatek: mt8192-asurada: Fix SPI-NOR flash compatible
-Date: Thu, 14 May 2026 18:12:49 +0800
-Message-ID: <20260514101254.2749300-2-wenst@chromium.org>
+Subject: [PATCH 2/4] arm64: dts: mediatek: mt8192-asurada: Add (BT|WIFI)_KILL_1V8_L GPIO line names
+Date: Thu, 14 May 2026 18:12:50 +0800
+Message-ID: <20260514101254.2749300-3-wenst@chromium.org>
 X-Mailer: git-send-email 2.54.0.563.g4f69b47b94-goog
 In-Reply-To: <20260514101254.2749300-1-wenst@chromium.org>
 References: <20260514101254.2749300-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260514_031306_810136_12909EA0 
-X-CRM114-Status: GOOD (  11.65  )
+X-CRM114-CacheID: sfid-20260514_031308_469686_CFB5D7D1 
+X-CRM114-Status: GOOD (  10.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,29 +100,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For JEDEC compatible SPI NOR chips, there should be a single generic
-"jedec,spi-nor" compatible.
-
-Drop the model-specific compatible from the flash node.
+GPIO lines 59 and 61 are named BT_KILL_1V8_L and WIFI_KILL_1V8_L in the
+hardware design. Add them to the gpio-line-names property to make the
+names available to users and developers.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-index 84b89b317890..3c8b4c2f6f23 100644
+index 3c8b4c2f6f23..b7387075cb87 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-@@ -631,7 +631,7 @@ &nor_flash {
- 	assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D6_D8>;
- 
- 	flash@0 {
--		compatible = "winbond,w25q64jwm", "jedec,spi-nor";
-+		compatible = "jedec,spi-nor";
- 		reg = <0>;
- 		spi-max-frequency = <52000000>;
- 		spi-rx-bus-width = <2>;
+@@ -727,9 +727,9 @@ &pio {
+ 			  "SD_DATA1",
+ 			  "",
+ 			  "",
++			  "BT_KILL_1V8_L",
+ 			  "",
+-			  "",
+-			  "",
++			  "WIFI_KILL_1V8_L",
+ 			  "",
+ 			  "PCIE_WAKE_ODL",
+ 			  "PCIE_RST_L",
 -- 
 2.54.0.563.g4f69b47b94-goog
 
