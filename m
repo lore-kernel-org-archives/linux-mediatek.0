@@ -4,74 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85812CD343F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2026 15:05:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36819CD4F25
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2026 15:37:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D0aVJ1oI07M7fsLfw7yCfiuyUD9A/pHOpyMY/I0o1C0=; b=yKSosnyY0AobN1oWKz7R0z30u7
-	aK/H4unhS4wLqp/horPfPlYe7f9xksNBSQORyP5+LBO6m9qc+VRzRjAcUAF45VzxtN1yY1AsPVPq4
-	MuoI/zsD/S8bmkQHuKoOO3ydOfrOC24j8pcpPKTfnSe3yOjuvAt2egR6RuTr7k99oEr0/e4LyKk2/
-	rwLPkZ+UzVxSKqOZHO0TMrvo94wSRUEdOnAdQsk7M9Sug8N/2b5x7tF2ry+03R9dbCN/FVcb86/x8
-	ClErwTsbZIlFh9qP150qxB0rh2XGo69rLrcRd59N6L+HuXek8arLCCliZeV4QigmFCt10DV2BGhS6
-	vvNSZwew==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=yZEM/z3Ytg1ApbnIMKeC+6PyJ3FnTIOMTbeYSCB5PQ8=; b=Mdr35f4zPbAU1CU2HwqV9Massf
+	kuZxpoJMOPnh7KTH3MAWbOwVap/n/EOsylv+XvB3UUwGbxe7SOJj9HvBhuzNZaHqVEm17+oj4YUts
+	Yi1dUe5JBnhQJmuX4f6IdNmAqy1q7BovJjCz9WdhxHZqpG3x7cWgSVUD/yWweelc5hSUHsAjp0ynp
+	5qLDA09B/r81g671X/Rw1B9EyYVK7ms/5DFOYpnGRPMdvNOxXBzj7G9NQkvCurbDNpm64HtDQPlsp
+	m0VCW67hH/Mt5bcsI5r2YkGRmEToPHSZwW1cZ+BVWa9IGAEpb1qOFBZJHDKVjNVgi8/ub4ymONA+S
+	yOQ1w8nA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNu6c-00000008eSi-0y0f;
-	Fri, 15 May 2026 15:05:38 +0000
-Received: from m16.mail.163.com ([220.197.31.5])
+	id 1wNub3-00000008lmZ-495Z;
+	Fri, 15 May 2026 15:37:05 +0000
+Received: from m16.mail.163.com ([117.135.210.3])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNu6Z-00000008eRC-1IoX;
-	Fri, 15 May 2026 15:05:36 +0000
+	id 1wNuaw-00000008lhd-2uxo
+	for linux-mediatek@lists.infradead.org;
+	Fri, 15 May 2026 15:37:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Message-ID:Date:MIME-Version:Subject:To:From:
-	Content-Type; bh=D0aVJ1oI07M7fsLfw7yCfiuyUD9A/pHOpyMY/I0o1C0=;
-	b=ogJCGY5GZCO33EocCv82XtHrz71uQciISGEtOBaI6KUPvqZBTXI1vlRhWzoRMJ
-	AoMm1RqkBfRCAHa6aRGQUK801b33FTNE3yrwHQyrsI0nzqh+wa0+n9vXpaGLcZwn
-	3BifagXBGJ7WKejgWWYPtGM6QO3a0kB+lq3idysEMul7k=
-Received: from [IPV6:240e:b8f:91b3:d000:79ec:4c96:c180:869b] (unknown [])
-	by gzga-smtp-mtada-g0-2 (Coremail) with SMTP id _____wDnr6MGNgdqmNEiBg--.36082S2;
-	Fri, 15 May 2026 23:04:39 +0800 (CST)
-Message-ID: <01f61c3f-d2a7-4ce3-a820-a5502312a07f@163.com>
-Date: Fri, 15 May 2026 23:04:39 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 6/8] PCI: aardvark: Add 100 ms delay after link
- training
-To: =?UTF-8?Q?Pali_Roh=C3=A1r?= <pali@kernel.org>
-Cc: bhelgaas@google.com, lpieralisi@kernel.org, kwilczynski@kernel.org,
- mani@kernel.org, vigneshr@ti.com, jingoohan1@gmail.com,
- thomas.petazzoni@bootlin.com, ryder.lee@mediatek.com,
- jianjun.wang@mediatek.com, claudiu.beznea.uj@bp.renesas.com,
- mpillai@cadence.com, robh@kernel.org, s-vadapalli@ti.com,
- linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
- linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org
-References: <20260506152346.166056-1-18255117159@163.com>
- <20260506152346.166056-7-18255117159@163.com>
- <20260512212531.jupoocz7acv22qyg@pali>
- <581e91fb-2e57-43ed-b79d-19dbf384b955@163.com>
- <20260513072008.vol4htgbzquly2rb@pali>
- <15532890-ce22-4b20-96d9-e7f7c47050d2@163.com>
- <20260513185442.mw3md5te7dhojyd7@pali>
-Content-Language: en-US
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=yZ
+	EM/z3Ytg1ApbnIMKeC+6PyJ3FnTIOMTbeYSCB5PQ8=; b=cU5rJ3oPOgHfFuqlgX
+	40zx1/2+mkM6jI8DwNUPNtit/9LDtzbGN5MBdiKovRnBvnV4hk6yU2T2ibi1rFTX
+	mHTVRyAxFD1189z5trF+8aLY04TNOmHUQDSj+cTfL/UelGm468K4t803PEg7i6nN
+	JBLWMp53LDkoUIk/shqRhY/xY=
+Received: from zhb.. (unknown [])
+	by gzga-smtp-mtada-g0-2 (Coremail) with SMTP id _____wD3z9KEPQdqL74mBg--.53735S2;
+	Fri, 15 May 2026 23:36:37 +0800 (CST)
 From: Hans Zhang <18255117159@163.com>
-In-Reply-To: <20260513185442.mw3md5te7dhojyd7@pali>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: bhelgaas@google.com,
+	mani@kernel.org
+Cc: ryder.lee@mediatek.com,
+	linux-mediatek@lists.infradead.org,
+	linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Hans Zhang <18255117159@163.com>
+Subject: [PATCH] MAINTAINERS: Remove invalid email for Jianjun Wang
+Date: Fri, 15 May 2026 23:36:35 +0800
+Message-Id: <20260515153635.136054-1-18255117159@163.com>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wDnr6MGNgdqmNEiBg--.36082S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW3XF1xXrWrJF4xWry5Wry7Awb_yoW3Zr43pF
-	W5Ga9FyF47Jr13u3W0q3W8ZFyjqan8C343Xrn8X347Wr9I9FyDtF12krWfuasrGr4vyr12
-	vw45tFy3CwnIva7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07URVbkUUUUU=
+X-CM-TRANSID: _____wD3z9KEPQdqL74mBg--.53735S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7CF1fCFyfJrW3ZrykZr13Arb_yoW8Xw17p3
+	93Krn5ArWDJr47JF48Wa13t3WfX3yvgFyUKwsFg340qr15Zrn0qa40934Ut3ykCry8C34Y
+	yryIgr1kuFyUAFDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0p_xR6UUUUUU=
 X-Originating-IP: [240e:b8f:91b3:d000:79ec:4c96:c180:869b]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbC6wjrj2oHNgiRnAAA3Z
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbCxAXMcGoHPYW3OQAA3m
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260515_080535_765863_D171B6E7 
-X-CRM114-Status: GOOD (  49.83  )
+X-CRM114-CacheID: sfid-20260515_083659_193790_5CB41049 
+X-CRM114-Status: UNSURE (   9.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,199 +75,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Email to Jianjun Wang <jianjun.wang@mediatek.com> bounces with error:
+"550 Relaying mail to jianjun.wang@mediatek.com is not allowed".
+Remove the address to avoid sending future kernel maintenance queries
+to an unreachable destination.
 
+The MediaTek PCIe driver remains supported by Ryder Lee.
 
-On 5/14/26 02:54, Pali Rohár wrote:
-> On Wednesday 13 May 2026 15:34:46 Hans Zhang wrote:
->> On 5/13/26 15:20, Pali Rohár wrote:
->>> On Wednesday 13 May 2026 15:00:04 Hans Zhang wrote:
->>>>
->>>>
->>>> On 5/13/26 05:25, Pali Rohár wrote:
->>>>> On Wednesday 06 May 2026 23:23:44 Hans Zhang wrote:
->>>>>> The Aardvark PCIe controller driver waits for the link to come up but
->>>>>> does not implement the mandatory 100 ms delay after link training
->>>>>> completes for speeds greater than 5.0 GT/s (PCIe r6.0 sec 6.6.1).
->>>>>>
->>>>>> The driver already maintains a 'link_gen' field that holds the negotiated
->>>>>> link speed. Use it together with pcie_wait_after_link_train() to insert
->>>>>> the required delay immediately after confirming that the link is up.
->>>>>>
->>>>>> Signed-off-by: Hans Zhang <18255117159@163.com>
->>>>>> ---
->>>>>>     drivers/pci/controller/pci-aardvark.c | 4 +++-
->>>>>>     1 file changed, 3 insertions(+), 1 deletion(-)
->>>>>>
->>>>>> diff --git a/drivers/pci/controller/pci-aardvark.c b/drivers/pci/controller/pci-aardvark.c
->>>>>> index e34bea1ff0ac..526351c21c49 100644
->>>>>> --- a/drivers/pci/controller/pci-aardvark.c
->>>>>> +++ b/drivers/pci/controller/pci-aardvark.c
->>>>>> @@ -350,8 +350,10 @@ static int advk_pcie_wait_for_link(struct advk_pcie *pcie)
->>>>>>     	/* check if the link is up or not */
->>>>>>     	for (retries = 0; retries < LINK_WAIT_MAX_RETRIES; retries++) {
->>>>>> -		if (advk_pcie_link_up(pcie))
->>>>>> +		if (advk_pcie_link_up(pcie)) {
->>>>>> +			pcie_wait_after_link_train(pcie->link_gen);
->>>>>>     			return 0;
->>>>>> +		}
->>>>>>     		usleep_range(LINK_WAIT_USLEEP_MIN, LINK_WAIT_USLEEP_MAX);
->>>>>>     	}
->>>>>> -- 
->>>>>> 2.34.1
->>>>>>
->>>>>
->>>>> Are you sure that this is correct to do? Have you checked the A3720
->>>>> Functional Specification which describes how to bring PCIe link up?
->>>>>
->>>>> A3720 PCIe controller is buggy and needs more timing hacks to make it
->>>>> behave. Playing with random sleeps can break its internal logic.
->>>>> I'm not sure if it could be safe without proper testing.
->>>>>
->>>>> And IIRC A3720 PCIe controller is just PCIe2.0 with 5 GT/s.
->>>>
->>>>
->>>> Hi Pali,
->>>>
->>>> 1. This driver does not support A3720.
->>>>
->>>> static const struct of_device_id advk_pcie_of_match_table[] = {
->>>> 	{ .compatible = "marvell,armada-3700-pcie", },
->>>> 	{},
->>>> };
->>>> MODULE_DEVICE_TABLE(of, advk_pcie_of_match_table);
->>>>
->>>> If you need support for A3720, please submit the corresponding patch so that
->>>> Bjorn and Mani can review it.
->>>
->>> 3700 (or 37xx) is family and covers both a3710 and a3720. In most cases is the
->>> a3720 dominant and hence identifiers 3700 and 3720 are begin mixed.
->>>
->>>>
->>>> 2. If A3720 only supports GEN2, you can configure "max-link-speed" to be 2
->>>> in the DT. This will not affect the functionality of this patch.
->>>
->>> Whole A37xx supports only GEN2. And in DT files for 37xx should be
->>> already there max-link-speed.
->>>
->>> Seems that in advk_pcie_of_match_table there is no GEN3 device
->>> specified.
->>>
->>
->> Hi Pali,
->>
->> However, I saw many GEN3 assignments and conditions in the code.
->>
->> ret = of_pci_get_max_link_speed(dev->of_node);
->> if (ret <= 0 || ret > 3)
->> 	pcie->link_gen = 3;
->> else
->> 	pcie->link_gen = ret;
->>
->>
->> static void advk_pcie_train_link(struct advk_pcie *pcie)
->> {
->> 	struct device *dev = &pcie->pdev->dev;
->> 	u32 reg;
->> 	int ret;
->>
->> 	/*
->> 	 * Setup PCIe rev / gen compliance based on device tree property
->> 	 * 'max-link-speed' which also forces maximal link speed.
->> 	 */
->> 	reg = advk_readl(pcie, PCIE_CORE_CTRL0_REG);
->> 	reg &= ~PCIE_GEN_SEL_MSK;
->> 	if (pcie->link_gen == 3)
->> 		reg |= SPEED_GEN_3;
->> 	else if (pcie->link_gen == 2)
->> 		reg |= SPEED_GEN_2;
->> 	else
->> 		reg |= SPEED_GEN_1;
->> 	advk_writel(pcie, reg, PCIE_CORE_CTRL0_REG);
->>
->> 	/*
->> 	 * Set maximal link speed value also into PCIe Link Control 2 register.
->> 	 * Armada 3700 Functional Specification says that default value is based
->> 	 * on SPEED_GEN but tests showed that default value is always 8.0 GT/s.
->> 	 */
->> 	reg = advk_readl(pcie, PCIE_CORE_PCIEXP_CAP + PCI_EXP_LNKCTL2);
->> 	reg &= ~PCI_EXP_LNKCTL2_TLS;
->> 	if (pcie->link_gen == 3)
->> 		reg |= PCI_EXP_LNKCTL2_TLS_8_0GT;
->> 	else if (pcie->link_gen == 2)
->> 		reg |= PCI_EXP_LNKCTL2_TLS_5_0GT;
->> 	else
->> 		reg |= PCI_EXP_LNKCTL2_TLS_2_5GT;
->> 	advk_writel(pcie, reg, PCIE_CORE_PCIEXP_CAP + PCI_EXP_LNKCTL2);
->>
->> ....
->>
->>
->> If you are certain about the relevant information. Is it understandable that
->> we need to delete the code related to GEN3?
-> 
-> Ok. So some explanation. pci-aardvark.c is implementing driver for PCIe
-> controller with codename aardvark. I have no idea from what this
-> codename comes and what is represents. What we know that the driver was
-> written for A37xx SoC platform according to A37xx functional specification.
-> As it is common in SoC world, vendors just buy some IP and integrate it
-> into SoC. In this case Marvell bought this PCIe controller IP and
-> integrated it into the A37xx. In past I tried to investigate what it
-> could be and IIRC my assumption was that it was PCIe IP from Denali.
-> Denali was acquired by Cadence, and when I compared Cadence PCIe
-> controller registers and PCIe controller registers in A37xx functional
-> specification there were large overlap. For me it looked like new
-> Cadence PCIe controller is an evolution (or new version) of what is in
-> A37xx. So this was some confirmation of my theory. Linux kernel has
-> separate driver for PCIe controller from Cadence and for refactoring
-> there were ideas to merge these two drivers... But there were more
-> important things, fix issues related to A37xx PCIe, lot of changes
-> which address these issues were sent to the list but they were not
-> taken. I do not think that it makes sense to do refactoring or doing any
-> other changes before addressing any existing issues with these
-> drivers (like PCIe card is not working correctly).
-> 
-> There are reported more HW erratas for this PCIe controller which needs
-> to be addressed in the software (meaning in Linux kernel) to make PCIe
-> card working properly. And there are more design HW decision which needs
-> does not conform to the PCIe specification and those deviations needs to
-> be "fixed" or "adjusted" in software (meaning in pci-aardvark.c driver)
-> to make PCI/PCIe compatible drivers to work correctly.
-> 
-> Now about GEN3. From register allocation it looks like that PCIe IP
-> supports GEN3. A37xx does not support it (or at least officially). This
-> does not mean that there cannot be some SoC with this "aardvark" PCIe IP
-> that is GEN3 capable. Just we see that such SoC is not supported by Linux.
-> Also as the comment in above code says, by default the speed is reported
-> as 8.0 GT/s, so changing it to 5.0 GT/s or 2.5 GT/s is needed as so code
-> some parts of GEN3 code in the driver is needed.
-> 
-> Does it makes sense to remove it? Does it makes sense to spend time on
-> such thing which does not address any existing issue? For me not.
-> Because it does not fix any _real_ issue with existing PCIe cards. And
-> for refactoring it is better to merge drivers as explained above and
-> IIRC cadence driver has HW on which is GEN3 used.
-> 
-> Now about your change. If you are sure that pcie_wait_after_link_train()
-> function is noop for pcie->link_gen == 2 || pcie->link_gen == 1 then go
-> ahead, I have no objects. I have not looked deeply at the change. I just
-> spotted some change which is touching timing critical code path which
-> was problematic in the past and broke many wifi cards. So I'm really
-> careful to prevent breaking Linux support again.
-> 
+Signed-off-by: Hans Zhang <18255117159@163.com>
+---
+Hi Bjorn and Mani,
 
-Hi Pali,
+Recently, when replying to emails in the Linux community, I kept
+encountering that Jianjun Wang's emails were being returned. The
+detailed information is as follows:
 
-This condition, pcie->link_gen == 2 || pcie->link_gen == 1, will have no 
-effect.
+"""
+Dear user 18255117159@163.com:
+Sorry to inform you that your email (send to jianjun.wang@mediatek.com) has been returned. The details are as follows: 
 
+ ------- Original Mail Information -------
+Time:2026-05-15 23:04:39
+Subject:Re: [PATCH v2 6/8] PCI: aardvark: Add 100 ms delay after link training
+To:jianjun.wang@mediatek.com
+Relpy Code:
+SMTP error, RCPT TO: Host mediatek.com(1.203.163.78) RCPT TO said 550 Relaying mail to jianjun.wang@mediatek.com is not allowed 
+"""
+---
+ MAINTAINERS | 1 -
+ 1 file changed, 1 deletion(-)
 
-Best regards,
-Hans
-
-> As maintainers decided to not take any new changes from me for this
-> driver, I have no motivation to prepare any new changes. I will rather
-> spend my free time on something which will make sense and not be wasting
-> of my free time.
->
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 6aa3fe2ee1bb..b2609dc33c62 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -20745,7 +20745,6 @@ F:	drivers/pci/controller/dwc/pcie-intel-gw.c
+ 
+ PCIE DRIVER FOR MEDIATEK
+ M:	Ryder Lee <ryder.lee@mediatek.com>
+-M:	Jianjun Wang <jianjun.wang@mediatek.com>
+ L:	linux-pci@vger.kernel.org
+ L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
+ S:	Supported
+-- 
+2.34.1
 
 
