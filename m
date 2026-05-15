@@ -4,196 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44C73CD4851
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2026 10:19:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5A23CD4F25
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2026 10:32:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ktnoy4EiBafipnGFaL3Uq/0JMnz43wWgrtsXIMNdV5o=; b=1AVCTKHWi6F14hIuOXnE+JTxT6
-	/XJwtstqYpsNhSTwbH6Coa4ZK/XcbQLgYvHJdfg/eufbWSF1wYe9iVSOgNZV0y/t1lNbtMPQP8FYE
-	IyqKkWKNT2A5WMYSNSogZUZCkz1Ux5rM4Pell6m4lEbjG6zZT7kV4JtwV2lECh7a0QN5p1VYq63b7
-	g9hk0jopS6JsF+xYE0MZwWWj1uelGpEF6UUvqm+Qdr1q/IGwTz1U8wHf0deq+gQJbL4+NUZlZxXTp
-	3vuWk7X7SNBL1SUwVYJWhztsNhTgddUgeBDoLN/6zs1eYWDdgTbcO9j453UiJEhFiVcv5WMvXYmeW
-	HelcgQvA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=o4VFxAX/RBMPyY1B8Q55ve0Gqxv/mNzsRTb0EZb1f1Y=; b=zFv6/qBAH1NXEQ+FHLisBjJh8K
+	kVCrN/bl2XKhFGBbgsJrzliyjUn3CDmjThiIbfWOgY9m3+3jPpJBQzTJp9WVVtK76pAS7D4XKj+s5
+	n8cs6azpigV2T4R/2nr0Ao3v7e8uLCxDJdstA5qfWkEX6lpVuyKvfnf7Spc78g2iN1DXP8nqYvxap
+	5tCJP4/LDXMvtPGTenYEbOC2Tdtr+q1anQSG1RjvRYTcjiUv/k6mwZRzxU6Bfwk4JIp5U7cFv7kYO
+	Mf9TOYQGSqMqVnEX+HRDJyZPzyxwZC2+hdiQZUZ/uDUXDWNdS+Pp4DcBXNyDSeZIaQvdecERpYQEO
+	Q+Psw/jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNpdU-0000000811X-173y;
-	Fri, 15 May 2026 10:19:16 +0000
-Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
+	id 1wNppv-000000083SY-39hq;
+	Fri, 15 May 2026 10:32:09 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNpdQ-0000000810z-3J9Z;
-	Fri, 15 May 2026 10:19:14 +0000
-Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
-	by mx0b-001ae601.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 64F4MvGk3863696;
-	Fri, 15 May 2026 05:18:19 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com; h=cc
-	:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=
-	PODMain02222019; bh=ktnoy4EiBafipnGFaL3Uq/0JMnz43wWgrtsXIMNdV5o=; b=
-	Tnjz8y4cV9aVzKgEjAUOU6hC8hw24UNsDChvJpC4GOEyyGCUxWHisHvHc2XHajKV
-	cKpa1UY649Bn6hBIed3dedqFpvTqpiHiJieRXr6fj1KAHzGTLeg+kmgcvtFsWwX1
-	Z0xH4mpXqN09BLAeypszg7Obk3tqSie7DVRr6anLHOo63JUL97RiOuc+dVARMnnw
-	9nIWx23pnzYgt9zrn4nnq7P3XDReH1XlZ7D0h5yhL2Z0oszY1BE0A+cNUBoMp6F4
-	y8Oh3UkLjpfeEPsydxbyFkXg/iQYDbASt/Dmx+eDiXwV1YaSFYrWOnyba0uAywyU
-	ixxcRS+DQ41bIPf9xFFcog==
-Received: from sn4pr0501cu005.outbound.protection.outlook.com (mail-southcentralusazon11021088.outbound.protection.outlook.com [40.93.194.88])
-	by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 4e5m2krst1-1
-	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
-	Fri, 15 May 2026 05:18:18 -0500 (CDT)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=fElagapotH9N43X4eake8F/AmLQnFOp3BNTnnW4bJwHUheiUXgD6NcLWn9HmhAl3mKJwAcp1nNEBd1wijbVtzasprNhIkSg0352HSc4nKggYDigEOmFTXanjiyQyeCkcy5jkXezijBW1szbwVnbRuwUh1isAl6m01km5Kp7/P4BGDgnbgetPslill00uJUO5adRmedr+na6u6Lq3BZFw5QskokKuXDPVrz/oRjV8NmOSejyDuY+SaxGbHBAN9twlC0OCj1FS4TiFP6Rxj6e5rFhVzGn50RD2UKVcPGjfRIzqEdLHDw3bCICOtT3V1N4XtCVrU3Q3O1TSdemyQWvuvg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=aBKnmMyrqF98BRIoYOZ//t8NEy9KJMvZcc5Q7W4hWts=;
- b=oD+Qjai/0Xqf8TJUCJVxs/5yp0qzQ4N9FiHjr73YQxM4hXtsT3gIi+jlyYebHBdaidNcKYMv5NiCN59g6H7lQwxNkLF/H2B+CWEvozbrezlgWf/VXPcBkfN9IUun4VdWJgp5eAYD672EkAyd7mmESmSK/GKpeZ9g0sJOAdmeyyzFLQ48ITsHFSUWakRpvoumd4gcqBJH/rDLqHrHutiLgOPwM+rTTerRUi6XJqAHPsDKVYlM9B3trcDFLXHN8D7bRhBpUd4i3OgSlTkQuQMJsJ5gxQwDmDxLCQNmme2JuCT82WMhu+UUWwKJp0jJZ1/uTghNlm0o7PJODhyiq7+c2g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=softfail (sender ip
- is 84.19.233.75) smtp.rcpttodomain=analog.com
- smtp.mailfrom=opensource.cirrus.com; dmarc=fail (p=reject sp=reject pct=100)
- action=oreject header.from=opensource.cirrus.com; dkim=none (message not
- signed); arc=none (0)
+	id 1wNppu-000000083S7-0WLK
+	for linux-mediatek@bombadil.infradead.org;
+	Fri, 15 May 2026 10:32:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=o4VFxAX/RBMPyY1B8Q55ve0Gqxv/mNzsRTb0EZb1f1Y=; b=dtfljYNCzh7/gGZ6j2eIltWm2l
+	bDMVqUxtnQKovwPPEqVoy4+nYTV4Osuu3W+U2hOIDXZUu6Pjk2+FT6RYodKDtkDJByfn/nea2/pMF
+	CFSc9X5P+V73TDaCbuKq94Tf6K7P1zOCpeN9Ycds2Ld8K4ZZ4U8qC70Cv9QxwY7RII35yeuMJUxDK
+	aRKWxTp/oIlFsSSrLCO1MezjbcvUTd2eYIFGBsnQiLn2pG9a36NpuPV+CtP+Smt98mgqSF8b1SulH
+	0Gv1gNBm8SKhkTAKMg0O8VIYeg9z8Z/RoTyX8mNtKx1QBhHxYFD41tuvJBboOZXiA6uaeAG61bPDO
+	T0U9bptA==;
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	by desiato.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1wNppq-00000004uGE-0g3N
+	for linux-mediatek@lists.infradead.org;
+	Fri, 15 May 2026 10:32:04 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-48a563e4ef7so81498875e9.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 15 May 2026 03:32:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=cirrus4.onmicrosoft.com; s=selector2-cirrus4-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=aBKnmMyrqF98BRIoYOZ//t8NEy9KJMvZcc5Q7W4hWts=;
- b=wzv3ZRvyzPlMJW5rvqPwbOjhiNZAR5vgsAFCwN+WSGE717ZOkZ9rVDRRV05ygWWBFk6rrFGZKKYDn3dBCSOyYHQ5UVOQK1toMhulvDoUzhLwL2CXDVNSZoGMb6CguOcJjwESkNYsM/sXNF7AbOKKq4v735EZOFmro3An1Vhnvv0=
-Received: from MW4PR03CA0134.namprd03.prod.outlook.com (2603:10b6:303:8c::19)
- by SA0PR19MB4320.namprd19.prod.outlook.com (2603:10b6:806:81::22) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9913.12; Fri, 15 May
- 2026 10:18:12 +0000
-Received: from SJ5PEPF000001F6.namprd05.prod.outlook.com
- (2603:10b6:303:8c:cafe::5a) by MW4PR03CA0134.outlook.office365.com
- (2603:10b6:303:8c::19) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9913.12 via Frontend Transport; Fri,
- 15 May 2026 10:18:12 +0000
-X-MS-Exchange-Authentication-Results: spf=softfail (sender IP is 84.19.233.75)
- smtp.mailfrom=opensource.cirrus.com; dkim=none (message not signed)
- header.d=none;dmarc=fail action=oreject header.from=opensource.cirrus.com;
-Received-SPF: SoftFail (protection.outlook.com: domain of transitioning
- opensource.cirrus.com discourages use of 84.19.233.75 as permitted sender)
-Received: from edirelay1.ad.cirrus.com (84.19.233.75) by
- SJ5PEPF000001F6.mail.protection.outlook.com (10.167.242.74) with Microsoft
- SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.21.25.13
- via Frontend Transport; Fri, 15 May 2026 10:18:11 +0000
-Received: from ediswmail9.ad.cirrus.com (ediswmail9.ad.cirrus.com [198.61.86.93])
-	by edirelay1.ad.cirrus.com (Postfix) with ESMTPS id 6356A406540;
-	Fri, 15 May 2026 10:18:10 +0000 (UTC)
-Received: from opensource.cirrus.com (ediswmail9.ad.cirrus.com [198.61.86.93])
-	by ediswmail9.ad.cirrus.com (Postfix) with ESMTPSA id 49704820244;
-	Fri, 15 May 2026 10:18:10 +0000 (UTC)
-Date: Fri, 15 May 2026 11:18:09 +0100
-From: Charles Keepax <ckeepax@opensource.cirrus.com>
-To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
-        David Rhodes <david.rhodes@cirrus.com>,
-        Richard Fitzgerald <rf@opensource.cirrus.com>,
-        Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-        Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
-        Baojun Xu <baojun.xu@ti.com>, Lars-Peter Clausen <lars@metafoo.de>,
-        Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
-        Martin =?utf-8?Q?Povi=C5=A1er?= <povik+lin@cutebit.org>,
-        Support Opensource <support.opensource@diasemi.com>,
-        Nick Li <nick.li@foursemi.com>,
-        M R Swami Reddy <mr.swami.reddy@ti.com>,
-        Vishwas A Deshpande <vishwas.a.deshpande@ti.com>,
-        Peter Rosin <peda@axentia.se>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Oder Chiou <oder_chiou@realtek.com>,
-        Fabio Estevam <festevam@gmail.com>,
-        Kiseok Jo <kiseok.jo@irondevice.com>,
-        Kevin Cernekee <cernekee@chromium.org>,
-        Steven Eckhoff <steven.eckhoff.opensource@gmail.com>,
-        Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
-        Thorsten Blum <thorsten.blum@linux.dev>,
-        Chris Morgan <macromorgan@hotmail.com>,
-        Dan Carpenter <dan.carpenter@linaro.org>,
-        Marco Crivellari <marco.crivellari@suse.com>,
-        Weidong Wang <wangweidong.a@awinic.com>,
-        Aaron Kling <webgeek1234@gmail.com>, Teguh Sobirin <teguh@sobir.in>,
-        Luca Weiss <luca.weiss@fairphone.com>,
-        Bharadwaj Raju <bharadwaj.raju@machinesoul.in>,
-        Hsieh Hung-En <hungen3108@gmail.com>,
-        Binbin Zhou <zhoubinbin@loongson.cn>,
-        Shimrra Shai <shimrrashai@gmail.com>,
-        Zhang Yi <zhangyi@everest-semi.com>,
-        Krzysztof Kozlowski <krzk@kernel.org>,
-        Srinivas Kandagatla <srinivas.kandagatla@oss.qualcomm.com>,
-        Qasim Ijaz <qasdev00@gmail.com>,
-        Sharique Mohammad <sharq0406@gmail.com>, Chen Ni <nichen@iscas.ac.cn>,
-        Neo Chang <YLCHANG2@nuvoton.com>,
-        Cezary Rojewski <cezary.rojewski@intel.com>,
-        Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-        Kees Cook <kees@kernel.org>, Qianfeng Rong <rongqianfeng@vivo.com>,
-        Tim Bird <tim.bird@sony.com>,
-        Bram Vlerick <bram.vlerick@openpixelsystems.org>,
-        Peter Korsgaard <peter@korsgaard.com>,
-        Linus Walleij <linusw@kernel.org>, Wenyuan Li <2063309626@qq.com>,
-        Bartosz Golaszewski <brgl@kernel.org>,
-        Shengjiu Wang <shengjiu.wang@nxp.com>,
-        Sebastian Krzyszkowiak <sebastian.krzyszkowiak@puri.sm>,
-        Xichao Zhao <zhao.xichao@vivo.com>, linux-sound@vger.kernel.org,
-        patches@opensource.cirrus.com, linux-kernel@vger.kernel.org,
-        asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
-        linux-mediatek@lists.infradead.org,
-        Markus Schneider-Pargmann <msp@baylibre.com>
-Subject: Re: [PATCH v1 2/2] ASoC: Use named initializers for arrays of
- i2c_device_data
-Message-ID: <agby4VvKu2XSS2FB@opensource.cirrus.com>
-References: <cover.1778692164.git.u.kleine-koenig@baylibre.com>
- <ae2ff4898eb340bd8bcafb7b75443eb4a0ce3e76.1778692164.git.u.kleine-koenig@baylibre.com>
+        d=baylibre-com.20251104.gappssmtp.com; s=20251104; t=1778841120; x=1779445920; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=o4VFxAX/RBMPyY1B8Q55ve0Gqxv/mNzsRTb0EZb1f1Y=;
+        b=RPZ9pnPvl9R8R79/o6vhNfi0RA44XrAzspjnVhe4nk7Bks/04rrn5V56NXkc3BGyGF
+         BTeKzMcf6FA2ECUOrpf60njhikoh5eibnbEDL3DDOnJUBMUcRPrRW2rZ/oBB+oubDDAa
+         oEK9jjNx2hDc+fu4S2GzEfOG9aEqsmzffep6ZtYVWc3qusoBI9hL+yXTb3DrCJLQI5Qk
+         674axaqg/MchjLEZ5gFp3EGgx61qK3XN38OKtiCNXkscY/xb9kfe4i9Cc9R22op4oG59
+         SkG4Elwuwtol6Gq+KM7j+vDjULO+egY4xgWvzWD96iPKwVmD/ntn9NKElFifAtvUr2w/
+         kRCw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1778841120; x=1779445920;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=o4VFxAX/RBMPyY1B8Q55ve0Gqxv/mNzsRTb0EZb1f1Y=;
+        b=qB0z2CwBFzSdphi18ciJcqwhfeoNq4uiO5oCfOL39uPf454Q9PTUHiJ70OWe+HnkXT
+         L0EcsW1mHgDEKesPZv9eyyc+5LcB3rjwkZpZRBvRWKxsDbm5L+vRq1pZQDwgRh1JbRBw
+         ejNXOvI3NOWsP/TTItjNk5QxBvfi5nCsNm7QiJ9agJ4fNV+6DTIED2d/AaG8L2KyciYC
+         tPQWmhk4D+9OHc0xIO2zci006Fn4VY4n5Gvm4DjlSyiR6g0qO/9l7fWPBSBxBHMHT43n
+         5qDNTizm/zIkZ1VQL+Mo7vqPmEV7eQDOBF7V3/XkMLS703teafPZxBu4VbWeIGJn/vm4
+         GbMA==
+X-Forwarded-Encrypted: i=1; AFNElJ9B/rIdO7B+3Zuwcw5OuLQtT8p2WlQhq93eEoaWTVRrUVlj2c5+kLFvaUZdiiGPO6c5xLbMrKYax74rwS3bbA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy58pmn5sJNdkG6zy1zAVUIEhv0T5bCjTPCI5/9wxsGGMJr+lJj
+	7cQh5br7VEfmipoa6mAhKz0ZGppqlspO81gvCD4rxXyhFtaG5YkI2xxXVKjOFhPwEI4=
+X-Gm-Gg: Acq92OHVxgvkABXY4SHAwuHpAZgwQIrK3plEVLbWo59iQ0X06+bF8idG8X/linWv7CE
+	Grylu91Ekri6/+oX4Iv93NZdGBUqZPSWYh6MzT9+ZAEjlAJb27tE+1N4O3C6p16fhoUwNrxQaVS
+	tlZg6u4r6hE/oNqGCgv3y4J9uXTOzQUqNw/pCseQbB6Bk+eHsv5vi8o8bWXnb5JkS1E7HgCdyWI
+	XeSqi7BsrBlMY9Tx+OWePUTqOcB4rVrCM4wyZay10r7PIkrJquQNsK7BjIIF/w5j7iY0YEuKAcv
+	V/FYydPLmO87YhK++IZRoTX+D0CBXoSnCspZ8a1t/58iwqAmCV0E6nW+9hJnWOfGn2bvh3XrQDv
+	SRGUMoj2+GhV2fvXd7L8uwkMT1BmHXE9w+QKLhm5QesnkJ2/9kgTCoZVRXz0OOw6y2GJ9rSyTu0
+	Pd+jFFWHm9DjOClMjms0SYm/CsI7QUkl0T2tnW8nA4hDrTNI5wFBCDO/02827Fix94nBk5QKvbm
+	PiShR3EAAjC1GynUxX+qQpxjQ==
+X-Received: by 2002:a05:600c:3104:b0:488:ab1d:dcc5 with SMTP id 5b1f17b1804b1-48fe651b57fmr43050765e9.27.1778841119922;
+        Fri, 15 May 2026 03:31:59 -0700 (PDT)
+Received: from localhost (p200300f65f47db04b9fad853b28b1de0.dip0.t-ipconnect.de. [2003:f6:5f47:db04:b9fa:d853:b28b:1de0])
+        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-48fe5694fbfsm93991925e9.6.2026.05.15.03.31.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 15 May 2026 03:31:59 -0700 (PDT)
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig=20=28The=20Capable=20Hub=29?= <u.kleine-koenig@baylibre.com>
+To: Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>
+Cc: Markus Schneider-Pargmann <msp@baylibre.com>,
+	Michael Hennerich <michael.hennerich@analog.com>,
+	Support Opensource <support.opensource@diasemi.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Ivaylo Ivanov <ivo.ivanov.ivanov1@gmail.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Andrei Simion <andrei.simion@microchip.com>,
+	Saravanan Sekar <sravanhome@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Woodrow Douglass <wdouglass@carnegierobotics.com>,
+	Jagan Teki <jagan@amarulasolutions.com>,
+	Icenowy Zheng <icenowy@aosc.io>,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v1] regulator: Use named initializers for arrays of i2c_device_data
+Date: Fri, 15 May 2026 12:31:50 +0200
+Message-ID: <20260515103150.164887-2-u.kleine-koenig@baylibre.com>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
+X-Developer-Signature: v=1; a=openpgp-sha256; l=31528; i=u.kleine-koenig@baylibre.com; h=from:subject; bh=aA+OthxxiJ6r+sFyl2p1Ok9WVo/khYHXmfKCp/p8qhY=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBqBvYWHXe0AjMkzLf5qeqgQYDNYReZpWIGfHqh5 bFuwpHQ1X+JATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCagb2FgAKCRCPgPtYfRL+ TqwKB/42AKoRVSPwcCfZyvkO2Xd21CFmj+Mmu9vALJqi13gU1e2kg8GuPblFtsoLPGetjG2qjmo HIWhX7woKZgSqHIGC1Ix7S1OBxn1Flj8ViQ8FMBM9QlWuB8Bb1kO69O7HJ0cHlrWro2JXt0Cv+B NkIdvgRxUGYAcERSCeF6MD/8UvNtRab5JOTC/JY7zCrLrCzdmc8OeWC9d8WzyIsuAOw9YEbGMpe WpGZjl942a2WeLINLPMI5b9GF6V6UQlAbrWPXUb6niLF82pa+xgPUqa2bONFo+uyqCk/hmQ5j2t /dI+oUlqt23SnBLm5nTpl3y/IQYy6PittO3+rN04Sz/6ZzJz
+X-Developer-Key: i=u.kleine-koenig@baylibre.com; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <ae2ff4898eb340bd8bcafb7b75443eb4a0ce3e76.1778692164.git.u.kleine-koenig@baylibre.com>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ5PEPF000001F6:EE_|SA0PR19MB4320:EE_
-X-MS-Office365-Filtering-Correlation-Id: 3fd440a6-eab8-4c8a-8e91-08deb26b44e7
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|61400799027|82310400026|7416014|376014|36860700016|32650700020|4143699003|16102099003|22082099003|18002099003|56012099003|11063799003;
-X-Microsoft-Antispam-Message-Info: p3xP2x/EUMc4D/PEt7zCm0KNkzzx6ZsawxH/5MSnxjodIvRTkdlb9ZDYSMnsgmRJahIa5YwneggBggR0c8rtRM2Ff3PqxqPlp7U++vVHlPnwvu/YUtZ4Zo3yO+VxucKZgfuY/UoKdYIYeh/kCugJ2y44I2oXf2mTA8tXDWknFeP8fECDdGkskHk9pw5FxoCzJf7P7xZCQhLbFmp/0t/DssAbyaCkgqAO2VpOU/8euZjQZp3T0woTOQDfnlhC3gP35j/rmc1ZZjULQ5/bkQZxDKzfV5T0BgnPpMTogEMMifC8hxHpn9TFYFqixuDSeSZ+hs84qsSV/3G+5VoGMnqhMHJnOKMRZ956FbTQ2zwlLbeGgEtroOLM29qcdlHxrXmjsuBy4L85INQsiYJzAiiMLYlBj6i9jscY2eETueNJRxa0qXVVv3kNsq3H32RSM4JiRRM28go/G1GxVIdT2QQ+kzYsHcGOFR5D7T3c3UPdbiV/bkO93fAcHixeB7wbQfPv9TvzzWNkR8zRDlvhlDyt9DDsmzSPho9eY1huP2uEoGfE4et3lKMrYKAifhGyoypqjquzLC8xqiq8sjdCdrZyvKoA6aAfxku+FLqeSu7wo86S3jNsBK7O+EqrexVCZfDg/9IWnVcyb9Td02Eev13rYJemT/KkBBNJbmTpXdP/y5A6CYknbLMDBwIA5xzF2DMWK2W+vnkL5ucce+1jUYB/hkakJgv5EUU+9R2DK+NX/7Q=
-X-Forefront-Antispam-Report: CIP:84.19.233.75;CTRY:GB;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:edirelay1.ad.cirrus.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(61400799027)(82310400026)(7416014)(376014)(36860700016)(32650700020)(4143699003)(16102099003)(22082099003)(18002099003)(56012099003)(11063799003);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: DtkTK9cSfxwtoealsW+hxhwdH6uwQBEGVU07Vvws2iO+JCcA1FLJ81eUYoZd7qjSTZ6RN13ALjSaAp9OuFhe0qTvx5y6wRGjeALk/kz2RXjyirGcYPhG4bKE3QIWdZMK+qXnRYE4tVCvR/3y7UJhRXKe45UEIDSYg2M0wnDyVjDAcFO8z4XjRGtQJoQaYVe1S4+LQB5dzV/zhKWK2WwmOKdq0bS0PQAbLfS6P99BxRsOx8YpASHQL7pe0KfGQxeGUu5MaxPCu4GUSBddzTBnlFDq8M6+V5/8Vzqe0DXGUlIQ4jAS99kPPuanzVnBkzwj2s8kUtv5Yhj334jWu5ZIqHtOC6u6QrT3XXHmzyQ+J4dBQCvCV1z+PN61SLODH8Qw+rLLbKDjSb28lAtTniCqwtzZWYL3ZnR3sqMgvQuSugNY33t+HYPGX9mOdyxxuBNT
-X-Exchange-RoutingPolicyChecked: Ppk/7iR5hnTw/HqKRtZsFmoRwChZel+Mr9di/6lFhHYT3ZlLEFF6i0kEtDP7o6PqYCvejptUNL1fHGks8N8R5nbd/pr7g2SzepzRgcSudWGNo0+y8xZSJ6cD1+QfRde78MLh76VAyuTRF0cj75PpSh6ekvN2CzrZFVMnB8HyJvq/HNKCPJmnojbnkC/S6ohayWf8eWz1N3Ma6uROPt7GG9xY+bawbOW661W7S1s82N+DXBN6c/VjVXXv7rFkkTaq1mYIgJzAVIa9IaYNNEKejt9hk8p5wBwgKHc+Fi/Yt7B3xNAA5GJdlBtdRgWeWPBd6t7wwf1TFWAu8VHcEi0RzA==
-X-OriginatorOrg: opensource.cirrus.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 May 2026 10:18:11.7512
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3fd440a6-eab8-4c8a-8e91-08deb26b44e7
-X-MS-Exchange-CrossTenant-Id: bec09025-e5bc-40d1-a355-8e955c307de8
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=bec09025-e5bc-40d1-a355-8e955c307de8;Ip=[84.19.233.75];Helo=[edirelay1.ad.cirrus.com]
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TreatMessagesAsInternal-SJ5PEPF000001F6.namprd05.prod.outlook.com
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR19MB4320
-X-Proofpoint-ORIG-GUID: VFQxl3XQhrDgTlDijADyfXN7NcQWoaHp
-X-Authority-Analysis: v=2.4 cv=KOdqylFo c=1 sm=1 tr=0 ts=6a06f2ea cx=c_pps
- a=msPUCbsZKHGyBhhyaqynTw==:117 a=h1hSm8JtM9GN1ddwPAif2w==:17
- a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19 a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19
- a=8nJEP1OIZ-IA:10 a=NGcC8JguVDcA:10 a=s63m1ICgrNkA:10 a=RWc_ulEos4gA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=iX4cTi3TZMoOKdANLEfx:22 a=KfkQE9S9VqCBgivYGm0O:22
- a=IpJZQVW2AAAA:8 a=w1d2syhTAAAA:8 a=-W4hE_00JRDff0mwMXEA:9 a=3ZKOabzyN94A:10
- a=wPNLvfGTeEIA:10 a=IawgGOuG5U0WyFbmm1f5:22
-X-Proofpoint-GUID: VFQxl3XQhrDgTlDijADyfXN7NcQWoaHp
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTE1MDEwNCBTYWx0ZWRfX7M5wfFoq2nQA
- cbiTA+omXBbo98COsEV6xPol5AYm8peDmxFroGWLev+h9djqsqxYyZFoEEQq48Vwv/iFriLpwTz
- X8HiHgJWX2PunzeezkqqCuYBo6ON2U+Dcu/FnWH2ZTK0j5CZG4Yc0lLXR1kcNGnO4dBaLtBXOBr
- w2ZvfRLErVhI+Z9D8AZV58y8O4+Gc/EJX3P7h0uU9hNmfK/UgK/Im0SMfjcUSPQmb1Qbs80yXx4
- J5U0uY2gmt+x66Sc590gpMptWOzqbboYiNLTO0g2H+cyuAucDX+9M0JdAQN2TxF2bovoerEtOZT
- LwavDpDE1CIsqg5MQwP6VTd/Re0JkdTOiROzX1X5gj4Wwb4lAgbTyEBmplZ+hxZaTEj0UAqoCke
- PEDyRPjT2rJJHWykaBgzCfe6fT0BgiEOm6E3TDC0TwWpUh1ff0vFYNhKH8SFbLXhdk2XTp44b8D
- TDFjyBAttTWktwjH0Rw==
-X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260515_031912_970208_899A6A14 
-X-CRM114-Status: GOOD (  14.63  )
+X-CRM114-CacheID: sfid-20260515_113202_618893_86C76939 
+X-CRM114-Status: GOOD (  21.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -208,28 +129,835 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 13, 2026 at 07:23:04PM +0200, Uwe Kleine-König (The Capable Hub) wrote:
-> While being less compact, using named initializers allows to more easily
-> see which members of the structs are assigned which value without having
-> to lookup the declaration of the struct. And it's also more robust
-> against changes to the struct definition.
-> 
-> The mentioned robustness is relevant for a planned change to struct
-> i2c_device_id that replaces .driver_data by an anonymous union.
-> 
-> While touching all these arrays, unify indention and usage of commas.
-> 
-> This patch doesn't modify the compiled arrays, only their representation
-> in source form benefits. The former was confirmed with x86 and arm64
-> builds.
-> 
-> Signed-off-by: Uwe Kleine-König (The Capable Hub) <u.kleine-koenig@baylibre.com>
-> ---
+While being less compact, using named initializers allows to more easily
+see which members of the structs are assigned which value without having
+to lookup the declaration of the struct. And it's also more robust
+against changes to the struct definition.
 
-For the Wolfson/Cirrus bits:
+The mentioned robustness is relevant for a planned change to struct
+i2c_device_id that replaces .driver_data by an anonymous union.
 
-Reviewed-by: Charles Keepax <ckeepax@opensource.cirrus.com>
+While touching all these arrays, unify usage of whitespace and commas.
 
-Thanks,
-Charles
+This patch doesn't modify the compiled arrays, only their representation
+in source form benefits. The former was confirmed with x86 and arm64
+builds.
+
+Signed-off-by: Uwe Kleine-KÃ¶nig (The Capable Hub) <u.kleine-koenig@baylibre.com>
+---
+Hello,
+
+the mentioned change to i2c_device_id is the following:
+
+	diff --git a/include/linux/mod_devicetable.h b/include/linux/mod_devicetable.h
+	index 23ff24080dfd..aebd3a5e90af 100644
+	--- a/include/linux/mod_devicetable.h
+	+++ b/include/linux/mod_devicetable.h
+	@@ -477,7 +477,11 @@ struct rpmsg_device_id {
+	 
+	 struct i2c_device_id {
+		char name[I2C_NAME_SIZE];
+	-	kernel_ulong_t driver_data;	/* Data private to the driver */
+	+	union {
+	+		/* Data private to the driver */
+	+		kernel_ulong_t driver_data;
+	+		const void *driver_data_ptr;
+	+	};
+	 };
+	 
+	 /* pci_epf */
+
+and this requires that .driver_data is assigned via a named initializer
+for static data. This requirement isn't a bad one because named
+initializers are also much better readable than list initializers.
+
+The union added to struct i2c_device_id enables further cleanups like:
+
+	diff --git a/drivers/regulator/ad5398.c b/drivers/regulator/ad5398.c
+	index 0123ca8157a8..dfb0b07500a7 100644
+	--- a/drivers/regulator/ad5398.c
+	+++ b/drivers/regulator/ad5398.c
+	@@ -207,8 +207,8 @@ struct ad5398_current_data_format {
+	 static const struct ad5398_current_data_format df_10_4_120 = {10, 4, 0, 120000};
+	 
+	 static const struct i2c_device_id ad5398_id[] = {
+	-	{ .name = "ad5398", .driver_data = (kernel_ulong_t)&df_10_4_120 },
+	-	{ .name = "ad5821", .driver_data = (kernel_ulong_t)&df_10_4_120 },
+	+	{ .name = "ad5398", .driver_data_ptr = &df_10_4_120 },
+	+	{ .name = "ad5821", .driver_data_ptr = &df_10_4_120 },
+		{ }
+	 };
+	 MODULE_DEVICE_TABLE(i2c, ad5398_id);
+	@@ -219,8 +219,7 @@ static int ad5398_probe(struct i2c_client *client)
+		struct regulator_init_data *init_data = dev_get_platdata(&client->dev);
+		struct regulator_config config = { };
+		struct ad5398_chip_info *chip;
+	-	const struct ad5398_current_data_format *df =
+	-			(struct ad5398_current_data_format *)id->driver_data;
+	+	const struct ad5398_current_data_format *df = id->driver_data;
+	 
+		chip = devm_kzalloc(&client->dev, sizeof(*chip), GFP_KERNEL);
+		if (!chip)
+
+that are an improvement for readability (again!) and it keeps some
+properties of the pointers (here: being const) without having to pay
+attention for that.
+
+My additional motivation for this effort is CHERI[1]. This is a hardware
+extension that uses 128 bit pointers but unsigned long is still 64 bit.
+So with CHERI you cannot store pointers in unsigned long variables.
+
+Best regards
+Uwe
+
+[1] https://cheri-alliance.org/discover-cheri/
+    https://lwn.net/Articles/1037974/
+
+ drivers/regulator/88pg86x.c            |  4 +--
+ drivers/regulator/ad5398.c             |  4 +--
+ drivers/regulator/da9121-regulator.c   | 20 +++++++--------
+ drivers/regulator/da9210-regulator.c   |  4 +--
+ drivers/regulator/da9211-regulator.c   | 18 +++++++-------
+ drivers/regulator/fan53880.c           |  4 +--
+ drivers/regulator/isl9305.c            |  4 +--
+ drivers/regulator/lp3971.c             |  2 +-
+ drivers/regulator/lp3972.c             |  2 +-
+ drivers/regulator/lp872x.c             | 34 +++++++++++++-------------
+ drivers/regulator/lp8755.c             |  4 +--
+ drivers/regulator/ltc3589.c            |  6 ++---
+ drivers/regulator/ltc3676.c            |  2 +-
+ drivers/regulator/max1586.c            |  2 +-
+ drivers/regulator/max20086-regulator.c |  8 +++---
+ drivers/regulator/max20411-regulator.c |  2 +-
+ drivers/regulator/max77503-regulator.c |  2 +-
+ drivers/regulator/max77675-regulator.c |  2 +-
+ drivers/regulator/max77826-regulator.c |  2 +-
+ drivers/regulator/max77838-regulator.c |  2 +-
+ drivers/regulator/max77857-regulator.c |  8 +++---
+ drivers/regulator/max8649.c            |  2 +-
+ drivers/regulator/max8893.c            |  2 +-
+ drivers/regulator/max8952.c            |  2 +-
+ drivers/regulator/mcp16502.c           |  2 +-
+ drivers/regulator/mp5416.c             |  6 ++---
+ drivers/regulator/mp8859.c             |  4 +--
+ drivers/regulator/mp886x.c             |  6 ++---
+ drivers/regulator/mpq7920.c            |  4 +--
+ drivers/regulator/mt6311-regulator.c   |  4 +--
+ drivers/regulator/pf530x-regulator.c   |  8 +++---
+ drivers/regulator/pf8x00-regulator.c   |  8 +++---
+ drivers/regulator/pv88060-regulator.c  |  4 +--
+ drivers/regulator/pv88080-regulator.c  |  8 +++---
+ drivers/regulator/pv88090-regulator.c  |  4 +--
+ drivers/regulator/slg51000-regulator.c |  4 +--
+ drivers/regulator/sy8106a-regulator.c  |  2 +-
+ drivers/regulator/sy8824x.c            |  8 +++---
+ drivers/regulator/sy8827n.c            |  4 +--
+ drivers/regulator/tps6286x-regulator.c | 10 ++++----
+ drivers/regulator/tps6287x-regulator.c | 10 ++++----
+ 41 files changed, 119 insertions(+), 119 deletions(-)
+
+diff --git a/drivers/regulator/88pg86x.c b/drivers/regulator/88pg86x.c
+index e6598e74ec94..8c25a1db412f 100644
+--- a/drivers/regulator/88pg86x.c
++++ b/drivers/regulator/88pg86x.c
+@@ -92,8 +92,8 @@ static const struct of_device_id __maybe_unused pg86x_dt_ids[] = {
+ MODULE_DEVICE_TABLE(of, pg86x_dt_ids);
+ 
+ static const struct i2c_device_id pg86x_i2c_id[] = {
+-	{ "88pg867", },
+-	{ "88pg868", },
++	{ .name = "88pg867" },
++	{ .name = "88pg868" },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, pg86x_i2c_id);
+diff --git a/drivers/regulator/ad5398.c b/drivers/regulator/ad5398.c
+index eb2a666a45cb..0123ca8157a8 100644
+--- a/drivers/regulator/ad5398.c
++++ b/drivers/regulator/ad5398.c
+@@ -207,8 +207,8 @@ struct ad5398_current_data_format {
+ static const struct ad5398_current_data_format df_10_4_120 = {10, 4, 0, 120000};
+ 
+ static const struct i2c_device_id ad5398_id[] = {
+-	{ "ad5398", (kernel_ulong_t)&df_10_4_120 },
+-	{ "ad5821", (kernel_ulong_t)&df_10_4_120 },
++	{ .name = "ad5398", .driver_data = (kernel_ulong_t)&df_10_4_120 },
++	{ .name = "ad5821", .driver_data = (kernel_ulong_t)&df_10_4_120 },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, ad5398_id);
+diff --git a/drivers/regulator/da9121-regulator.c b/drivers/regulator/da9121-regulator.c
+index 2b150bb4d471..8155f0974f7d 100644
+--- a/drivers/regulator/da9121-regulator.c
++++ b/drivers/regulator/da9121-regulator.c
+@@ -1195,16 +1195,16 @@ static void da9121_i2c_remove(struct i2c_client *i2c)
+ }
+ 
+ static const struct i2c_device_id da9121_i2c_id[] = {
+-	{"da9121", DA9121_TYPE_DA9121_DA9130},
+-	{"da9130", DA9121_TYPE_DA9121_DA9130},
+-	{"da9217", DA9121_TYPE_DA9217},
+-	{"da9122", DA9121_TYPE_DA9122_DA9131},
+-	{"da9131", DA9121_TYPE_DA9122_DA9131},
+-	{"da9220", DA9121_TYPE_DA9220_DA9132},
+-	{"da9132", DA9121_TYPE_DA9220_DA9132},
+-	{"da9141", DA9121_TYPE_DA9141},
+-	{"da9142", DA9121_TYPE_DA9142},
+-	{},
++	{ .name = "da9121", .driver_data = DA9121_TYPE_DA9121_DA9130 },
++	{ .name = "da9130", .driver_data = DA9121_TYPE_DA9121_DA9130 },
++	{ .name = "da9217", .driver_data = DA9121_TYPE_DA9217 },
++	{ .name = "da9122", .driver_data = DA9121_TYPE_DA9122_DA9131 },
++	{ .name = "da9131", .driver_data = DA9121_TYPE_DA9122_DA9131 },
++	{ .name = "da9220", .driver_data = DA9121_TYPE_DA9220_DA9132 },
++	{ .name = "da9132", .driver_data = DA9121_TYPE_DA9220_DA9132 },
++	{ .name = "da9141", .driver_data = DA9121_TYPE_DA9141 },
++	{ .name = "da9142", .driver_data = DA9121_TYPE_DA9142 },
++	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, da9121_i2c_id);
+ 
+diff --git a/drivers/regulator/da9210-regulator.c b/drivers/regulator/da9210-regulator.c
+index 39ade0dba40f..9154e32bd745 100644
+--- a/drivers/regulator/da9210-regulator.c
++++ b/drivers/regulator/da9210-regulator.c
+@@ -202,8 +202,8 @@ static int da9210_i2c_probe(struct i2c_client *i2c)
+ }
+ 
+ static const struct i2c_device_id da9210_i2c_id[] = {
+-	{ "da9210" },
+-	{}
++	{ .name = "da9210" },
++	{ }
+ };
+ 
+ MODULE_DEVICE_TABLE(i2c, da9210_i2c_id);
+diff --git a/drivers/regulator/da9211-regulator.c b/drivers/regulator/da9211-regulator.c
+index d4f14d7ea8cf..9cf713755636 100644
+--- a/drivers/regulator/da9211-regulator.c
++++ b/drivers/regulator/da9211-regulator.c
+@@ -522,15 +522,15 @@ static int da9211_i2c_probe(struct i2c_client *i2c)
+ }
+ 
+ static const struct i2c_device_id da9211_i2c_id[] = {
+-	{"da9211", DA9211},
+-	{"da9212", DA9212},
+-	{"da9213", DA9213},
+-	{"da9223", DA9223},
+-	{"da9214", DA9214},
+-	{"da9224", DA9224},
+-	{"da9215", DA9215},
+-	{"da9225", DA9225},
+-	{},
++	{ .name = "da9211", .driver_data = DA9211 },
++	{ .name = "da9212", .driver_data = DA9212 },
++	{ .name = "da9213", .driver_data = DA9213 },
++	{ .name = "da9223", .driver_data = DA9223 },
++	{ .name = "da9214", .driver_data = DA9214 },
++	{ .name = "da9224", .driver_data = DA9224 },
++	{ .name = "da9215", .driver_data = DA9215 },
++	{ .name = "da9225", .driver_data = DA9225 },
++	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, da9211_i2c_id);
+ 
+diff --git a/drivers/regulator/fan53880.c b/drivers/regulator/fan53880.c
+index 6cb5656845f9..79ba705ec324 100644
+--- a/drivers/regulator/fan53880.c
++++ b/drivers/regulator/fan53880.c
+@@ -164,8 +164,8 @@ static const struct of_device_id fan53880_dt_ids[] = {
+ MODULE_DEVICE_TABLE(of, fan53880_dt_ids);
+ 
+ static const struct i2c_device_id fan53880_i2c_id[] = {
+-	{ "fan53880", },
+-	{}
++	{ .name = "fan53880" },
++	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, fan53880_i2c_id);
+ 
+diff --git a/drivers/regulator/isl9305.c b/drivers/regulator/isl9305.c
+index 5a234f25e6bb..ec6bd6bb9721 100644
+--- a/drivers/regulator/isl9305.c
++++ b/drivers/regulator/isl9305.c
+@@ -186,8 +186,8 @@ MODULE_DEVICE_TABLE(of, isl9305_dt_ids);
+ #endif
+ 
+ static const struct i2c_device_id isl9305_i2c_id[] = {
+-	{ "isl9305", },
+-	{ "isl9305h", },
++	{ .name = "isl9305" },
++	{ .name = "isl9305h" },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, isl9305_i2c_id);
+diff --git a/drivers/regulator/lp3971.c b/drivers/regulator/lp3971.c
+index d4dab86fe385..6f830ae1bb61 100644
+--- a/drivers/regulator/lp3971.c
++++ b/drivers/regulator/lp3971.c
+@@ -439,7 +439,7 @@ static int lp3971_i2c_probe(struct i2c_client *i2c)
+ }
+ 
+ static const struct i2c_device_id lp3971_i2c_id[] = {
+-	{ "lp3971" },
++	{ .name = "lp3971" },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, lp3971_i2c_id);
+diff --git a/drivers/regulator/lp3972.c b/drivers/regulator/lp3972.c
+index 1b918fb72134..235c640ba57f 100644
+--- a/drivers/regulator/lp3972.c
++++ b/drivers/regulator/lp3972.c
+@@ -537,7 +537,7 @@ static int lp3972_i2c_probe(struct i2c_client *i2c)
+ }
+ 
+ static const struct i2c_device_id lp3972_i2c_id[] = {
+-	{ "lp3972" },
++	{ .name = "lp3972" },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, lp3972_i2c_id);
+diff --git a/drivers/regulator/lp872x.c b/drivers/regulator/lp872x.c
+index 942f37082cb1..779df653338a 100644
+--- a/drivers/regulator/lp872x.c
++++ b/drivers/regulator/lp872x.c
+@@ -796,24 +796,24 @@ static const struct regmap_config lp872x_regmap_config = {
+ #define LP872X_VALID_OPMODE	(REGULATOR_MODE_FAST | REGULATOR_MODE_NORMAL)
+ 
+ static struct of_regulator_match lp8720_matches[] = {
+-	{ .name = "ldo1", .driver_data = (void *)LP8720_ID_LDO1, },
+-	{ .name = "ldo2", .driver_data = (void *)LP8720_ID_LDO2, },
+-	{ .name = "ldo3", .driver_data = (void *)LP8720_ID_LDO3, },
+-	{ .name = "ldo4", .driver_data = (void *)LP8720_ID_LDO4, },
+-	{ .name = "ldo5", .driver_data = (void *)LP8720_ID_LDO5, },
+-	{ .name = "buck", .driver_data = (void *)LP8720_ID_BUCK, },
++	{ .name = "ldo1", .driver_data = (void *)LP8720_ID_LDO1 },
++	{ .name = "ldo2", .driver_data = (void *)LP8720_ID_LDO2 },
++	{ .name = "ldo3", .driver_data = (void *)LP8720_ID_LDO3 },
++	{ .name = "ldo4", .driver_data = (void *)LP8720_ID_LDO4 },
++	{ .name = "ldo5", .driver_data = (void *)LP8720_ID_LDO5 },
++	{ .name = "buck", .driver_data = (void *)LP8720_ID_BUCK },
+ };
+ 
+ static struct of_regulator_match lp8725_matches[] = {
+-	{ .name = "ldo1", .driver_data = (void *)LP8725_ID_LDO1, },
+-	{ .name = "ldo2", .driver_data = (void *)LP8725_ID_LDO2, },
+-	{ .name = "ldo3", .driver_data = (void *)LP8725_ID_LDO3, },
+-	{ .name = "ldo4", .driver_data = (void *)LP8725_ID_LDO4, },
+-	{ .name = "ldo5", .driver_data = (void *)LP8725_ID_LDO5, },
+-	{ .name = "lilo1", .driver_data = (void *)LP8725_ID_LILO1, },
+-	{ .name = "lilo2", .driver_data = (void *)LP8725_ID_LILO2, },
+-	{ .name = "buck1", .driver_data = (void *)LP8725_ID_BUCK1, },
+-	{ .name = "buck2", .driver_data = (void *)LP8725_ID_BUCK2, },
++	{ .name = "ldo1", .driver_data = (void *)LP8725_ID_LDO1 },
++	{ .name = "ldo2", .driver_data = (void *)LP8725_ID_LDO2 },
++	{ .name = "ldo3", .driver_data = (void *)LP8725_ID_LDO3 },
++	{ .name = "ldo4", .driver_data = (void *)LP8725_ID_LDO4 },
++	{ .name = "ldo5", .driver_data = (void *)LP8725_ID_LDO5 },
++	{ .name = "lilo1", .driver_data = (void *)LP8725_ID_LILO1 },
++	{ .name = "lilo2", .driver_data = (void *)LP8725_ID_LILO2 },
++	{ .name = "buck1", .driver_data = (void *)LP8725_ID_BUCK1 },
++	{ .name = "buck2", .driver_data = (void *)LP8725_ID_BUCK2 },
+ };
+ 
+ static struct lp872x_platform_data
+@@ -935,8 +935,8 @@ static const struct of_device_id lp872x_dt_ids[] __maybe_unused = {
+ MODULE_DEVICE_TABLE(of, lp872x_dt_ids);
+ 
+ static const struct i2c_device_id lp872x_ids[] = {
+-	{"lp8720", LP8720},
+-	{"lp8725", LP8725},
++	{ .name = "lp8720", .driver_data = LP8720 },
++	{ .name = "lp8725", .driver_data = LP8725 },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, lp872x_ids);
+diff --git a/drivers/regulator/lp8755.c b/drivers/regulator/lp8755.c
+index 5509bee49bda..632320ba1800 100644
+--- a/drivers/regulator/lp8755.c
++++ b/drivers/regulator/lp8755.c
+@@ -430,8 +430,8 @@ static void lp8755_remove(struct i2c_client *client)
+ }
+ 
+ static const struct i2c_device_id lp8755_id[] = {
+-	{ LP8755_NAME },
+-	{}
++	{ .name = LP8755_NAME },
++	{ }
+ };
+ 
+ MODULE_DEVICE_TABLE(i2c, lp8755_id);
+diff --git a/drivers/regulator/ltc3589.c b/drivers/regulator/ltc3589.c
+index 3f70c2225dba..8bae5d8aeaf4 100644
+--- a/drivers/regulator/ltc3589.c
++++ b/drivers/regulator/ltc3589.c
+@@ -445,9 +445,9 @@ static const struct ltc3589_info ltc3589_12_info = {
+ };
+ 
+ static const struct i2c_device_id ltc3589_i2c_id[] = {
+-	{ "ltc3589",   (kernel_ulong_t)&ltc3589_info },
+-	{ "ltc3589-1", (kernel_ulong_t)&ltc3589_12_info },
+-	{ "ltc3589-2", (kernel_ulong_t)&ltc3589_12_info },
++	{ .name = "ltc3589", .driver_data = (kernel_ulong_t)&ltc3589_info },
++	{ .name = "ltc3589-1", .driver_data = (kernel_ulong_t)&ltc3589_12_info },
++	{ .name = "ltc3589-2", .driver_data = (kernel_ulong_t)&ltc3589_12_info },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, ltc3589_i2c_id);
+diff --git a/drivers/regulator/ltc3676.c b/drivers/regulator/ltc3676.c
+index 73d511eb1c1d..597d20a200d7 100644
+--- a/drivers/regulator/ltc3676.c
++++ b/drivers/regulator/ltc3676.c
+@@ -357,7 +357,7 @@ static int ltc3676_regulator_probe(struct i2c_client *client)
+ }
+ 
+ static const struct i2c_device_id ltc3676_i2c_id[] = {
+-	{ "ltc3676" },
++	{ .name = "ltc3676" },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, ltc3676_i2c_id);
+diff --git a/drivers/regulator/max1586.c b/drivers/regulator/max1586.c
+index 4242fbb7b147..e5cbc09c2d39 100644
+--- a/drivers/regulator/max1586.c
++++ b/drivers/regulator/max1586.c
+@@ -276,7 +276,7 @@ static int max1586_pmic_probe(struct i2c_client *client)
+ }
+ 
+ static const struct i2c_device_id max1586_id[] = {
+-	{ "max1586" },
++	{ .name = "max1586" },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, max1586_id);
+diff --git a/drivers/regulator/max20086-regulator.c b/drivers/regulator/max20086-regulator.c
+index fcdd2d0317a5..92594b2915f3 100644
+--- a/drivers/regulator/max20086-regulator.c
++++ b/drivers/regulator/max20086-regulator.c
+@@ -301,10 +301,10 @@ static const struct max20086_chip_info max20089_chip_info = {
+ };
+ 
+ static const struct i2c_device_id max20086_i2c_id[] = {
+-	{ "max20086", (kernel_ulong_t)&max20086_chip_info },
+-	{ "max20087", (kernel_ulong_t)&max20087_chip_info },
+-	{ "max20088", (kernel_ulong_t)&max20088_chip_info },
+-	{ "max20089", (kernel_ulong_t)&max20089_chip_info },
++	{ .name = "max20086", .driver_data = (kernel_ulong_t)&max20086_chip_info },
++	{ .name = "max20087", .driver_data = (kernel_ulong_t)&max20087_chip_info },
++	{ .name = "max20088", .driver_data = (kernel_ulong_t)&max20088_chip_info },
++	{ .name = "max20089", .driver_data = (kernel_ulong_t)&max20089_chip_info },
+ 	{ /* Sentinel */ }
+ };
+ MODULE_DEVICE_TABLE(i2c, max20086_i2c_id);
+diff --git a/drivers/regulator/max20411-regulator.c b/drivers/regulator/max20411-regulator.c
+index 6c0ebb970e90..ac7a9aa014aa 100644
+--- a/drivers/regulator/max20411-regulator.c
++++ b/drivers/regulator/max20411-regulator.c
+@@ -145,7 +145,7 @@ static const struct of_device_id of_max20411_match_tbl[] = {
+ MODULE_DEVICE_TABLE(of, of_max20411_match_tbl);
+ 
+ static const struct i2c_device_id max20411_id[] = {
+-	{ "max20411" },
++	{ .name = "max20411" },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, max20411_id);
+diff --git a/drivers/regulator/max77503-regulator.c b/drivers/regulator/max77503-regulator.c
+index c7c94e868fc1..1cae846f96d0 100644
+--- a/drivers/regulator/max77503-regulator.c
++++ b/drivers/regulator/max77503-regulator.c
+@@ -107,7 +107,7 @@ static const struct of_device_id of_max77503_match_tbl[] = {
+ MODULE_DEVICE_TABLE(of, of_max77503_match_tbl);
+ 
+ static const struct i2c_device_id max77503_regulator_id[] = {
+-	{"max77503"},
++	{ .name = "max77503" },
+ 	{ }
+ };
+ 
+diff --git a/drivers/regulator/max77675-regulator.c b/drivers/regulator/max77675-regulator.c
+index af3eb7174875..4fee6d6e4b07 100644
+--- a/drivers/regulator/max77675-regulator.c
++++ b/drivers/regulator/max77675-regulator.c
+@@ -1029,7 +1029,7 @@ static int max77675_regulator_probe(struct i2c_client *client)
+ }
+ 
+ static const struct i2c_device_id max77675_i2c_id[] = {
+-	{ "max77675", 0 },
++	{ .name = "max77675", .driver_data = 0 },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, max77675_i2c_id);
+diff --git a/drivers/regulator/max77826-regulator.c b/drivers/regulator/max77826-regulator.c
+index 310bc8ee7af8..8b60a9fcab44 100644
+--- a/drivers/regulator/max77826-regulator.c
++++ b/drivers/regulator/max77826-regulator.c
+@@ -278,7 +278,7 @@ static const struct of_device_id __maybe_unused max77826_of_match[] = {
+ MODULE_DEVICE_TABLE(of, max77826_of_match);
+ 
+ static const struct i2c_device_id max77826_id[] = {
+-	{ "max77826-regulator" },
++	{ .name = "max77826-regulator" },
+ 	{ /* sentinel */ }
+ };
+ MODULE_DEVICE_TABLE(i2c, max77826_id);
+diff --git a/drivers/regulator/max77838-regulator.c b/drivers/regulator/max77838-regulator.c
+index 9faddbfd25fd..765756fdcf6e 100644
+--- a/drivers/regulator/max77838-regulator.c
++++ b/drivers/regulator/max77838-regulator.c
+@@ -200,7 +200,7 @@ static const struct of_device_id __maybe_unused max77838_of_match[] = {
+ MODULE_DEVICE_TABLE(of, max77838_of_match);
+ 
+ static const struct i2c_device_id max77838_id[] = {
+-	{ "max77838-regulator" },
++	{ .name = "max77838-regulator" },
+ 	{ /* sentinel */ }
+ };
+ MODULE_DEVICE_TABLE(i2c, max77838_id);
+diff --git a/drivers/regulator/max77857-regulator.c b/drivers/regulator/max77857-regulator.c
+index 1216cc3a6f72..f1410f845653 100644
+--- a/drivers/regulator/max77857-regulator.c
++++ b/drivers/regulator/max77857-regulator.c
+@@ -428,10 +428,10 @@ static int max77857_probe(struct i2c_client *client)
+ }
+ 
+ static const struct i2c_device_id max77857_id[] = {
+-	{ "max77831", ID_MAX77831 },
+-	{ "max77857", ID_MAX77857 },
+-	{ "max77859", ID_MAX77859 },
+-	{ "max77859a", ID_MAX77859A },
++	{ .name = "max77831", .driver_data = ID_MAX77831 },
++	{ .name = "max77857", .driver_data = ID_MAX77857 },
++	{ .name = "max77859", .driver_data = ID_MAX77859 },
++	{ .name = "max77859a", .driver_data = ID_MAX77859A },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, max77857_id);
+diff --git a/drivers/regulator/max8649.c b/drivers/regulator/max8649.c
+index f57c588bcf28..2d17405242e7 100644
+--- a/drivers/regulator/max8649.c
++++ b/drivers/regulator/max8649.c
+@@ -240,7 +240,7 @@ static int max8649_regulator_probe(struct i2c_client *client)
+ }
+ 
+ static const struct i2c_device_id max8649_id[] = {
+-	{ "max8649" },
++	{ .name = "max8649" },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, max8649_id);
+diff --git a/drivers/regulator/max8893.c b/drivers/regulator/max8893.c
+index 5a90633d8536..7a0e44a16d49 100644
+--- a/drivers/regulator/max8893.c
++++ b/drivers/regulator/max8893.c
+@@ -162,7 +162,7 @@ MODULE_DEVICE_TABLE(of, max8893_dt_match);
+ #endif
+ 
+ static const struct i2c_device_id max8893_ids[] = {
+-	{ "max8893" },
++	{ .name = "max8893" },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, max8893_ids);
+diff --git a/drivers/regulator/max8952.c b/drivers/regulator/max8952.c
+index 1f94315bfb02..f8b91a5701f3 100644
+--- a/drivers/regulator/max8952.c
++++ b/drivers/regulator/max8952.c
+@@ -307,7 +307,7 @@ static int max8952_pmic_probe(struct i2c_client *client)
+ }
+ 
+ static const struct i2c_device_id max8952_ids[] = {
+-	{ "max8952" },
++	{ .name = "max8952" },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, max8952_ids);
+diff --git a/drivers/regulator/mcp16502.c b/drivers/regulator/mcp16502.c
+index b34ae0bbba6f..89fd79d446f7 100644
+--- a/drivers/regulator/mcp16502.c
++++ b/drivers/regulator/mcp16502.c
+@@ -578,7 +578,7 @@ static const struct dev_pm_ops mcp16502_pm_ops = {
+ };
+ #endif
+ static const struct i2c_device_id mcp16502_i2c_id[] = {
+-	{ "mcp16502" },
++	{ .name = "mcp16502" },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, mcp16502_i2c_id);
+diff --git a/drivers/regulator/mp5416.c b/drivers/regulator/mp5416.c
+index e6794190cb68..2948635b1b9f 100644
+--- a/drivers/regulator/mp5416.c
++++ b/drivers/regulator/mp5416.c
+@@ -228,9 +228,9 @@ static const struct of_device_id mp5416_of_match[] = {
+ MODULE_DEVICE_TABLE(of, mp5416_of_match);
+ 
+ static const struct i2c_device_id mp5416_id[] = {
+-	{ "mp5416", (kernel_ulong_t)&mp5416_regulators_desc },
+-	{ "mp5496", (kernel_ulong_t)&mp5496_regulators_desc },
+-	{}
++	{ .name = "mp5416", .driver_data = (kernel_ulong_t)&mp5416_regulators_desc },
++	{ .name = "mp5496", .driver_data = (kernel_ulong_t)&mp5496_regulators_desc },
++	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, mp5416_id);
+ 
+diff --git a/drivers/regulator/mp8859.c b/drivers/regulator/mp8859.c
+index ab105ffd6a2e..9a708e826d93 100644
+--- a/drivers/regulator/mp8859.c
++++ b/drivers/regulator/mp8859.c
+@@ -386,8 +386,8 @@ static const struct of_device_id mp8859_dt_id[] __maybe_unused = {
+ MODULE_DEVICE_TABLE(of, mp8859_dt_id);
+ 
+ static const struct i2c_device_id mp8859_i2c_id[] = {
+-	{ "mp8859", },
+-	{  },
++	{ .name = "mp8859" },
++	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, mp8859_i2c_id);
+ 
+diff --git a/drivers/regulator/mp886x.c b/drivers/regulator/mp886x.c
+index 9ad16b04c913..e0b62bc02a1e 100644
+--- a/drivers/regulator/mp886x.c
++++ b/drivers/regulator/mp886x.c
+@@ -348,9 +348,9 @@ static const struct of_device_id mp886x_dt_ids[] = {
+ MODULE_DEVICE_TABLE(of, mp886x_dt_ids);
+ 
+ static const struct i2c_device_id mp886x_id[] = {
+-	{ "mp8867", (kernel_ulong_t)&mp8867_ci },
+-	{ "mp8869", (kernel_ulong_t)&mp8869_ci },
+-	{ },
++	{ .name = "mp8867", .driver_data = (kernel_ulong_t)&mp8867_ci },
++	{ .name = "mp8869", .driver_data = (kernel_ulong_t)&mp8869_ci },
++	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, mp886x_id);
+ 
+diff --git a/drivers/regulator/mpq7920.c b/drivers/regulator/mpq7920.c
+index a670e09891e7..0cbc17deb1d1 100644
+--- a/drivers/regulator/mpq7920.c
++++ b/drivers/regulator/mpq7920.c
+@@ -309,8 +309,8 @@ static const struct of_device_id mpq7920_of_match[] = {
+ MODULE_DEVICE_TABLE(of, mpq7920_of_match);
+ 
+ static const struct i2c_device_id mpq7920_id[] = {
+-	{ "mpq7920", },
+-	{ },
++	{ .name = "mpq7920" },
++	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, mpq7920_id);
+ 
+diff --git a/drivers/regulator/mt6311-regulator.c b/drivers/regulator/mt6311-regulator.c
+index 2ebc1c0b5e6f..1d457d1fdf23 100644
+--- a/drivers/regulator/mt6311-regulator.c
++++ b/drivers/regulator/mt6311-regulator.c
+@@ -133,8 +133,8 @@ static int mt6311_i2c_probe(struct i2c_client *i2c)
+ }
+ 
+ static const struct i2c_device_id mt6311_i2c_id[] = {
+-	{ "mt6311" },
+-	{}
++	{ .name = "mt6311" },
++	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, mt6311_i2c_id);
+ 
+diff --git a/drivers/regulator/pf530x-regulator.c b/drivers/regulator/pf530x-regulator.c
+index f789c4b6a499..e7b13d60106b 100644
+--- a/drivers/regulator/pf530x-regulator.c
++++ b/drivers/regulator/pf530x-regulator.c
+@@ -353,10 +353,10 @@ static const struct of_device_id pf530x_dt_ids[] = {
+ MODULE_DEVICE_TABLE(of, pf530x_dt_ids);
+ 
+ static const struct i2c_device_id pf530x_i2c_id[] = {
+-	{ "pf5300", 0 },
+-	{ "pf5301", 0 },
+-	{ "pf5302", 0 },
+-	{},
++	{ .name = "pf5300", .driver_data = 0 },
++	{ .name = "pf5301", .driver_data = 0 },
++	{ .name = "pf5302", .driver_data = 0 },
++	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, pf530x_i2c_id);
+ 
+diff --git a/drivers/regulator/pf8x00-regulator.c b/drivers/regulator/pf8x00-regulator.c
+index ea3611de42b4..c938b4632ef1 100644
+--- a/drivers/regulator/pf8x00-regulator.c
++++ b/drivers/regulator/pf8x00-regulator.c
+@@ -596,10 +596,10 @@ static const struct of_device_id pf8x00_dt_ids[] = {
+ MODULE_DEVICE_TABLE(of, pf8x00_dt_ids);
+ 
+ static const struct i2c_device_id pf8x00_i2c_id[] = {
+-	{ "pf8100" },
+-	{ "pf8121a" },
+-	{ "pf8200" },
+-	{}
++	{ .name = "pf8100" },
++	{ .name = "pf8121a" },
++	{ .name = "pf8200" },
++	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, pf8x00_i2c_id);
+ 
+diff --git a/drivers/regulator/pv88060-regulator.c b/drivers/regulator/pv88060-regulator.c
+index ae1c4b9daaa1..375d9e759c47 100644
+--- a/drivers/regulator/pv88060-regulator.c
++++ b/drivers/regulator/pv88060-regulator.c
+@@ -360,8 +360,8 @@ static int pv88060_i2c_probe(struct i2c_client *i2c)
+ }
+ 
+ static const struct i2c_device_id pv88060_i2c_id[] = {
+-	{ "pv88060" },
+-	{}
++	{ .name = "pv88060" },
++	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, pv88060_i2c_id);
+ 
+diff --git a/drivers/regulator/pv88080-regulator.c b/drivers/regulator/pv88080-regulator.c
+index 9fe539a34786..3dc48d059791 100644
+--- a/drivers/regulator/pv88080-regulator.c
++++ b/drivers/regulator/pv88080-regulator.c
+@@ -523,10 +523,10 @@ static const struct of_device_id pv88080_dt_ids[] = {
+ MODULE_DEVICE_TABLE(of, pv88080_dt_ids);
+ 
+ static const struct i2c_device_id pv88080_i2c_id[] = {
+-	{ "pv88080",    (kernel_ulong_t)&pv88080_aa_regs },
+-	{ "pv88080-aa", (kernel_ulong_t)&pv88080_aa_regs },
+-	{ "pv88080-ba", (kernel_ulong_t)&pv88080_ba_regs },
+-	{}
++	{ .name = "pv88080", .driver_data = (kernel_ulong_t)&pv88080_aa_regs },
++	{ .name = "pv88080-aa", .driver_data = (kernel_ulong_t)&pv88080_aa_regs },
++	{ .name = "pv88080-ba", .driver_data = (kernel_ulong_t)&pv88080_ba_regs },
++	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, pv88080_i2c_id);
+ 
+diff --git a/drivers/regulator/pv88090-regulator.c b/drivers/regulator/pv88090-regulator.c
+index 3c48757bbbda..ca5eeb5dfe62 100644
+--- a/drivers/regulator/pv88090-regulator.c
++++ b/drivers/regulator/pv88090-regulator.c
+@@ -381,8 +381,8 @@ static int pv88090_i2c_probe(struct i2c_client *i2c)
+ }
+ 
+ static const struct i2c_device_id pv88090_i2c_id[] = {
+-	{ "pv88090" },
+-	{}
++	{ .name = "pv88090" },
++	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, pv88090_i2c_id);
+ 
+diff --git a/drivers/regulator/slg51000-regulator.c b/drivers/regulator/slg51000-regulator.c
+index 3bbd4a29e6d3..d682764cdbf8 100644
+--- a/drivers/regulator/slg51000-regulator.c
++++ b/drivers/regulator/slg51000-regulator.c
+@@ -497,8 +497,8 @@ static int slg51000_i2c_probe(struct i2c_client *client)
+ }
+ 
+ static const struct i2c_device_id slg51000_i2c_id[] = {
+-	{ "slg51000" },
+-	{}
++	{ .name = "slg51000" },
++	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, slg51000_i2c_id);
+ 
+diff --git a/drivers/regulator/sy8106a-regulator.c b/drivers/regulator/sy8106a-regulator.c
+index d79a4cc25a0d..b2b835c60262 100644
+--- a/drivers/regulator/sy8106a-regulator.c
++++ b/drivers/regulator/sy8106a-regulator.c
+@@ -130,7 +130,7 @@ static const struct of_device_id sy8106a_i2c_of_match[] = {
+ MODULE_DEVICE_TABLE(of, sy8106a_i2c_of_match);
+ 
+ static const struct i2c_device_id sy8106a_i2c_id[] = {
+-	{ "sy8106a" },
++	{ .name = "sy8106a" },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, sy8106a_i2c_id);
+diff --git a/drivers/regulator/sy8824x.c b/drivers/regulator/sy8824x.c
+index 5bec84db25f1..3f07e7da90cb 100644
+--- a/drivers/regulator/sy8824x.c
++++ b/drivers/regulator/sy8824x.c
+@@ -213,10 +213,10 @@ static const struct of_device_id sy8824_dt_ids[] = {
+ MODULE_DEVICE_TABLE(of, sy8824_dt_ids);
+ 
+ static const struct i2c_device_id sy8824_id[] = {
+-	{ "sy8824c", (kernel_ulong_t)&sy8824c_cfg },
+-	{ "sy8824e", (kernel_ulong_t)&sy8824e_cfg },
+-	{ "sy20276", (kernel_ulong_t)&sy20276_cfg },
+-	{ "sy20278", (kernel_ulong_t)&sy20278_cfg },
++	{ .name = "sy8824c", .driver_data = (kernel_ulong_t)&sy8824c_cfg },
++	{ .name = "sy8824e", .driver_data = (kernel_ulong_t)&sy8824e_cfg },
++	{ .name = "sy20276", .driver_data = (kernel_ulong_t)&sy20276_cfg },
++	{ .name = "sy20278", .driver_data = (kernel_ulong_t)&sy20278_cfg },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, sy8824_id);
+diff --git a/drivers/regulator/sy8827n.c b/drivers/regulator/sy8827n.c
+index 0b811514782f..a1cac8cc3d96 100644
+--- a/drivers/regulator/sy8827n.c
++++ b/drivers/regulator/sy8827n.c
+@@ -180,8 +180,8 @@ static const struct of_device_id sy8827n_dt_ids[] = {
+ MODULE_DEVICE_TABLE(of, sy8827n_dt_ids);
+ 
+ static const struct i2c_device_id sy8827n_id[] = {
+-	{ "sy8827n", },
+-	{ },
++	{ .name = "sy8827n" },
++	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, sy8827n_id);
+ 
+diff --git a/drivers/regulator/tps6286x-regulator.c b/drivers/regulator/tps6286x-regulator.c
+index e29aab06bf79..1ab53bee9f6e 100644
+--- a/drivers/regulator/tps6286x-regulator.c
++++ b/drivers/regulator/tps6286x-regulator.c
+@@ -145,11 +145,11 @@ static int tps6286x_i2c_probe(struct i2c_client *i2c)
+ }
+ 
+ static const struct i2c_device_id tps6286x_i2c_id[] = {
+-	{ "tps62864" },
+-	{ "tps62866" },
+-	{ "tps62868" },
+-	{ "tps62869" },
+-	{}
++	{ .name = "tps62864" },
++	{ .name = "tps62866" },
++	{ .name = "tps62868" },
++	{ .name = "tps62869" },
++	{ }
+ };
+ MODULE_DEVICE_TABLE(i2c, tps6286x_i2c_id);
+ 
+diff --git a/drivers/regulator/tps6287x-regulator.c b/drivers/regulator/tps6287x-regulator.c
+index 7b7d3ae39206..c0bc4a6192c4 100644
+--- a/drivers/regulator/tps6287x-regulator.c
++++ b/drivers/regulator/tps6287x-regulator.c
+@@ -229,11 +229,11 @@ static const struct of_device_id tps6287x_dt_ids[] = {
+ MODULE_DEVICE_TABLE(of, tps6287x_dt_ids);
+ 
+ static const struct i2c_device_id tps6287x_i2c_id[] = {
+-	{ "tps62870" },
+-	{ "tps62871" },
+-	{ "tps62872" },
+-	{ "tps62873" },
+-	{}
++	{ .name = "tps62870" },
++	{ .name = "tps62871" },
++	{ .name = "tps62872" },
++	{ .name = "tps62873" },
++	{ }
+ };
+ 
+ MODULE_DEVICE_TABLE(i2c, tps6287x_i2c_id);
+
+base-commit: 254f49634ee16a731174d2ae34bc50bd5f45e731
+-- 
+2.47.3
+
 
