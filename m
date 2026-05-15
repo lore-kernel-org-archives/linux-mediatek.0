@@ -4,96 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09F09CD343F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2026 17:42:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58883CD4F3C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2026 18:04:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:Subject:
-	Message-ID:Date:From:MIME-Version:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=mNv/z0lHm1Py+HbWKuNs9hA4DCJmyJqK5J3Y7sfXrjE=; b=gEG3TCzZm8B/8Cj/sGp+DYxWKI
-	eA1lMOvAHWkv13aoKH/cBkYQ2PanwqnEFf6eTA7wzJ4t59VgHZ8LoU4RbzP8D5Ix6oyGpGWTsxt4e
-	nsKaz3GbydlN2ez+bJ6J1jM78pnwR0C3rAUCSuCv78347Mvs7Me9CXHsJIBzLs/BYFzfl/cRO8S4q
-	F5uIz95I/mgTSxm8EteFc3To3pAU+vyYhdY+TZbBfVUBB3GoNwC23H3iZAKmmiBiq0nCr9OTJ46H/
-	q79TkWdA8x8p3o1MSnEg45SGPd5/swJi+fJ2h+d/3jFG4BKXlI3PqZCIsBRYjomlseVkJ7ZVg/Ijj
-	q4j1mVVQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YriEPBtKGtIXqM5Df/lPqipwYiY6kEfqEv/SB2R7NXc=; b=YYSjUxQhAvRQEehL36PQZAetxb
+	t1DF7TcmZY/+yCya20lhwNqNC3bTmr/6ud4Z5TCuIR+P7H+G2blFBEoABMMRO60LI/EbGs+syHmnN
+	yJ9y6UXIEqkTQL1QwVjeNL4csgwhCZWC48/JzXNe9nfh6yRnHwmaPOxtbOhFTQ2K5lkzNGAehhogn
+	M7WxSIpOd/qfQMsja/wj/lrxkL3P7gvbNQcbwncDxEpqBBwKqPlNieTdbHpXy9h9asjS0iK8Xln2k
+	aJpQtmsoh04VeBolTlCXgNpKWzXtlI09k8ahNfnMzcZwB1wQX9kb/2mR3BvJqAq9C5AYyiiyFO+4V
+	1W/b+ctQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNwY1-0000000911K-3DtM;
-	Fri, 15 May 2026 17:42:05 +0000
-Received: from mail-yx1-xb135.google.com ([2607:f8b0:4864:20::b135])
+	id 1wNwu8-000000093GZ-0kZu;
+	Fri, 15 May 2026 18:04:56 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNwXy-0000000910f-3cX8
+	id 1wNwu5-000000093Fb-152n
 	for linux-mediatek@lists.infradead.org;
-	Fri, 15 May 2026 17:42:03 +0000
-Received: by mail-yx1-xb135.google.com with SMTP id 956f58d0204a3-65c37eafcbeso273826d50.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 15 May 2026 10:42:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1778866922; cv=none;
+	Fri, 15 May 2026 18:04:54 +0000
+Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-b936331786dso3436766b.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 15 May 2026 11:04:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1778868291; cv=none;
         d=google.com; s=arc-20240605;
-        b=EP+qnEugMxv0F5ruex1H6sRO6KRVijDaMsAzitzN9rghWCt1uUB+TSTJX29vnUMBKd
-         lO9MVGwJhWozwPZmfi35c7ECr9o+/dnLcZVVDVASeT2sOT2MvMChMFwprlnpIDKc59fw
-         2hZhOIKJAfUkbnQis85lBC/VoYvm+nQISg+rrbtFzb03avQ5HKTQeRuTnVfRoU8iOsm7
-         p+CJWVgGQf4MT2414TWUO/mhUsYBX89Oh0EFJg8O+qzjhnjV46IsTceRmM5p7Bz69eYL
-         0LZ8Cg95UqeNpy/FIZ8khmhTn50O+HJyjRigV7UyfsuouUeSadst8jtAEK9cuiJIqVFr
-         jLfw==
+        b=fbnFLX6H7WA3YoDQgqenVZ3hO72ud6f01DsZalVtBrEzjwCNqhm88v7Z9JTGBPo9ib
+         6109PPOlBNphEqlLCBWNdZ2XWpZsCq7VdlYWluD/EcOcvciDKAp6m55ygn9TcE0uzpgF
+         E/y53nxwwFq9JjxIiYrnC01G8b9rZE5kpJZRtfQYMpbmGaLNR9yAsZ82xvsmmWgqdgB8
+         rExN6aeSibps63cXfhUlzOiNDwYF1NZHOSguEm/10qyAl77RNqcc+K/Tm04POz2qDyfc
+         KH8PEonyfF5/MN5PpO/pRrtd9Zx9rX+SQr82Av2iK73yuUuZMJ2BtITU0VKJpaPurZdR
+         vbmg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=mNv/z0lHm1Py+HbWKuNs9hA4DCJmyJqK5J3Y7sfXrjE=;
-        fh=7q9slQwJZ94/e6e481MFJgYPeNForZhGYqL2OGSLeAY=;
-        b=ZAIFfR1giEqwLwIS9DoxVCVfmSG3u2tayBH+c2MU/XmsTEtBZU9+ZEjSqiiwxcUEBv
-         7NbkUaJzh25wVygqhSPvPjAMLt2jc0gzaBWviBP1pySj4eyF3CBfjOuSDlWFbFy3xuYr
-         oIo2qaFIng15/HYdzEVq2oPCnepYePjSfAq+7g3lh5ZHKPeN8iBqgwDGdL6fzskDJ3eS
-         jMyNca8Y7lZ5OJPMfKzITBNfsOJQrCMvgv0eNZXnBQls/nLGYnDu7G9Y7cgI13nJjX+/
-         aWla1pBvvS/V91Jd3I9gQHQT4jJkr6L1NnvEyA6lf3FEHbhb9gCMHQLv6PLJ4erLmaoR
-         og/A==;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=YriEPBtKGtIXqM5Df/lPqipwYiY6kEfqEv/SB2R7NXc=;
+        fh=j95qxFHmVpD089DsbYDC6HgPq8b8GJwPnWHtMexKS0I=;
+        b=Gzw/GDYdnXilgme/eMZSyo5+g2FDAGUL35LHuM+s3rK2nZkiR1wajpFIIsAwEYFStZ
+         mDIwAcSFRHO7FaZH/iBnFdVTrlf3WhcV1d/oT0VY2grI3u4Ptelez47qh7Q2wrGL9czz
+         /YbS8zK9yDsMJcjpPWMp8llgzWUjWg99H3w3lB26t15mRO84m1R7fq7yH2RZYkQGeDiA
+         PIpFNbMtySGNi+BY+aGzy2saBzSNi+6P4hltjKztNvDFocnTIgeg2Y63wNMcDcau608h
+         32THnKbH6QtY0xa2AHR6fESnNJIQcSQA7R/3GAG5mv7xBU44w6T8+1MBWbHzSYoJS3sR
+         1S8Q==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1778866922; x=1779471722; darn=lists.infradead.org;
-        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=mNv/z0lHm1Py+HbWKuNs9hA4DCJmyJqK5J3Y7sfXrjE=;
-        b=nZReHh0H9Uoi0eE51uqwEadrLZtQ1GuHuzEX5QqCkLLRMohdL6zfwvrbnpSpSJDe2u
-         9NjgOnc53wCic2fqB28JAXQIL6H5QMAsYFqRxW8rYB5QKmBdx1UvY3Hm6zc1Nm9iavcm
-         D1XfrpYPaKXO72jld9jNRY35D8+0MdJigTSpeo8U/ba0IcWI5YjKIcF2JPJkHDqCVWo5
-         vLOdifPSWqED2WsTSTJXoisP1DlaKoTn/a6YfZH8FbmL0TyVZ+Q4WO/EQA/7mhgMPe3k
-         jvfcKWXP2l4Ow7NDsuBAvIfpyxLHStyJ7uU1oMZksBATpEEJ96Cu7kAErTobw4Ee08+C
-         x/FA==
+        d=gmail.com; s=20251104; t=1778868291; x=1779473091; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=YriEPBtKGtIXqM5Df/lPqipwYiY6kEfqEv/SB2R7NXc=;
+        b=ZavdU+6Vy2q0KDTEnIHo2twRyjVSruiS0thCQRJq0czqGh/SvPrQUhOaK4QC6/0W+d
+         a0IwPlpTlQR1PF+Bce5sE4Bn+0MvqNPMWKYEbx4zp8fesdSYHJ/Jyq6tYJUqsUbYeQhv
+         E/dRgIDZdx3NSGJ8QLfC94NqFqNm7FDsEYp0C5oR0RIDCZeTRVqNXt46L3yDyM53tyGJ
+         LmyoLF0Nd2DAn6e3ZuuwnnxQBKnT5FzKXPt6xpmQACI/k6DcaNwSMTgrz92wsq3RlzF7
+         xyUvINibJQaimHNzR/+ZCFPE/2lclv7iBQPd2OTBOgeUmdkvxMt6kOQpK58PdYUnN108
+         IYPw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1778866922; x=1779471722;
-        h=to:subject:message-id:date:from:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=mNv/z0lHm1Py+HbWKuNs9hA4DCJmyJqK5J3Y7sfXrjE=;
-        b=OMujMCJaIoiv9z1JLqrTGvPpo+Mfnf0DDMzpp3d7ppdN7JgEKpqH3gb2E2p1m6lldq
-         d76bfQuHrrnRDIFvHGbhKjEuYeWE9T8m/bkz96Sm2Wm/0Bnk3aHXWJ8WLKUSbnQXt20V
-         nxBQLV7peKqq3m49HMmNYHgefdDGtTDsCYklxE/BYy6Aml8CVZSaf84hDvFjBJ0uvxau
-         fGsOGrjOvzoCW1gt4zgqaIwwnjH4aLNjdh1mHG8PvWMH9ryogtSmdOd5PM9xEO3KyQeh
-         LNoFCRHF+Y/iSo+/dUXNYLEnEUAzpOpNycKwnjLe+2XAMWfiiQmkbnIFoMI0l6OPIWJ3
-         oDBA==
-X-Gm-Message-State: AOJu0Yy67yYSPj53YIVd8OTZFZEI89fkXYIYP8uazfaWEuLSP2Sgzi4x
-	WEVwl3cC4T0PwmVg20HSUoOttfu+Ka1H9RtcjhwBTwsK1PCae/quguq8Y7DztWtYyex2UbuCZPs
-	P3PSCakN4xJW7/y89KQBze5NanMIb5eZqM/n3
-X-Gm-Gg: Acq92OEKvwlJebeH1E+q3qIRDwgMwdpPQagkWdvMq9eObFGRhX0ktxKG/7hHoeDyM3I
-	uBENjigT08/RS+lhGElhhlD8OG2G8Vd88r/L5VndKamjNUIDhQ4dbOKgMyS14uGwgP9odpHX8ZQ
-	mUIZGYieIuxFLniqednHc5+ymurQY79wUkfJ9v8LmI4QFn9E6d53mX7/UW+RBgyMFLDdxwEJRXX
-	4eiSkAtk269KHtgty2lJsdZyGkb+eS09lgC6tFunel4MuUiiifPY9qRqJDZxD7fcWNCT6A7F47u
-	x7B0qvqZvpkFv0DSNI/pGtB0/j3CruGIhFMPeVekbH1AqNkV
-X-Received: by 2002:a05:690e:484c:b0:651:8944:c0ba with SMTP id
- 956f58d0204a3-65e228a1e88mr3907254d50.63.1778866921663; Fri, 15 May 2026
- 10:42:01 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1778868291; x=1779473091;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=YriEPBtKGtIXqM5Df/lPqipwYiY6kEfqEv/SB2R7NXc=;
+        b=nhMXh1u0oxdaII6DSYPRwEEevWFD730UsvZJx6KJAH0muOXmQYbsBNpiIxm83Gn+Dv
+         BQ116/D1Majezi7wsKFZeJJvGp3ZDEGqH8R3IsBDGrwiA2rbhJaiaOlxhSMBO+Ql/ZJ1
+         qpmNYS5r4JT9obGlvLSTSvkr9rxv7vmclcnIVEEuX3llMaP6IcL1gstiPkDs+cmODl1w
+         7z+V3if11dYU2/vf6bAdAPgoejthXSNNJdT63Ay3EnNKjW8laco1xvesB54PT8s+/5X4
+         nraLKbGPugweO816avtkTYoQG20EwNXgEqj+D31fvg4mUlwrS4IJfosD9pkkZuZthuu1
+         Xrfg==
+X-Forwarded-Encrypted: i=1; AFNElJ8FD30ee0Gbq8ktmDedS5dpcAe/DEjVlITuPexBc8hloMpQAb4SGM45w36eYwF8EFUD2sK2KSo8iq4fdYXKew==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz3wAeGJhcwzDzSfn0GyUsi+EQSxS5dGui76O0/22SmKna2xREO
+	fJDnZpvWWs6fr3yoMOBSlm+mu9gg9knclIGGBfutO/t1AoeJgU4t8i4viqbeDetVVnsA4p4/PB+
+	gc9T6QOHaZOAiQdaU1xVKToHL5Z60d5g=
+X-Gm-Gg: Acq92OFGWN2aEjk2kMj9+gTvuG2ngZU6VUHykswOQeEfBqoIjVP6bfz/ZB5UwzAhmor
+	JeOP+X7y8mcTXKGlWRn656bDheiFu7ij+/1fzFJi+7QgjNaj8jbEaQQuwgc5r5Ea9HomcCVyMPF
+	JovPLVGGfhGUtOoq4Ex5xSMWreTRgk0xkmITia7ou+Ode7r0+F9gYxGqqd0FL1VISjB1llK3akU
+	BARhSkVtPybZBeeJKRgvFz7exvwgaUlpwRiBjDGO2ZbzG9M4WWBphcZ8QnQew4xOC9mCZZ8w+BP
+	hjdnC8gcmyRaNKQ0tMInbNjulpVhzSbkQVx5Wap9
+X-Received: by 2002:a17:907:e15c:10b0:bd3:417e:b85d with SMTP id
+ a640c23a62f3a-bd5177ea873mr224170666b.13.1778868290941; Fri, 15 May 2026
+ 11:04:50 -0700 (PDT)
 MIME-Version: 1.0
-From: Adam Hill <sidepipeuk@gmail.com>
-Date: Fri, 15 May 2026 18:41:49 +0100
-X-Gm-Features: AVHnY4K5jrhQ-NxDZufeoiWLoJ7HTj27oh2hxO65GEY68sNyck3FHGRlkErPi3Y
-Message-ID: <CALgbQMy=XduSht_tq7f7WjsFSos8EX6mSS0pZDGhV3n=OJLy=A@mail.gmail.com>
-Subject: mt7915e 5GHz/6GHz with multiple cards or dynamic selection - can it
- be done along these lines?
-To: linux-mediatek@lists.infradead.org
+References: <5ecac6a9b7d29526e8438dea105b58f5487c93aa.1778521232.git.ryder.lee@mediatek.com>
+ <agdJ1EtZjjWh2R1h@lore-desk>
+In-Reply-To: <agdJ1EtZjjWh2R1h@lore-desk>
+From: Cheng Hao Luo <roychl666@gmail.com>
+Date: Fri, 15 May 2026 11:04:39 -0700
+X-Gm-Features: AVHnY4KbrKR9CaA_jQmHLyQZ08ngRHLldKj46sSAK1t83aUKIVFRDiqTWe1rvrA
+Message-ID: <CAHoxojJX2BRRTLMuM_QcJqMMmshxS4EAwrB1VjU3rsZ+0k2PAg@mail.gmail.com>
+Subject: Re: [PATCH] wifi: mt76: mt7996: avoid memset overwriting tx_info->control.flags
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Felix Fietkau <nbd@nbd.name>, 
+	linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org, 
+	Shayne Chen <shayne.chen@mediatek.com>, Roy Luo <roy-ch.luo@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260515_104202_916526_54891460 
-X-CRM114-Status: GOOD (  18.50  )
+X-CRM114-CacheID: sfid-20260515_110453_326772_199EC9EE 
+X-CRM114-Status: GOOD (  10.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,95 +116,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Firstly I have to preface this with "I don't know what I'm doing". I
-have almost no knowledge of how these ( or any ) wireless cards
-operate and little knowledge of the inner workings of kernel modules
-etc.... so where I'm going with this might not be possible. I do know
-that the current situation with the mt7915e module isn't ideal.
+> struct ieee80211_tx_info {
+>         u32                        flags;                /*     0     4 */
+>         u32                        band:3;               /*     4: 0  4 */
+>         u32                        status_data_idr:1;    /*     4: 3  4 */
+>         u32                        status_data:13;       /*     4: 4  4 */
+>         u32                        hw_queue:4;           /*     4:17  4 */
+>         u32                        tx_time_est:10;       /*     4:21  4 */
+>
+>         /* XXX 1 bit hole, try to pack */
+>
+>         union {
+>                 struct {
+>                         union {
+>                                 struct {
+>                                         struct ieee80211_tx_rate rates[4]; /*     8    12 */
+>                                         s8     rts_cts_rate_idx; /*    20     1 */
+>                                         u8     use_rts:1; /*    21: 0  1 */
+>                                         u8     use_cts_prot:1; /*    21: 1  1 */
+>                                         u8     short_preamble:1; /*    21: 2  1 */
+>                                         u8     skip_table:1; /*    21: 3  1 */
+>                                         u8     antennas:2; /*    21: 4  1 */
+>                                 };                       /*     8    14 */
+>                                 long unsigned int jiffies; /*     8     8 */
+>                         };                               /*     8    16 */
+>                         struct ieee80211_vif * vif;      /*    24     8 */
+>                         struct ieee80211_key_conf * hw_key; /*    32     8 */
+>                         u32        flags;                /*    40     4 */
+>                         codel_time_t enqueue_time;       /*    44     4 */
+>                 } control;                               /*     8    40 */
+>                 struct {
+>                         u64        cookie;               /*     8     8 */
+>                 } ack;                                   /*     8     8 */
+>                 struct {
+>                         struct ieee80211_tx_rate rates[4]; /*     8    12 */
+>                         s32        ack_signal;           /*    20     4 */
+>                         u8         ampdu_ack_len;        /*    24     1 */
+>                         u8         ampdu_len;            /*    25     1 */
+>                         u8         antenna;              /*    26     1 */
+>                         u8         pad;                  /*    27     1 */
+>                         u16        tx_time;              /*    28     2 */
+>                         u8         flags;                /*    30     1 */
+>                         u8         pad2;                 /*    31     1 */
+>                         void *     status_driver_data[2]; /*    32    16 */
+>                 } status;                                /*     8    40 */
+>                 struct {
+>                         struct ieee80211_tx_rate driver_rates[4]; /*     8    12 */
+>                         u8         pad[4];               /*    20     4 */
+>                         void *     rate_driver_data[3];  /*    24    24 */
+>                 };                                       /*     8    40 */
+>                 void *             driver_data[5];       /*     8    40 */
+>         };                                               /*     8    40 */
+>
+>         /* size: 48, cachelines: 1, members: 7 */
+>         /* sum members: 44 */
+>         /* sum bitfield members: 31 bits, bit holes: 1, sum bit holes: 1 bits */
+>         /* last cacheline: 48 bytes */
+> };
+>
+> According to pahole, the size of the control inner union is actually 16 bytes
+> since the compiler adds 2 bytes of padding. Since mt76_tx_status_skb_add()
+> meset to 0 just mt76_tx_cb size (that is 16 bytes) I can't see how
+> control.flags is overwritten. Am I missing something?
+>
+> struct mt76_tx_cb {
+>         long unsigned int          jiffies;              /*     0     8 */
+>         u16                        wcid;                 /*     8     2 */
+>         u8                         pktid;                /*    10     1 */
+>         u8                         flags;                /*    11     1 */
+>
+>         /* size: 16, cachelines: 1, members: 4 */
+>         /* padding: 4 */
+>         /* last cacheline: 16 bytes */
+> };
 
-There are two serious-ish concerns as far as I can see:
+Hi Lorenzo,
 
-1) It's currently impossible to have multiple 6GHz capable cards in a
-system unless they all operate on either 5GHz or 6GHz, i.e. the same
-band for all cards. This removes the very realistic possibility that
-you might want two cards, one on 5GHz and one on 6GHz.
+The mt76_tx_cb is placed at status.status_driver_data (offset 32).
+It overlaps with hw_key, flags and enqueue_time in the control union.
 
-2) The band selection is at module load time, and anything looking at
-netlink would be unaware that it's even possible to use the other
-band.
+static inline struct mt76_tx_cb *mt76_tx_skb_cb(struct sk_buff *skb)
+{
+BUILD_BUG_ON(sizeof(struct mt76_tx_cb) >
+    sizeof(IEEE80211_SKB_CB(skb)->status.status_driver_data));
+return ((void *)IEEE80211_SKB_CB(skb)->status.status_driver_data);
+}
 
-I've been experimenting, and with the patch below ( simply a proof of
-concept ) netlink is supplied with both bands regardless of the one
-selected, and changing /sys/module/mt7915e/parameters/enable_6ghz from
-Y to N or vice versa, followed by assering /sys.../phy<x>/device/reset
-*seems* to allow dynamic switching between bands. However, given my
-aforementioned lack of knowledge, I'm unsure whether what I've done is
-even valid, and if it gets around the original reason for the single
-band selection in the first place ( the original commit, 57af267,
-mentions that memory limitations prevent both bands being configured
-correctly - and I'm not sure if calling  mt7915_eeprom_parse_hw_cap is
-sufficient to replace one with theother ). In any case, I can
-successfully switch between bands using this technique ( and also,
-coincidentally, use multiple cards on different bands, but that needs
-a proper solution ).
-
-Ideally, what I *think* should happen, is that rather than a module
-parameter, if a request to set up the band that isn't loaded happens,
-the appropriate steps are taken to reconfigure the hardware to the
-other band. Probably simpler, but also less desirable, would be a
-second module parameter allowing selection on a per-card basis, with a
-callback that performs the reset if it's changed.
-
-My current POC is simply:
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
-b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
-index eb92cbf1a284..87113459fe30 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
-@@ -166,6 +166,9 @@ static void mt7915_eeprom_parse_band_config(struct
-mt7915_phy *phy)
-        val = eeprom[MT_EE_WIFI_CONF + band];
-        val = FIELD_GET(MT_EE_WIFI_CONF0_BAND_SEL, val);
-
-+       if (phy->mt76->cap.has_6ghz && phy->mt76->cap.has_6ghz)
-+               val = MT_EE_V2_BAND_SEL_5GHZ_6GHZ;
-+
-        if (!is_mt7915(&dev->mt76)) {
-                switch (val) {
-                case MT_EE_V2_BAND_SEL_5GHZ:
-@@ -175,13 +178,13 @@ static void
-mt7915_eeprom_parse_band_config(struct mt7915_phy *phy)
-                        phy->mt76->cap.has_6ghz = true;
-                        return;
-                case MT_EE_V2_BAND_SEL_5GHZ_6GHZ:
-+                       phy->mt76->cap.has_6ghz = true;
-+                       phy->mt76->cap.has_5ghz = true;
-                        if (enable_6ghz) {
--                               phy->mt76->cap.has_6ghz = true;
-
-u8p_replace_bits(&eeprom[MT_EE_WIFI_CONF + band],
-                                                 MT_EE_V2_BAND_SEL_6GHZ,
-                                                 MT_EE_WIFI_CONF0_BAND_SEL);
-                        } else {
--                               phy->mt76->cap.has_5ghz = true;
-
-u8p_replace_bits(&eeprom[MT_EE_WIFI_CONF + band],
-                                                 MT_EE_V2_BAND_SEL_5GHZ,
-                                                 MT_EE_WIFI_CONF0_BAND_SEL);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index cec2c4208255..56a8ba648b46 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -1297,6 +1297,9 @@ mt7915_mac_restart(struct mt7915_dev *dev)
-        ext_phy = dev->mt76.phys[MT_BAND1];
-        phy2 = ext_phy ? ext_phy->priv : NULL;
-
-+       if (phy2)
-+               mt7915_eeprom_parse_hw_cap(dev, phy2);
-+
-        if (dev->hif2) {
-                mt76_wr(dev, MT_INT1_MASK_CSR, 0x0);
-                mt76_wr(dev, MT_INT1_SOURCE_CSR, ~0);
+Regards,
+Roy Luo
 
