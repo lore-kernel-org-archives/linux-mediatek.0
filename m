@@ -4,139 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CDDDCD343F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2026 17:10:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09F09CD343F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2026 17:42:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7J3thL3GCbBboipeCsQGXuYdZX1osalYVS/liyYpuX0=; b=olhZ7pipG4pCCDeVV382REeHNB
-	Olq3ikMGpFt3e3WIMQkDTPHOve37JWPm5zPXTEqBkV0XTYioQZbhj+5bCQtf8BErcWSwWUth7pJQH
-	w0sJO3zfvCGLpdxc6hkI6RyXBp4lee2ptk5dFy2lkBOp+31J411+zv4NWcQWFPRk8xtkKt32djJ9+
-	fmJLfqsexRzSLT3txrZNjyjHMv4YQFIan2+6jyY1RxUGK8q9rvSJo9zTep82uNZZUVREWqQ7xgfTc
-	OPLTy6uoZZ3UbhihRGRXkYvJZrkTuTuJA0EmA9VRf3LepLvwz+Ykm9gaHhRSuCht3uaG+LAV7uphd
-	LkMTp+7Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:Subject:
+	Message-ID:Date:From:MIME-Version:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mNv/z0lHm1Py+HbWKuNs9hA4DCJmyJqK5J3Y7sfXrjE=; b=gEG3TCzZm8B/8Cj/sGp+DYxWKI
+	eA1lMOvAHWkv13aoKH/cBkYQ2PanwqnEFf6eTA7wzJ4t59VgHZ8LoU4RbzP8D5Ix6oyGpGWTsxt4e
+	nsKaz3GbydlN2ez+bJ6J1jM78pnwR0C3rAUCSuCv78347Mvs7Me9CXHsJIBzLs/BYFzfl/cRO8S4q
+	F5uIz95I/mgTSxm8EteFc3To3pAU+vyYhdY+TZbBfVUBB3GoNwC23H3iZAKmmiBiq0nCr9OTJ46H/
+	q79TkWdA8x8p3o1MSnEg45SGPd5/swJi+fJ2h+d/3jFG4BKXlI3PqZCIsBRYjomlseVkJ7ZVg/Ijj
+	q4j1mVVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNw3s-00000008xGc-1e4H;
-	Fri, 15 May 2026 17:10:56 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1wNwY1-0000000911K-3DtM;
+	Fri, 15 May 2026 17:42:05 +0000
+Received: from mail-yx1-xb135.google.com ([2607:f8b0:4864:20::b135])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNw3n-00000008xFg-36z9
+	id 1wNwXy-0000000910f-3cX8
 	for linux-mediatek@lists.infradead.org;
-	Fri, 15 May 2026 17:10:53 +0000
-Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 64FBGKwL3512832
-	for <linux-mediatek@lists.infradead.org>; Fri, 15 May 2026 17:10:50 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	7J3thL3GCbBboipeCsQGXuYdZX1osalYVS/liyYpuX0=; b=Vt/W4/ZEBO4rtbth
-	qWohdHMfN0rnbYTHu21stt0jb0kA0IfY8QKPwKx56++woTM1LZzwhmeVm9NZ531U
-	uwqbn58PBl67Vt6mXcW3x4ev+rAL9PoLjln6ih80bSV6LFfFW24aJtK8vi8SZfxy
-	vxiiDYB7+9zld/t67cFGuiLxPtYYpLiRfUpBMFSXMIZ8fvyZlOFv+V5Ah4IJlqFJ
-	fpIapO38VaHrryghBJMCBsRse2kjib5FAzTYTAvpzj3AwrnOGDnoo6Pzw3dhuWEU
-	GAmOhOeHq9xORYRBRSDFnWIFze5dL/nNG4aoNfAy+VKImrJTRwaJJJzLlG2FtujR
-	nXjyjQ==
-Received: from mail-pl1-f199.google.com (mail-pl1-f199.google.com [209.85.214.199])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4e5m1vc67x-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Fri, 15 May 2026 17:10:50 +0000 (GMT)
-Received: by mail-pl1-f199.google.com with SMTP id d9443c01a7336-2baedd2fd43so1021935ad.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 15 May 2026 10:10:50 -0700 (PDT)
+	Fri, 15 May 2026 17:42:03 +0000
+Received: by mail-yx1-xb135.google.com with SMTP id 956f58d0204a3-65c37eafcbeso273826d50.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 15 May 2026 10:42:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1778866922; cv=none;
+        d=google.com; s=arc-20240605;
+        b=EP+qnEugMxv0F5ruex1H6sRO6KRVijDaMsAzitzN9rghWCt1uUB+TSTJX29vnUMBKd
+         lO9MVGwJhWozwPZmfi35c7ECr9o+/dnLcZVVDVASeT2sOT2MvMChMFwprlnpIDKc59fw
+         2hZhOIKJAfUkbnQis85lBC/VoYvm+nQISg+rrbtFzb03avQ5HKTQeRuTnVfRoU8iOsm7
+         p+CJWVgGQf4MT2414TWUO/mhUsYBX89Oh0EFJg8O+qzjhnjV46IsTceRmM5p7Bz69eYL
+         0LZ8Cg95UqeNpy/FIZ8khmhTn50O+HJyjRigV7UyfsuouUeSadst8jtAEK9cuiJIqVFr
+         jLfw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=mNv/z0lHm1Py+HbWKuNs9hA4DCJmyJqK5J3Y7sfXrjE=;
+        fh=7q9slQwJZ94/e6e481MFJgYPeNForZhGYqL2OGSLeAY=;
+        b=ZAIFfR1giEqwLwIS9DoxVCVfmSG3u2tayBH+c2MU/XmsTEtBZU9+ZEjSqiiwxcUEBv
+         7NbkUaJzh25wVygqhSPvPjAMLt2jc0gzaBWviBP1pySj4eyF3CBfjOuSDlWFbFy3xuYr
+         oIo2qaFIng15/HYdzEVq2oPCnepYePjSfAq+7g3lh5ZHKPeN8iBqgwDGdL6fzskDJ3eS
+         jMyNca8Y7lZ5OJPMfKzITBNfsOJQrCMvgv0eNZXnBQls/nLGYnDu7G9Y7cgI13nJjX+/
+         aWla1pBvvS/V91Jd3I9gQHQT4jJkr6L1NnvEyA6lf3FEHbhb9gCMHQLv6PLJ4erLmaoR
+         og/A==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1778865049; x=1779469849; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:date:message-id:subject
-         :references:in-reply-to:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=7J3thL3GCbBboipeCsQGXuYdZX1osalYVS/liyYpuX0=;
-        b=JTg6D6+68x40OFnps1nH49gYY1+dHCKhnHe6mj5dZTyYbq7LxtSzzD6Q29ZTIqn8sE
-         a6jOl8GKm97ZjeH3yCiEAPpR828l7L2pceTEOJ1IWqRXmFz6tWPJqnLRlPBOHGt2sIkA
-         cRglJBl6u8B9nf6HuT3kAytAWUlFZ/xTDWPgzFp+1eQLwOz/wiDiOys30ZsSXwpFjt7C
-         Hzwj5PMxuMsyQN5EkyxHw1ugdkgVRbEZYscGRRWgOvP5eE5Iwx0GZsbT8W3am3XZEdwc
-         Rszzacj7LX9zYNMyRbexIn1x2WjgZXFN1klrH7g5PAk8ILTVZAB8LatOIYAKJwdd5Qs7
-         ai5A==
+        d=gmail.com; s=20251104; t=1778866922; x=1779471722; darn=lists.infradead.org;
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=mNv/z0lHm1Py+HbWKuNs9hA4DCJmyJqK5J3Y7sfXrjE=;
+        b=nZReHh0H9Uoi0eE51uqwEadrLZtQ1GuHuzEX5QqCkLLRMohdL6zfwvrbnpSpSJDe2u
+         9NjgOnc53wCic2fqB28JAXQIL6H5QMAsYFqRxW8rYB5QKmBdx1UvY3Hm6zc1Nm9iavcm
+         D1XfrpYPaKXO72jld9jNRY35D8+0MdJigTSpeo8U/ba0IcWI5YjKIcF2JPJkHDqCVWo5
+         vLOdifPSWqED2WsTSTJXoisP1DlaKoTn/a6YfZH8FbmL0TyVZ+Q4WO/EQA/7mhgMPe3k
+         jvfcKWXP2l4Ow7NDsuBAvIfpyxLHStyJ7uU1oMZksBATpEEJ96Cu7kAErTobw4Ee08+C
+         x/FA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1778865049; x=1779469849;
-        h=content-transfer-encoding:mime-version:date:message-id:subject
-         :references:in-reply-to:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=7J3thL3GCbBboipeCsQGXuYdZX1osalYVS/liyYpuX0=;
-        b=b5usZDq0PABwmo7IDS8YoeNGDFIZlGItcndOMbIYamMig1ocdBQ2X8TnNumj8EvK1m
-         Kv4lzXg8q+G+WYvVFudQheVuuYBLhZ6vgy9OP3g7CgjJYqIjQZnpbhkCsAFGKM05/Ldh
-         4JgNMuYj6QZQfLMNNVHCQEf6zgkIJDpVjTOfNT5uh+oIm0Y0u5nSgtyDQWAhCwK+OeEv
-         Tl7PPCkj7nRmOy8TMZqV853G10mwXGV7BJfolV5gotQH7FIsuVyPtB+kSZx8aaD3HT6E
-         z+nBsprmnm6ro7Ew5UDK454hktTwdym5zP6Z8kXXgCknlFG2rTjWUkbTRTfnWRaIdBI7
-         CSZA==
-X-Forwarded-Encrypted: i=1; AFNElJ+5q9Hv4N2UA328Bx2YMbuwMT5oa+v2jg6ekqya03GUsMeQf7NQiERutL5HRM1VjK6W7xel6mc1vKP5Ja1kpg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzCJABWEsYdUSIRs8lwz755p+XcGlJGS4ZQFXTwbHI0CnnFRyAs
-	VsgEY8X6BhxeE0KXuXVhPqVyoANAq5v0yZo1tAlF0mMCGyFzP7bU/caAxWr+AmFdZbPO3+HZGt+
-	KGAiPyCEjFNODVyjZSY5QTEHBJG/6M6a58CJm+EwuG3NSGaYc9OxEaknpw+2mj4F2IN42HOX2I9
-	4=
-X-Gm-Gg: Acq92OGXwNRAZJgccSQ2nFmIenT0Shabws9PglFAXTyTEJ8+zYadNSXblHh6Q68EVTL
-	yMxoVSjXm/BT/uMHK70Y7oVLs5G78LzNLyNKmE3JQo18V7/BqusGnrYf4b78qJEqwb8jiT5octw
-	3dpfgfsrL9YxejaFKOgzL9LELUI3d07eu99RON7iG8UfihtMh3Q3eiLw3T9qXnhIZhW5z6Ufp59
-	vI//MzRNCWMF+zHUZrDrFA0Yp4SBHiZIpiWbIcM6fqKxi916jg9g1I2WOO1ZTe3UVLuMuS4lR21
-	AJhlfHLLnkT0GhwlnwfSnDYacdRTV9nYYduHz/PhOg44bT3iYhYRL/HvMh4gMvuyB45ZkRi28Dj
-	eGAFMghl/d8nmkpWK/uN/
-X-Received: by 2002:a17:903:13c8:b0:2bd:8395:feca with SMTP id d9443c01a7336-2bd839605e4mr45821885ad.23.1778865049258;
-        Fri, 15 May 2026 10:10:49 -0700 (PDT)
-X-Received: by 2002:a17:903:13c8:b0:2bd:8395:feca with SMTP id d9443c01a7336-2bd839605e4mr45821425ad.23.1778865048670;
-        Fri, 15 May 2026 10:10:48 -0700 (PDT)
-Received: from [192.168.1.11] ([120.60.141.122])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2bd5d234540sm64176835ad.79.2026.05.15.10.10.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 15 May 2026 10:10:47 -0700 (PDT)
-From: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
-X-Google-Original-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Ryder Lee <ryder.lee@mediatek.com>,
-        Lorenzo Pieralisi <lpieralisi@kernel.org>,
-        =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-        Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-        Chen-Yu Tsai <wenst@chromium.org>
-Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
-        linux-kernel@vger.kernel.org
-In-Reply-To: <20260505105918.1823170-1-wenst@chromium.org>
-References: <20260505105918.1823170-1-wenst@chromium.org>
-Subject: Re: [PATCH] PCI: mediatek-gen3: Do full device power down on
- removal
-Message-Id: <177886504429.10117.12525954278575161298.b4-ty@kernel.org>
-Date: Fri, 15 May 2026 22:40:44 +0530
+        d=1e100.net; s=20251104; t=1778866922; x=1779471722;
+        h=to:subject:message-id:date:from:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=mNv/z0lHm1Py+HbWKuNs9hA4DCJmyJqK5J3Y7sfXrjE=;
+        b=OMujMCJaIoiv9z1JLqrTGvPpo+Mfnf0DDMzpp3d7ppdN7JgEKpqH3gb2E2p1m6lldq
+         d76bfQuHrrnRDIFvHGbhKjEuYeWE9T8m/bkz96Sm2Wm/0Bnk3aHXWJ8WLKUSbnQXt20V
+         nxBQLV7peKqq3m49HMmNYHgefdDGtTDsCYklxE/BYy6Aml8CVZSaf84hDvFjBJ0uvxau
+         fGsOGrjOvzoCW1gt4zgqaIwwnjH4aLNjdh1mHG8PvWMH9ryogtSmdOd5PM9xEO3KyQeh
+         LNoFCRHF+Y/iSo+/dUXNYLEnEUAzpOpNycKwnjLe+2XAMWfiiQmkbnIFoMI0l6OPIWJ3
+         oDBA==
+X-Gm-Message-State: AOJu0Yy67yYSPj53YIVd8OTZFZEI89fkXYIYP8uazfaWEuLSP2Sgzi4x
+	WEVwl3cC4T0PwmVg20HSUoOttfu+Ka1H9RtcjhwBTwsK1PCae/quguq8Y7DztWtYyex2UbuCZPs
+	P3PSCakN4xJW7/y89KQBze5NanMIb5eZqM/n3
+X-Gm-Gg: Acq92OEKvwlJebeH1E+q3qIRDwgMwdpPQagkWdvMq9eObFGRhX0ktxKG/7hHoeDyM3I
+	uBENjigT08/RS+lhGElhhlD8OG2G8Vd88r/L5VndKamjNUIDhQ4dbOKgMyS14uGwgP9odpHX8ZQ
+	mUIZGYieIuxFLniqednHc5+ymurQY79wUkfJ9v8LmI4QFn9E6d53mX7/UW+RBgyMFLDdxwEJRXX
+	4eiSkAtk269KHtgty2lJsdZyGkb+eS09lgC6tFunel4MuUiiifPY9qRqJDZxD7fcWNCT6A7F47u
+	x7B0qvqZvpkFv0DSNI/pGtB0/j3CruGIhFMPeVekbH1AqNkV
+X-Received: by 2002:a05:690e:484c:b0:651:8944:c0ba with SMTP id
+ 956f58d0204a3-65e228a1e88mr3907254d50.63.1778866921663; Fri, 15 May 2026
+ 10:42:01 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.14.3
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTE1MDE3NSBTYWx0ZWRfX0n1G+Bp0XVNx
- wRant2m5PPLMReIgi66fR6Kx3qyGX8AZUZqrYbtstsfDPb72IyzlK1t5A1D+X5Cnp19aZL6khr2
- ORBO7LwiB8GHywqm4Ovxgyr358wcbb4YadfRyuom5ehCQiD8ut7HABEr0tZ+xCholwOtJTSdGOq
- 6bBs59nACyzQrywhgWc2UWNNuRaqObW6CkuTfHYvSgLmeyh0rk58eEG5cbHwd0OT92LXQa4p52/
- WSbM5vNPiVq8btDpNW4loPvlblWf3z+4itlRJlX10DMg0gG5ADtAIIiRI3y6FJv70PN02ihk11v
- txCvGoKQyiA9tLKU9q7eiRoCKG9H8yX9zBbHvXG12qPP2LB5GSiebR8RHBwQSUdscYUFFJSuonn
- bWI1xDXW+BbWy4F8J546vda/Jw5RQ+ocOTA3w5UVDPielv3J3MawR5BDgjd0FPNEXRix3QycuyY
- gAEFvq+Fnp8YXjISWdw==
-X-Proofpoint-GUID: YF3LknQJ3AWw8bPOcRIRUAV_-UD_F5Ql
-X-Proofpoint-ORIG-GUID: YF3LknQJ3AWw8bPOcRIRUAV_-UD_F5Ql
-X-Authority-Analysis: v=2.4 cv=BvqtB4X5 c=1 sm=1 tr=0 ts=6a07539a cx=c_pps
- a=JL+w9abYAAE89/QcEU+0QA==:117 a=8TBCxnFsifAbGBbxUCxq8g==:17
- a=IkcTkHD0fZMA:10 a=NGcC8JguVDcA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=ZpdpYltYx_vBUK5n70dp:22
- a=VwQbUJbxAAAA:8 a=Gg1cva48JAy7FFupKUQA:9 a=QEXdDO2ut3YA:10
- a=324X-CrmTo6CU4MGRt3R:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-05-15_04,2026-05-15_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 suspectscore=0 phishscore=0 clxscore=1011 priorityscore=1501
- spamscore=0 malwarescore=0 bulkscore=0 adultscore=0 lowpriorityscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2605130000 definitions=main-2605150175
+From: Adam Hill <sidepipeuk@gmail.com>
+Date: Fri, 15 May 2026 18:41:49 +0100
+X-Gm-Features: AVHnY4K5jrhQ-NxDZufeoiWLoJ7HTj27oh2hxO65GEY68sNyck3FHGRlkErPi3Y
+Message-ID: <CALgbQMy=XduSht_tq7f7WjsFSos8EX6mSS0pZDGhV3n=OJLy=A@mail.gmail.com>
+Subject: mt7915e 5GHz/6GHz with multiple cards or dynamic selection - can it
+ be done along these lines?
+To: linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260515_101051_905341_055C2252 
-X-CRM114-Status: GOOD (  10.85  )
+X-CRM114-CacheID: sfid-20260515_104202_916526_54891460 
+X-CRM114-Status: GOOD (  18.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -151,26 +108,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Firstly I have to preface this with "I don't know what I'm doing". I
+have almost no knowledge of how these ( or any ) wireless cards
+operate and little knowledge of the inner workings of kernel modules
+etc.... so where I'm going with this might not be possible. I do know
+that the current situation with the mt7915e module isn't ideal.
 
-On Tue, 05 May 2026 18:59:16 +0800, Chen-Yu Tsai wrote:
-> When power control for downstream devices was introduced in the
-> mediatek-gen3 PCIe controller driver, only the power to the downstream
-> devices was cut when the controller driver is removed. This matched
-> existing behavior, but in hindsight a proper power down sequence should
-> have been followed.
-> 
-> Call mtk_pcie_devices_power_down() on driver removal so that in addition
-> to removing power from the downstream devices, PERST# is asserted.
-> 
-> [...]
+There are two serious-ish concerns as far as I can see:
 
-Applied, thanks!
+1) It's currently impossible to have multiple 6GHz capable cards in a
+system unless they all operate on either 5GHz or 6GHz, i.e. the same
+band for all cards. This removes the very realistic possibility that
+you might want two cards, one on 5GHz and one on 6GHz.
 
-[1/1] PCI: mediatek-gen3: Do full device power down on removal
-      commit: 2b16d6b9de2f00fd8ecc433b15205c18f8276b3e
+2) The band selection is at module load time, and anything looking at
+netlink would be unaware that it's even possible to use the other
+band.
 
-Best regards,
--- 
-Manivannan Sadhasivam <mani@kernel.org>
+I've been experimenting, and with the patch below ( simply a proof of
+concept ) netlink is supplied with both bands regardless of the one
+selected, and changing /sys/module/mt7915e/parameters/enable_6ghz from
+Y to N or vice versa, followed by assering /sys.../phy<x>/device/reset
+*seems* to allow dynamic switching between bands. However, given my
+aforementioned lack of knowledge, I'm unsure whether what I've done is
+even valid, and if it gets around the original reason for the single
+band selection in the first place ( the original commit, 57af267,
+mentions that memory limitations prevent both bands being configured
+correctly - and I'm not sure if calling  mt7915_eeprom_parse_hw_cap is
+sufficient to replace one with theother ). In any case, I can
+successfully switch between bands using this technique ( and also,
+coincidentally, use multiple cards on different bands, but that needs
+a proper solution ).
 
+Ideally, what I *think* should happen, is that rather than a module
+parameter, if a request to set up the band that isn't loaded happens,
+the appropriate steps are taken to reconfigure the hardware to the
+other band. Probably simpler, but also less desirable, would be a
+second module parameter allowing selection on a per-card basis, with a
+callback that performs the reset if it's changed.
+
+My current POC is simply:
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+index eb92cbf1a284..87113459fe30 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+@@ -166,6 +166,9 @@ static void mt7915_eeprom_parse_band_config(struct
+mt7915_phy *phy)
+        val = eeprom[MT_EE_WIFI_CONF + band];
+        val = FIELD_GET(MT_EE_WIFI_CONF0_BAND_SEL, val);
+
++       if (phy->mt76->cap.has_6ghz && phy->mt76->cap.has_6ghz)
++               val = MT_EE_V2_BAND_SEL_5GHZ_6GHZ;
++
+        if (!is_mt7915(&dev->mt76)) {
+                switch (val) {
+                case MT_EE_V2_BAND_SEL_5GHZ:
+@@ -175,13 +178,13 @@ static void
+mt7915_eeprom_parse_band_config(struct mt7915_phy *phy)
+                        phy->mt76->cap.has_6ghz = true;
+                        return;
+                case MT_EE_V2_BAND_SEL_5GHZ_6GHZ:
++                       phy->mt76->cap.has_6ghz = true;
++                       phy->mt76->cap.has_5ghz = true;
+                        if (enable_6ghz) {
+-                               phy->mt76->cap.has_6ghz = true;
+
+u8p_replace_bits(&eeprom[MT_EE_WIFI_CONF + band],
+                                                 MT_EE_V2_BAND_SEL_6GHZ,
+                                                 MT_EE_WIFI_CONF0_BAND_SEL);
+                        } else {
+-                               phy->mt76->cap.has_5ghz = true;
+
+u8p_replace_bits(&eeprom[MT_EE_WIFI_CONF + band],
+                                                 MT_EE_V2_BAND_SEL_5GHZ,
+                                                 MT_EE_WIFI_CONF0_BAND_SEL);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index cec2c4208255..56a8ba648b46 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -1297,6 +1297,9 @@ mt7915_mac_restart(struct mt7915_dev *dev)
+        ext_phy = dev->mt76.phys[MT_BAND1];
+        phy2 = ext_phy ? ext_phy->priv : NULL;
+
++       if (phy2)
++               mt7915_eeprom_parse_hw_cap(dev, phy2);
++
+        if (dev->hif2) {
+                mt76_wr(dev, MT_INT1_MASK_CSR, 0x0);
+                mt76_wr(dev, MT_INT1_SOURCE_CSR, ~0);
 
