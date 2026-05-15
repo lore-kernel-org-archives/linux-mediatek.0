@@ -4,84 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29C4BCD37AC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2026 19:32:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3ECACD37AC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2026 01:27:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=W29iSTC1z0rkF6yGO5rvBMSzfBy2esdMaVKN7MrSPZk=; b=3GzyJpmKWPaYtRT1Ag72Tw1XRa
-	T65mFckRLunR5VUDFpbPlxHLXT7yISGiMKE/c4njiIwXvLzakshkvIEXFJ9Ga63QAHzVYY2k+eJ8m
-	HOYgrI5gE1y5IsxxbjJwl1MMIsd/+iuxCx7Mz80WbXorUy4u/4Uso0iZJbTMf8m4ciNY//9u6Sulu
-	sDw3LnQsjD58wlRYJHf5xI0Bf87knqCxAT4QSyBYKq+KsN/unGGrpEt+bIrVq0ROrjvzeAm/UU1gc
-	JFRg1vcApV0kypAQtU0un/nutHdPwK9r69YBF6pqlCScAG1xhdMRUgKqTK9djMMC3FXnq0HYdmyxi
-	TjXPA1pA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rDwkTqOgmwxqXqkIzich47iD5eb1x6hgJlV+oeHQedE=; b=fx92TLlJ1krD/KyqI665eX0/Gf
+	Bju6wMj4a27uMJ6MJggZ2XhKvingsYaN0eeT3xg8mQ4aEEk2kpwJ3obGs5FqF3GOsEfAeL+G+b0Ct
+	kD4CDG5vlXgKUo7XbTIWK29hXUGEYI77CUqVN4GM58TVfq5ajhSHmB6/6uKvVo11egf79x505m0Wj
+	DvbWOhLfE0Frj8hkaupyXXE3nQcFYtNfF1HTzP6sqU1qTkJ5vG4LLsr3eo71GzOUMAlAD1N9zL4XX
+	0QlUnl5c0uripyR0Yw3NcKMjEJK/Ut2yCThycqQkbEgehUuHiP/jkTkVNse/e33Qp3wZXhEB7NvCH
+	hW7E2N5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNbne-00000006Qh8-3X5K;
-	Thu, 14 May 2026 19:32:50 +0000
-Received: from cvsmtppost101.wmail.worksmobile.com ([125.209.209.40])
+	id 1wNhKc-000000071Yk-3Ml1;
+	Fri, 15 May 2026 01:27:14 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNbnc-00000006Qfp-1UXy
-	for linux-mediatek@lists.infradead.org;
-	Thu, 14 May 2026 19:32:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=worksmobile.com;
-	s=s20171120; t=1778787166;
-	bh=1acIE6332zSbWTuobynlJDelq6HeX8f/lMzTcfmrhZI=;
-	h=From:To:Subject:Date:Message-Id:From:Subject:Feedback-ID:
-	 X-Works-Security;
-	b=Fdey8ZGOSfk104QZnJNMU4NpPN/Fryl3JSkyJe/0ULIMe2o6sGBcy59hp1av1j1DE
-	 7ipFZFo00mOoRXvHjy+NsoHJSC2nEaRP4QQZpViNzU2xK7wPORgpkV0oVOogxH6mfF
-	 SrZ1J/McYN+GZUMAr1fSIi+VlRuKjfSz2265A1+rgXkEROqzswLbVzsYclfg42vxSD
-	 TvaqlGmemJdtJilvWXbCjmw5TmgnhlJz3EGp+K1+vDb90GvHA9G39v/jzyEn7xiDUI
-	 FmGwkFKdYMQxGhEjlLXYtYIetv1Hv37LKkoCvuOV0YSlyIiZIDtieerWTlRoARiAsP
-	 Z+BRbN3YyqyfA==
-X-Originating-IP: 163.152.163.130
-Received: from cvsendbo005.wmail ([10.112.11.110])
-  by cvsmtppost101.wmail.worksmobile.com with ESMTP id ofpm-sdtQgWy70O3K0udpw
-  for <linux-mediatek@lists.infradead.org>;
-  Thu, 14 May 2026 19:32:46 -0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=korea.ac.kr;
-	s=naverworks; t=1778787166;
-	bh=1acIE6332zSbWTuobynlJDelq6HeX8f/lMzTcfmrhZI=;
-	h=From:To:Subject:Date:Message-Id:From:Subject:Feedback-ID:
-	 X-Works-Security;
-	b=Wq/VWUnqLFTs80y9ME8gB8wdrpn1uyxsi9oYXmwk2JBqiU+0Vvy5CoNUI8FPREA1o
-	 i8QkTwOCPoWwsXoIgNnJkVprRrx+2l/msWVIr0rjqXNobmM/p9a81NaheR6CuYl3ET
-	 wcZ6Jvni5g/szquJFjFwLE9pG6ws/AzkNU4FLHVs=
-X-Session-ID: nGRzE80uSn2UmjmtNUGmRg
-X-Originating-IP: 163.152.163.130
-X-Works-Send-Opt: 3lYwjAIYjHmXFoEXKBmwaAErKqpYjHmm
-X-Works-Smtp-Source: Adn9Fq2XFqJZ+Hm9Fobd+6E=
-Received: from s2lab05.. ([163.152.163.130])
-  by jvnsmtp401.gwmail.worksmobile.com with ESMTP id nGRzE80uSn2UmjmtNUGmRg
-  for <multiple recipients>
-  (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
-  Thu, 14 May 2026 19:32:45 -0000
-From: Ingyu Jang <ingyujang25@korea.ac.kr>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>
-Cc: Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-wireless@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] wifi: mt76: Use IS_ERR() check for mt76_register_debugfs_fops()
-Date: Fri, 15 May 2026 04:32:43 +0900
-Message-Id: <20260514193243.2518979-1-ingyujang25@korea.ac.kr>
-X-Mailer: git-send-email 2.34.1
+	id 1wNhKa-000000071Y1-2q8S;
+	Fri, 15 May 2026 01:27:13 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 7B1424382D;
+	Fri, 15 May 2026 01:27:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1B9D4C2BCB3;
+	Fri, 15 May 2026 01:27:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1778808431;
+	bh=jds/KUEnMypQxF/dsmHVwU7tav2q16u3klT9lSJO4Dw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=TKn5CzOw33zLhbULxmodZj4uSBxZUoymOm3B0RWi06fo/Tj2RARVGhm2M6dBAApiH
+	 hZdpobN+XsohyfcO+zcpdWbhWFuz+9THuBp/UQBrRu5mAHgEFO/nDgHtth+FviXQem
+	 /K4dEkKuze88YD2gaGUbeg7IO9LX6wXwlPwCBdpv1unf/Vvd3zNC9AwuirSn1ocquu
+	 LPtaOWT8gpJtSbqvCL/0WpfaECf1gYilANfyrwqjI1psxqkVZxVBgU0Xr/WW5ke+JY
+	 OFrjwxtt27geZM/MJWdFqpITcKcRyFl7HDV6OxZY+YyfPMsF26p1GhijOUUowI4pYB
+	 AURsy24vtCkRw==
+Date: Fri, 15 May 2026 10:27:09 +0900
+From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>
+To: lirongqing <lirongqing@baidu.com>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, 
+	Jianjun Wang <jianjun.wang@mediatek.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Bjorn Helgaas <bhelgaas@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] PCI: mediatek: Fix operator precedence in
+ PCIE_FTS_NUM_L0 macro
+Message-ID: <20260515012505.GA3166828@rocinante>
+References: <20260515005552.2343-1-lirongqing@baidu.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20260515005552.2343-1-lirongqing@baidu.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260514_123248_666174_A5AFA7C7 
-X-CRM114-Status: UNSURE (   9.24  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260514_182712_741746_9901BE10 
+X-CRM114-Status: GOOD (  15.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,100 +76,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt76_register_debugfs_fops() returns the dentry from
-debugfs_create_dir(), which yields an error pointer on failure and
-never NULL. The NULL checks in the per-chip *_init_debugfs() helpers
-are therefore unreachable, and on a real failure the ERR_PTR would
-be returned to callers as a valid pointer.
+Hello,
 
-Use IS_ERR() and propagate the actual error via PTR_ERR() in
-mt7615/mt7915/mt7921/mt7925/mt7996.
+> The original PCIE_FTS_NUM_L0(x) macro was buggy due to improper operator
+> precedence, where ((x) & 0xff << 8) was evaluated as ((x) & 0xff00).
+> 
+> Instead of just fixing the parentheses, use the standard FIELD_PREP()
+> macro. This makes the code more robust by automatically handling masks
+> and shifts, while also adding compile-time type and range checking to
+> ensure the value fits within PCIE_FTS_NUM_MASK.
+> 
+> Fixes: 637cfacae96f ("PCI: mediatek: Add MediaTek PCIe host controller support")
+> Signed-off-by: Li RongQing <lirongqing@baidu.com>
+> ---
+>  drivers/pci/controller/pcie-mediatek.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> index 7572252..00f0e29 100644
+> --- a/drivers/pci/controller/pcie-mediatek.c
+> +++ b/drivers/pci/controller/pcie-mediatek.c
+> @@ -61,7 +61,7 @@
+>  /* MediaTek specific configuration registers */
+>  #define PCIE_FTS_NUM		0x70c
+>  #define PCIE_FTS_NUM_MASK	GENMASK(15, 8)
+> -#define PCIE_FTS_NUM_L0(x)	((x) & 0xff << 8)
+> +#define PCIE_FTS_NUM_L0(x)	FIELD_PREP(PCIE_FTS_NUM_MASK, x)
 
-Signed-off-by: Ingyu Jang <ingyujang25@korea.ac.kr>
----
- drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c | 4 ++--
- drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c | 4 ++--
- drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c | 4 ++--
- drivers/net/wireless/mediatek/mt76/mt7925/debugfs.c | 4 ++--
- drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c | 4 ++--
- 5 files changed, 10 insertions(+), 10 deletions(-)
+Aww.  Nice catch!  Thank you for fixing this!
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
-index 0f7b20152279c..5c3646a67e4b7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
-@@ -550,8 +550,8 @@ int mt7615_init_debugfs(struct mt7615_dev *dev)
- 	struct dentry *dir;
- 
- 	dir = mt76_register_debugfs_fops(&dev->mphy, &fops_regval);
--	if (!dir)
--		return -ENOMEM;
-+	if (IS_ERR(dir))
-+		return PTR_ERR(dir);
- 
- 	if (is_mt7615(&dev->mt76))
- 		debugfs_create_devm_seqfile(dev->mt76.dev, "xmit-queues", dir,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-index 26ed3745af43e..f62a17c8958ac 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-@@ -1296,8 +1296,8 @@ int mt7915_init_debugfs(struct mt7915_phy *phy)
- 	struct dentry *dir;
- 
- 	dir = mt76_register_debugfs_fops(phy->mt76, NULL);
--	if (!dir)
--		return -ENOMEM;
-+	if (IS_ERR(dir))
-+		return PTR_ERR(dir);
- 	debugfs_create_file("muru_debug", 0600, dir, dev, &fops_muru_debug);
- 	debugfs_create_file("muru_stats", 0400, dir, phy,
- 			    &mt7915_muru_stats_fops);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c
-index 4333005b3ad95..4da339867b6a7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c
-@@ -266,8 +266,8 @@ int mt7921_init_debugfs(struct mt792x_dev *dev)
- 	struct dentry *dir;
- 
- 	dir = mt76_register_debugfs_fops(&dev->mphy, &fops_regval);
--	if (!dir)
--		return -ENOMEM;
-+	if (IS_ERR(dir))
-+		return PTR_ERR(dir);
- 
- 	if (mt76_is_mmio(&dev->mt76))
- 		debugfs_create_devm_seqfile(dev->mt76.dev, "xmit-queues",
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7925/debugfs.c
-index e2498659c884e..01aa4a1071fdd 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/debugfs.c
-@@ -291,8 +291,8 @@ int mt7925_init_debugfs(struct mt792x_dev *dev)
- 	struct dentry *dir;
- 
- 	dir = mt76_register_debugfs_fops(&dev->mphy, &fops_regval);
--	if (!dir)
--		return -ENOMEM;
-+	if (IS_ERR(dir))
-+		return PTR_ERR(dir);
- 
- 	if (mt76_is_mmio(&dev->mt76))
- 		debugfs_create_devm_seqfile(dev->mt76.dev, "xmit-queues",
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c
-index 34af800964d11..63cd490977106 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c
-@@ -875,8 +875,8 @@ int mt7996_init_debugfs(struct mt7996_dev *dev)
- 	struct dentry *dir;
- 
- 	dir = mt76_register_debugfs_fops(&dev->mphy, NULL);
--	if (!dir)
--		return -ENOMEM;
-+	if (IS_ERR(dir))
-+		return PTR_ERR(dir);
- 
- 	debugfs_create_file("hw-queues", 0400, dir, dev,
- 			    &mt7996_hw_queues_fops);
--- 
-2.34.1
+Happy to offer:
 
+  Reviewed-by: Krzysztof Wilczyński <kwilczynski@kernel.org>
+
+All the best,
+
+	Krzysztof
 
