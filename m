@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C151CD4851
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2026 11:13:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18EBDCD343F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2026 12:28:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Cc:To
-	:Subject:Message-ID:From:Content-Transfer-Encoding:Content-Type:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xY+E/upLJxEjmvM3j7C4ks+xfWlSY3E/fLSmuAvnhNI=; b=vLRklM8GVAkH3xlfuvji/E4XXp
-	Z4yt/7AQg2AOtDjKYZ57fhaRh5BhpAqzwGAXCxaNvPOUvajZDMa4NWtmAaOiJkcAWWASnP6eFvdSB
-	Ccus+8gGxcEJNFy/7fd8l+kZzJ64bYM56xGx95+OYETiFE2y2YD14cLef97Cw3Y2gOQwZTioioKTK
-	qdijVU/49lkLF+HeA/Evps1UEKIAAglvNO5kcTxiOFNgYBQPmErRtjzzLWbSwPScYwpSMvGHS2my+
-	l3NhDclKYlYvnFwKlXHE577gG55JdzhWtc/pkzRdClvVRXmoxFIee2kT8uY9t6Op/clzmrDsKIfsO
-	+TkN1BIA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=E/3ocmMdZEl3pTKP3oYSQ9rwYEMqGq7YM2SuMQVsdqQ=; b=NDYcQkBgENuLiocRLAv7XuFTc3
+	oe8O4hq1b7FwH1I6DsGrmkopAlfUEzgJcYSQVq1DXgJXVseVNLGj0cIl1mwPm9gDhWcwppH07JWju
+	Q4zQ5oQB15bbXDc/I3vxYOFP/mp8/6IWXxgRkNf++PuzAFM9VaVsogjhDgDYo4Bq7u3sBl6Wi2pwv
+	BjqXGFGI9khg8StRJJXrpb8fp12RK5QUQrvhULHreN6T5bTjVJnIcSrNWjRdhMcFjFBWt9gUvILTN
+	1hS2OCqwDGzlLn50DyQ2jZAGc29csOJKDEfVI3lnEK5tSQo6Bp0JR4cJ/XiSUCmayxRY9BK8TTckY
+	W0xzjrCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNqUE-000000089Rb-0qCq;
-	Fri, 15 May 2026 11:13:46 +0000
-Received: from out-182.mta0.migadu.com ([2001:41d0:1004:224b::b6])
+	id 1wNreT-00000008KAI-0But;
+	Fri, 15 May 2026 12:28:25 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNqUB-000000089Hr-1mTb
-	for linux-mediatek@lists.infradead.org;
-	Fri, 15 May 2026 11:13:44 +0000
+	id 1wNreQ-00000008K8p-1ymD;
+	Fri, 15 May 2026 12:28:24 +0000
+Received: from killaraus.ideasonboard.com (2001-14ba-70f3-e800--a06.rev.dnainternet.fi [IPv6:2001:14ba:70f3:e800::a06])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 857C263C;
+	Fri, 15 May 2026 14:28:07 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1778848087;
+	bh=wF9KsXHL0yOzCMIY2qWBmD0LDGdSmbmn1odoHyUkzdY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=JBKXKuKkQ8vRjy/q0DRBweXo/xMEXs0kXJp+vtYf+GuWgtFBcekZtZJqjDfrx7IiD
+	 nFS0AgoEdmRfCkEOR+zKMNPTLyAriLI18DfoUuIf4xx5jxylsFgucKUHUdHGt4qi7+
+	 y5EuQAILWJq/EI2joiW8UqE0E0oVJcCekn1nJCpk=
+Date: Fri, 15 May 2026 15:28:16 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+	Markus Schneider-Pargmann <msp@baylibre.com>,
+	Michael Hennerich <michael.hennerich@analog.com>,
+	Support Opensource <support.opensource@diasemi.com>,
+	Ivaylo Ivanov <ivo.ivanov.ivanov1@gmail.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Andrei Simion <andrei.simion@microchip.com>,
+	Saravanan Sekar <sravanhome@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Woodrow Douglass <wdouglass@carnegierobotics.com>,
+	Jagan Teki <jagan@amarulasolutions.com>,
+	Icenowy Zheng <icenowy@aosc.io>, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v1] regulator: Use named initializers for arrays of
+ i2c_device_data
+Message-ID: <20260515122816.GB52035@killaraus.ideasonboard.com>
+References: <20260515103150.164887-2-u.kleine-koenig@baylibre.com>
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1778843595;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=xY+E/upLJxEjmvM3j7C4ks+xfWlSY3E/fLSmuAvnhNI=;
-	b=OaF/xShMio5pJ01/fel5DMXE3YdlVSumEvuZa6aNn7Uw9tp/Z2OdB1rsusp8RHJiyyZ902
-	JGsr6f2ap+f4Hdsp637l3HEhTcuEjc0TP1tskvJ/pGVqoUisBO2ugLoqT8yY3ovM4ArsZZ
-	+mjHogAd+q2BkujTSSCy1GoKAvIacKw=
-Date: Fri, 15 May 2026 11:13:05 +0000
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Frank Wunderlich" <frank.wunderlich@linux.dev>
-Message-ID: <935a73a6e458b2d4fed2e59192e725483ca62126@linux.dev>
-TLS-Required: No
-Subject: Re: [net-next v8 2/3] net: ethernet: mtk_eth_soc: Add RSS support
-To: "Jakub Kicinski" <kuba@kernel.org>, "Mason Chang"
- <mason-cw.chang@mediatek.com>
-Cc: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
- netdev@vger.kernel.org, "Russell King" <linux@armlinux.org.uk>,
- linux-kernel@vger.kernel.org, "Andrew Lunn" <andrew+netdev@lunn.ch>,
- "Eric Dumazet" <edumazet@google.com>, linux-mediatek@lists.infradead.org,
- "Daniel Golle" <daniel@makrotopia.org>, "Matthias Brugger"
- <matthias.bgg@gmail.com>, "Paolo Abeni" <pabeni@redhat.com>, "Lorenzo
- Bianconi" <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>,
- linux-arm-kernel@lists.infradead.org, "Felix Fietkau" <nbd@nbd.name>,
- "Frank Wunderlich" <linux@fw-web.de>
-In-Reply-To: <20260513185625.48e69837@kernel.org>
-References: <20260509190938.169290-1-linux@fw-web.de>
- <20260509190938.169290-3-linux@fw-web.de>
- <20260513185625.48e69837@kernel.org>
-X-Migadu-Flow: FLOW_OUT
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20260515103150.164887-2-u.kleine-koenig@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260515_041343_601647_E42D12A0 
-X-CRM114-Status: GOOD (  16.42  )
+X-CRM114-CacheID: sfid-20260515_052822_656715_756B17C8 
+X-CRM114-Status: GOOD (  33.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,71 +80,172 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jakub,
+Hi Uwe,
 
-thanks for your review, i have to discuss the previous parts (AI-review)
-with MTK on how to make it better. The changes there seem not trivial for
-me and this will take some time.
+Thank you for the patch.
 
-Am 14. Mai 2026 um 03:56 schrieb "Jakub Kicinski" <kuba@kernel.org>:
->=20
->=20On Sat, 9 May 2026 21:09:31 +0200 Frank Wunderlich wrote:
->=20
->=20>=20
->=20> From: Mason Chang <mason-cw.chang@mediatek.com>
-> >=20=20
->=20>  Add support for Receive Side Scaling.
-> >=20=20
->=20>  We can adjust SMP affinity with the following command:
-> >  echo [CPU bitmap num] > /proc/irq/[virtual IRQ ID]/smp_affinity,
-> >  with interrupts evenly assigned to 4 CPUs, we were able to measure
-> >  an RX throughput of 7.3Gbps using iperf3 on the MT7988. Further
-> >  optimizations will be carried out in the future.
-> >=20
->=20Would be great to split this up a little more for ease of review.
+On Fri, May 15, 2026 at 12:31:50PM +0200, Uwe Kleine-König (The Capable Hub) wrote:
+> While being less compact, using named initializers allows to more easily
+> see which members of the structs are assigned which value without having
+> to lookup the declaration of the struct. And it's also more robust
+> against changes to the struct definition.
+> 
+> The mentioned robustness is relevant for a planned change to struct
+> i2c_device_id that replaces .driver_data by an anonymous union.
+> 
+> While touching all these arrays, unify usage of whitespace and commas.
+> 
+> This patch doesn't modify the compiled arrays, only their representation
+> in source form benefits. The former was confirmed with x86 and arm64
+> builds.
+> 
+> Signed-off-by: Uwe Kleine-König (The Capable Hub) <u.kleine-koenig@baylibre.com>
+> ---
+> Hello,
+> 
+> the mentioned change to i2c_device_id is the following:
+> 
+> 	diff --git a/include/linux/mod_devicetable.h b/include/linux/mod_devicetable.h
+> 	index 23ff24080dfd..aebd3a5e90af 100644
+> 	--- a/include/linux/mod_devicetable.h
+> 	+++ b/include/linux/mod_devicetable.h
+> 	@@ -477,7 +477,11 @@ struct rpmsg_device_id {
+> 	 
+> 	 struct i2c_device_id {
+> 		char name[I2C_NAME_SIZE];
+> 	-	kernel_ulong_t driver_data;	/* Data private to the driver */
+> 	+	union {
+> 	+		/* Data private to the driver */
+> 	+		kernel_ulong_t driver_data;
+> 	+		const void *driver_data_ptr;
+> 	+	};
+> 	 };
+> 	 
+> 	 /* pci_epf */
+> 
+> and this requires that .driver_data is assigned via a named initializer
+> for static data. This requirement isn't a bad one because named
+> initializers are also much better readable than list initializers.
+> 
+> The union added to struct i2c_device_id enables further cleanups like:
+> 
+> 	diff --git a/drivers/regulator/ad5398.c b/drivers/regulator/ad5398.c
+> 	index 0123ca8157a8..dfb0b07500a7 100644
+> 	--- a/drivers/regulator/ad5398.c
+> 	+++ b/drivers/regulator/ad5398.c
+> 	@@ -207,8 +207,8 @@ struct ad5398_current_data_format {
+> 	 static const struct ad5398_current_data_format df_10_4_120 = {10, 4, 0, 120000};
+> 	 
+> 	 static const struct i2c_device_id ad5398_id[] = {
+> 	-	{ .name = "ad5398", .driver_data = (kernel_ulong_t)&df_10_4_120 },
+> 	-	{ .name = "ad5821", .driver_data = (kernel_ulong_t)&df_10_4_120 },
+> 	+	{ .name = "ad5398", .driver_data_ptr = &df_10_4_120 },
+> 	+	{ .name = "ad5821", .driver_data_ptr = &df_10_4_120 },
+> 		{ }
+> 	 };
+> 	 MODULE_DEVICE_TABLE(i2c, ad5398_id);
+> 	@@ -219,8 +219,7 @@ static int ad5398_probe(struct i2c_client *client)
+> 		struct regulator_init_data *init_data = dev_get_platdata(&client->dev);
+> 		struct regulator_config config = { };
+> 		struct ad5398_chip_info *chip;
+> 	-	const struct ad5398_current_data_format *df =
+> 	-			(struct ad5398_current_data_format *)id->driver_data;
+> 	+	const struct ad5398_current_data_format *df = id->driver_data;
+> 	 
+> 		chip = devm_kzalloc(&client->dev, sizeof(*chip), GFP_KERNEL);
+> 		if (!chip)
+> 
+> that are an improvement for readability (again!) and it keeps some
+> properties of the pointers (here: being const) without having to pay
+> attention for that.
+> 
+> My additional motivation for this effort is CHERI[1]. This is a hardware
+> extension that uses 128 bit pointers but unsigned long is still 64 bit.
+> So with CHERI you cannot store pointers in unsigned long variables.
+> 
+> Best regards
+> Uwe
+> 
+> [1] https://cheri-alliance.org/discover-cheri/
+>     https://lwn.net/Articles/1037974/
+> 
+>  drivers/regulator/88pg86x.c            |  4 +--
+>  drivers/regulator/ad5398.c             |  4 +--
+>  drivers/regulator/da9121-regulator.c   | 20 +++++++--------
+>  drivers/regulator/da9210-regulator.c   |  4 +--
+>  drivers/regulator/da9211-regulator.c   | 18 +++++++-------
+>  drivers/regulator/fan53880.c           |  4 +--
+>  drivers/regulator/isl9305.c            |  4 +--
+>  drivers/regulator/lp3971.c             |  2 +-
+>  drivers/regulator/lp3972.c             |  2 +-
+>  drivers/regulator/lp872x.c             | 34 +++++++++++++-------------
+>  drivers/regulator/lp8755.c             |  4 +--
+>  drivers/regulator/ltc3589.c            |  6 ++---
+>  drivers/regulator/ltc3676.c            |  2 +-
+>  drivers/regulator/max1586.c            |  2 +-
+>  drivers/regulator/max20086-regulator.c |  8 +++---
+>  drivers/regulator/max20411-regulator.c |  2 +-
+>  drivers/regulator/max77503-regulator.c |  2 +-
+>  drivers/regulator/max77675-regulator.c |  2 +-
+>  drivers/regulator/max77826-regulator.c |  2 +-
+>  drivers/regulator/max77838-regulator.c |  2 +-
+>  drivers/regulator/max77857-regulator.c |  8 +++---
+>  drivers/regulator/max8649.c            |  2 +-
+>  drivers/regulator/max8893.c            |  2 +-
+>  drivers/regulator/max8952.c            |  2 +-
+>  drivers/regulator/mcp16502.c           |  2 +-
+>  drivers/regulator/mp5416.c             |  6 ++---
+>  drivers/regulator/mp8859.c             |  4 +--
+>  drivers/regulator/mp886x.c             |  6 ++---
+>  drivers/regulator/mpq7920.c            |  4 +--
+>  drivers/regulator/mt6311-regulator.c   |  4 +--
+>  drivers/regulator/pf530x-regulator.c   |  8 +++---
+>  drivers/regulator/pf8x00-regulator.c   |  8 +++---
+>  drivers/regulator/pv88060-regulator.c  |  4 +--
+>  drivers/regulator/pv88080-regulator.c  |  8 +++---
+>  drivers/regulator/pv88090-regulator.c  |  4 +--
+>  drivers/regulator/slg51000-regulator.c |  4 +--
+>  drivers/regulator/sy8106a-regulator.c  |  2 +-
+>  drivers/regulator/sy8824x.c            |  8 +++---
+>  drivers/regulator/sy8827n.c            |  4 +--
+>  drivers/regulator/tps6286x-regulator.c | 10 ++++----
+>  drivers/regulator/tps6287x-regulator.c | 10 ++++----
+>  41 files changed, 119 insertions(+), 119 deletions(-)
 
-you mean splitting the code into more separate patches or the commit desc=
-ription?
+[snip]
 
-> >=20
->=20> +static int mtk_rss_init(struct mtk_eth *eth)
-> >  +{
-> >  + const struct mtk_soc_data *soc =3D eth->soc;
-> >  + const struct mtk_reg_map *reg_map =3D eth->soc->reg_map;
-> >  + struct mtk_rss_params *rss_params =3D &eth->rss_params;
-> >=20
->=20reverse xmas tree should be followed, please fix everywhere in this
-> submission=20
+> diff --git a/drivers/regulator/pf530x-regulator.c b/drivers/regulator/pf530x-regulator.c
+> index f789c4b6a499..e7b13d60106b 100644
+> --- a/drivers/regulator/pf530x-regulator.c
+> +++ b/drivers/regulator/pf530x-regulator.c
+> @@ -353,10 +353,10 @@ static const struct of_device_id pf530x_dt_ids[] = {
+>  MODULE_DEVICE_TABLE(of, pf530x_dt_ids);
+>  
+>  static const struct i2c_device_id pf530x_i2c_id[] = {
+> -	{ "pf5300", 0 },
+> -	{ "pf5301", 0 },
+> -	{ "pf5302", 0 },
+> -	{},
+> +	{ .name = "pf5300", .driver_data = 0 },
+> +	{ .name = "pf5301", .driver_data = 0 },
+> +	{ .name = "pf5302", .driver_data = 0 },
 
-will=20check again when we have the fixed flow (AI-review).
+I think you can drop driver_data here. It doesn't appear to be used by
+the driver.
 
-> >=20
->=20>  +/* struct mtk_rss_params - This is the structure holding paramete=
-rs
-> >  + * for the RSS ring
-> >  + * @hash_key The element is used to record the
-> >  + * secret key for the RSS ring
-> >  + * indirection_table The element is used to record the
-> >  + * indirection table for the RSS ring
-> >  + */
-> >=20
->=20Quite odd looking comment. Having the right side aligned like that
-> makes it header to correlate where doc for fields start.
-> And there's @ missing for indirection_table.
+I like the result overall. With this small issue addressed,
 
-dito
+Reviewed-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
 
-@Mason: have you found some time for looking into the AI suggestions?
-Maybe it is better discussing changes here if they match upstream
-requirements as i did only up-port the SDK-patches with some small
-changes and made tests :)
-As a note: i have not activated RSS/LRO on other mt798x because it was
-not clear, if RSS or LRO is better for them and only mt7988 can do both
-simultanously. AI also complained about it. And this decision causes
-changes in code too.
-It would be great if you can use the actual state here as base for
-changes so that i do not miss anything when upporting the SDK state again=
-.
+> +	{ }
+>  };
+>  MODULE_DEVICE_TABLE(i2c, pf530x_i2c_id);
+>  
 
-regards Frank
+[snip]
+
+-- 
+Regards,
+
+Laurent Pinchart
 
