@@ -4,63 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58C70CD4F25
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2026 16:29:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AADE2CD343F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2026 16:38:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4/pqeFovhnEaAcC48aGGoap37XtwdntZ8wRcgQhc/Ak=; b=V+tUiOeiZZdfAXF5MPx6q43OZ3
-	obH2RobprHfyqB5tTa+Sl5ndfRaFBf87js00AzTUlKJgLqkoYwnYNxidQ7LL2MGYwUAP2kjIF8SVe
-	1SPqesCdXTzEQ8xB/b9Cb7iBJHSKDsps+InOTz+MEqEKbHCHjdyunJS7vp5oGGf9qDYau9xVUSqw4
-	BAsuzuLtzbpLpvK6Xi3C5ciuh6zT29pwbSaf4HaYLbR8f8n5woeMXAgeBsgqFXUL+UXgfF8gBa8V7
-	yz8d6qvNfU14nHAU1py3DGiVrJAz3cw/K2rOf1cVGLYwL64RUU7YflAsFYRHeTIpwxqCROKYUX400
-	pNVCQxcA==;
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=9WZ/ovh3rFmX54flVF7CQGVCOoJoTUt+595pXKNpL+E=; b=i9cG0KzGutzccj
+	SdxsNzBDGXR3TLFi80UQeRnZAhYdsMDnCvPUHbKAugON3BIgZQtw2TcGISNwlMgfCJ2+3Lqnffut8
+	+l2kWcyTUuw4gjoal6SRUOXl/qc7E6aQL+t5scBThszipqjU41CXGQxvEoUYROTWp+hlRwGyk5s8f
+	Po+rWkC8NJnbsgrltC9vvb+oLHYZeB2/GpemlM8WcO5Nc+u5KEaEBU+f6paTxugiUD0yOW1Ovebid
+	kE5pLuVHf7Irjl9etxqdvtmqBdbuQs17sHck+GhCLAfJ+yQPOHfhGJNfevD+OWLgNFmsaqJ/PFEsv
+	C2aRZs0usfkGzTXLS9aA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNvPW-00000008rzM-0dTE;
-	Fri, 15 May 2026 16:29:14 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wNvY4-00000008t6C-1r0d;
+	Fri, 15 May 2026 16:38:04 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNvPT-00000008ryg-1x9n
+	id 1wNvY3-00000008t5s-2GQK
 	for linux-mediatek@lists.infradead.org;
-	Fri, 15 May 2026 16:29:12 +0000
+	Fri, 15 May 2026 16:38:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id BA34D440F4;
-	Fri, 15 May 2026 16:29:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 484EAC2BCB0;
-	Fri, 15 May 2026 16:29:10 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id B81D760098;
+	Fri, 15 May 2026 16:38:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4B703C2BCB0;
+	Fri, 15 May 2026 16:38:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778862550;
-	bh=H2dJS45yuccfLIX2GnQ84V5mty7Z2RwFGQ1Zo0DGIx8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=iwd3rteZho7H1aOOW3C8TM3pmk/F77ul+HYJiFT/5SYevKp6JJLpHnnCbNfI2Blwy
-	 UDsqbtnc6bvH2PNiiHeUkh2AHs3zFtfN+ViNkNLcCKuxFDUBdcMplP+xUZUpUEIuul
-	 cD13N1oI2Lhwy6AIWeS1jSk973jtJ9FtMACzCfXj9UPkBRF1RUWtE/SH0zGFUE6jhC
-	 YT/p7E/8P1jl9omIR1/y9+i/JOMVTQ3QlopvpnC3MXonNNNSLosfGvBefB215matPm
-	 uy8xULkbr1M+ahi+7XAxwuAIlYs4UkZ+sOgxDzFkgk/4vzOlBjmAFzVTb+ANy+h17/
-	 OAbW3V4EB9NsQ==
-Date: Fri, 15 May 2026 18:29:08 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>, linux-mediatek@lists.infradead.org,
-	linux-wireless@vger.kernel.org,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Roy Luo <roy-ch.luo@mediatek.com>
-Subject: Re: [PATCH] wifi: mt76: mt7996: avoid memset overwriting
- tx_info->control.flags
-Message-ID: <agdJ1EtZjjWh2R1h@lore-desk>
-References: <5ecac6a9b7d29526e8438dea105b58f5487c93aa.1778521232.git.ryder.lee@mediatek.com>
+	s=k20201202; t=1778863082;
+	bh=4LdAuosZ3gLl5ldnT6Wb/iOVobL7IjhwJIw+0NReLzw=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=EKUGFPeeXzM+hWW25sMm100kXslkLAjij398t8UroQn5KZ/+FMzZe+dyt4V8goWNO
+	 2CfgbHYliW47Ya5OZwlW7DCuumZYj7URS6bjx7OeSOb2vhdXt9ylPk2gGRXzgYI4Tv
+	 MECp1cbidiVSsRR2I4Y7nx/OnnGE9ValkQXzK1wJAGfek02ZTGkK3o7z0y9YIllWuB
+	 F5tmwZS7NJ/1IJ8K2pIDPAbpVCijJ4osK30quXhJKn4Co6VOBRzOua6kKpGEBgimAy
+	 eDlGWEdNm48NfO1INQ6ePFp+Fk1GRYXIVvjT+KnbjWjshv47giMR468NT07dugx2h2
+	 Qr5vCrbVKDHwQ==
+Date: Fri, 15 May 2026 11:38:01 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Hans Zhang <18255117159@163.com>
+Cc: bhelgaas@google.com, mani@kernel.org, ryder.lee@mediatek.com,
+	linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Jianjun Wang <jianjun.wang@mediatek.com>
+Subject: Re: [PATCH] MAINTAINERS: Remove invalid email for Jianjun Wang
+Message-ID: <20260515163801.GA496866@bhelgaas>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="NcgmQ1uTJOYhYVzG"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <5ecac6a9b7d29526e8438dea105b58f5487c93aa.1778521232.git.ryder.lee@mediatek.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260515_092911_547313_6C954C23 
-X-CRM114-Status: GOOD (  21.43  )
+In-Reply-To: <20260515153635.136054-1-18255117159@163.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,212 +69,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+[+cc Jianjun]
 
---NcgmQ1uTJOYhYVzG
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Fri, May 15, 2026 at 11:36:35PM +0800, Hans Zhang wrote:
+> Email to Jianjun Wang <jianjun.wang@mediatek.com> bounces with error:
+> "550 Relaying mail to jianjun.wang@mediatek.com is not allowed".
+> Remove the address to avoid sending future kernel maintenance queries
+> to an unreachable destination.
+> 
+> The MediaTek PCIe driver remains supported by Ryder Lee.
+> 
+> Signed-off-by: Hans Zhang <18255117159@163.com>
 
-> mt76_tx_status_skb_add uses memset on status.status_driver_data, which
-> overwrite  info->control.flags in ieee80211_tx_info. Copy tx_info before
-> calling mt76_tx_status_skb_add to ensure control fields are preserved
-> and remain valid for later processing.
->=20
-> Reported-By: Roy Luo <roy-ch.luo@mediatek.com>
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Applied to pci/for-linus for v7.1, thanks!
 
-Hi Ryder,
-
-I have not completely got the issue here:
-
-struct ieee80211_tx_info {
-        u32                        flags;                /*     0     4 */
-        u32                        band:3;               /*     4: 0  4 */
-        u32                        status_data_idr:1;    /*     4: 3  4 */
-        u32                        status_data:13;       /*     4: 4  4 */
-        u32                        hw_queue:4;           /*     4:17  4 */
-        u32                        tx_time_est:10;       /*     4:21  4 */
-
-        /* XXX 1 bit hole, try to pack */
-
-        union {
-                struct {
-                        union {
-                                struct {
-                                        struct ieee80211_tx_rate rates[4]; =
-/*     8    12 */
-                                        s8     rts_cts_rate_idx; /*    20  =
-   1 */
-                                        u8     use_rts:1; /*    21: 0  1 */
-                                        u8     use_cts_prot:1; /*    21: 1 =
- 1 */
-                                        u8     short_preamble:1; /*    21: =
-2  1 */
-                                        u8     skip_table:1; /*    21: 3  1=
- */
-                                        u8     antennas:2; /*    21: 4  1 */
-                                };                       /*     8    14 */
-                                long unsigned int jiffies; /*     8     8 */
-                        };                               /*     8    16 */
-                        struct ieee80211_vif * vif;      /*    24     8 */
-                        struct ieee80211_key_conf * hw_key; /*    32     8 =
-*/
-                        u32        flags;                /*    40     4 */
-                        codel_time_t enqueue_time;       /*    44     4 */
-                } control;                               /*     8    40 */
-                struct {
-                        u64        cookie;               /*     8     8 */
-                } ack;                                   /*     8     8 */
-                struct {
-                        struct ieee80211_tx_rate rates[4]; /*     8    12 */
-                        s32        ack_signal;           /*    20     4 */
-                        u8         ampdu_ack_len;        /*    24     1 */
-                        u8         ampdu_len;            /*    25     1 */
-                        u8         antenna;              /*    26     1 */
-                        u8         pad;                  /*    27     1 */
-                        u16        tx_time;              /*    28     2 */
-                        u8         flags;                /*    30     1 */
-                        u8         pad2;                 /*    31     1 */
-                        void *     status_driver_data[2]; /*    32    16 */
-                } status;                                /*     8    40 */
-                struct {
-                        struct ieee80211_tx_rate driver_rates[4]; /*     8 =
-   12 */
-                        u8         pad[4];               /*    20     4 */
-                        void *     rate_driver_data[3];  /*    24    24 */
-                };                                       /*     8    40 */
-                void *             driver_data[5];       /*     8    40 */
-        };                                               /*     8    40 */
-
-        /* size: 48, cachelines: 1, members: 7 */
-        /* sum members: 44 */
-        /* sum bitfield members: 31 bits, bit holes: 1, sum bit holes: 1 bi=
-ts */
-        /* last cacheline: 48 bytes */
-};
-
-According to pahole, the size of the control inner union is actually 16 byt=
-es
-since the compiler adds 2 bytes of padding. Since mt76_tx_status_skb_add()
-meset to 0 just mt76_tx_cb size (that is 16 bytes) I can't see how
-control.flags is overwritten. Am I missing something?
-
-struct mt76_tx_cb {
-        long unsigned int          jiffies;              /*     0     8 */
-        u16                        wcid;                 /*     8     2 */
-        u8                         pktid;                /*    10     1 */
-        u8                         flags;                /*    11     1 */
-
-        /* size: 16, cachelines: 1, members: 4 */
-        /* padding: 4 */
-        /* last cacheline: 16 bytes */
-};
-
-Regards,
-Lorenzo
+The most recent traffic I see from Jianjun in lore was from January
+2025.
 
 > ---
->  drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 17 +++++++++--------
->  .../net/wireless/mediatek/mt76/mt7996/mt7996.h  |  2 +-
->  2 files changed, 10 insertions(+), 9 deletions(-)
->=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7996/mac.c
-> index e2a83da3a09c..a59c14c8f2af 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-> @@ -855,11 +855,12 @@ mt7996_mac_write_txwi_80211(struct mt7996_dev *dev,=
- __le32 *txwi,
-> =20
->  void mt7996_mac_write_txwi(struct mt7996_dev *dev, __le32 *txwi,
->  			   struct sk_buff *skb, struct mt76_wcid *wcid,
-> -			   struct ieee80211_key_conf *key, int pid,
-> +			   struct ieee80211_tx_info *tx_info, int pid,
->  			   enum mt76_txq_id qid, u32 changed)
->  {
->  	struct ieee80211_hdr *hdr =3D (struct ieee80211_hdr *)skb->data;
-> -	struct ieee80211_tx_info *info =3D IEEE80211_SKB_CB(skb);
-> +	struct ieee80211_key_conf *key =3D tx_info ? tx_info->control.hw_key : =
-NULL;
-> +	struct ieee80211_tx_info *info =3D tx_info ? tx_info : IEEE80211_SKB_CB=
-(skb);
->  	struct ieee80211_vif *vif =3D info->control.vif;
->  	u8 band_idx =3D (info->hw_queue & MT_TX_HW_QUEUE_PHY) >> 2;
->  	u8 p_fmt, q_idx, omac_idx =3D 0, wmm_idx =3D 0;
-> @@ -1006,15 +1007,15 @@ int mt7996_tx_prepare_skb(struct mt76_dev *mdev, =
-void *txwi_ptr,
->  {
->  	struct ieee80211_hdr *hdr =3D (struct ieee80211_hdr *)tx_info->skb->dat=
-a;
->  	struct mt7996_dev *dev =3D container_of(mdev, struct mt7996_dev, mt76);
-> -	struct ieee80211_tx_info *info =3D IEEE80211_SKB_CB(tx_info->skb);
-> -	struct ieee80211_key_conf *key =3D info->control.hw_key;
-> -	struct ieee80211_vif *vif =3D info->control.vif;
-> +	struct ieee80211_tx_info info =3D *IEEE80211_SKB_CB(tx_info->skb);
-> +	struct ieee80211_key_conf *key =3D info.control.hw_key;
-> +	struct ieee80211_vif *vif =3D info.control.vif;
->  	struct mt7996_vif *mvif =3D vif ? (struct mt7996_vif *)vif->drv_priv : =
-NULL;
->  	struct mt7996_sta *msta =3D sta ? (struct mt7996_sta *)sta->drv_priv : =
-NULL;
->  	struct mt76_vif_link *mlink =3D NULL;
->  	struct mt76_txwi_cache *t;
->  	int id, i, pid, nbuf =3D tx_info->nbuf - 1;
-> -	bool is_8023 =3D info->flags & IEEE80211_TX_CTL_HW_80211_ENCAP;
-> +	bool is_8023 =3D info.flags & IEEE80211_TX_CTL_HW_80211_ENCAP;
->  	__le32 *ptr =3D (__le32 *)txwi_ptr;
->  	u8 *txwi =3D (u8 *)txwi_ptr;
->  	u8 link_id;
-> @@ -1031,7 +1032,7 @@ int mt7996_tx_prepare_skb(struct mt76_dev *mdev, vo=
-id *txwi_ptr,
-> =20
->  		link_id =3D (tid % 2) ? msta->seclink_id : msta->deflink_id;
->  	} else {
-> -		link_id =3D u32_get_bits(info->control.flags,
-> +		link_id =3D u32_get_bits(info.control.flags,
->  				       IEEE80211_TX_CTRL_MLO_LINK);
->  	}
-> =20
-> @@ -1095,7 +1096,7 @@ int mt7996_tx_prepare_skb(struct mt76_dev *mdev, vo=
-id *txwi_ptr,
->  	memset(txwi_ptr, 0, MT_TXD_SIZE);
->  	/* Transmit non qos data by 802.11 header and need to fill txd by host*/
->  	if (!is_8023 || pid >=3D MT_PACKET_ID_FIRST)
-> -		mt7996_mac_write_txwi(dev, txwi_ptr, tx_info->skb, wcid, key,
-> +		mt7996_mac_write_txwi(dev, txwi_ptr, tx_info->skb, wcid, &info,
->  				      pid, qid, 0);
-> =20
->  	/* MT7996 and MT7992 require driver to provide the MAC TXP for AddBA
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers=
-/net/wireless/mediatek/mt76/mt7996/mt7996.h
-> index bdcf72457954..319fcc4fb469 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-> @@ -854,7 +854,7 @@ void mt7996_mac_cca_stats_reset(struct mt7996_phy *ph=
-y);
->  void mt7996_mac_enable_nf(struct mt7996_dev *dev, u8 band);
->  void mt7996_mac_write_txwi(struct mt7996_dev *dev, __le32 *txwi,
->  			   struct sk_buff *skb, struct mt76_wcid *wcid,
-> -			   struct ieee80211_key_conf *key, int pid,
-> +			   struct ieee80211_tx_info *tx_info, int pid,
->  			   enum mt76_txq_id qid, u32 changed);
->  void mt7996_mac_update_beacons(struct mt7996_phy *phy);
->  void mt7996_mac_set_coverage_class(struct mt7996_phy *phy);
-> --=20
-> 2.45.2
->=20
->=20
-
---NcgmQ1uTJOYhYVzG
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCagdJ1AAKCRA6cBh0uS2t
-rFMMAP0VjNblyad/FBjgZnzBbhhUCJd4xORr3NXP+radz7N9sgD/S4OSSd3y7HTU
-FyEoGFraOOjdYDoJIkwjzf22J366Rw0=
-=MyVu
------END PGP SIGNATURE-----
-
---NcgmQ1uTJOYhYVzG--
+> Hi Bjorn and Mani,
+> 
+> Recently, when replying to emails in the Linux community, I kept
+> encountering that Jianjun Wang's emails were being returned. The
+> detailed information is as follows:
+> 
+> """
+> Dear user 18255117159@163.com:
+> Sorry to inform you that your email (send to jianjun.wang@mediatek.com) has been returned. The details are as follows: 
+> 
+>  ------- Original Mail Information -------
+> Time:2026-05-15 23:04:39
+> Subject:Re: [PATCH v2 6/8] PCI: aardvark: Add 100 ms delay after link training
+> To:jianjun.wang@mediatek.com
+> Relpy Code:
+> SMTP error, RCPT TO: Host mediatek.com(1.203.163.78) RCPT TO said 550 Relaying mail to jianjun.wang@mediatek.com is not allowed 
+> """
+> ---
+>  MAINTAINERS | 1 -
+>  1 file changed, 1 deletion(-)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 6aa3fe2ee1bb..b2609dc33c62 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -20745,7 +20745,6 @@ F:	drivers/pci/controller/dwc/pcie-intel-gw.c
+>  
+>  PCIE DRIVER FOR MEDIATEK
+>  M:	Ryder Lee <ryder.lee@mediatek.com>
+> -M:	Jianjun Wang <jianjun.wang@mediatek.com>
+>  L:	linux-pci@vger.kernel.org
+>  L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
+>  S:	Supported
+> -- 
+> 2.34.1
+> 
 
