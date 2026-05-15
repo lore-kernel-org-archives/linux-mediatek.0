@@ -4,109 +4,196 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B536CD4851
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2026 09:16:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44C73CD4851
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2026 10:19:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GOPcS/H8/U6wPcyzeNn2Tnxkz+5P1nEugos5oRv4JHk=; b=D86QPAw6XK9ugOejBgLwjuoTQ1
-	5R//y58fnAiKg2xcp8ldPTlBbLlOAunHhIGFI50bELBIA+Ls6DEwNF+QAogN9GEcLOmjPSnSGL6+A
-	tZ2ewifgRvxzKu7wX0nOUmoTm26wWDsvs1Y8syxpJx51/zBDAwfaZiGxkT7IiQ/LPXBsGjsFXG7vw
-	DpwQztjEv5ing4jhni2jJDQMDhyApwAMFzZn/xly15b6cAZwhccTNK6DUuoCTYFCutYfybRp78zid
-	MYTTKm8FIw9uTZnBsBPlSnzcSjU8hhbQLEqJc466Nk5/MWu5YoJ//8fOj1vQxvBva4DgFITMqyRfM
-	AN4V0xbg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ktnoy4EiBafipnGFaL3Uq/0JMnz43wWgrtsXIMNdV5o=; b=1AVCTKHWi6F14hIuOXnE+JTxT6
+	/XJwtstqYpsNhSTwbH6Coa4ZK/XcbQLgYvHJdfg/eufbWSF1wYe9iVSOgNZV0y/t1lNbtMPQP8FYE
+	IyqKkWKNT2A5WMYSNSogZUZCkz1Ux5rM4Pell6m4lEbjG6zZT7kV4JtwV2lECh7a0QN5p1VYq63b7
+	g9hk0jopS6JsF+xYE0MZwWWj1uelGpEF6UUvqm+Qdr1q/IGwTz1U8wHf0deq+gQJbL4+NUZlZxXTp
+	3vuWk7X7SNBL1SUwVYJWhztsNhTgddUgeBDoLN/6zs1eYWDdgTbcO9j453UiJEhFiVcv5WMvXYmeW
+	HelcgQvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNoeq-00000007rT0-0Ose;
-	Fri, 15 May 2026 09:16:36 +0000
-Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
+	id 1wNpdU-0000000811X-173y;
+	Fri, 15 May 2026 10:19:16 +0000
+Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNoen-00000007rSK-0iCm
-	for linux-mediatek@lists.infradead.org;
-	Fri, 15 May 2026 09:16:34 +0000
-Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-5a995ab70d1so2301409e87.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 15 May 2026 02:16:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1778836591; cv=none;
-        d=google.com; s=arc-20240605;
-        b=UtVubKuNndZ3ckGozHbCPhTdBhllvhmN0PlBb30ahKNR2G4/yPHFPaZ7ixSuirVJbp
-         Wp3WqUwPQEcE02O12dwuKVDIDzusP4mX5ie9h8uyXLtdHZGqSsjxWv36nfEhBT0VV975
-         BgQ7xQK75/5I/rrdoZiZ9Yz+t7qRIbMBykCQhVNu1tklqtzcehMOC0SZRa7LJd+bFjb3
-         P0CrWqt7Yt7GkYYx/HZoLxI0E+OFDmrry6W734VxP1uwb6XNovs92kHxN0vytvIrblVL
-         z3hFW7Vcj3dIv2lUKiSSQYXFlFG+XFyJm5QPilozS//EBmgXnPDDKHfM+TMal6AZtVAl
-         WwOQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=GOPcS/H8/U6wPcyzeNn2Tnxkz+5P1nEugos5oRv4JHk=;
-        fh=kTkHy/HvwotXSBm1s6NBtVVjuqW48MIj/JP3lzm7Kz0=;
-        b=bWHZKRsoFyVBClP0lxW46RCuED/FXtiW6d2GUZ3W6W9cpnovsrw+9Hmifz/mHe0g0a
-         Csh1gu4mX5qIXle4HYRyDT7RK6dQdsGjY+Zn79E3aJHCbpwOvf6emlIgpFwmKdAOh4g6
-         Uk8glsZ/r+uGXtw4WmP6gmfVtdY7NUOAQr4KFyCPcsX7omkjh+SzzQd+MrQe76S+0F6h
-         Nnb+Wbyb7KYrK/YP7GkOJbT+2wXbPfbZenKo087z6dS1rQp/cdQJIPCTVQHm/HAruzEE
-         SnUCx4shCa84EltakIrDHR/c9F7IS3o1pzUJTVR2nYaPT3kjFcFG40QjoaSoUOE774Si
-         QISg==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	id 1wNpdQ-0000000810z-3J9Z;
+	Fri, 15 May 2026 10:19:14 +0000
+Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
+	by mx0b-001ae601.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 64F4MvGk3863696;
+	Fri, 15 May 2026 05:18:19 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=
+	PODMain02222019; bh=ktnoy4EiBafipnGFaL3Uq/0JMnz43wWgrtsXIMNdV5o=; b=
+	Tnjz8y4cV9aVzKgEjAUOU6hC8hw24UNsDChvJpC4GOEyyGCUxWHisHvHc2XHajKV
+	cKpa1UY649Bn6hBIed3dedqFpvTqpiHiJieRXr6fj1KAHzGTLeg+kmgcvtFsWwX1
+	Z0xH4mpXqN09BLAeypszg7Obk3tqSie7DVRr6anLHOo63JUL97RiOuc+dVARMnnw
+	9nIWx23pnzYgt9zrn4nnq7P3XDReH1XlZ7D0h5yhL2Z0oszY1BE0A+cNUBoMp6F4
+	y8Oh3UkLjpfeEPsydxbyFkXg/iQYDbASt/Dmx+eDiXwV1YaSFYrWOnyba0uAywyU
+	ixxcRS+DQ41bIPf9xFFcog==
+Received: from sn4pr0501cu005.outbound.protection.outlook.com (mail-southcentralusazon11021088.outbound.protection.outlook.com [40.93.194.88])
+	by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 4e5m2krst1-1
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+	Fri, 15 May 2026 05:18:18 -0500 (CDT)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=fElagapotH9N43X4eake8F/AmLQnFOp3BNTnnW4bJwHUheiUXgD6NcLWn9HmhAl3mKJwAcp1nNEBd1wijbVtzasprNhIkSg0352HSc4nKggYDigEOmFTXanjiyQyeCkcy5jkXezijBW1szbwVnbRuwUh1isAl6m01km5Kp7/P4BGDgnbgetPslill00uJUO5adRmedr+na6u6Lq3BZFw5QskokKuXDPVrz/oRjV8NmOSejyDuY+SaxGbHBAN9twlC0OCj1FS4TiFP6Rxj6e5rFhVzGn50RD2UKVcPGjfRIzqEdLHDw3bCICOtT3V1N4XtCVrU3Q3O1TSdemyQWvuvg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=aBKnmMyrqF98BRIoYOZ//t8NEy9KJMvZcc5Q7W4hWts=;
+ b=oD+Qjai/0Xqf8TJUCJVxs/5yp0qzQ4N9FiHjr73YQxM4hXtsT3gIi+jlyYebHBdaidNcKYMv5NiCN59g6H7lQwxNkLF/H2B+CWEvozbrezlgWf/VXPcBkfN9IUun4VdWJgp5eAYD672EkAyd7mmESmSK/GKpeZ9g0sJOAdmeyyzFLQ48ITsHFSUWakRpvoumd4gcqBJH/rDLqHrHutiLgOPwM+rTTerRUi6XJqAHPsDKVYlM9B3trcDFLXHN8D7bRhBpUd4i3OgSlTkQuQMJsJ5gxQwDmDxLCQNmme2JuCT82WMhu+UUWwKJp0jJZ1/uTghNlm0o7PJODhyiq7+c2g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=softfail (sender ip
+ is 84.19.233.75) smtp.rcpttodomain=analog.com
+ smtp.mailfrom=opensource.cirrus.com; dmarc=fail (p=reject sp=reject pct=100)
+ action=oreject header.from=opensource.cirrus.com; dkim=none (message not
+ signed); arc=none (0)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1778836591; x=1779441391; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=GOPcS/H8/U6wPcyzeNn2Tnxkz+5P1nEugos5oRv4JHk=;
-        b=CE/GaW4dcVoBDusQWrnk+5pb75x0CTrCTQAxYa6pxIzBZM4E6/oqCAaew7zKuWn9Bo
-         mrfehiNoWMMQyWRxSuliCtKpLSKvmhcTAvJO7Rx2NySR8nEy0CL02qSA1lGQJM4vPB8r
-         VJlKB2GwZhCtauoAWlu9cn7FrWAUNByDG9wE4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1778836591; x=1779441391;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=GOPcS/H8/U6wPcyzeNn2Tnxkz+5P1nEugos5oRv4JHk=;
-        b=ctvPkBrxnldmcCz97pQsAvmokw7xkZU8iJ/+B7fPYoauNeGFzPdb08aCFFdcBIyzcH
-         D4iRv7gv7fH0EbxbN1BxwU9g2zoNhTpU2PipIo4+8bs7IObHdnOZgMjFuGQicXero5gf
-         6S9USFupE1uUrvK88dSnZ29AFmhvkmLHffTyvE1OVEq9/EBWH4SDvfQlvXFV+Nbft4Ec
-         bPaQIZDTOs1ZPi36jECbokcGG5xPnfMfr4M9awpahnpHN8cZfVTutBP9bO2LPheyfxgV
-         a+3UJFBz9/R1v26OwvFKdGIosUmhf82kNT1HT9JKVjtgfL2Shesvedv4URFKaA7xGw6V
-         wy+A==
-X-Forwarded-Encrypted: i=1; AFNElJ+Ecmsipj4PyPnNXjcaL5fkHryh59jIQdj+O35YjAzFNZzzlAkApK9JPUHtcWiTk86ZvEJfit9jlcTC83617A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzuSfjwB5PVP7wC7ezkCj31riJopkH0Hjm3olOyRCvGTlzPlSgF
-	J0+Ylms31IF3flnbsFViXJJezw8Q3HTwqbIP6Ne9MN6Y45SdDb0SRK1XoG2trthc9O/QcTpqPsp
-	K5I6my6OJIA5h6u4tzH2jf+1h5UdZSoluGlhBAUZ7
-X-Gm-Gg: Acq92OGNinUYwKvmPDrm5XUljmTkLfChFsQLt54wJA3qiEMC32Riki/cSHQNYdxOynU
-	owYdpZWRGWAxHeYDR1ODOlgPH2m0Bntbfmwr/VUV8nX4h2v+nClN9Ps536f4Zwt0KgHB5JyVbla
-	y4j48ucZf3Hb9CJxrg3u3qHcM4igIt/rJn/1CSqWUYBXRePJpQQVq8g53j7yU8pmr2EDC/gveAd
-	nDKEL4sw/cDwQe5zE9uGiRP62G2/yHABI7dHDBsfpWSfrn5arB7C4cVyxtmSKTvgow5mrc8X9MT
-	t2y1Y9hEHPup0l2uJjbeJ6Gyn5RTnP7EfKBGeA==
-X-Received: by 2002:a05:6512:3a87:b0:5a8:9d61:d89b with SMTP id
- 2adb3069b0e04-5aa0e74cb3dmr743386e87.37.1778836591069; Fri, 15 May 2026
- 02:16:31 -0700 (PDT)
+ d=cirrus4.onmicrosoft.com; s=selector2-cirrus4-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=aBKnmMyrqF98BRIoYOZ//t8NEy9KJMvZcc5Q7W4hWts=;
+ b=wzv3ZRvyzPlMJW5rvqPwbOjhiNZAR5vgsAFCwN+WSGE717ZOkZ9rVDRRV05ygWWBFk6rrFGZKKYDn3dBCSOyYHQ5UVOQK1toMhulvDoUzhLwL2CXDVNSZoGMb6CguOcJjwESkNYsM/sXNF7AbOKKq4v735EZOFmro3An1Vhnvv0=
+Received: from MW4PR03CA0134.namprd03.prod.outlook.com (2603:10b6:303:8c::19)
+ by SA0PR19MB4320.namprd19.prod.outlook.com (2603:10b6:806:81::22) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9913.12; Fri, 15 May
+ 2026 10:18:12 +0000
+Received: from SJ5PEPF000001F6.namprd05.prod.outlook.com
+ (2603:10b6:303:8c:cafe::5a) by MW4PR03CA0134.outlook.office365.com
+ (2603:10b6:303:8c::19) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9913.12 via Frontend Transport; Fri,
+ 15 May 2026 10:18:12 +0000
+X-MS-Exchange-Authentication-Results: spf=softfail (sender IP is 84.19.233.75)
+ smtp.mailfrom=opensource.cirrus.com; dkim=none (message not signed)
+ header.d=none;dmarc=fail action=oreject header.from=opensource.cirrus.com;
+Received-SPF: SoftFail (protection.outlook.com: domain of transitioning
+ opensource.cirrus.com discourages use of 84.19.233.75 as permitted sender)
+Received: from edirelay1.ad.cirrus.com (84.19.233.75) by
+ SJ5PEPF000001F6.mail.protection.outlook.com (10.167.242.74) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.21.25.13
+ via Frontend Transport; Fri, 15 May 2026 10:18:11 +0000
+Received: from ediswmail9.ad.cirrus.com (ediswmail9.ad.cirrus.com [198.61.86.93])
+	by edirelay1.ad.cirrus.com (Postfix) with ESMTPS id 6356A406540;
+	Fri, 15 May 2026 10:18:10 +0000 (UTC)
+Received: from opensource.cirrus.com (ediswmail9.ad.cirrus.com [198.61.86.93])
+	by ediswmail9.ad.cirrus.com (Postfix) with ESMTPSA id 49704820244;
+	Fri, 15 May 2026 10:18:10 +0000 (UTC)
+Date: Fri, 15 May 2026 11:18:09 +0100
+From: Charles Keepax <ckeepax@opensource.cirrus.com>
+To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+        David Rhodes <david.rhodes@cirrus.com>,
+        Richard Fitzgerald <rf@opensource.cirrus.com>,
+        Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+        Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
+        Baojun Xu <baojun.xu@ti.com>, Lars-Peter Clausen <lars@metafoo.de>,
+        Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
+        Martin =?utf-8?Q?Povi=C5=A1er?= <povik+lin@cutebit.org>,
+        Support Opensource <support.opensource@diasemi.com>,
+        Nick Li <nick.li@foursemi.com>,
+        M R Swami Reddy <mr.swami.reddy@ti.com>,
+        Vishwas A Deshpande <vishwas.a.deshpande@ti.com>,
+        Peter Rosin <peda@axentia.se>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Oder Chiou <oder_chiou@realtek.com>,
+        Fabio Estevam <festevam@gmail.com>,
+        Kiseok Jo <kiseok.jo@irondevice.com>,
+        Kevin Cernekee <cernekee@chromium.org>,
+        Steven Eckhoff <steven.eckhoff.opensource@gmail.com>,
+        Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+        Thorsten Blum <thorsten.blum@linux.dev>,
+        Chris Morgan <macromorgan@hotmail.com>,
+        Dan Carpenter <dan.carpenter@linaro.org>,
+        Marco Crivellari <marco.crivellari@suse.com>,
+        Weidong Wang <wangweidong.a@awinic.com>,
+        Aaron Kling <webgeek1234@gmail.com>, Teguh Sobirin <teguh@sobir.in>,
+        Luca Weiss <luca.weiss@fairphone.com>,
+        Bharadwaj Raju <bharadwaj.raju@machinesoul.in>,
+        Hsieh Hung-En <hungen3108@gmail.com>,
+        Binbin Zhou <zhoubinbin@loongson.cn>,
+        Shimrra Shai <shimrrashai@gmail.com>,
+        Zhang Yi <zhangyi@everest-semi.com>,
+        Krzysztof Kozlowski <krzk@kernel.org>,
+        Srinivas Kandagatla <srinivas.kandagatla@oss.qualcomm.com>,
+        Qasim Ijaz <qasdev00@gmail.com>,
+        Sharique Mohammad <sharq0406@gmail.com>, Chen Ni <nichen@iscas.ac.cn>,
+        Neo Chang <YLCHANG2@nuvoton.com>,
+        Cezary Rojewski <cezary.rojewski@intel.com>,
+        Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+        Kees Cook <kees@kernel.org>, Qianfeng Rong <rongqianfeng@vivo.com>,
+        Tim Bird <tim.bird@sony.com>,
+        Bram Vlerick <bram.vlerick@openpixelsystems.org>,
+        Peter Korsgaard <peter@korsgaard.com>,
+        Linus Walleij <linusw@kernel.org>, Wenyuan Li <2063309626@qq.com>,
+        Bartosz Golaszewski <brgl@kernel.org>,
+        Shengjiu Wang <shengjiu.wang@nxp.com>,
+        Sebastian Krzyszkowiak <sebastian.krzyszkowiak@puri.sm>,
+        Xichao Zhao <zhao.xichao@vivo.com>, linux-sound@vger.kernel.org,
+        patches@opensource.cirrus.com, linux-kernel@vger.kernel.org,
+        asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org,
+        Markus Schneider-Pargmann <msp@baylibre.com>
+Subject: Re: [PATCH v1 2/2] ASoC: Use named initializers for arrays of
+ i2c_device_data
+Message-ID: <agby4VvKu2XSS2FB@opensource.cirrus.com>
+References: <cover.1778692164.git.u.kleine-koenig@baylibre.com>
+ <ae2ff4898eb340bd8bcafb7b75443eb4a0ce3e76.1778692164.git.u.kleine-koenig@baylibre.com>
 MIME-Version: 1.0
-References: <20260508063633.3894348-1-wenst@chromium.org> <locoul5wdzuvvmm7mqpuntjqu4o75gmyd5npgfqrw3zuwsrse6@dhrjggs4cihh>
- <CAGXv+5GAaMQbaoUVr5zcwtHaofyXwHz03TxBe-QyWj_sNoQZsg@mail.gmail.com> <qnikqcqoiw7z2yh5wruqcli3rk56yomyymghzivlcmekp2blwc@dfhsfl3sqcla>
-In-Reply-To: <qnikqcqoiw7z2yh5wruqcli3rk56yomyymghzivlcmekp2blwc@dfhsfl3sqcla>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 15 May 2026 17:16:19 +0800
-X-Gm-Features: AVHnY4IdOj2VyhMXhY8fbMZzGCWoX3mgZBp9t_yv23cB0YsfCPC7Ce9B5m4dook
-Message-ID: <CAGXv+5GBraoTrQatQdrM5b+dOteL_Y5K7_UQBUt-2L1x=c94KA@mail.gmail.com>
-Subject: Re: [PATCH] dt-bindings: PCI: mediatek-gen3: Allow memory-region for
- restricted DMA buffer
-To: Manivannan Sadhasivam <mani@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Ryder Lee <ryder.lee@mediatek.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
-	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <ae2ff4898eb340bd8bcafb7b75443eb4a0ce3e76.1778692164.git.u.kleine-koenig@baylibre.com>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SJ5PEPF000001F6:EE_|SA0PR19MB4320:EE_
+X-MS-Office365-Filtering-Correlation-Id: 3fd440a6-eab8-4c8a-8e91-08deb26b44e7
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|61400799027|82310400026|7416014|376014|36860700016|32650700020|4143699003|16102099003|22082099003|18002099003|56012099003|11063799003;
+X-Microsoft-Antispam-Message-Info: p3xP2x/EUMc4D/PEt7zCm0KNkzzx6ZsawxH/5MSnxjodIvRTkdlb9ZDYSMnsgmRJahIa5YwneggBggR0c8rtRM2Ff3PqxqPlp7U++vVHlPnwvu/YUtZ4Zo3yO+VxucKZgfuY/UoKdYIYeh/kCugJ2y44I2oXf2mTA8tXDWknFeP8fECDdGkskHk9pw5FxoCzJf7P7xZCQhLbFmp/0t/DssAbyaCkgqAO2VpOU/8euZjQZp3T0woTOQDfnlhC3gP35j/rmc1ZZjULQ5/bkQZxDKzfV5T0BgnPpMTogEMMifC8hxHpn9TFYFqixuDSeSZ+hs84qsSV/3G+5VoGMnqhMHJnOKMRZ956FbTQ2zwlLbeGgEtroOLM29qcdlHxrXmjsuBy4L85INQsiYJzAiiMLYlBj6i9jscY2eETueNJRxa0qXVVv3kNsq3H32RSM4JiRRM28go/G1GxVIdT2QQ+kzYsHcGOFR5D7T3c3UPdbiV/bkO93fAcHixeB7wbQfPv9TvzzWNkR8zRDlvhlDyt9DDsmzSPho9eY1huP2uEoGfE4et3lKMrYKAifhGyoypqjquzLC8xqiq8sjdCdrZyvKoA6aAfxku+FLqeSu7wo86S3jNsBK7O+EqrexVCZfDg/9IWnVcyb9Td02Eev13rYJemT/KkBBNJbmTpXdP/y5A6CYknbLMDBwIA5xzF2DMWK2W+vnkL5ucce+1jUYB/hkakJgv5EUU+9R2DK+NX/7Q=
+X-Forefront-Antispam-Report: CIP:84.19.233.75;CTRY:GB;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:edirelay1.ad.cirrus.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(61400799027)(82310400026)(7416014)(376014)(36860700016)(32650700020)(4143699003)(16102099003)(22082099003)(18002099003)(56012099003)(11063799003);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: DtkTK9cSfxwtoealsW+hxhwdH6uwQBEGVU07Vvws2iO+JCcA1FLJ81eUYoZd7qjSTZ6RN13ALjSaAp9OuFhe0qTvx5y6wRGjeALk/kz2RXjyirGcYPhG4bKE3QIWdZMK+qXnRYE4tVCvR/3y7UJhRXKe45UEIDSYg2M0wnDyVjDAcFO8z4XjRGtQJoQaYVe1S4+LQB5dzV/zhKWK2WwmOKdq0bS0PQAbLfS6P99BxRsOx8YpASHQL7pe0KfGQxeGUu5MaxPCu4GUSBddzTBnlFDq8M6+V5/8Vzqe0DXGUlIQ4jAS99kPPuanzVnBkzwj2s8kUtv5Yhj334jWu5ZIqHtOC6u6QrT3XXHmzyQ+J4dBQCvCV1z+PN61SLODH8Qw+rLLbKDjSb28lAtTniCqwtzZWYL3ZnR3sqMgvQuSugNY33t+HYPGX9mOdyxxuBNT
+X-Exchange-RoutingPolicyChecked: Ppk/7iR5hnTw/HqKRtZsFmoRwChZel+Mr9di/6lFhHYT3ZlLEFF6i0kEtDP7o6PqYCvejptUNL1fHGks8N8R5nbd/pr7g2SzepzRgcSudWGNo0+y8xZSJ6cD1+QfRde78MLh76VAyuTRF0cj75PpSh6ekvN2CzrZFVMnB8HyJvq/HNKCPJmnojbnkC/S6ohayWf8eWz1N3Ma6uROPt7GG9xY+bawbOW661W7S1s82N+DXBN6c/VjVXXv7rFkkTaq1mYIgJzAVIa9IaYNNEKejt9hk8p5wBwgKHc+Fi/Yt7B3xNAA5GJdlBtdRgWeWPBd6t7wwf1TFWAu8VHcEi0RzA==
+X-OriginatorOrg: opensource.cirrus.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 May 2026 10:18:11.7512
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3fd440a6-eab8-4c8a-8e91-08deb26b44e7
+X-MS-Exchange-CrossTenant-Id: bec09025-e5bc-40d1-a355-8e955c307de8
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=bec09025-e5bc-40d1-a355-8e955c307de8;Ip=[84.19.233.75];Helo=[edirelay1.ad.cirrus.com]
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TreatMessagesAsInternal-SJ5PEPF000001F6.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR19MB4320
+X-Proofpoint-ORIG-GUID: VFQxl3XQhrDgTlDijADyfXN7NcQWoaHp
+X-Authority-Analysis: v=2.4 cv=KOdqylFo c=1 sm=1 tr=0 ts=6a06f2ea cx=c_pps
+ a=msPUCbsZKHGyBhhyaqynTw==:117 a=h1hSm8JtM9GN1ddwPAif2w==:17
+ a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19 a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19
+ a=8nJEP1OIZ-IA:10 a=NGcC8JguVDcA:10 a=s63m1ICgrNkA:10 a=RWc_ulEos4gA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=iX4cTi3TZMoOKdANLEfx:22 a=KfkQE9S9VqCBgivYGm0O:22
+ a=IpJZQVW2AAAA:8 a=w1d2syhTAAAA:8 a=-W4hE_00JRDff0mwMXEA:9 a=3ZKOabzyN94A:10
+ a=wPNLvfGTeEIA:10 a=IawgGOuG5U0WyFbmm1f5:22
+X-Proofpoint-GUID: VFQxl3XQhrDgTlDijADyfXN7NcQWoaHp
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTE1MDEwNCBTYWx0ZWRfX7M5wfFoq2nQA
+ cbiTA+omXBbo98COsEV6xPol5AYm8peDmxFroGWLev+h9djqsqxYyZFoEEQq48Vwv/iFriLpwTz
+ X8HiHgJWX2PunzeezkqqCuYBo6ON2U+Dcu/FnWH2ZTK0j5CZG4Yc0lLXR1kcNGnO4dBaLtBXOBr
+ w2ZvfRLErVhI+Z9D8AZV58y8O4+Gc/EJX3P7h0uU9hNmfK/UgK/Im0SMfjcUSPQmb1Qbs80yXx4
+ J5U0uY2gmt+x66Sc590gpMptWOzqbboYiNLTO0g2H+cyuAucDX+9M0JdAQN2TxF2bovoerEtOZT
+ LwavDpDE1CIsqg5MQwP6VTd/Re0JkdTOiROzX1X5gj4Wwb4lAgbTyEBmplZ+hxZaTEj0UAqoCke
+ PEDyRPjT2rJJHWykaBgzCfe6fT0BgiEOm6E3TDC0TwWpUh1ff0vFYNhKH8SFbLXhdk2XTp44b8D
+ TDFjyBAttTWktwjH0Rw==
+X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260515_021633_255234_80E5CEA1 
-X-CRM114-Status: GOOD (  19.72  )
+X-CRM114-CacheID: sfid-20260515_031912_970208_899A6A14 
+X-CRM114-Status: GOOD (  14.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,45 +208,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 14, 2026 at 7:48=E2=80=AFPM Manivannan Sadhasivam <mani@kernel.=
-org> wrote:
->
-> On Thu, May 14, 2026 at 03:54:29PM +0800, Chen-Yu Tsai wrote:
-> > On Thu, May 14, 2026 at 1:23=E2=80=AFPM Manivannan Sadhasivam <mani@ker=
-nel.org> wrote:
-> > >
-> > > On Fri, May 08, 2026 at 02:36:32PM +0800, Chen-Yu Tsai wrote:
-> > > > On some SoCs without an IOMMU behind the PCIe controller, the PCIe
-> > > > controller memory access could be limited to a small region by the
-> > > > firmware configuring a memory protection unit. This memory region
-> > > > must be assigned to the PCIe controller so that the OS knows to
-> > > > use that region. Otherwise PCIe devices would not work properly.
-> > > >
-> > >
-> > > So this means, the PCIe devices can only access a specific carveout m=
-emory
-> > > configured by MPU for DMA? If so, you should use 'dma-ranges' as sugg=
-ested by
-> > > Rob.
-> > >
-> > > 'memory-region' also serves the purpose, but for PCI, we have the ded=
-icated
-> > > 'dma-ranges' property.
-> >
-> > I think I need some sort of guide on writing the 'dma-ranges' property,
-> > because it is not working for me.
-> >
-> > I'm adding
-> >
-> >     dma-ranges =3D <0x42000000 0 0x00000000 0 0xc0000000 0 0x4000000>;
-> >
->
-> So the device DMA address start from 0x0? Isn't it a 1:1 mapping?
+On Wed, May 13, 2026 at 07:23:04PM +0200, Uwe Kleine-König (The Capable Hub) wrote:
+> While being less compact, using named initializers allows to more easily
+> see which members of the structs are assigned which value without having
+> to lookup the declaration of the struct. And it's also more robust
+> against changes to the struct definition.
+> 
+> The mentioned robustness is relevant for a planned change to struct
+> i2c_device_id that replaces .driver_data by an anonymous union.
+> 
+> While touching all these arrays, unify indention and usage of commas.
+> 
+> This patch doesn't modify the compiled arrays, only their representation
+> in source form benefits. The former was confirmed with x86 and arm64
+> builds.
+> 
+> Signed-off-by: Uwe Kleine-König (The Capable Hub) <u.kleine-koenig@baylibre.com>
+> ---
 
-I actually don't know. But
+For the Wolfson/Cirrus bits:
 
->         dma-ranges =3D <0x42000000 0 0xc0000000 0 0xc0000000 0 0x4000000>=
-;
+Reviewed-by: Charles Keepax <ckeepax@opensource.cirrus.com>
 
-this didn't work either.
+Thanks,
+Charles
 
