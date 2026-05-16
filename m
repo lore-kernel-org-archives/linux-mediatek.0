@@ -4,70 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F344CD4851
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2026 04:12:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E752CD4F21
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2026 05:57:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=loRGoAybQ78l+1/SdmY5YM4W68BXV3n4x/p7MYAPFgI=; b=YAfARYZyOSDBLM1YSmHCG7tfqH
-	nNW+AiYBbdP3kKUn9VJ/jcmSObn5/xEHTUwh6GKdwfg6o5QA+Hjkjm3TtCkkg+ofmxONPds4sIOeL
-	VL+YodUa2jFewKgIyXGT6PuseWIIF86plj8heRgHBAL42iRvw8x8OXZlBi5HmnV8QY76lLyDhJ89c
-	wOnpfgLFBTXXb5zK4th7V5ub/lIwioMEozf9Jl9nt4SuidQWSTvX0cK3o5y9luUSMno12jW5/iqCo
-	jScFaIlIFdUh3suv7xNWvQ/xOjEe2QJL8zAKnW0oJTCS4slAq2k26d5MDfE8HoBs151kMqxkZsHXO
-	ikkVEQZg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=PzP+icdRk9d5QTcv9vFAW1/hjEaGIuClWltPKk5q5I0=; b=qva4W5tbGG4wSs
+	HiB8b7ek5SQQOv8LqHUBOusVyj+Wk6R84OLZVjN6iqefvHqxINVNdkSCBhONeoq03m6vDTfE4Mww+
+	pHwAJamteGuv0viK71zT0Q3RReoq6B7+WBaVI+GEejgmk2uiNmR8Yv8mznlRuT4+4eVMkVkmXh8dj
+	wkKRXb1VdXNEe1sQXngRm7LhC5SiMI1vQ/f/S+B5IscGjIhXv3wqiq0fbY9B/VFq08/0+IlBwPF2w
+	kmbfHBZA3QKIvI/9MuJlI11CHbbXtHlab4mYQtHEt26FabRW2jLsrcyUMdspY2n+aFyIwXBzltak6
+	Fsm5900ztoHAGvGrpKKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wO6O2-0000000A53h-3MN8;
-	Sat, 16 May 2026 04:12:26 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wO81k-0000000ADLM-08In;
+	Sat, 16 May 2026 05:57:32 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wO6O0-0000000A53K-3fcI;
-	Sat, 16 May 2026 04:12:24 +0000
+	id 1wO81h-0000000ADKD-1WU9;
+	Sat, 16 May 2026 05:57:30 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 04F6860142;
-	Sat, 16 May 2026 04:12:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B45DFC19425;
-	Sat, 16 May 2026 04:12:21 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 8F85142A73;
+	Sat, 16 May 2026 05:57:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EBBDFC19425;
+	Sat, 16 May 2026 05:57:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778904743;
-	bh=krf0ubK+QUrCPT2ffiJuNibxSiI0Pko+MJw8mKNdMBQ=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=d2tsNmk39s1aRPHSiwXRBqiFxuEGDGikEhdXdKyL4zrBZc1py301r0yuBplr5hhKg
-	 LEp70q6JTbjY8p5MOU0uflB28uFF5X26MBBV2h/O8Iho/Rykc4KF5da3GEeg8Pdero
-	 r7+PpVf49HMkxVAFS1Vhs/5h0CkQXXgAnVtTMOMUN/NP4RxlwnAbkNOvVfHnVulfDp
-	 HVBEnV6lb7YpV8W3YmLGcAgkhxR9oypedHTI4cMnuxyDQDWBy8Zw4nxyVgWVg8PrfQ
-	 DCzcjpQijQPoS8GXfKN5eC1a3m0LWwoYFbVeOMFLqQzV95xaBlN4bO2nYDVN+qt0FL
-	 5+x2GO5qX1Afg==
-From: Mark Brown <broonie@kernel.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Chuanhong Guo <gch981213@gmail.com>, Felix Gu <ustc.gu@gmail.com>
-Cc: linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20260510-snfi-v1-1-bc375cf1af8e@gmail.com>
-References: <20260510-snfi-v1-1-bc375cf1af8e@gmail.com>
-Subject: Re: [PATCH] spi: mtk-snfi: Fix resource leak in
- mtk_snand_read_page_cache()
-Message-Id: <177889843639.1174745.10626893124577105758.b4-ty@b4>
-Date: Sat, 16 May 2026 11:27:16 +0900
+	s=k20201202; t=1778911048;
+	bh=xgHqTQgH2M1DxMukANipoQxREXC67LYplivLEl7I4lM=;
+	h=From:Subject:Date:To:Cc:From;
+	b=MeAyQk6E5xnSOy8mVCCjjoQdNZFOx+kZ8ErTRbCs2C1DXtybedQHVyrvIzko3GYlb
+	 i2U2fDW58cn9JNjZLt6NpiAGSfXCZtJqn6NDM936W1h6xUjFFUGE6wIdNrCaBHQM+V
+	 KYrsuIicboZYL3wLnJvPfG/O4XrGZLYraqKdj6UARhgtWC2+wmQ0rOlP/uibzw0W9d
+	 jq2fo8/czgVMEUiZG7FExkreudHvQjsKweDk6i3jPnmJfgg4pgbOYJnAakaB1m2gEx
+	 LIfQdrQ45N5aZOGQE/nI1UIBRGcPqpctEQ4Zgu57Z2lEfwZK9NJAJQvxhqEYFHVZGp
+	 YebdySSUa2+Yw==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH net-next v7 00/10] net: airoha: Support multiple
+ net_devices connected to the same GDM port
+Date: Sat, 16 May 2026 07:57:02 +0200
+Message-Id: <20260516-airoha-eth-multi-serdes-v7-0-99e0093303e2@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.16-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1136; i=broonie@kernel.org;
- h=from:subject:message-id; bh=krf0ubK+QUrCPT2ffiJuNibxSiI0Pko+MJw8mKNdMBQ=;
- b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqB+6jkGgY6lC5Y3cioDC9PO/YNhcVL3kitOby7
- 8sbDMrSfoWJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCagfuowAKCRAk1otyXVSH
- 0AqcB/9LxFQxqX5rI8MM8g1PfrQ6uNT+8BO5i3yzllNC1xNiDphsdnLelOTWr3xJgnbexD834o5
- brl9ZyYapn4f653+NXmxoUcALdD19dp3KHozqg4WPZThQZy9+WBIHTxCiX8kZ+/K5fyG5vl5jrC
- mmzpp8Gag8rG/q5iHtWnM15rYoT8v6PBDT+VPor77B0v39uv26wDkjb0axE4q0A0bBokmV1IdRj
- inuNDQJRlgX5vwUqfImj697GF4e5HepC4C906FXvuKwzpCgZHZgbGhWZriu4wvkxbkcWe6SIvVl
- V6KGE4KQ/61eDnSd15lbOzDwWkWuhQVVsIcCuL/1Ac9DrjNU
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
+Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/33Qy2rDMBAF0F8JWldFz7HVVf+jZKHHKBZN5SI7J
+ iX436uYQlyMs7xc5gzcGxmwJBzI2+FGCk5pSH2uoXk5EN/ZfEKaQs1EMAFMCkVtKn1nKY4d/bq
+ cx0QrEHCg0SmnNSA2Gki9/i4Y03WRP0jGkWa8juRYmy4NY19+lpcTX/o/3ezqE6eMMha1CF4C8
+ /b9E0vG82tfTgs6iQekGN+HRIWsV6KxqByi20ByDcE+JO+QA7TKBG1i3EDqAWnW7EPqDkXg0gG
+ 3yMQG0mvoyUa6Qi3TKFsMXtjtRrCC+JONoEK+NUaB8Co2+h80z/MvjJP/jjYCAAA=
+X-Change-ID: 20260324-airoha-eth-multi-serdes-fb4b556ee756
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Christian Marangi <ansuelsmth@gmail.com>, 
+ Benjamin Larsson <benjamin.larsson@genexis.eu>, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ netdev@vger.kernel.org, devicetree@vger.kernel.org, 
+ Xuegang Lu <xuegang.lu@airoha.com>, 
+ Madhur Agrawal <madhur.agrawal@airoha.com>
+X-Mailer: b4 0.14.3
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260515_225729_448416_F6CF5305 
+X-CRM114-Status: GOOD (  13.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,35 +84,123 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 10 May 2026 01:55:37 +0800, Felix Gu wrote:
-> spi: mtk-snfi: Fix resource leak in mtk_snand_read_page_cache()
+EN7581 or AN7583 SoCs support connecting multiple external SerDes (e.g.
+Ethernet or USB SerDes) to GDM3 or GDM4 ports via a hw arbiter that
+manages the traffic in a TDM manner. As a result multiple net_devices can
+connect to the same GDM{3,4} port and there is a theoretical "1:n"
+relation between GDM ports and net_devices.
 
-Applied to
+           ┌─────────────────────────────────┐
+           │                                 │    ┌──────┐
+           │                         P1 GDM1 ├────►MT7530│
+           │                                 │    └──────┘
+           │                                 │      ETH0 (DSA conduit)
+           │                                 │
+           │              PSE/FE             │
+           │                                 │
+           │                                 │
+           │                                 │    ┌─────┐
+           │                         P0 CDM1 ├────►QDMA0│
+           │  P4                     P9 GDM4 │    └─────┘
+           └──┬─────────────────────────┬────┘
+              │                         │
+           ┌──▼──┐                 ┌────▼────┐
+           │ PPE │                 │   ARB   │
+           └─────┘                 └─┬─────┬─┘
+                                     │     │
+                                  ┌──▼──┐┌─▼───┐
+                                  │ ETH ││ USB │
+                                  └─────┘└─────┘
+                                   ETH1   ETH2
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-7.1
+This series introduces support for multiple net_devices connected to the
+same Frame Engine (FE) GDM port (GDM3 or GDM4) via an external hw
+arbiter. Please note GDM1 or GDM2 does not support the connection with
+the external arbiter.
 
-Thanks!
+---
+Changes in v7:
+- Fix dma_sync_single_for_cpu() size in airoha_qdma_rx_process().
+- Fix hw stats reset.
+- Fix typos.
+- Add fix for airoha_tc_remove_htb_queue queue index.
+- Fix dts schema issues.
+- Remove hw stats patch from the series.
+- Link to v6: https://lore.kernel.org/r/20260511-airoha-eth-multi-serdes-v6-0-c899462c4f75@kernel.org
 
-[1/1] spi: mtk-snfi: Fix resource leak in mtk_snand_read_page_cache()
-      https://git.kernel.org/broonie/spi/c/496ba79b9496
+Changes in v6:
+- Reconfigure REG_GDM_LEN_CFG() whit max 'running' MTU in
+  airoha_dev_stop().
+- Fix port staring MIB counters in airoha_update_hw_stats().
+- Fix regression in TC_HTB_NODE_MODIFY command.
+- Fix length check in airoha_qdma_rx_process().
+- Fix dts schema.
+- Link to v5: https://lore.kernel.org/r/20260509-airoha-eth-multi-serdes-v5-0-805e38edc2aa@kernel.org
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+Changes in v5:
+- Move qos_sq_bmap bitmap in airoha_gdm_dev struct.
+- Unregister netdevice before running of_node_put().
+- Move stat MIB counters in airoha_gdm_dev struct.
+- Fix airoha_ppe_init_upd_mem() mac address configuration.
+- Do not return -EBUSY if we try to decrease configured MTU of a shared
+  GDM port, just skip hw configuration.
+- use int instead of atomic_t for GDM port users.
+- Add patch "net: airoha: Reserve RX headroom to avoid skb reallocation"
+- Fix typos.
+- Link to v4: https://lore.kernel.org/r/20260507-airoha-eth-multi-serdes-v4-0-af613b61ae02@kernel.org
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+Changes in v4:
+- Make ethernet-port property available just for GDM3 and GDM4 in DTS
+  specification
+- Move cpu_tx_packets, fwd_tx_packets qos_sq_bmap fields in airoha_qdma
+  struct
+- Fix of_node leak removing the net_device in airoha_remove() or
+  airoha_probe() error path
+- Fix nbq backward compatibility
+- Link to v3: https://lore.kernel.org/r/20260406-airoha-eth-multi-serdes-v3-0-ab6ea49d59ff@kernel.org
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+Changes in v3:
+- Fix MTU and VIP configuration when the GDM port is shared between
+  multiple net_devices.
+- Add sanity check for nbq parameter.
+- Add missing of_node_get() for net_device np node.
+- Check if GDM port is shared before decresing device MTU.
+- Move port forward configuration in airoha_dev_stop() before
+  configuring DMA tx/rx engine.
+- Introduce PRIV_FLAG_WAN parameter.
+- Link to v2: https://lore.kernel.org/r/20260401-airoha-eth-multi-serdes-v2-0-ac427ae4beeb@kernel.org
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+Changes in v2:
+- Rename multiplexer in arbiter in the commit logs.
+- Rebase on top of net-next main branch.
+- Add missing PPE cpu port configuration for GDM2 when loopback is
+  enabled.
+- Link to v1: https://lore.kernel.org/r/20260329-airoha-eth-multi-serdes-v1-0-00f52dc360ca@kernel.org
 
-Thanks,
-Mark
+---
+Lorenzo Bianconi (10):
+      dt-bindings: net: airoha: Add EN7581 ethernet-ports properties
+      net: airoha: Introduce airoha_gdm_dev struct
+      net: airoha: Move airoha_qdma pointer in airoha_gdm_dev struct
+      net: airoha: Rely on airoha_gdm_dev pointer in airoha_is_lan_gdm_port()
+      net: airoha: Move qos_sq_bmap in airoha_gdm_dev struct
+      net: airoha: Move {cpu,fwd}_tx_packets in airoha_gdm_dev struct
+      net: airoha: Support multiple net_devices for a single FE GDM port
+      net: airoha: Do not stop GDM port if it is shared
+      net: airoha: Introduce WAN device flag
+      net: airoha: Support multiple LAN/WAN interfaces for hw MAC address configuration
+
+ .../devicetree/bindings/net/airoha,en7581-eth.yaml |  60 +-
+ drivers/net/ethernet/airoha/airoha_eth.c           | 832 +++++++++++++++------
+ drivers/net/ethernet/airoha/airoha_eth.h           |  47 +-
+ drivers/net/ethernet/airoha/airoha_ppe.c           |  43 +-
+ 4 files changed, 706 insertions(+), 276 deletions(-)
+---
+base-commit: 627ac78f2741e2ebd2225e2e953b6964a8a9182f
+change-id: 20260324-airoha-eth-multi-serdes-fb4b556ee756
+
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
