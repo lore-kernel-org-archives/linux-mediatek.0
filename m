@@ -4,61 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D342CD343F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2026 00:39:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F344CD4851
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2026 04:12:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MbgsIXHt6NlrCnc23vse88z1ZKMItJ298APbJStYoog=; b=MoaeDNj41baB4z8fBAPxkEugq+
-	VBADnXheXbnUMj70MKjbuak+hlNm6Sbhx7GYw8T4/8GHc4R1WMKx0v9H17dKaWsO0GRYbkUCniWYs
-	TCrvpoDwHbMsZPqKMze5+AZqvpSyponD1Bhx75Su2sPW4JXj6i68TYXYvLCqWotLKpgEwuz+J1Y+D
-	AA/I98PBwRCckli/mWrYZxGSYvb7WxnxjpY4KTlyY59zV0bwALnLn2oarpaEtkR9pfos6Pkg1B4XQ
-	knWls7l+LjnQTmnu2/HwifFcEItTG5KZOxWxseMe9NQXMF2cy9P4bE75h9EX6j0dl1cqGsNJuwfF7
-	JP+qnBZA==;
+	bh=loRGoAybQ78l+1/SdmY5YM4W68BXV3n4x/p7MYAPFgI=; b=YAfARYZyOSDBLM1YSmHCG7tfqH
+	nNW+AiYBbdP3kKUn9VJ/jcmSObn5/xEHTUwh6GKdwfg6o5QA+Hjkjm3TtCkkg+ofmxONPds4sIOeL
+	VL+YodUa2jFewKgIyXGT6PuseWIIF86plj8heRgHBAL42iRvw8x8OXZlBi5HmnV8QY76lLyDhJ89c
+	wOnpfgLFBTXXb5zK4th7V5ub/lIwioMEozf9Jl9nt4SuidQWSTvX0cK3o5y9luUSMno12jW5/iqCo
+	jScFaIlIFdUh3suv7xNWvQ/xOjEe2QJL8zAKnW0oJTCS4slAq2k26d5MDfE8HoBs151kMqxkZsHXO
+	ikkVEQZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wO34N-00000009og5-37M9;
-	Sat, 16 May 2026 00:39:55 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wO6O2-0000000A53h-3MN8;
+	Sat, 16 May 2026 04:12:26 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wO34M-00000009ofi-4A5Y;
-	Sat, 16 May 2026 00:39:55 +0000
+	id 1wO6O0-0000000A53K-3fcI;
+	Sat, 16 May 2026 04:12:24 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 17B7660142;
-	Sat, 16 May 2026 00:39:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BC88DC2BCB0;
-	Sat, 16 May 2026 00:39:53 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 04F6860142;
+	Sat, 16 May 2026 04:12:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B45DFC19425;
+	Sat, 16 May 2026 04:12:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778891993;
-	bh=6vI4kXZvk0IYP3RH7MFbxQnidjQVlIqxXdx01DpVYT4=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=ceP1WYOa2Gp2NAwGMKUmQbam0CbNXr+ppK2b5xKtKg5V9/8kRuCWB6AaebOPKvpAn
-	 yIdiYvrTnH+rf7yc6T2gWLktt5TH+CsEDzfEev1yj/sG8Y0lRgEM5S6J9dO3Z9XCFX
-	 g17WoKcrJW3Svaqje+rpgaDWkR9FSCDMURQDSwdS19aHSxjISDxEDgNCsV5KDudKOU
-	 jBcFZjKRXlBeqBsOMP8pAmFmup42Vb9LGTi+VqwF7wY8KUH2lzJpvjJawduumsJgil
-	 D04sCaJ+nVam1DM7Z3Cxr/oUSBtJbrc7uhIRwunYMHtcKQCdtBm1wIY7vj/AM0zMjE
-	 FGgkkFIF3M8SQ==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 199CC3930A23;
-	Sat, 16 May 2026 00:40:08 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1778904743;
+	bh=krf0ubK+QUrCPT2ffiJuNibxSiI0Pko+MJw8mKNdMBQ=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=d2tsNmk39s1aRPHSiwXRBqiFxuEGDGikEhdXdKyL4zrBZc1py301r0yuBplr5hhKg
+	 LEp70q6JTbjY8p5MOU0uflB28uFF5X26MBBV2h/O8Iho/Rykc4KF5da3GEeg8Pdero
+	 r7+PpVf49HMkxVAFS1Vhs/5h0CkQXXgAnVtTMOMUN/NP4RxlwnAbkNOvVfHnVulfDp
+	 HVBEnV6lb7YpV8W3YmLGcAgkhxR9oypedHTI4cMnuxyDQDWBy8Zw4nxyVgWVg8PrfQ
+	 DCzcjpQijQPoS8GXfKN5eC1a3m0LWwoYFbVeOMFLqQzV95xaBlN4bO2nYDVN+qt0FL
+	 5+x2GO5qX1Afg==
+From: Mark Brown <broonie@kernel.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Chuanhong Guo <gch981213@gmail.com>, Felix Gu <ustc.gu@gmail.com>
+Cc: linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <20260510-snfi-v1-1-bc375cf1af8e@gmail.com>
+References: <20260510-snfi-v1-1-bc375cf1af8e@gmail.com>
+Subject: Re: [PATCH] spi: mtk-snfi: Fix resource leak in
+ mtk_snand_read_page_cache()
+Message-Id: <177889843639.1174745.10626893124577105758.b4-ty@b4>
+Date: Sat, 16 May 2026 11:27:16 +0900
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next] net: airoha: Reserve RX headroom to avoid skb
- reallocation
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <177889200689.209257.3972061209487026689.git-patchwork-notify@kernel.org>
-Date: Sat, 16 May 2026 00:40:06 +0000
-References: <20260513-airoha-rx-headroom-v1-1-bd87798e422d@kernel.org>
-In-Reply-To: <20260513-airoha-rx-headroom-v1-1-bd87798e422d@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
- xuegang.lu@airoha.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.16-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1136; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=krf0ubK+QUrCPT2ffiJuNibxSiI0Pko+MJw8mKNdMBQ=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqB+6jkGgY6lC5Y3cioDC9PO/YNhcVL3kitOby7
+ 8sbDMrSfoWJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCagfuowAKCRAk1otyXVSH
+ 0AqcB/9LxFQxqX5rI8MM8g1PfrQ6uNT+8BO5i3yzllNC1xNiDphsdnLelOTWr3xJgnbexD834o5
+ brl9ZyYapn4f653+NXmxoUcALdD19dp3KHozqg4WPZThQZy9+WBIHTxCiX8kZ+/K5fyG5vl5jrC
+ mmzpp8Gag8rG/q5iHtWnM15rYoT8v6PBDT+VPor77B0v39uv26wDkjb0axE4q0A0bBokmV1IdRj
+ inuNDQJRlgX5vwUqfImj697GF4e5HepC4C906FXvuKwzpCgZHZgbGhWZriu4wvkxbkcWe6SIvVl
+ V6KGE4KQ/61eDnSd15lbOzDwWkWuhQVVsIcCuL/1Ac9DrjNU
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,32 +82,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+On Sun, 10 May 2026 01:55:37 +0800, Felix Gu wrote:
+> spi: mtk-snfi: Fix resource leak in mtk_snand_read_page_cache()
 
-This patch was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+Applied to
 
-On Wed, 13 May 2026 17:03:59 +0200 you wrote:
-> Reserve NET_SKB_PAD + NET_IP_ALIGN bytes of headroom for received packets
-> to avoid skb head reallocation when pushing protocol headers into the skb.
-> 
-> Tested-by: Xuegang Lu <xuegang.lu@airoha.com>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  drivers/net/ethernet/airoha/airoha_eth.c | 14 ++++++++------
->  drivers/net/ethernet/airoha/airoha_eth.h |  2 ++
->  2 files changed, 10 insertions(+), 6 deletions(-)
-> 
-> [...]
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-7.1
 
-Here is the summary with links:
-  - [net-next] net: airoha: Reserve RX headroom to avoid skb reallocation
-    https://git.kernel.org/netdev/net-next/c/bbfb1983944f
+Thanks!
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+[1/1] spi: mtk-snfi: Fix resource leak in mtk_snand_read_page_cache()
+      https://git.kernel.org/broonie/spi/c/496ba79b9496
 
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
