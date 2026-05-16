@@ -4,69 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84524CD4851
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 May 2026 22:45:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D342CD343F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2026 00:39:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xI2ig96b/BTjapm4gylE7Y2++ydrNNWtVFR1HBfi2sY=; b=IKbAQD+fkVcg2k8sMEniRzt6JB
-	krbdMLz7I/e292p45K5G+1SqnBjjYkU/uOUXo6L76W3T56agSpJDFww7M7ONkwP1Gaj+826blPi3q
-	ziVP5hfhxie7OXdWMugAgbI9Ppwlq1yczWXCVJJhuO8T1df/Ux8U6uiUWgMdq1Sw88R//kN4SY9w9
-	9dg+GEZcNpE9bA3c7tYvR0rsp8o/MRyLSAHLVY8WLM7OLRnPQy5X0cjl5HkyL9fn2KnnBEczAUqWD
-	orMxP2BSn8oFTfX8gPxVnyew/ZUhqLvnSwG1xMPAKvRRCb0IN1K7inxdxv5FmSv4SpAHGqLcQUqv/
-	ISGH2EHg==;
+	bh=MbgsIXHt6NlrCnc23vse88z1ZKMItJ298APbJStYoog=; b=MoaeDNj41baB4z8fBAPxkEugq+
+	VBADnXheXbnUMj70MKjbuak+hlNm6Sbhx7GYw8T4/8GHc4R1WMKx0v9H17dKaWsO0GRYbkUCniWYs
+	TCrvpoDwHbMsZPqKMze5+AZqvpSyponD1Bhx75Su2sPW4JXj6i68TYXYvLCqWotLKpgEwuz+J1Y+D
+	AA/I98PBwRCckli/mWrYZxGSYvb7WxnxjpY4KTlyY59zV0bwALnLn2oarpaEtkR9pfos6Pkg1B4XQ
+	knWls7l+LjnQTmnu2/HwifFcEItTG5KZOxWxseMe9NQXMF2cy9P4bE75h9EX6j0dl1cqGsNJuwfF7
+	JP+qnBZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wO1I2-00000009eva-1HZj;
-	Fri, 15 May 2026 22:45:54 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wO34N-00000009og5-37M9;
+	Sat, 16 May 2026 00:39:55 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wO1I0-00000009euo-1UiF;
-	Fri, 15 May 2026 22:45:53 +0000
+	id 1wO34M-00000009ofi-4A5Y;
+	Sat, 16 May 2026 00:39:55 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 35B3B40874;
-	Fri, 15 May 2026 22:45:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5C7ADC2BCB0;
-	Fri, 15 May 2026 22:45:50 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 17B7660142;
+	Sat, 16 May 2026 00:39:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BC88DC2BCB0;
+	Sat, 16 May 2026 00:39:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778885151;
-	bh=uIau35s5bIEmw6EC+X8vEmauWXOWouZDyj8O9Ysx4Hk=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=YD35XbkdraLWjjJF2eEmG679oOXznOFhFTUbO22eWOAv+RcE5jaOG88AVtGZOTRMP
-	 IhCEyRF9n/eGWG+qyLbiD0vYaR7gMD5pEJSeUmt1O+iOsUYbnR8gBcOd1Stg1YSHmX
-	 yXRFgoyiaN9FNSW9lkkzqTDFxtCsFfry5wd1kVoD4vmuoFTgCDfkOk5vGYCj8V9Ht9
-	 mlE4X8XB3A/vrs4eyC5cNlE+FO2XSou29VPAn5fK5SLMop6FAPudTzfpUytVaRUhTn
-	 Ohf8V7fQu3HNerYfEzmlmEN81nbzdExymFP3urjmBU6fjeihQT8UK9JT9HnIAykGqk
-	 hHuzNg0wjETRQ==
-Date: Fri, 15 May 2026 15:45:49 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: "Frank Wunderlich" <frank.wunderlich@linux.dev>
-Cc: "Mason Chang" <mason-cw.chang@mediatek.com>, "AngeloGioacchino Del
- Regno" <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org,
- "Russell King" <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org,
- "Andrew Lunn" <andrew+netdev@lunn.ch>, "Eric Dumazet"
- <edumazet@google.com>, linux-mediatek@lists.infradead.org, "Daniel Golle"
- <daniel@makrotopia.org>, "Matthias Brugger" <matthias.bgg@gmail.com>,
- "Paolo Abeni" <pabeni@redhat.com>, "Lorenzo Bianconi" <lorenzo@kernel.org>,
- "David S. Miller" <davem@davemloft.net>,
- linux-arm-kernel@lists.infradead.org, "Felix Fietkau" <nbd@nbd.name>,
- "Frank Wunderlich" <linux@fw-web.de>
-Subject: Re: [net-next v8 2/3] net: ethernet: mtk_eth_soc: Add RSS support
-Message-ID: <20260515154549.307a61cd@kernel.org>
-In-Reply-To: <935a73a6e458b2d4fed2e59192e725483ca62126@linux.dev>
-References: <20260509190938.169290-1-linux@fw-web.de>
-	<20260509190938.169290-3-linux@fw-web.de>
-	<20260513185625.48e69837@kernel.org>
-	<935a73a6e458b2d4fed2e59192e725483ca62126@linux.dev>
+	s=k20201202; t=1778891993;
+	bh=6vI4kXZvk0IYP3RH7MFbxQnidjQVlIqxXdx01DpVYT4=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=ceP1WYOa2Gp2NAwGMKUmQbam0CbNXr+ppK2b5xKtKg5V9/8kRuCWB6AaebOPKvpAn
+	 yIdiYvrTnH+rf7yc6T2gWLktt5TH+CsEDzfEev1yj/sG8Y0lRgEM5S6J9dO3Z9XCFX
+	 g17WoKcrJW3Svaqje+rpgaDWkR9FSCDMURQDSwdS19aHSxjISDxEDgNCsV5KDudKOU
+	 jBcFZjKRXlBeqBsOMP8pAmFmup42Vb9LGTi+VqwF7wY8KUH2lzJpvjJawduumsJgil
+	 D04sCaJ+nVam1DM7Z3Cxr/oUSBtJbrc7uhIRwunYMHtcKQCdtBm1wIY7vj/AM0zMjE
+	 FGgkkFIF3M8SQ==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 199CC3930A23;
+	Sat, 16 May 2026 00:40:08 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260515_154552_427887_250E896D 
-X-CRM114-Status: GOOD (  11.68  )
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next] net: airoha: Reserve RX headroom to avoid skb
+ reallocation
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <177889200689.209257.3972061209487026689.git-patchwork-notify@kernel.org>
+Date: Sat, 16 May 2026 00:40:06 +0000
+References: <20260513-airoha-rx-headroom-v1-1-bd87798e422d@kernel.org>
+In-Reply-To: <20260513-airoha-rx-headroom-v1-1-bd87798e422d@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+ xuegang.lu@airoha.com
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,18 +73,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 15 May 2026 11:13:05 +0000 Frank Wunderlich wrote:
-> > >  We can adjust SMP affinity with the following command:
-> > >  echo [CPU bitmap num] > /proc/irq/[virtual IRQ ID]/smp_affinity,
-> > >  with interrupts evenly assigned to 4 CPUs, we were able to measure
-> > >  an RX throughput of 7.3Gbps using iperf3 on the MT7988. Further
-> > >  optimizations will be carried out in the future.
-> > >   
-> > Would be great to split this up a little more for ease of review.  
-> 
-> you mean splitting the code into more separate patches or the commit description?
+Hello:
 
-The code, seemed like it should at the very least be split into
-multi-queue/napi support (mostly driver changes) vs RSS programming
-and config.
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Wed, 13 May 2026 17:03:59 +0200 you wrote:
+> Reserve NET_SKB_PAD + NET_IP_ALIGN bytes of headroom for received packets
+> to avoid skb head reallocation when pushing protocol headers into the skb.
+> 
+> Tested-by: Xuegang Lu <xuegang.lu@airoha.com>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  drivers/net/ethernet/airoha/airoha_eth.c | 14 ++++++++------
+>  drivers/net/ethernet/airoha/airoha_eth.h |  2 ++
+>  2 files changed, 10 insertions(+), 6 deletions(-)
+> 
+> [...]
+
+Here is the summary with links:
+  - [net-next] net: airoha: Reserve RX headroom to avoid skb reallocation
+    https://git.kernel.org/netdev/net-next/c/bbfb1983944f
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
