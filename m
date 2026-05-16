@@ -4,67 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46547CD4F3D
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2026 05:58:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFE05CD4F21
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 May 2026 06:20:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XH/WSpN0Ofgb7V077VoC2jFEzcBpxRIjw8jcRVcXqJM=; b=e5auVkl9TJ340mZS7tenzBm4ku
-	WuFgrT6TCEe8xFcnc9h+n+Bd01y86phLlZVwgplD9XELadq9vPJ6i42Kqjzz4vyMpAnpTWf/7y0B9
-	TyB66n9UO0/hraL8me1QSktzxHNUjJRysxG5QuKRP/8y814FLT6tQk0hxBLZSyuNE5PRO9s1sQ9KP
-	qZx+yWajAn/MRp/vZ4R7kzcSMfD1XSoQa/KFx79H37jZRvHcOUy/oarVyJ1EO9cxTYDyeC2kOV7ja
-	MfvGn8aFs5tcx3rQOS38kBbibryDBLuSAzzAqUJYDfOMNxL0BSClrNi6huJ81hNSLoAxy3MlULxim
-	wLbx0XQQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iwTg4sm4cNnVhMg5s/1uHcLhMcdNPNXew85SDkoB75M=; b=x9PG6zuMAqjQFjCyAfDMq8W0p4
+	ht55IYCoQmL/6xHL3NtEzCQ413ytt0Uqses2teOXE1OFMW46lbfgxLGb68II84cvn+kkrL2orGQKO
+	0fpw32AijyFSBC1tg7mQoxFLB1rril8817/wZus7IJn/cM5qd/TiALn0n+/KcLl4q6DfykSEMTSvh
+	Ot4Ih7C/Xoj5qZyug8Fq4+eFhwrMiyO3m+cuUyroBZY34c22IHj+U8qJoftkwwllpxf0t7LuEEgTu
+	06XuJtdHyC1ZRazxD1WH17ZWpR0SFkiuiFPJ1tMIEmJF7aP2vSsoToIeqiF9wb+y5XqeR5q+Pqh7L
+	QcVlFxfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wO82H-0000000AE01-1brJ;
-	Sat, 16 May 2026 05:58:05 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wO8O0-0000000AGKv-3Ryk;
+	Sat, 16 May 2026 06:20:32 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wO828-0000000ADnO-3pvs;
-	Sat, 16 May 2026 05:58:00 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id DAC8241975;
-	Sat, 16 May 2026 05:57:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67C15C2BCB7;
-	Sat, 16 May 2026 05:57:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778911074;
-	bh=TXblOyw4xqTUZlj938ntGPUamqR6+B49eQEtuY69Iu8=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=D5dRy+mt+MrpEqdrOPhMZFtPAs/klM6nmCFzj7PqTmBLirOel76jS/jKDKyUzFhpa
-	 PRKK+lcbIY/Sp95YMIah7ietSYEK2XUx3h7trZqL2hH/N/dFY/3M3hZUTQl7EsNDis
-	 euQnD7wTuUr8rjaRIFged+Sps2bbpJCh9E2aHH3GDhbBGFdcHuIBjHJuYNJU40plFz
-	 aiXRZhZcwufNS2c/stNee71g3lDc+KeZBIbwr0ytODJDWiPZCijGFhEw1WCzsV2k52
-	 9dj37T3JpQDr/MTDZLoujtlvdvjMZ933/kmK8e0910Q+9zrUOUN6G8k2FbW5qsAOYK
-	 8PNTOpsGFjw4w==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Sat, 16 May 2026 07:57:12 +0200
-Subject: [PATCH net-next v7 10/10] net: airoha: Support multiple LAN/WAN
- interfaces for hw MAC address configuration
+	id 1wO8Nw-0000000AGJd-41EH
+	for linux-mediatek@lists.infradead.org;
+	Sat, 16 May 2026 06:20:30 +0000
+Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-43d734223e4so222182f8f.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 15 May 2026 23:20:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20251104.gappssmtp.com; s=20251104; t=1778912426; x=1779517226; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=iwTg4sm4cNnVhMg5s/1uHcLhMcdNPNXew85SDkoB75M=;
+        b=UD54NxSoGqNS33AewFHNnsTeXEGKv00Z2Y/XbIrNdrLaNMhU2ZpGPYBDTgNX2BMUHi
+         /WL/1SOvas1MITYk5uiOGttXPtb9419CsIoN/rvPSj4fDfqMDKOgeOiF4slu9SE3TXbL
+         ShEy/OS9eswUHE1oVUwpRQ86KMC95v2QxD++sotFiGylnAxSpsrG75s2RaJZkwsjZONY
+         pWn4XLjDPaZkEk2kg+JbhabtPgCA+Z1m7tVPXBxKWq7xNPkJPNvNPSZCHZ8wSUD36gSe
+         Ztv4Nsxl8JN5/7Uj2g231C5xOEVF34dzQJylcvZKrEFzLcI4GGRzYfU7tAy0UEHvQhdY
+         tX/w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1778912426; x=1779517226;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=iwTg4sm4cNnVhMg5s/1uHcLhMcdNPNXew85SDkoB75M=;
+        b=AjoV1fzWJKBRXTgLDjplMn4QIitTyMt1QcyQrymZt5f6Za0cd16oXiuCkIEzqr9Zuc
+         3DN/L2H32R0iSlHrn25DYk0hCA2NI9uKWFnIK80vh/WUEn2aHWrKQF1YfIf29uuAv+tu
+         h4KJfcgRUOE8UylDcqLBVU+14qX9A1o50J5n/KyRPGwgrAQwQ8Hes+K1lSq6srUb+OHJ
+         eALXlkYTYRxmIBmWfJrmEwepOU2yinUrddzdW+54ZhCYKTxg31g6igMoZZASNz1SfPz1
+         dgYaCS9NQbKSBEZw6LO/M6uzW2lxIRBIbiPLdrSbVLNcT/zqhovAiGZ7XZqnNQucs9fL
+         Ks2Q==
+X-Forwarded-Encrypted: i=1; AFNElJ8Yeb8zk3xM/dKepzSuSZgYt1bMucvJ24rEy8Ui+Nw2kwILcP8ywDF9oiO9cDNGrDMAj6UBGUuGgCCK8KOw0w==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz93Q9bUF2XdFR90VjwbBOLv9vIbdpxsgZGEswUqrVg4hjTOdKp
+	H6QmJH+2MeAyPBcWjgaW86aRcCBoLolLrqqZ7ZBISC4BaanzWcptxJSpLen9NkOj8KM=
+X-Gm-Gg: Acq92OHfoDe2Ii6r3ojr9KrFGTendcjtrBn/1ohzwsysr0iGNLgo7AQf0SrHn/kMDhN
+	7Ta0VufYnY9aXQsC6f6Avskpg5guMxhn7oKKemITIpfTYPlfEYmGdo+nyLXOXjI3euk/6VI3MPG
+	rFp8d2ySzSECD5iB2+WTovxx9todwBFZ2ZPBWjzTjPcAWkrz2j8kG++7GI8Q4rtrGPJ+3MAI87W
+	8oMN9SUrZ0+YQrV1sdcmu0by7SrBTPpf5HgemwNSDF9NGxGl8xkwjdNZcwDqXojKp14pGVni2yz
+	9eG3iSyolTcqUjsEMmT92b470gq5Pbvguz5POZjAsDFFvCpeukfylw3ACIStLLR9PNYUIQUoZx/
+	KMBfXvBazMTsqFtpsuMRUwoWUPtOYh2nI30NBgNsgmn8hzv5SjSxr3M49nltReae4yK9CZyMpB+
+	zhEY1nDd64T07GmJeJ2XIn+spcYl4Aei7NUt9w89o=
+X-Received: by 2002:a05:6000:248a:b0:451:259d:83fc with SMTP id ffacd0b85a97d-45e5b886085mr10629272f8f.17.1778912425850;
+        Fri, 15 May 2026 23:20:25 -0700 (PDT)
+Received: from localhost ([2a02:8071:56d1:2de0:1d24:d58d:2b65:c291])
+        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-45d9e767d16sm20858858f8f.6.2026.05.15.23.20.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 15 May 2026 23:20:25 -0700 (PDT)
+Date: Sat, 16 May 2026 08:20:24 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>
+Cc: David Rhodes <david.rhodes@cirrus.com>, 
+	Richard Fitzgerald <rf@opensource.cirrus.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>, Baojun Xu <baojun.xu@ti.com>, 
+	Lars-Peter Clausen <lars@metafoo.de>, Nuno =?utf-8?B?U8Oh?= <nuno.sa@analog.com>, 
+	Martin =?utf-8?Q?Povi=C5=A1er?= <povik+lin@cutebit.org>, Support Opensource <support.opensource@diasemi.com>, 
+	Nick Li <nick.li@foursemi.com>, M R Swami Reddy <mr.swami.reddy@ti.com>, 
+	Vishwas A Deshpande <vishwas.a.deshpande@ti.com>, Peter Rosin <peda@axentia.se>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Oder Chiou <oder_chiou@realtek.com>, 
+	Fabio Estevam <festevam@gmail.com>, Kiseok Jo <kiseok.jo@irondevice.com>, 
+	Kevin Cernekee <cernekee@chromium.org>, Steven Eckhoff <steven.eckhoff.opensource@gmail.com>, 
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, Charles Keepax <ckeepax@opensource.cirrus.com>, 
+	Thorsten Blum <thorsten.blum@linux.dev>, Chris Morgan <macromorgan@hotmail.com>, 
+	Dan Carpenter <dan.carpenter@linaro.org>, Marco Crivellari <marco.crivellari@suse.com>, 
+	Weidong Wang <wangweidong.a@awinic.com>, Aaron Kling <webgeek1234@gmail.com>, 
+	Teguh Sobirin <teguh@sobir.in>, Luca Weiss <luca.weiss@fairphone.com>, 
+	Bharadwaj Raju <bharadwaj.raju@machinesoul.in>, Hsieh Hung-En <hungen3108@gmail.com>, 
+	Binbin Zhou <zhoubinbin@loongson.cn>, Shimrra Shai <shimrrashai@gmail.com>, 
+	Zhang Yi <zhangyi@everest-semi.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	Srinivas Kandagatla <srinivas.kandagatla@oss.qualcomm.com>, Qasim Ijaz <qasdev00@gmail.com>, 
+	Sharique Mohammad <sharq0406@gmail.com>, Chen Ni <nichen@iscas.ac.cn>, Neo Chang <YLCHANG2@nuvoton.com>, 
+	Cezary Rojewski <cezary.rojewski@intel.com>, Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, 
+	Kees Cook <kees@kernel.org>, Qianfeng Rong <rongqianfeng@vivo.com>, 
+	Tim Bird <tim.bird@sony.com>, Bram Vlerick <bram.vlerick@openpixelsystems.org>, 
+	Peter Korsgaard <peter@korsgaard.com>, Linus Walleij <linusw@kernel.org>, 
+	Wenyuan Li <2063309626@qq.com>, Bartosz Golaszewski <brgl@kernel.org>, 
+	Shengjiu Wang <shengjiu.wang@nxp.com>, Sebastian Krzyszkowiak <sebastian.krzyszkowiak@puri.sm>, 
+	Xichao Zhao <zhao.xichao@vivo.com>, linux-sound@vger.kernel.org, patches@opensource.cirrus.com, 
+	linux-kernel@vger.kernel.org, asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, Markus Schneider-Pargmann <msp@baylibre.com>
+Subject: Re: [PATCH v1 2/2] ASoC: Use named initializers for arrays of
+ i2c_device_data
+Message-ID: <aggL5R0PQq9AtpaZ@monoceros>
+References: <cover.1778692164.git.u.kleine-koenig@baylibre.com>
+ <ae2ff4898eb340bd8bcafb7b75443eb4a0ce3e76.1778692164.git.u.kleine-koenig@baylibre.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260516-airoha-eth-multi-serdes-v7-10-99e0093303e2@kernel.org>
-References: <20260516-airoha-eth-multi-serdes-v7-0-99e0093303e2@kernel.org>
-In-Reply-To: <20260516-airoha-eth-multi-serdes-v7-0-99e0093303e2@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Christian Marangi <ansuelsmth@gmail.com>, 
- Benjamin Larsson <benjamin.larsson@genexis.eu>, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- netdev@vger.kernel.org, devicetree@vger.kernel.org, 
- Madhur Agrawal <madhur.agrawal@airoha.com>
-X-Mailer: b4 0.14.3
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="qdeitipt6peg3e5c"
+Content-Disposition: inline
+In-Reply-To: <ae2ff4898eb340bd8bcafb7b75443eb4a0ce3e76.1778692164.git.u.kleine-koenig@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260515_225757_016834_A1D58B50 
-X-CRM114-Status: GOOD (  18.87  )
+X-CRM114-CacheID: sfid-20260515_232029_027727_10883835 
+X-CRM114-Status: GOOD (  16.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,185 +128,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The EN7581 and AN7583 SoCs provide registers to configure hardware LAN/WAN
-MAC addresses, used to determine whether received traffic is destined for
-this host or should be forwarded to another device.
-The SoC hardware design assumes all interfaces configured as LAN (or WAN)
-share a common upper MAC address, which is programmed into the
-REG_FE_{LAN,WAN}_MAC_H register. The lower bytes of 'local' addresses can
-be expressed as a range via the REG_FE_MAC_LMIN and REG_FE_MAC_LMAX
-registers.
-Previously, only a single interface was considered when programming these
-registers. Extend the logic to derive the correct minimum and maximum
-values for REG_FE_MAC_LMIN/REG_FE_MAC_LMAX when two or more interfaces are
-configured as LAN or WAN.
 
-Tested-by: Madhur Agrawal <madhur.agrawal@airoha.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c | 77 +++++++++++++++++++++++++++-----
- drivers/net/ethernet/airoha/airoha_eth.h |  2 +-
- drivers/net/ethernet/airoha/airoha_ppe.c |  4 +-
- 3 files changed, 68 insertions(+), 15 deletions(-)
+--qdeitipt6peg3e5c
+Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v1 2/2] ASoC: Use named initializers for arrays of
+ i2c_device_data
+MIME-Version: 1.0
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 0540a73b2997..4e9843acc714 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -71,20 +71,69 @@ static void airoha_qdma_irq_disable(struct airoha_irq_bank *irq_bank,
- 	airoha_qdma_set_irqmask(irq_bank, index, mask, 0);
- }
- 
--static void airoha_set_macaddr(struct airoha_gdm_dev *dev, const u8 *addr)
-+static int airoha_set_macaddr(struct airoha_gdm_dev *dev, const u8 *addr)
- {
-+	u8 ref_addr[ETH_ALEN] __aligned(2);
- 	struct airoha_eth *eth = dev->eth;
--	u32 val, reg;
-+	u32 reg, val, lmin, lmax;
-+	int i;
-+
-+	eth_zero_addr(ref_addr);
-+	lmin = (addr[3] << 16) | (addr[4] << 8) | addr[5];
-+	lmax = lmin;
-+
-+	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
-+		struct airoha_gdm_port *port = eth->ports[i];
-+		int j;
-+
-+		if (!port)
-+			continue;
-+
-+		for (j = 0; j < ARRAY_SIZE(port->devs); j++) {
-+			struct airoha_gdm_dev *iter_dev;
-+			struct net_device *netdev;
-+
-+			iter_dev = port->devs[j];
-+			if (!iter_dev || iter_dev == dev)
-+				continue;
-+
-+			if (airoha_is_lan_gdm_dev(iter_dev) !=
-+			    airoha_is_lan_gdm_dev(dev))
-+				continue;
-+
-+			netdev = iter_dev->dev;
-+			if (netdev->reg_state != NETREG_REGISTERED)
-+				continue;
-+
-+			ether_addr_copy(ref_addr, netdev->dev_addr);
-+			val = (netdev->dev_addr[3] << 16) |
-+			      (netdev->dev_addr[4] << 8) | netdev->dev_addr[5];
-+			if (val < lmin)
-+				lmin = val;
-+			if (val > lmax)
-+				lmax = val;
-+		}
-+	}
-+
-+	if (!is_zero_ether_addr(ref_addr) && memcmp(ref_addr, addr, 3)) {
-+		/* According to the HW design, hw mac address MS bits
-+		 * must be the same for each net_device with the same
-+		 * LAN/WAN configuration.
-+		 */
-+		netdev_err(dev->dev, "wrong mac addr for shared GDM port\n");
-+		return -EINVAL;
-+	}
- 
- 	reg = airoha_is_lan_gdm_dev(dev) ? REG_FE_LAN_MAC_H : REG_FE_WAN_MAC_H;
- 	val = (addr[0] << 16) | (addr[1] << 8) | addr[2];
- 	airoha_fe_wr(eth, reg, val);
- 
--	val = (addr[3] << 16) | (addr[4] << 8) | addr[5];
--	airoha_fe_wr(eth, REG_FE_MAC_LMIN(reg), val);
--	airoha_fe_wr(eth, REG_FE_MAC_LMAX(reg), val);
-+	airoha_fe_wr(eth, REG_FE_MAC_LMIN(reg), lmin);
-+	airoha_fe_wr(eth, REG_FE_MAC_LMAX(reg), lmax);
- 
--	airoha_ppe_init_upd_mem(dev);
-+	airoha_ppe_init_upd_mem(dev, addr);
-+
-+	return 0;
- }
- 
- static void airoha_set_gdm_port_fwd_cfg(struct airoha_eth *eth, u32 addr,
-@@ -1814,13 +1863,18 @@ static int airoha_dev_stop(struct net_device *netdev)
- static int airoha_dev_set_macaddr(struct net_device *netdev, void *p)
- {
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
-+	struct sockaddr *addr = p;
- 	int err;
- 
--	err = eth_mac_addr(netdev, p);
-+	err = eth_prepare_mac_addr_change(netdev, p);
- 	if (err)
- 		return err;
- 
--	airoha_set_macaddr(dev, netdev->dev_addr);
-+	err = airoha_set_macaddr(dev, addr->sa_data);
-+	if (err)
-+		return err;
-+
-+	eth_commit_mac_addr_change(netdev, p);
- 
- 	return 0;
- }
-@@ -1925,6 +1979,7 @@ static int airoha_dev_init(struct net_device *netdev)
- {
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
- 	struct airoha_gdm_port *port = dev->port;
-+	int err;
- 
- 	switch (port->id) {
- 	case AIROHA_GDM3_IDX:
-@@ -1949,12 +2004,12 @@ static int airoha_dev_init(struct net_device *netdev)
- 	}
- 
- 	airoha_dev_set_qdma(dev);
--	airoha_set_macaddr(dev, netdev->dev_addr);
-+	err = airoha_set_macaddr(dev, netdev->dev_addr);
-+	if (err)
-+		return err;
- 
- 	if (!airoha_is_lan_gdm_dev(dev) &&
- 	    (port->id == AIROHA_GDM3_IDX || port->id == AIROHA_GDM4_IDX)) {
--		int err;
--
- 		err = airoha_set_gdm2_loopback(dev);
- 		if (err)
- 			return err;
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index a2241520f2e2..364ca76eb3a6 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -684,7 +684,7 @@ void airoha_ppe_check_skb(struct airoha_ppe_dev *dev, struct sk_buff *skb,
- int airoha_ppe_setup_tc_block_cb(struct airoha_ppe_dev *dev, void *type_data);
- int airoha_ppe_init(struct airoha_eth *eth);
- void airoha_ppe_deinit(struct airoha_eth *eth);
--void airoha_ppe_init_upd_mem(struct airoha_gdm_dev *dev);
-+void airoha_ppe_init_upd_mem(struct airoha_gdm_dev *dev, const u8 *addr);
- u32 airoha_ppe_get_total_num_entries(struct airoha_ppe *ppe);
- struct airoha_foe_entry *airoha_ppe_foe_get_entry(struct airoha_ppe *ppe,
- 						  u32 hash);
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index 194cd50b2c74..531ce33528b9 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -1482,12 +1482,10 @@ void airoha_ppe_check_skb(struct airoha_ppe_dev *dev, struct sk_buff *skb,
- 	airoha_ppe_foe_insert_entry(ppe, skb, hash, rx_wlan);
- }
- 
--void airoha_ppe_init_upd_mem(struct airoha_gdm_dev *dev)
-+void airoha_ppe_init_upd_mem(struct airoha_gdm_dev *dev, const u8 *addr)
- {
- 	struct airoha_gdm_port *port = dev->port;
--	struct net_device *netdev = dev->dev;
- 	struct airoha_eth *eth = dev->eth;
--	const u8 *addr = netdev->dev_addr;
- 	u32 val;
- 
- 	val = (addr[2] << 24) | (addr[3] << 16) | (addr[4] << 8) | addr[5];
+Hello,
 
--- 
-2.54.0
+On Wed, May 13, 2026 at 07:23:04PM +0200, Uwe Kleine-K=F6nig (The Capable H=
+ub) wrote:
+> diff --git a/sound/soc/codecs/max98088.c b/sound/soc/codecs/max98088.c
+> index 9f40ca4b60d5..df438baf05dc 100644
+> --- a/sound/soc/codecs/max98088.c
+> +++ b/sound/soc/codecs/max98088.c
+> @@ -1722,8 +1722,8 @@ static const struct snd_soc_component_driver soc_co=
+mponent_dev_max98088 =3D {
+>  };
+> =20
+>  static const struct i2c_device_id max98088_i2c_id[] =3D {
+> -       { "max98088", MAX98088 },
+> -       { "max98089", MAX98089 },
+> +       { .name =3D "max98088", .driver_data =3D MAX98088 },
+> +       { .name =3D "max98089", .driver_data =3D MAX98089 },
+>         { }
+>  };
+>  MODULE_DEVICE_TABLE(i2c, max98088_i2c_id);
 
+The indention is wrong here and uses spaces instead of tabs (with and
+without my patch). I squashed a change to tabs into my local commit, so
+this will be addressed in a v2 if it comes to that.
+
+However we have:
+
+	uwe@monoceros:~/gsrc/linux$ grep '^      ' sound/soc/codecs/max98088.c | w=
+c -l
+	911
+	uwe@monoceros:~/gsrc/linux$ wc -l sound/soc/codecs/max98088.c
+	1780 sound/soc/codecs/max98088.c
+
+so it is probably more sensible to address all these lines in a separate
+patch.
+
+Best regards
+Uwe
+
+--qdeitipt6peg3e5c
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmoIDKUACgkQj4D7WH0S
+/k7gSwf+LrTVzNblQTOa3gnZeorGIhj/sMcspAYhIUmYPDtnfBoWNBdCLZc6K4FS
+R01MPMG067BmfqLJWRVfIPvDrqvTXZEdQbCLfjh0uwXLX6ljzIR6zyhUCXgUcWQ3
+u+eHDUCfsppDqVWerbYOIvYuWjiwHKUnrwRhAEzSVdM8thodBh2uJA16VChPQQP6
+MjmDYEtytpJ0azMDrGVj0bVo026970Cd6YS4CKLe5vtZxIIqe+Pcl9kto1IPib6V
+4A/u+r7xWwgcgwFWAsFDp+hXP7cWWZ4UWr+5K5Yryn1oUh0dRs3OEtG3GVOoDzD4
+9is+wvNpU2YideeLn4AUYPLz3Mqh2Q==
+=EDAl
+-----END PGP SIGNATURE-----
+
+--qdeitipt6peg3e5c--
 
