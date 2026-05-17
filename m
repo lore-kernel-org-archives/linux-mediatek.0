@@ -4,111 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9066CD4F21
-	for <linux-mediatek@archiver.kernel.org>; Sun, 17 May 2026 13:02:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C4B3CD4F3C
+	for <linux-mediatek@archiver.kernel.org>; Sun, 17 May 2026 23:25:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FhotB3WmZS4RdLDhV3zhLMq1HMhtHjJJYY8Fard8AIs=; b=eqMZIt2VFW69RyVRBzGU8YUnj7
-	dO7elTm2oeXG/sQFSGm8yZ98aGMBJpjo/QIvxyIz+rfsgUckHMx+LKw5hC6uPzreTUna/WxRwEsbJ
-	1Q4hCyLFigoPqlPBOvr//71xKD5yK7R4V0ZJi41jEK95GvG8elsaOgozrgc9u1/1ES/D/Tf2O+4RL
-	2kWJrQmU2v//L81sSWQUPS3i9rRB3VXPr7Ak6QC55b2e9h74j/WmU7z7Ega2KpmqOZsCksnENdEow
-	6IDsExSLRHUQn3rnd8q6qAYdmUuS0YE7uAzAKZXQFubtq7f/V3UFbkVQfglq2kspzpe2sHlUVPIej
-	BvmPOwyA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:MIME-Version:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=oQMlYsX+VgifZz5u10HC4ZEMVQVuCOrZ67vfrQ1RB6s=; b=tiuthUz2ZMF2AEIMpGYQ0Dpt2p
+	YRRsM+3DFyCiOFMvNnGykLoNw55ZJf0XiYiamv6Z3bOWVpKogl3jVp5/vMSI/JvOO9PN6yK3Os4wN
+	K1IQ0lI9UoF3ag07k8ou7M9V6ddvWS4VRp1RehMOpv1FlIRDc8KIPfgkWadx5pe3ikHQoU82ekijR
+	bYuX/hkeFmM0ackDwCJrykk3cqUOj/tmwStpcfCyzL3aA38rhPRL3NvVVDx6WQw5TlmLP8W0B5VfG
+	1R1w4kZD7gG1c07Eoeg03zZPA2Loj7q/NsXpR9QLNcnB/zc6+LRVdRuGj1nB/pwYSXOxIffJ8WlQ3
+	DHH0g7bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOb8L-0000000Cjou-3YYd;
-	Sun, 17 May 2026 13:02:17 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1wOkrV-0000000Detg-1nQr;
+	Sun, 17 May 2026 23:25:33 +0000
+Received: from mail-dy1-x1330.google.com ([2607:f8b0:4864:20::1330])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOb8H-0000000CjoC-1HHK
+	id 1wOkrS-0000000Det9-1kRe
 	for linux-mediatek@lists.infradead.org;
-	Sun, 17 May 2026 13:02:16 +0000
-Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-5a8cb92f26aso1545156e87.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 17 May 2026 06:02:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779022931; cv=none;
+	Sun, 17 May 2026 23:25:31 +0000
+Received: by mail-dy1-x1330.google.com with SMTP id 5a478bee46e88-2ee990e8597so5064845eec.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 17 May 2026 16:25:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1779060329; cv=none;
         d=google.com; s=arc-20240605;
-        b=ELTbsXe6ZBGKP1nvdej9satCnpnsJoaiOXqyLVn0O20aBj0L+qAEGuKK47ES8gAPYp
-         wwqhVNFflG2pl9fCMJQFolPBTnb6quAfk4OMvk03rWpQ5XyA84jtAv4KnVMycV+PpJC/
-         AcL55mKvpkhiPa/+CFqvYUecAB6Nc56pNuznJZPk+kaOPS2nr0xdTYGpuC+uyi2odoFj
-         3EkcfO+czscEthjjkzZRedvETiuyQIB41qwlnz+Thrl4no/xBnZj1N47+1IkaMcL0NDb
-         UBMVoBxpZ82inObnPYivyubD0yOwJqt2hJazNcntAvypathQRX1F7TQM+C/Af493g+SE
-         uTKQ==
+        b=g4ISV0alNIVqhzhm9XnlCGb6HpOrBxiWnXsOf6418jwUvXSEMfs/ia0psDYZDMvrIu
+         /ufI5BVNNhpOPw5L9k3Z13lXTwJiueJXnuM3TwAaCZ4AZpB3K+/7CyHCNtJ2effmoZjO
+         46HsXKO5ay2nz6ypP8/qk6tq/Z0mxSbjjdGzCRbPOPKdhQpm+7zI8TZPrPZmD7BOWhug
+         aUpQjEym6HUb+v/5b1bl/GwvFQUBeBvo2JD/J1XNjmlgHqOqzcm7P9tkpC4blZCLBkQ6
+         EA7Vaxd4G9dHpkSDzSRW41Is8C4lAoh77u8Hb9Zm0VpddlC9sek8tU7ocVOF7zCxl6B9
+         j4hw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=FhotB3WmZS4RdLDhV3zhLMq1HMhtHjJJYY8Fard8AIs=;
-        fh=qYqYejqAwDgGHcOAgQ88Bvam0hOt+wHsFBWae6KcaxY=;
-        b=Xy6NG8Wq9poAGM3iKwdusPfOVTXQu4xQTjRA5aQnoy48MW+wlDSFiFsQERswcUKKG8
-         +fKwSYrNH5yBpa+L6pbDealaBm7dy0AxNjOFxKDVZRNZ+ixEZaPJYOL/NvK11NEgGf6J
-         1j5xluO42BpnfHxnbJW4BU4+nWs489lMbZzHlztBKnuYr/BNlgbuuR4XH893chtKL/Oi
-         liyee27I6CH1UOFPdsY2cXQ402mt3qwepAwPed1N23vI2SlTCTUdJIFb8xLvD+IDPPd1
-         wWrpmwD5dZ4v+yEIuHh8YQJToLbrVuO3UqAzl/ABGsMm7ULXvcgPyRezx0K6ZKbzNrUA
-         vl0A==;
+        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=oQMlYsX+VgifZz5u10HC4ZEMVQVuCOrZ67vfrQ1RB6s=;
+        fh=1Qp7oPrxMA/4RJrFo/yHTrxW+R6roj/u2mcJvvcQZFU=;
+        b=FUPX4XFomfGxtVeYWBJ53DhM16KB2ksG0LOEcjBiPdcfrKJCsR54U27iMx0xBEEDAc
+         M7wuT95XnYxFRrZb2/xnBIPtQmbK9pC35ymtvTQLh3027ozV4ne9nbWnVH9pCtmS2FDf
+         0EsHbbnEE00p35DKdjA1Lm5ZaN2JDN7bI9lOK1LNbuZokUftKY+kjD1iA9zb/r+VvRyE
+         2n7j1wnCQelY2sqOujurI/nmdH88JqdOHY6NpaHua9zjW3tRNRieeEri9HhxxMWVoybi
+         lG28mj9yPgALlMP0X3YoIhqL7ALReqBxgxQFd2vM01DADTcg/H++hog9ogf2J/9RLC/Y
+         d9Tg==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1779022931; x=1779627731; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=FhotB3WmZS4RdLDhV3zhLMq1HMhtHjJJYY8Fard8AIs=;
-        b=pRk9ChUinLym+7ub9N2F2acdZ1YCUTYreLmWUxbJSGX/Kkn23Y7GXRLfWGMAJJ3/5s
-         8/Bp5UBxVG5oe1idN1oCHixHRNAkxN5RXR69IfqwPcmt3XExqNx+Qs8EqNQdnBvAS5X/
-         9yHM8QQ+oUrdv/ABkabrWggZHuB/f/2gdkctGN9faB9Mb32OS6icpbXQarFEwLolvspO
-         xABEOOoU5uMzHnisPF0cLBWHJ8ArijN06Eu0AUvqEsJlAgtVRMjquh5rrT9EOUFwquvB
-         //P1frsU9cdWjzeZJ35l3ACQ+flIY1CnWjh3ER8ly5a33qg3+vg5hJrrbz3unE/+BmAm
-         eTig==
+        d=gmail.com; s=20251104; t=1779060329; x=1779665129; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=oQMlYsX+VgifZz5u10HC4ZEMVQVuCOrZ67vfrQ1RB6s=;
+        b=iTSnBHmyC16KcpnQm6xaWf0BA/+QfA/pMsqWiyPXQf7PnbnMRUJhcB8hboTn5k8Yo/
+         jPu2GIeSpvEQVHj5I2m+lSZzJsgEr17SD4JmdryTCaqRydBp6nCb9/fbhJSVqpKl4+WG
+         bhlrX7eT1/m7PDI2c8tlc/tSOI7YjYhXqB2O2AmBqhu6+aSfxvlIb25A7VieelXfH8NH
+         9uiJLx0YRiCuwsOx4805TWM6Zu+1scvsiF+4HjgfCMBAT7/Bp9X6Xj98I7sR5iEBbzLv
+         dmrHM9rzf2WyUeU4hJq8TCuH4bY8ad4jAI9LZrB3IDrNUTN7od6NnpMc+oIkFwYN5F8I
+         gahA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779022931; x=1779627731;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=FhotB3WmZS4RdLDhV3zhLMq1HMhtHjJJYY8Fard8AIs=;
-        b=nJynwmq3V4N2ITM5lwiKRT3QwHGeVKKe7892ZeeG24XmFFv3SuBQ2cgEM2zu3eygDe
-         6UWKhh4YaBtnPoTv7tt+fHAv4uMoRUNa4d7lQFxzXGCDoKU+1k1qtufLAOijWKYLBVrI
-         05RIW10ms+GtAxFNuLzJG9lo31vZEIje/u1/kgg9RR9GooE3wwHBYrph/p7Gii07LIuN
-         UvQ6ClJCrPJcP4YQuxTWd/jPT46IslGe4XBxiTc49xHFWI0PRrXxoAIj4FWHlRM0UnV2
-         qj8VJOwMxA2zeHTjWnGRJmLU/ojHLUtEN4niSeCY1sr/DgAEOFoIZXypgvSYhKz+Kq9X
-         XXxg==
-X-Forwarded-Encrypted: i=1; AFNElJ+wVJeZQTT2f0rabYgZOAIBzwZZ/5HTJtDthrY3kQ0A0TZLBmSUnlMY274Tr2Be+Y5VyUnP9T//yPLW8tu74A==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz5N9S652kKziwfWTFRsf1E+IbaSxfLRRE8J/2zEe0C44umwYHi
-	l55x0OzF8MAvfOqIR/7ayzLXqohGVq/w2uuTXTgKiBrLjNjOd0A6Lm6MFLdT0nAdiPBUvAb+K5t
-	KXOvme6zMOtEpUMNCvaGyRKBJGubdMJE=
-X-Gm-Gg: Acq92OHAzkMfoT1MO4B/ywo2k/dGKoXb8RgnGYOkUPFnvcpWNsWn6CAewNDr9RvpPlg
-	k1hjsUDqSKd8iCz5+R5LCn2SwUvp50Flg3Nonp4sSAg6gLRoBihyiWwR6PRvTY6PLyf0VFmiEfM
-	ZIHPDByXFKM8iHQfZoJ+WGQnqz/YZWYGAexPUDPlzzhVgBVzNyGNZxl2V44xvJJjM3zARLD2/+e
-	vYBdJjeRPw5IuSvRaHfhCPjvdhkxjY2xGWXcRgvhVevFrjTCKsaXKSsB0A5RP+55qWCgqLLk72w
-	5eK4QF1BPFFi7YGbbw==
-X-Received: by 2002:a05:6512:b9d:b0:5a9:d3a4:a25c with SMTP id
- 2adb3069b0e04-5aa0e7470d1mr2980752e87.37.1779022930147; Sun, 17 May 2026
- 06:02:10 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1779060329; x=1779665129;
+        h=cc:to:subject:message-id:date:from:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=oQMlYsX+VgifZz5u10HC4ZEMVQVuCOrZ67vfrQ1RB6s=;
+        b=TIwcxyXwtFZW41c1vuqYLQmK8EjiEijAgBzyidI9C+BqC88QPpRCP0w2lYKuhKFKRL
+         Y2G+ftpC9OPoMCcpXHRLO5s9wrVoQavDC7VbqZLOy/2SSobLX2kVXYBwuSqrP4NunHAi
+         GYcQv/Cy7nxFUdj5ejFcGLvQSJtCTQF/6PRGOfvPWFNLK7RLg2aTQMh8l++yQpcclO9u
+         +zTsW/7iT4n62pk33l9yKKHd+++KjjQauL4UVAGXJB+OVaQrl7nKR+seDB/J51xQEi8q
+         p8Ol8jse9NdLC23R/N+zDGjx3jCSMtTHswyiSyeRInbH76yDtkVfQcV7mnGBWYewSGnU
+         lFCg==
+X-Forwarded-Encrypted: i=1; AFNElJ/n8bFTDIEG895gvSC0n7Qq3QX2FYkmKaX0Zjp7jj9vokY3e2i+WH+Jp7LC+tvygjrTpuE/rzANVF0aMVbyTA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwY4ihU1LfxXad/HX1HVQbSlNCPRiLJanmg69ZRsSMsSvVFsKKP
+	bEm0QxRIHdp5Nyt8JwQCqCu9rL5DwjnKxGbMXcf/Yr8p4q8+vPrX0fhWK1fT61waoylp5iChVBt
+	KJ+6bwjq8VAM8cX6vL+77XTvBb/iCV4E=
+X-Gm-Gg: Acq92OEbuBqxKqgzEQnCvhcpRyaHIbpaBmzOiuWagVGrWzwnxVhv3JCsJHNLGszghic
+	uXpRleC2Fg1DBezfmFkRb1O4+KkxJWhQhd0kIMgBAGNBTk3z6AOvQJxZXHXxT+Fa5OmTzAUA8ar
+	HWwA1mI+NQwgqW3OHaW+Y0S4bCXJl0G9ZS4za1DDkQUpPVAIaNJrk9AX+Lvy9TvjswmqW2GbvsP
+	4PlLudrHgaP9d7ttQu34l6vvJNi6H0Xb0aAIFidnsEKePCPWYusyj3YnrvhtZz0c2XjILR5yrEs
+	IedUvVoHPya9nVRf+UlGOdLW+9ZW+BVhRJKAIkhM
+X-Received: by 2002:a05:7300:e125:b0:2f5:6d9c:7156 with SMTP id
+ 5a478bee46e88-303986814f8mr6045988eec.17.1779060329249; Sun, 17 May 2026
+ 16:25:29 -0700 (PDT)
 MIME-Version: 1.0
-References: <CACjnFagN9zeSkwEv3-CSPJDUENPcEcOLjKyQoLQ91Yjn=rq5ww@mail.gmail.com>
- <20260506200918.D68321EA006C@mailuser.phl.internal> <CAGp9LzqkJ8QoOnBAiGu=uum3-LmCB3yHr91sw1HoLw+7ewNx6A@mail.gmail.com>
- <CAN6xzWdsYY0eni7aHG2Q=i2zz-rVxFRJJhCJbUsn=Pn_oDY-bQ@mail.gmail.com>
-In-Reply-To: <CAN6xzWdsYY0eni7aHG2Q=i2zz-rVxFRJJhCJbUsn=Pn_oDY-bQ@mail.gmail.com>
-From: John Henry <jshenry1963@gmail.com>
-Date: Sun, 17 May 2026 09:01:59 -0400
-X-Gm-Features: AVHnY4IMQ_YzMKlit-aEQHdc_R-PD7schhIkAMTGveoOUQVZ-GY9WU5-GFVhZ9s
-Message-ID: <CAN6xzWcetGmoWtBA1Rm2vFaFGT8efeTw5LH1KPLZeGOtfGj2fQ@mail.gmail.com>
-Subject: Re: [bug report] wifi: mt76: mt7925: iw set txpower fixed accepted
- but ignored
-To: Sean Wang <sean.wang@kernel.org>
-Cc: Javier Tia <floss@jetm.me>, Bradley Pizzimenti <brad.pizzimenti@gmail.com>, 
-	linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, nbd@nbd.name, 
-	lorenzo@kernel.org, ryder.lee@mediatek.com, shayne.chen@mediatek.com, 
-	sean.wang@mediatek.com, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>, 
-	Nick Morrow <morrownr@gmail.com>
+From: Brandon Arnold <brandon.arnold@gmail.com>
+Date: Sun, 17 May 2026 16:25:17 -0700
+X-Gm-Features: AVHnY4InOi6pS-JhDeB7XWvzVJUHUwJqjaT6X2kyEDvJ9oU5Qy6fDU_IKgrEFzo
+Message-ID: <CAM07e=vYJE8khJmbsn75SOYye44o8YV8TZsRyF1mFRuUTMCgUw@mail.gmail.com>
+Subject: [REGRESSION] Bluetooth: btmtk: MT7922 "Failed to send wmt func ctrl
+ (-22)" after 634a4408c0615c ("validate WMT event SKB length before struct access")
+To: linux-bluetooth@vger.kernel.org
+Cc: luiz.von.dentz@intel.com, tristan@talencesecurity.com, 
+	chris.lu@mediatek.com, linux-mediatek@lists.infradead.org, 
+	gregkh@linuxfoundation.org, stable@vger.kernel.org, 
+	regressions@lists.linux.dev
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260517_060213_408298_CD09E524 
-X-CRM114-Status: GOOD (  55.02  )
+X-CRM114-CacheID: sfid-20260517_162530_464680_A7EB1506 
+X-CRM114-Status: GOOD (  12.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,234 +113,124 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Just a kind reminder of this issue, has anyone been able to reproduce
-this monitor mode issue?
-When scanning through channels, and the list of channels is > 4, there
-is a large transmit tick/burst coming from the MT7921u and the MT7925.
-This can easily be seen on an RF Spectrum Analyzer.
-Confirmed on an Alfa AWUS036AXML consumer product and the Netgear
-Nighthawk A9000.
-This can be reproduced with simple scripts.
+#regzbot introduced: 634a4408c0615c206885e60ea05f489c426f64b6
+#regzbot title: MT7922 BT controller never registers (wmt func ctrl
+-22) after btmtk WMT SKB-length validation
 
-Reproduction with stock iw commands (no custom code):
+Hello there.
 
-IFACE=3D$(iw dev | awk '/Interface wl/ {print $2; exit}')
-iw reg set US ; sleep 1
-ip link set "$IFACE" down
-iw dev "$IFACE" set type monitor
-ip link set "$IFACE" up
+I wanted to report the below information about a commit that I
+confirmed broke my MediaTek MT7922 adapter. The commit is also built
+into the main Arch Linux package, so it affected me during a routine
+update (see the BBS link in the report below). This adapter is the one
+that came with my Framework Laptop 16 system.
 
-# This triggers narrowband bursts at channel center on each retune:
-while true; do
-  for f in 2412 2417 2422 2427 2432; do
-    iw dev "$IFACE" set freq "$f" HT20
-  done
-done
+Apologies for Claude's verbosity and language but I can confirm I
+attended the bisect and revert of the offending diff. Thank you!
 
-# This does NOT (only 4 frequencies):
-while true; do
-  for f in 2412 2422 2462 2484; do
-    iw dev "$IFACE" set freq "$f" HT20
-  done
-done
+Workaround in use: pinned to the Arch Linux pre-7.0.7 kernel.
 
-Bursts are ~800 kHz wide at the base, -30 to -50 dBm OTA at close
-range, brief (estimated few hundred microseconds), at channel
-frequency. tx_stats counters remain zero throughout.
-On Mon, May 11, 2026 at 1:58=E2=80=AFPM John Henry <jshenry1963@gmail.com> =
-wrote:
->
-> Bradley/Sean,
->
-> Thank you all very much for the information.
-> I tested this on mt7921u based Alfa AWUS unit and also an mt7925 based
-> Netgear Nighthawk unit.
-> I can confirm that the RF tick issue is present on both models when in
-> Monitor Mode. I'm assuming it is in the base mt76?
->
-> I attempted sudo iw dev wlxxx set txpower fixed nn where nn is the
-> minimum value, next few values up, and then a few near the max values,
-> and see no change in the signal strength of the RF Ticks when scanning
-> through 5 or more channels.
->
-> Please keep this in mind when attempting to resolve the known txpower
-> 3dBm issue if possible, or please generate a new bug report for that
-> specifically so that I can track when it is patched, or in ??? version
-> so that I can test here locally.
->
-> Incidentally, I'd appreciate it if anyone could please attempt to
-> repeat using the scripts I had shown in the previous posts and confirm
-> it is indeed seen by others.
->
-> Thank you very much for your time and assistance
->
-> John Henry
->
->
->
->
-> From: Bradley Pizzimenti <brad.pizzimenti@gmail.com>
-> To: linux-wireless@vger.kernel.org
-> Cc: linux-kernel@vger.kernel.org, nbd@nbd.name, lorenzo@kernel.org,
-> ryder.lee@mediatek.com, shayne.chen@mediatek.com,
-> sean.wang@mediatek.com
-> Subject: [bug report] wifi: mt76: mt7925: iw set txpower fixed
-> accepted but ignored
-> Date: Mon, 4 May 2026 15:04:35 -0700 [thread overview]
-> Message-ID: <CACjnFagN9zeSkwEv3-CSPJDUENPcEcOLjKyQoLQ91Yjn=3Drq5ww@mail.g=
-mail.com>
-> (raw)
->
-> Hi there maintainers,
->
-> `iw dev <iface> set txpower fixed N` returns success on mt7925 for any
-> N tested, but the reported txpower never changes from a stuck value of
-> 3.00 dBm. The kernel accepts and ignores the call silently in both
-> directions (above and below the displayed value), and well below the
-> regulatory ceiling.
->
-> I'm aware there's prior art on the cosmetic 3.00 dBm display issue
-> (Razvan Grigore's v2 series, Feb 2025; Ming Yen Hsieh's txpower init
-> refactor, Sept 2025). What seems potentially distinct here is that the
-> user-issued `iw set txpower fixed N` itself is silently no-op'd,
-> separate from the reported-value question. Reporting as breadcrumbs
-> in case the second observation is a separate bug rather than the same
-> one.
->
-> Hardware
-> --------
-> MEDIATEK MT7925 [Filogic 360], 802.11be 2x2, PCI 14c3:7925
-> ASIC revision 0x79250000
-> Driver in use: mt7925e (in-tree)
->
-> Firmware (from dmesg at probe)
-> ------------------------------
-> mt7925e 0000:01:00.0: HW/SW Version: 0x8a108a10,
->                      Build Time: 20260106153007a
-> mt7925e 0000:01:00.0: WM Firmware Version: ____000000,
->                      Build Time: 20260106153120
-> Files: mediatek/mt7925/WIFI_MT7925_PATCH_MCU_1_1_hdr.bin
->        mediatek/mt7925/WIFI_RAM_CODE_MT7925_1_1.bin
->
-> Kernel
-> ------
-> 6.18.18-1-MANJARO (close to vanilla 6.18 stable; not yet tested on
-> wireless-next or nbd168/wireless HEAD -- happy to retest if needed,
-> but flagging the data point in case it helps as-is).
->
-> Tools: iw version 6.17
->
-> Regulatory
-> ----------
-> $ iw reg get
-> country US: DFS-FCC
->    ...
->    (5730 - 5850 @ 80), (N/A, 30), (N/A), AUTO-BW
->    ...
->
-> Connection context: 5GHz channel 161 (5805 MHz), 80 MHz, VHT-MCS,
-> NSS 1. So we are on a band with a 30 dBm regulatory cap.
->
-> Observed
-> --------
-> $ iw dev wlp1s0 info | grep txpower
->         txpower 3.00 dBm
->
-> $ sudo iw dev wlp1s0 set txpower fixed 100   # 1 dBm
-> $ iw dev wlp1s0 info | grep txpower
->         txpower 3.00 dBm
->
-> $ sudo iw dev wlp1s0 set txpower fixed 1500  # 15 dBm
-> $ iw dev wlp1s0 info | grep txpower
->         txpower 3.00 dBm
->
-> $ sudo iw dev wlp1s0 set txpower auto
-> $ iw dev wlp1s0 info | grep txpower
->         txpower 3.00 dBm
->
-> All four `set` invocations return exit code 0. The reported value
-> never moves.
->
-> Expected
-> --------
-> Either:
->   - The reported txpower follows the requested value (or, where
->     capped, the actual applied value with extack indicating the
->     cap reason), or
->   - The set call returns an error rather than silently ignoring the
->     request.
->
-> Caveats
-> -------
-> - Not yet tested on wireless-next or nbd168/wireless HEAD. If a
->   reproduction on a current dev tree would be useful, I can do that.
-> - I have not verified whether the actual radiated TX power changes
->   in response to `set txpower fixed`; I am reporting only the
->   user-visible behavior.
->
-> Thanks,
-> Bradley
->
-> On Wed, May 6, 2026 at 8:12=E2=80=AFPM Sean Wang <sean.wang@kernel.org> w=
-rote:
-> >
-> > Hi,
-> >
-> > The TX power reporting issue has already been investigated by Lucid
-> > from the Linux WiFi USB community, and there is a proposed solution.
-> > I think we can continue checking whether there are any remaining
-> > issues on top of that work. Please refer to the patches here:
-> > https://lists.infradead.org/pipermail/linux-mediatek/2026-April/105726.=
-html
-> > Thanks everyone for reporting and raising these concerns.
-> >
-> > On Wed, May 6, 2026 at 3:09=E2=80=AFPM Javier Tia <floss@jetm.me> wrote=
-:
-> > >
-> > > On Sun May  4 22:04:48 2026 Bradley Pizzimenti wrote:
-> > > > `iw dev <iface> set txpower fixed N` returns success on mt7925 for
-> > > > any N tested, but the reported txpower never changes from a stuck
-> > > > value of 3.00 dBm.
-> > >
-> > > Hi Bradley,
-> > >
-> > > The 3 dBm display bug is a known issue we have seen when using mt7927
-> > > and a tested fix has been working well so far. The root cause is that
-> > > mt7925_mcu_set_rate_txpower() programs the per-band SKU tables into
-> > > firmware but never assigns phy->txpower_cur. mt76_get_txpower() then
-> > > computes:
-> > >
-> > >   DIV_ROUND_UP(0 + 6, 2) =3D 3
-> > >
-> > > regardless of the actual power level. The RF output is unaffected;
-> > > it is a display-only bug.
-> > >
-> > > The fix reads the effective TX power back from the rate power limits
-> > > after programming the SKU tables and writes it to phy->txpower_cur,
-> > > following the same pattern used by mt7996:
-> > >
-> > >   https://github.com/jetm/mediatek-mt7927-dkms/blob/master/mt7927-wif=
-i-14-fix-reported-txpower-always-showing-3-db.patch
-> > >
-> > > This is part of a series we are targeting for wireless-next; not
-> > > yet upstream.
-> > >
-> > > > What seems potentially distinct here is that the user-issued
-> > > > `iw set txpower fixed N` itself is silently no-op'd, separate
-> > > > from the reported-value question.
-> > >
-> > > Agreed those are two separate issues. Our patch addresses the
-> > > display-only side: after applying it, iw will report the value the
-> > > firmware is actually using based on the SKU tables, rather than
-> > > always 3 dBm. Whether `set txpower fixed N` propagates to firmware
-> > > to change actual output power is orthogonal and not addressed here.
-> > >
-> > > If you can test the patch on your MT7925 and confirm the displayed
-> > > value reflects the correct power after association, a Tested-by
-> > > would be appreciated.
-> > >
-> > > Best,
-> > > Javier
-> > >
-> >
+Thanks,
+Brandon Arnold
+
+Commit 634a4408c0615c ("Bluetooth: btmtk: validate WMT event SKB
+length before struct access"), backported to 7.0.x stable and shipped
+in v7.0.7, breaks Bluetooth on the MediaTek MT7922: the WMT function
+control step fails with -EINVAL and the HCI controller never
+registers. WiFi on the same chip (mt7921e) is unaffected.
+
+This is NOT a v6.19->v7.0 mainline regression -- mainline v7.0 is
+GOOD. The regression is the above commit specifically; it is absent
+from v7.0 and v7.0.6 and present in v7.0.7.
+
+Scope / affected versions
+-------------------------
+- GOOD: mainline v7.0, linux-stable v7.0.6 (commit absent)
+- BAD: linux-stable v7.0.7 (commit present)
+- Independently reported on Arch (different machine -- Lenovo
+IdeaPad, MT7922 USB [0489:e0d8]): BROKEN on linux 7.0.7.arch2-1,
+WORKING on 7.0.6.arch1-1, identical symptom.
+https://bbs.archlinux.org/viewtopic.php?id=313561
+
+Hardware / firmware (primary reporter)
+--------------------------------------
+- Framework Laptop 16 (AMD Ryzen AI 300 Series), board FRANMHCP09 A9
+- BIOS: INSYDE/Framework 03.04, 2025-11-06
+- MT7922, PCI [14c3:0616] subsys [14c3:e616]; BT side USB, driver
+btusb/btmtk; WiFi side mt7921e (works)
+- linux-firmware 20260410; BT firmware BT_RAM_CODE_MT7922_1_1,
+HW/SW Version 0x008a008a, Build Time 20260224103448
+- bluez 5.86
+
+Symptom
+-------
+The firmware download and version handshake still succeed (identical
+HW/SW version line before and after), then:
+
+Bluetooth: hci0: HW/SW Version: 0x008a008a, Build Time: 20260224103448
+Bluetooth: hci0: Failed to send wmt func ctrl (-22)
+
+No "Device setup in N usecs" follows; BlueZ reports "No default
+controller available". hci0 exists in /sys/class/bluetooth and is not
+rfkill-blocked. Reproducible deterministically on cold boot,
+`modprobe -r btusb; modprobe btusb`, and full USB unbind/rebind. It
+fails even with btusb enable_autosuspend=0, so this is distinct from
+the known func-ctrl/autosuspend race.
+
+Analysis
+--------
+634a4408c0615c reworks btmtk_usb_hci_wmt_sync() to validate length
+with skb_pull_data() before casting the WMT event:
+
+- wmt_evt = (struct btmtk_hci_wmt_evt *)data->evt_skb->data;
++ wmt_evt = skb_pull_data(data->evt_skb, sizeof(*wmt_evt));
++ if (!wmt_evt) { ... err = -EINVAL; goto err_free_skb; }
+...
+case BTMTK_WMT_FUNC_CTRL:
++ if (!skb_pull_data(data->evt_skb,
++ sizeof(wmt_evt_funcc->status))) {
++ err = -EINVAL; goto err_free_skb;
++ }
+wmt_evt_funcc = (struct btmtk_hci_wmt_evt_funcc *)wmt_evt;
+
+For the FUNC_CTRL response from the MT7922, one of these
+skb_pull_data() calls returns NULL and the function returns -EINVAL
+(surfaced as "Failed to send wmt func ctrl (-22)"). In effect the
+length the driver now requires
+(sizeof(struct btmtk_hci_wmt_evt) + sizeof(status)) exceeds what this
+controller actually sends for FUNC_CTRL, so a valid handshake is now
+rejected. The pre-patch code cast and read the same bytes without the
+strict length gate and worked on this hardware.
+
+Empirical confirmation (mainline, no distro patches)
+----------------------------------------------------
+Built faithfully from the running Arch config (only LOCALVERSION
+added); no out-of-tree changes.
+
+- mainline v7.0 : GOOD (commit absent)
+- linux-stable v7.0.7 : BAD (kernel 7.0.7-bisect; WMT func ctrl -22
+count = 1; hci0 device setup never completes; bluetoothctl shows 0
+controllers)
+- v7.0.7 + revert of
+70d37a8b9229 (the 7.0.7
+backport of 634a4408c0615c): GOOD (kernel
+7.0.7-bisect-00001-ge33bfb5d7480; WMT func ctrl -22 count = 0; hci0
+device setup OK; bluetoothctl shows 1 controller)
+
+The reverted tree's drivers/bluetooth/btmtk.c is byte-identical to
+v7.0.6 (git diff v7.0.6 -- drivers/bluetooth/btmtk.c is empty), so the
+v7.0.7-vs-revert pair isolates exactly this one commit.
+
+Reproduction
+------------
+1. Boot a kernel >= v7.0.7-equivalent on MT7922 hardware.
+2. `bluetoothctl list` -> no controller.
+3. `journalctl -k -b | grep 'wmt func ctrl'` -> -22.
+4. Revert 634a4408c0615c (or boot v7.0.6) -> controller registers.
+
+A straight revert restores operation and is offered as the candidate
+fix; alternatively the length checks should be relaxed to match the
+MT7922's actual FUNC_CTRL WMT event length. I can test patches, or
+provide full bad/good kernel logs, btmon/hci traces, and the exact
+short SKB length on request.
 
