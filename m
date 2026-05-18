@@ -4,103 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D9C5CD4F3C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2026 02:41:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3F04CD4F3C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2026 03:04:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=uYfojg12w5muo1Y1nJcT6Yfje9fAPhcae6+0t2EB+gE=; b=cPSZdBR+haL4ZordIoRYdvp9gD
-	/v3c/oSe4Qhzi08JAMGIlKJor9rSn5OPpM+/6ctOUDVjZjzuTkG+bThwF/JK4H+/JD198h3OWCUJd
-	oNYJ9m4l+V1hXtYm4/w/WNmSzb0/JNPr9VK5lb0bJq77sSzydvkfG5HuZC9tJr/5sia39thrpn3Hp
-	P7j+6MZ/gzoXAXXAbRwaFGwbT+nOdpNnCFJSElsi1BkOI31dw/KArxIPO9quTIzwiAmY/2cCo+Sqa
-	HiX/n7ZFn7pmXb48W310EfSH+TzhmHhegFB8otGhiYYuaYYKeXF6lyNkajfal5qcgRJ1GOgHt5V1S
-	Y6Va2ZDw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=x0L1YXQpg5cMFdXw90MD+Ygtm1m+OV8hivBqgSqRHhk=; b=mkwCcwyN0kPnH3qCfOwUMPBQDH
+	fzaay2ORnoyeZ0DUuuZ8mCIwK8F0eoFhUDKsxYjLCwDB6IDJ5iSZ30neMtq31wr4P/eOO0P/uZAOG
+	tzYBxZ1AH48h5uvwUuUpZl649n8vxJJbXteAfl1dbYaJMa1t1GV6wx2grwRYG3tenWC8d6yNinZ/C
+	C5RVApkje5d533v8sVF0A2uZEM4A/xZogSB54OiuGah1Jl//oDmZDe8hJJQNdWbaFOBa/wIc4fnd1
+	Hdglh0JyqN6PmEL9U+wTReMYN3rUsFR4NvmqKjWQ1lAExuAg4dWjHYOqUA+159fCGEDonhi8tcTOy
+	I6OApFAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOnux-0000000Dxr2-1QjZ;
-	Mon, 18 May 2026 02:41:19 +0000
-Received: from mail-dy1-x132c.google.com ([2607:f8b0:4864:20::132c])
+	id 1wOoHP-0000000E0U3-3PDo;
+	Mon, 18 May 2026 03:04:31 +0000
+Received: from m16.mail.163.com ([220.197.31.4])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOnuu-0000000Dxpx-39oL
-	for linux-mediatek@lists.infradead.org;
-	Mon, 18 May 2026 02:41:18 +0000
-Received: by mail-dy1-x132c.google.com with SMTP id 5a478bee46e88-2f68f3b075fso7593622eec.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 17 May 2026 19:41:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1779072075; x=1779676875; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=uYfojg12w5muo1Y1nJcT6Yfje9fAPhcae6+0t2EB+gE=;
-        b=Vs1o7RSx2P5WZO9eIAjFF/Eglk9nnsXd6D5hjvbvVWEl/BAO0+liXAqfiaE89zW18A
-         SubmwYqzcwK4wgZUd/TlxFhDfjeW4Evm1NZoDMSQgK/xbIMKKXLqaQth25TdWyRiSrHS
-         g/6763F63kxjqIcyL1Giuosm2t/HpeI1vbhmA5vfKRcD8eAHyuDEqO4tCmsLDCgJNVEL
-         kqSYvYgiyu34NYrcA6+MBcKZ4JAe8Y7Q6JoM5czvHiTJzg+eb5heENiAgrxzPw9tXQyO
-         t7rLjf/4Y7j7C17Rg1zcAtDzgPfAOoa5AQZIvIXDyYjY6llXmL8ruNDUuxmiv9A6yaY+
-         28Pw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779072075; x=1779676875;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=uYfojg12w5muo1Y1nJcT6Yfje9fAPhcae6+0t2EB+gE=;
-        b=flggJqahunG2v0q2OvwHABAjXHPw4jrxA6TOYlopuH6zLqorEFKuNmfP3Pb336BeS4
-         2GXJ9vS2bd6+NxNsh07M8hLGSWpetbjyK5iERhQSz9OrCwheNb4fWWdeCK3wYQNPeBEO
-         DsJF6jjpUcRJL7lOwK4rULOBpImCSKdr2dTq5olnDwvjof2f0fxAUp61rojbcWmEjvbm
-         OQuAKj5hQnuCOtCWp94m/QAtPW97v+hZr4HxErhuOb194iw0I3HIwzUKcgz0PFLI0asP
-         ZYeISFtYMmEC9cylJ5EOkn1fcWXUnaP9xdzX7FbFfUQkf8jJKcXkVFfJ+jj6r1tDZ1b+
-         3gcg==
-X-Forwarded-Encrypted: i=1; AFNElJ8n52OWKzOtoAwxXojLhVoNqDJkfynBGOR+28tAVd/9QdsjLBlfUt+s67hPQfwvIanXBC83Bp27otTzkXPraA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzs9ETnMOL/ZZCiwaaAOpv6aptQwK8NpJU3vfutIEtHDiC6Hat0
-	OSgBw0Fh47wUOrgONhvN2WmN05XN1pRMuRBxJRBulmtLNwjNGMLzr6pS
-X-Gm-Gg: Acq92OF65ZeYYonshCtCRbTlC/Dzebaw4CmkZ/Uq2wirD+lDIoaELwo5GtahlvrFuHy
-	3eimxoxwLv51wk/j7sKJFbGLVdwFardQJmT1LvgnFOQRTQbI7piFco3tJlndONWHXmSgNXK5bn0
-	J5wPulDGXj9S3SLPXlvNF2WXfeyyPO3y3oEiX1xkWs1o6K5BLTxXq2bBklUbHlFlAzwzUxuLNiC
-	MuEl6dnwmbEkAUUkRm1ufuCYjB9Wn5Ub1mk6sOvfo7osAVo+9BpMMCBIsYfwY5UKWW/VPtLF+kz
-	/Y+/IlfFuEBSpS1bmG8hEBH3hG3QWCQrJNfRDOIDMyfF6xOekmE1i9QLNWEQY9e+2SvdeaYPocN
-	3cJKfWoUsg6K5RS/BtwGSv7ve/LWV5WybFx1s7OXvzByfu/bCaxnmO4jy3L+MXZcyzSXAiZDuRO
-	1qdZRAmXfZF7PUBekFqWjcgfFaQw6GNHvvRWY1RdYJ5Ktl/iTKP9e3rwF80GPjnUsG1mPNwFU6/
-	w==
-X-Received: by 2002:a05:7301:6447:b0:2ed:6f94:9d9d with SMTP id 5a478bee46e88-3039816bacemr6250335eec.8.1779072075393;
-        Sun, 17 May 2026 19:41:15 -0700 (PDT)
-Received: from [192.168.1.18] (177-4-162-74.user3p.v-tal.net.br. [177.4.162.74])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-302944ffdf0sm13394794eec.8.2026.05.17.19.41.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 17 May 2026 19:41:15 -0700 (PDT)
-From: =?utf-8?q?C=C3=A1ssio_Gabriel?= <cassiogabrielcontato@gmail.com>
-Date: Sun, 17 May 2026 23:41:07 -0300
-Subject: [PATCH] ASoC: mediatek: mt8196: Fix probe resource cleanup
+	id 1wOoHM-0000000E0TC-2uAg;
+	Mon, 18 May 2026 03:04:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Message-ID:Date:MIME-Version:Subject:To:From:
+	Content-Type; bh=x0L1YXQpg5cMFdXw90MD+Ygtm1m+OV8hivBqgSqRHhk=;
+	b=Wht434ZeCOh98R6ckfracEtlw0fbAaMCxSS0T2qo0yYicqRfE2LDUjRArZh6AV
+	J0OCs5vPig7TxU4sDRJiPZlot4ws03HPwV5JvhaiFSiC6x/fp7BUepwRGFTYOYqo
+	vImc2ieiHdUWnzkpwnc4U8LXTIj4iS5EggmS1fbbMfC+Q=
+Received: from [192.168.50.71] (unknown [])
+	by gzsmtp3 (Coremail) with SMTP id PigvCgAXv_OUgQpqJm4lDw--.152S2;
+	Mon, 18 May 2026 11:03:51 +0800 (CST)
+Message-ID: <e7143078-0c0a-4c15-a192-081f2a5a5ff8@163.com>
+Date: Mon, 18 May 2026 11:03:48 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20260517-asoc-mt8196-probe-cleanup-v1-1-a5d26949d7fe@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMSw7CMAwA0atUXmPJsaB8roK6SF0DQZBEcYuQq
- t69KSzfYmYG0xLU4NLMUPQTLKRY4XYNyMPHu2IYqoGJWzrQEb0lwfd4cucWc0m9orzUxykjM7s
- 9D46IBGqfi97C9/e+dn/b1D9Vxm0Iy7ICxn/9m30AAAA=
-X-Change-ID: 20260507-asoc-mt8196-probe-cleanup-222142d1000c
-To: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
- Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Darren Ye <darren.ye@mediatek.com>, Cyril Chao <Cyril.Chao@mediatek.com>
-Cc: linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- =?utf-8?q?C=C3=A1ssio_Gabriel?= <cassiogabrielcontato@gmail.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4462;
- i=cassiogabrielcontato@gmail.com; h=from:subject:message-id;
- bh=NQY0kyeCTdDm7O2l5wtg6rcyOWbfpOIoGV+6BXsEjug=;
- b=owGbwMvMwCV2IdZeKur/u2bG02pJDFlcNe6JtUFtfgbVXazaLt8rss0LjIzi50y7e38R660Ds
- 6zfftPoKGVhEONikBVTZFmdtMhyT9eDq/VxKzxg5rAygQxh4OIUgImUH2JkuHxgTuuh4hOduRML
- b2ex+S46dcbM8f7Mmh3TmJccS/pRaMjwV3xax8suw2mTDQ/z2dZN8OC8M8+I/7dhosam3E97g/c
- mMwEA
-X-Developer-Key: i=cassiogabrielcontato@gmail.com; a=openpgp;
- fpr=AB62A239BC8AE0D57F5EA848D05D3F1A5AFFEE83
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 2/7] PCI: cadence: Add post-link delay for LGA and
+ j721e glue driver
+To: Manikandan Karunakaran Pillai <mpillai@cadence.com>,
+ "bhelgaas@google.com" <bhelgaas@google.com>,
+ "lpieralisi@kernel.org" <lpieralisi@kernel.org>,
+ "kwilczynski@kernel.org" <kwilczynski@kernel.org>,
+ "mani@kernel.org" <mani@kernel.org>, "vigneshr@ti.com" <vigneshr@ti.com>,
+ "jingoohan1@gmail.com" <jingoohan1@gmail.com>,
+ "thomas.petazzoni@bootlin.com" <thomas.petazzoni@bootlin.com>,
+ "ryder.lee@mediatek.com" <ryder.lee@mediatek.com>,
+ "claudiu.beznea.uj@bp.renesas.com" <claudiu.beznea.uj@bp.renesas.com>
+Cc: "robh@kernel.org" <robh@kernel.org>,
+ "s-vadapalli@ti.com" <s-vadapalli@ti.com>,
+ "linux-omap@vger.kernel.org" <linux-omap@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "claudiu.beznea@tuxon.dev" <claudiu.beznea@tuxon.dev>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>,
+ "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+References: <20260518004246.1384532-1-18255117159@163.com>
+ <20260518004246.1384532-3-18255117159@163.com>
+ <DM6PR07MB67169B65E6B826E24A8E64AEA2032@DM6PR07MB6716.namprd07.prod.outlook.com>
+ <c909a890-65cb-444f-9b4f-9482d2f71c6d@163.com>
+ <DM6PR07MB6716CC48016E6D44EC5FCAB3A2032@DM6PR07MB6716.namprd07.prod.outlook.com>
+Content-Language: en-US
+From: Hans Zhang <18255117159@163.com>
+In-Reply-To: <DM6PR07MB6716CC48016E6D44EC5FCAB3A2032@DM6PR07MB6716.namprd07.prod.outlook.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-CM-TRANSID: PigvCgAXv_OUgQpqJm4lDw--.152S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxKF4kXrW7XFWxAr4DuFWxJFb_yoWxGw4DpF
+	WUGFWxC3WxXrW5Z3Wvv3W5XF1aqF98C3yDXws29w17XrnFyFnxJF42qF1ruF9Igr4DCr17
+	ZF1UtF9rWr1ayFUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07U4xRDUUUUU=
+X-Originating-IP: [140.206.53.66]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbC6xijR2oKgZg1tgAA3t
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260517_194116_803023_2715218D 
-X-CRM114-Status: GOOD (  15.43  )
+X-CRM114-CacheID: sfid-20260517_200429_121559_95605644 
+X-CRM114-Status: GOOD (  18.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,140 +94,177 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT8196 AFE probe assigns reserved memory with
-of_reserved_mem_device_init(), but never releases it.
-This leaks the reserved memory assignment on driver
-removal and on later probe failures.
 
-The same probe path also uses unchecked pm_runtime_get_sync() calls.
-A failure while resuming the device can leave the runtime PM usage
-count in an unexpected state.
 
-The regmap error path returns directly while the device is still
-runtime active, and the remove path drops a runtime PM reference even
-though successful probe has already released its temporary reference.
+On 5/18/26 10:38, Manikandan Karunakaran Pillai wrote:
+> 
+> 
+>> EXTERNAL MAIL
+>>
+>>
+>>
+>>
+>> On 5/18/26 10:12, Manikandan Karunakaran Pillai wrote:
+>>>
+>>>
+>>>> EXTERNAL MAIL
+>>>>
+>>>>
+>>>> The Cadence LGA (Legacy Architecture IP) PCIe host controller currently
+>>>> lacks the mandatory 100 ms delay after link training completes for speeds
+>>>>> 5.0 GT/s, as required by PCIe r6.0 sec 6.6.1.
+>>>>
+>>>> Add a 'max_link_speed' field to struct cdns_pcie. In the common host
+>>>> layer function cdns_pcie_host_start_link(), after the link has been
+>>>> successfully established, call pci_host_common_link_train_delay() to
+>>>> insert the required delay.
+>>>>
+>>>> For the j721e glue driver, set cdns_pcie.max_link_speed from the existing
+>>>> link speed logic. For other LGA-based glue drivers (sky1, sg2042), the
+>>>> common LGA host setup (pcie-cadence-host.c) provides a fallback reading
+>>>> of the device tree property "max-link-speed" when available. This ensures
+>>>> that the delay is not missed on those platforms once they enable the
+>>>> property.
+>>>>
+>>>> Signed-off-by: Hans Zhang <18255117159@163.com>
+>>>> ---
+>>>> drivers/pci/controller/cadence/pci-j721e.c                | 1 +
+>>>> drivers/pci/controller/cadence/pcie-cadence-host-common.c | 4 ++++
+>>>> drivers/pci/controller/cadence/pcie-cadence-host.c        | 4 ++++
+>>>> drivers/pci/controller/cadence/pcie-cadence.h             | 2 ++
+>>>> 4 files changed, 11 insertions(+)
+>>>>
+>>>> diff --git a/drivers/pci/controller/cadence/pci-j721e.c
+>>>> b/drivers/pci/controller/cadence/pci-j721e.c
+>>>> index bfdfe98d5aba..ae916e7b1927 100644
+>>>> --- a/drivers/pci/controller/cadence/pci-j721e.c
+>>>> +++ b/drivers/pci/controller/cadence/pci-j721e.c
+>>>> @@ -206,6 +206,7 @@ static int j721e_pcie_set_link_speed(struct
+>> j721e_pcie
+>>>> *pcie,
+>>>> 	    (pcie_get_link_speed(link_speed) == PCI_SPEED_UNKNOWN))
+>>>> 		link_speed = 2;
+>>>>
+>>>> +	pcie->cdns_pcie->max_link_speed = link_speed;
+>>>> 	val = link_speed - 1;
+>>>> 	ret = regmap_update_bits(syscon, offset, GENERATION_SEL_MASK,
+>>>> val);
+>>>> 	if (ret)
+>>>> diff --git a/drivers/pci/controller/cadence/pcie-cadence-host-common.c
+>>>> b/drivers/pci/controller/cadence/pcie-cadence-host-common.c
+>>>> index 2b0211870f02..18e4b6c760b5 100644
+>>>> --- a/drivers/pci/controller/cadence/pcie-cadence-host-common.c
+>>>> +++ b/drivers/pci/controller/cadence/pcie-cadence-host-common.c
+>>>> @@ -14,6 +14,7 @@
+>>>>
+>>>> #include "pcie-cadence.h"
+>>>> #include "pcie-cadence-host-common.h"
+>>>> +#include "../pci-host-common.h"
+>>>>
+>>>> #define LINK_RETRAIN_TIMEOUT HZ
+>>>>
+>>>> @@ -115,6 +116,9 @@ int cdns_pcie_host_start_link(struct cdns_pcie_rc
+>> *rc,
+>>>> 	if (!ret && rc->quirk_retrain_flag)
+>>>> 		ret = cdns_pcie_retrain(pcie, pcie_link_up);
+>>>>
+>>>> +	if (!ret)
+>>>> +		pci_host_common_link_train_delay(pcie->max_link_speed);
+>>>> +
+>>>> 	return ret;
+>>>> }
+>>>> EXPORT_SYMBOL_GPL(cdns_pcie_host_start_link);
+>>>> diff --git a/drivers/pci/controller/cadence/pcie-cadence-host.c
+>>>> b/drivers/pci/controller/cadence/pcie-cadence-host.c
+>>>> index 0bc9e6e90e0e..058e4e619654 100644
+>>>> --- a/drivers/pci/controller/cadence/pcie-cadence-host.c
+>>>> +++ b/drivers/pci/controller/cadence/pcie-cadence-host.c
+>>>> @@ -13,6 +13,7 @@
+>>>>
+>>>> #include "pcie-cadence.h"
+>>>> #include "pcie-cadence-host-common.h"
+>>>> +#include "../../pci.h"
+>>>>
+>>>> static u8 bar_aperture_mask[] = {
+>>>> 	[RP_BAR0] = 0x1F,
+>>>> @@ -397,6 +398,9 @@ int cdns_pcie_host_setup(struct cdns_pcie_rc *rc)
+>>>> 	rc->device_id = 0xffff;
+>>>> 	of_property_read_u32(np, "device-id", &rc->device_id);
+>>>>
+>>>> +	if (pcie->max_link_speed < 1)
+>>>> +		pcie->max_link_speed = of_pci_get_max_link_speed(np);
+>>>> +
+>>> Why is the conditional if required here as during cdns_pcie_host_setup(), the
+>> value of
+>>> max_link_speed is expected to be '0', unless specifically initialized by the
+>> platform code separately.
+>>>
+>>> What happens if the max_link_speed is not defined in the corresponding dts
+>> ? Would not the -EINVAL returned from the function create issues ?
+>>
+>> Hi Manikandan,
+>>
+>> Please see:
+>>
+>> https://urldefense.com/v3/__https://github.com/torvalds/linux/blob/v7.1-
+>> rc4/drivers/pci/controller/dwc/pcie-
+>> designware.c*L191__;Iw!!EHscmS1ygiU1lA!EDHVakD3QN0gGza3V1__qzHgDG9
+>> RZlq7LzC5AFsYLV2i5FcoveNFsjWORRgRdHCAmOI-LizY5cJvGIWBOFJG$
+>>
+>>
+>> Best regards,
+>> Hans
+>>
+> That is how Designware has implemented it but that does not answer my query. Becos both these implementations do
+> not take care of the error returned, and it could well be the case for many of the current implementations.
 
-Register a devm cleanup action for the reserved memory assignment,
-use pm_runtime_resume_and_get(), and only drop runtime PM references
-on paths where they are actually held.
+Hi Manikandan,
 
-Fixes: 57513aabfe5b ("ASoC: mediatek: mt8196: add platform driver")
-Signed-off-by: Cássio Gabriel <cassiogabrielcontato@gmail.com>
----
- sound/soc/mediatek/mt8196/mt8196-afe-pcm.c | 44 ++++++++++++++++++++----------
- 1 file changed, 30 insertions(+), 14 deletions(-)
+If "max-link-speed" is not defined in the DT, then:
 
-diff --git a/sound/soc/mediatek/mt8196/mt8196-afe-pcm.c b/sound/soc/mediatek/mt8196/mt8196-afe-pcm.c
-index 511e888567be..a1ae8322d8b6 100644
---- a/sound/soc/mediatek/mt8196/mt8196-afe-pcm.c
-+++ b/sound/soc/mediatek/mt8196/mt8196-afe-pcm.c
-@@ -2242,13 +2242,16 @@ static int mt8196_afe_runtime_resume(struct device *dev)
- static int mt8196_afe_component_probe(struct snd_soc_component *component)
- {
- 	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
-+	int ret;
-+
-+	/* enable clock for regcache get default value from hw */
-+	ret = pm_runtime_resume_and_get(afe->dev);
-+	if (ret)
-+		return dev_err_probe(afe->dev, ret, "failed to resume device\n");
-+
-+	mtk_afe_add_sub_dai_control(component);
-+	pm_runtime_put_sync(afe->dev);
- 
--	if (component) {
--		/* enable clock for regcache get default value from hw */
--		pm_runtime_get_sync(afe->dev);
--		mtk_afe_add_sub_dai_control(component);
--		pm_runtime_put_sync(afe->dev);
--	}
- 	return 0;
- }
- 
-@@ -2306,6 +2309,11 @@ static const struct reg_sequence mt8196_cg_patch[] = {
- 	{ AUDIO_TOP_CON4, 0x361c },
- };
- 
-+static void mt8196_afe_release_reserved_mem(void *data)
-+{
-+	of_reserved_mem_device_release(data);
-+}
-+
- static int mt8196_afe_pcm_dev_probe(struct platform_device *pdev)
- {
- 	int ret, i;
-@@ -2320,8 +2328,13 @@ static int mt8196_afe_pcm_dev_probe(struct platform_device *pdev)
- 		return ret;
- 
- 	ret = of_reserved_mem_device_init(dev);
--	if (ret)
-+	if (ret) {
- 		dev_err(dev, "failed to assign memory region: %d\n", ret);
-+	} else {
-+		ret = devm_add_action_or_reset(dev, mt8196_afe_release_reserved_mem, dev);
-+		if (ret)
-+			return ret;
-+	}
- 
- 	afe = devm_kzalloc(dev, sizeof(*afe), GFP_KERNEL);
- 	if (!afe)
-@@ -2422,18 +2435,22 @@ static int mt8196_afe_pcm_dev_probe(struct platform_device *pdev)
- 	dev_pm_syscore_device(dev, true);
- 
- 	/* enable clock for regcache get default value from hw */
--	pm_runtime_get_sync(dev);
-+	ret = pm_runtime_resume_and_get(dev);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "failed to resume device\n");
- 
- 	afe->regmap = devm_regmap_init_mmio(dev, afe->base_addr,
- 					    &mt8196_afe_regmap_config);
--	if (IS_ERR(afe->regmap))
--		return PTR_ERR(afe->regmap);
-+	if (IS_ERR(afe->regmap)) {
-+		ret = PTR_ERR(afe->regmap);
-+		goto err_pm_put;
-+	}
- 
- 	ret = regmap_register_patch(afe->regmap, mt8196_cg_patch,
- 				    ARRAY_SIZE(mt8196_cg_patch));
- 	if (ret < 0) {
- 		dev_err(dev, "Failed to apply cg patch\n");
--		goto err_pm_disable;
-+		goto err_pm_put;
- 	}
- 
- 	regmap_read(afe->regmap, AFE_IRQ_MCU_EN, &tmp_reg);
-@@ -2452,12 +2469,12 @@ static int mt8196_afe_pcm_dev_probe(struct platform_device *pdev)
- 					      afe->num_dai_drivers);
- 	if (ret) {
- 		dev_err(dev, "afe component err\n");
--		goto err_pm_disable;
-+		return ret;
- 	}
- 
- 	return 0;
- 
--err_pm_disable:
-+err_pm_put:
- 	pm_runtime_put_sync(dev);
- 	return ret;
- }
-@@ -2467,7 +2484,6 @@ static void mt8196_afe_pcm_dev_remove(struct platform_device *pdev)
- 	struct mtk_base_afe *afe = platform_get_drvdata(pdev);
- 	struct device *dev = &pdev->dev;
- 
--	pm_runtime_put_sync(dev);
- 	if (!pm_runtime_status_suspended(dev))
- 		mt8196_afe_runtime_suspend(dev);
- 
+of_pci_get_max_link_speed
+   of_property_read_u32
+     of_property_read_u32_array
+       of_property_read_variable_u32_array
+         return -EINVAL;
 
----
-base-commit: 2be19ed9535043fe6abd7ccfc9aac6b7ecaac842
-change-id: 20260507-asoc-mt8196-probe-cleanup-222142d1000c
+
+For patch 0001, no actions will be executed. I wonder if this answers 
+your question?
 
 Best regards,
---  
-Cássio Gabriel <cassiogabrielcontato@gmail.com>
+Hans
+
+
+> 
+>>>
+>>>> 	pcie->reg_base = devm_platform_ioremap_resource_byname(pdev,
+>>>> "reg");
+>>>> 	if (IS_ERR(pcie->reg_base)) {
+>>>> 		dev_err(dev, "missing \"reg\"\n");
+>>>> diff --git a/drivers/pci/controller/cadence/pcie-cadence.h
+>>>> b/drivers/pci/controller/cadence/pcie-cadence.h
+>>>> index 574e9cf4d003..042a4c49bb9a 100644
+>>>> --- a/drivers/pci/controller/cadence/pcie-cadence.h
+>>>> +++ b/drivers/pci/controller/cadence/pcie-cadence.h
+>>>> @@ -86,6 +86,7 @@ struct cdns_plat_pcie_of_data {
+>>>>    * @ops: Platform-specific ops to control various inputs from Cadence PCIe
+>>>>    *       wrapper
+>>>>    * @cdns_pcie_reg_offsets: Register bank offsets for different SoC
+>>>> + * @max_link_speed: Maximum supported link speed
+>>>>    */
+>>>> struct cdns_pcie {
+>>>> 	void __iomem		             *reg_base;
+>>>> @@ -98,6 +99,7 @@ struct cdns_pcie {
+>>>> 	struct device_link	             **link;
+>>>> 	const  struct cdns_pcie_ops          *ops;
+>>>> 	const  struct cdns_plat_pcie_of_data *cdns_pcie_reg_offsets;
+>>>> +	int				     max_link_speed;
+>>>> };
+>>>>
+>>>> /**
+>>>> --
+>>>> 2.43.0
+> 
 
 
