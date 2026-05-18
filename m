@@ -4,107 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EACA7CD4F4A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2026 19:04:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11AB3CD4F4A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2026 20:31:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D19Vw4l9A1iAw5lo1r64wNXQuyjnSfA8yjiubDQIMYM=; b=e8FA5cJLTM+6f0zh+c79PGiyCj
-	Kuzm2/AdC1ojI7VFaqJmLOlK8BSivHcTFpZfz9Jj1wrDTwXHEe/lteEdkzyk4pxyl4Ku+OZy4RpWU
-	K5kH2hlI5u1lRcFRcrhbZVC0pj1rapsvTBL8BeqV4d7G42C2gyzUQdoTHJAte9KUfLTYQ+OzWrMVb
-	WFuKo0/jQiy/wzW0spr4t5qMJ+wLDoHwI3clZDJJy/jjK/YcImouY/cvLXC3TKtJIppkQxgx16Ahh
-	drJtwsc7JgaL6BeLEsvmb+qVftUwV/rymYPwY7wGx74sKNlJ39tB2IpoIVlUd4oBjD7QFEW2Gfi3W
-	Ugz/eLwQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tfp9Xfl9F8C0qLignbu5BJHJOBkG39IsvvzY8WnS24M=; b=STGJkP6x3x5Bn0dtvzl3xKqqo9
+	075utAxmK31pIQkxaZGFH8+MEDT/O9m4G/zCVQdBhUr01sf2O01LVPke9qzUWNdhq9rBM94V9fOai
+	U/7kk40qfYi9almme1T5fG+nPqMOiuhLBh1w2Kyn+VXmow76pEi/B7HuBsZDd7o3g5txsCILF48d/
+	7ZgmrOhatbsNgMrf3B9ffmhuXq8udPjJG9sS0+GLcPlAd11yiPrk+0ONvB3pVBzIsOmlPxWYzQRh4
+	HDEFvy0pLNqqiCWSE7iDLMRmSDSD9G1I9N7rpcJ4ekb5A22nY3OkzR6znC6q/YA1RPWgxf/tR2kiS
+	kZX0gQUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP3GC-0000000Gder-2xE4;
-	Mon, 18 May 2026 19:04:16 +0000
-Received: from mail-ot1-x32d.google.com ([2607:f8b0:4864:20::32d])
+	id 1wP4d0-0000000Gthp-38nR;
+	Mon, 18 May 2026 20:31:54 +0000
+Received: from mgamail.intel.com ([192.198.163.14])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP3GA-0000000Gddx-0u9B
-	for linux-mediatek@lists.infradead.org;
-	Mon, 18 May 2026 19:04:15 +0000
-Received: by mail-ot1-x32d.google.com with SMTP id 46e09a7af769-7e582b3bcaaso1990261a34.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 18 May 2026 12:04:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779131053; cv=none;
-        d=google.com; s=arc-20240605;
-        b=C3PBP1jxZpvlLtiabMThfplSJ+0fCkeDRragHKq8yJrRVRdBLVQ+odEYPslL0IAvBg
-         dLPgY5Zdh3Woz/ENVyAZyocmleGX/ig5dUO780ghxmKv/Y3heAb0LHLWBxJzh9nAUhlI
-         4HK3vIrY/kBrWPNBgVGiyaYDHL3dx1wJswOJRugFjPkUXevDmSxCn+QvthHLf2IuWraE
-         PwAhGceb2oPvwugO6lfJ/qgdfRXq+dcu4r6IWQo8Q1mMf3GLjQngyP/oKfm3mXvNDsoq
-         87rr5OSjuRuIFEmO8x7xYDsCPmytLoS6GH4DLzjZsCjR/gDQi67VdM9t3dMuWK6qNpVQ
-         TgyQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=D19Vw4l9A1iAw5lo1r64wNXQuyjnSfA8yjiubDQIMYM=;
-        fh=m6VaJ6usyEFBScU1e1ze7F69mR6bvVcPjEGgr3G2eCg=;
-        b=R147jSMr+HRc8tkJj8Ap9DufqqH0dhtf8b3/dUSLppW6l24a6nIvkA8xfWklbu2xBz
-         4odKeT3yZYo+n62IogyG2KpFFZXPQS4yhgqG6/WNWLhkv8Z1lqofntAn9FIu47CuM1SQ
-         OuRhp7GKKyy0tY78+JlKyjX1/2mIRD6e58ZPfxv48igWA2ms/uqbRyW0e7hFHZhKTEPj
-         Jv3y+3dqfGA20rwzW0swWlC2bTZ/Vyb5pYmPaFBIB3OnOy0kbmVh7qq1TC0N97Xe6Y5a
-         J4zg1LhQ0gN03Lmi/aeH7p+NtPg1S/QgtDworGcYdd01GadrjTq1/csFWJcynmFnMhPL
-         jGcg==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1779131053; x=1779735853; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=D19Vw4l9A1iAw5lo1r64wNXQuyjnSfA8yjiubDQIMYM=;
-        b=JsGaL4sunm+B8ZWWKeXg+N4qxQhCQ+t5NFEFQ/2AeXDnlW0Ipk22F+lC2ONhn6Esmg
-         i0g4XnEVdGkDv1BFQiBlka52Hn0iruZNt1gRvUKZDrDMzqjkZMxdfJkRmN9t0VfQcmgp
-         UZzHEAs17e81WTrTiw+37Z66+uLmvMZekPHpR3gJeESoZAvlIsW928NiQ0cP4qgdB9UJ
-         6ASqmLas3mc4DxVrvFVtHnqKZcWr0/+bzO5ZHu4nj8SM7MBWvN//wG5V8DIrZqZjkLTv
-         NiXqAhfJylAGXheOFpl0IasDpKZTBIx6+QLJK10cF/4dmaKVuJFuu9h+cwphCRR/NAhR
-         2epw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779131053; x=1779735853;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=D19Vw4l9A1iAw5lo1r64wNXQuyjnSfA8yjiubDQIMYM=;
-        b=Ek6x0E3AC4qJmaJuAt+qdTyLvS8mtNhW4N5TVYjL7jO7vxpZkYIknb//n7aU8vRghE
-         PMxAG6fPz12B6swJdff6b2xH6tUEqxOA/y6W1R5cTs0bYHA30EvbtCacS/8RKhraAgwu
-         K5l7M3I0RWSo/G5nlezG70nITWIjW9wOPX3tf2f913Qcb3hgd6aWjBBYXrrjc0mUXFDc
-         x+asHhx1LoXF+UKQN1EPSMUyOt2Cxu/YASjLQ5JG0z23wcR7TLFzKPePuK69jlFo6B7x
-         t03jLQM9544v6AFlr49uFmTEYGxalGuy1lSdYgxjhNLtlRI1e2Yy0EpgqxYVk3t5ARGT
-         zWJw==
-X-Forwarded-Encrypted: i=1; AFNElJ9X8wsFtwT07fgZxvzh3VBbVkpZuUwg9Ekxp2huifk3oV6M7qvpOxkA/P/uH42P4xf2avOhe8Xq5uNRR0Ek2A==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz61TcXmS4qMFwjv5TAqJ7eGE3FpRWYuLZHjMBCQGvNipyusV6s
-	HSpE5NEnzPJRMfojS/EYVyYxiNGeeySuLbuKS5TxW+L9Qf1FtvrPmQg4aT3iQPhzfZ8y4692mOk
-	kaQJRH1zSWl5Hni3+G5KdfPqarN0gC8o=
-X-Gm-Gg: Acq92OEq7wj98pTfcy9+CeWxvisUDMlDZxj6IgVjMW4Jjb8DuA4bMp8rP7qdzoiBDc5
-	Mb3bpCmGD6KiSEC19sugQP+c2tjnMcUt5Uhn4uBQYbWZ+RR9/KYhRLfJzc5Rpsnr3wApBtL4Tfa
-	qfqXb7KM7y8Feanx+A1IAOLHVP1cksNzXFnCfPK1x0e1Fn/qAaTioyyoR8ao5uokB5pTT5ayYqd
-	JanaVD7kjONfpRO3xiebxUVlN+Hama3YgVwyUAAbWCnrYSDfItUYPZXEgosxygvPzCs1wWl9vxz
-	fgafX7ijFTYY9Tn49LQ=
-X-Received: by 2002:a05:6830:3809:b0:7de:44a5:51d1 with SMTP id
- 46e09a7af769-7e4ea0818c0mr10204710a34.7.1779131052955; Mon, 18 May 2026
- 12:04:12 -0700 (PDT)
+	id 1wP4cx-0000000Gth7-0hL2;
+	Mon, 18 May 2026 20:31:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1779136311; x=1810672311;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=ydXo2XIcnCDnuaeWYRtalIfepOWgfDw1EKpHwpkVH/8=;
+  b=bqb7qO+W3uRlj1qGK7cfohtnEXLiGAzf7ASjCstnJymMxzJSJYwf54tY
+   CQxH+PX7wO20O8N5zmrBXPyCWeQ2AwbLO50r65mNr8dQ9m6dlYAGT7akk
+   mXbrOKKsUr0cT3G74x09V4wJgHcG5qIMfRJpBHUAm06UlGly038XC0G0v
+   tErSluAH9D+XvlF+U3fhQDm1M7tMQAqlYc9pQRP+l9h77a/zw8RLbhJFj
+   o7kCVtjrcmWQFBO7AQlyosZ8uRNn8r2gQd1DefusLLQZWwjHr6dH5fYIX
+   Bd3Ke+yVTf/TTri9swPJloYQwE6wJDW1ZRLbEaLenIpeD+Zf+By2V1W+8
+   Q==;
+X-CSE-ConnectionGUID: nlyNt4vIQEOyQ50jm6IiKA==
+X-CSE-MsgGUID: jzKdZo8mRe23vfFdgVWUeg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11790"; a="80035064"
+X-IronPort-AV: E=Sophos;i="6.23,242,1770624000"; 
+   d="scan'208";a="80035064"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 May 2026 13:31:50 -0700
+X-CSE-ConnectionGUID: d0m9t1lWTf6cVYdn+o0JBQ==
+X-CSE-MsgGUID: 13v+sl6tR2GHBYRSdDRZtw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,242,1770624000"; 
+   d="scan'208";a="233164454"
+Received: from lkp-server01.sh.intel.com (HELO d94e5e629b2d) ([10.239.97.150])
+  by fmviesa009.fm.intel.com with ESMTP; 18 May 2026 13:31:47 -0700
+Received: from kbuild by d94e5e629b2d with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1wP4cq-000000003N4-14ih;
+	Mon, 18 May 2026 20:31:44 +0000
+Date: Tue, 19 May 2026 04:30:53 +0800
+From: kernel test robot <lkp@intel.com>
+To: Guangshuo Li <lgs201920130244@gmail.com>,
+	Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+	Houlong Wei <houlong.wei@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Hans Verkuil <hverkuil@kernel.org>, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: oe-kbuild-all@lists.linux.dev, linux-media@vger.kernel.org,
+	Guangshuo Li <lgs201920130244@gmail.com>
+Subject: Re: [PATCH] media: mediatek: mdp: avoid double free on video
+ register failure
+Message-ID: <202605190406.bMshG7YY-lkp@intel.com>
+References: <20260518125500.1000083-1-lgs201920130244@gmail.com>
 MIME-Version: 1.0
-References: <20260428025614.1094085-1-senozhatsky@chromium.org>
-In-Reply-To: <20260428025614.1094085-1-senozhatsky@chromium.org>
-From: Jassi Brar <jassisinghbrar@gmail.com>
-Date: Mon, 18 May 2026 14:04:01 -0500
-X-Gm-Features: AVHnY4I7yygR6iIAN0n3cRgheBUNKVPddXLQRGYhBBdR5Z8-_fNNgL2cX9WJYo4
-Message-ID: <CABb+yY1zjOdV9XpSfD82WjbAY3_9tadQm+Cf2KaOsYercB6CEA@mail.gmail.com>
-Subject: Re: [PATCH] mailbox: mtk-adsp: fix UAF during device teardown
-To: Sergey Senozhatsky <senozhatsky@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>, YC Hung <yc.hung@mediatek.com>, 
-	Tzung-Bi Shih <tzungbi@kernel.org>, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260518125500.1000083-1-lgs201920130244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260518_120414_257631_004F5A7B 
-X-CRM114-Status: GOOD (  23.90  )
+X-CRM114-CacheID: sfid-20260518_133151_247353_55F73BEB 
+X-CRM114-Status: GOOD (  12.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,103 +96,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 27, 2026 at 9:56=E2=80=AFPM Sergey Senozhatsky
-<senozhatsky@chromium.org> wrote:
->
-> When the SOF audio driver fails to initialize (e.g. firmware boot
-> timeout), its devres unwind frees the snd_sof_dev object that the
-> mailbox client (mtk-adsp-ipc) reaches via chan->cl->rx_callback.
-> The mtk-adsp-mailbox shutdown clears the mailbox command registers
-> but leaves the IRQ line unmasked, so a late interrupt can still
-> queue a threaded handler after mbox_free_channel() had cleared
-> chan->cl, and mbox_chan_received_data() would then trigger UAF:
->
->   BUG: KASAN: slab-use-after-free in sof_ipc3_validate_fw_version
->    sof_ipc3_validate_fw_version
->    sof_ipc3_do_rx_work
->    sof_ipc3_rx_msg
->    mt8196_dsp_handle_request
->    mtk_adsp_ipc_recv
->    mbox_chan_received_data
->    mtk_adsp_mbox_isr
->    irq_thread_fn
->   Freed by task ...:
->    kfree
->    devres_release_all
->    really_probe
->    ... (sof-audio-of-mt8196 probe failure)
->
-> The crash was observed roughly three seconds after the failed probe.
->
-> disable_irq() in shutdown and enable_irq() in startup. disable_irq()
-> also waits for any in-flight interrupts, so by the time
-> mbox_free_channel() proceeds to clear chan->cl no rx_callback can run.
->
-> In addition, request the IRQ with IRQF_NO_AUTOEN so it stays masked
-> between probe and the first client bind =E2=80=94 otherwise an early inte=
-rrupt
-> can crash on chan->cl =3D=3D NULL in mbox_chan_received_data().
->
-> Fixes: af2dfa96c52d ("mailbox: mediatek: add support for adsp mailbox con=
-troller")
-> Signed-off-by: Sergey Senozhatsky <senozhatsky@chromium.org>
-> ---
->  drivers/mailbox/mtk-adsp-mailbox.c | 9 ++++++++-
->  1 file changed, 8 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/mailbox/mtk-adsp-mailbox.c b/drivers/mailbox/mtk-ads=
-p-mailbox.c
-> index 91487aa4d7da..8bcecddee0eb 100644
-> --- a/drivers/mailbox/mtk-adsp-mailbox.c
-> +++ b/drivers/mailbox/mtk-adsp-mailbox.c
-> @@ -19,6 +19,7 @@ struct mtk_adsp_mbox_priv {
->         struct mbox_controller mbox;
->         void __iomem *va_mboxreg;
->         const struct mtk_adsp_mbox_cfg *cfg;
-> +       int irq;
->  };
->
->  struct mtk_adsp_mbox_cfg {
-> @@ -67,6 +68,8 @@ static int mtk_adsp_mbox_startup(struct mbox_chan *chan=
-)
->         writel(0xFFFFFFFF, priv->va_mboxreg + priv->cfg->clr_in);
->         writel(0xFFFFFFFF, priv->va_mboxreg + priv->cfg->clr_out);
->
-> +       enable_irq(priv->irq);
-> +
->         return 0;
->  }
->
-> @@ -74,6 +77,8 @@ static void mtk_adsp_mbox_shutdown(struct mbox_chan *ch=
-an)
->  {
->         struct mtk_adsp_mbox_priv *priv =3D get_mtk_adsp_mbox_priv(chan->=
-mbox);
->
-> +       disable_irq(priv->irq);
-> +
->         /* Clear ADSP mbox command */
->         writel(0xFFFFFFFF, priv->va_mboxreg + priv->cfg->clr_in);
->         writel(0xFFFFFFFF, priv->va_mboxreg + priv->cfg->clr_out);
-> @@ -139,8 +144,10 @@ static int mtk_adsp_mbox_probe(struct platform_devic=
-e *pdev)
->         if (irq < 0)
->                 return irq;
->
-> +       priv->irq =3D irq;
->         ret =3D devm_request_threaded_irq(dev, irq, mtk_adsp_mbox_irq,
-> -                                       mtk_adsp_mbox_isr, IRQF_TRIGGER_N=
-ONE,
-> +                                       mtk_adsp_mbox_isr,
-> +                                       IRQF_TRIGGER_NONE | IRQF_NO_AUTOE=
-N,
->                                         dev_name(dev), mbox->chans);
->         if (ret < 0)
->                 return ret;
-> --
-> 2.54.0.545.g6539524ca2-goog
->
-Applied to mailbox/for-next
-Thanks
-Jassi
+Hi Guangshuo,
+
+kernel test robot noticed the following build errors:
+
+[auto build test ERROR on linuxtv-media-pending/master]
+[also build test ERROR on media-tree/master linus/master v7.1-rc4 next-20260518]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Guangshuo-Li/media-mediatek-mdp-avoid-double-free-on-video-register-failure/20260518-211648
+base:   https://git.linuxtv.org/media-ci/media-pending.git master
+patch link:    https://lore.kernel.org/r/20260518125500.1000083-1-lgs201920130244%40gmail.com
+patch subject: [PATCH] media: mediatek: mdp: avoid double free on video register failure
+config: m68k-allmodconfig (https://download.01.org/0day-ci/archive/20260519/202605190406.bMshG7YY-lkp@intel.com/config)
+compiler: m68k-linux-gcc (GCC) 15.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260519/202605190406.bMshG7YY-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202605190406.bMshG7YY-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c: In function 'mtk_mdp_register_m2m_device':
+>> drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c:1217:40: error: expected ';' before 'mdp'
+    1217 |         video_device_release(mdp->vdev)
+         |                                        ^
+         |                                        ;
+    1218 |         mdp->vdev = NULL;
+         |         ~~~                             
+
+
+vim +1217 drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c
+
+  1172	
+  1173	int mtk_mdp_register_m2m_device(struct mtk_mdp_dev *mdp)
+  1174	{
+  1175		struct device *dev = &mdp->pdev->dev;
+  1176		int ret;
+  1177	
+  1178		mdp->variant = &mtk_mdp_default_variant;
+  1179		mdp->vdev = video_device_alloc();
+  1180		if (!mdp->vdev) {
+  1181			dev_err(dev, "failed to allocate video device\n");
+  1182			ret = -ENOMEM;
+  1183			goto err_video_alloc;
+  1184		}
+  1185		mdp->vdev->device_caps = V4L2_CAP_VIDEO_M2M_MPLANE | V4L2_CAP_STREAMING;
+  1186		mdp->vdev->fops = &mtk_mdp_m2m_fops;
+  1187		mdp->vdev->ioctl_ops = &mtk_mdp_m2m_ioctl_ops;
+  1188		mdp->vdev->release = video_device_release_empty;
+  1189		mdp->vdev->lock = &mdp->lock;
+  1190		mdp->vdev->vfl_dir = VFL_DIR_M2M;
+  1191		mdp->vdev->v4l2_dev = &mdp->v4l2_dev;
+  1192		snprintf(mdp->vdev->name, sizeof(mdp->vdev->name), "%s:m2m",
+  1193			 MTK_MDP_MODULE_NAME);
+  1194		video_set_drvdata(mdp->vdev, mdp);
+  1195	
+  1196		mdp->m2m_dev = v4l2_m2m_init(&mtk_mdp_m2m_ops);
+  1197		if (IS_ERR(mdp->m2m_dev)) {
+  1198			dev_err(dev, "failed to initialize v4l2-m2m device\n");
+  1199			ret = PTR_ERR(mdp->m2m_dev);
+  1200			goto err_m2m_init;
+  1201		}
+  1202	
+  1203		ret = video_register_device(mdp->vdev, VFL_TYPE_VIDEO, 2);
+  1204		if (ret) {
+  1205			dev_err(dev, "failed to register video device\n");
+  1206			goto err_vdev_register;
+  1207		}
+  1208		mdp->vdev->release = video_device_release;
+  1209	
+  1210		v4l2_info(&mdp->v4l2_dev, "driver registered as /dev/video%d",
+  1211			  mdp->vdev->num);
+  1212		return 0;
+  1213	
+  1214	err_vdev_register:
+  1215		v4l2_m2m_release(mdp->m2m_dev);
+  1216	err_m2m_init:
+> 1217		video_device_release(mdp->vdev)
+  1218		mdp->vdev = NULL;
+  1219	err_video_alloc:
+  1220	
+  1221		return ret;
+  1222	}
+  1223	
+
+--
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
