@@ -4,84 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11AB3CD4F4A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2026 20:31:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F4138CD343F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2026 21:50:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tfp9Xfl9F8C0qLignbu5BJHJOBkG39IsvvzY8WnS24M=; b=STGJkP6x3x5Bn0dtvzl3xKqqo9
-	075utAxmK31pIQkxaZGFH8+MEDT/O9m4G/zCVQdBhUr01sf2O01LVPke9qzUWNdhq9rBM94V9fOai
-	U/7kk40qfYi9almme1T5fG+nPqMOiuhLBh1w2Kyn+VXmow76pEi/B7HuBsZDd7o3g5txsCILF48d/
-	7ZgmrOhatbsNgMrf3B9ffmhuXq8udPjJG9sS0+GLcPlAd11yiPrk+0ONvB3pVBzIsOmlPxWYzQRh4
-	HDEFvy0pLNqqiCWSE7iDLMRmSDSD9G1I9N7rpcJ4ekb5A22nY3OkzR6znC6q/YA1RPWgxf/tR2kiS
-	kZX0gQUQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fy1HBFVuO0GJ4o0p11RLty2yKXcghAkaNBsukWq8870=; b=hlu/hkKLC7ivS8KsCRzQiznRGO
+	XxTtBakOmn/4JFtiOPwFjRWZzwz2IWR48qQCjVje+SZfcZPD2SRlHGfSxiYvK1m7zLCn+iT+SjjM8
+	xYroa+i5dauRjz8zmYoWkYP7Khpa5/NiD1VZOKOx3zlbvQQiEwRIfn06BbeAr/qSf3pRE4neOaWgc
+	fyyAa8zQNsL4I6zz9pxWSc05DBHkyb+3njpv3qkdWjyNdhk+A7NKJjHOJEwMmDccp1MxNTLGLnQ1h
+	RbiJC6m3HkGsFOimjmnJxAOGbspZnrn5Dhqu1WcAK+fjJfaOSciRoS9YHLR3gP2vomTnHjrymNmuf
+	OSCIj14A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP4d0-0000000Gthp-38nR;
-	Mon, 18 May 2026 20:31:54 +0000
-Received: from mgamail.intel.com ([192.198.163.14])
+	id 1wP5qs-0000000H2KZ-2HJI;
+	Mon, 18 May 2026 21:50:18 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP4cx-0000000Gth7-0hL2;
-	Mon, 18 May 2026 20:31:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1779136311; x=1810672311;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=ydXo2XIcnCDnuaeWYRtalIfepOWgfDw1EKpHwpkVH/8=;
-  b=bqb7qO+W3uRlj1qGK7cfohtnEXLiGAzf7ASjCstnJymMxzJSJYwf54tY
-   CQxH+PX7wO20O8N5zmrBXPyCWeQ2AwbLO50r65mNr8dQ9m6dlYAGT7akk
-   mXbrOKKsUr0cT3G74x09V4wJgHcG5qIMfRJpBHUAm06UlGly038XC0G0v
-   tErSluAH9D+XvlF+U3fhQDm1M7tMQAqlYc9pQRP+l9h77a/zw8RLbhJFj
-   o7kCVtjrcmWQFBO7AQlyosZ8uRNn8r2gQd1DefusLLQZWwjHr6dH5fYIX
-   Bd3Ke+yVTf/TTri9swPJloYQwE6wJDW1ZRLbEaLenIpeD+Zf+By2V1W+8
-   Q==;
-X-CSE-ConnectionGUID: nlyNt4vIQEOyQ50jm6IiKA==
-X-CSE-MsgGUID: jzKdZo8mRe23vfFdgVWUeg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11790"; a="80035064"
-X-IronPort-AV: E=Sophos;i="6.23,242,1770624000"; 
-   d="scan'208";a="80035064"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
-  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 May 2026 13:31:50 -0700
-X-CSE-ConnectionGUID: d0m9t1lWTf6cVYdn+o0JBQ==
-X-CSE-MsgGUID: 13v+sl6tR2GHBYRSdDRZtw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,242,1770624000"; 
-   d="scan'208";a="233164454"
-Received: from lkp-server01.sh.intel.com (HELO d94e5e629b2d) ([10.239.97.150])
-  by fmviesa009.fm.intel.com with ESMTP; 18 May 2026 13:31:47 -0700
-Received: from kbuild by d94e5e629b2d with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1wP4cq-000000003N4-14ih;
-	Mon, 18 May 2026 20:31:44 +0000
-Date: Tue, 19 May 2026 04:30:53 +0800
-From: kernel test robot <lkp@intel.com>
-To: Guangshuo Li <lgs201920130244@gmail.com>,
-	Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
-	Houlong Wei <houlong.wei@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hans Verkuil <hverkuil@kernel.org>, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: oe-kbuild-all@lists.linux.dev, linux-media@vger.kernel.org,
-	Guangshuo Li <lgs201920130244@gmail.com>
-Subject: Re: [PATCH] media: mediatek: mdp: avoid double free on video
- register failure
-Message-ID: <202605190406.bMshG7YY-lkp@intel.com>
-References: <20260518125500.1000083-1-lgs201920130244@gmail.com>
+	id 1wP5qr-0000000H2K9-34Vy;
+	Mon, 18 May 2026 21:50:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:Content-Type:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=fy1HBFVuO0GJ4o0p11RLty2yKXcghAkaNBsukWq8870=; b=pOS83YWVtXk7JjEx5UQDv2tmhN
+	uUtw4kBpiwQBAIH1ENn5cy0zMz3ksAIO+IYMXP8o94X1/6A9wh/oRBXvSErRuEye2Yk5IQd/Hxl2x
+	HAvYzxGaxfPIMaOpOkDFVMEPBB/ToXEGCQbQVXyuD86ePU78dQBTnynzuHnMiLTgEXvZTB9EFuRF+
+	QqeKiGf3O2OVZ61bCcAm69/8MoXATh39NSN2y+gp1tMRY4ZX0jroOU54I/PEZLBPeRMTcXEdQ5IA1
+	jvguieBHlA7I99EFDZOD7W/Uq2h4PT+GoIoyoVnaflNu0iPCC17GCpAd85ziHC6zP3e0BPE5cLhxf
+	sekawg9Q==;
+Received: from sea.source.kernel.org ([172.234.252.31])
+	by desiato.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1wP5qX-0000000CQ3N-3Rxb;
+	Mon, 18 May 2026 21:50:00 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 958E242A9D;
+	Mon, 18 May 2026 21:49:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 72344C2BCB7;
+	Mon, 18 May 2026 21:49:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1779140993;
+	bh=BCGSqu4+tudCgoGPI93aYjf9oZVk8EXFJax6d4C+gqU=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=jVKkLixeYzQCESMmdpBM9gDq8wylpSSYAhoz/4BwiMZAb+st0HmL67KfdXstWd8CD
+	 2yxdvNaCnWIYCq1s5KKlt6IQQWo7HgQGjGiImraJJsCh4TAUlFLsIOeo0ijNv3+jX8
+	 JXbydklE6vPhGyZqGnjXnOs6RSgqxv4XAwlWimH2MxbU+LeycUTGdzyYKgciYkHPjB
+	 o2QJk940DzsKMmJWidNYaZ3hET/LUpq7wk1LQhpDtMTPNB1OHwXe3GDNmVypt8E+Wl
+	 LrIAYUaAA56cHch+H8gYT2S9bUCsv/O4XSfIlc3hSKcQDvqXGBUIzf8w4mch4UGXJV
+	 P11EUBVuvYcrA==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 19AF23930CB1;
+	Mon, 18 May 2026 21:50:06 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260518125500.1000083-1-lgs201920130244@gmail.com>
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH] Bluetooth: btmtk: fix urb->setup_packet leak in error
+ paths
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <177914100464.1984363.3049951945476473554.git-patchwork-notify@kernel.org>
+Date: Mon, 18 May 2026 21:50:04 +0000
+References: <20260518022402.20398-1-liujiajia@kylinos.cn>
+In-Reply-To: <20260518022402.20398-1-liujiajia@kylinos.cn>
+To: Jiajia Liu <liujiajia@kylinos.cn>
+Cc: marcel@holtmann.org, luiz.dentz@gmail.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, sean.wang@mediatek.com,
+ linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260518_133151_247353_55F73BEB 
-X-CRM114-Status: GOOD (  12.55  )
+X-CRM114-CacheID: sfid-20260518_224958_848866_52DD9043 
+X-CRM114-Status: GOOD (  10.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,96 +90,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Guangshuo,
+Hello:
 
-kernel test robot noticed the following build errors:
+This patch was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-[auto build test ERROR on linuxtv-media-pending/master]
-[also build test ERROR on media-tree/master linus/master v7.1-rc4 next-20260518]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+On Mon, 18 May 2026 10:24:02 +0800 you wrote:
+> The setup_packet of control urb is not freed if usb_submit_urb fails or
+> the submitted urb is killed. Add free in these two paths.
+> 
+> Fixes: a1c49c434e150 ("Bluetooth: btusb: Add protocol support for MediaTek MT7668U USB devices")
+> Signed-off-by: Jiajia Liu <liujiajia@kylinos.cn>
+> ---
+>  drivers/bluetooth/btmtk.c | 2 ++
+>  1 file changed, 2 insertions(+)
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Guangshuo-Li/media-mediatek-mdp-avoid-double-free-on-video-register-failure/20260518-211648
-base:   https://git.linuxtv.org/media-ci/media-pending.git master
-patch link:    https://lore.kernel.org/r/20260518125500.1000083-1-lgs201920130244%40gmail.com
-patch subject: [PATCH] media: mediatek: mdp: avoid double free on video register failure
-config: m68k-allmodconfig (https://download.01.org/0day-ci/archive/20260519/202605190406.bMshG7YY-lkp@intel.com/config)
-compiler: m68k-linux-gcc (GCC) 15.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260519/202605190406.bMshG7YY-lkp@intel.com/reproduce)
+Here is the summary with links:
+  - Bluetooth: btmtk: fix urb->setup_packet leak in error paths
+    https://git.kernel.org/bluetooth/bluetooth-next/c/5daf96ab8398
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202605190406.bMshG7YY-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c: In function 'mtk_mdp_register_m2m_device':
->> drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c:1217:40: error: expected ';' before 'mdp'
-    1217 |         video_device_release(mdp->vdev)
-         |                                        ^
-         |                                        ;
-    1218 |         mdp->vdev = NULL;
-         |         ~~~                             
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
 
-vim +1217 drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c
-
-  1172	
-  1173	int mtk_mdp_register_m2m_device(struct mtk_mdp_dev *mdp)
-  1174	{
-  1175		struct device *dev = &mdp->pdev->dev;
-  1176		int ret;
-  1177	
-  1178		mdp->variant = &mtk_mdp_default_variant;
-  1179		mdp->vdev = video_device_alloc();
-  1180		if (!mdp->vdev) {
-  1181			dev_err(dev, "failed to allocate video device\n");
-  1182			ret = -ENOMEM;
-  1183			goto err_video_alloc;
-  1184		}
-  1185		mdp->vdev->device_caps = V4L2_CAP_VIDEO_M2M_MPLANE | V4L2_CAP_STREAMING;
-  1186		mdp->vdev->fops = &mtk_mdp_m2m_fops;
-  1187		mdp->vdev->ioctl_ops = &mtk_mdp_m2m_ioctl_ops;
-  1188		mdp->vdev->release = video_device_release_empty;
-  1189		mdp->vdev->lock = &mdp->lock;
-  1190		mdp->vdev->vfl_dir = VFL_DIR_M2M;
-  1191		mdp->vdev->v4l2_dev = &mdp->v4l2_dev;
-  1192		snprintf(mdp->vdev->name, sizeof(mdp->vdev->name), "%s:m2m",
-  1193			 MTK_MDP_MODULE_NAME);
-  1194		video_set_drvdata(mdp->vdev, mdp);
-  1195	
-  1196		mdp->m2m_dev = v4l2_m2m_init(&mtk_mdp_m2m_ops);
-  1197		if (IS_ERR(mdp->m2m_dev)) {
-  1198			dev_err(dev, "failed to initialize v4l2-m2m device\n");
-  1199			ret = PTR_ERR(mdp->m2m_dev);
-  1200			goto err_m2m_init;
-  1201		}
-  1202	
-  1203		ret = video_register_device(mdp->vdev, VFL_TYPE_VIDEO, 2);
-  1204		if (ret) {
-  1205			dev_err(dev, "failed to register video device\n");
-  1206			goto err_vdev_register;
-  1207		}
-  1208		mdp->vdev->release = video_device_release;
-  1209	
-  1210		v4l2_info(&mdp->v4l2_dev, "driver registered as /dev/video%d",
-  1211			  mdp->vdev->num);
-  1212		return 0;
-  1213	
-  1214	err_vdev_register:
-  1215		v4l2_m2m_release(mdp->m2m_dev);
-  1216	err_m2m_init:
-> 1217		video_device_release(mdp->vdev)
-  1218		mdp->vdev = NULL;
-  1219	err_video_alloc:
-  1220	
-  1221		return ret;
-  1222	}
-  1223	
-
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 
