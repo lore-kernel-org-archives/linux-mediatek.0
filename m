@@ -4,101 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C4B3CD4F3C
-	for <linux-mediatek@archiver.kernel.org>; Sun, 17 May 2026 23:25:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0059CD4F3C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2026 00:43:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:MIME-Version:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=oQMlYsX+VgifZz5u10HC4ZEMVQVuCOrZ67vfrQ1RB6s=; b=tiuthUz2ZMF2AEIMpGYQ0Dpt2p
-	YRRsM+3DFyCiOFMvNnGykLoNw55ZJf0XiYiamv6Z3bOWVpKogl3jVp5/vMSI/JvOO9PN6yK3Os4wN
-	K1IQ0lI9UoF3ag07k8ou7M9V6ddvWS4VRp1RehMOpv1FlIRDc8KIPfgkWadx5pe3ikHQoU82ekijR
-	bYuX/hkeFmM0ackDwCJrykk3cqUOj/tmwStpcfCyzL3aA38rhPRL3NvVVDx6WQw5TlmLP8W0B5VfG
-	1R1w4kZD7gG1c07Eoeg03zZPA2Loj7q/NsXpR9QLNcnB/zc6+LRVdRuGj1nB/pwYSXOxIffJ8WlQ3
-	DHH0g7bw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dWIpNo104u5obDhE2dFSS+vTm/NpbYqoKeVdxuNBDUQ=; b=p327zxCqYVOgxbwbOwhAuT5PcH
+	v+/4PRMqhKWKDcLH59SW3bg8sEwcDPaUIDgJ0hSQiAm8mTB0mV+EgX0NHSYZah/6KB85205SfrjZX
+	sImU+f9PPgFlPK9jyoPCAwWl1mIZZ8DKLnQBK9m4+imTNrraFFwvCuyXoOI+dPlQJAskOiXNoB/O+
+	UQrXc9oBWh6ZolyF4n+H0+bI8WzSlHZJF23SRKCZRrIysNXdJ0kW0oIgIwIyf9p10EdTSto2EV6DB
+	Xsp0z2cL+mMLcMehGfF81fzCxmCWrVtgveo27D1GmXY1+i8BL/xx9O/GVq1mYyOnXO32z4Hpvq7Xl
+	ahGA7QQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOkrV-0000000Detg-1nQr;
-	Sun, 17 May 2026 23:25:33 +0000
-Received: from mail-dy1-x1330.google.com ([2607:f8b0:4864:20::1330])
+	id 1wOm55-0000000DlP5-2nMt;
+	Mon, 18 May 2026 00:43:39 +0000
+Received: from m16.mail.163.com ([117.135.210.3])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOkrS-0000000Det9-1kRe
-	for linux-mediatek@lists.infradead.org;
-	Sun, 17 May 2026 23:25:31 +0000
-Received: by mail-dy1-x1330.google.com with SMTP id 5a478bee46e88-2ee990e8597so5064845eec.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 17 May 2026 16:25:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779060329; cv=none;
-        d=google.com; s=arc-20240605;
-        b=g4ISV0alNIVqhzhm9XnlCGb6HpOrBxiWnXsOf6418jwUvXSEMfs/ia0psDYZDMvrIu
-         /ufI5BVNNhpOPw5L9k3Z13lXTwJiueJXnuM3TwAaCZ4AZpB3K+/7CyHCNtJ2effmoZjO
-         46HsXKO5ay2nz6ypP8/qk6tq/Z0mxSbjjdGzCRbPOPKdhQpm+7zI8TZPrPZmD7BOWhug
-         aUpQjEym6HUb+v/5b1bl/GwvFQUBeBvo2JD/J1XNjmlgHqOqzcm7P9tkpC4blZCLBkQ6
-         EA7Vaxd4G9dHpkSDzSRW41Is8C4lAoh77u8Hb9Zm0VpddlC9sek8tU7ocVOF7zCxl6B9
-         j4hw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=oQMlYsX+VgifZz5u10HC4ZEMVQVuCOrZ67vfrQ1RB6s=;
-        fh=1Qp7oPrxMA/4RJrFo/yHTrxW+R6roj/u2mcJvvcQZFU=;
-        b=FUPX4XFomfGxtVeYWBJ53DhM16KB2ksG0LOEcjBiPdcfrKJCsR54U27iMx0xBEEDAc
-         M7wuT95XnYxFRrZb2/xnBIPtQmbK9pC35ymtvTQLh3027ozV4ne9nbWnVH9pCtmS2FDf
-         0EsHbbnEE00p35DKdjA1Lm5ZaN2JDN7bI9lOK1LNbuZokUftKY+kjD1iA9zb/r+VvRyE
-         2n7j1wnCQelY2sqOujurI/nmdH88JqdOHY6NpaHua9zjW3tRNRieeEri9HhxxMWVoybi
-         lG28mj9yPgALlMP0X3YoIhqL7ALReqBxgxQFd2vM01DADTcg/H++hog9ogf2J/9RLC/Y
-         d9Tg==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1779060329; x=1779665129; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=oQMlYsX+VgifZz5u10HC4ZEMVQVuCOrZ67vfrQ1RB6s=;
-        b=iTSnBHmyC16KcpnQm6xaWf0BA/+QfA/pMsqWiyPXQf7PnbnMRUJhcB8hboTn5k8Yo/
-         jPu2GIeSpvEQVHj5I2m+lSZzJsgEr17SD4JmdryTCaqRydBp6nCb9/fbhJSVqpKl4+WG
-         bhlrX7eT1/m7PDI2c8tlc/tSOI7YjYhXqB2O2AmBqhu6+aSfxvlIb25A7VieelXfH8NH
-         9uiJLx0YRiCuwsOx4805TWM6Zu+1scvsiF+4HjgfCMBAT7/Bp9X6Xj98I7sR5iEBbzLv
-         dmrHM9rzf2WyUeU4hJq8TCuH4bY8ad4jAI9LZrB3IDrNUTN7od6NnpMc+oIkFwYN5F8I
-         gahA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779060329; x=1779665129;
-        h=cc:to:subject:message-id:date:from:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=oQMlYsX+VgifZz5u10HC4ZEMVQVuCOrZ67vfrQ1RB6s=;
-        b=TIwcxyXwtFZW41c1vuqYLQmK8EjiEijAgBzyidI9C+BqC88QPpRCP0w2lYKuhKFKRL
-         Y2G+ftpC9OPoMCcpXHRLO5s9wrVoQavDC7VbqZLOy/2SSobLX2kVXYBwuSqrP4NunHAi
-         GYcQv/Cy7nxFUdj5ejFcGLvQSJtCTQF/6PRGOfvPWFNLK7RLg2aTQMh8l++yQpcclO9u
-         +zTsW/7iT4n62pk33l9yKKHd+++KjjQauL4UVAGXJB+OVaQrl7nKR+seDB/J51xQEi8q
-         p8Ol8jse9NdLC23R/N+zDGjx3jCSMtTHswyiSyeRInbH76yDtkVfQcV7mnGBWYewSGnU
-         lFCg==
-X-Forwarded-Encrypted: i=1; AFNElJ/n8bFTDIEG895gvSC0n7Qq3QX2FYkmKaX0Zjp7jj9vokY3e2i+WH+Jp7LC+tvygjrTpuE/rzANVF0aMVbyTA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwY4ihU1LfxXad/HX1HVQbSlNCPRiLJanmg69ZRsSMsSvVFsKKP
-	bEm0QxRIHdp5Nyt8JwQCqCu9rL5DwjnKxGbMXcf/Yr8p4q8+vPrX0fhWK1fT61waoylp5iChVBt
-	KJ+6bwjq8VAM8cX6vL+77XTvBb/iCV4E=
-X-Gm-Gg: Acq92OEbuBqxKqgzEQnCvhcpRyaHIbpaBmzOiuWagVGrWzwnxVhv3JCsJHNLGszghic
-	uXpRleC2Fg1DBezfmFkRb1O4+KkxJWhQhd0kIMgBAGNBTk3z6AOvQJxZXHXxT+Fa5OmTzAUA8ar
-	HWwA1mI+NQwgqW3OHaW+Y0S4bCXJl0G9ZS4za1DDkQUpPVAIaNJrk9AX+Lvy9TvjswmqW2GbvsP
-	4PlLudrHgaP9d7ttQu34l6vvJNi6H0Xb0aAIFidnsEKePCPWYusyj3YnrvhtZz0c2XjILR5yrEs
-	IedUvVoHPya9nVRf+UlGOdLW+9ZW+BVhRJKAIkhM
-X-Received: by 2002:a05:7300:e125:b0:2f5:6d9c:7156 with SMTP id
- 5a478bee46e88-303986814f8mr6045988eec.17.1779060329249; Sun, 17 May 2026
- 16:25:29 -0700 (PDT)
+	id 1wOm52-0000000DlMz-4ANg;
+	Mon, 18 May 2026 00:43:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=dW
+	IpNo104u5obDhE2dFSS+vTm/NpbYqoKeVdxuNBDUQ=; b=Kg0XnWrhG94E8cn/Lz
+	/WyFaa3U0hSIji8sl2XD+x6cLiLCwlkvZY4Zilc6jonLn8xnjzGFLgYcSEeYH7I3
+	UwlXEnQ7XdqPoTBtDvZmZb1djo7KEV/8cCl3I37cMvYSTTMhuJeQTXQLcFFi/Imj
+	rXar4CEBKA8KbXesMHGuZZXFI=
+Received: from Precision-7960.. (unknown [])
+	by gzga-smtp-mtada-g1-4 (Coremail) with SMTP id _____wCnj6SIYApq2fikCA--.4779S8;
+	Mon, 18 May 2026 08:42:58 +0800 (CST)
+From: Hans Zhang <18255117159@163.com>
+To: bhelgaas@google.com,
+	lpieralisi@kernel.org,
+	kwilczynski@kernel.org,
+	mani@kernel.org,
+	vigneshr@ti.com,
+	jingoohan1@gmail.com,
+	thomas.petazzoni@bootlin.com,
+	ryder.lee@mediatek.com,
+	claudiu.beznea.uj@bp.renesas.com,
+	mpillai@cadence.com
+Cc: robh@kernel.org,
+	s-vadapalli@ti.com,
+	linux-omap@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	claudiu.beznea@tuxon.dev,
+	linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Hans Zhang <18255117159@163.com>
+Subject: [PATCH v4 6/7] PCI: mediatek-gen3: Add 100 ms delay after link up
+Date: Mon, 18 May 2026 08:42:45 +0800
+Message-ID: <20260518004246.1384532-7-18255117159@163.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260518004246.1384532-1-18255117159@163.com>
+References: <20260518004246.1384532-1-18255117159@163.com>
 MIME-Version: 1.0
-From: Brandon Arnold <brandon.arnold@gmail.com>
-Date: Sun, 17 May 2026 16:25:17 -0700
-X-Gm-Features: AVHnY4InOi6pS-JhDeB7XWvzVJUHUwJqjaT6X2kyEDvJ9oU5Qy6fDU_IKgrEFzo
-Message-ID: <CAM07e=vYJE8khJmbsn75SOYye44o8YV8TZsRyF1mFRuUTMCgUw@mail.gmail.com>
-Subject: [REGRESSION] Bluetooth: btmtk: MT7922 "Failed to send wmt func ctrl
- (-22)" after 634a4408c0615c ("validate WMT event SKB length before struct access")
-To: linux-bluetooth@vger.kernel.org
-Cc: luiz.von.dentz@intel.com, tristan@talencesecurity.com, 
-	chris.lu@mediatek.com, linux-mediatek@lists.infradead.org, 
-	gregkh@linuxfoundation.org, stable@vger.kernel.org, 
-	regressions@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: _____wCnj6SIYApq2fikCA--.4779S8
+X-Coremail-Antispam: 1Uf129KBjvdXoW7Jr4kWw4fAw18WF4rJF1kZrb_yoWkKrcE9a
+	yxZFWfZayjkrySkFnayFyrZr9Yy3s7Wr10qF4fKF13Aa48urn0qr9avryDAF4kGw43tF12
+	yryqk3W8WrykCjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7xRKCJmDUUUUU==
+X-Originating-IP: [140.206.53.66]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbCxBJZ-GoKYJIFsAAA3U
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260517_162530_464680_A7EB1506 
-X-CRM114-Status: GOOD (  12.39  )
+X-CRM114-CacheID: sfid-20260517_174337_424258_329391EE 
+X-CRM114-Status: UNSURE (   9.51  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,124 +89,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-#regzbot introduced: 634a4408c0615c206885e60ea05f489c426f64b6
-#regzbot title: MT7922 BT controller never registers (wmt func ctrl
--22) after btmtk WMT SKB-length validation
+The MediaTek Gen3 PCIe host driver lacks the required 100 ms delay after
+link training completes for speeds > 5.0 GT/s, as specified in PCIe r6.0
+sec 6.6.1.
 
-Hello there.
+The driver already stores max_link_speed (from the device tree). After
+mtk_pcie_startup_port() successfully brings up the link, call
+pci_host_common_link_train_delay() to comply with the specification.
 
-I wanted to report the below information about a commit that I
-confirmed broke my MediaTek MT7922 adapter. The commit is also built
-into the main Arch Linux package, so it affected me during a routine
-update (see the BBS link in the report below). This adapter is the one
-that came with my Framework Laptop 16 system.
+Signed-off-by: Hans Zhang <18255117159@163.com>
+---
+ drivers/pci/controller/pcie-mediatek-gen3.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Apologies for Claude's verbosity and language but I can confirm I
-attended the bisect and revert of the offending diff. Thank you!
+diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+index b0accd828589..5abddec4e9be 100644
+--- a/drivers/pci/controller/pcie-mediatek-gen3.c
++++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+@@ -30,6 +30,7 @@
+ #include <linux/regmap.h>
+ #include <linux/reset.h>
+ 
++#include "pci-host-common.h"
+ #include "../pci.h"
+ 
+ #define PCIE_BASE_CFG_REG		0x14
+@@ -570,6 +571,8 @@ static int mtk_pcie_startup_port(struct mtk_gen3_pcie *pcie)
+ 		goto err_power_down_device;
+ 	}
+ 
++	pci_host_common_link_train_delay(pcie->max_link_speed);
++
+ 	return 0;
+ 
+ err_power_down_device:
+-- 
+2.43.0
 
-Workaround in use: pinned to the Arch Linux pre-7.0.7 kernel.
-
-Thanks,
-Brandon Arnold
-
-Commit 634a4408c0615c ("Bluetooth: btmtk: validate WMT event SKB
-length before struct access"), backported to 7.0.x stable and shipped
-in v7.0.7, breaks Bluetooth on the MediaTek MT7922: the WMT function
-control step fails with -EINVAL and the HCI controller never
-registers. WiFi on the same chip (mt7921e) is unaffected.
-
-This is NOT a v6.19->v7.0 mainline regression -- mainline v7.0 is
-GOOD. The regression is the above commit specifically; it is absent
-from v7.0 and v7.0.6 and present in v7.0.7.
-
-Scope / affected versions
--------------------------
-- GOOD: mainline v7.0, linux-stable v7.0.6 (commit absent)
-- BAD: linux-stable v7.0.7 (commit present)
-- Independently reported on Arch (different machine -- Lenovo
-IdeaPad, MT7922 USB [0489:e0d8]): BROKEN on linux 7.0.7.arch2-1,
-WORKING on 7.0.6.arch1-1, identical symptom.
-https://bbs.archlinux.org/viewtopic.php?id=313561
-
-Hardware / firmware (primary reporter)
---------------------------------------
-- Framework Laptop 16 (AMD Ryzen AI 300 Series), board FRANMHCP09 A9
-- BIOS: INSYDE/Framework 03.04, 2025-11-06
-- MT7922, PCI [14c3:0616] subsys [14c3:e616]; BT side USB, driver
-btusb/btmtk; WiFi side mt7921e (works)
-- linux-firmware 20260410; BT firmware BT_RAM_CODE_MT7922_1_1,
-HW/SW Version 0x008a008a, Build Time 20260224103448
-- bluez 5.86
-
-Symptom
--------
-The firmware download and version handshake still succeed (identical
-HW/SW version line before and after), then:
-
-Bluetooth: hci0: HW/SW Version: 0x008a008a, Build Time: 20260224103448
-Bluetooth: hci0: Failed to send wmt func ctrl (-22)
-
-No "Device setup in N usecs" follows; BlueZ reports "No default
-controller available". hci0 exists in /sys/class/bluetooth and is not
-rfkill-blocked. Reproducible deterministically on cold boot,
-`modprobe -r btusb; modprobe btusb`, and full USB unbind/rebind. It
-fails even with btusb enable_autosuspend=0, so this is distinct from
-the known func-ctrl/autosuspend race.
-
-Analysis
---------
-634a4408c0615c reworks btmtk_usb_hci_wmt_sync() to validate length
-with skb_pull_data() before casting the WMT event:
-
-- wmt_evt = (struct btmtk_hci_wmt_evt *)data->evt_skb->data;
-+ wmt_evt = skb_pull_data(data->evt_skb, sizeof(*wmt_evt));
-+ if (!wmt_evt) { ... err = -EINVAL; goto err_free_skb; }
-...
-case BTMTK_WMT_FUNC_CTRL:
-+ if (!skb_pull_data(data->evt_skb,
-+ sizeof(wmt_evt_funcc->status))) {
-+ err = -EINVAL; goto err_free_skb;
-+ }
-wmt_evt_funcc = (struct btmtk_hci_wmt_evt_funcc *)wmt_evt;
-
-For the FUNC_CTRL response from the MT7922, one of these
-skb_pull_data() calls returns NULL and the function returns -EINVAL
-(surfaced as "Failed to send wmt func ctrl (-22)"). In effect the
-length the driver now requires
-(sizeof(struct btmtk_hci_wmt_evt) + sizeof(status)) exceeds what this
-controller actually sends for FUNC_CTRL, so a valid handshake is now
-rejected. The pre-patch code cast and read the same bytes without the
-strict length gate and worked on this hardware.
-
-Empirical confirmation (mainline, no distro patches)
-----------------------------------------------------
-Built faithfully from the running Arch config (only LOCALVERSION
-added); no out-of-tree changes.
-
-- mainline v7.0 : GOOD (commit absent)
-- linux-stable v7.0.7 : BAD (kernel 7.0.7-bisect; WMT func ctrl -22
-count = 1; hci0 device setup never completes; bluetoothctl shows 0
-controllers)
-- v7.0.7 + revert of
-70d37a8b9229 (the 7.0.7
-backport of 634a4408c0615c): GOOD (kernel
-7.0.7-bisect-00001-ge33bfb5d7480; WMT func ctrl -22 count = 0; hci0
-device setup OK; bluetoothctl shows 1 controller)
-
-The reverted tree's drivers/bluetooth/btmtk.c is byte-identical to
-v7.0.6 (git diff v7.0.6 -- drivers/bluetooth/btmtk.c is empty), so the
-v7.0.7-vs-revert pair isolates exactly this one commit.
-
-Reproduction
-------------
-1. Boot a kernel >= v7.0.7-equivalent on MT7922 hardware.
-2. `bluetoothctl list` -> no controller.
-3. `journalctl -k -b | grep 'wmt func ctrl'` -> -22.
-4. Revert 634a4408c0615c (or boot v7.0.6) -> controller registers.
-
-A straight revert restores operation and is offered as the candidate
-fix; alternatively the length checks should be relaxed to match the
-MT7922's actual FUNC_CTRL WMT event length. I can test patches, or
-provide full bad/good kernel logs, btmon/hci traces, and the exact
-short SKB length on request.
 
