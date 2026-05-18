@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75986CD4F49
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2026 00:43:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9490BCD4F3D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2026 00:44:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=libXhe/4t1biWmfrc6stRZt7aayY7R8wQ9CZqvdPLA0=; b=NR+r1VeWvQIFa2ZahAD4FAU0i1
-	TusXYmzaNPEWk2l5Ag1GWoZx5bS4PAnmyhHslbHEJeShDhDm/IfFdKzMBDjL3/CJ4kAPwgXWf3dWP
-	5XxgkT4qudBw1wJxY/jOEA6v3Ogte3/fctdgiA86w8xzsZj1WIxKoVWgTuu6lItvbsS+M+BybEokq
-	M9oSeCC/yfG7iQ4YhOoZzcsOzM3+kRvptro9iCRriAm48rdCUqEJgYvvYJ5McWClNVo6ugGnhwkJ3
-	W6+I9JFdaKAcK67msjvBv0pOkefjT1cWKT9yb2youXAJ+TJbV8XF0IjRTSD7BzqLMn7oQjurdjodX
-	pwCpybnw==;
+	bh=UPHg3PhRQ/iRlu2JQO+wt+J//uW4Lc+cTIqd/znwy0w=; b=wtusSafnTodqJEyNkCN3kWCysc
+	+Vos172M2GfDANAfNDgplaXib/jplzDOtI79gXIkN0wrth8PBMB+gTAFZfdQboEvPTT0Qr4bIiYDv
+	HP5nRzeYQ3/dAd55PG8Q+dz8NfYqp9UrQxp/TMVL/jQNrZ7cXcJIsCvVxfgDW6k+/j1OlXuj/1V/Z
+	qtV+zcU3eTk7fHIRE9a3N56nvEykJaamZPwcGndAH87B8+Uw9UyJGdzn6g+4wg1i9wpaIZALp0Aw0
+	E6G9Knwv9t1h2y0GCa3cBKEgP2kxGUXxX4SVFz33kxiI23clm0BDVka6lgCANcUykGc4XJBneWDmh
+	sufpM6YA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOm5I-0000000DlWo-2Mg6;
-	Mon, 18 May 2026 00:43:52 +0000
-Received: from m16.mail.163.com ([220.197.31.2])
+	id 1wOm5Q-0000000Dleq-3ULx;
+	Mon, 18 May 2026 00:44:00 +0000
+Received: from m16.mail.163.com ([220.197.31.5])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOm54-0000000DlND-14wG;
-	Mon, 18 May 2026 00:43:39 +0000
+	id 1wOm54-0000000DlNG-3vUJ;
+	Mon, 18 May 2026 00:43:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=li
-	bXhe/4t1biWmfrc6stRZt7aayY7R8wQ9CZqvdPLA0=; b=jrtk3yyVD5Ff/hj2W7
-	L46KQXVPLqg2pjC5ffYX3OSmBXJfUetP01uJQGLkzTa71oGkmly2FGM6WSqgbYfL
-	MmatVnaGSN6swkZ/A5pJukYmWN9ID/jdRTJEJmBFXMf8QEW0vUAkvUfVuMs9Nip4
-	mES+1Y9/gtMRd3zCW4v/1Cx84=
+	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=UP
+	Hg3PhRQ/iRlu2JQO+wt+J//uW4Lc+cTIqd/znwy0w=; b=qFIrxqYlAAyOpwBXPR
+	wvEMCmwLAi4HbuXJMO9BsujHYMAnbT/IPoQy9JYunlrEkMEBRLlA5FMO/HrBbLD0
+	78xKL1YydB75uknp+oIB+XCvLjlgVdCPl4cK9gluy33ugXFyXd31+EFIg8aLP/Yv
+	JuZklAWk1+0XZdEMjjg5/P4Ok=
 Received: from Precision-7960.. (unknown [])
-	by gzga-smtp-mtada-g1-4 (Coremail) with SMTP id _____wCnj6SIYApq2fikCA--.4779S3;
-	Mon, 18 May 2026 08:42:52 +0800 (CST)
+	by gzga-smtp-mtada-g1-4 (Coremail) with SMTP id _____wCnj6SIYApq2fikCA--.4779S7;
+	Mon, 18 May 2026 08:42:56 +0800 (CST)
 From: Hans Zhang <18255117159@163.com>
 To: bhelgaas@google.com,
 	lpieralisi@kernel.org,
@@ -56,25 +56,24 @@ Cc: robh@kernel.org,
 	linux-pci@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	Hans Zhang <18255117159@163.com>
-Subject: [PATCH v4 1/7] PCI: Add pci_host_common_link_train_delay() helper
-Date: Mon, 18 May 2026 08:42:40 +0800
-Message-ID: <20260518004246.1384532-2-18255117159@163.com>
+Subject: [PATCH v4 5/7] PCI: aardvark: Add 100 ms delay after link training
+Date: Mon, 18 May 2026 08:42:44 +0800
+Message-ID: <20260518004246.1384532-6-18255117159@163.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260518004246.1384532-1-18255117159@163.com>
 References: <20260518004246.1384532-1-18255117159@163.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wCnj6SIYApq2fikCA--.4779S3
-X-Coremail-Antispam: 1Uf129KBjvJXoW7Cr15uw48KryxGryDtF4fZrb_yoW8CFyrpa
-	98AF13CF40grW3uwsxAa4DWry5X3Z5t3yUK397G3sayr9rtrsavFWvg3yIqF1rJFZ8Zr17
-	A3W5K3Z7Cr4xtF7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0ziqXdrUUUUU=
+X-CM-TRANSID: _____wCnj6SIYApq2fikCA--.4779S7
+X-Coremail-Antispam: 1Uf129KBjvJXoW7ZFWfGF4fJw1UXryftF1fZwb_yoW8GFWrpa
+	y3CrZrJrs5tr43ua17Aa4fWFy3Wan0ka47Jr92gw13ZFnrKryUJr1jk3sagF17ArWvvr13
+	Ca43t3Z3Gr43XFDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0ziSfO3UUUUU=
 X-Originating-IP: [140.206.53.66]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbC6w1Y+2oKYI2yDQAA33
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbCwxFZ-GoKYJEOSwAA3j
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260517_174338_639480_A4F42D62 
-X-CRM114-Status: UNSURE (   9.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260517_174339_319473_38BCFEE0 
+X-CRM114-Status: GOOD (  12.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,56 +88,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-PCIe r6.0, sec 6.6.1 (Conventional Reset) requires that for a Downstream
-Port supporting Link speeds greater than 5.0 GT/s, software must wait a
-minimum of 100 ms after Link training completes before sending any
-Configuration Request.
+The Aardvark PCIe controller driver waits for the link to come up but
+does not implement the mandatory 100 ms delay after link training
+completes for speeds greater than 5.0 GT/s (PCIe r6.0 sec 6.6.1).
 
-Introduce a static inline helper pci_host_common_link_train_delay() that
-checks the given max_link_speed (2 = 5.0 GT/s, 3 = 8.0 GT/s, etc.) and
-calls msleep(100) only when the speed is greater than 5.0 GT/s.
-
-This allows multiple host controller drivers to share the same mandatory
-delay without duplicating the logic.
+The driver already maintains a 'link_gen' field that holds the negotiated
+link speed. Use it together with pci_host_common_link_train_delay() to
+insert the required delay immediately after confirming that the link
+is up.
 
 Signed-off-by: Hans Zhang <18255117159@163.com>
 ---
- drivers/pci/controller/pci-host-common.h | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+ drivers/pci/controller/pci-aardvark.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/pci/controller/pci-host-common.h b/drivers/pci/controller/pci-host-common.h
-index b5075d4bd7eb..d709f7e3e11a 100644
---- a/drivers/pci/controller/pci-host-common.h
-+++ b/drivers/pci/controller/pci-host-common.h
-@@ -10,6 +10,9 @@
- #ifndef _PCI_HOST_COMMON_H
- #define _PCI_HOST_COMMON_H
+diff --git a/drivers/pci/controller/pci-aardvark.c b/drivers/pci/controller/pci-aardvark.c
+index e34bea1ff0ac..fd9c7d53e8a7 100644
+--- a/drivers/pci/controller/pci-aardvark.c
++++ b/drivers/pci/controller/pci-aardvark.c
+@@ -26,6 +26,7 @@
+ #include <linux/of_address.h>
+ #include <linux/of_pci.h>
  
-+#include <linux/delay.h>
-+#include "../pci.h"
-+
- struct pci_ecam_ops;
++#include "pci-host-common.h"
+ #include "../pci.h"
+ #include "../pci-bridge-emul.h"
  
- int pci_host_common_probe(struct platform_device *pdev);
-@@ -20,4 +23,18 @@ void pci_host_common_remove(struct platform_device *pdev);
+@@ -350,8 +351,10 @@ static int advk_pcie_wait_for_link(struct advk_pcie *pcie)
  
- struct pci_config_window *pci_host_common_ecam_create(struct device *dev,
- 	struct pci_host_bridge *bridge, const struct pci_ecam_ops *ops);
-+
-+/**
-+ * pci_host_common_link_train_delay - Wait 100 ms if link speed > 5 GT/s
-+ * @max_link_speed: the maximum link speed (2 = 5.0 GT/s, 3 = 8.0 GT/s, ...)
-+ *
-+ * Must be called after Link training completes and before the first
-+ * Configuration Request is sent.
-+ */
-+static inline void pci_host_common_link_train_delay(int max_link_speed)
-+{
-+	if (max_link_speed > 2)
-+		msleep(PCIE_RESET_CONFIG_WAIT_MS);
-+}
-+
- #endif
+ 	/* check if the link is up or not */
+ 	for (retries = 0; retries < LINK_WAIT_MAX_RETRIES; retries++) {
+-		if (advk_pcie_link_up(pcie))
++		if (advk_pcie_link_up(pcie)) {
++			pci_host_common_link_train_delay(pcie->link_gen);
+ 			return 0;
++		}
+ 
+ 		usleep_range(LINK_WAIT_USLEEP_MIN, LINK_WAIT_USLEEP_MAX);
+ 	}
 -- 
 2.43.0
 
