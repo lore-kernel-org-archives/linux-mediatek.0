@@ -4,88 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36922CD343F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2026 04:21:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 159BACD343F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2026 04:39:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=N1NeYPzkew/lg8N5iZf3wRciXirvXJuukKHofoQ/xo4=; b=oySKM00MzqRb+RzX8Az8SJx2sN
-	BHHMUKbonJJws2dAKPAKK37uu/ADsSZ2fs7z9QccIMZLCdZOR6BbHt0bBYk/03iX+q1OwkPdOx+o6
-	vD3wxtUOxyBeSYDrzgsT5baBrqFKDEA246TDDLgKnwvniEFM7ybuRKz0WkbB9OP6/u7ZlZitMrHv4
-	wbICW9RHBmh1UZWgU7BvD+RHf+pN8/zTejeGhu4XM93epkzlzew7QGYLrIKkiCBWCJLoZ5Lqf+g/7
-	Kg5RqdMAuZRWAuG5+ta/IWRu2QXICnKiHTJbjcRMpPHibpgpy3PAMXo6mHgjQaBDnYLsrmZzqMtrp
-	30TVSfQQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KqYAfge9RyGUwfX296nCiw+WsUVqeDsd2QhQeqI7aFc=; b=ln6+wzludSUYr0zzU5uUZR0rL6
+	WVAqXNQU9kcXwUP7+M230m+oo6sLne2Cra+g8fwq8M/+RGPaArEk9cYIBbCg5PJWF9X3ExRjAxUh8
+	eNK8G0l41nXyLZlNNglOTH5Y9CGBfxBhBLRIXCieVEow/mVPe65gGOLIr5ld8/nA/5nqQZ6zL8Cy1
+	z0P+3Qodr5w2h1E+KmO0vuE+YuMVtFUAy28TqZdrfkkhDz97+uP/nePktdgUq84ZJUp9rfufSiNkq
+	EcT634pQChsfFE5ny1910w75A5i5AfGS0hINTvqsaqsdEz6S9UneE2KvM1nlobUSvd6eDvFu/9iT+
+	kZ0SRonw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOpTX-0000000E94q-3drB;
-	Mon, 18 May 2026 04:21:07 +0000
-Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
+	id 1wOplM-0000000EBXy-27RU;
+	Mon, 18 May 2026 04:39:32 +0000
+Received: from relay.yourmailgateway.de ([46.38.247.119])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOpTV-0000000E93I-23Li
+	id 1wOplJ-0000000EBVx-0YNr
 	for linux-mediatek@lists.infradead.org;
-	Mon, 18 May 2026 04:21:06 +0000
-Received: by mail-pl1-x62d.google.com with SMTP id d9443c01a7336-2b458ca2296so12373595ad.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 17 May 2026 21:21:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1779078064; x=1779682864; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=N1NeYPzkew/lg8N5iZf3wRciXirvXJuukKHofoQ/xo4=;
-        b=IY3HwRLjN4HN6qXWpO0Trq2X3i7W2oz/FIL+ZWS8x5aRkpeM7nY8BFnkHEtkGCWKED
-         BWkpejkjZI4qJT2OaD0NJkpuhN4JgjhQk5Of+Cf3W1DSbgMs8iOt8Ivan/+3aDSR8MPQ
-         dK90rI2CH3zP7tdno97/KFDYE/Cq4H76a7WXYmq5v4MmG2BCaLSMGtkZ6RztNccQNgGY
-         tR+08pE4POatt9VQCLD8vG80Gf4UBsS1pINo+V37J+MH+XZ7L/LhK+I/SgeCIbmwnw3e
-         BrU6gMHPrsZfyyoRaTF7F6ptWu8SMoFgfZO9DXx1SHpxDIbtQnSBJV9HbTlBf/F7aFCE
-         kYVA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779078064; x=1779682864;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=N1NeYPzkew/lg8N5iZf3wRciXirvXJuukKHofoQ/xo4=;
-        b=ZD0QwzCon04vF5HmbuTdqGzlbGpxs34j6gsXLdSxb4rQzcELn7ORA1EN276Ix/DznI
-         TUIO2QjR5czfDzvp5dtaPekOngesghQXD+7aqGH1t3bFHv5in8mObIgj+J130LcrB/la
-         jVD8xVdz7sT1tGoMekAG57ELTYXdfM9QHe9YIkZATN7hamvdKDHIorD++v4e7QDsFwAb
-         WvJtCrv/q2ZNeJNNBrUZdwJZfUlphnl7snpfvUgv3/Q0cKswInFc12mKoy7JdPfZyrab
-         tlg9fcdMMjZ1BF0LoENScv0htNm0OIXH4kt1j1NU0VZrydBUQCXDeXTUCO0ojtTX4YoT
-         7gPA==
-X-Forwarded-Encrypted: i=1; AFNElJ83J4+JKirHi+icII9/A5n1b6Dc7Ca3kl+b7S9OoljP6j+K1HKbnvy5dxWNJAD/cJ32Vf1hya+hFrFobh0UXA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxvvzAXY3wOT6rU2HBpIsNOqu+CXruabJZvu/KOzJsalz3Qqa8w
-	/vHb5CQ//daGZPv3TPGfzzWZWiyvZodEnUrCxPUVJpv9xOI673Ply6fR
-X-Gm-Gg: Acq92OEIpGsnIn2WD3bIJ4OVb9iyiXpGJPzqGmb6hIe4aaKRJKQkioxdme3EY7IpqKk
-	VI+GEVl6meJyg9eWra8AFKgBKYSW1XdDcvj4ccOKlDQ5cS9bNff1yRw8TR7DgyETXgNnnrAlUia
-	LjxR88s6R6GFHXCxl9WlPj4v3tLXrN3h6CaWwjR+MgRffwOO/y9rh/xMShRqVQs/Z2VUWJe/oNT
-	a6lvbFkunbrA4G4eyBHtHSAa5yqZaNfVgB3Azv1I6TPCz8yFaZwc58t8wifyUgCtTqIaViBUkeF
-	Jpao/D7fw/h6BOOrgOVgSLAOMa21uRjZm+ympsG4sOiNmJFSJ5rxI0WJYnERNzKnfXKZaReedIN
-	tEwbKs0hFbcti4ywtXU21n7yVLCxev37JmKBrgBZOfLSkcgvHntaC5AS58UwfAM5LtCY2AjcG66
-	7gSOgrgYPIrH17izIxoTsCtPxTT5hJ19a8nAq6wBdtgEIy7gwr6KL5ZJ0qAaM8ZsSs1PiW1b09p
-	5XFliK6sXNHuXsULK5kwEJudW4z5J3O7og=
-X-Received: by 2002:a17:902:c194:b0:2ba:6013:eeaf with SMTP id d9443c01a7336-2bd7e8fbda6mr106088815ad.19.1779078064386;
-        Sun, 17 May 2026 21:21:04 -0700 (PDT)
-Received: from ryzen ([2601:644:8000:5b5d:7285:c2ff:fe45:8a32])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2bd5bd5fe51sm130747005ad.2.2026.05.17.21.21.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 17 May 2026 21:21:03 -0700 (PDT)
-From: Rosen Penev <rosenp@gmail.com>
-To: linux-input@vger.kernel.org
-Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
-	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
-Subject: [PATCH] Input: mtk-pmic-keys - use of_device_get_match_data()
-Date: Sun, 17 May 2026 21:20:46 -0700
-Message-ID: <20260518042046.981861-1-rosenp@gmail.com>
-X-Mailer: git-send-email 2.54.0
+	Mon, 18 May 2026 04:39:31 +0000
+Received: from mors-relay-8404.netcup.net (localhost [127.0.0.1])
+	by mors-relay-8404.netcup.net (Postfix) with ESMTPS id 4gJlSp4Hxnz88ZL;
+	Mon, 18 May 2026 06:39:22 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=leemhuis.info;
+	s=key2; t=1779079162;
+	bh=OzaLGagXIHUtFy4JrSoMFMJIG2DLcb6UhsO9uRYB6g8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=HAZP68dXuFErFiaB+INOgkEdsO10jvzRmFUKyFdzVCGCu6WxdgVZDQbVFwGsSllig
+	 9NQjT+wBml17Kn/LBOgncXFxxGdvfo/Q3AWutV6IQHE42mPtxff3NCZnZP+mmCXUif
+	 2UcRag51H4m6H0R/ESavFG60Ke4im7Mhu2GR1yOl7r5KPfs7CCSNEZm7YDyQTILFZ1
+	 IQ0PmHwzCGqDyJhZet5DZY93hYCzWW32FR17QQeIU51rpwXRPDTvNPjeN3MyMkBVi0
+	 9byMT2qUOCvH54YxBAwmTk/BME+dkyNLvAJasLLMo8CIVNbKmuMoUYBsYzC3FWgUFG
+	 n0/c7NztsIfKg==
+Received: from policy02-mors.netcup.net (unknown [46.38.225.35])
+	by mors-relay-8404.netcup.net (Postfix) with ESMTPS id 4gJlSp3bmFz4y9R;
+	Mon, 18 May 2026 06:39:22 +0200 (CEST)
+Received: from mxe9fb.netcup.net (unknown [10.243.12.53])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by policy02-mors.netcup.net (Postfix) with ESMTPS id 4gJlSn06SVz8sbH;
+	Mon, 18 May 2026 06:39:21 +0200 (CEST)
+Received: from [IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f] (unknown [IPv6:2a02:8108:8984:1d00:a0cf:1912:4be:477f])
+	by mxe9fb.netcup.net (Postfix) with ESMTPSA id EEDD761859;
+	Mon, 18 May 2026 06:39:19 +0200 (CEST)
+Authentication-Results: mxe9fb;
+        spf=pass (sender IP is 2a02:8108:8984:1d00:a0cf:1912:4be:477f) smtp.mailfrom=regressions@leemhuis.info smtp.helo=[IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f]
+Received-SPF: pass (mxe9fb: connection is authenticated)
+Message-ID: <e31f3922-a3e4-4993-aad5-d3973e8fd88e@leemhuis.info>
+Date: Mon, 18 May 2026 06:39:19 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [REGRESSION] Bluetooth: btmtk: MT7922 "Failed to send wmt func
+ ctrl (-22)" after 634a4408c0615c ("validate WMT event SKB length before
+ struct access")
+To: Brandon Arnold <brandon.arnold@gmail.com>, linux-bluetooth@vger.kernel.org
+Cc: luiz.von.dentz@intel.com, tristan@talencesecurity.com,
+ chris.lu@mediatek.com, linux-mediatek@lists.infradead.org,
+ gregkh@linuxfoundation.org, stable@vger.kernel.org,
+ regressions@lists.linux.dev
+References: <CAM07e=vYJE8khJmbsn75SOYye44o8YV8TZsRyF1mFRuUTMCgUw@mail.gmail.com>
+From: Thorsten Leemhuis <regressions@leemhuis.info>
+Content-Language: de-DE, en-US
+In-Reply-To: <CAM07e=vYJE8khJmbsn75SOYye44o8YV8TZsRyF1mFRuUTMCgUw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-PPP-Message-ID: <177907916034.1224972.6526818772537645703@mxe9fb.netcup.net>
+X-Rspamd-Server: rspamd-worker-8404
+X-Rspamd-Queue-Id: EEDD761859
+X-NC-CID: PkYu26wWqt6EFZ70ruyetuywmOlLLQScmB9N8nSUyoxWkDceoy4=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260517_212105_529435_AC903B43 
-X-CRM114-Status: GOOD (  10.88  )
+X-CRM114-CacheID: sfid-20260517_213929_491125_E9515D63 
+X-CRM114-Status: GOOD (  25.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,47 +94,135 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use of_device_get_match_data() to fetch the PMIC key register data directly instead of open-coding an of_match_device() lookup.
+On 5/18/26 01:25, Brandon Arnold wrote:
+> #regzbot introduced: 634a4408c0615c206885e60ea05f489c426f64b6
+> #regzbot title: MT7922 BT controller never registers (wmt func ctrl
+> -22) after btmtk WMT SKB-length validation
 
-This also lets the driver drop the of_device.h include.
+Thx for the reports, there are quite a few similar ones already; the
+problem is known and the fix (see the link below) should be heading to
+mainline this week and from there go to stable.
 
-Assisted-by: Codex:GPT-5.5
-Signed-off-by: Rosen Penev <rosenp@gmail.com>
----
- drivers/input/keyboard/mtk-pmic-keys.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+Ciao, Thorsten
 
-diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
-index c78d9f6d97c4..fd684ac16938 100644
---- a/drivers/input/keyboard/mtk-pmic-keys.c
-+++ b/drivers/input/keyboard/mtk-pmic-keys.c
-@@ -16,7 +16,6 @@
- #include <linux/mfd/mt6397/core.h>
- #include <linux/mfd/mt6397/registers.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
- #include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
-@@ -333,8 +332,6 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
- 	struct mtk_pmic_keys *keys;
- 	const struct mtk_pmic_regs *mtk_pmic_regs;
- 	struct input_dev *input_dev;
--	const struct of_device_id *of_id =
--		of_match_device(of_mtk_pmic_keys_match_tbl, &pdev->dev);
- 
- 	keys = devm_kzalloc(&pdev->dev, sizeof(*keys), GFP_KERNEL);
- 	if (!keys)
-@@ -342,7 +339,7 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
- 
- 	keys->dev = &pdev->dev;
- 	keys->regmap = pmic_chip->regmap;
--	mtk_pmic_regs = of_id->data;
-+	mtk_pmic_regs = of_device_get_match_data(&pdev->dev);
- 
- 	keys->input_dev = input_dev = devm_input_allocate_device(keys->dev);
- 	if (!input_dev) {
--- 
-2.54.0
+#regzbot dup:
+https://lore.kernel.org/linux-bluetooth/770d36b07311bf88210c187923f243fb9f126f04.1777058551.git.pav@iki.fi/
+
+> Hello there.
+> 
+> I wanted to report the below information about a commit that I
+> confirmed broke my MediaTek MT7922 adapter. The commit is also built
+> into the main Arch Linux package, so it affected me during a routine
+> update (see the BBS link in the report below). This adapter is the one
+> that came with my Framework Laptop 16 system.
+> 
+> Apologies for Claude's verbosity and language but I can confirm I
+> attended the bisect and revert of the offending diff. Thank you!
+> 
+> Workaround in use: pinned to the Arch Linux pre-7.0.7 kernel.
+> 
+> Thanks,
+> Brandon Arnold
+> 
+> Commit 634a4408c0615c ("Bluetooth: btmtk: validate WMT event SKB
+> length before struct access"), backported to 7.0.x stable and shipped
+> in v7.0.7, breaks Bluetooth on the MediaTek MT7922: the WMT function
+> control step fails with -EINVAL and the HCI controller never
+> registers. WiFi on the same chip (mt7921e) is unaffected.
+> 
+> This is NOT a v6.19->v7.0 mainline regression -- mainline v7.0 is
+> GOOD. The regression is the above commit specifically; it is absent
+> from v7.0 and v7.0.6 and present in v7.0.7.
+> 
+> Scope / affected versions
+> -------------------------
+> - GOOD: mainline v7.0, linux-stable v7.0.6 (commit absent)
+> - BAD: linux-stable v7.0.7 (commit present)
+> - Independently reported on Arch (different machine -- Lenovo
+> IdeaPad, MT7922 USB [0489:e0d8]): BROKEN on linux 7.0.7.arch2-1,
+> WORKING on 7.0.6.arch1-1, identical symptom.
+> https://bbs.archlinux.org/viewtopic.php?id=313561
+> 
+> Hardware / firmware (primary reporter)
+> --------------------------------------
+> - Framework Laptop 16 (AMD Ryzen AI 300 Series), board FRANMHCP09 A9
+> - BIOS: INSYDE/Framework 03.04, 2025-11-06
+> - MT7922, PCI [14c3:0616] subsys [14c3:e616]; BT side USB, driver
+> btusb/btmtk; WiFi side mt7921e (works)
+> - linux-firmware 20260410; BT firmware BT_RAM_CODE_MT7922_1_1,
+> HW/SW Version 0x008a008a, Build Time 20260224103448
+> - bluez 5.86
+> 
+> Symptom
+> -------
+> The firmware download and version handshake still succeed (identical
+> HW/SW version line before and after), then:
+> 
+> Bluetooth: hci0: HW/SW Version: 0x008a008a, Build Time: 20260224103448
+> Bluetooth: hci0: Failed to send wmt func ctrl (-22)
+> 
+> No "Device setup in N usecs" follows; BlueZ reports "No default
+> controller available". hci0 exists in /sys/class/bluetooth and is not
+> rfkill-blocked. Reproducible deterministically on cold boot,
+> `modprobe -r btusb; modprobe btusb`, and full USB unbind/rebind. It
+> fails even with btusb enable_autosuspend=0, so this is distinct from
+> the known func-ctrl/autosuspend race.
+> 
+> Analysis
+> --------
+> 634a4408c0615c reworks btmtk_usb_hci_wmt_sync() to validate length
+> with skb_pull_data() before casting the WMT event:
+> 
+> - wmt_evt = (struct btmtk_hci_wmt_evt *)data->evt_skb->data;
+> + wmt_evt = skb_pull_data(data->evt_skb, sizeof(*wmt_evt));
+> + if (!wmt_evt) { ... err = -EINVAL; goto err_free_skb; }
+> ...
+> case BTMTK_WMT_FUNC_CTRL:
+> + if (!skb_pull_data(data->evt_skb,
+> + sizeof(wmt_evt_funcc->status))) {
+> + err = -EINVAL; goto err_free_skb;
+> + }
+> wmt_evt_funcc = (struct btmtk_hci_wmt_evt_funcc *)wmt_evt;
+> 
+> For the FUNC_CTRL response from the MT7922, one of these
+> skb_pull_data() calls returns NULL and the function returns -EINVAL
+> (surfaced as "Failed to send wmt func ctrl (-22)"). In effect the
+> length the driver now requires
+> (sizeof(struct btmtk_hci_wmt_evt) + sizeof(status)) exceeds what this
+> controller actually sends for FUNC_CTRL, so a valid handshake is now
+> rejected. The pre-patch code cast and read the same bytes without the
+> strict length gate and worked on this hardware.
+> 
+> Empirical confirmation (mainline, no distro patches)
+> ----------------------------------------------------
+> Built faithfully from the running Arch config (only LOCALVERSION
+> added); no out-of-tree changes.
+> 
+> - mainline v7.0 : GOOD (commit absent)
+> - linux-stable v7.0.7 : BAD (kernel 7.0.7-bisect; WMT func ctrl -22
+> count = 1; hci0 device setup never completes; bluetoothctl shows 0
+> controllers)
+> - v7.0.7 + revert of
+> 70d37a8b9229 (the 7.0.7
+> backport of 634a4408c0615c): GOOD (kernel
+> 7.0.7-bisect-00001-ge33bfb5d7480; WMT func ctrl -22 count = 0; hci0
+> device setup OK; bluetoothctl shows 1 controller)
+> 
+> The reverted tree's drivers/bluetooth/btmtk.c is byte-identical to
+> v7.0.6 (git diff v7.0.6 -- drivers/bluetooth/btmtk.c is empty), so the
+> v7.0.7-vs-revert pair isolates exactly this one commit.
+> 
+> Reproduction
+> ------------
+> 1. Boot a kernel >= v7.0.7-equivalent on MT7922 hardware.
+> 2. `bluetoothctl list` -> no controller.
+> 3. `journalctl -k -b | grep 'wmt func ctrl'` -> -22.
+> 4. Revert 634a4408c0615c (or boot v7.0.6) -> controller registers.
+> 
+> A straight revert restores operation and is offered as the candidate
+> fix; alternatively the length checks should be relaxed to match the
+> MT7922's actual FUNC_CTRL WMT event length. I can test patches, or
+> provide full bad/good kernel logs, btmon/hci traces, and the exact
+> short SKB length on request.
 
 
