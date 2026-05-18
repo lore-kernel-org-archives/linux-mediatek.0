@@ -4,74 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92132CD4F3C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2026 13:39:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C5B0CD4F4A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2026 14:11:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FlfjiaBxnUfnTZewiPeC+z2VrnUvvUGsrr3gDKT2vns=; b=eGq6u/9+vztYDF9IOvhUSjVA6l
-	hFLmjFcl7ArGTgF5cYALiNyvN8EcvRmvBq2QggG9ZkQOqh2kcgzt/SCugGMvb0VX3VeW5AWNlneC7
-	eejoalinY1W2cx5LZYaTKboA3Hhha+mrSG6Nauu3IE7Fm+n9axwIXPOFc4SWJfHAA5Yo5jCQhRbXB
-	USJkeV+aXlsQ/tCYyAkvMoeph/wmpYgHmNeqfEwgJ6jAzqSkWhmlWIz09H3nTkS/X64yeGM2xDiIO
-	6fBA+oD9g5/Y5NFmZXlQK6TWyr5PROk6w1x+f1t1ZxIJqCgoLmGfeNvUqKFS8zC+o2ci+eneGVoZp
-	Ep6DnKiQ==;
+	bh=g2t8910FrRWZux8hizne38ZE1f02Q5VgRvKTVLosCHw=; b=oN7u8Y93vhXfWXFxgFLcRrg4A3
+	6iC6FzqN3MhhfzBLPHJTM+YLHh+6LHtFf3IFVssAc8kjW63qwTvIP+z3xwZiDQ2FRLTAtgkcmux71
+	n50kiBCCmfcXp1mP75GmNCIjIAY28rKUapFEy/pWFHujTE3uiDzkPL6ykrtLeQYP9a0lXoykevDlD
+	ypExHC0NXfsqXfyhhGfhy9fHhDS5yx2ZoIVA54MhktM08QUPfRjT7bfcIHADUtZSkJgEHv9nvsFpC
+	F5KOLHTLtnQ3WoqsViglelHKuELmH9vt2QWiyn70cI0OMEUnsRNCnCUe4dIOq00HraUfDmgJa0ZVM
+	NletjeFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOyC2-0000000FqAb-06GZ;
-	Mon, 18 May 2026 13:39:38 +0000
+	id 1wOygp-0000000Fw2x-2PiZ;
+	Mon, 18 May 2026 14:11:27 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOyBz-0000000Fq9R-3TaC
+	id 1wOygl-0000000Fw1W-1wA3
 	for linux-mediatek@lists.infradead.org;
-	Mon, 18 May 2026 13:39:37 +0000
+	Mon, 18 May 2026 14:11:25 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B6DC14037F
-	for <linux-mediatek@lists.infradead.org>; Mon, 18 May 2026 13:39:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9849DC2BCC7
-	for <linux-mediatek@lists.infradead.org>; Mon, 18 May 2026 13:39:34 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 222CB43D3F
+	for <linux-mediatek@lists.infradead.org>; Mon, 18 May 2026 14:11:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 04DEEC4AF09
+	for <linux-mediatek@lists.infradead.org>; Mon, 18 May 2026 14:11:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1779111574;
-	bh=1bjO3PVxRe3/4rE7yd1mVAeSvqZ+cwGYwn1Xps2SaBU=;
+	s=k20201202; t=1779113483;
+	bh=h7gVkfTa5QHeRim/stNXsU/SzV573sj0iQ7u9k7nmU0=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=ALSgzLJ+v19bLSdcNKMsCGKuAGvNKVRKUMYWuPu0UdOUU5W345v7Yr14ulqs35hGc
-	 n2ZJ5WDz8pG+BIkECrdpiSG9RFfWLMszctVHVy2dEdv5UrQnUWYXaoOm7Soxr1PBGj
-	 f0J7stzkruGxfHyU5OKRzqfZkrNes6nAqrlGxuPojNajQyJq0nntx1Gvtr1Sng7Ztu
-	 G+iJir9ntiF9wrKvY+QOS7OhWaARdqM+Zgy1Rq4un3e6N/W8KPYuXEHFEjJCHRsWv3
-	 kRJkiNwIDaODDOlqJbg3gDg6Oec8rbQ853N2Z0W64FeYuTGI0Q1WFOokqu2bkvE4/Y
-	 Uo3xjmfbgXSJg==
-Received: by mail-dl1-f47.google.com with SMTP id a92af1059eb24-134ac81c445so8704801c88.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 18 May 2026 06:39:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AFNElJ8E1hEKD/WtyqmgMark9idsdp97JgzFTsTVErQIg1OP2P6TPWW95zu9SUYH9vKDKi5lW6ZbyigANjbQuh0eUw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzfUo2isQZ4ldwvypsT1v6ftW1a3Hgrfl2Sed4IWVEm9QtRU/UI
-	QAnLmgPIYRTfDdD0gAe4r1k9YeaWgAA9dL37JXCOwNrGm5X68kImh7IqzaBrnTtkAT2FC5NnMZo
-	6uH2+TVhHP+PBoW7yivagqzzwGuJVBQ==
-X-Received: by 2002:a05:7022:f9d:b0:119:e56b:958a with SMTP id
- a92af1059eb24-1350451e343mr6439973c88.15.1779111573911; Mon, 18 May 2026
- 06:39:33 -0700 (PDT)
+	b=ryEjjJ6JWn+X5PFCMwVoRDjDgpCxRDbrTUHHWIIaIUJ65I5Efqt2Ea47ot/lc9mvm
+	 kZiUmdTgEHsDz2CTJzMoYL5jCYxwjCmcp6JrWljg0A6VodksTJ3ebGI0XTbiUIwKdJ
+	 wZg3dT8eeWcZIPG3nfZuqzgKbljHAKBuXYseOBEOmAzzitmh/BJp01IRTgOOGh9dzX
+	 1YKLs5BWFqaGTdbz8PUW1Kpm28nNMSKz7hR5NWQtkik0zoA0Mm5Lxa8X7ib49SR6/2
+	 5nkrSg0hUA0yTi3iSC2hE/uC7nNi3dAKKqfImpNVSqcBnZXFSYRgPebTk5HQQWLGn7
+	 Ad5QaBuJspxLA==
+Received: by mail-dl1-f53.google.com with SMTP id a92af1059eb24-1354403c610so5605192c88.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 18 May 2026 07:11:23 -0700 (PDT)
+X-Gm-Message-State: AOJu0Yy0lpcagPR8glnUQr1mOrHAwQgE8ajs+avPbYZ0l0kTIn7t5d4M
+	ltGXz1+5yLhYbpA04WBTh7840Av+cCI4+PPCqu8zrVubGEJ7GCpGCLxJ1AyOhyBOxxsU1Ub+q0T
+	nNRajIKDKEEERB15PAQBLWjliICbbYg==
+X-Received: by 2002:a05:7023:b11:b0:12a:6ab7:3f73 with SMTP id
+ a92af1059eb24-1350463608fmr6954781c88.0.1779113482382; Mon, 18 May 2026
+ 07:11:22 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260420052008.5417-1-abhiraj21put@gmail.com>
-In-Reply-To: <20260420052008.5417-1-abhiraj21put@gmail.com>
+References: <20260505214541.333657-1-l.scorcia@gmail.com> <20260505214541.333657-3-l.scorcia@gmail.com>
+In-Reply-To: <20260505214541.333657-3-l.scorcia@gmail.com>
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Mon, 18 May 2026 13:39:21 +0000
-X-Gmail-Original-Message-ID: <CAAOTY_9LTmas78sFvwAnkxcXt0jqXaxZ1oa0jj_+xhL-o1Ei4g@mail.gmail.com>
-X-Gm-Features: AVHnY4JN47eeSY49tByNRVwfGLFjrAA9LUtPn9wmQMHba45G9quErL5vSBBoobM
-Message-ID: <CAAOTY_9LTmas78sFvwAnkxcXt0jqXaxZ1oa0jj_+xhL-o1Ei4g@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: Convert legacy DRM logging to drm_* helpers
- in mtk_dsi.c
-To: Abhishek Rajput <abhiraj21put@gmail.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
-	simona@ffwll.ch, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
+Date: Mon, 18 May 2026 14:11:08 +0000
+X-Gmail-Original-Message-ID: <CAAOTY_-ROn-9S1qfHgovv=kU8JOe-A40PAMA+5tsj2O4admTRg@mail.gmail.com>
+X-Gm-Features: AVHnY4In4m85pm3lmCfr_GmIUHep1vnejd09hnbSXzHvVRUiJfd8Dukfjspay4c
+Message-ID: <CAAOTY_-ROn-9S1qfHgovv=kU8JOe-A40PAMA+5tsj2O4admTRg@mail.gmail.com>
+Subject: Re: [PATCH v4 2/2] drm/mediatek: dsi: Add compatible for mt8167-dsi
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	dri-devel@lists.freedesktop.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260518_063935_910522_4F89559A 
-X-CRM114-Status: GOOD (  20.16  )
+X-CRM114-CacheID: sfid-20260518_071123_538292_48A17F51 
+X-CRM114-Status: GOOD (  17.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,23 +87,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Abhishek:
+Hi, Luca:
 
-Abhishek Rajput <abhiraj21put@gmail.com> =E6=96=BC 2026=E5=B9=B44=E6=9C=882=
-0=E6=97=A5=E9=80=B1=E4=B8=80 =E4=B8=8A=E5=8D=885:20=E5=AF=AB=E9=81=93=EF=BC=
-=9A
+Luca Leonardo Scorcia <l.scorcia@gmail.com> =E6=96=BC 2026=E5=B9=B45=E6=9C=
+=885=E6=97=A5=E9=80=B1=E4=BA=8C =E4=B8=8B=E5=8D=889:46=E5=AF=AB=E9=81=93=EF=
+=BC=9A
 >
-> Replace DRM_INFO(), DRM_WARN() and DRM_ERROR() calls in
-> drivers/gpu/drm/mediatek/mtk_dsi.c with the corresponding
-> drm_info(), drm_warn() and drm_err() helpers.
->
-> The drm_*() logging helpers take a struct drm_device * argument,
-> allowing the DRM core to prefix log messages with the correct device
-> name and instance. This is required to correctly distinguish log
-> messages on systems with multiple GPUs.
->
-> This change aligns the radeon driver with the DRM TODO item:
-> "Convert logging to drm_* functions with drm_device parameter".
+> The mt8167 DSI controller is fully compatible with the one found in
+> mt2701. Unfortunately the device tree has a dedicated compatible for
+> mt8167 since 2022 and it cannot be changed with a fallback nor removed at
+> this point. The only way to get the device to work is to add the
+> compatible to the driver.
 
 Applied to mediatek-drm-next [1], thanks.
 
@@ -113,167 +108,30 @@ Regards,
 Chun-Kuang.
 
 >
-> Signed-off-by: Abhishek Rajput <abhiraj21put@gmail.com>
+> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dsi.c | 1 +
+>  1 file changed, 1 insertion(+)
 >
 > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediate=
 k/mtk_dsi.c
-> index 0e2bcd5f67b7..a67ad575f5f0 100644
+> index 5aa71fcdcfab..167e33fef025 100644
 > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
 > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -510,6 +510,7 @@ static void mtk_dsi_config_vdo_timing_per_line_lp(str=
-uct mtk_dsi *dsi)
->         u32 delta;
->         struct mtk_phy_timing *timing =3D &dsi->phy_timing;
->         struct videomode *vm =3D &dsi->vm;
-> +       struct drm_device *drm =3D dsi->bridge.dev;
+> @@ -1305,6 +1305,7 @@ static const struct mtk_dsi_driver_data mt8188_dsi_=
+driver_data =3D {
 >
->         if (dsi->format =3D=3D MIPI_DSI_FMT_RGB565)
->                 dsi_tmp_buf_bpp =3D 2;
-> @@ -543,7 +544,7 @@ static void mtk_dsi_config_vdo_timing_per_line_lp(str=
-uct mtk_dsi *dsi)
->                                              horizontal_backporch_byte /
->                                              horizontal_front_back_byte;
->         } else {
-> -               DRM_WARN("HFP + HBP less than d-phy, FPS will under 60Hz\=
-n");
-> +               drm_warn(drm, "HFP + HBP less than d-phy, FPS will under =
-60Hz\n");
->         }
->
->         if ((dsi->mode_flags & MIPI_DSI_HS_PKT_END_ALIGNED) &&
-> @@ -623,12 +624,13 @@ static s32 mtk_dsi_wait_for_irq_done(struct mtk_dsi=
- *dsi, u32 irq_flag,
->  {
->         s32 ret =3D 0;
->         unsigned long jiffies =3D msecs_to_jiffies(timeout);
-> +       struct drm_device *drm =3D dsi->bridge.dev;
->
->         ret =3D wait_event_interruptible_timeout(dsi->irq_wait_queue,
->                                                dsi->irq_data & irq_flag,
->                                                jiffies);
->         if (ret =3D=3D 0) {
-> -               DRM_WARN("Wait DSI IRQ(0x%08x) Timeout\n", irq_flag);
-> +               drm_warn(drm, "Wait DSI IRQ(0x%08x) Timeout\n", irq_flag)=
-;
->
->                 mtk_dsi_enable(dsi);
->                 mtk_dsi_reset_engine(dsi);
-> @@ -663,9 +665,10 @@ static s32 mtk_dsi_switch_to_cmd_mode(struct mtk_dsi=
- *dsi, u8 irq_flag, u32 t)
->  {
->         mtk_dsi_irq_data_clear(dsi, irq_flag);
->         mtk_dsi_set_cmd_mode(dsi);
-> +       struct drm_device *drm =3D dsi->bridge.dev;
->
->         if (!mtk_dsi_wait_for_irq_done(dsi, irq_flag, t)) {
-> -               DRM_ERROR("failed to switch cmd mode\n");
-> +               drm_err(drm, "failed to switch cmd mode\n");
->                 return -ETIME;
->         } else {
->                 return 0;
-> @@ -849,11 +852,12 @@ static void mtk_dsi_bridge_atomic_pre_enable(struct=
- drm_bridge *bridge,
->                                              struct drm_atomic_state *sta=
-te)
->  {
->         struct mtk_dsi *dsi =3D bridge_to_dsi(bridge);
-> +       struct drm_device *drm =3D bridge->dev;
->         int ret;
->
->         ret =3D mtk_dsi_poweron(dsi);
->         if (ret < 0)
-> -               DRM_ERROR("failed to power on dsi\n");
-> +               drm_err(drm, "failed to power on dsi\n");
->  }
->
->  static void mtk_dsi_bridge_atomic_post_disable(struct drm_bridge *bridge=
-,
-> @@ -916,7 +920,7 @@ static int mtk_dsi_encoder_init(struct drm_device *dr=
-m, struct mtk_dsi *dsi)
->         ret =3D drm_simple_encoder_init(drm, &dsi->encoder,
->                                       DRM_MODE_ENCODER_DSI);
->         if (ret) {
-> -               DRM_ERROR("Failed to encoder init to drm\n");
-> +               drm_err(drm, "Failed to encoder init to drm\n");
->                 return ret;
->         }
->
-> @@ -932,7 +936,7 @@ static int mtk_dsi_encoder_init(struct drm_device *dr=
-m, struct mtk_dsi *dsi)
->
->         dsi->connector =3D drm_bridge_connector_init(drm, &dsi->encoder);
->         if (IS_ERR(dsi->connector)) {
-> -               DRM_ERROR("Unable to create bridge connector\n");
-> +               drm_err(drm, "Unable to create bridge connector\n");
->                 ret =3D PTR_ERR(dsi->connector);
->                 goto err_cleanup_encoder;
->         }
-> @@ -985,6 +989,7 @@ static int mtk_dsi_host_attach(struct mipi_dsi_host *=
-host,
->  {
->         struct mtk_dsi *dsi =3D host_to_dsi(host);
->         struct device *dev =3D host->dev;
-> +       struct drm_device *drm =3D dsi->bridge.dev;
->         int ret;
->
->         dsi->lanes =3D device->lanes;
-> @@ -1012,7 +1017,7 @@ static int mtk_dsi_host_attach(struct mipi_dsi_host=
- *host,
->
->         ret =3D component_add(host->dev, &mtk_dsi_component_ops);
->         if (ret) {
-> -               DRM_ERROR("failed to add dsi_host component: %d\n", ret);
-> +               drm_err(drm, "failed to add dsi_host component: %d\n", re=
-t);
->                 drm_bridge_remove(&dsi->bridge);
->                 return ret;
->         }
-> @@ -1034,11 +1039,12 @@ static void mtk_dsi_wait_for_idle(struct mtk_dsi =
-*dsi)
->  {
->         int ret;
->         u32 val;
-> +       struct drm_device *drm =3D dsi->bridge.dev;
->
->         ret =3D readl_poll_timeout(dsi->regs + DSI_INTSTA, val, !(val & D=
-SI_BUSY),
->                                  4, 2000000);
->         if (ret) {
-> -               DRM_WARN("polling dsi wait not busy timeout!\n");
-> +               drm_warn(drm, "polling dsi wait not busy timeout!\n");
->
->                 mtk_dsi_enable(dsi);
->                 mtk_dsi_reset_engine(dsi);
-> @@ -1123,6 +1129,7 @@ static ssize_t mtk_dsi_host_transfer(struct mipi_ds=
-i_host *host,
->                                      const struct mipi_dsi_msg *msg)
->  {
->         struct mtk_dsi *dsi =3D host_to_dsi(host);
-> +       struct drm_device *drm =3D dsi->bridge.dev;
->         ssize_t recv_cnt;
->         u8 read_data[16];
->         void *src_addr;
-> @@ -1153,7 +1160,7 @@ static ssize_t mtk_dsi_host_transfer(struct mipi_ds=
-i_host *host,
->         }
->
->         if (!msg->rx_buf) {
-> -               DRM_ERROR("dsi receive buffer size may be NULL\n");
-> +               drm_err(drm, "dsi receive buffer size may be NULL\n");
->                 ret =3D -EINVAL;
->                 goto restore_dsi_mode;
->         }
-> @@ -1177,7 +1184,7 @@ static ssize_t mtk_dsi_host_transfer(struct mipi_ds=
-i_host *host,
->         if (recv_cnt)
->                 memcpy(msg->rx_buf, src_addr, recv_cnt);
->
-> -       DRM_INFO("dsi get %zd byte data from the panel address(0x%x)\n",
-> +       drm_info(drm, "dsi get %zd byte data from the panel address(0x%x)=
-\n",
->                  recv_cnt, *((u8 *)(msg->tx_buf)));
->
->  restore_dsi_mode:
+>  static const struct of_device_id mtk_dsi_of_match[] =3D {
+>         { .compatible =3D "mediatek,mt2701-dsi", .data =3D &mt2701_dsi_dr=
+iver_data },
+> +       { .compatible =3D "mediatek,mt8167-dsi", .data =3D &mt2701_dsi_dr=
+iver_data },
+>         { .compatible =3D "mediatek,mt8173-dsi", .data =3D &mt8173_dsi_dr=
+iver_data },
+>         { .compatible =3D "mediatek,mt8183-dsi", .data =3D &mt8183_dsi_dr=
+iver_data },
+>         { .compatible =3D "mediatek,mt8186-dsi", .data =3D &mt8186_dsi_dr=
+iver_data },
 > --
 > 2.43.0
 >
