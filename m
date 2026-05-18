@@ -4,107 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCF87CD4F50
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2026 18:24:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EACA7CD4F4A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 May 2026 19:04:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MkRwRwwQI9Lvwqp+ZfDsXnx8pCUGF38PtuwOnzRf8PA=; b=Wlti7mNMJsFYub+TBHltuuXxKd
-	X55iZjmnaQw/VHtV+zxcqHv/IpaEAW/I8MVXoQMgNQhXrIfa+nyQ/daJP9dJ5kfxeylNkFj31LS59
-	1XpIdQPD0ZpeunQZXWMET/TvaIg+RbUWQirYPAHk//uRcAvGsJUH6pjfjsbGxGAWGwpVLLR6pqmPt
-	Bwyol1sNG6lE/wByMVSmZw4Yh0KKwng7WgOju2w091pmZcamKiNKXRL29hq8TiMqleZNm8yepXYph
-	51oaBtrxB5JmMm3yFYljHxRQdAhzXrJbylDcQQTcZsrA/UiXCM4g2sdO6zXS+q6kwghmjAKQiL9Ol
-	GK763BQg==;
+	bh=D19Vw4l9A1iAw5lo1r64wNXQuyjnSfA8yjiubDQIMYM=; b=e8FA5cJLTM+6f0zh+c79PGiyCj
+	Kuzm2/AdC1ojI7VFaqJmLOlK8BSivHcTFpZfz9Jj1wrDTwXHEe/lteEdkzyk4pxyl4Ku+OZy4RpWU
+	K5kH2hlI5u1lRcFRcrhbZVC0pj1rapsvTBL8BeqV4d7G42C2gyzUQdoTHJAte9KUfLTYQ+OzWrMVb
+	WFuKo0/jQiy/wzW0spr4t5qMJ+wLDoHwI3clZDJJy/jjK/YcImouY/cvLXC3TKtJIppkQxgx16Ahh
+	drJtwsc7JgaL6BeLEsvmb+qVftUwV/rymYPwY7wGx74sKNlJ39tB2IpoIVlUd4oBjD7QFEW2Gfi3W
+	Ugz/eLwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP2dL-0000000GYNC-3oFN;
-	Mon, 18 May 2026 18:24:07 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1wP3GC-0000000Gder-2xE4;
+	Mon, 18 May 2026 19:04:16 +0000
+Received: from mail-ot1-x32d.google.com ([2607:f8b0:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP2dI-0000000GYMD-3rnB
+	id 1wP3GA-0000000Gddx-0u9B
 	for linux-mediatek@lists.infradead.org;
-	Mon, 18 May 2026 18:24:06 +0000
-Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-bd373f83042so534176866b.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 18 May 2026 11:24:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779128642; cv=none;
+	Mon, 18 May 2026 19:04:15 +0000
+Received: by mail-ot1-x32d.google.com with SMTP id 46e09a7af769-7e582b3bcaaso1990261a34.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 18 May 2026 12:04:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1779131053; cv=none;
         d=google.com; s=arc-20240605;
-        b=f4tHAefjvYpqB2Lsltdcgjp983oiVnNTtFTWJrnaKn5VkGT7Ap0Tq5qnADGt4ysYso
-         HssxEOf1d1uom3XMcQ8HZDknR90tm8qWz+3fmuHhWp7WlJB0QjdezSsky35IepX+uBHO
-         inh1JrkI4VskHjA9MymFNhUBUqTr0qIjQD4cdyHTTbfV77bIdp4bqlkimfpZgJEHITjP
-         acgBJ85GbKnRQojfqKBNYqCXc498Z6ONAqQfa5dXUzlgbq/K6iqFTxf4A4iENb8U2IeY
-         PCbQMgIxfIOVPxB05WxvHHRRHXhTabZl/7BaOxOpEt5cWu5R/oZd3OiAqht1S7NL2RQb
-         erVA==
+        b=C3PBP1jxZpvlLtiabMThfplSJ+0fCkeDRragHKq8yJrRVRdBLVQ+odEYPslL0IAvBg
+         dLPgY5Zdh3Woz/ENVyAZyocmleGX/ig5dUO780ghxmKv/Y3heAb0LHLWBxJzh9nAUhlI
+         4HK3vIrY/kBrWPNBgVGiyaYDHL3dx1wJswOJRugFjPkUXevDmSxCn+QvthHLf2IuWraE
+         PwAhGceb2oPvwugO6lfJ/qgdfRXq+dcu4r6IWQo8Q1mMf3GLjQngyP/oKfm3mXvNDsoq
+         87rr5OSjuRuIFEmO8x7xYDsCPmytLoS6GH4DLzjZsCjR/gDQi67VdM9t3dMuWK6qNpVQ
+         TgyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=MkRwRwwQI9Lvwqp+ZfDsXnx8pCUGF38PtuwOnzRf8PA=;
-        fh=v9bEpv47s9BEVsFeW1o6anwQcuPWhPo5bwCrPfyEi7Y=;
-        b=ixx+u00KbGm0nq2U5d0JbSqRUtqqFR1bT3mYq8WXpSFCM6v3KOkLMVBAFU10fNHSIl
-         mQChW7nwMYwlv+xGp70CwDJfT0n9dhZDiKLKIZ0liTCN68/d2eUIyiQU/uFEoqmWp51P
-         gFrmwmKqqHAiQJJHuej1geA6Hj5V3Ff+ARtr4iCZ1yEti/qc0x+VJT0IRRPes7CmnO2A
-         zBejWaWukKBOipmWlZXCPR9ExTW/hVyBcnLVmiR1TbcvwEXPlT5LLa+w0bSN4b2Nszlr
-         rV3ul5EEtSiyzDJeGMVSl54y7r/YArkGZxBR2wmhCUtQz8WTachV1uhEBt6pJ0BL01yq
-         xFtg==;
+        bh=D19Vw4l9A1iAw5lo1r64wNXQuyjnSfA8yjiubDQIMYM=;
+        fh=m6VaJ6usyEFBScU1e1ze7F69mR6bvVcPjEGgr3G2eCg=;
+        b=R147jSMr+HRc8tkJj8Ap9DufqqH0dhtf8b3/dUSLppW6l24a6nIvkA8xfWklbu2xBz
+         4odKeT3yZYo+n62IogyG2KpFFZXPQS4yhgqG6/WNWLhkv8Z1lqofntAn9FIu47CuM1SQ
+         OuRhp7GKKyy0tY78+JlKyjX1/2mIRD6e58ZPfxv48igWA2ms/uqbRyW0e7hFHZhKTEPj
+         Jv3y+3dqfGA20rwzW0swWlC2bTZ/Vyb5pYmPaFBIB3OnOy0kbmVh7qq1TC0N97Xe6Y5a
+         J4zg1LhQ0gN03Lmi/aeH7p+NtPg1S/QgtDworGcYdd01GadrjTq1/csFWJcynmFnMhPL
+         jGcg==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1779128642; x=1779733442; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1779131053; x=1779735853; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=MkRwRwwQI9Lvwqp+ZfDsXnx8pCUGF38PtuwOnzRf8PA=;
-        b=lSE07hcZE0g0sTtkT/cq6tz3mOxt2gQK8lh9k1eXpxvyB7P+j+gMzGnsC7j2/hN2j8
-         VhLJ1NKHZ59vrQ17JVfV3yU7iEG2RLVEIFf+DvzCbU2JjiJ8Nr9fz+Wg4+Sf3CvrtW1R
-         gweMNIWSJ/U5d5W+HDKrsYhKxx2dOvO4tI6SkPAG8C4vsmOzE8wf8BVaUvbWOkrNw2JZ
-         fRZpDO4g20AcRCYAjyRreCptXoKtg+5XYO57SClfgjStrVf6OmQtUCSmZrMWoS/YKkGx
-         M+vVn3LC9eicvFThhhKZ6LjCQ3lvt8pwHtjxMoi5BNl10K2+tzfGspEiSi7BDDn5Npyi
-         UuVg==
+        bh=D19Vw4l9A1iAw5lo1r64wNXQuyjnSfA8yjiubDQIMYM=;
+        b=JsGaL4sunm+B8ZWWKeXg+N4qxQhCQ+t5NFEFQ/2AeXDnlW0Ipk22F+lC2ONhn6Esmg
+         i0g4XnEVdGkDv1BFQiBlka52Hn0iruZNt1gRvUKZDrDMzqjkZMxdfJkRmN9t0VfQcmgp
+         UZzHEAs17e81WTrTiw+37Z66+uLmvMZekPHpR3gJeESoZAvlIsW928NiQ0cP4qgdB9UJ
+         6ASqmLas3mc4DxVrvFVtHnqKZcWr0/+bzO5ZHu4nj8SM7MBWvN//wG5V8DIrZqZjkLTv
+         NiXqAhfJylAGXheOFpl0IasDpKZTBIx6+QLJK10cF/4dmaKVuJFuu9h+cwphCRR/NAhR
+         2epw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779128642; x=1779733442;
+        d=1e100.net; s=20251104; t=1779131053; x=1779735853;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=MkRwRwwQI9Lvwqp+ZfDsXnx8pCUGF38PtuwOnzRf8PA=;
-        b=pmje6DJDWibX4QvDsRD7qQGXL02yGNDb1psmNyOZp6QILBpB39Yt/VNnPNh7itdl29
-         jYYpaPDUTnmykPOR9BO4fvSXhxXuWINhd2b1e7ip7StB/6z4Qrwfis61nqKxOW4B/p0L
-         y0bMvB2ftjHvlNBCdmI6XoarDok/+U1vKh6pEMOlqePGluY2Om9RjnTy1HJaESKVI6OP
-         rslAabG7FrMdzAlYH3d/0dE1QSvbpjsuurrEtAHSeMTdAlGx4VLt5HKnVHEWjyjpl0AS
-         o1++syoTqzdye6zRogWQ2ViI23gHkYKRMdFo87vy5Q8OYA/YgDGD3ulBK13Bt0VBpm7u
-         dAyg==
-X-Forwarded-Encrypted: i=1; AFNElJ9M1dZLANP3j4MsQi3rD5gfnrcywpaDl8keY34Ko/rmUWJNv4PW89tlpUhYSppqQZX5rEQ6B0N7/b6l+3Mc9A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzrsTf/YyXB3qsdlXJwagjsmsJSBFCyE3tw4T5k00ABZkUB+WM2
-	CWvKrHwhthLhGzgAavnSsZ+D2CUHp+HhOi9gYn/J1Jk33nagTwSSOE42fw3El/H590t2icl6+a1
-	sMTJYEFuFpDRowhQgoU1757uJqrdmxrVZcB8Q
-X-Gm-Gg: Acq92OEjerncHtgsmDd4x9ITsXn4noSSakhjEqYAM/FL7s0/SsZx64bTqczyqiS5VqG
-	P6zv0OwPQF1oYCevv6MSBI2/aonIDX36SG7io+LcTTFVrRYYUtVph5w9yd2hZfVvQ1Wqq4xrB+8
-	5okhgizSY+mB38+j23MK2JX1IZ9WSfDBWgfMsw1J5yzibGY0qXYr9Mv5OeW2hCA3jLcN/F0clF8
-	VwCbW6xkMaXcQ1SOKptJn0rHGPcnRzALTJ7N3dHEzYi8EqEn29YoSSNpiEZub8nXaGuOmzxeSgl
-	sCv5eRzYRUnHPAdfRf7EOwhvJxMri6D7QSvsgtG+KVR6ROwS6BM=
-X-Received: by 2002:a17:907:c50e:b0:bd4:f3e5:b0f6 with SMTP id
- a640c23a62f3a-bd517964d1fmr901741666b.28.1779128642168; Mon, 18 May 2026
- 11:24:02 -0700 (PDT)
+        bh=D19Vw4l9A1iAw5lo1r64wNXQuyjnSfA8yjiubDQIMYM=;
+        b=Ek6x0E3AC4qJmaJuAt+qdTyLvS8mtNhW4N5TVYjL7jO7vxpZkYIknb//n7aU8vRghE
+         PMxAG6fPz12B6swJdff6b2xH6tUEqxOA/y6W1R5cTs0bYHA30EvbtCacS/8RKhraAgwu
+         K5l7M3I0RWSo/G5nlezG70nITWIjW9wOPX3tf2f913Qcb3hgd6aWjBBYXrrjc0mUXFDc
+         x+asHhx1LoXF+UKQN1EPSMUyOt2Cxu/YASjLQ5JG0z23wcR7TLFzKPePuK69jlFo6B7x
+         t03jLQM9544v6AFlr49uFmTEYGxalGuy1lSdYgxjhNLtlRI1e2Yy0EpgqxYVk3t5ARGT
+         zWJw==
+X-Forwarded-Encrypted: i=1; AFNElJ9X8wsFtwT07fgZxvzh3VBbVkpZuUwg9Ekxp2huifk3oV6M7qvpOxkA/P/uH42P4xf2avOhe8Xq5uNRR0Ek2A==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz61TcXmS4qMFwjv5TAqJ7eGE3FpRWYuLZHjMBCQGvNipyusV6s
+	HSpE5NEnzPJRMfojS/EYVyYxiNGeeySuLbuKS5TxW+L9Qf1FtvrPmQg4aT3iQPhzfZ8y4692mOk
+	kaQJRH1zSWl5Hni3+G5KdfPqarN0gC8o=
+X-Gm-Gg: Acq92OEq7wj98pTfcy9+CeWxvisUDMlDZxj6IgVjMW4Jjb8DuA4bMp8rP7qdzoiBDc5
+	Mb3bpCmGD6KiSEC19sugQP+c2tjnMcUt5Uhn4uBQYbWZ+RR9/KYhRLfJzc5Rpsnr3wApBtL4Tfa
+	qfqXb7KM7y8Feanx+A1IAOLHVP1cksNzXFnCfPK1x0e1Fn/qAaTioyyoR8ao5uokB5pTT5ayYqd
+	JanaVD7kjONfpRO3xiebxUVlN+Hama3YgVwyUAAbWCnrYSDfItUYPZXEgosxygvPzCs1wWl9vxz
+	fgafX7ijFTYY9Tn49LQ=
+X-Received: by 2002:a05:6830:3809:b0:7de:44a5:51d1 with SMTP id
+ 46e09a7af769-7e4ea0818c0mr10204710a34.7.1779131052955; Mon, 18 May 2026
+ 12:04:12 -0700 (PDT)
 MIME-Version: 1.0
-References: <5ecac6a9b7d29526e8438dea105b58f5487c93aa.1778521232.git.ryder.lee@mediatek.com>
- <agdJ1EtZjjWh2R1h@lore-desk> <CAHoxojJX2BRRTLMuM_QcJqMMmshxS4EAwrB1VjU3rsZ+0k2PAg@mail.gmail.com>
- <agsGiHKH6ly1afaf@lore-desk>
-In-Reply-To: <agsGiHKH6ly1afaf@lore-desk>
-From: Roy Luo <roychl666@gmail.com>
-Date: Mon, 18 May 2026 11:23:51 -0700
-X-Gm-Features: AVHnY4I8XXaA-Ix7yIv2zNLRgB6T4AcoApIY86IDAvHLUZ-cOoSi0nKs1Qxz7eM
-Message-ID: <CAHoxojKeXCCnJoO7yBBmTM9euiTf38orujOhOK00X8bb3ctWuA@mail.gmail.com>
-Subject: Re: [PATCH] wifi: mt76: mt7996: avoid memset overwriting tx_info->control.flags
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, Felix Fietkau <nbd@nbd.name>, 
-	linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org, 
-	Shayne Chen <shayne.chen@mediatek.com>, Roy Luo <roy-ch.luo@mediatek.com>
+References: <20260428025614.1094085-1-senozhatsky@chromium.org>
+In-Reply-To: <20260428025614.1094085-1-senozhatsky@chromium.org>
+From: Jassi Brar <jassisinghbrar@gmail.com>
+Date: Mon, 18 May 2026 14:04:01 -0500
+X-Gm-Features: AVHnY4I7yygR6iIAN0n3cRgheBUNKVPddXLQRGYhBBdR5Z8-_fNNgL2cX9WJYo4
+Message-ID: <CABb+yY1zjOdV9XpSfD82WjbAY3_9tadQm+Cf2KaOsYercB6CEA@mail.gmail.com>
+Subject: Re: [PATCH] mailbox: mtk-adsp: fix UAF during device teardown
+To: Sergey Senozhatsky <senozhatsky@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>, YC Hung <yc.hung@mediatek.com>, 
+	Tzung-Bi Shih <tzungbi@kernel.org>, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260518_112404_995423_4CF767BA 
-X-CRM114-Status: GOOD (  17.40  )
+X-CRM114-CacheID: sfid-20260518_120414_257631_004F5A7B 
+X-CRM114-Status: GOOD (  23.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,167 +119,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 18, 2026 at 5:31=E2=80=AFAM Lorenzo Bianconi <lorenzo@kernel.or=
-g> wrote:
+On Mon, Apr 27, 2026 at 9:56=E2=80=AFPM Sergey Senozhatsky
+<senozhatsky@chromium.org> wrote:
 >
-> On May 15, Cheng Hao Luo wrote:
-> > > struct ieee80211_tx_info {
-> > >         u32                        flags;                /*     0    =
- 4 */
-> > >         u32                        band:3;               /*     4: 0 =
- 4 */
-> > >         u32                        status_data_idr:1;    /*     4: 3 =
- 4 */
-> > >         u32                        status_data:13;       /*     4: 4 =
- 4 */
-> > >         u32                        hw_queue:4;           /*     4:17 =
- 4 */
-> > >         u32                        tx_time_est:10;       /*     4:21 =
- 4 */
-> > >
-> > >         /* XXX 1 bit hole, try to pack */
-> > >
-> > >         union {
-> > >                 struct {
-> > >                         union {
-> > >                                 struct {
-> > >                                         struct ieee80211_tx_rate rate=
-s[4]; /*     8    12 */
-> > >                                         s8     rts_cts_rate_idx; /*  =
-  20     1 */
-> > >                                         u8     use_rts:1; /*    21: 0=
-  1 */
-> > >                                         u8     use_cts_prot:1; /*    =
-21: 1  1 */
-> > >                                         u8     short_preamble:1; /*  =
-  21: 2  1 */
-> > >                                         u8     skip_table:1; /*    21=
-: 3  1 */
-> > >                                         u8     antennas:2; /*    21: =
-4  1 */
-> > >                                 };                       /*     8    =
-14 */
-> > >                                 long unsigned int jiffies; /*     8  =
-   8 */
-> > >                         };                               /*     8    =
-16 */
-> > >                         struct ieee80211_vif * vif;      /*    24    =
- 8 */
-> > >                         struct ieee80211_key_conf * hw_key; /*    32 =
-    8 */
-> > >                         u32        flags;                /*    40    =
- 4 */
-> > >                         codel_time_t enqueue_time;       /*    44    =
- 4 */
-> > >                 } control;                               /*     8    =
-40 */
-> > >                 struct {
-> > >                         u64        cookie;               /*     8    =
- 8 */
-> > >                 } ack;                                   /*     8    =
- 8 */
-> > >                 struct {
-> > >                         struct ieee80211_tx_rate rates[4]; /*     8  =
-  12 */
-> > >                         s32        ack_signal;           /*    20    =
- 4 */
-> > >                         u8         ampdu_ack_len;        /*    24    =
- 1 */
-> > >                         u8         ampdu_len;            /*    25    =
- 1 */
-> > >                         u8         antenna;              /*    26    =
- 1 */
-> > >                         u8         pad;                  /*    27    =
- 1 */
-> > >                         u16        tx_time;              /*    28    =
- 2 */
-> > >                         u8         flags;                /*    30    =
- 1 */
-> > >                         u8         pad2;                 /*    31    =
- 1 */
-> > >                         void *     status_driver_data[2]; /*    32   =
- 16 */
-> > >                 } status;                                /*     8    =
-40 */
-> > >                 struct {
-> > >                         struct ieee80211_tx_rate driver_rates[4]; /* =
-    8    12 */
-> > >                         u8         pad[4];               /*    20    =
- 4 */
-> > >                         void *     rate_driver_data[3];  /*    24    =
-24 */
-> > >                 };                                       /*     8    =
-40 */
-> > >                 void *             driver_data[5];       /*     8    =
-40 */
-> > >         };                                               /*     8    =
-40 */
-> > >
-> > >         /* size: 48, cachelines: 1, members: 7 */
-> > >         /* sum members: 44 */
-> > >         /* sum bitfield members: 31 bits, bit holes: 1, sum bit holes=
-: 1 bits */
-> > >         /* last cacheline: 48 bytes */
-> > > };
-> > >
-> > > According to pahole, the size of the control inner union is actually =
-16 bytes
-> > > since the compiler adds 2 bytes of padding. Since mt76_tx_status_skb_=
-add()
-> > > meset to 0 just mt76_tx_cb size (that is 16 bytes) I can't see how
-> > > control.flags is overwritten. Am I missing something?
-> > >
-> > > struct mt76_tx_cb {
-> > >         long unsigned int          jiffies;              /*     0    =
- 8 */
-> > >         u16                        wcid;                 /*     8    =
- 2 */
-> > >         u8                         pktid;                /*    10    =
- 1 */
-> > >         u8                         flags;                /*    11    =
- 1 */
-> > >
-> > >         /* size: 16, cachelines: 1, members: 4 */
-> > >         /* padding: 4 */
-> > >         /* last cacheline: 16 bytes */
-> > > };
-> >
-> > Hi Lorenzo,
-> >
-> > The mt76_tx_cb is placed at status.status_driver_data (offset 32).
-> > It overlaps with hw_key, flags and enqueue_time in the control union.
-> >
-> > static inline struct mt76_tx_cb *mt76_tx_skb_cb(struct sk_buff *skb)
-> > {
-> > BUILD_BUG_ON(sizeof(struct mt76_tx_cb) >
-> >     sizeof(IEEE80211_SKB_CB(skb)->status.status_driver_data));
-> > return ((void *)IEEE80211_SKB_CB(skb)->status.status_driver_data);
-> > }
+> When the SOF audio driver fails to initialize (e.g. firmware boot
+> timeout), its devres unwind frees the snd_sof_dev object that the
+> mailbox client (mtk-adsp-ipc) reaches via chan->cl->rx_callback.
+> The mtk-adsp-mailbox shutdown clears the mailbox command registers
+> but leaves the IRQ line unmasked, so a late interrupt can still
+> queue a threaded handler after mbox_free_channel() had cleared
+> chan->cl, and mbox_chan_received_data() would then trigger UAF:
 >
-> Hi Roy,
+>   BUG: KASAN: slab-use-after-free in sof_ipc3_validate_fw_version
+>    sof_ipc3_validate_fw_version
+>    sof_ipc3_do_rx_work
+>    sof_ipc3_rx_msg
+>    mt8196_dsp_handle_request
+>    mtk_adsp_ipc_recv
+>    mbox_chan_received_data
+>    mtk_adsp_mbox_isr
+>    irq_thread_fn
+>   Freed by task ...:
+>    kfree
+>    devres_release_all
+>    really_probe
+>    ... (sof-audio-of-mt8196 probe failure)
 >
-> I still do not understand since mt76_tx_status_skb_add() sets to 0 just s=
-izeof
-> of mt76_tx_cb, that according to pahole is 16 bytes, so it can't overwrit=
-e
-> hw_key pointer (whose offset respect to the beginning of the control stru=
-ct is
-> 24, 32 - 8).
+> The crash was observed roughly three seconds after the failed probe.
 >
-> Regards,
-> Lorenzo
+> disable_irq() in shutdown and enable_irq() in startup. disable_irq()
+> also waits for any in-flight interrupts, so by the time
+> mbox_free_channel() proceeds to clear chan->cl no rx_callback can run.
 >
-> >
-> > Regards,
-> > Roy Luo
-
-Hi Lorenzo,
-
-The mt76_tx_status_skb_add() memset zero the 16 bytes starting from
-status.status_driver_data (please see the above inline function shared
-in my last response) whose offset with respect to the beginning of
-the control/status union is exactly 24 (32 - 8) instead of 0.
-
-Regards,
-Roy Luo
+> In addition, request the IRQ with IRQF_NO_AUTOEN so it stays masked
+> between probe and the first client bind =E2=80=94 otherwise an early inte=
+rrupt
+> can crash on chan->cl =3D=3D NULL in mbox_chan_received_data().
+>
+> Fixes: af2dfa96c52d ("mailbox: mediatek: add support for adsp mailbox con=
+troller")
+> Signed-off-by: Sergey Senozhatsky <senozhatsky@chromium.org>
+> ---
+>  drivers/mailbox/mtk-adsp-mailbox.c | 9 ++++++++-
+>  1 file changed, 8 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/mailbox/mtk-adsp-mailbox.c b/drivers/mailbox/mtk-ads=
+p-mailbox.c
+> index 91487aa4d7da..8bcecddee0eb 100644
+> --- a/drivers/mailbox/mtk-adsp-mailbox.c
+> +++ b/drivers/mailbox/mtk-adsp-mailbox.c
+> @@ -19,6 +19,7 @@ struct mtk_adsp_mbox_priv {
+>         struct mbox_controller mbox;
+>         void __iomem *va_mboxreg;
+>         const struct mtk_adsp_mbox_cfg *cfg;
+> +       int irq;
+>  };
+>
+>  struct mtk_adsp_mbox_cfg {
+> @@ -67,6 +68,8 @@ static int mtk_adsp_mbox_startup(struct mbox_chan *chan=
+)
+>         writel(0xFFFFFFFF, priv->va_mboxreg + priv->cfg->clr_in);
+>         writel(0xFFFFFFFF, priv->va_mboxreg + priv->cfg->clr_out);
+>
+> +       enable_irq(priv->irq);
+> +
+>         return 0;
+>  }
+>
+> @@ -74,6 +77,8 @@ static void mtk_adsp_mbox_shutdown(struct mbox_chan *ch=
+an)
+>  {
+>         struct mtk_adsp_mbox_priv *priv =3D get_mtk_adsp_mbox_priv(chan->=
+mbox);
+>
+> +       disable_irq(priv->irq);
+> +
+>         /* Clear ADSP mbox command */
+>         writel(0xFFFFFFFF, priv->va_mboxreg + priv->cfg->clr_in);
+>         writel(0xFFFFFFFF, priv->va_mboxreg + priv->cfg->clr_out);
+> @@ -139,8 +144,10 @@ static int mtk_adsp_mbox_probe(struct platform_devic=
+e *pdev)
+>         if (irq < 0)
+>                 return irq;
+>
+> +       priv->irq =3D irq;
+>         ret =3D devm_request_threaded_irq(dev, irq, mtk_adsp_mbox_irq,
+> -                                       mtk_adsp_mbox_isr, IRQF_TRIGGER_N=
+ONE,
+> +                                       mtk_adsp_mbox_isr,
+> +                                       IRQF_TRIGGER_NONE | IRQF_NO_AUTOE=
+N,
+>                                         dev_name(dev), mbox->chans);
+>         if (ret < 0)
+>                 return ret;
+> --
+> 2.54.0.545.g6539524ca2-goog
+>
+Applied to mailbox/for-next
+Thanks
+Jassi
 
