@@ -4,81 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74C37CD4851
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2026 09:52:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A479CD4851
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2026 09:58:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FZQEydHotOlp4uMmV3gxWEdikDSpyup0DxMbUZ/XuPY=; b=vXyF9rJpZDtm4C+o63r2f9tvDP
-	w8m6ocbk0vgVncKXCd1vGczBn1SAyzIoMvmOe6msCQyndXRiXqR4C4t/43G3MrHywkdtWrAl+1Ttx
-	j2jyf9Rw05/kh7xz3cFWEyldTq6xLAXTE7Q61MvJEnxE43gRbi4GMDLI06ojGJkRtjgRxpZoVGcGc
-	PPNDk2zan0v5ibUenA8oxAiYF6573kvW7mnAK2t77r5H+LqSAsSvRsXaLaYLhsdV4QUkSQOogpmD0
-	qKiTQYKfB5pg197H0OimwMkI/VJbutcqwJUZC/Jx7Qus75O8CobJ9xlKQwrPQJIoQwVQhyaqG8Njs
-	JyQcz7kA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=UU0lB9lovvpP6x7wtqdLnGVBs9ID+Cmv/S9aLUhDVOI=; b=llJ3GoNtbWgN3XfQidgsWrZWjM
+	pH2es0gVesLMyQX8dM60rcto5j62EkdunwH5B53sNElI8YD4Qgqys4sGbgPMCvcpAeuK1602Oc+N5
+	aYdpSTXjRepMYnmJ4rs+7Ns0YB3cahfXH9ps4fTOLPbapYfEam3AgqpsdiEdPS1q4fHgZqlS1xliA
+	Xk+fIX91jdSQdUah/zIaaNFVZGviWahN5MDRkQ0fCbzOnHI+8gAD1oug5D8SJPjUWeqXqOSHrSzj3
+	sziRNvhTrxqbhmGsuVadaL4K2BYavQ+o+50iiV/CJaG4zvBZDMmjHBppofj8kMiEECm9SM7iEMIkC
+	yqQ6ySxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPH7a-00000000zro-1wcA;
-	Tue, 19 May 2026 09:52:18 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wPHDF-000000010ro-0uFZ;
+	Tue, 19 May 2026 09:58:09 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPH7Y-00000000zr8-0IZA;
-	Tue, 19 May 2026 09:52:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A943440325;
-	Tue, 19 May 2026 09:52:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 07597C2BCB3;
-	Tue, 19 May 2026 09:52:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1779184335;
-	bh=qQAx2S7DIvi/HfSEU64Ukx1DApHFp7BANES2FJ3Vywc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=JHEixrZpCOxm73sOygk3wsmQN4Sm+kK2cjidgYWrtWzLq18Z52de1Mvh9HxAqd6EA
-	 VVXXQvt1Ozkom/KZncwEzxmYH+FMDBWqFO/tLBn2FGrJKFLVq0FKr4uovi5j5MPIvI
-	 geo1yLPS/pBsfqcn2UjNTDoaT/EnpFNcsqApniiB3GHn0ETqukBO1/NKnIQg+JHBtQ
-	 dqT9Bdj3KS1vonHExfpsmiZHZnByH8K238WVDuIlSfAZNa6L4jbVwToGFlqx45vRaU
-	 jkX6w76ZEHYGgY3IK4PrDOPXISkwqWxw9DSyEdHmQD6rMSDzzgss1dpEolpI3FMdfF
-	 S7+EGBrXxCzzg==
-Date: Tue, 19 May 2026 11:52:13 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Boris Brezillon <boris.brezillon@collabora.com>
-Cc: Chia-I Wu <olvaffe@gmail.com>, Liviu Dudau <liviu.dudau@arm.com>, 
-	Marcin =?utf-8?Q?=C5=9Alusarz?= <marcin.slusarz@arm.com>, Ketil Johnsen <ketil.johnsen@arm.com>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, 
-	Sumit Semwal <sumit.semwal@linaro.org>, Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
-	Brian Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, 
-	"T.J. Mercier" <tjmercier@google.com>, Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, 
-	Steven Price <steven.price@arm.com>, Daniel Almeida <daniel.almeida@collabora.com>, 
-	Alice Ryhl <aliceryhl@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Florent Tomasin <florent.tomasin@arm.com>, nd@arm.com
-Subject: Re: [Linaro-mm-sig] Re: [PATCH 4/8] drm/panthor: Add support for
- protected memory allocation in panthor
-Message-ID: <20260519-loutish-beautiful-trogon-67453f@houat>
-References: <20260505140516.1372388-1-ketil.johnsen@arm.com>
- <20260505140516.1372388-5-ketil.johnsen@arm.com>
- <20260505181523.49a3d85c@fedora>
- <afxVIuVVPisBQ9p_@e129842.arm.com>
- <20260507135356.5428d50d@fedora>
- <agMvb_jeRsO7tSS-@e142607>
- <20260512161111.0cb7000e@fedora>
- <agNJasayW8VCHTiU@e142607>
- <CAPaKu7QC7FdjL6m_OSb+E5aYKs6bmT-9DAHc5PC=XctCmRph2Q@mail.gmail.com>
- <20260518091650.5a7a4f4a@fedora>
+	id 1wPHDC-000000010qe-3eGS
+	for linux-mediatek@lists.infradead.org;
+	Tue, 19 May 2026 09:58:08 +0000
+Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-453903ee4adso658416f8f.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 19 May 2026 02:58:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre.com; s=google; t=1779184685; x=1779789485; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=UU0lB9lovvpP6x7wtqdLnGVBs9ID+Cmv/S9aLUhDVOI=;
+        b=Hzfo8RTHtfXZSxHIuHYNx5SDn0UgK50CF0o3FCj6psl+Mpg/g1ZAsEKNzao3u2lNhn
+         t8+uj94StLzqhAzQEdfw54PQHwNu+hCBm5kjQO/MUrYuWqQwwSdMQMbKH/W1bjVEBfUS
+         V4m+pYbF88iSqsBk15MTgbIO+OLC6vsvRAAc1zgv2GkSIzraO56/xd//oG4IAD0+r15/
+         d0Kz7jFOwM4cg4ENtj6jZ79F5gfWAlSRutaufjik9qSa4sLsJTu0ukOxitLu+TKKX1Fs
+         3ZPoQoiljW4qFEmJhKQyR+4pCn2uY/I4CHMC3IRJxyDxIwpMWLKU9bVnBVOCkoKGbu1q
+         VVnA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1779184685; x=1779789485;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=UU0lB9lovvpP6x7wtqdLnGVBs9ID+Cmv/S9aLUhDVOI=;
+        b=S0R3BeTA0EcB1hnqaCyTOj4HXn/IXwyXH/HTQQWoCFepnVHijVYYjQL26gcEIuOFyX
+         FFnn9F9J0H+BiksBCSHyiQ8DeUvj99loVBPGWBCH5lAbmynMWwV169V7YC20zYuzpTWx
+         x1UPkF0Fv3Vl4ZJgXphgS9ZSNjq0iCel53MJR2OV1JUydaP2dIZxjFh/SCMMWVeE2jVk
+         ebJYkODJ4poYzfr9zdu47jkpXbzKwIGCpZKFbzdQpw6i8UiDhO11c6yttUF/NEtwMqxd
+         VQZ4wfbGLNF/Ds5xNKGyDd0HVQaJPxujjHJIikzi7GcB60XgdsWqgVisw03wqiv6ti3s
+         ZrLQ==
+X-Forwarded-Encrypted: i=1; AFNElJ8/GrGdLwKMsZrsy+LLlcGNuHIuLNto0HfKKOtL5SbKPvUgkZqWzWNgkhEW7lvCaXmdYLsuF+6rmER0j4fMzQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwpjGyhV1Zs/w1KuXkLxPtuz9TrK3bY0OzgsuklVtlExmYu+eHQ
+	iez6OMUr0yDpZVp6cUE22EIfWusX/4WJ1CIo4/VZiJg04ji16xj7VKLHJHmiYX8fg2E=
+X-Gm-Gg: Acq92OEi/9yAO/HRC+GqsT1nunXYQl7PFVqaqi2s0Wh7uNRdsqse6C059rw/WhNKY1z
+	6bAlQ0naOytpkhgiLz0vW3U5VtWsxo7PAaLgSeAH8r1SObidXA1bWl0IgYdhHkNPadacFETiK1X
+	tA5oY37dg9WPIEIEUYqZombKP8QbSIgBoqaiQ+DjIE9gc5Ri5xCr4keGYSxPvUQCjpMJ8uzcPEz
+	/Zc10ZiqVL5BLQI2VR8eYaQMNPmPBiPVEwIqeD1idNW1XhtBeB5K3Y49OleFh4WUTz2WL+ELxZj
+	n4PFwNHH5WcSduaF7ToRVJhyVpsl4sEzIjnEUtH9l4Fi4Wiu12nFM3DjGM2DHZ2WK5XCsBJxex/
+	BVrB8W0DM9Gu29ZYH3u36AgnPWsl6Lp5VYgIpFQGJpQuGP1mQjmGnarMLSVJioFFFUUHrFvaBnx
+	tM84pvtkQ57hzuFWAbH6DtGH4cvA7DWZ5s3JTC6VPtgy3sTa4jz5JkD+Z/iJVj++EC6kmB/1M1b
+	zjTOEBssYkl3w0=
+X-Received: by 2002:a05:6000:1845:b0:43d:1c21:ead5 with SMTP id ffacd0b85a97d-45e5c5872a3mr30035423f8f.22.1779184684713;
+        Tue, 19 May 2026 02:58:04 -0700 (PDT)
+Received: from localhost (p200300f65f47db0428dec7b135f55767.dip0.t-ipconnect.de. [2003:f6:5f47:db04:28de:c7b1:35f5:5767])
+        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-45d9ec3acf7sm44400530f8f.12.2026.05.19.02.58.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 19 May 2026 02:58:04 -0700 (PDT)
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig=20=28The=20Capable=20Hub=29?= <u.kleine-koenig@baylibre.com>
+To: Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Woodrow Douglass <wdouglass@carnegierobotics.com>,
+	linux-kernel@vger.kernel.org,
+	Michael Hennerich <michael.hennerich@analog.com>,
+	Support Opensource <support.opensource@diasemi.com>,
+	Ivaylo Ivanov <ivo.ivanov.ivanov1@gmail.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Andrei Simion <andrei.simion@microchip.com>,
+	Saravanan Sekar <sravanhome@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jagan Teki <jagan@amarulasolutions.com>,
+	Icenowy Zheng <icenowy@aosc.io>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v2 0/2] regulator: Rework i2c_device_id initialisation
+Date: Tue, 19 May 2026 11:57:49 +0200
+Message-ID: <cover.1779184320.git.u.kleine-koenig@baylibre.com>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="ehulylxo6op5dniv"
-Content-Disposition: inline
-In-Reply-To: <20260518091650.5a7a4f4a@fedora>
+Content-Type: text/plain; charset=UTF-8
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2970; i=u.kleine-koenig@baylibre.com; h=from:subject:message-id; bh=Gos+e5IcF0gXHd8gxum8vW5O4nWyBEBbd0FZbuQ0XlM=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBqDDQekvllmBxZKQLWzsOB538fNqIG2WEo4ny9u gulytDCJYGJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCagw0HgAKCRCPgPtYfRL+ ThQvB/9tT3A52c0aHcU3l3dynYys6NWV6Z6/xuSs+KJk5FhmLL6kq+3aYuG9N+pnvBMmCMQxbRT aUlFW42wHl/e6NFLSYMFMQDbFMA0M5i608jV8TG+UsNR1kOOh9UN9/k8ComleuJgbUdTIYEGoWl 1TWi/Zl0OsZg7VIfzBEiB9Du9gxfOeo80ivQrmmwtAWGDj4jC3v2M8muna1FarFEVCJmWk8f6d3 w7H0fIcbEieibbyvU968Q+3Ygsk3IKoZvOxaqekPEd1O7YP1vyBKmRwDIMG6uSMnLy3XFRqxlPD nidhKe2WoP57lOAhbnGaprYxcMOqA+VS+FIOlI68nlOrX87v
+X-Developer-Key: i=u.kleine-koenig@baylibre.com; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260519_025216_154545_F56365F4 
-X-CRM114-Status: GOOD (  44.18  )
+X-CRM114-CacheID: sfid-20260519_025806_933413_9CB784CA 
+X-CRM114-Status: GOOD (  12.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,119 +113,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hello,
 
---ehulylxo6op5dniv
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [Linaro-mm-sig] Re: [PATCH 4/8] drm/panthor: Add support for
- protected memory allocation in panthor
-MIME-Version: 1.0
+Laurent pointed out one driver in my v1
+(https://lore.kernel.org/linux-kernel/20260515103150.164887-2-u.kleine-koenig@baylibre.com)
+that doesn't actually make use of its .driver_data. I found a second
+while adapting the patch set. So this v2 consists of a first patch that
+drops these driver data assigments and a second to convert to named
+initializers which is mostly the patch sent before.
 
-Hi Boris,
+It might be too conservative, but I didn't apply Laurent's conditional
+Reviewed-by tag as my change is a bit different than anticipated.
 
-On Mon, May 18, 2026 at 09:16:50AM +0200, Boris Brezillon wrote:
-> On Wed, 13 May 2026 12:31:32 -0700
-> Chia-I Wu <olvaffe@gmail.com> wrote:
->=20
-> > On Tue, May 12, 2026 at 8:39=E2=80=AFAM Liviu Dudau <liviu.dudau@arm.co=
-m> wrote:
-> > >
-> > > On Tue, May 12, 2026 at 04:11:11PM +0200, Boris Brezillon wrote: =20
-> > > > On Tue, 12 May 2026 14:47:27 +0100
-> > > > Liviu Dudau <liviu.dudau@arm.com> wrote:
-> > > > =20
-> > > > > On Thu, May 07, 2026 at 01:53:56PM +0200, Boris Brezillon wrote: =
-=20
-> > > > > > On Thu, 7 May 2026 11:02:26 +0200
-> > > > > > Marcin =C5=9Alusarz <marcin.slusarz@arm.com> wrote:
-> > > > > > =20
-> > > > > > > On Tue, May 05, 2026 at 06:15:23PM +0200, Boris Brezillon wro=
-te: =20
-> > > > > > > > > @@ -277,9 +286,21 @@ int panthor_device_init(struct panth=
-or_device *ptdev)
-> > > > > > > > >                     return ret;
-> > > > > > > > >     }
-> > > > > > > > >
-> > > > > > > > > +   /* If a protected heap name is specified but not foun=
-d, defer the probe until created */
-> > > > > > > > > +   if (protected_heap_name && strlen(protected_heap_name=
-)) { =20
-> > > > > > > >
-> > > > > > > > Do we really need this strlen() > 0? Won't dma_heap_find() =
-fail is the
-> > > > > > > > name is "" already? =20
-> > > > > > >
-> > > > > > > If dma_heap_find() will fail, then the whole probe with fail =
-too.
-> > > > > > > This check prevents that. =20
-> > > > > >
-> > > > > > Yeah, that's also a questionable design choice. I mean, we can
-> > > > > > currently probe and boot the FW even though we never setup the
-> > > > > > protected FW sections, so why should we defer the probe here? C=
-an't we
-> > > > > > just retry the next time a group with the protected bit is crea=
-ted and
-> > > > > > fail if we can find a protected heap? =20
-> > > > >
-> > > > > The problem we have with the current firmware is that it does a n=
-umber of setup steps at "boot"
-> > > > > time only. One of the steps is preparing its internal structures =
-for when it enters protected
-> > > > > mode and it stores them in the buffer passed in at firmware loadi=
-ng. We cannot later run the
-> > > > > process when we have a group with protected mode set. =20
-> > > >
-> > > > No, but we can force a full/slow reset and have that thing
-> > > > re-initialized, can't we? I mean, that's basically what we do when a
-> > > > fast reset fails: we re-initialize all the sections and reset again=
-, at
-> > > > which point the FW should start from a fresh state, and be able to
-> > > > properly initialize the protected-related stuff if protected sectio=
-ns
-> > > > are populated. Am I missing something? =20
-> > >
-> > > Right, we can do that. For some reason I keep associating the reset w=
-ith the
-> > > error handling and not with "normal" operations. =20
-> > I kind of hope we end up with either
-> >=20
-> >  - panthor knows the exact heap to use and fails with EPROBE_DEFER if
-> > the heap is missing, or
-> >  - panthor gets a dma-buf from userspace and does the full reset
-> >    - userspace also needs to provide a dma-buf for each protected
-> > group for the suspend buffer
-> >=20
-> > than something in-between. The latter is more ad-hoc and basically
-> > kicks the issue to the userspace.
->=20
-> Indeed, the second option is more ad-hoc, but when you think about it,
-> userspace has to have this knowledge, because it needs to know the
-> dma-heap to use for buffer allocation that cross a device boundary
-> anyway. Think about frames produced by a video decoder, and composited
-> by the GPU into a protected scanout buffer that's passed to the KMS
-> device. Why would the GPU driver be source of truth when it comes to
-> choosing the heap to use to allocate protected buffers for the video
-> decoder or those used for the display?
+Best regards
+Uwe
 
-Just fyi, the trend is to go to devices listing the heaps userspace
-should allocate from and/or using the heaps internally to allocate their
-buffers, so that last part is where we're headed, and feels totally
-reasonable to me.
+Uwe Kleine-König (The Capable Hub) (2):
+  regulator: Drop unused i2c driver data
+  regulator: Use named initializers for arrays of i2c_device_data
 
-Maxime
+ drivers/regulator/88pg86x.c            |  4 +--
+ drivers/regulator/ad5398.c             |  4 +--
+ drivers/regulator/da9121-regulator.c   | 20 +++++++--------
+ drivers/regulator/da9210-regulator.c   |  4 +--
+ drivers/regulator/da9211-regulator.c   | 18 +++++++-------
+ drivers/regulator/fan53880.c           |  4 +--
+ drivers/regulator/isl9305.c            |  4 +--
+ drivers/regulator/lp3971.c             |  2 +-
+ drivers/regulator/lp3972.c             |  2 +-
+ drivers/regulator/lp872x.c             | 34 +++++++++++++-------------
+ drivers/regulator/lp8755.c             |  4 +--
+ drivers/regulator/ltc3589.c            |  6 ++---
+ drivers/regulator/ltc3676.c            |  2 +-
+ drivers/regulator/max1586.c            |  2 +-
+ drivers/regulator/max20086-regulator.c |  8 +++---
+ drivers/regulator/max20411-regulator.c |  2 +-
+ drivers/regulator/max77503-regulator.c |  2 +-
+ drivers/regulator/max77675-regulator.c |  2 +-
+ drivers/regulator/max77826-regulator.c |  2 +-
+ drivers/regulator/max77838-regulator.c |  2 +-
+ drivers/regulator/max77857-regulator.c |  8 +++---
+ drivers/regulator/max8649.c            |  2 +-
+ drivers/regulator/max8893.c            |  2 +-
+ drivers/regulator/max8952.c            |  2 +-
+ drivers/regulator/mcp16502.c           |  2 +-
+ drivers/regulator/mp5416.c             |  6 ++---
+ drivers/regulator/mp8859.c             |  4 +--
+ drivers/regulator/mp886x.c             |  6 ++---
+ drivers/regulator/mpq7920.c            |  4 +--
+ drivers/regulator/mt6311-regulator.c   |  4 +--
+ drivers/regulator/pf530x-regulator.c   |  8 +++---
+ drivers/regulator/pf8x00-regulator.c   |  8 +++---
+ drivers/regulator/pv88060-regulator.c  |  4 +--
+ drivers/regulator/pv88080-regulator.c  |  8 +++---
+ drivers/regulator/pv88090-regulator.c  |  4 +--
+ drivers/regulator/slg51000-regulator.c |  4 +--
+ drivers/regulator/sy8106a-regulator.c  |  2 +-
+ drivers/regulator/sy8824x.c            |  8 +++---
+ drivers/regulator/sy8827n.c            |  4 +--
+ drivers/regulator/tps6286x-regulator.c | 10 ++++----
+ drivers/regulator/tps6287x-regulator.c | 10 ++++----
+ 41 files changed, 119 insertions(+), 119 deletions(-)
 
---ehulylxo6op5dniv
-Content-Type: application/pgp-signature; name="signature.asc"
 
------BEGIN PGP SIGNATURE-----
+base-commit: 254f49634ee16a731174d2ae34bc50bd5f45e731
+-- 
+2.47.3
 
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCagwyvwAKCRAnX84Zoj2+
-dgjMAX9vYm/a4/mvh7CTGhu02MOZ2R365vHowMKWRty1Iieek7krzaTpTq2fXWdd
-H94eza8Bf1qt0LVur372tjV0TZ6LACyCkou132aOZthz51XbsLGn68Or0vOV4+vZ
-v4p+K4/w4Q==
-=5L5Y
------END PGP SIGNATURE-----
-
---ehulylxo6op5dniv--
 
