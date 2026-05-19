@@ -4,86 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C02ACD4851
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2026 08:52:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29B1DCD4851
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2026 08:58:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QcsOo7dw5sdNA6iXB9cRPtTm3pD/GHhp+yw7Xs1Vz68=; b=3ppOLnKy5bE4qm5/8eaI5Aikrn
-	1+weG2MklERiZJzEKeIVvnACgsEE449a6KNYOqWFi5dvUpDhQb0Lr6a29mqPfBSdO8AAO1wMG33mk
-	GO1RJ2nclocCRmQp6AVgj4a4v/ZgZk6pulKnYHEAOafBGGV5WHl1nJEYADoEKTjd3OQdQIC+GnvxK
-	t3Lozm1IUE7/e3lac0utKqY06pch54/kisMO3AVKyp60ILbgLrEbo97Av6I+P3h0Nyvn4VB6PYz8B
-	992JcAE3nn8IdJe71SVLsf60mf9WVujFdAhlw799n6zvK9Xb2J2WO3kvBVbpG6+H7mqN4q7+YL9yU
-	PoEZWyfA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=2qW7o3LVJGgieBa+itk05bZh5dh2nrS6LKR2/Vn7mlI=; b=Bv4b8w0BfxMAKp
+	upqCcxA9oJFDKR/BgFmCm4OHXy8sXJK6Q/+Pw/M3iAOTkmfsDO/HRfHWXQ9lY4LXrjDFbaSj5fWB7
+	xYivXkTCkFkcb4Z2rC9ukemOEsxFyifLsH2RbEMhkVQ8u/x5UojfSZBtELHbYt/3RBg2NSq/bh5lI
+	/2o0CUYNFenIYxQ4bzpf9guhfs172+WK/3X2Qy056eiDQVc5WRyF/J61dM4u7xLAxVFyFLfrmnvZX
+	o+/7kE3cgy5702ruMEguHzJy/w9tDb2eusREZxHInMPl+9yyTtnNJoSnylifDjslvl36agQXZPAwd
+	hf6y5UhFIKVoex6cN8bQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPGBc-00000000kmY-2BXe;
-	Tue, 19 May 2026 08:52:24 +0000
-Received: from cvsmtppost104.wmail.worksmobile.com ([125.209.209.16])
+	id 1wPGHO-00000000mEd-12Wa;
+	Tue, 19 May 2026 08:58:22 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPGBY-00000000kkX-0JXp
-	for linux-mediatek@lists.infradead.org;
-	Tue, 19 May 2026 08:52:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=worksmobile.com;
-	s=s20171120; t=1779180736;
-	bh=3J3/AwLUzcB/WAmYB4Pu04ubxpDRmRuvWzYDYU6hi4w=;
-	h=From:To:Subject:Date:Message-Id:From:Subject:Feedback-ID:
-	 X-Works-Security;
-	b=pc8gq95Ei6M/SfaFHM0c1Sclu2nIjeDVDHTG1k/Y6wCzUnFuieCBn2GaqDMuwtDi9
-	 rIDv6tjD+EM9hrHWEYx5LkkfCint3eZ7JdUnE9T4wHJzbRrL6X63+pwUG7FFuYPG5x
-	 OKLpZbxB78aBk2TDrRcCyBgNUz+3Bq9Etuxsp1Ds9GwFhNFwiU//B9gaWuvoE13cHv
-	 Fouv5pzgGxI3MGptXKxPKs8mouIDfIFnmCZgNWJG8glIa1jZea27S2NGHSkD3eQIVt
-	 2Mva6yOkDFRzucZFfuUMEl0YlAfQKnm+EkhNpjywo9MFg0sxoF6GIuseYIbIQgP/O4
-	 OQ4cxpz6s7o7w==
-X-Originating-IP: 163.152.163.130
-Received: from cvsendbo001.wmail ([10.113.20.163])
-  by cvsmtppost104.wmail.worksmobile.com with ESMTP id vRQefJT9SMGVLJ1xlE7SHA
-  for <linux-mediatek@lists.infradead.org>;
-  Tue, 19 May 2026 08:52:16 -0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=korea.ac.kr;
-	s=naverworks; t=1779180736;
-	bh=3J3/AwLUzcB/WAmYB4Pu04ubxpDRmRuvWzYDYU6hi4w=;
-	h=From:To:Subject:Date:Message-Id:From:Subject:Feedback-ID:
-	 X-Works-Security;
-	b=Mz4SsVqeAC2FlRYWh8KoKesSAjcMuqNldi9mznSvNtKJH6SI68VHfYJoBNnUv8JdT
-	 85LHNq4EZ1Y1uDeWqo1neSy1rYMlhJNOl0gvJLAETCiQkOcN+XAAC33cEGUOskZ5gk
-	 rz90XUGaJws/7qYtS2+9qNdp5Ox6hW3iMI++ilhM=
-X-Session-ID: B92UEe-9TvuyppjR03krVw
-X-Originating-IP: 163.152.163.130
-X-Works-Send-Opt: 3lYwjAIYjHmXFoEXKBmwaAErKqpYjHmm
-X-Works-Smtp-Source: edKdKxvXFqJZ+HmrKqK/+6E=
-Received: from s2lab05.. ([163.152.163.130])
-  by jvnsmtp403.gwmail.worksmobile.com with ESMTP id B92UEe-9TvuyppjR03krVw
-  for <multiple recipients>
-  (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
-  Tue, 19 May 2026 08:52:16 -0000
-From: Ingyu Jang <ingyujang25@korea.ac.kr>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>
-Cc: Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-wireless@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] wifi: mt76: Drop unneeded mt76_register_debugfs_fops() return checks
-Date: Tue, 19 May 2026 17:52:14 +0900
-Message-Id: <20260519085214.164846-1-ingyujang25@korea.ac.kr>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260514193243.2518979-1-ingyujang25@korea.ac.kr>
-References: <20260514193243.2518979-1-ingyujang25@korea.ac.kr>
+	id 1wPGHM-00000000mCj-1uaL;
+	Tue, 19 May 2026 08:58:20 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 9C06D60208;
+	Tue, 19 May 2026 08:58:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 006ADC2BCC6;
+	Tue, 19 May 2026 08:58:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1779181099;
+	bh=Klu9x/Jv2kB18rShot8JT/954KOo6KDVE2s8WukpTUU=;
+	h=From:Subject:Date:To:Cc:From;
+	b=VWScUoueqTDmD1dqBWCwMZt7XMyrIS/Ki2YYM9IhtmDOdF2Y1jmeLyT/lONzRLdAn
+	 C77NB3CEdYbp8FcJ/ao7x7NiDI4xr3vRDNTf9cz5ayS04+BlOd60QerobORLZgXLRm
+	 S5ElckmTYoODsIXkcy8loxbUaBnBE0DHzHo3u0O1eG2ZP/T3XGlF1k2TE3sunxc6ZE
+	 pFwnIpoWX4gcTG4WLPbVQjr7mCHLW4IrmMVTz6T/5h0nW88qSoGEzrvx7ejaiEIpEG
+	 eD6Ly+M5veW76u8E5epO1TUYn8Zhp+2tFrTJIQzQ13beZrssUZexCcM4QpnqP1O0Dh
+	 lEtSr2VaCURoA==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH net-next v8 00/10] net: airoha: Support multiple
+ net_devices connected to the same GDM port
+Date: Tue, 19 May 2026 10:57:43 +0200
+Message-Id: <20260519-airoha-eth-multi-serdes-v8-0-6bd70e329df6@kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260519_015220_730251_1F97E214 
-X-CRM114-Status: UNSURE (   9.59  )
-X-CRM114-Notice: Please train this message.
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/33QTWrDMBAF4KsErasy+re66j1KF5I8ikVTuciuS
+ Qm+exVTiIuxl8NjvmHejQxYEg7k5XQjBac0pD7XoXk6kdC5fEaa2joTDlyD4JK6VPrOURw7+vl
+ 9GROtQIsDjV56pTSiUZrU7a+CMV0X+Y1kHGnG60jea9KlYezLz3JyYkv+p9tdfWIUKEBUvA1CQ
+ 3CvH1gyXp77cl7QiT8gCWwf4hVyQXLjUHpEv4HEGtL7kLhDXqOTtlU2xg0kH5ACsw/JOxQ1E14
+ zh8A3kFpDBx2pCjWgUDTYBu62HekVxA460hUKjbVS8yCjURvIrKGDjkyFrEUAKwQI/P/aPM+/J
+ 7B45n8CAAA=
+X-Change-ID: 20260324-airoha-eth-multi-serdes-fb4b556ee756
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Christian Marangi <ansuelsmth@gmail.com>, 
+ Benjamin Larsson <benjamin.larsson@genexis.eu>, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ netdev@vger.kernel.org, devicetree@vger.kernel.org, 
+ Xuegang Lu <xuegang.lu@airoha.com>, 
+ Madhur Agrawal <madhur.agrawal@airoha.com>
+X-Mailer: b4 0.14.3
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,98 +82,129 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt76_register_debugfs_fops() returns the dentry from
-debugfs_create_dir(), which yields an error pointer on failure
-(notably ERR_PTR(-ENODEV) when CONFIG_DEBUG_FS=n), never NULL. Per
-commit ff9fb72bc077 ("debugfs: return error values, not NULL"),
-callers do not need to check the return value.
+EN7581 or AN7583 SoCs support connecting multiple external SerDes (e.g.
+Ethernet or USB SerDes) to GDM3 or GDM4 ports via a hw arbiter that
+manages the traffic in a TDM manner. As a result multiple net_devices can
+connect to the same GDM{3,4} port and there is a theoretical "1:n"
+relation between GDM ports and net_devices.
 
-Drop the dead !dir checks in mt7615/mt7915/mt7921/mt7925/mt7996
-_init_debugfs(). Converting them to IS_ERR() instead would have
-exposed a probe abort on CONFIG_DEBUG_FS=n, since each
-*_init_debugfs() caller propagates the helper's return value.
+           ┌─────────────────────────────────┐
+           │                                 │    ┌──────┐
+           │                         P1 GDM1 ├────►MT7530│
+           │                                 │    └──────┘
+           │                                 │      ETH0 (DSA conduit)
+           │                                 │
+           │              PSE/FE             │
+           │                                 │
+           │                                 │
+           │                                 │    ┌─────┐
+           │                         P0 CDM1 ├────►QDMA0│
+           │  P4                     P9 GDM4 │    └─────┘
+           └──┬─────────────────────────┬────┘
+              │                         │
+           ┌──▼──┐                 ┌────▼────┐
+           │ PPE │                 │   ARB   │
+           └─────┘                 └─┬─────┬─┘
+                                     │     │
+                                  ┌──▼──┐┌─▼───┐
+                                  │ ETH ││ USB │
+                                  └─────┘└─────┘
+                                   ETH1   ETH2
 
-This patch supersedes an earlier proposal that converted the checks
-to IS_ERR().
+This series introduces support for multiple net_devices connected to the
+same Frame Engine (FE) GDM port (GDM3 or GDM4) via an external hw
+arbiter. Please note GDM1 or GDM2 does not support the connection with
+the external arbiter.
 
-Link: https://lore.kernel.org/all/20260514193243.2518979-1-ingyujang25@korea.ac.kr
-Signed-off-by: Ingyu Jang <ingyujang25@korea.ac.kr>
 ---
+Changes in v8:
+- Fix dts schema issues reported by sashiko.
+- Fix possible NULL-pointer dereference in patch 2/10.
+- Fix max mtu computation in airoha_dev_change_mtu().
+- Link to v7: https://lore.kernel.org/r/20260516-airoha-eth-multi-serdes-v7-0-99e0093303e2@kernel.org
 
- drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c | 2 --
- drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c | 3 +--
- drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c | 2 --
- drivers/net/wireless/mediatek/mt76/mt7925/debugfs.c | 2 --
- drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c | 2 --
- 5 files changed, 1 insertion(+), 10 deletions(-)
+Changes in v7:
+- Fix dma_sync_single_for_cpu() size in airoha_qdma_rx_process().
+- Fix hw stats reset.
+- Fix typos.
+- Add fix for airoha_tc_remove_htb_queue queue index.
+- Fix dts schema issues.
+- Remove hw stats patch from the series.
+- Link to v6: https://lore.kernel.org/r/20260511-airoha-eth-multi-serdes-v6-0-c899462c4f75@kernel.org
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
-index 0f7b20152279c..6a1475e3c8999 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
-@@ -550,8 +550,6 @@ int mt7615_init_debugfs(struct mt7615_dev *dev)
- 	struct dentry *dir;
- 
- 	dir = mt76_register_debugfs_fops(&dev->mphy, &fops_regval);
--	if (!dir)
--		return -ENOMEM;
- 
- 	if (is_mt7615(&dev->mt76))
- 		debugfs_create_devm_seqfile(dev->mt76.dev, "xmit-queues", dir,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-index 26ed3745af43e..4d0854fe785bd 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-@@ -1296,8 +1296,7 @@ int mt7915_init_debugfs(struct mt7915_phy *phy)
- 	struct dentry *dir;
- 
- 	dir = mt76_register_debugfs_fops(phy->mt76, NULL);
--	if (!dir)
--		return -ENOMEM;
-+
- 	debugfs_create_file("muru_debug", 0600, dir, dev, &fops_muru_debug);
- 	debugfs_create_file("muru_stats", 0400, dir, phy,
- 			    &mt7915_muru_stats_fops);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c
-index 4333005b3ad95..a5a70d8e8544a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c
-@@ -266,8 +266,6 @@ int mt7921_init_debugfs(struct mt792x_dev *dev)
- 	struct dentry *dir;
- 
- 	dir = mt76_register_debugfs_fops(&dev->mphy, &fops_regval);
--	if (!dir)
--		return -ENOMEM;
- 
- 	if (mt76_is_mmio(&dev->mt76))
- 		debugfs_create_devm_seqfile(dev->mt76.dev, "xmit-queues",
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7925/debugfs.c
-index e2498659c884e..d01ff49de47af 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/debugfs.c
-@@ -291,8 +291,6 @@ int mt7925_init_debugfs(struct mt792x_dev *dev)
- 	struct dentry *dir;
- 
- 	dir = mt76_register_debugfs_fops(&dev->mphy, &fops_regval);
--	if (!dir)
--		return -ENOMEM;
- 
- 	if (mt76_is_mmio(&dev->mt76))
- 		debugfs_create_devm_seqfile(dev->mt76.dev, "xmit-queues",
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c
-index 76d623b2cafb4..327fc2032c8da 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c
-@@ -856,8 +856,6 @@ int mt7996_init_debugfs(struct mt7996_dev *dev)
- 	struct dentry *dir;
- 
- 	dir = mt76_register_debugfs_fops(&dev->mphy, NULL);
--	if (!dir)
--		return -ENOMEM;
- 
- 	debugfs_create_file("hw-queues", 0400, dir, dev,
- 			    &mt7996_hw_queues_fops);
+Changes in v6:
+- Reconfigure REG_GDM_LEN_CFG() whit max 'running' MTU in
+  airoha_dev_stop().
+- Fix port staring MIB counters in airoha_update_hw_stats().
+- Fix regression in TC_HTB_NODE_MODIFY command.
+- Fix length check in airoha_qdma_rx_process().
+- Fix dts schema.
+- Link to v5: https://lore.kernel.org/r/20260509-airoha-eth-multi-serdes-v5-0-805e38edc2aa@kernel.org
+
+Changes in v5:
+- Move qos_sq_bmap bitmap in airoha_gdm_dev struct.
+- Unregister netdevice before running of_node_put().
+- Move stat MIB counters in airoha_gdm_dev struct.
+- Fix airoha_ppe_init_upd_mem() mac address configuration.
+- Do not return -EBUSY if we try to decrease configured MTU of a shared
+  GDM port, just skip hw configuration.
+- use int instead of atomic_t for GDM port users.
+- Add patch "net: airoha: Reserve RX headroom to avoid skb reallocation"
+- Fix typos.
+- Link to v4: https://lore.kernel.org/r/20260507-airoha-eth-multi-serdes-v4-0-af613b61ae02@kernel.org
+
+Changes in v4:
+- Make ethernet-port property available just for GDM3 and GDM4 in DTS
+  specification
+- Move cpu_tx_packets, fwd_tx_packets qos_sq_bmap fields in airoha_qdma
+  struct
+- Fix of_node leak removing the net_device in airoha_remove() or
+  airoha_probe() error path
+- Fix nbq backward compatibility
+- Link to v3: https://lore.kernel.org/r/20260406-airoha-eth-multi-serdes-v3-0-ab6ea49d59ff@kernel.org
+
+Changes in v3:
+- Fix MTU and VIP configuration when the GDM port is shared between
+  multiple net_devices.
+- Add sanity check for nbq parameter.
+- Add missing of_node_get() for net_device np node.
+- Check if GDM port is shared before decresing device MTU.
+- Move port forward configuration in airoha_dev_stop() before
+  configuring DMA tx/rx engine.
+- Introduce PRIV_FLAG_WAN parameter.
+- Link to v2: https://lore.kernel.org/r/20260401-airoha-eth-multi-serdes-v2-0-ac427ae4beeb@kernel.org
+
+Changes in v2:
+- Rename multiplexer in arbiter in the commit logs.
+- Rebase on top of net-next main branch.
+- Add missing PPE cpu port configuration for GDM2 when loopback is
+  enabled.
+- Link to v1: https://lore.kernel.org/r/20260329-airoha-eth-multi-serdes-v1-0-00f52dc360ca@kernel.org
+
+---
+Lorenzo Bianconi (10):
+      dt-bindings: net: airoha: Add GDM port ethernet child node
+      net: airoha: Introduce airoha_gdm_dev struct
+      net: airoha: Move airoha_qdma pointer in airoha_gdm_dev struct
+      net: airoha: Rely on airoha_gdm_dev pointer in airoha_is_lan_gdm_port()
+      net: airoha: Move qos_sq_bmap in airoha_gdm_dev struct
+      net: airoha: Move {cpu,fwd}_tx_packets in airoha_gdm_dev struct
+      net: airoha: Support multiple net_devices for a single FE GDM port
+      net: airoha: Do not stop GDM port if it is shared
+      net: airoha: Introduce WAN device flag
+      net: airoha: Support multiple LAN/WAN interfaces for hw MAC address configuration
+
+ .../devicetree/bindings/net/airoha,en7581-eth.yaml |  56 +-
+ drivers/net/ethernet/airoha/airoha_eth.c           | 833 +++++++++++++++------
+ drivers/net/ethernet/airoha/airoha_eth.h           |  47 +-
+ drivers/net/ethernet/airoha/airoha_ppe.c           |  43 +-
+ 4 files changed, 702 insertions(+), 277 deletions(-)
+---
+base-commit: 7a348a95f696d20f15c776de4df8b4415bcf3d77
+change-id: 20260324-airoha-eth-multi-serdes-fb4b556ee756
+
+Best regards,
 -- 
-2.34.1
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
