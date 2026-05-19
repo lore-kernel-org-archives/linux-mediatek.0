@@ -4,108 +4,141 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9019ECD4F5B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2026 12:25:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07ADDCD4F3C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2026 14:27:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8y5pq/3tUQo0gg+N0tZskaVB8fdmoWJdJrd4o2r5SVo=; b=kj0oD9s+mEARBtAD9vYZ0s0Kzg
-	FTNR94z7xKxdlW74A+mw0ARQByxb31eLz7FkspfbGrjXqzXQ/p+X92fn7i52vhEiOxffEsCcYdGDL
-	4zh53r5fAMcK1Hh32g88+/FMky0JqFS8W2kAfcdVFhe+TL/SiKLcsF63AoqSacH+IV4P5ewQ4wfWX
-	UUdTAltQttkJZg+QaW91HhzzB76kK7hHbKAx92y9CuzQz0zwjWweCNfADXVwtCAONBRnneOEo7TZI
-	vWu40NeAxQkrAdCl++KAWjTBnKWyBjcIYQxIgi6g0Dt3b7mOma065Tp8Ekco2CACUziOy7jnH2AIk
-	h/XPmOPA==;
+	bh=zEjqKkH3DhRxJE8KbXYEAt37DhNV09bfllpxwdO6tRQ=; b=TC9hdKtVRkyzkMtuL5RJ00uMKm
+	spgofdsty7ZT/awqe31Sn5jrzgwrgmKex5NhSRRIHDantjt1usuziybFjTgBHE35dhN3xuh+QGC+6
+	jstGAApAMPxqPmPP4lyQyjkuVNidptw7XNRXry2KHASd9tjagO/O582nq6gA0H1GjlpjCND1bwRFb
+	ze2msAadCcBKYprfXoEFtmbbVY5C7OkP1WQQTs+zT00qFS/4PcBJ+kQPZQRAJ+KKA4zXkO30gAYUK
+	FeRNN/Wfs5pn/M6Pf2tfRKbSRthJupOIvL1y7P5WfGP6oC23C6ebPOLe/QgJoRHPrEn/YP5We2uV2
+	O7LWqPUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPJVV-00000001SvC-1v4u;
-	Tue, 19 May 2026 12:25:09 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1wPLPo-00000001pQy-3A4F;
+	Tue, 19 May 2026 14:27:24 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPJVS-00000001SuH-1fNH
+	id 1wPLPm-00000001pQT-2K8c
 	for linux-mediatek@lists.infradead.org;
-	Tue, 19 May 2026 12:25:07 +0000
-Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-5a8d1f43432so6399152e87.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 19 May 2026 05:25:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779193504; cv=none;
-        d=google.com; s=arc-20240605;
-        b=U0G1eU54WuDT4oY2Rpt+3J7bhvcHcZ8OU37XpGDgmlFhW8wkq5TqKVyzhfQHM5iAmU
-         2V+4jxmdZ9XuqI07ZpeUvTil7eHBg/gHo2H2UXbNSDGgNCZn/stYTUPR1+m3BPoUAgfn
-         K2aACSxJ39JUNj/OF2MKhwIPZRQdyWp3ltwv9KG123Ra0/5Lh3PaunofFqz56/M5J1pk
-         iQ8VExgcXSR1lhZMpRbTGgQEhQdUdREr2N8XJfIjAOQp6GRwhtk7ShjHmM2NlIJIBK7R
-         5ac3ih5WxYg5CZh3yLAlkklFImFMcDbYNRQZ1qJYZGqvza0ynLFAXdTMcHeOFRL6dtfE
-         By5A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=8y5pq/3tUQo0gg+N0tZskaVB8fdmoWJdJrd4o2r5SVo=;
-        fh=brGsXQJGAhsdCewyGUoJ3qtIw8CdUQc89Ch8hoBY6p8=;
-        b=lgKJfxYgjbNVqpcUggLwYNSXhMsOhF+nYNxeB+IrDhwFxiHm22bdmhsiDzbiYxM0ll
-         nA1915Oqhoc1a2i0dIFdNq4fLNm9z8ZXiBwYs6nhGOMYNi8lPjtSQgbTr4ZOS38q5lfp
-         dRXkVpcjwJnEGxJPaLRiaFBabEzIEjorPprhK52n+PmzWaFZWuEEOThxYoSF/Q1Ki/lS
-         wdVVb2EcaANTb/JdZ819GdlR5V6eJkDCjxDIjmRsOF9bqOsyQYTuguy7tHWZKvlzyGFI
-         kfSmEWSs6Uk5p0dJg7EA599G1Ag9fl9FB5sjx0xNOq6QAxfW0jAIC2yTU8JHhGJoRF9n
-         wdtw==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Tue, 19 May 2026 14:27:23 +0000
+Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 64J9LrNB4063015
+	for <linux-mediatek@lists.infradead.org>; Tue, 19 May 2026 14:27:21 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	zEjqKkH3DhRxJE8KbXYEAt37DhNV09bfllpxwdO6tRQ=; b=c1Xj7Qj+y951pKcH
+	uJ+Yl/3DY/8BXEx+ZlTKrXTGbbvrzmwMIyoBGeH3lFeMseGuIZS0/wiGe+r6J/X6
+	ilx6hDAzNUbj7AjoUK9VnoQ6PX6yhMU3S1RzzEfs2Y0AXYRiRA8T4bC9eG/UgVxw
+	/VfBzwmDKSM6DdE1WQtv2a1+mUYBouFwKHWY2n+2NHp/PDYjD6nRzGctUjCQf9Ip
+	I/erEXcBAXT5nI64Zio4hTX0y3pyxfcfswOrUMl2FczqNb4yle30+FbL47UfcePA
+	YjwqMYYVUdk4vV3H2W3unntEOlO8KaN1y7NpyJoaacoEcNTw3b8YLdjZLQ2YXhqn
+	RD5gYg==
+Received: from mail-pf1-f200.google.com (mail-pf1-f200.google.com [209.85.210.200])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4e8n5u16f4-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Tue, 19 May 2026 14:27:21 +0000 (GMT)
+Received: by mail-pf1-f200.google.com with SMTP id d2e1a72fcca58-82fa5ecd760so2044554b3a.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 19 May 2026 07:27:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1779193504; x=1779798304; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
+        d=oss.qualcomm.com; s=google; t=1779200841; x=1779805641; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:date:message-id:subject
+         :references:in-reply-to:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=8y5pq/3tUQo0gg+N0tZskaVB8fdmoWJdJrd4o2r5SVo=;
-        b=RzJkQbK/obcwG2IOqjiZ315XU5PCL1hrsEDG0oMApwmtkkPNlajsI6QHNLw1V0Ukss
-         ICrEr8aCGVSdhpyaZzO0uIyKZ0v3VcIYWL53W4SboGPdifUt/bnbqszUePmE2DnFceSs
-         gLHDvaLfITzpMieDIgZS6aOtFESJ7zREEbGRkhRMo7HqGvAsOh3mrHdnHfqQCJu0OLUM
-         d9vyBKuLKCnQgtMmkOF71yE3zucYAYB2AwS+lGostEoFHc1bzzOBQFqwBe99tTRbvxb7
-         ScM6Nliq1tXC+DZuOPxaAcIr1TbBp90/RuSxhsCorokZZZKoVHmLpkMCiSmP5jpHZofp
-         SoQQ==
+        bh=zEjqKkH3DhRxJE8KbXYEAt37DhNV09bfllpxwdO6tRQ=;
+        b=WZBn1ctT5TQ0SbMbM8m/lNaKkt6ukrhD43Lg5a5v29KF7GOv48jd0C83XDfTcO7tpO
+         zsSI98fg44F1RIj1zFGCPE/IGucYo68quEPwlw73kIRP261DZGuk2Y2faoUe5SxtZoFx
+         zBh0wd09Hu5uo3QTcSbNLwQwOSICJXHfJ11bFGRF1ikSgOcH/g4QnobnK/TuS3mZSxfU
+         5NdO47OhuKdv7xgXTnsdGPbM+ZSEEZT1PfyOSwD9FCkaSCwqr1nrtB0MRfwyMOp5OVhU
+         nZz+3wRCM87FkOYoX/BFHGoZsb6mWDxbw8aPsZAz5v7V6gQdbI+E6uU9Gj8VL08C4p9X
+         jJvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779193504; x=1779798304;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+        d=1e100.net; s=20251104; t=1779200841; x=1779805641;
+        h=content-transfer-encoding:mime-version:date:message-id:subject
+         :references:in-reply-to:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=8y5pq/3tUQo0gg+N0tZskaVB8fdmoWJdJrd4o2r5SVo=;
-        b=oyKm/5GGwg+cCa5ij0NVNc5PkSpdsVOg9zoc/aWXmrLd/3bNRgq3fw8TAheGOoWXgf
-         V0/TY+PPzSwuyOaB22cmA0QQ4yLlnutils+3gbobGXpNQLBqxWksPdA8PgVE0VlkwnNf
-         5Zxn/JDGY0OwweLrN5GIGSolXvnvg94s/wvwG3hbrR7vSocD19nOLx4FP7vMx/yU+bt3
-         8tNzrUOJWfnDlq2Y67n+y7zf1wbuOKHptLCg6tRIzViOt9HZhJNhhWTfXtBte9As/ntB
-         VxRDC83WAnSe5iruJix/rrmM7c/dW4V9CPfurNsEXOzoTRpAphYUuhot99HhA2jocACJ
-         j0Iw==
-X-Forwarded-Encrypted: i=1; AFNElJ9RKv6Zna8DoYjmEHht8vjYAQuW2R2V0tUuALtE0l5YpMe1C//TljAR9LCqkpsDuAdEb4og508w83yTEPeX1Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwrlkiPXNqiE9IVTSSFRp9iXaXimbPRGzz+zBlOtc1PVMWcQShY
-	8gM8E0fmxWaIDPXh3OWW2014BaQVdU3Wg52WuBTjNyxFHEYShsGsbi/WBjSep9nksxZOLtFR2Jp
-	wwEvT5DZBQVq4RfMElp1e+6ciDFwlr4o=
-X-Gm-Gg: Acq92OHutZ5Q+pEL1k2wd43WsbhIX3DIVl3JoW+da7GeglTnWrwRavt/fBSEVSl7k4m
-	l+zgSDN95cWx3tA1v/HGJ61x6CVhn6XeZSemuX0OxrwwN4U6EH83/ESXy0i1hInqTWIslhPLn9A
-	DeTcDOiTj0SpxuLrkwMV/5vvm0QQTX7jLSOMSgK1KK/YAdUkOoyIJ3zZXIzf9U+/sLeE67nko6q
-	QFU1eJfdlyKJQqNH0ESKve9vLvHbG7slNdk5gB3K9T5sZaiaOF6UZvRYWdVRyTeLTtr2762tWGQ
-	XT2d+6M=
-X-Received: by 2002:a05:6512:a85:b0:5a8:6cab:4866 with SMTP id
- 2adb3069b0e04-5aa0e74a9b4mr5964361e87.41.1779193503535; Tue, 19 May 2026
- 05:25:03 -0700 (PDT)
+        bh=zEjqKkH3DhRxJE8KbXYEAt37DhNV09bfllpxwdO6tRQ=;
+        b=grB6vJZRGn/2cy6sD55I617pmLNDB4uN89cKKSyskYPIFWLnCxgrAymBHpUgHTaKV5
+         RVP+DHleuzGEL4lvSc7viQXyoQ/GHhqA/DltvbPe2lSBYNBxG7D3JZ4d5wN7imXC/nK8
+         KmeU3qcofNVL58jxZwxR4FBMVa/xZioBcT/yiXFp2XySTCfYnVZIxJAFlILGyduIqzkq
+         /hiigapqD0Fh6sjLgiiR3jhtxmUl4iftXUv8Qd30eY6iyJ80p+IuAvkusuJEaQ5bXPvm
+         krhqyBHrixa7hFxVEhg4rxCbwC5u+Pa8IRXQGrOqGzyxoDMOlQOy49/gmgEeKfaDFLb3
+         xwSg==
+X-Forwarded-Encrypted: i=1; AFNElJ+RPiQR1tyfy2oXQ8UlMgdYECz3FcWhPH05TAbe0JA0ZYBGPsKK2bMkpxn7ohwqrp3gsVwi3UKIAN602+/pUg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyrD2M0coX0FVr/VMLg2eJ7LfFyzskHeKdp//JvT8JlMoQCeV2F
+	aGmgY8hCbez5yQzYW9djwNoe1zUYVoz/kv5lSqUUAoWLwGes35lCysez5nCRWXZ9WaowS2MlJSN
+	XUUbu6HTgq3GQ/REez5hdX/PG1vlPLB3FmqF6Dp59JwZ6WhTHDRZtzI9B9k7JoJDjagXPEWRH5l
+	A=
+X-Gm-Gg: Acq92OGENcHX/7vtpabCmFNg0HxYcD92oAwmx4hj1xb/sdEInYmdaeY2B96Dd00KM8w
+	XBlrqhLoryKctw4drtouHavwWG82LEK+dK+ThQsIBLs5kHgs9LXk5EPMGP8E/rjAVDBhydGjmPj
+	PFytR+tEyjARKLstBx3D7Ajv7Q61FCsJAg0RD4s8dFJ6gHUZ4P29NSXeRVpS6EvPJtqB0hwuV/p
+	IoXVXYGAlBtd4Fx494AmgWoEjW4ltpTs7uIABORRdpwgWPBWoO2ZrIpVQtWJzLkTLGNqSBUI0Ml
+	PUBJa8S0vYzffbyDYbFitoo4dPYzoK0WKBPToD4fPPoqkJSMTGVMQjw18uWtga/NjsTG1buDmJZ
+	JR9JH8WUu7QWiPFJxtgoo
+X-Received: by 2002:a05:6a00:2e89:b0:837:80a:5ac7 with SMTP id d2e1a72fcca58-83f33f0fde7mr20707743b3a.45.1779200840892;
+        Tue, 19 May 2026 07:27:20 -0700 (PDT)
+X-Received: by 2002:a05:6a00:2e89:b0:837:80a:5ac7 with SMTP id d2e1a72fcca58-83f33f0fde7mr20707691b3a.45.1779200840172;
+        Tue, 19 May 2026 07:27:20 -0700 (PDT)
+Received: from [192.168.1.11] ([120.56.207.212])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-83f67eff284sm7640033b3a.8.2026.05.19.07.27.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 19 May 2026 07:27:19 -0700 (PDT)
+From: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+X-Google-Original-From: Manivannan Sadhasivam <mani@kernel.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Ryder Lee <ryder.lee@mediatek.com>,
+        Lorenzo Pieralisi <lpieralisi@kernel.org>,
+        =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+        Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+        Krzysztof Kozlowski <krzk+dt@kernel.org>,
+        Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>
+Cc: devicetree@vger.kernel.org, linux-pci@vger.kernel.org,
+        linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+        Dan Carpenter <error27@gmail.com>
+In-Reply-To: <20260512103347.1751080-1-wenst@chromium.org>
+References: <20260512103347.1751080-1-wenst@chromium.org>
+Subject: Re: [PATCH] PCI: mediatek-gen3: fix incorrectly skipped pwrctrl
+ error message
+Message-Id: <177920083522.97175.591150691760691771.b4-ty@kernel.org>
+Date: Tue, 19 May 2026 19:57:15 +0530
 MIME-Version: 1.0
-References: <5ecac6a9b7d29526e8438dea105b58f5487c93aa.1778521232.git.ryder.lee@mediatek.com>
- <agdJ1EtZjjWh2R1h@lore-desk> <CAHoxojJX2BRRTLMuM_QcJqMMmshxS4EAwrB1VjU3rsZ+0k2PAg@mail.gmail.com>
- <agsGiHKH6ly1afaf@lore-desk> <CAHoxojKeXCCnJoO7yBBmTM9euiTf38orujOhOK00X8bb3ctWuA@mail.gmail.com>
-In-Reply-To: <CAHoxojKeXCCnJoO7yBBmTM9euiTf38orujOhOK00X8bb3ctWuA@mail.gmail.com>
-From: Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>
-Date: Tue, 19 May 2026 14:24:52 +0200
-X-Gm-Features: AVHnY4KaoxlMsOnP7ZY50hh_a8dZdUJo8i7PBx8_p8ryKTV2m-BiT8h1mMrMaXk
-Message-ID: <CAA2SeNJXv+8QO6zEOF=qB3wVCdEoSqx6fftp1i=aB-DKMFeC=A@mail.gmail.com>
-Subject: Re: [PATCH] wifi: mt76: mt7996: avoid memset overwriting tx_info->control.flags
-To: Roy Luo <roychl666@gmail.com>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
-	Felix Fietkau <nbd@nbd.name>, linux-mediatek@lists.infradead.org, 
-	linux-wireless@vger.kernel.org, Shayne Chen <shayne.chen@mediatek.com>, 
-	Roy Luo <roy-ch.luo@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14.3
+X-Authority-Analysis: v=2.4 cv=MfBcfZ/f c=1 sm=1 tr=0 ts=6a0c7349 cx=c_pps
+ a=mDZGXZTwRPZaeRUbqKGCBw==:117 a=1gRTTRxgmbTSdBvl+srOOw==:17
+ a=IkcTkHD0fZMA:10 a=NGcC8JguVDcA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=YMgV9FUhrdKAYTUUvYB2:22
+ a=VwQbUJbxAAAA:8 a=bpYmCipijB_Evp6s3csA:9 a=QEXdDO2ut3YA:10
+ a=zc0IvFSfCIW2DFIPzwfm:22
+X-Proofpoint-GUID: q3PKPwGUOceWc-DpskUqLn2bKX0s2vkb
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTE5MDE0MyBTYWx0ZWRfX1tf9xOS+Y7eh
+ lbKGkIfJzuE8PPTxQSq7DSKQTLiHILOu/+4IqTe1x7fYetWsfp47kQWH9xx0EnxUisCI07Vp05H
+ O0XC48k2Nu0LR5uUU91WbHhbUQudyXTeZzg7PIOkbWB//REBWV7HIQhikrKJjSDo8/Jd6Q6Rn0D
+ pHma4PChGKazxCs6hCox1pTTGKdFe6Ftuuj+6nFVKGwLmRawSWHcQU3CVPTSrJbUG0biiT7TFKG
+ Cmk6oC4jXXrRgeQ52X3CObY3xT4XfiqywzgTI1e6rCdgxCtaIBcBHnIANBsZCK41HiA7+qKzTiO
+ ZKghb1NQW2bV8vLtXbZx+IuF+UP8IF9deiWGR4IUq0ZoA78F6n0XMbXy4b2a0QK/z9SUtaiBPAH
+ yIr+pkvKA3398dfHkt3p32h+HZpDsn7wV1ntUqRWZDFaMkQagqmAiWLjgHZ9/CLD79KCl5sbHcy
+ PHPjeAYCLhuXSZbcBRQ==
+X-Proofpoint-ORIG-GUID: q3PKPwGUOceWc-DpskUqLn2bKX0s2vkb
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-05-19_03,2026-05-18_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ lowpriorityscore=0 clxscore=1015 adultscore=0 malwarescore=0 bulkscore=0
+ impostorscore=0 spamscore=0 phishscore=0 priorityscore=1501 suspectscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2605130000 definitions=main-2605190143
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260519_052506_489876_55401F60 
-X-CRM114-Status: GOOD (  21.16  )
+X-CRM114-CacheID: sfid-20260519_072722_599730_44EDF2C2 
+X-CRM114-Status: GOOD (  11.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,182 +153,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
->
-> On Mon, May 18, 2026 at 5:31=E2=80=AFAM Lorenzo Bianconi <lorenzo@kernel.=
-org> wrote:
-> >
-> > On May 15, Cheng Hao Luo wrote:
-> > > > struct ieee80211_tx_info {
-> > > >         u32                        flags;                /*     0  =
-   4 */
-> > > >         u32                        band:3;               /*     4: =
-0  4 */
-> > > >         u32                        status_data_idr:1;    /*     4: =
-3  4 */
-> > > >         u32                        status_data:13;       /*     4: =
-4  4 */
-> > > >         u32                        hw_queue:4;           /*     4:1=
-7  4 */
-> > > >         u32                        tx_time_est:10;       /*     4:2=
-1  4 */
-> > > >
-> > > >         /* XXX 1 bit hole, try to pack */
-> > > >
-> > > >         union {
-> > > >                 struct {
-> > > >                         union {
-> > > >                                 struct {
-> > > >                                         struct ieee80211_tx_rate ra=
-tes[4]; /*     8    12 */
-> > > >                                         s8     rts_cts_rate_idx; /*=
-    20     1 */
-> > > >                                         u8     use_rts:1; /*    21:=
- 0  1 */
-> > > >                                         u8     use_cts_prot:1; /*  =
-  21: 1  1 */
-> > > >                                         u8     short_preamble:1; /*=
-    21: 2  1 */
-> > > >                                         u8     skip_table:1; /*    =
-21: 3  1 */
-> > > >                                         u8     antennas:2; /*    21=
-: 4  1 */
-> > > >                                 };                       /*     8  =
-  14 */
-> > > >                                 long unsigned int jiffies; /*     8=
-     8 */
-> > > >                         };                               /*     8  =
-  16 */
-> > > >                         struct ieee80211_vif * vif;      /*    24  =
-   8 */
-> > > >                         struct ieee80211_key_conf * hw_key; /*    3=
-2     8 */
-> > > >                         u32        flags;                /*    40  =
-   4 */
-> > > >                         codel_time_t enqueue_time;       /*    44  =
-   4 */
-> > > >                 } control;                               /*     8  =
-  40 */
-> > > >                 struct {
-> > > >                         u64        cookie;               /*     8  =
-   8 */
-> > > >                 } ack;                                   /*     8  =
-   8 */
-> > > >                 struct {
-> > > >                         struct ieee80211_tx_rate rates[4]; /*     8=
-    12 */
-> > > >                         s32        ack_signal;           /*    20  =
-   4 */
-> > > >                         u8         ampdu_ack_len;        /*    24  =
-   1 */
-> > > >                         u8         ampdu_len;            /*    25  =
-   1 */
-> > > >                         u8         antenna;              /*    26  =
-   1 */
-> > > >                         u8         pad;                  /*    27  =
-   1 */
-> > > >                         u16        tx_time;              /*    28  =
-   2 */
-> > > >                         u8         flags;                /*    30  =
-   1 */
-> > > >                         u8         pad2;                 /*    31  =
-   1 */
-> > > >                         void *     status_driver_data[2]; /*    32 =
-   16 */
-> > > >                 } status;                                /*     8  =
-  40 */
-> > > >                 struct {
-> > > >                         struct ieee80211_tx_rate driver_rates[4]; /=
-*     8    12 */
-> > > >                         u8         pad[4];               /*    20  =
-   4 */
-> > > >                         void *     rate_driver_data[3];  /*    24  =
-  24 */
-> > > >                 };                                       /*     8  =
-  40 */
-> > > >                 void *             driver_data[5];       /*     8  =
-  40 */
-> > > >         };                                               /*     8  =
-  40 */
-> > > >
-> > > >         /* size: 48, cachelines: 1, members: 7 */
-> > > >         /* sum members: 44 */
-> > > >         /* sum bitfield members: 31 bits, bit holes: 1, sum bit hol=
-es: 1 bits */
-> > > >         /* last cacheline: 48 bytes */
-> > > > };
-> > > >
-> > > > According to pahole, the size of the control inner union is actuall=
-y 16 bytes
-> > > > since the compiler adds 2 bytes of padding. Since mt76_tx_status_sk=
-b_add()
-> > > > meset to 0 just mt76_tx_cb size (that is 16 bytes) I can't see how
-> > > > control.flags is overwritten. Am I missing something?
-> > > >
-> > > > struct mt76_tx_cb {
-> > > >         long unsigned int          jiffies;              /*     0  =
-   8 */
-> > > >         u16                        wcid;                 /*     8  =
-   2 */
-> > > >         u8                         pktid;                /*    10  =
-   1 */
-> > > >         u8                         flags;                /*    11  =
-   1 */
-> > > >
-> > > >         /* size: 16, cachelines: 1, members: 4 */
-> > > >         /* padding: 4 */
-> > > >         /* last cacheline: 16 bytes */
-> > > > };
-> > >
-> > > Hi Lorenzo,
-> > >
-> > > The mt76_tx_cb is placed at status.status_driver_data (offset 32).
-> > > It overlaps with hw_key, flags and enqueue_time in the control union.
-> > >
-> > > static inline struct mt76_tx_cb *mt76_tx_skb_cb(struct sk_buff *skb)
-> > > {
-> > > BUILD_BUG_ON(sizeof(struct mt76_tx_cb) >
-> > >     sizeof(IEEE80211_SKB_CB(skb)->status.status_driver_data));
-> > > return ((void *)IEEE80211_SKB_CB(skb)->status.status_driver_data);
-> > > }
-> >
-> > Hi Roy,
-> >
-> > I still do not understand since mt76_tx_status_skb_add() sets to 0 just=
- sizeof
-> > of mt76_tx_cb, that according to pahole is 16 bytes, so it can't overwr=
-ite
-> > hw_key pointer (whose offset respect to the beginning of the control st=
-ruct is
-> > 24, 32 - 8).
-> >
-> > Regards,
-> > Lorenzo
-> >
-> > >
-> > > Regards,
-> > > Roy Luo
->
-> Hi Lorenzo,
->
-> The mt76_tx_status_skb_add() memset zero the 16 bytes starting from
-> status.status_driver_data (please see the above inline function shared
-> in my last response) whose offset with respect to the beginning of
-> the control/status union is exactly 24 (32 - 8) instead of 0.
->
-> Regards,
-> Roy Luo
 
-Hi Roy,
+On Tue, 12 May 2026 18:33:45 +0800, Chen-Yu Tsai wrote:
+> When pwrctrl integration was added, the error message for when
+> pci_pwrctrl_create_devices() fails was incorrectly put after the error
+> goto statement, causing it to be skipped.
+> 
+> Move the goto statement after the dev_err_probe() call so that the
+> error message actually gets printed (or saved if probe is deferred).
+> 
+> [...]
 
-I can see the issue now, I was confusing status.status_driver_data
-with
-driver_data. You are right, we have an issue here. However, copying
-all the
-ieee80211_tx_info struct seems a bit overkill, what do you think?
-Moreover, we have the same issue for various chipsets (e.g. mt7925 and
-mt7915).  I guess we should try to find a global solution for the
-problem.
+Applied, thanks!
 
-Regards,
-Lorenzo
+[1/1] PCI: mediatek-gen3: fix incorrectly skipped pwrctrl error message
+      commit: 8ba433753d9b131c2e43b1ff7ba8c5730cef8231
+
+Best regards,
+-- 
+Manivannan Sadhasivam <mani@kernel.org>
+
 
