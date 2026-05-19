@@ -4,85 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3865CCD4F3C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2026 02:13:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B9E1CD4F54
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2026 02:17:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xh5rNiGnQTblRK3rc/aye/E+aQJsk9GxSiT3PR/DquA=; b=JyfK+mDxxSIYt4FfnX+hvhXkSU
-	uQPRhcbn53c1AtAMcwrDtyoeIKbG6K1ok1BIwlxespjON+YdWWEjE3uvNVlWAKpFGJr+MzmNM2jni
-	9iN7oGq+5ymClE2cwUPEvoGRCFcRjs8wu110V1NtLJJCy+t738LvBH+0NyYpgIMd1pZTX4aO2UUML
-	FYaPjub3XKaEX4BvWrJOKtk9XApyZ0c5jU50Y6EOe/cEP02h9K4st2gII4BIpqb1ODYMLfCohCg7C
-	mBxCXnOCgqwv2dyWdlUpZ69Ipf4BU0Jvu0HFH4JAXzP1Y9SfSK3iA1OoDbw06FJaa9Zis8Igi7Sk1
-	v6fLCcHg==;
+	bh=y33sl6LlKQwmsMxpToD1qauD4dOYyjLtnlR4y1Y+rgA=; b=RR+anEq9vSQDI92oQBSwGV3jxJ
+	rcEOrrU1iAWhZWFkXA6mN4Jpf9kSTAXwzrd1t17wUNEtSOyNM1rNHahAxkP/9hFflW6Hlu/RJ2QNm
+	pwvfQXO+auZAVeEG48K1oLlI2EdV8UvVXULuwfMfhptXdslZyux8c5AvtiGonT5xvqYVv5ujvRUJj
+	muNgRDnXTcRg9hADgQH62ygi4h3W+vdy0UVbAplDabasRL3V/rIRKjZWgxyK6HPpKT2doPv5VFtux
+	4vAJmSYE+puXCsEbbs/Sk327nX6NXuamBwEF1JOraLqRAUD0I7IlEz1Uriu96lPF84NfxEqT93jJF
+	/+QG5DdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP9xQ-0000000HQw5-2p2R;
-	Tue, 19 May 2026 02:13:20 +0000
-Received: from mgamail.intel.com ([192.198.163.17])
+	id 1wPA1o-0000000HRQl-0yWQ;
+	Tue, 19 May 2026 02:17:52 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP9xN-0000000HQuU-2qmj;
-	Tue, 19 May 2026 02:13:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1779156798; x=1810692798;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=KNEi9Z6fIzPPdjyS6gMZBxegnw+gYNTkMPxY7aoCyBE=;
-  b=CPA7sZ2QlwqqntRjfFAP4d/h7DTPrU+8CvviuvWPriZNo6rlpYKQZCMC
-   3BmhoxM7g3lKxeR7SDnjSKA9+bWmT8s/OATdkywTQR1wPjV93g8KTczXa
-   IPPsdGfbqKb9+dfEsdIpxG/2RUmd7+/Jo3CwOQ9zlI9j+aRBaqmOloRsd
-   dAAJoopIO+eOLkZkZ7jj9Pg8MbSbPkxGkJaoLVycezP+yMEInM2CQGbsE
-   ClFFBNmYSc+p7OqzfUmVxpgJmWUb9wamwqzt3Rh24AxYJo6ay2WF/Q9WQ
-   EK1K0VpwM9SsIWdofGpDFthlvtb4hjldt13YvMddeN9mqRuwUfEsNrHdu
-   Q==;
-X-CSE-ConnectionGUID: XQY+8YmPSHuCz8m+JEc1BA==
-X-CSE-MsgGUID: /c8cbzFCTYOj+a7cKz6JeA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11790"; a="79876133"
-X-IronPort-AV: E=Sophos;i="6.23,243,1770624000"; 
-   d="scan'208";a="79876133"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
-  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 May 2026 19:13:16 -0700
-X-CSE-ConnectionGUID: t7ZnljPdT/OSq+BVcp6Xlg==
-X-CSE-MsgGUID: L4xx6vjTS3WhirUt0xsi5A==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,243,1770624000"; 
-   d="scan'208";a="235167793"
-Received: from lkp-server02.sh.intel.com (HELO 30e86e9c1927) ([10.239.97.151])
-  by fmviesa006.fm.intel.com with ESMTP; 18 May 2026 19:13:12 -0700
-Received: from kbuild by 30e86e9c1927 with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1wP9xF-00000000013-3rH0;
-	Tue, 19 May 2026 02:13:09 +0000
-Date: Tue, 19 May 2026 08:21:23 +0800
-From: kernel test robot <lkp@intel.com>
-To: Guangshuo Li <lgs201920130244@gmail.com>,
-	Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
-	Houlong Wei <houlong.wei@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hans Verkuil <hverkuil@kernel.org>, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	linux-media@vger.kernel.org,
-	Guangshuo Li <lgs201920130244@gmail.com>
-Subject: Re: [PATCH] media: mediatek: mdp: avoid double free on video
- register failure
-Message-ID: <202605190845.KlMSPp80-lkp@intel.com>
-References: <20260518125500.1000083-1-lgs201920130244@gmail.com>
+	id 1wPA1l-0000000HRPC-3IkM;
+	Tue, 19 May 2026 02:17:50 +0000
+X-UUID: ec262450532811f1acbe4559397dec65-20260518
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=y33sl6LlKQwmsMxpToD1qauD4dOYyjLtnlR4y1Y+rgA=;
+	b=e2R5n5UvtstjsPgnHrDclLQ2ibSoHDmBWh915DaNPm0hxB4NYXM4kPiWqWUEeYg7sxRzdGXaRuE+SakepHObiJsr6bYhTfyZqp3NocbkT0g8toSsQs2QM8+INgOVOGdWWGNAMfHHsSFk1cmxwl6Jj+9kjFVtDMRKNjq73bsm1BI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.14,REQID:4def4f10-b7f8-4bd7-a15d-8590b96e4ae2,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:9091e75,CLOUDID:84da1346-e650-4d81-a877-d298d8f44b5d,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|865|888|898,TC:-5,Cont
+	ent:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0
+	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: ec262450532811f1acbe4559397dec65-20260518
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <jianhua.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1046432323; Mon, 18 May 2026 19:17:45 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Tue, 19 May 2026 10:17:42 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Tue, 19 May 2026 10:17:41 +0800
+From: Jianhua Lin <jianhua.lin@mediatek.com>
+To: <nicolas@ndufresne.ca>, <mchehab@kernel.org>, <robh@kernel.org>,
+	<krzk+dt@kernel.org>, <conor+dt@kernel.org>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>
+CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<sirius.wang@mediatek.com>, <vince-wl.liu@mediatek.com>,
+	<jh.hsu@mediatek.com>, Jianhua Lin <jianhua.lin@mediatek.com>
+Subject: [PATCH v8 3/3] media: mediatek: jpeg: add compatible for MT8189 SoC
+Date: Tue, 19 May 2026 10:17:26 +0800
+Message-ID: <20260519021726.19137-4-jianhua.lin@mediatek.com>
+X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20260519021726.19137-1-jianhua.lin@mediatek.com>
+References: <20260519021726.19137-1-jianhua.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260518125500.1000083-1-lgs201920130244@gmail.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260518_191317_729167_533E2641 
-X-CRM114-Status: GOOD (  12.88  )
+X-CRM114-CacheID: sfid-20260518_191749_826022_D119848F 
+X-CRM114-Status: GOOD (  11.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,94 +90,88 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Guangshuo,
+Compared to the previous generation ICs, the MT8189 uses a 34-bit IOVA
+address space (16GB) and requires a single clock configuration.
 
-kernel test robot noticed the following build errors:
+Therefore, add new compatible strings ("mediatek,mt8189-jpgenc" and
+"mediatek,mt8189-jpgdec") along with their specific driver data to
+support the JPEG encoder and decoder of the MT8189 SoC.
 
-[auto build test ERROR on linuxtv-media-pending/master]
-[also build test ERROR on media-tree/master linus/master v7.1-rc4 next-20260518]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Signed-off-by: Jianhua Lin <jianhua.lin@mediatek.com>
+---
+ .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 44 +++++++++++++++++++
+ 1 file changed, 44 insertions(+)
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Guangshuo-Li/media-mediatek-mdp-avoid-double-free-on-video-register-failure/20260518-211648
-base:   https://git.linuxtv.org/media-ci/media-pending.git master
-patch link:    https://lore.kernel.org/r/20260518125500.1000083-1-lgs201920130244%40gmail.com
-patch subject: [PATCH] media: mediatek: mdp: avoid double free on video register failure
-config: hexagon-allmodconfig (https://download.01.org/0day-ci/archive/20260519/202605190845.KlMSPp80-lkp@intel.com/config)
-compiler: clang version 17.0.6 (https://github.com/llvm/llvm-project 6009708b4367171ccdbf4b5905cb6a803753fe18)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260519/202605190845.KlMSPp80-lkp@intel.com/reproduce)
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index d147ec483081..14f2991a4053 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -1868,6 +1868,10 @@ static struct clk_bulk_data mt8173_jpeg_dec_clocks[] = {
+ 	{ .id = "jpgdec" },
+ };
+ 
++static struct clk_bulk_data mtk_jpeg_dec_clocks[] = {
++	{ .id = "jpgdec" },
++};
++
+ static const struct mtk_jpeg_variant mt8173_jpeg_drvdata = {
+ 	.clks = mt8173_jpeg_dec_clocks,
+ 	.num_clks = ARRAY_SIZE(mt8173_jpeg_dec_clocks),
+@@ -1899,6 +1903,38 @@ static const struct mtk_jpeg_variant mtk_jpeg_drvdata = {
+ 	.multi_core = false,
+ };
+ 
++static const struct mtk_jpeg_variant mtk8189_jpegenc_drvdata = {
++	.clks = mtk_jpeg_clocks,
++	.num_clks = ARRAY_SIZE(mtk_jpeg_clocks),
++	.formats = mtk_jpeg_enc_formats,
++	.num_formats = MTK_JPEG_ENC_NUM_FORMATS,
++	.qops = &mtk_jpeg_enc_qops,
++	.irq_handler = mtk_jpeg_enc_irq,
++	.hw_reset = mtk_jpeg_enc_reset,
++	.m2m_ops = &mtk_jpeg_enc_m2m_ops,
++	.dev_name = "mtk-jpeg-enc",
++	.ioctl_ops = &mtk_jpeg_enc_ioctl_ops,
++	.out_q_default_fourcc = V4L2_PIX_FMT_YUYV,
++	.cap_q_default_fourcc = V4L2_PIX_FMT_JPEG,
++	.support_34bit = true,
++};
++
++static const struct mtk_jpeg_variant mtk8189_jpegdec_drvdata = {
++	.clks = mtk_jpeg_dec_clocks,
++	.num_clks = ARRAY_SIZE(mtk_jpeg_dec_clocks),
++	.formats = mtk_jpeg_dec_formats,
++	.num_formats = MTK_JPEG_DEC_NUM_FORMATS,
++	.qops = &mtk_jpeg_dec_qops,
++	.irq_handler = mtk_jpeg_dec_irq,
++	.hw_reset = mtk_jpeg_dec_reset,
++	.m2m_ops = &mtk_jpeg_dec_m2m_ops,
++	.dev_name = "mtk-jpeg-dec",
++	.ioctl_ops = &mtk_jpeg_dec_ioctl_ops,
++	.out_q_default_fourcc = V4L2_PIX_FMT_JPEG,
++	.cap_q_default_fourcc = V4L2_PIX_FMT_YUV420M,
++	.support_34bit = true,
++};
++
+ static struct mtk_jpeg_variant mtk8195_jpegenc_drvdata = {
+ 	.formats = mtk_jpeg_enc_formats,
+ 	.num_formats = MTK_JPEG_ENC_NUM_FORMATS,
+@@ -1938,6 +1974,14 @@ static const struct of_device_id mtk_jpeg_match[] = {
+ 		.compatible = "mediatek,mtk-jpgenc",
+ 		.data = &mtk_jpeg_drvdata,
+ 	},
++	{
++		.compatible = "mediatek,mt8189-jpgenc",
++		.data = &mtk8189_jpegenc_drvdata,
++	},
++	{
++		.compatible = "mediatek,mt8189-jpgdec",
++		.data = &mtk8189_jpegdec_drvdata,
++	},
+ 	{
+ 		.compatible = "mediatek,mt8195-jpgenc",
+ 		.data = &mtk8195_jpegenc_drvdata,
+-- 
+2.45.2
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202605190845.KlMSPp80-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
->> drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c:1217:33: error: expected ';' after expression
-    1217 |         video_device_release(mdp->vdev)
-         |                                        ^
-         |                                        ;
-   1 error generated.
-
-
-vim +1217 drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c
-
-  1172	
-  1173	int mtk_mdp_register_m2m_device(struct mtk_mdp_dev *mdp)
-  1174	{
-  1175		struct device *dev = &mdp->pdev->dev;
-  1176		int ret;
-  1177	
-  1178		mdp->variant = &mtk_mdp_default_variant;
-  1179		mdp->vdev = video_device_alloc();
-  1180		if (!mdp->vdev) {
-  1181			dev_err(dev, "failed to allocate video device\n");
-  1182			ret = -ENOMEM;
-  1183			goto err_video_alloc;
-  1184		}
-  1185		mdp->vdev->device_caps = V4L2_CAP_VIDEO_M2M_MPLANE | V4L2_CAP_STREAMING;
-  1186		mdp->vdev->fops = &mtk_mdp_m2m_fops;
-  1187		mdp->vdev->ioctl_ops = &mtk_mdp_m2m_ioctl_ops;
-  1188		mdp->vdev->release = video_device_release_empty;
-  1189		mdp->vdev->lock = &mdp->lock;
-  1190		mdp->vdev->vfl_dir = VFL_DIR_M2M;
-  1191		mdp->vdev->v4l2_dev = &mdp->v4l2_dev;
-  1192		snprintf(mdp->vdev->name, sizeof(mdp->vdev->name), "%s:m2m",
-  1193			 MTK_MDP_MODULE_NAME);
-  1194		video_set_drvdata(mdp->vdev, mdp);
-  1195	
-  1196		mdp->m2m_dev = v4l2_m2m_init(&mtk_mdp_m2m_ops);
-  1197		if (IS_ERR(mdp->m2m_dev)) {
-  1198			dev_err(dev, "failed to initialize v4l2-m2m device\n");
-  1199			ret = PTR_ERR(mdp->m2m_dev);
-  1200			goto err_m2m_init;
-  1201		}
-  1202	
-  1203		ret = video_register_device(mdp->vdev, VFL_TYPE_VIDEO, 2);
-  1204		if (ret) {
-  1205			dev_err(dev, "failed to register video device\n");
-  1206			goto err_vdev_register;
-  1207		}
-  1208		mdp->vdev->release = video_device_release;
-  1209	
-  1210		v4l2_info(&mdp->v4l2_dev, "driver registered as /dev/video%d",
-  1211			  mdp->vdev->num);
-  1212		return 0;
-  1213	
-  1214	err_vdev_register:
-  1215		v4l2_m2m_release(mdp->m2m_dev);
-  1216	err_m2m_init:
-> 1217		video_device_release(mdp->vdev)
-  1218		mdp->vdev = NULL;
-  1219	err_video_alloc:
-  1220	
-  1221		return ret;
-  1222	}
-  1223	
-
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 
