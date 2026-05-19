@@ -4,103 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32153CD4851
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2026 11:37:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9019ECD4F5B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2026 12:25:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dFsih1oM8khuFifnw1qBaw/17wfrL9w8S7JH369Uy2o=; b=UeuQ6cS7h7CZvR/lMnHKxOWJkj
-	fMEYvGhCTf77I2iyLCwYI1iAorm661ry+MMU3cAO3smH4Wc3NCL1Ir5H1FlOCFsvq15alEtgj7dPo
-	dH75zORvBZ3rongbxOxTCz527zNNoKfaweF95ODkM+ftdka2AcfM5aFk5VpjWP1KkddNaDnIQ+1f0
-	GCAPAluqypCnGvAd9CIrvbCOt26wtHFhIm/plaeG/Z1Kba+ba3y8nT0+ot170lHv23UohOlACTvtQ
-	1KeHZqiehPPFwHUHxiw+4LXJDoF4p7MSFB+9PjG0/7hA+jsZGiayamkxrhq8BjFj5sNj82ghkTztx
-	jsg9BH+w==;
+	bh=8y5pq/3tUQo0gg+N0tZskaVB8fdmoWJdJrd4o2r5SVo=; b=kj0oD9s+mEARBtAD9vYZ0s0Kzg
+	FTNR94z7xKxdlW74A+mw0ARQByxb31eLz7FkspfbGrjXqzXQ/p+X92fn7i52vhEiOxffEsCcYdGDL
+	4zh53r5fAMcK1Hh32g88+/FMky0JqFS8W2kAfcdVFhe+TL/SiKLcsF63AoqSacH+IV4P5ewQ4wfWX
+	UUdTAltQttkJZg+QaW91HhzzB76kK7hHbKAx92y9CuzQz0zwjWweCNfADXVwtCAONBRnneOEo7TZI
+	vWu40NeAxQkrAdCl++KAWjTBnKWyBjcIYQxIgi6g0Dt3b7mOma065Tp8Ekco2CACUziOy7jnH2AIk
+	h/XPmOPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPIlb-00000001LCU-2bmk;
-	Tue, 19 May 2026 11:37:43 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wPJVV-00000001SvC-1v4u;
+	Tue, 19 May 2026 12:25:09 +0000
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPIla-00000001LBl-0JBM;
-	Tue, 19 May 2026 11:37:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:From:Date:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=dFsih1oM8khuFifnw1qBaw/17wfrL9w8S7JH369Uy2o=; b=SETSaNdo6ilBSF/5m6h9wj59Mp
-	A9KCuFCMe5CwWLNuQuHLcvkF7MjLoNLCGyjibxpI959bHZjF4l6VxlTvheJqW6MJbZEHUxu43LwyI
-	XuYTOCmcIPZx0JRTrF7C8GfHH47JbzfVW7h035owW8BGzHuXTaoWa/lMXlUCLg5uU7UI9+AgL+ci0
-	kUo68D+FMqJ6tW5hSnyAc8TDgAdDOgWVYWZNl9uiu1JpfDYY5+0F7zKRN2ZSKabEIQuhNMREcOMUl
-	4jhXFn+UZy0CtSsRUfCCXW7C3Sy7UMq6tpB3Hx3HUAmAr23t7nNtmiXroHHe52ux9aVdKrQIi38Gu
-	y4NIehvA==;
-Received: from [148.251.105.195] (helo=bali.collaboradmins.com)
-	by desiato.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPIlW-0000000E4nc-3on3;
-	Tue, 19 May 2026 11:37:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1779190642;
-	bh=P71i5LOBOPL4Hw9EeBymlq0Uf0mmQClWsPDyQMD6YBw=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=lmkJMfMFv3KpVtRpcOyjXSIVDVhu6eCaJRIpW91cYOFDTqtTZIC2c9C+1C1oJMtSU
-	 dnXMaW6ng5tUAkAskq35eqxUC1O+6hNTVv3ZEfCXQD0BDsa2/0uZpsUEzq1Esv2qxZ
-	 615G/Hj4eMOGF4pB1h2Vu6Cygfef+Ypql4Qe2tp3asoMM20dltJ83aK9xDrDpdNjbM
-	 6iR+0qbuawQlElj596VtUO+CgXYXrOMvfkA6dJV2s8GSWcHzzz4OXdvKMqCzrC7oIp
-	 KFu7AEHGP5uoXhH8VP+npLTMz3B87ETrX4Qo41jOb8UOqcWeFMJeXt7HLLVpLm8ybE
-	 aDrFawFNR4TbQ==
-Received: from fedora (unknown [100.64.0.11])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bbrezillon)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4C28B17E1305;
-	Tue, 19 May 2026 13:37:21 +0200 (CEST)
-Date: Tue, 19 May 2026 13:37:18 +0200
-From: Boris Brezillon <boris.brezillon@collabora.com>
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Chia-I Wu <olvaffe@gmail.com>, Liviu Dudau <liviu.dudau@arm.com>, Marcin
- =?UTF-8?B?xZpsdXNhcno=?= <marcin.slusarz@arm.com>, Ketil Johnsen
- <ketil.johnsen@arm.com>, David Airlie <airlied@gmail.com>, Simona Vetter
- <simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, Jonathan Corbet <corbet@lwn.net>,
- Shuah Khan <skhan@linuxfoundation.org>, Sumit Semwal
- <sumit.semwal@linaro.org>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>,
- John Stultz <jstultz@google.com>, "T.J. Mercier" <tjmercier@google.com>,
- Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>, Steven Price
- <steven.price@arm.com>, Daniel Almeida <daniel.almeida@collabora.com>,
- Alice Ryhl <aliceryhl@google.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Florent Tomasin <florent.tomasin@arm.com>, nd@arm.com
-Subject: Re: [Linaro-mm-sig] Re: [PATCH 4/8] drm/panthor: Add support for
- protected memory allocation in panthor
-Message-ID: <20260519133718.373d6070@fedora>
-In-Reply-To: <20260519-loutish-beautiful-trogon-67453f@houat>
-References: <20260505140516.1372388-1-ketil.johnsen@arm.com>
-	<20260505140516.1372388-5-ketil.johnsen@arm.com>
-	<20260505181523.49a3d85c@fedora>
-	<afxVIuVVPisBQ9p_@e129842.arm.com>
-	<20260507135356.5428d50d@fedora>
-	<agMvb_jeRsO7tSS-@e142607>
-	<20260512161111.0cb7000e@fedora>
-	<agNJasayW8VCHTiU@e142607>
-	<CAPaKu7QC7FdjL6m_OSb+E5aYKs6bmT-9DAHc5PC=XctCmRph2Q@mail.gmail.com>
-	<20260518091650.5a7a4f4a@fedora>
-	<20260519-loutish-beautiful-trogon-67453f@houat>
-Organization: Collabora
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
+	id 1wPJVS-00000001SuH-1fNH
+	for linux-mediatek@lists.infradead.org;
+	Tue, 19 May 2026 12:25:07 +0000
+Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-5a8d1f43432so6399152e87.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 19 May 2026 05:25:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1779193504; cv=none;
+        d=google.com; s=arc-20240605;
+        b=U0G1eU54WuDT4oY2Rpt+3J7bhvcHcZ8OU37XpGDgmlFhW8wkq5TqKVyzhfQHM5iAmU
+         2V+4jxmdZ9XuqI07ZpeUvTil7eHBg/gHo2H2UXbNSDGgNCZn/stYTUPR1+m3BPoUAgfn
+         K2aACSxJ39JUNj/OF2MKhwIPZRQdyWp3ltwv9KG123Ra0/5Lh3PaunofFqz56/M5J1pk
+         iQ8VExgcXSR1lhZMpRbTGgQEhQdUdREr2N8XJfIjAOQp6GRwhtk7ShjHmM2NlIJIBK7R
+         5ac3ih5WxYg5CZh3yLAlkklFImFMcDbYNRQZ1qJYZGqvza0ynLFAXdTMcHeOFRL6dtfE
+         By5A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=8y5pq/3tUQo0gg+N0tZskaVB8fdmoWJdJrd4o2r5SVo=;
+        fh=brGsXQJGAhsdCewyGUoJ3qtIw8CdUQc89Ch8hoBY6p8=;
+        b=lgKJfxYgjbNVqpcUggLwYNSXhMsOhF+nYNxeB+IrDhwFxiHm22bdmhsiDzbiYxM0ll
+         nA1915Oqhoc1a2i0dIFdNq4fLNm9z8ZXiBwYs6nhGOMYNi8lPjtSQgbTr4ZOS38q5lfp
+         dRXkVpcjwJnEGxJPaLRiaFBabEzIEjorPprhK52n+PmzWaFZWuEEOThxYoSF/Q1Ki/lS
+         wdVVb2EcaANTb/JdZ819GdlR5V6eJkDCjxDIjmRsOF9bqOsyQYTuguy7tHWZKvlzyGFI
+         kfSmEWSs6Uk5p0dJg7EA599G1Ag9fl9FB5sjx0xNOq6QAxfW0jAIC2yTU8JHhGJoRF9n
+         wdtw==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1779193504; x=1779798304; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=8y5pq/3tUQo0gg+N0tZskaVB8fdmoWJdJrd4o2r5SVo=;
+        b=RzJkQbK/obcwG2IOqjiZ315XU5PCL1hrsEDG0oMApwmtkkPNlajsI6QHNLw1V0Ukss
+         ICrEr8aCGVSdhpyaZzO0uIyKZ0v3VcIYWL53W4SboGPdifUt/bnbqszUePmE2DnFceSs
+         gLHDvaLfITzpMieDIgZS6aOtFESJ7zREEbGRkhRMo7HqGvAsOh3mrHdnHfqQCJu0OLUM
+         d9vyBKuLKCnQgtMmkOF71yE3zucYAYB2AwS+lGostEoFHc1bzzOBQFqwBe99tTRbvxb7
+         ScM6Nliq1tXC+DZuOPxaAcIr1TbBp90/RuSxhsCorokZZZKoVHmLpkMCiSmP5jpHZofp
+         SoQQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1779193504; x=1779798304;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=8y5pq/3tUQo0gg+N0tZskaVB8fdmoWJdJrd4o2r5SVo=;
+        b=oyKm/5GGwg+cCa5ij0NVNc5PkSpdsVOg9zoc/aWXmrLd/3bNRgq3fw8TAheGOoWXgf
+         V0/TY+PPzSwuyOaB22cmA0QQ4yLlnutils+3gbobGXpNQLBqxWksPdA8PgVE0VlkwnNf
+         5Zxn/JDGY0OwweLrN5GIGSolXvnvg94s/wvwG3hbrR7vSocD19nOLx4FP7vMx/yU+bt3
+         8tNzrUOJWfnDlq2Y67n+y7zf1wbuOKHptLCg6tRIzViOt9HZhJNhhWTfXtBte9As/ntB
+         VxRDC83WAnSe5iruJix/rrmM7c/dW4V9CPfurNsEXOzoTRpAphYUuhot99HhA2jocACJ
+         j0Iw==
+X-Forwarded-Encrypted: i=1; AFNElJ9RKv6Zna8DoYjmEHht8vjYAQuW2R2V0tUuALtE0l5YpMe1C//TljAR9LCqkpsDuAdEb4og508w83yTEPeX1Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwrlkiPXNqiE9IVTSSFRp9iXaXimbPRGzz+zBlOtc1PVMWcQShY
+	8gM8E0fmxWaIDPXh3OWW2014BaQVdU3Wg52WuBTjNyxFHEYShsGsbi/WBjSep9nksxZOLtFR2Jp
+	wwEvT5DZBQVq4RfMElp1e+6ciDFwlr4o=
+X-Gm-Gg: Acq92OHutZ5Q+pEL1k2wd43WsbhIX3DIVl3JoW+da7GeglTnWrwRavt/fBSEVSl7k4m
+	l+zgSDN95cWx3tA1v/HGJ61x6CVhn6XeZSemuX0OxrwwN4U6EH83/ESXy0i1hInqTWIslhPLn9A
+	DeTcDOiTj0SpxuLrkwMV/5vvm0QQTX7jLSOMSgK1KK/YAdUkOoyIJ3zZXIzf9U+/sLeE67nko6q
+	QFU1eJfdlyKJQqNH0ESKve9vLvHbG7slNdk5gB3K9T5sZaiaOF6UZvRYWdVRyTeLTtr2762tWGQ
+	XT2d+6M=
+X-Received: by 2002:a05:6512:a85:b0:5a8:6cab:4866 with SMTP id
+ 2adb3069b0e04-5aa0e74a9b4mr5964361e87.41.1779193503535; Tue, 19 May 2026
+ 05:25:03 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+References: <5ecac6a9b7d29526e8438dea105b58f5487c93aa.1778521232.git.ryder.lee@mediatek.com>
+ <agdJ1EtZjjWh2R1h@lore-desk> <CAHoxojJX2BRRTLMuM_QcJqMMmshxS4EAwrB1VjU3rsZ+0k2PAg@mail.gmail.com>
+ <agsGiHKH6ly1afaf@lore-desk> <CAHoxojKeXCCnJoO7yBBmTM9euiTf38orujOhOK00X8bb3ctWuA@mail.gmail.com>
+In-Reply-To: <CAHoxojKeXCCnJoO7yBBmTM9euiTf38orujOhOK00X8bb3ctWuA@mail.gmail.com>
+From: Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>
+Date: Tue, 19 May 2026 14:24:52 +0200
+X-Gm-Features: AVHnY4KaoxlMsOnP7ZY50hh_a8dZdUJo8i7PBx8_p8ryKTV2m-BiT8h1mMrMaXk
+Message-ID: <CAA2SeNJXv+8QO6zEOF=qB3wVCdEoSqx6fftp1i=aB-DKMFeC=A@mail.gmail.com>
+Subject: Re: [PATCH] wifi: mt76: mt7996: avoid memset overwriting tx_info->control.flags
+To: Roy Luo <roychl666@gmail.com>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
+	Felix Fietkau <nbd@nbd.name>, linux-mediatek@lists.infradead.org, 
+	linux-wireless@vger.kernel.org, Shayne Chen <shayne.chen@mediatek.com>, 
+	Roy Luo <roy-ch.luo@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260519_123739_322926_05ABE563 
-X-CRM114-Status: GOOD (  49.06  )
+X-CRM114-CacheID: sfid-20260519_052506_489876_55401F60 
+X-CRM114-Status: GOOD (  21.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,127 +120,182 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 19 May 2026 11:52:13 +0200
-Maxime Ripard <mripard@kernel.org> wrote:
-
-> Hi Boris,
->=20
-> On Mon, May 18, 2026 at 09:16:50AM +0200, Boris Brezillon wrote:
-> > On Wed, 13 May 2026 12:31:32 -0700
-> > Chia-I Wu <olvaffe@gmail.com> wrote:
-> >  =20
-> > > On Tue, May 12, 2026 at 8:39=E2=80=AFAM Liviu Dudau <liviu.dudau@arm.=
-com> wrote: =20
+>
+> On Mon, May 18, 2026 at 5:31=E2=80=AFAM Lorenzo Bianconi <lorenzo@kernel.=
+org> wrote:
+> >
+> > On May 15, Cheng Hao Luo wrote:
+> > > > struct ieee80211_tx_info {
+> > > >         u32                        flags;                /*     0  =
+   4 */
+> > > >         u32                        band:3;               /*     4: =
+0  4 */
+> > > >         u32                        status_data_idr:1;    /*     4: =
+3  4 */
+> > > >         u32                        status_data:13;       /*     4: =
+4  4 */
+> > > >         u32                        hw_queue:4;           /*     4:1=
+7  4 */
+> > > >         u32                        tx_time_est:10;       /*     4:2=
+1  4 */
 > > > >
-> > > > On Tue, May 12, 2026 at 04:11:11PM +0200, Boris Brezillon wrote:   =
-=20
-> > > > > On Tue, 12 May 2026 14:47:27 +0100
-> > > > > Liviu Dudau <liviu.dudau@arm.com> wrote:
-> > > > >   =20
-> > > > > > On Thu, May 07, 2026 at 01:53:56PM +0200, Boris Brezillon wrote=
-:   =20
-> > > > > > > On Thu, 7 May 2026 11:02:26 +0200
-> > > > > > > Marcin =C5=9Alusarz <marcin.slusarz@arm.com> wrote:
-> > > > > > >   =20
-> > > > > > > > On Tue, May 05, 2026 at 06:15:23PM +0200, Boris Brezillon w=
-rote:   =20
-> > > > > > > > > > @@ -277,9 +286,21 @@ int panthor_device_init(struct pan=
-thor_device *ptdev)
-> > > > > > > > > >                     return ret;
-> > > > > > > > > >     }
-> > > > > > > > > >
-> > > > > > > > > > +   /* If a protected heap name is specified but not fo=
-und, defer the probe until created */
-> > > > > > > > > > +   if (protected_heap_name && strlen(protected_heap_na=
-me)) {   =20
-> > > > > > > > >
-> > > > > > > > > Do we really need this strlen() > 0? Won't dma_heap_find(=
-) fail is the
-> > > > > > > > > name is "" already?   =20
-> > > > > > > >
-> > > > > > > > If dma_heap_find() will fail, then the whole probe with fai=
-l too.
-> > > > > > > > This check prevents that.   =20
-> > > > > > >
-> > > > > > > Yeah, that's also a questionable design choice. I mean, we can
-> > > > > > > currently probe and boot the FW even though we never setup the
-> > > > > > > protected FW sections, so why should we defer the probe here?=
- Can't we
-> > > > > > > just retry the next time a group with the protected bit is cr=
-eated and
-> > > > > > > fail if we can find a protected heap?   =20
-> > > > > >
-> > > > > > The problem we have with the current firmware is that it does a=
- number of setup steps at "boot"
-> > > > > > time only. One of the steps is preparing its internal structure=
-s for when it enters protected
-> > > > > > mode and it stores them in the buffer passed in at firmware loa=
-ding. We cannot later run the
-> > > > > > process when we have a group with protected mode set.   =20
-> > > > >
-> > > > > No, but we can force a full/slow reset and have that thing
-> > > > > re-initialized, can't we? I mean, that's basically what we do whe=
-n a
-> > > > > fast reset fails: we re-initialize all the sections and reset aga=
-in, at
-> > > > > which point the FW should start from a fresh state, and be able to
-> > > > > properly initialize the protected-related stuff if protected sect=
-ions
-> > > > > are populated. Am I missing something?   =20
+> > > >         /* XXX 1 bit hole, try to pack */
 > > > >
-> > > > Right, we can do that. For some reason I keep associating the reset=
- with the
-> > > > error handling and not with "normal" operations.   =20
-> > > I kind of hope we end up with either
-> > >=20
-> > >  - panthor knows the exact heap to use and fails with EPROBE_DEFER if
-> > > the heap is missing, or
-> > >  - panthor gets a dma-buf from userspace and does the full reset
-> > >    - userspace also needs to provide a dma-buf for each protected
-> > > group for the suspend buffer
-> > >=20
-> > > than something in-between. The latter is more ad-hoc and basically
-> > > kicks the issue to the userspace. =20
-> >=20
-> > Indeed, the second option is more ad-hoc, but when you think about it,
-> > userspace has to have this knowledge, because it needs to know the
-> > dma-heap to use for buffer allocation that cross a device boundary
-> > anyway. Think about frames produced by a video decoder, and composited
-> > by the GPU into a protected scanout buffer that's passed to the KMS
-> > device. Why would the GPU driver be source of truth when it comes to
-> > choosing the heap to use to allocate protected buffers for the video
-> > decoder or those used for the display? =20
->=20
-> Just fyi, the trend is to go to devices listing the heaps userspace
-> should allocate from
+> > > >         union {
+> > > >                 struct {
+> > > >                         union {
+> > > >                                 struct {
+> > > >                                         struct ieee80211_tx_rate ra=
+tes[4]; /*     8    12 */
+> > > >                                         s8     rts_cts_rate_idx; /*=
+    20     1 */
+> > > >                                         u8     use_rts:1; /*    21:=
+ 0  1 */
+> > > >                                         u8     use_cts_prot:1; /*  =
+  21: 1  1 */
+> > > >                                         u8     short_preamble:1; /*=
+    21: 2  1 */
+> > > >                                         u8     skip_table:1; /*    =
+21: 3  1 */
+> > > >                                         u8     antennas:2; /*    21=
+: 4  1 */
+> > > >                                 };                       /*     8  =
+  14 */
+> > > >                                 long unsigned int jiffies; /*     8=
+     8 */
+> > > >                         };                               /*     8  =
+  16 */
+> > > >                         struct ieee80211_vif * vif;      /*    24  =
+   8 */
+> > > >                         struct ieee80211_key_conf * hw_key; /*    3=
+2     8 */
+> > > >                         u32        flags;                /*    40  =
+   4 */
+> > > >                         codel_time_t enqueue_time;       /*    44  =
+   4 */
+> > > >                 } control;                               /*     8  =
+  40 */
+> > > >                 struct {
+> > > >                         u64        cookie;               /*     8  =
+   8 */
+> > > >                 } ack;                                   /*     8  =
+   8 */
+> > > >                 struct {
+> > > >                         struct ieee80211_tx_rate rates[4]; /*     8=
+    12 */
+> > > >                         s32        ack_signal;           /*    20  =
+   4 */
+> > > >                         u8         ampdu_ack_len;        /*    24  =
+   1 */
+> > > >                         u8         ampdu_len;            /*    25  =
+   1 */
+> > > >                         u8         antenna;              /*    26  =
+   1 */
+> > > >                         u8         pad;                  /*    27  =
+   1 */
+> > > >                         u16        tx_time;              /*    28  =
+   2 */
+> > > >                         u8         flags;                /*    30  =
+   1 */
+> > > >                         u8         pad2;                 /*    31  =
+   1 */
+> > > >                         void *     status_driver_data[2]; /*    32 =
+   16 */
+> > > >                 } status;                                /*     8  =
+  40 */
+> > > >                 struct {
+> > > >                         struct ieee80211_tx_rate driver_rates[4]; /=
+*     8    12 */
+> > > >                         u8         pad[4];               /*    20  =
+   4 */
+> > > >                         void *     rate_driver_data[3];  /*    24  =
+  24 */
+> > > >                 };                                       /*     8  =
+  40 */
+> > > >                 void *             driver_data[5];       /*     8  =
+  40 */
+> > > >         };                                               /*     8  =
+  40 */
+> > > >
+> > > >         /* size: 48, cachelines: 1, members: 7 */
+> > > >         /* sum members: 44 */
+> > > >         /* sum bitfield members: 31 bits, bit holes: 1, sum bit hol=
+es: 1 bits */
+> > > >         /* last cacheline: 48 bytes */
+> > > > };
+> > > >
+> > > > According to pahole, the size of the control inner union is actuall=
+y 16 bytes
+> > > > since the compiler adds 2 bytes of padding. Since mt76_tx_status_sk=
+b_add()
+> > > > meset to 0 just mt76_tx_cb size (that is 16 bytes) I can't see how
+> > > > control.flags is overwritten. Am I missing something?
+> > > >
+> > > > struct mt76_tx_cb {
+> > > >         long unsigned int          jiffies;              /*     0  =
+   8 */
+> > > >         u16                        wcid;                 /*     8  =
+   2 */
+> > > >         u8                         pktid;                /*    10  =
+   1 */
+> > > >         u8                         flags;                /*    11  =
+   1 */
+> > > >
+> > > >         /* size: 16, cachelines: 1, members: 4 */
+> > > >         /* padding: 4 */
+> > > >         /* last cacheline: 16 bytes */
+> > > > };
+> > >
+> > > Hi Lorenzo,
+> > >
+> > > The mt76_tx_cb is placed at status.status_driver_data (offset 32).
+> > > It overlaps with hw_key, flags and enqueue_time in the control union.
+> > >
+> > > static inline struct mt76_tx_cb *mt76_tx_skb_cb(struct sk_buff *skb)
+> > > {
+> > > BUILD_BUG_ON(sizeof(struct mt76_tx_cb) >
+> > >     sizeof(IEEE80211_SKB_CB(skb)->status.status_driver_data));
+> > > return ((void *)IEEE80211_SKB_CB(skb)->status.status_driver_data);
+> > > }
+> >
+> > Hi Roy,
+> >
+> > I still do not understand since mt76_tx_status_skb_add() sets to 0 just=
+ sizeof
+> > of mt76_tx_cb, that according to pahole is 16 bytes, so it can't overwr=
+ite
+> > hw_key pointer (whose offset respect to the beginning of the control st=
+ruct is
+> > 24, 32 - 8).
+> >
+> > Regards,
+> > Lorenzo
+> >
+> > >
+> > > Regards,
+> > > Roy Luo
+>
+> Hi Lorenzo,
+>
+> The mt76_tx_status_skb_add() memset zero the 16 bytes starting from
+> status.status_driver_data (please see the above inline function shared
+> in my last response) whose offset with respect to the beginning of
+> the control/status union is exactly 24 (32 - 8) instead of 0.
+>
+> Regards,
+> Roy Luo
 
-Devices listing the heaps they are able to import buffers from
-(with the list being different based on the buffer properties, I
-guess) is a good thing. This way the central allocator is in a position
-where it can intersect the devices lists and decide which heap to
-allocate from based on its buffer sharing knowledge.
+Hi Roy,
 
-> and/or using the heaps internally to allocate their
-> buffers,
+I can see the issue now, I was confusing status.status_driver_data
+with
+driver_data. You are right, we have an issue here. However, copying
+all the
+ieee80211_tx_info struct seems a bit overkill, what do you think?
+Moreover, we have the same issue for various chipsets (e.g. mt7925 and
+mt7915).  I guess we should try to find a global solution for the
+problem.
 
-Yes, that too. For internal buffers (especially the device-wide ones,
-like the protected FW sections we were discussing), it makes sense to
-leave that up to the driver.
-
-> so that last part is where we're headed, and feels totally
-> reasonable to me.
-
-Just to be clear, my main concern right now is not the long term plan,
-but how realistic it is to assume we'll have all the DT/dma_heap pieces
-in place in a reasonable amount of time. Looking at the current state
-of affairs (based on this patchset), it feels like we're a long way
-till we can have a robust way of exposing dma_heaps to in-kernel users
-(refcounting, lifetime issues, describing allowed heaps, ensuring heaps
-truly provide buffers with the expected properties, ...). I'm certainly
-not saying these are not valid concerns, but I'd like to have a
-temporary solution to support protected rendering in the meantime...
-
->=20
-> Maxime
-
+Regards,
+Lorenzo
 
