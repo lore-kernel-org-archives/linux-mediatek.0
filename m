@@ -4,108 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41EAACD4851
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2026 04:14:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25FCDCD4F3C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2026 04:32:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=I3Cc6m38oPvcGuBp5AJqGBI+Tkcix4npCtWvX6h14ng=; b=GnSnRS1AfonwwoANc5uCRcOqBx
-	gZfN8FscWdaPSPz+vj78MnilgphihmOzn9bm9gI5uHTh4bEbKZcUFKJg/8YyiF/PslqlTfftJC9Qy
-	dBZ6IWMpFBD7mZeOGNZq/5+rqlKDDrGMr6IKpmUAn7cDNnxxxfCTQ1m4796gTYlyb3G2K7dj5GQjZ
-	8I7zcVcX200itH88p5btFG6TPnSB+2z1yA01jRqKlp8C0z0rIbJ51WOztDyxJ5T8quBtHQbETAEXy
-	PVbqjzHB3nCQvOrfpYAqElLTh0GlKPLYK8FMYzn6t0vvJI+yixTpywxzbG31291PSXdhpI5GB/xR9
-	Eg3UOCnA==;
+	Message-ID:Date:From:MIME-Version:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=LB2eeG1SpolST48Ht8N5ZVmPK5SGJL8UVYCuIxMFohc=; b=jyfALn5cvFXD/1jB4VMSFCjMKj
+	nkYGCoo+ue5p4SIB3cuxBR/AYDo1qb8ywrt6aKEiSlyNwDbsORu1Q+Se0zPVag7w2UpB0RfvPNF1m
+	rssDScTRSGxQyXgiONQKJBJGfgaAWlIZQYZRNyj7NVCR7XVdZdCjTs5EJmg2fy6HDdq07rGkK88sD
+	NVz1o8fL+Urh5ptNR1NzIEnDyDu5NVsniyMdoQu9Dc9H7LK4QfqRBoWTZY2SdSMwkxoxIbjPTcQas
+	Z1+WXQ65JLSSQLsByFJOS0CEY7e93G2Thml7LsnEjtNdurXLAPWEkZpjeU2d9E03XY3/qk8jPZ5TM
+	7p1RNUVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPBqk-000000004tt-1XYI;
-	Tue, 19 May 2026 04:14:34 +0000
-Received: from mail-yx1-xb129.google.com ([2607:f8b0:4864:20::b129])
+	id 1wPC7a-000000006v5-1xSL;
+	Tue, 19 May 2026 04:31:58 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPBqh-000000004sx-42zz
+	id 1wPC7Y-000000006u2-2H7e
 	for linux-mediatek@lists.infradead.org;
-	Tue, 19 May 2026 04:14:33 +0000
-Received: by mail-yx1-xb129.google.com with SMTP id 956f58d0204a3-651d6347a69so4649013d50.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 18 May 2026 21:14:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779164071; cv=none;
+	Tue, 19 May 2026 04:31:57 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-4891e5b9c1fso25135965e9.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 18 May 2026 21:31:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1779165114; cv=none;
         d=google.com; s=arc-20240605;
-        b=FmGEiFzoEY684ReC6YH3eaFfwPJs7c0OG5r0H+WqhwvaZYYMqi6TGWTLzpatSJ/gre
-         Kx/6UcbF2QaBwCTdNUXtSS/0SuaXxyGoHvt+McXSCQEAqumwyzVHDiLyCBCZwtz2kUYT
-         Ah1CdSOm+yPuDE+oymliwa3cFhZezAy5UK8ypmAdTbyXIcuQZnMc7Dn5c2aAKwuVyEj+
-         6+Od0V8iKgDNsRXl0PzL0ajsAF37zfb2pkjwudpEyjsSrmbrlWZdIvv7QL9HPO96HG45
-         LsiNxeMEl+koL0caS0JxxZpvqAdLGkpYF34bQ+1I3zK+ivTftrfLLtKNdJrdJoYu9s+B
-         89Hg==
+        b=HOdh12c7VJTftQSkoOEvBdtJ9rFqMMJOV02y5uUQvUViNSuTwsWN7yPMpBZx/j+rw7
+         XO4T3hTAs2uYYQZjmLFxu3EpRhShJ+SpJbZw2TkD74AsXlqpz68AngD1TZio9Xp8E+Vx
+         bONMpmo1/3o3KAd+TlMmTLpKEayl29Ec7fw1pVXVaivIpO46n8cJyaCfqtCyiiI3FU5h
+         zJEFOADah5+AqCKa644Z1YUURTWM2ehbuwhT8S7gYO4sgeituMuLE3ZFcjbp/ESyoP3B
+         dTWi0nDj0fwlzEjgj8ML8NMOGH1UZmKm3KG6WSfsL865LKoWMg5nmcFlM8l/xH3gmtSX
+         es7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=I3Cc6m38oPvcGuBp5AJqGBI+Tkcix4npCtWvX6h14ng=;
-        fh=NccWK3iX63DOEu00JcpzYY9mhWH/Z9zRlLrR/xqdRR4=;
-        b=Sgn6vT8eEEFZLRVLMdgQn8f1zhig3d9XeBtwi9CSBgZD3UQiPTUg1WjkDikJ6Ky/It
-         yH9SQ8mdeJKz+w4mbzapxBCbvZHIPCRWs6/L1ylf2oF7etqt+7isl1MQHsbre79Udgnf
-         6UIWHDlmz0gKQlv6T0Aq9NFsxcUPMomacW1urQ42CRz9RDpgGa14pcz6CvK3Y+fVU+8C
-         gzVZreQTNLVgVQtBxdnJ35qL8skTNMBLv4eix21EOwMqIjsjp79zqJLXTrPjobZ01u3t
-         kmKJi2ky/5gghWIl6ahH2XNj4SbmmUoKKNSytislOKkkscO9WSFvzTMjx+V37+daXJal
-         DQJA==;
+        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=LB2eeG1SpolST48Ht8N5ZVmPK5SGJL8UVYCuIxMFohc=;
+        fh=1f6fPHRL/+FMFWxkI4cMYQVmaPiKFqQv9Srug7z8r7E=;
+        b=bj83+MYNTsDbi+aU92A8MKAj2I3gh/LrEBifkCYI9s1ZGU+VOILEqXwW3KM8yqUX1q
+         FDrmcExQxu0BZxD80Jz8Um4DyGgiui9r36KLT7ZNZbsUIWaKnKduGUM8PJMqKFnF1PWr
+         US9ryqvhM3wIHvp+ainch6iXb6MVHTxdHsuYH/CQnKfGhQ6P5ETzpiYUhQA4L37IXYdm
+         LFs190wff/1mfxUOi3DYTFt7FxQmkjjX2oqAnPL06HY3nT+wUg2LTa3kQdzVRtVXzfOY
+         qsZ1K5s/s9GXQkG0UodKTbLvevVtG+VwBAvyU8dtbaF/E3hwXu/DNI8299W5NVntgYkZ
+         mWyg==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1779164071; x=1779768871; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=I3Cc6m38oPvcGuBp5AJqGBI+Tkcix4npCtWvX6h14ng=;
-        b=bklqKjZJTJGeIKG4coSorCVA8TEZAfd9QaU+idJ2MGtNfFN+8+AvUmO05snSO/PR/i
-         ht0UmdB+52k3zp3/wSnfyETv2F3AhvkT+0pucLoViJidmPgnl1H+FM3xluaJJhQ7VQq7
-         DJYP7EbbztgOt/hC3gRh29/Dv3gNyHJF0wQmgtgFEf9PRNoA5Je9zVXiQ3LTgzBiFKbZ
-         4tSA2UrD59VyiEC/u04c6xsOdu/9vu76eYYIiYBcd3uhsSg7/J8/Az92/rUMj1lDtIG1
-         /wkAlgeL22I3L0T7s0Fa9O7Pj8RMBb+JzrMawQoHPi9Zl6OjFaKUxZMWTeZxEFFrpa0R
-         pG1w==
+        d=gmail.com; s=20251104; t=1779165114; x=1779769914; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=LB2eeG1SpolST48Ht8N5ZVmPK5SGJL8UVYCuIxMFohc=;
+        b=KKR+y0qyEnCAcMmpNts3x2YbAz/eA6sTg/qTApnxltVnDa1Ct846H1Y2xARHRMpwP5
+         xkb46I9E8ZsJY1X+1IYIV2T5Giaki9I/NcgEk5e6jB2JPB4XYEKXfeYk7Mff6E9/Gy1J
+         uQX8xfMv0Gb7xoSR4zNrZ/ggMiva4gslDQCQoDk2eE/jJBxdRfwArAiGOsxoLOCX/mP/
+         UnbdYvFUtxJHhjBuSUuISyhR0keIigLxWTvhBElbTSPBNkqdO/fO24LZI2oS0Iw/3ujq
+         Vi8ulwFm65+BcEsNGGPOQwfJkyw/cx/PjDhfcvzqb1UENzlXQbniGKwuwcRqtFaRhk61
+         qwrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779164071; x=1779768871;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=I3Cc6m38oPvcGuBp5AJqGBI+Tkcix4npCtWvX6h14ng=;
-        b=dJpnBPC0fj0diO6EO/VXpN2LyLRwdPaXntewEIjUoqd6T3PcaSt0LPGm0DkS4uz1Mx
-         TJNmTdg+dw1VQZfO1l6ABrMXPXXzXkFjviFsjeVv/zTC2Us66Vy+9PBcv+5VFNGqZb9Y
-         tVXqLiY43PqaImQqqP7jJjJPvlcUetOb2BsD3kxnsjB2h9fo79hGzicEx4DWH5kSgBEf
-         WLvwD+ZkXWFIdJXkaqFd20wPiR2p4sWDHTM6tRtm3dqTIyejDummt0ElYgvATM07FtAE
-         uM0VMJ+IKcBm3cfJajuUG6qLP2AF4LhUxorZNSlHLXnnxiG1I7tb34MDWqSC0BwvOy+h
-         8eoA==
-X-Forwarded-Encrypted: i=1; AFNElJ9TxgIVpu9cJr0afZWUPvFBn1wqm4Gxmxa+nAui0rwbiAQoa3RlQ84oCYcVQaT9fLoD0jzHKz2X3TeIIoeR5w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyC+izVcEAPdIxkaxTVAyMKwWA/Sibx1o3LAcZPie9ULXPZQJu8
-	IDmloqbPMlnjg1x2g1aKniAESofjL408DxqufFytYmzGk8KqPTdk73O+eMpPAAEV7RVEaBC7Lv6
-	XMDlKKXW+kxNL+X5M5vRgrr3U1Sge+W0=
-X-Gm-Gg: Acq92OGiFfkmCceZW4m5s96bC8tBrVnE8t1tvMlSn7gTgUJYc1AGF1o3qNjiwJPIU5m
-	ABwwaP4UEayVAY18wYmz7tvT4WPYcXa26M/6bjK1cwa01RzN+mMQemYXoNGjpmZBN39eZPxu9ne
-	4bA0BGIz0YsQpIdQ0+A+zlmbGXqgKOiucoEfK3qyxChp3xoq2ooYfqgi5oeUPyw8wIOypszG2Ul
-	0e+lrBFTSJZcr97xA2fpGxt6ydVeiY4bQZ5z5EA1tViN5dY7L9a0l/PIplZyDkJ5anvEn1CztSE
-	J01Evs9j
-X-Received: by 2002:a05:690e:438d:b0:65e:782e:9df3 with SMTP id
- 956f58d0204a3-65e782ea2bcmr1341256d50.7.1779164070708; Mon, 18 May 2026
- 21:14:30 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1779165114; x=1779769914;
+        h=cc:to:subject:message-id:date:from:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=LB2eeG1SpolST48Ht8N5ZVmPK5SGJL8UVYCuIxMFohc=;
+        b=CosSd1zBtoQ+A/towDukPIBmQyHt62Uzjm7Qw14Sf0zmel8yvcneMhSqrTETE+ZLeN
+         D4fKslBSJSnpMCqR7kuu0TEsObZVge0cAxZTtPyPzXIsaFJqG1QsDrkEs8uvK0KNurNY
+         u35DbGMS4oASJ3mdFgEUsdYnA4sC7sK48p9wMcn8J5xwXnYi2QLBEia9plw5GUT29LG5
+         m5NKS9ojgfQPW5S9AHqHvpEs2Rru4sra4Zounp70S2pCUpo24MzsY2fmo4rWhrU/KLij
+         LoppphSp5zs+DtQB61yiA4582GRDkvPErKlEBk6ejAdK1mx5al7fsU0A1sRVZev9pRu+
+         Wj0g==
+X-Forwarded-Encrypted: i=1; AFNElJ8NyqpzGLPwBOghhuGw2t9edICbtLcY0Ccubqdxh3muTF9EGqP7TcXaEPo4rcKejibyqhgOrEDWDI1RbZsKjQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyv4UEXrNqEX93HSijtwdb3Q05AtOKyYKlaJ5xBaLO6BbHtW2Z6
+	leStKNrgK0CtBbQ9opszczBxa+y/wpvWuBKWqpFmtP1HqZKK+7QZolsPGueBoeqBCfVI7/ZmWB4
+	N+kErlWl4M7ShIHYlFonAo/smkV3EJog=
+X-Gm-Gg: Acq92OEt9SRVksQO4L8s1qy89rIunkynOqshYwO2Ruel+OPUAMDFWRhCJYqnd6NQWtL
+	9wx+lrQ6yIbC5x7biHSuvLds5g9vj9ixSKvHL6xLlXjF355rMp057gUuzXV1oYkuD6ZHIAvROSb
+	559hHFsGjwoGPfrvQ1JIJsCSJb8VMd7FvwEklr5+lyfNqhMvv2hVMOmG86LxFp4GGXbisP6n75v
+	glKPnWgT4zE9vrB7rVhtvcVa2DpfQS6U8IuoSQO/5k9yHBIkOrDuo8se90VFcS2CBtAY4eQNROK
+	YHBwdgvZ66ZmdfQMF4e0
+X-Received: by 2002:a05:600d:10:b0:48f:cfae:b654 with SMTP id
+ 5b1f17b1804b1-48fe60e5537mr217793815e9.1.1779165113908; Mon, 18 May 2026
+ 21:31:53 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260518125500.1000083-1-lgs201920130244@gmail.com> <202605190845.KlMSPp80-lkp@intel.com>
-In-Reply-To: <202605190845.KlMSPp80-lkp@intel.com>
-From: Guangshuo Li <lgs201920130244@gmail.com>
-Date: Tue, 19 May 2026 12:14:18 +0800
-X-Gm-Features: AVHnY4Km_xmIfqiLJD15ZaDQr9lLAh1Ogha024FXgf4YUM6n3JdHCvcB7t1E46k
-Message-ID: <CANUHTR-J7VY4Jx7WVqEpC+Xg2cR_Rnb=gaA_xecyNO9dmFcyew@mail.gmail.com>
-Subject: Re: [PATCH] media: mediatek: mdp: avoid double free on video register failure
-To: kernel test robot <lkp@intel.com>
-Cc: Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, 
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+From: Baley Eccles <baleycod@gmail.com>
+Date: Tue, 19 May 2026 14:31:42 +1000
+X-Gm-Features: AVHnY4Li5nUZrvw8vcm2bYlGMK9IhnqMjGOljLZnXZ-_QnQCztFbvk2LXkdu2tc
+Message-ID: <CADCSNFD0Ut-jJohTQFczjBgaVf=mBrc2rq4hJQncVZpF4bCoxw@mail.gmail.com>
+Subject: [REGRESSION] Bluetooth: MT7922 fails to initialize after "Bluetooth:
+ btmtk: validate WMT event SKB length before struct access"
+To: linux-bluetooth@vger.kernel.org
+Cc: Marcel Holtmann <marcel@holtmann.org>, Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Hans Verkuil <hverkuil@kernel.org>, linux-kernel@vger.kernel.org, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev, 
-	linux-media@vger.kernel.org
+	regressions@lists.linux.dev, stable@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260518_211432_019773_C1267506 
-X-CRM114-Status: GOOD (  19.08  )
+X-CRM114-CacheID: sfid-20260518_213156_595199_D453E3D9 
+X-CRM114-Status: UNSURE (   7.08  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,105 +115,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thanks for the report.
+Subject: [REGRESSION] Bluetooth: MT7922 fails to initialize after
+"Bluetooth: btmtk: validate WMT event SKB length before struct access"
 
-On Tue, 19 May 2026 at 10:13, kernel test robot <lkp@intel.com> wrote:
->
-> Hi Guangshuo,
->
-> kernel test robot noticed the following build errors:
->
-> [auto build test ERROR on linuxtv-media-pending/master]
-> [also build test ERROR on media-tree/master linus/master v7.1-rc4 next-20260518]
-> [If your patch is applied to the wrong git tree, kindly drop us a note.
-> And when submitting patch, we suggest to use '--base' as documented in
-> https://git-scm.com/docs/git-format-patch#_base_tree_information]
->
-> url:    https://github.com/intel-lab-lkp/linux/commits/Guangshuo-Li/media-mediatek-mdp-avoid-double-free-on-video-register-failure/20260518-211648
-> base:   https://git.linuxtv.org/media-ci/media-pending.git master
-> patch link:    https://lore.kernel.org/r/20260518125500.1000083-1-lgs201920130244%40gmail.com
-> patch subject: [PATCH] media: mediatek: mdp: avoid double free on video register failure
-> config: hexagon-allmodconfig (https://download.01.org/0day-ci/archive/20260519/202605190845.KlMSPp80-lkp@intel.com/config)
-> compiler: clang version 17.0.6 (https://github.com/llvm/llvm-project 6009708b4367171ccdbf4b5905cb6a803753fe18)
-> reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260519/202605190845.KlMSPp80-lkp@intel.com/reproduce)
->
-> If you fix the issue in a separate patch/commit (i.e. not just a new version of
-> the same patch/commit), kindly add following tags
-> | Reported-by: kernel test robot <lkp@intel.com>
-> | Closes: https://lore.kernel.org/oe-kbuild-all/202605190845.KlMSPp80-lkp@intel.com/
->
-> All errors (new ones prefixed by >>):
->
-> >> drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c:1217:33: error: expected ';' after expression
->     1217 |         video_device_release(mdp->vdev)
->          |                                        ^
->          |                                        ;
->    1 error generated.
->
->
-> vim +1217 drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c
->
->   1172
->   1173  int mtk_mdp_register_m2m_device(struct mtk_mdp_dev *mdp)
->   1174  {
->   1175          struct device *dev = &mdp->pdev->dev;
->   1176          int ret;
->   1177
->   1178          mdp->variant = &mtk_mdp_default_variant;
->   1179          mdp->vdev = video_device_alloc();
->   1180          if (!mdp->vdev) {
->   1181                  dev_err(dev, "failed to allocate video device\n");
->   1182                  ret = -ENOMEM;
->   1183                  goto err_video_alloc;
->   1184          }
->   1185          mdp->vdev->device_caps = V4L2_CAP_VIDEO_M2M_MPLANE | V4L2_CAP_STREAMING;
->   1186          mdp->vdev->fops = &mtk_mdp_m2m_fops;
->   1187          mdp->vdev->ioctl_ops = &mtk_mdp_m2m_ioctl_ops;
->   1188          mdp->vdev->release = video_device_release_empty;
->   1189          mdp->vdev->lock = &mdp->lock;
->   1190          mdp->vdev->vfl_dir = VFL_DIR_M2M;
->   1191          mdp->vdev->v4l2_dev = &mdp->v4l2_dev;
->   1192          snprintf(mdp->vdev->name, sizeof(mdp->vdev->name), "%s:m2m",
->   1193                   MTK_MDP_MODULE_NAME);
->   1194          video_set_drvdata(mdp->vdev, mdp);
->   1195
->   1196          mdp->m2m_dev = v4l2_m2m_init(&mtk_mdp_m2m_ops);
->   1197          if (IS_ERR(mdp->m2m_dev)) {
->   1198                  dev_err(dev, "failed to initialize v4l2-m2m device\n");
->   1199                  ret = PTR_ERR(mdp->m2m_dev);
->   1200                  goto err_m2m_init;
->   1201          }
->   1202
->   1203          ret = video_register_device(mdp->vdev, VFL_TYPE_VIDEO, 2);
->   1204          if (ret) {
->   1205                  dev_err(dev, "failed to register video device\n");
->   1206                  goto err_vdev_register;
->   1207          }
->   1208          mdp->vdev->release = video_device_release;
->   1209
->   1210          v4l2_info(&mdp->v4l2_dev, "driver registered as /dev/video%d",
->   1211                    mdp->vdev->num);
->   1212          return 0;
->   1213
->   1214  err_vdev_register:
->   1215          v4l2_m2m_release(mdp->m2m_dev);
->   1216  err_m2m_init:
-> > 1217          video_device_release(mdp->vdev)
->   1218          mdp->vdev = NULL;
->   1219  err_video_alloc:
->   1220
->   1221          return ret;
->   1222  }
->   1223
->
-> --
-> 0-DAY CI Kernel Test Service
-> https://github.com/intel/lkp-tests/wiki
+Hi all,
 
-This build failure was caused by my oversight. I missed the semicolon after
-video_device_release(mdp->vdev).
+I have experienced and looked into a regression on a MediaTek MT7922
+adapter. Bluetooth works on v6.18.29, fails on v6.18.30, and reverting
+the bisected commit fixes it.
 
-I will send a v2 to fix this issue.
+Hardware:
+MEDIATEK Corp. MT7922 802.11ax PCI Express Wireless Network Adapter [14c3:7922]
+Subsystem: AzureWave ASUS PCE-AXE59BT [1a3b:5300]
 
-Sorry for the noise.
+Good kernel:
+6.18.29-p2-gentoo-dist
+Upstream base: v6.18.29
+
+Bad kernel:
+6.18.30-p1-gentoo-dist
+Upstream base: v6.18.30
+
+Failure:
+bluetoothctl list prints nothing / no default controller is available.
+
+Bad dmesg:
+Bluetooth: hci0: HW/SW Version: 0x008a008a, Build Time: 20260224103448
+Bluetooth: hci0: Failed to send wmt func ctrl (-22)
+Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is
+advertised, but not supported.
+
+Good dmesg:
+Bluetooth: hci0: HW/SW Version: 0x008a008a, Build Time: 20260224103448
+Bluetooth: hci0: Device setup in 129909 usecs
+Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is
+advertised, but not supported.
+Bluetooth: hci0: AOSP extensions version v1.00
+Bluetooth: hci0: AOSP quality report is supported
+Bluetooth: MGMT ver 1.23
+
+Firmware:
+/lib/firmware/mediatek/BT_RAM_CODE_MT7922_1_1_hdr.bin
+/lib/firmware/mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+/lib/firmware/mediatek/WIFI_RAM_CODE_MT7922_1.bin
+
+Bisect result:
+624fb79dadc1b65757986a9d0fdde5c0cf3fe179 is the first bad commit
+
+Bluetooth: btmtk: validate WMT event SKB length before struct access
+
+This is a stable backport of upstream commit:
+634a4408c0615c523cf7531790f4f14a422b9206
+
+Reverting 624fb79dadc1b65757986a9d0fdde5c0cf3fe179 on top of v6.18.30
+fixes the issue and Bluetooth works again.
+
+Please let me know if there is any additional logging or testing I can provide.
+
+#regzbot introduced: 624fb79dadc1b65757986a9d0fdde5c0cf3fe179
+
+Cheers,
+Baley
 
