@@ -4,103 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25FCDCD4F3C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2026 04:32:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90D40CD4F3C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2026 05:06:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:MIME-Version:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=LB2eeG1SpolST48Ht8N5ZVmPK5SGJL8UVYCuIxMFohc=; b=jyfALn5cvFXD/1jB4VMSFCjMKj
-	nkYGCoo+ue5p4SIB3cuxBR/AYDo1qb8ywrt6aKEiSlyNwDbsORu1Q+Se0zPVag7w2UpB0RfvPNF1m
-	rssDScTRSGxQyXgiONQKJBJGfgaAWlIZQYZRNyj7NVCR7XVdZdCjTs5EJmg2fy6HDdq07rGkK88sD
-	NVz1o8fL+Urh5ptNR1NzIEnDyDu5NVsniyMdoQu9Dc9H7LK4QfqRBoWTZY2SdSMwkxoxIbjPTcQas
-	Z1+WXQ65JLSSQLsByFJOS0CEY7e93G2Thml7LsnEjtNdurXLAPWEkZpjeU2d9E03XY3/qk8jPZ5TM
-	7p1RNUVQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=keJmUZjoyO/8+pbaUb2frhmihBbMJycqg7kaO6zEpL4=; b=qyZ/7jQfpVS98h5NmBSHzlnkfc
+	O79dpUwhekOcW/O4nB1OTq2MFVK90J4Ckrqdw+ArGh0yjsW5J3kBGBX0aWNcPNsW47dtK1lDaibDx
+	ghwXEZJGGt7tQT4R7bZPEWn57308s09ZhW0OJHl5i596f8ZOajFSKC0vjomyXDAP2LE8b+lzPBi00
+	C2ucZGSIA0YFPMEJhclwUEgwobJMMGeo/S9iQUwPxCpbJzfyKbCE0qkYEgvjknPW5z7jOio22HX7i
+	hUFLD+BMc3j1nyNwZboHts3toD+IPihzyCM7/rCP88R+N0tfz725qObwSf8i5EtTuu7ugCAueL2yy
+	k1g5f9Rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPC7a-000000006v5-1xSL;
-	Tue, 19 May 2026 04:31:58 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1wPCeg-000000009rs-0dbL;
+	Tue, 19 May 2026 05:06:10 +0000
+Received: from relay.yourmailgateway.de ([185.244.194.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPC7Y-000000006u2-2H7e
-	for linux-mediatek@lists.infradead.org;
-	Tue, 19 May 2026 04:31:57 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-4891e5b9c1fso25135965e9.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 18 May 2026 21:31:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779165114; cv=none;
-        d=google.com; s=arc-20240605;
-        b=HOdh12c7VJTftQSkoOEvBdtJ9rFqMMJOV02y5uUQvUViNSuTwsWN7yPMpBZx/j+rw7
-         XO4T3hTAs2uYYQZjmLFxu3EpRhShJ+SpJbZw2TkD74AsXlqpz68AngD1TZio9Xp8E+Vx
-         bONMpmo1/3o3KAd+TlMmTLpKEayl29Ec7fw1pVXVaivIpO46n8cJyaCfqtCyiiI3FU5h
-         zJEFOADah5+AqCKa644Z1YUURTWM2ehbuwhT8S7gYO4sgeituMuLE3ZFcjbp/ESyoP3B
-         dTWi0nDj0fwlzEjgj8ML8NMOGH1UZmKm3KG6WSfsL865LKoWMg5nmcFlM8l/xH3gmtSX
-         es7A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=LB2eeG1SpolST48Ht8N5ZVmPK5SGJL8UVYCuIxMFohc=;
-        fh=1f6fPHRL/+FMFWxkI4cMYQVmaPiKFqQv9Srug7z8r7E=;
-        b=bj83+MYNTsDbi+aU92A8MKAj2I3gh/LrEBifkCYI9s1ZGU+VOILEqXwW3KM8yqUX1q
-         FDrmcExQxu0BZxD80Jz8Um4DyGgiui9r36KLT7ZNZbsUIWaKnKduGUM8PJMqKFnF1PWr
-         US9ryqvhM3wIHvp+ainch6iXb6MVHTxdHsuYH/CQnKfGhQ6P5ETzpiYUhQA4L37IXYdm
-         LFs190wff/1mfxUOi3DYTFt7FxQmkjjX2oqAnPL06HY3nT+wUg2LTa3kQdzVRtVXzfOY
-         qsZ1K5s/s9GXQkG0UodKTbLvevVtG+VwBAvyU8dtbaF/E3hwXu/DNI8299W5NVntgYkZ
-         mWyg==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1779165114; x=1779769914; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=LB2eeG1SpolST48Ht8N5ZVmPK5SGJL8UVYCuIxMFohc=;
-        b=KKR+y0qyEnCAcMmpNts3x2YbAz/eA6sTg/qTApnxltVnDa1Ct846H1Y2xARHRMpwP5
-         xkb46I9E8ZsJY1X+1IYIV2T5Giaki9I/NcgEk5e6jB2JPB4XYEKXfeYk7Mff6E9/Gy1J
-         uQX8xfMv0Gb7xoSR4zNrZ/ggMiva4gslDQCQoDk2eE/jJBxdRfwArAiGOsxoLOCX/mP/
-         UnbdYvFUtxJHhjBuSUuISyhR0keIigLxWTvhBElbTSPBNkqdO/fO24LZI2oS0Iw/3ujq
-         Vi8ulwFm65+BcEsNGGPOQwfJkyw/cx/PjDhfcvzqb1UENzlXQbniGKwuwcRqtFaRhk61
-         qwrA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779165114; x=1779769914;
-        h=cc:to:subject:message-id:date:from:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=LB2eeG1SpolST48Ht8N5ZVmPK5SGJL8UVYCuIxMFohc=;
-        b=CosSd1zBtoQ+A/towDukPIBmQyHt62Uzjm7Qw14Sf0zmel8yvcneMhSqrTETE+ZLeN
-         D4fKslBSJSnpMCqR7kuu0TEsObZVge0cAxZTtPyPzXIsaFJqG1QsDrkEs8uvK0KNurNY
-         u35DbGMS4oASJ3mdFgEUsdYnA4sC7sK48p9wMcn8J5xwXnYi2QLBEia9plw5GUT29LG5
-         m5NKS9ojgfQPW5S9AHqHvpEs2Rru4sra4Zounp70S2pCUpo24MzsY2fmo4rWhrU/KLij
-         LoppphSp5zs+DtQB61yiA4582GRDkvPErKlEBk6ejAdK1mx5al7fsU0A1sRVZev9pRu+
-         Wj0g==
-X-Forwarded-Encrypted: i=1; AFNElJ8NyqpzGLPwBOghhuGw2t9edICbtLcY0Ccubqdxh3muTF9EGqP7TcXaEPo4rcKejibyqhgOrEDWDI1RbZsKjQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yyv4UEXrNqEX93HSijtwdb3Q05AtOKyYKlaJ5xBaLO6BbHtW2Z6
-	leStKNrgK0CtBbQ9opszczBxa+y/wpvWuBKWqpFmtP1HqZKK+7QZolsPGueBoeqBCfVI7/ZmWB4
-	N+kErlWl4M7ShIHYlFonAo/smkV3EJog=
-X-Gm-Gg: Acq92OEt9SRVksQO4L8s1qy89rIunkynOqshYwO2Ruel+OPUAMDFWRhCJYqnd6NQWtL
-	9wx+lrQ6yIbC5x7biHSuvLds5g9vj9ixSKvHL6xLlXjF355rMp057gUuzXV1oYkuD6ZHIAvROSb
-	559hHFsGjwoGPfrvQ1JIJsCSJb8VMd7FvwEklr5+lyfNqhMvv2hVMOmG86LxFp4GGXbisP6n75v
-	glKPnWgT4zE9vrB7rVhtvcVa2DpfQS6U8IuoSQO/5k9yHBIkOrDuo8se90VFcS2CBtAY4eQNROK
-	YHBwdgvZ66ZmdfQMF4e0
-X-Received: by 2002:a05:600d:10:b0:48f:cfae:b654 with SMTP id
- 5b1f17b1804b1-48fe60e5537mr217793815e9.1.1779165113908; Mon, 18 May 2026
- 21:31:53 -0700 (PDT)
+	id 1wPCec-000000009qk-25Hr;
+	Tue, 19 May 2026 05:06:08 +0000
+Received: from relay01-mors.netcup.net (localhost [127.0.0.1])
+	by relay01-mors.netcup.net (Postfix) with ESMTPS id 4gKN0z3wSZz94yW;
+	Tue, 19 May 2026 07:05:55 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=leemhuis.info;
+	s=key2; t=1779167155;
+	bh=FAiCEhzhtFbXPSs7rpt5n/p1t2w9wK7VlAtkJJg+KxY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=K5koFewWjOv2W8vANcfdXTMyEtXNYiUyZ95mUequ8KmkWT+fgzDTFAXrIehrfI23b
+	 tpJMxJXRrvVJ7+xn5vN2JaIrLvqj8VkZRjgBgbIuNdmizmU7cJ/7Hv4VMJquKzpXFA
+	 qtIBP3sZqn/hWy6MGytcy8e0K5GDF/UCrxcuxvicfvI7VCEje9HMTNwevZZC+uy6xI
+	 /F7xPUTaUjgplsY4uSpTCo7RXmzjbxzOAhnD6NDTAh8OIOpu5JYk7prM5kb/RO5gdL
+	 tNDEgc4aRuVXxVkYJSAeOKxO1e/YIndepX0zm5SWrK/trrflexI7bgCDKojglYwwT0
+	 PIqNktQ2AJ3Rg==
+Received: from policy02-mors.netcup.net (unknown [46.38.225.35])
+	by relay01-mors.netcup.net (Postfix) with ESMTPS id 4gKMzw5nYDz7v62;
+	Tue, 19 May 2026 07:05:00 +0200 (CEST)
+Received: from mxe9fb.netcup.net (unknown [10.243.12.53])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by policy02-mors.netcup.net (Postfix) with ESMTPS id 4gKMzw1QcXz8sbH;
+	Tue, 19 May 2026 07:05:00 +0200 (CEST)
+Received: from [IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f] (unknown [IPv6:2a02:8108:8984:1d00:a0cf:1912:4be:477f])
+	by mxe9fb.netcup.net (Postfix) with ESMTPSA id 311F861884;
+	Tue, 19 May 2026 07:04:59 +0200 (CEST)
+Authentication-Results: mxe9fb;
+        spf=pass (sender IP is 2a02:8108:8984:1d00:a0cf:1912:4be:477f) smtp.mailfrom=regressions@leemhuis.info smtp.helo=[IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f]
+Received-SPF: pass (mxe9fb: connection is authenticated)
+Message-ID: <ff4c4ba2-dc26-4b05-87c2-03cc70afdcc5@leemhuis.info>
+Date: Tue, 19 May 2026 07:04:58 +0200
 MIME-Version: 1.0
-From: Baley Eccles <baleycod@gmail.com>
-Date: Tue, 19 May 2026 14:31:42 +1000
-X-Gm-Features: AVHnY4Li5nUZrvw8vcm2bYlGMK9IhnqMjGOljLZnXZ-_QnQCztFbvk2LXkdu2tc
-Message-ID: <CADCSNFD0Ut-jJohTQFczjBgaVf=mBrc2rq4hJQncVZpF4bCoxw@mail.gmail.com>
-Subject: [REGRESSION] Bluetooth: MT7922 fails to initialize after "Bluetooth:
- btmtk: validate WMT event SKB length before struct access"
-To: linux-bluetooth@vger.kernel.org
-Cc: Marcel Holtmann <marcel@holtmann.org>, Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	regressions@lists.linux.dev, stable@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [REGRESSION] Bluetooth: MT7922 fails to initialize after
+ "Bluetooth: btmtk: validate WMT event SKB length before struct access"
+To: Baley Eccles <baleycod@gmail.com>, linux-bluetooth@vger.kernel.org
+Cc: Marcel Holtmann <marcel@holtmann.org>,
+ Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, regressions@lists.linux.dev,
+ stable@vger.kernel.org
+References: <CADCSNFD0Ut-jJohTQFczjBgaVf=mBrc2rq4hJQncVZpF4bCoxw@mail.gmail.com>
+From: Thorsten Leemhuis <regressions@leemhuis.info>
+Content-Language: de-DE, en-US
+In-Reply-To: <CADCSNFD0Ut-jJohTQFczjBgaVf=mBrc2rq4hJQncVZpF4bCoxw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-PPP-Message-ID: <177916709967.849087.9352424421516320279@mxe9fb.netcup.net>
+X-NC-CID: vq9DJS+14lEdcttPEpzaRJbmdMSDWX9ZqxtKYJX+AwMCHyCP/iQ=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260518_213156_595199_D453E3D9 
-X-CRM114-Status: UNSURE (   7.08  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260518_220607_108846_9FAFECA9 
+X-CRM114-Status: GOOD (  14.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,65 +93,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Subject: [REGRESSION] Bluetooth: MT7922 fails to initialize after
-"Bluetooth: btmtk: validate WMT event SKB length before struct access"
+On 5/19/26 06:31, Baley Eccles wrote:
+> Subject: [REGRESSION] Bluetooth: MT7922 fails to initialize after
+> "Bluetooth: btmtk: validate WMT event SKB length before struct access"
+> 
+> Hi all,
+> 
+> I have experienced and looked into a regression on a MediaTek MT7922
+> adapter. Bluetooth works on v6.18.29, fails on v6.18.30, and reverting
+> the bisected commit fixes it.
 
-Hi all,
+Thx for the report, there are quite a few similar ones already; the
+problem is known and the fix (see the link below) should be heading to
+mainline this week and from there go to various stable series.
 
-I have experienced and looked into a regression on a MediaTek MT7922
-adapter. Bluetooth works on v6.18.29, fails on v6.18.30, and reverting
-the bisected commit fixes it.
+Ciao, Thorsten
 
-Hardware:
-MEDIATEK Corp. MT7922 802.11ax PCI Express Wireless Network Adapter [14c3:7922]
-Subsystem: AzureWave ASUS PCE-AXE59BT [1a3b:5300]
+#regzbot dup:
+https://lore.kernel.org/linux-bluetooth/770d36b07311bf88210c187923f243fb9f126f04.1777058551.git.pav@iki.fi/
 
-Good kernel:
-6.18.29-p2-gentoo-dist
-Upstream base: v6.18.29
+> Hardware:
+> MEDIATEK Corp. MT7922 802.11ax PCI Express Wireless Network Adapter [14c3:7922]
+> Subsystem: AzureWave ASUS PCE-AXE59BT [1a3b:5300]
+> 
+> Good kernel:
+> 6.18.29-p2-gentoo-dist
+> Upstream base: v6.18.29
+> 
+> Bad kernel:
+> 6.18.30-p1-gentoo-dist
+> Upstream base: v6.18.30
+> 
+> Failure:
+> bluetoothctl list prints nothing / no default controller is available.
+> 
+> Bad dmesg:
+> Bluetooth: hci0: HW/SW Version: 0x008a008a, Build Time: 20260224103448
+> Bluetooth: hci0: Failed to send wmt func ctrl (-22)
+> Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is
+> advertised, but not supported.
+> 
+> Good dmesg:
+> Bluetooth: hci0: HW/SW Version: 0x008a008a, Build Time: 20260224103448
+> Bluetooth: hci0: Device setup in 129909 usecs
+> Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is
+> advertised, but not supported.
+> Bluetooth: hci0: AOSP extensions version v1.00
+> Bluetooth: hci0: AOSP quality report is supported
+> Bluetooth: MGMT ver 1.23
+> 
+> Firmware:
+> /lib/firmware/mediatek/BT_RAM_CODE_MT7922_1_1_hdr.bin
+> /lib/firmware/mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+> /lib/firmware/mediatek/WIFI_RAM_CODE_MT7922_1.bin
+> 
+> Bisect result:
+> 624fb79dadc1b65757986a9d0fdde5c0cf3fe179 is the first bad commit
+> 
+> Bluetooth: btmtk: validate WMT event SKB length before struct access
+> 
+> This is a stable backport of upstream commit:
+> 634a4408c0615c523cf7531790f4f14a422b9206
+> 
+> Reverting 624fb79dadc1b65757986a9d0fdde5c0cf3fe179 on top of v6.18.30
+> fixes the issue and Bluetooth works again.
+> 
+> Please let me know if there is any additional logging or testing I can provide.
+> 
+> #regzbot introduced: 624fb79dadc1b65757986a9d0fdde5c0cf3fe179
+> 
+> Cheers,
+> Baley
 
-Bad kernel:
-6.18.30-p1-gentoo-dist
-Upstream base: v6.18.30
-
-Failure:
-bluetoothctl list prints nothing / no default controller is available.
-
-Bad dmesg:
-Bluetooth: hci0: HW/SW Version: 0x008a008a, Build Time: 20260224103448
-Bluetooth: hci0: Failed to send wmt func ctrl (-22)
-Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is
-advertised, but not supported.
-
-Good dmesg:
-Bluetooth: hci0: HW/SW Version: 0x008a008a, Build Time: 20260224103448
-Bluetooth: hci0: Device setup in 129909 usecs
-Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is
-advertised, but not supported.
-Bluetooth: hci0: AOSP extensions version v1.00
-Bluetooth: hci0: AOSP quality report is supported
-Bluetooth: MGMT ver 1.23
-
-Firmware:
-/lib/firmware/mediatek/BT_RAM_CODE_MT7922_1_1_hdr.bin
-/lib/firmware/mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
-/lib/firmware/mediatek/WIFI_RAM_CODE_MT7922_1.bin
-
-Bisect result:
-624fb79dadc1b65757986a9d0fdde5c0cf3fe179 is the first bad commit
-
-Bluetooth: btmtk: validate WMT event SKB length before struct access
-
-This is a stable backport of upstream commit:
-634a4408c0615c523cf7531790f4f14a422b9206
-
-Reverting 624fb79dadc1b65757986a9d0fdde5c0cf3fe179 on top of v6.18.30
-fixes the issue and Bluetooth works again.
-
-Please let me know if there is any additional logging or testing I can provide.
-
-#regzbot introduced: 624fb79dadc1b65757986a9d0fdde5c0cf3fe179
-
-Cheers,
-Baley
 
