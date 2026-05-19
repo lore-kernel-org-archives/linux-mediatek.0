@@ -4,68 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA4D4CD4F57
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2026 10:07:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE351CD4F57
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2026 10:53:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qXHsvjCQrWr3rqwFY5ZXhorh2fke7yZbuXuZictrkbY=; b=AB3toPI4D5iIZ7gFM9QVrXwDeJ
-	KxOVj+CdxOYWpjP9oAZPDlMJ0zgo7MHlNAm6z7NqtwlSRecWZABZkfdCnT9+L9Rd9xfTBYEkpXnr1
-	y7g1iaOEKXPnkNHCsEJDdh/stzG9buKkqzN/cznJgwLoVTPfeEeqrnRYg45mvSh4kuec3kVQ5UchN
-	jd6pGOJnwg8hkZDH2rrtRN8PPHkxJ/Rg/c15K6e8yL/gzwO1n+2pdmeJGraXw/ChPERpaPTzi8Q4a
-	5e2VQO5IvoAwyx3qN7ScBr063X7wn1GQm/nSISQis0bJGCn2DdEEtac/84K38WnjyIoNpuAmjL4TA
-	XYRc/FjQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AUFo6hIuf2ZxDrSoEBKNJqzPv5wXEukq1eF4NrWaHmc=; b=RFGiHQHX8sO9Pn8LA3eG0btGry
+	LWZpWI35/ZCR/NNLG0Vl0OJTnPuFMJ40TnGoyXMyyzK55AaJY8foJ/3EbY5XYSArYjdvDo/rzQrku
+	sJEqxAgj3x26opvlW6TyAYRcF3ttPVh8sC2W2Ybng81KJ6xZ1MJk4+Wiaqd5zx1s6msAs5sfciDu4
+	rF5IsnmOOn/lRHCywpaJt1clqsMCNhmPFQeIQ9ocYHWVJAtalDKYPxcqrmLzbht3PaulpV1v8T007
+	DUonHg1GwgAo9GDXUoZiyRYFx/bUxkM+SzaQ7wG5ucGyo2dHoVEtO72lE5fTroNG46eVQ5WVmLk32
+	+BAAKzkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPHLv-000000012Te-2sw1;
-	Tue, 19 May 2026 10:07:07 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1wPI58-00000001DiJ-2r7x;
+	Tue, 19 May 2026 10:53:53 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPHLs-000000012SU-2ulN;
-	Tue, 19 May 2026 10:07:06 +0000
-Received: from killaraus.ideasonboard.com (unknown [IPv6:2a01:cb1d:8f2:800:42d6:38fa:3bdf:70df])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id CF889296;
-	Tue, 19 May 2026 12:06:48 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1779185209;
-	bh=L5Slw9bkugmP424w3w1mHtahMW7LPmAk115Dd26N87s=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=i8vcf2PVYU0o28ZfJUaiUQPQ+mVn2Cn1EspcxVFTzDddWl6CN+fN0gpWseLQPC5TQ
-	 sCqJhQIuNV1sa7GDbwNEmgM4Wwx5rCV//PWl0C+E433U06Vr0XTEDX9qmEfzVVlbXB
-	 KWY++GWhR7x6HLG2D4hMnGiLYsx6fzfLedJQl4vs=
-Date: Tue, 19 May 2026 12:07:00 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
-	Michael Hennerich <michael.hennerich@analog.com>,
-	Support Opensource <support.opensource@diasemi.com>,
-	Ivaylo Ivanov <ivo.ivanov.ivanov1@gmail.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Andrei Simion <andrei.simion@microchip.com>,
-	Saravanan Sekar <sravanhome@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Woodrow Douglass <wdouglass@carnegierobotics.com>,
-	Jagan Teki <jagan@amarulasolutions.com>,
-	Icenowy Zheng <icenowy@aosc.io>, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 2/2] regulator: Use named initializers for arrays of
- i2c_device_data
-Message-ID: <20260519100700.GC45952@killaraus.ideasonboard.com>
-References: <cover.1779184320.git.u.kleine-koenig@baylibre.com>
- <9a8bfc7286221873ef02eeba0727eeaeb9e504e8.1779184320.git.u.kleine-koenig@baylibre.com>
+	id 1wPI56-00000001De3-1aEG
+	for linux-mediatek@lists.infradead.org;
+	Tue, 19 May 2026 10:53:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1779188023;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=AUFo6hIuf2ZxDrSoEBKNJqzPv5wXEukq1eF4NrWaHmc=;
+	b=YxpCSbyuPwMlNtCs150nMYggIGLfxv0JG1L1pCrd+eZyvNSbO1rZHlw4srcU4GrBC5sbzc
+	ejVFGyP3AImR19yBvNWJj8LSMzFoCEkJHZM3dpy0UgDhJ2XtYvD0Qxe19PXszy26eLYeKu
+	u3t/f3g+YqZpqIP+TUrlu7KoSniHjD8=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-686-Yk4X41rBN5eyTc7sXTNoZA-1; Tue, 19 May 2026 06:53:39 -0400
+X-MC-Unique: Yk4X41rBN5eyTc7sXTNoZA-1
+X-Mimecast-MFC-AGG-ID: Yk4X41rBN5eyTc7sXTNoZA_1779188014
+Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-48fe40b61a3so25250085e9.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 19 May 2026 03:53:38 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1779188014; x=1779792814;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=AUFo6hIuf2ZxDrSoEBKNJqzPv5wXEukq1eF4NrWaHmc=;
+        b=AsTbZ9jDQNvUGfXu6gukrQfSK4/HkLWtDSmbwvfi1b63ytyz/Oc/KDxzlxRVwQa0Ev
+         L4m8Xvnmc8svHCyzQSzkSWFVtVDG06SHrdAkp9dnxU8SrR1ls4ThrD5qXVg8xwcv6C/s
+         2w7hPwE6TheMr8ge9kn1Mx3VEwQk04gtHTAU9fqHHgXzK23dEDxBNMXQ125qpHVdlaBM
+         greGJjJlbwQhCiQmIkqAT/O+yq1c7uffYIqhra7/dFULNSOpjezSudn6UH5VNvBUpdsY
+         a/I1xCPo0hoJmVbVzi1T1TYiyQOY1M13xWmeRf36uSIUnrg8NFcHg6jS3tfV7rcI4kQ6
+         ZGzw==
+X-Forwarded-Encrypted: i=1; AFNElJ9k7X8v7OTlZKhEG1ajzP7QJNQjzjvFNPEwz+9YT8SIgFXDxChVecC/chjOTUaZPitm8ucwThLt/qbudxxv8Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YznvCGLgMyNaBL0beC1xplruv9v7zo1ONx/GHt9KA9eqHOfd0mA
+	QHf9Fs/qPZWMbR6AFkcLiN+8abK+Ciffgz2nCdCD+fId+mribKhrfVCbtbuXs4dtVX4a222uab5
+	YSo1mqaoULvGMP6jltvpuCEhLr3xwWHD22cTK/dLJVSsTfsFQGza0tb02qHP4Ryxt1VEJz3Q7Qg
+	==
+X-Gm-Gg: Acq92OEx8/jAiD1tZabCIbZcHPFEAuT4xTexSPrHTnTE8k73OThE9iOrI9KlXw6x+Zl
+	+xIRs/h4q4U4BaJNKtKo2TvvU4+RUSvQSCSS/Qd/QZ5EXjp7s+j38pIrbW50NuQuS54Y4QSuMYJ
+	uVZSwAFA1ep77SgPriTTwawDQ5rfTerb7TdGGGL8SdIMq8gYWsRZmEu/QZxsVaRpy508L70WOUw
+	8GajhlFr+wIu8m04LimOKXlO4C5UVH4vddmJ0O7kau13Kpik3aKxQU10cNDFik1k/myY4zpW7KI
+	mFtWdTPtYGPFg9LCBflROairRjEyavUBwuUNDyUJOVYkJYD4XmG1HKUJQOcKbdYdy5GnkQ6FETe
+	vjVFqt/PKElzhbne3/2JXMpZYr/RwzXqEnWaMPRn4PM3vzqFYJIaiRXR8kctUfvVaVQ==
+X-Received: by 2002:a05:600c:8b45:b0:489:1ba8:5bf0 with SMTP id 5b1f17b1804b1-48fe63253f3mr282542425e9.21.1779188014449;
+        Tue, 19 May 2026 03:53:34 -0700 (PDT)
+X-Received: by 2002:a05:600c:8b45:b0:489:1ba8:5bf0 with SMTP id 5b1f17b1804b1-48fe63253f3mr282541945e9.21.1779188014000;
+        Tue, 19 May 2026 03:53:34 -0700 (PDT)
+Received: from [192.168.88.32] ([150.228.25.33])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-48febe78aadsm101525975e9.29.2026.05.19.03.53.32
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 19 May 2026 03:53:33 -0700 (PDT)
+Message-ID: <3a390dee-38e9-4df1-a94d-7128cd4eb834@redhat.com>
+Date: Tue, 19 May 2026 12:53:31 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <9a8bfc7286221873ef02eeba0727eeaeb9e504e8.1779184320.git.u.kleine-koenig@baylibre.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net v2 4/5] net: dsa: mt7530: clear flood flags on bridge
+ leave
+To: Daniel Golle <daniel@makrotopia.org>,
+ "Chester A. Unal" <chester.a.unal@arinc9.com>, Andrew Lunn <andrew@lunn.ch>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ DENG Qingfang <dqfext@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
+ =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+ Sean Wang <sean.wang@mediatek.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <cover.1778766629.git.daniel@makrotopia.org>
+ <cc8d2f494dd202304a6f68332f3a90ea0a8a4618.1778766629.git.daniel@makrotopia.org>
+From: Paolo Abeni <pabeni@redhat.com>
+In-Reply-To: <cc8d2f494dd202304a6f68332f3a90ea0a8a4618.1778766629.git.daniel@makrotopia.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: JL8Q_DcRz_K0rDuPyerEnAItxRqvz96tJuIALG6ZzQY_1779188014
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260519_030704_874699_7F0F7BBD 
-X-CRM114-Status: GOOD (  21.38  )
+X-CRM114-CacheID: sfid-20260519_035348_483970_7D8E6E65 
+X-CRM114-Status: GOOD (  16.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,136 +121,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 19, 2026 at 11:57:51AM +0200, Uwe Kleine-König (The Capable Hub) wrote:
-> While being less compact, using named initializers allows to more easily
-> see which members of the structs are assigned which value without having
-> to lookup the declaration of the struct. And it's also more robust
-> against changes to the struct definition.
+On 5/14/26 4:05 PM, Daniel Golle wrote:
+> Flood flags set by port_bridge_flags persist after a port leaves the
+> bridge, causing unknown unicast to be forwarded to standalone ports.
 > 
-> The mentioned robustness is relevant for a planned change to struct
-> i2c_device_id that replaces .driver_data by an anonymous union.
+> Clear UNU_FFP, UNM_FFP and BC_FFP in port_bridge_leave so that the
+> port returns to its initial state without flooding.
 > 
-> While touching all these arrays, unify usage of whitespace and commas.
-> 
-> This patch doesn't modify the compiled arrays, only their representation
-> in source form benefits. The former was confirmed with x86 and arm64
-> builds.
-> 
-> Signed-off-by: Uwe Kleine-König (The Capable Hub) <u.kleine-koenig@baylibre.com>
+> Fixes: 5a30833b9a16 ("net: dsa: mt7530: support MDB and bridge flag operations")
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 > ---
->  drivers/regulator/88pg86x.c            |  4 +--
->  drivers/regulator/ad5398.c             |  4 +--
->  drivers/regulator/da9121-regulator.c   | 20 +++++++--------
->  drivers/regulator/da9210-regulator.c   |  4 +--
->  drivers/regulator/da9211-regulator.c   | 18 +++++++-------
->  drivers/regulator/fan53880.c           |  4 +--
->  drivers/regulator/isl9305.c            |  4 +--
->  drivers/regulator/lp3971.c             |  2 +-
->  drivers/regulator/lp3972.c             |  2 +-
->  drivers/regulator/lp872x.c             | 34 +++++++++++++-------------
->  drivers/regulator/lp8755.c             |  4 +--
->  drivers/regulator/ltc3589.c            |  6 ++---
->  drivers/regulator/ltc3676.c            |  2 +-
->  drivers/regulator/max1586.c            |  2 +-
->  drivers/regulator/max20086-regulator.c |  8 +++---
->  drivers/regulator/max20411-regulator.c |  2 +-
->  drivers/regulator/max77503-regulator.c |  2 +-
->  drivers/regulator/max77675-regulator.c |  2 +-
->  drivers/regulator/max77826-regulator.c |  2 +-
->  drivers/regulator/max77838-regulator.c |  2 +-
->  drivers/regulator/max77857-regulator.c |  8 +++---
->  drivers/regulator/max8649.c            |  2 +-
->  drivers/regulator/max8893.c            |  2 +-
->  drivers/regulator/max8952.c            |  2 +-
->  drivers/regulator/mcp16502.c           |  2 +-
->  drivers/regulator/mp5416.c             |  6 ++---
->  drivers/regulator/mp8859.c             |  4 +--
->  drivers/regulator/mp886x.c             |  6 ++---
->  drivers/regulator/mpq7920.c            |  4 +--
->  drivers/regulator/mt6311-regulator.c   |  4 +--
->  drivers/regulator/pf530x-regulator.c   |  6 ++---
->  drivers/regulator/pf8x00-regulator.c   |  8 +++---
->  drivers/regulator/pv88060-regulator.c  |  4 +--
->  drivers/regulator/pv88080-regulator.c  |  8 +++---
->  drivers/regulator/pv88090-regulator.c  |  4 +--
->  drivers/regulator/slg51000-regulator.c |  4 +--
->  drivers/regulator/sy8106a-regulator.c  |  2 +-
->  drivers/regulator/sy8824x.c            |  8 +++---
->  drivers/regulator/sy8827n.c            |  4 +--
->  drivers/regulator/tps6286x-regulator.c | 10 ++++----
->  drivers/regulator/tps6287x-regulator.c | 10 ++++----
->  41 files changed, 118 insertions(+), 118 deletions(-)
-
-[snip]
-
-> diff --git a/drivers/regulator/lp872x.c b/drivers/regulator/lp872x.c
-> index 942f37082cb1..779df653338a 100644
-> --- a/drivers/regulator/lp872x.c
-> +++ b/drivers/regulator/lp872x.c
-> @@ -796,24 +796,24 @@ static const struct regmap_config lp872x_regmap_config = {
->  #define LP872X_VALID_OPMODE	(REGULATOR_MODE_FAST | REGULATOR_MODE_NORMAL)
+> v2: no changes
+> 
+>  drivers/net/dsa/mt7530.c | 5 +++++
+>  1 file changed, 5 insertions(+)
+> 
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index 752ba92b0851..5b58e42bfda9 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -1767,6 +1767,11 @@ mt7530_port_bridge_leave(struct dsa_switch *ds, int port,
+>  	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_PORT_VLAN_MASK,
+>  		   MT7530_PORT_MATRIX_MODE);
 >  
->  static struct of_regulator_match lp8720_matches[] = {
+> +	/* Clear flood flags so they don't persist across bridge leave */
+> +	mt7530_clear(priv, MT753X_MFC,
+> +		     UNU_FFP(BIT(port)) | UNM_FFP(BIT(port)) |
+> +		     BC_FFP(BIT(port)));
 
-This is unrelated to the commit message that only mentions
-i2c_device_id.
+I think sashiko has a point here:
 
-With this chunk dropped,
+---
+Will these cleared flags be immediately overwritten by the DSA core?
+When a port leaves a bridge, the DSA core's dsa_port_bridge_leave()
+broadcasts the DSA_NOTIFIER_BRIDGE_LEAVE event, which triggers this
+callback and clears the bits.
+However, immediately after the broadcast returns,
+dsa_port_bridge_leave() unconditionally calls
+dsa_port_switchdev_unsync_attrs(), which calls
+dsa_port_clear_brport_flags().
+This explicitly configures standalone ports to flood everything by
+setting the BR_FLOOD, BR_MCAST_FLOOD, and BR_BCAST_FLOOD flags to 1, and
+then invokes the driver's port_bridge_flags callback.
+As a result, mt7530_port_bridge_flags() processes this call and executes
+mt7530_rmw() to turn the UNU_FFP, UNM_FFP, and BC_FFP bits right back to
+1 for the port.
+Does this leave the isolation bug unfixed since the register clearing is
+reverted before the DSA bridge leave sequence fully completes?
+---
 
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Since the other fixes are independent, I'm applying them.
 
-> -	{ .name = "ldo1", .driver_data = (void *)LP8720_ID_LDO1, },
-> -	{ .name = "ldo2", .driver_data = (void *)LP8720_ID_LDO2, },
-> -	{ .name = "ldo3", .driver_data = (void *)LP8720_ID_LDO3, },
-> -	{ .name = "ldo4", .driver_data = (void *)LP8720_ID_LDO4, },
-> -	{ .name = "ldo5", .driver_data = (void *)LP8720_ID_LDO5, },
-> -	{ .name = "buck", .driver_data = (void *)LP8720_ID_BUCK, },
-> +	{ .name = "ldo1", .driver_data = (void *)LP8720_ID_LDO1 },
-> +	{ .name = "ldo2", .driver_data = (void *)LP8720_ID_LDO2 },
-> +	{ .name = "ldo3", .driver_data = (void *)LP8720_ID_LDO3 },
-> +	{ .name = "ldo4", .driver_data = (void *)LP8720_ID_LDO4 },
-> +	{ .name = "ldo5", .driver_data = (void *)LP8720_ID_LDO5 },
-> +	{ .name = "buck", .driver_data = (void *)LP8720_ID_BUCK },
->  };
->  
->  static struct of_regulator_match lp8725_matches[] = {
-> -	{ .name = "ldo1", .driver_data = (void *)LP8725_ID_LDO1, },
-> -	{ .name = "ldo2", .driver_data = (void *)LP8725_ID_LDO2, },
-> -	{ .name = "ldo3", .driver_data = (void *)LP8725_ID_LDO3, },
-> -	{ .name = "ldo4", .driver_data = (void *)LP8725_ID_LDO4, },
-> -	{ .name = "ldo5", .driver_data = (void *)LP8725_ID_LDO5, },
-> -	{ .name = "lilo1", .driver_data = (void *)LP8725_ID_LILO1, },
-> -	{ .name = "lilo2", .driver_data = (void *)LP8725_ID_LILO2, },
-> -	{ .name = "buck1", .driver_data = (void *)LP8725_ID_BUCK1, },
-> -	{ .name = "buck2", .driver_data = (void *)LP8725_ID_BUCK2, },
-> +	{ .name = "ldo1", .driver_data = (void *)LP8725_ID_LDO1 },
-> +	{ .name = "ldo2", .driver_data = (void *)LP8725_ID_LDO2 },
-> +	{ .name = "ldo3", .driver_data = (void *)LP8725_ID_LDO3 },
-> +	{ .name = "ldo4", .driver_data = (void *)LP8725_ID_LDO4 },
-> +	{ .name = "ldo5", .driver_data = (void *)LP8725_ID_LDO5 },
-> +	{ .name = "lilo1", .driver_data = (void *)LP8725_ID_LILO1 },
-> +	{ .name = "lilo2", .driver_data = (void *)LP8725_ID_LILO2 },
-> +	{ .name = "buck1", .driver_data = (void *)LP8725_ID_BUCK1 },
-> +	{ .name = "buck2", .driver_data = (void *)LP8725_ID_BUCK2 },
->  };
->  
->  static struct lp872x_platform_data
-> @@ -935,8 +935,8 @@ static const struct of_device_id lp872x_dt_ids[] __maybe_unused = {
->  MODULE_DEVICE_TABLE(of, lp872x_dt_ids);
->  
->  static const struct i2c_device_id lp872x_ids[] = {
-> -	{"lp8720", LP8720},
-> -	{"lp8725", LP8725},
-> +	{ .name = "lp8720", .driver_data = LP8720 },
-> +	{ .name = "lp8725", .driver_data = LP8725 },
->  	{ }
->  };
->  MODULE_DEVICE_TABLE(i2c, lp872x_ids);
+/P
 
-[snip]
-
--- 
-Regards,
-
-Laurent Pinchart
 
