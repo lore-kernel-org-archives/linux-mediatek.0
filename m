@@ -4,141 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07ADDCD4F3C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2026 14:27:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2232FCD4F5B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2026 17:07:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zEjqKkH3DhRxJE8KbXYEAt37DhNV09bfllpxwdO6tRQ=; b=TC9hdKtVRkyzkMtuL5RJ00uMKm
-	spgofdsty7ZT/awqe31Sn5jrzgwrgmKex5NhSRRIHDantjt1usuziybFjTgBHE35dhN3xuh+QGC+6
-	jstGAApAMPxqPmPP4lyQyjkuVNidptw7XNRXry2KHASd9tjagO/O582nq6gA0H1GjlpjCND1bwRFb
-	ze2msAadCcBKYprfXoEFtmbbVY5C7OkP1WQQTs+zT00qFS/4PcBJ+kQPZQRAJ+KKA4zXkO30gAYUK
-	FeRNN/Wfs5pn/M6Pf2tfRKbSRthJupOIvL1y7P5WfGP6oC23C6ebPOLe/QgJoRHPrEn/YP5We2uV2
-	O7LWqPUg==;
+	bh=oEsZwdKUK4CjM7jLOh90h5kzKd0IJynt1iGHOkr4Mv0=; b=dfK+tc3dyRQVfhs0eeuOdyX80l
+	T0y7jCINImBDxDq3QHyLTXvOaqVF3PMb6wKBG0RG1bNnoisTxMbrIhg2eGpdvpyK/N96hOs9SzJ5S
+	uBph5jK1tn7ljM/U2ZBtbmfwzYEAjTbcZSRPOkL74netKUx7DkYSf4s3hJPXBboBl+enfspA/Hgkj
+	zG9QEKMOtEjn1SQ6wSxVnkRpPfZ4tMc8BolIw4uZapHQjR1uVcRAzzCw7g834/Swpg57AHKHTFjFr
+	8EWIXESWdiKt0W20HgeKI9hC9iZxIOllWNEFKmHPKl3m5DznZ87tGhBjwqBu7087U62nJ3LJC5awg
+	Gk+kheqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPLPo-00000001pQy-3A4F;
-	Tue, 19 May 2026 14:27:24 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1wPNud-00000002Kk8-0MVA;
+	Tue, 19 May 2026 17:07:23 +0000
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPLPm-00000001pQT-2K8c
+	id 1wPNuW-00000002KhA-3JNR
 	for linux-mediatek@lists.infradead.org;
-	Tue, 19 May 2026 14:27:23 +0000
-Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 64J9LrNB4063015
-	for <linux-mediatek@lists.infradead.org>; Tue, 19 May 2026 14:27:21 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	zEjqKkH3DhRxJE8KbXYEAt37DhNV09bfllpxwdO6tRQ=; b=c1Xj7Qj+y951pKcH
-	uJ+Yl/3DY/8BXEx+ZlTKrXTGbbvrzmwMIyoBGeH3lFeMseGuIZS0/wiGe+r6J/X6
-	ilx6hDAzNUbj7AjoUK9VnoQ6PX6yhMU3S1RzzEfs2Y0AXYRiRA8T4bC9eG/UgVxw
-	/VfBzwmDKSM6DdE1WQtv2a1+mUYBouFwKHWY2n+2NHp/PDYjD6nRzGctUjCQf9Ip
-	I/erEXcBAXT5nI64Zio4hTX0y3pyxfcfswOrUMl2FczqNb4yle30+FbL47UfcePA
-	YjwqMYYVUdk4vV3H2W3unntEOlO8KaN1y7NpyJoaacoEcNTw3b8YLdjZLQ2YXhqn
-	RD5gYg==
-Received: from mail-pf1-f200.google.com (mail-pf1-f200.google.com [209.85.210.200])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4e8n5u16f4-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Tue, 19 May 2026 14:27:21 +0000 (GMT)
-Received: by mail-pf1-f200.google.com with SMTP id d2e1a72fcca58-82fa5ecd760so2044554b3a.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 19 May 2026 07:27:21 -0700 (PDT)
+	Tue, 19 May 2026 17:07:21 +0000
+Received: by mail-yw1-x112b.google.com with SMTP id 00721157ae682-7cfd0d8eb09so8094207b3.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 19 May 2026 10:07:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1779210436; cv=none;
+        d=google.com; s=arc-20240605;
+        b=OW3mA72l25M/ie5a5mpvC0dX11/ZwYBAMrmw/Dnzho4iNolNvGGZ8CjXkt/FwjQSsv
+         nZXuQcLbWT9+VNSVqRjCHKw2giJtI/TEJH0R9TwfYv6LT05WwJ1P9oYfQZE0f0Z9W6Hv
+         EFrwHvV7gae8FO5l6bw35495nTTORHVw0utJXf0X8X1YFNViqgyhXjEq3DomCjzJph/i
+         548lbVzE08OZQULgTb2GX7VMVUWocFfh8Y82o2uf41tP/HsLjxrK8iDtAcSD+fo5CGlD
+         G8+lXQJ3L+mi0yo/3yRmObS+/v+6vwjYDsA98o6ubYQjyw7Eta4sc7HDYFO/0J5Gae14
+         MoMA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=oEsZwdKUK4CjM7jLOh90h5kzKd0IJynt1iGHOkr4Mv0=;
+        fh=qlaAC2SVoFe8zFT1JMrnUuKzOhLYOrSX6MaQf2CGvrA=;
+        b=D64YuwvlTQCNS8RaISm71q8l8TSLYW5EN2lVH9FTB5sejOfh/wlqq4OM5PRfy6JBAV
+         SLXPR4/hp3nHW34M8ZOiLqd4tAYSgel3dlSz1t4op1A1R0n9ZkTnvfI6OvNJqCp+yIaf
+         UqFLu0ofASvNqeWIJgNhcHCWiHKmVlzitqhKL6osF8VDs1Ec426GJPKtSs4PQJq25hB1
+         b5b4iQIRK5OJlOSbOMJ2K9yp0RlabbKOt0JReHbxzQGwy1lI2+IORsISyBlpBeH1lzpD
+         5+66Os2nre1rs9j6fYgsgOvriUt06ksYGTsZbfKf36rsm/QPei/zoogJqjYso5MgYxVZ
+         odjQ==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1779200841; x=1779805641; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:date:message-id:subject
-         :references:in-reply-to:cc:to:from:from:to:cc:subject:date
+        d=gmail.com; s=20251104; t=1779210436; x=1779815236; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=zEjqKkH3DhRxJE8KbXYEAt37DhNV09bfllpxwdO6tRQ=;
-        b=WZBn1ctT5TQ0SbMbM8m/lNaKkt6ukrhD43Lg5a5v29KF7GOv48jd0C83XDfTcO7tpO
-         zsSI98fg44F1RIj1zFGCPE/IGucYo68quEPwlw73kIRP261DZGuk2Y2faoUe5SxtZoFx
-         zBh0wd09Hu5uo3QTcSbNLwQwOSICJXHfJ11bFGRF1ikSgOcH/g4QnobnK/TuS3mZSxfU
-         5NdO47OhuKdv7xgXTnsdGPbM+ZSEEZT1PfyOSwD9FCkaSCwqr1nrtB0MRfwyMOp5OVhU
-         nZz+3wRCM87FkOYoX/BFHGoZsb6mWDxbw8aPsZAz5v7V6gQdbI+E6uU9Gj8VL08C4p9X
-         jJvA==
+        bh=oEsZwdKUK4CjM7jLOh90h5kzKd0IJynt1iGHOkr4Mv0=;
+        b=cGwpEQCwKMNLBGfmWUD3tHpMi1a7D4EPt8O647D2tCuNv0b8MOKBbgEINQw9/rX3G8
+         ksMJ0UWktylKDkmMFO27xlfaq24enHGMu/61u8nVZf3/b159JkC9UGelHq6bcNW9UzDo
+         nfgEG37NwwNsjVAkwaTvh86KxDHf6w7zXdnO8DYjDyd6wtwqeF0WHYq4QpDLwkeZBEFY
+         hydrIXKwKHl1j4W5YaB0RqQ/zg+zBjSH5r6elT8Ih6lz+eabXzA+kWIDJLpmaMKx6EI+
+         mmE6z3JY+FfMWFSoe2b8U4Ef79y4NJoqIrn+u7IJeQSiKxuSGXgUncEKbQrhlAmfzIjG
+         A2rg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779200841; x=1779805641;
-        h=content-transfer-encoding:mime-version:date:message-id:subject
-         :references:in-reply-to:cc:to:from:x-gm-gg:x-gm-message-state:from
+        d=1e100.net; s=20251104; t=1779210436; x=1779815236;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=zEjqKkH3DhRxJE8KbXYEAt37DhNV09bfllpxwdO6tRQ=;
-        b=grB6vJZRGn/2cy6sD55I617pmLNDB4uN89cKKSyskYPIFWLnCxgrAymBHpUgHTaKV5
-         RVP+DHleuzGEL4lvSc7viQXyoQ/GHhqA/DltvbPe2lSBYNBxG7D3JZ4d5wN7imXC/nK8
-         KmeU3qcofNVL58jxZwxR4FBMVa/xZioBcT/yiXFp2XySTCfYnVZIxJAFlILGyduIqzkq
-         /hiigapqD0Fh6sjLgiiR3jhtxmUl4iftXUv8Qd30eY6iyJ80p+IuAvkusuJEaQ5bXPvm
-         krhqyBHrixa7hFxVEhg4rxCbwC5u+Pa8IRXQGrOqGzyxoDMOlQOy49/gmgEeKfaDFLb3
-         xwSg==
-X-Forwarded-Encrypted: i=1; AFNElJ+RPiQR1tyfy2oXQ8UlMgdYECz3FcWhPH05TAbe0JA0ZYBGPsKK2bMkpxn7ohwqrp3gsVwi3UKIAN602+/pUg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyrD2M0coX0FVr/VMLg2eJ7LfFyzskHeKdp//JvT8JlMoQCeV2F
-	aGmgY8hCbez5yQzYW9djwNoe1zUYVoz/kv5lSqUUAoWLwGes35lCysez5nCRWXZ9WaowS2MlJSN
-	XUUbu6HTgq3GQ/REez5hdX/PG1vlPLB3FmqF6Dp59JwZ6WhTHDRZtzI9B9k7JoJDjagXPEWRH5l
-	A=
-X-Gm-Gg: Acq92OGENcHX/7vtpabCmFNg0HxYcD92oAwmx4hj1xb/sdEInYmdaeY2B96Dd00KM8w
-	XBlrqhLoryKctw4drtouHavwWG82LEK+dK+ThQsIBLs5kHgs9LXk5EPMGP8E/rjAVDBhydGjmPj
-	PFytR+tEyjARKLstBx3D7Ajv7Q61FCsJAg0RD4s8dFJ6gHUZ4P29NSXeRVpS6EvPJtqB0hwuV/p
-	IoXVXYGAlBtd4Fx494AmgWoEjW4ltpTs7uIABORRdpwgWPBWoO2ZrIpVQtWJzLkTLGNqSBUI0Ml
-	PUBJa8S0vYzffbyDYbFitoo4dPYzoK0WKBPToD4fPPoqkJSMTGVMQjw18uWtga/NjsTG1buDmJZ
-	JR9JH8WUu7QWiPFJxtgoo
-X-Received: by 2002:a05:6a00:2e89:b0:837:80a:5ac7 with SMTP id d2e1a72fcca58-83f33f0fde7mr20707743b3a.45.1779200840892;
-        Tue, 19 May 2026 07:27:20 -0700 (PDT)
-X-Received: by 2002:a05:6a00:2e89:b0:837:80a:5ac7 with SMTP id d2e1a72fcca58-83f33f0fde7mr20707691b3a.45.1779200840172;
-        Tue, 19 May 2026 07:27:20 -0700 (PDT)
-Received: from [192.168.1.11] ([120.56.207.212])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-83f67eff284sm7640033b3a.8.2026.05.19.07.27.15
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 19 May 2026 07:27:19 -0700 (PDT)
-From: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
-X-Google-Original-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Ryder Lee <ryder.lee@mediatek.com>,
-        Lorenzo Pieralisi <lpieralisi@kernel.org>,
-        =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-        Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-        Krzysztof Kozlowski <krzk+dt@kernel.org>,
-        Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>
-Cc: devicetree@vger.kernel.org, linux-pci@vger.kernel.org,
-        linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-        Dan Carpenter <error27@gmail.com>
-In-Reply-To: <20260512103347.1751080-1-wenst@chromium.org>
-References: <20260512103347.1751080-1-wenst@chromium.org>
-Subject: Re: [PATCH] PCI: mediatek-gen3: fix incorrectly skipped pwrctrl
- error message
-Message-Id: <177920083522.97175.591150691760691771.b4-ty@kernel.org>
-Date: Tue, 19 May 2026 19:57:15 +0530
+        bh=oEsZwdKUK4CjM7jLOh90h5kzKd0IJynt1iGHOkr4Mv0=;
+        b=NkXcRwbgx9La2drx2o29TvlZtL2EY+m3Co8k9bCuPm/sK1aECRUeRhBKQLb5SiABGg
+         rwsZyDLgAuAL6oA96mDLMpMYX36gk5TxLm2KEIG+v+FqJIh3McfUXUqRQLC3ysp5plq7
+         bzPt4AVnR49IcWGBjcpKs9wez7hVygEHCtjGUCYn32oAz6ZPBU78KPaYB7g6H6LAeVp9
+         0XnFVlzPRJ8D/+NPrXgN5jkVzcNLpGUMIdBrx1qZasyxgl64QA1GB/7isylsKp6sRJ7S
+         dxIJau1br3aQdzmY4ndv3Jmq9PqdeK3ru6NjtFqhzY15JjxyfcLIUtH/DIDvT5Ct4EE+
+         pSpg==
+X-Forwarded-Encrypted: i=1; AFNElJ8YTursWdHG/Bj3P5tHH5+5d6wiiod28eWfcBeoPNduj5kN2Rf+wbFwSm+OI46/ronZHzka8xUmOArqVtgaGg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YztZ2gYbwCwxOLkC7Pj3ZEPZ2FOieAVcnC+kml07RUnceHhw7cR
+	XotLDdyyYwoyHdSFKZIOolZ6Udb8q3DeSHBuWPOQ+6qmrhtkyh5qMnsxIPP1+WMjlHc5E89smaf
+	LOlDi+v2RsY/QzE+WBJstY/LGL7XsQwI=
+X-Gm-Gg: Acq92OEGPLcDJNzpMWVKOeCbllxKFHW1r/wS2irGYTBjoE+6glmJNgs7GPy6hKfGHrj
+	BkBsE8VMJLXMPBQ+x0+xolyDjEfEb9EoCUIjF+xWR/49axmtPlpXzO7d+E+OH5jiXFsi0d0pct4
+	iOw3ATmo44+foqzfJDGlDwT/dvGepSNKc3q5yTL8bCmu45LEvJquatErQIJxYVhTKq9i23S0N9d
+	rT1fWPa0CstTjBAQiWjduiASp3GW+UbjkGatFDOOaybGTVWCyAVbIQZCTBS5qMidOfCS0QjWr18
+	uh3AigqXzTqP18d8HO9FGbHPZXKSKqCE7Mnc6UrJ5RjTW82HdfrPLIpcpFreVOs2x9UuQEY/
+X-Received: by 2002:a05:690c:38a:b0:79a:5fb9:62ad with SMTP id
+ 00721157ae682-7c95c2f76d2mr234627707b3.43.1779210435344; Tue, 19 May 2026
+ 10:07:15 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.14.3
-X-Authority-Analysis: v=2.4 cv=MfBcfZ/f c=1 sm=1 tr=0 ts=6a0c7349 cx=c_pps
- a=mDZGXZTwRPZaeRUbqKGCBw==:117 a=1gRTTRxgmbTSdBvl+srOOw==:17
- a=IkcTkHD0fZMA:10 a=NGcC8JguVDcA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=YMgV9FUhrdKAYTUUvYB2:22
- a=VwQbUJbxAAAA:8 a=bpYmCipijB_Evp6s3csA:9 a=QEXdDO2ut3YA:10
- a=zc0IvFSfCIW2DFIPzwfm:22
-X-Proofpoint-GUID: q3PKPwGUOceWc-DpskUqLn2bKX0s2vkb
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTE5MDE0MyBTYWx0ZWRfX1tf9xOS+Y7eh
- lbKGkIfJzuE8PPTxQSq7DSKQTLiHILOu/+4IqTe1x7fYetWsfp47kQWH9xx0EnxUisCI07Vp05H
- O0XC48k2Nu0LR5uUU91WbHhbUQudyXTeZzg7PIOkbWB//REBWV7HIQhikrKJjSDo8/Jd6Q6Rn0D
- pHma4PChGKazxCs6hCox1pTTGKdFe6Ftuuj+6nFVKGwLmRawSWHcQU3CVPTSrJbUG0biiT7TFKG
- Cmk6oC4jXXrRgeQ52X3CObY3xT4XfiqywzgTI1e6rCdgxCtaIBcBHnIANBsZCK41HiA7+qKzTiO
- ZKghb1NQW2bV8vLtXbZx+IuF+UP8IF9deiWGR4IUq0ZoA78F6n0XMbXy4b2a0QK/z9SUtaiBPAH
- yIr+pkvKA3398dfHkt3p32h+HZpDsn7wV1ntUqRWZDFaMkQagqmAiWLjgHZ9/CLD79KCl5sbHcy
- PHPjeAYCLhuXSZbcBRQ==
-X-Proofpoint-ORIG-GUID: q3PKPwGUOceWc-DpskUqLn2bKX0s2vkb
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-05-19_03,2026-05-18_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0 clxscore=1015 adultscore=0 malwarescore=0 bulkscore=0
- impostorscore=0 spamscore=0 phishscore=0 priorityscore=1501 suspectscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2605130000 definitions=main-2605190143
+References: <20260505140516.1372388-1-ketil.johnsen@arm.com>
+ <20260505140516.1372388-5-ketil.johnsen@arm.com> <20260505181523.49a3d85c@fedora>
+ <afxVIuVVPisBQ9p_@e129842.arm.com> <20260507135356.5428d50d@fedora>
+ <agMvb_jeRsO7tSS-@e142607> <20260512161111.0cb7000e@fedora>
+ <agNJasayW8VCHTiU@e142607> <CAPaKu7QC7FdjL6m_OSb+E5aYKs6bmT-9DAHc5PC=XctCmRph2Q@mail.gmail.com>
+ <20260518091650.5a7a4f4a@fedora> <CAPaKu7R9ET767qc3eppBUfG2RAeyrg7E-gE0turgp-u_FU4+Vg@mail.gmail.com>
+ <20260519093955.448ff899@fedora> <8f0b1750-a853-4895-9672-73a75f6dbd84@arm.com>
+In-Reply-To: <8f0b1750-a853-4895-9672-73a75f6dbd84@arm.com>
+From: Chia-I Wu <olvaffe@gmail.com>
+Date: Tue, 19 May 2026 10:07:02 -0700
+X-Gm-Features: AVHnY4KPVoHRfmRDqkq-IVKhKn_YZaF7RwhfpWAK0UOEyzKcth-8E_oZBwz-wzI
+Message-ID: <CAPaKu7T7JZRmsS+D_3zFZtyhJk9mNXjL=xpAQ-UNGbm0vztyRg@mail.gmail.com>
+Subject: Re: [PATCH 4/8] drm/panthor: Add support for protected memory
+ allocation in panthor
+To: Ketil Johnsen <ketil.johnsen@arm.com>
+Cc: Boris Brezillon <boris.brezillon@collabora.com>, Liviu Dudau <liviu.dudau@arm.com>, 
+	=?UTF-8?Q?Marcin_=C5=9Alusarz?= <marcin.slusarz@arm.com>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, Jonathan Corbet <corbet@lwn.net>, 
+	Shuah Khan <skhan@linuxfoundation.org>, Sumit Semwal <sumit.semwal@linaro.org>, 
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>, 
+	John Stultz <jstultz@google.com>, "T.J. Mercier" <tjmercier@google.com>, 
+	=?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+	Steven Price <steven.price@arm.com>, Daniel Almeida <daniel.almeida@collabora.com>, 
+	Alice Ryhl <aliceryhl@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, 
+	linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Florent Tomasin <florent.tomasin@arm.com>, nd@arm.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260519_072722_599730_44EDF2C2 
-X-CRM114-Status: GOOD (  11.11  )
+X-CRM114-CacheID: sfid-20260519_100716_853972_2EB01AD3 
+X-CRM114-Status: GOOD (  66.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -153,24 +137,184 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, May 19, 2026 at 1:49=E2=80=AFAM Ketil Johnsen <ketil.johnsen@arm.co=
+m> wrote:
+>
+> On 19/05/2026 09:39, Boris Brezillon wrote:
+> > On Mon, 18 May 2026 17:36:40 -0700
+> > Chia-I Wu <olvaffe@gmail.com> wrote:
+> >
+> >> On Mon, May 18, 2026 at 12:16=E2=80=AFAM Boris Brezillon
+> >> <boris.brezillon@collabora.com> wrote:
+> >>>
+> >>> On Wed, 13 May 2026 12:31:32 -0700
+> >>> Chia-I Wu <olvaffe@gmail.com> wrote:
+> >>>
+> >>>> On Tue, May 12, 2026 at 8:39=E2=80=AFAM Liviu Dudau <liviu.dudau@arm=
+.com> wrote:
+> >>>>>
+> >>>>> On Tue, May 12, 2026 at 04:11:11PM +0200, Boris Brezillon wrote:
+> >>>>>> On Tue, 12 May 2026 14:47:27 +0100
+> >>>>>> Liviu Dudau <liviu.dudau@arm.com> wrote:
+> >>>>>>
+> >>>>>>> On Thu, May 07, 2026 at 01:53:56PM +0200, Boris Brezillon wrote:
+> >>>>>>>> On Thu, 7 May 2026 11:02:26 +0200
+> >>>>>>>> Marcin =C5=9Alusarz <marcin.slusarz@arm.com> wrote:
+> >>>>>>>>
+> >>>>>>>>> On Tue, May 05, 2026 at 06:15:23PM +0200, Boris Brezillon wrote=
+:
+> >>>>>>>>>>> @@ -277,9 +286,21 @@ int panthor_device_init(struct panthor_d=
+evice *ptdev)
+> >>>>>>>>>>>                      return ret;
+> >>>>>>>>>>>      }
+> >>>>>>>>>>>
+> >>>>>>>>>>> +   /* If a protected heap name is specified but not found, d=
+efer the probe until created */
+> >>>>>>>>>>> +   if (protected_heap_name && strlen(protected_heap_name)) {
+> >>>>>>>>>>
+> >>>>>>>>>> Do we really need this strlen() > 0? Won't dma_heap_find() fai=
+l is the
+> >>>>>>>>>> name is "" already?
+> >>>>>>>>>
+> >>>>>>>>> If dma_heap_find() will fail, then the whole probe with fail to=
+o.
+> >>>>>>>>> This check prevents that.
+> >>>>>>>>
+> >>>>>>>> Yeah, that's also a questionable design choice. I mean, we can
+> >>>>>>>> currently probe and boot the FW even though we never setup the
+> >>>>>>>> protected FW sections, so why should we defer the probe here? Ca=
+n't we
+> >>>>>>>> just retry the next time a group with the protected bit is creat=
+ed and
+> >>>>>>>> fail if we can find a protected heap?
+> >>>>>>>
+> >>>>>>> The problem we have with the current firmware is that it does a n=
+umber of setup steps at "boot"
+> >>>>>>> time only. One of the steps is preparing its internal structures =
+for when it enters protected
+> >>>>>>> mode and it stores them in the buffer passed in at firmware loadi=
+ng. We cannot later run the
+> >>>>>>> process when we have a group with protected mode set.
+> >>>>>>
+> >>>>>> No, but we can force a full/slow reset and have that thing
+> >>>>>> re-initialized, can't we? I mean, that's basically what we do when=
+ a
+> >>>>>> fast reset fails: we re-initialize all the sections and reset agai=
+n, at
+> >>>>>> which point the FW should start from a fresh state, and be able to
+> >>>>>> properly initialize the protected-related stuff if protected secti=
+ons
+> >>>>>> are populated. Am I missing something?
+> >>>>>
+> >>>>> Right, we can do that. For some reason I keep associating the reset=
+ with the
+> >>>>> error handling and not with "normal" operations.
+> >>>> I kind of hope we end up with either
+> >>>>
+> >>>>   - panthor knows the exact heap to use and fails with EPROBE_DEFER =
+if
+> >>>> the heap is missing, or
+> >>>>   - panthor gets a dma-buf from userspace and does the full reset
+> >>>>     - userspace also needs to provide a dma-buf for each protected
+> >>>> group for the suspend buffer
+> >>>>
+> >>>> than something in-between. The latter is more ad-hoc and basically
+> >>>> kicks the issue to the userspace.
+> >>>
+> >>> Indeed, the second option is more ad-hoc, but when you think about it=
+,
+> >>> userspace has to have this knowledge, because it needs to know the
+> >>> dma-heap to use for buffer allocation that cross a device boundary
+> >>> anyway. Think about frames produced by a video decoder, and composite=
+d
+> >>> by the GPU into a protected scanout buffer that's passed to the KMS
+> >>> device. Why would the GPU driver be source of truth when it comes to
+> >>> choosing the heap to use to allocate protected buffers for the video
+> >>> decoder or those used for the display?
+> >> I don't think the GPU driver is ever the source of truth. If the
+> >> system integrator wants to specify the source of truth (SoT) from
+> >> kernel space, they should use the device tree (or module params /
+> >> config options). If they want to specify the SoT in userspace, then we
+> >> don't really care how it is done other than providing an ioctl.
+> >> Panthor is always on the receiving end.
+> >
+> > Okay, we're on the same page then.
+> >
+> >>
+> >> If we don't want to delay this functionality, but it takes time to
+> >> converge on SoT, maybe a solution that is not a long-term promise can
+> >> work? Of the options on the table (dt, module params, kconfig options,
+> >> ioctls), a kconfig option, potentially marked as experimental, seems
+> >> like a good candidate.
+> >
+> > If Panthor is only a consumer, I actually think it'd be easier to just
+> > let userspace pass the protected FW section as an imported buffer
+> > through an ioctl for now. It means we don't need any of the
+> > modifications to the dma_heap API in this series, and userspace is free
+> > to choose its SoT (efuse, DT, ...) and pass the info back to mesa/GBM
+> > somehow (envvar, driconf, ...). The only thing we need to ensure is if
+> > lazy protected FW section allocation is going to work, but given the
+> > current code purely and simply ignores those sections, and the FW is
+> > still able to boot and act properly (at least on v10-v13), I'm pretty
+> > confident this is okay, unless there's some trick the MCU can do to
+> > detect that the protected section isn't mapped (which I doubt, because
+> > the MCU doesn't know it lives behind an MMU).
+I set up MMU to map non-protected memory to the protected section the
+other day. The FW still booted fine. I didn't get access violation
+until the FW executed PROT_REGION and panthor requested
+GLB_PROTM_ENTER in response.
 
-On Tue, 12 May 2026 18:33:45 +0800, Chen-Yu Tsai wrote:
-> When pwrctrl integration was added, the error message for when
-> pci_pwrctrl_create_devices() fails was incorrectly put after the error
-> goto statement, causing it to be skipped.
-> 
-> Move the goto statement after the dev_err_probe() call so that the
-> error message actually gets printed (or saved if probe is deferred).
-> 
-> [...]
+This was on v13, but I also doubt it will become an issue. Can ARM help cla=
+rify?
 
-Applied, thanks!
+> >
+> > Of course, once we have a consensus on how to describe this in the DT,
+> > we can switch Panthor over to "protected dma_heap selection through DT"=
+,
+> > and reflect that through the ioctl that exposes whether protected
+> > support is ready or not (would be a DEV_QUERY), such that userspace can
+> > skip this "PROTM initialization" step.
+> >
+> > We're talking about an extra ioctl to set those buffers, and a
+> > DEV_QUERY to query the state (ready or not), the size of the global
+> > protected buffer (protected FW section) and the size of the protected
+> > suspend buffer. The protected suspend buffer would be allocated and
+> > passed at group creation time (extra arg passed to the existing
+> > GROUP_CREATE ioctl). So, overall, I don't consider it a huge liability
+> > in term of maintenance cost.
+>
+> If we can avoid the dma-heap changes, then that would surely help!
+> I can try to implement this in the next version unless someone finds a
+> reason why it is a bad idea.
+Yeah, that sounds good to me too.
 
-[1/1] PCI: mediatek-gen3: fix incorrectly skipped pwrctrl error message
-      commit: 8ba433753d9b131c2e43b1ff7ba8c5730cef8231
+Will the extra ioctl require root? On a system with true protected
+memory, the FW cannot write to non-protected memory. It seems ok to
+allow any client to make the ioctl call. But on systems without true
+protected memory, it can be problematic.
 
-Best regards,
--- 
-Manivannan Sadhasivam <mani@kernel.org>
-
+>
+> >>>> For the former, expressing the relation in DT seems to be the best,
+> >>>> but only if possible :-). Otherwise, a kconfig option (instead of
+> >>>> module param) should be easier to work with.
+> >>>>
+> >>>> Looking at the userspace implementation, can we also have an panthor
+> >>>> ioctl to return the heap to userspace?
+> >>>
+> >>> Yes, it's something we can add, but again, I'm questioning the
+> >>> usefulness of this: how can we ensure the heap used by panthor to
+> >>> allocate its protected FW buffers is suitable for scanout buffers
+> >>> (buffers that can be used by display drivers). There needs to be a gl=
+ue
+> >>> leaving in usersland and taking the decision, and I'm not too sure
+> >>> trusting any of the component in the chain (vdec, gpu, display) is th=
+e
+> >>> right thing to do.
+> >> The heap returned by panthor is only for panfrost/panvk. It says
+> >> nothing about compatibility with other components on the system.
+> >
+> > Okay, if it's used only for internal buffers, I guess that's fine.
+>
+> --
+> Ketil
 
