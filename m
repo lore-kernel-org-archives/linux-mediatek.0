@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21B3ECD4F3C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2026 01:04:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21F81CD4F3C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2026 01:05:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=oXHtsnBY1AjSAv+HlUFo/FYDsuTcP65qwKVLI9BrKvM=; b=A5ptf9XfqgEAEURyiNN62FrHM4
-	e1Jlt2QFuXSs+IbLW6stuCIqLkn2mMkYuE2H9C2Q2CQMQGofCswOCfi4sO8Q0vVKdY0gRLv6vm9aw
-	cz3BRfvM1TlSVi+bp5VQynqgXTUpqgeUG8mshoo/2b28YXRjP7A6wg/TewKDDpRzzseWVvEX3kO99
-	AkoAzeMDUG8yX2efBoqehULqPkIcY77EnzGRStZQlGBq4Q66aHrntcprj+hNyClHDWRA1Lti88wzC
-	uPKLza/vFWMpZdDsk1EwbBn7jQmt/AcE4mn1z0bSxTScEiP1ZGcnKcpU8xfYcP6aHnBXAzFt47MPd
-	JbqZmQEQ==;
+	bh=BU1E1ogi+Bq1jhmjqjfCvkZIxNYkDteN8QmCFhzbN+A=; b=CjJ++iHOXFQcCHQRS6tH7uNVrg
+	3w2gSdS0rIcnk9LoiBT5IfWKLUDEwcr/uQ2JC2nc4AMdUAkR94dBDlGTwc6VE+Vau+f/SZcIcGj6k
+	uepNPl7O2A5hXv8BvYOSh9wltuubnKzhHD6OLB6Im56HlYlmGomiXAD9jPgRweDXpzkE+AIftAyao
+	PylTlYpdIELLFvwfnJ9sZi8c5odtOPt+YMP2IcZNDO6mTG/2C/uMFClfIlvieupBW0lixVMhR7jrb
+	SCALG6q12lp83/H/XoA0zfmUwgUZOV4QVEDZRJVHoNJRCU47/06DMpcx8s63/PCAzxvFGSjfoLgBC
+	1zTrCptw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP8st-0000000HJnG-0gaD;
-	Tue, 19 May 2026 01:04:35 +0000
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+	id 1wP8tJ-0000000HJtX-1K5g;
+	Tue, 19 May 2026 01:05:01 +0000
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP8sq-0000000HJmM-1ZQM
+	id 1wP8tH-0000000HJrl-0ggD
 	for linux-mediatek@lists.infradead.org;
-	Tue, 19 May 2026 01:04:33 +0000
-Received: by mail-pj1-x1033.google.com with SMTP id 98e67ed59e1d1-369576666d5so1309017a91.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 18 May 2026 18:04:31 -0700 (PDT)
+	Tue, 19 May 2026 01:05:00 +0000
+Received: by mail-pj1-x102a.google.com with SMTP id 98e67ed59e1d1-368f25ff4c4so1392305a91.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 18 May 2026 18:04:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1779152671; x=1779757471; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1779152698; x=1779757498; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=oXHtsnBY1AjSAv+HlUFo/FYDsuTcP65qwKVLI9BrKvM=;
-        b=X0ceMouUvIFgcqs68Exy9vY25ThTUd4MExwKsbj3R4WrseTAI1iNPBeU3Dqo9dJJGk
-         1YeV11RA2F6c8fhhO3Z4gXIWIsJf61J7DQQx70omTn7lr44Q4W3diRs5Dqiybs7yx/vv
-         a+5VP9EfF9f45JEdZ/CsPVgm+wfO74hsgHMQaHHKmF2/KH/tRdvR7C+yVNLfgNVfFota
-         w8o7jFB7eyxxjWI+ajjJ/XHUx/2DPirEh2m2cwx2F4G5BsgRz/erzfSlVsPyUCUKq9Oj
-         8LsFbo5Jr+O/QFO9+vpfju/5VUn6JzEeLSCd3TZYQM0q/mApI9Ih4hu+FMrSvlnhrQjI
-         M9ZQ==
+        bh=BU1E1ogi+Bq1jhmjqjfCvkZIxNYkDteN8QmCFhzbN+A=;
+        b=Dye9nu5tqChNRhfWkJRSLrr1D0WF/lMWNKGqw48xYJAzu1qls6cmY7+VbYqmrFW7+z
+         I/STWNIOHv6Y8gIxAYlSj5BTjLHlbJAOyLZQtmMwmSkxrSVeinMv4IzBR53psyml3Bxs
+         xnnWAXI3HcCq+E+Ez3VmKRM/2xOYl1VwpH+jSC6UYVUs6UhYQLfnQXXTmtyjZfjpIppk
+         hHW2Edk+U86EHHp+xTRjK4wYiRnH9SUNZz5b+odVoADsUTtynoT4bTbH7cTDv3qJ2S/m
+         w255LbDYGdF+/QA5kBfcwBeVJfgFtteqqhehMOBst50yGs+hlRxYP9CoX0iygdoiANLf
+         W87w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779152671; x=1779757471;
+        d=1e100.net; s=20251104; t=1779152698; x=1779757498;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=oXHtsnBY1AjSAv+HlUFo/FYDsuTcP65qwKVLI9BrKvM=;
-        b=HjqCiPYxKaYWoEbyfhWaXHQgT9eL5aSh/D42fYydzFTAWarnZcJ1UvvLAYjELHOm/J
-         d548C7R0UxtstiTg+IMyfyamuV+Y04ISxRcMpc4jx20LClpmUqEcoZN0HkxlAGW9VxCz
-         QkpIJNWlU1ARPlDrze1Z78Pj7cTA4UPC1EMRFbNpzwL+S1B7qXW0FzI+iXuHhQWKCtWS
-         d+Ng1+wqW8+vSfd7mguT2WZJ1U1yueA7gHEL5oFug54lRE24r0TngBab7KrQEtTc3y9H
-         TtUgjBSV0M+Xrgviri6SXg8X2UDiR9JCZksf8jejA/9rEbj1ie/CmUuKU/qlnTrQn/as
-         HGOA==
-X-Forwarded-Encrypted: i=1; AFNElJ+810iEtaUIC8x4hB5FbHspsMo7+46cWurnGYJ1Lp1WqyIGDf6enoNGs4Qml0RSJxYWTZfRiHTyzWPdfUD4Cg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwihlapsPTIkBmqoGViFzuVgwWrIpmjdXXxAaAbzoEEIrJr8gt7
-	QL6ovVq1wHWWPqQzMAvLAMJyFmqn150cc4XkFUY61kvalTOmMQ/vdFK1
-X-Gm-Gg: Acq92OHPUwSolRTF/w37a4yy7sOdR5nClua2rR/LkMyHePESPINnflPhjncPLJA2FwC
-	YZfY0Volad/Ma1gvIMlDbsi4MxkjMz3i2Om7GV7VYfPSvWFYL/5yYIDpRmBpElJR+2QBLck8pEo
-	kZxL5/IJuzUbVrpCP1iCzcWweJuzIQdOrAJG/YBxgO82Fmn7RJBfSQSBhBAvUwDJ4v+kepY+Fpw
-	0+W1ddnikQxIbpgaz1b2v3jUFROeFm6+jRklJG/NqoZcMWMLqTzrsbIzTy0lyYGx7IlpADeiOrp
-	9qffmgetVwPE80K1ZcUFL+Ln2GuxKr+MBo7hZC3tX/77GNwKRlQn5H6vLd6nS/bAul7Jb4QK7Rb
-	PdVthIgg6bTfkYi7W6XIDwFSceKPc8vGq55bSN3TZV1+GUOkttq2i0jCRH/d/fZKRITBy8903zA
-	NjO3Kwg+zVst+xO+RybZIeCwS7sDbYIKW/epjSaboQbeI3fU+pDr+6SRQp5dwqJMHYuRGnxPMHi
-	h754Tbncx1owd9KkKmn0trFTTd5IpSK5uU9pyyYkVqH7g==
-X-Received: by 2002:a17:90b:4a:b0:35d:a0b7:9608 with SMTP id 98e67ed59e1d1-369519feb17mr16805439a91.7.1779152671266;
-        Mon, 18 May 2026 18:04:31 -0700 (PDT)
+        bh=BU1E1ogi+Bq1jhmjqjfCvkZIxNYkDteN8QmCFhzbN+A=;
+        b=WiLayeMN0Hu0FrGZ30+hnjoeE6wqVhNCR1BNa/36WIjH8E1DUTRfu53o0q4eEjP1kq
+         mLL2zBHzz3qhnfRYhxOnMIM70CTwVecMv/cUUuYfOce7NeKXkaB4ghlTTOZ73SHpmi79
+         cx3DmoPMJr8WM4R1dQa68QlFsuHboWRSiuih5PvC4eQ5w1x/1frtOiSZCqAc9RnLcxkz
+         hcbD0rK/fmr2eQzt3yeqEXvKsytMCy4Deiv+YyRhQIjTZWb/SZITJDsRNqI2GGW5jsRf
+         ICSzPWPqbz47zWnQDb/4YT0T6A5SrK7tsOBkjkEB1+hZaq5CllZoPNaNhtsuR1vdwi2L
+         a0kg==
+X-Forwarded-Encrypted: i=1; AFNElJ9WRS+mz8NVFwSI7GxuUrjyWRxfJqsZUBdUyXkz88/BAseOkeu1nD184iroYsOpBJ4ns1LzpT4aSMEhAKB2xw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwkD2p/A1CIHlWxDvdCLnJFuU10TkgMdiLP3y8mZBnPj54emm8i
+	JRdGLMWZhVpVOSlLazxh/hf1IWb3KeYb4KnOe6815nHuI30PCK0+lJmg
+X-Gm-Gg: Acq92OHvp+CDVrGPnTBSRph0FAshifb5vZdAIUCTsh34YBW9NE5prC4KAFaFr73X3C3
+	MeZkBKF07Sl92gxluuG7YYxLxtd/z4QOZp2T4rgIOaWzSjvzkzdCtmI0MXmSf/pZjCO4yXJ5ci1
+	Fff7Nqsj2nHwOzs7SmJQ2H2w6vLqfADmyjnkR+pSh2gOIxNVtqOQYSdOnBb7xcXVtghjPiDdYVA
+	xY+oLirx271z/LPieirbMXM79rZm7C/z3P0unklV5PDvGpE7RaAsH/GShsk66HjKaRt188NhKbM
+	vJhJye6mmsiPHIW+7yldo++6uxDL7e/w67lmtiWV5gNuGxtgFxxKFYTO8uYfdeay0GIalnU8Fv3
+	320IWPPfYmVQ+0gEn2eUxjKUGdlH4BWZ614PNeCxehefJWr5YjM3+2A5KLlpaHhjxuTi+tjUD6O
+	fxpjrfPVhR5s0BxLWyN/zw4uxbGDBsgXL7AxLDUXBuexYXAA/hJLkLvL1rsVbpT7CvgUTEzSa74
+	LvEW+tcv2Yyst1uGo7rM0dOVveFoyx2MmkeNVANlKzriw==
+X-Received: by 2002:a17:90b:586f:b0:35f:bb33:d72c with SMTP id 98e67ed59e1d1-369518b00cdmr17164840a91.4.1779152698278;
+        Mon, 18 May 2026 18:04:58 -0700 (PDT)
 Received: from ryzen ([2601:644:8000:5b5d:7285:c2ff:fe45:8a32])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-36951278e7fsm12177196a91.8.2026.05.18.18.04.30
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3695148d53asm12212912a91.15.2026.05.18.18.04.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 May 2026 18:04:30 -0700 (PDT)
+        Mon, 18 May 2026 18:04:57 -0700 (PDT)
 From: Rosen Penev <rosenp@gmail.com>
 To: linux-sound@vger.kernel.org
 Cc: Liam Girdwood <lgirdwood@gmail.com>,
@@ -80,15 +80,15 @@ Cc: Liam Girdwood <lgirdwood@gmail.com>,
 	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
 	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
 	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
-Subject: [PATCH] ASoC: mediatek: mt2701: allocate i2s_path with priv
-Date: Mon, 18 May 2026 18:04:13 -0700
-Message-ID: <20260519010413.629214-1-rosenp@gmail.com>
+Subject: [PATCH] ASoC: mediatek: mt2701: fix snprintf bounds
+Date: Mon, 18 May 2026 18:04:40 -0700
+Message-ID: <20260519010440.629290-1-rosenp@gmail.com>
 X-Mailer: git-send-email 2.54.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260518_180432_409939_E8D07AA8 
-X-CRM114-Status: GOOD (  13.56  )
+X-CRM114-CacheID: sfid-20260518_180459_197343_DC660399 
+X-CRM114-Status: GOOD (  13.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,82 +103,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use a flexible array member to combine allocations.
-
-Clean up surrounding code and allocate based on afe_priv and not
-platform_priv which is a void pointer. struct_size needs a properly
-typed pointer to work.
+For whatever reason, GCC is unable to figure out that i2s_num is a
+single digit number, with MT2701_BASE_CLK_NUM being the maximum value it
+represents. Add a min() call to help it out and fix W=1 errors regarding
+snprintf bounds.
 
 Signed-off-by: Rosen Penev <rosenp@gmail.com>
 ---
- sound/soc/mediatek/mt2701/mt2701-afe-common.h |  2 +-
- sound/soc/mediatek/mt2701/mt2701-afe-pcm.c    | 21 ++++++++-----------
- 2 files changed, 10 insertions(+), 13 deletions(-)
+ sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-common.h b/sound/soc/mediatek/mt2701/mt2701-afe-common.h
-index 8b6f3a200048..c9477bc24ee9 100644
---- a/sound/soc/mediatek/mt2701/mt2701-afe-common.h
-+++ b/sound/soc/mediatek/mt2701/mt2701-afe-common.h
-@@ -89,7 +89,6 @@ struct mt2701_soc_variants {
- };
- 
- struct mt2701_afe_private {
--	struct mt2701_i2s_path *i2s_path;
- 	struct clk *base_ck[MT2701_BASE_CLK_NUM];
- 	struct clk *mrgif_ck;
- 	struct clk *hadds2pll_ck;
-@@ -99,6 +98,7 @@ struct mt2701_afe_private {
- 	bool mrg_enable[MTK_STREAM_NUM];
- 
- 	const struct mt2701_soc_variants *soc;
-+	struct mt2701_i2s_path i2s_path[];
- };
- 
- #endif
-diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-index bb459faa6e05..d56b498e8c0c 100644
---- a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-+++ b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-@@ -1593,6 +1593,7 @@ static int mt2701_afe_runtime_resume(struct device *dev)
- 
- static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
+diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c b/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
+index 5a2bcf027b4f..43157f218409 100644
+--- a/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
++++ b/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
+@@ -25,6 +25,7 @@ static const char *const base_clks[] = {
+ int mt2701_init_clock(struct mtk_base_afe *afe)
  {
-+	const struct mt2701_soc_variants *soc;
- 	struct mtk_base_afe *afe;
- 	struct mt2701_afe_private *afe_priv;
- 	struct device *dev;
-@@ -1602,23 +1603,19 @@ static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
- 	if (!afe)
- 		return -ENOMEM;
+ 	struct mt2701_afe_private *afe_priv = afe->platform_priv;
++	int i2s_num;
+ 	int i;
  
--	afe->platform_priv = devm_kzalloc(&pdev->dev, sizeof(*afe_priv),
--					  GFP_KERNEL);
--	if (!afe->platform_priv)
-+	soc = of_device_get_match_data(&pdev->dev);
-+	afe_priv = devm_kzalloc(&pdev->dev,
-+			struct_size(afe_priv, i2s_path, soc->i2s_num),
-+			GFP_KERNEL);
-+	if (!afe_priv)
- 		return -ENOMEM;
+ 	for (i = 0; i < MT2701_BASE_CLK_NUM; i++) {
+@@ -35,8 +36,9 @@ int mt2701_init_clock(struct mtk_base_afe *afe)
+ 		}
+ 	}
  
--	afe_priv = afe->platform_priv;
--	afe_priv->soc = of_device_get_match_data(&pdev->dev);
-+	afe_priv->soc = soc;
-+
-+	afe->platform_priv = afe_priv;
- 	afe->dev = &pdev->dev;
- 	dev = afe->dev;
- 
--	afe_priv->i2s_path = devm_kcalloc(dev,
--					  afe_priv->soc->i2s_num,
--					  sizeof(struct mt2701_i2s_path),
--					  GFP_KERNEL);
--	if (!afe_priv->i2s_path)
--		return -ENOMEM;
--
- 	irq_id = platform_get_irq_byname(pdev, "asys");
- 	if (irq_id < 0)
- 		return irq_id;
++	i2s_num = min(MT2701_BASE_CLK_NUM, afe_priv->soc->i2s_num);
+ 	/* Get I2S related clocks */
+-	for (i = 0; i < afe_priv->soc->i2s_num; i++) {
++	for (i = 0; i < i2s_num; i++) {
+ 		struct mt2701_i2s_path *i2s_path = &afe_priv->i2s_path[i];
+ 		struct clk *i2s_ck;
+ 		char name[13];
 -- 
 2.54.0
 
