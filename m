@@ -4,63 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BB6BCD4F3D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2026 07:25:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5ADBCD5BAC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2026 10:21:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=mJkyipvc3IqDM0RSCkuAPvsrzuqXuTst7xaupG3y5v4=; b=uAXJCY7wE2C7DmEtaSvGt5OtL2
-	YEgytJy73YM7JslGIISfk5UOMp4vc7OP65itwlVI+JDWDoRzGhUjoBzP0Ef6mxk6TmhwielL4sFqs
-	ilLx+0C1kbWIoM4kU2Al/AcSSMS1voMS63HDBLUX6mLr4HoTpiHNQJzo0pbhvtOr7DQG9lkA6URD6
-	7AZSHnHLM/cka7BW+mFryD1f+9m9NbKSk4By5Wb8G56baOENIuIlsjTk1Sng+SO4Rdh5oOMdr1pL8
-	JA0rMGgNxOjmKF8UVDTNFP2UMoK1LLdNgbv38csSGgHPKlBYxmnQrnZnqA97NnAuqW3BlZwuZoKyo
-	iSHqgIvg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2DgGODNadjgGJsoo1ylpwBE577qTB7GC2dApkXhqSvs=; b=PnigVbxv864ZVvDsGapxJVezG9
+	snm+KMv3vLt2eT9Hnv8FHpcM2AuQ+g7ox0w4NahoUn6Zknr5KtMGMANIeytCLpzM+J/iT2FlmFwcy
+	MFJCzqso3Y8XBsAp6aVfJz0hbRnUnZDbpZ8uWFIg29bGasyjA9xSE38SZGHY0HFSALJ5s1szv6g3+
+	IQr1O7otCp7lTwNoETo8uz6MW0XkCxa7gW/0MiAHcT/fVjLinZTaQLOkFY8isqe6iA2c5QsnDddhn
+	Vh7LuX7mO4U1RHROdE7Mzm1u2PQVhs2BalzgnaSM1v9aRk/oG0bkcRGbbe+xsMvPQIS6odV+I0Vvs
+	zAgkmEZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQKFt-0000000A4rV-2rCY;
-	Fri, 22 May 2026 07:25:13 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wQN0H-0000000AUvc-3Uhn;
+	Fri, 22 May 2026 10:21:17 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQKFs-0000000A4r5-2NuU;
-	Fri, 22 May 2026 07:25:12 +0000
+	id 1wQN0F-0000000AUv2-3Cuw;
+	Fri, 22 May 2026 10:21:16 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 89BBD60219;
-	Fri, 22 May 2026 07:25:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B54E41F000E9;
-	Fri, 22 May 2026 07:25:10 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 58A7243AF9;
+	Fri, 22 May 2026 10:21:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45D741F00A3D;
+	Fri, 22 May 2026 10:21:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779434711;
-	bh=mJkyipvc3IqDM0RSCkuAPvsrzuqXuTst7xaupG3y5v4=;
-	h=From:Date:Subject:To:Cc;
-	b=T2i9SoqpC9ZJTEwxxzBRTBIa6nUIDPM9hRClfW9Vn1R1J2kMTyqyseFRzdlcfpkXt
-	 YXRd4WbTgS4TYJget+H0U1pDJkHj43b4+pXNK2IOSXELWKYsPQ8YRNOAGEsBDJPQap
-	 khJlKlIR4NvWyFBeu12k/Z5wgPQPwUaKvs1iYlKudy6udzX7Y1QjQMAcJJiRtiOVSz
-	 cjq8HJ0qxYp8pSkAxNZcHVU5hHj6GLIJI4YqJTVjKoHWLS+hMn0m3+t36SWizN9CEm
-	 skbodHXNJTPhhJYXIZbT2iJ+WOjukNsh5zIOqih/KQxHU4B5ofdh8/1gGlM6Uro742
-	 Xgz4V+MFxCP0A==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 22 May 2026 09:24:52 +0200
-Subject: [PATCH] wifi: mt76: mt7996: remove redundant pdev->bus check in
- probe
+	s=k20260515; t=1779445275;
+	bh=2DgGODNadjgGJsoo1ylpwBE577qTB7GC2dApkXhqSvs=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=NhkcvpWU504XJCVZIPuxMhF+fcN7kh6dOwSwL+rQUWKSJFrMBp8taYuFNrkdISKN/
+	 abWD5h50FvIuX7UjOZBUywR0mZaC6RXN5MpJ47RVaprIPPQ6N7FNhkaHL4fy9oLWE2
+	 bNk3b8Rq1182L+j1Wb/k0lWztKC0eXWY4KfGYS6NfFSOBNPb1ZeeE6lFNwtMkEk3Mb
+	 Kb0wvQDuYU0JB/n1n35ItS+VZmCk1aVZe3osldYV/ScWkqlRUqfXn3vCJyE/GOXg/r
+	 pqFht5RWvoOULbjItGw3YXezQHj6JQEvAzJeI3PTUU0i4hq7bKqsxctyEzIScCRifk
+	 TVuxXgR+11pSg==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, Lee Jones <lee@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Chen-Yu Tsai <wenst@chromium.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+In-Reply-To: <20260514091520.2718987-1-wenst@chromium.org>
+References: <20260514091520.2718987-1-wenst@chromium.org>
+Subject: Re: (subset) [PATCH v4 0/6] regulator: mt6359: cleanup and add
+ supplies
+Message-Id: <177929384264.56665.1047692628146708628.b4-ty@b4>
+Date: Wed, 20 May 2026 17:17:22 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260522-mt7996-pdev-bus-fix-v1-1-c91716484365@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MSQqAMAwAvyI5G4gR6/IV8aA2ag4utFoE8e8Wj
- zMw84AXp+KhSR5wEtTrvkXI0gTGpd9mQbWRgYkNFcy4nmVdGzysBBwuj5PeSNJnOfFE1lQQy8N
- J1P+17d73A4IpCSRlAAAA
-X-Change-ID: 20260522-mt7996-pdev-bus-fix-0ea1302f0d68
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Dan Carpenter <error27@gmail.com>, linux-wireless@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.3
+X-Mailer: b4 0.16-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1804; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=S86o6RsskkHWtZ3c4SAC2I3qNeFXbs4tllWVFU88BEU=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqEC4YxSKtcKDBHMtlwOBWiLs/4dlCeUfDdAjCo
+ bwUG1Bb2ReJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCahAuGAAKCRAk1otyXVSH
+ 0BmQB/0ebTYeZ/V6SuHqtRkYGeTSKGRrPgmho05X8NIN9HYgS6LDOcttuTZCuNG7WN/j7BPMUsi
+ V33UcE8/EW3SjzddG9h6BCurQ+IgT+chjLN3BeRpgIYUV6A5rui0Xlw+8+2quWAGyJVPi9UfamL
+ ri8PPkEbzP8Oe5d1dxr3n3f+QfntPP8GOcCI4ZtreI/suhmwcuoQU/Q1Q26PPB0tng25HF44k/G
+ S2r7dIDussmXd5sp1EzyEax09lMGi4f8vDJuwItc3uCH6SUvd3YGFax5zN20+Sm8HVOn0W4VL/+
+ Gru5baz35mbj0LYOpAVvdj0FXNolFpFUedwdsc+QNqfNudnG
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260522_032115_846254_D9F93A5D 
+X-CRM114-Status: GOOD (  11.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,36 +88,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Drop the unnecessary pdev->bus NULL check in mt7996_pci_probe() since
-the pointer is already dereferenced earlier in mt76_pci_disable_aspm(),
-making the check dead code. Silences the related Smatch warning.
+On Thu, 14 May 2026 17:15:13 +0800, Chen-Yu Tsai wrote:
+> regulator: mt6359: cleanup and add supplies
+> 
+> Hi,
+> 
+> This is v4 of my "MT6359 PMIC cleanup and add supplies" series. This
+> version addresses review comments from Sashiko.
+> 
+> [...]
 
-Fixes: 377aa17d2aed ("wifi: mt76: mt7996: Add NPU offload support to MT7996 driver")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/mt7996/pci.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Applied to
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/pci.c b/drivers/net/wireless/mediatek/mt76/mt7996/pci.c
-index 12523ddba630..b7d9193e042f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/pci.c
-@@ -141,7 +141,7 @@ static int mt7996_pci_probe(struct pci_dev *pdev,
- 	dev->hif2 = hif2;
- 
- 	mt76_npu_init(mdev, pci_resource_start(pdev, 0),
--		      pdev->bus && pci_domain_nr(pdev->bus) ? 3 : 2);
-+		      pci_domain_nr(pdev->bus) ? 3 : 2);
- 
- 	ret = mt7996_mmio_wed_init(dev, pdev, false, &irq);
- 	if (ret < 0)
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-7.2
 
----
-base-commit: e9aeddfe98ebccd3761ac7dd316af4fb5de1c28a
-change-id: 20260522-mt7996-pdev-bus-fix-0ea1302f0d68
+Thanks!
 
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+[2/6] regulator: dt-bindings: mt6359: Drop regulator-name pattern restrictions
+      https://git.kernel.org/broonie/regulator/c/cdc517688ffa
+[3/6] regulator: dt-bindings: mt6359: Deprecate bogus vcn33_[12]_* split regulators
+      https://git.kernel.org/broonie/regulator/c/beb4fe279989
+[4/6] regulator: mt6359: const-ify regulator descriptions
+      https://git.kernel.org/broonie/regulator/c/eb17a319f1c9
+[5/6] regulator: mt6359: Add regulator supply names
+      https://git.kernel.org/broonie/regulator/c/10be8fc1d534
+[6/6] regulator: mt6359: Add proper ldo_vcn33_[12] regulators
+      https://git.kernel.org/broonie/regulator/c/fb6a6297acfa
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
