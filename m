@@ -4,106 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73DAECD4F54
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2026 12:56:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C97ECD4F3C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2026 13:12:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w+UZtl8z/kYGpSCumZSlladAkgazeQGoZZRlkbCob3M=; b=OiNpE2WLbb4VEB9XRp23fQLWEE
-	S+jXyjddUpfoaj+qkt0OfDf6vxm3SPVbXx2mgLIhr4m59RTxkk/7XtnBzSUqPLAVUSu2Eehek1Yb5
-	rTDKmysrJ0uGz8oVK1keO4dM4chE5RC5PIPOOFDHJ94lDd0FA/mvQAZQ4YYJEdJ+CliDOLLKtX9+v
-	qhHeejLukgkq53ut7FJolsj/vkc+l/nsDHg2AU5u/Ab2XLogtQrd8Ajc9BcZGXapaXV/9hQMxFl6T
-	k5KHpD7AVFJGvKsChd380VKmqLY+CTQmplbP0bnGVPGY966L6P2SYSi7E4lG2Y1cifR1TU1PqtuDe
-	tZnLFSDA==;
+	bh=mUsifWX6aK2jxqZvUw8q1yQUjx3vnN/cEOO8Ykzq3n4=; b=buBB1d7AtlLBAwU+ECVlLzMd8u
+	fhh3qmMcvi4taYcge+YhmagfCfxvYTeMoSGU9VcW/MEMGOGLOg9ENtdesAGnXZQ2HJSA9BRQfgtTw
+	NyHGPmp1tSV1iz38YzmCXI4+NsPpDC9I3knkMgcXW2dc9iSFcYdgcl8rDD7Q8fPN4SC37onTRr1tW
+	iuBmKoPbX6FwymM7bajTr+vqfH3Tj+/lPjH6iEfOzhc18jOmDLSrokY2dsBGE0ZpDjIa+g/h/vADi
+	sB+XCBlBiMq9BDstGUV6YsawUpbFuwoGMdJF5XB8h53fZQQmDL2zi2+H5KU2zgTyzwG5xKDlO4OJ9
+	dG5pngUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPgSu-00000004cOI-3yd5;
-	Wed, 20 May 2026 12:56:00 +0000
-Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
+	id 1wPgiX-00000004eFt-2Q7E;
+	Wed, 20 May 2026 13:12:09 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPgSs-00000004cNK-3g9e
+	id 1wPgiU-00000004eEZ-3Q1n
 	for linux-mediatek@lists.infradead.org;
-	Wed, 20 May 2026 12:56:00 +0000
-Received: by mail-yx1-xb133.google.com with SMTP id 956f58d0204a3-65c52bb5dd7so4651743d50.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 20 May 2026 05:55:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779281757; cv=none;
-        d=google.com; s=arc-20240605;
-        b=Wh7SnSjeTeH+InQaPPJElML9c6Z2ma07ESF2aY3Bq1SCyJskRftIayni4GPdU9E9ql
-         8gps5q8Pojn0piyaKGl1turCmS0GkuT4l1BYuaEb70z9MkHswt4SiMYOOfLg8NSxS2NT
-         a7aPW8gEgnZcOedMRrWWBwaz/av8U5+9u5mg7UqHp5fYjtjds6ySDwUr/tCals4Q5gfe
-         r0mNmeY3PgNyjEb1WAnIQvKZpNd3dG7+44s1L01Op7DW3IhFegvTT0dB/Hg7z6LNZPPm
-         bYE8ialkYR1PV1fXVHC6fTHQslnebFk+pGXGh9T0PyUpAcoh6AN5dbY1VoPbfi+gau6O
-         U6/g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=w+UZtl8z/kYGpSCumZSlladAkgazeQGoZZRlkbCob3M=;
-        fh=/o9xgxk3UtSE2ClK3OwJM/wJyotJ7HR5xKCSZfPrhoQ=;
-        b=lvopbN7e0wHHGNOMm3IbkEaVUw1wMkK9skUyrSNsKpvv5aU3f17+7/uFYGLDaupmmi
-         x7q5tRBydJFfZW2zXeP/aLMWWUKgP3O4KtmjrKJZY1QsPMA5AGEdnwqw8dLo/KHBaLpQ
-         uIKGKPMcNrwu59RjnNZLdYD9aX/5UDXuAb8+ob53zP7P5GPNQYzWragz8gJ+DcNRACv4
-         98onaaP+yAyAGio0UvbN3XDnsI4w1zOd48nya8GuNTiGAtOSiOauDITc4GB/Mwhq2OYA
-         WKgQanqKlRvaWsJquhPYNiCFTesBBQLOg85Mvf1L1TCYeD/z7TPDVmLiNzIQQ8POuIfs
-         Vnuw==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Wed, 20 May 2026 13:12:07 +0000
+Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-43d73422431so3370194f8f.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 20 May 2026 06:12:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1779281757; x=1779886557; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
+        d=gmail.com; s=20251104; t=1779282725; x=1779887525; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=w+UZtl8z/kYGpSCumZSlladAkgazeQGoZZRlkbCob3M=;
-        b=LkKFTERuWHDYJcBtUmLZo/4UVOcUjSdVkH+UphlXjhX4HTC5Pr4KDgfE/8hSMKkmYM
-         +3wvEDPH4ElegW2bZlZraf5SLP2PtvQOjIeDMFWH+K8Rb0E/NlYMw+LTFgycoseKIVDS
-         71NiZluRJkVntDAQIONsGAv0iR8ofiBPBkQ9hYKVjaXGRmr6ZDUcrofTKmKTJ2Svzx4k
-         JamQsgcUCnu3mrCzwLYD4eWXAkNi6Csqrla70+HgwW8t+eDeDGWo0kTWgq88StJ/3ozU
-         Cms6luTnJ2LvluA9gh98G+31WppCv3Yml9MDq6FQjg1ifAelFO6LgxQRxRkDWNwKYQXE
-         mGIQ==
+        bh=mUsifWX6aK2jxqZvUw8q1yQUjx3vnN/cEOO8Ykzq3n4=;
+        b=TlIuVGhTGVsvdr8CEpjeD3UYlf2sPabc0Ft7IIwxu125bdhTatVij/cq3U+dBpaxcY
+         NcaDnbTGOzZMSUYOEk34dlI0pZTM9/8Jaaz9+Iz9CU/opsc3ZNuPkmuZpsMMdECycZP/
+         ewjRqNnn19PE4AEDdPgyXP2Ig5H2Xj8Y7JHmZP9wqT3jPAKV8vNdCXaR9aiRCywx2329
+         fGrpjqNd7koSIPp2VMmAgqjkzRPWKA8+6PYakIOfa5uEuJOJkJhvjN5rrZkzsthu09WF
+         PvEhwu8CoMvZRlBRmVUHTa/wHZ6pc2+HtxTcfVPyXtHGMeHaTMPXPkWCvksL4hT0NdxS
+         C2kA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779281757; x=1779886557;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+        d=1e100.net; s=20251104; t=1779282725; x=1779887525;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=w+UZtl8z/kYGpSCumZSlladAkgazeQGoZZRlkbCob3M=;
-        b=Hfxeb+Ly6Gz26wYGueE1VpffZ4PHRfj5O6kebYaA0NTrEPB20NLtgKGt++3jqKZY6f
-         qYKW8qkWi5DnMf1QBs4HPuSUK9sG4NIgwpTL/ouOhEZmzvwTwU/yfHPp7xvo8WsYsZnk
-         ufEUHVgTrVAO79DwLaNCmJtQMJc0i7zJVcpnHN/oK4JHCd2Y4lz1k6Qw/r7cy1WKwXTu
-         J0trB/nGUF7Oig4ph63KyX7Fk/VdO2gzB3PxWxLJmUzfjiWQ2kdmWeYB5RL4OpbhA13k
-         2HjCeAYnmsHwPKUFoa1dGxU3GfNySwLNszyy4k7R7Ml8Z8oo4INTaxekI6L9oy7NPM+t
-         YOkg==
-X-Forwarded-Encrypted: i=1; AFNElJ9ZBMWIUY3HMctRFlgjKB/ZeMTFR0gKE3VmSC1Ne83W9IOjQo3u0lr+T25mg/IziMr2PauaR6wD9NDk9qfPYg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy4zlxT88/lEVT6DGsYKLCTi2p2qzOaamP/b7UStmAjCVLaKJRK
-	Cp365td0Y0RYbJdM0EpLfONft/7aaO4RQjfJc4r6f6ALV3Ii5CaT9d+miya3Im04mQ0ed4WQtsf
-	RTvzqhjZ9boJvVtQRY0TQkyPcpgEXTJw=
-X-Gm-Gg: Acq92OHSk1+INIozZIuOoEhWuLIT5wWlBGv6wZVfu4hxab5wfSJy7EO3ciX13DDjn1a
-	NYnWmNvEgFgY8kXud6ksKjnwUl/mrG6K/FOrg6bGWbqvsnuGQYFApy2Qn6r80iRL8t7ZTshaKbc
-	NZITwn4EV0y+LR/F0dxmHiOZmowHriKzNktGPkYvx9KWShuAM/SMhAYYjYwxe6DDh+uTFK48MHl
-	v/684QodXJXrcB6KTOx1TSGdvwbapy9gF6Sf8MWuFcBGZsP+r3b/kX1Kn1wYTx41ZdfPg7uSJs0
-	46aFgOrqaBT6yh3Z+48miHUjclvrkDAxooLe+nrjWWJtsZ0PjOt8x/bHJixZ0y81GYww9Q==
-X-Received: by 2002:a05:690e:4293:10b0:653:f72:f482 with SMTP id
- 956f58d0204a3-65e2275e8fbmr18516144d50.22.1779281756819; Wed, 20 May 2026
- 05:55:56 -0700 (PDT)
+        bh=mUsifWX6aK2jxqZvUw8q1yQUjx3vnN/cEOO8Ykzq3n4=;
+        b=JIkT99QxcsKtW3G/7Ioj/yffembel6USNx01njghSx65lWun8lUvGCkxt2i3ImXal7
+         XxPjgH51mpTw27vmqL0ggrwPin3hVN4J5yTztetOD1l3JGdo5Rh/DLW4k+hdUnCdxL9T
+         w7nefuPXXdYWKf1J+g/DNALAcxV5hgP+suznp5VSt1sSEOPBoYjVO7s4e4Wz1TXB9zNN
+         6JA86wnefY0czFIVgUoENvq69Cfg9FjUTTxkgxhGeC607TIUufB6xX9PS4Iefgn0uPL9
+         TMuutX/lh8tK2LYYfXRZs5IviIzBabl+g79XaenmxAGMOrz/hGSXTecLH5WVZVmkmYoN
+         Oz8g==
+X-Forwarded-Encrypted: i=1; AFNElJ+xUJOw7ROHOWY4F5432oggKhsewTLlDO94bNJPnVI+6xfAaYNGwr7WvBvDDWQek74h8TW1/+lyi8eKg28cBA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxtUf//8Wjrv7XDUr4QLO9BUPVyHZUknxwWSozuWbgnih942LUQ
+	ea1zQ5whZSPebFwB7iAvZFl/CY0uSRjfNE+BRSBURq3O1TjlfjUHcJtw
+X-Gm-Gg: Acq92OE7QxhyvNS2dwQ1M2wZYA7PPxk6ncd3nBgNVGn1VcS7XgxmmsQFoM19CIG4OYF
+	0Rb5Ur7o/7FJR8ViQxHDVRsBMTJ0/MrtI7zaMY7dB7Sx6R9ZmYsgMh8UnA6zj8V7+2ZwgXCPoJr
+	sCxGFHRddb2aHZcSxrhFRwDLMpMtSCJ1vS3B4w4oZWtsNMHXUAJwYPR6j51S/vIK/zKh5FZwyFt
+	52BMaEPuzhW6hKVAppXJzaR7wk51Yzhzsz8vzEVzsmbzD0m06WtlSMuVxzBb1/ephI0SwYHUQSY
+	U+SWDuPL31Y1iGWjhtVQs4Z2a5m3RzcpWrFMntjzvZVHITCKhIcmplldTaWwNghg7jzxcM1Y42J
+	cJv8rEKKRnkKnOp1C4Eow3MDgrscveMVov0kecmDJkKpB8zfzyDjvjPWdTuFDRejhWx6TV3JQn6
+	999Ph7YdCXhDOjfsTWlaxTZcSPqNcpDXVuXWF2UU7Qwx4m1gkzVeWUZvOVmwCnehJ7
+X-Received: by 2002:a05:6000:1844:b0:45e:98ed:bde5 with SMTP id ffacd0b85a97d-45e98edbeb5mr3627217f8f.24.1779282724547;
+        Wed, 20 May 2026 06:12:04 -0700 (PDT)
+Received: from pumpkin (82-69-66-36.dsl.in-addr.zen.co.uk. [82.69.66.36])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-45da0fe13a7sm56345921f8f.29.2026.05.20.06.12.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 20 May 2026 06:12:04 -0700 (PDT)
+Date: Wed, 20 May 2026 14:12:02 +0100
+From: David Laight <david.laight.linux@gmail.com>
+To: Rosen Penev <rosenp@gmail.com>
+Cc: linux-sound@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, Mark
+ Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
+ <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
+ linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC
+ support), linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek
+ SoC support)
+Subject: Re: [PATCH] ASoC: mediatek: mt2701: fix snprintf bounds
+Message-ID: <20260520141202.1803aa7d@pumpkin>
+In-Reply-To: <20260519010440.629290-1-rosenp@gmail.com>
+References: <20260519010440.629290-1-rosenp@gmail.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; arm-unknown-linux-gnueabihf)
 MIME-Version: 1.0
-References: <20260520021500.13504-1-liujiajia@kylinos.cn>
-In-Reply-To: <20260520021500.13504-1-liujiajia@kylinos.cn>
-From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-Date: Wed, 20 May 2026 08:55:46 -0400
-X-Gm-Features: AVHnY4JAx00s9RY77VuK7Nfrn9COGaPLhAAlt5GNCqKcZP_N4w4YPkGy2JQbhi4
-Message-ID: <CABBYNZLLNFNuSv0UBNQ7C2HTTg5W2m41hBTNpPw822GMAVNuhQ@mail.gmail.com>
-Subject: Re: [PATCH] Bluetooth: btmtk: remove extra copy in cmd array init
-To: Jiajia Liu <liujiajia@kylinos.cn>
-Cc: Marcel Holtmann <marcel@holtmann.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-bluetooth@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260520_055558_924108_C701A6D5 
-X-CRM114-Status: GOOD (  16.71  )
+X-CRM114-CacheID: sfid-20260520_061206_876483_615283F1 
+X-CRM114-Status: GOOD (  19.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,46 +105,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jiajia,
+On Mon, 18 May 2026 18:04:40 -0700
+Rosen Penev <rosenp@gmail.com> wrote:
 
-On Tue, May 19, 2026 at 10:15=E2=80=AFPM Jiajia Liu <liujiajia@kylinos.cn> =
-wrote:
->
-> In btmtk_setup_firmware_79xx, the data length indicated by wmt_params.dle=
-n
-> in the cmd buffer is MTK_SEC_MAP_NEED_SEND_SIZE + 1. Except for the first
-> byte, the remaining length is MTK_SEC_MAP_NEED_SEND_SIZE. memcpy copied o=
-ne
-> more byte to cmd + 1 than the remaining length. Align the length passed t=
-o
-> memcpy to avoid exceeding current section map.
->
-> Signed-off-by: Jiajia Liu <liujiajia@kylinos.cn>
+> For whatever reason, GCC is unable to figure out that i2s_num is a
+> single digit number, with MT2701_BASE_CLK_NUM being the maximum value it
+> represents. Add a min() call to help it out and fix W=1 errors regarding
+> snprintf bounds.
+> 
+> Signed-off-by: Rosen Penev <rosenp@gmail.com>
 > ---
->  drivers/bluetooth/btmtk.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-> index ea7a031000cd..53cba71cb07f 100644
-> --- a/drivers/bluetooth/btmtk.c
-> +++ b/drivers/bluetooth/btmtk.c
-> @@ -188,7 +188,7 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, c=
-onst char *fwname,
->                                        MTK_FW_ROM_PATCH_GD_SIZE +
->                                        MTK_FW_ROM_PATCH_SEC_MAP_SIZE * i =
-+
->                                        MTK_SEC_MAP_COMMON_SIZE,
-> -                                      MTK_SEC_MAP_NEED_SEND_SIZE + 1);
-> +                                      MTK_SEC_MAP_NEED_SEND_SIZE);
->
->                                 wmt_params.op =3D BTMTK_WMT_PATCH_DWNLD;
->                                 wmt_params.status =3D &status;
-> --
-> 2.53.0
->
+>  sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c b/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
+> index 5a2bcf027b4f..43157f218409 100644
+> --- a/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
+> +++ b/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
+> @@ -25,6 +25,7 @@ static const char *const base_clks[] = {
+>  int mt2701_init_clock(struct mtk_base_afe *afe)
+>  {
+>  	struct mt2701_afe_private *afe_priv = afe->platform_priv;
+> +	int i2s_num;
+>  	int i;
+>  
+>  	for (i = 0; i < MT2701_BASE_CLK_NUM; i++) {
+> @@ -35,8 +36,9 @@ int mt2701_init_clock(struct mtk_base_afe *afe)
+>  		}
+>  	}
+>  
+> +	i2s_num = min(MT2701_BASE_CLK_NUM, afe_priv->soc->i2s_num);
 
-Have you tested this on the actual hardware? If not we need a Tested-by.
+To me that is backwards, like an 'if' put the variable before the limit.
 
---=20
-Luiz Augusto von Dentz
+>  	/* Get I2S related clocks */
+> -	for (i = 0; i < afe_priv->soc->i2s_num; i++) {
+> +	for (i = 0; i < i2s_num; i++) {
+
+Caching the limit also stops the compiler having to read it every iteration.
+
+-- David
+
+>  		struct mt2701_i2s_path *i2s_path = &afe_priv->i2s_path[i];
+>  		struct clk *i2s_ck;
+>  		char name[13];
+
 
