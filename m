@@ -4,61 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 800C4CD4F3C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2026 08:12:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AD79CD4F54
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2026 09:19:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ZQS8XilUa1r3xVa+F86IWUqS7+Nx5O9cdD1dsWTVuI0=; b=HJetorYqxF2CWagavy6JY6CDqo
-	MpliT+U9dowr87OOqok9VTyqyoWIepmsNkJ9AybWJpkS3YssVx+mpYAnyspCRFFa5myyCONb16G7E
-	4hBYKqcsDGFiTnPKoB5DC0BCPNMjqx2DANMaEiHupd3XkazgBocEPIxcEmvoaQ7t6aICtT61lyqdP
-	8tz/3UMTKbQLcoslXObewRNbxbgwCC5JwwKu9XjAfDb25pXHJp8WNB6Qg6js8NQ07NBceUy/MIYtv
-	k61Jdmy8bwQ2SLPt+pP3y9lncUoNaFgs+nMDiN/JBSdVnH/DMmlNlkgmVGCqra7Gsc7p7hJv5CRub
-	gtOWTSUA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xTFW+4fxY8B0UHz/RksdPrUd9hEWGcsZ7LCMbKPBaGc=; b=UFDtVRF2QUxgB2iCCV8T83M1kh
+	5fPhWlzHy3G9GpILsTlReEnil9LDWgNG4Ks2fIqccs5iXilN1i0GNQU7i1ZnBORVTdNjtHkd+7Jbp
+	jD8tVqRS5J0dE+yTPgb+VW+OWBzIwVByhvyqdPlhuNT7zFczR6BxB+9AFF93ca/IyjvGD2Z15bLBL
+	hiEzTy5PNHmTk0k23XcuJLn3Ob+1mHe1pG0ZbnZ4FbpjbkgWUNdXO6GUN5VfBEIZFyfn3ELkhyMiL
+	uaBp26R0gxvu5NLZGbiZ4SXls6Hsn53vuchPb8nO4YcLukhLuKcLKlra8YF6qYeDLh95dIl965hVB
+	CiQo0aWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPc2o-00000003uUM-1HGG;
-	Wed, 20 May 2026 08:12:46 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wPd5a-000000046ea-3JRU;
+	Wed, 20 May 2026 09:19:42 +0000
+Received: from mail-yx1-xb12a.google.com ([2607:f8b0:4864:20::b12a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPc2m-00000003uTa-2TWO;
-	Wed, 20 May 2026 08:12:44 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id F307460129;
-	Wed, 20 May 2026 08:12:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2DF431F000E9;
-	Wed, 20 May 2026 08:12:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779264763;
-	bh=ZQS8XilUa1r3xVa+F86IWUqS7+Nx5O9cdD1dsWTVuI0=;
-	h=From:Date:Subject:To:Cc;
-	b=f01dcePf2OkPCCOnYxfAEQlHBSo0PmhTJ0SekbYQrXRdudCivtjeR554U+LpJ3664
-	 wFFybPTvpumb64YiIP+i7M0q9z2DmEhaqDcH8CWbPmN8Szk3CK6hOPAR5Fw7j3+UAT
-	 sFjyHsKUdQVMeTYoP9Xy++HvAu+yw+tMjtNTlZQtC1namjmTVhvYLth2sU+SQo8nUL
-	 uyhyZTsAGzKogQ+D1CnkPXTRuX5unu6cJD5RT6NOrNk0/k6pp3SJg5H2oB2KHDa5aG
-	 2sBUKeuEE6kcEKNF3smF+xC2XBch4lcWaHXebBO4t/6h0R/dW5P4CYNRM92Q4ULaht
-	 Q+KYUqIFoFeeQ==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Wed, 20 May 2026 10:12:12 +0200
-Subject: [PATCH RFC net-next] net: airoha: Add TCP LRO support
+	id 1wPd5W-000000046ZQ-1uIX
+	for linux-mediatek@lists.infradead.org;
+	Wed, 20 May 2026 09:19:40 +0000
+Received: by mail-yx1-xb12a.google.com with SMTP id 956f58d0204a3-65c52bb5dd7so4463993d50.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 20 May 2026 02:19:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1779268777; cv=none;
+        d=google.com; s=arc-20240605;
+        b=eZ29bO4gYR8BWsklFvQOtde1FxWjW6zSe9017Pxt29JcqT0g7VSoC2Il82bzuYQ3BA
+         YWRGb9ja1RSm+FjR7+qCSV6mBOxpLJrurVRgn7AcwRgp3aAJqHu4xV6pFvIe5T68VgW6
+         NNSR7CKiBugOzTMjP29Dch9Y1d0eBWKIvaCY4edKfiLrv8EGE1gBGJEJeZ5yE0+mI+aG
+         /dRNgAQofDzoWVxs8y1oNsLyBU7Sjvz1CmV4/rWHKXpr6n0041U2N9JqyH63s4a/B13L
+         h25uxSpstEME8GpZxcbUdLcBNjiNEv4sVbj7ZouA1vUDDpn3F5fqjeA07W/ZQFZZVImF
+         oG9Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=xTFW+4fxY8B0UHz/RksdPrUd9hEWGcsZ7LCMbKPBaGc=;
+        fh=7q9slQwJZ94/e6e481MFJgYPeNForZhGYqL2OGSLeAY=;
+        b=lxeh8X+nXP1hxItwfkPdsGhg/QO+c7z5UAIUf64bP0W+pFBwtwhx48XHNv8GS3z9OG
+         LXIyIGphzXcujrP+1kF5w2yY9lSMEBE+cQzVG+/rrlyE5b69TB61EuS3hijEpcd61OZm
+         VQML/rX5q0SpCVXqfz7gVjePtsb9RozJtDwbeRba945HQLHDhL3jkEgCxVegu9wEO1sD
+         bOoorf0/o+l4ZSyLgx/wyt3Jw9pos9aq4iCyMtNoZBjHC9P4UGs4nVCRv7jf8p4vLqEP
+         3EFILn7ExEjJD0pVxWWXxec2IGOfen8tNGLVLmIahYIo4a8zCrMe3Yj6ykOn+pZkPjY7
+         wxlg==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1779268777; x=1779873577; darn=lists.infradead.org;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=xTFW+4fxY8B0UHz/RksdPrUd9hEWGcsZ7LCMbKPBaGc=;
+        b=MXk6w8iPyFRoyp4zJVVf2675GmwJuI8vrZFsg9IOFieUpK8LNIaAl/FPXpCnTRfT2h
+         vh405bI+YEvjN6XqZUhvE9/XYt7+NexPUdzMtoxg/RqceMDRB9NGgo8qmU8Xo2YfPq/P
+         MRmbnVTQzfcW1OyZRC1198iWawEnzmgB7tinBmwQZTTTAFL+OBbwmD2qjcLnwRFuLMwl
+         vLqdtl57qV/im2bns1aPva+HXmmHrAFTz1jHPdgdvXurar4MNhpRN92bkSROvHv87rBE
+         VKoIEpO7bg5YT4ygTDynHhjijXJqX7GD8Oj50lgZ/4911THHbn5gXT5gcu4inn8RbgQP
+         2cQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1779268777; x=1779873577;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=xTFW+4fxY8B0UHz/RksdPrUd9hEWGcsZ7LCMbKPBaGc=;
+        b=bXoqAcCGnXoZVHtVTDKWk+QBDvxPmygj1PvioglUKfBUXnNX26RegJTM/vUvufs4Z+
+         /2u234X2YNW4O74megCGZTXCGnHZQ6+lb04EDzEIpIU4yQRDe1T6MCwZZpIxUwh7pWS9
+         pv5lVC8i7IRHxMRhCI/DtqqcnJseG7AFuMHNlyuPDLfQoUF3oZgUoG2b2q7RWkF6dnDt
+         6541LlwID2gOqXeiQJrJb95yyBPbSj3Gm0uw5wbm3xAtKyjIz7WwdSkT9T9/q3mbFig+
+         z6PkEHWNDObgQ7AP6aawRwof0fBZ4yWgzWVO1OmYpS1YMNMVQb28Qb+U1GppTmQ342Qd
+         kqZg==
+X-Gm-Message-State: AOJu0Yx6GkuVP8aoZ/Oi8V0N05eLV3Mp0jfw+09BflGtbsVvRQGvZmhb
+	9s4ZEoz8qOJBF18r8GNDq0OCOpDp5Ck7Fu8XW/aRDOOFwlUmFOCSGdJJG4anumblVyhdhv7i7Ai
+	Xjcpa9L4gJgkV248MY0ZCCqJiZ29tDZH/kRJG
+X-Gm-Gg: Acq92OEzCjp0aHy+XP7EA/7rVSFLzq5sZKK2O4VrH83JnsPmlq+fE+sVDn56TBPXBQR
+	zeqO4NSSIcM8qDAioP6StNNP3pWgoAYHpOuCpihyo0G85kErI/zqlk2IvJ+6dv6qmfu8U+JhSEu
+	TiyY+4Zo2urobzMiolr9GrCxsmqa5nFNFbaf+X87SybC11GBIWttwKYUPf/h6etHbsX5yUHlqSN
+	6uV65QkshFp0QR13aiinQ/Lnv9bs3Q0NCPxhYQ0VGUEkOof7vE2OjH/2uO+av9Z4KUh/HiTcKU3
+	JGDl8IHw3sycXVwtzWY+RL/5p0kAVlr1yjqlRg==
+X-Received: by 2002:a05:690e:1482:b0:651:d047:caf5 with SMTP id
+ 956f58d0204a3-65e223e318emr23639048d50.0.1779268776668; Wed, 20 May 2026
+ 02:19:36 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20260520-airoha-eth-lro-v1-1-129cc33766e9@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIzMDUyMD3cTMovyMRN3UkgzdnKJ83UTTFMNkYzNjQwtDQyWgpoKi1LTMCrC
- B0UpBbs4KeaklunmpFSVKsbW1ADaHt11uAAAA
-X-Change-ID: 20260520-airoha-eth-lro-a5d1c3631811
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.3
+References: <CALgbQMy=XduSht_tq7f7WjsFSos8EX6mSS0pZDGhV3n=OJLy=A@mail.gmail.com>
+In-Reply-To: <CALgbQMy=XduSht_tq7f7WjsFSos8EX6mSS0pZDGhV3n=OJLy=A@mail.gmail.com>
+From: Adam Hill <sidepipeuk@gmail.com>
+Date: Wed, 20 May 2026 10:19:25 +0100
+X-Gm-Features: AVHnY4KmBukwi3JecYf-Er8Dun4LvP5qY9CAMC_mmZLrFDNPdRSMwHBK9Idx2ic
+Message-ID: <CALgbQMzpY=mh3Uq6xcj4BeBfk5AcZu0h8Q2nGPgUeOd=hEE6-g@mail.gmail.com>
+Subject: Re: mt7915e 5GHz/6GHz with multiple cards or dynamic selection - can
+ it be done along these lines?
+To: linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260520_021938_524603_959A176F 
+X-CRM114-Status: GOOD (  50.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,409 +112,279 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add hardware TCP Large Receive Offload (LRO) support to the airoha_eth
-driver, leveraging the EN7581/AN7583 SoC's 8 dedicated LRO hardware queues
-mapped to RX queues 24–31. To meet the hardware requirement for contiguous
-memory regions, increase the page_pool allocation order to 2 for RX queues
-24–31.
+Since there's been no feedback on this I've created a patch which
+allows dynamic switching per card between the 5GHz and 6GHz bands.
+This adds a control in sysfs under
+/sys/class/ieee80211/phy<x>/controls/use_6ghz if the feature is
+supported, set to Y to use 6GHz or N for 5GHz. If the value is
+changed, the eeprom capability is re-read using the alternate band and
+a full card reset is performed. There are almost certainly better ways
+to do this - it would be nice to avoid the reset for example, but it
+"works for me" and even seems to work if you switch bands whilst the
+radio is active ( if the card is configured for one band and the
+channel set is in the other, everything looks ok but the radio won't
+be active - switching to the correct band using sysfs causes the card
+to reset and the newap appears ). I'm posting this here in case it
+helps anyone else - certainly not proposing it goes into the kernel
+but I do think someone should look at this and implement it the
+"correct" way. One final point is that I added "bool use_6ghz" at line
+227 in mt7915.h - it should probably be a bitfield with sku_limit_en
+et al but this way the patch applies back to ( at least ) 6.18
+kernels. Here's the patch:
 
-Performance comparison between GRO and hw LRO has been carried out using
-a 10Gbps NIC:
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+index eb92cbf1a284..30814469ed5a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+@@ -166,6 +166,9 @@ static void mt7915_eeprom_parse_band_config(struct
+mt7915_phy *phy)
+  val = eeprom[MT_EE_WIFI_CONF + band];
+  val = FIELD_GET(MT_EE_WIFI_CONF0_BAND_SEL, val);
 
-GRO: ~2.7 Gbps
-LRO: ~3.5 Gbps (~30% improvement)
-
-Please note with respect to the previous implementation, page_pool
-allocation order has been reduced from 5 to 2.
-
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c  | 202 +++++++++++++++++++++++++++---
- drivers/net/ethernet/airoha/airoha_eth.h  |  23 ++++
- drivers/net/ethernet/airoha/airoha_regs.h |  22 +++-
- 3 files changed, 232 insertions(+), 15 deletions(-)
-
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 5a027cc7ffcb..e2c6231ee6a0 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -12,6 +12,7 @@
- #include <net/dst_metadata.h>
- #include <net/page_pool/helpers.h>
- #include <net/pkt_cls.h>
-+#include <net/tcp.h>
- #include <uapi/linux/ppp_defs.h>
- 
- #include "airoha_regs.h"
-@@ -431,6 +432,47 @@ static void airoha_fe_crsn_qsel_init(struct airoha_eth *eth)
- 				 CDM_CRSN_QSEL_Q1));
++ if (phy->mt76->cap.has_6ghz && phy->mt76->cap.has_6ghz)
++ val = MT_EE_V2_BAND_SEL_5GHZ_6GHZ;
++
+  if (!is_mt7915(&dev->mt76)) {
+  switch (val) {
+  case MT_EE_V2_BAND_SEL_5GHZ:
+@@ -175,13 +178,15 @@ static void
+mt7915_eeprom_parse_band_config(struct mt7915_phy *phy)
+  phy->mt76->cap.has_6ghz = true;
+  return;
+  case MT_EE_V2_BAND_SEL_5GHZ_6GHZ:
+- if (enable_6ghz) {
+- phy->mt76->cap.has_6ghz = true;
++ phy->mt76->cap.has_6ghz = true;
++ phy->mt76->cap.has_5ghz = true;
++ if (enable_6ghz || phy->use_6ghz) {
++ dev_info(phy->mt76->dev->dev, "Selecting 6GHz band.\n");
+  u8p_replace_bits(&eeprom[MT_EE_WIFI_CONF + band],
+  MT_EE_V2_BAND_SEL_6GHZ,
+  MT_EE_WIFI_CONF0_BAND_SEL);
+  } else {
+- phy->mt76->cap.has_5ghz = true;
++ dev_info(phy->mt76->dev->dev, "Selecting 5GHz band.\n");
+  u8p_replace_bits(&eeprom[MT_EE_WIFI_CONF + band],
+  MT_EE_V2_BAND_SEL_5GHZ,
+  MT_EE_WIFI_CONF0_BAND_SEL);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+index 250c2d2479b0..d5f5018478d9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -4,6 +4,7 @@
+ #include <linux/etherdevice.h>
+ #include <linux/hwmon.h>
+ #include <linux/hwmon-sysfs.h>
++#include <linux/sysfs.h>
+ #include <linux/of.h>
+ #include <linux/thermal.h>
+ #include "mt7915.h"
+@@ -221,6 +222,70 @@ static int mt7915_thermal_init(struct mt7915_phy *phy)
+  return PTR_ERR_OR_ZERO(hwmon);
  }
- 
-+static void airoha_fe_lro_init_rx_queue(struct airoha_eth *eth, int qdma_id,
-+					int lro_queue_index, int qid,
-+					int nbuf, int buf_size)
-+{
-+	int id = qdma_id + 1;
-+
-+	airoha_fe_rmw(eth, REG_CDM_LRO_LIMIT(id),
-+		      CDM_LRO_AGG_NUM_MASK | CDM_LRO_AGG_SIZE_MASK,
-+		      FIELD_PREP(CDM_LRO_AGG_NUM_MASK, nbuf) |
-+		      FIELD_PREP(CDM_LRO_AGG_SIZE_MASK, buf_size));
-+	airoha_fe_rmw(eth, REG_CDM_LRO_AGE_TIME(id),
-+		      CDM_LRO_AGE_TIME_MASK | CDM_LRO_AGG_TIME_MASK,
-+		      FIELD_PREP(CDM_LRO_AGE_TIME_MASK,
-+				 AIROHA_RXQ_LRO_MAX_AGE_TIME) |
-+		      FIELD_PREP(CDM_LRO_AGG_TIME_MASK,
-+				 AIROHA_RXQ_LRO_MAX_AGG_TIME));
-+	airoha_fe_rmw(eth, REG_CDM_LRO_RXQ(id, lro_queue_index),
-+		      LRO_RXQ_MASK(lro_queue_index),
-+		      __field_prep(LRO_RXQ_MASK(lro_queue_index), qid));
-+	airoha_fe_set(eth, REG_CDM_LRO_EN(id), BIT(lro_queue_index));
-+}
-+
-+static void airoha_fe_lro_disable(struct airoha_eth *eth, int qdma_id)
-+{
-+	int i, id = qdma_id + 1;
-+
-+	airoha_fe_clear(eth, REG_CDM_LRO_LIMIT(id),
-+			CDM_LRO_AGG_NUM_MASK | CDM_LRO_AGG_SIZE_MASK);
-+	airoha_fe_clear(eth, REG_CDM_LRO_AGE_TIME(id),
-+			CDM_LRO_AGE_TIME_MASK | CDM_LRO_AGG_TIME_MASK);
-+	airoha_fe_clear(eth, REG_CDM_LRO_EN(id), LRO_RXQ_EN_MASK);
-+	for (i = 0; i < AIROHA_MAX_NUM_LRO_QUEUES; i++)
-+		airoha_fe_clear(eth, REG_CDM_LRO_RXQ(id, i), LRO_RXQ_MASK(i));
-+}
-+
-+static bool airoha_fe_lro_is_enabled(struct airoha_eth *eth, int qdma_id)
-+{
-+	return airoha_fe_get(eth, REG_CDM_LRO_EN(qdma_id + 1),
-+			     LRO_RXQ_EN_MASK);
-+}
-+
- static int airoha_fe_init(struct airoha_eth *eth)
- {
- 	airoha_fe_maccr_init(eth);
-@@ -587,9 +629,78 @@ static int airoha_qdma_get_gdm_port(struct airoha_eth *eth,
- 	return port >= ARRAY_SIZE(eth->ports) ? -EINVAL : port;
- }
- 
-+static int airoha_qdma_lro_rx_process(struct airoha_queue *q,
-+				      struct airoha_qdma_desc *desc)
-+{
-+	u32 msg1 = le32_to_cpu(READ_ONCE(desc->msg1));
-+	u32 msg2 = le32_to_cpu(READ_ONCE(desc->msg2));
-+	u32 msg3 = le32_to_cpu(READ_ONCE(desc->msg3));
-+	bool ipv4 = FIELD_GET(QDMA_ETH_RXMSG_IP4_MASK, msg1);
-+	bool ipv6 = FIELD_GET(QDMA_ETH_RXMSG_IP6_MASK, msg1);
-+	struct sk_buff *skb = q->skb;
-+	u32 th_off, tcp_ack_seq;
-+	u16 tcp_win, l2_len;
-+	struct tcphdr *th;
-+
-+	if (FIELD_GET(QDMA_ETH_RXMSG_AGG_COUNT_MASK, msg2) <= 1)
-+		return 0;
-+
-+	if (!ipv4 && !ipv6)
-+		return -EOPNOTSUPP;
-+
-+	l2_len = FIELD_GET(QDMA_ETH_RXMSG_L2_LEN_MASK, msg2);
-+	if (ipv4) {
-+		u16 agg_len = FIELD_GET(QDMA_ETH_RXMSG_AGG_LEN_MASK, msg3);
-+		struct iphdr *iph = (struct iphdr *)(skb->data + l2_len);
-+
-+		if (iph->protocol != IPPROTO_TCP)
-+			return -EOPNOTSUPP;
-+
-+		iph->tot_len = cpu_to_be16(agg_len);
-+		iph->check = 0;
-+		iph->check = ip_fast_csum((void *)iph, iph->ihl);
-+		th_off = l2_len + (iph->ihl << 2);
-+	} else {
-+		struct ipv6hdr *ip6h = (struct ipv6hdr *)(skb->data + l2_len);
-+		u32 len, desc_ctrl = le32_to_cpu(READ_ONCE(desc->ctrl));
-+
-+		if (ip6h->nexthdr != NEXTHDR_TCP)
-+			return -EOPNOTSUPP;
-+
-+		len = FIELD_GET(QDMA_DESC_LEN_MASK, desc_ctrl);
-+		ip6h->payload_len = cpu_to_be16(len - l2_len - sizeof(*ip6h));
-+		th_off = l2_len + sizeof(*ip6h);
-+	}
-+
-+	tcp_win = FIELD_GET(QDMA_ETH_RXMSG_TCP_WIN_MASK, msg3);
-+	tcp_ack_seq = le32_to_cpu(READ_ONCE(desc->data));
-+
-+	th = (struct tcphdr *)(skb->data + th_off);
-+	th->ack_seq = cpu_to_be32(tcp_ack_seq);
-+	th->window = cpu_to_be16(tcp_win);
-+
-+	/* Check tcp timestamp option */
-+	if (th->doff == (sizeof(*th) + TCPOLEN_TSTAMP_ALIGNED) / 4) {
-+		__be32 *topt = (__be32 *)(th + 1);
-+
-+		if (*topt == cpu_to_be32((TCPOPT_NOP << 24) |
-+					 (TCPOPT_NOP << 16) |
-+					 (TCPOPT_TIMESTAMP << 8) |
-+					 TCPOLEN_TIMESTAMP)) {
-+			__le32 tcp_ts_reply = READ_ONCE(desc->tcp_ts_reply);
-+
-+			put_unaligned_be32(le32_to_cpu(tcp_ts_reply),
-+					   topt + 2);
-+		}
-+	}
-+
-+	return 0;
-+}
-+
- static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
- {
- 	enum dma_data_direction dir = page_pool_get_dma_dir(q->page_pool);
-+	bool lro_q = airoha_qdma_is_lro_queue(q);
- 	struct airoha_qdma *qdma = q->qdma;
- 	struct airoha_eth *eth = qdma->eth;
- 	int qid = q - &qdma->q_rx[0];
-@@ -636,9 +747,14 @@ static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
- 			__skb_put(q->skb, len);
- 			skb_mark_for_recycle(q->skb);
- 			q->skb->dev = port->dev;
--			q->skb->protocol = eth_type_trans(q->skb, port->dev);
- 			q->skb->ip_summed = CHECKSUM_UNNECESSARY;
- 			skb_record_rx_queue(q->skb, qid);
-+
-+			if (lro_q && (port->dev->features & NETIF_F_LRO) &&
-+			    airoha_qdma_lro_rx_process(q, desc) < 0)
-+				goto free_frag;
-+
-+			q->skb->protocol = eth_type_trans(q->skb, port->dev);
- 		} else { /* scattered frame */
- 			struct skb_shared_info *shinfo = skb_shinfo(q->skb);
- 			int nr_frags = shinfo->nr_frags;
-@@ -727,23 +843,19 @@ static int airoha_qdma_rx_napi_poll(struct napi_struct *napi, int budget)
- static int airoha_qdma_init_rx_queue(struct airoha_queue *q,
- 				     struct airoha_qdma *qdma, int ndesc)
- {
--	const struct page_pool_params pp_params = {
--		.order = 0,
--		.pool_size = 256,
-+	struct page_pool_params pp_params = {
- 		.flags = PP_FLAG_DMA_MAP | PP_FLAG_DMA_SYNC_DEV,
- 		.dma_dir = DMA_FROM_DEVICE,
--		.max_len = PAGE_SIZE,
- 		.nid = NUMA_NO_NODE,
- 		.dev = qdma->eth->dev,
- 		.napi = &q->napi,
- 	};
-+	int pp_order, qid = q - &qdma->q_rx[0], thr;
- 	struct airoha_eth *eth = qdma->eth;
--	int qid = q - &qdma->q_rx[0], thr;
- 	dma_addr_t dma_addr;
-+	bool lro_q;
- 
--	q->buf_size = PAGE_SIZE / 2;
- 	q->qdma = qdma;
--
- 	q->entry = devm_kzalloc(eth->dev, ndesc * sizeof(*q->entry),
- 				GFP_KERNEL);
- 	if (!q->entry)
-@@ -754,6 +866,12 @@ static int airoha_qdma_init_rx_queue(struct airoha_queue *q,
- 	if (!q->desc)
- 		return -ENOMEM;
- 
-+	lro_q = airoha_qdma_is_lro_queue(q);
-+	pp_order = lro_q ? AIROHA_LRO_PAGE_ORDER : 0;
-+	pp_params.order = pp_order;
-+	pp_params.pool_size = 256 >> pp_order;
-+	pp_params.max_len = PAGE_SIZE << pp_order;
-+
- 	q->page_pool = page_pool_create(&pp_params);
- 	if (IS_ERR(q->page_pool)) {
- 		int err = PTR_ERR(q->page_pool);
-@@ -762,6 +880,7 @@ static int airoha_qdma_init_rx_queue(struct airoha_queue *q,
- 		return err;
- 	}
- 
-+	q->buf_size = pp_params.max_len / (2 * (1 + lro_q));
- 	q->ndesc = ndesc;
- 	netif_napi_add(eth->napi_dev, &q->napi, airoha_qdma_rx_napi_poll);
- 
-@@ -1991,6 +2110,63 @@ int airoha_get_fe_port(struct airoha_gdm_port *port)
- 	}
- }
- 
-+static int airoha_dev_set_features(struct net_device *dev,
-+				   netdev_features_t features)
-+{
-+	netdev_features_t diff = dev->features ^ features;
-+	struct airoha_gdm_port *port = netdev_priv(dev);
-+	struct airoha_qdma *qdma = port->qdma;
-+	struct airoha_eth *eth = qdma->eth;
-+	int qdma_id = qdma - &eth->qdma[0];
-+	int i;
-+
-+	if (!(diff & NETIF_F_LRO))
-+		return 0;
-+
-+	/* reset LRO configuration */
-+	if (features & NETIF_F_LRO) {
-+		int lro_queue_index = 0;
-+
-+		if (airoha_fe_lro_is_enabled(eth, qdma_id))
-+			return 0;
-+
-+		for (i = 0; i < ARRAY_SIZE(qdma->q_rx); i++) {
-+			struct airoha_queue *q = &qdma->q_rx[i];
-+
-+			if (!q->ndesc)
-+				continue;
-+
-+			if (!airoha_qdma_is_lro_queue(q))
-+				continue;
-+
-+			airoha_fe_lro_init_rx_queue(eth, qdma_id,
-+						    lro_queue_index, i,
-+						    q->page_pool->p.pool_size,
-+						    q->buf_size);
-+			lro_queue_index++;
-+		}
-+	} else {
-+		for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
-+			struct airoha_gdm_port *p = eth->ports[i];
-+
-+			if (!p)
-+				continue;
-+
-+			if (p->qdma != qdma)
-+				continue;
-+
-+			if (p->dev == dev)
-+				continue;
-+
-+			if (p->dev->features & NETIF_F_LRO)
-+				return 0;
-+		}
-+		airoha_fe_lro_disable(eth, qdma_id);
-+	}
-+
-+	return 0;
-+}
-+
- static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
- 				   struct net_device *dev)
- {
-@@ -2890,6 +3066,7 @@ static const struct net_device_ops airoha_netdev_ops = {
- 	.ndo_stop		= airoha_dev_stop,
- 	.ndo_change_mtu		= airoha_dev_change_mtu,
- 	.ndo_select_queue	= airoha_dev_select_queue,
-+	.ndo_set_features	= airoha_dev_set_features,
- 	.ndo_start_xmit		= airoha_dev_xmit,
- 	.ndo_get_stats64        = airoha_dev_get_stats64,
- 	.ndo_set_mac_address	= airoha_dev_set_macaddr,
-@@ -2987,12 +3164,9 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
- 	dev->ethtool_ops = &airoha_ethtool_ops;
- 	dev->max_mtu = AIROHA_MAX_MTU;
- 	dev->watchdog_timeo = 5 * HZ;
--	dev->hw_features = NETIF_F_IP_CSUM | NETIF_F_RXCSUM |
--			   NETIF_F_TSO6 | NETIF_F_IPV6_CSUM |
--			   NETIF_F_SG | NETIF_F_TSO |
--			   NETIF_F_HW_TC;
--	dev->features |= dev->hw_features;
--	dev->vlan_features = dev->hw_features;
-+	dev->hw_features = AIROHA_HW_FEATURES | NETIF_F_LRO;
-+	dev->features |= AIROHA_HW_FEATURES;
-+	dev->vlan_features = AIROHA_HW_FEATURES;
- 	dev->dev.of_node = np;
- 	SET_NETDEV_DEV(dev, eth->dev);
- 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index d3781103abb5..39ab6bdb1f67 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -43,6 +43,17 @@
- 	 (_n) == 15 ? 128 :		\
- 	 (_n) ==  0 ? 1024 : 16)
- 
-+#define AIROHA_LRO_PAGE_ORDER		2
-+#define AIROHA_MAX_NUM_LRO_QUEUES	8
-+#define AIROHA_RXQ_LRO_EN_MASK		0xff000000
-+#define AIROHA_RXQ_LRO_MAX_AGG_TIME	100
-+#define AIROHA_RXQ_LRO_MAX_AGE_TIME	2000 /* 1ms */
-+
-+#define AIROHA_HW_FEATURES			\
-+	(NETIF_F_IP_CSUM | NETIF_F_RXCSUM |	\
-+	 NETIF_F_TSO6 | NETIF_F_IPV6_CSUM |	\
-+	 NETIF_F_SG | NETIF_F_TSO | NETIF_F_HW_TC)
-+
- #define PSE_RSV_PAGES			128
- #define PSE_QUEUE_RSV_PAGES		64
- 
-@@ -661,6 +672,18 @@ static inline bool airoha_is_7583(struct airoha_eth *eth)
- 	return eth->soc->version == 0x7583;
- }
- 
-+static inline bool airoha_qdma_is_lro_queue(struct airoha_queue *q)
-+{
-+	struct airoha_qdma *qdma = q->qdma;
-+	int qid = q - &qdma->q_rx[0];
-+
-+	/* EN7581 SoC supports at most 8 LRO rx queues */
-+	BUILD_BUG_ON(hweight32(AIROHA_RXQ_LRO_EN_MASK) >
-+		     AIROHA_MAX_NUM_LRO_QUEUES);
-+
-+	return !!(AIROHA_RXQ_LRO_EN_MASK & BIT(qid));
-+}
-+
- int airoha_get_fe_port(struct airoha_gdm_port *port);
- bool airoha_is_valid_gdm_port(struct airoha_eth *eth,
- 			      struct airoha_gdm_port *port);
-diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethernet/airoha/airoha_regs.h
-index 436f3c8779c1..dfc786583774 100644
---- a/drivers/net/ethernet/airoha/airoha_regs.h
-+++ b/drivers/net/ethernet/airoha/airoha_regs.h
-@@ -122,6 +122,20 @@
- #define CDM_CRSN_QSEL_REASON_MASK(_n)	\
- 	GENMASK(4 + (((_n) % 4) << 3),	(((_n) % 4) << 3))
- 
-+#define REG_CDM_LRO_RXQ(_n, _m)		(CDM_BASE(_n) + 0x78 + ((_m) & 0x4))
-+#define LRO_RXQ_MASK(_n)		GENMASK(4 + (((_n) & 0x3) << 3), ((_n) & 0x3) << 3)
-+
-+#define REG_CDM_LRO_EN(_n)		(CDM_BASE(_n) + 0x80)
-+#define LRO_RXQ_EN_MASK			GENMASK(7, 0)
-+
-+#define REG_CDM_LRO_LIMIT(_n)		(CDM_BASE(_n) + 0x84)
-+#define CDM_LRO_AGG_NUM_MASK		GENMASK(23, 16)
-+#define CDM_LRO_AGG_SIZE_MASK		GENMASK(15, 0)
-+
-+#define REG_CDM_LRO_AGE_TIME(_n)	(CDM_BASE(_n) + 0x88)
-+#define CDM_LRO_AGE_TIME_MASK		GENMASK(31, 16)
-+#define CDM_LRO_AGG_TIME_MASK		GENMASK(15, 0)
-+
- #define REG_GDM_FWD_CFG(_n)		GDM_BASE(_n)
- #define GDM_PAD_EN_MASK			BIT(28)
- #define GDM_DROP_CRC_ERR_MASK		BIT(23)
-@@ -883,9 +897,15 @@
- #define QDMA_ETH_RXMSG_SPORT_MASK	GENMASK(25, 21)
- #define QDMA_ETH_RXMSG_CRSN_MASK	GENMASK(20, 16)
- #define QDMA_ETH_RXMSG_PPE_ENTRY_MASK	GENMASK(15, 0)
-+/* RX MSG2 */
-+#define QDMA_ETH_RXMSG_AGG_COUNT_MASK	GENMASK(31, 24)
-+#define QDMA_ETH_RXMSG_L2_LEN_MASK	GENMASK(6, 0)
-+/* RX MSG3 */
-+#define QDMA_ETH_RXMSG_AGG_LEN_MASK	GENMASK(31, 16)
-+#define QDMA_ETH_RXMSG_TCP_WIN_MASK	GENMASK(15, 0)
- 
- struct airoha_qdma_desc {
--	__le32 rsv;
-+	__le32 tcp_ts_reply;
- 	__le32 ctrl;
- 	__le32 addr;
- 	__le32 data;
 
----
-base-commit: bf53bf33206137c2337bd8aacf0ef4c348b97a36
-change-id: 20260520-airoha-eth-lro-a5d1c3631811
++static ssize_t mt7915_sysfs_6ghz_get(struct kobject *kobj, struct
+attribute *attr, char *buf)
++{
++ int ret;
++ struct mt7915_phy *phy = container_of(kobj, struct mt7915_phy,
+sysfs_controls);
++
++ ret = sysfs_emit(buf, "%c\n", phy->use_6ghz?'Y':'N');
++ return ret;
++}
++
++static ssize_t mt7915_sysfs_6ghz_set(struct kobject *kobj, struct
+attribute *attr, const char *buf, size_t count)
++{
++ struct mt7915_phy *phy = container_of(kobj, struct mt7915_phy,
+sysfs_controls);
++ bool prev = phy->use_6ghz;
++
++ if (toupper(buf[0]) == 'Y')
++ phy->use_6ghz = true;
++ else
++ phy->use_6ghz = false;
++
++ if (prev != phy->use_6ghz) {
++ mt7915_eeprom_parse_hw_cap(phy->dev, phy);
++ phy->dev->recovery.restart = true;
++ mt7915_reset(phy->dev);
++ //ieee80211_restart_hw(phy->mt76->hw);
++ }
++
++ return count;
++}
++
++static struct sysfs_ops mt7915_sysfs_ops = {
++ .show = mt7915_sysfs_6ghz_get,
++ .store = mt7915_sysfs_6ghz_set
++};
++
++static struct attribute mt7915_sysfs_6ghz = {
++ .name = "use_6ghz",
++ .mode = 0664
++};
++
++static struct attribute *mt7915_sysfs_attrs[] = {
++ &mt7915_sysfs_6ghz,
++ NULL
++};
++
++ATTRIBUTE_GROUPS(mt7915_sysfs);
++
++static const struct kobj_type mt7915_sysfs_ktype = {
++ .sysfs_ops = &mt7915_sysfs_ops,
++ .default_groups = mt7915_sysfs_groups
++};
++
++static int mt7915_sysfs_control_init(struct mt7915_phy *phy)
++{
++ int ret;
++ struct wiphy *wiphy = phy->mt76->hw->wiphy;
++
++ ret = kobject_init_and_add(&phy->sysfs_controls,
+&mt7915_sysfs_ktype, &wiphy->dev.kobj, "%s", "controls");
++
++ if (ret)
++ return -ENOMEM;
++
++ return 0;
++}
++
+ static void mt7915_led_set_config(struct led_classdev *led_cdev,
+    u8 delay_on, u8 delay_off)
+ {
+@@ -725,6 +790,10 @@ mt7915_register_ext_phy(struct mt7915_dev *dev,
+struct mt7915_phy *phy)
+  if (ret)
+  goto unreg;
 
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
++ ret = mt7915_sysfs_control_init(phy);
++ if (ret)
++ goto unreg;
++
+  mt7915_init_debugfs(phy);
 
+  return 0;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+index bf1d915a3ca2..913f8a9d1d30 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+@@ -206,6 +206,7 @@ struct mt7915_phy {
+  struct ieee80211_vif *monitor_vif;
+
+  struct thermal_cooling_device *cdev;
++ struct kobject sysfs_controls;
+  u8 cdev_state;
+  u8 throttle_state;
+  u32 throttle_temp[2]; /* 0: critical high, 1: maximum */
+@@ -223,6 +224,8 @@ struct mt7915_phy {
+  u32 rx_ampdu_ts;
+  u32 ampdu_ref;
+
++ bool use_6ghz;
++
+  struct mt76_mib_stats mib;
+  struct mt76_channel_state state_ts;
+
+
+
+
+On Fri, 15 May 2026 at 18:41, Adam Hill <sidepipeuk@gmail.com> wrote:
+>
+> Firstly I have to preface this with "I don't know what I'm doing". I
+> have almost no knowledge of how these ( or any ) wireless cards
+> operate and little knowledge of the inner workings of kernel modules
+> etc.... so where I'm going with this might not be possible. I do know
+> that the current situation with the mt7915e module isn't ideal.
+>
+> There are two serious-ish concerns as far as I can see:
+>
+> 1) It's currently impossible to have multiple 6GHz capable cards in a
+> system unless they all operate on either 5GHz or 6GHz, i.e. the same
+> band for all cards. This removes the very realistic possibility that
+> you might want two cards, one on 5GHz and one on 6GHz.
+>
+> 2) The band selection is at module load time, and anything looking at
+> netlink would be unaware that it's even possible to use the other
+> band.
+>
+> I've been experimenting, and with the patch below ( simply a proof of
+> concept ) netlink is supplied with both bands regardless of the one
+> selected, and changing /sys/module/mt7915e/parameters/enable_6ghz from
+> Y to N or vice versa, followed by assering /sys.../phy<x>/device/reset
+> *seems* to allow dynamic switching between bands. However, given my
+> aforementioned lack of knowledge, I'm unsure whether what I've done is
+> even valid, and if it gets around the original reason for the single
+> band selection in the first place ( the original commit, 57af267,
+> mentions that memory limitations prevent both bands being configured
+> correctly - and I'm not sure if calling  mt7915_eeprom_parse_hw_cap is
+> sufficient to replace one with theother ). In any case, I can
+> successfully switch between bands using this technique ( and also,
+> coincidentally, use multiple cards on different bands, but that needs
+> a proper solution ).
+>
+> Ideally, what I *think* should happen, is that rather than a module
+> parameter, if a request to set up the band that isn't loaded happens,
+> the appropriate steps are taken to reconfigure the hardware to the
+> other band. Probably simpler, but also less desirable, would be a
+> second module parameter allowing selection on a per-card basis, with a
+> callback that performs the reset if it's changed.
+>
+> My current POC is simply:
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+> b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+> index eb92cbf1a284..87113459fe30 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+> @@ -166,6 +166,9 @@ static void mt7915_eeprom_parse_band_config(struct
+> mt7915_phy *phy)
+>         val = eeprom[MT_EE_WIFI_CONF + band];
+>         val = FIELD_GET(MT_EE_WIFI_CONF0_BAND_SEL, val);
+>
+> +       if (phy->mt76->cap.has_6ghz && phy->mt76->cap.has_6ghz)
+> +               val = MT_EE_V2_BAND_SEL_5GHZ_6GHZ;
+> +
+>         if (!is_mt7915(&dev->mt76)) {
+>                 switch (val) {
+>                 case MT_EE_V2_BAND_SEL_5GHZ:
+> @@ -175,13 +178,13 @@ static void
+> mt7915_eeprom_parse_band_config(struct mt7915_phy *phy)
+>                         phy->mt76->cap.has_6ghz = true;
+>                         return;
+>                 case MT_EE_V2_BAND_SEL_5GHZ_6GHZ:
+> +                       phy->mt76->cap.has_6ghz = true;
+> +                       phy->mt76->cap.has_5ghz = true;
+>                         if (enable_6ghz) {
+> -                               phy->mt76->cap.has_6ghz = true;
+>
+> u8p_replace_bits(&eeprom[MT_EE_WIFI_CONF + band],
+>                                                  MT_EE_V2_BAND_SEL_6GHZ,
+>                                                  MT_EE_WIFI_CONF0_BAND_SEL);
+>                         } else {
+> -                               phy->mt76->cap.has_5ghz = true;
+>
+> u8p_replace_bits(&eeprom[MT_EE_WIFI_CONF + band],
+>                                                  MT_EE_V2_BAND_SEL_5GHZ,
+>                                                  MT_EE_WIFI_CONF0_BAND_SEL);
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+> b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+> index cec2c4208255..56a8ba648b46 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+> @@ -1297,6 +1297,9 @@ mt7915_mac_restart(struct mt7915_dev *dev)
+>         ext_phy = dev->mt76.phys[MT_BAND1];
+>         phy2 = ext_phy ? ext_phy->priv : NULL;
+>
+> +       if (phy2)
+> +               mt7915_eeprom_parse_hw_cap(dev, phy2);
+> +
+>         if (dev->hif2) {
+>                 mt76_wr(dev, MT_INT1_MASK_CSR, 0x0);
+>                 mt76_wr(dev, MT_INT1_SOURCE_CSR, ~0);
 
