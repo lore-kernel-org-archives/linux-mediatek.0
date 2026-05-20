@@ -4,67 +4,131 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8531CD4F3D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2026 13:12:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7DCFCD4F3C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2026 13:29:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=mXaopxgAUyb+dYnMEPNpUoPGlTbsAgez8gJglbBR/V4=; b=fTlId/bD8rkGmf0a7mIWDupECl
-	8Kj83bcK6a0UWeV+fg/58FGHZR6Nl2LMYelRLCk3xQPoZ6gaRE9m/KVUMWfiBM9O9aJ0YrEWQXlgK
-	EQLMd+6VL4S8cuNeGCslDS0ld3NS/0LA8ndh9znLaGFxjv5ena+EK/CHwEZMzh38cbzp4eZ3I3gw3
-	IHmgEuf33fGP2NFr5enoo/b7EWBIcBSQzdhURZwDX0gYbTrvHdKNdn1XQq2d+8dGxUNpahaZw8P13
-	9jPfD/1il1R+J7RkNrQqa2ceIOEoef/okH1jZlH6VqWXfmKUMSZMM6lh55Ec4T0aMOyn6IGJJyH+d
-	wQzxcpMA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=2izcNj1xZ0p1yofZU7zInuq1w3gym7l3w+3PyLHbXUQ=; b=PFLmRIAymfKvgufQVP6dTdgt+w
+	8redysnVWeGuUbJKJWUTHaBliF/ycrLX3wdQ++qSZWPq+xMTGiGj6xFb/u2K9fQjmeAhRYHvkniTU
+	7LKCAJ6IniIIquI8VmjgkvENtKK497vKDsD4Q1s+yjZhvBx8EBFdRWT3S0Cl+zicuQ3dJhyMRUIsn
+	wabAedkcmGPFzrCT7kKn/NYs1upQaw/+XQW9MJEc3743jqGfQJcLONxOpSvRloGqOlNtvvfE8jcgY
+	DKCKQF6VYJGZP8TtL1jIC8Z0zVn7u2gtYcljnkw+BcNS86MDOzRTvUY72yZlC1cMm1jnPLLFGHtWM
+	WXEsea6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPgio-00000004eKY-39eg;
-	Wed, 20 May 2026 13:12:26 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wPgza-00000004g3q-3dgl;
+	Wed, 20 May 2026 13:29:46 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPgil-00000004eJR-3IvB;
-	Wed, 20 May 2026 13:12:24 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2A9B043F46;
-	Wed, 20 May 2026 13:12:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 847B31F00898;
-	Wed, 20 May 2026 13:12:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779282743;
-	bh=mXaopxgAUyb+dYnMEPNpUoPGlTbsAgez8gJglbBR/V4=;
-	h=From:Date:Subject:To:Cc;
-	b=elEBtTCQH1mi0PXwjMq+KplsaUDqZ34YzS7/kBjyNcBpBUZIo6vhFsKwnbkVGPM0r
-	 TTc2GmfzGKZmrT3Nt8Fi3F8KUHeWIcZZoQr8C2OTvX389ftTiJKcjUAukJhneGBC0c
-	 ey63Rnw/c1jtuyQWQhDVF7BcnBSCVz662RQTQHSUFtDgNNyuqvPWcm9TCLcFSdEh8w
-	 HYcmypdLkCgra5jEtHQdoPPmtvxemU74V39vlH0oRWtpdc18EUy1lSKl+U1sCy68FA
-	 59n3ASXC5IKfVWTuVrIxwAEkZNMTiW5DKWwpDPaAcKJgol3vuu7Q+ILwSExbhO4KLq
-	 cS3KtnflTs6Gw==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Wed, 20 May 2026 15:12:02 +0200
-Subject: [PATCH net] net: airoha: Disable GDM2 forwarding before
- configuring GDM2 loopback
+	id 1wPgzX-00000004g1i-2zwo
+	for linux-mediatek@lists.infradead.org;
+	Wed, 20 May 2026 13:29:45 +0000
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 64KCctuU1725327
+	for <linux-mediatek@lists.infradead.org>; Wed, 20 May 2026 13:29:43 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:date:from:message-id:mime-version
+	:subject:to; s=qcppdkim1; bh=2izcNj1xZ0p1yofZU7zInuq1w3gym7l3w+3
+	PyLHbXUQ=; b=H35p5m4srJzotebwEjdTTpkORh0ew8BMgzEnh21axS9lwJfw7Ky
+	Ri85jmdalPuP0d+0lzR9mfz0fdPQDnOfD8AXIu70nk4ljzltIQFfK9tMPyVdUlcF
+	Roz1j+9k/Y20cH3HmrJuLhalvOxIOB8n/MFEoka0MI0UcNSwnjdwg6vTPWbUrFBX
+	yTrgT3MSsZ0WIwGEP/c0SZA9vs2ZuqERIstey1veFV3C6Q8YQ3RUQBj/PmG7AWKs
+	DS8ahnIZnmqpinzBb82IRhDPqDx2R920H7eFKI5Y7rRhggA27n+JHB5m+CzFxuMO
+	O95M3RJzxDyarHIZOEIbRkX2xReVcN8Yy3Q==
+Received: from mail-ua1-f71.google.com (mail-ua1-f71.google.com [209.85.222.71])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4e8t3qmx17-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Wed, 20 May 2026 13:29:42 +0000 (GMT)
+Received: by mail-ua1-f71.google.com with SMTP id a1e0cc1a2514c-956732444ffso9259510241.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 20 May 2026 06:29:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1779283782; x=1779888582; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=2izcNj1xZ0p1yofZU7zInuq1w3gym7l3w+3PyLHbXUQ=;
+        b=EtvRWgaWAQxOabFOvJgyZfs9mnIpEXdbM/vIhkZsRBtdQpJxhs1hub9sfcbK68sEll
+         2EKzzMV9SDW8+ItSlgo3qQsjpkpEmXkjUj0Mmx5bhyBKJExTOY8urZf3nzOhKJln7tiY
+         xFYw2CadbmSugVMdrwU83mcppV0Ey1LKM6QkE+JeRRlSbTnXXLC/YjAriMrk+E0yIq5v
+         gIjYWZsCe1inox4W4hQFcGjGAWXrrRBEF53dE5XEk+dBIQSFo9DOqRQQcZInDKUuYNcQ
+         O+0WjOmVeKI+vqk8hmtTGaPKUI5dZR8ueXrJlTyqfq/xxeqJrvhN3u2dqwDjyL2r5BRd
+         YNlg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1779283782; x=1779888582;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=2izcNj1xZ0p1yofZU7zInuq1w3gym7l3w+3PyLHbXUQ=;
+        b=R2c2zn071ZPKgok1+sEVAyAfsgpjeMiZeooLhMsdaCwT2gxULOzVzDN34Nji9L4yr0
+         w7AJCJJyUqYVKGbUJhNz1oDom4aZa/TEM8xNlHV8/zdpPX6GesJhges4kJM8CCCf7PUQ
+         plddTfyb1yAVnPjSqKCXXSuVLzO1HAjZD2itJqES3YJi4UF5wlGxHfCGYLqAeYoCkz7M
+         ss2Pv8aDp8V1EmAV+Avz8YniilmHuxRo9IHCST+qpiuX852wFXvHT2dUJXqjkxUFG1XJ
+         tFy6v1Rd3x1qLpAaJpleUc0Akcbb84yO1YG9/J8AR44ABbIcE6+q8Fd1JmbNHywMyGyY
+         llfg==
+X-Forwarded-Encrypted: i=1; AFNElJ/5rrGxdEI8DA1nJrmNlstAtGWncg65tSXcq8rc8cXAtwLNeOBSet0ZmMAUXWuxGjPWaRzVdHphIHkZfdhx2A==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx8esda3ijaq5djhS80hQ64/f6ZYz2m1bnYBdt8Ma/xlXQTkxxo
+	LyS3oEj928ooimVqjjdkeo4N42sJNBWzficD1jH1drNCW3cu+nvz5swbbj0i/KXB2p+KCU78viD
+	IopKMKoO05Kt3wZGtM2YfxDGvBr8cZ7opQt9s9fWgMhusCaSq+JluNA8inQ+VZmKZXzq/ooLx+Q
+	I=
+X-Gm-Gg: Acq92OHJ1Buxm0mpHChvCCW+6+0iVIr0thjEYFP88FgSkgjGRHOWFYJ/UUFABhlgtFT
+	uoTKqyf9sGSDolwISij1dHDXgvmkkDk2LiSqc9I7b7nSocqPKxysn/uaVrni9SCJ7YlESeEqFT/
+	xpUBT3t23S8UR79cBcE8PbufsfUMK4vDV1narcwVUnV7CfnOPjY56CqgCRRG5aak2NKaERon8Gt
+	SXsvPHFEDTjgc65nWvnPh7RvO0vEWt8ycHEsQ4OfZt51eznR4VvWK64UgGvwdFN7zivqguy/MQ3
+	CWfKfriCgWSqPtW7U40VIa8C5Pxv6y7Lvnyko3yH6kdt2cT7o5PLJQNJhYrmwpvR9bN2U5HghvY
+	p9e72MIE+62BWAJylvywew+CUCFjL5ozcVoSkpI56528TxdNvKq6hQ8c=
+X-Received: by 2002:a05:6102:8644:20b0:650:9174:f0 with SMTP id ada2fe7eead31-650917426bbmr5562516137.19.1779283781943;
+        Wed, 20 May 2026 06:29:41 -0700 (PDT)
+X-Received: by 2002:a05:6102:8644:20b0:650:9174:f0 with SMTP id ada2fe7eead31-650917426bbmr5562477137.19.1779283781572;
+        Wed, 20 May 2026 06:29:41 -0700 (PDT)
+Received: from localhost.localdomain ([5.133.47.210])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4900c16c62dsm223771535e9.11.2026.05.20.06.29.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 20 May 2026 06:29:40 -0700 (PDT)
+From: Srinivas Kandagatla <srinivas.kandagatla@oss.qualcomm.com>
+To: broonie@kernel.org
+Cc: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com,
+        matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+        sharq0406@gmail.com, kuninori.morimoto.gx@renesas.com,
+        ckeepax@opensource.cirrus.com, srinivas.kandagatla@oss.qualcomm.com,
+        linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org
+Subject: [PATCH 0/2] ASoC: codecs: max98090: switch to standard set_jack callback
+Date: Wed, 20 May 2026 13:29:28 +0000
+Message-ID: <20260520132930.54333-1-srinivas.kandagatla@oss.qualcomm.com>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260520-airoha-disable-gdm2-fwd-v1-1-1eeea5dffc2f@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MTQqEMAxA4atI1hNoi3/MVWQW1SQacKq0ooJ4d
- 4vLb/HeBYmjcoJvcUHkXZMuIcN+ChgmH0ZGpWxwxtWmcga9xmXySJp8PzOO9HcoB+FAYltpqBQ
- rkOs1suj5njsIvMHvvh/BzPOAbgAAAA==
-X-Change-ID: 20260520-airoha-disable-gdm2-fwd-cdf18f7d4f1f
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Madhur Agrawal <madhur.agrawal@airoha.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.3
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTIwMDEzMCBTYWx0ZWRfX3co6O5idVV+B
+ T+Xsv+ZTqbHp37yulkoMFux/dXJQFOuC8Kk5pa9A2ZKdBKvneKVSutfSdm61BuUYIy2l4DUstlF
+ daQnsGjwyAeA+0ZACBhDPL7b2G8YniXhdX1CfboOFK/Pu8qiVAOyOoOqoy5wWwxQOz6EfKbqvIe
+ QAFa6LtWT8WBPYpAQjnr0+iUG0r8aokoyDXr5N4xlxTzQghs3DJ9+Mqr4btEleIClrmiK/dNtOP
+ ARGXR03EW+JXdq9VaKDibVw/IxYlLNkSV6drL04Bic/tWve0Cx36dddFUpfku8ofchsev03tqZZ
+ 5zhyAMbuPNq8JAb5UgCJlugTwgJT4mktMSY63h6EBw2rE69jCtVtpc/CL/Ul6robGC9oVcrfUF/
+ VH3ouWiTxd+GSpiQWY24kFYLHaMdDAd/FoNFYpsmS8sMGGKTOyIUfuVmw5HqKuKphK8uPIuP/vn
+ xWA9MGFBU/7vKj/E6Zg==
+X-Authority-Analysis: v=2.4 cv=N9cZ0W9B c=1 sm=1 tr=0 ts=6a0db747 cx=c_pps
+ a=KB4UBwrhAZV1kjiGHFQexw==:117 a=ZsC4DHZuhs/kKio7QBcDoQ==:17
+ a=NGcC8JguVDcA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22 a=pfRRIDRPQivS3abtoGoA:9
+ a=o1xkdb1NAhiiM49bd1HK:22
+X-Proofpoint-GUID: AjF8jL6QbFWGgGyfTUbADVxDzLiKpgWE
+X-Proofpoint-ORIG-GUID: AjF8jL6QbFWGgGyfTUbADVxDzLiKpgWE
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-05-20_02,2026-05-18_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 impostorscore=0 adultscore=0 lowpriorityscore=0
+ suspectscore=0 malwarescore=0 spamscore=0 phishscore=0 clxscore=1011
+ bulkscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2605130000
+ definitions=main-2605200130
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260520_061223_852387_FC867CA5 
-X-CRM114-Status: UNSURE (   9.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260520_062944_218393_FB615A39 
+X-CRM114-Status: GOOD (  12.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,52 +143,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hw design requires to disable GDM2 forwarding before configuring GDM2
-loopback in airoha_set_gdm2_loopback routine.
+The MAX98090 codec driver currently exposes a custom
+max98090_mic_detect() helper for machine drivers to register a headset
+jack.
 
-Fixes: 9cd451d414f6e ("net: airoha: Add loopback support for GDM2")
-Tested-by: Madhur Agrawal <madhur.agrawal@airoha.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+This series converts the driver to use the standard component
+.set_jack callback and updates the mt8173-max98090 machine driver to use
+snd_soc_component_set_jack() instead of the codec-specific helper.
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index d0c0c0ec8a80..cecd66251dba 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -1793,11 +1793,8 @@ static int airoha_set_gdm2_loopback(struct airoha_gdm_port *port)
- 	u32 val, pse_port, chan;
- 	int i, src_port;
- 
--	/* Forward the traffic to the proper GDM port */
--	pse_port = port->id == AIROHA_GDM3_IDX ? FE_PSE_PORT_GDM3
--					       : FE_PSE_PORT_GDM4;
- 	airoha_set_gdm_port_fwd_cfg(eth, REG_GDM_FWD_CFG(AIROHA_GDM2_IDX),
--				    pse_port);
-+				    FE_PSE_PORT_DROP);
- 	airoha_fe_clear(eth, REG_GDM_FWD_CFG(AIROHA_GDM2_IDX),
- 			GDM_STRIP_CRC_MASK);
- 
-@@ -1815,6 +1812,11 @@ static int airoha_set_gdm2_loopback(struct airoha_gdm_port *port)
- 		      GDM_SHORT_LEN_MASK | GDM_LONG_LEN_MASK,
- 		      FIELD_PREP(GDM_SHORT_LEN_MASK, 60) |
- 		      FIELD_PREP(GDM_LONG_LEN_MASK, AIROHA_MAX_MTU));
-+	/* Forward the traffic to the proper GDM port */
-+	pse_port = port->id == AIROHA_GDM3_IDX ? FE_PSE_PORT_GDM3
-+					       : FE_PSE_PORT_GDM4;
-+	airoha_set_gdm_port_fwd_cfg(eth, REG_GDM_FWD_CFG(AIROHA_GDM2_IDX),
-+				    pse_port);
- 
- 	/* Disable VIP and IFC for GDM2 */
- 	airoha_fe_clear(eth, REG_FE_VIP_PORT_EN, BIT(AIROHA_GDM2_IDX));
+Using the standard callback removes the need for a custom exported
+symbol and allows machine drivers to use the common ASoC jack
+registration interface. This also improves compatibility with machine
+drivers, such as Qualcomm platforms, that already rely on
+snd_soc_component_set_jack().
 
----
-base-commit: dc416e32baaeb620b9809e9e25fc7b30889686e9
-change-id: 20260520-airoha-disable-gdm2-fwd-cdf18f7d4f1f
 
-Best regards,
+Srinivas Kandagatla (2):
+  ASoC: codecs: max98090: use component set_jack callback
+  ASoC: mt8173-max98090: use standard callback to set jack
+
+ sound/soc/codecs/max98090.c                 | 10 +++++-----
+ sound/soc/codecs/max98090.h                 |  3 ---
+ sound/soc/mediatek/mt8173/mt8173-max98090.c |  3 +--
+ 3 files changed, 6 insertions(+), 10 deletions(-)
+
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.47.3
 
 
