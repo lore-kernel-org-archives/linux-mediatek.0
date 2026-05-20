@@ -4,70 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 081ABCD4F3D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2026 15:36:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C010CD5BAA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2026 15:42:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=a2tRUQgRwBejUhg1cYn+oCvO34Dh5HeYuLe9vbd7LI8=; b=fRku7gwsp3v89KUf/E0z2zbweh
-	aKdLNBll4/2w4xUEIkGfBGmIUo3rquDISwVhI9KHjajuoRKFaTK3urV1h31FCDPrZ8ZwClJlWchXu
-	7fiiZEvv839HdqK+k8shqICnHYnjKjBsaR4lC0T7yLiqi4wlQ/LRMQQAWnawYbMU75rDSeYu5TTNt
-	T2vxnwBhFNDGm2qxfLB8KYoqKdw3bM+KmE+IpIf1lkiBvee0gXkwhsJFsQ1QepL10hwtK6wJaoZrh
-	exQzif/uq7iq5v8j+jnCd5F5aNvq9W1mz6TZuq205m3Krol9Ro0V8aULGGh1fZY1jgNhO2MyROKVH
-	CyKv/yXQ==;
+	bh=xTs9j84EvrpbUB8zmi/sXVyU6CvZkmauLXlVFqdgLPE=; b=hHbJUOhEtZGlAbvSLFsQT9APzT
+	lf75kUGhdgrWtLyFT+zYgaZK8N/iK/VY9AzdJt+1c9VVwTk0HeCLI1zR3VgcqdZtnUzsRG5ivJeNX
+	NJCnS7IBd33S38i3wZRl5l/6AUMCSzTUnej5nnmNaTh05Ii9VAx6AMURfSjwNMhUOOUBAb7v0KFc5
+	pkDA7q7S0zglHNsYUy4CtW0ynN5m/0jzv6fWfbiVJhNisP9SpEv00nnDO8t4eUJNYqew4QEe54P5L
+	LWwJoOG8UDaJXP/iny73ea0ZuRyOYniw3s8xvaIWOOjx0WLCBIwLlymt2ldgoKJk/t2Kh35kGaaUA
+	eXO1wc0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPiyD-000000051mU-2E4s;
-	Wed, 20 May 2026 15:36:29 +0000
+	id 1wPj3g-000000052nb-34Bb;
+	Wed, 20 May 2026 15:42:08 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPiyC-000000051lp-1P7o;
-	Wed, 20 May 2026 15:36:28 +0000
+	id 1wPj3e-000000052mk-3Yrb;
+	Wed, 20 May 2026 15:42:06 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7028360008;
-	Wed, 20 May 2026 15:36:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A2EE51F000E9;
-	Wed, 20 May 2026 15:36:26 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id BEFF760008;
+	Wed, 20 May 2026 15:42:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 06A241F00893;
+	Wed, 20 May 2026 15:42:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779291387;
-	bh=a2tRUQgRwBejUhg1cYn+oCvO34Dh5HeYuLe9vbd7LI8=;
+	s=k20260515; t=1779291724;
+	bh=xTs9j84EvrpbUB8zmi/sXVyU6CvZkmauLXlVFqdgLPE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=HmxflIBqTEPMrZ+FGAoQNKSPX0MdonqQ8oPlwrBuupAyWh8MEA/9OI5MpxCzJm1wM
-	 QODUBzFOQ+Oqpwp9I0lQMxZvcd1zFDdeVNBxcgdL686H736PWU/zRbBoQb1Kl22FPi
-	 i4qJixTzCo5BEpVWY2XJ73Zh6vOIVWL3qRqzPhkzxkuHhTEAvYwmBdyU0oOCZVfXwg
-	 lMWx50jMpnZaXz6Uje8rPeHsmi74KdcPe4EgDvG5SIZSjwxWtLI6lA3RaiobMf5UoA
-	 nnTsPH6T+Liog+P/nQw9U2klbHKMi4zQwsKkZzUXeBSYhx8sT6ROmC425Uu734bObH
-	 b1VY5rjrZbHVg==
-Date: Wed, 20 May 2026 17:36:24 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Felix Fietkau <nbd@nbd.name>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Simon Horman <horms@kernel.org>, David Ahern <dsahern@kernel.org>,
-	Ido Schimmel <idosch@nvidia.com>,
-	Pablo Neira Ayuso <pablo@netfilter.org>,
-	Florian Westphal <fw@strlen.de>, Phil Sutter <phil@nwl.cc>,
-	Shuah Khan <shuah@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	netfilter-devel@vger.kernel.org, coreteam@netfilter.org,
-	linux-kselftest@vger.kernel.org
-Subject: Re: [PATCH nf-next v2 0/6] Add IPv4 over IPv6 and SIT flowtable SW
- acceleration
-Message-ID: <ag3U-DmEWiwcH0uB@lore-desk>
-References: <20260506-b4-flowtable-sw-accel-ip6ip-v2-0-439fd427726e@kernel.org>
+	b=RSSfWItJZQLm/gKbl48yMOmzxjineVIK03iKozC8JKuvQoBs3ovHcQ7xQ4XqiSZDd
+	 tHbGTI7X3VsJL3Rhmu+TlDcVLKucB22OF71wpJ6wrPh551wMTlMlAmHb2WrFukdzMv
+	 5VTaFfBzbhVM2NDlh9tJryrxXN4sg1FN6q3NEb3JCGR8ia0J7W38fbL363H4tBGeKf
+	 Zxxqs12ToS45Q0qaR+q6RcO7GQLwhu0GTYO27z02rN5ClS0D8euymnQR4Ne+YegA7Z
+	 Vz0+8HN9hw3cgYLp7UWD+U4NjpDPl5sdes2zhsyTDF+CzRKV1mDubaMPzvqI8GhRvE
+	 jIdrvFf0cSxLQ==
+Date: Wed, 20 May 2026 16:41:59 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Srinivas Kandagatla <srinivas.kandagatla@oss.qualcomm.com>
+Cc: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	sharq0406@gmail.com, kuninori.morimoto.gx@renesas.com,
+	ckeepax@opensource.cirrus.com, linux-sound@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 2/2] ASoC: mt8173-max98090: use standard callback to set
+ jack
+Message-ID: <980eef5c-478e-4503-a3b8-27f3eba7ec3d@sirena.org.uk>
+References: <20260520132930.54333-1-srinivas.kandagatla@oss.qualcomm.com>
+ <20260520132930.54333-3-srinivas.kandagatla@oss.qualcomm.com>
+ <5990fbb1-286f-482d-b02a-d0637494f435@sirena.org.uk>
+ <81b15533-3258-48a8-8d5a-0dcec7027254@oss.qualcomm.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="y1SQHS4FsUVyGc0Q"
+	protocol="application/pgp-signature"; boundary="LeC902u89KSq/6Lj"
 Content-Disposition: inline
-In-Reply-To: <20260506-b4-flowtable-sw-accel-ip6ip-v2-0-439fd427726e@kernel.org>
+In-Reply-To: <81b15533-3258-48a8-8d5a-0dcec7027254@oss.qualcomm.com>
+X-Cookie: Natural laws have no pity.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,74 +78,41 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---y1SQHS4FsUVyGc0Q
+--LeC902u89KSq/6Lj
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-> Similar to IPIP and IP6I6 tunnels, introduce sw acceleration for IPv4 over
-> IPv6 and SIT tunnels in the netfilter flowtable infrastructure.
->=20
-> ---
-> Changes in v2:
-> - Fix MTU check in nf_flow_offload_forward() and in
->   nf_flow_offload_ipv6_forward()
-> - Add SIT sw acceleration support
-> - Link to v1: https://lore.kernel.org/r/20260505-b4-flowtable-sw-accel-ip=
-6ip-v1-0-9ac39ccc9ea9@kernel.org
+On Wed, May 20, 2026 at 03:34:59PM +0000, Srinivas Kandagatla wrote:
+> On 5/20/26 1:42 PM, Mark Brown wrote:
+> > On Wed, May 20, 2026 at 01:29:30PM +0000, Srinivas Kandagatla wrote:
+> >> use snd_soc_component_set_jack() instead of custom callback to
+> >> max98090 codec.
 
-Hi Pablo and Florian,
+> > This needs to be squashed into the first commit, otherwise the first
+> > commit will cause a build break.
 
-Any update about this series? Thanks in advance.
+> I had them in opposite order in my local setup, which is why it did not
+> break the build for me, I can send out a squashed version.
 
-Regards,
-Lorenzo
+Putting this first would also be fine from a build point of view so is
+probably also OK, though there would be runtime breakage (which I
+imagine is why you reordered).  I'm not sure anyone will notice the
+runtime bisection issue.
 
->=20
-> ---
-> Lorenzo Bianconi (6):
->       net: netfilter: Add ether_type to net_device_path_ctx
->       net: netfilter: Add encap_proto to flow_offload_tunnel
->       net: netfilter: Add IPv4 over IPv6 tunnel flowtable acceleration
->       selftests: netfilter: nft_flowtable.sh: Add IPv4 over IPv6 flowtabl=
-e selftest
->       net: netfilter: Add SIT tunnel flowtable acceleration
->       selftests: netfilter: nft_flowtable.sh: Add SIT flowtable selftest
->=20
->  drivers/net/ethernet/airoha/airoha_ppe.c           |  14 +-
->  drivers/net/ethernet/mediatek/mtk_ppe_offload.c    |  13 +-
->  include/linux/netdevice.h                          |   5 +-
->  include/net/netfilter/nf_flow_table.h              |   1 +
->  net/core/dev.c                                     |   6 +-
->  net/ipv4/ipip.c                                    |   1 +
->  net/ipv6/ip6_tunnel.c                              |   6 +-
->  net/ipv6/sit.c                                     |  26 ++
->  net/netfilter/nf_flow_table_core.c                 |  14 +-
->  net/netfilter/nf_flow_table_ip.c                   | 386 +++++++++++++--=
-------
->  net/netfilter/nf_flow_table_path.c                 |  16 +-
->  tools/testing/selftests/net/netfilter/config       |   1 +
->  .../selftests/net/netfilter/nft_flowtable.sh       |  78 ++++-
->  13 files changed, 402 insertions(+), 165 deletions(-)
-> ---
-> base-commit: c1e5127b577c6b88fa48e532616932ae978528d5
-> change-id: 20260505-b4-flowtable-sw-accel-ip6ip-7101034cd147
->=20
-> Best regards,
-> --=20
-> Lorenzo Bianconi <lorenzo@kernel.org>
->=20
-
---y1SQHS4FsUVyGc0Q
-Content-Type: application/pgp-signature; name=signature.asc
+--LeC902u89KSq/6Lj
+Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCag3U+AAKCRA6cBh0uS2t
-rPv9AQCAeVJ4LW3/ZIxsIiBE3XnXj6UlIBCD6SYxGD9HVjHqTAD9ETIzVKrKIpnn
-TWQXuXJqNaEhL7TTPrv+698yNy3I2QA=
-=eDma
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmoN1kYACgkQJNaLcl1U
+h9Bglwf/fFyVX5wZ6pPFxe17aKN5nIUOOpNPzWcYnojdG/+Dm2HC7YBpPzPcIUfd
+IS8u4clCZmMSaBULc1R37Du8CRthdVGpqwMEUuBZ0iECRpJGr3S3OT25i653DWNu
+oYSyWmnM5UlrpSoLGk39DOO0k+K1mKDFCPmzCHRbkFcpL+lK+vo0KRjr3oO9o1UV
+S/It3KPhyc3FRRo+Z0UaTzruQ72Ky1HAoAvsPxSdYmtxV88iU9YxSEwSAjtAB1gl
+FhUWNJopESjFOyM7x6JUYz0Yp3FC76ZKwpmV+ONJ7X96onrFQv6SVQ8a+FmVCUim
+qR2xcAdHjU3W37KUi7R0hkadSgb0+A==
+=ZDx3
 -----END PGP SIGNATURE-----
 
---y1SQHS4FsUVyGc0Q--
+--LeC902u89KSq/6Lj--
 
