@@ -4,78 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 024D1CD4F3C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2026 11:26:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEF74CD4F3C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2026 12:00:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1piNjmrlWSwikIHnqy+RsZoVhgioTg2emaClTHlJItE=; b=1pVZBf2/uakDsCC1YSq/t/2yxT
-	qKAfOXAJv0MrFBSX90y5SwJBy5hOI8bAcZVyPH6hukORHTUZzc6wxRnvQvQ0EyVWhP4aLdJc3bTjn
-	JmZxrgryVG0wx65+wezSXg5ZwxYrRoT4d0Zdn0M54atQNdbkWDPbeu/ozm7ypN/E8fcGnVPAEHvgB
-	kAcOjz6rLuHlfvtDGvgtqULbTtV/+1kD6RD7uUIskZfPBuRt1wBJ8vsFxqCsq+Ra/vD8f5ymPdWxD
-	zMj9EQ1JtvYzL19t6ajXN9ojobDlQKNMvw3yjNuqHNRYtnwkVrShkNgxzxjh13ZIUlQrIAFiUcKHl
-	GHRZfeMw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WCS4Peea+QwDxxv2INYOTDMSnN32Ds0EesZfQ/Pzh3I=; b=EYPAgYQIKtwn047323dYdf2p53
+	KuscuGjP/XQ6z1MIZntVfRuUIiTan6uUAdjGmJqXbOcTt+atGdj9rVsh+VuskgbKaqNPqtiNP5O66
+	6dwdiIrPxdSqCTgMa8+xEVRiiEf3SfD1n3jEbHLCOIjnxg+SxQE4IPwWGoi/oG+1ihih98udnY3KV
+	1AGjNO+kX5Agz2JhFIk7IioodYAK1iH6jP+sXzwmtn4XPJKPfcPYRpMitpGiCLaViRfGyK31aC7ad
+	/ZZmwmCsWT3CotBO6O6TpiBTYQJVvwlEFd3TMWIwhzTNEtNATUrL6CIjRSPqeHyJ391iQNcbx9Jvf
+	znCWBl4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPf4Z-00000004RmO-0DWb;
-	Wed, 20 May 2026 11:26:47 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1wPfb2-00000004VXP-2bdc;
+	Wed, 20 May 2026 12:00:20 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPf4W-00000004RlP-3sqk;
-	Wed, 20 May 2026 11:26:46 +0000
-X-UUID: c4cff374543e11f1afed4741b24580c9-20260520
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=1piNjmrlWSwikIHnqy+RsZoVhgioTg2emaClTHlJItE=;
-	b=LN20goIK3JgYnXxlMPdzdH6bYrvYZJEVLJxKPeyzmRgqbGFIEuCI6v4kAVw0pBFz/6ChRXNuL3r8ATRkmEgtmGgoIs0skvGNzpRg+Hu3xDDyDdnk6X/xgbQ1o9FRrhXYgU/QgGViwt+dc/WiPVLofD0nIw8aQklGgP6y8tQDOIg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.14,REQID:fbff9736-af0d-47bd-8d41-a72721cc6acf,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:9091e75,CLOUDID:08752b46-e650-4d81-a877-d298d8f44b5d,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|865|888|898,TC:-5,Cont
-	ent:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0
-	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: c4cff374543e11f1afed4741b24580c9-20260520
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <arnab.layek@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 721780380; Wed, 20 May 2026 04:26:39 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 20 May 2026 19:26:36 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 20 May 2026 19:26:36 +0800
-From: Arnab Layek <arnab.layek@mediatek.com>
-To: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: <robh@kernel.org>, <krzk+dt@kernel.org>, <conor+dt@kernel.org>,
-	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
-	<andersson@kernel.org>, <mathieu.poirier@linaro.org>,
-	<linux-remoteproc@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Arnab Layek
-	<arnab.layek@mediatek.com>
-Subject: [PATCH v4 1/1] dt-bindings: remoteproc: mtk,scp: Allow multiple memory regions for MT8188
-Date: Wed, 20 May 2026 19:26:29 +0800
-Message-ID: <20260520112629.3420612-2-arnab.layek@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20260520112629.3420612-1-arnab.layek@mediatek.com>
-References: <20260520112629.3420612-1-arnab.layek@mediatek.com>
+	id 1wPfaz-00000004VWn-220d;
+	Wed, 20 May 2026 12:00:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1779278414;
+	bh=eJsuDBXfnaLF6D4L64VZ7eXC4sIgQoPF5eqTtmWx8Jk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=BmuDi27HZC6NSgE7XtdgzNVEhrJ40Md5H+LnJYwAV6eXQQyE6UBDx6LiE7maAT71Y
+	 PzE9itXp+v+uzO3RnfLLCL5oId/dod4yNon2EeyWe28S7fh61Dj7ejdLEkcKrAGO5u
+	 JLFIyQWrcK6iM7nYKM/j0EDel9u8CC9fOQ/VEPuzpdsRk27qNFZdabR7jGJ4O7Z5RB
+	 Gl3rxpIKUCWT3c+yO3IjFLAHxwlySO1sKCAhLixM2zusMzxa2PDaYDiKKzoeQh+tBz
+	 cqeDrIaTxAYOSXV/xD9yv76G87t/Q2y5CRdkX70RjtWQIxLhQO9fa47PUWGh7iuf9M
+	 fviSspxr3CQmg==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6311817E040C;
+	Wed, 20 May 2026 14:00:13 +0200 (CEST)
+Message-ID: <ff184540-be24-47ed-838b-18e9fd260161@collabora.com>
+Date: Wed, 20 May 2026 14:00:13 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH PARTIAL-RESEND v12 0/5] Add support MT6316/6363/MT6373
+ PMICs regulators and MFD
+To: Mark Brown <broonie@kernel.org>
+Cc: linux-mediatek@lists.infradead.org, lee@kernel.org, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+ lgirdwood@gmail.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ kernel@collabora.com, wenst@chromium.org
+References: <20260511101355.122478-1-angelogioacchino.delregno@collabora.com>
+ <agKBkUBVM81Y6MUk@sirena.co.uk>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <agKBkUBVM81Y6MUk@sirena.co.uk>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260520_042644_969470_68CA1234 
-X-CRM114-Status: GOOD (  11.11  )
+X-CRM114-CacheID: sfid-20260520_050017_678837_24616BA0 
+X-CRM114-Status: UNSURE (   9.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,106 +80,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT8188 SCP can use either one or two reserved memory regions:
-- Required: Main SCP SRAM memory region (mandatory for SCP operation)
-- Optional: SCP L1TCM memory region (Level 1 Tightly Coupled Memory,
-  used for performance optimization when available, but not required
-  for basic SCP functionality)
+On 5/12/26 03:25, Mark Brown wrote:
+> On Mon, May 11, 2026 at 12:13:50PM +0200, AngeloGioacchino Del Regno wrote:
+>> Changes in v12:
+>>   - This is a partial resend. MT6373 regulators and MFD patches were not picked.
+>>   - Rebased over next-20260508
+> 
+> Is there a reason why this is a single patch series, are there any
+> interdependencies here?
 
-Other MediaTek SoCs (MT8183, MT8186, MT8192, MT8195) use only a single
-memory region and must remain restricted to one region for backward
-compatibility.
+Just showing the full picture. Nothing else.
 
-Update the base schema to allow 1-2 memory regions (minItems: 1,
-maxItems: 2), following the pattern used by other MediaTek dt-bindings
-like mediatek,vcodec-encoder.yaml where the base property defines a
-permissive range accommodating all device variants.
+Btw, seen your feedback on the other patches, will fix as soon as I can - thanks!
 
-Add two conditionals:
-1. Explicitly restrict non-MT8188 devices to maxItems: 1
-2. Document MT8188's two regions with descriptions (minItems: 1 makes
-   the L1TCM region optional, allowing boards to specify 1-2 regions
-   based on hardware configuration)
-
-This approach maintains backward compatibility while enabling MT8188 to
-specify 1-2 memory regions depending on board design and performance
-requirements.
-
-Signed-off-by: Arnab Layek <arnab.layek@mediatek.com>
----
- .../bindings/remoteproc/mtk,scp.yaml          | 45 ++++++++++++++++++-
- 1 file changed, 43 insertions(+), 2 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-index bdbb12118da4..fca9b0675eae 100644
---- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-+++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-@@ -55,7 +55,8 @@ properties:
-       initializing SCP.
- 
-   memory-region:
--    maxItems: 1
-+    minItems: 1
-+    maxItems: 2
- 
-   cros-ec-rpmsg:
-     $ref: /schemas/embedded-controller/google,cros-ec.yaml
-@@ -123,7 +124,8 @@ patternProperties:
-           initializing sub cores of multi-core SCP.
- 
-       memory-region:
--        maxItems: 1
-+        minItems: 1
-+        maxItems: 2
- 
-       cros-ec-rpmsg:
-         $ref: /schemas/embedded-controller/google,cros-ec.yaml
-@@ -205,6 +207,45 @@ allOf:
-           items:
-             - const: cfg
-             - const: l1tcm
-+  - if:
-+      properties:
-+        compatible:
-+          enum:
-+            - mediatek,mt8183-scp
-+            - mediatek,mt8186-scp
-+            - mediatek,mt8192-scp
-+            - mediatek,mt8195-scp
-+            - mediatek,mt8195-scp-dual
-+    then:
-+      properties:
-+        memory-region:
-+          maxItems: 1
-+      patternProperties:
-+        "^scp@[a-f0-9]+$":
-+          properties:
-+            memory-region:
-+              maxItems: 1
-+  - if:
-+      properties:
-+        compatible:
-+          enum:
-+            - mediatek,mt8188-scp
-+            - mediatek,mt8188-scp-dual
-+    then:
-+      properties:
-+        memory-region:
-+          minItems: 1
-+          items:
-+            - description: Main SCP SRAM memory region
-+            - description: Optional SCP L1TCM memory region
-+      patternProperties:
-+        "^scp@[a-f0-9]+$":
-+          properties:
-+            memory-region:
-+              minItems: 1
-+              items:
-+                - description: Main SCP SRAM memory region
-+                - description: Optional SCP L1TCM memory region
- 
- additionalProperties: false
- 
--- 
-2.45.2
+Cheers,
+Angelo
 
