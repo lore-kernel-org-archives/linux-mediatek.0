@@ -4,93 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C97ECD4F3C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2026 13:12:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8531CD4F3D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2026 13:12:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mUsifWX6aK2jxqZvUw8q1yQUjx3vnN/cEOO8Ykzq3n4=; b=buBB1d7AtlLBAwU+ECVlLzMd8u
-	fhh3qmMcvi4taYcge+YhmagfCfxvYTeMoSGU9VcW/MEMGOGLOg9ENtdesAGnXZQ2HJSA9BRQfgtTw
-	NyHGPmp1tSV1iz38YzmCXI4+NsPpDC9I3knkMgcXW2dc9iSFcYdgcl8rDD7Q8fPN4SC37onTRr1tW
-	iuBmKoPbX6FwymM7bajTr+vqfH3Tj+/lPjH6iEfOzhc18jOmDLSrokY2dsBGE0ZpDjIa+g/h/vADi
-	sB+XCBlBiMq9BDstGUV6YsawUpbFuwoGMdJF5XB8h53fZQQmDL2zi2+H5KU2zgTyzwG5xKDlO4OJ9
-	dG5pngUw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mXaopxgAUyb+dYnMEPNpUoPGlTbsAgez8gJglbBR/V4=; b=fTlId/bD8rkGmf0a7mIWDupECl
+	8Kj83bcK6a0UWeV+fg/58FGHZR6Nl2LMYelRLCk3xQPoZ6gaRE9m/KVUMWfiBM9O9aJ0YrEWQXlgK
+	EQLMd+6VL4S8cuNeGCslDS0ld3NS/0LA8ndh9znLaGFxjv5ena+EK/CHwEZMzh38cbzp4eZ3I3gw3
+	IHmgEuf33fGP2NFr5enoo/b7EWBIcBSQzdhURZwDX0gYbTrvHdKNdn1XQq2d+8dGxUNpahaZw8P13
+	9jPfD/1il1R+J7RkNrQqa2ceIOEoef/okH1jZlH6VqWXfmKUMSZMM6lh55Ec4T0aMOyn6IGJJyH+d
+	wQzxcpMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPgiX-00000004eFt-2Q7E;
-	Wed, 20 May 2026 13:12:09 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1wPgio-00000004eKY-39eg;
+	Wed, 20 May 2026 13:12:26 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPgiU-00000004eEZ-3Q1n
-	for linux-mediatek@lists.infradead.org;
-	Wed, 20 May 2026 13:12:07 +0000
-Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-43d73422431so3370194f8f.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 20 May 2026 06:12:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1779282725; x=1779887525; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=mUsifWX6aK2jxqZvUw8q1yQUjx3vnN/cEOO8Ykzq3n4=;
-        b=TlIuVGhTGVsvdr8CEpjeD3UYlf2sPabc0Ft7IIwxu125bdhTatVij/cq3U+dBpaxcY
-         NcaDnbTGOzZMSUYOEk34dlI0pZTM9/8Jaaz9+Iz9CU/opsc3ZNuPkmuZpsMMdECycZP/
-         ewjRqNnn19PE4AEDdPgyXP2Ig5H2Xj8Y7JHmZP9wqT3jPAKV8vNdCXaR9aiRCywx2329
-         fGrpjqNd7koSIPp2VMmAgqjkzRPWKA8+6PYakIOfa5uEuJOJkJhvjN5rrZkzsthu09WF
-         PvEhwu8CoMvZRlBRmVUHTa/wHZ6pc2+HtxTcfVPyXtHGMeHaTMPXPkWCvksL4hT0NdxS
-         C2kA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779282725; x=1779887525;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=mUsifWX6aK2jxqZvUw8q1yQUjx3vnN/cEOO8Ykzq3n4=;
-        b=JIkT99QxcsKtW3G/7Ioj/yffembel6USNx01njghSx65lWun8lUvGCkxt2i3ImXal7
-         XxPjgH51mpTw27vmqL0ggrwPin3hVN4J5yTztetOD1l3JGdo5Rh/DLW4k+hdUnCdxL9T
-         w7nefuPXXdYWKf1J+g/DNALAcxV5hgP+suznp5VSt1sSEOPBoYjVO7s4e4Wz1TXB9zNN
-         6JA86wnefY0czFIVgUoENvq69Cfg9FjUTTxkgxhGeC607TIUufB6xX9PS4Iefgn0uPL9
-         TMuutX/lh8tK2LYYfXRZs5IviIzBabl+g79XaenmxAGMOrz/hGSXTecLH5WVZVmkmYoN
-         Oz8g==
-X-Forwarded-Encrypted: i=1; AFNElJ+xUJOw7ROHOWY4F5432oggKhsewTLlDO94bNJPnVI+6xfAaYNGwr7WvBvDDWQek74h8TW1/+lyi8eKg28cBA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxtUf//8Wjrv7XDUr4QLO9BUPVyHZUknxwWSozuWbgnih942LUQ
-	ea1zQ5whZSPebFwB7iAvZFl/CY0uSRjfNE+BRSBURq3O1TjlfjUHcJtw
-X-Gm-Gg: Acq92OE7QxhyvNS2dwQ1M2wZYA7PPxk6ncd3nBgNVGn1VcS7XgxmmsQFoM19CIG4OYF
-	0Rb5Ur7o/7FJR8ViQxHDVRsBMTJ0/MrtI7zaMY7dB7Sx6R9ZmYsgMh8UnA6zj8V7+2ZwgXCPoJr
-	sCxGFHRddb2aHZcSxrhFRwDLMpMtSCJ1vS3B4w4oZWtsNMHXUAJwYPR6j51S/vIK/zKh5FZwyFt
-	52BMaEPuzhW6hKVAppXJzaR7wk51Yzhzsz8vzEVzsmbzD0m06WtlSMuVxzBb1/ephI0SwYHUQSY
-	U+SWDuPL31Y1iGWjhtVQs4Z2a5m3RzcpWrFMntjzvZVHITCKhIcmplldTaWwNghg7jzxcM1Y42J
-	cJv8rEKKRnkKnOp1C4Eow3MDgrscveMVov0kecmDJkKpB8zfzyDjvjPWdTuFDRejhWx6TV3JQn6
-	999Ph7YdCXhDOjfsTWlaxTZcSPqNcpDXVuXWF2UU7Qwx4m1gkzVeWUZvOVmwCnehJ7
-X-Received: by 2002:a05:6000:1844:b0:45e:98ed:bde5 with SMTP id ffacd0b85a97d-45e98edbeb5mr3627217f8f.24.1779282724547;
-        Wed, 20 May 2026 06:12:04 -0700 (PDT)
-Received: from pumpkin (82-69-66-36.dsl.in-addr.zen.co.uk. [82.69.66.36])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-45da0fe13a7sm56345921f8f.29.2026.05.20.06.12.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 20 May 2026 06:12:04 -0700 (PDT)
-Date: Wed, 20 May 2026 14:12:02 +0100
-From: David Laight <david.laight.linux@gmail.com>
-To: Rosen Penev <rosenp@gmail.com>
-Cc: linux-sound@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, Mark
- Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
- <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
- linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC
- support), linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek
- SoC support)
-Subject: Re: [PATCH] ASoC: mediatek: mt2701: fix snprintf bounds
-Message-ID: <20260520141202.1803aa7d@pumpkin>
-In-Reply-To: <20260519010440.629290-1-rosenp@gmail.com>
-References: <20260519010440.629290-1-rosenp@gmail.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; arm-unknown-linux-gnueabihf)
+	id 1wPgil-00000004eJR-3IvB;
+	Wed, 20 May 2026 13:12:24 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2A9B043F46;
+	Wed, 20 May 2026 13:12:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 847B31F00898;
+	Wed, 20 May 2026 13:12:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1779282743;
+	bh=mXaopxgAUyb+dYnMEPNpUoPGlTbsAgez8gJglbBR/V4=;
+	h=From:Date:Subject:To:Cc;
+	b=elEBtTCQH1mi0PXwjMq+KplsaUDqZ34YzS7/kBjyNcBpBUZIo6vhFsKwnbkVGPM0r
+	 TTc2GmfzGKZmrT3Nt8Fi3F8KUHeWIcZZoQr8C2OTvX389ftTiJKcjUAukJhneGBC0c
+	 ey63Rnw/c1jtuyQWQhDVF7BcnBSCVz662RQTQHSUFtDgNNyuqvPWcm9TCLcFSdEh8w
+	 HYcmypdLkCgra5jEtHQdoPPmtvxemU74V39vlH0oRWtpdc18EUy1lSKl+U1sCy68FA
+	 59n3ASXC5IKfVWTuVrIxwAEkZNMTiW5DKWwpDPaAcKJgol3vuu7Q+ILwSExbhO4KLq
+	 cS3KtnflTs6Gw==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Wed, 20 May 2026 15:12:02 +0200
+Subject: [PATCH net] net: airoha: Disable GDM2 forwarding before
+ configuring GDM2 loopback
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+Message-Id: <20260520-airoha-disable-gdm2-fwd-v1-1-1eeea5dffc2f@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MTQqEMAxA4atI1hNoi3/MVWQW1SQacKq0ooJ4d
+ 4vLb/HeBYmjcoJvcUHkXZMuIcN+ChgmH0ZGpWxwxtWmcga9xmXySJp8PzOO9HcoB+FAYltpqBQ
+ rkOs1suj5njsIvMHvvh/BzPOAbgAAAA==
+X-Change-ID: 20260520-airoha-disable-gdm2-fwd-cdf18f7d4f1f
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Madhur Agrawal <madhur.agrawal@airoha.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260520_061206_876483_615283F1 
-X-CRM114-Status: GOOD (  19.61  )
+X-CRM114-CacheID: sfid-20260520_061223_852387_FC867CA5 
+X-CRM114-Status: UNSURE (   9.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,49 +79,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 18 May 2026 18:04:40 -0700
-Rosen Penev <rosenp@gmail.com> wrote:
+Hw design requires to disable GDM2 forwarding before configuring GDM2
+loopback in airoha_set_gdm2_loopback routine.
 
-> For whatever reason, GCC is unable to figure out that i2s_num is a
-> single digit number, with MT2701_BASE_CLK_NUM being the maximum value it
-> represents. Add a min() call to help it out and fix W=1 errors regarding
-> snprintf bounds.
-> 
-> Signed-off-by: Rosen Penev <rosenp@gmail.com>
-> ---
->  sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c b/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
-> index 5a2bcf027b4f..43157f218409 100644
-> --- a/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
-> +++ b/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
-> @@ -25,6 +25,7 @@ static const char *const base_clks[] = {
->  int mt2701_init_clock(struct mtk_base_afe *afe)
->  {
->  	struct mt2701_afe_private *afe_priv = afe->platform_priv;
-> +	int i2s_num;
->  	int i;
->  
->  	for (i = 0; i < MT2701_BASE_CLK_NUM; i++) {
-> @@ -35,8 +36,9 @@ int mt2701_init_clock(struct mtk_base_afe *afe)
->  		}
->  	}
->  
-> +	i2s_num = min(MT2701_BASE_CLK_NUM, afe_priv->soc->i2s_num);
+Fixes: 9cd451d414f6e ("net: airoha: Add loopback support for GDM2")
+Tested-by: Madhur Agrawal <madhur.agrawal@airoha.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/ethernet/airoha/airoha_eth.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
-To me that is backwards, like an 'if' put the variable before the limit.
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index d0c0c0ec8a80..cecd66251dba 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -1793,11 +1793,8 @@ static int airoha_set_gdm2_loopback(struct airoha_gdm_port *port)
+ 	u32 val, pse_port, chan;
+ 	int i, src_port;
+ 
+-	/* Forward the traffic to the proper GDM port */
+-	pse_port = port->id == AIROHA_GDM3_IDX ? FE_PSE_PORT_GDM3
+-					       : FE_PSE_PORT_GDM4;
+ 	airoha_set_gdm_port_fwd_cfg(eth, REG_GDM_FWD_CFG(AIROHA_GDM2_IDX),
+-				    pse_port);
++				    FE_PSE_PORT_DROP);
+ 	airoha_fe_clear(eth, REG_GDM_FWD_CFG(AIROHA_GDM2_IDX),
+ 			GDM_STRIP_CRC_MASK);
+ 
+@@ -1815,6 +1812,11 @@ static int airoha_set_gdm2_loopback(struct airoha_gdm_port *port)
+ 		      GDM_SHORT_LEN_MASK | GDM_LONG_LEN_MASK,
+ 		      FIELD_PREP(GDM_SHORT_LEN_MASK, 60) |
+ 		      FIELD_PREP(GDM_LONG_LEN_MASK, AIROHA_MAX_MTU));
++	/* Forward the traffic to the proper GDM port */
++	pse_port = port->id == AIROHA_GDM3_IDX ? FE_PSE_PORT_GDM3
++					       : FE_PSE_PORT_GDM4;
++	airoha_set_gdm_port_fwd_cfg(eth, REG_GDM_FWD_CFG(AIROHA_GDM2_IDX),
++				    pse_port);
+ 
+ 	/* Disable VIP and IFC for GDM2 */
+ 	airoha_fe_clear(eth, REG_FE_VIP_PORT_EN, BIT(AIROHA_GDM2_IDX));
 
->  	/* Get I2S related clocks */
-> -	for (i = 0; i < afe_priv->soc->i2s_num; i++) {
-> +	for (i = 0; i < i2s_num; i++) {
+---
+base-commit: dc416e32baaeb620b9809e9e25fc7b30889686e9
+change-id: 20260520-airoha-disable-gdm2-fwd-cdf18f7d4f1f
 
-Caching the limit also stops the compiler having to read it every iteration.
-
--- David
-
->  		struct mt2701_i2s_path *i2s_path = &afe_priv->i2s_path[i];
->  		struct clk *i2s_ck;
->  		char name[13];
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
