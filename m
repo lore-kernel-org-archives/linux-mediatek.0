@@ -4,97 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 462C2CD5BA4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 May 2026 22:33:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46A98CD4F54
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2026 02:15:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZNDI0lLPNRldsjOACKAWSwRc2mbScMYD4jMMM2OXl2o=; b=Nb9ufODiSLvcRApGrixHCaO2BJ
-	aDNYfwAiVGhUz/Bkfsmr8+vqPgION3zyc9hzKM2bRVbIpQM0QJUWCw7InGdftDdhz693MMi7R6LuJ
-	LZFrEAA6an+fXcDL9lnuk27eQHOE8TKlpy7ViZWkQEyVdYGNaZdONm7w44aDTfk2B7v/SVUDFHuNv
-	mS0xbemXh8JWFozklYqRUlJaDd5+x78NaNvH1X61BheyU3/AuPxD/JsbP+EQ0Gs972fSE3m2wMsc1
-	5/Cai0INjWBL6ZjOtPLRErYsxnO5xshenO78CB8EyqD3HEkrgKULwcMTd1wCPtTgQreWLjWB9eKFD
-	A9++A19A==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=nOxkbOYFWH5ScnkdXr6eQI1bknyQ+i8azIWqBjjz0VY=; b=d8nyLaaYGyMzNih17S8wqN6gRE
+	I8t/lZsGYwaRNDFbvCDgFqYtkObAMhoJ6pLfvCeRJ0ZTBvJh6WZ82GOZr1vFneVSW6mNhsvLNLpet
+	/Lp89zJj0X2upL+SVk5Zbwpy08mYnBDuNT882zlmAla3y65G/EjdMBrY+UEI5992UJ7BvdFELNN2U
+	F0AjRgFJ0n6TUFUf2o14d/fWdLNfS8GQ70Uz61pSbD1irqaZscMAap30HY5gdpyS8fN6usJWsKcyr
+	YMfZjjv7xAAu3HViPg8QUvHTlm/fBfwv/nErWVm0YHFaacYROHi/Anff3u8mohNwkg8g58DAlAjiG
+	Xal69XPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPT05-00000002y9H-0yia;
-	Tue, 19 May 2026 22:33:21 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1wPWT9-00000003I22-1lxk;
+	Wed, 20 May 2026 02:15:35 +0000
+Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPT00-00000002y2L-2fMt
-	for linux-mediatek@lists.infradead.org;
-	Tue, 19 May 2026 22:33:17 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-44e1860558fso2561481f8f.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 19 May 2026 15:33:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1779229994; x=1779834794; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ZNDI0lLPNRldsjOACKAWSwRc2mbScMYD4jMMM2OXl2o=;
-        b=ikaNCtpuFMZc/2Q+BUtvIGKdtSt/sE0NYtz84krslUFBoeNP9SDgvZFEL75aIbx0mc
-         ehzdtqfTLKSo0OtxME1TVSTe7mm0P++rxgQ2pbLb0lFmpbX5gMoizeNFVT4EQWN9vn9A
-         A3djALA0i9baOPyapSS7dDw0PpPveIBOCvtYQbUxgdGQfWoHmhw12ANIBtorB1qBix6v
-         2QMXx8igF7x+44OEbKJNWV7hL5ukrKCwv2qtpbzOR6H4jxWvmAC13qrLfFduCdbgn/+S
-         fM/wvb5DXHmq1V6UIdJASqib8KVKTRSTblKPVT+ozFY0dORGB35gi+dKK4BVQmnU6BRA
-         A3+w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779229994; x=1779834794;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=ZNDI0lLPNRldsjOACKAWSwRc2mbScMYD4jMMM2OXl2o=;
-        b=CQ3QTSTCeRHpndhtPNePha4kFrrlaW95nJdxor3Z8Yq7PpWPgMABNyFfDVUE7/cd73
-         jk0tBYN+rSGQw3o64bqnfnEEkiNIhXF/g9UTL8rWq/WV6SoK7ZbenaPsgVvOgrtbxYZf
-         8hihYQ55ZLkIre+IlDJoauofYG9B0GDxVYXMWWkB1rgT4Ayy/2gKZicj6YLpDvTneibI
-         CcCNE98mUs5Adziyy+sKmQz6dz1kXkznHWQJ6apR9but2oeHVEkS3xMKBy6SJmePKk25
-         fkJBr/ykRmfSEQHL8DMj6N6ipzrx90gm9Yir7hYwFf8TGHu9t6JIEt3yBOunFCvXhtM+
-         IuNg==
-X-Forwarded-Encrypted: i=1; AFNElJ/24BOIPv3f00fG1Vp6iHWTon6XnOSgNN0lnMgZsFMFRawF+YToktVZRq9fFY451N9VQXqIAvDA4GT7lTpH1g==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywi1hPaHjPJ0r4rAH7MwYwNxsmY4ZK7zWLYoDBaduaqFJJYm50V
-	DbGoC+rbFhG0Wcuf4VMImqoYgZj5rvgi5bomM48jIbQ8lU41SsQtNCrW
-X-Gm-Gg: Acq92OGla/X5RJIhhsMG9oE8lq8UfeWGdm/DS/NbeO+MhPSbYD5nHLjqLrJ6VFj/Kbo
-	2ZHiv5Yc2jDAv+TgZJxsgCpnGrYY7whqn7vDEdiz6Xf2jPyEcJnC6RN902BB5UN/NLc1EIfkoMj
-	0nkrunRDUJ0DPmIVWRHlAQtqpA0PVhtTpLsUYZAFltCb1hWpidr/LG21T5RM9OLWXRgixd+xlfl
-	X/A3wSOJz/BAOn6YipxxqQL4ghx1u0d4qb08k7ylQ6rQZ+cEHrlsz78CNSA1zNqZiWvnf97e4rp
-	H1wOxkr3uVO7RzZ9qpTSYijsZRD4pXrhA4jaCVw6BFQBoy2Mr6S6X35mx4SlETnTlX0Z/wr3Rof
-	CmpqZyELBacT+ZYqzc6rrNm06p6XEsa193KHHvNL89PckcE0F+BrO61td23dqtQxHoDPwN+Sxai
-	FdyHqJJzSqze0wlGQkhI852mbpI4NbJA9aFEHYA7h1fmBCSwkfdkt1kpiztjyk04VFoTLFWrT6X
-	0qmFyixlg==
-X-Received: by 2002:a05:600c:310f:b0:48f:d346:e646 with SMTP id 5b1f17b1804b1-48fe60d5693mr310445495e9.10.1779229994584;
-        Tue, 19 May 2026 15:33:14 -0700 (PDT)
-Received: from Ansuel-XPS24 (host-82-55-252-101.retail.telecomitalia.it. [82.55.252.101])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-48fe4c88495sm346659955e9.4.2026.05.19.15.33.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 19 May 2026 15:33:14 -0700 (PDT)
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Stefan Roese <sr@denx.de>,
-	Andi Shyti <andi.shyti@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	id 1wPWT6-00000003I0T-1ncJ;
+	Wed, 20 May 2026 02:15:34 +0000
+X-UUID: c0371a2e53f111f1aa26b74ffac11d73-20260520
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.12,REQID:5f95d278-0ca8-4f62-be13-634d09b3a2a4,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:e7bac3a,CLOUDID:887d1953b4785460769cf36a49e66563,BulkI
+	D:nil,BulkQuantity:0,Recheck:0,SF:102|865|898,TC:nil,Content:0|15|50,EDM:-
+	3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,A
+	V:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: c0371a2e53f111f1aa26b74ffac11d73-20260520
+X-User: liujiajia@kylinos.cn
+Received: from nature.lan [(10.44.16.150)] by mailgw.kylinos.cn
+	(envelope-from <liujiajia@kylinos.cn>)
+	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
+	with ESMTP id 909766949; Wed, 20 May 2026 10:15:20 +0800
+From: Jiajia Liu <liujiajia@kylinos.cn>
+To: Marcel Holtmann <marcel@holtmann.org>,
+	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-i2c@vger.kernel.org,
-	devicetree@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-bluetooth@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Christian Marangi <ansuelsmth@gmail.com>
-Subject: [PATCH v3 5/5] i2c: mt7621: make device reset optional
-Date: Wed, 20 May 2026 00:32:47 +0200
-Message-ID: <20260519223253.1093-6-ansuelsmth@gmail.com>
+	linux-mediatek@lists.infradead.org,
+	Jiajia Liu <liujiajia@kylinos.cn>
+Subject: [PATCH] Bluetooth: btmtk: remove extra copy in cmd array init
+Date: Wed, 20 May 2026 10:15:00 +0800
+Message-ID: <20260520021500.13504-1-liujiajia@kylinos.cn>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260519223253.1093-1-ansuelsmth@gmail.com>
-References: <20260519223253.1093-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260519_153316_736666_49084AAD 
-X-CRM114-Status: GOOD (  12.17  )
+X-CRM114-CacheID: sfid-20260519_191532_778825_79B0B21B 
+X-CRM114-Status: GOOD (  10.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,27 +78,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Airoha SoC that makes use of the same Mediatek I2C driver/logic doesn't
-have reset line for I2C so use optional device_reset variant.
+In btmtk_setup_firmware_79xx, the data length indicated by wmt_params.dlen
+in the cmd buffer is MTK_SEC_MAP_NEED_SEND_SIZE + 1. Except for the first
+byte, the remaining length is MTK_SEC_MAP_NEED_SEND_SIZE. memcpy copied one
+more byte to cmd + 1 than the remaining length. Align the length passed to
+memcpy to avoid exceeding current section map.
 
-Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+Signed-off-by: Jiajia Liu <liujiajia@kylinos.cn>
 ---
- drivers/i2c/busses/i2c-mt7621.c | 2 +-
+ drivers/bluetooth/btmtk.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/i2c/busses/i2c-mt7621.c b/drivers/i2c/busses/i2c-mt7621.c
-index 3cde43c57a2b..fb9d9701bb10 100644
---- a/drivers/i2c/busses/i2c-mt7621.c
-+++ b/drivers/i2c/busses/i2c-mt7621.c
-@@ -91,7 +91,7 @@ static void mtk_i2c_reset(struct mtk_i2c *i2c)
- 	u32 reg;
- 	int ret;
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index ea7a031000cd..53cba71cb07f 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -188,7 +188,7 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
+ 				       MTK_FW_ROM_PATCH_GD_SIZE +
+ 				       MTK_FW_ROM_PATCH_SEC_MAP_SIZE * i +
+ 				       MTK_SEC_MAP_COMMON_SIZE,
+-				       MTK_SEC_MAP_NEED_SEND_SIZE + 1);
++				       MTK_SEC_MAP_NEED_SEND_SIZE);
  
--	ret = device_reset(i2c->adap.dev.parent);
-+	ret = device_reset_optional(i2c->adap.dev.parent);
- 	if (ret)
- 		dev_err(i2c->dev, "I2C reset failed!\n");
- 
+ 				wmt_params.op = BTMTK_WMT_PATCH_DWNLD;
+ 				wmt_params.status = &status;
 -- 
 2.53.0
 
