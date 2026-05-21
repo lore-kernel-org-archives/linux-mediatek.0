@@ -4,76 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5ADBCD5BAC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2026 10:21:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDADDCD5BB0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2026 10:22:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2DgGODNadjgGJsoo1ylpwBE577qTB7GC2dApkXhqSvs=; b=PnigVbxv864ZVvDsGapxJVezG9
-	snm+KMv3vLt2eT9Hnv8FHpcM2AuQ+g7ox0w4NahoUn6Zknr5KtMGMANIeytCLpzM+J/iT2FlmFwcy
-	MFJCzqso3Y8XBsAp6aVfJz0hbRnUnZDbpZ8uWFIg29bGasyjA9xSE38SZGHY0HFSALJ5s1szv6g3+
-	IQr1O7otCp7lTwNoETo8uz6MW0XkCxa7gW/0MiAHcT/fVjLinZTaQLOkFY8isqe6iA2c5QsnDddhn
-	Vh7LuX7mO4U1RHROdE7Mzm1u2PQVhs2BalzgnaSM1v9aRk/oG0bkcRGbbe+xsMvPQIS6odV+I0Vvs
-	zAgkmEZQ==;
+	bh=Xkp9iXSwBMxfkLoiFAco0YIr6FIaGNxMqOiskAens2w=; b=m6MysDdB0fW36RIQDE6Kplc2nv
+	6ddArz8WIATytnD0Qse3/Gmu7HR9JBy0R3E1RpHZjD9gJmdKTfc5d23FJqonHx8K2kdiKCMc5rEkR
+	DCTUp7IMO2BHPnlo+n9dUN1qDkzn3UlEKGDlBOyUWk58dGRYs5ZI1laqZj0wPhok8Z56pfFvrf5hR
+	VLEzb9Ug7N2YuxZsLBeBmtCUhgDshJFQFN5n8bSgJXPE/CwK77kzhQRuUOa13RaVn1NOD4/4w37i1
+	Gaoe7JNVeGXpXU+04Wkx3zykbGltyDNeeXlx0/6FZOnpZTTkkq/Zv0jf5/8z1nAVcsIhLMyNoM4iZ
+	gdc9Xf6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQN0H-0000000AUvc-3Uhn;
-	Fri, 22 May 2026 10:21:17 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wQN13-0000000AV5i-03MW;
+	Fri, 22 May 2026 10:22:05 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQN0F-0000000AUv2-3Cuw;
-	Fri, 22 May 2026 10:21:16 +0000
+	id 1wQN11-0000000AV54-0kwF;
+	Fri, 22 May 2026 10:22:03 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 58A7243AF9;
-	Fri, 22 May 2026 10:21:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45D741F00A3D;
-	Fri, 22 May 2026 10:21:13 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 9D6E7601FA;
+	Fri, 22 May 2026 10:22:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 51AD91F000E9;
+	Fri, 22 May 2026 10:21:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779445275;
-	bh=2DgGODNadjgGJsoo1ylpwBE577qTB7GC2dApkXhqSvs=;
+	s=k20260515; t=1779445322;
+	bh=Xkp9iXSwBMxfkLoiFAco0YIr6FIaGNxMqOiskAens2w=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=NhkcvpWU504XJCVZIPuxMhF+fcN7kh6dOwSwL+rQUWKSJFrMBp8taYuFNrkdISKN/
-	 abWD5h50FvIuX7UjOZBUywR0mZaC6RXN5MpJ47RVaprIPPQ6N7FNhkaHL4fy9oLWE2
-	 bNk3b8Rq1182L+j1Wb/k0lWztKC0eXWY4KfGYS6NfFSOBNPb1ZeeE6lFNwtMkEk3Mb
-	 Kb0wvQDuYU0JB/n1n35ItS+VZmCk1aVZe3osldYV/ScWkqlRUqfXn3vCJyE/GOXg/r
-	 pqFht5RWvoOULbjItGw3YXezQHj6JQEvAzJeI3PTUU0i4hq7bKqsxctyEzIScCRifk
-	 TVuxXgR+11pSg==
+	b=fkn3S8E20iag5WUtkXqt10BtP9VOR3jHd2nrGXWdCeT76Esode9SfVrRhSL9j/Oqs
+	 y7cS4qsN2oKytuOsy1WGnkxexcFbBgQZ6e7CFV+JiQiysCST8P9KuoEgKnO3Lrt0Ng
+	 d4eU05l+KGH8o72bA7sD3KlNV+U49gJjZrCodYPz4ai/HaCt61G301WunHnQzBJnMq
+	 7NbDKL6qoSPxegl8CVv1un/4SntbH6VTTh1wueKyTfFN29akfB8Tz3wJZUP+FQ3HTR
+	 HjKnYGSo6Qmf9+5JacpJuF8ktiQ+KEJi/XDk1vcR9DZyvdg0A9/KYrzWplZOaWg81R
+	 N0OWVsriMO5FQ==
 From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, Lee Jones <lee@kernel.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
+To: Liam Girdwood <lgirdwood@gmail.com>, 
+ =?utf-8?q?Uwe_Kleine-K=C3=B6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>
+Cc: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Oder Chiou <oder_chiou@realtek.com>, 
+ Charles Keepax <ckeepax@opensource.cirrus.com>, 
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, 
+ linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ patches@opensource.cirrus.com, David Rhodes <david.rhodes@cirrus.com>, 
+ Richard Fitzgerald <rf@opensource.cirrus.com>, 
+ Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>, 
+ Baojun Xu <baojun.xu@ti.com>, Lars-Peter Clausen <lars@metafoo.de>, 
+ =?utf-8?q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, 
+ =?utf-8?q?Martin_Povi=C5=A1er?= <povik+lin@cutebit.org>, 
+ Support Opensource <support.opensource@diasemi.com>, 
+ Nick Li <nick.li@foursemi.com>, M R Swami Reddy <mr.swami.reddy@ti.com>, 
+ Vishwas A Deshpande <vishwas.a.deshpande@ti.com>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Chen-Yu Tsai <wenst@chromium.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
-In-Reply-To: <20260514091520.2718987-1-wenst@chromium.org>
-References: <20260514091520.2718987-1-wenst@chromium.org>
-Subject: Re: (subset) [PATCH v4 0/6] regulator: mt6359: cleanup and add
- supplies
-Message-Id: <177929384264.56665.1047692628146708628.b4-ty@b4>
-Date: Wed, 20 May 2026 17:17:22 +0100
+ Fabio Estevam <festevam@gmail.com>, Kiseok Jo <kiseok.jo@irondevice.com>, 
+ Kevin Cernekee <cernekee@chromium.org>, 
+ Steven Eckhoff <steven.eckhoff.opensource@gmail.com>, 
+ Thorsten Blum <thorsten.blum@linux.dev>, 
+ Chris Morgan <macromorgan@hotmail.com>, 
+ Marco Crivellari <marco.crivellari@suse.com>, 
+ Weidong Wang <wangweidong.a@awinic.com>, 
+ Aaron Kling <webgeek1234@gmail.com>, Teguh Sobirin <teguh@sobir.in>, 
+ Luca Weiss <luca.weiss@fairphone.com>, 
+ Bharadwaj Raju <bharadwaj.raju@machinesoul.in>, 
+ Hsieh Hung-En <hungen3108@gmail.com>, Binbin Zhou <zhoubinbin@loongson.cn>, 
+ Shimrra Shai <shimrrashai@gmail.com>, Zhang Yi <zhangyi@everest-semi.com>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, 
+ Srinivas Kandagatla <srinivas.kandagatla@oss.qualcomm.com>, 
+ Qasim Ijaz <qasdev00@gmail.com>, Sharique Mohammad <sharq0406@gmail.com>, 
+ Chen Ni <nichen@iscas.ac.cn>, Neo Chang <YLCHANG2@nuvoton.com>, 
+ Cezary Rojewski <cezary.rojewski@intel.com>, 
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, 
+ Kees Cook <kees@kernel.org>, Qianfeng Rong <rongqianfeng@vivo.com>, 
+ Tim Bird <tim.bird@sony.com>, 
+ Bram Vlerick <bram.vlerick@openpixelsystems.org>, 
+ Peter Korsgaard <peter@korsgaard.com>, Linus Walleij <linusw@kernel.org>, 
+ Wenyuan Li <2063309626@qq.com>, Bartosz Golaszewski <brgl@kernel.org>, 
+ Shengjiu Wang <shengjiu.wang@nxp.com>, 
+ Sebastian Krzyszkowiak <sebastian.krzyszkowiak@puri.sm>, 
+ Xichao Zhao <zhao.xichao@vivo.com>, asahi@lists.linux.dev, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Markus Schneider-Pargmann <msp@baylibre.com>, 
+ Peter Rosin <peda@lysator.liu.se>, Dan Carpenter <error27@gmail.com>
+In-Reply-To: <cover.1778692164.git.u.kleine-koenig@baylibre.com>
+References: <cover.1778692164.git.u.kleine-koenig@baylibre.com>
+Subject: Re: [PATCH v1 0/2] ASoC: Rework initialization of i2c_device_ids
+Message-Id: <177936315178.58022.6647400711614620844.b4-ty@b4>
+Date: Thu, 21 May 2026 12:32:31 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-Mailer: b4 0.16-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1804; i=broonie@kernel.org;
- h=from:subject:message-id; bh=S86o6RsskkHWtZ3c4SAC2I3qNeFXbs4tllWVFU88BEU=;
- b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqEC4YxSKtcKDBHMtlwOBWiLs/4dlCeUfDdAjCo
- bwUG1Bb2ReJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCahAuGAAKCRAk1otyXVSH
- 0BmQB/0ebTYeZ/V6SuHqtRkYGeTSKGRrPgmho05X8NIN9HYgS6LDOcttuTZCuNG7WN/j7BPMUsi
- V33UcE8/EW3SjzddG9h6BCurQ+IgT+chjLN3BeRpgIYUV6A5rui0Xlw+8+2quWAGyJVPi9UfamL
- ri8PPkEbzP8Oe5d1dxr3n3f+QfntPP8GOcCI4ZtreI/suhmwcuoQU/Q1Q26PPB0tng25HF44k/G
- S2r7dIDussmXd5sp1EzyEax09lMGi4f8vDJuwItc3uCH6SUvd3YGFax5zN20+Sm8HVOn0W4VL/+
- Gru5baz35mbj0LYOpAVvdj0FXNolFpFUedwdsc+QNqfNudnG
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1580; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=Q3EmgiS0xb2HZNxg/RftK2CygD26EtkORNTMm15D0f4=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqEC4+xfmyychPuCUwk/jiLXspmo/BcLb856BbX
+ 308jyaWUsiJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCahAuPgAKCRAk1otyXVSH
+ 0AzCB/0ZVReZqZGERUELDL4MyBklwJcxn2eozuE4QgHL/zTKaedA/xJb7gGN9GSz8PaH8EvPZ3/
+ G7ADNjyOLY1H1oAJLKTP0vfM1KuRNwUuB720DV/dtITwL49AmQ7lPgQbXUTSW84RRNo+ZZxdXUy
+ DEmEAgmH+IHk0wi6M7ZeHVKyyevKUvEr1Mrg+MGzHAQSAFSGNLgOyvyDKIuod66cT+531JOSSnr
+ bAGE0YgBWc8EqBIXsbSDJ7/Cyob/0FEKMKu2xkrq+qhNDMNJAC2fMv+8BgapN6/e+1uJAAaHjQC
+ Jr68ZQFKhKJRw6zWX8KedYHp6/QESUgrzn4TCVaNVf0C5GwS
 X-Developer-Key: i=broonie@kernel.org; a=openpgp;
  fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260522_032115_846254_D9F93A5D 
-X-CRM114-Status: GOOD (  11.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,32 +123,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 14 May 2026 17:15:13 +0800, Chen-Yu Tsai wrote:
-> regulator: mt6359: cleanup and add supplies
+On Wed, 13 May 2026 19:23:02 +0200, Uwe Kleine-König (The Capable Hub) wrote:
+> ASoC: Rework initialization of i2c_device_ids
 > 
-> Hi,
+> Hello,
 > 
-> This is v4 of my "MT6359 PMIC cleanup and add supplies" series. This
-> version addresses review comments from Sashiko.
+> this series is a preparation for
+> 
+> 	diff --git a/include/linux/mod_devicetable.h b/include/linux/mod_devicetable.h
+> 	index 23ff24080dfd..aebd3a5e90af 100644
+> 	--- a/include/linux/mod_devicetable.h
+> 	+++ b/include/linux/mod_devicetable.h
+> 	@@ -477,7 +477,11 @@ struct rpmsg_device_id {
 > 
 > [...]
 
 Applied to
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-7.2
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.2
 
 Thanks!
 
-[2/6] regulator: dt-bindings: mt6359: Drop regulator-name pattern restrictions
-      https://git.kernel.org/broonie/regulator/c/cdc517688ffa
-[3/6] regulator: dt-bindings: mt6359: Deprecate bogus vcn33_[12]_* split regulators
-      https://git.kernel.org/broonie/regulator/c/beb4fe279989
-[4/6] regulator: mt6359: const-ify regulator descriptions
-      https://git.kernel.org/broonie/regulator/c/eb17a319f1c9
-[5/6] regulator: mt6359: Add regulator supply names
-      https://git.kernel.org/broonie/regulator/c/10be8fc1d534
-[6/6] regulator: mt6359: Add proper ldo_vcn33_[12] regulators
-      https://git.kernel.org/broonie/regulator/c/fb6a6297acfa
+[1/2] ASoC: Drop empty i2c remove callbacks
+      https://git.kernel.org/broonie/sound/c/2e0389f3689c
+[2/2] ASoC: Use named initializers for arrays of i2c_device_data
+      https://git.kernel.org/broonie/sound/c/910714d4e79b
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
