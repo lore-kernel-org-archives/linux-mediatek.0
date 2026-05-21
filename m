@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A586CD4F3D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2026 13:56:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 475AACD5BAC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2026 14:08:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=fgDyaoAaBVlG/7hkYJNhJI1L8SvN21kpP91Qx0GqPWQ=; b=yf64mr8uiIqooX6/bcKiKfmuf1
-	4CyMigc0qgnpRp0TbZ8fnw+OuLDLAkXHH4Q8gBD/iT7xLRJwcrUAx6fzkNh4JkDeHPAYSEvEvlhTz
-	QZXSsrOkxmh/4562puixGl28I7aYWOyzb0+ovV/Itbw2p9UmAGetDubIh7s5dsGauG1kH4vw97ua4
-	wdQkGjqNu6VE33H442YxdQJFc5uQ7JDmzyXcn/Ymu4ee1m9ZF4D1FyCHp4EDbmk/ipN7TcnYD05yg
-	05hbYgesPDTQAO07uh9evg1G9vS5fFtrGjonr1pjMbcHKUKKLhU9d1hzt9gaLF2q9WYhRftKYLJOg
-	Aw7+RZZw==;
+	bh=v6pz+456eDkr2FQPvFSRR5Zm+2d3QHcIeHy/+F7/GIk=; b=0uoKxF584640KUrZE5uwPhxSD5
+	z276QYFiBpErbHnDjxyZjiUrv1XtQlL5PPw9RixpSrEgUdeXdM1v1txn6AVLWHdsEmaa+ZZeFYgnR
+	B2aeX9yOYUvbViTKNO2lqwDBwPKPbAC0KuryOw8jr6bzLEZtwxkoV1GHlXTv6RvC1+fwIPWYv0b4X
+	6JO14kj1CmlMhbu1F5JHqj6WY6JrZOs9K4v9cpZnXjQIR0V0Tz1wg9Xmx1ZBCz4e56NeQeKOOgN2j
+	YZXdwIuv+46jWn3aovl89EJMIu3ZUH38n6yC3GNqJkQAZKeodmRFj37M368jsS14aWe+6bzLXU3yl
+	u7gMp+HQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQ3tQ-00000007y3t-05d8;
-	Thu, 21 May 2026 13:56:56 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wQ44t-0000000800m-1AoV;
+	Thu, 21 May 2026 14:08:47 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQ3tO-00000007y2n-1j4S
+	id 1wQ44s-0000000800c-0gyy
 	for linux-mediatek@lists.infradead.org;
-	Thu, 21 May 2026 13:56:55 +0000
+	Thu, 21 May 2026 14:08:46 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6C45D43463;
-	Thu, 21 May 2026 13:56:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4ADD11F000E9;
-	Thu, 21 May 2026 13:56:52 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 8573B601F3;
+	Thu, 21 May 2026 14:08:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9A5DE1F000E9;
+	Thu, 21 May 2026 14:08:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779371813;
-	bh=fgDyaoAaBVlG/7hkYJNhJI1L8SvN21kpP91Qx0GqPWQ=;
+	s=k20260515; t=1779372525;
+	bh=v6pz+456eDkr2FQPvFSRR5Zm+2d3QHcIeHy/+F7/GIk=;
 	h=From:To:Subject:Date;
-	b=RKNoJ0KVGU9UO7B23Xm8sIkN5/Y5fiZz+DIOdurPZvERBCck8y+ak3+9fuH+HS0PU
-	 +C9s22ZtUliEhxbhausQ4Rem//CFD3PpoqKDQdo6zc/i+vacxfQMo0F2K0CBN6+xIy
-	 PEF4kKJQPeXPchfXBOu7P+I4Vx0YGcAvUyg1nqBYgHOgM/W56v8dbs5zdvtZuqjzmT
-	 jyVpypcx3+BAOemK/4ISQVZSx5NAlA8ATBDcwaBbLbRnJGbny6Pov2Y8hV/sfxT4Ru
-	 pNMa+EKLdJtLxEknHQqexh8EOZszUjsxyGYenqKzOpvEeVUMFnJXhhmkfAR85PEkQ0
-	 9jxWSHjTvM2tA==
+	b=AXAuN/LHgKQXitJblTejqzfp/TW2s8DKuf1RWxOgwQZdgU5WLsXHEHBvTjXvSt7Qq
+	 3/3NrbEdDlcx5LhRr5yIfxQe4KMI8CV0rODZZsBgjXj6PygyavDiRPQDOGPmLBiZG3
+	 juuClNd5lCcoF/QAOPpTr7V20yAYFx+9J4y4+EP61KGkPhJY7GwisIiZkr1ZBBokFe
+	 6uEgtAOWP0lW0QlL1LKK3Oa0OF7oOAMnniTHeJbCHR+VxGAJhl2qdUbPQh3FQaSLuY
+	 /B50IeIdMvbLiqnco3Q1qTpXyy8iGZXOF21mdXLJwvQs8hW/VC3r4KvBvnJmZM//SR
+	 KvSA6XxF101ng==
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 To: David Airlie <airlied@linux.ie>,
 	Simona Vetter <simona@ffwll.ch>,
 	dri-devel@lists.freedesktop.org,
 	linux-mediatek@lists.infradead.org,
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Subject: [GIT PULL] mediatek drm fixes - 20260521
-Date: Thu, 21 May 2026 13:56:49 +0000
-Message-Id: <20260521135649.4681-1-chunkuang.hu@kernel.org>
+	sai madhu <suryasaimadhu369@gmail.com>,
+	Rosen Penev <rosenp@gmail.com>,
+	Shivam Kalra <shivamkalra98@zohomail.in>,
+	Abhishek Rajput <abhiraj21put@gmail.com>,
+	Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Subject: [GIT PULL] mediatek drm next - 20260521
+Date: Thu, 21 May 2026 14:08:41 +0000
+Message-Id: <20260521140841.5103-1-chunkuang.hu@kernel.org>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260521_065654_469847_74A0BA15 
-X-CRM114-Status: UNSURE (   5.85  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,7 +75,11 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Hi, Dave & Sima:
 
 This includes:
-1. fix sparse warnings
+1. hdmi: Convert DRM_ERROR() to drm_err()
+2. Simplify mtk_crtc allocation
+3. mtk_dpi: Open-code drm_simple_encoder_init()
+4. Convert legacy DRM logging to drm_* helpers in mtk_dsi.c
+5. dsi: Add compatible for mt8167-dsi
 
 Regards,
 Chun-Kuang.
@@ -86,27 +90,40 @@ The following changes since commit 254f49634ee16a731174d2ae34bc50bd5f45e731:
 
 are available in the Git repository at:
 
-  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-fixes-20260521
+  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-next-20260521
 
-for you to fetch changes up to 87ed4e845d5a90bba1a56c0a5c580a13982e8648:
+for you to fetch changes up to 6428eaf0c1f39815b08d57054895c1934d5782f3:
 
-  drm/mediatek: mtk_hdmi_ddc: Fix non-static global variable (2026-05-18 14:21:39 +0000)
-
-----------------------------------------------------------------
-Mediatek DRM Fixes - 20260521
-
-1. fix sparse warnings
+  drm/mediatek: dsi: Add compatible for mt8167-dsi (2026-05-18 13:44:33 +0000)
 
 ----------------------------------------------------------------
-Louis-Alexis Eyraud (4):
-      drm/mediatek: mtk_hdmi_ddc_v2: Fix non-static global variable
-      drm/mediatek: mtk_hdmi_v2: Fix non-static global variable
-      drm/mediatek: mtk_cec: Fix non-static global variable
-      drm/mediatek: mtk_hdmi_ddc: Fix non-static global variable
+Mediatek DRM Next - 20260521
 
- drivers/gpu/drm/mediatek/mtk_cec.c         | 2 +-
- drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c    | 2 +-
- drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c | 2 +-
- drivers/gpu/drm/mediatek/mtk_hdmi_v2.c     | 2 +-
- 4 files changed, 4 insertions(+), 4 deletions(-)
+1. hdmi: Convert DRM_ERROR() to drm_err()
+2. Simplify mtk_crtc allocation
+3. mtk_dpi: Open-code drm_simple_encoder_init()
+4. Convert legacy DRM logging to drm_* helpers in mtk_dsi.c
+5. dsi: Add compatible for mt8167-dsi
+
+----------------------------------------------------------------
+Abhishek Rajput (1):
+      drm/mediatek: Convert legacy DRM logging to drm_* helpers in mtk_dsi.c
+
+Luca Leonardo Scorcia (1):
+      drm/mediatek: dsi: Add compatible for mt8167-dsi
+
+Rosen Penev (1):
+      drm/mediatek: Simplify mtk_crtc allocation
+
+Shivam Kalra (1):
+      drm/mediatek: mtk_dpi: Open-code drm_simple_encoder_init()
+
+sai madhu (1):
+      drm/mediatek: hdmi: Convert DRM_ERROR() to drm_err()
+
+ drivers/gpu/drm/mediatek/mtk_crtc.c | 15 ++++++---------
+ drivers/gpu/drm/mediatek/mtk_dpi.c  | 10 +++++++---
+ drivers/gpu/drm/mediatek/mtk_dsi.c  | 28 ++++++++++++++++++----------
+ drivers/gpu/drm/mediatek/mtk_hdmi.c |  4 ++--
+ 4 files changed, 33 insertions(+), 24 deletions(-)
 
