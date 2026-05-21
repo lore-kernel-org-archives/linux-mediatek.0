@@ -4,81 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8D6ACD4F3D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 May 2026 23:13:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC5A1CD4F3D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2026 02:26:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yszNpx6ONUtJUZVIyoh+4Qv40wyr+0Fcu+NHrai9Eco=; b=PyK+EiG1XzsmO+CwxZNNbupKFo
-	ikB/iX///HRRm3fa1bz6EzEoz6Hm+3GUa0ceypolh1vD4TRefp15lFaOi8eD8dDC3ITMbjUqmt7A2
-	+l0Fcj257cuZz+RR1fnjK5ae63oiwPja+MsZhXeE+pwl8ccKoNOnS9pDRIpnptMFDaOGsWGlj250R
-	OenMWK7zFG1WrbFORd//3LBVB0Ok/NiFPrfG/Xi+rhfoOmvMkW9MpY6Olbm3i+4b7rt3Fv9IIHmG1
-	Rxwst4KC1Jucwm4+AjosqBxnO/Bm3s9K28OUxmX4KdHEK3bUqWS7mYkMnqpfCL4leGU24mo11Ir+e
-	lvyCiMUA==;
+	bh=LUv44QboCzOUTaDO35BtyrOT1Xe5xtsV9fASsSL11MQ=; b=Qru/NAmQTkMWPsPe+rdUksOcBB
+	sMVYJGX+C0QwSR4hwuTFSieW9AQDzz6kH9ft4luyXYBHcteY74RBSy1mNDGFO0GyFPdpjf/J2xhIk
+	ZolvQ1g60QAtdjmzhshXwIPy/wo6Vzh1lbVnjGVaQomDAIFrLYZvK8Qme8qf2C4MY06WR1/54Bn0V
+	GFDzrQYAEpreIRcFxa+O/M+B4Nc+5ZxPMrwFaoJpDcuMM7Jbxjz/b8DB7iLB2EtThyFNNCYnThq6E
+	JNH2rHkcEVazNHxvB6NWKJz6L0bcgNuVEtCkruWhtT4xuhofC20FmaFwCwQIwobJ74jgFUILFyHVZ
+	HmreYuCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPq5x-000000067Lp-0fkW;
-	Wed, 20 May 2026 23:12:57 +0000
-Received: from mgamail.intel.com ([192.198.163.10])
+	id 1wPt7f-00000006SXi-1yog;
+	Thu, 21 May 2026 02:26:55 +0000
+Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPq5t-000000067Kt-1VuI;
-	Wed, 20 May 2026 23:12:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1779318773; x=1810854773;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=Sxvvufs2Ec+0ep9xlt+slYUDEx/V5xfFBWwd9vLO+vs=;
-  b=lgGXFCm21ywcyVXMrYn0RvDQLa2Y5+5ul2qGwUCaTSpZA2VxmL8Bkilx
-   ISdVHuuQ72EhveTR4us2IYHjlONTBO4fpbqQDxwStVPR+WsGrD6EgvQLV
-   PTNxlce5oCXiO8lg56zjJwcBxx8pN0NhEM+Qfb2X36zvC51XTA9KmSx3c
-   xnl9VV/Uc4Ik2JSN4TX9jacbi6rjQXiMQajqKo9pShMrvPLrPTIEQSAsH
-   UCY9S0D6p8b2Tu8QOk3kzSTsKtgIH6t3QU+pde78QKkMVBF7oLTAoM2FJ
-   Kfok+IFMJyc8Nh1himi7Js87LFbmKbicT9Vt3AaFx21kSfKqdBbutbYpe
-   w==;
-X-CSE-ConnectionGUID: VZSgqE+dSJycp2a4AwTPyg==
-X-CSE-MsgGUID: u35Hl7Q4Q2u6v+t6LQTocA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11792"; a="91623228"
-X-IronPort-AV: E=Sophos;i="6.23,245,1770624000"; 
-   d="scan'208";a="91623228"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
-  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 May 2026 16:12:50 -0700
-X-CSE-ConnectionGUID: qwMb1zaLS0iVTfvtUG609g==
-X-CSE-MsgGUID: rEK3q4mgSRGwi38bI7S5Vg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,245,1770624000"; 
-   d="scan'208";a="270701254"
-Received: from igk-lkp-server01.igk.intel.com (HELO bdf09bfdbd5f) ([10.211.93.152])
-  by orviesa002.jf.intel.com with ESMTP; 20 May 2026 16:12:47 -0700
-Received: from kbuild by bdf09bfdbd5f with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1wPq5i-00000000AfZ-2YHm;
-	Wed, 20 May 2026 23:12:42 +0000
-Date: Thu, 21 May 2026 01:12:04 +0200
-From: kernel test robot <lkp@intel.com>
-To: Srinivas Kandagatla <srinivas.kandagatla@oss.qualcomm.com>,
-	broonie@kernel.org
-Cc: oe-kbuild-all@lists.linux.dev, lgirdwood@gmail.com, perex@perex.cz,
-	tiwai@suse.com, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, sharq0406@gmail.com,
-	kuninori.morimoto.gx@renesas.com, ckeepax@opensource.cirrus.com,
-	srinivas.kandagatla@oss.qualcomm.com, linux-sound@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	id 1wPt7b-00000006SWF-2O7j;
+	Thu, 21 May 2026 02:26:53 +0000
+X-UUID: 8002152854bc11f1aa26b74ffac11d73-20260521
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.12,REQID:6f5e7ea0-7575-4e6b-8375-ed9e4b2265b3,IP:0,U
+	RL:0,TC:0,Content:7,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:7
+X-CID-META: VersionHash:e7bac3a,CLOUDID:ff14f1f14e3304e428d1110e2a27a3bd,BulkI
+	D:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|865|898,TC:nil,Content:4
+	|15|50,EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,O
+	SI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 8002152854bc11f1aa26b74ffac11d73-20260521
+X-User: liujiajia@kylinos.cn
+Received: from nature [(10.44.16.150)] by mailgw.kylinos.cn
+	(envelope-from <liujiajia@kylinos.cn>)
+	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
+	with ESMTP id 1895931696; Thu, 21 May 2026 10:26:40 +0800
+Date: Thu, 21 May 2026 10:26:37 +0800
+From: Jiajia Liu <liujiajia@kylinos.cn>
+To: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
+Cc: Marcel Holtmann <marcel@holtmann.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 2/2] ASoC: mt8173-max98090: use standard callback to set
- jack
-Message-ID: <202605210132.USry3Haw-lkp@intel.com>
-References: <20260520132930.54333-3-srinivas.kandagatla@oss.qualcomm.com>
+Subject: Re: [PATCH] Bluetooth: btmtk: remove extra copy in cmd array init
+Message-ID: <ag5tXWHNMAxkonle@nature>
+References: <20260520021500.13504-1-liujiajia@kylinos.cn>
+ <CABBYNZLLNFNuSv0UBNQ7C2HTTg5W2m41hBTNpPw822GMAVNuhQ@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20260520132930.54333-3-srinivas.kandagatla@oss.qualcomm.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CABBYNZLLNFNuSv0UBNQ7C2HTTg5W2m41hBTNpPw822GMAVNuhQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260520_161253_690191_42C6C05C 
-X-CRM114-Status: GOOD (  12.13  )
+X-CRM114-CacheID: sfid-20260520_192651_916482_295F2D22 
+X-CRM114-Status: GOOD (  20.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,35 +80,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Srinivas,
+On Wed, May 20, 2026 at 08:55:46AM -0400, Luiz Augusto von Dentz wrote:
+> Hi Jiajia,
+> 
+> On Tue, May 19, 2026 at 10:15 PM Jiajia Liu <liujiajia@kylinos.cn> wrote:
+> >
+> > In btmtk_setup_firmware_79xx, the data length indicated by wmt_params.dlen
+> > in the cmd buffer is MTK_SEC_MAP_NEED_SEND_SIZE + 1. Except for the first
+> > byte, the remaining length is MTK_SEC_MAP_NEED_SEND_SIZE. memcpy copied one
+> > more byte to cmd + 1 than the remaining length. Align the length passed to
+> > memcpy to avoid exceeding current section map.
+> >
+> > Signed-off-by: Jiajia Liu <liujiajia@kylinos.cn>
+> > ---
+> >  drivers/bluetooth/btmtk.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+> > index ea7a031000cd..53cba71cb07f 100644
+> > --- a/drivers/bluetooth/btmtk.c
+> > +++ b/drivers/bluetooth/btmtk.c
+> > @@ -188,7 +188,7 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
+> >                                        MTK_FW_ROM_PATCH_GD_SIZE +
+> >                                        MTK_FW_ROM_PATCH_SEC_MAP_SIZE * i +
+> >                                        MTK_SEC_MAP_COMMON_SIZE,
+> > -                                      MTK_SEC_MAP_NEED_SEND_SIZE + 1);
+> > +                                      MTK_SEC_MAP_NEED_SEND_SIZE);
+> >
+> >                                 wmt_params.op = BTMTK_WMT_PATCH_DWNLD;
+> >                                 wmt_params.status = &status;
+> > --
+> > 2.53.0
+> >
+> 
+> Have you tested this on the actual hardware? If not we need a Tested-by.
 
-kernel test robot noticed the following build warnings:
+Yes, I have tested with MT7922 (0489:e0d8) on linux 7.1-rc4 applied this patch
+and the following two.
 
-[auto build test WARNING on broonie-sound/for-next]
-[also build test WARNING on linus/master v7.1-rc4 next-20260520]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Bluetooth: btmtk: accept too short WMT FUNC_CTRL events
+Bluetooth: btmtk: fix urb->setup_packet leak in error paths
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Srinivas-Kandagatla/ASoC-codecs-max98090-use-component-set_jack-callback/20260520-213646
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-patch link:    https://lore.kernel.org/r/20260520132930.54333-3-srinivas.kandagatla%40oss.qualcomm.com
-patch subject: [PATCH 2/2] ASoC: mt8173-max98090: use standard callback to set jack
-config: x86_64-rhel-9.4-ltp (https://download.01.org/0day-ci/archive/20260521/202605210132.USry3Haw-lkp@intel.com/config)
-compiler: gcc-14 (Debian 14.2.0-19) 14.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260521/202605210132.USry3Haw-lkp@intel.com/reproduce)
+setup log of boot and rfkill switch:
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202605210132.USry3Haw-lkp@intel.com/
+$ dmesg | grep hci0
 
-All warnings (new ones prefixed by >>):
+[    6.108240] Bluetooth: hci0: HW/SW Version: 0x008a008a, Build Time: 20260224103448
+[    8.933508] Bluetooth: hci0: Device setup in 2765295 usecs
+[    8.938846] Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is advertised, but not supported.
+[   57.209143] Bluetooth: hci0: HW/SW Version: 0x008a008a, Build Time: 20260224103448
+[   57.366004] Bluetooth: hci0: Device setup in 160450 usecs
+[   57.371248] Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is advertised, but not supported.
+[  203.687643] Bluetooth: hci0: HW/SW Version: 0x008a008a, Build Time: 20260224103448
+[  203.844163] Bluetooth: hci0: Device setup in 158989 usecs
+[  203.849426] Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is advertised, but not supported.
+[  214.723250] Bluetooth: hci0: HW/SW Version: 0x008a008a, Build Time: 20260224103448
+[  214.879380] Bluetooth: hci0: Device setup in 155239 usecs
+[  214.884644] Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is advertised, but not supported.
 
->> Warning: sound/soc/codecs/max98090.c:2353 function parameter 'data' not described in 'max98090_set_jack'
->> Warning: sound/soc/codecs/max98090.c:2353 function parameter 'data' not described in 'max98090_set_jack'
-
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+> 
+> -- 
+> Luiz Augusto von Dentz
 
