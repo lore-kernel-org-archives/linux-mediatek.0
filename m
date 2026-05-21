@@ -4,63 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 972CBCD4F3D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2026 15:30:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90C94CD5BAF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2026 17:20:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wW2EIJlRcTtZ7Krb1jUuZ1MsgafTYwvcWNxQDHTGtv0=; b=06vyRCxeCsL3Sk6bzMNlyWQ3WB
-	+rRAXzb1N2GP0StMRIZtK2lgOMy7dJqIRGDAdaUCQdXOWgO1A/DU0V49DfdZHlW73PRHPEEm6gM3G
-	G3LCerbvzCkgEIbMIMw2Y8/E5VG7xx2EeDgar2B3q5/2hOTZKATbUhIg1Rncf9FPz2K/UAEt0Zbtt
-	BDAVCDnUGvz3e8lPIlHKkSaXd32XXO+HkOSex3Fl7+RJpNsS9SanLAjRUiDppGM5YSBseDijgVKf4
-	9CyQGyKNidWkxj4F8zEibg3ku5JPcLGw8n0lrqRvLhSNW3baylqu7eUNiqG5xnbS3/8m5kyLvjF7f
-	20Oy3L5Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=JVuwPZqwH+POZcdbj/NmNEAj+bCTq3Cg4BUiBPTfuww=; b=vY8aoTrookEcAdwfq2m/cfCNYu
+	hV9csgt2yVKw2ZRZYHBoFxKN7lr9ENkN2fS5IhKi6UOx/1Apb6swHJJLwDp2GGh8YYqJH8TpeQHue
+	PiSRHb7iEFIojDkK2fUA8q0P3UBHcZtwDFFlclKhbKGz3lOlT2L8KI6bk3TYcDWUXvEfeR5GSGi5p
+	k2UzkG3KpOf7eUyU/F0bK2Gitc2amiN0kjTE/elBgaxBAJfPdSOxLmz/PumNRdeJoQuGCxNvaVBda
+	fSpJLoulajm3wKPuRQcECCgk/YQPjfDTnH5OPxe5sH8kspBgUVVcAeTRz/5m8oGEMyHMj+32newLt
+	VQOIks1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQ5Lo-00000008JOe-1oDz;
-	Thu, 21 May 2026 15:30:20 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wQ745-00000008cJ8-0GT2;
+	Thu, 21 May 2026 17:20:09 +0000
+Received: from mail.cjdns.fr ([5.135.140.105])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQ5Ll-00000008JMX-1Oms;
-	Thu, 21 May 2026 15:30:18 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 214AC42B91;
-	Thu, 21 May 2026 15:30:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 040871F00A3B;
-	Thu, 21 May 2026 15:30:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779377416;
-	bh=wW2EIJlRcTtZ7Krb1jUuZ1MsgafTYwvcWNxQDHTGtv0=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=W6Htv0KMZQwx9moC2dA+XQ334P5Mw4pdn+EkxJ2IOOrCyYw4VDoAHLDgEDbvuaRpg
-	 m+yxu80qEpcQ85QzZV1QPWRNd9GvY5e3hDjZoUDAf+Yr/pNFas5tFShIhrat1hu+Qa
-	 62DqDbhHfoK7F13R6s2XUGzTieDAsJlXqKhgBm848hPPxe21mm/YR7TV3Vi2AcDJFX
-	 uMMhMNrzxPNlH/Ue+0EyrGKyPXk74hPQsO1Qkxh0lBHxVAf5IIm+6eHRIa4A/6ZUMi
-	 CN50TbwnwSV9KVIHNBpZX1UKi9iuwMC5ff65mKhkC41NgOX0urCxcJ0YRrQaLE5Y62
-	 yd8cVto7wrRYQ==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 197503930E02;
-	Thu, 21 May 2026 15:30:27 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1wQ741-00000008cHo-2VZ2
+	for linux-mediatek@lists.infradead.org;
+	Thu, 21 May 2026 17:20:08 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 6CBB645B033;
+	Thu, 21 May 2026 19:19:55 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
+	t=1779384001; h=from:subject:date:message-id:to:cc:mime-version:
+	 content-transfer-encoding; bh=JVuwPZqwH+POZcdbj/NmNEAj+bCTq3Cg4BUiBPTfuww=;
+	b=sC3HuWKZZ6nY3DoYPYuOojJGJxpn23UUeOt5OAgQRScLqVb7SExyjjYhn5rd+tc6Uq+oA0
+	P0/f0SnnsHv/8Y2KKJ3lMJ/vpOf5Ryjar/3tt7wg3QWfCvlXJZJnMob5ORcUPLbbNCB6tM
+	AlS5H4lOGkaC1isy0WLYl50l6UtNpp8yseXm5+08oOMIE9n/oktPAQbFXFgHErPrymeaZ3
+	ocdNRKsjwj2oWR+YfVI5cYZILpBixYiGeD54fmqBeT91VTbCrj3pPY2lfsfnl1hgvRDUe5
+	gg3L2anvowVOvMU8EniHQjGaA9XvqOZawoQexFZZKVr6o2q25uH07mHymzY6OA==
+From: Caleb James DeLisle <cjd@cjdns.fr>
+To: linux-pci@vger.kernel.org
+Cc: linux-mips@vger.kernel.org,
+	naseefkm@gmail.com,
+	ryder.lee@mediatek.com,
+	helgaas@kernel.org,
+	lpieralisi@kernel.org,
+	kwilczynski@kernel.org,
+	mani@kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	ansuelsmth@gmail.com,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Caleb James DeLisle <cjd@cjdns.fr>
+Subject: [PATCH v9 0/3] Add EcoNet EN7528 (and EN751221) PCIe support.
+Date: Thu, 21 May 2026 17:19:48 +0000
+Message-Id: <20260521171951.1495781-1-cjd@cjdns.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH] Bluetooth: btmtk: remove extra copy in cmd array init
-From: patchwork-bot+bluetooth@kernel.org
-Message-Id: <177937742563.384060.10935423618601860001.git-patchwork-notify@kernel.org>
-Date: Thu, 21 May 2026 15:30:25 +0000
-References: <20260520021500.13504-1-liujiajia@kylinos.cn>
-In-Reply-To: <20260520021500.13504-1-liujiajia@kylinos.cn>
-To: Jiajia Liu <liujiajia@kylinos.cn>
-Cc: marcel@holtmann.org, luiz.dentz@gmail.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, linux-bluetooth@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260521_083017_391781_6733F9A7 
-X-CRM114-Status: UNSURE (   9.30  )
+X-CRM114-CacheID: sfid-20260521_102006_051762_4814DCA6 
+X-CRM114-Status: UNSURE (   7.15  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,30 +80,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Tested on TpLink Archer VR1200V-V2 (EN751221 with Gen2 device)
 
-This patch was applied to bluetooth/bluetooth-next.git (master)
-by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
+Changes since v8:
+* guard(rwsem_read)(&pci_bus_sem); in mtk_pcie_retrain
+* v8: https://lore.kernel.org/linux-mips/20260520183827.908243-1-cjd@cjdns.fr
 
-On Wed, 20 May 2026 10:15:00 +0800 you wrote:
-> In btmtk_setup_firmware_79xx, the data length indicated by wmt_params.dlen
-> in the cmd buffer is MTK_SEC_MAP_NEED_SEND_SIZE + 1. Except for the first
-> byte, the remaining length is MTK_SEC_MAP_NEED_SEND_SIZE. memcpy copied one
-> more byte to cmd + 1 than the remaining length. Align the length passed to
-> memcpy to avoid exceeding current section map.
-> 
-> Signed-off-by: Jiajia Liu <liujiajia@kylinos.cn>
-> 
-> [...]
+Changes from v7:
+* mtk_pcie_retrain retrain all root ports not just first
+* Include fix from Manivannan Sadhasivam, wrong usage of virt_to_phys()
+* v7: https://lore.kernel.org/linux-mips/20260514151318.3444959-1-cjd@cjdns.fr
 
-Here is the summary with links:
-  - Bluetooth: btmtk: remove extra copy in cmd array init
-    https://git.kernel.org/bluetooth/bluetooth-next/c/b3e1ce138148
+Changes from v6:
+* s/reset/resets/ in .yaml
+* s/re-train/retrain/g
+* s/Root bridge/Root port/
+* If module not builtin, log at mtk_pcie_startup_port_en7528()
+* Do not fail if error in mtk_pcie_retrain()
+* v6: https://lore.kernel.org/linux-mips/20260513191652.3200607-1-cjd@cjdns.fr
 
-You are awesome, thank you!
+Changes from v5:
+* s/errno-base.h/errno.h/
+* Breakout mtk_pcie_retrain() into a function
+* Use for_each_pci_bridge() to find root bridge
+* v5: https://lore.kernel.org/linux-mips/20260413140339.16238-1-cjd@cjdns.fr/
+
+Changes from v4:
+* Fixed missing Acked-by
+* Rebased to commit 66672af7a095 ("Add linux-next specific files for 20260410")
+* v4: https://lore.kernel.org/linux-mips/20260404182854.2183651-1-cjd@cjdns.fr/
+
+Changes from v3:
+* s/initiallized/initialized/
+* Use PCIE_T_PVPERL_MS for sleep time
+* Use PCI_PM_D3COLD_WAIT for startup wait time
+* Clarify comment "Activate INTx interrupts"
+* Add MTK_PCIE_RETRAIN quirk for devices which require link re-train
+* Do not retrain *all* bridges, only root bridge
+* Better comments and logging in retraining logic
+* v3: https://lore.kernel.org/linux-mips/20260320094212.696671-1-cjd@cjdns.fr/
+
+Changes from v2:
+* mediatek-pcie.yaml -> s/power-domain/power-domains/ and drop example
+* Patch 3 dropped as it has been applied (Thanks!)
+* v2: https://lore.kernel.org/linux-mips/20260316155157.679533-1-cjd@cjdns.fr/
+
+Changes from v1:
+* mediatek-pcie.yaml slot0 needs device-type = "pci", fix dt_binding_check
+Link: https://lore.kernel.org/linux-mips/177334026016.3889069.9474337544951486443.robh@kernel.org
+* v1: https://lore.kernel.org/linux-mips/20260312165332.569772-1-cjd@cjdns.fr/
+
+This was split from a larger PCIe patchset which crossed multiple
+subsystems. I'm not labeling this a v3 because it's a new patchset, but
+I'm keeping the historical record anyway.
+
+Changes from econet-pcie v2:
+* mediatek-pcie.yaml add missing constraints to PCI node properties
+* econet-pcie v2: https://lore.kernel.org/linux-mips/20260309131818.74467-1-cjd@cjdns.fr
+
+Changes from econet-pcie v1:
+* pcie-mediatek.c Exclude pcie_retrain_link() when building as a module
+* econet-pcie v1: https://lore.kernel.org/linux-mips/20260303190948.694783-1-cjd@cjdns.fr/
+
+
+Caleb James DeLisle (2):
+  dt-bindings: PCI: mediatek: Add support for EcoNet EN7528
+  PCI: mediatek: Add support for EcoNet EN7528 SoC
+
+Manivannan Sadhasivam (1):
+  PCI: mediatek: Use actual physical address instead of virt_to_phys()
+
+ .../bindings/pci/mediatek-pcie.yaml           |  26 +++
+ drivers/pci/controller/Kconfig                |   2 +-
+ drivers/pci/controller/pcie-mediatek.c        | 170 +++++++++++++++++-
+ 3 files changed, 194 insertions(+), 4 deletions(-)
+
+
+base-commit: 687da68900cd1a46549f7d9430c7d40346cb86a0
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.39.5
 
 
