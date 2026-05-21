@@ -4,79 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E46BDCD4F5E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2026 08:23:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1272ECD5BAC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2026 10:15:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4qPLeY0wB6z4SlQ2CixKExblEbsAtiEDVJ4XyqUTfJA=; b=kYQzxmW2Adk+Okrf32nuVX9q8S
-	dAg5yQXbzvWudFK5pHNotslqdvT+U2slAKr02NdXsPQSYeSZSDUwlT3vq4LsAw0Wp+MVwb7H8Yh00
-	7JdG0t6g3CXj/7BMBfXt2yhkcLRQYbV877Rq0enlWScUv13TEZgKVj5XtTG7PJJhOjTwWFvguJ7UZ
-	6yynWGVqqx3i6buv8rOmqAI5OOjQYIacSfvVJBHRQYPU5rkje1lD+RdP7FiQZpYrKY2dx7aZpwuHu
-	bCPXaAoHeIlzMFRHDK3CCfSxJ8k4JtjxsoLe7BfFyWq6aVSXL+2NFYgtEfClvoQbMRFULZtIV+reD
-	tl22AWbQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LeHgpAGmkkft1lTDv1GUbcLOSox8wth2jbdG+ISuWKg=; b=mr/M8s1uyxa8lQ4wNN9Qv+TtO6
+	mqOT8oBfULUdkgQhcmpcv73eLYNEE2tJ1V+tohvce+xz8XVv7fS434vucO3YIQpVkBi7SEtISqpmO
+	83e8Jk/SNe+MUukWIYotUK58alFGZM3eshqty3L2yc2D6fNITARlQP850H4o+2j36DdPBLIsBovoN
+	gtW7bFr/XP/hb4nLTHrEtN5EluTbYgmRCOT4AZTnlhlpxVDAtZZETmHsmNQ2Yogmn6PBQL8SQuOdr
+	4qQUKqk6FoVjqCOt8HoHMNFv5gzQlNuUdVEaEP9L0Nwi6PiCyAV8R5sH72ZfigtgYvUGqMgW2t7a8
+	+K3+L6ZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPygV-000000077Te-3Wff;
-	Thu, 21 May 2026 08:23:15 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wQ0Qx-00000007QLt-3GNy;
+	Thu, 21 May 2026 10:15:19 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPyg0-000000076y5-0kn4;
-	Thu, 21 May 2026 08:22:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1779351762;
-	bh=CWjNHp3lVq1P1BWK7ilWt1phFCJ5rYaKgQ1jBzqDdC4=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=eYn7FEC4jU99Os15lM7ysV8MVNZ5cDHrPV2RrLJtQyJZNSfSx/3nLbeQgY1RQY7LK
-	 9cRRM3OJ/cBeavnPMiX0r6yQoePltpsfq9TmBRiUXrX4RtGhi45b5Ft/GkcarK1cO2
-	 TcXKgQWdUV87RHJ+Kp12fnCFlWTiEudDkB4gFFDkrw97reER9a64jHA+FOwPNTxgVt
-	 FA4lE+zLw+ecA3oM8Il7MHo0htM6qZek0vj31XvRCVDf8OyUEGXX6IMRIzD+qbAz+L
-	 fY3q9HbPVCXJRbvlpfQAiSYLKFgj7jLBLTB8i9dk9GpQ1Swo7j/rWs9P/rcPFhp+mo
-	 /ikV7Mg9pt15Q==
-Received: from yukiji.home (unknown [100.64.0.131])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CADAE17E132E;
-	Thu, 21 May 2026 10:22:40 +0200 (CEST)
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Thu, 21 May 2026 10:21:59 +0200
-Subject: [PATCH net-next v4 6/6] net: phy: air_an8801: ensure maximum
- available speed link use
-MIME-Version: 1.0
+	id 1wQ0Qw-00000007QKp-1KVc;
+	Thu, 21 May 2026 10:15:18 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 9A92260172;
+	Thu, 21 May 2026 10:15:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3D0481F000E9;
+	Thu, 21 May 2026 10:15:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1779358517;
+	bh=LeHgpAGmkkft1lTDv1GUbcLOSox8wth2jbdG+ISuWKg=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject;
+	b=DCYqjYat31sL+mOST1Xc8Edy59m0ameJU2o9mvxAEAytb2a/ZuIteGVExXtaYxFmh
+	 uJKT0vLGRKLT2y0N5xvXWlMlk5iBg7RqLdoiL3Xaq6TkmQ6/28r3nydDHRgN9Yc1fk
+	 /zmoifVpk66TTSioGzFJD7SFNo8xkqKd9Gbrlf1cH0XcnC2sMGK1+nXM6tXN3t/Lv9
+	 O2105u3JCJqOzuCfuTcw0QFrhW583UUItiecZIBNNvcGA7fK1P+VuO/S1L/k5b1CVh
+	 cq1E608gEhRG/kwLty7km2Fg55eIWPMgs82NMmNUL20ui/F0CFinJLENyDWSOaAH9p
+	 4X7JBnUg5XIdQ==
+Date: Thu, 21 May 2026 05:15:16 -0500
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260521-add-airoha-an8801-support-v4-6-1e4837d30ef4@collabora.com>
-References: <20260521-add-airoha-an8801-support-v4-0-1e4837d30ef4@collabora.com>
-In-Reply-To: <20260521-add-airoha-an8801-support-v4-0-1e4837d30ef4@collabora.com>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
+Content-Transfer-Encoding: 8bit
+MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, Andrew Lunn <andrew@lunn.ch>, 
+ linux-mediatek@lists.infradead.org, Russell King <linux@armlinux.org.uk>, 
+ kevin-kw.huang@airoha.com, matthias.bgg@gmail.com, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, Jakub Kicinski <kuba@kernel.org>, 
+ "David S. Miller" <davem@davemloft.net>, devicetree@vger.kernel.org, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Heiner Kallweit <hkallweit1@gmail.com>, netdev@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>, 
- Russell King <linux@armlinux.org.uk>
-Cc: kevin-kw.huang@airoha.com, macpaul.lin@mediatek.com, 
- matthias.bgg@gmail.com, kernel@collabora.com, netdev@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1779351750; l=2402;
- i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=CWjNHp3lVq1P1BWK7ilWt1phFCJ5rYaKgQ1jBzqDdC4=;
- b=VyzIoCdpeWn8XvAgkZ+U0CxFZMGW7ROgymrXgmziebcmXzI3bFPS7IqXSmZswrGGXY0MFsfe6
- dQXDwoabVL4DJO8krNlUYO3VktXt3im52mbwf5gN+b3TNutVvD0dUPM
-X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
- pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260521_012244_379760_96BE4899 
-X-CRM114-Status: GOOD (  14.75  )
+ Paolo Abeni <pabeni@redhat.com>, Conor Dooley <conor+dt@kernel.org>, 
+ kernel@collabora.com, Eric Dumazet <edumazet@google.com>, 
+ macpaul.lin@mediatek.com
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+In-Reply-To: <20260521-add-airoha-an8801-support-v4-1-1e4837d30ef4@collabora.com>
+References: <20260521-add-airoha-an8801-support-v4-0-1e4837d30ef4@collabora.com>
+ <20260521-add-airoha-an8801-support-v4-1-1e4837d30ef4@collabora.com>
+Message-Id: <177935851659.1629932.12187285243163013208.robh@kernel.org>
+Subject: Re: [PATCH net-next v4 1/6] dt-bindings: net: Add support for
+ Airoha AN8801R GbE PHY
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,83 +79,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To ensure that the Airoha AN8801R PHY uses the maximum available link
-speed, an additional register write is needed to configure the function
-mode for either 1G or 100M/10M operation after link detection.
 
-So, in air_an8801 driver, implement a custom read_status callback, that
-after genphy_read_status determines the link speed, sets the bit 0 of
-the link mode register (REG_LINK_MODE) if the detected speed is 1Gbps,
-or unsets it otherwise.
+On Thu, 21 May 2026 10:21:54 +0200, Louis-Alexis Eyraud wrote:
+> From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> 
+> Add a new binding to support the Airoha AN8801R Series Gigabit
+> Ethernet PHY.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+> ---
+>  .../devicetree/bindings/net/airoha,an8801.yaml     | 116 +++++++++++++++++++++
+>  1 file changed, 116 insertions(+)
+> 
 
-Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
----
- drivers/net/phy/air_an8801.c | 43 +++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 43 insertions(+)
+My bot found errors running 'make dt_binding_check' on your patch:
 
-diff --git a/drivers/net/phy/air_an8801.c b/drivers/net/phy/air_an8801.c
-index 73f94e84da07..c64fa153b738 100644
---- a/drivers/net/phy/air_an8801.c
-+++ b/drivers/net/phy/air_an8801.c
-@@ -977,6 +977,48 @@ static int an8801r_config_init(struct phy_device *phydev)
- 	return 0;
- }
- 
-+static int an8801r_read_status(struct phy_device *phydev)
-+{
-+	int prev_speed, ret;
-+	u32 val;
-+
-+	prev_speed = phydev->speed;
-+
-+	ret = genphy_read_status(phydev);
-+	if (ret)
-+		return ret;
-+
-+	if (!phydev->link) {
-+		phydev->speed = SPEED_UNKNOWN;
-+		return 0;
-+	}
-+
-+	if (prev_speed != phydev->speed) {
-+		/* Ensure that PHY switches to 1G speed when available,
-+		 * by configuring the function mode for either 1G or 100M/10M
-+		 * operation.
-+		 * Therefore, set the link mode register, after read_status
-+		 * determines the link speed.
-+		 */
-+		val = phydev->speed == SPEED_1000 ?
-+		      AN8801_BPBUS_LINK_MODE_1000 : 0;
-+
-+		ret = an8801_buckpbus_reg_rmw(phydev,
-+					      AN8801_BPBUS_REG_LINK_MODE,
-+					      AN8801_BPBUS_LINK_MODE_1000,
-+					      val);
-+		if (ret) {
-+			/* Restore previous speed on failure to ensure this
-+			 * register setting is retried on the next poll
-+			 */
-+			phydev->speed = prev_speed;
-+			return ret;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
- static int an8801r_probe(struct phy_device *phydev)
- {
- 	struct device *dev = &phydev->mdio.dev;
-@@ -1074,6 +1116,7 @@ static struct phy_driver airoha_driver[] = {
- 	.suspend		= an8801r_suspend,
- 	.resume			= an8801r_resume,
- 	.config_aneg		= genphy_config_aneg,
-+	.read_status		= an8801r_read_status,
- 	.config_intr		= an8801r_config_intr,
- 	.handle_interrupt	= an8801r_handle_interrupt,
- 	.set_wol		= an8801r_set_wol,
+yamllint warnings/errors:
 
--- 
-2.54.0
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/net/airoha,an8801.yaml: ^led@[0-2]$: Missing additionalProperties/unevaluatedProperties constraint
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.kernel.org/project/devicetree/patch/20260521-add-airoha-an8801-support-v4-1-1e4837d30ef4@collabora.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
 
