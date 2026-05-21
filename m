@@ -4,128 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13270CD343F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2026 07:19:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C967CD4F5E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2026 08:22:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=nN956VWUpzaipasyvgQamUM/S2X7TTAO6ecb5GJgO9w=; b=dk857O8uBAZmjlH2KmnbR6gdAP
-	3tSybj42ZL/1dS7gI0t/QLJ4roMxosoVsABxL5Yg6fNLgf+fyDKhHhUWEgS1cpneiELVvDbv0AbuG
-	bnCFY5Sg+i9lXFDJeyywsLdPqe36qcRUYnsEFYhJiFrBZkjakbrD+YdK7dLykPknih+LU84LdCljF
-	Pp52Catp8v9unTkfCBnK3qqJ1YZmOylEHCRYAhzl61w2Bh7Me0BREYIewSDRr0doX5RpfrNpLNlIi
-	QtiAIQflN9BeqTH6XVm4b56vibU0tPajKe9yrufZtEANgtmA3Edyj+kGx/ufkmYE/BQoo4VI+JHjk
-	Wj5wVFIg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=slhWd0Q1qTyPtg7PQCyLo+eazT+tVYXEqR6QSkKtpXc=; b=d6B9JUOnUTYgg5g99FDDhN12Sj
+	oe49/e+RmmOCq2UEb/jQePdVhEGJsnLLcRU1C7/xQPtCm9ny2VIdQOe+nrI1v90Kh3QgX6VvRzCrR
+	OJMeUQN0qY6WASBASRoscg2AKO1Pl2EMt2xYltUr7JDqPXU+CdSxYZifOAXTQ39QXFb1Xk+mZmH69
+	Vfj1phhpCEahXB/2pBCSCnu34YFRyRr/SMPztWpuoA4stsfZstKEQvzYuwAcYF737hj4UR7fUhVnt
+	RfjVreeTeCmGNVj3vmJsYDWy69qZe1XiYt8slBVD3/nBykHxlNb/U4Gx0rrhECb83uqKOnNSE9qMm
+	7ffJr68w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPxgj-00000006vk5-0Yym;
-	Thu, 21 May 2026 07:19:25 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1wPyfx-000000076vD-0oZJ;
+	Thu, 21 May 2026 08:22:41 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPxgg-00000006vjX-3dEg
-	for linux-mediatek@lists.infradead.org;
-	Thu, 21 May 2026 07:19:24 +0000
-Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 64L0JiC4748495
-	for <linux-mediatek@lists.infradead.org>; Thu, 21 May 2026 07:19:22 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:date:from:message-id:mime-version
-	:subject:to; s=qcppdkim1; bh=nN956VWUpzaipasyvgQamUM/S2X7TTAO6ec
-	b5GJgO9w=; b=jYw1drq37Aa8pNMI4dzSEE8mYokUb9i9XcsW2AJywqngw/X5t+x
-	9WAYNSboIZS+bK+L/ylJKwL64H3eyAD6fxq3oVp+LO8gmXKHSxc/pau1Y8ZDwMgE
-	HYKoGf6BZS5jvRSiaK2SqYPdCseTZvDCn0T59kUVlneBMv69O5vqdcRamNTxylH8
-	7WeVdAHeEMQvqbnkdjrHNdyQA/D0QU2SuOs2r1EQp/JSCgI+Ur+m8zZT5unkp7rA
-	P0HR/Ouu3U06sA2IthWJhcueLlvlmXEFZhvQIYmRqRMBtIH+cjp2bAtldXnt0SKV
-	hnT1B2lfEEMshOXrX8sx9wCyeYNABKxgdhg==
-Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com [209.85.214.197])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4e9fb6k7ua-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Thu, 21 May 2026 07:19:21 +0000 (GMT)
-Received: by mail-pl1-f197.google.com with SMTP id d9443c01a7336-2babbeff9e4so62749485ad.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 21 May 2026 00:19:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1779347961; x=1779952761; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=nN956VWUpzaipasyvgQamUM/S2X7TTAO6ecb5GJgO9w=;
-        b=dTKbAMeR1PjmuzcCKsyXBw0eCVsgLwo6+bgt/PKphnQf2/9pWToTX2p88KkXYLj3Xz
-         QMJMFitI9/YudV2IrnP4JOni1txV25Dzu2n2k5pTINi9LQ9I4ld5O5ZBAv2EmaIGZR5Z
-         3BCZNXPht9NI/GclOcvaG31KrbeSXmM+c9AdYpH6fkz9jG65jhJBTG7EdlEeo1doeHBq
-         hivodFOP5qvjw5iRc72++pVgA7ifD65IjWypPtliaOag0Sq2/9sS7E/LTj0XQZ6HkLdN
-         QMD04RW3mGzx4nQ7bBz+/J0ymmDZ+PAPjJyylqnESnzIcwlzde1mQ4h9cQHSMmAqrnzd
-         nmVQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779347961; x=1779952761;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=nN956VWUpzaipasyvgQamUM/S2X7TTAO6ecb5GJgO9w=;
-        b=gFeBmUIHUkz2vVN9unR59tPvVSk2Q7gYSw6fpHVyh8JS3E5Jrd0/9qfhqV7mEB2WPU
-         kNb8QVvM/DvZ6a/eNOItuRUWSw7EKw3tRL5X60+pO8xTbaRxlS3kXW9E6ebXdxPQEQxo
-         5+d30Hfafk0xXqrfkA7c3XWLVlulDNfGeLh0tdkWqBhXHT6me1x+emuzpQGUCitQySBC
-         Ol3bnGjcjg/Qh/7dEQiNThpWPBr/TEj6asTgxJjDjM5cCqJiTvwKVPZaIydAaMLjbp90
-         0xdUjZ5tWZX/LH31bcZpcLjVEE5DeIqu2ovb/dR1td+gslASyxOH4I1w/XF07wzgH3El
-         4dbA==
-X-Forwarded-Encrypted: i=1; AFNElJ/Q9ebFV+wLKAp3H/QcapwXLu0RwMIEmmlp0Uh5BS5qVCX3bwIWU0lPNBcJAiB35Cz0Y2V9sF6Ya1Yd3hVLug==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzp+/XszxRR1KVrTZKsKlNfQCjdXJuYc3XYVEmNqzMN9yo1hG9l
-	OYqpNJ2oU2LfKsb0ux2Pv+ZM46ip31En7wFTlmtMsxDfsR3xld5FKaNadJ/5xlvX3EmPUe0IPnx
-	1uvg+O7V+Nt2Ww/Jircb/iT64+Drkg4nJqezLlML2q17jdP4HEooiU1wdlMM51DnbrWeVlqdbVi
-	A=
-X-Gm-Gg: Acq92OH1f6jL2fIibhEF3Oh+thmRpyHrj82eobZZfjA8LHV5Tjta2R2FDCxI3asKGuj
-	pqJg/LAxyt+kF8YHgG4u9dax5/QT6q8fvXJZH0+r7CacF3Ot6n4IsfjkDc/w7Z5X9h3JyF5hJrG
-	tzdcUwIM+msq/s41U1lJ8FwaZkGRMt6c3l9NShulB7ds0iqjAjnTL/j0eyfQnNOojhjav7Ltkc7
-	jtAcVCeYNXibR/dYmA3/9d5gvSJ/ua+s7Ct6yaeARuINx3oacRfhZJt0Kaz2S8Me45dkZqSuFSk
-	ywpgswD1lD8mF2gdlO3uPDsmcHPhIUwSAT+vQnOOZ2SSc5EwADZOW1SG8VJKilSgwx6v+CJo+2y
-	9q5WMX4Q6rKEaqo2k0T58H7iJIfoHCgqRkYzFk55urRny2cyFXUDT0xdDcg==
-X-Received: by 2002:a17:903:3bd0:b0:2ba:5f24:caeb with SMTP id d9443c01a7336-2bea229bfd5mr15735375ad.19.1779347961083;
-        Thu, 21 May 2026 00:19:21 -0700 (PDT)
-X-Received: by 2002:a17:903:3bd0:b0:2ba:5f24:caeb with SMTP id d9443c01a7336-2bea229bfd5mr15734965ad.19.1779347960462;
-        Thu, 21 May 2026 00:19:20 -0700 (PDT)
-Received: from work.lan ([2409:4091:a0f4:6806:ef8d:de79:6e34:4a35])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2bea98eca29sm468475ad.41.2026.05.21.00.19.15
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 21 May 2026 00:19:20 -0700 (PDT)
-From: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
-To: lpieralisi@kernel.org, kwilczynski@kernel.org, mani@kernel.org,
-        ryder.lee@mediatek.com, jianjun.wang@mediatek.com
-Cc: bhelgaas@google.com, robh@kernel.org, linux-pci@vger.kernel.org,
-        linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-        Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>,
-        stable@vger.kernel.org, Caleb James DeLisle <cjd@cjdns.fr>
-Subject: [PATCH] PCI: mediatek: Free IRQ domains while freeing Root Ports
-Date: Thu, 21 May 2026 12:49:07 +0530
-Message-ID: <20260521071907.13614-1-manivannan.sadhasivam@oss.qualcomm.com>
-X-Mailer: git-send-email 2.51.0
+	id 1wPyfs-000000076rY-2rSc;
+	Thu, 21 May 2026 08:22:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1779351754;
+	bh=Y+IAJzkmd/rISxvlVyEkLmIzLfH8WWPE8aSMRq9pKGo=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=nTxFTC0BhxE765aJIxaBOV+ofGsmoZ4wfYpc1m/YKXgQ4CVaS8F+WNLxkArXEayUJ
+	 drU9Ep4GkU1v9MpjnSaIO9oT6IolH36Kujelif9hOY/EoP8omFr2HyQrH7fC+9v+3J
+	 suZe8EWiokuhpCPYyGyG14bK3vhfbJUpy9+t4LWK8FdSDuBgl6jsPB05ONJwJLdhpS
+	 Uc7LzaB5kEJzxWEh+SMC/x0XkkDoVNaVaYROKqHtFXBK1RZ//i/InExIuRa+lPet/n
+	 JfVXR8r7bVspdBpt75nwS+paVTjz4NbUsC93X+Bc0TO+DztJk5ByzqnNjX8HZYhFu6
+	 SaMfQqQUSZSDg==
+Received: from yukiji.home (unknown [100.64.0.131])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 86B7517E1305;
+	Thu, 21 May 2026 10:22:32 +0200 (CEST)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Date: Thu, 21 May 2026 10:21:54 +0200
+Subject: [PATCH net-next v4 1/6] dt-bindings: net: Add support for Airoha
+ AN8801R GbE PHY
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=do/rzVg4 c=1 sm=1 tr=0 ts=6a0eb1f9 cx=c_pps
- a=cmESyDAEBpBGqyK7t0alAg==:117 a=xqWC_Br6kY4A:10 a=NGcC8JguVDcA:10
- a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
- a=eoimf2acIAo5FJnRuUoq:22 a=VwQbUJbxAAAA:8 a=EUspDBNiAAAA:8
- a=0GrS9vw-3MyE2OudUf0A:9 a=1OuFwYUASf3TG4hYMiVC:22
-X-Proofpoint-ORIG-GUID: 1alA-LdM1gUcB8CHHjRNI_Cd0GOFvw2D
-X-Proofpoint-GUID: 1alA-LdM1gUcB8CHHjRNI_Cd0GOFvw2D
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTIxMDA2OSBTYWx0ZWRfX9gUfBdLFOtO6
- bB+c45dn2JtftaXM1GdjXwCRygICuosmIsHHScbJbDEY+aBqPlRROc2LMTjGSMcqwWW8EvkOPYw
- hvxRyg8myM5ZLKFkrcV7oOPds4C7IVZxtX2WbcY6Plo1tWY4tMEBTl9e6iu+XBN2wfHwQVyge4F
- h5IOEDUbzISIrYLdpqblfx9AkJx7SOBhf6fPIeON9q0III3aafc8Rj2CFpL/yjFtXhegXzBKtP9
- gIyG+dbjp6bdZ3BuHWjdbKF+UI97NznJyudCHUhzzkhCjyAK75nmx6XSU9xoNk2vaaf8AHwT8EF
- LlGGarUU0iQh3UCAfbAsAiiXEzZnUEETGD36oWHqMoM63SFqiWHtmhaYIzMMjZaLV3IU9peHdU5
- f/PbOE1Wm2YQJ7zyjmhXNp6uLzbc6YS61UUg7bO9Y33UrQzoGsCcruyIIFAGl0ZEjrUln8R3OoD
- b8ztjd3XNg0QlN1MD1w==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-05-20_03,2026-05-18_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- adultscore=0 lowpriorityscore=0 bulkscore=0 suspectscore=0 clxscore=1015
- spamscore=0 malwarescore=0 phishscore=0 priorityscore=1501 impostorscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2605130000 definitions=main-2605210069
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260521-add-airoha-an8801-support-v4-1-1e4837d30ef4@collabora.com>
+References: <20260521-add-airoha-an8801-support-v4-0-1e4837d30ef4@collabora.com>
+In-Reply-To: <20260521-add-airoha-an8801-support-v4-0-1e4837d30ef4@collabora.com>
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>, 
+ Russell King <linux@armlinux.org.uk>
+Cc: kevin-kw.huang@airoha.com, macpaul.lin@mediatek.com, 
+ matthias.bgg@gmail.com, kernel@collabora.com, netdev@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1779351750; l=3910;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=YsYp+8rtZbrNoe09ovitl7Xxad+fzu5FOYhv2w4KdT0=;
+ b=bPZzJxP2ZZmJVZxzmCZAJkwL8nSKR4arDuOZSjnswQBPoG/ZQBkCtWbyLGCgC1O2Ixuc4a1H3
+ 5tBBEJbZMyeC8VNnO5PgogihaWOj/ruSCbk+n11L8zcUi/GxLHWyMyH
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260521_001922_906786_EDC7AF77 
-X-CRM114-Status: GOOD (  14.96  )
+X-CRM114-CacheID: sfid-20260521_012236_904529_492BED80 
+X-CRM114-Status: GOOD (  14.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,86 +91,142 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently, the driver frees the IRQ domains only during driver remove().
-But when mtk_pcie_enable_port() fails for some reason, the domains are
-not freed. This leads to resource leakage.
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Hence, free the IRQ domains inside mtk_pcie_port_free() helper which gets
-called in the error path of mtk_pcie_enable_port() and also during driver
-removal.
+Add a new binding to support the Airoha AN8801R Series Gigabit
+Ethernet PHY.
 
-This issue was flagged by Sashiko when reviewing the EcoNet EN7528 SoC
-support series.
-
-Cc: stable@vger.kernel.org # 5.10
-Cc: Caleb James DeLisle <cjd@cjdns.fr>
-Fixes: b099631df160 ("PCI: mediatek: Add controller support for MT2712 and MT7622")
-Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- drivers/pci/controller/pcie-mediatek.c | 35 +++++++++++---------------
- 1 file changed, 14 insertions(+), 21 deletions(-)
+ .../devicetree/bindings/net/airoha,an8801.yaml     | 116 +++++++++++++++++++++
+ 1 file changed, 116 insertions(+)
 
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index c503fbd774d0..c45baf681cf5 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -250,6 +250,20 @@ static void mtk_pcie_port_free(struct mtk_pcie_port *port)
- 	struct mtk_pcie *pcie = port->pcie;
- 	struct device *dev = pcie->dev;
- 
-+	if (port->irq) {
-+		irq_set_chained_handler_and_data(port->irq, NULL, NULL);
+diff --git a/Documentation/devicetree/bindings/net/airoha,an8801.yaml b/Documentation/devicetree/bindings/net/airoha,an8801.yaml
+new file mode 100644
+index 000000000000..fb2f70ceb33a
+--- /dev/null
++++ b/Documentation/devicetree/bindings/net/airoha,an8801.yaml
+@@ -0,0 +1,116 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/net/airoha,an8801.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+		if (port->irq_domain)
-+			irq_domain_remove(port->irq_domain);
++title: Airoha AN8801R Series PHY
 +
-+		if (IS_ENABLED(CONFIG_PCI_MSI)) {
-+			if (port->inner_domain)
-+				irq_domain_remove(port->inner_domain);
-+		}
++maintainers:
++  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 +
-+		irq_dispose_mapping(port->irq);
-+	}
++description:
++  The Airoha AN8801R is a low power single-port Ethernet PHY Transceiver
++  with Single-port serdes interface for 1000Base-X/RGMII; this chip is
++  compliant with 10Base-T, 100Base-TX and 1000Base-T IEEE 802.3(u,ab)
++  and supports Energy Efficient Ethernet (802.3az), Full Duplex Control
++  Flow (802.3x), auto-negotiation, crossover detect and autocorrection,
++  Wake-on-LAN with Magic Packet, and Jumbo Frame up to 9 Kilobytes.
++  This PHY also supports up to three user-configurable LEDs, which are
++  usually used for LAN Activity, 100M, 1000M indication.
 +
- 	devm_iounmap(dev, port->base);
- 	list_del(&port->list);
- 	devm_kfree(dev, port);
-@@ -531,25 +545,6 @@ static void mtk_pcie_enable_msi(struct mtk_pcie_port *port)
- 	writel(val, port->base + PCIE_INT_MASK);
- }
- 
--static void mtk_pcie_irq_teardown(struct mtk_pcie *pcie)
--{
--	struct mtk_pcie_port *port, *tmp;
--
--	list_for_each_entry_safe(port, tmp, &pcie->ports, list) {
--		irq_set_chained_handler_and_data(port->irq, NULL, NULL);
--
--		if (port->irq_domain)
--			irq_domain_remove(port->irq_domain);
--
--		if (IS_ENABLED(CONFIG_PCI_MSI)) {
--			if (port->inner_domain)
--				irq_domain_remove(port->inner_domain);
--		}
--
--		irq_dispose_mapping(port->irq);
--	}
--}
--
- static int mtk_pcie_intx_map(struct irq_domain *domain, unsigned int irq,
- 			     irq_hw_number_t hwirq)
- {
-@@ -1186,8 +1181,6 @@ static void mtk_pcie_remove(struct platform_device *pdev)
- 	pci_remove_root_bus(host->bus);
- 	mtk_pcie_free_resources(pcie);
- 
--	mtk_pcie_irq_teardown(pcie);
--
- 	mtk_pcie_put_resources(pcie);
- }
- 
++allOf:
++  - $ref: ethernet-phy.yaml#
++
++properties:
++  compatible:
++    enum:
++      - ethernet-phy-idc0ff.0421
++
++  reg:
++    maxItems: 1
++
++  leds:
++    type: object
++    description:
++      Describes the LEDs associated to the PHY
++
++    properties:
++      "#address-cells":
++        const: 1
++
++      "#size-cells":
++        const: 0
++
++    patternProperties:
++      "^led@[0-2]$":
++        type: object
++        description: PHY LEDs
++        $ref: /schemas/leds/common.yaml#
++
++        properties:
++          reg:
++            enum: [0, 1, 2]
++
++          function-enumerator:
++            enum: [0, 1, 2]
++            description: |
++              Specifies a function for offloading LED functionality to the PHY:
++              0 - No offloading
++              1 - Link Availability
++              2 - Network Activity
++
++        required:
++          - reg
++
++  wakeup-source:
++    $ref: /schemas/types.yaml#/definitions/flag
++    description:
++      Enable Wake-on-LAN support
++
++required:
++  - reg
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/leds/common.h>
++
++    mdio {
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        ethernet-phy@0 {
++            compatible = "ethernet-phy-idc0ff.0421";
++            reg = <0>;
++
++            leds {
++                #address-cells = <1>;
++                #size-cells = <0>;
++
++                led@0 {
++                    reg = <0>;
++                    color = <LED_COLOR_ID_GREEN>;
++                    function = LED_FUNCTION_LAN;
++                    default-state = "keep";
++                };
++
++                led@1 {
++                    reg = <1>;
++                    color = <LED_COLOR_ID_GREEN>;
++                    function = LED_FUNCTION_LAN;
++                    function-enumerator = <1>;
++                    default-state = "keep";
++                };
++
++                led@2 {
++                    reg = <2>;
++                    color = <LED_COLOR_ID_YELLOW>;
++                    function = LED_FUNCTION_LAN;
++                    function-enumerator = <2>;
++                    default-state = "keep";
++                };
++            };
++        };
++    };
+
 -- 
-2.51.0
+2.54.0
 
 
