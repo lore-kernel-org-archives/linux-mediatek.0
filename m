@@ -4,67 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4C0CCD5BB0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2026 19:27:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1333CD5BB0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2026 20:35:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FCl2h1w1gG7xQ2IOq1++c0XrFQCqGCY1qfeW5ss3aJU=; b=lluomvjGF9p0WyODd3MYd1/vzP
-	r005/wphB2GuaHBDje6zJ0mZ/c3szlj1xwtBPWOJHnnPjbE7Ho+udT1T8tlMRNOEj6Kj2vvWpL9rb
-	Llw+8YzNsbmzHZ3zqtMsop68r/LFdwDJ4puKAlynxPv8MwzgGaXuxZ27vka1DxoD1LXyrrjr5TeEx
-	p4N013eGrP91m1g3oXKBMLVZnKV11EzV6SfclkVLd/J7DI/4KHgU32V1GkcjVgCDE7JZ8qHD8YNUJ
-	dX0sWsabgGECP8AelEu5DbfGSRZp/S3Evzy07HjkgyJHoC9kuVsUHsf69elF00RCq2b3mOMrawkCm
-	iULkyDNA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=k6EyF5hhQO7eaC9zrEY9M5Jju+ePXXxpPReIjxWeQJo=; b=VFIQyFAEqIqWnxNdJKkM5qU6Z6
+	kOoemjquZMcgXoRi57aR53d2Stx3G+hz+hChgagTz44gdw4FaASwioGD0N7+/LvNeS6BrVe9MI/2x
+	W+ojZYSxhy71nktZUxQGM723s4b2IuWy/N6Lwt4gTwHKwKU3b/lzDdqEGzDsHr7f8UrrtbZt1Y+a7
+	weD4RIn4pY63nDkmO4+3CKCKmjsYrhS/2Py/kpaoh3yRFLy195orC8IeLcZMHAGBqYLyEs5CI0luI
+	jXveGfH7ZHKTtGI1JmpJedK+QuoqCIMtX8EQxf1LA5QJzXCS+H9ZWPh8HZhiDlGREH0m4INtyfTsJ
+	0UfdL0hQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQVWa-0000000BmEj-30kd;
-	Fri, 22 May 2026 19:27:12 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wQWag-0000000BtBM-49tm;
+	Fri, 22 May 2026 20:35:30 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQVWY-0000000BmEB-2gVX;
-	Fri, 22 May 2026 19:27:10 +0000
+	id 1wQWaf-0000000BtB8-3uns
+	for linux-mediatek@lists.infradead.org;
+	Fri, 22 May 2026 20:35:30 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id CDA2F60136;
-	Fri, 22 May 2026 19:27:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0483F1F000E9;
-	Fri, 22 May 2026 19:27:08 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id EFC1960136
+	for <linux-mediatek@lists.infradead.org>; Fri, 22 May 2026 20:35:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A70951F000E9
+	for <linux-mediatek@lists.infradead.org>; Fri, 22 May 2026 20:35:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779478029;
-	bh=FCl2h1w1gG7xQ2IOq1++c0XrFQCqGCY1qfeW5ss3aJU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=ds6ZMMcgx5EDAgUl1oWgYyadlaRI2Wa4jbbhZo8AQztef+B93krJNaxzks2mO5nGN
-	 zs3brK3XUN3Vkp7C69SA4iKK0s59G61zOndjX8ehKMihlTbCJyLAatdcDbqsjdswgF
-	 yd/SApE5kY4Y8oQhvlSUYujUIEvHc2S+06ugEXPAMAx8i7bS+ba85G20ioe/s1AoVa
-	 4jN4HvjZ4qUijyR5GPyHyYif4NaXLCivIk7qhJiirKJQcd9u999dSwTrR8+m5VVcvS
-	 3d3zfANxA6AE7SjyUCYvMqzgPTfTNkjy8qosxmUDrPtZX4BpfwZ81971jS1Z0/Qfdt
-	 KtTHxsV04Ln4g==
-Date: Fri, 22 May 2026 21:27:07 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: Christian Marangi <ansuelsmth@gmail.com>,
-	Benjamin Larsson <benjamin.larsson@genexis.eu>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH net-next v8 01/10] dt-bindings: net: airoha: Add GDM port
- ethernet child node
-Message-ID: <ahCuC3TgK3Pnuz_w@lore-desk>
-References: <20260519-airoha-eth-multi-serdes-v8-0-6bd70e329df6@kernel.org>
- <20260519-airoha-eth-multi-serdes-v8-1-6bd70e329df6@kernel.org>
+	s=k20260515; t=1779482128;
+	bh=k6EyF5hhQO7eaC9zrEY9M5Jju+ePXXxpPReIjxWeQJo=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc;
+	b=Bvfo+4J9k3zP83bx1tFCEXatTDWdPvgQkRpDVKEMjzmOW0xqlJ7GbNLtK0Q9b852d
+	 6a1FiUxIZMZWMhQbGM2bqPRoBkwM4s/EO5BG69cuCeq7/stPWUZfjrO3VDTHR0XXHI
+	 G2+icnxT0UA+aBVBjNDVXy0ySNvzRtgVF6+4l1AW8tVogg0Iw1AVLrylAKONQeKib1
+	 7RxReWO34Zh9ID7EcnWPZJWtZ43RXt6VmeCjiLnPQu1ipmgg80fCufwPDR7KH5zswV
+	 grHgjLEQQO25P4XF0Ka+asrVXjZDGW30XxNFnjOtuZ7GvihRicZPFInEYEiuGnixqC
+	 ZXzZ1Fiox9SXg==
+Received: by mail-lj1-f180.google.com with SMTP id 38308e7fff4ca-39397d63804so26545431fa.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 22 May 2026 13:35:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AFNElJ9u2KkO4cT1Z3a0YU3abew3nndzjQBt9+OyHzY4rLQDt5Vtt6Qb1vqekt+/eGyEXqoX4mcW73IE9szxGgmzuw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwHfNuRcnIEEn0nRm+j5PmoCAzncFSE5a1O1HNyN8U9cgTpmjo5
+	n7iMbmvivfEQFbxdSiaD5gFxH0eEe/c+vPIq1r2+FJGeELpioFNYiXdWdeSf9tToW6X4l/arkA8
+	Hm9UnlByjcu4vGx5VQa0i6+HK09bjHiA=
+X-Received: by 2002:a05:651c:882:b0:394:987:946b with SMTP id
+ 38308e7fff4ca-395d8c12399mr17897371fa.2.1779482127167; Fri, 22 May 2026
+ 13:35:27 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="qZn/vsQETJzcLfna"
-Content-Disposition: inline
-In-Reply-To: <20260519-airoha-eth-multi-serdes-v8-1-6bd70e329df6@kernel.org>
+References: <5ecac6a9b7d29526e8438dea105b58f5487c93aa.1778521232.git.ryder.lee@mediatek.com>
+ <agdJ1EtZjjWh2R1h@lore-desk> <CAHoxojJX2BRRTLMuM_QcJqMMmshxS4EAwrB1VjU3rsZ+0k2PAg@mail.gmail.com>
+ <agsGiHKH6ly1afaf@lore-desk> <CAHoxojKeXCCnJoO7yBBmTM9euiTf38orujOhOK00X8bb3ctWuA@mail.gmail.com>
+ <CAA2SeNJXv+8QO6zEOF=qB3wVCdEoSqx6fftp1i=aB-DKMFeC=A@mail.gmail.com> <1e1318a9230533c63c31aecbaddf520b6f68affd.camel@mediatek.com>
+In-Reply-To: <1e1318a9230533c63c31aecbaddf520b6f68affd.camel@mediatek.com>
+From: Sean Wang <sean.wang@kernel.org>
+Date: Fri, 22 May 2026 15:35:15 -0500
+X-Gmail-Original-Message-ID: <CAGp9Lzq_EhW-YR2EM0Hr64pRTV5eqAj1bx0RLuYCuWMTGhcHSA@mail.gmail.com>
+X-Gm-Features: AVHnY4IuzG8abYfmu1woK-eDo_ZET5-_JKn-20dhW4FE-eU_dJaCw-BZnzXQJqI
+Message-ID: <CAGp9Lzq_EhW-YR2EM0Hr64pRTV5eqAj1bx0RLuYCuWMTGhcHSA@mail.gmail.com>
+Subject: Re: [PATCH] wifi: mt76: mt7996: avoid memset overwriting tx_info->control.flags
+To: Ryder Lee <Ryder.Lee@mediatek.com>
+Cc: "lorenzo.bianconi83@gmail.com" <lorenzo.bianconi83@gmail.com>, 
+	"roychl666@gmail.com" <roychl666@gmail.com>, 
+	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>, "nbd@nbd.name" <nbd@nbd.name>, 
+	"lorenzo@kernel.org" <lorenzo@kernel.org>, =?UTF-8?B?U2hheW5lIENoZW4gKOmZs+i7kuS4nik=?= <Shayne.Chen@mediatek.com>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Roy-CH Luo <Roy-CH.Luo@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,131 +85,278 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi,
 
---qZn/vsQETJzcLfna
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Tue, May 19, 2026 at 3:43=E2=80=AFPM Ryder Lee <Ryder.Lee@mediatek.com> =
+wrote:
+>
+> On Tue, 2026-05-19 at 14:24 +0200, Lorenzo Bianconi wrote:
+> >
+> > External email : Please do not click links or open attachments until
+> > you have verified the sender or the content.
+> >
+> >
+> > >
+> > > On Mon, May 18, 2026 at 5:31=E2=80=AFAM Lorenzo Bianconi
+> > > <lorenzo@kernel.org> wrote:
+> > > >
+> > > > On May 15, Cheng Hao Luo wrote:
+> > > > > > struct ieee80211_tx_info {
+> > > > > >         u32                        flags;
+> > > > > > /*     0     4 */
+> > > > > >         u32                        band:3;
+> > > > > > /*     4: 0  4 */
+> > > > > >         u32                        status_data_idr:1;
+> > > > > > /*     4: 3  4 */
+> > > > > >         u32                        status_data:13;
+> > > > > > /*     4: 4  4 */
+> > > > > >         u32                        hw_queue:4;
+> > > > > > /*     4:17  4 */
+> > > > > >         u32                        tx_time_est:10;
+> > > > > > /*     4:21  4 */
+> > > > > >
+> > > > > >         /* XXX 1 bit hole, try to pack */
+> > > > > >
+> > > > > >         union {
+> > > > > >                 struct {
+> > > > > >                         union {
+> > > > > >                                 struct {
+> > > > > >                                         struct
+> > > > > > ieee80211_tx_rate rates[4]; /*     8    12 */
+> > > > > >                                         s8
+> > > > > > rts_cts_rate_idx; /*    20     1 */
+> > > > > >                                         u8     use_rts:1;
+> > > > > > /*    21: 0  1 */
+> > > > > >                                         u8
+> > > > > > use_cts_prot:1; /*    21: 1  1 */
+> > > > > >                                         u8
+> > > > > > short_preamble:1; /*    21: 2  1 */
+> > > > > >                                         u8     skip_table:1;
+> > > > > > /*    21: 3  1 */
+> > > > > >                                         u8     antennas:2;
+> > > > > > /*    21: 4  1 */
+> > > > > >                                 };
+> > > > > > /*     8    14 */
+> > > > > >                                 long unsigned int jiffies;
+> > > > > > /*     8     8 */
+> > > > > >                         };
+> > > > > > /*     8    16 */
+> > > > > >                         struct ieee80211_vif * vif;
+> > > > > > /*    24     8 */
+> > > > > >                         struct ieee80211_key_conf * hw_key;
+> > > > > > /*    32     8 */
+> > > > > >                         u32        flags;
+> > > > > > /*    40     4 */
+> > > > > >                         codel_time_t enqueue_time;
+> > > > > > /*    44     4 */
+> > > > > >                 } control;
+> > > > > > /*     8    40 */
+> > > > > >                 struct {
+> > > > > >                         u64        cookie;
+> > > > > > /*     8     8 */
+> > > > > >                 } ack;
+> > > > > > /*     8     8 */
+> > > > > >                 struct {
+> > > > > >                         struct ieee80211_tx_rate rates[4];
+> > > > > > /*     8    12 */
+> > > > > >                         s32        ack_signal;
+> > > > > > /*    20     4 */
+> > > > > >                         u8         ampdu_ack_len;
+> > > > > > /*    24     1 */
+> > > > > >                         u8         ampdu_len;
+> > > > > > /*    25     1 */
+> > > > > >                         u8         antenna;
+> > > > > > /*    26     1 */
+> > > > > >                         u8         pad;
+> > > > > > /*    27     1 */
+> > > > > >                         u16        tx_time;
+> > > > > > /*    28     2 */
+> > > > > >                         u8         flags;
+> > > > > > /*    30     1 */
+> > > > > >                         u8         pad2;
+> > > > > > /*    31     1 */
+> > > > > >                         void *     status_driver_data[2];
+> > > > > > /*    32    16 */
+> > > > > >                 } status;
+> > > > > > /*     8    40 */
+> > > > > >                 struct {
+> > > > > >                         struct ieee80211_tx_rate
+> > > > > > driver_rates[4]; /*     8    12 */
+> > > > > >                         u8         pad[4];
+> > > > > > /*    20     4 */
+> > > > > >                         void *     rate_driver_data[3];
+> > > > > > /*    24    24 */
+> > > > > >                 };
+> > > > > > /*     8    40 */
+> > > > > >                 void *             driver_data[5];
+> > > > > > /*     8    40 */
+> > > > > >         };
+> > > > > > /*     8    40 */
+> > > > > >
+> > > > > >         /* size: 48, cachelines: 1, members: 7 */
+> > > > > >         /* sum members: 44 */
+> > > > > >         /* sum bitfield members: 31 bits, bit holes: 1, sum
+> > > > > > bit holes: 1 bits */
+> > > > > >         /* last cacheline: 48 bytes */
+> > > > > > };
+> > > > > >
+> > > > > > According to pahole, the size of the control inner union is
+> > > > > > actually 16 bytes
+> > > > > > since the compiler adds 2 bytes of padding. Since
+> > > > > > mt76_tx_status_skb_add()
+> > > > > > meset to 0 just mt76_tx_cb size (that is 16 bytes) I can't
+> > > > > > see how
+> > > > > > control.flags is overwritten. Am I missing something?
+> > > > > >
+> > > > > > struct mt76_tx_cb {
+> > > > > >         long unsigned int          jiffies;
+> > > > > > /*     0     8 */
+> > > > > >         u16                        wcid;
+> > > > > > /*     8     2 */
+> > > > > >         u8                         pktid;
+> > > > > > /*    10     1 */
+> > > > > >         u8                         flags;
+> > > > > > /*    11     1 */
+> > > > > >
+> > > > > >         /* size: 16, cachelines: 1, members: 4 */
+> > > > > >         /* padding: 4 */
+> > > > > >         /* last cacheline: 16 bytes */
+> > > > > > };
+> > > > >
+> > > > > Hi Lorenzo,
+> > > > >
+> > > > > The mt76_tx_cb is placed at status.status_driver_data (offset
+> > > > > 32).
+> > > > > It overlaps with hw_key, flags and enqueue_time in the control
+> > > > > union.
+> > > > >
+> > > > > static inline struct mt76_tx_cb *mt76_tx_skb_cb(struct sk_buff
+> > > > > *skb)
+> > > > > {
+> > > > > BUILD_BUG_ON(sizeof(struct mt76_tx_cb) >
+> > > > >     sizeof(IEEE80211_SKB_CB(skb)->status.status_driver_data));
+> > > > > return ((void *)IEEE80211_SKB_CB(skb)-
+> > > > > >status.status_driver_data);
+> > > > > }
+> > > >
+> > > > Hi Roy,
+> > > >
+> > > > I still do not understand since mt76_tx_status_skb_add() sets to
+> > > > 0 just sizeof
+> > > > of mt76_tx_cb, that according to pahole is 16 bytes, so it can't
+> > > > overwrite
+> > > > hw_key pointer (whose offset respect to the beginning of the
+> > > > control struct is
+> > > > 24, 32 - 8).
+> > > >
+> > > > Regards,
+> > > > Lorenzo
+> > > >
+> > > > >
+> > > > > Regards,
+> > > > > Roy Luo
+> > >
+> > > Hi Lorenzo,
+> > >
+> > > The mt76_tx_status_skb_add() memset zero the 16 bytes starting from
+> > > status.status_driver_data (please see the above inline function
+> > > shared
+> > > in my last response) whose offset with respect to the beginning of
+> > > the control/status union is exactly 24 (32 - 8) instead of 0.
+> > >
+> > > Regards,
+> > > Roy Luo
+> >
+> > Hi Roy,
+> >
+> > I can see the issue now, I was confusing status.status_driver_data
+> > with
+> > driver_data. You are right, we have an issue here. However, copying
+> > all the
+> > ieee80211_tx_info struct seems a bit overkill, what do you think?
+> > Moreover, we have the same issue for various chipsets (e.g. mt7925
+> > and
+> > mt7915).  I guess we should try to find a global solution for the
+> > problem.
+> >
+> > Regards,
+> > Lorenzo
+>
+> What about adding an helper for cb operation?
+>
+> +void
+> +mt76_tx_status_skb_cb_add(struct mt76_dev *dev, struct sk_buff *skb,
+> +                         struct mt76_wcid *wcid, int pid)
+> +{
+> +       struct mt76_tx_cb *cb =3D mt76_tx_skb_cb(skb);
+> +
+> +       memset(cb, 0, sizeof(*cb));
+> +
+> +       spin_lock_bh(&dev->status_lock);
+> +       cb->wcid =3D wcid->idx;
+> +       cb->pktid =3D pid;
+> +       spin_unlock_bh(&dev->status_lock);
+> +}
+> +EXPORT_SYMBOL_GPL(mt76_tx_status_skb_cb_add);
+>
+> And add this for each chipset.
+>
+> index 061ab66..d0b67a2 100644
+> --- a/mt7996/mac.c
+> +++ b/mt7996/mac.c
+> @@ -1108,6 +1108,7 @@ int mt7996_tx_prepare_skb(struct mt76_dev *mdev,
+> void *txwi_ptr,
+>         if (!is_8023 || pid >=3D MT_PACKET_ID_FIRST)
+>                 mt7996_mac_write_txwi(dev, txwi_ptr, tx_info->skb,
+> wcid, key,
+>                                       pid, qid, 0);
+> +       mt76_tx_status_skb_cb_add(dev, tx_info->skb, wcid, pid);
+>
+>
 
-> EN7581 and AN7583 SoCs support connecting multiple external SerDes to GDM3
-> or GDM4 ports via a hw arbiter that manages the traffic in a TDM manner.
-> As a result multiple net_devices can connect to the same GDM{3,4} port
-> and there is a theoretical "1:n" relation between GDM ports and
-> net_devices.
-> Introduce the ethernet node child of a specific GDM port in order to model
-> a given net_device that is connected via the external arbiter to the
-> GDM{3,4} port. This new ethernet node is defined by the "airoha,eth-port"
-> compatible string. Please note GDM1 and GDM2 does not support the
-> connection with the external arbiter and they are represented by an
-> ethernet node defined by the "airoha,eth-mac" compatible string.
+I would prefer to split the cb init logic out of
+mt76_tx_status_skb_add() and add a dedicated helper:
 
-Hi Rob, Krzysztof and Conor,
+  /*
+   * Must be called only after all TXWI/TXP code has consumed
+   * IEEE80211_SKB_CB(skb)->control, since this switches skb->cb to the
+   * mt76 tx status tracking overlay.
+   */
+  void
+  mt76_tx_status_skb_init(struct mt76_dev *dev, struct mt76_wcid *wcid,
+              struct sk_buff *skb, int pktid)
+  {
+      struct mt76_tx_cb *cb =3D mt76_tx_skb_cb(skb);
 
-do you have any comment about this patch? Thanks in advance.
+      memset(cb, 0, sizeof(*cb));
 
-Regards,
-Lorenzo
+      if (wcid)
+          cb->wcid =3D wcid->idx;
+      cb->pktid =3D pktid;
+  }
+  EXPORT_SYMBOL_GPL(mt76_tx_status_skb_init);
 
->=20
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  .../devicetree/bindings/net/airoha,en7581-eth.yaml | 56 ++++++++++++++++=
-+++++-
->  1 file changed, 55 insertions(+), 1 deletion(-)
->=20
-> diff --git a/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml=
- b/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
-> index fbe2ddcdd909..17fe2edf4886 100644
-> --- a/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
-> +++ b/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
-> @@ -130,6 +130,42 @@ patternProperties:
->          maximum: 4
->          description: GMAC port identifier
-> =20
-> +    allOf:
-> +      - if:
-> +          properties:
-> +            reg:
-> +              contains:
-> +                items:
-> +                  - enum:
-> +                      - 3
-> +                      - 4
-> +        then:
-> +          properties:
-> +            '#address-cells':
-> +              const: 1
-> +
-> +            '#size-cells':
-> +              const: 0
-> +
-> +          patternProperties:
-> +            "^ethernet@[0-5]$":
-> +              type: object
-> +              unevaluatedProperties: false
-> +              $ref: ethernet-controller.yaml#
-> +              description: External ethernet port ID available on the GD=
-M port
-> +
-> +              properties:
-> +                compatible:
-> +                  const: airoha,eth-port
-> +
-> +                reg:
-> +                  maximum: 5
-> +                  description: External ethernet port identifier
-> +
-> +              required:
-> +                - reg
-> +                - compatible
-> +
->      required:
->        - reg
->        - compatible
-> @@ -191,9 +227,27 @@ examples:
->          #address-cells =3D <1>;
->          #size-cells =3D <0>;
-> =20
-> -        mac: ethernet@1 {
-> +        ethernet@1 {
->            compatible =3D "airoha,eth-mac";
->            reg =3D <1>;
->          };
-> +
-> +        ethernet@4 {
-> +          compatible =3D "airoha,eth-mac";
-> +          reg =3D <4>;
-> +
-> +          #address-cells =3D <1>;
-> +          #size-cells =3D <0>;
-> +
-> +          ethernet@0 {
-> +            compatible =3D "airoha,eth-port";
-> +            reg =3D <0>;
-> +          };
-> +
-> +          ethernet@1 {
-> +            compatible =3D "airoha,eth-port";
-> +            reg =3D <1>;
-> +          };
-> +        };
->        };
->      };
->=20
-> --=20
-> 2.54.0
->=20
 
---qZn/vsQETJzcLfna
-Content-Type: application/pgp-signature; name=signature.asc
+Then
 
------BEGIN PGP SIGNATURE-----
+  pid =3D mt76_tx_status_skb_add(...);
+  ... write TXWI/TXP while info->control is still valid ...
+  mt76_tx_status_skb_init(...); to fix all drivers under mt76/
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCahCuCwAKCRA6cBh0uS2t
-rFFmAP9bCqqNxm9iUo7L09S4mXpuCBZOetsy0kzJc0wz9A/t/QEAheGcPN75acWD
-xrt8EQrZhwP7W2N6/vJzmXpYge3IQQQ=
-=NoQd
------END PGP SIGNATURE-----
+  Reasons:
 
---qZn/vsQETJzcLfna--
+  1. The helper does not need its own spinlock.
+mt76_tx_status_skb_add() already protects the idr/list update with
+status_lock; this helper only initializes the skb-local cb overlay.
+  2. wcid can be NULL on some paths, so the helper should guard against tha=
+t.
+  3. mt76_tx_status_skb_init() should be called after
+mt76_tx_status_skb_add() and after all TXWI/TXP write helpers in each
+mt76 driver. The same skb cb aliasing issue can potentially affect all
+drivers that consume IEEE80211_SKB_CB(skb)->control after calling
+mt76_tx_status_skb_add().
+  4.  The comment is useful because the ordering requirement is easy
+to miss: mt76_tx_status_skb_init() clears the skb cb area used by
+  IEEE80211_SKB_CB(skb)->control, so it must run only after TXWI/TXP
+setup has finished reading that control data.
 
