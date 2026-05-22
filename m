@@ -4,63 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F22CDCD5BAF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 May 2026 20:26:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3725CD5BAF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2026 01:45:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mR7/bge6JcX24xjulaB5vvJqpecE2qhCKlDej64wNVc=; b=Xa9YOnJUO5JvWoH0L3CZvebxqd
-	2LUA4GRQP2XE9HtthAB5ID7bwg9ht58gDvbJbqnLBMiB1WNrmdf0SdhEff3SeSHcEH7k/mUAebSd/
-	5c5N6sZnSy8SPZhuoEoz+NDyXKQHWCv2fYOIZUBE0d5mR6/UYrIdv7e/mJO83ZnE6DFaU5umaKojI
-	vomOixG0fQi0Uie26pQ4OVzP4XdAieVwgXCoglB9spTqcCgSfyB4pgRr+kc/NIIb6KcsVNIb22NDv
-	CzPiY9k2rlGEfDh3tN00U0IgyZGusNldcfNieFQvmmOwediUuppYy61psIhAO0aHsC2lP5kC55Sep
-	BV/7DubQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=FeX+2CJlDfJirxfhOoE2pWXNKtVRb5R3kxizay3i3Mo=; b=wWFqDOiXK4FBXLeiWnmxiSzvEO
+	P1doYd7wnm2yc3622BcsRYax3d0LVbEDFqmdL9NOKPWFUpQqkZzRkNdOMzfctajDwuRrQjKOJcE+j
+	tdf1+8MkAkxd6tKnLMOqUrMFbDA4T3sIeWTjgpEXmu8ueLYEyak0OxgsjpUp05SlbS38JsB9kGAD+
+	0tWFce2xdQ4GS8y7ISM7ysnAllqs4ky/L7RNko3EyXPrCUSUlSA8eK0FCvP8zZVrsz3BaXpaW1MoY
+	dgC1sVu8OI7mDnM+f0UvnmvUtvP3QuOaNsfOiE+2oc9VDHOLLXMpizmfc6TT3OAw5bSb6z5GBasFT
+	BMEgbklA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQ9yS-000000090tF-1oal;
-	Thu, 21 May 2026 20:26:32 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wQExF-00000009V5o-2Hbn;
+	Fri, 22 May 2026 01:45:37 +0000
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQ9yQ-000000090so-2vM4;
-	Thu, 21 May 2026 20:26:30 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 63BF160138;
-	Thu, 21 May 2026 20:26:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 767E31F000E9;
-	Thu, 21 May 2026 20:26:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779395189;
-	bh=mR7/bge6JcX24xjulaB5vvJqpecE2qhCKlDej64wNVc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Lwvm4EBQPc2T68E60wfFJqRqq2TPk7TNTo9++A1sbAr8w0yOwyMWu5zNYmPcBPsLE
-	 GC6N7r998f4JX1yEUTKdLPneuGhr8xRQBJrIXggVJgr2b5Crzg8/l++N9Mjhw8mfsF
-	 S5C7rJ/mqFdtchY2OduLmlAyTQhJH0XHsP+r5KwiyCcn23BHKbqx1SJZsRAc/FcAhs
-	 cYq/pxd+9Gzf86uaQhJUh4x0pTEVG+uuv6qDeZ3UV23pAZJaykDSML3LFBUpvWraYG
-	 vyM83L+fJjk3jfq+HGVfDgKcM8v0/Q73Ladt7fPQ3c1LlSGdv2GcZ+TfDcLhu1kdQD
-	 fFHmiFRvT0PSA==
-Date: Thu, 21 May 2026 21:26:24 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Arnab Layek <arnab.layek@mediatek.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, andersson@kernel.org,
-	mathieu.poirier@linaro.org, linux-remoteproc@vger.kernel.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v4 1/1] dt-bindings: remoteproc: mtk,scp: Allow multiple
- memory regions for MT8188
-Message-ID: <20260521-rarity-degree-4d5ae12b6fd0@spud>
-References: <20260520112629.3420612-1-arnab.layek@mediatek.com>
- <20260520112629.3420612-2-arnab.layek@mediatek.com>
+	id 1wQExC-00000009V4u-2gbH
+	for linux-mediatek@lists.infradead.org;
+	Fri, 22 May 2026 01:45:35 +0000
+Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-82f9fdfc965so3153388b3a.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 21 May 2026 18:45:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1779414333; x=1780019133; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=FeX+2CJlDfJirxfhOoE2pWXNKtVRb5R3kxizay3i3Mo=;
+        b=BxqptEy/yhbB5eaEsEPOlP1geDADjNgjcNeT+7Dm2ITnbtUjIJ7xXw7aDEBa+A0Wja
+         ggA2iJM84+1rUnA1e9uqO43VM84EaDrB4b1yLegKvQ5+kim1Hg3yhaFzWJ9Wm+7NCfo+
+         /NnkqOy1HTAK8D+p5aDLEvHDkUdG0IhxStV3Biv/XHU57admEVB/NtfE80jTql+/4tsE
+         qJWNGW35SYfJvBQ8xPdqwxxY9+rTS4RDj0KFARKh8Yrh3Y7V96juawq37voRS0Masiw2
+         DmqB+RIpp1MeGyengjYfLqOwDRUlzf1v4MY2bSXw3mNt8boIDitaHlyAQYynWrKwPFb9
+         FRsw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1779414333; x=1780019133;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=FeX+2CJlDfJirxfhOoE2pWXNKtVRb5R3kxizay3i3Mo=;
+        b=S8UmqZFFb1sG2LA0FI1vT9suE3pzK535oIPdDV6nLOzTTFut79LxPZ6+ug/c5XEfI4
+         5E9q2BVJimYbN3UJM/Z6S0Fsy0dzryAe5E1PwIi5YFbctM/5n80e69Ew7BRPj9t/qUo2
+         DPr3BdrBAlQpUbomV16wUtY2Pd/Gq/eZk/ruFogdEB4sD93uvKSjPeA3lYqs0qm5i/qv
+         ZDC93JWHL+RlMD+tnWUj2Qdd2JnXytZ/3leZtHILLTmmdJjNtCNjSC9NhVHpWEBqPKG6
+         guHshJIzCRIzVofudyyst+ZS0rmQi71Mh6O+DXvVKjIce4zuLYZ4WZCxjK+loDgF8jUF
+         wOug==
+X-Forwarded-Encrypted: i=1; AFNElJ+T24w/T0Ai82i3eIJ0KP+WIa+TaXf68fz/UTnyrsMNXlaMS/lPfC9jgnUQXhuWXHNu84MCcZ3N+rm0PaoNVQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyhTd638l7B/QbTawv/OYbRDsfKOz2DwgCzy67rVgn3dA3Z+loU
+	aowtTQAhBDZGNEu8TTogNdp7bOgKgvs3AlqGf0hwrrnacZP/UQVRsCnK
+X-Gm-Gg: Acq92OFhIkDs265LzRs0Ro2KEv/Ng7jbnuF2RXWF0oASEAy/lu79ieJ3kSBvfoyBYnY
+	ubfWYM9C/e4ulmtkuvgdiyFx8KUf0aTV5MmSzN5MyJYjbleK4mm3dGJBcGcjt7wGb799WuIUxhN
+	S/dXHM3H9KkDPpsJWQfKC1Aop7E8+sQ2yuHGnUN8/n1Y0e0DrD3+8xLa9GzoXMS/Socpxo6MaeN
+	lB/ycBGhKRWBmhWxcck4ID+tQjTNcMOa537rcWx9tM+KB1xF2NfiVSOQVkctHJ1XcpeEEClupWd
+	/YM1s6Q3HmHPO0mJanBwoRQXYWxiKQjCJBnVAvTzx9j0XPmKU/ommLoRoPHaY5sX9FO2FUUh5n+
+	WD9JMJ/NS5p0zV6KrAm1yE/ZtuaArvRYpmPJLQwz2iIpeU+QxMnbmrOBZgjh3HS9xF2WXAjoYlv
+	LPAddYpv+XrCi7PTGzIj4V59LK5MHCKNf7thgTQb3aauwXp1EOmZ5p69S+IpkVYpvGR5XsMaVrU
+	LFGJZqf1tqds1xLXX7hMCltu5/fGioApBgQ8dhmlCH2AQ==
+X-Received: by 2002:a05:6a00:18a7:b0:83f:2568:d466 with SMTP id d2e1a72fcca58-8415f30a0demr1558559b3a.31.1779414333473;
+        Thu, 21 May 2026 18:45:33 -0700 (PDT)
+Received: from ryzen ([2601:644:8000:5b5d:7285:c2ff:fe45:8a32])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84164aee7f5sm167382b3a.14.2026.05.21.18.45.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 21 May 2026 18:45:32 -0700 (PDT)
+From: Rosen Penev <rosenp@gmail.com>
+To: linux-sound@vger.kernel.org
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCHv2] ASoC: mediatek: mt2701: fix snprintf bounds
+Date: Thu, 21 May 2026 18:45:15 -0700
+Message-ID: <20260522014515.719973-1-rosenp@gmail.com>
+X-Mailer: git-send-email 2.54.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="KMuahv1k41CftHWI"
-Content-Disposition: inline
-In-Reply-To: <20260520112629.3420612-2-arnab.layek@mediatek.com>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260521_184534_714128_46882795 
+X-CRM114-Status: GOOD (  12.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,134 +103,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+For whatever reason, GCC is unable to figure out that i2s_num is a
+single digit number, with MT2701_BASE_CLK_NUM being the maximum value it
+represents. Add a min() call to help it out and fix W=1 errors regarding
+snprintf bounds.
 
---KMuahv1k41CftHWI
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Rosen Penev <rosenp@gmail.com>
+---
+ v2: swap min arguments
+ sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-On Wed, May 20, 2026 at 07:26:29PM +0800, Arnab Layek wrote:
-> The MT8188 SCP can use either one or two reserved memory regions:
-> - Required: Main SCP SRAM memory region (mandatory for SCP operation)
-> - Optional: SCP L1TCM memory region (Level 1 Tightly Coupled Memory,
->   used for performance optimization when available, but not required
->   for basic SCP functionality)
->=20
-> Other MediaTek SoCs (MT8183, MT8186, MT8192, MT8195) use only a single
-> memory region and must remain restricted to one region for backward
-> compatibility.
->=20
-> Update the base schema to allow 1-2 memory regions (minItems: 1,
-> maxItems: 2), following the pattern used by other MediaTek dt-bindings
-> like mediatek,vcodec-encoder.yaml where the base property defines a
-> permissive range accommodating all device variants.
->=20
-> Add two conditionals:
-> 1. Explicitly restrict non-MT8188 devices to maxItems: 1
-> 2. Document MT8188's two regions with descriptions (minItems: 1 makes
->    the L1TCM region optional, allowing boards to specify 1-2 regions
->    based on hardware configuration)
->=20
-> This approach maintains backward compatibility while enabling MT8188 to
-> specify 1-2 memory regions depending on board design and performance
-> requirements.
->=20
-> Signed-off-by: Arnab Layek <arnab.layek@mediatek.com>
+diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c b/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
+index 5a2bcf027b4f..d217f9320ad2 100644
+--- a/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
++++ b/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
+@@ -25,6 +25,7 @@ static const char *const base_clks[] = {
+ int mt2701_init_clock(struct mtk_base_afe *afe)
+ {
+ 	struct mt2701_afe_private *afe_priv = afe->platform_priv;
++	int i2s_num;
+ 	int i;
+ 
+ 	for (i = 0; i < MT2701_BASE_CLK_NUM; i++) {
+@@ -35,8 +36,9 @@ int mt2701_init_clock(struct mtk_base_afe *afe)
+ 		}
+ 	}
+ 
++	i2s_num = min(afe_priv->soc->i2s_num, MT2701_BASE_CLK_NUM);
+ 	/* Get I2S related clocks */
+-	for (i = 0; i < afe_priv->soc->i2s_num; i++) {
++	for (i = 0; i < i2s_num; i++) {
+ 		struct mt2701_i2s_path *i2s_path = &afe_priv->i2s_path[i];
+ 		struct clk *i2s_ck;
+ 		char name[13];
+-- 
+2.54.0
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-pw-bot: not-applicable
-
-Cheers,
-Conor.
-
-> ---
->  .../bindings/remoteproc/mtk,scp.yaml          | 45 ++++++++++++++++++-
->  1 file changed, 43 insertions(+), 2 deletions(-)
->=20
-> diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/=
-Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> index bdbb12118da4..fca9b0675eae 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> @@ -55,7 +55,8 @@ properties:
->        initializing SCP.
-> =20
->    memory-region:
-> -    maxItems: 1
-> +    minItems: 1
-> +    maxItems: 2
-> =20
->    cros-ec-rpmsg:
->      $ref: /schemas/embedded-controller/google,cros-ec.yaml
-> @@ -123,7 +124,8 @@ patternProperties:
->            initializing sub cores of multi-core SCP.
-> =20
->        memory-region:
-> -        maxItems: 1
-> +        minItems: 1
-> +        maxItems: 2
-> =20
->        cros-ec-rpmsg:
->          $ref: /schemas/embedded-controller/google,cros-ec.yaml
-> @@ -205,6 +207,45 @@ allOf:
->            items:
->              - const: cfg
->              - const: l1tcm
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          enum:
-> +            - mediatek,mt8183-scp
-> +            - mediatek,mt8186-scp
-> +            - mediatek,mt8192-scp
-> +            - mediatek,mt8195-scp
-> +            - mediatek,mt8195-scp-dual
-> +    then:
-> +      properties:
-> +        memory-region:
-> +          maxItems: 1
-> +      patternProperties:
-> +        "^scp@[a-f0-9]+$":
-> +          properties:
-> +            memory-region:
-> +              maxItems: 1
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          enum:
-> +            - mediatek,mt8188-scp
-> +            - mediatek,mt8188-scp-dual
-> +    then:
-> +      properties:
-> +        memory-region:
-> +          minItems: 1
-> +          items:
-> +            - description: Main SCP SRAM memory region
-> +            - description: Optional SCP L1TCM memory region
-> +      patternProperties:
-> +        "^scp@[a-f0-9]+$":
-> +          properties:
-> +            memory-region:
-> +              minItems: 1
-> +              items:
-> +                - description: Main SCP SRAM memory region
-> +                - description: Optional SCP L1TCM memory region
-> =20
->  additionalProperties: false
-> =20
-> --=20
-> 2.45.2
-
---KMuahv1k41CftHWI
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCag9qcAAKCRB4tDGHoIJi
-0rcRAQCLjBxasDXV57xfl5XfSkQ3fL4xZ8EJcvOKXBI9aa0ZWgD+LTstcSvBjZQz
-vpMsjWdsvrPrK8D0qh0BwR+7yr+7OgY=
-=QOd/
------END PGP SIGNATURE-----
-
---KMuahv1k41CftHWI--
 
