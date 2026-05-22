@@ -4,88 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73F1CCD5BB1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2026 13:45:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAEB6CD5BB3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2026 17:44:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=dxXaOJSuBxLpTcleO22YqCMwLnSiBPBLJ7fTD4JoKzI=; b=lVS95iJ9p9Qxd8LGT4xzIX4nch
-	N5djbYDj3/5yu1dIj8mj1swidhrPeA0+LPxYrE1eMgYrZLzDnpUpxvmfzgq+IBtEVmcmjhlzlLJxO
-	NGojhmvtRB69kgQASfeu7pznzqzn7DlQQmQKQnirqAxQChIHS6A/SacputDNd8XWq3A0Y41YuQvNX
-	NZZpVNzhE4xcdgScxhM6RlfsFERXphVCVQcFHnnzHOU4lIGP6Y1p1nhVMRY+SUpPAFGDyNw/uVUZg
-	MI4HH9MAq5t1JFec3O42lOTERLMTbgVDW62d3D7WCQWRvhkVHhj3qyDzdy8+mSznDpUF6hZXueG+b
-	kJfTLGAQ==;
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ySlfzbET71+o57AlLLgDovA0KAs9eNpZmvNfNdCu2To=; b=dWBRdRqyFAZ1KkPU6MBsVVTG2g
+	ZbqOnQJs9aCVXuogaOn2X4gaMLY/zU+aaNcszll2G3tFjSQH9WyfR2ROUjJ4RFWToDSQxGAvX3aBZ
+	VcMtL+Gn/7RcjKLHvttC/BEf1UN7C6FkcL6V4jgBIZry7fNZ5+uVw/rZDC3vRZ85nuS2Co9bs3y1v
+	rmjlJtcEoxyquQlNLy6VgCh37srqtWmpTZXrEhhnXv2B40Et1KeYITmIYM7WgSUONnJWMizknUzNf
+	ERvByqX1vj+Mt5Rb4jHUGcOnuWkXHTLwCAh3Sv84uLRWB3rZUo+hcp7icVnR02eQmiYQw47NAi0Tx
+	0ojeBRpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQQC1-0000000B2PT-1Q0R;
-	Fri, 22 May 2026 13:45:37 +0000
-Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
+	id 1wQTuj-0000000Badu-0hi9;
+	Fri, 22 May 2026 17:44:01 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQQBy-0000000B2Og-2dRC
-	for linux-mediatek@lists.infradead.org;
-	Fri, 22 May 2026 13:45:36 +0000
-Received: by mail-pg1-x531.google.com with SMTP id 41be03b00d2f7-c8027e876fcso3194644a12.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 22 May 2026 06:45:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1779457533; x=1780062333; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=dxXaOJSuBxLpTcleO22YqCMwLnSiBPBLJ7fTD4JoKzI=;
-        b=dF6V1xPVPq4OsUkTbKwN/k2FC+C91jSslljNST3hOjGkX0V3mmw60GzsV2dwCAmjko
-         TIVAt9wsiWwJVSoD2Yum/e9Sfxy1A3arswIN04CIrvjwz7Y6h3KwOA3MIjQ7MlMZ2Hx2
-         cSueWbw9jXmQTTym2EZTJ1hkIBE5kZD+LvWZFNYYruQN59RiPGrypALi4j2O9Urag+1z
-         thKdazbY63AEWfwyK/RonJwEMxn7MYL5PhfWTRVceTzCOV3l80vbqaUjtdlrObSeZyRV
-         +UsaAUAmDCKHd8gPKnM6WuWBV8dy8H2I7E9427Zxyc4Jg5ZVgoVctCbALjJ59wZgTtXD
-         tisw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779457533; x=1780062333;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=dxXaOJSuBxLpTcleO22YqCMwLnSiBPBLJ7fTD4JoKzI=;
-        b=Zg752fHI2L7as3t+fqnQKaKmxjLnF7vRw6PUAeam3qQwFkSzkJ6lStftsgdSrfKnDe
-         u5L5mb5CgRUaq1cKmvNSFqGO0iXNy0Yr+pISbcqqwvtpJhlGyjmoiSM9cjxjMpJCCNoI
-         vHIm+JQObUGw9ivyjCZ8HTNS1wdBRUpyIU/Z3qD+wKqshdV5FHo30/nrugehQF26K7NS
-         1DzSaWIsIU4Y5LNNc0TjrrQVl+kMFMsox0JiA2AoeSdM7iX47QdGNTYORrJE8LaiMnCs
-         n2Q9TwbTAM4eRFDO0MiWox0RtdlFWmQp1pcCGxUEEPyaR09oN0CGpkkdUSVz3+Bq2NI5
-         Z7uw==
-X-Forwarded-Encrypted: i=1; AFNElJ8NGFGNa4gvqu92mLTyrxVWC2MtAuwncoH/RbELR2JmSETgzn/KgSP+v1fAVq2mQbuGPBlIlL3J9I+3VRCVdQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyY4QaXtryQUxIiuhF4LhFoAXZ4Z1J1cSW4nX+tpIdPTgZNErlb
-	D+Xsq1M73fkHn1CP9Rh+sZyP+pCNCvzG3+saQxDd9vUZyyr21yCBrnu4
-X-Gm-Gg: Acq92OHLx0UMgyFT6gXnNfw3XZLRu8N+azhPf6lok4JwJ4GVBElSnAXB0aPVD4mK41j
-	+Jnag51ajUW2DRTyzE/T6VBuIp7SqEb4E/jovikxK0PPMIBVPzqQWy/N0iuyC0NaOW2P+NcY+gg
-	dwFY+txSCnh5cXWWilzrmuVazfZD+MLObCxFPssv4eqoLLgTBYHB23BTujuCEGR0waYPM82r9ja
-	ri1eUhHZHAhYeVFfUUmK88UocRW/fl60kCpLJleMM22QZMTtGbk/CxZe2kwxtooPLxxV0KbT5Eh
-	ahWVnwi7PsLgwIl/XNP+c0Pqxer7HR8FKSbtfAysAEBcKSp85Sl/qcF033Sg7D18BplCKgyKjhQ
-	bQWBbw9G7w2iaD8W0UmB9WCB8uVIqTVB8GrazFBnTT7pp2unWxPXKGGa+iahqdMI+6TeefB3XD1
-	u3nFomp0osQwq0yRoXmP8R6zvJAvo1poC+CiABpNwazfL8EEJYKX5Qyu7bTkq+gzwXmV03ib2ET
-	SwlT5g=
-X-Received: by 2002:a05:6300:6d8d:10b0:3b2:8675:47ef with SMTP id adf61e73a8af0-3b328ed49damr2269027637.45.1779457533469;
-        Fri, 22 May 2026 06:45:33 -0700 (PDT)
-Received: from buffalo-ssd.taila54753.ts.net (M014013071096.v4.enabler.ne.jp. [14.13.71.96])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84164fb00b6sm2677299b3a.40.2026.05.22.06.45.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 22 May 2026 06:45:33 -0700 (PDT)
-From: Akari Tsuyukusa <akkun11.open@gmail.com>
-To: matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com
-Cc: james.lo@mediatek.com,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Akari Tsuyukusa <akkun11.open@gmail.com>
-Subject: [PATCH] soc: mediatek: pwrap: Remove obsolete NEED CONFIRM comments
-Date: Fri, 22 May 2026 22:45:22 +0900
-Message-ID: <20260522134522.368073-1-akkun11.open@gmail.com>
-X-Mailer: git-send-email 2.54.0
+	id 1wQTuf-0000000BadP-3kVG;
+	Fri, 22 May 2026 17:43:59 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 109E643874;
+	Fri, 22 May 2026 17:43:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E49FA1F000E9;
+	Fri, 22 May 2026 17:43:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1779471836;
+	bh=ySlfzbET71+o57AlLLgDovA0KAs9eNpZmvNfNdCu2To=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=SUQjzqxLodwVv6RsVftw0JWcAkQQx8WM+k4K7y/ZxF/niGQniMBS9LM/OeiYezrLp
+	 ztbrAA8tG2Guq+oVRlMCa+HVcj67FqasJSYzRqHTisuKnOXXIUlQaqERQdGQxsZyLo
+	 TLKOjYeXMqMfDvx1yqxUauzj4ulmCWn7lu1X0KbSqMhDEhSq92/1Tc1uNohSixYw6U
+	 vZuTcGaN7T7LE/yMubgbGY3dhgwD3oi7iosonXBs6cLykUGdnbufKurMJsvacZl/sh
+	 AL9KIxVLMqVKHM9hXhjmgr6opK4xoCnLPVffMe3Ih0zAIb6jCREC6zXkbJTS7MXi+F
+	 n2rCnJ49la6ug==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Cyril Chao <Cyril.Chao@mediatek.com>, 
+ =?utf-8?q?C=C3=A1ssio_Gabriel?= <cassiogabrielcontato@gmail.com>
+Cc: linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <20260514-asoc-mt8189-probe-cleanup-v1-1-ded733363281@gmail.com>
+References: <20260514-asoc-mt8189-probe-cleanup-v1-1-ded733363281@gmail.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt8189: Fix probe resource cleanup
+Message-Id: <177945304031.6494.16316071935569067242.b4-ty@b4>
+Date: Fri, 22 May 2026 13:30:40 +0100
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.16-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1121; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=G977wFYZeJL9dO4L5j8WuYlyScxupqnnDsErYn4S5fo=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqEJXZM99O+JagCIvgfofBdj+0iZOBzv3TpvVtX
+ hejW1q7mWiJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCahCV2QAKCRAk1otyXVSH
+ 0NWaB/4hlQtZDLSmrPFVXvyMx3wwK6bZBuXMBcC5yPQt1BwAAn1YcO/2a/CMfeETmmA6VJ4fvG/
+ 9FzEuSxYmEg7g1th+zFi52ErCj3a5ozkXpAlqpML8ZeFbSEPN7+KmknAMjNfPYkzm+KqcD8qo4v
+ wV9H5YKhEnmwJK+YcOKORUNF5dUjEIvmqxQ8SYo9R2WlQJmr7r2t03eWxENVbGpxxWgy8bKTk9b
+ CIe+DUKb0ZCDXUTKEYzMoyBwGvtttCbahvtd/Q8LSbXFgnt4Tapsu9G8zrvN/3+/+F/4+/NcZ5d
+ Yi7NipucE2iEKyvpienFGjRsbHbuTJuF5oodbBs39g7x3QU3
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260522_064534_671919_40F02EC8 
-X-CRM114-Status: GOOD (  10.64  )
+X-CRM114-CacheID: sfid-20260522_104357_954918_25A76381 
+X-CRM114-Status: UNSURE (   8.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,32 +87,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove the obsolete "/* NEED CONFIRM */" comments from the MT8196
-configuration. These values were previously confirmed during review,
-but the placeholder comments were accidentally left behind.
+On Thu, 14 May 2026 10:52:35 -0300, Cássio Gabriel wrote:
+> ASoC: mediatek: mt8189: Fix probe resource cleanup
 
-Link: https://lore.kernel.org/all/2a117e5fe9fe0ece39e9165a463082ef42be973f.camel@mediatek.com/
-Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
----
- drivers/soc/mediatek/mtk-pmic-wrap.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Applied to
 
-diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index 0bcd85826375..87bcbfa2d5f1 100644
---- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-+++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -2396,8 +2396,8 @@ static const struct pmic_wrapper_type pwrap_mt8183 = {
- static const struct pmic_wrapper_type pwrap_mt8195 = {
- 	.regs = mt8195_regs,
- 	.type = PWRAP_MT8195,
--	.arb_en_all = 0x777f, /* NEED CONFIRM */
--	.int_en_all = 0x180000, /* NEED CONFIRM */
-+	.arb_en_all = 0x777f,
-+	.int_en_all = 0x180000,
- 	.int1_en_all = 0,
- 	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
- 	.wdt_src = PWRAP_WDT_SRC_MASK_ALL,
--- 
-2.54.0
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.2
+
+Thanks!
+
+[1/1] ASoC: mediatek: mt8189: Fix probe resource cleanup
+      https://git.kernel.org/broonie/sound/c/5404599c3292
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
