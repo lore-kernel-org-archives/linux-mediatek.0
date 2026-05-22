@@ -4,73 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1333CD5BB0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2026 20:35:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55323CD4F3D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2026 22:43:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k6EyF5hhQO7eaC9zrEY9M5Jju+ePXXxpPReIjxWeQJo=; b=VFIQyFAEqIqWnxNdJKkM5qU6Z6
-	kOoemjquZMcgXoRi57aR53d2Stx3G+hz+hChgagTz44gdw4FaASwioGD0N7+/LvNeS6BrVe9MI/2x
-	W+ojZYSxhy71nktZUxQGM723s4b2IuWy/N6Lwt4gTwHKwKU3b/lzDdqEGzDsHr7f8UrrtbZt1Y+a7
-	weD4RIn4pY63nDkmO4+3CKCKmjsYrhS/2Py/kpaoh3yRFLy195orC8IeLcZMHAGBqYLyEs5CI0luI
-	jXveGfH7ZHKTtGI1JmpJedK+QuoqCIMtX8EQxf1LA5QJzXCS+H9ZWPh8HZhiDlGREH0m4INtyfTsJ
-	0UfdL0hQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=5PJOo0ni1XYQzQF6Rj7ozcEQoTTxGYPgOEd77Drbvg8=; b=u3QkAK3xmKxz0j
+	TLi84ftWUmcLNLkLOx0OZT7cOpPgemvUsh1en28ORXWdoNsLVZ0VrGBsY7PEgjufol11xNplpR9AS
+	NTuU2lGW0AgvqaVwmMeX/0MoixYico8NUQCH7Es9P7IRIqHVSZcvV5OZW4xUd+Rl0AKSxYRRBrY7e
+	Va/cvEn/RaNVXLWVA8ecyFN/Zq7d92YpxWL8wMKPbgzeB/SqU6OyeZMw44i4tV+3vYc/UpWzQkL6I
+	DsfKRPWWY/nyVZMiZRNTSmajwsMU52XP3LJZ1PIAywZWzx15OYcZ1ohlmXwnuiGhtxAmtYgSkWcvB
+	lmrrCtkWvG1xwCDQgWEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQWag-0000000BtBM-49tm;
-	Fri, 22 May 2026 20:35:30 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wQYaX-0000000C8IJ-3g3e;
+	Fri, 22 May 2026 22:43:29 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQWaf-0000000BtB8-3uns
+	id 1wQYaV-0000000C8Ho-2Wmz
 	for linux-mediatek@lists.infradead.org;
-	Fri, 22 May 2026 20:35:30 +0000
+	Fri, 22 May 2026 22:43:28 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id EFC1960136
-	for <linux-mediatek@lists.infradead.org>; Fri, 22 May 2026 20:35:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A70951F000E9
-	for <linux-mediatek@lists.infradead.org>; Fri, 22 May 2026 20:35:28 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with UTF8SMTP id 9DCE4441CB;
+	Fri, 22 May 2026 22:43:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with UTF8SMTPSA id 4C9E71F000E9;
+	Fri, 22 May 2026 22:43:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779482128;
-	bh=k6EyF5hhQO7eaC9zrEY9M5Jju+ePXXxpPReIjxWeQJo=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=Bvfo+4J9k3zP83bx1tFCEXatTDWdPvgQkRpDVKEMjzmOW0xqlJ7GbNLtK0Q9b852d
-	 6a1FiUxIZMZWMhQbGM2bqPRoBkwM4s/EO5BG69cuCeq7/stPWUZfjrO3VDTHR0XXHI
-	 G2+icnxT0UA+aBVBjNDVXy0ySNvzRtgVF6+4l1AW8tVogg0Iw1AVLrylAKONQeKib1
-	 7RxReWO34Zh9ID7EcnWPZJWtZ43RXt6VmeCjiLnPQu1ipmgg80fCufwPDR7KH5zswV
-	 grHgjLEQQO25P4XF0Ka+asrVXjZDGW30XxNFnjOtuZ7GvihRicZPFInEYEiuGnixqC
-	 ZXzZ1Fiox9SXg==
-Received: by mail-lj1-f180.google.com with SMTP id 38308e7fff4ca-39397d63804so26545431fa.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 22 May 2026 13:35:28 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AFNElJ9u2KkO4cT1Z3a0YU3abew3nndzjQBt9+OyHzY4rLQDt5Vtt6Qb1vqekt+/eGyEXqoX4mcW73IE9szxGgmzuw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwHfNuRcnIEEn0nRm+j5PmoCAzncFSE5a1O1HNyN8U9cgTpmjo5
-	n7iMbmvivfEQFbxdSiaD5gFxH0eEe/c+vPIq1r2+FJGeELpioFNYiXdWdeSf9tToW6X4l/arkA8
-	Hm9UnlByjcu4vGx5VQa0i6+HK09bjHiA=
-X-Received: by 2002:a05:651c:882:b0:394:987:946b with SMTP id
- 38308e7fff4ca-395d8c12399mr17897371fa.2.1779482127167; Fri, 22 May 2026
- 13:35:27 -0700 (PDT)
+	s=k20260515; t=1779489806;
+	bh=5PJOo0ni1XYQzQF6Rj7ozcEQoTTxGYPgOEd77Drbvg8=;
+	h=Date:From:To:Cc:Subject:In-Reply-To;
+	b=IdDfrQIg+fZetrCkoTY0IauSrN4pHDMvMCxGY6SoKkgD5tgrspCUzYZQpQzHAOqbT
+	 QXQVrtWcPrQRkxosIwSpEtDfOS6rSrlACxGKW/PBv03KOsoX65Mdy9MA/+f6JUR9eR
+	 ueexrCTVtPqe8ESjPDSBLkhBS9ILa5ej8UiYVIqanlW8ZSkA3LbEZgblgPNt+R9Bnu
+	 7Gf+STLjWCmo6hB1EnAMIetldKDp0DZm4HMq7+j375HUETEZmukv7vdE2CZHXuoARU
+	 PTcWt87VHL7K0liTAXhPMgXbUTxGR3EgigqlVeGe450cRjU4RGrzQmVqyAoFRi58vb
+	 BFnpd67/wiXWw==
+Date: Fri, 22 May 2026 17:43:25 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Manivannan Sadhasivam <mani@kernel.org>
+Cc: Caleb James DeLisle <cjd@cjdns.fr>, linux-pci@vger.kernel.org,
+	linux-mips@vger.kernel.org, naseefkm@gmail.com,
+	ryder.lee@mediatek.com, lpieralisi@kernel.org,
+	kwilczynski@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
+	conor+dt@kernel.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, ansuelsmth@gmail.com,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+Subject: Re: [PATCH v8 1/3] PCI: mediatek: Use actual physical address
+ instead of virt_to_phys()
+Message-ID: <20260522224325.GA195169@bhelgaas>
 MIME-Version: 1.0
-References: <5ecac6a9b7d29526e8438dea105b58f5487c93aa.1778521232.git.ryder.lee@mediatek.com>
- <agdJ1EtZjjWh2R1h@lore-desk> <CAHoxojJX2BRRTLMuM_QcJqMMmshxS4EAwrB1VjU3rsZ+0k2PAg@mail.gmail.com>
- <agsGiHKH6ly1afaf@lore-desk> <CAHoxojKeXCCnJoO7yBBmTM9euiTf38orujOhOK00X8bb3ctWuA@mail.gmail.com>
- <CAA2SeNJXv+8QO6zEOF=qB3wVCdEoSqx6fftp1i=aB-DKMFeC=A@mail.gmail.com> <1e1318a9230533c63c31aecbaddf520b6f68affd.camel@mediatek.com>
-In-Reply-To: <1e1318a9230533c63c31aecbaddf520b6f68affd.camel@mediatek.com>
-From: Sean Wang <sean.wang@kernel.org>
-Date: Fri, 22 May 2026 15:35:15 -0500
-X-Gmail-Original-Message-ID: <CAGp9Lzq_EhW-YR2EM0Hr64pRTV5eqAj1bx0RLuYCuWMTGhcHSA@mail.gmail.com>
-X-Gm-Features: AVHnY4IuzG8abYfmu1woK-eDo_ZET5-_JKn-20dhW4FE-eU_dJaCw-BZnzXQJqI
-Message-ID: <CAGp9Lzq_EhW-YR2EM0Hr64pRTV5eqAj1bx0RLuYCuWMTGhcHSA@mail.gmail.com>
-Subject: Re: [PATCH] wifi: mt76: mt7996: avoid memset overwriting tx_info->control.flags
-To: Ryder Lee <Ryder.Lee@mediatek.com>
-Cc: "lorenzo.bianconi83@gmail.com" <lorenzo.bianconi83@gmail.com>, 
-	"roychl666@gmail.com" <roychl666@gmail.com>, 
-	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>, "nbd@nbd.name" <nbd@nbd.name>, 
-	"lorenzo@kernel.org" <lorenzo@kernel.org>, =?UTF-8?B?U2hheW5lIENoZW4gKOmZs+i7kuS4nik=?= <Shayne.Chen@mediatek.com>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Roy-CH Luo <Roy-CH.Luo@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <7xfp5nbtd4qtonoqurfwoedsix7vondrnfeip53uwjintuvc6a@cg3ez6z3pii5>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260522_154327_686902_D670C2E9 
+X-CRM114-Status: GOOD (  51.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,278 +78,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Tue, May 19, 2026 at 3:43=E2=80=AFPM Ryder Lee <Ryder.Lee@mediatek.com> =
-wrote:
->
-> On Tue, 2026-05-19 at 14:24 +0200, Lorenzo Bianconi wrote:
-> >
-> > External email : Please do not click links or open attachments until
-> > you have verified the sender or the content.
-> >
-> >
-> > >
-> > > On Mon, May 18, 2026 at 5:31=E2=80=AFAM Lorenzo Bianconi
-> > > <lorenzo@kernel.org> wrote:
+On Thu, May 21, 2026 at 10:44:51AM +0530, Manivannan Sadhasivam wrote:
+> On Wed, May 20, 2026 at 02:59:00PM -0500, Bjorn Helgaas wrote:
+> > On Wed, May 20, 2026 at 09:17:35PM +0200, Caleb James DeLisle wrote:
+> > > 
+> > > On 20/05/2026 20:55, Bjorn Helgaas wrote:
+> > > > On Wed, May 20, 2026 at 06:38:25PM +0000, Caleb James DeLisle wrote:
+> > > > > From: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+> > > > > 
+> > > > > The driver previously used virt_to_phys() on the ioremapped register base
+> > > > > (port->base) to compute the MSI message address. Using virt_to_phys() on an
+> > > > > IO mapped address is incorrect because it expects a kernel virtual address.
+> > > > > 
+> > > > > To fix it, store the physical start of the I/O register region in
+> > > > > mtk_pcie_port->phys_base and use it to build the MSI address. This replaces
+> > > > > the incorrect virt_to_phys() usage and ensures MSI addresses are generated
+> > > > > correctly.
+> > > > > 
+> > > > > Fixes: 43e6409db64d ("PCI: mediatek: Add MSI support for MT2712 and MT7622")
+> > > > > Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+> > > > > Tested-by: Caleb James DeLisle <cjd@cjdns.fr>
+> > > > > ---
+> > > > >   drivers/pci/controller/pcie-mediatek.c | 16 +++++++++++++---
+> > > > >   1 file changed, 13 insertions(+), 3 deletions(-)
+> > > > > 
+> > > > > diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> > > > > index 75722524fe74..c503fbd774d0 100644
+> > > > > --- a/drivers/pci/controller/pcie-mediatek.c
+> > > > > +++ b/drivers/pci/controller/pcie-mediatek.c
+> > > > > @@ -175,6 +175,7 @@ struct mtk_pcie_soc {
+> > > > >   /**
+> > > > >    * struct mtk_pcie_port - PCIe port information
+> > > > >    * @base: IO mapped register base
+> > > > > + * @phys_base: Physical address of the I/O register base region
+> > > > >    * @list: port list
+> > > > >    * @pcie: pointer to PCIe host info
+> > > > >    * @reset: pointer to port reset control
+> > > > > @@ -196,6 +197,7 @@ struct mtk_pcie_soc {
+> > > > >    */
+> > > > >   struct mtk_pcie_port {
+> > > > >   	void __iomem *base;
+> > > > > +	phys_addr_t phys_base;
+> > > > >   	struct list_head list;
+> > > > >   	struct mtk_pcie *pcie;
+> > > > >   	struct reset_control *reset;
+> > > > > @@ -405,7 +407,7 @@ static void mtk_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
+> > > > >   	phys_addr_t addr;
+> > > > >   	/* MT2712/MT7622 only support 32-bit MSI addresses */
+> > > > > -	addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
+> > > > > +	addr = port->phys_base + PCIE_MSI_VECTOR;
 > > > >
-> > > > On May 15, Cheng Hao Luo wrote:
-> > > > > > struct ieee80211_tx_info {
-> > > > > >         u32                        flags;
-> > > > > > /*     0     4 */
-> > > > > >         u32                        band:3;
-> > > > > > /*     4: 0  4 */
-> > > > > >         u32                        status_data_idr:1;
-> > > > > > /*     4: 3  4 */
-> > > > > >         u32                        status_data:13;
-> > > > > > /*     4: 4  4 */
-> > > > > >         u32                        hw_queue:4;
-> > > > > > /*     4:17  4 */
-> > > > > >         u32                        tx_time_est:10;
-> > > > > > /*     4:21  4 */
-> > > > > >
-> > > > > >         /* XXX 1 bit hole, try to pack */
-> > > > > >
-> > > > > >         union {
-> > > > > >                 struct {
-> > > > > >                         union {
-> > > > > >                                 struct {
-> > > > > >                                         struct
-> > > > > > ieee80211_tx_rate rates[4]; /*     8    12 */
-> > > > > >                                         s8
-> > > > > > rts_cts_rate_idx; /*    20     1 */
-> > > > > >                                         u8     use_rts:1;
-> > > > > > /*    21: 0  1 */
-> > > > > >                                         u8
-> > > > > > use_cts_prot:1; /*    21: 1  1 */
-> > > > > >                                         u8
-> > > > > > short_preamble:1; /*    21: 2  1 */
-> > > > > >                                         u8     skip_table:1;
-> > > > > > /*    21: 3  1 */
-> > > > > >                                         u8     antennas:2;
-> > > > > > /*    21: 4  1 */
-> > > > > >                                 };
-> > > > > > /*     8    14 */
-> > > > > >                                 long unsigned int jiffies;
-> > > > > > /*     8     8 */
-> > > > > >                         };
-> > > > > > /*     8    16 */
-> > > > > >                         struct ieee80211_vif * vif;
-> > > > > > /*    24     8 */
-> > > > > >                         struct ieee80211_key_conf * hw_key;
-> > > > > > /*    32     8 */
-> > > > > >                         u32        flags;
-> > > > > > /*    40     4 */
-> > > > > >                         codel_time_t enqueue_time;
-> > > > > > /*    44     4 */
-> > > > > >                 } control;
-> > > > > > /*     8    40 */
-> > > > > >                 struct {
-> > > > > >                         u64        cookie;
-> > > > > > /*     8     8 */
-> > > > > >                 } ack;
-> > > > > > /*     8     8 */
-> > > > > >                 struct {
-> > > > > >                         struct ieee80211_tx_rate rates[4];
-> > > > > > /*     8    12 */
-> > > > > >                         s32        ack_signal;
-> > > > > > /*    20     4 */
-> > > > > >                         u8         ampdu_ack_len;
-> > > > > > /*    24     1 */
-> > > > > >                         u8         ampdu_len;
-> > > > > > /*    25     1 */
-> > > > > >                         u8         antenna;
-> > > > > > /*    26     1 */
-> > > > > >                         u8         pad;
-> > > > > > /*    27     1 */
-> > > > > >                         u16        tx_time;
-> > > > > > /*    28     2 */
-> > > > > >                         u8         flags;
-> > > > > > /*    30     1 */
-> > > > > >                         u8         pad2;
-> > > > > > /*    31     1 */
-> > > > > >                         void *     status_driver_data[2];
-> > > > > > /*    32    16 */
-> > > > > >                 } status;
-> > > > > > /*     8    40 */
-> > > > > >                 struct {
-> > > > > >                         struct ieee80211_tx_rate
-> > > > > > driver_rates[4]; /*     8    12 */
-> > > > > >                         u8         pad[4];
-> > > > > > /*    20     4 */
-> > > > > >                         void *     rate_driver_data[3];
-> > > > > > /*    24    24 */
-> > > > > >                 };
-> > > > > > /*     8    40 */
-> > > > > >                 void *             driver_data[5];
-> > > > > > /*     8    40 */
-> > > > > >         };
-> > > > > > /*     8    40 */
-> > > > > >
-> > > > > >         /* size: 48, cachelines: 1, members: 7 */
-> > > > > >         /* sum members: 44 */
-> > > > > >         /* sum bitfield members: 31 bits, bit holes: 1, sum
-> > > > > > bit holes: 1 bits */
-> > > > > >         /* last cacheline: 48 bytes */
-> > > > > > };
-> > > > > >
-> > > > > > According to pahole, the size of the control inner union is
-> > > > > > actually 16 bytes
-> > > > > > since the compiler adds 2 bytes of padding. Since
-> > > > > > mt76_tx_status_skb_add()
-> > > > > > meset to 0 just mt76_tx_cb size (that is 16 bytes) I can't
-> > > > > > see how
-> > > > > > control.flags is overwritten. Am I missing something?
-> > > > > >
-> > > > > > struct mt76_tx_cb {
-> > > > > >         long unsigned int          jiffies;
-> > > > > > /*     0     8 */
-> > > > > >         u16                        wcid;
-> > > > > > /*     8     2 */
-> > > > > >         u8                         pktid;
-> > > > > > /*    10     1 */
-> > > > > >         u8                         flags;
-> > > > > > /*    11     1 */
-> > > > > >
-> > > > > >         /* size: 16, cachelines: 1, members: 4 */
-> > > > > >         /* padding: 4 */
-> > > > > >         /* last cacheline: 16 bytes */
-> > > > > > };
-> > > > >
-> > > > > Hi Lorenzo,
-> > > > >
-> > > > > The mt76_tx_cb is placed at status.status_driver_data (offset
-> > > > > 32).
-> > > > > It overlaps with hw_key, flags and enqueue_time in the control
-> > > > > union.
-> > > > >
-> > > > > static inline struct mt76_tx_cb *mt76_tx_skb_cb(struct sk_buff
-> > > > > *skb)
-> > > > > {
-> > > > > BUILD_BUG_ON(sizeof(struct mt76_tx_cb) >
-> > > > >     sizeof(IEEE80211_SKB_CB(skb)->status.status_driver_data));
-> > > > > return ((void *)IEEE80211_SKB_CB(skb)-
-> > > > > >status.status_driver_data);
-> > > > > }
-> > > >
-> > > > Hi Roy,
-> > > >
-> > > > I still do not understand since mt76_tx_status_skb_add() sets to
-> > > > 0 just sizeof
-> > > > of mt76_tx_cb, that according to pahole is 16 bytes, so it can't
-> > > > overwrite
-> > > > hw_key pointer (whose offset respect to the beginning of the
-> > > > control struct is
-> > > > 24, 32 - 8).
-> > > >
-> > > > Regards,
-> > > > Lorenzo
-> > > >
-> > > > >
-> > > > > Regards,
-> > > > > Roy Luo
-> > >
-> > > Hi Lorenzo,
-> > >
-> > > The mt76_tx_status_skb_add() memset zero the 16 bytes starting from
-> > > status.status_driver_data (please see the above inline function
-> > > shared
-> > > in my last response) whose offset with respect to the beginning of
-> > > the control/status union is exactly 24 (32 - 8) instead of 0.
-> > >
-> > > Regards,
-> > > Roy Luo
-> >
-> > Hi Roy,
-> >
-> > I can see the issue now, I was confusing status.status_driver_data
-> > with
-> > driver_data. You are right, we have an issue here. However, copying
-> > all the
-> > ieee80211_tx_info struct seems a bit overkill, what do you think?
-> > Moreover, we have the same issue for various chipsets (e.g. mt7925
-> > and
-> > mt7915).  I guess we should try to find a global solution for the
-> > problem.
-> >
-> > Regards,
-> > Lorenzo
->
-> What about adding an helper for cb operation?
->
-> +void
-> +mt76_tx_status_skb_cb_add(struct mt76_dev *dev, struct sk_buff *skb,
-> +                         struct mt76_wcid *wcid, int pid)
-> +{
-> +       struct mt76_tx_cb *cb =3D mt76_tx_skb_cb(skb);
-> +
-> +       memset(cb, 0, sizeof(*cb));
-> +
-> +       spin_lock_bh(&dev->status_lock);
-> +       cb->wcid =3D wcid->idx;
-> +       cb->pktid =3D pid;
-> +       spin_unlock_bh(&dev->status_lock);
-> +}
-> +EXPORT_SYMBOL_GPL(mt76_tx_status_skb_cb_add);
->
-> And add this for each chipset.
->
-> index 061ab66..d0b67a2 100644
-> --- a/mt7996/mac.c
-> +++ b/mt7996/mac.c
-> @@ -1108,6 +1108,7 @@ int mt7996_tx_prepare_skb(struct mt76_dev *mdev,
-> void *txwi_ptr,
->         if (!is_8023 || pid >=3D MT_PACKET_ID_FIRST)
->                 mt7996_mac_write_txwi(dev, txwi_ptr, tx_info->skb,
-> wcid, key,
->                                       pid, qid, 0);
-> +       mt76_tx_status_skb_cb_add(dev, tx_info->skb, wcid, pid);
->
->
+> > > > This doesn't look right because the MSI address is a PCI bus address,
+> > > > and port->phys_base is a CPU physical address.  Often a PCI bus
+> > > > address is the same as the CPU physical address, but not always.
+> > > > I think the DT 'ranges' property tells you the translation.
+> > 
+> > Oops, sorry, I muddied the waters here.
+> > 
+> > 'ranges' tells you the translation applied by a bridge, e.g., when
+> > a CPU does a load/store, the PCI host bridge turns it into a PCI
+> > read/write transaction.  The bridge might add an offset to the CPU
+> > load/store physical address to get the PCI read/write bus address.
+> > 
+> > But that's not the issue here.  The MSI is basically a DMA write
+> > performed by the PCI device, not a store done by a CPU, so I don't
+> > think 'ranges' is the right thing to look at.
+> 
+> Yeah, it is so easy to confuse both. To summarise, 'ranges'
+> describes the outbound translation and 'dma-ranges' describes the
+> inbound translation from host perspective.
+> 
+> > Based on this:
+> > https://elinux.org/Device_Tree_Usage#PCI_DMA_Address_Translation I
+> > think 'dma-ranges' is the relevant property.  I don't think your
+> > DT includes a 'dma-ranges' property, and in that case the default
+> > is that the system bus (CPU) address is the same as the PCI
+> > address.
+> > 
+> > So I think this patch works because it assumes DMA addresses like
+> > the MSI address are mapped to identical system bus addresses.
+> > 
+> > It still seems to me that drivers should be prepared for the
+> > presence of dma-ranges and use it when computing the MSI target
+> > address.  But I don't think any drivers really do that, so for now
+> > I think you should pretend that I never responded about this
+> > patch.
+> 
+> Your observations are correct. This driver assumes that the
+> identical mapping exists between CPU and PCI bus addresses. Usually,
+> the drivers make use of phys_to_dma() to handle the translations.
 
-I would prefer to split the cb init logic out of
-mt76_tx_status_skb_add() and add a dedicated helper:
+What does this look like in the native host bridge drivers?  I don't
+see any direct calls of phys_to_dma(), but there are some higher-level
+interfaces that use it.
 
-  /*
-   * Must be called only after all TXWI/TXP code has consumed
-   * IEEE80211_SKB_CB(skb)->control, since this switches skb->cb to the
-   * mt76 tx status tracking overlay.
-   */
-  void
-  mt76_tx_status_skb_init(struct mt76_dev *dev, struct mt76_wcid *wcid,
-              struct sk_buff *skb, int pktid)
-  {
-      struct mt76_tx_cb *cb =3D mt76_tx_skb_cb(skb);
+I don't really see a consistent style of constructing MSI addresses,
+e.g., in *_compose_msi_msg() implementations.
 
-      memset(cb, 0, sizeof(*cb));
+> This API internally makes use of the 'dma_range_map' which gets
+> populated by the OF core based on the 'dma-ranges' property (if
+> present in DT).
+> 
+> But it makes sense to use it irrespective of whether the platform
+> supports non-identical DMA/inbound translation or not. Since this
+> API behaves like a no-op and returns the CPU physical address if
+> there is an identical mapping, there is literally zero overhead in
+> using it.
 
-      if (wcid)
-          cb->wcid =3D wcid->idx;
-      cb->pktid =3D pktid;
-  }
-  EXPORT_SYMBOL_GPL(mt76_tx_status_skb_init);
+Thanks for rescuing me.
 
+I wonder if there should be something in
+Documentation/core-api/dma-api* about this.  I guess that is mostly
+oriented toward things like PCI device drivers, not so much PCI host
+bridge drivers.  But it would be nice to have a little intro to
+dma-ranges and maybe even the restricted DMA usage.
 
-Then
-
-  pid =3D mt76_tx_status_skb_add(...);
-  ... write TXWI/TXP while info->control is still valid ...
-  mt76_tx_status_skb_init(...); to fix all drivers under mt76/
-
-  Reasons:
-
-  1. The helper does not need its own spinlock.
-mt76_tx_status_skb_add() already protects the idr/list update with
-status_lock; this helper only initializes the skb-local cb overlay.
-  2. wcid can be NULL on some paths, so the helper should guard against tha=
-t.
-  3. mt76_tx_status_skb_init() should be called after
-mt76_tx_status_skb_add() and after all TXWI/TXP write helpers in each
-mt76 driver. The same skb cb aliasing issue can potentially affect all
-drivers that consume IEEE80211_SKB_CB(skb)->control after calling
-mt76_tx_status_skb_add().
-  4.  The comment is useful because the ordering requirement is easy
-to miss: mt76_tx_status_skb_init() clears the skb cb area used by
-  IEEE80211_SKB_CB(skb)->control, so it must run only after TXWI/TXP
-setup has finished reading that control data.
+Bjorn
 
