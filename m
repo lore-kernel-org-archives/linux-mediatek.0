@@ -4,75 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAEB6CD5BB3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2026 17:44:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4C0CCD5BB0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2026 19:27:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ySlfzbET71+o57AlLLgDovA0KAs9eNpZmvNfNdCu2To=; b=dWBRdRqyFAZ1KkPU6MBsVVTG2g
-	ZbqOnQJs9aCVXuogaOn2X4gaMLY/zU+aaNcszll2G3tFjSQH9WyfR2ROUjJ4RFWToDSQxGAvX3aBZ
-	VcMtL+Gn/7RcjKLHvttC/BEf1UN7C6FkcL6V4jgBIZry7fNZ5+uVw/rZDC3vRZ85nuS2Co9bs3y1v
-	rmjlJtcEoxyquQlNLy6VgCh37srqtWmpTZXrEhhnXv2B40Et1KeYITmIYM7WgSUONnJWMizknUzNf
-	ERvByqX1vj+Mt5Rb4jHUGcOnuWkXHTLwCAh3Sv84uLRWB3rZUo+hcp7icVnR02eQmiYQw47NAi0Tx
-	0ojeBRpA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FCl2h1w1gG7xQ2IOq1++c0XrFQCqGCY1qfeW5ss3aJU=; b=lluomvjGF9p0WyODd3MYd1/vzP
+	r005/wphB2GuaHBDje6zJ0mZ/c3szlj1xwtBPWOJHnnPjbE7Ho+udT1T8tlMRNOEj6Kj2vvWpL9rb
+	Llw+8YzNsbmzHZ3zqtMsop68r/LFdwDJ4puKAlynxPv8MwzgGaXuxZ27vka1DxoD1LXyrrjr5TeEx
+	p4N013eGrP91m1g3oXKBMLVZnKV11EzV6SfclkVLd/J7DI/4KHgU32V1GkcjVgCDE7JZ8qHD8YNUJ
+	dX0sWsabgGECP8AelEu5DbfGSRZp/S3Evzy07HjkgyJHoC9kuVsUHsf69elF00RCq2b3mOMrawkCm
+	iULkyDNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQTuj-0000000Badu-0hi9;
-	Fri, 22 May 2026 17:44:01 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wQVWa-0000000BmEj-30kd;
+	Fri, 22 May 2026 19:27:12 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQTuf-0000000BadP-3kVG;
-	Fri, 22 May 2026 17:43:59 +0000
+	id 1wQVWY-0000000BmEB-2gVX;
+	Fri, 22 May 2026 19:27:10 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 109E643874;
-	Fri, 22 May 2026 17:43:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E49FA1F000E9;
-	Fri, 22 May 2026 17:43:54 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id CDA2F60136;
+	Fri, 22 May 2026 19:27:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0483F1F000E9;
+	Fri, 22 May 2026 19:27:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779471836;
-	bh=ySlfzbET71+o57AlLLgDovA0KAs9eNpZmvNfNdCu2To=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=SUQjzqxLodwVv6RsVftw0JWcAkQQx8WM+k4K7y/ZxF/niGQniMBS9LM/OeiYezrLp
-	 ztbrAA8tG2Guq+oVRlMCa+HVcj67FqasJSYzRqHTisuKnOXXIUlQaqERQdGQxsZyLo
-	 TLKOjYeXMqMfDvx1yqxUauzj4ulmCWn7lu1X0KbSqMhDEhSq92/1Tc1uNohSixYw6U
-	 vZuTcGaN7T7LE/yMubgbGY3dhgwD3oi7iosonXBs6cLykUGdnbufKurMJsvacZl/sh
-	 AL9KIxVLMqVKHM9hXhjmgr6opK4xoCnLPVffMe3Ih0zAIb6jCREC6zXkbJTS7MXi+F
-	 n2rCnJ49la6ug==
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
- Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Cyril Chao <Cyril.Chao@mediatek.com>, 
- =?utf-8?q?C=C3=A1ssio_Gabriel?= <cassiogabrielcontato@gmail.com>
-Cc: linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20260514-asoc-mt8189-probe-cleanup-v1-1-ded733363281@gmail.com>
-References: <20260514-asoc-mt8189-probe-cleanup-v1-1-ded733363281@gmail.com>
-Subject: Re: [PATCH] ASoC: mediatek: mt8189: Fix probe resource cleanup
-Message-Id: <177945304031.6494.16316071935569067242.b4-ty@b4>
-Date: Fri, 22 May 2026 13:30:40 +0100
+	s=k20260515; t=1779478029;
+	bh=FCl2h1w1gG7xQ2IOq1++c0XrFQCqGCY1qfeW5ss3aJU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=ds6ZMMcgx5EDAgUl1oWgYyadlaRI2Wa4jbbhZo8AQztef+B93krJNaxzks2mO5nGN
+	 zs3brK3XUN3Vkp7C69SA4iKK0s59G61zOndjX8ehKMihlTbCJyLAatdcDbqsjdswgF
+	 yd/SApE5kY4Y8oQhvlSUYujUIEvHc2S+06ugEXPAMAx8i7bS+ba85G20ioe/s1AoVa
+	 4jN4HvjZ4qUijyR5GPyHyYif4NaXLCivIk7qhJiirKJQcd9u999dSwTrR8+m5VVcvS
+	 3d3zfANxA6AE7SjyUCYvMqzgPTfTNkjy8qosxmUDrPtZX4BpfwZ81971jS1Z0/Qfdt
+	 KtTHxsV04Ln4g==
+Date: Fri, 22 May 2026 21:27:07 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: Christian Marangi <ansuelsmth@gmail.com>,
+	Benjamin Larsson <benjamin.larsson@genexis.eu>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH net-next v8 01/10] dt-bindings: net: airoha: Add GDM port
+ ethernet child node
+Message-ID: <ahCuC3TgK3Pnuz_w@lore-desk>
+References: <20260519-airoha-eth-multi-serdes-v8-0-6bd70e329df6@kernel.org>
+ <20260519-airoha-eth-multi-serdes-v8-1-6bd70e329df6@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.16-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1121; i=broonie@kernel.org;
- h=from:subject:message-id; bh=G977wFYZeJL9dO4L5j8WuYlyScxupqnnDsErYn4S5fo=;
- b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqEJXZM99O+JagCIvgfofBdj+0iZOBzv3TpvVtX
- hejW1q7mWiJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCahCV2QAKCRAk1otyXVSH
- 0NWaB/4hlQtZDLSmrPFVXvyMx3wwK6bZBuXMBcC5yPQt1BwAAn1YcO/2a/CMfeETmmA6VJ4fvG/
- 9FzEuSxYmEg7g1th+zFi52ErCj3a5ozkXpAlqpML8ZeFbSEPN7+KmknAMjNfPYkzm+KqcD8qo4v
- wV9H5YKhEnmwJK+YcOKORUNF5dUjEIvmqxQ8SYo9R2WlQJmr7r2t03eWxENVbGpxxWgy8bKTk9b
- CIe+DUKb0ZCDXUTKEYzMoyBwGvtttCbahvtd/Q8LSbXFgnt4Tapsu9G8zrvN/3+/+F/4+/NcZ5d
- Yi7NipucE2iEKyvpienFGjRsbHbuTJuF5oodbBs39g7x3QU3
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260522_104357_954918_25A76381 
-X-CRM114-Status: UNSURE (   8.68  )
-X-CRM114-Notice: Please train this message.
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="qZn/vsQETJzcLfna"
+Content-Disposition: inline
+In-Reply-To: <20260519-airoha-eth-multi-serdes-v8-1-6bd70e329df6@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,35 +79,131 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 14 May 2026 10:52:35 -0300, Cássio Gabriel wrote:
-> ASoC: mediatek: mt8189: Fix probe resource cleanup
 
-Applied to
+--qZn/vsQETJzcLfna
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.2
+> EN7581 and AN7583 SoCs support connecting multiple external SerDes to GDM3
+> or GDM4 ports via a hw arbiter that manages the traffic in a TDM manner.
+> As a result multiple net_devices can connect to the same GDM{3,4} port
+> and there is a theoretical "1:n" relation between GDM ports and
+> net_devices.
+> Introduce the ethernet node child of a specific GDM port in order to model
+> a given net_device that is connected via the external arbiter to the
+> GDM{3,4} port. This new ethernet node is defined by the "airoha,eth-port"
+> compatible string. Please note GDM1 and GDM2 does not support the
+> connection with the external arbiter and they are represented by an
+> ethernet node defined by the "airoha,eth-mac" compatible string.
 
-Thanks!
+Hi Rob, Krzysztof and Conor,
 
-[1/1] ASoC: mediatek: mt8189: Fix probe resource cleanup
-      https://git.kernel.org/broonie/sound/c/5404599c3292
+do you have any comment about this patch? Thanks in advance.
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+Regards,
+Lorenzo
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+>=20
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  .../devicetree/bindings/net/airoha,en7581-eth.yaml | 56 ++++++++++++++++=
++++++-
+>  1 file changed, 55 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml=
+ b/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
+> index fbe2ddcdd909..17fe2edf4886 100644
+> --- a/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
+> +++ b/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
+> @@ -130,6 +130,42 @@ patternProperties:
+>          maximum: 4
+>          description: GMAC port identifier
+> =20
+> +    allOf:
+> +      - if:
+> +          properties:
+> +            reg:
+> +              contains:
+> +                items:
+> +                  - enum:
+> +                      - 3
+> +                      - 4
+> +        then:
+> +          properties:
+> +            '#address-cells':
+> +              const: 1
+> +
+> +            '#size-cells':
+> +              const: 0
+> +
+> +          patternProperties:
+> +            "^ethernet@[0-5]$":
+> +              type: object
+> +              unevaluatedProperties: false
+> +              $ref: ethernet-controller.yaml#
+> +              description: External ethernet port ID available on the GD=
+M port
+> +
+> +              properties:
+> +                compatible:
+> +                  const: airoha,eth-port
+> +
+> +                reg:
+> +                  maximum: 5
+> +                  description: External ethernet port identifier
+> +
+> +              required:
+> +                - reg
+> +                - compatible
+> +
+>      required:
+>        - reg
+>        - compatible
+> @@ -191,9 +227,27 @@ examples:
+>          #address-cells =3D <1>;
+>          #size-cells =3D <0>;
+> =20
+> -        mac: ethernet@1 {
+> +        ethernet@1 {
+>            compatible =3D "airoha,eth-mac";
+>            reg =3D <1>;
+>          };
+> +
+> +        ethernet@4 {
+> +          compatible =3D "airoha,eth-mac";
+> +          reg =3D <4>;
+> +
+> +          #address-cells =3D <1>;
+> +          #size-cells =3D <0>;
+> +
+> +          ethernet@0 {
+> +            compatible =3D "airoha,eth-port";
+> +            reg =3D <0>;
+> +          };
+> +
+> +          ethernet@1 {
+> +            compatible =3D "airoha,eth-port";
+> +            reg =3D <1>;
+> +          };
+> +        };
+>        };
+>      };
+>=20
+> --=20
+> 2.54.0
+>=20
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+--qZn/vsQETJzcLfna
+Content-Type: application/pgp-signature; name=signature.asc
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+-----BEGIN PGP SIGNATURE-----
 
-Thanks,
-Mark
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCahCuCwAKCRA6cBh0uS2t
+rFFmAP9bCqqNxm9iUo7L09S4mXpuCBZOetsy0kzJc0wz9A/t/QEAheGcPN75acWD
+xrt8EQrZhwP7W2N6/vJzmXpYge3IQQQ=
+=NoQd
+-----END PGP SIGNATURE-----
 
+--qZn/vsQETJzcLfna--
 
