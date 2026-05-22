@@ -4,91 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3725CD5BAF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2026 01:45:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BB6BCD4F3D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 May 2026 07:25:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=FeX+2CJlDfJirxfhOoE2pWXNKtVRb5R3kxizay3i3Mo=; b=wWFqDOiXK4FBXLeiWnmxiSzvEO
-	P1doYd7wnm2yc3622BcsRYax3d0LVbEDFqmdL9NOKPWFUpQqkZzRkNdOMzfctajDwuRrQjKOJcE+j
-	tdf1+8MkAkxd6tKnLMOqUrMFbDA4T3sIeWTjgpEXmu8ueLYEyak0OxgsjpUp05SlbS38JsB9kGAD+
-	0tWFce2xdQ4GS8y7ISM7ysnAllqs4ky/L7RNko3EyXPrCUSUlSA8eK0FCvP8zZVrsz3BaXpaW1MoY
-	dgC1sVu8OI7mDnM+f0UvnmvUtvP3QuOaNsfOiE+2oc9VDHOLLXMpizmfc6TT3OAw5bSb6z5GBasFT
-	BMEgbklA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mJkyipvc3IqDM0RSCkuAPvsrzuqXuTst7xaupG3y5v4=; b=uAXJCY7wE2C7DmEtaSvGt5OtL2
+	YEgytJy73YM7JslGIISfk5UOMp4vc7OP65itwlVI+JDWDoRzGhUjoBzP0Ef6mxk6TmhwielL4sFqs
+	ilLx+0C1kbWIoM4kU2Al/AcSSMS1voMS63HDBLUX6mLr4HoTpiHNQJzo0pbhvtOr7DQG9lkA6URD6
+	7AZSHnHLM/cka7BW+mFryD1f+9m9NbKSk4By5Wb8G56baOENIuIlsjTk1Sng+SO4Rdh5oOMdr1pL8
+	JA0rMGgNxOjmKF8UVDTNFP2UMoK1LLdNgbv38csSGgHPKlBYxmnQrnZnqA97NnAuqW3BlZwuZoKyo
+	iSHqgIvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQExF-00000009V5o-2Hbn;
-	Fri, 22 May 2026 01:45:37 +0000
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+	id 1wQKFt-0000000A4rV-2rCY;
+	Fri, 22 May 2026 07:25:13 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQExC-00000009V4u-2gbH
-	for linux-mediatek@lists.infradead.org;
-	Fri, 22 May 2026 01:45:35 +0000
-Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-82f9fdfc965so3153388b3a.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 21 May 2026 18:45:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1779414333; x=1780019133; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=FeX+2CJlDfJirxfhOoE2pWXNKtVRb5R3kxizay3i3Mo=;
-        b=BxqptEy/yhbB5eaEsEPOlP1geDADjNgjcNeT+7Dm2ITnbtUjIJ7xXw7aDEBa+A0Wja
-         ggA2iJM84+1rUnA1e9uqO43VM84EaDrB4b1yLegKvQ5+kim1Hg3yhaFzWJ9Wm+7NCfo+
-         /NnkqOy1HTAK8D+p5aDLEvHDkUdG0IhxStV3Biv/XHU57admEVB/NtfE80jTql+/4tsE
-         qJWNGW35SYfJvBQ8xPdqwxxY9+rTS4RDj0KFARKh8Yrh3Y7V96juawq37voRS0Masiw2
-         DmqB+RIpp1MeGyengjYfLqOwDRUlzf1v4MY2bSXw3mNt8boIDitaHlyAQYynWrKwPFb9
-         FRsw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779414333; x=1780019133;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=FeX+2CJlDfJirxfhOoE2pWXNKtVRb5R3kxizay3i3Mo=;
-        b=S8UmqZFFb1sG2LA0FI1vT9suE3pzK535oIPdDV6nLOzTTFut79LxPZ6+ug/c5XEfI4
-         5E9q2BVJimYbN3UJM/Z6S0Fsy0dzryAe5E1PwIi5YFbctM/5n80e69Ew7BRPj9t/qUo2
-         DPr3BdrBAlQpUbomV16wUtY2Pd/Gq/eZk/ruFogdEB4sD93uvKSjPeA3lYqs0qm5i/qv
-         ZDC93JWHL+RlMD+tnWUj2Qdd2JnXytZ/3leZtHILLTmmdJjNtCNjSC9NhVHpWEBqPKG6
-         guHshJIzCRIzVofudyyst+ZS0rmQi71Mh6O+DXvVKjIce4zuLYZ4WZCxjK+loDgF8jUF
-         wOug==
-X-Forwarded-Encrypted: i=1; AFNElJ+T24w/T0Ai82i3eIJ0KP+WIa+TaXf68fz/UTnyrsMNXlaMS/lPfC9jgnUQXhuWXHNu84MCcZ3N+rm0PaoNVQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyhTd638l7B/QbTawv/OYbRDsfKOz2DwgCzy67rVgn3dA3Z+loU
-	aowtTQAhBDZGNEu8TTogNdp7bOgKgvs3AlqGf0hwrrnacZP/UQVRsCnK
-X-Gm-Gg: Acq92OFhIkDs265LzRs0Ro2KEv/Ng7jbnuF2RXWF0oASEAy/lu79ieJ3kSBvfoyBYnY
-	ubfWYM9C/e4ulmtkuvgdiyFx8KUf0aTV5MmSzN5MyJYjbleK4mm3dGJBcGcjt7wGb799WuIUxhN
-	S/dXHM3H9KkDPpsJWQfKC1Aop7E8+sQ2yuHGnUN8/n1Y0e0DrD3+8xLa9GzoXMS/Socpxo6MaeN
-	lB/ycBGhKRWBmhWxcck4ID+tQjTNcMOa537rcWx9tM+KB1xF2NfiVSOQVkctHJ1XcpeEEClupWd
-	/YM1s6Q3HmHPO0mJanBwoRQXYWxiKQjCJBnVAvTzx9j0XPmKU/ommLoRoPHaY5sX9FO2FUUh5n+
-	WD9JMJ/NS5p0zV6KrAm1yE/ZtuaArvRYpmPJLQwz2iIpeU+QxMnbmrOBZgjh3HS9xF2WXAjoYlv
-	LPAddYpv+XrCi7PTGzIj4V59LK5MHCKNf7thgTQb3aauwXp1EOmZ5p69S+IpkVYpvGR5XsMaVrU
-	LFGJZqf1tqds1xLXX7hMCltu5/fGioApBgQ8dhmlCH2AQ==
-X-Received: by 2002:a05:6a00:18a7:b0:83f:2568:d466 with SMTP id d2e1a72fcca58-8415f30a0demr1558559b3a.31.1779414333473;
-        Thu, 21 May 2026 18:45:33 -0700 (PDT)
-Received: from ryzen ([2601:644:8000:5b5d:7285:c2ff:fe45:8a32])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84164aee7f5sm167382b3a.14.2026.05.21.18.45.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 21 May 2026 18:45:32 -0700 (PDT)
-From: Rosen Penev <rosenp@gmail.com>
-To: linux-sound@vger.kernel.org
-Cc: Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
-	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
-Subject: [PATCHv2] ASoC: mediatek: mt2701: fix snprintf bounds
-Date: Thu, 21 May 2026 18:45:15 -0700
-Message-ID: <20260522014515.719973-1-rosenp@gmail.com>
-X-Mailer: git-send-email 2.54.0
+	id 1wQKFs-0000000A4r5-2NuU;
+	Fri, 22 May 2026 07:25:12 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 89BBD60219;
+	Fri, 22 May 2026 07:25:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B54E41F000E9;
+	Fri, 22 May 2026 07:25:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1779434711;
+	bh=mJkyipvc3IqDM0RSCkuAPvsrzuqXuTst7xaupG3y5v4=;
+	h=From:Date:Subject:To:Cc;
+	b=T2i9SoqpC9ZJTEwxxzBRTBIa6nUIDPM9hRClfW9Vn1R1J2kMTyqyseFRzdlcfpkXt
+	 YXRd4WbTgS4TYJget+H0U1pDJkHj43b4+pXNK2IOSXELWKYsPQ8YRNOAGEsBDJPQap
+	 khJlKlIR4NvWyFBeu12k/Z5wgPQPwUaKvs1iYlKudy6udzX7Y1QjQMAcJJiRtiOVSz
+	 cjq8HJ0qxYp8pSkAxNZcHVU5hHj6GLIJI4YqJTVjKoHWLS+hMn0m3+t36SWizN9CEm
+	 skbodHXNJTPhhJYXIZbT2iJ+WOjukNsh5zIOqih/KQxHU4B5ofdh8/1gGlM6Uro742
+	 Xgz4V+MFxCP0A==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Fri, 22 May 2026 09:24:52 +0200
+Subject: [PATCH] wifi: mt76: mt7996: remove redundant pdev->bus check in
+ probe
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260521_184534_714128_46882795 
-X-CRM114-Status: GOOD (  12.40  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260522-mt7996-pdev-bus-fix-v1-1-c91716484365@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MSQqAMAwAvyI5G4gR6/IV8aA2ag4utFoE8e8Wj
+ zMw84AXp+KhSR5wEtTrvkXI0gTGpd9mQbWRgYkNFcy4nmVdGzysBBwuj5PeSNJnOfFE1lQQy8N
+ J1P+17d73A4IpCSRlAAAA
+X-Change-ID: 20260522-mt7996-pdev-bus-fix-0ea1302f0d68
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Dan Carpenter <error27@gmail.com>, linux-wireless@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.3
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,41 +75,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For whatever reason, GCC is unable to figure out that i2s_num is a
-single digit number, with MT2701_BASE_CLK_NUM being the maximum value it
-represents. Add a min() call to help it out and fix W=1 errors regarding
-snprintf bounds.
+Drop the unnecessary pdev->bus NULL check in mt7996_pci_probe() since
+the pointer is already dereferenced earlier in mt76_pci_disable_aspm(),
+making the check dead code. Silences the related Smatch warning.
 
-Signed-off-by: Rosen Penev <rosenp@gmail.com>
+Fixes: 377aa17d2aed ("wifi: mt76: mt7996: Add NPU offload support to MT7996 driver")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- v2: swap min arguments
- sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/net/wireless/mediatek/mt76/mt7996/pci.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c b/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
-index 5a2bcf027b4f..d217f9320ad2 100644
---- a/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
-+++ b/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
-@@ -25,6 +25,7 @@ static const char *const base_clks[] = {
- int mt2701_init_clock(struct mtk_base_afe *afe)
- {
- 	struct mt2701_afe_private *afe_priv = afe->platform_priv;
-+	int i2s_num;
- 	int i;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/pci.c b/drivers/net/wireless/mediatek/mt76/mt7996/pci.c
+index 12523ddba630..b7d9193e042f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/pci.c
+@@ -141,7 +141,7 @@ static int mt7996_pci_probe(struct pci_dev *pdev,
+ 	dev->hif2 = hif2;
  
- 	for (i = 0; i < MT2701_BASE_CLK_NUM; i++) {
-@@ -35,8 +36,9 @@ int mt2701_init_clock(struct mtk_base_afe *afe)
- 		}
- 	}
+ 	mt76_npu_init(mdev, pci_resource_start(pdev, 0),
+-		      pdev->bus && pci_domain_nr(pdev->bus) ? 3 : 2);
++		      pci_domain_nr(pdev->bus) ? 3 : 2);
  
-+	i2s_num = min(afe_priv->soc->i2s_num, MT2701_BASE_CLK_NUM);
- 	/* Get I2S related clocks */
--	for (i = 0; i < afe_priv->soc->i2s_num; i++) {
-+	for (i = 0; i < i2s_num; i++) {
- 		struct mt2701_i2s_path *i2s_path = &afe_priv->i2s_path[i];
- 		struct clk *i2s_ck;
- 		char name[13];
+ 	ret = mt7996_mmio_wed_init(dev, pdev, false, &irq);
+ 	if (ret < 0)
+
+---
+base-commit: e9aeddfe98ebccd3761ac7dd316af4fb5de1c28a
+change-id: 20260522-mt7996-pdev-bus-fix-0ea1302f0d68
+
+Best regards,
 -- 
-2.54.0
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
