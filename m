@@ -4,62 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEA48CD5BAC
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 May 2026 13:09:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA059CD5BAC
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 May 2026 14:43:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ulSpyMaOuPtUjE/kaMsyodJ8z51dXOLCMvbX66Q6rnE=; b=QyGvx0ucSp2C2TQGRGrXk2NaOC
-	Iim4ajGPZSVO1RlAbq7r840dq/7VYqgrS9HNukYMt/CYyYBarNeKaIlzmLINcKqs6PiSD5eHxqihH
-	Q/VDExCeFWaNtZ6txQYRxkCb6wzP0zVmN7KgcY3iGVKXQVGWxAYrufI6kgVACAeWNOTNmy0dag8QT
-	6p+HPlwxZSS5OiStMl28qe7V9QXObtsnyuykIyoqvnX3ORh3buU4b4BlIBqUNkIOppRD5aOiaIhyw
-	GrO2xD3EWPPaphm71zdljmRiYJtwQHWHZYocJlflGdEuBBZet4q1tvH6uMKqFX/nICRi9IxEPIQpo
-	TbJ16gMA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WAWPfcpt7Y2lKv7eVynXIDy6eoxltojXQ/vc2M7UO4k=; b=BJB3BmU7d7NjR0UHBH/Vx/GSbl
+	GVNL+isT/+DNpmIST2O1QMQzenn7hKg4Rz2CqN7vXGQanFdY/9DQkF9u5wXVP/QBuJ8UGA0JjFa0x
+	3EOuO5NCXfaPLOcLhlQPWO97d23cvLnNu97+PZvKJbMHvnm3XmZ2sLhlUfk9R8dw/Z4HaEjUp52eU
+	gLT00G5Jrs9+p2VtY3v5RJ92yLRxQgEWDJ1E0czFlY4ctTEhft9WP7NDdKFhUN/hxo3YpGNoEqqJt
+	RQaNh64H6AEksThZ+rJzyBdLrbFdoHdAsSdT4qkszeL/Py9w4gUciorbmTNIcozh89gazHrZu/GXK
+	mygi1iVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQm72-0000000DHfG-0aW1;
-	Sat, 23 May 2026 13:09:56 +0000
-Received: from forward501b.mail.yandex.net ([178.154.239.145])
+	id 1wQnZx-0000000DR79-2ia4;
+	Sat, 23 May 2026 14:43:53 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQm6y-0000000DHeP-0ncK
+	id 1wQnZu-0000000DR6b-3TWR
 	for linux-mediatek@lists.infradead.org;
-	Sat, 23 May 2026 13:09:54 +0000
-Received: from mail-nwsmtp-smtp-production-main-60.sas.yp-c.yandex.net (mail-nwsmtp-smtp-production-main-60.sas.yp-c.yandex.net [IPv6:2a02:6b8:c24:25b4:0:640:a124:0])
-	by forward501b.mail.yandex.net (Yandex) with ESMTPS id 12A2081181;
-	Sat, 23 May 2026 16:09:42 +0300 (MSK)
-Received: by mail-nwsmtp-smtp-production-main-60.sas.yp-c.yandex.net (smtp) with ESMTPSA id c9Vn5vMfiSw0-QryM3SAI;
-	Sat, 23 May 2026 16:09:41 +0300
-X-Yandex-Fwd: 1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0upti.me; s=mail;
-	t=1779541781; bh=ulSpyMaOuPtUjE/kaMsyodJ8z51dXOLCMvbX66Q6rnE=;
-	h=From:Subject:In-Reply-To:Cc:Date:References:To:Message-ID;
-	b=N44wmmFdnqkjkKXZAqBOogamNYjJ2FWlu12hCeniPiEE3AssJyddJla+YF1s/OiQ2
-	 eVwWrbFoQbjJ7bBJV41fKqZJjYlU+7R2ZeCYB2q1aBKI6gan4m4igJ2aKmL2vTjwiD
-	 mGk7wXWqgVY78znzxL+tIFHHw/a1clsrBJXl5Z88=
-Authentication-Results: mail-nwsmtp-smtp-production-main-60.sas.yp-c.yandex.net; dkim=pass header.i=@0upti.me
-Message-ID: <17ef89cc-32b6-43f4-831a-ab756c6b5e3a@0upti.me>
-Date: Sat, 23 May 2026 16:09:38 +0300
+	Sat, 23 May 2026 14:43:52 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2856140D67;
+	Sat, 23 May 2026 14:43:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6C6DF1F000E9;
+	Sat, 23 May 2026 14:43:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1779547430;
+	bh=WAWPfcpt7Y2lKv7eVynXIDy6eoxltojXQ/vc2M7UO4k=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=MPDBNyg5QDBg3Gx+lkOcvJCo875bEN4ddreeBrOakrXW+yRikczoQxVajr7XFfBVf
+	 ynpp+Ebxv/QUXLb/iVErxQYEar1jo88jL8CGudEvgWsoOg0XiqEYdCr+zE/cXTDTQq
+	 dglhDWoWu/ouxr820qpP0JUxenIkfLHBSrZlh3SFwzTelNoQ013/rQLO+ta5zLDRVC
+	 Sm09gLP74f8a9azO3brctV3TRTfK7PnDEOlwWwZr2b+XRQaUWsrOMlVQZARgRfZvH2
+	 mJN/BYU5WkZetp6PqqdfwsFNIeFqKCMet8M12QZZzEFWyED/echQUGKwOZPPRDJ4C4
+	 BHhwdHAiZSGbQ==
+Date: Sat, 23 May 2026 20:13:39 +0530
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Caleb James DeLisle <cjd@cjdns.fr>, linux-pci@vger.kernel.org, 
+	linux-mips@vger.kernel.org, naseefkm@gmail.com, ryder.lee@mediatek.com, 
+	lpieralisi@kernel.org, kwilczynski@kernel.org, robh@kernel.org, krzk+dt@kernel.org, 
+	conor+dt@kernel.org, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+	ansuelsmth@gmail.com, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+Subject: Re: [PATCH v8 1/3] PCI: mediatek: Use actual physical address
+ instead of virt_to_phys()
+Message-ID: <ocrkyeicymlf6uuogp3uuz6zbgfthhxypwvhfivc7butxfiqps@y6lcvuvcvra4>
+References: <7xfp5nbtd4qtonoqurfwoedsix7vondrnfeip53uwjintuvc6a@cg3ez6z3pii5>
+ <20260522224325.GA195169@bhelgaas>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: shayne.chen@mediatek.com
-Cc: evelyn.tsai@mediatek.com, linux-mediatek@lists.infradead.org,
- linux-wireless@vger.kernel.org, lorenzo@kernel.org, nbd@nbd.name,
- ryder.lee@mediatek.com
-References: <20251215063728.3013365-7-shayne.chen@mediatek.com>
-Subject: Re: [PATCH mt76 v2 7/7] wifi: mt76: mt7996: fix iface combination for
- different chipsets
-Content-Language: en-US
-From: Ilya K <me@0upti.me>
-In-Reply-To: <20251215063728.3013365-7-shayne.chen@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20260522224325.GA195169@bhelgaas>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260523_060952_418687_7C514023 
-X-CRM114-Status: UNSURE (   3.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260523_074350_908546_BB8B96E5 
+X-CRM114-Status: GOOD (  57.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,14 +78,143 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hey folks, this looks like it broke mt7996 init entirely with stable kernel 7.0.10.
+On Fri, May 22, 2026 at 05:43:25PM -0500, Bjorn Helgaas wrote:
+> On Thu, May 21, 2026 at 10:44:51AM +0530, Manivannan Sadhasivam wrote:
+> > On Wed, May 20, 2026 at 02:59:00PM -0500, Bjorn Helgaas wrote:
+> > > On Wed, May 20, 2026 at 09:17:35PM +0200, Caleb James DeLisle wrote:
+> > > > 
+> > > > On 20/05/2026 20:55, Bjorn Helgaas wrote:
+> > > > > On Wed, May 20, 2026 at 06:38:25PM +0000, Caleb James DeLisle wrote:
+> > > > > > From: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+> > > > > > 
+> > > > > > The driver previously used virt_to_phys() on the ioremapped register base
+> > > > > > (port->base) to compute the MSI message address. Using virt_to_phys() on an
+> > > > > > IO mapped address is incorrect because it expects a kernel virtual address.
+> > > > > > 
+> > > > > > To fix it, store the physical start of the I/O register region in
+> > > > > > mtk_pcie_port->phys_base and use it to build the MSI address. This replaces
+> > > > > > the incorrect virt_to_phys() usage and ensures MSI addresses are generated
+> > > > > > correctly.
+> > > > > > 
+> > > > > > Fixes: 43e6409db64d ("PCI: mediatek: Add MSI support for MT2712 and MT7622")
+> > > > > > Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+> > > > > > Tested-by: Caleb James DeLisle <cjd@cjdns.fr>
+> > > > > > ---
+> > > > > >   drivers/pci/controller/pcie-mediatek.c | 16 +++++++++++++---
+> > > > > >   1 file changed, 13 insertions(+), 3 deletions(-)
+> > > > > > 
+> > > > > > diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> > > > > > index 75722524fe74..c503fbd774d0 100644
+> > > > > > --- a/drivers/pci/controller/pcie-mediatek.c
+> > > > > > +++ b/drivers/pci/controller/pcie-mediatek.c
+> > > > > > @@ -175,6 +175,7 @@ struct mtk_pcie_soc {
+> > > > > >   /**
+> > > > > >    * struct mtk_pcie_port - PCIe port information
+> > > > > >    * @base: IO mapped register base
+> > > > > > + * @phys_base: Physical address of the I/O register base region
+> > > > > >    * @list: port list
+> > > > > >    * @pcie: pointer to PCIe host info
+> > > > > >    * @reset: pointer to port reset control
+> > > > > > @@ -196,6 +197,7 @@ struct mtk_pcie_soc {
+> > > > > >    */
+> > > > > >   struct mtk_pcie_port {
+> > > > > >   	void __iomem *base;
+> > > > > > +	phys_addr_t phys_base;
+> > > > > >   	struct list_head list;
+> > > > > >   	struct mtk_pcie *pcie;
+> > > > > >   	struct reset_control *reset;
+> > > > > > @@ -405,7 +407,7 @@ static void mtk_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
+> > > > > >   	phys_addr_t addr;
+> > > > > >   	/* MT2712/MT7622 only support 32-bit MSI addresses */
+> > > > > > -	addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
+> > > > > > +	addr = port->phys_base + PCIE_MSI_VECTOR;
+> > > > >
+> > > > > This doesn't look right because the MSI address is a PCI bus address,
+> > > > > and port->phys_base is a CPU physical address.  Often a PCI bus
+> > > > > address is the same as the CPU physical address, but not always.
+> > > > > I think the DT 'ranges' property tells you the translation.
+> > > 
+> > > Oops, sorry, I muddied the waters here.
+> > > 
+> > > 'ranges' tells you the translation applied by a bridge, e.g., when
+> > > a CPU does a load/store, the PCI host bridge turns it into a PCI
+> > > read/write transaction.  The bridge might add an offset to the CPU
+> > > load/store physical address to get the PCI read/write bus address.
+> > > 
+> > > But that's not the issue here.  The MSI is basically a DMA write
+> > > performed by the PCI device, not a store done by a CPU, so I don't
+> > > think 'ranges' is the right thing to look at.
+> > 
+> > Yeah, it is so easy to confuse both. To summarise, 'ranges'
+> > describes the outbound translation and 'dma-ranges' describes the
+> > inbound translation from host perspective.
+> > 
+> > > Based on this:
+> > > https://elinux.org/Device_Tree_Usage#PCI_DMA_Address_Translation I
+> > > think 'dma-ranges' is the relevant property.  I don't think your
+> > > DT includes a 'dma-ranges' property, and in that case the default
+> > > is that the system bus (CPU) address is the same as the PCI
+> > > address.
+> > > 
+> > > So I think this patch works because it assumes DMA addresses like
+> > > the MSI address are mapped to identical system bus addresses.
+> > > 
+> > > It still seems to me that drivers should be prepared for the
+> > > presence of dma-ranges and use it when computing the MSI target
+> > > address.  But I don't think any drivers really do that, so for now
+> > > I think you should pretend that I never responded about this
+> > > patch.
+> > 
+> > Your observations are correct. This driver assumes that the
+> > identical mapping exists between CPU and PCI bus addresses. Usually,
+> > the drivers make use of phys_to_dma() to handle the translations.
+> 
+> What does this look like in the native host bridge drivers?  I don't
+> see any direct calls of phys_to_dma(), but there are some higher-level
+> interfaces that use it.
+> 
+> I don't really see a consistent style of constructing MSI addresses,
+> e.g., in *_compose_msi_msg() implementations.
+> 
 
-Specifically it trips this check in net/wireless/core.c:681:
+That's because, each driver may use different methods for constructing the MSI
+address. Two commonly used methods are:
 
-	if (WARN_ON(types & BIT(NL80211_IFTYPE_ADHOC) &&
-		    c->beacon_int_min_gcd)) {
-		return -EINVAL;
-	}
+1. Using a pre-defined MSI address in the MMIO range (like the pcie-mediatek
+driver). The PCIe controller hardware decodes MWr TLPs targeting this address
+and raises an interrupt to the CPU via the platform interrupt controller (e.g.
+GIC).
 
-I'm not sure what the correct fix here is, but unsetting beacon_int_min_gcd at least makes AP mode work again...
+2. Allocating coherent memory using dma_alloc_coherent() and programming it
+into platform MMIO registers (like pcie-designware-host driver). The Root
+Complex inbound ATU matches writes to this address and raises an interrupt to
+the CPU.
+
+> > This API internally makes use of the 'dma_range_map' which gets
+> > populated by the OF core based on the 'dma-ranges' property (if
+> > present in DT).
+> > 
+> > But it makes sense to use it irrespective of whether the platform
+> > supports non-identical DMA/inbound translation or not. Since this
+> > API behaves like a no-op and returns the CPU physical address if
+> > there is an identical mapping, there is literally zero overhead in
+> > using it.
+> 
+> Thanks for rescuing me.
+> 
+> I wonder if there should be something in
+> Documentation/core-api/dma-api* about this.  I guess that is mostly
+> oriented toward things like PCI device drivers, not so much PCI host
+> bridge drivers.  But it would be nice to have a little intro to
+> dma-ranges and maybe even the restricted DMA usage.
+> 
+
+I think this information should belong to the PCI host controller documentation.
+I started writing it, but didn't get time to finish and post it. Maybe I'll
+atleast post an initial version and add more info on top.
+
+- Mani
+
+-- 
+மணிவண்ணன் சதாசிவம்
 
