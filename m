@@ -4,109 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E10B1CD5BAB
-	for <linux-mediatek@archiver.kernel.org>; Sun, 24 May 2026 19:08:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63E51CD5BAB
+	for <linux-mediatek@archiver.kernel.org>; Sun, 24 May 2026 22:44:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KLRQ2wACRuipMVnIkUKL2r6pZUOgBEEve1ZZpHIHskM=; b=noJKccT9tyCgg7C9IukXd2K9KE
-	gUst8J3JPsCqDR2cko68E3dZJWB04Kuqol3RFtg5whZjdm1GQpu6lslEDXMRaLJip7DiX6nuVVR5o
-	WCI12xAlfrKQdwUaR35kB3iutiM0eHkvXyNnD+ToznO+f5+Tz7LdDKLuIEbZybxUJ1Tqyj2LOrxOH
-	V+wCIEjofwf4FHm7NaB29oqwiIvFjhZ09C3KvUs6GtFfbSlNC9Xk7d0coCXOeuOxry0k7jj8YBc6j
-	lHv9LJBk2S3tBTn3WcQubOLJDeBIPgH7q0xK4QNNM4p9yeNRwW0uOAVSVcogWqE7Mm3h3e5Cm393l
-	mm31/zCw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=vQjZaq2V359LxFj/1Py1W2spC//5ryaGbLK3jja2HKs=; b=vxJqnRl8Q2bjH1/KqqMLJMNSXl
+	C/U+CbH3ZF49KU73bwoSot7QBo1z+SODoS9FiuOBnu79/upIYQ0NHLxGPOLf4h3a3zAb/eltB1KMN
+	tWJzKIug4HBF2vPx6TFTL1B1JZFvru5EjacimonmYgNdl8PGnWcDqF7pMSYZXp2NovoAxTIasStnc
+	QKvclSsgOl85b/bUQYqnp3frhfHC9ogC8p3UakWnuSRmAPzwa+V5Ob2kPEtwgTBF+YpnpzZ1lryGu
+	77JtXgoLc5HjQgsSJXX+YUAM7D7/Fo2LU0iX90iWarg67fyekzyBM+zbkT7Oitn9ymGsmk5xWtYvq
+	qjgBxUPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wREBn-0000000FTXK-0w2W;
-	Sun, 24 May 2026 19:08:43 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wRHY4-0000000Fn3f-04wu;
+	Sun, 24 May 2026 22:43:56 +0000
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wREBl-0000000FTWd-0Ftt;
-	Sun, 24 May 2026 19:08:42 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 307F544027;
-	Sun, 24 May 2026 19:08:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 991341F000E9;
-	Sun, 24 May 2026 19:08:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779649720;
-	bh=KLRQ2wACRuipMVnIkUKL2r6pZUOgBEEve1ZZpHIHskM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=n/7/oLOEv+z4+YBMo7iLr1qDDwBbqDZx0/+21SVPQ8MjnRNQ2kRyNBNHtdkJqsxO5
-	 UCphTz5rjChomuGjjw7Alujmzz16yQF9e/dOuUJHZClq6z5bXKorZQLsnskc5i3xLe
-	 NyEr3uinVD+mp2udqEpQTj2HaPlrwC8PnhRWs/ZbgJLD53PXk+8hXQLjmtvFuWnJf3
-	 1vDk2I2UtqR5/z/e+R6L8KnzA42iHlpYOopzIoHNCQJje4twutgbqNlOoF4NHRiL7f
-	 EtpSG86SYs1lytdf9iK0ppVZlrw3cAA4MhZObcKwMltzOOwND/3HGh2bvtTdUAQmYS
-	 hIZ/GZQJE7P7Q==
-Message-ID: <50e53fd9-4cca-4cac-9f8d-868de3a8a7bc@kernel.org>
-Date: Sun, 24 May 2026 21:08:35 +0200
+	id 1wRHY0-0000000Fn2n-4AVT
+	for linux-mediatek@lists.infradead.org;
+	Sun, 24 May 2026 22:43:54 +0000
+Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-2b4583f0a1aso63166935ad.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 24 May 2026 15:43:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1779662631; x=1780267431; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=vQjZaq2V359LxFj/1Py1W2spC//5ryaGbLK3jja2HKs=;
+        b=XqMMw73+8AhZqmL3EgDg63qnKSSNCVB1SCTXAGGCTED5elRdwLbOc8k8UHW+7kCbEH
+         cM1kLpK5QOcSYthJSqqFuGy9C+wkmmvR6jGUxcn3rAAAuqsr3aDdts86UKjKsEvTWjDF
+         6nFIfMzmqscWgWNEMqxRpWeeFO5mdQJUbUNyhPdRexjQA2CIBo0q7qKfcrGGIadTRCXM
+         Tl2bw8n0NmcnNAfJZXc4BZvacmF/lBs4em8iOn+HkaLI4pIDdegVnK0nGwmddLJ9WDh4
+         YGXHRS7RmsIJ0h5TYzBUqDN7MgaT+j4OruROhXYH+UVASqshIUHrOTu8NOIniK2wfdhX
+         nrvg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1779662631; x=1780267431;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=vQjZaq2V359LxFj/1Py1W2spC//5ryaGbLK3jja2HKs=;
+        b=kEAOWbe+4eRBb6cr9YcFmNA1yDSEImuJt3yShBvswvRspKKLoLd8ZLrTqtvHiOiGUf
+         Lru7Z4P9sy66nQEL2K1oYf/jeNg3pB3Mui+WVuf982Qq/Co/DNk1KCzLopm1hCw2wJ0X
+         Ek5nonurpOwi4A7wXjR7a9CFO2nKUp1w4XyXnMQ/mVhcqKsTpY5PYvBCDHHIGVvouDlz
+         suloPpYiAnz+KgROjX/9PRi45+FrW8hRysY0cWJWZJw2RQksGZa1qj3r7BIGi39KW2By
+         3feH/5jgmPyofiVsV+twAzFktRD4Uk6Ex8VSh6QRSxs0pykdiHP8uoFWyoqHI6/tPc0W
+         iaAQ==
+X-Forwarded-Encrypted: i=1; AFNElJ87ZZFXXFEjcIuDKqTYE/2/aDseEdmBbpPmh4hi09xAyFKPNuHZnGF/8hi1jG2lL/dEMU0d95aLPmA1+DS4Jw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxE96PixP0BRKvIcBf8/k/VCNN4XznOGuxXOHEq+MHSmz25Oe8a
+	kYxvJfzj7ry2zoTAnn3yqbZQbgEhhtUqVoOxCe+bI8opVidTJQJ1Bwt8
+X-Gm-Gg: Acq92OH5ZGtEjjabwcHrWM+N7p8u7gq4cN1wx7a6qsn8XTkBV7s/JnB+i6PjQ3VMRQn
+	aW+MnMhq9hyHL8EftrbbvSiuvvJ7D8EzdzytE8MOkSJa/x794ZmXsGrZSTXYpKtClxL2HTy6DbM
+	Q86XqgUekGsYnAt9M9FvKnZiWehJm65o96IblhSl+qz9dzLowQ7xjl9TsZAYi9n14Z8DrwUvdIc
+	yC/hErHttbj80EvidMGPe41vuPOl0alyKj7FLEftBWE6NIA7DGBqsDU9g/juo2FKMH5flXwpVgN
+	sG/F52ib4Y4LyPVpcfidlmM1DVMCJ7w5q9pDxvQCUaS9WdMwZMqQk6COQYLpQrB88eCL4Gr6b0f
+	DSS+vCmfcosrt1zY5WZ8WniOA0oSgnSp8Qly2ozwOjmSxZg971mlIdkq4e0ChPlvGRslZnfjhBn
+	0KBTaA5chKa7N1Me0mivLQDHQS
+X-Received: by 2002:a17:903:2f8d:b0:2b2:be01:5532 with SMTP id d9443c01a7336-2beb0841de5mr126883415ad.35.1779662631489;
+        Sun, 24 May 2026 15:43:51 -0700 (PDT)
+Received: from mincom1 ([125.149.177.227])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2beb569592dsm75643475ad.16.2026.05.24.15.43.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 24 May 2026 15:43:51 -0700 (PDT)
+From: Jihong Min <hurryman2212@gmail.com>
+To: netdev@vger.kernel.org
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jihong Min <hurryman2212@gmail.com>
+Subject: [PATCH net-next] net: airoha: bind WLAN-bound flows on PPE driver L2 cache miss
+Date: Mon, 25 May 2026 07:43:30 +0900
+Message-ID: <20260524224330.3995807-1-hurryman2212@gmail.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RESEND,v2 1/2] dt-bindings: memory-controllers: mtk-smi: Add
- support for mt8189
-To: mtk20898 <zhengnan.chen@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
- Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20260427070444.20247-1-zhengnan.chen@mediatek.com>
- <20260427070444.20247-2-zhengnan.chen@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20260427070444.20247-2-zhengnan.chen@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260524_120841_151816_D3946429 
-X-CRM114-Status: GOOD (  10.79  )
+X-CRM114-CacheID: sfid-20260524_154353_059566_EB22D999 
+X-CRM114-Status: GOOD (  17.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,29 +103,226 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 27/04/2026 09:04, mtk20898 wrote:
-> From: Zhengnan Chen <zhengnan.chen@mediatek.com>
-> 
-> Add binding description for mt8189.
-> 
-> The clocks number of mt8189 smi-sub common has a bit difference.
-> Its clock count is 2, while mt8195 has 3. Therefore, the minimum
-> number of clocks is changed to 2, with the third one being optional.
+The Linux bridge FDB can resolve a destination station to WDMA even when
+the Airoha PPE driver's L2 offload cache has no entry for that MAC pair.
+The normal bind path only checks the PPE driver's L2 offload cache, so an
+unbound PPE hit for WLAN egress can stay unbound even though the bridge
+already knows the right output path, unless a later offload event fills
+that PPE driver cache.
 
-Then why does the binding say that mt8195 has two clocks? You already
-received exactly this question.
+This matters for bridge-visible WLAN egress, such as wired-to-WLAN
+forwarding or WLAN peer forwarding across another BSS, radio or MLO link.
+Same-link or same-radio intra-BSS forwarding can stay inside the WLAN
+datapath and is not covered.
 
-> 
-> About what smi-sub-common is, please check the below diagram,
-> we add it in mediatek,smi-common.yaml file.
-> 
-> Signed-off-by: Zhengnan Chen <zhengnan.chen@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Before touching the PPE table, resolve the destination MAC through the
+bridge device above the ingress netdev. If the PPE driver's L2 offload
+cache lookup misses, bind the hardware flow to the resolved CDM4/WDMA
+path.
 
+Assisted-by: Codex:gpt-5.5
+Signed-off-by: Jihong Min <hurryman2212@gmail.com>
+---
+ drivers/net/ethernet/airoha/airoha_ppe.c | 138 +++++++++++++++++++----
+ 1 file changed, 119 insertions(+), 19 deletions(-)
 
-No need to resend this. You received comments at v2 and you should have
-implemented them.
+diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
+index 26da519236bf..ea932e6d87f6 100644
+--- a/drivers/net/ethernet/airoha/airoha_ppe.c
++++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+@@ -803,65 +803,163 @@ static void airoha_ppe_foe_flow_remove_entry(struct airoha_ppe *ppe,
+ }
+ 
+ static int
+-airoha_ppe_foe_commit_subflow_entry(struct airoha_ppe *ppe,
+-				    struct airoha_flow_table_entry *e,
+-				    u32 hash, bool rx_wlan)
++airoha_ppe_foe_commit_subflow(struct airoha_ppe *ppe,
++			      const struct airoha_foe_entry *bridge,
++			      u32 hash, bool rx_wlan)
+ {
+ 	u32 mask = AIROHA_FOE_IB1_BIND_PACKET_TYPE | AIROHA_FOE_IB1_BIND_UDP;
+ 	struct airoha_foe_entry *hwe_p, hwe;
+-	struct airoha_flow_table_entry *f;
+ 	int type;
+ 
+ 	hwe_p = airoha_ppe_foe_get_entry_locked(ppe, hash);
+ 	if (!hwe_p)
+ 		return -EINVAL;
+ 
+-	f = kzalloc_obj(*f, GFP_ATOMIC);
+-	if (!f)
+-		return -ENOMEM;
+-
+-	hlist_add_head(&f->l2_subflow_node, &e->l2_flows);
+-	f->type = FLOW_TYPE_L2_SUBFLOW;
+-	f->hash = hash;
+-
+ 	memcpy(&hwe, hwe_p, sizeof(*hwe_p));
+-	hwe.ib1 = (hwe.ib1 & mask) | (e->data.ib1 & ~mask);
++	hwe.ib1 = (hwe.ib1 & mask) | (bridge->ib1 & ~mask);
+ 
+ 	type = FIELD_GET(AIROHA_FOE_IB1_BIND_PACKET_TYPE, hwe.ib1);
+ 	if (type >= PPE_PKT_TYPE_IPV6_ROUTE_3T) {
+-		memcpy(&hwe.ipv6.l2, &e->data.bridge.l2, sizeof(hwe.ipv6.l2));
+-		hwe.ipv6.ib2 = e->data.bridge.ib2;
++		memcpy(&hwe.ipv6.l2, &bridge->bridge.l2,
++		       sizeof(hwe.ipv6.l2));
++		hwe.ipv6.ib2 = bridge->bridge.ib2;
+ 		/* setting smac_id to 0xf instruct the hw to keep original
+ 		 * source mac address
+ 		 */
+ 		hwe.ipv6.l2.src_mac_hi = FIELD_PREP(AIROHA_FOE_MAC_SMAC_ID,
+ 						    0xf);
+ 	} else {
+-		memcpy(&hwe.bridge.l2, &e->data.bridge.l2,
++		memcpy(&hwe.bridge.l2, &bridge->bridge.l2,
+ 		       sizeof(hwe.bridge.l2));
+-		hwe.bridge.ib2 = e->data.bridge.ib2;
++		hwe.bridge.ib2 = bridge->bridge.ib2;
+ 		if (type == PPE_PKT_TYPE_IPV4_HNAPT)
+ 			memcpy(&hwe.ipv4.new_tuple, &hwe.ipv4.orig_tuple,
+ 			       sizeof(hwe.ipv4.new_tuple));
+ 	}
+ 
+-	hwe.bridge.data = e->data.bridge.data;
+-	airoha_ppe_foe_commit_entry(ppe, &hwe, hash, rx_wlan);
++	hwe.bridge.data = bridge->bridge.data;
++
++	return airoha_ppe_foe_commit_entry(ppe, &hwe, hash, rx_wlan);
++}
++
++static int
++airoha_ppe_foe_commit_subflow_entry(struct airoha_ppe *ppe,
++				    struct airoha_flow_table_entry *e,
++				    u32 hash, bool rx_wlan)
++{
++	struct airoha_flow_table_entry *f;
++	int err;
++
++	f = kzalloc_obj(*f, GFP_ATOMIC);
++	if (!f)
++		return -ENOMEM;
++
++	err = airoha_ppe_foe_commit_subflow(ppe, &e->data, hash, rx_wlan);
++	if (err) {
++		kfree(f);
++		return err;
++	}
++
++	hlist_add_head(&f->l2_subflow_node, &e->l2_flows);
++	f->type = FLOW_TYPE_L2_SUBFLOW;
++	f->hash = hash;
+ 
+ 	return 0;
+ }
+ 
++static bool
++airoha_ppe_foe_prepare_wdma_subflow_dev(struct airoha_ppe *ppe,
++					struct net_device *dev,
++					struct airoha_flow_data *data,
++					struct airoha_foe_entry *hwe)
++{
++	u32 pse_port;
++	int err;
++
++	err = airoha_ppe_foe_entry_prepare(ppe->eth, hwe, dev,
++					   PPE_PKT_TYPE_BRIDGE, data, 0);
++	if (err)
++		return false;
++
++	pse_port = FIELD_GET(AIROHA_FOE_IB2_PSE_PORT, hwe->bridge.ib2);
++	if (pse_port != FE_PSE_PORT_CDM4)
++		return false;
++
++	return true;
++}
++
++static struct net_device *
++airoha_ppe_foe_get_bridge_master(struct net_device *dev)
++{
++	struct net_device *master = NULL;
++
++	rcu_read_lock();
++	master = netdev_master_upper_dev_get_rcu(dev);
++	if (master && netif_is_bridge_master(master))
++		dev_hold(master);
++	else
++		master = NULL;
++	rcu_read_unlock();
++
++	return master;
++}
++
++static bool
++airoha_ppe_foe_prepare_wdma_subflow(struct airoha_ppe *ppe,
++				    struct sk_buff *skb,
++				    struct airoha_foe_entry *hwe)
++{
++	struct ethhdr *eh = eth_hdr(skb);
++	struct airoha_flow_data data = {};
++	struct net_device *master;
++
++	if (!is_valid_ether_addr(eh->h_source) ||
++	    !is_valid_ether_addr(eh->h_dest))
++		return false;
++
++	ether_addr_copy(data.eth.h_dest, eh->h_dest);
++	ether_addr_copy(data.eth.h_source, eh->h_source);
++
++	if (!skb->dev)
++		return false;
++
++	/* WLAN egress unbound hits can arrive before flowtable creates the
++	 * L2 master flow normally used for subflow binding. Resolve only
++	 * through the bridge master so dev_fill_forward_path() must use the
++	 * bridge FDB for the destination MAC. Calling the ingress AP netdev
++	 * directly can describe the source station's WDMA path and would
++	 * corrupt Wi-Fi-to-wired flows whose real egress is not WDMA.
++	 */
++	master = airoha_ppe_foe_get_bridge_master(skb->dev);
++	if (!master)
++		return false;
++
++	if (airoha_ppe_foe_prepare_wdma_subflow_dev(ppe, master, &data,
++						    hwe)) {
++		dev_put(master);
++		return true;
++	}
++
++	dev_put(master);
++	return false;
++}
++
+ static void airoha_ppe_foe_insert_entry(struct airoha_ppe *ppe,
+ 					struct sk_buff *skb,
+ 					u32 hash, bool rx_wlan)
+ {
++	struct airoha_foe_entry wdma_hwe = {};
+ 	struct airoha_flow_table_entry *e;
+ 	struct airoha_foe_bridge br = {};
+ 	struct airoha_foe_entry *hwe;
+ 	bool commit_done = false;
++	bool wdma_ready = false;
+ 	struct hlist_node *n;
+ 	u32 index, state;
+ 
++	wdma_ready = airoha_ppe_foe_prepare_wdma_subflow(ppe, skb,
++							 &wdma_hwe);
++
+ 	spin_lock_bh(&ppe_lock);
+ 
+ 	hwe = airoha_ppe_foe_get_entry_locked(ppe, hash);
+@@ -899,6 +997,8 @@ static void airoha_ppe_foe_insert_entry(struct airoha_ppe *ppe,
+ 				   airoha_l2_flow_table_params);
+ 	if (e)
+ 		airoha_ppe_foe_commit_subflow_entry(ppe, e, hash, rx_wlan);
++	else if (wdma_ready)
++		airoha_ppe_foe_commit_subflow(ppe, &wdma_hwe, hash, rx_wlan);
+ unlock:
+ 	spin_unlock_bh(&ppe_lock);
+ }
+-- 
+2.53.0
 
-Best regards,
-Krzysztof
 
