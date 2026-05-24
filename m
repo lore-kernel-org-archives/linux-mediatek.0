@@ -4,106 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDC8CCD4F54
-	for <linux-mediatek@archiver.kernel.org>; Sun, 24 May 2026 08:06:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E10B1CD5BAB
+	for <linux-mediatek@archiver.kernel.org>; Sun, 24 May 2026 19:08:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4WMpRmGDV6X/z1OH5zMJ111/X3tKN2AtCzBErEW3G/E=; b=PRoqqz6B4E7mxQGwJoKWkCBeen
-	O1U3yeNO95MGGIoZ+7dCxWX6eLHsX65gZ3fFyJPqcbg+7nnIRrOl/PbzI6RMkXhCmbfCK95dWsw0r
-	bWS5Qa/8HQmfuEzLMIL8qWvFOQJFnObGfTalmPCGwVtFdidQwWPE+8D8S6j+i0TMAo7vIAV4dF6RW
-	/AfYDxK6T9FuW7Ny5wbKhnbbkHm8C6OsgF9OxoT2pv4UOzVuDiysLvdamVvuapAvJtw38+CzO4pq+
-	FiXrJ1uEnKla/0YxPJjtQapR+ZRBZ42ZHoPgzAXRscms9eqMhNnJpfkp2krOXZ//vMX7CvvA+bXRY
-	YhM8tHbQ==;
+	bh=KLRQ2wACRuipMVnIkUKL2r6pZUOgBEEve1ZZpHIHskM=; b=noJKccT9tyCgg7C9IukXd2K9KE
+	gUst8J3JPsCqDR2cko68E3dZJWB04Kuqol3RFtg5whZjdm1GQpu6lslEDXMRaLJip7DiX6nuVVR5o
+	WCI12xAlfrKQdwUaR35kB3iutiM0eHkvXyNnD+ToznO+f5+Tz7LdDKLuIEbZybxUJ1Tqyj2LOrxOH
+	V+wCIEjofwf4FHm7NaB29oqwiIvFjhZ09C3KvUs6GtFfbSlNC9Xk7d0coCXOeuOxry0k7jj8YBc6j
+	lHv9LJBk2S3tBTn3WcQubOLJDeBIPgH7q0xK4QNNM4p9yeNRwW0uOAVSVcogWqE7Mm3h3e5Cm393l
+	mm31/zCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wR3r9-0000000EfCH-0G8M;
-	Sun, 24 May 2026 08:06:43 +0000
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+	id 1wREBn-0000000FTXK-0w2W;
+	Sun, 24 May 2026 19:08:43 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wR3r6-0000000EfBL-0nhs
-	for linux-mediatek@lists.infradead.org;
-	Sun, 24 May 2026 08:06:41 +0000
-Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-5a88db610ccso8831436e87.2
-        for <linux-mediatek@lists.infradead.org>; Sun, 24 May 2026 01:06:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779609997; cv=none;
-        d=google.com; s=arc-20240605;
-        b=Ifw2gGNDO5xKKN29y/74KaiVC3UQDMLeFsXLP4ggO9Wt6K83OAydn16LIXngRAHShY
-         pzTTulLqs3zcpryJb25p/GTT/DfgDP0cOHnTBqQ1M8uurKZJMBYryBL0oIqmvwN284zj
-         bAIMzMV+LxssMz7Z9MeZrKARF+q1ZfcW1A1HDCK8mV8f6tg+d7R+pV/B/fHkfZCY01Gi
-         8UY20ophIskmrafWftmnfesFuX8AdoXjGetm+GTqE89PmodsakrYJ0fsXPcR6qYPYx/M
-         2js1PtbqVPZf9j/6azeAQyOasnVyvHo0Bd7/HBf94SGlojcC30gxttYWMg5EOILEWYMp
-         vR9g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=4WMpRmGDV6X/z1OH5zMJ111/X3tKN2AtCzBErEW3G/E=;
-        fh=AiKGzUvWwS263todyA3QLR6bMwSsIo6xNk+eWRmJJtI=;
-        b=J2WTaL6ofcWuu6aYO6mWg/Ra4M2JeYJBzNgKcbzuep7kv451xYgn0NZH1JJ23XkzKK
-         D+yGW3y5qZS+WLzalHBTR53BBpOIKnX9ce6MmgtHdrI0lBxzo2TdMLDdHZXV9c3e58tc
-         0sbR1pBDv6+92wsdhavYY6C9vkXlqQQQgbNUsdVmALqVR1gxQQOkwUa+Y1vX65gXenqf
-         0jYoL6Spy4/Lk7SXd62WKbKb/YAch8n29DviGTGqyo8nggz6ZI0E6fWJ3ts/ye2DBE2X
-         oilpIdlnDpaSnNigVoWitzbpyP+UuMuwn+znu3mxp7VVrxX7S1nQoSBcNsyM3Yyus+ND
-         fx2g==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1779609997; x=1780214797; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=4WMpRmGDV6X/z1OH5zMJ111/X3tKN2AtCzBErEW3G/E=;
-        b=VjzeJho192ayUzD1D9eJOBDIVzUAw5mGn77fL5JcIlWeFMPfbdZxzcaitYFYZc8nZI
-         coaULb5SwfDWd3tjtwnYQ/5FFN8ppLu2kFsIVE+GHUqjtTLk9nqHHQwI5L5bWPo1r1CU
-         TIcQqHKBfAaprRkE7vRhlJ7oITucx99nrTfxA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779609997; x=1780214797;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=4WMpRmGDV6X/z1OH5zMJ111/X3tKN2AtCzBErEW3G/E=;
-        b=UzWHxNmTWaNnB6JsXw5bpZ2JlNHJXpo5pTfWhZ5sqEDiqXpgyvzJC1YLq+bYcEp6NX
-         TnM9mmIju4L31Bm2r8hjTFs1HJ48+M0MVC1vR8UuORM8KZpPMaDZBZ8FXfsWdBu187fX
-         GfeDgJ2xP9xWY7OPMuOWakGjTw7dh3nKviD58DVoghAtMThVBEvOViEy88SMh0nMPkyq
-         JXeS6tekhiL/Ho/zE700nfif9Zly5dhjOwFybtTngG/rF5M4zpuKxhex0lqh1c7ccOR1
-         4aVljpOumLLUWO5Zfez18fiHh7TCqd19AKBrun8hBa1zoRtD5zqRlbMtFQlDByy1VWn3
-         62mQ==
-X-Forwarded-Encrypted: i=1; AFNElJ+XedODMv4snvlHHCz/RduR9TJ2j/aqeNapHv7WWrr5GVt/Zr88zoTtYZgpvup64QzN994bVQgWhVgRnelFpQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz/Rz2Ru/WkTP7p5FWtMzPJ42hMeTzx5kl8+0e6ivEyCbGiB3+c
-	CGAzQU2fO9vPaoRNz3VvI44Ie8yOu+1j6U8g/G0rtwEmg+JEdMunk2LdGYYlanF+QrmsTf+aasl
-	N5fPs/NyJraqlu5CNH02TKfhoROEfunMAGjjAzFZE
-X-Gm-Gg: Acq92OFNDaqpKkJ4aWfzS4TZ22qa2lzEg/5SSQ1BzKzLfjUlV2VH+da28inDy67+7mH
-	OF/hd+RZpRu4HNP9g4PNKKK8VQglYBnmFh9skC8TvOLKwZjS4kX67iaXCVM7OBpGE8kjJM+NPGU
-	ftdf0dp+UXN3DdXuZFCck28a0+ypPYXjYu0d80aCAdJCgHJ2Rk/rC+wkqgOvyer2/9yHEBsBHqQ
-	MwjFudKcOOZhnhPof+SPJSM4vzDavj/tvas8PZ9y+fHM3dbxYAJwtb3rjnAV4YfVpkEk/IF8oUT
-	3buLdl3lNLdCSBK1
-X-Received: by 2002:a05:6512:1548:b0:5a4:52e:5933 with SMTP id
- 2adb3069b0e04-5aa3235c913mr2060405e87.5.1779609997332; Sun, 24 May 2026
- 01:06:37 -0700 (PDT)
+	id 1wREBl-0000000FTWd-0Ftt;
+	Sun, 24 May 2026 19:08:42 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 307F544027;
+	Sun, 24 May 2026 19:08:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 991341F000E9;
+	Sun, 24 May 2026 19:08:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1779649720;
+	bh=KLRQ2wACRuipMVnIkUKL2r6pZUOgBEEve1ZZpHIHskM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To;
+	b=n/7/oLOEv+z4+YBMo7iLr1qDDwBbqDZx0/+21SVPQ8MjnRNQ2kRyNBNHtdkJqsxO5
+	 UCphTz5rjChomuGjjw7Alujmzz16yQF9e/dOuUJHZClq6z5bXKorZQLsnskc5i3xLe
+	 NyEr3uinVD+mp2udqEpQTj2HaPlrwC8PnhRWs/ZbgJLD53PXk+8hXQLjmtvFuWnJf3
+	 1vDk2I2UtqR5/z/e+R6L8KnzA42iHlpYOopzIoHNCQJje4twutgbqNlOoF4NHRiL7f
+	 EtpSG86SYs1lytdf9iK0ppVZlrw3cAA4MhZObcKwMltzOOwND/3HGh2bvtTdUAQmYS
+	 hIZ/GZQJE7P7Q==
+Message-ID: <50e53fd9-4cca-4cac-9f8d-868de3a8a7bc@kernel.org>
+Date: Sun, 24 May 2026 21:08:35 +0200
 MIME-Version: 1.0
-References: <20260515090149.3169406-1-wenst@chromium.org> <CAMRc=MdnjRRMVzxPkkrPhQ4dz7rsK8-HKUp9cQ0z11apL3escQ@mail.gmail.com>
-In-Reply-To: <CAMRc=MdnjRRMVzxPkkrPhQ4dz7rsK8-HKUp9cQ0z11apL3escQ@mail.gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Sun, 24 May 2026 11:06:26 +0300
-X-Gm-Features: AVHnY4KQQKvEna3YmFG3JiRUMuMCSWWGPOX7GZHTMr-aA0Q2R8PaQnONHyygdDE
-Message-ID: <CAGXv+5HC3dqgcE3KnKzakHHWFHB6m_X42orOkNUvZvp=SL_O8g@mail.gmail.com>
-Subject: Re: [PATCH RFC 00/12] arm64: mediatek: Add M.2 E-key slot on Chromebooks
-To: Bartosz Golaszewski <brgl@kernel.org>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-pm@vger.kernel.org, 
-	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Manivannan Sadhasivam <mani@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RESEND,v2 1/2] dt-bindings: memory-controllers: mtk-smi: Add
+ support for mt8189
+To: mtk20898 <zhengnan.chen@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
+ Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20260427070444.20247-1-zhengnan.chen@mediatek.com>
+ <20260427070444.20247-2-zhengnan.chen@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20260427070444.20247-2-zhengnan.chen@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260524_010640_408172_E5E98B00 
-X-CRM114-Status: GOOD (  45.76  )
+X-CRM114-CacheID: sfid-20260524_120841_151816_D3946429 
+X-CRM114-Status: GOOD (  10.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,125 +121,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 20, 2026 at 7:01=E2=80=AFPM Bartosz Golaszewski <brgl@kernel.or=
-g> wrote:
->
-> On Fri, May 15, 2026 at 11:02=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org=
-> wrote:
-> >
-> > Hi everyone,
-> >
-> > This series is my attempt at enabling power sequencing for USB to suppo=
-rt
-> > the USB connection on M.2 E-key slots. M.2 E-key was enabled in v7.1-rc=
-1
-> > with just PCIe and UART supported [1].
-> >
-> > Most of the series is based on next-20260508, while the DT changes also
-> > depend on some other DT cleanup patches I sent [2][3].
-> >
-> >
-> > Patch 1 reworks the power sequencing framework to allow matching agains=
-t
-> > different USB ports. The consumer API gains an "index" parameter (which
-> > is the USB port number on the hub), while the provider API is reworked
-> > to pass the index to the matching function of the providing driver.
-> >
->
-> Sigh... I would really prefer to avoid going in this direction. IMO
-> it's not very clear what this index actually refers to in generic
-> terms, given that pwrseq is flexible on purpose and there's no
-> specific, well-defined DT property which could have an "index".
->
-> > Patch 2 implements the index matching in the pcie-m2 driver. Matching
-> > only happens when a valid (>=3D 0) index is given.
-> >
-> > Patch 3 reworks the power sequencing targets for the E-key connector in
-> > the pcie-m2 driver to add targets for USB and SDIO. The former is used
-> > later on in this series.
-> >
-> > Patch 4 reworks the USB hub driver to return the actual error code from
-> > hub_configure() in hub_probe(). This is needed in the next patch to
-> > correctly return -EPROBE_DEFER.
-> >
-> > Patch 5 lets the USB hub driver look for power sequencers for each port=
-.
-> > Currently this only works for M.2 E-key connections, but it could be
-> > extended to cover other cases. It should also make port reset via turni=
-ng
-> > off the port VBUS work, even when VBUS is not directly controlled by th=
-e
-> > hub.
-> >
-> > I expect some discussion on this patch, because a) it adds some
-> > OF-specific code into an otherwise generic (core) driver, and
-> > b) it doesn't yet handle USB 2.0 / 3.x shared ports; it ends up powerin=
-g
-> > on the port twice, which negates the port reset part.
-> >
->
-> I understand that you do this because the port device has no OF node
-> assigned. If we wanted to call pwrseq_get() for the port device, is
-> there really no other way to associate it with the correct pwrseq
-> provider?
+On 27/04/2026 09:04, mtk20898 wrote:
+> From: Zhengnan Chen <zhengnan.chen@mediatek.com>
+> 
+> Add binding description for mt8189.
+> 
+> The clocks number of mt8189 smi-sub common has a bit difference.
+> Its clock count is 2, while mt8195 has 3. Therefore, the minimum
+> number of clocks is changed to 2, with the third one being optional.
 
-I suppose we could tie the "port@X" node to the usb port device, but
-AFAIK no other subsystem does this so we would be introducing a new
-pattern.
+Then why does the binding say that mt8195 has two clocks? You already
+received exactly this question.
 
-In the M.2 pwrseq driver, we would have to match by port node instead
-of its parent device node. We may end up with different behavior for
-the USB target vs the other targets.
-
-Also, the "port@X" nodes only exist for the OF graph connections to
-connectors and/or muxes (this series doesn't deal with the latter).
-For directly connected devices, there is a "device@X" child node
-directly under the USB hub node. That node is what gets tied to the
-the USB device.
-
-> Does the child index in hub_configure() relate to the port index as
-> defined by the unit address of the port DT node? I'm talking about the
-> X in port@X?
-
-Yes. The downstream port numbers start at 1. I believe 0 corresponds
-to the upstream port.
-
-> > Patch 6 reverts an incorrectly modeled OF graph connection for the
-> > MediaTek XHCI controller.
-> >
-> > Patch 7 then adds a proper representation.
-> >
-> > Patches 8 through 12 enable the M.2 E-key slots (used for WiFi/BT) and
-> > USB type-A connectors found on MediaTek-based Chromebooks. These are
-> > provided in this series for reference. The USB type-A connector changes=
-,
-> > while not directly related, have overlapping context, and was easier to
-> > include. They were also used to test some extra local changes I tried
-> > to convert the USB A connector from an onboard USB device to a power
-> > sequencing provider.
-> >
-> >
-> > As this series changes existing power sequencing API, and also uses the
-> > changed API in subsequent patches, I think the best way to merge this
-> > is for Bartosz to take the power sequencing patches and provide an
-> > immutable tag for Greg to merge and then merge the USB patches.
-> >
-> > The DT patches can go through the soc tree once all the driver and DT
-> > binding changes are merged.
-> >
-> >
-> > Thanks
-> > ChenYu
-> >
-> > P.S. I'll be at Embedded Recipes if anyone wants to discuss details.
-> >
->
-> I'll be there too! Or should i say "here"? I live here after all. :) Let'=
-s talk!
-
-Sure!
+> 
+> About what smi-sub-common is, please check the below diagram,
+> we add it in mediatek,smi-common.yaml file.
+> 
+> Signed-off-by: Zhengnan Chen <zhengnan.chen@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
-Thanks
-ChenYu
+No need to resend this. You received comments at v2 and you should have
+implemented them.
+
+Best regards,
+Krzysztof
 
