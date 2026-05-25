@@ -4,56 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF34CCD5BB1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 May 2026 15:28:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7C64CD5BC9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 May 2026 15:38:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=L7Os4s2IEuxuriK9SstbnqCyxryE75fG4oDhRKfyRQ0=; b=jowEHPXmWDw6rA
-	MqyfrF+iSwzTlBSsNOhKLX+ru8zB5CfWMkXO9OFzt8PN6gBqXsAxdp+cQ5Ye3U0CUaaGDaSpRZrHv
-	QHltlAc1BoHKPcwxuXlntB6ifyEgR8h2uYWnp0DXp9qR2u9aR6kLhNJ2BLrXn3o131tlhfVHoah/M
-	/ircxZ9hLyvSsCeNhyT5BoHQ35vyXOISVnGuTYrhTPUBay54+mljK502644EKH2aj7XHZzkWyOGr1
-	VCBQfwxY2uczg/2ur77knfYJYSIszgVoyqi9FcL0NjBjiPWBCNjdEJGBFQB9NEOaai9nTXA6zSuGv
-	BL6Kxf7bQbO09BddU76g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KxLlu3bGboBpssH3q4i9X/9Rcpz/kEUO07K0hG3KAGo=; b=iLaazN+CzMVoKNKVDhnJL3P/L5
+	Lqwi/R7126PAROz2/BIeQRJSgsF8lJfovaPkSeJwwozLP1b7bPb9+hXYJB/Ml1uqlEY+RxiThzTIj
+	oZDkGnhOYUnCQGVfCyB5CcomF9sicGpA1TIQm2UjdKTjdfzKWoxRc/O8NQ9N3iG1Kwq09HnC93KX0
+	8iic0mTmE2Hmbh2poDRqnC3vlmkogV8Jj9l6SqrQi+ZkBipLp7miBh0O15+Ur4lU0KkJwCwIsT02I
+	6rixnd79WIcshkrI4EbmmeXpHCJ7+F75SCqhwBa80rAnwTLUt5zEq9fexumpnzq0k7DHEvr2+FLWZ
+	Ig1K8K5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRXEc-0000000HWTW-3ok9;
-	Mon, 25 May 2026 15:28:54 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wRXNn-0000000HXcN-3TNj;
+	Mon, 25 May 2026 15:38:23 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRXEb-0000000HWSy-34As;
-	Mon, 25 May 2026 15:28:53 +0000
+	id 1wRXNm-0000000HXbj-0xoR;
+	Mon, 25 May 2026 15:38:22 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 26E29601E3;
-	Mon, 25 May 2026 15:28:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3E3F81F000E9;
-	Mon, 25 May 2026 15:28:52 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id AB6D46008A;
+	Mon, 25 May 2026 15:38:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1C5BD1F000E9;
+	Mon, 25 May 2026 15:38:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779722932;
-	bh=L7Os4s2IEuxuriK9SstbnqCyxryE75fG4oDhRKfyRQ0=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=J7d9Nt7deToD+0JArcSe6D/WQ30cExBmwO8G+hjU4HwPlMuidVbSufI2Q9q0Tl3g6
-	 XUP1tarwDa2XAR8KEydzGbSJDVoXMjXTDxrHa5mpQkmdP8RfMSZ3g1xSNTu3uq3FFV
-	 3Dnmc136VKn/fBnRkjaZIVZTK59mEO3CZ9iI2uOd6/i4f7adZKl3W23JUfWWUQRoPy
-	 5pqwai6cS3O22Tx8y3G1TBBih4lpnnr6T6gnoOr+zQ1y6ARiFMfJ9j6XNrQiBGQIeb
-	 weTLvh2zz4OTMRb4qDrBxBjvQ2KwXXIiWh5YgMzejn5cJrE01VUJQITdAP2BlVaMff
-	 Ac1nMwk3xdc6A==
-Date: Mon, 25 May 2026 08:28:51 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: "Frank Wunderlich (linux)" <linux@fw-web.de>
-Subject: Re: [RFC net PATCH v1] net: pcs: pcs-mtk-lynxi: fix bpi-r3 serdes
- configuration
-Message-ID: <20260525082851.6840b4dd@kernel.org>
-In-Reply-To: <64b40fbee19dc108752574419a38bcfc@fw-web.de>
-References: <20260409133344.129620-1-linux@fw-web.de>
-	<20260409215509.si2dy63seo4iaspa@skbuf>
-	<64b40fbee19dc108752574419a38bcfc@fw-web.de>
+	s=k20260515; t=1779723501;
+	bh=KxLlu3bGboBpssH3q4i9X/9Rcpz/kEUO07K0hG3KAGo=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=n6Xy8kwWaYqgCrONmhPK9deWc7MFPgyoEIXJHiHbivJ3CBfIdnS4wmIXfRaxhpUEY
+	 095UE7eFqlIQUTHJSDEmWV9MCk1BKfRDDHoywaIPdqiNNG9ryVvdSCniUkcmpEs8mj
+	 SpycPQUynwe6BvMcq0J4LDxTBmngK+OYW0fb7Ju6VoEfzjqNTyqFv9hIbrXif9sNtY
+	 sKRpTXHOR5TFnE2LxlxoD7/1sq1egsHgf8XEN5L+ViQO8x9XSvCwUspiZZvsFqRpWt
+	 c8z+Jxkjshb+If2tzIhIJLvIKlICI+27MWZfODJ7aWzxTfCapfmOTMRAc0be/6l5f2
+	 reE1To22jUBAw==
+From: Mark Brown <broonie@kernel.org>
+To: Srinivas Kandagatla <srinivas.kandagatla@oss.qualcomm.com>
+Cc: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, 
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+ sharq0406@gmail.com, kuninori.morimoto.gx@renesas.com, 
+ ckeepax@opensource.cirrus.com, linux-sound@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20260520155002.145306-1-srinivas.kandagatla@oss.qualcomm.com>
+References: <20260520155002.145306-1-srinivas.kandagatla@oss.qualcomm.com>
+Subject: Re: [PATCH v2 0/2] ASoC: codecs: max98090: switch to standard
+ set_jack callback
+Message-Id: <177971278332.58460.18153221856136100187.b4-ty@b4>
+Date: Mon, 25 May 2026 13:39:43 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.16-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1634; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=HDoLE08+LMsF0VGAE+rCwJWmLkQjgVi2YjS7YWE60Ec=;
+ b=kA0DAAoBJNaLcl1Uh9AByyZiAGoUbOqhlLg1wPvZIojtWu3FEb0H1NR9/G08wMPrqySzWZfFW
+ okBMwQAAQoAHRYhBK3maKpnVxi1n+Kf6iTWi3JdVIfQBQJqFGzqAAoJECTWi3JdVIfQtSoH/jB1
+ B6iErPaE6qYmHbeZUyEALSiPuMZgnX0FbCVNAgZrLEdEVZ6vcy636TPlifiLyVSNPx4OJZ5VjhH
+ xwwBDX6NA9U4DJCGD0yRdthITi+97INDChToqvKh/k0o29J44L/UTJAuEDDxqc2JHnuIZONlTA8
+ sm+sG8Dx10c60ub2qTsRemJs9JrP+dy2iGY6qbZldrENKwtyhT6yURKI/CQtCcczclW+k9hzKWK
+ RLMH71WJGF2Giyoi0oYWUY1iksvajGDsm8fWF+qP3LU9yp90a27CP4be1Ahk+UP58HELw3kqt3d
+ dZQqYZfD5npusPHiTSDfATHu66Scp1v7Gc0TUCM=
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,42 +81,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Vladimir Oltean <vladimir.oltean@nxp.com>, Russell King <linux@armlinux.org.uk>, Daniel Golle <daniel@makrotopia.org>, Eric Dumazet <edumazet@google.com>, Alexander Couzens <lynxis@fe80.eu>, linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org, Heiner Kallweit <hkallweit1@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 25 May 2026 12:07:33 +0200 Frank Wunderlich (linux) wrote:
-> Am 2026-04-09 23:55, schrieb Vladimir Oltean:
-> > On Thu, Apr 09, 2026 at 03:33:42PM +0200, Frank Wunderlich wrote:  
-> >> From: Frank Wunderlich <frank-w@public-files.de>
-> >> 
-> >> Commit 8871389da151 introduces common pcs dts properties which writes
-> >> rx=normal,tx=normal polarity to register SGMSYS_QPHY_WRAP_CTRL of 
-> >> switch.
-> >> This is initialized with tx-bit set and so change inverts polarity
-> >> compared to before.
-> >> 
-> >> It looks like mt7531 has tx polarity inverted in hardware and set 
-> >> tx-bit
-> >> by default to restore the normal polarity.
-> >> 
-> >> Till this patch the register write was only called when 
-> >> mediatek,pnswap
-> >> property was set which cannot be done for switch because the fw-node 
-> >> param
-> >> was always NULL from switch driver in the mtk_pcs_lynxi_create call.
-> >> 
-> >> Do not configure switch side like it's done before.
-> >> 
-> >> Fixes: 8871389da151 ("net: pcs: pcs-mtk-lynxi: deprecate 
-> >> "mediatek,pnswap"")
-> >> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> >> ---  
-> > 
-> > Reviewed-by: Vladimir Oltean <vladimir.oltean@nxp.com>  
+On Wed, 20 May 2026 15:50:00 +0000, Srinivas Kandagatla wrote:
+> ASoC: codecs: max98090: switch to standard set_jack callback
 > 
-> just a gentle ping as i still not see this in torvalds/master.
- 
-You posted it as RFC, patchwork treats RFC as "no action required".
-Since the posting is now >1mo old, please resend without the RFC tag?
+> The MAX98090 codec driver currently exposes a custom
+> max98090_mic_detect() helper for machine drivers to register a headset
+> jack.
+> 
+> This series converts the driver to use the standard component
+> .set_jack callback and updates the mt8173-max98090 machine driver to use
+> snd_soc_component_set_jack() instead of the codec-specific helper.
+> 
+> [...]
+
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.2
+
+Thanks!
+
+[1/2] ASoC: mt8173-max98090: use standard callback to set jack
+      https://git.kernel.org/broonie/sound/c/bad83abb5c29
+[2/2] ASoC: codecs: max98090: use component set_jack callback
+      https://git.kernel.org/broonie/sound/c/e2c428c3832e
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
