@@ -4,72 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65179CD5BCF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 May 2026 06:09:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B56EDCD5BCF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 May 2026 06:58:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=AU+f2VPSy6zrd6kl7TWzC5g2Ht0JlmjXMhgzs2DULQQ=; b=KdMSwxOnUwEpsbrZX6/4CYvwcD
-	W4YqcaJ0jX/hDjOWELEhLbQj2oGNygTo0BurmKEyAbZgcAArJCGTIDMtAVP4xSS/WQ+RQiq9v3d54
-	IkVrr9Fo0/bPCSJ1MY/CQLhDyaYVLIU6OWRjs0Qvu6H+LdRTCm2AACCNFI7yF2uSjlEPbm+wst1lq
-	uAzxav0cTsQzYH8QEwNjSKVe3UDJRQt86W11/84Q7F3jy6Nm0EV9ieZCHtRTYCECbATQNqZJPPq/4
-	4NdFnaGDvta98NeZ94dHL8aHz0ndIIF7SR0l9AF4z8xyZ4WHnYvzi/MTzL3Jpz0PAlU2nu7wGURIl
-	lF0l6f8w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Z7b2hUwG6+YnBfBMmHjYGQwh5dGHfQEVaggyyf/in4s=; b=XqSFEtlZfogf/Yw3eneyDxI6tV
+	67QJKMHdNQzSbE+LmIXhp0KiGr1M41rJIjnWQrioeNaINVCUGh56zm608lttlkD9qxTQb39ZEYBPP
+	kSmPY84LfXRd9ljIjUsbIY/8mJ9AiJrC+91elMP4l8aHbZrh1SFEEAMiR3EDTz6jgtyDRfrgPkLv4
+	oHx7SZwSLRIhPEMRJB5K63zf8xll0stJUR3VnUOQ3IfFBjN87HDLf2VgGM4zUMonCR488JDv2X5cE
+	ej2NNKXXxGwpoZW1Z3iBh2Q4gvV4dz+MXCenZ5XyfRnp/GNaq844EEm3hvqrqLSEj2XN3WHFae8JT
+	8Byt4hyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRkyd-000000018C4-10QE;
-	Tue, 26 May 2026 06:09:19 +0000
-Received: from mailgw.kylinos.cn ([124.126.103.232])
+	id 1wRlkN-00000001DQe-2L28;
+	Tue, 26 May 2026 06:58:39 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRkyZ-0000000189s-0pcH;
-	Tue, 26 May 2026 06:09:17 +0000
-X-UUID: 63d14fe858c911f1aa26b74ffac11d73-20260526
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:d8e5edf1-6dc9-4bcb-934f-2113a4b15081,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:e7bac3a,CLOUDID:d63f01bd65cc66a9646d46786aa81cf6,BulkI
-	D:nil,BulkQuantity:0,Recheck:0,SF:102|865|898,TC:nil,Content:0|15|50,EDM:-
-	3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,A
-	V:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 63d14fe858c911f1aa26b74ffac11d73-20260526
-X-User: liujiajia@kylinos.cn
-Received: from nature.lan [(10.44.16.150)] by mailgw.kylinos.cn
-	(envelope-from <liujiajia@kylinos.cn>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 1555042781; Tue, 26 May 2026 14:09:01 +0800
-From: Jiajia Liu <liujiajia@kylinos.cn>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
-	Michael Lo <michael.lo@mediatek.com>,
-	Leon Yen <leon.yen@mediatek.com>
-Cc: linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Jiajia Liu <liujiajia@kylinos.cn>
-Subject: [PATCH] wifi: mt76: mt7925: add wcid publish check in mt76_sta_add
-Date: Tue, 26 May 2026 14:08:41 +0800
-Message-ID: <20260526060841.49161-1-liujiajia@kylinos.cn>
-X-Mailer: git-send-email 2.53.0
+	id 1wRlkE-00000001DOH-1ZPX;
+	Tue, 26 May 2026 06:58:30 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 47FFD600BB;
+	Tue, 26 May 2026 06:58:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 744F71F000E9;
+	Tue, 26 May 2026 06:58:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1779778709;
+	bh=Z7b2hUwG6+YnBfBMmHjYGQwh5dGHfQEVaggyyf/in4s=;
+	h=From:Date:Subject:To:Cc;
+	b=JeVRqH7cgXgDuw4uQ4LxwIKjnuqfJL7i9oJF1k6s+3NllQOjaRb4k2oknMPtJPRe/
+	 u0hGFKyZ/0GW1KaiCjDqVHLQ1PkwJrFOQCvTVxgZ9+s+C6oRllEs00dqeiegnjEMj7
+	 Ev1ecp/eGkDSUoP6pCuDaGYflOgZd5P4j8qET2l56Y8baqBVXzoybrXx2AZlpWzmgi
+	 wkS0gCjbRcseZiisWpfrMkhwrEVQjBE9VWulsoPkwvIKlYLwyGGp7sYNm5DGOpyxb1
+	 uXtQpjN0TOWo6lRcH1YqklFNuORoCiXvAvFWcFqZvl/2hfb64BcSkcD1w+5JkhNqio
+	 JmVdzxrljLuig==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Tue, 26 May 2026 08:58:05 +0200
+Subject: [PATCH RFC net-next v2] net: airoha: Add TCP LRO support
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260525_230916_050817_D301D994 
-X-CRM114-Status: GOOD (  11.24  )
+Message-Id: <20260526-airoha-eth-lro-v2-1-24e2a9e7a397@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3WNTQrCMBCFr1JmbaRJaLSuBMEDuJUuQjo2gyWRS
+ SiVkrsbupe3+nh/GyRkwgSXZgPGhRLFUEEdGnDehgkFjZVBtcq0nWqFJY7eCsxezByF7UbptNH
+ yLCXU0ofxRes++ITH/dYEzCLgmmGorqeUI3/3t0XumX/DixRVqndO65Mx2F/fyAHnY+QJhlLKD
+ 6g7IjS7AAAA
+X-Change-ID: 20260520-airoha-eth-lro-a5d1c3631811
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Madhur Agrawal <madhur.agrawal@airoha.com>
+X-Mailer: b4 0.14.3
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,108 +75,439 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since mt7925_mac_sta_add publishes wcid, add publish check in mt76_sta_add
-to avoid reinitializing the wcid->poll_list for mt7925.
+Add hardware TCP Large Receive Offload (LRO) support to the airoha_eth
+driver, leveraging the EN7581/AN7583 SoC's 8 dedicated LRO hardware queues
+mapped to RX queues 24–31. LRO hw offloading does not support
+Scatter-Gather (SG) so it is required to increase the page_pool allocation
+order to 2 for RX queues 24–31 (LRO queues).
 
-Found dev->sta_poll_list corruption when using mt7925 and 7.0-rc4.
-According to the corruption information, prev->next was changed to itself.
+Performance comparison between GRO and hw LRO has been carried out using
+a 10Gbps NIC:
 
-wlan0: disconnect from AP 90:fb:5d:94:8b:e3 for new auth to 90:fb:5d:94:8b:e2
-wlan0: authenticate with 90:fb:5d:94:8b:e2 (local address=84:9e:56:9c:7e:6b)
-wlan0: send auth to 90:fb:5d:94:8b:e2 (try 1/3)
- slab kmalloc-8k start ffff8c80958a6000 pointer offset 4160 size 8192
-list_add corruption. prev->next should be next (ffff8c808a7488f8), but was ffff8c80958a7040. (prev=ffff8c80958a7040).
+GRO: ~2.7 Gbps
+LRO: ~8.1 Gbps
 
- mt76_wcid_add_poll+0x95/0xd0 [mt76]
- mt7925_mac_add_txs.part.0+0xa5/0xe0 [mt7925_common]
- mt7925_rx_check+0xa7/0xc0 [mt7925_common]
- mt76_dma_rx_poll+0x50d/0x790 [mt76]
- mt792x_poll_rx+0x52/0xe0 [mt792x_lib]
+Please note with respect to the previous implementation, page_pool
+allocation order has been reduced from 5 to 2.
 
-Signed-off-by: Jiajia Liu <liujiajia@kylinos.cn>
+Tested-by: Madhur Agrawal <madhur.agrawal@airoha.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
-
-Reproduced and tested using the script below over ssh. Roam between two
-bssids with the same SSID on a router.
-
-#!/bin/bash
-
-set -ex
-
-while :; do
-	num=$(sudo iw wlan0 scan | grep Polaris | wc -l)
-	if [ $num -eq 2 ]; then
-		break
-	fi
-done
-
-for i in $(seq 1 500); do
-
-echo "index $i"
-wpa_cli -i wlan0 roam 90:fb:5d:94:8b:e3
-sleep 5
-wpa_cli -i wlan0 roam 90:fb:5d:94:8b:e2
-sleep 5
-
-done
-
+Changes in RFC v2:
+- Improve performances fixing buf_size computation.
+- Fix possible overflow in REG_CDM_LRO_LIMIT() register configuration.
+- Require the device to be not running before configuring LRO.
+- Fix configuration order in airoha_fe_lro_is_enabled().
+- Check skb header length in airoha_qdma_lro_rx_process().
+- Do not check net_device feature in airoha_qdma_rx_process() before
+  executing airoha_qdma_lro_rx_process() but rely on
+  airoha_qdma_lro_rx_process() logic.
+- Fix possible double recycle in airoha_qdma_rx_process() for LRO
+  packets.
+- Always use AIROHA_RXQ_LRO_MAX_AGG_COUNT macro for max LRO aggregated
+  fragments in airoha_fe_lro_init_rx_queue().
+- Link to v1: https://lore.kernel.org/r/20260520-airoha-eth-lro-v1-1-129cc33766e9@kernel.org
 ---
- drivers/net/wireless/mediatek/mt76/mac80211.c    | 11 ++++++++---
- drivers/net/wireless/mediatek/mt76/mt76.h        |  1 +
- drivers/net/wireless/mediatek/mt76/mt7925/main.c |  3 +++
- 3 files changed, 12 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/airoha/airoha_eth.c  | 217 +++++++++++++++++++++++++++---
+ drivers/net/ethernet/airoha/airoha_eth.h  |  24 ++++
+ drivers/net/ethernet/airoha/airoha_regs.h |  22 ++-
+ 3 files changed, 247 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-index 4ae5e4715a9c..83f4f941b890 100644
---- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-+++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-@@ -1595,11 +1595,16 @@ mt76_sta_add(struct mt76_phy *phy, struct ieee80211_vif *vif,
- 		mtxq->wcid = wcid->idx;
- 	}
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 6418fe0c9f80..c8e5abe8942a 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -12,6 +12,7 @@
+ #include <net/dst_metadata.h>
+ #include <net/page_pool/helpers.h>
+ #include <net/pkt_cls.h>
++#include <net/tcp.h>
+ #include <uapi/linux/ppp_defs.h>
  
--	ewma_signal_init(&wcid->rssi);
--	rcu_assign_pointer(dev->wcid[wcid->idx], wcid);
-+	if (!test_bit(MT_WCID_FLAG_DRV_PUBLISH, &wcid->flags)) {
-+		ewma_signal_init(&wcid->rssi);
-+		rcu_assign_pointer(dev->wcid[wcid->idx], wcid);
-+		mt76_wcid_init(wcid, phy->band_idx);
+ #include "airoha_regs.h"
+@@ -431,6 +432,48 @@ static void airoha_fe_crsn_qsel_init(struct airoha_eth *eth)
+ 				 CDM_CRSN_QSEL_Q1));
+ }
+ 
++static void airoha_fe_lro_init_rx_queue(struct airoha_eth *eth, int qdma_id,
++					int lro_queue_index, int qid,
++					int buf_size)
++{
++	int id = qdma_id + 1;
++
++	airoha_fe_rmw(eth, REG_CDM_LRO_LIMIT(id),
++		      CDM_LRO_AGG_NUM_MASK | CDM_LRO_AGG_SIZE_MASK,
++		      FIELD_PREP(CDM_LRO_AGG_SIZE_MASK, buf_size) |
++		      FIELD_PREP(CDM_LRO_AGG_NUM_MASK,
++				 AIROHA_RXQ_LRO_MAX_AGG_COUNT));
++	airoha_fe_rmw(eth, REG_CDM_LRO_AGE_TIME(id),
++		      CDM_LRO_AGE_TIME_MASK | CDM_LRO_AGG_TIME_MASK,
++		      FIELD_PREP(CDM_LRO_AGE_TIME_MASK,
++				 AIROHA_RXQ_LRO_MAX_AGE_TIME) |
++		      FIELD_PREP(CDM_LRO_AGG_TIME_MASK,
++				 AIROHA_RXQ_LRO_MAX_AGG_TIME));
++	airoha_fe_rmw(eth, REG_CDM_LRO_RXQ(id, lro_queue_index),
++		      LRO_RXQ_MASK(lro_queue_index),
++		      __field_prep(LRO_RXQ_MASK(lro_queue_index), qid));
++	airoha_fe_set(eth, REG_CDM_LRO_EN(id), BIT(lro_queue_index));
++}
++
++static void airoha_fe_lro_disable(struct airoha_eth *eth, int qdma_id)
++{
++	int i, id = qdma_id + 1;
++
++	airoha_fe_clear(eth, REG_CDM_LRO_EN(id), LRO_RXQ_EN_MASK);
++	airoha_fe_clear(eth, REG_CDM_LRO_LIMIT(id),
++			CDM_LRO_AGG_NUM_MASK | CDM_LRO_AGG_SIZE_MASK);
++	airoha_fe_clear(eth, REG_CDM_LRO_AGE_TIME(id),
++			CDM_LRO_AGE_TIME_MASK | CDM_LRO_AGG_TIME_MASK);
++	for (i = 0; i < AIROHA_MAX_NUM_LRO_QUEUES; i++)
++		airoha_fe_clear(eth, REG_CDM_LRO_RXQ(id, i), LRO_RXQ_MASK(i));
++}
++
++static bool airoha_fe_lro_is_enabled(struct airoha_eth *eth, int qdma_id)
++{
++	return airoha_fe_get(eth, REG_CDM_LRO_EN(qdma_id + 1),
++			     LRO_RXQ_EN_MASK);
++}
++
+ static int airoha_fe_init(struct airoha_eth *eth)
+ {
+ 	airoha_fe_maccr_init(eth);
+@@ -587,6 +630,85 @@ static int airoha_qdma_get_gdm_port(struct airoha_eth *eth,
+ 	return port >= ARRAY_SIZE(eth->ports) ? -EINVAL : port;
+ }
+ 
++static int airoha_qdma_lro_rx_process(struct airoha_queue *q,
++				      struct airoha_qdma_desc *desc)
++{
++	u32 desc_ctrl = le32_to_cpu(READ_ONCE(desc->ctrl));
++	u32 msg1 = le32_to_cpu(READ_ONCE(desc->msg1));
++	u32 msg2 = le32_to_cpu(READ_ONCE(desc->msg2));
++	u32 msg3 = le32_to_cpu(READ_ONCE(desc->msg3));
++	struct sk_buff *skb = q->skb;
++	u32 len, th_off, tcp_ack_seq;
++	u16 tcp_win, l2_len;
++	struct tcphdr *th;
++	bool ipv4, ipv6;
++
++	if (FIELD_GET(QDMA_ETH_RXMSG_AGG_COUNT_MASK, msg2) <= 1)
++		return 0;
++
++	ipv4 = FIELD_GET(QDMA_ETH_RXMSG_IP4_MASK, msg1);
++	ipv6 = FIELD_GET(QDMA_ETH_RXMSG_IP6_MASK, msg1);
++	if (!ipv4 && !ipv6)
++		return -EOPNOTSUPP;
++
++	l2_len = FIELD_GET(QDMA_ETH_RXMSG_L2_LEN_MASK, msg2);
++	len = FIELD_GET(QDMA_DESC_LEN_MASK, desc_ctrl);
++	if (ipv4) {
++		struct iphdr *iph;
++
++		if (!pskb_may_pull(skb, l2_len + sizeof(*iph)))
++			return -EINVAL;
++
++		iph = (struct iphdr *)(skb->data + l2_len);
++		if (iph->protocol != IPPROTO_TCP)
++			return -EOPNOTSUPP;
++
++		iph->tot_len = cpu_to_be16(len - l2_len);
++		iph->check = 0;
++		iph->check = ip_fast_csum((void *)iph, iph->ihl);
++		th_off = l2_len + (iph->ihl << 2);
 +	} else {
-+		wcid->phy_idx = phy->band_idx;
++		struct ipv6hdr *ip6h;
++
++		if (!pskb_may_pull(skb, l2_len + sizeof(*ip6h)))
++			return -EINVAL;
++
++		ip6h = (struct ipv6hdr *)(skb->data + l2_len);
++		if (ip6h->nexthdr != NEXTHDR_TCP)
++			return -EOPNOTSUPP;
++
++		ip6h->payload_len = cpu_to_be16(len - l2_len - sizeof(*ip6h));
++		th_off = l2_len + sizeof(*ip6h);
 +	}
 +
- 	phy->num_sta++;
++	tcp_win = FIELD_GET(QDMA_ETH_RXMSG_TCP_WIN_MASK, msg3);
++	tcp_ack_seq = le32_to_cpu(READ_ONCE(desc->data));
++
++	if (!pskb_may_pull(skb, th_off + sizeof(*th)))
++		return -EINVAL;
++
++	th = (struct tcphdr *)(skb->data + th_off);
++	th->ack_seq = cpu_to_be32(tcp_ack_seq);
++	th->window = cpu_to_be16(tcp_win);
++
++	/* Check tcp timestamp option */
++	if (th->doff == (sizeof(*th) + TCPOLEN_TSTAMP_ALIGNED) / 4) {
++		__be32 *topt = (__be32 *)(th + 1);
++
++		if (*topt == cpu_to_be32((TCPOPT_NOP << 24) |
++					 (TCPOPT_NOP << 16) |
++					 (TCPOPT_TIMESTAMP << 8) |
++					 TCPOLEN_TIMESTAMP)) {
++			__le32 tcp_ts_reply = READ_ONCE(desc->tcp_ts_reply);
++
++			put_unaligned_be32(le32_to_cpu(tcp_ts_reply),
++					   topt + 2);
++		}
++	}
++
++	return 0;
++}
++
+ static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
+ {
+ 	enum dma_data_direction dir = page_pool_get_dma_dir(q->page_pool);
+@@ -634,11 +756,15 @@ static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
  
--	mt76_wcid_init(wcid, phy->band_idx);
- out:
- 	mutex_unlock(&dev->mutex);
+ 			skb_reserve(q->skb, AIROHA_RX_HEADROOM);
+ 			__skb_put(q->skb, len);
+-			skb_mark_for_recycle(q->skb);
+ 			q->skb->dev = port->dev;
+-			q->skb->protocol = eth_type_trans(q->skb, port->dev);
+ 			q->skb->ip_summed = CHECKSUM_UNNECESSARY;
+ 			skb_record_rx_queue(q->skb, qid);
++
++			if (airoha_qdma_lro_rx_process(q, desc) < 0)
++				goto free_frag;
++
++			q->skb->protocol = eth_type_trans(q->skb, port->dev);
++			skb_mark_for_recycle(q->skb);
+ 		} else { /* scattered frame */
+ 			struct skb_shared_info *shinfo = skb_shinfo(q->skb);
+ 			int nr_frags = shinfo->nr_frags;
+@@ -727,23 +853,18 @@ static int airoha_qdma_rx_napi_poll(struct napi_struct *napi, int budget)
+ static int airoha_qdma_init_rx_queue(struct airoha_queue *q,
+ 				     struct airoha_qdma *qdma, int ndesc)
+ {
+-	const struct page_pool_params pp_params = {
+-		.order = 0,
+-		.pool_size = 256,
++	struct page_pool_params pp_params = {
+ 		.flags = PP_FLAG_DMA_MAP | PP_FLAG_DMA_SYNC_DEV,
+ 		.dma_dir = DMA_FROM_DEVICE,
+-		.max_len = PAGE_SIZE,
+ 		.nid = NUMA_NO_NODE,
+ 		.dev = qdma->eth->dev,
+ 		.napi = &q->napi,
+ 	};
++	int pp_order, qid = q - &qdma->q_rx[0], thr;
+ 	struct airoha_eth *eth = qdma->eth;
+-	int qid = q - &qdma->q_rx[0], thr;
+ 	dma_addr_t dma_addr;
  
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 527bef97e122..8bfce686bff7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -361,6 +361,7 @@ enum mt76_wcid_flags {
- 	MT_WCID_FLAG_PS,
- 	MT_WCID_FLAG_4ADDR,
- 	MT_WCID_FLAG_HDR_TRANS,
-+	MT_WCID_FLAG_DRV_PUBLISH,
- };
+-	q->buf_size = PAGE_SIZE / 2;
+ 	q->qdma = qdma;
+-
+ 	q->entry = devm_kzalloc(eth->dev, ndesc * sizeof(*q->entry),
+ 				GFP_KERNEL);
+ 	if (!q->entry)
+@@ -754,6 +875,11 @@ static int airoha_qdma_init_rx_queue(struct airoha_queue *q,
+ 	if (!q->desc)
+ 		return -ENOMEM;
  
- #define MT76_N_WCIDS 1088
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index 73d3722739d0..35b5c718475c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -1102,6 +1102,9 @@ int mt7925_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 					      &msta->deflink);
++	pp_order = airoha_qdma_is_lro_queue(q) ? AIROHA_LRO_PAGE_ORDER : 0;
++	pp_params.order = pp_order;
++	pp_params.pool_size = 256;
++	pp_params.max_len = PAGE_SIZE << pp_order;
++
+ 	q->page_pool = page_pool_create(&pp_params);
+ 	if (IS_ERR(q->page_pool)) {
+ 		int err = PTR_ERR(q->page_pool);
+@@ -762,6 +888,8 @@ static int airoha_qdma_init_rx_queue(struct airoha_queue *q,
+ 		return err;
  	}
  
-+	if (!err)
-+		set_bit(MT_WCID_FLAG_DRV_PUBLISH, &msta->deflink.wcid.flags);
-+
- 	return err;
++	q->buf_size = airoha_qdma_is_lro_queue(q) ? pp_params.max_len
++						  : pp_params.max_len / 2;
+ 	q->ndesc = ndesc;
+ 	netif_napi_add(eth->napi_dev, &q->napi, airoha_qdma_rx_napi_poll);
+ 
+@@ -1993,6 +2121,67 @@ int airoha_get_fe_port(struct airoha_gdm_port *port)
+ 	}
  }
- EXPORT_SYMBOL_GPL(mt7925_mac_sta_add);
+ 
++static int airoha_dev_set_features(struct net_device *dev,
++				   netdev_features_t features)
++{
++	netdev_features_t diff = dev->features ^ features;
++	struct airoha_gdm_port *port = netdev_priv(dev);
++	struct airoha_qdma *qdma = port->qdma;
++	struct airoha_eth *eth = qdma->eth;
++	int qdma_id = qdma - &eth->qdma[0];
++	int i;
++
++	if (!(diff & NETIF_F_LRO))
++		return 0;
++
++	if (netif_running(dev))
++		return -EBUSY;
++
++	/* reset LRO configuration */
++	if (features & NETIF_F_LRO) {
++		int lro_queue_index = 0;
++
++		if (airoha_fe_lro_is_enabled(eth, qdma_id))
++			return 0;
++
++		for (i = 0; i < ARRAY_SIZE(qdma->q_rx); i++) {
++			struct airoha_queue *q = &qdma->q_rx[i];
++			u32 size;
++
++			if (!q->ndesc)
++				continue;
++
++			if (!airoha_qdma_is_lro_queue(q))
++				continue;
++
++			size = SKB_WITH_OVERHEAD(AIROHA_RX_LEN(q->buf_size));
++			size = min_t(u32, size, CDM_LRO_AGG_SIZE_MASK);
++			airoha_fe_lro_init_rx_queue(eth, qdma_id,
++						    lro_queue_index, i, size);
++			lro_queue_index++;
++		}
++	} else {
++		for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
++			struct airoha_gdm_port *p = eth->ports[i];
++
++			if (!p)
++				continue;
++
++			if (p->qdma != qdma)
++				continue;
++
++			if (p->dev == dev)
++				continue;
++
++			if (p->dev->features & NETIF_F_LRO)
++				return 0;
++		}
++		airoha_fe_lro_disable(eth, qdma_id);
++	}
++
++	return 0;
++}
++
+ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
+ 				   struct net_device *dev)
+ {
+@@ -2892,6 +3081,7 @@ static const struct net_device_ops airoha_netdev_ops = {
+ 	.ndo_stop		= airoha_dev_stop,
+ 	.ndo_change_mtu		= airoha_dev_change_mtu,
+ 	.ndo_select_queue	= airoha_dev_select_queue,
++	.ndo_set_features	= airoha_dev_set_features,
+ 	.ndo_start_xmit		= airoha_dev_xmit,
+ 	.ndo_get_stats64        = airoha_dev_get_stats64,
+ 	.ndo_set_mac_address	= airoha_dev_set_macaddr,
+@@ -2989,12 +3179,9 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
+ 	dev->ethtool_ops = &airoha_ethtool_ops;
+ 	dev->max_mtu = AIROHA_MAX_MTU;
+ 	dev->watchdog_timeo = 5 * HZ;
+-	dev->hw_features = NETIF_F_IP_CSUM | NETIF_F_RXCSUM |
+-			   NETIF_F_TSO6 | NETIF_F_IPV6_CSUM |
+-			   NETIF_F_SG | NETIF_F_TSO |
+-			   NETIF_F_HW_TC;
+-	dev->features |= dev->hw_features;
+-	dev->vlan_features = dev->hw_features;
++	dev->hw_features = AIROHA_HW_FEATURES | NETIF_F_LRO;
++	dev->features |= AIROHA_HW_FEATURES;
++	dev->vlan_features = AIROHA_HW_FEATURES;
+ 	dev->dev.of_node = np;
+ 	SET_NETDEV_DEV(dev, eth->dev);
+ 
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
+index d3781103abb5..aed5077d3db5 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.h
++++ b/drivers/net/ethernet/airoha/airoha_eth.h
+@@ -43,6 +43,18 @@
+ 	 (_n) == 15 ? 128 :		\
+ 	 (_n) ==  0 ? 1024 : 16)
+ 
++#define AIROHA_LRO_PAGE_ORDER		2
++#define AIROHA_MAX_NUM_LRO_QUEUES	8
++#define AIROHA_RXQ_LRO_EN_MASK		0xff000000
++#define AIROHA_RXQ_LRO_MAX_AGG_COUNT	64
++#define AIROHA_RXQ_LRO_MAX_AGG_TIME	100
++#define AIROHA_RXQ_LRO_MAX_AGE_TIME	2000 /* 1ms */
++
++#define AIROHA_HW_FEATURES			\
++	(NETIF_F_IP_CSUM | NETIF_F_RXCSUM |	\
++	 NETIF_F_TSO6 | NETIF_F_IPV6_CSUM |	\
++	 NETIF_F_SG | NETIF_F_TSO | NETIF_F_HW_TC)
++
+ #define PSE_RSV_PAGES			128
+ #define PSE_QUEUE_RSV_PAGES		64
+ 
+@@ -661,6 +673,18 @@ static inline bool airoha_is_7583(struct airoha_eth *eth)
+ 	return eth->soc->version == 0x7583;
+ }
+ 
++static inline bool airoha_qdma_is_lro_queue(struct airoha_queue *q)
++{
++	struct airoha_qdma *qdma = q->qdma;
++	int qid = q - &qdma->q_rx[0];
++
++	/* EN7581 SoC supports at most 8 LRO rx queues */
++	BUILD_BUG_ON(hweight32(AIROHA_RXQ_LRO_EN_MASK) >
++		     AIROHA_MAX_NUM_LRO_QUEUES);
++
++	return !!(AIROHA_RXQ_LRO_EN_MASK & BIT(qid));
++}
++
+ int airoha_get_fe_port(struct airoha_gdm_port *port);
+ bool airoha_is_valid_gdm_port(struct airoha_eth *eth,
+ 			      struct airoha_gdm_port *port);
+diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethernet/airoha/airoha_regs.h
+index 436f3c8779c1..dfc786583774 100644
+--- a/drivers/net/ethernet/airoha/airoha_regs.h
++++ b/drivers/net/ethernet/airoha/airoha_regs.h
+@@ -122,6 +122,20 @@
+ #define CDM_CRSN_QSEL_REASON_MASK(_n)	\
+ 	GENMASK(4 + (((_n) % 4) << 3),	(((_n) % 4) << 3))
+ 
++#define REG_CDM_LRO_RXQ(_n, _m)		(CDM_BASE(_n) + 0x78 + ((_m) & 0x4))
++#define LRO_RXQ_MASK(_n)		GENMASK(4 + (((_n) & 0x3) << 3), ((_n) & 0x3) << 3)
++
++#define REG_CDM_LRO_EN(_n)		(CDM_BASE(_n) + 0x80)
++#define LRO_RXQ_EN_MASK			GENMASK(7, 0)
++
++#define REG_CDM_LRO_LIMIT(_n)		(CDM_BASE(_n) + 0x84)
++#define CDM_LRO_AGG_NUM_MASK		GENMASK(23, 16)
++#define CDM_LRO_AGG_SIZE_MASK		GENMASK(15, 0)
++
++#define REG_CDM_LRO_AGE_TIME(_n)	(CDM_BASE(_n) + 0x88)
++#define CDM_LRO_AGE_TIME_MASK		GENMASK(31, 16)
++#define CDM_LRO_AGG_TIME_MASK		GENMASK(15, 0)
++
+ #define REG_GDM_FWD_CFG(_n)		GDM_BASE(_n)
+ #define GDM_PAD_EN_MASK			BIT(28)
+ #define GDM_DROP_CRC_ERR_MASK		BIT(23)
+@@ -883,9 +897,15 @@
+ #define QDMA_ETH_RXMSG_SPORT_MASK	GENMASK(25, 21)
+ #define QDMA_ETH_RXMSG_CRSN_MASK	GENMASK(20, 16)
+ #define QDMA_ETH_RXMSG_PPE_ENTRY_MASK	GENMASK(15, 0)
++/* RX MSG2 */
++#define QDMA_ETH_RXMSG_AGG_COUNT_MASK	GENMASK(31, 24)
++#define QDMA_ETH_RXMSG_L2_LEN_MASK	GENMASK(6, 0)
++/* RX MSG3 */
++#define QDMA_ETH_RXMSG_AGG_LEN_MASK	GENMASK(31, 16)
++#define QDMA_ETH_RXMSG_TCP_WIN_MASK	GENMASK(15, 0)
+ 
+ struct airoha_qdma_desc {
+-	__le32 rsv;
++	__le32 tcp_ts_reply;
+ 	__le32 ctrl;
+ 	__le32 addr;
+ 	__le32 data;
+
+---
+base-commit: 3baa7ba4ab98af452925926ffc2ee58c683e3f28
+change-id: 20260520-airoha-eth-lro-a5d1c3631811
+
+Best regards,
 -- 
-2.53.0
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
