@@ -4,87 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75B63CD5BC8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 May 2026 21:23:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F75BCD5BD5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 May 2026 21:52:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MliZIEyZF+cjr5tCFsvOUcyvGEDv7HTQGjwah9i0HJo=; b=VqGcN3+EcR2i5ygBHQk7Ns4SGD
-	1NCrFT8v8RdVB+NFTQIxqHw9+gm6y9+7CoL0brJEEzi/H3bMgyT+oA+/pdhxA589D4NcA4Cst0OWk
-	yxuviAPt72lMrqoUAyPZlTowto3xBM6CjXuVivSIW+z8APtf0H6jqsKI44d/MhuzTmqJDGT3nJ9Ni
-	olrW4WR5C8N7hhd/kga3RSk/k5nCXO1lMyzq1gFKrpU81N7F5kl5E3kMUrJFUkXNsNF0uw8udvUld
-	MJLzWHmQObNNIp4JnqVix+lvEBYUWWZKpbGfW1anQ+xiJ3m9nN20UF32gXxemiv2YhFn/TRgF8H5T
-	2P/d/6IA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vofwtLagvBRYkOYwKOjHnTeC6C87g7YP3KZhbzyhI3Q=; b=HegL6ss0L/T79vivlOrxorJSx1
+	sijzKbRnXYSGUYljzuYgvdiuV1nCIhFbtBakMzQ0a7AwGXbCVRGXclCT1MRP/tHzWLBluk//oGOgs
+	IEb2u0bo6GPrsNHX+dGoVu3PDeq59ZCPEbS+kUcIcxaNBJuWm+WmoPupCaIjbhyTVbEpxC2bCDBO2
+	lPe8nE6X4uOsENBFpy7ML+pa0PF7M4rc0Gki5eVKaEBeobcbP9qStocmN0eUnQhIonWDidmygkUVB
+	meAqrb/IlBANzSn+E9q7Sg2nOSfuXKa8J3m8VLwmqpLFJFXSf0sZj+yjKALzSZYLkeofXc1s43K5E
+	SS2i29ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRzEr-00000002yyt-1YEf;
-	Tue, 26 May 2026 21:23:01 +0000
-Received: from mail-dy1-x132e.google.com ([2607:f8b0:4864:20::132e])
+	id 1wRzhg-0000000301z-45uo;
+	Tue, 26 May 2026 21:52:48 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRzEo-00000002yyK-3daB
+	id 1wRzhe-0000000300z-3ifY
 	for linux-mediatek@lists.infradead.org;
-	Tue, 26 May 2026 21:22:59 +0000
-Received: by mail-dy1-x132e.google.com with SMTP id 5a478bee46e88-304545f5206so6540220eec.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 26 May 2026 14:22:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1779830578; x=1780435378; darn=lists.infradead.org;
-        h=references:in-reply-to:content-disposition:mime-version:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=MliZIEyZF+cjr5tCFsvOUcyvGEDv7HTQGjwah9i0HJo=;
-        b=ipnPVk0KlolbakvWKyB0JByECTyizZpPgNRmkGYWYQbSXsB+PCjfRj5WT9dgGKyExC
-         zUU3lhkRTP7es07sYsU9d9cnY3z603zvsbUBFzIsM38QkdBdYihfNvqc8n7iJmowb8H8
-         Q93zdHOmhIR+gYNIWI4QGUHk/4E/SHTjcMDE16G9/gcNrBlkqixpIqxpzfnr8Ov4VmOp
-         vOw6QFUItPOyLiMhn+qNunve/KT4dszGxyEcHPh0vyNUir0YVSvaKF5Pv2/jbiaqmhEC
-         vhCcOudikFtmgXG9cMS5bIaKZj9d0F4fkreo1j2QxhsFwHq+0Y426e91mjPndiaTUOYD
-         PMWA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779830578; x=1780435378;
-        h=references:in-reply-to:content-disposition:mime-version:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=MliZIEyZF+cjr5tCFsvOUcyvGEDv7HTQGjwah9i0HJo=;
-        b=a9N9yBV2UF8JL/05EVFPgTY/6KaW68bihFqyEniKf4bHmOwCHNUFHxKs3GNIh5hPHt
-         1uA5hVmolkOjBDo7W+jWrMbPFQC0u8rkSXOFjaU1vxyphF3h4ZKR4Onho5FrGsTfwiho
-         YI04txjOYPO+3oDCQuhMgkPQDZl2IxMQPmoWsttKicl7OyKfNxYH4XkXIYiBrUvm4YWK
-         WBRimq1bRNzJIUNkPQhON4CueYCCGlZTS+TEdj+8UEcqjpTIVnr2+KsQlV9JqStgD+p/
-         dWJc4lA3+9LDdmKcyttVnQlo22tXaIo25YoPhRBKod8dMnTCoY5WUkCv8kfbDsO2DNav
-         Mkog==
-X-Forwarded-Encrypted: i=1; AFNElJ+xKiBtzC8gdKZ52ldadgZp73rA7J0ldTXQtjGy78V/tmR3BzpKuUsnnBPg7wyl8V+7HjzyoTF9YeZlqheACA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yyo7Nqp9LoTgK883bLaDvRN0S7JC2W+pq/8Hy0BAV/q+cGsqwXJ
-	FtY/8gpjIYM+FPAr63Frq4Z9r8REfllC+1z4bL9oz6NYxbi1hsp6+ie0
-X-Gm-Gg: Acq92OG5iEGUeAAuNCetup56I4QChSIjkMLgwzZT7BTsoA7hNylss4MBxGgXcPUGsci
-	zQWpz6ZZ7gxUy9eK7gq4/yUFu7wpqSvS+rndPFurGRecTvEFG13uj1VGLF2LcOzo6LrhJKC45JU
-	QtKME70fOuyHzF2zew/OjVmXgT/p7E2sDQ0dwGjYYvgLFlpVPAO6EDEfQ8H3h/Fnwic131Upy5u
-	uJjvj1k4eXUU2KV0piNcqNg67eL8FKkRTHzr4svh5cq5L/08OSd9b61vXy5NPeQtehG2VRcDxEI
-	COHo7zRAECCLZwYBq+TBGPhEPmr4sDySuQA4zH7GE2iB4G9fEZfGheHhdNzC5/LXwvTX0HmsBnt
-	/4Xud7rl2SoUuO1k8S4xQ3bawnhYXZ2uzMcrr891KnMYrU00zG/d+WfZRSp5InZwdTpWIP1iQLQ
-	uOYZIvSAlFmprUMJrxoFCaZ55kowB55oxja/As8+460nw=
-X-Received: by 2002:a05:7300:6920:b0:2ea:4228:ab11 with SMTP id 5a478bee46e88-30448fd6079mr8891943eec.3.1779830577830;
-        Tue, 26 May 2026 14:22:57 -0700 (PDT)
-Received: from wico-dev.wnam.ru ([23.95.253.230])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-30451f3feadsm14592570eec.13.2026.05.26.14.22.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 26 May 2026 14:22:57 -0700 (PDT)
-Date: Wed, 27 May 2026 00:22:53 +0300
-From: Ruslan Isaev <legale.legale@gmail.com>
-To: linux-wireless@vger.kernel.org
-Cc: sean.wang@mediatek.com, nbd@nbd.name, lorenzo@kernel.org,
-	ryder.lee@mediatek.com, linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] wifi: mt76: track rx napi ownership for cleanup
-Message-ID: <ahYPLdcoyMmzk3WN@wico-dev.wnam.ru>
+	Tue, 26 May 2026 21:52:47 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 052BE443F8
+	for <linux-mediatek@lists.infradead.org>; Tue, 26 May 2026 21:52:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E15181F00ADF
+	for <linux-mediatek@lists.infradead.org>; Tue, 26 May 2026 21:52:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1779832365;
+	bh=vofwtLagvBRYkOYwKOjHnTeC6C87g7YP3KZhbzyhI3Q=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc;
+	b=JvySodVWkZ4MM3tRJ8YS99NO8G7r2QGWchQgjJs/N+v4T2fakaO4nQDdnRKzeIqTT
+	 twW0FxpXffz7ntaZsc3O/ISWeFOfVsNb/x05burAQaCV9x0p4/oCBx+unOrZNDKiKH
+	 l9eEs/xvzHk7ZO9LGKRzD+wyhYk/qRZhK5KF4wg+jKuzkyANdqT3/0CZ70KJQmgnhs
+	 zZQSlPOBMLaWKn7O7IGnTpnQLYT/fNAPwTGi9bD8J0K1DlMF127mpbMjHwpWu/C29v
+	 j8kQ4+Ada+sfRBKhvdrHvYOoaCl3yhfcJa5ke+GxzVVmXHgt06pmnxndTucORDzD0u
+	 JP8bxaosMVwHg==
+Received: by mail-lj1-f171.google.com with SMTP id 38308e7fff4ca-38ea6a5a0b3so88879891fa.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 26 May 2026 14:52:45 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AFNElJ/zwrnL7QqF27998NFAZLcFkE5xIS7dXhPr0kVhLK8dgIUNdCQgpNkufbooIv0grJrhZmlHd/7HarS3ku0ZPQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzF4QfBRWzz+rerr8fIB8pHm/bxzkWm+B4oEseXF7CyqkiIVEle
+	RjtmH71sn4pTlhZ14QrCCuNfHs68dAt+G3rYOcgSAh1b2jlMsEJ8NeweLNBUVC2pfColq3h0VWf
+	eBBNlPXPE+J/ggVK1GAZkbet0ouW0hHU=
+X-Received: by 2002:a2e:8192:0:b0:394:2b8a:2374 with SMTP id
+ 38308e7fff4ca-395d8d3de65mr47969431fa.16.1779832364145; Tue, 26 May 2026
+ 14:52:44 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ahTdpNQp2va_xTVR@wico-dev.wnam.ru>
-References: <ahTdpNQp2va_xTVR@wico-dev.wnam.ru>
+References: <20260526060841.49161-1-liujiajia@kylinos.cn>
+In-Reply-To: <20260526060841.49161-1-liujiajia@kylinos.cn>
+From: Sean Wang <sean.wang@kernel.org>
+Date: Tue, 26 May 2026 16:52:32 -0500
+X-Gmail-Original-Message-ID: <CAGp9LzqzddmyDHMNsaqigYpVEdo_Pmzwbeh5Ri5_Gr87cVL6Dg@mail.gmail.com>
+X-Gm-Features: AVHnY4JN4XiSX6iZ8nQKBZrwSnhXgkTYMQMdyt2mZqBTxzISywSnHzHgBHOFEuo
+Message-ID: <CAGp9LzqzddmyDHMNsaqigYpVEdo_Pmzwbeh5Ri5_Gr87cVL6Dg@mail.gmail.com>
+Subject: Re: [PATCH] wifi: mt76: mt7925: add wcid publish check in mt76_sta_add
+To: Jiajia Liu <liujiajia@kylinos.cn>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
+	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, Michael Lo <michael.lo@mediatek.com>, 
+	Leon Yen <leon.yen@mediatek.com>, linux-wireless@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260526_142258_931745_30DACD9D 
-X-CRM114-Status: UNSURE (   5.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260526_145246_960829_AF72554F 
+X-CRM114-Status: GOOD (  24.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,15 +88,165 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Sean and others,
+Hi,
 
-Tested on:
-- MT7915E (PCI ID 14c3:7915)
-- MT7981 WMAC
+On Tue, May 26, 2026 at 1:09=E2=80=AFAM Jiajia Liu <liujiajia@kylinos.cn> w=
+rote:
+>
+> Since mt7925_mac_sta_add publishes wcid, add publish check in mt76_sta_ad=
+d
+> to avoid reinitializing the wcid->poll_list for mt7925.
+>
+> Found dev->sta_poll_list corruption when using mt7925 and 7.0-rc4.
+> According to the corruption information, prev->next was changed to itself=
+.
+>
+> wlan0: disconnect from AP 90:fb:5d:94:8b:e3 for new auth to 90:fb:5d:94:8=
+b:e2
+> wlan0: authenticate with 90:fb:5d:94:8b:e2 (local address=3D84:9e:56:9c:7=
+e:6b)
+> wlan0: send auth to 90:fb:5d:94:8b:e2 (try 1/3)
+>  slab kmalloc-8k start ffff8c80958a6000 pointer offset 4160 size 8192
+> list_add corruption. prev->next should be next (ffff8c808a7488f8), but wa=
+s ffff8c80958a7040. (prev=3Dffff8c80958a7040).
+>
+>  mt76_wcid_add_poll+0x95/0xd0 [mt76]
+>  mt7925_mac_add_txs.part.0+0xa5/0xe0 [mt7925_common]
+>  mt7925_rx_check+0xa7/0xc0 [mt7925_common]
+>  mt76_dma_rx_poll+0x50d/0x790 [mt76]
+>  mt792x_poll_rx+0x52/0xe0 [mt792x_lib]
+>
+> Signed-off-by: Jiajia Liu <liujiajia@kylinos.cn>
+> ---
+>
+> Reproduced and tested using the script below over ssh. Roam between two
+> bssids with the same SSID on a router.
+>
+> #!/bin/bash
+>
+> set -ex
+>
+> while :; do
+>         num=3D$(sudo iw wlan0 scan | grep Polaris | wc -l)
+>         if [ $num -eq 2 ]; then
+>                 break
+>         fi
+> done
+>
+> for i in $(seq 1 500); do
+>
+> echo "index $i"
+> wpa_cli -i wlan0 roam 90:fb:5d:94:8b:e3
+> sleep 5
+> wpa_cli -i wlan0 roam 90:fb:5d:94:8b:e2
+> sleep 5
+>
+> done
+>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mac80211.c    | 11 ++++++++---
+>  drivers/net/wireless/mediatek/mt76/mt76.h        |  1 +
+>  drivers/net/wireless/mediatek/mt76/mt7925/main.c |  3 +++
+>  3 files changed, 12 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/=
+wireless/mediatek/mt76/mac80211.c
+> index 4ae5e4715a9c..83f4f941b890 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mac80211.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
+> @@ -1595,11 +1595,16 @@ mt76_sta_add(struct mt76_phy *phy, struct ieee802=
+11_vif *vif,
+>                 mtxq->wcid =3D wcid->idx;
+>         }
+>
+> -       ewma_signal_init(&wcid->rssi);
+> -       rcu_assign_pointer(dev->wcid[wcid->idx], wcid);
+> +       if (!test_bit(MT_WCID_FLAG_DRV_PUBLISH, &wcid->flags)) {
+> +               ewma_signal_init(&wcid->rssi);
+> +               rcu_assign_pointer(dev->wcid[wcid->idx], wcid);
+> +               mt76_wcid_init(wcid, phy->band_idx);
+> +       } else {
+> +               wcid->phy_idx =3D phy->band_idx;
+> +       }
+> +
+>         phy->num_sta++;
+>
 
-On both devices, the Wi-Fi driver module unloads cleanly without warnings
-or errors.
+Thanks for spotting the roaming issue.
 
-Regards,
-Ruslan
+I think we can avoid adding MT_WCID_FLAG_DRV_PUBLISH and instead use the
+WCID table itself for the publish check.
+
+dev->wcid[] already encodes whether a WCID has been published, so checking
+it directly avoids adding a second mirror state. MT_WCID_FLAG_* is also
+better kept for WCID features that affect WTBL setup or data-path handling,
+rather than common bookkeeping state.
+
+Something like:
+
+@@ -1620,6 +1620,7 @@ mt76_sta_add(struct mt76_phy *phy, struct
+ieee80211_vif *vif,
+{
+  struct mt76_wcid *wcid =3D (struct mt76_wcid *)sta->drv_priv;
+  struct mt76_dev *dev =3D phy->dev;
++       struct mt76_wcid *published;
+  int ret;
+  int i;
+
+@@ -1639,7 +1640,10 @@ mt76_sta_add(struct mt76_phy *phy, struct
+ieee80211_vif *vif,
+          mtxq->wcid =3D wcid->idx;
+  }
+
+-       if (!test_bit(MT_WCID_FLAG_DRV_PUBLISH, &wcid->flags)) {
++       published =3D rcu_dereference_protected(dev->wcid[wcid->idx],
++                                             lockdep_is_held(&dev->mutex))=
+;
++       if (published !=3D wcid) {
++               WARN_ON_ONCE(published);
+                 ewma_signal_init(&wcid->rssi);
+                 rcu_assign_pointer(dev->wcid[wcid->idx], wcid);
+                 mt76_wcid_init(wcid, phy->band_idx);
+
+   ....
+
+
+> -       mt76_wcid_init(wcid, phy->band_idx);
+>  out:
+>         mutex_unlock(&dev->mutex);
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wire=
+less/mediatek/mt76/mt76.h
+> index 527bef97e122..8bfce686bff7 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt76.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+> @@ -361,6 +361,7 @@ enum mt76_wcid_flags {
+>         MT_WCID_FLAG_PS,
+>         MT_WCID_FLAG_4ADDR,
+>         MT_WCID_FLAG_HDR_TRANS,
+> +       MT_WCID_FLAG_DRV_PUBLISH,
+>  };
+>
+>  #define MT76_N_WCIDS 1088
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/n=
+et/wireless/mediatek/mt76/mt7925/main.c
+> index 73d3722739d0..35b5c718475c 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+> @@ -1102,6 +1102,9 @@ int mt7925_mac_sta_add(struct mt76_dev *mdev, struc=
+t ieee80211_vif *vif,
+>                                               &msta->deflink);
+>         }
+>
+> +       if (!err)
+> +               set_bit(MT_WCID_FLAG_DRV_PUBLISH, &msta->deflink.wcid.fla=
+gs);
+> +
+>         return err;
+>  }
+>  EXPORT_SYMBOL_GPL(mt7925_mac_sta_add);
+> --
+> 2.53.0
+>
+>
 
