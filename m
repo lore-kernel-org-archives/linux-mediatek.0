@@ -4,99 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D90CECD5BC8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 May 2026 17:17:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D09ACD5BB1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 May 2026 21:08:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kbKjzg9bSmm9vRJLbDtl4q72jw2NHj5tbX6e2y5JU5I=; b=VV1D1wTLvM2vYTA0QArIH9jH9D
-	PnWdTjK3Dc43x6mPDxFAu7Qh49LTub+AOYxGYDmDVZ08slJKYG2jLatWW2j+Db2GAyM2i00SGutSA
-	C+yuZGBDXP44lMUsvy4398Xc0s4Bv/62MH1DI+F9C7/SO3vD+0k49Qvr8ZoL6KT2oGKLTRrBG5BQq
-	M0bczVOwXt7ShPjaTRNL4aVIUc64iBGRPh19xxGXVXRgI322TdQUGCAct9jtSGTDF6pn6UmWv+ndT
-	qT/wVL0/NMqBi4XiwQVm1/GPcf4GNyX9u4Mb+xJuEjYFQF4ROFGJ74IrJR8Jd4az/uy7HLemfs4Af
-	XEH0lwZA==;
+	bh=QzwgwypkHaL96nsdzAkl5yH0GD0dCTKW1kcyCj3G6qA=; b=DobXP8o3PHKT1IZWCfIEpkpn1K
+	eB9LtD4Y4ehKs5egoszo8Y3p47yRhLVWEUesgOXx0Lvtk1oyxQB6odY+t1Uekrp43Xrn0XotByRp2
+	WMwRbDkMUcbR3n620C0uSvOl6hRz1/W+vO1zTb/5u2GwgAgGv+N1K/Jk35LBlUXtwdhbt4fB67c72
+	PqRDJC2pacr8jX7D3+HOVCbhyttBQYxOq9aUbuEzQqua8M+xTs27Zu+zqJuFVCvM6ev945tRZg8t1
+	ZyjdyCtzeP0E2PqlIHiP+fMqj9ubyNAi++pvHggTyRPT9TQPIatGK6fhonArlix0qaYDPLQ3hovVT
+	B8a1EVZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRvPK-00000002h6Y-2wUg;
-	Tue, 26 May 2026 17:17:34 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1wRz0g-00000002xvL-2wSs;
+	Tue, 26 May 2026 21:08:22 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRvPH-00000002h4r-2yYz
-	for linux-mediatek@lists.infradead.org;
-	Tue, 26 May 2026 17:17:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1779815849;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=kbKjzg9bSmm9vRJLbDtl4q72jw2NHj5tbX6e2y5JU5I=;
-	b=R6AVUtDrOHvciJ3n+l1MO3qtVn6V6ekeJI80E+Q1j6JUi+itNH5zMzBQLr8RCfRfr4wITo
-	dYZmW4c+RDuXdQm0WhsDeutOYPnxQ0ULgP/dPKZfXz4UbB+0J8/AwGO9ZScOVJBUSzo/d9
-	WUvLL41yQTi++/bnhfsTJSg1zaXx/oA=
-Received: from mail-oa1-f71.google.com (mail-oa1-f71.google.com
- [209.85.160.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-324-KqIhPjhVOtSF9XHn_YBucw-1; Tue, 26 May 2026 13:16:03 -0400
-X-MC-Unique: KqIhPjhVOtSF9XHn_YBucw-1
-X-Mimecast-MFC-AGG-ID: KqIhPjhVOtSF9XHn_YBucw_1779815762
-Received: by mail-oa1-f71.google.com with SMTP id 586e51a60fabf-43b02fbdd68so11406816fac.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 26 May 2026 10:16:03 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779815762; x=1780420562;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=kbKjzg9bSmm9vRJLbDtl4q72jw2NHj5tbX6e2y5JU5I=;
-        b=F6K34edBt2YDDGMLl5QTSydmEddUE/ha7R8u6F+6tnFmFm80y09X94LZU9MywpYKQA
-         4muvy4mqDbyNIXXmJWGm67ZW0BS4zQTR1dBDvc9NTLMayExOejVSBiEPwtNnxDjuB+KO
-         vXQK8Xobewb90nKi6nVu4RwbsfoX2iUxxIX2TmfRs36zFi+yqWX0hA2n4006yOB7n8u3
-         bQKx15VESzipNIDZPW96XOqhVTAqygrhg9p9TIyQCxUudJPaZVp+CXE42wCk9IQ2FYkL
-         SKj36enA0Zavxb4ixkzm7au9aIrt+0Oj/+ODeXWJhvC5OJxLLyYYU737xTHB/29vGFmL
-         lZeg==
-X-Forwarded-Encrypted: i=1; AFNElJ8BivuztmmCrV4D/uzMwakgToG0OpEu+jNdo+1lFV7vAwxd7DaPF//RcFQmRy1N1emLC1+7rC6xqtc23hzdOw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw9sOAj0DKj873a/FZ0Pm+/VgBSs86+r1uLnQ2b6Zw+NRv1hLyF
-	VFjV6q/vlZXc0ahL68f+nTPyfyKUMl55orLnx+/39NjtZpeVPawuIYTDk8AhF6NH798ZX7xM7hD
-	YRCgOV55eCfAFN6PqHGjbJ1xnsmNCpbjK9SjGywaqhNv9xwEASLmhaWDUol5qHNXAw/jJCg8yLw
-	==
-X-Gm-Gg: Acq92OEyntfchL2qTS+Ew3ex6U3zW9HRJ9VeP+KFtm97B0UkAJmXZmf46SkNhT+w1+W
-	T2rsP9+WXpSusnRm+Y0o5yocT6gatjDOq4/Mz1F+I5wpvlIyLLd5hRjyMO1CslXFTjecGGjjALx
-	JzT5JXzGgT0YNljImMRck5+0UBVC7a84iY5FlaXPJKpgPGJhxa5XWeEoKdqnoPOPHY2txglvbv+
-	pMEslb8v+QyV5dUu6S7MV9E1BCGqWMqCTNDWbz7ozvzB9QQOgY7vdO4eAo2R+A40lZRZBliVGIJ
-	v115a3UFklvCJ3WEgLjPUhRKE+ru0kWQe2NpM0XIYU5j/Hn7Cd4R9h5ZxtjfX/z/0jWnL30U/lf
-	zABcOnqArPko6m+faXPiE0hVn6wVQxEso9DD5BygOabqRS9SdjQQJNI2AcB3yGyCIaaA=
-X-Received: by 2002:a05:6820:4b14:b0:69d:d9c5:9308 with SMTP id 006d021491bc7-69dd9c5938emr1142398eaf.16.1779815762477;
-        Tue, 26 May 2026 10:16:02 -0700 (PDT)
-X-Received: by 2002:a05:6820:4b14:b0:69d:d9c5:9308 with SMTP id 006d021491bc7-69dd9c5938emr1142352eaf.16.1779815761931;
-        Tue, 26 May 2026 10:16:01 -0700 (PDT)
-Received: from redhat.com (c-73-183-52-120.hsd1.pa.comcast.net. [73.183.52.120])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-8cc812e2018sm148514636d6.28.2026.05.26.10.15.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 26 May 2026 10:16:00 -0700 (PDT)
-Date: Tue, 26 May 2026 13:15:59 -0400
-From: Brian Masney <bmasney@redhat.com>
-To: Akari Tsuyukusa <akkun11.open@gmail.com>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, wenst@chromium.org,
-	laura.nao@collabora.com, linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, stable@vger.kernel.org
-Subject: Re: [PATCH] clk: mediatek: mt8196: Select REGMAP_MMIO for vlpckgen
-Message-ID: <ahXVT62JUZmliXfy@redhat.com>
-References: <20260522133023.355404-1-akkun11.open@gmail.com>
+	id 1wRz0d-00000002xuc-0iXy;
+	Tue, 26 May 2026 21:08:20 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 48A7340D7F;
+	Tue, 26 May 2026 21:08:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A20151F000E9;
+	Tue, 26 May 2026 21:08:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1779829697;
+	bh=QzwgwypkHaL96nsdzAkl5yH0GD0dCTKW1kcyCj3G6qA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=hHknQda5xEYsK9IBnCJXCvpT/FS27W7drakg0GHskeVSZn3m8q0ZmlNMkcyN5h5YA
+	 xhdm2eb6Kscy68HoKwokIZwV2L0HeGQBunFBGntDQr08jbMfr/gTrhBJfxzOT41nsZ
+	 tFLfzr9nBhUwUXNS6QWyfM25blqoolgKL10jc3mJdn3i4Wkw2KThlx8zEwv999YSie
+	 wbs5eXxXfCzy7MT7epDG9kC729+BkZYxdMRal8G/kOKFc/hpDZRRFli5njkIPfGi6e
+	 OemMvy2bVODCYRN+x7au9+WjbNqWRWuJSg3jcBT3KVxTNjyDhl1I9j0z9zNBMl8wCE
+	 xH8AmfaG2r4kg==
+Date: Tue, 26 May 2026 23:08:14 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Alexander Lobakin <aleksander.lobakin@intel.com>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	Madhur Agrawal <madhur.agrawal@airoha.com>
+Subject: Re: [PATCH RFC net-next v2] net: airoha: Add TCP LRO support
+Message-ID: <ahYLvlIYH60cvkWB@lore-desk>
+References: <20260526-airoha-eth-lro-v2-1-24e2a9e7a397@kernel.org>
+ <7473204e-2ccd-44d8-b703-5a5dbcb29b61@intel.com>
 MIME-Version: 1.0
-In-Reply-To: <20260522133023.355404-1-akkun11.open@gmail.com>
-User-Agent: Mutt/2.3.1 (2026-03-20)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: _w2PZ7LjPT62lypo4eMjyfPsbTcCtaqbqzn_ymEOMYk_1779815762
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="EScZYE8yc4PJ+rAl"
 Content-Disposition: inline
+In-Reply-To: <7473204e-2ccd-44d8-b703-5a5dbcb29b61@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260526_101731_812553_194B45B5 
-X-CRM114-Status: GOOD (  10.45  )
+X-CRM114-CacheID: sfid-20260526_140819_256284_1FE2603F 
+X-CRM114-Status: GOOD (  22.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,19 +77,177 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 22, 2026 at 10:30:23PM +0900, Akari Tsuyukusa wrote:
-> The MediaTek MT8196 vlpckgen clock driver uses
-> __devm_regmap_init_mmio_clk() by devm_regmap_init_mmio(),
-> which is defined in drivers/base/regmap/regmap-mmio.c.
-> However, the driver's Kconfig entry does not select REGMAP_MMIO.
-> This causes a linker error when REGMAP_MMIO is not enabled.
-> 
-> Fix this by selecting REGMAP_MMIO in the Kconfig entry.
-> 
-> Fixes: 2f8b3ae6f0cb ("clk: mediatek: Add MT8196 vlpckgen clock support")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
 
-Reviewed-by: Brian Masney <bmasney@redhat.com>
+--EScZYE8yc4PJ+rAl
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+> From: Lorenzo Bianconi <lorenzo@kernel.org>
+> Date: Tue, 26 May 2026 08:58:05 +0200
+>=20
+> > Add hardware TCP Large Receive Offload (LRO) support to the airoha_eth
+> > driver, leveraging the EN7581/AN7583 SoC's 8 dedicated LRO hardware que=
+ues
+> > mapped to RX queues 24=E2=80=9331. LRO hw offloading does not support
+> > Scatter-Gather (SG) so it is required to increase the page_pool allocat=
+ion
+> > order to 2 for RX queues 24=E2=80=9331 (LRO queues).
+> >=20
+> > Performance comparison between GRO and hw LRO has been carried out using
+> > a 10Gbps NIC:
+> >=20
+> > GRO: ~2.7 Gbps
+> > LRO: ~8.1 Gbps
+> >=20
+> > Please note with respect to the previous implementation, page_pool
+> > allocation order has been reduced from 5 to 2.
+> >=20
+> > Tested-by: Madhur Agrawal <madhur.agrawal@airoha.com>
+> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+>=20
+> [...]
+>=20
+> > @@ -587,6 +630,85 @@ static int airoha_qdma_get_gdm_port(struct airoha_=
+eth *eth,
+> >  	return port >=3D ARRAY_SIZE(eth->ports) ? -EINVAL : port;
+> >  }
+> > =20
+> > +static int airoha_qdma_lro_rx_process(struct airoha_queue *q,
+> > +				      struct airoha_qdma_desc *desc)
+> > +{
+> > +	u32 desc_ctrl =3D le32_to_cpu(READ_ONCE(desc->ctrl));
+> > +	u32 msg1 =3D le32_to_cpu(READ_ONCE(desc->msg1));
+> > +	u32 msg2 =3D le32_to_cpu(READ_ONCE(desc->msg2));
+> > +	u32 msg3 =3D le32_to_cpu(READ_ONCE(desc->msg3));
+>=20
+> Why are these READ_ONCE()s needed? Does desc come from the HW (sorry I
+> didn't follow the whole code flow) or...?
+
+Correct, ctrl, msg1, msg2 and msg3 are subfields of the DMA descriptor read=
+ by
+airoha_qdma_rx_process() from the NIC. I guess here we have a similar issue=
+ as
+the one fixed in [0]
+
+[0] https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net.git/commit/?=
+id=3D4ae0604a0673e11e2075b178387151fcad5111b5
+
+>=20
+> > +	struct sk_buff *skb =3D q->skb;
+> > +	u32 len, th_off, tcp_ack_seq;
+> > +	u16 tcp_win, l2_len;
+> > +	struct tcphdr *th;
+> > +	bool ipv4, ipv6;
+> > +
+> > +	if (FIELD_GET(QDMA_ETH_RXMSG_AGG_COUNT_MASK, msg2) <=3D 1)
+> > +		return 0;
+> > +
+> > +	ipv4 =3D FIELD_GET(QDMA_ETH_RXMSG_IP4_MASK, msg1);
+> > +	ipv6 =3D FIELD_GET(QDMA_ETH_RXMSG_IP6_MASK, msg1);
+> > +	if (!ipv4 && !ipv6)
+> > +		return -EOPNOTSUPP;
+> > +
+> > +	l2_len =3D FIELD_GET(QDMA_ETH_RXMSG_L2_LEN_MASK, msg2);
+> > +	len =3D FIELD_GET(QDMA_DESC_LEN_MASK, desc_ctrl);
+> > +	if (ipv4) {
+> > +		struct iphdr *iph;
+> > +
+> > +		if (!pskb_may_pull(skb, l2_len + sizeof(*iph)))
+> > +			return -EINVAL;
+> > +
+> > +		iph =3D (struct iphdr *)(skb->data + l2_len);
+> > +		if (iph->protocol !=3D IPPROTO_TCP)
+> > +			return -EOPNOTSUPP;
+> > +
+> > +		iph->tot_len =3D cpu_to_be16(len - l2_len);
+> > +		iph->check =3D 0;
+> > +		iph->check =3D ip_fast_csum((void *)iph, iph->ihl);
+> > +		th_off =3D l2_len + (iph->ihl << 2);
+> > +	} else {
+> > +		struct ipv6hdr *ip6h;
+> > +
+> > +		if (!pskb_may_pull(skb, l2_len + sizeof(*ip6h)))
+> > +			return -EINVAL;
+> > +
+> > +		ip6h =3D (struct ipv6hdr *)(skb->data + l2_len);
+> > +		if (ip6h->nexthdr !=3D NEXTHDR_TCP)
+> > +			return -EOPNOTSUPP;
+> > +
+> > +		ip6h->payload_len =3D cpu_to_be16(len - l2_len - sizeof(*ip6h));
+> > +		th_off =3D l2_len + sizeof(*ip6h);
+> > +	}
+> > +
+> > +	tcp_win =3D FIELD_GET(QDMA_ETH_RXMSG_TCP_WIN_MASK, msg3);
+> > +	tcp_ack_seq =3D le32_to_cpu(READ_ONCE(desc->data));
+> > +
+> > +	if (!pskb_may_pull(skb, th_off + sizeof(*th)))
+> > +		return -EINVAL;
+> > +
+> > +	th =3D (struct tcphdr *)(skb->data + th_off);
+> > +	th->ack_seq =3D cpu_to_be32(tcp_ack_seq);
+> > +	th->window =3D cpu_to_be16(tcp_win);
+> > +
+> > +	/* Check tcp timestamp option */
+> > +	if (th->doff =3D=3D (sizeof(*th) + TCPOLEN_TSTAMP_ALIGNED) / 4) {
+> > +		__be32 *topt =3D (__be32 *)(th + 1);
+>=20
+> Make sure you checked the code with sparse (sometimes it's needed to
+> mark casts as __force, not this one tho)
+
+$ make C=3D2 CHECK=3Dsparse drivers/net/ethernet/airoha/
+  CHECK   scripts/mod/empty.c
+  DESCEND objtool
+  INSTALL libsubcmd_headers
+  DESCEND bpf/resolve_btfids
+  INSTALL libsubcmd_headers
+  CHECK   drivers/net/ethernet/airoha/airoha_eth.c
+  CHECK   drivers/net/ethernet/airoha/airoha_ppe.c
+  CHECK   drivers/net/ethernet/airoha/airoha_ppe_debugfs.c
+  CHECK   drivers/net/ethernet/airoha/airoha_npu.c
+
+$ sparse --version
+v0.6.5-rc1
+
+>=20
+> > +
+> > +		if (*topt =3D=3D cpu_to_be32((TCPOPT_NOP << 24) |
+>=20
+> Shouldn't this be `((u32)TCPOPT_NOP) << 24` to avoid sign issues?
+
+I guess this is same approach used in [1]. Am I missing something?
+
+[1] https://github.com/torvalds/linux/blob/master/net/ipv4/tcp_ipv4.c#L823
+
+Regards,
+Lorenzo
+
+>=20
+> > +					 (TCPOPT_NOP << 16) |
+> > +					 (TCPOPT_TIMESTAMP << 8) |
+> > +					 TCPOLEN_TIMESTAMP)) {
+> > +			__le32 tcp_ts_reply =3D READ_ONCE(desc->tcp_ts_reply);
+> > +
+> > +			put_unaligned_be32(le32_to_cpu(tcp_ts_reply),
+> > +					   topt + 2);
+> > +		}
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> Thanks,
+> Olek
+
+--EScZYE8yc4PJ+rAl
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCahYLvgAKCRA6cBh0uS2t
+rD5IAQDm649Y+OIXgnX3tqPjEv0sZKv9Zt+HPJ2Car7wGP9blAD/QhomlYinsEb6
+cOFaX+lWBwG7XoOzG8IhnE4orgKEuA8=
+=Ypxv
+-----END PGP SIGNATURE-----
+
+--EScZYE8yc4PJ+rAl--
 
