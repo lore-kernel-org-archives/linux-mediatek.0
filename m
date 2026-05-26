@@ -4,100 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE572CD5BC8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 May 2026 09:38:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0423CD5BD2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 May 2026 09:48:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RXJWIuO8bbHBBvc8hAmAJEeX88yUO/65JWt4BhqEy1c=; b=b+6wz8flH+1wTXFKoKx2jaLKOO
-	2r8KKR0l+qMC1yBid6M6+euddRFRqs1iIDTakZtR30uhfT+bcDxby3rPRYVMX3IPMKOqU0L3jmSUJ
-	eBuPbigdnjuEKDmeHcCyH1er5EE9CU7FlzqnMDPB/IkJu+ZpbT4IH8BX56fk9oUUe/mdh4sVrfz9A
-	3Bmu0Ao1cpE0t8ALUbZ4vDRRlTQy5RLUd0wNNm7ZonZdo/z6x/xUEjXb8ad4lbDjj6RVFTXOAC7Tw
-	hGemF5Ax49H2BU1vTyQSzdJOPD2/Xj8RPeDQDIRrl2CyoWoOL5X796e93OqHYka9K5JuigbSSFVln
-	QlDvDvZw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6xgiU7UHk0fyH8OtVpuJExgRt0VbjZpUEjJ/frbR0FA=; b=0GQPvoXtSFtbn3ULf8GAL0AquN
+	QOTPRCs/mQAaUCK/S05wn3OwTQ+NFtXusHtSqb9QINeEx/cKuGZelD7Z/fYBmd3UX27U6QexETojC
+	wAy0lh97yANYqi/C1+QW6ZddU/WqYOJj6W3olDwhEHOIuXPkiwTGKB4vA4MuLu4v+4xuQ1MEXfhrA
+	JX0MBz7kAEzFZkwY4nFIah0MOe6ZEEPqY2BkpfPXaPhcmG/LF0YA9ibbUqKposVdtL3ei9IxxE1rl
+	Whf6V6caRXCulwH69niQLDN/XLp7RNa3o5vySRcGH9ARh7UkVu2dPRmbeY53w3Knfe7k9Hl5zcUjw
+	VyswepIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRoEw-00000001Xn5-37aZ;
-	Tue, 26 May 2026 09:38:22 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1wRoOW-00000001ZHo-3MGN;
+	Tue, 26 May 2026 09:48:16 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRoEt-00000001XmR-1h3L
+	id 1wRoOW-00000001ZHK-0G6g
 	for linux-mediatek@lists.infradead.org;
-	Tue, 26 May 2026 09:38:21 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-43d7645adbdso6492080f8f.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 26 May 2026 02:38:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1779788297; x=1780393097; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=RXJWIuO8bbHBBvc8hAmAJEeX88yUO/65JWt4BhqEy1c=;
-        b=nnII3SprczslNH5R+rPvJ6oQOpp15MyAPR5sEK510TiBDCRrhMZwbpZzqWaKsIsyez
-         duO0kKKNRDQyOF9RPULIQZWVDQzi2YCP4wVjKs/9EhlTTHSeg8urxS7QMa3cm4KXJvmF
-         Wbrdc+Sz2oU6LTI8TeNQrKTQ0TvRBlEqcHzSns4spJZRw5rIAInCZaHXSOEfBgj4hG6E
-         J4UiKMl1VBOdxNw/6WM5I0j9nag+ICGhrx6iYWFlzw5BNG5RwpHH7ufYtnRnqD7tZrYg
-         Ge3rWQI4Xw6batAnbMncfxrK2oYcjLIozNAccsjXZb59O7pq9wiM9IU6v0icrwTPKdWL
-         8YOg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779788297; x=1780393097;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=RXJWIuO8bbHBBvc8hAmAJEeX88yUO/65JWt4BhqEy1c=;
-        b=gxEd0AKeXmqA6AuYjdptrtPAuL1an8xNQVtfxM3XiZYz70H64e+d3zTpWmOjgSyENO
-         FOid8qGug7RCsaxAOkcIjfAiPwcXMjsfecVxRrlnGdQlDnHJaHXAvXxHuQNwA5i6AR5T
-         be4mHlnknmTpWRcwAc20msmfPZFjE0W4KwB0SHmToQ3NsWXhZn3yB6E6Bp0i+7jmJKb/
-         wdSpTzNuatYx4pAeZkvW29G0A1uoYF2ctgkJOWm3fKJbUJuS2ilQ1vntTtekCPd7otq9
-         di3p3fstE3t207KYRr97V+QWDVE1Q1FgsocX/BiKeCBhOLX9rsfHuP9HvLtr/4kXQk1B
-         ltGA==
-X-Forwarded-Encrypted: i=1; AFNElJ8BipuGyZPlU1X/W6gBO6jMawX8w2Vgn0nqv74IdZVKav6qFhokaqKsmUuji+HeO5QJfw97wyMWDp1B5IjvGg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxnelWPG87qNYWz0h+n8U4kTXISAV6FpnT8L3wysrm2O65E2j9w
-	BgcQO1iCwYmiHgfmdONiSVeguCifohCsKhYm190cZqvBFyiEflE/11l+O39K78MaNRA=
-X-Gm-Gg: Acq92OF1ZFIoLW/uxX0okg19wumEJ/BRj3tC8X1BgVfhlzYSeCmUNGi3hilJgs9JeOT
-	a5qT71TkQL0DfpKX4KYUOY1WeAHD6Qtj8g+q0j8SpIi17QQ4TtU4QkjNzyVU4hVK47eLN8SZ+IN
-	ioL9mwiIMcMoINQQ6iH1PP3+us0V9jMK2tvqhsRnCHsFq+K6MY9s6Lq36ZCyHzzbKDLZ38fjaUX
-	/6176CortsXYokwi0rvEjyrSdDEEWFnpciR5RF1E3OKsqWy1zQ14PbH+5AvmDCU8SJuz/LpE7ov
-	vO9SCXapfTxyMoj7S7xJSboSG/Hf5sbWDbceBH78tYSzM/UUOmnH0SwlbYsap/jM7ijZDNtd4WC
-	u8IRXswx87WfEHT5Zeh4s7JlkYS16J3zKDbGcfD6YGAvTRqVRXHH+uMe4fW0cfxgMHirdok2D14
-	4XH3T280T+BgDJ9AjE8FX0HJ4x+VlVkWu7vOrI1PrFePI/TvBCV3Dr10sQ7zEI6Ihk+bG08eVOe
-	7iQ7m8jbR6tuQ==
-X-Received: by 2002:a05:6000:1447:b0:452:d03a:7abe with SMTP id ffacd0b85a97d-45eb38b91c3mr32067787f8f.17.1779788297057;
-        Tue, 26 May 2026 02:38:17 -0700 (PDT)
-Received: from localhost (p200300f65f47db047ec792ae18ec05cd.dip0.t-ipconnect.de. [2003:f6:5f47:db04:7ec7:92ae:18ec:5cd])
-        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-45eb6d49132sm34150219f8f.24.2026.05.26.02.38.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 26 May 2026 02:38:16 -0700 (PDT)
-Date: Tue, 26 May 2026 11:38:15 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>
-To: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-Cc: Ulf Hansson <ulfh@kernel.org>, 
-	"Christian A. Ehrhardt" <christian.ehrhardt@codasip.com>, linux-mmc@vger.kernel.org, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Wolfram Sang <wsa+renesas@sang-engineering.com>, 
-	linux-kernel@vger.kernel.org, Marcel Holtmann <marcel@holtmann.org>, 
-	linux-bluetooth@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mediatek@lists.infradead.org, 
-	Ping-Ke Shih <pkshih@realtek.com>, linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
-	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
-	Brian Norris <briannorris@chromium.org>, Francesco Dolcini <francesco@dolcini.it>, 
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Subject: Re: [PATCH v1 1/6] sdio: Add syntactic sugar to store a pointer in
- sdio_driver_id
-Message-ID: <ahVpRY6lxiWbJ7Qc@monoceros>
-References: <cover.1776429984.git.u.kleine-koenig@baylibre.com>
- <c830049dcfcd99f005e2ff6742aace9341c61f13.1776429984.git.u.kleine-koenig@baylibre.com>
- <aeaMkfk_1t98e7SU@monoceros>
- <CABBYNZJzbEmYzTk2m+Y8SoHVouTMA6Gje_55iJsQ6cYtDLftbQ@mail.gmail.com>
+	Tue, 26 May 2026 09:48:16 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 4529F600B0
+	for <linux-mediatek@lists.infradead.org>; Tue, 26 May 2026 09:48:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F10A81F00ACF
+	for <linux-mediatek@lists.infradead.org>; Tue, 26 May 2026 09:48:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1779788895;
+	bh=6xgiU7UHk0fyH8OtVpuJExgRt0VbjZpUEjJ/frbR0FA=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc;
+	b=NVZlTsys9BWdtHzTDLDn5rfEhTbtLxyyJGzF9yhWAnDRt41GZGQkchM1KVUs4BE+V
+	 1ZfotqeJQVRfUIDBM6RJ2k1gVu2eBPsu9O+FeP6SXfWF/fNjDthrrS7mHTkNCjm0tu
+	 z8lXLoRuCz3oM81VIG4KNypW0wZMBD+C0W5bBLTTQrUkpCxFSnVeLs5s6QmfusqyrK
+	 2DZ+l73jxUWSahhHCjeNnze7jpJ4/4lfxQqN/demRkAnfOOJj/aQiLbtdK7j/e7uRU
+	 bs0KQ9vbAJ0Tk2r4RTaxzHBYygw2z2HFkI95yphzgxLV8SHOsGkb3Hm9fXVZm2Odf1
+	 r7Hx6MJKvNEGw==
+Received: by mail-lj1-f178.google.com with SMTP id 38308e7fff4ca-392445f11c5so105831721fa.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 26 May 2026 02:48:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AFNElJ+gI+r2JjbIVP/OgSuywpfmfcaOioJubyl3wDRr5q61cA/dsQbsc9k0VcFnoQY4btAbs3jtdThRBPD7kJyMZg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyPx3BgN6K7SLJ27leddM+S0AcdVoLfpy3SHCijXf43VG0XJDjf
+	ljejNM8HTiSLykh+TzC+Rxa1iSX4p8wefWQNg6q85vwMT/Re1pzNo5aTQoTkj4PJ7HHwJkJFkfd
+	6wsEijLWgYIkJ3kQke7YWKsGKn3lwcMiHXy41LVbkhg==
+X-Received: by 2002:a05:651c:20cd:20b0:38e:94c6:b706 with SMTP id
+ 38308e7fff4ca-395ca1c8679mr43054031fa.7.1779788893678; Tue, 26 May 2026
+ 02:48:13 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="vtihelpcu7j6kvgw"
-Content-Disposition: inline
-In-Reply-To: <CABBYNZJzbEmYzTk2m+Y8SoHVouTMA6Gje_55iJsQ6cYtDLftbQ@mail.gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260526_023819_461437_12CE4E9B 
-X-CRM114-Status: GOOD (  24.75  )
+References: <20260515090149.3169406-1-wenst@chromium.org> <CAMRc=MdnjRRMVzxPkkrPhQ4dz7rsK8-HKUp9cQ0z11apL3escQ@mail.gmail.com>
+ <CAGXv+5HC3dqgcE3KnKzakHHWFHB6m_X42orOkNUvZvp=SL_O8g@mail.gmail.com>
+In-Reply-To: <CAGXv+5HC3dqgcE3KnKzakHHWFHB6m_X42orOkNUvZvp=SL_O8g@mail.gmail.com>
+From: Bartosz Golaszewski <brgl@kernel.org>
+Date: Tue, 26 May 2026 11:48:01 +0200
+X-Gmail-Original-Message-ID: <CAMRc=Med-_0GSYzoFBRiwFzBCK0DZqJD8_SEBxi+zwR20GS-HA@mail.gmail.com>
+X-Gm-Features: AVHnY4JnWCndh1h2w4rgycQThCJN5e2R-74Cpg5S6rpAEGBFVHeaeEFDCnabd1Q
+Message-ID: <CAMRc=Med-_0GSYzoFBRiwFzBCK0DZqJD8_SEBxi+zwR20GS-HA@mail.gmail.com>
+Subject: Re: [PATCH RFC 00/12] arm64: mediatek: Add M.2 E-key slot on Chromebooks
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-pm@vger.kernel.org, 
+	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Manivannan Sadhasivam <mani@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,76 +85,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---vtihelpcu7j6kvgw
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v1 1/6] sdio: Add syntactic sugar to store a pointer in
- sdio_driver_id
-MIME-Version: 1.0
-
-On Mon, Apr 20, 2026 at 04:46:56PM -0400, Luiz Augusto von Dentz wrote:
-> Hi Uwe,
->=20
-> On Mon, Apr 20, 2026 at 4:31=E2=80=AFPM Uwe Kleine-K=C3=B6nig (The Capabl=
-e Hub)
-> <u.kleine-koenig@baylibre.com> wrote:
-> >
-> > Hello,
-> >
-> > On Fri, Apr 17, 2026 at 03:10:47PM +0200, Uwe Kleine-K=C3=B6nig (The Ca=
-pable Hub) wrote:
-> > > On all current Linux architectures sizeof(long) =3D=3D sizeof(void *)=
- and
-> > > this is used a lot through the kernel. For example it enables the usu=
-al
-> > > practice to store pointers in sdio_driver_id's .driver_data member.
+On Sun, May 24, 2026 at 10:06=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org> =
+wrote:
+>
 > > >
-> > > This works fine, but involves casting and thus isn't type-safe.
-> > > Additionally with the CHERI architecture extension there are machines
-> > > with sizeof(void *) > sizeof(long) for with the traditional approach =
-of
-> > > storing a pointer in .driver_data doesn't work.
+> > > I expect some discussion on this patch, because a) it adds some
+> > > OF-specific code into an otherwise generic (core) driver, and
+> > > b) it doesn't yet handle USB 2.0 / 3.x shared ports; it ends up power=
+ing
+> > > on the port twice, which negates the port reset part.
 > > >
-> > > By replacing the plain unsigned long .driver_data by an anonymous uni=
-on,
-> > > most of the casting can be dropped and it yields a working solution f=
-or
-> > > CHERI.
-> > >
-> > > All users of struct sdio_driver_id are initialized in a way that is
-> > > compatible with the new definition, so no adaptions are needed there.
 > >
-> > sashiko.dev found s/sdio_driver_id/sdio_device_id/ twice in the commit
-> > log and once in the short log. If you consider applying this patch
-> > please adapt the commit message accordingly.
->=20
-> No problem I can fix them up once applying.
+> > I understand that you do this because the port device has no OF node
+> > assigned. If we wanted to call pwrseq_get() for the port device, is
+> > there really no other way to associate it with the correct pwrseq
+> > provider?
+>
+> I suppose we could tie the "port@X" node to the usb port device, but
+> AFAIK no other subsystem does this so we would be introducing a new
+> pattern.
+>
+> In the M.2 pwrseq driver, we would have to match by port node instead
+> of its parent device node. We may end up with different behavior for
+> the USB target vs the other targets.
+>
 
-Now that Ulf gave his blessing, would you please merge the first patch
-and the bluetooth ones (#2 and #3)? I will follow up then once your tree
-hits Linus's tree with the remaining patches for wifi.
+I imagine, we can check the bus type of the parent device to know if
+this is USB?
 
-Please don't forget about s/sdio_driver_id/sdio_device_id/.
+> Also, the "port@X" nodes only exist for the OF graph connections to
+> connectors and/or muxes (this series doesn't deal with the latter).
+> For directly connected devices, there is a "device@X" child node
+> directly under the USB hub node. That node is what gets tied to the
+> the USB device.
+>
 
-Thanks
-Uwe
+Is this a problem? I don't think I understand what you're saying here.
 
---vtihelpcu7j6kvgw
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmoVagQACgkQj4D7WH0S
-/k5P8Af7B8UAQJSjX3WHqmRdJihAfbJzuB0qsIl9eOVYHCAaEiAnVpqnjNkntHIU
-lX0CcswR4fXl9pEV+1mobDSLHsbDhg9BtXTuAm4pavvYRoS5isVyCkasNUeNDGt9
-B68NNR4oKyApL/DFvXCG4CPWrhA8TL+m9HE7DCkm2IYcH2TB2WdUCQnnQFV8E94x
-1eyEfCrTCqn5UlW+2urdJLmngSk7o3yv1wJ36pgHxMNQMXU8mPWN4nOCqEZAvtmP
-CrtRviKQ1QpRXNBA7blduSvvqqfr7uQEKta7E2argdEhkor6XY/fTTlu687QRi6n
-Po62G/0XCxIUYpanmYULzD9YbpSlyA==
-=Zdz8
------END PGP SIGNATURE-----
-
---vtihelpcu7j6kvgw--
+Bart
 
