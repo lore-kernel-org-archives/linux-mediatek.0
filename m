@@ -4,76 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F75BCD5BD5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 May 2026 21:52:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAC6ECD5BD0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 May 2026 22:52:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vofwtLagvBRYkOYwKOjHnTeC6C87g7YP3KZhbzyhI3Q=; b=HegL6ss0L/T79vivlOrxorJSx1
-	sijzKbRnXYSGUYljzuYgvdiuV1nCIhFbtBakMzQ0a7AwGXbCVRGXclCT1MRP/tHzWLBluk//oGOgs
-	IEb2u0bo6GPrsNHX+dGoVu3PDeq59ZCPEbS+kUcIcxaNBJuWm+WmoPupCaIjbhyTVbEpxC2bCDBO2
-	lPe8nE6X4uOsENBFpy7ML+pa0PF7M4rc0Gki5eVKaEBeobcbP9qStocmN0eUnQhIonWDidmygkUVB
-	meAqrb/IlBANzSn+E9q7Sg2nOSfuXKa8J3m8VLwmqpLFJFXSf0sZj+yjKALzSZYLkeofXc1s43K5E
-	SS2i29ig==;
+	bh=VfzM6LdUA0qi+e/RUFYNl4nW0x6KKJ/y2kEbTpe+cQs=; b=Bry2T+7QVL513Rsc3QLvLKVB7X
+	6GRrVzDKBXbpFX/iAkc3zfLggkz8eHJ/jxQRCefR6p4w9n9CmhL+LAeGfWoq0TRgXRLQ9BnHJSdwq
+	Nbzi2W+KqbcsBPXPP/sovoXMh11ehSYkN+RUWOuoRLsiiwzu9s2Ra09TpD0b/V6yAxhGI1BpsBes0
+	ZXUhZZGbdus/TI4fPPiZ2khWCamud46MsEdqaYzwzzdoXCuG9klnkAIxqZisUeRgvNNLBA8uYN3EA
+	lQt3O6zoYmlCrwTDDgKAfHlTYbsXUxQFCBF1zp1X0M6IuXt76fnptdbt6MBFB9UE9GLwNkcLuGbkV
+	HMQhT/dQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRzhg-0000000301z-45uo;
-	Tue, 26 May 2026 21:52:48 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wS0dA-000000032To-0UTN;
+	Tue, 26 May 2026 22:52:12 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRzhe-0000000300z-3ifY
+	id 1wS0d9-000000032Ti-1LQk
 	for linux-mediatek@lists.infradead.org;
-	Tue, 26 May 2026 21:52:47 +0000
+	Tue, 26 May 2026 22:52:11 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 052BE443F8
-	for <linux-mediatek@lists.infradead.org>; Tue, 26 May 2026 21:52:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E15181F00ADF
-	for <linux-mediatek@lists.infradead.org>; Tue, 26 May 2026 21:52:45 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 0C5FA60018
+	for <linux-mediatek@lists.infradead.org>; Tue, 26 May 2026 22:52:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 95DC71F000E9
+	for <linux-mediatek@lists.infradead.org>; Tue, 26 May 2026 22:52:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779832365;
-	bh=vofwtLagvBRYkOYwKOjHnTeC6C87g7YP3KZhbzyhI3Q=;
+	s=k20260515; t=1779835929;
+	bh=VfzM6LdUA0qi+e/RUFYNl4nW0x6KKJ/y2kEbTpe+cQs=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=JvySodVWkZ4MM3tRJ8YS99NO8G7r2QGWchQgjJs/N+v4T2fakaO4nQDdnRKzeIqTT
-	 twW0FxpXffz7ntaZsc3O/ISWeFOfVsNb/x05burAQaCV9x0p4/oCBx+unOrZNDKiKH
-	 l9eEs/xvzHk7ZO9LGKRzD+wyhYk/qRZhK5KF4wg+jKuzkyANdqT3/0CZ70KJQmgnhs
-	 zZQSlPOBMLaWKn7O7IGnTpnQLYT/fNAPwTGi9bD8J0K1DlMF127mpbMjHwpWu/C29v
-	 j8kQ4+Ada+sfRBKhvdrHvYOoaCl3yhfcJa5ke+GxzVVmXHgt06pmnxndTucORDzD0u
-	 JP8bxaosMVwHg==
-Received: by mail-lj1-f171.google.com with SMTP id 38308e7fff4ca-38ea6a5a0b3so88879891fa.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 26 May 2026 14:52:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AFNElJ/zwrnL7QqF27998NFAZLcFkE5xIS7dXhPr0kVhLK8dgIUNdCQgpNkufbooIv0grJrhZmlHd/7HarS3ku0ZPQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzF4QfBRWzz+rerr8fIB8pHm/bxzkWm+B4oEseXF7CyqkiIVEle
-	RjtmH71sn4pTlhZ14QrCCuNfHs68dAt+G3rYOcgSAh1b2jlMsEJ8NeweLNBUVC2pfColq3h0VWf
-	eBBNlPXPE+J/ggVK1GAZkbet0ouW0hHU=
-X-Received: by 2002:a2e:8192:0:b0:394:2b8a:2374 with SMTP id
- 38308e7fff4ca-395d8d3de65mr47969431fa.16.1779832364145; Tue, 26 May 2026
- 14:52:44 -0700 (PDT)
+	b=d/mXuUxbZ7aBqjOlq6VE9I2LzkcLSBqVn161XdA4+LDv4yMtvweLjkyTzBstuv4tp
+	 LitF0Zw/cdkHNiQZobqP9aHvLPZ1Wmy/CV+At7x32zFMgtJxkKkXG48ZnvuzX7x8h1
+	 kQ+x1dTyDaa5k/QuFmxKD+B1hsOLgk1nFobK8iV+/XczMIa5NhHwQfcTAhq0ggFnzt
+	 S+iRtZGLZVU/gFDtzD7Ups8pU4MIZ5/2mgkO9nh5dGZ57sJfNBgcKGcuMlbAlQXWKM
+	 4uucenI4DbAErB38TsiG8LClSNs5Z5NRxgVYTdUENW5Idj8pY2YpHnKMuNNImS8SXN
+	 6XKadrfI5hjcA==
+Received: by mail-lj1-f180.google.com with SMTP id 38308e7fff4ca-3939d2bd7ecso93274991fa.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 26 May 2026 15:52:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AFNElJ847CwmHkvLL32DnaYm+Bqi/z6DKhaaOmve/Udsk9OEKe56dCKHx4hhYd4R2Av3jCEAiHgfxq2UqeXRbBAWSQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxZy215x/3SNwmi5K8fPvrZkMKN6cbFPYtJNRMmGvyb9F1jJ7VQ
+	NNkgsmom/lSG+5ufDSWEU4Pg3CT4p4BzCUf2i5EyBZt2ga26Qwlk0Aoi42iDF7OnvXDbqRB+3IQ
+	Ikw90JwpCmzg5DQ9JqB9IB+ua8VPyHHc=
+X-Received: by 2002:a05:651c:198f:b0:391:11de:dd5b with SMTP id
+ 38308e7fff4ca-395d8ea8c7dmr62250781fa.11.1779835927953; Tue, 26 May 2026
+ 15:52:07 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260526060841.49161-1-liujiajia@kylinos.cn>
-In-Reply-To: <20260526060841.49161-1-liujiajia@kylinos.cn>
+References: <ahTdpNQp2va_xTVR@wico-dev.wnam.ru>
+In-Reply-To: <ahTdpNQp2va_xTVR@wico-dev.wnam.ru>
 From: Sean Wang <sean.wang@kernel.org>
-Date: Tue, 26 May 2026 16:52:32 -0500
-X-Gmail-Original-Message-ID: <CAGp9LzqzddmyDHMNsaqigYpVEdo_Pmzwbeh5Ri5_Gr87cVL6Dg@mail.gmail.com>
-X-Gm-Features: AVHnY4JN4XiSX6iZ8nQKBZrwSnhXgkTYMQMdyt2mZqBTxzISywSnHzHgBHOFEuo
-Message-ID: <CAGp9LzqzddmyDHMNsaqigYpVEdo_Pmzwbeh5Ri5_Gr87cVL6Dg@mail.gmail.com>
-Subject: Re: [PATCH] wifi: mt76: mt7925: add wcid publish check in mt76_sta_add
-To: Jiajia Liu <liujiajia@kylinos.cn>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
-	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, Michael Lo <michael.lo@mediatek.com>, 
-	Leon Yen <leon.yen@mediatek.com>, linux-wireless@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
+Date: Tue, 26 May 2026 17:51:54 -0500
+X-Gmail-Original-Message-ID: <CAGp9Lzq2R1c6ZiNU-HqLuOEKV=xsQ3r40Ft59RvoUk69TyNxxA@mail.gmail.com>
+X-Gm-Features: AVHnY4LTuhbTCmsfBdzRK2G66Png7EatfFUpCFT_KBks5SDiEB00CcZg69NThDc
+Message-ID: <CAGp9Lzq2R1c6ZiNU-HqLuOEKV=xsQ3r40Ft59RvoUk69TyNxxA@mail.gmail.com>
+Subject: Re: [PATCH v2] wifi: mt76: track rx napi ownership for cleanup
+To: Ruslan Isaev <legale.legale@gmail.com>
+Cc: linux-wireless@vger.kernel.org, sean.wang@mediatek.com, nbd@nbd.name, 
+	lorenzo@kernel.org, ryder.lee@mediatek.com, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260526_145246_960829_AF72554F 
-X-CRM114-Status: GOOD (  24.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,163 +82,623 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi,
 
-On Tue, May 26, 2026 at 1:09=E2=80=AFAM Jiajia Liu <liujiajia@kylinos.cn> w=
-rote:
+On Mon, May 25, 2026 at 6:39=E2=80=AFPM Ruslan Isaev <legale.legale@gmail.c=
+om> wrote:
 >
-> Since mt7925_mac_sta_add publishes wcid, add publish check in mt76_sta_ad=
-d
-> to avoid reinitializing the wcid->poll_list for mt7925.
 >
-> Found dev->sta_poll_list corruption when using mt7925 and 7.0-rc4.
-> According to the corruption information, prev->next was changed to itself=
-.
+> mt76_dma_cleanup() deletes rx napi instances for every allocated rx
+> queue. This is not symmetric with mt76_dma_init(), which skips WED_RRO
+> queues when adding rx napi.
 >
-> wlan0: disconnect from AP 90:fb:5d:94:8b:e3 for new auth to 90:fb:5d:94:8=
-b:e2
-> wlan0: authenticate with 90:fb:5d:94:8b:e2 (local address=3D84:9e:56:9c:7=
-e:6b)
-> wlan0: send auth to 90:fb:5d:94:8b:e2 (try 1/3)
->  slab kmalloc-8k start ffff8c80958a6000 pointer offset 4160 size 8192
-> list_add corruption. prev->next should be next (ffff8c808a7488f8), but wa=
-s ffff8c80958a7040. (prev=3Dffff8c80958a7040).
+> Adding an unconditional napi_disable() in the cleanup path fixes the
+> mt7915 remove warning, but it is not safe for all other mt76 paths. mt792=
+1 and
+> mt7925 can already disable rx napi in their unregister
+> paths before calling mt76_dma_cleanup(). On mt7996/mt7992 WED_RRO
+> queues may have ndesc set even though mt76 never added or enabled napi fo=
+r them.
 >
->  mt76_wcid_add_poll+0x95/0xd0 [mt76]
->  mt7925_mac_add_txs.part.0+0xa5/0xe0 [mt7925_common]
->  mt7925_rx_check+0xa7/0xc0 [mt7925_common]
->  mt76_dma_rx_poll+0x50d/0x790 [mt76]
->  mt792x_poll_rx+0x52/0xe0 [mt792x_lib]
+> Track rx napi ownership and enabled state in struct mt76_queue so
+> cleanup only disables and deletes napi instances that were actually
+> added by mt76.
 >
-> Signed-off-by: Jiajia Liu <liujiajia@kylinos.cn>
+> This keeps the existing reset/suspend/remove ordering intact while
+> avoiding double napi_disable() and avoiding napi cleanup on WED_RRO
+> queues without napi.
+>
+> Signed-off-by: Ruslan Isaev <legale.legale@gmail.com>
 > ---
+> v2:
+> - track mt76 rx napi state added/enabled
+> - avoid double napi_disable() on mt7921/mt7925 cleanup paths
+> - avoid napi cleanup on WED_RRO queues without napi
+
+I do not think v2 is the right shape yet, mainly for a few reasons:
+
+1. The patch scope changed too much
+
+   v1 looked like a focused fix for the mt7915/mt7981 remove warning.
+   But v2 changes the title to RX NAPI ownership tracking and touches
+   many reset and unregister paths across mt76 and drivers
+
+   Could you clarify why the title and scope changed from a targeted
+   cleanup fix to a generic RX NAPI state refactor?
+
+2. If the issue is limited to mt7915/mt7981 remove, we should consider
+   fixing it in that functional driver path first
+
+   Adding generic NAPI state tracking to struct mt76_queue feels too
+   broad if the original warning is only from a specific driver removal
+   path.
+
+3. mt7921/mt7925 do not have the same original issue in practice
+
+   The problem I saw with v1 on mt7925 was caused by adding an
+   unconditional napi_disable() in mt76_dma_cleanup(), while mt7921 and
+   mt7925 already disable RX NAPI in their unregister paths that cause the
+   driver to hang.
+
+   If mt76_dma_cleanup() is going to own the final RX NAPI
+   disable/delete path, those duplicated RX NAPI disables in
+   mt7921/mt7925 unregister should be removed first.
+
+4. If mt76 core does more, functional driver paths should become simpler
+
+   A common mt76-layer cleanup should reduce duplicated chip-specific
+   cleanup logic. v2 instead adds a new NAPI state machine and updates
+   many functional driver paths, which makes the overall flow harder to
+   reason about.
+
+5. The WED RRO issue can probably be handled with a smaller symmetric
+   init/cleanup condition
+
+   mt76_dma_init() already skips WED RRO queues when adding RX NAPI.
+   mt76_dma_cleanup() should use the same condition and only
+   disable/delete RX NAPI for queues where init actually added RX NAPI.
+
+   That would keep init and cleanup symmetric without introducing RX
+   NAPI ownership state unless we really need it.
+
+So my concern is not about fixing the warning itself, but about the
+scope and complexity of v2.
+
+I think we can handle this in two stages:
+
+1. First, fix the current mt7915/mt7981 issue in the affected functional
+   driver remove path with a minimal and targeted patch. The patch should
+   also include the appropriate Fixes tag.
+
+2. Then, as a follow-up, we can consider whether mt76 core should own
+   more of the RX NAPI cleanup path. If we do that, the goal should be
+   to make the functional driver paths simpler, keep the init/cleanup
+   conditions symmetric and not cause regression.
+
+Also, I think the patch title should not change too much between v1 and
+v2 If this series is still intended to fix the mt7915/mt7981 remove warning=
+,
+I would keep the title and scope focused on that first.
+
+           Sean
+
+
 >
-> Reproduced and tested using the script below over ssh. Roam between two
-> bssids with the same SSID on a router.
+>  drivers/net/wireless/mediatek/mt76/dma.c      |  9 +++--
+>  drivers/net/wireless/mediatek/mt76/mt76.h     | 40 +++++++++++++++++++
+>  .../net/wireless/mediatek/mt76/mt7603/mac.c   |  8 ++--
+>  .../net/wireless/mediatek/mt76/mt7615/pci.c   |  6 +--
+>  .../wireless/mediatek/mt76/mt7615/pci_mac.c   |  4 +-
+>  .../net/wireless/mediatek/mt76/mt76x0/pci.c   |  4 +-
+>  .../net/wireless/mediatek/mt76/mt76x02_mmio.c |  4 +-
+>  .../net/wireless/mediatek/mt76/mt76x2/pci.c   |  6 +--
+>  .../net/wireless/mediatek/mt76/mt7915/mac.c   |  8 ++--
+>  .../net/wireless/mediatek/mt76/mt7921/pci.c   |  8 ++--
+>  .../wireless/mediatek/mt76/mt7921/pci_mac.c   |  4 +-
+>  .../net/wireless/mediatek/mt76/mt7925/pci.c   |  8 ++--
+>  .../wireless/mediatek/mt76/mt7925/pci_mac.c   |  8 ++--
+>  .../net/wireless/mediatek/mt76/mt7996/mac.c   |  8 ++--
+>  drivers/net/wireless/mediatek/mt76/npu.c      |  3 +-
+>  15 files changed, 86 insertions(+), 42 deletions(-)
 >
-> #!/bin/bash
+> diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wirel=
+ess/mediatek/mt76/dma.c
+> index f8c2fe5f2f58..5c531131a25f 100644
+> --- a/drivers/net/wireless/mediatek/mt76/dma.c
+> +++ b/drivers/net/wireless/mediatek/mt76/dma.c
+> @@ -1099,9 +1099,12 @@ static void
+>  mt76_dma_rx_queue_init(struct mt76_dev *dev, enum mt76_rxq_id qid,
+>                        int (*poll)(struct napi_struct *napi, int budget))
+>  {
+> +       struct mt76_queue *q =3D &dev->q_rx[qid];
+> +
+>         netif_napi_add(dev->napi_dev, &dev->napi[qid], poll);
+> -       mt76_dma_rx_fill_buf(dev, &dev->q_rx[qid], false);
+> -       napi_enable(&dev->napi[qid]);
+> +       q->napi_state =3D MT76_NAPI_ADDED;
+> +       mt76_dma_rx_fill_buf(dev, q, false);
+> +       mt76_rx_napi_enable(dev, qid);
+>  }
 >
-> set -ex
+>  static int
+> @@ -1189,7 +1192,7 @@ void mt76_dma_cleanup(struct mt76_dev *dev)
+>         mt76_for_each_q_rx(dev, i) {
+>                 struct mt76_queue *q =3D &dev->q_rx[i];
 >
-> while :; do
->         num=3D$(sudo iw wlan0 scan | grep Polaris | wc -l)
->         if [ $num -eq 2 ]; then
->                 break
->         fi
-> done
+> -               netif_napi_del(&dev->napi[i]);
+> +               mt76_rx_napi_del(dev, i);
+>                 mt76_dma_rx_cleanup(dev, q);
 >
-> for i in $(seq 1 500); do
+>                 page_pool_destroy(q->page_pool);
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wire=
+less/mediatek/mt76/mt76.h
+> index 527bef97e122..3ce936bdcf88 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt76.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+> @@ -251,6 +251,7 @@ struct mt76_queue {
+>         int buf_size;
+>         bool stopped;
+>         bool blocked;
+> +       u8 napi_state;
 >
-> echo "index $i"
-> wpa_cli -i wlan0 roam 90:fb:5d:94:8b:e3
-> sleep 5
-> wpa_cli -i wlan0 roam 90:fb:5d:94:8b:e2
-> sleep 5
+>         u8 buf_offset;
+>         u16 flags;
+> @@ -1283,6 +1284,45 @@ static inline int mt76_wed_dma_setup(struct mt76_d=
+ev *dev, struct mt76_queue *q,
+>         for (i =3D 0; i < ARRAY_SIZE((dev)->q_rx); i++)   \
+>                 if ((dev)->q_rx[i].ndesc)
 >
-> done
+> +#define MT76_NAPI_ADDED                BIT(0)
+> +#define MT76_NAPI_ENABLED      BIT(1)
+> +
+> +static inline void mt76_rx_napi_enable(struct mt76_dev *dev, int qid)
+> +{
+> +       struct mt76_queue *q =3D &dev->q_rx[qid];
+> +
+> +       if (!(q->napi_state & MT76_NAPI_ADDED) ||
+> +           (q->napi_state & MT76_NAPI_ENABLED))
+> +               return;
+> +
+> +       napi_enable(&dev->napi[qid]);
+> +       q->napi_state |=3D MT76_NAPI_ENABLED;
+> +}
+> +
+> +static inline void mt76_rx_napi_disable(struct mt76_dev *dev, int qid)
+> +{
+> +       struct mt76_queue *q =3D &dev->q_rx[qid];
+> +
+> +       if (!(q->napi_state & MT76_NAPI_ADDED) ||
+> +           !(q->napi_state & MT76_NAPI_ENABLED))
+> +               return;
+> +
+> +       napi_disable(&dev->napi[qid]);
+> +       q->napi_state &=3D ~MT76_NAPI_ENABLED;
+> +}
+> +
+> +static inline void mt76_rx_napi_del(struct mt76_dev *dev, int qid)
+> +{
+> +       struct mt76_queue *q =3D &dev->q_rx[qid];
+> +
+> +       if (!(q->napi_state & MT76_NAPI_ADDED))
+> +               return;
+> +
+> +       mt76_rx_napi_disable(dev, qid);
+> +       netif_napi_del(&dev->napi[qid]);
+> +       q->napi_state =3D 0;
+> +}
+> +
 >
-> ---
->  drivers/net/wireless/mediatek/mt76/mac80211.c    | 11 ++++++++---
->  drivers/net/wireless/mediatek/mt76/mt76.h        |  1 +
->  drivers/net/wireless/mediatek/mt76/mt7925/main.c |  3 +++
->  3 files changed, 12 insertions(+), 3 deletions(-)
+>  #define mt76_dereference(p, dev) \
+>         rcu_dereference_protected(p, lockdep_is_held(&(dev)->mutex))
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7603/mac.c
+> index d3110eeb45d7..be35ec0d31d4 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
+> @@ -1423,8 +1423,8 @@ static void mt7603_mac_watchdog_reset(struct mt7603=
+_dev *dev)
 >
-> diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/=
-wireless/mediatek/mt76/mac80211.c
-> index 4ae5e4715a9c..83f4f941b890 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-> @@ -1595,11 +1595,16 @@ mt76_sta_add(struct mt76_phy *phy, struct ieee802=
-11_vif *vif,
->                 mtxq->wcid =3D wcid->idx;
+>         mt76_worker_disable(&dev->mt76.tx_worker);
+>         tasklet_disable(&dev->mt76.pre_tbtt_tasklet);
+> -       napi_disable(&dev->mt76.napi[0]);
+> -       napi_disable(&dev->mt76.napi[1]);
+> +       mt76_rx_napi_disable(&dev->mt76, 0);
+> +       mt76_rx_napi_disable(&dev->mt76, 1);
+>         napi_disable(&dev->mt76.tx_napi);
+>
+>         mutex_lock(&dev->mt76.mutex);
+> @@ -1474,8 +1474,8 @@ static void mt7603_mac_watchdog_reset(struct mt7603=
+_dev *dev)
+>         mt7603_beacon_set_timer(dev, -1, beacon_int);
+>
+>         napi_enable(&dev->mt76.tx_napi);
+> -       napi_enable(&dev->mt76.napi[0]);
+> -       napi_enable(&dev->mt76.napi[1]);
+> +       mt76_rx_napi_enable(&dev->mt76, 0);
+> +       mt76_rx_napi_enable(&dev->mt76, 1);
+>
+>         local_bh_disable();
+>         napi_schedule(&dev->mt76.tx_napi);
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/pci.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7615/pci.c
+> index f5018bfa317a..600b4f2bf1a1 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
+> @@ -92,7 +92,7 @@ static int mt7615_pci_suspend(struct pci_dev *pdev, pm_=
+message_t state)
+>         mt76_worker_disable(&mdev->tx_worker);
+>
+>         mt76_for_each_q_rx(mdev, i) {
+> -               napi_disable(&mdev->napi[i]);
+> +               mt76_rx_napi_disable(mdev, i);
+>         }
+>         tasklet_kill(&mdev->irq_tasklet);
+>
+> @@ -127,7 +127,7 @@ static int mt7615_pci_suspend(struct pci_dev *pdev, p=
+m_message_t state)
+>
+>  restore:
+>         mt76_for_each_q_rx(mdev, i) {
+> -               napi_enable(&mdev->napi[i]);
+> +               mt76_rx_napi_enable(mdev, i);
+>         }
+>         napi_enable(&mdev->tx_napi);
+>         if (hif_suspend)
+> @@ -166,7 +166,7 @@ static int mt7615_pci_resume(struct pci_dev *pdev)
+>         mt76_worker_enable(&mdev->tx_worker);
+>
+>         mt76_for_each_q_rx(mdev, i) {
+> -               napi_enable(&mdev->napi[i]);
+> +               mt76_rx_napi_enable(mdev, i);
+>         }
+>         napi_enable(&mdev->tx_napi);
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/pci_mac.c b/driver=
+s/net/wireless/mediatek/mt76/mt7615/pci_mac.c
+> index 53cb1eed1e4f..a83589c628f9 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7615/pci_mac.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/pci_mac.c
+> @@ -236,7 +236,7 @@ void mt7615_mac_reset_work(struct work_struct *work)
+>
+>         mt76_worker_disable(&dev->mt76.tx_worker);
+>         mt76_for_each_q_rx(&dev->mt76, i)
+> -               napi_disable(&dev->mt76.napi[i]);
+> +               mt76_rx_napi_disable(&dev->mt76, i);
+>         napi_disable(&dev->mt76.tx_napi);
+>
+>         mt7615_mutex_acquire(dev);
+> @@ -264,7 +264,7 @@ void mt7615_mac_reset_work(struct work_struct *work)
+>
+>         napi_enable(&dev->mt76.tx_napi);
+>         mt76_for_each_q_rx(&dev->mt76, i) {
+> -               napi_enable(&dev->mt76.napi[i]);
+> +               mt76_rx_napi_enable(&dev->mt76, i);
 >         }
 >
-> -       ewma_signal_init(&wcid->rssi);
-> -       rcu_assign_pointer(dev->wcid[wcid->idx], wcid);
-> +       if (!test_bit(MT_WCID_FLAG_DRV_PUBLISH, &wcid->flags)) {
-> +               ewma_signal_init(&wcid->rssi);
-> +               rcu_assign_pointer(dev->wcid[wcid->idx], wcid);
-> +               mt76_wcid_init(wcid, phy->band_idx);
-> +       } else {
-> +               wcid->phy_idx =3D phy->band_idx;
-> +       }
-> +
->         phy->num_sta++;
+>         local_bh_disable();
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt76x0/pci.c
+> index f8d206a07f99..96380d016351 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
+> @@ -257,7 +257,7 @@ static int mt76x0e_suspend(struct pci_dev *pdev, pm_m=
+essage_t state)
+>         napi_disable(&mdev->tx_napi);
 >
-
-Thanks for spotting the roaming issue.
-
-I think we can avoid adding MT_WCID_FLAG_DRV_PUBLISH and instead use the
-WCID table itself for the publish check.
-
-dev->wcid[] already encodes whether a WCID has been published, so checking
-it directly avoids adding a second mirror state. MT_WCID_FLAG_* is also
-better kept for WCID features that affect WTBL setup or data-path handling,
-rather than common bookkeeping state.
-
-Something like:
-
-@@ -1620,6 +1620,7 @@ mt76_sta_add(struct mt76_phy *phy, struct
-ieee80211_vif *vif,
-{
-  struct mt76_wcid *wcid =3D (struct mt76_wcid *)sta->drv_priv;
-  struct mt76_dev *dev =3D phy->dev;
-+       struct mt76_wcid *published;
-  int ret;
-  int i;
-
-@@ -1639,7 +1640,10 @@ mt76_sta_add(struct mt76_phy *phy, struct
-ieee80211_vif *vif,
-          mtxq->wcid =3D wcid->idx;
-  }
-
--       if (!test_bit(MT_WCID_FLAG_DRV_PUBLISH, &wcid->flags)) {
-+       published =3D rcu_dereference_protected(dev->wcid[wcid->idx],
-+                                             lockdep_is_held(&dev->mutex))=
-;
-+       if (published !=3D wcid) {
-+               WARN_ON_ONCE(published);
-                 ewma_signal_init(&wcid->rssi);
-                 rcu_assign_pointer(dev->wcid[wcid->idx], wcid);
-                 mt76_wcid_init(wcid, phy->band_idx);
-
-   ....
-
-
-> -       mt76_wcid_init(wcid, phy->band_idx);
+>         mt76_for_each_q_rx(mdev, i)
+> -               napi_disable(&mdev->napi[i]);
+> +               mt76_rx_napi_disable(mdev, i);
+>
+>         mt76x02_dma_disable(dev);
+>         mt76x02_mcu_cleanup(dev);
+> @@ -285,7 +285,7 @@ static int mt76x0e_resume(struct pci_dev *pdev)
+>
+>         mt76_for_each_q_rx(mdev, i) {
+>                 mt76_queue_rx_reset(dev, i);
+> -               napi_enable(&mdev->napi[i]);
+> +               mt76_rx_napi_enable(mdev, i);
+>         }
+>         napi_enable(&mdev->tx_napi);
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c b/drivers/=
+net/wireless/mediatek/mt76/mt76x02_mmio.c
+> index dc7c03d23123..0da4bbad5ba3 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c
+> @@ -444,7 +444,7 @@ static void mt76x02_watchdog_reset(struct mt76x02_dev=
+ *dev)
+>         napi_disable(&dev->mt76.tx_napi);
+>
+>         mt76_for_each_q_rx(&dev->mt76, i) {
+> -               napi_disable(&dev->mt76.napi[i]);
+> +               mt76_rx_napi_disable(&dev->mt76, i);
+>         }
+>
+>         mutex_lock(&dev->mt76.mutex);
+> @@ -505,7 +505,7 @@ static void mt76x02_watchdog_reset(struct mt76x02_dev=
+ *dev)
+>
+>         napi_enable(&dev->mt76.tx_napi);
+>         mt76_for_each_q_rx(&dev->mt76, i) {
+> -               napi_enable(&dev->mt76.napi[i]);
+> +               mt76_rx_napi_enable(&dev->mt76, i);
+>         }
+>
+>         local_bh_disable();
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt76x2/pci.c
+> index 491a32921a06..a23c2560e90f 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c
+> @@ -119,7 +119,7 @@ mt76x2e_suspend(struct pci_dev *pdev, pm_message_t st=
+ate)
+>         mt76_worker_disable(&mdev->tx_worker);
+>
+>         mt76_for_each_q_rx(mdev, i)
+> -               napi_disable(&mdev->napi[i]);
+> +               mt76_rx_napi_disable(mdev, i);
+>
+>         pci_enable_wake(pdev, pci_choose_state(pdev, state), true);
+>         pci_save_state(pdev);
+> @@ -131,7 +131,7 @@ mt76x2e_suspend(struct pci_dev *pdev, pm_message_t st=
+ate)
+>
+>  restore:
+>         mt76_for_each_q_rx(mdev, i)
+> -               napi_enable(&mdev->napi[i]);
+> +               mt76_rx_napi_enable(mdev, i);
+>         napi_enable(&mdev->tx_napi);
+>
+>         return err;
+> @@ -153,7 +153,7 @@ mt76x2e_resume(struct pci_dev *pdev)
+>         mt76_worker_enable(&mdev->tx_worker);
+>
+>         mt76_for_each_q_rx(mdev, i) {
+> -               napi_enable(&mdev->napi[i]);
+> +               mt76_rx_napi_enable(mdev, i);
+>         }
+>         napi_enable(&mdev->tx_napi);
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7915/mac.c
+> index cec2c4208255..354ed0b69013 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+> @@ -1327,7 +1327,7 @@ mt7915_mac_restart(struct mt7915_dev *dev)
+>         mt76_worker_disable(&dev->mt76.tx_worker);
+>         mt76_for_each_q_rx(mdev, i) {
+>                 if (mdev->q_rx[i].ndesc)
+> -                       napi_disable(&dev->mt76.napi[i]);
+> +                       mt76_rx_napi_disable(&dev->mt76, i);
+>         }
+>         napi_disable(&dev->mt76.tx_napi);
+>
+> @@ -1339,7 +1339,7 @@ mt7915_mac_restart(struct mt7915_dev *dev)
+>
+>         mt76_for_each_q_rx(mdev, i) {
+>                 if (mdev->q_rx[i].ndesc) {
+> -                       napi_enable(&dev->mt76.napi[i]);
+> +                       mt76_rx_napi_enable(&dev->mt76, i);
+>                 }
+>         }
+>
+> @@ -1527,7 +1527,7 @@ void mt7915_mac_reset_work(struct work_struct *work=
+)
+>
+>         mt76_worker_disable(&dev->mt76.tx_worker);
+>         mt76_for_each_q_rx(&dev->mt76, i)
+> -               napi_disable(&dev->mt76.napi[i]);
+> +               mt76_rx_napi_disable(&dev->mt76, i);
+>         napi_disable(&dev->mt76.tx_napi);
+>
+>
+> @@ -1558,7 +1558,7 @@ void mt7915_mac_reset_work(struct work_struct *work=
+)
+>                 clear_bit(MT76_RESET, &phy2->mt76->state);
+>
+>         mt76_for_each_q_rx(&dev->mt76, i) {
+> -               napi_enable(&dev->mt76.napi[i]);
+> +               mt76_rx_napi_enable(&dev->mt76, i);
+>         }
+>
+>         local_bh_disable();
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7921/pci.c
+> index 7a790ddf43bb..c3188b344e50 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+> @@ -52,7 +52,7 @@ static void mt7921e_unregister_device(struct mt792x_dev=
+ *dev)
+>         cancel_work_sync(&dev->init_work);
+>         mt76_unregister_device(&dev->mt76);
+>         mt76_for_each_q_rx(&dev->mt76, i)
+> -               napi_disable(&dev->mt76.napi[i]);
+> +               mt76_rx_napi_disable(&dev->mt76, i);
+>         cancel_delayed_work_sync(&pm->ps_work);
+>         cancel_work_sync(&pm->wake_work);
+>         cancel_work_sync(&dev->reset_work);
+> @@ -492,7 +492,7 @@ static int mt7921_pci_suspend(struct device *device)
+>         mt76_worker_disable(&mdev->tx_worker);
+>
+>         mt76_for_each_q_rx(mdev, i) {
+> -               napi_disable(&mdev->napi[i]);
+> +               mt76_rx_napi_disable(mdev, i);
+>         }
+>
+>         /* wait until dma is idle  */
+> @@ -518,7 +518,7 @@ static int mt7921_pci_suspend(struct device *device)
+>
+>  restore_napi:
+>         mt76_for_each_q_rx(mdev, i) {
+> -               napi_enable(&mdev->napi[i]);
+> +               mt76_rx_napi_enable(mdev, i);
+>         }
+>         napi_enable(&mdev->tx_napi);
+>
+> @@ -564,7 +564,7 @@ static int mt7921_pci_resume(struct device *device)
+>         mt76_worker_enable(&mdev->tx_worker);
+>
+>         mt76_for_each_q_rx(mdev, i) {
+> -               napi_enable(&mdev->napi[i]);
+> +               mt76_rx_napi_enable(mdev, i);
+>         }
+>         napi_enable(&mdev->tx_napi);
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c b/driver=
+s/net/wireless/mediatek/mt76/mt7921/pci_mac.c
+> index 0db7acb3a637..5d7871b8f77c 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
+> @@ -72,7 +72,7 @@ int mt7921e_mac_reset(struct mt792x_dev *dev)
+>
+>         mt76_worker_disable(&dev->mt76.tx_worker);
+>         mt76_for_each_q_rx(&dev->mt76, i) {
+> -               napi_disable(&dev->mt76.napi[i]);
+> +               mt76_rx_napi_disable(&dev->mt76, i);
+>         }
+>         napi_disable(&dev->mt76.tx_napi);
+>
+> @@ -82,7 +82,7 @@ int mt7921e_mac_reset(struct mt792x_dev *dev)
+>         mt792x_wpdma_reset(dev, true);
+>
+>         mt76_for_each_q_rx(&dev->mt76, i) {
+> -               napi_enable(&dev->mt76.napi[i]);
+> +               mt76_rx_napi_enable(&dev->mt76, i);
+>         }
+>
+>         local_bh_disable();
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7925/pci.c
+> index c4161754c01d..1da650ac7f4d 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+> @@ -40,7 +40,7 @@ static void mt7925e_unregister_device(struct mt792x_dev=
+ *dev)
+>         cancel_work_sync(&dev->init_work);
+>         mt76_unregister_device(&dev->mt76);
+>         mt76_for_each_q_rx(&dev->mt76, i)
+> -               napi_disable(&dev->mt76.napi[i]);
+> +               mt76_rx_napi_disable(&dev->mt76, i);
+>         cancel_delayed_work_sync(&pm->ps_work);
+>         cancel_work_sync(&pm->wake_work);
+>         cancel_work_sync(&dev->reset_work);
+> @@ -481,7 +481,7 @@ static int mt7925_pci_suspend(struct device *device)
+>         mt76_worker_disable(&mdev->tx_worker);
+>
+>         mt76_for_each_q_rx(mdev, i) {
+> -               napi_disable(&mdev->napi[i]);
+> +               mt76_rx_napi_disable(mdev, i);
+>         }
+>
+>         /* wait until dma is idle  */
+> @@ -509,7 +509,7 @@ static int mt7925_pci_suspend(struct device *device)
+>
+>  restore_napi:
+>         mt76_for_each_q_rx(mdev, i) {
+> -               napi_enable(&mdev->napi[i]);
+> +               mt76_rx_napi_enable(mdev, i);
+>         }
+>         napi_enable(&mdev->tx_napi);
+>
+> @@ -559,7 +559,7 @@ static int _mt7925_pci_resume(struct device *device, =
+bool restore)
+>         mt76_worker_enable(&mdev->tx_worker);
+>
+>         mt76_for_each_q_rx(mdev, i) {
+> -               napi_enable(&mdev->napi[i]);
+> +               mt76_rx_napi_enable(mdev, i);
+>         }
+>         napi_enable(&mdev->tx_napi);
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci_mac.c b/driver=
+s/net/wireless/mediatek/mt76/mt7925/pci_mac.c
+> index 3072850c2752..6bb47db8d16a 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7925/pci_mac.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci_mac.c
+> @@ -88,11 +88,11 @@ int mt7925e_mac_reset(struct mt792x_dev *dev)
+>
+>         mt76_worker_disable(&dev->mt76.tx_worker);
+>         if (irq_map->rx.data_complete_mask)
+> -               napi_disable(&dev->mt76.napi[MT_RXQ_MAIN]);
+> +               mt76_rx_napi_disable(&dev->mt76, MT_RXQ_MAIN);
+>         if (irq_map->rx.wm_complete_mask)
+> -               napi_disable(&dev->mt76.napi[MT_RXQ_MCU]);
+> +               mt76_rx_napi_disable(&dev->mt76, MT_RXQ_MCU);
+>         if (irq_map->rx.wm2_complete_mask)
+> -               napi_disable(&dev->mt76.napi[MT_RXQ_MCU_WA]);
+> +               mt76_rx_napi_disable(&dev->mt76, MT_RXQ_MCU_WA);
+>         if (irq_map->tx.all_complete_mask)
+>                 napi_disable(&dev->mt76.tx_napi);
+>
+> @@ -102,7 +102,7 @@ int mt7925e_mac_reset(struct mt792x_dev *dev)
+>         mt792x_wpdma_reset(dev, true);
+>
+>         mt76_for_each_q_rx(&dev->mt76, i) {
+> -               napi_enable(&dev->mt76.napi[i]);
+> +               mt76_rx_napi_enable(&dev->mt76, i);
+>         }
+>         napi_enable(&dev->mt76.tx_napi);
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7996/mac.c
+> index e2a83da3a09c..a75238ce8807 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+> @@ -2262,7 +2262,7 @@ mt7996_mac_restart(struct mt7996_dev *dev)
+>                         continue;
+>
+>                 if (mdev->q_rx[i].ndesc)
+> -                       napi_disable(&dev->mt76.napi[i]);
+> +                       mt76_rx_napi_disable(&dev->mt76, i);
+>         }
+>         napi_disable(&dev->mt76.tx_napi);
+>
+> @@ -2278,7 +2278,7 @@ mt7996_mac_restart(struct mt7996_dev *dev)
+>                         continue;
+>
+>                 if (mdev->q_rx[i].ndesc) {
+> -                       napi_enable(&dev->mt76.napi[i]);
+> +                       mt76_rx_napi_enable(&dev->mt76, i);
+>                         local_bh_disable();
+>                         napi_schedule(&dev->mt76.napi[i]);
+>                         local_bh_enable();
+> @@ -2534,7 +2534,7 @@ void mt7996_mac_reset_work(struct work_struct *work=
+)
+>                 if (mt76_queue_is_npu_txfree(&dev->mt76.q_rx[i]))
+>                         continue;
+>
+> -               napi_disable(&dev->mt76.napi[i]);
+> +               mt76_rx_napi_disable(&dev->mt76, i);
+>         }
+>         napi_disable(&dev->mt76.tx_napi);
+>
+> @@ -2596,7 +2596,7 @@ void mt7996_mac_reset_work(struct work_struct *work=
+)
+>                 if (mt76_queue_is_npu_txfree(&dev->mt76.q_rx[i]))
+>                         continue;
+>
+> -               napi_enable(&dev->mt76.napi[i]);
+> +               mt76_rx_napi_enable(&dev->mt76, i);
+>                 local_bh_disable();
+>                 napi_schedule(&dev->mt76.napi[i]);
+>                 local_bh_enable();
+> diff --git a/drivers/net/wireless/mediatek/mt76/npu.c b/drivers/net/wirel=
+ess/mediatek/mt76/npu.c
+> index c4c7c0af6321..fb4ba5bdbf48 100644
+> --- a/drivers/net/wireless/mediatek/mt76/npu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/npu.c
+> @@ -291,8 +291,9 @@ int mt76_npu_rx_queue_init(struct mt76_dev *dev, stru=
+ct mt76_queue *q)
+>                 goto out;
+>
+>         netif_napi_add(dev->napi_dev, &dev->napi[qid], mt76_npu_rx_poll);
+> +       q->napi_state =3D MT76_NAPI_ADDED;
+>         mt76_npu_fill_rx_queue(dev, q);
+> -       napi_enable(&dev->napi[qid]);
+> +       mt76_rx_napi_enable(dev, qid);
 >  out:
 >         mutex_unlock(&dev->mutex);
 >
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wire=
-less/mediatek/mt76/mt76.h
-> index 527bef97e122..8bfce686bff7 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-> @@ -361,6 +361,7 @@ enum mt76_wcid_flags {
->         MT_WCID_FLAG_PS,
->         MT_WCID_FLAG_4ADDR,
->         MT_WCID_FLAG_HDR_TRANS,
-> +       MT_WCID_FLAG_DRV_PUBLISH,
->  };
->
->  #define MT76_N_WCIDS 1088
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/n=
-et/wireless/mediatek/mt76/mt7925/main.c
-> index 73d3722739d0..35b5c718475c 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-> @@ -1102,6 +1102,9 @@ int mt7925_mac_sta_add(struct mt76_dev *mdev, struc=
-t ieee80211_vif *vif,
->                                               &msta->deflink);
->         }
->
-> +       if (!err)
-> +               set_bit(MT_WCID_FLAG_DRV_PUBLISH, &msta->deflink.wcid.fla=
-gs);
-> +
->         return err;
->  }
->  EXPORT_SYMBOL_GPL(mt7925_mac_sta_add);
 > --
-> 2.53.0
+> 2.39.5
 >
 >
 
