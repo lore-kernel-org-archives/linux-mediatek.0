@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3829CD5BD2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 May 2026 14:59:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 018BFCD6E42
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 May 2026 14:59:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zdQnCqO87RfZubvlpGmXQ+APmIgENpH+4z0yQhZdDWo=; b=rOYwn04LB0eQr9xQB8t2RuFODd
-	JMTzmqw6lYCNB046xvs6NR7NGTO/K49fRrTky1w9WUtqfiUnovd36bv6+O7iGkv/VnSnRBLgpLbYR
-	2mLEpKOL3ys671BxnVwAPkuh0iMwP11fR6xweyy/TWW1fYxG/sdhVaIxy+jP+Isl8YxAOd61UcheJ
-	tjbLN+3Rax87EcdNnNZIhKx1bi1EHAdsrc7XilmeIdXRABYgAPRaNEZjnCYupAxt2au/tk8Pru+jK
-	V8jYm9UVNO+vX1Zr1OE7W6AspUUa1ukEocOvoK6rWZaMyHMiWrgsZ6wUtTWOeITsv+RUfFnVV7d/U
-	desMIjbw==;
+	bh=TuwiBHpuggaX5k2JJ629aa6RkZtKCXVzBVQgs0kIX5I=; b=taKMLIez5eBUeLgiXiFh/t7Awx
+	v7mMiZU++LF1sw9lF5iO/DHuIx+GI2Fo3Otolg1J9xQPuto/1aK00Wwp4421/4iFun8K+rwJEzkos
+	e1gznWrX69IWeTZMfb3BF/CmSCp0rRXEChUkE3VxoKWVz+XUctJ/kE5zPCQr8S5LDIfjx7vozhcwh
+	J6XQa/qci3dnJF7nqQtqF8Rd/hl0+jiff6w0wnx9n7kIRLyBq7vHns6j7bF0IcvOQTfIGPiughhxm
+	AJeQC1UYw1Uc3cRiZC0BaF5pcTSm2iqk1kkKJZXh2y6JjjE4yYrk+Z/qLrVuLs0o+3MKJSnQRisr7
+	Z2TJ2tow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRtFj-00000002HLL-2tos;
-	Tue, 26 May 2026 14:59:31 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wRtFq-00000002HVS-3YtT;
+	Tue, 26 May 2026 14:59:38 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRtFd-00000002HEM-3UzI;
-	Tue, 26 May 2026 14:59:28 +0000
+	id 1wRtFg-00000002HGK-47af;
+	Tue, 26 May 2026 14:59:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1779807563;
-	bh=ET2I3+lfoBkM0vWRX1UaWCbkopH2M3jyubM2in/C+LY=;
+	s=mail; t=1779807567;
+	bh=qDIKeceRZQi8Kht1iTmljrU4lnSxyn0oEHL2dPnESio=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=RLrXaFgN6UtFAr+PXzK6oC0izEutaan4xcNFP3LnE+xVQFtYqpj2XKbOGkV3BurJQ
-	 VdX1DxvNZ5DuQXtGdiqqEwQrhKfyWoZeOaI/w8VSkrA+8wSwxn0cjt/YVYWk9gTGG4
-	 TmLBcSM33+JOy8eVmvfetfxWEBhEapXyEaoYe68oQiMZRaaBQghia5bBOhZXwZDvun
-	 vDATnoJD0WthipS/i3wI5K9YfNwzlCja2CgxUa+I4Rly6+kWOtwEmr8OOFjGuN2cX4
-	 fNIowDt6x435hfTrGzn+uxLAZ0dd6NhXZUL/D1jT/Ocl9b5F6NUhOaVl7K0no5AJiF
-	 Wrlj75U4SGung==
+	b=IBgymD9jo/vveamU7KQIQ/SPp78mS7Js7yWQRSQUAKFwMKjek1sPLKWJ5LbPDp0Ya
+	 6mQ5QkKCWBxQzj1G3v4wOd0AMy+qjeUPnHGBVyj/8q3+ch77h8jtYmhbxZzhEP8Yhi
+	 OeDD01C1+JkhvtGrrY1Qdsr9HLmE7f4rF7sQ5FbsARd6VlAe9Tx6zp/rnAZMDvGsvy
+	 8hriMyGzR1KiOhKkoF+I71euLBo3Q0hEZJGVeLWdypiUrLNaM+IfaNOnLPX39Hlhdr
+	 RQQ2vZIOUe0onX6EB2DI9ucKcpJjvRNL2fdrNajgRcZDHuJjWV/q7W5fGhNVX+8Bjy
+	 P41cLMzcV1cAA==
 Received: from yukiji.home (unknown [100.64.0.131])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2F7D417E141E;
-	Tue, 26 May 2026 16:59:22 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 87E6417E0CF3;
+	Tue, 26 May 2026 16:59:25 +0200 (CEST)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Tue, 26 May 2026 16:58:09 +0200
-Subject: [PATCH net-next v5 4/6] net: phy: Rename Airoha common BuckPBus
- register accessors
+Date: Tue, 26 May 2026 16:58:11 +0200
+Subject: [PATCH net-next v5 6/6] net: phy: air_an8801: ensure maximum
+ available speed link use
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260526-add-airoha-an8801-support-v5-4-01aea8dee69b@collabora.com>
+Message-Id: <20260526-add-airoha-an8801-support-v5-6-01aea8dee69b@collabora.com>
 References: <20260526-add-airoha-an8801-support-v5-0-01aea8dee69b@collabora.com>
 In-Reply-To: <20260526-add-airoha-an8801-support-v5-0-01aea8dee69b@collabora.com>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
@@ -67,16 +67,16 @@ Cc: kevin-kw.huang@airoha.com, macpaul.lin@mediatek.com,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1779807555; l=13356;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1779807555; l=2209;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=ET2I3+lfoBkM0vWRX1UaWCbkopH2M3jyubM2in/C+LY=;
- b=CswV/uNLtvQvcaKrB/kN948jsYGLfZBpjSQxkx4z4UIZ78wbSLwry7IwRwMW3CjWdhOU9srPH
- /cQ7IEIDWhxC8mDPUGpq4/oED45oh6x4KV//Duc8s0QY5sL+Lf9Viyj
+ bh=qDIKeceRZQi8Kht1iTmljrU4lnSxyn0oEHL2dPnESio=;
+ b=6olIzN9aEMnfSw8gvWsFpzgsQ2QyrEQpwURR/hnSZZuk3wyNrHv4JqSvAxvw44N9mUNGAoBQy
+ 3sADk+71SEUBD7gsGYrXKlLSRNBW+437hj52O6IomH+0DItxEgJ792M
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260526_075926_182552_E62C6953 
-X-CRM114-Status: GOOD (  16.24  )
+X-CRM114-CacheID: sfid-20260526_075929_326810_04726124 
+X-CRM114-Status: GOOD (  14.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,371 +91,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Rename the BuckPBus register accessors functions present in air_phy_lib
-and their calls in air_en8811h driver, so all exported functions start
-with the same prefix.
+To ensure that the Airoha AN8801R PHY uses the maximum available link
+speed, an additional register write is needed to configure the function
+mode for either 1G or 100M/10M operation after link detection.
 
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+So, in air_an8801 driver, implement a custom read_status callback, that
+after genphy_read_status determines the link speed, sets the bit 0 of
+the link mode register (REG_LINK_MODE) if the detected speed is 1Gbps,
+or unsets it otherwise.
+
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- drivers/net/phy/air_en8811h.c | 110 +++++++++++++++++++++---------------------
- drivers/net/phy/air_phy_lib.c |  18 +++----
- drivers/net/phy/air_phy_lib.h |  12 ++---
- 3 files changed, 71 insertions(+), 69 deletions(-)
+ drivers/net/phy/air_an8801.c | 36 ++++++++++++++++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
 
-diff --git a/drivers/net/phy/air_en8811h.c b/drivers/net/phy/air_en8811h.c
-index 2498bd3f7993..a42898ae4135 100644
---- a/drivers/net/phy/air_en8811h.c
-+++ b/drivers/net/phy/air_en8811h.c
-@@ -287,8 +287,8 @@ static int en8811h_wait_mcu_ready(struct phy_device *phydev)
- {
- 	int ret, reg_value;
- 
--	ret = air_buckpbus_reg_write(phydev, EN8811H_FW_CTRL_1,
--				     EN8811H_FW_CTRL_1_FINISH);
-+	ret = air_phy_buckpbus_reg_write(phydev, EN8811H_FW_CTRL_1,
-+					 EN8811H_FW_CTRL_1_FINISH);
- 	if (ret)
- 		return ret;
- 
-@@ -313,28 +313,29 @@ static int an8811hb_check_crc(struct phy_device *phydev, u32 set1,
- 	int ret;
- 
- 	/* Configure CRC */
--	ret = air_buckpbus_reg_modify(phydev, set1,
--				      AN8811HB_CRC_RD_EN,
--				      AN8811HB_CRC_RD_EN);
-+	ret = air_phy_buckpbus_reg_modify(phydev, set1,
-+					  AN8811HB_CRC_RD_EN,
-+					  AN8811HB_CRC_RD_EN);
- 	if (ret < 0)
- 		return ret;
--	air_buckpbus_reg_read(phydev, set1, &pbus_value);
-+	air_phy_buckpbus_reg_read(phydev, set1, &pbus_value);
- 
- 	do {
- 		msleep(300);
--		air_buckpbus_reg_read(phydev, mon2, &pbus_value);
-+		air_phy_buckpbus_reg_read(phydev, mon2, &pbus_value);
- 
- 		/* We do not know what errors this check is supposed
- 		 * catch or what to do about a failure. So print the
- 		 * result and continue like the vendor driver does.
- 		 */
- 		if (pbus_value & AN8811HB_CRC_ST) {
--			air_buckpbus_reg_read(phydev, mon3, &pbus_value);
-+			air_phy_buckpbus_reg_read(phydev, mon3, &pbus_value);
- 			phydev_dbg(phydev, "CRC Check %s!\n",
- 				   pbus_value & AN8811HB_CRC_CHECK_PASS ?
- 					"PASS" : "FAIL");
--			return air_buckpbus_reg_modify(phydev, set1,
--						       AN8811HB_CRC_RD_EN, 0);
-+			return air_phy_buckpbus_reg_modify(phydev, set1,
-+							   AN8811HB_CRC_RD_EN,
-+							   0);
- 		}
- 	} while (--retry);
- 
-@@ -346,8 +347,8 @@ static void en8811h_print_fw_version(struct phy_device *phydev)
- {
- 	struct en8811h_priv *priv = phydev->priv;
- 
--	air_buckpbus_reg_read(phydev, EN8811H_FW_VERSION,
--			      &priv->firmware_version);
-+	air_phy_buckpbus_reg_read(phydev, EN8811H_FW_VERSION,
-+				  &priv->firmware_version);
- 	phydev_info(phydev, "MD32 firmware version: %08x\n",
- 		    priv->firmware_version);
- }
-@@ -372,8 +373,8 @@ static int an8811hb_load_firmware(struct phy_device *phydev)
- {
- 	int ret;
- 
--	ret = air_buckpbus_reg_write(phydev, EN8811H_FW_CTRL_1,
--				     EN8811H_FW_CTRL_1_START);
-+	ret = air_phy_buckpbus_reg_write(phydev, EN8811H_FW_CTRL_1,
-+					 EN8811H_FW_CTRL_1_START);
- 	if (ret < 0)
- 		return ret;
- 
-@@ -414,14 +415,14 @@ static int en8811h_load_firmware(struct phy_device *phydev)
- 	if (ret < 0)
- 		goto en8811h_load_firmware_rel1;
- 
--	ret = air_buckpbus_reg_write(phydev, EN8811H_FW_CTRL_1,
--				     EN8811H_FW_CTRL_1_START);
-+	ret = air_phy_buckpbus_reg_write(phydev, EN8811H_FW_CTRL_1,
-+					 EN8811H_FW_CTRL_1_START);
- 	if (ret < 0)
- 		goto en8811h_load_firmware_out;
- 
--	ret = air_buckpbus_reg_modify(phydev, EN8811H_FW_CTRL_2,
--				      EN8811H_FW_CTRL_2_LOADING,
--				      EN8811H_FW_CTRL_2_LOADING);
-+	ret = air_phy_buckpbus_reg_modify(phydev, EN8811H_FW_CTRL_2,
-+					  EN8811H_FW_CTRL_2_LOADING,
-+					  EN8811H_FW_CTRL_2_LOADING);
- 	if (ret < 0)
- 		goto en8811h_load_firmware_out;
- 
-@@ -433,8 +434,8 @@ static int en8811h_load_firmware(struct phy_device *phydev)
- 	if (ret < 0)
- 		goto en8811h_load_firmware_out;
- 
--	ret = air_buckpbus_reg_modify(phydev, EN8811H_FW_CTRL_2,
--				      EN8811H_FW_CTRL_2_LOADING, 0);
-+	ret = air_phy_buckpbus_reg_modify(phydev, EN8811H_FW_CTRL_2,
-+					  EN8811H_FW_CTRL_2_LOADING, 0);
- 	if (ret < 0)
- 		goto en8811h_load_firmware_out;
- 
-@@ -460,8 +461,8 @@ static int en8811h_restart_mcu(struct phy_device *phydev)
- {
- 	int ret;
- 
--	ret = air_buckpbus_reg_write(phydev, EN8811H_FW_CTRL_1,
--				     EN8811H_FW_CTRL_1_START);
-+	ret = air_phy_buckpbus_reg_write(phydev, EN8811H_FW_CTRL_1,
-+					 EN8811H_FW_CTRL_1_START);
- 	if (ret < 0)
- 		return ret;
- 
-@@ -755,7 +756,7 @@ static unsigned long an8811hb_clk_recalc_rate(struct clk_hw *hw,
- 	u32 pbus_value;
- 	int ret;
- 
--	ret = air_buckpbus_reg_read(phydev, AN8811HB_HWTRAP2, &pbus_value);
-+	ret = air_phy_buckpbus_reg_read(phydev, AN8811HB_HWTRAP2, &pbus_value);
- 	if (ret < 0)
- 		return ret;
- 
-@@ -767,9 +768,9 @@ static int an8811hb_clk_enable(struct clk_hw *hw)
- 	struct en8811h_priv *priv = clk_hw_to_en8811h_priv(hw);
- 	struct phy_device *phydev = priv->phydev;
- 
--	return air_buckpbus_reg_modify(phydev, AN8811HB_CLK_DRV,
--				       AN8811HB_CLK_DRV_CKO_MASK,
--				       AN8811HB_CLK_DRV_CKO_MASK);
-+	return air_phy_buckpbus_reg_modify(phydev, AN8811HB_CLK_DRV,
-+					   AN8811HB_CLK_DRV_CKO_MASK,
-+					   AN8811HB_CLK_DRV_CKO_MASK);
- }
- 
- static void an8811hb_clk_disable(struct clk_hw *hw)
-@@ -777,8 +778,8 @@ static void an8811hb_clk_disable(struct clk_hw *hw)
- 	struct en8811h_priv *priv = clk_hw_to_en8811h_priv(hw);
- 	struct phy_device *phydev = priv->phydev;
- 
--	air_buckpbus_reg_modify(phydev, AN8811HB_CLK_DRV,
--				AN8811HB_CLK_DRV_CKO_MASK, 0);
-+	air_phy_buckpbus_reg_modify(phydev, AN8811HB_CLK_DRV,
-+				    AN8811HB_CLK_DRV_CKO_MASK, 0);
- }
- 
- static int an8811hb_clk_is_enabled(struct clk_hw *hw)
-@@ -788,7 +789,7 @@ static int an8811hb_clk_is_enabled(struct clk_hw *hw)
- 	u32 pbus_value;
- 	int ret;
- 
--	ret = air_buckpbus_reg_read(phydev, AN8811HB_CLK_DRV, &pbus_value);
-+	ret = air_phy_buckpbus_reg_read(phydev, AN8811HB_CLK_DRV, &pbus_value);
- 	if (ret < 0)
- 		return ret;
- 
-@@ -854,7 +855,7 @@ static unsigned long en8811h_clk_recalc_rate(struct clk_hw *hw,
- 	u32 pbus_value;
- 	int ret;
- 
--	ret = air_buckpbus_reg_read(phydev, EN8811H_HWTRAP1, &pbus_value);
-+	ret = air_phy_buckpbus_reg_read(phydev, EN8811H_HWTRAP1, &pbus_value);
- 	if (ret < 0)
- 		return ret;
- 
-@@ -866,9 +867,9 @@ static int en8811h_clk_enable(struct clk_hw *hw)
- 	struct en8811h_priv *priv = clk_hw_to_en8811h_priv(hw);
- 	struct phy_device *phydev = priv->phydev;
- 
--	return air_buckpbus_reg_modify(phydev, EN8811H_CLK_CGM,
--				       EN8811H_CLK_CGM_CKO,
--				       EN8811H_CLK_CGM_CKO);
-+	return air_phy_buckpbus_reg_modify(phydev, EN8811H_CLK_CGM,
-+					   EN8811H_CLK_CGM_CKO,
-+					   EN8811H_CLK_CGM_CKO);
- }
- 
- static void en8811h_clk_disable(struct clk_hw *hw)
-@@ -876,8 +877,8 @@ static void en8811h_clk_disable(struct clk_hw *hw)
- 	struct en8811h_priv *priv = clk_hw_to_en8811h_priv(hw);
- 	struct phy_device *phydev = priv->phydev;
- 
--	air_buckpbus_reg_modify(phydev, EN8811H_CLK_CGM,
--				EN8811H_CLK_CGM_CKO, 0);
-+	air_phy_buckpbus_reg_modify(phydev, EN8811H_CLK_CGM,
-+				    EN8811H_CLK_CGM_CKO, 0);
- }
- 
- static int en8811h_clk_is_enabled(struct clk_hw *hw)
-@@ -887,7 +888,7 @@ static int en8811h_clk_is_enabled(struct clk_hw *hw)
- 	u32 pbus_value;
- 	int ret;
- 
--	ret = air_buckpbus_reg_read(phydev, EN8811H_CLK_CGM, &pbus_value);
-+	ret = air_phy_buckpbus_reg_read(phydev, EN8811H_CLK_CGM, &pbus_value);
- 	if (ret < 0)
- 		return ret;
- 
-@@ -998,9 +999,9 @@ static int an8811hb_probe(struct phy_device *phydev)
- 		return ret;
- 
- 	/* Configure led gpio pins as output */
--	ret = air_buckpbus_reg_modify(phydev, AN8811HB_GPIO_OUTPUT,
--				      AN8811HB_GPIO_OUTPUT_345,
--				      AN8811HB_GPIO_OUTPUT_345);
-+	ret = air_phy_buckpbus_reg_modify(phydev, AN8811HB_GPIO_OUTPUT,
-+					  AN8811HB_GPIO_OUTPUT_345,
-+					  AN8811HB_GPIO_OUTPUT_345);
- 	if (ret < 0)
- 		return ret;
- 
-@@ -1039,9 +1040,9 @@ static int en8811h_probe(struct phy_device *phydev)
- 		return ret;
- 
- 	/* Configure led gpio pins as output */
--	ret = air_buckpbus_reg_modify(phydev, EN8811H_GPIO_OUTPUT,
--				      EN8811H_GPIO_OUTPUT_345,
--				      EN8811H_GPIO_OUTPUT_345);
-+	ret = air_phy_buckpbus_reg_modify(phydev, EN8811H_GPIO_OUTPUT,
-+					  EN8811H_GPIO_OUTPUT_345,
-+					  EN8811H_GPIO_OUTPUT_345);
- 	if (ret < 0)
- 		return ret;
- 
-@@ -1061,9 +1062,9 @@ static int an8811hb_config_serdes_polarity(struct phy_device *phydev)
- 		return ret;
- 	if (pol == PHY_POL_NORMAL)
- 		pbus_value |= AN8811HB_RX_POLARITY_NORMAL;
--	ret = air_buckpbus_reg_modify(phydev, AN8811HB_RX_POLARITY,
--				      AN8811HB_RX_POLARITY_NORMAL,
--				      pbus_value);
-+	ret = air_phy_buckpbus_reg_modify(phydev, AN8811HB_RX_POLARITY,
-+					  AN8811HB_RX_POLARITY_NORMAL,
-+					  pbus_value);
- 	if (ret < 0)
- 		return ret;
- 
-@@ -1074,9 +1075,9 @@ static int an8811hb_config_serdes_polarity(struct phy_device *phydev)
- 	pbus_value = 0;
- 	if (pol == PHY_POL_NORMAL)
- 		pbus_value |= AN8811HB_TX_POLARITY_NORMAL;
--	return air_buckpbus_reg_modify(phydev, AN8811HB_TX_POLARITY,
--				       AN8811HB_TX_POLARITY_NORMAL,
--				       pbus_value);
-+	return air_phy_buckpbus_reg_modify(phydev, AN8811HB_TX_POLARITY,
-+					   AN8811HB_TX_POLARITY_NORMAL,
-+					   pbus_value);
- }
- 
- static int en8811h_config_serdes_polarity(struct phy_device *phydev)
-@@ -1110,9 +1111,10 @@ static int en8811h_config_serdes_polarity(struct phy_device *phydev)
- 	if (pol == PHY_POL_NORMAL)
- 		pbus_value |= EN8811H_POLARITY_TX_NORMAL;
- 
--	return air_buckpbus_reg_modify(phydev, EN8811H_POLARITY,
--				       EN8811H_POLARITY_RX_REVERSE |
--				       EN8811H_POLARITY_TX_NORMAL, pbus_value);
-+	return air_phy_buckpbus_reg_modify(phydev, EN8811H_POLARITY,
-+					   EN8811H_POLARITY_RX_REVERSE |
-+					   EN8811H_POLARITY_TX_NORMAL,
-+					   pbus_value);
- }
- 
- static int an8811hb_config_init(struct phy_device *phydev)
-@@ -1264,8 +1266,8 @@ static int en8811h_read_status(struct phy_device *phydev)
- 				 val & MDIO_AN_10GBT_STAT_LP2_5G);
- 	} else {
- 		/* Get link partner 2.5GBASE-T ability from vendor register */
--		ret = air_buckpbus_reg_read(phydev, EN8811H_2P5G_LPA,
--					    &pbus_value);
-+		ret = air_phy_buckpbus_reg_read(phydev, EN8811H_2P5G_LPA,
-+						&pbus_value);
- 		if (ret < 0)
- 			return ret;
- 		linkmode_mod_bit(ETHTOOL_LINK_MODE_2500baseT_Full_BIT,
-diff --git a/drivers/net/phy/air_phy_lib.c b/drivers/net/phy/air_phy_lib.c
-index aba4f95fe9e6..859fa41406d1 100644
---- a/drivers/net/phy/air_phy_lib.c
-+++ b/drivers/net/phy/air_phy_lib.c
-@@ -137,8 +137,8 @@ static int __air_buckpbus_reg_modify(struct phy_device *phydev,
+diff --git a/drivers/net/phy/air_an8801.c b/drivers/net/phy/air_an8801.c
+index aa24bb182d64..f97c78e43023 100644
+--- a/drivers/net/phy/air_an8801.c
++++ b/drivers/net/phy/air_an8801.c
+@@ -996,6 +996,41 @@ static int an8801r_config_init(struct phy_device *phydev)
  	return 0;
  }
  
--int air_buckpbus_reg_read(struct phy_device *phydev, u32 pbus_address,
--			  u32 *pbus_data)
-+int air_phy_buckpbus_reg_read(struct phy_device *phydev, u32 pbus_address,
-+			      u32 *pbus_data)
++static int an8801r_read_status(struct phy_device *phydev)
++{
++	int prev_speed, ret;
++	u32 val;
++
++	prev_speed = phydev->speed;
++
++	ret = genphy_read_status(phydev);
++	if (ret)
++		return ret;
++
++	if (!phydev->link) {
++		phydev->speed = SPEED_UNKNOWN;
++		return 0;
++	}
++
++	if (prev_speed != phydev->speed) {
++		/* Ensure that PHY switches to 1G speed when available,
++		 * by configuring the function mode for either 1G or 100M/10M
++		 * operation.
++		 * Therefore, set the link mode register, after read_status
++		 * determines the link speed.
++		 */
++		val = phydev->speed == SPEED_1000 ?
++		      AN8801_BPBUS_LINK_MODE_1000 : 0;
++
++		return an8801_buckpbus_reg_rmw(phydev,
++					       AN8801_BPBUS_REG_LINK_MODE,
++					       AN8801_BPBUS_LINK_MODE_1000,
++					       val);
++	}
++
++	return 0;
++}
++
+ static int an8801r_probe(struct phy_device *phydev)
  {
- 	int saved_page;
- 	int ret = 0;
-@@ -154,10 +154,10 @@ int air_buckpbus_reg_read(struct phy_device *phydev, u32 pbus_address,
- 
- 	return phy_restore_page(phydev, saved_page, ret);
- }
--EXPORT_SYMBOL_GPL(air_buckpbus_reg_read);
-+EXPORT_SYMBOL_GPL(air_phy_buckpbus_reg_read);
- 
--int air_buckpbus_reg_write(struct phy_device *phydev, u32 pbus_address,
--			   u32 pbus_data)
-+int air_phy_buckpbus_reg_write(struct phy_device *phydev, u32 pbus_address,
-+			       u32 pbus_data)
- {
- 	int saved_page;
- 	int ret = 0;
-@@ -174,10 +174,10 @@ int air_buckpbus_reg_write(struct phy_device *phydev, u32 pbus_address,
- 
- 	return phy_restore_page(phydev, saved_page, ret);
- }
--EXPORT_SYMBOL_GPL(air_buckpbus_reg_write);
-+EXPORT_SYMBOL_GPL(air_phy_buckpbus_reg_write);
- 
--int air_buckpbus_reg_modify(struct phy_device *phydev, u32 pbus_address,
--			    u32 mask, u32 set)
-+int air_phy_buckpbus_reg_modify(struct phy_device *phydev, u32 pbus_address,
-+				u32 mask, u32 set)
- {
- 	int saved_page;
- 	int ret = 0;
-@@ -194,7 +194,7 @@ int air_buckpbus_reg_modify(struct phy_device *phydev, u32 pbus_address,
- 
- 	return phy_restore_page(phydev, saved_page, ret);
- }
--EXPORT_SYMBOL_GPL(air_buckpbus_reg_modify);
-+EXPORT_SYMBOL_GPL(air_phy_buckpbus_reg_modify);
- 
- int air_phy_read_page(struct phy_device *phydev)
- {
-diff --git a/drivers/net/phy/air_phy_lib.h b/drivers/net/phy/air_phy_lib.h
-index b637f3e0f2d5..a2f8b3725761 100644
---- a/drivers/net/phy/air_phy_lib.h
-+++ b/drivers/net/phy/air_phy_lib.h
-@@ -27,12 +27,12 @@
- #define AIR_BPBUS_RD_DATA_HIGH		0x17
- #define AIR_BPBUS_RD_DATA_LOW		0x18
- 
--int air_buckpbus_reg_modify(struct phy_device *phydev, u32 pbus_address,
--			    u32 mask, u32 set);
--int air_buckpbus_reg_read(struct phy_device *phydev, u32 pbus_address,
--			  u32 *pbus_data);
--int air_buckpbus_reg_write(struct phy_device *phydev, u32 pbus_address,
--			   u32 pbus_data);
-+int air_phy_buckpbus_reg_modify(struct phy_device *phydev, u32 pbus_address,
-+				u32 mask, u32 set);
-+int air_phy_buckpbus_reg_read(struct phy_device *phydev, u32 pbus_address,
-+			      u32 *pbus_data);
-+int air_phy_buckpbus_reg_write(struct phy_device *phydev, u32 pbus_address,
-+			       u32 pbus_data);
- int air_phy_read_page(struct phy_device *phydev);
- int air_phy_write_page(struct phy_device *phydev, int page);
- 
+ 	struct device *dev = &phydev->mdio.dev;
+@@ -1093,6 +1128,7 @@ static struct phy_driver airoha_driver[] = {
+ 	.suspend		= an8801r_suspend,
+ 	.resume			= an8801r_resume,
+ 	.config_aneg		= genphy_config_aneg,
++	.read_status		= an8801r_read_status,
+ 	.config_intr		= an8801r_config_intr,
+ 	.handle_interrupt	= an8801r_handle_interrupt,
+ 	.set_wol		= an8801r_set_wol,
 
 -- 
 2.54.0
