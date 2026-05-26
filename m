@@ -4,104 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE130CD5BCF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 May 2026 06:02:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65179CD5BCF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 May 2026 06:09:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=I15Qye72rXnWF52br0qRQsOfcY4+owD8kwcdhmYsCXA=; b=J0Z3BxFSffZy0IAM2H5dsT3N0J
-	hd/as9B+Pkl7ep4Ke9nXYw6Sv/LK8LbMymRsOGEo+1w3fm7KNPwb0zdACzEmfPyAmVVbpWcFLSAzf
-	kvcWrIK1GRoeLn4iFiWPufm5hKMy82S6Az6U4pL6DycN+n2NdDPN8WtVe5jdV+2u1282rmtlRSom6
-	pfqCpbms8bx3zrGB3fGPyskBSgciW1KR8yImwROfGepBWjwryMihUDuro0OT1lowdx8gxZqbBGQZ0
-	URYH/QbvQYLYT8sagUWMQAz860BFzKppLUC9KCIKjO6XAtoYmjHbbrTff6pmGoTFLe00RKiuUd53Q
-	yuLLU3+A==;
+	bh=AU+f2VPSy6zrd6kl7TWzC5g2Ht0JlmjXMhgzs2DULQQ=; b=KdMSwxOnUwEpsbrZX6/4CYvwcD
+	W4YqcaJ0jX/hDjOWELEhLbQj2oGNygTo0BurmKEyAbZgcAArJCGTIDMtAVP4xSS/WQ+RQiq9v3d54
+	IkVrr9Fo0/bPCSJ1MY/CQLhDyaYVLIU6OWRjs0Qvu6H+LdRTCm2AACCNFI7yF2uSjlEPbm+wst1lq
+	uAzxav0cTsQzYH8QEwNjSKVe3UDJRQt86W11/84Q7F3jy6Nm0EV9ieZCHtRTYCECbATQNqZJPPq/4
+	4NdFnaGDvta98NeZ94dHL8aHz0ndIIF7SR0l9AF4z8xyZ4WHnYvzi/MTzL3Jpz0PAlU2nu7wGURIl
+	lF0l6f8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRkrg-000000017YD-43EL;
-	Tue, 26 May 2026 06:02:08 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1wRkyd-000000018C4-10QE;
+	Tue, 26 May 2026 06:09:19 +0000
+Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRkre-000000017X2-04D5
-	for linux-mediatek@lists.infradead.org;
-	Tue, 26 May 2026 06:02:07 +0000
-Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-4903997fcb5so45072645e9.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 25 May 2026 23:02:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1779775323; x=1780380123; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=I15Qye72rXnWF52br0qRQsOfcY4+owD8kwcdhmYsCXA=;
-        b=WHLZNc0O9INgem355s3GGvx0LwZ/MPE3asxOyyri7TVDTXpg5vwSDzSogGG0Ltkw5b
-         FfxNer1VAHK85EwdyqInCyj/3GuwzaZBO29/t4GP/TZuG2hZnbja9RjJ5DtMqHWBm4LU
-         PENwSzWXEZEvEmqIPGjeKrp/IQcFv0e8nwecVRXSni63Eappx/luiJXgDCaEQDCIoLMq
-         J+q3VTIkOWwat/3IOC2k+6M0qLi5w50RdZuY2CPJjpauTNK6tNsUYoeapavsf7Oc3o4y
-         fXbcB5YZo6k7Fmm7lwBcBazeLg6SwI9wp8/6uqJ9RcyJ1TJWtC55szYrK/0LRY81pvIE
-         2YMg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779775323; x=1780380123;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=I15Qye72rXnWF52br0qRQsOfcY4+owD8kwcdhmYsCXA=;
-        b=mK+iOUabW4ncgpe6Fy3xeR/BknQUzh4S1jUcvVULUyXD86kKlvVRVxYXDbP6OhhwXj
-         ki+dQXFVUWdC+7JFWkEdQdK/tPu37WsS2cqkVBm5BMIylK8lF6tTdcCCBwaVwpzPQD6W
-         WnJAcerce5+jMcuetDXVfQe8GukoxR0SsMNeLtfqQdKmysiR1jzjpTsl5O78Jxf05idI
-         lpFYBTPVztcFN8/Q8up/AFEcFPE5j9IQCCBDqmJNGKzSkN+ikthN+DtQeMMGwWvzwE6q
-         bcqmjvl/rRWlYUztjJ3tJ9W9Sr0rxjdTujzjKz7NcZfok4WQGny8074r1eH5W+F4pDbA
-         VuZA==
-X-Forwarded-Encrypted: i=1; AFNElJ+F0C51ipEPPE6FUw6aD+ZMLdMfkN790Cv8jqeni3GY/ffL4z0TP6xhSO43Y4aUeRJG8uxIEgeyA/q+FJ8u0A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxkI75JJos/Kg4oAJyYcGN3tHVGt+2qsj01KOLc32OYx//2Um3l
-	PTsG/sEpWpOEWCa9ryi00lZBkMQ1abzmbTzY5oklBymmlmzjG38jgeMT
-X-Gm-Gg: Acq92OFDLmQnFa3lPFl3vk52Zt89JNLvMmMbmTOv2ND0Yqx8ZgXuzh7VBwWIYAAnY6D
-	toIFUxP8dfzH4k+laNbNCWzcbEgE+V+MU6ZhIhf24y5JZO/gzOilT5Phz7jEnVhjYWwtar9ppoT
-	qbGmxXYajZmOfv8BF27idBxM2NiS6nB3KzN/2DSXmyWHTekzsMVnctub7OVDwfdQUgQdcHy/L9m
-	o4UT+uT4o9aXHazYGT8fiB/mE75aHWQ3B5SgatDJWfEb6KXKDFp4Vf73gp17uX/QgQPPWOhXFDT
-	zgRJPBWqiWEXoU8C5RJUlAZmsUQI8nnH6LTGv0qzTxBzKUjsVEiC0GOnSzBm8jSeu9/sUY/GPlU
-	RvBED6rFVfGdHToMdWvunLkpDt6+LDlowqxUyVp6Dmj2bTLYG5S4dfpKIou1E/fXJCqNhhk0FSF
-	nr1U30VEyCAv9Nhs0jQPNKoVbgR8W5Q9NlB3DmLaD9aOHzwETAfZTRAWWW9fzwVWUyDymnuXfT4
-	OU03JY=
-X-Received: by 2002:a05:600d:6447:10b0:48f:d5b8:5b07 with SMTP id 5b1f17b1804b1-490426c5b1emr200251675e9.20.1779775322583;
-        Mon, 25 May 2026 23:02:02 -0700 (PDT)
-Received: from localhost.localdomain ([188.27.64.216])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-490454b7d57sm295929035e9.15.2026.05.25.23.01.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 May 2026 23:02:01 -0700 (PDT)
-From: Adrian Bente <adibente@gmail.com>
-To: pablo@netfilter.org,
-	kadlec@netfilter.org,
-	fw@strlen.de,
-	netfilter-devel@vger.kernel.org
-Cc: phil@nwl.cc,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	horms@kernel.org,
-	nbd@nbd.name,
-	sean.wang@mediatek.com,
-	lorenzo@kernel.org,
-	andrew+netdev@lunn.ch,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	daniel@makrotopia.org,
-	coreteam@netfilter.org,
-	netdev@vger.kernel.org,
+	id 1wRkyZ-0000000189s-0pcH;
+	Tue, 26 May 2026 06:09:17 +0000
+X-UUID: 63d14fe858c911f1aa26b74ffac11d73-20260526
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.12,REQID:d8e5edf1-6dc9-4bcb-934f-2113a4b15081,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:e7bac3a,CLOUDID:d63f01bd65cc66a9646d46786aa81cf6,BulkI
+	D:nil,BulkQuantity:0,Recheck:0,SF:102|865|898,TC:nil,Content:0|15|50,EDM:-
+	3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,A
+	V:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 63d14fe858c911f1aa26b74ffac11d73-20260526
+X-User: liujiajia@kylinos.cn
+Received: from nature.lan [(10.44.16.150)] by mailgw.kylinos.cn
+	(envelope-from <liujiajia@kylinos.cn>)
+	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
+	with ESMTP id 1555042781; Tue, 26 May 2026 14:09:01 +0800
+From: Jiajia Liu <liujiajia@kylinos.cn>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
+	Michael Lo <michael.lo@mediatek.com>,
+	Leon Yen <leon.yen@mediatek.com>
+Cc: linux-wireless@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	Adrian Bente <adibente@gmail.com>
-Subject: [RFC PATCH net] netfilter: flowtable: fix offloaded ct timeout never being extended
-Date: Tue, 26 May 2026 09:01:38 +0300
-Message-ID: <20260526060138.3924-1-adibente@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	Jiajia Liu <liujiajia@kylinos.cn>
+Subject: [PATCH] wifi: mt76: mt7925: add wcid publish check in mt76_sta_add
+Date: Tue, 26 May 2026 14:08:41 +0800
+Message-ID: <20260526060841.49161-1-liujiajia@kylinos.cn>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260525_230206_109101_CAEEDDF6 
-X-CRM114-Status: GOOD (  10.69  )
+X-CRM114-CacheID: sfid-20260525_230916_050817_D301D994 
+X-CRM114-Status: GOOD (  11.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,54 +84,108 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-OpenWrt has recently migrated many platforms to kernel 6.18. On the
-MediaTek platform, which supports hardware network offloading, WiFi
-connections accelerated via the WED path were observed to drop after
-roughly 300 seconds.
+Since mt7925_mac_sta_add publishes wcid, add publish check in mt76_sta_add
+to avoid reinitializing the wcid->poll_list for mt7925.
 
-After several debugging sessions, assisted by the Claude LLM, the
-problem was narrowed down as follows:
+Found dev->sta_poll_list corruption when using mt7925 and 7.0-rc4.
+According to the corruption information, prev->next was changed to itself.
 
-nf_flow_table_extend_ct_timeout() extends ct->timeout for offloaded
-flows using:
+wlan0: disconnect from AP 90:fb:5d:94:8b:e3 for new auth to 90:fb:5d:94:8b:e2
+wlan0: authenticate with 90:fb:5d:94:8b:e2 (local address=84:9e:56:9c:7e:6b)
+wlan0: send auth to 90:fb:5d:94:8b:e2 (try 1/3)
+ slab kmalloc-8k start ffff8c80958a6000 pointer offset 4160 size 8192
+list_add corruption. prev->next should be next (ffff8c808a7488f8), but was ffff8c80958a7040. (prev=ffff8c80958a7040).
 
-	cmpxchg(&ct->timeout, expires, new_timeout);
+ mt76_wcid_add_poll+0x95/0xd0 [mt76]
+ mt7925_mac_add_txs.part.0+0xa5/0xe0 [mt7925_common]
+ mt7925_rx_check+0xa7/0xc0 [mt7925_common]
+ mt76_dma_rx_poll+0x50d/0x790 [mt76]
+ mt792x_poll_rx+0x52/0xe0 [mt792x_lib]
 
-'expires' comes from nf_ct_expires(ct) and is a relative value, while
-ct->timeout holds an absolute timestamp. The two are never equal, so
-the cmpxchg always fails and the timeout is never extended.
-
-This goes unnoticed for most flows, but a long-lived hardware (WED)
-offloaded flow on MediaTek MT7986 eventually has ct->timeout decay to
-zero, the conntrack entry is reaped and the connection breaks.
-
-Compare against the current ct->timeout value instead.
-
-This patch is sent as RFC: the diagnosis is verified on hardware and
-the fix resolves the drop, but review of the chosen approach is
-welcome.
-
-Fixes: 03428ca5cee9 ("netfilter: conntrack: rework offload nf_conn timeout extension logic")
-Signed-off-by: Adrian Bente <adibente@gmail.com>
+Signed-off-by: Jiajia Liu <liujiajia@kylinos.cn>
 ---
- net/netfilter/nf_flow_table_core.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
 
---- a/net/netfilter/nf_flow_table_core.c
-+++ b/net/netfilter/nf_flow_table_core.c
-@@ -541,8 +541,10 @@
- 		 * after this -- is fine, datapath is authoritative.
- 		 */
- 		if (new_timeout) {
-+			u32 old = READ_ONCE(ct->timeout);
-+
- 			new_timeout += nfct_time_stamp;
--			cmpxchg(&ct->timeout, expires, new_timeout);
-+			cmpxchg(&ct->timeout, old, new_timeout);
- 		}
+Reproduced and tested using the script below over ssh. Roam between two
+bssids with the same SSID on a router.
+
+#!/bin/bash
+
+set -ex
+
+while :; do
+	num=$(sudo iw wlan0 scan | grep Polaris | wc -l)
+	if [ $num -eq 2 ]; then
+		break
+	fi
+done
+
+for i in $(seq 1 500); do
+
+echo "index $i"
+wpa_cli -i wlan0 roam 90:fb:5d:94:8b:e3
+sleep 5
+wpa_cli -i wlan0 roam 90:fb:5d:94:8b:e2
+sleep 5
+
+done
+
+---
+ drivers/net/wireless/mediatek/mt76/mac80211.c    | 11 ++++++++---
+ drivers/net/wireless/mediatek/mt76/mt76.h        |  1 +
+ drivers/net/wireless/mediatek/mt76/mt7925/main.c |  3 +++
+ 3 files changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
+index 4ae5e4715a9c..83f4f941b890 100644
+--- a/drivers/net/wireless/mediatek/mt76/mac80211.c
++++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
+@@ -1595,11 +1595,16 @@ mt76_sta_add(struct mt76_phy *phy, struct ieee80211_vif *vif,
+ 		mtxq->wcid = wcid->idx;
  	}
  
-
+-	ewma_signal_init(&wcid->rssi);
+-	rcu_assign_pointer(dev->wcid[wcid->idx], wcid);
++	if (!test_bit(MT_WCID_FLAG_DRV_PUBLISH, &wcid->flags)) {
++		ewma_signal_init(&wcid->rssi);
++		rcu_assign_pointer(dev->wcid[wcid->idx], wcid);
++		mt76_wcid_init(wcid, phy->band_idx);
++	} else {
++		wcid->phy_idx = phy->band_idx;
++	}
++
+ 	phy->num_sta++;
+ 
+-	mt76_wcid_init(wcid, phy->band_idx);
+ out:
+ 	mutex_unlock(&dev->mutex);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 527bef97e122..8bfce686bff7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -361,6 +361,7 @@ enum mt76_wcid_flags {
+ 	MT_WCID_FLAG_PS,
+ 	MT_WCID_FLAG_4ADDR,
+ 	MT_WCID_FLAG_HDR_TRANS,
++	MT_WCID_FLAG_DRV_PUBLISH,
+ };
+ 
+ #define MT76_N_WCIDS 1088
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+index 73d3722739d0..35b5c718475c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+@@ -1102,6 +1102,9 @@ int mt7925_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 					      &msta->deflink);
+ 	}
+ 
++	if (!err)
++		set_bit(MT_WCID_FLAG_DRV_PUBLISH, &msta->deflink.wcid.flags);
++
+ 	return err;
+ }
+ EXPORT_SYMBOL_GPL(mt7925_mac_sta_add);
 -- 
-2.46.0
+2.53.0
+
 
