@@ -4,65 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D09ACD5BB1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 May 2026 21:08:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75B63CD5BC8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 May 2026 21:23:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QzwgwypkHaL96nsdzAkl5yH0GD0dCTKW1kcyCj3G6qA=; b=DobXP8o3PHKT1IZWCfIEpkpn1K
-	eB9LtD4Y4ehKs5egoszo8Y3p47yRhLVWEUesgOXx0Lvtk1oyxQB6odY+t1Uekrp43Xrn0XotByRp2
-	WMwRbDkMUcbR3n620C0uSvOl6hRz1/W+vO1zTb/5u2GwgAgGv+N1K/Jk35LBlUXtwdhbt4fB67c72
-	PqRDJC2pacr8jX7D3+HOVCbhyttBQYxOq9aUbuEzQqua8M+xTs27Zu+zqJuFVCvM6ev945tRZg8t1
-	ZyjdyCtzeP0E2PqlIHiP+fMqj9ubyNAi++pvHggTyRPT9TQPIatGK6fhonArlix0qaYDPLQ3hovVT
-	B8a1EVZg==;
+	bh=MliZIEyZF+cjr5tCFsvOUcyvGEDv7HTQGjwah9i0HJo=; b=VqGcN3+EcR2i5ygBHQk7Ns4SGD
+	1NCrFT8v8RdVB+NFTQIxqHw9+gm6y9+7CoL0brJEEzi/H3bMgyT+oA+/pdhxA589D4NcA4Cst0OWk
+	yxuviAPt72lMrqoUAyPZlTowto3xBM6CjXuVivSIW+z8APtf0H6jqsKI44d/MhuzTmqJDGT3nJ9Ni
+	olrW4WR5C8N7hhd/kga3RSk/k5nCXO1lMyzq1gFKrpU81N7F5kl5E3kMUrJFUkXNsNF0uw8udvUld
+	MJLzWHmQObNNIp4JnqVix+lvEBYUWWZKpbGfW1anQ+xiJ3m9nN20UF32gXxemiv2YhFn/TRgF8H5T
+	2P/d/6IA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRz0g-00000002xvL-2wSs;
-	Tue, 26 May 2026 21:08:22 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wRzEr-00000002yyt-1YEf;
+	Tue, 26 May 2026 21:23:01 +0000
+Received: from mail-dy1-x132e.google.com ([2607:f8b0:4864:20::132e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRz0d-00000002xuc-0iXy;
-	Tue, 26 May 2026 21:08:20 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 48A7340D7F;
-	Tue, 26 May 2026 21:08:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A20151F000E9;
-	Tue, 26 May 2026 21:08:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779829697;
-	bh=QzwgwypkHaL96nsdzAkl5yH0GD0dCTKW1kcyCj3G6qA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=hHknQda5xEYsK9IBnCJXCvpT/FS27W7drakg0GHskeVSZn3m8q0ZmlNMkcyN5h5YA
-	 xhdm2eb6Kscy68HoKwokIZwV2L0HeGQBunFBGntDQr08jbMfr/gTrhBJfxzOT41nsZ
-	 tFLfzr9nBhUwUXNS6QWyfM25blqoolgKL10jc3mJdn3i4Wkw2KThlx8zEwv999YSie
-	 wbs5eXxXfCzy7MT7epDG9kC729+BkZYxdMRal8G/kOKFc/hpDZRRFli5njkIPfGi6e
-	 OemMvy2bVODCYRN+x7au9+WjbNqWRWuJSg3jcBT3KVxTNjyDhl1I9j0z9zNBMl8wCE
-	 xH8AmfaG2r4kg==
-Date: Tue, 26 May 2026 23:08:14 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Alexander Lobakin <aleksander.lobakin@intel.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	Madhur Agrawal <madhur.agrawal@airoha.com>
-Subject: Re: [PATCH RFC net-next v2] net: airoha: Add TCP LRO support
-Message-ID: <ahYLvlIYH60cvkWB@lore-desk>
-References: <20260526-airoha-eth-lro-v2-1-24e2a9e7a397@kernel.org>
- <7473204e-2ccd-44d8-b703-5a5dbcb29b61@intel.com>
+	id 1wRzEo-00000002yyK-3daB
+	for linux-mediatek@lists.infradead.org;
+	Tue, 26 May 2026 21:22:59 +0000
+Received: by mail-dy1-x132e.google.com with SMTP id 5a478bee46e88-304545f5206so6540220eec.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 26 May 2026 14:22:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1779830578; x=1780435378; darn=lists.infradead.org;
+        h=references:in-reply-to:content-disposition:mime-version:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=MliZIEyZF+cjr5tCFsvOUcyvGEDv7HTQGjwah9i0HJo=;
+        b=ipnPVk0KlolbakvWKyB0JByECTyizZpPgNRmkGYWYQbSXsB+PCjfRj5WT9dgGKyExC
+         zUU3lhkRTP7es07sYsU9d9cnY3z603zvsbUBFzIsM38QkdBdYihfNvqc8n7iJmowb8H8
+         Q93zdHOmhIR+gYNIWI4QGUHk/4E/SHTjcMDE16G9/gcNrBlkqixpIqxpzfnr8Ov4VmOp
+         vOw6QFUItPOyLiMhn+qNunve/KT4dszGxyEcHPh0vyNUir0YVSvaKF5Pv2/jbiaqmhEC
+         vhCcOudikFtmgXG9cMS5bIaKZj9d0F4fkreo1j2QxhsFwHq+0Y426e91mjPndiaTUOYD
+         PMWA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1779830578; x=1780435378;
+        h=references:in-reply-to:content-disposition:mime-version:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=MliZIEyZF+cjr5tCFsvOUcyvGEDv7HTQGjwah9i0HJo=;
+        b=a9N9yBV2UF8JL/05EVFPgTY/6KaW68bihFqyEniKf4bHmOwCHNUFHxKs3GNIh5hPHt
+         1uA5hVmolkOjBDo7W+jWrMbPFQC0u8rkSXOFjaU1vxyphF3h4ZKR4Onho5FrGsTfwiho
+         YI04txjOYPO+3oDCQuhMgkPQDZl2IxMQPmoWsttKicl7OyKfNxYH4XkXIYiBrUvm4YWK
+         WBRimq1bRNzJIUNkPQhON4CueYCCGlZTS+TEdj+8UEcqjpTIVnr2+KsQlV9JqStgD+p/
+         dWJc4lA3+9LDdmKcyttVnQlo22tXaIo25YoPhRBKod8dMnTCoY5WUkCv8kfbDsO2DNav
+         Mkog==
+X-Forwarded-Encrypted: i=1; AFNElJ+xKiBtzC8gdKZ52ldadgZp73rA7J0ldTXQtjGy78V/tmR3BzpKuUsnnBPg7wyl8V+7HjzyoTF9YeZlqheACA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyo7Nqp9LoTgK883bLaDvRN0S7JC2W+pq/8Hy0BAV/q+cGsqwXJ
+	FtY/8gpjIYM+FPAr63Frq4Z9r8REfllC+1z4bL9oz6NYxbi1hsp6+ie0
+X-Gm-Gg: Acq92OG5iEGUeAAuNCetup56I4QChSIjkMLgwzZT7BTsoA7hNylss4MBxGgXcPUGsci
+	zQWpz6ZZ7gxUy9eK7gq4/yUFu7wpqSvS+rndPFurGRecTvEFG13uj1VGLF2LcOzo6LrhJKC45JU
+	QtKME70fOuyHzF2zew/OjVmXgT/p7E2sDQ0dwGjYYvgLFlpVPAO6EDEfQ8H3h/Fnwic131Upy5u
+	uJjvj1k4eXUU2KV0piNcqNg67eL8FKkRTHzr4svh5cq5L/08OSd9b61vXy5NPeQtehG2VRcDxEI
+	COHo7zRAECCLZwYBq+TBGPhEPmr4sDySuQA4zH7GE2iB4G9fEZfGheHhdNzC5/LXwvTX0HmsBnt
+	/4Xud7rl2SoUuO1k8S4xQ3bawnhYXZ2uzMcrr891KnMYrU00zG/d+WfZRSp5InZwdTpWIP1iQLQ
+	uOYZIvSAlFmprUMJrxoFCaZ55kowB55oxja/As8+460nw=
+X-Received: by 2002:a05:7300:6920:b0:2ea:4228:ab11 with SMTP id 5a478bee46e88-30448fd6079mr8891943eec.3.1779830577830;
+        Tue, 26 May 2026 14:22:57 -0700 (PDT)
+Received: from wico-dev.wnam.ru ([23.95.253.230])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-30451f3feadsm14592570eec.13.2026.05.26.14.22.55
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 26 May 2026 14:22:57 -0700 (PDT)
+Date: Wed, 27 May 2026 00:22:53 +0300
+From: Ruslan Isaev <legale.legale@gmail.com>
+To: linux-wireless@vger.kernel.org
+Cc: sean.wang@mediatek.com, nbd@nbd.name, lorenzo@kernel.org,
+	ryder.lee@mediatek.com, linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] wifi: mt76: track rx napi ownership for cleanup
+Message-ID: <ahYPLdcoyMmzk3WN@wico-dev.wnam.ru>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="EScZYE8yc4PJ+rAl"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <7473204e-2ccd-44d8-b703-5a5dbcb29b61@intel.com>
+In-Reply-To: <ahTdpNQp2va_xTVR@wico-dev.wnam.ru>
+References: <ahTdpNQp2va_xTVR@wico-dev.wnam.ru>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260526_140819_256284_1FE2603F 
-X-CRM114-Status: GOOD (  22.91  )
+X-CRM114-CacheID: sfid-20260526_142258_931745_30DACD9D 
+X-CRM114-Status: UNSURE (   5.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,177 +99,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Sean and others,
 
---EScZYE8yc4PJ+rAl
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Tested on:
+- MT7915E (PCI ID 14c3:7915)
+- MT7981 WMAC
 
-> From: Lorenzo Bianconi <lorenzo@kernel.org>
-> Date: Tue, 26 May 2026 08:58:05 +0200
->=20
-> > Add hardware TCP Large Receive Offload (LRO) support to the airoha_eth
-> > driver, leveraging the EN7581/AN7583 SoC's 8 dedicated LRO hardware que=
-ues
-> > mapped to RX queues 24=E2=80=9331. LRO hw offloading does not support
-> > Scatter-Gather (SG) so it is required to increase the page_pool allocat=
-ion
-> > order to 2 for RX queues 24=E2=80=9331 (LRO queues).
-> >=20
-> > Performance comparison between GRO and hw LRO has been carried out using
-> > a 10Gbps NIC:
-> >=20
-> > GRO: ~2.7 Gbps
-> > LRO: ~8.1 Gbps
-> >=20
-> > Please note with respect to the previous implementation, page_pool
-> > allocation order has been reduced from 5 to 2.
-> >=20
-> > Tested-by: Madhur Agrawal <madhur.agrawal@airoha.com>
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
->=20
-> [...]
->=20
-> > @@ -587,6 +630,85 @@ static int airoha_qdma_get_gdm_port(struct airoha_=
-eth *eth,
-> >  	return port >=3D ARRAY_SIZE(eth->ports) ? -EINVAL : port;
-> >  }
-> > =20
-> > +static int airoha_qdma_lro_rx_process(struct airoha_queue *q,
-> > +				      struct airoha_qdma_desc *desc)
-> > +{
-> > +	u32 desc_ctrl =3D le32_to_cpu(READ_ONCE(desc->ctrl));
-> > +	u32 msg1 =3D le32_to_cpu(READ_ONCE(desc->msg1));
-> > +	u32 msg2 =3D le32_to_cpu(READ_ONCE(desc->msg2));
-> > +	u32 msg3 =3D le32_to_cpu(READ_ONCE(desc->msg3));
->=20
-> Why are these READ_ONCE()s needed? Does desc come from the HW (sorry I
-> didn't follow the whole code flow) or...?
-
-Correct, ctrl, msg1, msg2 and msg3 are subfields of the DMA descriptor read=
- by
-airoha_qdma_rx_process() from the NIC. I guess here we have a similar issue=
- as
-the one fixed in [0]
-
-[0] https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net.git/commit/?=
-id=3D4ae0604a0673e11e2075b178387151fcad5111b5
-
->=20
-> > +	struct sk_buff *skb =3D q->skb;
-> > +	u32 len, th_off, tcp_ack_seq;
-> > +	u16 tcp_win, l2_len;
-> > +	struct tcphdr *th;
-> > +	bool ipv4, ipv6;
-> > +
-> > +	if (FIELD_GET(QDMA_ETH_RXMSG_AGG_COUNT_MASK, msg2) <=3D 1)
-> > +		return 0;
-> > +
-> > +	ipv4 =3D FIELD_GET(QDMA_ETH_RXMSG_IP4_MASK, msg1);
-> > +	ipv6 =3D FIELD_GET(QDMA_ETH_RXMSG_IP6_MASK, msg1);
-> > +	if (!ipv4 && !ipv6)
-> > +		return -EOPNOTSUPP;
-> > +
-> > +	l2_len =3D FIELD_GET(QDMA_ETH_RXMSG_L2_LEN_MASK, msg2);
-> > +	len =3D FIELD_GET(QDMA_DESC_LEN_MASK, desc_ctrl);
-> > +	if (ipv4) {
-> > +		struct iphdr *iph;
-> > +
-> > +		if (!pskb_may_pull(skb, l2_len + sizeof(*iph)))
-> > +			return -EINVAL;
-> > +
-> > +		iph =3D (struct iphdr *)(skb->data + l2_len);
-> > +		if (iph->protocol !=3D IPPROTO_TCP)
-> > +			return -EOPNOTSUPP;
-> > +
-> > +		iph->tot_len =3D cpu_to_be16(len - l2_len);
-> > +		iph->check =3D 0;
-> > +		iph->check =3D ip_fast_csum((void *)iph, iph->ihl);
-> > +		th_off =3D l2_len + (iph->ihl << 2);
-> > +	} else {
-> > +		struct ipv6hdr *ip6h;
-> > +
-> > +		if (!pskb_may_pull(skb, l2_len + sizeof(*ip6h)))
-> > +			return -EINVAL;
-> > +
-> > +		ip6h =3D (struct ipv6hdr *)(skb->data + l2_len);
-> > +		if (ip6h->nexthdr !=3D NEXTHDR_TCP)
-> > +			return -EOPNOTSUPP;
-> > +
-> > +		ip6h->payload_len =3D cpu_to_be16(len - l2_len - sizeof(*ip6h));
-> > +		th_off =3D l2_len + sizeof(*ip6h);
-> > +	}
-> > +
-> > +	tcp_win =3D FIELD_GET(QDMA_ETH_RXMSG_TCP_WIN_MASK, msg3);
-> > +	tcp_ack_seq =3D le32_to_cpu(READ_ONCE(desc->data));
-> > +
-> > +	if (!pskb_may_pull(skb, th_off + sizeof(*th)))
-> > +		return -EINVAL;
-> > +
-> > +	th =3D (struct tcphdr *)(skb->data + th_off);
-> > +	th->ack_seq =3D cpu_to_be32(tcp_ack_seq);
-> > +	th->window =3D cpu_to_be16(tcp_win);
-> > +
-> > +	/* Check tcp timestamp option */
-> > +	if (th->doff =3D=3D (sizeof(*th) + TCPOLEN_TSTAMP_ALIGNED) / 4) {
-> > +		__be32 *topt =3D (__be32 *)(th + 1);
->=20
-> Make sure you checked the code with sparse (sometimes it's needed to
-> mark casts as __force, not this one tho)
-
-$ make C=3D2 CHECK=3Dsparse drivers/net/ethernet/airoha/
-  CHECK   scripts/mod/empty.c
-  DESCEND objtool
-  INSTALL libsubcmd_headers
-  DESCEND bpf/resolve_btfids
-  INSTALL libsubcmd_headers
-  CHECK   drivers/net/ethernet/airoha/airoha_eth.c
-  CHECK   drivers/net/ethernet/airoha/airoha_ppe.c
-  CHECK   drivers/net/ethernet/airoha/airoha_ppe_debugfs.c
-  CHECK   drivers/net/ethernet/airoha/airoha_npu.c
-
-$ sparse --version
-v0.6.5-rc1
-
->=20
-> > +
-> > +		if (*topt =3D=3D cpu_to_be32((TCPOPT_NOP << 24) |
->=20
-> Shouldn't this be `((u32)TCPOPT_NOP) << 24` to avoid sign issues?
-
-I guess this is same approach used in [1]. Am I missing something?
-
-[1] https://github.com/torvalds/linux/blob/master/net/ipv4/tcp_ipv4.c#L823
+On both devices, the Wi-Fi driver module unloads cleanly without warnings
+or errors.
 
 Regards,
-Lorenzo
-
->=20
-> > +					 (TCPOPT_NOP << 16) |
-> > +					 (TCPOPT_TIMESTAMP << 8) |
-> > +					 TCPOLEN_TIMESTAMP)) {
-> > +			__le32 tcp_ts_reply =3D READ_ONCE(desc->tcp_ts_reply);
-> > +
-> > +			put_unaligned_be32(le32_to_cpu(tcp_ts_reply),
-> > +					   topt + 2);
-> > +		}
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> Thanks,
-> Olek
-
---EScZYE8yc4PJ+rAl
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCahYLvgAKCRA6cBh0uS2t
-rD5IAQDm649Y+OIXgnX3tqPjEv0sZKv9Zt+HPJ2Car7wGP9blAD/QhomlYinsEb6
-cOFaX+lWBwG7XoOzG8IhnE4orgKEuA8=
-=Ypxv
------END PGP SIGNATURE-----
-
---EScZYE8yc4PJ+rAl--
+Ruslan
 
