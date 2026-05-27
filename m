@@ -4,74 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B9CCCD5BC9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2026 10:00:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9654CD4F54
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2026 10:08:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4vc12CsyxQZnBff3nclh5xMgmARI3DVC5oAYJEEQSWk=; b=JdC9n9FivVLfyPekV41OZEo1Py
-	iXLdWOWOMEN+UcU4xYoU3lYnvgmxMZDj7ZLv8q+rd3x4eVs4369RFTlFmKE5yKBoeP7Ms177nElLv
-	6n5Hsf3CvUiJsRw8vPLNyRW+qOt7jV2E/4dJEji6UBHeu06Cvmp0DPwQFqU3q9DkHVs/JifrMlcJZ
-	yGSbZdVNQuJGJP+fXIAVTM1LDA1gSfqnm8XkwxAvo/tOANIN63yN0BFd1i4uT/Gy0n5bUwvvNIBAQ
-	D8mkY4xQ8CRE5O2+34vTz+YMVWMIzGOPxEw8NBwwG+tPt+Qc2NAkWcxsVuvgYw+MGNEAvrgAYD355
-	3IJtPU2Q==;
+	bh=rIpiJo4iCvjtRLJCUK0kvO6KWTuUncctdjuI6Z6+PQ0=; b=Rs+TuskbSvjcY8PCvsu2FyrbAn
+	9MWnwoeR64PUs10VBHg9m3WdMXFNX/y9vjUvkzMw8SxyQHuEJuo51c2audXm6uH9S6o0QUFDOFLGR
+	U7qbFKKU0I1tRRa4ZJHAvleiGSfHuEwYwa+L3VWsiC7e4gonqCBEtr4WW5WSLfGXV5ewK4r26H/vS
+	WULAV3WXZF6zWHNLt6zy1pu6Pk8mepDB/4jTR2XXXiX1f8H0MA1GCvFoNNTEd1/ft1cxGbAtJUY76
+	yeuwGZ3S8bXvsJ0yAwuHB2ATIBIqUIRcxTwYw8y/+eIh6atuvsKfY3NSxFKaVy/d5exMR9jt1s512
+	GlwJYizQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSB42-00000003gzp-1ZLL;
-	Wed, 27 May 2026 10:00:38 +0000
-Received: from mailgw.kylinos.cn ([124.126.103.232])
+	id 1wSBBh-00000003ibf-0l7A;
+	Wed, 27 May 2026 10:08:33 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSB3v-00000003gpW-0n9s;
-	Wed, 27 May 2026 10:00:34 +0000
-X-UUID: dec7402459b211f1aa26b74ffac11d73-20260527
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:1fdcb15d-86a5-4dfd-9310-ad06384d0138,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:e7bac3a,CLOUDID:21fde180ab3492c37f445fc5f12cf05d,BulkI
-	D:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|865|898,TC:nil,Content:0
-	|15|50,EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,O
-	SI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: dec7402459b211f1aa26b74ffac11d73-20260527
-X-User: liujiajia@kylinos.cn
-Received: from nature [(10.44.16.150)] by mailgw.kylinos.cn
-	(envelope-from <liujiajia@kylinos.cn>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 1695425657; Wed, 27 May 2026 18:00:20 +0800
-Date: Wed, 27 May 2026 18:00:17 +0800
-From: Jiajia Liu <liujiajia@kylinos.cn>
-To: Sean Wang <sean.wang@kernel.org>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
-	Michael Lo <michael.lo@mediatek.com>,
-	Leon Yen <leon.yen@mediatek.com>, linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] wifi: mt76: mt7925: add wcid publish check in
- mt76_sta_add
-Message-ID: <ahbAsYwFCjsvpxEC@nature>
-References: <20260526060841.49161-1-liujiajia@kylinos.cn>
- <CAGp9LzqzddmyDHMNsaqigYpVEdo_Pmzwbeh5Ri5_Gr87cVL6Dg@mail.gmail.com>
+	id 1wSBBe-00000003ib0-2fms;
+	Wed, 27 May 2026 10:08:32 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id EF222405C4;
+	Wed, 27 May 2026 10:08:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F07581F000E9;
+	Wed, 27 May 2026 10:08:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1779876509;
+	bh=rIpiJo4iCvjtRLJCUK0kvO6KWTuUncctdjuI6Z6+PQ0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=KWf39RvxLmV0Nl+vilSfwl74YjQVWACxnTiCx26aUEnrVpysov1woI1ljZ4EzWiEj
+	 O77lDsCAYY4natY2LkN9j/GTMgByYhWJJVmkx313bM2kkmuoDwcdv0Cy0SDQaTnKwT
+	 FWqBcTOn94EmVWgTzreCduP7PpjwFiiDOAflX+ojBb8JFCvQDo40Wp343CI/zD9AVf
+	 VXZFU0Wx6T7z1y4YJ62BlNIJoRZARcpBPtONaseHqRAw1VyjweXf9nR8+rtsaSbT6D
+	 RYuQn1sgnH1Gr8QNc5c7CxtaWU3cGE/+GyehXFvY3X5d8oBb5F+8w3a6k6fS5ErlM1
+	 ILpuLr0yq0bCQ==
+Date: Wed, 27 May 2026 11:08:24 +0100
+From: Simon Horman <horms@kernel.org>
+To: Jihong Min <hurryman2212@gmail.com>
+Cc: Christian Marangi <ansuelsmth@gmail.com>,
+	Antoine Tenart <atenart@kernel.org>,
+	Herbert Xu <herbert@gondor.apana.org.au>,
+	"David S . Miller" <davem@davemloft.net>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Steffen Klassert <steffen.klassert@secunet.com>,
+	linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH 2/3] crypto: inside-secure: add EIP93 ESP packet backend
+Message-ID: <20260527100824.GJ2256768@horms.kernel.org>
+References: <20260523121522.3023992-1-hurryman2212@gmail.com>
+ <20260523121522.3023992-3-hurryman2212@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGp9LzqzddmyDHMNsaqigYpVEdo_Pmzwbeh5Ri5_Gr87cVL6Dg@mail.gmail.com>
+In-Reply-To: <20260523121522.3023992-3-hurryman2212@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260527_030031_560076_D9AA3F52 
-X-CRM114-Status: GOOD (  28.76  )
+X-CRM114-CacheID: sfid-20260527_030830_694605_F5B816A6 
+X-CRM114-Status: GOOD (  14.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,156 +81,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 26, 2026 at 04:52:32PM -0500, Sean Wang wrote:
-> Hi,
+On Sat, May 23, 2026 at 09:15:21PM +0900, Jihong Min wrote:
+> Expose an EIP93 packet-mode IPsec backend for netdev drivers that need
+> ESP encapsulation and decapsulation offload without advertising EIP93
+> itself as a netdev.
 > 
-> On Tue, May 26, 2026 at 1:09 AM Jiajia Liu <liujiajia@kylinos.cn> wrote:
-> >
-> > Since mt7925_mac_sta_add publishes wcid, add publish check in mt76_sta_add
-> > to avoid reinitializing the wcid->poll_list for mt7925.
-> >
-> > Found dev->sta_poll_list corruption when using mt7925 and 7.0-rc4.
-> > According to the corruption information, prev->next was changed to itself.
-> >
-> > wlan0: disconnect from AP 90:fb:5d:94:8b:e3 for new auth to 90:fb:5d:94:8b:e2
-> > wlan0: authenticate with 90:fb:5d:94:8b:e2 (local address=84:9e:56:9c:7e:6b)
-> > wlan0: send auth to 90:fb:5d:94:8b:e2 (try 1/3)
-> >  slab kmalloc-8k start ffff8c80958a6000 pointer offset 4160 size 8192
-> > list_add corruption. prev->next should be next (ffff8c808a7488f8), but was ffff8c80958a7040. (prev=ffff8c80958a7040).
-> >
-> >  mt76_wcid_add_poll+0x95/0xd0 [mt76]
-> >  mt7925_mac_add_txs.part.0+0xa5/0xe0 [mt7925_common]
-> >  mt7925_rx_check+0xa7/0xc0 [mt7925_common]
-> >  mt76_dma_rx_poll+0x50d/0x790 [mt76]
-> >  mt792x_poll_rx+0x52/0xe0 [mt792x_lib]
-> >
-> > Signed-off-by: Jiajia Liu <liujiajia@kylinos.cn>
-> > ---
-> >
-> > Reproduced and tested using the script below over ssh. Roam between two
-> > bssids with the same SSID on a router.
-> >
-> > #!/bin/bash
-> >
-> > set -ex
-> >
-> > while :; do
-> >         num=$(sudo iw wlan0 scan | grep Polaris | wc -l)
-> >         if [ $num -eq 2 ]; then
-> >                 break
-> >         fi
-> > done
-> >
-> > for i in $(seq 1 500); do
-> >
-> > echo "index $i"
-> > wpa_cli -i wlan0 roam 90:fb:5d:94:8b:e3
-> > sleep 5
-> > wpa_cli -i wlan0 roam 90:fb:5d:94:8b:e2
-> > sleep 5
-> >
-> > done
-> >
-> > ---
-> >  drivers/net/wireless/mediatek/mt76/mac80211.c    | 11 ++++++++---
-> >  drivers/net/wireless/mediatek/mt76/mt76.h        |  1 +
-> >  drivers/net/wireless/mediatek/mt76/mt7925/main.c |  3 +++
-> >  3 files changed, 12 insertions(+), 3 deletions(-)
-> >
-> > diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-> > index 4ae5e4715a9c..83f4f941b890 100644
-> > --- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-> > +++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-> > @@ -1595,11 +1595,16 @@ mt76_sta_add(struct mt76_phy *phy, struct ieee80211_vif *vif,
-> >                 mtxq->wcid = wcid->idx;
-> >         }
-> >
-> > -       ewma_signal_init(&wcid->rssi);
-> > -       rcu_assign_pointer(dev->wcid[wcid->idx], wcid);
-> > +       if (!test_bit(MT_WCID_FLAG_DRV_PUBLISH, &wcid->flags)) {
-> > +               ewma_signal_init(&wcid->rssi);
-> > +               rcu_assign_pointer(dev->wcid[wcid->idx], wcid);
-> > +               mt76_wcid_init(wcid, phy->band_idx);
-> > +       } else {
-> > +               wcid->phy_idx = phy->band_idx;
-> > +       }
-> > +
-> >         phy->num_sta++;
-> >
+> Add provider selection, capability reporting, SA lifecycle management,
+> IPsec request completion, and provider fault notification around the
+> existing EIP93 descriptor path.
 > 
-> Thanks for spotting the roaming issue.
-> 
-> I think we can avoid adding MT_WCID_FLAG_DRV_PUBLISH and instead use the
-> WCID table itself for the publish check.
-> 
-> dev->wcid[] already encodes whether a WCID has been published, so checking
-> it directly avoids adding a second mirror state. MT_WCID_FLAG_* is also
-> better kept for WCID features that affect WTBL setup or data-path handling,
-> rather than common bookkeeping state.
-> 
-> Something like:
-> 
-> @@ -1620,6 +1620,7 @@ mt76_sta_add(struct mt76_phy *phy, struct
-> ieee80211_vif *vif,
-> {
->   struct mt76_wcid *wcid = (struct mt76_wcid *)sta->drv_priv;
->   struct mt76_dev *dev = phy->dev;
-> +       struct mt76_wcid *published;
->   int ret;
->   int i;
-> 
-> @@ -1639,7 +1640,10 @@ mt76_sta_add(struct mt76_phy *phy, struct
-> ieee80211_vif *vif,
->           mtxq->wcid = wcid->idx;
->   }
-> 
-> -       if (!test_bit(MT_WCID_FLAG_DRV_PUBLISH, &wcid->flags)) {
-> +       published = rcu_dereference_protected(dev->wcid[wcid->idx],
-> +                                             lockdep_is_held(&dev->mutex));
-> +       if (published != wcid) {
-> +               WARN_ON_ONCE(published);
->                  ewma_signal_init(&wcid->rssi);
->                  rcu_assign_pointer(dev->wcid[wcid->idx], wcid);
->                  mt76_wcid_init(wcid, phy->band_idx);
-> 
->    ....
-> 
+> Assisted-by: Codex:gpt-5.5
+> Signed-off-by: Jihong Min <hurryman2212@gmail.com>
 
-Thanks for the suggestion. Will update in v2.
+...
 
-> 
-> > -       mt76_wcid_init(wcid, phy->band_idx);
-> >  out:
-> >         mutex_unlock(&dev->mutex);
-> >
-> > diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-> > index 527bef97e122..8bfce686bff7 100644
-> > --- a/drivers/net/wireless/mediatek/mt76/mt76.h
-> > +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-> > @@ -361,6 +361,7 @@ enum mt76_wcid_flags {
-> >         MT_WCID_FLAG_PS,
-> >         MT_WCID_FLAG_4ADDR,
-> >         MT_WCID_FLAG_HDR_TRANS,
-> > +       MT_WCID_FLAG_DRV_PUBLISH,
-> >  };
-> >
-> >  #define MT76_N_WCIDS 1088
-> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-> > index 73d3722739d0..35b5c718475c 100644
-> > --- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-> > +++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-> > @@ -1102,6 +1102,9 @@ int mt7925_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
-> >                                               &msta->deflink);
-> >         }
-> >
-> > +       if (!err)
-> > +               set_bit(MT_WCID_FLAG_DRV_PUBLISH, &msta->deflink.wcid.flags);
-> > +
-> >         return err;
-> >  }
-> >  EXPORT_SYMBOL_GPL(mt7925_mac_sta_add);
-> > --
-> > 2.53.0
-> >
-> >
+> diff --git a/drivers/crypto/inside-secure/eip93/eip93-ipsec.c b/drivers/crypto/inside-secure/eip93/eip93-ipsec.c
+
+...
+
+> +static void eip93_ipsec_abort_requests(struct eip93_ipsec *ipsec, int err)
+> +{
+> +	struct eip93_ipsec_sa *sa;
+> +
+> +	while (true) {
+> +		bool found = false;
+> +
+> +		spin_lock_bh(&ipsec->lock);
+> +		list_for_each_entry(sa, &ipsec->sa_list, node) {
+> +			spin_lock(&sa->lock);
+> +			if (sa->aborting) {
+> +				spin_unlock(&sa->lock);
+> +				continue;
+> +			}
+> +
+> +			sa->aborting = true;
+> +			found = refcount_inc_not_zero(&sa->refcnt);
+> +			spin_unlock(&sa->lock);
+> +			if (found)
+> +				break;
+> +		}
+> +		spin_unlock_bh(&ipsec->lock);
+> +		if (!found)
+> +			return;
+> +
+> +		eip93_ipsec_abort_sa(sa, err);
+> +		eip93_ipsec_sa_put(sa);
+
+sa is the iterator for the list_for_each_entry loop.
+However, here it is used outside of that context.
+
+	"If list_for_each_entry, etc complete a traversal of the list, the
+	iterator variable ends up pointing to an address at an offset from
+	the list head, and not a meaningful structure.  Thus this value
+	should not be used after the end of the iterator.
+
+	https://www.spinics.net/lists/linux-kernel-janitors/msg11994.html
+
+Flagged by Coccinelle.
+
+> +	}
+> +}
+
+...
 
