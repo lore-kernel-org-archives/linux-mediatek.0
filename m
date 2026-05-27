@@ -4,109 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDCFDCD4F54
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2026 21:24:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A7DBCD4F54
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2026 22:39:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UNa7dgr+T6R1ukhKHHLy6CJqrOmDsV/gnRDcoFC7IoM=; b=VmVVWjoY9zcmOk3oYVT4ohk7kU
-	+alUSvmBVZa5YtXEQKx/px1ICV4GUNj6//7hTDlNjk2auMqV+Q3oNrtqwcul0VtkC2+8+cZr4Azc1
-	w2tvVyG5I5cOai6uXxMfKCjDUGgD1GbDdwSwe0IHEszMyVgBi21fGz8dZMS59uGTN/aqkkpdlPJHL
-	ULvsC5tjF5U5Rk8DIu9tfI9hX1eTdIjCReNX0qayy6OuyuFaMBDtlZ0gQAKzHjXX0xx4XPCkTtojm
-	Um2Blt/VCsUzXca0k4le3JB8ceVT9ugv+0g4iUj6zdAfDTXfM4LmSqRrlik0Bc5qtZ8bT/D16UXvQ
-	eEljfgBw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=JVybf3MGGtEv6SObEhz8sgYocMl2B9mPaPK11udoxs0=; b=4PQ6GaAGrA+TT5v59ROQMqnQgI
+	QrmPM3d0iwaWboxFZXwVoZPLzZhYBVpGAG/05E9b6UW9EjCOxDXEfytaUj5xzh22jM8wn5asr8e36
+	Yc9sFr5Zh2cPOMnb0aRdaFoJ0kRPtNrd4aUQivLdIrJ94JrFmBHhfQ3AMi6kFft5CzFoBB+a9cQDv
+	OlSCLWZGrxgmo0NmfSP1BoUv/K6SdIGsmu6LFyl833V1IEA8SA10AE0mpg31FvrrMH1Ffiqv12DI5
+	Y2lEAMfN1WTjZ/fqMhyH2WArJsLCVaR7POa8GQguo/orPIdlpyJesp60ckRO0L3FiHYJxuiR2oVX8
+	T73zeiMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSLjf-00000004kq8-0U2V;
-	Wed, 27 May 2026 21:24:19 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1wSMu6-00000004odr-2uEy;
+	Wed, 27 May 2026 22:39:10 +0000
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSLjc-00000004kpN-12Q2
+	id 1wSMu3-00000004odB-42Ex
 	for linux-mediatek@lists.infradead.org;
-	Wed, 27 May 2026 21:24:17 +0000
-Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-5aa21fa024cso10359972e87.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 27 May 2026 14:24:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779917054; cv=none;
-        d=google.com; s=arc-20240605;
-        b=XXZIBpoU4FYdjXAC+mCXT7u4Mz6SoWhNsHyHIJWqZzCtOysJAsbPe7PRiHbRCr+V6J
-         4vjdyK8SWemrXUQUsBiYr1qu7rXHNP4dUUcUo2eYt+dq88ns/bur8lXmB+FyJDovv25g
-         iExJ+YqKrJbeNLya0paV7BuczlOlrS5tFzHZfU4RVuZIiEKd+u3rHIePO2ZKs+UsR6Jd
-         36FXEapgrEsRn/Z0FtyA3PTEcrjWAJu0QMf9Jz3RYRQcSE+Lf59q9vrlBw0cRe1epV61
-         JohShKNPv4oIljms3g7qQquQ18bv1inxkJdxxzF1kaiM81QdtXQPf7AGqQtV/+A/KGSv
-         VLBA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=UNa7dgr+T6R1ukhKHHLy6CJqrOmDsV/gnRDcoFC7IoM=;
-        fh=jvoKn+x2WMd0mNCX1Qs1ojE+BHMkHxJxjTVxBNcjFB4=;
-        b=CcMyAewG53sHpBnlZ9bCCEgj30gf7bLpsAkfAFwXfICFWmtkI5Rg3RFzpibWKpUi4F
-         6aOVjjd9+ajpq4w1my+04SNUdTBLEENq8MDJtKdBEWVNWzOa2X5rOzLv7jkSZpnkvZ+M
-         WNNHEiJAv4fZC2ztTZs3rpDX9zYlXOuuV6TNmMYa9OqdcJECsS5eZAqQlh19xxr+cR/M
-         hysbmEHAviecSqOx13SJ3Y1m5TZgZVG2C3W+pzYeRO5k+w7x5cyl71fbsUtfur8Xna8a
-         c8agehH0jiB5Tra6ja07MpykQvyrwgSJETiRvKfW+lOwP5Eejms3lNEw+Julmy86PMb3
-         ORRQ==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Wed, 27 May 2026 22:39:09 +0000
+Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-2bc85eda6b6so62151055ad.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 27 May 2026 15:39:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1779917054; x=1780521854; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=UNa7dgr+T6R1ukhKHHLy6CJqrOmDsV/gnRDcoFC7IoM=;
-        b=eqvi8CCSDUuOXofeXmEzyWmpyXgY5xz+hyMuOFcloj6DxzTKPyyrAx/qGqiUHW0mur
-         2AWYMmgEtRdwIpoRzUm7+jQ7oMcD68MqhJ+7L5EUI+hH50oqN3JTRx0Z8SK/qyCdrcg8
-         93ip25fpvat85zyF4PKjW02NWUtk2zkV385wQ=
+        d=gmail.com; s=20251104; t=1779921547; x=1780526347; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=JVybf3MGGtEv6SObEhz8sgYocMl2B9mPaPK11udoxs0=;
+        b=TMgQ+14Adcax8xBPPlWg5xeARPJ/phZ/QmVS5cdh858qAhD8kyPzTNTqKd3n2NwE28
+         oukDE48s0l5sU0U2Dw8n0emG/2peucIo3p9sji5/HCJZt58mRr6IBSEfnuJocOlVX9/K
+         /llgQWdEvdtRmzyHl6yGjF5rgDXGHfuQU6NtQVh5X2CJdZH+WdHk1uQ7cNviB/UBMYT1
+         5HTll3pyiydrUW+GJf7zbzEvAHY6DsmPcNqDI34oi2qhHtiODHdBg5XvjgD0dznCLsC3
+         ZChrB4YMDje5D7e2rYuwbEj5YUngp69PlLiqxQ8k+49MSYHTiv/rGORfKgFAcZUyEQbd
+         BjiA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779917054; x=1780521854;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=UNa7dgr+T6R1ukhKHHLy6CJqrOmDsV/gnRDcoFC7IoM=;
-        b=gAuBSur6K66fcoz8PZnFBuzQBlqawMtnGJV6wIl5mMwUTx+D9PUF/nEr9D4YyBR2qB
-         t9CTYOQPzj9kFddjiNpl8X3LQHwLC7S5kYgAl/wd0hcJYItEbqLM+XqA5TZ5HGS4JlhZ
-         jP3wweLPZ73ZHc0rQvWc+BD8ToGMynWO25ywqyE44ZrtSdOgB+hddIsZcMTOjk8WJzgE
-         9AYHwdvSWrNPApK1jsUY6y3D/5es9XpfwWU74u5CgSw7svR7KmlHLSYSGmwQRpLtjkNu
-         AmU6/K5c0WJJLgqj2zPJcec+zy8gXUf+mGfG/dsWtcrY38Xr8zIiJ0pm18aiWaQJ+IgF
-         Jdfg==
-X-Forwarded-Encrypted: i=1; AFNElJ+VdBDQr9XqTFtkR3XSoclL5hsP/24hNRQ1fM2RPgyab0olKPZXsCeiKxmfmRI2ahwfH0KQNzJPDGzFSjnlfg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz1NbfYm4FP1Fb/6FzqJftp1XyYLkTmjXs4976JkSnA/lbHFWrs
-	fOQ7c07Y+mzzp1UUPOZwl0X1877WqoZWfvHY81upnumGWYUdfLV3dho6c0DOuGYVU6r2x9NpN9A
-	MJqbX1RM2b10ZoVyewx4REjwLf38mKKAsW4hbsNRF
-X-Gm-Gg: Acq92OE0RFioyDDttSKcAYgpYqnTqLwz4JvV5wzp/jXWzF8Y3W4oVIAxeJbUfoaaopN
-	vsi9A9Vl9Ag97vYkFRBNn3RkimLyzzcC4cDJac+oJbCwqQ0kP6qCNM5vfc9uorF59VnVVoWwAHL
-	yEwYp/TA77U6+0kdXsCTP7KhQ3GrDu3hMGF9pTEiRUfb2gXaVlgxokmeZ7HzoRJAQ/Kt9yxZM5j
-	Zs8fOngu77vlH1qZb2xPbCDYAgJuq4UkVc5jfMS2Y/UN1qTGV4pmVt5xQLlYFPLLn9nrHuOQYnU
-	vtszvfxoc4ynpaXCyA==
-X-Received: by 2002:ac2:4c50:0:b0:5a8:65ce:e83b with SMTP id
- 2adb3069b0e04-5aa3238bcc6mr8479844e87.7.1779917054041; Wed, 27 May 2026
- 14:24:14 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1779921547; x=1780526347;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=JVybf3MGGtEv6SObEhz8sgYocMl2B9mPaPK11udoxs0=;
+        b=ZUCTsOcCG1//LJi5nmEDNfVmNehdbgvGDBCOPAQnNWJA7OrGh2J9t1zaVMSqSsKKLD
+         FkUq7G7nvuAWjnZi/VY9DsxDVKkOEOd3AR1IIoX5Wo1yvVl7yNIqChaCOzb7n1W1M+mh
+         M5A2DGnaZx5h2HYTBTbKSxMmXWWtRJTrVT5iY0hFeDtXtYl9PcSkT1Zt9EQAKayb48sD
+         5S0NhIc/RHNfqQiESjVvkgKzisIu4EUODTsWBllUtbQhAYu8yScEYqiOAxXAgasWA5Lh
+         A8LRbWRp/VHGjQLZZvFrFfaUBeozBrMjZNbelnRH8vJKuYmQCWkSO7rNDHJRtzpGlr3N
+         QyUw==
+X-Forwarded-Encrypted: i=1; AFNElJ/xuOnUnO+JIyzXOfxl5XlLVIkg6dz3z3x1eEUmt578spBa1D+bjwscjoxus6349+qKOhztCjGXR+cSrkMJpw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwcHFTc74SKOpDWV2tIcklFSx9uMNxGyymPHJTGUDp3QR72PPWq
+	PsXRCsZGzZLCHpEyzQw8UvLyeieRtrPvEyTxZ8c5O0hYwv/EBTS1b+kT
+X-Gm-Gg: Acq92OGytbIrwupe8H0PO8CqPPE7Z1o7+thQM5deql+5ZeddxJ4yyMrokv+uurlSRqX
+	2+FOOQZfxs7ygImpfFPy15HSeWWi4W//zm9TfnqoGIrVMAp6QNkgMZLUa/Gu9PD29uZzw0zlBWF
+	JgSFOgF+Vh2TF21YIgT96jLKaD6Xc1RUG9Mywv05q4BZA+ldF+nbvmJZ0kHjp1Mvzkz7butswsa
+	MmqkPCnFVfSjcJkfV4/Fd1CKR57+P76x1WaumHxThmsINToDUKCb1AQJa/g0n4q/VPCNqbmx44i
+	SSSEBupJ76tJhfAiG5cg5waCv7AmAdU7Isq/M4Rx/wwov+WovYHsPO8lIYQmzv+wyqAnr9nseUv
+	CwKqVDixWmfRC4lm9W4CRrxFrrPBbhbBlI9UfZD+wlkWDMokB4/SXhQzJXUgWNgASnJ/DHuj4mV
+	gkqOIQFIwLXXaSgmLYSeIRGhZc9L3mH/4wYA+qSC3uMD4qzjLcY4hZFUdOsxU4rFFPVWJBZqjxO
+	OuKXpzvNc5DvOfAQpRgV2VivFrInWxvJK50iZJfY4jASQ==
+X-Received: by 2002:a17:903:4405:b0:2bd:8822:d8c2 with SMTP id d9443c01a7336-2beb06bc0a9mr260255915ad.36.1779921546975;
+        Wed, 27 May 2026 15:39:06 -0700 (PDT)
+Received: from ryzen ([2601:644:8000:5b5d:7285:c2ff:fe45:8a32])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2beb56b51aesm211397955ad.19.2026.05.27.15.39.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 27 May 2026 15:39:06 -0700 (PDT)
+From: Rosen Penev <rosenp@gmail.com>
+To: linux-input@vger.kernel.org
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH] Input: mtk-pmic-keys: Use flexible array member for keys
+Date: Wed, 27 May 2026 15:38:49 -0700
+Message-ID: <20260527223849.25139-1-rosenp@gmail.com>
+X-Mailer: git-send-email 2.54.0
 MIME-Version: 1.0
-References: <20260515090149.3169406-1-wenst@chromium.org> <CAMRc=MdnjRRMVzxPkkrPhQ4dz7rsK8-HKUp9cQ0z11apL3escQ@mail.gmail.com>
- <CAGXv+5HC3dqgcE3KnKzakHHWFHB6m_X42orOkNUvZvp=SL_O8g@mail.gmail.com>
- <CAMRc=Med-_0GSYzoFBRiwFzBCK0DZqJD8_SEBxi+zwR20GS-HA@mail.gmail.com>
- <CAGXv+5GbW0bx3nKdZt2+tHuHyQ-J-1-Z79nMzHAwjmEPGKT02A@mail.gmail.com> <2026052710-flagship-unsmooth-ce82@gregkh>
-In-Reply-To: <2026052710-flagship-unsmooth-ce82@gregkh>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 27 May 2026 23:24:02 +0200
-X-Gm-Features: AVHnY4LeDHWwGMjgnhSmei9PL68DdRKYxFo5lLp-irYNZJy9WYHdf0RaNUwFV18
-Message-ID: <CAGXv+5HdrKjFe=jZFYQzanmHOgCNOXRydLCvsM6o=DGhoO1HBA@mail.gmail.com>
-Subject: Re: [PATCH RFC 00/12] arm64: mediatek: Add M.2 E-key slot on Chromebooks
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Bartosz Golaszewski <brgl@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-pm@vger.kernel.org, 
-	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260527_142416_367706_D14AF406 
-X-CRM114-Status: GOOD (  51.89  )
+X-CRM114-CacheID: sfid-20260527_153908_008431_8F1CEBE5 
+X-CRM114-Status: GOOD (  15.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,119 +100,142 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 27, 2026 at 7:42=E2=80=AFPM Greg Kroah-Hartman
-<gregkh@linuxfoundation.org> wrote:
->
-> On Wed, May 27, 2026 at 06:21:00PM +0200, Chen-Yu Tsai wrote:
-> > On Tue, May 26, 2026 at 11:48=E2=80=AFAM Bartosz Golaszewski <brgl@kern=
-el.org> wrote:
-> > >
-> > > On Sun, May 24, 2026 at 10:06=E2=80=AFAM Chen-Yu Tsai <wenst@chromium=
-.org> wrote:
-> > > >
-> > > > > >
-> > > > > > I expect some discussion on this patch, because a) it adds some
-> > > > > > OF-specific code into an otherwise generic (core) driver, and
-> > > > > > b) it doesn't yet handle USB 2.0 / 3.x shared ports; it ends up=
- powering
-> > > > > > on the port twice, which negates the port reset part.
-> > > > > >
-> > > > >
-> > > > > I understand that you do this because the port device has no OF n=
-ode
-> > > > > assigned. If we wanted to call pwrseq_get() for the port device, =
-is
-> > > > > there really no other way to associate it with the correct pwrseq
-> > > > > provider?
-> > > >
-> > > > I suppose we could tie the "port@X" node to the usb port device, bu=
-t
-> > > > AFAIK no other subsystem does this so we would be introducing a new
-> > > > pattern.
-> > > >
-> > > > In the M.2 pwrseq driver, we would have to match by port node inste=
-ad
-> > > > of its parent device node. We may end up with different behavior fo=
-r
-> > > > the USB target vs the other targets.
-> > > >
-> > >
-> > > I imagine, we can check the bus type of the parent device to know if
-> > > this is USB?
-> >
-> > The "bus type" type is probably not exported. However since the DT bind=
-ing
-> > explicitly says which port on the M.2 slot is for which connection type=
-,
-> > I think the matching can do a special case check for the USB port.
-> > The next obstacle is that the target string is not given to the provide=
-r
-> > match function.
-> >
-> > > > Also, the "port@X" nodes only exist for the OF graph connections to
-> > > > connectors and/or muxes (this series doesn't deal with the latter).
-> > > > For directly connected devices, there is a "device@X" child node
-> > > > directly under the USB hub node. That node is what gets tied to the
-> > > > the USB device.
-> > > >
-> > >
-> > > Is this a problem? I don't think I understand what you're saying here=
-.
-> >
-> > It shouldn't be. I'm just saying there would be different behavior on
-> > the USB side for connectors vs onboard devices (like hubs) device nodes=
-.
-> >
-> > I talked to Greg earlier, and he said not to touch the hub driver; the
-> > hub driver should only deal with features from the USB spec. The
-> > "onboard USB devices" driver is what should be used. And this would
-> > be a proper case of adding an auxiliary device to the M.2 slot driver.
-> >
-> > However this seems to completely decouple the power sequencing from the
-> > USB core. Take the USB A connector for example, it was recently added t=
-o
-> > the onboard USB devices driver. However the connector has a device node
-> > that is not a child node of any USB host controller or hub; it is conne=
-cted
-> > through OF graph. At the same time, since it typically sits at the top
-> > level of the device tree, a platform device is directly created and the
-> > driver subsequently binds to that device. This is totally different fro=
-m
-> > how the hub and other directly connected onboard USB devices work. In
-> > the onboard device case, the device node is a child node of the USB hub
-> > or controller, and the corresponding platform device only gets created
-> > when the USB hub driver probes, thereby sort of tying it into the USB
-> > device topology.
->
-> Hm, did we mess this up?  If so, we can always change it if you think
-> this should be done differently.
->
-> Hubs should be dealing with the power issues for their ports, so maybe
-> rethinking this might be wise.  I'm just loath to add hardware-specific
-> hacks to the hub common code for obvious reasons.  Anything we can do to
-> pull it out to a separate driver is best so it doesn't affect the 99% of
-> the users that don't have that crazy hardware :)
+Convert the fixed-size keys array to a flexible array member and use
+struct_size() for allocation. Move the key count validation before
+allocation and use for_each_available_child_of_node_scoped() to iterate
+only over available child nodes as the allocation uses
+of_get_available_child_count.
 
-I understand. The way I have it in this series is that besides having
-the port powered up initially, usb_hub_set_port_power() port power
-control also extends to the pwrseq target for the M.2 slot or USB A
-connector, just like if VBUS was controlled by the hub itself.
+Also use a key variable in the loop for clarity.
 
-M.2 slots might be somewhat rarer, but I think many embedded devices
-have USB A ports with VBUS that are controlled via GPIO, not wired
-to the USB hub's (if any) port VBUS control pin. This is also present
-on Chromebooks.
+Use of_device_get_match_data() to fetch the PMIC key register data directly
+instead of open-coding an of_match_device() lookup.
 
-I think wiring up pwrseq to the USB port and using it for VBUS control
-on these USB A ports is an improvement over the recent addition of USB
-A connectors to the onboard device driver, which just turns on VBUS.
-It would make the power cycle loop in hub_port_connect() actually work
-on these devices.
+This also lets the driver drop the of_device.h include.
 
-Is it code for stuff outside of the hub itself? Yes. Is it crazy hardware?
-Maybe not.
+Remove platform_set_drvdata. Unused anywhere.
 
+Assisted-by: OpenCode:BigPickle
+Signed-off-by: Rosen Penev <rosenp@gmail.com>
+---
+ drivers/input/keyboard/mtk-pmic-keys.c | 55 ++++++++++++--------------
+ 1 file changed, 25 insertions(+), 30 deletions(-)
 
-Thanks
-ChenYu
+diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
+index c78d9f6d97c4..5b8650f46105 100644
+--- a/drivers/input/keyboard/mtk-pmic-keys.c
++++ b/drivers/input/keyboard/mtk-pmic-keys.c
+@@ -16,7 +16,6 @@
+ #include <linux/mfd/mt6397/core.h>
+ #include <linux/mfd/mt6397/registers.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
+ #include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <linux/regmap.h>
+@@ -147,7 +146,7 @@ struct mtk_pmic_keys {
+ 	struct input_dev *input_dev;
+ 	struct device *dev;
+ 	struct regmap *regmap;
+-	struct mtk_pmic_keys_info keys[MTK_PMIC_MAX_KEY_COUNT];
++	struct mtk_pmic_keys_info keys[];
+ };
+ 
+ enum mtk_pmic_keys_lp_mode {
+@@ -332,17 +331,25 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
+ 	static const char *const irqnames_r[] = { "powerkey_r", "homekey_r" };
+ 	struct mtk_pmic_keys *keys;
+ 	const struct mtk_pmic_regs *mtk_pmic_regs;
++	struct mtk_pmic_keys_info *key;
+ 	struct input_dev *input_dev;
+-	const struct of_device_id *of_id =
+-		of_match_device(of_mtk_pmic_keys_match_tbl, &pdev->dev);
+ 
+-	keys = devm_kzalloc(&pdev->dev, sizeof(*keys), GFP_KERNEL);
++	keycount = of_get_available_child_count(node);
++	if (keycount > MTK_PMIC_MAX_KEY_COUNT ||
++	    keycount > ARRAY_SIZE(irqnames)) {
++		dev_err(&pdev->dev, "too many keys defined (%d)\n", keycount);
++		return -EINVAL;
++	}
++
++	keys = devm_kzalloc(&pdev->dev, struct_size(keys, keys, keycount), GFP_KERNEL);
+ 	if (!keys)
+ 		return -ENOMEM;
+ 
+ 	keys->dev = &pdev->dev;
+ 	keys->regmap = pmic_chip->regmap;
+-	mtk_pmic_regs = of_id->data;
++	mtk_pmic_regs = of_device_get_match_data(&pdev->dev);
++	if (!mtk_pmic_regs)
++		return -EINVAL;
+ 
+ 	keys->input_dev = input_dev = devm_input_allocate_device(keys->dev);
+ 	if (!input_dev) {
+@@ -356,31 +363,21 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
+ 	input_dev->id.product = 0x0001;
+ 	input_dev->id.version = 0x0001;
+ 
+-	keycount = of_get_available_child_count(node);
+-	if (keycount > MTK_PMIC_MAX_KEY_COUNT ||
+-	    keycount > ARRAY_SIZE(irqnames)) {
+-		dev_err(keys->dev, "too many keys defined (%d)\n", keycount);
+-		return -EINVAL;
+-	}
++	for_each_available_child_of_node_scoped(node, child) {
++		key = &keys->keys[index];
++		key->regs = &mtk_pmic_regs->keys_regs[index];
+ 
+-	for_each_child_of_node_scoped(node, child) {
+-		keys->keys[index].regs = &mtk_pmic_regs->keys_regs[index];
+-
+-		keys->keys[index].irq =
+-			platform_get_irq_byname(pdev, irqnames[index]);
+-		if (keys->keys[index].irq < 0)
+-			return keys->keys[index].irq;
++		key->irq = platform_get_irq_byname(pdev, irqnames[index]);
++		if (key->irq < 0)
++			return key->irq;
+ 
+ 		if (mtk_pmic_regs->key_release_irq) {
+-			keys->keys[index].irq_r = platform_get_irq_byname(pdev,
+-									  irqnames_r[index]);
+-
+-			if (keys->keys[index].irq_r < 0)
+-				return keys->keys[index].irq_r;
++			key->irq_r = platform_get_irq_byname(pdev, irqnames_r[index]);
++			if (key->irq_r < 0)
++				return key->irq_r;
+ 		}
+ 
+-		error = of_property_read_u32(child,
+-			"linux,keycodes", &keys->keys[index].keycode);
++		error = of_property_read_u32(child, "linux,keycodes", &key->keycode);
+ 		if (error) {
+ 			dev_err(keys->dev,
+ 				"failed to read key:%d linux,keycode property: %d\n",
+@@ -389,9 +386,9 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
+ 		}
+ 
+ 		if (of_property_read_bool(child, "wakeup-source"))
+-			keys->keys[index].wakeup = true;
++			key->wakeup = true;
+ 
+-		error = mtk_pmic_key_setup(keys, &keys->keys[index]);
++		error = mtk_pmic_key_setup(keys, key);
+ 		if (error)
+ 			return error;
+ 
+@@ -407,8 +404,6 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
+ 
+ 	mtk_pmic_keys_lp_reset_setup(keys, mtk_pmic_regs);
+ 
+-	platform_set_drvdata(pdev, keys);
+-
+ 	return 0;
+ }
+ 
+-- 
+2.54.0
+
 
