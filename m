@@ -4,89 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27E5FCD5BD2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2026 01:41:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5204CD5BC9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2026 03:44:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uN5DfBzCdxgMtcbb6Yn1Crv8Mos2ktrmL1d0GO1AHx0=; b=bmwMc4ia0evcgo+YFOG/dDbKP4
-	jsk3wNjyW2CDwK+6dVgQNO8a+uPJepc7kd1X/I5jSz906eATAHvpwCr2+JHbfh9dfESM/TVlxcaLr
-	WdQFoQsYuC+n1eTu1vztTaMsfQ64FQAOq3CPAeUVenpi0VwCMkfJGfnWZQPVjdXKhrNJVGrMFRXcI
-	M26Ju9uxjPTDNtT1An/ErOuTFUpW8zP1vjiVVjMx7vioWvTuRRcv6Q5bl/55YHq7e4gGIAEqCrQTK
-	eslSDj01Z1uGXxclpxx0OuwwbKlnYdfU+xnQCFhPUf5pd4Ys84hu7y/RVzBfWgIe/Ag8Cgi/UOIU6
-	rkTa9HZg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=GpMpxoDvyVyVrmoV7nr94m/tM2b2RNF8nLr8TuPp8z4=; b=vrRRRDXkAVMh/s0JW908tBKQGP
+	uOeq9qIjMRCERSXq6SUiB4B7I6S3+4SKgDjNv/Q7L4OF9vIglBXwTiBjHBUftSozZx0d5+63bOCOJ
+	RhWrLBnHPWiAWwYCAzKlu1hKZZhr9mC5iUqof4SZ5Cqr31C4jn25IRHeNu8aGTRu7vlTFzt17an1A
+	4d6GaiafAjs0qRhH7SJAj5IzDoft3yMYq3/LqKPhaxARIZC2rzQBTKlhHVg43IruWvuJdK3MDJhQQ
+	u5Rby/KZXNzwiayrk0QpXWnhGREpRMh7n0lr8RmOyI7xOZlEedrrqBFmxyGMV5yhM+1eFMLuLUA8q
+	zAoKDI/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wS3HA-000000038LG-338W;
-	Wed, 27 May 2026 01:41:40 +0000
-Received: from mail-dy1-x132c.google.com ([2607:f8b0:4864:20::132c])
+	id 1wS5Bl-00000003HP4-1ELQ;
+	Wed, 27 May 2026 03:44:13 +0000
+Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wS3H8-000000038KM-0zfi
-	for linux-mediatek@lists.infradead.org;
-	Wed, 27 May 2026 01:41:39 +0000
-Received: by mail-dy1-x132c.google.com with SMTP id 5a478bee46e88-2ee990e8597so26612758eec.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 26 May 2026 18:41:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1779846097; x=1780450897; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=uN5DfBzCdxgMtcbb6Yn1Crv8Mos2ktrmL1d0GO1AHx0=;
-        b=lhJ8yx5wuxIEbh3Z420v2Js8mLc6UVzhhOlXJJqM5gUmZvNXhzuCDFoeWjj2XJKFH5
-         ix1oD85w2Vn+CiwDRFKzyzMsokKEI281GHBERLTdqwICX10xiqOZ1CHNVv7i+lGjYGOy
-         +VDINDwhKgJa5yMaYNwwyC/U8cNNnb2FQxDI19Pf5k9eX2mypDz44j7VJ5W24GeeDZwB
-         JQyK7ZKEdtOa4mFL2Q0snHxE1yV+OFv6E6wOeBlYdC1f/euShypHfGAMtDrbThsnyxt/
-         PU7GFU/iFfKBdala8MC5LMZ1SYMfcT9IBw2doWDN5BGMsDDl5tzWkPjHw+AiKb2xCTSv
-         L92w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779846097; x=1780450897;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=uN5DfBzCdxgMtcbb6Yn1Crv8Mos2ktrmL1d0GO1AHx0=;
-        b=HF2PvywIvlXNNsl2UIxraSN+0K2vvJcxRTTvJOSNQp3HW2mK4FhuX1Bf8Lz9Ffskb/
-         +2rhs8VhW7k/jHeOshPrjoSY4+mbFLF47ljaFo+EQIaZpEjy03htTOZSWarhQQ2t5w0I
-         1YCxj9nDf/FJTAckClhnqV36S+YLaKy0Rz9yfT8JQZ73KhGHn7k23gtAVsHN1S6wXHgV
-         SlyhC27AKcw89NTF6sNXHR9Bs7I0BWYWjNttRW/thuvaD3MC2Bp/YFSHNxJdEGoOHNJI
-         ExiOIpeqxZZvsZ7MLkTBBLYNSL8P+n0Umx2bpIF0CW7kJFlP6NQcgCMYuxxCXVc6m+On
-         PiMw==
-X-Forwarded-Encrypted: i=1; AFNElJ+ZftGOKWAUMYBqqWQ+yn3Cy6m2+rnVf6X01ffD0kozRsq6jRnhuoJ1VUT58Z/G/J6LqmNeQKYBH4V56aUX8A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyGCciD71Sb+4Gb5QLdswcy6mqC4sMIqGE2KRb9nbAvxRZEPg2J
-	y1Z5oSYBr+O4wwjjmifchZrmZqSgh1r04y4xP8m3sW3etyUQ8LEL5pgF
-X-Gm-Gg: Acq92OEr/D5e1A23R9g0gPxKPYMYCpBeSuEftF9hVMA+Qjv+CPmoKTLjkjUZ1PrzKcU
-	nXu8cf+06bSVQBLAC4C1pTN6t3OV3bZO3TCuth1oU9v8bWTZKiRV1oHqyscGKiUp7c+XoeRtm+7
-	vW+FezBO+CRbwjO/paeCQNb8LmLiVfnpOPy+5MQUzjFVP6E+h/1v9EN41wg4Jq6xVGRDp8e4J4y
-	MwRWuh/kCu4c249JXv6aQ15UkWRDG1ysxqVYJK/5bvw0hecRnoa9vobtRQZ8LKk1aEkI0s/VCf2
-	Zdz+RqH4ayyLLGm2spJuNwp6NGgLeNJCKbYEbZyMuwup84YnbkjYRCeP6lv7DMnqreoIYT4cFd7
-	LNQCDUkmRj3mggkHTkNjw9lohOgGr+1Oj4WexSWK26DW1dfrYYvLgH+v5hnh07yzH7mq4D2Umbg
-	V3NW75sLfvPkoZcBa+F6H6GEWAR06g1OyBBUsAPQpCmgQdQ2XlRzBnLm6JxMdQtX0wMn4gBFE/O
-	Jg=
-X-Received: by 2002:a05:7300:4305:b0:2ef:1d11:18ae with SMTP id 5a478bee46e88-3044912c25amr9993942eec.28.1779846096801;
-        Tue, 26 May 2026 18:41:36 -0700 (PDT)
-Received: from google.com ([2a00:79e0:2ebe:8:912f:eb49:d713:7401])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-304a57c04f8sm3258965eec.11.2026.05.26.18.41.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 26 May 2026 18:41:36 -0700 (PDT)
-Date: Tue, 26 May 2026 18:41:33 -0700
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Rosen Penev <rosenp@gmail.com>
-Cc: linux-input@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH] Input: mtk-pmic-keys - match loop with count
-Message-ID: <ahZJ2Opc2K7WLZKF@google.com>
-References: <20260527004543.22875-1-rosenp@gmail.com>
+	id 1wS5Bg-00000003HOb-3KUP;
+	Wed, 27 May 2026 03:44:10 +0000
+X-UUID: 4966b1e2597e11f1aa26b74ffac11d73-20260527
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.12,REQID:f775e487-f5c3-4a73-bbc5-b3fe8ce1bf47,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:e7bac3a,CLOUDID:652629b3110685a5ecfcbc68b44006ef,BulkI
+	D:nil,BulkQuantity:0,Recheck:0,SF:102|850|865|898,TC:nil,Content:0|15|50,E
+	DM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA
+	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 4966b1e2597e11f1aa26b74ffac11d73-20260527
+X-User: zenghongling@kylinos.cn
+Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
+	(envelope-from <zenghongling@kylinos.cn>)
+	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
+	with ESMTP id 1685074291; Wed, 27 May 2026 11:43:55 +0800
+From: Hongling Zeng <zenghongling@kylinos.cn>
+To: nbd@nbd.name,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	xiong.huang@mediatek.com,
+	madhurkumar004@gmail.com
+Cc: linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	zhongling0719@126.com,
+	Hongling Zeng <zenghongling@kylinos.cn>
+Subject: [PATCH v2] wifi: mt76: mt7921: fix resource leak in probe error path
+Date: Wed, 27 May 2026 11:43:50 +0800
+Message-Id: <20260527034350.527482-1-zenghongling@kylinos.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260527004543.22875-1-rosenp@gmail.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260526_184138_312097_EB3463F6 
-X-CRM114-Status: GOOD (  19.96  )
+X-CRM114-CacheID: sfid-20260526_204409_180343_5FF0E96D 
+X-CRM114-Status: UNSURE (   9.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,48 +85,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rosen,
+When pcim_iomap_region() or devm_kmemdup() fail, the code returns
+directly without cleaning up previously allocated resources:
+  - mt76_device allocated by mt76_alloc_device()
+  - pci irq vectors allocated by pci_alloc_irq_vectors()
+Fix this by jumping to the existing error cleanup path instead of
+returning directly.
 
-On Tue, May 26, 2026 at 05:45:43PM -0700, Rosen Penev wrote:
-> of_get_available_child_count is used along with
-> for_each_child_of_node_scoped, which can cause a mismatch when keys have
-> a disabled status.
-> 
-> If a disabled child node exists in the device tree alongside available ones,
-> the loop could execute more times than the initial validation accounted for.
-> This might increment the index variable past the allocated array bounds,
-> leading to out-of-bounds accesses on irqnames[] and keys->keys[].
-> 
-> Signed-off-by: Rosen Penev <rosenp@gmail.com>
-> ---
->  drivers/input/keyboard/mtk-pmic-keys.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
-> index c78d9f6d97c4..5d4ebbafd276 100644
-> --- a/drivers/input/keyboard/mtk-pmic-keys.c
-> +++ b/drivers/input/keyboard/mtk-pmic-keys.c
-> @@ -363,7 +363,7 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
->  		return -EINVAL;
->  	}
->  
-> -	for_each_child_of_node_scoped(node, child) {
-> +	for_each_available_child_of_node_scoped(node, child) {
->  		keys->keys[index].regs = &mtk_pmic_regs->keys_regs[index];
->  
->  		keys->keys[index].irq =
+To avoid using an uninitialized variable in the error path, move the
+dev initialization before the error checks.
 
-I think Sashiko correctly points out that this may result in incorrect
-register data and interrupts being mapped to the keys (potentially
-shifting them).
+Fixes: 234738ea3390 ("phy: ti-pipe3: move clk initialization to a separate function")
+Signed-off-by: Hongling Zeng <zenghongling@kylinos.cn>
 
-Maybe we should stop counting nodes separately, iterate over all of them
-here and bail out with an error if we encounter more than 2 (does not
-matter if they are marked available or not), and then skip not available
-nodes? WDYT?
+---
+ Change in v1
+   --fix uninitialized variable warning
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
 
-Thanks.
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+index 7a790ddf43bb..49a37185f056 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+@@ -343,11 +343,14 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+ 
+ 	pci_set_drvdata(pdev, mdev);
+ 
++	dev = container_of(mdev, struct mt792x_dev, mt76);
++
+ 	regs =  pcim_iomap_region(pdev, 0, pci_name(pdev));
+-	if (IS_ERR(regs))
+-		return PTR_ERR(regs);
++	if (IS_ERR(regs)) {
++		ret = PTR_ERR(regs);
++		goto err_free_dev;
++	}
+ 
+-	dev = container_of(mdev, struct mt792x_dev, mt76);
+ 	dev->fw_features = features;
+ 	dev->hif_ops = &mt7921_pcie_ops;
+ 	dev->irq_map = &irq_map;
+@@ -359,8 +362,10 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+ 		/* MT7902 needs a mutable copy because wm2_complete_mask differs */
+ 		map = devm_kmemdup(&pdev->dev, &irq_map,
+ 				   sizeof(irq_map), GFP_KERNEL);
+-		if (!map)
+-			return -ENOMEM;
++		if (!map) {
++			ret = -ENOMEM;
++			goto err_free_dev;
++		}
+ 
+ 		map->rx.wm2_complete_mask = 0;
+ 		dev->irq_map = map;
 -- 
-Dmitry
+2.25.1
+
 
