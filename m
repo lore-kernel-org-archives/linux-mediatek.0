@@ -4,63 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46EF1CD6E44
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2026 10:21:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB39ECD4F54
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2026 10:48:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TK7BReDShwfsGtoDibD2fRPruEF4GOu+vrfMNvHWtF8=; b=oo2ulej9UshPKvXDT6a1wvL7pH
-	vtJb0J9SQEz4haxiJUsljtPnRgxHGDc05j/OT5jYtZF8eQOuhFwfAz9fO6uOOXBstyh7R0/JBM0wA
-	kWgUjk55vhck/jWtfrYohidMyXBScdqN2MeSDOgNkrFEzdcYbroA/zs5OfW0dMUJe5G1TME1zNiWH
-	LIn775DeZ9u5fmOgcBXoAhHRiN+UGiJdvUr95hzoxELRSfgLleDPESTDCIMpWcWkZk9L1bGaSV26b
-	KrGkyyo4OtzLPG9LOpfxHUQ6mw5yqiD7VgVPE0dn2FHVwbOl7UzJd9sr+Pb2w3R+iKFIRCEN4h7c3
-	h8ySZ86w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=yohZLbN4T246kBQJdIC/qXF5efV1Yafvx3na1eLrUw0=; b=C9M5vGpx7XQ/un/IkrdUPIMijg
+	7i/83FIKtPKZ366rSduTYL6C0XXv/q9kemZVeTG2OtWnbjsbwtvUX/MYKIek5RrnlE0NgJ2tA83S7
+	fZfvh1o7wQzGPnURIEpYNhI7Sb6MLGJcsW8NzQFzRlyvwaKvS/r3s0wuczHRsTa0m4lu2H2Xmr0C2
+	QANSPyuQ1akoPvpWrXreLhDA32+Lec2jf2idVx/i9Q1MyXGlDFg11r/i/UMYgBglyEbYOrWEGxcUL
+	sb/rjC25LHQko+69eiiIah0GYAxWsm9VRCEK3SIb4DXJqy5m1QODDZsRh1poDVJCur/C0Lfo1wnkp
+	tNQIt8Ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSBOb-00000003oro-0Jsm;
-	Wed, 27 May 2026 10:21:53 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wSBo0-00000003xMh-3O9z;
+	Wed, 27 May 2026 10:48:08 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSBOT-00000003ohJ-3w6a;
-	Wed, 27 May 2026 10:21:47 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id A24D0445A2;
-	Wed, 27 May 2026 10:21:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 072FB1F000E9;
-	Wed, 27 May 2026 10:21:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779877305;
-	bh=TK7BReDShwfsGtoDibD2fRPruEF4GOu+vrfMNvHWtF8=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=TwpZ1J+CM1JDETFTzJxbchINUdm+fpAVc29N3WLnAf+PX2+Rn7DPABjbEggD6w+tt
-	 i0whVMeSH+c5t3ThIHL2fN69CGBJ67uVLM972p9rtmq5PZRoVhrn3Gl5Yh08xFBNgQ
-	 jgmrSktIXKky/DVcIQh1oAWq/NhPjIp+R4NhS8CjoaSDP4RbVx/qoKpuTz0dGhsCBp
-	 rL4wZLlbQ2PEjCwhp+g86DVp770PZ2x4OYdskt4V0/1cJY5iVxbixkFc30gds44Q1I
-	 7wGqrzE9AcWKHAQN7mN6wckLoc54mwB3blGrm9ievjb3Pk/F2DyH5gFyIe1MZRm8+E
-	 onjQG+jHAJfIQ==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Wed, 27 May 2026 12:21:19 +0200
-Subject: [PATCH net-next 5/6] net: airoha: Move {cpu,fwd}_tx_packets in
- airoha_gdm_dev struct
+	id 1wSBnx-00000003xKq-2xMA
+	for linux-mediatek@lists.infradead.org;
+	Wed, 27 May 2026 10:48:07 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-4903d5c67bfso31824445e9.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 27 May 2026 03:48:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre.com; s=google; t=1779878883; x=1780483683; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=yohZLbN4T246kBQJdIC/qXF5efV1Yafvx3na1eLrUw0=;
+        b=CVNRRdhdWBJWy56w5Llc/1JqfTICqP4DuGYvIF4rf8wy/n8WqeEdIN7QbkwSTre3BX
+         ov8Qkxx5ohMvDGeHHZm9A7gVBwMf0HUieneJIWMpOQa9kV4wPSQowyQ5BTSautgCJs1/
+         agZKYGKQHVPBESCN52nz+5+7RXL1VgH5BuTwljck0ukpLOx1y/hVaYA8yYFNpR4nJbiR
+         zuw5+uTHK5e7kf/fjd3Q2vOZ7JoyXpq/bs/SIEnTgcD+1G6eU0RCXSLxsuSs2HlNJFSR
+         3RUCmECLDiHw3ye+7bs6RatIxo8zk4FU20PgTD1GUhD7uYiPFQHcmmxjbnq0jVzy/0kE
+         R8hw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1779878883; x=1780483683;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=yohZLbN4T246kBQJdIC/qXF5efV1Yafvx3na1eLrUw0=;
+        b=ghoGeBq9rMifg6cMdpVhY2NlohcL9wnnObsPYbtrj1TjH1Nn8t6dztAUABpdpBuacZ
+         ZV9RDRLzScPiSE8JOjGF9dsc9aa7+o9NbMy3jjiUhN1r6u4z1Z0WZBJ4N5eNMi+7CwBb
+         Sx+KF1g/OFkX2vqjEajpUnZwWSjJl/LikdCHkyZBJnyz9x9WZeqVtFNftYjr7JR6H+M/
+         2CPw8DRHbCmMGB0Y15imPP/23IJVX7W9iajQYkNjjaqD0d5s0fkzd8w3m6jS6xpMY4BG
+         6uFUrB5gLJdj3+B8qoRYkKLHvcyX515dMvTK8Xsu3BB5YSRgDOxC119I1E90z764QL2q
+         ZEQg==
+X-Forwarded-Encrypted: i=1; AFNElJ+iqGzjv8SDgZmop26hXiKZ4gFpISKrazxMlJjWPmJDcBELO/6C7uWQDCdmPg3G8Ug/C1lEjWzmzw+BpFIemw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzbIPN4cSRqLnw601jRzfIaO3WLg2HvKncBwCGqpH0eWPun+TVq
+	R1eZoXWzTtolG4NrrKcDVy1/yWaIpl+Oi1xZ4KRgaoCHlLGZP8HRajiMyBRKneay6Qo=
+X-Gm-Gg: Acq92OGChJbARq1gECBQUpNEhe6sJ80E7FhweymfmYECOPElT6Ni4c+xS53N9tCeusc
+	rwUFXFavnwcLIYiwey4esqftg52Kf3do3t1Hf1ZAzLZPxfYMNq/awGIbkCE0Gequ7/9QiKUstLu
+	iLtqFqr+AjjsAPpCnU/+0c+1nFSMbYPUFPByQKO4lSV/+e64Znx0q510iVOn8s+xfVK0uQnMpES
+	yI3XPec+sZ3Q27sy9iRLW9FZ25ePhdfSFedxeM0POfxC5nfyirBrzPHJJFQ71f01hDf8quYA12/
+	uuN8E3ctemARdgCaEUEk57D8B1neqgy8NDZkIQdcDafG7V2Y0CvuV3JudHRSWeYEMZccdRa6v/R
+	R8/c6SzXqRBdXaNnwEsnVirLS63R61PwrRKQXiP8IAR9oDylXlQF5cTA0aAxLItyKZPTuUJrege
+	E84LBUyGAvIB+ZLXAA9k5dfPoWoPbMD+o0xtfdq1WK8eOBD9oO0Fsjv7ZwUaovssshYI4gCaOvl
+	jr/JjCpfQ2coYw48BZTPkXE9A==
+X-Received: by 2002:a05:600c:1f87:b0:48a:8905:a500 with SMTP id 5b1f17b1804b1-490424ad9abmr362404855e9.12.1779878883413;
+        Wed, 27 May 2026 03:48:03 -0700 (PDT)
+Received: from localhost (p200300f65f47db041edccd9970843bb8.dip0.t-ipconnect.de. [2003:f6:5f47:db04:1edc:cd99:7084:3bb8])
+        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-4904527526dsm428217795e9.4.2026.05.27.03.48.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 27 May 2026 03:48:02 -0700 (PDT)
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig=20=28The=20Capable=20Hub=29?= <u.kleine-koenig@baylibre.com>
+To: Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>
+Cc: Chanwoo Choi <cw00.choi@samsung.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Javier Martinez Canillas <javier@dowhile0.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	=?utf-8?q?Andr=C3=A9_Draszik?= <andre.draszik@linaro.org>,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	Karel Balej <balejk@matfyz.cz>,
+	Matti Vaittinen <mazziesaccount@gmail.com>,
+	Marek Vasut <marek.vasut+renesas@gmail.com>,
+	Samuel Kayode <samkay014@gmail.com>,
+	Aaro Koskinen <aaro.koskinen@iki.fi>,
+	Andreas Kemnade <andreas@kemnade.info>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Roger Quadros <rogerq@kernel.org>,
+	Tony Lindgren <tony@atomide.com>,
+	linux-renesas-soc@vger.kernel.org,
+	imx@lists.linux.dev,
+	linux-arm-msm@vger.kernel.org,
+	linux-omap@vger.kernel.org
+Subject: [PATCH v1 0/3] regulator: Use named initializers for platform_device_id arrays
+Date: Wed, 27 May 2026 12:47:43 +0200
+Message-ID: <cover.1779878004.git.u.kleine-koenig@baylibre.com>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260527-airoha-eth-multi-serdes-preliminary-v1-5-ec6ed73ef7fc@kernel.org>
-References: <20260527-airoha-eth-multi-serdes-preliminary-v1-0-ec6ed73ef7fc@kernel.org>
-In-Reply-To: <20260527-airoha-eth-multi-serdes-preliminary-v1-0-ec6ed73ef7fc@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Xuegang Lu <xuegang.lu@airoha.com>, Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.3
+Content-Type: text/plain; charset=UTF-8
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5669; i=u.kleine-koenig@baylibre.com; h=from:subject:message-id; bh=9Xdnbrncq7VH0BmQ/6t4XS63l5XFKqkc1TeJjnWKNtI=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBqFsvQ+3pUGvYbTzMBf1U7HpUNs0YqKV82qCwBE o++WwMTehGJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCahbL0AAKCRCPgPtYfRL+ Tr6TB/9tVIDirqaIFIr+cLHvFRjr/N+HTQz/62BiICc2JJZjFIxmMz6KGMb9PGbAjW0SSau/dN4 zcLMGrCLoC48OmtmlVPfz+h8PG49qdmzJoQkLg4kgndLfg39qqbcPsy5OhkrlgPPzheAU6T3zrm 0WxKp6Wr3LT/anxmAVOQ5FtwjfhMonlFOEOipHYnM2hSfShJ2Bh1eE6IBZytU+c7SY+/nNNsB/D ZC0jCfekfiHdSj1sMmpvYw/JsTRuvgZI4wfY2r4DqR7oE0TrKI5jZLonpB9QKDQyLjLXmkS+xzK bbDtl9bNcjm0Hwz5BysWpXOKEc9oARJLfgXY+NBO7kgQGcRc
+X-Developer-Key: i=u.kleine-koenig@baylibre.com; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260527_032146_027329_046C2529 
-X-CRM114-Status: GOOD (  12.76  )
+X-CRM114-CacheID: sfid-20260527_034805_787723_C577B039 
+X-CRM114-Status: GOOD (  18.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,77 +121,133 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since now multiple net_devices connected to different QDMA blocks can
-share the same GDM port, cpu_tx_packets and fwd_tx_packets fields can
-be overwritten with the value from a different QDMA block. In order to
-fix the issue move cpu_tx_packets and fwd_tx_packets fields from
-airoha_gdm_port struct to airoha_gdm_dev one.
+Hello,
 
-Tested-by: Xuegang Lu <xuegang.lu@airoha.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c | 16 +++++++---------
- drivers/net/ethernet/airoha/airoha_eth.h |  7 +++----
- 2 files changed, 10 insertions(+), 13 deletions(-)
+this series targets to use named initializers for platform_device_id
+arrays. In general these are better readable for humans and more robust
+to changes in the respective struct definition.
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 4f77a0c22162..72c6f554508c 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -2315,19 +2315,17 @@ static int airoha_qdma_get_tx_ets_stats(struct net_device *netdev, int channel,
- 					struct tc_ets_qopt_offload *opt)
+This robustness is needed as I want to do
+
+diff --git a/include/linux/mod_devicetable.h b/include/linux/mod_devicetable.h
+index 3b0c9a251a2e..b84881f32444 100644
+--- a/include/linux/mod_devicetable.h
++++ b/include/linux/mod_devicetable.h
+@@ -610,4 +610,7 @@ struct dmi_system_id {
+ struct platform_device_id {
+ 	char name[PLATFORM_NAME_SIZE];
+-	kernel_ulong_t driver_data;
++	union {
++		kernel_ulong_t driver_data;
++		const void *driver_data_ptr;
++	};
+ };
+
+which allows dropping several casts and eases porting CHERI to mainline
+linux. A possible follow-up change is the following example:
+
+diff --git a/drivers/regulator/bd96801-regulator.c b/drivers/regulator/bd96801-regulator.c
+index 308279b31fd3..6bbad1f1ddd1 100644
+--- a/drivers/regulator/bd96801-regulator.c
++++ b/drivers/regulator/bd96801-regulator.c
+@@ -1211,7 +1211,7 @@ static int bd96801_probe(struct platform_device *pdev)
  {
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
--	struct airoha_gdm_port *port = dev->port;
-+	struct airoha_qdma *qdma = dev->qdma;
+ 	struct regulator_dev *ldo_errs_rdev_arr[BD96801_NUM_LDOS];
+ 	struct regulator_dev *all_rdevs[BD96801_NUM_REGULATORS];
+-	struct bd96801_pmic_data *pdata_template;
++	const struct bd96801_pmic_data *pdata_template;
+ 	struct bd96801_regulator_data *rdesc;
+ 	struct regulator_config config = {};
+ 	int ldo_errs_arr[BD96801_NUM_LDOS];
+@@ -1224,7 +1224,7 @@ static int bd96801_probe(struct platform_device *pdev)
  
--	u64 cpu_tx_packets = airoha_qdma_rr(dev->qdma,
--					    REG_CNTR_VAL(channel << 1));
--	u64 fwd_tx_packets = airoha_qdma_rr(dev->qdma,
-+	u64 cpu_tx_packets = airoha_qdma_rr(qdma, REG_CNTR_VAL(channel << 1));
-+	u64 fwd_tx_packets = airoha_qdma_rr(qdma,
- 					    REG_CNTR_VAL((channel << 1) + 1));
--	u64 tx_packets = (cpu_tx_packets - port->cpu_tx_packets) +
--			 (fwd_tx_packets - port->fwd_tx_packets);
-+	u64 tx_packets = (cpu_tx_packets - dev->cpu_tx_packets) +
-+			 (fwd_tx_packets - dev->fwd_tx_packets);
+ 	parent = pdev->dev.parent;
  
- 	_bstats_update(opt->stats.bstats, 0, tx_packets);
--
--	port->cpu_tx_packets = cpu_tx_packets;
--	port->fwd_tx_packets = fwd_tx_packets;
-+	dev->cpu_tx_packets = cpu_tx_packets;
-+	dev->fwd_tx_packets = fwd_tx_packets;
+-	pdata_template = (struct bd96801_pmic_data *)platform_get_device_id(pdev)->driver_data;
++	pdata_template = platform_get_device_id(pdev)->driver_data_ptr;
+ 	if (!pdata_template)
+ 		return -ENODEV;
  
- 	return 0;
+@@ -1329,10 +1329,10 @@ static int bd96801_probe(struct platform_device *pdev)
  }
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index a308a770116b..fbb50dc73af8 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -544,6 +544,9 @@ struct airoha_gdm_dev {
- 	struct airoha_eth *eth;
  
- 	DECLARE_BITMAP(qos_sq_bmap, AIROHA_NUM_QOS_CHANNELS);
-+	/* qos stats counters */
-+	u64 cpu_tx_packets;
-+	u64 fwd_tx_packets;
+ static const struct platform_device_id bd96801_pmic_id[] = {
+-	{ .name = "bd96801-regulator", .driver_data = (kernel_ulong_t)&bd96801_data },
+-	{ .name = "bd96802-regulator", .driver_data = (kernel_ulong_t)&bd96802_data },
+-	{ .name = "bd96805-regulator", .driver_data = (kernel_ulong_t)&bd96805_data },
+-	{ .name = "bd96806-regulator", .driver_data = (kernel_ulong_t)&bd96806_data },
++	{ .name = "bd96801-regulator", .driver_data_ptr = &bd96801_data },
++	{ .name = "bd96802-regulator", .driver_data_ptr = &bd96802_data },
++	{ .name = "bd96805-regulator", .driver_data_ptr = &bd96805_data },
++	{ .name = "bd96806-regulator", .driver_data_ptr = &bd96806_data },
+ 	{ }
  };
- 
- struct airoha_gdm_port {
-@@ -553,10 +556,6 @@ struct airoha_gdm_port {
- 
- 	struct airoha_hw_stats stats;
- 
--	/* qos stats counters */
--	u64 cpu_tx_packets;
--	u64 fwd_tx_packets;
--
- 	struct metadata_dst *dsa_meta[AIROHA_MAX_DSA_PORTS];
- };
- 
+ MODULE_DEVICE_TABLE(platform, bd96801_pmic_id);
 
+which allows the compiler to notice that driver_data is supposed to
+be const and thus requires the first hunk.
+
+If you consider the last patch mostly churn, just drop it.
+
+Best regards
+Uwe
+
+Uwe Kleine-König (The Capable Hub) (3):
+  regulator: Drop unused assignment of platform_device_id driver data
+  regulator: Use named initializers for platform_device_id arrays
+  regulator: Unify usage of space and comma in platform_device_id arrays
+
+ drivers/regulator/88pm8607.c              |  4 +---
+ drivers/regulator/88pm886-regulator.c     |  2 +-
+ drivers/regulator/bd71815-regulator.c     |  4 ++--
+ drivers/regulator/bd71828-regulator.c     |  6 +++---
+ drivers/regulator/bd718x7-regulator.c     |  6 +++---
+ drivers/regulator/bd9571mwv-regulator.c   |  4 ++--
+ drivers/regulator/bd9576-regulator.c      |  6 +++---
+ drivers/regulator/bd96801-regulator.c     | 10 +++++-----
+ drivers/regulator/hi6421-regulator.c      |  2 +-
+ drivers/regulator/hi6421v530-regulator.c  |  2 +-
+ drivers/regulator/hi6421v600-regulator.c  |  2 +-
+ drivers/regulator/hi655x-regulator.c      |  2 +-
+ drivers/regulator/lp873x-regulator.c      |  2 +-
+ drivers/regulator/lp87565-regulator.c     |  4 ++--
+ drivers/regulator/max14577-regulator.c    |  4 ++--
+ drivers/regulator/max77541-regulator.c    |  4 ++--
+ drivers/regulator/max77620-regulator.c    |  8 ++++----
+ drivers/regulator/max77686-regulator.c    |  4 ++--
+ drivers/regulator/max77693-regulator.c    |  6 +++---
+ drivers/regulator/max77802-regulator.c    |  4 ++--
+ drivers/regulator/max8997-regulator.c     |  4 ++--
+ drivers/regulator/max8998.c               |  4 ++--
+ drivers/regulator/mt6323-regulator.c      |  4 ++--
+ drivers/regulator/mt6331-regulator.c      |  4 ++--
+ drivers/regulator/mt6332-regulator.c      |  4 ++--
+ drivers/regulator/mt6357-regulator.c      |  4 ++--
+ drivers/regulator/mt6358-regulator.c      |  4 ++--
+ drivers/regulator/mt6359-regulator.c      |  4 ++--
+ drivers/regulator/mt6360-regulator.c      |  4 ++--
+ drivers/regulator/mt6370-regulator.c      |  4 ++--
+ drivers/regulator/mt6380-regulator.c      |  4 ++--
+ drivers/regulator/mt6397-regulator.c      |  4 ++--
+ drivers/regulator/pf1550-regulator.c      |  2 +-
+ drivers/regulator/qcom-pm8008-regulator.c |  2 +-
+ drivers/regulator/rt4831-regulator.c      |  4 ++--
+ drivers/regulator/rt5033-regulator.c      |  2 +-
+ drivers/regulator/rt5120-regulator.c      |  4 ++--
+ drivers/regulator/s2dos05-regulator.c     |  4 ++--
+ drivers/regulator/s2mpa01.c               |  4 ++--
+ drivers/regulator/s2mps11.c               | 18 +++++++++---------
+ drivers/regulator/s5m8767.c               |  4 ++--
+ drivers/regulator/sy7636a-regulator.c     |  2 +-
+ drivers/regulator/tps65086-regulator.c    |  2 +-
+ drivers/regulator/tps65218-regulator.c    |  2 +-
+ drivers/regulator/tps65219-regulator.c    |  6 +++---
+ drivers/regulator/tps65912-regulator.c    |  2 +-
+ 46 files changed, 95 insertions(+), 97 deletions(-)
+
+
+base-commit: e7e28506af98ce4e1059e5ec59334b335c00a246
 -- 
-2.54.0
+2.47.3
 
 
