@@ -4,72 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBE4ACD4F54
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2026 18:22:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDCFDCD4F54
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2026 21:24:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:
-	From:To:Subject:Message-Id:Date:Content-Type:Content-Transfer-Encoding:
-	Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kpx6Uj9RIdUNjK8W3CnmyMzyh2ekBIwrGqDnhdzKB20=; b=j+4vQBynnh5At1RIkDkEUhouRj
-	yUDZjyinqWlOMmTSoDBJZEwdICd3QmQ9mwjZSyecEnet/aa+aE2EZy9k2DQdZ+D970rJhmtYBiLaD
-	Cc1060FfwaWXkCp8YuD1qGQW+iNGGqRGLJ4MORoXJT7uNq29Y3FG4fo3AVa67ddscwd4iH7ndPApX
-	ljx/1TX07ziW0aEmIlgXm7UaQj8E1HnQ6Al58LwNTdqDOH0tjcUTZPRHVBWNUVDsPyOX2PzDsu6UM
-	jOf7JrYd+9DZJUW0ja+5oA27RCw8SLGtDK4f/eZZnRbQgbKpHGboBhThhnRbIB7Kr11T/jDw1T03n
-	oJPUOZcw==;
+	bh=UNa7dgr+T6R1ukhKHHLy6CJqrOmDsV/gnRDcoFC7IoM=; b=VmVVWjoY9zcmOk3oYVT4ohk7kU
+	+alUSvmBVZa5YtXEQKx/px1ICV4GUNj6//7hTDlNjk2auMqV+Q3oNrtqwcul0VtkC2+8+cZr4Azc1
+	w2tvVyG5I5cOai6uXxMfKCjDUGgD1GbDdwSwe0IHEszMyVgBi21fGz8dZMS59uGTN/aqkkpdlPJHL
+	ULvsC5tjF5U5Rk8DIu9tfI9hX1eTdIjCReNX0qayy6OuyuFaMBDtlZ0gQAKzHjXX0xx4XPCkTtojm
+	Um2Blt/VCsUzXca0k4le3JB8ceVT9ugv+0g4iUj6zdAfDTXfM4LmSqRrlik0Bc5qtZ8bT/D16UXvQ
+	eEljfgBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSIu1-00000004d3M-0na0;
-	Wed, 27 May 2026 18:22:49 +0000
-Received: from vinatta.cz ([2a03:3b40:fe:428::1])
+	id 1wSLjf-00000004kq8-0U2V;
+	Wed, 27 May 2026 21:24:19 +0000
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSItx-00000004d1r-00Pr;
-	Wed, 27 May 2026 18:22:47 +0000
-DKIM-Signature: a=rsa-sha256; bh=kpx6Uj9RIdUNjK8W3CnmyMzyh2ekBIwrGqDnhdzKB20=;
- c=relaxed/relaxed; d=vinatta.cz;
- h=Subject:Subject:Sender:To:To:Cc:Cc:From:From:Date:Date:MIME-Version:MIME-Version:Content-Type:Content-Type:Content-Transfer-Encoding:Content-Transfer-Encoding:Reply-To:In-Reply-To:In-Reply-To:Message-Id:Message-Id:References:References:Autocrypt:Openpgp;
- i=@vinatta.cz; s=default; t=1779906099; v=1; x=1780338099;
- b=CZPrCZhIXkDoHB0cMhVJm/JiciH7dzJdwyLBNIe3/8l0Zq3QV7VFjYO1LEd+kDuYAthVAc6v
- 9Phsze4RHJ9Wiy9dWqZUi5r11Ec++f5qsA7nGRjusmk7hxln5DUEsOKnpA2/zvZ9LMdttYtwoyk
- obUMhAA8pyd2d3p8TJdxtRngXAsD4MSuHOA2w5iCmS3mJjwGMFQ4EIGNj12WNFNtf7i78IRXvpe
- JEqKD5JLfzCf1QT+W+0p1tE0PQQ7dibqrscIPMku5iDYLpWuWEeYveIaDWU/huyQb4ixLw5hd7h
- EVuNnF/o8bxGM9wtY1p5oWRroCkzvfJ9ffBm6K/KgWwcQ==
-Received: by vinatta.cz (envelope-sender <karel@vinatta.cz>) with ESMTPS id
- 4f3f7766; Wed, 27 May 2026 20:21:39 +0200
-Mime-Version: 1.0
+	id 1wSLjc-00000004kpN-12Q2
+	for linux-mediatek@lists.infradead.org;
+	Wed, 27 May 2026 21:24:17 +0000
+Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-5aa21fa024cso10359972e87.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 27 May 2026 14:24:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1779917054; cv=none;
+        d=google.com; s=arc-20240605;
+        b=XXZIBpoU4FYdjXAC+mCXT7u4Mz6SoWhNsHyHIJWqZzCtOysJAsbPe7PRiHbRCr+V6J
+         4vjdyK8SWemrXUQUsBiYr1qu7rXHNP4dUUcUo2eYt+dq88ns/bur8lXmB+FyJDovv25g
+         iExJ+YqKrJbeNLya0paV7BuczlOlrS5tFzHZfU4RVuZIiEKd+u3rHIePO2ZKs+UsR6Jd
+         36FXEapgrEsRn/Z0FtyA3PTEcrjWAJu0QMf9Jz3RYRQcSE+Lf59q9vrlBw0cRe1epV61
+         JohShKNPv4oIljms3g7qQquQ18bv1inxkJdxxzF1kaiM81QdtXQPf7AGqQtV/+A/KGSv
+         VLBA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=UNa7dgr+T6R1ukhKHHLy6CJqrOmDsV/gnRDcoFC7IoM=;
+        fh=jvoKn+x2WMd0mNCX1Qs1ojE+BHMkHxJxjTVxBNcjFB4=;
+        b=CcMyAewG53sHpBnlZ9bCCEgj30gf7bLpsAkfAFwXfICFWmtkI5Rg3RFzpibWKpUi4F
+         6aOVjjd9+ajpq4w1my+04SNUdTBLEENq8MDJtKdBEWVNWzOa2X5rOzLv7jkSZpnkvZ+M
+         WNNHEiJAv4fZC2ztTZs3rpDX9zYlXOuuV6TNmMYa9OqdcJECsS5eZAqQlh19xxr+cR/M
+         hysbmEHAviecSqOx13SJ3Y1m5TZgZVG2C3W+pzYeRO5k+w7x5cyl71fbsUtfur8Xna8a
+         c8agehH0jiB5Tra6ja07MpykQvyrwgSJETiRvKfW+lOwP5Eejms3lNEw+Julmy86PMb3
+         ORRQ==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1779917054; x=1780521854; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=UNa7dgr+T6R1ukhKHHLy6CJqrOmDsV/gnRDcoFC7IoM=;
+        b=eqvi8CCSDUuOXofeXmEzyWmpyXgY5xz+hyMuOFcloj6DxzTKPyyrAx/qGqiUHW0mur
+         2AWYMmgEtRdwIpoRzUm7+jQ7oMcD68MqhJ+7L5EUI+hH50oqN3JTRx0Z8SK/qyCdrcg8
+         93ip25fpvat85zyF4PKjW02NWUtk2zkV385wQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1779917054; x=1780521854;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=UNa7dgr+T6R1ukhKHHLy6CJqrOmDsV/gnRDcoFC7IoM=;
+        b=gAuBSur6K66fcoz8PZnFBuzQBlqawMtnGJV6wIl5mMwUTx+D9PUF/nEr9D4YyBR2qB
+         t9CTYOQPzj9kFddjiNpl8X3LQHwLC7S5kYgAl/wd0hcJYItEbqLM+XqA5TZ5HGS4JlhZ
+         jP3wweLPZ73ZHc0rQvWc+BD8ToGMynWO25ywqyE44ZrtSdOgB+hddIsZcMTOjk8WJzgE
+         9AYHwdvSWrNPApK1jsUY6y3D/5es9XpfwWU74u5CgSw7svR7KmlHLSYSGmwQRpLtjkNu
+         AmU6/K5c0WJJLgqj2zPJcec+zy8gXUf+mGfG/dsWtcrY38Xr8zIiJ0pm18aiWaQJ+IgF
+         Jdfg==
+X-Forwarded-Encrypted: i=1; AFNElJ+VdBDQr9XqTFtkR3XSoclL5hsP/24hNRQ1fM2RPgyab0olKPZXsCeiKxmfmRI2ahwfH0KQNzJPDGzFSjnlfg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz1NbfYm4FP1Fb/6FzqJftp1XyYLkTmjXs4976JkSnA/lbHFWrs
+	fOQ7c07Y+mzzp1UUPOZwl0X1877WqoZWfvHY81upnumGWYUdfLV3dho6c0DOuGYVU6r2x9NpN9A
+	MJqbX1RM2b10ZoVyewx4REjwLf38mKKAsW4hbsNRF
+X-Gm-Gg: Acq92OE0RFioyDDttSKcAYgpYqnTqLwz4JvV5wzp/jXWzF8Y3W4oVIAxeJbUfoaaopN
+	vsi9A9Vl9Ag97vYkFRBNn3RkimLyzzcC4cDJac+oJbCwqQ0kP6qCNM5vfc9uorF59VnVVoWwAHL
+	yEwYp/TA77U6+0kdXsCTP7KhQ3GrDu3hMGF9pTEiRUfb2gXaVlgxokmeZ7HzoRJAQ/Kt9yxZM5j
+	Zs8fOngu77vlH1qZb2xPbCDYAgJuq4UkVc5jfMS2Y/UN1qTGV4pmVt5xQLlYFPLLn9nrHuOQYnU
+	vtszvfxoc4ynpaXCyA==
+X-Received: by 2002:ac2:4c50:0:b0:5a8:65ce:e83b with SMTP id
+ 2adb3069b0e04-5aa3238bcc6mr8479844e87.7.1779917054041; Wed, 27 May 2026
+ 14:24:14 -0700 (PDT)
+MIME-Version: 1.0
+References: <20260515090149.3169406-1-wenst@chromium.org> <CAMRc=MdnjRRMVzxPkkrPhQ4dz7rsK8-HKUp9cQ0z11apL3escQ@mail.gmail.com>
+ <CAGXv+5HC3dqgcE3KnKzakHHWFHB6m_X42orOkNUvZvp=SL_O8g@mail.gmail.com>
+ <CAMRc=Med-_0GSYzoFBRiwFzBCK0DZqJD8_SEBxi+zwR20GS-HA@mail.gmail.com>
+ <CAGXv+5GbW0bx3nKdZt2+tHuHyQ-J-1-Z79nMzHAwjmEPGKT02A@mail.gmail.com> <2026052710-flagship-unsmooth-ce82@gregkh>
+In-Reply-To: <2026052710-flagship-unsmooth-ce82@gregkh>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 27 May 2026 23:24:02 +0200
+X-Gm-Features: AVHnY4LeDHWwGMjgnhSmei9PL68DdRKYxFo5lLp-irYNZJy9WYHdf0RaNUwFV18
+Message-ID: <CAGXv+5HdrKjFe=jZFYQzanmHOgCNOXRydLCvsM6o=DGhoO1HBA@mail.gmail.com>
+Subject: Re: [PATCH RFC 00/12] arm64: mediatek: Add M.2 E-key slot on Chromebooks
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Bartosz Golaszewski <brgl@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-pm@vger.kernel.org, 
+	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-Date: Wed, 27 May 2026 20:21:38 +0200
-Message-Id: <DITO1XL17NWQ.31DQEIXADGBND@matfyz.cz>
-Subject: Re: [PATCH v1 2/3] regulator: Use named initializers for
- platform_device_id arrays
-To: =?utf-8?b?VXdlIEtsZWluZS1Lw7ZuaWcgKFRoZSBDYXBhYmxlIEh1Yik=?=
- <u.kleine-koenig@baylibre.com>, "Liam Girdwood" <lgirdwood@gmail.com>,
- "Mark Brown" <broonie@kernel.org>
-From: "Karel Balej" <balejk@matfyz.cz>
-Cc: "Matti Vaittinen" <mazziesaccount@gmail.com>, "Marek Vasut"
- <marek.vasut+renesas@gmail.com>, "Chanwoo Choi" <cw00.choi@samsung.com>,
- "Krzysztof Kozlowski" <krzk@kernel.org>, "Matthias Brugger"
- <matthias.bgg@gmail.com>, "AngeloGioacchino Del Regno"
- <angelogioacchino.delregno@collabora.com>, "Samuel Kayode"
- <samkay014@gmail.com>, =?utf-8?q?Andr=C3=A9_Draszik?=
- <andre.draszik@linaro.org>, "Aaro Koskinen" <aaro.koskinen@iki.fi>,
- "Andreas Kemnade" <andreas@kemnade.info>, "Kevin Hilman"
- <khilman@baylibre.com>, "Roger Quadros" <rogerq@kernel.org>, "Tony
- Lindgren" <tony@atomide.com>, <linux-kernel@vger.kernel.org>,
- <linux-renesas-soc@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <imx@lists.linux.dev>,
- <linux-arm-msm@vger.kernel.org>, <linux-samsung-soc@vger.kernel.org>,
- <linux-omap@vger.kernel.org>
-References: <cover.1779878004.git.u.kleine-koenig@baylibre.com>
- <d02f55dfd5bdd743ae5cd76f2a5af0d346226a68.1779878004.git.u.kleine-koenig@baylibre.com>
-In-Reply-To: <d02f55dfd5bdd743ae5cd76f2a5af0d346226a68.1779878004.git.u.kleine-koenig@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260527_112246_043601_3AFEF6E1 
-X-CRM114-Status: UNSURE (   8.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260527_142416_367706_D14AF406 
+X-CRM114-Status: GOOD (  51.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,22 +121,119 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Uwe Kleine-K=C3=B6nig (The Capable Hub), 2026-05-27T12:47:45+02:00:
-> diff --git a/drivers/regulator/88pm886-regulator.c b/drivers/regulator/88=
-pm886-regulator.c
-> index a38bd4f312b7..7328cd1cf265 100644
-> --- a/drivers/regulator/88pm886-regulator.c
-> +++ b/drivers/regulator/88pm886-regulator.c
-> @@ -373,7 +373,7 @@ static int pm886_regulator_probe(struct platform_devi=
-ce *pdev)
->  }
-> =20
->  static const struct platform_device_id pm886_regulator_id_table[] =3D {
-> -	{ "88pm886-regulator", },
-> +	{ .name =3D "88pm886-regulator" },
->  	{ }
->  };
->  MODULE_DEVICE_TABLE(platform, pm886_regulator_id_table);
+On Wed, May 27, 2026 at 7:42=E2=80=AFPM Greg Kroah-Hartman
+<gregkh@linuxfoundation.org> wrote:
+>
+> On Wed, May 27, 2026 at 06:21:00PM +0200, Chen-Yu Tsai wrote:
+> > On Tue, May 26, 2026 at 11:48=E2=80=AFAM Bartosz Golaszewski <brgl@kern=
+el.org> wrote:
+> > >
+> > > On Sun, May 24, 2026 at 10:06=E2=80=AFAM Chen-Yu Tsai <wenst@chromium=
+.org> wrote:
+> > > >
+> > > > > >
+> > > > > > I expect some discussion on this patch, because a) it adds some
+> > > > > > OF-specific code into an otherwise generic (core) driver, and
+> > > > > > b) it doesn't yet handle USB 2.0 / 3.x shared ports; it ends up=
+ powering
+> > > > > > on the port twice, which negates the port reset part.
+> > > > > >
+> > > > >
+> > > > > I understand that you do this because the port device has no OF n=
+ode
+> > > > > assigned. If we wanted to call pwrseq_get() for the port device, =
+is
+> > > > > there really no other way to associate it with the correct pwrseq
+> > > > > provider?
+> > > >
+> > > > I suppose we could tie the "port@X" node to the usb port device, bu=
+t
+> > > > AFAIK no other subsystem does this so we would be introducing a new
+> > > > pattern.
+> > > >
+> > > > In the M.2 pwrseq driver, we would have to match by port node inste=
+ad
+> > > > of its parent device node. We may end up with different behavior fo=
+r
+> > > > the USB target vs the other targets.
+> > > >
+> > >
+> > > I imagine, we can check the bus type of the parent device to know if
+> > > this is USB?
+> >
+> > The "bus type" type is probably not exported. However since the DT bind=
+ing
+> > explicitly says which port on the M.2 slot is for which connection type=
+,
+> > I think the matching can do a special case check for the USB port.
+> > The next obstacle is that the target string is not given to the provide=
+r
+> > match function.
+> >
+> > > > Also, the "port@X" nodes only exist for the OF graph connections to
+> > > > connectors and/or muxes (this series doesn't deal with the latter).
+> > > > For directly connected devices, there is a "device@X" child node
+> > > > directly under the USB hub node. That node is what gets tied to the
+> > > > the USB device.
+> > > >
+> > >
+> > > Is this a problem? I don't think I understand what you're saying here=
+.
+> >
+> > It shouldn't be. I'm just saying there would be different behavior on
+> > the USB side for connectors vs onboard devices (like hubs) device nodes=
+.
+> >
+> > I talked to Greg earlier, and he said not to touch the hub driver; the
+> > hub driver should only deal with features from the USB spec. The
+> > "onboard USB devices" driver is what should be used. And this would
+> > be a proper case of adding an auxiliary device to the M.2 slot driver.
+> >
+> > However this seems to completely decouple the power sequencing from the
+> > USB core. Take the USB A connector for example, it was recently added t=
+o
+> > the onboard USB devices driver. However the connector has a device node
+> > that is not a child node of any USB host controller or hub; it is conne=
+cted
+> > through OF graph. At the same time, since it typically sits at the top
+> > level of the device tree, a platform device is directly created and the
+> > driver subsequently binds to that device. This is totally different fro=
+m
+> > how the hub and other directly connected onboard USB devices work. In
+> > the onboard device case, the device node is a child node of the USB hub
+> > or controller, and the corresponding platform device only gets created
+> > when the USB hub driver probes, thereby sort of tying it into the USB
+> > device topology.
+>
+> Hm, did we mess this up?  If so, we can always change it if you think
+> this should be done differently.
+>
+> Hubs should be dealing with the power issues for their ports, so maybe
+> rethinking this might be wise.  I'm just loath to add hardware-specific
+> hacks to the hub common code for obvious reasons.  Anything we can do to
+> pull it out to a separate driver is best so it doesn't affect the 99% of
+> the users that don't have that crazy hardware :)
 
-Acked-by: Karel Balej <balejk@matfyz.cz> # for Marvell 88PM886
+I understand. The way I have it in this series is that besides having
+the port powered up initially, usb_hub_set_port_power() port power
+control also extends to the pwrseq target for the M.2 slot or USB A
+connector, just like if VBUS was controlled by the hub itself.
+
+M.2 slots might be somewhat rarer, but I think many embedded devices
+have USB A ports with VBUS that are controlled via GPIO, not wired
+to the USB hub's (if any) port VBUS control pin. This is also present
+on Chromebooks.
+
+I think wiring up pwrseq to the USB port and using it for VBUS control
+on these USB A ports is an improvement over the recent addition of USB
+A connectors to the onboard device driver, which just turns on VBUS.
+It would make the power cycle loop in hub_port_connect() actually work
+on these devices.
+
+Is it code for stuff outside of the hub itself? Yes. Is it crazy hardware?
+Maybe not.
+
+
+Thanks
+ChenYu
 
