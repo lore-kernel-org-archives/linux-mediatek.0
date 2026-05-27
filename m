@@ -4,71 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63962CD5BDE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2026 04:48:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95FB6CD5BDE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2026 05:35:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:References:Subject:CC:To:MIME-Version:From:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7tcqr7MQL0zVS1iggjXewT5XwoMIhxNcBR9iISEez5U=; b=ujFcJ0hX4IR0N/Fm6SmQGKGjdX
-	PnAGVvifwLdj1preJnD+JXz9+OgFJ5Xb2nczXU47IhFtD/u0C1QuqQEaHdU7oCHM6d48cD8Pkf7Hw
-	052QYljUKnZSvMbsb4WOgLZEF7juPIa27/UdXiMJ0Kcczi4uV3O4zmAWJAsfyDGIo/iTTPTH6hS4H
-	9JQm3BBjcHPJldtzoS3DBPZTdLj/giUskhU7kXQLkam+62sscYv8VgpqURW6wpB6UvV1d6E7OC6iH
-	SvAr6914c6CUu8w1JDJbPiSLDDPNCyRRTRXHVi/Id6/5jYjZhNfRU1ZFnzbFponNMiJsRLaLKu8ZE
-	kCsCfhRw==;
+	bh=P/BiXb+f+RdbNY+mkS/FO+sRGrC8T8yS5135DO/Z7kE=; b=f32qqeiQ6z5vbrDe0il5kabA86
+	yVAxll+u/VFKKLxdRLfQitaI000YljBxpP09r+Zi+1q+TBy2ns8VaDyHLUisJnNipPR2wtr/kzjVZ
+	+iCo5uZz8J3xnHVefGNzOoUSTaWl62QgDyy+L/aYpeefm9BJA7S0hEaVGte4q0GpkN5q0KWLgVWRB
+	v7AVBB5wPCcSTgv0oYUi4hYMDn9y5S17zMGE5NRDUiFPtuDaUBn5u5s5q6J06Qv4Vxt2XMu0QTj28
+	vZPLS1aw+Kzlllcn/StgrGtXEFXpqRHok89Yg+j/BUFKJbt7fiVoxCg3+LjGO1VfLl+TleAjP3d4n
+	h3i9Ab3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wS6CK-00000003Jed-18ZO;
-	Wed, 27 May 2026 04:48:52 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wS6vk-00000003Lxt-0CZb;
+	Wed, 27 May 2026 05:35:48 +0000
+Received: from m16.mail.126.com ([220.197.31.7])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wS6CJ-00000003Je9-0TR0
-	for linux-mediatek@lists.infradead.org;
-	Wed, 27 May 2026 04:48:51 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id E8AEA600AB
-	for <linux-mediatek@lists.infradead.org>; Wed, 27 May 2026 04:48:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9FB8E1F00A3D
-	for <linux-mediatek@lists.infradead.org>; Wed, 27 May 2026 04:48:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779857329;
-	bh=7tcqr7MQL0zVS1iggjXewT5XwoMIhxNcBR9iISEez5U=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=kfqGdCQUuAaBiaTBh3y9ct9XAO1y+AKkBZMqZ4H2SaloagRykPxJ0R+LSm/5MmI08
-	 r1zv+XFg8cuVIwejzMDeJTKAjnYdmnYLXpx2cRqBvWimcwyFQj511vVNBDAkxdc45K
-	 G/vXDhWYDYhh3q7ltZcBxavTOnJ8BZkyzC6FPW560HXG1VOv5ZfxUBPzI7Q/zQCw9t
-	 Vbrtam07tYTDe+Dj3jmtVvAn6zi9yfy6SOPFklSc/nRoyk+mwloOr+mQVtPLivihoH
-	 eGZTi0nOfLGMGnMs6dg7nd11JatMrD8f0o7CdZQJAFIfZgPMMOAppO8tKqHySJKBXs
-	 E+Xw0xJ8F9f9w==
-Received: by mail-lf1-f50.google.com with SMTP id 2adb3069b0e04-5aa4b50e054so315283e87.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 26 May 2026 21:48:49 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AFNElJ9/ULzL5eTEqYYDMsSo18Z0Jge9l+JwkrINlpCkq5A2ng9u1mJdIiRP4sP8WhofIa/79XpvmN2Z8h1SA23nrg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzPRKp8QMtMbkndOKVop+gh1QvT/cI4Iv5b4tllhnV4hM6qte5z
-	W4FACwguoyqrqG6g+b+H1WQ3tzIMsK+fuW8EXBG0QZ3fSijfVAt6z39eNZ8/M6D+GxDOP8zfVpW
-	G25dSV7gridrGWJsm8GkgPGsOGT/dyyU=
-X-Received: by 2002:a05:6512:1452:10b0:5a6:31e9:1e56 with SMTP id
- 2adb3069b0e04-5aa323263a9mr4824355e87.18.1779857328106; Tue, 26 May 2026
- 21:48:48 -0700 (PDT)
+	id 1wS6vg-00000003Lx6-131W;
+	Wed, 27 May 2026 05:35:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=126.com;
+	s=s110527; h=Message-ID:Date:From:MIME-Version:To:Subject:
+	Content-Type; bh=P/BiXb+f+RdbNY+mkS/FO+sRGrC8T8yS5135DO/Z7kE=;
+	b=MDQ+o5rLGPjjxgfsygZLTcJuRBIWE2s2S95pbrHpgnXB/jyHP5tNCtwa4IbwzY
+	1hLPdhuGTaCeNIsx0d3ezc5M4NjAGTEvRMJPSvr36bsPtYbV5p7XzJI0XNx5qFsX
+	ZNpakpB4WVGfQHd+SIKHqxssICMwkDVQSUzjH19EjjJTQ=
+Received: from localhost.localdomain (unknown [])
+	by gzsmtp2 (Coremail) with SMTP id PSkvCgDnT_OLghZqhX4uAA--.38309S2;
+	Wed, 27 May 2026 13:35:08 +0800 (CST)
+Message-ID: <6A168290.1030507@126.com>
+Date: Wed, 27 May 2026 13:35:12 +0800
+From: Hongling Zeng <zhongling0719@126.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Thunderbird/31.2.0
 MIME-Version: 1.0
-References: <20260527034350.527482-1-zenghongling@kylinos.cn>
-In-Reply-To: <20260527034350.527482-1-zenghongling@kylinos.cn>
-From: Sean Wang <sean.wang@kernel.org>
-Date: Tue, 26 May 2026 23:48:36 -0500
-X-Gmail-Original-Message-ID: <CAGp9LzruaD57tE5XHHAM8mKoPc-JQSAcaTdgvdSfESJjz-9XnA@mail.gmail.com>
-X-Gm-Features: AVHnY4Kn3PRAO-yghCTyjcaeRLsdka-fBpVL84WPL3a52LfxGBU64M6Iy9-CHoY
-Message-ID: <CAGp9LzruaD57tE5XHHAM8mKoPc-JQSAcaTdgvdSfESJjz-9XnA@mail.gmail.com>
-Subject: Re: [PATCH v2] wifi: mt76: mt7921: fix resource leak in probe error path
-To: Hongling Zeng <zenghongling@kylinos.cn>
-Cc: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com, 
-	shayne.chen@mediatek.com, sean.wang@mediatek.com, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, xiong.huang@mediatek.com, 
-	madhurkumar004@gmail.com, linux-wireless@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, zhongling0719@126.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+To: Sean Wang <sean.wang@kernel.org>, 
+ Hongling Zeng <zenghongling@kylinos.cn>
+CC: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com, 
+ shayne.chen@mediatek.com, sean.wang@mediatek.com, 
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+ xiong.huang@mediatek.com, madhurkumar004@gmail.com, 
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2] wifi: mt76: mt7921: fix resource leak in probe error
+ path
+References: <20260527034350.527482-1-zenghongling@kylinos.cn> <CAGp9LzruaD57tE5XHHAM8mKoPc-JQSAcaTdgvdSfESJjz-9XnA@mail.gmail.com>
+In-Reply-To: <CAGp9LzruaD57tE5XHHAM8mKoPc-JQSAcaTdgvdSfESJjz-9XnA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: PSkvCgDnT_OLghZqhX4uAA--.38309S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxAw4UKrW8Xryruw4UJr4DCFg_yoW5CFWUp3
+	yrXa4YkFy5Jr47WanxAa1UZFn0vws5Gr1UGrWYvw13ZryfArn7tF4xK3Z0yryFv39Y9FyF
+	qF4jvw13Cas0vaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j4Hq7UUUUU=
+X-Originating-IP: [112.64.161.44]
+X-CM-SenderInfo: x2kr0wpolqwiqxrzqiyswou0bp/xtbBoQzjtGoWgowLLQAA3u
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260526_223544_726593_8ADF7887 
+X-CRM114-Status: GOOD (  20.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,84 +79,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+   Hi Sean,
 
-On Tue, May 26, 2026 at 10:44=E2=80=AFPM Hongling Zeng <zenghongling@kylino=
-s.cn> wrote:
->
-> When pcim_iomap_region() or devm_kmemdup() fail, the code returns
-> directly without cleaning up previously allocated resources:
->   - mt76_device allocated by mt76_alloc_device()
->   - pci irq vectors allocated by pci_alloc_irq_vectors()
-> Fix this by jumping to the existing error cleanup path instead of
-> returning directly.
->
-> To avoid using an uninitialized variable in the error path, move the
-> dev initialization before the error checks.
->
-> Fixes: 234738ea3390 ("phy: ti-pipe3: move clk initialization to a separat=
-e function")
-> Signed-off-by: Hongling Zeng <zenghongling@kylinos.cn>
->
+   Thanks for the review! You're absolutely right about the incorrect 
+Fixes: tag.
 
-The code change itself looks correct, but commit message Fixes: tag is wron=
-g.
+   Here's v3 with the correct Fixes tags pointing to the actual commits that
+   introduced the resource leaks:
 
-It points to 234738ea3390 ("phy: ti-pipe3: move clk initialization to
-a separate function"), which is unrelated to mt76/mt7921.
+   - ee5bb35d2b83 introduced the pcim_iomap_region() direct return
+   - 222606f43b58 introduced the devm_kmemdup() direct return
 
-The two direct-return leaks appear to come from:
-      - ee5bb35d2b83 ("wifi: mt76: mt7921: Replace deprecated PCI
-function") for the pcim_iomap_region() path.
-      - 222606f43b58 ("wifi: mt76: mt7921: handle MT7902 irq_map quirk
-with mutable copy") for the MT7902 devm_kmemdup() path.
+   Thanks again for catching that.
 
-> ---
->  Change in v1
->    --fix uninitialized variable warning
-> ---
->  drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 15 ++++++++++-----
->  1 file changed, 10 insertions(+), 5 deletions(-)
+   Regards,
+   Hongling
+
+
+在 2026年05月27日 12:48, Sean Wang 写道:
+> Hi,
 >
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7921/pci.c
-> index 7a790ddf43bb..49a37185f056 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-> @@ -343,11 +343,14 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+> On Tue, May 26, 2026 at 10:44 PM Hongling Zeng <zenghongling@kylinos.cn> wrote:
+>> When pcim_iomap_region() or devm_kmemdup() fail, the code returns
+>> directly without cleaning up previously allocated resources:
+>>    - mt76_device allocated by mt76_alloc_device()
+>>    - pci irq vectors allocated by pci_alloc_irq_vectors()
+>> Fix this by jumping to the existing error cleanup path instead of
+>> returning directly.
+>>
+>> To avoid using an uninitialized variable in the error path, move the
+>> dev initialization before the error checks.
+>>
+>> Fixes: 234738ea3390 ("phy: ti-pipe3: move clk initialization to a separate function")
+>> Signed-off-by: Hongling Zeng <zenghongling@kylinos.cn>
+>>
+> The code change itself looks correct, but commit message Fixes: tag is wrong.
 >
->         pci_set_drvdata(pdev, mdev);
+> It points to 234738ea3390 ("phy: ti-pipe3: move clk initialization to
+> a separate function"), which is unrelated to mt76/mt7921.
 >
-> +       dev =3D container_of(mdev, struct mt792x_dev, mt76);
-> +
->         regs =3D  pcim_iomap_region(pdev, 0, pci_name(pdev));
-> -       if (IS_ERR(regs))
-> -               return PTR_ERR(regs);
-> +       if (IS_ERR(regs)) {
-> +               ret =3D PTR_ERR(regs);
-> +               goto err_free_dev;
-> +       }
+> The two direct-return leaks appear to come from:
+>        - ee5bb35d2b83 ("wifi: mt76: mt7921: Replace deprecated PCI
+> function") for the pcim_iomap_region() path.
+>        - 222606f43b58 ("wifi: mt76: mt7921: handle MT7902 irq_map quirk
+> with mutable copy") for the MT7902 devm_kmemdup() path.
 >
-> -       dev =3D container_of(mdev, struct mt792x_dev, mt76);
->         dev->fw_features =3D features;
->         dev->hif_ops =3D &mt7921_pcie_ops;
->         dev->irq_map =3D &irq_map;
-> @@ -359,8 +362,10 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
->                 /* MT7902 needs a mutable copy because wm2_complete_mask =
-differs */
->                 map =3D devm_kmemdup(&pdev->dev, &irq_map,
->                                    sizeof(irq_map), GFP_KERNEL);
-> -               if (!map)
-> -                       return -ENOMEM;
-> +               if (!map) {
-> +                       ret =3D -ENOMEM;
-> +                       goto err_free_dev;
-> +               }
->
->                 map->rx.wm2_complete_mask =3D 0;
->                 dev->irq_map =3D map;
-> --
-> 2.25.1
->
->
+>> ---
+>>   Change in v1
+>>     --fix uninitialized variable warning
+>> ---
+>>   drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 15 ++++++++++-----
+>>   1 file changed, 10 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+>> index 7a790ddf43bb..49a37185f056 100644
+>> --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+>> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+>> @@ -343,11 +343,14 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+>>
+>>          pci_set_drvdata(pdev, mdev);
+>>
+>> +       dev = container_of(mdev, struct mt792x_dev, mt76);
+>> +
+>>          regs =  pcim_iomap_region(pdev, 0, pci_name(pdev));
+>> -       if (IS_ERR(regs))
+>> -               return PTR_ERR(regs);
+>> +       if (IS_ERR(regs)) {
+>> +               ret = PTR_ERR(regs);
+>> +               goto err_free_dev;
+>> +       }
+>>
+>> -       dev = container_of(mdev, struct mt792x_dev, mt76);
+>>          dev->fw_features = features;
+>>          dev->hif_ops = &mt7921_pcie_ops;
+>>          dev->irq_map = &irq_map;
+>> @@ -359,8 +362,10 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+>>                  /* MT7902 needs a mutable copy because wm2_complete_mask differs */
+>>                  map = devm_kmemdup(&pdev->dev, &irq_map,
+>>                                     sizeof(irq_map), GFP_KERNEL);
+>> -               if (!map)
+>> -                       return -ENOMEM;
+>> +               if (!map) {
+>> +                       ret = -ENOMEM;
+>> +                       goto err_free_dev;
+>> +               }
+>>
+>>                  map->rx.wm2_complete_mask = 0;
+>>                  dev->irq_map = map;
+>> --
+>> 2.25.1
+>>
+>>
+
 
