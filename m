@@ -4,105 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A78D9CD6E41
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2026 13:42:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 322C0CD5BD0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2026 13:57:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LPQMUeKZPxsEa24h/tMGbugrrlbgcKdXRN5CjzvNfg0=; b=HuA8ANSslBRk5UjEScUg5daakj
-	Zp8zhyt7Ekd5nvB4ImV3fh0YG3N3UF6pYKjitINdHprywIqUlNEvEms+mQf+FWg/cqqhX9Z2gctN3
-	5pFYGwQcOyF6KX/wNAsdgyuQzTfnYavISQRCNHDhd349jzlyUAN/Cks8vN938gznlZE4xAgi0r57v
-	0ZQJw6NQBl0ixkgiCxw1WotW6Vku+GbaFhY59lHQXZx5kYCQcam53dP8lfV+5wBFOYNVv7rYoYqna
-	TOSfOfJQDh+k6tQHw1ckCMd09Do0irSnTaPBLcSOqLcMtEUp09mkGO3Z62rBCj6hKjI4fRsUNfuCl
-	S+o1sEhA==;
+	bh=59sMnJ3WmBKmP7+U/VE0TCKfElxn4eLOccLPPt8sWcI=; b=mPr4L76AGjjmQyPsnj9cKRC4vu
+	g3EGVf0W2EwtUDnZV8ufUZt48Tn3r9gst1eOZKczH9Wk5qC/naXqWZih2jzCncljmHBlVPNTjULyw
+	ASrbFFAXtkTAW3XNTMODY1HH2noIS3ieU+Trt5vojjwXmdDzUoBi4yCFholavEGHg7i5WxNuG/MrI
+	dXx0n1XGXgPTFj5wIXfYE2SGQQFL+Rf1rjli6hWr25H9YX0zD6tEt2UHM0m78okc0Kou28hvHGdl/
+	0FGwvL0YGbQCGzWcRrSfJQkPKsCvaGkSVeHNmGFQQEHTG+1LcKw4UoyvAp31k49DtSn+uOok7YISC
+	nptsDDfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSEWd-00000004DfJ-379A;
-	Wed, 27 May 2026 13:42:23 +0000
-Received: from mail-dl1-x122d.google.com ([2607:f8b0:4864:20::122d])
+	id 1wSEkp-00000004FEB-2sw2;
+	Wed, 27 May 2026 13:57:03 +0000
+Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSEWX-00000004Dau-2DI3
-	for linux-mediatek@lists.infradead.org;
-	Wed, 27 May 2026 13:42:18 +0000
-Received: by mail-dl1-x122d.google.com with SMTP id a92af1059eb24-136b46c3540so4222467c88.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 27 May 2026 06:42:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1779889336; x=1780494136; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=LPQMUeKZPxsEa24h/tMGbugrrlbgcKdXRN5CjzvNfg0=;
-        b=YDfQmLWaJohv844P+8eY7Gm6WKTk8bhLINADykV2KgA4+qemBEEnBHGLWfJ5NI8JUl
-         AhrC4gyAi4Q5yQbSA/ZmGxCj8wn32Pk2Ibh4Ss5tvJmEwLgr6kjvJj8pzp4etmvYb0C+
-         j8QnzJk4c3Wongd7EDSxtVzqHCgELYSUyvQv0dxqUiPoPTlrBP0kJqn84TjyEda7TOdA
-         4RpnbIs/GQJyfX19KvQZS7pjeFTD+8zCwx6WUN1OzFIGPlV4O2uw8qSFdlU9BYTJ1Y/v
-         cdiQ/D0L5GNW+7vhOW8ZFu3B33bpUjuYY0lFyUb3NQWV3IInHT5mHyItZ5eMwjVeUcQ1
-         LPhA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779889336; x=1780494136;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=LPQMUeKZPxsEa24h/tMGbugrrlbgcKdXRN5CjzvNfg0=;
-        b=gRvO1LDUC09UkAqj4JfqxO7oJhPs82erRIsNc/ljhQ6AV7DofeGcV+L0uELrBBl1am
-         KThZOEhZMHlbl6ezCTZzCi+jSivLAQpUjhgussPO1B7k1exFoILrxoAg6Fp57S2XcH4Z
-         fRzRTeuXL8fgDvB7OWoOulwl3Mq0pY+mLGfAEODkSPmHT8NauMIBboXnEq9dNGErjlVS
-         CF65mawfdq5dOMaQZ+YfFSd0JWBxWSWyc7qWLjeIfP1Q0nLlq9wrcayS7b2lVKyrJpwU
-         OKS+TEB5MP+JHFKqdL6hLopdTIwRvwHE+TThSxeg4PSqC8urNMTMamqmLRsVA4pH9L0s
-         4W9A==
-X-Forwarded-Encrypted: i=1; AFNElJ8FAr6dGrjhvVo36xeU2PCVh8kyr1BDEPNzMXEyR1a27JFQat0GPFH9E986vaaMpM3T94Zc15FfCNY53shVhQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzkExyRq/ztbZCKyCsRawR/B34LwLGBsJwuKkH3z4xZjMKdOiTx
-	CY7CT2IpDSvHJ9XYWIwzLWjZwNECoXD0fwXiSXz6Xyvr9J1UCPzt0SOF
-X-Gm-Gg: Acq92OGrlXeeThFnHb8ogLT06LgoYH00Ezbvad/H5uQ6ZtymbsEB22WBkiyo5qYhlZi
-	I1ZRAIM2YfFYOWwiOsb9zf9vuSz1/Zf1f3xpInisSYLIGXP1FeHKmCMdyCrSGH1/CNIK6aNYIsy
-	V035HeIE4/albhGDbux7y6Yw1RK2lsAJgJaQit+feN2kwTzprLT1KhPeA7vrfsa4ayaKy3quwG8
-	1CPJ6e683KPqeFn5/E7VALBwRMQHpkME2pxazpAOPdqIkhKbP5bUTYVoY9ZjJ+nwtA8ouhVsz78
-	tM4X1wzX3Vndfim2fl6yAlka0boqh6rFOyE1Lc9J+/IlGqyhe59cSjtqvI8Fq0wRNAd2LBvjN1h
-	bzvEwfNL/N7cIQwxCFvH8pkdGoHPz4aZL6D/FPTm96D+gcK8/lFv+NacQrXJ+JoG+yCGV20VERV
-	K9bvu/m3n+8R6dpLsVQ32zvRL89RDvzK4a9GD+fuEsFsDmM/r2ltT/C8amVQOMf2QoTY8hHW916
-	qk4RZJkoIzc
-X-Received: by 2002:a05:7301:a84:b0:303:f2fc:c483 with SMTP id 5a478bee46e88-30448f30872mr10369074eec.1.1779889336443;
-        Wed, 27 May 2026 06:42:16 -0700 (PDT)
-Received: from [192.168.1.18] (177-4-162-74.user3p.v-tal.net.br. [177.4.162.74])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-304ccdaa124sm311702eec.11.2026.05.27.06.42.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 27 May 2026 06:42:16 -0700 (PDT)
-From: =?utf-8?q?C=C3=A1ssio_Gabriel?= <cassiogabrielcontato@gmail.com>
-Date: Wed, 27 May 2026 10:41:49 -0300
-Subject: [PATCH 2/2] ASoC: mediatek: mt8183: Check runtime resume during
- probe
+	id 1wSEkm-00000004FDV-1qQb;
+	Wed, 27 May 2026 13:57:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=59sMnJ3WmBKmP7+U/VE0TCKfElxn4eLOccLPPt8sWcI=; b=nrutu0GXMRBhbCHOJuxubl41V5
+	0mQVbSwgoTIU7qpw1TY3MVQpq6Wu1KB6/ZNuERxEMKQgJwnOVIbRPlyWCMhnFRcQ5BKovcC+r6u/8
+	CO/sFu6jP/a4KApL8eWC6xw/2pcPiYa00EHmxVc3r4BuoxHZTsNRf4EOp97UhWUiijbY=;
+Received: from [2a01:599:10e:48be:48a2:ca22:1c65:c46a] (helo=nf.local)
+	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.96)
+	(envelope-from <nbd@nbd.name>)
+	id 1wSEkQ-001Y8L-24;
+	Wed, 27 May 2026 15:56:38 +0200
+Message-ID: <a83c9aca-da9e-4a5e-a364-382910388a68@nbd.name>
+Date: Wed, 27 May 2026 15:56:37 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20260527-asoc-mt8183-probe-cleanup-v1-2-4f4f5593c8d1@gmail.com>
-References: <20260527-asoc-mt8183-probe-cleanup-v1-0-4f4f5593c8d1@gmail.com>
-In-Reply-To: <20260527-asoc-mt8183-probe-cleanup-v1-0-4f4f5593c8d1@gmail.com>
-To: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
- Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Chen-Yu Tsai <wenst@chromium.org>, Shunli Wang <shunli.wang@mediatek.com>
-Cc: linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- notify@kernel.org, 
- =?utf-8?q?C=C3=A1ssio_Gabriel?= <cassiogabrielcontato@gmail.com>, 
- stable@vger.kernel.org
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1813;
- i=cassiogabrielcontato@gmail.com; h=from:subject:message-id;
- bh=InHqJ2PNAaclYU6DB/4BCMiDFr1sW1hmcux0hzUPPiE=;
- b=owGbwMvMwCV2IdZeKur/u2bG02pJDFliX1YZNC5ZftYw1+3/caOwl8IefBtEl/fymm+WYIh0t
- VtzMUaso5SFQYyLQVZMkWV10iLLPV0PrtbHrfCAmcPKBDKEgYtTACaS/oiRYaI35zZxrdy1CmEm
- DqssLOu3sKvesLk43WZ6wGIT1fwCe4afjEW/dq9n3H5PYsbpJ0KVHS++HFYIfaoRmLz5eE3/+xk
- 2/AA=
-X-Developer-Key: i=cassiogabrielcontato@gmail.com; a=openpgp;
- fpr=AB62A239BC8AE0D57F5EA848D05D3F1A5AFFEE83
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH mt76] wifi: mt76: mt7915: configure noise floor reporting
+ on reset
+To: David Bauer <mail@david-bauer.net>, Lorenzo Bianconi
+ <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20260516144944.2574053-1-mail@david-bauer.net>
+Content-Language: en-US
+From: Felix Fietkau <nbd@nbd.name>
+Autocrypt: addr=nbd@nbd.name; keydata=
+ xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
+ ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
+ Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
+ AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
+ vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
+ wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
+ TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
+ l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
+ dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
+ HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
+ VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
+ CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
+ VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
+ Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
+ DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
+ wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
+ f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
+ aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
+ FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
+ TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
+ GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
+ cL98efvrjdstUfTCP2pfetyN
+In-Reply-To: <20260516144944.2574053-1-mail@david-bauer.net>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260527_064217_579272_DAFEE4BC 
-X-CRM114-Status: GOOD (  11.82  )
+X-CRM114-CacheID: sfid-20260527_065700_560034_01080976 
+X-CRM114-Status: UNSURE (   7.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,54 +101,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT8183 AFE probe uses pm_runtime_get_sync() before reading hardware
-defaults into the regmap cache, but does not check whether runtime resume
-failed. If regmap_reinit_cache() then fails, the temporary runtime PM
-usage count is also not released.
+On 16.05.26 16:49, David Bauer wrote:
+> When performing a full system recovery of the MCU on a dual-phy
+> platform, band 0 (usually 2.4GHz) stops reading correct noise floor
+> data.
+> 
+> This is due to noise floor reporting only being configured correctly
+> for the second device PHY.
+> 
+> Configure the respective registers correctly after restarting the MCU
+> firmware to fix reported noise-floor values.
+> 
+> Signed-off-by: David Bauer <mail@david-bauer.net>
+Have you considered clearing MT76_STATE_RUNNING in mt7915_mac_restart 
+instead?
 
-Use pm_runtime_resume_and_get() so resume failures abort probe without
-leaking a usage count, and release the temporary reference before
-handling the regmap cache result.
-
-Fixes: a94aec035a12 ("ASoC: mediatek: mt8183: add platform driver")
-Cc: stable@vger.kernel.org
-Signed-off-by: Cássio Gabriel <cassiogabrielcontato@gmail.com>
----
- sound/soc/mediatek/mt8183/mt8183-afe-pcm.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
-
-diff --git a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
-index 49a69728fd72..2634699534db 100644
---- a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
-+++ b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
-@@ -844,17 +844,21 @@ static int mt8183_afe_pcm_dev_probe(struct platform_device *pdev)
- 
- 	/* enable clock for regcache get default value from hw */
- 	afe_priv->pm_runtime_bypass_reg_ctl = true;
--	pm_runtime_get_sync(dev);
--
--	ret = regmap_reinit_cache(afe->regmap, &mt8183_afe_regmap_config);
-+	ret = pm_runtime_resume_and_get(dev);
- 	if (ret) {
--		dev_err(dev, "regmap_reinit_cache fail, ret %d\n", ret);
-+		afe_priv->pm_runtime_bypass_reg_ctl = false;
- 		goto err_pm_disable;
- 	}
- 
-+	ret = regmap_reinit_cache(afe->regmap, &mt8183_afe_regmap_config);
- 	pm_runtime_put_sync(dev);
- 	afe_priv->pm_runtime_bypass_reg_ctl = false;
- 
-+	if (ret) {
-+		dev_err(dev, "regmap_reinit_cache fail, ret %d\n", ret);
-+		goto err_pm_disable;
-+	}
-+
- 	regcache_cache_only(afe->regmap, true);
- 	regcache_mark_dirty(afe->regmap);
- 
-
--- 
-2.54.0
-
+- Felix
 
