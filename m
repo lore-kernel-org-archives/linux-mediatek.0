@@ -4,107 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9047CCD5BD0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2026 16:21:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3843FCD5BD0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 May 2026 17:05:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3dxrqcdNnKYVhdfP7nh0R/VHpio1dU95MRkKy/vXfjQ=; b=qCa7DSxvX+aADPQFmQRFqa7Tcs
-	KLcUA41YgV//B5NOupKjcHC0lcR+KjOvQWLOXWLFJeqBddyP+5GUqdm2IbCrGs6mlzMaYP21e/Pt6
-	vEBa+MKf7Fa121YrRVvohBFh1nXMFxOIxRkltItnZMCi/A33e6j33A5hC8oizU3QtMWU/WIesv8s0
-	pE7zOiC2WR/+Q3BeZIJJWCuZiTU0Q8t7rqZfkcB5GhffBzJ3U7whx40LtRM8xTpuH7uQMOW7n/2EQ
-	KQkrMVqEBIyBq9Z4GJeXYbnXoAEE0jqKHeHh3B+mGx0xkgQmtymj+oxFYmrXZ1FUHLhC/bdOc+Qt1
-	QB8uPP6w==;
+	bh=8S3OkwC+qKI+yIddqXjqOelntUQdzQNfeovup2Cv5Y8=; b=layt1+itklCAK0kyx50Ylc1SnL
+	Iv49DJXuPrNxIcr6h4KTijluNCwcy2Qup6CsCrKsBeEy/3rBfpiHJdXO6jQLm9TbqkXCkv8NFrZje
+	auC54530UpVdacwavNM7ARCQX2WpAvNW8RoGpLWIXStUwaV2xLCN5vW0lfzN4LWWInH4SnRfmk2S2
+	kwcC40Gf3TpsB04/lYb0WGeF7yAZGm2P3fZBO0LVwgoV27/WfRAeYYqgMAslOWdqM38/cIRB1hU4f
+	XeszMypcTPmH2zOZ7+/MOP5DMpguNFzdPzftKFqj/4z4jzFzGVqT3r43LRTxlcM57kMBqoIayKhzC
+	IyIZIvmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSH0R-00000004UeV-20kw;
-	Wed, 27 May 2026 16:21:19 +0000
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
+	id 1wSHgz-00000004YvN-35jG;
+	Wed, 27 May 2026 17:05:17 +0000
+Received: from mailgate02.uberspace.is ([2a00:d0c0:200:0:1c7b:a6ff:fee0:8ea4])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSH0O-00000004Ucs-3gv8
+	id 1wSHgw-00000004Ytt-3NPL
 	for linux-mediatek@lists.infradead.org;
-	Wed, 27 May 2026 16:21:18 +0000
-Received: by mail-lj1-x22c.google.com with SMTP id 38308e7fff4ca-38be5e86918so10582161fa.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 27 May 2026 09:21:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779898874; cv=none;
-        d=google.com; s=arc-20240605;
-        b=KL9xZwB9UiDe8ih1tt1NahuSnfAcWPOoemysaHVbUjUlvmdUlm4Xd87mGYtD1FCA88
-         dxbakHorIlNxfN8hqpXNzIolHbIOPcbHZEBFz0/w6Eu1Lma/Ln6fWHeIACweY9w0vjs/
-         C0w2X1NPpo32vgMItSKW1+OVE2OqV6crr9PAcfS7MO63gRhU7pxn3NECmwSv2jUS2mfX
-         eEhCDYechodeYwJ3snq3+Bo8FBkwIdvIKt2tePgJeGdaJ/J3dlveByV0vtA2OZAmOV1D
-         tw8mRHhj55S+jxn9TZ60Gfx5IolIZt4I2NG73j1UUD/brLl6vApnupSeKVYDCk6YDfK5
-         x8Qw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=3dxrqcdNnKYVhdfP7nh0R/VHpio1dU95MRkKy/vXfjQ=;
-        fh=Vxkftp7QWva0JksAuxomrMluGOFEh0JgGnEPuja8wDc=;
-        b=HqSWKjCy8sIdeHG1qRde9TZ0d6n1NUu2ZkLl4oYAPYx13ZMnEGqnFOrgxTI4XD4QwP
-         aPKJMv+elyRH67jmI7CDkFTuZbhHiqDBpwMNInyoTSMUBYSVYaGGO8fAAKhZMzwK8EXA
-         9PfvgYrDW2vqp5rh0LFCJQtLtPkb5hY6mLdVPkxVLxtndzNxw8VamAj7qn8ZXReC0exi
-         dcAmwq+BSNSqRgmbsk40vXnNOPhbOLd36HEK0Yoqe4gCA7uz4JuIzSUQ2RNxSxO3V05/
-         3/cRPP4EHH04pIvPfwmQIdHwDd6BnqE+YmXfQ/LjTBncGxMSekXL/RTy/eDxk7kS/Neu
-         NbbQ==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1779898874; x=1780503674; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=3dxrqcdNnKYVhdfP7nh0R/VHpio1dU95MRkKy/vXfjQ=;
-        b=K5DhtC8B+dzwYuhVAFjXVDw1RygposiZ5SHd2uOs2TDnYQdpTeuS9wTBWN1hePfQC0
-         nv6JbqJw/2xXfxjAadc6Oww7SWAEKnN3Xz602M+SSckIZU1R4LT23q/K83Ml6eUzOGM1
-         npB/rHVYwxgwAfw04aJWOpfhhEA50j9Ve1sGA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779898874; x=1780503674;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=3dxrqcdNnKYVhdfP7nh0R/VHpio1dU95MRkKy/vXfjQ=;
-        b=bnfJojMXzHEGH51DVy8IsciXGGhFSk8UOu6qOamlRBppttqBaVZlJ5DwuFjVRxWugW
-         fpupBA0gXaKkRkx+dhlc6BV3ikumY0RqHVeYKFBOjOtHbH3ixTttwjFD9ong8vnx3hD8
-         XxcNJKGY1Egg7T2dQaiKUQZ9SmHbX7Yy94W0Sci1rUSuZZ2R++wsc4dIzIcXIYRuL1Du
-         UsbuKaVDhWMuxeCQ/SAU2/Jth5nLKLBHATyV5Pd73oH0nrGXrzz9Krn4D5bU3a8f/7Hj
-         Ac4VUkDzqq/zVTWgL7Uk1/tUld0w9YtFMJV6y22i0A9y1TXQm54q69PtgemfXtAVDWUV
-         Hm/A==
-X-Forwarded-Encrypted: i=1; AFNElJ8J3rGUUmGvBiUc7/7ggYbf4nZm/NHi09s7MIF4C6HBcLnnzBQFDl0AFzQAmt412xMdelED8//hHh5zL4+MXQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz/dfY5HhqSreD/Ffpm81uzIDCa/fx0drbnjAZ/e89TyXbzzAkx
-	Xw9CiQQH9X/E0+lfGfs6xp5PY8NI7V4aj/nFpapgDM9zX1ILITPEXz7GIYWV64jk+J+fbyT5waJ
-	dnE7fERmrdmi6uNpN+dpqi7Qbb8pCsLZi/j0vhHXK
-X-Gm-Gg: Acq92OHn7VoUyhxyQt37Zw4ctL88nJE7j+v9GJM5mCO0kSUGPncaKkGuYqZ8XybHtwG
-	EYd5Q8EH0V/qGkPHErcLtI37kpO1/X5z3VKKkNroNBAc39P0myyH3sw/4tIr3WnxH8gD/f0Pu4D
-	hmw7SmFqxOTEn8fajNHouc+Rfk5pG9GDDkwfs2k11F77uD8xxECcyrw9rTeZpKnK9P6V95aHmLz
-	cnH9fjbLMiovzbM65IxjVFS3eJ6fai5+VK/nW7FnF8RndG1Cq8MlEvE/ssiEXdWGNXhlXN/pMl/
-	ylC2abR7RPuPI70bRw==
-X-Received: by 2002:a05:6512:2204:b0:5aa:b6a:9257 with SMTP id
- 2adb3069b0e04-5aa32393ff6mr7614476e87.44.1779898874134; Wed, 27 May 2026
- 09:21:14 -0700 (PDT)
+	Wed, 27 May 2026 17:05:16 +0000
+Received: from perseus.uberspace.de (perseus.uberspace.de [95.143.172.134])
+	by mailgate02.uberspace.is (Postfix) with ESMTPS id 9AD2418014B
+	for <linux-mediatek@lists.infradead.org>; Wed, 27 May 2026 19:05:03 +0200 (CEST)
+Received: (qmail 28769 invoked by uid 988); 27 May 2026 17:05:03 -0000
+Authentication-Results: perseus.uberspace.de;
+	auth=pass (plain)
+Received: from unknown (HELO unknown) (::1)
+	by perseus.uberspace.de (Haraka/3.1.1) with ESMTPSA; Wed, 27 May 2026 19:05:02 +0200
+Message-ID: <370e76e3-1d41-469b-8e50-8ace6b5622d2@david-bauer.net>
+Date: Wed, 27 May 2026 19:05:00 +0200
 MIME-Version: 1.0
-References: <20260515090149.3169406-1-wenst@chromium.org> <CAMRc=MdnjRRMVzxPkkrPhQ4dz7rsK8-HKUp9cQ0z11apL3escQ@mail.gmail.com>
- <CAGXv+5HC3dqgcE3KnKzakHHWFHB6m_X42orOkNUvZvp=SL_O8g@mail.gmail.com> <CAMRc=Med-_0GSYzoFBRiwFzBCK0DZqJD8_SEBxi+zwR20GS-HA@mail.gmail.com>
-In-Reply-To: <CAMRc=Med-_0GSYzoFBRiwFzBCK0DZqJD8_SEBxi+zwR20GS-HA@mail.gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 27 May 2026 18:21:00 +0200
-X-Gm-Features: AVHnY4LzsI5n_9iqirzC_of7SGIfiJw_kQ6vIsCvh5Qe5puVB03Deb7QvAn9uiw
-Message-ID: <CAGXv+5GbW0bx3nKdZt2+tHuHyQ-J-1-Z79nMzHAwjmEPGKT02A@mail.gmail.com>
-Subject: Re: [PATCH RFC 00/12] arm64: mediatek: Add M.2 E-key slot on Chromebooks
-To: Bartosz Golaszewski <brgl@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Manivannan Sadhasivam <mani@kernel.org>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-pm@vger.kernel.org, 
-	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH mt76] wifi: mt76: mt7915: configure noise floor reporting
+ on reset
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20260516144944.2574053-1-mail@david-bauer.net>
+ <a83c9aca-da9e-4a5e-a364-382910388a68@nbd.name>
+Content-Language: en-US
+From: David Bauer <mail@david-bauer.net>
+Autocrypt: addr=mail@david-bauer.net; keydata=
+ xjMEZgynMBYJKwYBBAHaRw8BAQdA+32xE63/l6uaRAU+fPDToCtlZtYJhzI/dt3I6VxixXnN
+ IkRhdmlkIEJhdWVyIDxtYWlsQGRhdmlkLWJhdWVyLm5ldD7CjwQTFggANxYhBLPGu7DmE/84
+ Uyu0uW0x5c9UngunBQJmDKcwBQkFo5qAAhsDBAsJCAcFFQgJCgsFFgIDAQAACgkQbTHlz1Se
+ C6eKAwEA8B6TGkUMw8X7Kv3JdBIoDqJG9+fZuuwlmFsRrdyDyHkBAPtLydDdancCVWNucImJ
+ GSk+M80qzgemqIBjFXW0CZYPzjgEZgynMBIKKwYBBAGXVQEFAQEHQPIm0qo7519c7VUOTAUD
+ 4OR6mZJXFJDJBprBfnXZUlY4AwEIB8J+BBgWCAAmFiEEs8a7sOYT/zhTK7S5bTHlz1SeC6cF
+ AmYMpzAFCQWjmoACGwwACgkQbTHlz1SeC6fP2AD8CduoErEo6JePUdZXwZ1e58+lAeXOLLvC
+ 2kj1OiLjqK4BANoZuHf/ku8ARYjUdIEgfgOzMX/OdYvn0HiaoEfMg7oB
+In-Reply-To: <a83c9aca-da9e-4a5e-a364-382910388a68@nbd.name>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Rspamd-Bar: /
+X-Rspamd-Report: SUSPICIOUS_RECIPS(1.5) BAYES_HAM(-2.227727) XM_UA_NO_VERSION(0.01) MIME_GOOD(-0.1)
+X-Rspamd-Score: -0.817727
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=david-bauer.net; s=uberspace;
+	h=from:to:cc:subject:date;
+	bh=AHwrOyMcjOU+TKZ/ei9ohjaLiam4EHbLaLXCi9V69LQ=;
+	b=qcIFRMu42+I0Ni21+8xZaHHyCeHpIE4Cf8Fq5BOPMT269ZD3lmB/68KUY92pSII+pL/ntO/NyQ
+	Ae/mxFx+6nnOFcBydRVvDfKlH4vyEQeToFhY5Xbujjp+Ww+50DyB30XSEIbwyE9b/ehtnsSuBSNN
+	dozEZ75VrWANephLvAODrR0qasgpf+r1m+TIthC3S2pmxGDNjv36VPbTLuVMn3sxGvJrNvS1Q7Vi
+	3CgmEcFbwgJjr/OR/sxmtEiHBraMLiOKy0XNB9N06YglHqpd3W+1lCzY6jxVrVJpa3WJ6A4T19kA
+	IbygySrlpJ+/K0HgZSqjQ3RuA75HhQaJpuzZdvS88TS5WmqKl4AVzgzJCdw+BEf3nKp5KCV/lP5/
+	PrX9wx6ijo+CT6XU7PjL4MM0kaBRBYkVrm7zN0G5tL7AdNQf9UD60hGXq7JUgXNcTEsyy5o7hW1b
+	2U4bKIVCIhxaEuY6MJ00bFOsJykWYDHM+GPEukmPxNENVzAd0ibJ8aNh65YY4JA17Ifpq7kgBU83
+	dLfwWDJtS6+EkikEvgQPkd7WGTYf8hcN1BJtZ1Iz4ddov0rUmVv/qEb3VZRvKfVCY5yjtA6mjZOv
+	bZFMbVX+976dLOMsmHPuhTrMP5TLBMRDucr19hmJaXt8WhTMIp7ALFXsl1KzrxEhIDfIV2SNqavl
+	U=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260527_092116_981987_2B562674 
-X-CRM114-Status: GOOD (  35.80  )
+X-CRM114-CacheID: sfid-20260527_100515_283723_7D8A7092 
+X-CRM114-Status: GOOD (  10.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,79 +98,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 26, 2026 at 11:48=E2=80=AFAM Bartosz Golaszewski <brgl@kernel.o=
-rg> wrote:
->
-> On Sun, May 24, 2026 at 10:06=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org=
-> wrote:
-> >
-> > > >
-> > > > I expect some discussion on this patch, because a) it adds some
-> > > > OF-specific code into an otherwise generic (core) driver, and
-> > > > b) it doesn't yet handle USB 2.0 / 3.x shared ports; it ends up pow=
-ering
-> > > > on the port twice, which negates the port reset part.
-> > > >
-> > >
-> > > I understand that you do this because the port device has no OF node
-> > > assigned. If we wanted to call pwrseq_get() for the port device, is
-> > > there really no other way to associate it with the correct pwrseq
-> > > provider?
-> >
-> > I suppose we could tie the "port@X" node to the usb port device, but
-> > AFAIK no other subsystem does this so we would be introducing a new
-> > pattern.
-> >
-> > In the M.2 pwrseq driver, we would have to match by port node instead
-> > of its parent device node. We may end up with different behavior for
-> > the USB target vs the other targets.
-> >
->
-> I imagine, we can check the bus type of the parent device to know if
-> this is USB?
+Hi Felix,
 
-The "bus type" type is probably not exported. However since the DT binding
-explicitly says which port on the M.2 slot is for which connection type,
-I think the matching can do a special case check for the USB port.
-The next obstacle is that the target string is not given to the provider
-match function.
+On 5/27/26 15:56, Felix Fietkau wrote:
+> On 16.05.26 16:49, David Bauer wrote:
+>> When performing a full system recovery of the MCU on a dual-phy
+>> platform, band 0 (usually 2.4GHz) stops reading correct noise floor
+>> data.
+>>
+>> This is due to noise floor reporting only being configured correctly
+>> for the second device PHY.
+>>
+>> Configure the respective registers correctly after restarting the MCU
+>> firmware to fix reported noise-floor values.
+>>
+>> Signed-off-by: David Bauer <mail@david-bauer.net>
+> Have you considered clearing MT76_STATE_RUNNING in mt7915_mac_restart instead?
 
-> > Also, the "port@X" nodes only exist for the OF graph connections to
-> > connectors and/or muxes (this series doesn't deal with the latter).
-> > For directly connected devices, there is a "device@X" child node
-> > directly under the USB hub node. That node is what gets tied to the
-> > the USB device.
-> >
->
-> Is this a problem? I don't think I understand what you're saying here.
+The call to mt7915_run is guarded by MT76_STATE_RUNNING being set per-phy.
 
-It shouldn't be. I'm just saying there would be different behavior on
-the USB side for connectors vs onboard devices (like hubs) device nodes.
+I think this is to not start the second PHY in case it was never started due to
+it not being present. We could in theory remove this check for the primary PHY
+and clear the flag prior calling mt7915_run.
 
-I talked to Greg earlier, and he said not to touch the hub driver; the
-hub driver should only deal with features from the USB spec. The
-"onboard USB devices" driver is what should be used. And this would
-be a proper case of adding an auxiliary device to the M.2 slot driver.
+This seems a bit more hacky to me. Alternatively I can also refactor the entire
+mechanism to make it easier to understand and resolve this indirection in the
+process.
 
-However this seems to completely decouple the power sequencing from the
-USB core. Take the USB A connector for example, it was recently added to
-the onboard USB devices driver. However the connector has a device node
-that is not a child node of any USB host controller or hub; it is connected
-through OF graph. At the same time, since it typically sits at the top
-level of the device tree, a platform device is directly created and the
-driver subsequently binds to that device. This is totally different from
-how the hub and other directly connected onboard USB devices work. In
-the onboard device case, the device node is a child node of the USB hub
-or controller, and the corresponding platform device only gets created
-when the USB hub driver probes, thereby sort of tying it into the USB
-device topology.
+What do you think?
 
-If the power sequencing ends up not connected to the USB subsystem, then
-maybe the M.2 slot driver could just check if the USB port (port@3) was
-used, and just enable the USB / BT pwrseq target at probe time? That
-would mean less changes needed.
+Best
+David
 
+> 
+> - Felix
 
-Thanks
-ChenYu
 
