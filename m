@@ -4,105 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AE82CD5BD1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2026 07:09:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 992B9CD5BD1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2026 08:33:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=AyhxEIcTaJ0tE2zF05eMkIwg9pnZjsy1bH02V+XNbGM=; b=earXdy3GJHFnw1dFT29Bk+Dr0Q
-	29D+WhJgg+VhL3OMb07V3Llv+l+ESBxCNxftxMWNu17wqc8CLZt1+GQiMvhcDa6eLAyH0z+3XEChq
-	QqcvvpVdN29apwPvPzqLyznXDqCS5CcC0GNtpGnzd3HHInxAUC+W8CBs86d+XOjrXZcLvWS/EE856
-	FcHGIHK2JRZQcqTA4jqXEwPqTVrcPt2adAZ1KmGpbn77Bx+KmQaFKG0rr6wMDiuKFjdWGyVSW7znX
-	g5VQoAqAgFka6TptcmDQOQAcmPqNkqrWF6Gsvfq1VJSHk1166Y+SsCh/dwfuRDRj/8Qp9Wi7ttyVC
-	MhvFdZJQ==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:References:MIME-Version:
+	In-Reply-To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3UE1ukep6rVlGvZk5YzSNt1eDdxkKrWNxxGuKxbk0mA=; b=QZ7vehKD03vXrRLueqWoFsEsui
+	GvUyNIZqxKpvsQetDYFHjbcSe0nhHF1O7pGgqlFgs8AhfTyldI2VpSUUTqtAe3xBUKQ5EqWxPuNPS
+	fcP5iu1oIyea4GmetFfUtT8Q+N1rT1vaAXSWJmEh4xHpj0Da74K5CcW3Wf0Yy7jsZM0oV4lAhjjkL
+	SsE0mEN/+JhpgBLPhqShjlFqz2B6w615QrU6B9mE28U56CGGtg4oAT/bNWBwViV6SF0Lw6lVapfNb
+	pmaybYrbbCohXW+tf+wOVYfHhKh08Os71unOKy+Z/TRJ7E34Jh8FUXxdctuQbOrkNC97VSAoRMFuV
+	3fouZ10Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSUrn-00000005Ezr-1RgR;
-	Thu, 28 May 2026 07:09:19 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1wSWBh-00000005Osw-0c6m;
+	Thu, 28 May 2026 08:33:57 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSUrl-00000005Eyy-1r35
+	id 1wSWBf-00000005OsL-3vG6
+	for linux-mediatek@bombadil.infradead.org;
+	Thu, 28 May 2026 08:33:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:Cc:To:Subject:Message-ID:Date:References:MIME-Version:In-Reply-To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=3UE1ukep6rVlGvZk5YzSNt1eDdxkKrWNxxGuKxbk0mA=; b=j/rjnUO22Ku31uofuCx7uyO1AG
+	64BoZLeYrCE+2wlONuvIkiDeWL2sbadnA21HnBAPLWr0rA7CKcROi/B33xHWxmwm0wsLT2utGiazz
+	IqTgrXj1Z2KBlgh/nplK7CXd4DK1hkVWOZHc87ZTBacmGvx+FZuIrPc6af8TKUd8TTsrSvzuUE61b
+	9FjWiHbt3XThVCcFC0kqk2sa+Sq9aiUDEQdcHtWIJFRgUMkiLjfh3j3Po85QkNnOpXYCs2+tgZc1G
+	RSHEtAv0jaUNP6u9wImtzo/LY6sO3nScUTvOii0rF1yQ1B6TBMweg1KJ1La2p4T4TmNTw8f9p5/55
+	KgO4Pw0w==;
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	by desiato.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1wSWBb-0000000FqNy-3UaD
 	for linux-mediatek@lists.infradead.org;
-	Thu, 28 May 2026 07:09:18 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-45e8a834cc2so7419741f8f.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 28 May 2026 00:09:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1779952155; x=1780556955; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=AyhxEIcTaJ0tE2zF05eMkIwg9pnZjsy1bH02V+XNbGM=;
-        b=SbEfggh85rkPx8ev2XlFttNB+BAjs2w7htNUmZ7lwcRsXOtawJv+6AhF/1OF/2EFZG
-         x0sFLSdxUzWsntdhN0wgyokRRTbn2IAFKI8cdBN7y9tJ3h2Qj55C8V/fTMy8b7gFha09
-         xkSUs6/S1Ko9lPgbL4yt219Jsxg8b+y/BDpMWU4ewZ01LVIfqsKDZF1L6VJPUaB5ooku
-         xvch9oJMdR8xTFaDbiIt5xv4Epunm1C+iw3rn2afh/62qrQsektscQMergOzCwY1mcYh
-         bIbtGHy2aIeikxd2m18AeV7fwbXMZT2fMwJ9qYj6B0Cm+eWnOeSbvGokliRl/bW7ZoeJ
-         uEyQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779952155; x=1780556955;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=AyhxEIcTaJ0tE2zF05eMkIwg9pnZjsy1bH02V+XNbGM=;
-        b=AyI6gHoeI/H7fr9wFfLlRopX7C4jmyofauhSSTMZ4kGNxuFfX3s2aofwkvegGJexvD
-         t0YYNFesS1YEciX9ma6WOlz1X88hwMYQO8M37EXaR0HufiE8nu3CHBz1w/DOSXgd/c7i
-         cb5vZiNEE9FdKfA889M4S9EXxJc+2JIt/QN1O1to3ugU2sBokBubQ0v11ovriNHAsZWg
-         xvRVjqDos8CkVxkDzCqYhpSe62aR7JEsZ8BsNJe6DfkNe43Mm+6914miW6ABMdAXnOqk
-         bwljsfF9P5n4rAKYQ/7yItCFj+G3zaOqG0VSabqefrWSUW0hub/hWcKtU4r0S2XMDyby
-         2/NQ==
-X-Forwarded-Encrypted: i=1; AFNElJ/795B7MzmDlPJPiiidJoiRnyMVWNx/unhKhmj60WlueOyps2VWZXmHrRc4fokEuA5rBaCFGYuDvFjUUHDphw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzIXUfDC/WHJyTiu4Iamb2I3XDwGm1P/cLAPKecQ8cUssRSRUJf
-	5KK3+hbjOCnPQa++I39beINR7SuY/QxaoxPvfCOa1F8U7cq+zBveytgu
-X-Gm-Gg: Acq92OENoMDQL3dCyzwAwssKlsXp/1A8jaeQjD1ZY1VOeK56dvGMbkiBLXn+CttQEAv
-	7NZ3yabUaD3EGVsF7b8dhSA9we50vqf6I1lPb7eTY81HsaTTPndePAr+FPQlIDWjJaq4YbSlqAR
-	SKkwkqjb5x7ursSJZKSsMs5Dgwd3eHY3DXhN5xJJBa3XuxZSRLFGCutsiniTRPNI+1e63+nolLh
-	Mf6LuDq4uujyMmopwkseDTM7gGFdsw6hOtQwwEzJD5l6RcCbkeUWMIaJm97oEgSJaoXhiSEpgBn
-	BUlFoH/Z3c3jSL44yjtFqqyzpobizIIDtmv7d39GpF8g2TXCzyFjqsx34ZjTUWuYvTfPTNFZ0Ms
-	Or7ZnciF9tLoz/h04j+UTP0Ty2PlzQu2wV/y5KpJuVLGYnrgMDnVVn+o4zGAQhKw1j1w1TIvkak
-	Is9qMyoS7W8oUE5PP2kRip+uFO18EpruR4NzSPAMdFsqOFq7znrMh1O1LKwyyhNkr0xpvv5urjb
-	s4VoKttcPxO68QlTm5O4ljQ/fD4
-X-Received: by 2002:a5d:5846:0:b0:45e:e5d1:8a74 with SMTP id ffacd0b85a97d-45ee5d18b41mr2471256f8f.14.1779952155005;
-        Thu, 28 May 2026 00:09:15 -0700 (PDT)
-Received: from localhost.localdomain ([188.27.64.216])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-45ee91c34bfsm2722402f8f.2.2026.05.28.00.09.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 28 May 2026 00:09:14 -0700 (PDT)
-From: Adrian Bente <adibente@gmail.com>
-To: pablo@netfilter.org,
-	kadlec@netfilter.org,
-	fw@strlen.de,
-	netfilter-devel@vger.kernel.org
-Cc: phil@nwl.cc,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	horms@kernel.org,
-	nbd@nbd.name,
-	sean.wang@mediatek.com,
-	lorenzo@kernel.org,
-	andrew+netdev@lunn.ch,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	daniel@makrotopia.org,
-	coreteam@netfilter.org,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Adrian Bente <adibente@gmail.com>,
-	stable@vger.kernel.org
-Subject: [PATCH v2 net] netfilter: flowtable: fix offloaded ct timeout never being extended
-Date: Thu, 28 May 2026 10:08:51 +0300
-Message-ID: <20260528070851.3913-1-adibente@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	Thu, 28 May 2026 08:33:54 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id B480E4442F
+	for <linux-mediatek@lists.infradead.org>; Thu, 28 May 2026 08:33:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 992291F00A3A
+	for <linux-mediatek@lists.infradead.org>; Thu, 28 May 2026 08:33:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1779957227;
+	bh=3UE1ukep6rVlGvZk5YzSNt1eDdxkKrWNxxGuKxbk0mA=;
+	h=From:In-Reply-To:References:Date:Subject:To:Cc;
+	b=BTt3A5I5n0ay2ZpJFPy9zqNZYf0SojnpzrK4eah8mJc1JrtcSKBdyXfYnZKqB7v+1
+	 cJLNn4UDEiXORzdYWVSkX4eeLYPzPhaNMqjEvax1BVzK7L1cz0DqXz/UOa8EV+Z6rN
+	 yTdE4+WdcYo+gaOQOmxVVacAmQ5q9Gp+5uix2RG02SVi7+pp6OgsiNhZA1+rK74r33
+	 JTqMlW5PU0iF2M+895YI9bhzwpqDxkIHY+ZUpczOuSVAnAER159bipf1NKIRzHLe0y
+	 fdJJU2LIm6esC8gOEkfQ5MEqX3JovcoLJRyklBoj+9Gg3BWdgsJaGszzzrB4YZ2s97
+	 5Ha7lPil6GKPw==
+Received: by mail-lj1-f179.google.com with SMTP id 38308e7fff4ca-393da8f389bso105987701fa.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 28 May 2026 01:33:47 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AFNElJ87IQ5IhyMzQR47zFF8jZ7jcmCrapUbUu9BLbQceP41tfhWsP3j8KGfeaMF0n32vS62vmyrieTCMYKvRogDsg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxx84MViJIUuEeJqd5YmRtWKQ93xmkwJJ3Wn129M/d3tJ4A22u7
+	N4gtCYCGb/YRn0Xxz+3+XIKatjwMAG4Gwh3PlQi6nT5WgQSwaOapHQUHnTmnxhTGvOIqWo1Zs7h
+	oKHOb6+ZFK4uUFUZXpEzNN8DEu4kGVfiP1G3gYsqNLA==
+X-Received: by 2002:a2e:8957:0:b0:38d:e220:8dc2 with SMTP id
+ 38308e7fff4ca-395d8cef4abmr68081351fa.20.1779957226354; Thu, 28 May 2026
+ 01:33:46 -0700 (PDT)
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Thu, 28 May 2026 04:33:44 -0400
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Thu, 28 May 2026 04:33:44 -0400
+From: Bartosz Golaszewski <brgl@kernel.org>
+In-Reply-To: <CAGXv+5GbW0bx3nKdZt2+tHuHyQ-J-1-Z79nMzHAwjmEPGKT02A@mail.gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20260515090149.3169406-1-wenst@chromium.org> <CAMRc=MdnjRRMVzxPkkrPhQ4dz7rsK8-HKUp9cQ0z11apL3escQ@mail.gmail.com>
+ <CAGXv+5HC3dqgcE3KnKzakHHWFHB6m_X42orOkNUvZvp=SL_O8g@mail.gmail.com>
+ <CAMRc=Med-_0GSYzoFBRiwFzBCK0DZqJD8_SEBxi+zwR20GS-HA@mail.gmail.com> <CAGXv+5GbW0bx3nKdZt2+tHuHyQ-J-1-Z79nMzHAwjmEPGKT02A@mail.gmail.com>
+Date: Thu, 28 May 2026 04:33:44 -0400
+X-Gmail-Original-Message-ID: <CAMRc=McADm0F4bwhj5qoigfUT-AV6CVpo+FAaqoBnZ3PrjBc7Q@mail.gmail.com>
+X-Gm-Features: AVHnY4JaLBmctUhYgIAJpJojKGEMDv_BBPh6vAfJvyQAFJsp1fEnomeZ5fRkbMM
+Message-ID: <CAMRc=McADm0F4bwhj5qoigfUT-AV6CVpo+FAaqoBnZ3PrjBc7Q@mail.gmail.com>
+Subject: Re: [PATCH RFC 00/12] arm64: mediatek: Add M.2 E-key slot on Chromebooks
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-pm@vger.kernel.org, 
+	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Bartosz Golaszewski <brgl@kernel.org>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Manivannan Sadhasivam <mani@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260528_000917_495180_96FB6CBE 
-X-CRM114-Status: GOOD (  13.23  )
+X-CRM114-CacheID: sfid-20260528_093352_852107_38FDDA51 
+X-CRM114-Status: GOOD (  39.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,85 +108,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-OpenWrt has recently migrated many platforms to kernel 6.18. On the
-MediaTek platform, which supports hardware network offloading, WiFi
-connections accelerated via the WED path were observed to drop after
-roughly 300 seconds.
+On Wed, 27 May 2026 18:21:00 +0200, Chen-Yu Tsai <wenst@chromium.org> said:
+> On Tue, May 26, 2026 at 11:48=E2=80=AFAM Bartosz Golaszewski <brgl@kernel=
+.org> wrote:
+>>
+>> On Sun, May 24, 2026 at 10:06=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.or=
+g> wrote:
+>> >
+>> > > >
+>> > > > I expect some discussion on this patch, because a) it adds some
+>> > > > OF-specific code into an otherwise generic (core) driver, and
+>> > > > b) it doesn't yet handle USB 2.0 / 3.x shared ports; it ends up po=
+wering
+>> > > > on the port twice, which negates the port reset part.
+>> > > >
+>> > >
+>> > > I understand that you do this because the port device has no OF node
+>> > > assigned. If we wanted to call pwrseq_get() for the port device, is
+>> > > there really no other way to associate it with the correct pwrseq
+>> > > provider?
+>> >
+>> > I suppose we could tie the "port@X" node to the usb port device, but
+>> > AFAIK no other subsystem does this so we would be introducing a new
+>> > pattern.
+>> >
+>> > In the M.2 pwrseq driver, we would have to match by port node instead
+>> > of its parent device node. We may end up with different behavior for
+>> > the USB target vs the other targets.
+>> >
+>>
+>> I imagine, we can check the bus type of the parent device to know if
+>> this is USB?
+>
+> The "bus type" type is probably not exported. However since the DT bindin=
+g
+> explicitly says which port on the M.2 slot is for which connection type,
+> I think the matching can do a special case check for the USB port.
+> The next obstacle is that the target string is not given to the provider
+> match function.
+>
+>> > Also, the "port@X" nodes only exist for the OF graph connections to
+>> > connectors and/or muxes (this series doesn't deal with the latter).
+>> > For directly connected devices, there is a "device@X" child node
+>> > directly under the USB hub node. That node is what gets tied to the
+>> > the USB device.
+>> >
+>>
+>> Is this a problem? I don't think I understand what you're saying here.
+>
+> It shouldn't be. I'm just saying there would be different behavior on
+> the USB side for connectors vs onboard devices (like hubs) device nodes.
+>
+> I talked to Greg earlier, and he said not to touch the hub driver; the
+> hub driver should only deal with features from the USB spec. The
+> "onboard USB devices" driver is what should be used. And this would
+> be a proper case of adding an auxiliary device to the M.2 slot driver.
+>
 
-After several debugging sessions, assisted by the Claude LLM, the
-problem was narrowed down as follows:
+The onboard USB device is what initially inspired the PCI pwrctl code so it
+doesn't surprise me we circle back to it.
 
-nf_flow_table_extend_ct_timeout() extends ct->timeout for offloaded
-flows using:
+> However this seems to completely decouple the power sequencing from the
+> USB core. Take the USB A connector for example, it was recently added to
+> the onboard USB devices driver. However the connector has a device node
+> that is not a child node of any USB host controller or hub; it is connect=
+ed
+> through OF graph. At the same time, since it typically sits at the top
+> level of the device tree, a platform device is directly created and the
+> driver subsequently binds to that device. This is totally different from
+> how the hub and other directly connected onboard USB devices work. In
+> the onboard device case, the device node is a child node of the USB hub
+> or controller, and the corresponding platform device only gets created
+> when the USB hub driver probes, thereby sort of tying it into the USB
+> device topology.
+>
 
-	cmpxchg(&ct->timeout, expires, new_timeout);
+Which is precisely what we do for PCI pwrctl. Though I'm not sure how we co=
+uld
+replicate this behavior without touching the hub driver.
 
-'expires' comes from nf_ct_expires(ct) and is a relative value, while
-ct->timeout holds an absolute timestamp. The two are never equal, so
-the cmpxchg always fails and the timeout is never extended.
+> If the power sequencing ends up not connected to the USB subsystem, then
+> maybe the M.2 slot driver could just check if the USB port (port@3) was
+> used, and just enable the USB / BT pwrseq target at probe time? That
+> would mean less changes needed.
+>
 
-This goes unnoticed for most flows, but a long-lived hardware (WED)
-offloaded flow on MediaTek MT7986 eventually has ct->timeout decay to
-zero, the conntrack entry is reaped and the connection breaks.
+That sounds sane to me.
 
-Open-code the relative value from a single READ_ONCE(ct->timeout)
-snapshot and compare against that same absolute snapshot in the
-cmpxchg, so the timeout extension actually takes effect while the
-datapath remains authoritative if it updates ct->timeout concurrently.
-
-Suggested-by: Florian Westphal <fw@strlen.de>
-Fixes: 03428ca5cee9 ("netfilter: conntrack: rework offload nf_conn timeout extension logic")
-Cc: stable@vger.kernel.org
-Signed-off-by: Adrian Bente <adibente@gmail.com>
----
-v2:
-  - open-code expires from an absolute READ_ONCE(ct->timeout) snapshot
-    instead of the relative nf_ct_expires() value (Florian Westphal)
-  - change min_timeout to s32 to keep the comparison signed
-  - initialise new_timeout to 1 instead of true
-
- net/netfilter/nf_flow_table_core.c | 13 +++++++++----
- 1 file changed, 9 insertions(+), 4 deletions(-)
-
-diff --git a/net/netfilter/nf_flow_table_core.c b/net/netfilter/nf_flow_table_core.c
-index 3313f82..a2d08e5 100644
---- a/net/netfilter/nf_flow_table_core.c
-+++ b/net/netfilter/nf_flow_table_core.c
-@@ -500,8 +500,13 @@
-  */
- static void nf_flow_table_extend_ct_timeout(struct nf_conn *ct)
- {
--	static const u32 min_timeout = 5 * 60 * HZ;
--	u32 expires = nf_ct_expires(ct);
-+	static const s32 min_timeout = 5 * 60 * HZ;
-+	u32 ct_timeout = READ_ONCE(ct->timeout);
-+	s32 expires;
-+
-+	expires = ct_timeout - nfct_time_stamp;
-+	if (expires <= 0) /* already expired */
-+		return;
- 
- 	/* normal case: large enough timeout, nothing to do. */
- 	if (likely(expires >= min_timeout))
-@@ -519,7 +524,7 @@ static void nf_flow_table_extend_ct_timeout(struct nf_conn *ct)
- 	if (nf_ct_is_confirmed(ct) &&
- 	    test_bit(IPS_OFFLOAD_BIT, &ct->status)) {
- 		u8 l4proto = nf_ct_protonum(ct);
--		u32 new_timeout = true;
-+		u32 new_timeout = 1;
- 
- 		switch (l4proto) {
- 		case IPPROTO_UDP:
-@@ -544,7 +549,7 @@ static void nf_flow_table_extend_ct_timeout(struct nf_conn *ct)
- 		 */
- 		if (new_timeout) {
- 			new_timeout += nfct_time_stamp;
--			cmpxchg(&ct->timeout, expires, new_timeout);
-+			cmpxchg(&ct->timeout, ct_timeout, new_timeout);
- 		}
- 	}
- 
--- 
-2.43.0
-
+Bartosz
 
