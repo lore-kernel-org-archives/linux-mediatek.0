@@ -4,99 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A26BCD5BD1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2026 09:06:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8666DCD5BD1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2026 09:29:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HXwHjuQDu8ibUYMF90MOYbBP5MlSflxyRi1EYtgFSNE=; b=j2rHmecYlgHnGlQDZtUbI2+RV7
-	puhN4ckgFNkGg9erI5SjRfcRTO4KI0Cn0pi/CNPefgxRHZXGv8QPcQEt7KoYnCX53nj7ey8l0y/tJ
-	RQD+06q30Q/hSUeCtP/hxVt4xUnRat3hAwtdadP2xYzDm7RlHYXhLLMiBmoMtPviQgDLBoiX1re6W
-	UyKHSK4k8laf7toEXZ8moRjBVSsWU/gjXXBZ6lrm7uETHaDebuzoQ60Fbhi9ohrmqsA4bWyLQTRHE
-	O2ZtupVVkvmFdjjJsiWH1MHctaChhNLKOsc0wAtKkCuhDuTK/UXfInkvEeHcqsHXXOiDlOREpJ1IU
-	XhPm89gQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=RBWMq60AwDT71lXHyf/bfDDbjfiWdp2HdqQcnoI9g+Y=; b=VguiANh8HhchW0o7wGIC4zwf7p
+	U59vTQTIFkrArlfChTqZ9zMnPS7fqsDUpHd2CvSUWLdpG6dMS2sqQwI1Z8z7/LMusS7ghGvfIfRhD
+	1dHoF8wFF0l3Wg/e+KDARbfi9xY4mQYAY2R9x6oAcfS6LIT3MseIqq33XprPLAd5ft7hdVlFwA8oV
+	mamWdZ2AzHn1DGvqbVBXJaJV/fiCzWi3IbqfANVeDbQdMs/+67tH8FM35Gqvtj/tEuLKVp0WfiCc9
+	JctcIn3d06BQlUTWRvMljrO5GJq1JIrqrtdYaJwN+EAYT6Blj8VpmBlMVC0BdtcWCCiV1OwbvrAgS
+	ObmT6Glg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSWhB-00000005SxJ-2LPv;
-	Thu, 28 May 2026 09:06:29 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1wSX3K-00000005VTt-3y13;
+	Thu, 28 May 2026 09:29:22 +0000
+Received: from mail.mdapi.ch ([31.3.128.54])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSWh8-00000005Sv1-1wQ9
-	for linux-mediatek@lists.infradead.org;
-	Thu, 28 May 2026 09:06:28 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-4903f7a90d1so54949505e9.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 28 May 2026 02:06:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1779959184; x=1780563984; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=HXwHjuQDu8ibUYMF90MOYbBP5MlSflxyRi1EYtgFSNE=;
-        b=QoYZg43Qh3tS2apmnZvQimVV4AsbjJPp3jh+8JsNF7jxs0lZiUC+Mr+v/xnrKR2TK7
-         L+MrqNMOhCsbeytHKe4R1ifnzDiylfZuJjIoMHm5aH8i8YaL5oQRMHWsakAVyqcKZYNO
-         Td4peJ/X64qaBeydCHDm63GxjqgU8SANF61TwIt51jOJl1g15NZ44wMZNvJjs/u8/33v
-         XXRYequUjWLWDuSYsM0sA3N4q+P04k7RdKWJ77oGi+46QncPHvVxby0nnpqwHQEEis9U
-         4bvU6gL7IeDV+fS9gMe6+UFWRY05/Y/UqkkFcJyUGfEsxnVB914duKwW13xqLovY7Vw0
-         heFQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779959184; x=1780563984;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=HXwHjuQDu8ibUYMF90MOYbBP5MlSflxyRi1EYtgFSNE=;
-        b=iDU+MroaAzhnwiuEygT8X7xR1P3pj7Plkfi03GQgxgZNE49KuNLd6Q5kdKA8rVoi5L
-         sclpPNio/6Hm/ZVjXWHAU/WbK/UX2QPDegHpFAwJUr03AXLi/XOtw78qkmJn4tF5vV+P
-         efyr+3nbPI0FOIRFNLz0+Z+u9HqahGRgND3UjNgGKZZIjkPC6cNKmv1MYFU8idBpmJo0
-         pv8et7vQ4K54+eXfGnYpa4ZjaO5iqysIe1WIrdlNPdgLz/WYhiPXR3RPX8hFDFzXjPcD
-         VqdsGYWQ+M83XM7qmy9ONA3833/2MI9ZtNlHqLiVifvPY1ue0SZ+klrlMi4cmZRHc59z
-         ID3w==
-X-Forwarded-Encrypted: i=1; AFNElJ+EP+cxsQRLp+/EYpo6YlRerdIML4qxGErtTfv2ytKxQkV5YPhz5b30AGtxS8uRY0VNaA26g26rYSRzW4wN+w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxI0atnR03yUzr/u0XFpYU8owRoEi5xMmz8cv+GUQnHeGkPFpI0
-	jtC8D9qmMcMMeNpE8VzhGktd1nM2jyR1PjEqPPdql6I/nrQPfx34n4TvSTvFqSbCX4o=
-X-Gm-Gg: Acq92OH3RCWhfMuvKNJc9qaoOxmgX26HUymeuMQfACKnlgnEToh3DRcRjtwWKAxuYBU
-	DBxbVmSiGcAlyGFUM1rl4852ZXcQDOC4ukAQ9FGiXzaSJV766H6Gf0drble2N1EtKpWOtvG9oIp
-	Qz11sQA72BhbWbqAv/Yqaud9+3gkCNqj5PC2RqVj+mQ5JcK1Mg5GUv6kdOym7d1qcE8kljFTIdS
-	S2psS0FiVzoZM8HJRP8wWV4OKstDqoMAbDYJ95F/u2YRQRlvrIAWE/8LjgIlIZI3L2iGl2wBBZT
-	nzpxMtFEE38zboOTggqv8D043YuR1iHnu7JDzSugcsrpCAbs41QtGYWRyGA+3CB+/jIzB2UaZGo
-	hFsp7DcaRBDtpi+ZcUihCGOtYYCY6IiCWzEs8kJCArzZFvoLCI0xPzS5c/fPDJC2cvIM4ezOwER
-	6KOUgjJV42Rn+kjfzBCDXtPnqA7X1ELNTrGkj4pCDFrrX/pLNJS9ylfm2OkOeeLhaV2R+K0vvsh
-	YfjOo4axzvWG6Mk2IJo3le4idoDwkcEgcLh
-X-Received: by 2002:a05:600d:644d:20b0:490:3cb4:f1b3 with SMTP id 5b1f17b1804b1-490426c5a3dmr316858035e9.16.1779959183906;
-        Thu, 28 May 2026 02:06:23 -0700 (PDT)
-Received: from localhost (p200300f65f47db04e95e43453a0d1648.dip0.t-ipconnect.de. [2003:f6:5f47:db04:e95e:4345:3a0d:1648])
-        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-49092a92594sm25459615e9.13.2026.05.28.02.06.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 28 May 2026 02:06:23 -0700 (PDT)
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig=20=28The=20Capable=20Hub=29?= <u.kleine-koenig@baylibre.com>
-To: Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>
-Cc: Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Charles Keepax <ckeepax@opensource.cirrus.com>,
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
-	linux-sound@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	id 1wSX3H-00000005VSC-39Rt;
+	Thu, 28 May 2026 09:29:21 +0000
+From: Martino Dell'Ambrogio <tillo@tillo.ch>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=tillo.ch; s=mail202603;
+	t=1779960544;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=RBWMq60AwDT71lXHyf/bfDDbjfiWdp2HdqQcnoI9g+Y=;
+	b=DVKDwUocZsY6DVhSdwB4+1tZrA5DhMQjw2FZ4v28MoYEf6DUk94N7Yi+DFHdsbkrHDNv2g
+	p8b6dCOeGhVpMgxWmhwdknvwCxnUX3Lr++DQFSdKuruevu6hSH6mp8rngFO9sSs0BxpYAv
+	OUB62kO4EbOLngcXnBTbTqexJgSKRoDK9d6xlv8WztYHovWhwE27GCu8umJskJFEaDCYy8
+	tlBMmKoo4cOEsQWwNI0CNcwjGsRVvNBSn+9AzPbemdRqst5Mqgs1CWBUExuFz/heRKbAjV
+	FmxJAD8Z0DB9UaYAR8ZZv7nv/jhtUcIWtxjeXWygQYlXwLvIGxH5i+MZqKvD7g==
+To: matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com
+Cc: kees@kernel.org,
+	tony.luck@intel.com,
+	gpiccoli@igalia.com,
+	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v1 1/4] ASoC: codecs: mt6357: Drop unused assignment of platform_device_id driver data
-Date: Thu, 28 May 2026 11:06:00 +0200
-Message-ID: <11da50a7e2ab846fa5f008a07d0fe55c7f9ae2a2.1779958164.git.u.kleine-koenig@baylibre.com>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <cover.1779958164.git.u.kleine-koenig@baylibre.com>
-References: <cover.1779958164.git.u.kleine-koenig@baylibre.com>
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Martino Dell'Ambrogio <tillo@tillo.ch>
+Subject: [PATCH] arm64: dts: mediatek: mt7988a-bananapi-bpi-r4: add ramoops region
+Date: Thu, 28 May 2026 11:28:07 +0200
+Message-ID: <20260528092807.1936177-1-tillo@tillo.ch>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=979; i=u.kleine-koenig@baylibre.com; h=from:subject:message-id; bh=j6jOumpq5gAt03JpOtXtKkMmLQ9/IfPUPKwsJ+irT0M=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBqGAV6JWW05p9YMuTnCUN+tAfzN5KlSlBte2zuO Fe1Vyee5uCJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCahgFegAKCRCPgPtYfRL+ Tmv5B/9QxmexYBMfr9rLI+7CIDpTjP/vYDNsSTrpVxW9VUTCBqpRAepHU/7+5jnlEOMw3i2QBr1 bpY3pgGiB2hzS1a9rHS6aBewtcB+AHs+QT+il1Ddcdxe3XxMyZ0ysDXnbstnK5rrCZOpHtSY2BV A0Tg83dKjiZpl65ycXph+21NMIgxARJPosjLKsJBU5DWkuubT1nSlKsSqRtb2c5NEXOPkYNX8SU H2GmPWthgRl6Z30z+dQ1A7+AS7mTXllZnT8M+9m2OH5k3TO88Ui3cYju7+wltsJ6wAa9HAGfMES M4nXnd2xR5w7av8C+pvvGsa5mnZwoS0L1W96hJnZXlsyYUph
-X-Developer-Key: i=u.kleine-koenig@baylibre.com; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260528_020626_551362_8E059A86 
-X-CRM114-Status: GOOD (  14.34  )
+X-CRM114-CacheID: sfid-20260528_022920_131306_AAA69EE1 
+X-CRM114-Status: UNSURE (   9.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,33 +71,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The driver explicitly set the .driver_data member of struct
-platform_device_id to zero without relying on that value. Drop this
-unused assignments.
+Reserve 1 MiB of RAM just below the ARM Trusted Firmware secmon region
+(0x42f00000-0x43000000) for persistent kernel log storage via pstore/ramoops,
+allowing post-panic console output and oops dumps to be recovered after a
+reboot. Without it, kernel crash logs on this board are lost when the SoC
+warm-resets and the on-chip console buffer is reinitialised.
 
-While touching this array unify spacing, use a named initializer for
-.name and drop a trailing comma after the list terminator.
+The record sizes (128 KiB kmsg records, 256 KiB rolling console, 64 KiB
+ftrace, 64 KiB pmsg) sum to 512 KiB; the remainder of the 1 MiB carve-out
+is used for the ECC parity blocks (ecc-size=16, one Reed-Solomon block per
+record) which significantly improves dump readability when the panic path
+truncates writes mid-record.
 
-Signed-off-by: Uwe Kleine-König (The Capable Hub) <u.kleine-koenig@baylibre.com>
+The carve-out sits immediately below the ATF region already declared at
+0x43000000 in mt7988a.dtsi, so no other reserved-memory child is moved or
+resized. BPI-R4 ships with at least 4 GiB of DRAM starting at 0x40000000,
+so the region is well within installed memory on every variant.
+
+For the carve-out to actually preserve content across a reset, the boot
+loader must also avoid touching this region on warm reset; on standard
+BPI-R4 boards with the stock OpenWrt U-Boot fork this already holds.
+
+Signed-off-by: Martino Dell'Ambrogio <tillo@tillo.ch>
 ---
- sound/soc/codecs/mt6357.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ .../boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi   | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/sound/soc/codecs/mt6357.c b/sound/soc/codecs/mt6357.c
-index 674cf7df9df4..3b07087e1cab 100644
---- a/sound/soc/codecs/mt6357.c
-+++ b/sound/soc/codecs/mt6357.c
-@@ -1834,8 +1834,8 @@ static int mt6357_platform_driver_probe(struct platform_device *pdev)
- }
- 
- static const struct platform_device_id mt6357_platform_ids[] = {
--	{"mt6357-sound", 0},
--	{ /* sentinel */ },
-+	{ .name = "mt6357-sound" },
-+	{ /* sentinel */ }
+diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+index 0ff69da..f7d4944 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+@@ -80,6 +80,18 @@ sfp1: sfp1 {
+ 	};
  };
- MODULE_DEVICE_TABLE(platform, mt6357_platform_ids);
  
++&{/reserved-memory} {
++	ramoops@42f00000 {
++		compatible = "ramoops";
++		reg = <0 0x42f00000 0 0x100000>;
++		record-size = <0x20000>;
++		console-size = <0x40000>;
++		ftrace-size = <0x10000>;
++		pmsg-size = <0x10000>;
++		ecc-size = <16>;
++	};
++};
++
+ &cci {
+ 	proc-supply = <&rt5190_buck3>;
+ };
 -- 
 2.47.3
 
