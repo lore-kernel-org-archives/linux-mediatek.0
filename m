@@ -4,63 +4,174 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35CB3CD4F54
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2026 12:57:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FCBCCD6E44
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 May 2026 13:42:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=cY5Pw5Fw5HnSfYI9TBtsN/B4IRA/O/mEHcqrP+bM2Ac=; b=XquW5l78pLsz+RemvAMQ74lzsX
-	DgEn6F0HveSwFe9d31/d/6Qq1j6yiUnJgpv+g/0BQUH/uGXN2jigz71Vl+RV667X0POq+4BrrPnz3
-	ZY187cqliZO3c19miad8O6QmSLdqcIGGbKsDqyvHOK++FL5s6zlXMhzMTKo2JgRz0QfTCTxd7W/xA
-	7ncWa4slq15B6dC8ZcrfroMXOQUE6iFXzjhjaoGJgvqUAHz49PX3vu6xisGJ6ANho9KX3bEHqnXCc
-	RU2hwi5xnbz5Fudm4hXmx+NdR5rT2FB+x9e2EdxBVBnd7E7lsDcbLExQSbF8dKsJKmu9AETy31vX8
-	EFcEbLiw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Gd1DHxxfGusL+vMhQNbMsasLYwmdeR0Mm6edwsg+rDQ=; b=B5SDEZXD/dji97p8SYMAt3CYvI
+	UbfYfK72ckPi9yel829W+i4yMsuOeCsgr/45XSU7e4v1YiqxPKxlnRv1oGfXSC3g9KPqk/NDmI+fI
+	0zM2jEogAr1ICm5IyTd1RI8uMyTBTyrYVu8gyNhFCNyGVP4iwGAcLEEO3INT7EIP9U2dGmbTSR3gK
+	EQc8rCyujTo40XjwNXyvkpCdJoMKIBHm1IKORNI1yB7wK0n8EQq5WZIWCdyjtCOJXSP+IBgAjiNar
+	AFFogB2b04ocVYUi+4VzqUns9FbV2dh3J6Wtx+OP6pHkaQhMgHsTpT594hQCQ5k2201GOczFNCxZi
+	U8NSU4bA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSaJ0-00000005koI-0pfr;
-	Thu, 28 May 2026 12:57:46 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wSb0O-00000005nbP-159h;
+	Thu, 28 May 2026 13:42:36 +0000
+Received: from mgamail.intel.com ([198.175.65.17])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSaIz-00000005ko5-18Px;
-	Thu, 28 May 2026 12:57:45 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 0F4FE60547;
-	Thu, 28 May 2026 12:57:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3B5C71F000E9;
-	Thu, 28 May 2026 12:57:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779973063;
-	bh=cY5Pw5Fw5HnSfYI9TBtsN/B4IRA/O/mEHcqrP+bM2Ac=;
-	h=From:Date:Subject:To:Cc;
-	b=ecCfVEbSVg1rXMJTZ7n0bLPHbA1G0wcBPyIJe2sYjmfG/hIfAEwygxxWsF9Z+ko5J
-	 vrRyhRWrBIBVhdwUeOjmD24oihiSYN28Eu3ry+PMEhYMjjZpdngD9n0WuxCicbAPxH
-	 nRAGTLspizCsHenxnegu00e/EgdYjOgBmdb/zq5X3ek9hZZu2oToQU/25cwEG4wLz7
-	 XoUBh4NNABpYtDEIffPMD0qRarhwjmULZJ0OffshNYxF0GI7Y1f1S/HsRe/eS5w6Jk
-	 FaUlHPgSy86tr9Mek1299ehQ3wwnkXPlDQU4xoRypUz8leNpzwELtYKWkL0GkvV0FX
-	 e5EO2w7J4Xrfw==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Thu, 28 May 2026 14:56:56 +0200
-Subject: [PATCH RFC net-next v3] net: airoha: Add TCP LRO support
+	id 1wSb0L-00000005nai-3v23;
+	Thu, 28 May 2026 13:42:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1779975754; x=1811511754;
+  h=message-id:date:subject:to:cc:references:from:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=fsH2tVcVISWYC17P2a4z1DQ/1dQVU+cruUm0NciGbrA=;
+  b=P+EcTAhFq6ZMTExC9WmOF/OswuHATA6Ho9B/Co1nW+4ZUPaUlFDF6R9D
+   RuhL+qO+EzqtZ5jcsqPemUIVybCcczYstBZwKxAobrmmQiEB7FhE30TOS
+   FWR7jWSIgNf/EBR4V21WPhq66qtNi4nTNdKQ4z8Nup9N0IZoihbmHxurR
+   3VxeMtcqsjR1nt+JMHFaBuq8e6MqMxsK7Fh9a+VMTDI2WUC8rNQkTQPPG
+   fZhRWGHTGhaFXbDimAZuMwTbDn3RnM/+hETs+hyE15WGpyH60KUd35eXr
+   8nTAfwihFauR+jTGaaVhdS6/MvOHGrEFmwej8T9wRBGPFaq08kepbfHj/
+   g==;
+X-CSE-ConnectionGUID: 8m2hHWLdQqiO0KfOSzV44A==
+X-CSE-MsgGUID: CbRz0PinR1CmdiQOWNP5OQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11799"; a="80809388"
+X-IronPort-AV: E=Sophos;i="6.24,173,1774335600"; 
+   d="scan'208";a="80809388"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 May 2026 06:42:33 -0700
+X-CSE-ConnectionGUID: gOy+CWT1RACUdJJzdnBJMQ==
+X-CSE-MsgGUID: Uo9Vw152T4yaMsfmP2Z3Ww==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.24,173,1774335600"; 
+   d="scan'208";a="244377481"
+Received: from fmsmsx903.amr.corp.intel.com ([10.18.126.92])
+  by fmviesa004.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 May 2026 06:42:32 -0700
+Received: from FMSMSX903.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37; Thu, 28 May 2026 06:42:32 -0700
+Received: from fmsedg903.ED.cps.intel.com (10.1.192.145) by
+ FMSMSX903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37 via Frontend Transport; Thu, 28 May 2026 06:42:32 -0700
+Received: from SJ2PR03CU001.outbound.protection.outlook.com (52.101.43.22) by
+ edgegateway.intel.com (192.55.55.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37; Thu, 28 May 2026 06:42:30 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=FsJRO038vk06q3EMytk7BbFI5K8A+3zWEByK+ee/MPZTwoBLFdhAraDH7ZC1nyCJTTpoSGelCv0upEf6YqwSuS4AYUkbO5Iz+2FnBXAxHDX4D0QVC6Y+2Lrt3T1MDqgNVfSy2JfIzAOvRsGBkMl9K6jEHu8j4i1PUaYtmG2jpLAyhCbnlUBGnKZJjz/0y+40g84GEV7fkwgQg/tPpyX/yYe24lMGSQjxBLdUrAhGxZ4zR0GzhNicH4bPIRNdoWnAw7VPhloQlZPAE18keqrisQEtNo79dw1Ve9qV7dIPVZ8T69oO/QmgHG7kZAsfOjHJzaNfSEURkKwvd+8Nj0cGUg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Gd1DHxxfGusL+vMhQNbMsasLYwmdeR0Mm6edwsg+rDQ=;
+ b=UUYtz7vaDWAWpqDjFXkMn8wDcp0+GB6YW9jzvO+YZ3PjeMQe8/i4r4tw+SiVYz3pbTgD4k8gT/Ce8vtm199GEpMAmeMEZ2pooD0M926AHd3loiJlHHJ5s16qCc4Futae3dOGmwVqTpsSKIiALosLFxGgXu8kVotlFON7YAQUSg2P1ctgUtJrTm5u/03FJfVnFlhRK54EYXsdUIGcEr1/eH2oD5OHrUMMEzgci1w232NfYCP7unALPaMPjpqC6c3i17WzEjnxTUl81xqTM4LN7gWsgDD8WRAKKdlNIVJVfLPwPUmwOjxPRVu1ke6hIvf0KTr60YQD7ibpDKtJhmj+7w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from DS0PR11MB8718.namprd11.prod.outlook.com (2603:10b6:8:1b9::20)
+ by DSSPR11MB9666.namprd11.prod.outlook.com (2603:10b6:8:377::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.71.14; Thu, 28 May
+ 2026 13:42:24 +0000
+Received: from DS0PR11MB8718.namprd11.prod.outlook.com
+ ([fe80::6aa:411d:4bfa:619c]) by DS0PR11MB8718.namprd11.prod.outlook.com
+ ([fe80::6aa:411d:4bfa:619c%5]) with mapi id 15.21.0071.011; Thu, 28 May 2026
+ 13:42:23 +0000
+Message-ID: <433b9d9a-bd7c-44ad-b387-a789b326488e@intel.com>
+Date: Thu, 28 May 2026 15:42:18 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next 1/6] net: airoha: Introduce airoha_gdm_dev struct
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+CC: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+	<davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
+	<kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Simon Horman
+	<horms@kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <netdev@vger.kernel.org>, Xuegang Lu
+	<xuegang.lu@airoha.com>
+References: <20260527-airoha-eth-multi-serdes-preliminary-v1-0-ec6ed73ef7fc@kernel.org>
+ <20260527-airoha-eth-multi-serdes-preliminary-v1-1-ec6ed73ef7fc@kernel.org>
+Content-Language: en-US
+From: Alexander Lobakin <aleksander.lobakin@intel.com>
+In-Reply-To: <20260527-airoha-eth-multi-serdes-preliminary-v1-1-ec6ed73ef7fc@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: DUZPR01CA0090.eurprd01.prod.exchangelabs.com
+ (2603:10a6:10:46a::8) To DS0PR11MB8718.namprd11.prod.outlook.com
+ (2603:10b6:8:1b9::20)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20260528-airoha-eth-lro-v3-1-dd09c1fb000e@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3WNwQoCIRRFf2VwnTFq42SrIOgD2kYLcV6jNGg8R
- SaG+ffEVRHxVpd7z3kLiYAOIjk0C0HILrrgSxCbhhir/QjUDSUT3nLZdryl2mGwmkKydMJAdTc
- wI6Rge8ZIgZ4IdzdX4ZVczqfGQ6Ie5kRupbUupoCv+i2zuvknzoyW48oYIXopQR0fgB6mbcCxu
- jL/5OUPzwvPd8C1gl4L1X/x67q+Ad6G0DP7AAAA
-X-Change-ID: 20260520-airoha-eth-lro-a5d1c3631811
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Alexander Lobakin <aleksander.lobakin@intel.com>, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- netdev@vger.kernel.org, Madhur Agrawal <madhur.agrawal@airoha.com>
-X-Mailer: b4 0.14.3
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS0PR11MB8718:EE_|DSSPR11MB9666:EE_
+X-MS-Office365-Filtering-Correlation-Id: 948e62f1-ea66-490b-c10d-08debcbef297
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|1800799024|366016|56012099006|4143699003|11063799006|22082099003|18002099003;
+X-Microsoft-Antispam-Message-Info: QKEtRq1BBoypbA1LvI+xgdHgD552KP2nD51ywDgLiJCnLMWO/Kdqc33ZB23EVcXqUtZpZ+CRqxXHsdHZEDcjObjd18T9LzqDtF/d5OCj7JKeOZF4sE2iw5glpUU11mixV3D5NbId1GQBcIFQei9dNGI2Fl8brX/SOvYzo/XOdYPnG+UFKxzTVyiyD8UkW2D+j/W9StkLNDhSQCbNOZP1z96o/4glZ+/dF3hphM8O6zTcjDb4rX7DgkxeWQ4aa293gv2NH0akrMd6Cp6ooqkoKAu7kgagc5bt7AdftrMHr9WLvBKyopyF34z0SSKCXcp8x7Ul6oofwAvfBRt7tNavBG3QKu9vxeRiTrHG/c4XA+k61d+a1j/Kg5R4Rhal7bzE/DNVNdvOA/G7B/o47xLh+0kGSsJQMncovnhp6E4Sl6GCl2GUVXc/bw4p1B8qfDCidrfzJPpuVmyWbOhItdpqpo99DJ8evgX8wILD259pf4AoO9+3blDKAvcdsS4znugmMiB0+bPqV9d5EgA6htoCWVA8Tvy9GNlwz+/Z9qM4shHtVU4iugYyJOwbMqdppdO+GSISooImPZXaP82Lfwtwj/A3+9q22ehzDygXUE5dasoOY2inu0C5KG2Mb0XvLj7rNt3OepOnsa3BymzJynhq3lr378mekQTOPvxzLWSbOx14aY9z1eoSTTXOzJRtWoIn
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DS0PR11MB8718.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(1800799024)(366016)(56012099006)(4143699003)(11063799006)(22082099003)(18002099003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?NUdwN3JOaFM2VDZTc3lOb1lkcVdyMXZuOHd4M1BVR1BuMGN3bGgrbUd1c3hB?=
+ =?utf-8?B?bFFGVG5Rajc4MERNWGFON2tTcGV6SGJacldHNmdkaEJvb2ZtUS9FeG10eVZR?=
+ =?utf-8?B?NEhVdzkrSmsxQ3RQb3FYbUtjUnFZNUlEa1JWRXFOeFQwRmtTeFN3M3J3ZVYz?=
+ =?utf-8?B?VjBhVGl1K0ljdUJFWG1iR1QvdkZBQjhzVHIwQ2ZOaXRZTTdzdzgxeHk1RlBD?=
+ =?utf-8?B?VEFWUUlOWXNwRFFiVERRaWtBcGxZSHB1cU1oTW12R056bEY2cGdYSHdDdkV2?=
+ =?utf-8?B?aWVsbGhNMEZPVXhhK1R3bG15djVjazhlSEYwNTdBTmcvSlVoVXpTenZBMHJm?=
+ =?utf-8?B?UU9QUEFxNnlyR1lnVk1HalFJL2tXcXlDWWl2RnlObklUbkU2eUlNSEdNcDhD?=
+ =?utf-8?B?V1RZUUJTTDE2UGxodHBjVUxrbzg3cEFqZUIwYTBzNEtGVFRkdDhnOGczTy8w?=
+ =?utf-8?B?ZkM5VmQ1bWtreUd0WGo5Vlg2TVBNNitTMHJDOUJmVGdrTWg2eVlvT3IyM2hR?=
+ =?utf-8?B?M2VjRmwvUW1KRXNOUUxCemRnVk1mcHNGaXVIYkhtSlBmekZ3dE9MNkdiVCtp?=
+ =?utf-8?B?RmhPd3ZYMndRUWZGOTBHd3lzT1JWaFIwcHlobDlrS1JjWTZpRi9mdHdiMi9I?=
+ =?utf-8?B?Zlp1bXh0VjFQdXBWL1BrbGZwanFCUUFVVCtGUlhxQU1KUG8wRGFNZThMT0pE?=
+ =?utf-8?B?ZXZLVFZLWUkwbVpnNXpLek5KajFKSkVZd3hqZmx5SU9RbmNwRTlGdGpVSkxM?=
+ =?utf-8?B?NlJkcG1rd2wrU2I5UVRQS21PSlg3aHErNER2WTVBMUxQRlBLSU1kR3hpbXBE?=
+ =?utf-8?B?V3lIUndKaXRtaE1sZnhPek5jelM2NUtzOCtXRi9OL01MRDJ3U0ZtZWNQYVBh?=
+ =?utf-8?B?bTNZNFdqL0Urb0VuVFRGbDI4Y3Vwc25uLzNkMG1kaEM3NTMzZUwxNDhSYmxS?=
+ =?utf-8?B?cnlwQ2swNHVQTE1oOFdSS3VjUGJzZ2RnYXozZFRlNmhiNGhJTi9WRmxVOXdK?=
+ =?utf-8?B?dXRadXVDQ0FnakV2dy8wYTlLMk9VMnFGeDl3V29kajE2aUkyQkU1YU5vUmx1?=
+ =?utf-8?B?YnBVS0l0WjM4U0g1Z3QwOWlpanBsYk5kTHhzbmFkVnFnWGNSZWZBc2xhZWJE?=
+ =?utf-8?B?R3lNSGNDY0pGTkNvaGRvTzBnRzRLcjY2OUk4UFVpcTlqZDFVWHV2blZXZmdK?=
+ =?utf-8?B?VHZUSVF6b3I0TXZQcWtKZjVRbDhDZFZuOVROK3BvcEdFcmFQY283T1d1eTNU?=
+ =?utf-8?B?NXc4RlZpaUxhSUIrTFJ2SWpDbjhXVzZOOFg4ckE5ekdGNVVKaVpUQ2lydEhC?=
+ =?utf-8?B?VUJDbUpsMmpqalp3Wi9ERVVRNVRwUnBOdk5DdG1ib2dPK3p0TVRianF6M2Zq?=
+ =?utf-8?B?T20yWWZuaVVTcW5aQjZkQm9ncTVzL0l4eU84UTJmQy9OTXA4TmU1N29LV1M0?=
+ =?utf-8?B?Y0NUY2UvcHZIQlVKUkVGa0dHYzRIbmEvb3VET1NTVFpwUWZXUnVvNm9tZWVz?=
+ =?utf-8?B?ekZXcTA1RmZqQ1N5azhqTEFJcFRUblVmRjd1QThQTUk5a25MVkNzeFJnY2Z3?=
+ =?utf-8?B?WXhrb1J1VlpMY0wwSEhRajdmZU5hRm0wOHIvcE02Y0ZHVGx3Nm1tWFovc09X?=
+ =?utf-8?B?K3VKTGE5cU5sejdubTFBeHFNVmRXSFJ2a0xndndEOWFhNWV6WDJoODAwdXFI?=
+ =?utf-8?B?Um1qY3lJZmczMy8rV1BnekZqN0V3MUwydmhGQTJqVmVUak9BMlBUdlE0V056?=
+ =?utf-8?B?VENiMnFRd3ltR25xcjdHdkwrNW8wL0FJbXNEUGMyR2FUeGVZdWFqSVUxa1l6?=
+ =?utf-8?B?ZWxkNUFYUEJLd0FUUi81RTBVZVNNYmRSM2k5QkxjVmhtSVFZT3h6SHJWcHFZ?=
+ =?utf-8?B?dVFUcGN0bXZHZE1ERkxoZG9CWXhaendndUg1MnNGT2dXQnJia0dJQWZrT2Jt?=
+ =?utf-8?B?SG1HRy9QbVMzK1RkZFRoZXVqb0x4RzFaR0Nvbktab0ROd2Z2ajBLUkNTZG9j?=
+ =?utf-8?B?MUFLN2szS1Y3VHRTZjN5OXlocnpJdThBbFBFOEZkR3doUWQwZ2FJZVhlVHN4?=
+ =?utf-8?B?ZVY3TFBTQ2FmMUM4Q0Jzd2NYM0E4bTlsYVVNSUxaaEh1L3gzMkVmQWUvS0Vu?=
+ =?utf-8?B?aUIrY3hGeW9rVzkyMzlnY3RiKy9zTkgrdzlOS3RSbUhTc1JDUlptMXNwOGlx?=
+ =?utf-8?B?S28vajFUb1RQaVNBcUV5WU1rb2VHZ3NJNEwvUE1QcDVWazhRMGJuNjhZdG8x?=
+ =?utf-8?B?ZjhnY0t2RWtMVkcxU3Fpd1plbzhHZWpNRDFCbDZkSXhHMGxOdEltd0JTRllW?=
+ =?utf-8?B?RWtmT1ZSTGJkWHhWcDU2NERSOTNyOXlhV2N5YTZXZmJoaXBxOVlQbGoybE55?=
+ =?utf-8?Q?mDqZ+xSsTYK1oGoM=3D?=
+X-Exchange-RoutingPolicyChecked: MzCRj5MVrv2UbGwCVpP1bnD7A1cSZL2HF+GGA1IGPEtZnVT5KUkdPfLJbtkLS3zUahfot9MnVRq7+WAsiY5C+l5HqpvNnR9BvhMNizqjEechbN4ATyL2aOIkso6XztQydQphA0yqDcEayFEzUt3KGaUuC9s4Her2iy4fguS0KzZyzfdLFGcEOlppVSU44IMgiPALbEiLmaKINz4pe5ZN2OItVi68Jno9jqHz0SGBuQibflIPThnOx+M0k235S4/StudFiu/BWD2Z4blLVk/n13mdtxIVrLN5eJZX6U4B4FX0eAaSyzm3UKm6kuzca2pwCbqbgXkdvZw/vJLzVw0WOQ==
+X-MS-Exchange-CrossTenant-Network-Message-Id: 948e62f1-ea66-490b-c10d-08debcbef297
+X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB8718.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 May 2026 13:42:23.7287
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: efhUnCs8bsDT6SamyC0FP7MQ2M7FS+sS+lH6FinpZRnRtlicG4TqfJn/RPOxmlRFdRVlygDPwC/gn4ViABsM99fKF7SEpqgh9ypNy7NW47k=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DSSPR11MB9666
+X-OriginatorOrg: intel.com
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260528_064234_052817_409CE721 
+X-CRM114-Status: GOOD (  15.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,452 +186,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add hardware TCP Large Receive Offload (LRO) support to the airoha_eth
-driver, leveraging the EN7581/AN7583 SoC's 8 dedicated LRO hardware queues
-mapped to RX queues 24–31. LRO hw offloading does not support
-Scatter-Gather (SG) so it is required to increase the page_pool allocation
-order to 2 for RX queues 24–31 (LRO queues).
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Wed, 27 May 2026 12:21:15 +0200
 
-Performance comparison between GRO and hw LRO has been carried out using
-a 10Gbps NIC:
+> EN7581 and AN7583 SoCs support connecting multiple external SerDes to GDM3
+> or GDM4 ports via a hw arbiter that manages the traffic in a TDM manner.
+> As a result multiple net_devices can connect to the same GDM{3,4} port
+> and there is a theoretical "1:n" relation between GDM port and
+> net_devices.
+> Introduce airoha_gdm_dev struct to collect net_device related info (e.g.
+> net_device and external phy pointer). Please note this is just a
+> preliminary patch and we are still supporting a single net_device for
+> each GDM port. Subsequent patches will add support for multiple net_devices
+> connected to the same GDM port.
+> 
+> Tested-by: Xuegang Lu <xuegang.lu@airoha.com>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-GRO: ~2.7 Gbps
-LRO: ~8.1 Gbps
+[...]
 
-Please note with respect to the previous implementation, page_pool
-allocation order has been reduced from 5 to 2.
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
+> index d3781103abb5..c78cabbec753 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.h
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
+> @@ -535,10 +535,15 @@ struct airoha_qdma {
+>  	struct airoha_queue q_rx[AIROHA_NUM_RX_RING];
+>  };
+>  
+> +struct airoha_gdm_dev {
+> +	struct airoha_gdm_port *port;
+> +	struct net_device *dev;
 
-Tested-by: Madhur Agrawal <madhur.agrawal@airoha.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
-Changes in v3:
-- Fix double-free of the page_pool of airoha_qdma_lro_rx_process()
-  fails.
-- Set AIROHA_LRO_PAGE_ORDER according to PAGE_SIZE.
-- Add missig gso metadata for the LRO packet.
-- Link to v2: https://lore.kernel.org/r/20260526-airoha-eth-lro-v2-1-24e2a9e7a397@kernel.org
+Nit: we now have priv_to_netdev() (I hope I remember its name
+correctly), so that we no longer need to store a netdev backpointer in
+netdev_priv structures.
+Just an option, up to you.
 
-Changes in RFC v2:
-- Improve performances fixing buf_size computation.
-- Fix possible overflow in REG_CDM_LRO_LIMIT() register configuration.
-- Require the device to be not running before configuring LRO.
-- Fix configuration order in airoha_fe_lro_is_enabled().
-- Check skb header length in airoha_qdma_lro_rx_process().
-- Do not check net_device feature in airoha_qdma_rx_process() before
-  executing airoha_qdma_lro_rx_process() but rely on
-  airoha_qdma_lro_rx_process() logic.
-- Fix possible double recycle in airoha_qdma_rx_process() for LRO
-  packets.
-- Always use AIROHA_RXQ_LRO_MAX_AGG_COUNT macro for max LRO aggregated
-  fragments in airoha_fe_lro_init_rx_queue().
-- Link to v1: https://lore.kernel.org/r/20260520-airoha-eth-lro-v1-1-129cc33766e9@kernel.org
----
- drivers/net/ethernet/airoha/airoha_eth.c  | 222 ++++++++++++++++++++++++++++--
- drivers/net/ethernet/airoha/airoha_eth.h  |  24 ++++
- drivers/net/ethernet/airoha/airoha_regs.h |  22 ++-
- 3 files changed, 256 insertions(+), 12 deletions(-)
-
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 6418fe0c9f80..6d9b23ebc13e 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -12,6 +12,7 @@
- #include <net/dst_metadata.h>
- #include <net/page_pool/helpers.h>
- #include <net/pkt_cls.h>
-+#include <net/tcp.h>
- #include <uapi/linux/ppp_defs.h>
- 
- #include "airoha_regs.h"
-@@ -431,6 +432,48 @@ static void airoha_fe_crsn_qsel_init(struct airoha_eth *eth)
- 				 CDM_CRSN_QSEL_Q1));
- }
- 
-+static void airoha_fe_lro_init_rx_queue(struct airoha_eth *eth, int qdma_id,
-+					int lro_queue_index, int qid,
-+					int buf_size)
-+{
-+	int id = qdma_id + 1;
-+
-+	airoha_fe_rmw(eth, REG_CDM_LRO_LIMIT(id),
-+		      CDM_LRO_AGG_NUM_MASK | CDM_LRO_AGG_SIZE_MASK,
-+		      FIELD_PREP(CDM_LRO_AGG_SIZE_MASK, buf_size) |
-+		      FIELD_PREP(CDM_LRO_AGG_NUM_MASK,
-+				 AIROHA_RXQ_LRO_MAX_AGG_COUNT));
-+	airoha_fe_rmw(eth, REG_CDM_LRO_AGE_TIME(id),
-+		      CDM_LRO_AGE_TIME_MASK | CDM_LRO_AGG_TIME_MASK,
-+		      FIELD_PREP(CDM_LRO_AGE_TIME_MASK,
-+				 AIROHA_RXQ_LRO_MAX_AGE_TIME) |
-+		      FIELD_PREP(CDM_LRO_AGG_TIME_MASK,
-+				 AIROHA_RXQ_LRO_MAX_AGG_TIME));
-+	airoha_fe_rmw(eth, REG_CDM_LRO_RXQ(id, lro_queue_index),
-+		      LRO_RXQ_MASK(lro_queue_index),
-+		      __field_prep(LRO_RXQ_MASK(lro_queue_index), qid));
-+	airoha_fe_set(eth, REG_CDM_LRO_EN(id), BIT(lro_queue_index));
-+}
-+
-+static void airoha_fe_lro_disable(struct airoha_eth *eth, int qdma_id)
-+{
-+	int i, id = qdma_id + 1;
-+
-+	airoha_fe_clear(eth, REG_CDM_LRO_EN(id), LRO_RXQ_EN_MASK);
-+	airoha_fe_clear(eth, REG_CDM_LRO_LIMIT(id),
-+			CDM_LRO_AGG_NUM_MASK | CDM_LRO_AGG_SIZE_MASK);
-+	airoha_fe_clear(eth, REG_CDM_LRO_AGE_TIME(id),
-+			CDM_LRO_AGE_TIME_MASK | CDM_LRO_AGG_TIME_MASK);
-+	for (i = 0; i < AIROHA_MAX_NUM_LRO_QUEUES; i++)
-+		airoha_fe_clear(eth, REG_CDM_LRO_RXQ(id, i), LRO_RXQ_MASK(i));
-+}
-+
-+static bool airoha_fe_lro_is_enabled(struct airoha_eth *eth, int qdma_id)
-+{
-+	return airoha_fe_get(eth, REG_CDM_LRO_EN(qdma_id + 1),
-+			     LRO_RXQ_EN_MASK);
-+}
-+
- static int airoha_fe_init(struct airoha_eth *eth)
- {
- 	airoha_fe_maccr_init(eth);
-@@ -587,6 +630,97 @@ static int airoha_qdma_get_gdm_port(struct airoha_eth *eth,
- 	return port >= ARRAY_SIZE(eth->ports) ? -EINVAL : port;
- }
- 
-+static int airoha_qdma_lro_rx_process(struct sk_buff *skb,
-+				      struct airoha_qdma_desc *desc)
-+{
-+	u32 desc_ctrl = le32_to_cpu(READ_ONCE(desc->ctrl));
-+	struct skb_shared_info *shinfo = skb_shinfo(skb);
-+	u32 msg1 = le32_to_cpu(READ_ONCE(desc->msg1));
-+	u32 msg2 = le32_to_cpu(READ_ONCE(desc->msg2));
-+	u32 msg3 = le32_to_cpu(READ_ONCE(desc->msg3));
-+	u32 len, th_off, tcp_ack_seq, agg_count;
-+	u16 tcp_win, l2_len;
-+	struct tcphdr *th;
-+	bool ipv4, ipv6;
-+
-+	agg_count = FIELD_GET(QDMA_ETH_RXMSG_AGG_COUNT_MASK, msg2);
-+	if (agg_count <= 1)
-+		return 0;
-+
-+	ipv4 = FIELD_GET(QDMA_ETH_RXMSG_IP4_MASK, msg1);
-+	ipv6 = FIELD_GET(QDMA_ETH_RXMSG_IP6_MASK, msg1);
-+	if (!ipv4 && !ipv6)
-+		return -EOPNOTSUPP;
-+
-+	l2_len = FIELD_GET(QDMA_ETH_RXMSG_L2_LEN_MASK, msg2);
-+	len = FIELD_GET(QDMA_DESC_LEN_MASK, desc_ctrl);
-+	if (ipv4) {
-+		struct iphdr *iph;
-+
-+		if (!pskb_may_pull(skb, l2_len + sizeof(*iph)))
-+			return -EINVAL;
-+
-+		iph = (struct iphdr *)(skb->data + l2_len);
-+		if (iph->protocol != IPPROTO_TCP)
-+			return -EOPNOTSUPP;
-+
-+		th_off = l2_len + (iph->ihl << 2);
-+		if (!pskb_may_pull(skb, th_off))
-+			return -EINVAL;
-+
-+		iph->tot_len = cpu_to_be16(len - l2_len);
-+		iph->check = 0;
-+		iph->check = ip_fast_csum((void *)iph, iph->ihl);
-+	} else {
-+		struct ipv6hdr *ip6h;
-+
-+		th_off = l2_len + sizeof(*ip6h);
-+		if (!pskb_may_pull(skb, th_off))
-+			return -EINVAL;
-+
-+		ip6h = (struct ipv6hdr *)(skb->data + l2_len);
-+		if (ip6h->nexthdr != NEXTHDR_TCP)
-+			return -EOPNOTSUPP;
-+
-+		ip6h->payload_len = cpu_to_be16(len - th_off);
-+	}
-+
-+	tcp_win = FIELD_GET(QDMA_ETH_RXMSG_TCP_WIN_MASK, msg3);
-+	tcp_ack_seq = le32_to_cpu(READ_ONCE(desc->data));
-+
-+	if (!pskb_may_pull(skb, th_off + sizeof(*th)))
-+		return -EINVAL;
-+
-+	th = (struct tcphdr *)(skb->data + th_off);
-+	th->ack_seq = cpu_to_be32(tcp_ack_seq);
-+	th->window = cpu_to_be16(tcp_win);
-+
-+	/* Check tcp timestamp option */
-+	if (th->doff == (sizeof(*th) + TCPOLEN_TSTAMP_ALIGNED) / 4) {
-+		__be32 *topt;
-+
-+		if (!pskb_may_pull(skb, th_off + (th->doff << 2)))
-+			return -EINVAL;
-+
-+		topt = (__be32 *)(th + 1);
-+		if (*topt == cpu_to_be32((TCPOPT_NOP << 24) |
-+					 (TCPOPT_NOP << 16) |
-+					 (TCPOPT_TIMESTAMP << 8) |
-+					 TCPOLEN_TIMESTAMP)) {
-+			__le32 tcp_ts_reply = READ_ONCE(desc->tcp_ts_reply);
-+
-+			put_unaligned_be32(le32_to_cpu(tcp_ts_reply),
-+					   topt + 2);
-+		}
-+	}
-+
-+	shinfo->gso_size = (len - th_off - (th->doff << 2)) / agg_count;
-+	shinfo->gso_type = ipv4 ? SKB_GSO_TCPV4 : SKB_GSO_TCPV6;
-+	shinfo->gso_segs = agg_count;
-+
-+	return 0;
-+}
-+
- static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
- {
- 	enum dma_data_direction dir = page_pool_get_dma_dir(q->page_pool);
-@@ -636,9 +770,16 @@ static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
- 			__skb_put(q->skb, len);
- 			skb_mark_for_recycle(q->skb);
- 			q->skb->dev = port->dev;
--			q->skb->protocol = eth_type_trans(q->skb, port->dev);
- 			q->skb->ip_summed = CHECKSUM_UNNECESSARY;
- 			skb_record_rx_queue(q->skb, qid);
-+
-+			if (airoha_qdma_lro_rx_process(q->skb, desc) < 0) {
-+				dev_kfree_skb(q->skb);
-+				q->skb = NULL;
-+				continue;
-+			}
-+
-+			q->skb->protocol = eth_type_trans(q->skb, port->dev);
- 		} else { /* scattered frame */
- 			struct skb_shared_info *shinfo = skb_shinfo(q->skb);
- 			int nr_frags = shinfo->nr_frags;
-@@ -727,12 +868,10 @@ static int airoha_qdma_rx_napi_poll(struct napi_struct *napi, int budget)
- static int airoha_qdma_init_rx_queue(struct airoha_queue *q,
- 				     struct airoha_qdma *qdma, int ndesc)
- {
--	const struct page_pool_params pp_params = {
--		.order = 0,
-+	struct page_pool_params pp_params = {
- 		.pool_size = 256,
- 		.flags = PP_FLAG_DMA_MAP | PP_FLAG_DMA_SYNC_DEV,
- 		.dma_dir = DMA_FROM_DEVICE,
--		.max_len = PAGE_SIZE,
- 		.nid = NUMA_NO_NODE,
- 		.dev = qdma->eth->dev,
- 		.napi = &q->napi,
-@@ -740,9 +879,10 @@ static int airoha_qdma_init_rx_queue(struct airoha_queue *q,
- 	struct airoha_eth *eth = qdma->eth;
- 	int qid = q - &qdma->q_rx[0], thr;
- 	dma_addr_t dma_addr;
-+	bool lro_q;
- 
--	q->buf_size = PAGE_SIZE / 2;
- 	q->qdma = qdma;
-+	lro_q = airoha_qdma_is_lro_queue(q);
- 
- 	q->entry = devm_kzalloc(eth->dev, ndesc * sizeof(*q->entry),
- 				GFP_KERNEL);
-@@ -754,6 +894,9 @@ static int airoha_qdma_init_rx_queue(struct airoha_queue *q,
- 	if (!q->desc)
- 		return -ENOMEM;
- 
-+	pp_params.order = lro_q ? AIROHA_LRO_PAGE_ORDER : 0;
-+	pp_params.max_len = PAGE_SIZE << pp_params.order;
-+
- 	q->page_pool = page_pool_create(&pp_params);
- 	if (IS_ERR(q->page_pool)) {
- 		int err = PTR_ERR(q->page_pool);
-@@ -762,6 +905,7 @@ static int airoha_qdma_init_rx_queue(struct airoha_queue *q,
- 		return err;
- 	}
- 
-+	q->buf_size = lro_q ? pp_params.max_len : pp_params.max_len / 2;
- 	q->ndesc = ndesc;
- 	netif_napi_add(eth->napi_dev, &q->napi, airoha_qdma_rx_napi_poll);
- 
-@@ -1993,6 +2137,64 @@ int airoha_get_fe_port(struct airoha_gdm_port *port)
- 	}
- }
- 
-+static int airoha_dev_set_features(struct net_device *dev,
-+				   netdev_features_t features)
-+{
-+	netdev_features_t diff = dev->features ^ features;
-+	struct airoha_gdm_port *port = netdev_priv(dev);
-+	struct airoha_qdma *qdma = port->qdma;
-+	struct airoha_eth *eth = qdma->eth;
-+	int qdma_id = qdma - &eth->qdma[0];
-+	int i;
-+
-+	if (!(diff & NETIF_F_LRO))
-+		return 0;
-+
-+	/* reset LRO configuration */
-+	if (features & NETIF_F_LRO) {
-+		int lro_queue_index = 0;
-+
-+		if (airoha_fe_lro_is_enabled(eth, qdma_id))
-+			return 0;
-+
-+		for (i = 0; i < ARRAY_SIZE(qdma->q_rx); i++) {
-+			struct airoha_queue *q = &qdma->q_rx[i];
-+			u32 size;
-+
-+			if (!q->ndesc)
-+				continue;
-+
-+			if (!airoha_qdma_is_lro_queue(q))
-+				continue;
-+
-+			size = SKB_WITH_OVERHEAD(AIROHA_RX_LEN(q->buf_size));
-+			size = min_t(u32, size, CDM_LRO_AGG_SIZE_MASK);
-+			airoha_fe_lro_init_rx_queue(eth, qdma_id,
-+						    lro_queue_index, i, size);
-+			lro_queue_index++;
-+		}
-+	} else {
-+		for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
-+			struct airoha_gdm_port *p = eth->ports[i];
-+
-+			if (!p)
-+				continue;
-+
-+			if (p->qdma != qdma)
-+				continue;
-+
-+			if (p->dev == dev)
-+				continue;
-+
-+			if (p->dev->features & NETIF_F_LRO)
-+				return 0;
-+		}
-+		airoha_fe_lro_disable(eth, qdma_id);
-+	}
-+
-+	return 0;
-+}
-+
- static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
- 				   struct net_device *dev)
- {
-@@ -2892,6 +3094,7 @@ static const struct net_device_ops airoha_netdev_ops = {
- 	.ndo_stop		= airoha_dev_stop,
- 	.ndo_change_mtu		= airoha_dev_change_mtu,
- 	.ndo_select_queue	= airoha_dev_select_queue,
-+	.ndo_set_features	= airoha_dev_set_features,
- 	.ndo_start_xmit		= airoha_dev_xmit,
- 	.ndo_get_stats64        = airoha_dev_get_stats64,
- 	.ndo_set_mac_address	= airoha_dev_set_macaddr,
-@@ -2989,12 +3192,9 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
- 	dev->ethtool_ops = &airoha_ethtool_ops;
- 	dev->max_mtu = AIROHA_MAX_MTU;
- 	dev->watchdog_timeo = 5 * HZ;
--	dev->hw_features = NETIF_F_IP_CSUM | NETIF_F_RXCSUM |
--			   NETIF_F_TSO6 | NETIF_F_IPV6_CSUM |
--			   NETIF_F_SG | NETIF_F_TSO |
--			   NETIF_F_HW_TC;
--	dev->features |= dev->hw_features;
--	dev->vlan_features = dev->hw_features;
-+	dev->hw_features = AIROHA_HW_FEATURES | NETIF_F_LRO;
-+	dev->features |= AIROHA_HW_FEATURES;
-+	dev->vlan_features = AIROHA_HW_FEATURES;
- 	dev->dev.of_node = np;
- 	SET_NETDEV_DEV(dev, eth->dev);
- 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index d3781103abb5..0cf2439e815f 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -43,6 +43,18 @@
- 	 (_n) == 15 ? 128 :		\
- 	 (_n) ==  0 ? 1024 : 16)
- 
-+#define AIROHA_LRO_PAGE_ORDER		order_base_2(SZ_16K / PAGE_SIZE)
-+#define AIROHA_MAX_NUM_LRO_QUEUES	8
-+#define AIROHA_RXQ_LRO_EN_MASK		0xff000000
-+#define AIROHA_RXQ_LRO_MAX_AGG_COUNT	64
-+#define AIROHA_RXQ_LRO_MAX_AGG_TIME	100
-+#define AIROHA_RXQ_LRO_MAX_AGE_TIME	2000 /* 1ms */
-+
-+#define AIROHA_HW_FEATURES			\
-+	(NETIF_F_IP_CSUM | NETIF_F_RXCSUM |	\
-+	 NETIF_F_TSO6 | NETIF_F_IPV6_CSUM |	\
-+	 NETIF_F_SG | NETIF_F_TSO | NETIF_F_HW_TC)
-+
- #define PSE_RSV_PAGES			128
- #define PSE_QUEUE_RSV_PAGES		64
- 
-@@ -661,6 +673,18 @@ static inline bool airoha_is_7583(struct airoha_eth *eth)
- 	return eth->soc->version == 0x7583;
- }
- 
-+static inline bool airoha_qdma_is_lro_queue(struct airoha_queue *q)
-+{
-+	struct airoha_qdma *qdma = q->qdma;
-+	int qid = q - &qdma->q_rx[0];
-+
-+	/* EN7581 SoC supports at most 8 LRO rx queues */
-+	BUILD_BUG_ON(hweight32(AIROHA_RXQ_LRO_EN_MASK) >
-+		     AIROHA_MAX_NUM_LRO_QUEUES);
-+
-+	return !!(AIROHA_RXQ_LRO_EN_MASK & BIT(qid));
-+}
-+
- int airoha_get_fe_port(struct airoha_gdm_port *port);
- bool airoha_is_valid_gdm_port(struct airoha_eth *eth,
- 			      struct airoha_gdm_port *port);
-diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethernet/airoha/airoha_regs.h
-index 436f3c8779c1..dfc786583774 100644
---- a/drivers/net/ethernet/airoha/airoha_regs.h
-+++ b/drivers/net/ethernet/airoha/airoha_regs.h
-@@ -122,6 +122,20 @@
- #define CDM_CRSN_QSEL_REASON_MASK(_n)	\
- 	GENMASK(4 + (((_n) % 4) << 3),	(((_n) % 4) << 3))
- 
-+#define REG_CDM_LRO_RXQ(_n, _m)		(CDM_BASE(_n) + 0x78 + ((_m) & 0x4))
-+#define LRO_RXQ_MASK(_n)		GENMASK(4 + (((_n) & 0x3) << 3), ((_n) & 0x3) << 3)
-+
-+#define REG_CDM_LRO_EN(_n)		(CDM_BASE(_n) + 0x80)
-+#define LRO_RXQ_EN_MASK			GENMASK(7, 0)
-+
-+#define REG_CDM_LRO_LIMIT(_n)		(CDM_BASE(_n) + 0x84)
-+#define CDM_LRO_AGG_NUM_MASK		GENMASK(23, 16)
-+#define CDM_LRO_AGG_SIZE_MASK		GENMASK(15, 0)
-+
-+#define REG_CDM_LRO_AGE_TIME(_n)	(CDM_BASE(_n) + 0x88)
-+#define CDM_LRO_AGE_TIME_MASK		GENMASK(31, 16)
-+#define CDM_LRO_AGG_TIME_MASK		GENMASK(15, 0)
-+
- #define REG_GDM_FWD_CFG(_n)		GDM_BASE(_n)
- #define GDM_PAD_EN_MASK			BIT(28)
- #define GDM_DROP_CRC_ERR_MASK		BIT(23)
-@@ -883,9 +897,15 @@
- #define QDMA_ETH_RXMSG_SPORT_MASK	GENMASK(25, 21)
- #define QDMA_ETH_RXMSG_CRSN_MASK	GENMASK(20, 16)
- #define QDMA_ETH_RXMSG_PPE_ENTRY_MASK	GENMASK(15, 0)
-+/* RX MSG2 */
-+#define QDMA_ETH_RXMSG_AGG_COUNT_MASK	GENMASK(31, 24)
-+#define QDMA_ETH_RXMSG_L2_LEN_MASK	GENMASK(6, 0)
-+/* RX MSG3 */
-+#define QDMA_ETH_RXMSG_AGG_LEN_MASK	GENMASK(31, 16)
-+#define QDMA_ETH_RXMSG_TCP_WIN_MASK	GENMASK(15, 0)
- 
- struct airoha_qdma_desc {
--	__le32 rsv;
-+	__le32 tcp_ts_reply;
- 	__le32 ctrl;
- 	__le32 addr;
- 	__le32 data;
-
----
-base-commit: fabcf8cad67b4e2aa51b4c3f79f26fd215b50c8c
-change-id: 20260520-airoha-eth-lro-a5d1c3631811
-
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
-
+> +	struct airoha_eth *eth;
+> +};
+> +
+>  struct airoha_gdm_port {
+>  	struct airoha_qdma *qdma;
+> -	struct airoha_eth *eth;
+> -	struct net_device *dev;
+> +	struct airoha_gdm_dev *dev;
+>  	int id;
+>  	int nbq;
+>  
+Thanks,
+Olek
 
