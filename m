@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A60AFCD6E54
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97879CD6E52
 	for <linux-mediatek@archiver.kernel.org>; Fri, 29 May 2026 10:32:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
@@ -12,45 +12,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t9vvjtDIEBfcdNsulbK87Vs/KC1xYwRXbUVPVL1hO4Y=; b=RgUyQEaL6lSYtQlAtHhZpM0p1h
-	h9gtHTdsLDaJ0mP1JGmgRTFlfFsuPwgZgCul0iKq1XVSWC17aYie226asMIQoSTzHaT5MfMv1GGyR
-	U/7un2zgS64mPATgd1baP+mE6lwtZZUGqD1vLgUhHd+3ByQ71lHM31UUHLt5pOI6qMrljhQQkuoFs
-	35jo2ufuDPiRU9fDH2r2+RISIyZYNfbg8h9agsS1Rjx5vn8dE2f1nbr4WMr1bpOAVmHl1PGb1fiEV
-	IIrUsywtWNcTS96vq5MCX057HUXmDmzQ1k0NC57it/e1xnqdDBP+FgJ+oU8eXQ7AYX6jJ+QQCM8V5
-	9Jo4+T4g==;
+	bh=dAxOr+UrMiKLX348f8V0QvPR2Gp1JdOWAltRuAUivgQ=; b=mHC42SDc6Ik4xDJRrMvzSpXNQQ
+	JTeCoTUuMW25kfwTdwAtHKMIJLNkIzDpRxXVuAWtX/sk/tLYiHOcUq+4vPgPiUaBIUuEiS9n1CBzI
+	ABw4u3LVmMUNyEpdGtEKp4iFUm9FG8re8epz3SPKqea9F2sRuHYOL6bepcx5P0Lg47wEIJ+cSyaaY
+	tWC31A8i9ydoxI3gxff9FLQG+f7xoiYqac6Ymhk6NMd/nYqZrf6RpCN38mqAR14GSno+k7+XarVsJ
+	2kUskenaATC8FObS/K9uBdJTyBd1qOX7hvevpScBr/yb28ddV1Zqfpj6zlYoBlwPneSNguylKWg2J
+	OgDI/XFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSuVe-00000007Bz4-2BSX;
+	id 1wSuVe-00000007Byd-1JMB;
 	Fri, 29 May 2026 10:32:10 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSuVK-00000007Bni-1Ayk;
+	id 1wSuVK-00000007Bng-1B9c;
 	Fri, 29 May 2026 10:31:51 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 583C06056F;
+	by tor.source.kernel.org (Postfix) with ESMTP id E6EA260573;
 	Fri, 29 May 2026 10:31:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 08150C2BCF4;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 960AAC2BCF7;
 	Fri, 29 May 2026 10:31:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1780050708;
-	bh=F7YoooEG1Ly3JfEHC6LngQhftPWFAMcoIxhha+llrWM=;
+	bh=9tAc0Z4oQvFgzqHuXeryEaCW7SjssI7kXUsPPB0UTUk=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=rNZ4KmQ9s5dcdCTq+DmiUClwqXG5F6BmgYnppWG2hM3QPgHmVHvKVeeHUqp3OQaoh
-	 oc7U4IG1scSkPqPciWLW4rcK6Tmal3VhLy/xzzkKTwuS9roaCpY3gO5nNBN0RJjiyQ
-	 39UCv40lIhwDbW+Gosm1JA8FZAmUiwoyC81uNT4ohsiO3rDAi3asJ4s5sXTSfIYLrk
-	 W7c7Jqlof4vi+tBqmCxMBX1DTJUtDxaBv+sxSwd6soQSq3MeqiNgjcQ4QKj6EgXfFj
-	 gNcCdN/cYoXAP/fMlZoJst9mE7QBMr1C0HCgUlQS84dChhPhULyRd6Phir9x70GivQ
-	 lCkmyVS0iii3A==
+	b=tkuyl8CHf9rdpF31qwsDYul/i6vKTJOoxh1NP/H9H5oiBXlv2kz/7S6KvV2tt8Ctg
+	 Ar9d/conW27LYHDAj0YyFlkpm+AgjyVGGByWZtM995S3zpJcEaI+RogzAKd3gFAGGL
+	 Pfs0PrxmRCIh+W7f3ZykIVkGamM+TYRPr3u53wWKDnvKV4VJoVw2CTYF4nSlFABZzz
+	 /JuR1hnZjwnT6umX/yrDUBozxYrW4of5dJwe+B4ecHOD8BDs2X4l7uuUg0jqhCf3He
+	 RnXbNVqtuTz80H/fYUO5s/hQmDa5v3IkVAbBsS4vP1D+qIxxcdk5MHJMUVs8EjUZXU
+	 pauehNsVtaG7Q==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F1EDECD6E4F;
-	Fri, 29 May 2026 10:31:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8C7C5CD6E50;
+	Fri, 29 May 2026 10:31:48 +0000 (UTC)
 From: Jack Wu via B4 Relay <devnull+jackbb_wu.compal.com@kernel.org>
-Date: Fri, 29 May 2026 18:31:42 +0800
-Subject: [PATCH 03/11] net: wwan: t9xx: Add control DMA interface
+Date: Fri, 29 May 2026 18:31:47 +0800
+Subject: [PATCH 08/11] net: wwan: t9xx: Add data plane transaction layer
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260529-t9xx_driver_v1-v1-3-bdbfe2c01e57@compal.com>
+Message-Id: <20260529-t9xx_driver_v1-v1-8-bdbfe2c01e57@compal.com>
 References: <20260529-t9xx_driver_v1-v1-0-bdbfe2c01e57@compal.com>
 In-Reply-To: <20260529-t9xx_driver_v1-v1-0-bdbfe2c01e57@compal.com>
 To: Loic Poulain <loic.poulain@oss.qualcomm.com>, 
@@ -70,11 +70,11 @@ Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  linux-doc@vger.kernel.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1780050704; l=94193;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1780050704; l=86030;
  i=jackbb_wu@compal.com; s=20260526; h=from:subject:message-id;
- bh=6zY9hH2yzdL+E87Fdlp45CYSgEOpStd+rrbO+GcrfwE=;
- b=LophdowvsLHkiZhsCQ1Q1g1Rln1Cr1efj9sskPkj2whGeVfo0Knk8yYpw/alrN9BcxZxR2B0u
- PM9k3wpl4DkD8RB8W0+tVef57EcVqkYYAyc4MRsPOUoTjOL9oVTLHli
+ bh=Np6/kDyVxKTrHw4ZLcnAlBRppZXzzQJUBe98NM9SOwQ=;
+ b=sHrnAlNsOOXN9+KeXGW4oOoIiQIaC5bgKZTgEG/nUQq+xO4ra13UYjpGHcvbXF8i4g3qPgd0x
+ WnWXkt1011kA32Dy/TR7bl4Jysx9XaulfdqxYeQfZ2uwuWolWQR5/wn
 X-Developer-Key: i=jackbb_wu@compal.com; a=ed25519;
  pk=VH1prTWixNl8OEUPPSfII3p46MzJpQN8J3+ecE1tZXg=
 X-Endpoint-Received: by B4 Relay for jackbb_wu@compal.com/20260526 with
@@ -97,3197 +97,3080 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Jack Wu <jackbb_wu@compal.com>
 
-Cross Layer Direct Memory Access(CLDMA) is the hardware
-interface used by the control plane and designated to
-translate data between the host and the device. It supports
-8 hardware queues for the device AP and modem respectively.
+Data Path Modem AP Interface (DPMAIF) provides methods for
+initialization, ring buffer management, ISR, control and
+handling of TX/RX services' flows.
 
-CLDMA driver uses General Purpose Descriptor (GPD) to
-describe transaction information that can be recognized by
-CLDMA hardware. Once CLDMA hardware transaction is started,
-it would fetch and parse GPD to transfer data correctly.
-To facilitate the CLDMA transaction, a GPD ring for each
-queue is used. Once the transaction is started, CLDMA
-hardware will traverse the GPD ring to transfer data between
-the host and the device until no GPD is available.
+DPMAIF TX
+It exposes the function 'mtk_dpmaif_send' which can be
+called by the port layer indirectly to transmit packets.
+The transaction layer manages uplink data with Descriptor
+Ring Buffer (DRB), which includes one message DRB entry
+and one or more normal DRB entries. Message DRB holds the
+general packet information and each normal DRB entry holds
+the address of the packet segment. At the same time, DPMAIF
+provides multiple virtual queues with different priorities.
 
-CLDMA TX flow:
-Once a TX service receives the TX data from the port layer,
-it uses APIs exported by the CLDMA driver to configure GPD
-with the DMA address of TX data. After that, the service
-triggers CLDMA to fetch the first available GPD to transfer
-data.
-
-CLDMA RX flow:
-When there is RX data from the MD, CLDMA hardware asserts an
-interrupt to notify the host to fetch data and dispatch it
-to FSM (for handshake messages) or the port layer.
-After CLDMA opening is finished, All RX GPDs are fulfilled
-and ready to receive data from the device.
+DPMAIF RX
+The downlink buffer management uses Buffer Address Table
+(BAT), which includes normal BAT and fragment BAT, and
+Packet Information Table (PIT) rings. The BAT ring holds
+the address of the skb data buffer for the hardware to use,
+while the PIT contains metadata about a whole network packet
+including a reference to the BAT entry holding the data
+buffer address. The driver reads the PIT and BAT entries
+written by the modem. When reaching a threshold, the driver
+reloads the PIT and BAT rings.
 
 Signed-off-by: Jack Wu <jackbb_wu@compal.com>
 ---
- drivers/net/wwan/t9xx/mtk_ctrl_plane.c          |    3 +-
- drivers/net/wwan/t9xx/mtk_ctrl_plane.h          |   52 +-
- drivers/net/wwan/t9xx/pcie/Makefile             |    7 +-
- drivers/net/wwan/t9xx/pcie/mtk_cldma.c          | 1220 +++++++++++++++++++++++
- drivers/net/wwan/t9xx/pcie/mtk_cldma.h          |  170 ++++
- drivers/net/wwan/t9xx/pcie/mtk_cldma_drv.c      |  373 +++++++
- drivers/net/wwan/t9xx/pcie/mtk_cldma_drv.h      |  177 ++++
- drivers/net/wwan/t9xx/pcie/mtk_cldma_drv_m9xx.c |  182 ++++
- drivers/net/wwan/t9xx/pcie/mtk_cldma_drv_m9xx.h |  103 ++
- drivers/net/wwan/t9xx/pcie/mtk_ctrl_cfg_m9xx.c  |   23 +
- drivers/net/wwan/t9xx/pcie/mtk_pci.c            |   38 +
- drivers/net/wwan/t9xx/pcie/mtk_pci_reg.h        |    1 +
- drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.c     |  569 +++++++++++
- drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.h     |   84 ++
- 14 files changed, 2998 insertions(+), 4 deletions(-)
+ drivers/net/wwan/t9xx/Makefile               |    3 +-
+ drivers/net/wwan/t9xx/mtk_data_plane.c       |   92 +
+ drivers/net/wwan/t9xx/mtk_data_plane.h       |  103 +
+ drivers/net/wwan/t9xx/mtk_dev.h              |    1 +
+ drivers/net/wwan/t9xx/pcie/Makefile          |    1 +
+ drivers/net/wwan/t9xx/pcie/mtk_dpmaif.c      | 2674 ++++++++++++++++++++++++++
+ drivers/net/wwan/t9xx/pcie/mtk_dpmaif.h      |   14 +
+ drivers/net/wwan/t9xx/pcie/mtk_dpmaif_drv.c  |    1 +
+ drivers/net/wwan/t9xx/pcie/mtk_dpmaif_drv.h  |    9 +
+ drivers/net/wwan/t9xx/pcie/mtk_dpmaif_ring.c |    2 +-
+ drivers/net/wwan/t9xx/pcie/mtk_pci.c         |    8 +
+ drivers/net/wwan/t9xx/pcie/mtk_pci.h         |    3 +-
+ 12 files changed, 2907 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/wwan/t9xx/mtk_ctrl_plane.c b/drivers/net/wwan/t9xx/mtk_ctrl_plane.c
-index ae5e1797b817..ca32827c1a20 100644
---- a/drivers/net/wwan/t9xx/mtk_ctrl_plane.c
-+++ b/drivers/net/wwan/t9xx/mtk_ctrl_plane.c
-@@ -8,7 +8,7 @@
- 
- #include "mtk_ctrl_plane.h"
- 
--int mtk_ctrl_init(struct mtk_md_dev *mdev)
-+int mtk_ctrl_init(struct mtk_md_dev *mdev, struct mtk_ctrl_hif_ops *ops)
- {
- 	struct mtk_ctrl_blk *ctrl_blk;
- 
-@@ -18,6 +18,7 @@ int mtk_ctrl_init(struct mtk_md_dev *mdev)
- 
- 	ctrl_blk->mdev = mdev;
- 	mdev->ctrl_blk = ctrl_blk;
-+	ctrl_blk->ops = ops;
- 
- 	return 0;
- }
-diff --git a/drivers/net/wwan/t9xx/mtk_ctrl_plane.h b/drivers/net/wwan/t9xx/mtk_ctrl_plane.h
-index 8276be19b456..6d4be89680d6 100644
---- a/drivers/net/wwan/t9xx/mtk_ctrl_plane.h
-+++ b/drivers/net/wwan/t9xx/mtk_ctrl_plane.h
-@@ -11,12 +11,60 @@
- 
- #include "mtk_dev.h"
- 
-+enum mtk_trb_cmd_type {
-+	TRB_CMD_MIN,
-+	TRB_CMD_ENABLE,
-+	TRB_CMD_TX,
-+	TRB_CMD_DISABLE,
-+	TRB_CMD_STOP,
-+	TRB_CMD_RECOVER,
-+	TRB_CMD_MAX,
-+};
-+
-+enum mtk_hif_dev_ctrl_cmd {
-+	HIF_CTRL_CMD_CHECK_TX_FULL,
-+};
-+
-+struct trb_open_priv {
-+	u8 log_rg_offset;
-+	u32 tx_mtu;
-+	u32 rx_mtu;
-+	u32 tx_frag_size;
-+	u32 rx_frag_size;
-+	int (*rx_done)(struct sk_buff *skb, void *priv, bool force_recv);
-+};
-+
-+struct trb {
-+	u32 channel_id;
-+	enum mtk_trb_cmd_type cmd;
-+	int status;
-+	struct kref kref;
-+	void *priv;
-+	int (*trb_complete)(struct sk_buff *skb);
-+};
-+
-+union ctrl_hif_cmd_data {
-+	u32 rx_ch;
-+};
-+
-+struct mtk_ctrl_hif_ops {
-+	int (*init)(struct mtk_md_dev *mdev);
-+	int (*exit)(struct mtk_md_dev *mdev);
-+	int (*submit_skb)(struct mtk_md_dev *mdev, struct sk_buff *skb, bool force_send);
-+	int (*send_cmd)(struct mtk_md_dev *mdev, int cmd, void *data);
-+};
-+
-+struct mtk_ctrl_cfg;
-+struct mtk_ctrl_trans;
-+
- struct mtk_ctrl_blk {
- 	struct mtk_md_dev *mdev;
--	struct mtk_ctrl_trans *trans;
-+	struct mtk_ctrl_hif_ops *ops;
-+	void *ctrl_hw_priv;
-+	struct mtk_ctrl_cfg *cfg;
- };
- 
--int mtk_ctrl_init(struct mtk_md_dev *mdev);
-+int mtk_ctrl_init(struct mtk_md_dev *mdev, struct mtk_ctrl_hif_ops *ops);
- int mtk_ctrl_exit(struct mtk_md_dev *mdev);
- 
- #endif /* __MTK_CTRL_PLANE_H__ */
-diff --git a/drivers/net/wwan/t9xx/pcie/Makefile b/drivers/net/wwan/t9xx/pcie/Makefile
-index 7410d1796d27..5252f158b058 100644
---- a/drivers/net/wwan/t9xx/pcie/Makefile
-+++ b/drivers/net/wwan/t9xx/pcie/Makefile
-@@ -7,4 +7,9 @@ obj-$(CONFIG_MTK_T9XX_PCI) += mtk_t9xx_pcie.o
- 
- mtk_t9xx_pcie-y := \
- 	mtk_pci_drv_m9xx.o \
--	mtk_pci.o
-+	mtk_cldma_drv_m9xx.o \
-+	mtk_ctrl_cfg_m9xx.o \
-+	mtk_pci.o \
-+	mtk_trans_ctrl.o \
-+	mtk_cldma.o \
-+	mtk_cldma_drv.o
-diff --git a/drivers/net/wwan/t9xx/pcie/mtk_cldma.c b/drivers/net/wwan/t9xx/pcie/mtk_cldma.c
+diff --git a/drivers/net/wwan/t9xx/Makefile b/drivers/net/wwan/t9xx/Makefile
+index 75760b2039dc..3776ccb4952f 100644
+--- a/drivers/net/wwan/t9xx/Makefile
++++ b/drivers/net/wwan/t9xx/Makefile
+@@ -11,4 +11,5 @@ mtk_t9xx-y := \
+ 	mtk_ctrl_plane.o \
+ 	mtk_port.o \
+ 	mtk_port_io.o \
+-	mtk_fsm.o
++	mtk_fsm.o \
++	mtk_data_plane.o
+diff --git a/drivers/net/wwan/t9xx/mtk_data_plane.c b/drivers/net/wwan/t9xx/mtk_data_plane.c
 new file mode 100644
-index 000000000000..48067a010890
+index 000000000000..d11c7de45e17
 --- /dev/null
-+++ b/drivers/net/wwan/t9xx/pcie/mtk_cldma.c
-@@ -0,0 +1,1220 @@
++++ b/drivers/net/wwan/t9xx/mtk_data_plane.c
+@@ -0,0 +1,92 @@
 +// SPDX-License-Identifier: GPL-2.0-only
 +/*
-+ * Copyright (c) 2022, MediaTek Inc.
++ * Copyright (c) 2023, MediaTek Inc.
 + */
 +
-+#include <linux/delay.h>
-+#include <linux/device.h>
-+#include <linux/dma-mapping.h>
-+#include <linux/dmapool.h>
-+#include <linux/err.h>
-+#include <linux/interrupt.h>
-+#include <linux/kdev_t.h>
-+#include <linux/kernel.h>
-+#include <linux/kthread.h>
-+#include <linux/list.h>
-+#include <linux/module.h>
-+#include <linux/mutex.h>
-+#include <linux/netdevice.h>
-+#include <linux/sched.h>
-+#include <linux/skbuff.h>
-+#include <linux/slab.h>
-+#include <linux/timer.h>
-+#include <linux/wait.h>
-+#include <linux/workqueue.h>
-+#include "mtk_pci.h"
-+#include "mtk_cldma.h"
-+#include "mtk_cldma_drv.h"
++#include "mtk_data_plane.h"
 +#include "mtk_dev.h"
++#include "mtk_fsm.h"
 +
-+#define cldma_drv_ops_null	NULL
-+#define DMA_POOL_NAME_LEN	(64)
-+#define WAIT_HWO_ROUND		(10)
-+#define WAIT_HWO_TIME		(5)
-+#define CLDMA_RETRY_DELAY_MS	(100)
-+#define NO_BUDGET		(0)
-+
-+static const int mtk_cldma_hw_id_tbl[NR_CLDMA] = {
-+	[CLDMA0] = CLDMA0_HW_ID,
-+	[CLDMA1] = CLDMA1_HW_ID,
-+	[CLDMA4] = CLDMA4_HW_ID,
-+};
-+
-+static inline void mtk_cldma_clr_bd_dsc(struct cldma_drv_info *drv_info,
-+					struct bd_dsc *bd_dsc_pool, int nr_bds)
++static void mtk_data_stop(struct mtk_data_blk *data_blk, struct mtk_md_dev *mdev)
 +{
-+	struct bd_dsc *bd_dsc;
-+	int i;
++	data_blk->hif_ops->stop(mdev);
++	data_blk->hif_ops->clear(mdev);
++}
 +
-+	for (i = 0; i < nr_bds; i++) {
-+		bd_dsc = bd_dsc_pool + i;
-+		dma_unmap_single(drv_info->mdev->dev, bd_dsc->data_dma_addr,
-+				 bd_dsc->data_len, DMA_TO_DEVICE);
-+		bd_dsc->data_dma_addr = 0;
-+		bd_dsc->data_len = 0;
-+		if (bd_dsc->bd->tx_bd.bd_flags & CLDMA_BD_FLAG_EOL) {
-+			bd_dsc->bd->tx_bd.bd_flags &= ~CLDMA_BD_FLAG_EOL;
-+			break;
-+		}
++static void mtk_data_fsm_callback(struct mtk_fsm_param *fsm_param, void *data)
++{
++	struct mtk_data_blk *data_blk;
++
++	if (!data || !fsm_param)
++		return;
++
++	data_blk = ((struct mtk_md_dev *)data)->data_blk;
++
++	switch (fsm_param->to) {
++	case FSM_STATE_OFF:
++		mtk_data_stop(data_blk, data);
++		break;
++	case FSM_STATE_BOOTUP:
++		if (fsm_param->fsm_flag & FSM_F_MD_HS_START)
++			data_blk->hif_ops->start(data);
++		break;
++	case FSM_STATE_READY:
++		break;
++	default:
++		break;
 +	}
 +}
 +
-+static void mtk_cldma_tx_done_work(struct work_struct *work)
++int mtk_data_init(struct mtk_md_dev *mdev, struct mtk_data_hif_ops *ops)
 +{
-+	struct txq *txq = container_of(work, struct txq, tx_done_work);
-+	struct cldma_drv_info *drv_info;
-+	struct cldma_drv_ops *drv_ops;
-+	struct mtk_ctrl_trans *trans;
-+	struct mtk_md_dev *mdev;
-+	struct tx_req *req;
-+	unsigned int state;
-+	int i, hif_id;
-+	struct trb *trb;
-+	u32 txqno;
-+
-+	drv_info = txq->drv_info;
-+	hif_id = drv_info->hif_id;
-+	txqno = txq->txqno;
-+	mdev = drv_info->mdev;
-+	drv_ops = drv_info->drv_ops;
-+	trans = drv_info->cd->trans;
-+
-+again:
-+	for (i = 0; i < txq->nr_gpds; i++) {
-+		req = txq->req_pool + txq->free_idx;
-+
-+		rmb(); /* ensure HWO setup done before HWO read */
-+
-+		if (!req->data_vm_addr || (req->gpd->tx_gpd.gpd_flags & CLDMA_GPD_FLAG_HWO))
-+			break;
-+
-+		if (txq->nr_bds)
-+			mtk_cldma_clr_bd_dsc(drv_info, req->bd_dsc_pool, txq->nr_bds);
-+		else
-+			dma_unmap_single(mdev->dev, req->data_dma_addr,
-+					 req->data_len, DMA_TO_DEVICE);
-+
-+		trb = (struct trb *)req->skb->cb;
-+		trb->status = 0;
-+		trb->trb_complete(req->skb);
-+
-+		req->data_vm_addr = NULL;
-+		req->data_dma_addr = 0;
-+		req->data_len = 0;
-+		req->skb = NULL;
-+
-+		txq->free_idx = (txq->free_idx + 1) % txq->nr_gpds;
-+		if (atomic_fetch_inc(&txq->req_budget) == NO_BUDGET)
-+			wake_up(&trans->trb_srv[trans->srv_cfg[hif_id][txqno]]->trb_waitq);
-+	}
-+
-+	state = drv_ops->cldma_check_intr_status(drv_info, DIR_TX, txqno, QUEUE_XFER_DONE);
-+	if (state) {
-+		if (unlikely(state == LINK_ERROR_VAL))
-+			goto out;
-+
-+		drv_ops->cldma_clr_intr_status(drv_info, DIR_TX, txqno, QUEUE_XFER_DONE);
-+
-+		cond_resched();
-+
-+		goto again;
-+	}
-+
-+out:
-+	drv_ops->cldma_unmask_intr(drv_info, DIR_TX, txqno, QUEUE_XFER_DONE);
-+}
-+
-+static void mtk_cldma_rx_skb_adjust(struct mtk_md_dev *mdev, struct rxq *rxq,
-+				    struct rx_req *req)
-+{
-+	struct bd_dsc *bd_dsc;
-+	int i;
-+
-+	for (i = 0; i < rxq->nr_bds; i++) {
-+		bd_dsc = req->bd_dsc_pool + i;
-+		if (bd_dsc->data_dma_addr) {
-+			dma_unmap_single(mdev->dev, bd_dsc->data_dma_addr,
-+					 req->frag_size, DMA_FROM_DEVICE);
-+			bd_dsc->data_dma_addr = 0;
-+		}
-+		bd_dsc->skb->len = 0;
-+		skb_reset_tail_pointer(bd_dsc->skb);
-+		skb_put(bd_dsc->skb,
-+			le16_to_cpu(bd_dsc->bd->rx_bd.data_recv_len));
-+		if (req->skb != bd_dsc->skb) {
-+			req->skb->len += bd_dsc->skb->len;
-+			req->skb->data_len += bd_dsc->skb->len;
-+		}
-+		bd_dsc->bd->rx_bd.data_recv_len = 0;
-+		bd_dsc->skb = NULL;
-+	}
-+	if (!rxq->nr_bds) {
-+		if (req->data_dma_addr) {
-+			dma_unmap_single(mdev->dev, req->data_dma_addr,
-+					 req->mtu, DMA_FROM_DEVICE);
-+			req->data_dma_addr = 0;
-+		}
-+		req->skb->len = 0;
-+		skb_reset_tail_pointer(req->skb);
-+		skb_put(req->skb, le16_to_cpu(req->gpd->rx_gpd.data_recv_len));
-+	}
-+
-+	req->gpd->rx_gpd.data_recv_len = 0;
-+}
-+
-+static int mtk_cldma_reload_rx_skb(struct mtk_md_dev *mdev, struct rxq *rxq,
-+				   struct rx_req *req)
-+{
-+	struct sk_buff *tail = NULL;
-+	struct bd_dsc *bd_dsc;
-+	int nr_bds;
-+	int i, err;
-+
-+	nr_bds = rxq->nr_bds;
-+
-+	for (i = 0; i < nr_bds; i++) {
-+		bd_dsc = req->bd_dsc_pool + i;
-+		bd_dsc->skb = __dev_alloc_skb(req->frag_size, GFP_KERNEL);
-+		if (!bd_dsc->skb) {
-+			dev_warn((mdev)->dev, "Failed to alloc SKB\n");
-+			err = -ENOMEM;
-+			goto err_free_skb;
-+		}
-+		bd_dsc->skb->next = NULL;
-+		bd_dsc->data_dma_addr = dma_map_single(mdev->dev, bd_dsc->skb->data,
-+						       req->frag_size, DMA_FROM_DEVICE);
-+		err = dma_mapping_error(mdev->dev, bd_dsc->data_dma_addr);
-+		if (unlikely(err)) {
-+			dev_warn((mdev)->dev, "Failed to map SKB data\n");
-+			err = -EFAULT;
-+			goto err_free_skb;
-+		}
-+		bd_dsc->bd->rx_bd.data_buff_ptr_h =
-+			cpu_to_le32((u64)(bd_dsc->data_dma_addr) >> 32);
-+		bd_dsc->bd->rx_bd.data_buff_ptr_l =
-+			cpu_to_le32(bd_dsc->data_dma_addr);
-+		if (tail) {
-+			tail->next = bd_dsc->skb;
-+			tail = bd_dsc->skb;
-+			continue;
-+		}
-+		if (!req->skb) {
-+			req->skb = bd_dsc->skb;
-+		} else {
-+			skb_shinfo(req->skb)->frag_list = bd_dsc->skb;
-+			tail = bd_dsc->skb;
-+		}
-+	}
-+	if (!nr_bds) {
-+		req->skb = __dev_alloc_skb(req->mtu, GFP_KERNEL);
-+		if (!req->skb) {
-+			err = -ENOMEM;
-+			goto err_free_skb;
-+		}
-+
-+		req->data_dma_addr = dma_map_single(mdev->dev, req->skb->data,
-+						    req->mtu, DMA_FROM_DEVICE);
-+		err = dma_mapping_error(mdev->dev, req->data_dma_addr);
-+		if (unlikely(err)) {
-+			dev_warn((mdev)->dev, "Failed to map SKB data\n");
-+			err = -EFAULT;
-+			goto err_free_skb;
-+		}
-+		req->gpd->rx_gpd.data_buff_ptr_h = cpu_to_le32((u64)req->data_dma_addr >> 32);
-+		req->gpd->rx_gpd.data_buff_ptr_l = cpu_to_le32(req->data_dma_addr);
-+	}
-+	return 0;
-+
-+err_free_skb:
-+	if (nr_bds) {
-+		if (req->skb)
-+			skb_shinfo(req->skb)->frag_list = NULL;
-+		for (i = 0; i < nr_bds; i++) {
-+			bd_dsc = req->bd_dsc_pool + i;
-+			if (!bd_dsc->skb)
-+				break;
-+			if (!dma_mapping_error(mdev->dev, bd_dsc->data_dma_addr))
-+				dma_unmap_single(mdev->dev, bd_dsc->data_dma_addr,
-+						 req->frag_size, DMA_FROM_DEVICE);
-+			bd_dsc->data_dma_addr = 0;
-+			bd_dsc->skb->next = NULL;
-+			dev_kfree_skb_any(bd_dsc->skb);
-+		}
-+	} else {
-+		req->data_dma_addr = 0;
-+		if (req->skb)
-+			dev_kfree_skb_any(req->skb);
-+	}
-+	req->skb = NULL;
-+
-+	return err;
-+}
-+
-+static int mtk_cldma_check_rx_req(struct cldma_drv_info *drv_info, struct rxq *rxq)
-+{
-+	struct rx_req *req = rxq->req_pool + rxq->free_idx;
-+	u64 curr_addr;
-+	int i;
-+
-+	curr_addr = drv_info->drv_ops->cldma_get_rx_curr_addr(drv_info, rxq->rxqno);
-+	if (unlikely(!curr_addr))
-+		return -ENXIO;
-+
-+	if (req->gpd_dma_addr == curr_addr)
-+		return -EAGAIN;
-+	for (i = 0; i < WAIT_HWO_ROUND; i++) {
-+		udelay(WAIT_HWO_TIME);
-+		if (!(req->gpd->rx_gpd.gpd_flags & CLDMA_GPD_FLAG_HWO))
-+			break;
-+	}
-+	if (i == WAIT_HWO_ROUND) {
-+		dev_err((drv_info->mdev)->dev, "Failed to check HWO=0\n");
-+		return -EAGAIN;
-+	}
-+
-+	return 0;
-+}
-+
-+static bool mtk_cldma_rx_check_again(struct rxq *rxq)
-+{
-+	struct cldma_drv_info *drv_info;
-+	struct cldma_drv_ops *drv_ops;
-+	bool need_check_again = false;
-+	struct mtk_md_dev *mdev;
-+	int rxqno;
-+	u32 state;
-+
-+	drv_info = rxq->drv_info;
-+	drv_ops = drv_info->drv_ops;
-+	mdev = drv_info->mdev;
-+	rxqno = rxq->rxqno;
-+
-+	do {
-+		state = drv_ops->cldma_check_intr_status(drv_info, DIR_RX,
-+							 rxqno, QUEUE_XFER_DONE);
-+		if (state) {
-+			if (unlikely(state == LINK_ERROR_VAL))
-+				break;
-+
-+			drv_ops->cldma_clr_intr_status(drv_info, DIR_RX,
-+						       rxqno, QUEUE_XFER_DONE);
-+			cond_resched();
-+			return true;
-+		}
-+	} while (need_check_again);
-+
-+	return false;
-+}
-+
-+static void mtk_cldma_rx_done_work(struct work_struct *work)
-+{
-+	struct rxq *rxq = container_of(work, struct rxq, rx_done_work);
-+	struct rx_req *req = NULL, *pre_req = NULL;
-+	struct cldma_drv_info *drv_info;
-+	struct cldma_drv_ops *drv_ops;
-+	struct mtk_md_dev *mdev;
-+	int i, err, idx;
-+
-+	drv_info = rxq->drv_info;
-+	mdev = drv_info->mdev;
-+	drv_ops = drv_info->drv_ops;
-+
-+again:
-+	for (i = 0; i < rxq->nr_gpds; i++) {
-+		req = rxq->req_pool + rxq->free_idx;
-+		if (!req->skb) {
-+			dev_err((mdev)->dev,
-+				"Failed to get valid req cldma%d rxq%d req%d\n",
-+				drv_info->hw_id, rxq->rxqno, rxq->free_idx);
-+			goto err_out;
-+		}
-+
-+		if (req->gpd->rx_gpd.gpd_flags & CLDMA_GPD_FLAG_HWO)
-+			break;
-+
-+		mtk_cldma_rx_skb_adjust(mdev, rxq, req);
-+		do {
-+			err = rxq->rx_done(req->skb, rxq->arg,
-+					   atomic_read(&rxq->need_exit) ? true : false);
-+			if (err == -EAGAIN)
-+				usleep_range(1000, 2000);
-+			else
-+				req->skb = NULL;
-+		} while (err == -EAGAIN);
-+
-+		err = mtk_cldma_reload_rx_skb(mdev, rxq, req);
-+		if (err)
-+			goto err_out;
-+
-+		wmb(); /* ensure addr set done before HWO setup done  */
-+
-+		idx = rxq->free_idx == 0 ? rxq->nr_gpds - 1 : rxq->free_idx - 1;
-+		pre_req = rxq->req_pool + idx;
-+		pre_req->gpd->rx_gpd.gpd_flags |= CLDMA_GPD_FLAG_HWO;
-+		rxq->free_idx = (rxq->free_idx + 1) % rxq->nr_gpds;
-+	}
-+
-+	err = mtk_cldma_check_rx_req(drv_info, rxq);
-+	if (!err)
-+		goto again;
-+	else if (err == -ENXIO)
-+		goto out;
-+
-+	if (!atomic_read(&rxq->need_exit))
-+		drv_ops->cldma_resume_queue(drv_info, DIR_RX, rxq->rxqno);
-+
-+	if (mtk_cldma_rx_check_again(rxq))
-+		goto again;
-+
-+out:
-+	drv_ops->cldma_unmask_intr(drv_info, DIR_RX, rxq->rxqno, QUEUE_XFER_DONE);
-+	drv_ops->cldma_clear_ip_busy(drv_info);
-+err_out:
-+	;
-+}
-+
-+static int mtk_cldma_alloc_tx_bd(struct cldma_drv_info *drv_info, struct txq *txq,
-+				 struct tx_req *req)
-+{
-+	struct bd_dsc *bd_dsc, *last_bd_dsc = NULL;
-+	int i;
-+
-+	req->bd_dsc_pool = devm_kcalloc(drv_info->mdev->dev, txq->nr_bds,
-+					sizeof(*bd_dsc), GFP_KERNEL);
-+	if (!req->bd_dsc_pool)
-+		return -ENOMEM;
-+
-+	for (i = 0; i < txq->nr_bds; i++) {
-+		bd_dsc = req->bd_dsc_pool + i;
-+		bd_dsc->bd = dma_pool_zalloc(drv_info->bd_dma_pool, GFP_KERNEL,
-+					     &bd_dsc->bd_dma_addr);
-+		if (!bd_dsc->bd)
-+			return -ENOMEM;
-+		if (!last_bd_dsc) {
-+			req->gpd->tx_gpd.data_buff_ptr_h =
-+				cpu_to_le32((u64)(bd_dsc->bd_dma_addr) >> 32);
-+			req->gpd->tx_gpd.data_buff_ptr_l =
-+				cpu_to_le32(bd_dsc->bd_dma_addr);
-+		} else {
-+			last_bd_dsc->bd->tx_bd.next_bd_ptr_h =
-+				cpu_to_le32((u64)(bd_dsc->bd_dma_addr) >> 32);
-+			last_bd_dsc->bd->tx_bd.next_bd_ptr_l =
-+				cpu_to_le32(bd_dsc->bd_dma_addr);
-+		}
-+		last_bd_dsc = bd_dsc;
-+	}
-+	return 0;
-+}
-+
-+static struct txq *mtk_cldma_txq_alloc(struct cldma_drv_info *drv_info, struct sk_buff *skb)
-+{
-+	struct trb *trb = (struct trb *)skb->cb;
-+	struct cldma_drv_ops *drv_ops;
-+	struct mtk_ctrl_blk *ctrl_blk;
-+	struct mtk_ctrl_trans *trans;
-+	struct mtk_md_dev *mdev;
-+	struct bd_dsc *bd_dsc;
-+	struct tx_req *next;
-+	struct tx_req *req;
-+	u16 tx_frag_size;
-+	struct txq *txq;
-+	int i, j, err;
-+
-+	mdev = drv_info->mdev;
-+	ctrl_blk = mdev->ctrl_blk;
-+	trans = ctrl_blk->ctrl_hw_priv;
-+	drv_ops = drv_info->drv_ops;
-+
-+	txq = devm_kzalloc(mdev->dev, sizeof(*txq), GFP_KERNEL);
-+	if (!txq)
-+		return NULL;
-+
-+	txq->que = radix_tree_lookup(&trans->queue_tbl, trb->channel_id & 0xFFFF);
-+	txq->drv_info = drv_info;
-+	txq->txqno = txq->que->txqno;
-+	txq->nr_gpds = txq->que->tx_nr_gpds;
-+	atomic_set(&txq->req_budget, txq->que->tx_nr_gpds);
-+	txq->is_stopping = false;
-+	tx_frag_size = txq->que->tx_frag_size;
-+	if (txq->que->tx_mtu > tx_frag_size && tx_frag_size)
-+		txq->nr_bds = (txq->que->tx_mtu + tx_frag_size - 1) / tx_frag_size;
-+
-+	txq->req_pool = devm_kcalloc(mdev->dev, txq->nr_gpds, sizeof(*req), GFP_KERNEL);
-+	if (!txq->req_pool)
-+		goto err_free_txq;
-+
-+	for (i = 0; i < txq->nr_gpds; i++) {
-+		req = txq->req_pool + i;
-+		req->mtu = txq->que->tx_mtu;
-+		req->frag_size = tx_frag_size;
-+		req->gpd = dma_pool_zalloc(drv_info->gpd_dma_pool, GFP_KERNEL, &req->gpd_dma_addr);
-+		if (!req->gpd)
-+			goto err_free_req;
-+		if (txq->nr_bds) {
-+			err = mtk_cldma_alloc_tx_bd(drv_info, txq, req);
-+			if (err)
-+				goto err_free_req;
-+			req->gpd->tx_gpd.gpd_flags |= CLDMA_GPD_FLAG_BDP;
-+		}
-+	}
-+
-+	for (i = 0; i < txq->nr_gpds; i++) {
-+		req = txq->req_pool + i;
-+		next = txq->req_pool + ((i + 1) % txq->nr_gpds);
-+		req->gpd->tx_gpd.gpd_flags |= CLDMA_GPD_FLAG_IOC;
-+		req->gpd->tx_gpd.next_gpd_ptr_h = cpu_to_le32((u64)(next->gpd_dma_addr) >> 32);
-+		req->gpd->tx_gpd.next_gpd_ptr_l = cpu_to_le32(next->gpd_dma_addr);
-+	}
-+
-+	INIT_WORK(&txq->tx_done_work, mtk_cldma_tx_done_work);
-+
-+	drv_ops->cldma_stop_queue(drv_info, DIR_TX, txq->txqno);
-+	txq->tx_started = false;
-+	drv_ops->cldma_setup_start_addr(drv_info, DIR_TX, txq->txqno,
-+					txq->req_pool[0].gpd_dma_addr);
-+	drv_ops->cldma_unmask_intr(drv_info, DIR_TX, txq->txqno, QUEUE_ERROR);
-+	drv_ops->cldma_unmask_intr(drv_info, DIR_TX, txq->txqno, QUEUE_XFER_DONE);
-+
-+	drv_info->txq[txq->txqno] = txq;
-+	return txq;
-+
-+err_free_req:
-+	for (i = 0; i < txq->nr_gpds; i++) {
-+		req = txq->req_pool + i;
-+		if (!req->gpd)
-+			break;
-+		if (req->bd_dsc_pool) {
-+			for (j = 0; j < txq->nr_bds; j++) {
-+				bd_dsc = req->bd_dsc_pool + j;
-+				if (!bd_dsc->bd)
-+					break;
-+				dma_pool_free(drv_info->bd_dma_pool, bd_dsc->bd,
-+					      bd_dsc->bd_dma_addr);
-+			}
-+			devm_kfree(mdev->dev, req->bd_dsc_pool);
-+		}
-+		dma_pool_free(drv_info->gpd_dma_pool, req->gpd, req->gpd_dma_addr);
-+	}
-+	devm_kfree(mdev->dev, txq->req_pool);
-+err_free_txq:
-+	devm_kfree(mdev->dev, txq);
-+	return NULL;
-+}
-+
-+static int mtk_cldma_txq_free(struct cldma_drv_info *drv_info, u32 txqno)
-+{
-+	struct cldma_drv_ops *drv_ops;
-+	struct mtk_ctrl_blk *ctrl_blk;
-+	struct mtk_ctrl_trans *trans;
-+	struct mtk_md_dev *mdev;
-+	struct bd_dsc *bd_dsc;
-+	struct tx_req *req;
-+	struct txq *txq;
-+	struct trb *trb;
-+	int irq_id;
-+	int i, j;
-+
-+	mdev = drv_info->mdev;
-+	ctrl_blk = mdev->ctrl_blk;
-+	trans = ctrl_blk->ctrl_hw_priv;
-+	drv_ops = drv_info->drv_ops;
-+
-+	txq = drv_info->txq[txqno];
-+	drv_info->txq[txqno] = NULL;
-+	/* stop HW tx transaction */
-+	drv_ops->cldma_stop_queue(drv_info, DIR_TX, txqno);
-+	txq->tx_started = false;
-+
-+	irq_id = mtk_pci_get_virq_id(mdev, drv_info->pci_ext_irq_id);
-+	synchronize_irq(irq_id);
-+	/* flush on-going work */
-+	flush_work(&txq->tx_done_work);
-+	drv_ops->cldma_mask_intr(drv_info, DIR_TX, txqno, QUEUE_XFER_DONE);
-+	drv_ops->cldma_mask_intr(drv_info, DIR_TX, txqno, QUEUE_ERROR);
-+
-+	/* free tx req resource */
-+	for (i = 0; i < txq->nr_gpds; i++) {
-+		req = txq->req_pool + txq->free_idx;
-+		if (req->skb && req->data_len) {
-+			if (!txq->nr_bds)
-+				dma_unmap_single(mdev->dev, req->data_dma_addr,
-+						 req->data_len, DMA_TO_DEVICE);
-+			for (j = 0; j < txq->nr_bds; j++) {
-+				bd_dsc = req->bd_dsc_pool + j;
-+				dma_unmap_single(mdev->dev, bd_dsc->data_dma_addr,
-+						 bd_dsc->data_len, DMA_TO_DEVICE);
-+			}
-+			trb = (struct trb *)req->skb->cb;
-+			trb->status = -EPIPE;
-+			trb->trb_complete(req->skb);
-+		}
-+		for (j = 0; j < txq->nr_bds; j++) {
-+			bd_dsc = req->bd_dsc_pool + j;
-+			dma_pool_free(drv_info->bd_dma_pool, bd_dsc->bd,
-+				      bd_dsc->bd_dma_addr);
-+		}
-+		if (req->bd_dsc_pool)
-+			devm_kfree(mdev->dev, req->bd_dsc_pool);
-+		dma_pool_free(drv_info->gpd_dma_pool, req->gpd, req->gpd_dma_addr);
-+		txq->free_idx = (txq->free_idx + 1) % txq->nr_gpds;
-+	}
-+
-+	devm_kfree(mdev->dev, txq->req_pool);
-+	devm_kfree(mdev->dev, txq);
-+
-+	return 0;
-+}
-+
-+static int mtk_cldma_alloc_rx_bd(struct cldma_drv_info *drv_info, struct rx_req *req,
-+				 int nr_bds)
-+{
-+	struct bd_dsc *bd_dsc, *last_bd_dsc = NULL;
-+	struct sk_buff *tail = NULL;
-+	struct mtk_md_dev *mdev;
-+	u32 left_size;
-+	int err;
-+	int i;
-+
-+	mdev = drv_info->mdev;
-+	left_size = req->mtu;
-+
-+	req->bd_dsc_pool = devm_kcalloc(mdev->dev, nr_bds,
-+					sizeof(*bd_dsc), GFP_KERNEL);
-+	if (!req->bd_dsc_pool)
-+		return -ENOMEM;
-+	for (i = 0; i < nr_bds; i++) {
-+		bd_dsc = req->bd_dsc_pool + i;
-+		bd_dsc->bd = dma_pool_zalloc(drv_info->bd_dma_pool, GFP_KERNEL,
-+					     &bd_dsc->bd_dma_addr);
-+		if (!bd_dsc->bd)
-+			return -ENOMEM;
-+
-+		bd_dsc->skb = __dev_alloc_skb(req->frag_size, GFP_KERNEL);
-+		if (!bd_dsc->skb)
-+			return -ENOMEM;
-+		bd_dsc->skb->next = NULL;
-+		bd_dsc->data_dma_addr =
-+			dma_map_single(mdev->dev, bd_dsc->skb->data,
-+				       req->frag_size, DMA_FROM_DEVICE);
-+		err = dma_mapping_error(mdev->dev, bd_dsc->data_dma_addr);
-+		if (unlikely(err))
-+			return -ENOMEM;
-+
-+		bd_dsc->bd->rx_bd.data_buff_ptr_h =
-+			cpu_to_le32((u64)(bd_dsc->data_dma_addr) >> 32);
-+		bd_dsc->bd->rx_bd.data_buff_ptr_l =
-+			cpu_to_le32(bd_dsc->data_dma_addr);
-+		bd_dsc->bd->rx_bd.data_allow_len =
-+			cpu_to_le16(min(req->frag_size, left_size));
-+		left_size -= min(req->frag_size, left_size);
-+		if (!last_bd_dsc) {
-+			req->gpd->rx_gpd.data_buff_ptr_h =
-+				cpu_to_le32((u64)(bd_dsc->bd_dma_addr) >> 32);
-+			req->gpd->rx_gpd.data_buff_ptr_l =
-+				cpu_to_le32(bd_dsc->bd_dma_addr);
-+		} else {
-+			last_bd_dsc->bd->rx_bd.next_bd_ptr_h =
-+				cpu_to_le32((u64)(bd_dsc->bd_dma_addr) >> 32);
-+			last_bd_dsc->bd->rx_bd.next_bd_ptr_l =
-+				cpu_to_le32(bd_dsc->bd_dma_addr);
-+		}
-+		last_bd_dsc = bd_dsc;
-+		if (tail) {
-+			tail->next = bd_dsc->skb;
-+			tail = bd_dsc->skb;
-+			continue;
-+		}
-+		if (!req->skb) {
-+			req->skb = bd_dsc->skb;
-+		} else {
-+			skb_shinfo(req->skb)->frag_list = bd_dsc->skb;
-+			tail = bd_dsc->skb;
-+		}
-+	}
-+	last_bd_dsc->bd->rx_bd.bd_flags |= CLDMA_BD_FLAG_EOL;
-+	return 0;
-+}
-+
-+static void mtk_cldma_rxq_alloc_cancel(struct cldma_drv_info *drv_info, struct rx_req *req,
-+				       int nr_bds)
-+{
-+	struct mtk_md_dev *mdev;
-+	struct bd_dsc *bd_dsc;
-+	int i;
-+
-+	mdev = drv_info->mdev;
-+
-+	if (nr_bds) {
-+		if (req->skb)
-+			skb_shinfo(req->skb)->frag_list = NULL;
-+		if (req->bd_dsc_pool) {
-+			for (i = 0; i < nr_bds; i++) {
-+				bd_dsc = req->bd_dsc_pool + i;
-+				if (!bd_dsc->bd)
-+					break;
-+				if (bd_dsc->skb) {
-+					if (!dma_mapping_error(mdev->dev, bd_dsc->data_dma_addr))
-+						dma_unmap_single(mdev->dev, bd_dsc->data_dma_addr,
-+								 req->frag_size, DMA_FROM_DEVICE);
-+					bd_dsc->data_dma_addr = 0;
-+					bd_dsc->skb->next = NULL;
-+					dev_kfree_skb_any(bd_dsc->skb);
-+				}
-+				dma_pool_free(drv_info->bd_dma_pool, bd_dsc->bd,
-+					      bd_dsc->bd_dma_addr);
-+			}
-+			devm_kfree(mdev->dev, req->bd_dsc_pool);
-+		}
-+	} else {
-+		if (req->skb) {
-+			if (!dma_mapping_error(mdev->dev, req->data_dma_addr))
-+				dma_unmap_single(mdev->dev, req->data_dma_addr,
-+						 req->mtu, DMA_FROM_DEVICE);
-+			req->data_dma_addr = 0;
-+			dev_kfree_skb_any(req->skb);
-+		}
-+	}
-+	dma_pool_free(drv_info->gpd_dma_pool, req->gpd, req->gpd_dma_addr);
-+}
-+
-+static struct rxq *mtk_cldma_rxq_alloc(struct cldma_drv_info *drv_info, struct sk_buff *skb)
-+{
-+	struct trb_open_priv *trb_open_priv = (struct trb_open_priv *)skb->data;
-+	struct trb *trb = (struct trb *)skb->cb;
-+	struct cldma_drv_ops *drv_ops;
-+	struct mtk_ctrl_blk *ctrl_blk;
-+	struct mtk_ctrl_trans *trans;
-+	struct mtk_md_dev *mdev;
-+	struct rx_req *next;
-+	struct rx_req *req;
-+	u16 rx_frag_size;
-+	struct rxq *rxq;
-+	int err;
-+	int i;
-+
-+	mdev = drv_info->mdev;
-+	ctrl_blk = mdev->ctrl_blk;
-+	trans = ctrl_blk->ctrl_hw_priv;
-+	drv_ops = drv_info->drv_ops;
-+
-+	rxq = devm_kzalloc(mdev->dev, sizeof(*rxq), GFP_KERNEL);
-+	if (!rxq)
-+		return NULL;
-+
-+	rxq->que = radix_tree_lookup(&trans->queue_tbl, trb->channel_id & 0xFFFF);
-+	if (rxq->que->rx_nr_gpds < MIN_GPD_NUM) {
-+		dev_err((mdev)->dev,
-+			"Failed to alloc cldma%d rxq%d due to gpd number < 2\n",
-+			drv_info->hw_id, rxq->rxqno);
-+		goto err_free_rxq;
-+	}
-+	rxq->drv_info = drv_info;
-+	rxq->rxqno = rxq->que->rxqno;
-+	rxq->nr_gpds = rxq->que->rx_nr_gpds;
-+	rxq->arg = trb->priv;
-+	rxq->rx_done = trb_open_priv->rx_done;
-+	atomic_set(&rxq->need_exit, 0);
-+	rx_frag_size = rxq->que->rx_frag_size;
-+	if (rxq->que->rx_mtu > rx_frag_size && rx_frag_size)
-+		rxq->nr_bds = (rxq->que->rx_mtu + rx_frag_size - 1) / rx_frag_size;
-+
-+	rxq->req_pool = devm_kcalloc(mdev->dev, rxq->nr_gpds, sizeof(*req), GFP_KERNEL);
-+	if (!rxq->req_pool)
-+		goto err_free_rxq;
-+
-+	/* setup rx request */
-+	for (i = 0; i < rxq->nr_gpds; i++) {
-+		req = rxq->req_pool + i;
-+		req->mtu = rxq->que->rx_mtu;
-+		req->frag_size = rx_frag_size;
-+		req->gpd = dma_pool_zalloc(drv_info->gpd_dma_pool, GFP_KERNEL, &req->gpd_dma_addr);
-+		if (!req->gpd)
-+			goto err_free_req;
-+		if (rxq->nr_bds) {
-+			err = mtk_cldma_alloc_rx_bd(drv_info, req, rxq->nr_bds);
-+			if (err)
-+				goto err_free_req;
-+			req->gpd->rx_gpd.gpd_flags |= CLDMA_GPD_FLAG_BDP;
-+		} else {
-+			req->skb = __dev_alloc_skb(req->mtu, GFP_KERNEL);
-+			if (!req->skb)
-+				goto err_free_req;
-+			req->data_dma_addr = dma_map_single(mdev->dev, req->skb->data,
-+							    req->mtu, DMA_FROM_DEVICE);
-+			err = dma_mapping_error(mdev->dev, req->data_dma_addr);
-+			if (unlikely(err))
-+				goto err_free_req;
-+		}
-+	}
-+
-+	for (i = 0; i < rxq->nr_gpds; i++) {
-+		req = rxq->req_pool + i;
-+		next = rxq->req_pool + ((i + 1) % rxq->nr_gpds);
-+		req->gpd->rx_gpd.gpd_flags |= CLDMA_GPD_FLAG_IOC;
-+		req->gpd->rx_gpd.data_allow_len = cpu_to_le16(req->mtu);
-+		req->gpd->rx_gpd.next_gpd_ptr_h = cpu_to_le32((u64)(next->gpd_dma_addr) >> 32);
-+		req->gpd->rx_gpd.next_gpd_ptr_l = cpu_to_le32(next->gpd_dma_addr);
-+		if (!rxq->nr_bds) {
-+			req->gpd->rx_gpd.data_buff_ptr_h =
-+				cpu_to_le32((u64)(req->data_dma_addr) >> 32);
-+			req->gpd->rx_gpd.data_buff_ptr_l = cpu_to_le32(req->data_dma_addr);
-+		}
-+		if (i != rxq->nr_gpds - 1)
-+			req->gpd->rx_gpd.gpd_flags |= CLDMA_GPD_FLAG_HWO;
-+	}
-+
-+	INIT_WORK(&rxq->rx_done_work, mtk_cldma_rx_done_work);
-+
-+	drv_info->rxq[rxq->rxqno] = rxq;
-+	drv_ops->cldma_stop_queue(drv_info, DIR_RX, rxq->rxqno);
-+	drv_ops->cldma_setup_start_addr(drv_info, DIR_RX,
-+					rxq->rxqno, rxq->req_pool[0].gpd_dma_addr);
-+	drv_ops->cldma_start_queue(drv_info, DIR_RX, rxq->rxqno);
-+	drv_ops->cldma_unmask_intr(drv_info, DIR_RX, rxq->rxqno, QUEUE_ERROR);
-+	drv_ops->cldma_unmask_intr(drv_info, DIR_RX, rxq->rxqno, QUEUE_XFER_DONE);
-+
-+	return rxq;
-+
-+err_free_req:
-+	for (i = 0; i < rxq->nr_gpds; i++) {
-+		req = rxq->req_pool + i;
-+		if (!req->gpd)
-+			break;
-+		mtk_cldma_rxq_alloc_cancel(drv_info, req, rxq->nr_bds);
-+	}
-+
-+	devm_kfree(mdev->dev, rxq->req_pool);
-+err_free_rxq:
-+	devm_kfree(mdev->dev, rxq);
-+	return NULL;
-+}
-+
-+static int mtk_cldma_rxq_free(struct cldma_drv_info *drv_info, u32 rxqno)
-+{
-+	struct cldma_drv_ops *drv_ops;
-+	struct mtk_ctrl_blk *ctrl_blk;
-+	struct mtk_ctrl_trans *trans;
-+	struct mtk_md_dev *mdev;
-+	struct bd_dsc *bd_dsc;
-+	struct rx_req *req;
-+	struct rxq *rxq;
-+	int irq_id;
-+	int i, j;
-+
-+	mdev = drv_info->mdev;
-+	ctrl_blk = mdev->ctrl_blk;
-+	trans = ctrl_blk->ctrl_hw_priv;
-+	drv_ops = drv_info->drv_ops;
-+
-+	rxq = drv_info->rxq[rxqno];
-+	drv_info->rxq[rxqno] = NULL;
-+
-+	/* stop HW rx transaction */
-+	atomic_set(&rxq->need_exit, 1);
-+	drv_ops->cldma_stop_queue(drv_info, DIR_RX, rxqno);
-+
-+	irq_id = mtk_pci_get_virq_id(mdev, drv_info->pci_ext_irq_id);
-+	synchronize_irq(irq_id);
-+	/* flush on-going work */
-+	flush_work(&rxq->rx_done_work);
-+	/* mask L2 RX interrupt again to avoid race condition causing use-after-free issue */
-+	drv_ops->cldma_mask_intr(drv_info, DIR_RX, rxqno, QUEUE_XFER_DONE);
-+	drv_ops->cldma_mask_intr(drv_info, DIR_RX, rxqno, QUEUE_ERROR);
-+
-+	/* free rx req resource */
-+	for (i = 0; i < rxq->nr_gpds; i++) {
-+		req = rxq->req_pool + rxq->free_idx;
-+		if (!(req->gpd->rx_gpd.gpd_flags & CLDMA_GPD_FLAG_HWO) &&
-+		    le16_to_cpu(req->gpd->rx_gpd.data_recv_len)) {
-+			mtk_cldma_rx_skb_adjust(mdev, rxq, req);
-+			rxq->rx_done(req->skb, rxq->arg, true);
-+			req->skb = NULL;
-+		}
-+		if (req->skb) {
-+			if (rxq->nr_bds) {
-+				skb_shinfo(req->skb)->frag_list = NULL;
-+			} else {
-+				if (req->data_dma_addr)
-+					dma_unmap_single(mdev->dev, req->data_dma_addr,
-+							 req->mtu, DMA_FROM_DEVICE);
-+				dev_kfree_skb_any(req->skb);
-+			}
-+		}
-+		for (j = 0; j < rxq->nr_bds; j++) {
-+			bd_dsc = req->bd_dsc_pool + j;
-+			if (bd_dsc->skb) {
-+				if (bd_dsc->data_dma_addr)
-+					dma_unmap_single(mdev->dev, bd_dsc->data_dma_addr,
-+							 req->frag_size, DMA_FROM_DEVICE);
-+				bd_dsc->skb->next = NULL;
-+				dev_kfree_skb_any(bd_dsc->skb);
-+			}
-+			dma_pool_free(drv_info->bd_dma_pool,
-+				      bd_dsc->bd, bd_dsc->bd_dma_addr);
-+		}
-+		if (req->bd_dsc_pool)
-+			devm_kfree(mdev->dev, req->bd_dsc_pool);
-+		dma_pool_free(drv_info->gpd_dma_pool, req->gpd, req->gpd_dma_addr);
-+		rxq->free_idx = (rxq->free_idx + 1) % rxq->nr_gpds;
-+	}
-+
-+	devm_kfree(mdev->dev, rxq->req_pool);
-+	devm_kfree(mdev->dev, rxq);
-+
-+	return 0;
-+}
-+
-+static int mtk_cldma_start_xfer(struct cldma_drv_info *drv_info, u32 qno)
-+{
-+	struct cldma_drv_ops *drv_ops;
-+	struct txq *txq;
-+	int ret = 0;
-+	u32 val;
-+
-+	txq = drv_info->txq[qno];
-+	drv_ops = drv_info->drv_ops;
-+
-+	val = drv_ops->cldma_get_tx_start_addr(drv_info, qno);
-+	if (unlikely(!val)) {
-+		drv_ops->cldma_drv_init(drv_info);
-+		txq = drv_info->txq[qno];
-+		drv_ops->cldma_setup_start_addr(drv_info, DIR_TX, qno,
-+						txq->req_pool[txq->free_idx].gpd_dma_addr);
-+		drv_ops->cldma_start_queue(drv_info, DIR_TX, qno);
-+		txq->tx_started = true;
-+	} else if (unlikely(val == LINK_ERROR_VAL)) {
-+		ret = -EIO;
-+	} else {
-+		if (unlikely(!txq->tx_started)) {
-+			drv_ops->cldma_start_queue(drv_info, DIR_TX, qno);
-+			txq->tx_started = true;
-+		} else {
-+			drv_ops->cldma_resume_queue(drv_info, DIR_TX, qno);
-+		}
-+	}
-+
-+	return ret;
-+}
-+
-+int mtk_cldma_init(struct mtk_ctrl_trans *trans)
-+{
-+	struct cldma_dev *cd;
-+
-+	cd = devm_kzalloc(trans->mdev->dev, sizeof(*cd), GFP_KERNEL);
-+	if (!cd)
-+		return -ENOMEM;
-+
-+	cd->trans = trans;
-+	trans->dev = cd;
-+
-+	return 0;
-+}
-+
-+int mtk_cldma_exit(struct mtk_ctrl_trans *trans)
-+{
-+	if (!trans->dev)
-+		return 0;
-+
-+	devm_kfree(trans->mdev->dev, trans->dev);
-+	trans->dev = NULL;
-+
-+	return 0;
-+}
-+
-+static int mtk_cldma_open(struct cldma_dev *cd, struct sk_buff *skb)
-+{
-+	struct trb_open_priv *trb_open_priv = (struct trb_open_priv *)skb->data;
-+	struct trb *trb = (struct trb *)skb->cb;
-+	struct cldma_drv_info *drv_info;
-+	struct queue_info *que;
-+	struct txq *txq;
-+	struct rxq *rxq;
-+	int err = 0;
-+
-+	que = radix_tree_lookup(&cd->trans->queue_tbl, trb->channel_id & 0xFFFF);
-+	drv_info = cd->cldma_drv_info[que->hif_id];
-+	if (!drv_info) {
-+		err = -EIO;
-+		goto out;
-+	}
-+
-+	if (que->tx_mtu == 0 || que->rx_mtu == 0) {
-+		dev_err((cd->trans->mdev)->dev,
-+			"Failed to enable cldma%d txq%d rxq%d due to wrong mtu\n",
-+			drv_info->hw_id, que->txqno, que->rxqno);
-+		err = -EINVAL;
-+		goto out;
-+	}
-+
-+	trb_open_priv->tx_mtu = que->tx_mtu;
-+	trb_open_priv->rx_mtu = que->rx_mtu;
-+	trb_open_priv->tx_frag_size = que->tx_frag_size;
-+	trb_open_priv->rx_frag_size = que->rx_frag_size;
-+
-+	if (drv_info->txq[que->txqno] || drv_info->rxq[que->rxqno]) {
-+		err = -EBUSY;
-+		goto out;
-+	}
-+
-+	txq = mtk_cldma_txq_alloc(drv_info, skb);
-+	if (!txq) {
-+		err = -ENOMEM;
-+		goto out;
-+	}
-+
-+	rxq = mtk_cldma_rxq_alloc(drv_info, skb);
-+	if (!rxq) {
-+		err = -ENOMEM;
-+		mtk_cldma_txq_free(drv_info, txq->txqno);
-+		goto out;
-+	}
-+
-+out:
-+	trb->status = err;
-+	trb->trb_complete(skb);
-+
-+	return err;
-+}
-+
-+static int mtk_cldma_tx(struct cldma_dev *cd, struct sk_buff *skb)
-+{
-+	struct trb *trb = (struct trb *)skb->cb;
-+	struct cldma_drv_info *drv_info;
-+	struct mtk_md_dev *mdev;
-+	struct queue_info *que;
-+	struct txq *txq;
-+	int err = 0;
-+
-+	que = radix_tree_lookup(&cd->trans->queue_tbl, trb->channel_id & 0xFFFF);
-+	drv_info = cd->cldma_drv_info[que->hif_id];
-+	if (unlikely(!drv_info))
-+		return -EPIPE;
-+	txq = drv_info->txq[que->txqno];
-+	if (unlikely(!txq) || txq->is_stopping)
-+		return -EPIPE;
-+
-+	mdev = drv_info->mdev;
-+
-+	err = mtk_cldma_start_xfer(drv_info, que->txqno);
-+	if (unlikely(err))
-+		dev_err((mdev)->dev, "Failed to trigger cldma tx\n");
-+
-+	return err;
-+}
-+
-+static int mtk_cldma_close(struct cldma_dev *cd, struct sk_buff *skb)
-+{
-+	struct trb *trb = (struct trb *)skb->cb;
-+	struct cldma_drv_info *drv_info;
-+	struct queue_info *que;
-+
-+	que = radix_tree_lookup(&cd->trans->queue_tbl, trb->channel_id & 0xFFFF);
-+	drv_info = cd->cldma_drv_info[que->hif_id];
-+	if (unlikely(!drv_info))
-+		return -EPIPE;
-+
-+	if (drv_info->txq[que->txqno])
-+		mtk_cldma_txq_free(drv_info, que->txqno);
-+	if (drv_info->rxq[que->rxqno])
-+		mtk_cldma_rxq_free(drv_info, que->rxqno);
-+
-+	trb->status = 0;
-+	trb->trb_complete(skb);
-+
-+	return 0;
-+}
-+
-+static int mtk_cldma_txbuf_set(struct cldma_drv_info *drv_info, struct sk_buff *skb,
-+			       struct tx_req *req, int nr_bds)
-+{
-+	struct sk_buff *curr_skb, *next_skb;
-+	struct mtk_md_dev *mdev;
-+	struct bd_dsc *bd_dsc;
-+	int err;
-+	int i;
-+
-+	mdev = drv_info->mdev;
-+
-+	if (nr_bds) {
-+		bd_dsc = req->bd_dsc_pool;
-+		curr_skb = skb;
-+		for (i = 0; i < nr_bds && curr_skb; i++) {
-+			bd_dsc = req->bd_dsc_pool + i;
-+			if (req->bd_dsc_pool == bd_dsc) {
-+				bd_dsc->data_len = skb->len - skb->data_len;
-+				next_skb = skb_shinfo(skb)->frag_list;
-+			} else {
-+				bd_dsc->data_len = curr_skb->len;
-+				next_skb = curr_skb->next;
-+			}
-+			bd_dsc->data_dma_addr = dma_map_single(mdev->dev, curr_skb->data,
-+							       bd_dsc->data_len, DMA_TO_DEVICE);
-+			err = dma_mapping_error(mdev->dev, bd_dsc->data_dma_addr);
-+			if (unlikely(err))
-+				goto err_unmap_buffer;
-+
-+			bd_dsc->bd->tx_bd.data_buff_ptr_h =
-+				cpu_to_le32((u64)(bd_dsc->data_dma_addr) >> 32);
-+			bd_dsc->bd->tx_bd.data_buff_ptr_l = cpu_to_le32(bd_dsc->data_dma_addr);
-+			bd_dsc->bd->tx_bd.data_buffer_len = cpu_to_le16(bd_dsc->data_len);
-+			curr_skb = next_skb;
-+		}
-+		bd_dsc->bd->tx_bd.bd_flags = CLDMA_BD_FLAG_EOL;
-+	} else {
-+		req->data_dma_addr = dma_map_single(mdev->dev, skb->data,
-+						    skb->len, DMA_TO_DEVICE);
-+		err = dma_mapping_error(mdev->dev, req->data_dma_addr);
-+		if (unlikely(err)) {
-+			req->data_dma_addr = 0;
-+			goto err_exit;
-+		}
-+
-+		req->gpd->tx_gpd.data_buff_ptr_h = cpu_to_le32((u64)(req->data_dma_addr) >> 32);
-+		req->gpd->tx_gpd.data_buff_ptr_l = cpu_to_le32(req->data_dma_addr);
-+	}
-+
-+	return 0;
-+
-+err_unmap_buffer:
-+	for (i = 0; i < nr_bds; i++) {
-+		bd_dsc = req->bd_dsc_pool + i;
-+		if (dma_mapping_error(mdev->dev, bd_dsc->data_dma_addr)) {
-+			bd_dsc->data_dma_addr = 0;
-+			break;
-+		}
-+		dma_unmap_single(mdev->dev, bd_dsc->data_dma_addr,
-+				 bd_dsc->data_len, DMA_TO_DEVICE);
-+		bd_dsc->data_dma_addr = 0;
-+	}
-+err_exit:
-+	dev_err((mdev)->dev, "Failed to map dma! error:%d\n", err);
-+	return -EAGAIN;
-+}
-+
-+int mtk_cldma_submit_tx(void *dev, struct sk_buff *skb)
-+{
-+	struct trb *trb = (struct trb *)skb->cb;
-+	struct cldma_drv_info *drv_info;
-+	struct cldma_dev *cd = dev;
-+	struct queue_info *que;
-+	struct tx_req *req;
-+	struct txq *txq;
++	struct mtk_data_blk *data_blk;
 +	int ret;
 +
-+	que = radix_tree_lookup(&cd->trans->queue_tbl, trb->channel_id & 0xFFFF);
-+	drv_info = cd->cldma_drv_info[que->hif_id];
-+	if (unlikely(!drv_info)) {
-+		ret = -EINVAL;
-+		goto out;
-+	}
++	data_blk = devm_kzalloc(mdev->dev, sizeof(*data_blk), GFP_KERNEL);
++	if (!data_blk)
++		return -ENOMEM;
 +
-+	txq = drv_info->txq[que->txqno];
-+	if (unlikely(!txq)) {
-+		ret = -EINVAL;
-+		goto out;
-+	}
++	data_blk->mdev = mdev;
++	mdev->data_blk = data_blk;
++	data_blk->hif_ops = ops;
 +
-+	if (!atomic_read(&txq->req_budget)) {
-+		ret = -EAGAIN;
-+		goto out;
-+	}
++	ret = data_blk->hif_ops->init(mdev);
++	if (ret < 0)
++		goto data_blk_free;
 +
-+	req = txq->req_pool + txq->wr_idx;
-+	req->gpd->tx_gpd.debug_id = 0x01;
-+	ret = mtk_cldma_txbuf_set(drv_info, skb, req, txq->nr_bds);
-+	if (ret)
-+		goto out;
-+	req->gpd->tx_gpd.data_buff_len = cpu_to_le16(skb->len);
-+
-+	wmb(); /* ensure data msg set done before HWO setup */
-+
-+	req->gpd->tx_gpd.gpd_flags |= CLDMA_GPD_FLAG_HWO;
-+
-+	wmb(); /* ensure HWO setup done before req msg setup */
-+
-+	req->data_len = skb->len;
-+	req->skb = skb;
-+	req->data_vm_addr = skb->data;
-+	txq->wr_idx = (txq->wr_idx + 1) % txq->nr_gpds;
-+	atomic_dec(&txq->req_budget);
-+
-+out:
-+	return ret;
-+}
-+
-+int mtk_cldma_get_tx_budget(void *dev, enum mtk_hif_id hif_id, u32 qno)
-+{
-+	struct cldma_drv_info *drv_info;
-+	struct cldma_dev *cd = dev;
-+	struct txq *txq;
-+
-+	if (unlikely(hif_id >= NR_CLDMA || qno >= HW_QUE_NUM || !cd))
-+		return -EINVAL;
-+
-+	drv_info = cd->cldma_drv_info[hif_id];
-+	if (!drv_info)
-+		return -EINVAL;
-+	txq = drv_info->txq[qno];
-+	if (!txq)
-+		return -EINVAL;
-+	return atomic_read(&txq->req_budget);
-+}
-+
-+static int (*trb_act_tbl[TRB_CMD_MAX])(struct cldma_dev *cd, struct sk_buff *skb) = {
-+	[TRB_CMD_ENABLE] = mtk_cldma_open,
-+	[TRB_CMD_TX] = mtk_cldma_tx,
-+	[TRB_CMD_DISABLE] = mtk_cldma_close,
-+};
-+
-+int mtk_cldma_trb_process(void *dev, struct sk_buff *skb)
-+{
-+	struct cldma_dev *cd;
-+	struct trb *trb;
-+
-+	if (!dev || !skb)
-+		return -EINVAL;
-+
-+	cd = (struct cldma_dev *)dev;
-+	trb = (struct trb *)skb->cb;
-+
-+	if (!(trb->cmd > TRB_CMD_MIN && trb->cmd < TRB_CMD_STOP))
-+		return -EINVAL;
-+
-+	return trb_act_tbl[trb->cmd](cd, skb);
-+}
-+
-+int mtk_cldma_check_ch_cfg(void *dev, struct queue_info *que)
-+{
-+	struct cldma_drv_info *drv_info;
-+	struct cldma_dev *cd = dev;
-+	struct mtk_md_dev *mdev;
-+	struct txq *txq;
-+	struct rxq *rxq;
-+
-+	mdev = cd->trans->mdev;
-+	drv_info = cd->cldma_drv_info[que->hif_id];
-+
-+	if (unlikely(!drv_info)) {
-+		dev_err((mdev)->dev, "CLDMA%d has not been initialized\n",
-+			mtk_cldma_hw_id_tbl[que->hif_id]);
-+		return -EINVAL;
-+	}
-+
-+	txq = drv_info->txq[que->txqno];
-+	rxq = drv_info->rxq[que->rxqno];
-+	if (unlikely(!txq || !rxq)) {
-+		dev_err((mdev)->dev,
-+			"CLDMA%d txq%d rxq%d has not been enabled\n",
-+			mtk_cldma_hw_id_tbl[que->hif_id], que->txqno, que->rxqno);
-+		return -EINVAL;
-+	}
-+
-+	if (que->tx_mtu != txq->que->tx_mtu || que->rx_mtu != rxq->que->rx_mtu) {
-+		dev_err((mdev)->dev,
-+			"Channel:%08x tx_mtu:%08x rx_mtu:%08x do not match ch cfg\n",
-+			que->tx_chl, que->tx_mtu, que->rx_mtu);
-+		return -EINVAL;
++	ret = mtk_fsm_notifier_register(mdev, MTK_USER_DATA, mtk_data_fsm_callback, mdev,
++					FSM_PRIO_1, false);
++	if (ret < 0) {
++		dev_err(mdev->dev, "Failed to register FSM notifier\n");
++		goto hif_exit;
 +	}
 +
 +	return 0;
++
++hif_exit:
++	data_blk->hif_ops->exit(mdev);
++data_blk_free:
++	devm_kfree(mdev->dev, data_blk);
++	mdev->data_blk = NULL;
++
++	return ret;
 +}
-diff --git a/drivers/net/wwan/t9xx/pcie/mtk_cldma.h b/drivers/net/wwan/t9xx/pcie/mtk_cldma.h
++EXPORT_SYMBOL(mtk_data_init);
++
++int mtk_data_exit(struct mtk_md_dev *mdev)
++{
++	struct mtk_data_blk *data_blk = mdev->data_blk;
++
++	if (!data_blk)
++		return -EINVAL;
++
++	mtk_fsm_notifier_unregister(mdev, MTK_USER_DATA);
++
++	data_blk->hif_ops->exit(mdev);
++
++	devm_kfree(mdev->dev, data_blk);
++	mdev->data_blk = NULL;
++
++	return 0;
++}
++EXPORT_SYMBOL(mtk_data_exit);
+diff --git a/drivers/net/wwan/t9xx/mtk_data_plane.h b/drivers/net/wwan/t9xx/mtk_data_plane.h
 new file mode 100644
-index 000000000000..246d28d3d798
+index 000000000000..1464fab544f1
 --- /dev/null
-+++ b/drivers/net/wwan/t9xx/pcie/mtk_cldma.h
-@@ -0,0 +1,170 @@
-+/* SPDX-License-Identifier: GPL-2.0-only
-+ *
-+ * Copyright (c) 2022, MediaTek Inc.
-+ */
-+
-+#ifndef __MTK_CLDMA_H__
-+#define __MTK_CLDMA_H__
-+
-+#include <linux/dma-mapping.h>
-+#include <linux/dmapool.h>
-+#include <linux/interrupt.h>
-+#include <linux/list.h>
-+#include <linux/spinlock.h>
-+#include <linux/types.h>
-+
-+#include "mtk_ctrl_plane.h"
-+#include "mtk_trans_ctrl.h"
-+
-+struct mtk_fsm_param;
-+
-+#define TXQ(N)					(N)
-+#define RXQ(N)					(N)
-+
-+#define CLDMA_GPD_FLAG_HWO			BIT(0)
-+#define CLDMA_GPD_FLAG_BDP			BIT(1)
-+#define CLDMA_GPD_FLAG_BPS			BIT(2)
-+#define CLDMA_GPD_FLAG_IOC			BIT(7)
-+#define CLDMA_BD_FLAG_EOL			BIT(0)
-+
-+union gpd {
-+	struct {
-+		u8 gpd_flags;
-+		u8 non_used1;
-+		__le16 data_allow_len;
-+		__le32 next_gpd_ptr_h;
-+		__le32 next_gpd_ptr_l;
-+		__le32 data_buff_ptr_h;
-+		__le32 data_buff_ptr_l;
-+		__le16 data_recv_len;
-+		u8 non_used2;
-+		u8 debug_id;
-+	} rx_gpd;
-+
-+	struct {
-+		u8 gpd_flags;
-+		u8 non_used1;
-+		u8 non_used2;
-+		u8 debug_id;
-+		__le32 next_gpd_ptr_h;
-+		__le32 next_gpd_ptr_l;
-+		__le32 data_buff_ptr_h;
-+		__le32 data_buff_ptr_l;
-+		__le16 data_buff_len;
-+		__le16 non_used3;
-+	} tx_gpd;
-+} __packed;
-+
-+union bd {
-+	struct {
-+		u8 bd_flags;
-+		u8 non_used1;
-+		__le16 data_allow_len;
-+		__le32 next_bd_ptr_h;
-+		__le32 next_bd_ptr_l;
-+		__le32 data_buff_ptr_h;
-+		__le32 data_buff_ptr_l;
-+		__le16 data_recv_len;
-+		__le16 non_used2;
-+	} rx_bd;
-+
-+	struct {
-+		u8 bd_flags;
-+		u8 non_used1;
-+		__le16 non_used2;
-+		__le32 next_bd_ptr_h;
-+		__le32 next_bd_ptr_l;
-+		__le32 data_buff_ptr_h;
-+		__le32 data_buff_ptr_l;
-+		__le16 data_buffer_len;
-+		u8 extension_len;
-+		u8 non_used3;
-+	} tx_bd;
-+} __packed;
-+
-+struct bd_dsc {
-+	union bd *bd;
-+	struct sk_buff *skb;
-+	dma_addr_t bd_dma_addr;
-+	dma_addr_t data_dma_addr;
-+	size_t data_len;
-+};
-+
-+struct rx_req {
-+	union gpd *gpd;
-+	u32 mtu;
-+	struct sk_buff *skb;
-+	size_t data_len;
-+	dma_addr_t gpd_dma_addr;
-+	dma_addr_t data_dma_addr;
-+	u32 frag_size;
-+	struct bd_dsc *bd_dsc_pool;
-+};
-+
-+struct rxq {
-+	struct cldma_drv_info *drv_info;
-+	u32 rxqno;
-+	struct queue_info *que;
-+	struct work_struct rx_done_work;
-+	struct rx_req *req_pool;
-+	u32 nr_gpds;
-+	u32 free_idx;
-+	unsigned short rx_done_cnt;
-+	void *arg;
-+	int (*rx_done)(struct sk_buff *skb, void *priv, bool force_recv);
-+	u32 nr_bds;
-+	atomic_t need_exit;
-+};
-+
-+struct tx_req {
-+	union gpd *gpd;
-+	u32 mtu;
-+	void *data_vm_addr;
-+	size_t data_len;
-+	dma_addr_t data_dma_addr;
-+	dma_addr_t gpd_dma_addr;
-+	struct sk_buff *skb;
-+	int (*trb_complete)(struct sk_buff *skb);
-+	u32 frag_size;
-+	struct bd_dsc *bd_dsc_pool;
-+};
-+
-+struct txq {
-+	struct cldma_drv_info *drv_info;
-+	u32 txqno;
-+	struct queue_info *que;
-+	struct work_struct tx_done_work;
-+	struct tx_req *req_pool;
-+	u32 nr_gpds;
-+	atomic_t req_budget;
-+	u32 wr_idx;
-+	u32 free_idx;
-+	bool tx_started;
-+	bool is_stopping;
-+	unsigned short tx_done_cnt;
-+	u32 nr_bds;
-+};
-+
-+struct cldma_dev {
-+	struct cldma_drv_info *cldma_drv_info[NR_CLDMA];
-+	struct mtk_ctrl_trans *trans;
-+};
-+
-+struct cldma_drv_info_desc {
-+	u32 hw_ver;
-+	struct cldma_drv_ops *drv_ops;
-+	struct cldma_hw_regs *hw_regs;
-+};
-+
-+int mtk_cldma_init(struct mtk_ctrl_trans *trans);
-+int mtk_cldma_exit(struct mtk_ctrl_trans *trans);
-+int mtk_cldma_submit_tx(void *dev, struct sk_buff *skb);
-+int mtk_cldma_get_tx_budget(void *dev, enum mtk_hif_id hif_id, u32 qno);
-+int mtk_cldma_trb_process(void *dev, struct sk_buff *skb);
-+void mtk_cldma_fsm_state_listener(struct mtk_fsm_param *param, struct mtk_ctrl_trans *trans);
-+int mtk_cldma_check_ch_cfg(void *dev, struct queue_info *que);
-+
-+#define drv_ops_name(NAME) cldma_drv_ops_##NAME
-+#define cldma_regs_name(NAME) mtk_cldma_regs_##NAME
-+
-+#endif
-diff --git a/drivers/net/wwan/t9xx/pcie/mtk_cldma_drv.c b/drivers/net/wwan/t9xx/pcie/mtk_cldma_drv.c
-new file mode 100644
-index 000000000000..d5eb2ab9a425
---- /dev/null
-+++ b/drivers/net/wwan/t9xx/pcie/mtk_cldma_drv.c
-@@ -0,0 +1,373 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (c) 2023, MediaTek Inc.
-+ */
-+
-+#include <linux/delay.h>
-+#include <linux/device.h>
-+#include <linux/dma-mapping.h>
-+#include <linux/dmapool.h>
-+#include <linux/err.h>
-+#include <linux/interrupt.h>
-+#include <linux/kdev_t.h>
-+#include <linux/kernel.h>
-+#include <linux/kthread.h>
-+#include <linux/list.h>
-+#include <linux/module.h>
-+#include <linux/mutex.h>
-+#include <linux/netdevice.h>
-+#include <linux/sched.h>
-+#include <linux/skbuff.h>
-+#include <linux/slab.h>
-+#include <linux/timer.h>
-+#include <linux/wait.h>
-+#include <linux/workqueue.h>
-+
-+#include "mtk_cldma_drv.h"
-+#include "mtk_dev.h"
-+#include "mtk_pci.h"
-+#include "mtk_pci_reg.h"
-+
-+#define WAIT_QUEUE_STOP		(70)
-+
-+void mtk_cldma_drv_init(struct cldma_drv_info *drv_info)
-+{
-+	struct cldma_hw_regs *hw_regs;
-+	struct mtk_md_dev *mdev;
-+	int base;
-+	u32 val;
-+
-+	mdev = drv_info->mdev;
-+	base = drv_info->base_addr;
-+	hw_regs = drv_info->hw_regs;
-+
-+	/* set CLDMA to 64 bit mode GPD */
-+	val = mtk_pci_read32(mdev, base + hw_regs->reg_cldma_ul_cfg);
-+	val = (val & (~(0x7 << 5))) | ((0x4) << 5);
-+	mtk_pci_write32(mdev, base + hw_regs->reg_cldma_ul_cfg, val);
-+
-+	val = mtk_pci_read32(mdev, base + hw_regs->reg_cldma_so_cfg);
-+	val = (val & (~(0x7 << 10))) | ((0x4) << 10) | (1 << 2);
-+	mtk_pci_write32(mdev, base + hw_regs->reg_cldma_so_cfg, val);
-+
-+	mtk_pci_write32(mdev, base + hw_regs->reg_cldma_rx_work_to_reg_mask_set, ALLQ);
-+	mtk_pci_write32(mdev, base + hw_regs->reg_cldma_ip_busy_to_pcie_mask_set,
-+			ALLQ << 16);
-+	mtk_pci_write32(mdev, base + hw_regs->reg_cldma_ip_busy_to_pcie_mask_clr,
-+			ALLQ << 24);
-+
-+	/* enable interrupt to PCIe */
-+	mtk_pci_write32(mdev, base + hw_regs->reg_cldma_int_mask, 0);
-+
-+	/* disable illegal memory check */
-+	mtk_pci_write32(mdev, base + hw_regs->reg_cldma_ul_dummy_0, 1);
-+	mtk_pci_write32(mdev, base + hw_regs->reg_cldma_so_dummy_0, 1);
-+}
-+
-+void mtk_cldma_setup_start_addr(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir,
-+				u32 qno, dma_addr_t addr)
-+{
-+	struct cldma_hw_regs *hw_regs;
-+	unsigned int addr_l;
-+	unsigned int addr_h;
-+	int base;
-+
-+	hw_regs = drv_info->hw_regs;
-+	base = drv_info->base_addr;
-+
-+	if (dir == DIR_TX) {
-+		addr_l = base + hw_regs->reg_cldma_ul_start_addrl_0 + qno * HW_QUEUE_NUM;
-+		addr_h = base + hw_regs->reg_cldma_ul_start_addrh_0 + qno * HW_QUEUE_NUM;
-+	} else {
-+		addr_l = base + hw_regs->reg_cldma_so_start_addrl_0 + qno * HW_QUEUE_NUM;
-+		addr_h = base + hw_regs->reg_cldma_so_start_addrh_0 + qno * HW_QUEUE_NUM;
-+	}
-+
-+	mtk_pci_write32(drv_info->mdev, addr_l, (u32)addr);
-+	mtk_pci_write32(drv_info->mdev, addr_h, (u32)((u64)addr >> 32));
-+}
-+
-+void mtk_cldma_mask_intr(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir,
-+			 u32 qno, enum mtk_intr_type type)
-+{
-+	struct cldma_hw_regs *hw_regs;
-+	int base;
-+	u32 addr;
-+	u32 val;
-+
-+	hw_regs = drv_info->hw_regs;
-+	base = drv_info->base_addr;
-+
-+	if (dir == DIR_TX)
-+		addr = base + hw_regs->reg_cldma_l2timsr0;
-+	else
-+		addr = base + hw_regs->reg_cldma_l2rimsr0;
-+
-+	if (qno == ALLQ)
-+		val = qno << type;
-+	else
-+		val = BIT(qno) << type;
-+
-+	mtk_pci_write32(drv_info->mdev, addr, val);
-+}
-+
-+void mtk_cldma_unmask_intr(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir,
-+			   u32 qno, enum mtk_intr_type type)
-+{
-+	struct cldma_hw_regs *hw_regs;
-+	int base;
-+	u32 addr;
-+	u32 val;
-+
-+	hw_regs = drv_info->hw_regs;
-+	base = drv_info->base_addr;
-+
-+	if (dir == DIR_TX)
-+		addr = base + hw_regs->reg_cldma_l2timcr0;
-+	else
-+		addr = base + hw_regs->reg_cldma_l2rimcr0;
-+
-+	if (qno == ALLQ)
-+		val = qno << type;
-+	else
-+		val = BIT(qno) << type;
-+
-+	mtk_pci_write32(drv_info->mdev, addr, val);
-+}
-+
-+void mtk_cldma_clr_intr_status(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir,
-+			       u32 qno, enum mtk_intr_type type)
-+{
-+	struct cldma_hw_regs *hw_regs;
-+	struct mtk_md_dev *mdev;
-+	int base;
-+	u32 addr;
-+	u32 val;
-+
-+	hw_regs = drv_info->hw_regs;
-+	base = drv_info->base_addr;
-+	mdev = drv_info->mdev;
-+
-+	if (type == QUEUE_ERROR) {
-+		if (dir == DIR_TX) {
-+			val = mtk_pci_read32(mdev, base + hw_regs->reg_cldma_l3tisar0);
-+			mtk_pci_write32(mdev, base + hw_regs->reg_cldma_l3tisar0, val);
-+			val = mtk_pci_read32(mdev, base + hw_regs->reg_cldma_l3tisar1);
-+			mtk_pci_write32(mdev, base + hw_regs->reg_cldma_l3tisar1, val);
-+			val = mtk_pci_read32(mdev, base + hw_regs->reg_cldma_l3tisar2);
-+			mtk_pci_write32(mdev, base + hw_regs->reg_cldma_l3tisar2, val);
-+		} else {
-+			val = mtk_pci_read32(mdev, base + hw_regs->reg_cldma_l3risar0);
-+			mtk_pci_write32(mdev, base + hw_regs->reg_cldma_l3risar0, val);
-+			val = mtk_pci_read32(mdev, base + hw_regs->reg_cldma_l3risar1);
-+			mtk_pci_write32(mdev, base + hw_regs->reg_cldma_l3risar1, val);
-+		}
-+	}
-+
-+	if (dir == DIR_TX)
-+		addr = base + hw_regs->reg_cldma_l2tisar0;
-+	else
-+		addr = base + hw_regs->reg_cldma_l2risar0;
-+
-+	if (qno == ALLQ)
-+		val = qno << type;
-+	else
-+		val = BIT(qno) << type;
-+
-+	mtk_pci_write32(mdev, addr, val);
-+	val = mtk_pci_read32(mdev, addr);
-+}
-+
-+u32 mtk_cldma_check_intr_status(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir,
-+				u32 qno, enum mtk_intr_type type)
-+{
-+	struct cldma_hw_regs *hw_regs;
-+	int base;
-+	u32 addr;
-+	u32 val;
-+	u32 sta;
-+
-+	hw_regs = drv_info->hw_regs;
-+	base = drv_info->base_addr;
-+
-+	if (dir == DIR_TX)
-+		addr = base + hw_regs->reg_cldma_l2tisar0;
-+	else
-+		addr = base + hw_regs->reg_cldma_l2risar0;
-+
-+	val = mtk_pci_read32(drv_info->mdev, addr);
-+	if (val == LINK_ERROR_VAL)
-+		sta = val;
-+	else if (qno == ALLQ)
-+		sta = (val >> type) & 0xFF;
-+	else
-+		sta = (val >> type) & BIT(qno);
-+
-+	return sta;
-+}
-+
-+void mtk_cldma_start_queue(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir, u32 qno)
-+{
-+	struct cldma_hw_regs *hw_regs;
-+	u32 val = BIT(qno);
-+	int base;
-+	u32 addr;
-+
-+	hw_regs = drv_info->hw_regs;
-+	base = drv_info->base_addr;
-+
-+	if (dir == DIR_TX)
-+		addr = base + hw_regs->reg_cldma_ul_start_cmd;
-+	else
-+		addr = base + hw_regs->reg_cldma_so_start_cmd;
-+
-+	mtk_pci_write32(drv_info->mdev, addr, val);
-+}
-+
-+void mtk_cldma_resume_queue(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir, u32 qno)
-+{
-+	struct cldma_hw_regs *hw_regs;
-+	u32 val = BIT(qno);
-+	int base;
-+	u32 addr;
-+
-+	hw_regs = drv_info->hw_regs;
-+	base = drv_info->base_addr;
-+
-+	if (dir == DIR_TX)
-+		addr = base + hw_regs->reg_cldma_ul_resume_cmd;
-+	else
-+		addr = base + hw_regs->reg_cldma_so_resume_cmd;
-+
-+	mtk_pci_write32(drv_info->mdev, addr, val);
-+}
-+
-+u32 mtk_cldma_queue_status(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir, u32 qno)
-+{
-+	struct cldma_hw_regs *hw_regs;
-+	int base;
-+	u32 addr;
-+	u32 val;
-+
-+	hw_regs = drv_info->hw_regs;
-+	base = drv_info->base_addr;
-+
-+	if (dir == DIR_TX)
-+		addr = base + hw_regs->reg_cldma_ul_status;
-+	else
-+		addr = base + hw_regs->reg_cldma_so_status;
-+
-+	val = mtk_pci_read32(drv_info->mdev, addr);
-+
-+	if (qno == ALLQ || val == LINK_ERROR_VAL)
-+		return val;
-+
-+	return val & BIT(qno);
-+}
-+
-+u32 mtk_cldma_stop_queue(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir, u32 qno)
-+{
-+	u32 val = (qno == ALLQ) ? qno : BIT(qno);
-+	struct cldma_hw_regs *hw_regs;
-+	unsigned int active;
-+	int cnt = 0;
-+	int base;
-+	u32 addr;
-+
-+	hw_regs = drv_info->hw_regs;
-+	base = drv_info->base_addr;
-+
-+	if (dir == DIR_TX)
-+		addr = base + hw_regs->reg_cldma_ul_stop_cmd;
-+	else
-+		addr = base + hw_regs->reg_cldma_so_stop_cmd;
-+
-+	mtk_pci_write32(drv_info->mdev, addr, val);
-+
-+	do {
-+		active = drv_info->drv_ops->cldma_queue_status(drv_info, dir, qno);
-+		if (active == LINK_ERROR_VAL || !active)
-+			break;
-+		usleep_range(WAIT_QUEUE_STOP, 2 * WAIT_QUEUE_STOP);
-+	} while (++cnt < 10);
-+
-+	return active;
-+}
-+
-+void mtk_cldma_clear_ip_busy(struct cldma_drv_info *drv_info)
-+{
-+	mtk_pci_write32(drv_info->mdev, drv_info->base_addr +
-+			drv_info->hw_regs->reg_cldma_ip_busy, 0x01);
-+}
-+
-+void mtk_cldma_get_intr_status(struct cldma_drv_info *drv_info, u32 *tx_sta, u32 *rx_sta)
-+{
-+	struct cldma_hw_regs *hw_regs;
-+	struct mtk_md_dev *mdev;
-+	u32 tx_mask, rx_mask;
-+	int base;
-+
-+	mdev = drv_info->mdev;
-+	base = drv_info->base_addr;
-+	hw_regs = drv_info->hw_regs;
-+
-+	*tx_sta = mtk_pci_read32(mdev, base + hw_regs->reg_cldma_l2tisar0);
-+	tx_mask = mtk_pci_read32(mdev, base + hw_regs->reg_cldma_l2timr0);
-+	*rx_sta = mtk_pci_read32(mdev, base + hw_regs->reg_cldma_l2risar0);
-+	rx_mask = mtk_pci_read32(mdev, base + hw_regs->reg_cldma_l2rimr0);
-+
-+	*tx_sta = (*tx_sta) & (~tx_mask);
-+	*rx_sta = (*rx_sta) & (~rx_mask);
-+
-+	if (*tx_sta) {
-+		/* TX XFER_DONE and QUEUE_ERROR mask */
-+		mtk_pci_write32(mdev, base + hw_regs->reg_cldma_l2timsr0, *tx_sta);
-+		/* TX XFER_DONE clear */
-+		mtk_pci_write32(mdev, base + hw_regs->reg_cldma_l2tisar0,
-+				(*tx_sta) & (0xFF << QUEUE_XFER_DONE));
-+	}
-+
-+	if (*rx_sta) {
-+		/* RX XFER_DONE and QUEUE_ERROR mask */
-+		mtk_pci_write32(mdev, base + hw_regs->reg_cldma_l2rimsr0, *rx_sta);
-+		/* RX XFER_DONE clear */
-+		mtk_pci_write32(mdev, base + hw_regs->reg_cldma_l2risar0,
-+				(*rx_sta) & (0xFF << QUEUE_XFER_DONE));
-+	}
-+}
-+
-+u32 mtk_cldma_get_tx_start_addr(struct cldma_drv_info *drv_info, u32 qno)
-+{
-+	u32 addr, val;
-+
-+	addr = drv_info->base_addr + drv_info->hw_regs->reg_cldma_ul_start_addrl_0 +
-+	       qno * HW_QUEUE_NUM;
-+	val = mtk_pci_read32(drv_info->mdev, addr);
-+
-+	return val;
-+}
-+
-+u64 mtk_cldma_get_rx_curr_addr(struct cldma_drv_info *drv_info, u32 qno)
-+{
-+	struct cldma_hw_regs *hw_regs;
-+	u32 curr_addr_h, curr_addr_l;
-+	struct mtk_md_dev *mdev;
-+	u64 curr_addr;
-+	int base;
-+	u64 addr;
-+
-+	hw_regs = drv_info->hw_regs;
-+	base = drv_info->base_addr;
-+	mdev = drv_info->mdev;
-+
-+	addr = base + hw_regs->reg_cldma_so_current_addrh_0 +
-+	       (u64)qno * HW_QUEUE_NUM;
-+	curr_addr_h = mtk_pci_read32(mdev, addr);
-+	addr = base + hw_regs->reg_cldma_so_current_addrl_0 +
-+	       (u64)qno * HW_QUEUE_NUM;
-+	curr_addr_l = mtk_pci_read32(mdev, addr);
-+	curr_addr = ((u64)curr_addr_h << 32) | curr_addr_l;
-+	if (curr_addr_h == LINK_ERROR_VAL && curr_addr_l == LINK_ERROR_VAL)
-+		curr_addr = 0;
-+	return curr_addr;
-+}
-diff --git a/drivers/net/wwan/t9xx/pcie/mtk_cldma_drv.h b/drivers/net/wwan/t9xx/pcie/mtk_cldma_drv.h
-new file mode 100644
-index 000000000000..8763c23abf54
---- /dev/null
-+++ b/drivers/net/wwan/t9xx/pcie/mtk_cldma_drv.h
-@@ -0,0 +1,177 @@
-+/* SPDX-License-Identifier: GPL-2.0-only
-+ *
-+ * Copyright (c) 2023, MediaTek Inc.
-+ */
-+
-+#ifndef __MTK_CLDMA_DRV_H__
-+#define __MTK_CLDMA_DRV_H__
-+
-+#define HW_QUEUE_NUM		(8)
-+#define ALLQ			(0xFF)
-+#define LINK_ERROR_VAL		(0xFFFFFFFF)
-+#define CLDMA0_HW_ID		(0)
-+#define CLDMA1_HW_ID		(1)
-+#define CLDMA4_HW_ID		(4)
-+
-+struct cldma_hw_regs {
-+	u8 cldma_rx_skb_pool_max_size;
-+	u8 cldma_rx_skb_reload_threshold;
-+	u8 tq_err_int_offset;
-+	u8 tq_active_start_err_int_offset;
-+	u8 rq_err_int_offset;
-+	u8 rq_active_start_err_int_offset;
-+	u16 reg_cldma_so_cfg;
-+	u16 reg_cldma_so_start_addrl_0;
-+	u16 reg_cldma_so_start_addrh_0;
-+	u16 reg_cldma_so_current_addrl_0;
-+	u16 reg_cldma_so_current_addrh_0;
-+	u16 reg_cldma_so_status;
-+	u16 reg_cldma_debug_id_en;
-+	u16 reg_cldma_so_last_update_addrl_0;
-+	u16 reg_cldma_so_last_update_addrh_0;
-+	u16 reg_cldma_l2rimr0;
-+	u16 reg_cldma_l2rimr1;
-+	u16 reg_cldma_l2rimcr0;
-+	u16 reg_cldma_l2rimcr1;
-+	u16 reg_cldma_l2rimsr0;
-+	u16 reg_cldma_l2rimsr1;
-+	u16 reg_cldma_int_mask;
-+	u16 reg_cldma4_int_mask;
-+	u16 reg_cldma_slp_mem_ctl;
-+	u16 reg_cldma_busy_mask;
-+	u16 reg_cldma_ip_busy_to_pcie_mask;
-+	u16 reg_cldma_ip_busy_to_pcie_mask_set;
-+	u16 reg_cldma_ip_busy_to_pcie_mask_clr;
-+	u16 reg_cldma_ip_busy_to_ap_mask;
-+	u16 reg_cldma_ip_busy_to_ap_mask_set;
-+	u16 reg_cldma_ip_busy_to_ap_mask_clr;
-+	u16 reg_cldma_ip_busy_to_md_mask_set;
-+	u16 reg_cldma_rx_work_to_reg_mask_set;
-+	u16 reg_infra_rst4_set;
-+	u16 reg_infra_rst4_clr;
-+	u16 reg_infra_rst2_set;
-+	u16 reg_infra_rst2_clr;
-+	u16 reg_infra_rst0_set;
-+	u16 reg_infra_rst0_clr;
-+	u32 tq_err_int_bitmask;
-+	u32 tq_active_start_err_int_bitmask;
-+	u32 rq_err_int_bitmask;
-+	u32 cldma0_base_addr;
-+	u32 cldma1_base_addr;
-+	u32 cldma4_base_addr;
-+	u32 rq_active_start_err_int_bitmask;
-+	u32 reg_cldma_ul_start_addrl_0;
-+	u32 reg_cldma_ul_start_addrh_0;
-+	u32 reg_cldma_ul_current_addrl_0;
-+	u32 reg_cldma_ul_current_addrh_0;
-+	u32 reg_cldma_ul_status;
-+	u32 reg_cldma_ul_start_cmd;
-+	u32 reg_cldma_ul_resume_cmd;
-+	u32 reg_cldma_ul_stop_cmd;
-+	u32 reg_cldma_ul_error;
-+	u32 reg_cldma_ul_cfg;
-+	u32 reg_cldma_ul_dummy_0;
-+	u32 reg_cldma_so_error;
-+	u32 reg_cldma_so_start_cmd;
-+	u32 reg_cldma_so_resume_cmd;
-+	u32 reg_cldma_so_stop_cmd;
-+	u32 reg_cldma_so_dummy_0;
-+	u32 reg_cldma_l2tisar0;
-+	u32 reg_cldma_l2tisar1;
-+	u32 reg_cldma_l2timr0;
-+	u32 reg_cldma_l2timr1;
-+	u32 reg_cldma_l2timcr0;
-+	u32 reg_cldma_l2timcr1;
-+	u32 reg_cldma_l2timsr0;
-+	u32 reg_cldma_l2timsr1;
-+	u32 reg_cldma_l2risar0;
-+	u32 reg_cldma_l2risar1;
-+	u32 reg_cldma_l3tisar0;
-+	u32 reg_cldma_l3tisar1;
-+	u32 reg_cldma_l3tisar2;
-+	u32 reg_cldma_l3risar0;
-+	u32 reg_cldma_l3risar1;
-+	u32 reg_cldma_ip_busy;
-+};
-+
-+enum mtk_ip_busy_src {
-+	IP_BUSY_TXDONE = 0,
-+	IP_BUSY_TXEMPTY = 8,
-+	IP_BUSY_TXACTIVE = 16,
-+	IP_BUSY_RXDONE = 24
-+};
-+
-+enum mtk_intr_type {
-+	QUEUE_XFER_DONE = 0,
-+	QUEUE_EMPTY = 8,
-+	QUEUE_ERROR = 16,
-+	QUEUE_ACTIVE_START = 24,
-+	INVALID_TYPE
-+};
-+
-+enum mtk_tx_rx {
-+	DIR_TX,
-+	DIR_RX,
-+	DIR_MAX
-+};
-+
-+struct cldma_drv_info {
-+	int hif_id;
-+	int hw_id;
-+	int base_addr;
-+	int pci_ext_irq_id;
-+	struct mtk_md_dev *mdev;
-+	struct cldma_dev *cd;
-+	struct txq *txq[HW_QUEUE_NUM];
-+	struct rxq *rxq[HW_QUEUE_NUM];
-+	struct dma_pool *gpd_dma_pool;
-+	struct dma_pool *bd_dma_pool;
-+	struct workqueue_struct *wq;
-+	struct cldma_hw_regs *hw_regs;
-+	struct cldma_drv_ops *drv_ops;
-+};
-+
-+struct cldma_drv_ops {
-+	void (*cldma_drv_init)(struct cldma_drv_info *drv_info);
-+	void (*cldma_drv_reset)(struct cldma_drv_info *drv_info);
-+	void (*cldma_setup_start_addr)(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir,
-+				       u32 qno, dma_addr_t addr);
-+	void (*cldma_mask_intr)(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir,
-+				u32 qno, enum mtk_intr_type type);
-+	void (*cldma_unmask_intr)(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir,
-+				  u32 qno, enum mtk_intr_type type);
-+	void (*cldma_clr_intr_status)(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir,
-+				      u32 qno, enum mtk_intr_type type);
-+	u32 (*cldma_check_intr_status)(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir,
-+				       u32 qno, enum mtk_intr_type type);
-+	void (*cldma_start_queue)(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir, u32 qno);
-+	void (*cldma_resume_queue)(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir, u32 qno);
-+	u32 (*cldma_queue_status)(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir, u32 qno);
-+	u32 (*cldma_stop_queue)(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir, u32 qno);
-+	void (*cldma_clear_ip_busy)(struct cldma_drv_info *drv_info);
-+	void (*cldma_get_intr_status)(struct cldma_drv_info *drv_info, u32 *tx_sta, u32 *rx_sta);
-+	u32 (*cldma_get_tx_start_addr)(struct cldma_drv_info *drv_info, u32 qno);
-+	u64 (*cldma_get_rx_curr_addr)(struct cldma_drv_info *drv_info, u32 qno);
-+};
-+
-+void mtk_cldma_drv_init(struct cldma_drv_info *drv_info);
-+void mtk_cldma_setup_start_addr(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir,
-+				u32 qno, dma_addr_t addr);
-+void mtk_cldma_mask_intr(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir,
-+			 u32 qno, enum mtk_intr_type type);
-+void mtk_cldma_unmask_intr(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir,
-+			   u32 qno, enum mtk_intr_type type);
-+void mtk_cldma_clr_intr_status(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir,
-+			       u32 qno, enum mtk_intr_type type);
-+u32 mtk_cldma_check_intr_status(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir,
-+				u32 qno, enum mtk_intr_type type);
-+void mtk_cldma_start_queue(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir, u32 qno);
-+void mtk_cldma_resume_queue(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir, u32 qno);
-+u32 mtk_cldma_queue_status(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir, u32 qno);
-+u32 mtk_cldma_stop_queue(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir, u32 qno);
-+void mtk_cldma_clear_ip_busy(struct cldma_drv_info *drv_info);
-+void mtk_cldma_get_intr_status(struct cldma_drv_info *drv_info, u32 *tx_sta, u32 *rx_sta);
-+u32 mtk_cldma_get_tx_start_addr(struct cldma_drv_info *drv_info, u32 qno);
-+u64 mtk_cldma_get_rx_curr_addr(struct cldma_drv_info *drv_info, u32 qno);
-+
-+#endif
-diff --git a/drivers/net/wwan/t9xx/pcie/mtk_cldma_drv_m9xx.c b/drivers/net/wwan/t9xx/pcie/mtk_cldma_drv_m9xx.c
-new file mode 100644
-index 000000000000..240a9f58f658
---- /dev/null
-+++ b/drivers/net/wwan/t9xx/pcie/mtk_cldma_drv_m9xx.c
-@@ -0,0 +1,182 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (c) 2023, MediaTek Inc.
-+ */
-+
-+#include <linux/delay.h>
-+#include <linux/device.h>
-+#include <linux/dma-mapping.h>
-+#include <linux/dmapool.h>
-+#include <linux/err.h>
-+#include <linux/interrupt.h>
-+#include <linux/kdev_t.h>
-+#include <linux/kernel.h>
-+#include <linux/kthread.h>
-+#include <linux/list.h>
-+#include <linux/module.h>
-+#include <linux/mutex.h>
-+#include <linux/netdevice.h>
-+#include <linux/sched.h>
-+#include <linux/skbuff.h>
-+#include <linux/slab.h>
-+#include <linux/timer.h>
-+#include <linux/wait.h>
-+#include <linux/workqueue.h>
-+
-+#include "mtk_cldma_drv.h"
-+#include "mtk_cldma_drv_m9xx.h"
-+#include "mtk_dev.h"
-+#include "mtk_pci.h"
-+#include "mtk_pci_reg.h"
-+#include "mtk_trans_ctrl.h"
-+
-+struct cldma_hw_regs mtk_cldma_regs_m9xx = {
-+	.cldma0_base_addr = CLDMA0_BASE_ADDR,
-+	.cldma1_base_addr = CLDMA1_BASE_ADDR,
-+	.cldma4_base_addr = CLDMA4_BASE_ADDR,
-+	.cldma_rx_skb_pool_max_size = CLDMA_RX_SKB_POOL_MAX_SIZE,
-+	.cldma_rx_skb_reload_threshold = CLDMA_RX_SKB_RELOAD_THRESHOLD,
-+	.tq_err_int_offset = TQ_ERR_INT_OFFSET,
-+	.tq_err_int_bitmask = TQ_ERR_INT_BITMASK,
-+	.tq_active_start_err_int_offset = TQ_ACTIVE_START_ERR_INT_OFFSET,
-+	.tq_active_start_err_int_bitmask = TQ_ACTIVE_START_ERR_INT_BITMASK,
-+	.rq_err_int_offset = RQ_ERR_INT_OFFSET,
-+	.rq_err_int_bitmask = RQ_ERR_INT_BITMASK,
-+	.rq_active_start_err_int_offset = RQ_ACTIVE_START_ERR_INT_OFFSET,
-+	.rq_active_start_err_int_bitmask = RQ_ACTIVE_START_ERR_INT_BITMASK,
-+	.reg_cldma_ul_start_addrl_0 = REG_CLDMA_UL_START_ADDRL_0,
-+	.reg_cldma_ul_start_addrh_0 = REG_CLDMA_UL_START_ADDRH_0,
-+	.reg_cldma_ul_current_addrl_0 = REG_CLDMA_UL_CURRENT_ADDRL_0,
-+	.reg_cldma_ul_current_addrh_0 = REG_CLDMA_UL_CURRENT_ADDRH_0,
-+	.reg_cldma_ul_status = REG_CLDMA_UL_STATUS,
-+	.reg_cldma_ul_start_cmd = REG_CLDMA_UL_START_CMD,
-+	.reg_cldma_ul_resume_cmd = REG_CLDMA_UL_RESUME_CMD,
-+	.reg_cldma_ul_stop_cmd = REG_CLDMA_UL_STOP_CMD,
-+	.reg_cldma_ul_error = REG_CLDMA_UL_ERROR,
-+	.reg_cldma_ul_cfg = REG_CLDMA_UL_CFG,
-+	.reg_cldma_ul_dummy_0 = REG_CLDMA_UL_DUMMY_0,
-+	.reg_cldma_so_error = REG_CLDMA_SO_ERROR,
-+	.reg_cldma_so_start_cmd = REG_CLDMA_SO_START_CMD,
-+	.reg_cldma_so_resume_cmd = REG_CLDMA_SO_RESUME_CMD,
-+	.reg_cldma_so_stop_cmd = REG_CLDMA_SO_STOP_CMD,
-+	.reg_cldma_so_dummy_0 = REG_CLDMA_SO_DUMMY_0,
-+	.reg_cldma_so_cfg = REG_CLDMA_SO_CFG,
-+	.reg_cldma_so_start_addrl_0 = REG_CLDMA_SO_START_ADDRL_0,
-+	.reg_cldma_so_start_addrh_0 = REG_CLDMA_SO_START_ADDRH_0,
-+	.reg_cldma_so_current_addrl_0 = REG_CLDMA_SO_CUR_ADDRL_0,
-+	.reg_cldma_so_current_addrh_0 = REG_CLDMA_SO_CUR_ADDRH_0,
-+	.reg_cldma_so_status = REG_CLDMA_SO_STATUS,
-+	.reg_cldma_debug_id_en = REG_CLDMA_DEBUG_ID_EN,
-+	.reg_cldma_so_last_update_addrl_0 = REG_CLDMA_SO_LAST_UPDATE_ADDRL_0,
-+	.reg_cldma_so_last_update_addrh_0 = REG_CLDMA_SO_LAST_UPDATE_ADDRH_0,
-+	.reg_cldma_l2tisar0 = REG_CLDMA_L2TISAR0,
-+	.reg_cldma_l2tisar1 = REG_CLDMA_L2TISAR1,
-+	.reg_cldma_l2timr0 = REG_CLDMA_L2TIMR0,
-+	.reg_cldma_l2timr1 = REG_CLDMA_L2TIMR1,
-+	.reg_cldma_l2timcr0 = REG_CLDMA_L2TIMCR0,
-+	.reg_cldma_l2timcr1 = REG_CLDMA_L2TIMCR1,
-+	.reg_cldma_l2timsr0 = REG_CLDMA_L2TIMSR0,
-+	.reg_cldma_l2timsr1 = REG_CLDMA_L2TIMSR1,
-+	.reg_cldma_l3tisar0 = REG_CLDMA_L3TISAR0,
-+	.reg_cldma_l3tisar1 = REG_CLDMA_L3TISAR1,
-+	.reg_cldma_l3tisar2 = REG_CLDMA_L3TISAR2,
-+	.reg_cldma_l2risar0 = REG_CLDMA_L2RISAR0,
-+	.reg_cldma_l2risar1 = REG_CLDMA_L2RISAR1,
-+	.reg_cldma_l2rimr0 = REG_CLDMA_L2RIMR0,
-+	.reg_cldma_l2rimr1 = REG_CLDMA_L2RIMR1,
-+	.reg_cldma_l2rimcr0 = REG_CLDMA_L2RIMCR0,
-+	.reg_cldma_l2rimcr1 = REG_CLDMA_L2RIMCR1,
-+	.reg_cldma_l2rimsr0 = REG_CLDMA_L2RIMSR0,
-+	.reg_cldma_l2rimsr1 = REG_CLDMA_L2RIMSR1,
-+	.reg_cldma_l3risar0 = REG_CLDMA_L3RISAR0,
-+	.reg_cldma_l3risar1 = REG_CLDMA_L3RISAR1,
-+	.reg_cldma_ip_busy = REG_CLDMA_IP_BUSY,
-+	.reg_cldma_int_mask = REG_CLDMA_INT_EAP_USIP_MASK,
-+	.reg_cldma4_int_mask = REG_CLDMA_INT_WF_MASK,
-+	.reg_cldma_ip_busy_to_pcie_mask = REG_CLDMA_IP_BUSY_TO_PCIE_MASK,
-+	.reg_cldma_ip_busy_to_pcie_mask_set = REG_CLDMA_IP_BUSY_TO_PCIE_MASK_SET,
-+	.reg_cldma_ip_busy_to_pcie_mask_clr = REG_CLDMA_IP_BUSY_TO_PCIE_MASK_CLR,
-+	.reg_cldma_ip_busy_to_ap_mask = REG_CLDMA_IP_BUSY_TO_AP_MASK,
-+	.reg_cldma_ip_busy_to_ap_mask_set = REG_CLDMA_IP_BUSY_TO_AP_MASK_SET,
-+	.reg_cldma_ip_busy_to_ap_mask_clr = REG_CLDMA_IP_BUSY_TO_AP_MASK_CLR,
-+	.reg_cldma_ip_busy_to_md_mask_set = REG_CLDMA_IP_BUSY_TO_MD_MASK_SET,
-+	.reg_cldma_rx_work_to_reg_mask_set = REG_CLDMA_RX_WORK_TO_REG_MASK_SET,
-+	.reg_infra_rst0_set = REG_INFRA_RST0_SET,
-+	.reg_infra_rst0_clr = REG_INFRA_RST0_CLR,
-+};
-+
-+static void mtk_cldma_drv_init_m9xx(struct cldma_drv_info *drv_info)
-+{
-+	struct cldma_hw_regs *hw_regs;
-+	struct mtk_md_dev *mdev;
-+	int base;
-+	u32 val;
-+
-+	mdev = drv_info->mdev;
-+	base = drv_info->base_addr;
-+	hw_regs = drv_info->hw_regs;
-+
-+	/* set CLDMA to 64 bit mode GPD */
-+	val = mtk_pci_read32(mdev, base + hw_regs->reg_cldma_ul_cfg);
-+
-+	val = (val & (~(0x7 << 5))) | ((0x4) << 5);
-+	mtk_pci_write32(mdev, base + hw_regs->reg_cldma_ul_cfg, val);
-+
-+	val = mtk_pci_read32(mdev, base + hw_regs->reg_cldma_so_cfg);
-+	val = (val & (~(0x7 << 10))) | ((0x4) << 10) | (1 << 2);
-+	mtk_pci_write32(mdev, base + hw_regs->reg_cldma_so_cfg, val);
-+
-+	mtk_pci_write32(mdev, base + hw_regs->reg_cldma_rx_work_to_reg_mask_set, ALLQ);
-+
-+	mtk_pci_write32(mdev, base + hw_regs->reg_cldma_ip_busy_to_pcie_mask_set,
-+			ALLQ << 16);
-+	mtk_pci_write32(mdev, base + hw_regs->reg_cldma_ip_busy_to_pcie_mask_clr,
-+			ALLQ << 24);
-+
-+	/* enable interrupt to PCIe */
-+	if (drv_info->hw_id == CLDMA4_HW_ID)
-+		mtk_pci_write32(mdev, base + hw_regs->reg_cldma4_int_mask, 0);
-+	else
-+		mtk_pci_write32(mdev, base + hw_regs->reg_cldma_int_mask, 0);
-+
-+	/* disable illegal memory check */
-+	mtk_pci_write32(mdev, base + hw_regs->reg_cldma_ul_dummy_0, 1);
-+	mtk_pci_write32(mdev, base + hw_regs->reg_cldma_so_dummy_0, 1);
-+}
-+
-+static void mtk_cldma_drv_reset_m9xx(struct cldma_drv_info *drv_info)
-+{
-+	struct cldma_hw_regs *hw_regs;
-+	struct mtk_md_dev *mdev;
-+	u32 val;
-+
-+	mdev = drv_info->mdev;
-+	hw_regs = drv_info->hw_regs;
-+
-+	val = mtk_pci_read32(mdev, REG_DEV_INFRA_BASE + hw_regs->reg_infra_rst0_set);
-+
-+	val |= 1 << (REG_CLDMA0_RST_SET_BIT + drv_info->hw_id);
-+	mtk_pci_write32(mdev, REG_DEV_INFRA_BASE + hw_regs->reg_infra_rst0_set, val);
-+	udelay(1);
-+	val = mtk_pci_read32(mdev, REG_DEV_INFRA_BASE + hw_regs->reg_infra_rst0_clr);
-+	val |= 1 << (REG_CLDMA0_RST_CLR_BIT + drv_info->hw_id);
-+	mtk_pci_write32(mdev, REG_DEV_INFRA_BASE + hw_regs->reg_infra_rst0_clr, val);
-+}
-+
-+struct cldma_drv_ops cldma_drv_ops_m9xx = {
-+	.cldma_drv_init = mtk_cldma_drv_init_m9xx,
-+	.cldma_drv_reset = mtk_cldma_drv_reset_m9xx,
-+	.cldma_setup_start_addr = mtk_cldma_setup_start_addr,
-+	.cldma_mask_intr = mtk_cldma_mask_intr,
-+	.cldma_unmask_intr = mtk_cldma_unmask_intr,
-+	.cldma_clr_intr_status = mtk_cldma_clr_intr_status,
-+	.cldma_check_intr_status = mtk_cldma_check_intr_status,
-+	.cldma_start_queue = mtk_cldma_start_queue,
-+	.cldma_resume_queue = mtk_cldma_resume_queue,
-+	.cldma_queue_status = mtk_cldma_queue_status,
-+	.cldma_stop_queue = mtk_cldma_stop_queue,
-+	.cldma_clear_ip_busy = mtk_cldma_clear_ip_busy,
-+	.cldma_get_intr_status = mtk_cldma_get_intr_status,
-+	.cldma_get_tx_start_addr = mtk_cldma_get_tx_start_addr,
-+	.cldma_get_rx_curr_addr = mtk_cldma_get_rx_curr_addr,
-+};
-diff --git a/drivers/net/wwan/t9xx/pcie/mtk_cldma_drv_m9xx.h b/drivers/net/wwan/t9xx/pcie/mtk_cldma_drv_m9xx.h
-new file mode 100644
-index 000000000000..2c63c43ff065
---- /dev/null
-+++ b/drivers/net/wwan/t9xx/pcie/mtk_cldma_drv_m9xx.h
++++ b/drivers/net/wwan/t9xx/mtk_data_plane.h
 @@ -0,0 +1,103 @@
 +/* SPDX-License-Identifier: GPL-2.0-only
 + *
-+ * Copyright (c) 2023, MediaTek Inc.
++ * Copyright (c) 2022, MediaTek Inc.
 + */
 +
-+#ifndef __MTK_CLDMA_DRV_M9XX_H__
-+#define __MTK_CLDMA_DRV_M9XX_H__
++#ifndef __MTK_DATA_PLANE_H__
++#define __MTK_DATA_PLANE_H__
 +
-+#define CLDMA0_BASE_ADDR				(0x1021C000)
-+#define CLDMA1_BASE_ADDR				(0x1021E000)
-+#define CLDMA4_BASE_ADDR				(0x10224000)
++#include <linux/bitops.h>
++#include <linux/completion.h>
++#include <linux/skbuff.h>
 +
-+#define CLDMA_RX_SKB_POOL_MAX_SIZE			(64)
-+#define CLDMA_RX_SKB_RELOAD_THRESHOLD			(16)
++#define SKB_TO_CMD(skb) ((struct mtk_data_cmd *)(skb)->data)
++#define CMD_TO_DATA(cmd) (*(void **)(cmd)->data)
++#define SKB_TO_CMD_DATA(skb) (*(void **)SKB_TO_CMD(skb)->data)
 +
-+/* L2TISAR0 */
-+#define TQ_ERR_INT_OFFSET				(16)
-+#define TQ_ERR_INT_BITMASK				(0x00FF0000)
-+#define TQ_ACTIVE_START_ERR_INT_OFFSET			(24)
-+#define TQ_ACTIVE_START_ERR_INT_BITMASK			(0xFF000000)
++#define IPV4_VERSION 0x40
++#define IPV6_VERSION 0x60
 +
-+/* L2RISAR0 */
-+#define RQ_ERR_INT_OFFSET				(16)
-+#define RQ_ERR_INT_BITMASK				(0x00FF0000)
-+#define RQ_ACTIVE_START_ERR_INT_OFFSET			(24)
-+#define RQ_ACTIVE_START_ERR_INT_BITMASK			(0xFF000000)
++enum mtk_data_feature {
++	DATA_F_MULTI_NETDEV = BIT(16),
++};
 +
-+/* CLDMA IN(Tx) */
-+#define REG_CLDMA_UL_START_ADDRL_0			(0x0004)
-+#define REG_CLDMA_UL_START_ADDRH_0			(0x0008)
-+#define REG_CLDMA_UL_CURRENT_ADDRL_0			(0x0044)
-+#define REG_CLDMA_UL_CURRENT_ADDRH_0			(0x0048)
-+#define REG_CLDMA_UL_STATUS				(0x0084)
-+#define REG_CLDMA_UL_START_CMD				(0x0088)
-+#define REG_CLDMA_UL_RESUME_CMD				(0x008C)
-+#define REG_CLDMA_UL_STOP_CMD				(0x0090)
-+#define REG_CLDMA_UL_ERROR				(0x0094)
-+#define REG_CLDMA_UL_CFG				(0x0098)
-+#define REG_CLDMA_UL_DUMMY_0				(0x009C)
++struct mtk_data_trans_info {
++	u32 cap;
++	unsigned char rxq_cnt;
++	unsigned char txq_cnt;
++	unsigned int max_mtu;
++	struct napi_struct **napis;
++};
 +
-+/* CLDMA OUT(Rx) */
-+#define REG_CLDMA_SO_ERROR				(0x0400 + 0x0100)
-+#define REG_CLDMA_SO_START_CMD				(0x0400 + 0x01BC)
-+#define REG_CLDMA_SO_RESUME_CMD				(0x0400 + 0x01C0)
-+#define REG_CLDMA_SO_STOP_CMD				(0x0400 + 0x01C4)
-+#define REG_CLDMA_SO_DUMMY_0				(0x0400 + 0x0108)
-+#define REG_CLDMA_SO_CFG				(0x0400 + 0x0004)
-+#define REG_CLDMA_SO_START_ADDRL_0			(0x0400 + 0x0078)
-+#define REG_CLDMA_SO_START_ADDRH_0			(0x0400 + 0x007C)
-+#define REG_CLDMA_SO_CUR_ADDRL_0			(0x0400 + 0x00B8)
-+#define REG_CLDMA_SO_CUR_ADDRH_0			(0x0400 + 0x00BC)
-+#define REG_CLDMA_SO_STATUS				(0x0400 + 0x00F8)
-+#define REG_CLDMA_DEBUG_ID_EN				(0x0400 + 0x00FC)
-+#define REG_CLDMA_SO_LAST_UPDATE_ADDRL_0		(0x0400 + 0x01C8)
-+#define REG_CLDMA_SO_LAST_UPDATE_ADDRH_0		(0x0400 + 0x01CC)
++struct mtk_data_blk {
++	struct mtk_md_dev *mdev;
++	void *dcb;
++	struct mtk_data_hif_ops *hif_ops;
++	struct mtk_data_trans_info trans_info;
++};
 +
-+/* CLDMA MISC */
-+#define REG_CLDMA_L2TISAR0				(0x0800 + 0x0010)
-+#define REG_CLDMA_L2TISAR1				(0x0800 + 0x0014)
-+#define REG_CLDMA_L2TIMR0				(0x0800 + 0x0018)
-+#define REG_CLDMA_L2TIMR1				(0x0800 + 0x001C)
-+#define REG_CLDMA_L2TIMCR0				(0x0800 + 0x0020)
-+#define REG_CLDMA_L2TIMCR1				(0x0800 + 0x0024)
-+#define REG_CLDMA_L2TIMSR0				(0x0800 + 0x0028)
-+#define REG_CLDMA_L2TIMSR1				(0x0800 + 0x002C)
-+#define REG_CLDMA_L3TISAR0				(0x0800 + 0x0030)
-+#define REG_CLDMA_L3TISAR1				(0x0800 + 0x0034)
-+#define REG_CLDMA_L2RISAR0				(0x0800 + 0x0050)
-+#define REG_CLDMA_L2RISAR1				(0x0800 + 0x0054)
-+#define REG_CLDMA_L3RISAR0				(0x0800 + 0x0070)
-+#define REG_CLDMA_L3RISAR1				(0x0800 + 0x0074)
-+#define REG_CLDMA_IP_BUSY				(0x0800 + 0x00B4)
-+#define REG_CLDMA_L3TISAR2				(0x0800 + 0x00C0)
++enum mtk_data_type {
++	DATA_PKT,
++	DATA_CMD,
++};
 +
-+#define REG_CLDMA_L2RIMR0				(0x0800 + 0x00E8)
-+#define REG_CLDMA_L2RIMR1				(0x0800 + 0x00EC)
-+#define REG_CLDMA_L2RIMCR0				(0x0800 + 0x00F0)
-+#define REG_CLDMA_L2RIMCR1				(0x0800 + 0x00F4)
-+#define REG_CLDMA_L2RIMSR0				(0x0800 + 0x00F8)
-+#define REG_CLDMA_L2RIMSR1				(0x0800 + 0x00FC)
++enum mtk_pkt_type {
++	PURE_IP,
++};
 +
-+#define REG_CLDMA_INT_EAP_USIP_MASK			(0x0800 + 0x011C)
-+#define REG_CLDMA_INT_WF_MASK				(0x0800 + 0x0120)
-+#define REG_CLDMA_RQ1_GPD_DONE_CNT			(0x0800 + 0x0174)
-+#define REG_CLDMA_TQ1_GPD_DONE_CNT			(0x0800 + 0x0184)
++enum mtk_data_cmd_type {
++	DATA_CMD_TRANS_CTL,
++};
 +
-+#define REG_CLDMA_IP_BUSY_TO_PCIE_MASK			(0x0800 + 0x0194)
-+#define REG_CLDMA_IP_BUSY_TO_PCIE_MASK_SET		(0x0800 + 0x0198)
-+#define REG_CLDMA_IP_BUSY_TO_PCIE_MASK_CLR		(0x0800 + 0x019C)
++struct mtk_data_trans_ctl {
++	bool enable;
++};
 +
-+#define REG_CLDMA_IP_BUSY_TO_AP_MASK			(0x0800 + 0x0200)
-+#define REG_CLDMA_IP_BUSY_TO_AP_MASK_SET		(0x0800 + 0x0204)
-+#define REG_CLDMA_IP_BUSY_TO_AP_MASK_CLR		(0x0800 + 0x0208)
-+#define REG_CLDMA_IP_BUSY_TO_MD_MASK_SET		(0x0800 + 0x0210)
-+#define REG_CLDMA_RX_WORK_TO_REG_MASK_SET		(0x0800 + 0x021C)
++struct mtk_data_cmd {
++	enum mtk_data_cmd_type cmd;
++	unsigned int len;
++	char data[];
++};
 +
-+/* CLDMA RESET */
-+#define REG_INFRA_RST0_SET				(0x120)
-+#define REG_INFRA_RST0_CLR				(0x124)
-+#define REG_CLDMA0_RST_SET_BIT				(8)
-+#define REG_CLDMA0_RST_CLR_BIT				(8)
++struct mtk_tx_pkt_info {
++	unsigned char intf_id;
++	unsigned char cnt;
++};
 +
-+#endif
-diff --git a/drivers/net/wwan/t9xx/pcie/mtk_ctrl_cfg_m9xx.c b/drivers/net/wwan/t9xx/pcie/mtk_ctrl_cfg_m9xx.c
++struct mtk_rx_pkt_info {
++	unsigned char ch_id;
++	unsigned char q_id;
++};
++
++union mtk_data_pkt_info {
++	struct mtk_tx_pkt_info tx;
++	struct mtk_rx_pkt_info rx;
++};
++
++#define DATA_SKB_CB(__skb) ((union mtk_data_pkt_info *)&((__skb)->cb[0]))
++
++enum mtk_data_evt {
++	DATA_EVT_MIN,
++	DATA_EVT_TX_START,
++	DATA_EVT_TX_STOP,
++	DATA_EVT_RX_STOP,
++	DATA_EVT_REG_DEV,
++	DATA_EVT_UNREG_DEV,
++	DATA_EVT_MAX,
++};
++
++struct mtk_data_hif_ops {
++	int (*init)(struct mtk_md_dev *mdev);
++	int (*exit)(struct mtk_md_dev *mdev);
++	int (*stop)(struct mtk_md_dev *mdev);
++	int (*start)(struct mtk_md_dev *mdev);
++	void (*clear)(struct mtk_md_dev *mdev);
++	int (*poll)(struct napi_struct *napi, int budget);
++	int (*send)(struct mtk_data_blk *data_blk, enum mtk_data_type type,
++		    struct sk_buff *skb);
++};
++
++int mtk_data_init(struct mtk_md_dev *mdev, struct mtk_data_hif_ops *ops);
++int mtk_data_exit(struct mtk_md_dev *mdev);
++
++#endif /* __MTK_DATA_PLANE_H__ */
+diff --git a/drivers/net/wwan/t9xx/mtk_dev.h b/drivers/net/wwan/t9xx/mtk_dev.h
+index bf412b49b19d..8913cbeed670 100644
+--- a/drivers/net/wwan/t9xx/mtk_dev.h
++++ b/drivers/net/wwan/t9xx/mtk_dev.h
+@@ -58,6 +58,7 @@ struct mtk_md_dev {
+ 	u32 hw_ver;
+ 	char dev_str[MTK_DEV_STR_LEN];
+ 	void *ctrl_blk;
++	void *data_blk;
+ 	struct mtk_md_fsm *fsm;
+ };
+ 
+diff --git a/drivers/net/wwan/t9xx/pcie/Makefile b/drivers/net/wwan/t9xx/pcie/Makefile
+index 78a765f8e79a..961faed51498 100644
+--- a/drivers/net/wwan/t9xx/pcie/Makefile
++++ b/drivers/net/wwan/t9xx/pcie/Makefile
+@@ -12,6 +12,7 @@ mtk_t9xx_pcie-y := \
+ 	mtk_ctrl_cfg_m9xx.o \
+ 	mtk_pci.o \
+ 	mtk_trans_ctrl.o \
++	mtk_dpmaif.o \
+ 	mtk_cldma.o \
+ 	mtk_dpmaif_drv.o \
+ 	mtk_cldma_drv.o \
+diff --git a/drivers/net/wwan/t9xx/pcie/mtk_dpmaif.c b/drivers/net/wwan/t9xx/pcie/mtk_dpmaif.c
 new file mode 100644
-index 000000000000..bf3f87723167
+index 000000000000..1c58dba738fa
 --- /dev/null
-+++ b/drivers/net/wwan/t9xx/pcie/mtk_ctrl_cfg_m9xx.c
-@@ -0,0 +1,23 @@
++++ b/drivers/net/wwan/t9xx/pcie/mtk_dpmaif.c
+@@ -0,0 +1,2674 @@
 +// SPDX-License-Identifier: GPL-2.0-only
 +/*
 + * Copyright (c) 2022, MediaTek Inc.
 + */
 +
-+#include "mtk_cldma.h"
-+#include "mtk_trans_ctrl.h"
++#define pr_fmt(fmt) "DATA_TRANS: " fmt
 +
-+#define TRB_SRV_NUM	(1)
++#include <linux/bitfield.h>
++#include <linux/bitmap.h>
++#include <linux/ip.h>
++#include <linux/kthread.h>
++#include <linux/pm_wakeup.h>
++#include <linux/sched/clock.h>
++#include <linux/skbuff.h>
++#include <net/gro.h>
++#include <net/ipv6.h>
++#include <net/pkt_sched.h>
 +
-+static const int mtk_srv_cfg_m9xx[NR_CLDMA][HW_QUE_NUM] = {
-+	{0},
-+	{0},
++#include "mtk_data_plane.h"
++#include "mtk_dev.h"
++#include "mtk_dpmaif.h"
++#include "mtk_dpmaif_drv.h"
++#include "mtk_dpmaif_ring.h"
++#include "mtk_pci_reg.h"
++#include "mtk_pci.h"
++
++#define MTK_DATA_WS_NAME_LEN		32
++#define DPMAIF_PIT_CNT_UPDATE_THRESHOLD 60
++#define DPMAIF_SKB_TX_WEIGHT		32
++#define DPMAIF_REL_BAT_WEIGHT		128
++#define MIN_BAT_BURST_CNT	64
++
++static struct dpmaif_drv_ops_desc dpmaif_drv_ops_tbl[] = {
++	{0x01CA, &drv_ops_name(m9xx)},
++	{0, NULL},
 +};
 +
-+static const struct queue_info mtk_queue_info_m9xx[] = {
++enum dpmaif_state {
++	DPMAIF_STATE_MIN,
++	DPMAIF_STATE_PWROFF,
++	DPMAIF_STATE_PWRON,
++	DPMAIF_STATE_MAX
 +};
 +
-+struct mtk_ctrl_info mtk_ctrl_info_m9xx = {
-+	.queue_info = (struct queue_info *)mtk_queue_info_m9xx,
-+	.queue_info_num = ARRAY_SIZE(mtk_queue_info_m9xx),
-+	.trb_srv_num = TRB_SRV_NUM,
++struct dpmaif_vq {
++	unsigned char srv_id;
++	unsigned char q_id;
++	u32 max_len; /* align network tx qdisc 1000 */
++	struct sk_buff_head list;
 +};
-diff --git a/drivers/net/wwan/t9xx/pcie/mtk_pci.c b/drivers/net/wwan/t9xx/pcie/mtk_pci.c
-index 518c32d55643..d604c9cb06ea 100644
---- a/drivers/net/wwan/t9xx/pcie/mtk_pci.c
-+++ b/drivers/net/wwan/t9xx/pcie/mtk_pci.c
-@@ -760,6 +760,28 @@ static void mtk_pci_free_irq(struct mtk_md_dev *mdev)
- 	pci_free_irq_vectors(pdev);
- }
- 
-+static int mtk_pci_dev_init(struct mtk_md_dev *mdev)
++
++struct dpmaif_tx_srv {
++	struct mtk_dpmaif_ctlb *dcb;
++	unsigned char id;
++	int nice;
++	wait_queue_head_t wait;
++	struct task_struct *srv;
++
++	unsigned long txq_drb_lack_sta;
++	unsigned char cur_vq_id;
++	unsigned char vq_cnt;
++	struct dpmaif_vq *vq[DPMAIF_TXQ_CNT_MAX];
++};
++
++struct dpmaif_drb_skb {
++	struct sk_buff *skb;
++	dma_addr_t data_dma_addr;
++	unsigned short data_len;
++	unsigned short drb_idx:13;
++	unsigned short is_msg:1;
++	unsigned short is_frag:1;
++	unsigned short is_last:1;
++};
++
++struct dpmaif_txq {
++	struct mtk_dpmaif_ctlb *dcb;
++	unsigned char id;
++	atomic_t budget;
++	atomic_t to_submit_cnt;
++	struct dpmaif_pd_drb *drb_base;
++	dma_addr_t drb_dma_addr;
++	unsigned int drb_cnt;
++	unsigned short drb_wr_idx;
++	unsigned short drb_rd_idx;
++	unsigned short drb_rel_rd_idx;
++	struct dpmaif_drb_skb *sw_drb_base;
++	struct delayed_work tx_done_work;
++};
++
++struct dpmaif_rx_record {
++	bool msg_pit_recv;
++	struct sk_buff *cur_skb;
++	struct sk_buff_head rx_list;
++	unsigned short ip_protocol;
++};
++
++struct dpmaif_rxq {
++	struct mtk_dpmaif_ctlb *dcb;
++	unsigned char id;
++	bool started;
++	struct dpmaif_pd_pit *pit_base;
++	dma_addr_t pit_dma_addr;
++	unsigned int pit_cnt;
++	unsigned short pit_wr_idx;
++	unsigned short pit_rd_idx;
++	unsigned short pit_rel_rd_idx;
++	unsigned char pit_seq_expect;
++	atomic_t pit_rel_cnt;
++	atomic_t pit_stats;
++	bool pit_cnt_err_intr_set;
++	unsigned int pit_burst_rel_cnt;
++	unsigned int pit_seq_fail_cnt;
++	struct napi_struct napi;
++	struct dpmaif_rx_record rx_record;
++	/* Record the latest BID polled by this DLQ pit ring. */
++	unsigned int pit_bid;
++	unsigned char bat_ring_id;
++	unsigned int pit_seq_max;
++	struct dpmaif_rx_info *rx_info;
++	struct wakeup_source *ws;
++};
++
++struct skb_mapped_t {
++	struct sk_buff *skb;
++	dma_addr_t data_dma_addr;
++	unsigned int data_len;
++};
++
++union dpmaif_bat_record {
++	struct skb_mapped_t normal;
++};
++
++struct dpmaif_bat_ring {
++	unsigned char id;
++	struct dpmaif_bat *bat_base;
++	dma_addr_t bat_dma_addr;
++	unsigned int bat_cnt;
++	unsigned short bat_wr_idx;
++	unsigned short bat_rd_idx;
++	/* current max relaod bat cnt */
++	unsigned short max_reload_cnt;
++	atomic_t to_reload_cnt;
++	/* reloaded bat cnt, not doorbelled */
++	atomic_t reload_cnt;
++	atomic_t bat_stats;
++	union dpmaif_bat_record *sw_record_base;
++	unsigned int buf_size;
++	unsigned long *mask_tbl;
++	bool bat_cnt_err_intr_set;
++	int (*alloc)(struct mtk_dpmaif_ctlb *dcb,
++		     struct dpmaif_bat_ring *bat_ring,
++				 unsigned short bat_idx);
++};
++
++struct dpmaif_task_ctlb {
++	wait_queue_head_t wait;
++	bool need_wp;
++};
++
++struct dpmaif_bat_info {
++	struct mtk_dpmaif_ctlb *dcb;
++	unsigned int max_mtu;
++
++	struct dpmaif_bat_ring normal_bat_ring;
++	struct task_struct *reload_task;
++	struct dpmaif_task_ctlb task_ctlb;
++};
++
++struct dpmaif_irq_param {
++	unsigned char idx;
++	struct mtk_dpmaif_ctlb *dcb;
++	enum mtk_irq_src dpmaif_irq_src;
++	int dev_irq_id;
++	int dev_virq_id;
++};
++
++struct dpmaif_tx_evt {
++	unsigned long long ul_done;
++};
++
++struct dpmaif_rx_evt {
++	unsigned long long dl_done;
++};
++
++struct mtk_dpmaif_ctlb {
++	struct mtk_data_blk *data_blk;
++	struct dpmaif_drv_info *drv_info;
++	struct napi_struct *napi[DPMAIF_RXQ_CNT_MAX];
++
++	enum dpmaif_state dpmaif_state;
++	struct mutex trans_ctl_lock; /* protect structure fields */
++
++	struct dpmaif_tx_srv *tx_srvs;
++	struct dpmaif_vq *tx_vqs;
++
++	struct workqueue_struct *tx_done_wq;
++	struct task_struct *db_thread;
++	struct dpmaif_task_ctlb db_task_ctlb;
++	struct dpmaif_txq *txqs;
++	struct dpmaif_rxq *rxqs;
++	struct dpmaif_bat_info *bat_infos;
++	bool irq_enabled;
++	struct dpmaif_irq_param *irq_params;
++
++	bool dpmaif_sw_reset;
++	unsigned char rxq_cnt;
++	unsigned char txq_cnt;
++};
++
++#define DCB_TO_DEV(dcb) ((dcb)->data_blk->mdev->dev)
++#define DCB_TO_MDEV(dcb) ((dcb)->data_blk->mdev)
++#define DCB_TO_DEV_STR(dcb) ((dcb)->data_blk->mdev->dev_str)
++#define DPMAIF_GET_HW_VER(dcb) ((dcb)->data_blk->mdev->hw_ver)
++#define DPMAIF_GET_DRB_CNT(__skb) (skb_shinfo(__skb)->nr_frags + 1 + 1)
++#define DPMAIF_JUMBO_SIZE 9000
++#define DPMAIF_DFLT_MTU 3000
++#define DPMAIF_DL_BUF_MIN_SIZE 128
++
++static int mtk_dpmaif_rx_napi_poll(struct napi_struct *napi, int budget);
++
++static int mtk_dpmaif_send(struct mtk_data_blk *data_blk, enum mtk_data_type type,
++			   struct sk_buff *skb);
++
++static bool mtk_pci_mmio_check(struct mtk_md_dev *mdev)
++{
++	return mtk_pci_mac_read32(mdev->hw_priv, REG_ATR_PCIE_WIN0_T0_SRC_ADDR_LSB) == (u32)-1;
++}
++
++static void mtk_dpmaif_common_err_handle(struct mtk_dpmaif_ctlb *dcb, bool is_hw)
++{
++	if (!is_hw) {
++		dev_err((DCB_TO_MDEV(dcb))->dev, "ASSERT file: %s, function: %s, line %d",
++			__FILE__, __func__, __LINE__);
++		return;
++	}
++
++	if (mtk_pci_mmio_check(DCB_TO_MDEV(dcb)))
++		mtk_pci_send_ext_evt(DCB_TO_MDEV(dcb), EXT_EVT_H2D_RESERVED_FOR_DPMAIF);
++	else
++		dev_err((DCB_TO_MDEV(dcb))->dev, "Failed to access mmio\n");
++}
++
++static void mtk_dpmaif_disable_irq(struct mtk_dpmaif_ctlb *dcb)
++{
++	unsigned char irq_cnt = dcb->drv_info->cfg->intr_cfg.irq_cnt;
++	struct dpmaif_irq_param *irq_param;
++	int i;
++
++	if (!dcb->irq_enabled)
++		return;
++
++	dcb->irq_enabled = false;
++	for (i = 0; i < irq_cnt; i++) {
++		irq_param = &dcb->irq_params[i];
++		if (mtk_pci_mask_irq(DCB_TO_MDEV(dcb), irq_param->dev_irq_id) != 0)
++			dev_err((DCB_TO_MDEV(dcb))->dev,
++				"Failed to mask dev irq%d\n", irq_param->dev_irq_id);
++		synchronize_irq(irq_param->dev_virq_id);
++	}
++}
++
++static void mtk_dpmaif_enable_irq(struct mtk_dpmaif_ctlb *dcb)
++{
++	unsigned char irq_cnt = dcb->drv_info->cfg->intr_cfg.irq_cnt;
++	struct dpmaif_irq_param *irq_param;
++	int i;
++
++	if (dcb->irq_enabled)
++		return;
++
++	dcb->irq_enabled = true;
++	for (i = 0; i < irq_cnt; i++) {
++		irq_param = &dcb->irq_params[i];
++		if (mtk_pci_unmask_irq(DCB_TO_MDEV(dcb), irq_param->dev_irq_id) != 0)
++			dev_err((DCB_TO_MDEV(dcb))->dev,
++				"Failed to unmask dev irq%d\n", irq_param->dev_irq_id);
++	}
++}
++
++static int mtk_dpmaif_alloc_skb(struct mtk_dpmaif_ctlb *dcb, struct dpmaif_bat_ring *bat_ring,
++				unsigned short bat_idx)
++{
++	union dpmaif_bat_record *cur_bat_record;
++	struct skb_mapped_t *skb_info;
++	struct dpmaif_bat *cur_bat;
++
++	cur_bat_record = bat_ring->sw_record_base + bat_idx;
++	skb_info = &cur_bat_record->normal;
++
++	if (skb_info->skb)
++		return 0;
++
++	skb_info->skb = __dev_alloc_skb(bat_ring->buf_size, GFP_ATOMIC);
++	if (unlikely(!skb_info->skb))
++		return -ENOMEM;
++
++	skb_info->data_len = bat_ring->buf_size;
++	skb_info->data_dma_addr = dma_map_single(DCB_TO_DEV(dcb), skb_info->skb->data,
++						 skb_info->data_len, DMA_FROM_DEVICE);
++	if (dma_mapping_error(DCB_TO_DEV(dcb), skb_info->data_dma_addr)) {
++		dev_err((DCB_TO_MDEV(dcb))->dev, "Failed to map dma!\n");
++		dev_kfree_skb_any(skb_info->skb);
++		skb_info->skb = NULL;
++		return -ENOMEM;
++	}
++
++	cur_bat = bat_ring->bat_base + bat_idx;
++	cur_bat->buf_addr_high = cpu_to_le32(upper_32_bits(skb_info->data_dma_addr));
++	cur_bat->buf_addr_low = cpu_to_le32(lower_32_bits(skb_info->data_dma_addr));
++
++	return 0;
++}
++
++static int mtk_dpmaif_reload_rx_buff(struct mtk_dpmaif_ctlb *dcb,
++				     struct dpmaif_bat_ring *bat_ring, unsigned int to_reload_cnt)
++{
++	unsigned short cur_bat_idx;
++	int ret = -ENOMEM;
++	unsigned int i;
++
++	/* Pin rx buffers to BAT entries */
++	cur_bat_idx = bat_ring->bat_wr_idx;
++	for (i = 0; i < to_reload_cnt; i++) {
++		if (!test_and_clear_bit(cur_bat_idx, bat_ring->mask_tbl)) {
++			ret = -EINVAL;
++			break;
++		}
++
++		ret = bat_ring->alloc(dcb, bat_ring, cur_bat_idx);
++		if (unlikely(ret)) {
++			dev_warn((DCB_TO_MDEV(dcb))->dev,
++				 "Failed to alloc rx buff, bat%u bid=%u\n",
++				 bat_ring->id, cur_bat_idx);
++			set_bit(cur_bat_idx, bat_ring->mask_tbl);
++			break;
++		}
++
++		cur_bat_idx = mtk_dpmaif_ring_buf_get_next_idx(bat_ring->bat_cnt, cur_bat_idx);
++	}
++
++	if (unlikely(!i))
++		return ret;
++
++	dma_wmb();
++	atomic_add(i, &bat_ring->reload_cnt);
++	atomic_sub(i, &bat_ring->to_reload_cnt);
++	bat_ring->bat_wr_idx = cur_bat_idx;
++
++	return ret;
++}
++
++static void mtk_dpmaif_preload_rx_buf(struct mtk_dpmaif_ctlb *dcb,
++				      struct dpmaif_bat_ring *bat_ring, unsigned int preload_cnt)
++{
++	int i, idx, ret;
++
++	idx = bat_ring->bat_wr_idx;
++	for (i = 0; i < preload_cnt; i++) {
++		/* the next set bit means this buff consumed */
++		idx = find_next_bit(bat_ring->mask_tbl, bat_ring->bat_cnt, idx + 1);
++		if (idx >= bat_ring->bat_cnt)
++			goto find_from_begin;
++
++		ret = bat_ring->alloc(dcb, bat_ring, idx);
++		if (ret) {
++			dev_warn((DCB_TO_MDEV(dcb))->dev,
++				 "Failed to preload rx buff, bat%u bid=%u\n",
++				 bat_ring->id, idx);
++			break;
++		}
++	}
++
++	goto out;
++
++find_from_begin:
++	idx = -1;
++	for (; i < preload_cnt; i++) {
++		idx = find_next_bit(bat_ring->mask_tbl, bat_ring->bat_wr_idx, idx + 1);
++		if (idx >= bat_ring->bat_wr_idx)
++			break;
++
++		ret = bat_ring->alloc(dcb, bat_ring, idx);
++		if (ret) {
++			dev_warn((DCB_TO_MDEV(dcb))->dev,
++				 "Failed to preload rx buff, bat%u bid=%u\n",
++				 bat_ring->id, idx);
++			break;
++		}
++	}
++
++out:;
++}
++
++static void mtk_dpmaif_task_wakeup(struct dpmaif_task_ctlb *task_ctlb)
++{
++	task_ctlb->need_wp = true;
++	wake_up(&task_ctlb->wait);
++}
++
++static int mtk_dpmaif_reload_bat(struct mtk_dpmaif_ctlb *dcb, struct dpmaif_bat_ring *bat_ring)
++{
++	int pre_reload_cnt;
++	int to_reload_cnt;
++	int ret = 0;
++
++	to_reload_cnt = atomic_read(&bat_ring->to_reload_cnt);
++	while (to_reload_cnt > 0) {
++		pre_reload_cnt = to_reload_cnt > DPMAIF_REL_BAT_WEIGHT ?
++				 DPMAIF_REL_BAT_WEIGHT : to_reload_cnt;
++
++		ret = mtk_dpmaif_reload_rx_buff(dcb, bat_ring, pre_reload_cnt);
++		if (unlikely(ret))
++			break;
++		if (atomic_read(&bat_ring->reload_cnt) >= MIN_BAT_BURST_CNT)
++			mtk_dpmaif_task_wakeup(&dcb->db_task_ctlb);
++		to_reload_cnt -= pre_reload_cnt;
++	}
++
++	if ((ret || bat_ring->bat_cnt_err_intr_set) && atomic_read(&bat_ring->reload_cnt))
++		mtk_dpmaif_task_wakeup(&dcb->db_task_ctlb);
++
++	/* Prefetch rx buff to accelerate next reload work */
++	if (ret == -EINVAL) {
++		mtk_dpmaif_preload_rx_buf(dcb, bat_ring, to_reload_cnt);
++		ret = 0;
++	}
++
++	return ret;
++}
++
++static int mtk_dpmaif_bat_reload_thread(void *arg)
++{
++	struct dpmaif_bat_info *bat_info = arg;
++	struct dpmaif_task_ctlb *task_ctlb;
++	struct dpmaif_bat_ring *bat_ring;
++	int ret;
++
++	task_ctlb = &bat_info->task_ctlb;
++
++	while (1) {
++		ret = wait_event_interruptible(task_ctlb->wait,
++					       task_ctlb->need_wp ||
++					       kthread_should_stop());
++		task_ctlb->need_wp = false;
++		if (unlikely(ret == -ERESTARTSYS))
++			continue;
++
++		if (kthread_should_stop())
++			break;
++
++		bat_ring = &bat_info->normal_bat_ring;
++		if (atomic_read(&bat_ring->to_reload_cnt) > 0)
++			mtk_dpmaif_reload_bat(bat_info->dcb, bat_ring);
++
++		cond_resched();
++	}
++
++	return 0;
++}
++
++static int mtk_dpmaif_bat_ring_init(struct mtk_dpmaif_ctlb *dcb, struct dpmaif_bat_ring *bat_ring,
++				    int bat_ring_id)
 +{
 +	int ret;
 +
-+	ret = mtk_trans_ctrl_init(mdev);
-+	if (ret) {
-+		dev_err(mdev->dev, "Failed to initialize control plane: %d\n", ret);
++	bat_ring->bat_cnt = dcb->drv_info->cfg->rx_cfg.bats[bat_ring_id].bat_cnt;
++	bat_ring->max_reload_cnt = dcb->drv_info->cfg->rx_cfg.bats[bat_ring_id].reload_cnt;
++	bat_ring->alloc = mtk_dpmaif_alloc_skb;
++
++	bat_ring->id = bat_ring_id;
++	bat_ring->bat_cnt_err_intr_set = false;
++	atomic_set(&bat_ring->to_reload_cnt, bat_ring->max_reload_cnt);
++
++	/* Allocate BAT memory for HW and SW. */
++	bat_ring->bat_base = dma_alloc_coherent(DCB_TO_DEV(dcb), (bat_ring->bat_cnt +
++						dcb->drv_info->cfg->rx_cfg.bat_wrap_cnt) *
++						sizeof(*bat_ring->bat_base),
++						&bat_ring->bat_dma_addr, GFP_KERNEL);
++	if (!bat_ring->bat_base) {
++		dev_err((DCB_TO_MDEV(dcb))->dev, "Failed to allocate bat%u buffer\n", bat_ring->id);
++		return -ENOMEM;
++	}
++
++	/* Allocate buffer for SW to record skb information */
++	bat_ring->sw_record_base = devm_kcalloc(DCB_TO_DEV(dcb), bat_ring->bat_cnt,
++						sizeof(*bat_ring->sw_record_base), GFP_KERNEL);
++	if (!bat_ring->sw_record_base) {
++		ret = -ENOMEM;
++		goto free_bat_buf;
++	}
++
++	/* Allocate buffer for SW to recycle BAT. */
++	bat_ring->mask_tbl = bitmap_alloc(bat_ring->bat_cnt, GFP_KERNEL);
++	if (!bat_ring->mask_tbl) {
++		ret = -ENOMEM;
++		goto free_sw_record_base;
++	}
++
++	bitmap_fill(bat_ring->mask_tbl, bat_ring->bat_cnt);
++
++	return 0;
++
++free_sw_record_base:
++	devm_kfree(DCB_TO_DEV(dcb), bat_ring->sw_record_base);
++
++free_bat_buf:
++	dma_free_coherent(DCB_TO_DEV(dcb), (bat_ring->bat_cnt +
++			  dcb->drv_info->cfg->rx_cfg.bat_wrap_cnt) *
++			  sizeof(*bat_ring->bat_base),
++			  bat_ring->bat_base, bat_ring->bat_dma_addr);
++
++	return ret;
++}
++
++static void mtk_dpmaif_bat_ring_exit(struct mtk_dpmaif_ctlb *dcb, struct dpmaif_bat_ring *bat_ring)
++{
++	union dpmaif_bat_record *bat_record;
++	int i;
++
++	bitmap_free(bat_ring->mask_tbl);
++
++	for (i = 0; i < bat_ring->bat_cnt; i++) {
++		bat_record = bat_ring->sw_record_base + i;
++		if (!bat_record->normal.skb)
++			continue;
++
++		dma_unmap_single(DCB_TO_DEV(dcb),
++				 bat_record->normal.data_dma_addr,
++				 bat_record->normal.data_len,
++				 DMA_FROM_DEVICE);
++		dev_kfree_skb_any(bat_record->normal.skb);
++	}
++
++	devm_kfree(DCB_TO_DEV(dcb), bat_ring->sw_record_base);
++
++	dma_free_coherent(DCB_TO_DEV(dcb), (bat_ring->bat_cnt +
++			  dcb->drv_info->cfg->rx_cfg.bat_wrap_cnt) *
++			  sizeof(*bat_ring->bat_base),
++			  bat_ring->bat_base, bat_ring->bat_dma_addr);
++}
++
++static void mtk_dpmaif_bat_ring_reset(struct dpmaif_bat_ring *bat_ring)
++{
++	bat_ring->bat_cnt_err_intr_set = false;
++	bat_ring->bat_wr_idx = 0;
++	bat_ring->bat_rd_idx = 0;
++	atomic_set(&bat_ring->reload_cnt, 0);
++	atomic_set(&bat_ring->bat_stats, 0);
++	atomic_set(&bat_ring->to_reload_cnt, bat_ring->max_reload_cnt);
++
++	bitmap_fill(bat_ring->mask_tbl, bat_ring->bat_cnt);
++}
++
++static void mtk_dpmaif_bat_res_reset(struct mtk_dpmaif_ctlb *dcb)
++{
++	unsigned int bat_ring_num = dcb->drv_info->cfg->rx_cfg.bat_ring_num;
++	struct dpmaif_bat_ring *bat_ring;
++	int i;
++
++	for (i = 0; i < bat_ring_num; i++) {
++		bat_ring = &dcb->bat_infos[i].normal_bat_ring;
++		bat_ring->max_reload_cnt = dcb->drv_info->cfg->rx_cfg.bats[i].reload_cnt;
++			mtk_dpmaif_bat_ring_reset(bat_ring);
++	}
++}
++
++static void mtk_dpmaif_set_bat_buf_size(struct mtk_dpmaif_ctlb *dcb)
++{
++	int bat_ring_num = dcb->drv_info->cfg->rx_cfg.bat_ring_num;
++	struct dpmaif_bat_info *bat_infos = dcb->bat_infos;
++	unsigned int buf_size;
++	int i;
++
++	for (i = 0; i < bat_ring_num; i++) {
++		bat_infos[i].max_mtu = dcb->drv_info->cfg->rx_cfg.mtu;
++
++		/* Set max mtu, DPMAIF_JUMBO_SIZE. */
++		if (bat_infos[i].max_mtu > DPMAIF_JUMBO_SIZE)
++			bat_infos[i].max_mtu = DPMAIF_JUMBO_SIZE;
++
++		/* Normal BAT buffer size setting. */
++		buf_size = bat_infos[i].max_mtu + dcb->drv_info->cfg->rx_cfg.pkt_alignment +
++			dcb->drv_info->cfg->rx_cfg.normal_bat_rsv_length;
++
++		bat_infos[i].normal_bat_ring.buf_size = ALIGN(buf_size,
++							      DPMAIF_DL_BUF_MIN_SIZE);
++	}
++	dcb->drv_info->cfg->rx_cfg.mtu = dcb->bat_infos[0].max_mtu;
++}
++
++static void mtk_dpmaif_bat_info_exit(struct mtk_dpmaif_ctlb *dcb, int bat_ring_id)
++{
++	struct dpmaif_bat_info *bat_info = &dcb->bat_infos[bat_ring_id];
++
++	if (bat_info->reload_task) {
++		kthread_stop(bat_info->reload_task);
++		bat_info->reload_task = NULL;
++	}
++
++	mtk_dpmaif_bat_ring_exit(dcb, &bat_info->normal_bat_ring);
++}
++
++static void mtk_dpmaif_bat_res_exit(struct mtk_dpmaif_ctlb *dcb)
++{
++	int bat_ring_num = dcb->drv_info->cfg->rx_cfg.bat_ring_num;
++	int i;
++
++	for (i = 0; i < bat_ring_num; i++)
++		mtk_dpmaif_bat_info_exit(dcb, i);
++
++	devm_kfree(DCB_TO_DEV(dcb), dcb->bat_infos);
++}
++
++static int mtk_dpmaif_bat_info_init(struct mtk_dpmaif_ctlb *dcb,
++				    struct dpmaif_bat_info *bat_info, int bat_ring_id)
++{
++	int ret;
++
++	bat_info->dcb = dcb;
++	ret = mtk_dpmaif_bat_ring_init(dcb, &bat_info->normal_bat_ring, bat_ring_id);
++	if (ret < 0) {
++		dev_err((DCB_TO_MDEV(dcb))->dev, "Failed to initialize normal bat ring\n");
++		return ret;
++	}
++
++	init_waitqueue_head(&bat_info->task_ctlb.wait);
++	bat_info->reload_task = kthread_run(mtk_dpmaif_bat_reload_thread, bat_info,
++					    "dpmaif_reload_%d", bat_ring_id);
++	if (IS_ERR(bat_info->reload_task)) {
++		dev_err((DCB_TO_MDEV(dcb))->dev, "Failed to create bat reload thread\n");
++		ret = PTR_ERR(bat_info->reload_task);
++		bat_info->reload_task = NULL;
++		mtk_dpmaif_bat_ring_exit(dcb, &bat_info->normal_bat_ring);
 +		return ret;
 +	}
 +
 +	return 0;
 +}
 +
-+static void mtk_pci_dev_exit(struct mtk_md_dev *mdev)
++static int mtk_dpmaif_bat_res_init(struct mtk_dpmaif_ctlb *dcb)
 +{
-+	mtk_trans_ctrl_exit(mdev);
-+}
-+
-+static int mtk_pci_dev_start(struct mtk_md_dev *mdev)
-+{
-+	return 0;
-+}
- static const struct mtk_dev_ops pci_hw_ops = {
- 	.get_dev_state = mtk_pci_get_dev_state,
- 	.ack_dev_state = mtk_pci_ack_dev_state,
-@@ -834,6 +856,12 @@ static int mtk_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- 	if (ret)
- 		goto free_mhccif;
- 
-+	ret = mtk_pci_dev_init(mdev);
-+	if (ret) {
-+		dev_err((mdev)->dev, "Failed to init dev.\n");
-+		goto free_irq;
-+	}
-+
- 	pci_set_master(pdev);
- 	mtk_pci_unmask_irq(mdev, priv->mhccif_irq_id);
- 
-@@ -850,10 +878,20 @@ static int mtk_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- 		goto clear_master;
- 	}
- 
-+	ret = mtk_pci_dev_start(mdev);
-+	if (ret) {
-+		dev_err((mdev)->dev, "Failed to start dev.\n");
-+		goto free_saved_state;
-+	}
-+
- 	return 0;
- 
-+free_saved_state:
-+	pci_load_and_free_saved_state(pdev, &priv->saved_state);
- clear_master:
- 	pci_clear_master(pdev);
-+	mtk_pci_dev_exit(mdev);
-+free_irq:
- 	mtk_pci_free_irq(mdev);
- free_mhccif:
- 	mtk_mhccif_exit(mdev);
-diff --git a/drivers/net/wwan/t9xx/pcie/mtk_pci_reg.h b/drivers/net/wwan/t9xx/pcie/mtk_pci_reg.h
-index d033dbf4b0af..0f16e6954397 100644
---- a/drivers/net/wwan/t9xx/pcie/mtk_pci_reg.h
-+++ b/drivers/net/wwan/t9xx/pcie/mtk_pci_reg.h
-@@ -21,6 +21,7 @@
- #define REG_IMASK_HOST_MSIX_SET_GRP0_0		0x3000
- #define REG_IMASK_HOST_MSIX_CLR_GRP0_0		0x3080
- #define REG_IMASK_HOST_MSIX_GRP0_0		0x3100
-+#define REG_DEV_INFRA_BASE			0x10001000
- 
- /* mhccif registers */
- #define MHCCIF_RC2EP_SW_BSY			0x4
-diff --git a/drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.c b/drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.c
-new file mode 100644
-index 000000000000..7fad64d214aa
---- /dev/null
-+++ b/drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.c
-@@ -0,0 +1,569 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (c) 2022, MediaTek Inc.
-+ */
-+
-+#include <linux/device.h>
-+#include <linux/freezer.h>
-+#include <linux/hashtable.h>
-+#include <linux/kthread.h>
-+#include <linux/list.h>
-+#include <linux/nospec.h>
-+#include <linux/sched.h>
-+#include <linux/wait.h>
-+
-+#include "mtk_cldma.h"
-+#include "mtk_ctrl_plane.h"
-+#include "mtk_dev.h"
-+#include "mtk_pci.h"
-+#include "mtk_trans_ctrl.h"
-+
-+#define MTK_DFLT_PORT_NAME_LEN			(20)
-+extern struct mtk_ctrl_info ctrl_info_name(m9xx);
-+
-+static struct mtk_ctrl_info_desc mtk_ctrl_info_tbl[] = {
-+	{2304, &ctrl_info_name(m9xx)},
-+	{0, NULL},
-+};
-+
-+#define RX_CH_ID_SHIFT	16
-+#define PORT_MTU_MASK	0xFFFF
-+#define QUEUE_CHL_MASK	0xFFFF
-+
-+static bool mtk_queue_list_is_full(struct mtk_ctrl_trans *trans, struct queue_info *que)
-+{
-+	return trans->trans_list[que->hif_id].skb_list[que->txqno].qlen >= SKB_LIST_MAX_LEN;
-+}
-+
-+static bool mtk_ctrl_chs_is_busy_or_empty(struct trb_srv *srv)
-+{
-+	struct srv_que *srv_que;
-+	int i;
-+
-+	for (i = 0; i < NR_CLDMA; i++)
-+		list_for_each_entry(srv_que, &srv->srv_q_list[i], list)
-+			if (!skb_queue_empty(&srv->trans->trans_list[i].skb_list[srv_que->qno]) &&
-+			    mtk_cldma_get_tx_budget(srv->trans->dev, i, srv_que->qno))
-+				return false;
-+
-+	return true;
-+}
-+
-+static void mtk_ctrl_ch_flush(struct sk_buff_head *skb_list)
-+{
-+	struct sk_buff *skb;
-+	struct trb *trb;
-+
-+	while (!skb_queue_empty(skb_list)) {
-+		skb = skb_dequeue(skb_list);
-+		trb = (struct trb *)skb->cb;
-+		trb->status = -EIO;
-+		trb->trb_complete(skb);
-+	}
-+}
-+
-+static void mtk_ctrl_chs_flush(struct trb_srv *srv)
-+{
-+	struct srv_que *srv_que;
-+	int i;
-+
-+	for (i = 0; i < NR_CLDMA; i++)
-+		list_for_each_entry(srv_que, &srv->srv_q_list[i], list)
-+			mtk_ctrl_ch_flush(&srv->trans->trans_list[i].skb_list[srv_que->qno]);
-+}
-+
-+static int mtk_ch_status_check(struct mtk_ctrl_trans *trans, struct sk_buff *skb)
-+{
-+	struct trb *trb = (struct trb *)skb->cb;
-+	struct trb_open_priv *trb_open_priv;
-+	struct queue_info *que;
-+	int ret = 0;
-+
-+	que = radix_tree_lookup(&trans->queue_tbl, trb->channel_id & QUEUE_CHL_MASK);
-+
-+	switch (trb->cmd) {
-+	case TRB_CMD_ENABLE:
-+		trb_open_priv = (struct trb_open_priv *)skb->data;
-+		trb_open_priv->log_rg_offset = que->log_rg_offset;
-+		trans->usr_cnt[que->hif_id][que->txqno]++;
-+		if (trans->usr_cnt[que->hif_id][que->txqno] == 1)
-+			break;
-+		trb_open_priv->tx_mtu = que->tx_mtu;
-+		trb_open_priv->rx_mtu = que->rx_mtu;
-+		trb_open_priv->tx_frag_size = que->tx_frag_size;
-+		trb_open_priv->rx_frag_size = que->rx_frag_size;
-+		if (mtk_cldma_check_ch_cfg(trans->dev, que)) {
-+			trb->status = -EINVAL;
-+			ret = -EINVAL;
-+		} else {
-+			trb->status = -EBUSY;
-+			ret = -EBUSY;
-+		}
-+		trb->trb_complete(skb);
-+		break;
-+	case TRB_CMD_DISABLE:
-+		if (trans->usr_cnt[que->hif_id][que->txqno] > 0) {
-+			trans->usr_cnt[que->hif_id][que->txqno]--;
-+			if (!trans->usr_cnt[que->hif_id][que->txqno])
-+				break;
-+		}
-+		trb->status = -EBUSY;
-+		trb->trb_complete(skb);
-+		ret = -EBUSY;
-+		break;
-+	default:
-+		dev_err((trans->mdev)->dev, "Invalid trb command(%d)\n", trb->cmd);
-+		ret = -EINVAL;
-+		break;
-+	}
-+	return ret;
-+}
-+
-+static void mtk_ctrl_trb_handler(struct trb_srv *srv, struct trans_list *trans_list, u32 qno)
-+{
-+	struct sk_buff_head *skb_list = &trans_list->skb_list[qno];
-+	struct mtk_ctrl_trans *trans = srv->trans;
-+	struct sk_buff *skb, *skb_next;
-+	struct trb *trb, *trb_next;
-+	bool kick = false;
-+	int loop = 0;
-+	int err;
-+
-+	do {
-+		skb = skb_peek(skb_list);
-+		if (!skb)
-+			break;
-+		trb = (struct trb *)skb->cb;
-+
-+		switch (trb->cmd) {
-+		case TRB_CMD_ENABLE:
-+		case TRB_CMD_DISABLE:
-+			skb_unlink(skb, skb_list);
-+			err = mtk_ch_status_check(trans, skb);
-+			if (!err) {
-+				kick = true;
-+				if (trb->cmd == TRB_CMD_DISABLE)
-+					mtk_ctrl_ch_flush(skb_list);
-+			}
-+			break;
-+		case TRB_CMD_TX:
-+			err = mtk_cldma_submit_tx(trans->dev, skb);
-+			if (err) {
-+				if (trans_list->tx_burst_cnt[qno])
-+					kick = true;
-+				else if (err == -EAGAIN)
-+					return;
-+				break;
-+			}
-+
-+			trans_list->tx_burst_cnt[qno]++;
-+			if (trans_list->tx_burst_cnt[qno] >= TX_BURST_MAX_CNT ||
-+			    skb_queue_is_last(skb_list, skb)) {
-+				kick = true;
-+			} else {
-+				skb_next = skb_peek_next(skb, skb_list);
-+				trb_next = (struct trb *)skb_next->cb;
-+				if (trb_next->cmd != TRB_CMD_TX)
-+					kick = true;
-+			}
-+
-+			skb_unlink(skb, skb_list);
-+			break;
-+		default:
-+			skb_unlink(skb, skb_list);
-+		}
-+
-+		if (kick) {
-+			mtk_cldma_trb_process(trans->dev, skb);
-+			trans_list->tx_burst_cnt[qno] = 0;
-+			kick = false;
-+		}
-+
-+		loop++;
-+	} while (loop < TRB_NUM_PER_ROUND);
-+}
-+
-+static void mtk_ctrl_trb_process(struct trb_srv *srv)
-+{
-+	struct mtk_ctrl_trans *trans = srv->trans;
-+	struct srv_que *srv_que;
-+	int i;
-+
-+	for (i = 0; i < NR_CLDMA; i++)
-+		list_for_each_entry(srv_que, &srv->srv_q_list[i], list)
-+			mtk_ctrl_trb_handler(srv, &trans->trans_list[i], srv_que->qno);
-+}
-+
-+static int mtk_ctrl_trb_thread(void *args)
-+{
-+	struct trb_srv *srv = args;
-+
-+	for (;;) {
-+		wait_event_interruptible(srv->trb_waitq,
-+					 !mtk_ctrl_chs_is_busy_or_empty(srv) ||
-+					 kthread_should_stop() || kthread_should_park());
-+		if (kthread_should_stop())
-+			break;
-+
-+		if (kthread_should_park())
-+			kthread_parkme();
-+
-+		do {
-+			mtk_ctrl_trb_process(srv);
-+			cond_resched();
-+		} while (!mtk_ctrl_chs_is_busy_or_empty(srv) && !kthread_should_stop() &&
-+			 !kthread_should_park());
-+	}
-+	mtk_ctrl_chs_flush(srv);
-+	return 0;
-+}
-+
-+static int mtk_ctrl_trb_srv_init(struct mtk_ctrl_trans *trans)
-+{
-+	struct srv_que *srv_que;
-+	struct trb_srv *srv;
++	int bat_ring_num = dcb->drv_info->cfg->rx_cfg.bat_ring_num;
 +	int i, j;
 +	int ret;
 +
-+	for (i = 0; i < trans->trb_srv_num; i++) {
-+		srv = devm_kzalloc(trans->mdev->dev, sizeof(*srv), GFP_KERNEL);
-+		if (!srv) {
-+			ret = -ENOMEM;
-+			goto err_free_srv;
++	dcb->bat_infos = devm_kcalloc(DCB_TO_DEV(dcb), bat_ring_num, sizeof(*dcb->bat_infos),
++				      GFP_KERNEL);
++	if (!dcb->bat_infos)
++		return -ENOMEM;
++
++	/* Check and set bat buffer size. */
++	mtk_dpmaif_set_bat_buf_size(dcb);
++
++	for (i = 0; i < bat_ring_num; i++) {
++		ret = mtk_dpmaif_bat_info_init(dcb, &dcb->bat_infos[i], i);
++		if (ret < 0) {
++			dev_err((DCB_TO_MDEV(dcb))->dev, "Failed to initialize bat_info%d\n", i);
++			goto bat_info_exit;
 +		}
-+
-+		srv->trans = trans;
-+		srv->srv_id = i;
-+		trans->trb_srv[i] = srv;
-+
-+		init_waitqueue_head(&srv->trb_waitq);
-+		for (j = 0; j < NR_CLDMA; j++)
-+			INIT_LIST_HEAD(&srv->srv_q_list[j]);
 +	}
-+
-+	for (i = 0; i < NR_CLDMA; i++)
-+		for (j = 0; j < HW_QUE_NUM; j++) {
-+			if (trans->srv_cfg[i][j] < 0 ||
-+			    trans->srv_cfg[i][j] >= trans->trb_srv_num)
-+				trans->srv_cfg[i][j] = 0;
-+			srv_que = devm_kzalloc(trans->mdev->dev, sizeof(*srv_que), GFP_KERNEL);
-+			if (!srv_que) {
-+				ret = -ENOMEM;
-+				goto err_free_srv_que;
-+			}
-+			srv_que->hif_id = i;
-+			srv_que->qno = j;
-+			list_add_tail(&srv_que->list,
-+				      &trans->trb_srv[trans->srv_cfg[i][j]]->srv_q_list[i]);
-+		}
-+
-+	for (i = 0; i < trans->trb_srv_num; i++)
-+		trans->trb_srv[i]->trb_thread = kthread_run(mtk_ctrl_trb_thread, trans->trb_srv[i],
-+							    "mtk_trb_srv%d_%s", i,
-+							    trans->mdev->dev_str);
 +
 +	return 0;
-+err_free_srv_que:
-+	for (i = 0; i < trans->trb_srv_num; i++) {
-+		for (j = 0; j < NR_CLDMA; j++) {
-+			struct srv_que *next_srv_que;
 +
-+			list_for_each_entry_safe(srv_que, next_srv_que,
-+						 &trans->trb_srv[i]->srv_q_list[j], list) {
-+				list_del(&srv_que->list);
-+				devm_kfree(trans->mdev->dev, srv_que);
-+			}
-+		}
-+	}
-+err_free_srv:
-+	for (i = 0; i < trans->trb_srv_num; i++) {
-+		if (!trans->trb_srv[i])
-+			break;
-+		devm_kfree(trans->mdev->dev, trans->trb_srv[i]);
-+		trans->trb_srv[i] = NULL;
-+	}
++bat_info_exit:
++	for (j = i - 1; j >= 0; j--)
++		mtk_dpmaif_bat_info_exit(dcb, j);
++
++	devm_kfree(DCB_TO_DEV(dcb), dcb->bat_infos);
 +
 +	return ret;
 +}
 +
-+static void mtk_ctrl_trb_srv_exit(struct mtk_ctrl_trans *trans)
++static int mtk_dpmaif_rxq_init(struct mtk_dpmaif_ctlb *dcb, struct dpmaif_rxq *rxq)
 +{
-+	struct srv_que *srv_que, *next_srv_que;
-+	struct trb_srv *srv;
-+	int i, j;
++	char ws_name[MTK_DATA_WS_NAME_LEN];
++	int ret;
 +
-+	for (i = 0; i < trans->trb_srv_num; i++) {
-+		srv = trans->trb_srv[i];
-+		kthread_stop(srv->trb_thread);
-+		for (j = 0; j < NR_CLDMA; j++) {
-+			list_for_each_entry_safe(srv_que, next_srv_que,
-+						 &trans->trb_srv[i]->srv_q_list[j], list) {
-+				list_del(&srv_que->list);
-+				devm_kfree(trans->mdev->dev, srv_que);
-+			}
-+		}
-+		devm_kfree(trans->mdev->dev, srv);
-+		trans->trb_srv[i] = NULL;
++	rxq->pit_seq_max = dcb->drv_info->cfg->rx_cfg.rxqs[rxq->id].pit_seq_max;
++	rxq->bat_ring_id = dcb->drv_info->cfg->rx_cfg.rxqs[rxq->id].bat_ring_id;
++	rxq->pit_cnt = dcb->drv_info->cfg->rx_cfg.rxqs[rxq->id].pit_cnt;
++	rxq->pit_burst_rel_cnt = DPMAIF_PIT_CNT_UPDATE_THRESHOLD;
++
++	snprintf(ws_name, sizeof(ws_name), "dpmaif_rxq%d_ws", rxq->id);
++
++	rxq->ws = wakeup_source_register(NULL, ws_name);
++	if (!rxq->ws) {
++		dev_err((DCB_TO_MDEV(dcb))->dev,
++			"Failed to register rxq%d wakeup source\n", rxq->id);
++		return -ENOMEM;
++	}
++
++	rxq->pit_base = dma_alloc_coherent(DCB_TO_DEV(dcb),
++					   rxq->pit_cnt * sizeof(*rxq->pit_base),
++					   &rxq->pit_dma_addr, GFP_KERNEL);
++	if (!rxq->pit_base) {
++		dev_err((DCB_TO_MDEV(dcb))->dev,
++			"Failed to allocate rxq%u pit resource\n", rxq->id);
++		ret = -ENOMEM;
++		goto unregister_ws;
++	}
++
++	__skb_queue_head_init(&rxq->rx_record.rx_list);
++
++	return 0;
++unregister_ws:
++	wakeup_source_unregister(rxq->ws);
++
++	return ret;
++}
++
++static void mtk_dpmaif_rxq_exit(struct mtk_dpmaif_ctlb *dcb, struct dpmaif_rxq *rxq)
++{
++	dma_free_coherent(DCB_TO_DEV(dcb), rxq->pit_cnt * sizeof(*rxq->pit_base),
++			  rxq->pit_base, rxq->pit_dma_addr);
++	wakeup_source_unregister(rxq->ws);
++}
++
++static int mtk_dpmaif_sw_stop_rxq(struct mtk_dpmaif_ctlb *dcb, struct dpmaif_rxq *rxq)
++{
++	/* Rxq done process will check this flag, if rxq->started is false, process will stop. */
++	rxq->started = false;
++
++	/* Make sure rxq->started value update done. */
++	smp_mb();
++
++	/* Wait rxq process done. */
++	napi_synchronize(&rxq->napi);
++
++	return 0;
++}
++
++static void mtk_dpmaif_sw_stop_rx(struct mtk_dpmaif_ctlb *dcb)
++{
++	struct dpmaif_rxq *rxq;
++	int i;
++
++	/* Stop all rx process. */
++	for (i = 0; i < dcb->rxq_cnt; i++) {
++		rxq = &dcb->rxqs[i];
++		mtk_dpmaif_sw_stop_rxq(dcb, rxq);
++	}
++
++	/* Stop PIT polling NAPI. */
++}
++
++static void mtk_dpmaif_sw_start_rx(struct mtk_dpmaif_ctlb *dcb)
++{
++	struct dpmaif_rxq *rxq;
++	int i;
++
++	/* Start PIT polling NAPI. */
++
++	for (i = 0; i < dcb->rxq_cnt; i++) {
++		rxq = &dcb->rxqs[i];
++		rxq->started = true;
 +	}
 +}
 +
-+static void mtk_ctrl_remove_radix_tree(struct mtk_ctrl_trans *trans)
++static void mtk_dpmaif_sw_reset_rxq(struct dpmaif_rxq *rxq)
 +{
-+	struct queue_info **queues;
-+	int ret, idx;
++	memset(rxq->pit_base, 0x00, (rxq->pit_cnt * sizeof(*rxq->pit_base)));
++	memset(&rxq->rx_record, 0x00, sizeof(rxq->rx_record));
++	__skb_queue_head_init(&rxq->rx_record.rx_list);
 +
-+	queues = kcalloc(trans->queues_cnt, sizeof(struct queue_info *), GFP_KERNEL);
-+	if (!queues)
-+		return;
++	rxq->started = false;
++	rxq->pit_wr_idx = 0;
++	rxq->pit_rd_idx = 0;
++	rxq->pit_rel_rd_idx = 0;
++	rxq->pit_seq_expect = 0;
++	atomic_set(&rxq->pit_rel_cnt, 0);
++	rxq->pit_cnt_err_intr_set = false;
++	rxq->pit_seq_fail_cnt = 0;
++}
 +
-+	ret = radix_tree_gang_lookup(&trans->queue_tbl, (void **)queues,
-+				     0, trans->queues_cnt);
-+	for (idx = 0; idx < ret; idx++) {
-+		radix_tree_delete(&trans->queue_tbl, queues[idx]->rx_chl & QUEUE_CHL_MASK);
-+		kfree(queues[idx]);
++static void mtk_dpmaif_rx_res_reset(struct mtk_dpmaif_ctlb *dcb)
++{
++	struct dpmaif_rxq *rxq;
++	int i;
++
++	for (i = 0; i < dcb->rxq_cnt; i++) {
++		rxq = &dcb->rxqs[i];
++		mtk_dpmaif_sw_reset_rxq(rxq);
 +	}
-+	kfree(queues);
 +}
 +
-+static void mtk_ctrl_queue_info_update(struct radix_tree_root *queue_tbl, u32 port_chl_mtu)
++static int mtk_dpmaif_rx_res_init(struct mtk_dpmaif_ctlb *dcb)
 +{
-+	struct queue_info *queue;
-+	u32 rx_chl, mtu;
-+
-+	if (!port_chl_mtu)
-+		return;
-+
-+	rx_chl = port_chl_mtu >> RX_CH_ID_SHIFT;
-+	mtu = port_chl_mtu & PORT_MTU_MASK;
-+	queue = radix_tree_lookup(queue_tbl, rx_chl);
-+	if (!queue)
-+		return;
-+
-+	queue->tx_mtu = mtu;
-+	queue->rx_mtu = mtu;
-+	queue->tx_frag_size = mtu;
-+	queue->rx_frag_size = mtu;
-+}
-+
-+static unsigned int ctrl_port_chl_mtu;
-+
-+static int mtk_pcie_hif_init(struct mtk_md_dev *mdev)
-+{
-+	struct mtk_ctrl_blk *ctrl_blk = mdev->ctrl_blk;
-+	struct queue_info *queue, *queue_info;
-+	struct mtk_ctrl_trans *trans;
++	struct dpmaif_rxq *rxq;
 +	int i, j;
 +	int ret;
 +
-+	trans = ctrl_blk->ctrl_hw_priv;
-+	trans->ctrl_blk = ctrl_blk;
-+	queue_info = trans->queue_info;
++	dcb->rxqs = devm_kcalloc(DCB_TO_DEV(dcb), dcb->rxq_cnt, sizeof(*rxq), GFP_KERNEL);
++	if (!dcb->rxqs)
++		return -ENOMEM;
 +
-+	INIT_RADIX_TREE(&trans->queue_tbl, GFP_KERNEL);
-+	for (i = 0; i < trans->queue_info_num; i++) {
-+		queue = kmemdup(queue_info + i, sizeof(*queue), GFP_KERNEL);
-+		if (!queue) {
-+			ret = -ENOMEM;
-+			goto err_free_radix_tree;
-+		}
-+		if (queue->txqno >= HW_QUE_NUM || queue->rxqno >= HW_QUE_NUM ||
-+		    queue->hif_id >= NR_CLDMA) {
-+			dev_err((mdev)->dev, "Failed to get correct queue info %x\n",
-+				queue->rx_chl);
-+			ret = -EINVAL;
-+			goto err_free_radix_tree;
-+		}
-+		ret = radix_tree_insert(&trans->queue_tbl, queue->rx_chl & QUEUE_CHL_MASK, queue);
-+		if (ret) {
-+			dev_err((mdev)->dev, "Insert %x fail, ret: %d", queue->rx_chl, ret);
-+			kfree(queue);
-+			goto err_free_radix_tree;
-+		}
-+		trans->queues_cnt++;
-+	}
-+
-+	mtk_ctrl_queue_info_update(&trans->queue_tbl, ctrl_port_chl_mtu);
-+
-+	for (i = 0; i < NR_CLDMA; i++) {
-+		for (j = 0; j < HW_QUE_NUM; j++) {
-+			skb_queue_head_init(&trans->trans_list[i].skb_list[j]);
-+			trans->trans_list[i].tx_burst_cnt[j] = 0;
++	for (i = 0; i < dcb->rxq_cnt; i++) {
++		rxq = &dcb->rxqs[i];
++		rxq->id = i;
++		rxq->dcb = dcb;
++		ret = mtk_dpmaif_rxq_init(dcb, rxq);
++		if (ret < 0) {
++			dev_err((DCB_TO_MDEV(dcb))->dev,
++				"Failed to init rxq%u resource\n", rxq->id);
++			goto exit_rxq;
 +		}
 +	}
-+	ret = mtk_cldma_init(trans);
-+	if (ret)
-+		goto err_free_radix_tree;
-+
-+	ret = mtk_ctrl_trb_srv_init(trans);
-+	if (ret)
-+		goto err_cldma_exit;
-+
-+	atomic_set(&trans->available, 1);
 +
 +	return 0;
 +
-+err_cldma_exit:
-+	mtk_cldma_exit(trans);
-+err_free_radix_tree:
-+	mtk_ctrl_remove_radix_tree(trans);
++exit_rxq:
++	for (j = i - 1; j >= 0; j--)
++		mtk_dpmaif_rxq_exit(dcb, &dcb->rxqs[j]);
++
++	devm_kfree(DCB_TO_DEV(dcb), dcb->rxqs);
 +
 +	return ret;
 +}
 +
-+static int mtk_pcie_hif_exit(struct mtk_md_dev *mdev)
++static void mtk_dpmaif_rx_res_exit(struct mtk_dpmaif_ctlb *dcb)
 +{
-+	struct mtk_ctrl_blk *ctrl_blk = mdev->ctrl_blk;
-+	struct mtk_ctrl_trans *trans;
++	int i;
 +
-+	trans = ctrl_blk->ctrl_hw_priv;
++	for (i = 0; i < dcb->rxq_cnt; i++)
++		mtk_dpmaif_rxq_exit(dcb, &dcb->rxqs[i]);
 +
-+	atomic_set(&trans->available, 0);
-+	mtk_ctrl_trb_srv_exit(trans);
-+	mtk_ctrl_remove_radix_tree(trans);
-+	mtk_cldma_exit(trans);
-+
-+	return 0;
++	devm_kfree(DCB_TO_DEV(dcb), dcb->rxqs);
 +}
 +
-+static int mtk_pcie_hif_submit_skb(struct mtk_md_dev *mdev, struct sk_buff *skb, bool force_send)
++static unsigned int mtk_dpmaif_poll_tx_drb(struct dpmaif_txq *txq)
 +{
-+	struct mtk_ctrl_blk *ctrl_blk = mdev->ctrl_blk;
-+	struct mtk_ctrl_trans *trans;
-+	struct queue_info *que;
-+	struct trb *trb;
++	unsigned short old_sw_rd_idx, new_hw_rd_idx;
++	struct mtk_dpmaif_ctlb *dcb = txq->dcb;
++	unsigned int drb_cnt;
++	int ret;
 +
-+	trans = ctrl_blk->ctrl_hw_priv;
-+	trb = (struct trb *)skb->cb;
-+
-+	if (trb->cmd == TRB_CMD_STOP || trb->cmd == TRB_CMD_RECOVER) {
-+		trb->trb_complete(skb);
++	old_sw_rd_idx = txq->drb_rd_idx;
++	ret = dcb->drv_info->drv_ops->get_ring_idx(dcb->drv_info, DPMAIF_DRB_RIDX, txq->id);
++	if (unlikely(ret < 0)) {
++		dev_err((DCB_TO_MDEV(dcb))->dev,
++			"Failed to read txq%u drb_rd_idx, ret=%d\n", txq->id, ret);
++		mtk_dpmaif_common_err_handle(dcb, true);
 +		return 0;
 +	}
 +
-+	que = radix_tree_lookup(&trans->queue_tbl, trb->channel_id & QUEUE_CHL_MASK);
-+	if (!que) {
-+		dev_warn((mdev)->dev, "lookup que fail, ch_id: %x, que: 0x%p\n",
-+			 trb->channel_id, que);
-+		return -EINVAL;
++	new_hw_rd_idx = ret;
++
++	if (old_sw_rd_idx <= new_hw_rd_idx)
++		drb_cnt = new_hw_rd_idx - old_sw_rd_idx;
++	else
++		drb_cnt = txq->drb_cnt - old_sw_rd_idx + new_hw_rd_idx;
++
++	txq->drb_rd_idx = new_hw_rd_idx;
++
++	return drb_cnt;
++}
++
++static int mtk_dpmaif_tx_rel_internal(struct dpmaif_txq *txq,
++				      unsigned int rel_cnt, unsigned int *real_rel_cnt)
++{
++	struct dpmaif_pd_drb *cur_drb = NULL, *drb_base = txq->drb_base;
++	struct mtk_dpmaif_ctlb *dcb = txq->dcb;
++	struct dpmaif_drb_skb *cur_drb_skb;
++	struct dpmaif_tx_srv *tx_srv;
++	struct sk_buff *skb_free;
++	unsigned short cur_idx;
++	unsigned char srv_id;
++	unsigned int i;
++
++	cur_idx = txq->drb_rel_rd_idx;
++	for (i = 0; i < rel_cnt; i++) {
++		cur_drb = drb_base + cur_idx;
++		cur_drb_skb = txq->sw_drb_base + cur_idx;
++		if (cur_drb_skb->is_msg == PD_DRB) {
++			dma_unmap_single(DCB_TO_DEV(dcb), cur_drb_skb->data_dma_addr,
++					 cur_drb_skb->data_len, DMA_TO_DEVICE);
++
++			/* The last one drb entry of one tx packet, so, skb will be released. */
++			if (cur_drb_skb->is_last) {
++				skb_free = cur_drb_skb->skb;
++				if (likely(skb_free)) {
++					dev_consume_skb_any(skb_free);
++				} else {
++					dev_err((DCB_TO_MDEV(dcb))->dev,
++						"Failed to free skb,txq%u pkt%u,w=%u,r=%u,rel=%u,cnt=%u\n",
++						txq->id, cur_idx, txq->drb_wr_idx,
++						txq->drb_rd_idx, txq->drb_rel_rd_idx, rel_cnt);
++					mtk_dpmaif_common_err_handle(dcb, false);
++				}
++			}
++		}
++
++		cur_drb_skb->skb = NULL;
++		cur_idx = mtk_dpmaif_ring_buf_get_next_idx(txq->drb_cnt, cur_idx);
++		txq->drb_rel_rd_idx = cur_idx;
++		atomic_inc(&txq->budget);
 +	}
 +
-+	if (!atomic_read(&trans->available))
-+		return -EIO;
++	*real_rel_cnt = i;
 +
-+	if (mtk_queue_list_is_full(trans, que) && !force_send)
-+		return -EAGAIN;
++	if (likely(cur_drb)) {
++		if (unlikely(!cur_drb_skb->is_last)) {
++			dev_warn((DCB_TO_MDEV(dcb))->dev,
++				 "txq%u done, last one c_bit != 0\n", txq->id);
++			mtk_dpmaif_common_err_handle(dcb, true);
++		}
++	}
 +
-+	if (trb->cmd == TRB_CMD_DISABLE)
-+		skb_queue_head(&trans->trans_list[que->hif_id].skb_list[que->txqno], skb);
-+	else
-+		skb_queue_tail(&trans->trans_list[que->hif_id].skb_list[que->txqno], skb);
-+
-+	wake_up(&trans->trb_srv[trans->srv_cfg[que->hif_id][que->txqno]]->trb_waitq);
++	if (atomic_read(&txq->budget) > txq->drb_cnt >> 3) {
++		srv_id = dcb->tx_vqs[txq->id].srv_id;
++		tx_srv = &dcb->tx_srvs[srv_id];
++		clear_bit(txq->id, &tx_srv->txq_drb_lack_sta);
++		wake_up(&tx_srv->wait);
++	}
 +
 +	return 0;
 +}
 +
-+static int mtk_pcie_hif_cmd_func(struct mtk_md_dev *mdev, int cmd, void *data)
++static int mtk_dpmaif_tx_rel(struct dpmaif_txq *txq)
 +{
-+	struct mtk_ctrl_blk *ctrl_blk = mdev->ctrl_blk;
-+	struct mtk_ctrl_trans *trans;
-+	struct queue_info *que;
-+	int ret = 0;
++	unsigned int real_rel_cnt = 0;
++	int ret = 0, rel_cnt;
 +
-+	switch (cmd) {
-+	case HIF_CTRL_CMD_CHECK_TX_FULL:
-+		trans = ctrl_blk->ctrl_hw_priv;
-+		que = radix_tree_lookup(&trans->queue_tbl,
-+					((union ctrl_hif_cmd_data *)data)->rx_ch & QUEUE_CHL_MASK);
-+		if (!que) {
-+			dev_warn((mdev)->dev, "Failed to find que to check tx full\n");
-+			return -EINVAL;
-+		}
-+		return mtk_queue_list_is_full(trans, que);
-+	default:
-+		ret = -EINVAL;
-+		break;
++	mtk_dpmaif_poll_tx_drb(txq);
++
++	rel_cnt = mtk_dpmaif_ring_buf_releasable(txq->drb_cnt, txq->drb_rel_rd_idx,
++						 txq->drb_rd_idx);
++
++	if (likely(rel_cnt > 0)) {
++		/* Release tx data buffer. */
++		ret = mtk_dpmaif_tx_rel_internal(txq, rel_cnt, &real_rel_cnt);
 +	}
 +
 +	return ret;
 +}
 +
-+static struct mtk_ctrl_hif_ops pcie_ctrl_ops = {
-+	.init = mtk_pcie_hif_init,
-+	.exit = mtk_pcie_hif_exit,
-+	.submit_skb = mtk_pcie_hif_submit_skb,
-+	.send_cmd = mtk_pcie_hif_cmd_func,
-+};
-+
-+static void mtk_trans_get_ctrl_info(struct mtk_ctrl_cfg *cfg,
-+				    struct mtk_ctrl_trans *trans, u32 hw_ver)
++static void mtk_dpmaif_tx_done(struct work_struct *work)
 +{
-+	struct mtk_ctrl_info_desc *ctrl_info_desc;
-+	struct mtk_ctrl_info *ctrl_info;
-+	u8 i;
++	struct delayed_work *dwork = to_delayed_work(work);
++	struct mtk_dpmaif_ctlb *dcb;
++	struct dpmaif_txq *txq;
 +
-+	for (i = 0; (ctrl_info_desc = &mtk_ctrl_info_tbl[i]) && ctrl_info_desc &&
-+	     ctrl_info_desc->ctrl_info; i++) {
-+		if (ctrl_info_desc->hw_ver != hw_ver)
++	txq = container_of(dwork, struct dpmaif_txq, tx_done_work);
++	dcb = txq->dcb;
++
++	/* Recycle drb and release hardware tx done buffer around drb. */
++	mtk_dpmaif_tx_rel(txq);
++
++	mtk_dpmaif_drv_intr_complete(dcb->drv_info, DPMAIF_INTR_UL_DONE,
++				     txq->id, DPMAIF_UNMASK_INTR);
++}
++
++static int mtk_dpmaif_doorbell_thread(void *arg)
++{
++	struct mtk_dpmaif_ctlb *dcb = arg;
++	int bat_ring_num = dcb->drv_info->cfg->rx_cfg.bat_ring_num;
++	int doorbell_cnt, i, ret;
++
++	while (1) {
++		ret = wait_event_interruptible(dcb->db_task_ctlb.wait,
++					       dcb->db_task_ctlb.need_wp ||
++					       kthread_should_stop());
++		dcb->db_task_ctlb.need_wp = false;
++		if (unlikely(ret == -ERESTARTSYS))
 +			continue;
 +
-+		ctrl_info = ctrl_info_desc->ctrl_info;
-+		memcpy(trans->srv_cfg, ctrl_info->srv_cfg,
-+		       sizeof(int) * NR_CLDMA * HW_QUE_NUM);
-+		trans->queue_info = ctrl_info->queue_info;
-+		trans->queue_info_num = ctrl_info->queue_info_num;
-+		trans->trb_srv_num = ctrl_info->trb_srv_num;
++		if (kthread_should_stop())
++			break;
++
++		/* TX DRB doorbell */
++		for (i = 0; i < dcb->txq_cnt; i++) {
++			doorbell_cnt = atomic_read(&dcb->txqs[i].to_submit_cnt);
++			if (doorbell_cnt > 0) {
++				ret = mtk_dpmaif_drv_send_doorbell(dcb->drv_info,
++								   DPMAIF_DRB, i,
++								   doorbell_cnt);
++				if (unlikely(ret < 0)) {
++					dev_err(DCB_TO_DEV(dcb),
++						"Failed to send txq%d doorbell\n", i);
++					mtk_dpmaif_common_err_handle(dcb, true);
++					break;
++				}
++				atomic_sub(doorbell_cnt, &dcb->txqs[i].to_submit_cnt);
++			}
++		}
++
++		/* BAT doorbell */
++		for (i = 0; i < bat_ring_num; i++) {
++			struct dpmaif_bat_ring *bat_ring = &dcb->bat_infos[i].normal_bat_ring;
++
++			/* Send BAT doorbell to notify HW about newly reloaded BAT entries. */
++			doorbell_cnt = atomic_read(&bat_ring->reload_cnt);
++			if (doorbell_cnt > 0) {
++				ret = mtk_dpmaif_drv_send_doorbell(dcb->drv_info,
++								   DPMAIF_BAT,
++								   bat_ring->id,
++								   doorbell_cnt);
++				if (unlikely(ret < 0)) {
++					dev_err(DCB_TO_DEV(dcb),
++						"Failed to send bat%u doorbell\n", bat_ring->id);
++					mtk_dpmaif_common_err_handle(dcb, true);
++					continue;
++				}
++
++				atomic_sub(doorbell_cnt, &bat_ring->reload_cnt);
++				if (bat_ring->bat_cnt_err_intr_set) {
++					bat_ring->bat_cnt_err_intr_set = false;
++					mtk_dpmaif_drv_intr_complete(dcb->drv_info,
++								     DPMAIF_INTR_DL_BATCNT_LEN_ERR,
++								     bat_ring->id, 0);
++				}
++			}
++		}
++
++		/* PIT doorbell for all RX queues */
++		for (i = 0; i < dcb->rxq_cnt; i++) {
++			struct dpmaif_rxq *rxq = &dcb->rxqs[i];
++
++			doorbell_cnt = atomic_read(&rxq->pit_rel_cnt);
++			if (doorbell_cnt >= 0) {
++				ret = mtk_dpmaif_drv_send_doorbell(dcb->drv_info,
++								   DPMAIF_PIT, rxq->id,
++								   doorbell_cnt);
++				if (unlikely(ret < 0)) {
++					dev_err(DCB_TO_DEV(dcb),
++						"Failed to send rxq%d pit doorbell\n", i);
++					mtk_dpmaif_common_err_handle(dcb, true);
++				} else {
++					atomic_sub(doorbell_cnt, &rxq->pit_rel_cnt);
++				}
++			}
++		}
++
++		cond_resched();
 +	}
++
++	return 0;
 +}
 +
-+int mtk_trans_ctrl_init(struct mtk_md_dev *mdev)
++static int mtk_dpmaif_txq_init(struct mtk_dpmaif_ctlb *dcb, struct dpmaif_txq *txq)
 +{
-+	struct mtk_ctrl_blk *ctrl_blk;
-+	struct mtk_ctrl_trans *trans;
-+	int err;
++	struct dpmaif_txq_cfg *txq_cfg = &dcb->drv_info->cfg->tx_cfg.txqs[txq->id];
++	int ret;
 +
-+	trans = devm_kzalloc(mdev->dev, sizeof(*trans), GFP_KERNEL);
-+	if (!trans)
++	txq->drb_cnt = txq_cfg->drb_cnt;
++	atomic_set(&txq->budget, txq->drb_cnt);
++
++	/* Allocate DRB memory for HW and SW. */
++	txq->drb_base = dma_alloc_coherent(DCB_TO_DEV(dcb), txq->drb_cnt * sizeof(*txq->drb_base),
++					   &txq->drb_dma_addr, GFP_KERNEL);
++	if (!txq->drb_base)
 +		return -ENOMEM;
-+	trans->mdev = mdev;
-+	trans->queues_cnt = 0;
 +
-+	mtk_trans_get_ctrl_info(NULL, trans, mdev->hw_ver);
-+	if (!trans->queue_info ||
-+	    trans->trb_srv_num <= 0 || trans->trb_srv_num > TRB_SRV_MAX_NUM ||
-+	    trans->queue_info_num <= 0) {
-+		dev_err((mdev)->dev, "Failed to get ctrl info!\n");
-+		goto err_free_cfg;
++	/* Allocate buffer for SW to record the skb information. */
++	txq->sw_drb_base = devm_kcalloc(DCB_TO_DEV(dcb), txq->drb_cnt, sizeof(*txq->sw_drb_base),
++					GFP_KERNEL);
++	if (!txq->sw_drb_base) {
++		ret = -ENOMEM;
++		goto free_drb;
 +	}
 +
-+	err = mtk_ctrl_init(mdev, &pcie_ctrl_ops);
-+	if (err)
-+		goto err_free_cfg;
-+
-+	ctrl_blk = mdev->ctrl_blk;
-+	ctrl_blk->ctrl_hw_priv = trans;
++	INIT_DELAYED_WORK(&txq->tx_done_work, mtk_dpmaif_tx_done);
 +
 +	return 0;
 +
-+err_free_cfg:
-+	devm_kfree(mdev->dev, trans);
-+	return -ENOMEM;
++free_drb:
++	dma_free_coherent(DCB_TO_DEV(dcb), txq->drb_cnt * sizeof(*txq->drb_base),
++			  txq->drb_base, txq->drb_dma_addr);
++
++	return ret;
 +}
 +
-+int mtk_trans_ctrl_exit(struct mtk_md_dev *mdev)
++static void mtk_dpmaif_txq_exit(struct mtk_dpmaif_ctlb *dcb, struct dpmaif_txq *txq)
 +{
-+	struct mtk_ctrl_blk *ctrl_blk;
-+	struct mtk_ctrl_trans *trans;
++	struct dpmaif_drb_skb *drb_skb;
++	int i;
 +
-+	ctrl_blk = mdev->ctrl_blk;
-+	trans = ctrl_blk->ctrl_hw_priv;
++	dma_free_coherent(DCB_TO_DEV(dcb), txq->drb_cnt * sizeof(*txq->drb_base),
++			  txq->drb_base, txq->drb_dma_addr);
 +
-+	devm_kfree(mdev->dev, ctrl_blk->cfg);
-+	mtk_ctrl_exit(mdev);
-+	devm_kfree(mdev->dev, trans);
++	for (i = 0; i < txq->drb_cnt; i++) {
++		drb_skb = txq->sw_drb_base + i;
++		if (!drb_skb->skb)
++			continue;
++
++		/* Verify msg drb or payload drb, and only payload drb need to unmap dma. */
++		if (drb_skb->data_dma_addr)
++			dma_unmap_single(DCB_TO_DEV(dcb),
++					 drb_skb->data_dma_addr,
++					 drb_skb->data_len, DMA_TO_DEVICE);
++		if (drb_skb->is_last)
++			dev_kfree_skb_any(drb_skb->skb);
++	}
++
++	devm_kfree(DCB_TO_DEV(dcb), txq->sw_drb_base);
++}
++
++static int mtk_dpmaif_sw_wait_txq_stop(struct mtk_dpmaif_ctlb *dcb, struct dpmaif_txq *txq)
++{
++	/* Wait tx done work done. */
++	flush_delayed_work(&txq->tx_done_work);
 +
 +	return 0;
 +}
 +
-+module_param(ctrl_port_chl_mtu, uint, 0644);
-+MODULE_PARM_DESC(ctrl_port_chl_mtu, "This is used to config the ctrl port mtu!\n");
-diff --git a/drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.h b/drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.h
-index d6de4c43b529..c2df0bf6ed65 100644
---- a/drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.h
-+++ b/drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.h
-@@ -13,9 +13,93 @@
++static void mtk_dpmaif_sw_wait_tx_stop(struct mtk_dpmaif_ctlb *dcb)
++{
++	unsigned char txq_cnt = dcb->drv_info->cfg->tx_cfg.txq_cnt;
++	int i;
++
++	/* Wait all tx handle complete */
++	for (i = 0; i < txq_cnt; i++)
++		mtk_dpmaif_sw_wait_txq_stop(dcb, &dcb->txqs[i]);
++}
++
++static void mtk_dpmaif_sw_reset_txq(struct dpmaif_txq *txq)
++{
++	struct dpmaif_drb_skb *drb_skb;
++	int i;
++
++	/* Drop all tx buffer around drb. */
++	for (i = 0; i < txq->drb_cnt; i++) {
++		drb_skb = txq->sw_drb_base + i;
++		if (!drb_skb->skb)
++			continue;
++
++		if (drb_skb->data_dma_addr)
++			dma_unmap_single(DCB_TO_DEV(txq->dcb), drb_skb->data_dma_addr,
++					 drb_skb->data_len, DMA_TO_DEVICE);
++		if (drb_skb->is_last) {
++			dev_kfree_skb_any(drb_skb->skb);
++			drb_skb->skb = NULL;
++		}
++	}
++
++	/* Reset all txq resource. */
++	memset(txq->drb_base, 0x00, (txq->drb_cnt * sizeof(*txq->drb_base)));
++	memset(txq->sw_drb_base, 0x00, (txq->drb_cnt * sizeof(*txq->sw_drb_base)));
++
++	atomic_set(&txq->budget, txq->drb_cnt);
++	atomic_set(&txq->to_submit_cnt, 0);
++	txq->drb_rd_idx = 0;
++	txq->drb_wr_idx = 0;
++	txq->drb_rel_rd_idx = 0;
++}
++
++static void mtk_dpmaif_tx_res_reset(struct mtk_dpmaif_ctlb *dcb)
++{
++	unsigned char txq_cnt = dcb->drv_info->cfg->tx_cfg.txq_cnt;
++	struct dpmaif_txq *txq;
++	int i;
++
++	for (i = 0; i < txq_cnt; i++) {
++		txq = &dcb->txqs[i];
++		mtk_dpmaif_sw_reset_txq(txq);
++	}
++}
++
++static int mtk_dpmaif_tx_res_init(struct mtk_dpmaif_ctlb *dcb)
++{
++	struct dpmaif_txq *txq;
++	int i, j;
++	int ret;
++
++	dcb->txqs = devm_kcalloc(DCB_TO_DEV(dcb), dcb->txq_cnt, sizeof(*txq), GFP_KERNEL);
++	if (!dcb->txqs)
++		return -ENOMEM;
++
++	for (i = 0; i < dcb->txq_cnt; i++) {
++		txq = &dcb->txqs[i];
++		txq->id = i;
++		txq->dcb = dcb;
++		ret = mtk_dpmaif_txq_init(dcb, txq);
++		if (ret < 0) {
++			dev_err((DCB_TO_MDEV(dcb))->dev,
++				"Failed to init txq%d resource\n", txq->id);
++			goto exit_txq;
++		}
++	}
++
++	dcb->tx_done_wq = alloc_workqueue("dpmaif_tx_done_wq_%s",
++					  WQ_UNBOUND | WQ_MEM_RECLAIM | WQ_HIGHPRI,
++					  dcb->txq_cnt, DCB_TO_DEV_STR(dcb));
++	if (!dcb->tx_done_wq) {
++		dev_err((DCB_TO_MDEV(dcb))->dev, "Failed to allocate tx done workqueue\n");
++		ret = -ENOMEM;
++		goto exit_txq;
++	}
++
++	init_waitqueue_head(&dcb->db_task_ctlb.wait);
++	dcb->db_thread = kthread_run(mtk_dpmaif_doorbell_thread, dcb,
++				     "dpmaif_db_%s", DCB_TO_DEV_STR(dcb));
++	if (IS_ERR(dcb->db_thread)) {
++		dev_err((DCB_TO_MDEV(dcb))->dev, "Failed to create doorbell thread\n");
++		ret = PTR_ERR(dcb->db_thread);
++		dcb->db_thread = NULL;
++		goto destroy_tx_done_wq;
++	}
++
++	return 0;
++
++destroy_tx_done_wq:
++	flush_workqueue(dcb->tx_done_wq);
++	destroy_workqueue(dcb->tx_done_wq);
++
++exit_txq:
++	for (j = i - 1; j >= 0; j--)
++		mtk_dpmaif_txq_exit(dcb, &dcb->txqs[j]);
++
++	devm_kfree(DCB_TO_DEV(dcb), dcb->txqs);
++
++	return ret;
++}
++
++static void mtk_dpmaif_tx_res_exit(struct mtk_dpmaif_ctlb *dcb)
++{
++	struct dpmaif_txq *txq;
++	int i;
++
++	if (dcb->db_thread) {
++		kthread_stop(dcb->db_thread);
++		dcb->db_thread = NULL;
++	}
++
++	for (i = 0; i < dcb->txq_cnt; i++) {
++		txq = &dcb->txqs[i];
++		flush_delayed_work(&txq->tx_done_work);
++	}
++
++	if (dcb->tx_done_wq) {
++		flush_workqueue(dcb->tx_done_wq);
++		destroy_workqueue(dcb->tx_done_wq);
++		dcb->tx_done_wq = NULL;
++	}
++
++	for (i = 0; i < dcb->txq_cnt; i++)
++		mtk_dpmaif_txq_exit(dcb, &dcb->txqs[i]);
++
++	devm_kfree(DCB_TO_DEV(dcb), dcb->txqs);
++}
++
++static int mtk_dpmaif_sw_res_init(struct mtk_dpmaif_ctlb *dcb)
++{
++	int ret;
++
++	ret = mtk_dpmaif_bat_res_init(dcb);
++	if (ret < 0)
++		return ret;
++
++	ret = mtk_dpmaif_rx_res_init(dcb);
++	if (ret < 0)
++		goto bat_res_exit;
++
++	ret = mtk_dpmaif_tx_res_init(dcb);
++	if (ret < 0)
++		goto rx_res_exit;
++
++	return 0;
++
++rx_res_exit:
++	mtk_dpmaif_rx_res_exit(dcb);
++
++bat_res_exit:
++	mtk_dpmaif_bat_res_exit(dcb);
++
++	return ret;
++}
++
++static void mtk_dpmaif_sw_res_exit(struct mtk_dpmaif_ctlb *dcb)
++{
++	mtk_dpmaif_tx_res_exit(dcb);
++	mtk_dpmaif_rx_res_exit(dcb);
++	mtk_dpmaif_bat_res_exit(dcb);
++}
++
++static bool mtk_dpmaif_all_vqs_empty_or_busy(struct dpmaif_tx_srv *tx_srv)
++{
++	bool is_empty_or_busy = true;
++	struct dpmaif_vq *vq;
++	int i;
++
++	for (i = 0; i < tx_srv->vq_cnt; i++) {
++		vq = tx_srv->vq[i];
++		if (!skb_queue_empty(&vq->list) && !test_bit(vq->q_id, &tx_srv->txq_drb_lack_sta)) {
++			is_empty_or_busy = false;
++			break;
++		}
++	}
++
++	return is_empty_or_busy;
++}
++
++static void mtk_dpmaif_record_drb_skb(struct mtk_dpmaif_ctlb *dcb, unsigned char q_id,
++				      unsigned short cur_idx, struct sk_buff *skb,
++				      unsigned short is_msg, unsigned short is_frag,
++				      unsigned short is_last, dma_addr_t data_dma_addr,
++				      unsigned int data_len)
++{
++	struct dpmaif_drb_skb *drb_skb = dcb->txqs[q_id].sw_drb_base + cur_idx;
++
++	drb_skb->skb = skb;
++	drb_skb->data_dma_addr = data_dma_addr;
++	drb_skb->data_len = data_len;
++	drb_skb->drb_idx = cur_idx;
++	drb_skb->is_msg = is_msg;
++	drb_skb->is_frag = is_frag;
++	drb_skb->is_last = is_last;
++}
++
++static int mtk_dpmaif_tx_fill_drb(struct mtk_dpmaif_ctlb *dcb,
++				  unsigned char q_id, struct sk_buff *skb)
++{
++	unsigned short cur_idx, cur_backup_idx, is_frag, is_last;
++	unsigned int send_drb_cnt, wt_cnt, payload_cnt;
++	struct dpmaif_txq *txq = &dcb->txqs[q_id];
++	struct dpmaif_drb_skb *cur_drb_skb;
++	struct dpmaif_msg_drb *msg_drb;
++	struct dpmaif_tx_info tx_info;
++	struct dpmaif_pd_drb *pd_drb;
++	struct skb_shared_info *info;
++	dma_addr_t data_dma_addr;
++	unsigned int data_len;
++	skb_frag_t *frag;
++	void *data_addr;
++	int i, ret;
++
++	info = skb_shinfo(skb);
++	if (unlikely(info->frag_list))
++		dev_warn((DCB_TO_MDEV(dcb))->dev, "txq%d not support skb frag_list\n", q_id);
++
++	send_drb_cnt = DPMAIF_GET_DRB_CNT(skb);
++	payload_cnt = send_drb_cnt - 1;
++	cur_idx = txq->drb_wr_idx;
++	cur_backup_idx = cur_idx;
++
++	tx_info.msg_pkt_len = skb->len;
++	tx_info.msg_channel_id = DATA_SKB_CB(skb)->tx.intf_id;
++	tx_info.msg_txcsum = 1;
++
++	/* Update tx drb, a msg drb first, then payload drb. */
++	/* Update and record payload drb information. */
++	msg_drb = (struct dpmaif_msg_drb *)dcb->txqs[txq->id].drb_base + cur_idx;
++	dcb->drv_info->drv_ops->fill_tx_info(msg_drb, &tx_info, MSG_DRB);
++	mtk_dpmaif_record_drb_skb(dcb, txq->id, cur_idx, skb, 1, 0, 0, 0, 0);
++
++	/* Payload drb: skb->data + frags[]. */
++	cur_idx = mtk_dpmaif_ring_buf_get_next_idx(txq->drb_cnt, cur_idx);
++	for (wt_cnt = 0; wt_cnt < payload_cnt; wt_cnt++) {
++		/* Get data_addr and data_len. */
++		if (wt_cnt == 0) {
++			data_len = skb_headlen(skb);
++			data_addr = skb->data;
++			is_frag = 0;
++		} else {
++			frag = info->frags + wt_cnt - 1;
++			data_len = skb_frag_size(frag);
++			data_addr = skb_frag_address(frag);
++			is_frag = 1;
++		}
++
++		if (wt_cnt == payload_cnt - 1)
++			is_last = 1;
++		else
++			is_last = 0;
++
++		data_dma_addr = dma_map_single(DCB_TO_DEV(dcb),
++					       data_addr, data_len, DMA_TO_DEVICE);
++		ret = dma_mapping_error(DCB_TO_DEV(dcb), data_dma_addr);
++		if (unlikely(ret)) {
++			dev_warn((DCB_TO_MDEV(dcb))->dev, "dma mapping fail\n");
++			ret = -DATA_DMA_MAP_ERR;
++			goto unmap_dma;
++		}
++		tx_info.pd_is_last = is_last;
++		tx_info.pd_data_len = data_len;
++		tx_info.pd_data_dma_addr = data_dma_addr;
++
++		/* Update and record payload drb information. */
++		pd_drb = dcb->txqs[txq->id].drb_base + cur_idx;
++		dcb->drv_info->drv_ops->fill_tx_info(pd_drb, &tx_info, PD_DRB);
++		mtk_dpmaif_record_drb_skb(dcb, txq->id, cur_idx, skb, 0, is_frag, is_last,
++					  data_dma_addr, data_len);
++
++		cur_idx = mtk_dpmaif_ring_buf_get_next_idx(txq->drb_cnt, cur_idx);
++	}
++
++	dma_wmb();
++	txq->drb_wr_idx = cur_idx;
++
++	return 0;
++
++unmap_dma:
++	mtk_dpmaif_record_drb_skb(dcb, txq->id, cur_backup_idx, NULL, 0, 0, 0, 0, 0);
++	cur_backup_idx = mtk_dpmaif_ring_buf_get_next_idx(txq->drb_cnt, cur_backup_idx);
++	for (i = 0; i < wt_cnt; i++) {
++		cur_drb_skb = txq->sw_drb_base + cur_backup_idx;
++
++		dma_unmap_single(DCB_TO_DEV(dcb),
++				 cur_drb_skb->data_dma_addr, cur_drb_skb->data_len,
++				 DMA_TO_DEVICE);
++
++		cur_backup_idx = mtk_dpmaif_ring_buf_get_next_idx(txq->drb_cnt, cur_backup_idx);
++		mtk_dpmaif_record_drb_skb(dcb, txq->id, cur_backup_idx, NULL, 0, 0, 0, 0, 0);
++	}
++
++	return ret;
++}
++
++static void mtk_dpmaif_tx_update_ring(struct mtk_dpmaif_ctlb *dcb, struct dpmaif_tx_srv *tx_srv,
++				      struct dpmaif_vq *vq)
++{
++	struct dpmaif_txq *txq = &dcb->txqs[vq->q_id];
++	unsigned char q_id = vq->q_id;
++	unsigned char skb_drb_cnt;
++	int i, drb_available_cnt;
++	struct sk_buff *skb;
++
++	drb_available_cnt = mtk_dpmaif_ring_buf_writable(txq->drb_cnt,
++							 txq->drb_rel_rd_idx, txq->drb_wr_idx);
++
++	for (i = 0; i < DPMAIF_SKB_TX_WEIGHT; i++) {
++		skb = skb_dequeue(&vq->list);
++		if (!skb)
++			break;
++
++		skb_drb_cnt = DPMAIF_GET_DRB_CNT(skb);
++		if (drb_available_cnt < skb_drb_cnt) {
++			skb_queue_head(&vq->list, skb);
++			set_bit(q_id, &tx_srv->txq_drb_lack_sta);
++			break;
++		}
++
++		if (mtk_dpmaif_tx_fill_drb(dcb, q_id, skb) < 0) {
++			skb_queue_head(&vq->list, skb);
++			break;
++		}
++
++		drb_available_cnt -= skb_drb_cnt;
++		atomic_sub(skb_drb_cnt, &txq->budget);
++		atomic_add(skb_drb_cnt, &txq->to_submit_cnt);
++	}
++}
++
++static struct dpmaif_vq *mtk_dpmaif_srv_select_vq(struct dpmaif_tx_srv *tx_srv)
++{
++	struct dpmaif_vq *vq;
++	int i;
++
++	/* Round robin select tx vqs. */
++	for (i = 0; i < tx_srv->vq_cnt; i++) {
++		tx_srv->cur_vq_id = tx_srv->cur_vq_id % tx_srv->vq_cnt;
++		vq = tx_srv->vq[tx_srv->cur_vq_id];
++		tx_srv->cur_vq_id++;
++		if (!skb_queue_empty(&vq->list) && !test_bit(vq->q_id, &tx_srv->txq_drb_lack_sta))
++			return vq;
++	}
++
++	return NULL;
++}
++
++static void mtk_dpmaif_tx(struct dpmaif_tx_srv *tx_srv)
++{
++	struct mtk_dpmaif_ctlb *dcb = tx_srv->dcb;
++	struct dpmaif_vq *vq;
++
++	while (!kthread_should_stop() && (dcb->dpmaif_state == DPMAIF_STATE_PWRON)) {
++		vq = mtk_dpmaif_srv_select_vq(tx_srv);
++		if (!vq)
++			break;
++
++		mtk_dpmaif_tx_update_ring(dcb, tx_srv, vq);
++
++		if (atomic_read(&dcb->txqs[vq->q_id].to_submit_cnt) > 0)
++			mtk_dpmaif_task_wakeup(&dcb->db_task_ctlb);
++
++		cond_resched();
++	}
++}
++
++static int mtk_dpmaif_tx_thread(void *arg)
++{
++	struct dpmaif_tx_srv *tx_srv = arg;
++	struct mtk_dpmaif_ctlb *dcb;
++	int ret;
++
++	dcb = tx_srv->dcb;
++	set_user_nice(current, tx_srv->nice);
++	while (!kthread_should_stop()) {
++		ret = wait_event_interruptible(tx_srv->wait,
++					       (!mtk_dpmaif_all_vqs_empty_or_busy(tx_srv) &&
++					       (dcb->dpmaif_state == DPMAIF_STATE_PWRON)) ||
++					       kthread_should_stop());
++
++		if (ret == -ERESTARTSYS)
++			continue;
++
++		/* Send packets of all tx virtual queues belong to the tx service. */
++		mtk_dpmaif_tx(tx_srv);
++	}
++
++	return 0;
++}
++
++static int mtk_dpmaif_tx_srvs_start(struct mtk_dpmaif_ctlb *dcb)
++{
++	unsigned char srvs_cnt = dcb->drv_info->cfg->tx_srvs_cfg.tx_srv_cnt;
++	struct dpmaif_tx_srv *tx_srv;
++	int i, j, ret;
++
++	for (i = 0; i < srvs_cnt; i++) {
++		tx_srv = &dcb->tx_srvs[i];
++		tx_srv->cur_vq_id = 0;
++		tx_srv->txq_drb_lack_sta = 0;
++		if (tx_srv->srv)
++			continue;
++
++		tx_srv->srv = kthread_run(mtk_dpmaif_tx_thread,
++					  tx_srv, "dpmaif_tx_srv%u_%s",
++					  tx_srv->id, DCB_TO_DEV_STR(dcb));
++		if (IS_ERR(tx_srv->srv)) {
++			dev_err((DCB_TO_MDEV(dcb))->dev,
++				"Failed to alloc dpmaif tx_srv%u\n", tx_srv->id);
++			ret = PTR_ERR(tx_srv->srv);
++			tx_srv->srv = NULL;
++			goto free_tx_srvs;
++		}
++	}
++
++	return 0;
++
++free_tx_srvs:
++	for (j = i - 1; j >= 0; j--) {
++		tx_srv = &dcb->tx_srvs[j];
++		kthread_stop(tx_srv->srv);
++		tx_srv->srv = NULL;
++	}
++
++	return ret;
++}
++
++static void mtk_dpmaif_tx_srvs_stop(struct mtk_dpmaif_ctlb *dcb)
++{
++	unsigned char srvs_cnt = dcb->drv_info->cfg->tx_srvs_cfg.tx_srv_cnt;
++	struct dpmaif_tx_srv *tx_srv;
++	int i;
++
++	for (i = 0; i < srvs_cnt; i++) {
++		tx_srv = &dcb->tx_srvs[i];
++		if (tx_srv->srv) {
++			kthread_stop(tx_srv->srv);
++			tx_srv->srv = NULL;
++		}
++	}
++}
++
++static int mtk_dpmaif_tx_srvs_init(struct mtk_dpmaif_ctlb *dcb)
++{
++	const struct dpmaif_tx_srvs_cfg *tx_srvs_cfg = &dcb->drv_info->cfg->tx_srvs_cfg;
++	struct dpmaif_tx_srv *tx_srv;
++	struct dpmaif_vq *tx_vq;
++	int i, j, vq_id;
++	int ret;
++
++	/* Initialize all data packet tx vitrual queue. */
++	dcb->tx_vqs = devm_kcalloc(DCB_TO_DEV(dcb), tx_srvs_cfg->tx_vq_cnt, sizeof(*dcb->tx_vqs),
++				   GFP_KERNEL);
++	if (!dcb->tx_vqs)
++		return -ENOMEM;
++
++	for (i = 0; i < tx_srvs_cfg->tx_vq_cnt; i++) {
++		tx_vq = &dcb->tx_vqs[i];
++		tx_vq->q_id = i;
++		tx_vq->max_len = DEFAULT_TX_QUEUE_LEN;
++		skb_queue_head_init(&tx_vq->list);
++	}
++
++	/* Initialize all data packet tx services. */
++	dcb->tx_srvs = devm_kcalloc(DCB_TO_DEV(dcb), tx_srvs_cfg->tx_srv_cnt, sizeof(*dcb->tx_srvs),
++				    GFP_KERNEL);
++	if (!dcb->tx_srvs) {
++		ret = -ENOMEM;
++		goto free_tx_vqs;
++	}
++
++	for (i = 0; i < tx_srvs_cfg->tx_srv_cnt; i++) {
++		tx_srv = &dcb->tx_srvs[i];
++		tx_srv->dcb = dcb;
++		tx_srv->id = i;
++		tx_srv->nice = tx_srvs_cfg->tx_srvs[i].nice;
++		tx_srv->cur_vq_id = 0;
++		tx_srv->txq_drb_lack_sta = 0;
++		init_waitqueue_head(&tx_srv->wait);
++
++		/* Set virtual queues and tx service mapping. */
++		tx_srv->vq_cnt = tx_srvs_cfg->tx_srvs[i].vq_cnt;
++		for (j = 0; j < tx_srv->vq_cnt; j++) {
++			vq_id = tx_srvs_cfg->tx_srvs[i].vqs[j];
++			tx_srv->vq[j] = &dcb->tx_vqs[vq_id];
++			tx_srv->vq[j]->srv_id = tx_srv->id;
++		}
++	}
++
++	return 0;
++
++free_tx_vqs:
++	devm_kfree(DCB_TO_DEV(dcb), dcb->tx_vqs);
++
++	return ret;
++}
++
++static void mtk_dpmaif_tx_vqs_reset(struct mtk_dpmaif_ctlb *dcb)
++{
++	unsigned char vqs_cnt = dcb->drv_info->cfg->tx_srvs_cfg.tx_vq_cnt;
++	struct dpmaif_vq *tx_vq;
++	int i;
++
++	/* Drop all packet in tx virtual queues. */
++	for (i = 0; i < vqs_cnt; i++) {
++		tx_vq = &dcb->tx_vqs[i];
++		if (tx_vq)
++			skb_queue_purge(&tx_vq->list);
++	}
++}
++
++static void mtk_dpmaif_tx_srvs_exit(struct mtk_dpmaif_ctlb *dcb)
++{
++	mtk_dpmaif_tx_srvs_stop(dcb);
++	devm_kfree(DCB_TO_DEV(dcb), dcb->tx_srvs);
++	mtk_dpmaif_tx_vqs_reset(dcb);
++	devm_kfree(DCB_TO_DEV(dcb), dcb->tx_vqs);
++}
++
++static void mtk_dpmaif_trans_enable(struct mtk_dpmaif_ctlb *dcb)
++{
++	struct dpmaif_drv_info *drv_info = dcb->drv_info;
++
++	mtk_dpmaif_sw_start_rx(dcb);
++	mtk_dpmaif_enable_irq(dcb);
++
++	if (drv_info->drv_ops->start_queue(drv_info, DPMAIF_RX) < 0) {
++		dev_err((DCB_TO_MDEV(dcb))->dev, "Failed to start dpmaif hw rx\n");
++		mtk_dpmaif_common_err_handle(dcb, true);
++		return;
++	}
++
++	if (drv_info->drv_ops->start_queue(drv_info, DPMAIF_TX) < 0) {
++		dev_err((DCB_TO_MDEV(dcb))->dev, "Failed to start dpmaif hw tx\n");
++		mtk_dpmaif_common_err_handle(dcb, true);
++		return;
++	}
++}
++
++static void mtk_dpmaif_trans_disable(struct mtk_dpmaif_ctlb *dcb)
++{
++	struct dpmaif_drv_info *drv_info = dcb->drv_info;
++	bool io_err = false;
++
++	/* Stop dpmaif hw tx and rx. */
++	if (drv_info->drv_ops->stop_queue(drv_info, DPMAIF_TX) < 0) {
++		io_err = true;
++		dev_err((DCB_TO_MDEV(dcb))->dev, "Failed to stop dpmaif hw tx\n");
++	}
++
++	if (drv_info->drv_ops->stop_queue(drv_info, DPMAIF_RX) < 0) {
++		io_err = true;
++		dev_err((DCB_TO_MDEV(dcb))->dev, "Failed to stop dpmaif hw rx\n");
++	}
++
++	if (io_err)
++		mtk_dpmaif_common_err_handle(dcb, true);
++
++	/* Disable all dpmaif L1 interrupt. */
++	mtk_dpmaif_disable_irq(dcb);
++
++	/* Wait tx done work complete */
++	mtk_dpmaif_sw_wait_tx_stop(dcb);
++
++	/* Stop and wait rx handle done  */
++	mtk_dpmaif_sw_stop_rx(dcb);
++}
++
++static void mtk_dpmaif_trans_ctl(struct mtk_dpmaif_ctlb *dcb, bool enable)
++{
++	if (enable) {
++		if (dcb->dpmaif_state == DPMAIF_STATE_PWRON)
++			mtk_dpmaif_trans_enable(dcb);
++	} else {
++		mtk_dpmaif_trans_disable(dcb);
++	}
++}
++
++static void mtk_dpmaif_cmd_trans_ctl(struct mtk_dpmaif_ctlb *dcb, void *data)
++{
++	struct mtk_data_trans_ctl *trans_ctl = data;
++
++	/* Try best to drop all tx vq packets when disable trans */
++	if (!trans_ctl->enable)
++		mtk_dpmaif_tx_vqs_reset(dcb);
++
++	mutex_lock(&dcb->trans_ctl_lock);
++	mtk_dpmaif_trans_ctl(dcb, trans_ctl->enable);
++	mutex_unlock(&dcb->trans_ctl_lock);
++}
++
++static struct dpmaif_drv_ops *mtk_dpmaif_get_drv_ops(u32 hw_ver)
++{
++	struct dpmaif_drv_ops_desc *p_drv_ops;
++	unsigned char i;
++
++	for (i = 0; (p_drv_ops = &dpmaif_drv_ops_tbl[i]) && p_drv_ops && p_drv_ops->drv_ops; i++)
++		if (p_drv_ops->hw_ver == hw_ver)
++			return p_drv_ops->drv_ops;
++
++	return NULL;
++}
++
++static int mtk_dpmaif_drv_res_init(struct mtk_dpmaif_ctlb *dcb)
++{
++	dcb->drv_info = devm_kzalloc(DCB_TO_DEV(dcb), sizeof(*dcb->drv_info), GFP_KERNEL);
++	if (!dcb->drv_info)
++		return -ENOMEM;
++
++	dcb->drv_info->mdev = DCB_TO_MDEV(dcb);
++	dcb->drv_info->drv_ops = mtk_dpmaif_get_drv_ops(DPMAIF_GET_HW_VER(dcb));
++	if (!dcb->drv_info->drv_ops) {
++		dev_err((DCB_TO_MDEV(dcb))->dev,
++			"Unsupported mdev, hw_ver=0x%x\n", DPMAIF_GET_HW_VER(dcb));
++		devm_kfree(DCB_TO_DEV(dcb), dcb->drv_info);
++		return -EFAULT;
++	}
++
++	dcb->drv_info->drv_ops->init(dcb->drv_info, NULL);
++	dcb->rxq_cnt = dcb->drv_info->cfg->rx_cfg.rxq_cnt;
++	dcb->txq_cnt = dcb->drv_info->cfg->tx_cfg.txq_cnt;
++
++	return 0;
++}
++
++static void mtk_dpmaif_drv_res_exit(struct mtk_dpmaif_ctlb *dcb)
++{
++	devm_kfree(DCB_TO_DEV(dcb), dcb->drv_info);
++}
++
++static void mtk_dpmaif_irq_tx_done(struct mtk_dpmaif_ctlb *dcb, unsigned int q_mask)
++{
++	unsigned int ulq_done;
++	int drb_rd_idx;
++	int i;
++
++	for (i = 0; i < dcb->drv_info->cfg->tx_cfg.txq_cnt; i++) {
++		ulq_done = q_mask & BIT(i);
++		if (!ulq_done)
++			continue;
++
++		drb_rd_idx = dcb->drv_info->drv_ops->get_ring_idx(dcb->drv_info,
++								  DPMAIF_DRB_RIDX, i);
++		if (unlikely(drb_rd_idx < 0)) {
++			dev_err((DCB_TO_MDEV(dcb))->dev,
++				"Failed to read txq%u drb_rd_idx, ret=%d\n",
++				i, drb_rd_idx);
++			mtk_dpmaif_common_err_handle(dcb, true);
++			break;
++		}
++
++		dcb->txqs[i].drb_rd_idx = drb_rd_idx;
++		queue_delayed_work(dcb->tx_done_wq,
++				   &dcb->txqs[i].tx_done_work,
++				   msecs_to_jiffies(0));
++	}
++}
++
++static void mtk_dpmaif_irq_rx_done(struct mtk_dpmaif_ctlb *dcb, unsigned int q_id)
++{
++	struct dpmaif_rxq *rxq;
++	int pit_widx;
++
++	rxq = &dcb->rxqs[q_id];
++	__pm_stay_awake(rxq->ws);
++
++	pit_widx = dcb->drv_info->drv_ops->get_ring_idx(dcb->drv_info, DPMAIF_PIT_WIDX, q_id);
++	if (unlikely(pit_widx < 0)) {
++		dev_err((DCB_TO_MDEV(dcb))->dev,
++			"Failed to read rxq%u hw pit_wr_idx, ret=%d\n",
++			q_id, pit_widx);
++		mtk_dpmaif_common_err_handle(dcb, true);
++		return;
++	}
++
++	rxq->pit_wr_idx = pit_widx;
++	napi_schedule(&rxq->napi);
++}
++
++static void mtk_dpmaif_irq_pit_len_err(struct mtk_dpmaif_ctlb *dcb, unsigned int q_id)
++{
++	dcb->rxqs[q_id].pit_cnt_err_intr_set = true;
++}
++
++static int mtk_dpmaif_irq_handle(int irq_id, void *data)
++{
++	struct dpmaif_drv_intr_info intr_info;
++	struct dpmaif_irq_param *irq_param;
++	struct dpmaif_bat_ring *bat_ring;
++	struct mtk_dpmaif_ctlb *dcb;
++	int bat_id;
++	int ret;
++	int i;
++
++	irq_param = data;
++	dcb = irq_param->dcb;
++
++	if (unlikely(dcb->dpmaif_state != DPMAIF_STATE_PWRON)) {
++		dev_err((DCB_TO_MDEV(dcb))->dev, "Invalid parameter, unexpected dpmaif irq\n");
++		goto out;
++	}
++
++	memset(&intr_info, 0x00, sizeof(struct dpmaif_drv_intr_info));
++	ret = mtk_dpmaif_drv_intr_handle(dcb->drv_info, &intr_info, irq_param->idx);
++	if (ret < 0) {
++		dev_err((DCB_TO_MDEV(dcb))->dev, "Failed to get dpmaif drv irq info\n");
++		goto clean_drv_irq_info;
++	}
++
++	for (i = 0; i < intr_info.intr_cnt; i++) {
++		switch (intr_info.intr_types[i]) {
++		case DPMAIF_INTR_UL_DONE:
++			mtk_dpmaif_irq_tx_done(dcb, intr_info.intr_queues[i]);
++			break;
++		case DPMAIF_INTR_DL_BATCNT_LEN_ERR:
++			bat_id = intr_info.intr_queues[i];
++			bat_ring = &dcb->bat_infos[bat_id].normal_bat_ring;
++			bat_ring->bat_cnt_err_intr_set = true;
++			mtk_dpmaif_task_wakeup(&dcb->bat_infos[bat_id].task_ctlb);
++			break;
++		case DPMAIF_INTR_DL_PITCNT_LEN_ERR:
++			mtk_dpmaif_irq_pit_len_err(dcb, intr_info.intr_queues[i]);
++			break;
++		case DPMAIF_INTR_DL_DONE:
++			mtk_dpmaif_irq_rx_done(dcb, intr_info.intr_queues[i]);
++			break;
++		case DPMAIF_INTR_TRAS_SYNC:
++			break;
++		default:
++			break;
++		}
++	}
++
++clean_drv_irq_info:
++	mtk_pci_clear_irq(DCB_TO_MDEV(dcb), irq_param->dev_irq_id);
++	mtk_pci_unmask_irq(DCB_TO_MDEV(dcb), irq_param->dev_irq_id);
++out:
++	return IRQ_HANDLED;
++}
++
++static int mtk_dpmaif_irq_init(struct mtk_dpmaif_ctlb *dcb)
++{
++	unsigned char irq_cnt = dcb->drv_info->cfg->intr_cfg.irq_cnt;
++	struct dpmaif_irq_param *irq_param;
++	enum mtk_irq_src irq_src;
++	int i, j;
++	int ret;
++
++	dcb->irq_params = devm_kcalloc(DCB_TO_DEV(dcb), irq_cnt, sizeof(*irq_param), GFP_KERNEL);
++	if (!dcb->irq_params)
++		return -ENOMEM;
++
++	for (i = 0; i < irq_cnt; i++) {
++		irq_param = &dcb->irq_params[i];
++		irq_param->idx = i;
++		irq_param->dcb = dcb;
++		irq_src = dcb->drv_info->cfg->intr_cfg.irqs[i].id;
++		irq_param->dpmaif_irq_src = irq_src;
++		irq_param->dev_irq_id = mtk_pci_get_irq_id(DCB_TO_MDEV(dcb), irq_src);
++		if (irq_param->dev_irq_id < 0) {
++			dev_err((DCB_TO_MDEV(dcb))->dev,
++				"Failed to allocate irq id, irq_src=%d\n", irq_src);
++			ret = -EINVAL;
++			goto unregister_irq;
++		}
++
++		ret = mtk_pci_register_irq(DCB_TO_MDEV(dcb), irq_param->dev_irq_id,
++					   mtk_dpmaif_irq_handle, irq_param);
++		if (ret < 0) {
++			dev_err((DCB_TO_MDEV(dcb))->dev,
++				"Failed to register irq, irq_src=%d\n", irq_src);
++			goto unregister_irq;
++		}
++		irq_param->dev_virq_id = mtk_pci_get_virq_id(DCB_TO_MDEV(dcb),
++							     irq_param->dev_irq_id);
++	}
++
++	/* HW layer default mask dpmaif interrupt. */
++	dcb->irq_enabled = false;
++
++	return 0;
++
++unregister_irq:
++	for (j = i - 1; j >= 0; j--) {
++		irq_param = &dcb->irq_params[j];
++		mtk_pci_unregister_irq(DCB_TO_MDEV(dcb), irq_param->dev_irq_id);
++	}
++
++	devm_kfree(DCB_TO_DEV(dcb), dcb->irq_params);
++
++	return ret;
++}
++
++static int mtk_dpmaif_irq_exit(struct mtk_dpmaif_ctlb *dcb)
++{
++	unsigned char irq_cnt = dcb->drv_info->cfg->intr_cfg.irq_cnt;
++	struct dpmaif_irq_param *irq_param;
++	int i;
++
++	for (i = 0; i < irq_cnt; i++) {
++		irq_param = &dcb->irq_params[i];
++		mtk_pci_unregister_irq(DCB_TO_MDEV(dcb), irq_param->dev_irq_id);
++	}
++
++	devm_kfree(DCB_TO_DEV(dcb), dcb->irq_params);
++
++	return 0;
++}
++
++static int mtk_dpmaif_port_cfg(struct mtk_dpmaif_ctlb *dcb)
++{
++	struct mtk_data_trans_info *trans_info = &dcb->data_blk->trans_info;
++	struct dpmaif_drv_cfg *cfg = dcb->drv_info->cfg;
++	struct dpmaif_rxq *rxq;
++	int i;
++
++	memset(trans_info, 0x00, sizeof(struct mtk_data_trans_info));
++
++	trans_info->txq_cnt = cfg->tx_cfg.txq_cnt;
++	trans_info->rxq_cnt = cfg->rx_cfg.rxq_cnt;
++	trans_info->max_mtu = cfg->rx_cfg.mtu;
++
++	for (i = 0; i < trans_info->rxq_cnt; i++) {
++		rxq = &dcb->rxqs[i];
++		dcb->napi[i] = &rxq->napi;
++	}
++	trans_info->napis = dcb->napi;
++
++	return 0;
++}
++
++static int mtk_dpmaif_hw_init(struct mtk_dpmaif_ctlb *dcb)
++{
++	unsigned int bat_ring_num = dcb->drv_info->cfg->rx_cfg.bat_ring_num;
++	struct dpmaif_drv_cfg *cfg = dcb->drv_info->cfg;
++	struct dpmaif_bat_ring *bat_ring;
++	unsigned int bat_reload_cnt;
++	struct dpmaif_rxq *rxq;
++	struct dpmaif_txq *txq;
++	int ret, i;
++
++	for (i = 0; i < bat_ring_num; i++) {
++		bat_ring = &dcb->bat_infos[i].normal_bat_ring;
++		bat_reload_cnt = atomic_read(&bat_ring->to_reload_cnt);
++		mtk_dpmaif_reload_rx_buff(dcb, bat_ring, bat_reload_cnt);
++		if (!atomic_read(&bat_ring->reload_cnt)) {
++			dev_err((DCB_TO_MDEV(dcb))->dev, "Failed to reload normal bat%d buf\n", i);
++			return -ENOMEM;
++		}
++
++		cfg->rx_cfg.bats[i].bat_base = bat_ring->bat_dma_addr;
++		cfg->rx_cfg.bats[i].buf_size = bat_ring->buf_size;
++		cfg->rx_cfg.bats[i].real_reload_cnt = atomic_read(&bat_ring->reload_cnt);
++	}
++
++	for (i = 0; i < cfg->rx_cfg.rxq_cnt; i++) {
++		rxq = &dcb->rxqs[i];
++		cfg->rx_cfg.rxqs[i].pit_base = rxq->pit_dma_addr;
++	}
++
++	for (i = 0; i < cfg->tx_cfg.txq_cnt; i++) {
++		txq = &dcb->txqs[i];
++		cfg->tx_cfg.txqs[i].drb_base = txq->drb_dma_addr;
++	}
++
++	ret = dcb->drv_info->drv_ops->init(dcb->drv_info, NULL);
++	if (ret < 0)
++		dev_err((DCB_TO_MDEV(dcb))->dev, "Failed to initialize dpmaif hw\n");
++
++	for (i = 0; i < bat_ring_num; i++) {
++		bat_ring = &dcb->bat_infos[i].normal_bat_ring;
++		atomic_sub(cfg->rx_cfg.bats[i].real_reload_cnt, &bat_ring->reload_cnt);
++	}
++	return ret;
++}
++
++static int mtk_dpmaif_start(struct mtk_md_dev *mdev)
++{
++	struct mtk_dpmaif_ctlb *dcb = ((struct mtk_data_blk *)(mdev->data_blk))->dcb;
++	int ret;
++
++	if (dcb->dpmaif_state == DPMAIF_STATE_PWRON) {
++		dev_warn((DCB_TO_MDEV(dcb))->dev, "Invalid parameters, dpmaif_state in PWRON\n");
++		ret = -EINVAL;
++		goto out;
++	}
++
++	/* Initialize dpmaif hw. */
++	ret = mtk_dpmaif_hw_init(dcb);
++	if (ret < 0) {
++		dev_err((DCB_TO_MDEV(dcb))->dev, "Failed to initialize dpmaif hw\n");
++		goto out;
++	}
++
++	/* Initialize and run all tx services. */
++	ret = mtk_dpmaif_tx_srvs_start(dcb);
++	if (ret) {
++		dev_warn((DCB_TO_MDEV(dcb))->dev, "Failed to start all tx srvs\n");
++		goto out;
++	}
++
++	dcb->dpmaif_state = DPMAIF_STATE_PWRON;
++	dcb->dpmaif_sw_reset = false;
++	mtk_dpmaif_disable_irq(dcb);
++
++	return 0;
++out:
++	return ret;
++}
++
++static void mtk_dpmaif_sw_reset(struct mtk_dpmaif_ctlb *dcb)
++{
++	if (!dcb->dpmaif_sw_reset) {
++		dcb->dpmaif_sw_reset = true;
++		mtk_dpmaif_tx_res_reset(dcb);
++		mtk_dpmaif_rx_res_reset(dcb);
++		mtk_dpmaif_bat_res_reset(dcb);
++		mtk_dpmaif_tx_vqs_reset(dcb);
++	}
++}
++
++static int mtk_dpmaif_stop(struct mtk_md_dev *mdev)
++{
++	struct mtk_dpmaif_ctlb *dcb = ((struct mtk_data_blk *)(mdev->data_blk))->dcb;
++
++	if (dcb->dpmaif_state == DPMAIF_STATE_PWROFF)
++		goto out;
++
++	dcb->dpmaif_state = DPMAIF_STATE_PWROFF;
++
++	/* Stop all tx service. */
++	mtk_dpmaif_tx_srvs_stop(dcb);
++
++	mutex_lock(&dcb->trans_ctl_lock);
++
++	/* Stop dpmaif tx/rx handle. */
++	mtk_dpmaif_trans_ctl(dcb, false);
++
++	mutex_unlock(&dcb->trans_ctl_lock);
++
++out:
++	return 0;
++}
++
++static void mtk_dpmaif_clear(struct mtk_md_dev *mdev)
++{
++	struct mtk_dpmaif_ctlb *dcb = ((struct mtk_data_blk *)(mdev->data_blk))->dcb;
++
++	mtk_dpmaif_sw_reset(dcb);
++}
++
++static int mtk_dpmaif_sw_init(struct mtk_md_dev *mdev)
++{
++	struct mtk_data_blk *data_blk = mdev->data_blk;
++	struct mtk_dpmaif_ctlb *dcb;
++	int ret;
++
++	dcb = devm_kzalloc(data_blk->mdev->dev, sizeof(*dcb), GFP_KERNEL);
++	if (!dcb)
++		return -ENOMEM;
++
++	data_blk->dcb = dcb;
++	dcb->data_blk = data_blk;
++	dcb->dpmaif_state = DPMAIF_STATE_PWROFF;
++	dcb->dpmaif_sw_reset = false;
++	mutex_init(&dcb->trans_ctl_lock);
++
++	ret = mtk_dpmaif_drv_res_init(dcb);
++	if (ret < 0)
++		goto free_dcb;
++
++	ret = mtk_dpmaif_sw_res_init(dcb);
++	if (ret < 0)
++		goto drv_res_exit;
++
++	ret = mtk_dpmaif_tx_srvs_init(dcb);
++	if (ret < 0)
++		goto sw_res_exit;
++
++	ret = mtk_dpmaif_port_cfg(dcb);
++	if (ret < 0)
++		goto tx_srvs_exit;
++
++	ret = mtk_dpmaif_irq_init(dcb);
++	if (ret < 0)
++		goto tx_srvs_exit;
++
++	return 0;
++
++tx_srvs_exit:
++	mtk_dpmaif_tx_srvs_exit(dcb);
++sw_res_exit:
++	mtk_dpmaif_sw_res_exit(dcb);
++drv_res_exit:
++	mtk_dpmaif_drv_res_exit(dcb);
++free_dcb:
++	devm_kfree(DCB_TO_DEV(dcb), dcb);
++
++	return ret;
++}
++
++static int mtk_dpmaif_sw_exit(struct mtk_md_dev *mdev)
++{
++	struct mtk_dpmaif_ctlb *dcb = ((struct mtk_data_blk *)(mdev->data_blk))->dcb;
++
++	if (!dcb) {
++		pr_err("Invalid parameter\n");
++		return -EINVAL;
++	}
++
++	mtk_dpmaif_irq_exit(dcb);
++	mtk_dpmaif_tx_srvs_exit(dcb);
++	mtk_dpmaif_sw_res_exit(dcb);
++	mtk_dpmaif_drv_res_exit(dcb);
++
++	devm_kfree(DCB_TO_DEV(dcb), dcb);
++	return 0;
++}
++
++static int mtk_dpmaif_poll_rx_pit(struct dpmaif_rxq *rxq)
++{
++	struct mtk_dpmaif_ctlb *dcb = rxq->dcb;
++	unsigned int sw_rd_idx, hw_wr_idx;
++	unsigned int pit_cnt;
++	int ret;
++
++	sw_rd_idx = rxq->pit_rd_idx;
++	ret = dcb->drv_info->drv_ops->get_ring_idx(dcb->drv_info, DPMAIF_PIT_WIDX, rxq->id);
++	if (unlikely(ret < 0)) {
++		dev_err((DCB_TO_MDEV(dcb))->dev,
++			"Failed to read rxq%u hw pit_wr_idx, ret=%d\n",
++			rxq->id, ret);
++		mtk_dpmaif_common_err_handle(dcb, true);
++		goto out;
++	}
++
++	hw_wr_idx = ret;
++	pit_cnt = mtk_dpmaif_ring_buf_readable(rxq->pit_cnt, sw_rd_idx, hw_wr_idx);
++	rxq->pit_wr_idx = hw_wr_idx;
++
++	return pit_cnt;
++
++out:
++	return ret;
++}
++
++static int mtk_dpmaif_pit_bid_check(struct dpmaif_rxq *rxq, unsigned int cur_bid)
++{
++	union dpmaif_bat_record *cur_bat_record;
++	struct mtk_dpmaif_ctlb *dcb = rxq->dcb;
++	struct dpmaif_bat_ring *bat_ring;
++
++	bat_ring = &rxq->dcb->bat_infos[rxq->bat_ring_id].normal_bat_ring;
++	cur_bat_record = bat_ring->sw_record_base + cur_bid;
++
++	if (unlikely(!cur_bat_record->normal.skb || cur_bid >= bat_ring->bat_cnt)) {
++		dev_err((DCB_TO_MDEV(dcb))->dev,
++			"Invalid parameter rxq%u bat%u, bid=%u, bat_cnt=%u\n",
++			rxq->id, bat_ring->id, cur_bid, bat_ring->bat_cnt);
++
++		return -DATA_FLOW_CHK_ERR;
++	}
++
++	rxq->pit_bid = cur_bid;
++
++	return 0;
++}
++
++static int mtk_dpmaif_rx_set_data_to_skb(struct dpmaif_rxq *rxq, struct dpmaif_pd_pit *pit_info,
++					 struct dpmaif_rx_record *rx_record)
++{
++	struct dpmaif_bat_ring *bat_ring = &rxq->dcb->bat_infos[rxq->bat_ring_id].normal_bat_ring;
++	struct mtk_dpmaif_ctlb *dcb = rxq->dcb;
++	unsigned long long data_dma_base_addr;
++	union dpmaif_bat_record *bat_record;
++	unsigned int data_len;
++	struct sk_buff *new_skb;
++	int data_offset;
++
++	bat_record = bat_ring->sw_record_base + rxq->rx_info->pit_pd_cur_bid;
++	new_skb = bat_record->normal.skb;
++	data_dma_base_addr = (unsigned long long)bat_record->normal.data_dma_addr;
++
++	dma_unmap_single(DCB_TO_DEV(dcb), bat_record->normal.data_dma_addr,
++			 bat_record->normal.data_len, DMA_FROM_DEVICE);
++
++	/* Calculate data address and data length. */
++	data_offset = (int)(rxq->rx_info->pit_pd_dma_addr - data_dma_base_addr);
++	data_len = rxq->rx_info->pit_pd_data_len;
++
++	/* Check and rebuild skb. */
++	new_skb->len = 0;
++	if (unlikely((new_skb->tail + data_offset + data_len) > new_skb->end)) {
++		dev_err((DCB_TO_MDEV(dcb))->dev,
++			"Invalid packet(%u/%u):data_len=%u,offset=0x%llx-0x%llx,skb(%llx,%llx,%u,%u)\n",
++			rxq->pit_rd_idx, rxq->rx_info->pit_pd_cur_bid,
++			data_len, rxq->rx_info->pit_pd_dma_addr,
++			data_dma_base_addr, (u64)new_skb->head,
++			(u64)new_skb->data, (unsigned int)new_skb->tail,
++			(unsigned int)new_skb->end);
++
++		return -DATA_FLOW_CHK_ERR;
++	}
++
++	skb_put(new_skb, data_offset + data_len);
++	skb_pull(new_skb, data_offset);
++
++	__skb_queue_tail(&rx_record->rx_list, new_skb);
++	rx_record->cur_skb = new_skb;
++
++	bat_record->normal.skb = NULL;
++
++	return 0;
++}
++
++static void mtk_dpmaif_bat_ring_set_mask(struct mtk_dpmaif_ctlb *dcb,
++					 unsigned int bat_idx, int bat_ring_id)
++{
++	struct dpmaif_bat_ring *bat_ring;
++
++	bat_ring = &dcb->bat_infos[bat_ring_id].normal_bat_ring;
++
++	set_bit(bat_idx, bat_ring->mask_tbl);
++
++	atomic_inc(&bat_ring->bat_stats);
++	atomic_inc(&bat_ring->to_reload_cnt);
++}
++
++static int mtk_dpmaif_get_rx_pkt(struct dpmaif_rxq *rxq, struct dpmaif_pd_pit *pit_info,
++				 struct dpmaif_rx_record *rx_record)
++{
++	struct mtk_dpmaif_ctlb *dcb = rxq->dcb;
++	int ret;
++
++	/* Check the bid in pit information, don't exceed bat size. */
++	ret = mtk_dpmaif_pit_bid_check(rxq, rxq->rx_info->pit_pd_cur_bid);
++	if (unlikely(ret < 0))
++		goto out;
++
++	/* Receive data from bat and save to rx_record. */
++	ret = mtk_dpmaif_rx_set_data_to_skb(rxq, pit_info, rx_record);
++	if (unlikely(ret < 0))
++		goto out;
++
++	/* Make sure saving data from bat is completed. */
++	wmb();
++
++	/* Set bat mask that have been received. */
++	mtk_dpmaif_bat_ring_set_mask(dcb, rxq->rx_info->pit_pd_cur_bid, rxq->bat_ring_id);
++
++	return 0;
++
++out:
++	return ret;
++}
++
++static int mtk_dpmaif_update_rx_skb_info(struct sk_buff *skb,
++					 struct dpmaif_rxq *rxq, struct dpmaif_rx_record *rx_record)
++{
++	union mtk_data_pkt_info *pkt_info = DATA_SKB_CB(skb);
++	unsigned int gso_type = 0;
++	unsigned short l4_proto;
++	int inner_offset;
++	__be16 frag_off;
++	u8 packet_type;
++	u8 nexthdr;
++
++	skb_reset_network_header(skb);
++	skb_reset_mac_header(skb);
++
++	skb_set_hash(skb, rxq->rx_info->pit_msg_hash, PKT_HASH_TYPE_L4);
++	skb_record_rx_queue(skb, rxq->id);
++
++	if (rxq->rx_info->pit_msg_checksum == CS_RESULT_PASS) {
++		skb->ip_summed = CHECKSUM_UNNECESSARY;
++		if (rxq->rx_info->pit_msg_ip == DPMAIF_PIT_IPV4)
++			skb->protocol = htons(ETH_P_IP);
++		else
++			skb->protocol = htons(ETH_P_IPV6);
++
++		if (rxq->rx_info->pit_msg_pro == DPMAIF_PIT_TCP) {
++			gso_type = SKB_GSO_TCPV4;
++			rx_record->ip_protocol = IPPROTO_TCP;
++		} else if (rxq->rx_info->pit_msg_pro == DPMAIF_PIT_UDP) {
++			rx_record->ip_protocol = IPPROTO_UDP;
++		} else {
++			goto out;
++		}
++	} else {
++		packet_type = skb->data[0] & 0xF0;
++		skb->ip_summed = CHECKSUM_NONE;
++		if (packet_type == IPV4_VERSION) {
++			skb->protocol = htons(ETH_P_IP);
++			l4_proto = ((struct iphdr *)skb->data)->protocol;
++			rx_record->ip_protocol = l4_proto;
++			if (l4_proto == IPPROTO_TCP)
++				gso_type = SKB_GSO_TCPV4;
++			else
++				goto out;
++
++		} else if (packet_type == IPV6_VERSION) {
++			skb->protocol = htons(ETH_P_IPV6);
++			nexthdr = ((struct ipv6hdr *)skb->data)->nexthdr;
++			/* Now skip over extension headers. */
++			inner_offset = ipv6_skip_exthdr(skb, sizeof(struct ipv6hdr),
++							&nexthdr, &frag_off);
++			if (unlikely(inner_offset < 0))
++				goto out;
++
++			rx_record->ip_protocol = nexthdr;
++			if (nexthdr == IPPROTO_TCP)
++				gso_type = SKB_GSO_TCPV6;
++			else
++				goto out;
++
++		} else {
++			dev_err((DCB_TO_MDEV(rxq->dcb))->dev,
++				"Invalid packet type, value=%u\n", packet_type);
++			goto free_skb;
++		}
++	}
++
++out:
++	pkt_info->rx.ch_id = rxq->rx_info->pit_msg_chnl_id;
++	pkt_info->rx.q_id = rxq->id;
++
++	return 0;
++
++free_skb:
++	dev_kfree_skb_any(skb);
++
++	return -DATA_HW_UNK_PKT;
++}
++
++static int mtk_dpmaif_rx_skb(struct dpmaif_rxq *rxq, struct dpmaif_rx_record *rx_record)
++{
++	struct sk_buff *new_skb;
++	int ret;
++
++	if (unlikely(rxq->rx_info->pit_msg_dp || rxq->rx_info->pit_msg_err)) {
++		__skb_queue_purge(&rx_record->rx_list);
++		return 0;
++	}
++
++	do {
++		/* Logically, the rx_list should contain at least one skb. */
++		new_skb = __skb_dequeue(&rx_record->rx_list);
++		ret = mtk_dpmaif_update_rx_skb_info(new_skb, rxq, rx_record);
++		if (unlikely(ret < 0))
++			continue;
++
++		/* Send skb to data port. */
++		/* Data would be sent to network stack here */
++	} while (!skb_queue_empty(&rx_record->rx_list));
++
++	return ret;
++}
++
++static void mtk_dpmaif_recycle_pit_internal(struct dpmaif_rxq *rxq, unsigned short pit_rel_cnt)
++{
++	unsigned short old_sw_rel_idx, new_sw_rel_idx, old_hw_wr_idx;
++	struct mtk_dpmaif_ctlb *dcb = rxq->dcb;
++
++	old_sw_rel_idx = rxq->pit_rel_rd_idx;
++	new_sw_rel_idx = old_sw_rel_idx + pit_rel_cnt;
++	old_hw_wr_idx = rxq->pit_wr_idx;
++
++	/* pit_rel_rd_idx should not exceed pit_wr_idx. */
++	if (old_hw_wr_idx < old_sw_rel_idx) {
++		if (new_sw_rel_idx >= rxq->pit_cnt)
++			new_sw_rel_idx = new_sw_rel_idx - rxq->pit_cnt;
++	}
++
++	atomic_add(pit_rel_cnt, &rxq->pit_rel_cnt);
++	rxq->pit_rel_rd_idx = new_sw_rel_idx;
++
++	if (atomic_read(&rxq->pit_rel_cnt) >= rxq->pit_burst_rel_cnt)
++		mtk_dpmaif_task_wakeup(&dcb->db_task_ctlb);
++}
++
++static int mtk_dpmaif_recycle_rx_ring(struct dpmaif_rxq *rxq)
++{
++	unsigned int pit_rel_cnt;
++
++	pit_rel_cnt = mtk_dpmaif_ring_buf_releasable(rxq->pit_cnt,
++						     rxq->pit_rel_rd_idx,
++						     rxq->pit_rd_idx);
++
++	if (unlikely(pit_rel_cnt > rxq->pit_cnt)) {
++		dev_err((DCB_TO_MDEV(rxq->dcb))->dev,
++			"Invalid rxq%u pit release count, %u>%u\n",
++			rxq->id, pit_rel_cnt, rxq->pit_cnt);
++		mtk_dpmaif_common_err_handle(rxq->dcb, false);
++		return -DATA_FLOW_CHK_ERR;
++	}
++
++	mtk_dpmaif_recycle_pit_internal(rxq, pit_rel_cnt);
++	mtk_dpmaif_task_wakeup(&rxq->dcb->bat_infos[rxq->bat_ring_id].task_ctlb);
++
++	return 0;
++}
++
++#define DPMAIF_PIT_SEQ_CHECK_FAIL_CNT 2500
++
++static int mtk_dpmaif_rx_data_collect_internal(struct dpmaif_rxq *rxq, int pit_cnt,
++					       unsigned int *pkt_cnt)
++{
++	unsigned long time_limit = jiffies + msecs_to_jiffies(2);
++	struct dpmaif_rx_record *rx_record = &rxq->rx_record;
++	unsigned int recv_pkt_cnt = 0, pit_rd_cnt = 0;
++	struct mtk_dpmaif_ctlb *dcb = rxq->dcb;
++	struct dpmaif_pd_pit *pit_info;
++	struct dpmaif_rx_info rx_info;
++	unsigned int rx_cnt, cur_pit;
++	int ret = 0;
++
++	cur_pit = rxq->pit_rd_idx;
++	for (rx_cnt = 0; rx_cnt < pit_cnt; rx_cnt++) {
++		if (!rx_record->msg_pit_recv && time_after_eq(jiffies, time_limit)) {
++			ret = -DATA_DL_ONCE_MORE;
++			break;
++		}
++
++		/* Pit sequence check. */
++		pit_info = rxq->pit_base + cur_pit;
++		ret = dcb->drv_info->drv_ops->get_rx_info(pit_info, &rx_info,
++						rxq->pit_seq_expect, rxq->id);
++		if (likely(!ret)) {
++			rxq->pit_seq_expect++;
++			if (rxq->pit_seq_expect >= rxq->pit_seq_max)
++				rxq->pit_seq_expect = 0;
++
++			rxq->pit_seq_fail_cnt = 0;
++		} else {
++			rxq->pit_seq_fail_cnt++;
++			if (rxq->pit_seq_fail_cnt >= DPMAIF_PIT_SEQ_CHECK_FAIL_CNT) {
++				rxq->pit_seq_fail_cnt = 0;
++				return -DATA_FLOW_CHK_ERR;
++			}
++			break;
++		}
++		rxq->rx_info = &rx_info;
++
++		/* Parse message pit. */
++		if (rx_info.msg_pit) {
++			if (unlikely(rx_record->msg_pit_recv)) {
++				__skb_queue_purge(&rx_record->rx_list);
++				memset(rx_record, 0x00, sizeof(*rx_record));
++				__skb_queue_head_init(&rx_record->rx_list);
++				dev_err((DCB_TO_MDEV(dcb))->dev,
++					"Invalid pit, rxq%u two continuous message pit\n",
++					rxq->id);
++				return -DATA_FLOW_CHK_ERR;
++			}
++
++			rx_record->msg_pit_recv = true;
++
++		} else {
++			/* Parse normal pit. */
++			ret = mtk_dpmaif_get_rx_pkt(rxq, pit_info, rx_record);
++
++			if (unlikely(ret < 0)) {
++				__skb_queue_purge(&rx_record->rx_list);
++
++				dev_err((DCB_TO_MDEV(dcb))->dev,
++					"Invalid packet, error payload, rxq%u pit_idx=%d\n",
++					rxq->id, cur_pit);
++				return ret;
++			}
++
++			/* Last one pit of a packet. */
++			if (!rx_info.pit_continue) {
++				mtk_dpmaif_rx_skb(rxq, rx_record);
++				memset(rx_record, 0x00, sizeof(*rx_record));
++				__skb_queue_head_init(&rx_record->rx_list);
++				recv_pkt_cnt++;
++			}
++		}
++
++		cur_pit = mtk_dpmaif_ring_buf_get_next_idx(rxq->pit_cnt, cur_pit);
++		rxq->pit_rd_idx = cur_pit;
++
++		pit_rd_cnt++;
++		/* Recycle pit/bat in batches (rx packet budget). */
++		if (pit_rd_cnt == DPMAIF_PIT_CNT_UPDATE_THRESHOLD) {
++			atomic_add(DPMAIF_PIT_CNT_UPDATE_THRESHOLD, &rxq->pit_stats);
++			mtk_dpmaif_recycle_rx_ring(rxq);
++			pit_rd_cnt = 0;
++		}
++	}
++
++	if (pit_rd_cnt) {
++		atomic_add(pit_rd_cnt, &rxq->pit_stats);
++		mtk_dpmaif_recycle_rx_ring(rxq);
++	}
++
++	*pkt_cnt = recv_pkt_cnt;
++
++	return ret;
++}
++
++static int mtk_dpmaif_rx_data_collect(struct dpmaif_rxq *rxq, unsigned int *pkt_cnt)
++{
++	struct mtk_dpmaif_ctlb *dcb = rxq->dcb;
++	unsigned int pit_cnt;
++	int ret;
++
++	ret = mtk_dpmaif_poll_rx_pit(rxq);
++	if (unlikely(ret < 0))
++		return ret;
++
++	pit_cnt = ret;
++
++	/* Collect rx packets. */
++	if (likely(pit_cnt > 0)) {
++		ret = mtk_dpmaif_rx_data_collect_internal(rxq, pit_cnt, pkt_cnt);
++		if (ret <= -DATA_DL_ONCE_MORE) {
++			ret = -DATA_DL_ONCE_MORE;
++		} else if (ret <= -DATA_ERR_STOP_MAX) {
++			ret = -DATA_ERR_STOP_MAX;
++			mtk_dpmaif_common_err_handle(dcb, true);
++		} else {
++			ret = 0;
++		}
++	}
++
++	return ret;
++}
++
++static int mtk_dpmaif_rx_data_collect_more(struct dpmaif_rxq *rxq, int *work_done)
++{
++	unsigned long time_limit = jiffies + msecs_to_jiffies(2);
++	unsigned int total_pkt_cnt = 0, pkt_cnt;
++	int ret = 0;
++
++	do {
++		if (time_after_eq(jiffies, time_limit)) {
++			ret = -DATA_DL_ONCE_MORE;
++			break;
++		}
++
++		pkt_cnt = 0;
++		ret = mtk_dpmaif_rx_data_collect(rxq, &pkt_cnt);
++		total_pkt_cnt += pkt_cnt;
++		if (ret < 0)
++			break;
++	} while (pkt_cnt > 0 && rxq->started);
++
++	*work_done = total_pkt_cnt;
++
++	return ret;
++}
++
++static int mtk_dpmaif_rx_napi_poll(struct napi_struct *napi, int budget)
++{
++	struct dpmaif_rxq *rxq = container_of(napi, struct dpmaif_rxq, napi);
++	struct mtk_dpmaif_ctlb *dcb = rxq->dcb;
++	int work_done = 0;
++	int ret = 0;
++
++	if (likely(rxq->started)) {
++		ret = mtk_dpmaif_rx_data_collect_more(rxq, &work_done);
++
++		if (ret == -DATA_DL_ONCE_MORE) {
++			napi_gro_flush(napi, false);
++			work_done = budget;
++		} else {
++			if (unlikely(ret == -DATA_ERR_STOP_MAX))
++				rxq->started = false;
++			if (work_done > budget)
++				work_done = budget - 1;
++		}
++	}
++
++	if (work_done < budget) {
++		napi_complete_done(napi, work_done);
++		__pm_wakeup_event(rxq->ws, jiffies_to_msecs(HZ));
++		mtk_dpmaif_drv_intr_complete(dcb->drv_info, DPMAIF_INTR_DL_DONE, rxq->id, 0);
++	}
++
++	return work_done;
++}
++
++static int mtk_dpmaif_send_pkt(struct mtk_dpmaif_ctlb *dcb, struct sk_buff *skb)
++{
++	unsigned char vq_id = skb_get_queue_mapping(skb);
++	struct dpmaif_vq *vq;
++	int ret = 0;
++
++	vq = &dcb->tx_vqs[vq_id];
++	if (likely(skb_queue_len(&vq->list) < vq->max_len))
++		skb_queue_tail(&vq->list, skb);
++	else
++		ret = -EBUSY;
++
++	wake_up(&dcb->tx_srvs[vq->srv_id].wait);
++
++	return ret;
++}
++
++static int mtk_dpmaif_send_cmd(struct mtk_dpmaif_ctlb *dcb, struct sk_buff *skb)
++{
++	struct mtk_data_cmd *cmd_info = SKB_TO_CMD(skb);
++
++	if (dcb->dpmaif_state != DPMAIF_STATE_PWRON)
++		return -EINVAL;
++
++	switch (cmd_info->cmd) {
++	case DATA_CMD_TRANS_CTL:
++		mtk_dpmaif_cmd_trans_ctl(dcb, CMD_TO_DATA(cmd_info));
++		break;
++	default:
++		dev_warn((DCB_TO_MDEV(dcb))->dev, "Unknown cmd type=%d\n", cmd_info->cmd);
++		return -EOPNOTSUPP;
++	}
++
++	return 0;
++}
++
++static int mtk_dpmaif_send(struct mtk_data_blk *data_blk, enum mtk_data_type type,
++			   struct sk_buff *skb)
++{
++	struct mtk_dpmaif_ctlb *dcb;
++	int ret;
++
++	if (unlikely(!data_blk || !data_blk->dcb)) {
++		pr_warn("Invalid parameter\n");
++		return -EINVAL;
++	}
++
++	dcb = data_blk->dcb;
++
++	if (unlikely(dcb->dpmaif_state == DPMAIF_STATE_PWROFF))
++		return -EINVAL;
++
++	if (likely(type == DATA_PKT))
++		ret = mtk_dpmaif_send_pkt(dcb, skb);
++	else
++		ret = mtk_dpmaif_send_cmd(dcb, skb);
++
++	return ret;
++}
++
++static struct mtk_data_hif_ops pcie_data_ops = {
++	.init = mtk_dpmaif_sw_init,
++	.exit = mtk_dpmaif_sw_exit,
++	.stop = mtk_dpmaif_stop,
++	.start = mtk_dpmaif_start,
++	.clear = mtk_dpmaif_clear,
++	.poll = mtk_dpmaif_rx_napi_poll,
++	.send = mtk_dpmaif_send,
++};
++
++int mtk_pcie_data_init(struct mtk_md_dev *mdev)
++{
++	return mtk_data_init(mdev, &pcie_data_ops);
++}
++
++int mtk_pcie_data_exit(struct mtk_md_dev *mdev)
++{
++	return mtk_data_exit(mdev);
++}
+diff --git a/drivers/net/wwan/t9xx/pcie/mtk_dpmaif.h b/drivers/net/wwan/t9xx/pcie/mtk_dpmaif.h
+new file mode 100644
+index 000000000000..e7e2f333141c
+--- /dev/null
++++ b/drivers/net/wwan/t9xx/pcie/mtk_dpmaif.h
+@@ -0,0 +1,14 @@
++/* SPDX-License-Identifier: GPL-2.0-only
++ *
++ * Copyright (c) 2022, MediaTek Inc.
++ */
++
++#ifndef __MTK_DPMAIF_H__
++#define __MTK_DPMAIF_H__
++
++#include "mtk_dev.h"
++
++int mtk_pcie_data_init(struct mtk_md_dev *mdev);
++int mtk_pcie_data_exit(struct mtk_md_dev *mdev);
++
++#endif /* __MTK_DPMAIF_H__ */
+diff --git a/drivers/net/wwan/t9xx/pcie/mtk_dpmaif_drv.c b/drivers/net/wwan/t9xx/pcie/mtk_dpmaif_drv.c
+index 3fd2b33d1199..077600389ab4 100644
+--- a/drivers/net/wwan/t9xx/pcie/mtk_dpmaif_drv.c
++++ b/drivers/net/wwan/t9xx/pcie/mtk_dpmaif_drv.c
+@@ -8,6 +8,7 @@
+ #include <linux/delay.h>
  
  #include "mtk_dev.h"
++#include "mtk_data_plane.h"
+ #include "mtk_dpmaif_drv.h"
+ #include "mtk_dpmaif_reg.h"
+ #include "mtk_pci.h"
+diff --git a/drivers/net/wwan/t9xx/pcie/mtk_dpmaif_drv.h b/drivers/net/wwan/t9xx/pcie/mtk_dpmaif_drv.h
+index 5a68d2431063..b2385478abee 100644
+--- a/drivers/net/wwan/t9xx/pcie/mtk_dpmaif_drv.h
++++ b/drivers/net/wwan/t9xx/pcie/mtk_dpmaif_drv.h
+@@ -256,4 +256,13 @@ static inline int mtk_dpmaif_drv_send_doorbell(struct dpmaif_drv_info *drv_info,
+ 	return drv_info->drv_ops->send_doorbell(drv_info, type, q_id, cnt);
+ }
  
-+#define TRB_SRV_MAX_NUM			(1)
-+#define HW_QUE_NUM			(8)
-+#define TX_GPD_NUM			(16)
-+#define RX_GPD_NUM			(TX_GPD_NUM)
-+#define MIN_GPD_NUM			(2)
-+#define SKB_LIST_MAX_LEN		(16)
-+#define MTU_RSV_ROOM			(0x100)
-+#define TRB_NUM_PER_ROUND		(TX_GPD_NUM)
-+#define TX_BURST_MAX_CNT		(TX_GPD_NUM / 4 + 1)
-+
-+#define HIF_ID(peer_id)			((peer_id) - 1)
-+
-+enum mtk_hif_id {
-+	CLDMA0,
-+	CLDMA1,
-+	CLDMA4,
-+	NR_CLDMA
-+};
-+
-+struct queue_info {
-+	u32 tx_chl;
-+	u32 rx_chl;
-+	enum mtk_hif_id hif_id;
-+	u32 txqno;
-+	u32 rxqno;
-+	u32 tx_mtu;
-+	u32 rx_mtu;
-+	u32 tx_nr_gpds;
-+	u32 rx_nr_gpds;
-+	u32 tx_frag_size;
-+	u32 rx_frag_size;
-+	u8 log_rg_offset;
-+};
-+
-+struct trans_list {
-+	struct sk_buff_head skb_list[HW_QUE_NUM];
-+	u8 tx_burst_cnt[HW_QUE_NUM];
-+};
-+
- struct mtk_ctrl_trans {
- 	struct mtk_ctrl_blk *ctrl_blk;
-+	struct trb_srv *trb_srv[TRB_SRV_MAX_NUM];
-+	struct trans_list trans_list[NR_CLDMA];
-+	void *dev;
-+	struct radix_tree_root queue_tbl;
- 	struct mtk_md_dev *mdev;
-+	int usr_cnt[NR_CLDMA][HW_QUE_NUM];
-+	u32 tx_mtu_cfg[NR_CLDMA][HW_QUE_NUM];
-+	u32 rx_mtu_cfg[NR_CLDMA][HW_QUE_NUM];
-+	atomic_t available;
-+	int queues_cnt;
-+	int srv_cfg[NR_CLDMA][HW_QUE_NUM];
-+	struct queue_info *queue_info;
-+	int queue_info_num;
-+	int trb_srv_num;
-+};
-+
-+struct srv_que {
-+	u32 hif_id;
-+	u32 qno;
-+	struct list_head list;
-+};
-+
-+struct trb_srv {
-+	u32 srv_id;
-+	struct list_head srv_q_list[NR_CLDMA];
-+	struct mtk_ctrl_trans *trans;
-+	wait_queue_head_t trb_waitq;
-+	struct task_struct *trb_thread;
-+};
-+
-+struct mtk_ctrl_info {
-+	struct mtk_ctrl_cfg *ctrl_cfg;
-+	int **srv_cfg;
-+	struct queue_info *queue_info;
-+	u32 queue_info_num;
-+	u32 trb_srv_num;
- };
- 
-+struct mtk_ctrl_info_desc {
++struct dpmaif_drv_ops_desc {
 +	u32 hw_ver;
-+	struct mtk_ctrl_info *ctrl_info;
++	struct dpmaif_drv_ops *drv_ops;
 +};
 +
-+#define ctrl_info_name(NAME)	mtk_ctrl_info_##NAME
++#define drv_ops_name(NAME) dpmaif_drv_ops_##NAME
 +
-+int mtk_trans_ctrl_init(struct mtk_md_dev *mdev);
-+int mtk_trans_ctrl_exit(struct mtk_md_dev *mdev);
++extern struct dpmaif_drv_ops dpmaif_drv_ops_m9xx;
 +
  #endif
+diff --git a/drivers/net/wwan/t9xx/pcie/mtk_dpmaif_ring.c b/drivers/net/wwan/t9xx/pcie/mtk_dpmaif_ring.c
+index a8e183b5f4ee..701e50bfe8b1 100644
+--- a/drivers/net/wwan/t9xx/pcie/mtk_dpmaif_ring.c
++++ b/drivers/net/wwan/t9xx/pcie/mtk_dpmaif_ring.c
+@@ -14,7 +14,7 @@
+ 
+ #define PIT_PD_DATA_LEN		GENMASK(31, 16) /* Indicates the data length of current packet. */
+ #define PIT_PD_BUF_ID		GENMASK(15, 3) /* The low order of buffer index */
+-#define PIT_PD_BUF_TYPE		BIT(2) /* 0b: normal BAT entry; 1b: fragment BAT entry */
++#define PIT_PD_BUF_TYPE		BIT(2) /* 0b: normal BAT entry */
+ #define PIT_PD_CONT		BIT(1) /* 0b: last entry; 1b: more entry */
+ #define PIT_PD_PKT_TYPE		BIT(0) /* 0b: normal PIT entry; 1b: message PIT entry */
+ 
+diff --git a/drivers/net/wwan/t9xx/pcie/mtk_pci.c b/drivers/net/wwan/t9xx/pcie/mtk_pci.c
+index aec1c5211c70..baac3692f1e3 100644
+--- a/drivers/net/wwan/t9xx/pcie/mtk_pci.c
++++ b/drivers/net/wwan/t9xx/pcie/mtk_pci.c
+@@ -14,6 +14,7 @@
+ #include <linux/module.h>
+ 
+ #include "mtk_dev.h"
++#include "mtk_dpmaif.h"
+ #include "mtk_trans_ctrl.h"
+ #include "mtk_pci.h"
+ #include "mtk_pci_reg.h"
+@@ -776,7 +777,13 @@ static int mtk_pci_dev_init(struct mtk_md_dev *mdev)
+ 	if (ret)
+ 		goto free_fsm;
+ 
++	ret = mtk_pcie_data_init(mdev);
++	if (ret)
++		goto free_ctrl_plane;
++
+ 	return 0;
++free_ctrl_plane:
++	mtk_trans_ctrl_exit(mdev);
+ free_fsm:
+ 	mtk_fsm_exit(mdev);
+ 	return ret;
+@@ -786,6 +793,7 @@ static void mtk_pci_dev_exit(struct mtk_md_dev *mdev)
+ {
+ 	mtk_fsm_evt_submit(mdev, FSM_EVT_DEV_RM, 0, NULL, 0,
+ 			   EVT_MODE_BLOCKING | EVT_MODE_TOHEAD);
++	mtk_pcie_data_exit(mdev);
+ 	mtk_trans_ctrl_exit(mdev);
+ 	mtk_fsm_exit(mdev);
+ }
+diff --git a/drivers/net/wwan/t9xx/pcie/mtk_pci.h b/drivers/net/wwan/t9xx/pcie/mtk_pci.h
+index bb657aa786b6..1e88f9c60a11 100644
+--- a/drivers/net/wwan/t9xx/pcie/mtk_pci.h
++++ b/drivers/net/wwan/t9xx/pcie/mtk_pci.h
+@@ -7,8 +7,7 @@
+ #define __MTK_PCI_H__
+ 
+ #include <linux/pci.h>
+-
+-#include "../mtk_dev.h"
++#include "mtk_dev.h"
+ 
+ enum mtk_irq_src {
+ 	MTK_IRQ_SRC_MIN,
 
 -- 
 2.34.1
