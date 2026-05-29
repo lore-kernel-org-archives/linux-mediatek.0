@@ -4,94 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 055BCCD6E4F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 May 2026 10:18:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EA5ECD6E43
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 May 2026 10:32:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
+	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HtVdZNScTofI8P3tHPj6mAWShd/HrYu5mi6gsoESwBk=; b=xm5CocGX81xi4IGR63O989HIAN
-	V9REAltkGmKZpdikys7a1QGNNE24IztkOaEIoRk1Iv5awYXOQfFvi1gE/bTDWSw14zATWn1pKelMx
-	jNNMyT60S2YCdQgw/sM9u4pD25xOlunZQQyFCfdvDcpS3oX66l81uTWy2X1phs/tFGJiSfUHVl1dF
-	plbQm6XpX1wnTv0IWhxP2+ameQX4jQFgnvL2WohELNO+hXFIwxJguYRs57Cngeh9GyxvvdktBILCM
-	D2ZQS8yfJWlUr+b6htmbzmzLWS7OeYJdynOO+pROZMCZwclm6z1Et1Lk8ldstw8swGtaYdoCRwl2b
-	1kSr3Gbw==;
+	bh=Aybz7TaVb4tRQXBNtyNd3KrreqXCjN1WVw+0NDQbQ+k=; b=YLOK3ddac+ckbLSe8qmATI63yl
+	w6OJn8RlGj5o7MM6VhyfBVuhMBsO4mcTwQF5Q7MVvGLXlK7dzv0pyC5m2FFMs0GTT7WwvxDBBnDaB
+	dUOSPGhUy042bGcbLPeVUP9m5erwZFBjV8j7LvQfBr1lgHAdKjx41HCd4d4YX5uA0TGiFPq8TaKpS
+	3h3YfxCM8+LIgDoK1kga8Wt4V96PQ5O5rvAR0D6J5d2SBkapUHYxI85IXM8ORVWIhbcZDRCXL8C/d
+	tlEsuK61yKHUlLj/juufHydwRX7ArCF858tD1pTeE8cUAl0ZtkWyeEy+/IzcPbOQ6VYH3CKfSL0Em
+	Nn4Pd8gg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSuIl-00000007APf-48tF;
-	Fri, 29 May 2026 10:18:51 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1wSuVd-00000007BxZ-3X6M;
+	Fri, 29 May 2026 10:32:09 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSuIh-00000007AJG-1LbX
-	for linux-mediatek@lists.infradead.org;
-	Fri, 29 May 2026 10:18:48 +0000
-Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-45eea3448f2so910441f8f.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 29 May 2026 03:18:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1780049926; x=1780654726; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=HtVdZNScTofI8P3tHPj6mAWShd/HrYu5mi6gsoESwBk=;
-        b=oePTIlVE0OY02temQWgQ3JiTennzQma/6kLcDZgdtFoupK4E9fTlJX9GQOitven6L+
-         UIvBpnPFo7vJABgfPtpWULdi0v0za1jbd2CXVYwXWocYTbCPKb5KB9HKK0+sxduQFXRB
-         0/AKaGBDKeupbiNUkQI8vDPjSlhVT7+ySAl8rXGYpyMje89n35OPARbtP/8S+8KQzisO
-         +zwvM/M9usA8BanN67b53le2KQTG+kL78S3rwdRd3fAhe7RmPlf8dX61zQJqLdjQ+ETf
-         vhIcqs9DdAgur9n/Q3Qoe8G/q/VEo0WpUUvyZ6T8iEQ5AE5Fl9Y5j6UdE01KleRcDG3e
-         +Rfw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1780049926; x=1780654726;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=HtVdZNScTofI8P3tHPj6mAWShd/HrYu5mi6gsoESwBk=;
-        b=iUCdqvCyWRwkCgsCRZIIgxlvDMlJGTmtH3psJ8F99PeyAbMDvSQQeDz846s7HVgFpX
-         /MFatYN9+rv4SwsDJcMtmT7cDnN/lfGtjt08B91byKpxDbo3TT5r8YuGfUbfbuQ2oOF7
-         2ib49IKeOna+JjPZcD7g3mWEcNocziG5hdIFyf5Tg+fHgTcGNDWBerxs1aGEqdTV4E7O
-         g7cdyMfEUKDMTWMs0J9xn8z6hgLNlLbBLFrhYdkKBBg4zD2IxGV2uBNJizJfkWT8Wmom
-         iqcS3HlprgL/21I1okO/cikJxNn+/9S5gaYnUjlgpadAG9zQDsuzGrfDnHGA3+HNSzif
-         0V6g==
-X-Forwarded-Encrypted: i=1; AFNElJ/bXoscUi3VIQcuWdod3fb1ldQN8XFL+yManglBoNwdI5q+6D16t4woFZ0o6bMVpsZ4TgReYH8hp84zkQzTgA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw4T/w8E3WlzgkuPRpMMsGXqiYii4VU3ZVyvEw8kscEPxhgzdYt
-	O92FWV8YnpPFHTXdto1nJR8MV1GYQp0NFECk8775poLEyVro1z49JztStBqsgcDutT8=
-X-Gm-Gg: Acq92OEUm1wwU7Oa24mL7FLzYYM5xH81dIX4BzIEePeKrSh6wA/vpkNCooovAQvQNM9
-	k12TIZqiu3/V2FTxqm+hEdXq5oqWb1xcJAIcXYhEgaMKpdYcc3Dw5TtyZaODYfc/AvJdPbVf1dm
-	w1Vm6mAAX2LfIeHi5WGILyMsLvwVu4mkBWZo9NK5GNAtH+InLTm+9SQUUp8FiTo+6QBsTQtMzKE
-	gHN6uJxG2wJL3EJ8TGbkx6+GkRp7CkzLYXqLQtScY33/kbyNH1yBT6e+9iwY0/PmJR7Odvet/d6
-	00PH8Qnek9skPPaxR3WRy7oH2wfv3CF1CTmPqfmooCaLwyi0Mz+84VE7KwcHzEF9KUIOtSFret4
-	M1TXHJZrn2SWz9DGTlhN8d5Tf384/B8OBuFi24Ablva9GRVANWjNCuEU+qyHwvc1UL6Sxp/QEsB
-	Sfvzk2d6UQBA9rSTcuSapMf+zLYJjhAk3bsM72qwfaMPVhQEDT8pdKvsgUYvGRPqSHHzCwRMu61
-	sFIZYWnhtMy9AkeXu8vT3eEoRbyFVr5+uvO
-X-Received: by 2002:a5d:4602:0:b0:43f:e272:edff with SMTP id ffacd0b85a97d-45ef13ed7e4mr2873909f8f.4.1780049925683;
-        Fri, 29 May 2026 03:18:45 -0700 (PDT)
-Received: from localhost (p200300f65f47db043f932d8b97293bf6.dip0.t-ipconnect.de. [2003:f6:5f47:db04:3f93:2d8b:9729:3bf6])
-        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-45ef35874b7sm2392386f8f.35.2026.05.29.03.18.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 29 May 2026 03:18:45 -0700 (PDT)
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig=20=28The=20Capable=20Hub=29?= <u.kleine-koenig@baylibre.com>
-To: Sebastian Reichel <sre@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v1 5/6] power: supply: mt6360_charger: Use of match table unconditionally
-Date: Fri, 29 May 2026 12:18:20 +0200
-Message-ID: <ff94de5fb3ee6aeb1c0256e1a00c1c5ac350b430.1780048925.git.u.kleine-koenig@baylibre.com>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <cover.1780048925.git.u.kleine-koenig@baylibre.com>
-References: <cover.1780048925.git.u.kleine-koenig@baylibre.com>
+	id 1wSuVJ-00000007Bmk-0uZg;
+	Fri, 29 May 2026 10:31:51 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 7205044D2F;
+	Fri, 29 May 2026 10:31:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 539F9C2BCF6;
+	Fri, 29 May 2026 10:31:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1780050708;
+	bh=e81KeGndL5qxGwVoVgkWnkbtokUm02TGvA0VSK6N3f8=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=LPPfnGXXXwSDikgGuwWOgg7on/6UxwMvCyJ7qeDVTAzM5AlM0TnZ45T7dakVjMH6H
+	 1ovPlrtbuT2eC/gcMYKQ8n/OQnN/OY44xDF6ChlX5ESUNr6yk3q/gyptmhSKNiqB7z
+	 N2oO5Y4DJcA7x2oSHwD0c/WRx82TDp/ggNOWQ4qotGTGqbynxK7in2+WFfu32Kvlb/
+	 jgd4vGub64rythgZ0wIQCxzpSgQke0yM7uQACdVaRSBaX28lcMDPPFuxFzBJUPoX2r
+	 LL68HwqNCRfV758HvjUqAGVwwA9IECMw7+snsDkrRRCei2mAWQzbWMktMqiGte+Z0H
+	 ZWHiR5eyOQLUA==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4C2E6CD6E4F;
+	Fri, 29 May 2026 10:31:48 +0000 (UTC)
+From: Jack Wu via B4 Relay <devnull+jackbb_wu.compal.com@kernel.org>
+Date: Fri, 29 May 2026 18:31:45 +0800
+Subject: [PATCH 06/11] net: wwan: t9xx: Add AT & MBIM WWAN ports
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=900; i=u.kleine-koenig@baylibre.com; h=from:subject:message-id; bh=j07x97s1Wf+YOc3AIBt+BDtOm6zhVtK4xiYixM5/hT0=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBqGWf11W6GNZFuwWjHh5SRVpp0Kru/KhvgdEKCj YGOEfu6ShmJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCahln9QAKCRCPgPtYfRL+ TsQVCACKqsRzsVd97fbfB0uKqFDSIesz/zHQ38cfBH62FRQ/svd1jcnpSkZl4aTnLgP7wiBUZD8 1xG7eoyDmqnsfMqVUwLSuzym3mNgbUzzX5HTrsXhEn8RTQW/8S1RVLXRlAwsgwXn/EvbWtnmDzZ 90atHov9BC9xEpCgBvITrSSuWiG2RTu4Lg24HfdgR9pnPprAz0R2pTH73ClFSOMGhGJobKyDYQR hSnllS526cbx07AycnVtUY2A62G5w8IMbGn0M2YmtZKprJ5RFT/dwhiyRdx3LN1xOqXaj6N6Ygf P8kLbsbwpWiW4P367QSKZT8LykSDYHZSHIRlpa2tvLg6y3bG
-X-Developer-Key: i=u.kleine-koenig@baylibre.com; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260529-t9xx_driver_v1-v1-6-bdbfe2c01e57@compal.com>
+References: <20260529-t9xx_driver_v1-v1-0-bdbfe2c01e57@compal.com>
+In-Reply-To: <20260529-t9xx_driver_v1-v1-0-bdbfe2c01e57@compal.com>
+To: Loic Poulain <loic.poulain@oss.qualcomm.com>, 
+ Sergey Ryazanov <ryazanov.s.a@gmail.com>, 
+ Johannes Berg <johannes@sipsolutions.net>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Jack Wu <jackbb_wu@compal.com>, Wen-Zhi Huang <wen-zhi.huang@mediatek.com>, 
+ Shi-Wei Yeh <shi-wei.yeh@mediatek.com>, 
+ Minano Tseng <Minano.tseng@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Simon Horman <horms@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
+ Shuah Khan <skhan@linuxfoundation.org>
+Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-doc@vger.kernel.org
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1780050704; l=14945;
+ i=jackbb_wu@compal.com; s=20260526; h=from:subject:message-id;
+ bh=r13Y/lu8rSDj0NznqkXNg1R+X9hNT1DejvWcxJLZABU=;
+ b=7V7jbtCJ2Is9CIWCkC0Vq1YfWu3cipXU54gMR9KYAO6KuIVuuuY+EV+nzi/b3f6c7XTkkDjiy
+ H16gcdAEEbpBr4/2PDcjdjQWepFrJFKAyS8DNqAU60QIr5Zqrq+mzqp
+X-Developer-Key: i=jackbb_wu@compal.com; a=ed25519;
+ pk=VH1prTWixNl8OEUPPSfII3p46MzJpQN8J3+ecE1tZXg=
+X-Endpoint-Received: by B4 Relay for jackbb_wu@compal.com/20260526 with
+ auth_id=793
+X-Original-From: Jack Wu <jackbb_wu@compal.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260529_031847_389211_51DDC323 
-X-CRM114-Status: GOOD (  13.49  )
+X-CRM114-CacheID: sfid-20260529_033149_314500_1E7BA462 
+X-CRM114-Status: GOOD (  23.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,31 +94,537 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: jackbb_wu@compal.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt6360_charger_of_id is defined unconditionally, so it doesn't make sense
-to not use it for the driver's .of_match_table member.
+From: Jack Wu <jackbb_wu@compal.com>
 
-Signed-off-by: Uwe Kleine-König (The Capable Hub) <u.kleine-koenig@baylibre.com>
+Adds AT & MBIM ports to the port infrastructure.
+The WWAN initialization method is responsible for creating the
+corresponding ports using the WWAN framework infrastructure. The
+implemented WWAN port operations are start, stop, tx, tx_blocking
+and tx_poll.
+
+Signed-off-by: Jack Wu <jackbb_wu@compal.com>
 ---
- drivers/power/supply/mt6360_charger.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/wwan/t9xx/mtk_port.c               |  27 ++
+ drivers/net/wwan/t9xx/mtk_port.h               |  15 ++
+ drivers/net/wwan/t9xx/mtk_port_io.c            | 332 ++++++++++++++++++++++++-
+ drivers/net/wwan/t9xx/mtk_port_io.h            |   5 +
+ drivers/net/wwan/t9xx/pcie/mtk_ctrl_cfg_m9xx.c |   8 +
+ 5 files changed, 386 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/power/supply/mt6360_charger.c b/drivers/power/supply/mt6360_charger.c
-index 69955f255091..d3b0731f6562 100644
---- a/drivers/power/supply/mt6360_charger.c
-+++ b/drivers/power/supply/mt6360_charger.c
-@@ -849,7 +849,7 @@ MODULE_DEVICE_TABLE(platform, mt6360_charger_id);
- static struct platform_driver mt6360_charger_driver = {
- 	.driver = {
- 		.name = "mt6360-chg",
--		.of_match_table = of_match_ptr(mt6360_charger_of_id),
-+		.of_match_table = mt6360_charger_of_id,
- 	},
- 	.probe = mt6360_charger_probe,
- 	.id_table = mt6360_charger_id,
+diff --git a/drivers/net/wwan/t9xx/mtk_port.c b/drivers/net/wwan/t9xx/mtk_port.c
+index dbd279cf2a14..4032df99b5b0 100644
+--- a/drivers/net/wwan/t9xx/mtk_port.c
++++ b/drivers/net/wwan/t9xx/mtk_port.c
+@@ -630,6 +630,7 @@ static int mtk_port_rx_dispatch(struct sk_buff *skb, void *priv, bool force_recv
+ 	/* Support scatter gather transmission */
+ 	if (port->rx_mtu > port->rx_frag_size) {
+ 		ret = mtk_port_rx_dispatch_frag_skb(port, skb);
++		/* -EIO means partial data dispatch complete, does not goto drop flow */
+ 		if (ret < 0 && ret != -EIO)
+ 			goto drop_frag_skb;
+ 	} else {
+@@ -818,6 +819,29 @@ int mtk_port_ch_disable(struct mtk_port *port)
+ 	return ret;
+ }
+ 
++static int mtk_port_enable_by_type(struct mtk_port_mngr *port_mngr, int tbl_type)
++{
++	struct mtk_port **ports;
++	int ret, idx;
++
++	if (tbl_type < 0 || tbl_type >= PORT_TBL_MAX)
++		return -EINVAL;
++
++	ports = kcalloc(port_mngr->port_cnt, sizeof(struct mtk_port *), GFP_KERNEL);
++	if (!ports)
++		return -ENOMEM;
++
++	ret = radix_tree_gang_lookup(&port_mngr->port_tbl[tbl_type],
++				     (void **)ports, 0, port_mngr->port_cnt);
++	for (idx = 0; idx < ret; idx++) {
++		if (ports[idx]->enable)
++			ports_ops[ports[idx]->info.type]->enable(ports[idx]);
++	}
++
++	kfree(ports);
++	return 0;
++}
++
+ static void mtk_port_disable(struct mtk_port_mngr *port_mngr)
+ {
+ 	struct mtk_port **ports;
+@@ -851,6 +875,9 @@ void mtk_port_mngr_fsm_state_handler(struct mtk_fsm_param *fsm_param, void *arg)
+ 	case FSM_STATE_OFF:
+ 		mtk_port_disable(port_mngr);
+ 		break;
++	case FSM_STATE_READY:
++		mtk_port_enable_by_type(port_mngr, PORT_TBL_MD);
++		break;
+ 	default:
+ 		break;
+ 	}
+diff --git a/drivers/net/wwan/t9xx/mtk_port.h b/drivers/net/wwan/t9xx/mtk_port.h
+index a201c0007878..cf561add6318 100644
+--- a/drivers/net/wwan/t9xx/mtk_port.h
++++ b/drivers/net/wwan/t9xx/mtk_port.h
+@@ -56,6 +56,10 @@ enum mtk_ccci_ch {
+ 	/* to MD */
+ 	CCCI_CONTROL_RX				= 0x2000,
+ 	CCCI_CONTROL_TX				= 0x2001,
++	CCCI_UART2_RX				= 0x200A,
++	CCCI_UART2_TX				= 0x200C,
++	CCCI_MBIM_RX				= 0x20D0,
++	CCCI_MBIM_TX				= 0x20D1,
+ };
+ 
+ enum mtk_port_flag {
+@@ -73,6 +77,7 @@ enum mtk_port_tbl {
+ 
+ enum mtk_port_type {
+ 	PORT_TYPE_INTERNAL,
++	PORT_TYPE_WWAN,
+ 	PORT_TYPE_MAX
+ };
+ 
+@@ -81,6 +86,13 @@ struct mtk_internal_port {
+ 	int (*recv_cb)(void *arg, struct sk_buff *skb);
+ };
+ 
++struct mtk_wwan_port {
++	/* w_lock protects wwan_port when recv data and disable port at the same time */
++	struct mutex w_lock;
++	int w_type;
++	void *w_port;
++};
++
+ struct mtk_port_cfg {
+ 	enum mtk_ccci_ch tx_ch;
+ 	enum mtk_ccci_ch rx_ch;
+@@ -108,8 +120,11 @@ struct mtk_port {
+ 	wait_queue_head_t rx_wq;
+ 	struct list_head stale_entry;
+ 	char dev_str[MTK_DEV_STR_LEN];
++	/* Serializes port write operations */
++	struct mutex write_lock;
+ 	struct mtk_port_mngr *port_mngr;
+ 	struct mtk_internal_port i_priv;
++	struct mtk_wwan_port w_priv;
+ };
+ 
+ struct mtk_port_mngr {
+diff --git a/drivers/net/wwan/t9xx/mtk_port_io.c b/drivers/net/wwan/t9xx/mtk_port_io.c
+index 9e7a1207cc03..ab8b1c5157ec 100644
+--- a/drivers/net/wwan/t9xx/mtk_port_io.c
++++ b/drivers/net/wwan/t9xx/mtk_port_io.c
+@@ -3,6 +3,10 @@
+  * Copyright (c) 2022, MediaTek Inc.
+  */
+ #include <linux/netdevice.h>
++#include <linux/poll.h>
++#include <linux/slab.h>
++#include <linux/wait.h>
++#include <linux/wwan.h>
+ 
+ #include "mtk_port_io.h"
+ 
+@@ -39,6 +43,149 @@ static void mtk_port_struct_init(struct mtk_port *port)
+ 	port->rx_buf_size = MTK_RX_BUF_SIZE;
+ 	init_waitqueue_head(&port->trb_wq);
+ 	init_waitqueue_head(&port->rx_wq);
++	mutex_init(&port->write_lock);
++}
++
++static int mtk_port_copy_data_from(void *to, union user_buf from, unsigned int len,
++				   unsigned int offset, bool from_user_space)
++{
++	int ret = 0;
++
++	if (from_user_space) {
++		ret = copy_from_user(to, from.ubuf + offset, len);
++		if (ret)
++			ret = -EFAULT;
++	} else {
++		memcpy(to, from.kbuf + offset, len);
++	}
++
++	return ret;
++}
++
++static int mtk_port_common_write_frag_skb(struct mtk_port *port, struct sk_buff *skb,
++					  union user_buf buf, u32 packet_size,
++					  u32 cur_pos, bool from_user_space)
++{
++	struct sk_buff *frag_skb, *tmp = NULL;
++	u32 frag_size;
++	int ret;
++
++	frag_size = min(packet_size, port->tx_frag_size);
++	ret = mtk_port_copy_data_from(skb_put(skb, frag_size),
++				      buf, frag_size,
++				      cur_pos, from_user_space);
++	if (ret) {
++		dev_err(port->port_mngr->ctrl_blk->mdev->dev,
++			"Failed to copy skb for port(%s)\n", port->info.name);
++		goto err_reset_skb;
++	}
++	cur_pos += frag_size;
++	packet_size -= frag_size;
++	if (!packet_size)
++		return cur_pos;
++
++	while (packet_size > 0) {
++		frag_skb = __dev_alloc_skb(port->tx_mtu, GFP_KERNEL);
++		if (!frag_skb) {
++			ret = -ENOMEM;
++			goto err_free_frag_list;
++		}
++
++		frag_size = min(packet_size, port->tx_frag_size);
++		ret = mtk_port_copy_data_from(skb_put(frag_skb, frag_size),
++					      buf, frag_size,
++					      cur_pos, from_user_space);
++		if (ret) {
++			dev_err(port->port_mngr->ctrl_blk->mdev->dev,
++				"Failed to copy frag_skb for port(%s)\n", port->info.name);
++			dev_kfree_skb_any(frag_skb);
++			goto err_free_frag_list;
++		}
++		skb->data_len += frag_size;
++		skb->len += frag_size;
++		cur_pos += frag_size;
++		packet_size -= frag_size;
++		if (!tmp)
++			skb_shinfo(skb)->frag_list = frag_skb;
++		else
++			tmp->next = frag_skb;
++		tmp = frag_skb;
++	}
++	return cur_pos;
++
++err_free_frag_list:
++	frag_skb = skb_shinfo(skb)->frag_list;
++	while (frag_skb) {
++		tmp = frag_skb->next;
++		frag_skb->next = NULL;
++		dev_kfree_skb_any(frag_skb);
++		frag_skb = tmp;
++	}
++	skb_shinfo(skb)->frag_list = NULL;
++err_reset_skb:
++	skb->data_len = 0;
++	return ret;
++}
++
++static int mtk_port_common_write(struct mtk_port *port, union user_buf buf, unsigned int len,
++				 bool from_user_space)
++{
++	u32 packet_size, left_cnt = len, cur_pos;
++	struct sk_buff *skb;
++	int ret;
++
++	if (len == 0)
++		return 0;
++
++start_write:
++	ret = mtk_port_status_check(port);
++	if (ret)
++		goto end_write;
++
++	skb = __dev_alloc_skb(port->tx_mtu, GFP_KERNEL);
++	if (!skb) {
++		ret = -ENOMEM;
++		goto end_write;
++	}
++
++	skb_reserve(skb, sizeof(struct mtk_ccci_header));
++
++	packet_size = min(left_cnt, port->tx_mtu);
++	cur_pos = len - left_cnt;
++	/* Support scatter gather transmission */
++	if (port->tx_mtu > port->tx_frag_size) {
++		ret = mtk_port_common_write_frag_skb(port, skb, buf, packet_size,
++						     cur_pos, from_user_space);
++		if (ret < 0)
++			goto err_free_skb;
++	} else {
++		ret = mtk_port_copy_data_from(skb_put(skb, packet_size),
++					      buf, packet_size,
++					      cur_pos, from_user_space);
++		if (ret) {
++			dev_err(port->port_mngr->ctrl_blk->mdev->dev,
++				"Failed to copy data for port(%s)\n", port->info.name);
++			goto err_free_skb;
++		}
++	}
++
++	ret = mtk_port_send_data(port, skb);
++	if (ret < 0) {
++		if (ret == -EINTR)
++			left_cnt -= packet_size;
++		goto end_write;
++	}
++
++	left_cnt -= ret;
++	if (left_cnt)
++		goto start_write;
++	else
++		goto end_write;
++
++err_free_skb:
++	dev_kfree_skb_any(skb);
++end_write:
++	return (len > left_cnt) ? (len - left_cnt) : ret;
+ }
+ 
+ static int mtk_port_internal_init(struct mtk_port *port)
+@@ -109,7 +256,6 @@ static int mtk_port_internal_recv(struct mtk_port *port, struct sk_buff *skb)
+ 	return ret;
+ 
+ drop_data:
+-	dev_kfree_skb_any(skb);
+ 	return ret;
+ }
+ 
+@@ -241,6 +387,190 @@ static const struct port_ops port_internal_ops = {
+ 	.recv = mtk_port_internal_recv,
+ };
+ 
++static int mtk_port_wwan_open(struct wwan_port *w_port)
++{
++	struct mtk_port *port;
++	int ret;
++
++	port = wwan_port_get_drvdata(w_port);
++	ret = mtk_port_get_locked(port);
++	if (ret)
++		return ret;
++
++	ret = mtk_port_common_open(port);
++	if (ret)
++		mtk_port_put_locked(port);
++
++	return ret;
++}
++
++static void mtk_port_wwan_close(struct wwan_port *w_port)
++{
++	struct mtk_port *port = wwan_port_get_drvdata(w_port);
++
++	mtk_port_common_close(port);
++	mtk_port_put_locked(port);
++}
++
++static int mtk_port_wwan_write(struct wwan_port *w_port, struct sk_buff *skb)
++{
++	struct mtk_port *port = wwan_port_get_drvdata(w_port);
++	union user_buf user_buf;
++
++	if (unlikely(!skb->len)) {
++		kfree_skb(skb);
++		return 0;
++	}
++
++	port->info.flags &= ~PORT_F_BLOCKING;
++	user_buf.kbuf = (void *)skb->data;
++	return mtk_port_common_write(port, user_buf, skb->len, false);
++}
++
++static int mtk_port_wwan_write_blocking(struct wwan_port *w_port, struct sk_buff *skb)
++{
++	struct mtk_port *port = wwan_port_get_drvdata(w_port);
++	union user_buf user_buf;
++
++	if (unlikely(!skb->len)) {
++		kfree_skb(skb);
++		return 0;
++	}
++
++	port->info.flags |= PORT_F_BLOCKING;
++	user_buf.kbuf = (void *)skb->data;
++	return mtk_port_common_write(port, user_buf, skb->len, false);
++}
++
++static __poll_t mtk_port_wwan_poll(struct wwan_port *w_port, struct file *file,
++				   struct poll_table_struct *poll)
++{
++	struct mtk_port *port = wwan_port_get_drvdata(w_port);
++	union ctrl_hif_cmd_data hif_cmd;
++	struct mtk_ctrl_blk *ctrl_blk;
++	__poll_t mask = 0;
++
++	poll_wait(file, &port->trb_wq, poll);
++	if (mtk_port_status_check(port))
++		return EPOLLERR | EPOLLHUP;
++
++	ctrl_blk = port->port_mngr->ctrl_blk;
++	hif_cmd.rx_ch = port->info.rx_ch;
++	if (!ctrl_blk->ops->send_cmd(ctrl_blk->mdev, HIF_CTRL_CMD_CHECK_TX_FULL, &hif_cmd))
++		mask |= EPOLLOUT | EPOLLWRNORM;
++
++	return mask;
++}
++
++static const struct wwan_port_ops wwan_ops = {
++	.start = mtk_port_wwan_open,
++	.stop = mtk_port_wwan_close,
++	.tx = mtk_port_wwan_write,
++	.tx_blocking = mtk_port_wwan_write_blocking,
++	.tx_poll = mtk_port_wwan_poll,
++};
++
++static int mtk_port_wwan_init(struct mtk_port *port)
++{
++	mtk_port_struct_init(port);
++	port->enable = false;
++
++	mutex_init(&port->w_priv.w_lock);
++
++	switch (port->info.rx_ch) {
++	case CCCI_MBIM_RX:
++		port->w_priv.w_type = WWAN_PORT_MBIM;
++		break;
++	case CCCI_UART2_RX:
++		port->w_priv.w_type = WWAN_PORT_AT;
++		break;
++	default:
++		port->w_priv.w_type = WWAN_PORT_UNKNOWN;
++		break;
++	}
++
++	return 0;
++}
++
++static int mtk_port_wwan_exit(struct mtk_port *port)
++{
++	if (test_bit(PORT_S_ENABLE, &port->status))
++		ports_ops[port->info.type]->disable(port);
++
++	return 0;
++}
++
++static int mtk_port_wwan_enable(struct mtk_port *port)
++{
++	struct mtk_port_mngr *port_mngr;
++	int ret = 0;
++
++	port_mngr = port->port_mngr;
++
++	if (test_bit(PORT_S_ENABLE, &port->status))
++		return 0;
++
++	ret = mtk_port_ch_enable(port);
++	if (ret && ret != -EBUSY)
++		return ret;
++
++	port->w_priv.w_port = wwan_create_port(port_mngr->ctrl_blk->mdev->dev,
++					       port->w_priv.w_type,
++					       &wwan_ops, NULL, port);
++	if (IS_ERR(port->w_priv.w_port)) {
++		dev_warn(port_mngr->ctrl_blk->mdev->dev,
++			 "Failed to create wwan port for (%s)\n", port->info.name);
++		return PTR_ERR(port->w_priv.w_port);
++	}
++
++	set_bit(PORT_S_WR, &port->status);
++	set_bit(PORT_S_ENABLE, &port->status);
++
++	return 0;
++}
++
++static int mtk_port_wwan_disable(struct mtk_port *port)
++{
++	struct wwan_port *w_port;
++
++	if (!test_and_clear_bit(PORT_S_ENABLE, &port->status))
++		return 0;
++
++	clear_bit(PORT_S_WR, &port->status);
++	w_port = port->w_priv.w_port;
++	mutex_lock(&port->w_priv.w_lock);
++	port->w_priv.w_port = NULL;
++	mutex_unlock(&port->w_priv.w_lock);
++
++	mtk_port_ch_disable(port);
++	wwan_remove_port(w_port);
++
++	return 0;
++}
++
++static int mtk_port_wwan_recv(struct mtk_port *port, struct sk_buff *skb)
++{
++	mutex_lock(&port->w_priv.w_lock);
++	if (!port->w_priv.w_port) {
++		mutex_unlock(&port->w_priv.w_lock);
++		return -ENXIO;
++	}
++
++	wwan_port_rx(port->w_priv.w_port, skb);
++	mutex_unlock(&port->w_priv.w_lock);
++	return 0;
++}
++
++static const struct port_ops port_wwan_ops = {
++	.init = mtk_port_wwan_init,
++	.exit = mtk_port_wwan_exit,
++	.reset = mtk_port_reset,
++	.enable = mtk_port_wwan_enable,
++	.disable = mtk_port_wwan_disable,
++	.recv = mtk_port_wwan_recv,
++};
++
+ const struct port_ops *ports_ops[PORT_TYPE_MAX] = {
+ 	&port_internal_ops,
++	&port_wwan_ops,
+ };
+diff --git a/drivers/net/wwan/t9xx/mtk_port_io.h b/drivers/net/wwan/t9xx/mtk_port_io.h
+index 7d2cfe90334c..12f26d244f1f 100644
+--- a/drivers/net/wwan/t9xx/mtk_port_io.h
++++ b/drivers/net/wwan/t9xx/mtk_port_io.h
+@@ -23,6 +23,11 @@ struct port_ops {
+ 	int (*recv)(struct mtk_port *port, struct sk_buff *skb);
+ };
+ 
++union user_buf {
++	void __user *ubuf;
++	void *kbuf;
++};
++
+ void *mtk_port_internal_open(struct mtk_md_dev *mdev, char *name, int flag);
+ int mtk_port_internal_close(void *i_port);
+ int mtk_port_internal_write(void *i_port, struct sk_buff *skb);
+diff --git a/drivers/net/wwan/t9xx/pcie/mtk_ctrl_cfg_m9xx.c b/drivers/net/wwan/t9xx/pcie/mtk_ctrl_cfg_m9xx.c
+index 8611561dd67c..aab09cab360c 100644
+--- a/drivers/net/wwan/t9xx/pcie/mtk_ctrl_cfg_m9xx.c
++++ b/drivers/net/wwan/t9xx/pcie/mtk_ctrl_cfg_m9xx.c
+@@ -16,6 +16,10 @@ static const int mtk_srv_cfg_m9xx[NR_CLDMA][HW_QUE_NUM] = {
+ 
+ /* the number of RX GPDs should be at last two */
+ static const struct queue_info mtk_queue_info_m9xx[] = {
++	{CCCI_UART2_TX, CCCI_UART2_RX, CLDMA1, TXQ(5), RXQ(5),
++	 Q_MTU_3_5K, Q_MTU_3_5K, TX_GPD_NUM, RX_GPD_NUM, Q_FRAG_3_5K, Q_FRAG_3_5K, 0},
++	{CCCI_MBIM_TX, CCCI_MBIM_RX, CLDMA1, TXQ(2), RXQ(2),
++	 Q_MTU_3_5K, Q_MTU_3_5K, TX_GPD_NUM, RX_GPD_NUM, Q_FRAG_3_5K, Q_FRAG_3_5K, 0},
+ 	{CCCI_CONTROL_TX, CCCI_CONTROL_RX, CLDMA1, TXQ(0), RXQ(0),
+ 	 Q_MTU_3_5K, Q_MTU_3_5K, TX_GPD_NUM, RX_GPD_NUM, Q_FRAG_3_5K, Q_FRAG_3_5K, 0},
+ 	{CCCI_SAP_CONTROL_TX, CCCI_SAP_CONTROL_RX, CLDMA0, TXQ(0), RXQ(0),
+@@ -23,6 +27,10 @@ static const struct queue_info mtk_queue_info_m9xx[] = {
+ };
+ 
+ static const struct mtk_port_cfg port_cfg_m9xx[] = {
++	{CCCI_UART2_TX, CCCI_UART2_RX, PORT_TYPE_WWAN, "AT",
++		PORT_F_ALLOW_DROP},
++	{CCCI_MBIM_TX, CCCI_MBIM_RX, PORT_TYPE_WWAN, "MBIM",
++		PORT_F_ALLOW_DROP},
+ 	{CCCI_CONTROL_TX, CCCI_CONTROL_RX, PORT_TYPE_INTERNAL, "MDCTRL",
+ 		PORT_F_ALLOW_DROP},
+ 	{CCCI_SAP_CONTROL_TX, CCCI_SAP_CONTROL_RX, PORT_TYPE_INTERNAL, "SAPCTRL",
+
 -- 
-2.47.3
+2.34.1
+
 
 
