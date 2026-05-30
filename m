@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2B7DCD6E49
-	for <linux-mediatek@archiver.kernel.org>; Sat, 30 May 2026 14:58:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DCF0CD5BD0
+	for <linux-mediatek@archiver.kernel.org>; Sat, 30 May 2026 14:58:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E1TMEZ0J6gXWQTFmjGHghmrU7hof3+Zk+ggFlB5N5pU=; b=aP8cHtggWgPX1NUJ9UK/8ZS5pI
-	zyhxCxxcLdTydvAm5Gg7CTnaeeSnWLCPXSorhbiN5qX8h/PO5m/chJE35IFmXwXAxkN3ki2huHsF+
-	tXi22eU8H/k14VIUAVRRbHx8Zh18VDGFmDcYeiONftMat/WYx2GQg8urhcStl/rRFaBz05oDi9ubf
-	a0uAB9laAedUJ7TRVXXVCsPsfi5kh1ZdvComnsONna3WuWAqpSkWe1GxIM7WGADT3yZ9W8cmNaD6T
-	kKtkVxpiHMFA7p5uRGtWnft3HFynGTGedKHGiUaBD6tqqnlRmrUdLtcNLZIvWduFfeurnmRwjpr5v
-	VCO4ID1A==;
+	bh=zFZAUjYaK9FWKgvs/ixolGySq1VzA8CfDWl5e2+n+8I=; b=qwj5cTexDpGtmZNZgwyMyi7f9J
+	j2uKph/AVXlxGekCr90ikYOa2v+m5ObETttwwz9FZ1gYaiiLhpStC8w4W4K7logDRaBNEmgOXAXun
+	e7GQxuKqr0ajlXMlod9j4BX0Em2E5+1ffFIWanXaa3FjY2c61wtfGgXerjjYEud+pO/qR6ZGoX+TV
+	8U6V1DEx9w8JZRu1IvHQZJq94NZnOig7XM0yLQ+spI9Ggg9wWCDb/DAfn+ppP9faBCHJWzdKEj99B
+	4pKYC615IO6xOcbvKiDUBCVg2jI8amwm5oEk83ic5WVc6Xo38qSWa6ODjc/+tDgMJZTawW1/GM8W5
+	leaTTAbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTL8l-00000008r1Y-0MD6;
+	id 1wTL8l-00000008r1e-0cub;
 	Sat, 30 May 2026 14:58:19 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTL8f-00000008qv1-37LY
+	id 1wTL8h-00000008qwf-3ZjR
 	for linux-mediatek@lists.infradead.org;
-	Sat, 30 May 2026 14:58:15 +0000
-Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-490388fd0dbso91451045e9.0
-        for <linux-mediatek@lists.infradead.org>; Sat, 30 May 2026 07:58:13 -0700 (PDT)
+	Sat, 30 May 2026 14:58:17 +0000
+Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-45ef56d9b67so891559f8f.2
+        for <linux-mediatek@lists.infradead.org>; Sat, 30 May 2026 07:58:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1780153092; x=1780757892; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1780153094; x=1780757894; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=E1TMEZ0J6gXWQTFmjGHghmrU7hof3+Zk+ggFlB5N5pU=;
-        b=Yl/SQXoJ43Wsub36gIcpFPJ8WSrproHZ/bPf1Ye6U/3TjjIKveENyq5oChV+zMcgnj
-         FBXEpi4nGf1SBsTFjkJ5JhkcWIQWWjbcLljvyjS6VeEwvGimG7pTe3OC9Vec7OHnvwyL
-         JqaOR2zfu5TWoPWzz+zZh6fDt/heyRcKd4rRM8waogVkoQjlPYcB/NYWfuG2sR9kJX+H
-         y7hXIRKdnuhKzpWiFMmj4TLgR52Umc74q+xkM8gBFsSkGc7C7quikrC41XpOkhqccLCC
-         KQpm4RIiGCpESKcZxqmcVNgMzuKuywRUjqIP5ECdKCgT55jIk6CSKZMkW0I0z9jbSx6S
-         kIAA==
+        bh=zFZAUjYaK9FWKgvs/ixolGySq1VzA8CfDWl5e2+n+8I=;
+        b=hzDUmiiQxX2L78/76jHGujKJvZGXBhiuTnQXa1IO+vgYq4Vlqn/djm31iuPiL4kQ0i
+         +shDORngxympGcsRwDLAUcH1KVA6cNuHZ2O/izRX9guyze7Xzxq8HVHaB9zkBBdkRY0k
+         P2+1jkOYhpg1jgdwMPQVk2XWq23HHcVQJ7N1gAK3cywjP2yX0B8BlBVROwYNk/h6h4UP
+         pdHOoRHm1/AbGT/SNGAZd0LeQljKB0gBqAjgMWOpwP6kpVDWlbscPbdho2XnW/NpOglD
+         gI4diJRfbTQQ3rSqCG1r7Mo/+XsEV365d4Q4EbFJMtR+4nNKw+gg7kkdlLSsZ7fMbPNO
+         X0UA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1780153092; x=1780757892;
+        d=1e100.net; s=20251104; t=1780153094; x=1780757894;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=E1TMEZ0J6gXWQTFmjGHghmrU7hof3+Zk+ggFlB5N5pU=;
-        b=BYEmIAkm+11Z2Nqf/ObW0G54ThWCmc1L2YSw+qLQVjBRWEnXudbHv9qlxIOs1oo9Jz
-         9OkwqA5Mvu0aDBNGVs4btXzP1HD1UOpGyLGVSNHSuzmwFugtPIcdB7ekNriDnxYtzYEe
-         jc2s3OUYd4sLqQv0wFu6H1xoCsi42H35/7mPfYP4LmJx+8Ff5Vs3cO1jQOBWDhO37mf+
-         EjhTkCu9oJDZNLHvUlB79ZO8h5BqVi/W6RPxpO2cFZ4WEW76Yx85m3RHLiDk8RArViOi
-         +Qn56vAobeifSGBXUa43rtEg8Kc/IBqPj2madnanPE6k+xe1H+iqJWn+a5GPh19+Vq1b
-         3l1g==
-X-Forwarded-Encrypted: i=1; AFNElJ9vmU5ulgEEsxg889pU/1ZXiMTKqQnYBA6Pqf8OIbEIh8hTlkRHMr2qIA6ghOw3HPPtckQoO50iuaqsDb0mDA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwLZiUq++WHNHxWyZtz2O9jA+TLjPd98dXgtRI5vRkAnX6nGWWb
-	wL94V+BjV8RGUB66qzVkBzzQ2Ep6fuUt3vFZ5Ly0+I1g5eqQhKtiYkGK
-X-Gm-Gg: Acq92OHB5fpGFypkh1hOuUT7iczGZM88aL2QXrWRYIF4HQT+ZOExooA4xYdeGRM3rgR
-	hStYV64sM6a7Bpd349nxCgi1sZAkXpg1/+ufgHnf5KNorDl0J/HhK7jMnMyB5V/2IkzBvXCgRuf
-	bsGuMBGHnOTNANv5RQr3ku3cbOQdJRuRJN1QKe5pXDGpY/ZD4Ryp4mANUy83ZrDAZUkESjJPKY9
-	sW9yOp7IdFP0rez1BTrT7GdqlCftF85OOC/OQtNnCvBLePI4/OekiRgEi+iQHLWVQ6bdQgrCPPr
-	Z+0QV6Bw1pQY9u2k5Wy48ss3rjHgncRMlY75+Sc7M3dFm1SE6aSmVj4FkgawSsq/Go1G25mAAg0
-	G3XY0F8pxn7S9ieP+xcNUYqA1+LaEVAba9JOMshtNvIsftuQhVE0alzezwIbXUpCVlMmrDx0CIZ
-	37yPvtOSjfhM3/IIGrxx//RzqR+Sr4XdY=
-X-Received: by 2002:a05:600c:4f53:b0:490:3f7a:108b with SMTP id 5b1f17b1804b1-490a2958dc4mr75086275e9.16.1780153091542;
-        Sat, 30 May 2026 07:58:11 -0700 (PDT)
+        bh=zFZAUjYaK9FWKgvs/ixolGySq1VzA8CfDWl5e2+n+8I=;
+        b=YNUzdRbNVquyW6Uy19H3gnMaf4zyGClmyWTz6nthLnULLhvIqRkPsXcKakj0mWVc9L
+         4spc9FSU3DgfwQmpgaATKZ0N5qUlHbFjNsbiEqYtmJCt6CGyVD+gmYiOIhEkQaElShIo
+         V5ZhIZUvALOsujsBe6uUq1X2HgUECdR/uXpPUM8nRTtp+VVf3n9onSTc5OGMAdSfWgMD
+         zO0h03eEgtAfpB65GyTW7NwvOMZSt+905V9DW6sp6PYdgfvx1theO/glY0RyLl1zkVeW
+         +cDvkqhvoO62wX1PV+lar5Cid9vNMP82hGAP4aR/UOj5dcwvPhteW1TzMku+1nyqwwbd
+         Rq0Q==
+X-Forwarded-Encrypted: i=1; AFNElJ8R+2tRYRxgQLrm6Xon5ZwiXE44o7KdaxUcSvDTzlT7Hnv10gKOPbEy/E0gLxI3y6axKeXF5/dzhLKXLrJUIA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxBzf6W97rIJfR5HdE8LyJelbKYgiDpfFySPHk+HK6OuyhC2aN/
+	HwR2d/a/OCF4EFyTMhWrzqa4Rw9SnedHcR1SN3dASaldRu+nHp5owcXv
+X-Gm-Gg: Acq92OEgAehj9Zbq0/phk7rSX8FzVQO744FZQCCcYe1pAlvkORR1IWU4fDi+XfFw4tD
+	qaE2gmKa5P0ZI/k14PdK3zWlTtTHfGN/5immq0pT5+/O61virySguGIFrvMUzuS9UIgBl4o/IdB
+	DeAcNFNiIXDFud41+C7/YvKvMUg15k8nOXEVNYm9tR3i4jLIs7sSuIS25pJ2BczfnifAfv13nV3
+	IANQqnW3QJlL/xMZtcQQy3WPC/+FAue3u5n0VBNDrGgfOqlusMxcuBzlPaLjkMuqXXREOI5Li9X
+	SexLuI8KpZaKzJF2/+zWgOIuEAe48sorbJ6gUDtE8GPmNdBOInSwNiLTrNRT/yYWea7VPHq3Vkm
+	ZzfhcW5loCDTXR/PvI6bIpc/9aLHtTor9KQQizfz8PQRmsfWHqi9b7dcu0tD1jcr0E49nIXuGCA
+	xkiCONrqx2jRFZZLVxq6vQ9nqg+BnXByc=
+X-Received: by 2002:a05:6000:b12:b0:45e:6518:21ad with SMTP id ffacd0b85a97d-45ef6aec9c7mr6669746f8f.3.1780153094030;
+        Sat, 30 May 2026 07:58:14 -0700 (PDT)
 Received: from zenbook ([31.4.224.70])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-45ef354b5bdsm10916493f8f.21.2026.05.30.07.58.09
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-45ef354b5bdsm10916493f8f.21.2026.05.30.07.58.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 30 May 2026 07:58:11 -0700 (PDT)
+        Sat, 30 May 2026 07:58:13 -0700 (PDT)
 From: Yassine Oudjana <yassine.oudjana@gmail.com>
 X-Google-Original-From: Yassine Oudjana <y.oudjana@protonmail.com>
 To: Sean Wang <sean.wang@kernel.org>,
@@ -85,17 +85,17 @@ Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v8 2/6] dt-bindings: pinctrl: mediatek,mt6779-pinctrl: Improve pinctrl subnode and property descriptions
-Date: Sat, 30 May 2026 16:57:54 +0200
-Message-ID: <20260530145800.1029920-3-y.oudjana@protonmail.com>
+Subject: [PATCH v8 3/6] dt-bindings: pinctrl: mediatek,mt6779-pinctrl: Add MT6795
+Date: Sat, 30 May 2026 16:57:55 +0200
+Message-ID: <20260530145800.1029920-4-y.oudjana@protonmail.com>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260530145800.1029920-1-y.oudjana@protonmail.com>
 References: <20260530145800.1029920-1-y.oudjana@protonmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260530_075813_789943_760AB391 
-X-CRM114-Status: GOOD (  10.33  )
+X-CRM114-CacheID: sfid-20260530_075815_959749_916CB91E 
+X-CRM114-Status: GOOD (  18.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,66 +112,370 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Yassine Oudjana <y.oudjana@protonmail.com>
 
-Change "subnodes" to "subnode" in subnode description for better
-grammatical accuracy, capitalize pinmux description, wrap all descriptions
-at 80 characters, and remove literal style indicators from descriptions
-that don't need their new lines preserved.
+Combine MT6795 pin controller document into MT6779 one. In the
+process, amend the example with comments and additional pinctrl
+nodes from the MT6795 example, replace the current interrupts
+property description with the one from the MT6795 document since
+it makes more sense and define its items using conditionals
+as they now vary between variants. Also use conditionals to define
+valid values for the drive-strength property as well as items of
+the interrupts property for each variant since they are different
+on MT6795.
 
 Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Acked-by: Rob Herring <robh@kernel.org>
 ---
- .../bindings/pinctrl/mediatek,mt6779-pinctrl.yaml | 15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
+ .../pinctrl/mediatek,mt6779-pinctrl.yaml      |  67 ++++-
+ .../pinctrl/mediatek,mt6795-pinctrl.yaml      | 228 ------------------
+ 2 files changed, 65 insertions(+), 230 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt6795-pinctrl.yaml
 
 diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
-index 0dcbca5ca8f9..4dc9504e24ad 100644
+index 4dc9504e24ad..2124804c8863 100644
 --- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
 +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
-@@ -119,11 +119,11 @@ patternProperties:
-       '^pins':
-         type: object
-         description:
+@@ -8,6 +8,7 @@ title: MediaTek MT6779 Pin Controller
+ 
+ maintainers:
+   - Andy Teng <andy.teng@mediatek.com>
++  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+   - Sean Wang <sean.wang@kernel.org>
+ 
+ description:
+@@ -18,6 +19,7 @@ properties:
+   compatible:
+     enum:
+       - mediatek,mt6779-pinctrl
++      - mediatek,mt6795-pinctrl
+       - mediatek,mt6797-pinctrl
+ 
+   reg:
+@@ -81,6 +83,45 @@ allOf:
+             - const: iocfg_lt
+             - const: iocfg_tl
+             - const: eint
++
++      patternProperties:
++        '-pins$':
++          patternProperties:
++            '^pins':
++              properties:
++                drive-strength:
++                  enum: [2, 4, 8, 12, 16]
++
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: mediatek,mt6795-pinctrl
++    then:
++      properties:
++        reg:
++          minItems: 2
++          maxItems: 2
++
++        reg-names:
++          items:
++            - const: base
++            - const: eint
++
++        interrupts:
++          minItems: 1
++          items:
++            - description: EINT interrupt
++            - description: EINT event_b interrupt
++
++      patternProperties:
++        '-pins$':
++          patternProperties:
++            '^pins':
++              properties:
++                drive-strength:
++                  enum: [2, 4, 6, 8, 10, 12, 14, 16]
++
+   - if:
+       properties:
+         compatible:
+@@ -99,6 +140,15 @@ allOf:
+             - const: iocfgb
+             - const: iocfgr
+             - const: iocfgt
++
++      patternProperties:
++        '-pins$':
++          patternProperties:
++            '^pins':
++              properties:
++                drive-strength:
++                  enum: [2, 4, 8, 12, 16]
++
+   - if:
+       properties:
+         reg-names:
+@@ -170,8 +220,7 @@ patternProperties:
+ 
+           input-schmitt-disable: true
+ 
+-          drive-strength:
+-            enum: [2, 4, 8, 12, 16]
++          drive-strength: true
+ 
+           slew-rate:
+             enum: [0, 1]
+@@ -263,5 +312,19 @@ examples:
+                     mediatek,pull-up-adv = <0>;
+                 };
+             };
++
++            /* GPIO0 set as multifunction GPIO0 */
++            gpio-pins {
++                pins {
++                    pinmux = <PINMUX_GPIO0__FUNC_GPIO0>;
++                };
++            };
++
++            /* GPIO52 set as multifunction SDA0 */
++            i2c0-pins {
++                pins {
++                  pinmux = <PINMUX_GPIO52__FUNC_SDA0>;
++                };
++            };
+         };
+     };
+diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6795-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6795-pinctrl.yaml
+deleted file mode 100644
+index 68e91c05f122..000000000000
+--- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6795-pinctrl.yaml
++++ /dev/null
+@@ -1,228 +0,0 @@
+-# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+-%YAML 1.2
+----
+-$id: http://devicetree.org/schemas/pinctrl/mediatek,mt6795-pinctrl.yaml#
+-$schema: http://devicetree.org/meta-schemas/core.yaml#
+-
+-title: MediaTek MT6795 Pin Controller
+-
+-maintainers:
+-  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+-  - Sean Wang <sean.wang@kernel.org>
+-
+-description:
+-  The MediaTek's MT6795 Pin controller is used to control SoC pins.
+-
+-properties:
+-  compatible:
+-    const: mediatek,mt6795-pinctrl
+-
+-  gpio-controller: true
+-
+-  '#gpio-cells':
+-    description:
+-      Number of cells in GPIO specifier. Since the generic GPIO binding is used,
+-      the amount of cells must be specified as 2. See the below mentioned gpio
+-      binding representation for description of particular cells.
+-    const: 2
+-
+-  gpio-ranges:
+-    description: GPIO valid number range.
+-    maxItems: 1
+-
+-  reg:
+-    description:
+-      Physical address base for GPIO base and eint registers.
+-    minItems: 2
+-
+-  reg-names:
+-    items:
+-      - const: base
+-      - const: eint
+-
+-  interrupt-controller: true
+-
+-  '#interrupt-cells':
+-    const: 2
+-
+-  interrupts:
+-    description: Interrupt outputs to the system interrupt controller (sysirq).
+-    minItems: 1
+-    items:
+-      - description: EINT interrupt
+-      - description: EINT event_b interrupt
+-
+-# PIN CONFIGURATION NODES
+-patternProperties:
+-  '-pins$':
+-    type: object
+-    additionalProperties: false
+-    patternProperties:
+-      '^pins':
+-        type: object
+-        additionalProperties: false
+-        description: |
 -          A pinctrl node should contain at least one subnodes representing the
-+          A pinctrl node should contain at least one subnode representing the
-           pinctrl groups available on the machine. Each subnode will list the
+-          pinctrl groups available on the machine. Each subnode will list the
 -          pins it needs, and how they should be configured, with regard to muxer
 -          configuration, pullups, drive strength, input enable/disable and input
 -          schmitt.
-+          pins it needs, and how they should be configured, with regard to
-+          muxer configuration, pullups, drive strength, input enable/disable
-+          and input schmitt.
-         allOf:
-           - $ref: pinmux-node.yaml
-           - $ref: pincfg-node.yaml
-@@ -133,7 +133,8 @@ patternProperties:
-             description:
-               Integer array, represents gpio pin number and mux setting.
-               Supported pin number and mux varies for different SoCs, and are
+-          An example of using macro:
+-          pincontroller {
+-            /* GPIO0 set as multifunction GPIO0 */
+-            gpio-pins {
+-              pins {
+-                pinmux = <PINMUX_GPIO0__FUNC_GPIO0>;
+-              }
+-            };
+-            /* GPIO45 set as multifunction SDA0 */
+-            i2c0-pins {
+-              pins {
+-                pinmux = <PINMUX_GPIO45__FUNC_SDA0>;
+-              }
+-            };
+-          };
+-        $ref: pinmux-node.yaml
+-
+-        properties:
+-          pinmux:
+-            description:
+-              Integer array, represents gpio pin number and mux setting.
+-              Supported pin number and mux varies for different SoCs, and are
 -              defined as macros in dt-bindings/pinctrl/<soc>-pinfunc.h directly.
-+              defined as macros in dt-bindings/pinctrl/<soc>-pinfunc.h
-+              directly.
- 
-           bias-disable: true
- 
-@@ -142,7 +143,7 @@ patternProperties:
-               - type: boolean
-               - enum: [100, 101, 102, 103]
-                 description: Pull up PUPD/R0/R1 type define value.
+-
+-          drive-strength:
+-            enum: [2, 4, 6, 8, 10, 12, 14, 16]
+-
+-          bias-pull-down:
+-            oneOf:
+-              - type: boolean
+-              - enum: [100, 101, 102, 103]
+-                description: mt6795 pull down PUPD/R0/R1 type define value.
+-            description:
+-              For normal pull down type, it is not necessary to specify R1R0
+-              values; When pull down type is PUPD/R0/R1, adding R1R0 defines
+-              will set different resistance values.
+-
+-          bias-pull-up:
+-            oneOf:
+-              - type: boolean
+-              - enum: [100, 101, 102, 103]
+-                description: mt6795 pull up PUPD/R0/R1 type define value.
+-            description:
+-              For normal pull up type, it is not necessary to specify R1R0
+-              values; When pull up type is PUPD/R0/R1, adding R1R0 defines will
+-              set different resistance values.
+-
+-          bias-disable: true
+-
+-          output-high: true
+-
+-          output-low: true
+-
+-          input-enable: true
+-
+-          input-disable: true
+-
+-          input-schmitt-enable: true
+-
+-          input-schmitt-disable: true
+-
+-          mediatek,pull-up-adv:
 -            description: |
-+            description:
-               For normal pull up type, it is not necessary to specify R1R0
-               values; When pull up type is PUPD/R0/R1, adding R1R0 defines
-               will set different resistance values.
-@@ -152,7 +153,7 @@ patternProperties:
-               - type: boolean
-               - enum: [100, 101, 102, 103]
-                 description: Pull down PUPD/R0/R1 type define value.
+-              Pull up settings for 2 pull resistors, R0 and R1. User can
+-              configure those special pins. Valid arguments are described as
+-              below:
+-              0: (R1, R0) = (0, 0) which means R1 disabled and R0 disabled.
+-              1: (R1, R0) = (0, 1) which means R1 disabled and R0 enabled.
+-              2: (R1, R0) = (1, 0) which means R1 enabled and R0 disabled.
+-              3: (R1, R0) = (1, 1) which means R1 enabled and R0 enabled.
+-            $ref: /schemas/types.yaml#/definitions/uint32
+-            enum: [0, 1, 2, 3]
+-
+-          mediatek,pull-down-adv:
 -            description: |
-+            description:
-               For normal pull down type, it is not necessary to specify R1R0
-               values; When pull down type is PUPD/R0/R1, adding R1R0 defines
-               will set different resistance values.
+-              Pull down settings for 2 pull resistors, R0 and R1. User can
+-              configure those special pins. Valid arguments are described as
+-              below:
+-              0: (R1, R0) = (0, 0) which means R1 disabled and R0 disabled.
+-              1: (R1, R0) = (0, 1) which means R1 disabled and R0 enabled.
+-              2: (R1, R0) = (1, 0) which means R1 enabled and R0 disabled.
+-              3: (R1, R0) = (1, 1) which means R1 enabled and R0 enabled.
+-            $ref: /schemas/types.yaml#/definitions/uint32
+-            enum: [0, 1, 2, 3]
+-
+-        required:
+-          - pinmux
+-
+-allOf:
+-  - $ref: pinctrl.yaml#
+-
+-required:
+-  - compatible
+-  - reg
+-  - reg-names
+-  - interrupts
+-  - interrupt-controller
+-  - '#interrupt-cells'
+-  - gpio-controller
+-  - '#gpio-cells'
+-  - gpio-ranges
+-
+-additionalProperties: false
+-
+-examples:
+-  - |
+-    #include <dt-bindings/interrupt-controller/arm-gic.h>
+-    #include <dt-bindings/interrupt-controller/irq.h>
+-    #include <dt-bindings/pinctrl/mt6795-pinfunc.h>
+-
+-    soc {
+-        #address-cells = <2>;
+-        #size-cells = <2>;
+-
+-        pio: pinctrl@10005000 {
+-            compatible = "mediatek,mt6795-pinctrl";
+-            reg = <0 0x10005000 0 0x1000>, <0 0x1000b000 0 0x1000>;
+-            reg-names = "base", "eint";
+-            gpio-controller;
+-            #gpio-cells = <2>;
+-            gpio-ranges = <&pio 0 0 196>;
+-            interrupt-controller;
+-            interrupts = <GIC_SPI 153 IRQ_TYPE_LEVEL_HIGH>;
+-            #interrupt-cells = <2>;
+-
+-            i2c0-pins {
+-                pins-sda-scl {
+-                    pinmux = <PINMUX_GPIO45__FUNC_SDA0>,
+-                             <PINMUX_GPIO46__FUNC_SCL0>;
+-                };
+-            };
+-
+-            mmc0-pins {
+-                pins-cmd-dat {
+-                    pinmux = <PINMUX_GPIO154__FUNC_MSDC0_DAT0>,
+-                             <PINMUX_GPIO155__FUNC_MSDC0_DAT1>,
+-                             <PINMUX_GPIO156__FUNC_MSDC0_DAT2>,
+-                             <PINMUX_GPIO157__FUNC_MSDC0_DAT3>,
+-                             <PINMUX_GPIO158__FUNC_MSDC0_DAT4>,
+-                             <PINMUX_GPIO159__FUNC_MSDC0_DAT5>,
+-                             <PINMUX_GPIO160__FUNC_MSDC0_DAT6>,
+-                             <PINMUX_GPIO161__FUNC_MSDC0_DAT7>,
+-                             <PINMUX_GPIO162__FUNC_MSDC0_CMD>;
+-                    input-enable;
+-                    bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
+-                };
+-
+-                pins-clk {
+-                    pinmux = <PINMUX_GPIO163__FUNC_MSDC0_CLK>;
+-                    bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
+-                };
+-
+-                pins-rst {
+-                    pinmux = <PINMUX_GPIO165__FUNC_MSDC0_RSTB>;
+-                    bias-pull-up = <MTK_PUPD_SET_R1R0_10>;
+-                };
+-            };
+-        };
+-    };
 -- 
 2.54.0
 
