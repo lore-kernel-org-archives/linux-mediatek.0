@@ -4,155 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0F53CD5BD0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 30 May 2026 13:58:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07331CD6E49
+	for <linux-mediatek@archiver.kernel.org>; Sat, 30 May 2026 14:00:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wyfGzEjL9T0vealm6OZP5o97m37ViNP+EY8gC06YbN0=; b=ypy60a6gnhWayU/4+4YFeUxlH0
-	yRyIntuyUycSeUSWGIQ6O+UZwz6va2cC5Un6Rcl/wZKPkWLLZNO6Ofrl8acHDOcv/h0O4Fq4w1hch
-	RD0LIoIvjAcI6Ff4m95CK+zkBgCqF3LHrvA0lEvI66uHvzYFepecIMv5w//kvRZ28iwARUVLr0lTC
-	ehioZejFcedzJ0+IdF1m8b8Z51irFDHu0wdedLqKdEep/W8IqO22kkp4HfVYYzOul2tqcissL9ttN
-	ppw6SMCNkwHh1wySY4ZL4lb1bHJXlm0IQeQomasoixO4rMA/psu3WY/9/xyPt0jkpHB4ZOqnS7OSU
-	L2Mq9Jeg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=EAA8Cng1tHiDU71Bsnv2nxNHGPA4F8O7/bGrv/TxoZk=; b=XBIVyehXb16oL5
+	qiQEj8kB7N4YPycUBwWVoWw0j5/vrt9COwQwl9cmg84y+Zp8Iic7gXu3Kw10KlQwJeIn5zJlNeBRs
+	oAf+ibTQwr0Q5UG0D3FJfNSIcNb3g4PMdYyvQe1EG8imSweVCDbvsEQCbCh4etszcWNFPvCRv6w5K
+	qx3BEDmnANgITJLuaNbqeLkOz7ugedoWXWuLhoAT2LtmshIkIw3+ijTp5t/mehdUjuTZFyG6xG+Rz
+	v+rWrxNlkwExDaTWUZtvDJKCI1F3uK5L3SvGZz3UhG04dC7X3Osd9LWBHIZ6LK377alh23bvGXDV8
+	moYC3/GV5+nFws1NMYFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTKCO-00000008mOs-1lJu;
-	Sat, 30 May 2026 13:58:00 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1wTKEI-00000008maz-3jKL;
+	Sat, 30 May 2026 13:59:58 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTKCL-00000008mNj-3byO
-	for linux-mediatek@lists.infradead.org;
-	Sat, 30 May 2026 13:57:59 +0000
-Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 64U3k8aI1758088
-	for <linux-mediatek@lists.infradead.org>; Sat, 30 May 2026 13:57:56 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	wyfGzEjL9T0vealm6OZP5o97m37ViNP+EY8gC06YbN0=; b=bzxEthrpwQ2pHhnC
-	mXbdLD543QfAL0YPQACuqoLErzbiPmGmLK1F83dQzicPXablwtcUpB0CmOzQ4/Ej
-	/o85P/EnhUT5Jr72fA92EBsbLovboI69RstSVEjSaYjawP5owiUfpEqtVP3itFkT
-	bwBpdTqIm/sCLD+ffq0iAdOe4fjaOmdL6j6iGg3NZAgKGtvVQ0GQxgd++r2ArBKY
-	Uu6FNeoStb52siXH9bVGNIGAltQwkfIIjzwD+Sdr63BrQtsanHiQEoi9AEA1OP9H
-	5AxM50aPa4JS8+ibUZgElClEFOpcel7BFu9ssKSsSfgRmMGN/zMl7yJEcWhpTRs7
-	TjYPAA==
-Received: from mail-pj1-f71.google.com (mail-pj1-f71.google.com [209.85.216.71])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4efr9890ua-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Sat, 30 May 2026 13:57:56 +0000 (GMT)
-Received: by mail-pj1-f71.google.com with SMTP id 98e67ed59e1d1-36781927b4dso9793499a91.0
-        for <linux-mediatek@lists.infradead.org>; Sat, 30 May 2026 06:57:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1780149475; x=1780754275; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=wyfGzEjL9T0vealm6OZP5o97m37ViNP+EY8gC06YbN0=;
-        b=JU/ydrsbdSOrzp0V5SN8nvtNrlN2ngGxd1kE/cwnuBsnCgBWLZkzQBHvCZlsKtV92W
-         cuw4Wj5QvG6QcJIMojOdrusWB7nx1mYLWQrCGP7RSNlBRSiclwJcMF12Fuh2u80PWEDT
-         nGPiu5tja4stmv34Y9IsRW9HxjiCWlR0DJDTfb1YE+5kKtBA6r3rDP1LLK/fCsYCs52E
-         IdlrGzCltOhiU+KLi4msHkEZja0rikUU8Uiv/4WtQHZfRyFrbX5WpCngUxrZOD9cNfgo
-         hUsGcDCZ0GeQoQglIaU83oPD8kDfNPVtcbbjTt6XryI03/PLQzV7M2EQoSpsq/TTTbCi
-         CmDQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1780149475; x=1780754275;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=wyfGzEjL9T0vealm6OZP5o97m37ViNP+EY8gC06YbN0=;
-        b=Rsd3DmENyVov0mH6+54th9xVyNG4Ovz6pRBsce9Z0qTHzPY+t/w6S6blZwgl6clHMI
-         l19PsWD7tYXbg3vPcNB+7nzjvZbMSCPUQ5sj32k0jSgFx2SeVoJvPDwG57aTBawBy/xW
-         VRLkLWpnsN150y+sGfOULNrZag0f725iwL+mYONxMdSThnGWJSDWZ2w+WgNhcOI8PJQE
-         NuaPe9daxDbjQU39Wjqwfi/+d3dEb1zYycTpGESKZftaQu35shqB+BE/XuakGg+w8GrG
-         4582g/Nue8wBPQpa3iE1i9guuMVs3tgI89iAURF+FuPX/NEWaEcSj7EvCeZ5O/tR81A6
-         i7Qg==
-X-Forwarded-Encrypted: i=1; AFNElJ8EEEzcZDP1Ay+KEoW1toHREZ+YB8xHipDEdH0vl0bvifpiielbGJNBaprzxvEJl9bEUgPOfsgNgqNUqdXR6A==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy4s9fRsiQoISO4bJi9xFLZ6wkX1HfVQNoilQW2zS9Qc+bw2e0S
-	+pfJcfp3zrlODmFCd0UiYAVIphh4RIFV7v4IQ5O5SUZOXbUvOumnyXdwShrR1XqSxBXK6v4XpTS
-	Y3LoBggq98bRC1azQh6xo7yY+ckLsJmAJ7q1TqY/gy1rbObD1ms5HHRAzeuf+ka6A8MtfcCgFcj
-	QQ6ty99DU=
-X-Gm-Gg: Acq92OGoRe9umXZz32xshMtJG34ZHqKAsW4pm4rcVNoAZcCKFVlRi5RUO6/Vzic5eee
-	HVRmKvdbNQ9tw1OSZWqV4+YHuFSPRYUfcZ5atuy51OIYhXSWl5OrkwP5OIX/2dhpRHHmrtcUhcM
-	fENLlioi0dJZe56+2rBrgvmS8VceI2WT1/DEoLWiTP/WaOATTiUd1TgHKzUT9Narya4sMaj4xa1
-	CyAav/MTurS+Br+qBHaFCczvE48bpXxBZpS+6aXTBUJTV4uwh/AMXuzVHZl0slLOYKBOw32u+g4
-	zfoa9iU7ixM4NEPz0WArE0XkMa1WV8xHv8RaAItavGsXwmf/EZJo6joWyXEvxtukfGB8akKZFnP
-	6nGligTLIaknZEIcUlkgI/FduDafpPASE84QdyEZWCFmDlyyE1iAsSL+m7XHw+n4/idZNOPYbeL
-	lUnuM58R9EqWb8YH9hXC01
-X-Received: by 2002:a17:90b:5704:b0:36b:9c4a:e05d with SMTP id 98e67ed59e1d1-36c501ce691mr3673548a91.17.1780149475478;
-        Sat, 30 May 2026 06:57:55 -0700 (PDT)
-X-Received: by 2002:a17:90b:5704:b0:36b:9c4a:e05d with SMTP id 98e67ed59e1d1-36c501ce691mr3673524a91.17.1780149474988;
-        Sat, 30 May 2026 06:57:54 -0700 (PDT)
-Received: from [10.133.33.28] (tpe-colo-wan-fw-bordernet.qualcomm.com. [103.229.16.4])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-36bbffc1879sm5653053a91.5.2026.05.30.06.57.41
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 30 May 2026 06:57:54 -0700 (PDT)
-Message-ID: <dff3c74f-0c46-4ac1-914a-9ea8bd40316c@oss.qualcomm.com>
-Date: Sat, 30 May 2026 21:57:37 +0800
+	id 1wTKEG-00000008maP-3Rzg;
+	Sat, 30 May 2026 13:59:57 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 52AA242A34;
+	Sat, 30 May 2026 13:59:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87B8D1F00893;
+	Sat, 30 May 2026 13:59:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1780149594;
+	bh=EAA8Cng1tHiDU71Bsnv2nxNHGPA4F8O7/bGrv/TxoZk=;
+	h=From:Subject:Date:To:Cc;
+	b=ouUSjMcxP/WdDHjzVwSe7/7fquFllZ3T/M9TzeCFtsaHT2/kqwyEnNXAnkjMLLdOC
+	 MZWVPhCAb84+ys3Xx2DKlMbbfkwNOIu/47XLsThWBXS9pGjPf2x8RMCLg1gwiUd/di
+	 7SUakavt7Tp94UXcGP8U5s9z17KjwuuSVlqOCK+ihwDvUeGxhGRTwAikYRUjciynvb
+	 fFfMlaqyYuZP6fJjC7aVNRog+qd3sM5dEclOTM23ZVjvnzSDUwVT2SBiYyL1BjFbak
+	 SNfcnfAP6xIhbf/56hOgM/rIf9ai2ICy4tcFxy+kW3jdQrbxorCAA5es5TYbew/ZSv
+	 nmVZQSw2+wpnw==
+From: Maxime Ripard <mripard@kernel.org>
+Subject: [PATCH 00/76] drm/bridge: Convert all reset users to create_state
+Date: Sat, 30 May 2026 15:59:05 +0200
+Message-Id: <20260530-drm-no-more-bridge-reset-v1-0-875d828d31bc@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 1/2] dt-bindings: ufs: Document static TX Equalization
- settings properties
-From: Can Guo <can.guo@oss.qualcomm.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: bvanassche@acm.org, beanhuo@micron.com, peter.wang@mediatek.com,
-        martin.petersen@oracle.com, mani@kernel.org,
-        linux-scsi@vger.kernel.org, Alim Akhtar <alim.akhtar@samsung.com>,
-        Avri Altman <avri.altman@wdc.com>, Rob Herring <robh@kernel.org>,
-        Krzysztof Kozlowski <krzk+dt@kernel.org>,
-        Conor Dooley <conor+dt@kernel.org>,
-        Matthias Brugger
- <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Zhaoming Luo <zhml@posteo.com>,
-        Ram Kumar Dwivedi
- <quic_rdwivedi@quicinc.com>,
-        "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>,
-        open list <linux-kernel@vger.kernel.org>,
-        "moderated list:ARM/Mediatek SoC support:Keyword:mediatek"
- <linux-arm-kernel@lists.infradead.org>,
-        "moderated list:ARM/Mediatek SoC support:Keyword:mediatek"
- <linux-mediatek@lists.infradead.org>
-References: <20260529113338.984301-1-can.guo@oss.qualcomm.com>
- <20260529113338.984301-2-can.guo@oss.qualcomm.com>
- <20260529-neat-bright-shellfish-eab5e8@quoll>
- <ada65ce2-6736-44fe-9396-d3ed632274ce@oss.qualcomm.com>
-Content-Language: en-US
-In-Reply-To: <ada65ce2-6736-44fe-9396-d3ed632274ce@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=BaDoFLt2 c=1 sm=1 tr=0 ts=6a1aece4 cx=c_pps
- a=UNFcQwm+pnOIJct1K4W+Mw==:117 a=nuhDOHQX5FNHPW3J6Bj6AA==:17
- a=IkcTkHD0fZMA:10 a=NGcC8JguVDcA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yx91gb_oNiZeI1HMLzn7:22
- a=VwQbUJbxAAAA:8 a=PY6Zn8H8AAAA:8 a=mpaa-ttXAAAA:8 a=EUspDBNiAAAA:8
- a=LJiSo-RwSUm5TJ8LWggA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=uKXjsCUrEbL0IQVhDsJ9:22 a=ySS05r0LPNlNiX1MMvNp:22
-X-Proofpoint-GUID: OeXKuiUfwCh9q-MMqBn6f7GdbL7N72lM
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTMwMDE1MSBTYWx0ZWRfX0NX+LqUC6h+Q
- K18uLQ+lwxnf4EggZwPl3kxt5bQH8yYsGEesbHHLRcpBf/e32HaqT+0fkQiBt+RWgBuWLUhxYri
- glXRGhqQi//jDEyNGisU0bmhxjfEuB8qNFuQkY6cfRxgwAiHN9YHW7WftslPl0gY3+6TocIDMle
- UoIcjupUL5UCZHIj8bKiWDmiw2iRYCIVemhQ9dtrldw4ieU1JRCPwi79OHXiWGFPMEp+iqT+K75
- ExXrTAxLo/WJ9gDJ2lZ/kRP3z6ycV31bGGWZk0PH9t2JO+hhap/2Tt7FNZ14/qbxMLVGC+TeajM
- Jxqiy2KKKAgRa5qeUJ5qZRBXQaHgZE58LGiBl7tg9EDwrTaGJaRBeH7GIKAf6C6vj4+pl4ZX68t
- 1l5znm4Jenr6eF9+nwt0q7EgJQGxlFTO4HZF1rNOLABrHJKe3WG9OD8lUOLY08TRiowb0ODCjcY
- stfG6TvXcA3KbFkZKMg==
-X-Proofpoint-ORIG-GUID: OeXKuiUfwCh9q-MMqBn6f7GdbL7N72lM
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
- definitions=2026-05-30_04,2026-05-28_03,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 clxscore=1015 phishscore=0 malwarescore=0 impostorscore=0
- adultscore=0 priorityscore=1501 spamscore=0 lowpriorityscore=0 bulkscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2605210000 definitions=main-2605300151
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MwQqDQAwFf0VyNpCm2kJ/RTxY92lzcLdkRQTx3
+ 108DszMQRluyPSpDnJsli3FAo+6ovE3xBlsoTCp6Evap3DwhWPiJTn46xaK4chYeRxUQgvVdyN
+ U8r9jsv1ed/15Xjs3gQ9qAAAA
+X-Change-ID: 20260530-drm-no-more-bridge-reset-ca20d5e22740
+To: Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>
+Cc: Dmitry Baryshkov <lumag@kernel.org>, dri-devel@lists.freedesktop.org, 
+ Maxime Ripard <mripard@kernel.org>, Jagan Teki <jagan@amarulasolutions.com>, 
+ Liu Ying <victor.liu@nxp.com>, Frank Li <Frank.Li@nxp.com>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, imx@lists.linux.dev, 
+ linux-arm-kernel@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, 
+ Phong LE <ple@baylibre.com>, Douglas Anderson <dianders@chromium.org>, 
+ Inki Dae <inki.dae@samsung.com>, 
+ Marek Szyprowski <m.szyprowski@samsung.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Paul Cercueil <paul@crapouillou.net>, linux-mips@vger.kernel.org, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+ linux-amlogic@lists.infradead.org, 
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
+ Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, 
+ Geert Uytterhoeven <geert+renesas@glider.be>, 
+ Magnus Damm <magnus.damm@gmail.com>, 
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
+ linux-renesas-soc@vger.kernel.org, Biju Das <biju.das.jz@bp.renesas.com>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ linux-rockchip@lists.infradead.org, 
+ Yannick Fertre <yannick.fertre@foss.st.com>, 
+ Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, 
+ Philippe Cornu <philippe.cornu@foss.st.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ linux-stm32@st-md-mailman.stormreply.com, Jyri Sarha <jyri.sarha@iki.fi>, 
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
+ Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+ =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
+ Icenowy Zheng <zhengxingda@iscas.ac.cn>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Michal Simek <michal.simek@amd.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=9737; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=5mdpzx6AnIdXlXtHiMk6gtXCaV0Ggi5q17pXlWPT+Uk=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDFlSb01r+u3jJBcsVzl6eIHvJglnRfPCFSKp/sWLitVe3
+ V+atu5ox1QWBmFOBlkxRZYnMmGnl7cvrnKwX/kDZg4rE8gQBi5OAZiIXRxjwzp9nkOtcyMmtdgd
+ a91d0aoc6u5wjM0qR8ZrjsJq7c9muTsb0i1v2+YtftNc7l9/fTYrY8O2eRzqvy5sn3mhruGz9Oy
+ CfVVqOiEps4XcVVd6rDiRNvOQW0oEl2zaers8zblFe8+e0wAA
+X-Developer-Key: i=mripard@kernel.org; a=openpgp;
+ fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260530_065758_027980_735CC7EF 
-X-CRM114-Status: GOOD (  25.21  )
+X-CRM114-CacheID: sfid-20260530_065956_930808_438A2E27 
+X-CRM114-Status: UNSURE (   9.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -167,124 +128,175 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi, 
 
+All the bridges use reset to create a blank state only and don't use it
+to reset the hardware at all. This is what the new atomic_create_state
+is exactly supposed to be doing, so we can convert all existing bridge
+users to it, and remove the reset hook and helpers.
 
-On 5/30/2026 8:45 PM, Can Guo wrote:
->
->
-> On 5/30/2026 12:58 AM, Krzysztof Kozlowski wrote:
->> On Fri, May 29, 2026 at 04:33:37AM -0700, Can Guo wrote:
->>> UFS v5.0/UFSHCI v5.0 add HS-G6 support (46.6 Gbps/lane) via UniPro v3.0
->>> and M-PHY v6.0. In these specs, TX Equalization is defined for all High
->>> Speed Gears (not only HS-G6) to compensate channel loss and improve 
->>> signal
->>> integrity at high speed operation.
->>>
->>> For HS-G6, M-PHY uses PAM4 1b1b line coding, Pre-Coding may also be
->>> required depending on channel characteristics.
->>>
->>> Add vendor-neutral DT properties:
->>>
->>> - patternProperties for txeq-preshoot-g[1-6] and txeq-deemphasis-g[1-6]
->>> - fixed property tx-precode-enable-g6
->>>
->>> Each property is a uint32 array of per-lane tuples:
->>> <Host_Lane0 Device_Lane0>, [<Host_Lane1 Device_Lane1>]
->>>
->>> Accept 2 or 4 values (x1/x2 lane configs). PreShoot and DeEmphasis 
->>> values
->>> are 0..7. Precode enable values are 0/1 and only applicable to HS-G6.
->>>
->>> Acked-by: Manivannan Sadhasivam <mani@kernel.org>
->>> Reviewed-by: Bean Huo <beanhuo@micron.com>
->>> Reviewed-by: Peter Wang <peter.wang@mediatek.com>
->>> Signed-off-by: Can Guo <can.guo@oss.qualcomm.com>
->>> ---
->>>   .../devicetree/bindings/ufs/ufs-common.yaml   | 45 
->>> +++++++++++++++++++
->>>   1 file changed, 45 insertions(+)
->>>
->>> diff --git a/Documentation/devicetree/bindings/ufs/ufs-common.yaml 
->>> b/Documentation/devicetree/bindings/ufs/ufs-common.yaml
->>> index ed97f5682509..d90cf25adfa5 100644
->>> --- a/Documentation/devicetree/bindings/ufs/ufs-common.yaml
->>> +++ b/Documentation/devicetree/bindings/ufs/ufs-common.yaml
->>> @@ -105,6 +105,51 @@ properties:
->>>         Restricts the UFS controller to rate-a or rate-b for both TX 
->>> and
->>>         RX directions.
->>>   +  tx-precode-enable-g6:
->>> +    $ref: /schemas/types.yaml#/definitions/uint32-array
->>> +    oneOf:
->>> +      - minItems: 2
->>> +        maxItems: 2
->>> +      - minItems: 4
->>> +        maxItems: 4
->>> +    items:
->>> +      enum: [0, 1]
->>> +    description: |
->>> +      Static TX Precode enable values for HS-G6 only.
->>> +      Values are specified as per-lane tuples:
->>> +      <Host_Lane0 Device_Lane0>, [<Host_Lane1 Device_Lane1>].
->> You need to include them in any of applicable examples, otherwise
->> nothing here is validated.
-> Hi Krzysztof,
->
-> Thanks for the review.
->
-> Since no UFS5-capable SoC binding exists upstream yet (the target SoC is
-> still pre-CS), there is no vendor-specific YAML to attach the example to.
->
-> Is a synthetic example directly in ufs-common.yaml OK to you?
-Let me update qcom,sm8650-ufshc.yaml as it includes sm8650 and others.
+Let me know what you think,
+Maxime 
 
-Thanks,
-Can Guo.
->>
->> Why values cannot be on or off? Or even better: why you cannot just list
->> all the lanes which has it enabled, assuming disabled is by default?
-> Thanks for the suggestions.
->
-> For the "just list enabled lanes" suggestion: precode must be configured
-> independently for the Host-side TX and Device-side TX transceivers within
-> the same physical lane. A lane index list alone cannot capture this
-> two-dimensional per-lane state. The tuple format <Host_LaneN 
-> Device_LaneN>
-> is the minimal encoding that covers both.
->
-> For the "on/off" suggestion: the on/off string pattern is used with
-> single-value properties (e.g. LED default-state) read via
-> of_property_read_string(). I am not aware of precedent for on/off as a
-> string array for per-lane tuples.
->>
->>> +
->>> +patternProperties:
->>> +  "^txeq-preshoot-g[1-6]$":
->>> +    $ref: /schemas/types.yaml#/definitions/uint32-array
->>> +    oneOf:
->>> +      - minItems: 2
->>> +        maxItems: 2
->>> +      - minItems: 4
->>> +        maxItems: 4
->>> +    items:
->>> +      minimum: 0
->>> +      maximum: 7
->> What is the meaning of values? Nothing here refers to the spec, so is
->> this driver specific?
-> These are not driver-specific. PreShoot and DeEmphasis are standard
-> features of the MIPI M-PHY / UniPro stack. The range [0, 7] is defined
-> in the UniPro specification for the relevant PA layer attributes, and 
-> each
-> value maps to a specific dB level as defined in the M-PHY specification.
-> I will add the value-to-dB mapping table to the property descriptions 
-> in v7.
->
-> Thanks,
-> Can Guo.
->>
->> Best regards,
->> Krzysztof
->>
->
+Signed-off-by: Maxime Ripard <mripard@kernel.org>
+---
+Maxime Ripard (76):
+      drm/atomic-state-helper: Rename __drm_atomic_helper_bridge_reset()
+      drm/atomic-state-helper: Reorder __drm_atomic_helper_bridge_state_init() arguments
+      drm/atomic-state-helper: Drop memset from __drm_atomic_helper_bridge_state_init()
+      drm/bridge: Add new atomic_create_state callback
+      drm/atomic-state-helper: Add drm_atomic_helper_bridge_create_state()
+      drm/bridge: adv7511: Switch to atomic_create_state
+      drm/bridge: analogix_dp: Switch to atomic_create_state
+      drm/bridge: anx7625: Switch to atomic_create_state
+      drm/bridge: chipone-icn6211: Switch to atomic_create_state
+      drm/bridge: display-connector: Switch to atomic_create_state
+      drm/bridge: fsl-ldb: Switch to atomic_create_state
+      drm/bridge: imx8mp-hdmi-pvi: Switch to atomic_create_state
+      drm/bridge: imx8qm-ldb: Switch to atomic_create_state
+      drm/bridge: imx8qxp-ldb: Switch to atomic_create_state
+      drm/bridge: imx8qxp-pixel-combiner: Switch to atomic_create_state
+      drm/bridge: imx8qxp-pixel-link: Switch to atomic_create_state
+      drm/bridge: imx8qxp-pxl2dpi: Switch to atomic_create_state
+      drm/bridge: inno-hdmi: Switch to atomic_create_state
+      drm/bridge: ite-it6263: Switch to atomic_create_state
+      drm/bridge: ite-it6505: Switch to atomic_create_state
+      drm/bridge: ite-it66121: Switch to atomic_create_state
+      drm/bridge: lontium-lt9211: Switch to atomic_create_state
+      drm/bridge: lontium-lt9611: Switch to atomic_create_state
+      drm/bridge: lvds-codec: Switch to atomic_create_state
+      drm/bridge: nwl-dsi: Switch to atomic_create_state
+      drm/bridge: panel: Switch to atomic_create_state
+      drm/bridge: parade-ps8640: Switch to atomic_create_state
+      drm/bridge: samsung-dsim: Switch to atomic_create_state
+      drm/bridge: sii902x: Switch to atomic_create_state
+      drm/bridge: ssd2825: Switch to atomic_create_state
+      drm/bridge: dw-dp: Switch to atomic_create_state
+      drm/bridge: dw-hdmi-qp: Switch to atomic_create_state
+      drm/bridge: dw-hdmi: Switch to atomic_create_state
+      drm/bridge: dw-mipi-dsi: Switch to atomic_create_state
+      drm/bridge: dw-mipi-dsi2: Switch to atomic_create_state
+      drm/bridge: tc358762: Switch to atomic_create_state
+      drm/bridge: tc358767: Switch to atomic_create_state
+      drm/bridge: tc358768: Switch to atomic_create_state
+      drm/bridge: tc358775: Switch to atomic_create_state
+      drm/bridge: ti-dlpc3433: Switch to atomic_create_state
+      drm/bridge: ti-sn65dsi83: Switch to atomic_create_state
+      drm/bridge: ti-sn65dsi86: Switch to atomic_create_state
+      drm/bridge: ti-tdp158: Switch to atomic_create_state
+      drm/bridge: ti-tfp410: Switch to atomic_create_state
+      drm/imx: parallel-display: Switch to atomic_create_state
+      drm/ingenic: Switch to atomic_create_state
+      drm/mediatek: dp: Switch to atomic_create_state
+      drm/mediatek: dpi: Switch to atomic_create_state
+      drm/mediatek: dsi: Switch to atomic_create_state
+      drm/mediatek: hdmi: Switch to atomic_create_state
+      drm/mediatek: hdmi_v2: Switch to atomic_create_state
+      drm/meson: encoder_cvbs: Switch to atomic_create_state
+      drm/meson: encoder_dsi: Switch to atomic_create_state
+      drm/meson: encoder_hdmi: Switch to atomic_create_state
+      drm/msm: dp: Switch to atomic_create_state
+      drm/msm: hdmi: Switch to atomic_create_state
+      drm/omap: hdmi4: Switch to atomic_create_state
+      drm/omap: hdmi5: Switch to atomic_create_state
+      drm/renesas: rcar-du: lvds: Switch to atomic_create_state
+      drm/renesas: rcar-du: mipi_dsi: Switch to atomic_create_state
+      drm/renesas: rz-du: mipi_dsi: Switch to atomic_create_state
+      drm/rockchip: cdn-dp: Switch to atomic_create_state
+      drm/rockchip: rk3066_hdmi: Switch to atomic_create_state
+      drm/rockchip: lvds: Switch to atomic_create_state
+      drm/stm: lvds: Switch to atomic_create_state
+      drm/tests: bridge: Switch to atomic_create_state
+      drm/tidss: encoder: Switch to atomic_create_state
+      drm/tidss: oldi: Switch to atomic_create_state
+      drm/vc4: dsi: Switch to atomic_create_state
+      drm/verisilicon: Switch to atomic_create_state
+      drm/xlnx: zynqmp_dp: Switch to atomic_create_state
+      drm/atomic-state-helper: Remove drm_atomic_helper_bridge_reset()
+      drm/bridge: cdns-dsi: Use __drm_atomic_helper_bridge_state_init()
+      drm/bridge: cdns-dsi: Switch to atomic_create_state
+      drm/bridge: cdns-mhdp8546: Switch to atomic_create_state
+      drm/bridge: Remove atomic_reset support
+
+ drivers/gpu/drm/bridge/adv7511/adv7511_drv.c       |  2 +-
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  2 +-
+ drivers/gpu/drm/bridge/analogix/anx7625.c          |  2 +-
+ drivers/gpu/drm/bridge/cadence/cdns-dsi-core.c     |  9 +++---
+ .../gpu/drm/bridge/cadence/cdns-mhdp8546-core.c    |  8 +++---
+ drivers/gpu/drm/bridge/chipone-icn6211.c           |  2 +-
+ drivers/gpu/drm/bridge/display-connector.c         |  2 +-
+ drivers/gpu/drm/bridge/fsl-ldb.c                   |  2 +-
+ drivers/gpu/drm/bridge/imx/imx8mp-hdmi-pvi.c       |  2 +-
+ drivers/gpu/drm/bridge/imx/imx8qm-ldb.c            |  2 +-
+ drivers/gpu/drm/bridge/imx/imx8qxp-ldb.c           |  2 +-
+ .../gpu/drm/bridge/imx/imx8qxp-pixel-combiner.c    |  2 +-
+ drivers/gpu/drm/bridge/imx/imx8qxp-pixel-link.c    |  2 +-
+ drivers/gpu/drm/bridge/imx/imx8qxp-pxl2dpi.c       |  2 +-
+ drivers/gpu/drm/bridge/inno-hdmi.c                 |  2 +-
+ drivers/gpu/drm/bridge/ite-it6263.c                |  2 +-
+ drivers/gpu/drm/bridge/ite-it6505.c                |  2 +-
+ drivers/gpu/drm/bridge/ite-it66121.c               |  2 +-
+ drivers/gpu/drm/bridge/lontium-lt9211.c            |  2 +-
+ drivers/gpu/drm/bridge/lontium-lt9611.c            |  2 +-
+ drivers/gpu/drm/bridge/lvds-codec.c                |  2 +-
+ drivers/gpu/drm/bridge/nwl-dsi.c                   |  2 +-
+ drivers/gpu/drm/bridge/panel.c                     |  2 +-
+ drivers/gpu/drm/bridge/parade-ps8640.c             |  2 +-
+ drivers/gpu/drm/bridge/samsung-dsim.c              |  2 +-
+ drivers/gpu/drm/bridge/sii902x.c                   |  2 +-
+ drivers/gpu/drm/bridge/ssd2825.c                   |  2 +-
+ drivers/gpu/drm/bridge/synopsys/dw-dp.c            |  2 +-
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c       |  2 +-
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c          |  2 +-
+ drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c      |  2 +-
+ drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c     |  2 +-
+ drivers/gpu/drm/bridge/tc358762.c                  |  2 +-
+ drivers/gpu/drm/bridge/tc358767.c                  |  4 +--
+ drivers/gpu/drm/bridge/tc358768.c                  |  2 +-
+ drivers/gpu/drm/bridge/tc358775.c                  |  2 +-
+ drivers/gpu/drm/bridge/ti-dlpc3433.c               |  2 +-
+ drivers/gpu/drm/bridge/ti-sn65dsi83.c              |  2 +-
+ drivers/gpu/drm/bridge/ti-sn65dsi86.c              |  2 +-
+ drivers/gpu/drm/bridge/ti-tdp158.c                 |  2 +-
+ drivers/gpu/drm/bridge/ti-tfp410.c                 |  2 +-
+ drivers/gpu/drm/drm_atomic_state_helper.c          | 33 ++++++++++++----------
+ drivers/gpu/drm/drm_bridge.c                       |  4 +--
+ drivers/gpu/drm/imx/ipuv3/parallel-display.c       |  2 +-
+ drivers/gpu/drm/ingenic/ingenic-drm-drv.c          |  2 +-
+ drivers/gpu/drm/mediatek/mtk_dp.c                  |  2 +-
+ drivers/gpu/drm/mediatek/mtk_dpi.c                 |  2 +-
+ drivers/gpu/drm/mediatek/mtk_dsi.c                 |  2 +-
+ drivers/gpu/drm/mediatek/mtk_hdmi.c                |  2 +-
+ drivers/gpu/drm/mediatek/mtk_hdmi_v2.c             |  2 +-
+ drivers/gpu/drm/meson/meson_encoder_cvbs.c         |  2 +-
+ drivers/gpu/drm/meson/meson_encoder_dsi.c          |  2 +-
+ drivers/gpu/drm/meson/meson_encoder_hdmi.c         |  2 +-
+ drivers/gpu/drm/msm/dp/dp_drm.c                    |  4 +--
+ drivers/gpu/drm/msm/hdmi/hdmi_bridge.c             |  2 +-
+ drivers/gpu/drm/omapdrm/dss/hdmi4.c                |  2 +-
+ drivers/gpu/drm/omapdrm/dss/hdmi5.c                |  2 +-
+ drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c        |  2 +-
+ drivers/gpu/drm/renesas/rcar-du/rcar_mipi_dsi.c    |  2 +-
+ drivers/gpu/drm/renesas/rz-du/rzg2l_mipi_dsi.c     |  2 +-
+ drivers/gpu/drm/rockchip/cdn-dp-core.c             |  2 +-
+ drivers/gpu/drm/rockchip/rk3066_hdmi.c             |  2 +-
+ drivers/gpu/drm/rockchip/rockchip_lvds.c           |  2 +-
+ drivers/gpu/drm/stm/lvds.c                         |  2 +-
+ drivers/gpu/drm/tests/drm_bridge_test.c            |  2 +-
+ drivers/gpu/drm/tidss/tidss_encoder.c              |  2 +-
+ drivers/gpu/drm/tidss/tidss_oldi.c                 |  2 +-
+ drivers/gpu/drm/vc4/vc4_dsi.c                      |  2 +-
+ drivers/gpu/drm/verisilicon/vs_bridge.c            |  4 +--
+ drivers/gpu/drm/xlnx/zynqmp_dp.c                   |  2 +-
+ include/drm/drm_atomic_state_helper.h              |  6 ++--
+ include/drm/drm_bridge.h                           | 33 ++++++++--------------
+ 72 files changed, 111 insertions(+), 120 deletions(-)
+---
+base-commit: 21fcb222f0d1e1c9f5b04c09e9fb3408e13a0264
+change-id: 20260530-drm-no-more-bridge-reset-ca20d5e22740
+
+Best regards,
+-- 
+Maxime Ripard <mripard@kernel.org>
 
 
