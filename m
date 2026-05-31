@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5CC4CD6E5E
-	for <linux-mediatek@archiver.kernel.org>; Sun, 31 May 2026 15:51:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 237B2CD6E60
+	for <linux-mediatek@archiver.kernel.org>; Sun, 31 May 2026 15:51:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E9rjo0uDpY5uOKWII1aHKHLcNjvUubFe9nbeybaojHw=; b=eJIkIgPy1r70v/DQStyPmcAnUc
-	RSrfMKR2SSPtOPdzpQ8LlHYpYeX5BT8K/gZK3kLka5VSbyIz0oJbP6n8KXs6Df0Jk5bbsnQgkXq/j
-	Y2ah2m6MqrmfvIwszuk/M6Rsyl41qv+Zu9SUnoOPmVjy9vdxS+WOnSHDP5YHV0T2ajj6iYbLkUcmx
-	QQF+q/72Dmgli7sOKOkaPHLg9W2YZdjuC33ktQYDfZSuSUilPR0qC37PMEqhXTnu4dv9445xLa/6J
-	KpQCUWfMdDG6yiredabOs3S07ZozXiGArwNLJK3bd5zn0AdilWaISBmIHW6CT5JCyx3iWt2PlDyBq
-	zVuPVa6A==;
+	bh=4Sk9AMClgajSNHuw9J0bbpplICxYeEsc4DHVamhdVZs=; b=QOofeYrIlpMZPhrnKJEtCbpPL5
+	hRXlMpIjUUMeYZl0DFl1l/SPiZy7HB70XX/bPSCEKhQ/G0huRMh8+C36QDAncZMfwlY+46/a0Qt9g
+	PJJpGabUBilUg+jNih3CF8mFjF7Qd/9ODValF+wvaiCWpRHcBijiduV0Y751zAPtGCC/jw2LRXA52
+	USziI6NbAQ7uXeBA78ittRiaDlgaIonrcmzv1EWWo1pI0efYm6e6f9lZBbYp/N9ITT5ylhvqqdiRZ
+	6784eB3d9iHu+D2y65tBIQztAUbf5t+63NLn4B3rg0MM72vbk5pulaau6u7QZkgiszC/BaeCvm7QX
+	E+T/T/zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTiRk-00000009ioZ-2fef;
-	Sun, 31 May 2026 15:51:28 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wTiRl-00000009iqC-13Gc;
+	Sun, 31 May 2026 15:51:29 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTiRc-00000009ijN-0Ub1;
-	Sun, 31 May 2026 15:51:21 +0000
+	id 1wTiRg-00000009ilr-3gbC;
+	Sun, 31 May 2026 15:51:26 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id A3254435AE;
-	Sun, 31 May 2026 15:51:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0F7E21F00893;
-	Sun, 31 May 2026 15:51:18 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 8E1C444653;
+	Sun, 31 May 2026 15:51:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE5241F00898;
+	Sun, 31 May 2026 15:51:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780242679;
-	bh=E9rjo0uDpY5uOKWII1aHKHLcNjvUubFe9nbeybaojHw=;
+	s=k20260515; t=1780242684;
+	bh=4Sk9AMClgajSNHuw9J0bbpplICxYeEsc4DHVamhdVZs=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=FCQyMR+BmiAlMu0IGMLBtDbPFzgmn90ePPGAJ0g0z0eKsafjNUcJd7A8SrR1Eo7eT
-	 NNzNeDgK/XpAiBUGPx3lpIPGyrKsuGjRgaZmubmU9sKe6gYMNFFvZLPN7FNw2xtRem
-	 ZXdDvBYVPyAA52yxHw8vNl2CyHH/R771AnaCeGKmSTao5YTBA5dVANCyVVRKTPT5yw
-	 Hpq8czi1U/qgztENmZdnNy3dvxFVZkNWd7ATztee9U2I0c2LAw53eqIT9fjqUVBMz7
-	 /8HjTANpWlLf+vA1k1+ypBLNxdbQ5Zz7FJPivk61DCpDOq0kKYr6YaAW2NRF85yWK5
-	 pMApZ6ZIkJhJA==
+	b=KsNA8Kiq/4769yQzAg3IhyE+/0sFtQJjnJU395P3m0/R70OXwBC14CtUe0/gTzt+y
+	 qA4098p0WqkOb0uJQtWfqzwLxiN/A+0UGBTqMrqBaM01pws7FyFlyKq2UvHUQxsSAD
+	 n5GCNot3pkGFomMMweaSDP6hpNPkLTXuoGwKo+itBHiSGDSrOpH4Ywkjv0lRXJ78QX
+	 0xj2LlnVz8pF99Fy5NzWjMFiMcJo6KK0oXcotXGythhx3pUKWl2l4Z+Hon8BwZsPN5
+	 rEiGaCetA0r0Gj1cnVKWr0o1yXDkDKiwQahR5zdweWqBq2Lw/mHDwBDes2p1b1dLYA
+	 B/P/vOkMRSNMg==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Sun, 31 May 2026 17:50:34 +0200
-Subject: [PATCH nf-next v3 2/6] net: netfilter: Add encap_proto to
- flow_offload_tunnel
+Date: Sun, 31 May 2026 17:50:36 +0200
+Subject: [PATCH nf-next v3 4/6] selftests: netfilter: nft_flowtable.sh: Add
+ IPv4 over IPv6 flowtable selftest
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260531-b4-flowtable-sw-accel-ip6ip-v3-2-56a2826f3279@kernel.org>
+Message-Id: <20260531-b4-flowtable-sw-accel-ip6ip-v3-4-56a2826f3279@kernel.org>
 References: <20260531-b4-flowtable-sw-accel-ip6ip-v3-0-56a2826f3279@kernel.org>
 In-Reply-To: <20260531-b4-flowtable-sw-accel-ip6ip-v3-0-56a2826f3279@kernel.org>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
@@ -66,8 +66,9 @@ Cc: linux-arm-kernel@lists.infradead.org,
  linux-kselftest@vger.kernel.org
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260531_085120_200717_F04DF62A 
-X-CRM114-Status: GOOD (  12.15  )
+X-CRM114-CacheID: sfid-20260531_085124_967282_35D49462 
+X-CRM114-Status: UNSURE (   8.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,109 +83,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add encap_proto (AF_INET or AF_INET6) to struct flow_offload_tunnel
-to allow its use as part of the hash table key during flowtable entry
-lookup.
-This is a preliminary change to support IPv4 over IPv6 tunneling via
-the flowtable infrastructure for software acceleration.
+Similar to IPIP and IP6IP6, introduce specific selftest for IPv4 over IPv6
+flowtable sw acceleration in nft_flowtable.sh
 
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- include/linux/netdevice.h             | 1 +
- include/net/netfilter/nf_flow_table.h | 1 +
- net/ipv4/ipip.c                       | 1 +
- net/ipv6/ip6_tunnel.c                 | 1 +
- net/netfilter/nf_flow_table_ip.c      | 2 ++
- net/netfilter/nf_flow_table_path.c    | 2 ++
- 6 files changed, 8 insertions(+)
+ .../selftests/net/netfilter/nft_flowtable.sh       | 33 +++++++++++++++++++---
+ 1 file changed, 29 insertions(+), 4 deletions(-)
 
-diff --git a/include/linux/netdevice.h b/include/linux/netdevice.h
-index 88a5c7f59891..2c97cc60807c 100644
---- a/include/linux/netdevice.h
-+++ b/include/linux/netdevice.h
-@@ -902,6 +902,7 @@ struct net_device_path {
- 			};
+diff --git a/tools/testing/selftests/net/netfilter/nft_flowtable.sh b/tools/testing/selftests/net/netfilter/nft_flowtable.sh
+index 7a34ef468975..219339dbaf6e 100755
+--- a/tools/testing/selftests/net/netfilter/nft_flowtable.sh
++++ b/tools/testing/selftests/net/netfilter/nft_flowtable.sh
+@@ -579,9 +579,8 @@ if ! test_tcp_forwarding_nat "$ns1" "$ns2" 1 ""; then
+ 	ip netns exec "$nsr1" nft list ruleset
+ fi
  
- 			u8	l3_proto;
-+			u8	encap_proto;
- 		} tun;
- 		struct {
- 			enum {
-diff --git a/include/net/netfilter/nf_flow_table.h b/include/net/netfilter/nf_flow_table.h
-index 7b23b245a5a8..4d406801ec90 100644
---- a/include/net/netfilter/nf_flow_table.h
-+++ b/include/net/netfilter/nf_flow_table.h
-@@ -118,6 +118,7 @@ struct flow_offload_tunnel {
- 	};
+-# IPIP tunnel test:
+-# Add IPIP tunnel interfaces and check flowtable acceleration.
+-test_ipip() {
++# IP tunnel tests:
++test_ip_tnls() {
+ if ! ip -net "$nsr1" link add name tun0 type ipip \
+      local 192.168.10.1 remote 192.168.10.2 >/dev/null;then
+ 	echo "SKIP: could not add ipip tunnel"
+@@ -594,7 +593,9 @@ ip netns exec "$nsr1" sysctl net.ipv4.conf.tun0.forwarding=1 > /dev/null
  
- 	u8	l3_proto;
-+	u8	encap_proto;
- };
+ ip -net "$nsr1" link add name tun6 type ip6tnl local fee1:2::1 remote fee1:2::2
+ ip -net "$nsr1" link set tun6 up
++ip -net "$nsr1" addr add 192.168.210.1/24 dev tun6
+ ip -net "$nsr1" addr add fee1:3::1/64 dev tun6 nodad
++ip netns exec "$nsr1" sysctl net.ipv4.conf.tun6.forwarding=1 > /dev/null
  
- struct flow_offload_tuple {
-diff --git a/net/ipv4/ipip.c b/net/ipv4/ipip.c
-index ff95b1b9908e..5425af051d5a 100644
---- a/net/ipv4/ipip.c
-+++ b/net/ipv4/ipip.c
-@@ -369,6 +369,7 @@ static int ipip_fill_forward_path(struct net_device_path_ctx *ctx,
- 	path->tun.src_v4.s_addr = tiph->saddr;
- 	path->tun.dst_v4.s_addr = tiph->daddr;
- 	path->tun.l3_proto = IPPROTO_IPIP;
-+	path->tun.encap_proto = AF_INET;
- 	path->dev = ctx->dev;
+ ip -net "$nsr2" link add name tun0 type ipip local 192.168.10.2 remote 192.168.10.1
+ ip -net "$nsr2" link set tun0 up
+@@ -603,7 +604,9 @@ ip netns exec "$nsr2" sysctl net.ipv4.conf.tun0.forwarding=1 > /dev/null
  
- 	ctx->dev = rt->dst.dev;
-diff --git a/net/ipv6/ip6_tunnel.c b/net/ipv6/ip6_tunnel.c
-index f647e687ae4f..8202b33b4f19 100644
---- a/net/ipv6/ip6_tunnel.c
-+++ b/net/ipv6/ip6_tunnel.c
-@@ -1855,6 +1855,7 @@ static int ip6_tnl_fill_forward_path(struct net_device_path_ctx *ctx,
- 		path->type = DEV_PATH_TUN;
- 		path->tun.src_v6 = t->parms.laddr;
- 		path->tun.dst_v6 = t->parms.raddr;
-+		path->tun.encap_proto = AF_INET6;
- 		if (ctx->ether_type == cpu_to_be16(ETH_P_IP))
- 			path->tun.l3_proto = IPPROTO_IPIP;
- 		else
-diff --git a/net/netfilter/nf_flow_table_ip.c b/net/netfilter/nf_flow_table_ip.c
-index 9c05a50d6013..49e9b0308763 100644
---- a/net/netfilter/nf_flow_table_ip.c
-+++ b/net/netfilter/nf_flow_table_ip.c
-@@ -198,6 +198,7 @@ static void nf_flow_tuple_encap(struct nf_flowtable_ctx *ctx,
- 			tuple->tun.dst_v4.s_addr = iph->daddr;
- 			tuple->tun.src_v4.s_addr = iph->saddr;
- 			tuple->tun.l3_proto = IPPROTO_IPIP;
-+			tuple->tun.encap_proto = AF_INET;
- 		}
- 		break;
- 	case htons(ETH_P_IPV6):
-@@ -206,6 +207,7 @@ static void nf_flow_tuple_encap(struct nf_flowtable_ctx *ctx,
- 			tuple->tun.dst_v6 = ip6h->daddr;
- 			tuple->tun.src_v6 = ip6h->saddr;
- 			tuple->tun.l3_proto = IPPROTO_IPV6;
-+			tuple->tun.encap_proto = AF_INET6;
- 		}
- 		break;
- 	default:
-diff --git a/net/netfilter/nf_flow_table_path.c b/net/netfilter/nf_flow_table_path.c
-index b9032dfe3883..4d01212d6614 100644
---- a/net/netfilter/nf_flow_table_path.c
-+++ b/net/netfilter/nf_flow_table_path.c
-@@ -128,6 +128,7 @@ static void nft_dev_path_info(const struct net_device_path_stack *stack,
- 				info->tun.src_v6 = path->tun.src_v6;
- 				info->tun.dst_v6 = path->tun.dst_v6;
- 				info->tun.l3_proto = path->tun.l3_proto;
-+				info->tun.encap_proto = path->tun.encap_proto;
- 				info->num_tuns++;
- 			} else {
- 				if (info->num_encaps >= NF_FLOW_TABLE_ENCAP_MAX) {
-@@ -274,6 +275,7 @@ static void nft_dev_forward_path(const struct nft_pktinfo *pkt,
- 		route->tuple[!dir].in.tun.src_v6 = info.tun.dst_v6;
- 		route->tuple[!dir].in.tun.dst_v6 = info.tun.src_v6;
- 		route->tuple[!dir].in.tun.l3_proto = info.tun.l3_proto;
-+		route->tuple[!dir].in.tun.encap_proto = info.tun.encap_proto;
- 		route->tuple[!dir].in.num_tuns = info.num_tuns;
- 	}
+ ip -net "$nsr2" link add name tun6 type ip6tnl local fee1:2::2 remote fee1:2::1 || ret=1
+ ip -net "$nsr2" link set tun6 up
++ip -net "$nsr2" addr add 192.168.210.2/24 dev tun6
+ ip -net "$nsr2" addr add fee1:3::2/64 dev tun6 nodad
++ip netns exec "$nsr2" sysctl net.ipv4.conf.tun6.forwarding=1 > /dev/null
+ 
+ ip -net "$nsr1" route change default via 192.168.100.2
+ ip -net "$nsr2" route change default via 192.168.100.1
+@@ -636,6 +639,15 @@ else
+ 	ret=1
+ fi
+ 
++ip -net "$nsr1" route change default via 192.168.210.2
++ip -net "$nsr2" route change default via 192.168.210.1
++
++if ! test_tcp_forwarding_nat "$ns1" "$ns2" 1 "IP6IP4 tunnel"; then
++	echo "FAIL: flow offload for ns1/ns2 with IP6IP4 tunnel" 1>&2
++	ip netns exec "$nsr1" nft list ruleset
++	ret=1
++fi
++
+ # Create vlan tagged devices for IPIP traffic.
+ ip -net "$nsr1" link add link veth1 name veth1.10 type vlan id 10
+ ip -net "$nsr1" link set veth1.10 up
+@@ -653,7 +665,9 @@ ip netns exec "$nsr1" nft -a insert rule inet filter forward 'meta oif tun0.10 a
+ 
+ ip -net "$nsr1" link add name tun6.10 type ip6tnl local fee1:4::1 remote fee1:4::2
+ ip -net "$nsr1" link set tun6.10 up
++ip -net "$nsr1" addr add 192.168.220.1/24 dev tun6.10
+ ip -net "$nsr1" addr add fee1:5::1/64 dev tun6.10 nodad
++ip netns exec "$nsr1" sysctl net.ipv4.conf.tun6/10.forwarding=1 > /dev/null
+ ip -6 -net "$nsr1" route delete default
+ ip -6 -net "$nsr1" route add default via fee1:5::2
+ ip netns exec "$nsr1" nft -a insert rule inet filter forward 'meta oif tun6.10 accept'
+@@ -672,7 +686,9 @@ ip netns exec "$nsr2" sysctl net.ipv4.conf.tun0/10.forwarding=1 > /dev/null
+ 
+ ip -net "$nsr2" link add name tun6.10 type ip6tnl local fee1:4::2 remote fee1:4::1 || ret=1
+ ip -net "$nsr2" link set tun6.10 up
++ip -net "$nsr2" addr add 192.168.220.2/24 dev tun6.10
+ ip -net "$nsr2" addr add fee1:5::2/64 dev tun6.10 nodad
++ip netns exec "$nsr2" sysctl net.ipv4.conf.tun6/10.forwarding=1 > /dev/null
+ ip -6 -net "$nsr2" route delete default
+ ip -6 -net "$nsr2" route add default via fee1:5::1
+ 
+@@ -690,6 +706,15 @@ else
+ 	ret=1
+ fi
+ 
++ip -net "$nsr1" route change default via 192.168.220.2
++ip -net "$nsr2" route change default via 192.168.220.1
++
++if ! test_tcp_forwarding_nat "$ns1" "$ns2" 1 "IP6IP4 tunnel over vlan"; then
++	echo "FAIL: flow offload for ns1/ns2 with IP6IP4 tunnel over vlan" 1>&2
++	ip netns exec "$nsr1" nft list ruleset
++	ret=1
++fi
++
+ # Restore the previous configuration
+ ip -net "$nsr1" route change default via 192.168.10.2
+ ip -net "$nsr2" route change default via 192.168.10.1
+@@ -782,7 +807,7 @@ ip -net "$nsr1" addr add dead:1::1/64 dev veth0 nodad
+ ip -net "$nsr1" link set up dev veth0
+ }
+ 
+-test_ipip
++test_ip_tnls
+ 
+ test_bridge
  
 
 -- 
