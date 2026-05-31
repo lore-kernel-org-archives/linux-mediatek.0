@@ -4,57 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D6D7CD5BD1
-	for <linux-mediatek@archiver.kernel.org>; Sun, 31 May 2026 09:17:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C29C4CD6E56
+	for <linux-mediatek@archiver.kernel.org>; Sun, 31 May 2026 09:39:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
-	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6Mi/KLOUb5arO23rwQT+9y7j1zQmga8RdlBDubg+76U=; b=uDb7YBHiUAB+xIHOYp2ygjEV6U
-	5UaKbNXIJMTp+Il69LyQFH5b3eneisP6eckG0IaKvO/F6es9ilo5EaXcN2ETG2Gw+Y4tV/OJPCCYT
-	3hGImT3G6uAmwxL55G3SJWot2BG9a6p3FSqBa3xCE9SS801V+MMsSx8CghN+/aiq2yUtKBwehGLmg
-	SbVXRjlduDFrcl5j+z5aa4TWBn/hf2kUdHHyYszCd3zQd2xIhMDRT5cHr+RYKvSFiqSxOFCrbA8CW
-	gVjjt4iS1Cx15F1NJNaLSjnCfz7ntk3XSn11hTTwqLd7bEq93p/lsnX8nz040BII7PVl01Q3f6y7q
-	isRVy+Uw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=WhqWP6DPmYaDR0rC46LQ+OMyXf7a0ICQbsIUqtYXqIw=; b=4Wzbg3lYT0LGmFaYDk96K95NuQ
+	uRDRlQFckZFrAqe2FUI8hFEPc/+2/kWLc3YAqyWdzkSxWsoRSA/SbIYcdgeBLrzWO3q8cPuvX5TQd
+	ihCeBOKgv54r4Y8Gki5YiKBuWq0YPJ04pkUYZWCsmTyjh52g4dW5PYcTzdKJ/ssaVSiD8OHSRZk1X
+	tjpDK5rrBAq+Tas1uap13IGfuV6Ot4k36JlRyopGTQz1zD4QkdwisNJf0GDp41OAMiD5Qt/VoflJi
+	QXYCaPRgOYkc+GikkceaI+BWIW9iY2O1D5z+5nX5cLXFqaR7T53zichYCRMvSJ0zG6gvDdWIIiub2
+	eDC9htYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTcI9-00000009PyB-0nPH;
-	Sun, 31 May 2026 09:17:09 +0000
-Received: from mail-43166.protonmail.ch ([185.70.43.166])
+	id 1wTcdf-00000009S1A-3LIg;
+	Sun, 31 May 2026 09:39:23 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTcI6-00000009PxP-2WO3
-	for linux-mediatek@lists.infradead.org;
-	Sun, 31 May 2026 09:17:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail3; t=1780219021; x=1780478221;
-	bh=6Mi/KLOUb5arO23rwQT+9y7j1zQmga8RdlBDubg+76U=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=kkS0M9o65E9vzU0tAQN3sG+1sNy/wqRGMLlBz6rgYzhRrhrKCYAcix10tZSei36Rq
-	 A49IY34WBaDVMNn7Zt7eyW4Z3ernS+5S/Vwn2OhMTe3ohROjGNJj1xywXCUJ4X2GiW
-	 +ZOD1u1hbuP5jc5AEIZLB702dpCk1xO+PccTCrDCugGA0zfHhMxEhzn8LUt4V2wjP0
-	 K4JH90O8bLjt0AUV3k/ykRjl6LzupDieaAVunXpN7Onl7bNyl9FwsCNyJtXZSz8pfq
-	 BeGeufQuklPkukCPDtABDmasJ33OVFmaoN44yBoDgl74Qj5o6Ph9Mo9rzcr9nGlM3t
-	 dhq+BtB6dMFjg==
-Date: Sun, 31 May 2026 09:16:56 +0000
-To: y.oudjana@protonmail.com
-From: Yassine Oudjana <y.oudjana@protonmail.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Flora Fu <flora.fu@mediatek.com>, Alexandre Mergnat <amergnat@baylibre.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-input@vger.kernel.org
-Subject: Re: [PATCH v2 0/4] MediaTek MT6735+MT6328 SoC/PMIC pair base support
-Message-ID: <wQ6oaceRZHkMTNpnvLBdrScK2DqHJ1boThn_3lf03guV83pOD24rG4c-a66ziGBrXPj09-xHK_pJoA1QvsP_wxvGZGT3y8KAhnIXaRERtH0=@protonmail.com>
-In-Reply-To: <20260531-mt6735-pwrap-mt6328-pmic-v2-0-dac37bf92894@protonmail.com>
-References: <20260531-mt6735-pwrap-mt6328-pmic-v2-0-dac37bf92894@protonmail.com>
-Feedback-ID: 6882736:user:proton
-X-Pm-Message-ID: 06f8c2a7c3d9eadd276875d922d56e33b78a84b5
+	id 1wTcde-00000009S0Z-0I5A;
+	Sun, 31 May 2026 09:39:22 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id D8B45600AF;
+	Sun, 31 May 2026 09:39:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 100951F00893;
+	Sun, 31 May 2026 09:39:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1780220360;
+	bh=WhqWP6DPmYaDR0rC46LQ+OMyXf7a0ICQbsIUqtYXqIw=;
+	h=From:Date:Subject:To:Cc;
+	b=abo8ef2uYFR2vR0XNGCvdxWj1vvc0PxHpY7N+4IQyajdI/ZiAlW9E/QTGkPSbpUiu
+	 wclTN/5d2RfoRdh0btOUXEZixtvcVfMwfLqg8feaZl8R2Gp/5f8LK42HlHPrrBia1g
+	 Astd/5RV02q8DW+HSeINsUMriStEe9aAwQUkyaQAz6oyGsG7PVY2eSA7zhc7eVeO/D
+	 tx8zJkZsMUT5UFhjE9ieFHVUv6phl/8Cn/RGGqcKPkjpqpIpRvxlvp90l+2Mkj0iZo
+	 QdKRYalXe+fQHP6118Fp3xXHttvIGi7MHDMMnPWuFNjpsgE0aK5zZ8iZPxmqNOHNfy
+	 BfVM8iSsTaKjA==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Sun, 31 May 2026 11:38:57 +0200
+Subject: [PATCH] wifi: mt76: mt7996: Fix possible NULL pointer dereference
+ in mt7996_mac_write_txwi_80211()
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260531_021706_794594_B0F34D31 
-X-CRM114-Status: GOOD (  16.29  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260531-mt7996_mac_write_txwi_80211-null-ptr-deref-v1-1-6dd38e1d3422@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2NQQqDMBAAvyJ77kIS0cZ+pZQQktUuaCqbtAri3
+ xs8zhxmDsgkTBkezQFCP878SRX0rYHw9mki5FgZjDK96lqNS7kPQ+8WH9wmXMiVfWNnldEa03e
+ ecS2CkYRGtIFsVDaMXeuhBtcqeb9mz9d5/gGVBt/LfAAAAA==
+X-Change-ID: 20260531-mt7996_mac_write_txwi_80211-null-ptr-deref-8ce8d08cf53a
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Peter Chiu <chui-hao.chiu@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.3
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,61 +75,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sunday, May 31st, 2026 at 11:10 AM, Yassine Oudjana via B4 Relay <devnul=
-l+y.oudjana.protonmail.com@kernel.org> wrote:
+For injected frames (e.g. via radiotap), mac80211 can pass
+info->control.vif = NULL, as explicitly noted in struct ieee80211_tx_info.
+Check vif pointer before executing ieee80211_vif_is_mld() in
+mt7996_mac_write_txwi_80211 routine in order to avoid a possible NULL
+pointer dereference.
 
-> These patches are part of a larger effort to support the MT6735 SoC famil=
-y in
-> mainline Linux. More patches (unsent or sent and pending review or revisi=
-on)
-> can be found here[1].
->=20
-> This series adds base support for the MediaTek MT6735 SoC and MT6328 PMIC=
- pair.
-> This includes PMIC wrapper support on the SoC side and regulators and key=
-s on
-> the PMIC side. The PMIC has other blocks such as an audio codec and batte=
-ry
-> charger which can be supported in the future.
->=20
-> Changes since v1:
-> - Fit regulator definitions in 2 lines and 100 characters whenever possib=
-le.
-> - Remove get_mode and set_mode ops for regulators that don't support them=
-.
+Fixes: f0b0b239b8f36 ("wifi: mt76: mt7996: rework mt7996_mac_write_txwi() for MLO support")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-Forgot to mention:
-- Remove MD register definitions.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+index c98446057282..5ed2c73d5c75 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+@@ -757,6 +757,7 @@ mt7996_mac_write_txwi_80211(struct mt7996_dev *dev, __le32 *txwi,
+ 	bool multicast = is_multicast_ether_addr(hdr->addr1);
+ 	u8 tid = skb->priority & IEEE80211_QOS_CTL_TID_MASK;
+ 	__le16 fc = hdr->frame_control, sc = hdr->seq_ctrl;
++	struct ieee80211_vif *vif = info->control.vif;
+ 	u16 seqno = le16_to_cpu(sc);
+ 	bool hw_bigtk = false;
+ 	u8 fc_type, fc_stype;
+@@ -819,7 +820,7 @@ mt7996_mac_write_txwi_80211(struct mt7996_dev *dev, __le32 *txwi,
+ 		txwi[3] |= cpu_to_le32(MT_TXD3_REM_TX_COUNT);
+ 	}
+ 
+-	if (multicast && ieee80211_vif_is_mld(info->control.vif)) {
++	if (multicast && vif && ieee80211_vif_is_mld(vif)) {
+ 		val = MT_TXD3_SN_VALID |
+ 		      FIELD_PREP(MT_TXD3_SEQ, IEEE80211_SEQ_TO_SN(seqno));
+ 		txwi[3] |= cpu_to_le32(val);
+@@ -839,12 +840,12 @@ mt7996_mac_write_txwi_80211(struct mt7996_dev *dev, __le32 *txwi,
+ 		txwi[3] &= ~cpu_to_le32(MT_TXD3_HW_AMSDU);
+ 	}
+ 
+-	if (ieee80211_vif_is_mld(info->control.vif) &&
++	if (vif && ieee80211_vif_is_mld(vif) &&
+ 	    (multicast || unlikely(skb->protocol == cpu_to_be16(ETH_P_PAE))))
+ 		txwi[5] |= cpu_to_le32(MT_TXD5_FL);
+ 
+ 	if (ieee80211_is_nullfunc(fc) && ieee80211_has_a4(fc) &&
+-	    ieee80211_vif_is_mld(info->control.vif)) {
++	    vif && ieee80211_vif_is_mld(vif)) {
+ 		txwi[5] |= cpu_to_le32(MT_TXD5_FL);
+ 		txwi[6] |= cpu_to_le32(MT_TXD6_DIS_MAT);
+ 	}
 
->=20
-> [1] https://gitlab.com/mt6735-mainline/linux/-/commits/mt6735-staging
->=20
-> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
-> ---
-> Yassine Oudjana (4):
->       dt-bindings: mediatek: pwrap: Add MT6735 compatible
->       soc: mediatek: pwrap: Add support for MT6735 and MT6328 SoC/PMIC pa=
-ir
->       regulator: Add driver for MediaTek MT6328 PMIC regulators
->       Input: mtk-pmic-keys - Add support for MT6328
->=20
->  .../bindings/soc/mediatek/mediatek,pwrap.yaml      |   1 +
->  drivers/input/keyboard/mtk-pmic-keys.c             |  15 +
->  drivers/regulator/Kconfig                          |   9 +
->  drivers/regulator/Makefile                         |   1 +
->  drivers/regulator/mt6328-regulator.c               | 500 +++++++++++++++=
-++++++
->  drivers/soc/mediatek/mtk-pmic-wrap.c               | 177 +++++++-
->  include/linux/regulator/mt6328-regulator.h         |  49 ++
->  7 files changed, 749 insertions(+), 3 deletions(-)
-> ---
-> base-commit: 7da7f07112610a520567421dd2ffcb51beaefbcc
-> change-id: 20260531-mt6735-pwrap-mt6328-pmic-de481d5c5e89
->=20
-> Best regards,
-> --
-> Yassine Oudjana <y.oudjana@protonmail.com>
->=20
->=20
-> 
+---
+base-commit: 4913f44167cf35a9536e9eec7352e15b2de0c573
+change-id: 20260531-mt7996_mac_write_txwi_80211-null-ptr-deref-8ce8d08cf53a
+
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
