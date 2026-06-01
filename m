@@ -4,68 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03415CD5BD1
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2026 18:41:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24C08CD5BD1
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2026 19:26:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wW2I9IQOgQPeKJJKfmoCD2QasKn5Lkl/P+IL+G1Ddug=; b=JwDhC2M3i89GZTpf/liyCQ94Dy
-	LJsPVa4cZSl0lAFa/eGzGtEfwgldvioNyz5BEB+V1IgnbqxjL9o/a3//Dozhzb0aKbWOeQG4suzXf
-	+yqezXAgdS3rgE6oLfH6LHeN3Xq2cOIyBvI8foWznEgwlTZvM536YDO+L2UPnK5IKSufAxajwCQuw
-	5dQnQ2TGhohd80XEOiJn82oPk5KdNWu0NFAPkA2gZ5iOuRKukOcTHu/9L7BYcC8thY/jq82nHKM0u
-	KJBu0LwsdHQQwJUzRqzWYTZbcGzhez10t2edmSgYf8BXkGFujE+Mc3dEpg29F4Ou9+vEWenLNAHFp
-	jr+7+MPw==;
+	bh=y4hUHaRW2pF8Vn/XBhJ1vzt2YBnt21syoEVUODaCftU=; b=HLsD8vHwa+34mAf77KjSIwI7Wi
+	RqtE4OvOT7aAlNczndK1OCVVgg4+VfXn6vsWQ++mtZFsWKZFSrweaMeghc2n41f3FYzWue3hxwAwp
+	X9Q9YD2zUE6wr4LlPQj9ZKz7iHKWbcq2dV/xuCi1gAOirQSii3HSmbh2NNcO9Y2i6nuOvWRSjkAOT
+	tTBcJG8DzML/wKbadyuaDPKZEhEYXpty2F/eXE1RD9GvrEqj0IPrnOLN5xDcpp2Y32VbNgIU3AQgp
+	AIStAR80kjTVWH3HaV4IHfwa/6UAkXDQBn3n/ddwVlWdWI3PIVCmsPPC7XPKy0E1o4U6jOOf7KP5L
+	S2QT4CzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wU7a5-0000000BfvV-3E46;
-	Mon, 01 Jun 2026 18:41:45 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wU8Hb-0000000BihC-42t3;
+	Mon, 01 Jun 2026 19:26:43 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wU7a4-0000000BfvE-1Fau;
-	Mon, 01 Jun 2026 18:41:44 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6AC4060138;
-	Mon,  1 Jun 2026 18:41:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2033F1F00893;
-	Mon,  1 Jun 2026 18:41:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780339303;
-	bh=wW2I9IQOgQPeKJJKfmoCD2QasKn5Lkl/P+IL+G1Ddug=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=ex9uII4irekVurRAmQj59bEAJ3EVPb5zJ7FnuwdPimG0xK9XK8aFGGUyfDkjikOuW
-	 LIJ51F7aQ/r7xBCVjEdJZ8tqUHEEUU9MDbIyFWND3/FvZ4af6bXvNDNt9/AXmOvyyQ
-	 zvPPeuPawPyr62qJtpv/FndtkMObgMItdKBFXm54N8ej7R8IoZQ1Ux1kaL5SPkukyy
-	 f0FeUwI08+XAleI0hrzAQO/ANR/HGEp4JfyQUlkDDFg6uYAn/A0rvMJF5hX5KRZUf5
-	 MV3lT4gqTkAtgeTySEHAGgeZ6e4yH9ZS4zjqiJep63xwBFZzN3w1LGGARFDijkEU0d
-	 uBgMv4ieGgYFA==
-Date: Mon, 1 Jun 2026 19:41:37 +0100
-From: Mark Brown <broonie@kernel.org>
-To: y.oudjana@protonmail.com
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Flora Fu <flora.fu@mediatek.com>,
-	Alexandre Mergnat <amergnat@baylibre.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-input@vger.kernel.org
-Subject: Re: [PATCH v2 3/4] regulator: Add driver for MediaTek MT6328 PMIC
- regulators
-Message-ID: <c94c94b4-c3f4-4369-a110-dfb825c5f103@sirena.org.uk>
-References: <20260531-mt6735-pwrap-mt6328-pmic-v2-0-dac37bf92894@protonmail.com>
- <20260531-mt6735-pwrap-mt6328-pmic-v2-3-dac37bf92894@protonmail.com>
+	id 1wU8HZ-0000000BigE-236v
+	for linux-mediatek@lists.infradead.org;
+	Mon, 01 Jun 2026 19:26:43 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-68d2342c5e6so2501300a12.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 01 Jun 2026 12:26:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1780341999; cv=none;
+        d=google.com; s=arc-20240605;
+        b=h9X/fNCaCCo0PvcePiRFFpRkNAjzEwe9dSOjHaWeDhPy1KI/BOW0ki3CStAx8/DbWb
+         CFixg9OF9RajEmuzuDWlVEYKyhC7G7RgLppRy9X/doR8iF3avcUiHbBvbfVylPG0Nx2x
+         PMAf6Wvabe4xtI/wEE4ExqhjJWQVePeoCkBrrWvB+a/7uP7F7bHvwnaGmcgJF5kW/NOo
+         Ddf3OOjMnylk9RCBo+evB9LEqu3kKacnTL4UvEtPHiH7ZUw/Oh8JUV+OLgOSNJ164C3e
+         sKlgM3B/e9U4ueew2o0Lteb4KVUcwykxqUuK+MTOMMEW8Fjy/z3IQqBvyoxDXUkMSsD0
+         rV3Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=y4hUHaRW2pF8Vn/XBhJ1vzt2YBnt21syoEVUODaCftU=;
+        fh=KFxMp9RFJHkNr1vtM4vIhdn57nvmCAx01H4FPJExnKs=;
+        b=iiMSzuMWQRkx0gmUVD4N58H3h7zAi4pSTdHe/QgZbJnHFimrUKQ6ieF3QnEl20ygRg
+         IqzptTQ4ER0YSklHkQQIrpmQvL4JV3EW0EAADUfi173wF+IjONJc1xS6nzQNWwAsDTsf
+         EyjsIYMxVUmwhJIMbwq9XFOZXsGJQzFf5g6cSfejABrUvuK40R5SaR2f/d+cFgFlk2sw
+         bRNaoff1QRI+KyIeYJ/KKd5oRyu507wTsyyP/fYpVi0uYCWNqNe0S/pP8MrXDYvQ1j3j
+         /rDlP4XpyokTh2b3UgvM2ZCmnkPhHmQxWo/b+kp1poKeqi6wicQNv2xJV0Q6ot35Y5xW
+         QXAw==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1780341999; x=1780946799; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=y4hUHaRW2pF8Vn/XBhJ1vzt2YBnt21syoEVUODaCftU=;
+        b=bjiThTTS5UUwR9/My/GmTT2scpd5CSfIa2EpnllYu3jE/cmYGzLIBlmKHcOePgSKjJ
+         mAZryuNcq89zkncOYvkXT1iZnRK1ajCMSiraRIJ6j9lQLyDeoYToWDyeWE+1DCQSDLlT
+         OVwoAuvkW3vtJZGSc6GWXjo8ALF4G4RPalhaS3SFSvv/XjK/iF5tw3nrXqUPF46+1u9Y
+         33Sc72fmv632LLB73CeiWBfDFvsrXo7Rg4iHJPYj1UnVOWI8/lBr0FgseyG8IHRm8UQg
+         ISkS/TJuEOzhmmawRuRpgoPgDGtFmWR74xr9GO5ONkqyaNn0mxHa+0nPtPE21r/1BMx8
+         F54w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1780341999; x=1780946799;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=y4hUHaRW2pF8Vn/XBhJ1vzt2YBnt21syoEVUODaCftU=;
+        b=B1L0lsd+Lxx4py1zB5MhKhVXE63XQESOIXSl+KfYRv0AxMfxSbB2Edqy0wRnP3Z39a
+         K4N/lNhXwdWfyfUlkM8hqxmnEcqeD2xQhVqPi02xp1kZDdglM24rTpMjNlPfpwEqd5Nn
+         +Ybt9OaoUa2wADSSIrmkArnm/PGyrDoC/CBP28by5f7yi6wD6xtONyQvkqcN4QW6tZuP
+         Ap9D3gJIKpOysCma9HZ+AMbwmCY+ZTOoLc0j2dtXB9CcYyQ5BPr91f/94PgQyBg2/OBw
+         nFdv4t/j07fJ9+eEtj2oJUWKo5TInRDpouzUqcHIOhuxM2RSO0/6jOK3Ks1CVgPFptVd
+         WoZg==
+X-Gm-Message-State: AOJu0YwsJXfpHTLW3xrgw5wPElP8VQVWasA5r80gGzFbOkvo+fZ9Wr0i
+	8Hxksb7DQLgP45W3ApKvkmF2nAPpBaZpGp8WZk0Eh5lBq3kXAxcHFKGG3GpFC3wtdrMquqSSQVt
+	e5VhDQ2QzAP+fZDPnRqFXX7qzy65C0J0=
+X-Gm-Gg: Acq92OE4qYk/sXXvnwwUIB5G7W3ckAXpmvdNnXOautrogHzT4Cv2rfI8BMei3ScWrwX
+	3MrZVlsbkHrQ4ZK2e1k0J2lzXcq0uWeyVKzYUVi+aZu4v699ZsxxVfm0c4aVd8qIgi/BWaY4Rjf
+	CvxdPbe9c8uj/qWp8H2ycXoJ5TFyNv/ffEBPuS5x1C4yTdmiNv/J62W7RbXh0QwtP4OB5GrEcrA
+	AeVNjleDRPhPSFNzb135Vb4f/mZnLALjB7C/dPSqftmMqYbhw12s+f0lk11XCyJPPQ97XfOn9oN
+	LlkraqeWzunptoq1hJqbnr75+2ymeMaoj+mfYfHXerx7jMY=
+X-Received: by 2002:a17:907:3c8a:b0:bed:9a4f:a42e with SMTP id
+ a640c23a62f3a-bed9a4fb3fcmr364036566b.17.1780341998944; Mon, 01 Jun 2026
+ 12:26:38 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="hTo5YyAF2wDum4dv"
-Content-Disposition: inline
-In-Reply-To: <20260531-mt6735-pwrap-mt6328-pmic-v2-3-dac37bf92894@protonmail.com>
-X-Cookie: Have a nice day!
+References: <20260601152707.29039-1-l.scorcia@gmail.com> <CAD++jL=oF_43jwV830p42yOke_tZb-MKomp9fVoQ5EtnQHGzNA@mail.gmail.com>
+In-Reply-To: <CAD++jL=oF_43jwV830p42yOke_tZb-MKomp9fVoQ5EtnQHGzNA@mail.gmail.com>
+From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Date: Mon, 1 Jun 2026 21:26:26 +0200
+X-Gm-Features: AVHnY4JJrihr8pVvcJ1S75wZnre1x-GIaJ8orYAbpycsIER2tWpRasMInT2GVKk
+Message-ID: <CAORyz2+YG4WsS1ay2UA_S-w1UGMe=yEbiz-FUnRPYR03xaikng@mail.gmail.com>
+Subject: Re: [PATCH] dt-bindings: pinctrl: mediatek: mt6795: document the
+ slew-rate property
+To: Linus Walleij <linusw@kernel.org>
+Cc: linux-mediatek@lists.infradead.org, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sean Wang <sean.wang@kernel.org>, 
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260601_122641_546828_AB9B5AA8 
+X-CRM114-Status: GOOD (  12.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,90 +118,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi!
 
---hTo5YyAF2wDum4dv
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+> Do you know that value for the SoC to you can express it like
+> this and translate it in the driver?
 
-On Sun, May 31, 2026 at 11:10:44AM +0200, Yassine Oudjana via B4 Relay wrote:
-> @@ -0,0 +1,500 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * MediaTek MT6328 regulator driver
-> + * Based on MT6323 driver.
-> + *
-> + * Copyright (c) 2016 MediaTek Inc.
-> + * Copyright (c) 2022 Yassine Oudjana <y.oudjana@protonmail.com>
-> + */
+Unfortunately the data sheet I have doesn't say anything more - just
+"Normal slew" or "Slower slew", and I don't have a scope to measure
+it. All I know is that it flips a single bit in a configuration
+register.
 
-Please make the entire comment a C++ one so things look more
-intentional.
+I found this missing property while working on the Xiaomi Mi Smart
+Clock x04g (mt8167). I ported the current pinctrl driver for
+mt8516/mt8167 to the paris platform driver (adding support for slew
+rate and r1r0 pullups in the process) but the stock device tree sets a
+slower slew rate for the speaker amp. Without this patch it would
+trigger a dts error.
 
-> +static const unsigned int ldo_volt_table3[] = {
-> +	0, 0, 0, 1800000, 1900000, 2000000, 2100000, 2200000
-> +};
-
-Use linear_min_sel for the first three values.
-
-> +static const struct linear_range ldo_volt_range1[] = {
-> +	REGULATOR_LINEAR_RANGE(700000, 0, 0x7f, 6250)
-> +};
-
-If there's just one range there's no need for a lookup table, use
-regulator_map_voltage_linar().
-
-> +static int mt6328_get_status(struct regulator_dev *rdev)
-> +{
-> +	int ret;
-> +	u32 regval;
-> +	struct mt6328_regulator_info *info = rdev_get_drvdata(rdev);
-> +
-> +	ret = regmap_read(rdev->regmap, info->desc.enable_reg, &regval);
-> +	if (ret != 0) {
-> +		dev_err(&rdev->dev, "Failed to get enable reg: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	return (regval & info->qi) ? REGULATOR_STATUS_ON : REGULATOR_STATUS_OFF;
-> +}
-
-get_status() should report the actual status of the regulator, not what
-was configured.  If the device can't report this just omit the
-operation.
-
-> +		if (mt6328_regulators[i].vselctrl_reg) {
-> +			if (regmap_read(mt6328->regmap,
-> +				mt6328_regulators[i].vselctrl_reg,
-> +				&regval) < 0) {
-> +				dev_err(&pdev->dev,
-> +					"Failed to read buck ctrl\n");
-> +				return -EIO;
-
-Better to return the actual error.
-
-> +		rdev = devm_regulator_register(&pdev->dev,
-> +				&mt6328_regulators[i].desc, &config);
-> +		if (IS_ERR(rdev)) {
-> +			dev_err(&pdev->dev, "failed to register %s\n",
-> +				mt6328_regulators[i].desc.name);
-> +			return PTR_ERR(rdev);
-
-dev_err_probe().
-
---hTo5YyAF2wDum4dv
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmod0mAACgkQJNaLcl1U
-h9Cowgf/TR/qzesVBhChXAa4+FjLbC3YcC3giv6TuI0GVikEdxuWGTDvD2iipvAK
-p+sJYyV5B+BuTDI6NaYr4CrVsJNIpV+ci7qoXixlUV9ju7qY/L6GmjdYJY+l/XcF
-W+fZFCQfqkIRFB3V87HJPY81af0WQLJ0c9G4euXtdmzusaWOGaHhecMu2Sic1IZn
-FMjUVSMriahgusOeO6uikaa86FqoXcJtHB6aLGX654xLky6UJCNaLJJ4G/PitxEZ
-py6OsBALpjjImVOGWziwKrIsMqxdFPH8/15+N8Kv5fT8VkEG2rT0Gh+LhmBvKTA7
-j2oF8Qysg9lhLOv6gc9Aw3i+nMZ5PQ==
-=Ua+8
------END PGP SIGNATURE-----
-
---hTo5YyAF2wDum4dv--
+Thanks!
+-- 
+Luca
 
