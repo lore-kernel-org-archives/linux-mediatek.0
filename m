@@ -4,74 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E23DACD6E55
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2026 21:48:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87E01CD5BD1
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2026 23:11:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ABndK8Yqocrn8l9TWmQbfauSTjrVegcC2yyvk6FSK+c=; b=mzheoftnU7K5bUjmc3sIYddzsE
-	6it6lPPZzFw7X2NP316RLDQcvuvgVkyzuX9/d9YWJpqTaFEsZsgWtw8EngD2vl7+gga1kpZNaqQf4
-	WzO26VT7V3kqHh8x8QvhRr7WFN9HdFNV3y9yz8MHwcNc4C3m5rbPThccGgKyxAGDAxBewWohktYk0
-	/3vJn0F4pndJe53nCJpNIJkAUfwUhAjf6RYCpCgrMybj/+zaC3FkrRipsoZSfw2f4Vb3nQlfANZSq
-	NElmX714cFHO1CjnX+PZoTYMNNipO8KdcdoUq0BK+PFCBOWqNSOu3zpnThpz6FAqGuY3HcVYoMK3N
-	IF3aJFUg==;
+	bh=u0uVl58P/+LhtePaVxc1OfDLsvpS/SYXpeqwBFFbzSU=; b=T1d7nU5QDW4ZfTXZ5IjmBgOkJC
+	ZH7WBXCPz9wBhJyaPpUCnZ4dDDgjM0oxXj9jas48RaTCfuEKbCDHHfj7rq0TVvR+VZRpqBevRHzhW
+	pqBZxkvzqxjYH/1ls9xfJx7vg+qCWt3rHJken4NreQMQw2eYkIVgw7+XM17Y/01WcC0PL59778xWA
+	SZ0m07RaUrEBbhJRxr2JrGfrtpR1taNotExhgQZPrpUSy3HV7eZSIGKd6mBaPfq7rnok8fbsB6FF+
+	EZ6lxwGvufz0zEZLLpmZImQCPybMqQbEq7gD6m+jq8YFcC9W4YDjVxGirpSOspAvhNkVSVXmQasW6
+	2jq5XhfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUAUx-0000000Bscb-1uaz;
-	Mon, 01 Jun 2026 21:48:39 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wUBnJ-0000000C2Ur-207x;
+	Mon, 01 Jun 2026 23:11:41 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUAUw-0000000BscF-2UTO
-	for linux-mediatek@lists.infradead.org;
-	Mon, 01 Jun 2026 21:48:38 +0000
+	id 1wUBnH-0000000C2UI-2IkS;
+	Mon, 01 Jun 2026 23:11:40 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9410D600AA;
-	Mon,  1 Jun 2026 21:48:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1EF281F00893;
-	Mon,  1 Jun 2026 21:48:37 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id DCDA044589;
+	Mon,  1 Jun 2026 23:11:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9C7D61F00893;
+	Mon,  1 Jun 2026 23:11:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780350517;
-	bh=ABndK8Yqocrn8l9TWmQbfauSTjrVegcC2yyvk6FSK+c=;
+	s=k20260515; t=1780355498;
+	bh=u0uVl58P/+LhtePaVxc1OfDLsvpS/SYXpeqwBFFbzSU=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=fRBG4Cx49F1b6mhbOr4R3eMGTorCocZ2HTlIYBNisMXOugHupg8U0f3zAZpjNQFKV
-	 aEqCYE5az1enhQMtoVa3TA5HXFE5S0+7aFSWQfOlEZS2HLFDBz27KAqnc+eeALEWm9
-	 iKoXXbMq4aRjFOd3kQxh1bB1b+wNx6uDm0+g6DSUANV6NUjP2DLKCGxPZG6AT0Z18Z
-	 LOda1fKD6Au6hhWOVmpuwcawh0/TijzqJjWelj3GrFoPcE1yrObhItX28jdit7S4MN
-	 OaEXmD8f1kJZ0HFAdAN2gfVCryUjfLlLCNwz4wGR7/6IntGW67+WCjcj4GfWV9vH3c
-	 lLEJa0T71IFKg==
-Date: Mon, 1 Jun 2026 16:48:36 -0500
-From: Rob Herring <robh@kernel.org>
-To: Manivannan Sadhasivam <mani@kernel.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
+	b=fGL4zNAtKMHnY544PXECwX2aMFMp24rQEYuUfQs+q21l93HzpIoRz52ZpUN9uwl/c
+	 QoiugUZR1nUBv6FmnjvfYpNQH+WM0id3NatUQeZS7gmM77UqWgWCnDgloXPPUM+q6b
+	 EqvWD8Iwdz2ig7V078bAd9ClTS2Rwhnq0K/E82D/kLa8WxO3WtTvzDE3hW7/NV4hn3
+	 0fwhsepFhBiUJjLnTbY2PoJcanlPDjS33wSP7UO3Kkfl9U+T2Qre7WgeccSvtYofEa
+	 d1hYkbXkCDdi9kkFX4q+1PJfxHkP0OohnKITG8PZ8cu5VfqakCLak+bmY4a6imtF52
+	 ZQ5pS14t8q1/A==
+Date: Mon, 1 Jun 2026 18:11:38 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Eric Dumazet <edumazet@google.com>,
+	Benjamin Larsson <benjamin.larsson@genexis.eu>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
-	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] dt-bindings: PCI: mediatek-gen3: Allow memory-region for
- restricted DMA buffer
-Message-ID: <20260601214836.GA37779-robh@kernel.org>
-References: <20260508063633.3894348-1-wenst@chromium.org>
- <locoul5wdzuvvmm7mqpuntjqu4o75gmyd5npgfqrw3zuwsrse6@dhrjggs4cihh>
- <CAGXv+5GAaMQbaoUVr5zcwtHaofyXwHz03TxBe-QyWj_sNoQZsg@mail.gmail.com>
- <qnikqcqoiw7z2yh5wruqcli3rk56yomyymghzivlcmekp2blwc@dfhsfl3sqcla>
- <CAGXv+5GBraoTrQatQdrM5b+dOteL_Y5K7_UQBUt-2L1x=c94KA@mail.gmail.com>
- <2tq4zy3zhcrz25rl2qhdsxvoedcry4z3v2lmmropesxqgzhtlp@fn6htdl74ogu>
- <CAGXv+5GRBv8+pLbb-AyFW0cAx=c45JhWd-odzJGDdWABKQLaqg@mail.gmail.com>
- <rphuqwucr2r6gsgrkzkpzy7fn4qa7q4afzbwtzae53dtudmush@kxtzdoq426uz>
+	devicetree@vger.kernel.org, Andrew Lunn <andrew+netdev@lunn.ch>,
+	linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Christian Marangi <ansuelsmth@gmail.com>
+Subject: Re: [PATCH net-next v8 01/10] dt-bindings: net: airoha: Add GDM port
+ ethernet child node
+Message-ID: <178035548342.162634.13411632527297449694.robh@kernel.org>
+References: <20260519-airoha-eth-multi-serdes-v8-0-6bd70e329df6@kernel.org>
+ <20260519-airoha-eth-multi-serdes-v8-1-6bd70e329df6@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <rphuqwucr2r6gsgrkzkpzy7fn4qa7q4afzbwtzae53dtudmush@kxtzdoq426uz>
+In-Reply-To: <20260519-airoha-eth-multi-serdes-v8-1-6bd70e329df6@kernel.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260601_161139_607417_D776F613 
+X-CRM114-Status: GOOD (  13.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,83 +80,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 19, 2026 at 12:51:49PM +0530, Manivannan Sadhasivam wrote:
-> On Mon, May 18, 2026 at 05:02:11PM +0800, Chen-Yu Tsai wrote:
-> > On Fri, May 15, 2026 at 8:34 PM Manivannan Sadhasivam <mani@kernel.org> wrote:
-> > >
-> > > On Fri, May 15, 2026 at 05:16:19PM +0800, Chen-Yu Tsai wrote:
-> > > > On Thu, May 14, 2026 at 7:48 PM Manivannan Sadhasivam <mani@kernel.org> wrote:
-> > > > >
-> > > > > On Thu, May 14, 2026 at 03:54:29PM +0800, Chen-Yu Tsai wrote:
-> > > > > > On Thu, May 14, 2026 at 1:23 PM Manivannan Sadhasivam <mani@kernel.org> wrote:
-> > > > > > >
-> > > > > > > On Fri, May 08, 2026 at 02:36:32PM +0800, Chen-Yu Tsai wrote:
-> > > > > > > > On some SoCs without an IOMMU behind the PCIe controller, the PCIe
-> > > > > > > > controller memory access could be limited to a small region by the
-> > > > > > > > firmware configuring a memory protection unit. This memory region
-> > > > > > > > must be assigned to the PCIe controller so that the OS knows to
-> > > > > > > > use that region. Otherwise PCIe devices would not work properly.
-> > > > > > > >
-> > > > > > >
-> > > > > > > So this means, the PCIe devices can only access a specific carveout memory
-> > > > > > > configured by MPU for DMA? If so, you should use 'dma-ranges' as suggested by
-> > > > > > > Rob.
-> > > > > > >
-> > > > > > > 'memory-region' also serves the purpose, but for PCI, we have the dedicated
-> > > > > > > 'dma-ranges' property.
-> > > > > >
-> > > > > > I think I need some sort of guide on writing the 'dma-ranges' property,
-> > > > > > because it is not working for me.
-> > > > > >
-> > > > > > I'm adding
-> > > > > >
-> > > > > >     dma-ranges = <0x42000000 0 0x00000000 0 0xc0000000 0 0x4000000>;
-> > > > > >
-> > > > >
-> > > > > So the device DMA address start from 0x0? Isn't it a 1:1 mapping?
-> > > >
-> > > > I actually don't know. But
-> > > >
-> > > > >         dma-ranges = <0x42000000 0 0xc0000000 0 0xc0000000 0 0x4000000>;
-> > > >
-> > > > this didn't work either.
-> > >
-> > >
-> > > Hmm. Can you print the DMA address programmed to the device? i.e., the address
-> > > returned by dma_map_single() in the driver.
-> > 
-> > On a working system still using the restricted-dma-pool memory region,
-> > it gives something like 0x00000000c0009000, so indeed it is 1:1 mapping?
-> 
-> It has to be 1:1 mapping.
-> 
-> > These are for the RX/TX descriptors [1][2].
-> > 
-> > When using dma-ranges, the failure is from dma_alloc_coherent() [3][4],
-> > which is the descriptor ring. On a working system, this is something
-> > like 0x00000000c0c9d000, so again 1:1.
-> > 
-> > [1] https://elixir.bootlin.com/linux/v7.0.8/source/drivers/net/wireless/realtek/rtw88/pci.c#L221
-> > [2] https://elixir.bootlin.com/linux/v7.0.8/source/drivers/net/wireless/realtek/rtw88/pci.c#L829
-> > [3] https://elixir.bootlin.com/linux/v7.0.8/source/drivers/net/wireless/realtek/rtw88/pci.c#L192
-> > [4] https://elixir.bootlin.com/linux/v7.0.8/source/drivers/net/wireless/realtek/rtw88/pci.c#L265
-> > 
-> > > Also, using prefetchable flag is not correct for DMA memory. You should use:
-> > >
-> > >         dma-ranges = <0x02000000 0 0xc0000000 0 0xc0000000 0 0x4000000>;
-> > 
-> > This didn't work either. What exactly is supposed to handle dma-ranges?
-> > I see some code parsing it in the PCI core, but it just saves it to a list.
-> > 
-> 
-> I think the failure is due to marking the memory as 'reserved' in DT. With
-> 'dma-ranges', the allocator will only ensure that the allocated memory stays
-> within this limit. But the allocator itself will not use this property to
-> allocate from the reserved region.
 
-So the region should not be reserved. Reserved generally means the OS 
-shouldn't use the region (though maybe a specific driver/device can). It 
-should just be a CMA area I think.
+On Tue, 19 May 2026 10:57:44 +0200, Lorenzo Bianconi wrote:
+> EN7581 and AN7583 SoCs support connecting multiple external SerDes to GDM3
+> or GDM4 ports via a hw arbiter that manages the traffic in a TDM manner.
+> As a result multiple net_devices can connect to the same GDM{3,4} port
+> and there is a theoretical "1:n" relation between GDM ports and
+> net_devices.
+> Introduce the ethernet node child of a specific GDM port in order to model
+> a given net_device that is connected via the external arbiter to the
+> GDM{3,4} port. This new ethernet node is defined by the "airoha,eth-port"
+> compatible string. Please note GDM1 and GDM2 does not support the
+> connection with the external arbiter and they are represented by an
+> ethernet node defined by the "airoha,eth-mac" compatible string.
+> 
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  .../devicetree/bindings/net/airoha,en7581-eth.yaml | 56 +++++++++++++++++++++-
+>  1 file changed, 55 insertions(+), 1 deletion(-)
+> 
 
-Rob
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+
 
