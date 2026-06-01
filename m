@@ -4,93 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF558CD5BD1
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2026 15:27:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46FBDCD5BD1
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2026 17:53:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=gGzIR3Ya12RsZQy65tkjnFhcSYwdslivQxR7gOO4emA=; b=PUaJWzXWN+We6KiICcOgwRS0yw
-	sc0fe1NqB699styriOwbF2D0EL+U1vt/K/5uRDg7HkgnTBZsN4X7mctmckpEcTIDvt6gFI5+mMibw
-	xnJ2KnFCCU6G29QfjscFN3htTLEXDzLd4NmsQZcvpbKvuXLpuY7DZLzYYuwgOrC8muZgClmDg7lMe
-	zgO2vQPP+UeM4Iv+CrWW6luRfPysZ5cZXm85fc7IQDNM35+yFm6nLMOX8cIOwIHLp8e/h2JAfJCCE
-	fwcTJr91luxlXsKBOaoYLodb1kYBHNvC9yLzDM0wlXJuRNg1F0U6eZTcBEGL1qRPr8bNBO0oO6a1g
-	6mGfST7g==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WZ/IhhKarGkjsev1ebvJY6DbVpgdipumlxcq7yohLJc=; b=Ur/5Ne5VnafEWdUJJwjCXw5Ejz
+	BWGqTi1Int1C9j/O6WJSB4LkmFoymy1b9zyiEmClyOfocCcJClJByWo+aVx0YcpqQlP3V+TVevznu
+	qsgfiDD2CPJ06L1PS6HSiRT2geWRoNTNlEKwNRyJU9hKHGFAguJbBHItL4jth+d8shOoQm22xC57l
+	ywPyntwhYp9BEh8wyYSl6PjHsBcchq4IacbB2zOuJdsA8ndfIF2eM2zgeu/zNwTo7FcHoZojMDsNv
+	MzxVDj0UbM+hIZo69SWc1RM+YTga1tYzxN81bpE346/5O2vPmkUZVJHFHsne0yRt7yTwY/iq4IUmk
+	ibgoTT/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wU4Y5-0000000BNVI-2gez;
-	Mon, 01 Jun 2026 15:27:29 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1wU6pJ-0000000BcOO-08LM;
+	Mon, 01 Jun 2026 17:53:25 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wU4Y4-0000000BNUg-0ahN
+	id 1wU6pF-0000000BcNb-35S3
 	for linux-mediatek@lists.infradead.org;
-	Mon, 01 Jun 2026 15:27:29 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-490a765e68eso12909465e9.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 01 Jun 2026 08:27:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1780327646; x=1780932446; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=gGzIR3Ya12RsZQy65tkjnFhcSYwdslivQxR7gOO4emA=;
-        b=F4J6yM2BdF1qVlpxX3fOhv7cXcMNnt2i4gzfuR1ochDzWeMYeIefy6N+kSvXVa+nDu
-         3ehQO/jfwpSC+LVMA9IrE7jSjkgUy3D6piAMKFKwfna35hw7ZtpGQGFMS+za02ASyLwA
-         FgGKIW1xXIaeRdIJ7FliB6xDgXN0p0pR1Xf9HzDxwPY2fHGKCgI1xqfj8g9mAmQDpkb4
-         9kfgBUFhpzwl5oSdUUCM7ZFMkA8UBzFkPqu1xP1J72W7SakhNedcXOkLqB6HSax0AsE0
-         9wD3wLT2qtZO29XV2nmuk+FuHoP9HsEGESBbIUN0w1OethJpHsqWio5Gd4U4SZJp9Evd
-         sGow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1780327646; x=1780932446;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=gGzIR3Ya12RsZQy65tkjnFhcSYwdslivQxR7gOO4emA=;
-        b=TSM/11IU4cpdHLQnUkpnHUGDUzTq6fHD/GYuyF2J8qDJuObnGWvk43sTomN2jd37Yj
-         8ciAPpCET8T4xalvfcLUONgpTTAaSaKn1qLo9VB5ZpvFFIwB8AXPuso89r5hmgKbBVIc
-         Gm7oemd0PIu/bJnAOtg9AWX50E5LOfz8bj9HpxHnPJaxcxnRPZg43xky/uEg/KMVFOS3
-         IX18HAfVg3UndPx/Ma3GwolgmqrhODGm2CHMQMOCjpSM5tHiWxHfoo67fcu5V/BruOjE
-         pX3caleshuSaRkLZ1FkUWCChmQCGtOXMBm4lZlpozUEpzR+nXPT2j9ErknFyG1beiWno
-         r6HQ==
-X-Gm-Message-State: AOJu0Yx6QaheQQesFn0dtIevA2JNzQpCLGljt8wvJK4Q3dt9eqtCh9gV
-	PEfHexN3oScsXf1aSROZkI8MzFe+lXNDQCeDp7q04JLqE6GvY13QY+4R6hEO64KFgT8=
-X-Gm-Gg: Acq92OH4iLHvoiZbeC6tIFTsX0LCx/ITw7qhh1YpqN8DjXiE2nmUWSHza34gVXJZWzy
-	zr48kpjwuVqWY6+gxsF0CdjOXcGge2IrOb6ss5PRCHIR9Pr9cdVLdMsuSuHR2lb5omg+xf/7NDo
-	CPj2CiZLbZ1GxNLiOodXILXbrCOfmZVasHkRLMgDt7//NpA5E92Df6ZggcxN6ibIkyXx2R3fjYT
-	5A1aq+q6BD4Wx9o5Ufj4sX2byh4Y06EPzUgRr0skelOzrBYA3PKD5Aj1sZ1tun7//RefVTieC9P
-	NZ68q5HfWHJ2sxV9u70Zor2pUm1JyCPz6cYn9KP5TrNsnw5MPdjZw4XSljowsFlbkdkVJk2bIWQ
-	qDRkUDsFqViqa66RdZwbMFnYQM+ijyX7/5UuNkU+YDKupPqoXYO0IlMRCp9xewqnRUMifkddB1X
-	55p0L1eHcw8SCmroeZRJruisW94JY=
-X-Received: by 2002:a05:600c:c285:b0:48e:5fb8:f80f with SMTP id 5b1f17b1804b1-490a2966ce7mr127746435e9.24.1780327646037;
-        Mon, 01 Jun 2026 08:27:26 -0700 (PDT)
-Received: from luca-vm.. ([81.56.18.151])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-490ad63b34dsm14041635e9.27.2026.06.01.08.27.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 01 Jun 2026 08:27:25 -0700 (PDT)
-From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-To: linux-mediatek@lists.infradead.org
-Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
-	Linus Walleij <linusw@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sean Wang <sean.wang@kernel.org>,
-	linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH] dt-bindings: pinctrl: mediatek: mt6795: document the slew-rate property
-Date: Mon,  1 Jun 2026 17:26:42 +0200
-Message-ID: <20260601152707.29039-1-l.scorcia@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	Mon, 01 Jun 2026 17:53:22 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id F25F0441B7
+	for <linux-mediatek@lists.infradead.org>; Mon,  1 Jun 2026 17:53:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3B6D1F0089A
+	for <linux-mediatek@lists.infradead.org>; Mon,  1 Jun 2026 17:53:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1780336400;
+	bh=WZ/IhhKarGkjsev1ebvJY6DbVpgdipumlxcq7yohLJc=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc;
+	b=nr+gO/iRezHfQIb24kdU3vqS4vOhiseSZ6xa7VjdriTDL9IbS2aIb/ojqPcIAIVZJ
+	 qWxMunqkAm0wsMP6jrIO/7UlDOaNeH7hF27BB4N0afm/wO9bfvems0F28Ck8HW4I+I
+	 1VZF0t3infumq2ZX4u/zQHt/PMjvFZ4IZqx4HURNlzc9NZpclnCutWKA5Cokv/j6kG
+	 ELynKCEyyuody05IlXgmfcbAQ6oOGK+gk/WUOluQn2EVVq+2EAE+oJyrNgd7hIwZCm
+	 jMB+R6lwKZxxHw05OWX4JAKdOMWqYxmirNq7GgfqF9+TPyFy45+DAFZj52CCaauQaz
+	 rQpGjHtF9aadw==
+Received: by mail-lf1-f50.google.com with SMTP id 2adb3069b0e04-5aa66893e9fso1828482e87.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 01 Jun 2026 10:53:20 -0700 (PDT)
+X-Gm-Message-State: AOJu0Yxu5lIPyN7hREmmxG7EukJm6FyPBlW6RGwCRsFWfGi7QrPa0YyA
+	oBaeS8kl2cDVFegO/RojyRalpIoIARF5hzN2v+69vXb734USLUmNgEltsJ7v8Ec3OL9lvrhI+ay
+	syWb9jOktd7es3dakzQO9y4Qt8XJFPEo=
+X-Received: by 2002:a05:6512:3094:b0:5aa:6f47:32a0 with SMTP id
+ 2adb3069b0e04-5aa6f47362cmr1141285e87.11.1780336399508; Mon, 01 Jun 2026
+ 10:53:19 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20260601152707.29039-1-l.scorcia@gmail.com>
+In-Reply-To: <20260601152707.29039-1-l.scorcia@gmail.com>
+From: Linus Walleij <linusw@kernel.org>
+Date: Mon, 1 Jun 2026 19:53:06 +0200
+X-Gmail-Original-Message-ID: <CAD++jL=oF_43jwV830p42yOke_tZb-MKomp9fVoQ5EtnQHGzNA@mail.gmail.com>
+X-Gm-Features: AVHnY4I49xiJB05RGboGIRNa8JpcA6v3sUBoiJTKtDzGmvM3jaAvFsRby97G7MQ
+Message-ID: <CAD++jL=oF_43jwV830p42yOke_tZb-MKomp9fVoQ5EtnQHGzNA@mail.gmail.com>
+Subject: Re: [PATCH] dt-bindings: pinctrl: mediatek: mt6795: document the
+ slew-rate property
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sean Wang <sean.wang@kernel.org>, 
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260601_082728_187139_6F3A497E 
-X-CRM114-Status: UNSURE (   8.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260601_105321_796897_91B428ED 
+X-CRM114-Status: GOOD (  13.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,34 +86,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The driver for MT6795 pinctrl already supports the slew-rate property.
-Add its description to the documentation.
+Hi Luca,
 
-Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
----
- .../bindings/pinctrl/mediatek,mt6795-pinctrl.yaml         | 8 ++++++++
- 1 file changed, 8 insertions(+)
+thanks for your patch!
 
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6795-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6795-pinctrl.yaml
-index 68e91c05f122..9a937f414cc9 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6795-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6795-pinctrl.yaml
-@@ -152,6 +152,14 @@ patternProperties:
-             $ref: /schemas/types.yaml#/definitions/uint32
-             enum: [0, 1, 2, 3]
- 
-+          slew-rate:
-+            description: |
-+              Set the slew rate. Valid arguments are described as below:
-+              0: Normal slew rate
-+              1: Slower slew
-+            $ref: /schemas/types.yaml#/definitions/uint32
-+            enum: [0, 1]
-+
-         required:
-           - pinmux
- 
--- 
-2.43.0
+On Mon, Jun 1, 2026 at 5:27=E2=80=AFPM Luca Leonardo Scorcia
+<l.scorcia@gmail.com> wrote:
 
+> The driver for MT6795 pinctrl already supports the slew-rate property.
+> Add its description to the documentation.
+>
+> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+(...)
+> +          slew-rate:
+> +            description: |
+> +              Set the slew rate. Valid arguments are described as below:
+> +              0: Normal slew rate
+> +              1: Slower slew
+> +            $ref: /schemas/types.yaml#/definitions/uint32
+> +            enum: [0, 1]
+
+Ideally slew-rate is V/s (or V/us, any suitable prefixes).
+
+Of course that would vary for any capacitance on the output line,
+so that value would be for an infinite impedance (open circuit).
+
+Do you know that value for the SoC to you can express it like
+this and translate it in the driver?
+
+Maybe we should even invent something like
+slew-rate-volt-per-microsecond =3D <...>; to push this into
+SI units.
+
+That said, there are many SoC:s doing what you're doing
+above so it's no strict requirement.
+
+Yours,
+Linus Walleij
 
