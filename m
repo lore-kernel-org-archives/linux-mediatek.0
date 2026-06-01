@@ -4,69 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47AA2CD5BD1
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2026 13:16:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A21EFCD6E57
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2026 14:16:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BWtIneBIlQhjcv6vSIMhHxV3eQvlE53NKWO7dJEV4a8=; b=S2vK0q7AtMqOvR76BM231QbYH6
-	QUWclbPLnOdU9zr/ribBfJKmC7dH/7UNtEc/rmJCelOqAHkwLBFDyCOHyqeNzOhln9YUHTt/UYYtK
-	/qS4RfkDjCWrYfcQfQ05ARzNJgnAfJdur9HiOQ2Rm8zqYzZrzDZHl0Vt6rvkn2D72wIjMSfSlVOu9
-	AAYZnTpM7MIdTbOTFAIXfvIKEgBeGYT/zqTXitZFIK4ylNHkPunk750vseCxf3OJg2Gsb9GoDW1xZ
-	nhRkIbnwWg09IUBoXXq/UQ1+FSoXWI1EaiSsWclsf+ucb7GboEZscjNLYEyvGY7V6rPFkBKXhkSAL
-	D+FlzSsA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=LKlG4ZlVp2BUdL9qy6kzq11uvqyXIe0OIDX3KKmCTV0=; b=LTz0JXA99DfIeO
+	JkMA65E59DwEkybRiohp0XkcMcPFgVQg5VM4Ye6e95AjrotxY597tvORBrpB4r+VoAJqBVJ2DlqNF
+	iwOcvCZPxT4C+XwbXj58DjXK56cFjY2kqNh27CoHfOmXS0kBZcbxZnCHhC7tsc2rwjikm8fdxnYVJ
+	6/MkGL/tGYyxfaKg6Dwh/M/OPfMFMOkcQPepfmaz6z0wuup4pT/8QvranZ2a9SGxPNTkKoDASxT+C
+	UuqGDrYAffK791fWLaBr4jSWw8+P7bEaxJOaUOU99v2c7YG1/Y61ITL543ZNeQIqvczuDFZ6EEHre
+	YZ/jC2p5ZiodgwqJLSWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wU2V1-0000000BBzG-3lOw;
-	Mon, 01 Jun 2026 13:16:11 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wU3Qx-0000000BG9V-1b4Q;
+	Mon, 01 Jun 2026 14:16:03 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wU2V0-0000000BByp-0Cfk;
-	Mon, 01 Jun 2026 13:16:11 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1A42142CED;
-	Mon,  1 Jun 2026 13:16:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 314501F00893;
-	Mon,  1 Jun 2026 13:16:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780319769;
-	bh=BWtIneBIlQhjcv6vSIMhHxV3eQvlE53NKWO7dJEV4a8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=WD2m4k22PhkVpk0bEbkTalKbbpJ2MYHUEElNlmNa4Maq/ZPJGoV8uvaMA/Qtf5gIT
-	 M1wky4nad7SMAO9zhgQrAekKrDuXZqWJurxQIQgnx6bXfQSARqJjROqTh0K5BH2le5
-	 ftEimi3lGlcYQbhNBk0RAtP1/NcZK+how9NV7pzmHg2ymlBIztZCQzXyfPPEtYv/4E
-	 khyS6PhKisPkdgkqhteL6laPYLa5l/uyZafayRJ9ZUfHYiRqonGIfRmLWPeSnyjG+M
-	 HJ1eY7ACypRFdgzhUz0f9GGlNCS9GSdyp38Ao4SgCtMguCewRCoXh74sR3+dtPyt9/
-	 E8w+j++UsPylQ==
-Date: Mon, 1 Jun 2026 14:16:03 +0100
-From: Mark Brown <broonie@kernel.org>
-To: y.oudjana@protonmail.com
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Flora Fu <flora.fu@mediatek.com>,
-	Alexandre Mergnat <amergnat@baylibre.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-input@vger.kernel.org
-Subject: Re: [PATCH v2 0/4] MediaTek MT6735+MT6328 SoC/PMIC pair base support
-Message-ID: <169f4676-07f6-46d4-9478-55af4de1e6a0@sirena.org.uk>
-References: <20260531-mt6735-pwrap-mt6328-pmic-v2-0-dac37bf92894@protonmail.com>
+	id 1wU3Qu-0000000BG7A-0HP9;
+	Mon, 01 Jun 2026 14:16:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1780323356;
+	bh=2mlmflu75mdtBiODN+bKBCjJEH/3vnThy91d+Mg/u+s=;
+	h=From:Subject:Date:To:Cc:From;
+	b=TQqevynxWt7ybbB9ihSdaiBs4YiYH1mkyc8Hz4bAOgPcyv/zjrVrDm8i/3jXk0eDz
+	 ILArlOCVNFnH1qCRejVHUpodlzcVyCnAnh2Qb3mw7p5Rjyvwqv/FFbVEYTuL0DmYaI
+	 e9sf4IeYIB5lCqdsmRS8KSwMm6138r50DyNRumcJh345xsDyWxIjnOGeFukFyQGGoA
+	 YGILQOn+2EEqkcl6kftQpZPi+pv2gJVREv8l6dbEvoLUv1cqsdYT9ChfpAiobSTzRC
+	 tbis/2hsJr61i5iFnRncUwC4kwWmeogzcBV32mpJpTRVhe2jr5xObnkLZH1GtXKwpV
+	 P24UwsRst1+pQ==
+Received: from yukiji.home (unknown [100.64.0.131])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DBA5F17E06C5;
+	Mon,  1 Jun 2026 16:15:55 +0200 (CEST)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Subject: [PATCH 0/3] Mediatek Genio EVK: add MT6365 PMIC supplies
+Date: Mon, 01 Jun 2026 16:15:44 +0200
+Message-Id: <20260601-mtk-genio-mt6359-pmic-supplies-v1-0-05750080ba59@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="c2/ypeZQb3Jmpy3Y"
-Content-Disposition: inline
-In-Reply-To: <20260531-mt6735-pwrap-mt6328-pmic-v2-0-dac37bf92894@protonmail.com>
-X-Cookie: Have a nice day!
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yWNyw6CMBBFf6WZtZOUKg3wK4ZFLSNOtA/bYkgI/
+ 24Du3vu4pwNMiWmDIPYINGPMwdfobkIsC/jZ0KeKoOSSkstG3TljTN5DnXpa9tjdGwxLzF+qge
+ 1sVJ3erop1UGVxERPXo/AfTw50XepnXKe8DCZ0AbnuAzC01rwaLWqh3Hf/wxTizyhAAAA
+X-Change-ID: 20260601-mtk-genio-mt6359-pmic-supplies-6ac0686d4228
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1780323355; l=1490;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=2mlmflu75mdtBiODN+bKBCjJEH/3vnThy91d+Mg/u+s=;
+ b=b0c7tjNI5hl4SC9H1ekB6QEqDOxB922gw9bmkdU1mRhNqWUvmbdea6cnqbX9liXfg0v6iso+J
+ 2JsHZ77q+vqAj6JqXyQTK8VcaEg/8RT4er/9LPOkao/Intv+5YU1DCf
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260601_061610_105784_81597418 
-X-CRM114-Status: GOOD (  11.15  )
+X-CRM114-CacheID: sfid-20260601_071600_265592_BB20B6BD 
+X-CRM114-Status: UNSURE (   7.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,35 +88,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Several Mediatek and Radxa boards, based on MT8370, MT8390 or MT8395
+SoC, integrate the MT6365 PMIC, that is a MT6359P variant.
 
---c2/ypeZQb3Jmpy3Y
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+This PMIC dt-bindings for recently gained property definitions for the
+power inputs for its various buck and LDO regulators ([1]).
 
-On Sun, May 31, 2026 at 11:10:41AM +0200, Yassine Oudjana via B4 Relay wrote:
-> These patches are part of a larger effort to support the MT6735 SoC family in
-> mainline Linux. More patches (unsent or sent and pending review or revision)
-> can be found here[1].
+The goal of this series is to add the supplies for this PMIC regulators
+in the following board devicetrees:
+- MTK Genio 510-EVK
+- MTK Genio 700-EVK
+- MTK Genio 1200-EVK
+- Radxa NIO-12L
 
-Please send patches for unrelated subsystems as separate serieses to
-each subsystem unless there's a depdendency, making everything into a
-cross subsystem series just makes it harder to work out what's supposed
-to happen.
+The series is based on linux-next tree (tag: next-20260529) and has
+been tested on Mediatek Genio 510, 700 and 1200-EVK boards.
 
---c2/ypeZQb3Jmpy3Y
-Content-Type: application/pgp-signature; name="signature.asc"
+[1]: https://lore.kernel.org/linux-mediatek/20260514091520.2718987-2-wenst@chromium.org/
 
------BEGIN PGP SIGNATURE-----
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+---
+Louis-Alexis Eyraud (3):
+      arm64: dts: mediatek: mt8390-genio-common: Add MT6365 PMIC supplies
+      arm64: dts: mediatek: mt8395-genio-common: Add MT6365 PMIC supplies
+      arm64: dts: mediatek: mt8395-radxa-nio-12l: Add MT6365 PMIC supplies
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmodhhIACgkQJNaLcl1U
-h9DICQf/R2lYrAwOVaBt02e0o2KXDCOg7XUNcak0rKzUO6DJv/i+DBjYEr9yT8tc
-rGMsTpjPtmINDcIZBmSo3+yMjUMusP3PofGq3KtYhS2Sw08sVOzrFoItEUcpt1do
-tgcsj3U87khkp9maizKvOi9wxe9N0g1mked+B/ejcHXmYqFcEfCpSWg/TLzUM5je
-ggYinIghnIfrE8odn66Vda4OwVITZVy3QamQwnXsrCuv11MbS3uKuzO1Xdrdwexb
-ySiGSWUKCxKqeWUsqclavQjnQQHVShAjku304mKF0uOZ3UJmsLPIbvbMr18VhMkL
-ndY1hQKyOYiBfJDe4ykrwxnVINhGng==
-=Vvm7
------END PGP SIGNATURE-----
+ arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi | 17 +++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi | 17 +++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts | 17 +++++++++++++++++
+ 3 files changed, 51 insertions(+)
+---
+base-commit: 697a0e31ee66f5ddb929c09895139779fff33f20
+change-id: 20260601-mtk-genio-mt6359-pmic-supplies-6ac0686d4228
 
---c2/ypeZQb3Jmpy3Y--
+Best regards,
+-- 
+Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+
 
