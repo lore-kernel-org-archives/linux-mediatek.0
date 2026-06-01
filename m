@@ -4,77 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BA09CD6E62
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2026 09:12:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0D5BCD6E56
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2026 09:13:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pQHXnv+zTI6JRHEdJGtJjegFX1lIGlI0OuTgX9tK2C4=; b=NxAJ+d8svYSbQDMJVWZpTOKYDV
-	T0VR0uJEeoeoA7SrRbgdKh9BGT3h6HrnVsQ9vPKRs8pmyfsy12pa3TZdukzwvtt46jJFdPU2oHTKJ
-	gNH3yyUuLAQ2bB/sutesj4QhCdsxo58yBxGsvkQysMkfhsw+5/JemqpJmiBho9iOcCtbbHb3DV2zJ
-	pcY8VFOXeiP6UrU4BGOd1QDPKAc42+pr9FwADfQtyyc8lEurxhix2rEF6ygaoVMDJG562hUY1Sj6x
-	zKQyqjCg1TG9umGWjXfTouaY7lNOyz421JtZfMNWsTChtq63Ic4HIi5pUxWYpABeit7j5d9AyOnOy
-	Di4aBUqg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XvO6AWWbrytQKUaTglHDoblgZaWUr8G3OaM5lLPMVTo=; b=SRcE3sGfbJzPM0UUk4xOQXJDHa
+	s2XnDK/voJLNsoGgSPYYa1khOaEHOxT5HrCA/fEdnoCo2Qn1QCwKwuPyY+34ZcbVU2qBuP0YjNYJy
+	/Y+UXmcuOyJWOd6lSZJuatTmdNlw9vljOOcZnMixvaKFpm6kESL0pYKlfTk7gLU2IkkMBIfKeBzgT
+	kK9asHNCkbRTdgvRic7yUJnQw8TFLFGomcEjSv7lIowQWbmC1GvROa3JnvuEbCwKvVb7VOWN7JqHB
+	x2ju8UpI0Xxc/u9vTHNwq0jPjWVl7SsjGmOcM2H/YbKDdIqOZcNq+3TUcdArYHCYq4YSYk54OOFeN
+	tV+rGtlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTyhN-0000000ASjs-1uBz;
-	Mon, 01 Jun 2026 09:12:41 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wTyhx-0000000ASyh-2F59;
+	Mon, 01 Jun 2026 09:13:17 +0000
+Received: from chamillionaire.breakpoint.cc ([2a0a:51c0:0:237:300::1])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTyhM-0000000AShz-2HQs;
-	Mon, 01 Jun 2026 09:12:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=pQHXnv+zTI6JRHEdJGtJjegFX1lIGlI0OuTgX9tK2C4=; b=dJnbk4uoRSPx4w4A1bLgV+Qo3m
-	s6RF40XtnXthUlZaBW2eDRGryPdQIvHgck/dFxZtA0W3neBzEszwq8C9xDgBH7yCay379//+YiNFU
-	jybBki/7Of8xTAfmbj8ClVbszJV/EwmCVgWt39JzZ0gcXxPTgy9D0JN8djeV4PbBjNt+mkAqOLsXB
-	/am9ZghczeS9EKXwQIOXpuoUFA8wD3olCl9bQTxtkXKtavSJvLcCoUYs8a4sFhP9TUKpMC1E7PmIb
-	p7Y5vyHNhjtthlQV8mmdk2UnDbn93t8UYfr2v4T6cPoABTs1HxsOxokCIY/agljURbRFTsMo8H10G
-	QHFROa9w==;
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by desiato.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTyhJ-00000006BiH-0Ypz;
-	Mon, 01 Jun 2026 09:12:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1780305151;
-	bh=ZMQig1G0kI/9KDHbMpaDNt380R1SRF5p144eDOFLNgI=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=pxmwyCIXwbzWqHXCNEbgl0y5hr9CjXFyBXtIj/H/oV4FHhjUM1WulsHn6MEI8CFc/
-	 Zx3ykqnlb3qTd6FbYQVnrRXFV2030kvf82xnh28iiVIfrqK3ow/QeZn9TP4Ii+RXxu
-	 47Sy/H7x3qjAa01qBwINyQqrvuptKd4VJOhoGjEF62QNQkzjtUu/W32JoYIE0U/Pxn
-	 S2qQMEEcG+mPW6jj7S23ZmWw+eIFeAdyrTxOX1/t9uN36SKvoC6C0l7oPY5bW70EsF
-	 eb2Nz4BY/fbSw1lYIK19Tl7TSliK/efZKnUTJ8SGdtcONzmsHKocV+hmGOQUEkIJyI
-	 94NZQsDmkxVFg==
-Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3148717E0B66;
-	Mon,  1 Jun 2026 11:12:31 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: arm-soc <arm@kernel.org>,
-	soc <soc@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	matthias.bgg@gmail.com,
-	matthias.bgg@kernel.org
-Subject: [GIT,PULL,2/3] MediaTek SoC driver updates for v7.2
-Date: Mon,  1 Jun 2026 11:12:22 +0200
-Message-ID: <20260601091225.5223-3-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.54.0
-In-Reply-To: <20260601091225.5223-1-angelogioacchino.delregno@collabora.com>
-References: <20260601091225.5223-1-angelogioacchino.delregno@collabora.com>
+	id 1wTyhv-0000000ASwk-0U7A
+	for linux-mediatek@lists.infradead.org;
+	Mon, 01 Jun 2026 09:13:17 +0000
+Received: by Chamillionaire.breakpoint.cc (Postfix, from userid 1003)
+	id CFCCC604DC; Mon, 01 Jun 2026 11:13:08 +0200 (CEST)
+Date: Mon, 1 Jun 2026 11:13:08 +0200
+From: Florian Westphal <fw@strlen.de>
+To: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Tony Nguyen <anthony.l.nguyen@intel.com>,
+	Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+	Felix Fietkau <nbd@nbd.name>, Saeed Mahameed <saeedm@nvidia.com>,
+	Leon Romanovsky <leon@kernel.org>, Tariq Toukan <tariqt@nvidia.com>,
+	Mark Bloch <mbloch@nvidia.com>
+Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	intel-wired-lan@lists.osuosl.org
+Subject: Possible UaF bug in netdevice teardown path
+Message-ID: <ah1NJMrJ5rEkQlJG@strlen.de>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260601_101237_580580_65E8EC41 
-X-CRM114-Status: UNSURE (   7.52  )
+X-CRM114-CacheID: sfid-20260601_021315_287635_2C419B2A 
+X-CRM114-Status: UNSURE (   6.75  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,37 +62,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The following changes since commit 254f49634ee16a731174d2ae34bc50bd5f45e731:
+Another sashiko drive-by report. TL;DR, do you need to apply this
+pattern in your driver?
 
-  Linux 7.1-rc1 (2026-04-26 14:19:00 -0700)
+-       metadata_dst_free(priv->md);
++       dst_release(&priv->md->dst);
 
-are available in the Git repository at:
+Affects:
+drivers/net/ethernet/airoha/airoha_eth.c
+drivers/net/ethernet/intel/ice/ice_eswitch.c
+drivers/net/ethernet/mediatek/mtk_eth_soc.c
+drivers/net/ethernet/mellanox/mlx5/core/en_accel/macsec.c
 
-  https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/ tags/mtk-soc-for-v7.2
+Long version:
+https://sashiko.dev/#/patchset/20260527135751.1031891-1-tristmd%40gmail.com
 
-for you to fetch changes up to 7d462de9f65b002b439b1b168bf3b5579b0de48b:
-
-  soc: mediatek: mtk-mmsys: Restore MT8167 routing masks lost during merge (2026-05-11 11:20:48 +0200)
-
-----------------------------------------------------------------
-MediaTek SoC driver updates
-
-This adds subsys ID compatibility in MediaTek CMDQ, paving
-the way for adding support for the MT8196 SoC, and fixes
-the Multimedia System (MMSYS) routing masks for the MT8167
-SoC.
-
-----------------------------------------------------------------
-Jason-JH Lin (2):
-      soc: mediatek: Use pkt_write function pointer for subsys ID compatibility
-      soc: mediatek: mtk-cmdq: Add cmdq_pkt_jump_rel_temp() for removing shift_pa
-
-Luca Leonardo Scorcia (1):
-      soc: mediatek: mtk-mmsys: Restore MT8167 routing masks lost during merge
-
- drivers/soc/mediatek/mt8167-mmsys.h   | 11 ++++++++---
- drivers/soc/mediatek/mtk-mmsys.c      |  8 +++++---
- drivers/soc/mediatek/mtk-mutex.c      |  5 +++--
- include/linux/soc/mediatek/mtk-cmdq.h | 24 ++++++++++++++++++++++++
- 4 files changed, 40 insertions(+), 8 deletions(-)
+This isn't a bug introduced by this patch, but looking at this fix, do
+other callers of metadata_dst_free() suffer from the same use-after-free
+vulnerability?
+In drivers like ice_eswitch and mlx5 MACsec, a metadata_dst is allocated
+and references are taken on it via dst_hold() when packets are processed
+(for example, via skb_dst_set()).
+However, on their teardown paths, these drivers call metadata_dst_free(),
+which unconditionally frees the memory without checking the reference count.
+If packets holding these references are queued (like in a netem qdisc)
+during teardown, does the memory get freed prematurely, causing a
+use-after-free when the networking stack eventually calls dst_release()
+on the dequeued packets?
 
