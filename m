@@ -4,75 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 210C6CD5BD1
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2026 07:32:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 233BECD6E56
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2026 09:12:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ToeoviAujNvWRk4JjaFh1ReN2qGZK+KfApQYajaIr1s=; b=bmS6p6zFdQDOmx2aRpcjQ9yrux
-	vcCfkA9WToJT6Q0VQ1fwcPVBbmiZMMDPwDMgaTtOH+nMPtDiBM+Xc3HMKSKd4y0ZbJvn27PfOoQjF
-	QjAjP9L6j6aUbw0xY9xbfBCpRCqoPyLnO0WmqTq/BYTFE3LNg0jqVjkO9obiR8Mo/radTfofRhQsA
-	pC5eeZm6V8E6g/ho+WVjZywGyqOanKGk32/u+dJN1PBppmxYEbPtjnEGip49VsW9wpQ8zuKQo7N5o
-	kg5dIzPQSbfJ8FTjugZnipGo4lZF63AexEjRVEY5DkwaelHhjkRhoghCn6C+e2S2s7Ajo9zX1TUnA
-	Yb+B733w==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CNCluDpOanFg1v+YVv1UW9l5c1iZx+9+vsAQtqKL0SI=; b=GKx6fGp63Txshq273iLkitlTh2
+	Zc2dosOJ1P5EnRQUjKTRHw5GKsLTUC5HKW0lhNlGzxWCeeXjR0j5xgXtw0FbAjHtu8haaHi+ayjeK
+	U9Hn5/dmO3wifqVzu6iXBZGteLNnXGU8YW1xwAXuMmQ6ZVfB9OAPlBSEcrOJzAQG3UWGAP7EXRRa4
+	3frXX4j+bXjzVjYgj5xnWcB5+m3BVOetrLvWxRAshaYG/6hHju7th393726CZcTPhTOm5bmWm5dlP
+	OW1ew8r9+evP62X/ETSWRN8q5zvn3lM3fCiFdvZ8ONmE5z75IXEbWCmMWsUBw7NHwaE41sQUDD94s
+	PiT8OmDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTx8W-0000000AIq3-37aQ;
-	Mon, 01 Jun 2026 07:32:36 +0000
-Received: from smtp21.cstnet.cn ([159.226.251.21] helo=cstnet.cn)
+	id 1wTyhJ-0000000ASfL-0R7C;
+	Mon, 01 Jun 2026 09:12:37 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTx8S-0000000AIpR-1OI3;
-	Mon, 01 Jun 2026 07:32:35 +0000
-Received: from edelgard.fodlan.icenowy.me (unknown [112.94.101.239])
-	by APP-01 (Coremail) with SMTP id qwCowABX+tKGNR1qGk9UAA--.1841S2;
-	Mon, 01 Jun 2026 15:32:24 +0800 (CST)
-From: Icenowy Zheng <zhengxingda@iscas.ac.cn>
-To: Bin Liu <bin.liu@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Fan Wu <fanwu01@zju.edu.cn>,
-	Hans Verkuil <hverkuil+cisco@kernel.org>,
-	irui wang <irui.wang@mediatek.com>,
-	kyrie wu <kyrie.wu@mediatek.com>
-Cc: linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1wTyhG-0000000ASdu-0fFd;
+	Mon, 01 Jun 2026 09:12:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1780305151;
+	bh=3EBzF0o7UMrIWjYtGu04a8kA/zPPANrCK9tLqcFMPCY=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=c5kJ4FU1M6cLL7Ci/otmQbIOa2DZbdSPZWqYr+DSCGm7pSsw+xSUBCcMKemg9UzDC
+	 G/mDvM4qmKD4Ppg1mXcC656y59QFIrsouXGv9wAF0yHdafaAYnhYseCfffYa9Eutk1
+	 9maZJmu1Z6H5185nWk5aRx8zmQ25MUkDGRw5WGN08kptD9dN49S5WUbrtbL00l5J+6
+	 04mYEbqHLQjU2hJpKtQYfWSFXtdEQmp9aUoP1XXIuIbi0s75Zw2hC2KJMuChAg9rU4
+	 G/qrAcXL+hbv7PVPFbeNUBdIfoBENcgy7XprjZW/w8k+Uyu0DauM5Ev2Hg+29IVRJP
+	 kKUc7ZyjYKR9Q==
+Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BB0C717E0566;
+	Mon,  1 Jun 2026 11:12:30 +0200 (CEST)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: arm-soc <arm@kernel.org>,
+	soc <soc@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	Icenowy Zheng <zhengxingda@iscas.ac.cn>,
-	stable@vger.kernel.org
-Subject: [PATCH] media: mtk-jpeg: only init/cancel work for multi-core variants
-Date: Mon,  1 Jun 2026 15:32:18 +0800
-Message-ID: <20260601073218.1281840-1-zhengxingda@iscas.ac.cn>
-X-Mailer: git-send-email 2.52.0
+	matthias.bgg@gmail.com
+Subject: [GIT,PULL,2/3] MediaTek ARM32 Device Tree updates for v7.2
+Date: Mon,  1 Jun 2026 11:12:21 +0200
+Message-ID: <20260601091225.5223-2-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20260601091225.5223-1-angelogioacchino.delregno@collabora.com>
+References: <20260601091225.5223-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: qwCowABX+tKGNR1qGk9UAA--.1841S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7AF4DZF4UCrWkKryrXF1rCrg_yoW8Aw4rpF
-	WSq3yUCFW5Gr4qqFyDAa1UAFy5Kw1S9F47Wr1xuw1xZ343XFnrG34UC3W0qFWIyrn2kasI
-	qr48t343CFWUZFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUU9j14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
-	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
-	1l84ACjcxK6xIIjxv20xvE14v26ryj6F1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
-	6F4UM28EF7xvwVC2z280aVAFwI0_GcCE3s1l84ACjcxK6I8E87Iv6xkF7I0E14v26rxl6s
-	0DM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj6xII
-	jxv20xvE14v26r1j6r18McIj6I8E87Iv67AKxVWUJVW8JwAm72CE4IkC6x0Yz7v_Jr0_Gr
-	1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAGYxC7M4IIrI8v6xkF7I0E8cxa
-	n2IY04v7MxkF7I0En4kS14v26r1q6r43MxAIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4
-	AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE
-	17CEb7AF67AKxVWUtVW8ZwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1j6r1xMI
-	IF0xvE2Ix0cI8IcVCY1x0267AKxVW8JVWxJwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4l
-	IxAIcVC2z280aVAFwI0_Jr0_Gr1lIxAIcVC2z280aVCY1x0267AKxVW8JVW8JrUvcSsGvf
-	C2KfnxnUUI43ZEXa7VUbGQ6JUUUUU==
-X-Originating-IP: [112.94.101.239]
-X-CM-SenderInfo: x2kh0wp0lqwv3d6l2u1dvotugofq/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260601_003232_762560_51EE64AE 
-X-CRM114-Status: GOOD (  10.23  )
+X-CRM114-CacheID: sfid-20260601_021234_343620_4258E43B 
+X-CRM114-Status: UNSURE (   7.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,45 +75,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Single-core variants of this hardware do not use the work at all, and
-the worker function is set to NULL, which leads to warnings when
-cancelling the work in release callback.
+The following changes since commit 254f49634ee16a731174d2ae34bc50bd5f45e731:
 
-Skip the work init/cancel code when the JPEG hardware isn't multi-core.
+  Linux 7.1-rc1 (2026-04-26 14:19:00 -0700)
 
-Cc: stable@vger.kernel.org
-Fixes: 34c519feef3e ("media: mtk-jpeg: fix use-after-free in release path due to uncancelled work")
-Fixes: d40e95274925 ("media: mtk-jpeg: reconstructs the initialization mode of worker")
-Signed-off-by: Icenowy Zheng <zhengxingda@iscas.ac.cn>
----
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+are available in the Git repository at:
 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index 8c684756d5fc2..83e54a7ef49c0 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -1160,7 +1160,8 @@ static int mtk_jpeg_open(struct file *file)
- 		goto free;
- 	}
- 
--	INIT_WORK(&ctx->jpeg_work, jpeg->variant->jpeg_worker);
-+	if (jpeg->variant->multi_core)
-+		INIT_WORK(&ctx->jpeg_work, jpeg->variant->jpeg_worker);
- 	INIT_LIST_HEAD(&ctx->dst_done_queue);
- 	spin_lock_init(&ctx->done_queue_lock);
- 	v4l2_fh_init(&ctx->fh, vfd);
-@@ -1202,7 +1203,8 @@ static int mtk_jpeg_release(struct file *file)
- 	struct mtk_jpeg_dev *jpeg = video_drvdata(file);
- 	struct mtk_jpeg_ctx *ctx = mtk_jpeg_file_to_ctx(file);
- 
--	cancel_work_sync(&ctx->jpeg_work);
-+	if (jpeg->variant->multi_core)
-+		cancel_work_sync(&ctx->jpeg_work);
- 	mutex_lock(&jpeg->lock);
- 	v4l2_m2m_ctx_release(ctx->fh.m2m_ctx);
- 	v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
--- 
-2.52.0
+  https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/ tags/mtk-dts32-for-v7.2
+
+for you to fetch changes up to ba6afff1d9b70028a5fc3df2d3acbee501c20a53:
+
+  arm: dts: mediatek: mt8135: fix pinctrl node name (2026-05-11 11:39:02 +0200)
+
+----------------------------------------------------------------
+MediaTek ARM32 DeviceTree updates
+
+This adds support for the ARMv7 Timer node in the MT6589 SoC
+and performs a couple of dtbs_check fixes in MT7623 and in
+MT8135 devicetrees.
+
+----------------------------------------------------------------
+Akari Tsuyukusa (1):
+      arm: dts: mediatek: mt6589: Add Arm Generic Timer node
+
+David Lechner (3):
+      arm: dts: mediatek: mt7623: fix pinctrl child node names
+      arm: dts: mediatek: mt7623: fix pinctrl controller node name
+      arm: dts: mediatek: mt8135: fix pinctrl node name
+
+ arch/arm/boot/dts/mediatek/mt6589.dtsi | 11 +++++++++++
+ arch/arm/boot/dts/mediatek/mt7623.dtsi | 64 ++++++++++++++++++++++++++++++++--------------------------------
+ arch/arm/boot/dts/mediatek/mt8135.dtsi |  2 +-
+ 3 files changed, 44 insertions(+), 33 deletions(-)
 
 
