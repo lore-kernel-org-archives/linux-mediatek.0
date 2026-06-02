@@ -4,70 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7526CD6E4A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2026 12:07:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AF36CD6E60
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2026 12:47:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
+	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=piTnkLPmaovnb4JehLIKcBF8kfJ+2Lmc5BBe1o1b/Ro=; b=Ldw7hTnJlIq9wXjP4Lrh4Wjwkc
-	8xxhO/Au0knk52KFNB4un8MLfYAVA0bHTQZvUd2B6mJ0CAnM1j9qId9flLyokKivSxkp6Sl20QRVn
-	5G7sIBLHBGt/DOsyzddyi8mnfmdl8RkkaUrYfLXD4FQcSZ1v3Y6i10sddoBq9S0FjVr4Iq+jgx6OQ
-	G/Kz2iGUpgPJ24BM12pXhrfRHOsY1/IPgbuHwoWeh5fYh0+DfM0GYfRUWWnSS+xoH07LPom0Ey6oZ
-	G4FIU1TOrYkwf3V1Y464JHOqCMoiMcBiIgXIgcwQEDID+rxPLNuNQB+jVcrHBJqprrKAiItBxEKAm
-	yvOoAr/w==;
+	bh=39k9hJtIngFDc5kAzhTQBAbWUtLN4p1Hj+Wp34GgIk4=; b=U15TkFtbG1cPA3gIP5SUXNJ0/M
+	0M+E9SreqV8L6BwuTNiYJFCU2bONyF564x/ODY9oWVZZmQYa29+H4p3vYGHX/nAohb0vUEsT44JcL
+	/8CJESWcB7fzUYdt83FNb4RoEiO2eeTRUMi63GW0kOHYj7v3FkB836Yw8+1paDlBf6wzuIZUBeHeN
+	AKRb27f0viIE0V9COVcYQqJLkV3Gd5q1jXgq/n4qGqZSUf3jLME1TEdqASRVWhHnVCp4OaFCfCE/D
+	7EEG4kPHAxzEem0IXZYkgKNjKWGIu62bpTjFmmgjEcyNEb+8SA3fDjXl+sOmUDRdgC3Y/7a8dQBKc
+	z5kgQR8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUNuJ-0000000CwNy-2MHd;
-	Tue, 02 Jun 2026 12:07:43 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wUOWJ-0000000D0pA-0Dq5;
+	Tue, 02 Jun 2026 12:46:59 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUNuI-0000000CwMy-1rNA;
-	Tue, 02 Jun 2026 12:07:42 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id A9CCD601D8;
-	Tue,  2 Jun 2026 12:07:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8B0231F00893;
-	Tue,  2 Jun 2026 12:07:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780402061;
-	bh=piTnkLPmaovnb4JehLIKcBF8kfJ+2Lmc5BBe1o1b/Ro=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=aQDR6a85/gNL1/TB3WDLQSa02j/oiCMqmjVLw2BLWtGSbOliZ3pQJLlYVHS4L1nvp
-	 KChzCEFkYJQwvJkVranEbIPz8ZHpIJ0TF0beIvtJWm5Gah2DdNRfLvLTKqkc/zI22/
-	 eobnXz/z0Mt3wTBd1Vpt/XlR5w0ekmY0Euw9jz9fPSJWYpj5ppwdwiBgrsWGpZFgHu
-	 tUde5NiK3VpIGSW5HqVUBFqSfRn2D8k0EGYkmtxs52oiy59kYaFpyfJAN6v4i7oc1a
-	 oD48giuCOQxmB8RP74gWJHaXdWR1guTwUyWmGvcLdIqKgxVBnhH9MNwbIEZkRUQ+nw
-	 TDY/j7kpQIMMw==
-From: Mark Brown <broonie@kernel.org>
-To: linux-sound@vger.kernel.org, Rosen Penev <rosenp@gmail.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
- Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-In-Reply-To: <20260522014515.719973-1-rosenp@gmail.com>
-References: <20260522014515.719973-1-rosenp@gmail.com>
-Subject: Re: [PATCHv2] ASoC: mediatek: mt2701: fix snprintf bounds
-Message-Id: <178032240947.44654.12124048713123707403.b4-ty@b4>
-Date: Mon, 01 Jun 2026 15:00:09 +0100
+	id 1wUOWH-0000000D0nS-2Bwa;
+	Tue, 02 Jun 2026 12:46:57 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id C3EC8601E2;
+	Tue,  2 Jun 2026 12:46:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 4CABDC2BD01;
+	Tue,  2 Jun 2026 12:46:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1780404416;
+	bh=6Uru3oiN+KUnWcz/gv4yCW62HmXWPmwm2tqYSe5EbcY=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=IeaFb349Q+HRYXRQlupaSln8P+/YmYDtWARL5hQtpDhS6+qZj4GqkJIQxw0auVClp
+	 U9rjEw7ufl+JdnoWeeLBng63EzFdu7oH/Sh7dEX46Xrl0f2e8//6a5sKTZ3De1pg8o
+	 xtfA56FyOa/hjwnauGWzREwA5K3AxExzVf+rL1YTLydvgZBGslImwpFJJ+sqblixWn
+	 3W16917Th+gNpr3WyFkMcsf+QtKCoa+nmJNPwWVxWLUZ7nbRWw8+NBUH0OpDG2iEZQ
+	 YOVHFM/8HhufELzA+goCgi6frXpFCnZFd6W637cTPBagZylhdQWgWXz9Dt09Iu4wZD
+	 zIughF6fl+T9g==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3E64DCD6E64;
+	Tue,  2 Jun 2026 12:46:56 +0000 (UTC)
+From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
+Date: Tue, 02 Jun 2026 15:46:57 +0300
+Subject: [PATCH 4/4] ARM: dts: mediatek: mt6323: add AUXADC support
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.16-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1103; i=broonie@kernel.org;
- h=from:subject:message-id; bh=Z2F8t9fU811BFxxoK51+9dLVAEx76j4Hzj998FZYsXI=;
- b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqHseKKYdV4Z452J656y6aP6G6fsrlPshcn5unD
- kmtyEXaPvWJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCah7HigAKCRAk1otyXVSH
- 0B4TB/9Ll3DUSLpEBaINpdMPQqk5RjpSd19IwduAoA1oQrE+5jXrhyLYBXm1r2opP/5gbTDxusP
- EnlTH0xoiq0eaHLPm4iQT3ieL1TVBvM8IDxvvKO5hwdsqh1BWhqolXacsurrC/DNRD0jmh2Zd/A
- 6dZifBXYXWMRQG8xc2uw7d22l//V3b12siI710llphPcHhx4SFXQWFKV4vbbj/SMiZ863sJfSlq
- +mFP3PMd39UzrQnFWygz//BXvLjY1OWBxYLycruT25fMcM4fdXHYk4A9YoU1wlPnc7tzrsJHUtI
- TRjnwYaSxF5Nv1Ts3xt+TV7Fd42yW36qA2wlI/r6MDvThLJV
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
+Message-Id: <20260602-mt6323-adc-v1-4-68ec737508ee@protonmail.com>
+References: <20260602-mt6323-adc-v1-0-68ec737508ee@protonmail.com>
+In-Reply-To: <20260602-mt6323-adc-v1-0-68ec737508ee@protonmail.com>
+To: Jonathan Cameron <jic23@kernel.org>, 
+ David Lechner <dlechner@baylibre.com>, 
+ =?utf-8?q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, 
+ Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Lee Jones <lee@kernel.org>
+Cc: linux-iio@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Ben Grisdale <bengris32@protonmail.ch>, 
+ Roman Vivchar <rva333@protonmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1780404414; l=814;
+ i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
+ bh=WC9jUSlABoGBdBqPU8PZ4ZIU5LJl1TAO11/EPH3tS8U=;
+ b=p6K4bcmO7oG7L8/cv4DP5Dy2KGtC5QitgkODob+PUEPUi2NsUMycmvhmjhl7+oEORuDECXnQb
+ 8wpeVkby3ogCqga99duGgN2KLBpDFhGoKg+mv/CV+vo4Uu2lvvRjKli
+X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
+ pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
+X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
+ auth_id=777
+X-Original-From: Roman Vivchar <rva333@protonmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,38 +88,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 21 May 2026 18:45:15 -0700, Rosen Penev wrote:
-> ASoC: mediatek: mt2701: fix snprintf bounds
+From: Roman Vivchar <rva333@protonmail.com>
 
-Applied to
+Add the devicetree node for the mt6323 AUXADC.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.2
+Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
+Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+---
+ arch/arm/boot/dts/mediatek/mt6323.dtsi | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-Thanks!
+diff --git a/arch/arm/boot/dts/mediatek/mt6323.dtsi b/arch/arm/boot/dts/mediatek/mt6323.dtsi
+index c230c865116d..c070f4b0936c 100644
+--- a/arch/arm/boot/dts/mediatek/mt6323.dtsi
++++ b/arch/arm/boot/dts/mediatek/mt6323.dtsi
+@@ -14,6 +14,11 @@ pmic: mt6323 {
+ 		interrupt-controller;
+ 		#interrupt-cells = <2>;
+ 
++		mt6323_adc: adc {
++			compatible = "mediatek,mt6323-auxadc";
++			#io-channel-cells = <1>;
++		};
++
+ 		mt6323_leds: leds {
+ 			compatible = "mediatek,mt6323-led";
+ 			#address-cells = <1>;
 
-[1/1] ASoC: mediatek: mt2701: fix snprintf bounds
-      https://git.kernel.org/broonie/sound/c/6c52e58dbdae
+-- 
+2.54.0
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
 
 
