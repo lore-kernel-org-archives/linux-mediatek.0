@@ -4,61 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E84ACD6E57
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2026 20:30:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38694CD6E57
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2026 20:47:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gjwMGrTESknD5peX+eFGJBM0//MZxOS4/vrUF8k4h4A=; b=l2jS3I0IffcXSGgL/JUKh1Vsb3
-	mLGylgAS+Shx+Vz3Unajl592XkiW5Sj/tlOjjEIPzPLUsKuGCdE9t65SHcDwDPqQcYMxBNIutelgB
-	qaqmvx2IgRa6fX5PxUsJbuwAIL2iAPqBTnlcU4tblCXQCH3vhzGYFPg/xYBKAHZ6pKYTG8RetCmxN
-	5/dQSSr0GcLFUb6sCAfOfQz661eolKkUgJCHO72OWK1NjUlng2JPI+ejtSnjBtLYwTvTaGkwnXoFL
-	xqdnhSPEYWtNBkBJhL9LQ9u3RLNwMTP4HhvaCzCQQn8dcMEq4cUBXyaATj2TYcUVI/yCeLrFdvgk8
-	dDb+018g==;
+	bh=E/F9SBkHIYEzDXTuA4BV3hptq8kg192HlVg4BWvVGGE=; b=4RSyB0hRVOSasDC6cnKgGcNa2O
+	Iz9nRUERywU3RTu9hbnfBJzkTmE5/PPNfraRanO3TDEmrn6U7fUdrI1Bos0dnpAKXxQuXnu/l2T3e
+	WjaJXl7c5biKrdQjBRSGBUjAfcHGCUpNMnTxt6EtRXGWUdyfKQdIinFSUsJnlf/7W2UDJTfZt1zGW
+	W/vgD8nYXcnGOok5fTFejlCH1lVZ2nXR6g7YB7qskka61Rik392Q++wSjDNgWcD5afYcU9Flv+6mD
+	iqBzp0UBaKfYngUp4R3/03Q/mNimD7NMVVt0b6kA/wr8TjgtCZmVUb4zbDVukol+78nte7M5g46mv
+	Mz49fZTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUVke-0000000DkIm-04AP;
-	Tue, 02 Jun 2026 20:30:16 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wUW0y-0000000DmDA-03vV;
+	Tue, 02 Jun 2026 20:47:08 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUVkc-0000000DkI2-2Xvt;
-	Tue, 02 Jun 2026 20:30:14 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8FAED60145;
-	Tue,  2 Jun 2026 20:30:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45D4A1F00893;
-	Tue,  2 Jun 2026 20:30:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780432213;
-	bh=gjwMGrTESknD5peX+eFGJBM0//MZxOS4/vrUF8k4h4A=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=TPz3prVeOVPs6tmHop7zUrzU2L7EkX1/zBZUQPFQIzu3j1/B+Vt0vZh7knErzYWYY
-	 AWSCvweUNkAe8As9Hy/CMzQOjIKgY7+g7d1NhqjaJSN7DYFOfSjXEOyssLEf0saPHl
-	 lJojBMJE/Hfd0+JEFwwyiE8zYTIspelQhFYuVcoTc+qFlKpc5ynQHVE4JtYuwcG1Vo
-	 Y9raz6xnyT3vo3QlCgIaH+oIOlTh3tyJ77U/5VcZDKBXpOJdBaFSm0g+mK4GbQmOQl
-	 BoCgZhi7/HomqVfUoC7THg/LkS08QvPK1UzHX+LuGgIzx0ulUU4bvGhRWa2PlpLog/
-	 DyRGp1RK/lIiA==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 569AD3811A72;
-	Tue,  2 Jun 2026 20:30:16 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1wUW0u-0000000DmCK-47ht
+	for linux-mediatek@lists.infradead.org;
+	Tue, 02 Jun 2026 20:47:06 +0000
+Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-49041e84237so97133445e9.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 02 Jun 2026 13:47:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1780433223; x=1781038023; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=E/F9SBkHIYEzDXTuA4BV3hptq8kg192HlVg4BWvVGGE=;
+        b=YpBgEGd59fL6mgRnCt7NamNOSz3g2g2elg0TNBm3pu6oP9me++GWkBVt9x0yHEeBIJ
+         xixbjUozMECNl5x0yLqmgB8Y4Fenlprdck8VSn+1utp5O737RNbbYxt7hrn66knFuUhf
+         xfyilsAT1eYdRv1yZeEHHv0vD73Jqg9bP0LzjxC4NVh8ewic8vc52hQxeXftVzE8UQqE
+         GUo/VsU95uA/HWMK8C+GNQAxa8VmxhAFCbM94JkF1zLwcBFNAWi68aNIiO5NNEN9c3tf
+         GLL3AKJJv88nwjSxXAkK6pquAQsBGTmbt+Rwj2GvLsIRwjOQJpnWfLL84IC8hMBLDvNy
+         tLKQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1780433223; x=1781038023;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=E/F9SBkHIYEzDXTuA4BV3hptq8kg192HlVg4BWvVGGE=;
+        b=krUvMAs8cStU5yBRI8I+B4XvkFbuHak1O6zUqwv/dXo3Hb6VUp3n7/2iOz80fbh+u1
+         rCLGDswCbIBs01LUQ9xR3PUCXRRmDuUE56je1WanHWE5/ND3HUDSahRPnzBE7e4yG4hL
+         /qwuhZgsJ8fmzuWu2J+2wSyRKqjk7wlzbU5o2Gvu7B4Wdp9brf7DG8s7SzalJoim3qGE
+         zsKWgfPygGotuH4aZdzIsv+yVBkc+NBlLSS0pKupyMvcwULszf5qHvGZRovHhsddMVQt
+         MQghRvyNIhLnoQySsvUoO556p7qWeNgfNWgqOw7ZCG6zxfrIUYw1o7KPiRlfE8w4VeU5
+         IGfw==
+X-Forwarded-Encrypted: i=1; AFNElJ9vtvf6YEF7dqf7/UPbg9SreA1qhdr+zwanI/I8ebZZRlLgb6m0PagiTTu39x1u5U2pwAWlfxZne3tiyz+spA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywv5qyW7PHhfCCLf3mktmsapBcceI+nM3XJZoCgH+8xHCne0Ab/
+	5WjsmEU0Om9ZWtMsOiKnuF+oF4a+E6P2m9S6yxVZoh06icyw9CWYnxSJ
+X-Gm-Gg: Acq92OG8RXPmvuoy5WsjgLagHM/p6bqe5ECVJB29wd9J6JzlHYKs/zJYCGLjSMD/ouw
+	+W24rIswpZo0FUDk1XSP7g3PQjjBSdxnCWAi0+3rWYIpFb4I2XDQAzwkq4FkRdmANLxc3zsB/je
+	JOKVmdVKrUVuwTfXGLcMDYG7qaNRtDkod7dmBABzZJS+04P3h5uz/6y3HWH+R971gFffQ+fzUe4
+	gkBL+NO6T608hZI0wBRG23U4tB7HlOpdZ38+V/py/pDqd2o3OTbM/A5UlJpZWmJF0fgnl98Sk4E
+	s92/VtIvVE112ymW9bo6+CavCjVAPEBHq2iRG1jw0funUWlwhkvhmXOFWK6JWjVc+HOfeotiwPc
+	b7cNE2Uns3rrKIHSruThluIVVx+V8UqJgB/+mPKMbn0nEAjOBCYbXapQQMWy3D/AU0jEZdyicIy
+	M4+jSxp0SBBQC8pDmMfFsNukW19Tom8/NYhPxzTA==
+X-Received: by 2002:a05:600c:458b:b0:490:af63:2cb1 with SMTP id 5b1f17b1804b1-490b6128dc3mr5058205e9.7.1780433222731;
+        Tue, 02 Jun 2026 13:47:02 -0700 (PDT)
+Received: from [192.168.0.2] ([212.50.121.5])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-490b60f6d5asm5811745e9.0.2026.06.02.13.47.00
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 02 Jun 2026 13:47:02 -0700 (PDT)
+Message-ID: <e7df5082-ef48-43d0-ad07-10e1e64e1d26@gmail.com>
+Date: Tue, 2 Jun 2026 23:46:59 +0300
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next 0/6] net: airoha: Preliminary patches to support
- multiple net_devices connected to the same GDM port
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <178043221514.1036678.2722673754198790557.git-patchwork-notify@kernel.org>
-Date: Tue, 02 Jun 2026 20:30:15 +0000
-References: <20260527-airoha-eth-multi-serdes-preliminary-v1-0-ec6ed73ef7fc@kernel.org>
-In-Reply-To: <20260527-airoha-eth-multi-serdes-preliminary-v1-0-ec6ed73ef7fc@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, horms@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org, xuegang.lu@airoha.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 00/11] net: wwan: t9xx: Add MediaTek T9XX WWAN driver
+To: "Wu. JackBB (GSM)" <JackBB_Wu@compal.com>,
+ Jakub Kicinski <kuba@kernel.org>,
+ Jack Wu via B4 Relay <devnull+jackbb_wu.compal.com@kernel.org>
+Cc: Loic Poulain <loic.poulain@oss.qualcomm.com>,
+ Johannes Berg <johannes@sipsolutions.net>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Paolo Abeni <pabeni@redhat.com>, Wen-Zhi Huang <wen-zhi.huang@mediatek.com>,
+ Shi-Wei Yeh <shi-wei.yeh@mediatek.com>,
+ Minano Tseng <Minano.tseng@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Simon Horman <horms@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
+ Shuah Khan <skhan@linuxfoundation.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>
+References: <20260529-t9xx_driver_v1-v1-0-bdbfe2c01e57@compal.com>
+ <20260601173401.2c892526@kernel.org>
+ <c279aea41ecf41c6aca4314a2f4e306b@compal.com>
+Content-Language: en-US
+From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
+In-Reply-To: <c279aea41ecf41c6aca4314a2f4e306b@compal.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260602_134705_056732_258A2860 
+X-CRM114-Status: GOOD (  21.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,61 +120,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Hi,
 
-This series was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+let me join the discussion and put my 2c.
 
-On Wed, 27 May 2026 12:21:14 +0200 you wrote:
-> EN7581 or AN7583 SoCs support connecting multiple external SerDes (e.g.
-> Ethernet or USB SerDes) to GDM3 or GDM4 ports via a hw arbiter that
-> manages the traffic in a TDM manner. As a result multiple net_devices can
-> connect to the same GDM{3,4} port and there is a theoretical "1:n"
-> relation between GDM ports and net_devices.
+On 6/2/26 13:58, Wu. JackBB (GSM) wrote:
+> Hi Jakub,
 > 
->            ┌─────────────────────────────────┐
->            │                                 │    ┌──────┐
->            │                         P1 GDM1 ├────►MT7530│
->            │                                 │    └──────┘
->            │                                 │      ETH0 (DSA conduit)
->            │                                 │
->            │              PSE/FE             │
->            │                                 │
->            │                                 │
->            │                                 │    ┌─────┐
->            │                         P0 CDM1 ├────►QDMA0│
->            │  P4                     P9 GDM4 │    └─────┘
->            └──┬─────────────────────────┬────┘
->               │                         │
->            ┌──▼──┐                 ┌────▼────┐
->            │ PPE │                 │   ARB   │
->            └─────┘                 └─┬─────┬─┘
->                                      │     │
->                                   ┌──▼──┐┌─▼───┐
->                                   │ ETH ││ USB │
->                                   └─────┘└─────┘
->                                    ETH1   ETH2
+>> On Fri, 29 May 2026 18:31:39 +0800 Jack Wu via B4 Relay wrote:
+>>> 43 files changed, 14761 insertions(+)
+>>
+>> Please try to cut this down to ~5kLoC for the initial submission.
+>> Whatever the absolute minimum sensible chunk of code is.
+>>
+>> Each patch must build cleanly with W=1
 > 
-> [...]
+> We've already reduced this significantly from the original 41k LoC
+> down to ~14.7k by stripping out non-essential features such as
+> exception handling, memory logging, devlink, statistics, debug
+> tracing, and others.
+> 
+> We even removed some arguably necessary features (PM, mdlog,
+> throughput optimizations) that we plan to submit as follow-up
+> series.
 
-Here is the summary with links:
-  - [net-next,1/6] net: airoha: Introduce airoha_gdm_dev struct
-    https://git.kernel.org/netdev/net-next/c/ec6c391bcca7
-  - [net-next,2/6] net: airoha: Move airoha_qdma pointer in airoha_gdm_dev struct
-    https://git.kernel.org/netdev/net-next/c/528c5153a557
-  - [net-next,3/6] net: airoha: Rely on airoha_gdm_dev pointer in airoha_is_lan_gdm_port()
-    https://git.kernel.org/netdev/net-next/c/eca4f59b5367
-  - [net-next,4/6] net: airoha: Move qos_sq_bmap in airoha_gdm_dev struct
-    https://git.kernel.org/netdev/net-next/c/069626af6dfa
-  - [net-next,5/6] net: airoha: Move {cpu,fwd}_tx_packets in airoha_gdm_dev struct
-    https://git.kernel.org/netdev/net-next/c/962c17dd2878
-  - [net-next,6/6] net: airoha: Rename airoha_set_gdm2_loopback in airoha_enable_gdm2_loopback
-    https://git.kernel.org/netdev/net-next/c/842a7ee50d68
+Great work. Highly appreciate!
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+> Note that the line count may slightly increase in v2, as we plan
+> to add missing kdoc comments based on review feedback.
+> 
+> For reference, the t7xx driver (two generations older, simpler HW)
+> had an initial submission of ~11.3k LoC [1]. The t9xx hardware is
+> more complex, so we believe being in a similar range is reasonable.
 
+Let me elaborate a bit here. The size problem is not due to a git or a 
+mailbox limitation. It arise due to the human limitation. The T7xx 
+submission review took something about 4 months and 8 iterations. And it 
+was 'only' 11.3k lines. Let's do some extrapolation assuming that 
+function is linear. 14.7k is 30% bigger, thus, estimated reviewing time 
+should be 5 months and 2 weeks. And this looks optimistic.
 
+Recommendation, shared by Jakub, is practical. 5k lines might be 
+reviewed in a reasonable time and merged with the full confidence of the 
+quality.
+
+> We'd like to keep the driver functional and reviewable in its
+> current scope. Do you have any suggestions on how we could further
+> reduce the size while maintaining a working initial submission?
+
+Off the top of my head, I would suggest joining T7xx and T9xx code 
+bases. It could be done through factoring out a core functionality of 
+T7xx into a library, or through making the driver layered.
+
+I am not pretending being an expert in any of these drivers, but 
+generally divide-n-conqueror together with code reuse work reliable. As 
+an alternative, I could spend a couple of weeks reviewing the new 
+submission and will come with more specific ideas on what can be thrown 
+away or reused.
+
+> [1] https://patchwork.kernel.org/project/netdevbpf/cover/20220506181310.2183829-1-ricardo.martinez@linux.intel.com/
+> 
+> Thanks.
+> 
+> 
+> ================================================================================================================================================================
+> This message may contain information which is private, privileged or confidential of Compal Electronics, Inc. If you are not the intended recipient of this message, please notify the sender and destroy/delete the message. Any review, retransmission, dissemination or other use of, or taking of any action in reliance upon this information, by persons or entities other than the intended recipient is prohibited.
+> ================================================================================================================================================================
+
+And this disclaimer does not facilitate the review. Am I 'intended' 
+recipient or should I destroy the message ASAP?
+
+--
+Sergey
 
