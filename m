@@ -4,64 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4F62CD6E60
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2026 16:43:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95D32CD6E5D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2026 18:38:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xqkn7EVchcMbjnDkgwOZm7cACncjKcFv9E/ppH9FXzw=; b=1ANwY0AsYB05zBPvZAZbRbuID7
-	/vafySpjdN769ji9ZGcHrXqGCNfmpKp/YD0+EjAVpWD4CX6ZzTawPagD9Sr6vGnArWPzipxx6elgI
-	53oYteZ0JWLdagi9pzoMwCHDVcc/84eXz1UFEHBF9VW1n+WP7F6vq5n+4ux36aRy9+fVCv4g2LOgv
-	yqWQFGDqUqDNJvVIS2DfeyvJJJn5D400aP+VF6+86BfDsQ83wlY9EW+vkSMEg9RtVm3y5djpCKCHF
-	ciHuB1PAPa17AqwxEyXM4fpA88JKBEAnHB0HI7/IFpJrZvD4WbhS+HZdxB4rZ7o57XaJq4Bq38R6Y
-	L3rORzIQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=o6QSHn+bWpbFxZV+XX27moTnu4Gwm7clToWp0ddbfl0=; b=jrKSa8FeqLS9gkC/cJTu1HO2h1
+	1m/LxszfvA8ITWp1BgOlzQf5xiaT2mFa30fkB/GGYLKwScjU0aRVv1fthhAqncmKcUz5orkPIVtbS
+	wqX5gEHfmOH9DdqTq+HMQ4aYujzifIuQhKPesiizcNRzpNYB9WMyB4ZagQTh+Brkm53sKLPBtQyQn
+	Oau6zuzxMyYZNaRhyH9NpdiswqmBNtsz2e61ZaLS5s8Yy65orHKyxuhGnMmnRN0X3JqgCr2ZpBOiX
+	gEp+CjTfkiJ46clXDPVV5dOYSt/AubTSs7m9UKBT3hwRJw/tpQgn08Sd/dy8CuHSnAgt+k8iYW9wt
+	PkoH61Dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUSCn-0000000DU0B-0Vwv;
-	Tue, 02 Jun 2026 16:43:05 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wUU0h-0000000DeE9-3WwJ;
+	Tue, 02 Jun 2026 18:38:43 +0000
+Received: from sender4-op-o15.zoho.com ([136.143.188.15])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUSCl-0000000DTzg-2O9p;
-	Tue, 02 Jun 2026 16:43:03 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 93AA36001A;
-	Tue,  2 Jun 2026 16:43:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D0B801F00893;
-	Tue,  2 Jun 2026 16:42:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780418582;
-	bh=Xqkn7EVchcMbjnDkgwOZm7cACncjKcFv9E/ppH9FXzw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=AKviLg/r7qZbVLQFlONrui5T3HKU3u5SJinZ/i4rswLVf0PJoqKWfti1xFXq19gFA
-	 Sc8BIfY1giSDKsy+EK+S2mAIiHyKKT4Zg/dj0/gi1kPZ1+MKRe+ZqfPKQ+8Nkppotj
-	 fhi/K/sltLjjH/kvzyEH3H9EfPCB8t2XlgIrf7xv4Xfq09b1WOcOiieFUpuiJUi+cF
-	 HNo0uznHWlzhAoSjct4xx3TLT3ET+K17CKYvhPY8AjB2tOxLxU34FgVR2Ss/dOuOIR
-	 K/YjcFr4JMcgJ1Z5OnLv9zkcajPE8Mcw7sLC+/LujQyJIEB5d3xEmZhSuhRVPd8RBE
-	 3ZMVvpM83VIcQ==
-Date: Tue, 2 Jun 2026 17:42:57 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, Linus Walleij <linusw@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sean Wang <sean.wang@kernel.org>, linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: pinctrl: mediatek: mt6795: document the
- slew-rate property
-Message-ID: <20260602-chaos-jersey-50f60b1b4070@spud>
-References: <20260601152707.29039-1-l.scorcia@gmail.com>
+	id 1wUU0f-0000000DeDY-0kUi;
+	Tue, 02 Jun 2026 18:38:42 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1780425508; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=TvA/v8z3zJpF6ASip88x0r5DmZ+Ubddx5xhoYTPwmXl0KG9ySNblDLqt8b1bYDScnyEdZqW/WJp16M1UybL1Zohx6qIBtyCEF5SIXFWBXGz5wl9h9BbZoZcdw3RXCrS7YAD9fCgC9zfSfPKPIPsmnur0kIMc/QOfcRWxCHH9G+Q=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1780425508; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=o6QSHn+bWpbFxZV+XX27moTnu4Gwm7clToWp0ddbfl0=; 
+	b=djO7bNSIgCdP6AXpFPqS/mImLg4ffyO1uTzNsrtF7CSoE0Rd3ht4f5W+OoUpZZOLwPYCgBjTQF+XEEl5QTteEvofZEj08xy5ZXQ65dPBsANgr4N86epH/EO4r6bsr7+U5Gqscv3OjhkDbHdG09Jn55VLnW7D1fEOeY6tuyHVi5E=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=rong.moe;
+	spf=pass  smtp.mailfrom=i@rong.moe;
+	dmarc=pass header.from=<i@rong.moe>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1780425508;
+	s=zmail2048; d=rong.moe; i=i@rong.moe;
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:To:To:Cc:Cc:Reply-To;
+	bh=o6QSHn+bWpbFxZV+XX27moTnu4Gwm7clToWp0ddbfl0=;
+	b=qIDsWr5jZkzSVcnuQikmp3szrn+vZTVeytDgrP5qLV1h9QBPI9JYm+zXTtFs4KPM
+	/DyOo0a1Qf4Lx02FLWAWafu/Uju1/8AGysTNxfxOYWu9OKU6wuzx9jf3B55ro8q0Nb8
+	Yz+3z1Gc6SuCG3J1Dbqnh0FXGaWQIarqIKu9167ADv3kYzv8qcN9IuZI5wS0wLm8gQe
+	wL9+mO507Xw/KdS7aIDycT7syCwf4EE5oHlX+D7UYo9p6FoPkWWCgcQdpQiVXJN+6EU
+	GQP/zVf7UycquEFzss7M/VTFFBXp77ZQuecvoxZDkebKC16i4qV6CB5gcV24tqEK7hP
+	lDwmTwDA9A==
+Received: by mx.zohomail.com with SMTPS id 1780425506915761.0970031020775;
+	Tue, 2 Jun 2026 11:38:26 -0700 (PDT)
+From: Rong Zhang <i@rong.moe>
+Date: Wed, 03 Jun 2026 02:38:10 +0800
+Subject: [PATCH] Bluetooth: btmtk: Disable remote wakeup for MT7922/MT7925
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="qIydSbG4bdZw6d2c"
-Content-Disposition: inline
-In-Reply-To: <20260601152707.29039-1-l.scorcia@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260603-btmtk-remote-wakeup-v1-1-5c1006442f36@rong.moe>
+X-B4-Tracking: v=1; b=H4sIABEjH2oC/yXMSw6CMBRG4a2QO/YObJsIboU4KPUvXgmP9IEmh
+ L1bYfgNztkoIggi3auNAlaJMk8F10tF7mWnHizPYrJGKaW15i6NaeCAcU7gjx2QFzaN8cY1N+v
+ rmkq5BHj5Htf2cTrm7g2X/iva9x8Aib94dwAAAA==
+X-Change-ID: a4222333-btmtk-remote-wakeup-494f4c97af88
+To: Marcel Holtmann <marcel@holtmann.org>, 
+ Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Rong Zhang <i@rong.moe>
+X-Mailer: b4 0.16-dev-d5d98
+X-ZohoMailClient: External
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260602_113841_279967_9F5D65C5 
+X-CRM114-Status: GOOD (  11.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,24 +86,115 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+These NICs are often reported to lose their Bluetooth interfaces, i.e,
+their USB interfaces suddenly become completely unresponsive, causing
+the USB core to reset them, only to find that they are no longer
+accessible. A power cycle is required to make the Bluetooth interfaces
+recover.
 
---qIydSbG4bdZw6d2c
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+After some investigations, I found that their USB autosuspend remote
+wakeup capabilities are so broken that they are precisely the culprit
+behind the issue:
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-pw-bot: not-applicable
+  [27452.608056] hub 3-0:1.0: state 7 ports 5 chg 0000 evt 0020
+  [27452.702018] usb 3-5: usb wakeup-resume
+  [27452.716038] usb 3-5: Waited 0ms for CONNECT
+  [27452.716642] usb 3-5: finish resume
+  /* usbmon showed that the device was completely unresponsive to any
+     URBs after the remote wakeup */
+  [27457.836030] usb 3-5: retry with reset-resume
+  [27457.956046] usb 3-5: reset high-speed USB device number 4 using xhci_hcd
+  [27463.332047] usb 3-5: device descriptor read/64, error -110
+  [27478.948117] usb 3-5: device descriptor read/64, error -110
+  [27479.172430] usb 3-5: reset high-speed USB device number 4 using xhci_hcd
+  [27484.332035] usb 3-5: device descriptor read/64, error -110
+  [27499.940039] usb 3-5: device descriptor read/64, error -110
+  [27500.164060] usb 3-5: reset high-speed USB device number 4 using xhci_hcd
+  [27505.196142] xhci_hcd 0000:67:00.0: Timeout while waiting for setup device command
+  [27510.576045] xhci_hcd 0000:67:00.0: Timeout while waiting for setup device command
+  [27510.784038] usb 3-5: device not accepting address 4, error -62
+  [27510.912215] usb 3-5: reset high-speed USB device number 4 using xhci_hcd
+  [27515.948307] xhci_hcd 0000:67:00.0: Timeout while waiting for setup device command
+  [27521.324380] xhci_hcd 0000:67:00.0: Timeout while waiting for setup device command
+  [27521.525107] usb 3-5: device not accepting address 4, error -62
+  [27521.525928] usb usb3-port5: logical disconnect
+  [27521.525996] usb 3-5: gone after usb resume? status -19
+  [27521.526230] usb 3-5: can't resume, status -19
+  [27521.526434] usb usb3-port5: logical disconnect
+  [27521.526469] usb usb3-port5: resume, status -19
+  [27521.526493] usb usb3-port5: status 0503, change 0004, 480 Mb/s
+  [27521.526528] usb 3-5: USB disconnect, device number 4
+  [27521.526736] usb 3-5: unregistering device
+  [27521.804029] usb 3-5: new high-speed USB device number 5 using xhci_hcd
+  [27527.076067] usb 3-5: device descriptor read/64, error -110
+  [27542.692027] usb 3-5: device descriptor read/64, error -110
+  [27542.916047] usb 3-5: new high-speed USB device number 6 using xhci_hcd
+  [27548.068043] usb 3-5: device descriptor read/64, error -110
+  [27563.684073] usb 3-5: device descriptor read/64, error -110
+  [27563.792133] usb usb3-port5: attempt power cycle
+  [27563.924381] hub 3-0:1.0: port_wait_reset: err = -11
+  [27563.925213] usb usb3-port5: not enabled, trying reset again...
+  [27564.184398] usb 3-5: new high-speed USB device number 7 using xhci_hcd
+  [27569.196322] xhci_hcd 0000:67:00.0: Timeout while waiting for setup device command
+  [27574.572040] xhci_hcd 0000:67:00.0: Timeout while waiting for setup device command
+  [27574.776053] usb 3-5: device not accepting address 7, error -62
+  [27574.900165] usb 3-5: new high-speed USB device number 8 using xhci_hcd
+  [27579.948039] xhci_hcd 0000:67:00.0: Timeout while waiting for setup device command
+  [27585.324331] xhci_hcd 0000:67:00.0: Timeout while waiting for setup device command
+  [27585.528040] usb 3-5: device not accepting address 8, error -62
+  [27585.528389] usb usb3-port5: unable to enumerate USB device
+  [27585.528424] hub 3-0:1.0: state 7 ports 5 chg 0000 evt 0020
 
---qIydSbG4bdZw6d2c
-Content-Type: application/pgp-signature; name="signature.asc"
+To reproduce the issue, these conditions must be met:
+- a noisy radio environment (cafe or office) to cause frequent remote
+  wakeup events
+- no Bluetooth device is connected, so autosuspend is not prohibited
+- the Bluetooth interface is opened, so remote wakeup is enabled when
+  the device runs into autosuspend
 
------BEGIN PGP SIGNATURE-----
+Then I can reproduce the issue within sereval hours each time.
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCah8IEQAKCRB4tDGHoIJi
-0mrTAPwJtBLGBMldX25YoduFYOFABADCaCaWjt7yB0qRp8rY7wD+NIaskGXV1A/N
-bLPvbwapWDo+tLidhEhl0hnA5+hl+AE=
-=DwBB
------END PGP SIGNATURE-----
+Increasing TRSMRCY or setting USB_QUIRK_RESET doesn't help at all.
 
---qIydSbG4bdZw6d2c--
+Since the remote wakeup capability is super broken, just disable it to
+get rid of the troubles. The device can still be autosuspended when
+the bluetooth interface is closed, which won't break the device as
+remote wakeup is unneeded in this case.
+
+Link: https://bbs.archlinux.org/viewtopic.php?id=308169
+Link: https://bbs.bee-link.com/d/7694-gtr9-pro-ai-max-395-usb-issues
+Signed-off-by: Rong Zhang <i@rong.moe>
+---
+ drivers/bluetooth/btmtk.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index 8ff66b276af0..3d2a8598892b 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -1379,6 +1379,16 @@ int btmtk_usb_setup(struct hci_dev *hdev)
+ 		break;
+ 	case 0x7922:
+ 	case 0x7925:
++		/*
++		 * A remote wakeup could cause the device completely unresponsive, and
++		 * recovering from such a state needs a power cycle.
++		 *
++		 * Since the remote wakeup capability is super broken, just disable it
++		 * to get rid of the troubles. The device can still be autosuspended
++		 * when the bluetooth interface is closed.
++		 */
++		device_set_wakeup_capable(&btmtk_data->udev->dev, false);
++		fallthrough;
+ 	case 0x7961:
+ 	case 0x7902:
+ 	case 0x6639:
+
+---
+base-commit: e43ffb69e0438cddd72aaa30898b4dc446f664f8
+change-id: a4222333-btmtk-remote-wakeup-494f4c97af88
+
+Thanks,
+Rong
+
 
