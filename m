@@ -4,74 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95D32CD6E5D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2026 18:38:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 953FECD6E57
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2026 18:58:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=o6QSHn+bWpbFxZV+XX27moTnu4Gwm7clToWp0ddbfl0=; b=jrKSa8FeqLS9gkC/cJTu1HO2h1
-	1m/LxszfvA8ITWp1BgOlzQf5xiaT2mFa30fkB/GGYLKwScjU0aRVv1fthhAqncmKcUz5orkPIVtbS
-	wqX5gEHfmOH9DdqTq+HMQ4aYujzifIuQhKPesiizcNRzpNYB9WMyB4ZagQTh+Brkm53sKLPBtQyQn
-	Oau6zuzxMyYZNaRhyH9NpdiswqmBNtsz2e61ZaLS5s8Yy65orHKyxuhGnMmnRN0X3JqgCr2ZpBOiX
-	gEp+CjTfkiJ46clXDPVV5dOYSt/AubTSs7m9UKBT3hwRJw/tpQgn08Sd/dy8CuHSnAgt+k8iYW9wt
-	PkoH61Dw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fXUB63jrlqA3KnuNNESByw9pK0N3zMqOBgrRWCqu1fY=; b=h/dXbs+UkXq0EEnA/1si4e8d4w
+	wamGFChXLd3iKbYqIe97KxYSjXlhz6WKvSKxQ4mRGJUilcviM9HIBuhAtpoWqcMcIOHAyIInQoJSw
+	Sng1XyIGknoFrNWINGMTfv3Aoa6UL7KkkBOBNlpLtbKVMt5FT7aKqsO8Ar5/1VhX4Eok87NQ8xj7J
+	I0N+HqiLL58dEAk6setRy7wYJX3DKxxDOTfgz0blkyhxLoK0Ko7XCWikxHXQtcknGiHHiXVuEM6dI
+	LJIf9tkQlYakiAziuJ28sQgt8J1PKb8ZK3HbbCH24EXAG6njQLxILvQP4bPjPPpdvyHSBPgxG2/np
+	HJbTJ6JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUU0h-0000000DeE9-3WwJ;
-	Tue, 02 Jun 2026 18:38:43 +0000
-Received: from sender4-op-o15.zoho.com ([136.143.188.15])
+	id 1wUUK3-0000000DfL4-1Y80;
+	Tue, 02 Jun 2026 18:58:43 +0000
+Received: from dispatch1-us1.ppe-hosted.com ([148.163.129.49])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUU0f-0000000DeDY-0kUi;
-	Tue, 02 Jun 2026 18:38:42 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1780425508; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=TvA/v8z3zJpF6ASip88x0r5DmZ+Ubddx5xhoYTPwmXl0KG9ySNblDLqt8b1bYDScnyEdZqW/WJp16M1UybL1Zohx6qIBtyCEF5SIXFWBXGz5wl9h9BbZoZcdw3RXCrS7YAD9fCgC9zfSfPKPIPsmnur0kIMc/QOfcRWxCHH9G+Q=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1780425508; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=o6QSHn+bWpbFxZV+XX27moTnu4Gwm7clToWp0ddbfl0=; 
-	b=djO7bNSIgCdP6AXpFPqS/mImLg4ffyO1uTzNsrtF7CSoE0Rd3ht4f5W+OoUpZZOLwPYCgBjTQF+XEEl5QTteEvofZEj08xy5ZXQ65dPBsANgr4N86epH/EO4r6bsr7+U5Gqscv3OjhkDbHdG09Jn55VLnW7D1fEOeY6tuyHVi5E=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=rong.moe;
-	spf=pass  smtp.mailfrom=i@rong.moe;
-	dmarc=pass header.from=<i@rong.moe>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1780425508;
-	s=zmail2048; d=rong.moe; i=i@rong.moe;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:To:To:Cc:Cc:Reply-To;
-	bh=o6QSHn+bWpbFxZV+XX27moTnu4Gwm7clToWp0ddbfl0=;
-	b=qIDsWr5jZkzSVcnuQikmp3szrn+vZTVeytDgrP5qLV1h9QBPI9JYm+zXTtFs4KPM
-	/DyOo0a1Qf4Lx02FLWAWafu/Uju1/8AGysTNxfxOYWu9OKU6wuzx9jf3B55ro8q0Nb8
-	Yz+3z1Gc6SuCG3J1Dbqnh0FXGaWQIarqIKu9167ADv3kYzv8qcN9IuZI5wS0wLm8gQe
-	wL9+mO507Xw/KdS7aIDycT7syCwf4EE5oHlX+D7UYo9p6FoPkWWCgcQdpQiVXJN+6EU
-	GQP/zVf7UycquEFzss7M/VTFFBXp77ZQuecvoxZDkebKC16i4qV6CB5gcV24tqEK7hP
-	lDwmTwDA9A==
-Received: by mx.zohomail.com with SMTPS id 1780425506915761.0970031020775;
-	Tue, 2 Jun 2026 11:38:26 -0700 (PDT)
-From: Rong Zhang <i@rong.moe>
-Date: Wed, 03 Jun 2026 02:38:10 +0800
-Subject: [PATCH] Bluetooth: btmtk: Disable remote wakeup for MT7922/MT7925
+	id 1wUUK0-0000000DfKb-39DN;
+	Tue, 02 Jun 2026 18:58:41 +0000
+X-Virus-Scanned: Proofpoint Essentials engine
+Received: from mail3.candelatech.com (mail.candelatech.com [208.74.158.173])
+	by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id 09C8DC008E;
+	Tue,  2 Jun 2026 18:58:35 +0000 (UTC)
+Received: from [192.168.101.118] (firewall.candelatech.com [50.251.239.81])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by mail3.candelatech.com (Postfix) with ESMTPSA id E226313C2B0;
+	Tue,  2 Jun 2026 11:58:32 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com E226313C2B0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
+	s=default; t=1780426713;
+	bh=4klqaW+qlOcvDydYV4JdaHYFzR0FqwPoLlkr0xdbJXo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=FuTMALJRvJrpeRqxwCThZVjQY1vWP0JxucKYuEVEbpTXjryKew/mrGPmokove/Nm1
+	 OYWL2YcJxzwgKE5C319iRtRTubqsSYqCWyinBlUYNqJxyYqSul1p2qTE8HK0sr5sUM
+	 MknIRjOF6wncVnkz05QoEHNSHhr6XwU8ke+sMuWY=
+Message-ID: <80ff2108-dce3-4060-a8d0-59740979a99a@candelatech.com>
+Date: Tue, 2 Jun 2026 11:58:32 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260603-btmtk-remote-wakeup-v1-1-5c1006442f36@rong.moe>
-X-B4-Tracking: v=1; b=H4sIABEjH2oC/yXMSw6CMBRG4a2QO/YObJsIboU4KPUvXgmP9IEmh
- L1bYfgNztkoIggi3auNAlaJMk8F10tF7mWnHizPYrJGKaW15i6NaeCAcU7gjx2QFzaN8cY1N+v
- rmkq5BHj5Htf2cTrm7g2X/iva9x8Aib94dwAAAA==
-X-Change-ID: a4222333-btmtk-remote-wakeup-494f4c97af88
-To: Marcel Holtmann <marcel@holtmann.org>, 
- Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] wifi: mt76: mt7996: Fix possible token leak in
+ mt7996_tx_prepare_skb()
+To: Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+ Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Rong Zhang <i@rong.moe>
-X-Mailer: b4 0.16-dev-d5d98
-X-ZohoMailClient: External
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20260531-mt7996_tx_prepare_skb-token-leack-v1-1-2b9c9f59ceb1@kernel.org>
+Content-Language: en-US
+From: Dylan Eskew <dylan.eskew@candelatech.com>
+In-Reply-To: <20260531-mt7996_tx_prepare_skb-token-leack-v1-1-2b9c9f59ceb1@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-MDID: 1780426717-WQhNphcM8TUz
+X-PPE-STACK: {"stack":"us5"}
+X-MDID-O: us5;ut7;1780426717;WQhNphcM8TUz;<dylan.eskew@candelatech.com>;40f3b03bb24907b736a33b345f288e14
+X-PPE-TRUSTED: V=1;DIR=OUT;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260602_113841_279967_9F5D65C5 
-X-CRM114-Status: GOOD (  11.91  )
+X-CRM114-CacheID: sfid-20260602_115840_818772_0E2D684D 
+X-CRM114-Status: GOOD (  18.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,115 +83,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-These NICs are often reported to lose their Bluetooth interfaces, i.e,
-their USB interfaces suddenly become completely unresponsive, causing
-the USB core to reset them, only to find that they are no longer
-accessible. A power cycle is required to make the Bluetooth interfaces
-recover.
+Hi Lore,
 
-After some investigations, I found that their USB autosuspend remote
-wakeup capabilities are so broken that they are precisely the culprit
-behind the issue:
+We have been seeing the token memory leak in our custom kernel. After 
+pulling your patch in, we are still getting the leak (validated with 
+kmemleak). How did you figure out where this potential leak was? I want 
+to determine if we are leaking because of our changes or if there's more 
+areas for token leakage.
 
-  [27452.608056] hub 3-0:1.0: state 7 ports 5 chg 0000 evt 0020
-  [27452.702018] usb 3-5: usb wakeup-resume
-  [27452.716038] usb 3-5: Waited 0ms for CONNECT
-  [27452.716642] usb 3-5: finish resume
-  /* usbmon showed that the device was completely unresponsive to any
-     URBs after the remote wakeup */
-  [27457.836030] usb 3-5: retry with reset-resume
-  [27457.956046] usb 3-5: reset high-speed USB device number 4 using xhci_hcd
-  [27463.332047] usb 3-5: device descriptor read/64, error -110
-  [27478.948117] usb 3-5: device descriptor read/64, error -110
-  [27479.172430] usb 3-5: reset high-speed USB device number 4 using xhci_hcd
-  [27484.332035] usb 3-5: device descriptor read/64, error -110
-  [27499.940039] usb 3-5: device descriptor read/64, error -110
-  [27500.164060] usb 3-5: reset high-speed USB device number 4 using xhci_hcd
-  [27505.196142] xhci_hcd 0000:67:00.0: Timeout while waiting for setup device command
-  [27510.576045] xhci_hcd 0000:67:00.0: Timeout while waiting for setup device command
-  [27510.784038] usb 3-5: device not accepting address 4, error -62
-  [27510.912215] usb 3-5: reset high-speed USB device number 4 using xhci_hcd
-  [27515.948307] xhci_hcd 0000:67:00.0: Timeout while waiting for setup device command
-  [27521.324380] xhci_hcd 0000:67:00.0: Timeout while waiting for setup device command
-  [27521.525107] usb 3-5: device not accepting address 4, error -62
-  [27521.525928] usb usb3-port5: logical disconnect
-  [27521.525996] usb 3-5: gone after usb resume? status -19
-  [27521.526230] usb 3-5: can't resume, status -19
-  [27521.526434] usb usb3-port5: logical disconnect
-  [27521.526469] usb usb3-port5: resume, status -19
-  [27521.526493] usb usb3-port5: status 0503, change 0004, 480 Mb/s
-  [27521.526528] usb 3-5: USB disconnect, device number 4
-  [27521.526736] usb 3-5: unregistering device
-  [27521.804029] usb 3-5: new high-speed USB device number 5 using xhci_hcd
-  [27527.076067] usb 3-5: device descriptor read/64, error -110
-  [27542.692027] usb 3-5: device descriptor read/64, error -110
-  [27542.916047] usb 3-5: new high-speed USB device number 6 using xhci_hcd
-  [27548.068043] usb 3-5: device descriptor read/64, error -110
-  [27563.684073] usb 3-5: device descriptor read/64, error -110
-  [27563.792133] usb usb3-port5: attempt power cycle
-  [27563.924381] hub 3-0:1.0: port_wait_reset: err = -11
-  [27563.925213] usb usb3-port5: not enabled, trying reset again...
-  [27564.184398] usb 3-5: new high-speed USB device number 7 using xhci_hcd
-  [27569.196322] xhci_hcd 0000:67:00.0: Timeout while waiting for setup device command
-  [27574.572040] xhci_hcd 0000:67:00.0: Timeout while waiting for setup device command
-  [27574.776053] usb 3-5: device not accepting address 7, error -62
-  [27574.900165] usb 3-5: new high-speed USB device number 8 using xhci_hcd
-  [27579.948039] xhci_hcd 0000:67:00.0: Timeout while waiting for setup device command
-  [27585.324331] xhci_hcd 0000:67:00.0: Timeout while waiting for setup device command
-  [27585.528040] usb 3-5: device not accepting address 8, error -62
-  [27585.528389] usb usb3-port5: unable to enumerate USB device
-  [27585.528424] hub 3-0:1.0: state 7 ports 5 chg 0000 evt 0020
+-- Dylan
 
-To reproduce the issue, these conditions must be met:
-- a noisy radio environment (cafe or office) to cause frequent remote
-  wakeup events
-- no Bluetooth device is connected, so autosuspend is not prohibited
-- the Bluetooth interface is opened, so remote wakeup is enabled when
-  the device runs into autosuspend
-
-Then I can reproduce the issue within sereval hours each time.
-
-Increasing TRSMRCY or setting USB_QUIRK_RESET doesn't help at all.
-
-Since the remote wakeup capability is super broken, just disable it to
-get rid of the troubles. The device can still be autosuspended when
-the bluetooth interface is closed, which won't break the device as
-remote wakeup is unneeded in this case.
-
-Link: https://bbs.archlinux.org/viewtopic.php?id=308169
-Link: https://bbs.bee-link.com/d/7694-gtr9-pro-ai-max-395-usb-issues
-Signed-off-by: Rong Zhang <i@rong.moe>
----
- drivers/bluetooth/btmtk.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
-
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index 8ff66b276af0..3d2a8598892b 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -1379,6 +1379,16 @@ int btmtk_usb_setup(struct hci_dev *hdev)
- 		break;
- 	case 0x7922:
- 	case 0x7925:
-+		/*
-+		 * A remote wakeup could cause the device completely unresponsive, and
-+		 * recovering from such a state needs a power cycle.
-+		 *
-+		 * Since the remote wakeup capability is super broken, just disable it
-+		 * to get rid of the troubles. The device can still be autosuspended
-+		 * when the bluetooth interface is closed.
-+		 */
-+		device_set_wakeup_capable(&btmtk_data->udev->dev, false);
-+		fallthrough;
- 	case 0x7961:
- 	case 0x7902:
- 	case 0x6639:
-
----
-base-commit: e43ffb69e0438cddd72aaa30898b4dc446f664f8
-change-id: a4222333-btmtk-remote-wakeup-494f4c97af88
-
-Thanks,
-Rong
-
+On 5/31/26 2:10 AM, Lorenzo Bianconi wrote:
+> If link_conf or link_sta lookup fails in mt7996_tx_prepare_skb routine,
+> mt7996 driver leaks an already allocated tx token. Fix the issue
+> releasing the token in case of error.
+>
+> Fixes: 7ef0c7ad735b0 ("wifi: mt76: mt7996: Implement MLD address translation for EAPOL")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>   drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 8 ++++++--
+>   drivers/net/wireless/mediatek/mt76/tx.c         | 2 +-
+>   2 files changed, 7 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+> index c98446057282..8c56344d211b 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+> @@ -1067,11 +1067,11 @@ int mt7996_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
+>   
+>   		link_conf = rcu_dereference(vif->link_conf[wcid->link_id]);
+>   		if (!link_conf)
+> -			return -EINVAL;
+> +			goto error_relase_token;
+>   
+>   		link_sta = rcu_dereference(sta->link[wcid->link_id]);
+>   		if (!link_sta)
+> -			return -EINVAL;
+> +			goto error_relase_token;
+>   
+>   		dma_sync_single_for_cpu(mdev->dma_dev, tx_info->buf[1].addr,
+>   					tx_info->buf[1].len, DMA_TO_DEVICE);
+> @@ -1176,6 +1176,10 @@ int mt7996_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
+>   	tx_info->nbuf = MT_CT_DMA_BUF_NUM;
+>   
+>   	return 0;
+> +
+> +error_relase_token:
+> +	mt76_token_release(mdev, id, NULL);
+> +	return -EINVAL;
+>   }
+>   
+>   u32 mt7996_wed_init_buf(void *ptr, dma_addr_t phys, int token_id)
+> diff --git a/drivers/net/wireless/mediatek/mt76/tx.c b/drivers/net/wireless/mediatek/mt76/tx.c
+> index 22f9690634c9..f96d9c471853 100644
+> --- a/drivers/net/wireless/mediatek/mt76/tx.c
+> +++ b/drivers/net/wireless/mediatek/mt76/tx.c
+> @@ -933,7 +933,7 @@ mt76_token_release(struct mt76_dev *dev, int token, bool *wake)
+>   #endif
+>   	}
+>   
+> -	if (dev->token_count < dev->token_size - MT76_TOKEN_FREE_THR &&
+> +	if (wake && dev->token_count < dev->token_size - MT76_TOKEN_FREE_THR &&
+>   	    dev->phy.q_tx[0]->blocked)
+>   		*wake = true;
+>   
+>
+> ---
+> base-commit: 4913f44167cf35a9536e9eec7352e15b2de0c573
+> change-id: 20260531-mt7996_tx_prepare_skb-token-leack-82e240d8c66f
+>
+> Best regards,
 
