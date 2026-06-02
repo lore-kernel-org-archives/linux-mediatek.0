@@ -4,82 +4,154 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73EF7CD6E68
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2026 12:47:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73205CD6E60
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2026 13:03:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
-	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RO5784S1QXJJir7suE9eGvlRmX/RG26tr+rMbsje8dY=; b=q72jH6jWHJyfdkZOORyKfDJlLV
-	yfx0vvCa+S8SSGjM+OOPPTXtXSZeCyU3VDn3dyjNU2W6qnCesLeRooHoVWSm9AqZlo07bfXK20HA2
-	9/bKDSy37/CpxQedjB4h/JwK1O4F3v5E9+GAMskA6ILR+IpNwnRzmKONl5pSFRyrlq9mWs24nNGRh
-	ElJiDivCN2fn+dfjC24BOr0am5gqYufSpstbyI3SRQsUWKM4tIEpuUnEy/N1dB+ryqPBoGk0YZbxP
-	BwCAwzeiQq6pSWOky6X3ABNDS63uvGrYGKcauhYc0aVfz3tsNqmITMJE3FNp9tZ1oMhFdhNtq9ukn
-	54iCSyeg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vwWwQR9P8Ympgw+kQz4842HILDOyHmzShXCwxSRrcg8=; b=kg/1Sa9FghAaYqti9KIRk4IAqL
+	MVKM4lNvWPiBjC3Z/8V1KqsjXm6XPHvkoOmXuALDnQWhth5N3wTxwsuqZVN5+P88u6lKbGmgwTaQU
+	j1ff0JCc1jHoOyriM4lOB9wPOs97kTdWBfAZx3D6EjFjSntH6b27FNZMdXTBrQsSfe2WpLkPPiQTa
+	/pzcdc2pdG8FL53U5WJX/pHk3DRrmSgQfKY80Y9GJASjdDEm25vIh4/X14cpQ3k9teSqlsb8QI4KP
+	W/5Ibq9HB/ZNXKlXFlNudNVK6ak0KPR80lSxYm8+5lflf/YWFhHvuh8UNYJpnH/rDOkaFeRfdTuYj
+	H0Tm25+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUOWM-0000000D0tW-1vC6;
-	Tue, 02 Jun 2026 12:47:02 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wUOmb-0000000D2eD-3JNV;
+	Tue, 02 Jun 2026 13:03:49 +0000
+Received: from mail-westeuropeazon11010020.outbound.protection.outlook.com ([52.101.69.20] helo=AM0PR83CU005.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUOWH-0000000D0nR-2PC7;
-	Tue, 02 Jun 2026 12:47:00 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 776DF42B27;
-	Tue,  2 Jun 2026 12:46:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 34307C2BCC7;
-	Tue,  2 Jun 2026 12:46:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1780404416;
-	bh=JYAiBDSgog+rgvCej9RrtMZIgJFYyLBrSJcbUzXEbjo=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=Sj1JqE4e46j+RCPh0I2Wo0nZiAGsQhKOzCHiNbniLMiVWNu7BhqjQmH1MfwdTJ5vE
-	 jiOCdcvTMpnrL4h/e5biMyH50tjxrx+W6fOokUfVXQ7D/cr9VBNagfJxvSkxs3U63f
-	 rR01BPTPEDbmuO2PgB2YJpdNTIN4fS+AD3iCpiWg9VCrtk7o7tyPQ+u28i9H3Fo+Ii
-	 CJjBqA9fw+AqrBcO/erirOSSv7D3oUoeHQ2nCCdX3zIosvarey55De2yAuL+e+Vg10
-	 X5rcKyGVI2k8WG/jpXt+eYvHXTWZlfuLV7wraMtfqwtZZoAGY3i7i6jWO4n4HA98yW
-	 v+EN7lzz/pFUA==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2014CCD6E4A;
-	Tue,  2 Jun 2026 12:46:56 +0000 (UTC)
-From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Tue, 02 Jun 2026 15:46:55 +0300
-Subject: [PATCH 2/4] iio: adc: mt6323-auxadc: add mt6323 PMIC AUXADC driver
+	id 1wUOmY-0000000D2dT-3Ndg;
+	Tue, 02 Jun 2026 13:03:48 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=JIcuGOG9xL5lZtXURPaGH1tSNXDtY6EeMUOu2I11cuDi3cmYk+W1KGxqIoIDV6UOw2fMF9mnsXQeLXWgaOD6YTCgkt0ReqHF7/jr9kJ3at5kTJfy9xRpwFWxdwG3hxk68krZGTZ7zLZW9Z9iBzXIETrzCROyOayQr+3QgqRzuS0CmVvbmnHAPwKMJdPq11lMmeyVH8D2wdj25sBY6ERPzi7k2yaPgIfa/GV4iA8TadVb0HSwTdGTLtgT8dklsNJ/SHuJs2xOYwNw/S2IeaULP4C0mrbNu99IR/pQ0RXSHlCc0yUfR5KYIRXX6bHi7CXva9t2pDGcHf5p5rfiobJN8w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=vwWwQR9P8Ympgw+kQz4842HILDOyHmzShXCwxSRrcg8=;
+ b=lwyoP/0OmTEsf1fNgE7Ak7juVsrJ0qhhvJMm3gNYniPTUIgulIVRFBwt3gTMw6RDuBcdiQWSVRxZMMkB8NE8Txd14InHBSRFAA5e1qszm4inmw38DeqwNrr1W8Y2bCPAJ3n2HMrAAXXNr0ej0DNC/7p8ImCPt/qlIw21ep2+ovwx25mzqzcvNrr8JvISjem+/IchhgtVsQky1Agd6pKXUwxC8DW+AWvLb4mVzS8bH+p7e5dIvByf3pxa7d/xUNr0rHfIYPlxQOINmkAVThb6MfC7vUnhKPbkl1fGYcKt3ksYQfkLUxKklci9tshwI4nwawlTg5SUH0dJ8EiXuhNbIw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=fail (sender ip is
+ 164.130.1.59) smtp.rcpttodomain=kernel.org smtp.mailfrom=foss.st.com;
+ dmarc=fail (p=none sp=none pct=100) action=none header.from=foss.st.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=vwWwQR9P8Ympgw+kQz4842HILDOyHmzShXCwxSRrcg8=;
+ b=NI8wEIUDnGlHzXkJQy6i4GOwTPSqDsgr/hPgDJwRLWDQWg2tIzFrJWM1BJoZNvl/JV8FqpUuHAFQ1YjGwnWcVL3pUzMx3RmCU8Wnk00LeGq557H6+WPUQ2DTsqggApftkUHrODF/vAQiHKU5OkWuPk5vV38TbHaWzuP+uY/5ymfiZskr0ormpZ5denr5eSOn5221m3BUrV5C59ag/TU9KHQ2WA0JOco+iYc27lINyO7+hjkdNDt/sOuolj0CrfLjWXT/vqrKcpJSF709gSLncFausnDehHkPE+vis6nTY9Lp710a3iBdkzDRlmUieXJaN4uoL5ZkCK4C477bFr5lNA==
+Received: from DB7PR05CA0027.eurprd05.prod.outlook.com (2603:10a6:10:36::40)
+ by VI1PR10MB3184.EURPRD10.PROD.OUTLOOK.COM (2603:10a6:803:12f::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.92.7; Tue, 2 Jun 2026
+ 13:03:36 +0000
+Received: from DU2PEPF0001E9C0.eurprd03.prod.outlook.com
+ (2603:10a6:10:36:cafe::e) by DB7PR05CA0027.outlook.office365.com
+ (2603:10a6:10:36::40) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.71.16 via Frontend Transport; Tue, 2
+ Jun 2026 13:03:36 +0000
+X-MS-Exchange-Authentication-Results: spf=fail (sender IP is 164.130.1.59)
+ smtp.mailfrom=foss.st.com; dkim=none (message not signed)
+ header.d=none;dmarc=fail action=none header.from=foss.st.com;
+Received-SPF: Fail (protection.outlook.com: domain of foss.st.com does not
+ designate 164.130.1.59 as permitted sender) receiver=protection.outlook.com;
+ client-ip=164.130.1.59; helo=smtpO365.st.com;
+Received: from smtpO365.st.com (164.130.1.59) by
+ DU2PEPF0001E9C0.mail.protection.outlook.com (10.167.8.69) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.21.92.5 via Frontend Transport; Tue, 2 Jun 2026 13:03:35 +0000
+Received: from STKDAG1NODE2.st.com (10.75.128.133) by smtpo365.st.com
+ (10.250.44.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.35; Tue, 2 Jun
+ 2026 15:07:44 +0200
+Received: from gnbcxd0016.gnb.st.com (10.130.77.119) by STKDAG1NODE2.st.com
+ (10.75.128.133) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.35; Tue, 2 Jun
+ 2026 15:03:33 +0200
+Date: Tue, 2 Jun 2026 15:03:20 +0200
+From: Alain Volmat <alain.volmat@foss.st.com>
+To: "Rob Herring (Arm)" <robh@kernel.org>
+CC: Liu Ying <victor.liu@nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
+	<mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
+	<airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Krzysztof Kozlowski
+	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Frank Li
+	<Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>, "Pengutronix
+ Kernel Team" <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, Rob
+ Clark <robin.clark@oss.qualcomm.com>, Sean Paul <sean@poorly.run>, Konrad
+ Dybcio <konradybcio@kernel.org>, Akhil P Oommen <akhilpo@oss.qualcomm.com>,
+	"Dmitry Baryshkov" <lumag@kernel.org>, Abhinav Kumar
+	<abhinav.kumar@linux.dev>, Jessica Zhang <jesszhan0024@gmail.com>, Marijn
+ Suijten <marijn.suijten@somainline.org>, Vinod Koul <vkoul@kernel.org>, Nas
+ Chung <nas.chung@chipsnmedia.com>, Jackson Lee <jackson.lee@chipsnmedia.com>,
+	"Mauro Carvalho Chehab" <mchehab@kernel.org>, Mirela Rabulea
+	<mirela.rabulea@nxp.com>, Detlev Casanova <detlev.casanova@collabora.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Heiko Stuebner
+	<heiko@sntech.de>, Hugues Fruchet <hugues.fruchet@foss.st.com>, "Maxime
+ Coquelin" <mcoquelin.stm32@gmail.com>, Alexandre Torgue
+	<alexandre.torgue@foss.st.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "David
+ S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, "Jakub
+ Kicinski" <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, MD Danish Anwar
+	<danishanwar@ti.com>, Roger Quadros <rogerq@kernel.org>, Parvathi Pudi
+	<parvathi@couthit.com>, Mohan Reddy Putluru <pmohan@couthit.com>, "Bjorn
+ Andersson" <andersson@kernel.org>, Mathieu Poirier
+	<mathieu.poirier@linaro.org>, Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Michal Simek
+	<michal.simek@amd.com>, Mark Brown <broonie@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Linus Walleij <linusw@kernel.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>, "Andrew
+ F. Davis" <afd@ti.com>, Hussain Khaja <basharath@couthit.com>, Suman Anna
+	<s-anna@ti.com>, Ben Levinsky <ben.levinsky@amd.com>, Tanmay Shah
+	<tanmay.shah@amd.com>, Erwan Leray <erwan.leray@foss.st.com>, Fabrice Gasnier
+	<fabrice.gasnier@foss.st.com>, Roger Quadros <rogerq@ti.com>,
+	<dri-devel@lists.freedesktop.org>, <devicetree@vger.kernel.org>,
+	<imx@lists.linux.dev>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
+	<freedreno@lists.freedesktop.org>, <dmaengine@vger.kernel.org>,
+	<linux-media@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>, <netdev@vger.kernel.org>,
+	<linux-remoteproc@vger.kernel.org>, <linux-amlogic@lists.infradead.org>,
+	<linux-spi@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH] dt-bindings: Consolidate "sram" property definition
+Message-ID: <ah7UmMC9fbWuyopl@gnbcxd0016.gnb.st.com>
+References: <20260511165942.2774868-1-robh@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260602-mt6323-adc-v1-2-68ec737508ee@protonmail.com>
-References: <20260602-mt6323-adc-v1-0-68ec737508ee@protonmail.com>
-In-Reply-To: <20260602-mt6323-adc-v1-0-68ec737508ee@protonmail.com>
-To: Jonathan Cameron <jic23@kernel.org>, 
- David Lechner <dlechner@baylibre.com>, 
- =?utf-8?q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, 
- Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Lee Jones <lee@kernel.org>
-Cc: linux-iio@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Ben Grisdale <bengris32@protonmail.ch>, 
- Roman Vivchar <rva333@protonmail.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1780404414; l=11966;
- i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=/ogpG2sgedVW1+zdR6RGxPXqiJewxShnS+2sbJL9GW4=;
- b=JbI2g17WBiDJNIVBrCpjTW4M+d0JrCs40GkxKmhf6BZcHJ8m8sCPOX7XsS61CYsQPxnd+W2MF
- Pl8ILIVeKpcDM20ErC5/8HbbZaGpjpHkYlgMEeWEqeFboFCbJ9oHyxl
-X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
- pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
-X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
- auth_id=777
-X-Original-From: Roman Vivchar <rva333@protonmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20260511165942.2774868-1-robh@kernel.org>
+X-Disclaimer: ce message est personnel / this message is private
+X-Originating-IP: [10.130.77.119]
+X-ClientProxiedBy: ENXCAS1NODE2.st.com (10.75.128.138) To STKDAG1NODE2.st.com
+ (10.75.128.133)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU2PEPF0001E9C0:EE_|VI1PR10MB3184:EE_
+X-MS-Office365-Filtering-Correlation-Id: 41804fca-f1aa-4c97-6843-08dec0a75b71
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|36860700016|82310400026|376014|7416014|22082099003|18002099003|3023799007|56012099006|11063799006;
+X-Microsoft-Antispam-Message-Info: nBtSLCyV1zNaj4AYS9TljJxgu9LjuqDypvz6s5q1mmtaP3SSLxCZQEWwIxiLS+VAVYAuA7oDf7K6+m40o/xOcVrotpYE/XqihZn3zsWUweEhW7kSyL3bEKN/7Y97ZY3DngopwbPo3TmdNeggBqYoDcZH+6rwDRKAMGhtmXoXidU/Q/psey30ZPXNRfuLe79Vwm5HNIdcmkulv9ymbhMEYodX8fMDNeCqzsi1lv+ekv0eBBRJ8ZzqsHGRCblhFnHO2voSiJCE+UQBFF8QDZYGMl8pVRO6Op9dZpr3mh/FWSXy1atXlI561urKBhAZEudJgsL1JocV44jQC+WzgojHZF2kh1h54yHxNJJTo90ct800Hmv5cRnEAJGdgvKUNnUMoCFPG2SxEnxQ/8YtrESRvrQalllwW4hmLuHIV6/MGFF5DGlcqPIJ2zT9vfT1M6xVyWvgZu5G6e9W5JpRns0oU8z9hx0TtYQa7FVdlfgYEGBIazv7YVFu91/eodjxRlJdrwMyO8uKkXNvqvBdgF9l2S5fZoek0ekxeULffTEBEYvVCt7AOyS9V2w9771i+gHQEJjoHn00LaVMkkGeaQY3W/aOEQCAB23In41sol9GPCJsw6oCce43TyO82Hhxq81xMeakW1CvhEVyDzKUGfo/t+RxPZflg8io4Jgs6ku3KaRZkGhOMFtqkXss3wtALDhqb4FoEPEVm1qsACJ/HnWniCNXJaf3Q8IeIqu4OJA54Yk=
+X-Forefront-Antispam-Report: CIP:164.130.1.59;CTRY:IT;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:smtpO365.st.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(1800799024)(36860700016)(82310400026)(376014)(7416014)(22082099003)(18002099003)(3023799007)(56012099006)(11063799006);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: aBmJ6MlgTmzNChnBehDqv9+4//tdizL6JKnMkyfjk9H+924t2l28f906bO2GWyks5L9F1PgGV4iLcesLKLL52YfzYULyiGhkgtdagr2OpLLMD3s3hTq1UXnNF1iyxFGmqherFoLIF8dWYUpD23kPWEHFY8bP1iXQVK1Nwx5UoaUuXaGb6/vNFMmp8Wym3c/Lvc5zhWgoXrFvcpLFgeH0/kpOtWEGmzbjQStWW0Isg1VqBJqlcZtRn8/8R0vZfUcT4lTpYUyZdT/FJFUnDkpbOr3oAfTbWC9097HNmAsr098j/dLKnVWY667H4QS/F1JqXOIIHyds4oI9YvtJoSyAqw3l7+893pU5Wd14tvmPY13WZr23xdEa9BZeEGaQhxaULqhZeklPswj9/zo74DOw3Q8TIu7OXH1r+PBsVTcLbaBdHLyCkdRjPSTk4Tp8zyIZ
+X-OriginatorOrg: foss.st.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Jun 2026 13:03:35.8611
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 41804fca-f1aa-4c97-6843-08dec0a75b71
+X-MS-Exchange-CrossTenant-Id: 75e027c9-20d5-47d5-b82f-77d7cd041e8f
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=75e027c9-20d5-47d5-b82f-77d7cd041e8f;Ip=[164.130.1.59];Helo=[smtpO365.st.com]
+X-MS-Exchange-CrossTenant-AuthSource: DU2PEPF0001E9C0.eurprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR10MB3184
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260602_054657_675246_F0BC8B58 
-X-CRM114-Status: GOOD (  26.69  )
+X-CRM114-CacheID: sfid-20260602_060347_076041_5696ECDA 
+X-CRM114-Status: UNSURE (   8.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,389 +163,17 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Roman Vivchar <rva333@protonmail.com>
+On Mon, May 11, 2026 at 11:59:36AM -0500, Rob Herring (Arm) wrote:
+> The "sram" property has become a de facto standard property, so create a
+> common schema for it and drop all the duplicated definitions.
+> 
+> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+> ---
+>
+>  .../bindings/media/st,stm32-dcmi.yaml         |  6 ++---
 
-The mt6323 AUXADC is a 15-bit ADC used for system monitoring. This driver
-provides support for reading various channels including battery and
-charger voltages, battery and chip temperature, current sensing and
-accessory detection.
-
-Add a driver for the AUXADC found in the MediaTek mt6323 PMIC.
-
-Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
-Signed-off-by: Roman Vivchar <rva333@protonmail.com>
----
- MAINTAINERS                     |   8 ++
- drivers/iio/adc/Kconfig         |  11 ++
- drivers/iio/adc/Makefile        |   1 +
- drivers/iio/adc/mt6323-auxadc.c | 299 ++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 319 insertions(+)
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index d1cc0e12fe1f..c9ad2417a3ef 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -16256,6 +16256,14 @@ S:	Maintained
- F:	Documentation/devicetree/bindings/mmc/mtk-sd.yaml
- F:	drivers/mmc/host/mtk-sd.c
- 
-+MEDIATEK MT6323 PMIC AUXADC DRIVER
-+M:	Roman Vivchar <rva333@protonmail.com>
-+L:	linux-iio@vger.kernel.org
-+L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
-+S:	Maintained
-+F:	drivers/iio/adc/mt6323-auxadc.c
-+F:	include/dt-bindings/iio/adc/mediatek,mt6323-auxadc.h
-+
- MEDIATEK MT6735 CLOCK & RESET DRIVERS
- M:	Yassine Oudjana <y.oudjana@protonmail.com>
- L:	linux-clk@vger.kernel.org
-diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
-index 60038ae8dfc4..a03614b46041 100644
---- a/drivers/iio/adc/Kconfig
-+++ b/drivers/iio/adc/Kconfig
-@@ -1137,6 +1137,17 @@ config MCP3911
- 	  This driver can also be built as a module. If so, the module will be
- 	  called mcp3911.
- 
-+config MEDIATEK_MT6323_AUXADC
-+	tristate "MediaTek MT6323 PMIC AUXADC driver"
-+	depends on MFD_MT6397
-+	help
-+	  Say yes here to enable support for MediaTek MT6323 PMIC Auxiliary ADC.
-+	  This driver provides multiple channels for system monitoring,
-+	  such as battery voltage, PMIC temperature, and others.
-+
-+	  This driver can also be built as a module. If so, the module will be
-+	  called mt6323-auxadc.
-+
- config MEDIATEK_MT6359_AUXADC
- 	tristate "MediaTek MT6359 PMIC AUXADC driver"
- 	depends on MFD_MT6397
-diff --git a/drivers/iio/adc/Makefile b/drivers/iio/adc/Makefile
-index c76550415ff1..58161750d6e3 100644
---- a/drivers/iio/adc/Makefile
-+++ b/drivers/iio/adc/Makefile
-@@ -99,6 +99,7 @@ obj-$(CONFIG_MCP320X) += mcp320x.o
- obj-$(CONFIG_MCP3422) += mcp3422.o
- obj-$(CONFIG_MCP3564) += mcp3564.o
- obj-$(CONFIG_MCP3911) += mcp3911.o
-+obj-$(CONFIG_MEDIATEK_MT6323_AUXADC) += mt6323-auxadc.o
- obj-$(CONFIG_MEDIATEK_MT6359_AUXADC) += mt6359-auxadc.o
- obj-$(CONFIG_MEDIATEK_MT6360_ADC) += mt6360-adc.o
- obj-$(CONFIG_MEDIATEK_MT6370_ADC) += mt6370-adc.o
-diff --git a/drivers/iio/adc/mt6323-auxadc.c b/drivers/iio/adc/mt6323-auxadc.c
-new file mode 100644
-index 000000000000..da6c11a5079c
---- /dev/null
-+++ b/drivers/iio/adc/mt6323-auxadc.c
-@@ -0,0 +1,299 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (c) 2026 Roman Vivchar <rva333@protonmail.com>
-+ *
-+ * Based on drivers/iio/adc/mt6359-auxadc.c
-+ */
-+
-+#include <linux/array_size.h>
-+#include <linux/bitfield.h>
-+#include <linux/bits.h>
-+#include <linux/cleanup.h>
-+#include <linux/delay.h>
-+#include <linux/iio/iio.h>
-+#include <linux/mod_devicetable.h>
-+#include <linux/module.h>
-+#include <linux/mutex.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+#include <linux/stringify.h>
-+#include <linux/time.h>
-+#include <linux/types.h>
-+
-+#include <linux/mfd/mt6323/registers.h>
-+
-+#include <dt-bindings/iio/adc/mediatek,mt6323-auxadc.h>
-+
-+#define AUXADC_STRUP_CON10_RSTB_SEL	BIT(7)
-+#define AUXADC_STRUP_CON10_RSTB_SW	BIT(5)
-+
-+#define AUXADC_TOP_CKPDN2_CTL_CK	BIT(5)
-+
-+#define AUXADC_TRIM_CH2_MASK		GENMASK(11, 10)
-+#define AUXADC_TRIM_CH4_MASK		GENMASK(9, 8)
-+#define AUXADC_TRIM_CH5_MASK		GENMASK(5, 4)
-+#define AUXADC_TRIM_CH6_MASK		GENMASK(3, 2)
-+
-+#define AUXADC_CON27_VREF18_ENB_MD	BIT(15)
-+#define AUXADC_CON27_MD_STATUS		BIT(0)
-+
-+#define AUXADC_CON19_GPS_STATUS		BIT(1)
-+
-+#define AUXADC_CON26_VREF18_SELB	BIT(1)
-+#define AUXADC_CON26_DECI_GDLY_SEL	BIT(0)
-+
-+#define AUXADC_CON11_VBUF_EN		BIT(4)
-+
-+#define AUXADC_CON19_DECI_GDLY_MASK	GENMASK(15, 14)
-+#define AUXADC_ADC19_BUSY_MASK		GENMASK(15, 1)
-+#define AUXADC_READY_MASK		BIT(15)
-+#define AUXADC_DATA_MASK		GENMASK(14, 0)
-+
-+#define AUXADC_CON9_OSR_MASK		GENMASK(12, 10)
-+#define AUXADC_DEFAULT_OSR		3
-+
-+#define AUXADC_LOW_CHANNEL_MASK		GENMASK(9, 0)
-+#define AUXADC_AUDIO_CHANNEL_MASK	GENMASK(8, 0)
-+
-+#define MTK_PMIC_IIO_CHAN(_name, _chan, _addr, _ch_type)        \
-+{                                                               \
-+	.type = _ch_type,                                       \
-+	.indexed = 1,                                           \
-+	.channel = _chan,                                       \
-+	.address = _addr,                                       \
-+	.datasheet_name = __stringify(_name),                   \
-+	.info_mask_separate = BIT(IIO_CHAN_INFO_RAW) |          \
-+			      BIT(IIO_CHAN_INFO_SCALE),         \
-+}
-+
-+static const struct iio_chan_spec mt6323_auxadc_channels[] = {
-+	MTK_PMIC_IIO_CHAN(baton2,    MT6323_AUXADC_BATON2,    MT6323_AUXADC_ADC6,  IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(ch6,       MT6323_AUXADC_CH6,       MT6323_AUXADC_ADC11, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(bat_temp,  MT6323_AUXADC_BAT_TEMP,  MT6323_AUXADC_ADC5,  IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(chip_temp, MT6323_AUXADC_CHIP_TEMP, MT6323_AUXADC_ADC4,  IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(vcdt,      MT6323_AUXADC_VCDT,      MT6323_AUXADC_ADC2,  IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(baton1,    MT6323_AUXADC_BATON1,    MT6323_AUXADC_ADC3,  IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(isense,    MT6323_AUXADC_ISENSE,    MT6323_AUXADC_ADC1,  IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(batsns,    MT6323_AUXADC_BATSNS,    MT6323_AUXADC_ADC0,  IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(accdet,    MT6323_AUXADC_ACCDET,    MT6323_AUXADC_ADC7,  IIO_VOLTAGE),
-+};
-+
-+/**
-+ * struct mt6323_auxadc - Main driver structure
-+ * @regmap:        Regmap from PWRAP
-+ * @lock:          Mutex to serialize AUXADC reading vs configuration
-+ *
-+ * The MediaTek MT6323 (as well as a lot of other PMICs) has the following hierarchy:
-+ * PMIC AUXADC <- PMIC MFD <- SoC PWRAP (wrapper for PWRAP FSM)
-+ *
-+ * Therefore, PWRAP regmap should be obtained using dev->parent->parent.
-+ */
-+struct mt6323_auxadc {
-+	struct regmap *regmap;
-+	struct mutex lock;
-+};
-+
-+static int mt6323_auxadc_prepare_channel(struct mt6323_auxadc *auxadc)
-+{
-+	struct regmap *map = auxadc->regmap;
-+	u32 val;
-+	int ret;
-+
-+	ret = regmap_read(map, MT6323_AUXADC_CON19, &val);
-+	if (ret)
-+		return ret;
-+
-+	/* The ADC is idle. */
-+	if (!(val & AUXADC_CON19_DECI_GDLY_MASK))
-+		return 0;
-+
-+	ret = regmap_read_poll_timeout(map, MT6323_AUXADC_ADC19, val,
-+				       !(val & AUXADC_ADC19_BUSY_MASK),
-+				       10, 500);
-+	if (ret)
-+		return ret;
-+
-+	return regmap_clear_bits(map, MT6323_AUXADC_CON19,
-+				 AUXADC_CON19_DECI_GDLY_MASK);
-+}
-+
-+static int mt6323_auxadc_request(struct mt6323_auxadc *auxadc,
-+				 unsigned long channel)
-+{
-+	struct regmap *map = auxadc->regmap;
-+	int ret;
-+
-+	ret = regmap_set_bits(map, MT6323_AUXADC_CON11, AUXADC_CON11_VBUF_EN);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_clear_bits(map, MT6323_AUXADC_CON22, BIT(channel));
-+	if (ret)
-+		return ret;
-+
-+	return regmap_set_bits(map, MT6323_AUXADC_CON22, BIT(channel));
-+}
-+
-+static int mt6323_auxadc_read(struct mt6323_auxadc *auxadc,
-+			      const struct iio_chan_spec *chan, int *out)
-+{
-+	struct regmap *map = auxadc->regmap;
-+	u32 reg = chan->address;
-+	u32 val;
-+	int ret;
-+
-+	ret = regmap_read_poll_timeout(map, reg, val, (val & AUXADC_READY_MASK),
-+				       1 * USEC_PER_MSEC, 100 * USEC_PER_MSEC);
-+	if (ret)
-+		return ret;
-+
-+	*out = FIELD_GET(AUXADC_DATA_MASK, val);
-+
-+	return 0;
-+}
-+
-+static int mt6323_auxadc_read_raw(struct iio_dev *indio_dev,
-+				  const struct iio_chan_spec *chan,
-+				  int *val, int *val2, long mask)
-+{
-+	struct mt6323_auxadc *auxadc = iio_priv(indio_dev);
-+	int ret, mult;
-+
-+	switch (mask) {
-+	case IIO_CHAN_INFO_SCALE:
-+		if (chan->channel == MT6323_AUXADC_ISENSE ||
-+		    chan->channel == MT6323_AUXADC_BATSNS)
-+			mult = 4;
-+		else
-+			mult = 1;
-+
-+		/* 1800mV full range with 15-bit resolution. */
-+		*val = mult * 1800;
-+		*val2 = 15;
-+
-+		return IIO_VAL_FRACTIONAL_LOG2;
-+	case IIO_CHAN_INFO_RAW:
-+		scoped_guard(mutex, &auxadc->lock) {
-+			ret = mt6323_auxadc_prepare_channel(auxadc);
-+			if (ret)
-+				return ret;
-+
-+			ret = mt6323_auxadc_request(auxadc, chan->channel);
-+			if (ret)
-+				return ret;
-+
-+			/* Hardware limitation: the AUXADC needs a delay to become ready. */
-+			fsleep(300);
-+
-+			ret = mt6323_auxadc_read(auxadc, chan, val);
-+			if (ret)
-+				return ret;
-+		}
-+		return IIO_VAL_INT;
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+
-+static int mt6323_auxadc_init(struct mt6323_auxadc *auxadc)
-+{
-+	struct regmap *map = auxadc->regmap;
-+	int ret;
-+
-+	ret = regmap_set_bits(map, MT6323_STRUP_CON10,
-+			      AUXADC_STRUP_CON10_RSTB_SW |
-+			      AUXADC_STRUP_CON10_RSTB_SEL);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_set_bits(map, MT6323_TOP_CKPDN2, AUXADC_TOP_CKPDN2_CTL_CK);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_update_bits(map, MT6323_AUXADC_CON10,
-+				 AUXADC_TRIM_CH2_MASK | AUXADC_TRIM_CH4_MASK |
-+				 AUXADC_TRIM_CH5_MASK | AUXADC_TRIM_CH6_MASK,
-+				 FIELD_PREP(AUXADC_TRIM_CH2_MASK, 1) |
-+				 FIELD_PREP(AUXADC_TRIM_CH4_MASK, 1) |
-+				 FIELD_PREP(AUXADC_TRIM_CH5_MASK, 1) |
-+				 FIELD_PREP(AUXADC_TRIM_CH6_MASK, 1));
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_set_bits(map, MT6323_AUXADC_CON27,
-+			      AUXADC_CON27_VREF18_ENB_MD |
-+			      AUXADC_CON27_MD_STATUS);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_set_bits(map, MT6323_AUXADC_CON19, AUXADC_CON19_GPS_STATUS);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_set_bits(map, MT6323_AUXADC_CON26,
-+			      AUXADC_CON26_VREF18_SELB |
-+			      AUXADC_CON26_DECI_GDLY_SEL);
-+	if (ret)
-+		return ret;
-+
-+	return regmap_update_bits(map, MT6323_AUXADC_CON9, AUXADC_CON9_OSR_MASK,
-+				  FIELD_PREP(AUXADC_CON9_OSR_MASK, AUXADC_DEFAULT_OSR));
-+}
-+
-+static const struct iio_info mt6323_auxadc_iio_info = {
-+	.read_raw = mt6323_auxadc_read_raw,
-+};
-+
-+static int mt6323_auxadc_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct mt6323_auxadc *auxadc;
-+	struct iio_dev *iio;
-+	struct regmap *regmap;
-+	int ret;
-+
-+	regmap = dev_get_regmap(dev->parent->parent, NULL);
-+	if (!regmap)
-+		return dev_err_probe(dev, -ENODEV, "failed to get regmap\n");
-+
-+	iio = devm_iio_device_alloc(dev, sizeof(*auxadc));
-+	if (!iio)
-+		return -ENOMEM;
-+
-+	auxadc = iio_priv(iio);
-+	auxadc->regmap = regmap;
-+
-+	ret = devm_mutex_init(dev, &auxadc->lock);
-+	if (ret)
-+		return ret;
-+
-+	ret = mt6323_auxadc_init(auxadc);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "failed to initialize auxadc\n");
-+
-+	iio->name = "mt6323-auxadc";
-+	iio->info = &mt6323_auxadc_iio_info;
-+	iio->modes = INDIO_DIRECT_MODE;
-+	iio->channels = mt6323_auxadc_channels;
-+	iio->num_channels = ARRAY_SIZE(mt6323_auxadc_channels);
-+
-+	return devm_iio_device_register(dev, iio);
-+}
-+
-+static const struct of_device_id mt6323_auxadc_of_match[] = {
-+	{ .compatible = "mediatek,mt6323-auxadc" },
-+	{ }
-+};
-+MODULE_DEVICE_TABLE(of, mt6323_auxadc_of_match);
-+
-+static struct platform_driver mt6323_auxadc_driver = {
-+	.driver = {
-+		.name = "mt6323-auxadc",
-+		.of_match_table = mt6323_auxadc_of_match,
-+	},
-+	.probe	= mt6323_auxadc_probe,
-+};
-+module_platform_driver(mt6323_auxadc_driver);
-+
-+MODULE_LICENSE("GPL");
-+MODULE_DESCRIPTION("MediaTek MT6323 PMIC AUXADC Driver");
-
--- 
-2.54.0
-
-
+Acked-by: Alain Volmat <alain.volmat@foss.st.com>
 
