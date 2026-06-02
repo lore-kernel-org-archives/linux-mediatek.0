@@ -4,77 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 065D2CD6E4A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2026 06:43:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A96D9CD6E4A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2026 06:52:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oVz6SYKqYy1ykUS1fwQECnfl6EKiONJTsloqPqT0xyw=; b=AFTOPEl3y/M2ieKjNWZdnhesbm
-	F8uD8Tt1nNS1whEv0+5fG2kAHbZAYIGbCxTjNOKbO/nQ/hxBfk+lzhkci9/iABDpoBC72mBxIYzzb
-	uqMy20mEKu/rnOeafz19I8yXcmfv5qEMKiBgTdkOc7pMIhIZWWUej8YxnfEj7/DUpuqOoEMuAceHb
-	PJhLgO7OWg3Nqdmhvq4zkj/rd8mZWEH9bImzssd3+3QFQZvNR9bQ7gQ6Y3T/z2x5euVlI1uaNThAV
-	+mopf0ANRcZJqWLgRHXQhJ34EaEEpJK25b/3Kt5PdqD/NhqzC0rmeR+aYt8LPOIxDfmlemqVMw23l
-	leV2iN1w==;
+	bh=ZDSxYnMPY0itqsVM4sIvyNaZq4A9tfxgOPqtLTGH890=; b=nXggjRfuHK+ColCsaKypjtHOAc
+	QRkxMCMhL+ce8N937yMAI74H9TccWFb4NKQ31T+1lINg2bfs9tShfWM8De0mxFAuJeJpXfpzdnFp0
+	yDKNcwlXzUILQ7JQOjDs3AbbRl8FUuYRML8NfRErUk7Hww6oDyQUSYbfzQGoXZoTHMVyWne6EaD0M
+	BUSij/OdDaG+JUZ109I379NeKXSptC0bjxoqGyEmSOca2rvloK9ZjhXXX3fLejvCQbAoaXEsFNc9l
+	A/t6NUw+1CsVs6/Nz2xzt8Sup9+WiVkaeaxTwLEB0MKiSPUsZEATL04zZZRG9Zv5INaIdQs09quMx
+	fg+hNN/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUIqd-0000000CPCy-2QxA;
-	Tue, 02 Jun 2026 06:43:35 +0000
+	id 1wUIz8-0000000CPo5-3jje;
+	Tue, 02 Jun 2026 06:52:23 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUIqb-0000000CPCT-0NQP;
-	Tue, 02 Jun 2026 06:43:34 +0000
+	id 1wUIz6-0000000CPnK-1kMu
+	for linux-mediatek@lists.infradead.org;
+	Tue, 02 Jun 2026 06:52:21 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id CFAB7435F5;
-	Tue,  2 Jun 2026 06:43:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F1D7F1F00893;
-	Tue,  2 Jun 2026 06:43:30 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id A83CD43C45;
+	Tue,  2 Jun 2026 06:52:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F199B1F00898;
+	Tue,  2 Jun 2026 06:52:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780382611;
-	bh=oVz6SYKqYy1ykUS1fwQECnfl6EKiONJTsloqPqT0xyw=;
+	s=k20260515; t=1780383139;
+	bh=ZDSxYnMPY0itqsVM4sIvyNaZq4A9tfxgOPqtLTGH890=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=HMrt8VQ8uviRax8hfIijft+UtVgXap1KfnuLZUk9hKw3gmtJtZrF+2F0P9L2zwv6B
-	 OYVkXHe5ymymdtUGoHD8xqvbGWUxJc1bOI2lCCXUDxKLiejmYCSzKI0APvGYSdlZFv
-	 Gbj8qld+TsJLHaPOFGx3DCjpiIQKTEHVGWfqTgnLfquLyY27gmmakOp3nepTSoELKp
-	 ieziZVdbzoSz6bS3HS+dvaaJtnHGWxVjP1KuVUXiEvu7zmmL961jRIMW7GvKczDLnx
-	 gzUFgY6oQ7aHFoPKCFs7zDfZo967XXwqX6FJBwkBxaKAwLNlY8Y+LrEwPR1dhXw0E+
-	 UZQpNVNw7uMpQ==
-Date: Tue, 2 Jun 2026 08:43:27 +0200
-From: "lorenzo@kernel.org" <lorenzo@kernel.org>
-To: Roy Luo <roychl666@gmail.com>
-Cc: Ryder Lee <Ryder.Lee@mediatek.com>,
-	Shayne Chen =?utf-8?B?KOmZs+i7kuS4nik=?= <Shayne.Chen@mediatek.com>,
-	"nbd@nbd.name" <nbd@nbd.name>, Roy-CH Luo <Roy-CH.Luo@mediatek.com>,
-	Chui-hao Chiu =?utf-8?B?KOmCseWegua1qSk=?= <Chui-hao.Chiu@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
-	Sean Wang <Sean.Wang@mediatek.com>,
-	Bo Jiao =?utf-8?B?KOeEpuazoik=?= <Bo.Jiao@mediatek.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-Subject: Re: [PATCH v2] wifi: mt76: mt7996: fix reading zeroed
- info->control.flags after mt76_tx_status_skb_add()
-Message-ID: <ah57j_SwdVZTc0GR@lore-rh-laptop>
-References: <20260531-mt76_tx_status_skb_add-overwrite-fix-v2-1-b73c4b4a9798@kernel.org>
- <ee0e584cb2ad1b536d327eb89342d1646fa96570.camel@mediatek.com>
- <ahwla_obwnwr2cZo@lore-desk>
- <44c54ed4da0d294c567b3b0ad750f082a6f1be9f.camel@mediatek.com>
- <ahwzwHDF7fT9t7hP@lore-desk>
- <7f02be7c4f919413718a0218b3792d4b0a222ca3.camel@mediatek.com>
- <ah0fGek5y8Nha0kd@lore-rh-laptop>
- <CAHoxoj+N3AtJgFD8vGP+uDpj6anKMgPBtZGejLDgAz0ZyisSHg@mail.gmail.com>
+	b=K8IElk/hVgq6/2y9P/OGKrMAyBQ/0zQwylWD9vpg4553zitHz8Ps5Fv8mD9wzSvpS
+	 xuTYJ6vQ1ZtD6Yn/RAOp3cFFnclPPFkZ0g412Q01VwUB9+YakZFBJTSV1XT6gsxMQd
+	 0HmxjvIEvWavEt29wPCTHDtXddp8TmPSXIKcScI3h+JFDhq/Vl+6Kj2sRiYdfqXlv+
+	 scMjuOgCQtsx0Op4M0BL8hrwFzeQDGcjmsYrto8fvuUaFTxxktpBsiN1MCvRTaIbtr
+	 EAYNFzlxx+wOmYX+fjDfXlxVoAGs2yZ8TBlb8UD5sS5fft+kZQsKXW1xdaURtRdK/w
+	 LmtjxWZABNmEw==
+Date: Tue, 2 Jun 2026 08:52:15 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Florian Westphal <fw@strlen.de>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
+	Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+	Felix Fietkau <nbd@nbd.name>, Saeed Mahameed <saeedm@nvidia.com>,
+	Leon Romanovsky <leon@kernel.org>, Tariq Toukan <tariqt@nvidia.com>,
+	Mark Bloch <mbloch@nvidia.com>, netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	intel-wired-lan@lists.osuosl.org
+Subject: Re: Possible UaF bug in netdevice teardown path
+Message-ID: <ah59n47KKkhZmt0o@lore-rh-laptop>
+References: <ah1NJMrJ5rEkQlJG@strlen.de>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="vyatZ5JMfhikfHCS"
+	protocol="application/pgp-signature"; boundary="576asHiwzTTmFSL0"
 Content-Disposition: inline
-In-Reply-To: <CAHoxoj+N3AtJgFD8vGP+uDpj6anKMgPBtZGejLDgAz0ZyisSHg@mail.gmail.com>
+In-Reply-To: <ah1NJMrJ5rEkQlJG@strlen.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260601_234333_193607_08675C3C 
-X-CRM114-Status: GOOD (  26.39  )
+X-CRM114-CacheID: sfid-20260601_235220_512971_D16E9AEA 
+X-CRM114-Status: GOOD (  16.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,88 +78,63 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---vyatZ5JMfhikfHCS
+--576asHiwzTTmFSL0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Jun 01, Roy Luo wrote:
-> > > I mean the link_id is only corresponds to one specific flags bit of
-> > > mac80211_tx_control_flags. But there are other bits that aren't
-> > > handled. Wouldn't u32 flags make it more cleaner?
-> >
-> > Yes, I got your point, but my concern is if we need to sync link_id bet=
-ween
-> > mt7996_tx_prepare_skb() and mt7996_mac_write_txwi(). If so, I guess it =
-is
-> > much better to pass link_id explicitly to mt7996_mac_write_txwi() since=
- it
-> > does not just depended on mac80211_tx_control_flags and I think we shou=
-ld
-> > not duplicate the logic in mt7996_mac_write_txwi(). Got my point?
-> > If in the future (not required now) we need to pass mac80211_tx_control=
-_flags
-> > to mt7996_mac_write_txwi(), we will do it easily.
-> >
-> > Regards,
-> > Lorenzo
-> >
-> > >
-> > > Ryder
-> > >
-> > >
+On Jun 01, Florian Westphal wrote:
+> Another sashiko drive-by report. TL;DR, do you need to apply this
+> pattern in your driver?
 >=20
-> Lorenzo,
-
-Hi Roy,
-
+> -       metadata_dst_free(priv->md);
+> +       dst_release(&priv->md->dst);
 >=20
-> I got your point and IIUC the problem being addressed in this patch is th=
-at
-> the link id assignment has unnecessary duplicated logic across different
-> places. However, the commit tile "fix reading zeroed info->control.flags"
-> seems a bit misleading to me - this patch does not fully address the prob=
-lem
-> where the info->control.flags is cleared by memset in tx path when its
-> value might still be referenced, the field is still zeroed after
-> mt76_tx_status_skb_add() and whoever reads it afterward would get
-> incorrect value. With this patch, we avoid using the incorrect value for
-> link id, but the root cause remains.
+> Affects:
+> drivers/net/ethernet/airoha/airoha_eth.c
+> drivers/net/ethernet/intel/ice/ice_eswitch.c
+> drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> drivers/net/ethernet/mellanox/mlx5/core/en_accel/macsec.c
+>=20
+> Long version:
+> https://sashiko.dev/#/patchset/20260527135751.1031891-1-tristmd%40gmail.c=
+om
+>=20
+> This isn't a bug introduced by this patch, but looking at this fix, do
+> other callers of metadata_dst_free() suffer from the same use-after-free
+> vulnerability?
+> In drivers like ice_eswitch and mlx5 MACsec, a metadata_dst is allocated
+> and references are taken on it via dst_hold() when packets are processed
+> (for example, via skb_dst_set()).
+> However, on their teardown paths, these drivers call metadata_dst_free(),
+> which unconditionally frees the memory without checking the reference cou=
+nt.
+> If packets holding these references are queued (like in a netem qdisc)
+> during teardown, does the memory get freed prematurely, causing a
+> use-after-free when the networking stack eventually calls dst_release()
+> on the dequeued packets?
 
-This patch is actually fixing both of the issues since now do not have any
-leftover access to info->control.flags after running mt76_tx_status_skb_add=
-()
-in the mt7996 tx path and it is not required (according to the current mt79=
-96
-codebase) to pass the flags cached value to mt7996_mac_write_txwi(). Howeve=
-r,
-if in the future this will be necessary, I am completely fine with that.
+Hi Florian,
+
+For airoha_eth and mtk_eth_soc I think the issue is less severe since we
+destroy the metadata after running unregister_netdev() (that executes
+synchronize_net()), but I guess it is better to fix the problem. I will pos=
+t a
+fix for them.
 
 Regards,
 Lorenzo
 
->=20
-> The issue that Ryder tries to address in
-> https://lore.kernel.org/all/5ecac6a9b7d29526e8438dea105b58f5487c93aa.1778=
-521232.git.ryder.lee@mediatek.com/
-> concerns the overlapping use of info->control and info->status in tx path,
-> and it remains valid even with this link id fix applied. We have to be
-> cautious when dealing with info->control in mt7996 tx path until the issue
-> is fully resolved.
->=20
-> Regards,
-> Roy
-
---vyatZ5JMfhikfHCS
+--576asHiwzTTmFSL0
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCah57jAAKCRA6cBh0uS2t
-rAmFAQDk/bGX6PjAX+FifRA1xIjx6t2hREKHPBDgAfNVJn2rXAEA+RKD4cI97xcJ
-rWdhiY7wIkB+7003MrfHC78YlcbvXgM=
-=CO5r
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCah59nAAKCRA6cBh0uS2t
+rBbkAP9n6TqudmP6+W+Gls0RKmbOrps5XTC2yBfclupisGuNKgEAzCrWI8aTjg0X
+PL+C1WcMnx5qmRT8MuqbePPE7PitIQs=
+=sBwZ
 -----END PGP SIGNATURE-----
 
---vyatZ5JMfhikfHCS--
+--576asHiwzTTmFSL0--
 
