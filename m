@@ -4,68 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87E01CD5BD1
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jun 2026 23:11:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAEB7CD5BD1
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2026 00:34:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u0uVl58P/+LhtePaVxc1OfDLsvpS/SYXpeqwBFFbzSU=; b=T1d7nU5QDW4ZfTXZ5IjmBgOkJC
-	ZH7WBXCPz9wBhJyaPpUCnZ4dDDgjM0oxXj9jas48RaTCfuEKbCDHHfj7rq0TVvR+VZRpqBevRHzhW
-	pqBZxkvzqxjYH/1ls9xfJx7vg+qCWt3rHJken4NreQMQw2eYkIVgw7+XM17Y/01WcC0PL59778xWA
-	SZ0m07RaUrEBbhJRxr2JrGfrtpR1taNotExhgQZPrpUSy3HV7eZSIGKd6mBaPfq7rnok8fbsB6FF+
-	EZ6lxwGvufz0zEZLLpmZImQCPybMqQbEq7gD6m+jq8YFcC9W4YDjVxGirpSOspAvhNkVSVXmQasW6
-	2jq5XhfA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XSv5f2xonG2jwEtIkq1PsvlV+gdAZE4pvna2aJ3ZHYg=; b=BLlwyD5znHcwMSOS/RY0zbQt8q
+	2r00d2g6BlNQoCZkVw8mINAh6MNniuIznlHmcF574S0kmHNRaQbu+21Rp0kI6QKfv58TWkurCZBBx
+	vVTHqzX1ALU4zWc4UN7kE7y1skQVT8Jpxmbm+7Qo57C1d1XmEymY01bjhkYzduqGme/mLH0kgWZgb
+	DpRBBG6Q6sEXD7/nR+mB8p5TPXm20HbHuEKpMukSJUw62WsK9IEi5sRkd3gvusMamlVwGQZhE9J6s
+	vBjuZSInGAPO91vrILNX+shzHFv5Eh6WouJPh23M+2CaJdVDkZYD6MwUTS7txAwskF/mk6DodB90F
+	JuSGdzHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUBnJ-0000000C2Ur-207x;
-	Mon, 01 Jun 2026 23:11:41 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wUD54-0000000C6ca-1VQ5;
+	Tue, 02 Jun 2026 00:34:06 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUBnH-0000000C2UI-2IkS;
-	Mon, 01 Jun 2026 23:11:40 +0000
+	id 1wUD52-0000000C6c9-2t3k;
+	Tue, 02 Jun 2026 00:34:04 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id DCDA044589;
-	Mon,  1 Jun 2026 23:11:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9C7D61F00893;
-	Mon,  1 Jun 2026 23:11:38 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id C61FD60141;
+	Tue,  2 Jun 2026 00:34:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A733E1F00893;
+	Tue,  2 Jun 2026 00:34:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780355498;
-	bh=u0uVl58P/+LhtePaVxc1OfDLsvpS/SYXpeqwBFFbzSU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=fGL4zNAtKMHnY544PXECwX2aMFMp24rQEYuUfQs+q21l93HzpIoRz52ZpUN9uwl/c
-	 QoiugUZR1nUBv6FmnjvfYpNQH+WM0id3NatUQeZS7gmM77UqWgWCnDgloXPPUM+q6b
-	 EqvWD8Iwdz2ig7V078bAd9ClTS2Rwhnq0K/E82D/kLa8WxO3WtTvzDE3hW7/NV4hn3
-	 0fwhsepFhBiUJjLnTbY2PoJcanlPDjS33wSP7UO3Kkfl9U+T2Qre7WgeccSvtYofEa
-	 d1hYkbXkCDdi9kkFX4q+1PJfxHkP0OohnKITG8PZ8cu5VfqakCLak+bmY4a6imtF52
-	 ZQ5pS14t8q1/A==
-Date: Mon, 1 Jun 2026 18:11:38 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Eric Dumazet <edumazet@google.com>,
-	Benjamin Larsson <benjamin.larsson@genexis.eu>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	devicetree@vger.kernel.org, Andrew Lunn <andrew+netdev@lunn.ch>,
-	linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, Paolo Abeni <pabeni@redhat.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Christian Marangi <ansuelsmth@gmail.com>
-Subject: Re: [PATCH net-next v8 01/10] dt-bindings: net: airoha: Add GDM port
- ethernet child node
-Message-ID: <178035548342.162634.13411632527297449694.robh@kernel.org>
-References: <20260519-airoha-eth-multi-serdes-v8-0-6bd70e329df6@kernel.org>
- <20260519-airoha-eth-multi-serdes-v8-1-6bd70e329df6@kernel.org>
+	s=k20260515; t=1780360443;
+	bh=XSv5f2xonG2jwEtIkq1PsvlV+gdAZE4pvna2aJ3ZHYg=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=LrT4R1FnMFeZReAD7nfvr5RIo8JWtky/udCbBY2ZhqtUi+Q76cohHUOPZEQPcXUps
+	 /Wj/tNIkm21gcNkRQqvwgEaMJsPAuURBo/GbsQiq5cFFN0tkEBlVPx7i/uVfJC7tQF
+	 wnAlEDYIXPyXCrf+GobQyRYufJVMTSwCUzIitoFrSEY34U6fvlPL5Ur9kaeBbEkAY+
+	 myNvh3CyNWI90Ti4L4ErSZvJS0Fsr+z07/P7LS6Elm648euQ6BzA/kxhi+gaCFHoVi
+	 so0N9r4ezQYgbcSKF/7yU6B1PE6RMNVv9KDF62FV/0Sr6Y5/FxFfEbECoKmrjnHaDF
+	 TBiI9b+sUDkaA==
+Date: Mon, 1 Jun 2026 17:34:01 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Jack Wu via B4 Relay <devnull+jackbb_wu.compal.com@kernel.org>
+Cc: jackbb_wu@compal.com, Loic Poulain <loic.poulain@oss.qualcomm.com>,
+ Sergey Ryazanov <ryazanov.s.a@gmail.com>, Johannes Berg
+ <johannes@sipsolutions.net>, Andrew Lunn <andrew+netdev@lunn.ch>, "David S.
+ Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo
+ Abeni <pabeni@redhat.com>, Wen-Zhi Huang <wen-zhi.huang@mediatek.com>,
+ Shi-Wei Yeh <shi-wei.yeh@mediatek.com>, Minano Tseng
+ <Minano.tseng@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Simon
+ Horman <horms@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Shuah Khan
+ <skhan@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-doc@vger.kernel.org
+Subject: Re: [PATCH 00/11] net: wwan: t9xx: Add MediaTek T9XX WWAN driver
+Message-ID: <20260601173401.2c892526@kernel.org>
+In-Reply-To: <20260529-t9xx_driver_v1-v1-0-bdbfe2c01e57@compal.com>
+References: <20260529-t9xx_driver_v1-v1-0-bdbfe2c01e57@compal.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260519-airoha-eth-multi-serdes-v8-1-6bd70e329df6@kernel.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260601_161139_607417_D776F613 
-X-CRM114-Status: GOOD (  13.37  )
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,26 +77,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, 29 May 2026 18:31:39 +0800 Jack Wu via B4 Relay wrote:
+>  43 files changed, 14761 insertions(+)
 
-On Tue, 19 May 2026 10:57:44 +0200, Lorenzo Bianconi wrote:
-> EN7581 and AN7583 SoCs support connecting multiple external SerDes to GDM3
-> or GDM4 ports via a hw arbiter that manages the traffic in a TDM manner.
-> As a result multiple net_devices can connect to the same GDM{3,4} port
-> and there is a theoretical "1:n" relation between GDM ports and
-> net_devices.
-> Introduce the ethernet node child of a specific GDM port in order to model
-> a given net_device that is connected via the external arbiter to the
-> GDM{3,4} port. This new ethernet node is defined by the "airoha,eth-port"
-> compatible string. Please note GDM1 and GDM2 does not support the
-> connection with the external arbiter and they are represented by an
-> ethernet node defined by the "airoha,eth-mac" compatible string.
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  .../devicetree/bindings/net/airoha,en7581-eth.yaml | 56 +++++++++++++++++++++-
->  1 file changed, 55 insertions(+), 1 deletion(-)
-> 
+Please try to cut this down to ~5kLoC for the initial submission.
+Whatever the absolute minimum sensible chunk of code is.
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
-
+Each patch must build cleanly with W=1
 
