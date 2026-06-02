@@ -4,102 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD6E9CD6E60
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2026 15:07:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FB0ECD6E64
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2026 16:21:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SyKeADglYifMiI6F4hlQZaZznG56rgK87qRVDUFez+k=; b=3BJvFAKnE1PHMMGbz/5Ki9p8Bn
-	rLzorOtGXqR2vAT4gIQwQJNlAip+1pw/z2vMbRDsjjHzIevVKIIAN5emIlUHYgy/oZxc5kbUf1VWS
-	jBJdOgKcJL9kJX9HWIe21Kn/tx5o4kNxQ2j51ZI0e7RHVVzBD44c2LLMIyt5jYezUYBiXOD+rSMX1
-	UT+5I4yAgEadpEcT6RTqe23xW8qjtWRtbvh/W7QSBBBAclrCFDY0uzAKi2JCKDD+zkh8nswcrE8Xx
-	/L0kg9ReLn9hgEhh8ht3NUqz0jC9ypDPAPrWQNlyCgJH/3NpPiDU8o4uf+7OVeJiCc6jJZqggTFmH
-	LVHjZ/ig==;
+	bh=UHhslRdCb64uAeyYNctM3W9sIiDue6c1zUXUsmVQdDw=; b=Xyo5qlzyI5NLF0KL37w8bTDOsC
+	oBiUa1zjWHPiU3KwLJ67gUxd8pkx7mGpIkyDf8OqGiA89R0BLtNo4C7acdQA9nF4E8V6pkctapSGz
+	MFrnKYWSHnKAm48xwAooG0ce6QcWxZ2qOS4KWiFzomshYqFEF7FkG/8VKJNWn9ffz2t+Lweua9as2
+	lJjfUW2o0tKpkrKYpK/LhNSLQ+bSJnlF6h5J8doq4m4zgmQhiU25+zyfB2ErfZF/OnQ3fd8juOw0d
+	oasVfnWG26EBipt6Mpodpxq3HUJ2F7exom7YAnpWbmWeTfKj8O07Pd6txnCOOkV8F+MzBJpnNVLVE
+	LmGUvSYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUQht-0000000DFmr-1ooZ;
-	Tue, 02 Jun 2026 15:07:05 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1wURsG-0000000DQcS-1bpp;
+	Tue, 02 Jun 2026 16:21:52 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUQhm-0000000DFm3-28iv;
-	Tue, 02 Jun 2026 15:07:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=SyKeADglYifMiI6F4hlQZaZznG56rgK87qRVDUFez+k=; b=RF/AKV5Nuk8kbmxxrF/5v0BAzf
-	3fIFNiH8UJ4tVY9qCQaTCTNjLmG/D+oF5lgFVgiMeK2lo8m+p2Q/ENvD4HZH7/kIrIHN2sBi9raOE
-	zFk7FBTWTihpRJa6dzsbNKtPgVRae642OgNKDhVGG3d6DcaR54YXUomCT5DBT6DYc5fTCx9swObwT
-	ukP1Nmh6O7H2t2rJkNGtcH9XsrV5CjWjvAQDXQ2c3SmFpz7rAXugQ2uonqzyNibjucqKNgFt2sQif
-	FLnwcmEd3IVBc6OOWCbfAgkwmg5EZbBgOWnZB9hEHgO4EHTginZ9OxJp1BbRz9zzkNtBZxdPuCzoE
-	ZLuEW47g==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: Liu Ying <victor.liu@nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Rob Clark <robin.clark@oss.qualcomm.com>,
- Sean Paul <sean@poorly.run>, Konrad Dybcio <konradybcio@kernel.org>,
- Akhil P Oommen <akhilpo@oss.qualcomm.com>,
- Dmitry Baryshkov <lumag@kernel.org>, Abhinav Kumar <abhinav.kumar@linux.dev>,
- Jessica Zhang <jesszhan0024@gmail.com>,
- Marijn Suijten <marijn.suijten@somainline.org>,
- Vinod Koul <vkoul@kernel.org>, Nas Chung <nas.chung@chipsnmedia.com>,
- Jackson Lee <jackson.lee@chipsnmedia.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Mirela Rabulea <mirela.rabulea@nxp.com>,
- Detlev Casanova <detlev.casanova@collabora.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Hugues Fruchet <hugues.fruchet@foss.st.com>,
- Alain Volmat <alain.volmat@foss.st.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, MD Danish Anwar <danishanwar@ti.com>,
- Roger Quadros <rogerq@kernel.org>, Parvathi Pudi <parvathi@couthit.com>,
- Mohan Reddy Putluru <pmohan@couthit.com>,
- Bjorn Andersson <andersson@kernel.org>,
- Mathieu Poirier <mathieu.poirier@linaro.org>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Michal Simek <michal.simek@amd.com>, Mark Brown <broonie@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Linus Walleij <linusw@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Felix Fietkau <nbd@nbd.name>, "Andrew F. Davis" <afd@ti.com>,
- Hussain Khaja <basharath@couthit.com>, Suman Anna <s-anna@ti.com>,
- Ben Levinsky <ben.levinsky@amd.com>, Tanmay Shah <tanmay.shah@amd.com>,
- Erwan Leray <erwan.leray@foss.st.com>,
- Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
- "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Roger Quadros <rogerq@ti.com>, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, imx@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
- dmaengine@vger.kernel.org, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
- netdev@vger.kernel.org, linux-remoteproc@vger.kernel.org,
- linux-amlogic@lists.infradead.org, linux-spi@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: Consolidate "sram" property definition
-Date: Tue, 02 Jun 2026 17:06:05 +0200
-Message-ID: <7044489.a9HWlOh95j@phil>
-In-Reply-To: <20260511165942.2774868-1-robh@kernel.org>
-References: <20260511165942.2774868-1-robh@kernel.org>
+	id 1wURsE-0000000DQb7-14CU;
+	Tue, 02 Jun 2026 16:21:50 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 900AE6001A;
+	Tue,  2 Jun 2026 16:21:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 294731F00893;
+	Tue,  2 Jun 2026 16:21:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1780417309;
+	bh=UHhslRdCb64uAeyYNctM3W9sIiDue6c1zUXUsmVQdDw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=i6OMW+cKx7zXo90uE8WPiS/OcVuI7uDGylbGIqiWQu/iVicaSM+DeEqQXJGZgk1OM
+	 IwDdZDUjqr9ntqqtBnHhSlVGJ3pjMA5BuvXq52ZMR7U7t3oZQUNF8jtZk+ZwcRP9hc
+	 D61ZQrbLjbtT5RO3hyuYOkE7XNJAIp/9EfedL7TXY87GOrYpVa/Sv5OVr/lSqUti5d
+	 72u7DVutWn4bGcGII3fkV4HtfWPqmtqV7oJK0yYoPS9cthoXN2w+wtVcLxSGNSg6XS
+	 v6M/90d4HVUGBK/JsRPbA15VcpcWK0jZYLMglbsTdx8mWmoqkjwg+39Vo6paf66FZ6
+	 7Qy55uJv251Ig==
+Date: Tue, 2 Jun 2026 17:21:44 +0100
+From: Conor Dooley <conor@kernel.org>
+To: rva333@protonmail.com
+Cc: Jonathan Cameron <jic23@kernel.org>,
+	David Lechner <dlechner@baylibre.com>,
+	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
+	Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Lee Jones <lee@kernel.org>, linux-iio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Ben Grisdale <bengris32@protonmail.ch>
+Subject: Re: [PATCH 1/4] dt-bindings: iio: adc: mediatek,mt6359-auxadc: add
+ mt6323 PMIC AUXADC
+Message-ID: <20260602-paramedic-savor-d18b45241914@spud>
+References: <20260602-mt6323-adc-v1-0-68ec737508ee@protonmail.com>
+ <20260602-mt6323-adc-v1-1-68ec737508ee@protonmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260602_080658_549480_AD9D693E 
-X-CRM114-Status: UNSURE (   8.13  )
-X-CRM114-Notice: Please train this message.
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="IJiwimoZW+P1otaL"
+Content-Disposition: inline
+In-Reply-To: <20260602-mt6323-adc-v1-1-68ec737508ee@protonmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,16 +81,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 11. Mai 2026, 18:59:36 Mitteleurop=C3=A4ische Sommerzeit schrieb=
- Rob Herring (Arm):
-> The "sram" property has become a de facto standard property, so create a
-> common schema for it and drop all the duplicated definitions.
->=20
-> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-> ---
 
->  .../bindings/media/rockchip,vdec.yaml         |  5 ++--
-Acked-by: Heiko Stuebner <heiko@sntech.de>
+--IJiwimoZW+P1otaL
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+pw-bot: not-applicable
 
+--IJiwimoZW+P1otaL
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCah8DGAAKCRB4tDGHoIJi
+0kW+AQCQIb8fbQspyzRXQ31z317U3glZxhw+7Cyj4mh7Xu2LSgD/Q+ATNfJMuTbI
+u1ybBxzqgJ6j/WnDdxqpZN+NAU2qIww=
+=Hak5
+-----END PGP SIGNATURE-----
+
+--IJiwimoZW+P1otaL--
 
