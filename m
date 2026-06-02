@@ -4,71 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 953FECD6E57
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2026 18:58:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD847CD6E57
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2026 19:58:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fXUB63jrlqA3KnuNNESByw9pK0N3zMqOBgrRWCqu1fY=; b=h/dXbs+UkXq0EEnA/1si4e8d4w
-	wamGFChXLd3iKbYqIe97KxYSjXlhz6WKvSKxQ4mRGJUilcviM9HIBuhAtpoWqcMcIOHAyIInQoJSw
-	Sng1XyIGknoFrNWINGMTfv3Aoa6UL7KkkBOBNlpLtbKVMt5FT7aKqsO8Ar5/1VhX4Eok87NQ8xj7J
-	I0N+HqiLL58dEAk6setRy7wYJX3DKxxDOTfgz0blkyhxLoK0Ko7XCWikxHXQtcknGiHHiXVuEM6dI
-	LJIf9tkQlYakiAziuJ28sQgt8J1PKb8ZK3HbbCH24EXAG6njQLxILvQP4bPjPPpdvyHSBPgxG2/np
-	HJbTJ6JQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fnLig1efP0TuJ12veBvKUYnUO2mrsAHX1oK+MYE3e7Q=; b=SvBy6GsKGSkLmSJbZUwJLy/a+n
+	ivlMel/qBSjRNOHoewTtILXkdCi9F0aK7DVOQ+zz76DrpwJcIS5kqml45MWi3M6Uf0bMUOBBb7SV9
+	+WCazJF52yzHZL+DRr1j700yUs6nEFBj5ZIy7NEtcPAlLItBSUQKfbbGUSF8LEeSDdIrahC8lY7nX
+	abtCSWA71wyrTnWcJY038wrbaCD7nn6FA/esmFAstdynMtHHYx/N9OlvT/BBrv7jWCZRJaj1vIovc
+	N1uJCxfNs6h/R0TqfKHZSrwxrE5+afBkUnMGi6/pM8pB4VjE3XKVpfg8vVMP9JhXkZAY6AuvdAa/w
+	5kNgp0hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUUK3-0000000DfL4-1Y80;
-	Tue, 02 Jun 2026 18:58:43 +0000
-Received: from dispatch1-us1.ppe-hosted.com ([148.163.129.49])
+	id 1wUVFa-0000000DiVp-1eRo;
+	Tue, 02 Jun 2026 19:58:10 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUUK0-0000000DfKb-39DN;
-	Tue, 02 Jun 2026 18:58:41 +0000
-X-Virus-Scanned: Proofpoint Essentials engine
-Received: from mail3.candelatech.com (mail.candelatech.com [208.74.158.173])
-	by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id 09C8DC008E;
-	Tue,  2 Jun 2026 18:58:35 +0000 (UTC)
-Received: from [192.168.101.118] (firewall.candelatech.com [50.251.239.81])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by mail3.candelatech.com (Postfix) with ESMTPSA id E226313C2B0;
-	Tue,  2 Jun 2026 11:58:32 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com E226313C2B0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
-	s=default; t=1780426713;
-	bh=4klqaW+qlOcvDydYV4JdaHYFzR0FqwPoLlkr0xdbJXo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FuTMALJRvJrpeRqxwCThZVjQY1vWP0JxucKYuEVEbpTXjryKew/mrGPmokove/Nm1
-	 OYWL2YcJxzwgKE5C319iRtRTubqsSYqCWyinBlUYNqJxyYqSul1p2qTE8HK0sr5sUM
-	 MknIRjOF6wncVnkz05QoEHNSHhr6XwU8ke+sMuWY=
-Message-ID: <80ff2108-dce3-4060-a8d0-59740979a99a@candelatech.com>
-Date: Tue, 2 Jun 2026 11:58:32 -0700
+	id 1wUVFZ-0000000DiVN-04DI;
+	Tue, 02 Jun 2026 19:58:09 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 2073160098;
+	Tue,  2 Jun 2026 19:58:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AD89E1F00893;
+	Tue,  2 Jun 2026 19:58:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1780430287;
+	bh=fnLig1efP0TuJ12veBvKUYnUO2mrsAHX1oK+MYE3e7Q=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=GoR/ooG3A23xypxe/2xIjqhXBgNQL6JSdsjAIy5mcUDJyifn889NEwPXaX9plNUoQ
+	 95s+38nJXC3BmSI6OEEU9xfocEKCy4p3TuYErHQCifEiF5vj2uv69ycot9xDWNk8Uo
+	 lKQgRWyKxyn1v7TCaUc4ZigPwyxw7+23CyRtPwNMCb9g0wGFAEmy64M2jxJBQRt77t
+	 MCghHnNJMLBMEnrPwsa+jZT59Iykyxv3SbFGTk1qCENU3CeqW37zeThZjKl4tlDHWo
+	 waTd9ltZGETh15fjYkBwNpQEtlbfYmE0w6t/84CMFfn9gIPvZkLqmeid/filaiA1Xz
+	 GWL3TLidwOjjw==
+Date: Tue, 2 Jun 2026 14:58:07 -0500
+From: Rob Herring <robh@kernel.org>
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Chen Zhong <chen.zhong@mediatek.com>,
+	Jonathan Cameron <jic23@kernel.org>,
+	David Lechner <dlechner@baylibre.com>,
+	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
+	Andy Shevchenko <andy@kernel.org>, kernel@collabora.com,
+	linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-input@vger.kernel.org,
+	linux-iio@vger.kernel.org
+Subject: Re: [PATCH 0/9] MT6365 PMIC support cleanup
+Message-ID: <20260602195807.GA1062343-robh@kernel.org>
+References: <20260429-mediatek-genio-mt6365-cleanup-v1-0-6f43838be92f@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] wifi: mt76: mt7996: Fix possible token leak in
- mt7996_tx_prepare_skb()
-To: Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
- Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20260531-mt7996_tx_prepare_skb-token-leack-v1-1-2b9c9f59ceb1@kernel.org>
-Content-Language: en-US
-From: Dylan Eskew <dylan.eskew@candelatech.com>
-In-Reply-To: <20260531-mt7996_tx_prepare_skb-token-leack-v1-1-2b9c9f59ceb1@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-MDID: 1780426717-WQhNphcM8TUz
-X-PPE-STACK: {"stack":"us5"}
-X-MDID-O: us5;ut7;1780426717;WQhNphcM8TUz;<dylan.eskew@candelatech.com>;40f3b03bb24907b736a33b345f288e14
-X-PPE-TRUSTED: V=1;DIR=OUT;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260602_115840_818772_0E2D684D 
-X-CRM114-Status: GOOD (  18.66  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260429-mediatek-genio-mt6365-cleanup-v1-0-6f43838be92f@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,74 +81,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Lore,
-
-We have been seeing the token memory leak in our custom kernel. After 
-pulling your patch in, we are still getting the leak (validated with 
-kmemleak). How did you figure out where this potential leak was? I want 
-to determine if we are leaking because of our changes or if there's more 
-areas for token leakage.
-
--- Dylan
-
-On 5/31/26 2:10 AM, Lorenzo Bianconi wrote:
-> If link_conf or link_sta lookup fails in mt7996_tx_prepare_skb routine,
-> mt7996 driver leaks an already allocated tx token. Fix the issue
-> releasing the token in case of error.
->
-> Fixes: 7ef0c7ad735b0 ("wifi: mt76: mt7996: Implement MLD address translation for EAPOL")
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+On Wed, Apr 29, 2026 at 11:44:13AM +0200, Louis-Alexis Eyraud wrote:
+> Several Mediatek and Radxa boards, based on MT8370, MT8390 or MT8395
+> SoC, integrate the MT6365 PMIC, that is a MT6359P variant:
+>  - Mediatek Genio 1200-EVK
+>  - Mediatek Genio 700-EVK
+>  - Mediatek Genio 510-EVK
+>  - Radxa NIO-12L
+> It is compatible with the MT6359 PMIC.
+> 
+> But both MT6365 PMIC support and compatibility were never expressed in
+> the dt-bindings and there is no MT6365 include file as well.
+> So, since these board support was introduced, their devicetrees use the
+> mt6359 include file to enable this PMIC support. 
+> 
+> The goal of this series is to clean this support by adding the missing
+> compatible strings for this MFD main and subdevices in the dt-bindings,
+> and add a include for MT6365 definitions to replace the MT6359 include
+> in these board devicetrees and for future ones (like Genio 520/720
+> EVKs).
+> 
+> The series is based on linux-next tree (tag: next-20260428) and has
+> been tested on Mediatek Genio 510, 700 and 1200-EVK boards.
+> 
 > ---
->   drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 8 ++++++--
->   drivers/net/wireless/mediatek/mt76/tx.c         | 2 +-
->   2 files changed, 7 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-> index c98446057282..8c56344d211b 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-> @@ -1067,11 +1067,11 @@ int mt7996_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
->   
->   		link_conf = rcu_dereference(vif->link_conf[wcid->link_id]);
->   		if (!link_conf)
-> -			return -EINVAL;
-> +			goto error_relase_token;
->   
->   		link_sta = rcu_dereference(sta->link[wcid->link_id]);
->   		if (!link_sta)
-> -			return -EINVAL;
-> +			goto error_relase_token;
->   
->   		dma_sync_single_for_cpu(mdev->dma_dev, tx_info->buf[1].addr,
->   					tx_info->buf[1].len, DMA_TO_DEVICE);
-> @@ -1176,6 +1176,10 @@ int mt7996_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
->   	tx_info->nbuf = MT_CT_DMA_BUF_NUM;
->   
->   	return 0;
-> +
-> +error_relase_token:
-> +	mt76_token_release(mdev, id, NULL);
-> +	return -EINVAL;
->   }
->   
->   u32 mt7996_wed_init_buf(void *ptr, dma_addr_t phys, int token_id)
-> diff --git a/drivers/net/wireless/mediatek/mt76/tx.c b/drivers/net/wireless/mediatek/mt76/tx.c
-> index 22f9690634c9..f96d9c471853 100644
-> --- a/drivers/net/wireless/mediatek/mt76/tx.c
-> +++ b/drivers/net/wireless/mediatek/mt76/tx.c
-> @@ -933,7 +933,7 @@ mt76_token_release(struct mt76_dev *dev, int token, bool *wake)
->   #endif
->   	}
->   
-> -	if (dev->token_count < dev->token_size - MT76_TOKEN_FREE_THR &&
-> +	if (wake && dev->token_count < dev->token_size - MT76_TOKEN_FREE_THR &&
->   	    dev->phy.q_tx[0]->blocked)
->   		*wake = true;
->   
->
-> ---
-> base-commit: 4913f44167cf35a9536e9eec7352e15b2de0c573
-> change-id: 20260531-mt7996_tx_prepare_skb-token-leack-82e240d8c66f
->
-> Best regards,
+> Louis-Alexis Eyraud (9):
+>       dt-bindings: mfd: mediatek: mt6397: Add rtc for MT6359
+>       dt-bindings: mfd: mediatek: mt6397: Add MT6365 PMIC support
+>       dt-bindings: input: mediatek,pmic-keys: Add MT6365 support
+>       dt-bindings: iio: adc: mt6359: Add MT6365 PMIC AuxADC
+
+Applied these 2 to fix warnings in linux-next.
+
+Angelo, Apply the binding changes along with the .dts changes if they 
+haven't been picked up yet.
+
+Once again, Mediatek warnings are moving in the wrong direction. :(
+
+Rob
+
+>       arm64: dts: mediatek: mt6359: use proper compatible for rtc
+>       arm64: dts: mediatek: add MT6365 PMIC include
+>       arm64: dts: mediatek: mt8390-genio-common: use MT6365 PMIC definitions
+>       arm64: dts: mediatek: mt8395-genio-common: use MT6365 PMIC definitions
+>       arm64: dts: mediatek: mt8395-radxa-nio-12l: use MT6365 PMIC definitions
 
