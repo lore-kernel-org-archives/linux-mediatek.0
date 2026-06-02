@@ -4,69 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD847CD6E57
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2026 19:58:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E84ACD6E57
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2026 20:30:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fnLig1efP0TuJ12veBvKUYnUO2mrsAHX1oK+MYE3e7Q=; b=SvBy6GsKGSkLmSJbZUwJLy/a+n
-	ivlMel/qBSjRNOHoewTtILXkdCi9F0aK7DVOQ+zz76DrpwJcIS5kqml45MWi3M6Uf0bMUOBBb7SV9
-	+WCazJF52yzHZL+DRr1j700yUs6nEFBj5ZIy7NEtcPAlLItBSUQKfbbGUSF8LEeSDdIrahC8lY7nX
-	abtCSWA71wyrTnWcJY038wrbaCD7nn6FA/esmFAstdynMtHHYx/N9OlvT/BBrv7jWCZRJaj1vIovc
-	N1uJCxfNs6h/R0TqfKHZSrwxrE5+afBkUnMGi6/pM8pB4VjE3XKVpfg8vVMP9JhXkZAY6AuvdAa/w
-	5kNgp0hw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gjwMGrTESknD5peX+eFGJBM0//MZxOS4/vrUF8k4h4A=; b=l2jS3I0IffcXSGgL/JUKh1Vsb3
+	mLGylgAS+Shx+Vz3Unajl592XkiW5Sj/tlOjjEIPzPLUsKuGCdE9t65SHcDwDPqQcYMxBNIutelgB
+	qaqmvx2IgRa6fX5PxUsJbuwAIL2iAPqBTnlcU4tblCXQCH3vhzGYFPg/xYBKAHZ6pKYTG8RetCmxN
+	5/dQSSr0GcLFUb6sCAfOfQz661eolKkUgJCHO72OWK1NjUlng2JPI+ejtSnjBtLYwTvTaGkwnXoFL
+	xqdnhSPEYWtNBkBJhL9LQ9u3RLNwMTP4HhvaCzCQQn8dcMEq4cUBXyaATj2TYcUVI/yCeLrFdvgk8
+	dDb+018g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUVFa-0000000DiVp-1eRo;
-	Tue, 02 Jun 2026 19:58:10 +0000
+	id 1wUVke-0000000DkIm-04AP;
+	Tue, 02 Jun 2026 20:30:16 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUVFZ-0000000DiVN-04DI;
-	Tue, 02 Jun 2026 19:58:09 +0000
+	id 1wUVkc-0000000DkI2-2Xvt;
+	Tue, 02 Jun 2026 20:30:14 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2073160098;
-	Tue,  2 Jun 2026 19:58:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AD89E1F00893;
-	Tue,  2 Jun 2026 19:58:07 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 8FAED60145;
+	Tue,  2 Jun 2026 20:30:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45D4A1F00893;
+	Tue,  2 Jun 2026 20:30:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780430287;
-	bh=fnLig1efP0TuJ12veBvKUYnUO2mrsAHX1oK+MYE3e7Q=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=GoR/ooG3A23xypxe/2xIjqhXBgNQL6JSdsjAIy5mcUDJyifn889NEwPXaX9plNUoQ
-	 95s+38nJXC3BmSI6OEEU9xfocEKCy4p3TuYErHQCifEiF5vj2uv69ycot9xDWNk8Uo
-	 lKQgRWyKxyn1v7TCaUc4ZigPwyxw7+23CyRtPwNMCb9g0wGFAEmy64M2jxJBQRt77t
-	 MCghHnNJMLBMEnrPwsa+jZT59Iykyxv3SbFGTk1qCENU3CeqW37zeThZjKl4tlDHWo
-	 waTd9ltZGETh15fjYkBwNpQEtlbfYmE0w6t/84CMFfn9gIPvZkLqmeid/filaiA1Xz
-	 GWL3TLidwOjjw==
-Date: Tue, 2 Jun 2026 14:58:07 -0500
-From: Rob Herring <robh@kernel.org>
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Chen Zhong <chen.zhong@mediatek.com>,
-	Jonathan Cameron <jic23@kernel.org>,
-	David Lechner <dlechner@baylibre.com>,
-	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
-	Andy Shevchenko <andy@kernel.org>, kernel@collabora.com,
-	linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-input@vger.kernel.org,
-	linux-iio@vger.kernel.org
-Subject: Re: [PATCH 0/9] MT6365 PMIC support cleanup
-Message-ID: <20260602195807.GA1062343-robh@kernel.org>
-References: <20260429-mediatek-genio-mt6365-cleanup-v1-0-6f43838be92f@collabora.com>
+	s=k20260515; t=1780432213;
+	bh=gjwMGrTESknD5peX+eFGJBM0//MZxOS4/vrUF8k4h4A=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=TPz3prVeOVPs6tmHop7zUrzU2L7EkX1/zBZUQPFQIzu3j1/B+Vt0vZh7knErzYWYY
+	 AWSCvweUNkAe8As9Hy/CMzQOjIKgY7+g7d1NhqjaJSN7DYFOfSjXEOyssLEf0saPHl
+	 lJojBMJE/Hfd0+JEFwwyiE8zYTIspelQhFYuVcoTc+qFlKpc5ynQHVE4JtYuwcG1Vo
+	 Y9raz6xnyT3vo3QlCgIaH+oIOlTh3tyJ77U/5VcZDKBXpOJdBaFSm0g+mK4GbQmOQl
+	 BoCgZhi7/HomqVfUoC7THg/LkS08QvPK1UzHX+LuGgIzx0ulUU4bvGhRWa2PlpLog/
+	 DyRGp1RK/lIiA==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 569AD3811A72;
+	Tue,  2 Jun 2026 20:30:16 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260429-mediatek-genio-mt6365-cleanup-v1-0-6f43838be92f@collabora.com>
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next 0/6] net: airoha: Preliminary patches to support
+ multiple net_devices connected to the same GDM port
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <178043221514.1036678.2722673754198790557.git-patchwork-notify@kernel.org>
+Date: Tue, 02 Jun 2026 20:30:15 +0000
+References: <20260527-airoha-eth-multi-serdes-preliminary-v1-0-ec6ed73ef7fc@kernel.org>
+In-Reply-To: <20260527-airoha-eth-multi-serdes-preliminary-v1-0-ec6ed73ef7fc@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, horms@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, xuegang.lu@airoha.com
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,48 +73,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 29, 2026 at 11:44:13AM +0200, Louis-Alexis Eyraud wrote:
-> Several Mediatek and Radxa boards, based on MT8370, MT8390 or MT8395
-> SoC, integrate the MT6365 PMIC, that is a MT6359P variant:
->  - Mediatek Genio 1200-EVK
->  - Mediatek Genio 700-EVK
->  - Mediatek Genio 510-EVK
->  - Radxa NIO-12L
-> It is compatible with the MT6359 PMIC.
+Hello:
+
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Wed, 27 May 2026 12:21:14 +0200 you wrote:
+> EN7581 or AN7583 SoCs support connecting multiple external SerDes (e.g.
+> Ethernet or USB SerDes) to GDM3 or GDM4 ports via a hw arbiter that
+> manages the traffic in a TDM manner. As a result multiple net_devices can
+> connect to the same GDM{3,4} port and there is a theoretical "1:n"
+> relation between GDM ports and net_devices.
 > 
-> But both MT6365 PMIC support and compatibility were never expressed in
-> the dt-bindings and there is no MT6365 include file as well.
-> So, since these board support was introduced, their devicetrees use the
-> mt6359 include file to enable this PMIC support. 
+>            ┌─────────────────────────────────┐
+>            │                                 │    ┌──────┐
+>            │                         P1 GDM1 ├────►MT7530│
+>            │                                 │    └──────┘
+>            │                                 │      ETH0 (DSA conduit)
+>            │                                 │
+>            │              PSE/FE             │
+>            │                                 │
+>            │                                 │
+>            │                                 │    ┌─────┐
+>            │                         P0 CDM1 ├────►QDMA0│
+>            │  P4                     P9 GDM4 │    └─────┘
+>            └──┬─────────────────────────┬────┘
+>               │                         │
+>            ┌──▼──┐                 ┌────▼────┐
+>            │ PPE │                 │   ARB   │
+>            └─────┘                 └─┬─────┬─┘
+>                                      │     │
+>                                   ┌──▼──┐┌─▼───┐
+>                                   │ ETH ││ USB │
+>                                   └─────┘└─────┘
+>                                    ETH1   ETH2
 > 
-> The goal of this series is to clean this support by adding the missing
-> compatible strings for this MFD main and subdevices in the dt-bindings,
-> and add a include for MT6365 definitions to replace the MT6359 include
-> in these board devicetrees and for future ones (like Genio 520/720
-> EVKs).
-> 
-> The series is based on linux-next tree (tag: next-20260428) and has
-> been tested on Mediatek Genio 510, 700 and 1200-EVK boards.
-> 
-> ---
-> Louis-Alexis Eyraud (9):
->       dt-bindings: mfd: mediatek: mt6397: Add rtc for MT6359
->       dt-bindings: mfd: mediatek: mt6397: Add MT6365 PMIC support
->       dt-bindings: input: mediatek,pmic-keys: Add MT6365 support
->       dt-bindings: iio: adc: mt6359: Add MT6365 PMIC AuxADC
+> [...]
 
-Applied these 2 to fix warnings in linux-next.
+Here is the summary with links:
+  - [net-next,1/6] net: airoha: Introduce airoha_gdm_dev struct
+    https://git.kernel.org/netdev/net-next/c/ec6c391bcca7
+  - [net-next,2/6] net: airoha: Move airoha_qdma pointer in airoha_gdm_dev struct
+    https://git.kernel.org/netdev/net-next/c/528c5153a557
+  - [net-next,3/6] net: airoha: Rely on airoha_gdm_dev pointer in airoha_is_lan_gdm_port()
+    https://git.kernel.org/netdev/net-next/c/eca4f59b5367
+  - [net-next,4/6] net: airoha: Move qos_sq_bmap in airoha_gdm_dev struct
+    https://git.kernel.org/netdev/net-next/c/069626af6dfa
+  - [net-next,5/6] net: airoha: Move {cpu,fwd}_tx_packets in airoha_gdm_dev struct
+    https://git.kernel.org/netdev/net-next/c/962c17dd2878
+  - [net-next,6/6] net: airoha: Rename airoha_set_gdm2_loopback in airoha_enable_gdm2_loopback
+    https://git.kernel.org/netdev/net-next/c/842a7ee50d68
 
-Angelo, Apply the binding changes along with the .dts changes if they 
-haven't been picked up yet.
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-Once again, Mediatek warnings are moving in the wrong direction. :(
 
-Rob
-
->       arm64: dts: mediatek: mt6359: use proper compatible for rtc
->       arm64: dts: mediatek: add MT6365 PMIC include
->       arm64: dts: mediatek: mt8390-genio-common: use MT6365 PMIC definitions
->       arm64: dts: mediatek: mt8395-genio-common: use MT6365 PMIC definitions
->       arm64: dts: mediatek: mt8395-radxa-nio-12l: use MT6365 PMIC definitions
 
