@@ -4,70 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E13CFCD6E4A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2026 05:44:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 065D2CD6E4A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2026 06:43:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=w0p9jMiNGqOAdQsTSO1Efu/8z8Epr6DYVgCEY2udtoI=; b=hmgIY0UMocBuqoUNLRppkMI7F+
-	MGLwmKt+CUcQhDIi7dKREnWPdA5JM315ENlFBJ/VXEcyiF4gKE0PQXSiuGNeSQiXZNb8Zy/E9g5QS
-	efk577ypY4H2tLD3XxcLqTWT3lWemvMHpSeAWsuGmmOfKb7i2i5claUIFnTYj/68IrKRgNbKe/eYY
-	V+wUyASXuUB8DFffX1ADZaYWmc5S2LoptuiiUWoSSWCX1eHawbACFSvDxGcqZycpUTJgHtgXUm5I+
-	ydqslqAmdFiandzvI2WGDIg7KJztnWot6mue0jwCyN7Pi+UfVy5FSz6mLUTu4RPUXgaWAht7fV9DW
-	crgMfQKA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oVz6SYKqYy1ykUS1fwQECnfl6EKiONJTsloqPqT0xyw=; b=AFTOPEl3y/M2ieKjNWZdnhesbm
+	F8uD8Tt1nNS1whEv0+5fG2kAHbZAYIGbCxTjNOKbO/nQ/hxBfk+lzhkci9/iABDpoBC72mBxIYzzb
+	uqMy20mEKu/rnOeafz19I8yXcmfv5qEMKiBgTdkOc7pMIhIZWWUej8YxnfEj7/DUpuqOoEMuAceHb
+	PJhLgO7OWg3Nqdmhvq4zkj/rd8mZWEH9bImzssd3+3QFQZvNR9bQ7gQ6Y3T/z2x5euVlI1uaNThAV
+	+mopf0ANRcZJqWLgRHXQhJ34EaEEpJK25b/3Kt5PdqD/NhqzC0rmeR+aYt8LPOIxDfmlemqVMw23l
+	leV2iN1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUHv9-0000000CKu7-0lxu;
-	Tue, 02 Jun 2026 05:44:11 +0000
-Received: from mailgw.kylinos.cn ([124.126.103.232])
+	id 1wUIqd-0000000CPCy-2QxA;
+	Tue, 02 Jun 2026 06:43:35 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUHv6-0000000CKtB-1lkl;
-	Tue, 02 Jun 2026 05:44:10 +0000
-X-UUID: 0abea2ac5e4611f1aa26b74ffac11d73-20260602
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:ea6a243b-a388-4986-acd6-d3c846136447,IP:0,U
-	RL:0,TC:0,Content:0,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:25
-X-CID-META: VersionHash:e7bac3a,CLOUDID:cc7987b97370d2f75803ee3150f26bf6,BulkI
-	D:nil,BulkQuantity:0,Recheck:0,SF:102|115|854|861|865|898,TC:nil,Content:0
-	|15|50,EDM:5|9,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,
-	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 0abea2ac5e4611f1aa26b74ffac11d73-20260602
-X-User: liujiajia@kylinos.cn
-Received: from nature.lan [(10.44.16.150)] by mailgw.kylinos.cn
-	(envelope-from <liujia6264@gmail.com>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 321207560; Tue, 02 Jun 2026 13:43:54 +0800
-From: Jiajia Liu <liujia6264@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Jiajia Liu <liujiajia@kylinos.cn>
-Subject: [PATCH] wifi: mt76: transform aspm_conf for pci_disable_link_state
-Date: Tue,  2 Jun 2026 13:43:49 +0800
-Message-ID: <20260602054349.42429-1-liujia6264@gmail.com>
-X-Mailer: git-send-email 2.53.0
+	id 1wUIqb-0000000CPCT-0NQP;
+	Tue, 02 Jun 2026 06:43:34 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id CFAB7435F5;
+	Tue,  2 Jun 2026 06:43:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F1D7F1F00893;
+	Tue,  2 Jun 2026 06:43:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1780382611;
+	bh=oVz6SYKqYy1ykUS1fwQECnfl6EKiONJTsloqPqT0xyw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=HMrt8VQ8uviRax8hfIijft+UtVgXap1KfnuLZUk9hKw3gmtJtZrF+2F0P9L2zwv6B
+	 OYVkXHe5ymymdtUGoHD8xqvbGWUxJc1bOI2lCCXUDxKLiejmYCSzKI0APvGYSdlZFv
+	 Gbj8qld+TsJLHaPOFGx3DCjpiIQKTEHVGWfqTgnLfquLyY27gmmakOp3nepTSoELKp
+	 ieziZVdbzoSz6bS3HS+dvaaJtnHGWxVjP1KuVUXiEvu7zmmL961jRIMW7GvKczDLnx
+	 gzUFgY6oQ7aHFoPKCFs7zDfZo967XXwqX6FJBwkBxaKAwLNlY8Y+LrEwPR1dhXw0E+
+	 UZQpNVNw7uMpQ==
+Date: Tue, 2 Jun 2026 08:43:27 +0200
+From: "lorenzo@kernel.org" <lorenzo@kernel.org>
+To: Roy Luo <roychl666@gmail.com>
+Cc: Ryder Lee <Ryder.Lee@mediatek.com>,
+	Shayne Chen =?utf-8?B?KOmZs+i7kuS4nik=?= <Shayne.Chen@mediatek.com>,
+	"nbd@nbd.name" <nbd@nbd.name>, Roy-CH Luo <Roy-CH.Luo@mediatek.com>,
+	Chui-hao Chiu =?utf-8?B?KOmCseWegua1qSk=?= <Chui-hao.Chiu@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
+	Sean Wang <Sean.Wang@mediatek.com>,
+	Bo Jiao =?utf-8?B?KOeEpuazoik=?= <Bo.Jiao@mediatek.com>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Subject: Re: [PATCH v2] wifi: mt76: mt7996: fix reading zeroed
+ info->control.flags after mt76_tx_status_skb_add()
+Message-ID: <ah57j_SwdVZTc0GR@lore-rh-laptop>
+References: <20260531-mt76_tx_status_skb_add-overwrite-fix-v2-1-b73c4b4a9798@kernel.org>
+ <ee0e584cb2ad1b536d327eb89342d1646fa96570.camel@mediatek.com>
+ <ahwla_obwnwr2cZo@lore-desk>
+ <44c54ed4da0d294c567b3b0ad750f082a6f1be9f.camel@mediatek.com>
+ <ahwzwHDF7fT9t7hP@lore-desk>
+ <7f02be7c4f919413718a0218b3792d4b0a222ca3.camel@mediatek.com>
+ <ah0fGek5y8Nha0kd@lore-rh-laptop>
+ <CAHoxoj+N3AtJgFD8vGP+uDpj6anKMgPBtZGejLDgAz0ZyisSHg@mail.gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="vyatZ5JMfhikfHCS"
+Content-Disposition: inline
+In-Reply-To: <CAHoxoj+N3AtJgFD8vGP+uDpj6anKMgPBtZGejLDgAz0ZyisSHg@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260601_224408_779221_225569F3 
-X-CRM114-Status: UNSURE (   8.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260601_234333_193607_08675C3C 
+X-CRM114-Status: GOOD (  26.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,42 +89,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jiajia Liu <liujiajia@kylinos.cn>
 
-commit b478e162f227 ("PCI/ASPM: Consolidate link state defines") changed
-PCIE_LINK_STATE_L0S (1) to (BIT(0) | BIT(1)). PCI_EXP_LNKCTL_ASPM_L0S (1)
-and PCI_EXP_LNKCTL_ASPM_L1 (2) are no longer matched with
-PCIE_LINK_STATE_L0S (3) and PCIE_LINK_STATE_L1 (4).
+--vyatZ5JMfhikfHCS
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On the platform enabling ASPM L0s and L1, mt76_pci_disable_aspm is not able
-to disable L1. Fix this by transforming aspm_conf to pcie link state.
+On Jun 01, Roy Luo wrote:
+> > > I mean the link_id is only corresponds to one specific flags bit of
+> > > mac80211_tx_control_flags. But there are other bits that aren't
+> > > handled. Wouldn't u32 flags make it more cleaner?
+> >
+> > Yes, I got your point, but my concern is if we need to sync link_id bet=
+ween
+> > mt7996_tx_prepare_skb() and mt7996_mac_write_txwi(). If so, I guess it =
+is
+> > much better to pass link_id explicitly to mt7996_mac_write_txwi() since=
+ it
+> > does not just depended on mac80211_tx_control_flags and I think we shou=
+ld
+> > not duplicate the logic in mt7996_mac_write_txwi(). Got my point?
+> > If in the future (not required now) we need to pass mac80211_tx_control=
+_flags
+> > to mt7996_mac_write_txwi(), we will do it easily.
+> >
+> > Regards,
+> > Lorenzo
+> >
+> > >
+> > > Ryder
+> > >
+> > >
+>=20
+> Lorenzo,
 
-Signed-off-by: Jiajia Liu <liujiajia@kylinos.cn>
----
- drivers/net/wireless/mediatek/mt76/pci.c | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
+Hi Roy,
 
-diff --git a/drivers/net/wireless/mediatek/mt76/pci.c b/drivers/net/wireless/mediatek/mt76/pci.c
-index 833923ab2483..11fe62aa8113 100644
---- a/drivers/net/wireless/mediatek/mt76/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/pci.c
-@@ -30,8 +30,14 @@ void mt76_pci_disable_aspm(struct pci_dev *pdev)
- 
- 	if (IS_ENABLED(CONFIG_PCIEASPM)) {
- 		int err;
-+		int state = 0;
- 
--		err = pci_disable_link_state(pdev, aspm_conf);
-+		if (aspm_conf & PCI_EXP_LNKCTL_ASPM_L0S)
-+			state |= PCIE_LINK_STATE_L0S;
-+		if (aspm_conf & PCI_EXP_LNKCTL_ASPM_L1)
-+			state |= PCIE_LINK_STATE_L1;
-+
-+		err = pci_disable_link_state(pdev, state);
- 		if (!err)
- 			return;
- 	}
--- 
-2.53.0
+>=20
+> I got your point and IIUC the problem being addressed in this patch is th=
+at
+> the link id assignment has unnecessary duplicated logic across different
+> places. However, the commit tile "fix reading zeroed info->control.flags"
+> seems a bit misleading to me - this patch does not fully address the prob=
+lem
+> where the info->control.flags is cleared by memset in tx path when its
+> value might still be referenced, the field is still zeroed after
+> mt76_tx_status_skb_add() and whoever reads it afterward would get
+> incorrect value. With this patch, we avoid using the incorrect value for
+> link id, but the root cause remains.
 
+This patch is actually fixing both of the issues since now do not have any
+leftover access to info->control.flags after running mt76_tx_status_skb_add=
+()
+in the mt7996 tx path and it is not required (according to the current mt79=
+96
+codebase) to pass the flags cached value to mt7996_mac_write_txwi(). Howeve=
+r,
+if in the future this will be necessary, I am completely fine with that.
+
+Regards,
+Lorenzo
+
+>=20
+> The issue that Ryder tries to address in
+> https://lore.kernel.org/all/5ecac6a9b7d29526e8438dea105b58f5487c93aa.1778=
+521232.git.ryder.lee@mediatek.com/
+> concerns the overlapping use of info->control and info->status in tx path,
+> and it remains valid even with this link id fix applied. We have to be
+> cautious when dealing with info->control in mt7996 tx path until the issue
+> is fully resolved.
+>=20
+> Regards,
+> Roy
+
+--vyatZ5JMfhikfHCS
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCah57jAAKCRA6cBh0uS2t
+rAmFAQDk/bGX6PjAX+FifRA1xIjx6t2hREKHPBDgAfNVJn2rXAEA+RKD4cI97xcJ
+rWdhiY7wIkB+7003MrfHC78YlcbvXgM=
+=CO5r
+-----END PGP SIGNATURE-----
+
+--vyatZ5JMfhikfHCS--
 
