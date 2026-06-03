@@ -4,70 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33B61CD6E57
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2026 14:51:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75DE6CD6E57
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2026 15:43:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6kW6ptgyg5H5Ykwdbp8DQZ2euT25CNIXLSKPhd7nzg4=; b=wY9NS9OHb8kX+t4DA3lqfFjyLd
-	0TAI6450dXy6BtQ51ju3Rki2IAyPtfHIbQeaSfHMP3kjJGwPvcsFy+UoBgfCMJ+dqZEKWsN0GHpIp
-	u3+oIwNhfWxrrVR/KeCbBXH/Z9KzLsVLP6EOdibCdC+eXRHGjulwTUf+w14j7hbmXLcAeKGehCaPl
-	3P2+oMWkse0+ltX9DfzdbYxVL9wxSnWrbrkzOIElP0KK+stx3ExQzyoXMQWEQmWwK14vKRK8vENVu
-	F2hAEMdzzw+x75TFlitDOHiNQ95ReMu0EREY+GkcMknaBMy7kSM+hh6JI1fvLE3gKqvlRIhWcspGq
-	AOUnmx6Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xhcEhoEwa+kbbZMwGdMBL9zpe4dw2cwYVPVEVWGmIVE=; b=W8/CqUaiPlRIQQsYKPX9DNdTee
+	0DhoxuNv8JRBvf4bm3zWD7CjaujAsWfWrEmUqeg6y7OJK1ZU93PpypQxpBz1rSaby5TQ750YDfGIu
+	RlDEXrIAaT7qOmrxCQj009FQKguBgNcT8LQsDe27LC2Y7WGATP2pe97jQyrkI9SVhh6UR2em4dGXK
+	ZJYPE2n3snYF2ZPR1HBlxdpbltcZmuhkQr001hJEudRVITpkmxvWeuHcYw7M3CimTDD8VD+fUeSPy
+	GYOfXJ5sULeMeDdNh/VAc9EAAxizpwUPwIkMmurV3lWX8j4CtA88bgnb3BPJR2OqPqkgDXmw4cMGU
+	fNXl7BiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUmwK-0000000FIv1-11gO;
-	Wed, 03 Jun 2026 14:51:28 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wUnl2-0000000FRZ0-0uGb;
+	Wed, 03 Jun 2026 15:43:52 +0000
+Received: from dispatch1-us1.ppe-hosted.com ([148.163.129.48])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUmwH-0000000FIue-21Yy
-	for linux-mediatek@lists.infradead.org;
-	Wed, 03 Jun 2026 14:51:26 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 035CD40BC5;
-	Wed,  3 Jun 2026 14:51:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D77351F00893;
-	Wed,  3 Jun 2026 14:51:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780498283;
-	bh=6kW6ptgyg5H5Ykwdbp8DQZ2euT25CNIXLSKPhd7nzg4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=XSICvxH3AvCsXhr/oIpKcbA9WVCvTjdM2xMNi6kuE4XSIKILLjgJxn03F+c+KnjC8
-	 zW1lv+i+veWu0Hgug8Sa7//B6wAUVKRoTuQ9mFVU7oakoWOqni79uRJHYDe4Z5abcv
-	 H3lcm3LKnHW56YdyA37zMDBJQTV3PY6+7rTrov5eN4X56dPcI9BoI/7Y7lhRkfO4n+
-	 K6OfPoqo0Lo+Dvs9FZvQxRUdVj67cDyGUJ0XfI1zGPc6oBDQm3Z+g7hZpGL3m17/VC
-	 yTBPuqe480+6J8vEEVm4NIk6Dbb3cOD5Ua5brzLIbJRluMPd/MwAKCm21YY7fp6ooT
-	 6vTPH35peH0Nw==
-Received: from johan by xi.lan with local (Exim 4.99.3)
-	(envelope-from <johan@kernel.org>)
-	id 1wUmwD-0000000AYYj-2wiC;
-	Wed, 03 Jun 2026 16:51:21 +0200
-Date: Wed, 3 Jun 2026 16:51:21 +0200
-From: Johan Hovold <johan@kernel.org>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Jakub Kicinski <kuba@kernel.org>
-Cc: Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 RESEND 0/5] wifi: mediatek: drop redundant USB device
- references
-Message-ID: <aiA_aYcTPizOPhtT@hovoldconsulting.com>
-References: <20260430083335.215239-1-johan@kernel.org>
+	id 1wUnkz-0000000FRYR-3vGY;
+	Wed, 03 Jun 2026 15:43:51 +0000
+X-Virus-Scanned: Proofpoint Essentials engine
+Received: from mail3.candelatech.com (mail.candelatech.com [208.74.158.173])
+	by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id ECCE0A80092;
+	Wed,  3 Jun 2026 15:43:44 +0000 (UTC)
+Received: from [192.168.101.110] (firewall.candelatech.com [50.251.239.81])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by mail3.candelatech.com (Postfix) with ESMTPSA id 7C54313C2B0;
+	Wed,  3 Jun 2026 08:43:42 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com 7C54313C2B0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
+	s=default; t=1780501422;
+	bh=hLgshgyS7YOQD8gzLaUT8Q0QxecehSkbR1QldyX3hdE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ltKjLR/TkctAaphEbOismKYxMmiEtTw4a/WbAZf219lvTIoyYzW4KTLg87+C5FSQC
+	 hE402zaAXw6i5OLokUqaiQZHw+8EgNmS0z8PMavM7bTK9FKkVxrytr/NLpWNl26Uvv
+	 Cx6wqP6W43MdN7oiV2N6egC8MjQ/kpvlRWH0QS88=
+Message-ID: <a8a4f908-f8f1-4cbc-9be5-bbf8e109743f@candelatech.com>
+Date: Wed, 3 Jun 2026 08:43:42 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260430083335.215239-1-johan@kernel.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] wifi: mt76: mt7996: Fix possible token leak in
+ mt7996_tx_prepare_skb()
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20260531-mt7996_tx_prepare_skb-token-leack-v1-1-2b9c9f59ceb1@kernel.org>
+ <80ff2108-dce3-4060-a8d0-59740979a99a@candelatech.com>
+ <ah_TG4bkzitM4AER@lore-desk>
+Content-Language: en-US
+From: Dylan Eskew <dylan.eskew@candelatech.com>
+In-Reply-To: <ah_TG4bkzitM4AER@lore-desk>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-MDID: 1780501426-zW_PSR9LY7Sa
+X-PPE-STACK: {"stack":"us5"}
+X-MDID-O: us5;ut7;1780501426;zW_PSR9LY7Sa;<dylan.eskew@candelatech.com>;40f3b03bb24907b736a33b345f288e14
+X-PPE-TRUSTED: V=1;DIR=OUT;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260603_075125_542187_CA7D1517 
-X-CRM114-Status: GOOD (  13.16  )
+X-CRM114-CacheID: sfid-20260603_084349_998692_1DAC3625 
+X-CRM114-Status: GOOD (  18.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,32 +85,133 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 30, 2026 at 10:33:30AM +0200, Johan Hovold wrote:
-> [ This is a resend (with trimmed CC) of the five Mediatek patches which
->   still haven't been picked up from [1]. ]
-> 
-> Driver core holds a reference to the USB interface and its parent USB
-> device while the interface is bound to a driver and there is no need to
-> take additional references unless the structures are needed after
-> disconnect.
-> 
-> Drop redundant device references to reduce cargo culting, make it easier
-> to spot drivers where an extra reference is needed, and reduce the risk
-> of memory leaks when drivers fail to release them.
+Hi Lore,
 
-> [1] https://lore.kernel.org/all/20260306085144.12064-1-johan@kernel.org/
-> 
-> 
-> Johan Hovold (5):
->   wifi: mt76: drop redundant device reference
->   wifi: mt76x0u: drop redundant device reference
->   wifi: mt76x2u: drop redundant device reference
->   wifi: mt76: mt792xu: drop redundant device reference
->   wifi: mt7601u: drop redundant device reference
+>> Hi Lore,
+> Hi Dylan,
+>
+>> We have been seeing the token memory leak in our custom kernel. After
+>> pulling your patch in, we are still getting the leak (validated with
+>> kmemleak). How did you figure out where this potential leak was? I want to
+>> determine if we are leaking because of our changes or if there's more areas
+>> for token leakage.
+> Can you please try to run kmemleak on Felix's tree to check if there are any
+> leftover leaks not fixed yet?
 
-It's now been three months since these were first posted.
+Ran kmemleak with Felix's tree. I brought up only a few stations, no 
+traffic run yet and kmemleak flagged a possible leak, same allocation 
+location we've seen flagged in our custom kernel.
 
-Can someone please pick them up?
+kmemleak trace:
+```
+unreferenced object 0xffff88811e6ca380 (size 128):
+   comm "mt76-tx phy0", pid 1164, jiffies 4295044455
+   hex dump (first 32 bytes):
+     44 00 00 1a 0a a0 4c ae 0d 00 00 00 02 78 00 30 D.....L......x.0
+     00 00 00 00 01 00 00 00 14 00 27 12 00 00 00 08 ..........'.....
+   backtrace (crc fba2c5a3):
+     __kmalloc_noprof+0x38e/0x480
+     mt76_dma_tx_queue_skb+0x522/0x890 [mt76]
+     __mt76_tx_queue_skb+0x3e/0xa0 [mt76]
+     mt76_txq_schedule_pending_wcid+0x12b/0x200 [mt76]
+     mt76_txq_schedule_pending+0x122/0x1b0 [mt76]
+     mt76_tx_worker_run+0x1b/0xc0 [mt76]
+     __mt76_worker_fn+0x49/0x90 [mt76]
+     kthread+0xdc/0x110
+     ret_from_fork+0x190/0x280
+     ret_from_fork_asm+0x11/0x20
+```
 
-Johan
+In dma.c, line 19 is the where the kmemleak trace points:
+```
+10 static struct mt76_txwi_cache *
+11 mt76_alloc_txwi(struct mt76_dev *dev)
+12 {
+13         struct mt76_txwi_cache *t;
+14         dma_addr_t addr;
+15         u8 *txwi;
+16         int size;
+17
+18         size = L1_CACHE_ALIGN(dev->drv->txwi_size + sizeof(*t));
+19         txwi = kzalloc(size, GFP_ATOMIC);
+20         if (!txwi)
+21                 return NULL;
+22
+23         addr = dma_map_single(dev->dma_dev, txwi, dev->drv->txwi_size,
+24                               DMA_TO_DEVICE);
+25         if (unlikely(dma_mapping_error(dev->dma_dev, addr))) {
+26                 kfree(txwi);
+27                 return NULL;
+28         }
+29
+30         t = (struct mt76_txwi_cache *)(txwi + dev->drv->txwi_size);
+31         t->dma_addr = addr;
+32
+33         return t;
+34 }
+```
+
+Let me know if you need any other information.
+
+-- Dylan
+
+>
+> Regards,
+> Lorenzo
+>
+>> -- Dylan
+>>
+>> On 5/31/26 2:10 AM, Lorenzo Bianconi wrote:
+>>> If link_conf or link_sta lookup fails in mt7996_tx_prepare_skb routine,
+>>> mt7996 driver leaks an already allocated tx token. Fix the issue
+>>> releasing the token in case of error.
+>>>
+>>> Fixes: 7ef0c7ad735b0 ("wifi: mt76: mt7996: Implement MLD address translation for EAPOL")
+>>> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+>>> ---
+>>>    drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 8 ++++++--
+>>>    drivers/net/wireless/mediatek/mt76/tx.c         | 2 +-
+>>>    2 files changed, 7 insertions(+), 3 deletions(-)
+>>>
+>>> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+>>> index c98446057282..8c56344d211b 100644
+>>> --- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+>>> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+>>> @@ -1067,11 +1067,11 @@ int mt7996_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
+>>>    		link_conf = rcu_dereference(vif->link_conf[wcid->link_id]);
+>>>    		if (!link_conf)
+>>> -			return -EINVAL;
+>>> +			goto error_relase_token;
+>>>    		link_sta = rcu_dereference(sta->link[wcid->link_id]);
+>>>    		if (!link_sta)
+>>> -			return -EINVAL;
+>>> +			goto error_relase_token;
+>>>    		dma_sync_single_for_cpu(mdev->dma_dev, tx_info->buf[1].addr,
+>>>    					tx_info->buf[1].len, DMA_TO_DEVICE);
+>>> @@ -1176,6 +1176,10 @@ int mt7996_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
+>>>    	tx_info->nbuf = MT_CT_DMA_BUF_NUM;
+>>>    	return 0;
+>>> +
+>>> +error_relase_token:
+>>> +	mt76_token_release(mdev, id, NULL);
+>>> +	return -EINVAL;
+>>>    }
+>>>    u32 mt7996_wed_init_buf(void *ptr, dma_addr_t phys, int token_id)
+>>> diff --git a/drivers/net/wireless/mediatek/mt76/tx.c b/drivers/net/wireless/mediatek/mt76/tx.c
+>>> index 22f9690634c9..f96d9c471853 100644
+>>> --- a/drivers/net/wireless/mediatek/mt76/tx.c
+>>> +++ b/drivers/net/wireless/mediatek/mt76/tx.c
+>>> @@ -933,7 +933,7 @@ mt76_token_release(struct mt76_dev *dev, int token, bool *wake)
+>>>    #endif
+>>>    	}
+>>> -	if (dev->token_count < dev->token_size - MT76_TOKEN_FREE_THR &&
+>>> +	if (wake && dev->token_count < dev->token_size - MT76_TOKEN_FREE_THR &&
+>>>    	    dev->phy.q_tx[0]->blocked)
+>>>    		*wake = true;
+>>>
+>>> ---
+>>> base-commit: 4913f44167cf35a9536e9eec7352e15b2de0c573
+>>> change-id: 20260531-mt7996_tx_prepare_skb-token-leack-82e240d8c66f
+>>>
+>>> Best regards,
 
