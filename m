@@ -4,95 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A765CD6E69
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2026 17:21:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FD0ACD6E69
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2026 17:50:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ig4zCGf7+4ptZbdZZMypwYARwR0YB1sgjeMspwVj9PE=; b=3xGuJhewp7Lwa54GYniCdAEMDW
-	CwFEEjsb6WYh2mGNR02Yk7hWKnF0/Q1IVYVBxbYKT2qjBAnqSCf8MkY08XCwuNIhaE79YsPLIAqle
-	MgGTop8vk6V067rcgg7cAIzocw68mvajnswQdB1MX7wKWDsli1TOMfYDmGdy4QFei+CjXjYim/Z6V
-	tDxtaYOLuSZjuxdes+KBDj781QIpCkQ7WEf8EALtp+YbMh6kHOLMD7ZLhGUj52QwcNr+W4aAloY49
-	AfTL37NiSYAX2gAAsXv3h4o9csDCgBO+Yk/j4w4udex1LIFt0PHGz5MJ+PbNT0CctfIoQlgezM+Sf
-	wu8FcjXw==;
+	bh=wrzOVnS+X13tXKUjZu1rFaIumJnVPw+bRqGM+bZ2KoQ=; b=SunJuFi9DOm0rJtreyYgiY0u46
+	E9jrUCgOR+R8qr1eKGb7WkOySy9u2+FKUiJyHdURXxxL/KDubDcJYr41U1bJlei3SbIYP+jFdITFD
+	THZoCL0BgoKAfKAD16YrhpeR5eCyGR1RsRZg8gBelEnbjveboQUlvpWMP2JwxvJXuHfG8rtzGg2Rj
+	Fk+Uh3QH7iTFxguxg6TGiF+LABg9qyWcAXNa6V/CwJ1XnAhN2VulOAG/o4qegkIWnt52ja0CGR/sY
+	/lThEeBxjdInyjxRg0C3d6XpGNvWwEDXq8IJJoo9oJFchbIj7jcdV+8Ml180C4/+pMOwK+Xh/ajVE
+	4rHDlWTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUpHN-0000000FZHK-1TyX;
-	Wed, 03 Jun 2026 17:21:21 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wUpjK-0000000Fbgr-0bbR;
+	Wed, 03 Jun 2026 17:50:14 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUpHM-0000000FZH0-2ijQ;
-	Wed, 03 Jun 2026 17:21:20 +0000
+	id 1wUpjI-0000000FbgN-1UKx;
+	Wed, 03 Jun 2026 17:50:12 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1B9D56008A;
-	Wed,  3 Jun 2026 17:21:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0A9B71F00893;
-	Wed,  3 Jun 2026 17:20:57 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 881D660218;
+	Wed,  3 Jun 2026 17:50:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3F1D81F00898;
+	Wed,  3 Jun 2026 17:50:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780507278;
-	bh=Ig4zCGf7+4ptZbdZZMypwYARwR0YB1sgjeMspwVj9PE=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=c18sJ7aSoq9r+i0IlOMIyM+kePG9Og4QNfkKdmvW9i9gHt/nkcyz7wt3X6sQ55+PN
-	 9FCuhhMNrZDZj6AiihMI5VZ5eSGx75aw2BHqp+z8eJPDKPiawLxyWYNdzegnzvTLP4
-	 SUK0v0AV8YpRWsaQN9Z7bVQvVxyvbFJIooaNjoNYh0o8y8mjZWNbqaH/2nGiGRSSjv
-	 yhGhdlantZDthW2N7NtTDXBDCNyfOloZ32O+IlYOTFWGg3Gt/jq7bLRmckBoFSWC6R
-	 Go6HqJDXVno0Uqebslcwu+6uFCc6/BDhadZDjKwxPxloA2uOX2Cy1qIxjyq10GIpqT
-	 8FjWPlNqvKQSg==
-Date: Wed, 3 Jun 2026 18:20:52 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Cc: Romain Gantois <romain.gantois@bootlin.com>, MyungJoo Ham
- <myungjoo.ham@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Guenter
- Roeck <linux@roeck-us.net>, Peter Rosin <peda@axentia.se>, David Lechner
- <dlechner@baylibre.com>, Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Andy
- Shevchenko <andy@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Michael
- Hennerich <Michael.Hennerich@analog.com>, Mariel Tinaco
- <Mariel.Tinaco@analog.com>, Kevin Tsai <ktsai@capellamicro.com>, Linus
- Walleij <linus.walleij@linaro.org>, Eugen Hristev
- <eugen.hristev@linaro.org>, Vinod Koul <vkoul@kernel.org>, Kishon Vijay
- Abraham I <kishon@kernel.org>, Sebastian Reichel <sre@kernel.org>, Chen-Yu
- Tsai <wens@csie.org>, Hans de Goede <hansg@kernel.org>, Support Opensource
- <support.opensource@diasemi.com>, Paul Cercueil <paul@crapouillou.net>,
- Iskren Chernev <me@iskren.info>, Krzysztof Kozlowski <krzk@kernel.org>,
- Marek Szyprowski <m.szyprowski@samsung.com>, Matheus Castello
- <matheus@castello.eng.br>, Saravanan Sekar <sravanhome@gmail.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Casey Connolly
- <casey.connolly@linaro.org>, Pali =?UTF-8?B?Um9ow6Fy?= <pali@kernel.org>,
- Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
- <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, Amit
- Kucheria <amitk@kernel.org>, Thara Gopinath <thara.gopinath@gmail.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano
- <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, Lukasz Luba
- <lukasz.luba@arm.com>, Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Sylwester
- Nawrocki <s.nawrocki@samsung.com>, Olivier Moysan
- <olivier.moysan@foss.st.com>, Arnaud Pouliquen
- <arnaud.pouliquen@foss.st.com>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Thomas Petazzoni
- <thomas.petazzoni@bootlin.com>, linux-kernel@vger.kernel.org,
- linux-hwmon@vger.kernel.org, linux-iio@vger.kernel.org,
- linux-input@vger.kernel.org, linux-phy@lists.infradead.org,
- linux-pm@vger.kernel.org, linux-mips@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-sound@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- Sebastian Reichel <sebastian.reichel@collabora.com>, Andy Shevchenko
- <andriy.shevchenko@intel.com>
-Subject: Re: [PATCH v2 2/2] iio: inkern: Use namespaced exports
-Message-ID: <20260603182052.7d23c067@jic23-huawei>
-In-Reply-To: <acBr-W2ILu9tnMyd@google.com>
-References: <20251209-iio-inkern-use-namespaced-exports-v2-0-9799a33c4b7f@bootlin.com>
-	<20251209-iio-inkern-use-namespaced-exports-v2-2-9799a33c4b7f@bootlin.com>
-	<acBr-W2ILu9tnMyd@google.com>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+	s=k20260515; t=1780509011;
+	bh=wrzOVnS+X13tXKUjZu1rFaIumJnVPw+bRqGM+bZ2KoQ=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=gTzoTF7iyjzmSk19M+GJZPuzAL1JSSn9JqKteKp1sC4eqiBvds9gzoRkjBC20BMvC
+	 75oAR0+yxzHdwTjPCzx342nc2t3OZ6YaYLPdhWnl9P5q1D1xY6fsIyATsKys7a3Qm6
+	 du7qekO8L1KEc+Hnput9mhcTDCJZBEASDKtP75qPLtyqxfD9C+4RwwbLHTmWI0w18J
+	 8DKg1GBn36T6b9hLmj3BKxPgLcekR/XrQNUTs31rcgjqeUEIrPelN4Lybs1Tb18P8q
+	 nm///H8WsHu/T/F1VM2IByaaQ/sb4XXRotGHxu7fHQ7SuOKreb/n/sRsiaypO2zfzc
+	 IBSfU3bkWsrRA==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id D0B2239308BE;
+	Wed,  3 Jun 2026 17:50:13 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH] Bluetooth: btmtk: Disable remote wakeup for MT7922/MT7925
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <178050901239.1520440.2026593395539384648.git-patchwork-notify@kernel.org>
+Date: Wed, 03 Jun 2026 17:50:12 +0000
+References: <20260603-btmtk-remote-wakeup-v1-1-5c1006442f36@rong.moe>
+In-Reply-To: <20260603-btmtk-remote-wakeup-v1-1-5c1006442f36@rong.moe>
+To: Rong Zhang <i@rong.moe>
+Cc: marcel@holtmann.org, luiz.dentz@gmail.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, linux-bluetooth@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,35 +72,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 22 Mar 2026 15:24:21 -0700
-Dmitry Torokhov <dmitry.torokhov@gmail.com> wrote:
+Hello:
 
-> On Tue, Dec 09, 2025 at 09:25:56AM +0100, Romain Gantois wrote:
-> > Use namespaced exports for IIO consumer API functions.
-> > 
-> > This will make it easier to manage the IIO export surface. Consumer drivers
-> > will only be provided access to a specific set of functions, thereby
-> > restricting usage of internal IIO functions by other parts of the kernel.
-> > 
-> > This change cannot be split into several parts without breaking
-> > bisectability, thus all of the affected drivers are modified at once.
-> > 
-> > Acked-by: Sebastian Reichel <sebastian.reichel@collabora.com> # for power-supply
-> > Acked-by: Guenter Roeck <linux@roeck-us.net>
-> > Reviewed-by: Andy Shevchenko <andriy.shevchenko@intel.com>
-> > Signed-off-by: Romain Gantois <romain.gantois@bootlin.com>  
-> 
-> For input:
-> 
-> Acked-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-> 
-> Thanks.
-> 
+This patch was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-For anyone wondering what happened to this... I forgot to apply this at the
-beginning of the cycle and by the time I remembered we had too much queued up
-so it would have been messy to do an immutable branch.   Anyhow, I plan to
-sort this at start of next cycle.
+On Wed, 03 Jun 2026 02:38:10 +0800 you wrote:
+> These NICs are often reported to lose their Bluetooth interfaces, i.e,
+> their USB interfaces suddenly become completely unresponsive, causing
+> the USB core to reset them, only to find that they are no longer
+> accessible. A power cycle is required to make the Bluetooth interfaces
+> recover.
+> 
+> After some investigations, I found that their USB autosuspend remote
+> wakeup capabilities are so broken that they are precisely the culprit
+> behind the issue:
+> 
+> [...]
 
-Jonathan
+Here is the summary with links:
+  - Bluetooth: btmtk: Disable remote wakeup for MT7922/MT7925
+    https://git.kernel.org/bluetooth/bluetooth-next/c/247570151789
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
