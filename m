@@ -4,74 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD033CD6E6A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2026 05:12:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9435FCD6E60
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2026 05:51:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=4gnyni3j/2zlxfKswDNVSdULzZ8nrI/K6H0ZWv8Sd6w=; b=lEfa+BF0npL0L2YQyVK65Uj4lT
-	vrlzxyYbCxiUYTrJguHDFbXQNDam7Z+InM+z+lw/+YZ5Vl8ZtBsTmXEAPpFhz1Cy57hRPKbqkh7BR
-	KDg9hh8FvwjxEWXc47LcNooUdqOZ5c1NXzMDJ4mTZGdq+JIFi4NRMUatMEAtW4FCbxFtbhYvHDJAL
-	sti/St3atPBIl7nxIq5O+cZA3Eos+u0RMOR4s2vliynM3jbXLTo6j6zUCkRo+ohPbWoAeZMsxc4bu
-	gOCNo32+W6PxZp2XoICYJYzvbaif/eQwfHInZY+SppT83YVv4Qwvjqt2GgEHu52U/uY+8oigwyN/T
-	VIrdVASA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oTvNkpQ3IAQko7+6csryLy/+cqTSJvKQKa3PlxiKrOA=; b=IkDqPjcOLVeVTZLuK2p58xxr4k
+	KSZnxnMymj2xzhCUFViGUpMzYC/H0FnEnQCC6Q5yPLq4r56ICbvpCT6Q7BVb1Fb2is0UAtyV2pkQd
+	5rdTMF0xrf807EhEBNmcqD/38t/PTA/L8p2cmjiEEQ8wAOj1z5Mv5ryLdOE+rCKrLQGCiW0zRNRUj
+	+gWXAtqDBpkAk/sWLn9dvDxaVkdwu2H/PCHiWkMSrEifvG4tiFKn9Z39ZTl01D8uGPr0VUghC6VKY
+	+Ap2gG4UnJYKonAlWIZk7jwHyBFTtV7o7Gf2MVNk3CpJ6Zmy43QW/yeBsoORl+JqOnahjhLewLs24
+	uSqzv3/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUdtu-0000000EGVF-0nm0;
-	Wed, 03 Jun 2026 05:12:22 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1wUeVq-0000000EJrz-29K0;
+	Wed, 03 Jun 2026 05:51:34 +0000
+Received: from mgamail.intel.com ([192.198.163.15])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUdtq-0000000EGTL-3qTa;
-	Wed, 03 Jun 2026 05:12:20 +0000
-X-UUID: c554c0145f0a11f1acbe4559397dec65-20260602
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=4gnyni3j/2zlxfKswDNVSdULzZ8nrI/K6H0ZWv8Sd6w=;
-	b=FFvAZLx4KLSDHFNz97bytnVbI+pLsxM75yPr9fb8iQWd/X2pPYWc+rjAKXL5t9mFu9UkzZ640uaf+YUtYvmrL92NGCaj2yrRxPOj7EYm6a5oIY8gep5DSlrPMjmaVsSGzR3mga4JwAk/PQa6aGwYVsrEFNg0HqktBSO0VPm3mhY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.15,REQID:8a4e0ea8-8edd-4065-a971-b102a2f07aad,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:e276073,CLOUDID:20f57312-8806-49f4-b569-cc4d16bd954b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|136|836|865|888|898,TC:-5,Conten
-	t:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,O
-	SI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: c554c0145f0a11f1acbe4559397dec65-20260602
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
-	(envelope-from <justin.yeh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2138250194; Tue, 02 Jun 2026 22:12:09 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 3 Jun 2026 13:12:06 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 3 Jun 2026 13:12:06 +0800
-From: Justin Yeh <justin.yeh@mediatek.com>
-To: Ulf Hansson <ulfh@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Justin Yeh <justin.yeh@mediatek.com>
-Subject: [PATCH 0/2] pmdomain: mediatek: Enable module support for mtk-scpsys
-Date: Wed, 3 Jun 2026 13:11:49 +0800
-Message-ID: <20260603051200.1163226-1-justin.yeh@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1wUeVn-0000000EJqo-2hXP;
+	Wed, 03 Jun 2026 05:51:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1780465892; x=1812001892;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=U/sFUr+evDyY5P6S9Fd2jS9cFVU/nDx264kKOJ8IN08=;
+  b=meAbCKrjRXYTKzMGNtcangqcX5uJMLHiiYPFM94iZj3JlFya5A6l72K3
+   AzrdUm7UdQ4U7CI7qjMsnXdnIpodSLZUQE34UJVDPCyuHoD+pBUWEi62h
+   RZps7yRXY1MaghT6qcGoi7+cC1FQPfod8vBWGt1ANFGbE091tchFqcww2
+   NguweYiCxDKzlYk6r70v2gVHgkBGUHamtzD3X8POpvL46hMx5adIzbnx4
+   Ny+nAISHFPA35D+XiHK9AW16mBVjs+Da3Po2jDw2+Q5zXBhxLz7lGhaUV
+   L86Gd/PkVJBWWpGmheVG5Srmp1GX+ITDvy/r12t672FqTB1Wp+UjUhtgj
+   A==;
+X-CSE-ConnectionGUID: asn7sdO1RdOX54tdQUkTQw==
+X-CSE-MsgGUID: ELuWxyyOQzeG2UFT1IiBNg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11805"; a="81389794"
+X-IronPort-AV: E=Sophos;i="6.24,184,1774335600"; 
+   d="scan'208";a="81389794"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Jun 2026 22:51:22 -0700
+X-CSE-ConnectionGUID: WH3kdDGERByF5mzs+Oj+Mg==
+X-CSE-MsgGUID: 6jqZ1pqTQt2aNAKf7ZYlLQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.24,184,1774335600"; 
+   d="scan'208";a="241134290"
+Received: from pgcooper-mobl3.ger.corp.intel.com (HELO localhost) ([10.245.244.116])
+  by fmviesa007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Jun 2026 22:51:17 -0700
+Date: Wed, 3 Jun 2026 08:51:15 +0300
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
+To: Sanjay Chitroda <sanjayembeddedse@gmail.com>
+Cc: rva333@protonmail.com,
+	Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>,
+	Jonathan Cameron <jic23@kernel.org>,
+	David Lechner <dlechner@baylibre.com>,
+	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
+	Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Lee Jones <lee@kernel.org>, linux-iio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Ben Grisdale <bengris32@protonmail.ch>
+Subject: Re: [PATCH 2/4] iio: adc: mt6323-auxadc: add mt6323 PMIC AUXADC
+ driver
+Message-ID: <ah_A0yDhmZnanzn5@ashevche-desk.local>
+References: <20260602-mt6323-adc-v1-0-68ec737508ee@protonmail.com>
+ <20260602-mt6323-adc-v1-2-68ec737508ee@protonmail.com>
+ <1F6728A6-BD73-4159-AAC9-82370212EF04@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+In-Reply-To: <1F6728A6-BD73-4159-AAC9-82370212EF04@gmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260602_221218_954087_DCACB024 
-X-CRM114-Status: GOOD (  12.47  )
+X-CRM114-CacheID: sfid-20260602_225131_711801_017314E6 
+X-CRM114-Status: UNSURE (   9.05  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,36 +102,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series enables the MTK_SCPSYS driver to be built as a loadable
-module for GKI (Generic Kernel Image) compliance.
+On Wed, Jun 03, 2026 at 06:41:43AM +0530, Sanjay Chitroda wrote:
+> On 2 June 2026 6:16:55 pm IST, Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org> wrote:
 
-This series depends on the following patches currently under review:
-  - soc: mediatek: Allow MTK_INFRACFG to be built as module
-  - soc: mediatek: mtk-infracfg: Export symbols for DDK modules
+...
 
-The MTK_SCPSYS driver depends on MTK_INFRACFG being available as a
-module, which is enabled by these prerequisite patches.
+> >+MEDIATEK MT6323 PMIC AUXADC DRIVER
+> >+M:	Roman Vivchar <rva333@protonmail.com>
+> >+L:	linux-iio@vger.kernel.org
+> 
+> No need to add explicit iio list for driver.
+> Top level entry covers this driver.
 
-Patch 1 converts the Kconfig option from bool to tristate, allowing
-the driver to be built as either built-in or as a module.
+While that's true, if person wants to commit to maintain the code, it is always
+being appreciated.
 
-Patch 2 adds MODULE_DESCRIPTION() and converts to module_platform_driver()
-to complete the modularization and silence modpost warnings.
+> >+L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
 
-Together these changes allow the MediaTek SCPSYS power domain driver
-to support modern Android GKI/vendor_dlkm module loading requirements
-while maintaining backward compatibility with the traditional built-in
-configuration.
+This line might be questionable (or at least needs an Ack from MediaTek
+maintainers / senior developers.
 
-Justin Yeh (2):
-  pmdomain: mediatek: Convert MTK_SCPSYS to tristate
-  pmdomain: mediatek: Add MODULE_DESCRIPTION to mtk-scpsys
-
- drivers/pmdomain/mediatek/Kconfig      | 2 +-
- drivers/pmdomain/mediatek/mtk-scpsys.c | 5 ++++-
- 2 files changed, 5 insertions(+), 2 deletions(-)
+> >+S:	Maintained
+> >+F:	drivers/iio/adc/mt6323-auxadc.c
+> >+F:	include/dt-bindings/iio/adc/mediatek,mt6323-auxadc.h
 
 -- 
-2.45.2
+With Best Regards,
+Andy Shevchenko
+
 
 
