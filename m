@@ -4,64 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8A4CCD6E4A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2026 06:01:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B07B8CD6E4A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2026 06:55:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kwIhmiUhjwa16fmPX2KCAn+2U6erjZhTvA6Oh/JF3Ek=; b=0Nc/NEzWH8KrToHkc1fXqHY9zR
-	/SC8wM6mTopa6vwnM29mbn1ddCetd2mjylE2UQwafCmXbBoHUTVPo20xsyy+gRO55W3I8ahhtfKdV
-	vU3zL41EMdTEeGSi53T22tw7uxNC0peLnZdcRNazdaMrWcd0NyNhltzSHQWAx7piV6OqKaZ3W3XIe
-	QnX+79r9p1Ap6qnqXt7sxrk9znJ2d1BAbAjOexE65ClHQubH63BAzm7thrBjwMte4N7CKODX5JMM7
-	D0fF0tODHjMxF4hbkRl0WrBCvbIt6EhpYBkmlImqVJ0zvp0gN40r7DW8IAWpplLZzMorO+tX59JY7
-	We5C3tSQ==;
+	bh=eMVHxMtbHCbUYEX8FNbdji2LBuN1ycDKpUMu2gGLVv0=; b=tS2XPTMtJu1pOdVZeTqxHhshL7
+	eLkAK2iED8bD2crG2Fco+pw8G4tnk17yUQX2QZ91fGF/EXciT0a7mLfM/qTE51mCkcg/X4APNnsPK
+	1oeWjuEAe9RVOXiItQX/Ueqg6XNJxKlua3+tNMD4LgdsD99pPW4CeLS9pgBpE82MFT44WK47rvVET
+	t7ys7Ni6swslnEU2tJt6vXdiFkUOdgwQfH/mZ0nqFE2MKq7qeKJr5zDK5pODPNvBuj9bx772SMKdQ
+	ZPnmLKhzlqaQmGMTBDsBaIP6ISdEqtfid2c3XxXbVW1mJlvBT0cbezep1QhmH/PsPwqV7uXpVFMeG
+	iqZpd7Sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUefH-0000000EM6o-11Me;
-	Wed, 03 Jun 2026 06:01:19 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wUfVq-0000000EPvq-2mIX;
+	Wed, 03 Jun 2026 06:55:38 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUefF-0000000EM3O-0kcR;
-	Wed, 03 Jun 2026 06:01:17 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9BB0D60228;
-	Wed,  3 Jun 2026 06:01:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C88421F0089B;
-	Wed,  3 Jun 2026 06:01:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780466476;
-	bh=kwIhmiUhjwa16fmPX2KCAn+2U6erjZhTvA6Oh/JF3Ek=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=enSpK/FqKXcv6CnTcskuOQrBmQWdqGUhBqQnFU6/NwkpB4Pud96BO4KgfO/LlFgrd
-	 NvJH9+sMnfoFKaS0GzI5iijhQ0IoSqEHt2pOl4t21LGRL4mgPJyNQiPsGsBhEhHYSr
-	 YsU50pJgrKlEAUxtGDzgK1kjI+KFKQoUHl6fKXfAjzoyXEbDvUkHAicP1QJW9SFTUv
-	 FNMYkxrRdr8lAaFQbOkPLU3EOrHy/KsGKIKImUdSbGQQzn4XZxWI0dj8geVZcxNxLh
-	 Gj1S+4mLYDlBk+g4rFVkc1c+1eTwhUAPjxogPZh4F7imYZFqKm8ka9vAzD3Qtq+Moe
-	 0FQ5IAaUveY+Q==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Wed, 03 Jun 2026 08:00:20 +0200
-Subject: [PATCH net-next v9 6/6] net: airoha: Support multiple LAN/WAN
- interfaces for hw MAC address configuration
+	id 1wUfVp-0000000EPv1-1m6K
+	for linux-mediatek@bombadil.infradead.org;
+	Wed, 03 Jun 2026 06:55:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=eMVHxMtbHCbUYEX8FNbdji2LBuN1ycDKpUMu2gGLVv0=; b=lxqkxv5T3tUw1TxANVI1eqoREB
+	kbgVhsoFSCHBkX6YUQfMsEplMshJCi1KDtOMmxe7htbEvVtIDxx2ABUnvBb9XfbMtnqWTpCXdDVhO
+	niS0Kz3dR8yGwOYIFnonNNTw+H2EFqzeIRdWGlIRhUTTOiy4L5dXrYw8M1iVJXbsZ2GPXH42OobXH
+	JA2CLQ9IMbbjB8/sGQQleteMZFkTc/rtJpeYYOxfbv70vS68L0Ttc+gJYtMLIy8QF1xsFqwpSt8sx
+	DYCTy5OJcmZlrp4hsuuXFcRjKGdsqbE2hQK8C5GLeuVWuJ7yE5fUDHQsULVolAgqywScLgbrWqYjH
+	x9QBNFQA==;
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1wUfVm-0000000BLAr-1enB
+	for linux-mediatek@lists.infradead.org;
+	Wed, 03 Jun 2026 06:55:36 +0000
+Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-5aa2c25c632so13460159e87.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 02 Jun 2026 23:55:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1780469732; cv=none;
+        d=google.com; s=arc-20240605;
+        b=apyQhp/qFy9hZhaiXHtNnE7XngaTS/e+8uvSbqnJVX8Wt8pbix8cpNVdI8TCCK5O6B
+         l/O3zlmO14rnfgCNKuEJvBhzXaxU9Ipbn2N0eT7l/N6/MfLjlB/jCG9ukV9txELigIwo
+         S1BuXdphBGVK0nAJBYIU8WFeL9OCM3E8/BZduvIsaq/SMDQdBE+m+NHwPiHSEQ7S13qe
+         FX+YFUpZMduqzXsJ1wjeHkY657ehawR6q3QungND0YXFk293I6A8L8l8JO+jtJ2DlXud
+         xP29aNGl7pkvHl9HkNFrLvKdtrIB6xh/n8G0wr8W/BD4mc7aQIpwuZB2gqvNb/jaX/U0
+         P0rw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=eMVHxMtbHCbUYEX8FNbdji2LBuN1ycDKpUMu2gGLVv0=;
+        fh=CvvJWCAwyNrhyQRql63WrpPqyPgF9zi6LedVZUgiuDU=;
+        b=b3iDyDvYfpJeYQGy5NEiZe3hEZ46oT2no4mNEr6Mx3B9hIUZAvrIPBqj8i2Hi+tR/V
+         wKjX+lHikhnASlXugrLQrg08FEbFftQKzkkd6OcPiCvRrtIwZfRy+yfPaz735iViclhv
+         EzAoQDrYz2CN0wm90Nhg3oQb1Phn64Ga88EGMZQhRt9fppuC49NcrWhP5A7Henh5SDst
+         lYQ+haEpUogkpz4eRmR/QEgk7h6CkFtnnr4X/DzRmktlx1+Xb2C1yvUHKWBXDXDw+gxb
+         CBCoNjynMlktR+55Xi8YpN1t1wRea9RGAPyUcunjqD9YB6YLES//d4LZn/CZExe6Y7bA
+         POQg==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1780469732; x=1781074532; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=eMVHxMtbHCbUYEX8FNbdji2LBuN1ycDKpUMu2gGLVv0=;
+        b=dcNMSGOpqkKjO/1dCoFJfcOHDEd5UOF3TobjATFOvtgDz4H4GC/Xhrc2awScCMvzYt
+         e6cFQncJA5yDg+0QRaYcPvmg0Da3cG8qcNDV4kDK6roRXn8TrXAAQZfC4JZTM66Xq+sL
+         zxC7T2723I2M7flNA1i8+b4501j3hpzB6RpqE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1780469732; x=1781074532;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=eMVHxMtbHCbUYEX8FNbdji2LBuN1ycDKpUMu2gGLVv0=;
+        b=EoZPr5zjbP3AcGa3D2kpVfl9AIginAm0T6QybTm3mdO5bT+O0lFM+ixAnUPSN5hhZQ
+         W6QbkGoBZDmF1RWNpbgxe7c0D2YutXWc0xeONb786PJ8WVkRNrF/Q1I2DHYGXPVAoYVY
+         0AfWCMOSOol3mbtUwkQgICOcPXi+JYncDLjVaKjVPTl66JIlObzplnHrLGKaP2IokaZf
+         97uqr2SMppnzltVCKLAkqqg07wNjIm0cn5MDyJVTIYmKcha7rqaFh6g4GcLwZlUFIZM6
+         XxI0Zu3EpuhEbY+vCF/zIHQgpCze75+Oy7mygWgNsxyCNBVLDb3mk84iqGIQUkv2ihFs
+         LxWw==
+X-Forwarded-Encrypted: i=1; AFNElJ9594fiG1cSydKjKfJ7sj82EXqgWLiLggEvVMC0W7/WtBqrZFLbz1nAfymF7KSstHn9GG1JCs6n0KvPL7198Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx4TMvI+koHWB8yJK75hJj6cBTTADNWLw/0Kyicqz57K2DIr2hz
+	0rK9Tt1roldZ5S7+3V6Yk05dMTcSdQbN6Grdl/OKxj1JIWfauPAePH5WKnQ08ey/IagphlCepKn
+	A4fCX3scWUZ4Dv2EKC+egoTMaMW+SXk2V5TdI3rN6
+X-Gm-Gg: Acq92OGFj2dVqzuzM3c8aMaEBb9YwL02U4+e8ac6X+Gdw28JzcP7xNn/c3LXsz+Z39A
+	G0MIxDIYhg9GRLYqNPUeUZQ2/JVgpEV5B6VsXiyW1qr86yP/TQ6nZYiMnuNztqtfFQuA82CnI1X
+	kySh4KHTaZIr/mkTr0M4YkpdhAmXvujMs3Miik6Up4V4WUYBPCW4X3tl+4F3J/L5+X9yF6kAPcA
+	CCCiNI/I24+tFCXerPo64WAGl8FWcmoeXIEVhuZEHh6Ifuk/UbDosrx1gO5p/Iq2IkrQAk1/qFl
+	1n9JQP6iV6MXtCBFpx9lNZAkzUPAikl6HtGU6TREAa2CC5O8
+X-Received: by 2002:a05:6512:2310:b0:5aa:5f81:51cc with SMTP id
+ 2adb3069b0e04-5aa7bfd939emr598153e87.0.1780469731666; Tue, 02 Jun 2026
+ 23:55:31 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260603-airoha-eth-multi-serdes-v9-6-5d476bc2f426@kernel.org>
-References: <20260603-airoha-eth-multi-serdes-v9-0-5d476bc2f426@kernel.org>
-In-Reply-To: <20260603-airoha-eth-multi-serdes-v9-0-5d476bc2f426@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Christian Marangi <ansuelsmth@gmail.com>, 
- Benjamin Larsson <benjamin.larsson@genexis.eu>, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- netdev@vger.kernel.org, devicetree@vger.kernel.org, 
- Madhur Agrawal <madhur.agrawal@airoha.com>
-X-Mailer: b4 0.14.3
+References: <20260515090149.3169406-1-wenst@chromium.org> <CAMRc=MdnjRRMVzxPkkrPhQ4dz7rsK8-HKUp9cQ0z11apL3escQ@mail.gmail.com>
+ <CAGXv+5HC3dqgcE3KnKzakHHWFHB6m_X42orOkNUvZvp=SL_O8g@mail.gmail.com>
+ <CAMRc=Med-_0GSYzoFBRiwFzBCK0DZqJD8_SEBxi+zwR20GS-HA@mail.gmail.com>
+ <CAGXv+5GbW0bx3nKdZt2+tHuHyQ-J-1-Z79nMzHAwjmEPGKT02A@mail.gmail.com> <CAMRc=McADm0F4bwhj5qoigfUT-AV6CVpo+FAaqoBnZ3PrjBc7Q@mail.gmail.com>
+In-Reply-To: <CAMRc=McADm0F4bwhj5qoigfUT-AV6CVpo+FAaqoBnZ3PrjBc7Q@mail.gmail.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 3 Jun 2026 14:55:20 +0800
+X-Gm-Features: AVHnY4LlLDHphsEQE3sATrymTCUnapNz7ZFd_5P8UcLWbDeGGfHP5mUv-LY1yqE
+Message-ID: <CAGXv+5FhUuV_0fdOMDowffA-1jtUoNOcxZSZE-pd_T4V5Qg3Jg@mail.gmail.com>
+Subject: Re: [PATCH RFC 00/12] arm64: mediatek: Add M.2 E-key slot on Chromebooks
+To: Bartosz Golaszewski <brgl@kernel.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-pm@vger.kernel.org, 
+	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Manivannan Sadhasivam <mani@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260603_075534_791630_F497B5A1 
+X-CRM114-Status: GOOD (  48.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,173 +136,123 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The EN7581 and AN7583 SoCs provide registers to configure hardware LAN/WAN
-MAC addresses. These registers are used during FE hw acceleration to
-determine whether received traffic is destined to this host (L3 traffic)
-or should be switched to another device (L2 traffic).
-The SoC hardware design assumes all interfaces configured as LAN (or WAN)
-share the MAC address MSBs, which are programmed into the
-REG_FE_{LAN,WAN}_MAC_H register. The LSBs of 'local' mac addresses can be
-expressed as a range via the REG_FE_MAC_LMIN and REG_FE_MAC_LMAX
-registers. In order to properly accelerate the traffic, FE module requires
-the user to configure the REG_FE_{LAN,WAN}_MAC_H register respecting this
-limitation. Please note a misconfiguration in REG_FE_{LAN,WAN}_MAC_H
-will still allow the user to log into the device for debugging.
-Previously, only a single interface was considered when programming these
-registers. Extend the logic to derive the correct minimum and maximum
-values for REG_FE_MAC_LMIN/REG_FE_MAC_LMAX when two or more interfaces are
-configured as LAN or WAN. Since this functionality was not available
-before this series, no regression is introduced.
+On Thu, May 28, 2026 at 4:33=E2=80=AFPM Bartosz Golaszewski <brgl@kernel.or=
+g> wrote:
+>
+> On Wed, 27 May 2026 18:21:00 +0200, Chen-Yu Tsai <wenst@chromium.org> sai=
+d:
+> > On Tue, May 26, 2026 at 11:48=E2=80=AFAM Bartosz Golaszewski <brgl@kern=
+el.org> wrote:
+> >>
+> >> On Sun, May 24, 2026 at 10:06=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.=
+org> wrote:
+> >> >
+> >> > > >
+> >> > > > I expect some discussion on this patch, because a) it adds some
+> >> > > > OF-specific code into an otherwise generic (core) driver, and
+> >> > > > b) it doesn't yet handle USB 2.0 / 3.x shared ports; it ends up =
+powering
+> >> > > > on the port twice, which negates the port reset part.
+> >> > > >
+> >> > >
+> >> > > I understand that you do this because the port device has no OF no=
+de
+> >> > > assigned. If we wanted to call pwrseq_get() for the port device, i=
+s
+> >> > > there really no other way to associate it with the correct pwrseq
+> >> > > provider?
+> >> >
+> >> > I suppose we could tie the "port@X" node to the usb port device, but
+> >> > AFAIK no other subsystem does this so we would be introducing a new
+> >> > pattern.
+> >> >
+> >> > In the M.2 pwrseq driver, we would have to match by port node instea=
+d
+> >> > of its parent device node. We may end up with different behavior for
+> >> > the USB target vs the other targets.
+> >> >
+> >>
+> >> I imagine, we can check the bus type of the parent device to know if
+> >> this is USB?
+> >
+> > The "bus type" type is probably not exported. However since the DT bind=
+ing
+> > explicitly says which port on the M.2 slot is for which connection type=
+,
+> > I think the matching can do a special case check for the USB port.
+> > The next obstacle is that the target string is not given to the provide=
+r
+> > match function.
+> >
+> >> > Also, the "port@X" nodes only exist for the OF graph connections to
+> >> > connectors and/or muxes (this series doesn't deal with the latter).
+> >> > For directly connected devices, there is a "device@X" child node
+> >> > directly under the USB hub node. That node is what gets tied to the
+> >> > the USB device.
+> >> >
+> >>
+> >> Is this a problem? I don't think I understand what you're saying here.
+> >
+> > It shouldn't be. I'm just saying there would be different behavior on
+> > the USB side for connectors vs onboard devices (like hubs) device nodes=
+.
+> >
+> > I talked to Greg earlier, and he said not to touch the hub driver; the
+> > hub driver should only deal with features from the USB spec. The
+> > "onboard USB devices" driver is what should be used. And this would
+> > be a proper case of adding an auxiliary device to the M.2 slot driver.
+> >
+>
+> The onboard USB device is what initially inspired the PCI pwrctl code so =
+it
+> doesn't surprise me we circle back to it.
+>
+> > However this seems to completely decouple the power sequencing from the
+> > USB core. Take the USB A connector for example, it was recently added t=
+o
+> > the onboard USB devices driver. However the connector has a device node
+> > that is not a child node of any USB host controller or hub; it is conne=
+cted
+> > through OF graph. At the same time, since it typically sits at the top
+> > level of the device tree, a platform device is directly created and the
+> > driver subsequently binds to that device. This is totally different fro=
+m
+> > how the hub and other directly connected onboard USB devices work. In
+> > the onboard device case, the device node is a child node of the USB hub
+> > or controller, and the corresponding platform device only gets created
+> > when the USB hub driver probes, thereby sort of tying it into the USB
+> > device topology.
+> >
+>
+> Which is precisely what we do for PCI pwrctl. Though I'm not sure how we =
+could
+> replicate this behavior without touching the hub driver.
+>
+> > If the power sequencing ends up not connected to the USB subsystem, the=
+n
+> > maybe the M.2 slot driver could just check if the USB port (port@3) was
+> > used, and just enable the USB / BT pwrseq target at probe time? That
+> > would mean less changes needed.
+> >
+>
+> That sounds sane to me.
 
-Tested-by: Madhur Agrawal <madhur.agrawal@airoha.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c | 77 ++++++++++++++++++++++++++++----
- drivers/net/ethernet/airoha/airoha_eth.h |  2 +-
- drivers/net/ethernet/airoha/airoha_ppe.c |  4 +-
- 3 files changed, 71 insertions(+), 12 deletions(-)
+Mani seems to be against this idea though, since as I mentioned it decouple=
+s
+the timing of the power sequencing from the USB subsystem completely.
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 64ee526da241..8f2608293bb7 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -71,20 +71,76 @@ static void airoha_qdma_irq_disable(struct airoha_irq_bank *irq_bank,
- 	airoha_qdma_set_irqmask(irq_bank, index, mask, 0);
- }
- 
--static void airoha_set_macaddr(struct airoha_gdm_dev *dev, const u8 *addr)
-+static int airoha_set_macaddr(struct airoha_gdm_dev *dev, const u8 *addr)
- {
-+	u8 ref_addr[ETH_ALEN] __aligned(2);
- 	struct airoha_eth *eth = dev->eth;
--	u32 val, reg;
-+	u32 reg, val, lmin, lmax;
-+	int i;
-+
-+	eth_zero_addr(ref_addr);
-+	lmin = (addr[3] << 16) | (addr[4] << 8) | addr[5];
-+	lmax = lmin;
-+
-+	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
-+		struct airoha_gdm_port *port = eth->ports[i];
-+		int j;
-+
-+		if (!port)
-+			continue;
-+
-+		for (j = 0; j < ARRAY_SIZE(port->devs); j++) {
-+			struct airoha_gdm_dev *iter_dev;
-+			struct net_device *netdev;
-+
-+			iter_dev = port->devs[j];
-+			if (!iter_dev || iter_dev == dev)
-+				continue;
-+
-+			if (airoha_is_lan_gdm_dev(iter_dev) !=
-+			    airoha_is_lan_gdm_dev(dev))
-+				continue;
-+
-+			netdev = netdev_from_priv(iter_dev);
-+			if (netdev->reg_state != NETREG_REGISTERED)
-+				continue;
-+
-+			ether_addr_copy(ref_addr, netdev->dev_addr);
-+			val = (netdev->dev_addr[3] << 16) |
-+			      (netdev->dev_addr[4] << 8) | netdev->dev_addr[5];
-+			if (val < lmin)
-+				lmin = val;
-+			if (val > lmax)
-+				lmax = val;
-+		}
-+	}
-+
-+	if (!is_zero_ether_addr(ref_addr) && memcmp(ref_addr, addr, 3)) {
-+		/* According to the HW design, hw mac address MSBs must be
-+		 * the same for each net_device with the same LAN/WAN
-+		 * configuration.
-+		 */
-+		struct net_device *netdev = netdev_from_priv(dev);
-+
-+		dev_warn(eth->dev,
-+			 "%s: wrong mac addr, MSBs must be %02x:%02x:%02x\n",
-+			 netdev->name, ref_addr[0], ref_addr[1],
-+			 ref_addr[2]);
-+		dev_warn(eth->dev, "FE hw forwarding won't work properly\n");
-+
-+		return -EINVAL;
-+	}
- 
- 	reg = airoha_is_lan_gdm_dev(dev) ? REG_FE_LAN_MAC_H : REG_FE_WAN_MAC_H;
- 	val = (addr[0] << 16) | (addr[1] << 8) | addr[2];
- 	airoha_fe_wr(eth, reg, val);
- 
--	val = (addr[3] << 16) | (addr[4] << 8) | addr[5];
--	airoha_fe_wr(eth, REG_FE_MAC_LMIN(reg), val);
--	airoha_fe_wr(eth, REG_FE_MAC_LMAX(reg), val);
-+	airoha_fe_wr(eth, REG_FE_MAC_LMIN(reg), lmin);
-+	airoha_fe_wr(eth, REG_FE_MAC_LMAX(reg), lmax);
- 
--	airoha_ppe_init_upd_mem(dev);
-+	airoha_ppe_init_upd_mem(dev, addr);
-+
-+	return 0;
- }
- 
- static void airoha_set_gdm_port_fwd_cfg(struct airoha_eth *eth, u32 addr,
-@@ -1826,13 +1882,18 @@ static int airoha_dev_stop(struct net_device *netdev)
- static int airoha_dev_set_macaddr(struct net_device *netdev, void *p)
- {
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
-+	struct sockaddr *addr = p;
- 	int err;
- 
--	err = eth_mac_addr(netdev, p);
-+	err = eth_prepare_mac_addr_change(netdev, p);
- 	if (err)
- 		return err;
- 
--	airoha_set_macaddr(dev, netdev->dev_addr);
-+	err = airoha_set_macaddr(dev, addr->sa_data);
-+	if (err)
-+		return err;
-+
-+	eth_commit_mac_addr_change(netdev, p);
- 
- 	return 0;
- }
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index 3e8262f583a7..8f42973f9cf5 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -683,7 +683,7 @@ void airoha_ppe_check_skb(struct airoha_ppe_dev *dev, struct sk_buff *skb,
- int airoha_ppe_setup_tc_block_cb(struct airoha_ppe_dev *dev, void *type_data);
- int airoha_ppe_init(struct airoha_eth *eth);
- void airoha_ppe_deinit(struct airoha_eth *eth);
--void airoha_ppe_init_upd_mem(struct airoha_gdm_dev *dev);
-+void airoha_ppe_init_upd_mem(struct airoha_gdm_dev *dev, const u8 *addr);
- u32 airoha_ppe_get_total_num_entries(struct airoha_ppe *ppe);
- struct airoha_foe_entry *airoha_ppe_foe_get_entry(struct airoha_ppe *ppe,
- 						  u32 hash);
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index f54622904733..91bcc55a6ac6 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -1487,12 +1487,10 @@ void airoha_ppe_check_skb(struct airoha_ppe_dev *dev, struct sk_buff *skb,
- 	airoha_ppe_foe_insert_entry(ppe, skb, hash, rx_wlan);
- }
- 
--void airoha_ppe_init_upd_mem(struct airoha_gdm_dev *dev)
-+void airoha_ppe_init_upd_mem(struct airoha_gdm_dev *dev, const u8 *addr)
- {
--	struct net_device *netdev = netdev_from_priv(dev);
- 	struct airoha_gdm_port *port = dev->port;
- 	struct airoha_eth *eth = dev->eth;
--	const u8 *addr = netdev->dev_addr;
- 	u32 val;
- 
- 	val = (addr[2] << 24) | (addr[3] << 16) | (addr[4] << 8) | addr[5];
+Ideally we want them to be linked.
 
--- 
-2.54.0
+So I will take a stab at option one for now, incorporating changes you
+requested:
 
+- Drop the pwrseq API change
+- Use the firmware node API instead of the OF API
+- Tie the usb_port device to the "port@N" node
+
+And we'll see how the USB folks like or dislike it.
+
+
+Thanks
+ChenYu
 
