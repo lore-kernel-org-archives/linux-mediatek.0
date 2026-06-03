@@ -4,80 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC627CD6E55
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2026 14:42:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33B61CD6E57
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2026 14:51:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/SZis6zbPYrCXhCCtSZOIWKRAdD+3cD0HyoB/EsCAMs=; b=qKxvf9y3s3dui/wLtKy+iK94yK
-	e7I9oZceNz9AA8sa1QzwTFeq7Y6teYczz3WbPigvURPsdgel8zjRjcT/gFo535X1oVb6ZTlWSxgnu
-	r3aebTk2kXvytNqdiEDR1Jy9u0rs/uluUKQLwsWyoWJu3jGSk37zAmh11e8Cp9gE8MEQ1V0oOgilv
-	HuJoL4eogg5F0cDmJmEdHmFpXQPIx1/F/eilm5iqpyXf5BpbCw7YHkEQGmBVpvTkaN6eAs5W1nuwD
-	sYqqDUfrRJYuBypnrxAt21BVmaOeuEWrVEvt7vlliUwHPD2nbxV2ZHD8l51vTjdHA/FMr86w1L79y
-	ifTK52EQ==;
+	bh=6kW6ptgyg5H5Ykwdbp8DQZ2euT25CNIXLSKPhd7nzg4=; b=wY9NS9OHb8kX+t4DA3lqfFjyLd
+	0TAI6450dXy6BtQ51ju3Rki2IAyPtfHIbQeaSfHMP3kjJGwPvcsFy+UoBgfCMJ+dqZEKWsN0GHpIp
+	u3+oIwNhfWxrrVR/KeCbBXH/Z9KzLsVLP6EOdibCdC+eXRHGjulwTUf+w14j7hbmXLcAeKGehCaPl
+	3P2+oMWkse0+ltX9DfzdbYxVL9wxSnWrbrkzOIElP0KK+stx3ExQzyoXMQWEQmWwK14vKRK8vENVu
+	F2hAEMdzzw+x75TFlitDOHiNQ95ReMu0EREY+GkcMknaBMy7kSM+hh6JI1fvLE3gKqvlRIhWcspGq
+	AOUnmx6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUmnx-0000000FIAB-46j3;
-	Wed, 03 Jun 2026 14:42:50 +0000
-Received: from mgamail.intel.com ([198.175.65.11])
+	id 1wUmwK-0000000FIv1-11gO;
+	Wed, 03 Jun 2026 14:51:28 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUmnv-0000000FI9X-2AOH
+	id 1wUmwH-0000000FIue-21Yy
 	for linux-mediatek@lists.infradead.org;
-	Wed, 03 Jun 2026 14:42:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1780497768; x=1812033768;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=40/rz+Svj780MEv17S5hrRUI2Sow5Qt10VDlFQAoZw0=;
-  b=Y9zW34/gW1SeXeAvzQgpWx+uZHzovziKfAirXFyjYEelNfGAjW9bgUws
-   0nEPEyIkqTwFQkBVKp5Noo6coTCHzK9Qa83sDJMHyFwYDdd/Xr9EySbbW
-   ir96b5kN7Kw/51mZkpjcKMztdmxdKG2u4q7vPSzvtBhn9dxmILTRRh/3q
-   W5M7mAGHjsO1fFvBXhDe2NO3Rbsh4ItP+eyMK+fdv/uWF8JbiYOXKFkqs
-   oqOq3UwU4vHx8s9zLXz5bZ7I4ydaRS9vcQRnqNvZXnsAn+rjoUi1iwqf3
-   JptCbqlVWQlPKOdMz3Gn6O0q2qss4qUjTNgyIaZOKB+XkKjuGrNaQPn2C
-   g==;
-X-CSE-ConnectionGUID: +Yv1dU8XTpOii8b9shGfiw==
-X-CSE-MsgGUID: mX8WT1dcTPOsSYvZnyJ3fQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11806"; a="91624813"
-X-IronPort-AV: E=Sophos;i="6.24,185,1774335600"; 
-   d="scan'208";a="91624813"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
-  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Jun 2026 07:42:47 -0700
-X-CSE-ConnectionGUID: 8mMfWrHTSlSjR3rNteAd1g==
-X-CSE-MsgGUID: Ub0+VjfkRBOJVLDPy16mcw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.24,185,1774335600"; 
-   d="scan'208";a="246082245"
-Received: from igk-lkp-server01.igk.intel.com (HELO 892db79562d4) ([10.211.93.152])
-  by fmviesa004.fm.intel.com with ESMTP; 03 Jun 2026 07:42:44 -0700
-Received: from kbuild by 892db79562d4 with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1wUmnp-0000000024j-3mvP;
-	Wed, 03 Jun 2026 14:42:41 +0000
-Date: Wed, 3 Jun 2026 16:41:55 +0200
-From: kernel test robot <lkp@intel.com>
-To: JB Tsai <jb.tsai@mediatek.com>, nbd@nbd.name, lorenzo@kernel.org
-Cc: oe-kbuild-all@lists.linux.dev, linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, Deren.Wu@mediatek.com,
-	Sean.Wang@mediatek.com, Quan.Zhou@mediatek.com,
-	Ryder.Lee@mediatek.com, Leon.Yen@mediatek.com,
-	litien.chang@mediatek.com, Charlie-cy.Wu@mediatek.com,
-	jb.tsai@mediatek.com
-Subject: Re: [PATCH] wifi: mt76: mt7925: add regulatory wiphy self manager
- support
-Message-ID: <202606031619.GjGn8yRe-lkp@intel.com>
-References: <20260603075331.1234691-1-jb.tsai@mediatek.com>
+	Wed, 03 Jun 2026 14:51:26 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 035CD40BC5;
+	Wed,  3 Jun 2026 14:51:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D77351F00893;
+	Wed,  3 Jun 2026 14:51:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1780498283;
+	bh=6kW6ptgyg5H5Ykwdbp8DQZ2euT25CNIXLSKPhd7nzg4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=XSICvxH3AvCsXhr/oIpKcbA9WVCvTjdM2xMNi6kuE4XSIKILLjgJxn03F+c+KnjC8
+	 zW1lv+i+veWu0Hgug8Sa7//B6wAUVKRoTuQ9mFVU7oakoWOqni79uRJHYDe4Z5abcv
+	 H3lcm3LKnHW56YdyA37zMDBJQTV3PY6+7rTrov5eN4X56dPcI9BoI/7Y7lhRkfO4n+
+	 K6OfPoqo0Lo+Dvs9FZvQxRUdVj67cDyGUJ0XfI1zGPc6oBDQm3Z+g7hZpGL3m17/VC
+	 yTBPuqe480+6J8vEEVm4NIk6Dbb3cOD5Ua5brzLIbJRluMPd/MwAKCm21YY7fp6ooT
+	 6vTPH35peH0Nw==
+Received: from johan by xi.lan with local (Exim 4.99.3)
+	(envelope-from <johan@kernel.org>)
+	id 1wUmwD-0000000AYYj-2wiC;
+	Wed, 03 Jun 2026 16:51:21 +0200
+Date: Wed, 3 Jun 2026 16:51:21 +0200
+From: Johan Hovold <johan@kernel.org>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Jakub Kicinski <kuba@kernel.org>
+Cc: Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 RESEND 0/5] wifi: mediatek: drop redundant USB device
+ references
+Message-ID: <aiA_aYcTPizOPhtT@hovoldconsulting.com>
+References: <20260430083335.215239-1-johan@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260603075331.1234691-1-jb.tsai@mediatek.com>
+In-Reply-To: <20260430083335.215239-1-johan@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260603_074247_632428_0BA1D4E3 
-X-CRM114-Status: GOOD (  14.72  )
+X-CRM114-CacheID: sfid-20260603_075125_542187_CA7D1517 
+X-CRM114-Status: GOOD (  13.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,132 +82,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi JB,
+On Thu, Apr 30, 2026 at 10:33:30AM +0200, Johan Hovold wrote:
+> [ This is a resend (with trimmed CC) of the five Mediatek patches which
+>   still haven't been picked up from [1]. ]
+> 
+> Driver core holds a reference to the USB interface and its parent USB
+> device while the interface is bound to a driver and there is no need to
+> take additional references unless the structures are needed after
+> disconnect.
+> 
+> Drop redundant device references to reduce cargo culting, make it easier
+> to spot drivers where an extra reference is needed, and reduce the risk
+> of memory leaks when drivers fail to release them.
 
-kernel test robot noticed the following build warnings:
+> [1] https://lore.kernel.org/all/20260306085144.12064-1-johan@kernel.org/
+> 
+> 
+> Johan Hovold (5):
+>   wifi: mt76: drop redundant device reference
+>   wifi: mt76x0u: drop redundant device reference
+>   wifi: mt76x2u: drop redundant device reference
+>   wifi: mt76: mt792xu: drop redundant device reference
+>   wifi: mt7601u: drop redundant device reference
 
-[auto build test WARNING on wireless-next/main]
-[also build test WARNING on wireless/main linus/master v7.1-rc6 next-20260602]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+It's now been three months since these were first posted.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/JB-Tsai/wifi-mt76-mt7925-add-regulatory-wiphy-self-manager-support/20260603-155908
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git main
-patch link:    https://lore.kernel.org/r/20260603075331.1234691-1-jb.tsai%40mediatek.com
-patch subject: [PATCH] wifi: mt76: mt7925: add regulatory wiphy self manager support
-config: x86_64-rhel-9.4 (https://download.01.org/0day-ci/archive/20260603/202606031619.GjGn8yRe-lkp@intel.com/config)
-compiler: gcc-14 (Debian 14.2.0-19) 14.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260603/202606031619.GjGn8yRe-lkp@intel.com/reproduce)
+Can someone please pick them up?
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202606031619.GjGn8yRe-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   drivers/net/wireless/mediatek/mt76/mt7925/regd.c: In function 'mt7925_regd_update':
->> drivers/net/wireless/mediatek/mt76/mt7925/regd.c:361:57: warning: passing argument 2 of 'regulatory_set_wiphy_regd' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-     361 |                 return regulatory_set_wiphy_regd(wiphy, &mt7925_regd_ww);
-         |                                                         ^~~~~~~~~~~~~~~
-   In file included from include/net/mac80211.h:22,
-                    from drivers/net/wireless/mediatek/mt76/mt7925/../mt76.h:18,
-                    from drivers/net/wireless/mediatek/mt76/mt7925/../mt76_connac.h:7,
-                    from drivers/net/wireless/mediatek/mt76/mt7925/../mt76_connac_mcu.h:7,
-                    from drivers/net/wireless/mediatek/mt76/mt7925/../mt792x.h:10,
-                    from drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h:7,
-                    from drivers/net/wireless/mediatek/mt76/mt7925/regd.c:4:
-   include/net/cfg80211.h:8082:59: note: expected 'struct ieee80211_regdomain *' but argument is of type 'const struct ieee80211_regdomain *'
-    8082 |                               struct ieee80211_regdomain *rd);
-         |                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
-
-
-vim +361 drivers/net/wireless/mediatek/mt76/mt7925/regd.c
-
-   286	
-   287	int mt7925_regd_update(struct mt792x_phy *phy, char *alpha2)
-   288	{
-   289		struct wiphy *wiphy = phy->mt76->hw->wiphy;
-   290		struct ieee80211_hw *hw = wiphy_to_ieee80211_hw(wiphy);
-   291		struct mt792x_dev *dev = mt792x_hw_dev(hw);
-   292		struct mt7925_regd_rule *mt7925_rule;
-   293		struct mt76_dev *mdev = &dev->mt76;
-   294		struct ieee80211_regdomain *regd;
-   295		struct ieee80211_reg_rule *rule;
-   296		struct mt7925_regd_rule_ev *ev;
-   297		int i, num_of_rules = 0;
-   298		struct sk_buff *skb;
-   299		int ret = 0;
-   300	
-   301		if (dev->hw_full_reset)
-   302			return 0;
-   303	
-   304		if (!MT7925_REGD_SUPPORTED(phy))
-   305			return -EOPNOTSUPP;
-   306	
-   307		mt792x_mutex_acquire(dev);
-   308		skb = mt7925_regd_query_regdb(phy, alpha2);
-   309		mt792x_mutex_release(dev);
-   310	
-   311		if (!skb)
-   312			return -EINVAL;
-   313	
-   314		ev = (struct mt7925_regd_rule_ev *)(skb->data + 4);
-   315		num_of_rules = le32_to_cpu(ev->n_reg_rules);
-   316	
-   317		if (!num_of_rules ||
-   318			WARN_ON_ONCE(num_of_rules > NL80211_MAX_SUPP_REG_RULES)) {
-   319			ret = -EINVAL;
-   320			goto err;
-   321		}
-   322	
-   323		regd = kzalloc(struct_size(regd, reg_rules, num_of_rules), GFP_KERNEL);
-   324		if (!regd) {
-   325			ret = -ENOMEM;
-   326			goto err;
-   327		}
-   328	
-   329		for (i = 0; i < num_of_rules; i++) {
-   330			mt7925_rule = &ev->reg_rule[i];
-   331			rule = &regd->reg_rules[i];
-   332	
-   333			rule->freq_range.start_freq_khz =
-   334						MHZ_TO_KHZ(mt7925_rule->start_freq);
-   335			rule->freq_range.end_freq_khz =
-   336						MHZ_TO_KHZ(mt7925_rule->end_freq);
-   337			rule->freq_range.max_bandwidth_khz =
-   338						MHZ_TO_KHZ(mt7925_rule->max_bw);
-   339			/* not used by fw */
-   340			rule->power_rule.max_antenna_gain = DBI_TO_MBI(6);
-   341			rule->power_rule.max_eirp = DBM_TO_MBM(22);
-   342			rule->flags = mt7925_rule->flags;
-   343		}
-   344	
-   345		regd->n_reg_rules = num_of_rules;
-   346		regd->dfs_region = ev->dfs_region;
-   347	
-   348		memcpy(regd->alpha2, alpha2, 2);
-   349		memcpy(mdev->alpha2, alpha2, 2);
-   350	
-   351		dev->regd_change = true;
-   352		mt7925_mcu_regd_update(dev, alpha2, ENVIRON_ANY);
-   353	
-   354		ret = regulatory_set_wiphy_regd(wiphy, regd);
-   355	
-   356		kfree(regd);
-   357	err:
-   358		dev_kfree_skb(skb);
-   359	
-   360		if (ret < 0)
- > 361			return regulatory_set_wiphy_regd(wiphy, &mt7925_regd_ww);
-   362	
-   363		return ret;
-   364	}
-   365	EXPORT_SYMBOL_GPL(mt7925_regd_update);
-   366	
-
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Johan
 
