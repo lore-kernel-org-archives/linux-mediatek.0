@@ -4,108 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38694CD6E57
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jun 2026 20:47:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B40FCD6E5D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2026 01:11:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Message-ID:References:In-Reply-To:Subject:CC:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E/F9SBkHIYEzDXTuA4BV3hptq8kg192HlVg4BWvVGGE=; b=4RSyB0hRVOSasDC6cnKgGcNa2O
-	Iz9nRUERywU3RTu9hbnfBJzkTmE5/PPNfraRanO3TDEmrn6U7fUdrI1Bos0dnpAKXxQuXnu/l2T3e
-	WjaJXl7c5biKrdQjBRSGBUjAfcHGCUpNMnTxt6EtRXGWUdyfKQdIinFSUsJnlf/7W2UDJTfZt1zGW
-	W/vgD8nYXcnGOok5fTFejlCH1lVZ2nXR6g7YB7qskka61Rik392Q++wSjDNgWcD5afYcU9Flv+6mD
-	iqBzp0UBaKfYngUp4R3/03Q/mNimD7NMVVt0b6kA/wr8TjgtCZmVUb4zbDVukol+78nte7M5g46mv
-	Mz49fZTA==;
+	bh=wfa0xqifL6vDOGACfxfGJ3JF4SFfMplxwiS2lFwtPkg=; b=NMO/O9NnEE7rJ5mbC69CaUCvMk
+	Xz/j8ZHvYul+h05Cv3TLLUAW9ybFssNQgeFUHOoCxelboQSH0st/UyiUdg0DIyEw/byyokWW9L139
+	43ECy6ESNnitNxkY2uZTdI4gTwssxAwQPLoR/RGBIkSab5q66t/QkGTOb6ecIBZPhHRJvPxpmJBzw
+	MHv8Cv93zJXF35NmBf8q+iyWkelO3rqnrbSeRiqNpOd3uHkmZQClUWhcyiASf8IbBRJTqsuv2jCQF
+	X81DxLteW1Q4JMqmoD+woh1oCsl2A+BQKflNw2Vwca0eQ2Qf+wdebGIyHUIKtpbG4kswR2i9xIPpM
+	0ymWmrWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUW0y-0000000DmDA-03vV;
-	Tue, 02 Jun 2026 20:47:08 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1wUa99-0000000E1mW-3pet;
+	Wed, 03 Jun 2026 01:11:51 +0000
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUW0u-0000000DmCK-47ht
+	id 1wUa98-0000000E1lJ-0fyT
 	for linux-mediatek@lists.infradead.org;
-	Tue, 02 Jun 2026 20:47:06 +0000
-Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-49041e84237so97133445e9.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 02 Jun 2026 13:47:04 -0700 (PDT)
+	Wed, 03 Jun 2026 01:11:51 +0000
+Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-8422524cb38so1206596b3a.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 02 Jun 2026 18:11:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1780433223; x=1781038023; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=E/F9SBkHIYEzDXTuA4BV3hptq8kg192HlVg4BWvVGGE=;
-        b=YpBgEGd59fL6mgRnCt7NamNOSz3g2g2elg0TNBm3pu6oP9me++GWkBVt9x0yHEeBIJ
-         xixbjUozMECNl5x0yLqmgB8Y4Fenlprdck8VSn+1utp5O737RNbbYxt7hrn66knFuUhf
-         xfyilsAT1eYdRv1yZeEHHv0vD73Jqg9bP0LzjxC4NVh8ewic8vc52hQxeXftVzE8UQqE
-         GUo/VsU95uA/HWMK8C+GNQAxa8VmxhAFCbM94JkF1zLwcBFNAWi68aNIiO5NNEN9c3tf
-         GLL3AKJJv88nwjSxXAkK6pquAQsBGTmbt+Rwj2GvLsIRwjOQJpnWfLL84IC8hMBLDvNy
-         tLKQ==
+        d=gmail.com; s=20251104; t=1780449109; x=1781053909; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:references
+         :in-reply-to:user-agent:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=wfa0xqifL6vDOGACfxfGJ3JF4SFfMplxwiS2lFwtPkg=;
+        b=PID7lL92qRk3KyHCIWK+APkZH1VIxH4uY90I0X/HJs7AaUS0CXesFUou7LOXnPrpep
+         y/DxT9QSPL26Zj7zyxpt0Yey2eWYEpIHYCdEOy+2LroYMlZvJxfKx8wL/8JV5Q31srFY
+         GfWKoN2IPz+NEUzlPGZZw5S2JfNmw7HCYiyqQXTPy5YC6/Wi7BfMq0Is7nFKfnWgBF4w
+         P1OFJlHZm/IZZKKGsBvIvQlLK4h7+Cre7/8Wcc3vdZpVyc9aXVsFeoyxO5mfv69jhgUJ
+         tV888XtZ7c2YxR6vwfoiBRwzVvuNT5IIeCrHWrr4BkeivRaaw8yo+aOTLkK0UjUo+xaz
+         Y4RQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1780433223; x=1781038023;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=E/F9SBkHIYEzDXTuA4BV3hptq8kg192HlVg4BWvVGGE=;
-        b=krUvMAs8cStU5yBRI8I+B4XvkFbuHak1O6zUqwv/dXo3Hb6VUp3n7/2iOz80fbh+u1
-         rCLGDswCbIBs01LUQ9xR3PUCXRRmDuUE56je1WanHWE5/ND3HUDSahRPnzBE7e4yG4hL
-         /qwuhZgsJ8fmzuWu2J+2wSyRKqjk7wlzbU5o2Gvu7B4Wdp9brf7DG8s7SzalJoim3qGE
-         zsKWgfPygGotuH4aZdzIsv+yVBkc+NBlLSS0pKupyMvcwULszf5qHvGZRovHhsddMVQt
-         MQghRvyNIhLnoQySsvUoO556p7qWeNgfNWgqOw7ZCG6zxfrIUYw1o7KPiRlfE8w4VeU5
-         IGfw==
-X-Forwarded-Encrypted: i=1; AFNElJ9vtvf6YEF7dqf7/UPbg9SreA1qhdr+zwanI/I8ebZZRlLgb6m0PagiTTu39x1u5U2pwAWlfxZne3tiyz+spA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywv5qyW7PHhfCCLf3mktmsapBcceI+nM3XJZoCgH+8xHCne0Ab/
-	5WjsmEU0Om9ZWtMsOiKnuF+oF4a+E6P2m9S6yxVZoh06icyw9CWYnxSJ
-X-Gm-Gg: Acq92OG8RXPmvuoy5WsjgLagHM/p6bqe5ECVJB29wd9J6JzlHYKs/zJYCGLjSMD/ouw
-	+W24rIswpZo0FUDk1XSP7g3PQjjBSdxnCWAi0+3rWYIpFb4I2XDQAzwkq4FkRdmANLxc3zsB/je
-	JOKVmdVKrUVuwTfXGLcMDYG7qaNRtDkod7dmBABzZJS+04P3h5uz/6y3HWH+R971gFffQ+fzUe4
-	gkBL+NO6T608hZI0wBRG23U4tB7HlOpdZ38+V/py/pDqd2o3OTbM/A5UlJpZWmJF0fgnl98Sk4E
-	s92/VtIvVE112ymW9bo6+CavCjVAPEBHq2iRG1jw0funUWlwhkvhmXOFWK6JWjVc+HOfeotiwPc
-	b7cNE2Uns3rrKIHSruThluIVVx+V8UqJgB/+mPKMbn0nEAjOBCYbXapQQMWy3D/AU0jEZdyicIy
-	M4+jSxp0SBBQC8pDmMfFsNukW19Tom8/NYhPxzTA==
-X-Received: by 2002:a05:600c:458b:b0:490:af63:2cb1 with SMTP id 5b1f17b1804b1-490b6128dc3mr5058205e9.7.1780433222731;
-        Tue, 02 Jun 2026 13:47:02 -0700 (PDT)
-Received: from [192.168.0.2] ([212.50.121.5])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-490b60f6d5asm5811745e9.0.2026.06.02.13.47.00
+        d=1e100.net; s=20251104; t=1780449109; x=1781053909;
+        h=content-transfer-encoding:mime-version:message-id:references
+         :in-reply-to:user-agent:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=wfa0xqifL6vDOGACfxfGJ3JF4SFfMplxwiS2lFwtPkg=;
+        b=W3mjMxAN1Z5zFvYG2+DXw0eni0o86F49FBCCQOH9vJFOc+ouJc9zwPjsfG5QyhgaoB
+         3IqGE6k0Qz8qt8/fLHKpusJdQwr3McqSy91HS5ehkcyz9cUco4Nb/5/PAP+Jlbn3JIRg
+         rcg0ebg3bSHuEWG/GGnu+gsC4hfuYaO4gk4YBGqx/i3C8gY60PI3x2Wsxu/xE9TM9UJ/
+         2OFEh8wl6Z0dZxMyb191n3OZ+eZIJI9qfshcHjZpy2UYuQLk1XqYmiQROMaxQUkNJAMm
+         WmSw/VgbfYwTSxW7+894agGm4Q1qugdvnw3dU5ObfC3ZzQjdK7TxDnmu0sF6V8TGAORx
+         C+DA==
+X-Forwarded-Encrypted: i=1; AFNElJ8I97zptJJ7YeOZHcA0AZxADNwLyMcQj8LqOU+n2APj9osBNAN6eMbmPMLEHpSBAioN3jEWajYjapYJWXX91g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YySzYdmKvP5j6BkwILjkejwcHlcxfDZbaWfXoMFD4E8Kc27eSkD
+	IwAphhAbLZxZDGWeiLy7+YLAXNul1F5xy2OiqM3EqrayqGNKQO+sFRlv
+X-Gm-Gg: Acq92OH/7tnQ/JuX8gD8gZrFgOPH8o7rblP4+jXkJGHIbm/gOanwu0EJnb5fLRtSSai
+	scSyGCsQ286W10PqMMD8OtSC+XH49zSRqWtZPjej2oBuphDtomBm/mp1zBS/4ktIDvMkneAGApU
+	yVQeGhWlFCK+Riu6aHhEitMA5cYb+RSSupRGs23HEip3+KanK1U3upbT00jg/Pybj6pcIplKTYG
+	zyDEGRgU7zKg4yljvZWTDI9JCSzD9BSUGD82rUDFkuclz2uQp+m3+20qCc4TJ999tAJB9LRcgPE
+	y8c08ip2iYKMSx+uiJYYTHIrIm89gieVbnNuL6sVdU3JcNropSDCuxK/TftM8ZfkC3YByzcnU6s
+	MOIg6zbNFWDn/M0ReZS/XJdSrSnvRrYtIxNbDMDv7PlTylzP9g+FtIcsZ4yneSnPVmZLoiU6qC/
+	eEz8Dp/ukAoIuNchyblbBTxjJVv0crppyVykvOdYMXe/DYCwRoRoPrNjtdKg==
+X-Received: by 2002:a05:6a00:1f06:b0:83c:928:6e5a with SMTP id d2e1a72fcca58-84284e22fd8mr1087363b3a.13.1780449108782;
+        Tue, 02 Jun 2026 18:11:48 -0700 (PDT)
+Received: from ehlo.thunderbird.net ([2401:4900:8899:fcac:9fd7:3b2f:a800:e88c])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-842828fa877sm1081497b3a.51.2026.06.02.18.11.47
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 02 Jun 2026 13:47:02 -0700 (PDT)
-Message-ID: <e7df5082-ef48-43d0-ad07-10e1e64e1d26@gmail.com>
-Date: Tue, 2 Jun 2026 23:46:59 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/11] net: wwan: t9xx: Add MediaTek T9XX WWAN driver
-To: "Wu. JackBB (GSM)" <JackBB_Wu@compal.com>,
- Jakub Kicinski <kuba@kernel.org>,
- Jack Wu via B4 Relay <devnull+jackbb_wu.compal.com@kernel.org>
-Cc: Loic Poulain <loic.poulain@oss.qualcomm.com>,
- Johannes Berg <johannes@sipsolutions.net>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Paolo Abeni <pabeni@redhat.com>, Wen-Zhi Huang <wen-zhi.huang@mediatek.com>,
- Shi-Wei Yeh <shi-wei.yeh@mediatek.com>,
- Minano Tseng <Minano.tseng@mediatek.com>,
+        Tue, 02 Jun 2026 18:11:48 -0700 (PDT)
+Date: Wed, 03 Jun 2026 06:41:43 +0530
+From: Sanjay Chitroda <sanjayembeddedse@gmail.com>
+To: rva333@protonmail.com,
+ Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>,
+ Jonathan Cameron <jic23@kernel.org>, David Lechner <dlechner@baylibre.com>,
+ =?ISO-8859-1?Q?Nuno_S=E1?= <nuno.sa@analog.com>,
+ Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Simon Horman <horms@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
- Shuah Khan <skhan@linuxfoundation.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>
-References: <20260529-t9xx_driver_v1-v1-0-bdbfe2c01e57@compal.com>
- <20260601173401.2c892526@kernel.org>
- <c279aea41ecf41c6aca4314a2f4e306b@compal.com>
-Content-Language: en-US
-From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
-In-Reply-To: <c279aea41ecf41c6aca4314a2f4e306b@compal.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+ Lee Jones <lee@kernel.org>
+CC: linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Ben Grisdale <bengris32@protonmail.ch>,
+ Roman Vivchar <rva333@protonmail.com>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_2/4=5D_iio=3A_adc=3A_mt6323-au?=
+ =?US-ASCII?Q?xadc=3A_add_mt6323_PMIC_AUXADC_driver?=
+User-Agent: Thunderbird for Android
+In-Reply-To: <20260602-mt6323-adc-v1-2-68ec737508ee@protonmail.com>
+References: <20260602-mt6323-adc-v1-0-68ec737508ee@protonmail.com> <20260602-mt6323-adc-v1-2-68ec737508ee@protonmail.com>
+Message-ID: <1F6728A6-BD73-4159-AAC9-82370212EF04@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260602_134705_056732_258A2860 
-X-CRM114-Status: GOOD (  21.13  )
+X-CRM114-CacheID: sfid-20260602_181150_207320_FA1FFBDC 
+X-CRM114-Status: GOOD (  10.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,76 +111,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
-let me join the discussion and put my 2c.
 
-On 6/2/26 13:58, Wu. JackBB (GSM) wrote:
-> Hi Jakub,
-> 
->> On Fri, 29 May 2026 18:31:39 +0800 Jack Wu via B4 Relay wrote:
->>> 43 files changed, 14761 insertions(+)
->>
->> Please try to cut this down to ~5kLoC for the initial submission.
->> Whatever the absolute minimum sensible chunk of code is.
->>
->> Each patch must build cleanly with W=1
-> 
-> We've already reduced this significantly from the original 41k LoC
-> down to ~14.7k by stripping out non-essential features such as
-> exception handling, memory logging, devlink, statistics, debug
-> tracing, and others.
-> 
-> We even removed some arguably necessary features (PM, mdlog,
-> throughput optimizations) that we plan to submit as follow-up
-> series.
+On 2 June 2026 6:16:55=E2=80=AFpm IST, Roman Vivchar via B4 Relay <devnull=
++rva333=2Eprotonmail=2Ecom@kernel=2Eorg> wrote:
+>From: Roman Vivchar <rva333@protonmail=2Ecom>
+>
+>The mt6323 AUXADC is a 15-bit ADC used for system monitoring=2E This driv=
+er
+>provides support for reading various channels including battery and
+>charger voltages, battery and chip temperature, current sensing and
+>accessory detection=2E
+>
+>Add a driver for the AUXADC found in the MediaTek mt6323 PMIC=2E
+>
+>Tested-by: Ben Grisdale <bengris32@protonmail=2Ech> # Amazon Echo Dot (2n=
+d Generation)
+>Signed-off-by: Roman Vivchar <rva333@protonmail=2Ecom>
+Hi Roman,
+Thank you for the patch=2E
+>---
+> MAINTAINERS                     |   8 ++
+> drivers/iio/adc/Kconfig         |  11 ++
+> drivers/iio/adc/Makefile        |   1 +
+> drivers/iio/adc/mt6323-auxadc=2Ec | 299 ++++++++++++++++++++++++++++++++=
+++++++++
+> 4 files changed, 319 insertions(+)
+>
+>diff --git a/MAINTAINERS b/MAINTAINERS
+>index d1cc0e12fe1f=2E=2Ec9ad2417a3ef 100644
+>--- a/MAINTAINERS
+>+++ b/MAINTAINERS
+>@@ -16256,6 +16256,14 @@ S:	Maintained
+> F:	Documentation/devicetree/bindings/mmc/mtk-sd=2Eyaml
+> F:	drivers/mmc/host/mtk-sd=2Ec
+>=20
+>+MEDIATEK MT6323 PMIC AUXADC DRIVER
+>+M:	Roman Vivchar <rva333@protonmail=2Ecom>
+>+L:	linux-iio@vger=2Ekernel=2Eorg
 
-Great work. Highly appreciate!
+No need to add explicit iio list for driver=2E
+Top level entry covers this driver=2E
 
-> Note that the line count may slightly increase in v2, as we plan
-> to add missing kdoc comments based on review feedback.
-> 
-> For reference, the t7xx driver (two generations older, simpler HW)
-> had an initial submission of ~11.3k LoC [1]. The t9xx hardware is
-> more complex, so we believe being in a similar range is reasonable.
-
-Let me elaborate a bit here. The size problem is not due to a git or a 
-mailbox limitation. It arise due to the human limitation. The T7xx 
-submission review took something about 4 months and 8 iterations. And it 
-was 'only' 11.3k lines. Let's do some extrapolation assuming that 
-function is linear. 14.7k is 30% bigger, thus, estimated reviewing time 
-should be 5 months and 2 weeks. And this looks optimistic.
-
-Recommendation, shared by Jakub, is practical. 5k lines might be 
-reviewed in a reasonable time and merged with the full confidence of the 
-quality.
-
-> We'd like to keep the driver functional and reviewable in its
-> current scope. Do you have any suggestions on how we could further
-> reduce the size while maintaining a working initial submission?
-
-Off the top of my head, I would suggest joining T7xx and T9xx code 
-bases. It could be done through factoring out a core functionality of 
-T7xx into a library, or through making the driver layered.
-
-I am not pretending being an expert in any of these drivers, but 
-generally divide-n-conqueror together with code reuse work reliable. As 
-an alternative, I could spend a couple of weeks reviewing the new 
-submission and will come with more specific ideas on what can be thrown 
-away or reused.
-
-> [1] https://patchwork.kernel.org/project/netdevbpf/cover/20220506181310.2183829-1-ricardo.martinez@linux.intel.com/
-> 
-> Thanks.
-> 
-> 
-> ================================================================================================================================================================
-> This message may contain information which is private, privileged or confidential of Compal Electronics, Inc. If you are not the intended recipient of this message, please notify the sender and destroy/delete the message. Any review, retransmission, dissemination or other use of, or taking of any action in reliance upon this information, by persons or entities other than the intended recipient is prohibited.
-> ================================================================================================================================================================
-
-And this disclaimer does not facilitate the review. Am I 'intended' 
-recipient or should I destroy the message ASAP?
-
---
-Sergey
+>+L:	linux-mediatek@lists=2Einfradead=2Eorg (moderated for non-subscribers=
+)
+>+S:	Maintained
+>+F:	drivers/iio/adc/mt6323-auxadc=2Ec
+>+F:	include/dt-bindings/iio/adc/mediatek,mt6323-auxadc=2Eh
+>+
+> MEDIATEK MT6735 CLOCK & RESET DRIVERS
+> M:	Yassine Oudjana <y=2Eoudjana@protonmail=2Ecom>
+> L:	linux-clk@vger=2Ekernel=2Eorg
+=2E=2E=2E
+Thanks, Sanjay
+>+MODULE_DESCRIPTION("MediaTek MT6323 PMIC AUXADC Driver");
+>
 
