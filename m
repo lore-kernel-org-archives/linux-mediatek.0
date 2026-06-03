@@ -4,115 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6463FCD6E55
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2026 10:15:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A11BCD6E55
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jun 2026 10:15:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G5uoXQRR+x1Y1NzAuMH2inF+ukyI5BxIekcDkuuPxWo=; b=ANQVdTq5FnzwZg7p5tCgDur92p
-	7/Cn4MNznF5bJrmcdNZelwSCYSpitR3IxayCLA+u5IWseFFbt/Ip8u/wAIdYnOvknP0qIsN87XUjy
-	/3AFSTgQdxDUagKhwGN2j5Y2Caj3GxAU54L5oe4X/wyuQDkmZvIBiZyagTbGrHXiVyXxr2TAlvcRl
-	xSrgW9kdjCnCkfBqQ7y+F5xfwQZZk8+8XHeRTb8WeXk5opjijKoshDWOEdcd51khyzxN4U0oJfSWn
-	2Y6OARNBC9kF5Zh0Z/1rxDyZ2r/qRV11uODo5SMzQplOdE7BJLUjHDzRzOg5Wag3/zDwWPEroqkFR
-	9PCNKxKw==;
+	bh=cemMVSwWpUomfLDkEQHTnLgIi/llhyTHZDSVwZ5DF6o=; b=w6Ey2q/fNjJaYhMyZcAgJETSmI
+	LNSEajNHGiKS3DGXjSWDH2ZLcLeSuTA+k6EP1/N9kEe2dommOrWs8lOvZeyixnXaJkGh8HojNIOVO
+	brh1ZGNndvnZwFDfgeeUrJJ1ojJQmbs5QRNSHhxc40FkG05qAfQPoxmcWNPKG6bPDeei20Fq9xRRO
+	3J1TF2b7QRKtM4a3wmApOOl/SspH4//GAWJWTouyJWJbP3Zw1g3BosL4BPYqYW8DKBqrn1/5Ispi5
+	6fk23FxHEJ7aBIUfytJQoDoWzQzcxjB/hnGf1G4NpDmd9f3kB6Ma9LlWHVlxfYP2tIoyJSCzm4vWQ
+	MZsgpUqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUico-0000000EmmF-4Amp;
-	Wed, 03 Jun 2026 10:15:02 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1wUid4-0000000Emqc-1AYO;
+	Wed, 03 Jun 2026 10:15:18 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUicm-0000000Eml9-1LJW
+	id 1wUid2-0000000Empu-0bpC
 	for linux-mediatek@lists.infradead.org;
-	Wed, 03 Jun 2026 10:15:01 +0000
-Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 65395owQ780676
-	for <linux-mediatek@lists.infradead.org>; Wed, 3 Jun 2026 10:14:59 GMT
+	Wed, 03 Jun 2026 10:15:17 +0000
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6536RMJ71740497
+	for <linux-mediatek@lists.infradead.org>; Wed, 3 Jun 2026 10:15:15 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-transfer-encoding:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	G5uoXQRR+x1Y1NzAuMH2inF+ukyI5BxIekcDkuuPxWo=; b=SmAGzEcNzMg6EFVj
-	AJxaoFZzHAlq3ByG7/Al8YvqP1vWkmRutw/OAjR4YxtfS3B2Ymh2GWsxwnq71NBa
-	h2UXk7QxDOu7UtdUSzPwrvUkENvND2wgWHL9TbcIhr1yC/aGridG4+njldF6JQ6j
-	ZQzMai1HHyZ1iw3tXnZUJl31CyDDfvcGHRk1vZ4Wx2UJb9KnsV6x5w4JzbiozVd+
-	xVhpVP5oyBtADnKRqkrWDNyojEGs6HOx1/DnzpPJfz46un779MUCu6D9n8IH9l0I
-	1ub8sAGJhafr6IV+vflXwme6o8VXQxYrq0jnup6Tw/4K3FRxiK9NAxGW1PvOZg63
-	yTCo3w==
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com [209.85.160.200])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4ejhbb09y4-1
+	cemMVSwWpUomfLDkEQHTnLgIi/llhyTHZDSVwZ5DF6o=; b=ln/Ht+CxkbGrBgNy
+	wPjkkVIlTOOgLK2eipmC/+xX7OCKCHzDFzzB2Nm52nMjfKPJOUj3n5mfl6UwjcpQ
+	7Udc9IUF1V/oDCXW1QBbbmZc6Sn5z1BMPWq5dBPOwXUXLyk+wIrSW0Nvt1Vk4OJt
+	TrDaAm05OwjKwc9RM8jNDlPAZ+cAkDZ3iNO6fT2slHbotWYq5QqfJIyxPTkzV7m+
+	AK7SEr/dt7wcZC6a5ecldZ/zraKys6A1ornmHmSD+X4oANirp//WIARcW42LKahf
+	xkSN0ge2lV56EWn0rM/ph8mP/psnmHQO0fSqi0YcHDL7C6C0+O3w7a7EXN1xguQn
+	byisqw==
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com [209.85.219.71])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4ejdq7s9gq-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Wed, 03 Jun 2026 10:14:58 +0000 (GMT)
-Received: by mail-qt1-f200.google.com with SMTP id d75a77b69052e-5174d1b326eso12130681cf.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 03 Jun 2026 03:14:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1780481698; cv=none;
+	for <linux-mediatek@lists.infradead.org>; Wed, 03 Jun 2026 10:15:15 +0000 (GMT)
+Received: by mail-qv1-f71.google.com with SMTP id 6a1803df08f44-8ccd51bc2f5so151234996d6.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 03 Jun 2026 03:15:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1780481714; cv=none;
         d=google.com; s=arc-20240605;
-        b=ZNuYiLrCbXDLeCR2DtvGCdFpo26Y86pBgJxBBwCTs7/iSJyXlQJNbyJ99yCGZ+XVcC
-         PLU2t6uC9U5fzaQoN9r7W6VGYwntzGg93+BS3js0lBNFeww+KHBSwPCI61ZFWX2ckocH
-         +3kV1SHQUI4VoR9Lecer1CxWBnhNTgdBkahm3T/F1Fd/1Y8QPzoOsYB0xpLlAMWlPc7z
-         XYSdchqrxNFtWtdnKHV9eBAmsy6LBnGMBaBlmWdg/GO6l5TZaVKimrMNF+ldiqxB4+Vt
-         3pc3ZvyrUwhlWrnXAHUFj+63qSw8dFZHmL2dNTvFbRcjhmxBUqyIYYjE7RVltxx7TKmt
-         KA4A==
+        b=V0NDr6PWRtI4qxWCv91CoCm4IAJKTmq7LhHLDTgn0svdwOh/mscSjFxSKv0s0wGQqu
+         rJi16o0LRGREsl/21yY+1bjHM1b/Lf6TU23tqIhDH3OtXkjz6VSsOr2guP9mHhyEQApR
+         NHpqIdNw/1ZpFBjTUuiZf/XwbU1Lal+eU3hrLrL9I+OvX5iBAQ7hrWP5UQ3ykeDou9RK
+         4t1kyUe45BKx2yJXWuMg0DSWsajJNvHcXGIWQbEHmSujtF9oka+Xm29fkUvOoGpiHFaG
+         Uu9ozEG5Ka0eO9U3UJrvIR0Ad+AmRy20sbo2XP71C6/5PG8LeUixH2fRcSL4NGzR2kDR
+         j6BQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=G5uoXQRR+x1Y1NzAuMH2inF+ukyI5BxIekcDkuuPxWo=;
-        fh=HEEmawelGAJM9geITnCw5CiUzLpM9AFmKKM7gg+/PyY=;
-        b=lrNGJV/JM6nmsr4M+k/tdnQh57kfnYX1s5O8CBUMElPO/rqREZ/AVh67tffMHn6qWy
-         /WdJXd49q/qQ3jghWpA1q7G8bgbyGgBUg5aqL5qFBMtFk0XiR+n4MVQg2dZDfV5Y3GZL
-         kjZDR3jH1NlvRoC0h9v/apwR02S+o67SuCg4J9R+/4N6XrWivk4AHeSK+1VDgFxhfC8k
-         +cl4Lp/d1c3P722DEJMBkE73z9qznxSV/XvjVZ/V1l3gdfbq9SfIU+tj4akfSOcqIUJD
-         2qBdRz6gzSgp8CagH9wQfuwoEnMCdcKC0KaMALjTr88SA0pcT7VUgj8AduNuUALQ0od9
-         icUw==;
+        bh=cemMVSwWpUomfLDkEQHTnLgIi/llhyTHZDSVwZ5DF6o=;
+        fh=g7a8QtwvzMVm1V+vLFNCo5qu6aYWMfahSpLqbjtM6L8=;
+        b=Z8LlhNzvkG5i+qP/ZCoMZsnbO91cXoK9mlvxlkSDl/iBWB0Lt8zpWTk4L8EK6mDHXS
+         y0nl3LeXgR7c8z52chuYmDZEyLRoBKq7yTR4ldjKCTzGwh8F4eCX4a6hnbHma1Dki5bR
+         ploG2mRNsmXxglNNaX9w1hUJleVERVlmFrnRrb9MwSFg0cH98+gKxrsXerDKifOtpeYP
+         wR56lP5iHc83A8tKW72FkGAlfBUa65PrX4UcVIkS1cATC1WMhKxRMcuM8INNcINIrqSF
+         NSrnx4lqIqxxVLZV42JS/s6+pInJKXeJQyQu/vA0dlzLRIN64UZ9VzG+/AxIVRKKXS7w
+         cUsA==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1780481698; x=1781086498; darn=lists.infradead.org;
+        d=oss.qualcomm.com; s=google; t=1780481714; x=1781086514; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=G5uoXQRR+x1Y1NzAuMH2inF+ukyI5BxIekcDkuuPxWo=;
-        b=aKyxlPvxR8E0HOjq+W+5wgk8a3FlphHMtxsLfrDJncpqK7eDUQTs0ODJoCYowqaZmP
-         qgRYtizj+FeLwuQNyDOR/gzOZMoR8gXZZJPb4+oF1tAPjQsUtO+rsSAWyxI+VJiILaBC
-         rORO88yTOshfTZdCNlOJBjnUbR5bYON1A/v0ZjrrJR5PiygvD4/GFq3jexqu9mu+m+V2
-         D5ihBlX40NquWmBgJkVFaSTmJBhjYdJNb4JMN+4LGfTWK4AMLEt4TG9W2mZCxQBNEhn6
-         ml/kdEV8ofgqV2lej7jw85y2laXd3BS9l1H+7d7PrKoiVPTCAZDqC5BPhGB4/JonjfUU
-         3VVg==
+        bh=cemMVSwWpUomfLDkEQHTnLgIi/llhyTHZDSVwZ5DF6o=;
+        b=NZdWQdmeu9qN8Fe8Uv76V6kvFB6v27FwgIMmMdcLmBFRpDAeD5Pfap7PH51YF5osai
+         Mk+5c+x638JIymMS3Yd5YzBoFL3Pioj+4j5fniwEcN8ell4d1GVrZMortIJ0LtsOYmB5
+         OtgfsmwHS80tZbozvFeClpkmox2adD1cZOJmE1qSYdiBR4uiDJHh8BhNEEeAWubJIPwI
+         GI3zL3JOfhzf6mmZHurS7yRLQQ/5H9nZgD6kb8epW/AeFo/gZSirKEDtdEYuvGhCf2z8
+         QXxKuvJ5b/+V94KibPbsoVBTCcKDs9v+agSEXeAUcFQamZ0BHz6TODRWWHldECuakaob
+         rpuw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1780481698; x=1781086498;
+        d=1e100.net; s=20251104; t=1780481714; x=1781086514;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=G5uoXQRR+x1Y1NzAuMH2inF+ukyI5BxIekcDkuuPxWo=;
-        b=Qjr4Okqm9sloQCHdFKZsadgHva+KhwmE2DMFSy6zzRvtGFG8gJ/MofyqOwMVBIDBgY
-         hg0f3d5mpYZLTeN0QTPmlIo572uZlsBdgx9MTBkDvlxn/4tcMvB6YRP/rplWDtG779pe
-         O1BZQ9dRc6fikqBBJ0YbhHovDjNWJoNVic/pzja1QyqVF29EQBqfCKKdLJW7Lv/ZEod5
-         sUy2OLVeTbWJ1sla5yKNlKdNEO+OYr6cGByd6rpTq6dfuJC5JJsWsEQ7QLiNZxTuyQby
-         5zYQWte2rfuXFG2MKAaxjjgkkYXbHvOZTpTu6FgY0V04vss+Dcj+WkT5oq40B3hy30yV
-         Nutw==
-X-Forwarded-Encrypted: i=1; AFNElJ9nsf7fogYRZ6jdyApiNLm7Qha2LN0esfbwST6EvoudV4yWIWqCpg2SgjDJq6aRzFQapH31M/PaKoTpa0k8sg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy+gylphlgbMDamVWkVs1vcPzavXFx3pRlLrqbvYy7qAOtlfK4w
-	PBx5Y9VCtEIjtrKu3o8HDHnlOvPFj9Z4HFmwCcJvILz5qHehpYCSVpc7QUWNQUlH7fRpvV7nZW+
-	ZIyMco0zDQuckl4iusWPPAX101dcfVtfmLj6iqNnv99ZMhDU65vSJ/Wnfver7ZFG7VkAXXoosyJ
-	WwyDWbrMIrrsRhfRD/vOYaesyschzt4Nhx7O9vV+FeNPM7yEZONg==
-X-Gm-Gg: Acq92OHizl58qulgesoIQBAxQV4KBUZtIX7D9112QcH4BxqGxdcCdtbxUKSZTqhC5C4
-	7R+otWWVGFxdCQvajJF/bEuduZ3Ey41xmhb2rj53o3hVKeNRSCTyld/uAb4Rm+teuufeGURJMLu
-	e2y7kAK1u+7vg8uSPqbl2xpCDYeAJyKEiT4kqDZMOnLx2Zbo5Jkj5FORgM0VL1p0ZVlvi63yfpX
-	CoT/UNoEEvGcM02
-X-Received: by 2002:ac8:7dd6:0:b0:517:6afc:b644 with SMTP id d75a77b69052e-51778770b85mr39837231cf.47.1780481698263;
-        Wed, 03 Jun 2026 03:14:58 -0700 (PDT)
-X-Received: by 2002:ac8:7dd6:0:b0:517:6afc:b644 with SMTP id
- d75a77b69052e-51778770b85mr39836981cf.47.1780481697866; Wed, 03 Jun 2026
- 03:14:57 -0700 (PDT)
+        bh=cemMVSwWpUomfLDkEQHTnLgIi/llhyTHZDSVwZ5DF6o=;
+        b=crKNROXlXxELVVMvQGNSjZ3jQlv0qeqvBMOt+wuvhbZUDymnvZOG21DFZrcS8mtqWo
+         lEwoHubC6qTMrDbKEdp7DIvhusLtHAvlYKcXx3PMVr2Yc/oDghy3EhfbmssfDthQjTFw
+         BDIDIzchAfAfsw11mdgd2xKCHLuF46/S9jbTB3p7wGCmwMmWukijesWsU44Lo+ys8T9Q
+         iB8/0b5dKX5HqKDVW6MgI0WP0mu3BFNA7JpKQd1WtTb8mWeQBRuKK04L3ffSmIi/Aqr7
+         dDaGfRDUxD72CBfN7Kd/feZSOd/P4x3ArqD9nPrvtd2y6FdoAL1Z538GuIDah6jj2M67
+         xPtg==
+X-Forwarded-Encrypted: i=1; AFNElJ8Ja3S626e5qfxzuobTbnIiqa6jR30L91XBBk71EiC9Lm1kBsOUUjC5kAszULpUw1tLL57Yae0SdP3twpKrfg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwN0WNa2snW7VgQbj1wC2ov6d73WZyUzNCCIg8YqXOfKnqR/xhP
+	8Cfn3b1EON1xj/4Jsk/MUx5f1KNJ9tbGcCaaYQsAd3rSydQSzLwI/wicSQvbYZa4RO+dXlfLa3i
+	tz897tIf9zC+3BjA11Wv1505lxboIPtYAGqytR8dYOc/pAXTCQ5gwIp5VzefJtSmxkEGrvtZGQc
+	DguC9Z/B9bh5BgHY+JrIhrYVgiyL6n0GIKVobjIdhaTXkbIRu4tw==
+X-Gm-Gg: Acq92OHoIqCJ72+k7on0TWATrLkaCI1UJDazvPcOEvb2UyrhlOELM1hHZwhb9P2mcSP
+	JO3EHEfUK+yjv3NUUVXg3wVUnpEgrzGpNRb1pPBWwpkc65SZicYHUFghnNVUeawHEJaP5XNeqpX
+	pSkALQ7lg6PsJKqytYmDhsfitBRwuE8sNCSdzEAjWGYStBcIdNWNUnYnq3XmDOKe24I8bxWfWfZ
+	DxSdDObqGTHSP7b
+X-Received: by 2002:a05:6214:838e:10b0:8cc:58f2:339f with SMTP id 6a1803df08f44-8cecdc3aca9mr28775476d6.16.1780481714582;
+        Wed, 03 Jun 2026 03:15:14 -0700 (PDT)
+X-Received: by 2002:a05:6214:838e:10b0:8cc:58f2:339f with SMTP id
+ 6a1803df08f44-8cecdc3aca9mr28775016d6.16.1780481714092; Wed, 03 Jun 2026
+ 03:15:14 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260505-clk-determine-rate-noop-v3-0-f3f829fbacdf@redhat.com> <20260505-clk-determine-rate-noop-v3-14-f3f829fbacdf@redhat.com>
-In-Reply-To: <20260505-clk-determine-rate-noop-v3-14-f3f829fbacdf@redhat.com>
+References: <20260505-clk-determine-rate-noop-v3-0-f3f829fbacdf@redhat.com> <20260505-clk-determine-rate-noop-v3-15-f3f829fbacdf@redhat.com>
+In-Reply-To: <20260505-clk-determine-rate-noop-v3-15-f3f829fbacdf@redhat.com>
 From: Ulf Hansson <ulf.hansson@oss.qualcomm.com>
-Date: Wed, 3 Jun 2026 12:14:46 +0200
-X-Gm-Features: AVHnY4KYEhjVLt8HCP2S1uMOezJVDgrkFC02GzF0MnbWrCfiBI8GGzmmmTGcP78
-Message-ID: <CAPx+jO_E4XLZ8s8iuMXwUg2pXZKCo7V+9PWNyX=NmUnv3QG6bA@mail.gmail.com>
-Subject: Re: [PATCH v3 14/15] pmdomain: mediatek: airoha: use clk_determine_rate_noop()
+Date: Wed, 3 Jun 2026 12:15:03 +0200
+X-Gm-Features: AVHnY4LC-7sv-Yo8uO8EA2lGD_GeWV9mrQovi0mZKLxB119HM7ymo5rY21qtuRc
+Message-ID: <CAPx+jO-zN7+q2CWGpMnistOqwVSipdQLi9b=fMwtZg_xy_Jxwg@mail.gmail.com>
+Subject: Re: [PATCH v3 15/15] pmdomain: mediatek: mtk-mfg: use clk_determine_rate_noop()
 To: Brian Masney <bmasney@redhat.com>
 Cc: Michael Turquette <mturquette@baylibre.com>,
         Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org,
@@ -123,35 +123,34 @@ Cc: Michael Turquette <mturquette@baylibre.com>,
         linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Proofpoint-GUID: 2DQlKPKRKiYOw-_w3p9YvQcC-iMC9b6x
-X-Authority-Analysis: v=2.4 cv=R74z39RX c=1 sm=1 tr=0 ts=6a1ffea2 cx=c_pps
- a=JbAStetqSzwMeJznSMzCyw==:117 a=IkcTkHD0fZMA:10 a=FelO9ux0wxsA:10
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjAzMDA5NyBTYWx0ZWRfX3Or39Kugt7NV
+ PjV7U83Z2S8MivBt0a9QzB4hh2fE821N0PKXA5B+vT1sZ3S1C2q9gs2X7/HRHHJXk8/8nR73OOy
+ 7kPV8JQn52nIMJvahG/ya27S/wzEMqvzdoO0GXJUjLz0YUXR97qVvc7opByWtdIO4KOdnMUzDBp
+ t0YKU0TKSGVLADvyuU21ulWm5j4RAngRNIZ5SKsgIWJVa2/0qcGAfldHxY7pch+eKP0huWjaZJG
+ 8J2Z7mJebmUKNV/WElCuK6OscA3GDWip8mR8xmPXamNyUTVNmYZdtKBlZDqRVWhglbN2xqm2eWX
+ KyaRE7YKCPHgwvA3iE28DK936tYkYYkJl16aV+CDQzl/aeP1Oza1rZZsdP8sLWwqyGhXkbU2sgP
+ pKYgS10hu6dy77fX/Lub/VqPjFRn/ivlB9JH/iFJG0+L85QqZ7nSxKI4hz8z/FqKiqV7BsJZPR6
+ 1eIdxL3nt8JBcdh1yxg==
+X-Proofpoint-ORIG-GUID: YBoiUxuqG0guJhWWh00QMRFVVfiaHAFp
+X-Proofpoint-GUID: YBoiUxuqG0guJhWWh00QMRFVVfiaHAFp
+X-Authority-Analysis: v=2.4 cv=ccniaHDM c=1 sm=1 tr=0 ts=6a1ffeb3 cx=c_pps
+ a=UgVkIMxJMSkC9lv97toC5g==:117 a=IkcTkHD0fZMA:10 a=FelO9ux0wxsA:10
  a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
- a=_glEPmIy2e8OvE2BGh3C:22 a=20KFwNOVAAAA:8 a=VwQbUJbxAAAA:8 a=pGLkceISAAAA:8
- a=QX4gbG5DAAAA:8 a=IpJZQVW2AAAA:8 a=JfrnYn6hAAAA:8 a=qVNBMPF4TgRESbWuf7kA:9
- a=QEXdDO2ut3YA:10 a=uxP6HrT_eTzRwkO_Te1X:22 a=AbAUZ8qAyYyZVLSsDulk:22
+ a=eoimf2acIAo5FJnRuUoq:22 a=20KFwNOVAAAA:8 a=VwQbUJbxAAAA:8 a=pGLkceISAAAA:8
+ a=QX4gbG5DAAAA:8 a=IpJZQVW2AAAA:8 a=JfrnYn6hAAAA:8 a=rQN42pXJ2LDxoJgk6j4A:9
+ a=QEXdDO2ut3YA:10 a=1HOtulTD9v-eNWfpl4qZ:22 a=AbAUZ8qAyYyZVLSsDulk:22
  a=IawgGOuG5U0WyFbmm1f5:22 a=1CNFftbPRP8L7MoqJWF3:22
-X-Proofpoint-ORIG-GUID: 2DQlKPKRKiYOw-_w3p9YvQcC-iMC9b6x
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjAzMDA5NyBTYWx0ZWRfX5aYsruUguJTi
- BJScgDScDnM2ESJtMdGLuyGKFhwCEno35zO26bgUk+tGlkJCzJSU2+YV+EYRN4/ljRmWgaQdYI+
- 58IRb5jghfqLAPbONLZbnzB+vlhg9KlBJvUD+nLrWek85WXdcxecE5N0NZHqXZdhP9yhLCd4XRN
- hllZeR5rvMrnzOSSmGhvDFneCkMTxrdBI6MbSnuPwHvFTectoygG3+XsVHUjY1nE1aqlOpaxEyJ
- fXlJ9LqYe7Iimmued4BtNiuESGa89xc5m9rTTJfG0GQHStpKtPAOi+Q0h/sB2e8sbq5wLoPqw4i
- EC5Vzt5e0towrMbEAvefE2MAWnRfpVDe0/3iLCkGAV/XCrTZtHI7TCJjQK08mECSq8zQ3Djygpb
- DoMCPlokFRMylzqIlnIPuNvXvJD4g2K4URo9aagAuNiwBjkRfOTHgvnKqkujX/wopqhWML/lFio
- wN8dC3MGm7Xo/4gfXAg==
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
  definitions=2026-06-03_03,2026-05-28_03,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 clxscore=1011 lowpriorityscore=0 impostorscore=0
- priorityscore=1501 malwarescore=0 adultscore=0 phishscore=0 bulkscore=0
- spamscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2605210000
- definitions=main-2606030097
+ malwarescore=0 bulkscore=0 clxscore=1011 priorityscore=1501 impostorscore=0
+ lowpriorityscore=0 adultscore=0 phishscore=0 spamscore=0 suspectscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2605210000 definitions=main-2606030097
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260603_031500_499034_92C29ED7 
-X-CRM114-Status: GOOD (  19.36  )
+X-CRM114-CacheID: sfid-20260603_031516_191312_07E5E706 
+X-CRM114-Status: GOOD (  22.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -192,40 +191,66 @@ Uffe
 > Cc: linux-arm-kernel@lists.infradead.org
 > Cc: linux-mediatek@lists.infradead.org
 > ---
->  drivers/pmdomain/mediatek/airoha-cpu-pmdomain.c | 8 +-------
->  1 file changed, 1 insertion(+), 7 deletions(-)
+>  drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c | 23 ++--------------------=
+-
+>  1 file changed, 2 insertions(+), 21 deletions(-)
 >
-> diff --git a/drivers/pmdomain/mediatek/airoha-cpu-pmdomain.c b/drivers/pm=
-domain/mediatek/airoha-cpu-pmdomain.c
-> index 3b1d202f89dc..5efd7a38f4da 100644
-> --- a/drivers/pmdomain/mediatek/airoha-cpu-pmdomain.c
-> +++ b/drivers/pmdomain/mediatek/airoha-cpu-pmdomain.c
-> @@ -21,12 +21,6 @@ struct airoha_cpu_pmdomain_priv {
->         struct generic_pm_domain pd;
->  };
+> diff --git a/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c b/drivers/pmdom=
+ain/mediatek/mtk-mfg-pmdomain.c
+> index 3ce6fb74dd53..64fef838776e 100644
+> --- a/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c
+> +++ b/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c
+> @@ -310,25 +310,6 @@ static unsigned long mtk_mfg_recalc_rate_gpu(struct =
+clk_hw *hw,
+>         return readl(mfg->shared_mem + GF_REG_FREQ_OUT_GPU) * HZ_PER_KHZ;
+>  }
 >
-> -static int airoha_cpu_pmdomain_clk_determine_rate(struct clk_hw *hw,
-> -                                                 struct clk_rate_request=
- *req)
+> -static int mtk_mfg_determine_rate(struct clk_hw *hw,
+> -                                 struct clk_rate_request *req)
 > -{
+> -       /*
+> -        * The determine_rate callback needs to be implemented to avoid r=
+eturning
+> -        * the current clock frequency, rather than something even remote=
+ly
+> -        * close to the frequency that was asked for.
+> -        *
+> -        * Instead of writing considerable amounts of possibly slow code =
+just to
+> -        * somehow figure out which of the three PLLs to round for, or ev=
+en to
+> -        * do a search through one of two OPP tables in order to find the=
+ closest
+> -        * OPP of a frequency, just return the rate as-is. This avoids de=
+vfreq
+> -        * "rounding" a request for the lowest frequency to the possibly =
+very
+> -        * high current frequency, breaking the powersave governor in the=
+ process.
+> -        */
+> -
 > -       return 0;
 > -}
 > -
->  static unsigned long airoha_cpu_pmdomain_clk_get(struct clk_hw *hw,
->                                                  unsigned long parent_rat=
-e)
+>  static unsigned long mtk_mfg_recalc_rate_stack(struct clk_hw *hw,
+>                                                unsigned long parent_rate)
 >  {
-> @@ -48,7 +42,7 @@ static int airoha_cpu_pmdomain_clk_is_enabled(struct cl=
-k_hw *hw)
->  static const struct clk_ops airoha_cpu_pmdomain_clk_ops =3D {
->         .recalc_rate =3D airoha_cpu_pmdomain_clk_get,
->         .is_enabled =3D airoha_cpu_pmdomain_clk_is_enabled,
-> -       .determine_rate =3D airoha_cpu_pmdomain_clk_determine_rate,
+> @@ -339,12 +320,12 @@ static unsigned long mtk_mfg_recalc_rate_stack(stru=
+ct clk_hw *hw,
+>
+>  static const struct clk_ops mtk_mfg_clk_gpu_ops =3D {
+>         .recalc_rate =3D mtk_mfg_recalc_rate_gpu,
+> -       .determine_rate =3D mtk_mfg_determine_rate,
 > +       .determine_rate =3D clk_determine_rate_noop,
 >  };
 >
->  static int airoha_cpu_pmdomain_set_performance_state(struct generic_pm_d=
-omain *domain,
+>  static const struct clk_ops mtk_mfg_clk_stack_ops =3D {
+>         .recalc_rate =3D mtk_mfg_recalc_rate_stack,
+> -       .determine_rate =3D mtk_mfg_determine_rate,
+> +       .determine_rate =3D clk_determine_rate_noop,
+>  };
+>
+>  static const struct clk_init_data mtk_mfg_clk_gpu_init =3D {
 >
 > --
 > 2.54.0
