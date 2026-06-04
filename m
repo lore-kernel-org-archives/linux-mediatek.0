@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7889FCD6E60
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2026 01:47:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAC00CD6E4A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2026 02:00:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B1/4QNZrjCVuXvK5agPN2ARKZz6GtIJ7tiYvtXOug94=; b=JFsrYZesRp2i90KCyOFsZv7Mwq
-	qlKtFEU+B4F8DfM8+JvxVY95N8F0lNZk77CVaKznsXmPD07pC9q5D5XCbDbNr9P8oemOLxYWRjndx
-	xNGK5KYNmkvR6NX1mNyabh+Q1Hu9+QxWk6JrtRtqjMieQsQ3rEP5W/1hgIFboPOdXw+PF6ggOfy3b
-	9g0ElMyw82JNb7Jt6Q1bvh7rkUMcilaTcSo5D+hIFNLiJ/uSZpCJhAbYhJtnXZqIQFoBcT/zdaRCA
-	ZzKaDwhF3aSKtXjMaRkd/JRaVAed4O3ybi/u6J+mQTXG4VEuQbV9njvOFOtfysP+5Yj/sv/5BTjd5
-	roC5a9FA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=o/e2tp3o6XwqB0JqbpB/82qzqoSQQtVzH5kjHR6BS5I=; b=w+dlBKRlPeRWFVeyZ18hJ0g6od
+	1iVe6lr/J+QcP9ihU+t0Tm2wuRvF73Uo3ihjfZu0JJMc5477Buw94ucK3HIBXnCYLAierCMGdjges
+	03BjGVZFxhRaLKDpgNZeL78IBuPIx65FKFW9KZaddFvp3K9d7GmOSPnheSCH/9+LSzSkz2PJiLc0j
+	xpYyx1fIX9KO3KlxkDC0aXI28L4o2s4sEe8aYw3G5E78xQJ6xEvCrbWsarwcnU+7YDOLhN5279ijR
+	kvHvv1Iv1PaxEDVfWUiPdE+0HaCR61Wryrk/lU3MAt9EUwONnI9wTBLxodzsvSDl8V4Hnk2RpU1pX
+	JWk/RSiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUxB1-0000000G0lF-0CKs;
-	Thu, 04 Jun 2026 01:47:19 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wUxNX-0000000G1Uw-2189;
+	Thu, 04 Jun 2026 02:00:15 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUxAx-0000000G0kX-3YIC;
-	Thu, 04 Jun 2026 01:47:17 +0000
+	id 1wUxNV-0000000G1Uq-2g1p
+	for linux-mediatek@lists.infradead.org;
+	Thu, 04 Jun 2026 02:00:13 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 196E740179;
-	Thu,  4 Jun 2026 01:47:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B462B1F00898;
-	Thu,  4 Jun 2026 01:47:14 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id BA52F601F5;
+	Thu,  4 Jun 2026 02:00:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D4021F00893;
+	Thu,  4 Jun 2026 02:00:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780537635;
-	bh=B1/4QNZrjCVuXvK5agPN2ARKZz6GtIJ7tiYvtXOug94=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=L9KE8GwLkuM+TtfWZd1UYzDn2pG4LUYkRe3PoIH6R63B87VzB793SUBqiAptWLFtV
-	 fGfC2Cc3xMboII64HEAIRpzs5qvOIDzT7HrfVOozK4tCKb9Dg/M4CZlAxavWtSkHNe
-	 /fLwi1wVN9Gt5zMiiqahnRkgOytqA4nEDBJXycbz83R6nRRL2kH/bT3mCoJTjSLXW4
-	 w2rgae/UttLLJK7oa2iXDWHA0Qc3dYlzVc4InCNlZqLE9yttgmCl6Emp8/82GLIwot
-	 eCngV0FnT6GFwhJ/QMK0ov3tpf7eLyfF9KmgciEGloKvcqiCHlq0YVgZmkocpw6wW1
-	 Dkslbh8Gcls+A==
-Date: Wed, 3 Jun 2026 20:47:13 -0500
-From: Rob Herring <robh@kernel.org>
-To: Ninad Naik <ninadnaik07@gmail.com>
-Cc: lgirdwood@gmail.com, broonie@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, me@brighamcampbell.com,
-	linux-kernel-mentees@lists.linux.dev, skhan@linuxfoundation.org
-Subject: Re: [PATCH] regulator: dt-bindings: mt6311: Convert to DT schema
-Message-ID: <20260604014713.GA2331501-robh@kernel.org>
-References: <20260531165712.729635-1-ninadnaik07@gmail.com>
+	s=k20260515; t=1780538412;
+	bh=o/e2tp3o6XwqB0JqbpB/82qzqoSQQtVzH5kjHR6BS5I=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=fvDcGijfOJ5Lp9r9vBegLx/CZMNo5x8k37nixDtqZ3BB5FtgIjGc8M31hi9T2vV7d
+	 lbH7TtfYAH70IgzpyzeQF7Uy6ZiS+lNBL1I8elB0qPshCWJbUJwYVpoNrDa9dPiH94
+	 QMS1YXl65HaHAEXuXJpG/yOJlKwE2DSDMYsCjfn9KvMiGRuGI+Halb6DnPZpEGbzGZ
+	 3OuOahjwFgfxjS13QcT//wnUVJ8vDa/GUfISxAwNL6HYMpEhsgv6v/77Qk8kosSwri
+	 2V3x0aMLg8mLH4z1BRjuObFlMtU3ztnFiTwiIW6SOBNwUrFpRylFcsDfwgWnZ5Ll0X
+	 EX5DpfTHHEVBg==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id D0ADF39308E0;
+	Thu,  4 Jun 2026 02:00:14 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260531165712.729635-1-ninadnaik07@gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260603_184715_952683_9BAE0411 
-X-CRM114-Status: GOOD (  18.69  )
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net v3 0/2] af_unix: Fix inq_len update issue
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <178053841338.2201066.2461366002485490345.git-patchwork-notify@kernel.org>
+Date: Thu, 04 Jun 2026 02:00:13 +0000
+References: <20260601113640.231897-1-jianyu.li@mediatek.com>
+In-Reply-To: <20260601113640.231897-1-jianyu.li@mediatek.com>
+To: =?utf-8?b?Smlhbnl1IExpICjmnY7lgaXnkYApIDxqaWFueXUubGlAbWVkaWF0ZWsuY29tPg==?=@aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org
+Cc: kuniyu@google.com, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, horms@kernel.org, willemb@google.com,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, black-ch.chen@mediatek.com,
+ ivan.tseng@mediatek.com
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,153 +74,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, May 31, 2026 at 10:27:12PM +0530, Ninad Naik wrote:
-> Convert mediatek,mt6311 to DT schema.
+Hello:
+
+This series was applied to netdev/net.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Mon, 1 Jun 2026 19:36:38 +0800 you wrote:
+> From: Jianyu Li <jianyu.li@mediatek.com>
 > 
-> Signed-off-by: Ninad Naik <ninadnaik07@gmail.com>
-> ---
->  .../regulator/mediatek,mt6311-regulator.yaml  | 72 +++++++++++++++++++
->  .../bindings/regulator/mt6311-regulator.txt   | 35 ---------
->  2 files changed, 72 insertions(+), 35 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6311-regulator.yaml
->  delete mode 100644 Documentation/devicetree/bindings/regulator/mt6311-regulator.txt
+> This series fix the problem that inq_len is inconsistent with
+> actual remaining byte count when only part of a skb is consumed.
 > 
-> diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6311-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6311-regulator.yaml
-> new file mode 100644
-> index 000000000000..a51db46b0f41
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6311-regulator.yaml
-> @@ -0,0 +1,72 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/regulator/mediatek,mt6311-regulator.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Mediatek MT6311 Regulator
-> +
-> +maintainers:
-> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> +
-> +description: |
-
-Don't need '|' if no formatting.
-
-> +  The MediaTek MT6311 is an I2C power management IC that provides one step-down
-> +  converter and one low-dropout regulator. The regulators are named VDVFS and
-> +  VBIASN, respectively.
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt6311-regulator
-> +
-> +  reg:
-> +    description: I2C slave address.
-> +    maxItems: 1
-> +
-> +  regulators:
-> +    type: object
-> +    description: List of regulators provided by this controller.
-> +
-> +    patternProperties:
-> +      "^(VDVFS|VBIASN)$":
-> +        type: object
-> +        $ref: regulator.yaml#
-> +        description: |
-> +          Regulator nodes.
-
-Drop. That's obvious with the $ref.
-
-> +        unevaluatedProperties: false
-> +
-> +    additionalProperties: false
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - regulators
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    i2c {
-> +      #address-cells = <1>;
-> +      #size-cells = <0>;
-> +
-> +      mt6311: pmic@6b {
-
-Drop unused label.
-
-> +        compatible = "mediatek,mt6311-regulator";
-> +        reg = <0x6b>;
-> +
-> +        regulators {
-> +          mt6311_vcpu_reg: VDVFS {
-
-Drop unused label.
-
-> +            regulator-name = "VDVFS";
-> +            regulator-min-microvolt = <600000>;
-> +            regulator-max-microvolt = <1400000>;
-> +            regulator-ramp-delay = <10000>;
-> +          };
-> +
-> +          mt6311_ldo_reg: VBIASN {
-
-Drop unused label.
-
-> +            regulator-name = "VBIASN";
-> +            regulator-min-microvolt = <200000>;
-> +            regulator-max-microvolt = <800000>;
-> +          };
-> +        };
-> +      };
-> +    };
-> +...
-> diff --git a/Documentation/devicetree/bindings/regulator/mt6311-regulator.txt b/Documentation/devicetree/bindings/regulator/mt6311-regulator.txt
-> deleted file mode 100644
-> index 84d544d8c1b1..000000000000
-> --- a/Documentation/devicetree/bindings/regulator/mt6311-regulator.txt
-> +++ /dev/null
-> @@ -1,35 +0,0 @@
-> -Mediatek MT6311 Regulator
-> -
-> -Required properties:
-> -- compatible: "mediatek,mt6311-regulator"
-> -- reg: I2C slave address, usually 0x6b.
-> -- regulators: List of regulators provided by this controller. It is named
-> -  to VDVFS and VBIASN.
-> -  The definition for each of these nodes is defined using the standard binding
-> -  for regulators at Documentation/devicetree/bindings/regulator/regulator.txt.
-> -
-> -The valid names for regulators are:
-> -BUCK:
-> -  VDVFS
-> -LDO:
-> -  VBIASN
-> -
-> -Example:
-> -	mt6311: pmic@6b {
-> -		compatible = "mediatek,mt6311-regulator";
-> -		reg = <0x6b>;
-> -
-> -		regulators {
-> -			mt6311_vcpu_reg: VDVFS {
-> -				regulator-name = "VDVFS";
-> -				regulator-min-microvolt = < 600000>;
-> -				regulator-max-microvolt = <1400000>;
-> -				regulator-ramp-delay = <10000>;
-> -			};
-> -			mt6311_ldo_reg: VBIASN {
-> -				regulator-name = "VBIASN";
-> -				regulator-min-microvolt = <200000>;
-> -				regulator-max-microvolt = <800000>;
-> -			};
-> -		};
-> -	};
-> -- 
-> 2.54.0
+> Changes:
+>   v3:
+>     - Patch 2: Align macro definitions
+>   v2: https://lore.kernel.org/netdev/20260528110033.3327744-1-jianyu.li@mediatek.com/
+>     - Patch 1: Improve lock usage in unix_stream_read_generic()
+>     - Patch 2: Follow reverse xmas tree ordering in partial_read test case
+>   v1: https://lore.kernel.org/netdev/20260527065342.2463433-1-jianyu.li@mediatek.com/
 > 
-> 
+> [...]
+
+Here is the summary with links:
+  - [net,v3,1/2] af_unix: Fix inq_len update problem in partial read
+    https://git.kernel.org/netdev/net/c/c1f07a7f2d47
+  - [net,v3,2/2] af_unix: Add test for SCM_INQ on partial read
+    https://git.kernel.org/netdev/net/c/dd8975ad710e
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
