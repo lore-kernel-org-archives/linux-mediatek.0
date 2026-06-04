@@ -4,60 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95F0ECD6E6E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2026 20:57:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63086CD6E75
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2026 21:23:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tc8kKyhH3H2zCZNScLf6HQ5I1o056QsaSn+BN0X2LV4=; b=slRV6o9zrFKLVy1fOmuNP9+I/z
-	gk+dTSLkx6MmBkNUlxPS5OhoEHeKX7m5d+HvIYG6TT4OhWyg+l5emY5EbZQ1FPbvTLXL9cB0UrV1P
-	+260gfrCLwXOz7zZBXfw24tfo25CA4GnWBBhYLVqFJ0r6SA9RnWFyDr5Oc34iaDAwpwGYT2OuRp+l
-	FEqa7aZgg+uE7kckjUVz8gRDplz5ZpYFeZwsjci5xZXa9ytfhqzD7NWrRXA7UeYJQ4Lxz27FiAhiR
-	GqCpBO3d1OGO1N5yqb/RFriZt7UqujOYQdzIYWZmJAM/LrdHPy1ySBKZkbLdDu8oC+9EV/+tZ/Y00
-	snqAtJpg==;
+	bh=sTEc98M4XZy4WMkROG0qptNsTU3Fmgz7V9VTlpGoaVk=; b=GzCAmxmS9CjyllXrxXGQ3uldjR
+	EKyYzcPWoOpEEkKFTGPRmAo2eXgJ0N8LLbXzzcOj+9ywWNUjlLKdp3diZBFzCe9gyvhYMUS+RQlOY
+	TlWRd5B5O3JrYOqiSpLLl2fIFyD07FMF1m+LTR7HYmeOoXD3f10zKAqkf82eGx4VbcSD6begJ9CFH
+	ZA6UjpJk+mJqOMFiKD8rTgp1fmuNAeoD7IvXfg6lB1fbKsARK989WmzEtiUzGYt7qbCiJm/U+nrsB
+	W+A3BRIrdEukH//Kf+xcyfaeZ4mitaFYUg6dN3i5x6BMrhRv6i4XSh+YM4A3pYXKAkC2lBPoEw2/g
+	EnZEF8FQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVF8E-0000000HIj9-2uOu;
-	Thu, 04 Jun 2026 20:57:38 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wVFX8-0000000HKG8-3nad;
+	Thu, 04 Jun 2026 21:23:22 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVF8D-0000000HIiq-1SSC;
-	Thu, 04 Jun 2026 20:57:37 +0000
+	id 1wVFX7-0000000HKFt-3kZ6;
+	Thu, 04 Jun 2026 21:23:22 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 12C61409C7;
-	Thu,  4 Jun 2026 20:57:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B539B1F00893;
-	Thu,  4 Jun 2026 20:57:35 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 3065A6001A;
+	Thu,  4 Jun 2026 21:23:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5B1AE1F00893;
+	Thu,  4 Jun 2026 21:23:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780606656;
-	bh=tc8kKyhH3H2zCZNScLf6HQ5I1o056QsaSn+BN0X2LV4=;
+	s=k20260515; t=1780608200;
+	bh=sTEc98M4XZy4WMkROG0qptNsTU3Fmgz7V9VTlpGoaVk=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=I/kbX5+MLJEmjJxCt2qQHRtCJyVEw6Zm6+jK5Fr9/Porpi9q2uHrqdSFo48U351jr
-	 jJG37L5TV/PVUj8N/QaHTpUKRrpAVhrmDTDcLfHgf09XVn3r/EiCJExJTU++g5ZzZ0
-	 YTq5H+0l/jNoNOxcA1PfJE/e5sP5VwtF+7emEMioSPa1XZsbtwg0SRs3rOOv6+lWf9
-	 vQgbD7bosy1MUypO4kC4Vwc3dIsm9SKWZxxFKBMoh8LEMXtZAuZRFkVb6Yl1sEnVan
-	 GyEUCyXR3CL97CXtj8y6ubUhILrTAuYQVa3uLobqRc6BDy2ECfbFowIMyOCekf13gh
-	 Dgw3ch0j3F4hQ==
-Date: Thu, 4 Jun 2026 15:57:34 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Ninad Naik <ninadnaik07@gmail.com>
-Cc: broonie@kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, conor+dt@kernel.org,
-	krzk+dt@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, me@brighamcampbell.com,
-	linux-kernel-mentees@lists.linux.dev, skhan@linuxfoundation.org,
-	linux-mediatek@lists.infradead.org, lgirdwood@gmail.com,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] regulator: dt-bindings: mt6311: Convert to DT schema
-Message-ID: <178060665412.1220107.5361933646396949784.robh@kernel.org>
-References: <20260604162624.644241-1-ninadnaik07@gmail.com>
+	b=UJNpkEQt0CjkCEugmUYRNBhibW8aOtscYwd1wNIXNfvnqPgDBnxZiY1nhmlqv7+ny
+	 9mbOZCovyunje6G1Z6EhgfiE+hADo5LdmjDPBYtBqZNZR7IYQ7SG5JeBDyIrOksuln
+	 KS8Inh2I2jYGs+sE1IKgZqGLLnBca+6vlZnRACzPDmofakkIHTRD6hWN6cio3Jy8Mq
+	 qZxdLtODHaz/gheWt60QtP04MNza/uKK4d9+wqPt3TpMcIrZPheJj1MqZ7azgqTTsm
+	 2w6ortBrQUgasNRO1mQtECATG3HqNSdo9d0FDnAY38MpMKIIQzamgNGoHFDx8P4jrY
+	 7k5oLWJK437Hw==
+Date: Thu, 4 Jun 2026 23:23:16 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Jacob Keller <jacob.e.keller@intel.com>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Felix Fietkau <nbd@nbd.name>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Florian Westphal <fw@strlen.de>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net 1/2] net: airoha: Fix use-after-free in metadata dst
+ teardown
+Message-ID: <aiHsxFrleJfpLeuA@lore-rh-laptop>
+References: <20260602-airoha-mtk-metadata-uaf-fix-v1-0-3aaa99d83351@kernel.org>
+ <20260602-airoha-mtk-metadata-uaf-fix-v1-1-3aaa99d83351@kernel.org>
+ <21810a20-abe6-4490-969c-cfd62c4c082a@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="aWp9RvEMdmSaWjBX"
 Content-Disposition: inline
-In-Reply-To: <20260604162624.644241-1-ninadnaik07@gmail.com>
+In-Reply-To: <21810a20-abe6-4490-969c-cfd62c4c082a@intel.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,24 +80,103 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 04 Jun 2026 21:56:24 +0530, Ninad Naik wrote:
-> Convert mediatek,mt6311 to DT schema.
-> 
-> Signed-off-by: Ninad Naik <ninadnaik07@gmail.com>
-> ---
-> Changes in v2:
-> - Correct "MediaTek" in the title.
-> - Drop "|" in the top-level description.
-> - Remove unnecessary regulator node description.
-> - Remove unused labels from example.
-> 
->  .../regulator/mediatek,mt6311-regulator.yaml  | 70 +++++++++++++++++++
->  .../bindings/regulator/mt6311-regulator.txt   | 35 ----------
->  2 files changed, 70 insertions(+), 35 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6311-regulator.yaml
->  delete mode 100644 Documentation/devicetree/bindings/regulator/mt6311-regulator.txt
-> 
+--aWp9RvEMdmSaWjBX
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+> On 6/2/2026 2:21 AM, Lorenzo Bianconi wrote:
+> > airoha_metadata_dst_free() runs metadata_dst_free() which frees the
+> > metadata_dst with kfree() immediately, bypassing the RCU grace period.
+> > In the RX path, skb_dst_set_noref() sets a non-refcounted pointer from
+> > the skb to the metadata_dst. This function requires RCU read-side
+> > protection and the dst must remain valid until all RCU readers complete.
+> > Since metadata_dst_free() calls kfree() directly, an use-after-free can
+> > occur if any skb still holds a noref pointer to the dst when the driver
+> > tears it down.
+> > Replace metadata_dst_free() with dst_release() which properly goes
+> > through the refcount path: when the refcount drops to zero, it schedules
+> > the actual free via call_rcu_hurry(), ensuring all RCU readers have
+> > completed before the memory is freed.
+> >=20
+> > Fixes: af3cf757d5c9 ("net: airoha: Move DSA tag in DMA descriptor")
+> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > ---
+> >  drivers/net/ethernet/airoha/airoha_eth.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >=20
+> > diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/eth=
+ernet/airoha/airoha_eth.c
+> > index cecd66251dba..eab6a98d62b9 100644
+> > --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> > +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+> > @@ -2936,7 +2936,7 @@ static void airoha_metadata_dst_free(struct airoh=
+a_gdm_port *port)
+> >  		if (!port->dsa_meta[i])
+> >  			continue;
+> > =20
+> > -		metadata_dst_free(port->dsa_meta[i]);
+> > +		dst_release(&port->dsa_meta[i]->dst);
+> >  	}
+> >  }
+> > =20
+> >=20
+>=20
+> the port->dsa_meta is allocated using metadata_dst_alloc().. how is it
+> safe to use dst_release here? Seems like we should be calling dst_alloc
+> instead of metadata_dst_alloc in order to use dst_release??
 
+We need to allocate the metadata_dst using metadata_dst_alloc() since
+md_dst->u.port_info.port_id is consumed in dsa_switch_rcv() to get the
+switch conduit port.
+I guess it is fine to free metadata_dst running dst_release() since dst_ini=
+t()
+sets DST_METADATA flag and so dst_destroy() runs metadata_dst_free() after =
+the
+RCU grace period.
+
+>=20
+> metadata_dst_alloc does call __metadata_dst_init which calls dst_init..
+>=20
+> I guess the start of the metadata_dst structure is also the same address
+> as the internal dst_entry struct...
+>=20
+> But dst_destroy does a whole lot more than metadata_dst_release so I
+> don't feel confident in this actually being a drop-in replacement... It
+> calls netdev_put, it calls the dst->ops->destroy, it releases child
+> refs.. Or for metadata dst entries is that all basically a no-op??
+
+__metadata_dst_init() calls dst_init() with dev =3D NULL so netdev_put() is=
+ a
+no-op. Same for dst->ops is dst_blackhole_ops and and dst_blackhole_ops has=
+ no
+destroy callback.
+
+>=20
+> I feel like I'm missing something here.. The driver also calls
+> metadata_dst_free in the remove path and that wasn't changed by this
+> patch either.
+
+can you please explain what you mean here? we do not run metadata_dst_free()
+anymore.
+
+Regards,
+Lorenzo
+
+>=20
+> Generally it seems like we should be using the same API to allocate as
+> to release the object... This is confusing. What am I missing?
+
+--aWp9RvEMdmSaWjBX
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaiHswQAKCRA6cBh0uS2t
+rHipAP4llkXraaMXUK3wGAgySlJJUwlEcRj8tHK/o/3m+eELXwEA2l1QByKUIy8/
+sBrHvIWNbv90x/tGgmBZkNoYSKAXpAo=
+=ev4h
+-----END PGP SIGNATURE-----
+
+--aWp9RvEMdmSaWjBX--
 
