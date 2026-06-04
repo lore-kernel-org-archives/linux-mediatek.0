@@ -4,111 +4,176 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77CEECD6E77
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2026 16:29:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A327DCD6E74
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jun 2026 17:38:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Tt5XveIXPd5LExPILUEQj2Sv2Xr+T+q71wH/D2X5w18=; b=izXHBv4BKNYLGUS5ewmOazec2T
-	BUcdYTVkvnK45sFAwPWJZZlWhQHeJKN3nA8zqO47eKVTQD4o8lq3jA9T+pm4SMeZoywI3sZ7ymUyG
-	xHdnZBXveFGx5IOflH0drqkhkAXQPuVwuuV+15xj44x6JFgBCKqHbjYXvY4+sZo4Ds0LWczTExHdq
-	CUNG+SbCiyH0cSzdq7a0ufQfklI0++jF1TJuReeX7RPj8FARu6/UOJafBloMAOj5uMwBrk3SyDtLH
-	8e2Vy/GSuUD1Li28nYIQifOHpVCC2OBXpzNXVyeNj/WpZdN3gT1rpBYzs4j/3RBHjWuAPGUS21VLs
-	NRaXVWRg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Hv2y6zM3XEt92EoJZfiI2PBskhLmbb3yQxDrFnw92Hc=; b=A0E85wx8gre1Qmc3O4rfaprrYx
+	iiUdgyUHm+VN9g3Jl85sGSn58A0kLuYOWR6ke4Z2jd0JLB3HQ96GHeol5GFcsmv2EQmAlWyL97eug
+	ZMPy3RDYmfCpSXHpfkF+RtejcQdYzQiRDSRnErhktLgVv3QKUV9vvjJyEC9Mntnt5ozXb9Dj7iE33
+	K9U+m1zykmelUe6BlS+WrTv8U83olreP6plbhW/J3soyej8eVFTrB5Nu+3g0DIAT13U/so9aPhhVE
+	Vk9LuscfFPyIofKbgkZmP4zvTytVoF/JX5EyPfCM5QZ9dyI32Tnb2MlHh6/GOUkYR33+daoRDxldO
+	Ee76aUBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVAwa-0000000H4GY-1UZW;
-	Thu, 04 Jun 2026 16:29:20 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wVC1q-0000000H8uJ-07Fv;
+	Thu, 04 Jun 2026 17:38:50 +0000
+Received: from mgamail.intel.com ([192.198.163.16])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVAwY-0000000H4Fu-1qV8
-	for linux-mediatek@bombadil.infradead.org;
-	Thu, 04 Jun 2026 16:29:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=Tt5XveIXPd5LExPILUEQj2Sv2Xr+T+q71wH/D2X5w18=; b=EVM5PW6XwhL32CP3fQhFqjehc1
-	qiB3563U6GQSHWtaXOx8xYRWN6duxeefn94CXgOMqaJyI5pxb5IjGYC2nhyBLZ+YzkEz5644KDlFR
-	wRA4w4TzE9g5949MMdykmhNlJs9aQ6s/OYFfspE86QC7cEhLuLfJChQv9g1/O6CM2I/+25YYeIy3C
-	UqicTnCbmLeDe1xIiEQz4eftAOdFTeho7T+G0JdwQUrzvYBYuSdATsLLgYKdpHqfkZ32cysb8MLnN
-	VNyClyImt4IJWt4ZShbl1xJPe5lf501BvI50DF+BApicCv8F9gK3NQprTf6eBFBCY5BJm28wHug+e
-	5GieXW+w==;
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1wVAwR-0000000EZzn-1Iv8
-	for linux-mediatek@lists.infradead.org;
-	Thu, 04 Jun 2026 16:29:17 +0000
-Received: by mail-pj1-x102e.google.com with SMTP id 98e67ed59e1d1-36dd65b95f2so659066a91.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 04 Jun 2026 09:29:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1780590548; x=1781195348; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Tt5XveIXPd5LExPILUEQj2Sv2Xr+T+q71wH/D2X5w18=;
-        b=FGUEYtVGrp4ywTcmme1Bv3CJgIjU4LhfByo1tbYIjRWUn27mjM8vnvIllf73n/fN7F
-         Xi+5rM+KF0u+B+5gS+LN3FnQgBL6JCo29rYjVV+CWlT3RNBYkQNgjNEPa9QqeK5SMCaK
-         ZWmj91fV4QV6k3kdJXymsagOzLKEZYQYC/yXeDqQqaG2ypNl0ZVHcDWqRNEhQfAdmAPL
-         bbYrZK3rY7740i/UKH1S1+Ca0oMEebJn+K5xi60WXiK1MR0Ki65EFG6Q+sSZ0vfgQuMJ
-         mYvb+Qc3bvw0l9pjib25u8S6HTWEXivemj9uOiOso6Qf9UHZvTvPVFZtZix1hQ2OuSzz
-         /ncw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1780590548; x=1781195348;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Tt5XveIXPd5LExPILUEQj2Sv2Xr+T+q71wH/D2X5w18=;
-        b=gsQREyRi7W+gLSK45jLfBYkKRm13d9/sD/aUxCYaivpUa0Epji/1Z5KuITTi2mBu66
-         WxNhu6bUS700xSXyOOxp41lCEwPR4Z1g6lZLtgQjrnb+hvVmNS4MrYsWI4i10Zv8luqy
-         GDDuz+JKJiwjRWdN6tjTH0wHZn27CuuBRPrZNlQCPXfWrDDzVwaZnZpmj+KE1RRtfr1Q
-         H7/t88cngAUonan1UZC1Pq0BYtbEZPJGG8D4uuWcJ2Uezvohiym9saemIr03/G5c/S/V
-         +9yld+39d0B8QmJJX+07oEJasiNikFCdGeOGP7/JOaHytcPWT6X+k3LYGDB6EM/6dCbJ
-         U4iA==
-X-Forwarded-Encrypted: i=1; AFNElJ9dEDIzXoMUH9rEawVB6qZLRdl1x1Lw0l8xY2j7cQTZHUathV1PN8Z0K8XWOosyTREU6e4QPsIwsGf1mC/FoA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy8rMArSDaefgusSuAbvfIQ49Z+kNEN18cjI9pAOfm4cou7rblM
-	drY4PoubthHmGRiNVeYvRYCrLiE/y3t0wmbTm06g13O813ZwrfuzhFcY
-X-Gm-Gg: Acq92OGZ3svBKhvxHIzmdtkiDecQanstXpUuzzsdeRgFlJ88GXURlBKXwjoc/z970cl
-	zXcmpWm1nq9ThRXuL5toMRugHSWqhhq95JtTgpoaVLEMmFps/hhVCMke0kQQGgPXG/tsHNE+YRF
-	V5nkNV+jiwpj6gL8lWgm3S64Q9CB+/tEmFLPlDzKjeKA36g7/jDfUynjYjtwjb2zNY+qDhUPgnp
-	7RwYOL2jAjo3TgxqCXT8Z9McTF+8qtjnwD3jbKz7pMQp8526o9URS5IBeXgN6kCIIjtsZ+1tUVE
-	tDPSlUO1uxP6DG7eszXfbdoNznEKWt+GnFi3ktFk+qZU+2nPEhwz5axzkbrSsqOrsL6rpTVtz3u
-	ZYoRhPLHzJsACDo1Eo0j4Y8Rwn6k65i/bOWRAYLNjyyzadSfo8OiX5JTja2C/9VGTOuX+lq9Era
-	bDjJTd5KH8YZVL3u9RDpN/r95QmCGki7aY6YJyOURlC9zi8/ORAc8bnEltZyQZudbcUgHcItqIC
-	3C4cJJcEfypi0pJn5VkH2ptYOtC
-X-Received: by 2002:a17:90b:2b4b:b0:36a:caf2:3815 with SMTP id 98e67ed59e1d1-36f781bded1mr3553423a91.15.1780590548307;
-        Thu, 04 Jun 2026 09:29:08 -0700 (PDT)
-Received: from fedora ([103.181.54.97])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-36f712de91asm3670255a91.16.2026.06.04.09.29.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 04 Jun 2026 09:29:07 -0700 (PDT)
-From: Ninad Naik <ninadnaik07@gmail.com>
-To: lgirdwood@gmail.com,
-	broonie@kernel.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com
-Cc: devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	me@brighamcampbell.com,
-	linux-kernel-mentees@lists.linux.dev,
-	skhan@linuxfoundation.org,
-	Ninad Naik <ninadnaik07@gmail.com>
-Subject: [PATCH v2] regulator: dt-bindings: mt6311: Convert to DT schema
-Date: Thu,  4 Jun 2026 21:56:24 +0530
-Message-ID: <20260604162624.644241-1-ninadnaik07@gmail.com>
-X-Mailer: git-send-email 2.54.0
+	id 1wVC1n-0000000H8tj-0Hc4;
+	Thu, 04 Jun 2026 17:38:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1780594727; x=1812130727;
+  h=message-id:date:subject:to:cc:references:from:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=10kqgNwJP1Viy6M515oW44vnTYc14tf/WxWhMuWphRs=;
+  b=UeFc4hEfqJiTp70xnUUuvvxZC8ptdt+zJjhZUoCzyC7f9JiufM706dU/
+   UsJX3ts90A6dKrNgfL1WyTR1UmvZgePly460dNJhwWA06kNoiQ8F59iEd
+   izUAgq4QQcTOEAZn3w8h4uY2djuc635WWExnoXfkXYniS6wh3I0PMlCOw
+   +jt5mHhU7VgPnBAhB2rfOoahI4rINoNrwWD8xH4akm2PJQVfLzyVmq+wV
+   inNK2QhfgQ6ajRFBXfCOYfaDlih0fNhXZUQhBeDiYmGwfrDnERnWppTFP
+   9waro6EuBKeoffNk7ZWhqIJj1tFERLxlMtwa6LfXaX9sjXUZr/XzarGRw
+   g==;
+X-CSE-ConnectionGUID: 5tRGO7qnTsyJLHPyVxHrAA==
+X-CSE-MsgGUID: StjpAy6xTiO8K/rD5QUrlQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11807"; a="68964486"
+X-IronPort-AV: E=Sophos;i="6.24,187,1774335600"; 
+   d="scan'208";a="68964486"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Jun 2026 10:38:45 -0700
+X-CSE-ConnectionGUID: 4OIMuSD4TCScx1zSQaShVQ==
+X-CSE-MsgGUID: dkewWaIKSCaqwVHrapfbvg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.24,187,1774335600"; 
+   d="scan'208";a="282703291"
+Received: from orsmsx901.amr.corp.intel.com ([10.22.229.23])
+  by orviesa001.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Jun 2026 10:38:45 -0700
+Received: from ORSMSX903.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37; Thu, 4 Jun 2026 10:38:44 -0700
+Received: from ORSEDG903.ED.cps.intel.com (10.7.248.13) by
+ ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37 via Frontend Transport; Thu, 4 Jun 2026 10:38:44 -0700
+Received: from PH7PR06CU001.outbound.protection.outlook.com (52.101.201.36) by
+ edgegateway.intel.com (134.134.137.113) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37; Thu, 4 Jun 2026 10:38:44 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=ReVKXF5B7k0mJ9vk/79IRLpV/QScivsR2978fORt7XUisVL7tLgQwHWbKubUXl4A5/5RSD886HBBPH5NgeVS+f8Qjk3FjxWgP+PXydzKcSk3+1gcNsT6Qkh3E3gxNH+r2xBpIbbjkR08KF+rkL0b1PuFLqaHxotw5G63TvH8BmOxm4b6V/vEEsuH54ZBQe8FmIdWXIRzuZ0+xj3IDzHYKH+5QniS03nkV0p8De8phH5K5MeXts6bi5SMjYLF9hx2dqCXCbbEyxyVV3wQpY1Kp+ChW8i+ZGTcnTRmQlqajaa0t4y+Xa8uJtoOZM4naFGM1oIYc6lDrWVCBrad0+fnDA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Hv2y6zM3XEt92EoJZfiI2PBskhLmbb3yQxDrFnw92Hc=;
+ b=S2k/p1Xs/KMbaTaBhfVop0B7bs7ghs+Hk1sY8rRG5muH4xz/DrncaM/r5RkO3Bkved9mS0f6aql0qVvhRyXpHDDHRVgfCILTd6JOmQOMa/3m2nPogHTWMPMuUNJyKqlvCcz/dx4VDz1QN4+Hx05kLjeK/NB41ICTfVuRGZfLR3TqmneDvG7G4xzDG2KOa5LJp7+spkJvsi0j74QxEO1B+05XTF+vdC343h6i4DWznhsaldC+Z8qJRQ0tkdYCD5Y1AMZx9DnSHHOSQGqAxBhjF+KTyW9Wx3X/oRnpcBOSM+cxM1VRn9hKnBQOV7//xDwMIzl0WBz44PEOl2IRqbRZkA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from DS0PR11MB7381.namprd11.prod.outlook.com (2603:10b6:8:134::14)
+ by CH3PR11MB7937.namprd11.prod.outlook.com (2603:10b6:610:12c::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.92.8; Thu, 4 Jun 2026
+ 17:38:37 +0000
+Received: from DS0PR11MB7381.namprd11.prod.outlook.com
+ ([fe80::4c39:dfe6:d6dc:6f58]) by DS0PR11MB7381.namprd11.prod.outlook.com
+ ([fe80::4c39:dfe6:d6dc:6f58%5]) with mapi id 15.21.0092.007; Thu, 4 Jun 2026
+ 17:38:37 +0000
+Message-ID: <21810a20-abe6-4490-969c-cfd62c4c082a@intel.com>
+Date: Thu, 4 Jun 2026 10:38:33 -0700
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net 1/2] net: airoha: Fix use-after-free in metadata dst
+ teardown
+To: Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn
+	<andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, "Eric
+ Dumazet" <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+	<pabeni@redhat.com>, Felix Fietkau <nbd@nbd.name>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: Florian Westphal <fw@strlen.de>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <netdev@vger.kernel.org>
+References: <20260602-airoha-mtk-metadata-uaf-fix-v1-0-3aaa99d83351@kernel.org>
+ <20260602-airoha-mtk-metadata-uaf-fix-v1-1-3aaa99d83351@kernel.org>
+Content-Language: en-US
+From: Jacob Keller <jacob.e.keller@intel.com>
+In-Reply-To: <20260602-airoha-mtk-metadata-uaf-fix-v1-1-3aaa99d83351@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: MW4PR03CA0291.namprd03.prod.outlook.com
+ (2603:10b6:303:b5::26) To DS0PR11MB7381.namprd11.prod.outlook.com
+ (2603:10b6:8:134::14)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS0PR11MB7381:EE_|CH3PR11MB7937:EE_
+X-MS-Office365-Filtering-Correlation-Id: 10157a8e-1f94-4806-74bb-08dec2601b8f
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|376014|7416014|1800799024|22082099003|18002099003|56012099006|4143699003|11063799006;
+X-Microsoft-Antispam-Message-Info: ID5ETZEIeDXSb3VJyBY4tzF8woF3jfGp3ggRG/5VMdeut+EDkYfYjqfbPQWFIETMJYkKEO1tBLrt4payHax+64dAfKlkP+tBFFIDbNxxpRYwu6S0E+cE7od9CMaHFgmtuC9SQIUZKbw84UYzW0H1gmFJyN17Zj1hohGwbmulITPOBzWjWDvg4nWksSCZmM5EcxNV0zI1I8kQd4T4fyl4gCSJ9fhPhuWzrEB8MjwklxuiZmTfQOOgR7G0RzxkoPEhYpdHD3gzhrgh6q9eLUkK4GS5smZk5JGJG/UyoUdNp/5qcs0JgU9H0krOWrvTTnzB9znfR5bL+xHfqHfKcL6uUjtgnft+S8ouJoRAMyzKVOxHD6BhJtyxEYEXf2f3agFRxga2UaTztHdkeDv+AeQutqR+ZW462r/wOvqix21rfwRKa79NGPPPJrlO2SvsNrNQ9koXsUeE4zAYwD9y6qXIwpfleMVjMI3AbLuP7xO4hQWdv2gInE9TexaDlL9vi/e2gyiogQrxuS+6IHP9Hc9j1c7G7iittil5jLB77gYiz5QIH4ZUoQUR4G7202FotUbGHzVFOglOmgZOV9ARMQdWOEbA+qGsiPF2v50VBC0PM6MPv/eQyhmpnblCHYXwDtFb+SDK0eSOCPVmZMafrr535y5lDrU3sOhd3oSTJC4KzSW+uog/RWDmOyQbg2f1pKxd
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DS0PR11MB7381.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(376014)(7416014)(1800799024)(22082099003)(18002099003)(56012099006)(4143699003)(11063799006);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?T2JtMkFVYjFzQzB5MXd1SGhjRXdubUJOcEg2Q0lFQlh2T3JiekcxcVdiQTNN?=
+ =?utf-8?B?T1NjZXhYeDBOU2Npc0NMK1QvSmZGRGQ0QS9yOXEvOEswTFZGQVpiTVQ2L0pV?=
+ =?utf-8?B?WEZHc3I4LzU2TlVFZmpWR2tiNysvbm9UUFRzcWhVaXV3aDZaYTNRa2orT3gz?=
+ =?utf-8?B?WHNNSnptU25hYkZsRFREeVlKQlBRNUl6dlhaN3o5eTErMXBhTkszNEJpeXRX?=
+ =?utf-8?B?STlqNUdoeXlUUmlVQkljak5BZ1V6U3FwaGJ1MnZQQk5QeXFtN01xbFhybkMy?=
+ =?utf-8?B?Z1ptNS8vRHo4NUhLbEJ3UFVsallvUFM2bm5mWWw0M0pNb3lrMnV3K1pTNzBL?=
+ =?utf-8?B?d2RCN1pjRUFVOEhMY1hjbVpZTjJzRFhUOTVDYVphVUtGTmpsM21BUWk2c0tM?=
+ =?utf-8?B?MzNZY1N6R3paRHJzdnhHMDhhV0YzMGxCMVVjaWZ2UHIxSTJoRmJoRmlXUENK?=
+ =?utf-8?B?Y1gyZ1JXczR6NEZhU05IY1ZzQXNQQmpWVE1nMkdFZWdmSmt0b0dOOHRFdWwx?=
+ =?utf-8?B?bFZCdEl6dGEya0p4MHB5ejlaVnBVN3pMRjFkTCtoNXBWSHNWTWorc3NIWk1m?=
+ =?utf-8?B?SnNmamZiZSs1SHhnSnROVWdBTmVzNXd2SmtHZTRtbndpK2hUN0pNNHlQMWh4?=
+ =?utf-8?B?d09JMEhLajFnU0I0OGNid0t5KzN3dEQ5OHB1eWcwWU9HSUFFemJIc0ZYYjZF?=
+ =?utf-8?B?M3pJV1VVNm1kTkI5ZTVUWGszWUxHTjR4ZUYrNXNCYUdGZUNuRWtRVjJXVjRL?=
+ =?utf-8?B?SEpsTHpPU20xc01LZnphL2JpZUs4OXUyZ09NVEg4dUR0QlE1WGRVNlg4dVYw?=
+ =?utf-8?B?OWZCWWtadDcxUUNnL3NYUlo2b25MNnI4RjgzQnBsdmVTbHcvMG1oRlNTRnZT?=
+ =?utf-8?B?R3dVeEhsNTRXbmJQYzZLbjhIY0JMTmQ4TW0zbjl1QS90OFZXdnF6WFBHREdW?=
+ =?utf-8?B?VUVHVVdyeHNuNjl6SklyeDVkdmVtVFBVS3ZkejhveGo5ZDZ5dEo3NGpFdWhL?=
+ =?utf-8?B?TGszRGpZbkUwdmhSeTZ3aE9FSGRhb2svaFlEK0trdC92UjJ2VllTZGNkZjJM?=
+ =?utf-8?B?TW4raGRBNHZNdjZObVVpdG4zRmFEWm42bU5qUlVkOEtRYmRsck5MY0dSNHF0?=
+ =?utf-8?B?MVlIa3BrZ1ljK2NzeXYvWkdyRGorckFMWlcxT1ZnVEd1UlM1MnBqb0pmZjVr?=
+ =?utf-8?B?OW9Fb2tQSzlheEM2OGZ0WGNNcG8vSlppZDBNZWZkem0rcjFFN1J4Vk5uZUVn?=
+ =?utf-8?B?L1phY2w5S2s1c1pHZkx0SnVkSzA2TlNHUEpHVENjbHlZMjJXaDZNaTR3K21a?=
+ =?utf-8?B?dzc2QnpLNFdINkEwSWZpN0c1NUx3N2I5OUJwSDJXcjk1czNJTmNyRTlNUUxM?=
+ =?utf-8?B?c3lHVlorUEkxWHdZTVdsNFMzNTR5NlkzTmZ2MGh4Z2hZOGllNTBXRlRXNHR2?=
+ =?utf-8?B?UitMUmdUWkhNMjltZis1M2RsMHVIZVZ1TXB4cWhIcEdhbTc3N1d2NG5wN2VW?=
+ =?utf-8?B?NGtiODNpdWpWNjd5MTFyc2hWOGV5cy9zM1d1UjB6Qmptd2ZuN0l1RThxeGI0?=
+ =?utf-8?B?YVFjMk16QlFaME9EWXpSM2N2bDZLNVVqenNZZEZ2RGNUZkV2eWR6SGNtU1RN?=
+ =?utf-8?B?bFJ6bU5QcitSRmU2UlR0dlFOUnVIR2o2NVViRVNnMThYOXRhTWo5UGVJckhZ?=
+ =?utf-8?B?QjcyS0tFeUpsSDhlNk9PMTNGU0xSS2dVdjhJNkRxYXdxSHN1ZU45ZkEzZERt?=
+ =?utf-8?B?clY5L0hEL0dPWEEwTWQvcE42UXE5ejR3SVpRRVpSd2JBUW5qTXdvZjNubmtN?=
+ =?utf-8?B?L2p2QnVRYjZqL0JOYVZSb0Z5Sk5Jc0FwMVFGRlhyaU1UM0kxaStQK0U1VWE1?=
+ =?utf-8?B?ZW5JM1lPYmlqUmc1K2tNUTQ1VW55QllURzA4ZXJIR1VIaEpzcnEwQU90TEJz?=
+ =?utf-8?B?dHFIWHRQR1lzS24yQitlcU5XZUJRbVRSUGlpbUVScWVhanlZVDA4NmFIRXB0?=
+ =?utf-8?B?TE5TTnpFK0RsdVgydkdCTXBEY2V2T3orZDdLekxwbWlpc2dUbjVXY2U2ajdZ?=
+ =?utf-8?B?bDVMRFZLS01nOC9TU1pXUWhvcDY4MXdhQmRUOVpEaEcrVCtpd3hpVDNsOS9J?=
+ =?utf-8?B?MHNVZHR0d0dSVTlydStQVmFRWmFDNlRYR2R3SkxRbGFhRUdtcm9ldW1qaUM3?=
+ =?utf-8?B?TzBLekk1OUJBMkMwYmFNRTV2WHpqTzEvcGNnelMyNVJLQ0ZjRlJuZFpDdjdn?=
+ =?utf-8?B?SUk4bmNRWVdZbkV5eHgwTGxLRlhHaTladG1YUmpKV1k3K3F0YkhzdzV6RlRT?=
+ =?utf-8?B?L2VVdVRvb01oSFBGTmIrRXlJd1hFM3dPNzJPTzhxZzBiNTZnQkNyTU15N20r?=
+ =?utf-8?Q?HKtBPmcA0Lvoj+Pw=3D?=
+X-Exchange-RoutingPolicyChecked: CY+PCxMWMGTbXaus/HB2noN1bQsGp8QzTSCQd99p73ESnG1bDtwE6ZfS+u2uosXzUgHksnQj/Qd8SRO4rO+gpoXZOOOxgL9twQRpS3GqIfbj3Drbimy/h2vc/8CcEZFogCwDlniTU9lMbbkEr3iSKsqeeSlz6ZPUWXE1cE6x3z0OjKOD9vKfEVAtblho4uHo43ISvWWNqIBPUsvNQkpaKBanMyzZ9KkK/SDGOXxLiOviWUtjnPyM6ZZm8g+xXTPpoCLOxuq2L8WulErVHxiF1EjfgK+DfP9DVqlAK3Vvom5nFEGyh800Rb5Hz6mzi3TBzv6c4IvlaOuUOBnrTMnG9Q==
+X-MS-Exchange-CrossTenant-Network-Message-Id: 10157a8e-1f94-4806-74bb-08dec2601b8f
+X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB7381.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Jun 2026 17:38:36.9623
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: e9mlcfJVxkDyZ3OwbWlfu8bvbcGw/1UtPLvS8g1S9IL/in+4Qp1Vsvkxt2pW9bDu5achyBmokKgt7RA3gfttegN5gGqnnW7k3w9UEF8U/tM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR11MB7937
+X-OriginatorOrg: intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260604_172911_883235_970894F7 
-X-CRM114-Status: GOOD (  13.90  )
+X-CRM114-CacheID: sfid-20260604_103847_152931_5E97DDD3 
+X-CRM114-Status: GOOD (  22.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,140 +188,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert mediatek,mt6311 to DT schema.
+On 6/2/2026 2:21 AM, Lorenzo Bianconi wrote:
+> airoha_metadata_dst_free() runs metadata_dst_free() which frees the
+> metadata_dst with kfree() immediately, bypassing the RCU grace period.
+> In the RX path, skb_dst_set_noref() sets a non-refcounted pointer from
+> the skb to the metadata_dst. This function requires RCU read-side
+> protection and the dst must remain valid until all RCU readers complete.
+> Since metadata_dst_free() calls kfree() directly, an use-after-free can
+> occur if any skb still holds a noref pointer to the dst when the driver
+> tears it down.
+> Replace metadata_dst_free() with dst_release() which properly goes
+> through the refcount path: when the refcount drops to zero, it schedules
+> the actual free via call_rcu_hurry(), ensuring all RCU readers have
+> completed before the memory is freed.
+> 
+> Fixes: af3cf757d5c9 ("net: airoha: Move DSA tag in DMA descriptor")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  drivers/net/ethernet/airoha/airoha_eth.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+> index cecd66251dba..eab6a98d62b9 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+> @@ -2936,7 +2936,7 @@ static void airoha_metadata_dst_free(struct airoha_gdm_port *port)
+>  		if (!port->dsa_meta[i])
+>  			continue;
+>  
+> -		metadata_dst_free(port->dsa_meta[i]);
+> +		dst_release(&port->dsa_meta[i]->dst);
+>  	}
+>  }
+>  
+> 
 
-Signed-off-by: Ninad Naik <ninadnaik07@gmail.com>
----
-Changes in v2:
-- Correct "MediaTek" in the title.
-- Drop "|" in the top-level description.
-- Remove unnecessary regulator node description.
-- Remove unused labels from example.
+the port->dsa_meta is allocated using metadata_dst_alloc().. how is it
+safe to use dst_release here? Seems like we should be calling dst_alloc
+instead of metadata_dst_alloc in order to use dst_release??
 
- .../regulator/mediatek,mt6311-regulator.yaml  | 70 +++++++++++++++++++
- .../bindings/regulator/mt6311-regulator.txt   | 35 ----------
- 2 files changed, 70 insertions(+), 35 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6311-regulator.yaml
- delete mode 100644 Documentation/devicetree/bindings/regulator/mt6311-regulator.txt
+metadata_dst_alloc does call __metadata_dst_init which calls dst_init..
 
-diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6311-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6311-regulator.yaml
-new file mode 100644
-index 000000000000..f65ee2c90298
---- /dev/null
-+++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6311-regulator.yaml
-@@ -0,0 +1,70 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/regulator/mediatek,mt6311-regulator.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek MT6311 Regulator
-+
-+maintainers:
-+  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+
-+description:
-+  The MediaTek MT6311 is an I2C power management IC that provides one step-down
-+  converter and one low-dropout regulator. The regulators are named VDVFS and
-+  VBIASN, respectively.
-+
-+properties:
-+  compatible:
-+    const: mediatek,mt6311-regulator
-+
-+  reg:
-+    description: I2C slave address.
-+    maxItems: 1
-+
-+  regulators:
-+    type: object
-+    description: List of regulators provided by this controller.
-+
-+    patternProperties:
-+      "^(VDVFS|VBIASN)$":
-+        type: object
-+        $ref: regulator.yaml#
-+        unevaluatedProperties: false
-+
-+    additionalProperties: false
-+
-+required:
-+  - compatible
-+  - reg
-+  - regulators
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    i2c {
-+      #address-cells = <1>;
-+      #size-cells = <0>;
-+
-+      pmic@6b {
-+        compatible = "mediatek,mt6311-regulator";
-+        reg = <0x6b>;
-+
-+        regulators {
-+          VDVFS {
-+            regulator-name = "VDVFS";
-+            regulator-min-microvolt = <600000>;
-+            regulator-max-microvolt = <1400000>;
-+            regulator-ramp-delay = <10000>;
-+          };
-+
-+          VBIASN {
-+            regulator-name = "VBIASN";
-+            regulator-min-microvolt = <200000>;
-+            regulator-max-microvolt = <800000>;
-+          };
-+        };
-+      };
-+    };
-+...
-diff --git a/Documentation/devicetree/bindings/regulator/mt6311-regulator.txt b/Documentation/devicetree/bindings/regulator/mt6311-regulator.txt
-deleted file mode 100644
-index 84d544d8c1b1..000000000000
---- a/Documentation/devicetree/bindings/regulator/mt6311-regulator.txt
-+++ /dev/null
-@@ -1,35 +0,0 @@
--Mediatek MT6311 Regulator
--
--Required properties:
--- compatible: "mediatek,mt6311-regulator"
--- reg: I2C slave address, usually 0x6b.
--- regulators: List of regulators provided by this controller. It is named
--  to VDVFS and VBIASN.
--  The definition for each of these nodes is defined using the standard binding
--  for regulators at Documentation/devicetree/bindings/regulator/regulator.txt.
--
--The valid names for regulators are:
--BUCK:
--  VDVFS
--LDO:
--  VBIASN
--
--Example:
--	mt6311: pmic@6b {
--		compatible = "mediatek,mt6311-regulator";
--		reg = <0x6b>;
--
--		regulators {
--			mt6311_vcpu_reg: VDVFS {
--				regulator-name = "VDVFS";
--				regulator-min-microvolt = < 600000>;
--				regulator-max-microvolt = <1400000>;
--				regulator-ramp-delay = <10000>;
--			};
--			mt6311_ldo_reg: VBIASN {
--				regulator-name = "VBIASN";
--				regulator-min-microvolt = <200000>;
--				regulator-max-microvolt = <800000>;
--			};
--		};
--	};
--- 
-2.54.0
+I guess the start of the metadata_dst structure is also the same address
+as the internal dst_entry struct...
 
+But dst_destroy does a whole lot more than metadata_dst_release so I
+don't feel confident in this actually being a drop-in replacement... It
+calls netdev_put, it calls the dst->ops->destroy, it releases child
+refs.. Or for metadata dst entries is that all basically a no-op??
+
+I feel like I'm missing something here.. The driver also calls
+metadata_dst_free in the remove path and that wasn't changed by this
+patch either.
+
+Generally it seems like we should be using the same API to allocate as
+to release the object... This is confusing. What am I missing?
 
