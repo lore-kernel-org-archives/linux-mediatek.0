@@ -4,135 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC2BDCD6E5D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jun 2026 09:14:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B5ADCD6E7D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jun 2026 09:35:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FhzgdF9A57sRV057on+bWHfUH1jr7yWQtCeIqyex2j0=; b=D3mrPwaf8sXzoo+ucxbhywhiF8
-	FDB858HUyJKxH6wsJ1gavpbY4CnZIYyedRu6irUvgMWC41AqiG4j2YoIAd3NE1hG/XOHif0PKpU9N
-	xW7DgFXvK7+fnEjP3gnoujKfLXgYJwx/Mrg+O4nbVcDDgXDRaZQlsCdcPQFWpmJc3cP+y08EWn5QU
-	8RUxwI6oXx8X2Q5iDE53TSSmHpgKL1GcNp1UZOlP2ZCn2m8ROPjq1Wf2krPCiSfBmjOwphbYG/EAd
-	Zyym3c3ogzGMy7KjbtIBZO0bGIZkKs2fghAPpT20/c2w3WAdl+Vol70Ykj8N0QLCQFtOUVUwUdmX3
-	j0sl0LbA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7S10PuVpqSDCEbfsieH240FkICWT3yr53mF/yHr2S3k=; b=PWtFpYZCiqRs2eUuTqorxWUxoT
+	k5pZpMBHTrsyg0o5C24R8hdVQW1Pv4hnhR7+yDfqC7Ue7dnAOpDjJ0Xk+5jloYd6GJPG4Uelem2Ot
+	1p7JEOqdRmDJ1tRC5Mq+apJupdwqgu7k4pz0dfvxNsDeZjc8Kgi7FmW9tgih5wPrfozxh/GAY4dtf
+	yNHEXVFQjO0st9ts6sNK1UBcpY/Nx9LHzDdAMCLH8c+HBntdadu5bRqn/lhS59NY+GXRHfAqyVQeQ
+	kF924I4Vsmg5Uohsnl7OykZSJ9jN1AbXfQw6Jq8bRPows1lFYROVYyHfXrhPZCkamLU/YcPiy7rjP
+	6xHEDLsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVQdk-00000000Nlb-30EM;
-	Fri, 05 Jun 2026 09:14:56 +0000
-Received: from mail-swedencentralazon11023082.outbound.protection.outlook.com ([52.101.83.82] helo=GVXPR05CU001.outbound.protection.outlook.com)
+	id 1wVQxs-00000000PbG-1pjs;
+	Fri, 05 Jun 2026 09:35:44 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVQdh-00000000NlA-3XU4
-	for linux-mediatek@lists.infradead.org;
-	Fri, 05 Jun 2026 09:14:54 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=fJqHxfFLJufBmvd68tVT4q7gaH4qPtbYTHsnzu3YkVCGKTBvQeRNFHIflXvCc6+SwLA1VZS0Fu42B2KlWQaYOowErIWiLiIuH420YvcWWHuSfmkNyG23XS9r/ezy8VZvjqzkDhwuYWNuf4JyXGI5K/MpmFXNVwxz1fbqrSKZS0RgjvPFIySqPFhjg35gFwwlOV4koOWP8opuq+otJGdF37HR/ONJRB/0FVn/5+W0n9zkIe6t+V1PgkIgRElbnKcSztdZ/VxLYz4FMNvINKhbzs4sk8foYYizgh0sI/Lz7dcD8nYmGIirGtFgdossO1wT/pj6p+0DRP2IZFfi/KBJng==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=FhzgdF9A57sRV057on+bWHfUH1jr7yWQtCeIqyex2j0=;
- b=UixbjfDyrO5cagc4a/knbSE4EE2kqLjhQZUZmhlFJEEQU/LYDMKNZbA5mjahfA/KQIq4WbKdvTIhNPuX/RD7ru0WMVk9RkvXdAWfTO0d/Gjxg4T1PysMz5wTewNGQOpYNmJmi7+1ghDk/tsLUMODfvgiyoiWhRvyLEBgJnONggvEjvVtq+S7GKB6GZ4jXzHoYfqoej3qM9rvlPkeMEBFcNeV4lnRTLt3tPMnrqr1X36bFuVOshZ5PvnMO8vdARqMjrfujQEeHPKTC2ZU2OfI/q/oEKvBdNt7lvdNArJBO8ijVgL0EZKQWp9O9XoU+Map5b59fNaj8Co3JURhI6Q4oQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=genexis.eu;
- dkim=pass header.d=genexis.eu; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=genexis.eu;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=FhzgdF9A57sRV057on+bWHfUH1jr7yWQtCeIqyex2j0=;
- b=w/n2ZgvOALbmWtt4QKxLdqzSD0WiFJZhkg3JsIGVYwpabCr35H2zc3gNGvIyaxY9sBzQcvJqNbRSXfkZo5UNGgD1NgLbnLQ6kzVZbREz72Bu9G2vBCzPvarvjZl8+8PoM0+oDQbY/OXVR8d78cX+peWJgkZlbirIt24ISk2ePk66Au7zdcxu3zzQcRx6Q3AxYT1c+plt5/hP64Z0RHeCzBeH6Hz6WtXlOsNz48pdYBe9hW5o8k9Fvncs1BtNmcTLNqYj4YWFT+KVzVBpfJK49ekUz36Eom/omcvnjgaBrD6kG1x2c9cB6BOTxWZbTuuxvwJlXrPV6h02qS8uDbSzIQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=genexis.eu;
-Received: from DB9PR08MB6697.eurprd08.prod.outlook.com (2603:10a6:10:2ad::14)
- by AM9PR08MB6066.eurprd08.prod.outlook.com (2603:10a6:20b:2d8::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.92.8; Fri, 5 Jun 2026
- 09:14:48 +0000
-Received: from DB9PR08MB6697.eurprd08.prod.outlook.com
- ([fe80::bdec:3e95:6614:441f]) by DB9PR08MB6697.eurprd08.prod.outlook.com
- ([fe80::bdec:3e95:6614:441f%6]) with mapi id 15.21.0092.007; Fri, 5 Jun 2026
- 09:14:47 +0000
-Message-ID: <356bb88b-0968-4267-a9db-c389c0fa5801@genexis.eu>
-Date: Fri, 5 Jun 2026 11:14:46 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] pinctrl: Move Airoha driver to dedicated directory
-To: linux-mediatek@lists.infradead.org
-References: <20260605071233.28873-1-ansuelsmth@gmail.com>
-Content-Language: en-US
-From: Benjamin Larsson <benjamin.larsson@genexis.eu>
-In-Reply-To: <20260605071233.28873-1-ansuelsmth@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: GV2PEPF00023A18.SWEP280.PROD.OUTLOOK.COM
- (2603:10a6:158:400::21b) To DB9PR08MB6697.eurprd08.prod.outlook.com
- (2603:10a6:10:2ad::14)
+	id 1wVQxp-00000000PZK-1Q4P;
+	Fri, 05 Jun 2026 09:35:42 +0000
+X-UUID: e791acd860c111f1acbe4559397dec65-20260605
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=7S10PuVpqSDCEbfsieH240FkICWT3yr53mF/yHr2S3k=;
+	b=BkTGdhpyqilCXrnM71WJwy3Z25j2gfW1yyCx/E2VvtCQ/ivEY6+XM5RNB++E+U0dB4eLV9UTZFKQ2Up6KIBydzNUGF3FerhKFMKSQ05MxONiVv7CCb+lGPu3k3RHoRwmLZ8FG3y4e8CbZhE1C26H7drlbVDFZh8zd9ugkZVDCfc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.15,REQID:fcd5b7d5-74fb-406c-8c61-7291d3e48f59,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:e276073,CLOUDID:97aa8503-5b7c-4de7-bc39-cc187eea3c57,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|136|836|865|888|898,TC:-5,Conten
+	t:0|15|50,EDM:-3,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:
+	0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: e791acd860c111f1acbe4559397dec65-20260605
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+	(envelope-from <irui.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1263300790; Fri, 05 Jun 2026 02:35:35 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Fri, 5 Jun 2026 17:35:32 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Fri, 5 Jun 2026 17:35:31 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	<angelogioacchino.delregno@collabora.com>, <nicolas.dufresne@collabora.com>,
+	Tiffany Lin <tiffany.lin@mediatek.com>, kyrie wu <kyrie.wu@mediatek.com>
+CC: Yunfei Dong <yunfei.dong@mediatek.com>, Maoguang Meng
+	<maoguang.meng@mediatek.com>, Longfei Wang <longfei.wang@mediatek.com>, Irui
+ Wang <irui.wang@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH v7 0/6] Add support for MT8196 video encoder
+Date: Fri, 5 Jun 2026 17:35:12 +0800
+Message-ID: <20260605093519.13695-1-irui.wang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DB9PR08MB6697:EE_|AM9PR08MB6066:EE_
-X-MS-Office365-Filtering-Correlation-Id: 4edc627d-d218-4470-6b41-08dec2e2e3ab
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|10070799003|1800799024|376014|22082099003|18002099003|5023799004|11063799006|56012099006;
-X-Microsoft-Antispam-Message-Info: jvTsHEI5d36MAtn7jcf1rOPKDLoS/rmMNWv6aZTOqxL7xMdxeTUMkH5TJuCv+iASj1NDr40ch1ZDxTXBA4NoF+8auEf+tk+DKP84lqJFDdiBFt3iZkAccKsNs4Vn+NNKrF2NOj0Ymwns/aGR9GCizwtJzbTMfwtl8uO7tzJAOOXbvdUb09aE+e14nZm8zM7U0mYIYlrle+NK4qjUEbl1Jj9CPo9YELTaWDDd6sH58nXDDOdWK4IqchFJtJ5HzFBvaG3VFCQW9/ZBdWkrLCXqnvJtrgWOm+2W+5vTHXgNO0RGN2lOs7rFzDTkGneJL1mryiACGm03taFQBnxF5/EG7c4ekJ3mXp/LS0tgoyEL4nyyVLSiFmDz/N4jcJiuplvGzLJDOeZQbdPqz5E8ANo/87GLw8Zm1CHYDoRX7++E449+sw7cNyU+XHWR4Ajanrh3MRw2Yxl+dV7d+pMctX/oRScrKIBtyyYOKeBPDSGvN6gwktXuWfNiff4EqEgTbxWZc6Briau9AeyO2sbfO+i5G1M5fosIWGC7brPS8BX45937xXgmI8d6/R9yu+lnMnL/L+Zv0yhkRUOdmo8FBRK7/gu6R9Y1GpkkLZUVN4mByEfOVvI0aP+2Kqtex50jMQH5FAroYHz5WlILw4+bTzOChd3Un1EeP68Dx2MEcDs8ytRIHK58T/bqa8tCoz/qGFJ6
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DB9PR08MB6697.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(10070799003)(1800799024)(376014)(22082099003)(18002099003)(5023799004)(11063799006)(56012099006);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?T2ErTENBSnFpWjQwcEJYWWZ5dTBUZkFFZThOSFRNMWdiUEJ3cnhrbjM3dHVs?=
- =?utf-8?B?b1RrSGNkRFovSEU3YlMzNStSaU5rczZFeEpYT2N0a0xveEY1d3ptaUw3U0Yw?=
- =?utf-8?B?RGdodkxWL2RqZDlMVkgrcUxSVXJkcmpiVzVlY1Q1R2h1L3BPem1aaTdFVE5m?=
- =?utf-8?B?MEp5WnljaGJ1MFNsT1pxQnYxUWxYU0JYcTBkMmlrbDh5cUtTQUcyUk5XK3lV?=
- =?utf-8?B?clBVVndyME9VWnY3RTRwOHZwMG4vR09yb0J0dlorSlRDRklNbDdZWElYS1Yx?=
- =?utf-8?B?ZTVTY0R0S2U2enZsOGw1MXhjMC9Hc3NsM0lrVm53QlJSMncrTDhZMHdaUGkw?=
- =?utf-8?B?ZThkQzZxaytOTXc4VVRmeVRDSkExWTY1TlZiVVE4Z0hiK05jN3BwSTcxMTBW?=
- =?utf-8?B?Z2FaaHlpR1VEbDgzb3UxRUVrTmZzM1I4Z2Ntam1GTGFHc2JtdGJmTzUyOW5t?=
- =?utf-8?B?U2pNT1lrM2M2WVNpVWI1UzRRbFlQRDNWZFEwbHZvZzRMRWhzQkwwbzFLdWt6?=
- =?utf-8?B?d3BGcVEyYTNsT1N5MWtHYTJGK2hTZUowYUwwQVEvOGRpekxXeDlhM0Rmakw1?=
- =?utf-8?B?clo3bzhmVWpzZUlZU1V4OU0vdnVQc0dBS0tZZlFsZ2QwTy9BT0cwdVNJMU4y?=
- =?utf-8?B?a2p1RWQya1ZRbUJKVW9ZRnVGOTAySThJRXU1Q1J4QzJ5YUZpdG1qMjdobEdP?=
- =?utf-8?B?RWFnWnFUWnlUV0N6YnB1TFVEcWRZdG5xRVBBNHFoWHBHcEdDbGZLOVRUZmJU?=
- =?utf-8?B?eW56a09IWGxyNlFmMjcyaFk0NG1IWHJiaC9mbnRQNEdlNW1lbnRWdnFHNWRB?=
- =?utf-8?B?RVhZbzlKcGRGZCt0Y3pYVFVlakFEdUhVQzRENFBHSGdJS1lLYWs3dFFtenQ1?=
- =?utf-8?B?TEx0NG5QalVtNnFzN1UvcW5IZkQ1VXdkeVlzSmZqMkg5RjM4OCtvRmsyK2tG?=
- =?utf-8?B?enp0ZWNQb045NkU5WlRCTndZbkNHQWl6N21GcmVPOW9VRkM5N2tjNlNTejFq?=
- =?utf-8?B?MEN0c2h2OEZZMmYvekd4ZGJuUkNWdWtRRUY3ejVLVGNTVjFFZXJrbW81YUF1?=
- =?utf-8?B?ZlpJb1ZZd0V1WnFMdUdHVk04U0ZLRDFPdlVMZm9PcUFKaXVGSWhaVzc1YThz?=
- =?utf-8?B?VFhjMFFOTHJKeGhLb25IeDVDRUdpVmRaSjFCeFhWR1N2V2JsL1dNVUYxS0RR?=
- =?utf-8?B?R3hEUVh5YkM1SDYyVmg5OGZjeVpvYUtBbnpOWW1FeHNJWjk1QTFmdjE0amZI?=
- =?utf-8?B?RTcyanZCbWUrYjkwdTJTcHNuaWs1K1JuVld4NXNYUEt3R2tkeXZJWHl4UGFp?=
- =?utf-8?B?cFBnZmJBQ0N4ZWI0NmVXRlZ6bXV0SFZkRzVZVE11RGVjWEJkNUdJZlRGUUxa?=
- =?utf-8?B?aXNrSUNZNkZGa29RR1htQUNwUDlhTHEzUkFzU0M1eHBQeTRNcmtOTFE0TG9U?=
- =?utf-8?B?Qmh6UUxSNjdMcGJFNkRIQmZQRUttZkhWVTZOKzRkbnJEQ0syNHQrSHV5eldp?=
- =?utf-8?B?WmlodVlnVVRKcWNFWSt1Y1cvZmw2YzBnaWRONGlZT1lJMUVBRE5VbWdDTWJJ?=
- =?utf-8?B?VzlZTFRGYXRqam5rS1BwbW9WU3YwSVNuSHBkK0xVajQ3TVpaRUNaVFM5NUxV?=
- =?utf-8?B?TXNOVURJNXoyY0h3cWtOTkphZ1ozOXFUcHp6eFRxWDFZVmloM1hLdkQ2bG52?=
- =?utf-8?B?cnZYK2dqZXdPZXJsRWZXMnkyZUVEWkNranAzZUJhaWRicjIrek80TWxDb08x?=
- =?utf-8?B?ZkNidmhOamRUY1ZNcFNmQXE5UE1WaWNQWXlNclJLZmxXVWhGYjlMZXpteUJW?=
- =?utf-8?B?bnFxdEFvV0thOUk5SWhyK2ZvMlExMFhvOFRWQnVQYUpEYUJ4U2E0QUJVMytn?=
- =?utf-8?B?UW5GNlNlaXdRc0x2ZlczUlR4cUUzTFpFRjhEK3pzOWdTSkh5ZFpzZ0lPNnRQ?=
- =?utf-8?B?QkFEOTFhaW5pMTc1VFZ4b3FoT0ZOdWlBNG1ZNVR4QUovclNqZzRaRktuQUZC?=
- =?utf-8?B?Uk1mTFluZ3dtbndtOUdRZVV2TlRJcGhEWlFHZkxwak44NUhncCtJWEh0S1Rz?=
- =?utf-8?B?V04zYllxNjlwc2RDSXlRclhzSUdKMFA0bFVUUC9HSmd0UEVRVXMvazNqOHBw?=
- =?utf-8?B?eHdWcDBSOFNseUR5Z01lWncwcDFjcG5vVndvdUU4NkRGVzFyYlVvbXVPN0Jq?=
- =?utf-8?B?dXdHbE5TQzVnbkxoeGNWK3Zzb0hvTStudFVLL2hTMWVxRGREbE80QzRnSWJx?=
- =?utf-8?B?dWVQQnZaVlllQStpaXN3TzUva3NJeUtIaDlFc2hnS0x4RmZvQ2Y0eXkzVnN2?=
- =?utf-8?B?UjFWREw4cnBId1FDdkZYaUk1c0kvRXkyMlVVMm54elFJTkluWGxaM3FJaHJI?=
- =?utf-8?Q?EvHCBilWG8XHFXxWC3iG5OHUanXZN6Oy+28wWhSz3fULD?=
-X-MS-Exchange-AntiSpam-MessageData-1: JIp7tHKzliu8kwvsABEiK27JjXehYWZ7rEM=
-X-OriginatorOrg: genexis.eu
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4edc627d-d218-4470-6b41-08dec2e2e3ab
-X-MS-Exchange-CrossTenant-AuthSource: DB9PR08MB6697.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Jun 2026 09:14:47.9119
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ARAl003thOLrVW7bkJdRIyC3qUl8PV6Tt/j5sOOLLNx/Y9K2l8ALQFXVSmiGYKI1FsipTFyJI+kSt/J/NwomJiLsd7iI5/VJbILhs4+Tb3k=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM9PR08MB6066
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260605_021453_902093_31D2A153 
-X-CRM114-Status: UNSURE (   9.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260605_023541_392669_2F6C6CB4 
+X-CRM114-Status: GOOD (  14.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -147,28 +92,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi.
+This patch series add support for MT8196 video encoder.
+patch 1: Add dt-bindings.
+patch 2: Add new encoder driver platform data.
+patch 3~5: Add a new encoder driver interface for new VCP firmware.
+patch 6: Add compatible data.
 
-On 6/5/26 09:12, Christian Marangi wrote:
-> In preparation for additional SoC support, move the Airoha pinctrl driver
-> for AN7581 SoC to a dedicated directory.
->
-> This is to tidy things up and keep code organized without polluting the
-> Mediatek driver directory.
->
-> The driver doesn't depend on any generic or common code from the Mediatek
-> codebase so it can be safely moved without any modification.
->
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
+About adding new driver support, the v4l2-compliance report shows:
+"Total for mtk-vcodec-enc device /dev/video3: 47, Succeeded: 46, Failed: 1, Warnings: 0"
+The 1 Failed case is not caused by current patch set:
+                fail: v4l2-test-controls.cpp(1171): node->codec_mask & STATEFUL_ENCODER
+        test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: FAIL
 
-For the record I plan on working on/assisting the following platforms: 
-EN751221, EN7528, EN7580, EN7523 and AN7563/AN7552. There is a patch set 
-under review in uboot that we hopefully can port over to linux. Any 
-assistance/comments there would be much appreciated.
+This patch set depends on "media: mediatek: vcodec: support video decoder in mt8196"[1]
 
-MvH
+[1] https://patchwork.linuxtv.org/project/linux-media/list/?series=25981
 
-Benjamin Larsson
+Change in v7:
+ - patch 2: New pdata members for remove if-else device tree parsing statement.
+ - Rebase patch onto decoder's patch set.
+ - Link to v6: https://patchwork.linuxtv.org/project/linux-media/cover/20260423073345.27402-1-irui.wang@mediatek.com/
+
+Change in v6:
+ - Move dt-bindings to patch 1.
+ - Rebase patch onto decoder's patch set.
+ - Link to v5: https://patchwork.linuxtv.org/project/linux-media/cover/20260302035244.8994-1-irui.wang@mediatek.com/
+
+Change in v5:
+ - Rewrite patch5 commit subject.
+ - Add else statement in patch5.
+ - Link to v4: https://patchwork.linuxtv.org/project/linux-media/list/?series=21757
+
+Change in v4:
+ - Rework patch3 commit message.
+ - Rework patch5 commit with more details.
+ - Rebase patch onto decoder's patch set.
+ - Link to v3: https://patchwork.linuxtv.org/project/linux-media/cover/20250814085642.17343-1-kyrie.wu@mediatek.com/
+
+Change in v3:
+ - Add venc rc buffer alloc failure error handling.
+ - Add mediatek,vcp property definition in dt-bindning.
+
+Change in v2:
+ - Add support for VCP encode process.
+ - Add MT8196 encoder driver platform data.
+ - Rebase encoder patch onto decoder's patch set.
+ - Fix some review comments in v1.
+
+Irui Wang (6):
+  media: dt-bindings: mediatek,vcodec-encoder: Add MT8196
+  media: mediatek: encoder: Add new platform data members
+  media: mediatek: encoder: Add a new encoder driver interface
+  media: mediatek: encoder: Add support for common firmware interface
+  media: mediatek: encoder: Add support for VCP encode process
+  media: mediatek: encoder: Add MT8196 encoder compatible data
+
+ .../media/mediatek,vcodec-encoder.yaml        |  22 +
+ .../mediatek/vcodec/common/mtk_vcodec_fw.c    |   9 +-
+ .../mediatek/vcodec/common/mtk_vcodec_fw.h    |   1 +
+ .../vcodec/common/mtk_vcodec_fw_priv.h        |   1 +
+ .../vcodec/common/mtk_vcodec_fw_vcp.c         |   6 +
+ .../platform/mediatek/vcodec/encoder/Makefile |   1 +
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc.c  |  36 +-
+ .../vcodec/encoder/mtk_vcodec_enc_drv.c       |  62 +-
+ .../vcodec/encoder/mtk_vcodec_enc_drv.h       |  23 +-
+ .../vcodec/encoder/venc/venc_common_if.c      | 684 ++++++++++++++++++
+ .../vcodec/encoder/venc/venc_h264_if.c        |   8 +-
+ .../mediatek/vcodec/encoder/venc_drv_if.c     |   3 +-
+ .../mediatek/vcodec/encoder/venc_drv_if.h     |  11 +-
+ .../mediatek/vcodec/encoder/venc_ipi_msg.h    |  26 +
+ .../mediatek/vcodec/encoder/venc_vpu_if.c     |  47 +-
+ 15 files changed, 869 insertions(+), 71 deletions(-)
+ create mode 100644 drivers/media/platform/mediatek/vcodec/encoder/venc/venc_common_if.c
+
+-- 
+2.45.2
 
 
