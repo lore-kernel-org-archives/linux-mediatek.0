@@ -4,200 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1826ACD6E74
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jun 2026 06:26:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D9C4CD6E5D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jun 2026 07:13:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HDeTQz58PcqGgdo96oHM1bAJcR1truedFGkSCcBXtWU=; b=vm68/n8eiPwT6G3o+ZdOy+5haR
-	s2p9PBFRTUS0bnPjEGCn8fEy0ZuxlLoHB8ussictD8PQWzdJ1fjPi6/gfTEGOkVhXDSyIXL3RUefe
-	utgf6XdQkk39qRyW3Ffk8ZgEN5fxUbseNIBakDqJEp3LRKiF88Zc5MXDDwDDn5hzivck/0RUiZ5Uo
-	N1prxc2xVOy+1NxKxLz0yNWC5MsOjdau8XgEv6TMcrbdl6yP+omDSQ/QdnCr7Cx8MPc1wMQ+8LuSD
-	K9zWpuPU9Uol9/K4QnONrqfW3pBCQon82/smvxPdlO0QxxPvIi7uGyM2hGxEhXCKIKvMh4MvCriA3
-	F95ilOPg==;
+	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=OAHd6WydKYBQCkvMXE/3oSe9e9pm1fVvh4h5O21kqfs=; b=1Fl18pO7b6e9aFxrt5Vf5FjWPt
+	nLXclAWWcndP5lsK7E0zpHWK9u42YmLBKZ6bUjT//Xfsr77M5rr66CdG8B4AnFESgG3yRMVJj2Fn7
+	1rW36FPvtrkMDufEkfNQwxYVEN6PkcXyUzFirKDOfN0fNDe69r3vbGU5OVjJg+JWx+IXJWMoF+HxO
+	3v7qHYCONkEEmTEd2TMHIE3TfXBoTji7t4xj8BWsJtzUwE5BkkEttkJMZv/l5pdjTeEkDITtRTxOW
+	zNnOhTIwdzK2aY9mBNA9KJ8zSjwzEAyQ04yA6AqR3Q8Od0h9TcVJxD5HuPkGNRB54F1hQZbAZlGR5
+	l9jGKpoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVO0j-000000009LB-33ZR;
-	Fri, 05 Jun 2026 06:26:29 +0000
-Received: from smtp-out2.suse.de ([195.135.223.131])
+	id 1wVOk6-00000000DdD-3dPt;
+	Fri, 05 Jun 2026 07:13:22 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVO0f-000000009Ji-3MWd
+	id 1wVOk5-00000000DcV-0o2J
 	for linux-mediatek@lists.infradead.org;
-	Fri, 05 Jun 2026 06:26:28 +0000
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 1FFF6758EB;
-	Fri,  5 Jun 2026 06:26:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1780640782; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=HDeTQz58PcqGgdo96oHM1bAJcR1truedFGkSCcBXtWU=;
-	b=M/ktB3sDGmweoVLgNXTldix/Xe30DbDNLuF62jskgLSpIFP7B4UDIS4DEc9GWvlaocwIkh
-	MzYsboaSx1lq9NL9w3sbKI15lcCvSzUUgy7ZrTTgOWI5JEeGHQVF+Ws2+Lxwav5KmNURWj
-	H7HdUv9yY3M5Yo7/TUsecdXNj6mQIjI=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1780640782;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=HDeTQz58PcqGgdo96oHM1bAJcR1truedFGkSCcBXtWU=;
-	b=D+iPx4bIg0cPuvx5LRbbICTL22xfS2wQ++R9gmSJNJXGkWLeJOe6PCy7H2nCTjiItAfI+1
-	cns0pwNXGHlJ7fBQ==
-Authentication-Results: smtp-out2.suse.de;
-	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=aDw1UW+A;
-	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=vDZD0R3r
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1780640781; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=HDeTQz58PcqGgdo96oHM1bAJcR1truedFGkSCcBXtWU=;
-	b=aDw1UW+A6yqS0t9biGU1kM/uDWClp4JVjfCpCKKYRPoi7hW5ZUoHfFiOFzrKmoJNc0yU2M
-	uuYUkV1jhYjR/HyaqMqsUUErX8NJH9lMYGWAImrkVnWSpH3rCgRPaSTi+JaduzU9ke3yFG
-	pPaTRpMgw/hnrLvIzrceR6N8QmELCxc=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1780640781;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=HDeTQz58PcqGgdo96oHM1bAJcR1truedFGkSCcBXtWU=;
-	b=vDZD0R3ry92z2A2yziaUK6wGo4KqKPNJ0t6eVE3IfNyctjPaz+BMIL6O1fwV+VQF5YMMcs
-	Mw015zl7yJbuC7AA==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id AD5B6779A8;
-	Fri,  5 Jun 2026 06:26:18 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id KbQCKQpsImrNcwAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Fri, 05 Jun 2026 06:26:18 +0000
-Message-ID: <dce03a80-3d6b-4792-9868-d6052fa3ea77@suse.de>
-Date: Fri, 5 Jun 2026 08:26:17 +0200
+	Fri, 05 Jun 2026 07:13:22 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-46019edc13dso735608f8f.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 05 Jun 2026 00:13:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1780643598; x=1781248398; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:from:to:cc:subject:date:message-id:reply-to;
+        bh=OAHd6WydKYBQCkvMXE/3oSe9e9pm1fVvh4h5O21kqfs=;
+        b=dNt081YKyhjLaPTj9d8Sf6iQQ8x9U0P5mhz65zvpTp67kqmsrJ3SFSqDiDDaGtdlCU
+         pTHpsl3aCVpb+wSKG+rtPv+V/sHA+4cVsoJ/BVdCkG/l7RD+c9MlxYAh0z1Yk2JVyP/7
+         M7vat7EuTwyrN6jnyR2L3o2jO3UpMOaEAJVKGXczXiqVpVtX4Gc3oS2v+ClyjOv7t8mo
+         +2sEfadadgF02Fkdm1UREmIWJoRKyqS8GvPhf1YK5505mq3bqjG5vS1L7+ldC/3zaCAz
+         BPncvcHWKcF1ul5waFuPqJNxT6g4qCLY00+aD4bO0MxnDhUZeeuUa3Uii7dROKoq3JTR
+         Elhg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1780643598; x=1781248398;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=OAHd6WydKYBQCkvMXE/3oSe9e9pm1fVvh4h5O21kqfs=;
+        b=V3o6Fcvwxg16jm3z7Pi+jPx6o78JhlOwsAWbfYPdBDZetY5PDtMSy5MM2UwiVGVbZi
+         ItJOKd/MMk7gIxlZf5gqVt6pFSHAkm1tmu+2W0xBn+cqT+/anb9o4K4VxwKXqNUTYw1O
+         gmIkP61zmC08bnjPJGThdjJ3X+O7W9zle9T7/sO6h127movArZvEtwupPchiuc3zXCrQ
+         2SW9oqDQHllkn/+WTKKez7S5KpIVVmXcQkIeWM3Z4LN9tRyufZCGe30/wUoEt6+ubr6z
+         x7qFHAchrFiP2sEX4R9go5cP5/moa8CL+DM5E6ETaPPWndArOFcbdLnEeGUCxc1ORPs6
+         hiHw==
+X-Forwarded-Encrypted: i=1; AFNElJ9c9ymkFlvcAHFQWuKUAxOLBLMbtpxPLvLKM4hio6OizFsW1aRKAiw+JMSgZ1OxEax6YUHUxj2+eq4dhyLw/A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyvIPynAnfkM7cReEBW5JvCjNzVVqWXey8EZq9KKj3YsHZFLzc8
+	Ye3nnKMI0QXgrM9oYaL++01py2FvoDblPeH2ND22qv238nXeT2HfYRGo
+X-Gm-Gg: Acq92OFP40eJ5HOIIc0AnBbeI2Vsfh31WKZokGSlxh4FqopPqO2wFbjoPJcaASmnazs
+	eVEc4uRjXIJEdP2l3vm5mF3rJMBt3oJUtGFJZjlSgLy8JYtB/rLoUW9qagU7t8Y/HUlwrzBq26N
+	6hDXaCmMbr3H1Kq31WYlGay/Bnn10GRXVrz5ZZZdiEd2iVIrtfU4gA51qq7ssYmVnO9wBJA1am4
+	zTlUuE1If0FTQXuGDTLa9G1FYSR1cm1WNvl2MTl0QYtoked6a2UTgqWDnUjlLO3SQMqXo25yqG7
+	jZqR6cwbm89VSBbwya1+gLtUkKyjQVe5UGfOBBrADuw0uJMv8Th8iUMFwgQSITOftWmiOAHIOUE
+	ZITX4DK3G3rDq710DMyufZDDZfCYIHborOhoYsBxAGDSk3dZkmjCMVPpiR1AZvyiZ/jeRqjzW3z
+	BZMbjzf8fsNZ0ptTtuhleDPnzCVHxMvf6cS6IIQaBWlMDlc54Nv2c78W1HvpN39WhZ83k+d4ZCl
+	vGAIuI=
+X-Received: by 2002:adf:fd8b:0:b0:43b:498f:dceb with SMTP id ffacd0b85a97d-460304f6b48mr2770670f8f.9.1780643597933;
+        Fri, 05 Jun 2026 00:13:17 -0700 (PDT)
+Received: from Ansuel-XPS24 (host-79-42-252-49.retail.telecomitalia.it. [79.42.252.49])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-4601f2f5612sm22221465f8f.15.2026.06.05.00.13.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 05 Jun 2026 00:13:16 -0700 (PDT)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Linus Walleij <linusw@kernel.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Sean Wang <sean.wang@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	linux-kernel@vger.kernel.org,
+	linux-gpio@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH] pinctrl: Move Airoha driver to dedicated directory
+Date: Fri,  5 Jun 2026 09:12:31 +0200
+Message-ID: <20260605071233.28873-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/76] drm/bridge: Convert all reset users to create_state
-To: Maxime Ripard <mripard@kernel.org>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>
-Cc: Dmitry Baryshkov <lumag@kernel.org>, dri-devel@lists.freedesktop.org,
- Jagan Teki <jagan@amarulasolutions.com>, Liu Ying <victor.liu@nxp.com>,
- Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, imx@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>,
- Phong LE <ple@baylibre.com>, Douglas Anderson <dianders@chromium.org>,
- Inki Dae <inki.dae@samsung.com>, Marek Szyprowski
- <m.szyprowski@samsung.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Paul Cercueil <paul@crapouillou.net>, linux-mips@vger.kernel.org,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- linux-amlogic@lists.infradead.org,
- Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
- Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Magnus Damm <magnus.damm@gmail.com>,
- Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
- linux-renesas-soc@vger.kernel.org, Biju Das <biju.das.jz@bp.renesas.com>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
- Yannick Fertre <yannick.fertre@foss.st.com>,
- Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>,
- Philippe Cornu <philippe.cornu@foss.st.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- linux-stm32@st-md-mailman.stormreply.com, Jyri Sarha <jyri.sarha@iki.fi>,
- Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
- Dave Stevenson <dave.stevenson@raspberrypi.com>,
- =?UTF-8?Q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>,
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
- Icenowy Zheng <zhengxingda@iscas.ac.cn>, Michal Simek <michal.simek@amd.com>
-References: <20260530-drm-no-more-bridge-reset-v1-0-875d828d31bc@kernel.org>
-Content-Language: en-US
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Autocrypt: addr=tzimmermann@suse.de; keydata=
- xsBNBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
- XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
- BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
- hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
- 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
- AAHNJ1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPsLAjgQTAQgAOAIb
- AwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftODH
- AAoJEGgNwR1TC3ojx1wH/0hKGWugiqDgLNXLRD/4TfHBEKmxIrmfu9Z5t7vwUKfwhFL6hqvo
- lXPJJKQpQ2z8+X2vZm/slsLn7J1yjrOsoJhKABDi+3QWWSGkaGwRJAdPVVyJMfJRNNNIKwVb
- U6B1BkX2XDKDGffF4TxlOpSQzdtNI/9gleOoUA8+jy8knnDYzjBNOZqLG2FuTdicBXblz0Mf
- vg41gd9kCwYXDnD91rJU8tzylXv03E75NCaTxTM+FBXPmsAVYQ4GYhhgFt8S2UWMoaaABLDe
- 7l5FdnLdDEcbmd8uLU2CaG4W2cLrUaI4jz2XbkcPQkqTQ3EB67hYkjiEE6Zy3ggOitiQGcqp
- j//OwE0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRHUE9eosYb
- T6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgTRjP+qbU6
- 3Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+RdhgATnWW
- GKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zbehDda8lv
- hFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r12+lqdsA
- EQEAAcLAdgQYAQgAIAIbDBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftOH6AAoJEGgNwR1T
- C3ojVSkIALpAPkIJPQoURPb1VWjh34l0HlglmYHvZszJWTXYwavHR8+k6Baa6H7ufXNQtThR
- yIxJrQLW6rV5lm7TjhffEhxVCn37+cg0zZ3j7zIsSS0rx/aMwi6VhFJA5hfn3T0TtrijKP4A
- SAQO9xD1Zk9/61JWk8OysuIh7MXkl0fxbRKWE93XeQBhIJHQfnc+YBLprdnxR446Sh8Wn/2D
- Ya8cavuWf2zrB6cZurs048xe0UbSW5AOSo4V9M0jzYI4nZqTmPxYyXbm30Kvmz0rYVRaitYJ
- 4kyYYMhuULvrJDMjZRvaNe52tkKAvMevcGdt38H4KSVXAylqyQOW5zvPc4/sq9c=
-In-Reply-To: <20260530-drm-no-more-bridge-reset-v1-0-875d828d31bc@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Rspamd-Action: no action
-X-Spamd-Result: default: False [-3.01 / 50.00];
-	BAYES_HAM(-3.00)[100.00%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	NEURAL_HAM_SHORT(-0.20)[-0.996];
-	MIME_GOOD(-0.10)[text/plain];
-	MX_GOOD(-0.01)[];
-	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	FREEMAIL_ENVRCPT(0.00)[gmail.com];
-	FREEMAIL_TO(0.00)[kernel.org,intel.com,linaro.org,ideasonboard.com,kwiboo.se,gmail.com,bootlin.com,linux.intel.com,ffwll.ch];
-	MIME_TRACE(0.00)[0:+];
-	FREEMAIL_CC(0.00)[kernel.org,lists.freedesktop.org,amarulasolutions.com,nxp.com,pengutronix.de,gmail.com,lists.linux.dev,lists.infradead.org,rock-chips.com,baylibre.com,chromium.org,samsung.com,crapouillou.net,vger.kernel.org,collabora.com,googlemail.com,ideasonboard.com,glider.be,bp.renesas.com,sntech.de,foss.st.com,st-md-mailman.stormreply.com,iki.fi,raspberrypi.com,igalia.com,iscas.ac.cn,amd.com];
-	ARC_NA(0.00)[];
-	FUZZY_RATELIMITED(0.00)[rspamd.com];
-	RBL_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:104:10:150:64:97:from];
-	RCVD_TLS_ALL(0.00)[];
-	DKIM_TRACE(0.00)[suse.de:+];
-	R_RATELIMIT(0.00)[to_ip_from(RLqtaqd5djycn6zz3dm1kuwfni)];
-	RCVD_COUNT_TWO(0.00)[2];
-	TO_MATCH_ENVRCPT_SOME(0.00)[];
-	FROM_EQ_ENVFROM(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	TO_DN_SOME(0.00)[];
-	RCPT_COUNT_GT_50(0.00)[61];
-	RECEIVED_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:106:10:150:64:167:received];
-	MID_RHS_MATCH_FROM(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	TAGGED_RCPT(0.00)[renesas];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.com:url,imap1.dmz-prg2.suse.org:helo,imap1.dmz-prg2.suse.org:rdns,suse.de:email,suse.de:dkim,suse.de:mid]
-X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
-X-Rspamd-Queue-Id: 1FFF6758EB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260604_232626_135262_F14CAD72 
-X-CRM114-Status: UNSURE (   6.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260605_001321_254895_7DD73404 
+X-CRM114-Status: GOOD (  17.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -212,179 +103,153 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
+In preparation for additional SoC support, move the Airoha pinctrl driver
+for AN7581 SoC to a dedicated directory.
 
-Am 30.05.26 um 15:59 schrieb Maxime Ripard:
-[...]
->        drm/bridge: adv7511: Switch to atomic_create_state
->        drm/bridge: analogix_dp: Switch to atomic_create_state
->        drm/bridge: anx7625: Switch to atomic_create_state
->        drm/bridge: chipone-icn6211: Switch to atomic_create_state
->        drm/bridge: display-connector: Switch to atomic_create_state
->        drm/bridge: fsl-ldb: Switch to atomic_create_state
->        drm/bridge: imx8mp-hdmi-pvi: Switch to atomic_create_state
->        drm/bridge: imx8qm-ldb: Switch to atomic_create_state
->        drm/bridge: imx8qxp-ldb: Switch to atomic_create_state
->        drm/bridge: imx8qxp-pixel-combiner: Switch to atomic_create_state
->        drm/bridge: imx8qxp-pixel-link: Switch to atomic_create_state
->        drm/bridge: imx8qxp-pxl2dpi: Switch to atomic_create_state
->        drm/bridge: inno-hdmi: Switch to atomic_create_state
->        drm/bridge: ite-it6263: Switch to atomic_create_state
->        drm/bridge: ite-it6505: Switch to atomic_create_state
->        drm/bridge: ite-it66121: Switch to atomic_create_state
->        drm/bridge: lontium-lt9211: Switch to atomic_create_state
->        drm/bridge: lontium-lt9611: Switch to atomic_create_state
->        drm/bridge: lvds-codec: Switch to atomic_create_state
->        drm/bridge: nwl-dsi: Switch to atomic_create_state
->        drm/bridge: panel: Switch to atomic_create_state
->        drm/bridge: parade-ps8640: Switch to atomic_create_state
->        drm/bridge: samsung-dsim: Switch to atomic_create_state
->        drm/bridge: sii902x: Switch to atomic_create_state
->        drm/bridge: ssd2825: Switch to atomic_create_state
->        drm/bridge: dw-dp: Switch to atomic_create_state
->        drm/bridge: dw-hdmi-qp: Switch to atomic_create_state
->        drm/bridge: dw-hdmi: Switch to atomic_create_state
->        drm/bridge: dw-mipi-dsi: Switch to atomic_create_state
->        drm/bridge: dw-mipi-dsi2: Switch to atomic_create_state
->        drm/bridge: tc358762: Switch to atomic_create_state
->        drm/bridge: tc358767: Switch to atomic_create_state
->        drm/bridge: tc358768: Switch to atomic_create_state
->        drm/bridge: tc358775: Switch to atomic_create_state
->        drm/bridge: ti-dlpc3433: Switch to atomic_create_state
->        drm/bridge: ti-sn65dsi83: Switch to atomic_create_state
->        drm/bridge: ti-sn65dsi86: Switch to atomic_create_state
->        drm/bridge: ti-tdp158: Switch to atomic_create_state
->        drm/bridge: ti-tfp410: Switch to atomic_create_state
->        drm/imx: parallel-display: Switch to atomic_create_state
->        drm/ingenic: Switch to atomic_create_state
->        drm/mediatek: dp: Switch to atomic_create_state
->        drm/mediatek: dpi: Switch to atomic_create_state
->        drm/mediatek: dsi: Switch to atomic_create_state
->        drm/mediatek: hdmi: Switch to atomic_create_state
->        drm/mediatek: hdmi_v2: Switch to atomic_create_state
->        drm/meson: encoder_cvbs: Switch to atomic_create_state
->        drm/meson: encoder_dsi: Switch to atomic_create_state
->        drm/meson: encoder_hdmi: Switch to atomic_create_state
->        drm/msm: dp: Switch to atomic_create_state
->        drm/msm: hdmi: Switch to atomic_create_state
->        drm/omap: hdmi4: Switch to atomic_create_state
->        drm/omap: hdmi5: Switch to atomic_create_state
->        drm/renesas: rcar-du: lvds: Switch to atomic_create_state
->        drm/renesas: rcar-du: mipi_dsi: Switch to atomic_create_state
->        drm/renesas: rz-du: mipi_dsi: Switch to atomic_create_state
->        drm/rockchip: cdn-dp: Switch to atomic_create_state
->        drm/rockchip: rk3066_hdmi: Switch to atomic_create_state
->        drm/rockchip: lvds: Switch to atomic_create_state
->        drm/stm: lvds: Switch to atomic_create_state
->        drm/tests: bridge: Switch to atomic_create_state
->        drm/tidss: encoder: Switch to atomic_create_state
->        drm/tidss: oldi: Switch to atomic_create_state
->        drm/vc4: dsi: Switch to atomic_create_state
->        drm/verisilicon: Switch to atomic_create_state
->        drm/xlnx: zynqmp_dp: Switch to atomic_create_state
+This is to tidy things up and keep code organized without polluting the
+Mediatek driver directory.
 
-You can also add my
+The driver doesn't depend on any generic or common code from the Mediatek
+codebase so it can be safely moved without any modification.
 
-Reviewed-by: Thomas Zimmermann <tzimmermann@suse.de>
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+---
+ MAINTAINERS                                   |  2 +-
+ drivers/pinctrl/Kconfig                       |  1 +
+ drivers/pinctrl/Makefile                      |  1 +
+ drivers/pinctrl/airoha/Kconfig                | 20 +++++++++++++++++++
+ drivers/pinctrl/airoha/Makefile               |  3 +++
+ .../{mediatek => airoha}/pinctrl-airoha.c     |  0
+ drivers/pinctrl/mediatek/Kconfig              | 17 +---------------
+ drivers/pinctrl/mediatek/Makefile             |  1 -
+ 8 files changed, 27 insertions(+), 18 deletions(-)
+ create mode 100644 drivers/pinctrl/airoha/Kconfig
+ create mode 100644 drivers/pinctrl/airoha/Makefile
+ rename drivers/pinctrl/{mediatek => airoha}/pinctrl-airoha.c (100%)
 
-to all these one-liners in the drivers.
-
-Best regards
-Thomas
-
-
->        drm/atomic-state-helper: Remove drm_atomic_helper_bridge_reset()
->        drm/bridge: cdns-dsi: Use __drm_atomic_helper_bridge_state_init()
->        drm/bridge: cdns-dsi: Switch to atomic_create_state
->        drm/bridge: cdns-mhdp8546: Switch to atomic_create_state
->        drm/bridge: Remove atomic_reset support
->
->   drivers/gpu/drm/bridge/adv7511/adv7511_drv.c       |  2 +-
->   drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  2 +-
->   drivers/gpu/drm/bridge/analogix/anx7625.c          |  2 +-
->   drivers/gpu/drm/bridge/cadence/cdns-dsi-core.c     |  9 +++---
->   .../gpu/drm/bridge/cadence/cdns-mhdp8546-core.c    |  8 +++---
->   drivers/gpu/drm/bridge/chipone-icn6211.c           |  2 +-
->   drivers/gpu/drm/bridge/display-connector.c         |  2 +-
->   drivers/gpu/drm/bridge/fsl-ldb.c                   |  2 +-
->   drivers/gpu/drm/bridge/imx/imx8mp-hdmi-pvi.c       |  2 +-
->   drivers/gpu/drm/bridge/imx/imx8qm-ldb.c            |  2 +-
->   drivers/gpu/drm/bridge/imx/imx8qxp-ldb.c           |  2 +-
->   .../gpu/drm/bridge/imx/imx8qxp-pixel-combiner.c    |  2 +-
->   drivers/gpu/drm/bridge/imx/imx8qxp-pixel-link.c    |  2 +-
->   drivers/gpu/drm/bridge/imx/imx8qxp-pxl2dpi.c       |  2 +-
->   drivers/gpu/drm/bridge/inno-hdmi.c                 |  2 +-
->   drivers/gpu/drm/bridge/ite-it6263.c                |  2 +-
->   drivers/gpu/drm/bridge/ite-it6505.c                |  2 +-
->   drivers/gpu/drm/bridge/ite-it66121.c               |  2 +-
->   drivers/gpu/drm/bridge/lontium-lt9211.c            |  2 +-
->   drivers/gpu/drm/bridge/lontium-lt9611.c            |  2 +-
->   drivers/gpu/drm/bridge/lvds-codec.c                |  2 +-
->   drivers/gpu/drm/bridge/nwl-dsi.c                   |  2 +-
->   drivers/gpu/drm/bridge/panel.c                     |  2 +-
->   drivers/gpu/drm/bridge/parade-ps8640.c             |  2 +-
->   drivers/gpu/drm/bridge/samsung-dsim.c              |  2 +-
->   drivers/gpu/drm/bridge/sii902x.c                   |  2 +-
->   drivers/gpu/drm/bridge/ssd2825.c                   |  2 +-
->   drivers/gpu/drm/bridge/synopsys/dw-dp.c            |  2 +-
->   drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c       |  2 +-
->   drivers/gpu/drm/bridge/synopsys/dw-hdmi.c          |  2 +-
->   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c      |  2 +-
->   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c     |  2 +-
->   drivers/gpu/drm/bridge/tc358762.c                  |  2 +-
->   drivers/gpu/drm/bridge/tc358767.c                  |  4 +--
->   drivers/gpu/drm/bridge/tc358768.c                  |  2 +-
->   drivers/gpu/drm/bridge/tc358775.c                  |  2 +-
->   drivers/gpu/drm/bridge/ti-dlpc3433.c               |  2 +-
->   drivers/gpu/drm/bridge/ti-sn65dsi83.c              |  2 +-
->   drivers/gpu/drm/bridge/ti-sn65dsi86.c              |  2 +-
->   drivers/gpu/drm/bridge/ti-tdp158.c                 |  2 +-
->   drivers/gpu/drm/bridge/ti-tfp410.c                 |  2 +-
->   drivers/gpu/drm/drm_atomic_state_helper.c          | 33 ++++++++++++----------
->   drivers/gpu/drm/drm_bridge.c                       |  4 +--
->   drivers/gpu/drm/imx/ipuv3/parallel-display.c       |  2 +-
->   drivers/gpu/drm/ingenic/ingenic-drm-drv.c          |  2 +-
->   drivers/gpu/drm/mediatek/mtk_dp.c                  |  2 +-
->   drivers/gpu/drm/mediatek/mtk_dpi.c                 |  2 +-
->   drivers/gpu/drm/mediatek/mtk_dsi.c                 |  2 +-
->   drivers/gpu/drm/mediatek/mtk_hdmi.c                |  2 +-
->   drivers/gpu/drm/mediatek/mtk_hdmi_v2.c             |  2 +-
->   drivers/gpu/drm/meson/meson_encoder_cvbs.c         |  2 +-
->   drivers/gpu/drm/meson/meson_encoder_dsi.c          |  2 +-
->   drivers/gpu/drm/meson/meson_encoder_hdmi.c         |  2 +-
->   drivers/gpu/drm/msm/dp/dp_drm.c                    |  4 +--
->   drivers/gpu/drm/msm/hdmi/hdmi_bridge.c             |  2 +-
->   drivers/gpu/drm/omapdrm/dss/hdmi4.c                |  2 +-
->   drivers/gpu/drm/omapdrm/dss/hdmi5.c                |  2 +-
->   drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c        |  2 +-
->   drivers/gpu/drm/renesas/rcar-du/rcar_mipi_dsi.c    |  2 +-
->   drivers/gpu/drm/renesas/rz-du/rzg2l_mipi_dsi.c     |  2 +-
->   drivers/gpu/drm/rockchip/cdn-dp-core.c             |  2 +-
->   drivers/gpu/drm/rockchip/rk3066_hdmi.c             |  2 +-
->   drivers/gpu/drm/rockchip/rockchip_lvds.c           |  2 +-
->   drivers/gpu/drm/stm/lvds.c                         |  2 +-
->   drivers/gpu/drm/tests/drm_bridge_test.c            |  2 +-
->   drivers/gpu/drm/tidss/tidss_encoder.c              |  2 +-
->   drivers/gpu/drm/tidss/tidss_oldi.c                 |  2 +-
->   drivers/gpu/drm/vc4/vc4_dsi.c                      |  2 +-
->   drivers/gpu/drm/verisilicon/vs_bridge.c            |  4 +--
->   drivers/gpu/drm/xlnx/zynqmp_dp.c                   |  2 +-
->   include/drm/drm_atomic_state_helper.h              |  6 ++--
->   include/drm/drm_bridge.h                           | 33 ++++++++--------------
->   72 files changed, 111 insertions(+), 120 deletions(-)
-> ---
-> base-commit: 21fcb222f0d1e1c9f5b04c09e9fb3408e13a0264
-> change-id: 20260530-drm-no-more-bridge-reset-ca20d5e22740
->
-> Best regards,
-
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 21c0ef0b9ce5..38bf92149a15 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -21024,7 +21024,7 @@ M:	Lorenzo Bianconi <lorenzo@kernel.org>
+ L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
+ S:	Maintained
+ F:	Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml
+-F:	drivers/pinctrl/mediatek/pinctrl-airoha.c
++F:	drivers/pinctrl/airoha/pinctrl-airoha.c
+ 
+ PIN CONTROLLER - AMD
+ M:	Basavaraj Natikar <Basavaraj.Natikar@amd.com>
+diff --git a/drivers/pinctrl/Kconfig b/drivers/pinctrl/Kconfig
+index 03f2e3ee065f..e0babad31445 100644
+--- a/drivers/pinctrl/Kconfig
++++ b/drivers/pinctrl/Kconfig
+@@ -679,6 +679,7 @@ config PINCTRL_RP1
+ 	  multi function device.
+ 
+ source "drivers/pinctrl/actions/Kconfig"
++source "drivers/pinctrl/airoha/Kconfig"
+ source "drivers/pinctrl/aspeed/Kconfig"
+ source "drivers/pinctrl/bcm/Kconfig"
+ source "drivers/pinctrl/berlin/Kconfig"
+diff --git a/drivers/pinctrl/Makefile b/drivers/pinctrl/Makefile
+index f7d5d5f76d0c..36c55858801f 100644
+--- a/drivers/pinctrl/Makefile
++++ b/drivers/pinctrl/Makefile
+@@ -66,6 +66,7 @@ obj-$(CONFIG_PINCTRL_ZYNQMP)	+= pinctrl-zynqmp.o
+ obj-$(CONFIG_PINCTRL_ZYNQ)	+= pinctrl-zynq.o
+ 
+ obj-y				+= actions/
++obj-y				+= airoha/
+ obj-$(CONFIG_ARCH_ASPEED)	+= aspeed/
+ obj-y				+= bcm/
+ obj-$(CONFIG_PINCTRL_BERLIN)	+= berlin/
+diff --git a/drivers/pinctrl/airoha/Kconfig b/drivers/pinctrl/airoha/Kconfig
+new file mode 100644
+index 000000000000..03adaeae8fc3
+--- /dev/null
++++ b/drivers/pinctrl/airoha/Kconfig
+@@ -0,0 +1,20 @@
++# SPDX-License-Identifier: GPL-2.0-only
++menu "Airoha pinctrl drivers"
++	depends on ARCH_AIROHA || COMPILE_TEST
++
++config PINCTRL_AIROHA
++	tristate "Airoha EN7581 pin control"
++	depends on OF
++	depends on ARM64 || COMPILE_TEST
++	select PINMUX
++	select GENERIC_PINCONF
++	select GENERIC_PINCTRL_GROUPS
++	select GENERIC_PINMUX_FUNCTIONS
++	select GPIOLIB
++	select GPIOLIB_IRQCHIP
++	select REGMAP_MMIO
++	help
++	  Say yes here to support pin controller and gpio driver
++	  on Airoha EN7581 SoC.
++
++endmenu
+diff --git a/drivers/pinctrl/airoha/Makefile b/drivers/pinctrl/airoha/Makefile
+new file mode 100644
+index 000000000000..a25b744dd7a8
+--- /dev/null
++++ b/drivers/pinctrl/airoha/Makefile
+@@ -0,0 +1,3 @@
++# SPDX-License-Identifier: GPL-2.0
++
++obj-$(CONFIG_PINCTRL_AIROHA)		+= pinctrl-airoha.o
+diff --git a/drivers/pinctrl/mediatek/pinctrl-airoha.c b/drivers/pinctrl/airoha/pinctrl-airoha.c
+similarity index 100%
+rename from drivers/pinctrl/mediatek/pinctrl-airoha.c
+rename to drivers/pinctrl/airoha/pinctrl-airoha.c
+diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
+index 4819617d9368..97980cc28b9c 100644
+--- a/drivers/pinctrl/mediatek/Kconfig
++++ b/drivers/pinctrl/mediatek/Kconfig
+@@ -1,6 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0-only
+ menu "MediaTek pinctrl drivers"
+-	depends on ARCH_MEDIATEK || ARCH_AIROHA || RALINK || COMPILE_TEST
++	depends on ARCH_MEDIATEK || RALINK || COMPILE_TEST
+ 
+ config EINT_MTK
+ 	tristate "MediaTek External Interrupt Support"
+@@ -126,21 +126,6 @@ config PINCTRL_MT8127
+ 	select PINCTRL_MTK
+ 
+ # For ARMv8 SoCs
+-config PINCTRL_AIROHA
+-	tristate "Airoha EN7581 pin control"
+-	depends on OF
+-	depends on ARM64 || COMPILE_TEST
+-	select PINMUX
+-	select GENERIC_PINCONF
+-	select GENERIC_PINCTRL_GROUPS
+-	select GENERIC_PINMUX_FUNCTIONS
+-	select GPIOLIB
+-	select GPIOLIB_IRQCHIP
+-	select REGMAP_MMIO
+-	help
+-	  Say yes here to support pin controller and gpio driver
+-	  on Airoha EN7581 SoC.
+-
+ config PINCTRL_MT2712
+ 	bool "MediaTek MT2712 pin control"
+ 	depends on OF
+diff --git a/drivers/pinctrl/mediatek/Makefile b/drivers/pinctrl/mediatek/Makefile
+index ae765bd99965..6dc17b0c23f9 100644
+--- a/drivers/pinctrl/mediatek/Makefile
++++ b/drivers/pinctrl/mediatek/Makefile
+@@ -8,7 +8,6 @@ obj-$(CONFIG_PINCTRL_MTK_MOORE)		+= pinctrl-moore.o
+ obj-$(CONFIG_PINCTRL_MTK_PARIS)		+= pinctrl-paris.o
+ 
+ # SoC Drivers
+-obj-$(CONFIG_PINCTRL_AIROHA)		+= pinctrl-airoha.o
+ obj-$(CONFIG_PINCTRL_MT7620)		+= pinctrl-mt7620.o
+ obj-$(CONFIG_PINCTRL_MT7621)		+= pinctrl-mt7621.o
+ obj-$(CONFIG_PINCTRL_MT76X8)		+= pinctrl-mt76x8.o
 -- 
---
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Frankenstr. 146, 90461 Nürnberg, Germany, www.suse.com
-GF: Jochen Jaser, Andrew McDonald, Werner Knoblich, (HRB 36809, AG Nürnberg)
-
+2.53.0
 
 
