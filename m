@@ -4,74 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2562CCD6E5D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jun 2026 11:33:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1221CD8C89
+	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Jun 2026 01:30:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kVfZZFzUPlA1ML0K+6cPCDB3mhjRNDsilzZV8Yr+ce4=; b=jkZYp0w10BWnrrMwRooispxvHT
-	chqT6Wga+ZEq7gJ2dkaB7AhtNJIfUOo26Sy6xlDMEUTsZ9Ry0sf3idYP2oNN5EhuCwuIyN6On+9B8
-	ygCkpoIVrkKtDcEIA5Ikz/ge2vSL/uNfYEg2/pGudk2UE43RHPosN+wN4rNi8mKZPca3+2KDhogO2
-	mozJ7cirPpYoOa6eY0oRDsAGLiMbncLy6pwwXjPx0le5hifmrZVxKvBujM3vZ9Auud+zWfRmCw522
-	aEsXQY/AOGU1Lucf2VtO4TkSDVakhK1bjzGsHWyO2yvmXl1wYiyduMMemlv4L5mFYFzwFwckWkT6v
-	vFOWNXQQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ASXWK8gh0lMnAbiPph0XBp/VyyYVnUTZVyfHxjwp+Dk=; b=ZI4pKPniOkLrheGzWTfu39jlDq
+	lb9gJNkPZwffvw3fjNz9dM42+osF+K1LmuXr+hfeijnZR+ENfkhYFdecIDF3JcORSKdZNvJ+Psppy
+	HF3qCLTNq6GV6AmrC2zCblthJeDiiD7I+P35wYe4ldLNvSqUh/z2MR7V3klEI/6YdvZlVXU5QVMhM
+	oYlbGqTQzy8EKVMs75zekW3phtnueGCruXBn3nQYIlCHbzx/HT+aszD0yxBaE1+woHyR0YEL3FNLH
+	i0n22/5bJkAV39w/kF4q8hbC0JxjjIV+uV31VEDwSysS8i/lMOJUoWB716OjgXVhikmzHQKFnhJPv
+	bFi5zBQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVSnn-00000000Xfd-06xG;
-	Fri, 05 Jun 2026 11:33:27 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1wVfrU-00000001M2p-1g7k;
+	Sat, 06 Jun 2026 01:30:08 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVSnl-00000000Xef-0dIq
-	for linux-mediatek@lists.infradead.org;
-	Fri, 05 Jun 2026 11:33:26 +0000
-X-UUID: 5b14cc3e60d211f1acbe4559397dec65-20260605
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=kVfZZFzUPlA1ML0K+6cPCDB3mhjRNDsilzZV8Yr+ce4=;
-	b=QGF03WSZFAazQUTw3JTAhLCfSIUQkS+uE6bFabL7oBZH0ufvPWHOg+7xF1GPssWFD08wLZFqY7J2/20xns1v/bPTjv2dJRXur0/UtXw8IuxUrARPPxbr8mJ+O74dt3ezNPZhKKMK1Uz0nigQex4XPRyH2yAL5cPybXQct7hRIVY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.15,REQID:8561ae48-a8cd-4c2d-ac7d-b8192d2404c8,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:e276073,CLOUDID:3a116820-87a8-421b-982c-f5939dba7cba,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|865|888|898,TC:-5,Cont
-	ent:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0
-	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 5b14cc3e60d211f1acbe4559397dec65-20260605
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <ryder.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 377787554; Fri, 05 Jun 2026 04:33:21 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Fri, 5 Jun 2026 19:33:18 +0800
-Received: from mussdccf250.eus.mediatek.inc (10.73.250.250) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Fri, 5 Jun 2026 19:33:17 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: <linux-mediatek@lists.infradead.org>, <linux-wireless@vger.kernel.org>,
-	Shayne Chen <shayne.chen@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH 4/4] wifi: mt76: mt7996: fix potential tx_retries underflow
-Date: Fri, 5 Jun 2026 04:33:06 -0700
-Message-ID: <20260605113306.3485554-4-ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20260605113306.3485554-1-ryder.lee@mediatek.com>
-References: <20260605113306.3485554-1-ryder.lee@mediatek.com>
+	id 1wVfrT-00000001M2a-02D7;
+	Sat, 06 Jun 2026 01:30:07 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 192CB43718;
+	Sat,  6 Jun 2026 01:30:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ECFC91F00893;
+	Sat,  6 Jun 2026 01:30:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1780709406;
+	bh=ASXWK8gh0lMnAbiPph0XBp/VyyYVnUTZVyfHxjwp+Dk=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=cr5+HxSNHdkS8C6KkY4HwanjvCasaX+Les4bRwAKQd31rBdAVtn7epdZmKcevyDlM
+	 b8+wcRmUlZO+LYG5Uq0kHwTDRmvEHSAhOWfhgH/0HAN0wdmogGYJf1RWBZqOJH2exx
+	 2/ZqKBZJG1Hxmh0FR8UZbUTnyZ207I/vgAL3TLhpLuV23KjZxODpaY/OiZAHa00i11
+	 xMPy5aMOlDu6luKT9oHXhW7y2UuLf75StZGSvHWg/h0IwaZbauJGsEM/1QdF35R5rj
+	 +q5+AEsvCWETARD/dJYbDMWGF3Huz/B4Z/QXLq4Vk9grHvFsYnGcDKa2tt2KTReiic
+	 Qy/f9B4i24vWw==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 569293930A9C;
+	Sat,  6 Jun 2026 01:30:07 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260605_043325_197415_189662FB 
-X-CRM114-Status: GOOD (  10.31  )
+Subject: Re: [PATCH net] net: airoha: Add NULL check for
+ of_reserved_mem_lookup()
+ in airoha_qdma_init_hfwd_queues()
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <178070940590.3983833.5638172237505353100.git-patchwork-notify@kernel.org>
+Date: Sat, 06 Jun 2026 01:30:05 +0000
+References: <20260604070352.2603077-1-zhaojinming@uniontech.com>
+In-Reply-To: <20260604070352.2603077-1-zhaojinming@uniontech.com>
+To: ZhaoJinming <zhaojinming@uniontech.com>
+Cc: lorenzo@kernel.org, andrew+netdev@lunn.ch, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, horms@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org, stable@vger.kernel.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,40 +74,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When FIELD_GET returns 0 for the retry count, subtracting 1 causes
-an unsigned integer underflow, resulting in tx_retries becoming a
-very large value (0xFFFFFFFF for u32).
+Hello:
 
-Fix by checking if count is non-zero before subtracting 1.
+This patch was applied to netdev/net.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-Fixes: 2461599f835e ("wifi: mt76: mt7996: get tx_retries and tx_failed from txfree")
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+On Thu,  4 Jun 2026 15:03:52 +0800 you wrote:
+> of_reserved_mem_lookup() may return NULL if the reserved memory region
+> referenced by the "memory-region" phandle is not found in the reserved
+> memory table (e.g. due to a misconfigured DTS or a removed
+> memory-region node).  The current code dereferences the returned
+> pointer without checking for NULL, leading to a kernel NULL pointer
+> dereference at the following lines:
+> 
+> [...]
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-index a59c14c8f..3fad977ba 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-@@ -1361,13 +1361,13 @@ mt7996_mac_tx_free(struct mt7996_dev *dev, void *data, int len)
- 				cur_info++;
- 			continue;
- 		} else if (info & MT_TXFREE_INFO_HEADER) {
--			u32 tx_retries = 0, tx_failed = 0;
-+			u32 tx_retries = 0, tx_failed = 0, count;
- 
- 			if (!wcid)
- 				continue;
- 
--			tx_retries =
--				FIELD_GET(MT_TXFREE_INFO_COUNT, info) - 1;
-+			count = FIELD_GET(MT_TXFREE_INFO_COUNT, info);
-+			tx_retries = count ? count - 1 : 0;
- 			tx_failed = tx_retries +
- 				!!FIELD_GET(MT_TXFREE_INFO_STAT, info);
- 
+Here is the summary with links:
+  - [net] net: airoha: Add NULL check for of_reserved_mem_lookup() in airoha_qdma_init_hfwd_queues()
+    https://git.kernel.org/netdev/net/c/f9f25118faa4
+
+You are awesome, thank you!
 -- 
-2.45.2
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
