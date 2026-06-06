@@ -4,63 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB629CD8C88
-	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Jun 2026 02:10:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9778CD6E75
+	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Jun 2026 04:07:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kMLca7nfWY9RizQfqQEviPppjRfuz0UhEGaO/4cVevs=; b=ELSKdzBHzkxDmaNHXsF95bQ5uQ
-	VQCHcUmyBGv93RZhTnP0SZzN85JT6LrJYUTnVbH+rSbzNcoo8erB8wNACrVoCb5ALf8nbLlhkzV3L
-	cFm2wXN9n6zB+Q26tORRQSihlLSQ4hzdc2ztiBuDXiYCWlasTlj8yhhPfAHgigsh5VbWCs8lWyrXH
-	sjqqBU08zuY9BUUGoYpS5q9zO2fIXdiM7mS34v8tMFxV75iZQ3h9JvbWeCVM15IXDvB8zkOSLmTwC
-	uB+Rw5VH4bCgfR9PBWGurLpyN2f+5qGUP+YyJGGFIRz2cUolUFn8v/wLnL7R1BdS+ay9nJ7XchjRe
-	Uq2qNF4w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=1rjS832aE1oA+NWR2plR5pJJ8WRs2Vb19cfZDQa4g2Y=; b=S9ykIJNGoF4pMAY8ojuZCG2n2Y
+	qDvQuRCZxMQBoNMt2h3lOmu1HBY3MSok/OQjZriIcqt4IajpaSd7DSpUB2AeNBtjippNsxBWlklZg
+	JxzxoaJNIoe7Htmqt8pEdfhkdUbLsSbF81XByx/fiRzE+OVhOIuz/CAiKcVTxL4iHAYZa6hZ/7LIt
+	k4OkPvkU6g7D45akqcCPL4/V6gXUQnWWkI3j4GLfkvE+UtrvTRJIS0WXpullZBHgt3LG7dE+M8yGN
+	fzLJI84AUszBI3qtbW5Nz56A1DYxm3GQL0/iYAH/Pt/zsPmUCtimzAni5FJFoR10ZzHvVC5F3UMqp
+	HUHIaIdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVgUV-00000001OE8-3JSR;
-	Sat, 06 Jun 2026 02:10:27 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wViJa-00000001R0d-2vUX;
+	Sat, 06 Jun 2026 04:07:18 +0000
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVgUU-00000001ODh-2Jef;
-	Sat, 06 Jun 2026 02:10:26 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id D8A04441CC;
-	Sat,  6 Jun 2026 02:10:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B5B5F1F00893;
-	Sat,  6 Jun 2026 02:10:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780711825;
-	bh=kMLca7nfWY9RizQfqQEviPppjRfuz0UhEGaO/4cVevs=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=TfEVPsW2JDPmWdJxiQloAJKrWYcn3IRGJ6yfNo8yR35J7dWRDFDbOaS5l/Duu393s
-	 r61sP4XE9OxzRF3L2TvMvtCPVtG0h5Ra9cTPqTrSsZLOyLQ0ml2m9dpVfmL0CfEFm2
-	 ywl+PjirMHj7sUS/bAKuVauTatFDdExPcn7dEzpqCn8XPOTKQbnnPdnoy7pi5GDfOV
-	 v8PZ01Lu+CQBfaf+Kgl0lmFfCpfTjvsYzFAwvAAqwLgVyALQXaEEnPk+QGNkWTqEzd
-	 zk7o8yl41w5La+mgN8zQGebVZHqlF8dqKb2QvKyoPSPTablFn0J9XqamR5xjFK8duD
-	 OnilhwFDZ9uWg==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 198E43930A9C;
-	Sat,  6 Jun 2026 02:10:27 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1wViJY-00000001Qzm-1keT
+	for linux-mediatek@lists.infradead.org;
+	Sat, 06 Jun 2026 04:07:17 +0000
+Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-2bf18c30bb2so17861165ad.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 05 Jun 2026 21:07:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1780718835; x=1781323635; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=1rjS832aE1oA+NWR2plR5pJJ8WRs2Vb19cfZDQa4g2Y=;
+        b=CFi8GXERi4nu1UU2jNdSlBHaLXHgGY6EzGnJ1HBSYqcI7Bj9xB9PRjAeYbeSpGZMat
+         /5R+sEj/8un5XAuEtDCBpzqcj1gf5UzuP1GvS+t/XbpI3aSVwLoOZWtfD4lwLDD/ZjHH
+         uaMuSlnDxWkroynzqsrJToLIeDXQ5oolcYf2/qd8L031O7Tg3Q8wQcyMZ0XWUian6SYT
+         d2MeDGhm76yGGkm6SpIE0zN8WlR4aYu6RPK2XiljKfTvxxtroU8EtKr/zeqXylBzguTn
+         UCd/EzdHEbcT43jg0UzX3HTZ4h83gFyE/ORgmXs8b+8WbDFhCdz/81OeN5sqcg2oDq7D
+         BVZQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1780718835; x=1781323635;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=1rjS832aE1oA+NWR2plR5pJJ8WRs2Vb19cfZDQa4g2Y=;
+        b=WhMXkuTr0ln5EczNTZGjcV8nMirl23ClWpQdZbcXYsyr7LJu/+JztevmJT3iNvW+Ul
+         uqyjgxp+106T1PEC2eTb4e0S3VdetPn3GIlL2EtvHPwB3ZFmzuEKnmDAQXTSG+6ldUbT
+         uFlrFNz9NVHyGFqPvhwKZt1XXxA+8U73wPNL/AjW9n+AHTEM723GFaZJ9pKrQfCPdGz+
+         vBmF+yP41G3x3w7TGkzS+RVVwJTwX9saP9eB0XAmHIqkcu3ohTVYByinHuEUwbecPvvw
+         qUIYl7Udu/0ealy+G0b2xv7uVSiPByXBNLj/ytnohBNsczGF14vmtVFw870jNTW0Ox9H
+         1gDQ==
+X-Forwarded-Encrypted: i=1; AFNElJ/3QNid/4s8w3K5CUFQ8wp2fWq3HLhK07BeSrVmdQ23LJp6xqBVMs4DwQCC29daAo2cWAGDzuVx3Gw7DUXq9w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzezH9UdI7Ixcux44BF/9zMmdgOYw49xhHYOCxA/k25t+d/Gg5X
+	MGy0mDg27Vie1IjlJPVruulc9HmQNATsS+vYIkbxqCtJ6UDYxGesmtmU
+X-Gm-Gg: Acq92OHRSBYmt3LXJfNgsdC60Ol95P9+FGoUI3HZKrZEeLDLHfGsoeH1QLfcdEyCuo5
+	Dh10lCI+Z3n/BPT4O/6od9EaDsCY3ZNPWGcTZhm6VUuy3pkZh37KPm5sDDhF/n+FRifekqfgi/N
+	EApc9jQnAmnuxMVukHeWPt6ZMaaWtmYLR0tpVVqMFyBVYHacgHDq6dt+g5DPWW8RVKV4+ycMWVX
+	pEaz4ZpFnNTPETVZ67ayXOsc/BM+r7RZCCyn3AHlYVQwZTQigq0SUb4MobQpApsEEuhpL5lZ/XA
+	GXQnWRJtFCVEp8gnrL7KnTLEGkNcTF4qjZSEsVpSXn16dD/AXf9hK/3aYPelAGaWPnbXORY1UXz
+	wu4FgEmbHh6zIfeNISl0cHAnmcsit83j4P/nx2sNgNLTggs0Nq0yeCOpjOeKRK39BylOmt9FlPL
+	Kr9wZXUHr1bwzPsL+RJ2LsuuCpCN4oBXF62gyyLuR7bNotZ9U6e+K1Ww==
+X-Received: by 2002:a17:902:e78f:b0:2c0:a373:89bf with SMTP id d9443c01a7336-2c1e80f9975mr70654185ad.1.1780718835009;
+        Fri, 05 Jun 2026 21:07:15 -0700 (PDT)
+Received: from haichao.tail057a43.ts.net ([2001:da8:e000:1206:967f:7ce4:ec98:f08b])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2c164f84335sm107056905ad.19.2026.06.05.21.07.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 05 Jun 2026 21:07:14 -0700 (PDT)
+From: Ruoyu Wang <ruoyuw560@gmail.com>
+To: Liam Girdwood <lgirdwood@gmail.com>
+Cc: Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-sound@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Ruoyu Wang <ruoyuw560@gmail.com>
+Subject: [PATCH] ASoC: mediatek: mt8365: check suspend backup allocation
+Date: Sat,  6 Jun 2026 12:07:08 +0800
+Message-ID: <20260606040708.13-1-ruoyuw560@gmail.com>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next v9 0/6] net: airoha: Support multiple net_devices
- connected to the same GDM port
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <178071182563.3993660.16859528929943768907.git-patchwork-notify@kernel.org>
-Date: Sat, 06 Jun 2026 02:10:25 +0000
-References: <20260603-airoha-eth-multi-serdes-v9-0-5d476bc2f426@kernel.org>
-In-Reply-To: <20260603-airoha-eth-multi-serdes-v9-0-5d476bc2f426@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, ansuelsmth@gmail.com, benjamin.larsson@genexis.eu,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org, devicetree@vger.kernel.org, xuegang.lu@airoha.com,
- madhur.agrawal@airoha.com
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260605_210716_456924_8813CE37 
+X-CRM114-Status: GOOD (  10.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,61 +103,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+mt8365_afe_suspend() lazily allocates the register backup array and then
+stores register values into it. If devm_kcalloc() fails, the suspend path
+dereferences afe->reg_back_up in the backup loop.
 
-This series was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+Check the allocation result before using the array. Disable the main
+clock before returning so the error path balances the clock enable at the
+start of suspend.
 
-On Wed, 03 Jun 2026 08:00:14 +0200 you wrote:
-> EN7581 or AN7583 SoCs support connecting multiple external SerDes (e.g.
-> Ethernet or USB SerDes) to GDM3 or GDM4 ports via a hw arbiter that
-> manages the traffic in a TDM manner. As a result multiple net_devices can
-> connect to the same GDM{3,4} port and there is a theoretical "1:n"
-> relation between GDM ports and net_devices.
-> 
->            ┌─────────────────────────────────┐
->            │                                 │    ┌──────┐
->            │                         P1 GDM1 ├────►MT7530│
->            │                                 │    └──────┘
->            │                                 │      ETH0 (DSA conduit)
->            │                                 │
->            │              PSE/FE             │
->            │                                 │
->            │                                 │
->            │                                 │    ┌─────┐
->            │                         P0 CDM1 ├────►QDMA0│
->            │  P4                     P9 GDM4 │    └─────┘
->            └──┬─────────────────────────┬────┘
->               │                         │
->            ┌──▼──┐                 ┌────▼────┐
->            │ PPE │                 │   ARB   │
->            └─────┘                 └─┬─────┬─┘
->                                      │     │
->                                   ┌──▼──┐┌─▼───┐
->                                   │ ETH ││ USB │
->                                   └─────┘└─────┘
->                                    ETH1   ETH2
-> 
-> [...]
+Signed-off-by: Ruoyu Wang <ruoyuw560@gmail.com>
+---
+ sound/soc/mediatek/mt8365/mt8365-afe-pcm.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-Here is the summary with links:
-  - [net-next,v9,1/6] dt-bindings: net: airoha: Add GDM port ethernet child node
-    https://git.kernel.org/netdev/net-next/c/a4597204b681
-  - [net-next,v9,2/6] net: airoha: Remove private net_device pointer in airoha_gdm_dev struct
-    https://git.kernel.org/netdev/net-next/c/4408f5206809
-  - [net-next,v9,3/6] net: airoha: Support multiple net_devices for a single FE GDM port
-    https://git.kernel.org/netdev/net-next/c/a9c2ca61fec7
-  - [net-next,v9,4/6] net: airoha: Do not stop GDM port if it is shared
-    https://git.kernel.org/netdev/net-next/c/99b9d095d71e
-  - [net-next,v9,5/6] net: airoha: Introduce WAN device flag
-    https://git.kernel.org/netdev/net-next/c/7758cb462ff7
-  - [net-next,v9,6/6] net: airoha: Support multiple LAN/WAN interfaces for hw MAC address configuration
-    https://git.kernel.org/netdev/net-next/c/ef2aee987174
-
-You are awesome, thank you!
+diff --git a/sound/soc/mediatek/mt8365/mt8365-afe-pcm.c b/sound/soc/mediatek/mt8365/mt8365-afe-pcm.c
+index d01793394f225..74e4f53b31605 100644
+--- a/sound/soc/mediatek/mt8365/mt8365-afe-pcm.c
++++ b/sound/soc/mediatek/mt8365/mt8365-afe-pcm.c
+@@ -1978,6 +1978,10 @@ static int mt8365_afe_suspend(struct device *dev)
+ 		afe->reg_back_up =
+ 			devm_kcalloc(dev, afe->reg_back_up_list_num,
+ 				     sizeof(unsigned int), GFP_KERNEL);
++	if (!afe->reg_back_up) {
++		mt8365_afe_disable_main_clk(afe);
++		return -ENOMEM;
++	}
+ 
+ 	for (i = 0; i < afe->reg_back_up_list_num; i++)
+ 		regmap_read(regmap, afe->reg_back_up_list[i],
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.34.1
 
 
