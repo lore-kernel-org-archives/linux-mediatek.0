@@ -4,65 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBC18CD8C9F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jun 2026 09:32:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD29ECD8C9F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jun 2026 10:05:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ber3utn/8EUmJVjFuWAwn9vEtzDxpWGplyIMDowu99g=; b=hph3WHkeQZnr0FqYco8UdA1vlq
-	rmZyP5WVSvQD6VU8f+fybs6qrLfp/bOWHf7Db5Fon1Dz/npz1rNkxVPuNw5Thdx+XlSEY7oeUoEGw
-	0i1Nn6pn75Xg8BAJx6rnv1XyMAOdsij7sQUYaQwfcng2+tzz4tnkiJYEZ5xoQ4x2eOJGBnb50K6uB
-	Z4EwUpp0+kOhNtGv5+9ucIPzknzUeSX3kOS7OWpBKwSlzs2OY2xczqs/2XwcJ+GWAF0r4NlGhqki4
-	oHP/hhw5/+RBAex/n/TzE0KtJ499jIyXqkdR4dximSO/X4k1Clpt/MMm8ag+7wOyrSoEwEveJa1K+
-	bCFGAbyQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=9U+5fldVYmBvwp/O/A3JCN0H2APJJgaD0mE9E0vl4vk=; b=NVKN8pibY8KEFNPoLuaEbSghKj
+	hGmYm0l1qP8KKxM6RSurdhSpfrC5pjl9aD72U0TDrOAemevGhyT//x6/oYDtm9avd3TWXW6wMYU+O
+	v5wak/DrO1Npr6szM5HYZQTKN7mbINWkSHIQ3nv8Kj1Qm7Nt4rheo8d+Ma2OUcjgpm8/F2WYE28qz
+	9HFwJAla+5pWx49F48eoVO86ExsdW5YCbHMcNanq8m4Mls+9v4kKggzHqNF2bHLfxK8UHBTv9XGrh
+	IldBoUhDXYEkoLh/GEOBM9Z+9Hq/3OMQdkO3twfgFagKiPHP/yFmSZmPe+UhwaIHprDxSrb00xYY9
+	/3uQ2ykw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWWLL-00000003Bge-3vnI;
-	Mon, 08 Jun 2026 09:32:27 +0000
+	id 1wWWr2-00000003GnU-3iaU;
+	Mon, 08 Jun 2026 10:05:12 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWWLK-00000003Bfz-1g5E;
-	Mon, 08 Jun 2026 09:32:26 +0000
+	id 1wWWr0-00000003Gmv-2lXu;
+	Mon, 08 Jun 2026 10:05:10 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id BC03E6001D;
-	Mon,  8 Jun 2026 09:32:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E8C351F00893;
-	Mon,  8 Jun 2026 09:32:24 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id E478B6001D;
+	Mon,  8 Jun 2026 10:05:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1F99E1F00893;
+	Mon,  8 Jun 2026 10:05:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780911145;
-	bh=ber3utn/8EUmJVjFuWAwn9vEtzDxpWGplyIMDowu99g=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Wx0nR9mok/6CM2+NSHU3FRGlv4mFmxhM9+nz/9D9zYxNnja3GH/7MC2DD90ujMk2i
-	 gSBpBUixI1ubPXnguTHRsGKMQ6gP5MJFR14oM77wXK6EKUsiJIwOlvWxHvhWvGXtdX
-	 6ttNKVy7kDYbCO4MKiyKGM2NTYDvXKB8d/KXMaNNZpZXAEFFTsA3gDcyhtc9uvhFDG
-	 F7imx4OXYr+skEUgOfBGkSLZGC/nZKciFw28FDIjFgGk4fgo0pyVqUPDSzIa33FBrW
-	 mLt8vQKwtKSNoFF8tcLbL4CqwWE8vPP2QZV6DYG61HzUFftORZiWuwhIjqriCPlCOh
-	 aJ9JWlkShUhhg==
-Date: Mon, 8 Jun 2026 11:32:23 +0200
+	s=k20260515; t=1780913108;
+	bh=9U+5fldVYmBvwp/O/A3JCN0H2APJJgaD0mE9E0vl4vk=;
+	h=From:Date:Subject:To:Cc;
+	b=MKP81Qz8m1T/iFQMx245ifNkvXfpskLsBHqePTCT28Q6mvhDJNetcOvliMhSlWTgr
+	 uRGeOcaANpRLIpFWfd6Evso0uHvyOX7EZotNKAnlZ/h4bNtuakgWFKe4hFBIMmYp+G
+	 VzzctX9eAr01FpWzEv3jetpV9egmlUp8YWIpeoLxkxXWz9FWuTkPLFV8V0ViAEykqC
+	 WH82cBvtbL5202KQ3fLkpWr/YQ1XnEd+RDpVrnpLm0TbBmkZempjh06iS+mjI9qSV8
+	 nCgYSGx8tT0LsF3JntJGc6FtCt6Mt193UZuL/rFUhXBcV9cew6zz9cwLLpCXvSPQ3q
+	 Be9Y0hE7tGI9A==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	Madhur Agrawal <madhur.agrawal@airoha.com>
-Subject: Re: [PATCH net-next v2] net: airoha: add ethtool priv_flags support
- for LAN/WAN and GDM2 loopback
-Message-ID: <aiaMJ6i4o3olQtu9@lore-desk>
-References: <20260607-airoha-ethtool-priv_flags-v2-1-742c7aa1e182@kernel.org>
- <33c3a87d-ad97-4f6a-8f76-ebab80c496ac@lunn.ch>
- <aiWzaV1f1Fpc2rhJ@lore-desk>
- <e8f3d24a-985b-4bde-9f51-2d5ae3d25b01@lunn.ch>
+Date: Mon, 08 Jun 2026 12:04:40 +0200
+Subject: [PATCH net] net: airoha: Add retry mechanism to
+ airoha_qdma_set_trtcm_param()
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="adOSsypNp6f03yZM"
-Content-Disposition: inline
-In-Reply-To: <e8f3d24a-985b-4bde-9f51-2d5ae3d25b01@lunn.ch>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260608-airoha_qdma_set_trtcm_param-retry-fix-v1-1-f07704f0d8c5@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2NQQrCMBAAv1L27EIMNBC/IhK2zdbuIWndLKKU/
+ t3gceYwc0BjFW5wGw5QfkuTrXa4XgaYV6pPRsmdwTsfXHAjkui2UnrlQqmxJVObS9pJqaCy6Rc
+ X+SDF7OMYpjj5BXprV+76/7lDZYPHef4ArEdXMXwAAAA=
+X-Change-ID: 20260605-airoha_qdma_set_trtcm_param-retry-fix-a9d2956b9b2f
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Brown Huang <brown.huang@airoha.com>
+X-Mailer: b4 0.14.3
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,52 +75,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Brown Huang <brown.huang@airoha.com>
 
---adOSsypNp6f03yZM
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+CPU accesses QDMA via the bus. When multiple modules are using the bus
+simultaneously, CPU access to QDMA may encounter bus timeouts and fails,
+resulting in QDMA configuration failures and potentially causing packet
+transmission issues. In order to mitigate the issue, introduce a retry
+mechanism to airoha_qdma_set_trtcm_param routine in order to ensure the
+configuration is correctly applied to the hardware.
 
-> On Sun, Jun 07, 2026 at 08:07:37PM +0200, Lorenzo Bianconi wrote:
-> > > > When a GDM3/GDM4 port is set to WAN mode, enable GDM2 loopback to
-> > > > support hardware QoS. Conversely, when switching back to LAN mode,
-> > > > disable the GDM2 loopback and restore the default forwarding
-> > > > configuration.
-> > >=20
-> > > Why not just use the presence of an off loadable qdisc as the
-> > > indicator to change mode?
-> >=20
-> > Hi Andrew,
-> >=20
-> > Interesting, can you please provide more details about you mean?
->=20
-> You say you need it to be in loopback mode in order to support
-> hardware QoS. You configure QoS by using a qdisc, and something like
-> mqprio, tcf etc. So when the user configures QoS, you can see if the
-> hardware supports the request QoS. If so, swap to loopback mode and
-> offload the QoS function to the hardware. If the hardware does not
-> support the requested QoS, leave it in software and keep with LAN
-> mode.
+Fixes: ef1ca9271313b ("net: airoha: Add sched HTB offload support")
+Signed-off-by: Brown Huang <brown.huang@airoha.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/ethernet/airoha/airoha_eth.c | 21 +++++++++++++++------
+ 1 file changed, 15 insertions(+), 6 deletions(-)
 
-ack thx, nice idea. I will rework this patch in order to rely on tc to
-configure GDM3/GDM4 ports in LAN/WAN mode.
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index eab6a98d62b9..aaf7d8c8ccd3 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -2493,14 +2493,23 @@ static int airoha_qdma_set_trtcm_param(struct airoha_qdma *qdma, int channel,
+ 		     FIELD_PREP(TRTCM_METER_GROUP_MASK, group) |
+ 		     FIELD_PREP(TRTCM_PARAM_INDEX_MASK, idx) |
+ 		     FIELD_PREP(TRTCM_PARAM_RATE_TYPE_MASK, mode);
++	int i;
+ 
+-	airoha_qdma_wr(qdma, REG_TRTCM_DATA_LOW(addr), val);
+-	airoha_qdma_wr(qdma, REG_TRTCM_CFG_PARAM(addr), config);
++	for (i = 0; i < 100; i++) {
++		u32 data;
+ 
+-	return read_poll_timeout(airoha_qdma_rr, val,
+-				 val & TRTCM_PARAM_RW_DONE_MASK,
+-				 USEC_PER_MSEC, 10 * USEC_PER_MSEC, true,
+-				 qdma, REG_TRTCM_CFG_PARAM(addr));
++		airoha_qdma_wr(qdma, REG_TRTCM_DATA_LOW(addr), val);
++		wmb();
++		airoha_qdma_wr(qdma, REG_TRTCM_CFG_PARAM(addr), config);
++		if (airoha_qdma_get_trtcm_param(qdma, channel, addr, param,
++						mode, &data, NULL))
++			continue;
++
++		if (data == val)
++			break;
++	}
++
++	return i == 100 ? -EBUSY : 0;
+ }
+ 
+ static int airoha_qdma_set_trtcm_config(struct airoha_qdma *qdma, int channel,
 
-Regards,
-Lorenzo
+---
+base-commit: 4aacf509e537a711fa71bca9f234e5eb6968850e
+change-id: 20260605-airoha_qdma_set_trtcm_param-retry-fix-a9d2956b9b2f
 
->=20
-> 	Andrew
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
---adOSsypNp6f03yZM
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaiaMJwAKCRA6cBh0uS2t
-rK2bAPwIvDBSx3qJGo2xGvPkpy2z4KzEamk7juLxscsrz/+wtQEAl3TTMKLxFV09
-y3YJwHEv243V0HLZH15bEMGGSDKoWws=
-=rM/X
------END PGP SIGNATURE-----
-
---adOSsypNp6f03yZM--
 
