@@ -4,60 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68417CD8C9F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jun 2026 09:29:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBC18CD8C9F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jun 2026 09:32:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fOAG6RO9IE4nsTI/RS9XCESeKjsw9dzfXz32mptaQog=; b=JwKMId+eXpSFw3H3FxlRAX2RzO
-	dShkb5gLL5DlIDMP5oClvGc04QmLF/h3V2HSxArM2j47nCyge69vKrmVLyB/bbcwvvBgkmmtMrYeH
-	odxURzW9lJuk7dJwNog5i22REYMXJAnuinVaawMf65WBjfNj9zOK72ZNEl0sl2fe82hjUanPP85eA
-	mpaca2PvI6ZiC349Dhotdyrz7sTEy7gp87U2fqYfXpBI/MVLckD7JRCbO1tUZP66kauDES1yA7lyr
-	OBE8NWvrx758SfQffeTYf9skAxm8LdZbs61FiaFL9VP9SoRuIPrLWDDYyo5eSdCU3S8UW3STJSr50
-	noCr4sFw==;
+	bh=ber3utn/8EUmJVjFuWAwn9vEtzDxpWGplyIMDowu99g=; b=hph3WHkeQZnr0FqYco8UdA1vlq
+	rmZyP5WVSvQD6VU8f+fybs6qrLfp/bOWHf7Db5Fon1Dz/npz1rNkxVPuNw5Thdx+XlSEY7oeUoEGw
+	0i1Nn6pn75Xg8BAJx6rnv1XyMAOdsij7sQUYaQwfcng2+tzz4tnkiJYEZ5xoQ4x2eOJGBnb50K6uB
+	Z4EwUpp0+kOhNtGv5+9ucIPzknzUeSX3kOS7OWpBKwSlzs2OY2xczqs/2XwcJ+GWAF0r4NlGhqki4
+	oHP/hhw5/+RBAex/n/TzE0KtJ499jIyXqkdR4dximSO/X4k1Clpt/MMm8ag+7wOyrSoEwEveJa1K+
+	bCFGAbyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWWID-00000003BLb-3F2N;
-	Mon, 08 Jun 2026 09:29:13 +0000
+	id 1wWWLL-00000003Bge-3vnI;
+	Mon, 08 Jun 2026 09:32:27 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWWIC-00000003BLN-432R;
-	Mon, 08 Jun 2026 09:29:13 +0000
+	id 1wWWLK-00000003Bfz-1g5E;
+	Mon, 08 Jun 2026 09:32:26 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4ABDE6001D;
-	Mon,  8 Jun 2026 09:29:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 76CB01F00893;
-	Mon,  8 Jun 2026 09:29:11 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id BC03E6001D;
+	Mon,  8 Jun 2026 09:32:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E8C351F00893;
+	Mon,  8 Jun 2026 09:32:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780910952;
-	bh=fOAG6RO9IE4nsTI/RS9XCESeKjsw9dzfXz32mptaQog=;
+	s=k20260515; t=1780911145;
+	bh=ber3utn/8EUmJVjFuWAwn9vEtzDxpWGplyIMDowu99g=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=j51Qiku0GklR6YKD+8NSuaIOjXBwv8dB96gffFhJ19vSdtctstN0LUdBBn1ovJzj8
-	 rI/KOmk9Wz5Zdl0Nn1RA0KbKwXe2Sw5GqX8gikRsYI/01PYmdhFqAygt0u895iZRCA
-	 hzqWFdCTbLAHUTsP/mpt5wUoqZJAhZ94j/BfmDZgnzOg1seKGA1CZe75bDxDLnhdqO
-	 2lVPpCJ0zaNrEuUTlJZX9kSMLWBhRCrisiaqpc0mxv1BFIMM3EEVvb/gEBP+jK0Fnh
-	 M2qILM6BArN0gG5obghgg0qdho1D+p3VX7T4Sk3SAxtc1BZa6eV0weNcc7Q2MM0AUl
-	 s4JfELEaQy2cA==
-Date: Mon, 8 Jun 2026 11:29:09 +0200
+	b=Wx0nR9mok/6CM2+NSHU3FRGlv4mFmxhM9+nz/9D9zYxNnja3GH/7MC2DD90ujMk2i
+	 gSBpBUixI1ubPXnguTHRsGKMQ6gP5MJFR14oM77wXK6EKUsiJIwOlvWxHvhWvGXtdX
+	 6ttNKVy7kDYbCO4MKiyKGM2NTYDvXKB8d/KXMaNNZpZXAEFFTsA3gDcyhtc9uvhFDG
+	 F7imx4OXYr+skEUgOfBGkSLZGC/nZKciFw28FDIjFgGk4fgo0pyVqUPDSzIa33FBrW
+	 mLt8vQKwtKSNoFF8tcLbL4CqwWE8vPP2QZV6DYG61HzUFftORZiWuwhIjqriCPlCOh
+	 aJ9JWlkShUhhg==
+Date: Mon, 8 Jun 2026 11:32:23 +0200
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>,
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net-next] net: airoha: Use int instead of atomic_t for
- qdma users counter
-Message-ID: <aiaLZVvfsbj3zTgr@lore-desk>
-References: <20260606-airoha_qdma_users-no-atomic-v1-1-86e2d6a1bfaf@kernel.org>
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	Madhur Agrawal <madhur.agrawal@airoha.com>
+Subject: Re: [PATCH net-next v2] net: airoha: add ethtool priv_flags support
+ for LAN/WAN and GDM2 loopback
+Message-ID: <aiaMJ6i4o3olQtu9@lore-desk>
+References: <20260607-airoha-ethtool-priv_flags-v2-1-742c7aa1e182@kernel.org>
+ <33c3a87d-ad97-4f6a-8f76-ebab80c496ac@lunn.ch>
+ <aiWzaV1f1Fpc2rhJ@lore-desk>
+ <e8f3d24a-985b-4bde-9f51-2d5ae3d25b01@lunn.ch>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="m6PvL9voaHHuHzEe"
+	protocol="application/pgp-signature"; boundary="adOSsypNp6f03yZM"
 Content-Disposition: inline
-In-Reply-To: <20260606-airoha_qdma_users-no-atomic-v1-1-86e2d6a1bfaf@kernel.org>
+In-Reply-To: <e8f3d24a-985b-4bde-9f51-2d5ae3d25b01@lunn.ch>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,87 +78,51 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---m6PvL9voaHHuHzEe
+--adOSsypNp6f03yZM
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> QDMA users counter is always accessed holding RTNL lock so we do not
-> require atomic_t for it.
+> On Sun, Jun 07, 2026 at 08:07:37PM +0200, Lorenzo Bianconi wrote:
+> > > > When a GDM3/GDM4 port is set to WAN mode, enable GDM2 loopback to
+> > > > support hardware QoS. Conversely, when switching back to LAN mode,
+> > > > disable the GDM2 loopback and restore the default forwarding
+> > > > configuration.
+> > >=20
+> > > Why not just use the presence of an off loadable qdisc as the
+> > > indicator to change mode?
+> >=20
+> > Hi Andrew,
+> >=20
+> > Interesting, can you please provide more details about you mean?
+>=20
+> You say you need it to be in loopback mode in order to support
+> hardware QoS. You configure QoS by using a qdisc, and something like
+> mqprio, tcf etc. So when the user configures QoS, you can see if the
+> hardware supports the request QoS. If so, swap to loopback mode and
+> offload the QoS function to the hardware. If the hardware does not
+> support the requested QoS, leave it in software and keep with LAN
+> mode.
 
-Please drop this patch since I need to modify it to address Andrew's request
-about LAN/WAN configuration.
+ack thx, nice idea. I will rework this patch in order to rely on tc to
+configure GDM3/GDM4 ports in LAN/WAN mode.
 
 Regards,
 Lorenzo
 
 >=20
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  drivers/net/ethernet/airoha/airoha_eth.c | 4 ++--
->  drivers/net/ethernet/airoha/airoha_eth.h | 3 +--
->  2 files changed, 3 insertions(+), 4 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
-net/airoha/airoha_eth.c
-> index 5a8e84fa9918..a5fe08864fa3 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -1809,7 +1809,7 @@ static int airoha_dev_open(struct net_device *netde=
-v)
->  	airoha_qdma_set(qdma, REG_QDMA_GLOBAL_CFG,
->  			GLOBAL_CFG_TX_DMA_EN_MASK |
->  			GLOBAL_CFG_RX_DMA_EN_MASK);
-> -	atomic_inc(&qdma->users);
-> +	qdma->users++;
-> =20
->  	if (!airoha_is_lan_gdm_dev(dev) &&
->  	    airoha_ppe_is_enabled(qdma->eth, 1))
-> @@ -1863,7 +1863,7 @@ static int airoha_dev_stop(struct net_device *netde=
-v)
->  					    REG_GDM_FWD_CFG(port->id),
->  					    FE_PSE_PORT_DROP);
-> =20
-> -	if (atomic_dec_and_test(&qdma->users)) {
-> +	if (!--qdma->users) {
->  		airoha_qdma_clear(qdma, REG_QDMA_GLOBAL_CFG,
->  				  GLOBAL_CFG_TX_DMA_EN_MASK |
->  				  GLOBAL_CFG_RX_DMA_EN_MASK);
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
-net/airoha/airoha_eth.h
-> index 8f42973f9cf5..e89c2dff411f 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.h
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
-> @@ -525,8 +525,7 @@ struct airoha_irq_bank {
->  struct airoha_qdma {
->  	struct airoha_eth *eth;
->  	void __iomem *regs;
-> -
-> -	atomic_t users;
-> +	int users;
-> =20
->  	struct airoha_irq_bank irq_banks[AIROHA_MAX_NUM_IRQ_BANKS];
-> =20
->=20
-> ---
-> base-commit: 903db046d5579bef0ea699eae4b279dd6455fc9f
-> change-id: 20260606-airoha_qdma_users-no-atomic-0750cc2b42f1
->=20
-> Best regards,
-> --=20
-> Lorenzo Bianconi <lorenzo@kernel.org>
->=20
+> 	Andrew
 
---m6PvL9voaHHuHzEe
+--adOSsypNp6f03yZM
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaiaLZQAKCRA6cBh0uS2t
-rO+6APwLDYmZI/JomfAanIi6AplM1iKDlhcwYtTDEJr1cs8BdgD/eLsP003LFzDw
-Bpn+4cLIONPJvzfc5X7KJC8GwM94vQc=
-=VKAi
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaiaMJwAKCRA6cBh0uS2t
+rK2bAPwIvDBSx3qJGo2xGvPkpy2z4KzEamk7juLxscsrz/+wtQEAl3TTMKLxFV09
+y3YJwHEv243V0HLZH15bEMGGSDKoWws=
+=rM/X
 -----END PGP SIGNATURE-----
 
---m6PvL9voaHHuHzEe--
+--adOSsypNp6f03yZM--
 
