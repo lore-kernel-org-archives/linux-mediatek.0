@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58AD9CD8C9D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jun 2026 16:15:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CF7ACD8C92
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jun 2026 16:17:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:References:MIME-Version:In-Reply-To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U87KOvIaXEfWkmCPdpDSCM+l7v+E+UTZwehM8drO+VA=; b=vZ804Y+kQZvc+Y7yh284SZd9E1
-	eSGXWqrsWd5pakkSM+F8MznaTAIsBl1wL6G4QM+SelKHCBtuapFWxWVV1XWubEOK3ZZCQLUuZpS8w
-	8jDyvBpRZdO40VZDSSHs+KaS5813qYR1xCil1r/laZwbIcCAPnhM6gBKbIDh7DkzbrKQGetDn3Tq9
-	Qx5idHazslbUQtypB/UuZolJ5G8jQx6hlZSHH08iu3GypbWBmXDlxrJuRQfqh9+eyuYj/Kw0tpzkh
-	PsiHwE0giExQEQags1kNyjfAjdybz6IYxke2aSZ3uNpy4IGU5GFFKK2PXea7bTMEpYPGSAYNgtlaF
-	pU3PoBhw==;
+	bh=WTtvSs/e4atXwoKhD09E3lWjpJ5mSO88VMWBPo2Qa+Q=; b=sTpeRSsTXfgh2OKqJBBX7VuLdf
+	6Gm2Qn2IvOQHCIdMv1/zYg5fKxC4jXIrxTYhU5q+MinmQUA2qjF4+/3DtI2nKapnPoWyzjUhwzUKp
+	zegPNHexlj01ArmLC5Cf2yo4gSzGhvij35T5hBryj6T0C/ZrOT2UFQ+orQgE53wN/sP4JBVA7C997
+	vUE/CG1H0JDRmBdO3WlqF3RUrWaWT4uQrl+O0mJgIPTeB0Y7Ha5hKH3gg0c0VN6IqP6UrX30YPawY
+	Myd0NP16wqZYEnbVre1AyO+7XLbTa+Q+D7MIrMjOApWXPYB+VuQYvBQMqWgjDsUe2FdJlVLBKT5Hm
+	U9o0bung==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWcdj-000000042jj-10Ik;
-	Mon, 08 Jun 2026 16:15:51 +0000
+	id 1wWcf5-000000042zz-1iL1;
+	Mon, 08 Jun 2026 16:17:15 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWcdi-000000042jO-01hM
+	id 1wWcf4-000000042zm-49pj
 	for linux-mediatek@lists.infradead.org;
-	Mon, 08 Jun 2026 16:15:50 +0000
+	Mon, 08 Jun 2026 16:17:15 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4EBD9601F1
-	for <linux-mediatek@lists.infradead.org>; Mon,  8 Jun 2026 16:15:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0422A1F00898
-	for <linux-mediatek@lists.infradead.org>; Mon,  8 Jun 2026 16:15:49 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 6F61C601D8
+	for <linux-mediatek@lists.infradead.org>; Mon,  8 Jun 2026 16:17:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2599A1F00898
+	for <linux-mediatek@lists.infradead.org>; Mon,  8 Jun 2026 16:17:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780935349;
-	bh=U87KOvIaXEfWkmCPdpDSCM+l7v+E+UTZwehM8drO+VA=;
+	s=k20260515; t=1780935434;
+	bh=WTtvSs/e4atXwoKhD09E3lWjpJ5mSO88VMWBPo2Qa+Q=;
 	h=From:In-Reply-To:References:Date:Subject:To:Cc;
-	b=E+13TOU7YgvmeavzIrLGwPocfSBlIRC7JM36vRUTvHbVbOFY58TRUNH+IiEJQB2Gk
-	 velx8lPMXyW+QEqcsTM9DXHEVGC0E0b/IuvwlhytoCTSoJ1h+ZUkt6Y3vN1GTX1+RU
-	 4JH7EMDJqLiB0rBDYIfUOXBwWt8eZzPwqvL4dcTfNx1ykgRz1s+0MsvbY6QT6/MblV
-	 0uewjjKrGM8mO04hGoItolaQ5tGFhNdmyEDu/FeTOY5QAiFV4io0wVsf9XiscWFakn
-	 mfkq3eCkuLHuvykpWXQTgcbssEcbQFpif0GpQNGcRt7wGKUuhP+WZk+HsGQfrmS2bx
-	 gcNs9GTDoGHAg==
-Received: by mail-dl1-f44.google.com with SMTP id a92af1059eb24-138129a622dso692066c88.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 08 Jun 2026 09:15:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AFNElJ/uqAHbcSmtfvP8iCA0DQT6s5VZzPMZySQB5WZ02bYgTjiDRpJZKMiF+lPmSe/kUMjIaJvND3/K7cWSXWYSEg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxl5EtMXRzGBbvd90wATso3A3oNnEZLhTZJnCkKxbmdoGVKUTiv
-	42KsB3c4JQG98nFW9MNBVec9Vlt6ki+exr/HFbXXnnQZplEX+qYo1/gOyJ4+F6NZv16mfPlq582
-	CZfs1UJLFJupQjUHczTea1dCpgYIM+GxUg9/6L9n6Gg==
-X-Received: by 2002:a05:7022:3d04:b0:137:eda3:e5a9 with SMTP id
- a92af1059eb24-13806720e38mr8578839c88.28.1780935348033; Mon, 08 Jun 2026
- 09:15:48 -0700 (PDT)
+	b=LyueLEj7jp8yMu1AEQixDI8q4B3w+XWSiIw6WEYpDkY3cuAaHkVs+Gkv4r3oFQ+nE
+	 j2kEitMrOypDilGIkywdHYwTiG54nerTMKRg+wFacTquoygRP9xid7cpz+jTJSKgyW
+	 +abDJZazjpsyZjStWHiiW/goTyCBX6IkYG8xY8+2fwLgB6kacNDSnOUhIlgELABJ8H
+	 xljLDTpbnIBYx/FiATjwXyRPT3p9YhztzfUvwTF4kqjYUueHxZKf/ysMkp7zxVHY++
+	 dIwlZTpl2ALCGozXK+SRCdBONQkltTbaUrMFKqfaNg83xgGZ4OGeu5bHwlG5KZMyCF
+	 GonMhW5EFkO4g==
+Received: by mail-lf1-f51.google.com with SMTP id 2adb3069b0e04-5aa63628d26so3647729e87.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 08 Jun 2026 09:17:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AFNElJ8wiqGDQ6+gHttCzM6wCI1IW8VHf4PWlgCDvCupqRoDBwnhr+36xEbk1C2gQLisOpw/Qm3Zqdwv4FwKavDI0Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzaNNcnyP8kaTqx0NLPAs1DQzMaDsYeId1la/Rz3QE4fFYa3SbN
+	hSORWGdyJUlmAp79NYB8kcWR0fj03dkVkMBB7zuQWVx6T69tbBwi7Is+nwR48pj/2j9qt6xNwuB
+	TYz2usMxUHbL/YTSsQbiRAbmdhlDSJle4lNQeh0P9Uw==
+X-Received: by 2002:a05:6512:135a:b0:5aa:74f8:72f4 with SMTP id
+ 2adb3069b0e04-5aa87beffabmr3825436e87.32.1780935432883; Mon, 08 Jun 2026
+ 09:17:12 -0700 (PDT)
 Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Mon, 8 Jun 2026 11:15:45 -0500
+ HTTPREST; Mon, 8 Jun 2026 09:17:09 -0700
 Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Mon, 8 Jun 2026 11:15:44 -0500
+ HTTPREST; Mon, 8 Jun 2026 09:17:09 -0700
 From: Bartosz Golaszewski <brgl@kernel.org>
-In-Reply-To: <20260607001654.1439480-18-mikhail.kshevetskiy@iopsys.eu>
+In-Reply-To: <20260607001654.1439480-17-mikhail.kshevetskiy@iopsys.eu>
 MIME-Version: 1.0
-References: <20260607001654.1439480-1-mikhail.kshevetskiy@iopsys.eu> <20260607001654.1439480-18-mikhail.kshevetskiy@iopsys.eu>
-Date: Mon, 8 Jun 2026 11:15:44 -0500
-X-Gmail-Original-Message-ID: <CAMRc=MdG+Q+7p7r9t1qTAVBPEP4UWx98g6igSnrR9MBGx4+WbA@mail.gmail.com>
-X-Gm-Features: AVVi8CeehSwizvVfI-4XqLm19u4Xy3rLoafM6ZSuZ51yo6ba5Mu-K9LrhjWFHnY
-Message-ID: <CAMRc=MdG+Q+7p7r9t1qTAVBPEP4UWx98g6igSnrR9MBGx4+WbA@mail.gmail.com>
-Subject: Re: [PATCH 17/18] pinctrl: airoha: prepare for en7523 adding
+References: <20260607001654.1439480-1-mikhail.kshevetskiy@iopsys.eu> <20260607001654.1439480-17-mikhail.kshevetskiy@iopsys.eu>
+Date: Mon, 8 Jun 2026 09:17:09 -0700
+X-Gmail-Original-Message-ID: <CAMRc=MdWhfR0gQz+cJsks_-L0+fKKXGPg1FKDqt8dSSGr1EA9Q@mail.gmail.com>
+X-Gm-Features: AVVi8CdSgzI-OCu4SAMZh4v6VzPB8Cgbp2XhrMRq6YuwW3nSlK1BMg5J-5Z-maM
+Message-ID: <CAMRc=MdWhfR0gQz+cJsks_-L0+fKKXGPg1FKDqt8dSSGr1EA9Q@mail.gmail.com>
+Subject: Re: [PATCH 16/18] pinctrl: airoha: an7583: remove an7583 prefix from
+ variable names
 To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
 Cc: Linus Walleij <linusw@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
 	Lorenzo Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -88,18 +89,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 7 Jun 2026 02:16:53 +0200, Mikhail Kshevetskiy
+On Sun, 7 Jun 2026 02:16:52 +0200, Mikhail Kshevetskiy
 <mikhail.kshevetskiy@iopsys.eu> said:
-> en7523 a bit differs from an7581/an7583. It has different register
-> offsets and slightly different bitfield masks.
->
-> Let's adapt common header and existing drivers for the future addition
-> of en7523.
+> We have only an7583 specific code in the pinctrl-an7583 kernel module,
+> so 'an75831_' prefix is not necessary anymore. Remove it.
 >
 > Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
 > ---
 
-Looks good to me.
-
-Acked-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Reviewed-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
 
