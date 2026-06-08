@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4A36CD6E79
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jun 2026 21:56:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71CEBCD8CA7
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jun 2026 22:46:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0TDTgI6ajCuMM2ET04h05guwpbF+9TqbCtf0yb5X4O4=; b=AJ0nWx7rfI4iLyKNNhRcf3qnrG
-	4hEr3Mx5A7vK1tAGocZAaORTTlpEDL5bDp2cbWXNUWAZaOt4E/CU5saJYLuGdMAOFnE2en2hus4aX
-	IJo4AaY2u9sJULyMntpzXg/wr8DrDkjn4XaMQVXKK+J+hMOn4ZAyoJRfxL/UVTuXMsunJz8WSkut5
-	aOrvjRbzcV1H5H7+NW+y2weVIgwNNUkfUg22j71gcKEA5Sg0S9qFkxQ7SZo+IIsdl7GeRm0vXut8r
-	tz6MfgG++z7NU5lYAicf8TjccVtWbDLRVb9xjgGwk0OpOZhDz3DzmxLjDRFqTQ79V9nAn8d4fSaVO
-	/s8cZnwA==;
+	bh=B3T4j7OBsymsUW8sk7AIgEhfmNfH3xykTHDf4YdxftU=; b=tMsQ5/IqMwLR0cyIjmiGODH3QJ
+	gXFFb44qmoEJIim+hb3M6pc/feizKKgiWB4c/AmwoybP624Nz5+K0b8gcy6nCcJ25STUGGgSeuZOc
+	a7a8Ue1KMQ6xCFZRmxGdUCd4URwIBaL6ZmYidtmlROhBnE6pVRRQ58u5lbhOd2IUGvR9OvDZe4LCd
+	51y1WDTRYh0C8Huq3+M212wEHGRwK+ASo5/1cnSxh3rLaj0TrIv7tJectuNOnFICEWZnvnyBVToHh
+	GWuLYVlnq81DdUTmyymYNaAuihjbp2E8f0LWfQdcGaPRoz518yaFxYb16gZ3Q+THvS9b9bRfV1e/N
+	UMKrTLZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWhxI-00000004SjU-2KrN;
-	Mon, 08 Jun 2026 21:56:24 +0000
+	id 1wWijl-00000004VUV-496D;
+	Mon, 08 Jun 2026 22:46:30 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWhxH-00000004SjA-0Owd
+	id 1wWijl-00000004VUG-0Kww
 	for linux-mediatek@lists.infradead.org;
-	Mon, 08 Jun 2026 21:56:23 +0000
+	Mon, 08 Jun 2026 22:46:29 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 749AC437C8
-	for <linux-mediatek@lists.infradead.org>; Mon,  8 Jun 2026 21:56:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5873C1F00898
-	for <linux-mediatek@lists.infradead.org>; Mon,  8 Jun 2026 21:56:22 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 8397A43E17
+	for <linux-mediatek@lists.infradead.org>; Mon,  8 Jun 2026 22:46:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 675011F0089B
+	for <linux-mediatek@lists.infradead.org>; Mon,  8 Jun 2026 22:46:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780955782;
-	bh=0TDTgI6ajCuMM2ET04h05guwpbF+9TqbCtf0yb5X4O4=;
+	s=k20260515; t=1780958788;
+	bh=B3T4j7OBsymsUW8sk7AIgEhfmNfH3xykTHDf4YdxftU=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=lAIgMewmy2AqrOVitnE3g9ROOWy6QFMGahxL4x3X7AiV48Y1UoVpFJDP2+8f3sQlQ
-	 bidlXC38fBDBzNMHM9EpBriCsyujrcWYkwZ7+Pnqu0d74mwIKoABVhELattqYP6hdA
-	 wHWVHVyrNBHSNMfy0ZeoBBG5RnH/DGAcfMg+0whFVCW0mFBCVD9NW2VkuZpWdcfGyr
-	 eo5ZVAWVl4qWeZTT1SoIG50hnNAbkN4228k1svyNX2pXkIn2kiNiQ44qbVn1MvucV5
-	 ECAHPP6gBC/GcVy7AiMWI0QIp99nwBTKQT+4vyN2POXnS+VYzZbmzZGJz3KpNG3lEc
-	 HZjcNQmMENbgA==
-Received: by mail-lf1-f45.google.com with SMTP id 2adb3069b0e04-5aa61503fdaso5053216e87.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 08 Jun 2026 14:56:22 -0700 (PDT)
-X-Gm-Message-State: AOJu0Yx6uAVXZuHhkzzHoNZSLbBLKZAJzeQafRiRWMUBtEPqVx5gEz5v
-	liNVoPT7D9FxQqAmyc3nZ9rtWUEZm5jJFDImAIvEIgYQidTNmo+YQAub/KjdooOx6szlbMZieBc
-	cG0yVQKfibQeWOooo7ZTE3yF6MgpWGEI=
-X-Received: by 2002:ac2:51d2:0:b0:5aa:6a11:3a29 with SMTP id
- 2adb3069b0e04-5aa8865d774mr3483769e87.3.1780955781186; Mon, 08 Jun 2026
- 14:56:21 -0700 (PDT)
+	b=SPcmg9gSpqzLhPQ4DUxzeLr6C6gvQ+2sHHktTS9Sq3n8C9ba1o423+s2T+OkBEwee
+	 NSQhMGqUYw0rMBAxx6zzm+3AvPSldX5QtCcGfRRWGN4JyDAEvCCSLm9fXFa8YO3I1j
+	 IEUGelLtoIcqdmVt5XMkMY+qWrxP+xt+QR8Ez5I3Unk3FYBCWZNiEaP2Ul6eI7EtVX
+	 boGc/VxU6fOvh4VTJ3kMyrBFktC1OmwKyMhVu5iXK5JqpCo/nNIXbqYkO4uEW/Cacr
+	 3kDyx/ZB0e4gD6WlcKK3mmzmWoMB3VedIKGX7OCznQL8kMlssvJFRnRH8l43cEBW8r
+	 J8Pp2U7c1fD6w==
+Received: by mail-lf1-f43.google.com with SMTP id 2adb3069b0e04-5aa61e3d3f3so4685223e87.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 08 Jun 2026 15:46:28 -0700 (PDT)
+X-Gm-Message-State: AOJu0YygEi4eRZWMvatGS9IYUifvefFTJGa3+W4okWapjWOyITGIC7C+
+	V0DdSVAIpyvTMl/eGVDppokAE7LbiUFyxP8zv/wvD3dRKIvdmPHapWPVgxm5vC98rbYdiQrEVNk
+	BrmVdI1Zm8veF8635snwBvXuPrm11Psc=
+X-Received: by 2002:a05:6512:15a4:b0:5aa:6eca:f382 with SMTP id
+ 2adb3069b0e04-5aa87b76dc4mr5708333e87.11.1780958787136; Mon, 08 Jun 2026
+ 15:46:27 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260531162340.5326-1-l.scorcia@gmail.com>
-In-Reply-To: <20260531162340.5326-1-l.scorcia@gmail.com>
+References: <20260601152707.29039-1-l.scorcia@gmail.com>
+In-Reply-To: <20260601152707.29039-1-l.scorcia@gmail.com>
 From: Linus Walleij <linusw@kernel.org>
-Date: Mon, 8 Jun 2026 23:56:09 +0200
-X-Gmail-Original-Message-ID: <CAD++jLn+5N53QkGppboN+e4YKa4=proo6PJxrbEUndCtB=zAJg@mail.gmail.com>
-X-Gm-Features: AVVi8Cchkr8o6T0GxWTVM7rSwLob_b-bRRivY5EIJqXqcLMh2ZhFlagIXrN1y7M
-Message-ID: <CAD++jLn+5N53QkGppboN+e4YKa4=proo6PJxrbEUndCtB=zAJg@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: mediatek: mt8167: Fix Schmitt trigger register
- offset of pins 34-39
+Date: Tue, 9 Jun 2026 00:46:14 +0200
+X-Gmail-Original-Message-ID: <CAD++jLkFGZ4YYwDrtWsirRF238+K5TiDBeczz-FOZtq-MBA3Kw@mail.gmail.com>
+X-Gm-Features: AVVi8Cdb81KyiQYHN3WaKg4cCLnATFx4zGUZo2-MGBsT-bnCL_TrgRbJJGbJYZo
+Message-ID: <CAD++jLkFGZ4YYwDrtWsirRF238+K5TiDBeczz-FOZtq-MBA3Kw@mail.gmail.com>
+Subject: Re: [PATCH] dt-bindings: pinctrl: mediatek: mt6795: document the
+ slew-rate property
 To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, Sean Wang <sean.wang@kernel.org>, 
+Cc: linux-mediatek@lists.infradead.org, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Fabien Parent <fparent@baylibre.com>, linux-gpio@vger.kernel.org, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sean Wang <sean.wang@kernel.org>, 
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
@@ -82,17 +83,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, May 31, 2026 at 6:23=E2=80=AFPM Luca Leonardo Scorcia
+On Mon, Jun 1, 2026 at 5:27=E2=80=AFPM Luca Leonardo Scorcia
 <l.scorcia@gmail.com> wrote:
 
-> The correct Schmitt trigger register offset for pins 34-39 is 0xA00. Valu=
-e
-> was verified with SoC data sheet.
+> The driver for MT6795 pinctrl already supports the slew-rate property.
+> Add its description to the documentation.
 >
 > Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-> Fixes: 82d70627e94a ("pinctrl: mediatek: Add MT8167 Pinctrl driver")
 
-Patch applied.
+Patch applied!
 
 Yours,
 Linus Walleij
