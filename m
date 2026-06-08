@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7ECB9CD8C9D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jun 2026 14:48:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9492ACD8C9D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jun 2026 14:49:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:References:MIME-Version:In-Reply-To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5lGP3/ostS7IWs7FEHqpfbph9BewklK8a5lfeoNbOyc=; b=KxzS+Jueca/MkyEps+iUOK09JN
-	QgO6U5ch7P9k0ef9zuRPWKx5A4KzMQIdyzLbZ6sUqYYcF3HvCvrrezfXF5vifajPTCTbPBGuh9e4n
-	RWSOPUeyzJKVq+IAFbTS2LfKQHcZ5Ja18rDag1DCEnsiJcFW5XsWNK2DTgzTF4/lvqw7GIeM1qacq
-	JkN63SVn47WecnIthljVIsTCYvYBxY78Gw026okkY379nniFccxJpSKI4HK8WXZ7rStOKCYztpoc7
-	ZwZbseeBz4QgDqihUuG5UDlppsuLOFPEMM+sa1VlkMNP0Eq9zfHREHFl51bzg25qdEHHF7ZnaEqDO
-	bXgBk+Bg==;
+	bh=MOa88SxjOKsDcxBM1x1qf03zZlmO3uexj6iAoLQ40Ak=; b=0l0eZT1LV0MsT8Z7tv09CyJHRP
+	rZVs5IlkRhQzNPQ7bEtwxOM3KAA4jWMmdZ6hIC1RSIdfyeKtgkBP+EjpUSIdzcjGiPX6dvXNHYeA0
+	SAxTs3KE6KBWdzm2TMdWT3zcdb0mwvsNiSSb53/uzmKfk+y4pqtO2o213X7+3RT5FnH2yIP5W5+Sw
+	rkSE4W4c+tu7CXnkrukHA72P6mlp74pnjCBDKQyq+IqV/1AtpSaritMTCrcbX+2rPnFzzxHcXX+fS
+	gOqLjpBADlXLjIWRqZV8r71FfFfZw+4sZux/97TeIEJmA+Tx5jEnWxKRJjPdMV26zIDlEFCndvOCU
+	L/I94g9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWbHQ-00000003rIc-1p3F;
-	Mon, 08 Jun 2026 14:48:44 +0000
+	id 1wWbHh-00000003rMo-2bet;
+	Mon, 08 Jun 2026 14:49:01 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWbHO-00000003rI8-2Atc
+	id 1wWbHf-00000003rM9-49UP
 	for linux-mediatek@lists.infradead.org;
-	Mon, 08 Jun 2026 14:48:42 +0000
+	Mon, 08 Jun 2026 14:49:00 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 96778601E2
-	for <linux-mediatek@lists.infradead.org>; Mon,  8 Jun 2026 14:48:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4D45A1F0089C
-	for <linux-mediatek@lists.infradead.org>; Mon,  8 Jun 2026 14:48:41 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 707F9601FC
+	for <linux-mediatek@lists.infradead.org>; Mon,  8 Jun 2026 14:48:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 25B731F008A0
+	for <linux-mediatek@lists.infradead.org>; Mon,  8 Jun 2026 14:48:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780930121;
-	bh=5lGP3/ostS7IWs7FEHqpfbph9BewklK8a5lfeoNbOyc=;
+	s=k20260515; t=1780930139;
+	bh=MOa88SxjOKsDcxBM1x1qf03zZlmO3uexj6iAoLQ40Ak=;
 	h=From:In-Reply-To:References:Date:Subject:To:Cc;
-	b=EaPjqcqfHbxSLtCeCTcHnFclG+rMMj+sQjJ+vEUOEnrrWoblCQhYycOj6m14GsywA
-	 k4H0zNOKg/uqcg5qMY1P8Cdyjvq/5m+IZy3dtBpqNxCHPEexpdMzWK9y9ION4tHADm
-	 BTVlAcGC61NYnskMTP0BXwAfwjc9swF5H3EqwLVTDHrhlj42rNgWAXkAaL+L+6F3tG
-	 l4+M7jGpoVY7fdNwwvP24lBNCghFj0znsf5/EAF+E/geh59ElqG83Zk77N4jsIIS3d
-	 L7gj3qo2vP7aUBZoukF/Ho/eI+/3+/FoXTSfh7uiQsQHXydQ03fOk8Hc5qhBRtq+Ps
-	 kCwBdZI3QKCJg==
-Received: by mail-dl1-f44.google.com with SMTP id a92af1059eb24-13810b63a1aso509203c88.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 08 Jun 2026 07:48:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AFNElJ9YlDssjLVn4y6WVomA516Q4UEBo5S2AOUjSmFfEHcYJ9l9dgBfZsXGXx8k7Y3solobbSrbMNVc1jlXWNI2Dw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxbbS4OBtrR4WrXfMkXyzUADZX7u+B1cAHvKRqKl4VZyQzcbpRY
-	WjO2t45dLjw4AjC8hkprGTpY0G4Mi25vVS/indDCgGkln9iohqBXaKp4kNZbLyZMEmak0qVob4n
-	OdUn8JEJDddpCu3ALTlku0Q6RzRKbwLfan8dZ10w9rw==
-X-Received: by 2002:a05:7022:ef18:b0:135:6914:87e1 with SMTP id
- a92af1059eb24-13806668735mr8054742c88.6.1780930120738; Mon, 08 Jun 2026
- 07:48:40 -0700 (PDT)
+	b=Cho9weIglofwCTFPqholTctD0YJ5WjWSAIjPHolLggvT8hW8NCwrShNfE8xntZd5X
+	 xzhAY2Cv5KAJZSCpTetious5RYbaNa1zVzQYzLULsauY6PwDTNLvic3ngCYMe+UZHk
+	 IJvOQ3uqzOzRFbb3hMQ0dFXBABq77VqYnW3GYsRibopj0O8iE+650WQCN8y0QxHMfG
+	 sesAYViO3O3+j61OW0lbYvAUABpOuKpARGpMh6lUqhrCN+cG68A9WWlFUXxjMuwhHQ
+	 1ZCGDfrRvrY/XJScpL9XTHthV9jomkLcldJAX5zKKvSMbZsKVs6QwspXvAV7eLqq69
+	 bPqIrqVGzsdKQ==
+Received: by mail-dl1-f48.google.com with SMTP id a92af1059eb24-137ec563a95so5268883c88.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 08 Jun 2026 07:48:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AFNElJ8QfgMf0Doc1e5dzgzM0s21F74bwLbDTwHhJE+ZTXBUS7QJtklhe4xjjXXc7VCbNcanJ9QhCVKyaUm9kdxe8w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzBv+bh0S9W12lAd6N2soxdDIysmBziRYqeY9yiWCqhs11NB9IL
+	9YtzB6/xk/3AH/HGKehXoL3mbRGYEj2RTgygKVWh32wThntS9pjDB/XUb4E3NiFFnOrdTCy++6p
+	jVRpA8mIQnVb4DPQnkf7uFKwNOGej2VuuhpcI+oF1Rw==
+X-Received: by 2002:a05:7022:60a0:b0:137:90d5:9530 with SMTP id
+ a92af1059eb24-138067241e4mr7386691c88.36.1780930138605; Mon, 08 Jun 2026
+ 07:48:58 -0700 (PDT)
 Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Mon, 8 Jun 2026 07:48:37 -0700
+ HTTPREST; Mon, 8 Jun 2026 07:48:53 -0700
 Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Mon, 8 Jun 2026 07:48:37 -0700
+ HTTPREST; Mon, 8 Jun 2026 07:48:53 -0700
 From: Bartosz Golaszewski <brgl@kernel.org>
-In-Reply-To: <20260607001654.1439480-2-mikhail.kshevetskiy@iopsys.eu>
+In-Reply-To: <20260607001654.1439480-3-mikhail.kshevetskiy@iopsys.eu>
 MIME-Version: 1.0
-References: <20260607001654.1439480-1-mikhail.kshevetskiy@iopsys.eu> <20260607001654.1439480-2-mikhail.kshevetskiy@iopsys.eu>
-Date: Mon, 8 Jun 2026 07:48:37 -0700
-X-Gmail-Original-Message-ID: <CAMRc=Mdci2vfdE80TLraNy0DjNs69S9Th6Q5fhhgv4p-bfhMVA@mail.gmail.com>
-X-Gm-Features: AVVi8CcuP8Dr1_dPLmL9CvfG28eBzYqrPwOmm1jHbG3ZnAxVnqAPm-cMGAviML8
-Message-ID: <CAMRc=Mdci2vfdE80TLraNy0DjNs69S9Th6Q5fhhgv4p-bfhMVA@mail.gmail.com>
-Subject: Re: [PATCH 01/18] pinctrl: airoha: an7581: add missed gpio32 pin group
+References: <20260607001654.1439480-1-mikhail.kshevetskiy@iopsys.eu> <20260607001654.1439480-3-mikhail.kshevetskiy@iopsys.eu>
+Date: Mon, 8 Jun 2026 07:48:53 -0700
+X-Gmail-Original-Message-ID: <CAMRc=MfZp=X9SgEQ7zVtFVBy+akzmX7G-8d+HbjP6uiJjo2VTw@mail.gmail.com>
+X-Gm-Features: AVVi8CcgfBZvM7zQoT-kfXLyQwfvhcRHrvvZ5dE9sWyMbehP1eCvnbJHHVQktnI
+Message-ID: <CAMRc=MfZp=X9SgEQ7zVtFVBy+akzmX7G-8d+HbjP6uiJjo2VTw@mail.gmail.com>
+Subject: Re: [PATCH 02/18] pinctrl: airoha: an7583: add missed gpio32 pin group
 To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
 Cc: Linus Walleij <linusw@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
 	Lorenzo Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -88,11 +88,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 7 Jun 2026 02:16:37 +0200, Mikhail Kshevetskiy
+On Sun, 7 Jun 2026 02:16:38 +0200, Mikhail Kshevetskiy
 <mikhail.kshevetskiy@iopsys.eu> said:
-> gpio32 pin group is missed for an7581 SoC. This patch add it.
+> gpio32 pin group is missed for an7583 SoC. This patch add it.
 >
-> Fixes: 1c8ace2d0725 ("pinctrl: airoha: Add support for EN7581 SoC")
+> Fixes: 3ffeb17a9a27 ("pinctrl: airoha: add support for Airoha AN7583 PINs")
 > Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
 > ---
 
