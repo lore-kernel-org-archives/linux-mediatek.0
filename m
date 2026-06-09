@@ -4,57 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7416CCD8CAA
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jun 2026 10:42:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D839CD8CAA
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jun 2026 10:44:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cCiLXcWuJfatr1OmxZs97SJjzEizLGoaLacwwE8YyJk=; b=EO3Jtjvao6u/SS+vBjN69nvsil
-	vXeEqEStZmSHGXyEEgkHEKj5HRnB9KjggnaJsA3BK188a27+uccZvutODCnWBoQy2OC6cDm9o4FFk
-	UWYS/j/QrILJaAfNcSbFOA7Qid2jYosi/DU/LKLwkP3Os7B7i5NcFfeIxNdUGQkhH4077Js7NS2UH
-	8CJkZnJ9jpAN+EgJdaI2H/y7f2UltxHn3oxoJCHIb2RIVMkyHt/wAoJg7e+cKhA4Fhf61HYoOsj9P
-	I9rNcJf2FVpSxPE3sDMSQsdUXDYyMTbhV81Bv3cfx4NdDtu4huFmPokOV7DQuQx8GzOAM/MFUz96H
-	99nrL6nQ==;
+	bh=YcHgwG1umZziWxLp8w9eGy5YxpmQ5JmqA/xiQqJwoVU=; b=jayR8frheKRRffU3xtVsqdqDtN
+	+pIOzE2bUn13CcFUE5XnEqC0bgPgVVmsGKOdJkwRGgt6xXPXVfSGIASqWOi0tVrViylK0nujjcFgZ
+	eZLAkzNTNOtttZb++nm9HltA1+exsRvtIfam5d+yv4JpzEwQEWYeMx3ffkFByR6EGGfTJb4zvKA0v
+	/m8i1SxFxoITHhA7L5RTwy0C5S04PG2sXDMAwqupbKpDCq3ICRHA92ZYaxcpYNqP8PEIQd1zHEK2B
+	d1JGs4J+HGbXMgYSMvbLuzGX3JQQgSwDB2oMfhjQAHaYc8jchnFQyXM6ugmkQO82/ZioBOHDciDHk
+	5mY2Iq0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWtuU-00000005Nc2-0ax3;
-	Tue, 09 Jun 2026 10:42:18 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wWtwi-00000005Nlp-1zdS;
+	Tue, 09 Jun 2026 10:44:36 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWtuS-00000005Nbm-3z4J;
-	Tue, 09 Jun 2026 10:42:17 +0000
+	id 1wWtwh-00000005Nla-1boc;
+	Tue, 09 Jun 2026 10:44:35 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 35C2D60172;
-	Tue,  9 Jun 2026 10:42:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E7DAF1F00893;
-	Tue,  9 Jun 2026 10:42:14 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id CA57143AE0;
+	Tue,  9 Jun 2026 10:44:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 897611F00893;
+	Tue,  9 Jun 2026 10:44:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781001735;
-	bh=cCiLXcWuJfatr1OmxZs97SJjzEizLGoaLacwwE8YyJk=;
+	s=k20260515; t=1781001874;
+	bh=YcHgwG1umZziWxLp8w9eGy5YxpmQ5JmqA/xiQqJwoVU=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=E2Tcu9KUZCuwzRp9i6Ivi9wlJZH5ofQfr5XYJHwvKMMQcM8RZqYEP2OiRwTisM15e
-	 wNxadimCrnZ9fU8RgF/yLk9pRL0xnNE/QyHXyemm/bVSo2xaq4c0RaH4sN5vvh5kOH
-	 nW5ybrfpMBCTbGnxshTQeNZztSsn00Bn9T73gr9XO07LbazGH528UyKoc1plSGSCAw
-	 E0ajqBfWzsCGI1qGr8pyeKMyvWCFO0LQqBHJ6wPsNX1gKDpmokRocvL8NQy5Ep2POS
-	 WuLk5D6G83FaS2ivAuKl1FHwKzxgxskUn8RZu+FB46MpeMUvE3ZzhIAXgNIkZf1QP2
-	 cz0aUCIlspVmg==
-Date: Tue, 9 Jun 2026 12:42:11 +0200
+	b=ZxKk0NhAgfC/rpnNb9meaPbJtZFwLJ5gf8rVMBOfcs8Lz4+ny5LbnR1C32wMv0Fq9
+	 rpFGYzqmC0mbJvq9bCY2oTghknuJKeowtymkV9m4jOdgIDXWuneLLhlsdiYcuVBKra
+	 SUL4muoYrnZLpsI1j1Aqdla1mIFnRMiSbbCRqtZoxFVBuQR3hYzpA4SZdOlCUHPysl
+	 4EGOMcAZBjTZkWTMuxQ+tIzzRFc2jyOLvCgxO9JkW7eq5IAzn8sfP0oOgvpAt6y4eY
+	 kg3en7ThRCNS2/MPRxBHRi75ttjhGyYFZuve8gfwZtSizZdJJN936N5q9QQWV6MMq/
+	 lkKGU/e5rPghQ==
+Date: Tue, 9 Jun 2026 12:44:30 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: arm-soc <arm@kernel.org>, soc <soc@kernel.org>, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, 
-	matthias.bgg@kernel.org
-Subject: Re: [GIT,PULL,2/3] MediaTek SoC driver updates for v7.2
-Message-ID: <20260609-meticulous-abiding-beetle-5d75b1@quoll>
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com
+Subject: Re: [GIT,PULL,2/3] MediaTek ARM32 Device Tree updates for v7.2
+Message-ID: <20260609-innocent-durable-dinosaur-b11dcd@quoll>
 References: <20260601091225.5223-1-angelogioacchino.delregno@collabora.com>
- <20260601091225.5223-3-angelogioacchino.delregno@collabora.com>
+ <20260601091225.5223-2-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20260601091225.5223-3-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20260601091225.5223-2-angelogioacchino.delregno@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,18 +68,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 01, 2026 at 11:12:22AM +0200, AngeloGioacchino Del Regno wrote:
+On Mon, Jun 01, 2026 at 11:12:21AM +0200, AngeloGioacchino Del Regno wrote:
 > The following changes since commit 254f49634ee16a731174d2ae34bc50bd5f45e731:
 > 
 >   Linux 7.1-rc1 (2026-04-26 14:19:00 -0700)
 > 
 > are available in the Git repository at:
 > 
->   https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/ tags/mtk-soc-for-v7.2
+>   https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/ tags/mtk-dts32-for-v7.2
 > 
-> for you to fetch changes up to 7d462de9f65b002b439b1b168bf3b5579b0de48b:
+> for you to fetch changes up to ba6afff1d9b70028a5fc3df2d3acbee501c20a53:
 > 
->   soc: mediatek: mtk-mmsys: Restore MT8167 routing masks lost during merge (2026-05-11 11:20:48 +0200)
+>   arm: dts: mediatek: mt8135: fix pinctrl node name (2026-05-11 11:39:02 +0200)
 > 
 
 Thanks, applied
