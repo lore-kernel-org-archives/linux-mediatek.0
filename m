@@ -4,85 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CE04CD8CB2
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jun 2026 18:30:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97360CD8CAD
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jun 2026 19:15:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ugU9VS+djQcCi7Ijxcbj58hPt9KlHsIRjlMUCkTq2R0=; b=KOZ+zz28Cd4CKJJv6beyLaYzwH
-	yQWL+BMMKnk/kDollRYqq2vNIWD4n3iPmtlEiIWDoezWnjTj+TPkvRYjSHQB1SXPtv1ApflseZko+
-	7ZklTQ4G1AKE64ncM92kQvbbvpil4DPHNBMbyqksRjBOxOZh77ZDkgLtSgZ2qdAJaCeW+6+71ZSfW
-	gdJ2NXQYkphLVG/HyXtuUDVgx0A6xCHPgdxBxZUwopLBktNmWL8mGyp0zVgLijGFP/x+BrRQyr4bJ
-	U6sgVDC9uL4L9Yp+6xh0SARrg8hUcQL0s4QB22NJMbmmGNF47B8qIi7KrPIUzzwNqo5F5pMnEgAwi
-	RfKaIQ3g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
+	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dLyB8XawH2sgIIZ5MIGWnJ1sq7S1TgdTUSfQDubvnvY=; b=Zip5eB+LqKfQP7kN5699Zw/6nQ
+	9mXF/S2Yj73zST72C+veW5bse01oYx3LNxP37pCJrOX/PH/AseLcPmyd3x7NXPxwJWUeEPcTn3BcL
+	UXoixk/zR0LxDpUPJZmHeq6Qf1oOnrEXq17Nb+dpE8rDk41U/mdyPSq2mTC95VUVcineNA6CgTzJq
+	MP3mT4D6QSFpprXsws4Zx9d3x6WGQ6vQDk7Hu3kXNZy1kF3wBFjP3BzYxRiuh4HyqgXob7MLeijGG
+	PWFhs73cput2OZmy0VEXs0FDHii1XhHpkQlIt/7lbuY3z+ZZeD6SFIwzSS/Eaj6jpD1dlyL82KQ/r
+	JuDhDYPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wX1Dl-00000006CEY-3gqa;
-	Tue, 09 Jun 2026 18:30:41 +0000
-Received: from mgamail.intel.com ([198.175.65.19])
+	id 1wX1vW-00000006GZS-1OY0;
+	Tue, 09 Jun 2026 19:15:54 +0000
+Received: from mail-106101.protonmail.ch ([79.135.106.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wX1Dh-00000006CE4-33o5;
-	Tue, 09 Jun 2026 18:30:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1781029838; x=1812565838;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=W0vFigz4egcwCqqfYcLa0B3UG4B5j/8tAmG05me37jA=;
-  b=HxQOyV8EGuq9nL1DH3ja9V/91ybVg0T1ftyrthaZtN4Tqk1MvhHml19L
-   OGY9n36V1sB2bGIoalMc8dD/xyX7NNeT53wbt9BPrYbH4uBRnW8oP1tsb
-   hYa29Yoy4Pc8SNs/l68eSGHtGTaquKFXcZEdzpKM+4L7Y72NHZv0nGo0K
-   j1iW8frar2AlA4DQnAaJvPZWvvaIBS/VIcSNcWWRd3GVTvwXHKDc8pi70
-   69uBLUWzUyy6KtElQKlUZhGSz5QipSvTxKNQ18Sk/0S44F45lVyS26AOn
-   oNbXLI9ia3G4+98P1iwZGabtITI80vYh2wfBAkWMeMOqNbivm2TXy90n1
-   w==;
-X-CSE-ConnectionGUID: PK+4PGdZRTCDpDeODkNlJg==
-X-CSE-MsgGUID: troVyXvrQ2ynJ/lngGhZEQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11812"; a="81781638"
-X-IronPort-AV: E=Sophos;i="6.24,196,1774335600"; 
-   d="scan'208";a="81781638"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
-  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Jun 2026 11:30:37 -0700
-X-CSE-ConnectionGUID: 1+SmyyssQRKPAPX76A14TQ==
-X-CSE-MsgGUID: XHLlIjFDTwKlwWHCZBRSQA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.24,196,1774335600"; 
-   d="scan'208";a="241798924"
-Received: from pgcooper-mobl3.ger.corp.intel.com (HELO localhost) ([10.245.245.162])
-  by fmviesa010-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Jun 2026 11:30:33 -0700
-Date: Tue, 9 Jun 2026 21:30:30 +0300
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
-To: rva333@protonmail.com
-Cc: Jonathan Cameron <jic23@kernel.org>,
-	David Lechner <dlechner@baylibre.com>,
-	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
-	Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Lee Jones <lee@kernel.org>, linux-iio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Ben Grisdale <bengris32@protonmail.ch>
-Subject: Re: [PATCH v2 2/4] iio: adc: mt6323-auxadc: add mt6323 PMIC AUXADC
- driver
-Message-ID: <aihbxowyAIlSeDjH@ashevche-desk.local>
-References: <20260609-mt6323-adc-v2-0-aa93a22309f9@protonmail.com>
- <20260609-mt6323-adc-v2-2-aa93a22309f9@protonmail.com>
+	id 1wX1vT-00000006GY4-2gMT
+	for linux-mediatek@lists.infradead.org;
+	Tue, 09 Jun 2026 19:15:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail3; t=1781032548; x=1781291748;
+	bh=dLyB8XawH2sgIIZ5MIGWnJ1sq7S1TgdTUSfQDubvnvY=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector;
+	b=jxZ8lbzXdWYig6RBNon62GlCSUWxQT8YgWPOGrQicRm1+BP4F6N1vmbOsYU2Mf6Jg
+	 aJHhD77bzauCDH34ogxqUaD8PHf+9PtL2fo6qgpBpwtuMhHfWA7kZMj4ozOSkoh/X/
+	 L3jmVZQ1JnSp3vUJFiP6sqSSmpvPjUsR04kvLBfPTGNp/e4oT0FQwcIObd5vouo9hN
+	 ZrWdB0hgOK+fwTNA3vRUqr9CsiUmc5zbP9ZwKxyK8Vt1m7tXr2sQnrfELoGXIVHWJe
+	 Ic68gU5gkwaRChhxc3HO2DwlcXXA/qE/mRDopRlf/ZjpwVvciYM983aQZAxDJI0uiH
+	 uLYUKLEuxvytg==
+Date: Tue, 09 Jun 2026 19:15:42 +0000
+To: Andy Shevchenko <andriy.shevchenko@intel.com>
+From: Roman Vivchar <rva333@protonmail.com>
+Cc: Jonathan Cameron <jic23@kernel.org>, David Lechner <dlechner@baylibre.com>, =?utf-8?Q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Lee Jones <lee@kernel.org>, linux-iio@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ben Grisdale <bengris32@protonmail.ch>
+Subject: Re: [PATCH v2 2/4] iio: adc: mt6323-auxadc: add mt6323 PMIC AUXADC driver
+Message-ID: <hacDZbv1Whk_g8AMSfJqKHrgXfyVKt2o3_UGK-1k9jNRJyMxEFPztGhytHvHbc1x9j-F84I_ZuprmXWf2Azbtdqj2vnVal4PO1gG_DijYyA=@protonmail.com>
+In-Reply-To: <aihbxowyAIlSeDjH@ashevche-desk.local>
+References: <20260609-mt6323-adc-v2-0-aa93a22309f9@protonmail.com> <20260609-mt6323-adc-v2-2-aa93a22309f9@protonmail.com> <aihbxowyAIlSeDjH@ashevche-desk.local>
+Feedback-ID: 173184497:user:proton
+X-Pm-Message-ID: 254bdc277eca4fcbf59a132a374d5de774ac7810
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260609-mt6323-adc-v2-2-aa93a22309f9@protonmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260609_113037_867086_2311E5A9 
-X-CRM114-Status: GOOD (  17.47  )
+X-CRM114-CacheID: sfid-20260609_121551_848841_23B1C03E 
+X-CRM114-Status: UNSURE (   7.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,116 +70,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 09, 2026 at 04:31:59PM +0300, Roman Vivchar via B4 Relay wrote:
+Hi Andy,
 
-> The mt6323 AUXADC is a 15-bit ADC used for system monitoring. This driver
-> provides support for reading various channels including battery and
-> charger voltages, battery and chip temperature, current sensing and
-> accessory detection.
-> 
-> Add a driver for the AUXADC found in the MediaTek mt6323 PMIC.
-
-Reviewed-by: Andy Shevchenko <andriy.shevchenko@intel.com>
-
-A few nit-picks, most important from which is the scoped_guard() versus
-guard()() use.
+On Tuesday, June 9th, 2026 at 9:30 PM, Andy Shevchenko <andriy.shevchenko@i=
+ntel.com> wrote:
+> On Tue, Jun 09, 2026 at 04:31:59PM +0300, Roman Vivchar via B4 Relay wrot=
+e:
+>
 
 ...
 
-> +static int mt6323_auxadc_prepare_channel(struct mt6323_auxadc *auxadc)
-> +{
-> +	struct regmap *map = auxadc->regmap;
-> +	u32 val;
-> +	int ret;
-> +
-> +	ret = regmap_read(map, MT6323_AUXADC_CON19, &val);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* The ADC is idle. */
-> +	if (!(val & AUXADC_CON19_DECI_GDLY_MASK))
-> +		return 0;
+>
+> > +=09ret =3D regmap_read_poll_timeout(map, MT6323_AUXADC_ADC19, val,
+> > +=09=09=09=09       !(val & AUXADC_ADC19_BUSY_MASK),
+> > +=09=09=09=09       10, 500);
+>
+> It's better to split on logical boundaries:
+>
+> =09ret =3D regmap_read_poll_timeout(map, MT6323_AUXADC_ADC19,
+> =09=09=09=09       val, !(val & AUXADC_ADC19_BUSY_MASK),
+> =09=09=09=09       10, 500);
+>
 
-> +	ret = regmap_read_poll_timeout(map, MT6323_AUXADC_ADC19, val,
-> +				       !(val & AUXADC_ADC19_BUSY_MASK),
-> +				       10, 500);
-
-It's better to split on logical boundaries:
-
-	ret = regmap_read_poll_timeout(map, MT6323_AUXADC_ADC19,
-				       val, !(val & AUXADC_ADC19_BUSY_MASK),
-				       10, 500);
-
-> +	if (ret)
-> +		return ret;
-> +
-> +	return regmap_clear_bits(map, MT6323_AUXADC_CON19,
-> +				 AUXADC_CON19_DECI_GDLY_MASK);
-> +}
+Agreed.
 
 ...
 
-> +static int mt6323_auxadc_read(struct mt6323_auxadc *auxadc,
-> +			      const struct iio_chan_spec *chan, int *out)
-> +{
-> +	struct regmap *map = auxadc->regmap;
-> +	u32 val;
-> +	int ret;
-> +
-> +	ret = regmap_read_poll_timeout(map, chan->address, val, (val & AUXADC_READY_MASK),
-> +				       1 * USEC_PER_MSEC, 100 * USEC_PER_MSEC);
+>
+> > +=09case IIO_CHAN_INFO_RAW:
+> > +=09=09scoped_guard(mutex, &auxadc->lock) {
+>
+> I'm wondering why we haven't moved to guard()() here
 
-Perhaps
+The compiler would complain about 'cannot jump from switch statement'
+due to default case.
 
-	ret = regmap_read_poll_timeout(map, chan->address,
-				       val, (val & AUXADC_READY_MASK),
-				       1 * USEC_PER_MSEC, 100 * USEC_PER_MSEC);
-
-(see above why).
-
-> +	if (ret)
-> +		return ret;
-> +
-> +	*out = FIELD_GET(AUXADC_DATA_MASK, val);
-> +
-> +	return 0;
-> +}
-
-...
-
-> +	case IIO_CHAN_INFO_RAW:
-> +		scoped_guard(mutex, &auxadc->lock) {
-
-I'm wondering why we haven't moved to guard()() here
-
-	case IIO_CHAN_INFO_RAW: {
-		guard(mutex)(&auxadc->lock);
-
-> +			ret = mt6323_auxadc_prepare_channel(auxadc);
-> +			if (ret)
-> +				return ret;
-> +
-> +			ret = mt6323_auxadc_request(auxadc, chan->channel);
-> +			if (ret)
-> +				return ret;
-> +
-> +			/* Hardware limitation: the AUXADC needs a delay to become ready. */
-> +			fsleep(300);
-> +
-> +			ret = mt6323_auxadc_read(auxadc, chan, val);
-> +
-> +			if (mt6323_auxadc_release(auxadc, chan->channel))
-> +				dev_err(&indio_dev->dev,
-> +					"failed to release channel %d\n", chan->channel);
-> +
-> +			if (ret)
-> +				return ret;
-> +		}
-> +		return IIO_VAL_INT;
-
--- 
-With Best Regards,
-Andy Shevchenko
-
-
+Best regards,
+Roman
 
