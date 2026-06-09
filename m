@@ -4,70 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71CEBCD8CA7
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jun 2026 22:46:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05664CD8C9D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jun 2026 02:15:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B3T4j7OBsymsUW8sk7AIgEhfmNfH3xykTHDf4YdxftU=; b=tMsQ5/IqMwLR0cyIjmiGODH3QJ
-	gXFFb44qmoEJIim+hb3M6pc/feizKKgiWB4c/AmwoybP624Nz5+K0b8gcy6nCcJ25STUGGgSeuZOc
-	a7a8Ue1KMQ6xCFZRmxGdUCd4URwIBaL6ZmYidtmlROhBnE6pVRRQ58u5lbhOd2IUGvR9OvDZe4LCd
-	51y1WDTRYh0C8Huq3+M212wEHGRwK+ASo5/1cnSxh3rLaj0TrIv7tJectuNOnFICEWZnvnyBVToHh
-	GWuLYVlnq81DdUTmyymYNaAuihjbp2E8f0LWfQdcGaPRoz518yaFxYb16gZ3Q+THvS9b9bRfV1e/N
-	UMKrTLZQ==;
+	bh=8mrA+bQiXpYaBTGHL7k3MZUvo6xYXvYgLgakzL63cPQ=; b=X2Z2r8DA1FQtAUA4wljVUJrYaa
+	JFSS4W9d97kmVpuB3pT/gz8jf0L9d1dycV5NmOFugelUp1M/3MR+n6r15G7ivxbSamHfDQ0Zlcibb
+	dflXdK1e7SPd3ZXsGTOPx+DnTkytjWdCjkZpSI69haWcgUE01E2XCwTkbY1AHvFQqQcjBzS5fVoha
+	3+Fxpp3oOasxQNfosB+WNqGcY7HhQwvsqWDH+iiuU32VMyLdpzsp8KxC41ENqof4BxKsOxQKKQxmg
+	QMKqKDle6Hb8Cz5i9U3pcj3cJFZw4siB26jUMourgcTJMvYFOkjReT9dqDgucpZ0wwR46TWuVwjeX
+	/fohkFKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWijl-00000004VUV-496D;
-	Mon, 08 Jun 2026 22:46:30 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wWm0P-00000004cdR-0sZg;
+	Tue, 09 Jun 2026 02:15:53 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWijl-00000004VUG-0Kww
-	for linux-mediatek@lists.infradead.org;
-	Mon, 08 Jun 2026 22:46:29 +0000
+	id 1wWm0N-00000004cdD-3TLc;
+	Tue, 09 Jun 2026 02:15:51 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8397A43E17
-	for <linux-mediatek@lists.infradead.org>; Mon,  8 Jun 2026 22:46:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 675011F0089B
-	for <linux-mediatek@lists.infradead.org>; Mon,  8 Jun 2026 22:46:28 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id EDB95601E1;
+	Tue,  9 Jun 2026 02:15:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4BB2E1F00893;
+	Tue,  9 Jun 2026 02:15:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780958788;
-	bh=B3T4j7OBsymsUW8sk7AIgEhfmNfH3xykTHDf4YdxftU=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=SPcmg9gSpqzLhPQ4DUxzeLr6C6gvQ+2sHHktTS9Sq3n8C9ba1o423+s2T+OkBEwee
-	 NSQhMGqUYw0rMBAxx6zzm+3AvPSldX5QtCcGfRRWGN4JyDAEvCCSLm9fXFa8YO3I1j
-	 IEUGelLtoIcqdmVt5XMkMY+qWrxP+xt+QR8Ez5I3Unk3FYBCWZNiEaP2Ul6eI7EtVX
-	 boGc/VxU6fOvh4VTJ3kMyrBFktC1OmwKyMhVu5iXK5JqpCo/nNIXbqYkO4uEW/Cacr
-	 3kDyx/ZB0e4gD6WlcKK3mmzmWoMB3VedIKGX7OCznQL8kMlssvJFRnRH8l43cEBW8r
-	 J8Pp2U7c1fD6w==
-Received: by mail-lf1-f43.google.com with SMTP id 2adb3069b0e04-5aa61e3d3f3so4685223e87.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 08 Jun 2026 15:46:28 -0700 (PDT)
-X-Gm-Message-State: AOJu0YygEi4eRZWMvatGS9IYUifvefFTJGa3+W4okWapjWOyITGIC7C+
-	V0DdSVAIpyvTMl/eGVDppokAE7LbiUFyxP8zv/wvD3dRKIvdmPHapWPVgxm5vC98rbYdiQrEVNk
-	BrmVdI1Zm8veF8635snwBvXuPrm11Psc=
-X-Received: by 2002:a05:6512:15a4:b0:5aa:6eca:f382 with SMTP id
- 2adb3069b0e04-5aa87b76dc4mr5708333e87.11.1780958787136; Mon, 08 Jun 2026
- 15:46:27 -0700 (PDT)
+	s=k20260515; t=1780971348;
+	bh=8mrA+bQiXpYaBTGHL7k3MZUvo6xYXvYgLgakzL63cPQ=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=BtkpyO97lepeavCkG0m5/cyRh/NK4XSjOLsdE4uUNHHlkEYX76G86KdyhQ7h4Y044
+	 wBQPJyzmKNYVotOphdGUkbhjE+GKQGmWI8GNsZEXMy+ocQePv/BefMEqrXnouioHAT
+	 UIOaBBn72GtkIbK7ET5KbW3VsztTUuJV4K2Htp50VQbZWRfxOxoUD8u18EsHE80HVn
+	 Tb4ih5OZ6fHznywGMULRNNOXbtjC1oma/+KDii7KA7rSVJhZXkd4uMVHVM47DbRPUR
+	 tdvJFC3k1fmQkffDNzLc9FcE5V+Ie8/dkFIu4whjHTQRmCgBH6HUqpX/nqSz3TzIz5
+	 JJnHh84fQMz2A==
+Date: Mon, 8 Jun 2026 19:15:47 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
+ <pabeni@redhat.com>, Alexander Lobakin <aleksander.lobakin@intel.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, Madhur Agrawal <madhur.agrawal@airoha.com>
+Subject: Re: [PATCH net-next] net: airoha: Add TCP LRO support
+Message-ID: <20260608191547.21a29bb8@kernel.org>
+In-Reply-To: <20260606-airoha-eth-lro-v1-1-0ebceb0eafc3@kernel.org>
+References: <20260606-airoha-eth-lro-v1-1-0ebceb0eafc3@kernel.org>
 MIME-Version: 1.0
-References: <20260601152707.29039-1-l.scorcia@gmail.com>
-In-Reply-To: <20260601152707.29039-1-l.scorcia@gmail.com>
-From: Linus Walleij <linusw@kernel.org>
-Date: Tue, 9 Jun 2026 00:46:14 +0200
-X-Gmail-Original-Message-ID: <CAD++jLkFGZ4YYwDrtWsirRF238+K5TiDBeczz-FOZtq-MBA3Kw@mail.gmail.com>
-X-Gm-Features: AVVi8Cdb81KyiQYHN3WaKg4cCLnATFx4zGUZo2-MGBsT-bnCL_TrgRbJJGbJYZo
-Message-ID: <CAD++jLkFGZ4YYwDrtWsirRF238+K5TiDBeczz-FOZtq-MBA3Kw@mail.gmail.com>
-Subject: Re: [PATCH] dt-bindings: pinctrl: mediatek: mt6795: document the
- slew-rate property
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sean Wang <sean.wang@kernel.org>, 
-	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,16 +70,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 1, 2026 at 5:27=E2=80=AFPM Luca Leonardo Scorcia
-<l.scorcia@gmail.com> wrote:
+On Sat, 06 Jun 2026 16:45:28 +0200 Lorenzo Bianconi wrote:
+> Add hardware TCP Large Receive Offload (LRO) support to the airoha_eth
+> driver, leveraging the EN7581/AN7583 SoC's 8 dedicated LRO hardware queues
+> mapped to RX queues 24=E2=80=9331. LRO hw offloading does not support
+> Scatter-Gather (SG) so it is required to increase the page_pool allocation
+> order to 2 for RX queues 24=E2=80=9331 (LRO queues).
 
-> The driver for MT6795 pinctrl already supports the slew-rate property.
-> Add its description to the documentation.
->
-> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-
-Patch applied!
-
-Yours,
-Linus Walleij
+NIPA says this doesn't apply
+--=20
+pw-bot: cr
 
