@@ -4,55 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 256DBCD8CAA
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jun 2026 10:47:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECC47CD8CA8
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jun 2026 11:27:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aTF97Kd6W3WUQyV9EptgWTJTCL8FDvW643/bkmmD2vA=; b=puj/1ceDERf53972uTGyYAC+7V
-	uLp8dwwiUKuodNUXtweQpmX7KYbyqzEoJC2BA/3lk1AXI8zH8qT5gNKWQe2IfGkO5x15IA3kykaW4
-	PTvrTEUANs3fYoyjAqxeN7t9lkKJgkJbIttND4vYQ6XMlkZe/1djQ3qgGNqsSbTbcFOgOGcCem3GY
-	YwwyYlOditbqe0g14UugHbwOu8t50ldEO0uY3WdANttBZ6enw3Zz8lRywS9cun5Tn+zNicAr5WFzY
-	gVFOeFmyTow8Ww9EW076RyfsNsbNxwTkdZJn7VCKcz0wQNLDXWn+is9lU/ITPXy6l4JnVy04LaK1f
-	WFJVF6mw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oT1mqdalqKEFERjXioR70htLpWSn1twOU3jLBgKcntQ=; b=rtlSZZsTw4sCj8+BBmXU1k2w0e
+	xBbEpBLUHTiPsnf0tZmQ0geGL2YC8/q8Ui+V+ChxTLUKSqWdMluF/scsbOFz+bsYB3DcDtgGEZ0LE
+	9WP9LmKs85krem7vMHn+u/23iuRLI5vsbNwq4iblImNcBl7UDGotFVc3Q1bDhSQayvWGm+dOYzREu
+	3IlnmAATyCzKmItzvIkxvEnw0RSJXOwb19JJoOy89JsJyLJ51rTm6xjHdzRGACySe45H3OrU/UZ2N
+	3YrGl9fMYedEpV+gZr0I1c51ZLEHRmNahqbExSpE6fDmIPMVIflMNFSRpDXGvgCTNVW4QmHUqTGLd
+	TIAvVe4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWtzJ-00000005O5g-0g1t;
-	Tue, 09 Jun 2026 10:47:17 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wWucZ-00000005RQ0-2sId;
+	Tue, 09 Jun 2026 11:27:51 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWtzI-00000005O5K-1fvC;
-	Tue, 09 Jun 2026 10:47:16 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9B19760172;
-	Tue,  9 Jun 2026 10:47:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 57A921F00893;
-	Tue,  9 Jun 2026 10:47:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781002035;
-	bh=aTF97Kd6W3WUQyV9EptgWTJTCL8FDvW643/bkmmD2vA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=dAjmjkmNUGQASADxrO2i+LYGgcDEblBlP4n0z7h7XGH+P88yCHs0mTyqdpq90dp8u
-	 yQ6CGj58rgXsrPku93d5gF3xgZwfL4KX+yvcZuxab7Pm6I/Mck/k/usA7h3NMJIeLH
-	 EGqazf43XlTOdNjjij+a3uwHaT8Hl9Ltyg+5ggyEIwOwb4U0Lv1YTMKpxHXO3sB9hM
-	 hPT9VDF50xUXSeg6TpTuHucDwiWyKPIvWlLuiM9dySh7NmfyguKcFUy39Bfs8iuFs4
-	 iPoqNQhGPGNw3fpnCN4DIK3bdMrq2f2KmD+2qrcL7PM1urOiBNaKm9t9VT5EGKhmZt
-	 NQujfkgTJ6flg==
-Date: Tue, 9 Jun 2026 12:47:11 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: arm-soc <arm@kernel.org>, soc <soc@kernel.org>, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com
-Subject: Re: [GIT,PULL,1/3] MediaTek ARM64 Device Tree updates for v7.2
-Message-ID: <20260609-daffy-hot-chihuahua-a3cd23@quoll>
-References: <20260601091225.5223-1-angelogioacchino.delregno@collabora.com>
+	id 1wWucW-00000005RPT-3jeL;
+	Tue, 09 Jun 2026 11:27:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1781004464;
+	bh=kDv91ds4RRw7jDsLDr1dJGwzeePl3PFfqMDf8pBPUTg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=D8Q/4cAnBb636mJp/rWkgQ8pZ98IcXnzsIKdXeKU2lQ9JqUnOyXKD3dmAa47QHGY/
+	 FN+HHIvif5CfxZGJTSXpslsQA85RUwXVEqP2QzKcxxRQu5/wJhX/BmPXzg6ouJC4f3
+	 EH07ft1IiGBIUXKsSmc9ycP929k7mJPkqQALc9XmA6Xtk4StFBhwiLZdH2K0uwdJpr
+	 sCOVrIq/5Joit4Wr8vg9K1HFk2LZFRehub5YqhWFXrKKpNA5rMq+FUaJRGfYxx+lOw
+	 k0kspQW75Ry4+83mChbQVhLhHSRLEqhc4qyUZhFEf/mjqsM1JVmR0Ll7Fu8IPznNQs
+	 NRZcvOnUWbirg==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3AB3B17E05B8;
+	Tue,  9 Jun 2026 13:27:44 +0200 (CEST)
+Message-ID: <7625fbc6-317f-4f2e-b9a8-65db81ed4584@collabora.com>
+Date: Tue, 9 Jun 2026 13:27:43 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20260601091225.5223-1-angelogioacchino.delregno@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] regulator: mt6359: Fix vbbck default internal supply name
+To: Chen-Yu Tsai <wenst@chromium.org>, Mark Brown <broonie@kernel.org>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20260609083630.1600070-1-wenst@chromium.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260609083630.1600070-1-wenst@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260609_042749_118474_ABE831F8 
+X-CRM114-Status: GOOD (  10.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,27 +76,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 01, 2026 at 11:12:20AM +0200, AngeloGioacchino Del Regno wrote:
-> The following changes since commit 254f49634ee16a731174d2ae34bc50bd5f45e731:
+On 6/9/26 10:36, Chen-Yu Tsai wrote:
+> This issue was pointed out by Sashiko.
 > 
->   Linux 7.1-rc1 (2026-04-26 14:19:00 -0700)
+> vbbck is fed internally from vio18. For the MT6359, the default supply
+> name was incorrectly set as "VIO18", instead of the supply's default
+> "VIO18". In practice this still works, but it causes the regulator
+> description copy and replace to always happen. For the MT6359P the
+> name is correct.
 > 
-> are available in the Git repository at:
+> Fix the supply name for MT6359 so that both instances are the same and
+> correct. Also copy the comment about the internal supply from the MT6359
+> list to the MT6359P list.
 > 
->   https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/ tags/mtk-dts64-for-v7.2
-> 
-> for you to fetch changes up to 9897c586b09f79ebcf2e67a888743c046b20d254:
-> 
->   arm64: dts: mediatek: add LED and key support on Xiaomi AX3000T (2026-05-25 10:43:10 +0200)
-> 
-> ----------------------------------------------------------------
-> MediaTek ARM64 DeviceTree updates
-> 
-> This adds improvements for already supported SoCs and devices.
+> Fixes: 10be8fc1d534 ("regulator: mt6359: Add regulator supply names")
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
-Thanks, applied
-
-Best regards,
-Krzysztof
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
