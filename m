@@ -4,75 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0634ECD98C5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jun 2026 15:29:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5917CD98C5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jun 2026 16:01:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+2Kg5NxevchnBqZEDOYXv8mXN0J4Mql1Y+krUmmSP5E=; b=y4k7EQkdHrPlTXjN7GVXCd1kh3
-	Bh5n4tMXqqS7Xq+ciGyL+MNJOLURpRlPgH9jsYLvqnFCVsTA7zoo2ZqEg9Lq5IzzZE3SXXMXbqBJK
-	apW0kh8nxxMAenWoaZSHGNVKphQynVEtWgl6YIE2/4aipt6KW5NsAoxlxq5JTg/dHFV44Puy6v8eO
-	dtwoFMcBtyrYrNxoKhQnwXZJm7QqSlInaqc2E+0WStP0SIz4dml/9uSKYBp/0MKBIhCTDaPwnZmVt
-	fcqe/KmICl3h9OjKtkKwnMqI7kSbIZShdABTYVE5BmWd1Pf5bBVXQNoGdo3SHl3nRNblmTbEl//2y
-	hk8ePq+Q==;
+	bh=cPoTQhxanAhm9Gm2AUInHKfMoTxSR1RmkShaozP3V4A=; b=AJTz9NEZET0qcZ7Q/MfzBvIA00
+	D1IH+qoj74T3pSkII43+GNULZOOmPabNw+3nF2kU0mGdI+BAmEZf0xXJimB/SlOw19JiE1Gw6wSWC
+	YfD1G+V3INZzxHHP6+c6615qFC/2FP76wKbWC+ceaqTY7Ls5w0T0vUzYgC+D4HjONG//A0HQTwh1f
+	rLq9yN6j0cUW69TEhL8aEkp93QA34tqmCOojPrpsV0YJK3T8lulIZr4yt38n431UZ4jP/Yiumo5LX
+	rXVUf3S72Lc5be4V8iSi8c/9rz8EMqQ7LV+Cl/Fcs0b/iww6YhImgnKrDajD/5JB/+xlW35Tfb4dq
+	43/EsIOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWyOk-00000005umB-2Q5d;
-	Tue, 09 Jun 2026 15:29:50 +0000
+	id 1wWytP-00000005zTl-0qHD;
+	Tue, 09 Jun 2026 16:01:33 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWyOh-00000005ulF-3kqE;
-	Tue, 09 Jun 2026 15:29:48 +0000
+	id 1wWytJ-00000005zTQ-3rMF;
+	Tue, 09 Jun 2026 16:01:28 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id E92E160200;
-	Tue,  9 Jun 2026 15:29:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 27C501F00898;
-	Tue,  9 Jun 2026 15:29:46 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 0D1E960200;
+	Tue,  9 Jun 2026 16:01:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9879B1F00899;
+	Tue,  9 Jun 2026 16:01:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781018986;
-	bh=+2Kg5NxevchnBqZEDOYXv8mXN0J4Mql1Y+krUmmSP5E=;
+	s=k20260515; t=1781020884;
+	bh=cPoTQhxanAhm9Gm2AUInHKfMoTxSR1RmkShaozP3V4A=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=LcGxZ5Yd4SSlkLWvwpsxzzCCJ4BGALNGtVJQbv1KeDc19iAMoXtq7FIjPlDhlDVx3
-	 8ewSnyGjT/87TNzjSh4XRCGtteNVpaLJQLsmRTRrdzunOQaUjfQLcOKEeDjk4sx5Ns
-	 OLtSoppPreDg3MHnnOtmpoBhg+oDds16QVWZz8PiGvh0nvbjxctXtg/naOHhs99wke
-	 MEDfmlqWxuYlvQMuxlgZYR18RNbj0V+SDOa1xQuwUhryqcDpXaInzNpDVWr737ok1+
-	 7WlV71I3MX84Dt3r8ojeE58bZzT+BCvcgdBRZetoNv8LgF4/ij6ROvyoLoY9O9h2tr
-	 tBGN4D+HO5fhg==
-Date: Tue, 9 Jun 2026 17:29:44 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
+	b=Sa2WZLV3Z/gRbC9cLbpzc2ifg6LubkZcfCSWQG7FV2d8JsCb+mdBu4dmJHD541Z3V
+	 /kD8uv+/6aO/kp2rayhW6MoaQsL5I7bSR+xiLxCg51/2GHaKdl/PlPrO3k30H/tBXd
+	 p/hPiFsDPpWsWgAH+xtIeCdJ9PP8WYBIHehKOeXs4tBrDo7/zz/yBtMnYkO1HGUblu
+	 2sFmDy1ZEHmSzk+ZSAvo7JCO6bzWqxVGazO7CZM9a+n1yphej6KBMj83H8t2z2lwkO
+	 ZgcwFZlxpbS/qtFDmR4CWh4l263ZIeXv4aZhjO+ZqqDAaDn8T2oU7HRzknkz+OSu9N
+	 aD41EyS+HxtZQ==
+Date: Tue, 9 Jun 2026 17:01:19 +0100
+From: Conor Dooley <conor@kernel.org>
+To: rva333@protonmail.com
+Cc: Jonathan Cameron <jic23@kernel.org>,
+	David Lechner <dlechner@baylibre.com>,
+	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
+	Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Simon Horman <horms@kernel.org>,
-	Jonathan Corbet <corbet@lwn.net>,
-	Shuah Khan <skhan@linuxfoundation.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Saravana Kannan <saravanak@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Nathan Chancellor <nathan@kernel.org>,
-	Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
-	Bill Wendling <morbo@google.com>,
-	Justin Stitt <justinstitt@google.com>, netdev@vger.kernel.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Lee Jones <lee@kernel.org>, linux-iio@vger.kernel.org,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
-Subject: Re: [PATCH net-next v6 12/12] net: airoha: add phylink support
-Message-ID: <aigxaDtZDnI-RTwN@lore-desk>
-References: <20260609151212.29469-1-ansuelsmth@gmail.com>
- <20260609151212.29469-13-ansuelsmth@gmail.com>
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Ben Grisdale <bengris32@protonmail.ch>
+Subject: Re: [PATCH v2 1/4] dt-bindings: iio: adc: mediatek,mt6359-auxadc:
+ add mt6323 PMIC AUXADC
+Message-ID: <20260609-gangway-frayed-366f6d3cc867@spud>
+References: <20260609-mt6323-adc-v2-0-aa93a22309f9@protonmail.com>
+ <20260609-mt6323-adc-v2-1-aa93a22309f9@protonmail.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="m10PdqwZCK4gPtEq"
+	protocol="application/pgp-signature"; boundary="Lzw7ey4J+6nnG0oo"
 Content-Disposition: inline
-In-Reply-To: <20260609151212.29469-13-ansuelsmth@gmail.com>
+In-Reply-To: <20260609-mt6323-adc-v2-1-aa93a22309f9@protonmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,352 +82,132 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---m10PdqwZCK4gPtEq
+--Lzw7ey4J+6nnG0oo
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> Add phylink support for each GDM port. For GDM1 add the internal interface
-> mode as the only supported mode. For GDM2/3/4 add the required
-> configuration of the PCS to make the external PHY or attached SFP cage
-> work.
+On Tue, Jun 09, 2026 at 04:31:58PM +0300, Roman Vivchar via B4 Relay wrote:
+> From: Roman Vivchar <rva333@protonmail.com>
 >=20
-> These needs to be defined in the GDM port node using the pcs-handle
-> property.
+> The MediaTek mt6323 PMIC includes an AUXADC used for battery voltage,
+> temperature, and other internal measurements.
 >=20
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-
-Hi Christian,
-
-some nits inline.
-
-Regards,
-Lorenzo
-
+> Add the devicetree binding documentation and the associated header file
+> defining the ADC channel constants.
+>=20
+> Also change the description to 'MT6350 series and similar' because
+> the binding already includes more than mt635x series PMICs.
+>=20
+> Finally, add the MAINTAINERS entry for the header with ADC constants.
+>=20
+> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
 > ---
->  drivers/net/ethernet/airoha/Kconfig       |   1 +
->  drivers/net/ethernet/airoha/airoha_eth.c  | 167 +++++++++++++++++++++-
->  drivers/net/ethernet/airoha/airoha_eth.h  |   3 +
->  drivers/net/ethernet/airoha/airoha_regs.h |  12 ++
->  4 files changed, 181 insertions(+), 2 deletions(-)
+>  .../bindings/iio/adc/mediatek,mt6359-auxadc.yaml   |  3 ++-
+>  MAINTAINERS                                        |  6 ++++++
+>  .../dt-bindings/iio/adc/mediatek,mt6323-auxadc.h   | 24 ++++++++++++++++=
+++++++
+>  3 files changed, 32 insertions(+), 1 deletion(-)
 >=20
-> diff --git a/drivers/net/ethernet/airoha/Kconfig b/drivers/net/ethernet/a=
-iroha/Kconfig
-> index ad3ce501e7a5..38dcc76e5998 100644
-> --- a/drivers/net/ethernet/airoha/Kconfig
-> +++ b/drivers/net/ethernet/airoha/Kconfig
-> @@ -20,6 +20,7 @@ config NET_AIROHA
->  	depends on NET_DSA || !NET_DSA
->  	select NET_AIROHA_NPU
->  	select PAGE_POOL
-> +	select PHYLINK
->  	help
->  	  This driver supports the gigabit ethernet MACs in the
->  	  Airoha SoC family.
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
-net/airoha/airoha_eth.c
-> index 5a8e84fa9918..eabd7b058f82 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -8,6 +8,7 @@
->  #include <linux/of_reserved_mem.h>
->  #include <linux/platform_device.h>
->  #include <linux/tcp.h>
-> +#include <linux/pcs/pcs.h>
-
-Can you please respect the alphabetic order?
-
->  #include <linux/u64_stats_sync.h>
->  #include <net/dst_metadata.h>
->  #include <net/page_pool/helpers.h>
-> @@ -1779,6 +1780,15 @@ static int airoha_dev_open(struct net_device *netd=
-ev)
->  	u32 cur_len, pse_port =3D FE_PSE_PORT_PPE1;
->  	struct airoha_qdma *qdma =3D dev->qdma;
+> diff --git a/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-au=
+xadc.yaml b/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxad=
+c.yaml
+> index 5d4ab701f51a..852eb7336a5a 100644
+> --- a/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.ya=
+ml
+> +++ b/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.ya=
+ml
+> @@ -4,7 +4,7 @@
+>  $id: http://devicetree.org/schemas/iio/adc/mediatek,mt6359-auxadc.yaml#
+>  $schema: http://devicetree.org/meta-schemas/core.yaml#
 > =20
-> +	err =3D phylink_of_phy_connect(dev->phylink, netdev->dev.of_node, 0);
-> +	if (err) {
-> +		netdev_err(netdev, "%s: could not attach PHY: %d\n", __func__,
-> +			   err);
-
-Do we need specify the __func__ argument here?
-
-> +		return err;
-> +	}
-> +
-> +	phylink_start(dev->phylink);
-> +
->  	netif_tx_start_all_queues(netdev);
->  	err =3D airoha_set_vip_for_gdm_port(dev, true);
->  	if (err)
-> @@ -1876,6 +1886,9 @@ static int airoha_dev_stop(struct net_device *netde=
-v)
->  		}
->  	}
+> -title: MediaTek MT6350 series PMIC AUXADC
+> +title: MediaTek MT6350 series and similar PMIC AUXADC
 > =20
-> +	phylink_stop(dev->phylink);
-> +	phylink_disconnect_phy(dev->phylink);
-> +
->  	return 0;
->  }
+>  maintainers:
+>    - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> @@ -19,6 +19,7 @@ description:
+>  properties:
+>    compatible:
+>      enum:
+> +      - mediatek,mt6323-auxadc
+
+Commit message needs to explain why a fallback is not suitable.
+pw-bot: changes-requested
+
+>        - mediatek,mt6357-auxadc
+>        - mediatek,mt6358-auxadc
+>        - mediatek,mt6359-auxadc
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index d1cc0e12fe1f..2551c8cd9e9d 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -16256,6 +16256,12 @@ S:	Maintained
+>  F:	Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+>  F:	drivers/mmc/host/mtk-sd.c
 > =20
-> @@ -3148,6 +3161,153 @@ bool airoha_is_valid_gdm_dev(struct airoha_eth *e=
-th,
->  	return false;
->  }
-> =20
-> +/* Nothing to do in MAC, everything is handled in PCS */
-> +static void airoha_mac_config(struct phylink_config *config, unsigned in=
-t mode,
-> +			      const struct phylink_link_state *state)
-> +{
-> +}
-> +
-> +static void airoha_mac_link_up(struct phylink_config *config, struct phy=
-_device *phy,
-> +			       unsigned int mode, phy_interface_t interface,
-> +			       int speed, int duplex, bool tx_pause, bool rx_pause)
-> +{
-> +	struct airoha_gdm_dev *dev =3D container_of(config, struct airoha_gdm_d=
-ev,
-> +						  phylink_config);
-> +	struct airoha_gdm_port *port =3D dev->port;
-> +	struct airoha_eth *eth =3D dev->eth;
-> +	u32 frag_size_tx, frag_size_rx;
-> +	u32 mask, val;
-> +
-> +	/* TX/RX frag is configured only for GDM4 */
-> +	if (port->id !=3D 4)
+> +MEDIATEK MT6323 PMIC AUXADC DRIVER
+> +M:	Roman Vivchar <rva333@protonmail.com>
+> +L:	linux-iio@vger.kernel.org
+> +S:	Maintained
+> +F:	include/dt-bindings/iio/adc/mediatek,mt6323-auxadc.h
 
-	if (port->id !=3D AIROHA_GDM4_IDX)
-		...
+Why is the binding not being included here?
 
-> +		return;
-> +
-> +	switch (speed) {
-> +	case SPEED_10000:
-> +	case SPEED_5000:
-> +		frag_size_tx =3D 8;
-> +		frag_size_rx =3D 8;
-> +		break;
-> +	case SPEED_2500:
-> +		frag_size_tx =3D 2;
-> +		frag_size_rx =3D 1;
-> +		break;
-> +	default:
-> +		frag_size_tx =3D 1;
-> +		frag_size_rx =3D 0;
-> +	}
-> +
-> +	/* Configure TX/RX frag based on speed */
-> +	if (dev->nbq =3D=3D 1) {
-> +		mask =3D GDMA4_SGMII1_TX_FRAG_SIZE_MASK;
-> +		val =3D FIELD_PREP(GDMA4_SGMII1_TX_FRAG_SIZE_MASK,
-> +				 frag_size_tx);
-> +	}  else {
-> +		mask =3D GDMA4_SGMII0_TX_FRAG_SIZE_MASK;
-> +		val =3D FIELD_PREP(GDMA4_SGMII0_TX_FRAG_SIZE_MASK,
-> +				 frag_size_tx);
-> +	}
-> +	airoha_fe_rmw(eth, REG_GDMA4_TMBI_FRAG, mask, val);
-> +
-> +	if (dev->nbq =3D=3D 1) {
-> +		mask =3D GDMA4_SGMII1_RX_FRAG_SIZE_MASK;
-> +		val =3D FIELD_PREP(GDMA4_SGMII1_RX_FRAG_SIZE_MASK,
-> +				 frag_size_tx);
-> +	} else {
-> +		mask =3D GDMA4_SGMII0_RX_FRAG_SIZE_MASK;
-> +		val =3D FIELD_PREP(GDMA4_SGMII0_RX_FRAG_SIZE_MASK,
-> +				 frag_size_tx);
-> +	}
-> +	airoha_fe_rmw(eth, REG_GDMA4_RMBI_FRAG, mask, val);
-> +}
-> +
-> +/* Nothing to do in MAC, everything is handled in PCS */
-> +static void airoha_mac_link_down(struct phylink_config *config, unsigned=
- int mode,
-> +				 phy_interface_t interface)
-> +{
-> +}
-> +
-> +static const struct phylink_mac_ops airoha_phylink_ops =3D {
-> +	.mac_config =3D airoha_mac_config,
-> +	.mac_link_up =3D airoha_mac_link_up,
-> +	.mac_link_down =3D airoha_mac_link_down,
-> +};
-> +
-> +static int airoha_fill_available_pcs(struct phylink_config *config,
-> +				     struct phylink_pcs **available_pcs,
-> +				     unsigned int num_available_pcs)
-> +{
-> +	struct device *dev =3D config->dev;
-> +
-> +	return fwnode_phylink_pcs_parse(dev_fwnode(dev), available_pcs,
-> +					&num_available_pcs);
-> +}
-> +
-> +static int airoha_setup_phylink(struct net_device *netdev)
-> +{
-> +	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
-> +	struct device_node *np =3D netdev->dev.of_node;
-> +	struct airoha_gdm_port *port =3D dev->port;
-> +	struct phylink_config *config;
-> +	phy_interface_t phy_mode;
-> +	struct phylink *phylink;
-> +	int err;
-> +
-> +	err =3D of_get_phy_mode(np, &phy_mode);
-> +	if (err) {
-> +		dev_err(&netdev->dev, "incorrect phy-mode\n");
-> +		return err;
-> +	}
-> +
-> +	config =3D &dev->phylink_config;
-
-remove new-line here.
+Cheers,
+Conor.
 
 > +
-> +	config->dev =3D &netdev->dev;
-> +	config->type =3D PHYLINK_NETDEV;
-> +	config->mac_capabilities =3D MAC_ASYM_PAUSE | MAC_SYM_PAUSE |  MAC_1000=
-0FD;
-> +	if (port->id > AIROHA_GDM1_IDX)
-
-maybe
-	if (port->id !=3D AIROHA_GDM1_IDX)
-		...
-
-> +		config->mac_capabilities |=3D MAC_10 | MAC_100 | MAC_1000 |
-> +					    MAC_2500FD | MAC_5000FD;
+>  MEDIATEK MT6735 CLOCK & RESET DRIVERS
+>  M:	Yassine Oudjana <y.oudjana@protonmail.com>
+>  L:	linux-clk@vger.kernel.org
+> diff --git a/include/dt-bindings/iio/adc/mediatek,mt6323-auxadc.h b/inclu=
+de/dt-bindings/iio/adc/mediatek,mt6323-auxadc.h
+> new file mode 100644
+> index 000000000000..6ee9a9ecffc1
+> --- /dev/null
+> +++ b/include/dt-bindings/iio/adc/mediatek,mt6323-auxadc.h
+> @@ -0,0 +1,24 @@
+> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
 > +
-> +	err =3D fwnode_phylink_pcs_parse(dev_fwnode(&netdev->dev), NULL,
-> +				       &config->num_available_pcs);
-> +	if (err)
-> +		return err;
+> +#ifndef _DT_BINDINGS_MEDIATEK_MT6323_AUXADC_H
+> +#define _DT_BINDINGS_MEDIATEK_MT6323_AUXADC_H
 > +
-> +	config->fill_available_pcs =3D airoha_fill_available_pcs;
+> +#define MT6323_AUXADC_BATON2		0
+> +#define MT6323_AUXADC_CH6		1
+> +#define MT6323_AUXADC_BAT_TEMP		2
+> +#define MT6323_AUXADC_CHIP_TEMP		3
+> +#define MT6323_AUXADC_VCDT		4
+> +#define MT6323_AUXADC_BATON1		5
+> +#define MT6323_AUXADC_ISENSE		6
+> +#define MT6323_AUXADC_BATSNS		7
+> +#define MT6323_AUXADC_ACCDET		8
+> +#define MT6323_AUXADC_AUDIO0		9
+> +#define MT6323_AUXADC_AUDIO1		10
+> +#define MT6323_AUXADC_AUDIO2		11
+> +#define MT6323_AUXADC_AUDIO3		12
+> +#define MT6323_AUXADC_AUDIO4		13
+> +#define MT6323_AUXADC_AUDIO5		14
+> +#define MT6323_AUXADC_AUDIO6		15
+> +#define MT6323_AUXADC_AUDIO7		16
 > +
-> +	/*
-> +	 * GDM1 only supports internal for Embedded Switch
-> +	 * and doesn't require a PCS.
-> +	 */
-> +	if (port->id =3D=3D AIROHA_GDM1_IDX) {
-> +		__set_bit(PHY_INTERFACE_MODE_INTERNAL,
-> +			  config->supported_interfaces);
-> +	} else {
-> +		__set_bit(PHY_INTERFACE_MODE_SGMII,
-> +			  config->supported_interfaces);
-> +		__set_bit(PHY_INTERFACE_MODE_1000BASEX,
-> +			  config->supported_interfaces);
-> +		__set_bit(PHY_INTERFACE_MODE_2500BASEX,
-> +			  config->supported_interfaces);
-> +		__set_bit(PHY_INTERFACE_MODE_10GBASER,
-> +			  config->supported_interfaces);
-> +		__set_bit(PHY_INTERFACE_MODE_USXGMII,
-> +			  config->supported_interfaces);
-> +
-> +		phy_interface_copy(config->pcs_interfaces,
-> +				   config->supported_interfaces);
-> +	}
-> +
-> +	phylink =3D phylink_create(config, of_fwnode_handle(np),
-> +				 phy_mode, &airoha_phylink_ops);
-> +	if (IS_ERR(phylink))
-> +		return PTR_ERR(phylink);
-> +
-> +	dev->phylink =3D phylink;
-> +
-> +	return 0;
-> +}
-> +
->  static int airoha_alloc_gdm_device(struct airoha_eth *eth,
->  				   struct airoha_gdm_port *port,
->  				   int nbq, struct device_node *np)
-> @@ -3210,7 +3370,7 @@ static int airoha_alloc_gdm_device(struct airoha_et=
-h *eth,
->  	dev->nbq =3D nbq;
->  	port->devs[index] =3D dev;
-> =20
-> -	return 0;
-> +	return airoha_setup_phylink(netdev);
->  }
-> =20
->  static int airoha_alloc_gdm_port(struct airoha_eth *eth,
-> @@ -3435,8 +3595,10 @@ static int airoha_probe(struct platform_device *pd=
-ev)
->  				continue;
-> =20
->  			netdev =3D netdev_from_priv(dev);
-> -			if (netdev->reg_state =3D=3D NETREG_REGISTERED)
-> +			if (netdev->reg_state =3D=3D NETREG_REGISTERED) {
-> +				phylink_destroy(dev->phylink);
->  				unregister_netdev(netdev);
-> +			}
->  			of_node_put(netdev->dev.of_node);
->  		}
->  		airoha_metadata_dst_free(port);
-> @@ -3472,6 +3634,7 @@ static void airoha_remove(struct platform_device *p=
-dev)
->  				continue;
-> =20
->  			netdev =3D netdev_from_priv(dev);
-> +			phylink_destroy(dev->phylink);
->  			unregister_netdev(netdev);
->  			of_node_put(netdev->dev.of_node);
->  		}
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
-net/airoha/airoha_eth.h
-> index 8f42973f9cf5..1b25603dc64d 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.h
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
-> @@ -554,6 +554,9 @@ struct airoha_gdm_dev {
-> =20
->  	u32 flags;
->  	int nbq;
-> +
-> +	struct phylink *phylink;
-> +	struct phylink_config phylink_config;
->  };
-> =20
->  struct airoha_gdm_port {
-> diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethe=
-rnet/airoha/airoha_regs.h
-> index 436f3c8779c1..27f2583e143a 100644
-> --- a/drivers/net/ethernet/airoha/airoha_regs.h
-> +++ b/drivers/net/ethernet/airoha/airoha_regs.h
-> @@ -358,6 +358,18 @@
->  #define IP_FRAGMENT_PORT_MASK		GENMASK(8, 5)
->  #define IP_FRAGMENT_NBQ_MASK		GENMASK(4, 0)
-> =20
-> +#define REG_GDMA4_TMBI_FRAG		0x2028
-> +#define GDMA4_SGMII1_TX_WEIGHT_MASK	GENMASK(31, 26)
-> +#define GDMA4_SGMII1_TX_FRAG_SIZE_MASK	GENMASK(25, 16)
-> +#define GDMA4_SGMII0_TX_WEIGHT_MASK	GENMASK(15, 10)
-> +#define GDMA4_SGMII0_TX_FRAG_SIZE_MASK	GENMASK(9, 0)
-> +
-> +#define REG_GDMA4_RMBI_FRAG		0x202c
-> +#define GDMA4_SGMII1_RX_WEIGHT_MASK	GENMASK(31, 26)
-> +#define GDMA4_SGMII1_RX_FRAG_SIZE_MASK	GENMASK(25, 16)
-> +#define GDMA4_SGMII0_RX_WEIGHT_MASK	GENMASK(15, 10)
-> +#define GDMA4_SGMII0_RX_FRAG_SIZE_MASK	GENMASK(9, 0)
-> +
->  #define REG_MC_VLAN_EN			0x2100
->  #define MC_VLAN_EN_MASK			BIT(0)
-> =20
+> +#endif
+>=20
 > --=20
-> 2.53.0
+> 2.54.0
+>=20
 >=20
 
---m10PdqwZCK4gPtEq
-Content-Type: application/pgp-signature; name=signature.asc
+--Lzw7ey4J+6nnG0oo
+Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaigxaAAKCRA6cBh0uS2t
-rHFPAP97cmj+8BfYEl8mUIGN3PZbVXiliyedKeir67osftOllgEA3Y4ia6CUElbJ
-pr3Ro2MngcwyDQnAkJsLtyiN4LGLRgA=
-=jfk1
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaig4zwAKCRB4tDGHoIJi
+0n6MAQCnDXNVMnWZGe4f1faCEvn5pbBT50qSq8LSnOk1vjV8+AEAlL1snbNccP0J
+r3m520zkbDUiyuIurTwNMF1q1kkMLwg=
+=adwT
 -----END PGP SIGNATURE-----
 
---m10PdqwZCK4gPtEq--
+--Lzw7ey4J+6nnG0oo--
 
