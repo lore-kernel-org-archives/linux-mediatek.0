@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09895CD8CB9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2026 14:33:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A419CD8CB9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2026 14:36:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pDa3St3z3sBjphBfFJldmgeiOcJlSQHxYpBL/HB5Rrk=; b=qymcI85DOd0vXSG6X0ZIXDFbZJ
-	XZvj10QmeQoBN8BVDJ8VymlIDmmC1gpm9pKH74z/u282UGAIbtgIFTPY5Gd5VAWZ1PvGJ/mbqMhgb
-	u3Yvr/THdaxS4bANUgfP3AHvx6rM0K4+P8r6GPzr14Xq9CsZWmp6km1kuxw0BZUlcybFrl2LFpdr9
-	b9kPqprE9zQvPaerdfqb2w8nzQVFT7PDRWHSld9xMvd0d3yPB0gI6TFD3nKmYBq4emU4s17LC5AFa
-	9V1NxiFmB95OL4++g5CCbkZRn+rszrZD73QppTTNtIcJINba2fupEL8hRZgbxHxqg5PANm+blZPYn
-	WZiHh2Dw==;
+	bh=i9dVOFjzG0qorTuzugExUm+OGvZnf9xKQzU1sFL/cwg=; b=H5/+xRfZ7mjeQMFfZ8JcQujK6J
+	W2psKSe8Xg+woUJfauz1bgucorOW3v7mhfr0jeJnKKtOE/1SpWOGFgWial2fU+ASnFK0PiRYcLhyp
+	sNL/NEWKlLn2bjA3dSIrRUSbUg7nycKxet98GTrFSolli20JD+Jqh/HrJ/FJnTXukJd+a8dGNNGB4
+	B4ggzotG9U4sbwXeqzpbw/L0fcmB6tqfeIvGpXX1dYeCDo88khcKcw7s+fDfsWn/jTqGNdaTMduHJ
+	jNloapsi4zobi6+8k2rekzkpgOW7qp/s9H5SPSEr18mSzPU4jXDPU39Ix3bC0iC/7Gl1toCqFjJTj
+	3aNZmP4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXJzp-00000007u9b-3C53;
-	Wed, 10 Jun 2026 14:33:33 +0000
-Received: from mgamail.intel.com ([192.198.163.17])
+	id 1wXK2S-00000007vrv-0u7a;
+	Wed, 10 Jun 2026 14:36:16 +0000
+Received: from mgamail.intel.com ([192.198.163.13])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXJzn-00000007u8i-3kVT;
-	Wed, 10 Jun 2026 14:33:33 +0000
+	id 1wXK2P-00000007vrD-30yI;
+	Wed, 10 Jun 2026 14:36:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1781102012; x=1812638012;
+  t=1781102173; x=1812638173;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=nbSpTI+NEem/B8QHO4h+hdqb3YdpkqnxeBRh6LClmIU=;
-  b=X5WLT4kUMOo1wWzZcKmVy5Jj4rem6G8ot/7Fb6V13KL0tbAPQCmubGPK
-   MvqEuCySm6kN72zsExWep/qCjT710X9cOKizj6MCKY1tWC0qjK++BIDAY
-   f6r2s3/xiUl8uFsIAmsKPJ/bIHhf9bpfS90wUYwckNEUn1p2Cad0fX038
-   TjMBzWPH70dmF2fNEt/wrGHFiDwbQo6YQNRJISXNOz660vxTloBcUFtMN
-   au7KRHESa+dc6FuxSkyICUx8hMWidh226XrDx336b2G7rXreX2cdw7HtS
-   OYmkKFo7CgHCiGrOzitY1FV3O/7FU8WlP0S8krPxO8KQjW8YozMxHdgzU
-   g==;
-X-CSE-ConnectionGUID: kusnoDh4SE6VQ86EcE/fow==
-X-CSE-MsgGUID: 66l6H5SnTD6pO0+izCAsbg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11812"; a="81742957"
+  bh=rjVo3E6bL/gwM4u8huqi79QwAf/xG2SrVmrblO9TUZc=;
+  b=MQNTaBiDVFlHCSFz/jT+LpiqrIjKYComXutJ5kMZ5qpiini/pYmLsRe9
+   mle6cz1cSAuR5EsH3YmFzIv0m7RB5bpUEOOzNdbbz9pYSOLqEsasM1i/b
+   D4VWJ0lXTrB333RewCeL32wZVh4iQnEbsVWIJ9NZJEOHA+0MXmVkjklRF
+   UjRjnTRgplcWycNAws5ePCxJMYfTeaub/qA0HHQZ7OBnLqC9s1jCuDvZe
+   o23rMFhjvZDai8GTa5b1DTfOZy9FlU7b5+GQcN5YNuslgaT/oBzU98u+e
+   U6Ja4h1FylhgM719aK3NXRD1g53hW8ZsHuFTXNXXdqgWRO+ywmAKkNrrH
+   Q==;
+X-CSE-ConnectionGUID: 3EAyUYKER/GWkvHChEGMpg==
+X-CSE-MsgGUID: KU9Aa3zSTj6o3PXthYmDpQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11812"; a="84466564"
 X-IronPort-AV: E=Sophos;i="6.24,197,1774335600"; 
-   d="scan'208";a="81742957"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
-  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Jun 2026 07:33:29 -0700
-X-CSE-ConnectionGUID: H8GN1TzCTVSABF/VcR68RA==
-X-CSE-MsgGUID: 4X+ZiRtBQHWMqwM+SsXzmA==
+   d="scan'208";a="84466564"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+  by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Jun 2026 07:36:12 -0700
+X-CSE-ConnectionGUID: qQiWu5zvQd6n+fOOpRJieA==
+X-CSE-MsgGUID: slS4EcOxQy+lPzGNsfCINg==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.24,197,1774335600"; 
-   d="scan'208";a="284277249"
+   d="scan'208";a="250113779"
 Received: from hrotuna-mobl2.ger.corp.intel.com (HELO localhost) ([10.245.244.38])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Jun 2026 07:33:23 -0700
-Date: Wed, 10 Jun 2026 17:33:20 +0300
+  by ORVIESA003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Jun 2026 07:36:08 -0700
+Date: Wed, 10 Jun 2026 17:36:05 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Chen-Yu Tsai <wenst@chromium.org>
 Cc: Bartosz Golaszewski <brgl@kernel.org>,
@@ -73,20 +73,20 @@ Cc: Bartosz Golaszewski <brgl@kernel.org>,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
 	Manivannan Sadhasivam <mani@kernel.org>
-Subject: Re: [PATCH v2 10/16] power: sequencing: pcie-m2: support matching on
- remote "port" node
-Message-ID: <ail1sAxgh5Xtkj2y@ashevche-desk.local>
+Subject: Re: [PATCH v2 11/16] power: sequencing: pcie-m2: Add usb and sdio
+ targets for E-key connector
+Message-ID: <ail2VcubjT7HNGUC@ashevche-desk.local>
 References: <20260610084053.2059858-1-wenst@chromium.org>
- <20260610084053.2059858-11-wenst@chromium.org>
+ <20260610084053.2059858-12-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260610084053.2059858-11-wenst@chromium.org>
+In-Reply-To: <20260610084053.2059858-12-wenst@chromium.org>
 Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
  krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260610_073331_943822_5E063AFF 
-X-CRM114-Status: GOOD (  11.70  )
+X-CRM114-CacheID: sfid-20260610_073613_789710_20558F06 
+X-CRM114-Status: GOOD (  10.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,22 +101,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 10, 2026 at 04:40:44PM +0800, Chen-Yu Tsai wrote:
-> A USB hub can have multiple ports, and this driver needs to
-> differentiate which port is being matched to. The USB hub driver now
-> associates the "port" node with the usb_port device, so here we can
-> use the remote "port" node to check for a match. Then fall back to
-> the remote device node for the other connection types.
+On Wed, Jun 10, 2026 at 04:40:45PM +0800, Chen-Yu Tsai wrote:
+> The M.2 E-key connector allows either PCIe or SDIO for WiFi and USB or
+> UART for BT. Currently the driver only supports PCIe and UART.
+> 
+> Add power sequencing targets for SDIO and USB. To avoid adding a
+> complicated dependency tree, rename the existing power sequencing units
+> "pcie" and "uart" to "wifi" and "bt". The existing target names are left
+> untouched. The new "sdio" and "usb" targets just point to the renamed
+> "wifi" and "bt" units.
 
-...
-
-> +		if (remote_port && remote_port == dev_of_node(dev))
-> +			return PWRSEQ_MATCH_OK;
->  		if (remote && (remote == dev_of_node(dev)))
->  			return PWRSEQ_MATCH_OK;
-
-We have device_match_of_node() IIRC the name of that API.
-
+Why can we do that? No breakage? Only internal names? No ABI affected?
+Please, clarify all this in the commit message.
 
 -- 
 With Best Regards,
