@@ -4,76 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EC0DCD98C7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2026 19:47:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBA49CD98C7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2026 19:55:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E7CuLlKDZQznwpaWJphoeGTh2ZPlfY1z5LRT1Dzsgs8=; b=Az0r6qnud4e1pOqUjljK4khfxi
-	7up48Ze8EGaDcu0vlA/b3FvlKKu2IPaxebmQcdYyyGBZSbHYnXnUdJFxuYrCpnU/YL+fIMS80nKIL
-	JkEKyHp16y0oMLkjkMlZ59QzfVMuN/smlBtg1q73IjwQDRgM0f9q1dvWihtbbgTugMz3qyqImm90/
-	SMJkCveatEOiB3IsJZtMSFo2Lff66acikWmKCAsJz6IAd3BFEL2PiWpGbqwXeOCuu/e1p6+2LLXTT
-	4GgNBa8ODZamTfmOMt1IYciFnpvaiQQHwRQT2TsttAhciH00+IC5dTYY6cmrKAL3uREO9jff93hDy
-	0+0eI9/Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=g8cApphNQMISan/Ar+JDpAnqRjnnyI5gT0fNSEDbPOs=; b=iQqWALl8LSTEW424z8aGNPWcfz
+	wH+X6ymTE3oztVwXMzeW61Kh4GJ2vLuj4pAej+lbXxrHCuTLID/wK247AJl/+eB0tuIxfcAZkr8VK
+	KXpR8F18fv3d+edUV1s06FYCkxsu3irM8B2shAxFHUmFmtGid4Yx5KKLDJr4KP4ZfLCsDekgrbnS2
+	sOwfgjubtLypj/7TsmkNff1NP58VIZgwfZWQhBzYfxTFV8oOks/NcC4WygI8gO+c4vO89xIZwujxr
+	hJmLx0DCx/HXJTKNEdzF5ZbtF/Ki6repBrVLsL3dRMmo3Ih6H/6prdzBqsyAJ/Z5tuXvGRVBRbUX5
+	vOctatlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXOtg-00000008HU1-2qEr;
-	Wed, 10 Jun 2026 19:47:32 +0000
-Received: from 011.lax.mailroute.net ([199.89.1.14])
+	id 1wXP1K-00000008Hq1-24nQ;
+	Wed, 10 Jun 2026 19:55:26 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXOtd-00000008HTj-3QCV
-	for linux-mediatek@lists.infradead.org;
-	Wed, 10 Jun 2026 19:47:31 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 011.lax.mailroute.net (Postfix) with ESMTP id 4gbGX05D3nz1XLyhV;
-	Wed, 10 Jun 2026 19:47:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1781120842; x=1783712843; bh=E7CuLlKDZQznwpaWJphoeGTh
-	2ZPlfY1z5LRT1Dzsgs8=; b=ZEgvhFh3aWTwzPvm/qnW0WCvohpmGvo+U1XLlAs3
-	GjdJrtY6HX+CODsE9bCHSxywwBNqilyNA280kb0REZemR5DTwz3jW1AYTtOkV+QU
-	IcCAcZCN9uC+YwtF3AvGmf1qvV+Ftsvnjx4nNg3fdFhO8M9xPgJBncASch0/b+2A
-	XkwJxx4ilpgKHyAgc+Vq1JiO7PwJX+BPVmZFoA0V/0W8SfUIK4XaI9b+6OfYAkRF
-	purUxEZshqtEnBnFzQUtXBRDLxheQrNqqk3DWZjKawpxqovbiCB6Ic4DmVhT9rtp
-	i4AYjzQYGybZAXPLO/U7GQQGnPRyDe/lfcqhlmLkXAAgAw==
-X-Virus-Scanned: by MailRoute
-Received: from 011.lax.mailroute.net ([127.0.0.1])
- by localhost (011.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id aY3bP3U30VI7; Wed, 10 Jun 2026 19:47:22 +0000 (UTC)
-Received: from [100.119.48.131] (unknown [104.135.180.219])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 011.lax.mailroute.net (Postfix) with ESMTPSA id 4gbGWp0ZLdz1XLyhT;
-	Wed, 10 Jun 2026 19:47:17 +0000 (UTC)
-Message-ID: <42164c06-3c54-4d66-a29c-1e0d46210472@acm.org>
-Date: Wed, 10 Jun 2026 12:47:17 -0700
+	id 1wXP1I-00000008Ho0-0UbB;
+	Wed, 10 Jun 2026 19:55:25 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.99)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1wXP11-000000000Dl-0Ybp;
+	Wed, 10 Jun 2026 19:55:07 +0000
+Date: Wed, 10 Jun 2026 20:55:03 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next 0/8] net: dsa: mt7530: modernise register access and
+ add two DSA ops
+Message-ID: <cover.1781119435.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] ufs: core: Remove unnecessary block I/O quiesce for
- clock scaling
-To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
- jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, tun-yu.yu@mediatek.com,
- eddie.huang@mediatek.com, naomi.chu@mediatek.com, ed.tsai@mediatek.com
-References: <20260604133503.2049288-1-peter.wang@mediatek.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20260604133503.2049288-1-peter.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260610_124729_921306_B393A026 
-X-CRM114-Status: UNSURE (   6.04  )
+X-CRM114-CacheID: sfid-20260610_125524_155467_C267B892 
+X-CRM114-Status: UNSURE (   8.51  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,10 +69,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6/4/26 6:33 AM, peter.wang@mediatek.com wrote:
-> Hence, it is not necessary to stop I/O during a power mode change,
-> and this step can be removed.
+The mt7530 driver carries its own register accessors that predate the
+regmap conversion and now largely duplicate what regmap already
+provides, including locking. Most of this series removes that layer.
 
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+It first moves the MDIO bus locking into the switch regmap via
+.lock/.unlock callbacks, matching the PCS regmaps, so any path reaching
+the regmap is serialised automatically. With the wrappers no longer
+adding locking, the thin mt7530_mii_* indirection is folded away and the
+remaining accessors are replaced mechanically with the plain regmap API,
+using the coccinelle semantic patches included in the commit messages.
+Open-coded register fields are then converted to FIELD_GET/FIELD_PREP.
+None of this is intended to change behaviour.
 
+The last two patches implement .port_fast_age, which flushes dynamically
+learned MAC entries on topology changes, and .port_change_conduit, which
+moves a user port's CPU-port affinity at runtime.
+
+Daniel Golle (8):
+  net: dsa: mt7530: move MDIO bus locking into regmap
+  net: dsa: mt7530: fold mt7530_mii_write/read into mt7530_write/read
+  net: dsa: mt7530: replace mt7530_write with regmap_write
+  net: dsa: mt7530: replace mt7530_rmw/set/clear with regmap API
+  net: dsa: mt7530: replace mt7530_read with regmap_read
+  net: dsa: mt7530: convert to use field accessor macros
+  net: dsa: mt7530: implement port_fast_age
+  net: dsa: mt7530: implement port_change_conduit op
+
+ drivers/net/dsa/mt7530-mdio.c |   9 +-
+ drivers/net/dsa/mt7530.c      | 791 +++++++++++++++++-----------------
+ drivers/net/dsa/mt7530.h      | 209 +++++----
+ 3 files changed, 517 insertions(+), 492 deletions(-)
+
+-- 
+2.54.0
 
