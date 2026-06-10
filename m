@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76D4ECD8CB2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2026 13:57:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23C53CD8CB2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2026 14:09:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iO1kSrBuJ0Gvuy0lwBZ2oCfnsSrOH+ZpDZFUh9+adCk=; b=rPLmNWETpfws/t+SzHIrZPxdcm
-	d0oN2XzFYIlLTHBmtrWEb4GXOJYOtk78EN7LZbiJNWXg4TS6Ns4EikR6HSYTbjPZ2OLrwXLa/I8X2
-	3APojqB+INWoaQje5/yRWjBVO4e4oLL3ZkI77bsEk1g9wNu8AWgulxcAxIBTMQKZuv6ySfWrnbNzs
-	BC+/f+bngqXOW7h6v2sHHrnkaUkwH4CTc3Sn+3uriESD10nR35qyKfqrUbeE5QHCd5crxOxFwfNVF
-	GSSD1gcjguoUNoi6qISFcgMbNhQ1ynRuhbSqYAvifrD6YvHKMGsyTmbK3Wp88d3ODNaQNXDWiMTgs
-	dXx4S90A==;
+	bh=vDIcKeI3GU7LjaHCbuy8P938+OM7gCoKrdrf0EYY0lA=; b=mqBXJeOEGZFAJeAxet5iyxWt+L
+	B4mqxz6QjQ7n8ADbcZqm0ZqZOj5rvpjFuKtFEg7nprI9qlSuKNddwAwhRPS/NUfONllqgY9/w8UpA
+	HWzMXk+pZ2kB0GTv57Ck+I3uMISClCzbkreSX30hUlqH38+gBDZBE4oJ4N+8XqvyJVnH+/YWYD4tc
+	i8ryB/D7qTsN6L/c1KnkRaFUWOhd/6km+i6J8g8wb0532tJ/QL5/0CAohGxzBBbXbjVSY8wChWWYd
+	5WB6EHKy9TwgpKZMhpQo7zhTo3ka6AXO7Jk4qPwF/0qqjbr7QTOaOzeFRSd5N6TKi9t0YtP7EqjfY
+	XjZTE8NA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXJQk-00000007p2B-1ZnH;
-	Wed, 10 Jun 2026 13:57:18 +0000
-Received: from mgamail.intel.com ([198.175.65.21])
+	id 1wXJc3-00000007qEP-2uEm;
+	Wed, 10 Jun 2026 14:08:59 +0000
+Received: from mgamail.intel.com ([192.198.163.16])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXJQi-00000007p1I-0WY2;
-	Wed, 10 Jun 2026 13:57:17 +0000
+	id 1wXJc1-00000007qDz-3Oe7;
+	Wed, 10 Jun 2026 14:08:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1781099837; x=1812635837;
+  t=1781100537; x=1812636537;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=IvtqsN9HqWtrsYzJFpIQXKTW+grvoM/ms7i/bF9Ptxg=;
-  b=OvA/4+OTqI6CY1UoIJhwHA2U1L0/tyB13OrgXF6S2j9+KcsN1IocPI3/
-   C2GacTwqqy4Ul8ssdki7gTGcnlHab8YEuUPD3k/YRle+FakTzYN5r7E4q
-   UlKMq20ezDRydUrlOgeUvWIOOoQrC67b2YP1GknHelfDL3g1fFaJZTcnJ
-   M5VquSSMTVKRUpXBqKOXaQYDuMyj6P0unt118hwL0DaSmRa1F1hTlUjTi
-   ztLACIxv7ZmmyA1xSZju8Z3xQPsIuTphFkC9LNxndu+7Lv0fmFmhCSLRZ
-   JhAYEsE5CsdDsDoVzRJI0RiU1lRHy7jywvG53ZDAF0p2tu6/CFLvWeklQ
-   A==;
-X-CSE-ConnectionGUID: zOwE0xNqSBy/4MHrN6nsKw==
-X-CSE-MsgGUID: vG+WBY0sRfuGEi7+klfWbA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11812"; a="81799390"
+  bh=QGKcjDdt8a0tH/Hc9o5DwcTP+oPWZPnZGQMex0Xb5Oo=;
+  b=Iwoij6XDWstgxX2MuMNM7a7Xej+HWxJVCrwmrNn/9NtHAgiVZ+SLAFFz
+   DLM27qbNqFnKcJfD/IrkQyoAmHaRrXqNS5OhzjYEXPcPLMZyJ56TtckSs
+   t6y1TOoYVU6tRph6nRz4k7wMMqzVnbj/GCMwO5O3+eyJ9gZ8ynnGJIQf4
+   ANUpltL75kTD4VmGRxAZawyeSZ3JUAT/0o9tRMXuY/kIPTAU5pSxUm00F
+   VXV5QENZSSi9odnG+1Nnkt57NAs4V3o10q6C3Rs0TdeH2KaNocZOEiyYd
+   TiSeiPlbU6z4RHHPdIdUWgm20Klauywg5WR1Nose/Vz3yCpxOYMe17RsI
+   w==;
+X-CSE-ConnectionGUID: xq2f83/YSTSOYFfEiWt4kw==
+X-CSE-MsgGUID: kecR4NqfTVab8J1E4t5B3Q==
+X-IronPort-AV: E=McAfee;i="6800,10657,11812"; a="69433449"
 X-IronPort-AV: E=Sophos;i="6.24,197,1774335600"; 
-   d="scan'208";a="81799390"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
-  by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Jun 2026 06:57:15 -0700
-X-CSE-ConnectionGUID: pIzUFeurTd+gn3kzaSXAbw==
-X-CSE-MsgGUID: ZwgnVHecR0qgh6Qv8HV+YQ==
+   d="scan'208";a="69433449"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Jun 2026 07:08:56 -0700
+X-CSE-ConnectionGUID: 5PnXmGmkSf+nphIwuCI86Q==
+X-CSE-MsgGUID: 8weCnpoUTs+XY1kL6aY/tQ==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.24,197,1774335600"; 
-   d="scan'208";a="251260733"
+   d="scan'208";a="246269709"
 Received: from hrotuna-mobl2.ger.corp.intel.com (HELO localhost) ([10.245.244.38])
-  by fmviesa005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Jun 2026 06:57:09 -0700
-Date: Wed, 10 Jun 2026 16:57:07 +0300
+  by orviesa007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Jun 2026 07:08:51 -0700
+Date: Wed, 10 Jun 2026 17:08:48 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Chen-Yu Tsai <wenst@chromium.org>
 Cc: Bartosz Golaszewski <brgl@kernel.org>,
@@ -73,20 +73,20 @@ Cc: Bartosz Golaszewski <brgl@kernel.org>,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
 	Manivannan Sadhasivam <mani@kernel.org>
-Subject: Re: [PATCH v2 01/16] device property: Add
- fwnode_graph_get_port_by_id()
-Message-ID: <ailtMyYhbkOgaZWw@ashevche-desk.local>
+Subject: Re: [PATCH v2 02/16] device property: Add
+ fwnode_graph_get_next_port_endpoint()
+Message-ID: <ailv8HpnrCH3Zb8C@ashevche-desk.local>
 References: <20260610084053.2059858-1-wenst@chromium.org>
- <20260610084053.2059858-2-wenst@chromium.org>
+ <20260610084053.2059858-3-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260610084053.2059858-2-wenst@chromium.org>
+In-Reply-To: <20260610084053.2059858-3-wenst@chromium.org>
 Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
  krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260610_065716_242532_36443F81 
-X-CRM114-Status: GOOD (  14.47  )
+X-CRM114-CacheID: sfid-20260610_070857_863096_FF684E7E 
+X-CRM114-Status: GOOD (  21.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,34 +101,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 10, 2026 at 04:40:35PM +0800, Chen-Yu Tsai wrote:
-> In some cases the driver needs a reference to the port firmware node.
-> Once such case is the upcoming USB power sequencing integration. The
-> USB hub port is tied to the corresponding port firmware node if it
-> exists.
+On Wed, Jun 10, 2026 at 04:40:36PM +0800, Chen-Yu Tsai wrote:
+> Due to design constraints of the power sequencing API, the consumer
+> must first be sure that the other side is actually a provider, or it
+> will continually get -EPROBE_DEFER when requesting the power
+> sequencing descriptor.
 > 
-> Provide a helper for this.
-
-Okay, if it's really needed.
-Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> In the upcoming USB power sequencing integration, the USB hub driver
+> first needs to check whether a graph connection exists, and whether
+> the other side of the connection is a supported connector type. The
+> USB port is tied to a "port" firmware node, and this new helper will
+> be used to get the endpoint under the known "port" firmware node.
 
 ...
 
 > +/**
-> + * fwnode_graph_get_port_by_id - get the port matching a given id
-> + * @fwnode: parent fwnode_handle containing the graph
-> + * @id: id of the port
-> + *
-> + * Return: A 'port' firmware node pointer with refcount incremented.
+> + * fwnode_graph_get_next_port_endpoint - Get next endpoint firmware node in port
+> + * @port: Pointer to the target port firmware node
+> + * @prev: Previous endpoint node or %NULL to get the first
 > + *
 > + * The caller is responsible for calling fwnode_handle_put() on the returned
-> + * fwnode pointer.
+> + * fwnode pointer. Note that this function also puts a reference to @prev
+> + * unconditionally.
+> + *
+> + * Return: an endpoint firmware node pointer or %NULL if no more endpoints
+> + * are available.
 
-Note, the Return section must be last one in the kernel-doc. The last paragraph
-sounds to me as a better fit for main description. Basically check how other
-kernel-doc(s) in this file are organised and follow that pattern.
+Yeah, you see, even here is inconsistency with previously added kernel-doc.
 
 > + */
+> +struct fwnode_handle *fwnode_graph_get_next_port_endpoint(const struct fwnode_handle *port,
+> +							  struct fwnode_handle *prev)
+> +{
+> +	struct fwnode_handle *ep;
+
+Unused?
+
+> +	while (1) {
+
+This is usually harder to read and follow. It's like "pay much attention on
+the code", but here no rocket science, no code to really pay attention to.
+
+> +		prev = fwnode_get_next_child_node(port, prev);
+> +		if (!prev)
+> +			break;
+> +
+> +		if (WARN(!fwnode_name_eq(prev, "endpoint"),
+> +			 "non endpoint node is used (%pfw)", prev))
+> +			continue;
+> +
+> +		break;
+> +	}
+> +
+> +	return prev;
+> +}
+
+So, this can be rewritten as
+
+	ep = prev;
+	do {
+		ep = fwnode_get_next_child_node(port, ep);
+		if (fwnode_name_eq(ep, "endpoint"))
+			break;
+
+		WARN_ON(ep, ...);
+	} while (ep);
+
+	return ep;
+
+But also big question why? to WARN*(). There is no use in the entire
+property.c.
 
 -- 
 With Best Regards,
