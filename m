@@ -4,87 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B14F5CD98C7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2026 08:51:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB495CD98C7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2026 09:00:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YZTUwD5334qhMn45Nv6zFjWXwDHnBznaVHmh9fHzOkw=; b=v7PwVs/Val2HhfpKWq5yN+RCoi
-	hNPjKKNLFXizkqlnJrh/ftYKzKKXudUi99PTZY5we7yhs5J7z2bLgoFfAQ1BW/4WyHtd1WdIKFCDq
-	inbztp6S8WzViSiHKoh3Ce7hhz17jrHUbr+I68NHp+CEpzLPF6N6pcZJHIICqNbBuKI6SELrFpD4k
-	AoHU63Xb6IND2VWV412EEP81oIeT2BGZLY2fo2kR/aAw6jYlp1AvaT/+UfjPnXmCoVWsGtHEbwGRR
-	Rno0wXBinTV6jHSxobrdryr6nuN/yN1eRvkFPD4RysBtyrhrn7m4OUdEV0lAs29ok2aew1RJknDIg
-	HSVS7sIg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nrbLcQyisI1OEjYF2JehulwALSIbAajyo9F3M0zxr/E=; b=M8atGTNnlM2OMWljFvtJ5KlPjY
+	IIeNtvYP/RBzW7P9D3jJ45CbQJYQ/l2X02iT/1sq7Ru5AJDWO0AhQLC0CtDQ6IhvVzB2Yz2+tk7WS
+	64Il/mFYxkLZOM2H6lTg4ZlCxJueDCqymKnQWvtLRkTtTjxR5Jultttn4eMpZrs6JGsGMm7MLvhiB
+	urCtSVMULzHr7hgZTT6yaNSN7ZVMC3ujc20yYk2zBQptQtBQJ/nBI3pcLcPfAmGSAM+iV8OdNu824
+	TcsBwuAZ5QTD43Vk05GjzgUoDEBHfidrHGxQXNO3rz5IPxyQa4S3k/L+pcqHguusxfMk/5F/fxApo
+	00IIngNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXEf1-000000077wJ-36eo;
-	Wed, 10 Jun 2026 08:51:43 +0000
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+	id 1wXEng-00000007APl-3ULM;
+	Wed, 10 Jun 2026 09:00:40 +0000
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXEey-000000077vH-2lgX
+	id 1wXEnd-00000007AO5-32Jg
 	for linux-mediatek@lists.infradead.org;
-	Wed, 10 Jun 2026 08:51:42 +0000
-Received: by mail-pj1-x1035.google.com with SMTP id 98e67ed59e1d1-36ba706ab46so4412810a91.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 10 Jun 2026 01:51:40 -0700 (PDT)
+	Wed, 10 Jun 2026 09:00:39 +0000
+Received: by mail-yw1-x1136.google.com with SMTP id 00721157ae682-7dc73a56b5aso44454467b3.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 Jun 2026 02:00:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1781082036; cv=none;
+        d=google.com; s=arc-20240605;
+        b=jMcoa9ybgXwrVSAtR4U2pvHzraaOR7kVJzevfQO/ObbOP3Tu8zAs5ly71ZP2Z89nsa
+         XN44z8Q/B9KezLmkrGqUxyz1dXcF2Zv4BM1M1DbeVzjdLH3OQjqHStp7MygzCE1GLMBL
+         fFL2RzSpysPl7VUZta5DUPQhR0e+ccVdclJS8w9lXpAKEgwqa/wvFB2fiI0G7PlfgV5R
+         UzoOi1LznedW+RlYn3kd8kDexNKlMvl17bBDzf12+QdLcHutEJeoKUfAjBnk5GEie7r0
+         BlGWhVsCtNPOHzxWG3xG0YWgTgrRt1OmVgAAN4oWLaaVDFgT6eP7JPEWyfX72DLYgOND
+         PV5w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=nrbLcQyisI1OEjYF2JehulwALSIbAajyo9F3M0zxr/E=;
+        fh=RUL/88h7hv/M0sFozwzHiZ7D9XPSwDJ6LKMA2YaxBhs=;
+        b=CvCLZ8YOilG+EUAo5qdoMiqLxj9oRNYMtcUiZI9faq5REklBOz1tHhsAu8psXljH91
+         NjoPTKRGDwHncXe2ck9mF5zVTjyD1Y0MqbaTKlo9p1aJ+JjKWlCfKBZPFDlc6+w1p2k2
+         pXkfORBR8LXvjYm89fqTgLvmgVgdnyNxKQ84CHMc5ztk85QMheOnkdqA75FZEt4rzdS4
+         QvCoQrgIiU1vNHxk90zn2uIvxLdXrW42aCs505HnuKz3yk0bae0ZEOGdfrSQEMPClPyM
+         mjx8XHfi44m7DhyjAOgRFhL3Wx+OOTiuKguz0xW/t9R3yOtD/dmFyVsgkVhL9C9Qzzp8
+         Z3rw==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1781081499; x=1781686299; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=YZTUwD5334qhMn45Nv6zFjWXwDHnBznaVHmh9fHzOkw=;
-        b=FOuc64jSKAddwownFH1MZWGbqyHJfj/+HZArNTv3PxFYfYtOlnLcyDPID4IiBrHBMs
-         QlNgt/SBKGLgXK9sCmdHH7hBl1aq2oLoat1P7XPXxUmLK1wmtUo8aJCgiZ3zORHARUdc
-         BWPTIyaO/MrIE7LXu42CSrvqMNpmTRirteViw=
+        d=chromium.org; s=google; t=1781082036; x=1781686836; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=nrbLcQyisI1OEjYF2JehulwALSIbAajyo9F3M0zxr/E=;
+        b=m11SGb8baYrqLaVzKJPK+1pyaxi2DReHyOS1swQvlXXnwi5cQIP+JrvjHLKd+9xdGi
+         P2au1Q+cqVfKgCfvmDC3iwqtgIPolWdUAtArMQ1rbS6Rd/ZH8qGXtog9SJ8Wdy5wTBwo
+         M8RAbyypDzKm3GI7tIw9xhMkbBcQBsBKsCgw8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781081499; x=1781686299;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=YZTUwD5334qhMn45Nv6zFjWXwDHnBznaVHmh9fHzOkw=;
-        b=dwv7gv09FoSEhN3RpGMN7+96Yp8sv6XRSwCy15/bYBMK3V9ZDEawidQfm0+SG3nmcu
-         CoIwfBjtywjHLPG40QJ4LwiEDWCrdQDT2m4Td/cIZAtiuW6/ln9I0Q+0NeHz5r1dOyz9
-         Pr22xLWlA+1H23fGclI7TnoB5vkyz1ICItc2Ot64vYojRqalxrhwhJL0ToR18RALSB8O
-         LpzrbyaAbkIYP+IuSSLO9oImVYIJr4L+m46pcZtbeXcTpZ727ZZA22BLBlrFOG3T7Rr/
-         OHt7Wwq5ld0UdSQ/eQfoTghDYTS/Ywki/vsqwkGLgW/KM6RdSPFr9rEINnUOq5SBop1P
-         qgvA==
-X-Forwarded-Encrypted: i=1; AFNElJ+MqVWTzrFSXFUdPzS9MGlMOS3YisJRBxUKm42RXctZaDjqFO9V/zsJ+9FIDuaE4z9Rzhcc/RruY+GK6Hq7PA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz7O3M32xFM/0PjzBAEMWouDmaLcLpNB3lw8P0sSCOjA4wdplaq
-	p7SMOJ2XEhbx4gMiroaeZ986FUN3A/nyZ/zqUTT/vg/3l5793lXtFgI1YrGdBjWZtQ==
-X-Gm-Gg: Acq92OHfZ4O3XbFird5EihEZ6Tff3nv/3ukV8ZNuEEkdjcSt9tTbIznl0CBMLqETXsM
-	TDoJIuifZdCKOKOr0jEHNM/VUClG5237WwhI+bTzM+7XrqFXgMA+d94cUvryDg8A5kI0MbAhV8r
-	TLSDyqqFTWblDIrpOgOkbvbIgPZlNlVcCtRL/qFOun4D3uG2Lss5sTUq0EMXOqh2ArgknH8mul4
-	icviBCnUy2j9aUpM16+mmwoxqd2n9QMKcJeLcaZcxS3ycjorBfbBeS1l4qVs1QyrlurNhvHxwbo
-	b80b3aYpiNHWAVdo6QiQWXFtP8NulF8VXykSqFTYyZ5zlfnHVVIXZXVHX2/CVVMQRaEyduM2G/W
-	6hZQHhnxl24YshvoR2T8ThE20qMkMLHLTmUdkIxNIftz049dhtg89Mu1iuGjc8DZrYON3Nw5pKe
-	YGbs+vdmuOSySV9/XDt3YHJ3dRApcWG+laF+REYupcdhl8Vi1TWtJ4t//E/vbsgHUVV3LYff9y1
-	w==
-X-Received: by 2002:a17:90b:390e:b0:368:a297:bd3d with SMTP id 98e67ed59e1d1-370ee82f93cmr24837129a91.3.1781081499588;
-        Wed, 10 Jun 2026 01:51:39 -0700 (PDT)
-Received: from google.com ([2a00:79e0:2031:6:8717:e062:7cab:4cbf])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-36f70a285a1sm21900817a91.9.2026.06.10.01.51.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 10 Jun 2026 01:51:39 -0700 (PDT)
-Date: Wed, 10 Jun 2026 17:51:35 +0900
-From: Sergey Senozhatsky <senozhatsky@chromium.org>
-To: Marcel Holtmann <marcel@holtmann.org>, 
-	Luiz Augusto von Dentz <luiz.dentz@gmail.com>, Mark-yw Chen <mark-yw.chen@mediatek.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, Tomasz Figa <tfiga@chromium.org>, 
-	linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, stable@vger.kernel.org, 
-	Sergey Senozhatsky <senozhatsky@chromium.org>
-Subject: Re: [PATCH] Bluetooth: btmtksdio: fix infinite loop in
- btmtksdio_txrx_work()
-Message-ID: <aiklN2uHqmJNemws@google.com>
-References: <20260609121329.1262170-1-senozhatsky@chromium.org>
+        d=1e100.net; s=20251104; t=1781082036; x=1781686836;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=nrbLcQyisI1OEjYF2JehulwALSIbAajyo9F3M0zxr/E=;
+        b=Zz1UTORPBC3YPZ8fefWvAQ6NNtlIglAIfK39tqVD6u+Kn/1D1/fCnlZrOruXQ92Yk3
+         /+a+Vg1Vv1LCP6XogK6+l/TWJ36GT5lJfaBT7rHJ4Hxa4gQEW4XiWJMDAxtPdvenasoz
+         wGxkMSk7hXDPcdKs1rLJmWlU/M2xnU0OqNV6IlnKc25rKZFRGfyOQkClKSVfSDPPxTH0
+         vHoes3278yvcNfGf+WN97LrOnJ94au9VT6bXSP9W3UO2YCB7/AIoaL5dNuPAnOqPmJwf
+         MhhtSJJAChetgcfdtScC4T1cskwNmHyndiIdU+KGQjd4Kfegz4I2H2r7wPknHgRMUchP
+         vDCQ==
+X-Forwarded-Encrypted: i=1; AFNElJ/FkIL75zNk1/iV8Zk65fNb7vX5VXWMI4PJrouPCrDkLoizaoaLUQLs3dwAtDTbz9kHuLR/Sh1DG/V1nxe7+Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzv+N4vhvrWbIJT/k5VwieQpaZjvelEWvOf+Ciz6mujOOq9XG7g
+	FqFo/Q3976zgEvov5ryXLs7kOsMplc1tiPsgyrGGq6JQ/8dj3nFkgbazamkksr2IHlxetdT7OMv
+	dfOQMs9vL/0wcmmq1I0ZxsU+/6YyYEVj3MiMOWrdU
+X-Gm-Gg: Acq92OF0k8sxC0/KqfHKJLuWOa8U6HOb0vsUwsTdHadJrMRQlHB76UHprTo+LclPX6/
+	Teel0/9nynkZcTUhyg2PFT8LzLKQW5iPE9pwqxDO56Ve+J1dfC6lnR0+Zkx3kNXceWTwJWq4YVP
+	DJvQBFeMsQuuQclvSnsbA8TrJjnp+pLK9mEvjZ83xooSgQLJZ023mkIv//NUj50mDfCVsrRIekO
+	6txzCFXO2t1o8d59l9mR6+aKvwUzt+7zUNYfdGdMohC+rumeEXzxYt+6HdNKU5QbOrgv2pUoqV+
+	gkCQVNSo1YkqjSUbNkZvdQyK0QcKxg==
+X-Received: by 2002:a05:690c:6c08:b0:7bd:8d1e:39fb with SMTP id
+ 00721157ae682-7ed0a4ed459mr225795957b3.7.1781082036496; Wed, 10 Jun 2026
+ 02:00:36 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260609121329.1262170-1-senozhatsky@chromium.org>
+References: <20260610084053.2059858-1-wenst@chromium.org> <20260610084053.2059858-4-wenst@chromium.org>
+In-Reply-To: <20260610084053.2059858-4-wenst@chromium.org>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 10 Jun 2026 18:00:24 +0900
+X-Gm-Features: AVVi8CflqNzYUTj7jVe9ENVhBouReNOK4zYnRNLDpQhNXfjJp66LGpOOH45Xjpg
+Message-ID: <CAGXv+5ENxq3B63M-HnW95we+2r+WLfCLm5TZ820zWiC8FSakSg@mail.gmail.com>
+Subject: Re: [PATCH v2 03/16] power: sequencing: Change CONFIG_POWER_SEQUENCING
+ to bool
+To: Bartosz Golaszewski <brgl@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Daniel Scally <djrscally@gmail.com>, 
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
+	Sakari Ailus <sakari.ailus@linux.intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Alan Stern <stern@rowland.harvard.edu>, linux-acpi@vger.kernel.org, 
+	driver-core@lists.linux.dev, linux-pm@vger.kernel.org, 
+	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Manivannan Sadhasivam <mani@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260610_015140_696904_872C06E4 
-X-CRM114-Status: GOOD (  12.40  )
+X-CRM114-CacheID: sfid-20260610_020037_797611_0E2E90AC 
+X-CRM114-Status: UNSURE (   9.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,33 +125,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On (26/06/09 21:10), Sergey Senozhatsky wrote:
-> Every once in a while we see a hung btmtksdio_flush() task:
-> 
->  INFO: task kworker/u17:0:189 blocked for more than 122 seconds.
->  __cancel_work_timer+0x3f4/0x460
->  cancel_work_sync+0x1c/0x2c
->  btmtksdio_flush+0x2c/0x40
->  hci_dev_open_sync+0x10c4/0x2190
->  [..]
-> 
-> It all boils down to incorrect time_is_before_jiffies() usage in
-> btmtksdio_txrx_work().  The btmtksdio_txrx_work() loop is expected
-> to be terminated if running for longer than 5*HZ.  However the
-> timeout check is twisted:  time_is_before_jiffies(old_jiffies + 5*HZ)
-> evaluates to true when old_jiffies + 5*HZ is in the past i.e. when a
-> timeout has occurred.  Using OR with time_is_before_jiffies(txrx_timeout)
-> means that:
-> - before the 5-second timeout: the condition is `int_status || false`,
->   so it loops as long as there are pending interrupts.
-> - after the 5-second timeout: the condition becomes `int_status || true`,
->   which is always true.
-> 
-> When the loop becomes infinite btmtksdio_txrx_work() loop never
-> terminates and never releases the SDIO host.
-> 
-> Fix loop termination condition to actually enforce a 5*HZ timeout.
+On Wed, Jun 10, 2026 at 5:41=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org> w=
+rote:
+>
+> USB support, including the core and hub driver, is bool, no modules. To
+> be able to use the power sequencing API in the USB core, the former must
+> also be bool to avoid the latter being built as a module.
+>
+> Change CONFIG_POWER_SEQUENCING to bool.
 
-Please hold off this patch, this change alone might not be enough.
-Let us look closer into it, we'll come back you.
+As Sashiko pointed out, CONFIG_USB is tristate. I was looking at the
+wrong symbol. Please ignore this patch.
+
+
+ChenYu
 
