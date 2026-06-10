@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92B19CD8CB9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2026 08:41:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 024A9CD98CC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2026 08:41:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dDEOB4zDGGA532YGopw6vfAouEtuG7p7cdbO9K1VfZ0=; b=c8z1SuGxsmyrDLLBTHkiIoFXCX
-	s6kF0fK6pTdgZ6aJucfJaPByHMBsLIW9PBJW5xmCMFhJ00vtSaE7NkV6OeJPNqHkgszQFXI50XtSa
-	XWq20W1thJR5r6mRJoj3kuR/cZFfmax7MjYIyxxAYFOvyf5wzlznKBQBY4XgdeVYi8jWxz8zfUxLB
-	yGNqeFTiz7x/e8MA9lIsUEdi8vI04RQY2FXNgFTSq6l2zaRfqJMNSyJ/J2y2amGFv9pl8DqPMYWsG
-	BfJYUqVNItfcTVJ8xMunXTfT5zzoKkabkXUKySFhs5to6sblKetVpIXYaV2o4oT4u1hGipmTBzsWL
-	nNhE76dA==;
+	bh=BYYX9NwLUP4rFqvakVHrp1Kb1i3tLTyqtPoxV/1lOfk=; b=xBZzz/ohT/gbvI1TaquMcOBNjT
+	U0SKrFOSKa1X/9Gph9ntDU6iN0vZJ/7nKRNwq3Osu1aEpOdH4/ksb9FG3+4kGS1gMjoTuLMPA1MKo
+	osbrUl/5NHivibTz2tKLOYa3cyaPmrPeDW58dFRw3dUUBbzaB+EY3h2U13apH3AumE/otYDf4e1tN
+	FK++G4CbFpk2pGNp6HaxJUB6aQpchYBvhBrC9tXQFl8IjiYkPwThm0DnTcaZZ2+t5LIsQHb1kLqpX
+	txqSnoT/BJYuh7F/saOELWPbM4emi1yaFfgk3HnsHuDw2OJ2wZ7uqPFSOKq6zoHxIbLuNPQCkIjmR
+	2hrSky+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXEVD-000000075Xe-2Xrq;
-	Wed, 10 Jun 2026 08:41:35 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1wXEVH-000000075cM-49Pd;
+	Wed, 10 Jun 2026 08:41:39 +0000
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXEVA-000000075Un-3iA4
+	id 1wXEVF-000000075ZG-1WsV
 	for linux-mediatek@lists.infradead.org;
-	Wed, 10 Jun 2026 08:41:33 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-2c0c2c7e0c5so43522055ad.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 10 Jun 2026 01:41:32 -0700 (PDT)
+	Wed, 10 Jun 2026 08:41:39 +0000
+Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-2bf18c30bb2so47291365ad.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 Jun 2026 01:41:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1781080892; x=1781685692; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1781080897; x=1781685697; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=dDEOB4zDGGA532YGopw6vfAouEtuG7p7cdbO9K1VfZ0=;
-        b=LUCph/g8hfSt2vrXy7gQ5ZG0jFJHwdsLDrwmRw98euoTAKgi7kwLre3noZZ8iQogC8
-         p36soucduNYAXsCiqjDtXfa0kvLL0p5EZscO8xgJlHQyxmMVGdwhK6Tw0WGNZG7V5dxC
-         PQY9i0GNDuLAZ9wINeaieVkvF1w5f+FCab0zM=
+        bh=BYYX9NwLUP4rFqvakVHrp1Kb1i3tLTyqtPoxV/1lOfk=;
+        b=mFbubaU7Y3Y8JXQwlzh3kUeq/ffNzG5XHYdAOX3h2dDboH/2UUbd31Fb07i40Wnd2/
+         sx49NjQtcgFVy3MJtkxiyGBIJN+fHr6yv80l4TBZO4HPrj8ELnhzp6jBpwztmvzaV4Op
+         MATg3LXjwufSlutj6XBUA0/+qdDbkmYXJXVbQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781080892; x=1781685692;
+        d=1e100.net; s=20251104; t=1781080897; x=1781685697;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=dDEOB4zDGGA532YGopw6vfAouEtuG7p7cdbO9K1VfZ0=;
-        b=F8Un4ctA5QM2gfxY0Gkud30IOEWoZiHCgE9Ri/P4Q+1wFDTN2DxBD71G/0CzH+zIL1
-         3DNoSeh/T11X2MfB5Q1SckZtJv1bQmsiTpqmfSa4YRnCXOGxBw7y9tKFbYINBGz8XqTu
-         6EC5UlKpEM5ghDHO/DR7sKH9YIE5xIl1QP8K+SuoYDgZAagMtgWFQuaCYU/ZJgQX0GDw
-         m0t0t9l0MOrkqM55OKu1vDw35UscZB7MaoFQ2WQv3+KqMaCprRgwQCjWqjc7V8k7cMnE
-         +Cd3+YJsi14PTlb9yWkR+WcmXzMsC6AF8i1elMPCSINmb9BaCbKCqM3T9J0bCZDjz4pH
-         Hylg==
-X-Forwarded-Encrypted: i=1; AFNElJ/qYG4TGOCaYC2/ukR1tFnk9wYG4UFS+4da6xqWKNZVo2ykebEEKjqghWNgErbWFB+AjFOI+RxjVE4X7eW4ew==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywx9LFhob4NUMi3lKw529UhoZYPcMilTj3Fklgora1hQZBdTn1W
-	kslHHq0ghBcsbezg4P/I+0h+QtV1kHRTiIOYCa+xAxtOCynz0rkKU7ZJNT3bLd2YuA==
-X-Gm-Gg: Acq92OFbsp7HLY4KHtbKNc9q1PdZR1vPycVxypDbYSv5Ulmr/ZPAmlAmZBiHtrL7Fw7
-	l4Q0+jWn0WFooSL8tloM/ju9hEbhrxD0Z8P4sWMCWkQLxVYHyQ/wKqiFinv+3BQ8pBorZJ2KYL5
-	64wllOHELuQHpPPEHdTPn0uUAUOZn5vxDDikeuI4hUp3t98Ey/DBMy3y8pRlYaDx+4Hqt51oVvj
-	TL2eGUdAECVQ0rleFu85DOo5igqfo99hZSYdxJ6xVx5l5UL+uJt099eDHyzahf58cArqR2n6yWe
-	aNd+l94au0wTUOF+KBVeEjtlEuTl5DYVHxxugNeIEwg1S5e63EsoNgJE/6S00QjB0obgVY/m8V3
-	jaBwjUsdV7PUi+4ti8mJZUSxkW3xWKB61bay7b3/9A43VhZb9VYGJ5o6oMjAxvqXEhvL3db5Ump
-	AmACP1PIk9WLqt1TC7Czjx3E/iIvmw1aJuVCohp5nsd392F/jEwHAPEQGrL2f/+iRKwAPMXH6p8
-	H36lPQe3wVFLsHPLw==
-X-Received: by 2002:a17:902:e74a:b0:2c1:8fea:4dbf with SMTP id d9443c01a7336-2c2a1bafeb4mr79293415ad.8.1781080892355;
-        Wed, 10 Jun 2026 01:41:32 -0700 (PDT)
+        bh=BYYX9NwLUP4rFqvakVHrp1Kb1i3tLTyqtPoxV/1lOfk=;
+        b=Peec37pRRCC6WGFyNnjLMpJafxhsBI1ngNubQMLJQadiVyJqggjaIinrRc2wud+xuT
+         SRpoVjB3is6GsVOzYuhVyh6Xh/Yl9CiOjxP8+vVick3qNJ5iuoHlN3j4hjO88yLqipKi
+         EXZXrlGBHwjUs8frLmXd7e91AxljvsWQug2g8c6zOWqUo6yhjWh49OrOJR/8wnyvaP+O
+         7wTOGKoh/RXdj88WYEsDa1G063t4Aswd0BO4IgijDFXoGyBr0F0ucN0xdnbtRopQZxRW
+         rGRDtqrqCbyJi25j8MkItQwwi1/ZBiJowPGQlSgg9zm0gYtizyerZnMxMCwWLGF0+bBs
+         2k8w==
+X-Forwarded-Encrypted: i=1; AFNElJ/A+PAKIsnbnVhTuAPM7u9tmxtP5+sRmaqZApGUlcTD8ADjpapIvAtOY3DkcsciJZlRsvC0C0wv16QKmnGeEg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwE8Cr3nTWfeBpl+yxDvjiPdfISMiePlr8unlTtJW9QAQ/84kqt
+	M1TpKgyD4Anqm7zMV2aesJ4eZn9c3nswTfVNo8MZUoYkc+X+MAY4fvBvtMSFljtJLg==
+X-Gm-Gg: Acq92OFyjBPu/ibkxRPIriaIQC0Zg++P53j+yKAQ9+q3vsPeGPCKMWV7RoK5l5Brxim
+	GXKVLYkc2v2g3vnGo7SVaO1g91hU96mxfyy3gOvlX9OavarqezHm2gksDjGTrhlkS7eSt8iZkuM
+	oQbDnsUGT6P9keALw1KBJs0hb4RwX/w8IcEQsbawGaL0oSHjcV0Pe2bLmsg6Rpj40RDpcvU1Ew+
+	lN2BgKKpDXJPooN3GI0lqdZsFNedKoz4V0YoQmo06SidA0SC7U+xSne388oiYyvpvvyJ3S0tZWb
+	J17939nSzWWSScgoVsIaP7nqPcVdPDlvo3P0kbgtp6oU3U5Kfu75B4aK4fgxINHmTLaPaoWkTBC
+	lMctQeAFTKaodIS7vvObW7PQvmRI1THhh8X1VbqQVn72KIcs1BTTbTnpYLAPq/4FnlP/ZF5h2vx
+	mu/CwGQscyEVJK2DtByDUAQjh2Vn2fwS/Bv4Ea8qDVsESYyorW521Q8u3svI/irtt/VTA2TAYEB
+	QaYO+Quj6Dr+/3Fpw==
+X-Received: by 2002:a17:903:1205:b0:2c0:e5ee:f55e with SMTP id d9443c01a7336-2c1e80f9b57mr283573295ad.7.1781080896672;
+        Wed, 10 Jun 2026 01:41:36 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:3870:6325:16c:d35c])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2c164f890b2sm239223725ad.26.2026.06.10.01.41.28
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2c164f890b2sm239223725ad.26.2026.06.10.01.41.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 10 Jun 2026 01:41:31 -0700 (PDT)
+        Wed, 10 Jun 2026 01:41:36 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Bartosz Golaszewski <brgl@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -92,17 +92,17 @@ Cc: Alan Stern <stern@rowland.harvard.edu>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Manivannan Sadhasivam <mani@kernel.org>
-Subject: [PATCH v2 03/16] power: sequencing: Change CONFIG_POWER_SEQUENCING to bool
-Date: Wed, 10 Jun 2026 16:40:37 +0800
-Message-ID: <20260610084053.2059858-4-wenst@chromium.org>
+Subject: [PATCH v2 04/16] usb: hub: Return actual error from hub_configure() in hub_probe()
+Date: Wed, 10 Jun 2026 16:40:38 +0800
+Message-ID: <20260610084053.2059858-5-wenst@chromium.org>
 X-Mailer: git-send-email 2.54.0.1099.g489fc7bff1-goog
 In-Reply-To: <20260610084053.2059858-1-wenst@chromium.org>
 References: <20260610084053.2059858-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260610_014132_928675_E4833AD5 
-X-CRM114-Status: GOOD (  11.94  )
+X-CRM114-CacheID: sfid-20260610_014137_406765_3D0AF011 
+X-CRM114-Status: GOOD (  14.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,30 +117,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-USB support, including the core and hub driver, is bool, no modules. To
-be able to use the power sequencing API in the USB core, the former must
-also be bool to avoid the latter being built as a module.
+The addition of power sequencing descriptor handling in the USB hub code
+requires dealing with deferred probing from pwrseq_get(). The power
+sequencing provider may not yet be available when the USB hub probes.
 
-Change CONFIG_POWER_SEQUENCING to bool.
+Return the actual error code from hub_configure() when it fails, so that
+the driver core can notice the deferred probe request.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/power/sequencing/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes since v1:
+- Moved "int ret" declaration in hub_configure() over here from the next
+  patch
+---
+ drivers/usb/core/hub.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/power/sequencing/Kconfig b/drivers/power/sequencing/Kconfig
-index 1c5f5820f5b7..27448fba9dc5 100644
---- a/drivers/power/sequencing/Kconfig
-+++ b/drivers/power/sequencing/Kconfig
-@@ -1,7 +1,7 @@
- # SPDX-License-Identifier: GPL-2.0-only
+diff --git a/drivers/usb/core/hub.c b/drivers/usb/core/hub.c
+index 13264e86bc6d..985551d013b2 100644
+--- a/drivers/usb/core/hub.c
++++ b/drivers/usb/core/hub.c
+@@ -1874,6 +1874,7 @@ static int hub_probe(struct usb_interface *intf, const struct usb_device_id *id)
+ 	struct usb_host_interface *desc;
+ 	struct usb_device *hdev;
+ 	struct usb_hub *hub;
++	int ret;
  
- menuconfig POWER_SEQUENCING
--	tristate "Power Sequencing support"
-+	bool "Power Sequencing support"
- 	help
- 	  Say Y here to enable the Power Sequencing subsystem.
+ 	desc = intf->cur_altsetting;
+ 	hdev = interface_to_usbdev(intf);
+@@ -2005,14 +2006,15 @@ static int hub_probe(struct usb_interface *intf, const struct usb_device_id *id)
+ 		usb_set_interface(hdev, 0, 0);
+ 	}
  
+-	if (hub_configure(hub, &desc->endpoint[0].desc) >= 0) {
++	ret = hub_configure(hub, &desc->endpoint[0].desc);
++	if (ret >= 0) {
+ 		onboard_dev_create_pdevs(hdev, &hub->onboard_devs);
+ 
+ 		return 0;
+ 	}
+ 
+ 	hub_disconnect(intf);
+-	return -ENODEV;
++	return ret;
+ }
+ 
+ static int
 -- 
 2.54.0.1099.g489fc7bff1-goog
 
