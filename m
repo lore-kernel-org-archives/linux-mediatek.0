@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13B6BCD8CB9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2026 16:47:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EC0DCD98C7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2026 19:47:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aZlhauMybcsLl8kIgbp5wNtOt4YG3oeBwviWuHyGg7I=; b=N7wy76IESgRmbz6++VysHZdiQW
-	pef0CVHwwQIddEkTV95OOgZxv++8baW3zLrhRWGiHXv30bBYJVp2FulSzX7ydASOXkQ4UkSIFnERJ
-	hgUmk2o1Q5Ob1bBfZ0P7ydTcafSmcrT6ELPwxaFk54+zv0qJKaP+pTpBv24I9AyfYAgjG5RQgg7ZW
-	J8JVUyYtS3R4gn56KAT0C194l4co4bqrICifNFaoF+q7T6hn4m94obdHScNVoBj5aaR8S/7cg6gzS
-	EMEE5/5AZzrTCSqgW70OpV9VRyPfYKitSJ8arBEFmFRwsWMteqYNQgoeu/2rjIsVDDcBNbDsDJSmq
-	K5483Dfw==;
+	bh=E7CuLlKDZQznwpaWJphoeGTh2ZPlfY1z5LRT1Dzsgs8=; b=Az0r6qnud4e1pOqUjljK4khfxi
+	7up48Ze8EGaDcu0vlA/b3FvlKKu2IPaxebmQcdYyyGBZSbHYnXnUdJFxuYrCpnU/YL+fIMS80nKIL
+	JkEKyHp16y0oMLkjkMlZ59QzfVMuN/smlBtg1q73IjwQDRgM0f9q1dvWihtbbgTugMz3qyqImm90/
+	SMJkCveatEOiB3IsJZtMSFo2Lff66acikWmKCAsJz6IAd3BFEL2PiWpGbqwXeOCuu/e1p6+2LLXTT
+	4GgNBa8ODZamTfmOMt1IYciFnpvaiQQHwRQT2TsttAhciH00+IC5dTYY6cmrKAL3uREO9jff93hDy
+	0+0eI9/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXM51-000000089ML-0SvS;
-	Wed, 10 Jun 2026 16:47:03 +0000
+	id 1wXOtg-00000008HU1-2qEr;
+	Wed, 10 Jun 2026 19:47:32 +0000
 Received: from 011.lax.mailroute.net ([199.89.1.14])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXM4y-000000089Kz-2BAG;
-	Wed, 10 Jun 2026 16:47:02 +0000
+	id 1wXOtd-00000008HTj-3QCV
+	for linux-mediatek@lists.infradead.org;
+	Wed, 10 Jun 2026 19:47:31 +0000
 Received: from localhost (localhost [127.0.0.1])
-	by 011.lax.mailroute.net (Postfix) with ESMTP id 4gbBWl74F5z1XLyhV;
-	Wed, 10 Jun 2026 16:46:59 +0000 (UTC)
+	by 011.lax.mailroute.net (Postfix) with ESMTP id 4gbGX05D3nz1XLyhV;
+	Wed, 10 Jun 2026 19:47:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
 	content-transfer-encoding:content-type:content-type:in-reply-to
 	:from:from:content-language:references:subject:subject
 	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1781110014; x=1783702015; bh=aZlhauMybcsLl8kIgbp5wNtO
-	t4YG3oeBwviWuHyGg7I=; b=thCDfpWrWI/ywSQ9tYY8WHHnXW/IEBFUm/tBjyF/
-	49Hy4Tj0FhF5Bp3qG5huP/npVKLKBsFieGtulviHRwlb5IRbs0u1Hf7eJT6tf8Yk
-	ZnMNlwKb+PWqU3SVEzd5DylNPHO3v8bMwjxDog2cMEOGaHRAruHf6RRH9Huyd25N
-	ysE9oz/mmtf2XPIbsoybAfj4NVuven6cHOMgjVGvFoSIbgUETk9I18lByyUVM0MI
-	j8i/+QOsE+wmYum5FWC3LKzK3kgaCQSg+nAxE1gJpGumdisMi+kL41Jm2ns9FZG8
-	eM96OighqxovL8j2uBHSt7wkkzyJKyK8+6XkJ71tcpyiGg==
+	 s=mr01; t=1781120842; x=1783712843; bh=E7CuLlKDZQznwpaWJphoeGTh
+	2ZPlfY1z5LRT1Dzsgs8=; b=ZEgvhFh3aWTwzPvm/qnW0WCvohpmGvo+U1XLlAs3
+	GjdJrtY6HX+CODsE9bCHSxywwBNqilyNA280kb0REZemR5DTwz3jW1AYTtOkV+QU
+	IcCAcZCN9uC+YwtF3AvGmf1qvV+Ftsvnjx4nNg3fdFhO8M9xPgJBncASch0/b+2A
+	XkwJxx4ilpgKHyAgc+Vq1JiO7PwJX+BPVmZFoA0V/0W8SfUIK4XaI9b+6OfYAkRF
+	purUxEZshqtEnBnFzQUtXBRDLxheQrNqqk3DWZjKawpxqovbiCB6Ic4DmVhT9rtp
+	i4AYjzQYGybZAXPLO/U7GQQGnPRyDe/lfcqhlmLkXAAgAw==
 X-Virus-Scanned: by MailRoute
 Received: from 011.lax.mailroute.net ([127.0.0.1])
  by localhost (011.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id ltPV2J_RGYQF; Wed, 10 Jun 2026 16:46:54 +0000 (UTC)
+ id aY3bP3U30VI7; Wed, 10 Jun 2026 19:47:22 +0000 (UTC)
 Received: from [100.119.48.131] (unknown [104.135.180.219])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: bvanassche@acm.org)
-	by 011.lax.mailroute.net (Postfix) with ESMTPSA id 4gbBWZ6ZBdz1XLyhT;
-	Wed, 10 Jun 2026 16:46:50 +0000 (UTC)
-Message-ID: <1f4a26be-4985-448f-955d-00e4f697224c@acm.org>
-Date: Wed, 10 Jun 2026 09:46:49 -0700
+	by 011.lax.mailroute.net (Postfix) with ESMTPSA id 4gbGWp0ZLdz1XLyhT;
+	Wed, 10 Jun 2026 19:47:17 +0000 (UTC)
+Message-ID: <42164c06-3c54-4d66-a29c-1e0d46210472@acm.org>
+Date: Wed, 10 Jun 2026 12:47:17 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] ufs: mediatek: Implement get_hba_nortt callback for
- RTT capability
-To: ed.tsai@mediatek.com, alim.akhtar@samsung.com, avri.altman@wdc.com,
- James.Bottomley@HansenPartnership.com, martin.petersen@oracle.com,
- linux-scsi@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com,
- peter.wang@mediatek.com, alice.chao@mediatek.com, naomi.chu@mediatek.com,
- chun-hung.wu@mediatek.com
-References: <20260609103856.676222-1-ed.tsai@mediatek.com>
- <20260609103856.676222-3-ed.tsai@mediatek.com>
+Subject: Re: [PATCH v1] ufs: core: Remove unnecessary block I/O quiesce for
+ clock scaling
+To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
+ martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
+ jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, tun-yu.yu@mediatek.com,
+ eddie.huang@mediatek.com, naomi.chu@mediatek.com, ed.tsai@mediatek.com
+References: <20260604133503.2049288-1-peter.wang@mediatek.com>
 Content-Language: en-US
 From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20260609103856.676222-3-ed.tsai@mediatek.com>
+In-Reply-To: <20260604133503.2049288-1-peter.wang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260610_094700_595534_E0274777 
-X-CRM114-Status: UNSURE (   5.30  )
+X-CRM114-CacheID: sfid-20260610_124729_921306_B393A026 
+X-CRM114-Status: UNSURE (   6.04  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,9 +89,9 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6/9/26 3:38 AM, ed.tsai@mediatek.com wrote:
-> Implement the get_hba_nortt callback to handle platform-specific RTT
-> capability differences:
+On 6/4/26 6:33 AM, peter.wang@mediatek.com wrote:
+> Hence, it is not necessary to stop I/O during a power mode change,
+> and this step can be removed.
 
 Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 
