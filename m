@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02AB3CD98CC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 15:04:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3542CD98CE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 15:22:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PDRJOUSxfNGFQoBrsDJcmWJf50RsYbuzi43rA4XFrIo=; b=waod71sc2gelDhhkoBOv2uDp65
-	L3liUHhA3x33Mem2TtGs98LiLvW/MUP+H64NuWFirhHkI0kbABKT2K6Eysuqtt3RFj0YxifT9QbQ/
-	/P+7nITQ+G9JdYjJ0CjZoEfJ6Oxw/7FAj601qseZkLed4RbJoM1yqR4iBHAM2U+7sGeC8jKc0M1hy
-	FiiBk0jRgI6iZ4gPqyxl2aJOc6vPAu9F+GmJJ37kiDmcjJfDa+o0lK9UIWT3dpAg2LwLugUY2xs6n
-	j509ZYmnsV443jC6/MOY2I4FPRVZzuSKElGW3vckgdzROhZ94utTAetXMnKnuKbmZDS3NpoCzkZQJ
-	NxyigYnQ==;
+	bh=67zy/OO6GQWRBTDkMhIuirY1PwgjkWuKrq96K18/+fE=; b=ZtqkYN0Ms7CzXpXaBQ0505/x/4
+	liOSYD9BrJdH49LU5poM5C0gm+NRmhSK4dbYqF8nWxpIxs5EP4ptqb3og56szeu8tXpKktRqHG0Ya
+	G4NN7mA1lTIgbBzB8ohLDGIMkZ54ZZTYDQAOMSY5wqgObpal5kHEj3ayT6fcgmuz+mY4L1RCY3DEh
+	dq78MkjebxzMZafMq/dVVWw1kuINWN6235BcMVYnOHG5LmdIxubUF8c6Q6n6Y70OySobqXyn1qASD
+	oCjeWFogp4owl+zkMMVR0kvHhv75VDWzoPpTr67LBneHNTFXabr0mY0ID1AKm0acnGMC8coWP3ShK
+	ETZqCOmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXgxc-00000009eR6-2IzY;
-	Thu, 11 Jun 2026 15:04:48 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wXhEI-00000009fm6-2YnE;
+	Thu, 11 Jun 2026 15:22:02 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXgxb-00000009eQo-22nM;
-	Thu, 11 Jun 2026 15:04:47 +0000
+	id 1wXhEH-00000009flL-2HqR;
+	Thu, 11 Jun 2026 15:22:01 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8F6DB601DF;
-	Thu, 11 Jun 2026 15:04:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BAC561F00893;
-	Thu, 11 Jun 2026 15:04:45 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id AF4F0601E1;
+	Thu, 11 Jun 2026 15:22:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA8AB1F00893;
+	Thu, 11 Jun 2026 15:21:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781190286;
-	bh=PDRJOUSxfNGFQoBrsDJcmWJf50RsYbuzi43rA4XFrIo=;
+	s=k20260515; t=1781191320;
+	bh=67zy/OO6GQWRBTDkMhIuirY1PwgjkWuKrq96K18/+fE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=WGljIyaIWsNrku9MCKteXhzgj4r/Jw22YTE77zA4Fg8Lq2hlV+MhHqP89hqwuNLhO
-	 IgHO5OythtyY457InhI1McQOndgj305mr9HA4Z/AjzsvPQDAs28A0pPoxUAJ1yf+tw
-	 fkQHiztW6EQLbqtICHPaLF+j+O6go1z0VfkwMatLKTwW3ELKg1EeoBDE1PZBM3f2k6
-	 qBF6J9W5MBKNLa5NyajsId0nBhwsj5UL+ERCL5gXaa6S6ejZPjp/lDkq2EjpfntrGd
-	 7HDY6sJGFJG9MeCGin77juZqdFrb9sStYI0v034S/Yfw58o+Yi4iF5DonBRuqz9zb5
-	 HVjyvgKNhum4w==
-Date: Thu, 11 Jun 2026 17:04:44 +0200
+	b=PnTtkqfEnRlAe9XW0BRr+WBX5P3w7ZUqQt3abKlffNJe2YiJL1KVRI04aV24lDwdz
+	 C4HuHGlIGRjT/oWunnlUSxa1IJFIBwVrH6C9s3YofRcSGZ3lf8lfCDmMku6Fbsa5oU
+	 LdVmDwYP50OAlUjXlvwKUjKMJqYn9wtPxUsviCUyfRtmWB9hTiVSAXC6LcJP9QFU1z
+	 tCZNClSubswZhsJfG19qYVnR+7CRmtwZYS+K+MJb7ZYJXRkSR+mIz/riD7+9+bOH3j
+	 gGRHAXcciQx+WE2/WUGJh2HCNvQaHaN7uOJ63eGAWuNEUc5NgESszEL2CtsfSoSXzF
+	 99VyWTVdMyACw==
+Date: Thu, 11 Jun 2026 17:21:58 +0200
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
@@ -50,16 +50,16 @@ To: Andrew Lunn <andrew+netdev@lunn.ch>,
 Cc: linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
 	Madhur Agrawal <madhur.agrawal@airoha.com>
-Subject: Re: [PATCH net-next v4 2/2] net: airoha: defer GDM3/GDM4 WAN mode
- and GDM2 loopback to QoS offload
-Message-ID: <airOjLlxSrA40B-F@lore-desk>
+Subject: Re: [PATCH net-next v4 1/2] net: airoha: refactor QDMA start/stop
+ into reusable helpers
+Message-ID: <airSlpMoBvcuRcK5@lore-desk>
 References: <20260610-airoha-ethtool-priv_flags-v4-0-60e89cf28fea@kernel.org>
- <20260610-airoha-ethtool-priv_flags-v4-2-60e89cf28fea@kernel.org>
+ <20260610-airoha-ethtool-priv_flags-v4-1-60e89cf28fea@kernel.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="3W6r5hbEJpuvgYEO"
+	protocol="application/pgp-signature"; boundary="xTiMez6xNLZ7OD9M"
 Content-Disposition: inline
-In-Reply-To: <20260610-airoha-ethtool-priv_flags-v4-2-60e89cf28fea@kernel.org>
+In-Reply-To: <20260610-airoha-ethtool-priv_flags-v4-1-60e89cf28fea@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,406 +75,130 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---3W6r5hbEJpuvgYEO
+--xTiMez6xNLZ7OD9M
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> GDM3 and GDM4 ports require GDM2 loopback to be enabled for hardware
-> QoS offload to function. Without it, HTB and ETS offload on these ports
-> do not work.
-> Previously, GDM3/GDM4 ports were automatically configured as WAN with
-> GDM2 loopback enabled during ndo_init(). Add the capability to configure
-> GDM3/GDM4 as WAN/LAN on demand when QoS offload is created or destroyed.
-> Hook airoha_enable_qos_for_gdm34() into TC_HTB_CREATE so that requesting
-> HTB offload on a GDM3/GDM4 LAN port switches it to WAN mode and enables
-> GDM2 loopback, with proper rollback on failure. Hook the counterpart
-> airoha_disable_qos_for_gdm34() into TC_HTB_DESTROY to restore LAN mode
-> when the offloaded qdisc is torn down.
-> Since airoha_dev_set_qdma() can now be called on a running device to
-> migrate between QDMA blocks, make dev->qdma an RCU pointer so the TX
-> path can safely dereference it without holding RTNL.
-> Hold flow_offload_mutex in airoha_dev_set_qdma() around the QDMA pointer
-> update and __airoha_ppe_set_cpu_port() call, serializing against
-> concurrent airoha_ppe_hw_init() in the TC_SETUP_CLSFLOWER offload path.
-> Introduce airoha_qdma_deref() helper that wraps rcu_dereference_protected=
-()
-> with a lockdep condition accepting either rtnl_lock or flow_offload_mutex,
-> and use it across all control-path dereferences of the RCU-protected
-> dev->qdma pointer.
-> Add airoha_disable_gdm2_loopback() to disable GDM2 hw loopback.
+> Factor out airoha_qdma_start() and airoha_qdma_stop() from
+> airoha_dev_open() and airoha_dev_stop(). These helpers will be reused
+> by the QDMA hot-migration logic introduced in the next patch to
+> dynamically switch GDM3/GDM4 ports between LAN and WAN QDMA blocks.
+> Add a DMA engine busy poll in airoha_qdma_stop() to wait for in-flight
+> DMA transfers to complete before cleaning up TX queues.
 >=20
 > Tested-by: Madhur Agrawal <madhur.agrawal@airoha.com>
 > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-
-Please find my comments about the following sashiko's report:
-https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20260610-airoha-ethtool=
--priv_flags-v4-0-60e89cf28fea%40kernel.org
-
 > ---
->  drivers/net/ethernet/airoha/airoha_eth.c  | 220 ++++++++++++++++++++++++=
-++----
->  drivers/net/ethernet/airoha/airoha_eth.h  |  24 +++-
->  drivers/net/ethernet/airoha/airoha_ppe.c  |  18 ++-
->  drivers/net/ethernet/airoha/airoha_regs.h |   1 +
->  4 files changed, 231 insertions(+), 32 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
-net/airoha/airoha_eth.c
-> index aeac66df5f3b..10232470a333 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+>  drivers/net/ethernet/airoha/airoha_eth.c | 53 ++++++++++++++++++++++----=
+------
+>  1 file changed, 36 insertions(+), 17 deletions(-)
 
-[...]
-
-> +static int airoha_disable_gdm2_loopback(struct airoha_gdm_dev *dev)
-> +{
-> +	struct airoha_gdm_port *port =3D dev->port;
-> +	struct airoha_eth *eth =3D dev->eth;
-> +	int i, src_port;
-> +	u32 pse_port;
-> +
-> +	src_port =3D eth->soc->ops.get_sport(dev->port, dev->nbq);
-> +	if (src_port < 0)
-> +		return src_port;
-> +
-> +	airoha_fe_clear(eth,
-> +			REG_SP_DFT_CPORT(src_port >> fls(SP_CPORT_DFT_MASK)),
-> +			SP_CPORT_MASK(src_port & SP_CPORT_DFT_MASK));
-> +
-> +	airoha_fe_set(eth, REG_GDM_FWD_CFG(AIROHA_GDM2_IDX),
-> +		      GDM_STRIP_CRC_MASK);
-> +	airoha_set_gdm_port_fwd_cfg(eth, REG_GDM_FWD_CFG(AIROHA_GDM2_IDX),
-> +				    FE_PSE_PORT_DROP);
-> +	airoha_fe_clear(eth, REG_GDM_LPBK_CFG(AIROHA_GDM2_IDX),
-> +			LPBK_CHAN_MASK | LPBK_MODE_MASK | LPBK_EN_MASK);
-> +	pse_port =3D airoha_ppe_is_enabled(eth, 1) ? FE_PSE_PORT_PPE2
-> +						 : FE_PSE_PORT_PPE1;
-> +	airoha_set_gdm_port_fwd_cfg(eth, REG_GDM_FWD_CFG(AIROHA_GDM2_IDX),
-> +				    pse_port);
-> +
-> +	airoha_fe_rmw(eth, REG_FE_WAN_PORT, WAN0_MASK,
-> +		      FIELD_PREP(WAN0_MASK, AIROHA_GDM2_IDX));
-> +
-> +	for (i =3D 0; i < eth->soc->num_ppe; i++)
-> +		airoha_ppe_clear_cpu_port(dev, i, AIROHA_GDM2_IDX);
-> +
-> +	/* Enable VIP and IFC for GDM2 */
-> +	airoha_fe_set(eth, REG_FE_VIP_PORT_EN, BIT(AIROHA_GDM2_IDX));
-> +	airoha_fe_set(eth, REG_FE_IFC_PORT_EN, BIT(AIROHA_GDM2_IDX));
-> +
-> +	if (port->id =3D=3D AIROHA_GDM4_IDX && airoha_is_7581(eth)) {
-> +		u32 mask =3D FC_ID_OF_SRC_PORT_MASK(dev->nbq);
-> +
-> +		airoha_fe_rmw(eth, REG_SRC_PORT_FC_MAP6, mask,
-> +			      FC_MAP6_DEF_VALUE & mask);
-> +	}
-> +
-> +	return 0;
-> +}
-
-- Does this disable counterpart fully undo what airoha_enable_gdm2_loopback=
-() does?=20
-  I think the current implementation is correct since:
-  - 0xffffffff is already the default value for REG_GDM_TXCHN_EN()
-  - 0xffff is already the default value for REG_GDM_RXCHN_EN()
-  - REG_GDM_LEN_CFG() will be modified by another patch (not in the series).
-  - WAN1_MASK/WAN1_EN_MASK default value is 0 and the driver does not confi=
-gure WAN1.
-  - if the device is configured properly get_sport() callback can't fail.
-
-> +
->  static struct airoha_gdm_dev *
->  airoha_get_wan_gdm_dev(struct airoha_eth *eth)
->  {
-> @@ -2005,15 +2055,36 @@ airoha_get_wan_gdm_dev(struct airoha_eth *eth)
->  static void airoha_dev_set_qdma(struct airoha_gdm_dev *dev)
->  {
->  	struct net_device *netdev =3D netdev_from_priv(dev);
-> +	struct airoha_qdma *cur_qdma, *qdma;
->  	struct airoha_eth *eth =3D dev->eth;
->  	int ppe_id;
-
-[...]
-
->  }
-> @@ -3027,6 +3112,89 @@ static int airoha_tc_htb_delete_leaf_queue(struct =
-net_device *netdev,
->  	return 0;
->  }
-> =20
-> +static int airoha_enable_qos_for_gdm34(struct net_device *netdev,
-> +				       struct netlink_ext_ack *extack)
-> +{
-> +	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
-> +	struct airoha_gdm_port *port =3D dev->port;
-> +	struct airoha_eth *eth =3D dev->eth;
-> +	int err;
-> +
-> +	if (port->id !=3D AIROHA_GDM3_IDX &&
-> +	    port->id !=3D AIROHA_GDM4_IDX) {
-> +		/* HW QoS is always supported by GDM1 and GDM2 */
-> +		return 0;
-> +	}
-> +
-> +	if (!airoha_is_lan_gdm_dev(dev)) /* Already enabled */
-> +		return 0;
-> +
-
-- Is there a behavioural regression for GDM3/GDM4 devices that were
-  auto-configured as WAN at ndo_init() time?
-  I do not think there is any behavioural regression since in the current
-  codebase it is not possible modify WAN/LAN configuration at runtime.
-  Moreover, using tc APIs to set WAN/LAN configuration as suggested by
-  Andrew, in order to configure a second device as WAN (or to set the
-  current one as LAN), requires to move the current WAN device to LAN
-  destroying the associated Qdisc.
-
-> +	/* Verify the WAN device is not already configured */
-> +	if (airoha_get_wan_gdm_dev(eth)) {
-> +		NL_SET_ERR_MSG_MOD(extack,
-> +				   "WAN device already configured");
-> +		return -EBUSY;
-> +	}
-
-- The commit message says flow_offload_mutex was added to "serialize against
-  concurrent airoha_ppe_hw_init() in the TC_SETUP_CLSFLOWER offload path".
-  I think this is a bug and I will address the issue on the next revision.
-
-> +
-> +	dev->flags |=3D AIROHA_PRIV_F_WAN;
-> +	airoha_dev_set_qdma(dev);
-> +	err =3D airoha_enable_gdm2_loopback(dev);
-> +	if (err)
-> +		goto error_disable_wan;
-> +
-> +	err =3D airoha_set_macaddr(dev, netdev->dev_addr);
-> +	if (err)
-> +		goto error_disable_loopback;
-> +
-> +	if (netif_running(netdev)) {
-> +		u32 pse_port;
-> +
-> +		pse_port =3D airoha_ppe_is_enabled(eth, 1) ? FE_PSE_PORT_PPE2
-> +							 : FE_PSE_PORT_PPE1;
-> +		airoha_set_gdm_port_fwd_cfg(eth, REG_GDM_FWD_CFG(port->id),
-> +					    pse_port);
-> +	}
-> +
-> +	return 0;
-> +
-> +error_disable_loopback:
-> +	/* Restore previous LAN configuration */
-> +	airoha_disable_gdm2_loopback(dev);
-> +error_disable_wan:
-> +	dev->flags &=3D ~AIROHA_PRIV_F_WAN;
-> +	airoha_dev_set_qdma(dev);
-> +
-> +	return err;
-> +}
-
-- Is the rollback symmetric on the airoha_enable_gdm2_loopback() failure
-  path?  airoha_enable_gdm2_loopback() performs many register writes
-  before its only failure check (eth->soc->ops.get_sport()):
-  - This has been already addressed in
-    https://lore.kernel.org/netdev/20260608-airoha_enable_gdm2_loopback-min=
-or-change-v1-1-1787a0f42b31@kernel.org/
-
-> +
-> +static void airoha_disable_qos_for_gdm34(struct net_device *netdev)
-> +{
-> +	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
-> +	struct airoha_gdm_port *port =3D dev->port;
-> +	int err;
-> +
-> +	if (port->id !=3D AIROHA_GDM3_IDX &&
-> +	    port->id !=3D AIROHA_GDM4_IDX) {
-> +		return;
-> +	}
-> +
-> +	if (airoha_is_lan_gdm_dev(dev)) /* Already disabled */
-> +		return;
-> +
-> +	err =3D airoha_disable_gdm2_loopback(dev);
-> +	if (err)
-> +		netdev_warn(netdev,
-> +			    "failed disabling GDM2 loopback: %d\n", err);
-> +
-> +	dev->flags &=3D ~AIROHA_PRIV_F_WAN;
-> +	airoha_dev_set_qdma(dev);
-> +	airoha_set_macaddr(dev, netdev->dev_addr);
-> +	if (netif_running(netdev))
-> +		airoha_set_gdm_port_fwd_cfg(dev->eth,
-> +					    REG_GDM_FWD_CFG(port->id),
-> +					    FE_PSE_PORT_PPE1);
-> +}
-> +
->  static int airoha_tc_htb_destroy(struct net_device *netdev)
->  {
->  	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
-> @@ -3035,6 +3203,8 @@ static int airoha_tc_htb_destroy(struct net_device =
-*netdev)
->  	for_each_set_bit(q, dev->qos_sq_bmap, AIROHA_NUM_QOS_CHANNELS)
->  		airoha_tc_remove_htb_queue(netdev, q);
-> =20
-> +	airoha_disable_qos_for_gdm34(netdev);
-> +
->  	return 0;
->  }
-> =20
-> @@ -3059,7 +3229,7 @@ static int airoha_tc_setup_qdisc_htb(struct net_dev=
-ice *dev,
->  {
->  	switch (opt->command) {
->  	case TC_HTB_CREATE:
-> -		break;
-> +		return airoha_enable_qos_for_gdm34(dev, opt->extack);
-
-- Should ETS installed directly on a GDM3/GDM4 LAN-configured device also
-  enable the loopback, or should that case be rejected with an extack
-  message so the behaviour matches the description in the commit message?
-  - ETS can't be used as ROOT Qdisc.
+Both of the issues reportd by sashiko here are not introduced by this patch
+https://sashiko.dev/#/patchset/20260610-airoha-ethtool-priv_flags-v4-0-60e8=
+9cf28fea%40kernel.org
 
 Regards,
 Lorenzo
 
->  	case TC_HTB_DESTROY:
->  		return airoha_tc_htb_destroy(dev);
->  	case TC_HTB_NODE_MODIFY:
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
-net/airoha/airoha_eth.h
-> index 8f42973f9cf5..8795af0010b6 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.h
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
-> @@ -543,8 +543,8 @@ enum airoha_priv_flags {
->  };
-> =20
->  struct airoha_gdm_dev {
-> +	struct airoha_qdma __rcu *qdma;
->  	struct airoha_gdm_port *port;
-> -	struct airoha_qdma *qdma;
->  	struct airoha_eth *eth;
-> =20
->  	DECLARE_BITMAP(qos_sq_bmap, AIROHA_NUM_QOS_CHANNELS);
-> @@ -676,7 +676,27 @@ int airoha_get_fe_port(struct airoha_gdm_dev *dev);
->  bool airoha_is_valid_gdm_dev(struct airoha_eth *eth,
->  			     struct airoha_gdm_dev *dev);
-> =20
-> -void airoha_ppe_set_cpu_port(struct airoha_gdm_dev *dev, u8 ppe_id, u8 f=
-port);
-> +extern struct mutex flow_offload_mutex;
-> +
-> +static inline struct airoha_qdma *
-> +airoha_qdma_deref(struct airoha_gdm_dev *dev)
-> +{
-> +	return rcu_dereference_protected(dev->qdma,
-> +					 lockdep_rtnl_is_held() ||
-> +					 lockdep_is_held(&flow_offload_mutex));
-> +}
-> +
-> +void __airoha_ppe_set_cpu_port(struct airoha_gdm_dev *dev, u8 ppe_id, u8=
- fport);
-> +void airoha_ppe_clear_cpu_port(struct airoha_gdm_dev *dev, u8 ppe_id, u8=
- fport);
-> +
-> +static inline void airoha_ppe_set_cpu_port(struct airoha_gdm_dev *dev,
-> +					   u8 ppe_id, u8 fport)
-> +{
-> +	mutex_lock(&flow_offload_mutex);
-> +	__airoha_ppe_set_cpu_port(dev, ppe_id, fport);
-> +	mutex_unlock(&flow_offload_mutex);
-> +}
-> +
->  bool airoha_ppe_is_enabled(struct airoha_eth *eth, int index);
->  void airoha_ppe_check_skb(struct airoha_ppe_dev *dev, struct sk_buff *sk=
-b,
->  			  u16 hash, bool rx_wlan);
-> diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ether=
-net/airoha/airoha_ppe.c
-> index 91bcc55a6ac6..0ee0dd385645 100644
-> --- a/drivers/net/ethernet/airoha/airoha_ppe.c
-> +++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-> @@ -15,7 +15,7 @@
->  #include "airoha_regs.h"
->  #include "airoha_eth.h"
-> =20
-> -static DEFINE_MUTEX(flow_offload_mutex);
-> +DEFINE_MUTEX(flow_offload_mutex);
->  static DEFINE_SPINLOCK(ppe_lock);
-> =20
->  static const struct rhashtable_params airoha_flow_table_params =3D {
-> @@ -84,10 +84,10 @@ static u32 airoha_ppe_get_timestamp(struct airoha_ppe=
- *ppe)
->  			     AIROHA_FOE_IB1_BIND_TIMESTAMP);
+>=20
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
+net/airoha/airoha_eth.c
+> index 5a8e84fa9918..aeac66df5f3b 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+> @@ -1771,6 +1771,40 @@ static void airoha_update_hw_stats(struct airoha_g=
+dm_dev *dev)
+>  	spin_unlock(&port->stats.lock);
 >  }
 > =20
-> -void airoha_ppe_set_cpu_port(struct airoha_gdm_dev *dev, u8 ppe_id, u8 f=
-port)
-> +void __airoha_ppe_set_cpu_port(struct airoha_gdm_dev *dev, u8 ppe_id, u8=
- fport)
->  {
-> -	struct airoha_qdma *qdma =3D dev->qdma;
-> -	struct airoha_eth *eth =3D qdma->eth;
-> +	struct airoha_qdma *qdma =3D airoha_qdma_deref(dev);
-> +	struct airoha_eth *eth =3D dev->eth;
->  	u8 qdma_id =3D qdma - &eth->qdma[0];
->  	u32 fe_cpu_port;
-> =20
-> @@ -97,6 +97,14 @@ void airoha_ppe_set_cpu_port(struct airoha_gdm_dev *de=
-v, u8 ppe_id, u8 fport)
->  		      __field_prep(DFT_CPORT_MASK(fport), fe_cpu_port));
->  }
-> =20
-> +void airoha_ppe_clear_cpu_port(struct airoha_gdm_dev *dev, u8 ppe_id, u8=
- fport)
+> +static void airoha_qdma_start(struct airoha_qdma *qdma)
 > +{
-> +	mutex_lock(&flow_offload_mutex);
-> +	airoha_fe_clear(dev->eth, REG_PPE_DFT_CPORT(ppe_id, fport),
-> +			DFT_CPORT_MASK(fport));
-> +	mutex_unlock(&flow_offload_mutex);
+> +	airoha_qdma_set(qdma, REG_QDMA_GLOBAL_CFG,
+> +			GLOBAL_CFG_TX_DMA_EN_MASK |
+> +			GLOBAL_CFG_RX_DMA_EN_MASK);
+> +	atomic_inc(&qdma->users);
 > +}
 > +
->  static void airoha_ppe_hw_init(struct airoha_ppe *ppe)
+> +static void airoha_qdma_stop(struct airoha_qdma *qdma)
+> +{
+> +	u32 status;
+> +
+> +	if (!atomic_dec_and_test(&qdma->users))
+> +		return;
+> +
+> +	airoha_qdma_clear(qdma, REG_QDMA_GLOBAL_CFG,
+> +			  GLOBAL_CFG_TX_DMA_EN_MASK |
+> +			  GLOBAL_CFG_RX_DMA_EN_MASK);
+> +
+> +	if (read_poll_timeout(airoha_qdma_rr, status,
+> +			      !(status & (GLOBAL_CFG_TX_DMA_BUSY_MASK |
+> +					  GLOBAL_CFG_RX_DMA_BUSY_MASK)),
+> +			      USEC_PER_MSEC, 50 * USEC_PER_MSEC, true,
+> +			      qdma, REG_QDMA_GLOBAL_CFG))
+> +		dev_warn(qdma->eth->dev, "QDMA DMA engine busy timeout\n");
+> +
+> +	for (int i =3D 0; i < ARRAY_SIZE(qdma->q_tx); i++) {
+> +		if (!qdma->q_tx[i].ndesc)
+> +			continue;
+> +
+> +		airoha_qdma_cleanup_tx_queue(&qdma->q_tx[i]);
+> +	}
+> +}
+> +
+>  static int airoha_dev_open(struct net_device *netdev)
 >  {
->  	u32 sram_ppe_num_data_entries =3D PPE_SRAM_NUM_ENTRIES, sram_num_entrie=
-s;
-> @@ -195,7 +203,7 @@ static void airoha_ppe_hw_init(struct airoha_ppe *ppe)
->  			ppe_id =3D !airoha_is_lan_gdm_dev(dev) &&
->  				 airoha_ppe_is_enabled(eth, 1);
->  			fport =3D airoha_get_fe_port(dev);
-> -			airoha_ppe_set_cpu_port(dev, ppe_id, fport);
-> +			__airoha_ppe_set_cpu_port(dev, ppe_id, fport);
->  		}
+>  	int err, len =3D ETH_HLEN + netdev->mtu + ETH_FCS_LEN;
+> @@ -1806,10 +1840,7 @@ static int airoha_dev_open(struct net_device *netd=
+ev)
 >  	}
+>  	port->users++;
+> =20
+> -	airoha_qdma_set(qdma, REG_QDMA_GLOBAL_CFG,
+> -			GLOBAL_CFG_TX_DMA_EN_MASK |
+> -			GLOBAL_CFG_RX_DMA_EN_MASK);
+> -	atomic_inc(&qdma->users);
+> +	airoha_qdma_start(qdma);
+> =20
+>  	if (!airoha_is_lan_gdm_dev(dev) &&
+>  	    airoha_ppe_is_enabled(qdma->eth, 1))
+> @@ -1862,19 +1893,7 @@ static int airoha_dev_stop(struct net_device *netd=
+ev)
+>  		airoha_set_gdm_port_fwd_cfg(qdma->eth,
+>  					    REG_GDM_FWD_CFG(port->id),
+>  					    FE_PSE_PORT_DROP);
+> -
+> -	if (atomic_dec_and_test(&qdma->users)) {
+> -		airoha_qdma_clear(qdma, REG_QDMA_GLOBAL_CFG,
+> -				  GLOBAL_CFG_TX_DMA_EN_MASK |
+> -				  GLOBAL_CFG_RX_DMA_EN_MASK);
+> -
+> -		for (i =3D 0; i < ARRAY_SIZE(qdma->q_tx); i++) {
+> -			if (!qdma->q_tx[i].ndesc)
+> -				continue;
+> -
+> -			airoha_qdma_cleanup_tx_queue(&qdma->q_tx[i]);
+> -		}
+> -	}
+> +	airoha_qdma_stop(qdma);
+> =20
+>  	return 0;
 >  }
-> diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethe=
-rnet/airoha/airoha_regs.h
-> index 436f3c8779c1..4e17dfbcf2b8 100644
-> --- a/drivers/net/ethernet/airoha/airoha_regs.h
-> +++ b/drivers/net/ethernet/airoha/airoha_regs.h
-> @@ -376,6 +376,7 @@
-> =20
->  #define REG_SRC_PORT_FC_MAP6		0x2298
->  #define FC_ID_OF_SRC_PORT_MASK(_n)	GENMASK(4 + ((_n) << 3), ((_n) << 3))
-> +#define FC_MAP6_DEF_VALUE		0x1b1a1918
-> =20
->  #define REG_CDM5_RX_OQ1_DROP_CNT	0x29d4
-> =20
 >=20
 > --=20
 > 2.54.0
 >=20
 
---3W6r5hbEJpuvgYEO
+--xTiMez6xNLZ7OD9M
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCairOiwAKCRA6cBh0uS2t
-rCaFAQCSsssJ/9cDud9EdCPVkevjlyVvfflqVljh48ezEuiwGQEA4t/5n7S2ihzS
-6WsKS7mr2ZCyWrkozd+lrgR1witfRwo=
-=zL3Q
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCairSlgAKCRA6cBh0uS2t
+rBpSAPsERGWK1pGGToiFzIeR/RD8joMzAOFuAtARjMUbn3z89AEAv5JGguQL7ZxO
+DrBnleDOjUsudpd92AZkknnf0TunDQg=
+=4QHw
 -----END PGP SIGNATURE-----
 
---3W6r5hbEJpuvgYEO--
+--xTiMez6xNLZ7OD9M--
 
