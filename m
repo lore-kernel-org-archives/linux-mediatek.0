@@ -4,63 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 791B7CD98CC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 12:59:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EE48CD98CC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 15:01:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Gu55FwRBT152Nih3ja11oNDgaQEq1L4WQl/WzeRJgRk=; b=m1nfwwu6Abfs5mIqQvhkuuhtky
-	aynTWer1wmwp7AMKOSFdIDij1vxCX8V5Yme4SnMtvZ+Alu7ebLOE9WuKuV63LjyfVKNGWB1D6IQcZ
-	mqsnRfm+t9oN7gK4/j2DoO7kkrLJCM+vGv+ZQO71l7PfFTIUB+4OPeqlBWryawSBZOfIlei2ZSxp8
-	0DRlkw4ewIrbdiHQ6yZP+js1oh6OEQq/gBmkELW4Ev4WouJ2NVNj4avpS5C//Sw03ewb+pCh6w2uW
-	ANvu8fWvZ3+XotXq+nDBzg603nKduTczN7JScbeqd6aXctpi3sgV6/c+A6vB0uvhJdimIjKsHp9/X
-	8IixeCzg==;
+	bh=tMCB5aEJqZUM5g7PfGe/93cSlvh7IQWgPKJGGXWKhlM=; b=Tt9LOvV/Ow2N5L10TuikgnXUjE
+	xKeXv9L1JGPcfvoYy8D1c36fbqQqVwUCMAhkHEYEmAWZliMxvYdkmy5SoiMHBH6SnmUEGApL3E8W3
+	vF+FZcZP6mGd1HG8ouw+0mOGRn5hgG6+4wE9axaqasuPEFtfL1ubtfl8Nq2q/gS3nAvec1E9juI7O
+	BmWipga7JUUbBwHFXGpkNkNe5cezwbvOZ/GxCFQClEs3cPpUdH6wqmruKBF5on6PFSAYLKnsjYGjt
+	AP6NSxyWUMQ6/x8rFUDVfzaQPk7k5rDcI+ny9P6+zrPosy2ZzSHmieWMdZ90p+tAD7/LB2npVLUYN
+	qofTQFdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXf0C-00000009SCJ-1V6s;
-	Thu, 11 Jun 2026 12:59:20 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wXgtv-00000009e35-3XWV;
+	Thu, 11 Jun 2026 15:00:59 +0000
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXf0A-00000009SBy-3r9r;
-	Thu, 11 Jun 2026 12:59:19 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 03FC6600AF;
-	Thu, 11 Jun 2026 12:59:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE7EE1F00893;
-	Thu, 11 Jun 2026 12:59:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781182757;
-	bh=Gu55FwRBT152Nih3ja11oNDgaQEq1L4WQl/WzeRJgRk=;
-	h=From:To:Cc:Subject:Date;
-	b=JCkvv6G0GQs9N16tnlg8iVWHuKokUZ2kB9waYD10z4w4Vs5Tsl8ei5Qu8eDAwJ+5q
-	 Nld17nsFeB8Qg8rTAi6yXlXqtjym/YzA3UzPpqTmm/oQWX5L+CLRPy9W92xC5MPVcP
-	 1ZNKS5/gQqZeEJnozokANXtPGE9XtOZOjeqqK05T9NrIHJvrdRP84gzWnai9ne2ugF
-	 SqMtUpNdBe051f8XgI+1LyvHamJr1PG9ZtbDar0CNv86cILFALmeGSZd4tsrXXOaih
-	 pr6BLYbLpRIge9Y8Dw0vJg/tixiUoxAJudzDTpp7nIVqudsOek8cGSPEvSXnVj6qAE
-	 pFqRBF3WTRvhg==
-From: Arnd Bergmann <arnd@kernel.org>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Arnd Bergmann <arnd@arndb.de>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Rex Lu <rex.lu@mediatek.com>,
-	linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] wifi: mt76: fix airoha_npu dependency tracking
-Date: Thu, 11 Jun 2026 14:58:55 +0200
-Message-Id: <20260611125912.3387021-1-arnd@kernel.org>
-X-Mailer: git-send-email 2.39.5
+	id 1wXgtt-00000009e2L-43gU
+	for linux-mediatek@lists.infradead.org;
+	Thu, 11 Jun 2026 15:00:59 +0000
+Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-842264dde84so575774b3a.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2026 08:00:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1781190054; x=1781794854; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=tMCB5aEJqZUM5g7PfGe/93cSlvh7IQWgPKJGGXWKhlM=;
+        b=Fe8ZlJ28T8dNsfOb1NdGB2P33S/Tgc5Xhvbv1OJwP0wBuQjq8VY4BG6uO/9gEyFTe0
+         QtPP7HJap6SuhS4dumRuKYetq1Dg4Z5nZnt23HjF4Zfm0/xkD/PViqlSh2MNbybrSpac
+         26BAl9yfq4ZgQAUkPYfvuSXbDDQgJkJWIsUHgyiPf6IXstNZA3fQqeMDLMn2JHzL7nPs
+         3C/jCmLrZJFJMKyXxNVHFHmKYwlunFm6gaBKSD5KM6srTKFPrRkhO+mv/4/XNQYlDm3J
+         e7WkTN4zkR5e8zjAfIBntdoeUmx6+sjZCTK5zuott8ZipoH45YlvVrJKlCvj9twzduTh
+         L53A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1781190054; x=1781794854;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=tMCB5aEJqZUM5g7PfGe/93cSlvh7IQWgPKJGGXWKhlM=;
+        b=LtSng2ValcKU6cpv6yGid/cwn/EA3nD5v4/NYIYOvElwIru1uf86vpUHr6GyyLIJT6
+         Zw5kWgID11z3P17CUWFqLwWrk6IS+o8g3BglUmp/R2VSwy28C+HGKW2ihikuSY9ggTKA
+         b5PO+xu+17EppJK/2N0yOgbDvh+7aH1eiqOaTj/FI1znF8Q/u2an4ARxU/+m5yLz8eW1
+         z+A54HoNPan6N7Fe0xqQukugTGeIEzvD2ct6HUluOtIo2QhTyx7zeHriMMk53Q4fADzO
+         GuD3rd88IQiEEvv6cBewR06O0BoOFK2YwpFz0E8AOdwhsnKczrOP/0HsgGgtqtEZ02E2
+         UK2w==
+X-Forwarded-Encrypted: i=1; AFNElJ/sf9JsdY4T7AbihttJLDyd6V+VwKggPlgOAYkmj9lZ4CekDU5Kz9O4NbyhPtERQpNTwwJ9Eb4RnKFgcKbk/g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxnkhTzuB6vv56hgAIA0BnWwREI1fBpLd02zhF1rZAWtOaWRcTw
+	pUsy4Sn3ZnCyamvwog1nW5Zf/TuWe3D40EG6CaFO6Diap/krD3XurXvO
+X-Gm-Gg: Acq92OE6SRD81YkvR1RoPOhDN87WRqa2U32OSplsJko7moqs3AGHPsOnE9qNZ9Tcrmk
+	yXQV2NtDHqRhtxc2dM9CvXm0olyBqysJJvWKIAWQNTxq3OMN4Ubyanyl/4CYJ1jXBInLXfLo+yo
+	G0eNp3YetefuHl3JptX2njTpb3H3Pjz+tMfdIiirWy4WL4epIIYa/schVV/UpfT2TSbwn0ThIwg
+	X60TvFNV+QzfFllw6PCWscf3Wnq73umUfV3263s36YXIwYckRqrdG2icAauXCCg2AHBozpESi9N
+	GE8q7n0ul39wxACBmsECZn/GWOxX/NwHS4DVUsiZaZ9YPyYH9Z0pExHzJ03uOduORdRxWWw9Ayf
+	CzkOeNaxvRJkFVySQ0r0+QqyBEg+flYbZgyGSYuwpBuV2/36yD22IYj9Ph3Dw6nzN85Kn+r1tmJ
+	ekkJ7CdiMqp29nmHmRA9xLSYLRDlSfjFhxBrcSHW0mfALGAESSd6Rur5lLR5z/dmkR5tzqj4UQy
+	Hk=
+X-Received: by 2002:a05:6a00:3988:b0:842:63f5:d097 with SMTP id d2e1a72fcca58-84335ca5571mr3001210b3a.3.1781190053512;
+        Thu, 11 Jun 2026 08:00:53 -0700 (PDT)
+Received: from DESKTOP-VNSSJ2S.lan (59-127-145-64.hinet-ip.hinet.net. [59.127.145.64])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84337bb6ca7sm2481378b3a.14.2026.06.11.08.00.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 11 Jun 2026 08:00:52 -0700 (PDT)
+From: Zhi-Jun You <hujy652@gmail.com>
+To: lorenzo@kernel.org
+Cc: nbd@nbd.name,
+	netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Zhi-Jun You <hujy652@gmail.com>
+Subject: [PATCH] net: ethernet: mtk_wed: fix loading WO firmware for MT7986
+Date: Thu, 11 Jun 2026 23:00:51 +0800
+Message-ID: <20260611150051.586-1-hujy652@gmail.com>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260611_080058_053920_5915B29C 
+X-CRM114-Status: UNSURE (   9.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,89 +99,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arnd Bergmann <arnd@arndb.de>
+MT7986 requires a different mask for second WO firmware.
+Without this, WO would timeout after loading FW.
 
-There is a new build failure with MT7996E=m MT76_CORE=y and NET_AIROHA_NPU=m:
+The correct mask was removed when adding WED for MT7988.
+Add it back and add a WED version check to fix it.
 
-ld.lld: error: undefined symbol: airoha_npu_get
-ld.lld: error: undefined symbol: airoha_npu_put
->>> referenced by npu.c
->>>               drivers/net/wireless/mediatek/mt76/npu.o:(mt76_npu_init) in archive vmlinux.a
+This can be reproduced with a MT7986 + MT7916 board.
 
-Fix this by reworking the dependency for the MT7996_NPU to only
-allow enabling that when mt76_core can link against the npu driver.
-
-To make sure this gets caught more easily in the future when additional
-mt76 variants need the same dependency, also turn CONFIG_MT76_NPU into
-a tristate symbol that has the same dependency.
-
-Fixes: 7fb554b1b623 ("wifi: mt76: Introduce the NPU generic layer")
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+Fixes: e2f64db13aa1 ("net: ethernet: mtk_wed: introduce WED support for MT7988")
+Signed-off-by: Zhi-Jun You <hujy652@gmail.com>
 ---
- drivers/net/wireless/mediatek/mt76/Kconfig        | 4 ++--
- drivers/net/wireless/mediatek/mt76/Makefile       | 6 +++++-
- drivers/net/wireless/mediatek/mt76/mt76.h         | 2 +-
- drivers/net/wireless/mediatek/mt76/mt7996/Kconfig | 2 +-
- 4 files changed, 9 insertions(+), 5 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_wed_mcu.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/Kconfig b/drivers/net/wireless/mediatek/mt76/Kconfig
-index 502303622a53..d941e67a222d 100644
---- a/drivers/net/wireless/mediatek/mt76/Kconfig
-+++ b/drivers/net/wireless/mediatek/mt76/Kconfig
-@@ -38,8 +38,8 @@ config MT792x_USB
- 	select MT76_USB
+diff --git a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c b/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
+index fa6b21603416..0d38183c6ba7 100644
+--- a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
++++ b/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
+@@ -367,8 +367,12 @@ mtk_wed_mcu_load_firmware(struct mtk_wed_wo *wo)
+ 	/* wo firmware reset */
+ 	wo_w32(MTK_WO_MCU_CFG_LS_WF_MCCR_CLR_ADDR, 0xc00);
  
- config MT76_NPU
--	bool
--	depends on MT76_CORE
-+	tristate
-+	depends on NET_AIROHA_NPU=y || MT76=NET_AIROHA_NPU
- 
- source "drivers/net/wireless/mediatek/mt76/mt76x0/Kconfig"
- source "drivers/net/wireless/mediatek/mt76/mt76x2/Kconfig"
-diff --git a/drivers/net/wireless/mediatek/mt76/Makefile b/drivers/net/wireless/mediatek/mt76/Makefile
-index 1d42adfe8030..cacdd2b13d05 100644
---- a/drivers/net/wireless/mediatek/mt76/Makefile
-+++ b/drivers/net/wireless/mediatek/mt76/Makefile
-@@ -12,7 +12,11 @@ mt76-y := \
- 	mmio.o util.o trace.o dma.o mac80211.o debugfs.o eeprom.o \
- 	tx.o agg-rx.o mcu.o wed.o scan.o channel.o
- 
--mt76-$(CONFIG_MT76_NPU) += npu.o
-+ifdef CONFIG_MT76_NPU
-+# CONFIG_MT76_NPU is tristate to simplify dependency tracking,
-+# but it behaves as a bool symbol here.
-+mt76-y += npu.o
-+endif
- mt76-$(CONFIG_PCI) += pci.o
- mt76-$(CONFIG_NL80211_TESTMODE) += testmode.o
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 07955555f84d..60bd155cc7d5 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -1647,7 +1647,7 @@ int mt76_testmode_dump(struct ieee80211_hw *hw, struct sk_buff *skb,
- int mt76_testmode_set_state(struct mt76_phy *phy, enum mt76_testmode_state state);
- int mt76_testmode_alloc_skb(struct mt76_phy *phy, u32 len);
- 
--#ifdef CONFIG_MT76_NPU
-+#if IS_ENABLED(CONFIG_MT76_NPU)
- void mt76_npu_check_ppe(struct mt76_dev *dev, struct sk_buff *skb,
- 			u32 info);
- int mt76_npu_dma_add_buf(struct mt76_phy *phy, struct mt76_queue *q,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/Kconfig b/drivers/net/wireless/mediatek/mt76/mt7996/Kconfig
-index 5503d03bf62c..5742bce12fbb 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/Kconfig
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/Kconfig
-@@ -16,6 +16,6 @@ config MT7996E
- config MT7996_NPU
- 	bool "MT7996 (PCIe) NPU support"
- 	depends on MT7996E
--	depends on NET_AIROHA_NPU=y || MT7996E=NET_AIROHA_NPU
-+	depends on NET_AIROHA_NPU=y || MT76_CORE=NET_AIROHA_NPU
- 	select MT76_NPU
- 	default n
+-	val = wo_r32(MTK_WO_MCU_CFG_LS_WF_MCU_CFG_WM_WA_ADDR) |
+-	      MTK_WO_MCU_CFG_LS_WF_WM_WA_WM_CPU_RSTB_MASK;
++	val = wo_r32(MTK_WO_MCU_CFG_LS_WF_MCU_CFG_WM_WA_ADDR);
++
++	if (!mtk_wed_is_v3_or_greater(wo->hw) && wo->hw->index)
++		val |= MTK_WO_MCU_CFG_LS_WF_WM_WA_WA_CPU_RSTB_MASK;
++	else
++		val |= MTK_WO_MCU_CFG_LS_WF_WM_WA_WM_CPU_RSTB_MASK;
+ 	wo_w32(MTK_WO_MCU_CFG_LS_WF_MCU_CFG_WM_WA_ADDR, val);
+ out:
+ 	release_firmware(fw);
 -- 
-2.39.5
+2.47.3
 
 
