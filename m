@@ -4,76 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91250CD98CC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 21:57:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF337CD98CC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 22:50:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=a69mswo4moK+ZGq72/AwjTMqeuo/CQOQ789onPsh5dg=; b=rC2FCXmlGp+LquoJf+L3617ZpT
-	hSKTfifMf+mqJB/nQzQNngjQPwBJLOx4NvMn4Q1reZZSnjVXviQ0LU21F8FlfQZ3TbiZI6HZy0soH
-	TuZ2PKlNJQIm/axiMYjYx8WaxUuDaHYxqSJ+m58ESVE5SyUFYx4JkUOod+GZdLyp5t8aHcvCQ/5xl
-	Cs5oHCL0osMxsu/h+eU329Z9ohaw7mp6QKeNac2ppEL/41UkoTMHq58gADUWJh5UPUWV2Z5nzTXWe
-	hUhiyxvgT3bbg3Z7DPDBrQkv0klin1lQQP99cJ6u1Uqd/F20dqVXS18ukEjx1NOgfcZnittN0BNF0
-	85tUOxRw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wyDtIwtvF041sYkQ4i3vJeqerIci+8sHT/aTtsYneJc=; b=PJXp5uhvpz96jbatyxgtunaAqm
+	v8PLq+cEQMPXJ1hwy6p0Gx+oXc5x0EdqsZGwIthtn0vyr8rP7r06rl44/2P2x2TjdWvj/olg2cNh5
+	fGXRAvBufJiAw6cDqE69V/t4Z39QtFGc0jALN8CNXsWUKUgaQ41k4sN63j1DqcH/xiq3MEEuP8KHl
+	uvzP/6tKsBOAxaUMkbVj4+x/+8vcaP+b5QCahVyx4UYsovEf0wb9WwAwxLlF3PQTwXwyAz7P2Ui8S
+	mrSDkFl0izG72nM80QdW1OmQreFsfkjMVx3zXm54xi8sGJTDDKwl1AXu9/VRQ3CgAMaXzoUNesbQC
+	AQ5uLLug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXnP1-0000000A7YK-1fKe;
-	Thu, 11 Jun 2026 21:57:31 +0000
-Received: from mailgate02.uberspace.is ([185.26.156.114])
+	id 1wXoEO-0000000A9Ji-3l27;
+	Thu, 11 Jun 2026 22:50:36 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXnOw-0000000A7Vp-33gj
-	for linux-mediatek@lists.infradead.org;
-	Thu, 11 Jun 2026 21:57:29 +0000
-Received: from perseus.uberspace.de (perseus.uberspace.de [95.143.172.134])
-	by mailgate02.uberspace.is (Postfix) with ESMTPS id 11C801800F1
-	for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2026 23:57:17 +0200 (CEST)
-Received: (qmail 27404 invoked by uid 988); 11 Jun 2026 21:57:16 -0000
-Authentication-Results: perseus.uberspace.de;
-	auth=pass (plain)
-Received: from unknown (HELO unknown) (::1)
-	by perseus.uberspace.de (Haraka/3.1.1) with ESMTPSA; Thu, 11 Jun 2026 23:57:16 +0200
-From: David Bauer <mail@david-bauer.net>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH mt76] wifi: mt76: mt7603: free beacon SKB on error
-Date: Thu, 11 Jun 2026 23:56:56 +0200
-Message-ID: <20260611215658.259324-1-mail@david-bauer.net>
-X-Mailer: git-send-email 2.53.0
+	id 1wXoEN-0000000A9JU-0spr;
+	Thu, 11 Jun 2026 22:50:35 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 3D47D60213;
+	Thu, 11 Jun 2026 22:50:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E6E2B1F000E9;
+	Thu, 11 Jun 2026 22:50:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1781218233;
+	bh=wyDtIwtvF041sYkQ4i3vJeqerIci+8sHT/aTtsYneJc=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=QztO8TxN7V82vPhm9Wqhx+LEs9/4ZId9uXRA2/MQHI4/hNWI5GxkctGkhfPA8eypf
+	 7aYy8KxwQ8i7+52wEnwCd20nCET5DG+ouzh6141VN9P/05tZ7cazzQNpibiDBnFXxh
+	 n3OsURb71UfO4/jS5R1Ee935CLNF2qFObJUzl0Yb3RmUEVfY0ElyuNgQhqXRC0HiuW
+	 bLO/LwoSpDz6a0YwpvmKmnuc4UtF/R4BUVbhhbcdSbJvVW8OIYLjywQjKk8AH98nfy
+	 YYgk56zcf2GqxngZ1l/c6n31HimdtkgDqao7S3Z0uSQeZPHdbl9MDEukgmRc7rsiV7
+	 odUIGTktEDSOA==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 569183930FB3;
+	Thu, 11 Jun 2026 22:50:32 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Rspamd-Bar: /
-X-Rspamd-Report: SUSPICIOUS_RECIPS(1.5) BAYES_HAM(-3) MID_CONTAINS_FROM(1) MIME_GOOD(-0.1) R_MISSING_CHARSET(0.5)
-X-Rspamd-Score: -0.1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=david-bauer.net; s=uberspace;
-	h=from:to:cc:subject:date;
-	bh=WZ6/0RV6JrkCzvhVDyitGRXoseIDmTlrOiFDgXdCe/s=;
-	b=dPdTPapxPuPS2rFw/gDhACjtqykW0KPKzIt8/5eWrBPAxFJUq/qXo12E7+mwbBF//IKM8aYwek
-	CmU5c7WElzSM4PlIVGLy8Ng+ODHhpWNRer2uS7ybvIFqwonRCYmJQDu6BqoyYIm3qEFbtWr7UfuS
-	55AgYTMFUZKyCVwfKMP3V7UxPRMTn9wCT2QoON58TNE5vK0Hi/xP0AAkIWeioH4Y7ZgsOpyqRt90
-	fBITw0XfQcroaHukIq+C6wDzCw78IKd4r66S3p86z/LoBylKuisUTiERoPvL0UasiCjdNeK7pbUN
-	8NHWZwQC3rQYBwnmvxB8PQOP6aQFLwNmn0fgHWadTa8OQWv95mO5iCB/SRuIJT9mAb4TtU1eszsq
-	ds31fwj9wx4i+Rp7KwhxLNluj+quRntE/XqeePRU5uSATNwbDRW/orwXbK66fRRCEDTHA5rkWoq5
-	PYiu/KjTwKd8USi/jLmNBLULQfvJw4fqUkOLvXlIh07EdggOU6MMxc8wi6YfZ5Cv0ovIRSqRty1x
-	K5HDt4vDIk1bb2l0bnVhTiHaF+uukMnqRDV9ZRW1Jax4nogF4goTnFZA2hkIS/+fPPSHdVZAb7Iq
-	xE7Yj/7Xzn1LQTNKW/xmSyb4p+TeBYhoMjqRZJ3CUL64Q3/dTJE5LnPhDuexd/dssqNkGqgYwftZ
-	0=
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260611_145727_186686_7FD0A96C 
-X-CRM114-Status: UNSURE (   7.29  )
-X-CRM114-Notice: Please train this message.
+Subject: Re: [PATCH net-next] net: airoha: move get_sport() callback at the
+ beginning of airoha_enable_gdm2_loopback()
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <178121823088.394849.13885828285639251256.git-patchwork-notify@kernel.org>
+Date: Thu, 11 Jun 2026 22:50:30 +0000
+References: <20260608-airoha_enable_gdm2_loopback-minor-change-v1-1-1787a0f42b31@kernel.org>
+In-Reply-To: <20260608-airoha_enable_gdm2_loopback-minor-change-v1-1-1787a0f42b31@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,37 +72,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The SKB containing the generated beacon is not freed when the beacon
-queue is deected stuck and scheduled for recovery.
+Hello:
 
-Fixes potential memory leaks in case the beacon queue is detected stuck.
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-Signed-off-by: David Bauer <mail@david-bauer.net>
----
- drivers/net/wireless/mediatek/mt76/mt7603/beacon.c | 2 ++
- 1 file changed, 2 insertions(+)
+On Mon, 08 Jun 2026 23:24:15 +0200 you wrote:
+> Move the get_sport() callback invocation at the beginning of
+> airoha_enable_gdm2_loopback() routine in order to avoid leaving the
+> hardware in a partially configured state if get_sport() fails.
+> Previously, get_sport() was called after GDM2 forwarding, loopback,
+> channel, length, VIP and IFC registers had already been programmed.
+> A failure at that point would return an error leaving GDM2 with
+> loopback enabled but WAN port, PPE CPU port and flow control mappings
+> not configured.
+> Performing the get_sport() lookup before any register write guarantees
+> the routine either completes the full configuration sequence or exits
+> with no side effects on the hardware.
+> 
+> [...]
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/beacon.c b/drivers/net/wireless/mediatek/mt76/mt7603/beacon.c
-index 300a7f9c2ef11..acca98139f92e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/beacon.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/beacon.c
-@@ -56,6 +56,7 @@ mt7603_update_beacon_iter(void *priv, u8 *mac, struct ieee80211_vif *vif)
- 		FIELD_PREP(MT_DMA_FQCR0_TARGET_QID, MT_TX_HW_QUEUE_BCN));
- 	if (!mt76_poll(dev, MT_DMA_FQCR0, MT_DMA_FQCR0_BUSY, 0, 5000)) {
- 		dev->beacon_check = MT7603_WATCHDOG_TIMEOUT;
-+		dev_kfree_skb(skb);
- 		goto out;
- 	}
- 
-@@ -63,6 +64,7 @@ mt7603_update_beacon_iter(void *priv, u8 *mac, struct ieee80211_vif *vif)
- 		FIELD_PREP(MT_DMA_FQCR0_TARGET_QID, MT_TX_HW_QUEUE_BMC));
- 	if (!mt76_poll(dev, MT_DMA_FQCR0, MT_DMA_FQCR0_BUSY, 0, 5000)) {
- 		dev->beacon_check = MT7603_WATCHDOG_TIMEOUT;
-+		dev_kfree_skb(skb);
- 		goto out;
- 	}
- 
+Here is the summary with links:
+  - [net-next] net: airoha: move get_sport() callback at the beginning of airoha_enable_gdm2_loopback()
+    https://git.kernel.org/netdev/net-next/c/aeb62be4d3b1
+
+You are awesome, thank you!
 -- 
-2.53.0
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
