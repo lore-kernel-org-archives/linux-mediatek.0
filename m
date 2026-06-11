@@ -4,70 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48844CD98C7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 17:22:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B71FCD8C9D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 17:58:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KdWDhxFqpyK1ExaLMvzw0M+RE0xOM5zE+5Ap11B9AYI=; b=DDJKOqI3I2kjiNyovS5R6ViKvM
-	gdlBXgO5Au4/Ms47WM9kPmIkxfpD0w/7Xc121DYIs3Kff1rzmZKefV0IY/IiXYkUY4vJb7En7URrM
-	uizjn9puHkB/vBoMgrm2gZcILjxrfzSRV3wE9AHBqnjKyMjrJf/+fumvvdivnIY5RaxOvXL93GsPY
-	qlJt2NpWm17yVhjrBE+ZDTwPUh0cErfda6Z9SuLKLoGnKZJLyR0ffXUZyhUmd5A0mLehoTB4SMbuC
-	SACYyuWoJgv+mkJ/+jXD2eRGXG6RAfLVofe5BIgGQELIzPljgYEEASsDpvjiayAgeDwWRhwqBDqqL
-	AyOyl6Sg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OdLaVCwOyuDeurYpZqPZMIvDONKwz5Fq6cM3k7eHo0g=; b=Dw8wiCmuSHKCoQO9mSnKzSmyrM
+	wvH9DpAExRosVF0cVws4bJcxWTG45qJvrR+y6jfnDpfmZTDFwuqTQRaH0dEv0NMUQ+jz16xm3psNG
+	GABxOYDwJUUXC8aWo3ZuYX3Z+mPbBqy0dQKF9N0EjxmoAGv61HAnTFyD5KdeZpTcx+YqXhGGP5l2P
+	sfkPsmdFApx/JZyIK8NZd0ecD1nmzRyMsNduiMrAMuiRA0dl0qn6uaff5OkRfFGqI/TL/45mQpCIv
+	e89rGFYR/GCPo4YDbTHyU5qS5yxE8jyOxYF+pmridk+0PmBdmvD0XUuFl5SXa5mRD2IazEkf5Q0xr
+	qQAHGSag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXj6n-00000009pGW-2vG0;
-	Thu, 11 Jun 2026 17:22:25 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wXjfX-00000009rak-0d9R;
+	Thu, 11 Jun 2026 17:58:19 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXj6l-00000009pFy-2XTb;
-	Thu, 11 Jun 2026 17:22:23 +0000
+	id 1wXjfV-00000009raB-26xk;
+	Thu, 11 Jun 2026 17:58:17 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id C3AC6601DF;
-	Thu, 11 Jun 2026 17:22:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0E9351F00893;
-	Thu, 11 Jun 2026 17:22:18 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 608E56014B;
+	Thu, 11 Jun 2026 17:58:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 152371F00893;
+	Thu, 11 Jun 2026 17:58:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781198542;
-	bh=KdWDhxFqpyK1ExaLMvzw0M+RE0xOM5zE+5Ap11B9AYI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=aQG9tRUlJP0O+Sd1fT0nlt7WRopgp33SXyAE4qF3jz3ZTjUjfZeejs/nBQM5g+QR0
-	 LXG0TitQNUIZXakKtCp2BTi08j8WexRYvM6omta+DVAk4WLkYU5imHgkuhhVmCDnzg
-	 LC4QWKB7GWXxfwhmCwf+MsQ/0i5KVsERKciUTHj0EY2BHCHoH711MMcpfWzegs1cPX
-	 N0JjRTnmhZtcKJyPdtQmUklA1b6aq/oXr5mhWaNcLVXXBgkc9wJGjykRw9Qh/EbwhB
-	 Xwyy2ziCIUeQDWT+pSLwW3ssf9lKptBLCi7mXkENNk8VP5HAa9MWWInsVYg+RG3z8t
-	 s/j0OBmMxXnRg==
-Date: Thu, 11 Jun 2026 18:22:17 +0100
-From: Conor Dooley <conor@kernel.org>
-To: rva333@protonmail.com
-Cc: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Srinivas Kandagatla <srini@kernel.org>,
-	Andy Shevchenko <andy@kernel.org>,
-	Jonathan Cameron <jic23@kernel.org>, linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Ben Grisdale <bengris32@protonmail.ch>
-Subject: Re: [PATCH 1/4] dt-bindings: mfd: mediatek: mt6397: add mt6323 PMIC
- EFUSE
-Message-ID: <20260611-density-hamper-2b89bac89312@spud>
-References: <20260611-mt6323-nvmem-v1-0-b5e1b9ce51f2@protonmail.com>
- <20260611-mt6323-nvmem-v1-1-b5e1b9ce51f2@protonmail.com>
+	s=k20260515; t=1781200696;
+	bh=OdLaVCwOyuDeurYpZqPZMIvDONKwz5Fq6cM3k7eHo0g=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=CcCJR+XJbXwmLbSgCj/9hq5qcM3YNulSkEAB7KTAmHZh4eob+8FKSSQjslgYaVidZ
+	 +v3oWOQgqY8wQBW4MHTNYNHihiyQ5JOT5guRVXc1tToOjwDQKL2MOIvD7wuUxHcbGH
+	 43tZ65rTsZurQWz2Qtq+Wuvmn46SwEQt3VgLC3gZ6Q/7LJOjmVeY1z4hxQFskuWOBC
+	 r1PoR6o70WrRVjQokFrts9MfVU3FR8mXHPywqam5CUs10fAa9NLOE9LzSGnHDyRsiW
+	 GewR9mt1ETVDeGPDPGd/a8ri0GsBQOdszE1DBKN7ByaqCBAw4wCywf0vt9Im91e+PA
+	 wulZ+2o6HJjrA==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 939413930F87;
+	Thu, 11 Jun 2026 17:58:14 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="8jlD8HCh7FfdJwQ5"
-Content-Disposition: inline
-In-Reply-To: <20260611-mt6323-nvmem-v1-1-b5e1b9ce51f2@protonmail.com>
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH] Bluetooth: btmtksdio: fix infinite loop in
+ btmtksdio_txrx_work()
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <178120069313.286318.5639664453006485239.git-patchwork-notify@kernel.org>
+Date: Thu, 11 Jun 2026 17:58:13 +0000
+References: <20260609121329.1262170-1-senozhatsky@chromium.org>
+In-Reply-To: <20260609121329.1262170-1-senozhatsky@chromium.org>
+To: Sergey Senozhatsky <senozhatsky@chromium.org>
+Cc: marcel@holtmann.org, luiz.dentz@gmail.com, mark-yw.chen@mediatek.com,
+ sean.wang@mediatek.com, tfiga@chromium.org, linux-bluetooth@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, stable@vger.kernel.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,24 +73,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hello:
 
---8jlD8HCh7FfdJwQ5
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+This patch was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-pw-bot: not-applicable
+On Tue,  9 Jun 2026 21:10:06 +0900 you wrote:
+> Every once in a while we see a hung btmtksdio_flush() task:
+> 
+>  INFO: task kworker/u17:0:189 blocked for more than 122 seconds.
+>  __cancel_work_timer+0x3f4/0x460
+>  cancel_work_sync+0x1c/0x2c
+>  btmtksdio_flush+0x2c/0x40
+>  hci_dev_open_sync+0x10c4/0x2190
+>  [..]
+> 
+> [...]
 
---8jlD8HCh7FfdJwQ5
-Content-Type: application/pgp-signature; name="signature.asc"
+Here is the summary with links:
+  - Bluetooth: btmtksdio: fix infinite loop in btmtksdio_txrx_work()
+    https://git.kernel.org/bluetooth/bluetooth-next/c/a4263306d01d
 
------BEGIN PGP SIGNATURE-----
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCairuyAAKCRB4tDGHoIJi
-0mk7AP9Mb5T4kei+ZQb9DUhcF53VPvmUwgHWElm07FdeB+BdKQD/Q2pgevrbI0it
-++Mc/nhVwa+UmM4gJxL5PlSgYKXFDQs=
-=bEoR
------END PGP SIGNATURE-----
 
---8jlD8HCh7FfdJwQ5--
 
