@@ -4,62 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3542CD98CE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 15:22:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 282D0CD98CE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 15:49:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=67zy/OO6GQWRBTDkMhIuirY1PwgjkWuKrq96K18/+fE=; b=ZtqkYN0Ms7CzXpXaBQ0505/x/4
-	liOSYD9BrJdH49LU5poM5C0gm+NRmhSK4dbYqF8nWxpIxs5EP4ptqb3og56szeu8tXpKktRqHG0Ya
-	G4NN7mA1lTIgbBzB8ohLDGIMkZ54ZZTYDQAOMSY5wqgObpal5kHEj3ayT6fcgmuz+mY4L1RCY3DEh
-	dq78MkjebxzMZafMq/dVVWw1kuINWN6235BcMVYnOHG5LmdIxubUF8c6Q6n6Y70OySobqXyn1qASD
-	oCjeWFogp4owl+zkMMVR0kvHhv75VDWzoPpTr67LBneHNTFXabr0mY0ID1AKm0acnGMC8coWP3ShK
-	ETZqCOmQ==;
+	bh=s+s64GK9sRe7Ba9QSYpVmauI2rPUhreOrzjI+20x0pA=; b=LE4dylUI8RjvZo1r5B382dZd8I
+	BkL8vWT6WQMyfqdbYu2HrhtjhEBx3nIp/6DVoK2iBQq4GgTxd+hwrEdYLQSX7N9zllGLApRfRdWxR
+	KFsmCogFPxGlyYmAfKgRb96sHTGvWlQhh6AXTEJMAqDy0hIhn+4lTlRzFpt7R+znpu8uk4RZEKZUJ
+	MZT8TZMoLY2yL0Z9I6Kct51y6Pj2RdeF+jNq+akGFNeME6hKPWo9VAqBt3cQ4LsRdKlvomnKEse4n
+	T8OKkKQnrvcnV9CJZZOyfbL5YO6l6YZqbmmFGeYXCqPzzYtO8ol5Crm8zVJzkDoRgnPor9kTn0XNk
+	22ppFyFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXhEI-00000009fm6-2YnE;
-	Thu, 11 Jun 2026 15:22:02 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wXheV-00000009i8c-3CU7;
+	Thu, 11 Jun 2026 15:49:07 +0000
+Received: from mgamail.intel.com ([198.175.65.16])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXhEH-00000009flL-2HqR;
-	Thu, 11 Jun 2026 15:22:01 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id AF4F0601E1;
-	Thu, 11 Jun 2026 15:22:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA8AB1F00893;
-	Thu, 11 Jun 2026 15:21:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781191320;
-	bh=67zy/OO6GQWRBTDkMhIuirY1PwgjkWuKrq96K18/+fE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=PnTtkqfEnRlAe9XW0BRr+WBX5P3w7ZUqQt3abKlffNJe2YiJL1KVRI04aV24lDwdz
-	 C4HuHGlIGRjT/oWunnlUSxa1IJFIBwVrH6C9s3YofRcSGZ3lf8lfCDmMku6Fbsa5oU
-	 LdVmDwYP50OAlUjXlvwKUjKMJqYn9wtPxUsviCUyfRtmWB9hTiVSAXC6LcJP9QFU1z
-	 tCZNClSubswZhsJfG19qYVnR+7CRmtwZYS+K+MJb7ZYJXRkSR+mIz/riD7+9+bOH3j
-	 gGRHAXcciQx+WE2/WUGJh2HCNvQaHaN7uOJ63eGAWuNEUc5NgESszEL2CtsfSoSXzF
-	 99VyWTVdMyACw==
-Date: Thu, 11 Jun 2026 17:21:58 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	Madhur Agrawal <madhur.agrawal@airoha.com>
-Subject: Re: [PATCH net-next v4 1/2] net: airoha: refactor QDMA start/stop
- into reusable helpers
-Message-ID: <airSlpMoBvcuRcK5@lore-desk>
-References: <20260610-airoha-ethtool-priv_flags-v4-0-60e89cf28fea@kernel.org>
- <20260610-airoha-ethtool-priv_flags-v4-1-60e89cf28fea@kernel.org>
+	id 1wXheT-00000009i8B-1sMi;
+	Thu, 11 Jun 2026 15:49:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1781192946; x=1812728946;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=eEPYqYwCfV36F7DpKmyY/mBn0JlkcYgtEybyysUnTek=;
+  b=Px6/3q0tJb/h5EXqpu3Be/HGRyfZnmX/11m6hO+VGajO7ebDF2WmYbvl
+   7L/PmGMI5q6PZjJEJELuFlR348WifepwSD3+8rHknhOhJAf/2eVQaRA4n
+   PXNNCj1QImvHOpCX4sY0eN6HCeFyYCPG/OU+z2NwBavntb/XdWbtQ2pea
+   LTbbEMYHctEy6ZS5d7NYCInQGZAVJWdnRbeh3KCXG4QC4Z1yMvgf4VqrB
+   r/Xfvpfu4TUsVkxW6i9EtHIoNgSNUTOkUMSL6Oey86rLuh+SKERLvA+T4
+   E0pzLe0OzV7tPlrmN8ckeFywNK6hOZc6W1qKEKK9o+bgnARU04PiBoTwU
+   w==;
+X-CSE-ConnectionGUID: JB8C8F1VS7q6uL7z0Rv7kg==
+X-CSE-MsgGUID: SHAhd+3AR1mVFv2c10HuAg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11813"; a="82200642"
+X-IronPort-AV: E=Sophos;i="6.24,199,1774335600"; 
+   d="scan'208";a="82200642"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jun 2026 08:49:04 -0700
+X-CSE-ConnectionGUID: vgWRVW9xQsScdhid1DOZgw==
+X-CSE-MsgGUID: Z/YOgAYiTEymviQBo+GIyw==
+X-ExtLoop1: 1
+Received: from black.igk.intel.com ([10.91.253.5])
+  by fmviesa003.fm.intel.com with ESMTP; 11 Jun 2026 08:48:59 -0700
+Received: by black.igk.intel.com (Postfix, from userid 1008)
+	id E591098; Thu, 11 Jun 2026 17:48:57 +0200 (CEST)
+Date: Thu, 11 Jun 2026 18:48:56 +0300
+From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+To: Bartosz Golaszewski <brgl@kernel.org>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Daniel Scally <djrscally@gmail.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Alan Stern <stern@rowland.harvard.edu>, linux-acpi@vger.kernel.org,
+	driver-core@lists.linux.dev, linux-pm@vger.kernel.org,
+	linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Chen-Yu Tsai <wenst@chromium.org>
+Subject: Re: [PATCH v2 05/16] usb: hub: Associate port@ fwnode with USB port
+ device
+Message-ID: <airY6IMz2KFz_z9j@kuha>
+References: <20260610084053.2059858-1-wenst@chromium.org>
+ <20260610084053.2059858-6-wenst@chromium.org>
+ <ailxrP-_9_NL8qnN@ashevche-desk.local>
+ <CAMRc=MdiwQM6yk8FXcc+RisVP2iqWKWzVsn2-Yy6dyJXt-1X=Q@mail.gmail.com>
+ <aipz2zMFcdnZYTxS@ashevche-desk.local>
+ <CAMRc=MdRN7YitmMX8PknbzLh+MdsWm+dDg0MLtCVYOorqNobTw@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="xTiMez6xNLZ7OD9M"
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20260610-airoha-ethtool-priv_flags-v4-1-60e89cf28fea@kernel.org>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAMRc=MdRN7YitmMX8PknbzLh+MdsWm+dDg0MLtCVYOorqNobTw@mail.gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260611_084905_554683_0E921F54 
+X-CRM114-Status: GOOD (  25.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,131 +104,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, Jun 11, 2026 at 11:35:13AM +0200, Bartosz Golaszewski wrote:
+> On Thu, Jun 11, 2026 at 10:37 AM Andy Shevchenko
+> <andriy.shevchenko@linux.intel.com> wrote:
+> >
+> > On Thu, Jun 11, 2026 at 04:20:58AM -0400, Bartosz Golaszewski wrote:
+> > > On Wed, 10 Jun 2026 16:16:12 +0200, Andy Shevchenko
+> > > <andriy.shevchenko@linux.intel.com> said:
+> > > > On Wed, Jun 10, 2026 at 04:40:39PM +0800, Chen-Yu Tsai wrote:
+> > > >> When a USB hub port is connected to a connector in a firmware node
+> > > >> graph, the port itself has a node in the graph.
+> > > >>
+> > > >> Associate the port's firmware node with the USB port's device,
+> > > >> usb_port::dev. This is used in later changes for the M.2 slot power
+> > > >> sequencing provider to match against the requesting port.
+> > > >
+> > > > Okay, would this affect ACPI-based systems? if so, how?
+> > > > Can you elaborate on that, please?
+> > >
+> > > Is it possible that there's an ACPI device node associated with the port like
+> > > on some DT systems? I don't think so and there should be no impact IMO but I
+> > > also don't know enough about ACPI.
 
---xTiMez6xNLZ7OD9M
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+There are device nodes for the USB ports in ACPI, and I think they get
+always assigned in drivers/usb/core/usb-acpi.c.
 
-> Factor out airoha_qdma_start() and airoha_qdma_stop() from
-> airoha_dev_open() and airoha_dev_stop(). These helpers will be reused
-> by the QDMA hot-migration logic introduced in the next patch to
-> dynamically switch GDM3/GDM4 ports between LAN and WAN QDMA blocks.
-> Add a DMA engine busy poll in airoha_qdma_stop() to wait for in-flight
-> DMA transfers to complete before cleaning up TX queues.
->=20
-> Tested-by: Madhur Agrawal <madhur.agrawal@airoha.com>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  drivers/net/ethernet/airoha/airoha_eth.c | 53 ++++++++++++++++++++++----=
-------
->  1 file changed, 36 insertions(+), 17 deletions(-)
+> > The API is agnostic. There is a possibility to have software nodes associated
+> > with the port. I think the best is to be sure that ACPI-aware people who are
+> > experts in USB will check this (Heikki?).
 
-Both of the issues reportd by sashiko here are not introduced by this patch
-https://sashiko.dev/#/patchset/20260610-airoha-ethtool-priv_flags-v4-0-60e8=
-9cf28fea%40kernel.org
+I can't say what's the impact from this patch - I'm not an expert with
+this side of USB. Is there a danger that we end up overwriting the
+ACPI node for the port, or something else?
 
-Regards,
-Lorenzo
+> Even if there is a software node - it shouldn't really matter. It will
+> just be assigned to the port device.
 
->=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
-net/airoha/airoha_eth.c
-> index 5a8e84fa9918..aeac66df5f3b 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -1771,6 +1771,40 @@ static void airoha_update_hw_stats(struct airoha_g=
-dm_dev *dev)
->  	spin_unlock(&port->stats.lock);
->  }
-> =20
-> +static void airoha_qdma_start(struct airoha_qdma *qdma)
-> +{
-> +	airoha_qdma_set(qdma, REG_QDMA_GLOBAL_CFG,
-> +			GLOBAL_CFG_TX_DMA_EN_MASK |
-> +			GLOBAL_CFG_RX_DMA_EN_MASK);
-> +	atomic_inc(&qdma->users);
-> +}
-> +
-> +static void airoha_qdma_stop(struct airoha_qdma *qdma)
-> +{
-> +	u32 status;
-> +
-> +	if (!atomic_dec_and_test(&qdma->users))
-> +		return;
-> +
-> +	airoha_qdma_clear(qdma, REG_QDMA_GLOBAL_CFG,
-> +			  GLOBAL_CFG_TX_DMA_EN_MASK |
-> +			  GLOBAL_CFG_RX_DMA_EN_MASK);
-> +
-> +	if (read_poll_timeout(airoha_qdma_rr, status,
-> +			      !(status & (GLOBAL_CFG_TX_DMA_BUSY_MASK |
-> +					  GLOBAL_CFG_RX_DMA_BUSY_MASK)),
-> +			      USEC_PER_MSEC, 50 * USEC_PER_MSEC, true,
-> +			      qdma, REG_QDMA_GLOBAL_CFG))
-> +		dev_warn(qdma->eth->dev, "QDMA DMA engine busy timeout\n");
-> +
-> +	for (int i =3D 0; i < ARRAY_SIZE(qdma->q_tx); i++) {
-> +		if (!qdma->q_tx[i].ndesc)
-> +			continue;
-> +
-> +		airoha_qdma_cleanup_tx_queue(&qdma->q_tx[i]);
-> +	}
-> +}
-> +
->  static int airoha_dev_open(struct net_device *netdev)
->  {
->  	int err, len =3D ETH_HLEN + netdev->mtu + ETH_FCS_LEN;
-> @@ -1806,10 +1840,7 @@ static int airoha_dev_open(struct net_device *netd=
-ev)
->  	}
->  	port->users++;
-> =20
-> -	airoha_qdma_set(qdma, REG_QDMA_GLOBAL_CFG,
-> -			GLOBAL_CFG_TX_DMA_EN_MASK |
-> -			GLOBAL_CFG_RX_DMA_EN_MASK);
-> -	atomic_inc(&qdma->users);
-> +	airoha_qdma_start(qdma);
-> =20
->  	if (!airoha_is_lan_gdm_dev(dev) &&
->  	    airoha_ppe_is_enabled(qdma->eth, 1))
-> @@ -1862,19 +1893,7 @@ static int airoha_dev_stop(struct net_device *netd=
-ev)
->  		airoha_set_gdm_port_fwd_cfg(qdma->eth,
->  					    REG_GDM_FWD_CFG(port->id),
->  					    FE_PSE_PORT_DROP);
-> -
-> -	if (atomic_dec_and_test(&qdma->users)) {
-> -		airoha_qdma_clear(qdma, REG_QDMA_GLOBAL_CFG,
-> -				  GLOBAL_CFG_TX_DMA_EN_MASK |
-> -				  GLOBAL_CFG_RX_DMA_EN_MASK);
-> -
-> -		for (i =3D 0; i < ARRAY_SIZE(qdma->q_tx); i++) {
-> -			if (!qdma->q_tx[i].ndesc)
-> -				continue;
-> -
-> -			airoha_qdma_cleanup_tx_queue(&qdma->q_tx[i]);
-> -		}
-> -	}
-> +	airoha_qdma_stop(qdma);
-> =20
->  	return 0;
->  }
->=20
-> --=20
-> 2.54.0
->=20
+thanks,
 
---xTiMez6xNLZ7OD9M
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCairSlgAKCRA6cBh0uS2t
-rBpSAPsERGWK1pGGToiFzIeR/RD8joMzAOFuAtARjMUbn3z89AEAv5JGguQL7ZxO
-DrBnleDOjUsudpd92AZkknnf0TunDQg=
-=4QHw
------END PGP SIGNATURE-----
-
---xTiMez6xNLZ7OD9M--
+-- 
+heikki
 
