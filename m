@@ -4,62 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4ED38CD98D2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 10:01:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 854CBCD98D6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 10:21:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gcHCZxJjnd2NbJe+vF8vVoiVeFGscr8raKdpJQPi65M=; b=C16rOL/e1vxWq4IwhswiptL+RW
-	2AHZVzKiFnrigQz+W6qV0U357F0Etjb3DAKXK6C/A01wO8g4YgGhhziOAZXI3SYb9qdgyLruj2M/r
-	76wwdqIzlIDUzM1HUtoD9icVD1qbiBjI8GIgJH+SUv1CEbbKu5ifDPI4o7kmy7Gpy6etHzlLXtrdl
-	yYPIx72H9JPUEq/I3y0gkOFA2uQFxrL3FhJ47XRkp/C7eOkOqdpbIj42/rkd+hLhXyrsllNs0zXFn
-	2GT10vuUg409PpFCcGcl3U5kCZokeimkjdpT5/UYLZ71nKKijD4FUTzowqg/SUZ+1ZS1HlLVFwClq
-	iCbYLI1w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
+	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qj+A1L4ghz8M9xtQx7N/iIUl+JSGwHDfpQ+NQQtVxeA=; b=ZtFnQ04Qad68HdyyOHxlUESimI
+	YGj8NBMYxmT/jOFBkkkePXJ7g7FujIbI1ONmxpw5TiveXsR2XbhkaKzEiLXcW2rvJcYNcvTjNO+IU
+	wYR+7cc+yqXyPM3CE9FYfv9Rhyo0MkA2THVZ5vgniPQQ+jlAxtyxUYVUnDSGb910V0cqJ1QWX1sHv
+	Iwo3aJCN9hlwoQ0UJOLPkvuomYdt3Rb8wKgAW8HASenRxagU/qmfuDuT/FGWSm7rgu9UEJxCgODwa
+	FZme064gSq/xVbV9LPmqbIgKV6ulewbeAC9F7+UEmet+6ezceZI9ItQg7v13d4oktK9HHxLehyAn3
+	kIn4enyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXcEH-00000009BT1-0V98;
-	Thu, 11 Jun 2026 10:01:41 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wXcXa-00000009DKd-2KQ6;
+	Thu, 11 Jun 2026 10:21:38 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXcEF-00000009BSI-1sZK;
-	Thu, 11 Jun 2026 10:01:39 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id A1A4043AB4;
-	Thu, 11 Jun 2026 10:01:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 018351F00898;
-	Thu, 11 Jun 2026 10:01:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781172098;
-	bh=gcHCZxJjnd2NbJe+vF8vVoiVeFGscr8raKdpJQPi65M=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=UjRz1M0qJTomOYzXKVoiKZpGS9MtDg+JTdxRbI7OSGggZlawjkxiPNaYgSRLH9uej
-	 /EFORBduBvm/tIxZxbEy3VZQYyB3qYYlFWBdq2p6EtO7SGNMJjNZ0eynsrFSR/RAi5
-	 FaMbcNHuRd3MbNISJrWYTKOF8RjqXFmuTO6spgu+irR0vZS2jztReOCY8Xlkxl19z8
-	 mlbKVN61TdcveB4j+yZH7xFaZ4NiY5X8TsJov6woaEbutqkSYb+Wq9qGSEklL6PAcw
-	 AkuYVDx0uoB0l+PXarBoe9ivvReSp32ee3NRfXsE50ny/42Xb2A+Aau+SJo3UdCVqj
-	 snTxA7cyw+eZQ==
-Date: Thu, 11 Jun 2026 12:01:36 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	Brown Huang <brown.huang@airoha.com>,
-	Leto Liu <Leto.Liu@airoha.com>
-Subject: Re: [PATCH net] net: airoha: Add retry mechanism to
- airoha_qdma_set_trtcm_param()
-Message-ID: <aiqHgJ6FiAMu5gmF@lore-desk>
-References: <20260608-airoha_qdma_set_trtcm_param-retry-fix-v1-1-f07704f0d8c5@kernel.org>
+	id 1wXcXZ-00000009DIM-0jG5;
+	Thu, 11 Jun 2026 10:21:37 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 8A7A744629;
+	Thu, 11 Jun 2026 10:21:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 53A19C2BCB0;
+	Thu, 11 Jun 2026 10:21:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1781173296;
+	bh=sBS5uf4qSGQnXJ31n1W2qIx8sitdGbZZdDoMUF3vkIA=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=Y9+xiRA7Etd38zkMI6aIfWpsjSXq8+5ySfZB/QalzUBI9+K4gYvJpRVIVZRXYKnjS
+	 nAaNqNSgvUGv0Dogc1nuDN7peyiwSGC8TIPBsyma3QmafSbWI33TFz8i8QMmgvFu2P
+	 s0j3Ss/AA3VQXvYrp1LtWhNrT4Hm07kV1AN0/imYwtl3fodtgfv8dARHdhI3OcCdhB
+	 JD7Pj9mWifWhM3F2liA1w05E1A2thGbLogV14dHm2ocyyk44PISeTiVkkWEtAOrCcr
+	 4B2t9wo6tTsqypa6KCO5CmxPaLuoLR9cBvUP+WY+AyqKt4jE+tO1iN5i/rF4qzb70M
+	 WcwZufGcLrsKA==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4656ACD98D6;
+	Thu, 11 Jun 2026 10:21:36 +0000 (UTC)
+From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
+Date: Thu, 11 Jun 2026 13:20:31 +0300
+Subject: [PATCH 3/4] mfd: mt6397-core: add mt6323 EFUSE support
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="EQw5C5lY17IuMX0g"
-Content-Disposition: inline
-In-Reply-To: <20260608-airoha_qdma_set_trtcm_param-retry-fix-v1-1-f07704f0d8c5@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260611-mt6323-nvmem-v1-3-b5e1b9ce51f2@protonmail.com>
+References: <20260611-mt6323-nvmem-v1-0-b5e1b9ce51f2@protonmail.com>
+In-Reply-To: <20260611-mt6323-nvmem-v1-0-b5e1b9ce51f2@protonmail.com>
+To: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Srinivas Kandagatla <srini@kernel.org>, 
+ Roman Vivchar <rva333@protonmail.com>
+Cc: Andy Shevchenko <andy@kernel.org>, Jonathan Cameron <jic23@kernel.org>, 
+ linux-pm@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Ben Grisdale <bengris32@protonmail.ch>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1781173294; l=899;
+ i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
+ bh=gfiZtK59vnYwxkS8UM5M3InSXISmr33hxTTt1Z71XQo=;
+ b=4lVynAgv7570qzi7ZfFm4W64uXmXlyW6EFAGKJ4NF2lEeOQ/Zz7IpcmK8EYiQQwjNlCQqr9v1
+ B6I9+mVvRkpAsCIy28pUU0lrz3u3uBTZxcYLYpx5mSLBCP9BJXomPhk
+X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
+ pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
+X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
+ auth_id=777
+X-Original-From: Roman Vivchar <rva333@protonmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,99 +87,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Roman Vivchar <rva333@protonmail.com>
 
---EQw5C5lY17IuMX0g
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+The mt6323 PMIC includes an EFUSE. Register the EFUSE in the mt6323
+devices array to allow the corresponding driver to probe using compatible
+string.
 
-> From: Brown Huang <brown.huang@airoha.com>
->=20
-> CPU accesses QDMA via the bus. When multiple modules are using the bus
-> simultaneously, CPU access to QDMA may encounter bus timeouts and fails,
-> resulting in QDMA configuration failures and potentially causing packet
-> transmission issues. In order to mitigate the issue, introduce a retry
-> mechanism to airoha_qdma_set_trtcm_param routine in order to ensure the
-> configuration is correctly applied to the hardware.
->=20
-> Fixes: ef1ca9271313b ("net: airoha: Add sched HTB offload support")
-> Signed-off-by: Brown Huang <brown.huang@airoha.com>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  drivers/net/ethernet/airoha/airoha_eth.c | 21 +++++++++++++++------
->  1 file changed, 15 insertions(+), 6 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
-net/airoha/airoha_eth.c
-> index eab6a98d62b9..aaf7d8c8ccd3 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -2493,14 +2493,23 @@ static int airoha_qdma_set_trtcm_param(struct air=
-oha_qdma *qdma, int channel,
->  		     FIELD_PREP(TRTCM_METER_GROUP_MASK, group) |
->  		     FIELD_PREP(TRTCM_PARAM_INDEX_MASK, idx) |
->  		     FIELD_PREP(TRTCM_PARAM_RATE_TYPE_MASK, mode);
-> +	int i;
-> =20
-> -	airoha_qdma_wr(qdma, REG_TRTCM_DATA_LOW(addr), val);
-> -	airoha_qdma_wr(qdma, REG_TRTCM_CFG_PARAM(addr), config);
-> +	for (i =3D 0; i < 100; i++) {
-> +		u32 data;
-> =20
-> -	return read_poll_timeout(airoha_qdma_rr, val,
-> -				 val & TRTCM_PARAM_RW_DONE_MASK,
-> -				 USEC_PER_MSEC, 10 * USEC_PER_MSEC, true,
-> -				 qdma, REG_TRTCM_CFG_PARAM(addr));
-> +		airoha_qdma_wr(qdma, REG_TRTCM_DATA_LOW(addr), val);
-> +		wmb();
-> +		airoha_qdma_wr(qdma, REG_TRTCM_CFG_PARAM(addr), config);
-> +		if (airoha_qdma_get_trtcm_param(qdma, channel, addr, param,
-> +						mode, &data, NULL))
-> +			continue;
-> +
-> +		if (data =3D=3D val)
-> +			break;
-> +	}
-> +
-> +	return i =3D=3D 100 ? -EBUSY : 0;
->  }
-> =20
->  static int airoha_qdma_set_trtcm_config(struct airoha_qdma *qdma, int ch=
-annel,
->=20
-> ---
-> base-commit: 4aacf509e537a711fa71bca9f234e5eb6968850e
-> change-id: 20260605-airoha_qdma_set_trtcm_param-retry-fix-a9d2956b9b2f
->=20
-> Best regards,
-> --=20
-> Lorenzo Bianconi <lorenzo@kernel.org>
+Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
+Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+---
+ drivers/mfd/mt6397-core.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-I think the issue reported by sashiko in [0] is valid and it needs to be
-addressed in v2, but since I am not the original author of the patch, I will
-let Brown or Leto comment on it.
+diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
+index 3e58d0764c7e..362737a1c4a9 100644
+--- a/drivers/mfd/mt6397-core.c
++++ b/drivers/mfd/mt6397-core.c
+@@ -125,6 +125,9 @@ static const struct resource mt6323_pwrc_resources[] = {
+ 
+ static const struct mfd_cell mt6323_devs[] = {
+ 	{
++		.name = "mt6323-efuse",
++		.of_compatible = "mediatek,mt6323-efuse",
++	}, {
+ 		.name = "mt6323-rtc",
+ 		.num_resources = ARRAY_SIZE(mt6323_rtc_resources),
+ 		.resources = mt6323_rtc_resources,
 
-Regards,
-Lorenzo
+-- 
+2.54.0
 
-[0] https://sashiko.dev/#/patchset/20260608-airoha_qdma_set_trtcm_param-ret=
-ry-fix-v1-1-f07704f0d8c5%40kernel.org
 
->=20
-
---EQw5C5lY17IuMX0g
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaiqHgAAKCRA6cBh0uS2t
-rF+rAQC5+Y/anvlgMyJQaTiGnt7sLIX58e6BVmfSU1Wj1RY8EgEAsHsD6b/QSjTQ
-w5el1GDLGvLDhPi7PhOKD4bBFqIUjgA=
-=HrEl
------END PGP SIGNATURE-----
-
---EQw5C5lY17IuMX0g--
 
