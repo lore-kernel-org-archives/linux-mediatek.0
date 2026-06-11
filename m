@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F2CDCD98C7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 08:15:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF07CCD98C7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 08:17:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:References:MIME-Version:In-Reply-To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3IU3Izek11DlTn3+eMp02gjkvoPAVU9+fiOHobFbbBk=; b=VxvjWQat5ZPnOnmgeWP6kzk9ow
-	yCCLn6Qn8bjkptskKvPbydDag1nd3lBPwy/bYMtTlVDTBoDRO5r7aDDhh0j9zRIe+yaWjND1mK+am
-	1S7TnLMdb5ilVTVdxBhuITKhIckmygLtPU/S7GuxgCKtY6YWpZIz3/BdBjxdZsx7G1WmekOL1LslZ
-	agSU3hPWb/219SLF75RJvBLG1ksaRg/A8pZfiADq436fwJf78E6GagHj9r3s5UhE3rnxDzHInel1u
-	UmBnHMrHGn5WIvq/o+B8c1e8HjE/pEC11T3CNGAGm9EmHipYt7bQJdbtT7NbTz+iR7AvMcQI2D2Kt
-	HbOJVFGw==;
+	bh=qaWx8ntXsuM96Pn2hdwxwXAPPKnzorenweIrZzy4GK8=; b=tATXBo21pggytrTxGdd7b9Rawr
+	7qVcRnEnYAo7+4B0JIQKKa4Fo9vnihlN8uBWCmrApep8mu7oGBhThsKuXteDXSCjZXqTpjsBtxKzu
+	EKnTYy1mgDU2dVlm8/RvLPcKpgJhPuhANpkTsnTcvVbIMwZ7lZDE2V5LKGpxxqnK8IUhOFZQtJmY6
+	iJ1MFuMvdg/oLPRv0dkPAWPXOJs2qtF+fnWTOUsVislb15E0Zwq/ihE0vVTevM1FQF216msLD9IEv
+	75GKObdKxp5S0juVpQwrh2mZJymUE3rbWSZSdHqRFb5EVMmIVmhOHLmmo70YAIt0rPjIxQJOZFv1u
+	HD7jQuVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXaZW-00000008ymU-3mCh;
-	Thu, 11 Jun 2026 08:15:30 +0000
+	id 1wXabs-00000008zJh-3kxW;
+	Thu, 11 Jun 2026 08:17:56 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXaZU-00000008ym3-2ka9
+	id 1wXabq-00000008zJ3-3e07
 	for linux-mediatek@lists.infradead.org;
-	Thu, 11 Jun 2026 08:15:28 +0000
+	Thu, 11 Jun 2026 08:17:54 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1C1DC44635
-	for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2026 08:15:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 02E101F0089C
-	for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2026 08:15:28 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id A1B53445C5
+	for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2026 08:17:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 849561F008A4
+	for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2026 08:17:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781165728;
-	bh=3IU3Izek11DlTn3+eMp02gjkvoPAVU9+fiOHobFbbBk=;
+	s=k20260515; t=1781165874;
+	bh=qaWx8ntXsuM96Pn2hdwxwXAPPKnzorenweIrZzy4GK8=;
 	h=From:In-Reply-To:References:Date:Subject:To:Cc;
-	b=Mxqvtf9GUyqLB3lebhuDlBkwWgHZy08FDeXuf05d2nQn97E0800e7lAuzgRyD78mg
-	 FePUjbDskNKhPP1N1IaVGqD6MRETwfm3vAd7gFZ8mU4xFsGaoplZUdsr4XdASR6djR
-	 TwX882i6gWvvPd2zKF4PlalfLQS4f6U8TUNc5XwGd3Zj50dw4iSP/t0pdktzcLMHmC
-	 lbKUOd6DsEDOh7sc5WuAWXONKmaXej+t7Eez6qHdckhpATWLU/bocNlSfIHYhdXAjm
-	 SJAaXzOhmwDttuDlFu9QH90ybomml41dYDu4BLJnOL/eJcagvXbtaqn1A4Sqcbt4f6
-	 jzfZU+bhTvZfA==
-Received: by mail-lf1-f43.google.com with SMTP id 2adb3069b0e04-5aa68dbb38aso7490601e87.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2026 01:15:27 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AFNElJ+dxO2pYbg2DZyZawRAoGf05J6oxPQOMjP71kkov9ynM+kcIBBY1pbG17T1TFtjk8Cr26DyaiSDvHyFNQvbTw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyYva2lojpySnt0RGguTBLgK/x1H3vHCcp2QEOAZizbNyhIaK3G
-	LGdjDtJj3hZY4TiIlRiluJU51WRDsr6KYx51Bb5KHLvQbZxRO/EdiHb4U3yY2rWi9JVFiB6cMdS
-	x1J1+XUCu0Iyq3/84gueHUXAGlDgs8WN54xGgQhwVaA==
-X-Received: by 2002:a05:6512:220b:b0:5ad:a04:e62b with SMTP id
- 2adb3069b0e04-5ad27cd1f4dmr556504e87.32.1781165726578; Thu, 11 Jun 2026
- 01:15:26 -0700 (PDT)
+	b=ax9Ae/gZHGie3gCb7JuI+NSQ7kHM1EM/qVFJxb9aiciImMjST6c8o4cvWd5PjHPZR
+	 uvlWZyjcj+1jBOXZjE6f9Ba8KlQlCsw3LEZ1hNXrr9UNGe+OsOSmAhKm5JovN14xeV
+	 b7HQMQzLknvP/w469emCcWdYGQsdjKsy+Z5ZKRt/N8Y4tJSZiTFjafcXoLHsryuHhr
+	 6phpOMgR0i/eWnpNpDbsXI6evj3LdC3Jw5bsUm8Dezhsb5aalPtVIPq0udQecodlWg
+	 SORzDhPk3xukvwagHUsvRIT1rZF2oF+GFJN7oWyVnKAUT+wyHZQQpWl88Au9a4d1C9
+	 N0829CZP/trWg==
+Received: by mail-lf1-f49.google.com with SMTP id 2adb3069b0e04-5aa624ff3cbso7979275e87.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2026 01:17:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AFNElJ/8vQV5NIuTq0lAbmfZ17gvouJbwPzz8asDQoSAQ5ceYucE73ai3MRnCGm/w6EyMhPYF+meFWz4ysDBeUPi6w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzC+sKoEckWBW2WyIym2ku2F4DNirc2d433B8fVeeN8Ov4UC11K
+	odTj7tU+voZtJYZBd6Yeqo3FtxTfjEuDsEp4DwVJKe7Qt2F3CkbSHezKEah6M8a/FRXrTlCyFMP
+	zdZ4IZaubE2IA9JkA1mwzw5oTZ3ATur9vdtLsXoMV0Q==
+X-Received: by 2002:a05:6512:33d0:b0:5aa:5f06:b01a with SMTP id
+ 2adb3069b0e04-5ad27fb2c6dmr485526e87.25.1781165873117; Thu, 11 Jun 2026
+ 01:17:53 -0700 (PDT)
 Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Thu, 11 Jun 2026 04:15:24 -0400
+ HTTPREST; Thu, 11 Jun 2026 03:17:51 -0500
 Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Thu, 11 Jun 2026 04:15:24 -0400
+ HTTPREST; Thu, 11 Jun 2026 03:17:51 -0500
 From: Bartosz Golaszewski <brgl@kernel.org>
-In-Reply-To: <20260610084053.2059858-2-wenst@chromium.org>
+In-Reply-To: <20260610084053.2059858-5-wenst@chromium.org>
 MIME-Version: 1.0
-References: <20260610084053.2059858-1-wenst@chromium.org> <20260610084053.2059858-2-wenst@chromium.org>
-Date: Thu, 11 Jun 2026 04:15:24 -0400
-X-Gmail-Original-Message-ID: <CAMRc=Me0zQYLLuiyYBOtD5quL_LeK_Zg+WoL0vzXDhjB5e+gzw@mail.gmail.com>
-X-Gm-Features: AVVi8CebXQLKBQMIYKPsMbHoISglCZVr32F3LvdIki_eZQgsmFxJVcEwTR4qpYo
-Message-ID: <CAMRc=Me0zQYLLuiyYBOtD5quL_LeK_Zg+WoL0vzXDhjB5e+gzw@mail.gmail.com>
-Subject: Re: [PATCH v2 01/16] device property: Add fwnode_graph_get_port_by_id()
+References: <20260610084053.2059858-1-wenst@chromium.org> <20260610084053.2059858-5-wenst@chromium.org>
+Date: Thu, 11 Jun 2026 03:17:51 -0500
+X-Gmail-Original-Message-ID: <CAMRc=MduBaCYzB40+b35ogxKgBx6zkB5WMV_zBPkZpec6O1Grw@mail.gmail.com>
+X-Gm-Features: AVVi8Ccelzelin4KP3uByrL3JP8Pe5yqhtuz-V7A9LSr5BQSCNVmXC1yUbrpp3k
+Message-ID: <CAMRc=MduBaCYzB40+b35ogxKgBx6zkB5WMV_zBPkZpec6O1Grw@mail.gmail.com>
+Subject: Re: [PATCH v2 04/16] usb: hub: Return actual error from
+ hub_configure() in hub_probe()
 To: Chen-Yu Tsai <wenst@chromium.org>
 Cc: Alan Stern <stern@rowland.harvard.edu>, linux-acpi@vger.kernel.org, 
 	driver-core@lists.linux.dev, linux-pm@vger.kernel.org, 
@@ -93,13 +94,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 10 Jun 2026 10:40:35 +0200, Chen-Yu Tsai <wenst@chromium.org> said:
-> In some cases the driver needs a reference to the port firmware node.
-> Once such case is the upcoming USB power sequencing integration. The
-> USB hub port is tied to the corresponding port firmware node if it
-> exists.
+On Wed, 10 Jun 2026 10:40:38 +0200, Chen-Yu Tsai <wenst@chromium.org> said:
+> The addition of power sequencing descriptor handling in the USB hub code
+> requires dealing with deferred probing from pwrseq_get(). The power
+> sequencing provider may not yet be available when the USB hub probes.
 >
-> Provide a helper for this.
+> Return the actual error code from hub_configure() when it fails, so that
+> the driver core can notice the deferred probe request.
 >
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 > ---
