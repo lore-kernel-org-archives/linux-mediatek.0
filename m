@@ -4,73 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A2DFCD98D2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 11:53:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDB07CD98CC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 11:56:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GqY2spfTOdxT6/z9DTv0mn5JpX+liaPtEnBVwLgBTnw=; b=1gqf/Tv4VBrvTWVwhClV9st3BS
-	L321wpCQK0BIcB0i2S1yXKu8/yDWq5Ko7Lapd6EG26rcjgcKkz0+zDkT6pwptbZ1LXLA3nINGJaku
-	NiRlXD00wKdAURm73Y58DHUOdWTAgihfHs4DzTNOaE/FAh2eYfjMruAFMSE18l92C70aEry9FObah
-	R1Bq8LJLQI/aNp8HRASim5QcXOlLnnlHeZYxTC2oVNBRjWXvR2oHU/5v1k6Q/2SzjFe+7/wV8tQoZ
-	l5gKKlCnMJl3pVc2mxojlybFUKUz8IL4sDXcM0IwujGdRgOspmQ/pSH5NQzceDyrgJ73TOJvRjMqe
-	vxQrujKQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=p+z2Cb+IYqw0oF+ulEcKkpYQyMc55w2fHKqiVKP4B0Y=; b=2Ny5u7cgKi+Ntkqns/fxA6JA37
+	Dj2hJnNDvxBcZyiGpYlGvJhFnnQGtJyKlc+WnDnAwvv1SkKtVt6I7tD2/9iJ7dxVJLMeTXT1jrA3M
+	chUYmeSJ5NeQqhm4E8cW47IjnxhP54rXUtbBFVziDqgnDljD02auve1w2cyuQZRLVB2Z3MP4jrFQg
+	lo01dUgQIaJRIYjbzw23i4NKL18rfta+F/01mLOoBH1IRr7caEKZTVqHGGT9RivehEFGx7TFqzCrh
+	9lnrtxw6VtstoQy5+5qTxZjuudsZW+8bY6Z7SWeq2xnfpjsWSoiL9FZYKBPXipP3ID35+jDCWhczI
+	hpKu33Iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXdya-00000009LNU-1O1T;
-	Thu, 11 Jun 2026 11:53:36 +0000
+	id 1wXe1j-00000009Lbx-41e4;
+	Thu, 11 Jun 2026 11:56:51 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXdyZ-00000009LNE-2B9s
-	for linux-mediatek@lists.infradead.org;
-	Thu, 11 Jun 2026 11:53:35 +0000
+	id 1wXe1i-00000009LbY-3DqP;
+	Thu, 11 Jun 2026 11:56:50 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id CB663441A6
-	for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2026 11:53:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ADFCF1F00893
-	for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2026 11:53:34 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 5F9B342D51;
+	Thu, 11 Jun 2026 11:56:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6A1721F00893;
+	Thu, 11 Jun 2026 11:56:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781178814;
-	bh=GqY2spfTOdxT6/z9DTv0mn5JpX+liaPtEnBVwLgBTnw=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=Z0Xh0cj+FPMHImvLlydsk6WEiI3l+mk2IO9zpn4hl6MI6hXrNabJxKzDCt91NKCh7
-	 mVSVoz6zbnrsdic3eO9kkEGqqAEqLpi1aswrQBhn7pnn84rs92Vp9vM23ZK/ujeU2I
-	 GP6tBSgo/UQ341vOfKTjchmsIfKBxjYecNyw/Aqku+TNFFufwwg244WCefmRgztQNK
-	 qnsVKun7pPXyQ3qkRurGkivj1fGqvBVdkkCzenrDdHornVvFbFtFaSSCoqUVz+xocr
-	 zBviDrAAKjTVWu9dC6lV2Wul6Grpnv4BQSu2z3ydoGIUS41F+2BAjIKyCx+vRunvi7
-	 pQLclsg5mWI+g==
-Received: by mail-lf1-f43.google.com with SMTP id 2adb3069b0e04-5aa68e66128so8213016e87.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2026 04:53:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AFNElJ8SbtZOwihitIx+zfkhFDqiGge9aN/rgqiZAsjHQZ0C6wehgm2AvcNE4RN9FtnB1OfUeOBkwfbeIFmVsF1ouw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwdQFfa+h3GhmxAVC8IPzkEJ7cKMwBiQEprfKlkOXANbCcDZ2a3
-	KWIeE9XrMLOEB8dWq3sff4PT/06t+B8fVZzyK/eimgpzIv6lPPGx/0giINL6e9pak4Ne8uXBju8
-	EFQGCAFwd548GSxHq69ErwgFm94uT8xY=
-X-Received: by 2002:ac2:51d4:0:b0:5aa:62fe:ec9a with SMTP id
- 2adb3069b0e04-5ad281b7a20mr780290e87.44.1781178813544; Thu, 11 Jun 2026
- 04:53:33 -0700 (PDT)
+	s=k20260515; t=1781179010;
+	bh=p+z2Cb+IYqw0oF+ulEcKkpYQyMc55w2fHKqiVKP4B0Y=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=MtrwLgQ6J4LUv5hkXoos/e/FjkDLL6BZyozh+84eapQ9D2wJMrgbqwkUAv3fsfz+F
+	 idy+h06nwp0JIQwxvFRUpDpanrKXiQnK9Z3ahs4nk00LPBCBa3hChS5q03HlshSwoD
+	 SsNJU+UMmmYmNeibXZbIDEsM1ALvmER06/OnYwj+q39Cye+d9ueGQ2TqlYxq/XW8jt
+	 zljVjt+lRe+VZyoL77vWTvnZDLWu2k8D9eWTRR/gpsTWdCYXVH2YXGOoYM28LpTAp/
+	 NzTRFnrisXo/0b7wFjeXpvZIhlJDR8EcZ61tDzi1rbDz0pz5AILFzPdApUPBhj7zCA
+	 uL5qKlJMzsFrA==
+Date: Thu, 11 Jun 2026 14:56:46 +0300
+From: Leon Romanovsky <leon@kernel.org>
+To: Jihong Min <hurryman2212@gmail.com>
+Cc: Christian Marangi <ansuelsmth@gmail.com>,
+	Antoine Tenart <atenart@kernel.org>,
+	Herbert Xu <herbert@gondor.apana.org.au>,
+	"David S . Miller" <davem@davemloft.net>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Simon Horman <horms@kernel.org>,
+	Steffen Klassert <steffen.klassert@secunet.com>,
+	linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH 1/3] xfrm: extend ESP offload infrastructure for packet
+ engines
+Message-ID: <20260611115646.GN327369@unreal>
+References: <20260523121522.3023992-1-hurryman2212@gmail.com>
+ <20260523121522.3023992-2-hurryman2212@gmail.com>
 MIME-Version: 1.0
-References: <20260606020342.1256509-1-mikhail.kshevetskiy@iopsys.eu>
-In-Reply-To: <20260606020342.1256509-1-mikhail.kshevetskiy@iopsys.eu>
-From: Linus Walleij <linusw@kernel.org>
-Date: Thu, 11 Jun 2026 13:53:20 +0200
-X-Gmail-Original-Message-ID: <CAD++jLnznOYt7giVz-xqLEm49oMdnr4HnaW8T5sAyz7Zqgi1og@mail.gmail.com>
-X-Gm-Features: AVVi8CeW7u952qA2e8nha9s-_tLXnmRSu2SJMgx1bi89y4LGhDaKdjaaWzyi6I8
-Message-ID: <CAD++jLnznOYt7giVz-xqLEm49oMdnr4HnaW8T5sAyz7Zqgi1og@mail.gmail.com>
-Subject: Re: [PATCH 00/11] pinctrl: airoha: small fixes
-To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Benjamin Larsson <benjamin.larsson@genexis.eu>, Christian Marangi <ansuelsmth@gmail.com>, 
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	Markus Gothe <markus.gothe@genexis.eu>, 
-	Matheus Sampaio Queiroga <srherobrine20@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20260523121522.3023992-2-hurryman2212@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,13 +81,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jun 6, 2026 at 4:04=E2=80=AFAM Mikhail Kshevetskiy
-<mikhail.kshevetskiy@iopsys.eu> wrote:
+On Sat, May 23, 2026 at 09:15:20PM +0900, Jihong Min wrote:
+> Some ESP offload engines operate on whole ESP packets rather than the
+> generic software trailer layout. They can generate outbound ESP padding,
+> next-header and ICV bytes in hardware, and inbound decapsulation can
+> return an already-trimmed packet with the recovered next-header value.
 
-> This is a set of small fixes for Airoha pinctrl driver.
+How does this differ from the existing IPsec packet‑offload support in the
+Linux kernel?
 
-Patches applied!
-
-Yours,
-Linus Walleij
+Thanks
 
