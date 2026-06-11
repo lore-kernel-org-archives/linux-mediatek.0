@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45ED8CD98D2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 08:57:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 949AECD98C7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 09:11:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:References:MIME-Version:In-Reply-To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DZUL55pfekAnXESqd14ABzPRjbkHUYXBXBngBC6u3ko=; b=wtOILD56buj0Tv3FnivnU+Tquy
-	7Kc04OCWwgn88Zfx4VWUhsepoD5/3VHmr2FfWOM90DVNVWXmvaENCta7ENtItu17pfS2XtsQLTnA7
-	XZKQdAGFRZnbmMxS51uPWCZpOsMQFWdSVt9hRZawEeatGyCXfIQlLwgAfB4Ym6h9y6CwopN5MQe+j
-	GHYimDNyy+dEV4jmvVQaoE0wMJrPOtQauHpUbZkZ+sPFRMbaqe5n6WfDkMYhCzehxipG8EGONBx6G
-	3I1ayY8oY79W16NxZ51E4g4MEIgjZb9CP6UY0TGse8H3H09ktmo/It09uBaw16fnQipfzsCG9rQVa
-	JJg8A1Hg==;
+	bh=B1t0eMpqsT9YaBJXmjRvQgx584lO6Eznqq7E3RTSQxs=; b=1WvMYvUP24ev6GVnNUkk0X/Rl6
+	YkgeiXiPC0gLMJXSd4L2iYLJcEKJup/9wk/Y1Gf1girMjuvotvRtVGWpn6Mxec3QVbUfyZlZq9Fx4
+	ptQtmpy2/K4/36mHqdaPHmfMgQMyy4tXFKQPxkE4/VtmB94ZYOa1hdFk5kJdkY8hlnHvFRLjYel1q
+	osN+K7E3dF03qUzgmMwkiZFsfSmEZyJ42xJWqLJbtKoC8t7JE1nqumalcJQu7Q5ks1oUuphvE+22p
+	nzDMVSlhXjy3CU8s01yDklSZra4qqZEYg5HjN3ZYAcEMIvLh7/5ExOO48UvQowbo3ljDFUXQr9Tw3
+	RhJ0egBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXbDq-0000000948B-159p;
-	Thu, 11 Jun 2026 08:57:10 +0000
+	id 1wXbS4-000000096DB-3c8o;
+	Thu, 11 Jun 2026 09:11:52 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXbDo-0000000947j-44Ei
+	id 1wXbS3-000000096Ce-3ur8
 	for linux-mediatek@lists.infradead.org;
-	Thu, 11 Jun 2026 08:57:09 +0000
+	Thu, 11 Jun 2026 09:11:51 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5B8B4445F5
-	for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2026 08:57:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 297641F00A00
-	for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2026 08:57:08 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id A7AF544590
+	for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2026 09:11:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 868E01F00A01
+	for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2026 09:11:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781168228;
-	bh=DZUL55pfekAnXESqd14ABzPRjbkHUYXBXBngBC6u3ko=;
+	s=k20260515; t=1781169111;
+	bh=B1t0eMpqsT9YaBJXmjRvQgx584lO6Eznqq7E3RTSQxs=;
 	h=From:In-Reply-To:References:Date:Subject:To:Cc;
-	b=Cx8nueHu4fYirKSLCXETsXEVv1xXfDm500rY3WLLSdyDbQhSYqJmUOojpbivEE/CT
-	 vBWo6FlB+FwcBjVJ2fxzU/tv07PbSafuRUsgc3+XHWz0XOs/OyAIts4l0VVVwXoBBx
-	 1nlR+LTv2okHUf/NrrroYh3AP6YF05JtVR4/JO/ZBE/M0DYnVaP00cDcRhTm8Xz5Ur
-	 MeNQzpGLEOxsniUIR5sxT3BT9GuN6+WFJLRE1fG6cLump1Q3nhpsCvUttR8PjSnUGK
-	 4nJzgjsOX8+nFt+hqulZmzXGi+eFB7TN5QShe60fODh3CZN25IeWzOOFy5xJHSnlh/
-	 spujFhoK32ejQ==
-Received: by mail-lj1-f171.google.com with SMTP id 38308e7fff4ca-3967726bc47so70656631fa.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2026 01:57:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AFNElJ/ywbxEg75QEATdGTb3Ijvm2tdztxDu4QA7umfx9vDrGe/KnsVwum4pezQ5+UKVJlBvdVuq/BIbDU6MPScmIQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwMd95HiAt4pyHi7iDyVkwZPEH/80wYxqN0T6LJKqNmVcdI5pi9
-	0aAkrO6vRGNC/LKrwQuoa6jh0ArrDrtFOZ5WnmV7esoSuF8ZlQj8rmVuDjJj9H9ZaFa/XoH5dFI
-	4XbyF+iDHkF5Zyfv69HiVdRK9fzsGu6n3q8VtFQaIhA==
-X-Received: by 2002:a2e:bd88:0:b0:396:954c:3536 with SMTP id
- 38308e7fff4ca-3991a1d57b1mr5490001fa.28.1781168226843; Thu, 11 Jun 2026
- 01:57:06 -0700 (PDT)
+	b=bSUSCOOlUoqkjxfDipdP4ZN06c+kGoam+HOQDbIvwgi3CyDkonEwORRznXaYiPTg3
+	 LYiVzvjqTLedwOJohBXfEpJGHs0daYzk4JuF/vsucz8NGce0N4CCtgT+b0VuWlIVF2
+	 Nm5xBnbizAA8pmP9frj9IdPeljD4n7wwJruC5jnaHkJ/YXmiMxC2u6kXjQIbT4TKwq
+	 k/tCiNYYQLbiHyx0O5zC1cDUbv2OJF9a6wrVlbTHgu8Wb+ZYP7Kf1b8YjmSXXg9oHm
+	 9O+RhqNu2KRj0vB3DiSTCkVshTiw2TU9x4iLP0mHiJn/4iTPM5PrRTjO8Yz5wzvIpi
+	 RlGk03VX6ULGA==
+Received: by mail-lj1-f182.google.com with SMTP id 38308e7fff4ca-39677c434efso78884101fa.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2026 02:11:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AFNElJ81mvRKWSxjjwUHqP4NTYcdsLad2zrl14cmWQ1HZd94hBTKpDy8XLY4Jt5LBV9LTCE/tQVxPeoD+b9ng6ESbg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz86ztpcFAcec2piXp22NVtc1fVBqFNMu9akvlJmSvslI6sGgGE
+	lw6KmDcm6RWWtjmqNLXpA+53nUinPyqPdJcfucWVQdonofol+4O4Aj+bIbYHnzbTrZWsltsAkqd
+	Hkp2VnNe/FWW/qNktWpqS1B3LLq8aLPXiSl8r/+SPOg==
+X-Received: by 2002:a05:651c:1545:b0:396:7fa2:e095 with SMTP id
+ 38308e7fff4ca-39919f96cbbmr4986331fa.6.1781169110130; Thu, 11 Jun 2026
+ 02:11:50 -0700 (PDT)
 Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Thu, 11 Jun 2026 04:57:04 -0400
+ HTTPREST; Thu, 11 Jun 2026 05:11:46 -0400
 Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Thu, 11 Jun 2026 04:57:04 -0400
+ HTTPREST; Thu, 11 Jun 2026 05:11:46 -0400
 From: Bartosz Golaszewski <brgl@kernel.org>
-In-Reply-To: <20260610084053.2059858-9-wenst@chromium.org>
+In-Reply-To: <20260610084053.2059858-8-wenst@chromium.org>
 MIME-Version: 1.0
-References: <20260610084053.2059858-1-wenst@chromium.org> <20260610084053.2059858-9-wenst@chromium.org>
-Date: Thu, 11 Jun 2026 04:57:04 -0400
-X-Gmail-Original-Message-ID: <CAMRc=McEd7HbUsyuqM3tr6Uu6Z2hSmL_hMNXgCOT-yHTM2FAqg@mail.gmail.com>
-X-Gm-Features: AVVi8CfiEyvWm7heKsTNAZ-cli_fcxMC9z08AYGILVkLB8mgt-RjTQC7sfys9CA
-Message-ID: <CAMRc=McEd7HbUsyuqM3tr6Uu6Z2hSmL_hMNXgCOT-yHTM2FAqg@mail.gmail.com>
-Subject: Re: [PATCH v2 08/16] Revert "dt-bindings: usb: mediatek,mtk-xhci: Add
- port for SuperSpeed EP"
+References: <20260610084053.2059858-1-wenst@chromium.org> <20260610084053.2059858-8-wenst@chromium.org>
+Date: Thu, 11 Jun 2026 05:11:46 -0400
+X-Gmail-Original-Message-ID: <CAMRc=Mc3DqGb2MsvM4tjcqFuRraAO+EftO1UrtNFvR5dMRXmVA@mail.gmail.com>
+X-Gm-Features: AVVi8Cf4NRlpEgfQOjedOZVIy3kDaaZ8Xbtl_Xw4Hfg6m7nAFQEWNEvJmcMEnDE
+Message-ID: <CAMRc=Mc3DqGb2MsvM4tjcqFuRraAO+EftO1UrtNFvR5dMRXmVA@mail.gmail.com>
+Subject: Re: [PATCH v2 07/16] usb: hub: Power on connected M.2 E-key connectors
 To: Chen-Yu Tsai <wenst@chromium.org>
 Cc: Alan Stern <stern@rowland.harvard.edu>, linux-acpi@vger.kernel.org, 
 	driver-core@lists.linux.dev, linux-pm@vger.kernel.org, 
@@ -94,22 +93,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 10 Jun 2026 10:40:42 +0200, Chen-Yu Tsai <wenst@chromium.org> said:
-> This reverts commit 454a1e3cd36c113341d7b71e8e691c6e47ab4a8a.
+On Wed, 10 Jun 2026 10:40:41 +0200, Chen-Yu Tsai <wenst@chromium.org> said:
+> The new M.2 E-key connector can have a USB connection. For the USB device
+> on this connector to work, its power must be enabled and the W_DISABLE2#
+> signal deasserted. The connector driver handles this and provides a
+> toggle over the power sequencing API.
 >
-> mtk-xhci handles both USB 2.0 High Speed (HS) and USB 3.x SuperSpeed
-> (SS) host connections. And there are USB 2.0 only mtk-xhci blocks.
-> The SSUSB controller handles the device or gadget mode. Saying that
-> SSUSB handles the HS portion is wrong.
+> This feature currently only supports a directly connected (no mux in
+> between) M.2 E-key connector. Existing USB connector types are not
+> covered. The USB A connector was recently added to the onboard devices
+> driver. USB B connectors have historically been managed by the USB
+> gadget or dual-role device controller drivers. USB C connectors are
+> handled by TCPM drivers.
 >
-> Fixes: 454a1e3cd36c ("dt-bindings: usb: mediatek,mtk-xhci: Add port for SuperSpeed EP")
-> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
+> The power sequencing API does not know whether a power sequence provider
+> is not needed or not available yet, so we only request it for connectors
+> that we know need it, which at this time is just the E-key connector.
+>
+> On the USB side, the port firmware node (if present) is tied to the
+> usb_port device. This device is used to acquire the power sequencing
+> descriptor. This allows the provider to tell the different ports on one
+> hub apart.
+>
+> This feature is not implemented in the onboard USB devices driver. The
+> power sequencing API expects the consumer device to make the request,
+> but there is no device node to instantiate a platform device to tie
+> the driver to. The connector is not a child node of the USB host or
+> hub, and the graph connection is from a USB port to the connector.
+> And the connector itself already has a driver.
+>
+> Power sequencing is not directly enabled in the connector driver as
+> that would completely decouple the timing of it from the USB subsystem.
+> It would not be possible for the USB subsystem to toggle the power
+> for a power cycle or to disable the port.
+>
+> This change depends on another change to make the power sequencing
+> framework bool instead of tristate. The USB core and hub driver are
+> bool, so if the power sequencing framework is built as a module, the
+> kernel will fail to link.
+>
 
-Reviewed-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+That bit needs to go away I suppose?
 
-Maybe put it in the front of the series?
+I see Andy has some suggestions but in general I like this approach much better
+than adding the pwrseq_get_index() function. Thanks!
 
-Bart
+Bartosz
 
