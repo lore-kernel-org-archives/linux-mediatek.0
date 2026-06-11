@@ -4,100 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C5DECD98D2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 12:23:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 791B7CD98CC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 12:59:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XWWde8oTiwpIrCzHwuGTBaaddX/30yZJJn3ORVLoQD4=; b=rAc0iFUIljqodvyFLwSOnaRbRf
-	owzvs1GKxr9ZuT49fqEfragiAUt8RtcZ7zasZ0+dF1P6nClzcp7FI/6OlngJKanqosKvM3zhRiJ3d
-	X8cUb+oev+7JKHm2fPBGfjhyPbVTexpjbImib6Nn1pBnYkBHBPA+22l7Xvzl9ImR+k3f+RlcngLo2
-	Fv46PT8CLuTw08TzDNzr33vCd10FIE100Kvrlt+mab2H0DIWNBAhkByxL3MN//sh5MzQwZI1wu8Pr
-	X5TKzvpPVSzctSmcHPVPgPyMnju2torRshkN5HybhA1hWi6M1Gz/oyvZZO6qzx7n9VKoHeLQHoyHo
-	7VyuB91w==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Gu55FwRBT152Nih3ja11oNDgaQEq1L4WQl/WzeRJgRk=; b=m1nfwwu6Abfs5mIqQvhkuuhtky
+	aynTWer1wmwp7AMKOSFdIDij1vxCX8V5Yme4SnMtvZ+Alu7ebLOE9WuKuV63LjyfVKNGWB1D6IQcZ
+	mqsnRfm+t9oN7gK4/j2DoO7kkrLJCM+vGv+ZQO71l7PfFTIUB+4OPeqlBWryawSBZOfIlei2ZSxp8
+	0DRlkw4ewIrbdiHQ6yZP+js1oh6OEQq/gBmkELW4Ev4WouJ2NVNj4avpS5C//Sw03ewb+pCh6w2uW
+	ANvu8fWvZ3+XotXq+nDBzg603nKduTczN7JScbeqd6aXctpi3sgV6/c+A6vB0uvhJdimIjKsHp9/X
+	8IixeCzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXeRZ-00000009Nos-1SBT;
-	Thu, 11 Jun 2026 12:23:33 +0000
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+	id 1wXf0C-00000009SCJ-1V6s;
+	Thu, 11 Jun 2026 12:59:20 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXeRW-00000009NoC-3aob
-	for linux-mediatek@lists.infradead.org;
-	Thu, 11 Jun 2026 12:23:32 +0000
-Received: by mail-pj1-x102a.google.com with SMTP id 98e67ed59e1d1-36ba285e98bso7784546a91.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2026 05:23:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781180610; x=1781785410; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=XWWde8oTiwpIrCzHwuGTBaaddX/30yZJJn3ORVLoQD4=;
-        b=IHp/g95ILkuBdrYr/DlPEsmy7WHCKgH+xjOupBpr4OkBUgQJbDUcJngZthVM5cICSE
-         bkMCoZ4kO8oGHry/zl8X/gMS4Yyffz7j12ykJhLeyNM/CjqEl1QnRNLKylAwGyExKNaH
-         KhxJXX2IpcvvbnVNb4QqX2w5u9qhMS3uwiLDHW9LKfx9lC6PXb4SXju2DtaKari146R4
-         5ENvXuOlJLT5pe79YBrT0qQJ9mA8q69MNleX+RpD+L5FyuapUp3S4FnRv2W1FhhDov2F
-         fHe+G6t9ZNWOxWnFiMIMdzv2/rJ+Z0ZYOQEtuC2f/SUJC+QhV4KF0CdVgH91Pncwf+uA
-         31PQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781180610; x=1781785410;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=XWWde8oTiwpIrCzHwuGTBaaddX/30yZJJn3ORVLoQD4=;
-        b=WMM069Zx6nX6FP1W2yYrYYM3t70JgBSfbtoPm57/lgwWu56vjecYJ8r7WHjZTil8j/
-         XauPizLm1aFyjTBfvDTB8XijN6Zlcm0CHKvv2lvjrKsYdL1S6LGh7WROlGT1PXM6tZlE
-         RK5tV8EzUby8ZVFXgNYSUfA5d8Z8k84tYilAKBce2wP9nj7fLHPPXvWlkzDQygUSHODy
-         wMi73P9RqLD6XeaGWKGeZEJyR6xMvTcwU28+50eBVG7jIE1AvY2zB+O+PFwpghuLK09m
-         Yb2LM8K1N+0wlJbKlXS2cdGLP683UiEQUzo9UeODBYdJpcyNoD5G84Wx8QsQyi+lbVfJ
-         stTg==
-X-Forwarded-Encrypted: i=1; AFNElJ9bVMfjuIdQ2iumHf/G/WPKap8XM8Q4KgqiKBk1uw5pNO4PjbK4Hm78C/IkoptatB47DmKzE9VIwCJLpCOMyw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzuvd6p4MoNNMAssKKHB79/0P790UZ6espcnducAu3FnNC9+xYI
-	iSvNplZvmbHjydsfsFZJcsNh/5on2VoBfTr3rI0p3pBF0T/QODp+CqZX
-X-Gm-Gg: Acq92OFxUgyR84xYO+3rMXWm6J9q7XcGX023vikgSgPdrNaHiBDcjGoy49gJDHoH5Ba
-	1t7Eh9bV+TMrS/QM2gVkuGqUI8U1MOfq6qgDyUKsFMjLAhbqdZjyT399T6dc2aU24UXpVbft3lr
-	vXw7IdqPEFcJMEI5iaqhWXacgoT6T9aTUq4QaXEZ3bNyOcGpigzldIJeOMeT6gUulqxT/C4vf4T
-	wwwhTGk1mNF7t6jJjDMd6t1CMXyBgaNP2DOLrdCy6IlhwesWsmo+N770bntOn7q33y2ixH5vxXK
-	3kbkhudToBQRsJQK3SoSvhXj0kQZlGrcpmQirDfmrJzBCtp0OWe/AapfTMGGywltuiJ9y9EsU6/
-	duN46S26ECAq6uoDzGzvXniUGwvWdbIr6aKxtd2ntzLl1N0tiZ43uGJC1Ba8DyzckC0Bhf6aOQy
-	QAi1xhACKXKvv3Mc7V6eC5xT+/HkJFdYljBhJQIb4g/A==
-X-Received: by 2002:a17:90b:3a05:b0:36d:b12f:613c with SMTP id 98e67ed59e1d1-3779f186dcfmr2904451a91.10.1781180609829;
-        Thu, 11 Jun 2026 05:23:29 -0700 (PDT)
-Received: from [192.168.89.2] ([27.232.220.71])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3774f4c2e5asm2564395a91.0.2026.06.11.05.23.26
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 11 Jun 2026 05:23:29 -0700 (PDT)
-Message-ID: <61bf60fd-2ccb-4d23-be5e-041c7c312510@gmail.com>
-Date: Thu, 11 Jun 2026 21:23:25 +0900
+	id 1wXf0A-00000009SBy-3r9r;
+	Thu, 11 Jun 2026 12:59:19 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 03FC6600AF;
+	Thu, 11 Jun 2026 12:59:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE7EE1F00893;
+	Thu, 11 Jun 2026 12:59:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1781182757;
+	bh=Gu55FwRBT152Nih3ja11oNDgaQEq1L4WQl/WzeRJgRk=;
+	h=From:To:Cc:Subject:Date;
+	b=JCkvv6G0GQs9N16tnlg8iVWHuKokUZ2kB9waYD10z4w4Vs5Tsl8ei5Qu8eDAwJ+5q
+	 Nld17nsFeB8Qg8rTAi6yXlXqtjym/YzA3UzPpqTmm/oQWX5L+CLRPy9W92xC5MPVcP
+	 1ZNKS5/gQqZeEJnozokANXtPGE9XtOZOjeqqK05T9NrIHJvrdRP84gzWnai9ne2ugF
+	 SqMtUpNdBe051f8XgI+1LyvHamJr1PG9ZtbDar0CNv86cILFALmeGSZd4tsrXXOaih
+	 pr6BLYbLpRIge9Y8Dw0vJg/tixiUoxAJudzDTpp7nIVqudsOek8cGSPEvSXnVj6qAE
+	 pFqRBF3WTRvhg==
+From: Arnd Bergmann <arnd@kernel.org>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Arnd Bergmann <arnd@arndb.de>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Rex Lu <rex.lu@mediatek.com>,
+	linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] wifi: mt76: fix airoha_npu dependency tracking
+Date: Thu, 11 Jun 2026 14:58:55 +0200
+Message-Id: <20260611125912.3387021-1-arnd@kernel.org>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/3] xfrm: extend ESP offload infrastructure for packet
- engines
-To: Leon Romanovsky <leon@kernel.org>
-Cc: Christian Marangi <ansuelsmth@gmail.com>,
- Antoine Tenart <atenart@kernel.org>, Herbert Xu
- <herbert@gondor.apana.org.au>, "David S . Miller" <davem@davemloft.net>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Simon Horman <horms@kernel.org>,
- Steffen Klassert <steffen.klassert@secunet.com>,
- linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org
-References: <20260523121522.3023992-1-hurryman2212@gmail.com>
- <20260523121522.3023992-2-hurryman2212@gmail.com>
- <20260611115646.GN327369@unreal>
-Content-Language: en-US
-From: Jihong Min <hurryman2212@gmail.com>
-In-Reply-To: <20260611115646.GN327369@unreal>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260611_052330_903127_2C9378E2 
-X-CRM114-Status: GOOD (  16.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,61 +75,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Arnd Bergmann <arnd@arndb.de>
 
+There is a new build failure with MT7996E=m MT76_CORE=y and NET_AIROHA_NPU=m:
 
-On 6/11/26 20:56, Leon Romanovsky wrote:
-> On Sat, May 23, 2026 at 09:15:20PM +0900, Jihong Min wrote:
->> Some ESP offload engines operate on whole ESP packets rather than the
->> generic software trailer layout. They can generate outbound ESP padding,
->> next-header and ICV bytes in hardware, and inbound decapsulation can
->> return an already-trimmed packet with the recovered next-header value.
-> 
-> How does this differ from the existing IPsec packet‑offload support in the
-> Linux kernel?
-> 
-> Thanks
+ld.lld: error: undefined symbol: airoha_npu_get
+ld.lld: error: undefined symbol: airoha_npu_put
+>>> referenced by npu.c
+>>>               drivers/net/wireless/mediatek/mt76/npu.o:(mt76_npu_init) in archive vmlinux.a
 
-Hi Leon,
+Fix this by reworking the dependency for the MT7996_NPU to only
+allow enabling that when mt76_core can link against the npu driver.
 
-The short answer is that the series did not explain the relationship
-with the existing XFRM packet-offload model clearly enough.
+To make sure this gets caught more easily in the future when additional
+mt76 variants need the same dependency, also turn CONFIG_MT76_NPU into
+a tristate symbol that has the same dependency.
 
-Existing XFRM_DEV_OFFLOAD_PACKET already represents the high-level model
-where hardware handles ESP packet processing instead of only crypto
-transforms. What I was trying to handle in this series was a narrower
-case: EIP93 is a look-aside crypto/IPsec engine, not the netdev itself,
-so the Airoha netdev had to attach that engine into its TX/RX path and
-let it generate or consume the ESP packet framing. The extra hooks in
-this series were meant for that look-aside integration, but looking
-back, the split between the existing packet-offload model and the new
-plumbing was not clean enough.
+Fixes: 7fb554b1b623 ("wifi: mt76: Introduce the NPU generic layer")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+ drivers/net/wireless/mediatek/mt76/Kconfig        | 4 ++--
+ drivers/net/wireless/mediatek/mt76/Makefile       | 6 +++++-
+ drivers/net/wireless/mediatek/mt76/mt76.h         | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt7996/Kconfig | 2 +-
+ 4 files changed, 9 insertions(+), 5 deletions(-)
 
-At this point, though, I think the right thing is to withdraw this
-EIP93/Airoha series.
-
-The reason is related to the SOE work I mentioned in the other patch
-thread. Many Airoha SoCs also have a higher-performance IP block called
-SOE (Secure Offload Engine). I recently wrote and tested a driver for
-that block, and I am currently carrying it here: [kernel: add bonding
-LAG XFRM offload infrastructure and Airoha
-support](https://github.com/hurryman2212/OpenW1700k-test/commit/fbfe8f919f836bb62b3849f803865a4d9b8dc76f).
-With the EIP93 path I could get around 1 Gbps, while the SOE path can
-reach about 5 Gbps in my current setup. Because of that, integrating
-this EIP93 ESP packet path directly into `airoha_eth` is no longer the
-most useful direction for Airoha Ethernet.
-
-That said, SOE exists only on some Airoha SoCs. EIP93 can still be
-useful on other platforms as a look-aside ESP packet offloader, but I
-think that needs a cleaner infrastructure than this series had. The
-look-aside offloader should be able to live as a separate module, not be
-tied directly to one specific netdev driver, while still allowing
-compatible netdevs to attach it into the XFRM path. I think that needs a
-more general infrastructure extension, so I would rather revisit the
-EIP93 work later on top of that kind of model.
-
-
-Sincerely,
-Jihong Min
-
+diff --git a/drivers/net/wireless/mediatek/mt76/Kconfig b/drivers/net/wireless/mediatek/mt76/Kconfig
+index 502303622a53..d941e67a222d 100644
+--- a/drivers/net/wireless/mediatek/mt76/Kconfig
++++ b/drivers/net/wireless/mediatek/mt76/Kconfig
+@@ -38,8 +38,8 @@ config MT792x_USB
+ 	select MT76_USB
+ 
+ config MT76_NPU
+-	bool
+-	depends on MT76_CORE
++	tristate
++	depends on NET_AIROHA_NPU=y || MT76=NET_AIROHA_NPU
+ 
+ source "drivers/net/wireless/mediatek/mt76/mt76x0/Kconfig"
+ source "drivers/net/wireless/mediatek/mt76/mt76x2/Kconfig"
+diff --git a/drivers/net/wireless/mediatek/mt76/Makefile b/drivers/net/wireless/mediatek/mt76/Makefile
+index 1d42adfe8030..cacdd2b13d05 100644
+--- a/drivers/net/wireless/mediatek/mt76/Makefile
++++ b/drivers/net/wireless/mediatek/mt76/Makefile
+@@ -12,7 +12,11 @@ mt76-y := \
+ 	mmio.o util.o trace.o dma.o mac80211.o debugfs.o eeprom.o \
+ 	tx.o agg-rx.o mcu.o wed.o scan.o channel.o
+ 
+-mt76-$(CONFIG_MT76_NPU) += npu.o
++ifdef CONFIG_MT76_NPU
++# CONFIG_MT76_NPU is tristate to simplify dependency tracking,
++# but it behaves as a bool symbol here.
++mt76-y += npu.o
++endif
+ mt76-$(CONFIG_PCI) += pci.o
+ mt76-$(CONFIG_NL80211_TESTMODE) += testmode.o
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 07955555f84d..60bd155cc7d5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -1647,7 +1647,7 @@ int mt76_testmode_dump(struct ieee80211_hw *hw, struct sk_buff *skb,
+ int mt76_testmode_set_state(struct mt76_phy *phy, enum mt76_testmode_state state);
+ int mt76_testmode_alloc_skb(struct mt76_phy *phy, u32 len);
+ 
+-#ifdef CONFIG_MT76_NPU
++#if IS_ENABLED(CONFIG_MT76_NPU)
+ void mt76_npu_check_ppe(struct mt76_dev *dev, struct sk_buff *skb,
+ 			u32 info);
+ int mt76_npu_dma_add_buf(struct mt76_phy *phy, struct mt76_queue *q,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/Kconfig b/drivers/net/wireless/mediatek/mt76/mt7996/Kconfig
+index 5503d03bf62c..5742bce12fbb 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/Kconfig
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/Kconfig
+@@ -16,6 +16,6 @@ config MT7996E
+ config MT7996_NPU
+ 	bool "MT7996 (PCIe) NPU support"
+ 	depends on MT7996E
+-	depends on NET_AIROHA_NPU=y || MT7996E=NET_AIROHA_NPU
++	depends on NET_AIROHA_NPU=y || MT76_CORE=NET_AIROHA_NPU
+ 	select MT76_NPU
+ 	default n
+-- 
+2.39.5
 
 
