@@ -4,83 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B44D1CD98C7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 23:12:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 975D6CD98C7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 23:26:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=fij/oQvu/2UXmQt0RzKkHVGLvKBTwVHkKcJT+NiS0dg=; b=ArLs4Lt1Qjua47
-	Qhat/qjHkx/AzyTiSXY/XJ6zU9mp1QWBiYctzHtTHfKboFpoDYaHfVeXNOZjqBxSX7l/hx/3Wpbl+
-	K7sOdF7uBEOsQFSh62TTUbT4wy0J04fRvmfZk3RMsHZV2v+rq05+w9K+JTbhoP+Sfn6LFMJtggsGh
-	VO+RAVcPk5cTNUImU/xvSjRZDtO5pnL1SzkGiICOhdTl6jhpoBpCUZU05MQ0mJbbkWyeeu10QRV8u
-	v3Jwu7Vd/kaYwhIiCvGyR19H0Mk3m1RDZ06GedB/1/UvvW4iBa2K461XwZ/9u1Gd1DV4dUwCWy6Y0
-	B8/jjAQ7PQR9UvOLZjug==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Lu0ccYQsRw99cS5wqcElRVz4QHqtm7tew269NO2xzmI=; b=uJegoV3tOlhN4oSp8AamDnSSxW
+	cJQ5dtCpUKjsXDf5UoKBV9yTIivVGgg46FPy7c3NcQsA8iHBrM9W8sQBezdBEbLxBdyct1ht1IJ6T
+	a2x8rzX4tzwbaPIQ/BU6845raEcvkMyIBxA7Vi/cbIPup2yyzrEZpmSzgXBzHaDF6YPmajRqKyy/U
+	kvoYy59nQIRbv1EZYMOsn8XNjK6P2qeR6NqkOVAlwQQCzyrzS/mTKC8MvNKCUh88qZ/hfSTAQh/Ja
+	NClodLoQaIE3+3nUecPmMdbAN+6au3aGkEwKvVsinIzWgYsg9ZbadmhVoQtOJONYyPqopXXr1FTvh
+	WKpoNXhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXoZr-0000000AA9q-3OV1;
-	Thu, 11 Jun 2026 23:12:47 +0000
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+	id 1wXonS-0000000AAZj-0ZnC;
+	Thu, 11 Jun 2026 23:26:50 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXoZn-0000000AA6O-3NMO
-	for linux-mediatek@lists.infradead.org;
-	Thu, 11 Jun 2026 23:12:45 +0000
-Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-8423f1d8902so239832b3a.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2026 16:12:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781219563; x=1781824363; darn=lists.infradead.org;
-        h=cc:to:content-transfer-encoding:mime-version:subject:date:from
-         :message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=fij/oQvu/2UXmQt0RzKkHVGLvKBTwVHkKcJT+NiS0dg=;
-        b=YqsKgKnCes1bi3clZt4nh+XT/dspSawe1cKcKdnHp9CApbPWrM7lJDZIyyBhsJnMjX
-         cm75szyAMx9YShvF4iyKtRPBI/cP6z8Gk9C824OH/S0ySdFwgM911pb19WXC26e7kSPt
-         Ykt0l0rpeOP8jA/HI6EClw1MkTU5ScVzt1+vFDoYd8oArdG8+TWKutKA4qD1m8vpglxR
-         u3hkRNQWX1FPX3jTYjXCm9+sPSArHxqLCbmvvNs+CElj/9cQTi8U5iOklYRb0Y8gxnTN
-         GY2Bil1cqHeF8wIFALCiD4/oVXbp4cfwUE6KYbWfASVy3/D08JSnHKujygltdt+cIZCO
-         pA2Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781219563; x=1781824363;
-        h=cc:to:content-transfer-encoding:mime-version:subject:date:from
-         :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=fij/oQvu/2UXmQt0RzKkHVGLvKBTwVHkKcJT+NiS0dg=;
-        b=Vmjz5t2BC7wFUBTjef7d3OncgltbSOvh3mMZuwJvdvXWsRugU9qslaUi+CdgxYw44B
-         uyw2t8Ist9IOybfx1WC7HYm2vqJulY3x7dFSmLHre7xnxxT18KBLdu3APSYBSR7gOoq2
-         CtCjE9M5ru04YPU03ye/C/aKAe1/K1QRAncFmG3vuSr9AL5hLbohvSKcwCYIXUwIkJKZ
-         kzxTRMkYk0M+39SJ9WWI4Xl/YnaMMnY9OALFjapeooF/D1UkaCChCEtWdCzU2nKMP1RK
-         ytB0trtlv90WfxRDVqW63HfVw49s0OPLujuPaX1kCYDchFRg/5sO8M7IOki/KeMZLiRX
-         tn1g==
-X-Forwarded-Encrypted: i=1; AFNElJ8HEMFQMbANkt/XimJFImgQ30+uR93LQTLNTb5EXBOHL0XCtIxhVWDgJqHEEtcc0tUNfZE8XHbt9pXaQFi0BQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwfG6bDvVtwMS3P1a+J1l/2R2S+zQVC21DeOg6k6plkMwCd20v4
-	21sB2vBEqlpMWpWdooPFvwzFtOEM0pPsy11SwVhWURIh1rB/u0gIL1GT
-X-Gm-Gg: Acq92OHd1X7bhy8Lv7spdRO5FXwYGGfBiJyKtwF8cn19KwvQ+e6suuFo4XfLjosI+oW
-	Gs+FAphEoZakxEMuzYc4OMaccrRw8vTpL9BDwjGVu99pTnwFIBzY7Kzk5kd/oyvoZmbP+9ws+ik
-	EvrvDQNtpUU1kwaYEDhosMlTPygAreHD+SJyq4VhdiLzS+Tx+HwENDKru1+TZ+n8jTXfpxWSHz/
-	r8cUeFWyJvUSKdvYKFzFVUsyZVi10nqXGtiR0VZEyVyWrRuQssJyfYH6kOiBdCDj5p4GUt7CRYJ
-	EayMRsymP2AVT2klZ0uwhZHZzJjc5j17OJLdmZgK6PQ56wnUjxyYmVQPzcjtaT1bMJUxuXYaVQl
-	CeNr5kzQsLK/c/n3h617DljXnyUfF/tTBgbTiZf7VZ+XN6whtVyrnXvNiYx1gHo45kh6BnzZ/qG
-	bBq+E1FR7ppfPARBC/
-X-Received: by 2002:a05:6a00:2351:b0:842:5712:c2c2 with SMTP id d2e1a72fcca58-8434ce5eaf1mr123505b3a.41.1781219562783;
-        Thu, 11 Jun 2026 16:12:42 -0700 (PDT)
-Received: from [127.0.1.1] ([47.253.114.73])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-8434afd100esm199571b3a.34.2026.06.11.16.12.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 11 Jun 2026 16:12:42 -0700 (PDT)
-Message-ID: <6a2b40ea.4dd82583.3a5c46.e5a2@mx.google.com>
-From: "Wayen.Yan" <win847@gmail.com>
-Date: Fri, 12 Jun 2026 07:09:56 +0800
-Subject: [PATCH] net: airoha: Fix debugfs new-tuple display for IPv4 ROUTE
- entries
+	id 1wXonQ-0000000AAYt-0D3A;
+	Thu, 11 Jun 2026 23:26:49 +0000
+X-UUID: 0188f1f265ed11f1acbe4559397dec65-20260611
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Lu0ccYQsRw99cS5wqcElRVz4QHqtm7tew269NO2xzmI=;
+	b=PvHma8e+E4hIujnSbgehEMcWVGVrplr/11X2hbG8pHWW7SxxA5zTZylM/O4uzROWW0CvmSWVhclKl4xtmTBLaQYLYXe9Vxeg+s69GyDV2I8F6XrbYqWOzsCZcbnvLr1HY4S5rktZfqFHgRiD8W4KFiNvgijLIbbwgn0P+ZfZR3U=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.15,REQID:5ec8423f-71fb-4d53-bb85-aae0e61c1888,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:e276073,CLOUDID:5dd2f8a4-9ef7-4489-861a-e83b251ece46,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|123|836|865|888|898,TC:-5,Conten
+	t:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,O
+	SI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 0188f1f265ed11f1acbe4559397dec65-20260611
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
+	(envelope-from <ed.tsai@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1412093326; Thu, 11 Jun 2026 16:26:43 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Fri, 12 Jun 2026 07:26:40 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Fri, 12 Jun 2026 07:26:40 +0800
+From: <ed.tsai@mediatek.com>
+To: <alim.akhtar@samsung.com>, <avri.altman@wdc.com>, <bvanassche@acm.org>,
+	<James.Bottomley@HansenPartnership.com>, <martin.petersen@oracle.com>,
+	<linux-scsi@vger.kernel.org>
+CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <wsd_upstream@mediatek.com>,
+	<peter.wang@mediatek.com>, <alice.chao@mediatek.com>,
+	<naomi.chu@mediatek.com>, <chun-hung.wu@mediatek.com>, Ed Tsai
+	<ed.tsai@mediatek.com>
+Subject: [PATCH v2 0/3] ufs: Add callback for vendor-specific RTT capability
+Date: Fri, 12 Jun 2026 07:26:29 +0800
+Message-ID: <20260611232632.2324422-1-ed.tsai@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-To: netdev@vger.kernel.org
-Cc: lorenzo@kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260611_161243_869389_0BC0F5C1 
-X-CRM114-Status: GOOD (  10.07  )
+X-CRM114-CacheID: sfid-20260611_162648_105021_2DC4DCB8 
+X-CRM114-Status: GOOD (  10.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,47 +88,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In airoha_ppe_debugfs_foe_show(), the second switch statement falls
-through from PPE_PKT_TYPE_IPV4_HNAPT/DSLITE to PPE_PKT_TYPE_IPV4_ROUTE,
-accessing hwe->ipv4.new_tuple for all three types. However, IPv4 ROUTE
-(3-tuple) entries do not contain a valid new_tuple — this field is only
-meaningful for NATted flows (HNAPT/DSLITE). For ROUTE entries, the
-memory at the new_tuple offset holds routing information, not NAT data,
-so displaying "new=" produces garbage output.
+From: Ed Tsai <ed.tsai@mediatek.com>
 
-Split the fallthrough: display new_tuple only for HNAPT and DSLITE, and
-add an explicit empty case for IPV4_ROUTE.
+The first patch adds the get_hba_nortt() callback to the UFS core layer,
+allowing vendor drivers to provide dynamic, platform-specific RTT
+capability handling.
 
-Fixes: 3fe15c640f38 ("net: airoha: Introduce PPE debugfs support")
-Signed-off-by: Wayen.Yan <win847@gmail.com>
----
- drivers/net/ethernet/airoha/airoha_ppe_debugfs.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+The second patch implements this callback in the MediaTek UFS driver,
+distinguishing between legacy platforms (which require the RTT to be
+limited to 2) and newer MT6995 B0+ platforms (which can use the value
+from the capability register directly).
 
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe_debugfs.c b/drivers/net/ethernet/airoha/airoha_ppe_debugfs.c
-index 0112c41..f9c12e7 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe_debugfs.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe_debugfs.c
-@@ -121,8 +121,6 @@ static int airoha_ppe_debugfs_foe_show(struct seq_file *m, void *private,
- 		case PPE_PKT_TYPE_IPV4_DSLITE:
- 			src_port = &hwe->ipv4.new_tuple.src_port;
- 			dest_port = &hwe->ipv4.new_tuple.dest_port;
--			fallthrough;
--		case PPE_PKT_TYPE_IPV4_ROUTE:
- 			src_addr = &hwe->ipv4.new_tuple.src_ip;
- 			dest_addr = &hwe->ipv4.new_tuple.dest_ip;
- 			seq_puts(m, " new=");
-@@ -130,6 +128,8 @@ static int airoha_ppe_debugfs_foe_show(struct seq_file *m, void *private,
- 						       src_port, dest_port,
- 						       ipv6);
- 			break;
-+		case PPE_PKT_TYPE_IPV4_ROUTE:
-+			break;
- 		default:
- 			break;
- 		}
+The third patch removes the max_num_rtt field from ufs_hba_variant_ops
+as it is now replaced by the get_hba_nortt() callback.
+
+Changes in v2:
+- Keep max_num_rtt field in patch 1 to maintain bisectability
+- Split removal of max_num_rtt into a separate patch (patch 3)
+
+Ed Tsai (3):
+  ufs: core: Add get_hba_nortt callback for vendor-specific RTT
+    capability
+  ufs: mediatek: Implement get_hba_nortt callback for RTT capability
+  ufs: core: Remove max_num_rtt field from ufs_hba_variant_ops
+
+ drivers/ufs/core/ufshcd.c       |  9 +++++----
+ drivers/ufs/host/ufs-mediatek.c | 12 +++++++++++-
+ drivers/ufs/host/ufs-mediatek.h |  4 ++--
+ include/ufs/ufshcd.h            |  4 +++-
+ 4 files changed, 21 insertions(+), 8 deletions(-)
+
 -- 
-2.51.0
-
+2.45.2
 
 
