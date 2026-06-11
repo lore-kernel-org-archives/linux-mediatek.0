@@ -4,95 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63494CD98C7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 18:54:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C5F6CD98D5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 21:56:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=crdsBjE7ZqbatQyB5pSRoEZDHX8kp0Be7BEVWnCPbMw=; b=DVZTj1Bku84/NCeMGojTeGPKrP
-	a/quDdQDWphU2lbMafCsdHZv/XKxv5suKFMK1OumkNRqt2S8MUymejNYI5St6XZ+006hI9D9Elfth
-	BR4aZyBlbbLRtupkFqF8O28mhXRqxUvGtngRjYHhef2JGpYQVNf5JjqjGVHfca33kDEK1pJAyVsnH
-	Vlun6SQ18F3py1Bn1kJpuU9JFhZE/u7cv9wWAryhqkCsQxSQoG7jXGph9nYu8SwmWhGhz7OQZGTd5
-	rrp8O9GOOF/DpehNudp9EiszxdeZtzirF1w22kSACUqXzm/Tv/9pJA14mtieOC2djd5QDZqhtGmd4
-	ms7/THRg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=h+jOyHqba0rH4zTadn64tIUKChLC1NBW+TRedVk1PYw=; b=gKOCFJvFDrTrc3CKCa/RGGG1ot
+	VDDooTVOBiinyJLRgKloHKo9SX8ULp84kYqAJjgxHxMf3ShL0tZLQbEYTIyCkNFgR1ILp2MG1GxX+
+	lvyluNBot6pLn4Wte1u4QYYqPiTZ06/kgkqclScjrBBFNZUDTbQt9fyzA99N9YeOlUrj3PhUAyHq7
+	reqlM4AuuwTRq/HD2JI9rryMvpSicVy59pwWCilZKCIOf0eb3kFjTYneMgdznZQe7lwGCyBoRiU58
+	2+t9YiaL+iHK7/Khv5nYKEf6+jQO17P/juysTqr1dtPRcaCR/CztL9dCs8yYTvnRIc4d64RZRa8HN
+	D4C9n4sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXkYH-00000009urs-1Bpw;
-	Thu, 11 Jun 2026 18:54:53 +0000
-Received: from mgamail.intel.com ([192.198.163.8])
+	id 1wXnNu-0000000A73n-1gCW;
+	Thu, 11 Jun 2026 21:56:22 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXkYE-00000009ur7-2h0i;
-	Thu, 11 Jun 2026 18:54:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1781204091; x=1812740091;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=T54buALKRrnV/NkHhNnF9DYrF9mnjHeDsPLsjZLccVc=;
-  b=K0+ZBT0nkOFcS8gaMxOMMP0Lb9pTVV6zWJ2CiHfsodGaZonTK8th1/Wk
-   8ipifrAzbV/3CDmcJ8UwAGAslH+7S9JQks4cMWh5H9Jdi5nX0ItoAp4+T
-   sewGv0VX/vbAxt3rbzgcF1J1gvmVARqxyXIHSLlBKgVgHCqIhJRg6IJfo
-   psXOfnWHHb/paYKSSHVKfenMWg1rYfm0Ojv1ozYt9BbgJV/TDODTppeDx
-   +vRWk1ABkCR++wQ6IFuARVqLQf+dQWasE9i49YwVz0cJavUMglzA6rrfO
-   l8ysO56MxM69OCHGU4Pcm7upaxxvwUVg0BVn4U7/+CwEMCfnHvYuKoAYK
-   A==;
-X-CSE-ConnectionGUID: qVwU5afFS0CGPSvoA0EYsw==
-X-CSE-MsgGUID: shSRIcTjRhGJaf9ubAiRpQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11813"; a="99606448"
-X-IronPort-AV: E=Sophos;i="6.24,199,1774335600"; 
-   d="scan'208";a="99606448"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
-  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jun 2026 11:54:50 -0700
-X-CSE-ConnectionGUID: 8c6VWJAfS46EAVViB8yt6A==
-X-CSE-MsgGUID: zgLRcfSXSzCuoVc837orwQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.24,199,1774335600"; 
-   d="scan'208";a="246654990"
-Received: from ettammin-mobl3.ger.corp.intel.com (HELO localhost) ([10.245.244.123])
-  by orviesa007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jun 2026 11:54:44 -0700
-Date: Thu, 11 Jun 2026 21:54:41 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-Cc: Bartosz Golaszewski <brgl@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Daniel Scally <djrscally@gmail.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Alan Stern <stern@rowland.harvard.edu>, linux-acpi@vger.kernel.org,
-	driver-core@lists.linux.dev, linux-pm@vger.kernel.org,
-	linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Chen-Yu Tsai <wenst@chromium.org>
-Subject: Re: [PATCH v2 05/16] usb: hub: Associate port@ fwnode with USB port
- device
-Message-ID: <aisEccAOm3qoXjxd@ashevche-desk.local>
-References: <20260610084053.2059858-1-wenst@chromium.org>
- <20260610084053.2059858-6-wenst@chromium.org>
- <ailxrP-_9_NL8qnN@ashevche-desk.local>
- <CAMRc=MdiwQM6yk8FXcc+RisVP2iqWKWzVsn2-Yy6dyJXt-1X=Q@mail.gmail.com>
- <aipz2zMFcdnZYTxS@ashevche-desk.local>
- <CAMRc=MdRN7YitmMX8PknbzLh+MdsWm+dDg0MLtCVYOorqNobTw@mail.gmail.com>
- <airY6IMz2KFz_z9j@kuha>
+	id 1wXnNt-0000000A728-0Ima;
+	Thu, 11 Jun 2026 21:56:21 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 77296416FA;
+	Thu, 11 Jun 2026 21:56:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3CDA1F000E9;
+	Thu, 11 Jun 2026 21:56:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1781214979;
+	bh=h+jOyHqba0rH4zTadn64tIUKChLC1NBW+TRedVk1PYw=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc;
+	b=oK6SGaPsDW2j6XlmDQWopczaVXcGFJQWR2fciWSwg2Tv2gnevmhyKkvfnlACXLg8C
+	 NvIz08p676br/fm4E2J3Ddo49dbCefLF0syUTK4dJnDuyEt0XqxlU4KIz5cNOpe7T8
+	 jvknULHppaco6gmFxYYhAoXQBsAtR8XtC0kVfWEsCByUsf370wdAD2ymeIgKLkqoBN
+	 AnrBA8LU9AABYtNhLzT63rc2OtujdBH2k/1fT/sc90onQFKFPQsb6g4CEZioIuvtf3
+	 nw7t+7bsTxsPSuyCUqbnXs/OOWqyU24hBbYf2oY8mWJv/EYYZDKYnYVA/98HnBaJWL
+	 7UgN3i0U7PIFw==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Thu, 11 Jun 2026 23:55:51 +0200
+Subject: [PATCH net-next v5 1/3] net: airoha: use int instead of atomic_t
+ for qdma users counter
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <airY6IMz2KFz_z9j@kuha>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260611_115450_693770_D6D28D1C 
-X-CRM114-Status: GOOD (  31.18  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260611-airoha-ethtool-priv_flags-v5-1-c11de08486d1@kernel.org>
+References: <20260611-airoha-ethtool-priv_flags-v5-0-c11de08486d1@kernel.org>
+In-Reply-To: <20260611-airoha-ethtool-priv_flags-v5-0-c11de08486d1@kernel.org>
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+X-Mailer: b4 0.14.3
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,47 +72,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 11, 2026 at 06:48:56PM +0300, Heikki Krogerus wrote:
-> On Thu, Jun 11, 2026 at 11:35:13AM +0200, Bartosz Golaszewski wrote:
-> > On Thu, Jun 11, 2026 at 10:37 AM Andy Shevchenko
-> > <andriy.shevchenko@linux.intel.com> wrote:
-> > > On Thu, Jun 11, 2026 at 04:20:58AM -0400, Bartosz Golaszewski wrote:
-> > > > On Wed, 10 Jun 2026 16:16:12 +0200, Andy Shevchenko
-> > > > <andriy.shevchenko@linux.intel.com> said:
-> > > > > On Wed, Jun 10, 2026 at 04:40:39PM +0800, Chen-Yu Tsai wrote:
-> > > > >> When a USB hub port is connected to a connector in a firmware node
-> > > > >> graph, the port itself has a node in the graph.
-> > > > >>
-> > > > >> Associate the port's firmware node with the USB port's device,
-> > > > >> usb_port::dev. This is used in later changes for the M.2 slot power
-> > > > >> sequencing provider to match against the requesting port.
-> > > > >
-> > > > > Okay, would this affect ACPI-based systems? if so, how?
-> > > > > Can you elaborate on that, please?
-> > > >
-> > > > Is it possible that there's an ACPI device node associated with the port like
-> > > > on some DT systems? I don't think so and there should be no impact IMO but I
-> > > > also don't know enough about ACPI.
-> 
-> There are device nodes for the USB ports in ACPI, and I think they get
-> always assigned in drivers/usb/core/usb-acpi.c.
-> 
-> > > The API is agnostic. There is a possibility to have software nodes associated
-> > > with the port. I think the best is to be sure that ACPI-aware people who are
-> > > experts in USB will check this (Heikki?).
-> 
-> I can't say what's the impact from this patch - I'm not an expert with
-> this side of USB. Is there a danger that we end up overwriting the
-> ACPI node for the port, or something else?
+QDMA users counter is always accessed holding RTNL lock so we do not
+require atomic_t for it.
 
-Exactly this one is my worrying, but I haven't checked the actual flow.
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/ethernet/airoha/airoha_eth.c | 4 ++--
+ drivers/net/ethernet/airoha/airoha_eth.h | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-> > Even if there is a software node - it shouldn't really matter. It will
-> > just be assigned to the port device.
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 504247c8bae9..9eb9b6a139b3 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -1812,7 +1812,7 @@ static int airoha_dev_open(struct net_device *netdev)
+ 	airoha_qdma_set(qdma, REG_QDMA_GLOBAL_CFG,
+ 			GLOBAL_CFG_TX_DMA_EN_MASK |
+ 			GLOBAL_CFG_RX_DMA_EN_MASK);
+-	atomic_inc(&qdma->users);
++	qdma->users++;
+ 
+ 	if (!airoha_is_lan_gdm_dev(dev) &&
+ 	    airoha_ppe_is_enabled(qdma->eth, 1))
+@@ -1866,7 +1866,7 @@ static int airoha_dev_stop(struct net_device *netdev)
+ 					    REG_GDM_FWD_CFG(port->id),
+ 					    FE_PSE_PORT_DROP);
+ 
+-	if (atomic_dec_and_test(&qdma->users)) {
++	if (!--qdma->users) {
+ 		airoha_qdma_clear(qdma, REG_QDMA_GLOBAL_CFG,
+ 				  GLOBAL_CFG_TX_DMA_EN_MASK |
+ 				  GLOBAL_CFG_RX_DMA_EN_MASK);
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
+index 8f42973f9cf5..24fd8dcf7fca 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.h
++++ b/drivers/net/ethernet/airoha/airoha_eth.h
+@@ -526,7 +526,7 @@ struct airoha_qdma {
+ 	struct airoha_eth *eth;
+ 	void __iomem *regs;
+ 
+-	atomic_t users;
++	int users;
+ 
+ 	struct airoha_irq_bank irq_banks[AIROHA_MAX_NUM_IRQ_BANKS];
+ 
 
 -- 
-With Best Regards,
-Andy Shevchenko
-
+2.54.0
 
 
