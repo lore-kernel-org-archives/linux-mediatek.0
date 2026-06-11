@@ -4,91 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11324CD98C7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 08:37:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45ED8CD98D2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 08:57:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:References:MIME-Version:In-Reply-To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P8yrJlgURSJNOVVUnz5/bius6aZ6nIJOyw5U4+njbvk=; b=wNL+ZQIj6eom0z+ErGqLM+9nbs
-	DD+4hEXJhvM2obyGq54k/6E1ExgERmoDdnVMpYYKHMDFMrbER/kgo8X/NZKYLNavUN3pShKFDjRsg
-	dkjygQIN1XzaWTXwi3hFCWzXrbJD1W4uwwGp1QbpKBdTWQhdlcDIL6vdKuQCNN5U68yFM6atcNmmo
-	KB30xTRIyWsfq5Oqro7O8qfuWbWARgDfPWIlyg8Nj5Im6ndJP+ACsbCHgF3ecSIQBMLoiphZdzVsr
-	3f7b5H0JpQP3BkMvJ6bAvCarQtmOt2T/+Z/SgXm8cVPWPjlUTDurDuqimMIsun4UvJsMZeHE3sl2Z
-	O8SSrJUg==;
+	bh=DZUL55pfekAnXESqd14ABzPRjbkHUYXBXBngBC6u3ko=; b=wtOILD56buj0Tv3FnivnU+Tquy
+	7Kc04OCWwgn88Zfx4VWUhsepoD5/3VHmr2FfWOM90DVNVWXmvaENCta7ENtItu17pfS2XtsQLTnA7
+	XZKQdAGFRZnbmMxS51uPWCZpOsMQFWdSVt9hRZawEeatGyCXfIQlLwgAfB4Ym6h9y6CwopN5MQe+j
+	GHYimDNyy+dEV4jmvVQaoE0wMJrPOtQauHpUbZkZ+sPFRMbaqe5n6WfDkMYhCzehxipG8EGONBx6G
+	3I1ayY8oY79W16NxZ51E4g4MEIgjZb9CP6UY0TGse8H3H09ktmo/It09uBaw16fnQipfzsCG9rQVa
+	JJg8A1Hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXavF-000000091hX-2oxS;
-	Thu, 11 Jun 2026 08:37:57 +0000
-Received: from mgamail.intel.com ([192.198.163.10])
+	id 1wXbDq-0000000948B-159p;
+	Thu, 11 Jun 2026 08:57:10 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXavD-000000091hA-0aus;
-	Thu, 11 Jun 2026 08:37:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1781167075; x=1812703075;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=Ai4mXzWajtLKC33BxFXRCMf6dWYQxHfjWVW663QbhRU=;
-  b=S9Z07KothLAUTAqSlSnfPoAICzGqie+6q8AdqoHkKEITBiagZZkmYIUz
-   BNp2Y2z+qyOleHB9RIbYGPgYCJY67RNCpbFWn7T6e86/A3cvB3D+byGDA
-   GgL+lJXHw/qYyOC6wqszIZ0ZiKhE/9BPFsLYX3TsvSXZg9fB9EE3JHT32
-   3mh5ruOPL+TucF4jI80WVA92usBk/A3DKJVkNSDAlzA5Hk0qDh2AgxGd3
-   CQf1lR36Orvy5+gLludeY6ZkRC5bxLB2dGBsbn5iC7zwnzLueOy03HVIa
-   pdDEH7U5gxBjEca78G69JyMSeEtSjjrTwKPhBbD49m/hXooPQNsYmaw5p
-   g==;
-X-CSE-ConnectionGUID: I0h12TgcQq+l6t8PWwELYQ==
-X-CSE-MsgGUID: 5dTgrckORBSPWXwYEkHGYg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11813"; a="93363399"
-X-IronPort-AV: E=Sophos;i="6.24,198,1774335600"; 
-   d="scan'208";a="93363399"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
-  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jun 2026 01:37:54 -0700
-X-CSE-ConnectionGUID: DG4C+DU7RLqPDacCZUSHiA==
-X-CSE-MsgGUID: dJFo0kyiSgO0ryNVI1csHA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.24,198,1774335600"; 
-   d="scan'208";a="241987912"
-Received: from ettammin-mobl3.ger.corp.intel.com (HELO localhost) ([10.245.244.123])
-  by fmviesa006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jun 2026 01:37:49 -0700
-Date: Thu, 11 Jun 2026 11:37:47 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Bartosz Golaszewski <brgl@kernel.org>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Daniel Scally <djrscally@gmail.com>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Alan Stern <stern@rowland.harvard.edu>, linux-acpi@vger.kernel.org,
-	driver-core@lists.linux.dev, linux-pm@vger.kernel.org,
-	linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Chen-Yu Tsai <wenst@chromium.org>
-Subject: Re: [PATCH v2 05/16] usb: hub: Associate port@ fwnode with USB port
- device
-Message-ID: <aipz2zMFcdnZYTxS@ashevche-desk.local>
-References: <20260610084053.2059858-1-wenst@chromium.org>
- <20260610084053.2059858-6-wenst@chromium.org>
- <ailxrP-_9_NL8qnN@ashevche-desk.local>
- <CAMRc=MdiwQM6yk8FXcc+RisVP2iqWKWzVsn2-Yy6dyJXt-1X=Q@mail.gmail.com>
+	id 1wXbDo-0000000947j-44Ei
+	for linux-mediatek@lists.infradead.org;
+	Thu, 11 Jun 2026 08:57:09 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 5B8B4445F5
+	for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2026 08:57:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 297641F00A00
+	for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2026 08:57:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1781168228;
+	bh=DZUL55pfekAnXESqd14ABzPRjbkHUYXBXBngBC6u3ko=;
+	h=From:In-Reply-To:References:Date:Subject:To:Cc;
+	b=Cx8nueHu4fYirKSLCXETsXEVv1xXfDm500rY3WLLSdyDbQhSYqJmUOojpbivEE/CT
+	 vBWo6FlB+FwcBjVJ2fxzU/tv07PbSafuRUsgc3+XHWz0XOs/OyAIts4l0VVVwXoBBx
+	 1nlR+LTv2okHUf/NrrroYh3AP6YF05JtVR4/JO/ZBE/M0DYnVaP00cDcRhTm8Xz5Ur
+	 MeNQzpGLEOxsniUIR5sxT3BT9GuN6+WFJLRE1fG6cLump1Q3nhpsCvUttR8PjSnUGK
+	 4nJzgjsOX8+nFt+hqulZmzXGi+eFB7TN5QShe60fODh3CZN25IeWzOOFy5xJHSnlh/
+	 spujFhoK32ejQ==
+Received: by mail-lj1-f171.google.com with SMTP id 38308e7fff4ca-3967726bc47so70656631fa.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2026 01:57:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AFNElJ/ywbxEg75QEATdGTb3Ijvm2tdztxDu4QA7umfx9vDrGe/KnsVwum4pezQ5+UKVJlBvdVuq/BIbDU6MPScmIQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwMd95HiAt4pyHi7iDyVkwZPEH/80wYxqN0T6LJKqNmVcdI5pi9
+	0aAkrO6vRGNC/LKrwQuoa6jh0ArrDrtFOZ5WnmV7esoSuF8ZlQj8rmVuDjJj9H9ZaFa/XoH5dFI
+	4XbyF+iDHkF5Zyfv69HiVdRK9fzsGu6n3q8VtFQaIhA==
+X-Received: by 2002:a2e:bd88:0:b0:396:954c:3536 with SMTP id
+ 38308e7fff4ca-3991a1d57b1mr5490001fa.28.1781168226843; Thu, 11 Jun 2026
+ 01:57:06 -0700 (PDT)
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Thu, 11 Jun 2026 04:57:04 -0400
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Thu, 11 Jun 2026 04:57:04 -0400
+From: Bartosz Golaszewski <brgl@kernel.org>
+In-Reply-To: <20260610084053.2059858-9-wenst@chromium.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAMRc=MdiwQM6yk8FXcc+RisVP2iqWKWzVsn2-Yy6dyJXt-1X=Q@mail.gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260611_013755_218016_98B8E8A8 
-X-CRM114-Status: GOOD (  18.65  )
+References: <20260610084053.2059858-1-wenst@chromium.org> <20260610084053.2059858-9-wenst@chromium.org>
+Date: Thu, 11 Jun 2026 04:57:04 -0400
+X-Gmail-Original-Message-ID: <CAMRc=McEd7HbUsyuqM3tr6Uu6Z2hSmL_hMNXgCOT-yHTM2FAqg@mail.gmail.com>
+X-Gm-Features: AVVi8CfiEyvWm7heKsTNAZ-cli_fcxMC9z08AYGILVkLB8mgt-RjTQC7sfys9CA
+Message-ID: <CAMRc=McEd7HbUsyuqM3tr6Uu6Z2hSmL_hMNXgCOT-yHTM2FAqg@mail.gmail.com>
+Subject: Re: [PATCH v2 08/16] Revert "dt-bindings: usb: mediatek,mtk-xhci: Add
+ port for SuperSpeed EP"
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Alan Stern <stern@rowland.harvard.edu>, linux-acpi@vger.kernel.org, 
+	driver-core@lists.linux.dev, linux-pm@vger.kernel.org, 
+	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Manivannan Sadhasivam <mani@kernel.org>, 
+	Bartosz Golaszewski <brgl@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Daniel Scally <djrscally@gmail.com>, 
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
+	Sakari Ailus <sakari.ailus@linux.intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,33 +94,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 11, 2026 at 04:20:58AM -0400, Bartosz Golaszewski wrote:
-> On Wed, 10 Jun 2026 16:16:12 +0200, Andy Shevchenko
-> <andriy.shevchenko@linux.intel.com> said:
-> > On Wed, Jun 10, 2026 at 04:40:39PM +0800, Chen-Yu Tsai wrote:
-> >> When a USB hub port is connected to a connector in a firmware node
-> >> graph, the port itself has a node in the graph.
-> >>
-> >> Associate the port's firmware node with the USB port's device,
-> >> usb_port::dev. This is used in later changes for the M.2 slot power
-> >> sequencing provider to match against the requesting port.
-> >
-> > Okay, would this affect ACPI-based systems? if so, how?
-> > Can you elaborate on that, please?
-> 
-> Is it possible that there's an ACPI device node associated with the port like
-> on some DT systems? I don't think so and there should be no impact IMO but I
-> also don't know enough about ACPI.
+On Wed, 10 Jun 2026 10:40:42 +0200, Chen-Yu Tsai <wenst@chromium.org> said:
+> This reverts commit 454a1e3cd36c113341d7b71e8e691c6e47ab4a8a.
+>
+> mtk-xhci handles both USB 2.0 High Speed (HS) and USB 3.x SuperSpeed
+> (SS) host connections. And there are USB 2.0 only mtk-xhci blocks.
+> The SSUSB controller handles the device or gadget mode. Saying that
+> SSUSB handles the HS portion is wrong.
+>
+> Fixes: 454a1e3cd36c ("dt-bindings: usb: mediatek,mtk-xhci: Add port for SuperSpeed EP")
+> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
 
-The API is agnostic. There is a possibility to have software nodes associated
-with the port. I think the best is to be sure that ACPI-aware people who are
-experts in USB will check this (Heikki?).
+Reviewed-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
 
-Also note Sashiko complain on reference count leakage.
+Maybe put it in the front of the series?
 
--- 
-With Best Regards,
-Andy Shevchenko
-
-
+Bart
 
