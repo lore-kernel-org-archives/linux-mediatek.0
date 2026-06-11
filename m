@@ -4,78 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79098CD98C5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jun 2026 22:43:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2008CD98CC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 07:12:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=62bFE+9EiC4Wl6sR/gNVDtGRVBnRqEmz0YnELUX+5Xs=; b=tQxXdqI7ziSvM7z3HcFzlWlRxn
-	l1yEYe4k3ATLyFfcxFXt3lLoENG2hWv/lOdLGG48OhQnQxDY2FRgbdydG4dJLs/Ja4zIj7iX+mSBb
-	Zyth8kdTa7s0VvIyFfVzjA7apVyXh+PxORocqjzkO8MCNpN2RV/m/YEOlQekA0A/T8Z3cTFup2dUL
-	wSrXKraPO2UNeL7TpI1/dvqc0rs12h9FfqE5KswnxJsNXsv9MzeacFWCVf+EqGik06vJgdJ1yhdZV
-	awmMHKxnEOSXgUsKiMlVQ5b26FabUcms/7wv/MqE6Kh3d6FEDmBPCE7Cy34FlWnyYuYH0Px0XSaQh
-	mSZSHp+A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cb1adLE4OteerCSBk+VBYHwOKwVKIC0OX9Sh5Jg4D0I=; b=TRwUpjXA61fvAwluTkKA68gITZ
+	RLpAgtn0cVpVHv2LYaX0MNtD8wD5s4lrZcPHevJ81//I6w0GYDjHnmE01IeIvfPdgtfrZNBfvcv+T
+	BOF7DOJcuacsw60D785hM52beX2UuOb7e5CTYVxuHoOwAFB0WDbGf+fwnPpOETJfTRCokMoxV3Vth
+	9UYkAp4T0GW5Reb8ufx2WR4Epjcu3abKR3hN+6kaDcyvKxRXK2B8bJc5MgSgtme0O9eqFfIE4dWrk
+	yRwQ3abLQECv8C0bjvohyrD9FWWmTBeT2Wwszb5Y/YfqfKOOmewoE7YFcJTr8vzj3pVTtN9+WnRZG
+	gKk7sAuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXRdu-00000008QA8-0yq0;
-	Wed, 10 Jun 2026 22:43:26 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wXZaO-00000008rP8-270j;
+	Thu, 11 Jun 2026 07:12:20 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXRdt-00000008Q9p-0LtL
+	id 1wXZaN-00000008rOr-0jZs
 	for linux-mediatek@lists.infradead.org;
-	Wed, 10 Jun 2026 22:43:25 +0000
+	Thu, 11 Jun 2026 07:12:19 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4246D4463F
-	for <linux-mediatek@lists.infradead.org>; Wed, 10 Jun 2026 22:43:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 081DA1F008A6
-	for <linux-mediatek@lists.infradead.org>; Wed, 10 Jun 2026 22:43:23 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 70C4A600AA;
+	Thu, 11 Jun 2026 07:12:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DF6551F00893;
+	Thu, 11 Jun 2026 07:12:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781131404;
-	bh=62bFE+9EiC4Wl6sR/gNVDtGRVBnRqEmz0YnELUX+5Xs=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=GCDhfGUXvvVNHLXhr3frkjO1Rp4OtsKp0qM3R31fePjb//IULavexvDmNUUwA04Ub
-	 Dzlzh2pzRTGy59f+l+FcFl6Yb7JHo1erepIH9ag8J/kku0Cip94/n/lnMR10AXod+E
-	 Eo9yh0/1Iz8nn2Z2avr7KPAgjzoa5BEPnlspQTzlg3rKjx1wz7yacqY5QAT1hJvXmc
-	 p+h4mmaqYQXlAywwxh+PM6aAWHmctdeOpMdFSOJmYCYFWVtcq+mLZQz8SbOiIU5i+B
-	 W6h3yZfiZGrVAGQ4KxdyXBJ5+NYJjpIS11ozMi8kHTJQg+Iz/vEkAJtdxm8C+VNjjZ
-	 1YzD783Gy0FgA==
-Received: by mail-ed1-f50.google.com with SMTP id 4fb4d7f45d1cf-68f36e1663cso13150022a12.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 10 Jun 2026 15:43:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AFNElJ9GrMJWQde5G0XBYPDC7x4JilDRNl4Ddssi2ga4V6EnZC71oMENbCXN6QY1nIv8fJCE8tcvgg6xErPPobZ5YA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx8U90zAOIF1j7dflOHcjRldEQnA+9R4lRqiryJF3W3DhbZaTt0
-	ifvgtWdhHoFlwJmnkV75poy2fkkXXIb8UUiWqRsLzeC4NblXogLUFpKhaOtalw76gnXqYRHMTK6
-	mX4ckkWeRiQ1EmzP9o1vuD30cHegpWA==
-X-Received: by 2002:a17:907:c28c:b0:bd0:df77:98bb with SMTP id
- a640c23a62f3a-bf3702817fbmr1479114866b.9.1781131402612; Wed, 10 Jun 2026
- 15:43:22 -0700 (PDT)
+	s=k20260515; t=1781161938;
+	bh=cb1adLE4OteerCSBk+VBYHwOKwVKIC0OX9Sh5Jg4D0I=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=fiFBYq3PHbybtvQ0Ie7WxptQtEeUaCk6mxPymiXzx2z3zGvV4UAnunhiFpDcL+3ds
+	 8T2iILHFOT5A0QEZ7fBhoMFfMu7p5pdP443UE44k4Op87dski55918WHX+SvKCTWH3
+	 q+v+nE2/qmkjWRxh8ZAVFYaYRYvkSN6mmb8gnVGLWDqHg2r4kyfa74bFTSt+dKNj3Y
+	 ASPKu70fz3eU/2+djxAYm/9Yxva6fleJpBa5FfW0yLlD6mJ1CqrEpgJTmgSLDT+aeB
+	 8dP2VE/RzFF39igauJHUJwvKT1wdM6ivedxpLvfNDVSie0T1A1t0C/MU4X5FUZwHHm
+	 v+w9+NxVjIkpQ==
+Date: Thu, 11 Jun 2026 09:12:08 +0200
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Caleb James DeLisle <cjd@cjdns.fr>
+Cc: linux-pci@vger.kernel.org, linux-mips@vger.kernel.org, 
+	naseefkm@gmail.com, ryder.lee@mediatek.com, helgaas@kernel.org, 
+	lpieralisi@kernel.org, kwilczynski@kernel.org, robh@kernel.org, krzk+dt@kernel.org, 
+	conor+dt@kernel.org, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+	ansuelsmth@gmail.com, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v9 0/3] Add EcoNet EN7528 (and EN751221) PCIe support.
+Message-ID: <qwjq6jt3akjk6m4qp4s7xpqf2kzc3tyhsrmcoqhc3canknauxh@leu5dbmv5ngl>
+References: <20260521171951.1495781-1-cjd@cjdns.fr>
 MIME-Version: 1.0
-References: <20260609151212.29469-1-ansuelsmth@gmail.com> <20260609151212.29469-9-ansuelsmth@gmail.com>
-In-Reply-To: <20260609151212.29469-9-ansuelsmth@gmail.com>
-From: Rob Herring <robh@kernel.org>
-Date: Wed, 10 Jun 2026 17:43:11 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqJdBxsbUK+n9h17K9SC7ojcPxemeijJhUGQt9HuB82OYg@mail.gmail.com>
-X-Gm-Features: AVVi8CfnalHGFSDJtFBoMIJ88H-i-Yw1YCOHz7GBxBm4GdczRrsSV4xJzXraBNE
-Message-ID: <CAL_JsqJdBxsbUK+n9h17K9SC7ojcPxemeijJhUGQt9HuB82OYg@mail.gmail.com>
-Subject: Re: [PATCH net-next v6 08/12] of: property: fw_devlink: Add support
- for "pcs-handle"
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Simon Horman <horms@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
-	Shuah Khan <skhan@linuxfoundation.org>, Lorenzo Bianconi <lorenzo@kernel.org>, 
-	Heiner Kallweit <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>, 
-	Saravana Kannan <saravanak@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Nathan Chancellor <nathan@kernel.org>, Nick Desaulniers <nick.desaulniers+lkml@gmail.com>, 
-	Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>, netdev@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20260521171951.1495781-1-cjd@cjdns.fr>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,43 +73,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 9, 2026 at 10:13=E2=80=AFAM Christian Marangi <ansuelsmth@gmail=
-.com> wrote:
->
-> Add support for parsing PCS binding so that fw_devlink can
-> enforce the dependency with Ethernet port.
->
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
->  drivers/of/property.c | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/drivers/of/property.c b/drivers/of/property.c
-> index 136946f8b746..e6584a2f705d 100644
-> --- a/drivers/of/property.c
-> +++ b/drivers/of/property.c
-> @@ -1392,6 +1392,7 @@ DEFINE_SIMPLE_PROP(access_controllers, "access-cont=
-rollers", "#access-controller
->  DEFINE_SIMPLE_PROP(pses, "pses", "#pse-cells")
->  DEFINE_SIMPLE_PROP(power_supplies, "power-supplies", NULL)
->  DEFINE_SIMPLE_PROP(mmc_pwrseq, "mmc-pwrseq", NULL)
-> +DEFINE_SIMPLE_PROP(pcs_handle, "pcs-handle", "#pcs-cells")
+On Thu, May 21, 2026 at 05:19:48PM +0000, Caleb James DeLisle wrote:
+> Tested on TpLink Archer VR1200V-V2 (EN751221 with Gen2 device)
+> 
+> Changes since v8:
+> * guard(rwsem_read)(&pci_bus_sem); in mtk_pcie_retrain
+> * v8: https://lore.kernel.org/linux-mips/20260520183827.908243-1-cjd@cjdns.fr
+> 
+> Changes from v7:
+> * mtk_pcie_retrain retrain all root ports not just first
+> * Include fix from Manivannan Sadhasivam, wrong usage of virt_to_phys()
+> * v7: https://lore.kernel.org/linux-mips/20260514151318.3444959-1-cjd@cjdns.fr
+> 
+> Changes from v6:
+> * s/reset/resets/ in .yaml
+> * s/re-train/retrain/g
+> * s/Root bridge/Root port/
+> * If module not builtin, log at mtk_pcie_startup_port_en7528()
+> * Do not fail if error in mtk_pcie_retrain()
+> * v6: https://lore.kernel.org/linux-mips/20260513191652.3200607-1-cjd@cjdns.fr
+> 
+> Changes from v5:
+> * s/errno-base.h/errno.h/
+> * Breakout mtk_pcie_retrain() into a function
+> * Use for_each_pci_bridge() to find root bridge
+> * v5: https://lore.kernel.org/linux-mips/20260413140339.16238-1-cjd@cjdns.fr/
+> 
+> Changes from v4:
+> * Fixed missing Acked-by
+> * Rebased to commit 66672af7a095 ("Add linux-next specific files for 20260410")
+> * v4: https://lore.kernel.org/linux-mips/20260404182854.2183651-1-cjd@cjdns.fr/
+> 
+> Changes from v3:
+> * s/initiallized/initialized/
+> * Use PCIE_T_PVPERL_MS for sleep time
+> * Use PCI_PM_D3COLD_WAIT for startup wait time
+> * Clarify comment "Activate INTx interrupts"
+> * Add MTK_PCIE_RETRAIN quirk for devices which require link re-train
+> * Do not retrain *all* bridges, only root bridge
+> * Better comments and logging in retraining logic
+> * v3: https://lore.kernel.org/linux-mips/20260320094212.696671-1-cjd@cjdns.fr/
+> 
+> Changes from v2:
+> * mediatek-pcie.yaml -> s/power-domain/power-domains/ and drop example
+> * Patch 3 dropped as it has been applied (Thanks!)
+> * v2: https://lore.kernel.org/linux-mips/20260316155157.679533-1-cjd@cjdns.fr/
+> 
+> Changes from v1:
+> * mediatek-pcie.yaml slot0 needs device-type = "pci", fix dt_binding_check
+> Link: https://lore.kernel.org/linux-mips/177334026016.3889069.9474337544951486443.robh@kernel.org
+> * v1: https://lore.kernel.org/linux-mips/20260312165332.569772-1-cjd@cjdns.fr/
+> 
+> This was split from a larger PCIe patchset which crossed multiple
+> subsystems. I'm not labeling this a v3 because it's a new patchset, but
+> I'm keeping the historical record anyway.
+> 
+> Changes from econet-pcie v2:
+> * mediatek-pcie.yaml add missing constraints to PCI node properties
+> * econet-pcie v2: https://lore.kernel.org/linux-mips/20260309131818.74467-1-cjd@cjdns.fr
+> 
+> Changes from econet-pcie v1:
+> * pcie-mediatek.c Exclude pcie_retrain_link() when building as a module
+> * econet-pcie v1: https://lore.kernel.org/linux-mips/20260303190948.694783-1-cjd@cjdns.fr/
+> 
+> 
+> Caleb James DeLisle (2):
+>   dt-bindings: PCI: mediatek: Add support for EcoNet EN7528
+>   PCI: mediatek: Add support for EcoNet EN7528 SoC
 
-There is no such common property "#pcs-cells".
+Patch 3 doesn't apply cleanly. So I applied patches 1 and 2. Please rebase patch
+3 on top of pci/controller/mediatek branch and resend it.
 
->  DEFINE_SUFFIX_PROP(regulators, "-supply", NULL)
->  DEFINE_SUFFIX_PROP(gpio, "-gpio", "#gpio-cells")
->
-> @@ -1548,6 +1549,7 @@ static const struct supplier_bindings of_supplier_b=
-indings[] =3D {
->         { .parse_prop =3D parse_interrupts, },
->         { .parse_prop =3D parse_interrupt_map, },
->         { .parse_prop =3D parse_access_controllers, },
-> +       { .parse_prop =3D parse_pcs_handle, },
->         { .parse_prop =3D parse_regulators, },
->         { .parse_prop =3D parse_gpio, },
->         { .parse_prop =3D parse_gpios, },
-> --
-> 2.53.0
->
+- Mani
+
+-- 
+மணிவண்ணன் சதாசிவம்
 
