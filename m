@@ -4,66 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3C7ECD98C7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 16:37:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48844CD98C7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jun 2026 17:22:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ef0nR/F/3mauVtjPQKNzv0MDN5cCbO2Pdn8BUSaOyxI=; b=qJq4HNAXSrlkEbISPTiuZ4rj24
-	GvgYs9mfFRS6UeCJLXf9ERVsP6HYhAOMFl5vHJNQnPqsC1Wrq82cZozqPiZQYmFdF7H7uYa/ECjsa
-	2HDhu9OiWliQ7ZKBO3NDNxhgZgenyijuVqun6GDh/qBtHj7Ji5Pl952I1+E63pM817hVuP09UIIym
-	PO9B7LnW+1smVtAYm4WhBT4WObp/YJJ3i4mC+A4hNkCSJrnm63R/x7E9G75qYJ7If+gKQO2Km4eiM
-	ZNMnwi+ej7Mc+StRzh4Io1K3eSNC905H0aM6ZH1Mhfkt4y5dJnva/3Degi5ovr4F5Fg0eKM0gOROe
-	DGSLDqlQ==;
+	bh=KdWDhxFqpyK1ExaLMvzw0M+RE0xOM5zE+5Ap11B9AYI=; b=DDJKOqI3I2kjiNyovS5R6ViKvM
+	gdlBXgO5Au4/Ms47WM9kPmIkxfpD0w/7Xc121DYIs3Kff1rzmZKefV0IY/IiXYkUY4vJb7En7URrM
+	uizjn9puHkB/vBoMgrm2gZcILjxrfzSRV3wE9AHBqnjKyMjrJf/+fumvvdivnIY5RaxOvXL93GsPY
+	qlJt2NpWm17yVhjrBE+ZDTwPUh0cErfda6Z9SuLKLoGnKZJLyR0ffXUZyhUmd5A0mLehoTB4SMbuC
+	SACYyuWoJgv+mkJ/+jXD2eRGXG6RAfLVofe5BIgGQELIzPljgYEEASsDpvjiayAgeDwWRhwqBDqqL
+	AyOyl6Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXiPj-00000009m2R-2Bdo;
-	Thu, 11 Jun 2026 16:37:55 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wXj6n-00000009pGW-2vG0;
+	Thu, 11 Jun 2026 17:22:25 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXiPi-00000009m2D-3fI2;
-	Thu, 11 Jun 2026 16:37:54 +0000
+	id 1wXj6l-00000009pFy-2XTb;
+	Thu, 11 Jun 2026 17:22:23 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9F03240294;
-	Thu, 11 Jun 2026 16:37:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 070CD1F00893;
-	Thu, 11 Jun 2026 16:37:50 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id C3AC6601DF;
+	Thu, 11 Jun 2026 17:22:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0E9351F00893;
+	Thu, 11 Jun 2026 17:22:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781195874;
-	bh=ef0nR/F/3mauVtjPQKNzv0MDN5cCbO2Pdn8BUSaOyxI=;
+	s=k20260515; t=1781198542;
+	bh=KdWDhxFqpyK1ExaLMvzw0M+RE0xOM5zE+5Ap11B9AYI=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=okaG9bdiR0+20Z2ZlUm2AZfM/nYhVULe6RDzWHnaRvEBHroTojrpfwlptOET66ZiA
-	 LHiZgcVYzwnzyRk7IENhOSxWu8MFc6lvQeqxwcqqq/VVgOEKSOzw5AEsBzgNt13C3X
-	 QyVc7Ru+IsBM7hgT1nA7hTZT19XrWi9VYnbH/vAFXguoHRl+Zd4s+yy3BwyPd4RnKb
-	 OTjF+LleVIyGNWhC+5Xg5iyP/YkPGPpr36JlFVI5NP0lfNw+UF9oAkTMj6+6LGcT1+
-	 ObsNTmr8+Q5r5sXFbOSMuj9eR5x8NImDfijzM6x7FzU8jmoqZHoGG7Xr7/NOKUXMTz
-	 jnHBSoHogBd3A==
-Date: Thu, 11 Jun 2026 17:37:48 +0100
-From: Lee Jones <lee@kernel.org>
+	b=aQG9tRUlJP0O+Sd1fT0nlt7WRopgp33SXyAE4qF3jz3ZTjUjfZeejs/nBQM5g+QR0
+	 LXG0TitQNUIZXakKtCp2BTi08j8WexRYvM6omta+DVAk4WLkYU5imHgkuhhVmCDnzg
+	 LC4QWKB7GWXxfwhmCwf+MsQ/0i5KVsERKciUTHj0EY2BHCHoH711MMcpfWzegs1cPX
+	 N0JjRTnmhZtcKJyPdtQmUklA1b6aq/oXr5mhWaNcLVXXBgkc9wJGjykRw9Qh/EbwhB
+	 Xwyy2ziCIUeQDWT+pSLwW3ssf9lKptBLCi7mXkENNk8VP5HAa9MWWInsVYg+RG3z8t
+	 s/j0OBmMxXnRg==
+Date: Thu, 11 Jun 2026 18:22:17 +0100
+From: Conor Dooley <conor@kernel.org>
 To: rva333@protonmail.com
-Cc: Jonathan Cameron <jic23@kernel.org>,
-	David Lechner <dlechner@baylibre.com>,
-	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
-	Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>,
+Cc: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
+	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	Srinivas Kandagatla <srini@kernel.org>,
+	Andy Shevchenko <andy@kernel.org>,
+	Jonathan Cameron <jic23@kernel.org>, linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Ben Grisdale <bengris32@protonmail.ch>
-Subject: Re: [PATCH 3/4] mfd: mt6397-core: add mt6323 AUXADC support
-Message-ID: <20260611163748.GB1212816@google.com>
-References: <20260602-mt6323-adc-v1-0-68ec737508ee@protonmail.com>
- <20260602-mt6323-adc-v1-3-68ec737508ee@protonmail.com>
+Subject: Re: [PATCH 1/4] dt-bindings: mfd: mediatek: mt6397: add mt6323 PMIC
+ EFUSE
+Message-ID: <20260611-density-hamper-2b89bac89312@spud>
+References: <20260611-mt6323-nvmem-v1-0-b5e1b9ce51f2@protonmail.com>
+ <20260611-mt6323-nvmem-v1-1-b5e1b9ce51f2@protonmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="8jlD8HCh7FfdJwQ5"
 Content-Disposition: inline
-In-Reply-To: <20260602-mt6323-adc-v1-3-68ec737508ee@protonmail.com>
+In-Reply-To: <20260611-mt6323-nvmem-v1-1-b5e1b9ce51f2@protonmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,62 +82,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Interesting.  Has this been considered?
 
-/* Sashiko Automation: Issues Found (1 Findings) */
+--8jlD8HCh7FfdJwQ5
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On Tue, 02 Jun 2026, Roman Vivchar via B4 Relay wrote:
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+pw-bot: not-applicable
 
-> From: Roman Vivchar <rva333@protonmail.com>
-> 
-> The mt6323 PMIC includes an AUXADC. Register the AUXADC in the mt6323
-> devices array to allow the corresponding driver to probe using compatible
-> string.
-> 
-> Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
-> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
-> ---
->  drivers/mfd/mt6397-core.c | 3 +++
->  1 file changed, 3 insertions(+)
-> 
-> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-> index 3e58d0764c7e..013b0857fb54 100644
-> --- a/drivers/mfd/mt6397-core.c
-> +++ b/drivers/mfd/mt6397-core.c
-> @@ -125,6 +125,9 @@ static const struct resource mt6323_pwrc_resources[] = {
->  
->  static const struct mfd_cell mt6323_devs[] = {
->  	{
-> +		.name = "mt6323-auxadc",
-> +		.of_compatible = "mediatek,mt6323-auxadc",
+--8jlD8HCh7FfdJwQ5
+Content-Type: application/pgp-signature; name="signature.asc"
 
-[Severity: High]
-Does adding this compatible string expose an unhandled edge case in the
-auxadc driver?
+-----BEGIN PGP SIGNATURE-----
 
-If this device is instantiated directly from a Device Tree without an MFD
-parent (e.g., at the DT root), dev->parent could be the platform bus
-(which has a NULL parent) or NULL itself.
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCairuyAAKCRB4tDGHoIJi
+0mk7AP9Mb5T4kei+ZQb9DUhcF53VPvmUwgHWElm07FdeB+BdKQD/Q2pgevrbI0it
+++Mc/nhVwa+UmM4gJxL5PlSgYKXFDQs=
+=bEoR
+-----END PGP SIGNATURE-----
 
-Looking at mt6323_auxadc_probe() in drivers/iio/adc/mt6323-auxadc.c:
-
-    regmap = dev_get_regmap(dev->parent->parent, NULL);
-
-Could blindly dereferencing dev->parent->parent here, or passing a NULL
-device to dev_get_regmap() (which calls devres_find()), result in a
-kernel oops if probed as a root node?
-
-
-> +	}, {
->  		.name = "mt6323-rtc",
->  		.num_resources = ARRAY_SIZE(mt6323_rtc_resources),
->  		.resources = mt6323_rtc_resources,
-> 
-> -- 
-> 2.54.0
-> 
-> 
-
--- 
-Lee Jones
+--8jlD8HCh7FfdJwQ5--
 
