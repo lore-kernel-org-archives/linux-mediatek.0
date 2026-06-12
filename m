@@ -4,63 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA63CCD98CE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2026 13:49:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24110CD8CA8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2026 14:20:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9DbMPyfGQptbnn4NS0NgGBkAEXlR+GQ+W97O4Gk+1bE=; b=Czjkyzi/32wEG1YHxCQEfGhZEf
-	cEZI6ChVJQMBW3LYRFX61QGqgZF8TGwe4MxpqSdJ8j1UTwSlERdniymptELJHTVLt/jUB8D4he2/k
-	4sYwQCk2ze7FQ/KH0YptL04fdLijWICmTpOQGsCcFUjFoks7olFA8KF6tQAhAxfW1qKtimtFQF8eQ
-	tsg7Cd4snDKOW02WWkgSUT284lYcHXvy/tX8cjuBZhon1LcKYwmZXnJVLc+Ieph5evSyzhBgm5Og2
-	acMs6T5OUk78yUoJjCLX1DVItbg1vRQjO6TXhUphcFfRKpGAcqsbVh0Z5qDn3rJ27HrUm3798plkO
-	r3NfYJfQ==;
+	bh=XmgN00liNfzrKUpHKe2uLP5CzE/i+fUpNTEzOPemRiU=; b=WSjHerK2XqyTx2bPcNoIkvoBBl
+	KZLVRR43etDieJSj6PdPLaMX6YFAwrqTBYvV1F2qezg+GjG8NKuRAHzpWgas+3syvqNyaXaYlYtfC
+	+Fep0FKie4eaNoAB6FlcIrHDHemufNn4s1/S0B8MVHGrqggzORXTMzxFM3hR5uGbtP1WrVhi2UJ8W
+	vMTMSTufA18YysFAgpT9clyBJ9DXE3oBOjIGyPK9N1cCyyKEBKl5w20klruCU+tI0xSeuFD84BoXw
+	JNxefBCA4Qg7qUHSlquvXjh6rR75yUHfxMxoGKDKcuLp6wSKEU2KQhOY8nk7ScCfbBsnjA6RCznIT
+	fmWxeMqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wY2Gk-0000000B0iU-1EYm;
-	Fri, 12 Jun 2026 13:49:58 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wY2kN-0000000B2ql-2cnM;
+	Fri, 12 Jun 2026 14:20:35 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wY2Gj-0000000B0i5-1oHO;
-	Fri, 12 Jun 2026 13:49:57 +0000
+	id 1wY2kL-0000000B2q9-2tIx;
+	Fri, 12 Jun 2026 14:20:33 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id DE45340A50;
-	Fri, 12 Jun 2026 13:49:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 43D331F000E9;
-	Fri, 12 Jun 2026 13:49:56 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 1805443FF8;
+	Fri, 12 Jun 2026 14:20:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 71DAB1F000E9;
+	Fri, 12 Jun 2026 14:20:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781272196;
-	bh=9DbMPyfGQptbnn4NS0NgGBkAEXlR+GQ+W97O4Gk+1bE=;
+	s=k20260515; t=1781274033;
+	bh=XmgN00liNfzrKUpHKe2uLP5CzE/i+fUpNTEzOPemRiU=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=ogEk2fdb51OCj+6rD0T12zRE8mTqTrPsoUKBtWJpxqCiNbLPrByO32mujD+njvIz5
-	 Lbn6maIM9jQuTD1QBWXM/upHjt7lL+SVecWgYD92AjGfSLSPhrvNmpG6aADTAko/Gq
-	 WEMm/iUKl8NYLEZuAROmB+DOYUOf/m5+5PltvwVOENvomkg9r3Q32xZ/85lC5zcMuJ
-	 wcbs+hm9tat4Hd3r9ZI9F+ZzYL0NMlpCqeqta55o21Z39Awj1jUn9LEcXRR30M3nwk
-	 RQ/tACXzIeqivFFEa07NBPZ5tim/lLRB7bcwPdc2vDybyLg41eyZvbaH/RCadMv5cO
-	 JPkVZxORFVJKg==
-Date: Fri, 12 Jun 2026 15:49:54 +0200
+	b=hUQhz6ZsUf1rnNlaOOTzZs1s1aUQjqcRvrNFvYustc9i9jZPQfH/rvHlVA7ShOkHN
+	 b1OmdAbfpJkownfKw4wc40eM3PZxVK/KvAqd42p+9WXWgYPUodzYBilBAnI4Hjx83N
+	 i08kAybxzSapZYxMoMgNl5gbIlJjETqcY9pwmGd5lafunkkSq9tL1Eq1q7Fal3MFz1
+	 sdCWVsXJtfzMpmyWzdgNBySOiKZyIbCkdhM5fudl8jcHLuJOD26UiQN4cPR7xcG5Mv
+	 z1vCAHH+m9RBLs8disqfxAcvMJXohKuus0+U6FphoTN3Ez96BMxbJuuJDgNKF7038s
+	 Om6psuizW7dhQ==
+Date: Fri, 12 Jun 2026 16:20:30 +0200
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Arnd Bergmann <arnd@kernel.org>
-Cc: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Arnd Bergmann <arnd@arndb.de>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Rex Lu <rex.lu@mediatek.com>,
-	linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] wifi: mt76: fix airoha_npu dependency tracking
-Message-ID: <aiwOgoB6JeU7J3Ze@lore-desk>
-References: <20260611125912.3387021-1-arnd@kernel.org>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	Christian Marangi <ansuelsmth@gmail.com>
+Subject: Re: [PATCH net-next] net: airoha: better handle MIBs for GDM ports
+ with multiple devs attached
+Message-ID: <aiwVrsDPAFReG-S0@lore-desk>
+References: <20260611-airoha-eth-multi-serdes-stats-v1-1-42442ae42064@kernel.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="sS2E1xGPDq87P0hY"
+	protocol="application/pgp-signature"; boundary="FhukJ4AvDXwOD84H"
 Content-Disposition: inline
-In-Reply-To: <20260611125912.3387021-1-arnd@kernel.org>
+In-Reply-To: <20260611-airoha-eth-multi-serdes-stats-v1-1-42442ae42064@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,118 +74,269 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---sS2E1xGPDq87P0hY
+--FhukJ4AvDXwOD84H
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> From: Arnd Bergmann <arnd@arndb.de>
+> In the context of a GDM port that can have multiple net_devices attached
+> (GDM3 and GDM4), the HW counters (MIBs) are global for the GDM port.
+> This cause duplicated stats reported to the kernel for the related
+> net_device.
+> The SoC supports a split MIB feature where each counter is tracked based
+> on the relevant HW channel (NBQ) to account for this scenario and
+> provide a way to select the related counter on accessing the MIB
+> registers.
+> Enable this feature for GDM3 and GDM4 and configure the relevant HW
+> channel before updating the HW stats to report correct HW counter to the
+> kernel for the related interface.
+> Move the stats struct from port to dev since HW counter are now specific
+> to the network device instead of the GDM port. Refactor
+> airoha_update_hw_stats() to take airoha_eth and airoha_gdm_port
+> parameters since the function operates on the entire port.
 >=20
-> There is a new build failure with MT7996E=3Dm MT76_CORE=3Dy and NET_AIROH=
-A_NPU=3Dm:
->=20
-> ld.lld: error: undefined symbol: airoha_npu_get
-> ld.lld: error: undefined symbol: airoha_npu_put
-> >>> referenced by npu.c
-> >>>               drivers/net/wireless/mediatek/mt76/npu.o:(mt76_npu_init=
-) in archive vmlinux.a
->=20
-> Fix this by reworking the dependency for the MT7996_NPU to only
-> allow enabling that when mt76_core can link against the npu driver.
->=20
-> To make sure this gets caught more easily in the future when additional
-> mt76 variants need the same dependency, also turn CONFIG_MT76_NPU into
-> a tristate symbol that has the same dependency.
->=20
-> Fixes: 7fb554b1b623 ("wifi: mt76: Introduce the NPU generic layer")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
-
+> Co-developed-by: Christian Marangi <ansuelsmth@gmail.com>
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > ---
->  drivers/net/wireless/mediatek/mt76/Kconfig        | 4 ++--
->  drivers/net/wireless/mediatek/mt76/Makefile       | 6 +++++-
->  drivers/net/wireless/mediatek/mt76/mt76.h         | 2 +-
->  drivers/net/wireless/mediatek/mt76/mt7996/Kconfig | 2 +-
->  4 files changed, 9 insertions(+), 5 deletions(-)
->=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/Kconfig b/drivers/net/wir=
-eless/mediatek/mt76/Kconfig
-> index 502303622a53..d941e67a222d 100644
-> --- a/drivers/net/wireless/mediatek/mt76/Kconfig
-> +++ b/drivers/net/wireless/mediatek/mt76/Kconfig
-> @@ -38,8 +38,8 @@ config MT792x_USB
->  	select MT76_USB
-> =20
->  config MT76_NPU
-> -	bool
-> -	depends on MT76_CORE
-> +	tristate
-> +	depends on NET_AIROHA_NPU=3Dy || MT76=3DNET_AIROHA_NPU
-> =20
->  source "drivers/net/wireless/mediatek/mt76/mt76x0/Kconfig"
->  source "drivers/net/wireless/mediatek/mt76/mt76x2/Kconfig"
-> diff --git a/drivers/net/wireless/mediatek/mt76/Makefile b/drivers/net/wi=
-reless/mediatek/mt76/Makefile
-> index 1d42adfe8030..cacdd2b13d05 100644
-> --- a/drivers/net/wireless/mediatek/mt76/Makefile
-> +++ b/drivers/net/wireless/mediatek/mt76/Makefile
-> @@ -12,7 +12,11 @@ mt76-y :=3D \
->  	mmio.o util.o trace.o dma.o mac80211.o debugfs.o eeprom.o \
->  	tx.o agg-rx.o mcu.o wed.o scan.o channel.o
-> =20
-> -mt76-$(CONFIG_MT76_NPU) +=3D npu.o
-> +ifdef CONFIG_MT76_NPU
-> +# CONFIG_MT76_NPU is tristate to simplify dependency tracking,
-> +# but it behaves as a bool symbol here.
-> +mt76-y +=3D npu.o
-> +endif
->  mt76-$(CONFIG_PCI) +=3D pci.o
->  mt76-$(CONFIG_NL80211_TESTMODE) +=3D testmode.o
-> =20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wire=
-less/mediatek/mt76/mt76.h
-> index 07955555f84d..60bd155cc7d5 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-> @@ -1647,7 +1647,7 @@ int mt76_testmode_dump(struct ieee80211_hw *hw, str=
-uct sk_buff *skb,
->  int mt76_testmode_set_state(struct mt76_phy *phy, enum mt76_testmode_sta=
-te state);
->  int mt76_testmode_alloc_skb(struct mt76_phy *phy, u32 len);
-> =20
-> -#ifdef CONFIG_MT76_NPU
-> +#if IS_ENABLED(CONFIG_MT76_NPU)
->  void mt76_npu_check_ppe(struct mt76_dev *dev, struct sk_buff *skb,
->  			u32 info);
->  int mt76_npu_dma_add_buf(struct mt76_phy *phy, struct mt76_queue *q,
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/Kconfig b/drivers/=
-net/wireless/mediatek/mt76/mt7996/Kconfig
-> index 5503d03bf62c..5742bce12fbb 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7996/Kconfig
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/Kconfig
-> @@ -16,6 +16,6 @@ config MT7996E
->  config MT7996_NPU
->  	bool "MT7996 (PCIe) NPU support"
->  	depends on MT7996E
-> -	depends on NET_AIROHA_NPU=3Dy || MT7996E=3DNET_AIROHA_NPU
-> +	depends on NET_AIROHA_NPU=3Dy || MT76_CORE=3DNET_AIROHA_NPU
->  	select MT76_NPU
->  	default n
-> --=20
-> 2.39.5
+>  drivers/net/ethernet/airoha/airoha_eth.c | 191 +++++++++++++++++--------=
+------
+>  drivers/net/ethernet/airoha/airoha_eth.h |   7 +-
+>  2 files changed, 112 insertions(+), 86 deletions(-)
 >=20
 
---sS2E1xGPDq87P0hY
+[...]
+
+> -	airoha_fe_set(eth, REG_FE_GDM_MIB_CLEAR(port->id),
+> +static void airoha_update_hw_stats(struct airoha_gdm_dev *dev)
+> +{
+> +	struct airoha_gdm_port *port =3D dev->port;
+> +	int i;
+> +
+> +	spin_lock(&port->stats_lock);
+> +
+> +	for (i =3D 0; i < ARRAY_SIZE(port->devs); i++) {
+> +		if (port->devs[i])
+> +			airoha_dev_get_hw_stats(port->devs[i]);
+> +	}
+> +
+> +	/* Reset MIB counters */
+> +	airoha_fe_set(dev->eth, REG_FE_GDM_MIB_CLEAR(port->id),
+>  		      FE_GDM_MIB_RX_CLEAR_MASK | FE_GDM_MIB_TX_CLEAR_MASK);
+
+commenting on sashiko's report:
+https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20260611-airoha-eth-mul=
+ti-serdes-stats-v1-1-42442ae42064%40kernel.org
+
+- With split MIB enabled on GDM3/GDM4, airoha_dev_get_hw_stats() programs
+  REG_FE_GDM_MIB_CFG with the device's nbq before reading per-channel
+  counters, so the FE_TX_MIB_ID/FE_RX_MIB_ID selector clearly gates the
+  counter reads.
+  After the loop in airoha_update_hw_stats(), MIB_CFG retains the last
+  iterated device's nbq, and a single airoha_fe_set() is issued against
+  REG_FE_GDM_MIB_CLEAR. REG_FE_GDM_MIB_CLEAR exposes only RX/TX bits with no
+  separate per-channel selector.
+  If, as is typical of split-MIB designs, the clear honors the same
+  FE_TX_MIB_ID/FE_RX_MIB_ID selector used for reads, will only the last
+  iterated device's HW counters be cleared each cycle?
+  Since airoha_dev_get_hw_stats() accumulates with +=3D on each read, would
+  the un-cleared HW counters of the other devs keep being re-added to
+  dev->stats on every fetch, yielding inflated stats and eventual HW
+  counter overflow?
+  Would moving the MIB_CLEAR write inside the per-device loop, while that
+  device's nbq is still selected in MIB_CFG, address this if the clear is
+  indeed per-channel? Or can the datasheet confirm REG_FE_GDM_MIB_CLEAR is
+  strictly global and unaffected by split mode?
+  - This is the same report available in [0].
+    REG_FE_GDM_MIB_CLEAR is global and it clears all nbq counters for the p=
+ort.
+=20
+Regards,
+Lorenzo
+
+[0] https://sashiko.dev/#/patchset/20260611-airoha-eth-multi-serdes-stats-v=
+1-1-42442ae42064%40kernel.org
+> =20
+> -	u64_stats_update_end(&port->stats.syncp);
+> -	spin_unlock(&port->stats.lock);
+> +	spin_unlock(&port->stats_lock);
+>  }
+> =20
+>  static int airoha_dev_open(struct net_device *netdev)
+> @@ -2043,23 +2071,22 @@ static void airoha_dev_get_stats64(struct net_dev=
+ice *netdev,
+>  				   struct rtnl_link_stats64 *storage)
+>  {
+>  	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
+> -	struct airoha_gdm_port *port =3D dev->port;
+>  	unsigned int start;
+> =20
+>  	airoha_update_hw_stats(dev);
+>  	do {
+> -		start =3D u64_stats_fetch_begin(&port->stats.syncp);
+> -		storage->rx_packets =3D port->stats.rx_ok_pkts;
+> -		storage->tx_packets =3D port->stats.tx_ok_pkts;
+> -		storage->rx_bytes =3D port->stats.rx_ok_bytes;
+> -		storage->tx_bytes =3D port->stats.tx_ok_bytes;
+> -		storage->multicast =3D port->stats.rx_multicast;
+> -		storage->rx_errors =3D port->stats.rx_errors;
+> -		storage->rx_dropped =3D port->stats.rx_drops;
+> -		storage->tx_dropped =3D port->stats.tx_drops;
+> -		storage->rx_crc_errors =3D port->stats.rx_crc_error;
+> -		storage->rx_over_errors =3D port->stats.rx_over_errors;
+> -	} while (u64_stats_fetch_retry(&port->stats.syncp, start));
+> +		start =3D u64_stats_fetch_begin(&dev->stats.syncp);
+> +		storage->rx_packets =3D dev->stats.rx_ok_pkts;
+> +		storage->tx_packets =3D dev->stats.tx_ok_pkts;
+> +		storage->rx_bytes =3D dev->stats.rx_ok_bytes;
+> +		storage->tx_bytes =3D dev->stats.tx_ok_bytes;
+> +		storage->multicast =3D dev->stats.rx_multicast;
+> +		storage->rx_errors =3D dev->stats.rx_errors;
+> +		storage->rx_dropped =3D dev->stats.rx_drops;
+> +		storage->tx_dropped =3D dev->stats.tx_drops;
+> +		storage->rx_crc_errors =3D dev->stats.rx_crc_error;
+> +		storage->rx_over_errors =3D dev->stats.rx_over_errors;
+> +	} while (u64_stats_fetch_retry(&dev->stats.syncp, start));
+>  }
+> =20
+>  static int airoha_dev_change_mtu(struct net_device *netdev, int mtu)
+> @@ -2310,20 +2337,19 @@ static void airoha_ethtool_get_mac_stats(struct n=
+et_device *netdev,
+>  					 struct ethtool_eth_mac_stats *stats)
+>  {
+>  	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
+> -	struct airoha_gdm_port *port =3D dev->port;
+>  	unsigned int start;
+> =20
+>  	airoha_update_hw_stats(dev);
+>  	do {
+> -		start =3D u64_stats_fetch_begin(&port->stats.syncp);
+> -		stats->FramesTransmittedOK =3D port->stats.tx_ok_pkts;
+> -		stats->OctetsTransmittedOK =3D port->stats.tx_ok_bytes;
+> -		stats->MulticastFramesXmittedOK =3D port->stats.tx_multicast;
+> -		stats->BroadcastFramesXmittedOK =3D port->stats.tx_broadcast;
+> -		stats->FramesReceivedOK =3D port->stats.rx_ok_pkts;
+> -		stats->OctetsReceivedOK =3D port->stats.rx_ok_bytes;
+> -		stats->BroadcastFramesReceivedOK =3D port->stats.rx_broadcast;
+> -	} while (u64_stats_fetch_retry(&port->stats.syncp, start));
+> +		start =3D u64_stats_fetch_begin(&dev->stats.syncp);
+> +		stats->FramesTransmittedOK =3D dev->stats.tx_ok_pkts;
+> +		stats->OctetsTransmittedOK =3D dev->stats.tx_ok_bytes;
+> +		stats->MulticastFramesXmittedOK =3D dev->stats.tx_multicast;
+> +		stats->BroadcastFramesXmittedOK =3D dev->stats.tx_broadcast;
+> +		stats->FramesReceivedOK =3D dev->stats.rx_ok_pkts;
+> +		stats->OctetsReceivedOK =3D dev->stats.rx_ok_bytes;
+> +		stats->BroadcastFramesReceivedOK =3D dev->stats.rx_broadcast;
+> +	} while (u64_stats_fetch_retry(&dev->stats.syncp, start));
+>  }
+> =20
+>  static const struct ethtool_rmon_hist_range airoha_ethtool_rmon_ranges[]=
+ =3D {
+> @@ -2343,8 +2369,7 @@ airoha_ethtool_get_rmon_stats(struct net_device *ne=
+tdev,
+>  			      const struct ethtool_rmon_hist_range **ranges)
+>  {
+>  	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
+> -	struct airoha_gdm_port *port =3D dev->port;
+> -	struct airoha_hw_stats *hw_stats =3D &port->stats;
+> +	struct airoha_hw_stats *hw_stats =3D &dev->stats;
+>  	unsigned int start;
+> =20
+>  	BUILD_BUG_ON(ARRAY_SIZE(airoha_ethtool_rmon_ranges) !=3D
+> @@ -2357,7 +2382,7 @@ airoha_ethtool_get_rmon_stats(struct net_device *ne=
+tdev,
+>  	do {
+>  		int i;
+> =20
+> -		start =3D u64_stats_fetch_begin(&port->stats.syncp);
+> +		start =3D u64_stats_fetch_begin(&dev->stats.syncp);
+>  		stats->fragments =3D hw_stats->rx_fragment;
+>  		stats->jabbers =3D hw_stats->rx_jabber;
+>  		for (i =3D 0; i < ARRAY_SIZE(airoha_ethtool_rmon_ranges) - 1;
+> @@ -2365,7 +2390,7 @@ airoha_ethtool_get_rmon_stats(struct net_device *ne=
+tdev,
+>  			stats->hist[i] =3D hw_stats->rx_len[i];
+>  			stats->hist_tx[i] =3D hw_stats->tx_len[i];
+>  		}
+> -	} while (u64_stats_fetch_retry(&port->stats.syncp, start));
+> +	} while (u64_stats_fetch_retry(&dev->stats.syncp, start));
+>  }
+> =20
+>  static int airoha_qdma_set_chan_tx_sched(struct net_device *netdev,
+> @@ -3205,6 +3230,7 @@ static int airoha_alloc_gdm_device(struct airoha_et=
+h *eth,
+> =20
+>  	netdev->dev.of_node =3D of_node_get(np);
+>  	dev =3D netdev_priv(netdev);
+> +	u64_stats_init(&dev->stats.syncp);
+>  	dev->port =3D port;
+>  	dev->eth =3D eth;
+>  	dev->nbq =3D nbq;
+> @@ -3244,9 +3270,8 @@ static int airoha_alloc_gdm_port(struct airoha_eth =
+*eth,
+>  	if (!port)
+>  		return -ENOMEM;
+> =20
+> -	u64_stats_init(&port->stats.syncp);
+> -	spin_lock_init(&port->stats.lock);
+>  	port->id =3D id;
+> +	spin_lock_init(&port->stats_lock);
+>  	eth->ports[p] =3D port;
+> =20
+>  	err =3D airoha_metadata_dst_alloc(port);
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
+net/airoha/airoha_eth.h
+> index 8f42973f9cf5..46b1c31939de 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.h
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
+> @@ -215,8 +215,6 @@ struct airoha_tx_irq_queue {
+>  };
+> =20
+>  struct airoha_hw_stats {
+> -	/* protect concurrent hw_stats accesses */
+> -	spinlock_t lock;
+>  	struct u64_stats_sync syncp;
+> =20
+>  	/* get_stats64 */
+> @@ -554,6 +552,8 @@ struct airoha_gdm_dev {
+> =20
+>  	u32 flags;
+>  	int nbq;
+> +
+> +	struct airoha_hw_stats stats;
+>  };
+> =20
+>  struct airoha_gdm_port {
+> @@ -561,7 +561,8 @@ struct airoha_gdm_port {
+>  	int id;
+>  	int users;
+> =20
+> -	struct airoha_hw_stats stats;
+> +	/* protect concurrent hw_stats accesses */
+> +	spinlock_t stats_lock;
+> =20
+>  	struct metadata_dst *dsa_meta[AIROHA_MAX_DSA_PORTS];
+>  };
+>=20
+> ---
+> base-commit: c8459ee2fef502d6ef6c063751c33d9ac7943eab
+> change-id: 20260611-airoha-eth-multi-serdes-stats-df2dc16c2dd6
+>=20
+> Best regards,
+> --=20
+> Lorenzo Bianconi <lorenzo@kernel.org>
+>=20
+
+--FhukJ4AvDXwOD84H
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaiwOggAKCRA6cBh0uS2t
-rOcGAP4vYhqXmOO6OnGyAZ+VgBxQr869XtZPMQvmGyA2x1t0HAEA0JOUwPG7oIMd
-pfgu4dsSeBoe8+sMbvkRs3cQDaHUVAQ=
-=dFd3
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaiwVrgAKCRA6cBh0uS2t
+rKu6AQDumrhIwrcMDWIY+GuFB+DEDI0uaQvW66P9ODgOIqtTSgEAxasot6+gXKVS
+hKz9TE6kMOdhzhV+o9R7MYzDFzg26AA=
+=Tgvv
 -----END PGP SIGNATURE-----
 
---sS2E1xGPDq87P0hY--
+--FhukJ4AvDXwOD84H--
 
