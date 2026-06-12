@@ -4,92 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFE2FCD4F2C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2026 07:36:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55719CD4F2C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2026 07:50:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WXtlwR+cKWGeAXn3H+Lf5Yv1kL7XUbUsrMYC6J2rcVc=; b=iU2fU01gGNhsq3
-	5YiXrG54pm1zB/2P82TzVA/mYmuAPM9YDv+LlWKgXgsqKrOBv1mPAUtY7iaUC+snkKOd0JLBaMnPG
-	QfPJsIU3kensKuvfvJ9bnZ0TFrRUEtAfun9jMPwfSMXjmom1UcUAu0CFg2lLwFwwej67mjiHJfHZM
-	uMNRmFVhnHcwqkbSxLZ9Ec9H6CU7vpBaSceJDs2jahbTrwdUTJGT4VG7E6XdZNje1A4WsbQVjazuy
-	PJ+u5yhha/z1Wp7EEjLMk102/MHzBJLfAEZflCM3uVw4LZ3thKlvSSv9HSjNtLTeGy5DNO7wBh662
-	2E/K9ItvxGmZME03hIsQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=NiCyq+CPffdcVtL25hX44LNm9f/t32AI0R+VbdCf4do=; b=t09Qm9qxRfqlW6Lit7fIHldaj0
+	IBxSSyS7TAz02TqYRjda9g2W+CahygPX+y/JLHr1z3syC7P3BU8o0svr1ag1ZLIFBNJz7c4T0lnJF
+	zLiBlya5MFEQ6i9DYiPFF2b+DjW1v/yFULCes8vraebLYNS1oOAFxvVJ4kGb5grgL1Kx5PSD8SXRX
+	WGlMx6J61/HMJfXeE1IQeCjb5pgTLXhSU5aZ5LJIuZKvlvEIdH6ylZcn7/h+8dFmQ3W4ytO2fGbjh
+	auD056OL/njg8Kb1KMQ94KCuhLZzc5L+J6e6Blj6KNZDnnyx+Ab7EOgS5bMkcqeJHJLpzKuYZkbJB
+	jwAQ/LAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXwRh-0000000ATwe-3HGz;
-	Fri, 12 Jun 2026 07:36:53 +0000
-Received: from zebra.cherry.relay.mailchannels.net ([23.83.223.195])
+	id 1wXwfE-0000000AUwe-3ohI;
+	Fri, 12 Jun 2026 07:50:52 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXwRe-0000000ATw0-1iR5;
-	Fri, 12 Jun 2026 07:36:51 +0000
-X-Sender-Id: hostingeremail|x-authuser|chester.a.unal@arinc9.com
-Received: from relay.mailchannels.net (localhost [127.0.0.1])
-	by relay.mailchannels.net (Postfix) with ESMTP id 19D7C7219BE;
-	Fri, 12 Jun 2026 07:36:42 +0000 (UTC)
-Received: from fr-int-smtpout19.hostinger.io (100-116-180-119.trex-nlb.outbound.svc.cluster.local [100.116.180.119])
-	(Authenticated sender: hostingeremail)
-	by relay.mailchannels.net (Postfix) with ESMTPA id 3CAC8721857;
-	Fri, 12 Jun 2026 07:36:39 +0000 (UTC)
-X-Sender-Id: hostingeremail|x-authuser|chester.a.unal@arinc9.com
-X-MC-Relay: Neutral
-X-MailChannels-SenderId: hostingeremail|x-authuser|chester.a.unal@arinc9.com
-X-MailChannels-Auth-Id: hostingeremail
-X-Arithmetic-Fearful: 63c5ece7276c157b_1781249802002_3456694983
-X-MC-Loop-Signature: 1781249802002:29651468
-X-MC-Ingress-Time: 1781249802001
-Received: from fr-int-smtpout19.hostinger.io (fr-int-smtpout19.hostinger.io
- [148.222.54.35])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384)
-	by 100.116.180.119 (trex/7.1.5);
-	Fri, 12 Jun 2026 07:36:42 +0000
-Received: from [10.10.10.3] (unknown [46.1.111.82])
-	(Authenticated sender: chester.a.unal@arinc9.com)
-	by smtp.hostinger.com (smtp.hostinger.com) with ESMTPSA id 4gcBCl1z9Fz1y7P;
-	Fri, 12 Jun 2026 07:36:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com;
-	s=hostingermail-a; t=1781249797;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=WXtlwR+cKWGeAXn3H+Lf5Yv1kL7XUbUsrMYC6J2rcVc=;
-	b=ZeBrpYI6Dd/19gzwezL9s6dEWcEwXVPhMzaTBGzKwS8TIWcBSU3yoD7QKoZ3yBGWR+nrqg
-	eInFGcClna9n7prMx+FJ6b33Zm5w33wIlPL5Od2HPMHlfENdEtHhdA9Iub80OstE3yDSBX
-	UutJgFHpeovEWcFS5UQ4mqnuK9jPNPSPpEdvjU5Y+GVvL6WBRS/MGcW4H9eZ9dP/3zlI7J
-	Yt5+qrOfHH9GMLKCfCTXqVR5Zxn2FthdUHqQhQhB3CsF26zCWxvHk4CCa7ir13RtDoYNFY
-	lYAx1OuXCkt0u9l6a8Njq5H1YKm9zyPNNEijODSUqkXgsjGtusNAsoRm8S+awA==
-Message-ID: <02ad5de0-ea6a-4267-8686-72e3f98fce4e@arinc9.com>
+	id 1wXwfC-0000000AUvT-2c5C
+	for linux-mediatek@lists.infradead.org;
+	Fri, 12 Jun 2026 07:50:51 +0000
+X-UUID: 6b70885a663311f1acbe4559397dec65-20260612
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=NiCyq+CPffdcVtL25hX44LNm9f/t32AI0R+VbdCf4do=;
+	b=r8+N7NwxdYSbvj8FqQno8IWKzA/1qRahLk8lma6ajsTssX20czq8EWtrzei1RC5OIOaLRCQxC+0x7J/IlrN8UCK1hLV+B4x/IEHP6oewXtwK1xWSxisxjBnXenfhZGIImH9daaxp4JLomPZR6NMfudJ0TycUocUTyhAjSqRfXeI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.15,REQID:b304b432-25b4-424d-9bb0-bc9c45dd0315,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:e276073,CLOUDID:2d46fda4-9ef7-4489-861a-e83b251ece46,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|865|888|898,TC:-5,Content:0|
+	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0
+	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 6b70885a663311f1acbe4559397dec65-20260612
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <jb.tsai@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 61080044; Fri, 12 Jun 2026 00:50:45 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Fri, 12 Jun 2026 15:50:43 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Fri, 12 Jun 2026 15:50:43 +0800
+From: JB Tsai <jb.tsai@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<Deren.Wu@mediatek.com>, <Sean.Wang@mediatek.com>, <Quan.Zhou@mediatek.com>,
+	<Ryder.Lee@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<litien.chang@mediatek.com>, <emery.hsin@mediatek.com>,
+	<jb.tsai@mediatek.com>
+Subject: [PATCH 01/20] wifi: mt76: mt792x: consolidate rx interrupt masks into all_complete_mask
+Date: Fri, 12 Jun 2026 15:50:38 +0800
+Message-ID: <20260612075042.2577193-1-jb.tsai@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next 8/8] net: dsa: mt7530: implement
- port_change_conduit op
-To: Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <cover.1781119435.git.daniel@makrotopia.org>
- <91ae0f87a6ca2cce3d072dba548545e02347bf13.1781119435.git.daniel@makrotopia.org>
-Content-Language: en-GB
-From: "Chester A. Unal" <chester.a.unal@arinc9.com>
-In-Reply-To: <91ae0f87a6ca2cce3d072dba548545e02347bf13.1781119435.git.daniel@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Date: Fri, 12 Jun 2026 07:36:35 +0000 (UTC)
-X-CM-Analysis: v=2.4 cv=Gq4Q+V1C c=1 sm=1 tr=0 ts=6a2bb705 a=EYFf6tZZuEx+mizzmxfcTQ==:117 a=EYFf6tZZuEx+mizzmxfcTQ==:17 a=IkcTkHD0fZMA:10 a=VT4XjZGOAAAA:8 a=GvHEsTVZAAAA:8 a=FvUSNmnTzPuJ0QD-RBkA:9 a=QEXdDO2ut3YA:10 a=6CpsfURP9XNmmWg3j1mJ:22 a=aajZ2D0djhd3YR65f-bR:22
-X-CM-Envelope: MS4xfPf9YvhCURV0HNIRHewhsgeJ9lEsWOVHOYoe2NIE2lxkmBW207FzjH+NqiB3byQJ0bAloPoh1NCmG2PgAFdt/QN7hkNG2SGyAMV4XomqSKlxpCttMUy5 s+QzPUrh17I0tW90nKrdo+RS3RYeD862Ks9jmvbyoaOY/jWi8O8vrClb6WmkCVwf1j9fnM2H1XmeyqkDfAG/6iAAON8+3kZAADIG92oUX9eOrEMe5AhBOp6f fOE1xNV66pSaBNW6YjWW9aFU9Bry5FQqphNAL2qC0aQz6DpUHP2AhI66bTwRSyQFTK1m+QJBCDCKZeNdzddGf8rQiFGiyomFmTKmTeSTMdqI9eKMvR9T2G+i 2Mu/cLS28ncEvQDD3vD5K3BS33LCxkOIPqw/XLG4d6mwXRZYtg9ibcZxDgXRuDkGSFtkwJ7h6FiPPRh78EXqnQFg74I+FJ53x30cX9m818PhBvRthI9W/Fyj urnwTraN9Cex6mcdm/Z4LjaJZgE4slbLiKBKFeqpJdcgQOrYK8taV2bqkOyBLNJh50N/iUSbucRzQmNv4XjdeFkRPh4uEVB/g46MCHu6c//OIis5e5indrdj dO1vybENR3J0C4iyL7jcmsyDD7d8kF8ajC9cUWQAXcAwUmFCPrdEa2+hOr+4GDKMGcRzXSb/X8bvu1BVjZpCXXio
-X-AuthUser: chester.a.unal@arinc9.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260612_003650_560795_656F6EBF 
-X-CRM114-Status: GOOD (  13.21  )
+X-CRM114-CacheID: sfid-20260612_005050_679036_C57DBCC7 
+X-CRM114-Status: UNSURE (   9.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,42 +88,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/06/2026 20:56, Daniel Golle wrote:
-> Allow changing the CPU port affinity of user ports at runtime via
-> the IFLA_DSA_CONDUIT netlink attribute. This updates the port matrix
-> to forward to the new CPU port instead of the old one.
-> 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+From: Emery Hsin <emery.hsin@mediatek.com>
 
-Fabulous!
+Add all_complete_mask to irq_map rx sub-struct and use it in
+mt792x_irq_tasklet() and mt792x_dma_enable() to replace individual
+per-ring mask OR expressions.
 
-Acked-by: Chester A. Unal <chester.a.unal@arinc9.com>
+This is a preparation patch before enabling MT7928 PCIe support.
 
-> ---
->   drivers/net/dsa/mt7530.c | 29 +++++++++++++++++++++++++++++
->   1 file changed, 29 insertions(+)
-> 
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index c96420c291d5..2f3e734b9f53 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -3206,6 +3206,34 @@ static int mt753x_set_mac_eee(struct dsa_switch *ds, int port,
->   	return 0;
->   }
->   
-> +static int
-> +mt753x_port_change_conduit(struct dsa_switch *ds, int port,
-> +			   struct net_device *conduit,
-> +			   struct netlink_ext_ack *extack)
-> +{
-> +	struct dsa_port *new_cpu_dp = conduit->dsa_ptr;
-> +	struct dsa_port *dp = dsa_to_port(ds, port);
-> +	struct mt7530_priv *priv = ds->priv;
-> +
-> +	if (priv->id != ID_MT7531)
-> +		return -EOPNOTSUPP;
+Signed-off-by: Emery Hsin <emery.hsin@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt792x.h     | 1 +
+ drivers/net/wireless/mediatek/mt76/mt792x_dma.c | 8 ++------
+ 2 files changed, 3 insertions(+), 6 deletions(-)
 
-Why do we limit this to MT7531 only?
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
+index 70073b43af54..83c729f8bb76 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x.h
++++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
+@@ -200,6 +200,7 @@ struct mt792x_irq_map {
+ 		u32 mcu_complete_mask;
+ 	} tx;
+ 	struct {
++		u32 all_complete_mask;
+ 		u32 data_complete_mask;
+ 		u32 wm_complete_mask;
+ 		u32 wm2_complete_mask;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_dma.c b/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
+index fc326447c792..946ff6d58954 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
+@@ -39,9 +39,7 @@ void mt792x_irq_tasklet(unsigned long data)
+ 
+ 	trace_dev_irq(&dev->mt76, intr, dev->mt76.mmio.irqmask);
+ 
+-	mask |= intr & (irq_map->rx.data_complete_mask |
+-			irq_map->rx.wm_complete_mask |
+-			irq_map->rx.wm2_complete_mask);
++	mask |= intr & irq_map->rx.all_complete_mask;
+ 	if (intr & dev->irq_map->tx.mcu_complete_mask)
+ 		mask |= dev->irq_map->tx.mcu_complete_mask;
+ 
+@@ -276,9 +274,7 @@ int mt792x_dma_enable(struct mt792x_dev *dev)
+ 	/* enable interrupts for TX/RX rings */
+ 	mt76_connac_irq_enable(&dev->mt76,
+ 			       dev->irq_map->tx.all_complete_mask |
+-			       dev->irq_map->rx.data_complete_mask |
+-			       dev->irq_map->rx.wm2_complete_mask |
+-			       dev->irq_map->rx.wm_complete_mask |
++			       dev->irq_map->rx.all_complete_mask |
+ 			       MT_INT_MCU_CMD);
+ 	mt76_set(dev, MT_MCU2HOST_SW_INT_ENA, MT_MCU_CMD_WAKE_RX_PCIE);
+ 
+-- 
+2.45.2
 
-Chester A.
 
