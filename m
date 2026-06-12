@@ -4,113 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCEC6CD8CA8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2026 09:17:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4953CD4F2C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2026 09:38:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hhcCFioqMSZRCk/5HvD/sKp69EwBtqpgSp4Ql/r2CVc=; b=cm9MsnHOTa0BKtzkj2hidEOT/E
-	6DNWMSbewOFENLkIFERqb/RMeQNC7QFN/NpyZEYEG4F/EBRbuQiZvzIjNgZSa32XfpEwGJTnE8ql4
-	pmLnkTqmhPJ/GfuoDg6VdkCo3/ARg6L6yDb8AAZN8EU3TI/dAdKj472ZZDNzINi1CMfji22ibq/CG
-	4u+nv8wb28uaaxm96Wi02mnF2NEdmzdKTtwvDvB6LGAiROr/+lkAQ1jQLOBq73DozoJgknp3pCGzf
-	3lo5OYw6UJtIXSSaD2oFSE0zi9UWR9nzsVtuZEmYM65OrOcth9WN5B1KPNbI7NQb7vxYst0UmIV1C
-	Tn/d4U4Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Date:From:
+	Message-ID:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mXbZalzcxo6/TsrxZQxu5oks4UtJk6D2CPv/MBaaCkM=; b=w+w+Miq9iFU78JKBNsDr/disCs
+	dulYmgUO2QoOuTgG75A8Tjf1zJBt++eYHwWFUp8wSlCi1JnySTAFSs0LrLR2kQ0UqF1OgpS9klCgt
+	7jrddQ+4GRetQ3u4o3grikJQy5XIN24C7CX+B/dP8yTNg8px+NXHvhI57mKVvrwLY2U1aCcCo/1/3
+	4hnFktZ6Y2mc8fC7TGAFQ3zmghkS8GP4O8NY1BZms8KS8Q5tZa9PIMjUYRyP7zXyoteMruZSVbJVN
+	r81nFoND7vrJUpZtfbhEfZiQTbTz02RC51mVhh2Kojb1RHgaQzgkvVntohdDNPqJKugxMHc0JDLXC
+	RcxT7Ibw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXy1O-0000000AeeT-3vKm;
-	Fri, 12 Jun 2026 09:17:50 +0000
-Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
+	id 1wXyL2-0000000AgMO-2Rg5;
+	Fri, 12 Jun 2026 09:38:08 +0000
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXy1M-0000000Aedk-2Vdp
+	id 1wXyKx-0000000AgJv-1wWX
 	for linux-mediatek@lists.infradead.org;
-	Fri, 12 Jun 2026 09:17:49 +0000
-Received: by mail-yw1-x1135.google.com with SMTP id 00721157ae682-7f69b71f7b2so7685397b3.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 12 Jun 2026 02:17:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1781255867; cv=none;
-        d=google.com; s=arc-20240605;
-        b=Uq4GLwgaC4gSuHg9bmrI8ctjbfUIzgOKV8gA57egl7o2vb/HkWeIDOoJ73wLedmkng
-         eQQhYYkrw+HUryk+bG70ciM4bXftbvrC0OYD8yaVE31kh+JnzDOtni5oEK9P4+r3VhiY
-         8t8Dcz+gMKCtqIWv9Q1mPtWMKgy5ETKAze6EMlvPitK1xMs1vdRQ74+U+fk3ZfKb7NSa
-         OePY1TdH0jZixnolUw4TNVeox586F0mNBJ7a7N91i69Zfnt/Drzh35EVQ5v9IgfRNSI+
-         7MWy+roqMsmDClAIyMJK4stdccZX6EeoDBnPVizREMVokVo4/v7p1v+H0x8FTWKZq5n6
-         V7nA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=hhcCFioqMSZRCk/5HvD/sKp69EwBtqpgSp4Ql/r2CVc=;
-        fh=K3XJJ29HDlCGrSE2Z5w2mYzkIA4DjJrXva0Pg+1p1SU=;
-        b=H0hXY5KagjpnXiopb9ovZcf08AL+hgib89tKaYKlr6xxp4oMo6QodD0GiHvoBEGSoI
-         8DAx+a1GslO5s1YVUNjUJWLhZ96uPZ8/sGlM1fMGVcxmHcMwJV+A4zNQVNf6hI8EFoAR
-         x4QsQgMCiFICcGpE9binsJ64F/f+L4PHRSDi731zgi9xJ/eH0ZXpOPz+RKVYoOTtw4qf
-         nQokqMrFnmYC2KHxiwFi1bELl9MBKtvy26fHtZv54Efuav7K/WtC+J6KYZuDv9jrISTA
-         iJbfQGS1O7CJLLoVSAgtf4iEdcHu54ziTXkl4CeCtpshfAvh48fcn9ZRg+DwniS982tR
-         UQ8w==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Fri, 12 Jun 2026 09:38:05 +0000
+Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-842848fd613so770199b3a.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 12 Jun 2026 02:38:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1781255867; x=1781860667; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
+        d=gmail.com; s=20251104; t=1781257082; x=1781861882; darn=lists.infradead.org;
+        h=cc:to:subject:date:from:message-id:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=hhcCFioqMSZRCk/5HvD/sKp69EwBtqpgSp4Ql/r2CVc=;
-        b=PmP/oXhtHrSfkT0f57kptGX7kFCbeW7QARvQQY4m0q5+Zog3wsolwqqUp9egT6ojue
-         dEYxiVjfsINQ1psyK1iKYiGLGy/JSDDCImFtFIGtFFCJ+lJG6WsiZMThRn9SvZH4OMZB
-         a/KSNg06outJgRm16vmZUx7F0sapFrYnhaeuU=
+        bh=mXbZalzcxo6/TsrxZQxu5oks4UtJk6D2CPv/MBaaCkM=;
+        b=k2Mn0P/uUC9ed2mETbi3bhZABZUXOdqtG+gu4dKTv0TlXGaJzHbbH4PZJEAilf622f
+         xBTiUQW4Rzklw8Q8MrFzhWXU/DlRw0LESMxw/C3b7cpj6rysbaMBsLNZv/X2zD0I00XD
+         uEutpbgkhlfysriPphR866zaf3BPBio7AhCcrirpGde0+C8Uebyp3O6rnTsf4t/vElX2
+         ycxad0ab+tq21EbkL97pOFDc8az/zTiF9zId8SYMQ5cnVaNpz8uFM7QRcZqu0DBd97i8
+         NfN4PkkWSSRL2//p6VsB/cbvZm5ZGaRqF84SicsjvmjgsriTZOmQ5hHU0uJRbhOoA04M
+         WNZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781255867; x=1781860667;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+        d=1e100.net; s=20251104; t=1781257082; x=1781861882;
+        h=cc:to:subject:date:from:message-id:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=hhcCFioqMSZRCk/5HvD/sKp69EwBtqpgSp4Ql/r2CVc=;
-        b=g8wmWsIxXHqxf5i9rLFvEYTlPyWCVvZ5rFMBSm9CVp+YKtvWD9Ihahl+fG8vKBsPpH
-         u+HQrQhLQeIbXvhmmi2GdcNwji1e6r08BWyAEkW6xfCxBVCG2Orqs/VcXcZAI/zY7nTo
-         qI7kG+ApvT0xR+155bdEmL5sMK2VOikd/fEVoc9SWvmN8JtdyXs5+a6hU0b3c5CUaxA4
-         yOleH2L113qOEWnCF4F9Rt3RIxdhOpyADgNNsMkhmlPst9J2riMngSR/S+bn0v/X3PfL
-         eXXcnCqD0AAbI6YHDb03MdGGFKTUFJKcso9kTwVmbzrSwmIT1pXNC3EK5BQU2hkhXf7/
-         bctg==
-X-Forwarded-Encrypted: i=1; AFNElJ8cnuov5cXjwxd5osOb8j7n+DKOrJqX4TrNc7NVrm83Qa+Cx7GQ5hIQsWghhA7DKFmVoYNdnx1XlM1aqEMMWA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwI2AAtJ2E5SQGtW0zIiC/NM+/c9A5ZwaI7R85t5m9yOSRxHsOt
-	uqGLC2EQq0LINsw3dZ6xbdTRo/78FB9e2cHX058yNlZx7kAUvRCt9djbwIMAW9PAbpanoPRSDPW
-	zkKwA6V80kFOIy47IYyk8u/K6od+hqO2TpLB66jbY
-X-Gm-Gg: Acq92OHGUjhsUQtDGjesXJ0ZkSbbuE9rBE5Muv2UeSSJKqLka9kbJE+u+6D/4/4g/BR
-	FTz876fXWs7mK/muuzgaV1tmSvR/W16Bm7YYUF2t7+yvV9t6PAb8t4LcpNnmYvrpIvZjuBLVBA/
-	bb9bfaEXEpt5O+3oJxkZ1a1ijqNHbQH/9R354S7pv0Xhw4ymYIca++qhev28v0/ddrXlFfjiYhn
-	MLYa2pYvBaBoz3OV1GF8JMdHVM6t02ST8rlMNOww0JlBSSsVtim55lACT2EoHvkv6WvdVm5xaF/
-	u0XFuoGJ
-X-Received: by 2002:a05:690c:3a0:b0:7cf:af41:50b0 with SMTP id
- 00721157ae682-7f7b8d248damr20618557b3.36.1781255867482; Fri, 12 Jun 2026
- 02:17:47 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260610084053.2059858-1-wenst@chromium.org> <20260610084053.2059858-12-wenst@chromium.org>
- <ail2VcubjT7HNGUC@ashevche-desk.local>
-In-Reply-To: <ail2VcubjT7HNGUC@ashevche-desk.local>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 12 Jun 2026 18:17:35 +0900
-X-Gm-Features: AVVi8CeDuG6qw5zFxFcHgtnnMaKWsSajO4ZT4D-k-SPwtRIr1WJR_hE6bMB1VZI
-Message-ID: <CAGXv+5GNfWFinO1E=5X46xnBsQpY-_i45mq60eeQu=U3Z0MtDA@mail.gmail.com>
-Subject: Re: [PATCH v2 11/16] power: sequencing: pcie-m2: Add usb and sdio
- targets for E-key connector
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Bartosz Golaszewski <brgl@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Daniel Scally <djrscally@gmail.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
-	Sakari Ailus <sakari.ailus@linux.intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Alan Stern <stern@rowland.harvard.edu>, linux-acpi@vger.kernel.org, 
-	driver-core@lists.linux.dev, linux-pm@vger.kernel.org, 
-	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Manivannan Sadhasivam <mani@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+        bh=mXbZalzcxo6/TsrxZQxu5oks4UtJk6D2CPv/MBaaCkM=;
+        b=m8nLbWPKw43CuvQV4slyf9vk2T5wLQVoqy0aALYz9FEzYYwzvC43J7cvE5//JquYa4
+         BgAEQzhFkq8ad17z3RErPga13T+rUaPMqdvmLTufjCjGZF/xNG7MvYUmFAG+q2ZznGHM
+         A0oZCND/0dbWztHK0zCCA/bdwtSwC5H6Jlb+pD+IKfbstvhbucGkzi0GV6lH9X4BDGe8
+         dqkGGLmAwa4/qDO+0j9ZwD7vKAsv0kJ3mESc3aeiZh2dl+RDHGHVIIwE3JrDrnuy4K3H
+         0/TvyFrjSdaI/zgRJ1nG1xfdrgBQbWRVMWZ9Wtcs2pFca09Kvfs2kvVjbdgAsO7RpdDY
+         UpOw==
+X-Forwarded-Encrypted: i=1; AFNElJ8yt6A8cDoniscJNHrZ4aj3CoSqJkn/O+niBcO3LVWP2p6H8DyuI9PwnRlpMIyXQUC9jWZviuEH/X/NKKQcMw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxDG+fv2IBTKUHNQ/EifaPhxnUOeRyB2rbeA6eLlAmE2W3YK8nw
+	2Wj8cvWuhzHPVpnV/pI5UyweAd8z4jv0U4T0x/7dy4BqxjN6onap+/Cz
+X-Gm-Gg: Acq92OFvZVkUOimUfHGs5IrwuCWItVI8SHQPzyEExGRy+9Sg2/MPTMYRcOsP0vwSGm4
+	6JNKu1hcRTEv9a8aA2IV3pUjrEo9G1tk2kzHFMvg3P3gROBRTU44YDQX89CdcimWeMJFdrsTQZp
+	wVAlgvb3x99o7whFt+NFieyNWBWcgdFpx2cWQ0LDUJQjXX8Ycu7vWGx5PNdRc/xvk1ukTmYtPz3
+	4c4miooWboLqLznxwinrz+wppMaG64hgGN1amA5epsBc7CifF4uaihWjIzwMoZ4Q8jG2KYsR9JQ
+	0ru2DoJicd2dEWrpnVXnH3roJ/DfeMqYBape6SaF8EPAHG994LD1CgJRIzbIOhE7J2zrQ9sHcX2
+	3rnkFl9/qRUToTDnvyFzaMDOkDjJkyhzDxHskpXpOpr2JAPHfVXFT9Nd1mXyfgvqvJMantiAyPE
+	Q8CTGU+h0cAsLVCVNM
+X-Received: by 2002:a05:6a00:12cd:b0:842:3801:47f with SMTP id d2e1a72fcca58-8434cec2dc3mr2271540b3a.17.1781257082521;
+        Fri, 12 Jun 2026 02:38:02 -0700 (PDT)
+Received: from [127.0.1.1] ([47.253.114.73])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-8434b04b6bbsm1724054b3a.56.2026.06.12.02.38.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 12 Jun 2026 02:38:02 -0700 (PDT)
+Message-ID: <6a2bd37a.4034e349.1b41bb.1caf@mx.google.com>
+From: "Wayen.Yan" <win847@gmail.com>
+Date: Fri, 12 Jun 2026 17:37:00 +0800
+Subject: [PATCH v2] net: airoha: Fix error handling in
+ airoha_ppe_flush_sram_entries()
+To: netdev@vger.kernel.org
+Cc: lorenzo@kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260612_021748_670806_25C712F3 
-X-CRM114-Status: GOOD (  13.66  )
+X-CRM114-CacheID: sfid-20260612_023803_521945_815DEF25 
+X-CRM114-Status: GOOD (  10.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,28 +91,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 10, 2026 at 11:36=E2=80=AFPM Andy Shevchenko
-<andriy.shevchenko@linux.intel.com> wrote:
->
-> On Wed, Jun 10, 2026 at 04:40:45PM +0800, Chen-Yu Tsai wrote:
-> > The M.2 E-key connector allows either PCIe or SDIO for WiFi and USB or
-> > UART for BT. Currently the driver only supports PCIe and UART.
-> >
-> > Add power sequencing targets for SDIO and USB. To avoid adding a
-> > complicated dependency tree, rename the existing power sequencing units
-> > "pcie" and "uart" to "wifi" and "bt". The existing target names are lef=
-t
-> > untouched. The new "sdio" and "usb" targets just point to the renamed
-> > "wifi" and "bt" units.
->
-> Why can we do that? No breakage? Only internal names? No ABI affected?
-> Please, clarify all this in the commit message.
+In airoha_ppe_flush_sram_entries(), the outer "err" variable was never
+updated when the inner loop variable shadowed it, causing the function
+to always return 0 even when airoha_ppe_foe_commit_sram_entry() fails.
 
-Will do.
+Drop the outer "err" variable and return directly on error, propagating
+the error code from airoha_ppe_foe_commit_sram_entry() correctly.
 
-In short, the target names (which are not modified) are used by the
-consumer, while the unit names are internal only.
+Fixes: 620d7b91aadb ("net: airoha: ppe: Flush PPE SRAM table during PPE setup")
+Link: https://lore.kernel.org/netdev/6a2b40e4.4dd82583.3a5c46.e52f@mx.google.com/
+Signed-off-by: Wayen.Yan <win847@gmail.com>
+---
+ drivers/net/ethernet/airoha/airoha_ppe.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
+index 5c9dff6..a124f15 100644
+--- a/drivers/net/ethernet/airoha/airoha_ppe.c
++++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+@@ -1330,7 +1330,7 @@ static int airoha_ppe_flush_sram_entries(struct airoha_ppe *ppe)
+ {
+ 	u32 sram_num_entries = airoha_ppe_get_total_sram_num_entries(ppe);
+ 	struct airoha_foe_entry *hwe = ppe->foe;
+-	int i, err = 0;
++	int i;
+ 
+ 	for (i = 0; i < sram_num_entries; i++) {
+ 		int err;
+@@ -1338,10 +1338,10 @@ static int airoha_ppe_flush_sram_entries(struct airoha_ppe *ppe)
+ 		memset(&hwe[i], 0, sizeof(*hwe));
+ 		err = airoha_ppe_foe_commit_sram_entry(ppe, i);
+ 		if (err)
+-			break;
++			return err;
+ 	}
+ 
+-	return err;
++	return 0;
+ }
+ 
+ static struct airoha_npu *airoha_ppe_npu_get(struct airoha_eth *eth)
+-- 
+2.51.0
 
 
-ChenYu
 
