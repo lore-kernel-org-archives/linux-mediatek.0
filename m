@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D41FCD98D9
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B0EECD8CA8
 	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2026 07:53:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WAuAgBwtFEMeA84wPFhPHC34qWIAJbjo492VfCBox9U=; b=O7/1fm+31juF5Xo1zuPrIkTZhz
-	NbBrR/dLfEVDHXKc5NhIXe3Xvju7R43976F1FoCcCKymHxHYSYBgLwUd036eTwjqoDM8f8rAyfYeo
-	sIEhXAPQVHyBYB2SLJF9MhYriZQL1Hq3H2/i7oXY19iPSE4Uj7t9Bpd8Xgxpgdn3tFwHqaUXcDjqM
-	Aln7JKPf6Srn336px9LwwNGEyqVfze5RCQjlDkr9zgNIj/8wTz7SVitXbRn8ImnARHdF4CZSck34I
-	Ak5xtGbKGNUAAedpYUAY6HqlhttyS1CUAdjWgQ6bb78oEbuJ6RehK+G9bXnALLGcP1YTnKwMgKntU
-	yHzCvrpA==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Zu5+lgG1lSQDeEGMLIemVp/Tnwajv9NSNAL97fAz68k=; b=JOfoGzK2AYlAEjirXq+c6Wpmy6
+	y0MiH85MZuOmacYsW0VsPiiImIk1TGZcI/KTwVxpiQ6W4tL0KS4Yx+Dk8OYIezMAQjJsRokIOI8LM
+	3DRSVXmIdMRtn72qeI+8A92BDmzbu9BivTNqUffY+u9w2SWg1+rCkCcqt0ia2FchY6EnWYNedziyT
+	qvYBHP5SOPn08uWtV7shvrVqpoZbYuC/98bhiALmEpSJYblqB0p+Pe9mk3aBM/+4V706/IoS4Uonm
+	0euc4RdX170JrXgfsfFvuO1nTSeAXu5tGrf0lIXmV0QffY7Kq96z5fJ6NlUcOhxSg2d5ZXgQZLG01
+	YTLLEIRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXwi8-0000000AVsO-0aTA;
+	id 1wXwi8-0000000AVsd-1CRT;
 	Fri, 12 Jun 2026 07:53:52 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXwi4-0000000AVpj-40pP
+	id 1wXwi4-0000000AVph-2weN
 	for linux-mediatek@lists.infradead.org;
 	Fri, 12 Jun 2026 07:53:50 +0000
-X-UUID: d5e2f704663311f1acbe4559397dec65-20260612
+X-UUID: d4ebb8d6663311f1afed4741b24580c9-20260612
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=WAuAgBwtFEMeA84wPFhPHC34qWIAJbjo492VfCBox9U=;
-	b=mbwkgB/CdDbUhlrS/rGyAQFIo3fkpzTgi6npPuDnHCFWmp9vsmPqHYPUYsc/HM5fda9jWxkTUsUcymtWvVr4D3JKNERe2aRIfZTyc3paqgnst+X+8nXPbgadTUHBliMypQyDO68/ITXyjxh7O91/rcowa8yFeTXptuC0wowA6NY=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Zu5+lgG1lSQDeEGMLIemVp/Tnwajv9NSNAL97fAz68k=;
+	b=k8ieDteCvyTvDPT0t+MfZC+CWDzz8YNXDAXekutRB7JsFWrLww1XBPeS+LqSabM6VpsAnPRkyZH4CXFP6ec5mcbGRf9di/IwNQ5QUD1r4BDagZE30UWgtgopWcgj9wCe+Wn6rrm8XnqHTPSupi1xKQPq9lHFSI5gMkCJfH6A4B8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.15,REQID:1b7cb297-d3df-40c3-8f14-c38a1d9d801b,IP:0,U
+X-CID-O-INFO: VERSION:1.3.15,REQID:ddf9ddf8-70d8-447b-81c2-53afe4064435,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:e276073,CLOUDID:1d7ab230-7784-4a77-a538-47ed6151d81b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|865|888|898,TC:-5,Cont
-	ent:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0
-	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:e276073,CLOUDID:057ab230-7784-4a77-a538-47ed6151d81b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|136|836|865|888|898,TC:-5,Conten
+	t:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,O
+	SI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: d5e2f704663311f1acbe4559397dec65-20260612
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+X-UUID: d4ebb8d6663311f1afed4741b24580c9-20260612
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
 	(envelope-from <jb.tsai@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 333073234; Fri, 12 Jun 2026 00:53:44 -0700
+	with ESMTP id 2733395; Fri, 12 Jun 2026 00:53:42 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Fri, 12 Jun 2026 15:53:41 +0800
+ 15.2.2562.29; Fri, 12 Jun 2026 15:53:40 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Fri, 12 Jun 2026 15:53:41 +0800
+ 15.2.2562.29 via Frontend Transport; Fri, 12 Jun 2026 15:53:40 +0800
 From: JB Tsai <jb.tsai@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo@kernel.org>
 CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
@@ -62,19 +62,17 @@ CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
 	<Ryder.Lee@mediatek.com>, <Leon.Yen@mediatek.com>,
 	<litien.chang@mediatek.com>, <emery.hsin@mediatek.com>,
 	<jb.tsai@mediatek.com>, Xiong <xiong.huang@mediatek.com>
-Subject: [PATCH 18/20] wifi: mt76: mt7925: align scan IE and EFUSE TLV lengths to 4 bytes for MT7928
-Date: Fri, 12 Jun 2026 15:53:37 +0800
-Message-ID: <20260612075339.2578327-3-jb.tsai@mediatek.com>
+Subject: [PATCH 16/20] wifi: mt76: mt7925: add MT7928 TXD/TXS/TX_DONE support
+Date: Fri, 12 Jun 2026 15:53:35 +0800
+Message-ID: <20260612075339.2578327-1-jb.tsai@mediatek.com>
 X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20260612075339.2578327-1-jb.tsai@mediatek.com>
-References: <20260612075339.2578327-1-jb.tsai@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260612_005349_245156_049ADD24 
-X-CRM114-Status: GOOD (  11.33  )
+X-CRM114-CacheID: sfid-20260612_005349_254860_0123D94F 
+X-CRM114-Status: GOOD (  19.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,70 +89,501 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Emery Hsin <emery.hsin@mediatek.com>
 
-MT7928 firmware requires 4-byte aligned TLV payloads. Round up
-UNI_SCAN_IE allocation with ALIGN(..., 4) and track padded length.
+Add MT7928 TXD v2 fields, per-chip WTBL register addresses, UNI
+TxDone event parsing, and TXS format acceptance for MPDU/PPDU.
+Suppress HW AMSDU on management frames for MT7928.
 
 Signed-off-by: Xiong <xiong.huang@mediatek.com>
 Signed-off-by: Emery Hsin <emery.hsin@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 16 +++++++++++-----
- 1 file changed, 11 insertions(+), 5 deletions(-)
+ .../net/wireless/mediatek/mt76/mt76_connac.h  |   1 +
+ .../wireless/mediatek/mt76/mt76_connac3_mac.h |  42 ++++
+ .../net/wireless/mediatek/mt76/mt7925/mac.c   | 219 +++++++++++++++++-
+ .../net/wireless/mediatek/mt76/mt7925/mac.h   |   9 +-
+ .../net/wireless/mediatek/mt76/mt7925/mcu.c   |  25 ++
+ .../wireless/mediatek/mt76/mt7925/mt7925.h    |   1 +
+ .../net/wireless/mediatek/mt76/mt7925/regs.h  |   6 +
+ 7 files changed, 291 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index ffe687afcf6e..e8edc8c1acca 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -1582,7 +1582,8 @@ int mt7925_mcu_set_eeprom(struct mt792x_dev *dev)
- 		.tag = cpu_to_le16(UNI_EFUSE_BUFFER_MODE),
- 		.len = cpu_to_le16(sizeof(req) - 4),
- 		.buffer_mode = EE_MODE_EFUSE,
--		.format = EE_FORMAT_WHOLE
-+		.format = EE_FORMAT_WHOLE,
-+		.buf_len = 0
- 	};
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac.h b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
+index e21c393bb26d..f99a512145c5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
+@@ -300,6 +300,7 @@ static inline bool is_mt76_fw_txp(struct mt76_dev *dev)
+ 	case 0x7902:
+ 	case 0x7925:
+ 	case 0x7927:
++	case 0x7928:
+ 	case 0x7663:
+ 	case 0x7622:
+ 		return false;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac3_mac.h b/drivers/net/wireless/mediatek/mt76/mt76_connac3_mac.h
+index 247e2e7a47d8..d2d63767bfd0 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac3_mac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac3_mac.h
+@@ -18,6 +18,11 @@ enum {
+ 	MT_LMAC_PSMP0,
+ };
  
- 	return mt76_mcu_send_and_get_msg(&dev->mt76, MCU_UNI_CMD(EFUSE_CTRL),
-@@ -3036,11 +3037,11 @@ mt7925_mcu_build_scan_ie_tlv(struct mt76_dev *mdev,
- 			     struct ieee80211_scan_ies *scan_ies)
- {
- 	u32 max_len = sizeof(struct scan_ie_tlv) + MT76_CONNAC_SCAN_IE_LEN;
-+	u32 ies_len, alloc_len;
- 	struct scan_ie_tlv *ie;
- 	enum nl80211_band i;
- 	struct tlv *tlv;
- 	const u8 *ies;
--	u16 ies_len;
- 
- 	for (i = 0; i <= NL80211_BAND_6GHZ; i++) {
- 		if (i == NL80211_BAND_60GHZ)
-@@ -3052,11 +3053,16 @@ mt7925_mcu_build_scan_ie_tlv(struct mt76_dev *mdev,
- 		if (!ies || !ies_len)
- 			continue;
- 
--		if (ies_len > max_len)
-+		if (is_mt7928(mdev))
-+			alloc_len = ALIGN(sizeof(*ie) + ies_len, 4);
-+		else
-+			alloc_len = sizeof(*ie) + ies_len;
++enum {
++	TXS_FM_MPDU = 0,
++	TXS_FM_PPDU = 2,
++};
 +
-+		if (alloc_len > max_len)
- 			return;
+ #define MT_CT_PARSE_LEN			72
+ #define MT_CT_DMA_BUF_NUM		2
  
- 		tlv = mt76_connac_mcu_add_tlv(skb, UNI_SCAN_IE,
--					      sizeof(*ie) + ies_len);
-+					      alloc_len);
- 		ie = (struct scan_ie_tlv *)tlv;
+@@ -236,7 +241,9 @@ enum tx_frag_idx {
+ #define MT_TXD2_HDR_PAD			GENMASK(11, 10)
+ #define MT_TXD2_RTS			BIT(9)
+ #define MT_TXD2_OWN_MAC_MAP		BIT(8)
++#define MT_TXD2_OWN_MAC_MAP_V2		BIT(9)
+ #define MT_TXD2_BF_TYPE			GENMASK(6, 7)
++#define MT_TXD2_BF_TYPE_V2		GENMASK(6, 8)
+ #define MT_TXD2_FRAME_TYPE		GENMASK(5, 4)
+ #define MT_TXD2_SUB_TYPE		GENMASK(3, 0)
  
- 		memcpy(ie->ies, ies, ies_len);
-@@ -3074,7 +3080,7 @@ mt7925_mcu_build_scan_ie_tlv(struct mt76_dev *mdev,
- 			break;
- 		}
+@@ -261,6 +268,7 @@ enum tx_frag_idx {
+ #define MT_TXD5_BYPASS_TBB		BIT(14)
+ #define MT_TXD5_BYPASS_RBB		BIT(13)
+ #define MT_TXD5_BSS_COLOR_ZERO		BIT(12)
++#define MT_TXD5_OCUP_BY_OTHER_LNK	BIT(11)
+ #define MT_TXD5_TX_STATUS_HOST		BIT(10)
+ #define MT_TXD5_TX_STATUS_MCU		BIT(9)
+ #define MT_TXD5_TX_STATUS_FMT		BIT(8)
+@@ -270,15 +278,19 @@ enum tx_frag_idx {
+ #define MT_TXD6_VTA			BIT(28)
+ #define MT_TXD6_FIXED_BW		BIT(25)
+ #define MT_TXD6_BW			GENMASK(24, 22)
++#define MT_TXD6_BW_V2			GENMASK(25, 22)
+ #define MT_TXD6_TX_RATE			GENMASK(21, 16)
+ #define MT_TXD6_TIMESTAMP_OFS_EN	BIT(15)
++#define MT_TXD6_TIMESTAMP_OFS_EN_V2	GENMASK(15, 13)
+ #define MT_TXD6_TIMESTAMP_OFS_IDX	GENMASK(14, 10)
++#define MT_TXD6_TIMESTAMP_OFS_IDX_V2	GENMASK(12, 8)
+ #define MT_TXD6_TID_ADDBA		GENMASK(10, 8)
+ #define MT_TXD6_MSDU_CNT		GENMASK(9, 4)
+ #define MT_TXD6_MSDU_CNT_V2		GENMASK(15, 10)
+ #define MT_TXD6_DIS_MAT			BIT(3)
+ #define MT_TXD6_DAS			BIT(2)
+ #define MT_TXD6_AMSDU_CAP		BIT(1)
++#define MT_TXD6_MLD			BIT(0)
  
--		max_len -= (sizeof(*ie) + ies_len);
-+		max_len -= alloc_len;
- 	}
+ #define MT_TXD7_TXD_LEN			GENMASK(31, 30)
+ #define MT_TXD7_IP_SUM			BIT(29)
+@@ -287,6 +299,9 @@ enum tx_frag_idx {
+ #define MT_TXD7_CTXD			BIT(26)
+ #define MT_TXD7_CTXD_CNT		GENMASK(25, 22)
+ #define MT_TXD7_UDP_TCP_SUM		BIT(15)
++#define MT_TXD7_IMMEDIATE_TX		BIT(14)
++#define MT_TXD7_FORCE_RTS_CTS		BIT(13)
++#define MT_TXD7_ENABLE_ICI		BIT(12)
+ #define MT_TXD7_TX_TIME			GENMASK(9, 0)
+ 
+ #define MT_TXD9_WLAN_IDX		GENMASK(23, 8)
+@@ -397,4 +412,31 @@ enum tx_frag_idx {
+ #define MT_TXS7_MPDU_RETRY_BYTE_SCALE	BIT(15)
+ #define MT_TXS7_MPDU_RETRY_BYTE		GENMASK(14, 0)
+ 
++struct mt7928_uni_txdone_event {
++	__le16  tag;
++	__le16  len;
++
++	u8      pid;            /* HW packet ID */
++	u8      status;         /* TX_RESULT_xx */
++	__le16  seq;            /* packet sequence number */
++
++	u8      wcid;           /* WLAN index (WTBL) */
++	u8      tx_count;       /* TX attempts including retries */
++	__le16  tx_rate;
++
++	u8      flag;           /* TXS_WITH_ADVANCED_INFO or TXS_IS_EXIST */
++	u8      tid;
++	u8      rsp_rate;
++	u8      rate_tbl_idx;   /* last TX rate index from WLAN table */
++
++	u8      bw;             /* bandwidth used for this PPDU */
++	u8      tx_pwr;         /* dBm */
++	u8      flush_reason;
++	u8      rsv[1];
++
++	__le32  tx_delay;       /* unit: 32us, UMAC TX to TX status */
++	__le32  timestamp;      /* local TSF at first bit of MAC header */
++	__le32  applied_flags;
++} __packed;
++
+ #endif /* __MT76_CONNAC3_MAC_H */
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
+index 44d5a1e7e415..b7038bfa12c3 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
+@@ -12,10 +12,17 @@
+ 
+ bool mt7925_mac_wtbl_update(struct mt792x_dev *dev, int idx, u32 mask)
+ {
+-	mt76_rmw(dev, MT7925_WTBL_UPDATE, MT_WTBL_UPDATE_WLAN_IDX,
++	u32 wtbl_update;
++
++	if (is_mt7928(&dev->mt76))
++		wtbl_update = MT7928_WTBL_UPDATE;
++	else
++		wtbl_update = MT7925_WTBL_UPDATE;
++
++	mt76_rmw(dev, wtbl_update, MT_WTBL_UPDATE_WLAN_IDX,
+ 		 FIELD_PREP(MT_WTBL_UPDATE_WLAN_IDX, idx) | mask);
+ 
+-	return mt76_poll(dev, MT7925_WTBL_UPDATE, MT_WTBL_UPDATE_BUSY,
++	return mt76_poll(dev, wtbl_update, MT_WTBL_UPDATE_BUSY,
+ 			 0, 5000);
  }
  
+@@ -159,10 +166,17 @@ void mt7925_mac_set_fixed_rate_table(struct mt792x_dev *dev,
+ {
+ 	u32 ctrl = MT_WTBL_ITCR_WR | MT_WTBL_ITCR_EXEC | tbl_idx;
+ 
+-	mt76_wr(dev, MT_WTBL_ITDR0, rate_idx);
+-	/* use wtbl spe idx */
+-	mt76_wr(dev, MT_WTBL_ITDR1, MT_WTBL_SPE_IDX_SEL);
+-	mt76_wr(dev, MT_WTBL_ITCR, ctrl);
++	if (is_mt7928(&dev->mt76)) {
++		mt76_wr(dev, MT7928_WTBL_ITDR0, rate_idx);
++		/* use wtbl spe idx */
++		mt76_wr(dev, MT7928_WTBL_ITDR1, MT_WTBL_SPE_IDX_SEL);
++		mt76_wr(dev, MT7928_WTBL_ITCR, ctrl);
++	} else {
++		mt76_wr(dev, MT_WTBL_ITDR0, rate_idx);
++		/* use wtbl spe idx */
++		mt76_wr(dev, MT_WTBL_ITDR1, MT_WTBL_SPE_IDX_SEL);
++		mt76_wr(dev, MT_WTBL_ITCR, ctrl);
++	}
+ }
+ 
+ /* The HW does not translate the mac header to 802.3 for mesh point */
+@@ -705,6 +719,9 @@ mt7925_mac_write_txwi_80211(struct mt76_dev *dev, __le32 *txwi,
+ 
+ 	txwi[2] |= cpu_to_le32(val);
+ 
++	if (is_mt7928(dev) && ieee80211_is_mgmt(hdr->frame_control))
++		txwi[3] &= ~cpu_to_le32(MT_TXD3_HW_AMSDU);
++
+ 	txwi[3] |= cpu_to_le32(FIELD_PREP(MT_TXD3_BCM, multicast));
+ 	if (ieee80211_is_beacon(fc))
+ 		txwi[3] |= cpu_to_le32(MT_TXD3_REM_TX_COUNT);
+@@ -808,7 +825,11 @@ mt7925_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
+ 
+ 	txwi[5] = cpu_to_le32(val);
+ 
+-	val = MT_TXD6_DAS | FIELD_PREP(MT_TXD6_MSDU_CNT, 1);
++	if (is_mt7928(dev))
++		val = MT_TXD6_DAS | FIELD_PREP(MT_TXD6_MSDU_CNT_V2, 1);
++	else
++		val = MT_TXD6_DAS | FIELD_PREP(MT_TXD6_MSDU_CNT, 1);
++
+ 	if (vif && (!ieee80211_vif_is_mld(vif) ||
+ 	    (q_idx >= MT_LMAC_ALTX0 && q_idx <= MT_LMAC_BCN0)))
+ 		val |= MT_TXD6_DIS_MAT;
+@@ -836,6 +857,10 @@ mt7925_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
+ 		}
+ 
+ 		txwi[6] |= cpu_to_le32(FIELD_PREP(MT_TXD6_TX_RATE, idx));
++
++		if (is_mt7928(dev))
++			txwi[6] |= cpu_to_le32(FIELD_PREP(MT_TXD6_BW_V2, 8));
++
+ 		txwi[3] |= cpu_to_le32(MT_TXD3_BA_DISABLE);
+ 	}
+ }
+@@ -916,7 +941,6 @@ mt7925_mac_add_txs_skb(struct mt792x_dev *dev, struct mt76_wcid *wcid,
+ 		goto out_no_skb;
+ 
+ 	txs = le32_to_cpu(txs_data[0]);
+-
+ 	info = IEEE80211_SKB_CB(skb);
+ 	if (!(txs & MT_TXS0_ACK_ERROR_MASK))
+ 		info->flags |= IEEE80211_TX_STAT_ACK;
+@@ -1033,15 +1057,188 @@ mt7925_mac_add_txs_skb(struct mt792x_dev *dev, struct mt76_wcid *wcid,
+ 	return !!skb;
+ }
+ 
+-void mt7925_mac_add_txs(struct mt792x_dev *dev, void *data)
++static bool
++mt7928_mac_add_txs_skb_msg(struct mt792x_dev *dev, struct mt76_wcid *wcid,
++			   int pid, struct mt7928_uni_txdone_event *pevt)
+ {
++	struct mt76_sta_stats *stats = &wcid->stats;
++	struct ieee80211_supported_band *sband;
++	struct mt76_dev *mdev = &dev->mt76;
++	struct ieee80211_tx_info *info;
++	struct sk_buff_head list;
++	u32 txrate, mode, stbc;
++	struct rate_info rate;
++	struct mt76_phy *mphy;
++	struct sk_buff *skb;
++	bool cck = false;
++
++	mt76_tx_status_lock(mdev, &list);
++	skb = mt76_tx_status_skb_get(mdev, wcid, pid, &list);
++	if (!skb)
++		goto out_no_skb;
++
++	info = IEEE80211_SKB_CB(skb);
++	if (!pevt->status)
++		info->flags |= IEEE80211_TX_STAT_ACK;
++
++	info->status.ampdu_len = 1;
++	info->status.ampdu_ack_len = !!(info->flags &
++					IEEE80211_TX_STAT_ACK);
++
++	info->status.rates[0].idx = -1;
++
++	txrate = pevt->tx_rate;
++
++	rate.mcs = FIELD_GET(MT_TX_RATE_IDX, txrate);
++	rate.nss = FIELD_GET(MT_TX_RATE_NSS, txrate) + 1;
++	stbc = FIELD_GET(MT_TX_RATE_STBC, txrate);
++
++	if (stbc && rate.nss > 1)
++		rate.nss >>= 1;
++
++	if (rate.nss - 1 < ARRAY_SIZE(stats->tx_nss))
++		stats->tx_nss[rate.nss - 1]++;
++	if (rate.mcs < ARRAY_SIZE(stats->tx_mcs))
++		stats->tx_mcs[rate.mcs]++;
++
++	mode = FIELD_GET(MT_TX_RATE_MODE, txrate);
++	switch (mode) {
++	case MT_PHY_TYPE_CCK:
++		cck = true;
++		fallthrough;
++	case MT_PHY_TYPE_OFDM:
++		mphy = mt76_dev_phy(mdev, wcid->phy_idx);
++
++		if (mphy->chandef.chan->band == NL80211_BAND_5GHZ)
++			sband = &mphy->sband_5g.sband;
++		else if (mphy->chandef.chan->band == NL80211_BAND_6GHZ)
++			sband = &mphy->sband_6g.sband;
++		else
++			sband = &mphy->sband_2g.sband;
++
++		rate.mcs = mt76_get_rate(mphy->dev, sband, rate.mcs, cck);
++		rate.legacy = sband->bitrates[rate.mcs].bitrate;
++		break;
++	case MT_PHY_TYPE_HT:
++	case MT_PHY_TYPE_HT_GF:
++		if (rate.mcs > 31)
++			goto out;
++
++		rate.flags = RATE_INFO_FLAGS_MCS;
++		if (wcid->rate.flags & RATE_INFO_FLAGS_SHORT_GI)
++			rate.flags |= RATE_INFO_FLAGS_SHORT_GI;
++		break;
++	case MT_PHY_TYPE_VHT:
++		if (rate.mcs > 9)
++			goto out;
++
++		rate.flags = RATE_INFO_FLAGS_VHT_MCS;
++		break;
++	case MT_PHY_TYPE_HE_SU:
++	case MT_PHY_TYPE_HE_EXT_SU:
++	case MT_PHY_TYPE_HE_TB:
++	case MT_PHY_TYPE_HE_MU:
++		if (rate.mcs > 11)
++			goto out;
++
++		rate.he_gi = wcid->rate.he_gi;
++		rate.he_dcm = FIELD_GET(MT_TX_RATE_DCM, txrate);
++		rate.flags = RATE_INFO_FLAGS_HE_MCS;
++		break;
++	case MT_PHY_TYPE_EHT_SU:
++	case MT_PHY_TYPE_EHT_TRIG:
++	case MT_PHY_TYPE_EHT_MU:
++		if (rate.mcs > 13)
++			goto out;
++
++		rate.eht_gi = wcid->rate.eht_gi;
++		rate.flags = RATE_INFO_FLAGS_EHT_MCS;
++		break;
++	default:
++		goto out;
++	}
++
++	stats->tx_mode[mode]++;
++
++	switch (pevt->bw) {
++	case IEEE80211_STA_RX_BW_160:
++		rate.bw = RATE_INFO_BW_160;
++		stats->tx_bw[3]++;
++		break;
++	case IEEE80211_STA_RX_BW_80:
++		rate.bw = RATE_INFO_BW_80;
++		stats->tx_bw[2]++;
++		break;
++	case IEEE80211_STA_RX_BW_40:
++		rate.bw = RATE_INFO_BW_40;
++		stats->tx_bw[1]++;
++		break;
++	default:
++		rate.bw = RATE_INFO_BW_20;
++		stats->tx_bw[0]++;
++		break;
++	}
++	wcid->rate = rate;
++
++out:
++	mt76_tx_status_skb_done(mdev, skb, &list);
++
++out_no_skb:
++	mt76_tx_status_unlock(mdev, &list);
++
++	return !!skb;
++}
++
++void mt7928_mac_add_txs_msg(struct mt792x_dev *dev,
++			    void *evt)
++{
++	struct mt7928_uni_txdone_event *done_evt;
+ 	struct mt792x_link_sta *mlink = NULL;
+ 	struct mt76_wcid *wcid;
+-	__le32 *txs_data = data;
+ 	u16 wcidx;
+ 	u8 pid;
+ 
+-	if (le32_get_bits(txs_data[0], MT_TXS0_TXS_FORMAT) > 1)
++	done_evt = (struct mt7928_uni_txdone_event *)evt;
++	wcidx = done_evt->wcid;
++	pid = done_evt->pid;
++
++	if (pid < MT_PACKET_ID_FIRST)
++		return;
++
++	if (wcidx >= MT792x_WTBL_SIZE)
++		return;
++
++	rcu_read_lock();
++
++	wcid = mt76_wcid_ptr(dev, wcidx);
++	if (!wcid)
++		goto out;
++
++	mlink = container_of(wcid, struct mt792x_link_sta, wcid);
++
++	mt7928_mac_add_txs_skb_msg(dev, wcid, pid, done_evt);
++	if (!wcid->sta)
++		goto out;
++
++	mt76_wcid_add_poll(&dev->mt76, &mlink->wcid);
++
++out:
++	rcu_read_unlock();
++}
++
++void mt7925_mac_add_txs(struct mt792x_dev *dev, void *data)
++{
++	struct mt792x_link_sta *mlink = NULL;
++	__le32 *txs_data = data;
++	struct mt76_wcid *wcid;
++	u8 pid, txs_fm;
++	u16 wcidx;
++
++	txs_fm = le32_get_bits(txs_data[0], MT_TXS0_TXS_FORMAT);
++
++	if (is_mt7928(&dev->mt76) && txs_fm != TXS_FM_MPDU && txs_fm != TXS_FM_PPDU)
++		return;
++	else if (txs_fm > 1)
+ 		return;
+ 
+ 	wcidx = le32_get_bits(txs_data[2], MT_TXS2_WCID);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mac.h b/drivers/net/wireless/mediatek/mt76/mt7925/mac.h
+index 67148c87de76..567d072cba02 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mac.h
+@@ -14,7 +14,14 @@
+ 
+ static inline u32 mt7925_mac_wtbl_lmac_addr(struct mt792x_dev *dev, u16 wcid, u8 dw)
+ {
+-	mt76_wr(dev, MT7925_WTBLON_TOP_WDUCR,
++	u32 wdu_cr;
++
++	if (is_mt7928(&dev->mt76))
++		wdu_cr = MT7928_WTBLON_TOP_WDUCR;
++	else
++		wdu_cr = MT7925_WTBLON_TOP_WDUCR;
++
++	mt76_wr(dev, wdu_cr,
+ 		FIELD_PREP(MT_WTBLON_TOP_WDUCR_GROUP, (wcid >> 7)));
+ 
+ 	return MT_WTBL_LMAC_OFFS(wcid, dw);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index 0b4ca5cf5734..ffe687afcf6e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -446,6 +446,31 @@ mt7925_mcu_tx_done_event(struct mt792x_dev *dev, struct sk_buff *skb)
+ 
+ 	while (tlv_len > 0 && le16_to_cpu(tlv->len) <= tlv_len) {
+ 		switch (le16_to_cpu(tlv->tag)) {
++		case UNI_EVENT_TX_DONE_MSG:
++			struct mt7928_uni_txdone_event *evt;
++
++			if (!is_mt7928(&dev->mt76))
++				break;
++
++			evt = (struct mt7928_uni_txdone_event *)tlv;
++			if (evt->status) {
++				dev_info(dev->mt76.dev,
++					 "TxDone: pid=%u status=%#x sn=%#x wcid=%u "
++					 "cnt=%u rate=%#x flag=%#x tid=%u pwr=%u "
++					 "rsp_rate=%#x rate_idx=%u bw=%u flush=%#x "
++					 "delay=%#x ts=%#x flags=%#x\n",
++					 evt->pid, evt->status,
++					 le16_to_cpu(evt->seq), evt->wcid,
++					 evt->tx_count, le16_to_cpu(evt->tx_rate),
++					 evt->flag, evt->tid, evt->tx_pwr,
++					 evt->rsp_rate, evt->rate_tbl_idx,
++					 evt->bw, evt->flush_reason,
++					 le32_to_cpu(evt->tx_delay),
++					 le32_to_cpu(evt->timestamp),
++					 le32_to_cpu(evt->applied_flags));
++			}
++			mt7928_mac_add_txs_msg(dev, evt);
++			break;
+ 		case UNI_EVENT_TX_DONE_RAW:
+ 			txs = (struct mt7925_mcu_txs_event *)tlv->data;
+ 			mt7925_mac_add_txs(dev, txs->data);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
+index a5414fa2736f..321e732347f2 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
+@@ -354,6 +354,7 @@ int mt7925_mcu_parse_response(struct mt76_dev *mdev, int cmd,
+ int mt7925e_mac_reset(struct mt792x_dev *dev);
+ int mt7925e_mcu_init(struct mt792x_dev *dev);
+ void mt7925_mac_add_txs(struct mt792x_dev *dev, void *data);
++void mt7928_mac_add_txs_msg(struct mt792x_dev *dev, void *evt);
+ void mt7925_set_runtime_pm(struct mt792x_dev *dev);
+ void mt7925_mcu_set_suspend_iter(void *priv, u8 *mac,
+ 				 struct ieee80211_vif *vif);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/regs.h b/drivers/net/wireless/mediatek/mt76/mt7925/regs.h
+index 253ba72310ec..af6291fc53cd 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/regs.h
+@@ -97,12 +97,18 @@
+ #define MT_WFSYS_SW_RST_B		0x7c000140
+ 
+ #define MT7925_WTBLON_TOP_WDUCR		MT_WTBLON_TOP(0x370)
++#define MT7928_WTBLON_TOP_WDUCR		MT_WTBLON_TOP(0x400)
+ #define MT_WTBLON_TOP_WDUCR_GROUP	GENMASK(4, 0)
+ 
+ #define MT7925_WTBL_UPDATE		MT_WTBLON_TOP(0x380)
++#define MT7928_WTBL_UPDATE		MT_WTBLON_TOP(0x410)
+ #define MT_WTBL_UPDATE_WLAN_IDX		GENMASK(11, 0)
+ #define MT_WTBL_UPDATE_ADM_COUNT_CLEAR	BIT(14)
+ 
++#define MT7928_WTBL_ITCR		MT_WTBLON_TOP(0x440)
++#define MT7928_WTBL_ITDR0		MT_WTBLON_TOP(0x448)
++#define MT7928_WTBL_ITDR1		MT_WTBLON_TOP(0x44c)
++
+ #define MT7925_PCIE_MAC_BASE		0x10000
+ #define MT7925_PCIE_MAC(ofs)		(MT7925_PCIE_MAC_BASE + (ofs))
+ #define MT7925_PCIE_MAC_INT_ENABLE	MT7925_PCIE_MAC(0x188)
 -- 
 2.45.2
 
