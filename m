@@ -4,105 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFD2ECD98C7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2026 01:49:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D806CD98CC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2026 04:13:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k/yLg8s0XHQpVqmfSBCS15YOtA/IhmtQG6SpKrCU07E=; b=TR95GZygHe3cvXXkTXVJAQ3jmB
-	B8ctpl6Dru2VnNRPbJVqOcEEpIuV762rYNremvGHDWD+zmU6jCAtEdkYrrnqctkw77mWy8CIxEqHa
-	4ByQ225YmI4wb5bjHLXfCsxgEIIzzgktZu6QwJ/t76kl0jFx3GEZ2w23kR1Ysk1J2RQQLYAAgElGK
-	8j1KTyVIGcjsUgDoTFZ30vDgY6IE7JQsQOZKCqsyleqo8pcwEibNt5/qG7S5wN4blryLukbiX97O3
-	C8OclU1po8xTcdxQzTYIYG+BqyTsg+gTL+nLiyu+BrC43MuoG435Gv4nCinXbcFJMxu5MkQ5aUzmr
-	nlZjBqbw==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0jVXe+HmAmsUTiUc8ErqpJQFUp2A/OQkNGrhA6RgKRc=; b=SqVXBD90w3EpH08m0Z2nI7lzU2
+	38Bp8CmNWhasnN2Bnde5cB5CytsR9ZKj3GhA3PVfKUzLk2NDpxfPNQdhrA1aGr4mDlmGvJ7B2uKSy
+	qAKc+ZrQ7UYf5r8CvKGv+S0ntxgvVkFJrs/Efq81UKiMA67y09yKc/KDEHufP0j0GdjImdy/iYU5b
+	zFBUKSoF1bk7TF+5xR3YQzzhKcpWo8KZWBaQMDR46cawF57Z5iGE1zzxG46SkGzuCAVY/Da89Z0yx
+	/FcX5auiD2cyAqUYQ90nv1jUuB9JieSi0OdarZ7aLU8wIu1XfFam0LuL+yEYMirf/ZauwRhurq/Y5
+	+8Jhdgmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXr1R-0000000AGl3-24yI;
-	Fri, 12 Jun 2026 01:49:25 +0000
-Received: from mail-oo1-xc2a.google.com ([2607:f8b0:4864:20::c2a])
+	id 1wXtH8-0000000AL31-1yks;
+	Fri, 12 Jun 2026 04:13:46 +0000
+Received: from mail-m2417.xmail.ntesmail.com ([45.195.24.17])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXr1O-0000000AGkf-1nBK
-	for linux-mediatek@lists.infradead.org;
-	Fri, 12 Jun 2026 01:49:23 +0000
-Received: by mail-oo1-xc2a.google.com with SMTP id 006d021491bc7-69d7e72b052so333068eaf.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2026 18:49:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1781228961; cv=none;
-        d=google.com; s=arc-20240605;
-        b=gbHomJ9S+bObneCIFl+seZkVTsQ0MAimN4TQDmg4BeHAf95yZlu16PXVghEf7uWaic
-         XH+wppkzNT5eA0xv9oTtfiYDrjlICWcctuCUiYdOo5cPNfkSTCERGsCg93jU+lZyDNuO
-         +bvRwpmnahyDNBtXDaW4MD2tMSHN+xetIhZ4UPP4AypKo9aybsKTMC841iKCYSa/7qZZ
-         x8mK6mME+GOA4XeE+Rh0ZmzcPdvdB4l9lNV0RJHxg6himjVrG9pwtpB4o12qtWJXNIr0
-         Sn/DzKDakYgPifq7SX6IAhSz5kNJBi7eqrzzREdYFkLan/fXJ1Sfn82B0d1YU6xVAuqK
-         uuQQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=k/yLg8s0XHQpVqmfSBCS15YOtA/IhmtQG6SpKrCU07E=;
-        fh=HvrrnfmODGHqRtiRFpFeQo1ubgJMezku/OZ3EPlu1ac=;
-        b=Gt8UxKPusDtrRckCwp62WJnRZKbMwjtKQepcavABo54SQtebFi00BJG8vk40QsGFBL
-         wHXyMkGisyudg+JF3RuBRcYl0AcIjpsEyB7N7mBDp3QgEW0UTzOUXqwbSQrEsfupa2KU
-         wqTdSKj0pGXN+KinYPgDoxaMFQa6tMYAbcQqBAyRFDUQ8o4nkoVN8xYZTUImvFCN1o3I
-         YIn1CFXMqkMIPBdmzNt7Xct/uVWGLz6FqnjZSImx+Z4pL5qNZFRTKCN/JFXL0B4rq8CS
-         z7x4d3Wkmy4+FIGAKWCB9cpPDAmXSueaq+KQUAVER/CbrQAxsjKr7BF1UAKD/wwJ0hzk
-         PdLg==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781228961; x=1781833761; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=k/yLg8s0XHQpVqmfSBCS15YOtA/IhmtQG6SpKrCU07E=;
-        b=bi8GfqeXjetF/w8Y3Q4AJFgXcP0VrHO41CfeXKLhdsM9iJ1TRQkmxYUBTx/f2s2NIr
-         QcLFX8ayTvmOMEBv2UfBPYD1XgpxU6bpDsa/NgsZSQ41Wai46XCVkSexPENhDAj2dgqH
-         lX2ij1QAjlU9tl1v6kkU2ooRaViZD/GMlDF/9/0Ai07Es14rBmQtttHnbf+017dJrKro
-         WutlmHCGw1GCyVc6cnAHDaoZ7z46leCDScvMiDjVDp/9JVmps33x0ThrrlNW7UkbXGk4
-         bGno/N9JD9mP+ZObKY3D8pdqr9545kjTlxEOl49TZLQSVji1wpJRbBvHbHNk8VwbGlWE
-         zEvA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781228961; x=1781833761;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=k/yLg8s0XHQpVqmfSBCS15YOtA/IhmtQG6SpKrCU07E=;
-        b=isda7VZFNMt0YBxCMH7vKgL34wwmNNNlnRfoQExkKdR286f6a2rj5jTmIi6sQfWFjy
-         O/RddQO1NE4sec/NU59WddpJIJ5b4wjFqQtNQKh6u/Cw2HVmczqho6lAkXKVoUA6PnAk
-         Lly2ZmcYiO95DxHFzklJ8o6JEw4jKJA6ovxFy1X99RFLms48Buzx8LXEeOPI/GJ2hxB5
-         h0GzHRYtmxMxIox1BabS+ZqXpkY/h/wSsrZtMQEjaOc9RI+V6PDcqIpLtRr0XNxa6awR
-         7V9EOATIQuy1D2tt2Yhq9l8duT+mJRidu8I4N32uNZQWflhkjlCpMgIM3lhWEd54cXjj
-         9PWw==
-X-Forwarded-Encrypted: i=1; AFNElJ8DyYgd4BYyolschQeSzPp38CNdvScerGi3nMDPhT7w5853LB/3yJFQTrlm21Kg28Tl1PehqhUg7o5fo9ahXQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyvSCuFaQGmk8Iq1TIgALf/B5BW1DnlV9tkxYhkPkZPJWaM/IHf
-	3hAtgVStvSOYNV+SvOwQnx0K4/T5i8JjZOMNlat22dWTp7q+I+BGc2uvyfwXorpW/oFsySer3Uh
-	A7hmzCkQfX1R/WwRaZOxHLUdxLZVsbvQ=
-X-Gm-Gg: Acq92OGQ7tqvwA3x5B2iI/uT9MEJNJiaVrRSgwviZxLsaXk+DBbcySH4G/QjdgfNo8I
-	begECyaIOfn79bJzWy2JnZ3SaWEjypjvjW1FmSqzF+YG8X31TPYxfectE01vc6h6VJ4HhsrRoIC
-	wWB4zlUQ1RKO2OHbh5KnEXB03nLaULw8t3bGE1w6bptKITSdx4zMPo9K1jpCQnRHphISxtib3nc
-	qMoQEbQ/NlLwkkeHNIqvxz8tuHHoHVVwIU7tVUz8jCW2Vev3UAtQCri0iuCg+HnzCqaqCH9esDg
-	e9QZGZBJ
-X-Received: by 2002:a05:6820:1ca4:b0:69d:e2fc:361a with SMTP id
- 006d021491bc7-69edc6f436fmr591736eaf.35.1781228960782; Thu, 11 Jun 2026
- 18:49:20 -0700 (PDT)
+	id 1wXtH4-0000000AL2L-0rAC;
+	Fri, 12 Jun 2026 04:13:44 +0000
+Received: from PC-202605011814.localdomain (unknown [221.228.238.82])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 421956ae9;
+	Fri, 12 Jun 2026 12:13:37 +0800 (GMT+08:00)
+From: Runyu Xiao <runyu.xiao@seu.edu.cn>
+To: nbd@nbd.name
+Cc: lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	jianhao.xu@seu.edu.cn,
+	runyu.xiao@seu.edu.cn,
+	stable@vger.kernel.org
+Subject: [PATCH wireless] wifi: mt76: mt7615: avoid waiting for mac work under the mt76 mutex
+Date: Fri, 12 Jun 2026 12:13:31 +0800
+Message-Id: <20260612041331.2596331-1-runyu.xiao@seu.edu.cn>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <CALaig7Pf++Hqn_c4hEa8zXHKkJpbmfSk=Bet_W574o7eBKF6Rw@mail.gmail.com>
-In-Reply-To: <CALaig7Pf++Hqn_c4hEa8zXHKkJpbmfSk=Bet_W574o7eBKF6Rw@mail.gmail.com>
-From: Zitong Zhao <zitongzhaooo@gmail.com>
-Date: Fri, 12 Jun 2026 09:49:39 +0800
-X-Gm-Features: AVVi8Ce9Ncz2jqaxVpmhTCw9AKNqguzmtwufqUXZ5nQfclbNp2-nmox8y2xjVAw
-Message-ID: <CALaig7O62JGRYW_dR7V0JqCBaZfDktfTUcJRx2DSWkB23yr3+Q@mail.gmail.com>
-Subject: Re: [mt76][mt7921] Question about host-visible deterministic TX
- scheduling / TX completion timestamps
-To: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Cc: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com, 
-	shayne.chen@mediatek.com, sean.wang@mediatek.com, deren.wu@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-HM-Tid: 0a9eba0914e503a1kunm03fd2058183751
+X-HM-MType: 10
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCT0geVhofSBkfSkNDGRpPQlYeHw
+	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlJSUpVSUlDVUlIQ1VDSVlXWRYaDxIVHRRZQVlPS0hVSktISk
+	9ITFVKS0tVSkJLS1kG
+DKIM-Signature: a=rsa-sha256;
+	b=cWjZqvCkwXxZVEbFjh68UQ7EaB9BcYLiUm9fHZlAvdm5EJyYXSjW+nOjIoALwAHo/UPqk9Txv9JBE3aq6u1bPw4ivGw+gzoZbUE12ysfRWnAdD4KKa6nywJJhwBOtfNngJPPp84UWNvUoM2z5o8nqs2eSK5COoxOt58ERLBOfdo=; s=default; c=relaxed/relaxed; d=seu.edu.cn; v=1;
+	bh=0jVXe+HmAmsUTiUc8ErqpJQFUp2A/OQkNGrhA6RgKRc=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260611_184922_493971_D5BCFBC0 
-X-CRM114-Status: GOOD (  21.81  )
+X-CRM114-CacheID: sfid-20260611_211342_804241_90D78AB6 
+X-CRM114-Status: UNSURE (   8.39  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,71 +78,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+mt7615_suspend() takes the mt76 mutex and then waits for mac_work with
+cancel_delayed_work_sync().  mt7615_mac_work() takes the same mutex at
+the top of the worker, so the suspend path can deadlock against the
+delayed work it is trying to flush.
 
-Just following up on this MT7921/MT7922 question.
+This issue was found by our static analysis tool and then manually
+reviewed against the current tree.
 
-A yes/no answer on whether this hardware/firmware stack exposes any
-supported host-visible primitive for TSF-scheduled TX, firmware queue
-admission, or reliable per-packet firmware/PHY TX completion
-timestamps would already be very helpful.
+The grounded PoC kept the mt7615_suspend() ->
+cancel_delayed_work_sync(&phy->mt76->mac_work) path and the
+mt7615_mac_work() -> mt7615_mutex_acquire() edge.  Lockdep reported:
 
-If this is not available through the public mt76 driver, could you
-point us to the right MediaTek documentation / NDA / direct-customer
-channel?
+  WARNING: possible circular locking dependency detected
+  mt7615_mac_work+0x1b/0x29 [vuln_msv]
+  __cancel_work_timer
+  *** DEADLOCK ***
 
-Thanks,
-Zitong Zhao
-Cyber Physical System Lab from Shanghai Jiao Tong University
+Stop queueing mac_work while the mutex is held, drop the mutex, and then
+flush the delayed work from the sleepable post-unlock path.
 
-On Mon, Jun 8, 2026 at 1:28=E2=80=AFPM Zitong Zhao <zitongzhaooo@gmail.com>=
- wrote:
->
-> Hi mt76 maintainers,
->
-> Resending as plain text because the previous HTML mail was rejected by
-> linux-mediatek.
->
-> We are working on a deterministic Wi-Fi TDMA research prototype using
-> MT7921/MT7922 with the mt76/mt7921e driver.
->
-> We would like to understand whether the MT7921/MT7922
-> hardware/firmware exposes any supported host-visible primitive for:
->
-> 1. TSF-scheduled TX or hardware-timed queue release
-> 2. firmware TX queue admission / queue pause-resume
-> 3. reliable per-packet firmware/PHY TX completion timestamps
-> 4. TWT service-period control usable for deterministic UL/DL scheduling
->
-> From the public mt76 driver and our local diagnostics, we currently obser=
-ve:
->
-> - RX MACTIME is available and useful for RX-side timestamping.
-> - TXS can be forced for diagnostics, but coverage is partial/asymmetric.
-> - WTBL_QUERY returns only a short status-like response in our setup.
-> - TWT_AGRT_UPDATE returns ACK/status, but we have not found evidence
-> that it provides host-controllable deterministic queue admission.
-> - We did not find an exposed TSF-scheduled TX path in mt7921e.
->
-> Could you confirm whether this hardware/firmware stack supports any
-> host-visible deterministic TX scheduling or reliable per-packet TX
-> completion timestamp interface?
->
-> If this is not available in the public mt76 driver, is it a firmware
-> limitation, or is there a documented MediaTek interface available
-> through another channel?
->
-> Hardware/firmware in our setup:
-> - AP side: MT7961/MT7921e path
-> - STA side: MT7922/RZ616-family, mt7921e path
-> - Driver base: mt76/mt7921e with local research diagnostics
->
-> We do not need confidential details on the public mailing list. A
-> yes/no answer about whether such primitives exist would already be
-> very helpful. If this requires MediaTek confidential documentation or
-> an NDA channel, could you point us to the right contact/process?
->
-> Thanks,
-> Zitong Zhao
-> Cyber Physical System Lab from Shanghai Jiao Tong University
+Fixes: c6bf20109a3f ("mt76: mt7615: add WoW support")
+Cc: stable@vger.kernel.org
+Signed-off-by: Runyu Xiao <runyu.xiao@seu.edu.cn>
+---
+Notes:
+  - Validated with a grounded Lockdep PoC that preserves the
+    mt7615_suspend() -> cancel_delayed_work_sync(&phy->mt76->mac_work)
+    path and the mt7615_mac_work() -> mt7615_mutex_acquire() edge.
+  - checkpatch.pl --strict: clean.
+  - Not tested on mt7615 hardware.
+
+ drivers/net/wireless/mediatek/mt76/mt7615/main.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+index 15fe155ac3f3..fcb619c0f6cf 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+@@ -1242,7 +1242,8 @@ static int mt7615_suspend(struct ieee80211_hw *hw,
+ 
+ 	clear_bit(MT76_STATE_RUNNING, &phy->mt76->state);
+ 	cancel_delayed_work_sync(&phy->scan_work);
+-	cancel_delayed_work_sync(&phy->mt76->mac_work);
++	/* mac_work re-enters the mt76 mutex, so flush it after unlock. */
++	cancel_delayed_work(&phy->mt76->mac_work);
+ 
+ 	set_bit(MT76_STATE_SUSPEND, &phy->mt76->state);
+ 	ieee80211_iterate_active_interfaces(hw,
+@@ -1254,6 +1255,7 @@ static int mt7615_suspend(struct ieee80211_hw *hw,
+ 		err = mt76_connac_mcu_set_hif_suspend(&dev->mt76, true, true);
+ 
+ 	mt7615_mutex_release(dev);
++	cancel_delayed_work_sync(&phy->mt76->mac_work);
+ 
+ 	return err;
+ }
+-- 
+2.34.1
 
