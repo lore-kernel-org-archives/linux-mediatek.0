@@ -4,112 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7EA5CD98CE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2026 07:20:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFE2FCD4F2C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2026 07:36:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PEcj4bZjlu2HtgA6/DpQKuZoEr9jILxBgREI+9hl/bg=; b=uKprhLkxHWa3oRkndGK9OdhkQq
-	867uAKkdK8VaTGv5EhqnZQYj7japd57oqRQbKeRonUpyyq7oU0HHY9X6SmeWvqyZrvL1nfo5Az+p5
-	ox/ph83wTrUsfsxLt7d0Qi3v7VAhp93J/v68IM52291JYgc1yGq+K9k97fBhZU4QbXp8rSmVq7Au5
-	BDnZZ5GeH83YUnGbaUECzXOPRwcwrZeH4DBWt5zCJ5jMxtG30b6kjg66l1k+5Gu1/QiyFQ1N0IHBn
-	UxTf1CMBtWfZiTP33/29r8s+iWn3TghQzm77lNVeYGc+0UAi8UlR1sg09b6MPUm1dLHHL6GZLozZq
-	iH7fRYEw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=WXtlwR+cKWGeAXn3H+Lf5Yv1kL7XUbUsrMYC6J2rcVc=; b=iU2fU01gGNhsq3
+	5YiXrG54pm1zB/2P82TzVA/mYmuAPM9YDv+LlWKgXgsqKrOBv1mPAUtY7iaUC+snkKOd0JLBaMnPG
+	QfPJsIU3kensKuvfvJ9bnZ0TFrRUEtAfun9jMPwfSMXjmom1UcUAu0CFg2lLwFwwej67mjiHJfHZM
+	uMNRmFVhnHcwqkbSxLZ9Ec9H6CU7vpBaSceJDs2jahbTrwdUTJGT4VG7E6XdZNje1A4WsbQVjazuy
+	PJ+u5yhha/z1Wp7EEjLMk102/MHzBJLfAEZflCM3uVw4LZ3thKlvSSv9HSjNtLTeGy5DNO7wBh662
+	2E/K9ItvxGmZME03hIsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXwBt-0000000ASo6-3pfv;
-	Fri, 12 Jun 2026 07:20:33 +0000
-Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
+	id 1wXwRh-0000000ATwe-3HGz;
+	Fri, 12 Jun 2026 07:36:53 +0000
+Received: from zebra.cherry.relay.mailchannels.net ([23.83.223.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXwBr-0000000ASnH-1IiQ
-	for linux-mediatek@lists.infradead.org;
-	Fri, 12 Jun 2026 07:20:32 +0000
-Received: by mail-yw1-x1130.google.com with SMTP id 00721157ae682-7e16f05fd79so7315457b3.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 12 Jun 2026 00:20:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1781248830; cv=none;
-        d=google.com; s=arc-20240605;
-        b=Lqzq4O0ixJ7a99bT5xzqMNdxcItGVMCe18w8X6U6d+x9KdXG64N1B0sr76Kc70jkgN
-         0/Zw+Y3ppwq8vSlG1oeItTp+aIKWAevvaEV74w0wT1JCJqe7OFPvUdTGgtyslAaSAqbt
-         d2rUnTGzu52l1eEy419z928XKi1+EBMEOor41v7yzYEhZ9yD4S4BQo8n0NC90ZlamPYS
-         eGB9gqYbeVTs3sH6Z0dKm/Jmyk7S+bRnSSKR0wyZZp2ATnXx2vUowHXhv3tKqiuLVy+w
-         VurKKtN00/aooTRloTYCqvpH1lLPIi2dE2dgEFV524fewbQOV1j9kgwrqGP2EqgLGc1U
-         SgFw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=PEcj4bZjlu2HtgA6/DpQKuZoEr9jILxBgREI+9hl/bg=;
-        fh=QxcsyZ/dsNDtr4RJVaLRMPZkGkELY3pT3EhPKynNWRM=;
-        b=jWlHXUvliFOlbmWNtwgAsmRFuaLjfacr7tW6fayBMHbb9OH1txcBkDcdR1NrIuhAtX
-         bLreJG0mGT3GvAo2c/HV6THkGeE6uIKiDrgmbNcd22sETNXbaOEMo4JvQYU6L70cGz13
-         bec5qrIEC7Jo9cDw1dDxOUh6HipMtQgKPUtYM5U+YdfsgvGzxKGJT4nM7nqZyF3J9+gf
-         czs1iZ/PsTIsHN3mY+zUt/0hNSgeQ4j1mbVEuF/5RbFu+cZs/DgPHOl0/OQQLM6m2MMl
-         Tjx0Q1I4vIcLSR905VxggG80Xb+THWmtAYzaKkntPPLojADLnrV4UgkoeWkhHcy4XGPr
-         +INw==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1781248830; x=1781853630; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=PEcj4bZjlu2HtgA6/DpQKuZoEr9jILxBgREI+9hl/bg=;
-        b=J7ADuSC+g2eYlfBQtkOd+1zwPOXJmZTlllVqUcwc55FB2/hd1uUB4kzJHiqhLtWkmd
-         xqM8ga/Mgd+knML9G5/+8utiWAnUB2ehM/VYnfpbNMaqexPJYuWifITGBIKpmX4Q9C7e
-         njLnsA3tWGm7MOJHXnVFvf/1WMcvdQm3qsXGs=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781248830; x=1781853630;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=PEcj4bZjlu2HtgA6/DpQKuZoEr9jILxBgREI+9hl/bg=;
-        b=snx0baPE23uDfKTzab97n+DgttNmXEuctIubJOmFeqhr+GBS18Os65FZvx6nQ15I/X
-         INxWbLwCG9jn1AUt9H/WlqtkysVDlkHgKkxAPU6AHT7bCyVHg7hcfwX4bR/SgMj0YdFt
-         VG0NGSyLVgyR+kXJdxhXAFTOzUJyzJIIbJGuL7GhdhmadSro2uMp1hSx5tCGEBYt73l6
-         MRYYExLsyX3s+ljiYPjTnTdgxIvq3g/MI6xbTJYNCXb1yAXlcyrl59Cr3g2usCA++tOk
-         huwo6ZFMoQslc2PA1/c6FC5fej2gkINht5wY7dIspc8lJd+1uenMlOwes9dvUpXhjsni
-         Aarg==
-X-Forwarded-Encrypted: i=1; AFNElJ+C7F+dt7/u7NG7tGJgZ4dVR13RpQS8ERsy6fWMiFUtQocivw+oBQfuq4Zsj9+X/ZpiB/urBVZwbhz/bbRP6Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw0YOHL795whQDGKYR7WYGPewoSsjN8uNmu+58/111nnjcLF7Is
-	YGiojOKPhrTV2ydLBOPbK9Xyoe2ePdgECn78xfVr55Fnmgp+jc0voHuO8PSlO7UTDVjNIFqweqC
-	5XNI9WJ12GoD0EuMHQ3WIMkrFozPpRwpEAMVIURok
-X-Gm-Gg: Acq92OECFbV13Vs44tb0klPYbM52WUobTLBHQeRJygChfezvvlRZVWAZ39+FDjKRMqZ
-	WS/rvCKxHdb9xg0sNhCQd4azcPlGy6ihqic+jfU+k88ntwk3gnZiFWQUsVGA76gZQEmGpDXR9L3
-	ulx0c5sxSIoJ1WkkbtlS0bTMObxTdVmNHTGjMX6lVuWlRQxtJAJeIN5wDzINoD6DGYlgIGLtuOM
-	9jP424scA1gjoeteVlk9dCtPHbu3Gfdl2BF9+Zhad1C48nvthMjjmmkVcnwpOFlGv1DejU9ekpR
-	C5/4cxlx
-X-Received: by 2002:a05:690c:c4ce:b0:7ef:81dc:c0e7 with SMTP id
- 00721157ae682-7f7b6242881mr15277067b3.19.1781248829675; Fri, 12 Jun 2026
- 00:20:29 -0700 (PDT)
+	id 1wXwRe-0000000ATw0-1iR5;
+	Fri, 12 Jun 2026 07:36:51 +0000
+X-Sender-Id: hostingeremail|x-authuser|chester.a.unal@arinc9.com
+Received: from relay.mailchannels.net (localhost [127.0.0.1])
+	by relay.mailchannels.net (Postfix) with ESMTP id 19D7C7219BE;
+	Fri, 12 Jun 2026 07:36:42 +0000 (UTC)
+Received: from fr-int-smtpout19.hostinger.io (100-116-180-119.trex-nlb.outbound.svc.cluster.local [100.116.180.119])
+	(Authenticated sender: hostingeremail)
+	by relay.mailchannels.net (Postfix) with ESMTPA id 3CAC8721857;
+	Fri, 12 Jun 2026 07:36:39 +0000 (UTC)
+X-Sender-Id: hostingeremail|x-authuser|chester.a.unal@arinc9.com
+X-MC-Relay: Neutral
+X-MailChannels-SenderId: hostingeremail|x-authuser|chester.a.unal@arinc9.com
+X-MailChannels-Auth-Id: hostingeremail
+X-Arithmetic-Fearful: 63c5ece7276c157b_1781249802002_3456694983
+X-MC-Loop-Signature: 1781249802002:29651468
+X-MC-Ingress-Time: 1781249802001
+Received: from fr-int-smtpout19.hostinger.io (fr-int-smtpout19.hostinger.io
+ [148.222.54.35])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384)
+	by 100.116.180.119 (trex/7.1.5);
+	Fri, 12 Jun 2026 07:36:42 +0000
+Received: from [10.10.10.3] (unknown [46.1.111.82])
+	(Authenticated sender: chester.a.unal@arinc9.com)
+	by smtp.hostinger.com (smtp.hostinger.com) with ESMTPSA id 4gcBCl1z9Fz1y7P;
+	Fri, 12 Jun 2026 07:36:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com;
+	s=hostingermail-a; t=1781249797;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=WXtlwR+cKWGeAXn3H+Lf5Yv1kL7XUbUsrMYC6J2rcVc=;
+	b=ZeBrpYI6Dd/19gzwezL9s6dEWcEwXVPhMzaTBGzKwS8TIWcBSU3yoD7QKoZ3yBGWR+nrqg
+	eInFGcClna9n7prMx+FJ6b33Zm5w33wIlPL5Od2HPMHlfENdEtHhdA9Iub80OstE3yDSBX
+	UutJgFHpeovEWcFS5UQ4mqnuK9jPNPSPpEdvjU5Y+GVvL6WBRS/MGcW4H9eZ9dP/3zlI7J
+	Yt5+qrOfHH9GMLKCfCTXqVR5Zxn2FthdUHqQhQhB3CsF26zCWxvHk4CCa7ir13RtDoYNFY
+	lYAx1OuXCkt0u9l6a8Njq5H1YKm9zyPNNEijODSUqkXgsjGtusNAsoRm8S+awA==
+Message-ID: <02ad5de0-ea6a-4267-8686-72e3f98fce4e@arinc9.com>
 MIME-Version: 1.0
-References: <20260610084053.2059858-1-wenst@chromium.org> <20260610084053.2059858-3-wenst@chromium.org>
- <ailv8HpnrCH3Zb8C@ashevche-desk.local>
-In-Reply-To: <ailv8HpnrCH3Zb8C@ashevche-desk.local>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 12 Jun 2026 16:20:18 +0900
-X-Gm-Features: AVVi8Cfix6rlRxpmlL_G61si3smqjEz2qk3oIH1X9DTqc3HutmT3uL6lEMZg0_I
-Message-ID: <CAGXv+5EHHWfiWgqPpf-RMKoSQLc2cd9OA4Z36SNoL5C53kVh2g@mail.gmail.com>
-Subject: Re: [PATCH v2 02/16] device property: Add fwnode_graph_get_next_port_endpoint()
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Bartosz Golaszewski <brgl@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Daniel Scally <djrscally@gmail.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
-	Sakari Ailus <sakari.ailus@linux.intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Alan Stern <stern@rowland.harvard.edu>, linux-acpi@vger.kernel.org, 
-	driver-core@lists.linux.dev, linux-pm@vger.kernel.org, 
-	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Manivannan Sadhasivam <mani@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next 8/8] net: dsa: mt7530: implement
+ port_change_conduit op
+To: Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <cover.1781119435.git.daniel@makrotopia.org>
+ <91ae0f87a6ca2cce3d072dba548545e02347bf13.1781119435.git.daniel@makrotopia.org>
+Content-Language: en-GB
+From: "Chester A. Unal" <chester.a.unal@arinc9.com>
+In-Reply-To: <91ae0f87a6ca2cce3d072dba548545e02347bf13.1781119435.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Date: Fri, 12 Jun 2026 07:36:35 +0000 (UTC)
+X-CM-Analysis: v=2.4 cv=Gq4Q+V1C c=1 sm=1 tr=0 ts=6a2bb705 a=EYFf6tZZuEx+mizzmxfcTQ==:117 a=EYFf6tZZuEx+mizzmxfcTQ==:17 a=IkcTkHD0fZMA:10 a=VT4XjZGOAAAA:8 a=GvHEsTVZAAAA:8 a=FvUSNmnTzPuJ0QD-RBkA:9 a=QEXdDO2ut3YA:10 a=6CpsfURP9XNmmWg3j1mJ:22 a=aajZ2D0djhd3YR65f-bR:22
+X-CM-Envelope: MS4xfPf9YvhCURV0HNIRHewhsgeJ9lEsWOVHOYoe2NIE2lxkmBW207FzjH+NqiB3byQJ0bAloPoh1NCmG2PgAFdt/QN7hkNG2SGyAMV4XomqSKlxpCttMUy5 s+QzPUrh17I0tW90nKrdo+RS3RYeD862Ks9jmvbyoaOY/jWi8O8vrClb6WmkCVwf1j9fnM2H1XmeyqkDfAG/6iAAON8+3kZAADIG92oUX9eOrEMe5AhBOp6f fOE1xNV66pSaBNW6YjWW9aFU9Bry5FQqphNAL2qC0aQz6DpUHP2AhI66bTwRSyQFTK1m+QJBCDCKZeNdzddGf8rQiFGiyomFmTKmTeSTMdqI9eKMvR9T2G+i 2Mu/cLS28ncEvQDD3vD5K3BS33LCxkOIPqw/XLG4d6mwXRZYtg9ibcZxDgXRuDkGSFtkwJ7h6FiPPRh78EXqnQFg74I+FJ53x30cX9m818PhBvRthI9W/Fyj urnwTraN9Cex6mcdm/Z4LjaJZgE4slbLiKBKFeqpJdcgQOrYK8taV2bqkOyBLNJh50N/iUSbucRzQmNv4XjdeFkRPh4uEVB/g46MCHu6c//OIis5e5indrdj dO1vybENR3J0C4iyL7jcmsyDD7d8kF8ajC9cUWQAXcAwUmFCPrdEa2+hOr+4GDKMGcRzXSb/X8bvu1BVjZpCXXio
+X-AuthUser: chester.a.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260612_002031_398071_B810CD1E 
-X-CRM114-Status: GOOD (  27.10  )
+X-CRM114-CacheID: sfid-20260612_003650_560795_656F6EBF 
+X-CRM114-Status: GOOD (  13.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,102 +104,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 10, 2026 at 11:08=E2=80=AFPM Andy Shevchenko
-<andriy.shevchenko@linux.intel.com> wrote:
->
-> On Wed, Jun 10, 2026 at 04:40:36PM +0800, Chen-Yu Tsai wrote:
-> > Due to design constraints of the power sequencing API, the consumer
-> > must first be sure that the other side is actually a provider, or it
-> > will continually get -EPROBE_DEFER when requesting the power
-> > sequencing descriptor.
-> >
-> > In the upcoming USB power sequencing integration, the USB hub driver
-> > first needs to check whether a graph connection exists, and whether
-> > the other side of the connection is a supported connector type. The
-> > USB port is tied to a "port" firmware node, and this new helper will
-> > be used to get the endpoint under the known "port" firmware node.
->
-> ...
->
-> > +/**
-> > + * fwnode_graph_get_next_port_endpoint - Get next endpoint firmware no=
-de in port
-> > + * @port: Pointer to the target port firmware node
-> > + * @prev: Previous endpoint node or %NULL to get the first
-> > + *
-> > + * The caller is responsible for calling fwnode_handle_put() on the re=
-turned
-> > + * fwnode pointer. Note that this function also puts a reference to @p=
-rev
-> > + * unconditionally.
-> > + *
-> > + * Return: an endpoint firmware node pointer or %NULL if no more endpo=
-ints
-> > + * are available.
->
-> Yeah, you see, even here is inconsistency with previously added kernel-do=
-c.
->
-> > + */
-> > +struct fwnode_handle *fwnode_graph_get_next_port_endpoint(const struct=
- fwnode_handle *port,
-> > +                                                       struct fwnode_h=
-andle *prev)
-> > +{
-> > +     struct fwnode_handle *ep;
->
-> Unused?
->
-> > +     while (1) {
->
-> This is usually harder to read and follow. It's like "pay much attention =
-on
-> the code", but here no rocket science, no code to really pay attention to=
-.
->
-> > +             prev =3D fwnode_get_next_child_node(port, prev);
-> > +             if (!prev)
-> > +                     break;
-> > +
-> > +             if (WARN(!fwnode_name_eq(prev, "endpoint"),
-> > +                      "non endpoint node is used (%pfw)", prev))
-> > +                     continue;
-> > +
-> > +             break;
-> > +     }
-> > +
-> > +     return prev;
-> > +}
->
-> So, this can be rewritten as
->
->         ep =3D prev;
->         do {
->                 ep =3D fwnode_get_next_child_node(port, ep);
->                 if (fwnode_name_eq(ep, "endpoint"))
->                         break;
->
->                 WARN_ON(ep, ...);
->         } while (ep);
->
->         return ep;
->
-> But also big question why? to WARN*(). There is no use in the entire
-> property.c.
+On 10/06/2026 20:56, Daniel Golle wrote:
+> Allow changing the CPU port affinity of user ports at runtime via
+> the IFLA_DSA_CONDUIT netlink attribute. This updates the port matrix
+> to forward to the new CPU port instead of the old one.
+> 
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
-Will drop. This function was lifted from drivers/of/property.c then
-adapted to the fwnode APIs, so it still has the structure of its
-origin. With the WARN() gone, rewriting it as do {} while() becomes:
+Fabulous!
 
-do {
-        prev =3D fwnode_get_next_child_node(port, prev);
-        if (prev && fwnode_name_eq(prev, "endpoint"))
-                break;
-} while (prev);
+Acked-by: Chester A. Unal <chester.a.unal@arinc9.com>
 
-return prev;
+> ---
+>   drivers/net/dsa/mt7530.c | 29 +++++++++++++++++++++++++++++
+>   1 file changed, 29 insertions(+)
+> 
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index c96420c291d5..2f3e734b9f53 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -3206,6 +3206,34 @@ static int mt753x_set_mac_eee(struct dsa_switch *ds, int port,
+>   	return 0;
+>   }
+>   
+> +static int
+> +mt753x_port_change_conduit(struct dsa_switch *ds, int port,
+> +			   struct net_device *conduit,
+> +			   struct netlink_ext_ack *extack)
+> +{
+> +	struct dsa_port *new_cpu_dp = conduit->dsa_ptr;
+> +	struct dsa_port *dp = dsa_to_port(ds, port);
+> +	struct mt7530_priv *priv = ds->priv;
+> +
+> +	if (priv->id != ID_MT7531)
+> +		return -EOPNOTSUPP;
 
+Why do we limit this to MT7531 only?
 
-Thanks
-ChenYu
+Chester A.
 
