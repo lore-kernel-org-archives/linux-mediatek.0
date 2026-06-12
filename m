@@ -4,99 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCDC6CD98D8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2026 05:46:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 584CECD4F2C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2026 07:07:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MHHVj+Zx0+/vBQAJBv7r1n57GCFzoErkyz4ZsU3+esc=; b=kJ7zikoo137gQPqnTJ4kHx22H7
-	n6FGLThtrBe6bw0lPth29eZNqQJmGJMXj6JYUCYTXWBsjU30UE9HXgNpbel+O4MRV/20s3I6HUqFv
-	nu7ESj+8rBBWQzFnKD1iuXpcu84xEwLPu9PPiuog8+hKiRKrEr3ugiLCACTkD3dAgABURYni61DsD
-	gilwQ/1mrc4cxGO1x1chSiughii4lkdCv/qdPZH4rf1/i2p9xZkaA9hYM7WcxHtIJuSkYtEJ7w/g+
-	4ws6nloZCEsIIEqIWiwI2mjxYzHMoFZ0Gk/gq0z0Tys/InN8P/cm8oKBYIdUWytoWLvHeF9uy9k47
-	hKJYw06Q==;
+	bh=J5d9WCaKRJWtKyrzyOLIKLSZnATYEhNsU0US0PNVOy0=; b=pTRV8hRfWkuORYBrvoYWAST7dj
+	b9ocrWZw9ECuvfJ+8pHBW30QrD4VhRIbXTyhStVij6IpZKRD3dg/rkAMDV+3x9cckNeahJ3v5uo4T
+	XJtxJqHCb8A7SdXbl7qoJdF1JEjCILRw1dMM3WWTrqSeYQ8yrtItLDMDdVpY6/DBSZresCj5jtex5
+	U0OiW1R2KOYgJzkh5gZNPEYQfQagawd3xlrHhSnmspMX3cwuMxcO8b75IrbeXX5PsR73he6xi1KW/
+	BBTvIYH5NaepttDCEZzlUF3BDUO3e/aui4OaVtKRW/9GyHShy0qs8e6yw9nftqPlLq3LU4m8n35BJ
+	BiNJanRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXuj3-0000000ANk9-3B5A;
-	Fri, 12 Jun 2026 05:46:41 +0000
-Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
+	id 1wXvz3-0000000ASHG-0sVX;
+	Fri, 12 Jun 2026 07:07:17 +0000
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXuj1-0000000ANjJ-0h6H
+	id 1wXvz1-0000000ASGL-0mY1
 	for linux-mediatek@lists.infradead.org;
-	Fri, 12 Jun 2026 05:46:40 +0000
-Received: by mail-yw1-x1133.google.com with SMTP id 00721157ae682-7e87602f26aso6785137b3.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 Jun 2026 22:46:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1781243197; cv=none;
+	Fri, 12 Jun 2026 07:07:16 +0000
+Received: by mail-yw1-x112a.google.com with SMTP id 00721157ae682-7f811da1eedso864417b3.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 12 Jun 2026 00:07:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1781248033; cv=none;
         d=google.com; s=arc-20240605;
-        b=ctMNmLixXEXcFjJtspJHld8AtVov3rT7g5mB2yN615vY9/km6s/iqmKNO6kvnFhQ5O
-         Qa1j2S7fPLH0070oHZnM9eHpJu9psyLMDoDUOWwwKoZ0+QsazlkTZeKz/jBHSgdc69gH
-         c2NhliJfAgR9WRSzATHNjCiiVZ/3lUBpNjXoS478SaHmiDUteowCV+tMvu+uPrdn7wqm
-         2/6P1CDBHoj3mhtcWTtFfzzunePG2oWLbeTF8HJBwoS3VbrRUFkTccPflHrNShZ823hE
-         m7vADtpX+nqkpPV8qdRxhz5tfRZUa6sT9zioiibWovW2qUkVHSZvoEDv/hvOA0bl1YCd
-         Zrsw==
+        b=b57f3wrg/hOyKU3AWpBFWojdiY3wgzLrEdaxc674xGhJlXu9BmOlgS6hr9caprwTGs
+         4S7Cw0TOb5x38rsjSwHBkzMNsKfyNnR4X4gkVcA7uVc79KS/KKVPPrtrpINZ4reSlB2V
+         Qee9Fz4VHSskeQ9RdmipAevCN84887FXzTQZ3dEc/Nj5cpjQtstJA0jnlp8HVwwQSct+
+         PIsiteZfYpbvzpCPo8jBeRq9f6kwwX8ilZd5v4pKSKyoiJRMl7o2efBUaoo2zNn7gsv3
+         3kMlODT/qYLuad28SvjatYZb+c6JBl/2B/79wat2aXZHTYav3LUSGhl6O4Ws2IoPXVgN
+         8Azw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=MHHVj+Zx0+/vBQAJBv7r1n57GCFzoErkyz4ZsU3+esc=;
-        fh=A6wtGsDDhjUaOdwMhlqAEvLilNAyQWGsOcMNgY3//V4=;
-        b=gfb59eceVEBznmq/z51AyP+tUEOAlBY9LZebb1Upnirc6vBzh0f1C8HH3hW4G4kBkx
-         CLi8fBXL8gQbZSZ6QYijqNOhT/+X6GFRNGAFa7GZ+i50q2SEQrbjZqT4Ec8aEvvYr81T
-         A+3IsIn1ptiE3BusNLe8/2Ts/+g/xiTNFycBpuHjGxjek7aHiWgo/SkQsENJ+6+TNF2A
-         XZcTk9XDIk9sz+ZlpyBbBhdur1qzAr1v/oEofchZ1UgeVkXlqchNI6fqNdo4cUkyDMRG
-         M5bhH1+rtdRDoz5Zum2SjVx6ff3Z+/dwImUQcqOJEM6TNbqvaJgg/zJzig/d+6Jv1Nqz
-         +TGA==;
+        bh=J5d9WCaKRJWtKyrzyOLIKLSZnATYEhNsU0US0PNVOy0=;
+        fh=f3BMQoA2mdD4XW/FT1KJajX53OGBWCf3bcbYeLLt16I=;
+        b=YF4WClt1nV2s29qepMVj9vlajSHm8BNB854QBCnfonyzG+UhcknFHzJ8iIuY+UuusF
+         BqWBsbk/eZ0oBSjl1L6CI88GwhGL6WYQRYq0an9WjACbv3einAWjK24DZ0TcdqMpionK
+         D/B+dSPO/4fhTqIo16k+/+IxR0894g838YLE8iX+hm82Kj6xbovNsePdDW/kLtc2vIK7
+         zCbD4yNlDvAKo3EUnWhWBaJEvGE87uGIai+CRbB9eJRnmTIv232qZs9ZAg4OgQhKh0KH
+         0SyeC+HeM62C/Yzqp8/Y4I+UMYhMMhR8WmhJR/zfpS0I3zZoWz/QISOHIVd+05wXm7Xb
+         D1sQ==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1781243197; x=1781847997; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1781248033; x=1781852833; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=MHHVj+Zx0+/vBQAJBv7r1n57GCFzoErkyz4ZsU3+esc=;
-        b=h4eVGq7T7g2blRW9fRERQY1PoiYgGDm2MreR0SferTFEORQKaeRbt5X+1yiZa7+KNR
-         sVeB7U8SHDLfewrTxBqkOQx4lKnhrH2aaB1LShVg+TiqHDFm6DoNfYU1fUGbl37QrwIj
-         A1L3MMOZL4gXfja0VuvyKVZ4x+OrD6fVnKmHY=
+        bh=J5d9WCaKRJWtKyrzyOLIKLSZnATYEhNsU0US0PNVOy0=;
+        b=LfsvN5oNXJpNjEehIsrgjqj9hvM8V0z3ez6/6d3eFcGkF2EOhOsOCNNJypuxfBejwO
+         OZU3kH2uQfoaRfLRZ8/l74gQ1Sk7i//hMqtL/r1H391EZTQ2uWCdqDaldDifhR5bo8Jz
+         a+LPVGJ9hcSSmA3MN2V+EdmrR1I49NwRJ74hg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781243197; x=1781847997;
+        d=1e100.net; s=20251104; t=1781248033; x=1781852833;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=MHHVj+Zx0+/vBQAJBv7r1n57GCFzoErkyz4ZsU3+esc=;
-        b=K/7+w2XlQRlSaso3lNDcKG3bC6NCLgyL3O1LyZaHtZ1JTWygj5WfViTWemHRXK896t
-         axQwiSwTXJGnzuz5TZgMbqLOH7lNQgMoZJ5vyHf+M7e01yTrmnU8dlodhqy8NA1g/PXL
-         OMCJDYz9ak5fLwYryq5JAAVTuwdOywbJh7Ff7WxF1Cgs1NpOLLInI1BpfZEw9nLB4/RD
-         rRqaurj0/ueM+qMeyqsgj7EQhpz3x/5VB6FeFBgVOCpfOnrcc5QXwZZzvpxA4ZyhXlgZ
-         /lKjDqzL3QAWNpHTF7VIDmekMX6GdVIBBxNVQEjThs5i6g2NhrxN5ZZtmMkfZ7OXfqa1
-         1UQA==
-X-Forwarded-Encrypted: i=1; AFNElJ/9QoHU2WZACma97Umcrz7Dyv0pCFvs9KZy+uTLO+7lcBT4ODN9xoOB+SnW4JA2kyJQMtfKEHpKYpA8gMRwgw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw9+uXD81caf2CY8ub2gSomPx+eQN88UwKjOmE4cQzU6DXHpjsF
-	mWkGhzH4CuNODYkhJIgBhz8haT/GgqxhFkD7pcgYZ1wVhX72rnyN3sjV2o/5EnWdUs/nA8trR8i
-	SnaJYzw4Md3MjHqXsbk4d+dCsDZs7YvOExg+cvvfZ
-X-Gm-Gg: Acq92OH6QDpqLu1xjf4JIBcJkmoU+0RCwGaLc/jb0m8+8iAqixvv1FKKhtkyZstoKyQ
-	cc57v4AaHny5QvqiCvmoB8vZeKAs+EzZeQN3p4jGmMnXfqmEkntFt5uPK4J4mS/SRkggyIwYlFK
-	M3Ld13b1dQNRaTTskSrcSQcjgnFu4trsJSPdtlzcz/9w153GgEtWBYl8fP/Zv+XoBgRbFLWOlAr
-	yZGvuJZSUT9unBZssqRpfdi8QL5TEMLY1En0JYJ01mvYIIVxwpicYAya7qNOUQAWsXdZz6e1uYk
-	ov2/O3gX
-X-Received: by 2002:a05:690c:4441:b0:7cb:93d1:d804 with SMTP id
- 00721157ae682-7f7cc52611amr7898237b3.7.1781243197392; Thu, 11 Jun 2026
- 22:46:37 -0700 (PDT)
+        bh=J5d9WCaKRJWtKyrzyOLIKLSZnATYEhNsU0US0PNVOy0=;
+        b=LSqAdW4Uu8NqB/AQ5VGuDNPfr0uYX7rQq4+w6+//yszN6gOtl78wJazCpE/2SsBewm
+         vwLsh76JH2WCTnWZQqWeto5vnPjKf8qaugYIaMhgUrJt4FaYvxGE0RZ+ESwJ0pEHmRfV
+         NvM9/MDNFVtKbVR8rXJUjZjYprWlEv0MJW4sEXcLNjfQhvAwvwmF6AEyyxk8DQwj+Xnz
+         MmJIwi6WYuLhcc58esDLobLO2gyVpXXx1lnIOObc4rdMuquTySETeSJM4F+linrDfel9
+         BcfwwTjHVoI/HgjUMQAjG82b2uRWRQToexOIg7/a7v8Xk2A+26PQ51fazszyX7xidwL5
+         eUMQ==
+X-Forwarded-Encrypted: i=1; AFNElJ8ViE1kg/50R7namxitorrMkBeDmNwAZMzhoa9LIRzRxEKgsoVAN+R0zdGxUWe0GTy2cxPLKOojYYKwJTpgoQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxnHo/ITP0pfBHLoTP0Ollg626UUOnv2JCUxrJD34kBRu6KxjRJ
+	ihdVSFO30Ijoi8fW0d6I4OmrKes1XPsv2SL6L+IKIuGwD3/yv3uj6qVnm1xo/ZnQvY6tWRpovID
+	wNS07d8d7Fv8UOgmRwLg7gPJEqegOo658mlZ5mC3h
+X-Gm-Gg: Acq92OGQjoYTO2yQTeQ0TS9IXn5Z6sf4P3Le7aeqc1wZfW7ZkeNbgeVDh0NN0Gl9jXt
+	el2ZoJKghPeXnTYFpSQIxtNcVFrRTIhya3/HuRAddo0fLbxsZMwLPIWNZRAWtj+O5kaZWFgv2Gs
+	mgobJk+KNxlOLShUJ8SE5czCIxVcMxRRYTZy0v6mFp9b2AE2NG08BUEOr3Dc+c2GJJR17lA7aA4
+	ZGkvEqBYjSVC1gs1Md+lCufBvBzlGYoAB+GGKPYx8661kfzNXOkPR4c047t7JiQ0woZ3aMHvv+I
+	TIPPeRAJ
+X-Received: by 2002:a05:690c:e3d1:b0:7d2:6b8:6e4a with SMTP id
+ 00721157ae682-7f7b6448b2bmr14221767b3.18.1781248032935; Fri, 12 Jun 2026
+ 00:07:12 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260610084053.2059858-1-wenst@chromium.org> <20260610084053.2059858-6-wenst@chromium.org>
- <ailxrP-_9_NL8qnN@ashevche-desk.local> <CAMRc=MdiwQM6yk8FXcc+RisVP2iqWKWzVsn2-Yy6dyJXt-1X=Q@mail.gmail.com>
- <aipz2zMFcdnZYTxS@ashevche-desk.local> <CAMRc=MdRN7YitmMX8PknbzLh+MdsWm+dDg0MLtCVYOorqNobTw@mail.gmail.com>
- <airY6IMz2KFz_z9j@kuha> <aisEccAOm3qoXjxd@ashevche-desk.local>
-In-Reply-To: <aisEccAOm3qoXjxd@ashevche-desk.local>
+References: <20260610084053.2059858-1-wenst@chromium.org> <20260610084053.2059858-2-wenst@chromium.org>
+ <ailtMyYhbkOgaZWw@ashevche-desk.local>
+In-Reply-To: <ailtMyYhbkOgaZWw@ashevche-desk.local>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 12 Jun 2026 14:46:26 +0900
-X-Gm-Features: AVVi8CcqLILhEQ5p8_o0FiDM5Wwe_hy_cZp3NZb3BqN3lFzIwdQDiPu3OCyJS60
-Message-ID: <CAGXv+5Hf_V4=mkAc3pN8_K9i+FfH2Wv7HVJBq71-f8sMFYL3fA@mail.gmail.com>
-Subject: Re: [PATCH v2 05/16] usb: hub: Associate port@ fwnode with USB port device
+Date: Fri, 12 Jun 2026 16:07:02 +0900
+X-Gm-Features: AVVi8Cewi0jX5G3AwANJfv_JfU8wtj5jI6ryJrZRjeBtUWWvLVEyokylnfzsf8o
+Message-ID: <CAGXv+5EZp0KvTqMde9da9mUWJyg+6X6Eon9Sqxx0VbikfVr8fw@mail.gmail.com>
+Subject: Re: [PATCH v2 01/16] device property: Add fwnode_graph_get_port_by_id()
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Heikki Krogerus <heikki.krogerus@linux.intel.com>, Bartosz Golaszewski <brgl@kernel.org>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Daniel Scally <djrscally@gmail.com>, 
+Cc: Bartosz Golaszewski <brgl@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Daniel Scally <djrscally@gmail.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
 	Sakari Ailus <sakari.ailus@linux.intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
 	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>, 
 	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
@@ -110,8 +108,8 @@ Cc: Heikki Krogerus <heikki.krogerus@linux.intel.com>, Bartosz Golaszewski <brgl
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260611_224639_253419_67CFA657 
-X-CRM114-Status: GOOD (  35.00  )
+X-CRM114-CacheID: sfid-20260612_000715_226786_ABF02FE7 
+X-CRM114-Status: GOOD (  18.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,112 +124,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 12, 2026 at 3:54=E2=80=AFAM Andy Shevchenko
+On Wed, Jun 10, 2026 at 10:57=E2=80=AFPM Andy Shevchenko
 <andriy.shevchenko@linux.intel.com> wrote:
 >
-> On Thu, Jun 11, 2026 at 06:48:56PM +0300, Heikki Krogerus wrote:
-> > On Thu, Jun 11, 2026 at 11:35:13AM +0200, Bartosz Golaszewski wrote:
-> > > On Thu, Jun 11, 2026 at 10:37=E2=80=AFAM Andy Shevchenko
-> > > <andriy.shevchenko@linux.intel.com> wrote:
-> > > > On Thu, Jun 11, 2026 at 04:20:58AM -0400, Bartosz Golaszewski wrote=
-:
-> > > > > On Wed, 10 Jun 2026 16:16:12 +0200, Andy Shevchenko
-> > > > > <andriy.shevchenko@linux.intel.com> said:
-> > > > > > On Wed, Jun 10, 2026 at 04:40:39PM +0800, Chen-Yu Tsai wrote:
-> > > > > >> When a USB hub port is connected to a connector in a firmware =
-node
-> > > > > >> graph, the port itself has a node in the graph.
-> > > > > >>
-> > > > > >> Associate the port's firmware node with the USB port's device,
-> > > > > >> usb_port::dev. This is used in later changes for the M.2 slot =
-power
-> > > > > >> sequencing provider to match against the requesting port.
-> > > > > >
-> > > > > > Okay, would this affect ACPI-based systems? if so, how?
-> > > > > > Can you elaborate on that, please?
-> > > > >
-> > > > > Is it possible that there's an ACPI device node associated with t=
-he port like
-> > > > > on some DT systems? I don't think so and there should be no impac=
-t IMO but I
-> > > > > also don't know enough about ACPI.
+> On Wed, Jun 10, 2026 at 04:40:35PM +0800, Chen-Yu Tsai wrote:
+> > In some cases the driver needs a reference to the port firmware node.
+> > Once such case is the upcoming USB power sequencing integration. The
+> > USB hub port is tied to the corresponding port firmware node if it
+> > exists.
 > >
-> > There are device nodes for the USB ports in ACPI, and I think they get
-> > always assigned in drivers/usb/core/usb-acpi.c.
-> >
-> > > > The API is agnostic. There is a possibility to have software nodes =
-associated
-> > > > with the port. I think the best is to be sure that ACPI-aware peopl=
-e who are
-> > > > experts in USB will check this (Heikki?).
-> >
-> > I can't say what's the impact from this patch - I'm not an expert with
-> > this side of USB. Is there a danger that we end up overwriting the
-> > ACPI node for the port, or something else?
+> > Provide a helper for this.
 >
-> Exactly this one is my worrying, but I haven't checked the actual flow.
+> Okay, if it's really needed.
+> Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+>
+> ...
+>
+> > +/**
+> > + * fwnode_graph_get_port_by_id - get the port matching a given id
+> > + * @fwnode: parent fwnode_handle containing the graph
+> > + * @id: id of the port
+> > + *
+> > + * Return: A 'port' firmware node pointer with refcount incremented.
+> > + *
+> > + * The caller is responsible for calling fwnode_handle_put() on the re=
+turned
+> > + * fwnode pointer.
+>
+> Note, the Return section must be last one in the kernel-doc. The last par=
+agraph
+> sounds to me as a better fit for main description. Basically check how ot=
+her
+> kernel-doc(s) in this file are organised and follow that pattern.
 
-Looking through ACPI code, ACPI_COMPANION_SET() is used, which boils
-down to
+Will fix. I likely just copied it from the nearest function which happened
+to not have a Return section. I did a quick look through and it seems many
+of them are missing this.
 
-    set_primary_fwnode(dev, acpi_fwnode_handle(acpi_dev))
-
-This is called through
-
-usb_hub_create_port_device()
-  device_register()
-    device_add()
-      device_platform_notify()
-        acpi_device_notify()
-          usb_acpi_find_companion()
-            usb_acpi_find_companion_for_port()
-          acpi_bind_one()
-            ACPI_COMPANION_SET()
-              set_primary_fwnode()
-
-Looking at device_add_software_node(), all swnodes are secondary.
-
-set_primary_fwnode() seems to be able to make the ACPI handle / fwnode
-the primary, keeping any existing fwnode as the secondary. However
-if we do end up assigning a primary fwnode to the device using
-device_set_node() as in this patch, set_primary_fwnode() is going
-to complain loudly.
-
-On another front, the ACPI representation of the USB ports looks nothing
-like the OF graphs, at least on my X1 Carbon:
-
-For a usb port device on the root hub such as
-
-  /sys/bus/usb/devices/4-0:1.0/usb4-port1/firmware_node/path
-
-looks like
-
-  \_SB_.PC00.XHCI.RHUB.SS01
-
-while a usb port's firmware node link
-
-  /sys/bus/usb/devices/4-0:1.0/usb4-port1//firmware_node
-
-resolves to
-
-  /sys/devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/device:19/device:1a/devic=
-e:29
-
-Neither looks anything like the graph "port" / "endpoint" node names.
-So maybe we're in the clear here.
-
-Besides the loud warning from set_primary_fwnode(), the major issue stemmin=
-g
-from a wrong node is that power management (through ACPI) is likely to fail=
-.
-
-If we're still concerned, I think we can skip the assignment if the fwnode
-is an ACPI node, i.e. check it with is_acpi_node().
-
-
-I've never worked on ACPI systems, so this is just me checking the code.
-
-
-Thanks
 ChenYu
 
