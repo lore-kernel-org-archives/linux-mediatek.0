@@ -4,113 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26FC6CD4F2C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2026 07:51:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B54ECD4F2C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2026 07:51:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SR0MIdclzqLJ5NMQX/zWd9Yh3H6pzRPWDeVIlwB7J0g=; b=wqwV7cnUaAnBx8HM1gfjbPmTCg
-	JXGcJ+49LTf8K4KvFdyGxdOunzSqED2VQq4AxacEeglNwz3Yk4SnM/52tOVD2GpzyCKb1mIsHVrbH
-	vwVaBNx8LbKZ4jl17MJ7EdTP6S1/nmwrwb7EA96rCuyZLbPoNTI50kbxWcT5+WKsP+2kgw5imywR7
-	1SIQeZFvFOwdQrYsBoOorLbRI2+Mbd7tZHk0dbhMDyLqyus8C66MqSAYMTR9Vg5Y8W7rJoqZqzjCm
-	nlbM0pMztV/cbO9kf5hIy5XZUUZ7ZlAsQqpB1eJM6tR+1gvtNbfoq8e3JsJWv6RW/jMMOaOcGIx2B
-	G3EJYJfQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=sWph3N1IPVPF1IPl5m4HgnnTTXcv789OBP34n5CObbU=; b=padMYdTnX7c1KPSkAzW9cFtgdl
+	OfiJG7grZY1DBmj0uO5iYid3QD29FRdOJPiyypcYoIlCZo8FlGZ6fOJSx3EmlpoJGahpMk7+s6zm5
+	wRlro5tO1kQcgePE20C9xqc7+s9lSyQiHXBBFpHkRH0QCXKtjOwoaJXS0uKA/wr69PgaLwPQh2P6Y
+	OFdgSiCCefsZ7GqbAB7pet9FDQRVhr/3vl4eLWkhaI4C4m427tFfCleWUXZO34NWSYxRdgyAwJA3v
+	fiHZP8lvKjMmsKNqoN7jOslDlpXYo4orUe4jKqFRBxdObsI4dHk8HEqAeeltByRzjpdOV0BzLR3QW
+	xuteG65w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXwfo-0000000AV9a-1O9e;
-	Fri, 12 Jun 2026 07:51:28 +0000
-Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
+	id 1wXwg6-0000000AVGW-2948;
+	Fri, 12 Jun 2026 07:51:46 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXwfl-0000000AV7a-2dvF
+	id 1wXwg3-0000000AVEm-39m1
 	for linux-mediatek@lists.infradead.org;
-	Fri, 12 Jun 2026 07:51:27 +0000
-Received: by mail-yw1-x112e.google.com with SMTP id 00721157ae682-7e16f05fd79so7549147b3.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 12 Jun 2026 00:51:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1781250684; cv=none;
-        d=google.com; s=arc-20240605;
-        b=CHf2YilK/HejbNrqk2G6bsGzI1e0u1CSjE5bTbMIcXPZeDJ9SjHy/oweITdxSwjWgl
-         +d4wooGMfbSIurDM5uhqhJDeccc9Yp3Jxi5RKEIUP4IDGQBcySTEAquqRnknXTlsBVIw
-         AxVNIPavAbrYecHhIlVHuE1aovfRUbMSM0Gs0RbWEQcpwHCbLxeivdlAtINHvWM1i6wE
-         gy62GU2XJAZP1YkpDwa3UzoThui/Mqt01MdsgKeQIbskWen+nRk1SmpHG/RpgU8iF80m
-         Egrw6QrYTMZDQ81ERTwKiZrMRuZKwUWziH33DviC2MY2GEoZAZdjdmqkYPOJqfKi+Shy
-         iVfA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=SR0MIdclzqLJ5NMQX/zWd9Yh3H6pzRPWDeVIlwB7J0g=;
-        fh=Wheh+/R4TE2cF7F7Eau7q0dJRrAM7QtnYyInPQwmXSw=;
-        b=SwuS8CWZ7L9qmOCX8yjnqTzI/s70nnMsu0/xVtTTJq1iwFtOG4pStcu2HjhKcH+LYn
-         6hdZ5OehJiczcmPQXR/g6WAE0vogARfwnjFzJbqgp90G0Eqob69JX8mEBqP2sku45nYw
-         Ca/vL2NA5inBdZt7GfF8XIInJpDgXNpRsbERWs4H5mqYwXElJyf/u77slG+MLuxi331C
-         UFv0gwi+BqOqTDtDulNDj7xKi48+yulwGpX+AjFHK4KupD07KjLvfE62ZXfTVlXI9WQy
-         gA61JF4/5AjBlHalsPjueXc5ognU9IRNeSM8Qc9PODUFxNTBonTdEmOsgfu60gMHyQ00
-         F5xA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1781250684; x=1781855484; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=SR0MIdclzqLJ5NMQX/zWd9Yh3H6pzRPWDeVIlwB7J0g=;
-        b=JOhF6nOIbCfUZAzO2UuSe0qzd2eq4vdOYELm2ohhzadLdFxsnS9creqTVabmmv8SgY
-         tenPr6AnFgaQQna83MK46w0fKrsZ5hYL7laWujJgaV3o/fOM/gEWxv8hEB9imHnoLM9N
-         evD53XulURY/6DfuOnr2yp3w5QsRgbTOTo5C8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781250684; x=1781855484;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=SR0MIdclzqLJ5NMQX/zWd9Yh3H6pzRPWDeVIlwB7J0g=;
-        b=mSu5RsNEsc10RiH1EVYhJ+pusZFzZhrMlqtrgcgdiIxIea3F0fnxFJ0KaYZ05ZpNaA
-         TW+g36JCpbWcI3UvsZpp1HnbrSRZybhfJK2Z8pavuIchT8vQtCMc8gyFZOrrxecoXcix
-         Bi2lV5GErOBK/nZtA8CMjr0T+5mifO/6fBv/pWg0LJgYLeZru5VQw90d1GGX+zvOvDwg
-         eOY1FfWmtgPtiORTv8AkZmS3TwjCi90yoLrml2G0xpPwI+FziPR25v5jxURLqsNkPdNi
-         2ogbthe8UubBGyIwhdiJkxTLeZ73b54BCEZOMaE/s2aM/cb3f17VuAHGZPxNZexPc2FQ
-         fX0w==
-X-Forwarded-Encrypted: i=1; AFNElJ82KClR6Dgx6xp/i7yfCcsZWVYYrwm9exiQZ/WxyziFsgaXHoBaNvpK3S/ghm8eoBzrjZhIodKE+FsX6NzYng==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywju+ZMPbzJSiuidF1iqGbGRGbhLWFVdiW9HClMSnmG+wEIAsob
-	8w3dP6tBY6p+sxAo2u+BvggXOaZyAoI25BFKqJqYUdXp261bfXxhESdJ1i3OYBIRdZna3oN6RhR
-	Fkll3NJy5GDW3M1VOFMNdCkPGbIJd4rO6wEL8lBGL
-X-Gm-Gg: Acq92OEbum2wQ52azq6FCiEwQlmTERZ2N1SWAmMjX5gW5/s2NYySW3rPla4wGE/hroh
-	O3N+2NbVVHcr7qVGtqNFzl+RD5MIsBnbB8Qd83/iGf9nTSKRI7ShWL2xgkCuVR2hPvyL0PiJbiV
-	FOx7AsQYcr8AI8meWp7nW2BZ2QObeHP6NLPTN6TPnjcY2d3pWIfa8VsZAMtrbT5WNA8YtBuGALM
-	iGNIp9jgJMowRuN9cyseIwS+NMNv3/cK2lusqMu/sMTY4QebK13Z9P3+MunMjvwyP8BoH5e0RxD
-	m48EGy4O
-X-Received: by 2002:a05:690c:ec7:b0:7bd:73f3:7a70 with SMTP id
- 00721157ae682-7f7b8523999mr14898787b3.32.1781250684397; Fri, 12 Jun 2026
- 00:51:24 -0700 (PDT)
+	Fri, 12 Jun 2026 07:51:44 +0000
+X-UUID: 8be4c2f4663311f1afed4741b24580c9-20260612
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=sWph3N1IPVPF1IPl5m4HgnnTTXcv789OBP34n5CObbU=;
+	b=izTLA0HbMzFC9egcnKUKyuR7KlZo5mA+apl18yxW7tKaJeggzIARRvbY1wurVCnyxx2YJLAwMnMI0KN5VPBLKNZjdcNdf4qylObJzuLyqotvgcGhLtLMVFshzlRlut1YwZrKWgFiqKxsyA3BOTtuKwySuEaWyNXRDupVv0MpbuA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.15,REQID:373309bb-4ac2-4a42-80cb-fba27b203e85,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:e276073,CLOUDID:d6d47654-902f-47df-afe3-f34f8d753c22,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|865|888|898,TC:-5,Content:0|
+	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0
+	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 8be4c2f4663311f1afed4741b24580c9-20260612
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <jb.tsai@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1970938360; Fri, 12 Jun 2026 00:51:40 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Fri, 12 Jun 2026 15:51:37 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Fri, 12 Jun 2026 15:51:37 +0800
+From: JB Tsai <jb.tsai@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<Deren.Wu@mediatek.com>, <Sean.Wang@mediatek.com>, <Quan.Zhou@mediatek.com>,
+	<Ryder.Lee@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<litien.chang@mediatek.com>, <emery.hsin@mediatek.com>,
+	<jb.tsai@mediatek.com>, Xiong <xiong.huang@mediatek.com>
+Subject: [PATCH 06/20] wifi: mt76: connac2: add per-chip PCIe register definitions
+Date: Fri, 12 Jun 2026 15:51:32 +0800
+Message-ID: <20260612075136.2577553-1-jb.tsai@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-References: <20260610084053.2059858-1-wenst@chromium.org> <20260610084053.2059858-5-wenst@chromium.org>
- <ailytpKQcvYTUH7j@ashevche-desk.local>
-In-Reply-To: <ailytpKQcvYTUH7j@ashevche-desk.local>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 12 Jun 2026 16:51:13 +0900
-X-Gm-Features: AVVi8CeA8ndBvqsmj_bBdEg4mr2h2E0R3_zPJJzKBFEx0mTdugBDzHIodwmMGm4
-Message-ID: <CAGXv+5FrD7abUvw5JgZECcGBvtOOpezDtmUrCRmVAbDx0ApxhA@mail.gmail.com>
-Subject: Re: [PATCH v2 04/16] usb: hub: Return actual error from
- hub_configure() in hub_probe()
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Bartosz Golaszewski <brgl@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Daniel Scally <djrscally@gmail.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
-	Sakari Ailus <sakari.ailus@linux.intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Alan Stern <stern@rowland.harvard.edu>, linux-acpi@vger.kernel.org, 
-	driver-core@lists.linux.dev, linux-pm@vger.kernel.org, 
-	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Manivannan Sadhasivam <mani@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260612_005125_839755_1BCD8A3E 
-X-CRM114-Status: GOOD (  18.19  )
+X-CRM114-CacheID: sfid-20260612_005143_799477_1BE085A1 
+X-CRM114-Status: UNSURE (   8.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,58 +88,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 10, 2026 at 11:20=E2=80=AFPM Andy Shevchenko
-<andriy.shevchenko@linux.intel.com> wrote:
->
-> On Wed, Jun 10, 2026 at 04:40:38PM +0800, Chen-Yu Tsai wrote:
-> > The addition of power sequencing descriptor handling in the USB hub cod=
-e
-> > requires dealing with deferred probing from pwrseq_get(). The power
-> > sequencing provider may not yet be available when the USB hub probes.
-> >
-> > Return the actual error code from hub_configure() when it fails, so tha=
-t
-> > the driver core can notice the deferred probe request.
->
-> Makes sense to me.
-> Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
->
-> One nit-pick, though.
->
-> ...
->
-> > -     if (hub_configure(hub, &desc->endpoint[0].desc) >=3D 0) {
-> > +     ret =3D hub_configure(hub, &desc->endpoint[0].desc);
-> > +     if (ret >=3D 0) {
-> >               onboard_dev_create_pdevs(hdev, &hub->onboard_devs);
-> >
-> >               return 0;
-> >       }
-> >
-> >       hub_disconnect(intf);
-> > -     return -ENODEV;
-> > +     return ret;
->
-> Can we convert to regular pattern, id est checking for errors first?
+From: Emery Hsin <emery.hsin@mediatek.com>
 
-Sure. Will do it together in the next version.
+Add MT_PCIE_MAC_{INT_ENABLE,PM} definitions to mt7921/regs.h and
+wire up mt7921_pcie_reg in mt7921_pci_probe() to provide connac2
+series chips with their own PCIe register definitions.
 
+This is a preparation patch before enabling MT7928 PCIe support.
 
-ChenYu
+Signed-off-by: Xiong <xiong.huang@mediatek.com>
+Signed-off-by: Emery Hsin <emery.hsin@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/pci.c  | 5 +++++
+ drivers/net/wireless/mediatek/mt76/mt7921/regs.h | 5 +++++
+ 2 files changed, 10 insertions(+)
 
->         ret =3D hub_configure(hub, &desc->endpoint[0].desc);
->         if (ret < 0) {
->                 hub_disconnect(intf);
->                 return ret;
->         }
->
->         onboard_dev_create_pdevs(hdev, &hub->onboard_devs);
->
->         return 0;
->
-> --
-> With Best Regards,
-> Andy Shevchenko
->
->
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+index 067f6b4142b6..a93cdc1f1c93 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+@@ -285,6 +285,10 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+ 		.drv_own = mt792xe_mcu_drv_pmctrl,
+ 		.fw_own = mt792xe_mcu_fw_pmctrl,
+ 	};
++	static const struct mt792x_pcie_reg mt7921_pcie_reg = {
++		.imask = MT_PCIE_MAC_INT_ENABLE,
++		.pm = MT_PCIE_MAC_PM,
++	};
+ 	static const struct mt792x_irq_map irq_map = {
+ 		.host_irq_enable = MT_WFDMA0_HOST_INT_ENA,
+ 		.tx = {
+@@ -354,6 +358,7 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+ 
+ 	dev->fw_features = features;
+ 	dev->hif_ops = &mt7921_pcie_ops;
++	dev->pcie_reg = &mt7921_pcie_reg;
+ 	dev->irq_map = &irq_map;
+ 	mt76_mmio_init(&dev->mt76, regs);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/regs.h b/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
+index 4d9eaf1e0692..75b4e81c7224 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
+@@ -78,4 +78,9 @@
+ #define MT_WTBL_UPDATE_WLAN_IDX		GENMASK(9, 0)
+ #define MT_WTBL_UPDATE_ADM_COUNT_CLEAR	BIT(12)
+ 
++#define MT_PCIE_MAC_BASE		0x10000
++#define MT_PCIE_MAC(ofs)		(MT_PCIE_MAC_BASE + (ofs))
++#define MT_PCIE_MAC_INT_ENABLE		MT_PCIE_MAC(0x188)
++#define MT_PCIE_MAC_PM			MT_PCIE_MAC(0x194)
++
+ #endif
+-- 
+2.45.2
+
 
