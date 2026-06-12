@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 704B4CD4F2C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32EF1CD98CE
 	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2026 07:53:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,49 +12,49 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=286SVq4heW7/YoWgz0MeHBzk0H0PK8ohQa96EYwQVTQ=; b=kMd80GQdYqLtd/d73hnDMKPovT
-	viHrr53/OJFs7WWIjNsiIPhYKPCtIjQEIBlcdeR5Xk0eGM9jrqvylyu89pF135dKcT1UCU+oIPpvz
-	g17V/XW8f/eYNndRRp8zTgdie2ostIJAWzoaZLfpWeV2+GNAuJ6eCwR4iMzFd4ALXsAJHuIzibjQr
-	0VGMPZPtA2QZkKY+xz80wGGAZsRHk8AIb6k35XbT9DXceT2EVBvUEc1+AqO3ifsCDVFOQH2To8v/s
-	TLRPGX/eu+Kt5QU60jtUVkb7sJJOExmb4D6oPErvkxQLi/WwahDWxoYd6ZtiUspqoK7ul7BLgNLCq
-	gUlUfiPg==;
+	bh=atYc+1FSH+0IX07sudMZK0pVFont4LcfKYYkTcVMLqo=; b=tbZnn8MOrp0VkJT4G24IxQtY8k
+	Zst8JtufHC/6+T9WkIJmUckPtDb/LCPkLDrixLYAMCO5VBLfsMwp+M+0IHHprEFfC7K3QdpAE1WFM
+	P+cVK+ObLsuPUFxSsyxgdYKevTjvItIfXT+e/HIOQDy9TD7+p5ysFOUi1a8jivXoZl59CEz36Vp+l
+	qfl7DN6B2oF7DIJUv0kKQFSTD/W+pg1v7fTXRykFJQ+/3jwGKWW8OGypczyr7xljOpx3WRGwOpGt+
+	AEDU0X/YtHXkqKrxb/AeWCaDVneF1KcQFHJ4sNGyoW2MXJbBOa7Ti+2GMZH458ol6ESaSAneND6qZ
+	AhwFzQGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXwhh-0000000AVe2-2AGm;
+	id 1wXwhh-0000000AVdJ-0roB;
 	Fri, 12 Jun 2026 07:53:25 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXwhf-0000000AVcD-2tri
+	id 1wXwhe-0000000AVbk-3Bp5
 	for linux-mediatek@lists.infradead.org;
 	Fri, 12 Jun 2026 07:53:24 +0000
-X-UUID: c74add92663311f1afed4741b24580c9-20260612
+X-UUID: c6fbbfe6663311f1afed4741b24580c9-20260612
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=286SVq4heW7/YoWgz0MeHBzk0H0PK8ohQa96EYwQVTQ=;
-	b=XuvCjx97GMMDxb3r8cTme0dQ+53yejRt1cRbiBcblSHOjIE4/wh5BcbmNg5+nXc87ltSDRMVVsumDUqhVy04KI1Ir3ywQXcR5Esd2ngtZBot0/cm+067FRS7me34uM2jefo6QrTo0ZLASNIefLkhV791YBzVg17jkTfLsc7i8Do=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=atYc+1FSH+0IX07sudMZK0pVFont4LcfKYYkTcVMLqo=;
+	b=XTo77VXZ7O/qKs2mSwXt/l52i5+NidnvKg2r6mOV6ycx2l+m6jjJh/xYyXQjwAjkJtV//ZwHEPUNq+/R+8xVqJbSNqdqMk6efjWoEtTHWNGaNYFXhRUxoJC3RJZQ9nwPFZiKO3p1+JmLvTnh6dHejsCngohbQdDjhYYCRv9wb4s=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.15,REQID:12b72413-6067-4783-b95a-a970f17886f8,IP:0,U
+X-CID-O-INFO: VERSION:1.3.15,REQID:d8f3f7e0-e653-4493-8aa1-e56a8b751d3d,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:e276073,CLOUDID:06526397-22d1-4176-b420-d0d82ac3f01a,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|865|888|898,TC:-5,Cont
-	ent:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0
-	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:e276073,CLOUDID:2479b230-7784-4a77-a538-47ed6151d81b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|136|836|865|888|898,TC:-5,
+	Content:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,C
+	OL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: c74add92663311f1afed4741b24580c9-20260612
+X-UUID: c6fbbfe6663311f1afed4741b24580c9-20260612
 Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
 	(envelope-from <jb.tsai@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 850316116; Fri, 12 Jun 2026 00:53:19 -0700
+	with ESMTP id 1864931525; Fri, 12 Jun 2026 00:53:19 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Fri, 12 Jun 2026 15:53:18 +0800
+ 15.2.2562.29; Fri, 12 Jun 2026 15:53:16 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Fri, 12 Jun 2026 15:53:18 +0800
+ 15.2.2562.29 via Frontend Transport; Fri, 12 Jun 2026 15:53:16 +0800
 From: JB Tsai <jb.tsai@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo@kernel.org>
 CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
@@ -63,9 +63,9 @@ CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
 	<litien.chang@mediatek.com>, <emery.hsin@mediatek.com>,
 	<jb.tsai@mediatek.com>, FC Wei <fc.wei@mediatek.com>, Xiong
 	<xiong.huang@mediatek.com>
-Subject: [PATCH 15/20] wifi: mt76: mt7925: add MT7928 DMA configuration
-Date: Fri, 12 Jun 2026 15:53:13 +0800
-Message-ID: <20260612075313.2578154-5-jb.tsai@mediatek.com>
+Subject: [PATCH 13/20] wifi: mt76: mt7925: add MT7928 FWDL support
+Date: Fri, 12 Jun 2026 15:53:11 +0800
+Message-ID: <20260612075313.2578154-3-jb.tsai@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20260612075313.2578154-1-jb.tsai@mediatek.com>
 References: <20260612075313.2578154-1-jb.tsai@mediatek.com>
@@ -74,8 +74,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260612_005323_741195_EC4C3489 
-X-CRM114-Status: GOOD (  17.77  )
+X-CRM114-CacheID: sfid-20260612_005322_820270_0CB2B306 
+X-CRM114-Status: GOOD (  19.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,417 +92,554 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Emery Hsin <emery.hsin@mediatek.com>
 
-Add MT7928 DMA queue layout, DMASHDL configuration, prefetch ring
-setup, and WFDMA interrupt priority initialization. Select the
-MT7928-specific layout and GLO_CFG path in mt7925_dma_init().
+Add CBMCU and PHY RAM firmware download flow for MT7928. The CBMCU
+firmware is loaded in sections before the main WM firmware. Register
+MT7928 firmware file names and is_mt7928() chip check.
 
 Signed-off-by: FC Wei <fc.wei@mediatek.com>
 Signed-off-by: Xiong <xiong.huang@mediatek.com>
 Signed-off-by: Emery Hsin <emery.hsin@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7925/mcu.h   | 21 +++++
- .../wireless/mediatek/mt76/mt7925/mt7925.h    |  8 ++
- .../net/wireless/mediatek/mt76/mt7925/pci.c   | 91 ++++++++++++++++--
- .../net/wireless/mediatek/mt76/mt7925/regs.h  | 21 +++++
- .../net/wireless/mediatek/mt76/mt792x_dma.c   | 94 ++++++++++++++++---
- .../net/wireless/mediatek/mt76/mt792x_regs.h  | 19 +++-
- 6 files changed, 233 insertions(+), 21 deletions(-)
+ .../net/wireless/mediatek/mt76/mt76_connac.h  |   7 +-
+ .../wireless/mediatek/mt76/mt76_connac_mcu.c  | 251 +++++++++++++++++-
+ .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  40 +++
+ .../net/wireless/mediatek/mt76/mt7925/mcu.c   |  15 +-
+ drivers/net/wireless/mediatek/mt76/mt792x.h   |  29 ++
+ .../net/wireless/mediatek/mt76/mt792x_core.c  |  15 ++
+ 6 files changed, 353 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-index 293f173b23dd..1613c4765186 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-@@ -175,6 +175,27 @@ enum connac3_mcu_cipher_type {
- 	CONNAC3_CIPHER_GCMP_256 = 12,
- };
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac.h b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
+index 2aa6078993e9..e21c393bb26d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
+@@ -174,7 +174,7 @@ extern const struct wiphy_wowlan_support mt76_connac_wowlan_support;
  
-+enum DMASHDL_GROUP_IDX {
-+	DMASHDL_GROUP_0 = 0,
-+	DMASHDL_GROUP_1,
-+	DMASHDL_GROUP_2,
-+	DMASHDL_GROUP_3,
-+	DMASHDL_GROUP_4,
-+	DMASHDL_GROUP_5,
-+	DMASHDL_GROUP_6,
-+	DMASHDL_GROUP_7,
-+	DMASHDL_GROUP_8,
-+	DMASHDL_GROUP_9,
-+	DMASHDL_GROUP_10,
-+	DMASHDL_GROUP_11,
-+	DMASHDL_GROUP_12,
-+	DMASHDL_GROUP_13,
-+	DMASHDL_GROUP_14,
-+	DMASHDL_GROUP_15,
-+	DMASHDL_GROUP_NUM,
-+	DMASHDL_LITE_GROUP_NUM = 64
-+};
+ static inline bool is_connac3(struct mt76_dev *dev)
+ {
+-	return mt76_chip(dev) == 0x7925 || mt76_chip(dev) == 0x7927;
++	return mt76_chip(dev) == 0x7925 || mt76_chip(dev) == 0x7927 || mt76_chip(dev) == 0x7928;
+ }
+ 
+ static inline bool is_mt7925(struct mt76_dev *dev)
+@@ -187,6 +187,11 @@ static inline bool is_mt7927(struct mt76_dev *dev)
+ 	return mt76_chip(dev) == 0x7927;
+ }
+ 
++static inline bool is_mt7928(struct mt76_dev *dev)
++{
++	return mt76_chip(dev) == 0x7928;
++}
 +
- struct mt7925_mcu_scan_chinfo_event {
- 	u8 nr_chan;
- 	u8 alpha2[3];
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
-index 4cc259418afc..a5414fa2736f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
-@@ -15,6 +15,7 @@
+ static inline bool is_320mhz_supported(struct mt76_dev *dev)
+ {
+ 	return mt76_chip(dev) == 0x7927;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index 6596c9e198f4..488fe5ef3fbc 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -67,7 +67,8 @@ int mt76_connac_mcu_init_download(struct mt76_dev *dev, u32 addr, u32 len,
  
- #define MT7925_RX_RING_SIZE		1536
- #define MT7925_RX_MCU_RING_SIZE		512
-+#define MT7928_RX_MCU_WA_RING_SIZE	512
+ 	if ((!is_connac_v1(dev) && addr == MCU_PATCH_ADDRESS) ||
+ 	    (is_connac2(dev) && addr == 0x900000) ||
+-	    (is_connac3(dev) && (addr == 0x900000 || addr == 0xe0002800)) ||
++	    ((is_mt7925(dev) || is_mt7927(dev)) && (addr == 0x900000 || addr == 0xe0002800)) ||
++	    (is_mt7928(dev) && (addr == 0x900000 || addr == 0xe0002000)) ||
+ 	    (is_mt799x(dev) && addr == 0x900000))
+ 		cmd = MCU_CMD(PATCH_START_REQ);
+ 	else
+@@ -77,6 +78,48 @@ int mt76_connac_mcu_init_download(struct mt76_dev *dev, u32 addr, u32 len,
+ }
+ EXPORT_SYMBOL_GPL(mt76_connac_mcu_init_download);
  
- #define MT7925_EEPROM_SIZE		3584
- #define MT7925_TOKEN_SIZE		8192
-@@ -139,6 +140,13 @@ enum mt7927_rxq_id {
- 	MT7927_RXQ_DATA2 = 7,
++int mt76_connac_cb_mcu_patch_sem_ctrl(struct mt76_dev *dev, bool get)
++{
++	u8 op = get ? PATCH_SEM_GET : PATCH_SEM_RELEASE;
++	struct {
++		u8 op;
++		u8 reserved[3];
++	} req = {
++		.op = op,
++	};
++
++	return mt76_mcu_send_msg(dev, MCU_CMD(CB_PATCH_SEM_CONTROL),
++				 &req, sizeof(req), true);
++}
++EXPORT_SYMBOL_GPL(mt76_connac_cb_mcu_patch_sem_ctrl);
++
++int mt76_connac_cb_mcu_start_patch(struct mt76_dev *dev)
++{
++	struct {
++		__le32 reserved;
++	} req = {
++		.reserved = 0,
++	};
++
++	return mt76_mcu_send_msg(dev, MCU_CMD(CB_PATCH_FINISH_REQ),
++				 &req, sizeof(req), true);
++}
++EXPORT_SYMBOL_GPL(mt76_connac_cb_mcu_start_patch);
++
++int mt76_connac_cb_mcu_init_download(struct mt76_dev *dev, u32 len)
++{
++	struct {
++		__le32 addr;
++		__le32 len;
++	} req = {
++		.addr = 0, /* addr is meaningless for cbmcu fwdl */
++		.len = cpu_to_le32(len),
++	};
++
++	return mt76_mcu_send_msg(dev, MCU_CMD(CB_PATCH_START_REQ), &req, sizeof(req), true);
++}
++EXPORT_SYMBOL_GPL(mt76_connac_cb_mcu_init_download);
++
+ int mt76_connac_mcu_set_channel_domain(struct mt76_phy *phy)
+ {
+ 	int len, i, n_max_channels, n_2ch = 0, n_5ch = 0, n_6ch = 0;
+@@ -3042,6 +3085,57 @@ mt76_connac_mcu_send_ram_firmware(struct mt76_dev *dev,
+ 	return mt76_connac_mcu_start_firmware(dev, override, option);
+ }
+ 
++static int
++mt76_connac_mcu_send_phy_ram_firmware(struct mt76_dev *dev,
++				      const struct mt76_connac2_fw_trailer *hdr,
++				      const u8 *data)
++{
++	int i, offset = 0, max_len = mt76_is_sdio(dev) ? 2048 : 4096;
++	u32 override = 0, option = 0;
++
++	for (i = 0; i < hdr->n_region; i++) {
++		const struct mt76_connac2_fw_region *region;
++		u32 len, addr, mode;
++		int err;
++
++		region = (const void *)((const u8 *)hdr -
++					(hdr->n_region - i) * sizeof(*region));
++		mode = mt76_connac_mcu_gen_dl_mode(dev, region->feature_set,
++						   true);
++		len = le32_to_cpu(region->len);
++		addr = le32_to_cpu(region->addr);
++
++		if (region->feature_set & FW_FEATURE_NON_DL)
++			goto next;
++
++		if (region->feature_set & FW_FEATURE_OVERRIDE_ADDR)
++			override = addr;
++
++		err = mt76_connac_mcu_init_download(dev, addr, len, mode);
++		if (err) {
++			dev_err(dev->dev,
++				"The request to dowload PHY firmware failed.\n");
++			return err;
++		}
++
++		err = __mt76_mcu_send_firmware(dev, MCU_CMD(FW_SCATTER),
++					       data + offset, len, max_len);
++		if (err) {
++			dev_err(dev->dev, "Failed to send PHY firmware.\n");
++			return err;
++		}
++
++next:
++		offset += len;
++	}
++
++	if (override)
++		option |= FW_START_OVERRIDE;
++	option |= FW_START_WORKING_PDA_DSP;
++
++	return mt76_connac_mcu_start_firmware(dev, override, option);
++}
++
+ int mt76_connac2_load_ram(struct mt76_dev *dev, const char *fw_wm,
+ 			  const char *fw_wa)
+ {
+@@ -3109,6 +3203,39 @@ int mt76_connac2_load_ram(struct mt76_dev *dev, const char *fw_wm,
+ }
+ EXPORT_SYMBOL_GPL(mt76_connac2_load_ram);
+ 
++int mt76_connac3_load_phy_ram(struct mt76_dev *dev, const char *fw_name)
++{
++	const struct mt76_connac2_fw_trailer *hdr;
++	const struct firmware *fw;
++	int ret;
++
++	ret = request_firmware(&fw, fw_name, dev->dev);
++	if (ret)
++		return ret;
++
++	if (!fw || !fw->data || fw->size < sizeof(*hdr)) {
++		dev_err(dev->dev, "Invalid PHY firmware\n");
++		ret = -EINVAL;
++		goto out;
++	}
++
++	hdr = (const void *)(fw->data + fw->size - sizeof(*hdr));
++	dev_info(dev->dev, "PHY Firmware Version: %.10s, Build Time: %.15s\n",
++		 hdr->fw_ver, hdr->build_date);
++
++	ret = mt76_connac_mcu_send_phy_ram_firmware(dev, hdr, fw->data);
++	if (ret) {
++		dev_err(dev->dev, "Failed to start PHY firmware\n");
++		goto out;
++	}
++
++out:
++	release_firmware(fw);
++
++	return ret;
++}
++EXPORT_SYMBOL_GPL(mt76_connac3_load_phy_ram);
++
+ static u32 mt76_connac2_get_data_mode(struct mt76_dev *dev, u32 info)
+ {
+ 	u32 mode = DL_MODE_NEED_RSP;
+@@ -3222,6 +3349,128 @@ int mt76_connac2_load_patch(struct mt76_dev *dev, const char *fw_name)
+ }
+ EXPORT_SYMBOL_GPL(mt76_connac2_load_patch);
+ 
++int mt76_connac3_load_cb_patch(struct mt76_dev *dev, const char *fw_name)
++{
++	const struct mt76_connac3_multi_header_v2_sec_raw_format *sect = NULL;
++	const struct mt76_connac3_multi_header_v2_raw_format *hdr = NULL;
++	int i, ret, sem, max_len = mt76_is_sdio(dev) ? 2048 : 4096;
++	const struct firmware *fw = NULL;
++	const u8 *dl;
++	u32 len;
++
++	sem = mt76_connac_cb_mcu_patch_sem_ctrl(dev, true);
++	switch (sem) {
++	case CB_PATCH_IS_DL:
++		return 0;
++	case CB_PATCH_GET_SEM_NEED_PATCH:
++		break;
++	default:
++		dev_err(dev->dev, "Failed to get cb patch semaphore %u\n", sem);
++		return -EAGAIN;
++	}
++
++	ret = request_firmware(&fw, fw_name, dev->dev);
++	if (ret)
++		goto out;
++
++	if (!fw || !fw->data || fw->size < sizeof(*hdr)) {
++		dev_err(dev->dev, "Invalid firmware\n");
++		ret = -EINVAL;
++		goto out;
++	}
++
++	hdr = (const void *)fw->data;
++	dev_info(dev->dev, "HW/SW Version: 0x%x, Pack Time: %.21s\n",
++		 le32_to_cpu(hdr->patch_ver), hdr->pack_time);
++
++	if (le32_to_cpu(hdr->sec_num) < 2) {
++		dev_err(dev->dev, "Invalid section numbers %u\n",
++			le32_to_cpu(hdr->sec_num));
++		ret = -EINVAL;
++		goto out;
++	}
++
++	sect = &hdr->sects[0];
++	/* check the fw bin basic info */
++	if (((le32_to_cpu(sect->type) & SEC_TYPE_SUBSYS_MASK)
++	    != SEC_TYPE_SUBSYS_CBMCU) ||
++	    ((le32_to_cpu(sect->type) & SEC_TYPE_SUBSYS_SEC_MASK)
++	    != SEC_TYPE_SUBSYS_SEC_IMG_SIGN)) {
++		dev_err(dev->dev, "Invalid CBMCU firmware\n");
++		ret = -EINVAL;
++		goto out;
++	}
++
++	/* download global desc + sect map + cert section */
++	len = sizeof(struct mt76_connac3_multi_header_v2_raw_format) -
++	      offsetof(struct mt76_connac3_multi_header_v2_raw_format,
++		       global_desc_head) +
++	      sizeof(struct mt76_connac3_multi_header_v2_sec_raw_format) *
++	      le32_to_cpu(hdr->sec_num) +
++	      le32_to_cpu(hdr->sects[0].size);
++	dl = &hdr->global_desc_head[0];
++
++	ret = mt76_connac_cb_mcu_init_download(dev, len);
++	if (ret) {
++		dev_err(dev->dev, "Download cb cert section request failed\n");
++		goto out;
++	}
++
++	ret = __mt76_mcu_send_firmware(dev, MCU_CMD(FW_SCATTER),
++				       dl, len, max_len);
++	if (ret) {
++		dev_err(dev->dev, "Failed to send cb patch cert section\n");
++		goto out;
++	}
++
++	ret = mt76_connac_cb_mcu_start_patch(dev);
++	if (ret) {
++		dev_err(dev->dev, "CBMCU cert check fail\n");
++		goto out;
++	}
++
++	/* download cbmcu idlm */
++	for (i = 1; i < le32_to_cpu(hdr->sec_num); i++) {
++		dl = (uint8_t *)hdr + le32_to_cpu(hdr->sects[i].offset);
++		len = le32_to_cpu(hdr->sects[i].size);
++
++		ret = mt76_connac_cb_mcu_init_download(dev, len);
++		if (ret) {
++			dev_err(dev->dev,
++				"Download cb section %u request failed\n", i);
++			goto out;
++		}
++
++		ret = __mt76_mcu_send_firmware(dev, MCU_CMD(FW_SCATTER),
++					       dl, len, max_len);
++		if (ret) {
++			dev_err(dev->dev,
++				"Failed to send cb patch section %u\n", i);
++			goto out;
++		}
++	}
++
++	ret = mt76_connac_cb_mcu_start_patch(dev);
++	if (ret)
++		dev_err(dev->dev, "Failed to start cb patch\n");
++
++out:
++	sem = mt76_connac_cb_mcu_patch_sem_ctrl(dev, false);
++	switch (sem) {
++	case CB_PATCH_REL_SEM_SUCCESS:
++		break;
++	default:
++		ret = -EAGAIN;
++		dev_err(dev->dev, "Failed to release cb patch semaphore\n");
++		break;
++	}
++
++	release_firmware(fw);
++
++	return ret;
++}
++EXPORT_SYMBOL_GPL(mt76_connac3_load_cb_patch);
++
+ int mt76_connac2_mcu_fill_message(struct mt76_dev *dev, struct sk_buff *skb,
+ 				  int cmd, int *wait_seq)
+ {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index 6d0429f40b0f..5674090961d4 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -35,6 +35,12 @@
+ #define PATCH_SEC_ENC_SCRAMBLE_INFO_MASK	GENMASK(15, 0)
+ #define PATCH_SEC_ENC_AES_KEY_MASK		GENMASK(7, 0)
+ 
++#define SEC_TYPE_SUBSYS_MASK			GENMASK(23, 16)
++#define SEC_TYPE_SUBSYS_CBMCU			BIT(16)
++
++#define SEC_TYPE_SUBSYS_SEC_MASK		GENMASK(15, 0)
++#define SEC_TYPE_SUBSYS_SEC_IMG_SIGN		0x05
++
+ enum {
+ 	FW_TYPE_DEFAULT = 0,
+ 	FW_TYPE_CLC = 2,
+@@ -193,6 +199,25 @@ struct mt76_connac2_fw_region {
+ 	u8 rsv1[14];
+ } __packed;
+ 
++struct mt76_connac3_multi_header_v2_sec_raw_format {
++	__le32 type;
++	__le32 offset;
++	__le32 size;
++	u8 spec[52];
++} __packed;
++
++struct mt76_connac3_multi_header_v2_raw_format {
++	u8 pack_time[20];
++	u8 chip_id_eco_ver[8];
++	__le32 patch_ver;
++	u8 global_desc_head[4];
++	__le32 global_subsys;
++	u8 rsv2[4];
++	__le32 sec_num;
++	u8 rsv3[48];
++	struct mt76_connac3_multi_header_v2_sec_raw_format sects[];
++} __packed;
++
+ struct tlv {
+ 	__le16 tag;
+ 	__le16 len;
+@@ -1104,6 +1129,13 @@ enum {
+ 	PATCH_REL_SEM_SUCCESS
  };
  
-+enum mt7928_rxq_id {
-+	MT7928_RXQ_BAND0,
-+	MT7928_RXQ_BAND1 = 2,
-+	MT7928_RXQ_MCU_WM = 3,
-+	MT7928_RXQ_MCU_WM2 = 1, /* for tx done */
++enum {
++	CB_PATCH_GET_SEM_NEED_PATCH,
++	CB_PATCH_IS_DL,
++	CB_PATCH_NO_SEM_NEED_PATCH,
++	CB_PATCH_REL_SEM_SUCCESS
 +};
 +
  enum {
- 	MODE_OPEN = 0,
- 	MODE_SHARED = 1,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-index 6a65c630f85a..f79d4143e38b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-@@ -252,6 +252,27 @@ static const struct mt792x_dma_layout mt7927_dma_layout = {
- 				   MT_RX_DATA_RING_BASE),
- };
+ 	FW_STATE_INITIAL,
+ 	FW_STATE_FW_DOWNLOAD,
+@@ -1332,6 +1364,9 @@ enum {
+ 	MCU_CMD_PATCH_START_REQ = 0x05,
+ 	MCU_CMD_PATCH_FINISH_REQ = 0x07,
+ 	MCU_CMD_PATCH_SEM_CONTROL = 0x10,
++	MCU_CMD_CB_PATCH_SEM_CONTROL = 0x30,
++	MCU_CMD_CB_PATCH_START_REQ = 0x31,
++	MCU_CMD_CB_PATCH_FINISH_REQ = 0x32,
+ 	MCU_CMD_WA_PARAM = 0xc4,
+ 	MCU_CMD_EXT_CID = 0xed,
+ 	MCU_CMD_FW_SCATTER = 0xee,
+@@ -2018,6 +2053,9 @@ int mt76_connac_mcu_init_download(struct mt76_dev *dev, u32 addr, u32 len,
+ 				  u32 mode);
+ int mt76_connac_mcu_start_patch(struct mt76_dev *dev);
+ int mt76_connac_mcu_patch_sem_ctrl(struct mt76_dev *dev, bool get);
++int mt76_connac_cb_mcu_init_download(struct mt76_dev *dev, u32 len);
++int mt76_connac_cb_mcu_start_patch(struct mt76_dev *dev);
++int mt76_connac_cb_mcu_patch_sem_ctrl(struct mt76_dev *dev, bool get);
+ int mt76_connac_mcu_start_firmware(struct mt76_dev *dev, u32 addr, u32 option);
  
-+static const struct mt792x_dma_layout mt7928_dma_layout = {
-+	.tx_data0 = mt792x_dma_ring(MT7925_TXQ_BAND0,
-+				    MT7925_TX_RING_SIZE,
-+				    MT_TX_RING_BASE),
-+	.tx_mcu = mt792x_dma_ring(MT7925_TXQ_MCU_WM,
-+				  MT7925_TX_MCU_RING_SIZE,
-+				  MT_TX_RING_BASE),
-+	.tx_fwdl = mt792x_dma_ring(MT7925_TXQ_FWDL,
-+				   MT7925_TX_FWDL_RING_SIZE,
-+				   MT_TX_RING_BASE),
-+	.tx_done = mt792x_dma_ring(MT7928_RXQ_MCU_WM2,
-+				   MT7928_RX_MCU_WA_RING_SIZE,
-+				   MT_RX_EVENT_RING_BASE),
-+	.rx_mcu = mt792x_dma_ring(MT7928_RXQ_MCU_WM,
-+				  MT7925_RX_MCU_RING_SIZE,
-+				  MT_RX_EVENT_RING_BASE),
-+	.rx_data = mt792x_dma_ring(MT7928_RXQ_BAND0,
-+				   MT7925_RX_RING_SIZE,
-+				   MT_RX_DATA_RING_BASE),
-+};
-+
- static int mt7927_dma_init(struct mt792x_dev *dev)
- {
- 	int ret;
-@@ -279,11 +300,62 @@ static int mt7927_dma_init(struct mt792x_dev *dev)
- 	return mt792x_dma_enable(dev);
- }
+ void mt76_connac_mcu_build_rnr_scan_param(struct mt76_dev *mdev,
+@@ -2101,7 +2139,9 @@ int mt76_connac_mcu_rdd_cmd(struct mt76_dev *dev, int cmd, u8 index,
+ int mt76_connac_mcu_sta_wed_update(struct mt76_dev *dev, struct sk_buff *skb);
+ int mt76_connac2_load_ram(struct mt76_dev *dev, const char *fw_wm,
+ 			  const char *fw_wa);
++int mt76_connac3_load_phy_ram(struct mt76_dev *dev, const char *fw_name);
+ int mt76_connac2_load_patch(struct mt76_dev *dev, const char *fw_name);
++int mt76_connac3_load_cb_patch(struct mt76_dev *dev, const char *fw_name);
+ int mt76_connac2_mcu_fill_message(struct mt76_dev *mdev, struct sk_buff *skb,
+ 				  int cmd, int *wait_seq);
+ #endif /* __MT76_CONNAC_MCU_H */
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index e94fa544ff20..0b4ca5cf5734 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -26,13 +26,24 @@ int mt7925_mcu_parse_response(struct mt76_dev *mdev, int cmd,
+ 	}
  
-+static void mt7928_dma_shdl_lite_init(struct mt792x_dev *dev)
-+{
-+	u32 addr, idx, grp1_5_quota, grp15_quota;
-+	u32 q2group[8] = {
-+		0x04000000, /* AC00->G0,..., AC03->G4 */
-+		0x04010101, /* AC10->G1,..., AC13->G4 */
-+		0x04020202, /* AC20->G2,..., AC23->G4 */
-+		0x04030303, /* AC30->G3,..., AC33->G4 */
-+		0x00000005, /* ALTX->G5,BMC->G0,BCN->G0 */
-+		0x00000005, /* TGID=1 ALTX->G5 */
-+		0x00000000, /* NAF/NBCN/FIXFID -> G0 */
-+		0x00000005, /* TGID=2 ALTX->G5 */
-+	};
-+
-+	/* RST */
-+	mt76_wr(dev, MT_DMASHDL_LITE_MAIN_CONTROL, MT_DMASHDL_LITE_MAIN_CONTROL_SW_RST);
-+	/* pse page size 0x10, ple page size 0x7e0 */
-+	mt76_wr(dev, MT_DMASHDL_LITE_PAGE_SIZE,
-+		FIELD_PREP(MT_DMASHDL_LITE_PSE_PAGE_SIZE_MASK, 0x10) |
-+		FIELD_PREP(MT_DMASHDL_LITE_PLE_PAGE_SIZE_MASK, 0x7e0));
-+	/* pse max page 8, ple max page 1 */
-+	mt76_wr(dev, MT_DMASHDL_LITE_PKT_MAX_SIZE,
-+		FIELD_PREP(MT_DMASHDL_LITE_PSE_PKT_MAX_SIZE_MASK, 8) |
-+		FIELD_PREP(MT_DMASHDL_LITE_PLE_PKT_MAX_SIZE_MASK, 1));
-+	/* SN/UDF check */
-+	mt76_wr(dev, MT_DMASHDL_LITE_GROUP_SN_CHK0, 0xffffffff);
-+	mt76_wr(dev, MT_DMASHDL_LITE_GROUP_SN_CHK1, 0xffffffff);
-+	mt76_wr(dev, MT_DMASHDL_LITE_GROUP_UDF_CHK0, 0xffffffff);
-+	mt76_wr(dev, MT_DMASHDL_LITE_GROUP_UDF_CHK1, 0xffffffff);
-+	/* q mapping */
-+	for (addr = MT_DMASHDL_LITE_Q_MAPPING0, idx = 0;
-+	     idx < ARRAY_SIZE(q2group);
-+	     idx++, addr += 4)
-+		mt76_wr(dev, addr, q2group[idx]);
-+	/* refill, set 0 to enable group 0,1,2,3,4,5 & 15 */
-+	mt76_wr(dev, MT_DMASHDL_LITE_GROUP_DISABLE0, 0xffff7fc0);
-+	mt76_wr(dev, MT_DMASHDL_LITE_GROUP_DISABLE1, 0xffffffff);
-+	/* max/min quota */
-+	grp1_5_quota = FIELD_PREP(MT_DMASHDL_LITE_GROUP_MAX_QUOTA_MASK, 0x3f0) |
-+		       FIELD_PREP(MT_DMASHDL_LITE_GROUP_MIN_QUOTA_MASK, 0x10);
-+	grp15_quota = FIELD_PREP(MT_DMASHDL_LITE_GROUP_MAX_QUOTA_MASK, 0x30);
-+
-+	for (addr = MT_DMASHDL_LITE_GROUP0_QUOTA, idx = 0;
-+	     idx < DMASHDL_LITE_GROUP_NUM;
-+	     idx++, addr += 4)
-+		mt76_wr(dev, addr, (idx <= 5) ? grp1_5_quota :
-+			((idx == 15) ? grp15_quota : 0));
-+}
-+
- static int mt7925_dma_init(struct mt792x_dev *dev)
- {
- 	int ret;
-+	const struct mt792x_dma_layout *layout =
-+		is_mt7928(&dev->mt76) ? &mt7928_dma_layout : &mt7925_dma_layout;
- 
--	ret = mt792x_dma_alloc_queues(dev, &mt7925_dma_layout);
-+	ret = mt792x_dma_alloc_queues(dev, layout);
- 	if (ret)
- 		return ret;
- 
-@@ -291,6 +363,9 @@ static int mt7925_dma_init(struct mt792x_dev *dev)
- 	if (ret < 0)
- 		return ret;
- 
-+	if (is_mt7928(&dev->mt76))
-+		mt7928_dma_shdl_lite_init(dev);
-+
- 	netif_napi_add_tx(dev->mt76.tx_napi_dev, &dev->mt76.tx_napi,
- 			  mt792x_poll_tx);
- 	napi_enable(&dev->mt76.tx_napi);
-@@ -402,14 +477,18 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
- 	if (ret < 0)
- 		return ret;
- 
--	ret = dma_set_mask(&pdev->dev, DMA_BIT_MASK(32));
--	if (ret)
--		goto err_free_pci_vec;
--
- 	is_mt7927_hw = (pdev->device == 0x6639 || pdev->device == 0x7927 ||
- 			pdev->device == 0x0738);
- 	is_mt7928_hw = (pdev->device == 0x7928 || pdev->device == 0x7935);
- 
-+	if (is_mt7928_hw)
-+		ret = dma_set_mask(&pdev->dev, DMA_BIT_MASK(34));
-+	else
-+		ret = dma_set_mask(&pdev->dev, DMA_BIT_MASK(32));
-+
-+	if (ret)
-+		goto err_free_pci_vec;
-+
- 	/* MT7927: ASPM L1 causes unreliable WFDMA register access */
- 	if (mt7925_disable_aspm || is_mt7927_hw)
- 		mt76_pci_disable_aspm(pdev);
-@@ -499,7 +578,7 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
- 
- 	if (is_mt7927(&dev->mt76))
- 		ret = mt7927_dma_init(dev);
--	else if (is_mt7925(&dev->mt76))
-+	else if (is_mt7925(&dev->mt76) || is_mt7928(&dev->mt76))
- 		ret = mt7925_dma_init(dev);
- 	else
- 		ret = -EINVAL;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/regs.h b/drivers/net/wireless/mediatek/mt76/mt7925/regs.h
-index 855a53c0748a..253ba72310ec 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/regs.h
-@@ -108,4 +108,25 @@
- #define MT7925_PCIE_MAC_INT_ENABLE	MT7925_PCIE_MAC(0x188)
- #define MT7925_PCIE_MAC_PM		MT7925_PCIE_MAC(0x194)
- 
-+#define MT_DMASHDL_LITE_BASE			0x20026200
-+#define MT_DMASHDL_LITE(ofs)			(MT_DMASHDL_LITE_BASE + (ofs))
-+#define MT_DMASHDL_LITE_MAIN_CONTROL		MT_DMASHDL_LITE(0x004)
-+#define MT_DMASHDL_LITE_MAIN_CONTROL_SW_RST		BIT(18)
-+#define MT_DMASHDL_LITE_PAGE_SIZE		MT_DMASHDL_LITE(0x008)
-+#define MT_DMASHDL_LITE_PLE_PAGE_SIZE_MASK		GENMASK(12, 0)
-+#define MT_DMASHDL_LITE_PSE_PAGE_SIZE_MASK		GENMASK(28, 16)
-+#define MT_DMASHDL_LITE_PKT_MAX_SIZE		MT_DMASHDL_LITE(0x00c)
-+#define MT_DMASHDL_LITE_PLE_PKT_MAX_SIZE_MASK		GENMASK(12, 0)
-+#define MT_DMASHDL_LITE_PSE_PKT_MAX_SIZE_MASK		GENMASK(28, 16)
-+#define MT_DMASHDL_LITE_GROUP_DISABLE0		MT_DMASHDL_LITE(0x010)
-+#define MT_DMASHDL_LITE_GROUP_DISABLE1		MT_DMASHDL_LITE(0x014)
-+#define MT_DMASHDL_LITE_GROUP_SN_CHK0		MT_DMASHDL_LITE(0x018)
-+#define MT_DMASHDL_LITE_GROUP_SN_CHK1		MT_DMASHDL_LITE(0x01c)
-+#define MT_DMASHDL_LITE_GROUP_UDF_CHK0		MT_DMASHDL_LITE(0x020)
-+#define MT_DMASHDL_LITE_GROUP_UDF_CHK1		MT_DMASHDL_LITE(0x024)
-+#define MT_DMASHDL_LITE_Q_MAPPING0		MT_DMASHDL_LITE(0x028)
-+#define MT_DMASHDL_LITE_GROUP0_QUOTA		MT_DMASHDL_LITE(0x100)
-+#define MT_DMASHDL_LITE_GROUP_MIN_QUOTA_MASK		GENMASK(12, 0)
-+#define MT_DMASHDL_LITE_GROUP_MAX_QUOTA_MASK		GENMASK(28, 16)
-+
- #endif
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_dma.c b/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
-index 4d4c62bb0a77..8ad94fa58340 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
-@@ -206,9 +206,38 @@ static void mt7927_wfdma_setup(struct mt792x_dev *dev)
- 	mt76_set(dev, MT_WFDMA0_INT_TX_PRI, 0x7F00);
- }
- 
-+static void mt7928_dma_prefetch_setup(struct mt792x_dev *dev)
-+{
-+	/* rx ring */
-+	mt76_wr(dev, MT_WFDMA0_RX_RING0_EXT_CTRL, PREFETCH(0x0000, 0x8));
-+	mt76_wr(dev, MT_WFDMA0_RX_RING1_EXT_CTRL, PREFETCH(0x0080, 0x4));
-+	mt76_wr(dev, MT_WFDMA0_RX_RING2_EXT_CTRL, PREFETCH(0x00c0, 0x8));
-+	mt76_wr(dev, MT_WFDMA0_RX_RING3_EXT_CTRL, PREFETCH(0x0140, 0x4));
-+	mt76_wr(dev, MT_WFDMA0_RX_RING4_EXT_CTRL, PREFETCH(0x0180, 0x4));
-+	mt76_wr(dev, MT_WFDMA0_RX_RING5_EXT_CTRL, PREFETCH(0x01c0, 0x4));
-+	mt76_wr(dev, MT_WFDMA0_RX_RING6_EXT_CTRL, PREFETCH(0x0200, 0x4));
-+	/* tx ring */
-+	mt76_wr(dev, MT_WFDMA0_TX_RING0_EXT_CTRL, PREFETCH(0x0240, 0x10));
-+	mt76_wr(dev, MT_WFDMA0_TX_RING1_EXT_CTRL, PREFETCH(0x0340, 0x10));
-+	mt76_wr(dev, MT_WFDMA0_TX_RING2_EXT_CTRL, PREFETCH(0x0440, 0x10));
-+	mt76_wr(dev, MT_WFDMA0_TX_RING3_EXT_CTRL, PREFETCH(0x0540, 0x10));
-+	mt76_wr(dev, MT_WFDMA0_TX_RING4_EXT_CTRL, PREFETCH(0x0640, 0x10));
-+	mt76_wr(dev, MT_WFDMA0_TX_RING5_EXT_CTRL, PREFETCH(0x0740, 0x10));
-+	mt76_wr(dev, MT_WFDMA0_TX_RING15_EXT_CTRL, PREFETCH(0x0840, 0x4));
-+	mt76_wr(dev, MT_WFDMA0_TX_RING16_EXT_CTRL, PREFETCH(0x0880, 0x4));
-+}
-+
-+static void mt7928_wfdma_setup(struct mt792x_dev *dev)
-+{
-+	mt76_wr(dev, MT_WFDMA0_INT_RX_PRI, 0);
-+	mt76_wr(dev, MT_WFDMA0_INT_TX_PRI, 0);
-+}
-+
- static void mt792x_dma_prefetch(struct mt792x_dev *dev)
- {
--	if (is_mt7927(&dev->mt76)) {
-+	if (is_mt7928(&dev->mt76)) {
-+		mt7928_dma_prefetch_setup(dev);
-+	} else if (is_mt7927(&dev->mt76)) {
- 		mt7927_dma_prefetch_setup(dev);
- 	} else if (is_mt7925(&dev->mt76)) {
- 		mt7925_dma_prefetch_setup(dev);
-@@ -250,32 +279,69 @@ static void mt792x_dma_prefetch(struct mt792x_dev *dev)
- 
- int mt792x_dma_enable(struct mt792x_dev *dev)
- {
--	/* configure perfetch settings */
-+	u32 addr;
-+
-+	/* configure prefetch settings */
- 	mt792x_dma_prefetch(dev);
- 
- 	/* reset dma idx */
- 	mt76_wr(dev, MT_WFDMA0_RST_DTX_PTR, ~0);
--	if (is_mt7925(&dev->mt76))
-+	if (is_mt7925(&dev->mt76) || is_mt7928(&dev->mt76))
- 		mt76_wr(dev, MT_WFDMA0_RST_DRX_PTR, ~0);
- 
- 	/* configure delay interrupt */
- 	mt76_wr(dev, MT_WFDMA0_PRI_DLY_INT_CFG0, 0);
- 
--	mt76_set(dev, MT_WFDMA0_GLO_CFG,
--		 MT_WFDMA0_GLO_CFG_TX_WB_DDONE |
--		 MT_WFDMA0_GLO_CFG_FIFO_LITTLE_ENDIAN |
--		 MT_WFDMA0_GLO_CFG_CLK_GAT_DIS |
--		 MT_WFDMA0_GLO_CFG_OMIT_TX_INFO |
--		 FIELD_PREP(MT_WFDMA0_GLO_CFG_DMA_SIZE, 3) |
--		 MT_WFDMA0_GLO_CFG_FIFO_DIS_CHECK |
--		 MT_WFDMA0_GLO_CFG_RX_WB_DDONE |
--		 MT_WFDMA0_GLO_CFG_CSR_DISP_BASE_PTR_CHAIN_EN |
--		 MT_WFDMA0_GLO_CFG_OMIT_RX_INFO_PFET2);
-+	if (is_mt7928(&dev->mt76)) {
-+		mt76_wr(dev, MT_WFDMA0_GLO_CFG,
-+			MT_WFDMA0_GLO_CFG_TX_WB_DDONE |
-+			MT_WFDMA0_GLO_CFG_FIFO_LITTLE_ENDIAN |
-+			MT_WFDMA0_GLO_CFG_CLK_GAT_DIS |
-+			MT_WFDMA0_GLO_CFG_OMIT_TX_INFO |
-+			FIELD_PREP(MT_WFDMA0_GLO_CFG_DMA_SIZE, 1) |
-+			MT_WFDMA0_GLO_CFG_FIFO_DIS_CHECK |
-+			MT_WFDMA0_GLO_CFG_RX_WB_DDONE |
-+			MT_WFDMA0_GLO_CFG_CSR_DISP_BASE_PTR_CHAIN_EN |
-+			MT_WFDMA0_GLO_CFG_ADDR_EXT_EN |
-+			MT_WFDMA0_GLO_CFG_CSR_LBK_RX_Q_SEL_EN);
-+		/* set rxq threshold to 2 */
-+		for (addr = MT_WFDMA0_WPDMA_PAUSE_RXQ_TH10;
-+		     addr <= MT_WFDMA0_WPDMA_PAUSE_RXQ_TH76;
-+		     addr += 4) {
-+			mt76_wr(dev, addr,
-+				FIELD_PREP(MT_WFDMA0_WPDMA_PAUSE_RXQ_THXX_L_TH_MASK, 2) |
-+				FIELD_PREP(MT_WFDMA0_WPDMA_PAUSE_RXQ_THXX_H_TH_MASK, 2));
-+		}
-+		mt76_wr(dev, MT_WFDMA0_GLO_CFG_EXT0,
-+			MT_WFDMA0_GLO_CFG_EXT0_CSR_MEM_ARB_LOCK_EN |
-+			MT_WFDMA0_GLO_CFG_EXT0_CSR_TX_DMASHDL_LITE_EN |
-+			MT_WFDMA0_GLO_CFG_EXT0_CSR_RX_WB_KEEP_RSVD |
-+			MT_WFDMA0_GLO_CFG_EXT0_CSR_BID_CHECK_BYPASS_EN |
-+			MT_WFDMA0_GLO_CFG_EXT0_CSR_RX_INFO_WB_EN |
-+			MT_WFDMA0_GLO_CFG_EXT0_CSR_AXI_AWUSER_LOCK_EN |
-+			FIELD_PREP(MT_WFDMA0_GLO_CFG_EXT0_CSR_MAX_PREFETCH_CNT_MASK, 3) |
-+			FIELD_PREP(MT_WFDMA0_GLO_CFG_EXT0_CSR_MEM_BST_SIZE_MASK, 3) |
-+			FIELD_PREP(MT_WFDMA0_GLO_CFG_EXT0_CSR_AXI_AW_OUTSTANDING_NUM_MASK,
-+				   8));
-+	} else {
-+		mt76_set(dev, MT_WFDMA0_GLO_CFG,
-+			 MT_WFDMA0_GLO_CFG_TX_WB_DDONE |
-+			 MT_WFDMA0_GLO_CFG_FIFO_LITTLE_ENDIAN |
-+			 MT_WFDMA0_GLO_CFG_CLK_GAT_DIS |
-+			 MT_WFDMA0_GLO_CFG_OMIT_TX_INFO |
-+			 FIELD_PREP(MT_WFDMA0_GLO_CFG_DMA_SIZE, 3) |
-+			 MT_WFDMA0_GLO_CFG_FIFO_DIS_CHECK |
-+			 MT_WFDMA0_GLO_CFG_RX_WB_DDONE |
-+			 MT_WFDMA0_GLO_CFG_CSR_DISP_BASE_PTR_CHAIN_EN |
-+			 MT_WFDMA0_GLO_CFG_OMIT_RX_INFO_PFET2);
+ 	rxd = (struct mt7925_mcu_rxd *)skb->data;
+-	if (seq != rxd->seq)
+-		return -EAGAIN;
++	if (seq != rxd->seq) {
++		if (!is_mt7928(mdev))
++			return -EAGAIN;
++		else if (is_mt7928(mdev) &&
++			 cmd != MCU_CMD(CB_PATCH_SEM_CONTROL) &&
++			 cmd != MCU_CMD(CB_PATCH_FINISH_REQ))
++			return -EAGAIN;
 +	}
  
- 	mt76_set(dev, MT_WFDMA0_GLO_CFG,
- 		 MT_WFDMA0_GLO_CFG_TX_DMA_EN | MT_WFDMA0_GLO_CFG_RX_DMA_EN);
+ 	if (cmd == MCU_CMD(PATCH_SEM_CONTROL) ||
+ 	    cmd == MCU_CMD(PATCH_FINISH_REQ)) {
+ 		skb_pull(skb, sizeof(*rxd) - 4);
+ 		ret = *skb->data;
++	} else if (is_mt7928(mdev) &&
++		   (cmd == MCU_CMD(CB_PATCH_SEM_CONTROL) ||
++		   cmd == MCU_CMD(CB_PATCH_FINISH_REQ))) {
++		skb_pull(skb, sizeof(*rxd) - 4);
++		ret = *skb->data;
+ 	} else if (cmd == MCU_UNI_CMD(DEV_INFO_UPDATE) ||
+ 		   cmd == MCU_UNI_CMD(BSS_INFO_UPDATE) ||
+ 		   cmd == MCU_UNI_CMD(STA_REC_UPDATE) ||
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
+index 7d014de030c4..8c7ecd3ce126 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x.h
++++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
+@@ -47,6 +47,7 @@
+ #define MT7922_FIRMWARE_WM	"mediatek/WIFI_RAM_CODE_MT7922_1.bin"
+ #define MT7925_FIRMWARE_WM	"mediatek/mt7925/WIFI_RAM_CODE_MT7925_1_1.bin"
+ #define MT7927_FIRMWARE_WM	"mediatek/mt7927/WIFI_RAM_CODE_MT6639_2_1.bin"
++#define MT7928_FIRMWARE_WM	"mediatek/mt7928/WIFI_RAM_CODE_MT7935_1_1.bin"
  
--	if (is_mt7927(&dev->mt76))
-+	if (is_mt7928(&dev->mt76))
-+		mt7928_wfdma_setup(dev);
-+	else if (is_mt7927(&dev->mt76))
- 		mt7927_wfdma_setup(dev);
- 	else if (is_mt7925(&dev->mt76))
- 		mt7925_wfdma_setup(dev);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_regs.h b/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
-index 0e297fd9468a..3587f61e098a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
-@@ -331,11 +331,29 @@
- #define MT_INT_MCU_CMD			MCU2HOST_SW_INT_ENA
- 
- #define MT_WFDMA0_RST_DTX_PTR		MT_WFDMA0(0x20c)
-+#define MT_WFDMA0_WPDMA_PAUSE_RXQ_TH10	MT_WFDMA0(0x260)
-+#define MT_WFDMA0_WPDMA_PAUSE_RXQ_TH32	MT_WFDMA0(0x264)
-+#define MT_WFDMA0_WPDMA_PAUSE_RXQ_TH54	MT_WFDMA0(0x268)
-+#define MT_WFDMA0_WPDMA_PAUSE_RXQ_TH76	MT_WFDMA0(0x26c)
-+#define MT_WFDMA0_WPDMA_PAUSE_RXQ_THXX_L_TH_MASK		GENMASK(11, 0)
-+#define MT_WFDMA0_WPDMA_PAUSE_RXQ_THXX_H_TH_MASK		GENMASK(27, 16)
+ #define MT7902_ROM_PATCH	"mediatek/WIFI_MT7902_patch_mcu_1_1_hdr.bin"
+ #define MT7920_ROM_PATCH	"mediatek/WIFI_MT7961_patch_mcu_1a_2_hdr.bin"
+@@ -54,6 +55,10 @@
+ #define MT7922_ROM_PATCH	"mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin"
+ #define MT7925_ROM_PATCH	"mediatek/mt7925/WIFI_MT7925_PATCH_MCU_1_1_hdr.bin"
+ #define MT7927_ROM_PATCH	"mediatek/mt7927/WIFI_MT6639_PATCH_MCU_2_1_hdr.bin"
++#define MT7928_ROM_PATCH	"mediatek/mt7928/WIFI_MT7935_PATCH_MCU_1_1_hdr.bin"
 +
- #define MT_WFDMA0_RST_DRX_PTR		MT_WFDMA0(0x280)
- #define MT_WFDMA0_INT_RX_PRI		MT_WFDMA0(0x298)
- #define MT_WFDMA0_INT_TX_PRI		MT_WFDMA0(0x29c)
- #define MT_WFDMA0_GLO_CFG_EXT0		MT_WFDMA0(0x2b0)
-+#define MT_WFDMA0_GLO_CFG_EXT0_CSR_MEM_ARB_LOCK_EN		BIT(4)
- #define MT_WFDMA0_GLO_CFG_EXT0_CSR_TX_DMASHDL_EN		BIT(6)
-+#define MT_WFDMA0_GLO_CFG_EXT0_CSR_TX_DMASHDL_LITE_EN		BIT(7)
-+#define MT_WFDMA0_GLO_CFG_EXT0_CSR_RX_WB_KEEP_RSVD		BIT(10)
-+#define MT_WFDMA0_GLO_CFG_EXT0_CSR_BID_CHECK_BYPASS_EN		BIT(22)
-+#define MT_WFDMA0_GLO_CFG_EXT0_CSR_RX_INFO_WB_EN		BIT(23)
-+#define MT_WFDMA0_GLO_CFG_EXT0_CSR_AXI_AWUSER_LOCK_EN		BIT(29)
-+#define MT_WFDMA0_GLO_CFG_EXT0_CSR_MAX_PREFETCH_CNT_MASK	GENMASK(1, 0)
-+#define MT_WFDMA0_GLO_CFG_EXT0_CSR_MEM_BST_SIZE_MASK		GENMASK(3, 2)
-+#define MT_WFDMA0_GLO_CFG_EXT0_CSR_AXI_AW_OUTSTANDING_NUM_MASK	GENMASK(27, 24)
++#define MT7928_CB_ROM_PATCH	"mediatek/mt7928/CBMCU_CODE_MT7935_1_1.bin"
++#define MT7928_PHY_RAM		"mediatek/mt7928/WIFI_MT7935_PHY_RAM_CODE_1_1.bin"
+ 
+ #define MT792x_SDIO_HDR_TX_BYTES	GENMASK(15, 0)
+ #define MT792x_SDIO_HDR_PKT_TYPE	GENMASK(17, 16)
+@@ -494,6 +499,8 @@ static inline char *mt792x_ram_name(struct mt792x_dev *dev)
+ 		return MT7925_FIRMWARE_WM;
+ 	case 0x7927:
+ 		return MT7927_FIRMWARE_WM;
++	case 0x7928:
++		return MT7928_FIRMWARE_WM;
+ 	default:
+ 		return MT7921_FIRMWARE_WM;
+ 	}
+@@ -512,11 +519,33 @@ static inline char *mt792x_patch_name(struct mt792x_dev *dev)
+ 		return MT7925_ROM_PATCH;
+ 	case 0x7927:
+ 		return MT7927_ROM_PATCH;
++	case 0x7928:
++		return MT7928_ROM_PATCH;
+ 	default:
+ 		return MT7921_ROM_PATCH;
+ 	}
+ }
+ 
++static inline char *mt792x_cb_patch_name(struct mt792x_dev *dev)
++{
++	switch (mt76_chip(&dev->mt76)) {
++	case 0x7928:
++		return MT7928_CB_ROM_PATCH;
++	default:
++		return NULL;
++	}
++}
 +
-+#define MT_WFDMA0_GLO_CFG_EXT1		MT_WFDMA0(0x2b4)
- #define MT_WFDMA0_PRI_DLY_INT_CFG0	MT_WFDMA0(0x2f0)
++static inline char *mt792x_phy_ram_name(struct mt792x_dev *dev)
++{
++	switch (mt76_chip(&dev->mt76)) {
++	case 0x7928:
++		return MT7928_PHY_RAM;
++	default:
++		return NULL;
++	}
++}
++
+ int mt792x_load_firmware(struct mt792x_dev *dev);
  
- #define MT_WFDMA0_TX_RING0_EXT_CTRL	MT_WFDMA0(0x600)
-@@ -375,7 +393,6 @@
- #define MT_WFDMA_PREFETCH_CFG1		MT_WFDMA_EXT_CSR(0xf4)
- #define MT_WFDMA_PREFETCH_CFG2		MT_WFDMA_EXT_CSR(0xf8)
- #define MT_WFDMA_PREFETCH_CFG3		MT_WFDMA_EXT_CSR(0xfc)
--#define MT_WFDMA0_GLO_CFG_EXT1		MT_WFDMA0(0x2b4)
+ /* usb */
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+index b50825eccdaf..9bd679b7e889 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+@@ -985,6 +985,15 @@ int mt792x_load_firmware(struct mt792x_dev *dev)
+ 		dev_warn(dev->mt76.dev,
+ 			 "MCU is not ready for firmware download\n");
  
- #define MT_SWDEF_BASE			0x41f200
- #define MT_SWDEF(ofs)			(MT_SWDEF_BASE + (ofs))
++	if (is_mt7928(&dev->mt76)) {
++		dev_info(dev->mt76.dev, "Loading CB firmware patch: %s\n",
++			 mt792x_cb_patch_name(dev));
++		ret = mt76_connac3_load_cb_patch(&dev->mt76, mt792x_cb_patch_name(dev));
++		if (ret)
++			return ret;
++	}
++
++	dev_info(dev->mt76.dev, "Loading firmware patch: %s\n", mt792x_patch_name(dev));
+ 	ret = mt76_connac2_load_patch(&dev->mt76, mt792x_patch_name(dev));
+ 	if (ret)
+ 		return ret;
+@@ -996,6 +1005,12 @@ int mt792x_load_firmware(struct mt792x_dev *dev)
+ 			ret = __mt792x_mcu_drv_pmctrl(dev);
+ 	}
+ 
++	if (is_mt7928(&dev->mt76)) {
++		ret = mt76_connac3_load_phy_ram(&dev->mt76, mt792x_phy_ram_name(dev));
++		if (ret)
++			return ret;
++	}
++
+ 	ret = mt76_connac2_load_ram(&dev->mt76, mt792x_ram_name(dev), NULL);
+ 	if (ret)
+ 		return ret;
 -- 
 2.45.2
 
