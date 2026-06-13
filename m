@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F169CD8CA8
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jun 2026 08:36:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12FB9CD98D2
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jun 2026 09:06:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FA8Qkjbau8l6ahSUSntT4VYINgPbUIyT3mXo0SiPu8w=; b=T+PmeQ5QF3GFCHARxO07m1RZhY
-	gy5mnABgbisauRYdABBN6DK5jREHA/CqY0dL6wwSTR0K6+Fey6wbrDCgWL3d8qJDk8IwC0RDA2fzx
-	jSf0EyCiXnSYE5aO9fVLFFjZExX8G1lWdr3JtDrBXtD4ZAozGfIk6zixvFrxJIh3b2EKgBWQwepFt
-	CQY3CEdmczabhDABmkVOhpGtJygCcS2o3xwHfkkuB2AIK73eiCQ19UThom1Z2dIIqHUMWZtQOBiU0
-	uaE7zuheP9NCAzUqNMQv8ILSfV9Ca3TrgN7RlCaaO9iuz6fgM9eUWWpFkxV2A16j5Lt4WE5AR1hOd
-	PE4EskLw==;
+	bh=2BYHyFh+bn92L40f3IlB5srPvcVEDDHxqJbwSSj9Lzg=; b=S9iuvg/ZGpg8g1hNvvKKgrU46c
+	oU+0hRSAuddpnRMgYsj7EzL4TpEpqkcTXUNG9tvdc8H8vm6fHd1UUs8ECUAy+r+nCEUiVS9RcDfLG
+	EfaS3SvjuFAD4W9Cx+9zOtw60ZXMa2YloXtasHMEf2HYWTRL4xDj86HBOA9eDcwr5Ly0JCxLU3TqL
+	yl2g0Ons+pQmoKLXRZGwotzV0LmfuA6/lejlb/APo6NXcoB+Vp26pqBiRYBJzQ65xo6Fkl730G0VT
+	PRQVSa8/1HNATaEwBBvUIrFo4yAIRqzqHF9TQKm7VBTwPOj9wCthSZqrEA2xfwh1IW7alDyXyxFqR
+	+WHfJ1hA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYJqe-0000000C5sB-0NrW;
-	Sat, 13 Jun 2026 08:36:12 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wYKKJ-0000000C73G-104V;
+	Sat, 13 Jun 2026 09:06:51 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYJqc-0000000C5rd-1jHe;
-	Sat, 13 Jun 2026 08:36:10 +0000
+	id 1wYKKH-0000000C733-1NFi;
+	Sat, 13 Jun 2026 09:06:49 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9782341500;
-	Sat, 13 Jun 2026 08:36:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F16441F000E9;
-	Sat, 13 Jun 2026 08:36:08 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 6767660018;
+	Sat, 13 Jun 2026 09:06:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 93C991F000E9;
+	Sat, 13 Jun 2026 09:06:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781339769;
-	bh=FA8Qkjbau8l6ahSUSntT4VYINgPbUIyT3mXo0SiPu8w=;
+	s=k20260515; t=1781341608;
+	bh=2BYHyFh+bn92L40f3IlB5srPvcVEDDHxqJbwSSj9Lzg=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=dW3ZLxCxKWkp6dV+14xw66cXXHoGeXWWY/r4cIx3haGMztzrz6c+x5NWk3Rd+Fhl4
-	 yGzOT9Eq3fe272TR8Jupukq6BzIgNoWhFdZULN4b4LpL7AT5eXLwk0FsGcq8xYeztl
-	 +Q5CaoXRuimk7Vxl1gc4hyYIlVQ4dQqK3Ld6vymfNtAlrAxoeGZbnb6PS//aMPe1cl
-	 yHO9fBhN81POwK6tEBri7BNdZBhaFW1hsXhD0FTUpgUuWefGYOSDx8TvwcSVyW6U9/
-	 E62O8UmVJF0dYBJF2fVXLGbUWsyPCMdFWQsmjyUxKtGwU3Oi3zBtslRdYlyklccZw6
-	 Fh/3mBbHNJlig==
-Date: Sat, 13 Jun 2026 10:36:06 +0200
+	b=Ntbb2Swl50vb/4sTsaNgb9GSoAARWW9umw8QUdf+um1aWWZ9JsmMMrQay0yBaXQFJ
+	 IOGqW6FDpwqxpvWTUPLbrD9uau102X2efXqEnS7ryPS1qlzlR7Rt5WquHCXvHatkjR
+	 r+TvPVL6VYJBAfT2qQgkiWfX6MiXr3ddm1Dvs+51ES/rurrZLwKfti1RyeZLCvehGU
+	 SQ54bH2kenKyKDGS7A9pWJFpC8jn4qQSKLx9uCzYuYGRwTkGncG8eSPMoOK/Mz7J60
+	 VVlSHjmTwzhhlv7WWPYkqJR4HztacrJvgXf+DSDFW+FER8LmTYxE4A+W1jXx9T71kf
+	 pNB7692fqPHZQ==
+Date: Sat, 13 Jun 2026 11:06:44 +0200
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: "Wayen.Yan" <win847@gmail.com>
-Cc: netdev@vger.kernel.org, horms@kernel.org, pabeni@redhat.com,
-	kuba@kernel.org, edumazet@google.com, andrew+netdev@lunn.ch,
-	angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] net: airoha: Fix always-true condition in PPE1 queue
- reservation loop
-Message-ID: <ai0Wdm6AYh5ZrRWa@lore-rh-laptop>
-References: <6a2ca3de.ad59c0a6.147df9.2ac1@mx.google.com>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net-next v5 1/3] net: airoha: use int instead of atomic_t
+ for qdma users counter
+Message-ID: <ai0dpFhn2eFtvHCM@lore-rh-laptop>
+References: <20260611-airoha-ethtool-priv_flags-v5-0-c11de08486d1@kernel.org>
+ <20260611-airoha-ethtool-priv_flags-v5-1-c11de08486d1@kernel.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="H5AwCgcOCuAvnmQX"
+	protocol="application/pgp-signature"; boundary="rA1nt1Ke2M6EpIQI"
 Content-Disposition: inline
-In-Reply-To: <6a2ca3de.ad59c0a6.147df9.2ac1@mx.google.com>
+In-Reply-To: <20260611-airoha-ethtool-priv_flags-v5-1-c11de08486d1@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,66 +74,124 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---H5AwCgcOCuAvnmQX
+--rA1nt1Ke2M6EpIQI
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> In airoha_fe_pse_ports_init(), the inner condition for PPE1 queue
-> reservation is identical to the for-loop bound, making it always true
-> and the else branch dead code:
+> QDMA users counter is always accessed holding RTNL lock so we do not
+> require atomic_t for it.
 >=20
->   for (q =3D 0; q < pse_port_num_queues[FE_PSE_PORT_PPE1]; q++) {
->       if (q < pse_port_num_queues[FE_PSE_PORT_PPE1])  /* always true */
->           set RSV_PAGES;
->       else
->           set 0;  /* unreachable */
->   }
->=20
-> The intended behavior is to reserve pages only for the first half of
-> the queues, matching the PPE2 implementation on line 334 which
-> correctly uses the /2 divisor. Fix the PPE1 condition accordingly.
->=20
-> Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 =
-SoC")
-> Signed-off-by: Wayen.Yan <win847@gmail.com>
-
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
-
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > ---
->  drivers/net/ethernet/airoha/airoha_eth.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  drivers/net/ethernet/airoha/airoha_eth.c | 4 ++--
+>  drivers/net/ethernet/airoha/airoha_eth.h | 2 +-
+>  2 files changed, 3 insertions(+), 3 deletions(-)
 >=20
 > diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
 net/airoha/airoha_eth.c
-> index 31cdb11..999f517 100644
+> index 504247c8bae9..9eb9b6a139b3 100644
 > --- a/drivers/net/ethernet/airoha/airoha_eth.c
 > +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -311,7 +311,7 @@ static void airoha_fe_pse_ports_init(struct airoha_et=
-h *eth)
->  					 PSE_QUEUE_RSV_PAGES);
->  	/* PPE1 */
->  	for (q =3D 0; q < pse_port_num_queues[FE_PSE_PORT_PPE1]; q++) {
-> -		if (q < pse_port_num_queues[FE_PSE_PORT_PPE1])
-> +		if (q < pse_port_num_queues[FE_PSE_PORT_PPE1] / 2)
->  			airoha_fe_set_pse_oq_rsv(eth, FE_PSE_PORT_PPE1, q,
->  						 PSE_QUEUE_RSV_PAGES);
->  		else
-> --=20
-> 2.51.0
+> @@ -1812,7 +1812,7 @@ static int airoha_dev_open(struct net_device *netde=
+v)
+>  	airoha_qdma_set(qdma, REG_QDMA_GLOBAL_CFG,
+>  			GLOBAL_CFG_TX_DMA_EN_MASK |
+>  			GLOBAL_CFG_RX_DMA_EN_MASK);
+> -	atomic_inc(&qdma->users);
+> +	qdma->users++;
+> =20
+>  	if (!airoha_is_lan_gdm_dev(dev) &&
+>  	    airoha_ppe_is_enabled(qdma->eth, 1))
+> @@ -1866,7 +1866,7 @@ static int airoha_dev_stop(struct net_device *netde=
+v)
+>  					    REG_GDM_FWD_CFG(port->id),
+>  					    FE_PSE_PORT_DROP);
+> =20
+> -	if (atomic_dec_and_test(&qdma->users)) {
+> +	if (!--qdma->users) {
+>  		airoha_qdma_clear(qdma, REG_QDMA_GLOBAL_CFG,
+>  				  GLOBAL_CFG_TX_DMA_EN_MASK |
+>  				  GLOBAL_CFG_RX_DMA_EN_MASK);
+
+commenting on sashiko's report:
+https://sashiko.dev/#/patchset/20260611-airoha-ethtool-priv_flags-v5-0-c11d=
+e08486d1%40kernel.org
+
+- This is a pre-existing issue, but by not cleaning the TX queues when
+  qdma->users > 0, does this leave the stopped device's packets in flight?
+  When airoha_dev_stop() is called, it resets the device's BQL counters via
+  netdev_tx_reset_subqueue(). By skipping the cleanup when other devices are
+  still sharing this QDMA ring, any pending skbs originating from the stopp=
+ed
+  device are left to linger in the hardware TX ring.
+  Because the hardware continues to process the shared ring on behalf of the
+  remaining interfaces, the active NAPI poll will process their completions=
+ in
+  airoha_qdma_tx_napi_poll():
+  		if (skb) {
+  			struct netdev_queue *txq;
+  			txq =3D skb_get_tx_queue(skb->dev, skb);
+  			netdev_tx_completed_queue(txq, 1, skb->len);
+  			dev_kfree_skb_any(skb);
+  		}
+  Can this cause an unsigned underflow in dql->num_queued since the BQL
+  state was already reset to 0 by ndo_stop?
+
+  - This issue is valid, but as pointed out by sashiko, this problem has not
+    been introduced by this patch. In particular, I think we should remove
+    netdev_tx_reset_subqueue() in airoha_dev_stop() and run
+    netdev_tx_completed_queue() in airoha_qdma_cleanup_tx_queue(). We need =
+to
+    pay attention to not loop over already unregistered net_devices in
+    airoha_qdma_cleanup_tx_queue() run from airoha_remove().
+    I will post a dedicated patch for this issue.
+
+- Also, if the device was being unregistered, unregister_netdev() frees the
+  netdev memory without waiting for TX skbs (which do not hold a reference =
+to
+  dev). Could this lead to a use-after-free when dereferencing skb->dev her=
+e?
+  Should the driver selectively purge skbs belonging to the stopping netdev
+  from the shared TX ring before ndo_stop returns?
+
+  - I do not think this is a problem in the current codebase since the
+    net_devices are unregistered just during module unload running
+    airoha_remove() where we run airoha_qdma_stop_napi() to stop TX/RX NAPI=
+s.
+
+Regards,
+Lorenzo
+
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
+net/airoha/airoha_eth.h
+> index 8f42973f9cf5..24fd8dcf7fca 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.h
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
+> @@ -526,7 +526,7 @@ struct airoha_qdma {
+>  	struct airoha_eth *eth;
+>  	void __iomem *regs;
+> =20
+> -	atomic_t users;
+> +	int users;
+> =20
+>  	struct airoha_irq_bank irq_banks[AIROHA_MAX_NUM_IRQ_BANKS];
+> =20
 >=20
+> --=20
+> 2.54.0
 >=20
 
---H5AwCgcOCuAvnmQX
+--rA1nt1Ke2M6EpIQI
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCai0WcgAKCRA6cBh0uS2t
-rO7RAP9g7N1WhxG+uVhjrwSIALK1fOaWyiTfOWfqgjMFz2sJTgD/X/4yttNNe92V
-RyqwwsP+NoHXVSlbjU6imIw7+hHDggM=
-=AAmu
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCai0doQAKCRA6cBh0uS2t
+rPw5AP0bXzC7m8pFe/TXyW0mJDSJ7LlmW/F5vmCXEWRsXm0p5AD+NMxXjFQRiFMJ
+Swma4hlhBm01IUg5g8UJHcXa4s3jfAI=
+=7mo2
 -----END PGP SIGNATURE-----
 
---H5AwCgcOCuAvnmQX--
+--rA1nt1Ke2M6EpIQI--
 
