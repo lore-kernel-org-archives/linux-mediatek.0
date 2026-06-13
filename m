@@ -4,59 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FCD0CD8CA8
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jun 2026 23:00:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23BC8CD8CA8
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jun 2026 23:00:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
 	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P8WasD/vQDuJyqo+FqFAI74xFhoNUNnfAZPGSwZVYz4=; b=QAdoKGabhTd03CewfdrYm9Kv1b
-	+6cb1lHb33hQUYqx5BZNvBzBbzVs+nwOPtwqrQBkO4L5QwsnmhBCG4xDeiLfB5lG6YNIKbEIdNpAS
-	qT7bE43z1v2v9/vif606DNsEG/1ieozJmOLXInERG7CwY6yxHiM7bDTdhY+u2ssvEQsQgHmUCdT1i
-	TJnvuknholN7LFEUd8FdTf7zaoVsjYgLl/jX6Ro5Aurb4if+OmxqmXQ/yEAGBd+2qvVnE2AE4WKAj
-	eQ7tDTXrXNiGC6/m2fjJ0Y9+Fxg+h5hBvj78aen2xTBFk1EpsO9yL9uoBmM5f2e/DVx2rt4E6EqpU
-	o4M0GqEQ==;
+	bh=OL0xJg9TGrHcjEJfmk3cEN8r9HyvxoLtpxe2HvO86kA=; b=GMFzxn4hxnVzHw7jYQPzldyAY5
+	aMEcmXXMEdMbnkQHHFwQdel7yJyhBcRsviyO6GkX8KF7qqROj/+xHw5dFHI3c/lQI8PufpDMFt+CU
+	N4oSmI8s6cCGLVd11Xfd91oAB+bMhyOYHqVcJ62azXoXMCYun6vUq1ihPEu6ofwEnF24jqi38j97B
+	L3fVpRsewubean7Slf+IzJ6mM9XmxiNKDRiWqng1ln/4GO1eXyX/H6f+REM1tOfLiD6iZAIY33DZ0
+	1Ezy1znfDpewTNFNhaJCLksmMvQt/XBFC8LOq1J+9b0LQ9VGSroBCgJ/vMocVFDdsbwAdnw9aZejN
+	g9c4nqag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYXKm-0000000CbB1-4Bdj;
-	Sat, 13 Jun 2026 23:00:13 +0000
+	id 1wYXKs-0000000CbCy-0Z7H;
+	Sat, 13 Jun 2026 23:00:18 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYXKl-0000000CbAj-2S8k;
-	Sat, 13 Jun 2026 23:00:11 +0000
+	id 1wYXKm-0000000CbAs-3fAO;
+	Sat, 13 Jun 2026 23:00:12 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 28C5843CEA;
-	Sat, 13 Jun 2026 23:00:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0BCE51F000E9;
-	Sat, 13 Jun 2026 23:00:11 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id A0E3B444A2;
+	Sat, 13 Jun 2026 23:00:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 828A91F00A3A;
+	Sat, 13 Jun 2026 23:00:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781391611;
-	bh=P8WasD/vQDuJyqo+FqFAI74xFhoNUNnfAZPGSwZVYz4=;
+	s=k20260515; t=1781391612;
+	bh=OL0xJg9TGrHcjEJfmk3cEN8r9HyvxoLtpxe2HvO86kA=;
 	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=f5wl2PhVE+t5FIGOYZcIed7M/JTvwEGVMDs5i8fGdfle8E/VvnBXFqpZwL9iC5QYy
-	 LjtKcUWzZ8bumn3BtDnA0icJwIfgjxfxf5wjKJ4HgvBusG78xfctu+6VDXHpf9Jncy
-	 AfSugPVbsC1ue0DLWgc4KgtvGChggITXQGJtUdNwwvD6rHh2F9DiTr9o3MlyXsddqe
-	 +45jo2IKFkKjYian9v48u9T4fu2JqS9mK3cVTB7bwXV4cP7CK9X8fg8RYChdYpIRMg
-	 kowTV98iskwMS/aNqHmFsK5b2R0Pjzx/3hSd0yYgd2lVcLtiml2IFpd+nwSrQas7Q4
-	 x75d60fEaAl1w==
+	b=nLDiCic8tXhbtDHtLCwUYQiIve22BfmTErq50vy3chAmEm9dP/uwQT6gcNLWEd5YI
+	 veLro4/RlOLvBP4hnkQtj8F5siX4sXi71vW0h1L7Z3xTPsWdT5hYM0wEL4sNV+SlsQ
+	 wmrYKGsPdSVO6vutfzncLNK+UPmDdYAtsgzJcnfqpeNZYng0GnIJKYzkAUbwI6g+Ko
+	 GIIs6jlcaRSTPjQNT6KZLrL8WbgflorWzjMCRAKT5YELdT1IuC8j7nT3AhDWif+Mfr
+	 TIUhAfvV5fSMtHakzxadwd3pMttoy80RCCx+xFMfGWGqwlj99hz9P9OQDV8XxVaPZv
+	 JNKOpPmHTccJQ==
 Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 56AE23A54A32;
-	Sat, 13 Jun 2026 23:00:08 +0000 (UTC)
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id D09283A54A32;
+	Sat, 13 Jun 2026 23:00:09 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH] net: airoha: Fix register index for Tx-fwd counter
- configuration
+Subject: Re: [PATCH v2] net: airoha: Fix debugfs new-tuple display for IPv4
+ ROUTE
+ entries
 From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <178139160689.1619194.9003446949920537731.git-patchwork-notify@kernel.org>
-Date: Sat, 13 Jun 2026 23:00:06 +0000
-References: <6a2b40e7.4dd82583.3a5c46.e566@mx.google.com>
-In-Reply-To: <6a2b40e7.4dd82583.3a5c46.e566@mx.google.com>
+Message-Id: <178139160838.1619194.4028591531296512566.git-patchwork-notify@kernel.org>
+Date: Sat, 13 Jun 2026 23:00:08 +0000
+References: <6a2be54b.ef98c1b2.3c3224.2ed8@mx.google.com>
+In-Reply-To: <6a2be54b.ef98c1b2.3c3224.2ed8@mx.google.com>
 To: Wayen.Yan <win847@gmail.com>
-Cc: netdev@vger.kernel.org, lorenzo@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: netdev@vger.kernel.org, lorenzo@kernel.org, horms@kernel.org,
+ pabeni@redhat.com, kuba@kernel.org, edumazet@google.com,
+ andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com,
+ matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,22 +80,20 @@ Hello:
 This patch was applied to netdev/net.git (main)
 by Jakub Kicinski <kuba@kernel.org>:
 
-On Fri, 12 Jun 2026 07:09:13 +0800 you wrote:
-> In airoha_qdma_init_qos_stats(), the Tx-fwd counter configuration
-> register uses the same index (i << 1) as the Tx-cpu counter, which
-> overwrites the Tx-cpu configuration. The Tx-fwd counter value register
-> correctly uses (i << 1) + 1, so the configuration register should use
-> the same index.
-> 
-> Fix the REG_CNTR_CFG index from (i << 1) to ((i << 1) + 1) so that
-> the Tx-fwd counter is properly configured instead of clobbering the
-> Tx-cpu counter config.
+On Fri, 12 Jun 2026 07:09:56 +0800 you wrote:
+> In airoha_ppe_debugfs_foe_show(), the second switch statement falls
+> through from PPE_PKT_TYPE_IPV4_HNAPT/DSLITE to PPE_PKT_TYPE_IPV4_ROUTE,
+> accessing hwe->ipv4.new_tuple for all three types. However, IPv4 ROUTE
+> (3-tuple) entries do not contain a valid new_tuple — this field is only
+> meaningful for NATted flows (HNAPT/DSLITE). For ROUTE entries, the
+> memory at the new_tuple offset holds routing information, not NAT data,
+> so displaying "new=" produces garbage output.
 > 
 > [...]
 
 Here is the summary with links:
-  - net: airoha: Fix register index for Tx-fwd counter configuration
-    https://git.kernel.org/netdev/net/c/1402ecccf563
+  - [v2] net: airoha: Fix debugfs new-tuple display for IPv4 ROUTE entries
+    https://git.kernel.org/netdev/net/c/1c3a77471afb
 
 You are awesome, thank you!
 -- 
