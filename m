@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FAD8CD8CA8
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jun 2026 08:30:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F169CD8CA8
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jun 2026 08:36:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q9/4BnN9TN80wFokR3YbL8LF+lakOjzWW/QdszOefXs=; b=N9Rbm4LIAB3JvETcSMFv1Lim2A
-	pTJKGjK4FVMBRyNUrOtkhLXzI627I5Xs8KMYfXSexE6lHhF9F0c00pBT0/KZIRm4IdJ16M9YLO7VZ
-	InziW2DBlo5/BBHD6yMNmna1pAzTD7RQUN2uXGd5WlGwOeqr8sHiPMvNy+Q9EWjgSQreCCLRbfzRd
-	QGErRmWivq6p+M+L8XGPwINww8Ahd/wqxhps65/SEPKqtl0y4DRdHzr/N+4EwGeKb9xrgLwp7unVN
-	97pQS/5cXS7yHCFlQ7XokzyvFqkzmEOxIoIUVY0wxHV3sw92AcPM2O6oQOVosqNeeslIo9lUc9/6o
-	FQiXglIg==;
+	bh=FA8Qkjbau8l6ahSUSntT4VYINgPbUIyT3mXo0SiPu8w=; b=T+PmeQ5QF3GFCHARxO07m1RZhY
+	gy5mnABgbisauRYdABBN6DK5jREHA/CqY0dL6wwSTR0K6+Fey6wbrDCgWL3d8qJDk8IwC0RDA2fzx
+	jSf0EyCiXnSYE5aO9fVLFFjZExX8G1lWdr3JtDrBXtD4ZAozGfIk6zixvFrxJIh3b2EKgBWQwepFt
+	CQY3CEdmczabhDABmkVOhpGtJygCcS2o3xwHfkkuB2AIK73eiCQ19UThom1Z2dIIqHUMWZtQOBiU0
+	uaE7zuheP9NCAzUqNMQv8ILSfV9Ca3TrgN7RlCaaO9iuz6fgM9eUWWpFkxV2A16j5Lt4WE5AR1hOd
+	PE4EskLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYJlY-0000000C5c6-1Idd;
-	Sat, 13 Jun 2026 08:30:56 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wYJqe-0000000C5sB-0NrW;
+	Sat, 13 Jun 2026 08:36:12 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYJlX-0000000C5bh-0VFO;
-	Sat, 13 Jun 2026 08:30:55 +0000
+	id 1wYJqc-0000000C5rd-1jHe;
+	Sat, 13 Jun 2026 08:36:10 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id CBF5760018;
-	Sat, 13 Jun 2026 08:30:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BB84A1F000E9;
-	Sat, 13 Jun 2026 08:30:52 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 9782341500;
+	Sat, 13 Jun 2026 08:36:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F16441F000E9;
+	Sat, 13 Jun 2026 08:36:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781339453;
-	bh=Q9/4BnN9TN80wFokR3YbL8LF+lakOjzWW/QdszOefXs=;
+	s=k20260515; t=1781339769;
+	bh=FA8Qkjbau8l6ahSUSntT4VYINgPbUIyT3mXo0SiPu8w=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=K+vHJFpJo9392/GlxlYmiZUtWtf+Zvqk6mTgfrdUtLbpTxvGZSzKUA9GJ5iX9XdaX
-	 VDHQk5CDgzr0gKWLv3p+H9VL9oE8+KeJM6blwyRTHIcqa53zxEof7ZterACOOp6Zf6
-	 unRreNdCbbIIm7U8QKk00cT+8D4WsuZ1gHL0Mstqsa+3ikT4Zl73HpB/kvhW2IpLfG
-	 rqKlsC9GTM3GPAAoe8qNJg7GagYvdVuR8HAaW3wxbVsy3W2aW4TqAFf4e4hmhXyVQo
-	 Z7B8zOLBcvrwhG713qJAmaLJOY1S1DbfdGl3ceBLkKOjP4TMnefUlXfCSRrgWhnhH1
-	 kL3/6d1FYIzIA==
-Date: Sat, 13 Jun 2026 10:30:49 +0200
+	b=dW3ZLxCxKWkp6dV+14xw66cXXHoGeXWWY/r4cIx3haGMztzrz6c+x5NWk3Rd+Fhl4
+	 yGzOT9Eq3fe272TR8Jupukq6BzIgNoWhFdZULN4b4LpL7AT5eXLwk0FsGcq8xYeztl
+	 +Q5CaoXRuimk7Vxl1gc4hyYIlVQ4dQqK3Ld6vymfNtAlrAxoeGZbnb6PS//aMPe1cl
+	 yHO9fBhN81POwK6tEBri7BNdZBhaFW1hsXhD0FTUpgUuWefGYOSDx8TvwcSVyW6U9/
+	 E62O8UmVJF0dYBJF2fVXLGbUWsyPCMdFWQsmjyUxKtGwU3Oi3zBtslRdYlyklccZw6
+	 Fh/3mBbHNJlig==
+Date: Sat, 13 Jun 2026 10:36:06 +0200
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: "Wayen.Yan" <win847@gmail.com>
 Cc: netdev@vger.kernel.org, horms@kernel.org, pabeni@redhat.com,
@@ -49,14 +49,15 @@ Cc: netdev@vger.kernel.org, horms@kernel.org, pabeni@redhat.com,
 	angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] net: airoha: Fix typos in comments and Kconfig
-Message-ID: <ai0VOeMCZYIfuOzR@lore-rh-laptop>
-References: <6a2ca74a.c5b1db4e.21a698.01e7@mx.google.com>
+Subject: Re: [PATCH] net: airoha: Fix always-true condition in PPE1 queue
+ reservation loop
+Message-ID: <ai0Wdm6AYh5ZrRWa@lore-rh-laptop>
+References: <6a2ca3de.ad59c0a6.147df9.2ac1@mx.google.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="64HGhJxIkxmRP3EZ"
+	protocol="application/pgp-signature"; boundary="H5AwCgcOCuAvnmQX"
 Content-Disposition: inline
-In-Reply-To: <6a2ca74a.c5b1db4e.21a698.01e7@mx.google.com>
+In-Reply-To: <6a2ca3de.ad59c0a6.147df9.2ac1@mx.google.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,17 +73,25 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---64HGhJxIkxmRP3EZ
+--H5AwCgcOCuAvnmQX
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> Fix several typos found during code review:
-> - Kconfig: "Aiorha" -> "Airoha" in NET_AIROHA_FLOW_STATS help text
-> - Comment: "CMD1" -> "CDM1" (Central DMA, not Command)
-> - Comments: "GMD1/2/3/4" -> "GDM1/2/3/4" (Gigabit DMA, not GMD)
+> In airoha_fe_pse_ports_init(), the inner condition for PPE1 queue
+> reservation is identical to the for-loop bound, making it always true
+> and the else branch dead code:
 >=20
-> These are pure comment and documentation fixes with no functional impact.
+>   for (q =3D 0; q < pse_port_num_queues[FE_PSE_PORT_PPE1]; q++) {
+>       if (q < pse_port_num_queues[FE_PSE_PORT_PPE1])  /* always true */
+>           set RSV_PAGES;
+>       else
+>           set 0;  /* unreachable */
+>   }
+>=20
+> The intended behavior is to reserve pages only for the first half of
+> the queues, matching the PPE2 implementation on line 334 which
+> correctly uses the /2 divisor. Fix the PPE1 condition accordingly.
 >=20
 > Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 =
 SoC")
@@ -91,77 +100,39 @@ SoC")
 Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
 > ---
->  drivers/net/ethernet/airoha/Kconfig      |  2 +-
->  drivers/net/ethernet/airoha/airoha_eth.c | 10 +++++-----
->  2 files changed, 6 insertions(+), 6 deletions(-)
+>  drivers/net/ethernet/airoha/airoha_eth.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >=20
-> diff --git a/drivers/net/ethernet/airoha/Kconfig b/drivers/net/ethernet/a=
-iroha/Kconfig
-> index ad3ce50..1f6640a 100644
-> --- a/drivers/net/ethernet/airoha/Kconfig
-> +++ b/drivers/net/ethernet/airoha/Kconfig
-> @@ -29,6 +29,6 @@ config NET_AIROHA_FLOW_STATS
->  	bool "Airoha flow stats"
->  	depends on NET_AIROHA && NET_AIROHA_NPU
->  	help
-> -	  Enable Aiorha flowtable statistic counters.
-> +	  Enable Airoha flowtable statistic counters.
-> =20
->  endif #NET_VENDOR_AIROHA
 > diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
 net/airoha/airoha_eth.c
-> index 31cdb11..9d9d34a 100644
+> index 31cdb11..999f517 100644
 > --- a/drivers/net/ethernet/airoha/airoha_eth.c
 > +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -294,18 +294,18 @@ static void airoha_fe_pse_ports_init(struct airoha_=
-eth *eth)
->  			      FIELD_PREP(PSE_ALLRSV_MASK, all_rsv));
->  	}
-> =20
-> -	/* CMD1 */
-> +	/* CDM1 */
->  	for (q =3D 0; q < pse_port_num_queues[FE_PSE_PORT_CDM1]; q++)
->  		airoha_fe_set_pse_oq_rsv(eth, FE_PSE_PORT_CDM1, q,
->  					 PSE_QUEUE_RSV_PAGES);
-> -	/* GMD1 */
-> +	/* GDM1 */
->  	for (q =3D 0; q < pse_port_num_queues[FE_PSE_PORT_GDM1]; q++)
->  		airoha_fe_set_pse_oq_rsv(eth, FE_PSE_PORT_GDM1, q,
->  					 PSE_QUEUE_RSV_PAGES);
-> -	/* GMD2 */
-> +	/* GDM2 */
->  	for (q =3D 6; q < pse_port_num_queues[FE_PSE_PORT_GDM2]; q++)
->  		airoha_fe_set_pse_oq_rsv(eth, FE_PSE_PORT_GDM2, q, 0);
-> -	/* GMD3 */
-> +	/* GDM3 */
->  	for (q =3D 0; q < pse_port_num_queues[FE_PSE_PORT_GDM3]; q++)
->  		airoha_fe_set_pse_oq_rsv(eth, FE_PSE_PORT_GDM3, q,
->  					 PSE_QUEUE_RSV_PAGES);
-> @@ -340,7 +340,7 @@ static void airoha_fe_pse_ports_init(struct airoha_et=
+> @@ -311,7 +311,7 @@ static void airoha_fe_pse_ports_init(struct airoha_et=
 h *eth)
->  							 q, 0);
->  		}
->  	}
-> -	/* GMD4 */
-> +	/* GDM4 */
->  	for (q =3D 0; q < pse_port_num_queues[FE_PSE_PORT_GDM4]; q++)
->  		airoha_fe_set_pse_oq_rsv(eth, FE_PSE_PORT_GDM4, q,
 >  					 PSE_QUEUE_RSV_PAGES);
+>  	/* PPE1 */
+>  	for (q =3D 0; q < pse_port_num_queues[FE_PSE_PORT_PPE1]; q++) {
+> -		if (q < pse_port_num_queues[FE_PSE_PORT_PPE1])
+> +		if (q < pse_port_num_queues[FE_PSE_PORT_PPE1] / 2)
+>  			airoha_fe_set_pse_oq_rsv(eth, FE_PSE_PORT_PPE1, q,
+>  						 PSE_QUEUE_RSV_PAGES);
+>  		else
 > --=20
 > 2.51.0
 >=20
 >=20
 
---64HGhJxIkxmRP3EZ
+--H5AwCgcOCuAvnmQX
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCai0VNgAKCRA6cBh0uS2t
-rOoLAP9zD8rCmgmRGAbQK8MKUzVK5T4AKJTzQ6alW/rcKF3UEgEA01SqILqOnJw2
-YHcDXCB9lRE0KlGXXENOLuexByhf7AQ=
-=vr8q
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCai0WcgAKCRA6cBh0uS2t
+rO7RAP9g7N1WhxG+uVhjrwSIALK1fOaWyiTfOWfqgjMFz2sJTgD/X/4yttNNe92V
+RyqwwsP+NoHXVSlbjU6imIw7+hHDggM=
+=AAmu
 -----END PGP SIGNATURE-----
 
---64HGhJxIkxmRP3EZ--
+--H5AwCgcOCuAvnmQX--
 
