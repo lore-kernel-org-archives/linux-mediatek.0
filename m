@@ -4,57 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EF35CD98C5
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jun 2026 10:20:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16AAFCD98C5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jun 2026 13:02:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
-	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q74DfFMJGIf43h3oG0AaLzcz+fNjnLU10vcumudtGPU=; b=Qyu9Bsq3HOxHLyzXH7mM0F5YnE
-	Lso90TyFkj5b5mBnk1YXXACwD9v5zqksAI5rstgGzYcXNnPa3J6IzRaRsrZiyMHq0Z+KkT10Hn1os
-	yVnRYkezf/qbEU8XTUHuo3d5PNtLD4HB2EPcaenTzJ/EsThBSeCWau767fd6OlIfNGzLEsNb3wET5
-	WxCmfGxbOWt5m9vN1CYFDLThMRc248UdY+5b89yKwMeYj8FBytlde+HEu+Lo/1Gc66WH1y9yDwHMw
-	C3LM+tH9fT4tylVXSJIjPQfvVYxTZpZMd2gNflQVwhf8xpz19GoVK0cJNDcw4z6n8Z0AjJQDhfU+k
-	+zePqS7g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=f9grc44daxqBIZcosao5jKPSGCBZitxm1ELHMoNm91o=; b=RsVbfO3JpG3vOgu30czLnh8zSU
+	foClSlhMc4mM+mbpdbOzyj4V5hsd/wo6MkrCYqB2yIdYTEk4rcEveWuR3Wik2aF3vd6ljpf21UX31
+	7a4mAksiR/Tv+dSRSp19OXCHqyA0CezXAydNAV0ZrCHTB26KYnjX77Lm/t43oOPcyTQnAxk/6PNSk
+	gneitHaKRoaj+T6zjL7JLkTJ5HsOFsm42aWtrUwrMf1cWtpVdXKtHbQYOKkqztnmrTQTB+VNpt/+s
+	m/FOBeGcbI+XbyOiys7fKaz/MJIpEzRIYgwIDT+u1QwJSXi7ehoWk8ePLsFeV47QMsmsjqyfSj/c4
+	OjfFkh9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYLTT-0000000CBBv-14gX;
-	Sat, 13 Jun 2026 10:20:23 +0000
-Received: from mail-24431.protonmail.ch ([109.224.244.31])
+	id 1wYO0i-0000000CJ7h-2B6L;
+	Sat, 13 Jun 2026 13:02:52 +0000
+Received: from mgamail.intel.com ([192.198.163.17])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYLTP-0000000CBAi-44kn
-	for linux-mediatek@lists.infradead.org;
-	Sat, 13 Jun 2026 10:20:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail3; t=1781346014; x=1781605214;
-	bh=Q74DfFMJGIf43h3oG0AaLzcz+fNjnLU10vcumudtGPU=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=h4IdtranjLetTUOBYNFCtKZrpcVlKvaVpaSOmd/8APazXezroN577JvQezid6+eIn
-	 k9PZutTzzHO0TxhLBx3/vRK9YVgUlxLFlN+Sa9OO9LT6birHINfK4jzf/AXvB+nrAo
-	 t7Y1jaJHDk29YH+iyMkyshEx7MaCkRJdDrtkhmBr4/4qZ7OvbrBjDnQvePODJJJnjQ
-	 shebYd/6/akaMoggm1FE2Dqnrb8yK0ztISMxX97RQIMVvoCZPjiYPDQU0AdwZHndQr
-	 uudKj2FHIcqrwKFc+aBiuzbQ9vuOg440f27fcU7hAH9AcMqxDolfzchfyzpycyJ1oP
-	 m/Hs8Cch8/SyQ==
-Date: Sat, 13 Jun 2026 10:20:10 +0000
-To: Linus Walleij <linusw@kernel.org>
-From: Yassine Oudjana <y.oudjana@protonmail.com>
-Cc: Yassine Oudjana <yassine.oudjana@gmail.com>, Sean Wang <sean.wang@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy Teng <andy.teng@mediatek.com>, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v8 6/6] pinctrl: mediatek: Add MT6735 pinctrl driver
-Message-ID: <PjcK3j_TxnXwwBQ8ATPAPOO6LJl5b0Laa_6eSBTVfEfqsxIcaeDEVS4q4UkvGQA7CLQbuGxopLF6p3eIh1JAIDTkPFIgwp-hVP-fex_WEqU=@protonmail.com>
-In-Reply-To: <CAD++jLkA3v0RD1skaanqqG2eN8JLivUQPrYdK+hbX1YhQBgKqw@mail.gmail.com>
-References: <20260530145800.1029920-1-y.oudjana@protonmail.com> <20260530145800.1029920-7-y.oudjana@protonmail.com> <CAD++jLkA3v0RD1skaanqqG2eN8JLivUQPrYdK+hbX1YhQBgKqw@mail.gmail.com>
-Feedback-ID: 6882736:user:proton
-X-Pm-Message-ID: 23bbe0e76ed880a27521d811693ae6c5ed41470b
+	id 1wYO0g-0000000CJ5R-0z29;
+	Sat, 13 Jun 2026 13:02:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1781355770; x=1812891770;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=uxJGwCAsMcpFZ/9RNw7yRRDOB6tqapy/6259X4loI4s=;
+  b=Oju7etMKZoEbc17Fiz0v0dDpVVYglk5urSFBMgQR9GSD8oKwXQtJEeYE
+   G1IHAENH7osmydGnAsfByaTim7Rmz43984NlvKSKPNHPAbakN0WdPguOt
+   m4QrNWufI42H6rU5I/Z1SGJFs/lxBcKpuE8ZS03Veri9GTdpPVmyGybuB
+   EixvM5dxFa/bVOhu6B9gX7q+9CEnanTLnTSCLrRXCVdTdeacfJ5CYc8ow
+   Gmj9v+3T4Ff/adUm+2NvaQ6zrBfHnovfVYfDSDKfOsnivvWvCanNXmWKQ
+   V++ZjeiMScKevevcW/HO3ELF8xjnQOxg4nAimfIgvfIBpQeqSo0m4cHpk
+   A==;
+X-CSE-ConnectionGUID: LwBdWzkLT3SsrjuQ80Sb3g==
+X-CSE-MsgGUID: G4PJvkg0Ss280hEGMD7dxA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11815"; a="82014785"
+X-IronPort-AV: E=Sophos;i="6.24,202,1774335600"; 
+   d="scan'208";a="82014785"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Jun 2026 06:00:48 -0700
+X-CSE-ConnectionGUID: 9YFHfovRT2GI8xWhDYQGUA==
+X-CSE-MsgGUID: xEQJQI/xSEusBaz11tHecg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.24,202,1774335600"; 
+   d="scan'208";a="246931274"
+Received: from abityuts-desk.ger.corp.intel.com (HELO localhost) ([10.245.245.184])
+  by orviesa008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Jun 2026 06:00:43 -0700
+Date: Sat, 13 Jun 2026 16:00:40 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Bartosz Golaszewski <brgl@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Daniel Scally <djrscally@gmail.com>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Alan Stern <stern@rowland.harvard.edu>, linux-acpi@vger.kernel.org,
+	driver-core@lists.linux.dev, linux-pm@vger.kernel.org,
+	linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Manivannan Sadhasivam <mani@kernel.org>
+Subject: Re: [PATCH v2 02/16] device property: Add
+ fwnode_graph_get_next_port_endpoint()
+Message-ID: <ai1UeO-BZQEEheml@ashevche-desk.local>
+References: <20260610084053.2059858-1-wenst@chromium.org>
+ <20260610084053.2059858-3-wenst@chromium.org>
+ <ailv8HpnrCH3Zb8C@ashevche-desk.local>
+ <CAGXv+5EHHWfiWgqPpf-RMKoSQLc2cd9OA4Z36SNoL5C53kVh2g@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAGXv+5EHHWfiWgqPpf-RMKoSQLc2cd9OA4Z36SNoL5C53kVh2g@mail.gmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260613_032020_171750_F22834F8 
-X-CRM114-Status: GOOD (  15.14  )
+X-CRM114-CacheID: sfid-20260613_060250_307008_CBF3775E 
+X-CRM114-Status: GOOD (  18.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,39 +104,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Monday, June 8th, 2026 at 9:41 PM, Linus Walleij <linusw@kernel.org> wro=
-te:
+On Fri, Jun 12, 2026 at 04:20:18PM +0900, Chen-Yu Tsai wrote:
+> On Wed, Jun 10, 2026 at 11:08 PM Andy Shevchenko
+> <andriy.shevchenko@linux.intel.com> wrote:
+> > On Wed, Jun 10, 2026 at 04:40:36PM +0800, Chen-Yu Tsai wrote:
 
-> Hi Yassine,
->=20
-> thanks for your patch!
->=20
-> On Sat, May 30, 2026 at 4:58=E2=80=AFPM Yassine Oudjana
-> <yassine.oudjana@gmail.com> wrote:
->=20
-> > From: Yassine Oudjana <y.oudjana@protonmail.com>
+...
+
+> > > +struct fwnode_handle *fwnode_graph_get_next_port_endpoint(const struct fwnode_handle *port,
+> > > +                                                       struct fwnode_handle *prev)
+> > > +{
+> > > +     struct fwnode_handle *ep;
 > >
-> > Add a driver for the MediaTek MT6735 SoC pin controller. This driver
-> > also supports the pin controller on MT6735M, which lacks 6 physical
-> > pins (198-203) used for MSDC2 on MT6735.
+> > Unused?
 > >
-> > Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
->=20
-> Sashiko has good comments on this driver, look into them!
+> > > +     while (1) {
+> >
+> > This is usually harder to read and follow. It's like "pay much attention on
+> > the code", but here no rocket science, no code to really pay attention to.
+> >
+> > > +             prev = fwnode_get_next_child_node(port, prev);
+> > > +             if (!prev)
+> > > +                     break;
+> > > +
+> > > +             if (WARN(!fwnode_name_eq(prev, "endpoint"),
+> > > +                      "non endpoint node is used (%pfw)", prev))
+> > > +                     continue;
+> > > +
+> > > +             break;
+> > > +     }
+> > > +
+> > > +     return prev;
+> > > +}
+> >
+> > So, this can be rewritten as
+> >
+> >         ep = prev;
+> >         do {
+> >                 ep = fwnode_get_next_child_node(port, ep);
+> >                 if (fwnode_name_eq(ep, "endpoint"))
+> >                         break;
+> >
+> >                 WARN_ON(ep, ...);
+> >         } while (ep);
+> >
+> >         return ep;
+> >
+> > But also big question why? to WARN*(). There is no use in the entire
+> > property.c.
+> 
+> Will drop. This function was lifted from drivers/of/property.c then
+> adapted to the fwnode APIs, so it still has the structure of its
+> origin. With the WARN() gone, rewriting it as do {} while() becomes:
+> 
+> do {
+>         prev = fwnode_get_next_child_node(port, prev);
+>         if (prev && fwnode_name_eq(prev, "endpoint"))
 
-Didn't receive any comments and I don't see anything on the mailing list
-archives either. Am I missing something?
+'prev &&' is not needed.
 
->=20
-> > +config PINCTRL_MT6735
-> > +       bool "MediaTek MT6735(M) pin control"
-> > +       depends on OF
-> > +       default ARM64 && ARCH_MEDIATEK
-> > +       select PINCTRL_MTK_PARIS
->=20
-> There are in-flight patches to make MTK drivers tristate for
-> the Android GKI. Do you want to use tristate for this driver too?
+>                 break;
+> } while (prev);
+> 
+> return prev;
 
-Sure, doesn't matter much to me since I'm always compiling it as built-in.
+-- 
+With Best Regards,
+Andy Shevchenko
+
 
 
