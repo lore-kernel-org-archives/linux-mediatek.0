@@ -4,76 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC149CD98C5
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jun 2026 22:41:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B71ACD98C5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jun 2026 22:42:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=sFgM6pr1Jw6qKLoJhWrWpbUwhYhQ+a8Qd9W54UiixL4=; b=3YS3aZDZomBH8ns/gqXdaRRCzq
-	0PhqdTGHWVeFj7G65f7tEZyJTSIL135rvGQxAxcoFCVRJvx5Jqay2ZMmp44S9KUbPofmDBrR49eBc
-	cd6RhhcUSPRJqDUy3ud9Et5NFq7uxxtvv1YB8PZ1+SKgYyGxE77Fau8fYxT98aP5QxjXUiRtTby80
-	OuN+BG3cLq+ZR6aA4urBnRsv3BPw7IPzLDYXXyNcIMRTPPzufzj7g2y9YMkLz+8ZavE39mjgZ+DjD
-	3VzFM+2CxXp/pYZnFgziySz//lRNczSAYNRty6BuaoxV2oA9beRDIX9mfGGd90dokSPU+wjnEadmB
-	h58O5uEQ==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eNnaW9ugZlbc80Hn5pdKU8P9P/zwK+1nCkZYt/5PNac=; b=EyKLURvGKerkXCXOxa5muoeCe5
+	y7FBaWDGh03+R7qM/6Z6LnbTQaHzk487RE5asM8VjXmJ3kWVmI6hjRusA/EClmy6baQYBcXVHZ74v
+	XfzFTWnyP5fqfuC8jN8jS+f+736rpqwY1KejZDOzS+wYt6AkhCKSZAqkg/UF7L3eA61rTk4gdZCho
+	FyeXWzpgBcmwMWVrpSlCeETOBOdyExr827yZ9s6QljgLKNsBjw21lUSi/mkgPy1zCkQf7TymYl+NC
+	jHMXw9R3bsxNtg0PKDsh55FA9XxyhP4KQsfiWaUVr5gw7piMKPmp2sdBBeXwdvLtyfVweSU8t0h5y
+	uPG9Skcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYX30-0000000CZzA-1LiR;
-	Sat, 13 Jun 2026 22:41:50 +0000
-Received: from mail-dl1-f50.google.com ([74.125.82.50])
+	id 1wYX3J-0000000Ca0q-1cTF;
+	Sat, 13 Jun 2026 22:42:09 +0000
+Received: from mail-dy1-f182.google.com ([74.125.82.182])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYX2w-0000000CZyq-1iQU
+	id 1wYX3F-0000000Ca0W-3hrA
 	for linux-mediatek@lists.infradead.org;
-	Sat, 13 Jun 2026 22:41:48 +0000
-Received: by mail-dl1-f50.google.com with SMTP id a92af1059eb24-1370417c01cso2714779c88.1
-        for <linux-mediatek@lists.infradead.org>; Sat, 13 Jun 2026 15:41:45 -0700 (PDT)
+	Sat, 13 Jun 2026 22:42:08 +0000
+Received: by mail-dy1-f182.google.com with SMTP id 5a478bee46e88-304d8362a58so1639633eec.1
+        for <linux-mediatek@lists.infradead.org>; Sat, 13 Jun 2026 15:42:05 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781390505; x=1781995305;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=sFgM6pr1Jw6qKLoJhWrWpbUwhYhQ+a8Qd9W54UiixL4=;
-        b=GmVv7jpwQRo1IfXrE9G2HxPm4lhv7lhWu2MTjjHizXaDD6zEVRRecIVfqTrn/O+gIy
-         s0Xlb5BegseHK+KFTTiAQ9wm+6q/MZOQahOEBxcuau97vS3Lcg2zlVq3hilrOLOroXKT
-         MqMh2zO69pEItm3jr/bKX88En1VzHBpAoWQPIfzfcq4zvuKmonmnQ1ZeMGevRdI7c/Sh
-         twYqENFM/oVn6dZMJ1ej/uc4MQ+U46aeIg0EgQ2xElwDqWzM+kT/5pgvZJLV7clSR/rJ
-         pC3dnYhaRXnTB7+LROmD1qfUCs8VQx+YV7L62oOZhGVXiQFIQeKOCixs08ZUkVdfn1oI
-         6IaQ==
-X-Forwarded-Encrypted: i=1; AFNElJ8E4S4ikBleaHvClGUvZcjAcc0AXR3en1rrK6mpofWP51Zn6Gkoje+XVfjRWSZUz+li18FNg4cCVB3fUGOQTg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yyj6NLcur8v1ng4OfDEYC5jof1yKvvpb9X8HkW1r/nDXgVrRVzQ
-	L0ZyK21NbNTtsjFQ2pzDIyhhz5oRwYXkKM19sHryNKjF8oQ6saF1ryDL
-X-Gm-Gg: Acq92OGAsQRniOlcYQUGGtVLtje0AAXV4TJjlR8WbT4aZMSlkawAoWHnxOfmACFdVCK
-	vwnbhw1jUmQrItjdj+p4RL91ihpOge8t8c+c7nAaCR3cBBRFma49aPd7BX/Mb7bHN52MS+Cwzfm
-	jAtxGPscuD4K2RGCn+hZsIWILb7Z+Ou6UXeh0YHGfJnCi/thDFyp0xYVDQ3ECNSi/RzoZMlCb/U
-	SKAmRLLsSELjoMBJFhrrNis2kz2BfkAcL5OHgOWfM0lFsZKxxz0eWIO97No17kqkljew7GhiusY
-	XJoQ7puK0k1qymRzl9wOQON9peF5+RhjUO5GUmdSO0t+3y085KDXEwZc6MHnGkXcU1ftwZaftVG
-	K3wnkXag2i5Sb5RfpcbqOUAXTRM5C1reWOJOYwx5T+YG4+C/j3cjMiLC9hO/i1KD0c3ILQ8w9h+
-	JL7BBtrAhXUtYvtmKKcaUTiTSpZ5KEgBbWoDH0WKRjvjfDS+cGYtxaeTyolfNk4Am3w12yfVkPj
-	/qbOXhXdRjOjUDPBab2AwzWkgIZf7Bha1l9txxS
-X-Received: by 2002:a05:7300:d513:b0:304:54d6:20f3 with SMTP id 5a478bee46e88-3081ff3da47mr4390011eec.4.1781390504780;
-        Sat, 13 Jun 2026 15:41:44 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1781390525; x=1781995325;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=eNnaW9ugZlbc80Hn5pdKU8P9P/zwK+1nCkZYt/5PNac=;
+        b=iX1S20MBYGhxFJ21p3Lk4OnhrzmKClqdycQWr1SApc3TflWBGDD3wqNOd0Fo9GJI/G
+         cNO8NPfqB642TlDqBbRHc3clX6OUl6Py6QLEaRgG02ktOw3RX+zobHWWYcDDGtRMk2dS
+         iu330u5cK1pWZ2I2hRJrJkIE4Doxeq6XRDj/2aRAb0AlatZdT4s5YrQjT4PJMNfYh4hN
+         AGfBbkT8qxzckgGTkSjv+21/bMDZ2rM7y/Xr/3WBtzYZRJw/JeJst/Yr2ZPFn6U6fe0b
+         /sfuHlwghZHMRXEVHsWG62kDslikS4t6ykGyLMCIHiOVeQj3kwvZXWsd3epyxg4JKRDy
+         ju5A==
+X-Forwarded-Encrypted: i=1; AFNElJ/gzk3/uYKsHaJFtxjvw1yAHJ3CA7sXzX/oOgNjAVDW7njIxFp1vE3atTHRMmhpfr8d1dXT/bSD+cQBkHM3/g==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy4FVmoUhX4WHvnK/yRwUxYdPPzYT7Dy2STPfzzZI3OrgZiJVEe
+	bSR2YyhA9dNpr8gglHXRxDJmhTobbIPV++1nrcoySYe6WmOiRstwmyVj
+X-Gm-Gg: Acq92OGb0p8lp9PHQ3QJmPU/zpxPm3wbN0cakVTymw5gWB2zZQ3cqXVfUpl7gzm+rR5
+	faFYBrld6BVhf4b9XfIUjDk/O4yNz20W4N6zKhRxFNoV6Se1/+Me/1gDBVkx2St3M7xwN4SPZ2K
+	lxieCM9hdU41MPNIeHmiZo9IpsBsq7MXOuhrubaskjSdDZ0Bb71C5pCagxwJKzUduBRA6Eq+/R+
+	kAaS5OKyGQ816cPNoQNGi4iGV+S0YZUeCYpyJbQ2RdN5/2ej1wzu/IPcbdxmFAxqqv3mk+vmIGK
+	BgZFidwvQazl2VYxcMb53XYqJOpuH1VxTZ4yG8xFh5z8nR0JMAXJBYV0Pc8dLUOEZ//EjoXYiGm
+	/HVzqZ0JJLJBjb5DQbLbZxN+X+in7CB6xb1WQe5N99LF17l086CGy//CDX/OwySUk5yLikPr0kn
+	XEqKQHqSZf0+X9xkCw8r9p3DsH0ZXBnkFn2Ie773gqSjPKT/puiYkMxyli5etWDAcMAWRSb/l7Z
+	o7SEg4+y03TZmafSiJLSWWWiam5+KNO9CFaNlb8
+X-Received: by 2002:a05:7300:bd03:b0:304:d600:8731 with SMTP id 5a478bee46e88-30820cf4765mr4232755eec.15.1781390524924;
+        Sat, 13 Jun 2026 15:42:04 -0700 (PDT)
 Received: from sean-HP-EliteBook-830-G6.. (114-34-228-194.hinet-ip.hinet.net. [114.34.228.194])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3081eb95450sm11104825eec.28.2026.06.13.15.41.42
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3081eb95450sm11104825eec.28.2026.06.13.15.42.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 13 Jun 2026 15:41:44 -0700 (PDT)
+        Sat, 13 Jun 2026 15:42:04 -0700 (PDT)
 From: Sean Wang <sean.wang@kernel.org>
 To: Felix Fietkau <nbd@nbd.name>,
 	Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	Sean Wang <sean.wang@kernel.org>
-Subject: [PATCH 0/6] wifi: mt76: mt792x: harden USB reset and disconnect paths
-Date: Sat, 13 Jun 2026 17:41:25 -0500
-Message-ID: <20260613224131.2396026-1-sean.wang@kernel.org>
+	Sean Wang <sean.wang@mediatek.com>
+Subject: [PATCH 1/6] wifi: mt76: mt7925: stop init retries on hung bus
+Date: Sat, 13 Jun 2026 17:41:26 -0500
+Message-ID: <20260613224131.2396026-2-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260613224131.2396026-1-sean.wang@kernel.org>
+References: <20260613224131.2396026-1-sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260613_154146_451495_FADD361C 
-X-CRM114-Status: UNSURE (   8.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260613_154205_949711_B784111B 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,50 +89,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series hardens mt792x USB reset and disconnect handling.
+From: Sean Wang <sean.wang@mediatek.com>
 
-When the USB control path starts timing out, later register accesses can
-keep entering the same dead transport. Each timed-out vendor request may
-block for seconds, so reset or disconnect can be delayed by repeated
-accesses that can no longer make progress.
+Stop retrying hardware init once the bus is marked hung.
 
-Avoid this by failing fast once the USB bus is known to be hung, stopping
-reset/init retry paths that cannot recover the device, draining UDMA before
-WFSYS reset, and quiescing USB activity before unregistering the device.
+The control path is no longer usable at that point, so more retries only
+issue failing device accesses, including MCU commands or register
+operations, and delay teardown. Exit early and let the failed device be
+torn down quickly.
 
-This series does the following:
-- stop mt7925 init retries once the USB bus is hung
-- skip mt7925 reset work once the USB bus is hung
-- switch later USB register accesses to no-op bus ops after bus hang
-- drain USB UDMA before WFSYS reset
-- enable the USB UDMA TX timeout limit
-- stop pending USB work and TX paths before unregistering the device
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7925/init.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-The series is based on wireless-next commit:
-
-21352612198c ("b43: add RF power offset for N-PHY r8 + radio 2057 r8")
-
-It also cherry-picks the following patch from patchwork as a dependency:
-
-wifi: mt76: mt76u: use a threaded NAPI for the RX path
-Link: https://lore.kernel.org/all/20260609105301.196302-1-phial@phiality.com/
-
-Sean Wang (6):
-  wifi: mt76: mt7925: stop init retries on hung bus
-  wifi: mt76: mt7925: skip reset work on hung bus
-  wifi: mt76: mt792x: stop USB register access after bus hang
-  wifi: mt76: mt792x: drain USB UDMA before WFSYS reset
-  wifi: mt76: mt792x: enable USB UDMA TX timeout
-  wifi: mt76: mt792x: quiesce USB paths on disconnect
-
- drivers/net/wireless/mediatek/mt76/mt76.h     |   1 +
- .../net/wireless/mediatek/mt76/mt7925/init.c  |   8 ++
- .../net/wireless/mediatek/mt76/mt7925/mac.c   |   6 +
- .../net/wireless/mediatek/mt76/mt7925/usb.c   |   7 +
- .../net/wireless/mediatek/mt76/mt792x_usb.c   | 124 ++++++++++++++++--
- drivers/net/wireless/mediatek/mt76/usb.c      |  11 ++
- 6 files changed, 145 insertions(+), 12 deletions(-)
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/init.c b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
+index e85b0d104fbe..e9ca5aa1e407 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
+@@ -137,10 +137,18 @@ static int mt7925_init_hardware(struct mt792x_dev *dev)
+ 	set_bit(MT76_STATE_INITIALIZED, &dev->mphy.state);
+ 
+ 	for (i = 0; i < MT792x_MCU_INIT_RETRY_COUNT; i++) {
++		if (atomic_read(&dev->mt76.bus_hung)) {
++			ret = -EIO;
++			break;
++		}
++
+ 		ret = __mt7925_init_hardware(dev);
+ 		if (!ret)
+ 			break;
+ 
++		if (atomic_read(&dev->mt76.bus_hung))
++			break;
++
+ 		mt792x_init_reset(dev);
+ 	}
+ 
 -- 
 2.43.0
 
