@@ -4,63 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23BC8CD8CA8
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jun 2026 23:00:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF624CD98C5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jun 2026 23:33:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OL0xJg9TGrHcjEJfmk3cEN8r9HyvxoLtpxe2HvO86kA=; b=GMFzxn4hxnVzHw7jYQPzldyAY5
-	aMEcmXXMEdMbnkQHHFwQdel7yJyhBcRsviyO6GkX8KF7qqROj/+xHw5dFHI3c/lQI8PufpDMFt+CU
-	N4oSmI8s6cCGLVd11Xfd91oAB+bMhyOYHqVcJ62azXoXMCYun6vUq1ihPEu6ofwEnF24jqi38j97B
-	L3fVpRsewubean7Slf+IzJ6mM9XmxiNKDRiWqng1ln/4GO1eXyX/H6f+REM1tOfLiD6iZAIY33DZ0
-	1Ezy1znfDpewTNFNhaJCLksmMvQt/XBFC8LOq1J+9b0LQ9VGSroBCgJ/vMocVFDdsbwAdnw9aZejN
-	g9c4nqag==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Date:From:
+	Message-ID:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=AG/JEc/L0uDc2VwHJweRU+2vbGpFb8TCmkW2psEcnQY=; b=nVYzfxo7SlmiyHP8Ao40kozRel
+	2aBGhge9eP3QfbBDfQV7seJNgsrIcwwf8OQCQbKgElcI5wny5YufzgJfpe99g5txZhaXIoogHCEfM
+	Gf6TYc9hf/zh5VMnLWvl8vKOQT0+RMybjNXv/hS5L5anGzcVk8pVUcrmCK8dnbJrLNO6OmQnwfkjS
+	vCjLMnLQmuMRtU5piWi4L+lHbdZf3Zk0LbXPYDQNQfCetNXrC2BArG8jkK0ZWP6GhD0NsLAJfU4T3
+	LFlVl5LxqYd/cYs3Qhj5GAXk9BnvK8IBatgt3YYXvK9J/ni8w+jKUNIazz5fMwcoCbGxxlnIFyCpt
+	WmaluG4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYXKs-0000000CbCy-0Z7H;
-	Sat, 13 Jun 2026 23:00:18 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wYXqz-0000000Cc4k-0l5L;
+	Sat, 13 Jun 2026 23:33:29 +0000
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYXKm-0000000CbAs-3fAO;
-	Sat, 13 Jun 2026 23:00:12 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id A0E3B444A2;
-	Sat, 13 Jun 2026 23:00:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 828A91F00A3A;
-	Sat, 13 Jun 2026 23:00:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781391612;
-	bh=OL0xJg9TGrHcjEJfmk3cEN8r9HyvxoLtpxe2HvO86kA=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=nLDiCic8tXhbtDHtLCwUYQiIve22BfmTErq50vy3chAmEm9dP/uwQT6gcNLWEd5YI
-	 veLro4/RlOLvBP4hnkQtj8F5siX4sXi71vW0h1L7Z3xTPsWdT5hYM0wEL4sNV+SlsQ
-	 wmrYKGsPdSVO6vutfzncLNK+UPmDdYAtsgzJcnfqpeNZYng0GnIJKYzkAUbwI6g+Ko
-	 GIIs6jlcaRSTPjQNT6KZLrL8WbgflorWzjMCRAKT5YELdT1IuC8j7nT3AhDWif+Mfr
-	 TIUhAfvV5fSMtHakzxadwd3pMttoy80RCCx+xFMfGWGqwlj99hz9P9OQDV8XxVaPZv
-	 JNKOpPmHTccJQ==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id D09283A54A32;
-	Sat, 13 Jun 2026 23:00:09 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v2] net: airoha: Fix debugfs new-tuple display for IPv4
- ROUTE
- entries
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <178139160838.1619194.4028591531296512566.git-patchwork-notify@kernel.org>
-Date: Sat, 13 Jun 2026 23:00:08 +0000
-References: <6a2be54b.ef98c1b2.3c3224.2ed8@mx.google.com>
-In-Reply-To: <6a2be54b.ef98c1b2.3c3224.2ed8@mx.google.com>
-To: Wayen.Yan <win847@gmail.com>
-Cc: netdev@vger.kernel.org, lorenzo@kernel.org, horms@kernel.org,
- pabeni@redhat.com, kuba@kernel.org, edumazet@google.com,
- andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com,
- matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+	id 1wYXqw-0000000Cc49-3W1n
+	for linux-mediatek@lists.infradead.org;
+	Sat, 13 Jun 2026 23:33:28 +0000
+Received: by mail-pj1-x1033.google.com with SMTP id 98e67ed59e1d1-36bdb11bf8bso1225308a91.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 13 Jun 2026 16:33:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1781393606; x=1781998406; darn=lists.infradead.org;
+        h=cc:to:subject:date:from:message-id:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=AG/JEc/L0uDc2VwHJweRU+2vbGpFb8TCmkW2psEcnQY=;
+        b=U5pgXpu9slrZ8m7AaJvQchkWepdYFhvYck/o2D5XZyAs8wQuDmrwBszunyGb0jyVv9
+         HB67Jg35Jc6iR7EwJ687Lj0iANSaa8oqwUC+GoI1dkYCMB9lPXwa5AAeVdxkjMR6fhBi
+         iut9MlhN2lXWWFXpqcs+dYAjVi3+krLKY7BHMfPKrb7FM7sQci/YLQ8ESseUgpGya0NC
+         65LGfxEeS93iemXeVtasH+KMsJo6Yn3S8YCtkaea3hsa4eohr10YiinAJs7KQolpgEOX
+         oZkWeCP5alzHOik3+5qkoA/dUc1jgMfEamoTk1G2aJEA5kR77RA8Ws9xamR4YdflcAM6
+         WsRQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1781393606; x=1781998406;
+        h=cc:to:subject:date:from:message-id:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=AG/JEc/L0uDc2VwHJweRU+2vbGpFb8TCmkW2psEcnQY=;
+        b=BccW8rTn5yQ26lOzj9b48eOiEC7C79kwW9ABwVmoFGpDMGJzRetRDzTAoMuivUanp+
+         9xJJjDr+NpTQEESRZcWe7+mr2AUoIvolnAyHjjim14zgo4olA27X/ZxwiY/FzwKtIT/8
+         l6RlFfm/NYrQqkytbEyaeg/jNlx8bKqmI5eiLuoyc5kS6OynfHooZcNhLMgMfZo7HVZg
+         R6zkFKvbAYOb1r+LtPzKgvG0BRRbfAwiA99R4J/lJIdVXnTYmvDDNM4xDWO2ZtGybCvb
+         BRwEumIn8Lyzzptw3fWsXTEjS1PXU2DxWfraaRU73fjUGa9O27PtvHqrgsC4W56llxpB
+         hzMA==
+X-Forwarded-Encrypted: i=1; AFNElJ8VUBjl/RmBuJSgKgAl7lIBg7hLkw6fwYYv17hAdKRrBX00Do6mo+88P3mJlbq+2rmfoqxth6bYpZsIL8IAtg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwcPf6NTczeNM6iJ4X60v3X/dJgKUQ2SrKQvUqRf5W476queiEQ
+	sVKwvi3vBr8lSLFpXDBIKAolK0ohg+n5bj7Yt1VsRTA2yFBpEtz7Ohfp
+X-Gm-Gg: Acq92OHGnIv7S2xzMPmeC00B8fkB59HUQ1thsnbY+bkKetb7hYJL8fxLt+ybzk+zKKo
+	YAtLAmpOL1Qek15kNtmddw/z+w/RVuKl/bMqCx7tz0+mkviU6bjvK30jVbUVZB6N8Ch8Nu4mmOD
+	VJw5p6xwAHiKYXFRbRy+dwOdNB0yeb3pEEANrdYCz5gGRSH0S4ibP3csoIP1e30OD9L0jmC89tg
+	tviOC4kyETojEqVqSa9Z8MnJQWA3m0cJE35Ga5qJdYldhTOK/tiRuS/UucIacjyNNcGgPdRZizn
+	WEJbamF3ZkE+Y445d59ql7+7WIwDp4MjPR6tHPZnpFLcjSRl92v4gJuSwg3UkUQ7aVWpgNn0D/H
+	IKqwzaTONVhB3AC4vkc7wPRSpveks12KHxT9BQzqJmRI9WnufXeCz+K38SkRB6dyUh0L5xei/UM
+	ONs3/NQFRHY3vu7S8Y
+X-Received: by 2002:a05:6a21:1519:b0:3b4:b26e:bab2 with SMTP id adf61e73a8af0-3b783b22db0mr9105274637.2.1781393605822;
+        Sat, 13 Jun 2026 16:33:25 -0700 (PDT)
+Received: from [127.0.1.1] ([47.253.114.73])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-c866519f88bsm5126208a12.27.2026.06.13.16.33.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 13 Jun 2026 16:33:25 -0700 (PDT)
+Message-ID: <6a2de8c5.2c570c9e.53b1a.0e1b@mx.google.com>
+From: "Wayen.Yan" <win847@gmail.com>
+Date: Sun, 14 Jun 2026 07:30:54 +0800
+Subject: [PATCH] net: airoha: Fix skb->priority underflow in
+ airoha_dev_select_queue()
+To: netdev@vger.kernel.org
+Cc: lorenzo@kernel.org, horms@kernel.org, pabeni@redhat.com, kuba@kernel.org, edumazet@google.com, andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260613_163326_881292_E0050C86 
+X-CRM114-Status: UNSURE (   8.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,30 +92,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+In airoha_dev_select_queue(), the expression:
 
-This patch was applied to netdev/net.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+  queue = (skb->priority - 1) % AIROHA_NUM_QOS_QUEUES;
 
-On Fri, 12 Jun 2026 07:09:56 +0800 you wrote:
-> In airoha_ppe_debugfs_foe_show(), the second switch statement falls
-> through from PPE_PKT_TYPE_IPV4_HNAPT/DSLITE to PPE_PKT_TYPE_IPV4_ROUTE,
-> accessing hwe->ipv4.new_tuple for all three types. However, IPv4 ROUTE
-> (3-tuple) entries do not contain a valid new_tuple — this field is only
-> meaningful for NATted flows (HNAPT/DSLITE). For ROUTE entries, the
-> memory at the new_tuple offset holds routing information, not NAT data,
-> so displaying "new=" produces garbage output.
-> 
-> [...]
+implicitly converts to unsigned arithmetic: when skb->priority is 0
+(the default for unclassified traffic), (0u - 1u) wraps to UINT_MAX,
+and UINT_MAX % 8 = 7, routing default best-effort packets to the
+highest-priority QoS queue. This causes QoS inversion where the
+majority of traffic on a PON gateway starves actual high-priority
+flows (VoIP, gaming, etc.).
 
-Here is the summary with links:
-  - [v2] net: airoha: Fix debugfs new-tuple display for IPv4 ROUTE entries
-    https://git.kernel.org/netdev/net/c/1c3a77471afb
+Fix by guarding the subtraction: when priority is 0, map to queue 0
+(lowest priority), otherwise apply the original (priority - 1) % 8
+mapping.
 
-You are awesome, thank you!
+Fixes: 2b288b81560b ("net: airoha: Introduce ndo_select_queue callback")
+Signed-off-by: Wayen <win847@gmail.com>
+---
+ drivers/net/ethernet/airoha/airoha_eth.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 31cdb11cd7..d476ef83c3 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -1933,7 +1933,7 @@ static u16 airoha_dev_select_queue(struct net_device *dev, struct sk_buff *skb,
+ 	 */
+ 	channel = netdev_uses_dsa(dev) ? skb_get_queue_mapping(skb) : port->id;
+ 	channel = channel % AIROHA_NUM_QOS_CHANNELS;
+-	queue = (skb->priority - 1) % AIROHA_NUM_QOS_QUEUES; /* QoS queue */
++	queue = skb->priority ? (skb->priority - 1) % AIROHA_NUM_QOS_QUEUES : 0;
+ 	queue = channel * AIROHA_NUM_QOS_QUEUES + queue;
+ 
+ 	return queue < dev->num_tx_queues ? queue : 0;
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+2.51.0
 
 
 
