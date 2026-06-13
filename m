@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADC50CD98CE
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jun 2026 00:27:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B044CD98CE
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jun 2026 00:27:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Date:From:
 	Message-ID:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=9jZZatEXd/JafvuiFH5stqy7hRhy8giY4fPvDzpd45o=; b=Udyq/qJscJZaZl5U6riBVsr3uE
-	YzGsMFWq0A33OCUAcBiDcul8OWjm/qCOfEzBV5JTcgdPsO+Y07B80FjoHttfgt29gZPzauG4FZmFD
-	Mw/v00fW9W6xjq7mvTtk6jCG/Ky7+nYhWcRzKtLZ43gUg6a1P9cuneStbORokW19wk7bVDSBy+TZS
-	LxVq6qTZjN09d2GpylUBVO/HlOuMQyQSfL3mpmRpkPiaHuLbZTOWDdj9/0kIF+PxjDhvOsPveJHuS
-	Vx0LzV4VLETW5tAlLRepdhEKUBdl03L3PrhwapdIGQ/1QtNXi3q6wpCXe+whzdXogzEqBQdQlh0v4
-	kT4yerPQ==;
+	bh=CAEQuq4z5dW0AnrothciojC8/CjIG+BXfxwJ5kTAGpw=; b=V6099ax2X9N8WCuSEzyplhi8ba
+	dUQCyANcaVPkd75KCMJGYoMCKeVj7v3J3jdC4gzTEly08yLuUNqdRr2fi1qSZP5dHgklYn/MQolAf
+	TgCi16Aob1pMI+lQzWsKTeVj2d050KcPwl4AUc3ZlUHIi2xo0ekTtEkEXMegdxvQzPrumCeNXcNbq
+	16piheEmcb4FpFp4OBMAtxHHmBL9Hpt9DjJeNGnxm6DgtJ1IhzWNfTFdTF3ovMaeJfrmPzTfHbN9s
+	kKj88h1bA+hMn8nip09aploiaG+nF4b0x4p/Z4LshaNZnd9x/0naDouIxIXNGu62sQg1SCo82lfqZ
+	9Z2videg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYCDN-0000000Bpfc-0CKp;
-	Sat, 13 Jun 2026 00:27:09 +0000
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+	id 1wYCDS-0000000Bphy-0ygY;
+	Sat, 13 Jun 2026 00:27:14 +0000
+Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYCDL-0000000Bpev-02tH
+	id 1wYCDP-0000000BpgT-2Ak2
 	for linux-mediatek@lists.infradead.org;
-	Sat, 13 Jun 2026 00:27:08 +0000
-Received: by mail-pj1-x102a.google.com with SMTP id 98e67ed59e1d1-36d5fd50d20so1119235a91.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 12 Jun 2026 17:27:06 -0700 (PDT)
+	Sat, 13 Jun 2026 00:27:12 +0000
+Received: by mail-pj1-x102d.google.com with SMTP id 98e67ed59e1d1-36d9794d82aso949527a91.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 12 Jun 2026 17:27:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781310426; x=1781915226; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1781310430; x=1781915230; darn=lists.infradead.org;
         h=cc:to:subject:date:from:message-id:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=9jZZatEXd/JafvuiFH5stqy7hRhy8giY4fPvDzpd45o=;
-        b=WM7a0JNxXaE28nw/TPCdJyXnK2Ykcz7B8sDoppXzpbn/JDK9GjWOoaXrAt/efv5lhD
-         Vy5tVZGBejRbCqDNcBbK2A5AJryOn+91cC7gyb0grVj5oZjDb9mmibjFUJ/yBFsNg3XR
-         pNMsRTYetoTyEa9aLPmOlvayzkL6A2VnLvXhe9BsrEX47lzOvWm2Hs3oBFWfUd+bAb2N
-         LpHNnS0RTEi68kGn26XmMh0T4556l1KXXWj06x9KqxAaTB6WSnsPPfF7AVvBJltiLUKn
-         XlciNXw8LwWcZA9N67GO9dnMYzFr7/mkf9Z0FsTFWcReWufc+W5S0PmG2YUnb58dBzCJ
-         b+8g==
+        bh=CAEQuq4z5dW0AnrothciojC8/CjIG+BXfxwJ5kTAGpw=;
+        b=cHUWA9YjLn6pvu6Kau+aAVmY9d16ofK54tFvPlMKwstaYyUoECaQCTOV+qNLPDq40h
+         74+F1nNtVRh1G7mRNTNqEUzajC7sxO8nX4nOS/KX9y0QmjAh0Gg6d2ZCiQ4NYSgdCkTx
+         +gMBqkXr/FclE89xI5/o3OjkXZ52lrvct/8RFqAv9AblAKL008L52EWLSDhG1vUH45FE
+         M1Tus7SsBrd6AE0e9JE+k1MLnzuyouKw3Gf7YhkW/kOzWZimkYagvfgXu0LxXovHPq+u
+         pHs21W3eXotdNKwl+QAkUffTA2wpxSjDOC609Z9NeSMe1yNYlk26Ubg4AhHF89t9ooN2
+         E9Ew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781310426; x=1781915226;
+        d=1e100.net; s=20251104; t=1781310430; x=1781915230;
         h=cc:to:subject:date:from:message-id:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=9jZZatEXd/JafvuiFH5stqy7hRhy8giY4fPvDzpd45o=;
-        b=p448lKnEKxcG2tnW9kGhb4dNy9Al6/gUL+zv2RV0MnXsrNzi1zcUGfk7dDzniaWP0q
-         3yOzmHZm0uaqQBLY9dU2/7/PJR0dZOKyYdqOwUDi8jC74E+aHQIbKT/shM19EFOmK6JP
-         f2BcJCvHbmE42CsBbwL+a5ay6+rqdfAW5TttbR09lHKHj/vHX3j9IZ/28eotjZ1XxKHf
-         0U/UvBfSG9dyiTyCFcSnaxt8oM8n0z9MW25LWsRyJFZ3Oi2wv02QGF/mwSyDFN9fjl5L
-         Aj6/xI72+ZdMYoeMH1FqHwO/k3OAUwIaZamAZzmk+72Po3f03WxKi/G4Z+J0E2DxXJqf
-         CxPg==
-X-Forwarded-Encrypted: i=1; AFNElJ/oq6N8Nz9pfTSQKQZfCo3o9d0aGlo/Xy0NuqFeFLrcOu4rD3Mf9/PtobKK3n/458WuqSbNPldbIK6X9jAfMA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwZMIOfR1SeHWL8vU1H+vLcJAqbhKivjc2EPMZlIY6IQZ3FhLvx
-	B/MQ3N7CFKC9hYUu09hb+FLnztKmj6jqOBxT31+HGWjP61iMjofahBSs
-X-Gm-Gg: Acq92OEtqV4jUMvpUh3Btx/SX63L4wIbHWG5+a1X9FDcagHmO0SId9DEB2ZJSt4jePm
-	Cxx81IwuhxoVxIHTS4nrkIKYmwPObv7xZTloLpheisnx3fH/+0ISc/KnAtTvrnyLKSbCMYoPciz
-	5z29KI7zvw+EJd29NBoJ2bsiXoQwAD6uhc9TUr8HX+SDdg2RW6uiiDJ3GJ6Va/JIcUp1upJKLcJ
-	i6PLA1kOolXrNF1yfW461IqqQ5ROfd8LOs97jN86FGl0kJSU2BlhQQ1VsHci30ksuVSNOvou1T8
-	ze/bXQ/s0f6JlEdYe3SyVugk+moO9SvGYboJ+8Uz9tVycXBWv3merjsQHS4mJxF7MrGsB6rPbU3
-	MYkUTylGR2ke1ux33ioPsapPc2AP6Z1Gdp1ZSOeYiy8SittKZ2H8mCPGiVzvT1DeFlJTrREYKtt
-	OIQfQPbCASxC7acQch/vEUMYzJ3hU=
-X-Received: by 2002:a17:90b:3d01:b0:377:23bb:9b88 with SMTP id 98e67ed59e1d1-37a033e024dmr5562386a91.12.1781310425834;
-        Fri, 12 Jun 2026 17:27:05 -0700 (PDT)
+        bh=CAEQuq4z5dW0AnrothciojC8/CjIG+BXfxwJ5kTAGpw=;
+        b=RVMwsQUSA4Iu3EylTlyjYu9hPMNBFAm6rxa+AKYxhIBvITlvngIY7kNr3ZkIWNLM7i
+         oGDlla18HzPrVfnBTpPZapyfi/zUTBslRQCX4PURI4p1vaFibjEXJ26fUlBtweUkYfOb
+         sA5oerGYiARXEyHPO6+59r/J3r3I7GNDb2KP+a1fM3P/DXhwqqJyM3B1n+/Q2Tsf48Jk
+         fLDVu8Y6Jc/SlKLJ6csDluHccSKuMF61HeKr1pm9eDHqcyDCirLZk7fZffgAkAtPAJoo
+         QEiMTIqNJx9hajPfYBoPLuVbiUNf+PwhTRz59pQ+2ShsrgAKbRVv43ioikwtUxDPHd26
+         +aZg==
+X-Forwarded-Encrypted: i=1; AFNElJ+ma+nYw9Bjc7HeAjTNKFOig22klVZS+cyNzLWWF9uwqiJfD0pXEdssl4V894PKQ4YRlfvYCt8LdVc/xz4bOA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwxL2pTQvaDrETURZU2ro3TOz/xo4mwLupMwiOMo0dJ0E6q+0yh
+	n7iL9XBv2Hg5e+NrsM56ibIytlB11tct2CteRJyvghnGOhtJ1M9VjxdN
+X-Gm-Gg: Acq92OHBb+3j/1Jc9Znl4MpqajtNturOzb01n5ybU2OO9supY+dkg04kHQ2mDiBDSum
+	xFyCTGCfUbM/vUEsRpEC3e+TNdCa7LDCYCjl2EYvfVt+JEDurEWo+7n8e/TynneQIkgP4OgDLNa
+	Qz4TLVEiSq33xiKwl05DIgWWSGTbaUrWwcK7UgTN/yVS8DxKoCZ4ojtAP0QX8No7bRO0Ttd+hxq
+	LF91gtPCiHug12qJhPqi4uzuKkgPRvasdMNlBSfj4+zRey7QkA79B0Cfj+xutjKlQ0RfPMs3XKw
+	koKawhpIiBEBGyaBh53GPhVT3bBm3bqbnt0JuGyti7usq09DPQaOW27/FqiFjgCpnWrwg5jEmTp
+	i0tTTagZNQVUdtW6OH0nAbYac/oIjsEz+ksfkbqtsWgwBZcnCQ9VJPZjvmJuxv22NXGWJQzFNXL
+	3QwrRitWqkilMfOO9XjE408kTGX00=
+X-Received: by 2002:a17:90b:1b04:b0:366:3517:1aa2 with SMTP id 98e67ed59e1d1-379ff644660mr5554949a91.0.1781310430554;
+        Fri, 12 Jun 2026 17:27:10 -0700 (PDT)
 Received: from [127.0.1.1] ([47.253.114.73])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-37a1eba8ea7sm3441412a91.1.2026.06.12.17.27.00
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-37a1eba8ea7sm3441412a91.1.2026.06.12.17.27.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 12 Jun 2026 17:27:05 -0700 (PDT)
-Message-ID: <6a2ca3d9.ad59c0a6.147df9.2a62@mx.google.com>
+        Fri, 12 Jun 2026 17:27:10 -0700 (PDT)
+Message-ID: <6a2ca3de.ad59c0a6.147df9.2ac1@mx.google.com>
 From: "Wayen.Yan" <win847@gmail.com>
-Date: Sat, 13 Jun 2026 08:22:31 +0800
-Subject: [PATCH] net: airoha: Fix non-standard return value in
- airoha_ppe_get_wdma_info()
+Date: Sat, 13 Jun 2026 08:23:12 +0800
+Subject: [PATCH] net: airoha: Fix always-true condition in PPE1 queue
+ reservation loop
 To: netdev@vger.kernel.org
 Cc: lorenzo@kernel.org, horms@kernel.org, pabeni@redhat.com, kuba@kernel.org, edumazet@google.com, andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260612_172707_047916_7F0CF9F5 
-X-CRM114-Status: GOOD (  10.13  )
+X-CRM114-CacheID: sfid-20260612_172711_563659_13DBD9E9 
+X-CRM114-Status: GOOD (  10.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,30 +91,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-airoha_ppe_get_wdma_info() returns -1 when the last path in the
-forwarding path stack is not of type DEV_PATH_MTK_WDMA. This is not
-a standard kernel error code. Replace it with -EINVAL since the
-input path type is invalid from the caller's perspective.
+In airoha_fe_pse_ports_init(), the inner condition for PPE1 queue
+reservation is identical to the for-loop bound, making it always true
+and the else branch dead code:
+
+  for (q = 0; q < pse_port_num_queues[FE_PSE_PORT_PPE1]; q++) {
+      if (q < pse_port_num_queues[FE_PSE_PORT_PPE1])  /* always true */
+          set RSV_PAGES;
+      else
+          set 0;  /* unreachable */
+  }
+
+The intended behavior is to reserve pages only for the first half of
+the queues, matching the PPE2 implementation on line 334 which
+correctly uses the /2 divisor. Fix the PPE1 condition accordingly.
 
 Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 SoC")
 Signed-off-by: Wayen.Yan <win847@gmail.com>
 ---
- drivers/net/ethernet/airoha/airoha_ppe.c | 2 +-
+ drivers/net/ethernet/airoha/airoha_eth.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index 5c9dff6..7260177 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -264,7 +264,7 @@ static int airoha_ppe_get_wdma_info(struct net_device *dev, const u8 *addr,
- 
- 	path = &stack.path[stack.num_paths - 1];
- 	if (path->type != DEV_PATH_MTK_WDMA)
--		return -1;
-+		return -EINVAL;
- 
- 	info->idx = path->mtk_wdma.wdma_idx;
- 	info->bss = path->mtk_wdma.bss;
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 31cdb11..999f517 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -311,7 +311,7 @@ static void airoha_fe_pse_ports_init(struct airoha_eth *eth)
+ 					 PSE_QUEUE_RSV_PAGES);
+ 	/* PPE1 */
+ 	for (q = 0; q < pse_port_num_queues[FE_PSE_PORT_PPE1]; q++) {
+-		if (q < pse_port_num_queues[FE_PSE_PORT_PPE1])
++		if (q < pse_port_num_queues[FE_PSE_PORT_PPE1] / 2)
+ 			airoha_fe_set_pse_oq_rsv(eth, FE_PSE_PORT_PPE1, q,
+ 						 PSE_QUEUE_RSV_PAGES);
+ 		else
 -- 
 2.51.0
 
