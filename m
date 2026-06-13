@@ -4,77 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B169FCD8CA8
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jun 2026 22:47:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B13BCD8CA8
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jun 2026 22:51:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4LAVcEQDdglp6OEtODuDMvvqd/PwbISrhunyPv7tH68=; b=ngZHUx4E6BiZsi+rhT11/GkBwI
-	kyz3rjtHqwwM9kiePSIBE5PKVDlXJ/EdmpO2aFczIc7UBet9j4ZkGR9tXGR+LwUXslDvEPfP7po/4
-	rP3n0D7p/Lw//BZ1rP/qZ/wP0XUgCTLNVU7FZwPWrf0Qi6NRIiRd2kVguB/FA5eU+IcD6r2Vuc5vy
-	G1heQf/p5ZZduvwas/Sfx+y6fp9sIctT6pbdO8aTASE/Z2TipLJhy8XzCZyNU1KjYVXum5t0C52O3
-	7DMQpE9fKSXJ87+HKE1zUZzjZNzVKQUT5hEqjqZ3JHIytW5vJjvRs/RU52+8iFtuM02Fdm4vbWztm
-	LbbqDJ5Q==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=zDBvXF2yuCDUwoxTRJn9WiANQ6TvXDN+2ABteU7sgK8=; b=VeemMH4VyhI3IMZu3muvsIZPWv
+	syCinD55TBSBgTurzwZdh/+r6olRi81Hvvgj02oFYt/dbPShba3f5vWzUIGU6Z3wEgnAGacZj6dmw
+	F3+vtWr5nmG3byX/Tx4koOcvnuG50qYj05HjJpenb016ntz23vM9NtTzSrWNHIoot9NXu9JOwGE5c
+	siaSBsRfa8a2MaDyiFsehEv1wKL/p3nqtn1d4qFOuXE/kGbXpaCAuds/0OnDcKCEN4RaL4TgeucyQ
+	VbeFqvN1fjAWkxJEYAcepa6iQq7Gep7ayCphY/NuFM9NmppAemr5hhgQbhDkivccg5Pihx4fIfInI
+	HpFYQcTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYX8Q-0000000CaQM-3m3T;
-	Sat, 13 Jun 2026 22:47:26 +0000
-Received: from mail-dl1-f48.google.com ([74.125.82.48])
+	id 1wYXCo-0000000Cadr-1ORQ;
+	Sat, 13 Jun 2026 22:51:58 +0000
+Received: from mail-pj1-f47.google.com ([209.85.216.47])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYX8O-0000000CaOh-1rAp
+	id 1wYXCm-0000000CadY-2Avm
 	for linux-mediatek@lists.infradead.org;
-	Sat, 13 Jun 2026 22:47:26 +0000
-Received: by mail-dl1-f48.google.com with SMTP id a92af1059eb24-138501f8c04so807318c88.1
-        for <linux-mediatek@lists.infradead.org>; Sat, 13 Jun 2026 15:47:24 -0700 (PDT)
+	Sat, 13 Jun 2026 22:51:57 +0000
+Received: by mail-pj1-f47.google.com with SMTP id 98e67ed59e1d1-36c68964315so1164368a91.2
+        for <linux-mediatek@lists.infradead.org>; Sat, 13 Jun 2026 15:51:56 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781390844; x=1781995644;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=4LAVcEQDdglp6OEtODuDMvvqd/PwbISrhunyPv7tH68=;
-        b=CxLe8NebbkFrPa72gwWEp9UGHiRYtcWmTVbNN9WrBa/KuH4mM26zJM+lxx5rq2Ntr2
-         mxQz+OG6fKVCaRijtWZD9246CSTez9qAOKFt6Y965n/bEH7jdjA0vTOVb9re1JtGowS/
-         lnSGHa55kaxpQRLnxNBQ4r2W9BM8ob8ZaQe/IqLARAQsvATUCens2lbrE9Zy6a+725qO
-         elWg3LQ2uT7wdh9w7TOSEdIQ60GcJ/jEkXo7ixyQhQnzZDLKlfY7VrANrZDEy1+ecVct
-         +2uBAaQncRSdePMHQ8UeljZA1gKUM8R2e7JLM81RNI2CI5Gdwy6ZfV+HH57zPTSfeqWM
-         g97w==
-X-Forwarded-Encrypted: i=1; AFNElJ/D5K82BG/dtIkinS60CqsNxRypF8tJc/kaN3InJlS+p84k6t0MG/ychh99wPa1rWHK4H4BdwZawp3wHBXlSQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyJ/e7KCFaanb5G5hHK8FgzMRgIbtPTi8vsuFklYJLxXibkkrTK
-	gnY0kiEIZLMMj7Q0eRqc2bl3E7hitsdIsCuu6ITtOx2k7waHWajBxf+l
-X-Gm-Gg: Acq92OHR7A5UWoahEyAHxVZb70fljJvZIk3AMC0/WPZYcPN5VS26YXWt3Ckxi6O0tPb
-	+VDDEiJlWKvTsqanLHRCiYtyTc6cQMiU2lCJ8HImooSwt+ED+xVZQA44UHLT7VwwDFl14ziOa2Y
-	XPKBoGkQeUvDx3PdBuMEsf+SzdVuaS8e+tDY9pM3MlVffxJ44VD64KSwljGUD7/+Xa7BoGb/dHq
-	WZy0EmvA3NR0/k38MHscX6qKCcWi4iPlNI3o8LuPvhQ4guFVrRht5eG6fq9nIoXtkN8ZhjiP+Ct
-	kGkYuQ4J5J1Wk9boG69giUyiFJCSGYtS5SRnnbwhZG7kchiokydtpVC8KPqseSbBjbwXzycClBw
-	YiL5hl9W41Yr3yiAWW3fvqNfo/EIPX+IiWR1nGzdCmMuHmtWXGQU81TebDbU5xmmzXz9/Mwgin6
-	fF52sa8y87OPAQD20su2qz9oNj8QfAYLdUA2/xjP+IbPE4Bex08p+/+0I8CtAZ9jAwzxkWqf3WI
-	KVV8nCgzmwIxrzMi2lEr3OwcSdqEEtafYgVGxv3
-X-Received: by 2002:a05:7022:43a4:b0:138:3613:dbb with SMTP id a92af1059eb24-1386f240408mr2221497c88.5.1781390843584;
-        Sat, 13 Jun 2026 15:47:23 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1781391115; x=1781995915;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=zDBvXF2yuCDUwoxTRJn9WiANQ6TvXDN+2ABteU7sgK8=;
+        b=tOO/Am7Kg2K54k+KY4amo2+4cIHmA19P6MR2YL+jzLP+gU6f45mLkV0UtcJA/KjuRZ
+         K9hd6OrHclnLxqxrnkuFdUR9g8bdUiDPOJTWkKJHbUks1iAFj/vHz5XfurOLFVQeD4OU
+         WFLkDXLZo1mQNIRoExkzSxXPm0ac7A+qRcrAZgkj/w1gm6ZAXPKa2XskdjSXFPlqJV0c
+         o2QJhRGY4/EXxsihAXX8F1/GiJZqG6rwBf824RaTBScUmSNC99LhJq3rMDLJXd3lWDdT
+         zFRRtdprB/g888zkZfv0OmIWd81V4XhQbUyAsSIj5sDhriVW7i4qbj6y2F6wxYwixQrS
+         fvQA==
+X-Forwarded-Encrypted: i=1; AFNElJ/FU0FVNMokhLm3kb+dcc3TkOmGFYV+pJ7f4ANmA/SUxQFlIJzNg34KbbwIcHYD0sReVdgVZExB51ZdZsb73g==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzqsv/VKeMIJuMK6bFy6cQAcKlmfMMIsx7cWA606VqUmYiCfOgd
+	g0sEd9gGzB1CcdEhDaGmMpNlJW75W43yhj5mjEt5h4DWOI0z/SLTAYEv
+X-Gm-Gg: Acq92OFX9Bbbgl7ffBEdXm+xkqczBtUa5tvOaf9kv1QQbPVYysWs/UmOjZH38v8BNKZ
+	H809Z5DByXHEGYjjzYDrLcGtLpmGLrcP1o5Cj5PFbnEa+zKHNY+nt4JTXF9OjO3l87Y2bAovxIO
+	GjVMLnBVBkOFtqIh07Lr3yFidlWkuPuNaOmfDEt2gQ4+DRY/hxfNektL03T5YVufcMSCUCtSjEz
+	S3BfPxhsJbjwgEHVf2Kal2dhAsiecP812b2X+ONmRRNLXrzlb/giE4aZa+TpAGzGDHsI4znxFU2
+	cZVoGsax2wWYUIuB0lM/CxfshUOQ+dN1f/BMRG39UZsPuTJXb7s5dDD53wdFPsHgGQMS6HLVhWy
+	sPNgQRFcxfcRPi2c+3B3CE4xLeFwd9PAC1L7HP2Dp5uVcr5gfVA7UMquT54BCFPH+YxjdPQesk7
+	Nci5zB6NA/Ri5UCkOJAgax6jozIGQX4Im3pEXMHs4+41YWbh9DfxyODCKlwFRcelZZeBsAJNLvU
+	b80xbY6n1IyL8GBWoy22AocCz2hQNYCYCg6TTxa
+X-Received: by 2002:a17:90b:570b:b0:368:d839:28d5 with SMTP id 98e67ed59e1d1-37a040ad487mr8921781a91.18.1781391115156;
+        Sat, 13 Jun 2026 15:51:55 -0700 (PDT)
 Received: from sean-HP-EliteBook-830-G6.. (114-34-228-194.hinet-ip.hinet.net. [114.34.228.194])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1384b97bf09sm6345380c88.14.2026.06.13.15.47.20
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-379c333c43asm4215770a91.0.2026.06.13.15.51.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 13 Jun 2026 15:47:23 -0700 (PDT)
+        Sat, 13 Jun 2026 15:51:54 -0700 (PDT)
 From: Sean Wang <sean.wang@kernel.org>
 To: Felix Fietkau <nbd@nbd.name>,
 	Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH 5/5] wifi: mt76: mt7927u: enable USB RX aggregation
-Date: Sat, 13 Jun 2026 17:46:55 -0500
-Message-ID: <20260613224655.2405686-6-sean.wang@kernel.org>
+Subject: [PATCH 1/2] wifi: mt76: mt7927: set band index for sniffer mode
+Date: Sat, 13 Jun 2026 17:51:43 -0500
+Message-ID: <20260613225144.2414283-1-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260613224655.2405686-1-sean.wang@kernel.org>
-References: <20260613224655.2405686-1-sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260613_154724_484647_505C4A8E 
-X-CRM114-Status: GOOD (  11.15  )
+X-CRM114-CacheID: sfid-20260613_155156_582336_6E41BBC7 
+X-CRM114-Status: UNSURE (   8.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,62 +90,59 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Enable USB RX aggregation on MT7927u with vendor driver parameters for
-alignment, padding and buffer size. According to the vendor driver, the
-hardware should run RX aggregation with USB SG disabled.
+Use the active channel context to select the SNIFFER command band index on
+MT7927, and fall back to the PHY chandef when no channel context is
+available.
 
+Also pass the same band index to the sniffer channel configuration. This
+keeps monitor setup on the correct band, especially when multiple PHY band
+contexts are present.
+
+Fixes: 35a5dcc71735 ("wifi: mt76: mt7925: add MT7927 PCIe support")
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7925/usb.c |  6 +++++-
- drivers/net/wireless/mediatek/mt76/usb.c        | 11 +++++++++++
- 2 files changed, 16 insertions(+), 1 deletion(-)
+ drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/usb.c b/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
-index a0bfe6f09ae4..42d13bc6ebbc 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
-@@ -5,7 +5,6 @@
- #include <linux/module.h>
- #include <linux/sizes.h>
- #include <linux/usb.h>
--
- #include "mt7925.h"
- #include "mcu.h"
- #include "mac.h"
-@@ -235,6 +234,11 @@ static int mt7925u_probe(struct usb_interface *usb_intf,
- 		mdev->rev = (0x7927 << 16) | (mdev->rev & 0xff);
- 	}
- 
-+	if (is_mt7927(mdev))
-+		mt76u_enable_rx_aggr(mdev, MT7927_USB_RX_AGGR_ALIGN,
-+				     MT7927_USB_RX_AGGR_PADDING,
-+				     MT7927_USB_RX_AGGR_BUF_SIZE);
-+
- 	if (mt76_get_field(dev, MT_CONN_ON_MISC, MT_TOP_MISC2_FW_N9_RDY)) {
- 		ret = mt792xu_wfsys_reset(dev);
- 		if (ret)
-diff --git a/drivers/net/wireless/mediatek/mt76/usb.c b/drivers/net/wireless/mediatek/mt76/usb.c
-index 10ad2b024985..f0df510904c5 100644
---- a/drivers/net/wireless/mediatek/mt76/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/usb.c
-@@ -1300,6 +1300,17 @@ static const struct mt76_queue_ops usb_queue_ops = {
- 	.kick = mt76u_tx_kick,
- };
- 
-+void mt76u_enable_rx_aggr(struct mt76_dev *dev, int align, int padding,
-+			  int buf_size)
-+{
-+	dev->usb.sg_en = false;
-+	dev->usb.rx_aggr.enable = true;
-+	dev->usb.rx_aggr.align = align;
-+	dev->usb.rx_aggr.padding = padding;
-+	dev->usb.rx_aggr.buf_size = buf_size;
-+}
-+EXPORT_SYMBOL_GPL(mt76u_enable_rx_aggr);
-+
- int __mt76u_init(struct mt76_dev *dev, struct usb_interface *intf,
- 		 struct mt76_bus_ops *ops)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index e94fa544ff20..17bc7204f02a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -2174,6 +2174,8 @@ int mt7925_get_txpwr_info(struct mt792x_dev *dev, u8 band_idx, struct mt7925_txp
+ int mt7925_mcu_set_sniffer(struct mt792x_dev *dev, struct ieee80211_vif *vif,
+ 			   bool enable)
  {
++	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
++	struct ieee80211_chanctx_conf *ctx = mvif->bss_conf.mt76.ctx;
+ 	struct {
+ 		struct {
+ 			u8 band_idx;
+@@ -2196,6 +2198,15 @@ int mt7925_mcu_set_sniffer(struct mt792x_dev *dev, struct ieee80211_vif *vif,
+ 		},
+ 	};
+ 
++	if (is_mt7927(&dev->mt76)) {
++		struct ieee80211_channel *chan;
++
++		chan = ctx ? ctx->def.chan : mvif->phy->mt76->chandef.chan;
++
++		if (chan)
++			req.hdr.band_idx = mt7927_band_idx(chan->band);
++	}
++
+ 	return mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD(SNIFFER), &req, sizeof(req),
+ 				 true);
+ }
+@@ -2255,6 +2266,9 @@ int mt7925_mcu_config_sniffer(struct mt792x_vif *vif,
+ 		},
+ 	};
+ 
++	if (is_mt7927(mphy->dev))
++		req.hdr.band_idx = mt7927_band_idx(chandef->chan->band);
++
+ 	if (chandef->chan->band < ARRAY_SIZE(ch_band))
+ 		req.tlv.ch_band = ch_band[chandef->chan->band];
+ 	if (chandef->width < ARRAY_SIZE(ch_width))
 -- 
 2.43.0
 
