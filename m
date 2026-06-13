@@ -4,73 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62034CD98CE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jun 2026 22:19:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADC50CD98CE
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jun 2026 00:27:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f3oMmrVXWyC5Wzc2sMvrJFI2Fzlu9pNGMbkNW/R6LDg=; b=C+uZzSCBT0479YZr6xAnGLXW1L
-	+aZ9S7Dlf7kopJ7eYb44AhW8kdrIcoGSqtQZfL+wWlumeUtK/vv7xpSCwEzKJT1JZOrsI8AgRre9m
-	Ps1crU3Thi2cct0jyJ5uh4DXQp+FE9PBanTanT69Jg5ETJWw417TP/Jz8xk+lTEKARIe7prbZEMPQ
-	IB1JAidDPlSPtgxP86Xck5t2EghJxOIulUx9fpQBxXP94ldOAg1DwPkVj1hYKN+wtbqmFxdfLD7pk
-	r4GIF62Mn4AfGVdLlBNsvico6vU4YN1onF9GIVe/GL3RwmNRqJFJiU5pv2d5vvjYRq/AXWsiIjhLr
-	Sky6EXDQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Date:From:
+	Message-ID:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=9jZZatEXd/JafvuiFH5stqy7hRhy8giY4fPvDzpd45o=; b=Udyq/qJscJZaZl5U6riBVsr3uE
+	YzGsMFWq0A33OCUAcBiDcul8OWjm/qCOfEzBV5JTcgdPsO+Y07B80FjoHttfgt29gZPzauG4FZmFD
+	Mw/v00fW9W6xjq7mvTtk6jCG/Ky7+nYhWcRzKtLZ43gUg6a1P9cuneStbORokW19wk7bVDSBy+TZS
+	LxVq6qTZjN09d2GpylUBVO/HlOuMQyQSfL3mpmRpkPiaHuLbZTOWDdj9/0kIF+PxjDhvOsPveJHuS
+	Vx0LzV4VLETW5tAlLRepdhEKUBdl03L3PrhwapdIGQ/1QtNXi3q6wpCXe+whzdXogzEqBQdQlh0v4
+	kT4yerPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYADZ-0000000Bekc-0vzc;
-	Fri, 12 Jun 2026 22:19:13 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wYCDN-0000000Bpfc-0CKp;
+	Sat, 13 Jun 2026 00:27:09 +0000
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYADX-0000000Bejj-21HI;
-	Fri, 12 Jun 2026 22:19:11 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6534D60008;
-	Fri, 12 Jun 2026 22:19:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2E57F1F000E9;
-	Fri, 12 Jun 2026 22:19:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781302750;
-	bh=f3oMmrVXWyC5Wzc2sMvrJFI2Fzlu9pNGMbkNW/R6LDg=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=GfSNY6tCmURPFfTsAasGL0KULYw37NvIrwenNSXCO/zHges2r36rBXCobJI29tX4l
-	 U0tU5umwOrMPHeEhXR/dd84LBvkF9k2aW+KlvfMTLVX93yDeX9jy3+JtYqxS2DXEbK
-	 navC49qjtLL3G+AjcpbjT8wL3TwFovpAPGjzXjf2K1jAKdrm+7EreeYK9KKK/DbCyv
-	 G/oysRjWCRWKv5G4eH47bYr7gwpDcLJnYYb12KJr+A9u1eMG3rSni3Q6dmO9LkaUZO
-	 WtEExJKjv2H1O0OstT40Sf7pUMp/DySKlMo23Z8uKSqsHNrQJ1/mJ6KcgpP/yaM0cC
-	 2HdGNa3v4ttOg==
-From: Mark Brown <broonie@kernel.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>, phucduc.bui@gmail.com
-Cc: Liam Girdwood <lgirdwood@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Linus Walleij <linusw@kernel.org>, Bartosz Golaszewski <brgl@kernel.org>, 
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-gpio@vger.kernel.org
-In-Reply-To: <20260610102021.83273-1-phucduc.bui@gmail.com>
-References: <20260610102021.83273-1-phucduc.bui@gmail.com>
-Subject: Re: [PATCH 00/10] ASoC: mediatek: Use guard() for mutex & spin
- locks
-Message-Id: <178120798545.484538.11565286739109588330.b4-ty@b4>
-Date: Thu, 11 Jun 2026 20:59:45 +0100
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.16-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2577; i=broonie@kernel.org;
- h=from:subject:message-id; bh=s6eAXdoqlUtuLTZth4AInopuSR9AS4C4NIHo4pAOH0g=;
- b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqLIXY3qY4bPRZzGt04t1+88KFfah/WK8pl1Dii
- yKqa5Bte0aJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCaiyF2AAKCRAk1otyXVSH
- 0KzRB/9/lmKAq9WvQTjtXr2vcfs/RpkjmcKxB1gkRm+rO78MqATIRHFdBOlzCezkeK9Dmo+S2Ay
- 4ZIDE/MC2+d4ssKrXbyMz1rekMFO+njYDoU43qtDjrDDavijOkMhKkKo0pydBQw7x7L+0eR4+2u
- Bez+M4/iIcpOhN4YtmBOicPNspZ6q0HTToJOEOMIqfklZ1amGHSR5SRpZaPB0CxIuYGo7ENsbzd
- BUFnaoRCq90RJXIb27JQNQHUS4Rb/+2tjlAMEQJ0wYhW9nOhsazyJhuK1z8WD+JVMNCvooK4Y6S
- lBBqwLu4fLlE3XNIbXDyVc6bSglIbyHdOL9VABtfuxeeXKRe
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
+	id 1wYCDL-0000000Bpev-02tH
+	for linux-mediatek@lists.infradead.org;
+	Sat, 13 Jun 2026 00:27:08 +0000
+Received: by mail-pj1-x102a.google.com with SMTP id 98e67ed59e1d1-36d5fd50d20so1119235a91.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 12 Jun 2026 17:27:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1781310426; x=1781915226; darn=lists.infradead.org;
+        h=cc:to:subject:date:from:message-id:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=9jZZatEXd/JafvuiFH5stqy7hRhy8giY4fPvDzpd45o=;
+        b=WM7a0JNxXaE28nw/TPCdJyXnK2Ykcz7B8sDoppXzpbn/JDK9GjWOoaXrAt/efv5lhD
+         Vy5tVZGBejRbCqDNcBbK2A5AJryOn+91cC7gyb0grVj5oZjDb9mmibjFUJ/yBFsNg3XR
+         pNMsRTYetoTyEa9aLPmOlvayzkL6A2VnLvXhe9BsrEX47lzOvWm2Hs3oBFWfUd+bAb2N
+         LpHNnS0RTEi68kGn26XmMh0T4556l1KXXWj06x9KqxAaTB6WSnsPPfF7AVvBJltiLUKn
+         XlciNXw8LwWcZA9N67GO9dnMYzFr7/mkf9Z0FsTFWcReWufc+W5S0PmG2YUnb58dBzCJ
+         b+8g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1781310426; x=1781915226;
+        h=cc:to:subject:date:from:message-id:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=9jZZatEXd/JafvuiFH5stqy7hRhy8giY4fPvDzpd45o=;
+        b=p448lKnEKxcG2tnW9kGhb4dNy9Al6/gUL+zv2RV0MnXsrNzi1zcUGfk7dDzniaWP0q
+         3yOzmHZm0uaqQBLY9dU2/7/PJR0dZOKyYdqOwUDi8jC74E+aHQIbKT/shM19EFOmK6JP
+         f2BcJCvHbmE42CsBbwL+a5ay6+rqdfAW5TttbR09lHKHj/vHX3j9IZ/28eotjZ1XxKHf
+         0U/UvBfSG9dyiTyCFcSnaxt8oM8n0z9MW25LWsRyJFZ3Oi2wv02QGF/mwSyDFN9fjl5L
+         Aj6/xI72+ZdMYoeMH1FqHwO/k3OAUwIaZamAZzmk+72Po3f03WxKi/G4Z+J0E2DxXJqf
+         CxPg==
+X-Forwarded-Encrypted: i=1; AFNElJ/oq6N8Nz9pfTSQKQZfCo3o9d0aGlo/Xy0NuqFeFLrcOu4rD3Mf9/PtobKK3n/458WuqSbNPldbIK6X9jAfMA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwZMIOfR1SeHWL8vU1H+vLcJAqbhKivjc2EPMZlIY6IQZ3FhLvx
+	B/MQ3N7CFKC9hYUu09hb+FLnztKmj6jqOBxT31+HGWjP61iMjofahBSs
+X-Gm-Gg: Acq92OEtqV4jUMvpUh3Btx/SX63L4wIbHWG5+a1X9FDcagHmO0SId9DEB2ZJSt4jePm
+	Cxx81IwuhxoVxIHTS4nrkIKYmwPObv7xZTloLpheisnx3fH/+0ISc/KnAtTvrnyLKSbCMYoPciz
+	5z29KI7zvw+EJd29NBoJ2bsiXoQwAD6uhc9TUr8HX+SDdg2RW6uiiDJ3GJ6Va/JIcUp1upJKLcJ
+	i6PLA1kOolXrNF1yfW461IqqQ5ROfd8LOs97jN86FGl0kJSU2BlhQQ1VsHci30ksuVSNOvou1T8
+	ze/bXQ/s0f6JlEdYe3SyVugk+moO9SvGYboJ+8Uz9tVycXBWv3merjsQHS4mJxF7MrGsB6rPbU3
+	MYkUTylGR2ke1ux33ioPsapPc2AP6Z1Gdp1ZSOeYiy8SittKZ2H8mCPGiVzvT1DeFlJTrREYKtt
+	OIQfQPbCASxC7acQch/vEUMYzJ3hU=
+X-Received: by 2002:a17:90b:3d01:b0:377:23bb:9b88 with SMTP id 98e67ed59e1d1-37a033e024dmr5562386a91.12.1781310425834;
+        Fri, 12 Jun 2026 17:27:05 -0700 (PDT)
+Received: from [127.0.1.1] ([47.253.114.73])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-37a1eba8ea7sm3441412a91.1.2026.06.12.17.27.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 12 Jun 2026 17:27:05 -0700 (PDT)
+Message-ID: <6a2ca3d9.ad59c0a6.147df9.2a62@mx.google.com>
+From: "Wayen.Yan" <win847@gmail.com>
+Date: Sat, 13 Jun 2026 08:22:31 +0800
+Subject: [PATCH] net: airoha: Fix non-standard return value in
+ airoha_ppe_get_wdma_info()
+To: netdev@vger.kernel.org
+Cc: lorenzo@kernel.org, horms@kernel.org, pabeni@redhat.com, kuba@kernel.org, edumazet@google.com, andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260612_172707_047916_7F0CF9F5 
+X-CRM114-Status: GOOD (  10.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,62 +91,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 10 Jun 2026 17:20:11 +0700, phucduc.bui@gmail.com wrote:
-> ASoC: mediatek: Use guard() for mutex & spin locks
-> 
-> From: bui duc phuc <phucduc.bui@gmail.com>
-> 
-> Hi all,
-> 
-> This series converts mutex and spinlock handling in Mediatek ASoC drivers
-> to use guard() helpers.
-> 
-> [...]
+airoha_ppe_get_wdma_info() returns -1 when the last path in the
+forwarding path stack is not of type DEV_PATH_MTK_WDMA. This is not
+a standard kernel error code. Replace it with -EINVAL since the
+input path type is invalid from the caller's perspective.
 
-Applied to
+Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 SoC")
+Signed-off-by: Wayen.Yan <win847@gmail.com>
+---
+ drivers/net/ethernet/airoha/airoha_ppe.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.2
+diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
+index 5c9dff6..7260177 100644
+--- a/drivers/net/ethernet/airoha/airoha_ppe.c
++++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+@@ -264,7 +264,7 @@ static int airoha_ppe_get_wdma_info(struct net_device *dev, const u8 *addr,
+ 
+ 	path = &stack.path[stack.num_paths - 1];
+ 	if (path->type != DEV_PATH_MTK_WDMA)
+-		return -1;
++		return -EINVAL;
+ 
+ 	info->idx = path->mtk_wdma.wdma_idx;
+ 	info->bss = path->mtk_wdma.bss;
+-- 
+2.51.0
 
-Thanks!
-
-[01/10] ASoC: mediatek: common: mtk-afe-fe-dai: Use guard() for mutex locks
-        https://git.kernel.org/broonie/sound/c/9475859429e4
-[02/10] ASoC: mediatek: common: mtk-btcvsd: Use guard() for spin locks
-        https://git.kernel.org/broonie/sound/c/c69724b714c5
-[03/10] ASoC: mediatek: mt8186: mt8186-afe-gpio: Use guard() for mutex locks
-        https://git.kernel.org/broonie/sound/c/1e9f4587c873
-[04/10] ASoC: mediatek: mt8188: mt8188-afe-clk: Use guard() for spin locks
-        https://git.kernel.org/broonie/sound/c/cc29c31e87fc
-[05/10] ASoC: mediatek: mt8192: mt8192-afe-gpio: Use guard() for mutex locks
-        https://git.kernel.org/broonie/sound/c/14edf39daefb
-[06/10] ASoC: mediatek: mt8195: mt8195-afe-clk: Use guard() for spin locks
-        https://git.kernel.org/broonie/sound/c/a9f8d09ab109
-[07/10] ASoC: mediatek: mt8195: mt8195-dai-etdm: Use guard() for spin locks
-        https://git.kernel.org/broonie/sound/c/a57e39c7ff03
-[08/10] ASoC: mediatek: mt8195: mt8365-afe-clk: Use guard() for mutex & spin locks
-        https://git.kernel.org/broonie/sound/c/befae7299ab4
-[09/10] ASoC: mediatek: mt8195: mt8365-dai-adda: Use guard() for spin locks
-        https://git.kernel.org/broonie/sound/c/754c2fbf8bbc
-[10/10] ASoC: mediatek: mt8195: mt8365-dai-i2s: Use guard() for spin locks
-        https://git.kernel.org/broonie/sound/c/62bde3771c3b
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
 
 
