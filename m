@@ -4,59 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C30D8CD98D8
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jun 2026 17:40:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 559B9CD98C5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jun 2026 22:10:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
 	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KPuwksocBMVjZiBCm9XmF4wYAizizjpxFEw/IROWOF4=; b=4PAh3UrggKpNz3S1OINgjP+VUZ
-	vupioR+X9eIKEffwBdUSZHoIlEhw+HNlQ3V0nSj/nlkcWfU11O2ABiH6FpJ8VUTz+0o56ozy8Lnvg
-	nsdGPygFdk3jkj/vBpq9wkD0DgULNY9lHowA5+gWYVyyp8WGtRMYmB18h1hUucFvA0cnSkZ26fTr7
-	F63G4dH+Zz1AhXLQaK9KGFd15vvhKHJCUFdSum9rteH813/I57PHlb5lJTG8BwJQrysNy/csWZdKj
-	n9Cllu7nqmiWI4qdBPZPBfXj0BRRtnuo2TejT3cRK46wYrrkpXqS6WNbbQQVVe/6R8LYDEmdVbeK3
-	3LxvagMA==;
+	bh=bgVCS3SJJ5arXhx+G4WvikFQP68N1RBTeC3H3wIslN0=; b=oEKWnrQII6PSZoInBxuZzUzCLh
+	Q1rkLv1DHp0wgTABjDYZAi02WWfKk37nAqwqBZBVY5fTN3FulsXg2f4Q+Kov/2KIPcYd3kVHsN/7q
+	deTUuwTfuc7QSgRquZ2Vad6FymHj18YZcVlC1P4zs5wbS4lI05QTHp6kXsZjAucKVOQZj0GHfL2ja
+	E9aGMeRPY+JOnTdvFBjwnlV/KcN+VgTuLIL3ujrwIIZTeUDd9RaB4aIHpzCPkv4/rT7fr8gMjomv3
+	Nb+BskszPyNBZ320KWaxiGedH1DSxpiol+jPu7+FzOGGYqtgDPaDjh/SccoaWXaPNJDEYmsIMxs8N
+	axtjruIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYSL6-0000000CRzg-0Fmk;
-	Sat, 13 Jun 2026 17:40:12 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wYWYa-0000000CZIe-2rvz;
+	Sat, 13 Jun 2026 22:10:24 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYSL5-0000000CRzL-0IeB;
-	Sat, 13 Jun 2026 17:40:11 +0000
+	id 1wYWYY-0000000CZIK-2vtu;
+	Sat, 13 Jun 2026 22:10:22 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7F8EB4398B;
-	Sat, 13 Jun 2026 17:40:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 62F3B1F000E9;
-	Sat, 13 Jun 2026 17:40:10 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id C59E66008A;
+	Sat, 13 Jun 2026 22:10:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B2691F000E9;
+	Sat, 13 Jun 2026 22:10:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781372410;
-	bh=KPuwksocBMVjZiBCm9XmF4wYAizizjpxFEw/IROWOF4=;
+	s=k20260515; t=1781388621;
+	bh=bgVCS3SJJ5arXhx+G4WvikFQP68N1RBTeC3H3wIslN0=;
 	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=iNgSVq6LBZLSSfUuHVqPXNtVGtT7sE7jPfHpK/CQ7/s/rVRv2H8rmUv3KB+8KpSNo
-	 eiWx14T/FcXWeQJz6JxGYfljkWmbNQwrdjIRvfEAcZjYgaOahyU/JnibEU27EkEnz1
-	 TaYllza2zkN7vD/mIg0nUM2d5VDlXHine+wyJZe6QKKbC0l3pPEKDQkJ7ceRY3AclB
-	 E+EfZvkgHE2jvJHBRHLos64Vgfx7J2f/Mx2yZMqh5YKFV2qES5bzrpUlbxo2CunTZI
-	 U9ilaclzU8NPuW5i7zboZSnoleamyA/ORk60jxg5y7uOw4KfAD1Nj2IResMKHTg86b
-	 zhiidw0jlw5qw==
+	b=Gs/4FErnreRzpuL01AFQH+ius9Cn6faAtRLuD5AfErK+ML800f00Cvm+NHbop7sM9
+	 oS0X0cxpy223L8PXekBf8vjlxPQrqoeT8zZYzDU6XPgroFfoMNSi1pXSRxDoj245bJ
+	 lLqkEfAFtHr823v13TYFwB5Wa4qDm28iLfbxOPvLdI9mNN3nA5VCWRPKgCBb6hV2Pj
+	 WmiD/t+oJqAHWPgGEj7wNGxj1PY1NDKY7rEkQw65vTrgoWRfWmiAhJE1xzTI43wKAq
+	 paO9WOFuwvDX11xFNx7e/vhI4ByJ2KKbqs8z0fXenBiJ6QkPKlH7y4f6cLGlj7V7v4
+	 ZmXVmXhq8BLtQ==
 Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id D09833A40FD9;
-	Sat, 13 Jun 2026 17:40:07 +0000 (UTC)
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id D09D83A54A32;
+	Sat, 13 Jun 2026 22:10:18 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v2] net: airoha: Fix error handling in
- airoha_ppe_flush_sram_entries()
+Subject: Re: [PATCH net-next] net: airoha: better handle MIBs for GDM ports
+ with multiple devs attached
 From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <178137240639.1545867.1534966931117017277.git-patchwork-notify@kernel.org>
-Date: Sat, 13 Jun 2026 17:40:06 +0000
-References: <6a2bd37a.4034e349.1b41bb.1caf@mx.google.com>
-In-Reply-To: <6a2bd37a.4034e349.1b41bb.1caf@mx.google.com>
-To: Wayen.Yan <win847@gmail.com>
-Cc: netdev@vger.kernel.org, lorenzo@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Message-Id: <178138861738.1607522.1344030829934869681.git-patchwork-notify@kernel.org>
+Date: Sat, 13 Jun 2026 22:10:17 +0000
+References: <20260611-airoha-eth-multi-serdes-stats-v1-1-42442ae42064@kernel.org>
+In-Reply-To: <20260611-airoha-eth-multi-serdes-stats-v1-1-42442ae42064@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+ ansuelsmth@gmail.com
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,22 +75,31 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hello:
 
-This patch was applied to netdev/net.git (main)
+This patch was applied to netdev/net-next.git (main)
 by Jakub Kicinski <kuba@kernel.org>:
 
-On Fri, 12 Jun 2026 17:37:00 +0800 you wrote:
-> In airoha_ppe_flush_sram_entries(), the outer "err" variable was never
-> updated when the inner loop variable shadowed it, causing the function
-> to always return 0 even when airoha_ppe_foe_commit_sram_entry() fails.
-> 
-> Drop the outer "err" variable and return directly on error, propagating
-> the error code from airoha_ppe_foe_commit_sram_entry() correctly.
+On Thu, 11 Jun 2026 12:43:00 +0200 you wrote:
+> In the context of a GDM port that can have multiple net_devices attached
+> (GDM3 and GDM4), the HW counters (MIBs) are global for the GDM port.
+> This cause duplicated stats reported to the kernel for the related
+> net_device.
+> The SoC supports a split MIB feature where each counter is tracked based
+> on the relevant HW channel (NBQ) to account for this scenario and
+> provide a way to select the related counter on accessing the MIB
+> registers.
+> Enable this feature for GDM3 and GDM4 and configure the relevant HW
+> channel before updating the HW stats to report correct HW counter to the
+> kernel for the related interface.
+> Move the stats struct from port to dev since HW counter are now specific
+> to the network device instead of the GDM port. Refactor
+> airoha_update_hw_stats() to take airoha_eth and airoha_gdm_port
+> parameters since the function operates on the entire port.
 > 
 > [...]
 
 Here is the summary with links:
-  - [v2] net: airoha: Fix error handling in airoha_ppe_flush_sram_entries()
-    https://git.kernel.org/netdev/net/c/d7d81b003013
+  - [net-next] net: airoha: better handle MIBs for GDM ports with multiple devs attached
+    https://git.kernel.org/netdev/net-next/c/8f4695fb67b2
 
 You are awesome, thank you!
 -- 
