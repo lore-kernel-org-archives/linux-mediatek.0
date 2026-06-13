@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1C15CD98D2
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jun 2026 09:39:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DA24CD8CA8
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jun 2026 10:04:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c/E5Fca0jxyWWWjjsZ9luEgmIKmaLIRLdokARXgYoFI=; b=jw4r5hc9DSGx9gMsuweudXUhTH
-	pafHhEDzo7C41b3232cQ6ZUAFsfmPTPMrf/6xDvLU4rNHMiefKOvzORYmrxZ9Py5rNcPctvlVglhe
-	b/foL0eNZGE+I7vgb7ueYY4yO6f8D8DkhL4+zn+0a8baQrHnmb8b+oWb7ZthpIryOjUjwJ9eA2sP7
-	QB0WNx2p2Qi2ibvaFeajnger3kFRs03GUQujNTyDa9ylnYyshsiSYSR5JL3Q9oU7xiAI1HIEP7Hnv
-	V6yEKzClV9d7/JgSg9T1kvvZyrPfP0OWf71EIuYrPIQfNBQrSSBbOWFrbl3TM9+sC2xvB+sRPZp3D
-	omA4gYYA==;
+	bh=AyPgplNXCBS/dtReoSHAFEqQvmD72NfRUURLDpSPEOI=; b=fnsafFbrUmyBMbdDEWEoYWI/Z6
+	FGcMdpS+DSBiPH4xbrsQyYsoCllK1zl2/qZ9v6Af9a+N5i+IOzOD+mrNgkAui7VJcmnPckC2k/5EC
+	40jQmCsMnt79KGMyE70sbLPMQesuXUBd3vetmzKLHyrMOEdemcwJzc6Jrzb5rl75U2CxJZXXBRwaj
+	o1c25alYcEiWaFRa/xRYZ2K/8Nlaczf+PdMy5a473JhmmiEPVQbadk4P0O/3yZsxyRH7eIRPdO0v+
+	88DRJxopux0OYshDCMwAZU/WW/t/7ACpO/n03BUAPOjE1+RjFgEMteIHXTPbGaTkFzJagC8TknbEd
+	2RP3j20Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYKqI-0000000C825-0vzw;
-	Sat, 13 Jun 2026 09:39:54 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wYLDy-0000000CA3a-0Yk6;
+	Sat, 13 Jun 2026 10:04:22 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYKqE-0000000C80c-3yhR;
-	Sat, 13 Jun 2026 09:39:50 +0000
+	id 1wYLDx-0000000CA3J-12hU;
+	Sat, 13 Jun 2026 10:04:21 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 36D03401DF;
-	Sat, 13 Jun 2026 09:39:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8D2DF1F000E9;
-	Sat, 13 Jun 2026 09:39:49 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id AE01E60018;
+	Sat, 13 Jun 2026 10:04:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D88C81F000E9;
+	Sat, 13 Jun 2026 10:04:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781343590;
-	bh=c/E5Fca0jxyWWWjjsZ9luEgmIKmaLIRLdokARXgYoFI=;
+	s=k20260515; t=1781345060;
+	bh=AyPgplNXCBS/dtReoSHAFEqQvmD72NfRUURLDpSPEOI=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=dCLmM7a9xXuV2+9irYXtJAzq5FYBSGnBPVnzTGaBOLjBoVpjF1gZo46HM5ZJQDYu+
-	 kiaOoXIGCi93RdmNGcJwo4dcGma51C82Q/QcZlglwJiQo+Y1h0oUxVJz+hlz604bXR
-	 Ly8DAhHZmynDHEHrNL2qN1IkLdANsR0sqzcfh7J6EMNwQeMkPk2EaD1JO+hVn8VqR5
-	 jxJ2xvy+I6ore/mBBTuLoPjr0qfXx0ZNA+4LIIDB8MFiFeioFu5TnFCpew99yJ3FFB
-	 U/7g7qTqpXRM/sKK9ejx5lkYDyHXA3dRgyl49A/fXkyM3MGWoiAV0bbuSpaQMeYMZL
-	 J73wL+ZOxnmWg==
-Date: Sat, 13 Jun 2026 11:39:46 +0200
+	b=lFEmyH7Gjwzi1tLTY2WewA95xMpfSwXpoSYyH4z1mPK1SkEwcd/OBdfJPeNBkVFTv
+	 Vqb2jYtWq4XhNyRLggNHzQ8q+I0PRzoPwBOnACd7Ssbn0s3b9bEccY6z6rGIGA52Z6
+	 hNiF9Ocf2w6s4HUlrjxvzWRGtQXBSGA3hOH0faQ7wmWyQCXtqB9nLd5nPzur1Ch/nP
+	 ycw87bxVHNogVDx7XoPK+OuMI92tZVG6XO9u0P8U9dizKIp0e4y6SsiQRXaLGaMFOO
+	 ij8/klMNZEsSmcXzqCBHEwQenryVCk5/Cg2H1xSDnZou+5Ej1jLdj7YaCf/fb15+Dt
+	 b8H2A3ZvKdNjA==
+Date: Sat, 13 Jun 2026 12:04:16 +0200
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
@@ -53,12 +53,12 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	Alexander Lobakin <aleksander.lobakin@intel.com>
 Subject: Re: [PATCH net-next v5 3/3] net: airoha: defer GDM3/GDM4 WAN mode
  and GDM2 loopback to QoS offload
-Message-ID: <ai0lYuZeduHZV_Ts@lore-rh-laptop>
+Message-ID: <ai0rIBA9lmEWbvzl@lore-rh-laptop>
 References: <20260611-airoha-ethtool-priv_flags-v5-0-c11de08486d1@kernel.org>
  <20260611-airoha-ethtool-priv_flags-v5-3-c11de08486d1@kernel.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="QJnbX3YQODwBY7ap"
+	protocol="application/pgp-signature"; boundary="D4O7rKOkeJ+Rx7Jv"
 Content-Disposition: inline
 In-Reply-To: <20260611-airoha-ethtool-priv_flags-v5-3-c11de08486d1@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -76,122 +76,17 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---QJnbX3YQODwBY7ap
+--D4O7rKOkeJ+Rx7Jv
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
 Commenting on sashiko's report:
-https://sashiko.dev/#/patchset/20260611-airoha-ethtool-priv_flags-v5-0-c11d=
-e08486d1%40kernel.org
-
-
-[...]
->  static void airoha_dev_set_qdma(struct airoha_gdm_dev *dev)
->  {
->  	struct net_device *netdev =3D netdev_from_priv(dev);
-> +	struct airoha_qdma *cur_qdma, *qdma;
->  	struct airoha_eth *eth =3D dev->eth;
->  	int ppe_id;
-> =20
->  	/* QDMA0 is used for lan ports while QDMA1 is used for WAN ports */
-> -	dev->qdma =3D &eth->qdma[!airoha_is_lan_gdm_dev(dev)];
-> -	netdev->irq =3D dev->qdma->irq_banks[0].irq;
-> +	qdma =3D &eth->qdma[!airoha_is_lan_gdm_dev(dev)];
-> +	cur_qdma =3D airoha_qdma_deref(dev);
-> +	if (netif_running(netdev))
-> +		airoha_qdma_start(qdma);
-> +
-> +	rcu_assign_pointer(dev->qdma, qdma);
-> +	netdev->irq =3D qdma->irq_banks[0].irq;
-> =20
->  	ppe_id =3D !airoha_is_lan_gdm_dev(dev) && airoha_ppe_is_enabled(eth, 1);
->  	airoha_ppe_set_cpu_port(dev, ppe_id, airoha_get_fe_port(dev));
-> +
-> +	if (!cur_qdma)
-> +		return;
-> +
-> +	synchronize_rcu();
-> +	netif_tx_wake_all_queues(netdev);
-> +
-> +	if (netif_running(netdev))
-> +		airoha_qdma_stop(cur_qdma);
->  }
-
-- When we switch the QDMA of a running device, airoha_qdma_stop() might
-  free pending SKBs via dev_kfree_skb_any() in airoha_qdma_cleanup_tx_queue=
-().
-  Are these SKBs freed without calling netdev_tx_completed_queue() to
-  update Byte Queue Limits (BQL)?
-  Since the device is running, could the BQL counters leak and cause the
-  TX queue to permanently hang once the limit is reached?
-
-  - As pointed out in path 1/3, this is a pre-existing issue since we have =
-the
-    same problem running airoha_dev_stop() for a QDMA single-user device
-    (airoha_qdma_cleanup_tx_queue() can run before the pending TX NAPI).
-    I will fix the problem with a dedicated patch.
-
-> =20
->  static int airoha_dev_init(struct net_device *netdev)
-> @@ -2180,9 +2244,9 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *=
-skb,
->  				   struct net_device *netdev)
->  {
->  	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
-> -	struct airoha_qdma *qdma =3D dev->qdma;
->  	u32 nr_frags, tag, msg0, msg1, len;
->  	struct airoha_queue_entry *e;
-> +	struct airoha_qdma *qdma;
->  	struct netdev_queue *txq;
-
-- This is a pre-existing issue, but does the TX path modify the TCP header
-  directly without ensuring it is in the linear region?
-
-  - This issue (not introduced by this patch) has been already reported in =
-the
-    past and we already agreed that it can't occur.
-
-
->  	struct airoha_queue *q;
->  	LIST_HEAD(tx_list);
-> @@ -2191,6 +2255,8 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *=
-skb,
->  	u16 index;
->  	u8 fport;
-> =20
+https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20260611-airoha-ethtool=
+-priv_flags-v5-0-c11de08486d1%40kernel.org
 
 [...]
 
-> @@ -2793,11 +2869,12 @@ static int airoha_tc_htb_alloc_leaf_queue(struct =
-net_device *netdev,
->  	u32 channel =3D TC_H_MIN(opt->classid) % AIROHA_NUM_QOS_CHANNELS;
->  	int err, num_tx_queues =3D netdev->real_num_tx_queues;
->  	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
-> -	struct airoha_qdma *qdma =3D dev->qdma;
-> +	struct airoha_qdma *qdma;
-> =20
->  	/* Here we need to check the requested QDMA channel is not already
->  	 * in use by another net_device running on the same QDMA block.
->  	 */
-> +	qdma =3D airoha_qdma_deref(dev);
-
-- This is a pre-existing issue, but does modifying real_num_tx_queues
-  as a dense counter cause problems when QoS leaf queues are allocated
-  with sparse IDs?
-
-  - I have already a fix for this issue I need to post.
-
->  	if (test_and_set_bit(channel, qdma->qos_channel_map)) {
->  		NL_SET_ERR_MSG_MOD(opt->extack,
->  				   "qdma qos channel already in use");
-> @@ -2831,7 +2908,7 @@ static int airoha_qdma_set_rx_meter(struct airoha_g=
-dm_dev *dev,
->  				    u32 rate, u32 bucket_size,
-
-[...]
-
-> +
 > +static int airoha_enable_qos_for_gdm34(struct net_device *netdev,
 > +				       struct netlink_ext_ack *extack)
 > +{
@@ -256,30 +151,28 @@ dm_dev *dev,
 > +	return err;
 > +}
 
-- If airoha_set_macaddr() fails and we jump to error_disable_loopback,
-  the original wan_dev was preemptively demoted to LAN mode, but the error
-  path doesn't restore it.
-  Since the requesting device is also rolled back to LAN, does this leave
-  the system entirely without a WAN device? Would this permanently break
-  routing on the original WAN interface until manually reconfigured?
+- The error_disable_loopback / error_disable_wan / error_unlock paths only
+  revert the requesting dev. The earlier airoha_disable_qos_for_gdm34(wan_d=
+ev)
+  demotion is never undone.
+  Could a TC_HTB_CREATE that returns an error to userspace then leave the
+  system with no WAN GDM3/GDM4 device, with the previously-working sibling
+  silently flipped to LAN, its QDMA migrated to QDMA0, GDM2 loopback torn
+  down, and its forwarding rewritten to PPE1?
+  Should the failure paths re-promote wan_dev (re-call airoha_enable_qos_fo=
+r_gdm34
+  or an equivalent restore helper on it) before unlocking and returning?
 
-  - If airoha_enable_qos_for_gdm34() fails, the system will continue routing
-    packets and, even if we re-promote the original interface to WAN, the u=
-ser
-    will need to re-apply the same configuration to offload the intended
-    Qdisc on the new interface.
-    Moreover, please note this corner case occurs just if the original
-    interface has no Qdisc already configured on it. In the common case, the
-    user has previously removed the configured Qdisc on the original interf=
-ace
-    and so, the roll-back process will still be partial.
-    In the end, airoha_set_macaddr() can fail just if the device is not
-    well-configured.
-    For the reasons above, I guess it does not worth to reset the original
-    interface to WAN if airoha_set_macaddr() fails.
+  - This is the same item reported by sashiko-gemini in [0]. In my previous
+    reply I have explained why I do not think it worths to re-promote the
+    original interface in case of failure in airoha_enable_qos_for_gdm34().
 
 Regards,
 Lorenzo
+
+
+[0] https://sashiko.dev/#/patchset/20260611-airoha-ethtool-priv_flags-v5-0-=
+c11de08486d1%40kernel.org
 
 > +
 >  static int airoha_tc_htb_destroy(struct net_device *netdev)
@@ -423,16 +316,16 @@ rnet/airoha/airoha_regs.h
 > 2.54.0
 >=20
 
---QJnbX3YQODwBY7ap
+--D4O7rKOkeJ+Rx7Jv
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCai0lXgAKCRA6cBh0uS2t
-rIqDAP95n/73PDuBIgAeHKOPxVIFXuPzIB8KQfH9F4my2ifE+QD+NcqVpFgcSDjp
-tmBsD6K8VzxtjNJLmY3Rn+YaGxoT9gU=
-=RAW6
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCai0rHgAKCRA6cBh0uS2t
+rIUoAP4pZrm2UQU8qtzgsF0pQQuPaoB3Q5R0siU/rjRMb5PkgwEAmSLKBZg1XeBq
+C1qnxWUBxlg29kh8vqeqgW8n2q2DZAY=
+=ei15
 -----END PGP SIGNATURE-----
 
---QJnbX3YQODwBY7ap--
+--D4O7rKOkeJ+Rx7Jv--
 
