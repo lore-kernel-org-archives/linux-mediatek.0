@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2108CD98CF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jun 2026 23:53:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AC5CCD98CF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Jun 2026 00:15:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Date:From:
 	Message-ID:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=zK4mML80EwVGL6lWczcuu1KIJZUvXPEYaU6eVFtltBg=; b=VehSfuZXzvFGvN+ZL2kiSbQ/oN
-	2IaQKYONoVUyODS/QJpdRKct+GDPqTik/3tCpitnyRRhhf5EtJaKigdpSxjwQz23Gc1aH/Vj7Jtk1
-	y3+GS4RnP2/bN/iVZNWcRfHnwc/5OpcvytLrQndHSjge1b2YGcQkGQQw80DzQAdIv5ct1qjUEAepE
-	WJLNnGmpsS4uiOw2pXLqZ6zz9WSQ6FMrqD+KlzlysX0XHtwTcbd1RFIftQGSgxa9waizw4TEdZAJn
-	sizqySW4KXVxcLTkK4rB6XRtzIhRYwaSFpj+Ns5rUgGQ6+HZLK+pGofVZvkIfB8FUrrPh8zTCCFgp
-	YXq5LDzg==;
+	bh=0HX3ZYLkpoP4OKdcJqiss02RhOC7aeNFTtkhTsIn3N8=; b=CPdn8+9GMDVPiTQcp1rPmRLA/Y
+	zNUIetqeWSr/Si9MuWUxTWrzgmX+LRKCOsZ2MAyv0iAsB9Zne/YZxkWW8Kvh6DvlrVGt0oODee6Ax
+	hukavl9Q1KuITSsDjTb+6p/7ozvepgR0YM23mycrqe5bn5E6XkTUXC2Pfa+CHo24m91XuKp20Wmqe
+	IWDBDEftCRdTM3efepvYB/yEWMaZzWMxqrnoA1mEpB8xZg1dICU4sDyUQHlLL3Mc/+LBoAsaN+cEs
+	4q/8p5ZwLD+xLqolYp0t9gvYWjHOCRpYK5nN/fBs6iH9THWDS15PitT17sJMeMR7liVmtoADMLzBl
+	0DtXvaAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYY9w-0000000CcnK-0Edo;
-	Sat, 13 Jun 2026 23:53:04 +0000
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+	id 1wYYVV-0000000CdZb-1Y5z;
+	Sun, 14 Jun 2026 00:15:21 +0000
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYY9r-0000000Ccm1-0xvo
+	id 1wYYVT-0000000CdZ3-38iq
 	for linux-mediatek@lists.infradead.org;
-	Sat, 13 Jun 2026 23:53:03 +0000
-Received: by mail-pj1-x1034.google.com with SMTP id 98e67ed59e1d1-36bcbd7821fso1058099a91.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 13 Jun 2026 16:52:58 -0700 (PDT)
+	Sun, 14 Jun 2026 00:15:20 +0000
+Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-2c31212104cso8938225ad.2
+        for <linux-mediatek@lists.infradead.org>; Sat, 13 Jun 2026 17:15:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781394778; x=1781999578; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1781396119; x=1782000919; darn=lists.infradead.org;
         h=cc:to:subject:date:from:message-id:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=zK4mML80EwVGL6lWczcuu1KIJZUvXPEYaU6eVFtltBg=;
-        b=cEFgm8mVrAFOJyXorsWUtKbueW4GnFk9RajwfHFCcWBuk2KYFptGrp0OSGqG+vLFgo
-         +KStZMnYMWJijljUj6ZKMR9fbgTkThBAN7efg32tGGfAh14n0z1eOrd6RP0I6+NVccBN
-         yok2FBx3hBzsTtYFw/HNKTnE+JYY1wYNrkfvU5VZGxvZSpSptPZuqqH+L8e/SMPWQcdp
-         BvrlUKK6YfEYdqPbtWWN3L2hiuCCX8I9kI0cHw7Ez4eNBni7pVXIPFE2OXKVIvmkTo+h
-         bB9Cobu598yaB4kxu5RFSMsNTnTgMdNLoqNmLfj4XlBMLD9VP5QseUrSxAZVtSK1PsZ0
-         vWdw==
+        bh=0HX3ZYLkpoP4OKdcJqiss02RhOC7aeNFTtkhTsIn3N8=;
+        b=EGzu4gmQAFnNFJCfCW0s5kXGnkWmh41YMQm+enuYq5ZOw8MLuJ7VR/qNmHRcR7pkYP
+         odPF49LofQ0Hy2373npK9Se9x34CH3xYexoclPlgaCGKK1DqDQP0jK2GerFNQiA+t9rH
+         SvYeWY5RPc1XOt6jBPC2iAFg6NdLVbEYqXyq8qIjJSlhrKer8wMSEVXaOwXaZUu+mU5d
+         CnhBDC79zczhin1eRZF6aax5LFh3tYuDNyZ1rApmng8IQ1rDwgndB/pcV4BGTVgv6biD
+         PRJPkuGu3hMlv2iVWd6NhsdGRWspPULmUYWiNIRh6HUiQub6ObLamUMsFlBSsjCbMjZs
+         pGNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781394778; x=1781999578;
+        d=1e100.net; s=20251104; t=1781396119; x=1782000919;
         h=cc:to:subject:date:from:message-id:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=zK4mML80EwVGL6lWczcuu1KIJZUvXPEYaU6eVFtltBg=;
-        b=Bm6vaO8LAIqG/0evtC2hSE1FQACnysU/3q9KXlXYzIgmjs5CZ/15fSaZQvw1/N6X87
-         zMdlf6GY5YLYYlT+TxYHohCxk6gO+atZJYQvlKRYkf5BGAEEaybVGVZt6lTAW8Di5yYk
-         tTtNmpkGsVv3JwmM/5xK7glSvvlidx1K1YXLm9EVRnM/XQKTcDAVEeH5oZ6Yy4jDpkUb
-         bNSLZ2NWhwflyENlPHygi1TiA8T6jGmskwpZ8dIM+vk78mz8fQUMtfbZIIVcn6i/sRdh
-         pjTUGuMARNrvCUl3z9C4mMU56D+KJG27Ve9B/ZmyUGympCSEFJ+/rgMwoD6gtSrMZ38z
-         xVhQ==
-X-Forwarded-Encrypted: i=1; AFNElJ9ZJTIgX4U1TPLju6hggSgyWf907ognzl+dSTKKODTMoMeMw2SKYz8HPvmuWt0aKFLZU25sDZye8YZwYoFzpw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywsp8COw125Uq+nh7LekAbiO3dXm1M1SKADeK8rl9xc50ckTB8w
-	DuUZSzzlYL097M8p0vDFsCpzgddEjipfs+GdlMnsF5/i85J2a1DDdcKU
-X-Gm-Gg: Acq92OEV276Lw6b0LCozwQrFqLgpzo989qEWrmsGx7SCGZUZrt4mCpaC8u1iMzIYtV4
-	2orsRkcRlwT5rpxvJdxk6I4x6DBt4Y1QFzBoj7aQ7ZuDPCIMTSZYLM2baoTKSU9OvPDelaBI2n0
-	/Fs6a6pQA0qhDzVE3w/MJpy8BJhTf25DaZO7i0KLgpwNr73EHNoVchwnTKmdmzX4jW8HQudkSRF
-	ugneArLZPMdZSY+tjnonndUOyxioHuZlR1lcddYqjX5m6QUSlAXM/pwhZLiuVfW2qKiv9RTKgdZ
-	L4kNXph1b4cgwfH3vPYTTCR0WPJsuTKoOMQ1098axke+b4OyhqXKZ9pli71Q1Qu5ySo0MnEZmZo
-	EZtgvXnRP7ggsBHVwz21oPbLW6VhdRBuFK2FPsQ3YonoDyj8+H+8LHCHpq3WKCoAwsBUO8p/bTq
-	a65/J/+8wozjv+6Qyd
-X-Received: by 2002:a17:902:da2d:b0:2c4:d55:eb88 with SMTP id d9443c01a7336-2c410cd169dmr91771305ad.4.1781394778226;
-        Sat, 13 Jun 2026 16:52:58 -0700 (PDT)
+        bh=0HX3ZYLkpoP4OKdcJqiss02RhOC7aeNFTtkhTsIn3N8=;
+        b=mhjJBxNvnjXL5vRGiVOz9kWJB3WwDbqvg/Z32F66Y0B+bgh8YbnV507ZkOlB+MRL2C
+         g6OZOU0C94N7WT5q73Rs/D98ilBS7MqJP6QZD6ORlseRSp0k1TwhT7fmQ2f0Haz5Kg6s
+         w1QdIu/WSKE47kwYrbJJuM66JfHr7svurK4iDuXnaEWHv8xaIZWC3OToYOGc4dBltqZm
+         pSenVPmjNNmw22xBjq2/zkXyun+jxqqj/pIRSkBN1fOfZVJPz+rSXsPMrf/RxBTZLRHe
+         qZqmpC57ZmpltXBM/ZDPCPtOEBfwQC7L3sNrmN2U16LYxbxjgqMQwEDb6mu5lXk66W+H
+         f73Q==
+X-Forwarded-Encrypted: i=1; AFNElJ/qWCbP+Bgeqw6I4hXRBcLCFJh4uSaXmrsRgcNqZRjxd3HT3BC1oNFUoomNXjz0nHw7lQYZTVnROwHTDJk2Cw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyFc8Bhdmza+EWXHhfX9Wm85BqZE1536vG6IV/p2dkQnCRYt8SO
+	eVKQivhbIq43JVsnLdohrOIrNBYoC7sqk47ia0L5oGJNqWYcuqhNj9K/
+X-Gm-Gg: Acq92OFs8xwdeSjF/AlEGxLqZmOlAB6jvSElnskQHboAeQdmvFB0GF+/1Owoh8OCPVC
+	GO92DMx565yXT72erf+EB6h6PEDxfVsdkTiLvJQeCuTf69+1NybzNTlXSGqLCwFU9tn3AMylOZ1
+	dgI2kjsdprNJaGDjrt2i8XTrAZknlh6JABbnTwJc1LgVhcRMQwY5IuCOUF+EvIWSj3OB6G96yPH
+	aN7XJ8BQSmCpOosd6sg+0q00I+S1mXonnxQaBjcRKPVJOu8ZYLhKsgjjgphjqJxvKyTTLFfFC+y
+	yNSeE1mn6lpvhlpRS9E282h5haVk0vi9NlsU7HhyUKDXQXd9TIKkm/pLqzVPjNiY6OyW080wNZY
+	BiQyYVMKkcGo9tl6zOCM8fn1Ccdsqmp4Z9jX6GKUnC8o80X1NMXiM7g+b1tE4jAE5noWfSPdjUF
+	04yEIn77R1qk5Uwk1S
+X-Received: by 2002:a17:902:f610:b0:2c1:88a1:983c with SMTP id d9443c01a7336-2c6642a7bafmr56205255ad.28.1781396119131;
+        Sat, 13 Jun 2026 17:15:19 -0700 (PDT)
 Received: from [127.0.1.1] ([47.253.114.73])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2c4328a4c1fsm58185565ad.53.2026.06.13.16.52.53
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2c4330782b2sm63552385ad.67.2026.06.13.17.15.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 13 Jun 2026 16:52:57 -0700 (PDT)
-Message-ID: <6a2ded59.63d39acb.391892.7632@mx.google.com>
+        Sat, 13 Jun 2026 17:15:18 -0700 (PDT)
+Message-ID: <6a2df296.6b2684af.263065.8200@mx.google.com>
 From: "Wayen.Yan" <win847@gmail.com>
-Date: Sun, 14 Jun 2026 07:52:39 +0800
-Subject: [PATCH] net: airoha: Fix MODULE_LICENSE to match SPDX GPL-2.0-only
- identifier
-To: netdev@vger.kernel.org
-Cc: lorenzo@kernel.org, horms@kernel.org, pabeni@redhat.com, kuba@kernel.org, edumazet@google.com, andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Date: Sun, 14 Jun 2026 08:14:11 +0800
+Subject: [PATCH] thermal/drivers/airoha: Fix low trip clamp using wrong
+ variable
+To: linux-pm@vger.kernel.org
+Cc: Rafael J. Wysocki <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@kernel.org>, Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>, Christian Marangi <ansuelsmth@gmail.com>, Lorenzo Bianconi <lorenzo@kernel.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260613_165259_272582_2DCDCF18 
-X-CRM114-Status: UNSURE (   9.51  )
+X-CRM114-CacheID: sfid-20260613_171519_811477_138562E5 
+X-CRM114-Status: UNSURE (   9.61  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,48 +92,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Both airoha_eth.c and airoha_npu.c declare SPDX-License-Identifier:
-GPL-2.0-only but use MODULE_LICENSE("GPL"), which the kernel module
-loader interprets as GPL-2.0+ (any GPL version). This mismatch causes
-license compliance tools (FOSSology, ScanCode, etc.) to misidentify
-the effective license as more permissive than intended.
+In airoha_thermal_set_trips(), the low trip validation incorrectly
+clamps 'high' instead of 'low':
 
-Replace MODULE_LICENSE("GPL") with MODULE_LICENSE("GPL v2") to
-align with the GPL-2.0-only SPDX identifier. Per include/linux/module.h,
-"GPL v2" maps to GPL-2.0-only, matching the source files' declared
-license.
+  low = clamp_t(int, high, RAW_TO_TEMP(priv, 0), ...);
 
-Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 SoC")
+This causes TEMPOFFSETL to receive the clamped high-temperature value
+instead of the requested low-temperature value, making the low-temperature
+alert threshold identical to the high-temperature threshold. As a result,
+low-temperature interrupts can never fire independently.
+
+Fix by replacing 'high' with 'low' in the clamp expression, matching
+the symmetric pattern used for the high trip on line 264.
+
+Fixes: 42de37f40e1b ("thermal/drivers: Add support for Airoha EN7581 thermal sensor")
 Signed-off-by: Wayen <win847@gmail.com>
 ---
- drivers/net/ethernet/airoha/airoha_eth.c | 2 +-
- drivers/net/ethernet/airoha/airoha_npu.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ drivers/thermal/airoha_thermal.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 31cdb11cd7..960727957e 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -3333,6 +3333,6 @@ static struct platform_driver airoha_driver = {
- };
- module_platform_driver(airoha_driver);
+diff --git a/drivers/thermal/airoha_thermal.c b/drivers/thermal/airoha_thermal.c
+index b9fd6bfc88..439aa011b7 100644
+--- a/drivers/thermal/airoha_thermal.c
++++ b/drivers/thermal/airoha_thermal.c
+@@ -273,7 +273,7 @@ static int airoha_thermal_set_trips(struct thermal_zone_device *tz, int low,
  
--MODULE_LICENSE("GPL");
-+MODULE_LICENSE("GPL v2");
- MODULE_AUTHOR("Lorenzo Bianconi <lorenzo@kernel.org>");
- MODULE_DESCRIPTION("Ethernet driver for Airoha SoC");
-diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ethernet/airoha/airoha_npu.c
-index 17dbdc8325..870d61fdd9 100644
---- a/drivers/net/ethernet/airoha/airoha_npu.c
-+++ b/drivers/net/ethernet/airoha/airoha_npu.c
-@@ -826,6 +826,6 @@ MODULE_FIRMWARE(NPU_EN7581_7996_FIRMWARE_DATA);
- MODULE_FIRMWARE(NPU_EN7581_7996_FIRMWARE_RV32);
- MODULE_FIRMWARE(NPU_AN7583_FIRMWARE_DATA);
- MODULE_FIRMWARE(NPU_AN7583_FIRMWARE_RV32);
--MODULE_LICENSE("GPL");
-+MODULE_LICENSE("GPL v2");
- MODULE_AUTHOR("Lorenzo Bianconi <lorenzo@kernel.org>");
- MODULE_DESCRIPTION("Airoha Network Processor Unit driver");
+ 	if (low != -INT_MAX) {
+ 		/* Validate low and clamp it to a supported value */
+-		low = clamp_t(int, high, RAW_TO_TEMP(priv, 0),
++		low = clamp_t(int, low, RAW_TO_TEMP(priv, 0),
+ 			      RAW_TO_TEMP(priv, FIELD_MAX(EN7581_DOUT_TADC_MASK)));
+ 
+ 		/* We offset the low temp of 1°C to trigger correct event */
 -- 
 2.51.0
 
