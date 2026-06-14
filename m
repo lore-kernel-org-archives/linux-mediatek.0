@@ -4,83 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 421D4CD98C5
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Jun 2026 09:01:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78684CD98D2
+	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Jun 2026 09:26:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:Cc:To:From:
-	Subject:Content-Transfer-Encoding:MIME-Version:Content-Type:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=AeCTcCGBmXaeoE0gLM8C1mS8ZMOJYPKoEcB5kH+0npk=; b=EwrjeGsjoLSKNmSd+LoRnIyUFz
-	lFiY+0nUSIU8daV7bk6GM3fr/SizU7fAA7DHJV60LhqZZAstfq3k9SW4Uj0UYZvru+N1gs/vsN1g+
-	790o0IcfCoCNqYQTCbmwTcJXON8p+RsWA/ch67cM113s4SI9NEa1dvwPRzvpFzlgioEnJquWZuiyL
-	zu391sLlw1iYJoCjN+DPolKOtt4iKpLgNFymzYsv1Rx5KDqCa0sXw1pv+2WHyep+Al3IN3rN11b27
-	r6WXoLIchKmdGUyuR18XN9cyJaxihujWBX2Rgobn3o9j/2clWnNLXauoeUI0HA4sdq2qLtMsY1gKB
-	1dP12pTw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QqTMTiQg1sf52LbnFTly3RfFBwAHjqFaOZSFE8C6iQ8=; b=fqfFrImC5eqNFDFi72jO9DToGl
+	zgA8T67/v7TXlzFZRK9gPr4GyL/KIx0hKcJgy0nyP65P+i/LgpnikxW/9QGMOHXj1ToXYcAPLLofJ
+	CmAeAjyZfqSOTW5yUPt32r3qKZfl6L0hW0vcFFXtjZBnRzgdXJ8X9MpAh64w3K79mUwBHdVWv60GQ
+	3/yVsfmkHnOawSNtaKQ6nWuylwcjfifXUZEEMgJElmwqsj4xw0f0sEMehEc9QGUuNUwRAJj5MWSEp
+	fT2k2wZ+iDpa5pOIlBQu3+QbDatCx7a/ilyw92aQqLi79UVSduF4/VBc1bSBQCc+CsxgpvyBRQErw
+	tQSArAPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYgip-0000000Cpjn-33Cf;
-	Sun, 14 Jun 2026 09:01:39 +0000
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+	id 1wYh77-0000000Cq72-2MtF;
+	Sun, 14 Jun 2026 09:26:45 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYgim-0000000CpjS-3kFi
+	id 1wYh75-0000000Cq6v-3wKT
 	for linux-mediatek@lists.infradead.org;
-	Sun, 14 Jun 2026 09:01:38 +0000
-Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-8422871b42dso1433185b3a.3
-        for <linux-mediatek@lists.infradead.org>; Sun, 14 Jun 2026 02:01:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781427695; x=1782032495; darn=lists.infradead.org;
-        h=message-id:date:cc:to:from:subject:content-transfer-encoding
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=AeCTcCGBmXaeoE0gLM8C1mS8ZMOJYPKoEcB5kH+0npk=;
-        b=gUqK0zA9uAaojsc56OLX5Li2y1CdzA4MpANzlYkxicJsYMSW3vzVK50Foj8SJVYeLA
-         86iiQHJI4g+najSZcnPIES+pYThfgkCnvxi9uLZqWIaTsbK1Pl+0hWF/XrHMVr9bCEOr
-         h8KMuEzsp1qSjWWWX58zYjRm0JzH5ER3Fln56XJMSoqnGTl3sjsC48Xkhp88JFbwekPA
-         Nomq5QHag+/RzqW6YY0QTLJWvIKeJnrWz5fEfKfJBSrCJjreKfT419V9DZgUDTLJfHGK
-         Klq3dG9Y/ETvPTmgGz8rd4AYPcYqlIXvenbBCVjPAoDGF7EFoOGrzQKu9prW6rMOm3/6
-         rx7w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781427695; x=1782032495;
-        h=message-id:date:cc:to:from:subject:content-transfer-encoding
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=AeCTcCGBmXaeoE0gLM8C1mS8ZMOJYPKoEcB5kH+0npk=;
-        b=VVQ1vsn18Aiqg+AWN5teF6ssNYkPa6u1XscH+L8eMMJMdzIUgDrXjtnRbP5eGSjtQe
-         2TZO/D9oBubc2bfMoWxizA5jW/NptF43QfteEt1g0ESubUMHOSyQoHpUZH2NrBopcYne
-         +pCXK7xTnq1lXaS3+oRoxZgaaQcIvHdJ03pyGsRdHMdRhaRk3q2Gt9kbCPEK2PGuU3Ph
-         c/eEMIIK72tkyApOb1QnICVNkNMYzV2J1a3yqEBxOrWIA6eZ0SnOxT23hOrFcYEz5oQI
-         7fivCMnD6jundrVDKlG4XUSBslj5AvaGn3UflGhvpkB0EHYJavWX+LDi6DnoX/foq5xl
-         fJ5w==
-X-Forwarded-Encrypted: i=1; AFNElJ8dOjDzgCpDvbdtim9wrXHG5C0Kc4BARMvmkusFvGzBlTl4cLQmFudy1mm96TrBGSGxSji/dzXCmAFe1ha4NA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxjRqjJi3oF/P4JInbnQCrdapYjfyuu/Uljp/5DdVaAwHCEDOw/
-	CdJEoHE8hTl2VhtLSILvOekZzDGNhLgT98eTzonafp/b0O+wV2Zdv4LY
-X-Gm-Gg: Acq92OHDIDwGIP3UJ8E3kcLod3OsJhRXecC5RIUOFCVck+tYiZSomafN2g1bLnoPyEv
-	FY8TyqFcywtbh2IXMhOxkUhw/n2gv7LCv158UcIOh6lEJFEALayzIywtAOxkqmwxvYm3ZDiGn5e
-	jDEjlQaNRnt5EAW/lmerCmBmnOf/wuyB55OPhfO2Ni6ZZ+umlqMP7toj+UiB46B5DeiNMGPjnBq
-	H4XsXujzTmI6InNj5XJVeaZBPC0gKAJTAHeyV/SMMhMPHxEKyNVUFCpGW74mVx7AKb7PLg73NJV
-	wZY73xwWas5MGbZqveHRLorkA6F03fI0gOJ52/LzDvfVc2OIbR8949yyguIdPofRz1MRXh7jpzn
-	LLAUWRTHb4DfygZa8ZPYekdhB9ZB8Pa+nE0DiD3BH0veak40AIvg1O2DROCyfIvBlLwL68+c7Y1
-	ubzia5S4B4pBFID3tl
-X-Received: by 2002:a05:6a00:f93:b0:842:46a6:e2cf with SMTP id d2e1a72fcca58-8434ce46552mr10855896b3a.21.1781427695533;
-        Sun, 14 Jun 2026 02:01:35 -0700 (PDT)
-Received: from [127.0.1.1] ([47.253.114.73])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-8434accbc89sm7073038b3a.15.2026.06.14.02.01.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 14 Jun 2026 02:01:35 -0700 (PDT)
-Content-Type: text/plain; charset="us-ascii"
+	Sun, 14 Jun 2026 09:26:44 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id DA90B6008A;
+	Sun, 14 Jun 2026 09:26:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 105241F000E9;
+	Sun, 14 Jun 2026 09:26:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1781429202;
+	bh=QqTMTiQg1sf52LbnFTly3RfFBwAHjqFaOZSFE8C6iQ8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=hwkZQqtd4opBAdy2o1ZHR9ZMbv03X9dvQK+31NZdxMF1MlXWQjho9sAMeAz4tW9v1
+	 0xN6owDCIGOz9k3HNDB8me/Yar9ahFhQ5dgMV1trfDcwLW7fvvIyg/qIuXVj3+vMv/
+	 Ax0NU0Es/6pyVCzfOGOUQA+PZ+TsNmWOlXmnBrFkxyQNVY/JY0CmbwdvUPTglR5b5s
+	 +iT98q643glfs/MfDRgC4DIRUaeZwDg2L5Y2E+Z1osXhLGjhS4Q8i+W0NAN8MOIzUm
+	 VuSnLLFy/AXJI/7AIBz5BRylSxtO4+j7AajcNQ1rHr+fD/ip4BAz5gZrFg5S58eobq
+	 6owLNsCuHDBwQ==
+Date: Sun, 14 Jun 2026 11:26:39 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Sean Wang <sean.wang@kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>, linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 0/5] wifi: mt76: add USB RX aggregation support
+Message-ID: <ai5zzwOcBrrtvjNk@lore-desk>
+References: <20260613224655.2405686-1-sean.wang@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Subject: [PATCH] pinctrl: airoha: Fix AN7583 Pin 21 BIT duplicate in conf tables
-From: Wayen Yan <win847@gmail.com>
-To: linux-gpio@vger.kernel.org
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Christian Marangi <ansuelsmth@gmail.com>, Linus Walleij <linusw@kernel.org>, linux-mediatek@lists.infradead.org
-Date: Sun, 14 Jun 2026 17:01:30 +0800
-Message-ID: <178142769046.1925774.12629229026406925492@gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260614_020136_962063_283156B5 
-X-CRM114-Status: UNSURE (   9.28  )
-X-CRM114-Notice: Please train this message.
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="pyRDaUZ8du7f0YkO"
+Content-Disposition: inline
+In-Reply-To: <20260613224655.2405686-1-sean.wang@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,70 +69,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From 5ed6ed42e17baf059bfaf1ba0ab5fc484f854659 Mon Sep 17 00:00:00 2001
-From: "Wayen.Yan" <win847@gmail.com>
-Date: Sun, 14 Jun 2026 16:56:18 +0800
-Subject: [PATCH] pinctrl: airoha: Fix AN7583 Pin 21 BIT duplicate in conf
- tables
 
-AN7583 pinctrl configuration tables have Pin 20 and Pin 21 both mapped
-to BIT(18), causing pin 21 configuration to incorrectly modify pin 20.
+--pyRDaUZ8du7f0YkO
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Fixes the following tables:
-- an7583_pinctrl_pullup_conf
-- an7583_pinctrl_pulldown_conf
-- an7583_pinctrl_drive_e2_conf
-- an7583_pinctrl_drive_e4_conf
+> This series adds optional USB RX aggregation support to mt76 and enables
+> it on mt7927u.
+>=20
+> RX aggregation allows multiple RX frames to be received from one USB URB,
+> reducing USB completion overhead and improving RX efficiency for
+> high-throughput RX traffic and monitor capture.
 
-Pin 18-22 sequence should be: BIT(16), BIT(17), BIT(18), BIT(19), BIT(20)
+Hi Sean,
 
-Fixes: 3ffeb17a9a27 ("pinctrl: airoha: add support for Airoha AN7583 PINs")
-Signed-off-by: Wayen Yan <win847@gmail.com>
----
- drivers/pinctrl/mediatek/pinctrl-airoha.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+MT76 usb already supports Scatter-Gather (SG) for RX urbs in order to recei=
+ve
+multiple buffers in the same urb. Since this approach has a better memory
+footprint, can we reuse this approach?
+Moreover, can you please provide some performance comparison? (e.g. through=
+put
+and memory usage).
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-airoha.c b/drivers/pinctrl/mediatek/pinctrl-airoha.c
-index 995ba6175c..f325ca41d3 100644
---- a/drivers/pinctrl/mediatek/pinctrl-airoha.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-airoha.c
-@@ -1847,7 +1847,7 @@ static const struct airoha_pinctrl_conf an7583_pinctrl_pullup_conf[] = {
- 	PINCTRL_CONF_DESC(18, REG_GPIO_L_PU, BIT(16)),
- 	PINCTRL_CONF_DESC(19, REG_GPIO_L_PU, BIT(17)),
- 	PINCTRL_CONF_DESC(20, REG_GPIO_L_PU, BIT(18)),
--	PINCTRL_CONF_DESC(21, REG_GPIO_L_PU, BIT(18)),
-+	PINCTRL_CONF_DESC(21, REG_GPIO_L_PU, BIT(19)),
- 	PINCTRL_CONF_DESC(22, REG_GPIO_L_PU, BIT(20)),
- 	PINCTRL_CONF_DESC(23, REG_GPIO_L_PU, BIT(21)),
- 	PINCTRL_CONF_DESC(24, REG_GPIO_L_PU, BIT(22)),
-@@ -1964,7 +1964,7 @@ static const struct airoha_pinctrl_conf an7583_pinctrl_pulldown_conf[] = {
- 	PINCTRL_CONF_DESC(18, REG_GPIO_L_PD, BIT(16)),
- 	PINCTRL_CONF_DESC(19, REG_GPIO_L_PD, BIT(17)),
- 	PINCTRL_CONF_DESC(20, REG_GPIO_L_PD, BIT(18)),
--	PINCTRL_CONF_DESC(21, REG_GPIO_L_PD, BIT(18)),
-+	PINCTRL_CONF_DESC(21, REG_GPIO_L_PD, BIT(19)),
- 	PINCTRL_CONF_DESC(22, REG_GPIO_L_PD, BIT(20)),
- 	PINCTRL_CONF_DESC(23, REG_GPIO_L_PD, BIT(21)),
- 	PINCTRL_CONF_DESC(24, REG_GPIO_L_PD, BIT(22)),
-@@ -2081,7 +2081,7 @@ static const struct airoha_pinctrl_conf an7583_pinctrl_drive_e2_conf[] = {
- 	PINCTRL_CONF_DESC(18, REG_GPIO_L_E2, BIT(16)),
- 	PINCTRL_CONF_DESC(19, REG_GPIO_L_E2, BIT(17)),
- 	PINCTRL_CONF_DESC(20, REG_GPIO_L_E2, BIT(18)),
--	PINCTRL_CONF_DESC(21, REG_GPIO_L_E2, BIT(18)),
-+	PINCTRL_CONF_DESC(21, REG_GPIO_L_E2, BIT(19)),
- 	PINCTRL_CONF_DESC(22, REG_GPIO_L_E2, BIT(20)),
- 	PINCTRL_CONF_DESC(23, REG_GPIO_L_E2, BIT(21)),
- 	PINCTRL_CONF_DESC(24, REG_GPIO_L_E2, BIT(22)),
-@@ -2198,7 +2198,7 @@ static const struct airoha_pinctrl_conf an7583_pinctrl_drive_e4_conf[] = {
- 	PINCTRL_CONF_DESC(18, REG_GPIO_L_E4, BIT(16)),
- 	PINCTRL_CONF_DESC(19, REG_GPIO_L_E4, BIT(17)),
- 	PINCTRL_CONF_DESC(20, REG_GPIO_L_E4, BIT(18)),
--	PINCTRL_CONF_DESC(21, REG_GPIO_L_E4, BIT(18)),
-+	PINCTRL_CONF_DESC(21, REG_GPIO_L_E4, BIT(19)),
- 	PINCTRL_CONF_DESC(22, REG_GPIO_L_E4, BIT(20)),
- 	PINCTRL_CONF_DESC(23, REG_GPIO_L_E4, BIT(21)),
- 	PINCTRL_CONF_DESC(24, REG_GPIO_L_E4, BIT(22)),
--- 
-2.51.0
+Regards,
+Lorenzo
 
+>=20
+> The common USB support remains opt-in, so existing USB drivers keep the
+> current behavior unless they explicitly enable RX aggregation. The same
+> settings work for both mt7927u and mt7925u, but this series enables the
+> feature only on mt7927u for now.
+>=20
+> This series does the following:
+>=20
+> - size RX page-pool pages from the queue buffer size
+> - support out-of-order RX URB completion
+> - add optional USB RX aggregation parsing
+> - add debugfs stats to verify aggregation behavior
+> - enable USB RX aggregation on mt7927u
+>=20
+> The series is based on wireless-next commit:
+>=20
+> 21352612198c ("b43: add RF power offset for N-PHY r8 + radio 2057 r8")
+>=20
+> It also cherry-picks the following patch from patchwork as a dependency:
+>=20
+> wifi: mt76: mt76u: use a threaded NAPI for the RX path
+> Link: https://lore.kernel.org/all/20260609105301.196302-1-phial@phiality.=
+com/
+>=20
+> Sean Wang (5):
+>   wifi: mt76: usb: size RX page-pool pages from queue buffer
+>   wifi: mt76: usb: support out-of-order RX URB completion
+>   wifi: mt76: usb: add optional RX aggregation support
+>   wifi: mt76: usb: add debugfs aggregation stats
+>   wifi: mt76: mt7927u: enable USB RX aggregation
+>=20
+>  drivers/net/wireless/mediatek/mt76/debugfs.c  |  35 +++
+>  drivers/net/wireless/mediatek/mt76/mac80211.c |   3 +
+>  drivers/net/wireless/mediatek/mt76/mt76.h     |  38 ++-
+>  .../net/wireless/mediatek/mt76/mt7925/usb.c   |  18 +-
+>  .../net/wireless/mediatek/mt76/mt792x_usb.c   |  23 +-
+>  drivers/net/wireless/mediatek/mt76/usb.c      | 251 ++++++++++++++++--
+>  6 files changed, 335 insertions(+), 33 deletions(-)
+>=20
+> --=20
+> 2.43.0
+>=20
+
+--pyRDaUZ8du7f0YkO
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCai5zzwAKCRA6cBh0uS2t
+rCL5AQD36+ZV63ZKM6pJRZP22/1sqTURbayd1hEhI0lMVKf43gD/SF0dbi/igXqj
+DfJcZqHMDeVDEevEJBwuDnj4/GwA9gc=
+=kFQp
+-----END PGP SIGNATURE-----
+
+--pyRDaUZ8du7f0YkO--
 
