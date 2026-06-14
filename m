@@ -4,80 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66785CD98D6
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Jun 2026 00:15:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3D83CD98CF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Jun 2026 00:30:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Date:From:
-	Message-ID:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=SUVnT2tX7Y99O76KPHUYUD1f52zrxGJfCA6Tlu+Jsko=; b=O2e0CWi3Cki7nPemvZ8tqkeOgF
-	VQ13y/Xvkb3PTaTdKSNRLIzc3woD6nB42hoJrXHfEsrl78IwT/TFOuYOq0JiJBOxTPyLvnlJ06OEE
-	GttY16HGtd2XEsw/AFti9rzVeTRixwM4wc7jJEPTLQDxkeetQ99g10aMuDj2o6qW55dsxT0iPLmBP
-	JTFxA7VaovJJ6XvUIvFmeH8wSv5ol5Rn4Kp3O7CCr3/bVZxV9qAyELQOyEOSruJwyVijcKawXgxjB
-	PBTTc5SkRWNNCnaFZxyuM3Rt/RdZdC3pqNTHszpHqzynSBVNzH/3HzBJsbmEohBizxx6pBgDj0mMT
-	GKlqQ6Nw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZMdBuFq+Egdpf4xXaVRlDiUSnmhKuXX5amo2pNZUkl4=; b=4iXwuMzXm8Qs1Nl0Lvgh3JIJ45
+	3cFMu4rgOwm7jxnZMay56vQaPRQviuCucrcWUKaNw0OoRFRzXtVM4IrkdgZ2TyEbiwORW0qPnDmul
+	Gwb3bGKoy3RLGzSh3KV43waUXK5R/94xswoUwWMpnbOSipeHCVk/OEDmxEDLmrSwVi3cW4ESDpXLQ
+	nlfR32awrL89OwcYxPSbSaTbI9hk4AlNzhsbBPu6wvTAxarVLIo7GNNxwwWy4w3K0HGbqqNv1/rxA
+	yZY/xqkeQp4OdijmQD81I0CiK0wk+zqyRXw1PuyGvMCXr8udscB1EV8kWMj1NksXyqd8UfxaHCp+Q
+	AQSIjMpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYYVT-0000000CdYz-1GF4;
-	Sun, 14 Jun 2026 00:15:19 +0000
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+	id 1wYYk2-0000000Cdlh-2egS;
+	Sun, 14 Jun 2026 00:30:22 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYYVQ-0000000CdYg-1RDP
-	for linux-mediatek@lists.infradead.org;
-	Sun, 14 Jun 2026 00:15:17 +0000
-Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-2c168baac83so9947895ad.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 13 Jun 2026 17:15:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781396115; x=1782000915; darn=lists.infradead.org;
-        h=cc:to:subject:date:from:message-id:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=SUVnT2tX7Y99O76KPHUYUD1f52zrxGJfCA6Tlu+Jsko=;
-        b=lo+iBd+VPIZaW9lfsDXrq1RNaZapHQVvsZcTc146QEWvaEIHJu7i0jQVb3L59kAgaQ
-         1ep0S8LutfBXz8dCwykkqkyHSozof1diP/RA6rj63OtMNCUOlafgFxRUFd15kpqC2/ej
-         LDRWKpYQlvtmxIRp/jpOtSOyUEFsazww/zhtwgWWxI7uKyC6vmb0ObmwFI4cfCAqStjx
-         9zYm4XoUNy7nPPPld7m90aRgDdEVRV1eM+6iRJsuow6hgStGgtdjMPsTJD2hqHvlFoRg
-         7LRecvKMgPQDjpNB1p2P25d0Cu113vdv5h9ShXbOOnCo96Ld8AeR0dCOFZrSKa2foSW0
-         8cUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781396115; x=1782000915;
-        h=cc:to:subject:date:from:message-id:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=SUVnT2tX7Y99O76KPHUYUD1f52zrxGJfCA6Tlu+Jsko=;
-        b=oRoODSapF3kzDB+sLjRCo0LZZ4nLMCvedUzcJnNm8GvVPqrm1kEFqw6CuKDXQ9aFZs
-         agl0RtFuB9xT5IXJ8oqo+GYTO5Qi+Luh5klu+XdIxGDBvnMVEu2odlUqSMhF1jfreWkM
-         5nGGyNDo8kG/OW+HHMA2OMeuAF8eMrnX0FRBcTNwJWZYilyq71goaSuc5sbaKosk9hNd
-         LZuvU29se/iCZz3iPJM+2Px7OUIK4ZvsRmDdaHekLLkFjLATmvsjwYtDAfJ42NVvmk6T
-         9KuMaVjRg5jMYtgwIMaeRJKi2JuiLwNmnutPZObpQ/IcXxWPAV49jNO3mPfXjda7Eu9d
-         2Vtg==
-X-Forwarded-Encrypted: i=1; AFNElJ+uEqvNu3xHvtGzJSzo2ovywN8EhUHrFZy3gFSK14iTuN090MaVmB0uoR+1W12gKWN6ROQsyEtWIXLNeajUxQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyuDYTjSeX9YujLzVMDdgI9Cf+lqSzxcaz4AkkzBEsYBz29FHMH
-	ZD+46u5xKSO3cdlADJ8z3uw0KhpA0EwMqunlzR5RlBpT0XSKZTokL/IK
-X-Gm-Gg: Acq92OHSV1ZJCBJtHeY/BfM7wAcmqTaiQmKEI4G1eofvwuKgrcWuui4g6PMtUKb2XcB
-	qnHlpgJEXUPf04usNvBKJCCe4DvFveGbxzW+agomIxTBeuzUMa/t7PAO8xnmkpz9hOmutTkJbBO
-	3G7lXHQCASMHGYvmqBNJ8I9L1rz/3WA9vsEIDUcBAokCu3ukqLJGJ8TzCeHyRMZAwHErO0sTuBV
-	jUm1jSR9dxortFnYtfipcsj1ubyqmPwEIsXYvpJXgM7CviwVZQa9+tWIn7eLfUtT4EQe0ry/GLC
-	+2X4VxMrA7rmQ1Ww0soLLUp59TimOB1AOQj24v0wn5GjZc1yGo8MgFyqvnn0p3aKzX1e9XKLvsK
-	ZRgneMTeAZtt8MDWlaGGxOColtR2XnIss+YP58p9W2CnU4eMJLFBP+1hWbBOtCABjE6o6Br/O1S
-	vDXYMukkE41tLYEMpsQU0qVz7Z5Go=
-X-Received: by 2002:a17:902:d4ca:b0:2c6:5bae:f9ab with SMTP id d9443c01a7336-2c65baefa96mr60612255ad.22.1781396115356;
-        Sat, 13 Jun 2026 17:15:15 -0700 (PDT)
-Received: from [127.0.1.1] ([47.253.114.73])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2c4330782b2sm63552385ad.67.2026.06.13.17.15.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 13 Jun 2026 17:15:15 -0700 (PDT)
-Message-ID: <6a2df293.6b2684af.263065.81b4@mx.google.com>
-From: "Wayen.Yan" <win847@gmail.com>
-Date: Sun, 14 Jun 2026 08:14:28 +0800
-Subject: [PATCH] thermal/drivers/airoha: Fix FIELD_PREP using wrong mask for
- sensor interval
-To: linux-pm@vger.kernel.org
-Cc: Rafael J. Wysocki <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@kernel.org>, Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>, Christian Marangi <ansuelsmth@gmail.com>, Lorenzo Bianconi <lorenzo@kernel.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260613_171516_388381_B4A9A014 
-X-CRM114-Status: UNSURE (   9.99  )
-X-CRM114-Notice: Please train this message.
+	id 1wYYk1-0000000CdlT-3NhP;
+	Sun, 14 Jun 2026 00:30:21 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id BAC3E6008A;
+	Sun, 14 Jun 2026 00:30:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 366EF1F000E9;
+	Sun, 14 Jun 2026 00:30:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1781397020;
+	bh=ZMdBuFq+Egdpf4xXaVRlDiUSnmhKuXX5amo2pNZUkl4=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=EcBer6RItrC/+oVd2Kax1LWzKvX0vH4X3tM0z0tnln1N3DLGFMKoWYR6a5/toDx7j
+	 PqKUHlaRmKC3H77fwIQP9zSaaEPkocTEk3DZ9UijYzkkAwXcBGnfUtGGwJUwOZ9+gn
+	 xwXGnxn4mOjkl0tQSvMh/hq5KSBweQvHmb1yp8NYS/fH1dz5Xsv6uHoERtHmIyb5h5
+	 N+/aB/ElIyEUZJTpIObPWuYDZFpX71nofGT0gt94yJ67TueuTj8CIKoqptC96vuEE2
+	 wUEZ9ktrZLSvyERFy8Yo6O1DI85bWRaLfmtVQvmmwUazcxAnZCJzCovLrJV/tKnPSi
+	 XuVbHfaK/B/3w==
+Date: Sat, 13 Jun 2026 17:30:18 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Jack Wu via B4 Relay <devnull+jackbb_wu.compal.com@kernel.org>
+Cc: jackbb_wu@compal.com, Loic Poulain <loic.poulain@oss.qualcomm.com>,
+ Sergey Ryazanov <ryazanov.s.a@gmail.com>, Johannes Berg
+ <johannes@sipsolutions.net>, Andrew Lunn <andrew+netdev@lunn.ch>, "David S.
+ Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo
+ Abeni <pabeni@redhat.com>, Wen-Zhi Huang <wen-zhi.huang@mediatek.com>,
+ Shi-Wei Yeh <shi-wei.yeh@mediatek.com>, Minano Tseng
+ <Minano.tseng@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Simon
+ Horman <horms@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Shuah Khan
+ <skhan@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-doc@vger.kernel.org
+Subject: Re: [PATCH v2 3/7] net: wwan: t9xx: Add control DMA interface
+Message-ID: <20260613173018.7a0581f1@kernel.org>
+In-Reply-To: <20260610-t9xx_driver_v1-v2-3-c65addf23b3f@compal.com>
+References: <20260610-t9xx_driver_v1-v2-0-c65addf23b3f@compal.com>
+	<20260610-t9xx_driver_v1-v2-3-c65addf23b3f@compal.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,50 +78,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In airoha_thermal_setup_monitor(), the TEMPMONCTL2 register is
-programmed with:
+On Wed, 10 Jun 2026 18:41:06 +0800 Jack Wu via B4 Relay wrote:
+> From: Jack Wu <jackbb_wu@compal.com>
+> 
+> Cross Layer Direct Memory Access(CLDMA) is the hardware
+> interface used by the control plane and designated to
+> translate data between the host and the device. It supports
+> 8 hardware queues for the device AP and modem respectively.
 
-  writel(FIELD_PREP(EN7581_FILT_INTERVAL, 1) |
-         FIELD_PREP(EN7581_FILT_INTERVAL, 379), ...)
+Transient build warnings:
 
-Both FIELD_PREP calls target FILT_INTERVAL (GENMASK(25,16)), so the
-second one overwrites the first. The sensor interval field
-SEN_INTERVAL (GENMASK(9,0)) is never written and remains zero.
++../drivers/net/wwan/t9xx/pcie/mtk_pci_drv_m9xx.c:52:30: warning: symbol 'mtk_dev_cfg_0900' was not declared. Should it be static?
++../drivers/net/wwan/t9xx/pcie/mtk_ctrl_cfg_m9xx.c:19:22: warning: symbol 'mtk_ctrl_info_m9xx' was not declared. Should it be static?
++../drivers/net/wwan/t9xx/pcie/mtk_cldma_drv_m9xx.c:33:22: warning: symbol 'mtk_cldma_regs_m9xx' was not declared. Should it be static?
++../drivers/net/wwan/t9xx/pcie/mtk_cldma_drv_m9xx.c:166:22: warning: symbol 'cldma_drv_ops_m9xx' was not declared. Should it be static?
 
-The comment above states: "filt interval is 1 * 52.715us, sen interval
-is 379 * 52.715us", confirming the second value should go into
-SEN_INTERVAL. This matches the Mediatek auxadc_thermal.c reference
-implementation which correctly writes FILTER_INTERVAL and
-SENSOR_INTERVAL to their respective non-overlapping bit fields.
-
-Actual effect: FILT=379 (should be 1), SEN=0 (should be 379).
-The filter interval runs 379x too long and the sensor sampling
-interval is uninitialized, causing incorrect thermal monitoring timing.
-
-Fix by replacing the second FIELD_PREP's mask from FILT_INTERVAL to
-SEN_INTERVAL.
-
-Fixes: 42de37f40e1b ("thermal/drivers: Add support for Airoha EN7581 thermal sensor")
-Signed-off-by: Wayen <win847@gmail.com>
----
- drivers/thermal/airoha_thermal.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/thermal/airoha_thermal.c b/drivers/thermal/airoha_thermal.c
-index b9fd6bfc88..e8a33234e0 100644
---- a/drivers/thermal/airoha_thermal.c
-+++ b/drivers/thermal/airoha_thermal.c
-@@ -403,7 +403,7 @@ static void airoha_thermal_setup_monitor(struct airoha_thermal_priv *priv)
- 	 * sen interval is 379 * 52.715us = 19.97ms
- 	 */
- 	writel(FIELD_PREP(EN7581_FILT_INTERVAL, 1) |
--	       FIELD_PREP(EN7581_FILT_INTERVAL, 379),
-+	       FIELD_PREP(EN7581_SEN_INTERVAL, 379),
- 	       priv->base + EN7581_TEMPMONCTL2);
- 
- 	/* AHB poll is set to 146 * 68.64 = 10.02us */
+please also see all the AI code comments at:
+https://sashiko.dev/#/patchset/20260610-t9xx_driver_v1-v2-3-c65addf23b3f@compal.com
 -- 
-2.51.0
-
-
+pw-bot: cr
 
