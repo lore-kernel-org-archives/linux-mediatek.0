@@ -4,100 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15693CD98C7
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Jun 2026 04:18:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38B6ECD98D6
+	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Jun 2026 07:14:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=10pdjtqw1/JtUy9GKEnuwFPnC7XgoLYsseAIedRShWU=; b=Iqa9RUpIVmEFljqf3lond7RCeO
-	UzMnm3AUG1GNy5bKJdLzAG3ENdpPsRseAVh/cwLZMvJwpcdABqW1SBc2JwAnfJz5UIZI3vGbqNvfI
-	QUEGtwAU+VdrHlW0eKJQjxpgFow6vE3Jf92IepLqaa/RzcNcEFO2/ofm1zBbk8R09vveWY1SB8gPs
-	dWjvgEscNTcOSsq2h+k3NUvr4iGXSMpWRBcrrXB7eHaJyuCf6LntVCQYRYGODFaxzGEDqd7vkrb5y
-	V78DJnlYYghp3EMor5hSGZeU3aKgGhzuhB2eVrXONRnsDo8dvpQkUsnbdUvVNodIs/ZYcsH6b8gyO
-	70RuVuCg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Subject:Cc:To:
+	From:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=t6JKdGL8Xe2lq+/BiQDSaNE1rM0cDe8Om7VyrIfgze4=; b=BPuyWwQUeY7kL19CYan5LLJQvJ
+	07sbqp7lO3S1QcP2qoPvxo7uOxIi4pOTlJpl/hM9xDCNMawgrph9B8Dg1tJ5wIOHm1MmWdf02o9os
+	fhQk2CdJ21qfH2FiT6qiTK9l5GjjGMQxhtcG8DpgE6/GujEu0RsigwrqvsY3CbF8ynormYe/ZcGuE
+	K3KN0sQbTfLCfDObIYqDyFOs8FLSKIp852EXpi/brd7FcXQkVZpHs6QW+FcQbTQ/InFEEr2YNd6E1
+	5d1Lao45+Yc9NF9kGdWKCQsm8FS60mCrLd49W92MPblCmgTNKT/B8e0nnl2sfcJFv2OAM4eDcE+jp
+	OXZz1VIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYcIv-0000000CjDh-3CmE;
-	Sun, 14 Jun 2026 04:18:37 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1wYf2w-0000000Cnc7-3pOg;
+	Sun, 14 Jun 2026 07:14:18 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYcIs-0000000CjCs-3l7u
+	id 1wYf2u-0000000Cnbj-2sQ9
 	for linux-mediatek@lists.infradead.org;
-	Sun, 14 Jun 2026 04:18:36 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-2c0c2d792c8so14102435ad.1
-        for <linux-mediatek@lists.infradead.org>; Sat, 13 Jun 2026 21:18:34 -0700 (PDT)
+	Sun, 14 Jun 2026 07:14:17 +0000
+Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-45eee266c6cso1984861f8f.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 14 Jun 2026 00:14:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781410714; x=1782015514; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=10pdjtqw1/JtUy9GKEnuwFPnC7XgoLYsseAIedRShWU=;
-        b=RtX+oO2AiOHHVSX3BIC1DcHAMR/jii/wWIeJdiLrdrUftVFjG0166L6lxaFJo5yrkt
-         J3zFp+y5T0IXtafyEDrTZJ0b7elxvB2aQT/pudcIWZY/YtRkk1hErdmZzU5VtYbbz/cS
-         F6o28J7AjNl8jsrwuh4YLV+MTjpU+SamnYvOU/rtf2qyTi2UNCniLflUfUsWNg54W/pl
-         cbd6TV9cNQtMs5Xqeln2QZlawcWm0qmesOJrEyVyLu+ApueC8+R78tB8jH+GqFvWb+44
-         kLD17Cso7YVrXkeb7FwzBg0aVKEI/acRSRTikjlVckpEFpHqR873U5CaKfqNxpYSno3y
-         BAKw==
+        d=gmail.com; s=20251104; t=1781421254; x=1782026054; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:subject:cc:to:from:date:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=t6JKdGL8Xe2lq+/BiQDSaNE1rM0cDe8Om7VyrIfgze4=;
+        b=H8wMAusp3bEbJjljCfPcd0k/SMTxr25nagVUfEixS4cIIt3WFpgvvqRS98MRsOPVfX
+         4miR66WL3U54Ivpf+6b1x6Ktf49HepASEdouoOEn9QOp+w3XkL6lphNqTASXwKTABKI8
+         d0EVKV9ntt53U0KhGDsyyJLXjh1XuvC42QG33BqgTsFHCpwlsdt4K+/DITqvUWBG6wmB
+         +mnRs0+m9t7XCxVyKQaqOUyFKCE7z5WiA6dcg8jco5WKeFoBaXnyPkMQFyNcMj6OUDfJ
+         E87vdqzCBUoZbBOaAhbhkKXpf/27Cu2dxpj+ECp7ahUiBM1LwdQZJ2CGA8AtTLMEV58A
+         1OgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781410714; x=1782015514;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=10pdjtqw1/JtUy9GKEnuwFPnC7XgoLYsseAIedRShWU=;
-        b=Y2wmR0DJzU1ewDCobl0/U6iDn/m3HjNXhE4uQCtmPHlRtT5gIWZOUsmGE0AS6s/Wdp
-         KhCBHGqyinYWsbOfNbpIULZspPYsCeBHCC2KvGlykTNQ7aTEgJOA4AXihxs6ue3pn+vQ
-         +XjkCaqLe7aUdWMN0z8nbtmftoKjaC6cVK8vV9y+3t7+qQ5ZERkvclxsiXJlInfzkovj
-         IiIFUHeuVxtpDVfbK2oFg2CCdcbjxlSaXpUkTxLXa2jtwBtHkHs4BF2xT5zU8Lw4gqsi
-         qjPW2Z9eAEWJBkGqb35WI2cm+pMfkaBTHtr2Im0KiYB4tqGBRm87M81T6JZ/2D56VI6y
-         /tFA==
-X-Forwarded-Encrypted: i=1; AFNElJ/bTyacgTTnhN6xIsSEggAwqg1PaJ/wVXkTfJv5X35cMvBH88JMFhCZQQf8lCrcxg9VlrL3hL5v7SSFyYdPXw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxly91EIyspac83ObdmxfVfRPFAvb+N+cCXsNH5PSpQ1m9i23Sa
-	KF2j26CtW0VJj08+Slwp0rCwXnZ4Bpzg7IRYrljRC1aBAU6NXtomGSqi
-X-Gm-Gg: Acq92OGaN14mcCB99+VyZg2oALzYyeu7JTs1kqRBvEQq4hzqaQQLTh5VNe9nNjsBX4b
-	tfYr7Fag0fWKRoztnl0lbFB+MvwKA8ywTB+joLTB949sEmtcJjOgOqefBpwUtxVww39Loeiutf4
-	noTLP+ZoSqipGkfFi5Kzvt9aHw+VCgC0QVy8GHnMaWo7pm61rNKQWojnZjbNZqG8SHoZKKWP0eU
-	U2AZQWZ2aij7rEChHH5K/djV1ogaWkoGhWYYhkusyEpvNF52mZdhJVvGK/lb5lBJuLcIQwxA+/b
-	t4PkvxniB1yuFRpp8ouqKl6dCS64KzwB3Be0TpL51Y5j2n0TzChekgUsOeKDQ3GLsGOYMth1I3z
-	5UQO2hOG18JJG4ux+ZTH3KCmnqBvINCjJZ/g9/7GqXvIuIX5mzayMBSzA3NNHsfwhT/1XJ3cdX0
-	Quibl8LQgYAX2dJodgk4QUXCk7RhHA19q7tdm5rnQ=
-X-Received: by 2002:a17:903:1b47:b0:2c0:3400:5c34 with SMTP id d9443c01a7336-2c4111b5cbemr97182875ad.3.1781410713730;
-        Sat, 13 Jun 2026 21:18:33 -0700 (PDT)
-Received: from [192.168.89.2] ([115.4.79.42])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2c4327ac79fsm57407845ad.45.2026.06.13.21.18.30
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 13 Jun 2026 21:18:33 -0700 (PDT)
-Message-ID: <f34dfb84-3aaf-4094-ada7-b19e3449cdda@gmail.com>
-Date: Sun, 14 Jun 2026 13:18:29 +0900
+        d=1e100.net; s=20251104; t=1781421254; x=1782026054;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:subject:cc:to:from:date:message-id:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=t6JKdGL8Xe2lq+/BiQDSaNE1rM0cDe8Om7VyrIfgze4=;
+        b=hZ6wqjUzt2qxoEeLSDPjq8jdFU4QWaW2S478Eow0yajYoBXfGLgnlEiaOPhunRXPiq
+         RCZyg5/Pz11YpAhS+ZUfh+BMVuyHHlpT3Am9/pBdJypodJmfANnjRVYuKEmYcT9U7RxA
+         ZR+/oCUsWy823TRCGGtC7Fs3qED7BCOYCLcxM/yT2dzvaKaimsPOEjkHJ/eZssprEKxI
+         bDvtX8Oqf0DY85+33JlSN8ZswUaUg+w8ZuxvpGw+a4dxjRWT2kO5nBuN3Hu6wBJSWHnb
+         BT4u8xSMDRnd7kwbb4YsOaciKgaUxgBd0LNoOxdfqnDkrVnXVvUcQbdrNdSVCMwriavZ
+         OF0w==
+X-Forwarded-Encrypted: i=1; AFNElJ9w3CjfgN1v2rK1LMSRHAyEszHsb0BZtzU+A/BgrtBst5ioaxLmapgo2EoJ2jfNxvxo20gOq5HMMYNQSCkTug==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwZoP5WO+x5yJDgLn2lBiv9rDNSnEnM4izvd9WBpcYJets7p0r+
+	alVNHlYegj4sPSFwhLvqDyGOLctN035SSpVIl/xaV5BrRyMeYfDKEnZ0
+X-Gm-Gg: Acq92OFJy5lBUfB+rlj/Q/mJ1R0D76mwrNegii8eZxAWs90WcJp95atIkW+et/7gy24
+	5vAmJ1m4AS0WVAZTlRVJaAYCrndL7B8isemxlfK0Tb8lDRJGPqYudlbeJmRSYi2i41CZYWPYd+R
+	vMhBa8xmY0yUacx9m3Ugg68czO+W6/reeexc8uAFyh/lH8fRYn+WYV/4KNUYyZPLHJSYbdjO3yo
+	jPiptuUL01f46D+e1gHjyvJcDDbF6eL3m6pI8qK+e/mlW8XefTCmgdcuedtj+N3tQAPucgKcevn
+	aTORQLuO4kn5xBh3c84C4F8v7hPCHiXIPSpIRwcryTQIi1dbD9to/w93qLGb98bjGXyO3H1fIAX
+	+cZrIthBm2UBiZ5LYq1AmPZPdFsbh818Uy/jPEGuhtxr77GIoZHNz5RTF9Dvmh5HlE6zhzL2caV
+	0Gqaj4GG+4uGuwwHqMMxkxH8iYSHmMnGO0/mZutJylRrqCb1ey9zqOFjJoe1TqYjkX
+X-Received: by 2002:a05:6000:420e:b0:43c:f66e:f24 with SMTP id ffacd0b85a97d-4607ebf8195mr6941469f8f.35.1781421254134;
+        Sun, 14 Jun 2026 00:14:14 -0700 (PDT)
+Received: from Ansuel-XPS. (93-34-88-103.ip49.fastwebnet.it. [93.34.88.103])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4606f2d933esm20866652f8f.33.2026.06.14.00.14.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 14 Jun 2026 00:14:13 -0700 (PDT)
+Message-ID: <6a2e54c5.56f33bf0.2d579f.295c@mx.google.com>
+X-Google-Original-Message-ID: <ai5UwygS775FPbdx@Ansuel-XPS.>
+Date: Sun, 14 Jun 2026 09:14:11 +0200
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: "Wayen.Yan" <win847@gmail.com>
+Cc: linux-pm@vger.kernel.org, "Rafael J. Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@kernel.org>,
+	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] thermal/drivers/airoha: Fix low trip clamp using wrong
+ variable
+References: <6a2df296.6b2684af.263065.8200@mx.google.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH net-next 0/7] net: airoha: add EN7581 SOE ESP packet
- offload
-To: netdev@vger.kernel.org, Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: "David S . Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
- Simon Horman <horms@kernel.org>, Herbert Xu <herbert@gondor.apana.org.au>,
- Steffen Klassert <steffen.klassert@secunet.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Christian Marangi <ansuelsmth@gmail.com>, Felix Fietkau <nbd@nbd.name>,
- linux-kernel@vger.kernel.org
-References: <20260614040032.1567994-1-hurryman2212@gmail.com>
-Content-Language: en-US
-From: Jihong Min <hurryman2212@gmail.com>
-In-Reply-To: <20260614040032.1567994-1-hurryman2212@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <6a2df296.6b2684af.263065.8200@mx.google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260613_211834_971934_B0AC23FF 
-X-CRM114-Status: GOOD (  20.52  )
+X-CRM114-CacheID: sfid-20260614_001416_796118_4F8EBFD3 
+X-CRM114-Status: GOOD (  19.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,76 +104,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 6/14/26 13:00, Jihong Min wrote:
-> Add Secure Offload Engine (SOE) support for the Airoha EN7581 Ethernet
-> driver. SOE provides inline ESP packet offload for native ESP and NAT-T
-> traffic, with the Ethernet/QDMA path used to submit packets to the SOE
-> block and the PPE path used to bind eligible ESP flows. NETIF_F_GSO_ESP
-> and NETIF_F_HW_ESP_TX_CSUM are intentionally left out for now and will be
-> revisited separately for feasibility.
+On Sun, Jun 14, 2026 at 08:14:11AM +0800, Wayen.Yan wrote:
+> In airoha_thermal_set_trips(), the low trip validation incorrectly
+> clamps 'high' instead of 'low':
 > 
-> This is posted as RFC because the code was originally developed and tested
-> against an OpenWrt 6.18 Airoha tree, not against the current upstream
-> net-next driver. The original OpenWrt commit used as the source for this
-> RFC is available at:
-> https://github.com/hurryman2212/OpenW1700k-test/commit/7c1b5e662f7790b3d23ed143beadc1dcbf6d15f7
+>   low = clamp_t(int, high, RAW_TO_TEMP(priv, 0), ...);
 > 
-> The SOE part is intentionally linked into the airoha Ethernet module
-> instead of being exposed as an independent crypto or platform driver. The
-> user-visible ESP offload control is a netdev capability: xfrmdev_ops and
-> NETIF_F_HW_ESP live on the target netdev, and the feature can be controlled
-> through the usual netdev feature path. SOE also shares the FE/QDMA/PPE
-> datapath, private queues, DSA conduit handling and netdev lifetime owned by
-> airoha_eth.
+> This causes TEMPOFFSETL to receive the clamped high-temperature value
+> instead of the requested low-temperature value, making the low-temperature
+> alert threshold identical to the high-temperature threshold. As a result,
+> low-temperature interrupts can never fire independently.
 > 
-> Patch 1 adds xdo_dev_packet_xmit() because the existing XFRM packet
-> offload transmit path does not provide a hook for hardware whose ESP engine
-> is reached through device-specific packet forwarding. SOE needs to consume
-> the skb, add a hardware hop descriptor, steer it to a private QDMA path and
-> return the final transmit status. Drivers that do not implement the
-> optional callback keep the existing XFRM output behavior.
+> Fix by replacing 'high' with 'low' in the clamp expression, matching
+> the symmetric pattern used for the high trip on line 264.
 > 
-> Jihong Min (7):
->   xfrm: allow packet offload drivers to own transmit
->   dt-bindings: net: airoha: add EN7581 SOE
->   arm64: dts: airoha: add EN7581 SOE node
->   net: airoha: add SOE registers and driver state
->   net: airoha: add QDMA support for SOE packets
->   net: airoha: add PPE support for SOE flows
->   net: airoha: add SOE XFRM packet offload support
+> Fixes: 42de37f40e1b ("thermal/drivers: Add support for Airoha EN7581 thermal sensor")
+> Signed-off-by: Wayen <win847@gmail.com>
+> ---
+>  drivers/thermal/airoha_thermal.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
->  .../bindings/net/airoha,en7581-soe.yaml       |   48 +
->  MAINTAINERS                                   |    1 +
->  arch/arm64/boot/dts/airoha/en7581.dtsi        |    6 +
->  drivers/net/ethernet/airoha/Kconfig           |   13 +
->  drivers/net/ethernet/airoha/Makefile          |    1 +
->  drivers/net/ethernet/airoha/airoha_eth.c      |  668 +++++-
->  drivers/net/ethernet/airoha/airoha_eth.h      |   40 +
->  drivers/net/ethernet/airoha/airoha_ppe.c      |  606 +++++-
->  drivers/net/ethernet/airoha/airoha_regs.h     |   16 +
->  drivers/net/ethernet/airoha/airoha_soe.c      | 1896 +++++++++++++++++
->  drivers/net/ethernet/airoha/airoha_soe.h      |  126 ++
->  include/linux/netdevice.h                     |    8 +
->  include/linux/soc/airoha/airoha_offload.h     |    5 +
->  net/xfrm/xfrm_output.c                        |   11 +
->  14 files changed, 3342 insertions(+), 103 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/net/airoha,en7581-soe.yaml
->  create mode 100644 drivers/net/ethernet/airoha/airoha_soe.c
->  create mode 100644 drivers/net/ethernet/airoha/airoha_soe.h
+> diff --git a/drivers/thermal/airoha_thermal.c b/drivers/thermal/airoha_thermal.c
+> index b9fd6bfc88..439aa011b7 100644
+> --- a/drivers/thermal/airoha_thermal.c
+> +++ b/drivers/thermal/airoha_thermal.c
+> @@ -273,7 +273,7 @@ static int airoha_thermal_set_trips(struct thermal_zone_device *tz, int low,
+>  
+>  	if (low != -INT_MAX) {
+>  		/* Validate low and clamp it to a supported value */
+> -		low = clamp_t(int, high, RAW_TO_TEMP(priv, 0),
+> +		low = clamp_t(int, low, RAW_TO_TEMP(priv, 0),
+>  			      RAW_TO_TEMP(priv, FIELD_MAX(EN7581_DOUT_TADC_MASK)));
+>  
+>  		/* We offset the low temp of 1°C to trigger correct event */
+> -- 
+> 2.51.0
+> 
 > 
 
-I noticed, after posting this RFC, that I forgot to include the
-following trailer while preparing the latest patch series:
+Hi I already submitted the same patch in the AN7583 series. Can you review
+that patch so maybe we can try to push fix for this?
 
-Assisted-by: Codex:gpt-5.5
-
-These patches were written and tested with AI assistance, although I've
-reviewed the resulting code and test results. I'll include the trailer
-properly in future revisions or submissions. Sorry.
-
-
-Sincerely,
-Jihong Min
+-- 
+	Ansuel
 
