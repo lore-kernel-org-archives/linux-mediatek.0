@@ -4,57 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78684CD98D2
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Jun 2026 09:26:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE5BDCD98D2
+	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Jun 2026 09:28:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QqTMTiQg1sf52LbnFTly3RfFBwAHjqFaOZSFE8C6iQ8=; b=fqfFrImC5eqNFDFi72jO9DToGl
-	zgA8T67/v7TXlzFZRK9gPr4GyL/KIx0hKcJgy0nyP65P+i/LgpnikxW/9QGMOHXj1ToXYcAPLLofJ
-	CmAeAjyZfqSOTW5yUPt32r3qKZfl6L0hW0vcFFXtjZBnRzgdXJ8X9MpAh64w3K79mUwBHdVWv60GQ
-	3/yVsfmkHnOawSNtaKQ6nWuylwcjfifXUZEEMgJElmwqsj4xw0f0sEMehEc9QGUuNUwRAJj5MWSEp
-	fT2k2wZ+iDpa5pOIlBQu3+QbDatCx7a/ilyw92aQqLi79UVSduF4/VBc1bSBQCc+CsxgpvyBRQErw
-	tQSArAPg==;
+	bh=qqHEqZNJNsjZK9I6sk+rqbOvQVikyDhgsbDLwNY1Oz0=; b=WCSIzXCfhMsxXjQuH4kkCJ5J/r
+	imMrBGSYfpSrdeqCzWJVK4g4iFtkWS756LxTsEturtpkFttQi/oaE5g5ZiYFvIh5MeE8XqaVuUt6e
+	rOXttuC6qntKKHz442Ja8Lfvc0KKA6pLNRcMI1x22h7NXEV3XykU1DbWJ2AKE7FwwsfBDu+IkvReu
+	mrJV9uNM+rpahaiUfsvS2VmgXM3d8HNsSwZrINABb4TIzBZL925AC4zxfDQeY8gsi6olzGLF8sfhk
+	VTy6pHehE2lPrvGbdqrwfz13aaroSWqeL3t08HgVedmsJoRaRIy/E1s3TWtRNNpvQEkSYjuhYybTO
+	L8A5nAzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYh77-0000000Cq72-2MtF;
-	Sun, 14 Jun 2026 09:26:45 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wYh95-0000000CqDb-3V8c;
+	Sun, 14 Jun 2026 09:28:47 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYh75-0000000Cq6v-3wKT
+	id 1wYh94-0000000CqDR-24FD
 	for linux-mediatek@lists.infradead.org;
-	Sun, 14 Jun 2026 09:26:44 +0000
+	Sun, 14 Jun 2026 09:28:46 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id DA90B6008A;
-	Sun, 14 Jun 2026 09:26:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 105241F000E9;
-	Sun, 14 Jun 2026 09:26:41 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 3CD01400C8;
+	Sun, 14 Jun 2026 09:28:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 944C81F000E9;
+	Sun, 14 Jun 2026 09:28:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781429202;
-	bh=QqTMTiQg1sf52LbnFTly3RfFBwAHjqFaOZSFE8C6iQ8=;
+	s=k20260515; t=1781429326;
+	bh=qqHEqZNJNsjZK9I6sk+rqbOvQVikyDhgsbDLwNY1Oz0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=hwkZQqtd4opBAdy2o1ZHR9ZMbv03X9dvQK+31NZdxMF1MlXWQjho9sAMeAz4tW9v1
-	 0xN6owDCIGOz9k3HNDB8me/Yar9ahFhQ5dgMV1trfDcwLW7fvvIyg/qIuXVj3+vMv/
-	 Ax0NU0Es/6pyVCzfOGOUQA+PZ+TsNmWOlXmnBrFkxyQNVY/JY0CmbwdvUPTglR5b5s
-	 +iT98q643glfs/MfDRgC4DIRUaeZwDg2L5Y2E+Z1osXhLGjhS4Q8i+W0NAN8MOIzUm
-	 VuSnLLFy/AXJI/7AIBz5BRylSxtO4+j7AajcNQ1rHr+fD/ip4BAz5gZrFg5S58eobq
-	 6owLNsCuHDBwQ==
-Date: Sun, 14 Jun 2026 11:26:39 +0200
+	b=mv+DF5rOTEgmQYVWkV9d43nvbJDKv1wPLcVCUhiFkcxOuZf1hTlXa+7sNy9fpB2+O
+	 cpMinbgi+Pqt6mNbG7V0VD125vFvScUK0ok1Tu4RKF5UyR/cEglwbl8odJ2COaaiJR
+	 onrFuuFXN4hfawkVFiyvrbXv+LdosY1MMPldpVjvWYY9wYMqoAghkMlwtHeeeQJhVh
+	 zlR+W4nyBy5ZsphzvROBvoxbXpgRCqoGP1MuI7H5PXvl81KIosT4ztF2ebNZ1g4KKj
+	 GOGFKTBjCjEYlL5Z4nOVuwOD7xVtWFaPgrfLc1JOufYjqGceMBCjYJicg0MZy5Ktqz
+	 fMM6KURRPoW3A==
+Date: Sun, 14 Jun 2026 11:28:43 +0200
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: Sean Wang <sean.wang@kernel.org>
 Cc: Felix Fietkau <nbd@nbd.name>, linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 0/5] wifi: mt76: add USB RX aggregation support
-Message-ID: <ai5zzwOcBrrtvjNk@lore-desk>
+	linux-mediatek@lists.infradead.org,
+	Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH 1/5] wifi: mt76: usb: size RX page-pool pages from queue
+ buffer
+Message-ID: <ai50S1JgkAdVJfST@lore-desk>
 References: <20260613224655.2405686-1-sean.wang@kernel.org>
+ <20260613224655.2405686-2-sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="pyRDaUZ8du7f0YkO"
+	protocol="application/pgp-signature"; boundary="bg1KybBuqNpXKicp"
 Content-Disposition: inline
-In-Reply-To: <20260613224655.2405686-1-sean.wang@kernel.org>
+In-Reply-To: <20260613224655.2405686-2-sean.wang@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,84 +73,60 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---pyRDaUZ8du7f0YkO
+--bg1KybBuqNpXKicp
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> This series adds optional USB RX aggregation support to mt76 and enables
-> it on mt7927u.
+> From: Sean Wang <sean.wang@mediatek.com>
 >=20
-> RX aggregation allows multiple RX frames to be received from one USB URB,
-> reducing USB completion overhead and improving RX efficiency for
-> high-throughput RX traffic and monitor capture.
+> Use the RX queue buffer size to select the page-pool allocation order.
+> This lets USB devices use larger RX buffers without silently allocating
+> undersized order-0 pages.
+>=20
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mac80211.c | 3 +++
+>  1 file changed, 3 insertions(+)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/=
+wireless/mediatek/mt76/mac80211.c
+> index 13c4e8abe281..6ff1eada6d09 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mac80211.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
+> @@ -628,6 +628,9 @@ int mt76_create_page_pool(struct mt76_dev *dev, struc=
+t mt76_queue *q)
+>  	if (!is_qrx && !mt76_queue_is_wed_tx_free(q))
+>  		return 0;
+> =20
+> +	if (q->buf_size > PAGE_SIZE)
+> +		pp_params.order =3D get_order(q->buf_size);
 
-Hi Sean,
-
-MT76 usb already supports Scatter-Gather (SG) for RX urbs in order to recei=
-ve
-multiple buffers in the same urb. Since this approach has a better memory
-footprint, can we reuse this approach?
-Moreover, can you please provide some performance comparison? (e.g. through=
-put
-and memory usage).
+I guess you are interested just in usb devices here, right? Moreover, are y=
+ou
+interested just in MT_RXQ_MAIN queue?
 
 Regards,
 Lorenzo
 
->=20
-> The common USB support remains opt-in, so existing USB drivers keep the
-> current behavior unless they explicitly enable RX aggregation. The same
-> settings work for both mt7927u and mt7925u, but this series enables the
-> feature only on mt7927u for now.
->=20
-> This series does the following:
->=20
-> - size RX page-pool pages from the queue buffer size
-> - support out-of-order RX URB completion
-> - add optional USB RX aggregation parsing
-> - add debugfs stats to verify aggregation behavior
-> - enable USB RX aggregation on mt7927u
->=20
-> The series is based on wireless-next commit:
->=20
-> 21352612198c ("b43: add RF power offset for N-PHY r8 + radio 2057 r8")
->=20
-> It also cherry-picks the following patch from patchwork as a dependency:
->=20
-> wifi: mt76: mt76u: use a threaded NAPI for the RX path
-> Link: https://lore.kernel.org/all/20260609105301.196302-1-phial@phiality.=
-com/
->=20
-> Sean Wang (5):
->   wifi: mt76: usb: size RX page-pool pages from queue buffer
->   wifi: mt76: usb: support out-of-order RX URB completion
->   wifi: mt76: usb: add optional RX aggregation support
->   wifi: mt76: usb: add debugfs aggregation stats
->   wifi: mt76: mt7927u: enable USB RX aggregation
->=20
->  drivers/net/wireless/mediatek/mt76/debugfs.c  |  35 +++
->  drivers/net/wireless/mediatek/mt76/mac80211.c |   3 +
->  drivers/net/wireless/mediatek/mt76/mt76.h     |  38 ++-
->  .../net/wireless/mediatek/mt76/mt7925/usb.c   |  18 +-
->  .../net/wireless/mediatek/mt76/mt792x_usb.c   |  23 +-
->  drivers/net/wireless/mediatek/mt76/usb.c      | 251 ++++++++++++++++--
->  6 files changed, 335 insertions(+), 33 deletions(-)
->=20
+> +
+>  	switch (idx) {
+>  	case MT_RXQ_MAIN:
+>  	case MT_RXQ_BAND1:
 > --=20
 > 2.43.0
 >=20
 
---pyRDaUZ8du7f0YkO
+--bg1KybBuqNpXKicp
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCai5zzwAKCRA6cBh0uS2t
-rCL5AQD36+ZV63ZKM6pJRZP22/1sqTURbayd1hEhI0lMVKf43gD/SF0dbi/igXqj
-DfJcZqHMDeVDEevEJBwuDnj4/GwA9gc=
-=kFQp
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCai50SwAKCRA6cBh0uS2t
+rFjmAQDs02PyFHYQXUrmHijoXehLFvuHRG+XsNI5x6nK+MRBzwEAnEd1hrSzNXIx
+BjhBi2O6GmTUPAOU6BfaEib1AFDnngE=
+=s+16
 -----END PGP SIGNATURE-----
 
---pyRDaUZ8du7f0YkO--
+--bg1KybBuqNpXKicp--
 
