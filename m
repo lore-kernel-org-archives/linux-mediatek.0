@@ -4,100 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61CE5CD98DE
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Jun 2026 15:56:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D086CD98C5
+	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Jun 2026 17:11:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8jz+BPfeJA3CKv3gaCxJRY7nP9NRgfQenpRYWfzzFvk=; b=zboLQYrzceB3kY5gbajDR1h1s4
-	zpbbGVGfIlGKiFahH8z+Y64W9prtPFOTdiuYETJLOMjCht6DYjDx2wZSEMxmVnVp9KDlXH++4EjW1
-	hhXQRkD3F9YbpjQtcdQ7Uz/ApXPq3bQo4wx0RE4lAlTCqaRnsClpXZqec37qAWC+Dexu2q2P0fiyn
-	HxX1/VC6RBKMz9GH3L9jZp3UQeLSxhQzGzprOHIXoSOARXsL/3u9wm+lgIfMo7VcYcwv79Xx7aft0
-	UPBgq8vw7G6HbTNjYL4xI+BGogkr54zHwIKzKbA89bE+U3+DnVwJi8icr2fy2oCU5QEyNWklkzZHF
-	ZVAo+68w==;
+	bh=DCdzVaLtfObb9ZWcY0NE9dFqLduRZkfGF/mOGT7kBic=; b=NB8X+qgX2dqvMrSqGV+/LsW0vr
+	bKkHaRiaviA5PtehfS8IFKH31XoSF3yeA0hyl0bly0Ai5UGQGx1gCAiRi3JPUfggcdv8WPDvEi5lr
+	tItrXYXruxyW8Jgrmb8V4XvK4yZylNQVCZ0LNazEG1WvGtmW30T9vIuxfjBkBlZbItmCUKrc8wwnc
+	vAo7Hycd90nDbDcD3Q+EYdz6EwMW+NxThWnZRlukRpu8rhLYl4FM8v9ay3zbJdUhqHLnDQgT2T/i4
+	zMn4ZbmADMsJY6twC8iNsiYW1N9E4je+ffFuruibzxVLfoJXZMGinTpyZAE+ItSIeCAHxvjMev86r
+	Z9DHZO1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYnCF-0000000D9ki-1qBk;
-	Sun, 14 Jun 2026 15:56:27 +0000
-Received: from mail-qv1-xf30.google.com ([2607:f8b0:4864:20::f30])
+	id 1wYoN4-0000000DCrs-0kXA;
+	Sun, 14 Jun 2026 17:11:42 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYnCC-0000000D9ek-3Lg5
-	for linux-mediatek@lists.infradead.org;
-	Sun, 14 Jun 2026 15:56:26 +0000
-Received: by mail-qv1-xf30.google.com with SMTP id 6a1803df08f44-8ce9e56f68cso21432526d6.2
-        for <linux-mediatek@lists.infradead.org>; Sun, 14 Jun 2026 08:56:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781452583; x=1782057383; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=8jz+BPfeJA3CKv3gaCxJRY7nP9NRgfQenpRYWfzzFvk=;
-        b=OQFOmulsisiNJop2TK/MfEvAOUHeBARY82w1iikH4bGIv1tCZKaAgQJ8EPBGQ/vI3g
-         n3u/Gy6hmXn9+H2m/J9pruc1SEcs5zYeu0abU5LJ/QwsJdB2lm2r4TWrz+pkejVsvITB
-         kn7SRoI2qQ+Y/HIkjQGXYMaR26u8kictkyfhk/SQS9It7DnmForNZZsX2Y/PpltgKiMy
-         Qqz+0M7wFf1sOQo3b0aH7IHeqKHxP7KPRlzjHIKQBhTykas0UH5aD6sgC1bFZmJ31md0
-         vTfobQX0iDY79h4ERDSpP6dxGOCdU265R3F6MKGjT4xs1X2qTiARuVlSvWG9bGzAlv4t
-         0PYg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781452583; x=1782057383;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=8jz+BPfeJA3CKv3gaCxJRY7nP9NRgfQenpRYWfzzFvk=;
-        b=kAhLPnp3552+EmipKgr8oaOwJDu9P3BNvDonNAx2vo2bVOSF4x9UM7mKQ0OeEwGTj2
-         ZWEds2Edj5ETH15nQvHOBX6YL5H6atZzKb73VfVihyO6s44LNP5DcBcrkuVXebUQN2wm
-         8+EiU9IPZJLAir9hDoKxZk62e9ju8A9Jn6QYhHcjCcuN/muyh3XPh8DS3lA9PacfSa14
-         4xR7NT37DHaR49rTaKYT/oW/pXmKEDuyxE3oJN544zMAxy5AXXHY5tz7mLf+iKw7T36b
-         87TgMaxf1tusN4iIGs/qSrpPe0bCYUDG1xPrhVaSMzffLP+z/K4Ej8WY//Nqx8uwOjCG
-         Nymw==
-X-Forwarded-Encrypted: i=1; AFNElJ88C03VN8JhDMWorP0WfGqXbW5U0ALqWCbHPDwZYZ5qNhPK0z0jw7O6UC3zyCT1xZzvAt/qiZA6nPq1d6hdzA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyVC4vx3LtZe91sdIwR7W1Zt8dbogdHVlQWV6n463+9+rvyWUdo
-	6UYqlwLazo9xHaOFvV2zgnYz/0IBCjQL6wqgcLbuCsg3k5Z+mEsnT7cn
-X-Gm-Gg: Acq92OGzfz3h3R/CSCvo0gVlg7Z+DbFmZMdgVDB98utVet55gp9gYoHCKjyAoUSgF16
-	6/0d5hCVXZ8Kt+Bkob1Dh2nHCpNqg1ga0TZ6bRBl+fkLUV6QhZjpGYBkQ5PnB2Xe0YU2AogqaS7
-	rgWx31JDX7OYyaQfevvxaz8j9G/GaRdx3UKKBWPOKHPfFN02dF7H7DZDz41Y35A2dOj+b3DOdFm
-	Is7ZL70JoUESferrSNlQOPNytBwkznd7DljRBQT6GWRJxA10UKK+W4npH6CH0X6juKVVIHwEAXF
-	tc7xgcjCWAC+Tq5aWT/Zm4ODs/E5pNyE9aUCQSdDB0RI/tFAZxHvK8Wxo2jidwyVkeGrS8IRka+
-	4xUfRdu8k6v5uYb5oqsUkPPEDPmy1HKhvVcvY9QA/FL3Po7F55FQ9Luye2GCwTyATEyk0zskPFb
-	CXXKgQO0tmIYZ0FVbVDJSEjXY1k9z08a67KM+g+SXLIMGNyqTcsDI5a3v5wUiyCgYP/mgRCH4AV
-	qY/IEBH6hEhDJ7ziKFHf509GKXdP5U0M3MqSB5C4b0=
-X-Received: by 2002:a05:6214:e48:b0:8be:3da0:bbac with SMTP id 6a1803df08f44-8d32b56ffe0mr182671126d6.3.1781452583338;
-        Sun, 14 Jun 2026 08:56:23 -0700 (PDT)
-Received: from server0.tail6e7dd.ts.net (c-68-48-65-54.hsd1.mi.comcast.net. [68.48.65.54])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-8d30522cbeasm82008446d6.44.2026.06.14.08.56.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 14 Jun 2026 08:56:21 -0700 (PDT)
-From: Michael Bommarito <michael.bommarito@gmail.com>
-To: Hans Verkuil <hverkuil@kernel.org>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Kees Cook <kees@kernel.org>,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 6/6] media: v4l2-ctrls: add KUnit tests for compound control tile validation
-Date: Sun, 14 Jun 2026 11:56:08 -0400
-Message-ID: <20260614155609.3107600-7-michael.bommarito@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260614155609.3107600-1-michael.bommarito@gmail.com>
-References: <20260614155609.3107600-1-michael.bommarito@gmail.com>
+	id 1wYoN2-0000000DCrd-1nVB;
+	Sun, 14 Jun 2026 17:11:40 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 6A49D42ABB;
+	Sun, 14 Jun 2026 17:11:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67D801F000E9;
+	Sun, 14 Jun 2026 17:11:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1781457099;
+	bh=DCdzVaLtfObb9ZWcY0NE9dFqLduRZkfGF/mOGT7kBic=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=WJENZEyZBWe3+949+6oiVJgtitZd3LYuAyoJFHmYSKCxnRwM/AMDYzq1nYrKbNSIT
+	 LunA/Hb6tG5KJz1R4yC2F8D7z8/kBN0R5UlCPbDnS28MUXoWrwCyMAJX7KHOgRlILA
+	 ePSPKMM4r1FP+kZiCA2L/17m1RX7huz+ImquUWSJRPNmbqVaBnn/bWk5SZV+wgcGOU
+	 jr8LI5sF6WWXV/8FsEPx+u+f+H8hqc6xmTB5PrjISjG/YwZcLh/KMVZNOiVl51kLKI
+	 aA/lN4/X21MWjDIuCjIana8E+k8ktTpCxbEPiiEdtDCc2HA0WX96IsfM2IkpbtuWyg
+	 0BZSzL2SUMt1A==
+Date: Sun, 14 Jun 2026 18:11:28 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Andy Shevchenko <andriy.shevchenko@intel.com>
+Cc: Roman Vivchar <rva333@protonmail.com>, David Lechner
+ <dlechner@baylibre.com>, Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Rob
+ Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
+ Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Lee
+ Jones <lee@kernel.org>, linux-iio@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Ben Grisdale <bengris32@protonmail.ch>
+Subject: Re: [PATCH v2 2/4] iio: adc: mt6323-auxadc: add mt6323 PMIC AUXADC
+ driver
+Message-ID: <20260614181128.4c1b762a@jic23-huawei>
+In-Reply-To: <aihqeLKHC3PP436t@black.igk.intel.com>
+References: <20260609-mt6323-adc-v2-0-aa93a22309f9@protonmail.com>
+	<20260609-mt6323-adc-v2-2-aa93a22309f9@protonmail.com>
+	<aihbxowyAIlSeDjH@ashevche-desk.local>
+	<hacDZbv1Whk_g8AMSfJqKHrgXfyVKt2o3_UGK-1k9jNRJyMxEFPztGhytHvHbc1x9j-F84I_ZuprmXWf2Azbtdqj2vnVal4PO1gG_DijYyA=@protonmail.com>
+	<aihqeLKHC3PP436t@black.igk.intel.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260614_085624_864819_BE75E208 
-X-CRM114-Status: GOOD (  18.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,194 +80,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Drive std_validate_compound() with crafted HEVC PPS and AV1 frame controls
-and assert that out-of-range tile counts are rejected with -EINVAL while
-in-range values pass, including the zero-initialised AV1 frame default that
-userspace and v4l2-compliance submit. The tests are #included at the end of
-v4l2-ctrls-core.c to reach the static helper, gated by
-CONFIG_V4L2_CTRLS_KUNIT_TEST.
+On Tue, 9 Jun 2026 21:33:12 +0200
+Andy Shevchenko <andriy.shevchenko@intel.com> wrote:
 
-Signed-off-by: Michael Bommarito <michael.bommarito@gmail.com>
-Assisted-by: Claude:claude-opus-4-8
----
- drivers/media/v4l2-core/Kconfig               |  12 ++
- .../media/v4l2-core/v4l2-ctrls-core-test.c    | 130 ++++++++++++++++++
- drivers/media/v4l2-core/v4l2-ctrls-core.c     |   4 +
- 3 files changed, 146 insertions(+)
- create mode 100644 drivers/media/v4l2-core/v4l2-ctrls-core-test.c
+> On Tue, Jun 09, 2026 at 07:15:42PM +0000, Roman Vivchar wrote:
+> > On Tuesday, June 9th, 2026 at 9:30 PM, Andy Shevchenko <andriy.shevchenko@intel.com> wrote:  
+> > > On Tue, Jun 09, 2026 at 04:31:59PM +0300, Roman Vivchar via B4 Relay wrote:  
+> 
+> ...
+> 
+> > > > +	case IIO_CHAN_INFO_RAW:
+> > > > +		scoped_guard(mutex, &auxadc->lock) {  
+> > >
+> > > I'm wondering why we haven't moved to guard()() here  
+> > 
+> > The compiler would complain about 'cannot jump from switch statement'
+> > due to default case.  
 
-diff --git a/drivers/media/v4l2-core/Kconfig b/drivers/media/v4l2-core/Kconfig
-index d50ccac9733cc..04b15d860a0af 100644
---- a/drivers/media/v4l2-core/Kconfig
-+++ b/drivers/media/v4l2-core/Kconfig
-@@ -3,6 +3,18 @@
- # Generic video config states
- #
- 
-+config V4L2_CTRLS_KUNIT_TEST
-+	bool "KUnit tests for V4L2 compound control validation" if !KUNIT_ALL_TESTS
-+	depends on VIDEO_DEV && KUNIT=y
-+	default KUNIT_ALL_TESTS
-+	help
-+	  This builds KUnit tests for the stateless-codec compound control
-+	  validation in std_validate_compound(). They check that out-of-range
-+	  HEVC/AV1 tile counts and parameter-set / tile indices are rejected
-+	  before driver code consumes them as array indices or loop bounds.
-+
-+	  If unsure, say N.
-+
- config VIDEO_V4L2_I2C
- 	bool
- 	depends on I2C && VIDEO_DEV
-diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core-test.c b/drivers/media/v4l2-core/v4l2-ctrls-core-test.c
-new file mode 100644
-index 0000000000000..813872694eb46
---- /dev/null
-+++ b/drivers/media/v4l2-core/v4l2-ctrls-core-test.c
-@@ -0,0 +1,130 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+/*
-+ * KUnit tests for HEVC/AV1 tile-count validation in std_validate_compound().
-+ * #included at the end of v4l2-ctrls-core.c to reach the static helper.
-+ */
-+
-+#include <kunit/test.h>
-+
-+static int call_validate_compound(enum v4l2_ctrl_type type, void *payload,
-+				  u32 elem_size)
-+{
-+	struct v4l2_ctrl ctrl = {
-+		.type = type,
-+		.elem_size = elem_size,
-+	};
-+	union v4l2_ctrl_ptr ptr = { .p = payload };
-+
-+	return std_validate_compound(&ctrl, 0, ptr);
-+}
-+
-+/* HEVC PPS: num_tile_columns_minus1 / num_tile_rows_minus1 bounds. */
-+static void v4l2_ctrls_hevc_pps_tile_cols(struct kunit *test)
-+{
-+	struct v4l2_ctrl_hevc_pps *pps;
-+
-+	pps = kunit_kzalloc(test, sizeof(*pps), GFP_KERNEL);
-+	KUNIT_ASSERT_NOT_NULL(test, pps);
-+
-+	pps->flags = V4L2_HEVC_PPS_FLAG_TILES_ENABLED;
-+
-+	/* In range: count == array capacity (minus1 == capacity - 1). */
-+	pps->num_tile_columns_minus1 = ARRAY_SIZE(pps->column_width_minus1) - 1;
-+	pps->num_tile_rows_minus1 = ARRAY_SIZE(pps->row_height_minus1) - 1;
-+	KUNIT_EXPECT_EQ(test,
-+			call_validate_compound(V4L2_CTRL_TYPE_HEVC_PPS, pps,
-+					       sizeof(*pps)),
-+			0);
-+
-+	/* Out of range: one past the column array. */
-+	pps->num_tile_columns_minus1 = ARRAY_SIZE(pps->column_width_minus1);
-+	pps->num_tile_rows_minus1 = 0;
-+	KUNIT_EXPECT_EQ(test,
-+			call_validate_compound(V4L2_CTRL_TYPE_HEVC_PPS, pps,
-+					       sizeof(*pps)),
-+			-EINVAL);
-+
-+	/* Out of range: maximal attacker value. */
-+	pps->num_tile_columns_minus1 = 0xff;
-+	pps->num_tile_rows_minus1 = 0xff;
-+	KUNIT_EXPECT_EQ(test,
-+			call_validate_compound(V4L2_CTRL_TYPE_HEVC_PPS, pps,
-+					       sizeof(*pps)),
-+			-EINVAL);
-+}
-+
-+/* AV1 frame: tile_cols / tile_rows upper bounds. */
-+static void v4l2_ctrls_av1_frame_tile(struct kunit *test)
-+{
-+	struct v4l2_ctrl_av1_frame *f;
-+
-+	f = kunit_kzalloc(test, sizeof(*f), GFP_KERNEL);
-+	KUNIT_ASSERT_NOT_NULL(test, f);
-+
-+	/*
-+	 * Benign control: a zero-initialised frame (tile_cols == 0) must
-+	 * still pass. Userspace and v4l2-compliance set the zeroed default,
-+	 * and the divisor that a zero tile_cols would feed is guarded in the
-+	 * consuming driver rather than rejected here.
-+	 */
-+	KUNIT_EXPECT_EQ(test,
-+			call_validate_compound(V4L2_CTRL_TYPE_AV1_FRAME, f,
-+					       sizeof(*f)),
-+			0);
-+
-+	/* In range: a 1x1 tiling. */
-+	f->tile_info.tile_cols = 1;
-+	f->tile_info.tile_rows = 1;
-+	KUNIT_EXPECT_EQ(test,
-+			call_validate_compound(V4L2_CTRL_TYPE_AV1_FRAME, f,
-+					       sizeof(*f)),
-+			0);
-+
-+	/* In range: maximal legal tile_cols / tile_rows. */
-+	f->tile_info.tile_cols = V4L2_AV1_MAX_TILE_COLS;
-+	f->tile_info.tile_rows = V4L2_AV1_MAX_TILE_ROWS;
-+	KUNIT_EXPECT_EQ(test,
-+			call_validate_compound(V4L2_CTRL_TYPE_AV1_FRAME, f,
-+					       sizeof(*f)),
-+			0);
-+
-+	/* Out of range: tile_cols past the array. */
-+	f->tile_info.tile_cols = V4L2_AV1_MAX_TILE_COLS + 1;
-+	f->tile_info.tile_rows = 1;
-+	KUNIT_EXPECT_EQ(test,
-+			call_validate_compound(V4L2_CTRL_TYPE_AV1_FRAME, f,
-+					       sizeof(*f)),
-+			-EINVAL);
-+
-+	/* Out of range: maximal attacker value. */
-+	f->tile_info.tile_cols = 0xff;
-+	f->tile_info.tile_rows = 0xff;
-+	KUNIT_EXPECT_EQ(test,
-+			call_validate_compound(V4L2_CTRL_TYPE_AV1_FRAME, f,
-+					       sizeof(*f)),
-+			-EINVAL);
-+
-+	/* Out of range: tile_rows past the array. */
-+	f->tile_info.tile_cols = 1;
-+	f->tile_info.tile_rows = V4L2_AV1_MAX_TILE_ROWS + 1;
-+	KUNIT_EXPECT_EQ(test,
-+			call_validate_compound(V4L2_CTRL_TYPE_AV1_FRAME, f,
-+					       sizeof(*f)),
-+			-EINVAL);
-+}
-+
-+static struct kunit_case v4l2_ctrls_test_cases[] = {
-+	KUNIT_CASE(v4l2_ctrls_hevc_pps_tile_cols),
-+	KUNIT_CASE(v4l2_ctrls_av1_frame_tile),
-+	{}
-+};
-+
-+static struct kunit_suite v4l2_ctrls_test_suite = {
-+	.name = "v4l2-ctrls-compound",
-+	.test_cases = v4l2_ctrls_test_cases,
-+};
-+
-+kunit_test_suite(v4l2_ctrls_test_suite);
-+
-+MODULE_DESCRIPTION("KUnit tests for V4L2 stateless-codec compound control validation");
-+MODULE_LICENSE("GPL");
-diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4l2-core/v4l2-ctrls-core.c
-index 58e2eb7002a19..5e86b6373a136 100644
---- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
-+++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
-@@ -2851,3 +2851,7 @@ int v4l2_ctrl_new_fwnode_properties(struct v4l2_ctrl_handler *hdl,
- 	return hdl->error;
- }
- EXPORT_SYMBOL(v4l2_ctrl_new_fwnode_properties);
-+
-+#if IS_ENABLED(CONFIG_V4L2_CTRLS_KUNIT_TEST)
-+#include "v4l2-ctrls-core-test.c"
-+#endif
--- 
-2.53.0
+See the brackets Andy suggested.  That error is what you get without specifically
+defining the scope.
+
+
+> 
+> I am not sure I follow. See the examples in the existing drivers. They are
+> warning clean in that sense.
+> 
 
 
