@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EB9ACD98D2
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8407FCD98DE
 	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Jun 2026 13:10:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,64 +12,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5zfgey8wi8pckGyHiNYDJA2CHFfMtkrqEl07FMub/Hg=; b=m1fvdY3mtToE4RmEBmolIu8e/2
-	cUZPOkZTC8r8zzGKErc9HmDQIxtLBr16rrg/McUpXcT2FbwdXtTPTgYb4gMUCqsf6p4Az3y3oh62Z
-	th6mJyyy9QYq2q6DFyDimFQqXvjtfIlpeczBjPyYLqbloZv8i5GmO9mtqCqMrxRxfH0tZEzVLlkGw
-	42mQroZYEymqDjPWRBm7pP8kCgKRTvciJc51knLTST58aihJv/Y1us/sJGUlyQAV6s53YCweIwGL/
-	ibvoWpqN9ufk20ev18Ua5czKsPU3dBjhu/vcardW1dQXbDBzyYO093b/ORxKcThYtxj/MlMX54gw6
-	FQHrfOVg==;
+	bh=lVl0d1DZ0/rxF5BIn+S5uaENMoHy7Qrp86HW8O6zq18=; b=SJtwqIBJg3e4NXPj/02DeM+kgo
+	5DwCbfu8kuxLeq0OHzhDsmEucR9mpjpGsMnOVAv8dqVHAEo4tn7V0Vozul0jDnB5JrbQRQ/l5T7b/
+	ZHy9Qtqd1H3cAoxbxyHnwFN7EKaP3wz5PgVzBIhlQwzbNjf0tJEn/WcmmzyKpBN3/8w/pXWRHWdYx
+	jmsHtUEETa7cMiIajkDlrjse1dAO0o4Par84MJqIO+lyI233lG/zOaoAlXEXSU7kGotCRmtoR2Xmh
+	hNWR2/RoZg9YCszIaL7dsyveLeXT4GtnJv0u1oMMPaIwnjVMGtoA1+PuIebV6Ht53o6J4AKXkf6LB
+	dvR0J6cQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYkbS-0000000D0Is-0AMk;
+	id 1wYkbS-0000000D0JD-0lvk;
 	Sun, 14 Jun 2026 13:10:18 +0000
-Received: from mail-qk1-x729.google.com ([2607:f8b0:4864:20::729])
+Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYkbN-0000000D0Bz-1hvj
+	id 1wYkbP-0000000D0DG-0QNZ
 	for linux-mediatek@lists.infradead.org;
-	Sun, 14 Jun 2026 13:10:15 +0000
-Received: by mail-qk1-x729.google.com with SMTP id af79cd13be357-91591f19c30so358258985a.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 14 Jun 2026 06:10:12 -0700 (PDT)
+	Sun, 14 Jun 2026 13:10:16 +0000
+Received: by mail-qk1-x72c.google.com with SMTP id af79cd13be357-9159da9bba5so177324185a.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 14 Jun 2026 06:10:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781442612; x=1782047412; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1781442614; x=1782047414; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=5zfgey8wi8pckGyHiNYDJA2CHFfMtkrqEl07FMub/Hg=;
-        b=S7e0yDFoaZq43Z1YGiDuS57U5Yf25Q9bMTAccOzIaVoWyhWoTrin4f/NdhBPrXKLWJ
-         fZ2Kj2x+YjwD5+nUP9jLcgrUM6xLl3oATU/bgZfYTzHD4HNcFkR2CLBNXTzYPCqFbdWs
-         Pdz/qo8aGoqPePJy/EvAbQY7R9WmyPlVrXbXu6iGx6q64xDwrKCYGZPP9ALBYoTAh7Nd
-         JheXMx5OpFYfbqgotp6F1OsoSlB6tiHPCrp7gFaaznpdgxtLig82kPrZqJWeWv0WnOYw
-         6ZZJTslcU6NSnDeWJBX/Ub12cJEEunYnBx2SAEiC/YMVI0cVu1K1MORCGI2/JUZ35bzu
-         0i2A==
+        bh=lVl0d1DZ0/rxF5BIn+S5uaENMoHy7Qrp86HW8O6zq18=;
+        b=fBK8CeaU4P9iKngqxJmtvI7KCJocYsHCNPKNWLwsOWYBqpV502fdukKkd1BE20cgeF
+         m6NxiLEK6HrBbGlxqA2bPb2iVDN/pMO0HeXke2Y6+1/7cvoOQ/BT6Yz2+lZcC0g0XVBV
+         yhmOa5cGNMxx5+j7jekHa65RciQansBuCWsTY61YU4f3W1byn+dSfQEIxkFM2j0rwsqM
+         X1stSYJIYsu/uQFAO7WGOi0Uciprhl6WpDD1fHneRW75o/1D8HqxoU8bmTOt3/PIFTTo
+         W+1Od2tXe3POY9Gff99Soo2K+pWaZc2J1cLbJ5ZOt1nXTuEB0vYr6c4OAl1JUkJNqLbe
+         GA8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781442612; x=1782047412;
+        d=1e100.net; s=20251104; t=1781442614; x=1782047414;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=5zfgey8wi8pckGyHiNYDJA2CHFfMtkrqEl07FMub/Hg=;
-        b=AodJSNnIMqBRMmodkI+tG3KNNvQ155h4uC0KnyvyDLLGYN2VnbL3LYaTe2iD4EAbc5
-         /GDaHnP9Uiur3S10Af6IyxKbJfmF4NwbL4z5/05HGTsDGncNwntxRqQDssaEZPh8MNbM
-         iWl+KeWpwlgTo5Yjuh6qSqR09n3CTNGXnVGuQNWjRbTwCGazl6/EO24Ef4xLFXWAxcSM
-         hfcmbiTNgN4+rtqCvq5ZwQDISu1wxXWm698FoZoqq/CXlzlw0yPkQ+qYiFlkOH6wl9qt
-         0EWlqn5G3P8uy2mTh62wMkhpv77tqIkS3gW1D//nxZEXVmyHRsvDtiRZO/+GVnBYRvn2
-         /QRw==
-X-Forwarded-Encrypted: i=1; AFNElJ8jglbsR+ruRv1r4hvFIj6wlJGjf0JBlaIzWkkxdmIzf722hrZmae/NJFlB/RjoRVMK45MmYRjHgdwqSfLc1w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzdgXTYpbzeKwYuUyYkmkd5Ix0bFbOBrb0yevFrVaUEx62Kc986
-	daYV6F8iP7Ib7QOhoLNjCMef1R9vQgqDMu+JrO6cx9pYHkYl5wJ4dL4g
-X-Gm-Gg: Acq92OGTLfYgxzsWd8U0usG/t0BdYPoMyirKHK77DVpY/CGFABycXxB/zpuQsY/gEYa
-	uUxKOYaRSzlaSEsGVizwbKqIYzpC9d7KL6EF4PxEUKeZssmTBk3uJ7LEAWxPJoUH0BMByBFGYqN
-	odGAHPIRTgeOoHx1/1hh5k5Ho4qo77IjybAXvm93ZX9nPxiyeYMVSE+DNHqbqFW7drlnK1gLnyG
-	e/+VfAzchLUgzlNpoAuZoJhryKp9JYnH4QMbUpTRZNkrlIGZ8zBYShEAYsmyl7vmueORUmsEUGX
-	G/Xzy9RzJls+5qdtYZMw9XJ1Dl0pFDaUn8nydS6HSOww7jkKc1E8auwRBs4jfRnMSc3IBR375ct
-	ll76P8sdDtWcYvnKGNLe88/IRoxHWjgtMGKPmnFDQ/gdyj+o8TphqK5hAZyxZ3oKI0qNl0qY6ZA
-	033IKpuh6/fCaKc18sBtgxgs22A4Ay5xKaipS4G1kpt1o8HwH7EqzRABhNj11hIStjZ0l31dbCj
-	oBC2NaqdW/LWFHgBOsm8ka44CAiJgRftMCGh7WAb8w=
-X-Received: by 2002:a05:620a:2590:b0:915:aa7d:42bc with SMTP id af79cd13be357-917eefc36aemr1143196185a.10.1781442611978;
-        Sun, 14 Jun 2026 06:10:11 -0700 (PDT)
+        bh=lVl0d1DZ0/rxF5BIn+S5uaENMoHy7Qrp86HW8O6zq18=;
+        b=NJ5SzQu1JbdlSSbBw855igmPdf7RzNMTVO/IIhfIHAOCs6SaoOmovILYN8MJikn2jq
+         u9Ly4EIC0GLiAL/st3SgStdXcy6iWYbEscl8QqWCLDziS5H/6pi1m40NuMhYwYw7zkP2
+         ttRqxej3GC10o6i2p3jJBWhLCKYrzbufdgqL6tGUATItawa4Oi4URDMjDQUqtrriRH29
+         QxeGG1OHVIA/9jjw0Ha6y2olvb5232Y1qJFZinGzud/vizQuzdfcmnXd/H08tHPxmDHi
+         38Tj0ur3Flu3ZS+twOQK4gLf7tBXuUOwAcTehu1+73HJc9e3WfL/JtUQl3aygAsDy9QK
+         RBbg==
+X-Forwarded-Encrypted: i=1; AFNElJ8/uB5pGvLUVp+ZXSSH0667iGipSqYWqNx4ciXjShU7WMqUigla1jNrmJ7X1CYBhASQPkW2gFOYUDAEsre11A==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx4O6xcnDDCXD9tci6ZJKRjpC7Qw6UNhtJyLUjF8D4nBsxvR+tz
+	bBIKzsOKkfQ/p79gC7UYcYEqbsRP0jCX4PMTiIoGkVG3VxSsk9B9EQis
+X-Gm-Gg: Acq92OFZIIBmljzfKavnlyAW1Y7hztFl7ZtZGgrJPC9jYhTHAQnOIZKA8SnOMU1Qhbs
+	+Cxp4BB2ASyWXKzKLnbJEe0WfUmJKr6G1rAUKW6QF9eEGonLBe6gpP5BvIpwdg2pwBl7Zv15me3
+	iDc5wQ2h1BTa79tzx5Tt29PSQBawZq+LFbjcAayCAW7jM9Ru6kDvafP5DZrXHsK5LhD4qkLTL4x
+	6UI95pTIzRcx+mvG2C+IFSMuHvA5LeeCErwRxRHJQXfZfpnu6fsiivSPx7RVHC1O+hYPsP0ZUv7
+	BvESu6JYPr+mEKhPhNgeDsIwIq+KtlMvUZ6nCPfie6tU41R4SsbdQA5ZlpqXh31seBAdUKz3Zub
+	iHjT1jcOZulgsCLGI2kZsfBl9z+v4bUw2R01v4Mp5FAx1R2iC8T8x/9CjI0SkxxOGNDuezyZ5Xb
+	4wW2BfRKhWZB8b8Au5fxaE8yCmiveLpqCcqeRMLx1BncBltl8zanhA0ZL4F0We7QBvkSUeIpd+u
+	QTKTe6qFUyxma74YT1NgrKXc26GPvXTYPfvyKmGMK8=
+X-Received: by 2002:a05:620a:26a1:b0:915:83fa:b3e0 with SMTP id af79cd13be357-9161bac7727mr1528176685a.5.1781442613683;
+        Sun, 14 Jun 2026 06:10:13 -0700 (PDT)
 Received: from server0.tail6e7dd.ts.net (c-68-48-65-54.hsd1.mi.comcast.net. [68.48.65.54])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-91619f1b400sm752878985a.15.2026.06.14.06.10.10
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-91619f1b400sm752878985a.15.2026.06.14.06.10.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 14 Jun 2026 06:10:11 -0700 (PDT)
+        Sun, 14 Jun 2026 06:10:12 -0700 (PDT)
 From: Michael Bommarito <michael.bommarito@gmail.com>
 To: Hans Verkuil <hverkuil@kernel.org>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -88,18 +88,17 @@ Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 3/6] media: verisilicon: hantro: bound G2 HEVC tile loop to the buffer capacity
-Date: Sun, 14 Jun 2026 09:10:00 -0400
-Message-ID: <20260614131003.2524025-4-michael.bommarito@gmail.com>
+Subject: [PATCH 4/6] media: verisilicon: rockchip: bound VPU981 AV1 tile loop and guard divisor
+Date: Sun, 14 Jun 2026 09:10:01 -0400
+Message-ID: <20260614131003.2524025-5-michael.bommarito@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260614131003.2524025-1-michael.bommarito@gmail.com>
 References: <20260614131003.2524025-1-michael.bommarito@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260614_061013_465742_C98B4B2D 
-X-CRM114-Status: UNSURE (   9.80  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260614_061015_211124_0DF8BACD 
+X-CRM114-Status: GOOD (  12.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,37 +113,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-prepare_tile_info_buffer() writes one entry per tile into the tile_sizes
-DMA buffer, sized for a grid equal to the PPS uAPI array capacity. Bound
-the loop to that capacity so the writes stay inside the buffer.
+rockchip_vpu981_av1_dec_set_tile_info() divides context_update_tile_id by
+tile_info->tile_cols and writes one descriptor per tile into the tile_info
+DMA buffer, sized for AV1_MAX_TILES. tile_cols / tile_rows come straight
+from the bitstream; reject a zero column or row count and bound the grid to
+AV1_MAX_TILES so the division is safe and the writes stay in the buffer.
 
-Fixes: cb5dd5a0fa51 ("media: hantro: Introduce G2/HEVC decoder")
+Fixes: 727a400686a2 ("media: verisilicon: Add Rockchip AV1 decoder")
 Signed-off-by: Michael Bommarito <michael.bommarito@gmail.com>
 Assisted-by: Claude:claude-opus-4-8
 ---
-This is an i.MX8M Hantro G2 SoC block not reachable on the x86 KUnit host,
+This is a Rockchip RK35xx SoC block not reachable on the x86 KUnit host,
 so the driver-side out-of-bounds write is not reproduced here.
 
- drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+ .../verisilicon/rockchip_vpu981_hw_av1_dec.c  | 29 +++++++++++++------
+ 1 file changed, 20 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c b/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
-index e8c2e83..94fbd79 100644
---- a/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
-+++ b/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
-@@ -22,6 +22,12 @@ static void prepare_tile_info_buffer(struct hantro_ctx *ctx)
- 	bool tiles_enabled, uniform_spacing;
- 	u32 no_chroma = 0;
+diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+index e4e21ad..71d2ef7 100644
+--- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
++++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+@@ -578,21 +578,32 @@ static void rockchip_vpu981_av1_dec_set_tile_info(struct hantro_ctx *ctx)
+ 	const struct v4l2_av1_tile_info *tile_info = &ctrls->frame->tile_info;
+ 	const struct v4l2_ctrl_av1_tile_group_entry *group_entry =
+ 	    ctrls->tile_group_entry;
+-	int context_update_y =
+-	    tile_info->context_update_tile_id / tile_info->tile_cols;
+-	int context_update_x =
+-	    tile_info->context_update_tile_id % tile_info->tile_cols;
+-	int context_update_tile_id =
+-	    context_update_x * tile_info->tile_rows + context_update_y;
++	unsigned int tile_cols, tile_rows;
++	int context_update_y, context_update_x, context_update_tile_id;
+ 	u8 *dst = av1_dec->tile_info.cpu;
+ 	struct hantro_dev *vpu = ctx->dev;
+ 	int tile0, tile1;
  
-+	/* Bound the loops to the tile_sizes buffer capacity. */
-+	num_tile_cols = min_t(unsigned int, num_tile_cols,
-+			      ARRAY_SIZE(pps->column_width_minus1));
-+	num_tile_rows = min_t(unsigned int, num_tile_rows,
-+			      ARRAY_SIZE(pps->row_height_minus1));
++	/* Guard the divisor and bound the grid to the tile_info buffer. */
++	tile_cols = tile_info->tile_cols;
++	tile_rows = tile_info->tile_rows;
++	if (!tile_cols || !tile_rows)
++		return;
++	if (tile_cols * tile_rows > AV1_MAX_TILES) {
++		tile_cols = min_t(unsigned int, tile_cols, AV1_MAX_TILES);
++		tile_rows = min_t(unsigned int, tile_rows,
++				  AV1_MAX_TILES / tile_cols);
++	}
 +
- 	tiles_enabled = !!(pps->flags & V4L2_HEVC_PPS_FLAG_TILES_ENABLED);
- 	uniform_spacing = !!(pps->flags & V4L2_HEVC_PPS_FLAG_UNIFORM_SPACING);
++	context_update_y = tile_info->context_update_tile_id / tile_cols;
++	context_update_x = tile_info->context_update_tile_id % tile_cols;
++	context_update_tile_id = context_update_x * tile_rows + context_update_y;
++
+ 	memset(dst, 0, av1_dec->tile_info.size);
  
+-	for (tile0 = 0; tile0 < tile_info->tile_cols; tile0++) {
+-		for (tile1 = 0; tile1 < tile_info->tile_rows; tile1++) {
+-			int tile_id = tile1 * tile_info->tile_cols + tile0;
++	for (tile0 = 0; tile0 < tile_cols; tile0++) {
++		for (tile1 = 0; tile1 < tile_rows; tile1++) {
++			int tile_id = tile1 * tile_cols + tile0;
+ 			u32 start, end;
+ 			u32 y0 =
+ 			    tile_info->height_in_sbs_minus_1[tile1] + 1;
 -- 
 2.53.0
 
