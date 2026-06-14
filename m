@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8407FCD98DE
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Jun 2026 13:10:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5B82CD98E1
+	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Jun 2026 13:10:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lVl0d1DZ0/rxF5BIn+S5uaENMoHy7Qrp86HW8O6zq18=; b=SJtwqIBJg3e4NXPj/02DeM+kgo
-	5DwCbfu8kuxLeq0OHzhDsmEucR9mpjpGsMnOVAv8dqVHAEo4tn7V0Vozul0jDnB5JrbQRQ/l5T7b/
-	ZHy9Qtqd1H3cAoxbxyHnwFN7EKaP3wz5PgVzBIhlQwzbNjf0tJEn/WcmmzyKpBN3/8w/pXWRHWdYx
-	jmsHtUEETa7cMiIajkDlrjse1dAO0o4Par84MJqIO+lyI233lG/zOaoAlXEXSU7kGotCRmtoR2Xmh
-	hNWR2/RoZg9YCszIaL7dsyveLeXT4GtnJv0u1oMMPaIwnjVMGtoA1+PuIebV6Ht53o6J4AKXkf6LB
-	dvR0J6cQ==;
+	bh=CKd9oqWR4qF+iy/wwQJEAglTquC/gKwfzimhVuiNy9E=; b=EAkaSCDWNojGMG0uYYDh2ZrayR
+	rW0tGQpwM6/SwksPa0bp+Jk1OiU6SgzXtXd9PM/WMfVpkOMrltkNu96VHbL+3n70zKTHNy76x9h9l
+	Cxh+Y499S+JsWpYvmxHv79oWNGFlYAh3mjMxgovqZ+HwVrZ4cXMOONIbstz317bCLxoaAK3qTEFTf
+	nqO35bMsGtL80Gx+RP1iwOHAMaqXCebjEgFmn92pITTc1E3e+jJZHZ0t7hyb8mHnyRDScMW3EWS01
+	zzAWlxBjmV+hFFC7TI8L9BD2bom8LtPVKH4fKu9zLU1CJbjW4cvxew97bD0ewWRqvzxpXxH1Pxr+K
+	yqqC8UrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYkbS-0000000D0JD-0lvk;
-	Sun, 14 Jun 2026 13:10:18 +0000
-Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c])
+	id 1wYkbU-0000000D0N8-2h45;
+	Sun, 14 Jun 2026 13:10:20 +0000
+Received: from mail-qv1-xf32.google.com ([2607:f8b0:4864:20::f32])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYkbP-0000000D0DG-0QNZ
+	id 1wYkbQ-0000000D0FP-1s5x
 	for linux-mediatek@lists.infradead.org;
-	Sun, 14 Jun 2026 13:10:16 +0000
-Received: by mail-qk1-x72c.google.com with SMTP id af79cd13be357-9159da9bba5so177324185a.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 14 Jun 2026 06:10:14 -0700 (PDT)
+	Sun, 14 Jun 2026 13:10:17 +0000
+Received: by mail-qv1-xf32.google.com with SMTP id 6a1803df08f44-8ce65629acaso29939186d6.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 14 Jun 2026 06:10:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781442614; x=1782047414; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1781442615; x=1782047415; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=lVl0d1DZ0/rxF5BIn+S5uaENMoHy7Qrp86HW8O6zq18=;
-        b=fBK8CeaU4P9iKngqxJmtvI7KCJocYsHCNPKNWLwsOWYBqpV502fdukKkd1BE20cgeF
-         m6NxiLEK6HrBbGlxqA2bPb2iVDN/pMO0HeXke2Y6+1/7cvoOQ/BT6Yz2+lZcC0g0XVBV
-         yhmOa5cGNMxx5+j7jekHa65RciQansBuCWsTY61YU4f3W1byn+dSfQEIxkFM2j0rwsqM
-         X1stSYJIYsu/uQFAO7WGOi0Uciprhl6WpDD1fHneRW75o/1D8HqxoU8bmTOt3/PIFTTo
-         W+1Od2tXe3POY9Gff99Soo2K+pWaZc2J1cLbJ5ZOt1nXTuEB0vYr6c4OAl1JUkJNqLbe
-         GA8w==
+        bh=CKd9oqWR4qF+iy/wwQJEAglTquC/gKwfzimhVuiNy9E=;
+        b=q93RAtSYV/kRJIpJG5Y3nIyBm6xMWnFb7kvwvOD2TBe/tfuY+DG0UjUGnCaaHkqWcV
+         Pl5nmMcR03HxMSBAWNNyAJt4mj7xv3ddBC2dD3w3BVjgn+cfpxiCoxZC2Nz6T9+du4py
+         c0R2XXGgBXehRoYPfQu8J7lZxvW+HOZHgV0HvgF+/yMV8gassVnfW4Bs/Sh73gZYGnts
+         wqtKjbtRxa95P6b7K6Tukejfsykp5vQ4BjfxpNX38SUNYj8h623/tY2rfK9PR+07Y8MQ
+         Y8ny0N7hXfYAV0O/JOU3PfpJsOS7t2Ow0WMl+d0nFgP1lhDRD/KpibeSwTObznYpn4xM
+         28Jw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781442614; x=1782047414;
+        d=1e100.net; s=20251104; t=1781442615; x=1782047415;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=lVl0d1DZ0/rxF5BIn+S5uaENMoHy7Qrp86HW8O6zq18=;
-        b=NJ5SzQu1JbdlSSbBw855igmPdf7RzNMTVO/IIhfIHAOCs6SaoOmovILYN8MJikn2jq
-         u9Ly4EIC0GLiAL/st3SgStdXcy6iWYbEscl8QqWCLDziS5H/6pi1m40NuMhYwYw7zkP2
-         ttRqxej3GC10o6i2p3jJBWhLCKYrzbufdgqL6tGUATItawa4Oi4URDMjDQUqtrriRH29
-         QxeGG1OHVIA/9jjw0Ha6y2olvb5232Y1qJFZinGzud/vizQuzdfcmnXd/H08tHPxmDHi
-         38Tj0ur3Flu3ZS+twOQK4gLf7tBXuUOwAcTehu1+73HJc9e3WfL/JtUQl3aygAsDy9QK
-         RBbg==
-X-Forwarded-Encrypted: i=1; AFNElJ8/uB5pGvLUVp+ZXSSH0667iGipSqYWqNx4ciXjShU7WMqUigla1jNrmJ7X1CYBhASQPkW2gFOYUDAEsre11A==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx4O6xcnDDCXD9tci6ZJKRjpC7Qw6UNhtJyLUjF8D4nBsxvR+tz
-	bBIKzsOKkfQ/p79gC7UYcYEqbsRP0jCX4PMTiIoGkVG3VxSsk9B9EQis
-X-Gm-Gg: Acq92OFZIIBmljzfKavnlyAW1Y7hztFl7ZtZGgrJPC9jYhTHAQnOIZKA8SnOMU1Qhbs
-	+Cxp4BB2ASyWXKzKLnbJEe0WfUmJKr6G1rAUKW6QF9eEGonLBe6gpP5BvIpwdg2pwBl7Zv15me3
-	iDc5wQ2h1BTa79tzx5Tt29PSQBawZq+LFbjcAayCAW7jM9Ru6kDvafP5DZrXHsK5LhD4qkLTL4x
-	6UI95pTIzRcx+mvG2C+IFSMuHvA5LeeCErwRxRHJQXfZfpnu6fsiivSPx7RVHC1O+hYPsP0ZUv7
-	BvESu6JYPr+mEKhPhNgeDsIwIq+KtlMvUZ6nCPfie6tU41R4SsbdQA5ZlpqXh31seBAdUKz3Zub
-	iHjT1jcOZulgsCLGI2kZsfBl9z+v4bUw2R01v4Mp5FAx1R2iC8T8x/9CjI0SkxxOGNDuezyZ5Xb
-	4wW2BfRKhWZB8b8Au5fxaE8yCmiveLpqCcqeRMLx1BncBltl8zanhA0ZL4F0We7QBvkSUeIpd+u
-	QTKTe6qFUyxma74YT1NgrKXc26GPvXTYPfvyKmGMK8=
-X-Received: by 2002:a05:620a:26a1:b0:915:83fa:b3e0 with SMTP id af79cd13be357-9161bac7727mr1528176685a.5.1781442613683;
-        Sun, 14 Jun 2026 06:10:13 -0700 (PDT)
+        bh=CKd9oqWR4qF+iy/wwQJEAglTquC/gKwfzimhVuiNy9E=;
+        b=HwXyD8a6LOlvWAN+w1msRR5mNtOruMV+J73wExOcwDCwnPRDqRRT7F09RNbExiTsan
+         h74ZNAfTJwfrgtCBdXZfxzhcACJ2w42eb2lCMm3gtNUZJGqbIvq+wE4cFFpoHLk00Aqc
+         NWDEWKeeFxkr1fJbCqfrbDxMWEwODxqIg+j3FJZ5NaoargR+3J4zBhj5EF/OETXR4vQl
+         I6qHYqpZisdCbFhGhMX3eG+PjqY71IEZNp8oC/rfHMJ4IXmu8iZjmeZo+/kTKyxmFK6B
+         RsFV7sgYUPOZaHGzqya7JAvQFz+Na+tB6pbuIj8FNn6UlGwekMdG6q8B1td7x3xLwYIr
+         kF4g==
+X-Forwarded-Encrypted: i=1; AFNElJ++n4o4XrsVdfoahgnxJ89vFLJqQLrf+WgvTAr/Pfnb8Jp8/fAIIEWkMl+KwSx9KbfF05I0VJ5bNqdFqzrjFA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxB0C1Cjq6i4JFQBIv1vRHTmPyrWfvQXg3FPFXAPH+vJAqN40nu
+	3BwY9I9/MV1vtG8fSv3KPWUtU4orlF5bDrxBQ18JKiFKXbn/hP69BTpf
+X-Gm-Gg: Acq92OFzLPANvphJnCzQVXq9ikU2laCoA6R//hEbanfl/R7XLGMD5zxMY0hYGqOKVsY
+	njBAfhRVkuDVqWFaYKwHSJHvy/8bxVno61MXinxlfI6sn582Z1pu2bwdxonDXw+M3zgr6t4Kdqe
+	Eag3fhoMr34ohzDFV7Yel6fZteNKrJYaxbYLLphzZeHY/ZVErhzY6BTQw6iXNva8NW0rdOKjLpD
+	Tv+kSAaNP+XSjT+CTnHRhJd50nTow3/uq9+MQ0kG2RUH4BankKhWCvfV47C2tQfKvHNRDIDIpVD
+	zMcK5lKAuzBew5ii+A5aV/YoK0Y/C2kE1+GmWGH/5aC+m1vKktUqdlkLxDXpYqPo7ZVI0jKRWjf
+	ekl1HDNgq056hRg9fRaH3Vvr2+7FxA96gvOIP1Ke4V9s3N4tPsvm1Sjel7b47BZ9p8UooMsTZ6W
+	2yIbOV/sQh2bg1EUWd494w1bBp70/lGzfoZ2+YY8Zm9K65TzbcJstrmSIa8OVX4CLa9Yx7LfJtZ
+	d6c5dDpF0/Dv5AQXhGwJJLNViZv+tlYjnMuuGh64as=
+X-Received: by 2002:a05:620a:d8e:b0:915:9273:9242 with SMTP id af79cd13be357-9161bac4a68mr1535377285a.3.1781442615118;
+        Sun, 14 Jun 2026 06:10:15 -0700 (PDT)
 Received: from server0.tail6e7dd.ts.net (c-68-48-65-54.hsd1.mi.comcast.net. [68.48.65.54])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-91619f1b400sm752878985a.15.2026.06.14.06.10.12
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-91619f1b400sm752878985a.15.2026.06.14.06.10.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 14 Jun 2026 06:10:12 -0700 (PDT)
+        Sun, 14 Jun 2026 06:10:14 -0700 (PDT)
 From: Michael Bommarito <michael.bommarito@gmail.com>
 To: Hans Verkuil <hverkuil@kernel.org>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -88,17 +88,17 @@ Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 4/6] media: verisilicon: rockchip: bound VPU981 AV1 tile loop and guard divisor
-Date: Sun, 14 Jun 2026 09:10:01 -0400
-Message-ID: <20260614131003.2524025-5-michael.bommarito@gmail.com>
+Subject: [PATCH 5/6] media: mediatek: vcodec: bound AV1 tile-start copy to the array capacity
+Date: Sun, 14 Jun 2026 09:10:02 -0400
+Message-ID: <20260614131003.2524025-6-michael.bommarito@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260614131003.2524025-1-michael.bommarito@gmail.com>
 References: <20260614131003.2524025-1-michael.bommarito@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260614_061015_211124_0DF8BACD 
-X-CRM114-Status: GOOD (  12.17  )
+X-CRM114-CacheID: sfid-20260614_061016_504549_21593E33 
+X-CRM114-Status: GOOD (  12.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,68 +113,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-rockchip_vpu981_av1_dec_set_tile_info() divides context_update_tile_id by
-tile_info->tile_cols and writes one descriptor per tile into the tile_info
-DMA buffer, sized for AV1_MAX_TILES. tile_cols / tile_rows come straight
-from the bitstream; reject a zero column or row count and bound the grid to
-AV1_MAX_TILES so the division is safe and the writes stay in the buffer.
+vdec_av1_slice_setup_tile() copies tile_cols + 1 / tile_rows + 1 start
+positions into mi_col_starts[] / mi_row_starts[], which hold
+V4L2_AV1_MAX_TILE_COLS + 1 / V4L2_AV1_MAX_TILE_ROWS + 1 entries. tile_cols
+and tile_rows come straight from the bitstream; bound the copy to the array
+capacity so the accesses stay in range.
 
-Fixes: 727a400686a2 ("media: verisilicon: Add Rockchip AV1 decoder")
+Fixes: 0934d3759615 ("media: mediatek: vcodec: separate decoder and encoder")
 Signed-off-by: Michael Bommarito <michael.bommarito@gmail.com>
 Assisted-by: Claude:claude-opus-4-8
 ---
-This is a Rockchip RK35xx SoC block not reachable on the x86 KUnit host,
-so the driver-side out-of-bounds write is not reproduced here.
+This is an MT8195-class SoC block not reachable on the x86 KUnit host, so
+the driver-side out-of-bounds access is not reproduced here.
 
- .../verisilicon/rockchip_vpu981_hw_av1_dec.c  | 29 +++++++++++++------
- 1 file changed, 20 insertions(+), 9 deletions(-)
+ .../mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c       | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-index e4e21ad..71d2ef7 100644
---- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-+++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-@@ -578,21 +578,32 @@ static void rockchip_vpu981_av1_dec_set_tile_info(struct hantro_ctx *ctx)
- 	const struct v4l2_av1_tile_info *tile_info = &ctrls->frame->tile_info;
- 	const struct v4l2_ctrl_av1_tile_group_entry *group_entry =
- 	    ctrls->tile_group_entry;
--	int context_update_y =
--	    tile_info->context_update_tile_id / tile_info->tile_cols;
--	int context_update_x =
--	    tile_info->context_update_tile_id % tile_info->tile_cols;
--	int context_update_tile_id =
--	    context_update_x * tile_info->tile_rows + context_update_y;
-+	unsigned int tile_cols, tile_rows;
-+	int context_update_y, context_update_x, context_update_tile_id;
- 	u8 *dst = av1_dec->tile_info.cpu;
- 	struct hantro_dev *vpu = ctx->dev;
- 	int tile0, tile1;
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
+index 2d622e8..49d9b4a 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
+@@ -1299,11 +1299,12 @@ static void vdec_av1_slice_setup_tile(struct vdec_av1_slice_frame *frame,
+ 	tile->uniform_tile_spacing_flag =
+ 		BIT_FLAG(ctrl_tile, V4L2_AV1_TILE_INFO_FLAG_UNIFORM_TILE_SPACING);
  
-+	/* Guard the divisor and bound the grid to the tile_info buffer. */
-+	tile_cols = tile_info->tile_cols;
-+	tile_rows = tile_info->tile_rows;
-+	if (!tile_cols || !tile_rows)
-+		return;
-+	if (tile_cols * tile_rows > AV1_MAX_TILES) {
-+		tile_cols = min_t(unsigned int, tile_cols, AV1_MAX_TILES);
-+		tile_rows = min_t(unsigned int, tile_rows,
-+				  AV1_MAX_TILES / tile_cols);
-+	}
-+
-+	context_update_y = tile_info->context_update_tile_id / tile_cols;
-+	context_update_x = tile_info->context_update_tile_id % tile_cols;
-+	context_update_tile_id = context_update_x * tile_rows + context_update_y;
-+
- 	memset(dst, 0, av1_dec->tile_info.size);
+-	for (i = 0; i < tile->tile_cols + 1; i++)
++	/* Bound the copy to the mi_col_starts[]/mi_row_starts[] capacity. */
++	for (i = 0; i < tile->tile_cols + 1 && i < V4L2_AV1_MAX_TILE_COLS + 1; i++)
+ 		tile->mi_col_starts[i] =
+ 			ALIGN(ctrl_tile->mi_col_starts[i], BIT(mib_size_log2)) >> mib_size_log2;
  
--	for (tile0 = 0; tile0 < tile_info->tile_cols; tile0++) {
--		for (tile1 = 0; tile1 < tile_info->tile_rows; tile1++) {
--			int tile_id = tile1 * tile_info->tile_cols + tile0;
-+	for (tile0 = 0; tile0 < tile_cols; tile0++) {
-+		for (tile1 = 0; tile1 < tile_rows; tile1++) {
-+			int tile_id = tile1 * tile_cols + tile0;
- 			u32 start, end;
- 			u32 y0 =
- 			    tile_info->height_in_sbs_minus_1[tile1] + 1;
+-	for (i = 0; i < tile->tile_rows + 1; i++)
++	for (i = 0; i < tile->tile_rows + 1 && i < V4L2_AV1_MAX_TILE_ROWS + 1; i++)
+ 		tile->mi_row_starts[i] =
+ 			ALIGN(ctrl_tile->mi_row_starts[i], BIT(mib_size_log2)) >> mib_size_log2;
+ }
 -- 
 2.53.0
 
