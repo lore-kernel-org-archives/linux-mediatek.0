@@ -4,59 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 901BCCD98C5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 07:10:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E87EFCD98CE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 07:18:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B63Rr7BRtf10FMXqKBI22vFs9Wx6/aB3dAFnmxB7moU=; b=plWsUMPEj29xsv/9D9CH75WkNF
-	atDzmjkoxpTK0xvyAiS+1nKu/83oAHN+ujrj5oVzzyainbL1vpzw8DTPe+JRtuE0xWy3Dr9zfPFYZ
-	GIcEGZUA+lVGMCVZJezZSXnaomQ95ynKVMcYeZT3+eLM6Ei82seWQ4AtmrHEzUDuE3jcveVDEg+ye
-	qOg9gWcjYAyRiB60B8KW/AXvDmvVskdVj/VPSL3kvoDmM4fHetzqkgzxal9snzJAzyTT9+V3IlFkh
-	fGK9joOGiNJlAa6TLX00syNjggAWCNnTP6jIgsujaJwAAqK6DSlSSUGz0avOh2hDSXxr8De+sayzC
-	mv7GRZ5A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=kB/u4VLuYTRIxSTjaGgA4kG1SxYpk8i9RP3w3UDvgAY=; b=oxfJcETr67Gy5U3FmNfP683bhb
+	Uk6KoUkhjQxoCNl3E29dCIozerBNpeqlmofk3nK+71ejEZGfoXX0MPl7BU1vfzzmFE/X2aIfcDXp8
+	NOQtBLH9+RXEnyayJ8SYddX+XHymYfuLNSy8Y0InEWfDm12IWWU0KYrXSAMGrE4hvomCZM+v62N3a
+	v2oh1lZWZeCcs5MOTeVLOx5CrzA8N0v4G+GRJQ7MtklWYZGd2hKeFqo4rOHOaFRdXM3lraFDVEfZV
+	TfDeYDsnWrQ+9yfL7rPjJXxkQX/KVPjpPU5ttipHwuVwXPzZiOs8PYFHGsGOAofY7eRcTpJ33BjMg
+	+a3v/GYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ1Sw-0000000Dk7h-0t2r;
-	Mon, 15 Jun 2026 07:10:38 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wZ1au-0000000DlAy-2iGq;
+	Mon, 15 Jun 2026 07:18:52 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ1Su-0000000Dk7Y-29ff
+	id 1wZ1as-0000000Dl9e-075Z
 	for linux-mediatek@lists.infradead.org;
-	Mon, 15 Jun 2026 07:10:36 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id D774940C1C;
-	Mon, 15 Jun 2026 07:10:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 360CC1F000E9;
-	Mon, 15 Jun 2026 07:10:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781507435;
-	bh=B63Rr7BRtf10FMXqKBI22vFs9Wx6/aB3dAFnmxB7moU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=KZZ8ooGlkJbDgwEsr1XL6BNAQCABBxMW84Yzff07H25+wSgrg5qu3lAlbQNbNxdKi
-	 Rbvfst8tGzfV5LigDKVSaiGRcT3n+KsDBg8iDn3Nb+8oaUGQBs2gueqP+v4Rq6xdFM
-	 iin3kls1iw04SvbMxYKwLZ89b1+97EjF5wA9YPP0g1ADeRkWRnFy8bnKeYRFWCzrry
-	 4wQmGDy68l4X3xhRM7euLtbwsiVX19Wohmtaqx1qw6K/YPHM+656D0s+8aHWtEnbL0
-	 D4Qiw3Ww7l4t49fLNgQq0iegILvE1mD7vK9qTXVzSE6NUR+Yd5P24YDYhm7PhTyVJQ
-	 aANreiFZ2Xv0A==
-Date: Mon, 15 Jun 2026 09:10:31 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Sean Wang <sean.wang@kernel.org>
-Cc: Felix Fietkau <nbd@nbd.name>, linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH 5/5] wifi: mt76: mt7927u: enable USB RX aggregation
-Message-ID: <ai-lZ-IOh3opn8lP@lore-rh-laptop>
-References: <20260613224655.2405686-1-sean.wang@kernel.org>
- <20260613224655.2405686-6-sean.wang@kernel.org>
+	Mon, 15 Jun 2026 07:18:51 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-490afc47455so12257795e9.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 15 Jun 2026 00:18:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1781507928; x=1782112728; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=kB/u4VLuYTRIxSTjaGgA4kG1SxYpk8i9RP3w3UDvgAY=;
+        b=fXSchhE522EYjimdj2qZZRvK5S9lBLW5aTeBPge+hpJMW/ufdIKazdt2FNNzVKkPT2
+         Fpo/FYe50hvFl4a0jkhMmK+lDgnQObwx3ZsiadK7CMRjLKRmoCOy4yQZGDPA2xYtVeqM
+         XJY7ZR4gPjo0FjbvzbzAfrgf6ju1fqFusklKpYao8I/LkXyjv0k6OhSXBXkjhZeGqK6k
+         ETzuPJI9NhcwMCtwowteYXEmdg6/Z9udne+HEcnKQ5N7d6A60ncf8rzFAbSlp5ojxz8p
+         RmjKKrJ2fKmkQfb1ZJdC3eslU7/d7x5S73RgbodJcyQcW1CKf5/EUkLKDYMwOj+5QrLI
+         3SLw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1781507928; x=1782112728;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=kB/u4VLuYTRIxSTjaGgA4kG1SxYpk8i9RP3w3UDvgAY=;
+        b=PzoBSZghIuDxZcwxVb0bogU742p6dPYeZqc0Jpu1SOYq08H/6vsrQY3byQFelLw37w
+         uS9FxATDnXbmpkRgnztXM93x+sEfYQzl4UjE8RzLkbOSANmIs/UA+5kEfr7R2OUyEWSA
+         QMgPYTbU3UdWvSNNOqdKizzyFK9YieYRrvAugsNNgIszWypirrvw2xxABv8+j9GdjgX/
+         eu0rt7Km/W0RBAlq9o/72Jcd+pLbLVpWdvrDEvNF2OUuW1fPzceCDdy8OfYu+sgyheYT
+         jNAtBaV55/eJLhGKAy379BJEDu1OxQNh3U2CC6jgEbMZIVKlG+bTb0DUvJtEPrbB2pxy
+         auXQ==
+X-Gm-Message-State: AOJu0YzL2Gsgy3RGu5AfNvUZ5xtc1lXAxdJcd6Rj/30TX4rYCF83NKPZ
+	Q6lQAnE1IoKUtCtQsczeQz4EdaHWnkbBGzSLbNOychaRebSrGALVJk2EWiG1FyNQ
+X-Gm-Gg: Acq92OHHaXuSSk+x8p8y2IZrpTQAL9mGGrYpwM7fILObRWHG/miZ4nIPXCXI8sg94bv
+	HyJUayKXO55nkFUqY3Pt1Y/HyNj9hiGiT9ZJHzFGUoLe3Oz8GZcGf58J4DBXKpGUal8XmccfMqu
+	LSGZPgYghq+G/yw9TA+gln5r/yrcuSsUQiG7hTts24puzLh5h30AjmnD0dN7y1WZjducSZN9FZh
+	jP+/tVhgY4R2g4WAw0CpuOfr7c2/YUSj4yMhdoMi40NjbgPWlDFt4AQlWSelSeql9zCDK24HGC7
+	NXHFtxVkOcVxoLBi/DevkYpY9CrKrOApKVXPO5QTNkjBe0Q3ckIhvnpqkieqnE0+X53lx7wJk8F
+	ZaOF3TOGrV1TjkCigo7np6zrDk/kZKYcyO7NpeBPpRowBFIuzOyGj+qYO7pnP5cgAk3M9eb8RPf
+	52169oloe4AXo1tPSo
+X-Received: by 2002:a05:600c:820c:b0:490:e913:6564 with SMTP id 5b1f17b1804b1-490ec4cc6d8mr166377465e9.3.1781507927328;
+        Mon, 15 Jun 2026 00:18:47 -0700 (PDT)
+Received: from luca-vm.. ([81.56.18.151])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-492203c0801sm200181015e9.10.2026.06.15.00.18.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 15 Jun 2026 00:18:46 -0700 (PDT)
+From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+To: linux-mediatek@lists.infradead.org
+Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sen Chu <sen.chu@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>,
+	Lee Jones <lee@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Linus Walleij <linusw@kernel.org>,
+	Julien Massot <julien.massot@collabora.com>,
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+	Val Packett <val@packett.cool>,
+	Fabien Parent <parent.f@gmail.com>,
+	Akari Tsuyukusa <akkun11.open@gmail.com>,
+	Chen Zhong <chen.zhong@mediatek.com>,
+	linux-input@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-gpio@vger.kernel.org
+Subject: [PATCH v7 0/9] Add support for MT6392 PMIC
+Date: Mon, 15 Jun 2026 09:16:06 +0200
+Message-ID: <20260615071836.362883-1-l.scorcia@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="G88a4jpSspo+4gZ9"
-Content-Disposition: inline
-In-Reply-To: <20260613224655.2405686-6-sean.wang@kernel.org>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260615_001850_092907_1E305448 
+X-CRM114-Status: GOOD (  31.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,95 +118,146 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The MediaTek MT6392 PMIC is usually found on devices powered by
+the MT8516/MT8167 SoC and is yet another MT6323/MT6397 variant.
 
---G88a4jpSspo+4gZ9
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This series is mostly based around patches submitted a couple
+years ago by Fabien Parent and not merged and from Val Packett's
+submission from Jan 2025 that included extra cleanups, fixes, and a
+new dtsi file similar to ones that exist for other PMICs. Some
+comments weren't addressed and the series was ultimately not merged.
 
-> From: Sean Wang <sean.wang@mediatek.com>
->=20
-> Enable USB RX aggregation on MT7927u with vendor driver parameters for
-> alignment, padding and buffer size. According to the vendor driver, the
-> hardware should run RX aggregation with USB SG disabled.
->=20
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->  drivers/net/wireless/mediatek/mt76/mt7925/usb.c |  6 +++++-
->  drivers/net/wireless/mediatek/mt76/usb.c        | 11 +++++++++++
->  2 files changed, 16 insertions(+), 1 deletion(-)
->=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/usb.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7925/usb.c
-> index a0bfe6f09ae4..42d13bc6ebbc 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
-> @@ -5,7 +5,6 @@
->  #include <linux/module.h>
->  #include <linux/sizes.h>
->  #include <linux/usb.h>
-> -
->  #include "mt7925.h"
->  #include "mcu.h"
->  #include "mac.h"
-> @@ -235,6 +234,11 @@ static int mt7925u_probe(struct usb_interface *usb_i=
-ntf,
->  		mdev->rev =3D (0x7927 << 16) | (mdev->rev & 0xff);
->  	}
-> =20
-> +	if (is_mt7927(mdev))
-> +		mt76u_enable_rx_aggr(mdev, MT7927_USB_RX_AGGR_ALIGN,
-> +				     MT7927_USB_RX_AGGR_PADDING,
-> +				     MT7927_USB_RX_AGGR_BUF_SIZE);
+These patches enable four functions: keys, regulator, pinctrl and RTC.
+Mono speaker amp will follow later as I need to work further on the
+audio codec.
 
-This seems to me something like a NETIF_F_GRO_HW. Should the user be able to
-toggle it via ethtool?
+I added a handful of device tree improvements to fix some dtbs_check
+errors, added support for the pinctrl device and addressed the comments
+from last year's reviews.
 
-Regards,
-Lorenzo
+Please note that patch 0006 and 0008 depend on patch 0005 as they need the
+registers.h file, but belong to different driver areas. I'm not sure if
+I'm supposed to squash them even if they belong to different driver
+areas of if it's fine like this. Any advice is welcome.
 
-> +
->  	if (mt76_get_field(dev, MT_CONN_ON_MISC, MT_TOP_MISC2_FW_N9_RDY)) {
->  		ret =3D mt792xu_wfsys_reset(dev);
->  		if (ret)
-> diff --git a/drivers/net/wireless/mediatek/mt76/usb.c b/drivers/net/wirel=
-ess/mediatek/mt76/usb.c
-> index 10ad2b024985..f0df510904c5 100644
-> --- a/drivers/net/wireless/mediatek/mt76/usb.c
-> +++ b/drivers/net/wireless/mediatek/mt76/usb.c
-> @@ -1300,6 +1300,17 @@ static const struct mt76_queue_ops usb_queue_ops =
-=3D {
->  	.kick =3D mt76u_tx_kick,
->  };
-> =20
-> +void mt76u_enable_rx_aggr(struct mt76_dev *dev, int align, int padding,
-> +			  int buf_size)
-> +{
-> +	dev->usb.sg_en =3D false;
-> +	dev->usb.rx_aggr.enable =3D true;
-> +	dev->usb.rx_aggr.align =3D align;
-> +	dev->usb.rx_aggr.padding =3D padding;
-> +	dev->usb.rx_aggr.buf_size =3D buf_size;
-> +}
-> +EXPORT_SYMBOL_GPL(mt76u_enable_rx_aggr);
-> +
->  int __mt76u_init(struct mt76_dev *dev, struct usb_interface *intf,
->  		 struct mt76_bus_ops *ops)
->  {
-> --=20
-> 2.43.0
->=20
+The series has been tested on Xiaomi Mi Smart Clock X04G and on the
+Lenovo Smart Clock 2 CD-24502F.
 
---G88a4jpSspo+4gZ9
-Content-Type: application/pgp-signature; name=signature.asc
+Changes in v7:
+- Removed patch 0008 dependency on patch 0003.
+- Reintroduced the regulator driver. In earlier revisions of this series,
+  it was proposed to remove the dedicated compatible for the regulator
+  device [3]. The driver does not use actually it, but it is not possible
+  at this time to remove it from the bindings since it's a required
+  property.
 
------BEGIN PGP SIGNATURE-----
+  Making the regulator-required property conditional was NACKed in [5],
+  with the suggestion to create a separate binding altogether for devices
+  that do not require the compatible property. I tried implementing this,
+  but since the parent device needs to be declared as compatible with
+  mt6323, it leads to a warning in dt_binding_check since mt6323 would
+  be declared as a compatible in both mt6392 and mt6397.
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCai+lYgAKCRA6cBh0uS2t
-rGkmAQDpJFWPjvmC0UYH6mNRDhrH2NtuSnd6XC8lal6FDOuxLwD/V6Ulxi/ICKS5
-tKv6G9I+PGb0M74xveAHFQu7ljHy7Q8=
-=2Nz/
------END PGP SIGNATURE-----
+  In the end the only regulator driver from the mt6397 documentation that
+  still declares an of_match is mt6397-regulator and it does not seem
+  to be necessary, so it should be possible to remove it and make the
+  regulator compatible optional for all regulators, but that change would
+  probably deserve its own separate patch series.
 
---G88a4jpSspo+4gZ9--
+Changes in v6 [6]:
+- Dropped the regulators driver for the moment
+- Explained the FCHR key name origin in the commit message
+- Introduced the MFD_CELL_* macro in the sub-devices definitions.
+  A separate, independent commit introduced MFD_CELL_* to all the
+  subdevices in the mt6397-core.c file for consistency
+- Replaced of_device_get_match_data with device_get_match_data
+- Removed the mfd_match_data enum in favor of the preexisting
+  chip_id enum
+- Adjusted the error message if the device is unsupported
+
+Changes in v5 [5]:
+- Double checked regulator driver with data sheet and Android sources.
+  The data sheet I have misses a lot of register descriptions, but
+  Android sources have been helpful to fill the gaps
+- Reintroduced the required attribute for the regulator compatible
+  in the bindings
+- Fixed the missing reference to the MT6392 schema
+- Fixed casts/unused vars reported by kernel test robot
+- Removed Reviewed-by tags from the regulator patches as they have been
+  modified in this version
+
+Changes in v4 [4]:
+- Dropped usage of the regulator compatible
+- Fixed commit messages text to properly reference the target subsystem
+- Added supply rails to the regulator
+- Reworked the regulator schema and PMIC dtsi. Now all supplies are
+  documented and the schema no longer includes voltage information
+- Removed redundant ldo- / buck- prefixes
+- Renamed the pinfunc header to mediatek,mt6392-pinfunc.h
+- Modified the MFD driver to use a simple identifier in the of_match
+  data properties
+
+Changes in v3 [3]:
+- Added pinctrl device
+- Changed mt6397-rtc fallback to mt6323-rtc
+- Added schema for regulators
+- Fixed checkpatch issues
+
+Changes in v2 [2]:
+- Replaced explicit compatibles with fallbacks
+
+Initial version: [1]
+
+[1] https://lore.kernel.org/linux-mediatek/cover.1771865014.git.l.scorcia@gmail.com/
+[2] https://lore.kernel.org/linux-mediatek/20260306120521.163654-1-l.scorcia@gmail.com/
+[3] https://lore.kernel.org/linux-mediatek/20260317184507.523060-1-l.scorcia@gmail.com/
+[4] https://lore.kernel.org/linux-mediatek/20260330083429.359819-1-l.scorcia@gmail.com/
+[5] https://lore.kernel.org/linux-mediatek/20260420213529.1645560-1-l.scorcia@gmail.com/
+[6] https://lore.kernel.org/linux-mediatek/20260612200717.361018-1-l.scorcia@gmail.com/
+
+Fabien Parent (3):
+  dt-bindings: input: mtk-pmic-keys: Add MT6392 PMIC keys
+  mfd: mt6397: Add support for MT6392 PMIC
+  regulator: Add MediaTek MT6392 regulator
+
+Luca Leonardo Scorcia (4):
+  dt-bindings: mfd: mt6397: Add MT6392 PMIC
+  regulator: dt-bindings: Add MediaTek MT6392 PMIC
+  mfd: mt6397: Use MFD_CELL_* to describe sub-devices
+  pinctrl: mediatek: mt6397: Add MediaTek MT6392
+
+Val Packett (2):
+  input: keyboard: mtk-pmic-keys: Add MT6392 support
+  arm64: dts: mediatek: Add MediaTek MT6392 PMIC dtsi
+
+ .../bindings/input/mediatek,pmic-keys.yaml    |   1 +
+ .../bindings/mfd/mediatek,mt6397.yaml         |   9 +
+ .../regulator/mediatek,mt6392-regulator.yaml  | 234 ++++++
+ arch/arm64/boot/dts/mediatek/mt6392.dtsi      |  75 ++
+ drivers/input/keyboard/mtk-pmic-keys.c        |  17 +
+ drivers/mfd/mt6397-core.c                     | 295 ++++---
+ drivers/mfd/mt6397-irq.c                      |   8 +
+ drivers/pinctrl/mediatek/pinctrl-mt6397.c     |  37 +-
+ drivers/pinctrl/mediatek/pinctrl-mtk-mt6392.h |  64 ++
+ drivers/regulator/Kconfig                     |   9 +
+ drivers/regulator/Makefile                    |   1 +
+ drivers/regulator/mt6392-regulator.c          | 756 ++++++++++++++++++
+ .../regulator/mediatek,mt6392-regulator.h     |  24 +
+ include/linux/mfd/mt6392/core.h               |  43 +
+ include/linux/mfd/mt6392/registers.h          | 488 +++++++++++
+ include/linux/mfd/mt6397/core.h               |   1 +
+ include/linux/regulator/mt6392-regulator.h    |  42 +
+ 17 files changed, 1942 insertions(+), 162 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6392-regulator.yaml
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6392.dtsi
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt6392.h
+ create mode 100644 drivers/regulator/mt6392-regulator.c
+ create mode 100644 include/dt-bindings/regulator/mediatek,mt6392-regulator.h
+ create mode 100644 include/linux/mfd/mt6392/core.h
+ create mode 100644 include/linux/mfd/mt6392/registers.h
+ create mode 100644 include/linux/regulator/mt6392-regulator.h
+
+-- 
+2.43.0
+
 
