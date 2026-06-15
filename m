@@ -4,56 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EBFFCD98DE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 22:50:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBAFACD98DE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 22:50:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
 	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+UuQVCAyUvse1CZNlmPDFh59OEsUZB+xGlZxHGND+n8=; b=nSkj3z9rjY1iwQvtsgKx0dXor+
-	DUwU2sE830AAmwjiLlxYfRS10D7ZzI5MaQsN4LJZ3UNmGrEPEJBVExPiXJFllPGVvZ3ssZkGD1dma
-	wOB2WUA2uujBmP6feZhcfGUizBQr48pcRkwayAXm7ZcaF6DGUDu9X5jJwF0CnlOEuQG0bPJhhMvAy
-	ix0dbGMxC3aUl0PRTLOWRTTyhlq83uD3IlQI7SBlW86//CQl2mgQBSAtPxd/3267YKTJciGo1Dc/U
-	8qFf4g2Jl9prUQ8Jt8LSQtk4X3ZJuhU5sXgVSz3bpnscBQrE73HH2dAYmT2cBK54JnbesiSM8vjoR
-	IO9N3O/A==;
+	bh=T57rr/fexxAyKKAD9vP64yQclmlYeocSTP22QwpKjPU=; b=mQjJ6iIQjoVgHUJi1CqaStpQTH
+	DEj01Zm3faxS1jnL9e5QwIqJ8Hug/zf4L+NRODgQ4Al33EBhZMloTitpmru3o8skJYDV5d3Y/Bh23
+	2XnnQLNh7BtNSLCdb4Kn/NGDs2sQH9mLXkmQGWhZlyBvFVuHugrr4tv6zN67kpF/KPGvcaozyx+Xg
+	Ia/jJDBb43Zj5BhfhpWm8XvK8v9DRHLrX5E7d/otHgLp8jAo9Ds63oSHQK3Pnqve4fYK4FRlMwbRb
+	dkKTYhEeL+Q9CeCEqn3t/zy6qTyxINstJlgVZMFoolPATxtxNEl/2nDiQbxRkPnvrRtOjD5VNMaHQ
+	R7Iu0eGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZG8D-0000000EuOv-1oXQ;
-	Mon, 15 Jun 2026 22:50:13 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wZG8k-0000000EuWU-39qS;
+	Mon, 15 Jun 2026 22:50:46 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZG8C-0000000EuOi-1vUJ;
-	Mon, 15 Jun 2026 22:50:12 +0000
+	id 1wZG8j-0000000EuVK-0Foq;
+	Mon, 15 Jun 2026 22:50:45 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 28D56600AB;
-	Mon, 15 Jun 2026 22:50:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D18121F000E9;
-	Mon, 15 Jun 2026 22:50:10 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 764B044299;
+	Mon, 15 Jun 2026 22:50:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 570A61F00A3A;
+	Mon, 15 Jun 2026 22:50:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781563810;
-	bh=+UuQVCAyUvse1CZNlmPDFh59OEsUZB+xGlZxHGND+n8=;
+	s=k20260515; t=1781563844;
+	bh=T57rr/fexxAyKKAD9vP64yQclmlYeocSTP22QwpKjPU=;
 	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=G/eSgO6vZTW3YbchjfabTrxKMJadLhtgPRAsobGJN8TnxIW2rMClT9+2+M/Tkm4+X
-	 RiIV6X3pqHoJoK5yotO8qkx7cnS9Ur23r8FraMx3w/mviMytAN/2uVBzdkVuPUxNkc
-	 ePFQpu84tp8hATKLJdM6RTpAeGoCNLhV3fMUicW+DffIIAyOj119ouhie1h06wq0k2
-	 ZVx2XbXoNl0JurGU2OfW9VG32vJLFiMbQrVHdUf5uLD0mciXNobQfnqRYcdQi2op1k
-	 zMog6+d1Y8fNI1wYeH+sQiMAGuN5uZImpEsFlJKahJdiHIfASg5hhNIE4Kqj3SCIZa
-	 K+1x7ZVauUC7w==
+	b=HHa0eArAA6Ld0Zj3yp6vGoxUPOoQmUCKHXCnC0q5zrnsQm2Au5pVRe0UAmhnf5d3s
+	 WAdzDrOqCd6R8F5ml/XISNZ6hMDpfSNg/KbovMbsghZlcHVvF+DvS6XBuOWnOi9vaD
+	 q8PNpCTF7NFYMhaq2vAosnH6+K207slsGGmNq5SdIhGp1bkGgbzCE17E2hx5jx4d2A
+	 48MNWhO90uBx2ao/SMxWin5SvbSeB3d53Q2tumhuluTTu2RVe069D1F11eLUVQO5Um
+	 pnrLBUqb+zWiYeYD6DgJ7VyM7CC7ZlCIvnQ8FrM5yqvpOf/A9vNd7b2DrBqcfwZBEi
+	 VYwbOqbEz96Aw==
 Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 199623839A08;
-	Mon, 15 Jun 2026 22:50:07 +0000 (UTC)
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 938083839A08;
+	Mon, 15 Jun 2026 22:50:40 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH] net: airoha: Fix always-true condition in PPE1 queue
- reservation loop
+Subject: Re: [PATCH] net: airoha: Fix typos in comments and Kconfig
 From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <178156380564.325968.12566495684945605433.git-patchwork-notify@kernel.org>
-Date: Mon, 15 Jun 2026 22:50:05 +0000
-References: <6a2ca3de.ad59c0a6.147df9.2ac1@mx.google.com>
-In-Reply-To: <6a2ca3de.ad59c0a6.147df9.2ac1@mx.google.com>
+Message-Id: <178156383913.325968.10885453250477186810.git-patchwork-notify@kernel.org>
+Date: Mon, 15 Jun 2026 22:50:39 +0000
+References: <6a2ca74a.c5b1db4e.21a698.01e7@mx.google.com>
+In-Reply-To: <6a2ca74a.c5b1db4e.21a698.01e7@mx.google.com>
 To: Wayen Yan <win847@gmail.com>
 Cc: netdev@vger.kernel.org, lorenzo@kernel.org, horms@kernel.org,
  pabeni@redhat.com, kuba@kernel.org, edumazet@google.com,
@@ -76,26 +75,22 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hello:
 
-This patch was applied to netdev/net.git (main)
+This patch was applied to netdev/net-next.git (main)
 by Jakub Kicinski <kuba@kernel.org>:
 
-On Sat, 13 Jun 2026 08:23:12 +0800 you wrote:
-> In airoha_fe_pse_ports_init(), the inner condition for PPE1 queue
-> reservation is identical to the for-loop bound, making it always true
-> and the else branch dead code:
+On Sat, 13 Jun 2026 08:41:16 +0800 you wrote:
+> Fix several typos found during code review:
+> - Kconfig: "Aiorha" -> "Airoha" in NET_AIROHA_FLOW_STATS help text
+> - Comment: "CMD1" -> "CDM1" (Central DMA, not Command)
+> - Comments: "GMD1/2/3/4" -> "GDM1/2/3/4" (Gigabit DMA, not GMD)
 > 
->   for (q = 0; q < pse_port_num_queues[FE_PSE_PORT_PPE1]; q++) {
->       if (q < pse_port_num_queues[FE_PSE_PORT_PPE1])  /* always true */
->           set RSV_PAGES;
->       else
->           set 0;  /* unreachable */
->   }
+> These are pure comment and documentation fixes with no functional impact.
 > 
 > [...]
 
 Here is the summary with links:
-  - net: airoha: Fix always-true condition in PPE1 queue reservation loop
-    https://git.kernel.org/netdev/net/c/c66f8511a810
+  - net: airoha: Fix typos in comments and Kconfig
+    https://git.kernel.org/netdev/net-next/c/a061dfb063fa
 
 You are awesome, thank you!
 -- 
