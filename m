@@ -4,89 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9178CCD98DE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 22:53:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E074CD98CE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 22:54:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=A3CN6mz876+/SEyI0OosJ7IJHs+qiuB800Fja+uy4WU=; b=bx1wxamSys02ojDfoL48+cfB3Q
-	EGMkr5c0+NtG4lABlKApnyKRFCeOmnuZyRR9Kg2CYa5fZ0NKiera4Ij2Kf8gI7PzGeYs/VHNtMxjL
-	N87PIIpL1yLiY03jUycJYmgZ4Dfts8GGBZ27XiOqCAWtfN0oDD2UoG+JM2XBj9LMHyrw+Gl/LX4+x
-	kL9B/1ihDffABJPDC8MB6sBwvLRA/XIvHZsJe2+uzk4zEImnpqzhfYhuExQFGely4vxdElDJGK5dc
-	Mmj6Dc7TKVAqdlyEGQVE9OlKpKTlKYL4LBEdZJ1ltaFlXWzodpd25w67egz4leVOjs5A/ls8qiR7c
-	OIJc6Xlg==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
+	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=r/gjY+tiP6Q990ZKxbsr2C9qQXKBuiCDXC4VdCYZdiw=; b=K2Z4q/vFPRk5M3OVvXFsMkaA8O
+	iEs9KeBdwTfnbtQStb/F0+yJynBZrIf08N0Iv5hShaNEy2P93uQBeeFb0dRLtW/6hu4GTQj0W5b71
+	qFPhqLxWcBRZ+Vgs9jK18rZleiC3SIhrhMhox0gBxXuX22nvDONsMiQShDuws0/o0Gd0/cqM4Hh3C
+	VTqXO7BU91c8QS3bpkxPX7DOZQDGAu4BXmAEL6q6cFGEDhddUEJaEcqObUWHCHEW0vP0jlsmF8Q0J
+	IX9Y+GOkWds+Ox0BVtsAVTMdFdz7YCkePKw8baypHRsucsdU8zA5uxd6TlzyxgR5rxFY2n1wMjsdO
+	CzesKZbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZGBp-0000000Euuq-2H1F;
-	Mon, 15 Jun 2026 22:53:57 +0000
-Received: from mail-dy1-x1342.google.com ([2607:f8b0:4864:20::1342])
+	id 1wZGBw-0000000EuzC-02WO;
+	Mon, 15 Jun 2026 22:54:04 +0000
+Received: from mail-10697.protonmail.ch ([79.135.106.97])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZGBn-0000000Euu4-12ho
+	id 1wZGBs-0000000Euun-2YaI
 	for linux-mediatek@lists.infradead.org;
-	Mon, 15 Jun 2026 22:53:56 +0000
-Received: by mail-dy1-x1342.google.com with SMTP id 5a478bee46e88-30807ba471bso10999795eec.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 15 Jun 2026 15:53:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781564034; x=1782168834; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=A3CN6mz876+/SEyI0OosJ7IJHs+qiuB800Fja+uy4WU=;
-        b=KWGLqB2L+KfWN3DNCZkApIxWTPwKL3pmQLNcSrk3GGc0f+M4JapBy8mnCceud9stpE
-         9Z2yvho5BuazxW5Sbi0aHI8vFCGOIRmXTXxle251eGv+b7aMXL0tKZC4XwYs+tZgNmEv
-         Z+48BcmiUh3B1ePgX3+GPXprQFMauc+VFwH3D3A4olxx8v4SOipKNF/pT2S7v+oq5bgl
-         /IRaqFXIeoqjw02k9SmqslzeDk4g0h2F70CqU0youvgljBiFUwQQkIVIYs1avnlQBzpG
-         DT8MnN81zeO8rkoo+Q4/4eq27Y8AFO86oUSsWW3c/uhkE3xbyeD7vzzFnPKojrDn44jH
-         Q/Gw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781564034; x=1782168834;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=A3CN6mz876+/SEyI0OosJ7IJHs+qiuB800Fja+uy4WU=;
-        b=Hw0+5h6H7FVJMDy+SS0Jmu39tO/1iXMWKSn+itPHfffLtyGRQhfuMEPrHoyVgoXrC9
-         EY3VCa5paU57t/SISXyKrjf/aN6INbr2wC4WlgTnL5yCREWAgJHMEgW2zfceoMztgYaw
-         tfxlBZNwOxJ2G4d+9jdGQellCtwJA3EZyItJrfOcez8s+jY0Rqt9cae9NoLp5JVwJK0n
-         oNeEfn3ZvRP9qc/9dkkJp5vhDkqQiu9cN0+5Kt0tOHyBsCXl+6QEEN79RZesV7e1YBVN
-         MMEeKZb3ESEYm4BIpvsW+IriTCoecDMlBriiuw8H9fTXY/L8L+q5YKGGOWxcuYH7AHeR
-         Icjw==
-X-Forwarded-Encrypted: i=1; AFNElJ/An0aeCk3dDbTmKoLdK8Yj9VRDup7k50+qKTpvuCy4GEUKSAdtCvsn1IJhDMg2rSNTs+VnRm0Up0cSRVvG1Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyQJ+1FoThnnuy2uiDEFiXGJw6t8vy+58FGwq7Zs/38upT/eJ+K
-	+06mzpwwr46w8EMUBcdmlgDWcKa7MEg7tSo/u9BJD1l8HRIviBU1KrxC
-X-Gm-Gg: Acq92OFYr837ebWJiemw98gw5E+M0CUhtG4X67gxP1oakCrzLKOP0GgFWUbNGSiVb2m
-	PYtqmBLUcK2SnKbgpveyCVL1QQU1yx2b6FxvkiZCmebIXqWoRkJLTEIhXretE3/g0Rpg5MAdakL
-	1gmxQhzcjtuWyY5pWw0jeupu0Q4oqhyDOLU1qXOiM0PPa2yFIDTW3gHuzPekjF/X9SJFNqeNVBK
-	zDjULJysguJ3VCgmoz9mNUrnVb+mzSBZyl8yTAbtI6iu42gkwe4syru26+AR0o3Y4kigKv/lydR
-	H7qyEGHd+Tzdfd2AJDyXR4L1unK4yNTTSklgsejp+Lyobieepk75eGv6BTdbL3J5Ddxxbp3iIMz
-	sNdhcTXEg4OCUv7SP1r0vGq+kw94YjEmjlNXCyCCbVhQhhIGDfjfRkhkAoeCEGWIMEtUSjBAAas
-	fEu6A+pB305/ihH9kLqf0pn5vhcZ5hudlOj6wUTPbnNUt6XK3Y3f2tBGpCvjau8TjYAgID2g6rN
-	cra48sNcx9puVhrRo9FDIDA9tEBulf4IgiAqNqbBS4sModIcJlyWgSmIXiyNO2HAndtaSm7DOfX
-	5hIruyIW6Z1DDTMd3Enyc6xdVkI8
-X-Received: by 2002:a05:7300:8609:b0:304:d8cb:841a with SMTP id 5a478bee46e88-30ba5b28d0emr761709eec.14.1781564033851;
-        Mon, 15 Jun 2026 15:53:53 -0700 (PDT)
-Received: from ethan-latitude5420.. (host-127-24.cafrjco.fresno.ca.us.clients.pavlovmedia.net. [68.180.127.24])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3081eb95342sm16727559eec.29.2026.06.15.15.53.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Jun 2026 15:53:53 -0700 (PDT)
-From: Ethan Nelson-Moore <enelsonmoore@gmail.com>
-To: "GitAuthor: Ethan Nelson-Moore" <enelsonmoore@gmail.com>,
-	linux-media@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2] media: mt2063: correct CONFIG_MEDIA_TUNER_MT2063 macro name in comment
-Date: Mon, 15 Jun 2026 15:53:48 -0700
-Message-ID: <20260615225351.22791-1-enelsonmoore@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	Mon, 15 Jun 2026 22:54:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail3; t=1781564035; x=1781823235;
+	bh=r/gjY+tiP6Q990ZKxbsr2C9qQXKBuiCDXC4VdCYZdiw=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector;
+	b=N1NMtcJH8qaIp8aWHopwJAMhIp+0afBCHYBGMk1a7yNPPFvH0IUD+E0lg82PbCXAC
+	 lDn2yefILSBfBN0V2abnmi67D+yvj1/BeTlEdmFEgxNmP2iSNuTlNYLvQqIx1Bg996
+	 Ippdqv0SzLJsyHMzRos2tau8AcLSLHmKqF4stSRwvHqVTH/1onJH9LpwN0iM/gNGmc
+	 +CCZyZvKzNSJuKGH8rXX/0/Aerthe3tDhExEHbxVpJfOh4X2xbAsZsjR2YLabxSpJv
+	 MvYvgFR94+smSVXBrEdE4ltvU6WhRddiRIipZgLjpg2Mr+qi/KduIcrPmMJxhfen+I
+	 hYH6F7VeumdVA==
+Date: Mon, 15 Jun 2026 22:52:57 +0000
+To: Jonathan Cameron <jic23@kernel.org>
+From: Roman Vivchar <rva333@protonmail.com>
+Cc: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>, David Lechner <dlechner@baylibre.com>, =?utf-8?Q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Lee Jones <lee@kernel.org>, linux-iio@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ben Grisdale <bengris32@protonmail.ch>
+Subject: Re: [PATCH v2 2/4] iio: adc: mt6323-auxadc: add mt6323 PMIC AUXADC driver
+Message-ID: <E5H72l1Cg-JQGpaYAFl5TIyITmghqMsTaHQTR8VkuFtlzmfCGTpVlceNp8c2BDW7UoheO0Fx6NLJHmu56WHRNWdPNLsaoIKMCftj_bnyvEI=@protonmail.com>
+In-Reply-To: <20260614182214.65d052e4@jic23-huawei>
+References: <20260609-mt6323-adc-v2-0-aa93a22309f9@protonmail.com> <20260609-mt6323-adc-v2-2-aa93a22309f9@protonmail.com> <20260614182214.65d052e4@jic23-huawei>
+Feedback-ID: 173184497:user:proton
+X-Pm-Message-ID: c61ec01342be96adbdf14dac7b7b7d5c99c1cee8
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260615_155355_330192_B9147128 
-X-CRM114-Status: GOOD (  10.95  )
+X-CRM114-CacheID: sfid-20260615_155400_821397_35711EC7 
+X-CRM114-Status: GOOD (  24.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,32 +69,149 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-A comment in drivers/media/tuners/mt2063.h incorrectly refers to
-CONFIG_DVB_MT2063 instead of CONFIG_MEDIA_TUNER_MT2063. Correct it.
+Hi Jonathan,
 
-Discovered while searching for CONFIG_* symbols referenced in code but
-not defined in any Kconfig file.
+On Sunday, June 14th, 2026 at 8:22 PM, Jonathan Cameron <jic23@kernel.org> =
+wrote:
+> On Tue, 09 Jun 2026 16:31:59 +0300
+> Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org> wro=
+te:
 
-Signed-off-by: Ethan Nelson-Moore <enelsonmoore@gmail.com>
----
-Changes in v2: Use correct media: commit message prefix
+...
+=20
+> > +
+> > +#define MTK_PMIC_IIO_CHAN(_name, _chan, _addr)                  \
+> > +{                                                               \
+> > +=09.type =3D IIO_VOLTAGE,                                    \
+> > +=09.indexed =3D 1,                                           \
+> > +=09.channel =3D _chan,                                       \
+> > +=09.address =3D _addr,                                       \
+> > +=09.datasheet_name =3D __stringify(_name),                   \
+> > +=09.info_mask_separate =3D BIT(IIO_CHAN_INFO_RAW) |          \
+> > +=09=09=09      BIT(IIO_CHAN_INFO_SCALE),         \
+> > +}
+> > +
+> > +static const struct iio_chan_spec mt6323_auxadc_channels[] =3D {
+> > +=09MTK_PMIC_IIO_CHAN(baton2,    MT6323_AUXADC_BATON2,    MT6323_AUXADC=
+_ADC6),
+> > +=09MTK_PMIC_IIO_CHAN(ch6,       MT6323_AUXADC_CH6,       MT6323_AUXADC=
+_ADC11),
+> > +=09MTK_PMIC_IIO_CHAN(bat_temp,  MT6323_AUXADC_BAT_TEMP,  MT6323_AUXADC=
+_ADC5),
+>=20
+> Reasonable query from Sashiko on why temperature channels are presented a=
+s voltages.
+> If for some reason that is the right choice, then maybe a comment here.
 
- drivers/media/tuners/mt2063.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+mt6323 ADC always returns voltage. The thermal driver (which was in the
+previous series and will be sent later) is required to map these to the
+actual temperature. Ack.
 
-diff --git a/drivers/media/tuners/mt2063.h b/drivers/media/tuners/mt2063.h
-index 30d03cd76061..6c4b6c68ec25 100644
---- a/drivers/media/tuners/mt2063.h
-+++ b/drivers/media/tuners/mt2063.h
-@@ -24,6 +24,6 @@ static inline struct dvb_frontend *mt2063_attach(struct dvb_frontend *fe,
- 	return NULL;
- }
- 
--#endif /* CONFIG_DVB_MT2063 */
-+#endif /* IS_REACHABLE(CONFIG_MEDIA_TUNER_MT2063) */
- 
- #endif /* __MT2063_H__ */
--- 
-2.43.0
+...
 
+> > +/*
+> > + * The MediaTek MT6323 (as well as a lot of other PMICs) has the follo=
+wing hierarchy:
+> > + * PMIC AUXADC <- PMIC MFD <- SoC PWRAP (wrapper for PWRAP FSM)
+> > + *
+> > + * Therefore, PWRAP regmap should be obtained using dev->parent->paren=
+t.
+> > + */
+> > +struct mt6323_auxadc {
+> > +=09struct regmap *regmap;
+> > +=09struct mutex lock;
+> Locks should always have a comment on what data they are protecting.
+> I think this one is about protecting the state of a device during a chann=
+el read
+> by serializing those reads.
+
+Nuno said kerneldoc looks unnecessary on v1 [1]. How the comment should
+look?
+
+...
+
+> > +static int mt6323_auxadc_request(struct mt6323_auxadc *auxadc,
+> > +=09=09=09=09 unsigned long channel)
+> > +{
+> > +=09struct regmap *map =3D auxadc->regmap;
+> > +=09int ret;
+> > +
+> > +=09ret =3D regmap_set_bits(map, MT6323_AUXADC_CON11, AUXADC_CON11_VBUF=
+_EN);
+> > +=09if (ret)
+> > +=09=09return ret;
+> > +
+> > +=09return regmap_set_bits(map, MT6323_AUXADC_CON22, BIT(channel));
+>=20
+> I'm not sure whether the sashiko question on this is valid or not. Make s=
+ure to take
+> a look.
+>=20
+> https://sashiko.dev/#/patchset/20260609-mt6323-adc-v2-0-aa93a22309f9%40pr=
+otonmail.com
+> You may have carefully selected the numbering so the channel numbering ma=
+tches
+> the bits in this register.  If so, it is probably worth a comment in the =
+header
+> to provide a cross reference.  No idea if Sashiko will notice that, but a=
+t least
+> humans should!
+
+The hardware is pretty weird, but dt-bindings have correct numbers.
+I have double checked with the vendor driver and the logic is the same.
+
+'If regmap_set_bits() fails to set MT6323_AUXADC_CON22, does this leave the
+AUXADC voltage buffer (VBUF) permanently enabled?' - if this happens,
+then there's something really wrong with PWRAP and disabling VBUF may
+not be possible. Same about the 'mt6323_auxadc_release' comment.
+
+...
+
+> > +=09case IIO_CHAN_INFO_RAW:
+>=20
+> What Andy suggested here is the preferred path in IIO at least.
+> Mainly because it reduced indent without hurting readability.
+> Just be careful to define the scope with { }
+
+Ack.
+
+>=20
+>=20
+> > +=09=09scoped_guard(mutex, &auxadc->lock) {
+> > +=09=09=09ret =3D mt6323_auxadc_prepare_channel(auxadc);
+> > +=09=09=09if (ret)
+> > +=09=09=09=09return ret;
+> > +
+> > +=09=09=09ret =3D mt6323_auxadc_request(auxadc, chan->channel);
+> > +=09=09=09if (ret)
+> > +=09=09=09=09return ret;
+> > +
+> > +=09=09=09/* Hardware limitation: the AUXADC needs a delay to become re=
+ady. */
+> > +=09=09=09fsleep(300);
+> > +
+> > +=09=09=09ret =3D mt6323_auxadc_read(auxadc, chan, val);
+> > +
+> > +=09=09=09if (mt6323_auxadc_release(auxadc, chan->channel))
+> > +=09=09=09=09dev_err(&indio_dev->dev,
+> > +=09=09=09=09=09"failed to release channel %d\n", chan->channel);
+> > +
+> > +=09=09=09if (ret)
+> > +=09=09=09=09return ret;
+> > +=09=09}
+> > +=09=09return IIO_VAL_INT;
+> > +=09default:
+> > +=09=09return -EINVAL;
+> > +=09}
+> > +}
+>=20
+>=20
+
+After these changes, should I keep or drop Andy's Reviewed-by?
+
+[1]: https://lore.kernel.org/linux-iio/2df4cad5e29fbcb4c5c5f59ea0bf322c7a30=
+1bdc.camel@gmail.com/
+
+Best regards,
+Roman
 
