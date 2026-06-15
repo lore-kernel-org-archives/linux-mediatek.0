@@ -4,52 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF8A3CD98CF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 13:31:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 123EECD98CF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 13:33:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
 	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AztGQmlWKqiomMfQy7VwV1LA90NR9R4FU4YZ8MZTWBc=; b=GmTaMl8yTVKcqTS+2+FoMI313i
-	x3oqgTrdKWXIFRv1yeUwlC/pM+4jCZUxhMGApJvYtMcYx3S2SJei1MNpE+/0YeuTwuc7BXBpYRR0Y
-	lBNnH3FaoIRvjhTngC+F6av599Zx9MUxjdeWqgogd1cgUQXFlUQ+Fypx2fdqNVtdtMEe/syuaOdGH
-	c1S8HdOoAvb/3JFvP+s4KM5ocDZpiGXCgVCn76zihctoHPX1+tAXclAsnQCQmFYiI/fmU1bl3tlr/
-	yeO19cdbfH5Rk875nQJxdsr+KYhJAfVJ1LfqddxCNirY8lyf8bihMZtewlbLkpJbMTLEUZ7crCWMr
-	BnxD4HoA==;
+	bh=dOWrt41fp9ZkdsfONhl/POwO170vOA3eDS7WRaAIv2Y=; b=SYu3fdrYtprAk1U472KuOInGbt
+	eFWUHQ0iIZlL93xBaznMKRSZWZKzvZchPZkmHDbwlfskhzt2FIGvo6VI6Nl8GtzU8TQiw74sndaul
+	Sv340HPkJP3TcZQ3tYsyW2fkwZraou9ZNas1tuJYCHsI/coFTqazLd0hmKGDGXxlIQu02u5r3v3sm
+	uiZ4dWIMBNIK+Q5v84GqAw5okHVLd9ycqd4UNMGbrQcipEfX6gsOlmpdBC4FCtE/29sR4wtK4TPZk
+	p96K60eUVhFjukucdSdIBKDrSuqpEVZOFoOmAf7fIskguTW+TdwhdqLb3PChv3NM5wzloPHu9+OF5
+	xJ6QNxtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ7Pi-0000000EJ5q-1Qu0;
-	Mon, 15 Jun 2026 13:31:42 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1wZ7Rk-0000000EJK3-1aXp;
+	Mon, 15 Jun 2026 13:33:48 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ7Pc-0000000EJ50-1oZI
-	for linux-mediatek@lists.infradead.org;
-	Mon, 15 Jun 2026 13:31:38 +0000
+	id 1wZ7Rh-0000000EJJQ-1TSW;
+	Mon, 15 Jun 2026 13:33:46 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id A07624E42EEE;
-	Mon, 15 Jun 2026 13:31:31 +0000 (UTC)
+	by smtpout-02.galae.net (Postfix) with ESMTPS id E272F1A37CE;
+	Mon, 15 Jun 2026 13:33:42 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 67AD660015;
-	Mon, 15 Jun 2026 13:31:31 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id E3D57106C94F2;
-	Mon, 15 Jun 2026 15:31:20 +0200 (CEST)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id B16B360015;
+	Mon, 15 Jun 2026 13:33:42 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 61CB9106C94F2;
+	Mon, 15 Jun 2026 15:33:35 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1781530290; h=from:subject:date:message-id:to:mime-version:content-type:
+	t=1781530421; h=from:subject:date:message-id:to:mime-version:content-type:
 	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=AztGQmlWKqiomMfQy7VwV1LA90NR9R4FU4YZ8MZTWBc=;
-	b=DQHVEXjMGNQkj6OzgBLI7rDFOF/FNM88+41WUUHPg+BrpSxpFT/14EES1zC3zgPtRppV60
-	O/iPBXU1sjhMFIr08FKA2puoS7HgC/bWwTXrmDzUaK3SFJ7tECgzgjpg+p+hGU3l+iTm2z
-	zgXUvvlFaH/R7/vmVhczsdW4ctDr6SPdHLCYBxty/3ZOB3ezGRLdk2JSR2hYx3L9bje1hf
-	tw/7W857gReWfemIRnofdh0QdG7+BjBOnIpc9ZpisndoW3pcIZk0PjYmEBYOqyQSvQSyqk
-	5SpkK1Ff3Z4+YOJBS56jp8YaE91zYpo2Bd/AFirKKZd/rvWYqKTzYd3ur43wtg==
-Message-ID: <3bbacda3-4225-4536-a4b4-3aa31a47a3aa@bootlin.com>
-Date: Mon, 15 Jun 2026 15:31:20 +0200
+	bh=dOWrt41fp9ZkdsfONhl/POwO170vOA3eDS7WRaAIv2Y=;
+	b=cN8CNMsqV3vnmukdqV8G3Kzmq5G8amSuHqLO4tp10lfiI1kRuxOzzSVIOf7+6AuuwloL9i
+	EG6SwhRzQHIXAoItTEt3q0xG5RNm3La0F1DIV0asn9qRlDZg4i6V45E0qd0ChV4jh3qjXT
+	inGsCfhmYmkyv6LTBNRDy2xV4NQjVWHZntpev9zX9XStGsTgIhLlMTMf9yoUXdQCN9YRwv
+	t/XfzKsI8HZSndynjUihh3WNXfQmnYPID0ISfu59px6MIQgnFV/lBYoPkbtdYnQ+r1vduy
+	l+wlZo1hfEKbr7/6vnPBb9a5YhLqeYxBhb/ysDmThYVw9njwNSrwJliPypg9Kw==
+Message-ID: <371a1df7-084c-4431-bd00-0045298e3212@bootlin.com>
+Date: Mon, 15 Jun 2026 15:33:34 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v7 02/12] net: phylink: introduce internal
- phylink PCS handling
+Subject: Re: [PATCH net-next v7 01/12] net: phylink: keep and use MAC
+ supported_interfaces in phylink struct
 To: Christian Marangi <ansuelsmth@gmail.com>,
  Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
  <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
@@ -68,16 +67,16 @@ To: Christian Marangi <ansuelsmth@gmail.com>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  llvm@lists.linux.dev
 References: <20260615122950.22281-1-ansuelsmth@gmail.com>
- <20260615122950.22281-3-ansuelsmth@gmail.com>
+ <20260615122950.22281-2-ansuelsmth@gmail.com>
 Content-Language: en-US
 From: Maxime Chevallier <maxime.chevallier@bootlin.com>
-In-Reply-To: <20260615122950.22281-3-ansuelsmth@gmail.com>
+In-Reply-To: <20260615122950.22281-2-ansuelsmth@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260615_063136_746062_1E28980B 
-X-CRM114-Status: GOOD (  34.17  )
+X-CRM114-CacheID: sfid-20260615_063345_550734_247FC685 
+X-CRM114-Status: GOOD (  17.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,121 +91,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Christian,
+Hello Christian,
 
 On 6/15/26 14:29, Christian Marangi wrote:
-> Introduce internal handling of PCS for phylink. This is an alternative
-> way to .mac_select_pcs that moves the selection logic of the PCS entirely
-> to phylink with the usage of the supported_interface value in the PCS
-> struct.
+> Add in phylink struct a copy of supported_interfaces from phylink_config
+> and make use of that instead of relying on phylink_config value.
 > 
-> MAC should now provide a callback to fill the available PCS in
-> phylink_config in .fill_available_pcs and fill the .num_possible_pcs with
-> the number of elements in the array. MAC should also define a new bitmap,
-> pcs_interfaces, in phylink_config to define for what interface mode a
-> dedicated PCS is required.
-> 
-> On phylink_create(), an array of PCS pointer is allocated of size
-> .num_possible_pcs from phylink_config and .fill_available_pcs from
-> phylink_config is called passing as args the just allocated array and
-> the number of possible element in it.
-> 
-> MAC will fill this passed array with all the available PCS.
-> 
-> This array is then parsed and a linked list of PCS is created based on
-> the allocated PCS array filled by MAC via .fill_available_pcs().
-> 
-> Every PCS in phylink PCS list gets then linked to the phylink instance
-> by setting the phylink value in phylink_pcs struct to the phylink instance.
-> Also the supported_interface value in phylink struct is updated with
-> the new supported_interface from the provided PCS.
-> 
-> On phylink_destroy(), every PCS in phylink PCS list is unlinked from the
-> phylink instance by setting the phylink value in phylink_pcs struct to NULL
-> and removed from the PCS list.
-> 
-> phylink_validate_mac_and_pcs(), phylink_major_config() and
-> phylink_inband_caps() are updated to support this new implementation
-> with the PCS list stored in phylink.
-> 
-> They will make use of phylink_validate_pcs_interface() that will loop
-> for every PCS in the phylink PCS available list and find one that supports
-> the passed interface.
-> 
-> phylink_validate_pcs_interface() applies the same logic of .mac_select_pcs
-> where if a supported_interface value is not set for the PCS struct, then
-> it's assumed every interface is supported.
-> 
-> A MAC is required to implement either a .mac_select_pcs or make use of
-> the PCS list implementation. Implementing both will result in a fail
-> on phylink_create().
-> 
-> A MAC defining .num_possible_pcs in phylink_config MUST also define a
-> .fill_available_pcs or phylink_create() will fail with an negative error.
-> 
-> phylink value in phylink_pcs struct with this implementation is used to
-> track from PCS side when it's attached to a phylink instance. PCS driver
-> will make use of this information to correctly detach from a phylink
-> instance if needed.
-> 
-> phylink_pcs_change() is also changed to verify that the PCS that triggered
-> a link change is the one that is currently used by the phylink instance.
-> 
-> The .mac_select_pcs implementation is not changed but it's expected that
-> every MAC driver migrates to the new implementation to later deprecate
-> and remove .mac_select_pcs.
+> This in preparation for support of PCS handling internally to phylink
+> where a PCS can be removed or added after the phylink is created and we
+> need both a reference of the supported_interfaces value from
+> phylink_config and an internal value that can be updated with the new
+> PCS info.
 > 
 > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 > ---
-
-[...]
-
-> @@ -1872,10 +1993,28 @@ struct phylink *phylink_create(struct phylink_config *config,
->  	mutex_init(&pl->phydev_mutex);
->  	mutex_init(&pl->state_mutex);
->  	INIT_WORK(&pl->resolve, phylink_resolve);
-> +	INIT_LIST_HEAD(&pl->pcs_list);
-> +
-> +	/* Fill the PCS list with available PCS from phylink config */
-> +	ret = phylink_fill_available_pcs(pl, config);
-> +	if (ret < 0) {
-> +		kfree(pl);
-> +		return ERR_PTR(ret);
-> +	}
-> +
-> +	/* Link available PCS to phylink */
-> +	list_for_each_entry(pcs, &pl->pcs_list, list)
-> +		pcs->phylink = pl;
+>  drivers/net/phy/phylink.c | 22 +++++++++++++++-------
+>  1 file changed, 15 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
+> index 087ac63f9193..4d59c0dd78db 100644
+> --- a/drivers/net/phy/phylink.c
+> +++ b/drivers/net/phy/phylink.c
+> @@ -60,6 +60,11 @@ struct phylink {
+>  	/* The link configuration settings */
+>  	struct phylink_link_state link_config;
 >  
->  	phy_interface_copy(pl->supported_interfaces,
->  			   config->supported_interfaces);
->  
-> +	/* Update supported interfaces */
-> +	list_for_each_entry(pcs, &pl->pcs_list, list)
-> +		phy_interface_or(pl->supported_interfaces,
-> +				 pl->supported_interfaces,
-> +				 pcs->supported_interfaces);
-> +
+> +	/* What interface are supported by the current link.
+> +	 * Can change on removal or addition of new PCS.
+> +	 */
+> +	DECLARE_PHY_INTERFACE_MASK(supported_interfaces);
 
-I'm not entirely sure about that, we may need to restrict the supported_interfaces
-from the MAC.
-
-As an example, take mvpp2. We have 2 PCSs, one for BaseX/SGMII, one for BaseR. But
-if we don't have a comphy (generic PHY) device, then we can't use all the
-combination of modes our PCSs can provide :
-
-https://elixir.bootlin.com/linux/v7.1-rc7/source/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c#L7074
-
-These aren't external PCS IPs, but from what I understand you'd like to
-handle these the same way as purely external PCSs, right ?
-
-I'd say the MAC driver utltimately has the knowledge of all possible interfaces.
-
-The way I see it, it's probably safer to let the MAC give a wide range of interfaces,
-and filter that down with what the PCSs can provide (i.e. turn that or into an and,
-while handling the case where the pcs supported interfaces is empty).
-
-What do you think ?
+Can you clarify a bit what you mean here ? Is that the combination of the
+interfaces the MAC supports AND the currently in-use PCS ?
 
 Maxime
+
 
