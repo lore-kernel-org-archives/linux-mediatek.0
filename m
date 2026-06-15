@@ -4,183 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DF88CD98C5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 08:44:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E879CCD98C5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 09:00:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:References:MIME-Version:
+	In-Reply-To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ngG7jwon0ngWsRZbQzoUQvuXyF0wOFK1utI302Mczqs=; b=OLVIL9YeZsKNcF/fgyleefTMQK
-	u2d6R7fFvs1/35WTEwMP31iCqn9MpS4RxqmwnyKbkFzfAGXyVsMqLhN7Rd3Ym11XeYGQA/s78WIzX
-	83bp8D2BjDxfIdT7BmYFA541IQ90/rKkSidR0X0g66+16Zfb2a1GMCHFG11Xv3sycKYIffPrWbAVH
-	6dBctLqRDa4LeLn9+PcD/T9PHMz1Ahu6s/9TQTYPGNQQJo4RKC0B7wYZdg0cQRFu30esQoPrsnHaF
-	aRvOMPTL9LrwVvSpRn3sSuLcpbm7CR1FiwjFz3Rhg5wjhuUao+/E+Vm3BJz8rXRbG/E4nwy750lRV
-	KSx7ORPg==;
+	bh=kO1E9F7wgo/77mIm8rZU5i8TCq+arHzjaWY5F0pap6s=; b=lcegi8yqXsQdrQWE+x+Ava6koR
+	/xjf5LIdcOMJUkpXHrSML3kn1RAGW1nTDKBPJYc5if+ud3MTXom95t8a6T4hC24DwXEN23hiuvzvZ
+	PacRPDy2IdCacR2lhWkAwjy8T3schxWMGMgsBXH/7UwKplsU4oM86tWRrRtsyrM4nJLQHMRjuAkjE
+	zcoWnsYVvsA8OuWZ3vBKtzng1YeE7b/URWR22UKRmXQBt7rPlncaBqTk/tR8AILKc0hLTu3T5YPK0
+	XaxNfnvLqfNHNhTCj1UxalHPcznR5WDC+WgjhpJwPTSXF5JBRGJq7aK4iw7LUH24/qevDmXyMlCmk
+	37xgXw7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ2w8-0000000DtpR-2EoM;
-	Mon, 15 Jun 2026 08:44:52 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1wZ3BG-0000000Dvvm-33n4;
+	Mon, 15 Jun 2026 09:00:30 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ2w3-0000000DtoW-3l4C;
-	Mon, 15 Jun 2026 08:44:49 +0000
-X-UUID: 75e3659a689611f1acbe4559397dec65-20260615
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=ngG7jwon0ngWsRZbQzoUQvuXyF0wOFK1utI302Mczqs=;
-	b=Yd3wjpKdK2vBrfoOgyyiRjQe0/sD3cWs2t9f0/ANFtP3xYpeDoMbk+P/wt5DGNdtQFRjIlfDepHdCPaYt5PMk/hWCUtPiEvEkqkVCYOIhhZgm7zyQqCsmCcYM6CE8sz/0kn4RsXTNxkk+Cj/7pALszoGTCWoe0Hkum2qQLD8Uos=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.15,REQID:db22a62d-c399-4bfd-b5ba-6402cc43555b,IP:0,U
-	RL:0,TC:0,Content:14,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:14
-X-CID-META: VersionHash:e276073,CLOUDID:10b0ce30-7784-4a77-a538-47ed6151d81b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111|836|865|888|
-	898,TC:-5,Content:3|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:ni
-	l,BEC:-1,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 75e3659a689611f1acbe4559397dec65-20260615
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 166055024; Mon, 15 Jun 2026 01:44:45 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 15 Jun 2026 16:44:43 +0800
-Received: from SG2PR04CU010.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 15 Jun 2026 16:44:43 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=RnBhXqcYSss4lX+CKkDZzhCIYgO0N12S+8jBZDPovAPojKyiy92kXDz1Sd8Ed8MX7VjNLN8A2OAHLtDlyO36D/SVOZWE57CaQpONVA4j+HKXSvFINBU1PaATKo+VMzJkIzHTZbXl9FlxoQKQEyCVgge1OSMohhuoJRuOtFjj/4M3g+FsNmYjfDzmhbc7yDBG/BUmuvmN8oWYtuXplNfSw5uPuQgZM8jBjKA95NUT1bdjrJjaCA9kVSWkgr7UtQrCf1tSFVr/gXtYg80bUUm5OhKFkbFL04qE00aMVVPISnVm2Ia4VWJa24TkN0af2e36jVlr2sE1UOz+MWq5MPzJFQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ngG7jwon0ngWsRZbQzoUQvuXyF0wOFK1utI302Mczqs=;
- b=nOJ5iI6HCS1w+21TAp5pjMqHkch3o+wkQoWOiH9CFDxeX0i3KXGPr8KkCrl9KxJO4tZHjf5X+dseUHNkZrBX6pL7Tue0jt+wEieS2sHeqlWrt06cCuVmkdruf5rgFN0zglYhkIRo5TJTn2YJ0EkNis2eXhpdczp4jPp7o0k2DkMTKwSSJqTPLdkfF3G6j35DgKcFYJLsf93L12giN9P7ec+YAJG3qo1RbyMh7zmu4e+YWlTu2G2IHrAmJOTOdkw4nCf3q7h99CO0Rf/M04yvbb6WTkfd2oB8JVzzkRA6WbleX3RWJ1eKokyOev9/M3dqF4Vfm2nYajBKezYiuJ4nvw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ngG7jwon0ngWsRZbQzoUQvuXyF0wOFK1utI302Mczqs=;
- b=gZy73VUWMkGme4aMCrT2CFjyG6UF0GQHIXi80bmL95SrTIQ/6AjdxNBGLh9B/MmOhghbPkSuhAI8aSIoLVoL1dmB/1udo8j9kXzaHNcQZDqVedWCF7kLpTQfqmhu0Tc22cFcNmgl0Y7PpIIRNHHZTc5GD1twYP+f/j21GYvcbjg=
-Received: from PSAPR03MB5605.apcprd03.prod.outlook.com (2603:1096:301:66::6)
- by TY1PPF4A10620CF.apcprd03.prod.outlook.com (2603:1096:408::a51) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.139.11; Mon, 15 Jun
- 2026 08:44:37 +0000
-Received: from PSAPR03MB5605.apcprd03.prod.outlook.com
- ([fe80::165:d36a:3f76:2925]) by PSAPR03MB5605.apcprd03.prod.outlook.com
- ([fe80::165:d36a:3f76:2925%6]) with mapi id 15.21.0113.013; Mon, 15 Jun 2026
- 08:44:37 +0000
-From: =?utf-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>
-To: "avri.altman@wdc.com" <avri.altman@wdc.com>, "linux-scsi@vger.kernel.org"
-	<linux-scsi@vger.kernel.org>, =?utf-8?B?RWQgVHNhaSAo6JSh5a6X6LuSKQ==?=
-	<Ed.Tsai@mediatek.com>, "bvanassche@acm.org" <bvanassche@acm.org>,
-	"alim.akhtar@samsung.com" <alim.akhtar@samsung.com>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "James.Bottomley@HansenPartnership.com"
-	<James.Bottomley@HansenPartnership.com>, "martin.petersen@oracle.com"
-	<martin.petersen@oracle.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>,
-	=?utf-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>,
-	=?utf-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?= <Naomi.Chu@mediatek.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, wsd_upstream
-	<wsd_upstream@mediatek.com>, =?utf-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?=
-	<Alice.Chao@mediatek.com>
-Subject: Re: [PATCH v3 3/3] ufs: core: Remove max_num_rtt field from
- ufs_hba_variant_ops
-Thread-Topic: [PATCH v3 3/3] ufs: core: Remove max_num_rtt field from
- ufs_hba_variant_ops
-Thread-Index: AQHc/IwBSnhfzpkK3EGJyMeVvcczXLY/TUsA
-Date: Mon, 15 Jun 2026 08:44:37 +0000
-Message-ID: <f332a3baeadcae410a99098d1459899a6a6c34b2.camel@mediatek.com>
-References: <20260615055802.105479-1-ed.tsai@mediatek.com>
-	 <20260615055802.105479-4-ed.tsai@mediatek.com>
-In-Reply-To: <20260615055802.105479-4-ed.tsai@mediatek.com>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: PSAPR03MB5605:EE_|TY1PPF4A10620CF:EE_
-x-ms-office365-filtering-correlation-id: bb187015-d391-4b54-0b26-08decaba552f
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|376014|7416014|23010399003|1800799024|366016|56012099006|11063799006|4143699003|18002099003|22082099003|38070700021;
-x-microsoft-antispam-message-info: /1hLmMz8VyhBc92rI66eQ5V6wKcRov0HdO9LbEOrTMY9lVAfZzsWVvTX5Dpm5W0Sau/2VpZSGRecpxdRU7ewCxwF3/5hCXtSaNE46X6QjOMBP3FxDdm/8Fouy4LnYvIy54f1xRa6f3BVag7PnMUg+hfWdx0J97EAnxm2jiw0Pn1rcSJqRq2Tbu7Y/thVq9vNrCc2m/8QzywvJ+9AoNPy3zDBTcprpdpLN3/CMVfgBuDMnHm7cn75rxQR0/63tPLtsDzXwKgezfZCzqZWcb3PFAcu3e9w739E/0DJxg6EMNntCaef749fN4Zy+axUlI8vp24qGNMOlAl8mKtT9usdSjP5IZK/K/OhN7bT9gFfLJAx3K/5fUIbErRTLI2PkAHNkSEXsxNUwaZN6mpAjThqEMBhcgqBjILj9Qj3x4Gmwz3C4DCVNqGy/Qq1H5goZRKKed3oaIPHqzTjnjyEJ1VI1nm/z7LKxdGQloKMQU4DNUqxGf9dRhyAfaRrjhYTR881v+PDWNqE8BUfb3fUvMXGFDBf9uxGAvO4723WzltX9bHOuooTZMfGb184wf+s+tpxozShr7ldN4oNjCRJdNz6ca93qMCdyWEfakDXt8tVOJgD0fyRgTKkJTyeyHmE2uefSL7RTts1ujEDzt5Wxgnc5rZ1iP6jJVL5OVteEoMAZXzExBJjsNN71EiV3FVXLsywKOqhRIYyUwxe4vEIJKQaSdqan1ZIgxXNdxQzoTVIjOS68P2vVp/CisTIzhiTFzlp
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PSAPR03MB5605.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(23010399003)(1800799024)(366016)(56012099006)(11063799006)(4143699003)(18002099003)(22082099003)(38070700021);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?WTdhRXhsRU1nQWFwTWtoanpSaHlLdytORzBkSW9laDhJeWQ5dHM3MnIvZFVH?=
- =?utf-8?B?STByUHJqV3FxOFFJYmJ6dUdGQ3g0Y3VlTHUwbVFEOFBBMWZBeC9uNFF0YXEv?=
- =?utf-8?B?WDVSK2t1a2l0bzE0KzZBUHFmZ3cwQjBGSFo0ZzBkMG9abjF2ZWVNRklGWWNB?=
- =?utf-8?B?VGdabmcrc0pPTTRZeVJNNDdVOWxHMEF6MytwSDUvdUxhcmhPV1M4WkVQeUN6?=
- =?utf-8?B?SGtxOHF3SEJwaWtPNU5TcDRGRTUxRGpuR1UzeSszQWZrdGd5SjlFaXZabk54?=
- =?utf-8?B?RjFINERaNEtoaUdzY1E0WUI5NnJnVE40dVRLNGlIblBTSVpvazJueGc2RmJo?=
- =?utf-8?B?M3JCa2dIbk5ZaVlBcnpsWjdrNUsyaFF6Vk9SMTFiN2w0WEhiOG15NVpTV0RF?=
- =?utf-8?B?aVg0czg4aDZ0b2JueitpdXNPYjdncWhKMFpydGovdUhCWEk0QTE3NWx6dG1Q?=
- =?utf-8?B?SkF4UFBxWlR5R0phUXJQakN1azNJcU5MWnBxM0J3OXMyYkQ3ZFVHcWZlQUJC?=
- =?utf-8?B?UkV5MUVCc2pCWThlVjdVaWd2QVljcEcvSjJxMlFSb3Q5RThObEtkTjJaRkp1?=
- =?utf-8?B?aklNSlcvK00wT1YzVXUveWRxaUZ5S0NPRCswWXlHeWU3RDR6ZERJM0ZpaFlB?=
- =?utf-8?B?RTRKbUF5WmxTMzZSajRzZ3ljMncyYVFkZ1ZSU0RRMUQ3RVN1czdlc0lna2Vl?=
- =?utf-8?B?SFNncHNiVWhad0RFYk1sRWdKSXVaaUpzOWR1LzI1MXhrQ3ZWMjJrR1VRMDNi?=
- =?utf-8?B?U3VqUHhBbGhQVlF1ZnNjOVFzS1BTdzFJdCs4ZC9XZmpFWFk0TFpaOWlRRlJo?=
- =?utf-8?B?cCt4clFQaHptMGtwbG1XSzZnQ0NJOVhmN3VvV2haWVNmK0VmdmdoNG5SK0dm?=
- =?utf-8?B?Y3R1SGlTWVRGQ2ZKNElMczVKMFNlTVBibXh2R0JEV1drQ1lYbEdiK0xoRXpj?=
- =?utf-8?B?ZlVkcGlhazlSWGUrU1ZrR1FkUmpQTHpQM0ltSTZ1a3k0aCsrNW8xU2tRMko5?=
- =?utf-8?B?M1FMVlFYK3RWMW4wenlvdjdsN1QwZlVZTHRBZmt0b0dQcEpkZk11aFluRjJu?=
- =?utf-8?B?RE9qTC9VRXNHSjBqcUJ5UlRzV2lXSkVsSVBGZUFxUXFMb0dXcU5RZUhDMStE?=
- =?utf-8?B?OFR3d3hJZnhENzNDd2x0ZXcwa2hBSnF6NUVPc3JXaTMydStOL29IaFJtYUxr?=
- =?utf-8?B?MDVreUljcDVkM0gxUjVXZU56a1dDUEYwVWtvL2NhMTBmaHRRdHpJMTZnSnlE?=
- =?utf-8?B?ek1vZmx3MWNtUWJvbXc2MEFPUjFoUEZuQVJXajg2UnA0cnhIUjY4VGxuRjVo?=
- =?utf-8?B?ZmRYcC9zUzhocEtqZ3JDcXJrRXFMRVgvNmR4K3IxV1RDMlVKT0VwVWswdWZO?=
- =?utf-8?B?aHpSQVdkQlh0L2hOemtNWXZOL0pUUzF3ZWVBTSswTENTVU9YNHIxUGN4RlVx?=
- =?utf-8?B?SDQybmdWUHVIcVhYY1ZuMXRpMXlWME16YTNaem5tSlQ1YXNpb05XMHhrU2R5?=
- =?utf-8?B?dzlZVXFXSFBUdnZ4SWp1ZklqelQ5dnhUb2Nyd2JzYnd3Uk8wS2RRZHB1Um0x?=
- =?utf-8?B?bm5Yd2JvQ3VBMGdXcExZaHJBTEswbFNMM0hremhyM2JYUUtxTmxpRStPTHgz?=
- =?utf-8?B?RFF3S0VOcTlBYThQVEs3QTRKRHpDeDRNaTdTNmxFUUYrU2R3YXduV1FyOHRx?=
- =?utf-8?B?bmRRMERncjdCa2xZNWYyZEdUUm1IODc0bGlTR2xJeHVsbzRMd242dzNmYmdF?=
- =?utf-8?B?MUxsSjhOYlF6TXQ3Y1cwdWtvZFBVbWFQa1NUUVFWYjZkc0dDeUgva2xpRGl4?=
- =?utf-8?B?Z2VmcHd6aUdSWjJIV3pFM21rRHlwblNrU3hCNlRyWFpuQ2pCOHpvenlYa2wr?=
- =?utf-8?B?TlBhOUQ1cjRFM2hhbzBPMHJFQmNvd21UUlVsMkRxSG1SL1c3YXY1WmtiVEw1?=
- =?utf-8?B?M1lGVXVoZEJKV0pLZDlHaXBhNUNOVTlxK2M4OWRuenJwaGpMUXpod1dZdktx?=
- =?utf-8?B?OVI2U3dzU1YzYzRXUU0xWHJxR1o1M1V5bHdJVWhoNGZOUkZ4bFJNQ0U5azVH?=
- =?utf-8?B?TnZGQk1mUkZ0NTZQWStpd0pWY0dCSkEzeW1USjgyMS9Pa3A5Z3lVV1hpUCsw?=
- =?utf-8?B?T2NmNUN0Q2RhRWNvYnpNNjRDZTM2eit6bURDMm91RTBScHQ5dDBTUWVmQmkv?=
- =?utf-8?B?eC9DUGYrVnpNeHEvUC9SaWs5NHRNMmpWbzUzWnNjMkdCTjZzekl6VWlYZkY0?=
- =?utf-8?B?bmQ4UVhxK20xeUpDRmNrVSsxSVJUeXpyQlFpVS9OU3M1TDRzYUVkQkFZM2JG?=
- =?utf-8?B?WTVTV2RlN2ZkaXluVXdlMTlub2JaNnJXSHdRbkJMTzhrSWpWV3Ezd3loRE4w?=
- =?utf-8?Q?WgRXRgtm+uj9ZoHU=3D?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <253451DF34FE4546A1670DC1CD7E0E1B@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	id 1wZ3BG-0000000DvvZ-06Wy
+	for linux-mediatek@lists.infradead.org;
+	Mon, 15 Jun 2026 09:00:30 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 8232F44525
+	for <linux-mediatek@lists.infradead.org>; Mon, 15 Jun 2026 09:00:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 65ACC1F0155B
+	for <linux-mediatek@lists.infradead.org>; Mon, 15 Jun 2026 09:00:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1781514029;
+	bh=kO1E9F7wgo/77mIm8rZU5i8TCq+arHzjaWY5F0pap6s=;
+	h=From:In-Reply-To:References:Date:Subject:To:Cc;
+	b=Jyn7pVSq85LsQmK/q0tyyFAHEfg8UAN4YckNlIfPsCFOWmtcOiwbMENAt2D6pI9lZ
+	 1ZorXAjBJjrkQz8owCkA4UA4UCls87SqapCtOpTjavhlpFhAWsyKP2BqohWLJK7DkY
+	 MrYZV3Cl7tRD/0xwTljASOpfcNSQn92Cepxz5NPg5BPXxvPIDeToSaPQ+HcehqiSJ9
+	 hQTBvUnmcKv+I1kJiRvWlWP2+bDGjG3X0QrpTadESyGemGgW0o3BCPfo+Xlko62peE
+	 OKTPMIABFzTo4x0+O0u5e+/RnwbJvxWzMEOQJBMGE8JtTPfG5COXJjHKljhzLU4nbW
+	 7EwntvamoA/UA==
+Received: by mail-lf1-f50.google.com with SMTP id 2adb3069b0e04-5ad2ac0a0a9so2048210e87.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 15 Jun 2026 02:00:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AFNElJ8CLu+F9WYs2RANJyhhpgLv1WpE+QrGWK0A2fSqtwkhys1zpUjS3CIjdEmwsawMGUV8OioZ25n566bnosavug==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzRYOiWsqxv7iSweLdTckNRLGDbJ9KGYvxW9lkiuBoKPBK0RvSV
+	uE5wsl72y1DoSOlS7m/h/VNHTpivIx2H+Sv+txIwwKaqQ/Hx8B5huj27PwD/qJvUZFj6FS1BJWu
+	0auVvXjDHuOu/90xBNZZ9mqIx3y6a9rk4GZ/ZRGOTzQ==
+X-Received: by 2002:a05:6512:40b:b0:5aa:8822:c944 with SMTP id
+ 2adb3069b0e04-5ad30dd50aamr1888691e87.46.1781514027973; Mon, 15 Jun 2026
+ 02:00:27 -0700 (PDT)
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Mon, 15 Jun 2026 02:00:26 -0700
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Mon, 15 Jun 2026 02:00:26 -0700
+From: Bartosz Golaszewski <brgl@kernel.org>
+In-Reply-To: <CAGXv+5Hf_V4=mkAc3pN8_K9i+FfH2Wv7HVJBq71-f8sMFYL3fA@mail.gmail.com>
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: tN3qQ9MSDxR2CCIEW/B1xhxDk82QsJN7Sci4VG0q3OQoDkZCjpPV6YzhoXKSJ40IFJOq3wBv3vZxphehQbxBfOjTJipX5wELmtCAZ0LE4XZfvdtinQddqIvvgvff6Y+lpzuwCf7vwEBg9c3Yxwm2uklzeDcjLNNvFeQUarcHaZpO0ROuUP0NyvvN5uBzSiFJn6gS/vslenCoYaCmw4vBzaAScnmev+vD3hX0Hc+k2W89iH/ZQIC6Z7V6IFjVQJjf3xWDMCVDcHv+LaDqZSUMXRXnmO49R1v+2xkFDvpG4QMKPQwze8nVzXyInTPg2xCa0ISSFdqx0G9XwYLTey/q6g==
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PSAPR03MB5605.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: bb187015-d391-4b54-0b26-08decaba552f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Jun 2026 08:44:37.4516
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: cLhco4ct6/NDcQRWphlqP58gEGN0rAlW+uKIYJDMUfwx/5r83aHTXoGhP3KiNNF5d8hqdhc9M9C3r4ntLpFgug==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY1PPF4A10620CF
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260615_014447_938896_37B7DF85 
-X-CRM114-Status: UNSURE (   8.21  )
-X-CRM114-Notice: Please train this message.
+References: <20260610084053.2059858-1-wenst@chromium.org> <20260610084053.2059858-6-wenst@chromium.org>
+ <ailxrP-_9_NL8qnN@ashevche-desk.local> <CAMRc=MdiwQM6yk8FXcc+RisVP2iqWKWzVsn2-Yy6dyJXt-1X=Q@mail.gmail.com>
+ <aipz2zMFcdnZYTxS@ashevche-desk.local> <CAMRc=MdRN7YitmMX8PknbzLh+MdsWm+dDg0MLtCVYOorqNobTw@mail.gmail.com>
+ <airY6IMz2KFz_z9j@kuha> <aisEccAOm3qoXjxd@ashevche-desk.local> <CAGXv+5Hf_V4=mkAc3pN8_K9i+FfH2Wv7HVJBq71-f8sMFYL3fA@mail.gmail.com>
+Date: Mon, 15 Jun 2026 02:00:26 -0700
+X-Gmail-Original-Message-ID: <CAMRc=Mcr2oMRQv_FPds=7QEF=7Q6+keqo_AzJ4iNBnhL+v_NNg@mail.gmail.com>
+X-Gm-Features: AVVi8CfllpqpnNK5oNjDe5YaMrrIp_PMpqlIec8MT94CN56JvkF5jdb538qT0FI
+Message-ID: <CAMRc=Mcr2oMRQv_FPds=7QEF=7Q6+keqo_AzJ4iNBnhL+v_NNg@mail.gmail.com>
+Subject: Re: [PATCH v2 05/16] usb: hub: Associate port@ fwnode with USB port device
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Heikki Krogerus <heikki.krogerus@linux.intel.com>, Bartosz Golaszewski <brgl@kernel.org>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Daniel Scally <djrscally@gmail.com>, 
+	Sakari Ailus <sakari.ailus@linux.intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Alan Stern <stern@rowland.harvard.edu>, linux-acpi@vger.kernel.org, 
+	driver-core@lists.linux.dev, linux-pm@vger.kernel.org, 
+	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Manivannan Sadhasivam <mani@kernel.org>, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -195,12 +97,121 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyMDI2LTA2LTE1IGF0IDEzOjU3ICswODAwLCBlZC50c2FpQG1lZGlhdGVrLmNvbSB3
-cm90ZToNCj4gRnJvbTogRWQgVHNhaSA8ZWQudHNhaUBtZWRpYXRlay5jb20+DQo+IA0KPiBSZW1v
-dmUgdGhlIG1heF9udW1fcnR0IGZpZWxkIGZyb20gdWZzX2hiYV92YXJpYW50X29wcyBhcyBpdCBo
-YXMgYmVlbg0KPiByZXBsYWNlZCBieSB0aGUgZ2V0X2hiYV9ub3J0dCgpIGNhbGxiYWNrIHdoaWNo
-IHByb3ZpZGVzIG1vcmUgZmxleGlibGUNCj4gcGxhdGZvcm0tc3BlY2lmaWMgUlRUIGNhcGFiaWxp
-dHkgaGFuZGxpbmcuDQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBFZCBUc2FpIDxlZC50c2FpQG1lZGlh
-dGVrLmNvbT4NCj4gLS0tDQoNClJldmlld2VkLWJ5OiBQZXRlciBXYW5nIDxwZXRlci53YW5nQG1l
-ZGlhdGVrLmNvbT4NCg0K
+On Fri, 12 Jun 2026 07:46:26 +0200, Chen-Yu Tsai <wenst@chromium.org> said:
+> On Fri, Jun 12, 2026 at 3:54=E2=80=AFAM Andy Shevchenko
+> <andriy.shevchenko@linux.intel.com> wrote:
+>>
+>> On Thu, Jun 11, 2026 at 06:48:56PM +0300, Heikki Krogerus wrote:
+>> > On Thu, Jun 11, 2026 at 11:35:13AM +0200, Bartosz Golaszewski wrote:
+>> > > On Thu, Jun 11, 2026 at 10:37=E2=80=AFAM Andy Shevchenko
+>> > > <andriy.shevchenko@linux.intel.com> wrote:
+>> > > > On Thu, Jun 11, 2026 at 04:20:58AM -0400, Bartosz Golaszewski wrot=
+e:
+>> > > > > On Wed, 10 Jun 2026 16:16:12 +0200, Andy Shevchenko
+>> > > > > <andriy.shevchenko@linux.intel.com> said:
+>> > > > > > On Wed, Jun 10, 2026 at 04:40:39PM +0800, Chen-Yu Tsai wrote:
+>> > > > > >> When a USB hub port is connected to a connector in a firmware=
+ node
+>> > > > > >> graph, the port itself has a node in the graph.
+>> > > > > >>
+>> > > > > >> Associate the port's firmware node with the USB port's device=
+,
+>> > > > > >> usb_port::dev. This is used in later changes for the M.2 slot=
+ power
+>> > > > > >> sequencing provider to match against the requesting port.
+>> > > > > >
+>> > > > > > Okay, would this affect ACPI-based systems? if so, how?
+>> > > > > > Can you elaborate on that, please?
+>> > > > >
+>> > > > > Is it possible that there's an ACPI device node associated with =
+the port like
+>> > > > > on some DT systems? I don't think so and there should be no impa=
+ct IMO but I
+>> > > > > also don't know enough about ACPI.
+>> >
+>> > There are device nodes for the USB ports in ACPI, and I think they get
+>> > always assigned in drivers/usb/core/usb-acpi.c.
+>> >
+>> > > > The API is agnostic. There is a possibility to have software nodes=
+ associated
+>> > > > with the port. I think the best is to be sure that ACPI-aware peop=
+le who are
+>> > > > experts in USB will check this (Heikki?).
+>> >
+>> > I can't say what's the impact from this patch - I'm not an expert with
+>> > this side of USB. Is there a danger that we end up overwriting the
+>> > ACPI node for the port, or something else?
+>>
+>> Exactly this one is my worrying, but I haven't checked the actual flow.
+>
+> Looking through ACPI code, ACPI_COMPANION_SET() is used, which boils
+> down to
+>
+>     set_primary_fwnode(dev, acpi_fwnode_handle(acpi_dev))
+>
+> This is called through
+>
+> usb_hub_create_port_device()
+>   device_register()
+>     device_add()
+>       device_platform_notify()
+>         acpi_device_notify()
+>           usb_acpi_find_companion()
+>             usb_acpi_find_companion_for_port()
+>           acpi_bind_one()
+>             ACPI_COMPANION_SET()
+>               set_primary_fwnode()
+>
+> Looking at device_add_software_node(), all swnodes are secondary.
+>
+> set_primary_fwnode() seems to be able to make the ACPI handle / fwnode
+> the primary, keeping any existing fwnode as the secondary. However
+> if we do end up assigning a primary fwnode to the device using
+> device_set_node() as in this patch, set_primary_fwnode() is going
+> to complain loudly.
+>
+> On another front, the ACPI representation of the USB ports looks nothing
+> like the OF graphs, at least on my X1 Carbon:
+>
+> For a usb port device on the root hub such as
+>
+>   /sys/bus/usb/devices/4-0:1.0/usb4-port1/firmware_node/path
+>
+> looks like
+>
+>   \_SB_.PC00.XHCI.RHUB.SS01
+>
+> while a usb port's firmware node link
+>
+>   /sys/bus/usb/devices/4-0:1.0/usb4-port1//firmware_node
+>
+> resolves to
+>
+>   /sys/devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/device:19/device:1a/dev=
+ice:29
+>
+> Neither looks anything like the graph "port" / "endpoint" node names.
+> So maybe we're in the clear here.
+>
+> Besides the loud warning from set_primary_fwnode(), the major issue stemm=
+ing
+> from a wrong node is that power management (through ACPI) is likely to fa=
+il.
+>
+> If we're still concerned, I think we can skip the assignment if the fwnod=
+e
+> is an ACPI node, i.e. check it with is_acpi_node().
+>
+
+Agreed, I think this is a good compromise.
+
+Bart
+
+>
+> I've never worked on ACPI systems, so this is just me checking the code.
+>
+>
+> Thanks
+> ChenYu
+>
 
