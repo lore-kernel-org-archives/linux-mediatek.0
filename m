@@ -4,150 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B61B2CD98C5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 16:31:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CE64CD98C5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 16:50:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NasGHcUroOP3Nw6xE26fuJjayUMFOxbgddpKb56cf64=; b=gSREdeM9bsWoahyB7RB1iVGhry
-	yDSekTOm6RuLpjmO86apiwitoY0gczHqn5kvMMqX5RL4iujMZ8haR4UWFBUt5/96frJrtetMOZ5/R
-	OSfa23/dQbyzPbFbQz1p+Ewo90uEZu4Ytg9gRF+dLtSOzaP16aYOQwlg6SxeuiZdqbdRaYRTj1vyi
-	KPfeagOE1zoQ5s82cB+MgkhCkutyXrF1KqyOQpv3nEH1tasQQlB9/PFigUtzvwFitf/W+NC3Q4eJW
-	0pPeRVEw7GxXop03fcfxdQU0LNV7ZNz86/wQpjdX4r+GP7BGEje7qXJRHw6vtGjQjTMvKCxcou4/e
-	3lqmaLUw==;
+	bh=U6qil9iuskcq565f92CxzO/PVU3LBt8X6GHty7Rhshs=; b=BQjCvg/xe9mFYuqu2S8wjoY//d
+	ryrkMMtE5XWCfR2nRUZ+dIY9skjgak0/Kyuwg8ZZQ6FUjn2O+YATDUbg6OLDiB6gGpQclCJryfRg3
+	EAmcr6SVm9XBETaxAqsYANW8bzKNvszjMf7rA00byvqSGUFl+MAblVhztbWPpJAaNy/W61zUtLEP+
+	erxeohwkrT2z45A09enHD3pxolW8Zn/YLNT5m/hmFJzo9ctbsKWiCdyTtGbhpzSugGB9fZGeCZbf+
+	020L5t7NrgBMGi9aONgPe3Y5ijLDghLpioRQ9BpOkQ8zOSzvfUquBUJoYMsvVW38nbJhoMppwt8KR
+	oWFh6b1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZADk-0000000EZyl-2ueO;
-	Mon, 15 Jun 2026 16:31:32 +0000
-Received: from mail-swedencentralazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c202::7] helo=GVXPR05CU001.outbound.protection.outlook.com)
+	id 1wZAWU-0000000EbYy-3GxE;
+	Mon, 15 Jun 2026 16:50:54 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZADh-0000000EZyD-3A3n;
-	Mon, 15 Jun 2026 16:31:30 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=WG4K+VxYnx2+caLBzs1ZRrPrMA+ThOz4jXJtJyrXA05XIFMv+ydGtX5TLnk4kPOx3ITutFzGYd8nyiREr3HbsfOK3pYYTJsZ7LmOFqL4VkUY84iFco26iXgXPaTsqBAdPnq4q/TwoY51+I6WcReJmT+D0tXfMBceMvnWOq0I+r8GW3hb2qP0uv3ssjWTw8Yqpplgb7EWJQE6le2KCq2PadbkxJ48i2AhfmKnOXXkmG5F7N6glnlD7rc/kYVbTZV8Z+wz1lW+qzrMso2vHbh4H1OSJaMUeuxZtpw2+UvNcXnD4mFdcOMiNVvDEVLB7IAZTqbAWFs+xOEdcFy6KDapCg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=NasGHcUroOP3Nw6xE26fuJjayUMFOxbgddpKb56cf64=;
- b=tHdQTF+KiNVHaUMA+74guyALS6cl99ChHwuirQ24aW5hUv8U506+QPh3uEjMU7o0tbz0mNolZBidzpgkwumB+gHg++Rzu6kOsd/JqPp1pAnczdWlCwR26pNpWJIGO6xB6AGYG0cyd9kks7JwuwH3gOEneJnYws63loS/W6E0B/yy8tU1gsO49ILpEewpgp98qgvMSphJovoaP9H8fle8znpEevTuXgIiAe+43HxUK/b1JWDMamWEQFP7XgytNAh/r0UgJAToZOPzVIJecqY0f1lu2C8qNB5ZRmCrbj02UiFgO6GJKhObsmtmTzkvKA9jW87vVzEe72f2G221RwTayA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=genexis.eu;
- dkim=pass header.d=genexis.eu; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=genexis.eu;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=NasGHcUroOP3Nw6xE26fuJjayUMFOxbgddpKb56cf64=;
- b=t6fToeDuqYC7nmMoTkaI0WbfloHnjLaFWx3SRTlhkf3WL2up0CmjzQVmIOEX0PalHSk2nbBTiKMxROyc21krHD+8/utcqE/hlEcwaMOrr+oTdLTYLwDeHFbUGs814L7PYmHR4cJ0Mgm5ylL76hOdCx727v9Sn0gF/tUwws/a29Y5GPuNJ3RUE6/tWj86NiOCgG1mY1xSRm45JPKrM5Zs5JFIIdmBHio19Rc9ZMMqH5wmoO2l6Uz8meuzJqdHvIW30ehPC/Oyv1FKumDoLQrBFxXb21U8RDo2Kibxf6mpfeWSwXRRraruqy1akxvyvgOBcfDddJWAvtCZYrphxMjBHw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=genexis.eu;
-Received: from DB9PR08MB6697.eurprd08.prod.outlook.com (2603:10a6:10:2ad::14)
- by PA6PR08MB11287.eurprd08.prod.outlook.com (2603:10a6:102:514::17) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.113.18; Mon, 15 Jun
- 2026 16:31:23 +0000
-Received: from DB9PR08MB6697.eurprd08.prod.outlook.com
- ([fe80::bdec:3e95:6614:441f]) by DB9PR08MB6697.eurprd08.prod.outlook.com
- ([fe80::bdec:3e95:6614:441f%6]) with mapi id 15.21.0113.015; Mon, 15 Jun 2026
- 16:31:23 +0000
-Message-ID: <5d030a71-c28e-44fb-aebe-486e8c4ad8ad@genexis.eu>
-Date: Mon, 15 Jun 2026 18:31:20 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v7 11/12] net: pcs: airoha: add PCS driver for
- Airoha AN7581 SoC
-To: Christian Marangi <ansuelsmth@gmail.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Simon Horman <horms@kernel.org>,
- Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Heiner Kallweit
- <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>,
- Saravana Kannan <saravanak@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, Nathan Chancellor
- <nathan@kernel.org>, Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
- Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- llvm@lists.linux.dev
-References: <20260615122950.22281-1-ansuelsmth@gmail.com>
- <20260615122950.22281-12-ansuelsmth@gmail.com>
-Content-Language: en-US
-From: Benjamin Larsson <benjamin.larsson@genexis.eu>
-In-Reply-To: <20260615122950.22281-12-ansuelsmth@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: GV3P280CA0042.SWEP280.PROD.OUTLOOK.COM
- (2603:10a6:150:9::34) To DB9PR08MB6697.eurprd08.prod.outlook.com
- (2603:10a6:10:2ad::14)
+	id 1wZAWU-0000000EbYk-06B6;
+	Mon, 15 Jun 2026 16:50:54 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 4408B600AB;
+	Mon, 15 Jun 2026 16:50:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 80C561F000E9;
+	Mon, 15 Jun 2026 16:50:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1781542253;
+	bh=U6qil9iuskcq565f92CxzO/PVU3LBt8X6GHty7Rhshs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=Hvf+Yhe7M1mM95dD/AvLFHxJWbjm/PTd0rhLL0kAC30Xl7GlI3Oj3He+9xGJyj3up
+	 TCgoB+zQ+I4ylsuIkzJsYkqn1pASs9GxwiymN5myf4Qa4EnL9VADgyKW0p/tmfG+ta
+	 7naTKl9OZ9skgbhrdL90OOkX/jEpWKew0F9aWhSOp+k0HXZBu6UBZFIM03nXmMgy2M
+	 1aZUqgNSiPNL20P53sPaGy7+qd0izRoThnx7MtN1rkG/Lrs71guKP3ZGCmlMfEsLG2
+	 iy8F7T7aHKheGebQsFaPxuCoKhvVamSuLvcUXkvJ4o0s8eED0coURDlhSbG2K5r7wd
+	 M42Uwv+8cB1ZQ==
+Date: Mon, 15 Jun 2026 17:50:46 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, Fabien Parent <parent.f@gmail.com>,
+	Val Packett <val@packett.cool>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Linus Walleij <linusw@kernel.org>,
+	Julien Massot <julien.massot@collabora.com>,
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+	Akari Tsuyukusa <akkun11.open@gmail.com>,
+	Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-gpio@vger.kernel.org
+Subject: Re: [PATCH v6 1/7] dt-bindings: mfd: mt6397: Add MT6392 PMIC
+Message-ID: <20260615-palatable-aerobics-3091229b6ada@spud>
+References: <20260612200717.361018-1-l.scorcia@gmail.com>
+ <20260612200717.361018-2-l.scorcia@gmail.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DB9PR08MB6697:EE_|PA6PR08MB11287:EE_
-X-MS-Office365-Filtering-Correlation-Id: 97f068e3-3820-4487-88f4-08decafb89d2
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|23010399003|7416014|376014|1800799024|366016|921020|56012099006|11063799006|4143699003|22082099003|18002099003;
-X-Microsoft-Antispam-Message-Info: KeQKE39+ef+RmI0gARN5VTSDHydSaR7vv2BU8RkF8hMos/T0bozTbfyCQXhddl4PPaB11/i2qg0PnwoIRvE0+83XvmliWFA5lIumh8Xn+PCe+Z7cQ0OQ8AX8o8LQ2lEN3zGRc5gtlc6/D2CUUSNQx0574z89doGK0GCPo9ii9XDALy8AiRZyVafQV53WklX/PEVtWXsTIdUsf2QPOt2V2qZQAUzvmslK2Sb9/fcLHSNdwwaw+l+UKEy4OtRSJZfUfpSfAUnj+fMKqpziZI8geV/eEhfOiEA7lgYOFXeCi/u9J3vqGFFaUyrGr+JVbzugsG27N+5cD/mJTYhhwj1nBVFJlWMrGDRlnYKAEcifTqZuBXTzQT2Kj10U5VuodZqNJuTpPlZ2Ewsnch0VXLu8RwoRQu7V+gRWsmAXvACGjHuGfTS+HkMKEXSp3o2yb0L9NbgbCkrOTJL7hJCju4FHS/n2PCeB2CQ65jGDhxzfn6ukc/DcsIVps0xa4ZhoSSqGbodoDOJtm1agO77lVcQ5VJyb7jWGk4q0+F5Dtn1uMaXi3cnjPDNWISpy+CoUCuFReKqk3+90gX5+7ZPgSVGfNla9M2lY/tzIS2nk3WqvcpxpRCNQ3pVlgXk9UB1CCyxBhXemDDD5sz0puqq1F2LOaDPznhccDBppF3+xM62YKhuc1CYjUXQD61aC4XBVndrAJxfnwTck+Sfr4ZPxO8+XTP9wfMnc88sJY9kPbeCEfX8=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DB9PR08MB6697.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(7416014)(376014)(1800799024)(366016)(921020)(56012099006)(11063799006)(4143699003)(22082099003)(18002099003);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?TUV0VEFqWU9QRFQxOUdSeDR1VTBSWkNiTVdZNFFNbWM3L2l4Y3JGRVV0T0t1?=
- =?utf-8?B?Z2plZXJHV1gxeXJXY3llVGNod1l2aHlUU1NGQ3EwaTZWY1JrdlV0bGpqNVd2?=
- =?utf-8?B?UFFFb2ljLzlxOVZVemlKZ1FSUDN6NktrcS82MGRrS2RFWkVKejRkVnUwbm9p?=
- =?utf-8?B?ejlJVkMyclRnUDFiR3MxU09DSlVYbDhRQlZnSDN1ZlJzSWdveDl4ckZrN0R0?=
- =?utf-8?B?NzFET2VNekZ5Wm5YSGdOZm1JQmFDcHg2dlQ1cjlYaVN4dFdWbzNLOEtic05r?=
- =?utf-8?B?dTBUVXdYamlHZEkvQk5lbDR3bzVJZkRKTldWU3dmbmdiMEFIS281Z0I1S2FT?=
- =?utf-8?B?YllWc1pNTDhweDI3LzVYYkhuV3NMeTg1czE1Y0NHSmk1OU5PQnZEc01SU25j?=
- =?utf-8?B?WDVZbTZrS0JZbWlUZGMxbWJYQXFBclVIaVhkK2xYRVExeHpqZExXN2VhMkI3?=
- =?utf-8?B?Y2VqbWJpREVaZloyaXhYMGNoN2Jnei9iR2Z3QlNkWkd1dDk5b0tjejBFZDFO?=
- =?utf-8?B?ZGJvU3RuNHNZZk9RT0ljb3JMNWJnRFY5Wnl0WkNkVU9aZmdvbnJXbDZmRSt6?=
- =?utf-8?B?SXdDYWFmTHN2ZjFDTzc5S0lSMmhPamcrL2NqMmg3TzhKdGRqT2FqUTdkNUhn?=
- =?utf-8?B?SVFLNmIvSzdmN2JscHRObFdYSkxza2VxR3l5QzhpL1liSjYydFpuN3ZQNEtF?=
- =?utf-8?B?QVpJeGl2d3pVakcyMVROQTVNSnNqUVphNko2MEdUWm8yNEJMSXNpdmh3bFhX?=
- =?utf-8?B?QStvUVFaRjY5ODFhNGJMNmNVbkxSdlBnV3o3VWx0SEgzR1BxcGRabGdSWC8v?=
- =?utf-8?B?cnpwdXhKbE00MkxYWmZYQWtMWTkxZUIxbXdIaWhTQXdGWStudG1veFRPdjlz?=
- =?utf-8?B?endxNGV5L1RyWjQ5ZzRudFdhYW4zWWJwS3gvK01hWWcrY0I2RmFtYnVaUkRy?=
- =?utf-8?B?SU5TMG95NFFTOEVMaVJPcVl5bEdRQ1Zidzl0ZWt6YUwvWVZ1WVhremJkSHNP?=
- =?utf-8?B?MXNYcWJtZnNWbjJXMEZka1FwbWprNGZSWEs1eUFzc2dhUXU2RjZpSGY0dDRN?=
- =?utf-8?B?cjFiTnM0djlsdXNxNWE4SG5TSlEyYlUvU3ZUWCtEbGQ2cjJaZkxWR0kvbG5W?=
- =?utf-8?B?T3pHVHN4WG5BOFFrZlFmNncrMnRyWWpOckM3THVZZklud2dxREFNVS9mVFJB?=
- =?utf-8?B?cUt4ak5RbGhhVVhSV3FFbGhUK01kVk5NVnF2SEVTK2hFMVJVVWZZQnBBcEpY?=
- =?utf-8?B?TlJ0UzJUSnZVUVRXZlJxV0t6dFFZNW00RjJBbUpNVU5DQTRKNktQbThVRExD?=
- =?utf-8?B?RlFhYjZrc2JOblA1MWN3STR6OThkTld0eGdHSE9UREduOUJTdThoeHpTYjhH?=
- =?utf-8?B?QU1BQ1Y5K1MvZXBMZFZxSCt2UXQvaUNRZVFxQzlRM3IrcEhVanJ6UzhERzRK?=
- =?utf-8?B?Nm4yMHhOeUZRcmVtY243NG0xL0xycmlPajJKUGRDeENGMmM0TmVieTM1dW1o?=
- =?utf-8?B?dFhGRTU4VlRwSTJjVVNTRHJ0dlN3MWFJT1Y4d1oybyt3WDR6Yzc4R2JsVGFj?=
- =?utf-8?B?OWxxTFNsaXNNalZ6NVh3SzBaZjE5c1ZYaXFoM0FsR25hZ3V5OUgraTJwV29o?=
- =?utf-8?B?clhvNy9ycDB6bDZONzVqMGUvNlBXQkVUM05TNkFvQzhTVGViMnRYSHhNYVUx?=
- =?utf-8?B?N08wMllHblhSM3JMTnZBUlFWZlZob3NTelF0YzVNS1B4cnhlTzZIcnpMM0tW?=
- =?utf-8?B?Zi9oUW5kcmJ3R05VZEdhQ2RNRXFWb1BSNkttUS94SEQwVGtTbk5rOXdXUzdB?=
- =?utf-8?B?UkRCREMybDZFSHliRy9TTlFRVVE3UFJnOTZEMk05T0dKMVFFMVVLWVN1ZXhx?=
- =?utf-8?B?SlhQTFppNWxyeXVZMWE2MGNBUVVZQjlzVm45Z092ZXM5TjJhck0vaVhxR3h5?=
- =?utf-8?B?ZFFUbzFGNjlJaUpzRWpGM0JYNzhyOHlmUVVtdlBheVBDYU5KK25OWnJrTFcx?=
- =?utf-8?B?VjZvMDdOYWh4SStrK21mMkJEZHRRTFZsZGpESElXcnhtODNiQnZEQk5PaEds?=
- =?utf-8?B?ZXNTRWdzSlRZZXJObUhXQmZjOWpReWIxSDQvRXVLc0FzaXpIODI5UTFEeDFP?=
- =?utf-8?B?R0xDWmNHd25jM1UrbU5BemV1VGpvZ0FUamVPWE84YXd0Q3lwSVlCZm1KbFRI?=
- =?utf-8?B?MkQwN3d1Rmh2M2NSdWRwbGF4KzRLbU4yd002WmxtdXdSdVZnTDlIR2RZUHhP?=
- =?utf-8?B?ajVRTUxRc1FJNUJ1WE5RakJuRkkrMTVPQjdheTdNWjc3bXNid0tXbDZMNjdz?=
- =?utf-8?B?cUIwSWZPTWU5dnAraDJMa0RBblBGQ1pYcDRLYVFPMTJBdHlKb08xRzloN3JM?=
- =?utf-8?Q?2Yz3wCoVDf3EY/sg=3D?=
-X-OriginatorOrg: genexis.eu
-X-MS-Exchange-CrossTenant-Network-Message-Id: 97f068e3-3820-4487-88f4-08decafb89d2
-X-MS-Exchange-CrossTenant-AuthSource: DB9PR08MB6697.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Jun 2026 16:31:23.3573
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: IPDpToeXDeDOXLTTgTgaNQjQsTHULs62jN22riaflzjvv5FqDmTkRA4NoDYUlVNaoXlt88sbYm5LMw+nZrzsBglJ6NEOKTEtywSnwam0cjc=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PA6PR08MB11287
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260615_093129_797251_ABE02CC6 
-X-CRM114-Status: GOOD (  11.31  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="+xo6jb+RodJNhcuh"
+Content-Disposition: inline
+In-Reply-To: <20260612200717.361018-2-l.scorcia@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -162,37 +85,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi.
 
-On 15/06/2026 14:29, Christian Marangi wrote:
-> Add PCS driver for Airoha AN7581 SoC for Ethernet/PON/PCIe/USB SERDES
-> and permit usage of external PHY or connected SFP cage. Supported modes
-> are USXGMII, 10G-BASER, 2500BASE-X, 1000BASE-X and SGMII.
->
-> The driver probe and register the various needed registers and register as
-> a PCS provider for fwnode usage.
->
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+--+xo6jb+RodJNhcuh
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Jun 12, 2026 at 10:04:06PM +0200, Luca Leonardo Scorcia wrote:
+> From: Fabien Parent <parent.f@gmail.com>
+>=20
+> Add the initial bindings for the MT6392 PMIC and its RTC device.
+>=20
+> Signed-off-by: Fabien Parent <parent.f@gmail.com>
+> Signed-off-by: Val Packett <val@packett.cool>
+> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+
+Sashiko complaint about missing regulators looks valid.
+Is it?
+
+Cheers,
+Conor.
+
 > ---
->   drivers/net/pcs/Kconfig                    |    2 +
->   drivers/net/pcs/Makefile                   |    2 +
->   drivers/net/pcs/airoha/Kconfig             |   12 +
->   drivers/net/pcs/airoha/Makefile            |    7 +
->   drivers/net/pcs/airoha/pcs-airoha-common.c | 1318 ++++++++++++
->   drivers/net/pcs/airoha/pcs-airoha.h        | 1309 ++++++++++++
->   drivers/net/pcs/airoha/pcs-an7581.c        | 2093 ++++++++++++++++++++
->   7 files changed, 4743 insertions(+)
->   create mode 100644 drivers/net/pcs/airoha/Kconfig
->   create mode 100644 drivers/net/pcs/airoha/Makefile
->   create mode 100644 drivers/net/pcs/airoha/pcs-airoha-common.c
->   create mode 100644 drivers/net/pcs/airoha/pcs-airoha.h
->   create mode 100644 drivers/net/pcs/airoha/pcs-an7581.c
+>  .../devicetree/bindings/mfd/mediatek,mt6397.yaml          | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml b=
+/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+> index 3cbc0dc12c31..e39e81aa9924 100644
+> --- a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+> +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+> @@ -40,6 +40,10 @@ properties:
+>            - mediatek,mt6358
+>            - mediatek,mt6359
+>            - mediatek,mt6397
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt6392
+> +          - const: mediatek,mt6323
+>        - items:
+>            - enum:
+>                - mediatek,mt6366
+> @@ -72,6 +76,10 @@ properties:
+>                - mediatek,mt6331-rtc
+>                - mediatek,mt6358-rtc
+>                - mediatek,mt6397-rtc
+> +          - items:
+> +              - enum:
+> +                  - mediatek,mt6392-rtc
+> +              - const: mediatek,mt6323-rtc
+>            - items:
+>                - enum:
+>                    - mediatek,mt6359-rtc
+> --=20
+> 2.43.0
+>=20
 
-Most likely there will be pcs drivers for the EN7523 platform also. Can 
-the common code for an7581 have an7581 in the name instead of airoha?
+--+xo6jb+RodJNhcuh
+Content-Type: application/pgp-signature; name=signature.asc
 
-MvH
+-----BEGIN PGP SIGNATURE-----
 
-Benjamin Larsson
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCajAtZgAKCRB4tDGHoIJi
+0kh/AP0S8SUOa/7yYlYdJV+kZosCAS4XWBkKJawzUXPJ+jM2pQEA2UwxVuo4IfxX
+O/GQiDMzLWE+ZX7CA1kOU6s4DZysnQc=
+=q55h
+-----END PGP SIGNATURE-----
 
+--+xo6jb+RodJNhcuh--
 
