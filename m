@@ -4,109 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4447FCD98CE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 07:20:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 925B9CD98DE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 08:05:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XxNDmIjOo02FnryXUeGSfIeICYAKAZhZUNgYnH1QQ5E=; b=yJ51NmBGIvNZB6hICy5nfNrDqr
-	Z/zN/iNrhQlTrF8LQR/wtUCJIjx7L3AMYrYI7EgrjGv4uw/M0OHpAFpKA5KTP8lmb3JgICSycPZ8+
-	iQ4x607UkoEpLhGTB3041rWos9bDiFvgmtSqlfQZdmC493X9YSDhTHMbADIyoeXUNsZ4a0uoisxw0
-	E60Y9Pe3kQ8H3dVb70vDkw7gLu76DVlwXTDjiuz88+nxl6TwsRr3jOA/EqZeqs46OoNhr0xIZL8DJ
-	Nit1z2a34hic0zEZkA6rAQDgBGz5vxK0PBcQE3j3HHj1vsPJe/kmq3U/XiQPc3JxEacBhXwDBsEjQ
-	vbYQv5bg==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7Tt8dDxvwIeWwXFVwhwvQmA54l/UDZWHrl2UfyKiGlg=; b=S6LtQG0WHSNpBY3n5MT80bPCO6
+	S+rMRGmDO8mSLNtrDt8W0rKJCTE5fhUGx78hdVFRdAIhFYmJOyXvIT6YX3aYk5VchXr0YdSbc05L/
+	arktSsLUcX6MVnTeKXTDJfZE5nHTqmiZG+J8sJ5pYSrWwfzSqusbizDd6JYrMv1ZMHH98Dc29M7Og
+	EpuvWlUzjbLhEp2zwa3pE1UHPvj38dxxKZmOMKS50+t1LyR8719Qh8iOgOECt60H8Ffkvd6j3TmgT
+	CiOimcAzQFXK+CtuS0OVc+KJjvEplDA6+tkT0lmG8MxJKCSGeftMzP+GPZ67wxgmylkLhqGCQIU5g
+	XnnHIGrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ1cp-0000000DmJ1-1Zk7;
-	Mon, 15 Jun 2026 07:20:51 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1wZ2Jw-0000000DpwH-3S3H;
+	Mon, 15 Jun 2026 08:05:24 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ1cm-0000000DmGa-1mCe
+	id 1wZ2Jt-0000000DpvI-33w8
 	for linux-mediatek@lists.infradead.org;
-	Mon, 15 Jun 2026 07:20:49 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-490afc47455so12270305e9.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 15 Jun 2026 00:20:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781508047; x=1782112847; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=XxNDmIjOo02FnryXUeGSfIeICYAKAZhZUNgYnH1QQ5E=;
-        b=ojQCqpEU5K0szPTqdtSPm6nWSGI42NicC9yZI6IxBamQctDLmCpaA+4j9qJPVioiXh
-         IAUHkNSUgguZ2FkY77xDY/y4ZpZ3Lsn/CA9EqxR4nGCPUrUGDIwo+83dtUjv/GhcmdcK
-         0YBUvS4DLiGP15OdlPK73Cn2QJN5MUu+SnwLTiTMtbkKJJ7Dbj/6a1kWk7UcTsm6D4Gb
-         f/akJ4kZfNxyncKEaG2G6XSIbHQlI0Hh167Z2xRq0kKFPA6AeecPpToiiO1K3kh5SS4b
-         59NSXbjpGlfi5rVcujJkXwsafaWvcbXuiQyJXyGAqbmNu6yvwN+wcRGWDjnp6aKQ6SnE
-         EYqg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781508047; x=1782112847;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=XxNDmIjOo02FnryXUeGSfIeICYAKAZhZUNgYnH1QQ5E=;
-        b=pwGid7iT3YeB9oGXWDqi5mTIvNbxykxF2d2/hoKPEU6whwubD15O2BGc4T4H/uKEWm
-         RTusv2hmnZn/BSWarwSfdKKZ0DZp1IYelbnne3nebR5VGowpBl1DMjr9teOdOwcrZJCb
-         juZE1NWsNMCFtRyw9uPuwwaFTl2BZzbNxY4pGjoZGiS6G0OwfB2wRifqgmx0GULs7PiY
-         SoZd+h8i7sPbvQ3qLyXK8P9nhqDB/t0q1OUEJ9cHuzFeLBw48VIKY6BcWbceDYyhRY1x
-         XMppJJJHYHwfk7NxVEaIA8YD/yeOKyjG0Rbp43lEerpDCRFZ6RTFhbpGfdULEH5iFCxM
-         Xvow==
-X-Gm-Message-State: AOJu0YywtoBQ5Vn3VbsdQ6L7zw9vZNeAjkNfygqShE9NmK8ervbm8/aS
-	U2GtAu3a5RWkcK347g/q1g8C8YDMqO36lodP/m2+UudVPMT10rHF7EIEr9DRXlIe
-X-Gm-Gg: Acq92OEKbC3cwdXwTykbxk+Qt0bMfwkUx0x5UXqwRR1cctVeIcLdc/7eRBB26DXOylG
-	nOdWq8DTMUsQVtXz2cmxgzO1cJBSl0jiy4WLUrdHIoB+FtR3q5h15h4DIaRTo+xGDO8HinRX8Fy
-	BYWUQNFZZYTZ7ScPWEkUs/sO5yz3m46uuFy/rS3GDzr+i223zDpcm3mcAZ7OaOB7w4VzKMtNHPT
-	ZEbYSXJAf1kHriWliJaNDBLVwzjUIO3Y19fIbUVvEs8GznL5wkaKCjSb7WSPPnATjR1YbnNqlLK
-	tk/N/zEUR85llkaKZSnifiHLHiYA76CI2G8M4vGaIM05G+yMqZgacQ5NHpHQ1yX8OIMyMk54oiN
-	hPPj679BueUls929BPYNCRiHooVFyJvtK3QGaOxFSiDs0IM3ntdqtKI55v4iPzBBsWAL5tfM+9q
-	ROthCZt4iZYfvE0mZE
-X-Received: by 2002:a05:600c:138e:b0:490:d354:bd00 with SMTP id 5b1f17b1804b1-490ec507db7mr173245075e9.25.1781508046667;
-        Mon, 15 Jun 2026 00:20:46 -0700 (PDT)
-Received: from luca-vm.. ([81.56.18.151])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-492203c0801sm200181015e9.10.2026.06.15.00.20.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Jun 2026 00:20:46 -0700 (PDT)
-From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-To: linux-mediatek@lists.infradead.org
-Cc: Val Packett <val@packett.cool>,
-	Luca Leonardo Scorcia <l.scorcia@gmail.com>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Sen Chu <sen.chu@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>,
-	Lee Jones <lee@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Linus Walleij <linusw@kernel.org>,
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
-	Julien Massot <julien.massot@collabora.com>,
-	Fabien Parent <parent.f@gmail.com>,
-	Akari Tsuyukusa <akkun11.open@gmail.com>,
-	Chen Zhong <chen.zhong@mediatek.com>,
-	linux-input@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-gpio@vger.kernel.org
-Subject: [PATCH v7 9/9] arm64: dts: mediatek: Add MediaTek MT6392 PMIC dtsi
-Date: Mon, 15 Jun 2026 09:16:15 +0200
-Message-ID: <20260615071836.362883-10-l.scorcia@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260615071836.362883-1-l.scorcia@gmail.com>
-References: <20260615071836.362883-1-l.scorcia@gmail.com>
+	Mon, 15 Jun 2026 08:05:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1781510718;
+	bh=sL8cR43QWU9QUsElApFsojl/jS1GXIJxigOn8vOlCUw=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=HqxL/NalwuBkYYCCnFYIB+PZnGXCf/H5kt1aQD11y8tp2Q+Gfz7O2hYtkv4XxzCu1
+	 oI0BFtx54P9mON5EFSNUGNTA5szwtypGhMqrH+V0hSJUV2TVLE3OOFNgILIfJOZH9T
+	 hvraBY90j1E0m4kQVFlJoJxy/rAkS77JBZxKLg3MB2QRKv6+oz0lfHDSouX5kbU73P
+	 gAJ9LcKJftzvnDosh4LIwNOaSCekQQQJ7CL3R66fVnm56B8huG2PlUjqHTWhlX+yiH
+	 bOcluhoX6rA+9sQdpsU9KzS9ydaprGmz/eKGGlt6OfJjd7Og/ui8wYdvp2zVl5YOsn
+	 gRlrs+VGzKoMQ==
+Received: from [100.64.1.43] (unknown [100.64.1.43])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 19E4A17E04CA
+	for <linux-mediatek@lists.infradead.org>; Mon, 15 Jun 2026 10:05:18 +0200 (CEST)
+Message-ID: <c38c6511-8753-4bc9-b932-523e412b51e6@collabora.com>
+Date: Mon, 15 Jun 2026 10:05:17 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/6] media: v4l2-ctrls: validate HEVC and AV1 tile
+ counts
+To: linux-mediatek@lists.infradead.org
+References: <20260614155609.3107600-1-michael.bommarito@gmail.com>
+ <20260614155609.3107600-2-michael.bommarito@gmail.com>
+Content-Language: en-US
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+In-Reply-To: <20260614155609.3107600-2-michael.bommarito@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260615_002048_504466_E35D3EF9 
-X-CRM114-Status: GOOD (  13.92  )
+X-CRM114-CacheID: sfid-20260615_010521_932138_7C4DD408 
+X-CRM114-Status: GOOD (  21.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,100 +75,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Val Packett <val@packett.cool>
 
-Add the dts to be included by all boards using the MT6392 PMIC,
-providing support for regulator, keys, pinctrl and RTC.
+Le 14/06/2026 à 17:56, Michael Bommarito a écrit :
+> The stateless HEVC and AV1 controls carry tile counts that several SoC
+> decoder drivers consume as loop bounds when laying out fixed-size hardware
+> descriptor buffers, but std_validate_compound() does not bound them.
+>
+> For V4L2_CTRL_TYPE_HEVC_PPS with tiling enabled, num_tile_columns_minus1
+> and num_tile_rows_minus1 (u8) drive loops over column_width_minus1[20] and
+> row_height_minus1[22]. For V4L2_CTRL_TYPE_AV1_FRAME, tile_info.tile_cols
+> and tile_rows (u8) bound loops over the mi_*_starts[] / *_in_sbs_minus_1[]
+> arrays. Reject counts beyond the uAPI array capacity with -EINVAL.
+>
+> These are active-count fields (loop bounds), so bounding the upper limit
+> here mirrors the existing num_active_dpb_entries check. Only the upper
+> bound is enforced; a zero tile count is left to the consuming driver, so
+> the zero-initialised AV1 frame control that existing userspace submits is
+> not rejected, and the AV1 divisor (context_update_tile_id / tile_cols) is
+> guarded where it is used in the rockchip decoder (patch 4).
+>
+> Driver-interpreted index values (HEVC pic_parameter_set_id, AV1
+> context_update_tile_id) are bounded in the consuming drivers instead
+> (patches 2 and 4).
+>
+> Fixes: 256fa3920874 ("media: v4l: Add definitions for HEVC stateless decoding")
+> Fixes: 9de30f579980 ("media: Add AV1 uAPI")
 
-Signed-off-by: Val Packett <val@packett.cool>
-Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
----
- arch/arm64/boot/dts/mediatek/mt6392.dtsi | 75 ++++++++++++++++++++++++
- 1 file changed, 75 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt6392.dtsi
+I think you need to do a patch for each of the codec with only one "Fixes" tag on each.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6392.dtsi b/arch/arm64/boot/dts/mediatek/mt6392.dtsi
-new file mode 100644
-index 000000000000..81f15d76a05a
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt6392.dtsi
-@@ -0,0 +1,75 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (c) 2019 MediaTek Inc.
-+ * Copyright (c) 2024 Val Packett <val@packett.cool>
-+ * Copyright (c) 2026 Luca Leonardo Scorcia <l.scorcia@gmail.com>
-+ */
-+
-+#include <dt-bindings/input/input.h>
-+
-+&pwrap {
-+	pmic: pmic {
-+		compatible = "mediatek,mt6392", "mediatek,mt6323";
-+		interrupt-controller;
-+		#interrupt-cells = <2>;
-+
-+		mt6392keys: keys {
-+			compatible = "mediatek,mt6392-keys";
-+
-+			key-power {
-+				linux,keycodes = <KEY_POWER>;
-+				wakeup-source;
-+			};
-+
-+			key-home {
-+				linux,keycodes = <KEY_HOME>;
-+				wakeup-source;
-+			};
-+		};
-+
-+		mt6392pio: pinctrl {
-+			compatible = "mediatek,mt6392-pinctrl";
-+
-+			gpio-controller;
-+			#gpio-cells = <2>;
-+		};
-+
-+		mt6392rtc: rtc {
-+			compatible = "mediatek,mt6392-rtc", "mediatek,mt6323-rtc";
-+		};
-+
-+		mt6392regulators: regulators {
-+			compatible = "mediatek,mt6392-regulator";
-+
-+			/* Fixed supply defined in the data sheet */
-+			avddldo-supply = <&mt6392_vsys_reg>;
-+
-+			mt6392_vcore_reg: vcore { };
-+			mt6392_vproc_reg: vproc { };
-+			mt6392_vsys_reg: vsys { };
-+			mt6392_vaud28_reg: vaud28 { };
-+			mt6392_vxo22_reg: vxo22 { };
-+			mt6392_vaud22_reg: vaud22 { };
-+			mt6392_vadc18_reg: vadc18 { };
-+			mt6392_vcama_reg: vcama { };
-+			mt6392_vcn35_reg: vcn35 { };
-+			mt6392_vio28_reg: vio28 { };
-+			mt6392_vusb_reg: vusb { };
-+			mt6392_vmc_reg: vmc { };
-+			mt6392_vmch_reg: vmch { };
-+			mt6392_vemc3v3_reg: vemc3v3 { };
-+			mt6392_vcamaf_reg: vcamaf { };
-+			mt6392_vgp1_reg: vgp1 { };
-+			mt6392_vgp2_reg: vgp2 { };
-+			mt6392_vefuse_reg: vefuse { };
-+			mt6392_vm25_reg: vm25 { };
-+			mt6392_vdig18_reg: vdig18 { };
-+			mt6392_vm_reg: vm { };
-+			mt6392_vio18_reg: vio18 { };
-+			mt6392_vcn18_reg: vcn18 { };
-+			mt6392_vcamd_reg: vcamd { };
-+			mt6392_vcamio_reg: vcamio { };
-+			mt6392_vrtc_reg: vrtc {	};
-+		};
-+	};
-+};
--- 
-2.43.0
+Regards,
+Benjamin
 
+> Signed-off-by: Michael Bommarito <michael.bommarito@gmail.com>
+> Assisted-by: Claude:claude-opus-4-8
+> ---
+>   drivers/media/v4l2-core/v4l2-ctrls-core.c | 23 +++++++++++++++++++++++
+>   1 file changed, 23 insertions(+)
+>
+> diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4l2-core/v4l2-ctrls-core.c
+> index 6b375720e395c..58e2eb7002a19 100644
+> --- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
+> +++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
+> @@ -790,10 +790,25 @@ static int validate_av1_film_grain(struct v4l2_ctrl_av1_film_grain *fg)
+>   	return 0;
+>   }
+>   
+> +static int validate_av1_tile_info(struct v4l2_av1_tile_info *t)
+> +{
+> +	/* Loop bounds in the stateless AV1 drivers. */
+> +	if (t->tile_cols > V4L2_AV1_MAX_TILE_COLS)
+> +		return -EINVAL;
+> +
+> +	if (t->tile_rows > V4L2_AV1_MAX_TILE_ROWS)
+> +		return -EINVAL;
+> +
+> +	return 0;
+> +}
+> +
+>   static int validate_av1_frame(struct v4l2_ctrl_av1_frame *f)
+>   {
+>   	int ret = 0;
+>   
+> +	ret = validate_av1_tile_info(&f->tile_info);
+> +	if (ret)
+> +		return ret;
+>   	ret = validate_av1_quantization(&f->quantization);
+>   	if (ret)
+>   		return ret;
+> @@ -1242,6 +1257,14 @@ static int std_validate_compound(const struct v4l2_ctrl *ctrl, u32 idx,
+>   
+>   			p_hevc_pps->flags &=
+>   				~V4L2_HEVC_PPS_FLAG_LOOP_FILTER_ACROSS_TILES_ENABLED;
+> +		} else {
+> +			/* Loop bounds in the stateless HEVC drivers. */
+> +			if (p_hevc_pps->num_tile_columns_minus1 >=
+> +			    ARRAY_SIZE(p_hevc_pps->column_width_minus1))
+> +				return -EINVAL;
+> +			if (p_hevc_pps->num_tile_rows_minus1 >=
+> +			    ARRAY_SIZE(p_hevc_pps->row_height_minus1))
+> +				return -EINVAL;
+>   		}
+>   
+>   		if (p_hevc_pps->flags &
 
