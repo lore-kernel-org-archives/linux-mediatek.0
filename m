@@ -4,79 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 123EECD98CF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 13:33:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C676CCD98CF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 13:41:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dOWrt41fp9ZkdsfONhl/POwO170vOA3eDS7WRaAIv2Y=; b=SYu3fdrYtprAk1U472KuOInGbt
-	eFWUHQ0iIZlL93xBaznMKRSZWZKzvZchPZkmHDbwlfskhzt2FIGvo6VI6Nl8GtzU8TQiw74sndaul
-	Sv340HPkJP3TcZQ3tYsyW2fkwZraou9ZNas1tuJYCHsI/coFTqazLd0hmKGDGXxlIQu02u5r3v3sm
-	uiZ4dWIMBNIK+Q5v84GqAw5okHVLd9ycqd4UNMGbrQcipEfX6gsOlmpdBC4FCtE/29sR4wtK4TPZk
-	p96K60eUVhFjukucdSdIBKDrSuqpEVZOFoOmAf7fIskguTW+TdwhdqLb3PChv3NM5wzloPHu9+OF5
-	xJ6QNxtg==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dGVKq3DqkJdswBGgVG+gslnExkfAwrSp65EizBZiGKM=; b=spcNb6lzZLbgUEWUKvvc5QIxV0
+	3HEJis8weISvbOgotDEEo36lFYE7LNw9FRCwwtY5cg9vdb3JVWploaAT2kQbov4c+M15mY0vAVicq
+	cgFUSePV9txhJ8GSan10C7+fmseNxoTjXjUa0hVJwAs9hmoDh5+EeaHDZQR78EUB1iw58/8EIkf0s
+	TmBTH7nrvWcGaU7FGtIxbTprEMKNnYj7CE+NhOkGJmlqoDJASPPSK3D5Ws8tsZLvh/vo88vnG0C2t
+	cixdazuee+RSub98BlaClMo7F34HMKYa+YfDsQ9/czAiiAg+oddY7Xx7VNvzAsIG90oma5vTPEyYx
+	eae6HX+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ7Rk-0000000EJK3-1aXp;
-	Mon, 15 Jun 2026 13:33:48 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+	id 1wZ7Yr-0000000EKDd-3NVg;
+	Mon, 15 Jun 2026 13:41:09 +0000
+Received: from 013.lax.mailroute.net ([199.89.1.16])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ7Rh-0000000EJJQ-1TSW;
-	Mon, 15 Jun 2026 13:33:46 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id E272F1A37CE;
-	Mon, 15 Jun 2026 13:33:42 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id B16B360015;
-	Mon, 15 Jun 2026 13:33:42 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 61CB9106C94F2;
-	Mon, 15 Jun 2026 15:33:35 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1781530421; h=from:subject:date:message-id:to:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=dOWrt41fp9ZkdsfONhl/POwO170vOA3eDS7WRaAIv2Y=;
-	b=cN8CNMsqV3vnmukdqV8G3Kzmq5G8amSuHqLO4tp10lfiI1kRuxOzzSVIOf7+6AuuwloL9i
-	EG6SwhRzQHIXAoItTEt3q0xG5RNm3La0F1DIV0asn9qRlDZg4i6V45E0qd0ChV4jh3qjXT
-	inGsCfhmYmkyv6LTBNRDy2xV4NQjVWHZntpev9zX9XStGsTgIhLlMTMf9yoUXdQCN9YRwv
-	t/XfzKsI8HZSndynjUihh3WNXfQmnYPID0ISfu59px6MIQgnFV/lBYoPkbtdYnQ+r1vduy
-	l+wlZo1hfEKbr7/6vnPBb9a5YhLqeYxBhb/ysDmThYVw9njwNSrwJliPypg9Kw==
-Message-ID: <371a1df7-084c-4431-bd00-0045298e3212@bootlin.com>
-Date: Mon, 15 Jun 2026 15:33:34 +0200
+	id 1wZ7Yp-0000000EKC8-1ekE;
+	Mon, 15 Jun 2026 13:41:08 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 013.lax.mailroute.net (Postfix) with ESMTP id 4gfB8t2kqszlfl5V;
+	Mon, 15 Jun 2026 13:41:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1781530855; x=1784122856; bh=dGVKq3DqkJdswBGgVG+gslnE
+	xkfAwrSp65EizBZiGKM=; b=DzWHun1z/cTIPfcFjYWFAYKfGzApZhmJY3T8Ic1l
+	ekMU1Vrdc3A9lkGKQ1cloPe6yfEd/kHkn+ja9LQf3wKTeBF6qomGJhpl/y8FNcNB
+	Ibif9KtpeVwA75hxytJTulSkPZyuQJ9H4qZwynVTiS9B7x41yD2jOJBgQaaLizeA
+	WJhj6CC/jATxIE0Hpr7pDnSAVhJRu2/mRw5FxwZrn+2cLV5hYF08w5DYDi8fk1yN
+	RiAEWcaZFvwBedNbp2H51nQPCvVMJMM3zbTjlhJXbsJN/2QVAeCpzIihhOnMBy7c
+	ArvCMhF2WooauWI1qpBRk9gFZ+9uxUl3tyoadkMMhmo5kA==
+X-Virus-Scanned: by MailRoute
+Received: from 013.lax.mailroute.net ([127.0.0.1])
+ by localhost (013.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id m8jRUe-O9L6p; Mon, 15 Jun 2026 13:40:55 +0000 (UTC)
+Received: from [192.168.51.14] (c-73-231-117-72.hsd1.ca.comcast.net [73.231.117.72])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 013.lax.mailroute.net (Postfix) with ESMTPSA id 4gfB8f1dQfzlfvpG;
+	Mon, 15 Jun 2026 13:40:49 +0000 (UTC)
+Message-ID: <414c9338-0e3e-4d68-941d-18cb83dc78f5@acm.org>
+Date: Mon, 15 Jun 2026 06:40:49 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v7 01/12] net: phylink: keep and use MAC
- supported_interfaces in phylink struct
-To: Christian Marangi <ansuelsmth@gmail.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Simon Horman <horms@kernel.org>,
- Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Heiner Kallweit
- <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>,
- Saravana Kannan <saravanak@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, Nathan Chancellor
- <nathan@kernel.org>, Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
- Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- llvm@lists.linux.dev
-References: <20260615122950.22281-1-ansuelsmth@gmail.com>
- <20260615122950.22281-2-ansuelsmth@gmail.com>
+Subject: Re: [PATCH v3 3/3] ufs: core: Remove max_num_rtt field from
+ ufs_hba_variant_ops
+To: ed.tsai@mediatek.com, alim.akhtar@samsung.com, avri.altman@wdc.com,
+ James.Bottomley@HansenPartnership.com, martin.petersen@oracle.com,
+ linux-scsi@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com,
+ peter.wang@mediatek.com, alice.chao@mediatek.com, naomi.chu@mediatek.com,
+ chun-hung.wu@mediatek.com
+References: <20260615055802.105479-1-ed.tsai@mediatek.com>
+ <20260615055802.105479-4-ed.tsai@mediatek.com>
 Content-Language: en-US
-From: Maxime Chevallier <maxime.chevallier@bootlin.com>
-In-Reply-To: <20260615122950.22281-2-ansuelsmth@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20260615055802.105479-4-ed.tsai@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260615_063345_550734_247FC685 
-X-CRM114-Status: GOOD (  17.06  )
+X-CRM114-CacheID: sfid-20260615_064107_449064_F896017C 
+X-CRM114-Status: UNSURE (   6.11  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,39 +90,10 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Christian,
+On 6/14/26 10:57 PM, ed.tsai@mediatek.com wrote:
+> Remove the max_num_rtt field from ufs_hba_variant_ops as it has been
+> replaced by the get_hba_nortt() callback which provides more flexible
+> platform-specific RTT capability handling.
 
-On 6/15/26 14:29, Christian Marangi wrote:
-> Add in phylink struct a copy of supported_interfaces from phylink_config
-> and make use of that instead of relying on phylink_config value.
-> 
-> This in preparation for support of PCS handling internally to phylink
-> where a PCS can be removed or added after the phylink is created and we
-> need both a reference of the supported_interfaces value from
-> phylink_config and an internal value that can be updated with the new
-> PCS info.
-> 
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
->  drivers/net/phy/phylink.c | 22 +++++++++++++++-------
->  1 file changed, 15 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
-> index 087ac63f9193..4d59c0dd78db 100644
-> --- a/drivers/net/phy/phylink.c
-> +++ b/drivers/net/phy/phylink.c
-> @@ -60,6 +60,11 @@ struct phylink {
->  	/* The link configuration settings */
->  	struct phylink_link_state link_config;
->  
-> +	/* What interface are supported by the current link.
-> +	 * Can change on removal or addition of new PCS.
-> +	 */
-> +	DECLARE_PHY_INTERFACE_MASK(supported_interfaces);
-
-Can you clarify a bit what you mean here ? Is that the combination of the
-interfaces the MAC supports AND the currently in-use PCS ?
-
-Maxime
-
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 
