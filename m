@@ -4,70 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0FE1CD98CE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 06:32:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0373BCD98CE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 06:36:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=6OyrElnzHDqgWw2fUTNOzAvc452gz9pwfoMpOtTwnik=; b=ckfVdbfl/oICVQLbDhSsCEjB/S
-	1SxVHa6bwtPvs0SmeK8cGLM5MPMnnURZSGid7XEFND58jykoZTeCFt9xNdqpfH5TKqxDRjukROWWy
-	neRDS50vrJxFmB0PIRZ/fj2jIvBEtKHwPvqPcBshdRXyns5VfWrIKeFtdhnPSdkuTET4gU8wpKItL
-	Q3oaGLAQ51tqhFaMZqNuyL01MNqJ3BoZrGRA6c9uO2EAL7vY3W1tQICRtGCdXp2mNXtkWSvBjZzn+
-	PyD/JlX7xqyGve2xL88WdnmKktJmC+F/YywD2Lpn45p5go1lFfRsGT9/GAcWAnbEEO+Ion4U2+vxl
-	xHtnohSw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HhL9nmQvXU1aByFhbMPlJuNGIORTEGdF12RyDzmFaJg=; b=k9vORVhSb+o7XyDbtxxJl6dOCf
+	13rw114iXOGnyw1qElAWwxQoEseqsmmAsq/Yb/Reoomx+DeObRLLeydQEu75pDxDIvMRI+m0hTEwG
+	8QQV0gVnM9BWjPVfWqOhOSDyRe40zJowpvgnr3KMOAFrdIibt7SG/FSJzU24C9AioIK8u2nHAOxyl
+	xdpScb07VXGyD3aGAX/gfEHRoBGGTgzzLw9vAr/V+eLrk2WExAc6E8nexR4wGuDxTo2OvwZNxqsBp
+	h3hUGg34DCShthi3LM+nsS3+RrLhdIHCqAi3fW12lknAdxnSuUUY1IzDVweLfrXR4cQDH0uYGyGEA
+	56hJzONg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ0sE-0000000Dgvz-08Zi;
-	Mon, 15 Jun 2026 06:32:42 +0000
-Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
+	id 1wZ0vQ-0000000DhBb-2VAL;
+	Mon, 15 Jun 2026 06:36:00 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ0s8-0000000Dgv0-44FB;
-	Mon, 15 Jun 2026 06:32:38 +0000
-Received: from localhost.localdomain (unknown [111.196.245.140])
-	by APP-05 (Coremail) with SMTP id zQCowACnGu6CnC9qMHWTEw--.34359S2;
-	Mon, 15 Jun 2026 14:32:34 +0800 (CST)
-From: Pengpeng Hou <pengpeng@iscas.ac.cn>
-To: Miquel Raynal <miquel.raynal@bootlin.com>,
-	Richard Weinberger <richard@nod.at>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mtd@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: pengpeng@iscas.ac.cn
-Subject: [PATCH] mtd: nand: ecc-mtk: handle ECC clock enable failures
-Date: Mon, 15 Jun 2026 14:32:32 +0800
-Message-ID: <20260615063232.44383-1-pengpeng@iscas.ac.cn>
-X-Mailer: git-send-email 2.50.1
+	id 1wZ0vP-0000000DhBV-31Di
+	for linux-mediatek@lists.infradead.org;
+	Mon, 15 Jun 2026 06:35:59 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 14310417AB;
+	Mon, 15 Jun 2026 06:35:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 499AA1F000E9;
+	Mon, 15 Jun 2026 06:35:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1781505359;
+	bh=HhL9nmQvXU1aByFhbMPlJuNGIORTEGdF12RyDzmFaJg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=eyClCGXO8ML6BZyvM2iRMPGwLxqV+WMoBnqDgvz+3sjBWSsXm8iU9bNRPvzK48908
+	 fzm9uY6p1NBTAvmCsahbcnNshI1augW3kGJJ5Xpb/JIkj2qtH0tGZZT8YFsK2Qy4q3
+	 DbGUwdPdpNafUq730d6uFnRfVlMmzcNtlqQkHuTfEKrJKwGtibX6+woFtS3ivIWNUJ
+	 DgzVjayxNEcH0t1C8kGf1ghU3iS8Y3xOcVh3pEqH284x7nFE7ZAlcU9SnRMSuyGzId
+	 VlFlDM3t9//a20hMygqK79klk2SJ8sBJvdTSqqwe13Qb+pLa7NRRNVT2ohLDdIt6jy
+	 8zV60l3g8YUTg==
+Date: Mon, 15 Jun 2026 08:35:54 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Sean Wang <sean.wang@kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>, linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH 2/5] wifi: mt76: usb: support out-of-order RX URB
+ completion
+Message-ID: <ai-dSgeYkT64NDob@lore-rh-laptop>
+References: <20260613224655.2405686-1-sean.wang@kernel.org>
+ <20260613224655.2405686-3-sean.wang@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: zQCowACnGu6CnC9qMHWTEw--.34359S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7ury3XF4kAF4rWrW7uw18AFb_yoW8Gw15pF
-	WUC395KrWDGayjgwn7ua1UC3WakayxK395Wr98Cw1v93sYvrySyFy8JFWjvwnYvrWrGa13
-	Jrsrta4kAayUAFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUU9014x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
-	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
-	1l84ACjcxK6xIIjxv20xvE14v26ryj6F1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26F4j
-	6r4UJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AKxVW0oV
-	Cq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0
-	I7IYx2IY67AKxVWUXVWUAwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r
-	4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwACI402YVCY1x02628v
-	n2kIc2xKxwCY1x0262kKe7AKxVWUtVW8ZwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7x
-	kEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E
-	67AF67kF1VAFwI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCw
-	CI42IY6xIIjxv20xvEc7CjxVAFwI0_Gr0_Cr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1x
-	MIIF0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr0_Gr1UYxBIda
-	VFxhVjvjDU0xZFpf9x0JUpwZcUUUUU=
-X-Originating-IP: [111.196.245.140]
-X-CM-SenderInfo: pshqw1xhqjqxpvfd2hldfou0/
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260614_233237_398063_710214B7 
-X-CRM114-Status: GOOD (  12.09  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="Fd1lP9OuahfIifWz"
+Content-Disposition: inline
+In-Reply-To: <20260613224655.2405686-3-sean.wang@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,51 +72,224 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mtk_ecc_get() gets a reference to the ECC platform device, obtains the
-provider state and then enables the ECC clock before initializing the
-hardware.
 
-The clk_prepare_enable() return value is currently ignored.  If enabling
-the clock fails, the code still touches the ECC registers and returns a
-live ECC handle to the caller.  The provider device reference acquired
-by of_find_device_by_node() is also kept even though the handle setup
-failed.
+--Fd1lP9OuahfIifWz
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Propagate the clock enable error and drop the provider device reference
-on that failure path.
+> From: Sean Wang <sean.wang@mediatek.com>
+>=20
+> Keep per-URB RX queue context and complete entries by their real queue
+> position instead of assuming the completed URB is always at q->head.
+>=20
+> USB RX URBs can complete out of order, and advancing q->head too early
+> can corrupt RX queue accounting and process buffers in the wrong order.
+>=20
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt76.h |  5 ++
+>  drivers/net/wireless/mediatek/mt76/usb.c  | 77 ++++++++++++++++-------
+>  2 files changed, 61 insertions(+), 21 deletions(-)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wire=
+less/mediatek/mt76/mt76.h
+> index 122e77a5f2f4..81740aa7df71 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt76.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+> @@ -655,6 +655,11 @@ struct mt76_mcu {
+>  	wait_queue_head_t wait;
+>  };
+> =20
+> +struct mt76u_rx_entry {
+> +	struct mt76_queue_entry *e;
+> +	struct mt76_queue *q;
+> +};
+> +
+>  #define MT_TX_SG_MAX_SIZE	8
+>  #define MT_RX_SG_MAX_SIZE	4
+>  #define MT_NUM_TX_ENTRIES	256
+> diff --git a/drivers/net/wireless/mediatek/mt76/usb.c b/drivers/net/wirel=
+ess/mediatek/mt76/usb.c
+> index ce68e1d0c786..cab36630c978 100644
+> --- a/drivers/net/wireless/mediatek/mt76/usb.c
+> +++ b/drivers/net/wireless/mediatek/mt76/usb.c
+> @@ -397,11 +397,25 @@ mt76u_urb_alloc(struct mt76_dev *dev, struct mt76_q=
+ueue_entry *e,
+>  	return 0;
+>  }
+> =20
+> +static void mt76u_urb_free(struct urb *urb)
+> +{
+> +	int i;
+> +
+> +	for (i =3D 0; i < urb->num_sgs; i++)
+> +		mt76_put_page_pool_buf(sg_virt(&urb->sg[i]), false);
+> +
+> +	if (urb->transfer_buffer)
+> +		mt76_put_page_pool_buf(urb->transfer_buffer, false);
+> +
+> +	usb_free_urb(urb);
+> +}
+> +
+>  static int
+>  mt76u_rx_urb_alloc(struct mt76_dev *dev, struct mt76_queue *q,
+>  		   struct mt76_queue_entry *e)
+>  {
+>  	enum mt76_rxq_id qid =3D q - &dev->q_rx[MT_RXQ_MAIN];
+> +	struct mt76u_rx_entry *rxe;
+>  	int err, sg_size;
+> =20
+>  	sg_size =3D qid =3D=3D MT_RXQ_MAIN ? MT_RX_SG_MAX_SIZE : 0;
+> @@ -409,20 +423,25 @@ mt76u_rx_urb_alloc(struct mt76_dev *dev, struct mt7=
+6_queue *q,
+>  	if (err)
+>  		return err;
+> =20
+> -	return mt76u_refill_rx(dev, q, e->urb, sg_size);
+> -}
+> -
+> -static void mt76u_urb_free(struct urb *urb)
+> -{
+> -	int i;
+> +	rxe =3D kzalloc_obj(*rxe, GFP_KERNEL);
 
-Signed-off-by: Pengpeng Hou <pengpeng@iscas.ac.cn>
----
- drivers/mtd/nand/ecc-mtk.c | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
+I guess you can move it at the beginning of mt76u_rx_urb_alloc(), right?
 
-diff --git a/drivers/mtd/nand/ecc-mtk.c b/drivers/mtd/nand/ecc-mtk.c
-index c75bb8b80cc1..39be2e3e4ee4 100644
---- a/drivers/mtd/nand/ecc-mtk.c
-+++ b/drivers/mtd/nand/ecc-mtk.c
-@@ -265,6 +265,7 @@ static struct mtk_ecc *mtk_ecc_get(struct device_node *np)
- {
- 	struct platform_device *pdev;
- 	struct mtk_ecc *ecc;
-+	int ret;
- 
- 	pdev = of_find_device_by_node(np);
- 	if (!pdev)
-@@ -276,7 +277,12 @@ static struct mtk_ecc *mtk_ecc_get(struct device_node *np)
- 		return ERR_PTR(-EPROBE_DEFER);
- 	}
- 
--	clk_prepare_enable(ecc->clk);
-+	ret = clk_prepare_enable(ecc->clk);
-+	if (ret) {
-+		put_device(&pdev->dev);
-+		return ERR_PTR(ret);
-+	}
-+
- 	mtk_ecc_hw_init(ecc);
- 
- 	return ecc;
--- 
-2.50.1 (Apple Git-155)
+> +	if (!rxe) {
+> +		usb_free_urb(e->urb);
 
+IIRC, if mt76u_rx_urb_alloc() fails, mt76u_free_rx_queue() will run so we do
+not need to run usb_free_urb() manually here, right?
+
+> +		e->urb =3D NULL;
+> +		return -ENOMEM;
+> +	}
+> =20
+> -	for (i =3D 0; i < urb->num_sgs; i++)
+> -		mt76_put_page_pool_buf(sg_virt(&urb->sg[i]), false);
+> +	rxe->e =3D e;
+> +	rxe->q =3D q;
+> +	e->urb->context =3D rxe;
+> =20
+> -	if (urb->transfer_buffer)
+> -		mt76_put_page_pool_buf(urb->transfer_buffer, false);
+> +	err =3D mt76u_refill_rx(dev, q, e->urb, sg_size);
+> +	if (err) {
+> +		kfree(rxe);
+> +		mt76u_urb_free(e->urb);
+> +		e->urb =3D NULL;
+> +	}
+> =20
+> -	usb_free_urb(urb);
+> +	return err;
+>  }
+> =20
+>  static void
+> @@ -566,8 +585,12 @@ mt76u_process_rx_entry(struct mt76_dev *dev, struct =
+urb *urb,
+>  static void mt76u_complete_rx(struct urb *urb)
+>  {
+>  	struct mt76_dev *dev =3D dev_get_drvdata(&urb->dev->dev);
+> -	struct mt76_queue *q =3D urb->context;
+> +	struct mt76u_rx_entry *rxe =3D urb->context;
+> +	struct mt76_queue_entry *e =3D rxe->e;
+> +	unsigned int idx, pending, pos;
+> +	struct mt76_queue *q =3D rxe->q;
+>  	unsigned long flags;
+> +	bool wake =3D false;
+> =20
+>  	trace_rx_urb(dev, urb);
+> =20
+> @@ -586,18 +609,28 @@ static void mt76u_complete_rx(struct urb *urb)
+>  	}
+> =20
+>  	spin_lock_irqsave(&q->lock, flags);
+> -	if (WARN_ONCE(q->entry[q->head].urb !=3D urb, "rx urb mismatch"))
+> +	idx =3D e - q->entry;
+> +	pending =3D q->ndesc - q->queued;
+> +	pos =3D (idx + q->ndesc - q->head) % q->ndesc;
+> +	if (WARN_ONCE(idx >=3D q->ndesc || pos >=3D pending, "rx urb mismatch"))
+
+can idx be >=3D of q->ndesc?
+
+>  		goto out;
+> =20
+> -	q->head =3D (q->head + 1) % q->ndesc;
+> -	q->queued++;
+> -
+> -	if (q =3D=3D &dev->q_rx[MT_RXQ_MAIN])
+> -		napi_schedule(&dev->napi[MT_RXQ_MAIN]);
+> -	else
+> -		mt76_worker_schedule(&dev->usb.rx_worker);
+> +	e->done =3D true;
+> +	while (q->entry[q->head].done) {
+> +		q->entry[q->head].done =3D false;
+> +		q->head =3D (q->head + 1) % q->ndesc;
+> +		q->queued++;
+> +		wake =3D true;
+
+This seems a fix to me since theoretically we could have the same issue in
+the current codebase, right?
+
+Regards,
+Lorenzo
+
+> +	}
+>  out:
+>  	spin_unlock_irqrestore(&q->lock, flags);
+> +
+> +	if (wake) {
+> +		if (q =3D=3D &dev->q_rx[MT_RXQ_MAIN])
+> +			napi_schedule(&dev->napi[MT_RXQ_MAIN]);
+> +		else
+> +			mt76_worker_schedule(&dev->usb.rx_worker);
+> +	}
+>  }
+> =20
+>  static int
+> @@ -607,7 +640,7 @@ mt76u_submit_rx_buf(struct mt76_dev *dev, enum mt76_r=
+xq_id qid,
+>  	int ep =3D qid =3D=3D MT_RXQ_MAIN ? MT_EP_IN_PKT_RX : MT_EP_IN_CMD_RESP;
+> =20
+>  	mt76u_fill_bulk_urb(dev, USB_DIR_IN, ep, urb,
+> -			    mt76u_complete_rx, &dev->q_rx[qid]);
+> +			    mt76u_complete_rx, urb->context);
+>  	trace_submit_urb(dev, urb);
+> =20
+>  	return usb_submit_urb(urb, GFP_ATOMIC);
+> @@ -678,6 +711,7 @@ mt76u_submit_rx_buffers(struct mt76_dev *dev, enum mt=
+76_rxq_id qid)
+> =20
+>  	spin_lock_irqsave(&q->lock, flags);
+>  	for (i =3D 0; i < q->ndesc; i++) {
+> +		q->entry[i].done =3D false;
+>  		err =3D mt76u_submit_rx_buf(dev, qid, q->entry[i].urb);
+>  		if (err < 0)
+>  			break;
+> @@ -733,6 +767,7 @@ mt76u_free_rx_queue(struct mt76_dev *dev, struct mt76=
+_queue *q)
+>  		if (!q->entry[i].urb)
+>  			continue;
+> =20
+> +		kfree(q->entry[i].urb->context);
+>  		mt76u_urb_free(q->entry[i].urb);
+>  		q->entry[i].urb =3D NULL;
+>  	}
+> --=20
+> 2.43.0
+>=20
+
+--Fd1lP9OuahfIifWz
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCai+dRwAKCRA6cBh0uS2t
+rDcBAP4sMx7VIlH48U3ZB0uNBRm7tKsxUOlwBFPEKmvcPwS3tQEA/iwFt5imZTX1
+x3cWEuHiav/vn6fxJ0aQLvf7zpfgVAA=
+=oOKo
+-----END PGP SIGNATURE-----
+
+--Fd1lP9OuahfIifWz--
 
