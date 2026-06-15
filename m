@@ -4,79 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 883ABCD98DE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 05:58:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0FE1CD98CE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 06:32:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z74uBbdsQ/fARR0kh8p3nPXksCzC/EQS2Nq9vJKqgb8=; b=dHI5M30zmkab1QTkJ25GcRC+rL
-	AXL+oUkHBZpzMYmMGK9i+MYxD5Jl8Cg57TxBYZlrlO2SB6/zb7EpOawVq6Hzk9M4WsCEfzexX/EIz
-	xW3j9fBG2lLbxa4Cs1gkLklhZl0+hDVpkVdsanMVYEcsNywM0QpmmxVTLAJeaY1BGC05bE4pwWqqt
-	PjbVkFQOPsX3PGxiv/CWeQg62CLdqCvyy8sGn84CnAE8OKEfJpUW0dbvu4gTVXvy6wb/T/qx9mOJT
-	P/wUjBlKpqP58iTMJeSQ72m+GaK721aGyOdINYPv+4xTPEEOflcgOYIek/h70rM3rUjRkFrOFbiSJ
-	nTNcnppw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=6OyrElnzHDqgWw2fUTNOzAvc452gz9pwfoMpOtTwnik=; b=ckfVdbfl/oICVQLbDhSsCEjB/S
+	1SxVHa6bwtPvs0SmeK8cGLM5MPMnnURZSGid7XEFND58jykoZTeCFt9xNdqpfH5TKqxDRjukROWWy
+	neRDS50vrJxFmB0PIRZ/fj2jIvBEtKHwPvqPcBshdRXyns5VfWrIKeFtdhnPSdkuTET4gU8wpKItL
+	Q3oaGLAQ51tqhFaMZqNuyL01MNqJ3BoZrGRA6c9uO2EAL7vY3W1tQICRtGCdXp2mNXtkWSvBjZzn+
+	PyD/JlX7xqyGve2xL88WdnmKktJmC+F/YywD2Lpn45p5go1lFfRsGT9/GAcWAnbEEO+Ion4U2+vxl
+	xHtnohSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ0LM-0000000DeqE-04aD;
-	Mon, 15 Jun 2026 05:58:44 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1wZ0sE-0000000Dgvz-08Zi;
+	Mon, 15 Jun 2026 06:32:42 +0000
+Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ0LC-0000000Dejr-1eZO;
-	Mon, 15 Jun 2026 05:58:35 +0000
-X-UUID: 3b5eab80687f11f1afed4741b24580c9-20260614
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Z74uBbdsQ/fARR0kh8p3nPXksCzC/EQS2Nq9vJKqgb8=;
-	b=LFhT/c4Y8KJoNb6RJPT6SECWW4TZAbSK5UwOvKtvNz8vdBrDBqxBrDnnm1w9vxXDk2sEsWWTvDTGSRhXJNpBeEJlPHkc7fa65q9ezQVYKN2jnCjzeNKxYGjd8DjfJemrw17sHg8zde+rWtPMSQXqS3HxXaFRgDcNxxXZ0RXVk4w=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.15,REQID:8bd22f8c-5e26-4937-a1a8-db0be164f676,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:e276073,CLOUDID:05709154-902f-47df-afe3-f34f8d753c22,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|123|836|865|888|898,TC:-5,
-	Content:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,C
-	OL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 3b5eab80687f11f1afed4741b24580c9-20260614
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
-	(envelope-from <ed.tsai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1002533071; Sun, 14 Jun 2026 22:58:29 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 15 Jun 2026 13:58:26 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 15 Jun 2026 13:58:26 +0800
-From: <ed.tsai@mediatek.com>
-To: <alim.akhtar@samsung.com>, <avri.altman@wdc.com>, <bvanassche@acm.org>,
-	<James.Bottomley@HansenPartnership.com>, <martin.petersen@oracle.com>,
-	<linux-scsi@vger.kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <wsd_upstream@mediatek.com>,
-	<peter.wang@mediatek.com>, <alice.chao@mediatek.com>,
-	<naomi.chu@mediatek.com>, <chun-hung.wu@mediatek.com>, Ed Tsai
-	<ed.tsai@mediatek.com>
-Subject: [PATCH v3 3/3] ufs: core: Remove max_num_rtt field from ufs_hba_variant_ops
-Date: Mon, 15 Jun 2026 13:57:17 +0800
-Message-ID: <20260615055802.105479-4-ed.tsai@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20260615055802.105479-1-ed.tsai@mediatek.com>
-References: <20260615055802.105479-1-ed.tsai@mediatek.com>
+	id 1wZ0s8-0000000Dgv0-44FB;
+	Mon, 15 Jun 2026 06:32:38 +0000
+Received: from localhost.localdomain (unknown [111.196.245.140])
+	by APP-05 (Coremail) with SMTP id zQCowACnGu6CnC9qMHWTEw--.34359S2;
+	Mon, 15 Jun 2026 14:32:34 +0800 (CST)
+From: Pengpeng Hou <pengpeng@iscas.ac.cn>
+To: Miquel Raynal <miquel.raynal@bootlin.com>,
+	Richard Weinberger <richard@nod.at>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mtd@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: pengpeng@iscas.ac.cn
+Subject: [PATCH] mtd: nand: ecc-mtk: handle ECC clock enable failures
+Date: Mon, 15 Jun 2026 14:32:32 +0800
+Message-ID: <20260615063232.44383-1-pengpeng@iscas.ac.cn>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+X-CM-TRANSID: zQCowACnGu6CnC9qMHWTEw--.34359S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7ury3XF4kAF4rWrW7uw18AFb_yoW8Gw15pF
+	WUC395KrWDGayjgwn7ua1UC3WakayxK395Wr98Cw1v93sYvrySyFy8JFWjvwnYvrWrGa13
+	Jrsrta4kAayUAFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUU9014x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
+	1l84ACjcxK6xIIjxv20xvE14v26ryj6F1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26F4j
+	6r4UJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AKxVW0oV
+	Cq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0
+	I7IYx2IY67AKxVWUXVWUAwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r
+	4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwACI402YVCY1x02628v
+	n2kIc2xKxwCY1x0262kKe7AKxVWUtVW8ZwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7x
+	kEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E
+	67AF67kF1VAFwI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCw
+	CI42IY6xIIjxv20xvEc7CjxVAFwI0_Gr0_Cr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1x
+	MIIF0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr0_Gr1UYxBIda
+	VFxhVjvjDU0xZFpf9x0JUpwZcUUUUU=
+X-Originating-IP: [111.196.245.140]
+X-CM-SenderInfo: pshqw1xhqjqxpvfd2hldfou0/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260614_225834_444683_5DCC74D1 
-X-CRM114-Status: GOOD (  12.14  )
+X-CRM114-CacheID: sfid-20260614_233237_398063_710214B7 
+X-CRM114-Status: GOOD (  12.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,61 +82,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ed Tsai <ed.tsai@mediatek.com>
+mtk_ecc_get() gets a reference to the ECC platform device, obtains the
+provider state and then enables the ECC clock before initializing the
+hardware.
 
-Remove the max_num_rtt field from ufs_hba_variant_ops as it has been
-replaced by the get_hba_nortt() callback which provides more flexible
-platform-specific RTT capability handling.
+The clk_prepare_enable() return value is currently ignored.  If enabling
+the clock fails, the code still touches the ECC registers and returns a
+live ECC handle to the caller.  The provider device reference acquired
+by of_find_device_by_node() is also kept even though the handle setup
+failed.
 
-Signed-off-by: Ed Tsai <ed.tsai@mediatek.com>
+Propagate the clock enable error and drop the provider device reference
+on that failure path.
+
+Signed-off-by: Pengpeng Hou <pengpeng@iscas.ac.cn>
 ---
- drivers/ufs/core/ufshcd.c | 4 +---
- include/ufs/ufshcd.h      | 2 --
- 2 files changed, 1 insertion(+), 5 deletions(-)
+ drivers/mtd/nand/ecc-mtk.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 382b6041c716..00072bff9dcd 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -8557,8 +8557,6 @@ static void ufshcd_set_rtt(struct ufs_hba *hba)
- 	struct ufs_dev_info *dev_info = &hba->dev_info;
- 	u32 rtt = 0;
- 	u32 dev_rtt = 0;
--	int host_rtt_cap = hba->vops && hba->vops->max_num_rtt ?
--			   hba->vops->max_num_rtt : hba->nortt;
+diff --git a/drivers/mtd/nand/ecc-mtk.c b/drivers/mtd/nand/ecc-mtk.c
+index c75bb8b80cc1..39be2e3e4ee4 100644
+--- a/drivers/mtd/nand/ecc-mtk.c
++++ b/drivers/mtd/nand/ecc-mtk.c
+@@ -265,6 +265,7 @@ static struct mtk_ecc *mtk_ecc_get(struct device_node *np)
+ {
+ 	struct platform_device *pdev;
+ 	struct mtk_ecc *ecc;
++	int ret;
  
- 	/* RTT override makes sense only for UFS-4.0 and above */
- 	if (dev_info->wspecversion < 0x400)
-@@ -8574,7 +8572,7 @@ static void ufshcd_set_rtt(struct ufs_hba *hba)
- 	if (dev_rtt != DEFAULT_MAX_NUM_RTT)
- 		return;
+ 	pdev = of_find_device_by_node(np);
+ 	if (!pdev)
+@@ -276,7 +277,12 @@ static struct mtk_ecc *mtk_ecc_get(struct device_node *np)
+ 		return ERR_PTR(-EPROBE_DEFER);
+ 	}
  
--	rtt = min_t(int, dev_info->rtt_cap, host_rtt_cap);
-+	rtt = min_t(int, dev_info->rtt_cap, hba->nortt);
+-	clk_prepare_enable(ecc->clk);
++	ret = clk_prepare_enable(ecc->clk);
++	if (ret) {
++		put_device(&pdev->dev);
++		return ERR_PTR(ret);
++	}
++
+ 	mtk_ecc_hw_init(ecc);
  
- 	if (rtt == dev_rtt)
- 		return;
-diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-index 421c286481e8..13d0d7798294 100644
---- a/include/ufs/ufshcd.h
-+++ b/include/ufs/ufshcd.h
-@@ -370,7 +370,6 @@ struct ufshcd_tx_eq_params {
- /**
-  * struct ufs_hba_variant_ops - variant specific callbacks
-  * @name: variant name
-- * @max_num_rtt: maximum RTT supported by the host
-  * @init: called when the driver is initialized
-  * @exit: called to cleanup everything done in init
-  * @set_dma_mask: For setting another DMA mask than indicated by the 64AS
-@@ -420,7 +419,6 @@ struct ufshcd_tx_eq_params {
-  */
- struct ufs_hba_variant_ops {
- 	const char *name;
--	int	max_num_rtt;
- 	int	(*init)(struct ufs_hba *);
- 	void    (*exit)(struct ufs_hba *);
- 	u32	(*get_ufs_hci_version)(struct ufs_hba *);
+ 	return ecc;
 -- 
-2.45.2
+2.50.1 (Apple Git-155)
 
 
