@@ -4,76 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 389C2CD98DE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 21:23:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01CAECD98CE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 22:34:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=gl07pJdd/VP/07cwVNdl98nwOZmJlI+5GvXpYGmCuNw=; b=3CLuHIePW1P0u7TG84zmDiUbxM
-	2w0MIAquSFoREybhcyEr8xvw5gkfHEB5wQFnnYKxXbDnycT916xZEUGz5Gf0bCOr6+sBSG7poVDE1
-	fr93mG1p535IYpUBbMIRP122RCB/x/3xyK5YvsH+WAYi+/3YGQstExBA6wf9ZLD1E4JYKc5updMFn
-	bhizYfjzAWIFcfuzVs1TSDq6d/KSzwjnmgnNu2kFt1jx/pjckOiRsQ7kD/HesSL6xGtI+Kq3rk2FB
-	aFD/nkfDXkODhO0VqSUDvmIUZmgX8XXMWIY06uTVGd5s5CPEbkclTKNMmTfUtTIZbcRBn2Q0cqtXe
-	ORD4Wu/Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/BxQrn967BchhiPMVf9s3SPbfGb2SRsf64DIOXc/lgs=; b=rDpDNIWTRHTWnucznzkSn13lLh
+	exV80EvGklzylLuY0Z1iaZcFBnW5UyZJbvTnqU0D9WqLARBMxlpGIGcpqD799KxGu3YpQvwIb4ACP
+	6av1e4Gbyr74EaEC6T+YineYy9js6nLbtxAd/UzZguZalgptdlf1d1L8bVmxVHQSCEh3xpUHkvboj
+	R5TrrVPUKZs062QyIgD6zXeXLf0WEjXR1mI1lr2kJFFIrGYQ/lGh+B6S/Z+tej50cSwZB79eBZzRU
+	hWIVELa+joYHg5J0ut5F3ynSvF1XP0Q33g1kVrn10VtHXnlNhdJu99ybVuwDiSbwbu18WJw7SRmBo
+	5PRHPVXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZEly-0000000ErPs-329P;
-	Mon, 15 Jun 2026 21:23:10 +0000
-Received: from mail-dl1-f52.google.com ([74.125.82.52])
+	id 1wZFtL-0000000Etm6-0EZq;
+	Mon, 15 Jun 2026 22:34:51 +0000
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZElw-0000000ErPQ-1xag
+	id 1wZFtI-0000000EtlR-1Ag2
 	for linux-mediatek@lists.infradead.org;
-	Mon, 15 Jun 2026 21:23:09 +0000
-Received: by mail-dl1-f52.google.com with SMTP id a92af1059eb24-1384eb94d20so6658366c88.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 15 Jun 2026 14:23:07 -0700 (PDT)
+	Mon, 15 Jun 2026 22:34:49 +0000
+Received: by mail-pj1-x1036.google.com with SMTP id 98e67ed59e1d1-36d98b68d68so2581177a91.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 15 Jun 2026 15:34:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=dama-to.20251104.gappssmtp.com; s=20251104; t=1781562887; x=1782167687; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references
+         :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=/BxQrn967BchhiPMVf9s3SPbfGb2SRsf64DIOXc/lgs=;
+        b=ILFBMDHwb7gP9JJD93iMkyZX8zWMSFYCgMKe/H5MTQezvMqRBTnNzwPnkv4DkxOmGO
+         GcySmZU6KjaGfYiEqpYn/fAlqJymPf8EUg8zS8FI8ESBPpFS1VvJzJHs+noK/knEr6vM
+         csnbhYxaIqY+2aDmUovxtPwH0koVGWZ4pSGsrCnI2jyRxJO3eGxf9QY3hOh17HQRxrD3
+         YTtjZXvltVPSarSipp7TC3Ig0Dq3zig7Ws5+XwiNn8HIXdgQqIYlHJKRwKNFshPtVstK
+         IqtSLEG6eXrJNkYwzddJW5n9LXq0AEex7D8JQ2dykfwbuXUhnyzTTWE/viEEec+0lwAZ
+         h8YA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781558587; x=1782163387;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=gl07pJdd/VP/07cwVNdl98nwOZmJlI+5GvXpYGmCuNw=;
-        b=OVpc3SkcSox5lUj1YOAB1cHEB7uGD2Vnk4HV/P15cq9y2M3F89wRPoo/QYIOp3lzw3
-         EPj35PfjXbgrOm7lJlStXPs20kuBWpjsUi3I1Mgr6idqaM2NpaKX0FPF4TrgNa0701QY
-         PiYox4FjWI30bPHrXoNakQSOGmWuNMnHWPflk+TDmrQYaVWeO7PNYbLkMfgyuy/xn76V
-         Tp8lWwYZyPVZuI/3eON3rnotL4MybU1vz+PgAPM6aiJndMBjEzYrW+KqrRP24/QFvRrY
-         rKPFKEfuCskkFmivFiWvr9EfhBkAiCEnCK+IsFIu+ZJvr2eFr95kS7g62N9ZmH9I0BuZ
-         o2Ew==
-X-Forwarded-Encrypted: i=1; AFNElJ8zDX+a9TYSEBmAaLx1fyTay5FpmPqxJOiVQJO6iHXQ8KWmPOnlXXgFtTCdmyABQMgU+whJAGcILe4tHp2AgA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwDYHI1zwLzzFlDz1WoMgjbabSYaXQq0ygXTT5WDhMm1mzM9jrE
-	6eu6RpOR5GyeT2e8KpR0vetO01qjKCfoBkgsKwL6cr5Ns2Su2oS6k+YS
-X-Gm-Gg: Acq92OE3+vqTSb9cmjw7OC3YkWBZoG76DxlEXSnebG5sTwNMfQqHFiQQ06BtunxQZlD
-	AT0C10q7v2d8gq/Cz2BYlf2kwU7RyWC6kSDVe2qa+Lq1fJ/oofGl5mdVFG6ze36SeGwb/7I1WxV
-	KI+ARr0RPKzZv+6wo8Q69h+D0y3xUUIQVgT0lguEHHMECX+KiSF0qxweqO/mOJJp0Oac7uXZEpH
-	bYzthYKmrVReeP7eX1M6tPoL2wm/lV+ov6nnJfZwlM6UZuWvn7PA7qoARZ0H6xMjAIo22TopOML
-	aTW9kbUH4asVyQUwjO5+/txpzl1qxuWGRX8L6hgKKUmcymF/VYQ1uq2W/jVgYvldpQg2wlWqd0x
-	juTZG/eZ2j6mQ2IQuuiVQYLDvBuVCDyrCP5sy7QIWfnTaTTy+/VPUM6GeesofwpMQzy7XGIUDjr
-	WTFwqv3AmgZJ0xL05I9YU6xzKWQC6FJzN3Vy7zBymyK2fT2SVdu/EP8D/bDcDMhIXpEfGLa5lXD
-	t80ydabCHntBYNqtkRm7WjaZxn0burC7uYnh1Jb
-X-Received: by 2002:a05:7301:5f81:b0:2df:7fe3:96a with SMTP id 5a478bee46e88-3092dce2af1mr6771639eec.0.1781558586859;
-        Mon, 15 Jun 2026 14:23:06 -0700 (PDT)
-Received: from sean-HP-EliteBook-830-G6.. (114-34-228-194.hinet-ip.hinet.net. [114.34.228.194])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3081e489621sm16220982eec.6.2026.06.15.14.23.04
+        d=1e100.net; s=20251104; t=1781562887; x=1782167687;
+        h=in-reply-to:content-disposition:mime-version:references
+         :mail-followup-to:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=/BxQrn967BchhiPMVf9s3SPbfGb2SRsf64DIOXc/lgs=;
+        b=DxLdsRYNDq+hsHNn7WwEL8stu7sNe+R5SYI6nLoOvrHuXLcsziGMSs37ZSllCLoQlr
+         4/f4AZeZfrntzjIcHGDWVzfiySDY7e+YHNQEu2ZAHdEr4lbppDADxWYOePsH0ZafUw0Q
+         ymKVKFPSK/Twm4s5Xf12/3yy7gXOPZ0AJs9PO5SKElMV29/UQTQe0Ki8ztXzBwngPMIZ
+         6DEHiLbVeWK+00kE2jASKVooTujxoBdGTCtkUs1k5dJS0sk/CLeGSdaCd8D0DltovDZS
+         2f/nrskwskYwZk0UQshNnMgQ6YT4fUbGNacflXTAXj9WCVjCz0QrG658zVmqdJEq01il
+         z4Ig==
+X-Forwarded-Encrypted: i=1; AFNElJ/DBaM48XUrSAEhj3MlCHMC+K9Sls516F2fOh0OjWUANRig3khU8jve4fPpixCnEDyA+6EiB1ooBKTdYPIAQw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwSBdp15FDpvWrcQz84O53qzOn06CjJdZz/JRdEM1G3uImX9qZf
+	Ir7m0U/INd0QFGYqCvHwUYgU7brly2dXY9BvOHMtFJq6vTsLR68CxHctXL1Qss/YTYE=
+X-Gm-Gg: Acq92OGjH/ymzBbWpp/S+FybVg5/OGZqLrqzaQ7ct07OZmcL4MVE+Ah3RuPiT9XTC4Q
+	C9x+U7awaLyVnE5Hghmp88SU++YfPT/Rsdvd9j9QTQi/17PBfbqRUe7EYw7zV/5v7+ofPQKe4Ww
+	q0J7uTI/mDUtf0ulsCidPVl/v0RMcXDRGvSpWJGnP95D5r1v1Sjn9bmTbI4Ijyr+EMLJqLXdv+T
+	mjaNGFNxA4VXbbd55s9nlx2nGo4nz+odaL3hYIKlfHynFto31ZN/O6agmlY2nzf9gufH+cjuphF
+	46vDXnYx6S+imJFYESqYtCVfkIn9PAD2SxNobEDwoeiIPYtoWGA7Nvi1W6uJsMvwvWpgqoItDo2
+	6tZMDf6REQCsMa5n2KN2UJYokNXKm1YOPWLxcaeMVIk6etSNKWsKZR1LC/veepq9mXWVWNjYJT7
+	YTA+xk
+X-Received: by 2002:a17:90a:a897:b0:36d:66d4:270d with SMTP id 98e67ed59e1d1-37c2bd08179mr9024782a91.20.1781562886775;
+        Mon, 15 Jun 2026 15:34:46 -0700 (PDT)
+Received: from localhost ([2a03:2880:2ff:53::])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-37c522a019csm620311a91.14.2026.06.15.15.34.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Jun 2026 14:23:06 -0700 (PDT)
-From: Sean Wang <sean.wang@kernel.org>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Sean Wang <sean.wang@mediatek.com>,
-	Stella Liu <yu-ching.liu@mediatek.com>
-Subject: [PATCH] wifi: mt76: mt7925: support new WoW pattern TLV
-Date: Mon, 15 Jun 2026 16:21:37 -0500
-Message-ID: <20260615212137.477893-1-sean.wang@kernel.org>
-X-Mailer: git-send-email 2.43.0
+        Mon, 15 Jun 2026 15:34:46 -0700 (PDT)
+Date: Mon, 15 Jun 2026 15:34:45 -0700
+From: Joe Damato <joe@dama.to>
+To: Wayen Yan <win847@gmail.com>
+Cc: netdev@vger.kernel.org, lorenzo@kernel.org, horms@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net v2] net: airoha: Fix skb->priority underflow in
+Message-ID: <ajB+BfOXHpRhCTnO@devvm20253.cco0.facebook.com>
+Mail-Followup-To: Joe Damato <joe@dama.to>, Wayen Yan <win847@gmail.com>,
+	netdev@vger.kernel.org, lorenzo@kernel.org, horms@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+References: <6a2ff493.5934d26d.389ef4.d16d@mx.google.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <6a2ff493.5934d26d.389ef4.d16d@mx.google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260615_142308_512669_51B09A75 
-X-CRM114-Status: GOOD (  11.04  )
+X-CRM114-CacheID: sfid-20260615_153448_592103_A7BD0D49 
+X-CRM114-Status: GOOD (  18.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,97 +103,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+On Mon, Jun 15, 2026 at 08:48:13PM +0800, Wayen Yan wrote:
+> From b894fc031e307f1b6756ea9fcac98e82e23815e1 Mon Sep 17 00:00:00 2001
+> From: "Wayen.Yan" <win847@gmail.com>
+> Date: Sun, 14 Jun 2026 07:30:54 +0800
+> Subject: [PATCH net v2] net: airoha: Fix skb->priority underflow in
+>  airoha_dev_select_queue()
+> 
+> In airoha_dev_select_queue(), the expression:
+> 
+>   queue = (skb->priority - 1) % AIROHA_NUM_QOS_QUEUES;
+> 
+> implicitly converts to unsigned arithmetic: when skb->priority is 0
+> (the default for unclassified traffic), (0u - 1u) wraps to UINT_MAX,
+> and UINT_MAX % 8 = 7, routing default best-effort packets to the
+> highest-priority QoS queue. This causes QoS inversion where the
+> majority of traffic on a PON gateway starves actual high-priority
+> flows (VoIP, gaming, etc.).
+> 
+> Fix by guarding the subtraction: when priority is 0, map to queue 0
+> (lowest priority), otherwise apply the original (priority - 1) % 8
+> mapping.
+> 
+> Fixes: 2b288b81560b ("net: airoha: Introduce ndo_select_queue callback")
+> Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> Signed-off-by: Wayen <win847@gmail.com>
+> ---
+>  drivers/net/ethernet/airoha/airoha_eth.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Newer mt7925 firmware uses a shorter WoW pattern TLV with rsv[3]. Select
-the v2 layout based on the firmware build date, while keeping the old
-layout for older firmware.
+Hm, I tried to apply this patch to my tree just to see what would happen with
+the duplicated SMTP headers and it looks like they just get added to the
+commit message.
 
-This also makes the WoW pattern handling compatible with newer devices
-such as MT7928.
+I think you might need to re-send it (but you'll have to wait 24 hours between
+re-sends).
 
-Tested-by: Stella Liu <yu-ching.liu@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 30 +++++++++++++++++--
- .../net/wireless/mediatek/mt76/mt7925/mcu.h   |  3 ++
- 2 files changed, 30 insertions(+), 3 deletions(-)
+The code looks fine to me, though, so feel free to include my tag:
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index 17bc7204f02a..32297f4a5e0b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -10,6 +10,24 @@
- 
- #define MT_STA_BFER			BIT(0)
- #define MT_STA_BFEE			BIT(1)
-+#define MT7925_WOW_PATTERN_NEW_FW_DATE	"20260414153105"
-+
-+static bool mt7925_mcu_wow_pattern_old_tlv(struct mt76_dev *dev)
-+{
-+	const char *fw_version = dev->hw->wiphy->fw_version;
-+	const char *build_date = strrchr(fw_version, '-');
-+
-+	if (!is_mt7925(dev))
-+		return false;
-+
-+	if (!build_date)
-+		return false;
-+
-+	build_date++;
-+
-+	return strncmp(build_date, MT7925_WOW_PATTERN_NEW_FW_DATE,
-+		       strlen(MT7925_WOW_PATTERN_NEW_FW_DATE)) < 0;
-+}
- 
- int mt7925_mcu_parse_response(struct mt76_dev *mdev, int cmd,
- 			      struct sk_buff *skb, int seq)
-@@ -219,6 +237,8 @@ mt7925_mcu_set_wow_pattern(struct mt76_dev *dev,
- 	struct mt76_vif_link *mvif = (struct mt76_vif_link *)vif->drv_priv;
- 	struct mt7925_wow_pattern_tlv *tlv;
- 	struct sk_buff *skb;
-+	int tlv_len;
-+	bool old_tlv;
- 	struct {
- 		u8 bss_idx;
- 		u8 pad[3];
-@@ -226,14 +246,18 @@ mt7925_mcu_set_wow_pattern(struct mt76_dev *dev,
- 		.bss_idx = mvif->idx,
- 	};
- 
--	skb = mt76_mcu_msg_alloc(dev, NULL, sizeof(hdr) + sizeof(*tlv));
-+	old_tlv = mt7925_mcu_wow_pattern_old_tlv(dev);
-+	tlv_len = old_tlv ? sizeof(struct mt7925_wow_pattern_tlv) :
-+			    MT7925_WOW_PATTERN_TLV_V2_SIZE;
-+
-+	skb = mt76_mcu_msg_alloc(dev, NULL, sizeof(hdr) + tlv_len);
- 	if (!skb)
- 		return -ENOMEM;
- 
- 	skb_put_data(skb, &hdr, sizeof(hdr));
--	tlv = (struct mt7925_wow_pattern_tlv *)skb_put(skb, sizeof(*tlv));
-+	tlv = (struct mt7925_wow_pattern_tlv *)skb_put_zero(skb, tlv_len);
- 	tlv->tag = cpu_to_le16(UNI_SUSPEND_WOW_PATTERN);
--	tlv->len = cpu_to_le16(sizeof(*tlv));
-+	tlv->len = cpu_to_le16(tlv_len);
- 	tlv->bss_idx = 0xF;
- 	tlv->data_len = pattern->pattern_len;
- 	tlv->enable = enable;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-index 293f173b23dd..26e9d90ad503 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-@@ -587,6 +587,9 @@ struct mt7925_wow_pattern_tlv {
- 	u8 rsv[4];
- };
- 
-+#define MT7925_WOW_PATTERN_TLV_V2_SIZE	\
-+	(offsetof(struct mt7925_wow_pattern_tlv, rsv) + 3)
-+
- struct roc_acquire_tlv {
- 	__le16 tag;
- 	__le16 len;
--- 
-2.43.0
-
+Reviewed-by: Joe Damato <joe@dama.to>
 
