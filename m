@@ -4,58 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06612CD98CE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 05:22:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0487CD98CF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 05:58:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rLEbzomxNkynapYTFAAo6ekQ00ImjCuzOf52BPIsDEA=; b=XbvmL5hkAxvH927z5X/Fpztuql
-	l2Vo0wGnpBubJ+Qdqr0rkHIRTdwW+DjnoDPHegtUAUiuaCgaBxolQ3RDx3G0aHy8SExnE0kOW4o5R
-	IFxScnYwMPOfFbVFeIyKCOOk76rQJ1NlMc87nAGJCC0dn6dXgEyL6IIS4qWt/bbYwhAMFVtz1ntnc
-	WwuzJL8SMRJdpaVGNseZgehliQAo5dJVJpbee0Oh734IQyhwH+PKPxSfOw6l11rn//VQZhuKj7EeH
-	7hFUK1fvizVt/GXlBRjkwXQC5aI2WUHmbZTeDGhkECQUNUV6dmY4LESyOSqty3I6evhbpYScGCMBq
-	VB5tejGw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=n0d+L+EIwOsiZbkVNO8KRMyzErfheRgT1ggTaflwX00=; b=uKfiovs6CvBiBkVRBoiPlKtYWa
+	Qq+scGNusu3bnHJReo9/vQ9woEfut4WYMVdTei3gL/QZMQx1lL0roRydP95gyu6JkNwiiW9HwOl7s
+	mK5Yc12hjX8tddGmR5R8fbNB1s7JM51nsKv6OGnMFAsmk4gBVLcuVWML96XaVfvDivs071/XSydFn
+	GSD8Tw3/Jpfi4lsTvWP1F6fYdsol43/SBHIA9V7TG69mTbbQLWv9FY9+y9YNoVTxBPv2b/REmDott
+	KytRw9fCNdSWN86EKjhpSmL6f2D6e+zVTfbgWdensMqmwZCYSqYhATCZFUtv/qOgOpj4PBMCkCtAX
+	kwchIIUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYzm7-0000000DcN3-3pJq;
-	Mon, 15 Jun 2026 05:22:19 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1wZ0LD-0000000DekG-0nhq;
+	Mon, 15 Jun 2026 05:58:35 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYzm4-0000000DcJd-1S4z;
-	Mon, 15 Jun 2026 05:22:18 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.99)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1wYzly-000000000zV-2lmu;
-	Mon, 15 Jun 2026 05:22:10 +0000
-Date: Mon, 15 Jun 2026 06:22:07 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next v3 8/8] net: dsa: mt7530: implement
- port_change_conduit op
-Message-ID: <64a3a72cf24fa9d1b0276793fa8d4e7d8630784e.1781500517.git.daniel@makrotopia.org>
-References: <cover.1781500517.git.daniel@makrotopia.org>
+	id 1wZ0LB-0000000Deio-09FN;
+	Mon, 15 Jun 2026 05:58:34 +0000
+X-UUID: 3786a13e687f11f1acbe4559397dec65-20260614
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=n0d+L+EIwOsiZbkVNO8KRMyzErfheRgT1ggTaflwX00=;
+	b=rniTkgdd92VImJa0nV7vzBkWAjxA9lIbkSk4I0XQaUDjcoqBU/2oMbJ5lHGY7T6N0NAGdDzG+M9wn+HdilYkYASYcH7YX1AiO6MFJf2TmKAcY0Uyg5+a6H5ySPaYcK39o6fzqPuluqv0I2HkaOuKJ5coqxNDOG8zfowdoNWSWNM=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.15,REQID:dc4943f0-c5a2-4eb5-84be-98e39277e2c4,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:e276073,CLOUDID:cdd2f3e0-ecbd-446c-abfe-8b1546a39ee8,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|123|836|865|888|898,TC:-5,Conten
+	t:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,O
+	SI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 3786a13e687f11f1acbe4559397dec65-20260614
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
+	(envelope-from <ed.tsai@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1839185608; Sun, 14 Jun 2026 22:58:22 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Mon, 15 Jun 2026 13:58:20 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Mon, 15 Jun 2026 13:58:20 +0800
+From: <ed.tsai@mediatek.com>
+To: <alim.akhtar@samsung.com>, <avri.altman@wdc.com>, <bvanassche@acm.org>,
+	<James.Bottomley@HansenPartnership.com>, <martin.petersen@oracle.com>,
+	<linux-scsi@vger.kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <wsd_upstream@mediatek.com>,
+	<peter.wang@mediatek.com>, <alice.chao@mediatek.com>,
+	<naomi.chu@mediatek.com>, <chun-hung.wu@mediatek.com>, Ed Tsai
+	<ed.tsai@mediatek.com>
+Subject: [PATCH v3 0/3] ufs: Add callback for vendor-specific RTT capability
+Date: Mon, 15 Jun 2026 13:57:14 +0800
+Message-ID: <20260615055802.105479-1-ed.tsai@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1781500517.git.daniel@makrotopia.org>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260614_222217_569700_E713A206 
-X-CRM114-Status: GOOD (  18.11  )
+X-CRM114-CacheID: sfid-20260614_225833_101452_7CB21F93 
+X-CRM114-Status: GOOD (  10.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,104 +89,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Allow changing the CPU port affinity of user ports at runtime via the
-IFLA_DSA_CONDUIT netlink attribute. This updates the port matrix to
-forward to the new CPU port instead of the old one.
+From: Ed Tsai <ed.tsai@mediatek.com>
 
-Limit the operation to MT7531. There, trapped link-local frames follow
-the per-port affinity, as the MT7531_CPU_PMAP destination mask is
-further restricted by the port matrix. A conduit change is hence fully
-honoured by the hardware, for regular traffic as well as for trapped
-frames.
+The first patch adds the get_hba_nortt() callback to the UFS core layer,
+allowing vendor drivers to provide dynamic, platform-specific RTT
+capability handling.
 
-The MT7530 switch, including the variant embedded in the MT7621 SoC,
-instead traps frames to the single CPU port set in the CPU_PORT field
-of the MFC register, regardless of the affinity of the inbound user
-port. With user ports affine to different CPU ports there is no
-correct value for that field, so per-port CPU affinity cannot be fully
-implemented for trapped frames. Routing a WAN port via the second SoC
-GMAC is conventionally covered by the PHY muxing feature on these
-switches, which bypasses the switch fabric and does not involve a CPU
-port at all.
+The second patch implements this callback in the MediaTek UFS driver,
+distinguishing between legacy platforms (which require the RTT to be
+limited to 2) and newer MT6995 B0+ platforms (which can use the value
+from the capability register directly).
 
-The switches on the MT7988, EN7581 and AN7583 SoCs only have a
-single CPU port, leaving no other conduit to change to.
+The third patch removes the max_num_rtt field from ufs_hba_variant_ops
+as it is now replaced by the get_hba_nortt() callback.
 
-As the op lives in the shared mt7530_switch_ops, populate the extack
-when rejecting the unsupported variants instead of returning a bare
--EOPNOTSUPP. Also reject a conduit that belongs to a different switch
-in the tree, whose port index has no meaning in the local port matrix.
+Changes in v3:
+- Fix incomplete v2 that was sent prematurely - now properly removes
+  max_num_rtt field in patch 3
 
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-Acked-by: Chester A. Unal <chester.a.unal@arinc9.com>
+Changes in v2:
+- Keep max_num_rtt field in patch 1 to maintain bisectability
+- Split removal of max_num_rtt into a separate patch (patch 3)
 
----
-v3:
- * populate the netlink extack on rejection
- * refuse a conduit that lives on a different switch
+Ed Tsai (3):
+  ufs: core: Add get_hba_nortt callback for vendor-specific RTT
+    capability
+  ufs: mediatek: Implement get_hba_nortt callback for RTT capability
+  ufs: core: Remove max_num_rtt field from ufs_hba_variant_ops
 
-v2:
- * extend commit message
+ drivers/ufs/core/ufshcd.c       |  9 +++++----
+ drivers/ufs/host/ufs-mediatek.c | 12 +++++++++++-
+ drivers/ufs/host/ufs-mediatek.h |  4 ++--
+ include/ufs/ufshcd.h            |  5 +++--
+ 4 files changed, 21 insertions(+), 9 deletions(-)
 
- drivers/net/dsa/mt7530.c | 38 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 38 insertions(+)
-
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 98fdd8dcd81c..ef3593353001 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -3213,6 +3213,43 @@ static int mt753x_set_mac_eee(struct dsa_switch *ds, int port,
- 	return 0;
- }
- 
-+static int
-+mt753x_port_change_conduit(struct dsa_switch *ds, int port,
-+			   struct net_device *conduit,
-+			   struct netlink_ext_ack *extack)
-+{
-+	struct dsa_port *new_cpu_dp = conduit->dsa_ptr;
-+	struct dsa_port *dp = dsa_to_port(ds, port);
-+	struct mt7530_priv *priv = ds->priv;
-+
-+	if (priv->id != ID_MT7531) {
-+		NL_SET_ERR_MSG_MOD(extack,
-+				   "Changing DSA conduit is only supported on MT7531");
-+		return -EOPNOTSUPP;
-+	}
-+
-+	if (new_cpu_dp->ds != ds) {
-+		NL_SET_ERR_MSG_MOD(extack,
-+				   "Cannot assign a conduit on a different switch");
-+		return -EOPNOTSUPP;
-+	}
-+
-+	mutex_lock(&priv->reg_mutex);
-+
-+	/* dp->cpu_dp still points to the old CPU port */
-+	priv->ports[port].pm &= ~PCR_MATRIX(BIT(dp->cpu_dp->index));
-+	priv->ports[port].pm |= PCR_MATRIX(BIT(new_cpu_dp->index));
-+	if (priv->ports[port].enable)
-+		regmap_update_bits(priv->regmap, MT7530_PCR_P(port),
-+				   PCR_MATRIX_MASK, priv->ports[port].pm);
-+
-+	mutex_unlock(&priv->reg_mutex);
-+
-+	mt7530_port_fast_age(ds, port);
-+
-+	return 0;
-+}
-+
- static void
- mt753x_conduit_state_change(struct dsa_switch *ds,
- 			    const struct net_device *conduit,
-@@ -3324,6 +3361,7 @@ static const struct dsa_switch_ops mt7530_switch_ops = {
- 	.setup			= mt753x_setup,
- 	.teardown		= mt753x_teardown,
- 	.preferred_default_local_cpu_port = mt753x_preferred_default_local_cpu_port,
-+	.port_change_conduit	= mt753x_port_change_conduit,
- 	.get_strings		= mt7530_get_strings,
- 	.get_ethtool_stats	= mt7530_get_ethtool_stats,
- 	.get_sset_count		= mt7530_get_sset_count,
 -- 
-2.54.0
+2.45.2
+
 
