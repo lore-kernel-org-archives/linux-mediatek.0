@@ -4,108 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CBCCCD98CF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 14:18:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5579ECD98CF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 14:29:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hkIb+b4xA4Dtv3ljZrlwMo9RpQWTNWYQCjFJM6rj18U=; b=WkpoGCzAGojWqwtu+gU6qQHCY4
-	BNhCp1jgnrgkrPJ6Ehu1OoHeYdQ7SR8Ti0+Qq3bDT0kzQi4N4DDz7PY4zmHps47VgCAoyuk9DOvJg
-	EmdmYFWosZ0NmHHofkdHafmpFfQ0jFFKuntaTmOHUWmExNTqefhZQh8tKa3XRjr6eCuyijkHr1O7a
-	1RPGFnSNpmrD243sc1D2Tkbden5wbv53/hS/FQJiPP8LHnr22mm5R0v9ghTPlij95rWckwknDoLHe
-	OKDT35r6uAfyCbUvx+DcOtSxVSnJQvd3ekhNdIfxpk7JS8TIJSWYM+FBW0p3ZHJtrl+ovoFq7M2My
-	8eIC6/Qw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3rMsrZ7GVRodQT0vv+F6bubXVUBI/vtcGoamkCWzv8c=; b=fTh0lVd/zBoblumSUCASZl74j3
+	kffEwUSywpucicL4uL5AAAE81ske2gCVhQT7IeeAJyvRSpWl9wjQS0axIyUZ43GogrAYyveAvf6O8
+	a4VK+G+S094O4+OUd4VI81BrsaaSHAHUtUi0kVS1MofShNkd66NCfjQJWN5IQg3fwmQB0PbAyPsWp
+	fnZZLvIObL22RPIE0Z/ZiPYOkQvSOI1IAGNuyuav+1ieod697JZC79FbvF8baKJI9XwBDp/hBvjmj
+	oehooinbgA9h1Bze9lmFSwS5cGxo8Ljl4HqhqUCC6qR5nUMnt5HERjLj1T7ZKi+5cZIU0JE6F3mbY
+	EAUTUtRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ89H-0000000EO4X-0bG9;
-	Mon, 15 Jun 2026 14:18:47 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1wZ8JV-0000000EPbu-33Bb;
+	Mon, 15 Jun 2026 14:29:21 +0000
+Received: from smtpout-04.galae.net ([185.171.202.116])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ89F-0000000EO3g-0Y5Y
+	id 1wZ8JS-0000000EPaq-2gZl
 	for linux-mediatek@lists.infradead.org;
-	Mon, 15 Jun 2026 14:18:46 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-49222b6e871so20362745e9.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 15 Jun 2026 07:18:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781533123; x=1782137923; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=hkIb+b4xA4Dtv3ljZrlwMo9RpQWTNWYQCjFJM6rj18U=;
-        b=WoGBWv/j8ibIxllhx1tqvIa6z+QhntQWPAl4xIXAEMgwzBOz8czgimA8vsSkrGpaE3
-         UsEPz8UdsBtGn2QvP1825EQOfPV2/m782FrOt1UB+grMUozoLDc5r2wS9CqC2JHKcygf
-         58PfGUkiuWQl6VR3N2gknlZriFa+GrtpiufpZIe4/VJOGb1RFc6d8iZHP4qJqRL5EUVm
-         OKPyETGgdHrAA0ZDuc4rn2LFUhny1JuL9oq3aw+1+XIug+Jg8osiOhdSGSIntmaeo7nA
-         TY1GEOTenrJ82uw00fF8dFiE4lMf0fREQTHAYzXlz2VlbtOmcCwC3HS1l3lXjbq5q1YJ
-         Evyg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781533123; x=1782137923;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=hkIb+b4xA4Dtv3ljZrlwMo9RpQWTNWYQCjFJM6rj18U=;
-        b=NSfXmvPyQ+0x7Klo3vtOjca1GIS753Vo/5PfZDCzGyCHFTG9zftUk/IAN8ixe7AqbK
-         qWbY8dQdhM6k9Pn7jf04g61l4XizYkmA7uNDA+0k4N1PCSgPsegbsZHONOVdFxlVMMc3
-         4etzhd6e2k7IbZApIdX6+8U3b7H5x3/DM7bAsXgutYn1oxKFQgwRPGNFOT3qwCO7y7KY
-         zJsTdgo30T+2FDZpMcPWVl9Zhmzuah622pTVmmmHf1ZoK+2tsi/DIrxuawUgN5TJX+o9
-         iGkPHHQyahWKoY2kX0IxlAHMYqC8PJOGtT6JRU5aIQp8RP123K9/MHcoRsN+Dd0Bo5Pc
-         04ww==
-X-Forwarded-Encrypted: i=1; AFNElJ9+Rdk7GG+FEmBceaJpnZXLLJAMcdZeKMMoQrls2cmfCcHp8BmfyGVpjwc2Zj2iWOEy3clOHsCyzxvcz2ut1A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyzRkxu0OUpsvewKXYPmi8l+aOs3AP6ufY/TFpwEA+7UeIkCUHX
-	qANl6oQxGkrZmyInh7PBaoYzAgmYFq6kXWGu4J32u/WFHBXLN2c4CCzG
-X-Gm-Gg: Acq92OHCXh9vKq24HnP8wWruQwhenUAuxiVcwPoS7edvWMABOAycfLFKYf2HIpx42ej
-	ZKsJMiruRz+TsyiQgs6RGpiCo+jmJpagCNo1HbUMCEcPo+4cLk6gGmsbm45tnawMUWNF1EnfUHC
-	cCWMW6ruVp9EzWzZM72NschjkWiaxNjGqiFA/79JLpi52owyIfiTM0wqY6mQQ243dtGlywW2CZd
-	hEyuWrIEuczbKThHt7XY9FHgRnVckQ3v95q6MtwhnQppMp3bVg+Q0hX7pVcq9V+fv9itVYd/v/i
-	cutEVQynmHSDrynFOhTjMcmtWn9w3VvPLLp0t3E3/PgHJr0liVC9iwPO5DSmMhxCCbWDqfLp7+u
-	93y++dkbqXeUDOfQEDSt9UJjTKrs/0/2UTFQx5vAvFmBuC+ZYw6zKHE62nUfJYC0ilpC/YNaEHd
-	6EcZl0blbX9QOis6EJZ1iMH4/eMfn3buCKfTWrBWt2zfYPg3Sgt/dCVw==
-X-Received: by 2002:a05:600c:3153:b0:490:e5c1:b897 with SMTP id 5b1f17b1804b1-490ec4fe7c2mr195111285e9.20.1781533122746;
-        Mon, 15 Jun 2026 07:18:42 -0700 (PDT)
-Received: from Ansuel-XPS. (93-34-88-103.ip49.fastwebnet.it. [93.34.88.103])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-492202edec6sm283566035e9.3.2026.06.15.07.18.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Jun 2026 07:18:42 -0700 (PDT)
-Message-ID: <6a3009c2.561280e1.2acd9f.2f06@mx.google.com>
-X-Google-Original-Message-ID: <ajAJvXT9R7UrMqQA@Ansuel-XPS.>
-Date: Mon, 15 Jun 2026 16:18:37 +0200
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Maxime Chevallier <maxime.chevallier@bootlin.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Simon Horman <horms@kernel.org>,
-	Jonathan Corbet <corbet@lwn.net>,
-	Shuah Khan <skhan@linuxfoundation.org>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Saravana Kannan <saravanak@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Nathan Chancellor <nathan@kernel.org>,
-	Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
-	Bill Wendling <morbo@google.com>,
-	Justin Stitt <justinstitt@google.com>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
-Subject: Re: [PATCH net-next v7 01/12] net: phylink: keep and use MAC
- supported_interfaces in phylink struct
-References: <20260615122950.22281-1-ansuelsmth@gmail.com>
- <20260615122950.22281-2-ansuelsmth@gmail.com>
- <371a1df7-084c-4431-bd00-0045298e3212@bootlin.com>
+	Mon, 15 Jun 2026 14:29:20 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-04.galae.net (Postfix) with ESMTPS id 44751C5146A;
+	Mon, 15 Jun 2026 14:29:20 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 0F2B660015;
+	Mon, 15 Jun 2026 14:29:16 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id C2F0A106C968A;
+	Mon, 15 Jun 2026 16:29:04 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1781533754; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=3rMsrZ7GVRodQT0vv+F6bubXVUBI/vtcGoamkCWzv8c=;
+	b=TYCQPqE2QSvlgUb/4JT5XIhXAMpBRqUwvWyNEa+AQy1qdwmW6is6Lmk+BBvd8vCY6XZMAR
+	pwX8hKmcij0KqlCHhAlICumWm1QN2FZpcQJU6O7XsrMHtUQxNzIyv+BR6zpWNAIlARpmOg
+	pxw3LQMtXaYy7Eqkn3zjJv20NkpuRWIUcKUGeogMRyT+s0lLkwQ8735Upe2rAEiENbqn6e
+	Se7LvxooQiSsU2E8wgag4N7J85IMrGMXrMPWjlzvZT9VZa/7qXDuaAryDPwaE9RbQeRqpC
+	Ytp6PSShO0oL0EttURSQGkMNnMAEp8fQJH/9H4LNFihxMGSQWut+wskXWQ2uOQ==
+Message-ID: <7702ac09-75fd-49de-8ad2-fceaa122b627@bootlin.com>
+Date: Mon, 15 Jun 2026 16:29:04 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <371a1df7-084c-4431-bd00-0045298e3212@bootlin.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next v7 05/12] net: phylink: support late PCS provider
+ attach
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Simon Horman <horms@kernel.org>,
+ Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Heiner Kallweit
+ <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>,
+ Saravana Kannan <saravanak@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Nathan Chancellor
+ <nathan@kernel.org>, Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
+ Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ llvm@lists.linux.dev
+References: <20260615122950.22281-1-ansuelsmth@gmail.com>
+ <20260615122950.22281-6-ansuelsmth@gmail.com>
+ <867a39de-ccc2-4dcf-be24-ab2542d20ab6@bootlin.com>
+ <6a3007ce.73de60af.3a056d.d903@mx.google.com>
+Content-Language: en-US
+From: Maxime Chevallier <maxime.chevallier@bootlin.com>
+In-Reply-To: <6a3007ce.73de60af.3a056d.d903@mx.google.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260615_071845_188676_2E5B9699 
-X-CRM114-Status: GOOD (  24.81  )
+X-CRM114-CacheID: sfid-20260615_072918_849778_3A12422F 
+X-CRM114-Status: GOOD (  17.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,47 +94,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 15, 2026 at 03:33:34PM +0200, Maxime Chevallier wrote:
-> Hello Christian,
+
+
+On 6/15/26 16:10, Christian Marangi wrote:
+> On Mon, Jun 15, 2026 at 04:07:03PM +0200, Maxime Chevallier wrote:
+>> Hi Christian,
+>>
+>> On 6/15/26 14:29, Christian Marangi wrote:
+>>> Add support for late PCS provider attachment to a phylink instance.
+>>> This works by creating a global notifier for the PCS provider and
+>>> making each phylink instance that makes use of fwnode subscribe to
+>>> this notifier.
+>>>
+>>> The PCS notifier will emit the event FWNODE_PCS_PROVIDER_ADD every time
+>>> a new PCS provider is added.
+>>>
+>>> phylink will then react to this event and will call the new function
+>>> fwnode_phylink_pcs_get_from_fwnode() that will check if the PCS fwnode
+>>> provided by the event is present in the pcs-handle property of the
+>>> phylink instance.
+>>>
+>>> If a related PCS is found, then such PCS is added to the phylink
+>>> instance PCS list.
+>>>
+>>> Then we link the PCS to the phylink instance and we refresh the supported
+>>> interfaces of the phylink instance.
+>>>
+>>> Finally we check if we are in a major_config_failed scenario and trigger
+>>> an interface reconfiguration in the next phylink resolve.
+>>>
+>>> In the example scenario where the link was previously torn down due to
+>>> removal of PCS, the link will be established again as the PCS came back
+>>> and is now available to phylink.
+>>>
+>>> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+>>> ---
+>>
+>> [...]
+>>
+>>> @@ -2151,6 +2204,10 @@ void phylink_destroy(struct phylink *pl)
+>>>  	if (pl->link_gpio)
+>>>  		gpiod_put(pl->link_gpio);
+>>>  
+>>> +	/* Unregister notifier for late PCS attach */
+>>> +	if (pl->fwnode_pcs_nb.notifier_call)
+>>> +		unregister_fwnode_pcs_notifier(&pl->fwnode_pcs_nb);
+>>
+>> I wanted to try this out, but I get :
+>>
+>> drivers/net/phy/phylink.c:2218:17: error: implicit declaration of function ‘unregister_fwnode_pcs_notifier’; did you mean ‘register_fwnode_pcs_notifier’? [-Werror=implicit-function-declaration]
+>>  2218 |                 unregister_fwnode_pcs_notifier(&pl->fwnode_pcs_nb);
+>>       |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>>       |                 register_fwnode_pcs_notifier
+>>
+>> I guess you either need to stub this, or there's a missing Kconfig
+>> dependency somewhere
+>>
 > 
-> On 6/15/26 14:29, Christian Marangi wrote:
-> > Add in phylink struct a copy of supported_interfaces from phylink_config
-> > and make use of that instead of relying on phylink_config value.
-> > 
-> > This in preparation for support of PCS handling internally to phylink
-> > where a PCS can be removed or added after the phylink is created and we
-> > need both a reference of the supported_interfaces value from
-> > phylink_config and an internal value that can be updated with the new
-> > PCS info.
-> > 
-> > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> > ---
-> >  drivers/net/phy/phylink.c | 22 +++++++++++++++-------
-> >  1 file changed, 15 insertions(+), 7 deletions(-)
-> > 
-> > diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
-> > index 087ac63f9193..4d59c0dd78db 100644
-> > --- a/drivers/net/phy/phylink.c
-> > +++ b/drivers/net/phy/phylink.c
-> > @@ -60,6 +60,11 @@ struct phylink {
-> >  	/* The link configuration settings */
-> >  	struct phylink_link_state link_config;
-> >  
-> > +	/* What interface are supported by the current link.
-> > +	 * Can change on removal or addition of new PCS.
-> > +	 */
-> > +	DECLARE_PHY_INTERFACE_MASK(supported_interfaces);
-> 
-> Can you clarify a bit what you mean here ? Is that the combination of the
-> interfaces the MAC supports AND the currently in-use PCS ?
+> Hi yes if you want toi test just enable CONFIG_FWNODE_PCS. I forgot to add
+> the static declaration for unregister_fwnode_pcs_notifier. 
+
+I'll give it a go with this yeah, I have a few devices here I'd like to
+try this on.
+
+Can you CC me for the next rounds ?
+
+Maxime
+
 > 
 
-Combination of interface the MAC supports and the currently attached PCS
-(not the current one in use)
-
-The fact that it can change is due to the fact that PCS can be attached
-later and supported_interfaces can be updated accordingly.
-
--- 
-	Ansuel
 
