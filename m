@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97EFECD98C5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 05:58:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81820CD98C5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 05:58:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7lono346LLiByVxDpmcbPatLkqlMCZPQmgQ7Az+Hj/8=; b=tL4gIXOP7RWUx3f4gdbcCZ/av4
-	gvUcC4nrDhbIzb2deXSj2Z/u81oo6zSyr/rzaA/VXk5Ih4IJjKzELUEsIUPg8Cb85pWMEjPynbHXA
-	G0iqGH9h9Yra73r/6p4bZBi4uN2EKGTIqMye891oAV5Q47HH15MdHJyCQa2BcIOlw7NQkzxAzKsyq
-	67PfZ1KxPCpBI3gRe3zJutIY0RLgXY/mNQyk2A3Qlp6EEwWA/tIRlR8zXofcwCNMN36K9LYitK8K8
-	RZHTvv0JEtW4gUvF8tT9rkmmJbmq5RUlw7Dt9Al9f2cqvwbpnqVWY8MY1jzqYn8ZHIcylLd+hX4Ia
-	ViiYc7ig==;
+	bh=8OvMGtIsGsOtMQl2xAttiCfpDCXCMY4lw0XAc8MsG7s=; b=H6FPkzP6mR8RJgvpXMjV0dN6zW
+	9wIOhuqXbn306ciNhgCn0UMYAwsTFEoTDnctNJldEcBeWsuo3fwH19/WrctqK28Cyaw2Gz0oS3X6b
+	+lwf4EUv/gfu0lxU2caj8awAQx6Q7Kciu2C1MqbjHLJ6MUsfdeXT60slPwR+ZQdBXNF8fvzKaiaoU
+	Gy3oNOjCXbLzoPXbsbVt0I/DUDTju05NDbjYRowA96KWx0+c609MINKMwwGszQQe+ykQnz/NO8vQz
+	eAqxCPJq/YirzKIterp9uVFW2pJ2UHVpErvxOcC8dyfcrl7AMD+ce7LK5/he5WR7moBIL+z6P9U1I
+	wtonhJHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ0LD-0000000DekK-1C0P;
-	Mon, 15 Jun 2026 05:58:35 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1wZ0LF-0000000Dem5-2T5f;
+	Mon, 15 Jun 2026 05:58:37 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ0LB-0000000Deip-0U30;
-	Mon, 15 Jun 2026 05:58:34 +0000
-X-UUID: 3839a568687f11f1acbe4559397dec65-20260614
+	id 1wZ0LB-0000000Deiq-0x9j;
+	Mon, 15 Jun 2026 05:58:35 +0000
+X-UUID: 3a532554687f11f1afed4741b24580c9-20260614
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=7lono346LLiByVxDpmcbPatLkqlMCZPQmgQ7Az+Hj/8=;
-	b=uQhKKn3VU2BqIva/rYfTrP1E8olZRBH13h7CWit43p6ckhEMz+ZvdD6MwySSdbZpb4c2rg5H0L/ORnP0gCwgJnn3KlOf7WQrhH91Hn5SNrLR4XelhHUzfB/c/UJ3DlnYKJpggHTo+vbCRezkajodYQJ/pNuTn2MM6fXH10Hstsk=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=8OvMGtIsGsOtMQl2xAttiCfpDCXCMY4lw0XAc8MsG7s=;
+	b=liv30t3KSUvE7hD4ynCwazbnXjKDwj7sRBB9EpO76goS1ZLgWkcivwihJr7kWOaeCgXV1ySLkwQEDwE1OPKN+9Hu4eeKc0IwKugXa/IhPc78CQELLLpedveXFJx912Wb3t1myiBIu/o1z7FBrtPmjEeNjegZ5Cf047zxU3ycMOU=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.15,REQID:77dde74a-cb66-4c12-8b3c-c6cc070b181c,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:e276073,CLOUDID:0a15cd30-7784-4a77-a538-47ed6151d81b,B
+X-CID-O-INFO: VERSION:1.3.15,REQID:c29eaf95-f367-490c-a259-3f6d8d70728e,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:e276073,CLOUDID:f8b2f0fc-98ce-4035-b2a0-c4d0118c5b8e,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|123|836|865|888|898,TC:-5,
 	Content:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,C
 	OL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -42,31 +42,32 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 3839a568687f11f1acbe4559397dec65-20260614
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
+X-UUID: 3a532554687f11f1afed4741b24580c9-20260614
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
 	(envelope-from <ed.tsai@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 514886896; Sun, 14 Jun 2026 22:58:23 -0700
+	with ESMTP id 1953666926; Sun, 14 Jun 2026 22:58:27 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 15 Jun 2026 13:58:22 +0800
+ 15.2.2562.29; Mon, 15 Jun 2026 13:58:24 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 15 Jun 2026 13:58:22 +0800
+ 15.2.2562.29 via Frontend Transport; Mon, 15 Jun 2026 13:58:24 +0800
 From: <ed.tsai@mediatek.com>
 To: <alim.akhtar@samsung.com>, <avri.altman@wdc.com>, <bvanassche@acm.org>,
 	<James.Bottomley@HansenPartnership.com>, <martin.petersen@oracle.com>,
-	<linux-scsi@vger.kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+	<linux-scsi@vger.kernel.org>, Peter Wang <peter.wang@mediatek.com>, Chaotian
+ Jing <chaotian.jing@mediatek.com>, Stanley Jhu <chu.stanley@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
 CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>, <wsd_upstream@mediatek.com>,
-	<peter.wang@mediatek.com>, <alice.chao@mediatek.com>,
-	<naomi.chu@mediatek.com>, <chun-hung.wu@mediatek.com>, Ed Tsai
-	<ed.tsai@mediatek.com>
-Subject: [PATCH v3 1/3] ufs: core: Add get_hba_nortt callback for vendor-specific RTT capability
-Date: Mon, 15 Jun 2026 13:57:15 +0800
-Message-ID: <20260615055802.105479-2-ed.tsai@mediatek.com>
+	<alice.chao@mediatek.com>, <naomi.chu@mediatek.com>,
+	<chun-hung.wu@mediatek.com>, Ed Tsai <ed.tsai@mediatek.com>
+Subject: [PATCH v3 2/3] ufs: mediatek: Implement get_hba_nortt callback for RTT capability
+Date: Mon, 15 Jun 2026 13:57:16 +0800
+Message-ID: <20260615055802.105479-3-ed.tsai@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20260615055802.105479-1-ed.tsai@mediatek.com>
 References: <20260615055802.105479-1-ed.tsai@mediatek.com>
@@ -75,8 +76,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260614_225833_151890_DE6614ED 
-X-CRM114-Status: GOOD (  15.22  )
+X-CRM114-CacheID: sfid-20260614_225833_272420_EDBE3019 
+X-CRM114-Status: GOOD (  16.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,57 +94,79 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Ed Tsai <ed.tsai@mediatek.com>
 
-The number of outstanding RTTs read from host controller capability
-register is problematic on some platforms. Add a new vendor callback
-get_hba_nortt() to allow platform vendors to override the default RTT
-capability value with platform-specific handling.
+Implement the get_hba_nortt callback to handle platform-specific RTT
+capability differences:
 
-This patch keeps max_num_rtt field for bisectability and will be removed
-in a later patch once all platforms are migrated.
+- For legacy platforms and IP versions before MT6995 B0, the RTT
+  capability from host controller register is problematic, so limit
+  it to 2 (MTK_MAX_NUM_RTT_LEGACY).
+
+- For MT6995 B0 and later platforms, the issue is fixed and the
+  value from host controller capability register can be used directly.
+
+This replaces the previous max_num_rtt field in ufs_hba_variant_ops
+with dynamic platform-specific logic.
 
 Signed-off-by: Ed Tsai <ed.tsai@mediatek.com>
+Reviewed-by: Peter Wang <peter.wang@mediatek.com>
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 ---
- drivers/ufs/core/ufshcd.c | 5 ++++-
- include/ufs/ufshcd.h      | 3 +++
- 2 files changed, 7 insertions(+), 1 deletion(-)
+ drivers/ufs/host/ufs-mediatek.c | 12 +++++++++++-
+ drivers/ufs/host/ufs-mediatek.h |  4 ++--
+ 2 files changed, 13 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index c3f08957d179..382b6041c716 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -2529,7 +2529,10 @@ static inline int ufshcd_hba_capabilities(struct ufs_hba *hba)
- 	hba->nutmrs =
- 	((hba->capabilities & MASK_TASK_MANAGEMENT_REQUEST_SLOTS) >> 16) + 1;
+diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
+index 3991a51263a6..58701ca95edd 100644
+--- a/drivers/ufs/host/ufs-mediatek.c
++++ b/drivers/ufs/host/ufs-mediatek.c
+@@ -2183,6 +2183,16 @@ static int ufs_mtk_clk_scale_notify(struct ufs_hba *hba, bool scale_up,
+ 	return 0;
+ }
  
--	hba->nortt = FIELD_GET(MASK_NUMBER_OUTSTANDING_RTT, hba->capabilities) + 1;
-+	if (hba->vops && hba->vops->get_hba_nortt)
-+		hba->nortt = hba->vops->get_hba_nortt(hba);
-+	else
-+		hba->nortt = FIELD_GET(MASK_NUMBER_OUTSTANDING_RTT, hba->capabilities) + 1;
- 
- 	/* Read crypto capabilities */
- 	err = ufshcd_hba_init_crypto_capabilities(hba);
-diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-index cfbc75d8df83..421c286481e8 100644
---- a/include/ufs/ufshcd.h
-+++ b/include/ufs/ufshcd.h
-@@ -415,6 +415,8 @@ struct ufshcd_tx_eq_params {
-  * @get_rx_fom: called to get Figure of Merit (FOM) value.
-  * @tx_eqtr_notify: called before and after TX Equalization Training procedure
-  *	to allow platform vendor specific configs to take place.
-+ * @get_hba_nortt: called to get maximum number of outstanding RTTs supported by
-+ *	the controller.
++static int ufs_mtk_get_hba_nortt(struct ufs_hba *hba)
++{
++	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
++
++	if (host->legacy_ip_ver || host->ip_ver < IP_VER_MT6995_B0)
++		return MTK_MAX_NUM_RTT_LEGACY;
++
++	return FIELD_GET(MASK_NUMBER_OUTSTANDING_RTT, hba->capabilities) + 1;
++}
++
+ static int ufs_mtk_get_hba_mac(struct ufs_hba *hba)
+ {
+ 	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
+@@ -2322,7 +2332,6 @@ static void ufs_mtk_config_scsi_dev(struct scsi_device *sdev)
   */
- struct ufs_hba_variant_ops {
- 	const char *name;
-@@ -477,6 +479,7 @@ struct ufs_hba_variant_ops {
- 	int	(*tx_eqtr_notify)(struct ufs_hba *hba,
- 				  enum ufs_notify_change_status status,
- 				  struct ufs_pa_layer_attr *pwr_mode);
-+	int	(*get_hba_nortt)(struct ufs_hba *hba);
- };
+ static const struct ufs_hba_variant_ops ufs_hba_mtk_vops = {
+ 	.name                = "mediatek.ufshci",
+-	.max_num_rtt         = MTK_MAX_NUM_RTT,
+ 	.init                = ufs_mtk_init,
+ 	.get_ufs_hci_version = ufs_mtk_get_ufs_hci_version,
+ 	.setup_clocks        = ufs_mtk_setup_clocks,
+@@ -2339,6 +2348,7 @@ static const struct ufs_hba_variant_ops ufs_hba_mtk_vops = {
+ 	.event_notify        = ufs_mtk_event_notify,
+ 	.config_scaling_param = ufs_mtk_config_scaling_param,
+ 	.clk_scale_notify    = ufs_mtk_clk_scale_notify,
++	.get_hba_nortt       = ufs_mtk_get_hba_nortt,
+ 	/* mcq vops */
+ 	.get_hba_mac         = ufs_mtk_get_hba_mac,
+ 	.op_runtime_config   = ufs_mtk_op_runtime_config,
+diff --git a/drivers/ufs/host/ufs-mediatek.h b/drivers/ufs/host/ufs-mediatek.h
+index 8547a6f04990..73cdc726f290 100644
+--- a/drivers/ufs/host/ufs-mediatek.h
++++ b/drivers/ufs/host/ufs-mediatek.h
+@@ -203,8 +203,8 @@ struct ufs_mtk_host {
+ /* MTK delay of autosuspend: 500 ms */
+ #define MTK_RPM_AUTOSUSPEND_DELAY_MS 500
  
- /* clock gating state  */
+-/* MTK RTT support number */
+-#define MTK_MAX_NUM_RTT 2
++/* MTK RTT support number for platforms before MT6995 B0 */
++#define MTK_MAX_NUM_RTT_LEGACY 2
+ 
+ /* UFSHCI MTK ip version value */
+ enum {
 -- 
 2.45.2
 
