@@ -4,55 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBAFACD98DE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 22:50:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5269DCD98DE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 22:50:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
 	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T57rr/fexxAyKKAD9vP64yQclmlYeocSTP22QwpKjPU=; b=mQjJ6iIQjoVgHUJi1CqaStpQTH
-	DEj01Zm3faxS1jnL9e5QwIqJ8Hug/zf4L+NRODgQ4Al33EBhZMloTitpmru3o8skJYDV5d3Y/Bh23
-	2XnnQLNh7BtNSLCdb4Kn/NGDs2sQH9mLXkmQGWhZlyBvFVuHugrr4tv6zN67kpF/KPGvcaozyx+Xg
-	Ia/jJDBb43Zj5BhfhpWm8XvK8v9DRHLrX5E7d/otHgLp8jAo9Ds63oSHQK3Pnqve4fYK4FRlMwbRb
-	dkKTYhEeL+Q9CeCEqn3t/zy6qTyxINstJlgVZMFoolPATxtxNEl/2nDiQbxRkPnvrRtOjD5VNMaHQ
-	R7Iu0eGw==;
+	bh=iwMz3Qb6KBIZ52xe7qK98ZGfUwF79kBhrbQewBx7nyQ=; b=bn6rfJnDm+eA1pMq+nMp9libwX
+	guyeDNCvVD4QjE6QpXASXGdyfEi8wsZTypBJvREhBQH4SSKD4I/hgZJMKxmF905RX9Gbv+cyUOw76
+	U/2NTZ2JoDBXCPoF8j7BgwUSrJl+1kRZXaSFiArKzMn8Zb+DonSO/q3VkeeK9q1NpOxKqsJhMSaYy
+	QJGsXVoRW54O+QeaUdIrsIdAGo4w1Grn5Eorob+SeFJ95lieOA+6536EfbN5D2gkhJ49ci7gMfJuH
+	wqYYs9tC7hWsFkU45nLwy6oRqimFNGxxPlTU9FYpgpOUNMTfXNK0nu6d7sNp5k+y0p9Wd71dGWgeq
+	VTMgSUkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZG8k-0000000EuWU-39qS;
-	Mon, 15 Jun 2026 22:50:46 +0000
+	id 1wZG8p-0000000EuZD-1GDj;
+	Mon, 15 Jun 2026 22:50:51 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZG8j-0000000EuVK-0Foq;
-	Mon, 15 Jun 2026 22:50:45 +0000
+	id 1wZG8k-0000000EuVu-0oZY;
+	Mon, 15 Jun 2026 22:50:46 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 764B044299;
-	Mon, 15 Jun 2026 22:50:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 570A61F00A3A;
-	Mon, 15 Jun 2026 22:50:44 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id EF9B2406E6;
+	Mon, 15 Jun 2026 22:50:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D0F171F00A3A;
+	Mon, 15 Jun 2026 22:50:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781563844;
-	bh=T57rr/fexxAyKKAD9vP64yQclmlYeocSTP22QwpKjPU=;
+	s=k20260515; t=1781563845;
+	bh=iwMz3Qb6KBIZ52xe7qK98ZGfUwF79kBhrbQewBx7nyQ=;
 	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=HHa0eArAA6Ld0Zj3yp6vGoxUPOoQmUCKHXCnC0q5zrnsQm2Au5pVRe0UAmhnf5d3s
-	 WAdzDrOqCd6R8F5ml/XISNZ6hMDpfSNg/KbovMbsghZlcHVvF+DvS6XBuOWnOi9vaD
-	 q8PNpCTF7NFYMhaq2vAosnH6+K207slsGGmNq5SdIhGp1bkGgbzCE17E2hx5jx4d2A
-	 48MNWhO90uBx2ao/SMxWin5SvbSeB3d53Q2tumhuluTTu2RVe069D1F11eLUVQO5Um
-	 pnrLBUqb+zWiYeYD6DgJ7VyM7CC7ZlCIvnQ8FrM5yqvpOf/A9vNd7b2DrBqcfwZBEi
-	 VYwbOqbEz96Aw==
+	b=kpFUzUpjmsudEqj03T/RyCQyqW4CFcKL28HfgBZJou1WkNzHlCmzA6eQIItcdlCaV
+	 aDtvH7S9Trp7NOqp/Ic/oeYk820jao2FTDNdML2qLHYO2KhT+xUUujd0TXC8Ngk0fk
+	 HqTCpVYEAFyKWq0f3fvWgyqZHntzK8qZuq43W++whlJQr6d1pwu4xjCkMHGdJGqITB
+	 Q0dSDVMAXOOBbem7Od+RCcWmoLOzI0zSR13t42H3L8UwvEX6V1ZjgzSx0rpINr+45y
+	 BQAXjZbgyaZ1e7NrpC3whFUOwzdozLhwPD9uNncBs0ZYtz1Ht+RdS5nmJUtWCGfJKn
+	 nqzhyOeShflIw==
 Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 938083839A08;
-	Mon, 15 Jun 2026 22:50:40 +0000 (UTC)
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 196EA3839A08;
+	Mon, 15 Jun 2026 22:50:42 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH] net: airoha: Fix typos in comments and Kconfig
+Subject: Re: [PATCH] net: airoha: Fix non-standard return value in
+ airoha_ppe_get_wdma_info()
 From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <178156383913.325968.10885453250477186810.git-patchwork-notify@kernel.org>
-Date: Mon, 15 Jun 2026 22:50:39 +0000
-References: <6a2ca74a.c5b1db4e.21a698.01e7@mx.google.com>
-In-Reply-To: <6a2ca74a.c5b1db4e.21a698.01e7@mx.google.com>
+Message-Id: <178156384063.325968.5097287869534609850.git-patchwork-notify@kernel.org>
+Date: Mon, 15 Jun 2026 22:50:40 +0000
+References: <6a2ca3d9.ad59c0a6.147df9.2a62@mx.google.com>
+In-Reply-To: <6a2ca3d9.ad59c0a6.147df9.2a62@mx.google.com>
 To: Wayen Yan <win847@gmail.com>
 Cc: netdev@vger.kernel.org, lorenzo@kernel.org, horms@kernel.org,
  pabeni@redhat.com, kuba@kernel.org, edumazet@google.com,
@@ -78,19 +79,20 @@ Hello:
 This patch was applied to netdev/net-next.git (main)
 by Jakub Kicinski <kuba@kernel.org>:
 
-On Sat, 13 Jun 2026 08:41:16 +0800 you wrote:
-> Fix several typos found during code review:
-> - Kconfig: "Aiorha" -> "Airoha" in NET_AIROHA_FLOW_STATS help text
-> - Comment: "CMD1" -> "CDM1" (Central DMA, not Command)
-> - Comments: "GMD1/2/3/4" -> "GDM1/2/3/4" (Gigabit DMA, not GMD)
+On Sat, 13 Jun 2026 08:22:31 +0800 you wrote:
+> airoha_ppe_get_wdma_info() returns -1 when the last path in the
+> forwarding path stack is not of type DEV_PATH_MTK_WDMA. This is not
+> a standard kernel error code. Replace it with -EINVAL since the
+> input path type is invalid from the caller's perspective.
 > 
-> These are pure comment and documentation fixes with no functional impact.
+> Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 SoC")
+> Signed-off-by: Wayen.Yan <win847@gmail.com>
 > 
 > [...]
 
 Here is the summary with links:
-  - net: airoha: Fix typos in comments and Kconfig
-    https://git.kernel.org/netdev/net-next/c/a061dfb063fa
+  - net: airoha: Fix non-standard return value in airoha_ppe_get_wdma_info()
+    https://git.kernel.org/netdev/net-next/c/05173fa30add
 
 You are awesome, thank you!
 -- 
