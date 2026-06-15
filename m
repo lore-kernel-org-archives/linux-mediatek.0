@@ -4,96 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96A0ECD98CF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 15:11:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 411D9CD98CF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 15:27:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=atumCYZH4kfixZGFrkvd6pjJYdqMUcUkjREboEVQyOE=; b=iPK026tdHNNrSt83gmF06588Sg
-	FHg0DddJsDPxoWRQOHxEDED0rMm/y6axAUbUmLslDyMYjksxpMzE33kzjx1QeRBzbRzhCJ2JxmurP
-	WCWjAIMD9XV02wLdR3hG2FvubVue4bqY76pP+sJkgfUvqMQBkWdP/7hFpItABL0II9ONsrOr38wp+
-	uHXmppf8JX9nlh7EdP5Or3C/cr0DDez1HvoMcYRNuwkdu76PlW0RDS1NfPKNfCoPUKYyg24jG7p58
-	IX+LNPo5UDwLodYTmVyyA2aAjBgxSUR8fchTiL6GvMN6FE3ohJOr2cWBXOo1ZO6J9nQHL95De9428
-	9arK/Eww==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=93S5IJn8Nm38fDgXmSpC8QemVzQ1sjDUuJR7xlPUztY=; b=baA7t0hF/S0vOOs+OcnE4Glf/j
+	xcvVsSRqmn+i6pu9V0bZGd+lnTfrf2JHe3Zldxnw9oiHJp/49T4oQyAArgA+IjjacKFx8A2HyN8SN
+	jyITtDLGf7E9BPUAqgqMwuzPHPD932ZikKBaP2tRqJIR/4VxzqNQDczr2Atfu81NynDl1S50kgiMH
+	72LqfMx1WKJ0II1Nhdumalz+p6JJ2nvacvfVPjsarpTZMBVaXBsKA7CM5wHF8//o9WWwEQxdUK9QA
+	M84JJs/dweYowTcSAYY2jNdQysZ86H5ie09P62wXLXCwgge1jmGT/jJPJ8QbppyhJilxzfUslEsmf
+	fQ65BJOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ8yA-0000000EU21-1njU;
-	Mon, 15 Jun 2026 15:11:22 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1wZ9E5-0000000EVAE-0S4T;
+	Mon, 15 Jun 2026 15:27:49 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ8y8-0000000EU0o-0MRF
+	id 1wZ9E2-0000000EV9e-1wtJ
 	for linux-mediatek@lists.infradead.org;
-	Mon, 15 Jun 2026 15:11:21 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-490a76757e5so25104965e9.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 15 Jun 2026 08:11:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781536278; x=1782141078; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=atumCYZH4kfixZGFrkvd6pjJYdqMUcUkjREboEVQyOE=;
-        b=U7K3r36HRoEQt3bJevAUz1mW/6P17WHnoVb6XgNNo7L86GCTvzYsr8Cnzz3E7l/qtd
-         g2ZLVADR4wtmXlDvpYzx4hrxgvxa6ilcT5RB2QegBesIsH0V9/vQrAy9RG4yaNkOU9g0
-         MAyTfl/NaCSHn7OIb5XCMn9Vk21yDEt7/Xo7+LGXQoTCk6OeKr72Ty8jGS2rtwDag+62
-         ObRdjhiej7bb8cxIV8dN20E2exkDZhxXIu/WfWSVosObf9hkMHt8iDLpyz3gV/wxMev4
-         xOWo+jzDnvdNByzYbKaG7CglDYNW4QUj0stpMssS8DQ6H/HoUWY3Ws1zrHF7qp6VOny+
-         1/7Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781536278; x=1782141078;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=atumCYZH4kfixZGFrkvd6pjJYdqMUcUkjREboEVQyOE=;
-        b=lCDWC8AGfewoITZw31pO6FeosjVVcvCfwBjCdzvAnAVl8bhzntqLgqoT7FEW4KB3jY
-         eQkHVMWcWBHIsNwx8sVgMUgmOyOxqwzsSi5peYjueY2ZTwCpEop8wUxmv5BVymQ58aPU
-         7U3+Ig7v6EcGMi7wXZuahgv1py7y/bX3uc/xl2DPVMwKWMbkDd5XZgRVReGu0mYo7ShF
-         qEXnfvvrjc8F1OAh20ptn4I3YlBm+h8IxpMwOsbDAHlHe71K7QFxukvoLyEpjrlQDSN4
-         9/thRZgvajjr2YIire5+HqN4zgxSgBTxYWdTkWkA07Z7esdQEumOATgnY9+lXKXEm9Id
-         7+mw==
-X-Forwarded-Encrypted: i=1; AFNElJ8mBEvVhuv40V3yIDJvIhTKeJgP8o0cG4zlPvvCeC6PDI6m6TzMAW4C+6jdo9XAb+oK7AQ3MhxSisuGAm5N0w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YztHBunae2ugyRM6Bgx8bySmV619spgyXjZ4n5sXjkgb/4gYgAf
-	3jnPTVuJ3YnODRsYu5kRt9Oxr1SuKsual7qin3CobDlQoK3miW/St5Ea
-X-Gm-Gg: Acq92OHo66pF29+oWNmmiBeGQvC2fZSNXcCW+o273DP72XVv8B8EggJo2TMKpphtRgX
-	3eptgEIfZ0rxAf8J9PSs5iwfQfeY2flbbOfcX5sLlUC7YDCsPDVs/WIzIny4TJqgQpPGaFqHyqq
-	slz7IDw2wlwUAoo494SCDvFdvqstFPSNcUg7r36W5ttxoax6Um7p5NYxBkmEOKcjLUiWti/sQdk
-	cN1zzc8gceMD2qvNU6dPAGm2OyRG8bTS+oLUUBZbEIBevthHEVjzetOI345paOHxePCnLU4xBgB
-	AYyMMyqQGi8fCDp/Lggm3qU2d1OU5QLnofUkCkSb0tZzHKM8PiPLhKFiSyQ8KdtjFNxSQUcg9pv
-	wZ89M5784zwmYH5djySaVh+9rgNyIucpPpadgdh9gbyVlm19Es3MECwJDUIBxRAF9Cs7KBuEQdV
-	HpE5u2bBgUmit0DP4GIlrJN8NpSaEJIJUo5iciZ1hQtHuWeQrWtEQDy8s=
-X-Received: by 2002:a05:600c:3b02:b0:492:2f3c:d0ed with SMTP id 5b1f17b1804b1-4922f3cd1a2mr6544955e9.30.1781536278038;
-        Mon, 15 Jun 2026 08:11:18 -0700 (PDT)
-Received: from Ansuel-XPS24 (93-34-88-103.ip49.fastwebnet.it. [93.34.88.103])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-492203d08bcsm260449915e9.13.2026.06.15.08.11.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Jun 2026 08:11:17 -0700 (PDT)
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Daniel Golle <daniel@makrotopia.org>,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Christian Marangi <ansuelsmth@gmail.com>
-Subject: [PATCH net] net: ethernet: mtk_eth_soc: fix supported_interface set after phylink_create
-Date: Mon, 15 Jun 2026 17:11:00 +0200
-Message-ID: <20260615151106.15438-1-ansuelsmth@gmail.com>
-X-Mailer: git-send-email 2.53.0
+	Mon, 15 Jun 2026 15:27:48 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-02.galae.net (Postfix) with ESMTPS id 6C7491A392F;
+	Mon, 15 Jun 2026 15:27:43 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 378B460015;
+	Mon, 15 Jun 2026 15:27:43 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 75110106C8297;
+	Mon, 15 Jun 2026 17:27:34 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1781537262; h=from:subject:date:message-id:to:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=93S5IJn8Nm38fDgXmSpC8QemVzQ1sjDUuJR7xlPUztY=;
+	b=eJqkbjRIok7cjg54WjqMc6fe6G3dz/a0LkNOep2ilTQerWzkrRIgxxZMEeXuBNJq5web0h
+	A2M4yefSKsLwn1t9M3LWHFWS342nrWp1I/I+le6oqzVXZwbLxbRWljpwWhXkZt3z9dbbp3
+	Y4ID0x3rhrNyTGd8RV+HSFmrEOqKHB7EXbFyyR/3Nm/hV/LQeaufsrgpRp1NVpapIFdIJN
+	4ptnQyWdKWKmvviISPPROC4tzfvLfVr1jxsz2p0q+lyMLhAHnUJvWiPmbXknRKRv0pojOg
+	3qd6uC0pIgFR1T1Z2qqNnVNoqRsGL4vTTrumHZUfX5YXpUpINApAtumDwT/5bA==
+Message-ID: <53f0eca8-05ef-4432-87c7-25bad6252585@bootlin.com>
+Date: Mon, 15 Jun 2026 17:27:33 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net] net: ethernet: mtk_eth_soc: fix supported_interface
+ set after phylink_create
+To: Christian Marangi <ansuelsmth@gmail.com>, Felix Fietkau <nbd@nbd.name>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Russell King <linux@armlinux.org.uk>, Daniel Golle <daniel@makrotopia.org>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20260615151106.15438-1-ansuelsmth@gmail.com>
+Content-Language: en-US
+From: Maxime Chevallier <maxime.chevallier@bootlin.com>
+In-Reply-To: <20260615151106.15438-1-ansuelsmth@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260615_081120_136786_03A586B3 
-X-CRM114-Status: GOOD (  12.91  )
+X-CRM114-CacheID: sfid-20260615_082746_634932_B8B741DF 
+X-CRM114-Status: UNSURE (   8.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,56 +84,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Everything configured in phylink_config it's assumed to be set before
-calling phylink_create() to permit correct parsing of all the different
-modes and capabilities.
 
-Commit 51cf06ddafc9 ("net: ethernet: mtk_eth_soc: add support for MT7988
-internal 2.5G PHY") while introducing support for 2.5G phy for MT7988,
-probably due to an auto-rebase, placed the configuration of the INTERNAL
-interface mode for the supported_interfaces for phylink_config right after
-phylink_create() introducing a possible problem with supported interfaces
-parsing.
 
-While this doesn't currently create any problem/bug, move setting this bit
-before phylink_create() to prevent any possible regression in future code
-change in phylink core.
+On 6/15/26 17:11, Christian Marangi wrote:
+> Everything configured in phylink_config it's assumed to be set before
+> calling phylink_create() to permit correct parsing of all the different
+> modes and capabilities.
+> 
+> Commit 51cf06ddafc9 ("net: ethernet: mtk_eth_soc: add support for MT7988
+> internal 2.5G PHY") while introducing support for 2.5G phy for MT7988,
+> probably due to an auto-rebase, placed the configuration of the INTERNAL
+> interface mode for the supported_interfaces for phylink_config right after
+> phylink_create() introducing a possible problem with supported interfaces
+> parsing.
+> 
+> While this doesn't currently create any problem/bug, move setting this bit
+> before phylink_create() to prevent any possible regression in future code
+> change in phylink core.
 
-Fixes: 51cf06ddafc9 ("net: ethernet: mtk_eth_soc: add support for MT7988 internal 2.5G PHY")
-Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+Agreed
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 7d771168b990..5d291e50a47b 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -4960,6 +4960,11 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
- 	if (MTK_HAS_CAPS(eth->soc->caps, MTK_SOC_MT7628))
- 		mac_ops = &rt5350_phylink_ops;
- 
-+	if (MTK_HAS_CAPS(mac->hw->soc->caps, MTK_2P5GPHY) &&
-+	    id == MTK_GMAC2_ID)
-+		__set_bit(PHY_INTERFACE_MODE_INTERNAL,
-+			  mac->phylink_config.supported_interfaces);
-+
- 	phylink = phylink_create(&mac->phylink_config,
- 				 of_fwnode_handle(mac->of_node),
- 				 phy_mode, mac_ops);
-@@ -4970,11 +4975,6 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
- 
- 	mac->phylink = phylink;
- 
--	if (MTK_HAS_CAPS(mac->hw->soc->caps, MTK_2P5GPHY) &&
--	    id == MTK_GMAC2_ID)
--		__set_bit(PHY_INTERFACE_MODE_INTERNAL,
--			  mac->phylink_config.supported_interfaces);
--
- 	SET_NETDEV_DEV(eth->netdev[id], eth->dev);
- 	eth->netdev[id]->watchdog_timeo = 5 * HZ;
- 	eth->netdev[id]->netdev_ops = &mtk_netdev_ops;
--- 
-2.53.0
+> 
+> Fixes: 51cf06ddafc9 ("net: ethernet: mtk_eth_soc: add support for MT7988 internal 2.5G PHY")
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+
+Reviewed-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
+
+Maxime
 
 
