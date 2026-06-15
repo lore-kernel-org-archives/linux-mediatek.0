@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66AF0CD98E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 12:31:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD6B8CD98E2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 12:31:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
 	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aWBKkXCPnVX9y0NE85TytOyaJugeSr3Fnil+IDh5DbM=; b=cUucHB4gvgWS/shCC4F6eKyk7A
-	ngXCY45NAEC5D7jjn71A7eoNe0F/vGOgZ1z3D+X6ytDXcXyHyJ5Pwv3aTydduS6+mE4jmZlduOZAQ
-	0sFGcthOij9lMs4sUKm6eCRgeSubOmYIy9sF4yU0OVa81rCKhKxlDN1zNHBBp7AlGdWe9N2N1JjNt
-	rWmLh6XGa76tlL9UGHpv80OMn3rQbI/IImFLEYAVLbJaXPQDQyfoNMlQag6BZOSCbAA4WCMzqKBfW
-	OJU3Jddlh5DhU9kwj8U/UEjT6aFIZehYirVqZN3MNMd+Tbfz/olagBQtP/MeBdcDC2jpNyRWyRlo1
-	MqB6S58Q==;
+	bh=Z7ibR1uk6j3yRvHUeSG7+Ts5vUBpNZwTn1NirzFE3FA=; b=UMOtKFxhCqPvE+AJAKRjXdUSVJ
+	gv1myxhbfMpLSe7uLwNGdlMGgBBuPvaxOUQWotK1UPqv4xwRXyRXZ42P+keOHtDvXialhqGbq2plZ
+	oPQt2KWCKvjkJVGyyBdxdn06F7bht2lrrZZx7byBlcS/2PueqAAktU+wpmZSzlQeIGnEdeEdsjyYr
+	uxHmGfF8n73XAbLA6K6zUDhe8N9/VKsKzMrBLiaT/u6GbGM+6CAmSdsI0Bxz7RwI+Cz2nApCp9jEj
+	gukw/g/JGD9QddG+OEzpGK6yTQFrOjNv+/RTcb2jlttZTatVaMQ7jlUeXMgKrqUQks3VfdeN6FuHa
+	L0c2a8kA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ6T1-0000000EBjv-3Okl;
-	Mon, 15 Jun 2026 12:31:03 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1wZ6T5-0000000EBnq-1iw4;
+	Mon, 15 Jun 2026 12:31:07 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ6Sk-0000000EBPv-3ePR
+	id 1wZ6Sm-0000000EBSW-3OlX
 	for linux-mediatek@lists.infradead.org;
-	Mon, 15 Jun 2026 12:30:49 +0000
-Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-490be29c1c5so36621535e9.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 15 Jun 2026 05:30:46 -0700 (PDT)
+	Mon, 15 Jun 2026 12:30:50 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-490b3637b90so24831525e9.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 15 Jun 2026 05:30:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781526645; x=1782131445; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1781526647; x=1782131447; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=aWBKkXCPnVX9y0NE85TytOyaJugeSr3Fnil+IDh5DbM=;
-        b=HvFBjjU1ZkdPZvMqovSkiQhD1SVysaamkMBPWDJmAoZzavvuy0qOR1mafViTVTkZIe
-         gAivXy1CNADqsajAsowdriXQL2kWzL0XDVFbp2tKJXpa0uLF36c1/55uIRuI60tHvpSz
-         tYPANVThbe+yggS3JeNrZtlaxr7cqZVr2RI5Szln4Q0SWReIlTMrnpnR1zyKNvKqCuQe
-         By6iuA1K4+5o0/WszR7LcVJWvDQvxZlkva68Y/t6f/frPqGiUNzi7+SUXPpBmgAoss3f
-         A3Y6dAOuJvAZR/qYaNt9UFq5u3ftnEabq1/OkH328PGEmRy6SPveVCAzLXkKE99O4VKP
-         SGRQ==
+        bh=Z7ibR1uk6j3yRvHUeSG7+Ts5vUBpNZwTn1NirzFE3FA=;
+        b=YVbmy/I2vAsLOk3WBEnzOJW8kswwSqSaM5ILaxhIEawle1KDqZWGOBfxyU82SZ2Gee
+         tP+77sPEuvEv4wjJpCIJJhc3xts2/thjYWg87JhM/LPcYJrRGTOy+1G90t+3PsmRPTCs
+         hfE1/shtbY+SHJspMQFNM0afRCAR8/WQo4KlzMucnG5lvBy6lcjNOa1zVdLy4w/fA3Q+
+         0/x/FA7HRw9w1Ja2uDJaVnULu2XmhLp+5dCEzfDuhVk7qg5Do2B9tZcUVuG41VnuDuDW
+         yzFpXzy3yBKnD6aaw0cyekQXaXUfuiSHBeBlzY1yIw7ed0u3806Rktka8ECMaSYPQomf
+         yqWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781526645; x=1782131445;
+        d=1e100.net; s=20251104; t=1781526647; x=1782131447;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=aWBKkXCPnVX9y0NE85TytOyaJugeSr3Fnil+IDh5DbM=;
-        b=XS/I3jUoefwYyQQo6kn4Wr6yvBU4rQRe0lBGQE4vtThlef/YbYLEW9OTgL2q9ppwY5
-         OQLYiGUmlN2ji0AC3Shz6n0L/PGcrl2WYLPubPdrQOXjQa9JMmLpreHmQcpthkuhuN7F
-         aKmNPQZDCL9B5G22IpBY20j8/COGX8MqKyPHd5uJMWsMzsCTIjcxaMYJHVlmLmtwK2AC
-         8DHD5BXb3DVYqOC9rU7b/IhyDy+9wY9Gsbh/6Hdcnd/DiKcQQMcYXx+5LaAsBnAsskB3
-         29z4isQQbQOmPOBJtA3QRqNOsLoyYaWl85Aqr4NPj8NenPv6S8wEXryz04EdCWXXI8al
-         sWAA==
-X-Forwarded-Encrypted: i=1; AFNElJ+YqlanyDSU2PW+T/Rp5feuL89ypS3RrKK3AoNon0Gom6yUmJv3vApZDkheH4Feyplest6CbdZTY3GXDI8BaA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywslg9fo4A3BVScIhN7wDxfVN7j1eei+AK4MrimhcQGJmnAHNu9
-	Qkf01l5MPeLjFKEnhRi1KBVIrS++d8wJrfDJVzg6qaBCP8vcWjifpTpw
-X-Gm-Gg: Acq92OFY6gKhYPlX/vmb4h3scZN0qCs4YjsT++xBOQgdLMb8MUFoZNJffpP6KZgiHFo
-	kpV24VshuVUBEV6meZDuLlg7SYLlyXa6q7cUi5u3YwquUlSo8cKPdR0zM/lCH8luNkevrIMWKmU
-	xiTeuw49exkNyqnC+aXtkFlqmW8/Vd9vE/FHJ65yxHEtjuXdG44a1+ebbpTxq5nq6CcWYIhGnll
-	vAfS5IfpEQKe8/itS2CXJm7DkmYvBE36nqYkYEYqeT2QPrJFpMy6v6GbKWCJy7SsW7HL5/oH5do
-	Ul+gsRmqLOvRQvlMAlhI9bNeJUSSJ5TD3MwzsuT5jrrYNQJ/tNysjGPq0ji66CUbG5WWL9BKahL
-	Bjft3ReFlNVZ+Apu/QacehOZfEizwgjaWYWVhhSqJryhaiC5XBFpsd5Zpjbhd7nzTodBKsK/cK3
-	91aUSLB4IQgNRgPKtXn38n9wrGq8ZVjaI0OpL9yrVv23iJfvjZ38Mley3cST0z6N/Sag==
-X-Received: by 2002:a05:600c:3b8b:b0:490:e243:4806 with SMTP id 5b1f17b1804b1-490ec4a84a2mr222953665e9.9.1781526644607;
-        Mon, 15 Jun 2026 05:30:44 -0700 (PDT)
+        bh=Z7ibR1uk6j3yRvHUeSG7+Ts5vUBpNZwTn1NirzFE3FA=;
+        b=kwXSK4AAhdQpWLrMbvFKo0opW05ZOtqRR7dQywhB01ekiTZpINmMCLMgK3w689X8ez
+         0JtwdEwB1Ba8IhmYtIwYJCfgd6ckzF+eGPnqb/Y18uxRBIHwiDJGnuy8dQMd55KJZq7N
+         OxxgmSyQONXBSyS1bBxPct1M1GPmZ3++jh98jqVJBaulE8kYOhYWFcDmtVvZ2FNi3HU8
+         T2RvGKn5i0K+i+NKK/eQz/aIvfoOXEmOWO954qfiZQ09cbbTpXtA76VTybX+DHLG3LqE
+         30UhqAmKl+23T1xVvzmqwMOH7Z7rLM1Pr2lVDKT60glco2LtguY7W6DA9AZFv9Zyw8Ab
+         kxOQ==
+X-Forwarded-Encrypted: i=1; AFNElJ/282dv5ZvRyHykgxesxKR/kZOoOjlmo4r/BslLBAGSzejNeTHjPaSoDlH3AOowFh6xzrrn5+9l3nGf34gzQw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzoBPegcwKxJFL6edL9fYLv9rx0pZ3JFhtpN6y8yLhld4LWEsr5
+	NzHdSYoQGgE9T+kP/Jd4/ZWPymezRah9vJ/AJ+P0/uXIxOiIBq/CxPc8
+X-Gm-Gg: Acq92OEq57knYQkES3OjIO+dwEtXEK8cNnwOBnqEzKlsD9HAG1HB7oz7CeZHEmxxr5D
+	w2Z17bQrR8Gm8E1AKPcXXqi3Dt9KIxUt6/hBVRJ1T2COnl4/iwGmMpr6Chr0H/BThPNAlo6HwR5
+	kCtmFtVi/w75xH7z+aEdo0SWR04upbss92SabdXcXYBO6jks6mFq1XUEC8zZ9/xn+ROX5IiCTvt
+	jejLcCpEDEvYdecfeS+vn2LjnwuyAKN4Gn18tu7IgAenE+kj2B69jlBZZ8aBxgFJmfCcYS13kN7
+	ztxsZ6HvdszD/eVQnu3YyJ8QpIRv+id18Wdfj7fIgkzqJ7JJ7hyjCZg6tbYXzPTun7rf3NBYv/V
+	D03YDUqAThdicrquE93Odi33Lcv+9ojZgDewodKw+XPaL5P6ZjYrw8L6R/xV/+lJ5IKeTAD2lDm
+	7JpvpKH+8fI2VEIu0YAefasZHHMcGA7iGq+JKi9RUEhTqcz/mSlSd0gWo=
+X-Received: by 2002:a05:600c:800f:b0:490:b06a:649e with SMTP id 5b1f17b1804b1-492201436f9mr121572525e9.25.1781526646890;
+        Mon, 15 Jun 2026 05:30:46 -0700 (PDT)
 Received: from Ansuel-XPS24 (93-34-88-103.ip49.fastwebnet.it. [93.34.88.103])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-490ea95c512sm191426435e9.2.2026.06.15.05.30.42
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-490ea95c512sm191426435e9.2.2026.06.15.05.30.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Jun 2026 05:30:43 -0700 (PDT)
+        Mon, 15 Jun 2026 05:30:46 -0700 (PDT)
 From: Christian Marangi <ansuelsmth@gmail.com>
 To: Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
@@ -98,17 +98,18 @@ To: Andrew Lunn <andrew+netdev@lunn.ch>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	llvm@lists.linux.dev
-Subject: [PATCH net-next v7 06/12] net: Document PCS subsystem
-Date: Mon, 15 Jun 2026 14:29:42 +0200
-Message-ID: <20260615122950.22281-7-ansuelsmth@gmail.com>
+Subject: [PATCH net-next v7 07/12] MAINTAINERS: add myself as PCS subsystem maintainer
+Date: Mon, 15 Jun 2026 14:29:43 +0200
+Message-ID: <20260615122950.22281-8-ansuelsmth@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260615122950.22281-1-ansuelsmth@gmail.com>
 References: <20260615122950.22281-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260615_053047_172393_CA0045EA 
-X-CRM114-Status: GOOD (  33.59  )
+X-CRM114-CacheID: sfid-20260615_053049_164655_874B24B0 
+X-CRM114-Status: UNSURE (   9.10  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,263 +124,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add extensive documentation of the new PCS subsystem and the fwnode
-implementation with producer/consumer API.
+List all the files of the Ethernet PCS subsystem and add myself as
+maintainer.
 
 Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 ---
- Documentation/networking/index.rst |   1 +
- Documentation/networking/pcs.rst   | 229 +++++++++++++++++++++++++++++
- 2 files changed, 230 insertions(+)
- create mode 100644 Documentation/networking/pcs.rst
+ MAINTAINERS | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/Documentation/networking/index.rst b/Documentation/networking/index.rst
-index 44a422ad3b05..3fce8f6ac089 100644
---- a/Documentation/networking/index.rst
-+++ b/Documentation/networking/index.rst
-@@ -28,6 +28,7 @@ Contents:
-    net_failover
-    page_pool
-    phy
-+   pcs
-    sfp-phylink
-    alias
-    bridge
-diff --git a/Documentation/networking/pcs.rst b/Documentation/networking/pcs.rst
-new file mode 100644
-index 000000000000..98592cdee3ef
---- /dev/null
-+++ b/Documentation/networking/pcs.rst
-@@ -0,0 +1,229 @@
-+.. SPDX-License-Identifier: GPL-2.0
+diff --git a/MAINTAINERS b/MAINTAINERS
+index cc1dde0c9067..ef3ef5096d08 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -9593,6 +9593,15 @@ F:	include/uapi/linux/if_bridge.h
+ F:	include/linux/netfilter_bridge/
+ F:	net/bridge/
+ 
++ETHERNET PCS SUBSYSTEM
++M:	Christian Marangi <ansuelsmth@gmail.com>
++L:	netdev@vger.kernel.org
++S:	Maintained
++F:	Documentation/networking/pcs.rst
++F:	drivers/net/pcs/pcs.c
++F:	include/linux/pcs/pcs-provider.h
++F:	include/linux/pcs/pcs.h
 +
-+=============
-+PCS Subsystem
-+=============
-+
-+The PCS (Physical Coding Sublayer) subsystem handles the registration and lookup
-+of PCS devices. These devices contain the upper sublayers of the Ethernet
-+physical layer, generally handling framing, scrambling, and encoding tasks. PCS
-+devices may also include PMA (Physical Medium Attachment) components. PCS
-+devices transfer data between the Link-layer MAC device, and the rest of the
-+physical layer, typically via a serdes. The output of the serdes may be
-+connected more-or-less directly to the medium when using fiber-optic or
-+backplane connections (1000BASE-SX, 1000BASE-KX, etc). It may also communicate
-+with a separate PHY (such as over SGMII) which handles the connection to the
-+medium (such as 1000BASE-T).
-+
-+Remark on usage of .mac_select_pcs and fw_node PCS
-+--------------------------------------------------
-+
-+There are generally two ways to look up a PCS device.
-+
-+1. MAC OP struct .mac_select_pcs (considered legacy)
-+2. firmware node (fwnode) PCS entirely handled by phylink
-+
-+Implementation 1 leaves the entire handling of the PCS to the MAC
-+driver with the selection of the PCS driven by .mac_select_pcs.
-+Custom implementations are required if the PCS is external to the MAC
-+and needs to be handled by a separate driver.
-+
-+This implementation is considered legacy and it's suggested to
-+switch to the new fwnode PCS.
-+
-+Looking up PCS Devices (fwnode implementation)
-+-----------------------------------------------
-+
-+The lookup of a PCS device follows the common producer/consumer implementation
-+used by similar subsystems with a ``#pcs-cells`` on the producer and a
-+``pcs-handle`` property on the consumer::
-+
-+    pcs: pcs {
-+        // ...
-+        #pcs-cells = <0>;
-+    };
-+
-+    ethernet-controller {
-+        // ...
-+        pcs-handle = <&pcs>;
-+    };
-+
-+On :c:func:`phylink_create`, phylink will use the ``num_possible_pcs``
-+value and ``fill_available_pcs`` helper function in
-+:c:struct:`phylink_config` to compose the list of available PCS that can be
-+used for the phylink instance.
-+
-+Phylink will then internally handle the selection of the correct PCS for
-+the requested interface mode based on the interface modes configured in
-+``pcs_interfaces`` in :c:struct:`phylink_config` struct and
-+``supported_interfaces`` in :c:struct:`phylink_pcs` struct.
-+
-+A PCS is considered eligible when the requested interface mode is present
-+in both ``pcs_interfaces`` in :c:struct:`phylink_config` struct and
-+``supported_interfaces`` in :c:struct:`phylink_pcs` struct.
-+
-+``supported_interfaces`` describes all interface modes supported by the MAC,
-+whereas ``pcs_interfaces`` identifies the subset that require PCS selection.
-+
-+For the special implementation where the PCS is internal or part of the MAC
-+and a dedicated driver is not needed, it's possible to leave the implementation
-+of the PCS to the MAC driver and just implement the ``num_possible_pcs``
-+value and ``fill_available_pcs`` helper  function in
-+:c:struct:`phylink_config` referencing the local :c:struct:`phylink_pcs`
-+struct allocated from the MAC driver.
-+
-+Using PCS Devices
-+-----------------
-+
-+It's mandatory to either implement the ``mac_select_pcs`` callback
-+of :c:struct:`phylink_mac_ops` or ``num_possible_pcs`` and ``fill_available_pcs``
-+of :c:struct:`phylink_config` to use a PCS for a MAC.
-+
-+The fwnode implementation exposes simple helpers to parse the PCS from
-+the fwnode :c:func:`fwnode_phylink_pcs_count` and
-+:c:func:`fwnode_phylink_pcs_parse`. The :c:func:`fwnode_phylink_pcs_count` helper
-+takes the fwnode where the ``pcs-handle`` should be parsed and return the
-+number of PCS entries described in the fwnode.
-+The :c:func:`fwnode_phylink_pcs_parse` helper takes three arguments,
-+the fwnode where the ``pcs-handle`` should be parsed, an allocated array
-+of :c:struct:`phylink_pcs` pointer where to put the parsed PCS from the fwnode
-+and the maximum number of PCS to parse.
-+Contrary to :c:func:`fwnode_phylink_pcs_count`, :c:func:`fwnode_phylink_pcs_parse`
-+helper fills the allocated array with ONLY the available PCS and return the
-+number of available PCS found. PCS that returns -ENODEV will be skipped and
-+won't be inserted in the allocated array.
-+
-+A phylink instance may use multiple PCS devices. The maximum number is reported
-+through ``num_possible_pcs``.
-+
-+It's mandatory to specify for what interface a PCS is needed. This can be done
-+by filling the ``pcs_interfaces`` in :c:struct:`phylink_config` struct.
-+If the requested interface mode is not present in this bitmask, phylink does
-+not search for a PCS for  that specific mode. (example MAC doesn't need a PCS
-+for SGMII but require one for USXGMII)
-+
-+With the use of the :c:func:`fwnode_phylink_pcs_parse` a common implementation
-+is the following::
-+
-+   static int mac_fill_available_pcs(struct phylink_config *config,
-+   				                      struct phylink_pcs **available_pcs,
-+					                      unsigned int num_possible_pcs)
-+   {
-+   	struct device *dev = config->dev;
-+
-+   	return fwnode_phylink_pcs_parse(dev_fwnode(dev), available_pcs,
-+						                    num_possible_pcs);
-+   }
-+
-+   static int mac_setup_phylink(struct net_device *netdev)
-+   {
-+      struct phylink_config *config;
-+
-+      // ...
-+
-+      config->dev = &netdev->dev;
-+
-+      // ...
-+
-+      // Parse possible PCS and fill num_possible_pcs.
-+      config->num_possible_pcs = fwnode_phylink_pcs_count(dev_fwnode(&netdev->dev));
-+      config->fill_available_pcs = mac_fill_available_pcs;
-+
-+      __set_bit(PHY_INTERFACE_MODE_INTERNAL, config->supported_interfaces);
-+      __set_bit(PHY_INTERFACE_MODE_SGMII, config->supported_interfaces);
-+      __set_bit(PHY_INTERFACE_MODE_1000BASEX, config->supported_interfaces);
-+      __set_bit(PHY_INTERFACE_MODE_USXGMII, config->supported_interfaces);
-+
-+      // PCS required only for USXGMII
-+      __set_bit(PHY_INTERFACE_MODE_USXGMII, config->pcs_interfaces);
-+
-+      phylink = phylink_create(config, //...
-+
-+It's worth to mention that it's phylink code that takes care of allocating
-+the array of :c:struct:`phylink_pcs` pointer for ``fill_available_pcs``
-+callback based on the value set in ``num_possible_pcs`` for
-+:c:struct:`phylink_config` struct.
-+
-+The ``fill_available_pcs`` callback must not write more than
-+``num_possible_pcs`` entries. The third argument may be used to validate
-+that there is enough space to fill all the available PCS in the passed array
-+of :c:struct:`phylink_pcs` pointer.
-+
-+The ``fill_available_pcs`` callback is called only on :c:func:`phylink_create`
-+and is used only to compose the initial available PCS list. Ownership of PCS
-+is held by phylink and :c:func:`phylink_release_pcs` should be used to release
-+them.
-+
-+Writing PCS Drivers
-+-------------------
-+
-+To write a PCS driver, first implement :c:struct:`phylink_pcs_ops`. Then,
-+register your PCS in your probe function using :c:func:`fwnode_pcs_add_provider`.
-+The :c:func:`fwnode_pcs_add_provider` takes three arguments, the fwnode where
-+the PCS provider should be registered to, a get function to return the requested
-+PCS based on ``#pcs-cells`` and a pointer to reference private data for the get
-+function.
-+
-+The PCS will then be registered to a global list of PCS provider that the
-+PCS fwnode implementation will use to parse it.
-+
-+For the simple case where the PCS driver expose a single PCS,
-+:c:func:`fwnode_pcs_simple_get` can be used as the get function.
-+
-+You must call :c:func:`fwnode_pcs_del_provider` from your remove function and
-+release the PCS from any phylink instance under RTNL lock with
-+:c:func:`phylink_release_pcs`::
-+
-+   fwnode_pcs_del_provider(dev_fwnode(&pdev->dev));
-+
-+	rtnl_lock();
-+
-+	for (i = 0; i < data->num_port; i++) {
-+		struct pcs_port *port = &priv->ports[i];
-+
-+		phylink_release_pcs(&port->pcs);
-+	}
-+
-+	rtnl_unlock();
-+
-+Late PCS registration handling
-+------------------------------
-+
-+It's possible that a PCS becomes available after the MAC finished probing.
-+Contrary to the usual producer/consumer implementation, when a PCS is not
-+registered and can't be found, the fwnode parser helper returns ``-ENODEV``
-+instead of ``-EPROBE_DEFER``.
-+
-+This is to prevent race condition with particular devices that register
-+MAC and PCS with USB or PCIe and require the MAC to be registered before
-+the PCS.
-+
-+The phylink logic correctly handle this special case and keep the phylink
-+instance in a fail condition.
-+
-+The PCS fwnode implementation provides a notifier to which each phylink
-+instance with a non-empty ``pcs_interfaces`` in :c:type:`phylink_config`
-+registers. When a new PCS provider is registered, the notifier is called
-+triggering the :c:func:`pcs_provider_notify` function.
-+
-+Function :c:func:`pcs_provider_notify` will check if the just added PCS
-+should be used by the phylink instance. If it should be used then,
-+it's added to the internal list of available PCS and a phylink major
-+config is forced.
-+
-+If a phylink instance was in a failure state, with the just added PCS
-+now part of the available PCS internal phylink list, provided all other
-+conditions are satisfied, the configuration is retried and the failure
-+condition is cleared.
-+
-+API Reference
-+-------------
-+
-+.. kernel-doc:: include/linux/phylink.h
-+   :identifiers: phylink_pcs
-+
-+.. kernel-doc:: include/linux/pcs/pcs.h
-+   :internal:
-+
-+.. kernel-doc:: include/linux/pcs/pcs-provider.h
-+   :internal:
+ ETHERNET PHY LIBRARY
+ M:	Andrew Lunn <andrew@lunn.ch>
+ M:	Heiner Kallweit <hkallweit1@gmail.com>
 -- 
 2.53.0
 
