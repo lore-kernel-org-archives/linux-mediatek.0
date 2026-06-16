@@ -4,113 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D7F6CD98E1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2026 11:34:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C68FCD98DA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2026 12:00:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XohaHNzdSn7EcuVKd8IYFM6fjiQzqjchZh5357Lb3tY=; b=MMwRfQNnCJbyG/hGjgkd5BFMS1
-	wq53Dlt7cWw/X5ODmlSwfL93trvDhTqSWFAyykBv5h9dCtyOiPCr2x+BTiX3hm8G7W7rvRrz3+mM5
-	w/KFUAtsHhlmfFVmcgzzYQljxm/kAeKhqrUiILGtaj/yE7QYaXIS0XCgsySgvzk7pPwo8xLvc8V/W
-	Lw2PG9GYItY98+NDroFSxq9M+zMRAGnaxV2RpjJDM7h0t4Wp1nbWah0X4LSsyPuRp2T11buNO0QAV
-	u81Plu3JVWSNuLjVwPsColJPHelNHTE4yKVeFSyBEed2B4sjeMPuafiiXTb7KcOe7wkBXNcaqZy6S
-	f48GAxGw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0Hfd7o4l5KeyggBUdRXVUs9FUkJAGIoK0YPViSvNbm4=; b=31nKp0VP0hxoNmoL7WGW2q7AR+
+	mnO0rqMtn6bDcwiFtO7EqiUXeTrpMycG/tx/4j5NYnA05z+K864mzn8pCzxLmnfd9YLJMuOnJ0vpR
+	FvVZMJ3SYmkH/64hBIDhyr68C5GVMJsp0bR69UhBrfeCDlRO5Wd7v73QDa9hvG4wzGwI9Q8YRB3bI
+	L9d+JlX4zt3+fUK7ATtg9ptAb/EcawqF2reL3n3U2kuPoas3oQ2T6L3o7RpO0NXDU3WY/nk+v2Kr5
+	VtHkmslb9kpocsaLwHUMPYLMd6MkqAuq1gY5sJZKQ9h2YpzGz49VPB/bzpEJkfAVRC3/e5YTvwOVw
+	SWweDTAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZS3b-0000000FgD8-3bg7;
-	Tue, 16 Jun 2026 11:34:15 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1wZSSa-0000000FjB9-0Orv;
+	Tue, 16 Jun 2026 12:00:04 +0000
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZS3Z-0000000FgCb-0UqL;
-	Tue, 16 Jun 2026 11:34:14 +0000
-Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 65GA9jSk2799422;
-	Tue, 16 Jun 2026 11:34:06 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:date:from:in-reply-to:message-id
-	:mime-version:references:subject:to; s=qcppdkim1; bh=XohaHNzdSn7
-	EcuVKd8IYFM6fjiQzqjchZh5357Lb3tY=; b=E3gOoVVc3HIZA2ioJNoFHiIezlx
-	2YLMKQcgLh/Shycx+f20y5QDlAeVN0FgwLXDDIMDjUrgl5irwIxhooixYldfecZS
-	QmtmCZos2fAemyA2Xbd3sMnAOSzx6oNzgb2TNhcL0L87puTsWN8VkGKhwI2Ugkuz
-	2716IayldNcRx4oIJdc3d+tNquefi55Et+qTUUwobDOlU0PJMe12DlyA7IxEvhUx
-	pTZSe4xRfkCsinznoiSkIp8LojaQFgq5wZUd6ekORbpm8H2wcawgn33Mild5+56r
-	NlFe4ubYWUg8Ik9agopVkJo8YfIPWVUFNAw+VRl5NoLZgb3p+WAFHVYmnNg==
-Received: from nalasppmta02.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4eu0a7sjfa-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 16 Jun 2026 11:34:06 +0000 (GMT)
-Received: from pps.filterd (NALASPPMTA02.qualcomm.com [127.0.0.1])
-	by NALASPPMTA02.qualcomm.com (8.18.1.7/8.18.1.7) with ESMTP id 65GBY5MT015594;
-	Tue, 16 Jun 2026 11:34:05 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
-	by NALASPPMTA02.qualcomm.com (PPS) with ESMTPS id 4etk1at1xx-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 16 Jun 2026 11:34:05 +0000 (GMT)
-Received: from NALASPPMTA02.qualcomm.com (NALASPPMTA02.qualcomm.com [127.0.0.1])
-	by pps.reinject (8.18.1.12/8.18.1.12) with ESMTP id 65GBY5Ht015583;
-	Tue, 16 Jun 2026 11:34:05 GMT
-Received: from hu-devc-lv-u22-c.qualcomm.com (hu-cang-lv.qualcomm.com [10.81.25.255])
-	by NALASPPMTA02.qualcomm.com (PPS) with ESMTPS id 65GBY5pu015579
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 16 Jun 2026 11:34:05 +0000 (GMT)
-Received: by hu-devc-lv-u22-c.qualcomm.com (Postfix, from userid 359480)
-	id 44029654; Tue, 16 Jun 2026 04:34:05 -0700 (PDT)
-From: Can Guo <can.guo@oss.qualcomm.com>
-To: krzk@kernel.org, bvanassche@acm.org, beanhuo@micron.com,
-        peter.wang@mediatek.com, martin.petersen@oracle.com, mani@kernel.org
-Cc: linux-scsi@vger.kernel.org, Can Guo <can.guo@oss.qualcomm.com>,
-        Alim Akhtar <alim.akhtar@samsung.com>,
-        Avri Altman <avri.altman@wdc.com>,
-        "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Nitin Rawat <quic_nitirawa@quicinc.com>,
-        Ram Kumar Dwivedi <quic_rdwivedi@quicinc.com>,
-        linux-kernel@vger.kernel.org (open list),
-        linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek),
-        linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek)
-Subject: [PATCH v10 2/2] scsi: ufs: core: Add support for static TX Equalization settings
-Date: Tue, 16 Jun 2026 04:33:48 -0700
-Message-Id: <20260616113348.1168248-3-can.guo@oss.qualcomm.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260616113348.1168248-1-can.guo@oss.qualcomm.com>
-References: <20260616113348.1168248-1-can.guo@oss.qualcomm.com>
+	id 1wZSSV-0000000Fj8e-3HVe
+	for linux-mediatek@lists.infradead.org;
+	Tue, 16 Jun 2026 12:00:02 +0000
+Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-2c6afcc99a5so229015ad.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 16 Jun 2026 04:59:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1781611199; x=1782215999; darn=lists.infradead.org;
+        h=mime-version:message-id:date:subject:cc:to:from:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=0Hfd7o4l5KeyggBUdRXVUs9FUkJAGIoK0YPViSvNbm4=;
+        b=UOd0CiNNATxLiHn4aWC/woQi1sQu3yJuK6XiSEHshHTN12vkRpcfywGvv4v+LB+JCq
+         CkQ6h1I+uxtwzMMY48TpOCNOollSlCrs2TVigLamCvx8/zGh3wWWWjy5ZgJ4QQncbD8b
+         ccxg4wYZ2Kb8emsRNi99AG/HGrsGqj3I/PbF9FUD6Rr0ou+QoqlE3h2zE1orA/TvrVWJ
+         bFR+pAE0OOA+TQmukdzJna8DdJ7BB3SNjsCjV8UJbQBnBj7zrZFtfHl7mGcV2SoB+q/e
+         IxDqmnLND0evXx6d3nW6BVtJJXGrMum7ruwKdMmhTX3PfGJ4l9M7r4bcWFrIdAWoeIF0
+         cyjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1781611199; x=1782215999;
+        h=mime-version:message-id:date:subject:cc:to:from:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=0Hfd7o4l5KeyggBUdRXVUs9FUkJAGIoK0YPViSvNbm4=;
+        b=YuVW53d6qrzN3ejaAj8h8dfR9ko1TnoxEQnWkHmsiXAgts6dMqJzihjrSLES7ZrHXn
+         qcsJd+KQHGYiBO5TD6U7lK4MRVkZEKRM+FNdaEOmVbQFMm3ocDbYwvLO4syUGsDVNkoR
+         9P1D+vewI/TjaPLfX5bzAjWjApeUZ0JZilKLyxSzNNqKYw/HEKHHQgho5cXtoeSjSqMC
+         d18UgiZTUJm+CuAfiWnXRVokAF/ZcsPAX3oCJUUCgzc9l3y+KQdgzp4GIQ+bHu9mR9pv
+         nQ5BboPUgon7xV9Btyd35yFgh9Wq8D2rdKPXA0eZSwMCsiMm76wDLCyYltopfnjTwtul
+         Mi9A==
+X-Forwarded-Encrypted: i=1; AFNElJ83Qb7JAPVr1vpNjMPj1VM4sIoOOBVuwBLQS6a6FBNGmwIcYaLRCmYpX0aohQNgxEwOCa73r0cKKSMOK7RFhw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzympqj8zEo8LnRgxcyuzpznCup5Lju+1bhaDyxTI5bYxIbt27L
+	4+BipFeTHlTaOWc3UvT4OHsy0ZhpnDdVn26fAm1fLpOBqznUxt0qmalI
+X-Gm-Gg: Acq92OEmx/+hsOEonJCVtQAyLt5wCZtaWWG1TtGmMJISEo8gykpbhwrVxq6qx2Du9//
+	koJ9oQ0Krel8nTLoxu29CFAt8HW/a1C0mjeVahGoGkqPWdxQlpSjPmXqkUUEX4E41Qs1AAlVxeQ
+	WQZCH0nk25nLpoR5Pkn0TYuvauxUO/2UNwlgPjShnDQ0tdgfsTn84OJL0BFgx63+EfsGSoN8uyT
+	jvC/l7pc1LbNpC5ZBheAUijYr3gTlFGzK46825CqisdSmBmtAlvt8utpXGruh8TE8PXCV/dudgy
+	z8yI+4XsnXFx8fQyCdf9lvyAyOjr2VkEXGjsKtqlG4mfctmOhatUKRyyKcYEnXYl++dYFw/ab1z
+	pi0/NBWtBzqnyk8UyucklrTYdeFoqpXRJ60ktxwJXRnHEPLKJMRTad8o/dEffij1nqJm3ohkD9O
+	Y6ogMrk1GAiPqKOB5d
+X-Received: by 2002:a17:903:1b6c:b0:2bf:13af:b077 with SMTP id d9443c01a7336-2c699b03448mr27431115ad.14.1781611198834;
+        Tue, 16 Jun 2026 04:59:58 -0700 (PDT)
+Received: from [127.0.1.1] ([47.253.114.73])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2c433369c8asm133468595ad.73.2026.06.16.04.59.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 16 Jun 2026 04:59:58 -0700 (PDT)
+From: Wayen Yan <win847@gmail.com>
+To: netdev@vger.kernel.org
+Cc: lorenzo@kernel.org, horms@kernel.org, pabeni@redhat.com, kuba@kernel.org, edumazet@google.com, andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: [PATCH v2] [net] net: airoha: fix foe_check_time allocation size
+Date: Tue, 16 Jun 2026 19:52:36 +0800
+Message-ID: <178161119471.2163752.14373384830691569758@gmail.com>
+Content-Type: text/plain; charset=utf-8
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-QCInternal: smtphost
-X-QCInternal: smtphost
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjE2MDExOCBTYWx0ZWRfX/bSbUpew4H66
- YXI/Aq+K5Wi2Mbrre5bowimNd6X2s/ln/A5f5YdIa3fjkw4KxEd+CiLONJbvToCrpf+cl7te9Tz
- 53jZ2AGFhsof5/hNtCUhOfUVaDNmUbwsizZVv/qEueuL76S4qmWs/K8MkBy0ktuzw4HGWEVX9EX
- fUQjSyf6b6eNI/Hz3pl46Jifc0QJlFxKHlNUnpPt2bYI0okxbm37j/dOAHff5KChZK8Af2jlxaJ
- 55ZxCfGZ9cmB2iLllnsetmKapUvh3/sa7jGeEdYv9PPh5ZV/5MvXQln4g5GJ8SYvSzBVCbDdTnG
- IpNYP7YDFYCtyAowqcNMWDmyQiE07p8frlmO3814ncjfTqKiZx6TD7K2qWHLzXqdoL1N0Rd2PWf
- oNViaoTxJBs9/EnI78kbajtOTu/K1Lf4WMp/yTyXZVsI8HiIDxjthfDgotxU8UwDEAbZgxdREwN
- EyqB9KDtpT9rz1230FA==
-X-Authority-Analysis: v=2.4 cv=JKALdcKb c=1 sm=1 tr=0 ts=6a3134ae cx=c_pps
- a=ouPCqIW2jiPt+lZRy3xVPw==:117 a=ouPCqIW2jiPt+lZRy3xVPw==:17
- a=FelO9ux0wxsA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
- a=_K5XuSEh1TEqbUxoQ0s3:22 a=VwQbUJbxAAAA:8 a=mpaa-ttXAAAA:8 a=EUspDBNiAAAA:8
- a=Nkn4xaPparAtay90Rp0A:9
-X-Proofpoint-ORIG-GUID: 81gq8bqfJpOMttEu97yCqva3ouK2dd54
-X-Proofpoint-GUID: 81gq8bqfJpOMttEu97yCqva3ouK2dd54
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNjE2MDExOCBTYWx0ZWRfXxxrBtVkQqVUe
- v3bmI4nneMWXeVSI2hwkObF3gPhNopt8lGJ0qaKuPNH7ufUGhbfPab+Po+pD3CkCmbYQrT1YnEj
- jR6pKkvfYQHZU5ksgxWit1IiwVZ6P0I=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
- definitions=2026-06-16_03,2026-06-15_04,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 lowpriorityscore=0 bulkscore=0 impostorscore=0 spamscore=0
- priorityscore=1501 adultscore=0 clxscore=1015 suspectscore=0 malwarescore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606040000 definitions=main-2606160118
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260616_043413_172860_A98135F3 
-X-CRM114-Status: GOOD (  23.11  )
+X-CRM114-CacheID: sfid-20260616_045959_897211_329C97C6 
+X-CRM114-Status: UNSURE (   7.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,273 +93,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Parse board-specific static TX Equalization settings from Device Tree for
-each HS gear and store them in hba->tx_eq_params.
+foe_check_time is declared as u16 pointer but was allocated with
+only ppe_num_entries bytes instead of ppe_num_entries * sizeof(u16).
 
-Parse txeq-preshoot-g[1-6] and txeq-deemphasis-g[1-6] as per-lane tuples:
-<Host_Lane0 Device_Lane0>, [<Host_Lane1 Device_Lane1>].
+When airoha_ppe_foe_verify_entry() is called with hash >= ppe_num_entries/2,
+it writes beyond the allocated buffer, causing heap buffer overflow and
+potential kernel crash.
 
-For HS-G6, parse optional tx-precode-enable-g6 using the same per-lane
-Host/Device tuple format. If provided, it must contain values for all
-active lanes, and each value must be 0 or 1.
-
-Introduce from_dt in struct ufshcd_tx_eq_params to track whether TX EQ
-values came from static Device Tree data.
-
-When adaptive TX Equalization is used, these static settings are not final:
-- If valid settings are retrieved from qTxEQGnSettings/wTxEQGnSettingsExt,
-  those retrieved settings override static Device Tree settings.
-- If retrieval is not available/valid, TX EQTR runs and trained settings
-  override static Device Tree settings.
-
-So static Device Tree settings are a fallback for cases where adaptive TX
-Equalization is not enabled or not used. Adaptive TX Equalization remains
-the primary path when enabled.
-
-No behavior changes for platforms that do not provide these properties.
-
-Reviewed-by: Manivannan Sadhasivam <mani@kernel.org>
-Reviewed-by: Peter Wang <peter.wang@mediatek.com>
-Signed-off-by: Can Guo <can.guo@oss.qualcomm.com>
+Fixes: 6d5b601d52a2 ("net: airoha: ppe: Dynamically allocate foe_check_time array in airoha_ppe struct")
+Signed-off-by: Wayen Yan <win847@gmail.com>
 ---
- drivers/ufs/core/ufs-txeq.c      |  15 ++-
- drivers/ufs/host/ufshcd-pltfrm.c | 154 +++++++++++++++++++++++++++++++
- include/ufs/ufshcd.h             |   2 +
- 3 files changed, 170 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/airoha/airoha_ppe.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/ufs/core/ufs-txeq.c b/drivers/ufs/core/ufs-txeq.c
-index 3a2fb5329d27..3c94b94dd7b7 100644
---- a/drivers/ufs/core/ufs-txeq.c
-+++ b/drivers/ufs/core/ufs-txeq.c
-@@ -1297,7 +1297,13 @@ int ufshcd_config_tx_eq_settings(struct ufs_hba *hba,
+diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
+index 5c9dff6bcc..8fb8ecf909 100644
+--- a/drivers/net/ethernet/airoha/airoha_ppe.c
++++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+@@ -1578,7 +1578,8 @@ int airoha_ppe_init(struct airoha_eth *eth)
+ 			return -ENOMEM;
  	}
  
- 	params = &hba->tx_eq_params[gear - 1];
--	if (!params->is_valid || force_tx_eqtr) {
-+	/*
-+	 * TX EQTR must run for the following cases:
-+	 * 1. TX EQ settings are invalid.
-+	 * 2. TX EQ settings are from Device Tree.
-+	 * 3. TX EQTR procedure is forced.
-+	 */
-+	if (!params->is_valid || params->from_dt || force_tx_eqtr) {
- 		int ret;
- 
- 		ret = ufshcd_tx_eqtr(hba, params, pwr_mode);
-@@ -1310,6 +1316,8 @@ int ufshcd_config_tx_eq_settings(struct ufs_hba *hba,
- 		/* Mark TX Equalization settings as valid */
- 		params->is_valid = true;
- 		params->is_trained = true;
-+		/* TX EQTR succeeds, clear from_dt flag */
-+		params->from_dt = false;
- 		params->is_applied = false;
- 	}
- 
-@@ -1495,6 +1503,11 @@ static void ufshcd_extract_tx_eq_settings_attrs(struct ufs_hba *hba, u8 gear)
- 	}
- 
- 	params->is_valid = true;
-+	/*
-+	 * Optimal TX EQ settings are retrieved from UFS device attributes,
-+	 * clear from_dt flag to avoid TX EQTR procedure.
-+	 */
-+	params->from_dt = false;
- }
- 
- void ufshcd_retrieve_tx_eq_settings(struct ufs_hba *hba)
-diff --git a/drivers/ufs/host/ufshcd-pltfrm.c b/drivers/ufs/host/ufshcd-pltfrm.c
-index c2dafb583cf5..5ac7afe75934 100644
---- a/drivers/ufs/host/ufshcd-pltfrm.c
-+++ b/drivers/ufs/host/ufshcd-pltfrm.c
-@@ -210,6 +210,158 @@ static void ufshcd_init_lanes_per_dir(struct ufs_hba *hba)
- 	}
- }
- 
-+static int ufshcd_parse_tx_precode_enable(struct ufs_hba *hba,
-+					  bool host_precode_en[UFS_MAX_LANES],
-+					  bool device_precode_en[UFS_MAX_LANES])
-+{
-+	const char *prop_name = "tx-precode-enable-g6";
-+	u32 num_elems = 2 * hba->lanes_per_direction;
-+	const u32 lpd = hba->lanes_per_direction;
-+	u32 precode[UFS_MAX_LANES * 2];
-+	struct device *dev = hba->dev;
-+	int count, err, i;
-+
-+	count = of_property_count_u32_elems(dev->of_node, prop_name);
-+	if (count == -EINVAL || count == -ENODATA)
-+		return 0;
-+
-+	if (count < 0)
-+		return count;
-+
-+	if (count != num_elems) {
-+		dev_err(dev, "Property %s has invalid count (%d), expecting %u\n",
-+			prop_name, count, num_elems);
-+		return -EINVAL;
-+	}
-+
-+	err = of_property_read_u32_array(dev->of_node, prop_name, precode, num_elems);
-+	if (err) {
-+		dev_err(dev, "Failed to read %s property, %d\n", prop_name, err);
-+		return err;
-+	}
-+
-+	for (i = 0; i < num_elems; i++) {
-+		if (precode[i] > 1) {
-+			dev_err(dev, "Invalid TX precode value (%u) in %s property\n",
-+				precode[i], prop_name);
-+			return -EINVAL;
-+		}
-+	}
-+
-+	for (i = 0; i < lpd; i++) {
-+		host_precode_en[i] = precode[i * 2];
-+		device_precode_en[i] = precode[i * 2 + 1];
-+	}
-+
-+	return 0;
-+}
-+
-+static int ufshcd_parse_tx_eq_value_array(struct ufs_hba *hba,
-+					  const char *prop_name,
-+					  const u32 max_value,
-+					  u32 values[UFS_MAX_LANES * 2])
-+{
-+	u32 num_elems = 2 * hba->lanes_per_direction;
-+	struct device *dev = hba->dev;
-+	int count, err, i;
-+
-+	count = of_property_count_u32_elems(dev->of_node, prop_name);
-+	if (count < 0)
-+		return count;
-+
-+	if (count != num_elems) {
-+		dev_err(dev, "Property %s has invalid count (%d), expecting %u\n",
-+			prop_name, count, num_elems);
-+		return -EINVAL;
-+	}
-+
-+	err = of_property_read_u32_array(dev->of_node, prop_name, values, num_elems);
-+	if (err) {
-+		dev_err(dev, "Failed to read %s property, %d\n", prop_name, err);
-+		return err;
-+	}
-+
-+	for (i = 0; i < num_elems; i++) {
-+		if (values[i] >= max_value) {
-+			dev_err(dev, "Invalid TX EQ value (%u) in %s property\n",
-+				values[i], prop_name);
-+			return -EINVAL;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+/**
-+ * ufshcd_parse_tx_eq_settings_for_gear - Parse static TX EQ DT settings for one gear
-+ * @hba: per adapter instance
-+ * @gear: target HS gear
-+ *
-+ * Reads the txeq-preshoot-gN, txeq-deemphasis-gN, and (for G6)
-+ * tx-precode-enable-g6 device-tree properties.
-+ * If all present values are valid, stores them as static TX Equalization
-+ * settings for the given gear.
-+ */
-+static void ufshcd_parse_tx_eq_settings_for_gear(struct ufs_hba *hba, int gear)
-+{
-+	bool device_precode_en[UFS_MAX_LANES] = { false };
-+	bool host_precode_en[UFS_MAX_LANES] = { false };
-+	const u32 lpd = hba->lanes_per_direction;
-+	struct ufshcd_tx_eq_params *params;
-+	u32 deemphasis[UFS_MAX_LANES * 2];
-+	u32 preshoot[UFS_MAX_LANES * 2];
-+	char prop_name[MAX_PROP_SIZE];
-+	int err, lane;
-+
-+	snprintf(prop_name, MAX_PROP_SIZE, "txeq-preshoot-g%d", gear);
-+	err = ufshcd_parse_tx_eq_value_array(hba, prop_name, TX_HS_NUM_PRESHOOT, preshoot);
-+	if (err)
-+		return;
-+
-+	snprintf(prop_name, MAX_PROP_SIZE, "txeq-deemphasis-g%d", gear);
-+	err = ufshcd_parse_tx_eq_value_array(hba, prop_name, TX_HS_NUM_DEEMPHASIS, deemphasis);
-+	if (err)
-+		return;
-+
-+	if (gear == UFS_HS_G6) {
-+		err = ufshcd_parse_tx_precode_enable(hba, host_precode_en, device_precode_en);
-+		if (err)
-+			return;
-+	}
-+
-+	params = &hba->tx_eq_params[gear - 1];
-+	for (lane = 0; lane < lpd; lane++) {
-+		params->host[lane].preshoot = preshoot[lane * 2];
-+		params->host[lane].deemphasis = deemphasis[lane * 2];
-+		params->host[lane].precode_en = host_precode_en[lane];
-+
-+		params->device[lane].preshoot = preshoot[lane * 2 + 1];
-+		params->device[lane].deemphasis = deemphasis[lane * 2 + 1];
-+		params->device[lane].precode_en = device_precode_en[lane];
-+	}
-+
-+	params->is_valid = true;
-+	params->from_dt = true;
-+}
-+
-+static void ufshcd_parse_static_tx_eq_settings(struct ufs_hba *hba)
-+{
-+	const u32 lpd = hba->lanes_per_direction;
-+	int gear;
-+
-+	if (!lpd)
-+		return;
-+
-+	if (lpd > UFS_MAX_LANES) {
-+		dev_warn(hba->dev, "lanes_per_direction (%u) exceeds UFS_MAX_LANES (%u)\n",
-+			 lpd, UFS_MAX_LANES);
-+		return;
-+	}
-+
-+	for (gear = UFS_HS_G1; gear <= UFS_HS_GEAR_MAX; gear++)
-+		ufshcd_parse_tx_eq_settings_for_gear(hba, gear);
-+}
-+
- /**
-  * ufshcd_parse_clock_min_max_freq  - Parse MIN and MAX clocks freq
-  * @hba: per adapter instance
-@@ -528,6 +680,8 @@ int ufshcd_pltfrm_init(struct platform_device *pdev,
- 
- 	ufshcd_init_lanes_per_dir(hba);
- 
-+	ufshcd_parse_static_tx_eq_settings(hba);
-+
- 	err = ufshcd_parse_operating_points(hba);
- 	if (err) {
- 		dev_err(dev, "%s: OPP parse failed %d\n", __func__, err);
-diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-index f48d6416e299..0f87b081b2ff 100644
---- a/include/ufs/ufshcd.h
-+++ b/include/ufs/ufshcd.h
-@@ -359,6 +359,7 @@ struct ufshcd_tx_eqtr_record {
-  * @is_valid: True if parameter contains valid TX Equalization settings
-  * @is_applied: True if settings have been applied to UniPro of both sides
-  * @is_trained: True if parameters obtained from TX EQTR procedure
-+ * @from_dt: True if settings are from Device Tree
-  */
- struct ufshcd_tx_eq_params {
- 	struct ufshcd_tx_eq_settings host[UFS_MAX_LANES];
-@@ -367,6 +368,7 @@ struct ufshcd_tx_eq_params {
- 	bool is_valid;
- 	bool is_applied;
- 	bool is_trained;
-+	bool from_dt;
- };
- 
- /**
+-	ppe->foe_check_time = devm_kzalloc(eth->dev, ppe_num_entries,
++	ppe->foe_check_time = devm_kzalloc(eth->dev,
++					   ppe_num_entries * sizeof(*ppe->foe_check_time),
+ 					   GFP_KERNEL);
+ 	if (!ppe->foe_check_time)
+ 		return -ENOMEM;
 -- 
-2.34.1
+2.51.0
+
 
 
