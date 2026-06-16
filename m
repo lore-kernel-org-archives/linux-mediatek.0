@@ -4,80 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D9CBCD98CF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2026 10:57:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1659CD98CF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2026 11:12:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=gAm1lQ7yhd4gX3+khTjc4usVeRGoKvzZrc6QCVuO7II=; b=Y2W3KPICJxHGCiz9HdOe1h/3i5
-	HlS8tvknMYKrnVyT4+7adGd4upj5RXypmM9FpIYyP7DJSPkeF7mOv4Zj2cBoUxnRu7xSzX/8CK1I8
-	AEWULgXCjCrEy8/rR30R5cKpyG3sybc9nbwg1bWjJiLM1usV11kn5x4qTyy4p8j/7sfkTz9IMbj0C
-	7t4ezprGQgOhJ4hcalVOrHqg4PiomtbPkdq9bFPfnLP4aTq0MIhK/RY9IkcGcMpEnehmMMqhYQXza
-	SiGWZm3whkHrNuPec5Nl2tHgxvatPUVWpUNeM6ICXlq6/CNVmfS4qfnlMYtaLlaY1D0mD6FqPEJdB
-	N3+Xmj9w==;
+	bh=DsaDqBODBOe0uQd4CZKQhSELJgMWAA7Q260cUecRjlk=; b=VhageDBXbYZ6r132PVvgg5tOrZ
+	mUytT950fvjR3B+tlrTYFOlFfOYm6H/+xrd4ohQ3rvftOJeyqb/5qw0iqbncPZDPfgeI/9o4c3/7Y
+	LVzyCavXalbmi9KdaDghEC4opzwXJk/9ZhZiM8UrM9ZCBR5BlkLzLrDYpp2fX/L+hiepydehZ7M5C
+	reKkP8gH/r+tRlWYRDtw/iW8aH9pQAiF6d6rNvtVM+6aqeVlbIoCYGAbJEIYhk+yypmR6PQI7V8oZ
+	VPjcEwM9dyFkCr2f+MB7JnmuMDaf3Sdb2x3FVoDzW8vEzJBp2/ZRsj8uKPWkRa9wZKa41xMb+ZFe/
+	WIoPz2rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZRUP-0000000Fe7M-1ioR;
-	Tue, 16 Jun 2026 10:57:53 +0000
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+	id 1wZRiv-0000000FeyP-0Xo5;
+	Tue, 16 Jun 2026 11:12:53 +0000
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZRUM-0000000Fe6V-43lg
+	id 1wZRir-0000000Fewq-2cJO
 	for linux-mediatek@lists.infradead.org;
-	Tue, 16 Jun 2026 10:57:52 +0000
-Received: by mail-pj1-x102e.google.com with SMTP id 98e67ed59e1d1-36ba706ab46so2804548a91.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 16 Jun 2026 03:57:50 -0700 (PDT)
+	Tue, 16 Jun 2026 11:12:51 +0000
+Received: by mail-pf1-x432.google.com with SMTP id d2e1a72fcca58-8424b6792efso1827233b3a.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 16 Jun 2026 04:12:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781607470; x=1782212270; darn=lists.infradead.org;
-        h=mime-version:message-id:date:subject:cc:to:from:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=gAm1lQ7yhd4gX3+khTjc4usVeRGoKvzZrc6QCVuO7II=;
-        b=SeBBTPKRZUzmLVfj+OwRmiI778wkirsRDY8LzFpkUmMEw9pl43p3rF6eeGifMW4cRt
-         8R8VWoB/CXr/fYnjstrIBATPtaQhYUJ800KO6PFS0T865qWg31lF3YgBdCpIc1p98eFF
-         4iKSj2+wpazmx2DHmhVkY0fNV7zGR7slUv1v/8iW5gdCByo1IQhOA4fuWFWTJ0j2Vs6O
-         1Y7jX8c8IieydywD0OdZIiUu8i1neIVn+43Xp8qxZhLt9n8EiS0e5lD9rzSmr46C2TRJ
-         nmng0EwE71QWZt+VDFk6vCn+9gs8R3PTZuk1+V5Mi4x8LorrSfItXv6/DTIwx7efABsZ
-         PqIQ==
+        d=chromium.org; s=google; t=1781608368; x=1782213168; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=DsaDqBODBOe0uQd4CZKQhSELJgMWAA7Q260cUecRjlk=;
+        b=k+S0b0WbEmPP/MyhEaP+goelQWiudgAxBgj2bsRxR6GgsJYol3dpvKSmZTPO+J3qdd
+         EUvhyQPa6Tajb+f3dZ9C5cGjVVrSGPtlUG0gk+e25djaQHhZuVD9LYjAlM0K68QLZnab
+         dwC3pljbF9sua4XS+zwbdiX9M3Z4FoS7j+s6o=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781607470; x=1782212270;
-        h=mime-version:message-id:date:subject:cc:to:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=gAm1lQ7yhd4gX3+khTjc4usVeRGoKvzZrc6QCVuO7II=;
-        b=YWFkB2B9XqZTl+BQK5kDeIJjxOiNWuwh01dWW8anKetPjy8QI3V2dFXPk+YZo4FN3A
-         AJZWLDf19kb9EFZcHwMCCzNWocQ3TO03Ge7G2DOXyzSQ5vQq/sM4HNgf8EuweOd0DAXt
-         7ld6t24U2tep6q9FgARYuJftkpYOcKGQAOa4i1NangE7WDr8VfTnDfyAqiLOv5p1tbiY
-         DgsyjiZczvg+9Q5eJ9I1PP8tlC1Eq2yUUTQOuzqcUy6faPZOCchHOW2Iq1RLtXrsR4Vl
-         X+CAGmCGjMV7CHnnvyeDOPllK96g05GapXIAjliDkonkC25RGQ9GjHSBWO20e/OnCxfG
-         K1PA==
-X-Forwarded-Encrypted: i=1; AFNElJ84vm0xSCm4VQDc0YIGBfyEUFjCwNgOtG2MzIPL7JBBQmXZovj1VNorFZbu8iA5gwtg1EeB9ilTSKKCpSkjRQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx4eAQMxMUt/V8ntC2gAXsKx+eDqNw9LFhRQMvfs1punA3Oyy0N
-	2364wj6h9eKulu94XsYzlUqzY44/VINFZCvKhF0mCBpcRNlD2KsCZoQl
-X-Gm-Gg: Acq92OEYpvF/ZdI0QbVY0H9AKw6Er2VWF+5HTXSz1SeRRpVbxcnvinlqIcs7Sv9lM48
-	lnyv9TIYufFYJI9AHznvCbqVG1bnwwo9lzwNAvoaxNW0gJaZVGBwWkFgdl/8yMMO2Ch7jZmHAPw
-	IHIuR4ZuArpzqn/MRihu0Wk8UVZHoUxu5uyrcNI1CsWGFoBpD6wJ3l4icYpM9FxRuVbaWBrsV+a
-	TxB3otICn2o0XRzP/F2H02Z5rwfHqr1IjHVQ8afNBjWCwaBRUUmZ3uePI5jrMpVdYnEzlVqHa2X
-	du43ffomB+T8qwdWE/SgLnHla0GOo346Z9ODkF1b33cyDGml4Qs0qyVfXgDRAdBqqWfv37Mf0dx
-	KNCabk49q28v6eWb+WHbaGq7MDJ/VaGE3UR/wdABClxjOdKW5wXO9z6ZcVP2+RzwrdFf7XuWDDB
-	FrZJrhUgH+sl/2RmqCSOyPmfASo18=
-X-Received: by 2002:a17:90b:1fc7:b0:36d:633a:e8aa with SMTP id 98e67ed59e1d1-37c528e0095mr3107649a91.13.1781607470166;
-        Tue, 16 Jun 2026 03:57:50 -0700 (PDT)
-Received: from [127.0.1.1] ([47.253.114.73])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-379e79396d7sm9849057a91.1.2026.06.16.03.57.45
+        d=1e100.net; s=20251104; t=1781608368; x=1782213168;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=DsaDqBODBOe0uQd4CZKQhSELJgMWAA7Q260cUecRjlk=;
+        b=EfgUsq8iDQTvBKQdxBfZ5uB1X+1z1F3fLml/JoSsRsCGoO+zwZfnWiJECRy4HZlS5c
+         33pCHEtjk0Rdirnrp0pFCaksKNqT+JhssjvxqlGp7FR5lEjW9YyDicyTshodPornXz+o
+         nGk+wijozatHKF/EkYw8IWAkTJ/ZnIFE41eK3s3sgYIIwUQH8Vvm6uyLt3UgAk00H7vF
+         m2arAtg4sUq5b5bjDFsJwI+pQgw8MHqCEXyw1qStXjDeHR44lgqHPDYCwkug+giKmoNB
+         CpD9LscK5DiTOr4mZ9/o+Od0DXYpipjrSxljc66NoLZ0WbF+KM/R4QnQzN7zqemzzPgC
+         vpLg==
+X-Forwarded-Encrypted: i=1; AFNElJ/JzeyrZNZGsfb9UOns6JZXnESZzAX2+tQWD/uaIevq0A+e9e/3uLjDm6Ubu8/NSdd6Hf+9+oLFPl+0KtVsBg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YywP/ItEzPZosgx7ODbxwBZw9gzdjo1wwlpdv5349PqTvkO6WL8
+	KMHhz7aCnzRN5EiSNDOCCJZieKrDxAG3RXBfidC+pSDCZUlinpbMUaClF4aMAOoieA==
+X-Gm-Gg: Acq92OFjZKeLxh/97Ku2MwfEK2On1ep/xCQvj6WEJDqbJjDZ2Hm12mVqPLIWeU1onaY
+	hXXc7WqwNILdBKqLxBp+dZsiLieqmK/Qo9CTSZ4fuXygI3uBxlSg7aTSjUfwci6Bd6gnzuQIzn3
+	N27JkasvvW9zsAqoHzBSosh9p9e7/1sCqw8N2DpTATDlPJN6zWI+l4I1UVoTSan0MvktExxMCYx
+	OXXlYPyIoNZ6jGLCC4PB/3G3vF9imQiQtGTo5RqROa1Am1iKrEsz+pNapks3ECr08YA3Q0xrMN5
+	O+T0W+KaHlBO3JQQ0SuhzKXSrmXaHrzIp+nrc8CAWun4CvR8WFFagPETpWbCug9H66ry7xreJ+t
+	usyH+SNOk0KZ3tvvxUkLDIMChYP13JO5h+/2KSfVFNLQB7qfkNPiJAjNa1KDm/HLkP2jnqRQuAr
+	59d1FMPtXhPaZ6cU7Qz1MmkJEN/kylKniNYoc1xMA2jqG/IvywknfvshsWo/elO/MyiC8zktRl2
+	h/YUzQhQZjiJLmQUJ5YdNo=
+X-Received: by 2002:a05:6a00:3691:b0:842:4af4:3099 with SMTP id d2e1a72fcca58-844e1998f75mr15786071b3a.20.1781608367732;
+        Tue, 16 Jun 2026 04:12:47 -0700 (PDT)
+Received: from tigerii.tok.corp.google.com ([2a00:79e0:2031:6:a0b:fabb:5b62:b85b])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-8434b05921bsm12906321b3a.59.2026.06.16.04.12.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Jun 2026 03:57:49 -0700 (PDT)
-From: Wayen Yan <win847@gmail.com>
-To: netdev@vger.kernel.org
-Cc: lorenzo@kernel.org, horms@kernel.org, pabeni@redhat.com, kuba@kernel.org, edumazet@google.com, andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH] net: airoha: Clean up RX queues in airoha_dev_stop
-Date: Tue, 16 Jun 2026 18:50:48 +0800
-Message-ID: <178160746585.2156302.190868309474762875@gmail.com>
-Content-Type: text/plain; charset=utf-8
+        Tue, 16 Jun 2026 04:12:47 -0700 (PDT)
+From: Sergey Senozhatsky <senozhatsky@chromium.org>
+To: Marcel Holtmann <marcel@holtmann.org>,
+	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+	Mark-yw Chen <mark-yw.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>
+Cc: Tomasz Figa <tfiga@chromium.org>,
+	linux-bluetooth@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Sergey Senozhatsky <senozhatsky@chromium.org>
+Subject: [PATCH v2 0/3] Bluetooth: btmtksdio: teardown fixes
+Date: Tue, 16 Jun 2026 20:12:05 +0900
+Message-ID: <20260616111224.152140-1-senozhatsky@chromium.org>
+X-Mailer: git-send-email 2.54.0.1136.gdb2ca164c4-goog
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260616_035751_029140_D4159977 
-X-CRM114-Status: UNSURE (   9.72  )
+X-CRM114-CacheID: sfid-20260616_041249_782939_309AEC98 
+X-CRM114-Status: UNSURE (   7.21  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -93,41 +101,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When the last port is stopped, airoha_dev_stop() clears TX queues
-but neglects to clean up RX queues. This can lead to:
-- RX ring buffer descriptors remaining valid after device close
-- Potential DMA synchronization issues on device reopen
-- Risk of use-after-free if pages are freed while DMA is still active
+This is v2 of teardown fixes.
 
-Add cleanup loop for RX queues to mirror the TX queue cleanup,
-ensuring symmetric resource management.
+We noticed a number of cases when btmtk close/teardown would hung:
 
-Fixes: 20bf7d07c956 ("net: airoha: add QDMA support for Airoha EN7581 Ethernet")
-Signed-off-by: Wayen Yan <win847@gmail.com>
----
- drivers/net/ethernet/airoha/airoha_eth.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+     INFO: task kworker/u17:0:189 blocked for more than 122 seconds.
+     __cancel_work_timer+0x3f4/0x460
+     cancel_work_sync+0x1c/0x2c
+     btmtksdio_flush+0x2c/0x40
+     hci_dev_open_sync+0x10c4/0x2190
+     [..]
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 31cdb11cd7..9ca5bbf64d 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -1771,6 +1771,13 @@ static int airoha_dev_stop(struct net_device *dev)
- 
- 			airoha_qdma_cleanup_tx_queue(&qdma->q_tx[i]);
- 		}
-+
-+		for (i = 0; i < ARRAY_SIZE(qdma->q_rx); i++) {
-+			if (!qdma->q_rx[i].ndesc)
-+				continue;
-+
-+			airoha_qdma_cleanup_rx_queue(&qdma->q_rx[i]);
-+		}
- 	}
- 
- 	return 0;
+There are several issues with the teardown (close/reset) code
+in the driver.  First, the btmtksdio_txrx_work() potentially
+can spin forever (infinite loop).  Second, close/flush can
+deadlock when run concurrently with btmtksdio_txrx_work().
+
+v1 -> v2:
+- added two more patches (deadlock fix, interrupts re-enabling
+  enhancement)
+
+Sergey Senozhatsky (3):
+  Bluetooth: btmtksdio: correct btmtksdio_txrx_work() loop timeout check
+  Bluetooth: btmtksdio: test for bug IO errors in btmtksdio_txrx_work()
+  Bluetooth: btmtksdio: call cancel_work_sync() outside of host lock
+    scope
+
+ drivers/bluetooth/btmtksdio.c | 18 ++++++++++++++----
+ 1 file changed, 14 insertions(+), 4 deletions(-)
+
 -- 
-2.51.0
-
+2.54.0.1136.gdb2ca164c4-goog
 
 
