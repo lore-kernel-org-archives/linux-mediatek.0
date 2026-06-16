@@ -4,81 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24871CD98DA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2026 12:06:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7126CCD98DA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2026 12:34:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=2mnBr3tjwuDiPitMGmjjZXJEZ7evFYqDmAUAvxZYdi0=; b=sWaxKrVyT+dyzbMEigPWpC8fim
-	RbhjLNpwubgJXetS/2OA+Kj0fyOBhkr27V6Gv/PcniN17fhTLqP6DMhh0RD+5hlcPuko+JVQ0WlBp
-	4R3SasndP+kSI8nrC5T2eCumksLcLTDm4zJLIlEcezJgLNa3oZ/r7wp10wtsheP9P5pPwJgPdb4Dg
-	Sxe0XXlGsj2+Ut3YO57EoT0uJin/v0wds9oMLnfGfBFirWvCxAX1OgcjFrncmlYLFYVXq7YJoATB9
-	4umf2/FLqH3DNoUE2Hn5vAEFtmfwtKgE17hjrkY1WAA6DLfe5ffzunRcFShVrbVbkwOXRurhAhRAJ
-	qKhqh50w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AU0Gj7255AvQ5CwD1pZx8WKNH581mx4ihVIONMOZiTA=; b=C+6QSPjZkdPHVOXCdQK8yQc3dN
+	bv6JRvJgEntsFz/AaPvspxbs/jXehr7UIfq66xzdNoe4/njY8HuM6sGO8289MY0w6+ew6hx2mq599
+	pMB21ZEecciaZlfXbdQv/5EBZE1EUuB3U7vP72RGoFiui+ivf69GtaxvDVlgrkKwHcpYNhwnYrZu7
+	9HFw9i61I93qSoRikDE2d2v07MMsa/XZBLnjoXgJQ4v+3oZGZzKNPDbrakgJjKPwUAkbR2s29Kdb9
+	ttKkc+xK54iFoVKdI4+ugkp8tqqJILpVcwtA0HzVDok1E6Gz1q/RD5mH9rj55Rx2pNMg9hMSQtiWQ
+	GluHZJAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZSZ9-0000000FkB2-268y;
-	Tue, 16 Jun 2026 12:06:51 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1wZSzW-0000000FlRH-0CWG;
+	Tue, 16 Jun 2026 12:34:06 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZSZ5-0000000Fk9l-36g8
-	for linux-mediatek@lists.infradead.org;
-	Tue, 16 Jun 2026 12:06:49 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-2c0c2a68d01so28220705ad.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 16 Jun 2026 05:06:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781611607; x=1782216407; darn=lists.infradead.org;
-        h=mime-version:message-id:date:subject:cc:to:from:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=2mnBr3tjwuDiPitMGmjjZXJEZ7evFYqDmAUAvxZYdi0=;
-        b=VNUyIpHAoaS7x5k8IsvtyZldWxF2yvdGaBJiPWYESLppKcVGp5t2bNtH9IyNxf0D97
-         tVAuU5E3QlybKvtZyQqzckwdWzYZa6UOlR10jsMfSAEccU5JIh3b/0wlkUweADQWXCOh
-         //y5+DzQFd8NbTVlhNHWh2o2uLIc3zObwzbOxlc+z3PyIA/zyDoG9UolAM8SMafJmsuw
-         R2Oxl032WcdDsxAU7djr0kYVsRDzG3kmPdsrVGyWFGfKzUlXEfAqTDSpG6oBBrkybtow
-         NkPj15DOnZ+RCDMHYKDRQQ7J63/ePT5IZc2mFf3dWCn66EfIUe7qScvomIFbrSmoTpWE
-         CxrQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781611607; x=1782216407;
-        h=mime-version:message-id:date:subject:cc:to:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=2mnBr3tjwuDiPitMGmjjZXJEZ7evFYqDmAUAvxZYdi0=;
-        b=MVNxX+lHWd7floWyY1LhrQ7P5KANSkfy3Qmd8c7IJvJD3X3jXjOTlKAVWegxhqucO3
-         sGGaD8fk2MHRhO98ZXoKD1/hbSQSJzcVrgZcugrFwlLXGelBOgA2rBhbZb04Q0D8SFPF
-         JkZhAP+GT07nQZo3KonPRtnrMVKcpSTo/59Fo1SeBl+yZo2vyZU3Fbztnp/hEwEjh51X
-         F2dwOQrl6KTJH0SqflAiOinUV7+GtFcNSZN0IyMO14eIlMLk3znWlzsHvxAg1VK+E1Mp
-         z02evtUJCjQ9UYrgVB07EPaK0HXoq1at7wxpkUq1p7yBvuVlRPlFhhgyVZyKqpxrEnjw
-         dwHA==
-X-Forwarded-Encrypted: i=1; AFNElJ9tzqqx0nSWSYhIm13Z9CCSkrIL+Ol7iDmHFDbgwxn0bpvdrytTwVPr2BaHtpOZvNBYzT7jwT8YOVGrFN15lQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz3cnva6NH7H7iB8yX9uRIhNxLiyHw6K3eqiDD2/5/Sb88X6LJ4
-	pw6v7RIkkSTuNjS1E8sfXAGK4x6yumMn0mlLv44TEYcK0TjA4qCIGU8P
-X-Gm-Gg: Acq92OHkLamkuMzESQxRCaPTyLevdhuFy1TKvIRyS0wyOCNsHzDi+lPoPbblsqKD5/4
-	mYxtHQqphOIFBgTeDqPO1rL4kSejV/GAPulJhGAQ3x2uVK85QUOBp7ERfCLcOUqsAWvimYIXU66
-	cXyoN1ifWX/Co5t3tOR82LTg/7sx1Yg7kp7Skg5z+fPwbwWCveEB3fwNmM6achW12zUoFjaRFoC
-	DixHk3EAFECGmRGgJPmsyajYXNe3yy6CVkaNOzJ6UVkWHs5cb66VjWr2s6RUz2Fcxtth6lnVQnq
-	5vHVpUkbDvoV2cdTxHUXSQiKqi6JBiyt2KjFRJL6v6vtXAnRwvtXcBfg7Qe8hZq947WfzcxNiJA
-	N4MuGrkfw5tq/KybMeblC/e6HkkOGw+Zc5MHDdOBST/Z1QeCl22zgSvtp15yIKsQK8TxYN8LvoD
-	sA2z0AwTKSzJ4en8Rj
-X-Received: by 2002:a17:902:f549:b0:2c6:96f3:96a6 with SMTP id d9443c01a7336-2c69a1d15f8mr33933655ad.37.1781611606918;
-        Tue, 16 Jun 2026 05:06:46 -0700 (PDT)
-Received: from [127.0.1.1] ([47.253.114.73])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2c4328abe7bsm126562735ad.49.2026.06.16.05.06.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Jun 2026 05:06:46 -0700 (PDT)
-From: Wayen Yan <win847@gmail.com>
-To: netdev@vger.kernel.org
-Cc: lorenzo@kernel.org, horms@kernel.org, pabeni@redhat.com, kuba@kernel.org, edumazet@google.com, andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH v2] [net] net: airoha: Clean up RX queues in airoha_dev_stop
-Date: Tue, 16 Jun 2026 18:50:48 +0800
-Message-ID: <178161160256.2165161.14322392784449633554@gmail.com>
-Content-Type: text/plain; charset=utf-8
+	id 1wZSzT-0000000FlR3-2Yo8;
+	Tue, 16 Jun 2026 12:34:03 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id EB8F3440CE;
+	Tue, 16 Jun 2026 12:34:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 513B81F000E9;
+	Tue, 16 Jun 2026 12:34:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1781613242;
+	bh=AU0Gj7255AvQ5CwD1pZx8WKNH581mx4ihVIONMOZiTA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=ORbZDDXRXZDF5r27bqtCDyNWhYxW83M3PZV1M1XhHFzVDjuThzl/q2lyxnx6ZOHdB
+	 W96WTV8hCRBbFpX/UEh0SJaYf05GYlJmmpmEHPbkGmD/nFqQSRVQzAvb4X90qrElQb
+	 NFNztCewp7PGZ5DDafiMXFX9gmcDig48e5TK3fpvdD5B6DcVKK1L0jgDlr+HtfN0KI
+	 rRl8vBqimk7bMiiOa29i5hVKTKfzz5VfZe0xzDxuQp1DA1cY3/WFZPeQCrlApOLQJj
+	 9hqrRnv4pKQNGHQJZwjW7vBfET+jVp4gRwR5rUYAv74Tg6Z9sFCCgMd4tHJkMojTvZ
+	 JRO000ngSqyRQ==
+Date: Tue, 16 Jun 2026 14:34:00 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Wayen Yan <win847@gmail.com>
+Cc: netdev@vger.kernel.org, horms@kernel.org, pabeni@redhat.com,
+	kuba@kernel.org, edumazet@google.com, andrew+netdev@lunn.ch,
+	angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2] [net] net: airoha: fix foe_check_time allocation size
+Message-ID: <ajFCuOEGT0iJttOh@lore-desk>
+References: <178161119471.2163752.14373384830691569758@gmail.com>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260616_050647_844046_855D6A56 
-X-CRM114-Status: UNSURE (   9.74  )
-X-CRM114-Notice: Please train this message.
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="hWXa442R11LoZs39"
+Content-Disposition: inline
+In-Reply-To: <178161119471.2163752.14373384830691569758@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,41 +71,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When the last port is stopped, airoha_dev_stop() clears TX queues
-but neglects to clean up RX queues. This can lead to:
-- RX ring buffer descriptors remaining valid after device close
-- Potential DMA synchronization issues on device reopen
-- Risk of use-after-free if pages are freed while DMA is still active
 
-Add cleanup loop for RX queues to mirror the TX queue cleanup,
-ensuring symmetric resource management.
+--hWXa442R11LoZs39
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 SoC")
-Signed-off-by: Wayen Yan <win847@gmail.com>
----
- drivers/net/ethernet/airoha/airoha_eth.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+> foe_check_time is declared as u16 pointer but was allocated with
+> only ppe_num_entries bytes instead of ppe_num_entries * sizeof(u16).
+>=20
+> When airoha_ppe_foe_verify_entry() is called with hash >=3D ppe_num_entri=
+es/2,
+> it writes beyond the allocated buffer, causing heap buffer overflow and
+> potential kernel crash.
+>=20
+> Fixes: 6d5b601d52a2 ("net: airoha: ppe: Dynamically allocate foe_check_ti=
+me array in airoha_ppe struct")
+> Signed-off-by: Wayen Yan <win847@gmail.com>
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 31cdb11cd7..9ca5bbf64d 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -1771,6 +1771,13 @@ static int airoha_dev_stop(struct net_device *dev)
- 
- 			airoha_qdma_cleanup_tx_queue(&qdma->q_tx[i]);
- 		}
-+
-+		for (i = 0; i < ARRAY_SIZE(qdma->q_rx); i++) {
-+			if (!qdma->q_rx[i].ndesc)
-+				continue;
-+
-+			airoha_qdma_cleanup_rx_queue(&qdma->q_rx[i]);
-+		}
- 	}
- 
- 	return 0;
--- 
-2.51.0
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
+> ---
+>  drivers/net/ethernet/airoha/airoha_ppe.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ether=
+net/airoha/airoha_ppe.c
+> index 5c9dff6bcc..8fb8ecf909 100644
+> --- a/drivers/net/ethernet/airoha/airoha_ppe.c
+> +++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+> @@ -1578,7 +1578,8 @@ int airoha_ppe_init(struct airoha_eth *eth)
+>  			return -ENOMEM;
+>  	}
+> =20
+> -	ppe->foe_check_time =3D devm_kzalloc(eth->dev, ppe_num_entries,
+> +	ppe->foe_check_time =3D devm_kzalloc(eth->dev,
+> +					   ppe_num_entries * sizeof(*ppe->foe_check_time),
+>  					   GFP_KERNEL);
+>  	if (!ppe->foe_check_time)
+>  		return -ENOMEM;
+> --=20
+> 2.51.0
+>=20
+>=20
 
+--hWXa442R11LoZs39
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCajFCuAAKCRA6cBh0uS2t
+rJMyAP0XT8469xm0evPWy2tNpY3Hl1oAlHZBX0cU5FrHDnoG/QD+IdvSSfUcOGbL
+7vS6dZq7Uv9cqvghkCSPUUQf1TxLUQE=
+=AVaX
+-----END PGP SIGNATURE-----
+
+--hWXa442R11LoZs39--
 
