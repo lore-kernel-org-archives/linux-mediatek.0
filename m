@@ -4,60 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AFEFCD98DA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2026 12:45:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 035BACD98E1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2026 13:39:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RSxvpTbCusWvzxxh+O+6AIb5tE3WgMP54vCTbFP+AEs=; b=xSaqiezgP9kPJn/gVkCPNXbdAn
-	xH1eB+NC6Y1RA3PItI8g5qsUeMqMcJTZqiVZMXuA2KnjwZWxzeXfkyRM/z4wWTuZYQ5RtPl01L5f6
-	J3g8joIbTByek2OZ79OmF+2AMf803XmPDgIjEVtQ32SoQOzZ8JlJLfNx+d30X80Dt19LVs3faYN52
-	ZuBNBhoxDgYwSQ/fBUoegtRy0Kjzdcnc+OabuZ2yD7hsXTRheqlYVCVmcbsz6u1WSmJA5n4Ogwls7
-	nJ+WC49gRzs6KVhLSggwgdHq2o+VoO1R+CjVCN7uZlGbWIYgN2zYqRmYaRmtBSwCSylv3CDCo8/8X
-	v9BAkR9g==;
+	bh=I1IUW0YuXoQNF3mkk4e2D/l4Tl4n61zrxX8gulenhgs=; b=xYl5EVU5CaOY/8rDJ08NV5A7Pk
+	0Snh0dKu9MLQ3NIOOB/NZHwKkKmQs+Dw3HCmlLqh44amoGL66/8IsDJTQ5OJaOSu/ZuYkRSvuEh5L
+	YiJrUNfkyBOWrf2VJeC0zQj5B/QvdPbQxB7wHQW00cSYyBjNbrrwlUWBQe+vEuHBHS60IKlMZ/1jl
+	zrk6uuwvEcJgrAJjgCd674WRk9MYU03qaZQm39i3aMMEENOODm8aVZIeFV5ccgtFh8ZDTLNaUytxh
+	kyPirfdWh770+2DIesq5+G3zu5CQV8SEfV+IPLnrtHTM8l3gCDFKjPRJ8i8xTlmknRRyj0uNuuXOC
+	KLIyX31Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZTAD-0000000FmoY-1fmZ;
-	Tue, 16 Jun 2026 12:45:09 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wZU0i-0000000Fr5P-3WeF;
+	Tue, 16 Jun 2026 13:39:24 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZTAB-0000000Fmo6-0GWq;
-	Tue, 16 Jun 2026 12:45:07 +0000
+	id 1wZU0h-0000000Fr4l-0TPN;
+	Tue, 16 Jun 2026 13:39:23 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 96C564343C;
-	Tue, 16 Jun 2026 12:45:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EEA611F00A3A;
-	Tue, 16 Jun 2026 12:45:05 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 0EAB1600BB;
+	Tue, 16 Jun 2026 13:39:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 95F1E1F000E9;
+	Tue, 16 Jun 2026 13:39:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781613906;
-	bh=RSxvpTbCusWvzxxh+O+6AIb5tE3WgMP54vCTbFP+AEs=;
+	s=k20260515; t=1781617161;
+	bh=I1IUW0YuXoQNF3mkk4e2D/l4Tl4n61zrxX8gulenhgs=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=J5ySzhETylCMwlWJqWi2xiHpCYAbtxTalJzbQ1tiNxnXEXXmlpUF5s76yDrsFT+Th
-	 un+UlxxuV43H3KlRjBS7KXnq2/Tfmq9E0BYvkJAFkT0O9Ox7j1qqiwdDFDV9Jw740T
-	 knJ3VMAcrqOIDJj0JU1BgIGuVZ+Q0rnNwOuldLegv0CiqvLjQArC/1Yh0izAiP1296
-	 uheO3IjE4eXUngi/GISPMiOliLxR+Wd4VDtTXIPkLwr5hMlTxX2e6c4O9wPnRdtEGN
-	 +4oADLKrPsimhEzMF/FByaXU/7CqXjgwBEQXgqGFWUe5oBIcB+uyRmgC3OqTD0yAf8
-	 XEfLMicbv1dFw==
-Date: Tue, 16 Jun 2026 14:45:04 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Wayen Yan <win847@gmail.com>
-Cc: netdev@vger.kernel.org, horms@kernel.org, pabeni@redhat.com,
-	kuba@kernel.org, edumazet@google.com, andrew+netdev@lunn.ch,
-	angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2] [net] net: airoha: Clean up RX queues in
- airoha_dev_stop
-Message-ID: <ajFFUFgsd9KDvdGy@lore-desk>
-References: <178161160256.2165161.14322392784449633554@gmail.com>
+	b=XVV1whSQWB41WuVV1r4v3yYfSlR3mLMRp55Cntega8SxOjPogc0mfXP8WT+uhaSJW
+	 JgCbQud8QVViPyJM3lGeIUU6b82GiuTGTzcoAmAacoo7rIgx0JPvUZFtEml/CpqtN3
+	 GDzWakcjqblyxEXbrRmCuU7IsJrdoP2LBmUMawy1hmOGk4t3c2dYOoAlXqxLRKbqyy
+	 2+4dFRnTFIveE6FMeVdpY+8W3kkHhtgZ1/5/Myy8nh4U0GRbtPuozs5iqmIaQlSvbO
+	 6tYm4XgttPiE+yDwx/dTSL7MgsX3vQMCtp+2qOcKdL+I2WpaErWkhn0N1ROZeI7qEK
+	 ESYhQD8eAGkhw==
+Date: Tue, 16 Jun 2026 08:39:18 -0500
+From: Rob Herring <robh@kernel.org>
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, Val Packett <val@packett.cool>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>, Linus Walleij <linusw@kernel.org>,
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+	Julien Massot <julien.massot@collabora.com>,
+	Fabien Parent <parent.f@gmail.com>,
+	Akari Tsuyukusa <akkun11.open@gmail.com>,
+	Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-gpio@vger.kernel.org
+Subject: Re: [PATCH v7 9/9] arm64: dts: mediatek: Add MediaTek MT6392 PMIC
+ dtsi
+Message-ID: <20260616133918.GA2335264-robh@kernel.org>
+References: <20260615071836.362883-1-l.scorcia@gmail.com>
+ <20260615071836.362883-10-l.scorcia@gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="oUOTYG3fwkRvybn7"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <178161160256.2165161.14322392784449633554@gmail.com>
+In-Reply-To: <20260615071836.362883-10-l.scorcia@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,82 +85,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---oUOTYG3fwkRvybn7
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Jun 16, Wayen Yan wrote:
-> When the last port is stopped, airoha_dev_stop() clears TX queues
-> but neglects to clean up RX queues. This can lead to:
-> - RX ring buffer descriptors remaining valid after device close
-> - Potential DMA synchronization issues on device reopen
-> - Risk of use-after-free if pages are freed while DMA is still active
->=20
-> Add cleanup loop for RX queues to mirror the TX queue cleanup,
-> ensuring symmetric resource management.
->=20
-> Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 =
-SoC")
-> Signed-off-by: Wayen Yan <win847@gmail.com>
-
-when you send a new revision:
-- please add a note of what you changed with respect to the previous one.
-- please give some time to reviewers to take a look to the previous revisio=
-n.
-
+On Mon, Jun 15, 2026 at 09:16:15AM +0200, Luca Leonardo Scorcia wrote:
+> From: Val Packett <val@packett.cool>
+> 
+> Add the dts to be included by all boards using the MT6392 PMIC,
+> providing support for regulator, keys, pinctrl and RTC.
+> 
+> Signed-off-by: Val Packett <val@packett.cool>
+> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
 > ---
->  drivers/net/ethernet/airoha/airoha_eth.c | 7 +++++++
->  1 file changed, 7 insertions(+)
->=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
-net/airoha/airoha_eth.c
-> index 31cdb11cd7..9ca5bbf64d 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -1771,6 +1771,13 @@ static int airoha_dev_stop(struct net_device *dev)
-> =20
->  			airoha_qdma_cleanup_tx_queue(&qdma->q_tx[i]);
->  		}
-> +
-> +		for (i =3D 0; i < ARRAY_SIZE(qdma->q_rx); i++) {
-> +			if (!qdma->q_rx[i].ndesc)
-> +				continue;
-> +
-> +			airoha_qdma_cleanup_rx_queue(&qdma->q_rx[i]);
-> +		}
->  	}
+>  arch/arm64/boot/dts/mediatek/mt6392.dtsi | 75 ++++++++++++++++++++++++
+>  1 file changed, 75 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt6392.dtsi
 
-I do not think this patch is needed since there is no point to remove all t=
-he
-RX buffers from the hw RX queues stopping the device, this is necessary just
-removing the module (I think we can avoid it for TX too, I have a patch for=
- it
-I need to post).
-Moreover, doing so, when the device is opened again, RX queues will be empt=
-y.
+Nothing is using this so it is a dead file that doesn't get tested.
 
-Regards,
-Lorenzo
-
-> =20
->  	return 0;
-> --=20
-> 2.51.0
->=20
->=20
-
---oUOTYG3fwkRvybn7
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCajFFUAAKCRA6cBh0uS2t
-rEYHAQCdVSubIzZ2cVft7kjoGjr/zu7URV9JU3sxY5jp8tVr4QEA7hR72xCrHK/G
-RBtj7gTHqoSlUgRBVIgKNfP494jhvAU=
-=a8N+
------END PGP SIGNATURE-----
-
---oUOTYG3fwkRvybn7--
+Rob
 
