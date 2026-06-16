@@ -4,123 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6DBDCD98E1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2026 14:38:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0870BCD98E1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2026 15:14:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eFhyPpcewz99R1eMaL1v0Y411PF2xXadTNs4TZuGD88=; b=ux825W2P7uCeW/fSpqB4oWKBGw
-	2Zs3O/RnEUr2I+dWMXFrVvYXxHLFwgLsrRfHSW2k3UMqB1O6OclDfq/knaRzUYo3EZmn7TQRo8cSI
-	+z0br4tSvvYS902NUq/30k+V8V0MlTz6+ENqVAl3OyON6tPFMY3xiMTRKB9ryiHVPoOSsoAY8LUUz
-	QvpgtYBOnN3D8hcIDlKN9vq1+q2rajZ7O9jR5JAaLECz3z7BFUkS/PG+WSA57rD97a1JpXiDf2VsH
-	6kKw1wlFGyn7mHBYe+bnByTPaoz1YDmUzSEn/f9wqSDSGBkNBYbc4EFgdqEvlCDKE1DbgakKXqVo3
-	Sz9Jh7YQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=k4sF5WpVzdEyVtuQeIw9MyeysNuky4T6E+XmpN9EmF8=; b=Euzs0W4OK3RmDpsNBIQecWoXRp
+	7T9vkrKntAUOE7eCN6W7D6ZwNYA4U/q4FIVyFVuMdVh6dhiDKVRLOylANJsrxtH+HnrIYClW8CXYn
+	ICVROt5pDzuzhvWvu4EmN8Ai3CO2E7zbLNkEGVInW3C6W8NvW6OfpYG1eUrMvCA69SgpvoUqKH8As
+	qBouFuKY2p+GUN/27m+M/9Fr/7Yt8eo62wpyliqQfig/XYuF0Kc593dUKlGwYjcpk5vlzFxKxdXDP
+	rZoXsyMoSv0zlstougYBL012Nd1V1CQ4utxcTTV6s6tN8a2djAaruKVGOVmRJCBjzWwpdv1RwpQU/
+	gL23UNVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZUwG-0000000FvuY-1Msk;
-	Tue, 16 Jun 2026 14:38:52 +0000
-Received: from lahtoruutu.iki.fi ([185.185.170.37])
+	id 1wZVUa-0000000FzNg-2aqm;
+	Tue, 16 Jun 2026 15:14:20 +0000
+Received: from smtp81.cstnet.cn ([159.226.251.81] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZUwE-0000000FvtL-13jj
-	for linux-mediatek@lists.infradead.org;
-	Tue, 16 Jun 2026 14:38:51 +0000
-Received: from [192.168.1.196] (unknown [IPv6:2a03:1b20:d:f011:1::d001])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: pav@iki.fi)
-	by lahtoruutu.iki.fi (Postfix) with ESMTPSA id 4gfqNp6Mj1z49Q3Z;
-	Tue, 16 Jun 2026 17:38:34 +0300 (EEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=lahtoruutu;
-	t=1781620716;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=eFhyPpcewz99R1eMaL1v0Y411PF2xXadTNs4TZuGD88=;
-	b=whl0/0zhuouIH+3R0DEB2wR9J/BXnuKNSiqF43z6IaW2EYJl+NBdM9/lfpTIO+w44+pLPY
-	0nvzycP3+SDsqvcKZIlZsBfIz372kF38FZULAePEEEtLUVFSUVAs/G4QiHrxI9dqF83ZX6
-	vY2WpWy056qyoNP0VUTbFoSDt/HEmr8OBhvyDPK2XIddxXNEXBUZwxJ/rlNyuBY3pODDDs
-	+cAqPWvhYGNK+96YzseIUOhEfN/bpqUTNYhnhr/EC/wyxw8xKNvXEPgWH2xyM3sz7PTIAS
-	4o/Z4Sdp1rPcNZJfmTXPzfhr7jv6ggpeaWqocYE2/KCE6ttUHExIsBwfH5/MgQ==
-ARC-Seal: i=1; a=rsa-sha256; d=iki.fi; s=lahtoruutu; cv=none; t=1781620716;
-	b=Yq3SLyWt9KkxEzCuejMnoyaWOAOfLukDrsyNcdDycSrG7DKKPEdpt8IiNerhExGNUPnsyw
-	dsVDw7lMX921DFmQe27xqZApGYuveDV2ZUYfv4FTn7N2rVnFTpJ0wZUGaQpXRwPUiom1GQ
-	ZTmA8XpKkPXhHa6lYDpYccSjEU8EFjWHMPMvKMXH3RtmnRWrl6M7VzKSpsIHIrQHTVJ/qE
-	OnyCVSGGS/UtD7CnMqNgce4FYzveWmqK3u/UlEj2joSozqauEWtF8nrjzfNxF43/+tP3PL
-	R3+nyj86ar7P22TzuSM30zWJcD2LA7tiO3Mj0dfm5rlKTvaM8Qv6MF31Sr5scA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
-	s=lahtoruutu; t=1781620716;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=eFhyPpcewz99R1eMaL1v0Y411PF2xXadTNs4TZuGD88=;
-	b=D8fsG/tfoOygj3QfFYnGzkEchm3XKc0CgXXeZtckznTIz5QwVk3Obc9Z729zwHNK5WebXi
-	C2Dt5lbE8XyjIAyf6EhPqc8nYkgogfbR8/C4zUjlPn/aByjICkvMFdpCiM1OKLwJ/EZjnu
-	9R3uoNQ6BbyuEGdN9P5+Pjx1va+80Gn4UpWikOxJYImaijA9atTO3ANmbUNt77xOAme4I0
-	PCdO+rOy0qWfzZpxyUpSoxX4A87WnRMS9hMpIyT0+RuVXlafEfFHgFqRANDDiZs4vuTtCs
-	hdC6G0/V2DM7yKY9SR7a8IlwqWak9ZTT1co1CFMN2DrfkqjA9jnn2iAcr22hKw==
-ARC-Authentication-Results: i=1;
-	ORIGINATING;
-	auth=pass smtp.auth=pav@iki.fi smtp.mailfrom=pav@iki.fi
-Message-ID: <cb14eaa1c566ed30119ca66bff0484192f852e91.camel@iki.fi>
-Subject: Re: [PATCH v1] Bluetooth: btmtk: Add MT7928 support
-From: Pauli Virtanen <pav@iki.fi>
-To: Chris Lu <chris.lu@mediatek.com>, Marcel Holtmann <marcel@holtmann.org>,
-  Johan Hedberg <johan.hedberg@gmail.com>, Luiz Von Dentz
- <luiz.dentz@gmail.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>,
-  SS Wu <ss.wu@mediatek.com>, Steve Lee <steve.lee@mediatek.com>,
- linux-bluetooth	 <linux-bluetooth@vger.kernel.org>, linux-mediatek	
- <linux-mediatek@lists.infradead.org>
-Date: Tue, 16 Jun 2026 17:38:32 +0300
-In-Reply-To: <20260616030132.532184-1-chris.lu@mediatek.com>
-References: <20260616030132.532184-1-chris.lu@mediatek.com>
-Autocrypt: addr=pav@iki.fi; prefer-encrypt=mutual;
- keydata=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
- bzyGkKh2h8XdrYhtDjw9LmrprPQ==
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
+	id 1wZVUX-0000000FzMO-2SLU;
+	Tue, 16 Jun 2026 15:14:19 +0000
+Received: from localhost.localdomain (unknown [111.196.245.140])
+	by APP-03 (Coremail) with SMTP id rQCowAAHINdAaDFqIxPxFA--.13533S2;
+	Tue, 16 Jun 2026 23:14:09 +0800 (CST)
+From: Pengpeng Hou <pengpeng@iscas.ac.cn>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Pengpeng Hou <pengpeng@iscas.ac.cn>
+Subject: [PATCH] soc: mediatek: mtk-svs: clean up debugfs entries
+Date: Tue, 16 Jun 2026 23:14:06 +0800
+Message-ID: <20260616151406.92529-1-pengpeng@iscas.ac.cn>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: rQCowAAHINdAaDFqIxPxFA--.13533S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7Kr4UCFW7Ar1rAr18JFW5ZFb_yoW8uw48pa
+	nYk3WrKry8Jr13GFWfAa1UX3Z3u3yIg3y7Ga47Wwn7Z3sxAr4rXr97JFWYvrWSqFykGay7
+	XF10kryUC3W5trJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUUkG14x267AKxVWUJVW8JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
+	1l84ACjcxK6xIIjxv20xvE14v26ryj6F1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
+	6F4UM28EF7xvwVC2z280aVAFwI0_GcCE3s1l84ACjcxK6I8E87Iv6xkF7I0E14v26rxl6s
+	0DM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj6xII
+	jxv20xvE14v26r126r1DMcIj6I8E87Iv67AKxVW8JVWxJwAm72CE4IkC6x0Yz7v_Jr0_Gr
+	1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAGYxC7MxkF7I0En4kS14v26r12
+	6r1DMxAIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI
+	0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVWUAVWUtwCIc40Y
+	0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267AKxV
+	W8JVWxJwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Gr0_Cr1l
+	IxAIcVC2z280aVCY1x0267AKxVW8Jr0_Cr1UYxBIdaVFxhVjvjDU0xZFpf9x0JUxcTPUUU
+	UU=
+X-Originating-IP: [111.196.245.140]
+X-CM-SenderInfo: pshqw1xhqjqxpvfd2hldfou0/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260616_073850_470000_C5979363 
-X-CRM114-Status: UNSURE (   9.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260616_081418_255228_E928518B 
+X-CRM114-Status: GOOD (  10.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,56 +78,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+svs_create_debug_cmds() publishes debugfs files whose private data points
+at the SVS platform and bank state, but neither partial debugfs creation
+failures nor device teardown remove the tree before that state is
+released.
 
-ti, 2026-06-16 kello 11:01 +0800, Chris Lu kirjoitti:
-> Add support for MT7928 (device ID 0x7935) which requires additional
-> firmware (CBMCU firmware) loading before Bluetooth firmware.
->=20
-> Implement two-phase CBMCU firmware download: Phase 1 loads
-> section with type 0x5 containing global descriptor,
-> section maps and signature data; Phase 2 loads remaining
-> firmware sections. Add retry mechanism for concurrent download
-> protection.
->=20
-> After CBMCU firmware loads successfully, the driver continues
-> to load corresponding BT firmware based on device ID through
-> fallthrough to case 0x7922/0x7925.
->=20
-> Signed-off-by: Chris Lu <chris.lu@mediatek.com>
-> ---
-[clip]
-> diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
-> index c83c24897c95..6d3bf6b74a1d 100644
-> --- a/drivers/bluetooth/btmtk.h
-> +++ b/drivers/bluetooth/btmtk.h
-> @@ -9,6 +9,8 @@
->  #define FIRMWARE_MT7961		"mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin"
->  #define FIRMWARE_MT7925		"mediatek/mt7925/BT_RAM_CODE_MT7925_1_1_hdr.bin=
-"
->  #define FIRMWARE_MT7927		"mediatek/mt7927/BT_RAM_CODE_MT6639_2_1_hdr.bin=
-"
-> +#define FIRMWARE_MT7928		"mediatek/mt7928/BT_RAM_CODE_MT7935_1_1_hdr.bin=
-"
-> +#define FIRMWARE_MT7928_CBMCU	"mediatek/mt7928/CBMCU_CODE_MT7935_1_1.bin=
-"
+Remove the debugfs tree on partial creation failures and register a devm
+action so successful probes remove the tree before devm-managed SVS state
+is freed.
 
-Are these firmware names correct?=C2=A0
+Signed-off-by: Pengpeng Hou <pengpeng@iscas.ac.cn>
+---
+ drivers/soc/mediatek/mtk-svs.c | 19 +++++++++++++++----
+ 1 file changed, 15 insertions(+), 4 deletions(-)
 
-The above names for MT7928 say MT79**35** not MT7928?
+diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
+index 99edecb204f2..2caab6a89698 100644
+--- a/drivers/soc/mediatek/mtk-svs.c
++++ b/drivers/soc/mediatek/mtk-svs.c
+@@ -172,6 +172,11 @@ static DEFINE_SPINLOCK(svs_lock);
+ 	}
+ 
+ #define svs_dentry_data(name)	{__stringify(name), &svs_##name##_debug_fops}
++
++static void svs_remove_debug_cmds(void *data)
++{
++	debugfs_remove_recursive(data);
++}
+ #endif
+ 
+ /**
+@@ -887,7 +892,7 @@ static int svs_create_debug_cmds(struct svs_platform *svsp)
+ 		if (IS_ERR(file_entry)) {
+ 			dev_err(svsp->dev, "cannot create %s/%s: %ld\n",
+ 				d, svs_entries[i].name, PTR_ERR(file_entry));
+-			return PTR_ERR(file_entry);
++			goto err_remove_debugfs;
+ 		}
+ 	}
+ 
+@@ -901,7 +906,8 @@ static int svs_create_debug_cmds(struct svs_platform *svsp)
+ 		if (IS_ERR(svsb_dir)) {
+ 			dev_err(svsp->dev, "cannot create %s/%s: %ld\n",
+ 				d, svsb->name, PTR_ERR(svsb_dir));
+-			return PTR_ERR(svsb_dir);
++			file_entry = svsb_dir;
++			goto err_remove_debugfs;
+ 		}
+ 
+ 		for (i = 0; i < ARRAY_SIZE(svsb_entries); i++) {
+@@ -912,12 +918,17 @@ static int svs_create_debug_cmds(struct svs_platform *svsp)
+ 				dev_err(svsp->dev, "no %s/%s/%s?: %ld\n",
+ 					d, svsb->name, svsb_entries[i].name,
+ 					PTR_ERR(file_entry));
+-				return PTR_ERR(file_entry);
++				goto err_remove_debugfs;
+ 			}
+ 		}
+ 	}
+ 
+-	return 0;
++	return devm_add_action_or_reset(svsp->dev, svs_remove_debug_cmds,
++					svs_dir);
++
++err_remove_debugfs:
++	debugfs_remove_recursive(svs_dir);
++	return PTR_ERR(file_entry);
+ }
+ #endif /* CONFIG_DEBUG_FS */
+ 
+-- 
+2.43.0
 
-> =20
->  #define HCI_EV_WMT 0xe4
->  #define HCI_WMT_MAX_EVENT_SIZE		64
-> @@ -54,6 +56,7 @@ enum {
->  	BTMTK_WMT_RST =3D 0x7,
->  	BTMTK_WMT_REGISTER =3D 0x8,
->  	BTMTK_WMT_SEMAPHORE =3D 0x17,
-> +	BTMTK_WMT_CBMCU_DWNLD =3D 0x58,
->  };
-> =20
->  enum {
-
---=20
-Pauli Virtanen
 
