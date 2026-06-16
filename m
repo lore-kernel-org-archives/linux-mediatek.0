@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8B36CD98E7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2026 11:12:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C04CCD98DA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2026 11:13:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yx01qzHYL7zapV7JT7OmgAtxcHhwEqISMkYtU1aw3M4=; b=hRm7Kr6OiJt4eADseMofnDMhxQ
-	MfYUwNCGe5+oznxD7OoYjc5moAa7PY1ja3th51mYtdPF2trOH4f1BcXiNJ7ui5w8KvdJMvUbgbozM
-	GID0fa77VLLHe/8lIw3A6jvTTPqh3PlXKtOBWlQlMd2/DlhdnS3wQeh+rR6G3kuQo89E0L3Y5I2if
-	DEL9HPWrKFDE54b7Iz42ARRS8+PZulL8Q34CyUR3KBAV83F1g8ZLSaWAYfNPVeI5UxdPAElfSyqxA
-	XXAa3iw5ENAe2c2HynVD5U7A1lMk+IuBexCccuWcSuHNlKq3aqG46yR43p7+zIeWji+KzzcXsTsTD
-	RMmQb4UA==;
+	bh=OjucF5goefZfuxikv7tCuZJMVpoPtgqO36vnpR26lfo=; b=auheHkEdThdQ2ULk5gD/mUo7D7
+	iYQxGUeDwzFwnhkqzt+RaPzGjyLguz2K5M6p+fclfsJISPtlS/jnIHCHFVeukx6yxgapQip7W6WFO
+	M04cmAYliY5+Srzea9zfacFm5hprDmnIlSwAjTUz+k65XjmqxarBGzF33wejQQ5flmfzvqLVE9ygb
+	1ImrzYmBd3pZobRHI4cL5OF4hgWZg8+5tgUY0apHBkE9nWQZ2R1c3SxxFbusGE9he+Yl6IJLC2qA3
+	J1J82CobkZkv2AMubLsftfOpFIXf3xE7xPyRwpKgqijP/h05NTMEzkLCsz3drzxuFD8Lz4qHwXUUI
+	/mseHodQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZRj0-0000000Ff1u-15X8;
-	Tue, 16 Jun 2026 11:12:58 +0000
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+	id 1wZRj4-0000000Ff5U-0vKn;
+	Tue, 16 Jun 2026 11:13:02 +0000
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZRiv-0000000FeyA-1k0x
+	id 1wZRix-0000000Fezo-2wJs
 	for linux-mediatek@lists.infradead.org;
-	Tue, 16 Jun 2026 11:12:55 +0000
-Received: by mail-pf1-x42c.google.com with SMTP id d2e1a72fcca58-842264dde84so2747952b3a.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 16 Jun 2026 04:12:53 -0700 (PDT)
+	Tue, 16 Jun 2026 11:12:57 +0000
+Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-842848fd613so3833380b3a.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 16 Jun 2026 04:12:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1781608372; x=1782213172; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1781608375; x=1782213175; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=yx01qzHYL7zapV7JT7OmgAtxcHhwEqISMkYtU1aw3M4=;
-        b=AMGRRILt5Mo1rOcSpnf35SAzSATzfD9Q7TNg0piiAySVdjzdOFQjrVyPFruQJQfiC0
-         bZ+b3JL9QlvEbjKJn04SYdXGqd74A3En51ts68WHjN+CiB60LlvLym/QwLwRTI5C+Ddu
-         KDdB9BJI1ux3Y3AHN4f2xlS9knWIToubLSWAs=
+        bh=OjucF5goefZfuxikv7tCuZJMVpoPtgqO36vnpR26lfo=;
+        b=KH7jIthjRXPaYezLuyvP3vunumeVab8z5EIxe7hlrt4gDudLRZNrsTAh8oYdjwGgSt
+         WVWdAyoY03As0Wy6/W+t0ROJGKKBgcmU6p/r2QVM2KOULfmEoPpyOyCxupPpfWKjjaaN
+         Tm4DinUXCswdZEACzABuciRmu/XICQkGYiMCs=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781608372; x=1782213172;
+        d=1e100.net; s=20251104; t=1781608375; x=1782213175;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=yx01qzHYL7zapV7JT7OmgAtxcHhwEqISMkYtU1aw3M4=;
-        b=pDHRuGxNUt6AfNiJ45gwLwMmAiPYkBMvRjSz9K4JN+em9ISxSAXXOqT87u67bqjnET
-         TQ9Pk8iako5r9YWdiTfZeY+5IV0Qb6kMOfsD5rQtAAY7RgbHqLtEm5W3f5hi9DlTyRqH
-         4JXvuE7QnClmzmMf9JhDwQsYlIHlDPaqtFbuUAfE6HZQeS46wk1GlEcuu4sxTBKChBts
-         OcXjqYAZUIO0ZVlB/1mdlrjfCEF/zT5+tmPJIiFBNjaQfxFcaiRyumo9KMCm40xaW3lw
-         v/ok9iyd9ajWhHGIlKo/YSSK8hc9T7mRSbGTknVHzHECJPGSvnFgI6CkGaMM0KV2LvX9
-         DZMg==
-X-Forwarded-Encrypted: i=1; AFNElJ9IwkEd0FkNsQvAi/tA5cIGe/YuGBaxWTOddj67lNNOVMmSMlOkGwCEVE/mCcQJrRceVx6n7jHVwBaDiO0VRg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxAUsH8wPBXEnCVGJsp2E9C7TBzL9c+EcykNKNCMfX0HY92iNY3
-	Tqco8MuRH/oKyD+4Hn08ald+c0DTq5GezBxsExuMi7i0qKSCWcQINiOtuAzQOJIwWw==
-X-Gm-Gg: Acq92OHuklUSJPUMd+nbHGppKEloXTO+flBQqseP4bLDQKeGgdokZmX+DKHQVXend3f
-	FUoL5Xsbwamds9ATpbTP/88wcAt6i38maKV7cDFGGFwmUwCRMYwvD9G0zeqSgT4QiAAJ4l7gVfT
-	FcQa9a5dv2q6H5QGNBt/v2kMuy7Zsbg32NCJBHB3Z25yyu6Czl0WzbFESIsXdf4eFWyjUcpk2vJ
-	ow9GmwqzLZaSnu0N1DhlegHy0cJGf7f9/jk8plXfObA8W/CE56vXVqCf56J2rlvMEDDGKKCQ/9y
-	U+Op2t+BOK6GFu7SgfSo2lMZa6jcoBtPYJl37oJ5aI+SkcIy5Ug0y++S1i8ymo4EgR1foBI4gnl
-	zrMl3S3nFjiLJJGKujlJabGv4oJEUOMXUsuJV/493Pf5zjfWJz5hzKOsM7ga7xdHw07Tji65r+/
-	qyg+hixNQayP7QoXfwBvuThF6yDhsardWOb2tLSSCEG0GjBBUa49xvDfEZczTi2LqEV4oidUGbo
-	kBS7/+wlKFR
-X-Received: by 2002:a05:6a00:6f55:b0:842:6344:f33a with SMTP id d2e1a72fcca58-84513e1747fmr2470656b3a.3.1781608372537;
-        Tue, 16 Jun 2026 04:12:52 -0700 (PDT)
+        bh=OjucF5goefZfuxikv7tCuZJMVpoPtgqO36vnpR26lfo=;
+        b=mq4SiaJMo1Rgv1d+7bRbfnAVSOk6oUY1wTlW4qX60fGtq9RbMo8s7nQzq731QfLfPj
+         12w8GKua3VTspFJU/K2tdH5IoqLM4qseiOl0pG3h4Zoj330Iq/zQk1qnUG+PoSlpzlVL
+         LXgkR4SWzfDKhknKR4U4wkJKTCCgldpo96xjwSvxySJwLF2qMbnhzujvRnQUJ4soEoEO
+         z1Yd8IUX89BF4l8gagszg/cg9Ukg2Yu9YbIflTdmdWK4wGTfubgjkKp+cRm2I6q1+Ojb
+         VtCauCq4P5TFMpCiwEKENEUNHhz4PolNfpKM7qwSFD7QUZe3tG1dUMSXFp2kW1r9Nw3+
+         tI4w==
+X-Forwarded-Encrypted: i=1; AFNElJ+hZjm5u5nbLpLCWaWmZPVx2zF18oEC1cP9dwkb3KwEubOaRSFFjuagmDm698X7N1amrnUA46z1344W4VOjKw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxEvBiWM8i4qStnzKH1JCrIVWoTThxqgVznplv7P1tGWSlEwN5x
+	1Cdwz9HSJu9xWNkwAxhxyq2w6kalvvhtRGgWlU/GFWM/ukuq++0VcsT3qn2xJllb6Q==
+X-Gm-Gg: Acq92OEr322jiwAY6y++3ubnKC+Lqi3zlxoOut9IeeLoV1cPchMak9knZHAjoedZ0lP
+	77qm8bhLNDweWq7iLeRH1b4EKW7bUYH5U/y8g7vzyfsEwg95Y/VDTWlfUWBnXRB7IcuiLP+j+iW
+	ijgyTNIPv0NLfbBrXcJ5NufM2bBc0obC4y1MTsRswRK4RPyxdvu8Tg+IkgOLuxPux/9gBzU02JJ
+	apgDaZxruTunj8z5xiGqKZT749q9U12UoDKLLBb0V/SfpLWHRHtABjWwiJIk+jGzMuNv1vo7RFp
+	YvBO1J5YitclZGXjG+pNEt8/wu3aNRpJMOT0eExNZ3GE+KI31gpo/gE8eocFwzXupMFrG2FXPYh
+	t0UtQGpUHyGkeTgroYOD9duccEXayWBcDjFNjlLvFWcnZO86ChfS50R6URjKpFJP2Dfqlbas+uN
+	WtiVPALq7oUUg9asBFj6QNtp4Uxsh3YfeX+M+qcSHPREmb6JU58LCnZokl9OKMEeAmUmXQ/gVu0
+	LvBWRRhQwHz
+X-Received: by 2002:a05:6a00:1d85:b0:841:de16:8a8f with SMTP id d2e1a72fcca58-8451530c1d1mr3127048b3a.7.1781608375147;
+        Tue, 16 Jun 2026 04:12:55 -0700 (PDT)
 Received: from tigerii.tok.corp.google.com ([2a00:79e0:2031:6:a0b:fabb:5b62:b85b])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-8434b05921bsm12906321b3a.59.2026.06.16.04.12.50
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-8434b05921bsm12906321b3a.59.2026.06.16.04.12.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Jun 2026 04:12:52 -0700 (PDT)
+        Tue, 16 Jun 2026 04:12:54 -0700 (PDT)
 From: Sergey Senozhatsky <senozhatsky@chromium.org>
 To: Marcel Holtmann <marcel@holtmann.org>,
 	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
@@ -79,17 +79,17 @@ Cc: Tomasz Figa <tfiga@chromium.org>,
 	linux-mediatek@lists.infradead.org,
 	Sergey Senozhatsky <senozhatsky@chromium.org>,
 	stable@vger.kernel.org
-Subject: [PATCH v2 2/3] Bluetooth: btmtksdio: test for bug IO errors in btmtksdio_txrx_work()
-Date: Tue, 16 Jun 2026 20:12:07 +0900
-Message-ID: <20260616111224.152140-3-senozhatsky@chromium.org>
+Subject: [PATCH v2 3/3] Bluetooth: btmtksdio: call cancel_work_sync() outside of host lock scope
+Date: Tue, 16 Jun 2026 20:12:08 +0900
+Message-ID: <20260616111224.152140-4-senozhatsky@chromium.org>
 X-Mailer: git-send-email 2.54.0.1136.gdb2ca164c4-goog
 In-Reply-To: <20260616111224.152140-1-senozhatsky@chromium.org>
 References: <20260616111224.152140-1-senozhatsky@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260616_041253_487975_3BF4029A 
-X-CRM114-Status: GOOD (  10.63  )
+X-CRM114-CacheID: sfid-20260616_041255_853418_526EF775 
+X-CRM114-Status: GOOD (  11.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,34 +104,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-btmtksdio_txrx_work() loop termination condition checks for
-int_status being non-zero, however, this evaluates to true
-even when sdio_readl() encounters BUS I/O error (in which
-case int_status is 0xffffffff).  Break out of the loop if
-sdio_readl() errors out.
+cancel_work_sync() should be called outside of host lock scope
+in order to avoid circular locking scenario:
+
+CPU0					CPU1
+					close()/reset()
+					sdio_claim_host()
+txrx_work
+  sdio_claim_host() // sleeps
+					cancel_work_sync() // sleeps
+
+In addition, when txrx_work() runs concurrently with close()/reset()
+it better not to re-enable interrupts by testing for BTMTKSDIO_FUNC_ENABLED
+and not BTMTKSDIO_HW_RESET_ACTIVE before C_INT_EN_SET write.  However,
+btmtksdio_close() clears the BTMTKSDIO_FUNC_ENABLED too late (after
+cancel_work_sync() call).  Move BTMTKSDIO_FUNC_ENABLED bit-clear earlier
+so that txrx_work can see concurrent close().
 
 Fixes: 26270bc189ea4 ("Bluetooth: btmtksdio: move interrupt service to work")
 Cc: stable@vger.kernel.org
 Signed-off-by: Sergey Senozhatsky <senozhatsky@chromium.org>
 ---
- drivers/bluetooth/btmtksdio.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/bluetooth/btmtksdio.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index c6f80c419e90..d8c8d2857527 100644
+index d8c8d2857527..207d04cc2282 100644
 --- a/drivers/bluetooth/btmtksdio.c
 +++ b/drivers/bluetooth/btmtksdio.c
-@@ -574,7 +574,9 @@ static void btmtksdio_txrx_work(struct work_struct *work)
- 	txrx_timeout = jiffies + 5 * HZ;
+@@ -625,7 +625,9 @@ static void btmtksdio_txrx_work(struct work_struct *work)
+ 	} while (int_status && time_is_after_jiffies(txrx_timeout));
  
- 	do {
--		int_status = sdio_readl(bdev->func, MTK_REG_CHISR, NULL);
-+		int_status = sdio_readl(bdev->func, MTK_REG_CHISR, &err);
-+		if (err < 0 || int_status == 0xffffffff)
-+			break;
+ 	/* Enable interrupt */
+-	if (bdev->func->irq_handler)
++	if (bdev->func->irq_handler &&
++	    test_bit(BTMTKSDIO_FUNC_ENABLED, &bdev->tx_state) &&
++	    !test_bit(BTMTKSDIO_HW_RESET_ACTIVE, &bdev->tx_state))
+ 		sdio_writel(bdev->func, C_INT_EN_SET, MTK_REG_CHLPCR, NULL);
  
- 		/* Ack an interrupt as soon as possible before any operation on
- 		 * hardware.
+ 	sdio_release_host(bdev->func);
+@@ -741,6 +743,8 @@ static int btmtksdio_close(struct hci_dev *hdev)
+ 	if (!test_bit(BTMTKSDIO_FUNC_ENABLED, &bdev->tx_state))
+ 		return 0;
+ 
++	clear_bit(BTMTKSDIO_FUNC_ENABLED, &bdev->tx_state);
++
+ 	sdio_claim_host(bdev->func);
+ 
+ 	/* Disable interrupt */
+@@ -748,11 +752,12 @@ static int btmtksdio_close(struct hci_dev *hdev)
+ 
+ 	sdio_release_irq(bdev->func);
+ 
++	sdio_release_host(bdev->func);
+ 	cancel_work_sync(&bdev->txrx_work);
++	sdio_claim_host(bdev->func);
+ 
+ 	btmtksdio_fw_pmctrl(bdev);
+ 
+-	clear_bit(BTMTKSDIO_FUNC_ENABLED, &bdev->tx_state);
+ 	sdio_disable_func(bdev->func);
+ 
+ 	sdio_release_host(bdev->func);
+@@ -1295,7 +1300,10 @@ static void btmtksdio_reset(struct hci_dev *hdev)
+ 
+ 	sdio_writel(bdev->func, C_INT_EN_CLR, MTK_REG_CHLPCR, NULL);
+ 	skb_queue_purge(&bdev->txq);
++
++	sdio_release_host(bdev->func);
+ 	cancel_work_sync(&bdev->txrx_work);
++	sdio_claim_host(bdev->func);
+ 
+ 	gpiod_set_value_cansleep(bdev->reset, 1);
+ 	msleep(100);
 -- 
 2.54.0.1136.gdb2ca164c4-goog
 
