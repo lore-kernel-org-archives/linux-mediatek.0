@@ -4,75 +4,131 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A615CD98DA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2026 03:01:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31676CD98D2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2026 04:20:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=JnV2ohQqnTDfQx/MECVAP4nQB+pseiQxv1gG8Oyl/i0=; b=UfvAel2quq4LVWnJ1THM8wG4lV
-	LP0UmloycG+6MLKs9rRBhFWesVV2iTpziIMc00roEue1TNEkg6iiKWMvmviT5k9QJL+o3K/4DOVfV
-	o+1UWDx3tj8aaZ3rvZwX5QfA9Qzw5gEdwJOqSS0QqLHj+TGnURKtWePyb7bOEp6oVhzEejTy9E/lN
-	q+VTUI9sGiGGI07WNfeftwqAlSwbEANR5SVh1ucp7x9QM4lsUp2s+qHpZXW5nju+Afpd2nZFcXUvM
-	DYbpvp9kZ4XRtiSyl/A1nKb8uNjG2EMbSLNCZqv0cn/nO94IVJ2D5OcAv9+7mWMIthRGswewJACxs
-	a4384lIw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=GfmkKsARxRLC6Ybdl10vTSYTdl5yzDWajPs6aTeziMc=; b=tSGztE1ep6FZlADMKThwCUCf0A
+	SSsiX9z5COTMmOdbVyhckNCZWpjOyGLbnyK6pe5gqNsrbRNRP7mjX3XU0eE/yYQLy6kuNoavuYEQq
+	xFgy+LHRPf7MGwaJ3XNTGx2xLtBIl1ATDaowxpyVfrzRWiNXhMp/YjBwfdwxRU6RAYzjiy/3wLHX/
+	zkfAPLSpnY/pj2CCDnwVYwuKOjvyTYBbnKFYw+7ulDhpWcwIN6mVujMQDHZqIUqMbSbeowo6CILSj
+	xtQJRi2ESQhVNYnwxDoGxz6jaoF//SeAT1hnfisz+QZNphrIFyUAaUZIhvOpKOpCkZoGO5dJfW7Dt
+	yUPAK69A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZK3f-0000000F8Mn-0x92;
-	Tue, 16 Jun 2026 03:01:47 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1wZLHO-0000000FBq1-1YBF;
+	Tue, 16 Jun 2026 04:20:02 +0000
+Received: from mail-northeuropeazon11021078.outbound.protection.outlook.com ([52.101.65.78] helo=DU2PR03CU002.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZK3c-0000000F8MS-0iho
+	id 1wZLHL-0000000FBp5-0o2z
 	for linux-mediatek@lists.infradead.org;
-	Tue, 16 Jun 2026 03:01:45 +0000
-X-UUID: b070ee96692f11f1acbe4559397dec65-20260615
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=JnV2ohQqnTDfQx/MECVAP4nQB+pseiQxv1gG8Oyl/i0=;
-	b=sLr1tqqBhIhFRdY80bQdQNTbqnN1f40I+E2abxNMSdCsEnO3u+KY0vOW4ssqDA8rDB0EdrQTf2SY3UJuDr/x4pgij3nkV9hkzeaXkFIY/EjJdwe3fhUTYtnCMu5Zws/5aTlmMUNh5b+hllKRPYeTIl56s4JFns8bAaAzLeGFIrw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.17,REQID:37a2911a-f384-4030-9d82-c2ab2724f0bc,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:d497b38,CLOUDID:8d5bb6ed-45e6-4692-a476-3f71842ee83b,B
-	ulkID:nil,BulkQuantity:0,SF:102|136|836|865|888|898,TC:-5,Content:0|15|50,
-	EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0
-	,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: b070ee96692f11f1acbe4559397dec65-20260615
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
-	(envelope-from <chris.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1465696620; Mon, 15 Jun 2026 20:01:36 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Tue, 16 Jun 2026 11:01:34 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Tue, 16 Jun 2026 11:01:34 +0800
-From: Chris Lu <chris.lu@mediatek.com>
-To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
-	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>,
-	SS Wu <ss.wu@mediatek.com>, Steve Lee <steve.lee@mediatek.com>,
-	linux-bluetooth <linux-bluetooth@vger.kernel.org>, linux-kernel
-	<linux-kernel@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH v1] Bluetooth: btmtk: Add MT7928 support
-Date: Tue, 16 Jun 2026 11:01:32 +0800
-Message-ID: <20260616030132.532184-1-chris.lu@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-MIME-Version: 1.0
+	Tue, 16 Jun 2026 04:20:00 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=ldpr3tXnnfu3mI3ueiJfJmzpP18wD71WdErqNihLFjq8SmVkeUabpI8ZuXFhSJ9Id4ogXGdGuHWY6wSKnvdnvtk1fmzjE/ct+kQE+7LjdWF/goFcBcpeWGefWimo4tvlCbI+IdJaCT6VcBPfn9CIyKm5hAqeYhDmazXbdws0vO7KGuiW5+cKSaTvjwb16ribOZCC3t2Md34xTJtjpxZr8jLDeWMYu6h4FoPqLQ5lwQR6dO46TqT+mLF7Lgb41eybtuJpTEqedUGddhSTf2lprrky+3gn52dQ8uwKhtKiqf+U9+cvw4ZXvtNWvt69OOKGjVa9msanJisxp7ZXXe8v4w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=GfmkKsARxRLC6Ybdl10vTSYTdl5yzDWajPs6aTeziMc=;
+ b=qOlxITU/AyWC/FNBB8XBnQ67jzrB8dVzOFvo6WQ61/WHEye2y3FUfFULnlrq2V2N9Wt0UBxbEYT5mCU+BL7qM0UEfoP3Yk9soWWIf7EnOAm66BAUopXytQGxLPT7zhg/mwSjki8Dk7kiNvU2MQn5aNdi9wtd29nu3HNlkrG5uruiUr2KTvLYYGylUWYQrOz4bOSXUlq2v5QYFDgD5UXWa42Vk4IjB+tD5+KyGs4J2slulNykyTBOBwHJFFbDsDu+YtWbfDGo1jtKS65JG959sU+kenDNWkD/M7J0/C1iJ32rPmSbfzsKUOS9AZFJzdZw82rN/fWZFwZdXj/Yid/TBA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=iopsys.eu;
+ dkim=pass header.d=iopsys.eu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iopsys.eu;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=GfmkKsARxRLC6Ybdl10vTSYTdl5yzDWajPs6aTeziMc=;
+ b=Ki6VpjQdU0wDMA6CGw0GYvxeeo0ljgQHCwNnBh3oXzZn5QM/+r4fVVoSfykgzbJK57mEVOw7v4v7t2Jm2rq1iJ7nIWwJ8rvhe3Na1l3KDE83jm6mH2N+VcNOoVyJAXi16c+70DNKaw5BFJLzTid0ggIbKCIsTZ2J/OHNfkhzS0sIhSoDJt14rl/hX7CtpL2UmJlsHPw1RWdUq5kiYwc0zpmeM6QmPyk7Czw3JQKhQfIfj+qedM6BnZvZKzhqVrtDozU/FUZ7nlUMRHlYEnDdMHKkjXofNNitLRi00Brs799g926px7AFuoKD+smFFK2f8UeVY7IH2V9cdN8AJilP+A==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=iopsys.eu;
+Received: from DU2PR08MB10037.eurprd08.prod.outlook.com (2603:10a6:10:49a::20)
+ by AS2PR08MB10055.eurprd08.prod.outlook.com (2603:10a6:20b:645::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.113.18; Tue, 16 Jun
+ 2026 04:19:52 +0000
+Received: from DU2PR08MB10037.eurprd08.prod.outlook.com
+ ([fe80::3c7:6d2e:8afe:e4dc]) by DU2PR08MB10037.eurprd08.prod.outlook.com
+ ([fe80::3c7:6d2e:8afe:e4dc%5]) with mapi id 15.21.0113.013; Tue, 16 Jun 2026
+ 04:19:52 +0000
+From: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+To: Linus Walleij <linusw@kernel.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Benjamin Larsson <benjamin.larsson@genexis.eu>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org,
+	linux-gpio@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Markus Gothe <markus.gothe@genexis.eu>,
+	Matheus Sampaio Queiroga <srherobrine20@gmail.com>
+Cc: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+Subject: [PATCH v2 00/12] pinctrl: airoha: split driver on shared code and SoC specific drivers, add supporf of en7523
+Date: Tue, 16 Jun 2026 07:19:27 +0300
+Message-ID: <20260616041939.2587012-1-mikhail.kshevetskiy@iopsys.eu>
+X-Mailer: git-send-email 2.53.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
+X-ClientProxiedBy: FR0P281CA0231.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:b2::11) To DU2PR08MB10037.eurprd08.prod.outlook.com
+ (2603:10a6:10:49a::20)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU2PR08MB10037:EE_|AS2PR08MB10055:EE_
+X-MS-Office365-Filtering-Correlation-Id: 5cfd4e49-f843-4972-a57a-08decb5e833f
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|376014|52116014|23010399003|18002099003|38350700014|921020|11063799006|56012099006;
+X-Microsoft-Antispam-Message-Info: gvQIp/As3nlYaUOH+G76Y1uBtyuDtT3tL8zAfrnkZKSoZ2bCfHiVpW8IlnpNoJWc9AGZHT0UT5OfyvgLT66MNmdxs7/xN6BgIGjHdyQZ/an57wLVXSd5KgTB4/aTrA4RK82l1IKsirWKOEZ6tkNWpxPfFd4u+4LofM01prXrq+ryGfx0U7L5SPubcf946YuMZiGP5wTjXfpLHfUl+RgydWta3i46LXx8aNJjNSO0BB4CnLTsMHn4MrXcHA/Dt9kH1HiZiGISHgLBJyrYbrWmz7gMabHVqKuLtqhTx2JwUc5gMEtlpIRkuRMzv33OCR4JRcqy/qFlwYtm+9DWxGcyn/2QNKs2VRLgxsKF0F5sJlbVADvY5fNz5CM0PtrXD/5hBz1pkc9xD6GHPtrd0eu3wo8KL85dmhkr8YExwTCwoc/VV9pn/P7kvOn29Ok/1qCk5DojaNURogjO2pkLW5V6m54xwmMmciA1oxT8IxsXGZLj/ML/V8ENhySbOBSTbUq1BaQnMAsks+4G0u/GoanFlcR2yrMwpNkzFDWCFo2iD40n0pNDGyn4cGjcHTi7qj+iEk9YdVY7EeRi0k8asGcgpJ10cC8MgLSRcLvnfPQpWkXscUvLc/Y/2ncsRBUgicpqswBBwoNcMxi7ILqYe/fbcPBI2jzVumnTjwm4hubvyuSdx9fRIHxn2TuBx2E9qP+USG4UxuyF7OVK1xb/TBOaSO8a5Gs6c1YUtX4mth+o7RqmG5+v3IVdYtY+M9NCb4TFXeEhu4FB/CCeT917EzLFLQ==
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR08MB10037.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(376014)(52116014)(23010399003)(18002099003)(38350700014)(921020)(11063799006)(56012099006);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?p2Ihv1AxiMY/r3CY8AYPU5MpzQbIoQEZNpQmxSps9ZrRVmdKOT6l3blNKxCl?=
+ =?us-ascii?Q?Jr5zwz3s6xpRtW2OApDXOXo2LpAlIb3l3J+WKgK6gUqy5zEIWuh3YRFGs+6P?=
+ =?us-ascii?Q?diE5uUNpzBLBFxVzSfl86GByLxLVZjdoCUEPS+YiwF5GZxmuxl1YaSQvwGaS?=
+ =?us-ascii?Q?nOMmNv8iAZ1MVty8FTwgWxMpWNypM4m0anUqGf1cFwbo2GZv6biwpUkaFdYo?=
+ =?us-ascii?Q?yy++oH1AuMXi3/vTRQK25spGNX80NfQJNMeGBuJfHSd+HyzyPwF8sbKrroO1?=
+ =?us-ascii?Q?I2vgixKamn0oCX6MyxzrugXtO/EHSBCFjWDIcQQqOjvU1xiNbny3dma3I+YL?=
+ =?us-ascii?Q?YuEFBNSbLP2plVjXPuNDjF0ZGcAEnpL6uzUHqzwlwR6azR6kFmsiKUq8EWDj?=
+ =?us-ascii?Q?Uff1oTC210vH3p1GsuUDsGMhBL6xr/5QWtXapfUgaGNnTOMXavVvbm4NKiZG?=
+ =?us-ascii?Q?Nzg2goL4q62pisY+TTrr91ZU6ae0r0n1OdvZ9PRgWt3PiKNUEWcuy0u/qDaU?=
+ =?us-ascii?Q?2vi+pqY3nvq7ULwxuMUZiWJVrVIpsqKpgWcdog0bwb8Zd+tSp9kL9EQZezcQ?=
+ =?us-ascii?Q?Ww6srJQ0eERFCZUnY7MkwBMkHIkjBeMKAa3ubZ28bh0aRwyAY5UKrEW07Ogm?=
+ =?us-ascii?Q?KJ+DoWM4HDBh4VpIONE3SABTz9IpyNBXMQpwQlSi25CVOJ3ofSR1X19EkzMC?=
+ =?us-ascii?Q?4Iy3g7tyJoxfS963ohM8BNQ5pFXMWx0ZrOuyiLQ/MrhXL+eWyB4ehbfCOItR?=
+ =?us-ascii?Q?gfaLOUyI7SeYmLt1jiJv2+Ex2lyZIOdBAwgRFJmTZR5rmBgWEGpcL2BjWtYo?=
+ =?us-ascii?Q?KXoWdn1qB48phvFF/MK5v5NQyb4EfPENc0j365CDRPqrh5hgzD+Ew8vx1mM2?=
+ =?us-ascii?Q?Q2Khn9nJVX/HyI+naiaxJ8mQFROSiM9BwweQHBUGNjQdYZ0W7fVUZzuj+1aC?=
+ =?us-ascii?Q?mNOEPzXbLgpr5Q8UwD8Lb08W3piT5Fcr/s+n4HPRZaPem96oiW2N+5Ux9ohW?=
+ =?us-ascii?Q?wRfdluGnEjSiD0wotBsWWV7l8Xiq/iQklKEmiHNyH2dyDYAEXA7FX8k4EaAv?=
+ =?us-ascii?Q?nbXrvLQaMqcdBaGdNr+gg82HDw+8oKLTfN+fjSGB3L0oTtk2LaGaFt7pQzV/?=
+ =?us-ascii?Q?MJ4ez+OkSCW57GSdNQtFlieHPwci/N8Cmxq0/Ti7QJVxAwk4sEnV2ijuODl1?=
+ =?us-ascii?Q?YLGVQf57Lbdq6xUz7cBJ2QUq4sqLKPjIoGl/zQIc144WN5SRBb4Z8cAUf+E3?=
+ =?us-ascii?Q?UolFqSqM/f4OOR21AK8GTlSdLIQGMhZPW1H+1gSpz2jZ0+B9pfOqlPSkIkVV?=
+ =?us-ascii?Q?lRswnMHWFNRFTGVStNPVJSKuj3bRVwdSTe4IeWKPTsxk0XoRP++TWOci4IxW?=
+ =?us-ascii?Q?oGn+8JBof2uQBLxR0BXoKkegepGlJHXRQjgfDUJ7YJ8xeGehENvDXNeVCQAF?=
+ =?us-ascii?Q?wFs8WEEblhpV3c2QdmyeS55eOfJhsUmKmXzvG8RXPlFHrIC4I5R/gwwcHm9V?=
+ =?us-ascii?Q?kzFi2SXJwW6jK701HMjYAE898uijLICH9Gb0Mj8nU6on1nvMbsj01OiObpPz?=
+ =?us-ascii?Q?/VvqIcfgUTUv/xoIGR65kdvipbQr1Me6fbRbjgrCjnxHQZ6pIkjOmBK8N24U?=
+ =?us-ascii?Q?hAP0UntGMiULk22CUOtn3A77k+YX46K7G0hXTTLkI7R5aBVFb3xZ/12tdzWR?=
+ =?us-ascii?Q?pARz5NMEmIRS6dcCliGb5/TQZc2a1I1GMDqz9htBWAb8mpv5NHRn8bm8s5iB?=
+ =?us-ascii?Q?z0PQwUj1BsdqGSUrUtf2bGNK7J48Y5w=3D?=
+X-OriginatorOrg: iopsys.eu
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5cfd4e49-f843-4972-a57a-08decb5e833f
+X-MS-Exchange-CrossTenant-AuthSource: DU2PR08MB10037.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Jun 2026 04:19:52.4503
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: F6CgD13ULINlu7HWKnz3dpgH2iYB9ICDNhT0o8Q/s1YmxhuYuAx7ntVKMaYgyL2FoupeJC29/IQk4cqWer4JqFpXdYSfhEpCdqshC8EwwFo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS2PR08MB10055
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260615_200144_265546_85C93B67 
-X-CRM114-Status: GOOD (  21.78  )
+X-CRM114-CacheID: sfid-20260615_211959_577621_9581F731 
+X-CRM114-Status: UNSURE (   8.08  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,439 +143,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for MT7928 (device ID 0x7935) which requires additional
-firmware (CBMCU firmware) loading before Bluetooth firmware.
+This patchset
+ * fixes more airoha pinctrl issues
+ * split combined driver on common code and several SoC specific drivers
+ * improves an7583 pinctrl support
+ * adds support of en7523 SoC
 
-Implement two-phase CBMCU firmware download: Phase 1 loads
-section with type 0x5 containing global descriptor,
-section maps and signature data; Phase 2 loads remaining
-firmware sections. Add retry mechanism for concurrent download
-protection.
+The driver split changes are based on Matheus Sampaio Queiroga work.
 
-After CBMCU firmware loads successfully, the driver continues
-to load corresponding BT firmware based on device ID through
-fallthrough to case 0x7922/0x7925.
+Changes v2:
+ * more issues of airoha pinctrl driver was fixed
+ * SoC specific register addresses, bitfields, macroses were
+   removed from common header and placed to SoC specific file
+ * fixed address of LAN LED mappings registers for en7523 SoC
+ * improves support of an7583 pinctrl
 
-Signed-off-by: Chris Lu <chris.lu@mediatek.com>
----
- drivers/bluetooth/btmtk.c | 342 +++++++++++++++++++++++++++++++++++++-
- drivers/bluetooth/btmtk.h |   3 +
- 2 files changed, 344 insertions(+), 1 deletion(-)
+Mikhail Kshevetskiy (12):
+  pinctrl: airoha: an7581: fix misprint in bitfield name
+  pinctrl: airoha: an7583: fix I2C0_SDA_PD register bit order
+  pinctrl: airoha: an7583: there is no 2nd I2C bus via 1st I2C bus pins
+    pinfunction
+  pinctrl: airoha: an7581: fix muxing of pcie_reset pins
+  pinctrl: airoha: an7583: fix muxing of non-gpio default pins
+  pinctrl: airoha: move common definitions to the separate header
+  pinctrl: airoha: split driver on shared code and SoC specific drivers
+  pinctrl: airoha: an7581: remove en7581 prefix from variable names
+  pinctrl: airoha: an7583: remove an7583 prefix from variable names and
+    definitions
+  pinctrl: airoha: an7583: add support for npu_uart pinmux
+  pinctrl: airoha: an7583: add support for pon_alt pinmux
+  pinctrl: airoha: add support of en7523 SoC
 
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index 02a96342e964..a68c67d1df4b 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -21,6 +21,7 @@
- #define MTK_FW_ROM_PATCH_SEC_MAP_SIZE	64
- #define MTK_SEC_MAP_COMMON_SIZE	12
- #define MTK_SEC_MAP_NEED_SEND_SIZE	52
-+#define MTK_SEC_MAP_LENGTH_SIZE	4
- 
- /* It is for mt79xx iso data transmission setting */
- #define MTK_ISO_THRESHOLD	264
-@@ -120,6 +121,10 @@ void btmtk_fw_get_filename(char *buf, size_t size, u32 dev_id, u32 fw_ver,
- 		snprintf(buf, size,
- 			 "mediatek/mt%04x/BT_RAM_CODE_MT%04x_1_%x_hdr.bin",
- 			 dev_id & 0xffff, dev_id & 0xffff, (fw_ver & 0xff) + 1);
-+	else if (dev_id == 0x7935)
-+		snprintf(buf, size,
-+			 "mediatek/mt7928/BT_RAM_CODE_MT%04x_1_1_hdr.bin",
-+			 dev_id & 0xffff);
- 	else if (dev_id == 0x7961 && fw_flavor)
- 		snprintf(buf, size,
- 			 "mediatek/BT_RAM_CODE_MT%04x_1a_%x_hdr.bin",
-@@ -734,6 +739,7 @@ static int btmtk_usb_hci_wmt_sync(struct hci_dev *hdev,
- 			status = BTMTK_WMT_ON_UNDONE;
- 		break;
- 	case BTMTK_WMT_PATCH_DWNLD:
-+	case BTMTK_WMT_CBMCU_DWNLD:
- 		if (wmt_evt->whdr.flag == 2)
- 			status = BTMTK_WMT_PATCH_DONE;
- 		else if (wmt_evt->whdr.flag == 1)
-@@ -870,6 +876,329 @@ static u32 btmtk_usb_reset_done(struct hci_dev *hdev)
- 	return val & MTK_BT_RST_DONE;
- }
- 
-+static int btmtk_cbmcu_patch_status(struct hci_dev *hdev,
-+				    wmt_cmd_sync_func_t wmt_cmd_sync,
-+				    u8 *patch_status)
-+{
-+	struct btmtk_hci_wmt_params wmt_params;
-+	int status, err, retry = 20;
-+
-+	do {
-+		wmt_params.op = BTMTK_WMT_CBMCU_DWNLD;
-+		wmt_params.flag = 0xF0;
-+		wmt_params.dlen = 0;
-+		wmt_params.data = NULL;
-+		wmt_params.status = &status;
-+
-+		err = wmt_cmd_sync(hdev, &wmt_params);
-+		if (err < 0) {
-+			bt_dev_err(hdev, "Failed to query CBMCU patch status (%d)", err);
-+			return err;
-+		}
-+
-+		*patch_status = (u8)status;
-+
-+		if (*patch_status == BTMTK_WMT_PATCH_PROGRESS) {
-+			msleep(100);
-+			retry--;
-+		} else {
-+			break;
-+		}
-+	} while (retry > 0);
-+
-+	return 0;
-+}
-+
-+static int btmtk_query_cbmcu_section(struct hci_dev *hdev,
-+				     wmt_cmd_sync_func_t wmt_cmd_sync,
-+				     u8 cbmcu_type,
-+				     const u8 *section_map,
-+				     u32 cert_len)
-+{
-+	struct btmtk_hci_wmt_params wmt_params;
-+	u8 cmd[64];
-+	int status, err;
-+
-+	cmd[0] = 0;
-+	cmd[1] = cbmcu_type;
-+
-+	if (cbmcu_type == 0)
-+		put_unaligned_le32(cert_len, &cmd[2]);
-+	else
-+		memcpy(&cmd[2], section_map, MTK_SEC_MAP_NEED_SEND_SIZE);
-+
-+	wmt_params.op = BTMTK_WMT_CBMCU_DWNLD;
-+	wmt_params.flag = 0;
-+	wmt_params.dlen = cbmcu_type ?
-+		MTK_SEC_MAP_NEED_SEND_SIZE + 2 :
-+		MTK_SEC_MAP_LENGTH_SIZE + 2;
-+	wmt_params.data = cmd;
-+	wmt_params.status = &status;
-+
-+	err = wmt_cmd_sync(hdev, &wmt_params);
-+	if (err < 0) {
-+		bt_dev_err(hdev, "Failed to query CBMCU section (%d)", err);
-+		return err;
-+	}
-+
-+	/* Query should return UNDONE status for successful section query */
-+	if (status != BTMTK_WMT_PATCH_UNDONE) {
-+		bt_dev_err(hdev, "CBMCU section query status error (%d)", status);
-+		return -EIO;
-+	}
-+
-+	return 0;
-+}
-+
-+static int btmtk_download_cbmcu_section(struct hci_dev *hdev,
-+					wmt_cmd_sync_func_t wmt_cmd_sync,
-+					const u8 *fw_data,
-+					u32 dl_size)
-+{
-+	struct btmtk_hci_wmt_params wmt_params;
-+	u32 sent_len, total_size = dl_size;
-+	int err;
-+
-+	wmt_params.op = BTMTK_WMT_CBMCU_DWNLD;
-+	wmt_params.status = NULL;
-+
-+	while (dl_size > 0) {
-+		sent_len = min_t(u32, 250, dl_size);
-+
-+		if (dl_size == total_size)
-+			wmt_params.flag = 1;
-+		else if (dl_size == sent_len)
-+			wmt_params.flag = 3;
-+		else
-+			wmt_params.flag = 2;
-+
-+		wmt_params.dlen = sent_len;
-+		wmt_params.data = fw_data;
-+
-+		err = wmt_cmd_sync(hdev, &wmt_params);
-+		if (err < 0) {
-+			bt_dev_err(hdev, "Failed to send CBMCU section data (%d)", err);
-+			return err;
-+		}
-+
-+		dl_size -= sent_len;
-+		fw_data += sent_len;
-+	}
-+
-+	return 0;
-+}
-+
-+static int btmtk_enable_cbmcu_patch(struct hci_dev *hdev,
-+				    wmt_cmd_sync_func_t wmt_cmd_sync)
-+{
-+	struct btmtk_hci_wmt_params wmt_params;
-+	int err;
-+
-+	wmt_params.op = BTMTK_WMT_CBMCU_DWNLD;
-+	wmt_params.flag = 0xF1;
-+	wmt_params.dlen = 0;
-+	wmt_params.data = NULL;
-+	wmt_params.status = NULL;
-+
-+	err = wmt_cmd_sync(hdev, &wmt_params);
-+	if (err < 0) {
-+		bt_dev_err(hdev, "Failed to enable CBMCU patch (%d)", err);
-+		return err;
-+	}
-+
-+	return 0;
-+}
-+
-+static int btmtk_load_cbmcu_firmware(struct hci_dev *hdev,
-+				     const char *fwname,
-+				     wmt_cmd_sync_func_t wmt_cmd_sync)
-+{
-+	struct btmtk_patch_header *hdr;
-+	struct btmtk_global_desc *globaldesc;
-+	struct btmtk_section_map *sectionmap;
-+	const struct firmware *fw;
-+	const u8 *fw_ptr;
-+	u8 *cert_buf = NULL;
-+	u32 section_num, section_offset, dl_size, cert_len;
-+	int i, err;
-+
-+	err = request_firmware(&fw, fwname, &hdev->dev);
-+	if (err < 0) {
-+		bt_dev_err(hdev, "Failed to load CBMCU firmware file (%d)", err);
-+		return err;
-+	}
-+
-+	if (fw->size < MTK_FW_ROM_PATCH_HEADER_SIZE + MTK_FW_ROM_PATCH_GD_SIZE) {
-+		bt_dev_err(hdev, "CBMCU firmware too small (%zu bytes)", fw->size);
-+		err = -EINVAL;
-+		goto err_release_fw;
-+	}
-+
-+	fw_ptr = fw->data;
-+	hdr = (struct btmtk_patch_header *)fw_ptr;
-+	globaldesc = (struct btmtk_global_desc *)(fw_ptr + MTK_FW_ROM_PATCH_HEADER_SIZE);
-+	section_num = le32_to_cpu(globaldesc->section_num);
-+
-+	if (fw->size < MTK_FW_ROM_PATCH_HEADER_SIZE + MTK_FW_ROM_PATCH_GD_SIZE +
-+		       (size_t)MTK_FW_ROM_PATCH_SEC_MAP_SIZE * section_num) {
-+		bt_dev_err(hdev, "CBMCU firmware truncated (section_num=%u)", section_num);
-+		err = -EINVAL;
-+		goto err_release_fw;
-+	}
-+
-+	bt_dev_info(hdev, "CBMCU Version: 0x%04x%04x, Build Time: %s",
-+		    le16_to_cpu(hdr->hwver), le16_to_cpu(hdr->swver), hdr->datetime);
-+
-+	/* Phase 1: Download section type 0x5 */
-+	for (i = 0; i < section_num; i++) {
-+		sectionmap = (struct btmtk_section_map *)
-+			(fw_ptr + MTK_FW_ROM_PATCH_HEADER_SIZE +
-+			 MTK_FW_ROM_PATCH_GD_SIZE +
-+			 MTK_FW_ROM_PATCH_SEC_MAP_SIZE * i);
-+
-+		/* Only process type 0x5 section in Phase 1 */
-+		if ((le32_to_cpu(sectionmap->sectype) & 0xFFFF) != 0x5)
-+			continue;
-+
-+		section_offset = le32_to_cpu(sectionmap->secoffset);
-+		dl_size = le32_to_cpu(sectionmap->secsize);
-+
-+		if (dl_size == 0)
-+			continue;
-+
-+		if (section_offset > fw->size ||
-+		    dl_size > fw->size - section_offset) {
-+			bt_dev_err(hdev, "CBMCU Phase 1 section out of bounds");
-+			err = -EINVAL;
-+			goto err_release_fw;
-+		}
-+
-+		cert_len = MTK_FW_ROM_PATCH_GD_SIZE +
-+			   MTK_FW_ROM_PATCH_SEC_MAP_SIZE * section_num +
-+			   dl_size;
-+
-+		/* Query cbmcu section */
-+		err = btmtk_query_cbmcu_section(hdev, wmt_cmd_sync, 0, NULL,
-+						cert_len);
-+		if (err < 0)
-+			goto err_release_fw;
-+
-+		cert_buf = kmalloc(cert_len, GFP_KERNEL);
-+		if (!cert_buf) {
-+			err = -ENOMEM;
-+			goto err_release_fw;
-+		}
-+
-+		/* Copy Global Descriptor + All Section Maps */
-+		memcpy(cert_buf,
-+		       fw_ptr + MTK_FW_ROM_PATCH_HEADER_SIZE,
-+		       MTK_FW_ROM_PATCH_GD_SIZE + MTK_FW_ROM_PATCH_SEC_MAP_SIZE * section_num);
-+
-+		/* Copy Phase 1 section data */
-+		memcpy(cert_buf + MTK_FW_ROM_PATCH_GD_SIZE +
-+		       MTK_FW_ROM_PATCH_SEC_MAP_SIZE * section_num,
-+		       fw_ptr + section_offset,
-+		       dl_size);
-+
-+		/* Download Phase 1 section */
-+		err = btmtk_download_cbmcu_section(hdev, wmt_cmd_sync,
-+						   cert_buf, cert_len);
-+		kfree(cert_buf);
-+		cert_buf = NULL;
-+
-+		if (err < 0) {
-+			bt_dev_err(hdev, "Failed to download CBMCU Phase 1 section (%d)", err);
-+			goto err_release_fw;
-+		}
-+
-+		break;
-+	}
-+
-+	/* Phase 2: Download other sections (type != 0x5) */
-+	for (i = 0; i < section_num; i++) {
-+		sectionmap = (struct btmtk_section_map *)
-+			(fw_ptr + MTK_FW_ROM_PATCH_HEADER_SIZE +
-+			 MTK_FW_ROM_PATCH_GD_SIZE +
-+			 MTK_FW_ROM_PATCH_SEC_MAP_SIZE * i);
-+
-+		/* Skip type 0x5 section in Phase 2 */
-+		if ((le32_to_cpu(sectionmap->sectype) & 0xFFFF) == 0x5)
-+			continue;
-+
-+		section_offset = le32_to_cpu(sectionmap->secoffset);
-+		dl_size = le32_to_cpu(sectionmap->bin_info_spec.dlsize);
-+
-+		if (dl_size == 0)
-+			continue;
-+
-+		if (section_offset > fw->size ||
-+		    dl_size > fw->size - section_offset) {
-+			bt_dev_err(hdev, "CBMCU Phase 2 section %d out of bounds", i);
-+			err = -EINVAL;
-+			goto err_release_fw;
-+		}
-+
-+		/* Query cbmcu section */
-+		err = btmtk_query_cbmcu_section(hdev, wmt_cmd_sync, 1,
-+						(u8 *)&sectionmap->bin_info_spec,
-+						0);
-+		if (err < 0)
-+			goto err_release_fw;
-+
-+		/* Download section data */
-+		err = btmtk_download_cbmcu_section(hdev, wmt_cmd_sync,
-+						   fw_ptr + section_offset,
-+						   dl_size);
-+		if (err < 0) {
-+			bt_dev_err(hdev, "Failed to download CBMCU section %d (%d)", i, err);
-+			goto err_release_fw;
-+		}
-+	}
-+
-+	/* Wait for firmware activation */
-+	usleep_range(100000, 120000);
-+
-+	bt_dev_info(hdev, "CBMCU firmware download completed");
-+
-+err_release_fw:
-+	release_firmware(fw);
-+	return err;
-+}
-+
-+static int btmtk_setup_cbmcu_firmware(struct hci_dev *hdev,
-+				      wmt_cmd_sync_func_t wmt_cmd_sync,
-+				      u32 dev_id)
-+{
-+	char cbmcu_fwname[64];
-+	u8 patch_status;
-+	int err;
-+
-+	err = btmtk_cbmcu_patch_status(hdev, wmt_cmd_sync, &patch_status);
-+	if (err < 0)
-+		return err;
-+
-+	bt_dev_dbg(hdev, "CBMCU patch status: 0x%02x", patch_status);
-+
-+	if (patch_status != BTMTK_WMT_PATCH_UNDONE)
-+		return 0;
-+
-+	snprintf(cbmcu_fwname, sizeof(cbmcu_fwname),
-+		 "mediatek/mt7928/CBMCU_CODE_MT%04x_1_1.bin",
-+		 dev_id & 0xffff);
-+
-+	err = btmtk_load_cbmcu_firmware(hdev, cbmcu_fwname, wmt_cmd_sync);
-+	if (err < 0) {
-+		bt_dev_err(hdev, "Failed to download CBMCU firmware (%d)", err);
-+		return err;
-+	}
-+
-+	err = btmtk_enable_cbmcu_patch(hdev, wmt_cmd_sync);
-+	if (err < 0)
-+		return err;
-+
-+	return 0;
-+}
-+
- int btmtk_usb_subsys_reset(struct hci_dev *hdev, u32 dev_id)
- {
- 	u32 val;
-@@ -894,7 +1223,7 @@ int btmtk_usb_subsys_reset(struct hci_dev *hdev, u32 dev_id)
- 		if (err < 0)
- 			return err;
- 		msleep(100);
--	} else if (dev_id == 0x7925 || dev_id == 0x6639) {
-+	} else if (dev_id == 0x7925 || dev_id == 0x6639 || dev_id == 0x7935) {
- 		err = btmtk_usb_uhw_reg_read(hdev, MTK_BT_RESET_REG_CONNV3, &val);
- 		if (err < 0)
- 			return err;
-@@ -1379,6 +1708,15 @@ int btmtk_usb_setup(struct hci_dev *hdev)
- 	case 0x7668:
- 		fwname = FIRMWARE_MT7668;
- 		break;
-+	case 0x7935:
-+		/* Requires CBMCU firmware before BT firmware */
-+		err = btmtk_setup_cbmcu_firmware(hdev, btmtk_usb_hci_wmt_sync,
-+						 dev_id);
-+		if (err < 0) {
-+			bt_dev_err(hdev, "Failed to set up CBMCU firmware (%d)", err);
-+			return err;
-+		}
-+		fallthrough;
- 	case 0x7922:
- 	case 0x7925:
- 		/*
-@@ -1596,3 +1934,5 @@ MODULE_FIRMWARE(FIRMWARE_MT7922);
- MODULE_FIRMWARE(FIRMWARE_MT7961);
- MODULE_FIRMWARE(FIRMWARE_MT7925);
- MODULE_FIRMWARE(FIRMWARE_MT7927);
-+MODULE_FIRMWARE(FIRMWARE_MT7928);
-+MODULE_FIRMWARE(FIRMWARE_MT7928_CBMCU);
-diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
-index c83c24897c95..6d3bf6b74a1d 100644
---- a/drivers/bluetooth/btmtk.h
-+++ b/drivers/bluetooth/btmtk.h
-@@ -9,6 +9,8 @@
- #define FIRMWARE_MT7961		"mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin"
- #define FIRMWARE_MT7925		"mediatek/mt7925/BT_RAM_CODE_MT7925_1_1_hdr.bin"
- #define FIRMWARE_MT7927		"mediatek/mt7927/BT_RAM_CODE_MT6639_2_1_hdr.bin"
-+#define FIRMWARE_MT7928		"mediatek/mt7928/BT_RAM_CODE_MT7935_1_1_hdr.bin"
-+#define FIRMWARE_MT7928_CBMCU	"mediatek/mt7928/CBMCU_CODE_MT7935_1_1.bin"
- 
- #define HCI_EV_WMT 0xe4
- #define HCI_WMT_MAX_EVENT_SIZE		64
-@@ -54,6 +56,7 @@ enum {
- 	BTMTK_WMT_RST = 0x7,
- 	BTMTK_WMT_REGISTER = 0x8,
- 	BTMTK_WMT_SEMAPHORE = 0x17,
-+	BTMTK_WMT_CBMCU_DWNLD = 0x58,
- };
- 
- enum {
+ drivers/pinctrl/airoha/Kconfig          |   24 +-
+ drivers/pinctrl/airoha/Makefile         |    6 +
+ drivers/pinctrl/airoha/airoha-common.h  |  203 ++
+ drivers/pinctrl/airoha/pinctrl-airoha.c | 2392 +----------------------
+ drivers/pinctrl/airoha/pinctrl-an7581.c | 1472 ++++++++++++++
+ drivers/pinctrl/airoha/pinctrl-an7583.c | 1476 ++++++++++++++
+ drivers/pinctrl/airoha/pinctrl-en7523.c | 1122 +++++++++++
+ 7 files changed, 4304 insertions(+), 2391 deletions(-)
+ create mode 100644 drivers/pinctrl/airoha/airoha-common.h
+ create mode 100644 drivers/pinctrl/airoha/pinctrl-an7581.c
+ create mode 100644 drivers/pinctrl/airoha/pinctrl-an7583.c
+ create mode 100644 drivers/pinctrl/airoha/pinctrl-en7523.c
+
 -- 
-2.45.2
+2.53.0
 
 
