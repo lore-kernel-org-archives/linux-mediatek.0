@@ -4,75 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20093CD98E1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2026 15:36:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BBD8CD98E1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2026 15:41:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Wd2qjQayVtYNCQpH6/G5M3DjEU7LR4pWOUMSd4iiR2Y=; b=oRSp2f6ZM2gRpsk1onvaMmHxJq
-	zTyrxeXF+W9vrom49uBf+hXiRJklXgSCQqipchxoTohOFi4aV7F9bXr1ts2KnhVZ66WCFATdncpcP
-	tcbf+4tmEVj4AhuQLNrB7pNOojsVUxPpnm22OtumGV61oEPpzVvIQqG6WhYzVg5izvNfDs/jVxnkZ
-	jh72OOWLjhj4iA7nPfR8tNna79WTg2aRO2M9Y4/GgEQAnGw2DVfHjfdt222LeKBB/sgJVMyk2JBFZ
-	ZsoZDUymvqgAttE0JcPasiSZ3LwnbJEzEoDH1tOKJoXp+5u2LZqw93jcvng4vdzgwf3aKOOovMeKX
-	UwKTvdkg==;
+	bh=L3dXwzlMy2LgBGgHPYpIPiVb7RGZwJ8RI/pxEwwkH4U=; b=CuDsA+24Wp2xVW9uQAL6wfbfgv
+	hPcEzGC+4q8r5Z4w8ccNKCkawa1w40NOTAd27Ngw8hQASS6aslZgrQksDuTbjj6/H3s+Dbd2KJo6Y
+	lrF5dGN7SpO0wF2YCZ8KeCKG1UP0s3YQ3hM5O+h+csIOFceoVyIldUhNDuHx+GM1fB8D3wuiKrBwR
+	8eDLtPlg6WlaFmE9Ryx3FcgAyH2JVmEACKms5i1WkX+KEXyDXUr4lprdAY1qTZqUF/A6UkBt0cFnM
+	JRN0+aPd5947kkqQQpbO89gfNX8zQJnVV5AUzEXoDwYwyNuRvIWVV2Q25Fig2Z9AL0fKge9lWJ9lS
+	HoaHQRJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZVpe-0000000G1cP-2o53;
-	Tue, 16 Jun 2026 15:36:06 +0000
+	id 1wZVua-0000000G1wc-39N3;
+	Tue, 16 Jun 2026 15:41:12 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZVpc-0000000G1cA-3mWg;
-	Tue, 16 Jun 2026 15:36:04 +0000
+	id 1wZVuY-0000000G1wD-49mf;
+	Tue, 16 Jun 2026 15:41:11 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5B76660103;
-	Tue, 16 Jun 2026 15:36:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 92D661F000E9;
-	Tue, 16 Jun 2026 15:35:59 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id EDAF460120;
+	Tue, 16 Jun 2026 15:41:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8C5AC1F000E9;
+	Tue, 16 Jun 2026 15:41:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781624164;
-	bh=Wd2qjQayVtYNCQpH6/G5M3DjEU7LR4pWOUMSd4iiR2Y=;
+	s=k20260515; t=1781624469;
+	bh=L3dXwzlMy2LgBGgHPYpIPiVb7RGZwJ8RI/pxEwwkH4U=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=PUqKcTgJZJNNJ7C+53ifL2iwOd38k3YrP1gTidtlMc9Icth6gYhdyVFBP/4mDKfyD
-	 zo+JQmSCKriy01gBjLYH8/j9DZ9kb+Z+wRQztrEc/VuBwShcvKN3Ztd9ia1ClnLDeU
-	 BI5zUz/xNuZ6ql3jlFLL8qz0VpXBDI6SkT3aw5zLrfJhNaNUhKyKGUZ420uGKnOJs4
-	 hRW6loKmVZCGvJovvzqlHiO0TgtmRS6tk2XcSwqwnjwln2r2aZUhEie38QPvL0mVdI
-	 mMHbSfwtaiSV20BbCUdTf6unkjr1nJ0iqWJFG8hEWHOgpuYs1mOdgG9y3C8OgvIrjz
-	 dvJhAME73YU9Q==
-Date: Tue, 16 Jun 2026 16:35:57 +0100
+	b=AYtsO2T1puU8FIBLqMZDYx136bEz74sMUPsCSdtwYZfLx27httDPb57rqWuEjQrB0
+	 awcH64am4nvuq0EpMtu5uXb4SsRG1urvcLsgduPphC7JPXfXTHIoHwtidtKwbCkDca
+	 uLwPIs0Zm821D0QeNHpwqABhzOvVurKir4WdbmogUXHlSvCyOmNQg9G2d2qlMNLpPj
+	 SDP2C5ejCl12UyaApKLq8JZ0POgPYVMhv15skAcSjqTwfyQV/ZoxJ4KgBWxC2NOhL6
+	 pbrgKguj4HgOpW7H0dTozcp6eKNZk+xMK5yageGAZO5uf6J+FOvm7B1CQVcjQ8DsHr
+	 EoEJQHBRwOu6w==
+Date: Tue, 16 Jun 2026 16:41:04 +0100
 From: Conor Dooley <conor@kernel.org>
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, Fabien Parent <parent.f@gmail.com>,
-	Val Packett <val@packett.cool>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Rob Herring <robh@kernel.org>,
+To: rva333@protonmail.com
+Cc: Jonathan Cameron <jic23@kernel.org>,
+	David Lechner <dlechner@baylibre.com>,
+	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
+	Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Linus Walleij <linusw@kernel.org>,
-	Julien Massot <julien.massot@collabora.com>,
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
-	Akari Tsuyukusa <akkun11.open@gmail.com>,
-	Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org,
+	Lee Jones <lee@kernel.org>, linux-iio@vger.kernel.org,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-gpio@vger.kernel.org
-Subject: Re: [PATCH v6 1/7] dt-bindings: mfd: mt6397: Add MT6392 PMIC
-Message-ID: <20260616-awaken-gills-d341ee5c2dd0@spud>
-References: <20260612200717.361018-1-l.scorcia@gmail.com>
- <20260612200717.361018-2-l.scorcia@gmail.com>
- <20260615-palatable-aerobics-3091229b6ada@spud>
- <CAORyz2+4EquYcUHEnoq0N_p7vCmDpPONEhVrmAfO1eX_RNMYbQ@mail.gmail.com>
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Ben Grisdale <bengris32@protonmail.ch>
+Subject: Re: [PATCH v3 1/4] dt-bindings: iio: adc: mediatek,mt6359-auxadc:
+ add mt6323 PMIC AUXADC
+Message-ID: <20260616-patronage-swapping-197a674f9df6@spud>
+References: <20260616-mt6323-adc-v3-0-1c27c588185d@protonmail.com>
+ <20260616-mt6323-adc-v3-1-1c27c588185d@protonmail.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="A1YEOfPW2EWY+SaK"
+	protocol="application/pgp-signature"; boundary="XgkNMFzBNJmMg/9j"
 Content-Disposition: inline
-In-Reply-To: <CAORyz2+4EquYcUHEnoq0N_p7vCmDpPONEhVrmAfO1eX_RNMYbQ@mail.gmail.com>
+In-Reply-To: <20260616-mt6323-adc-v3-1-1c27c588185d@protonmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,44 +82,45 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---A1YEOfPW2EWY+SaK
+--XgkNMFzBNJmMg/9j
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Mon, Jun 15, 2026 at 07:09:39PM +0200, Luca Leonardo Scorcia wrote:
-> Hi,
-> yes, sorry about that, series v6 has been superseded by v7 (I replied
-> to the thread and marked it as archived in patchwork, please let me
-> know if I have to do something else to mark it as obsolete).
-> Sashiko was correct, the regulators node is required for this device.
-
-I have no idea what regulator node you're referring to here or what
-patchwork. Please don't delete context when you reply.
-If it's the devicetree patchwork I don't you need to do anything.
-
-> Sashiko also has suggestions for v7, a few pre existing issues and a
-> few nits here and there but some are actual improvements. One bit that
-> caught my eye is the use of the modeset register in the
-> mt6392_ldo_get_mode function. I have to double check that with the
-> data sheet and the android kernel sources. Not sure if I can do that
-> before next week though.
+On Tue, Jun 16, 2026 at 05:15:39PM +0300, Roman Vivchar via B4 Relay wrote:
+> From: Roman Vivchar <rva333@protonmail.com>
 >=20
-> Is there any way I can trigger a Sashiko review before sending patches
-> to the ML?
+> The MediaTek mt6323 PMIC includes an AUXADC used for battery voltage,
+> temperature, and other internal measurements. The IP block is not
+> register-compatible with mt6359
 
-I don't know sorry.
+Cut this sentence here, whether or not it uses the same driver may
+differ per OS.
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+pw-bot: not-applicable
 
---A1YEOfPW2EWY+SaK
+
+>=20
+> Add the devicetree binding documentation and the associated header file
+> defining the ADC channel constants.
+>=20
+> Also change the description to 'MT6350 series and similar' because
+> the binding already includes more than mt635x series PMICs.
+>=20
+> Finally, add the MAINTAINERS entry for the header with ADC constants.
+>=20
+> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+
+--XgkNMFzBNJmMg/9j
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCajFtXQAKCRB4tDGHoIJi
-0uJ3AP4l5qgb9a67VOWooa8/C0IiEUjhucKSkZe27ZRd032Q4AD/SBEgsH9truaa
-XQXPJ0QL5mTdmrYt2N205j+jwOitVAI=
-=xinJ
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCajFukAAKCRB4tDGHoIJi
+0lkWAP42gL/N6EHSOWxFx7azXHM1KwgVvjuVTAYMl28Ow9l25AEA+dsRSJmfseNN
+zXxN+zYbLqyqdUDOdc8JzjNArYl4qwA=
+=JWkz
 -----END PGP SIGNATURE-----
 
---A1YEOfPW2EWY+SaK--
+--XgkNMFzBNJmMg/9j--
 
