@@ -4,73 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 795BCCD98DA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2026 13:50:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF2FACD98E4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2026 14:15:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8Xk0PdLiYymMCUqB6kWMCwekoJyvD8MM/ojXTg/ijko=; b=dx/WM16FiLQBoZAbuHDScV+kax
-	NvHfHL23032aeJBN5s+KCJQfaS0Y2wAiFR4lKAphNInLI2rOTQ1zIkeOsh8tNbdwnzDSB6Hq+8E30
-	WN4vaKDlrB0EUaun8jFvyUi2v+n/2KPcg0k/edCoAiZ4fg54eNetUflTK2b/SOC0Z8A+YRkoPPHCA
-	AkzBfp7bXI9r5xg+xD0juzHEx1J0SM6aBlHsAGAZGSDxG8cX9UxycOSdOVuritwi2prlcD9D1v2YZ
-	FBLL/dn6MZ4SSqHvBffGV9ltkNSwp6/7AYsaieVk0iq+1c0r1doJS5JVNoDhTzXSS/rjzPf3zDO+B
-	OFQ76TGQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=DA/IVxID36UhVTSKdfrOZP4zxdrLq4OZp8Ix/rKAv80=; b=prWg9AeskeZmtsGKjBPT9NC7qT
+	xXJVyz8XhnNrQJbRzPYIxMJ/ZzLmweREa/yh0e2WZ8xwA8a6/dEuJsmzYzr8Ni7ag9VcFPob4lQVX
+	EqP8s9i0F0CuybAEUOCmbpvSojS84Mk/yW2Ir2m8nPivXhaUETOtPJIXnAG1PYAE8qhW68sqbNaEq
+	9PCWvVI+nLhoJBxphx49OcctyeoyKrDxlvHUvIrWJ//oWaF24e8AbZHXAMWSHs5IozSaD0S0tx99c
+	32mi2JORPR+JV2NIihgBgJVi1LppT7RZIy8jFdnylWPpLAYtPksY+8HIPUdppDkPr+Kw1D3Irc3wB
+	F4CbzznA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZUBL-0000000Fs1e-0cWK;
-	Tue, 16 Jun 2026 13:50:23 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wZUZr-0000000Ftz0-2pCK;
+	Tue, 16 Jun 2026 14:15:43 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZUBK-0000000Fs1C-0p0Z;
-	Tue, 16 Jun 2026 13:50:22 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6B487600AB;
-	Tue, 16 Jun 2026 13:50:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E72581F00A3A;
-	Tue, 16 Jun 2026 13:50:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781617821;
-	bh=8Xk0PdLiYymMCUqB6kWMCwekoJyvD8MM/ojXTg/ijko=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=bctDtHcgCuI3AA4NjgzsGt6xKEfxgIvEO1rFEtIVw0SvA0e8sDjRtlT+QFfGqT4xx
-	 MEy8vspJNIdbfF1LCuWkQ1xpygdYURwY68TtcT8h6LoFzLVSiKiqyiYnHsB2mO927Z
-	 cxXJIYfaehrwxMRwpbUcC+9UuFaUYuCxKd56iJdtsTzLNYoRVeTU+NWVVF9HsPQJLb
-	 fB28TqMMOXyBuextma02GV38UzL0h4FAQoSKsn05nDPunPEWBrguWxTVRj1SzQ8aCR
-	 O4G061n0UmZScpEF2jgoDNm+/yC0Uk/WqgFLsrAI5M/TGIvdmAhLDa6tZ1EVmQZ4jH
-	 uCBlivyCU/Esg==
-Date: Tue, 16 Jun 2026 08:50:17 -0500
-From: Rob Herring <robh@kernel.org>
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-mediatek@lists.infradead.org,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>, Linus Walleij <linusw@kernel.org>,
-	Val Packett <val@packett.cool>,
-	Julien Massot <julien.massot@collabora.com>,
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
-	Fabien Parent <parent.f@gmail.com>,
-	Akari Tsuyukusa <akkun11.open@gmail.com>,
-	Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-gpio@vger.kernel.org
-Subject: Re: [PATCH v7 3/9] regulator: dt-bindings: Add MediaTek MT6392 PMIC
-Message-ID: <20260616135017.GA2350711-robh@kernel.org>
-References: <20260615071836.362883-1-l.scorcia@gmail.com>
- <20260615071836.362883-4-l.scorcia@gmail.com>
+	id 1wZUZq-0000000Ftx6-0BWl;
+	Tue, 16 Jun 2026 14:15:42 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 794244431B;
+	Tue, 16 Jun 2026 14:15:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 512CCC2BCB8;
+	Tue, 16 Jun 2026 14:15:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1781619341;
+	bh=XlvIloNwlhCYTGHH8aZG1rdAJjOlq93TwFN1w080BL0=;
+	h=From:Subject:Date:To:Cc:Reply-To:From;
+	b=d3ALwlVFgmBywMHfOl5dLQuzlxvQ1Dl0G6AW76Ch6YwwzuiQ6tF0ULMU0O2ZFpz4J
+	 n7UIamdVyUErWvbQTFGkitK9FnUeLgBbhpet1iy1MZq5fgo3xM93YyujMrLRMt0AhO
+	 bI1FeusiXH9hCp6ADy/oFd6gP7ErjB3Lndo190gpfGeo447yR/kFDxXbAVygpL1pVM
+	 SSU/HoP7hQ0xweaWEtoBB6BHzPDpdfG5z8MhDu94WCiihZoOXMYF3XBi8INSTEREEh
+	 ffOGy1AxcfD1IJavmW99fFzKWyZYyaT0BOYKusAVl0LlBVIejMjJgXnpj9fy2y6mGV
+	 7LWBIYj3qSs5w==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 39B72CD98CF;
+	Tue, 16 Jun 2026 14:15:41 +0000 (UTC)
+From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
+Subject: [PATCH v3 0/4] AUXADC driver for the MediaTek mt6323 PMIC
+Date: Tue, 16 Jun 2026 17:15:38 +0300
+Message-Id: <20260616-mt6323-adc-v3-0-1c27c588185d@protonmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260615071836.362883-4-l.scorcia@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/2WN0Q6CIBhGX8VxHY1+JmpXvUfrAvEnaSkOiNWc7
+ x7oja3Ls33nfDPx6Ax6ci5m4jAab+yYgB8Kono53pGaLjEBBoKVUNIhCA6cyk5R3qJWyIVqNZA
+ kTA61ea+x621j/2ofqEIu5EVvfLDus77FU95tYcFgH44nyqioUVW8KlmNeJmcDXYcpHkelR1Ir
+ kfY+82PD8mXsuESgLNGN3/+sixfL3ZHK/sAAAA=
+X-Change-ID: 20260525-mt6323-adc-3befce36cbf2
+To: Jonathan Cameron <jic23@kernel.org>, 
+ David Lechner <dlechner@baylibre.com>, 
+ =?utf-8?q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, 
+ Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Lee Jones <lee@kernel.org>
+Cc: linux-iio@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Ben Grisdale <bengris32@protonmail.ch>, 
+ Roman Vivchar <rva333@protonmail.com>, 
+ Andy Shevchenko <andriy.shevchenko@intel.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1781619339; l=3607;
+ i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
+ bh=XlvIloNwlhCYTGHH8aZG1rdAJjOlq93TwFN1w080BL0=;
+ b=NbUp3PfytNvQnQz7+JDvwPQAi/S5bTTYQfLrvRPuMmXmkYazYuBdekOocL0sWzz3jCGWz72Ix
+ EGx0RQ40Dw0AXDupH/lVZbWQ00PDSjnvhgqIgdRzNJP6x4bJYy7YcFm
+X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
+ pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
+X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
+ auth_id=777
+X-Original-From: Roman Vivchar <rva333@protonmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,136 +92,88 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 15, 2026 at 09:16:09AM +0200, Luca Leonardo Scorcia wrote:
-> Add bindings for the regulators found in the MediaTek MT6392 PMIC,
-> usually found in board designs using the MediaTek MT8516/MT8167 SoCs.
-> 
-> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-> ---
->  .../regulator/mediatek,mt6392-regulator.yaml  | 234 ++++++++++++++++++
->  .../regulator/mediatek,mt6392-regulator.h     |  24 ++
->  2 files changed, 258 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6392-regulator.yaml
->  create mode 100644 include/dt-bindings/regulator/mediatek,mt6392-regulator.h
-> 
-> diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6392-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6392-regulator.yaml
-> new file mode 100644
-> index 000000000000..197041df4ba1
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6392-regulator.yaml
-> @@ -0,0 +1,234 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/regulator/mediatek,mt6392-regulator.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek MT6392 regulator
-> +
-> +maintainers:
-> +  - Luca Leonardo Scorcia <l.scorcia@gmail.com>
-> +
-> +description:
-> +  MT6392 is a power management system chip containing three buck converters and
-> +  23 LDOs. All voltage regulators provided by the PMIC are described as
-> +  sub-nodes of this node.
-> +
-> +properties:
-> +  compatible:
-> +    items:
-> +      - const: mediatek,mt6392-regulator
-> +
-> +  vproc-supply:
-> +    description: Supply for buck regulator vproc
-> +  vcore-supply:
-> +    description: Supply for buck regulator vcore
-> +  vsys-supply:
-> +    description: Supply for buck regulator vsys
-> +  avddldo-supply:
-> +    description: |
+This series adds support for the 15-bit AUXADC hardware block found on
+the MediaTek mt6323 PMIC.
 
-Don't need '|' if no formatting to preserve. Elsewhere too.
+The previous version of the series for all AUXADC, EFUSE and thermal
+drivers was split after Krzysztof's comment [1].
 
-> +      Supply for AVDD LDOs (vm, vio18, vcn18, vcamd, vcamio). According to the data sheet
-> +      this is an internal supply derived from vsys.
-> +  ldo1-supply:
-> +    description: Supply for LDOs group 1 (vaud28, vxo22, vaud22, vadc18, vcama, vrtc)
-> +  ldo2-supply:
-> +    description: Supply for LDOs group 2 (vcn35, vio28, vmc, vmch, vefuse, vdig18)
-> +  ldo3-supply:
-> +    description: Supply for LDOs group 3 (vusb, vemc3v3, vcamaf, vgp1, vgp2, vm25)
-> +
-> +patternProperties:
-> +  "^v(core|proc|sys)$":
-> +    description: Buck regulators
-> +    type: object
-> +    $ref: regulator.yaml#
-> +    properties:
-> +      regulator-allowed-modes:
-> +        description: |
-> +          BUCK regulators can set regulator-initial-mode and regulator-allowed-modes to
-> +          values specified in dt-bindings/regulator/mediatek,mt6392-regulator.h
-> +        items:
-> +          enum: [0, 1]
+Tested on the MediaTek mt6572 and mt8163 SoCs (Ben), both paired with a
+mt6323.
 
-           minItems: 1
-           maxItems: 2
+The other parts (EFUSE and thermal) will probably be sent this week.
 
-? Because if there are only 2 modes, can't have more entries than that, 
-right? Though wouldn't 2 entries be the same as no property present 
-because I would assume the default is all modes. I shouldn't have to 
-assume though.
+[1]: https://lore.kernel.org/linux-mediatek/20260504-mt6323-v1-0-799b58b355ff@protonmail.com/T/#med30fad67a090be35f549231336b2dec295233f6
+
+Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
+Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+---
+Changes in v3:
+- AUXADC driver:
+    - Add comment for channels table about voltage and channel IDs (Jonathan)
+    - Add comment for mutex in the 'mt6323_auxadc' struct (Jonathan)
+    - Break 'regmap_read_poll_timeout' on logical boundaries (Andy)
+    - Switch to 'guard' from 'scoped_guard' (Andy)
+- Link to v2: https://patch.msgid.link/20260609-mt6323-adc-v2-0-aa93a22309f9@protonmail.com
+
+Changes in v2:
+- AUXADC driver:
+    - Drop channel type from the MTK_PMIC_IIO_CHAN macro (Nuno)
+    - Drop kerneldoc for the mt6323_auxadc struct (Nuno)
+    - Add channel release to save power (Sashiko, Jonathan)
+    - Drop 'reg' variable in the mt6323_auxadc_read (Jonathan)
+    - Sort variables in the mt6323_auxadc_probe (Jonathan)
+- Maintainers:
+    - Drop linux-mediatek list (Andy)
+    - Split between dt-bindings and driver to avoid missing file (Nuno)
+- Link to v1: https://patch.msgid.link/20260602-mt6323-adc-v1-0-68ec737508ee@protonmail.com
+
+Changes after split:
+- dt-bindings: Change 'MT63xx' to 'MT6350 series and similar' (Jonathan)
+- AUXADC driver:
+    - Add missing headers (Andy)
+    - Fix AUXADC_TRIM_CH* values (Andy)
+    - Rename masks to include their register name (Jonathan)
+    - Fix formatting (Andy, Jonathan)
+    - Replace channel address with actual register value (Jonathan), align the table
+    - Replace IIO_TEMP with IIO_VOLTAGE, since the actual output is still mV, not mC
+    - Rename constants to match their registers (Jonathan)
+    - Remove 'if/else if/else' in the mt6323_auxadc_read_raw (Andy)
+    - Add comments for fsleep, ADC range and resolution (Andy, Jonathan)
+    - Remove useless error messages (Andy)
+- Maintainers:
+    - Explicitly include mt6323 in the name (Jonathan)
+    - Squash with AUXADC driver commit (Krzysztof)
+    - Set status back to 'Maintained'
+- Link to a previous series: https://patch.msgid.link/20260512-mt6323-v2-0-3efcba579e88@protonmail.com
+
+---
+Roman Vivchar (4):
+      dt-bindings: iio: adc: mediatek,mt6359-auxadc: add mt6323 PMIC AUXADC
+      iio: adc: mt6323-auxadc: add mt6323 PMIC AUXADC driver
+      mfd: mt6397-core: add mt6323 AUXADC support
+      ARM: dts: mediatek: mt6323: add AUXADC support
+
+ .../bindings/iio/adc/mediatek,mt6359-auxadc.yaml   |   3 +-
+ MAINTAINERS                                        |   7 +
+ arch/arm/boot/dts/mediatek/mt6323.dtsi             |   5 +
+ drivers/iio/adc/Kconfig                            |  11 +
+ drivers/iio/adc/Makefile                           |   1 +
+ drivers/iio/adc/mt6323-auxadc.c                    | 314 +++++++++++++++++++++
+ drivers/mfd/mt6397-core.c                          |   3 +
+ .../dt-bindings/iio/adc/mediatek,mt6323-auxadc.h   |  24 ++
+ 8 files changed, 367 insertions(+), 1 deletion(-)
+---
+base-commit: 028ef9c96e96197026887c0f092424679298aae8
+change-id: 20260525-mt6323-adc-3befce36cbf2
+
+Best regards,
+--  
+Roman Vivchar <rva333@protonmail.com>
 
 
-> +    unevaluatedProperties: false
-
-Place this after $ref. Easier to read than after indented blocks.
-
-> +
-> +  "^v(adc18|camio|cn18|io18|xo22|m25|aud28|io28|rtc|usb)$":
-> +    description: LDOs with fixed output and mode setting
-> +    type: object
-> +    $ref: regulator.yaml#
-> +    properties:
-> +      regulator-allowed-modes:
-> +        description: |
-> +          LDO regulators can set regulator-initial-mode and regulator-allowed-modes to
-> +          values specified in dt-bindings/regulator/mediatek,mt6392-regulator.h
-> +        items:
-> +          enum: [0, 1]
-> +    unevaluatedProperties: false
-> +
-> +  "^v(cama|dig18)$":
-> +    description: LDOs with fixed output without mode setting
-> +    type: object
-> +    $ref: regulator.yaml#
-> +    unevaluatedProperties: false
-> +
-> +  "^v(aud22|camaf|camd|cn35|efuse|emc3v3|gp1|gp2|m|mc|mch)$":
-> +    description: LDOs with adjustable output
-> +    type: object
-> +    $ref: regulator.yaml#
-> +    properties:
-> +      regulator-allowed-modes: false
-> +    unevaluatedProperties: false
-> +
-> +required:
-> +  - compatible
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +
-> +    regulators {
-> +      compatible = "mediatek,mt6392-regulator";
-
-Drop the example. Put 1 complete example in the MFD schema rather than 
-incomplete examples.
-
-Rob
 
