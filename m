@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20DBBCD98DA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2026 00:15:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8333DCD98DA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2026 00:20:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WzApdNind1Co5Xbcn1rQaSPzEq7He8P/6Dkl73QhY40=; b=gPpnrxTEybyabdq/6oDnG/0k7R
-	zjNF03jjoS44QOrLQeeDY3ihklEG4ezbEdeAZK3FoToud+TGfMgJJSl/A2l0JixLkvdfHItt0y2MB
-	hkm1bIBISzELAYrrZQRVaIzq6zssmy9w8U1EgN21bRTs+K/FezQzlEDpUAWn0/xHtdlQhbLUMtxov
-	vPEKjHLR6fGjuSmARWyKQg7AnJq4938RGqN9pi1ZGDBAd7I8g9jrIlxQN9MqUFLsJhz1RaKF/VvGM
-	8XJVjjDzK4rlRYYOIRjxwmWGVsXcvBotJRVqzpoEOej97ewHSRP5+6SEhfR/UtArSgIRF+3ICzRyX
-	qBknFHgA==;
+	bh=+6/QjuRGJWhzJiYsFb4zArvnhQy+cy8hHzkFU94yP8I=; b=pno5jpfM5KKcAeafuPm134592T
+	05N0IbPxrwOiAvO4wVxR2eVDkvB4d7hYuyN5bqvfqOx9RJO/3jy80teYdwYKpGCJh0esxuOG8CzrR
+	/L6D9xbYhBjifBLrydWTiXsM9LsoFj5fdMSmOwthhIMQ22qIe1KaxprOTujZlXWianoM3aMtZ/pRy
+	gZes/MqgpL7mGOLvxPHe/OkIB8KzPSyYcGPFSaZNe2/+4Lt+h1ja4+rZs7wQzXgspmtx6iljJ9O2t
+	gK94aewH2y9J6mNAKHug3BKSnAjktFsgAMDVvMFV4tLNLv6Hs8CdW+ZgEIOoTmbgwfeOH04K+87WB
+	tqDypPtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZHSe-0000000EzsO-0GL0;
-	Tue, 16 Jun 2026 00:15:24 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wZHXI-0000000F0Wj-2Oa3;
+	Tue, 16 Jun 2026 00:20:12 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZHSd-0000000Ezs4-0NCd;
-	Tue, 16 Jun 2026 00:15:23 +0000
+	id 1wZHXH-0000000F0W4-2oND;
+	Tue, 16 Jun 2026 00:20:11 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9509A418E2;
-	Tue, 16 Jun 2026 00:15:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D6DC11F000E9;
-	Tue, 16 Jun 2026 00:15:21 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id ACB36600AB;
+	Tue, 16 Jun 2026 00:20:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6090B1F000E9;
+	Tue, 16 Jun 2026 00:20:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781568922;
-	bh=WzApdNind1Co5Xbcn1rQaSPzEq7He8P/6Dkl73QhY40=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=T+q5pju7LWkXd6Y1SVay308qFKHCSGXe8YQWAXzQQLRhoLNOLXzV1F73822ZYC85z
-	 IlLlAvhIYmnN2QcfASlc1yAUZBKFXbPxLRFkLNMQIP75jyeBK17y/t+KCYA92cfKLG
-	 EsciXIYoR4P/Eg+1zcRDmKU3MCSWZICwYbbZw7RXTy5UYG+RHOWq5Ar2qa0LOSCFdr
-	 hVM8Ensq68LbFj1dR0BQNVGO2Gw4mqnJAwZU84AxQ3b0Cae7bYWTqpkNcF6xO0aEqM
-	 8tV3Ffsx2SGbMKO4SVbFHPsPUX4WSq/XHLwt1FSiQgs1nIeRVj08Z+NTxrMc6Hg3Lt
-	 giATJZ4GSttxQ==
-Date: Mon, 15 Jun 2026 17:15:21 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: daniel@makrotopia.org
-Cc: chester.a.unal@arinc9.com, andrew@lunn.ch, olteanv@gmail.com,
- davem@davemloft.net, edumazet@google.com, pabeni@redhat.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- linux@armlinux.org.uk, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v2 5/8] net: dsa: mt7530: replace mt7530_read
- with regmap_read
-Message-ID: <20260615171521.60d93bf1@kernel.org>
-In-Reply-To: <20260615235649.1060736-1-kuba@kernel.org>
-References: <c6fc9cfae9762bf8d8a136339c91d4a76a307355.1781312667.git.daniel@makrotopia.org>
-	<20260615235649.1060736-1-kuba@kernel.org>
+	s=k20260515; t=1781569210;
+	bh=+6/QjuRGJWhzJiYsFb4zArvnhQy+cy8hHzkFU94yP8I=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=QpkVhquYuDU2AX4DYVJsJvF6u5sRTbsEiNMGAPWWaJlG6UCnS38hoYtGUc7dBOTm0
+	 +52AzvGyBxtG66MFnTX9vWRSENnoQ53lz9F2NUBxrlTn6cz6Qz/QCz6nEcgeVQtAvd
+	 bvujSVfV8LO49vGBDdv0/DTlxt0PC4g2jAJB8bPLxK/squoKGyObe256Fj/0ZkeafG
+	 x14YY2Nq+3rYNDldt2Fg09yqia1Ez62Ot8qqyk9FA7Twnr6ELYLEmjt1nWF6BN4kqx
+	 fSQfy9XcxqKW9M4wN6d6rJ7ho3oZbwThFHbPOKnScXVcVJfRcFy9EY8lsOiawOBI7u
+	 C9LVxzg/IRMmw==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 93A003839A26;
+	Tue, 16 Jun 2026 00:20:06 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next v5 0/3] airoha: add the capability to configure
+ GDM3/GDM4 as WAN/LAN on demand
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <178156920539.351484.2629045688985264535.git-patchwork-notify@kernel.org>
+Date: Tue, 16 Jun 2026 00:20:05 +0000
+References: <20260611-airoha-ethtool-priv_flags-v5-0-c11de08486d1@kernel.org>
+In-Reply-To: <20260611-airoha-ethtool-priv_flags-v5-0-c11de08486d1@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+ madhur.agrawal@airoha.com, aleksander.lobakin@intel.com
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,43 +73,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 15 Jun 2026 16:56:49 -0700 Jakub Kicinski wrote:
-> >  static u32
-> > -mt7530_read(struct mt7530_priv *priv, u32 reg)
-> > +mt7530_mii_poll(struct mt7530_dummy_poll *p)
-> >  {
-> > -	int ret;
-> >  	u32 val;
-> >  
-> > -	ret = regmap_read(priv->regmap, reg, &val);
-> > -	if (ret) {
-> > -		WARN_ON_ONCE(1);
-> > -		dev_err(priv->dev,
-> > -			"failed to read mt7530 register\n");
-> > -		return 0;
-> > -	}
-> > +	regmap_read(p->priv->regmap, p->reg, &val);
-> >  
-> >  	return val;
-> >  }  
-> 
-> [Medium]
-> The old wrapper guaranteed val == 0 on failure. The new mt7530_mii_poll()
-> declares val without an initializer and ignores the regmap_read() return
-> code, so on a failed underlying transfer val is whatever was on the stack.
-> 
-> Looking at drivers/net/dsa/mt7530-mdio.c::mt7530_regmap_read():
-> 
->     ret = bus->write(bus, priv->mdiodev->addr, 0x1f, page);
->     if (ret < 0)
->         return ret;
-> 
->     lo = bus->read(bus, priv->mdiodev->addr, r);
->     hi = bus->read(bus, priv->mdiodev->addr, 0x10);
-> 
->     *val = (hi << 16) | (lo & 0xffff);
+Hello:
 
-This looks legit, AFAICT, sadly.
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-Maybe just write *val = 0; in mt7530_regmap_read() unconditionally ?
+On Thu, 11 Jun 2026 23:55:50 +0200 you wrote:
+> Add the capability to configure GDM3/GDM4 as WAN/LAN on demand when QoS
+> offload is created or destroyed.
+> Make dev->qdma an RCU pointer so the TX path can safely dereference it
+> without holding RTNL.
+> Introduce airoha_qdma_start() and airoha_qdma_stop() helpers.
+> 
+> 
+> [...]
+
+Here is the summary with links:
+  - [net-next,v5,1/3] net: airoha: use int instead of atomic_t for qdma users counter
+    https://git.kernel.org/netdev/net-next/c/a459b560e58b
+  - [net-next,v5,2/3] net: airoha: refactor QDMA start/stop into reusable helpers
+    (no matching commit)
+  - [net-next,v5,3/3] net: airoha: defer GDM3/GDM4 WAN mode and GDM2 loopback to QoS offload
+    (no matching commit)
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
