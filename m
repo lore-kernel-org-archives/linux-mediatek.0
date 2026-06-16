@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 965FCCD98E7
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E15FBCD98EC
 	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2026 14:15:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
@@ -12,45 +12,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5EMDnAmzJXMhptfde38v32KWV6AtxnMi0N9/i1Gt4W0=; b=lYa2TrYGlXCfA4UWnimQv/UdDQ
-	hFAN1f9EsAx66/mAwd25JOFxb1PARxmXBu+b/BxZp1jA9iHy7+vx2woIEbacpWuSqOpgHv/Dzf4UO
-	KIBtMwSQ8vHN/XQx20rqDxIz2YBw1dcv7JvTI1VySuVUN6DwkB+bd7RwfrorhEc5BAxpxbRfHTXv9
-	5Kqcdi/gYgeEMHly1DSg9sh6xaqnTYDuFbcHchq5K7Sz8zVZHMc6haqDv8CUhDvDAbSQeLBD9SUw9
-	8VnW3Wuqx1E2ZnaQBTkrhuwtv6/KMrRic14sesalq+hcS/QKMrFc7OPgeNUbAh3mF2RobzX+e+b6W
-	5zbjctbg==;
+	bh=39k9hJtIngFDc5kAzhTQBAbWUtLN4p1Hj+Wp34GgIk4=; b=TTbYkIIU0jGEqGYYuxuIF89etn
+	l4EoDE0GutI6eRN9EV/q79aREQ+fy4qtCGxaB0C18uXOIFj/H5FLkwNxgYa70er+vS18/dVJBj6CQ
+	3PdUTquqrOsi+2az/Ix4h3MBhPaSG5152qHys9mmL0oAB5bzKutxML5Za+MJ6MwyfDOa1lf5nH/T/
+	9s4LaRmCeMW72zmjVMISgyfOQr/ZFlnTzME9PP5VspRooyxC2UAWLYSOZl868+5qpPcLXNdNS1GmL
+	mHvxLvkFyWsyeKKTKCzYOxyOVrPjAAd1Z3g6Szav50XkDmO77nwm9eM8pKdWftfSVJ2MzzWmhKwX1
+	MncyzlFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZUZs-0000000Ftzm-1dRu;
+	id 1wZUZs-0000000Fu0F-2ytD;
 	Tue, 16 Jun 2026 14:15:44 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZUZq-0000000FtxB-0Vvh;
+	id 1wZUZq-0000000FtxD-120Y;
 	Tue, 16 Jun 2026 14:15:42 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id DBE4044596;
+	by sea.source.kernel.org (Postfix) with ESMTP id E3462445AC;
 	Tue, 16 Jun 2026 14:15:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id B696DC4AF0F;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id C57A8C2BCB7;
 	Tue, 16 Jun 2026 14:15:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1781619341;
-	bh=D3ikDb5iz89iLJ6uZVHjbY5rTXXDcPWKbnxCOlfwCxY=;
+	bh=6Uru3oiN+KUnWcz/gv4yCW62HmXWPmwm2tqYSe5EbcY=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=tCRWNQPpobn8IiOUu6AmEieiZ2kw27tFi+dbumje3dNKwgLoE5XHfuZ5yC6RYnU+h
-	 SCdOBDufTA5zWOH9bMkrBLqz+I9GNuFmPJJ3mXnz6J1k6oVVS+1QMtUJHJxRN9vteW
-	 huFjvrdQewmEGnxXLRBEqAuFMGJNzuqq1UuTZjWtiIWX9eoYjilS2+JEJk3ecrYEqg
-	 mrYnZi0X8N8EGZGur7uBrz2F00vJpJWimYyYmiOgfYqoZqRxLD3z4L/WudHbG/soQk
-	 J73qzZRuhARv19f5GHFmCgGgjcM149R2VI9Xp12kxBgAPYTOZ+2dC+SIAf0U7hduy/
-	 Tc/ovhKNwAC4Q==
+	b=qubnNbcvKZjEhjV+mJnGorrsB0ORuYDBW+yWOFGPViFLW1gqvWb3QpBPXaJzndvAD
+	 n/oGrPHvlpHe8+qlZH0KGUBfzXnqAtIV41gXSRv6kMw5mAjm3ixb1Odz4yONizatMt
+	 fav5xVdPKpBdSqoM6uxjfumyDAHqrrLL9r9FzBYiQ42V+E30bEPrYWAr2ernaNnvVf
+	 6mikH61I3SgFnvs9nL0PT+ZVqXZkJB9kgv6pkPekb5i8tyeTdh73094x6f7hIpHHZz
+	 spuNzBXozQAFExc66irW9DMTfFmJETOOR2tjzEEjT+wj1Lg2/8VtV0ivA7LMcbQgQ6
+	 26FMwMazrlA2Q==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A3170CD98E7;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BCE47CD98E4;
 	Tue, 16 Jun 2026 14:15:41 +0000 (UTC)
 From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Tue, 16 Jun 2026 17:15:41 +0300
-Subject: [PATCH v3 3/4] mfd: mt6397-core: add mt6323 AUXADC support
+Date: Tue, 16 Jun 2026 17:15:42 +0300
+Subject: [PATCH v3 4/4] ARM: dts: mediatek: mt6323: add AUXADC support
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260616-mt6323-adc-v3-3-1c27c588185d@protonmail.com>
+Message-Id: <20260616-mt6323-adc-v3-4-1c27c588185d@protonmail.com>
 References: <20260616-mt6323-adc-v3-0-1c27c588185d@protonmail.com>
 In-Reply-To: <20260616-mt6323-adc-v3-0-1c27c588185d@protonmail.com>
 To: Jonathan Cameron <jic23@kernel.org>, 
@@ -67,11 +67,11 @@ Cc: linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
  linux-mediatek@lists.infradead.org, Ben Grisdale <bengris32@protonmail.ch>, 
  Roman Vivchar <rva333@protonmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1781619339; l=903;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1781619339; l=814;
  i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=AtpQuSBNMLgpeH1t4ADFZid08i2lKNvKchWt3/88KCc=;
- b=F0OFaeZqePmjXytdqgEISXDkiRYu5hJfRYkR9qDl5nqTWt8+5z+ccYl3Ex0piRUFZbBEdE/r0
- 5EvIi493mpmCmbCDd/yJEO/ttmlEIdiMQxWj7adRIfOfoox2gyTjwXY
+ bh=WC9jUSlABoGBdBqPU8PZ4ZIU5LJl1TAO11/EPH3tS8U=;
+ b=cx8MHpOPsgD79V+yFNyXEm9LaUrOOAUnb9gXrJA90ceOaAZQ0r+3WMmBIQXs1KOCSBl5ODVrl
+ 39S5IKQEj72D2dsBdQJqJsDcRFBxyg0gZFfXGYLN5bGpXuOeFBLjUMf
 X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
  pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
 X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
@@ -94,30 +94,30 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Roman Vivchar <rva333@protonmail.com>
 
-The mt6323 PMIC includes an AUXADC. Register the AUXADC in the mt6323
-devices array to allow the corresponding driver to probe using compatible
-string.
+Add the devicetree node for the mt6323 AUXADC.
 
 Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
 Signed-off-by: Roman Vivchar <rva333@protonmail.com>
 ---
- drivers/mfd/mt6397-core.c | 3 +++
- 1 file changed, 3 insertions(+)
+ arch/arm/boot/dts/mediatek/mt6323.dtsi | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-index 3e58d0764c7e..013b0857fb54 100644
---- a/drivers/mfd/mt6397-core.c
-+++ b/drivers/mfd/mt6397-core.c
-@@ -125,6 +125,9 @@ static const struct resource mt6323_pwrc_resources[] = {
+diff --git a/arch/arm/boot/dts/mediatek/mt6323.dtsi b/arch/arm/boot/dts/mediatek/mt6323.dtsi
+index c230c865116d..c070f4b0936c 100644
+--- a/arch/arm/boot/dts/mediatek/mt6323.dtsi
++++ b/arch/arm/boot/dts/mediatek/mt6323.dtsi
+@@ -14,6 +14,11 @@ pmic: mt6323 {
+ 		interrupt-controller;
+ 		#interrupt-cells = <2>;
  
- static const struct mfd_cell mt6323_devs[] = {
- 	{
-+		.name = "mt6323-auxadc",
-+		.of_compatible = "mediatek,mt6323-auxadc",
-+	}, {
- 		.name = "mt6323-rtc",
- 		.num_resources = ARRAY_SIZE(mt6323_rtc_resources),
- 		.resources = mt6323_rtc_resources,
++		mt6323_adc: adc {
++			compatible = "mediatek,mt6323-auxadc";
++			#io-channel-cells = <1>;
++		};
++
+ 		mt6323_leds: leds {
+ 			compatible = "mediatek,mt6323-led";
+ 			#address-cells = <1>;
 
 -- 
 2.54.0
