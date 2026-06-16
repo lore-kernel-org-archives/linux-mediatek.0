@@ -4,67 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B0AECD98DE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jun 2026 23:57:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20DBBCD98DA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2026 00:15:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fDHskcalX1Eyf5uU4t/aR1BqkGPnh3W34m8qlSr4iSY=; b=mLxa1EhD7cFcgbNLM4u89Xx2bx
-	9DBnycalvw0/Pa2gMFgsfr7qz0pOvKv1zHIa5UjSQbknxK+udIlFC5MXogfCiy1Nfw1KUd+u42cOc
-	UX7mTDdCcNVLtMLqcJwkUqxSrcLOkkWuaYroZ4WMMmfdMWZ/9mmNdox0TYrA9uaxbA+Qe+XRhYT3R
-	4G6DlbiXGGjsdM5+df9BBuLaCEjEEG2WjPxvUeBWtF3mvnVgC9yEm8mdPqZGvxjD9Al5SLsTT/1EH
-	O/RW8WuBbl6LEgT4bzsJEfy88eN2Lr/8tKmMTXp1JCJ8iyyfceX20BetEDff799IMr11kL1lAxHgG
-	83lCEdMA==;
+	bh=WzApdNind1Co5Xbcn1rQaSPzEq7He8P/6Dkl73QhY40=; b=gPpnrxTEybyabdq/6oDnG/0k7R
+	zjNF03jjoS44QOrLQeeDY3ihklEG4ezbEdeAZK3FoToud+TGfMgJJSl/A2l0JixLkvdfHItt0y2MB
+	hkm1bIBISzELAYrrZQRVaIzq6zssmy9w8U1EgN21bRTs+K/FezQzlEDpUAWn0/xHtdlQhbLUMtxov
+	vPEKjHLR6fGjuSmARWyKQg7AnJq4938RGqN9pi1ZGDBAd7I8g9jrIlxQN9MqUFLsJhz1RaKF/VvGM
+	8XJVjjDzK4rlRYYOIRjxwmWGVsXcvBotJRVqzpoEOej97ewHSRP5+6SEhfR/UtArSgIRF+3ICzRyX
+	qBknFHgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZHAy-0000000EyWL-1qZO;
-	Mon, 15 Jun 2026 23:57:08 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wZHSe-0000000EzsO-0GL0;
+	Tue, 16 Jun 2026 00:15:24 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZHAs-0000000EySk-1otU;
-	Mon, 15 Jun 2026 23:57:02 +0000
+	id 1wZHSd-0000000Ezs4-0NCd;
+	Tue, 16 Jun 2026 00:15:23 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id D9CC2436B4;
-	Mon, 15 Jun 2026 23:57:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 15D791F00A3A;
-	Mon, 15 Jun 2026 23:57:01 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 9509A418E2;
+	Tue, 16 Jun 2026 00:15:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D6DC11F000E9;
+	Tue, 16 Jun 2026 00:15:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781567821;
-	bh=fDHskcalX1Eyf5uU4t/aR1BqkGPnh3W34m8qlSr4iSY=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=mlTm9La1e0PbaoG/565k376Z7ZCfCgpox1mynJ7RroJibim8k/kSsGsiaEZ8gTNKa
-	 Lt1aOHaq8+DYXADx1lL51u2FfCCYRjSDaOSUi8hg88zbBEEXpfZKDsImEiLv29pw8y
-	 u0LAB5GO6wxDuwN4ycTFKeALNH2IJYOhdlVX2hKmh9q5jmfVSqqyKV8OBAxmZwd8+n
-	 mtCX+Er52/f/SzKn4UofoIwWpvSwBEZh9QwYhBawPgG7kr4VBahNHGUubXoAC+pD43
-	 2+ZmEJwoDTZDovIX46ufp5e47L4GDnT1teBNxFDs/NPdxfgxnWbkDdhUelGfRSWGGI
-	 SUkw8h4sS5xJw==
+	s=k20260515; t=1781568922;
+	bh=WzApdNind1Co5Xbcn1rQaSPzEq7He8P/6Dkl73QhY40=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=T+q5pju7LWkXd6Y1SVay308qFKHCSGXe8YQWAXzQQLRhoLNOLXzV1F73822ZYC85z
+	 IlLlAvhIYmnN2QcfASlc1yAUZBKFXbPxLRFkLNMQIP75jyeBK17y/t+KCYA92cfKLG
+	 EsciXIYoR4P/Eg+1zcRDmKU3MCSWZICwYbbZw7RXTy5UYG+RHOWq5Ar2qa0LOSCFdr
+	 hVM8Ensq68LbFj1dR0BQNVGO2Gw4mqnJAwZU84AxQ3b0Cae7bYWTqpkNcF6xO0aEqM
+	 8tV3Ffsx2SGbMKO4SVbFHPsPUX4WSq/XHLwt1FSiQgs1nIeRVj08Z+NTxrMc6Hg3Lt
+	 giATJZ4GSttxQ==
+Date: Mon, 15 Jun 2026 17:15:21 -0700
 From: Jakub Kicinski <kuba@kernel.org>
 To: daniel@makrotopia.org
-Cc: Jakub Kicinski <kuba@kernel.org>,
-	chester.a.unal@arinc9.com,
-	andrew@lunn.ch,
-	olteanv@gmail.com,
-	davem@davemloft.net,
-	edumazet@google.com,
-	pabeni@redhat.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux@armlinux.org.uk,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v2 8/8] net: dsa: mt7530: implement port_change_conduit op
-Date: Mon, 15 Jun 2026 16:57:00 -0700
-Message-ID: <20260615235700.1060843-1-kuba@kernel.org>
-X-Mailer: git-send-email 2.54.0
-In-Reply-To: <8dd8cfe32bc8e38b92c49e30a6255090fb0998fb.1781312667.git.daniel@makrotopia.org>
-References: <8dd8cfe32bc8e38b92c49e30a6255090fb0998fb.1781312667.git.daniel@makrotopia.org>
+Cc: chester.a.unal@arinc9.com, andrew@lunn.ch, olteanv@gmail.com,
+ davem@davemloft.net, edumazet@google.com, pabeni@redhat.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ linux@armlinux.org.uk, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next v2 5/8] net: dsa: mt7530: replace mt7530_read
+ with regmap_read
+Message-ID: <20260615171521.60d93bf1@kernel.org>
+In-Reply-To: <20260615235649.1060736-1-kuba@kernel.org>
+References: <c6fc9cfae9762bf8d8a136339c91d4a76a307355.1781312667.git.daniel@makrotopia.org>
+	<20260615235649.1060736-1-kuba@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,68 +73,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is an AI-generated review of your patch. The human sending this
-email has considered the AI review valid, or at least plausible.
----
-net: dsa: mt7530: implement port_change_conduit op
+On Mon, 15 Jun 2026 16:56:49 -0700 Jakub Kicinski wrote:
+> >  static u32
+> > -mt7530_read(struct mt7530_priv *priv, u32 reg)
+> > +mt7530_mii_poll(struct mt7530_dummy_poll *p)
+> >  {
+> > -	int ret;
+> >  	u32 val;
+> >  
+> > -	ret = regmap_read(priv->regmap, reg, &val);
+> > -	if (ret) {
+> > -		WARN_ON_ONCE(1);
+> > -		dev_err(priv->dev,
+> > -			"failed to read mt7530 register\n");
+> > -		return 0;
+> > -	}
+> > +	regmap_read(p->priv->regmap, p->reg, &val);
+> >  
+> >  	return val;
+> >  }  
+> 
+> [Medium]
+> The old wrapper guaranteed val == 0 on failure. The new mt7530_mii_poll()
+> declares val without an initializer and ignores the regmap_read() return
+> code, so on a failed underlying transfer val is whatever was on the stack.
+> 
+> Looking at drivers/net/dsa/mt7530-mdio.c::mt7530_regmap_read():
+> 
+>     ret = bus->write(bus, priv->mdiodev->addr, 0x1f, page);
+>     if (ret < 0)
+>         return ret;
+> 
+>     lo = bus->read(bus, priv->mdiodev->addr, r);
+>     hi = bus->read(bus, priv->mdiodev->addr, 0x10);
+> 
+>     *val = (hi << 16) | (lo & 0xffff);
 
-Implements the port_change_conduit operation for the mt7530 driver,
-updating the port matrix to forward to a new CPU port. The op is
-restricted to MT7531 because MT7530/MT7621 cannot honour per-port CPU
-affinity for trapped frames and the MT7988/EN7581/AN7583 switches have
-only a single CPU port.
+This looks legit, AFAICT, sadly.
 
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index c96420c291d5..2f3e734b9f53 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -3206,6 +3206,34 @@ static int mt753x_set_mac_eee(struct dsa_switch *ds, int port,
->  	return 0;
->  }
->  
-> +static int
-> +mt753x_port_change_conduit(struct dsa_switch *ds, int port,
-> +			   struct net_device *conduit,
-> +			   struct netlink_ext_ack *extack)
-> +{
-> +	struct dsa_port *new_cpu_dp = conduit->dsa_ptr;
-> +	struct dsa_port *dp = dsa_to_port(ds, port);
-> +	struct mt7530_priv *priv = ds->priv;
-> +
-> +	if (priv->id != ID_MT7531)
-> +		return -EOPNOTSUPP;
-
-[Low]
-Should this branch populate the supplied extack with NL_SET_ERR_MSG_MOD()
-before returning -EOPNOTSUPP?
-
-Because port_change_conduit is registered in the shared mt7530_switch_ops
-table, the DSA core's fallback message in dsa_user_change_conduit() ("Driver
-does not support changing DSA conduit") is bypassed; that branch only runs
-when ds->ops->port_change_conduit is NULL. Neither dsa_port_change_conduit()
-nor __dsa_port_change_conduit() in net/dsa/port.c synthesize an extack on
-callback failure either.
-
-The result is that on MT7530, MT7621, MT7988, EN7581 and AN7583, userspace
-invoking IFLA_DSA_CONDUIT receives EOPNOTSUPP with an empty extack, with
-none of the per-chip context that the commit message itself spells out
-(single CPU port; MT7530 MFC CPU_PORT trapping limitation). Would a short
-NL_SET_ERR_MSG_MOD() naming the reason be appropriate here?
-
-> +
-> +	mutex_lock(&priv->reg_mutex);
-> +
-> +	/* dp->cpu_dp still points to the old CPU port */
-> +	priv->ports[port].pm &= ~PCR_MATRIX(BIT(dp->cpu_dp->index));
-> +	priv->ports[port].pm |= PCR_MATRIX(BIT(new_cpu_dp->index));
-> +	if (priv->ports[port].enable)
-> +		regmap_update_bits(priv->regmap, MT7530_PCR_P(port),
-> +				   PCR_MATRIX_MASK, priv->ports[port].pm);
-> +
-> +	mutex_unlock(&priv->reg_mutex);
-> +
-> +	mt7530_port_fast_age(ds, port);
-> +
-> +	return 0;
-> +}
+Maybe just write *val = 0; in mt7530_regmap_read() unconditionally ?
 
