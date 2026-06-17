@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59E61CD98E4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 10:36:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A024FCD98F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 10:36:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZLoxnhSs+1o+EbkqMlV4TtbB/c6QxxOb6So3gGVF6YM=; b=ij/1Edp2hBswd4JR5IpmCk+BGn
-	EzRkU3Uq1puUD8vwZOyTny3uHz110iOZC4O6kq47GZ1R2hRLY/rpdz6Kgyy935j+FYoUaT7Nf1l7A
-	pq32SqCxUA4LfZpF1jOM+BrCN7gVayMvMkecaTsvdzOYKJdR88lXm0ylaxWd3svkdjf3VXCRiGplr
-	SpbND9B0ApqsvzQS7t5xUsxBc4p4RTsbB+PG50PBETrcQ9rsOv/GU2oeKDcerPDFg43ny2+q98RbG
-	hJowYxtz/D5TDeoCo/+u3RXYV4RFIiEJeb2u9s053+e+3a7RwrpOWGdokYovc8FVCz1fhKkK9xGLE
-	TS7qHqow==;
+	bh=PNurP/9D2C90fingnCx+/RnV4Jx+m6H05P+75zIDvK8=; b=mVxA65nowp+1O0IyvFrX9HY55I
+	0EIaZkR+d1FXhQiIWyf1jWBfHeeRz9MP9ynOu0MT8oW/E9ZA4Zxk1ScPjAHG+bI+Iwm1nf8yVrCcD
+	el4jPBhrWEwhpoQjrc7WZLisDSWCt7xXVKhRGe3O+ZNruOY1pOEzqR9kiiGGoKXFMvjzjkhC478WU
+	Xs4OAEoyJiNr0FTHXOOYR/LQ4HaU9jcTsNdYIyrbXNUB+Q8evqTdVh7nTXuJnZkeAZntc0JFMVsyN
+	qmXq0svApwVPoCvdT43iZDEHYi0Rf28j/iPoy7G0dUSgJls5Ot9Fd7yY14Fmyjiqv97VauZVGiHUR
+	6zzLsRpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZndL-0000000H6Fp-2KQ4;
-	Wed, 17 Jun 2026 10:36:35 +0000
-Received: from mail-dl1-x122d.google.com ([2607:f8b0:4864:20::122d])
+	id 1wZndU-0000000H6P9-3X5z;
+	Wed, 17 Jun 2026 10:36:44 +0000
+Received: from mail-dy1-x1333.google.com ([2607:f8b0:4864:20::1333])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZndJ-0000000H6DI-0LAw
+	id 1wZndR-0000000H6MD-3Tk8
 	for linux-mediatek@lists.infradead.org;
-	Wed, 17 Jun 2026 10:36:34 +0000
-Received: by mail-dl1-x122d.google.com with SMTP id a92af1059eb24-137335bc3caso6885381c88.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 17 Jun 2026 03:36:32 -0700 (PDT)
+	Wed, 17 Jun 2026 10:36:43 +0000
+Received: by mail-dy1-x1333.google.com with SMTP id 5a478bee46e88-304f590dd91so6360193eec.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 17 Jun 2026 03:36:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781692592; x=1782297392; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1781692601; x=1782297401; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ZLoxnhSs+1o+EbkqMlV4TtbB/c6QxxOb6So3gGVF6YM=;
-        b=Gvqd2aHvJF45YyA+/TFhFSuPzSrgK+KySUr5bE1fjN3Ts4kf1et/e07ji8CiGQUyzW
-         3CbpCDvIC6xPm+l6GRUnszE/7USHCbscS0e99HWGs1dKUTHzfRI380H52YI+6fbvDxgU
-         wYNXemXeVTEsgpybtFdIH7RzRq6iw6nRlI0nYqlCet2cTRttoqb0RM8OcnZ2SwHVx7Ng
-         JlZ8mSDnKszv2oxRDJhN84S/sbnx/1e7IXJC5IlIs5iCwyeRWU3cYKTTWqvsmI3gUeEJ
-         7mtJJ4QJpj01HQaPF1dnwJ0+QB/QH+0c7+iYdEJlHAWDL/Gjv6sYyDag8uOT+Hlpwd41
-         rgew==
+        bh=PNurP/9D2C90fingnCx+/RnV4Jx+m6H05P+75zIDvK8=;
+        b=gR25w47t4JEEw2uDJ2nu2p/eXkEp09wNa7vu/XI9brYs/qgI3AtiWEe4oBOMEP3/6u
+         slbUpa6u2EG0CU1nHIJpM6QV5bCzMkeMMrgJ5cgqkRmqL2w1cUyod6yiL6VHYVlotOoY
+         kMbgfdJGk+VjIuLP++3uf6FZJhtQjNq2VVJfwkrRR3NPCb9i72Uv+HuIlwp2SGpCOZZI
+         oFEPVF4G4yZt0jLViplqT2vnHaTGcQQVAlKjaNAV+ex1uX1wR+zADOW9H77LYVkToDDj
+         Pm2vnXtTQwi0fq4v+x1Np4KhZhPomBuUzqcco2kcsXpzSrE3ujhpYGNC/4yxZS6Q6T7f
+         RaUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781692592; x=1782297392;
+        d=1e100.net; s=20251104; t=1781692601; x=1782297401;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=ZLoxnhSs+1o+EbkqMlV4TtbB/c6QxxOb6So3gGVF6YM=;
-        b=dsWvMmb7gWYFh3jGgXXaayNkJwM1xUsLDNqWt6+SNkbidv7Uyr4G3BSQlU102jeseV
-         FRq+yqRpdUMvYp+6TAm1295Hib6GAeg+GDltqdKJD1PYzMh+WO5ussdIowTaLoC5ENEd
-         Lq+Y4lLx5nK+x//Fxw2r6O95YjHKqM50vY80yYLdW1tcD5Lj75utvhokLzcOgSfD9RNm
-         /dmOpjLwmbgkK/W1Rvae8idh+dO/eDewJAIrTukYzfAOSufhT7voB3/lmztl2CpTrzt3
-         jiaW1dmsPTdhrgflJawznPgB4R0T1GHvpo9qZhhpkk7cE+gpt7LshVEEfnS1qjb8I7K0
-         Gk5Q==
-X-Forwarded-Encrypted: i=1; AFNElJ9jLR075wdIr5LJcEmf3GDg8lvTNzqmlAWVVMMKeaIRAIekp0oklXH74WG0VadE/YSENvvaBIxIF5isFWe6LA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywfyi6CQFXmAER+MjVItkFaSx6C5+yYnhDiadTF2QwF9Mda03I8
-	bee4Jrn9RLL8C4jiQ9BDTa9c98V7a0p33qCK4+902tfaeHkDE1gryKHC
-X-Gm-Gg: Acq92OG+nEUlhKgNS0ApLviIsw3VEHcMpVOborQPkL2Rvf0UEvbKIjZURSITAcRwx+8
-	sR+vYiYiR4g1Xa3LuTD28DDcd/0yuPNXU3uwZUC5bvgaoaAlQWSBWVCME9PUVbxpnQG//+kZyZ1
-	A7alIDaG8SpHmm44U63K73LsRgc3Qu2fOZtTDOQ8Zd4h+pgqESY8ncxgywKkcubwBOcUpk/JeEQ
-	FhE0wzdCJ5McFMU/irDKISy/D7ZRFA/Gta9kf/n28ZduuXafF2sH6kXro4+sJFP9LoncXq2ho44
-	dx1RH3284+GjJR6EmAKfP4GrpkQv7wPawl+adWK2l4ytei/Rwu5d/s+KsyuyxXnwBG7VUVLDYGT
-	JZfE1dx+7wIcmN//1agrHY+2brDMcETwKUq9N0F9SW498POENM03mpIjbuyXd6LnJ6APkliR0uo
-	u+Nlc6pja+9qhgt8KMcQ8J5PnqFw9a9pHLz5f8eg7/P009tis=
-X-Received: by 2002:a05:7022:fd08:b0:137:f532:e360 with SMTP id a92af1059eb24-1398f62354dmr1205523c88.3.1781692592243;
-        Wed, 17 Jun 2026 03:36:32 -0700 (PDT)
+        bh=PNurP/9D2C90fingnCx+/RnV4Jx+m6H05P+75zIDvK8=;
+        b=Jf4s14/qjfsvgIkwJ4w5k3KTn9V9Pk8vqGH3U2q4DXTlhxOGU5wKN7HluCwWYeYrpT
+         qTsv20kVO7sbMxGWhEWv2xUoSuN9f1Rc6KZuUruJ09TE8LYST+1uPMdgCBJfiCluuuOI
+         6uSZGx5bfbqjJCeAw2NS1MLT8zDVOrjn6IpQdnhEq51VFJnfyToml1QQ8apZQAkqgxHv
+         48mYuvAb4RcsahUv83cn542mTE2XWw/U0HHkB9gc3klYWzJv31NS+mlx1XFPKHJGQqfS
+         Xo2bHKaMyG0kQeBHkEAR0/xk5c0fCweTQReRd6ti0w2b9zb6yXH6ZLBc020G84BdDMxu
+         RzyA==
+X-Forwarded-Encrypted: i=1; AFNElJ9vFrEzQTjKUb9RxMXlk0viuoZ/7inle8Q78OYA/dRzy799qtvrWYhQdXjPRuNAj3hE2Rswo780Q5KHLHwhmQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzfZXwf3lnhG+AUVRbu9oIPGdfsCa6F2zjj7K1gyngEG5aC7Guq
+	cRuK/dZ05kbQzT3pFwerboyDNm4xCB7U4v+jDFMZ68Vmb+6UVbPnRoLb
+X-Gm-Gg: AfdE7clWY8jmm5yYfDHnvUCgHTQmZWGzIpbNRkIwK8EroQypqlBFaow5eDPoALM19+P
+	u2mttlMyhgnRpQAxb1fVTcLmq/ZPiVP1CYcn96RK2IxJrK/VimT2vAN4r7yNZXwn3rY0hk+XCk1
+	s2sxstsfotO5NulWrMn6k+KLewCSqfWBNriP7pyw1cMnWL0YSjL29QlrWy7hv7vFDSg8k5wuV7U
+	JuktYvk7/b4vyR7ZO3CnfASiJQryaWvsRhnnYkmokh7sB48rA0PZZQGgCI/m13+ZX4edIrcFB4Y
+	mIpNKHNUPHxpi7v48cuXJhKADe/G6LyV+aLJU2g3ZSG739pflbrDvz+jisJ2NzJagweB1ZAjvxi
+	NjpIudqCTVfz0lhb1Goh0FoBe3tPSS4BxV4aTBAPj/iIDzKrd7WMC/EeO1Qh5XEdx5VCVlTcClT
+	DZLCVe9egSrk950bgPu0j1pKIwIF6g8B2LQQd0BjOQE62ohng=
+X-Received: by 2002:a05:7300:72d5:b0:2d2:96e8:1bf5 with SMTP id 5a478bee46e88-30bc992dbe8mr1692072eec.3.1781692601209;
+        Wed, 17 Jun 2026 03:36:41 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3081e5d0828sm24616275eec.10.2026.06.17.03.36.24
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3081e5d0828sm24616275eec.10.2026.06.17.03.36.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 17 Jun 2026 03:36:31 -0700 (PDT)
+        Wed, 17 Jun 2026 03:36:40 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Mark Brown <broonie@kernel.org>
 Cc: Liam Girdwood <lgirdwood@gmail.com>,
@@ -105,17 +105,18 @@ Cc: Liam Girdwood <lgirdwood@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH 23/78] ASoC: codecs: cs48l32: Use guard() for mutex locks
-Date: Wed, 17 Jun 2026 17:31:40 +0700
-Message-ID: <20260617103235.449609-24-phucduc.bui@gmail.com>
+Subject: [PATCH 24/78] ASoC: codecs: cs2072x: Use guard() for mutex locks
+Date: Wed, 17 Jun 2026 17:31:41 +0700
+Message-ID: <20260617103235.449609-25-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260617103235.449609-1-phucduc.bui@gmail.com>
 References: <20260617103235.449609-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260617_033633_154775_4F8C166D 
-X-CRM114-Status: GOOD (  11.78  )
+X-CRM114-CacheID: sfid-20260617_033641_890121_DA25E36C 
+X-CRM114-Status: UNSURE (   9.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,69 +138,31 @@ Merely code refactoring, and no behavior change.
 
 Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
- sound/soc/codecs/cs48l32.c | 28 ++++++++++++----------------
- 1 file changed, 12 insertions(+), 16 deletions(-)
+ sound/soc/codecs/cx2072x.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/sound/soc/codecs/cs48l32.c b/sound/soc/codecs/cs48l32.c
-index 086ed0f57a85..d45e339f76a7 100644
---- a/sound/soc/codecs/cs48l32.c
-+++ b/sound/soc/codecs/cs48l32.c
-@@ -236,15 +236,13 @@ static int cs48l32_rate_put(struct snd_kcontrol *kcontrol, struct snd_ctl_elem_v
- 	int ret;
+diff --git a/sound/soc/codecs/cx2072x.c b/sound/soc/codecs/cx2072x.c
+index 83c6cbd40804..93fbd21dc51c 100644
+--- a/sound/soc/codecs/cx2072x.c
++++ b/sound/soc/codecs/cx2072x.c
+@@ -1408,7 +1408,7 @@ static int cx2072x_jack_status_check(void *data)
+ 	unsigned int type = 0;
+ 	int state = 0;
  
- 	/* Prevent any mixer mux changes while we do this */
--	mutex_lock(&cs48l32_codec->rate_lock);
-+	guard(mutex)(&cs48l32_codec->rate_lock);
+-	mutex_lock(&cx2072x->lock);
++	guard(mutex)(&cx2072x->lock);
  
- 	/* The write must be guarded by a number of SYSCLK cycles */
- 	cs48l32_spin_sysclk(cs48l32_codec);
- 	ret = snd_soc_put_enum_double(kcontrol, ucontrol);
- 	cs48l32_spin_sysclk(cs48l32_codec);
+ 	regmap_read(cx2072x->regmap, CX2072X_PORTA_PIN_SENSE, &jack);
+ 	jack = jack >> 24;
+@@ -1434,8 +1434,6 @@ static int cx2072x_jack_status_check(void *data)
+ 	/* clear interrupt */
+ 	regmap_write(cx2072x->regmap, CX2072X_UM_INTERRUPT_CRTL_E, 0x12 << 24);
  
--	mutex_unlock(&cs48l32_codec->rate_lock);
+-	mutex_unlock(&cx2072x->lock);
 -
- 	return ret;
- }
- 
-@@ -2242,7 +2240,6 @@ static int cs48l32_dai_set_sysclk(struct snd_soc_dai *dai,
- 	struct cs48l32_dai_priv *dai_priv = &cs48l32_codec->dai[dai->id - 1];
- 	unsigned int base = dai->driver->base;
- 	unsigned int current_asp_rate, target_asp_rate;
--	bool change_rate_domain = false;
- 	int ret;
- 
- 	if (clk_id == dai_priv->clk)
-@@ -2284,19 +2281,18 @@ static int cs48l32_dai_set_sysclk(struct snd_soc_dai *dai,
- 
- 		if ((current_asp_rate & CS48L32_ASP_RATE_MASK) !=
- 		    (target_asp_rate & CS48L32_ASP_RATE_MASK)) {
--			change_rate_domain = true;
--
--			mutex_lock(&cs48l32_codec->rate_lock);
- 			/* Guard the rate change with SYSCLK cycles */
--			cs48l32_spin_sysclk(cs48l32_codec);
--		}
--
--		snd_soc_component_update_bits(component, base + CS48L32_ASP_CONTROL1,
--					      CS48L32_ASP_RATE_MASK, target_asp_rate);
--
--		if (change_rate_domain) {
--			cs48l32_spin_sysclk(cs48l32_codec);
--			mutex_unlock(&cs48l32_codec->rate_lock);
-+			scoped_guard(mutex, &cs48l32_codec->rate_lock) {
-+				cs48l32_spin_sysclk(cs48l32_codec);
-+				snd_soc_component_update_bits(component,
-+							      base + CS48L32_ASP_CONTROL1,
-+							      CS48L32_ASP_RATE_MASK,
-+							      target_asp_rate);
-+				cs48l32_spin_sysclk(cs48l32_codec);
-+			}
-+		} else {
-+			snd_soc_component_update_bits(component, base + CS48L32_ASP_CONTROL1,
-+						      CS48L32_ASP_RATE_MASK, target_asp_rate);
- 		}
- 	}
- 
+ 	dev_dbg(codec->dev, "CX2072X_HSDETECT type=0x%X,Jack state = %x\n",
+ 		type, state);
+ 	return state;
 -- 
 2.43.0
 
