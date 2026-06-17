@@ -4,85 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11542CD98E4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 09:46:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81EFECD98E2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 09:48:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9hBGbkhV/3vuK/Tjp/LOl9erXla1+SWHZPqLvmd3tfc=; b=HHOyCf9qWKGDEhjFoHIiOSLfqp
-	rmeNSj3RlEYY7z8MCk7GGceTJLxYslNm6AK+sQPJsFsxS9fUXy8UQ39QmIcSTdSSpa+8gXh0kZa6P
-	Yqjgj0n6pB4ppC/3p3eAtxQRePKqz5W/l2UlxTQ90fAGhZDJ4efRT/hP584329GDLVgtSr16dmbxG
-	tcbNLGX+bwUP90GOwr/vDXxbwypJT2xxafpSmkpH8u+isvzoxFktZrkwJpVt9hAHzoj+AdZNRbYJY
-	so7C90lguEAjcgua8Hs9rrB0hPop6K7ZN1n0D2DTDv9bZ+dealMZTVPQC1fQt5laEO2x9ZVfWvAhW
-	R6lj+jfg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
+	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NTX+G1brkX1DXdkMsu+ZUULVkBS5SUKuLjC/zfb0+Pg=; b=4LpbfhvfywgHtII9YvyvtYqbPJ
+	k0Mzuk27IXXA7TlhBxR3qhTrD7bVuEhjR5bdEb4X6ZXvEjjDIY9QZ6KopAQshQ1zuajBeefQImN+y
+	hZUMSPv08RyK18GrJwyACXPFujDRFOw2UDMtNijlL2RWR7BTmFFgN/QsuINzTgwyEWz+q9Jd890Kv
+	zDrAFLqn+uJT7ho2aQHOY2VHfDPqCVjRkybNYmeJKySVJUmyTP5y8/ZLssAX+l7ECz1lKg737Xq02
+	rTYZA94Bo6KqJT1XuY3IiXBCYDizt8aT9EfCm1drDx46Ue92VpfmlQDdMMfcLsV9PPG3BnAT8ii2e
+	7G1X/4Mg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZmqR-0000000GxpS-2cWX;
-	Wed, 17 Jun 2026 09:46:03 +0000
-Received: from mgamail.intel.com ([192.198.163.14])
+	id 1wZmt6-0000000GyAi-2J08;
+	Wed, 17 Jun 2026 09:48:48 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZmqP-0000000Gxia-0xJF;
-	Wed, 17 Jun 2026 09:46:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1781689561; x=1813225561;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=PJRUrD9zZfvxEp95vYDkf9Io499+vXWD3N/tqWUsuhs=;
-  b=edluMAKcnaLRx1CHZZxcNZ9x8DZMY0XRb4x3Mz6gwEu51a/LVUNOPxmW
-   OkfuxUilVQm4bwcI3apaWKuqsGlKbdbRCdtNGVQBAjHpBEroz6ckcnKMU
-   zV+3SiUPHDO4QdDcILvlZ+YhzZV+fFFbO1P6H4b0RkMHtBB5SOH6D/8Ba
-   gVzMfpFM+fe7s1qTD+xUfDBLHI3IU9koYZxmRaVsZQrAWV5sGSX2SYedw
-   9VX+SnDjjUgaX71jVTpUBd74rtVzoHDr7J+m3VV3fL2+PJqqm4A/o6HsF
-   YonFkE9SkhlcLsc/f6YdLnKbtInd3eIuT9kxfX1YjL0tR9aHpp3nV869Z
-   w==;
-X-CSE-ConnectionGUID: O5QuLaWdQXKyIh6EK8JS2g==
-X-CSE-MsgGUID: nx89t2vRSUW/zv2es+tXvw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11819"; a="82534245"
-X-IronPort-AV: E=Sophos;i="6.24,209,1774335600"; 
-   d="scan'208";a="82534245"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
-  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Jun 2026 02:43:56 -0700
-X-CSE-ConnectionGUID: KqEF+XwPTGGdSxcdFhXqFA==
-X-CSE-MsgGUID: zVMyIUsrS06+OMMQYl0JoA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.24,209,1774335600"; 
-   d="scan'208";a="246888272"
-Received: from fpallare-mobl4.ger.corp.intel.com (HELO localhost) ([10.245.245.69])
-  by orviesa006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Jun 2026 02:43:52 -0700
-Date: Wed, 17 Jun 2026 12:43:49 +0300
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
-To: rva333@protonmail.com
-Cc: Jonathan Cameron <jic23@kernel.org>,
-	David Lechner <dlechner@baylibre.com>,
-	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
-	Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Lee Jones <lee@kernel.org>, linux-iio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Ben Grisdale <bengris32@protonmail.ch>
-Subject: Re: [PATCH v3 2/4] iio: adc: mt6323-auxadc: add mt6323 PMIC AUXADC
- driver
-Message-ID: <ajJsVdQPdkpfIyLG@ashevche-desk.local>
-References: <20260616-mt6323-adc-v3-0-1c27c588185d@protonmail.com>
- <20260616-mt6323-adc-v3-2-1c27c588185d@protonmail.com>
+	id 1wZmt4-0000000Gy9A-47pH;
+	Wed, 17 Jun 2026 09:48:47 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 965EE445CF;
+	Wed, 17 Jun 2026 09:48:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 6755BC4AF0F;
+	Wed, 17 Jun 2026 09:48:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1781689726;
+	bh=7RJjhSRLrORuQ7QpJYxJUaa7YME47dK6mHpkFjegxhI=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=gbPLBs8YUPI0ybhirSX0tF0h3sEX/w4iqUWf+HteIvQZsOu7YiIpE7Saw7lx3zfCY
+	 N3eGoOFH5Oo3Ia/zOQqs4/bYMb0S6W8ebVqa3X2V4mlWhU20GUgU2kvpOlq5Yod0A5
+	 LS7mX0N/vfur4nE4Fw5fNwniDG8zJk8KOcFXnp5c4tuY0/ITD3OmzDulRPjrmCiW0M
+	 OH/vWIWKGz710dTwyr4djWWvyV38VTaie6YoR49Cw6ZUiVGtqRGEr/CxSYP7or9yKH
+	 OugxJNwqGod+zlxVBaZ52WFAaYLSJP4R6uNCss4n8VF5oTYQe0tOfMrakUQ8WMmA39
+	 8q0DVEuMjrNKg==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5C00ECD98F7;
+	Wed, 17 Jun 2026 09:48:46 +0000 (UTC)
+From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
+Date: Wed, 17 Jun 2026 12:48:47 +0300
+Subject: [PATCH v2 4/4] ARM: dts: mediatek: mt6323: add EFUSE support
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260616-mt6323-adc-v3-2-1c27c588185d@protonmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260617_024601_301230_CBB9F706 
-X-CRM114-Status: GOOD (  14.21  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260617-mt6323-nvmem-v2-4-4f30e36aa0f4@protonmail.com>
+References: <20260617-mt6323-nvmem-v2-0-4f30e36aa0f4@protonmail.com>
+In-Reply-To: <20260617-mt6323-nvmem-v2-0-4f30e36aa0f4@protonmail.com>
+To: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Srinivas Kandagatla <srini@kernel.org>, 
+ Roman Vivchar <rva333@protonmail.com>
+Cc: Andy Shevchenko <andy@kernel.org>, linux-pm@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Ben Grisdale <bengris32@protonmail.ch>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1781689724; l=771;
+ i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
+ bh=oXee/GlWmV/sWGn0ruKkyx1IqiA7OAnfJd9/nLpO/3U=;
+ b=6uJ+OZO8oqJesmSmMdNsRIguN121Z4j27szzh4KE0Z0Nj6L1qqciqKuThetTt4Kbu75gr84f9
+ P91XQBn/A4IA3FmGiNPF9ltC/pq9iIcMVD/PB92MMsCc54p+dAAF6M+
+X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
+ pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
+X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
+ auth_id=777
+X-Original-From: Roman Vivchar <rva333@protonmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,56 +87,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 16, 2026 at 05:15:40PM +0300, Roman Vivchar via B4 Relay wrote:
+From: Roman Vivchar <rva333@protonmail.com>
 
-> The mt6323 AUXADC is a 15-bit ADC used for system monitoring. This driver
-> provides support for reading various channels including battery and
-> charger voltages, battery and chip temperature, current sensing and
-> accessory detection.
-> 
-> Add a driver for the AUXADC found in the MediaTek mt6323 PMIC.
+Add the devicetree node for the mt6323 efuse.
 
-...
+Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
+Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+---
+ arch/arm/boot/dts/mediatek/mt6323.dtsi | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-> +static int mt6323_auxadc_prepare_channel(struct mt6323_auxadc *auxadc)
-> +{
-> +	struct regmap *map = auxadc->regmap;
-> +	u32 val;
-> +	int ret;
-> +
-> +	ret = regmap_read(map, MT6323_AUXADC_CON19, &val);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* The ADC is idle. */
-> +	if (!(val & AUXADC_CON19_DECI_GDLY_MASK))
-> +		return 0;
-
-> +	ret = regmap_read_poll_timeout(map, MT6323_AUXADC_ADC19, val,
-> +				       !(val & AUXADC_ADC19_BUSY_MASK),
-> +				       10, 500);
-
-Still can be amended.
-
-	ret = regmap_read_poll_timeout(map, MT6323_AUXADC_ADC19,
-				       val, !(val & AUXADC_ADC19_BUSY_MASK),
-				       10, 500);
-
-(no need to resend just for this).
-
-> +	if (ret)
-> +		return ret;
-> +
-> +	return regmap_clear_bits(map, MT6323_AUXADC_CON19,
-> +				 AUXADC_CON19_DECI_GDLY_MASK);
-> +}
+diff --git a/arch/arm/boot/dts/mediatek/mt6323.dtsi b/arch/arm/boot/dts/mediatek/mt6323.dtsi
+index c230c865116d..807e000a7ff6 100644
+--- a/arch/arm/boot/dts/mediatek/mt6323.dtsi
++++ b/arch/arm/boot/dts/mediatek/mt6323.dtsi
+@@ -14,6 +14,10 @@ pmic: mt6323 {
+ 		interrupt-controller;
+ 		#interrupt-cells = <2>;
+ 
++		efuse {
++			compatible = "mediatek,mt6323-efuse";
++		};
++
+ 		mt6323_leds: leds {
+ 			compatible = "mediatek,mt6323-led";
+ 			#address-cells = <1>;
 
 -- 
-With Best Regards,
-Andy Shevchenko
+2.54.0
 
 
 
