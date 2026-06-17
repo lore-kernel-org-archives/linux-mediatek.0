@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77895CD98E4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 10:35:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10216CD98E4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 10:35:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RdzEN4bZnmzSBjv8BhXg4StffmGXntUcdqfeQDcKmZ0=; b=EA/hDxoCu9YGdCRlnpe+QgbIfA
-	jTk6A2x3AmEdErLcb5BtZZ15DhkQIZ9DqLJA0S6iCZqW3t4fXze+ysFXx/HtuumA/4zWVJ8nS9dO4
-	eGyM6IiDsr+GQ6KINSrTDKrxV1w83xmzwutrhBS3w5xCGd+Q4akwcVH0GTPhmKHbekTDz3URM6/7Q
-	thFpJyFAteiuT0z455Pls2Tfo5d7z4J1yqbjazgRCg8ByztUavovT0LGkoj21ALGElTY1cwFyiN74
-	kfBg8qRKUOpgyoPu7L7ksY0Se8kHhu6FdSk3tsh/mkuJcgoyd06R63XBXvYZheS2+V4zSyTxekw1a
-	YMmrUVwg==;
+	bh=ZtDDrpvFiW9v2e0+BVdUVB419JMabOyntlf8qyBQjjg=; b=pembk/P8KQMmqpqRa9UcvnoiAl
+	t5xzP/cnhy/pHhPCD/MW1A+Cl4dYRl0xiRq6mIOHY2TnVK4sM6X2ghjMaPHYF39r2OX86KHEVE67p
+	MI3UxpQQkmlE3yWqrJdINhxoqVrRmQxzkdfuLjkTvQYbYxyVzVSQwAbxcw2+DHfhQaCgISfaQMGbn
+	O9RcJIPytlVihVEOq9ss3MBgS2Yk2Y0XWzjlDeTIJ6FyzV/n6WFGv0k7rz0tCZBeBD0HdmSI6HPK9
+	5ajBvCVreQAPsmwqw18+MRmCKafJJI7qS0IszMZSsEoeXuLRsF8EOjL1GHev+Q//01aZbpmxsry00
+	IEAcTh8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZnc1-0000000H56B-2vfg;
-	Wed, 17 Jun 2026 10:35:13 +0000
-Received: from mail-dy1-x1333.google.com ([2607:f8b0:4864:20::1333])
+	id 1wZncB-0000000H5F3-19Ao;
+	Wed, 17 Jun 2026 10:35:23 +0000
+Received: from mail-dy1-x132f.google.com ([2607:f8b0:4864:20::132f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZnbz-0000000H54U-1MD9
+	id 1wZnc8-0000000H5C1-16zh
 	for linux-mediatek@lists.infradead.org;
-	Wed, 17 Jun 2026 10:35:12 +0000
-Received: by mail-dy1-x1333.google.com with SMTP id 5a478bee46e88-30b9e755555so4893376eec.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 17 Jun 2026 03:35:11 -0700 (PDT)
+	Wed, 17 Jun 2026 10:35:21 +0000
+Received: by mail-dy1-x132f.google.com with SMTP id 5a478bee46e88-30b6dad2382so6290876eec.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 17 Jun 2026 03:35:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781692511; x=1782297311; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1781692520; x=1782297320; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=RdzEN4bZnmzSBjv8BhXg4StffmGXntUcdqfeQDcKmZ0=;
-        b=rLecio2MTX9cCNVszobyh6Fy9A4QcmTlJo4GssZDwnt0FF5Xf+MYtg8WQn689+IRW3
-         OSIYZGQmr37/SID/9EVb4dISTfQAcYaMLyI/bz7MKNocwTla93CHoSQwG2hxOiMn/Lbv
-         CnVcqf3pyN0720rytjZyOtG6V/+yQvNbq95YXAVKMwJKErh/Rzp/8hU8rQ/bNg2KBKac
-         yaLH+29nMQotfeNVbZ+rKnADb7LE4iuKDFkm46whD649MQVNLLH6zX4NRrvQTODsLxt0
-         H7hJRW2CqrYO2z5l1+lz+uFH1M1VZ65ijgtq/7mpos/iP2BVmOGmjMJJGo+s1oRxyd8u
-         NUsQ==
+        bh=ZtDDrpvFiW9v2e0+BVdUVB419JMabOyntlf8qyBQjjg=;
+        b=JyH6rYDpbr3wKDXA5EoYsO4tZrWyqloyKxttBdE1SpEZxwAn5GLtDwgFnWg61ihPgN
+         9nEMGZhjNII28MYgZsVek20ZNQ1AWeF5p5VnvaFfH1Uy9yWwSBb0Q+h1kcO19tMweJFc
+         ulx9YLc9NMr4nz41rm+hUDVY/wzJ7kutf0dlQ4WqfH75mszM2hzFIy6Kh/cBwXUDhFCW
+         84MH5PXbbqrg82gLOp5o/UtakwDuZQPhidurqOQzGv1eN5VJmzbdfi4qYXZvKA7mICwX
+         5j0u1djz3A5UcRc0QBCJDZOiibHP6cFCXZ4lO1ie92z4675ZxBOxkR8Cqj6eoBtxtaLx
+         XRCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781692511; x=1782297311;
+        d=1e100.net; s=20251104; t=1781692520; x=1782297320;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=RdzEN4bZnmzSBjv8BhXg4StffmGXntUcdqfeQDcKmZ0=;
-        b=B0+U1KuMEgI88P8a4bDFKOFh24RrqROsaoWnBjYZeVe+b+JOKcyjvbTQpa7q3xwhit
-         XQj+uFmW8IygjdM0YLqOO403CpYnqDWPRG2Yehse6DXEjRH7dwg3tYPfOcM7D2j6/+NA
-         /tPdcp7uGIyyiZts0Epc5NOff9VnXaJgXB/dJ9MP/DAXumYBWpMLQFtbMsXJH5iqRwP8
-         WWtEI0VNJvjmWzudcCydfWpMM9i8TLAsMj4Lo5htwhIb0OiJyQ4w/rjFOJLR6jT/ywru
-         /IwDnu691ouYuSqRGp8FaH2MqjD+Af1xrOLzxEnvmQw1TPQ6qkG+RxTEJ4Qq98Jk4/V9
-         v+VQ==
-X-Forwarded-Encrypted: i=1; AFNElJ/sMq85Pyrzfxbq+g/Rx/8AeCk/D4XLh/Ch9SEuOlLoGWMNxgWYn3lD8U43+rZwbiAyosgxjhVFxJQXsnEUTg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw6X+QhTpCskilwdXSJtGTv1YwzOy5LmG1LA0hrFFQQXivHPJH+
-	yUMacOjG04YWlbtqNWmlrkSqtO5bFIseXfgGKaiXsORGSsDAFThhy07o
-X-Gm-Gg: AfdE7cmtP0fLX6bnpMl3F88YQb3f1fL3zECKN8x2fZACTx8tn0o1KFrjKVv8r9QxlRQ
-	ghVv1693yHgmZoTcgJP6Nzu7jKxN/gDGG3sW7HorXx0pyal+mDbInk/VLptJ4RC+rAn18XazMtq
-	ma3Qjcixce4auiivtdJsKjcjB16yQQ0Ap2kK94f7j8LY6sEl2Z395u362DWEWzOaYVGxFFVHY34
-	bMBm9jlIdUr4rCv9mwNjITqJlNLMd2vr0zCEkSkHr6RUTyyUJe8w2jM9wDZQYhFtWsVSCnxHauu
-	kU2ngh1mOJBqZIfte5PpG4rEN9Z9AIHCNG9OJHphV2LAn14XSkDBpxBVfnuBk7Z137fb3M7zgij
-	pj7djbYuEZEN9zh7CQcyGVQgwxWwkpXsejFE6oxcs3xJeUYB2J4dV9dDKKipmGWv7DVya6ZCrh/
-	zwVpeCAqHkrcDIFZcgq9g0rG9XSMPOROnA2yYXd1SCe5mjctM=
-X-Received: by 2002:a05:7300:80d2:b0:2f1:496c:94bf with SMTP id 5a478bee46e88-30bca066cccmr1800405eec.16.1781692510527;
-        Wed, 17 Jun 2026 03:35:10 -0700 (PDT)
+        bh=ZtDDrpvFiW9v2e0+BVdUVB419JMabOyntlf8qyBQjjg=;
+        b=j58b83rhVPed8295J9NxddjFsQUrdPqkPFMtWPLfw6xy3//I1BoBzxOLxFlDToQ8cl
+         4iqvJqhtJyfvKmkNWSE4TIJ/705b6PS6jf1/GXazA3ICYn0fL42HVTgf7uLR/utji4+v
+         qYrHtpC9gmdMhWX/4ZYk7olycmh7r07cnQ2f0L0pX2MBvgHQZx+BJ0uBAT0H7FE+Wv+g
+         UENH+zqdlziabiTntNDSG6nNBXG/zaLW/dUfVOpfNPb9DXF9JXYxU3HYAjKGYN2OBR+8
+         ywcvIykDgmR7MThtDWLUzoaJ5fkS9I45RIjnIEsu179zWgIBivySZrrant15u+DXnzs2
+         EizQ==
+X-Forwarded-Encrypted: i=1; AFNElJ8eGF9PkWVUWViWNwIlHGGpzNx/eAjujPnhbomvGQIa0p7fdOH/R4WHyElLTYQSBabKc72L/CoWaHQhLvmMoA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwsDlK4ukWSUykz++M1gXN1XJyRRTHHZk5iNTIIwKIXyIjGowGF
+	5dQijpqRVKyErtdV+go7Wr8eT11ol3xqdVLFLKkhvtlJ1+lg+1qbC9uT
+X-Gm-Gg: AfdE7clQJdLHC46mHXKCcS/5BZP0i77fKOoCtjYMyrRNxBBXJc7AnT3V1RvaRJ5j6Fm
+	EHdPNbsh0+yGbjIzuEtrFm6JBOCMyXpL2FCf+GFI4K2S6A6enWbluhjS6aJ8DL+M8lwJVHUje7F
+	CS0TZjcExwswQiM2UF8RM2zihagB9KaLAFDZy+obdsLTz5xkQD5M8koaXN6htt05qeQAA00+XsT
+	k1GIj06GwKJZ4F2yq7oxHCuox1UxOz0JHYU0HipLl1Q02HDIZMvip6LD5n/b/OpCCZDnmjSCO9O
+	cfMMb84LRDTyzJ2naI1Kz+WE0QzaOdzOxknwRqk7o+eDWuAjUr5uXOVt0A3sXbdkKI9hWWhgHy3
+	RDvOMpwELUMXdsxFJWt2cDnf4QGyB/0z7Aq26eK21AeXi760kl7Vi1ffSJ1RJjnO5Ni+ilK7yzm
+	jsqH9iXng5XLS1VVb8sMkoju+TuI0Va5XLwmzETPNclTy4iYM=
+X-Received: by 2002:a05:693c:639b:20b0:30b:e4a3:44d2 with SMTP id 5a478bee46e88-30be4a363f6mr103693eec.8.1781692519548;
+        Wed, 17 Jun 2026 03:35:19 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3081e5d0828sm24616275eec.10.2026.06.17.03.35.02
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3081e5d0828sm24616275eec.10.2026.06.17.03.35.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 17 Jun 2026 03:35:10 -0700 (PDT)
+        Wed, 17 Jun 2026 03:35:19 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Mark Brown <broonie@kernel.org>
 Cc: Liam Girdwood <lgirdwood@gmail.com>,
@@ -105,17 +105,17 @@ Cc: Liam Girdwood <lgirdwood@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH 14/78] ASoC: codecs: cs42l42: Use guard() for mutex locks
-Date: Wed, 17 Jun 2026 17:31:31 +0700
-Message-ID: <20260617103235.449609-15-phucduc.bui@gmail.com>
+Subject: [PATCH 15/78] ASoC: codecs: cs42l43: Use guard() for mutex locks
+Date: Wed, 17 Jun 2026 17:31:32 +0700
+Message-ID: <20260617103235.449609-16-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260617103235.449609-1-phucduc.bui@gmail.com>
 References: <20260617103235.449609-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260617_033511_440399_D633BB73 
-X-CRM114-Status: GOOD (  19.60  )
+X-CRM114-CacheID: sfid-20260617_033520_316000_C085A9D8 
+X-CRM114-Status: GOOD (  14.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,295 +137,171 @@ Merely code refactoring, and no behavior change.
 
 Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
- sound/soc/codecs/cs42l42.c | 222 ++++++++++++++++++-------------------
- 1 file changed, 111 insertions(+), 111 deletions(-)
+ sound/soc/codecs/cs42l43-jack.c | 57 +++++++++++++--------------------
+ sound/soc/codecs/cs42l43.c      | 16 +++------
+ 2 files changed, 27 insertions(+), 46 deletions(-)
 
-diff --git a/sound/soc/codecs/cs42l42.c b/sound/soc/codecs/cs42l42.c
-index 2652a639a79a..f9e02cc4e9f1 100644
---- a/sound/soc/codecs/cs42l42.c
-+++ b/sound/soc/codecs/cs42l42.c
-@@ -565,7 +565,7 @@ static int cs42l42_set_jack(struct snd_soc_component *component, struct snd_soc_
- 	struct cs42l42_private *cs42l42 = snd_soc_component_get_drvdata(component);
- 
- 	/* Prevent race with interrupt handler */
--	mutex_lock(&cs42l42->irq_lock);
-+	guard(mutex)(&cs42l42->irq_lock);
- 	cs42l42->jack = jk;
- 
- 	if (jk) {
-@@ -581,7 +581,6 @@ static int cs42l42_set_jack(struct snd_soc_component *component, struct snd_soc_
- 			break;
- 		}
+diff --git a/sound/soc/codecs/cs42l43-jack.c b/sound/soc/codecs/cs42l43-jack.c
+index 934666295ee3..d6c0f5139792 100644
+--- a/sound/soc/codecs/cs42l43-jack.c
++++ b/sound/soc/codecs/cs42l43-jack.c
+@@ -445,20 +445,18 @@ irqreturn_t cs42l43_button_release(int irq, void *data)
+ 		return iret;
  	}
--	mutex_unlock(&cs42l42->irq_lock);
+ 
+-	mutex_lock(&priv->jack_lock);
+-
+-	if (priv->button_detect_running) {
+-		dev_dbg(priv->dev, "Button release IRQ\n");
++	scoped_guard(mutex, &priv->jack_lock) {
++		if (priv->button_detect_running) {
++			dev_dbg(priv->dev, "Button release IRQ\n");
+ 
+-		snd_soc_jack_report(priv->jack_hp, 0, CS42L43_JACK_BUTTONS);
++			snd_soc_jack_report(priv->jack_hp, 0, CS42L43_JACK_BUTTONS);
+ 
+-		iret = IRQ_HANDLED;
+-	} else {
+-		dev_dbg(priv->dev, "Spurious button release IRQ\n");
++			iret = IRQ_HANDLED;
++		} else {
++			dev_dbg(priv->dev, "Spurious button release IRQ\n");
++		}
+ 	}
+ 
+-	mutex_unlock(&priv->jack_lock);
+-
+ 	pm_runtime_put_autosuspend(priv->dev);
+ 
+ 	return iret;
+@@ -477,22 +475,20 @@ void cs42l43_bias_sense_timeout(struct work_struct *work)
+ 		return;
+ 	}
+ 
+-	mutex_lock(&priv->jack_lock);
+-
+-	if (cs42l43_jack_present(priv) && priv->button_detect_running) {
+-		dev_dbg(priv->dev, "Bias sense timeout out, restore bias\n");
++	scoped_guard(mutex, &priv->jack_lock) {
++		if (cs42l43_jack_present(priv) && priv->button_detect_running) {
++			dev_dbg(priv->dev, "Bias sense timeout out, restore bias\n");
+ 
+-		regmap_update_bits(cs42l43->regmap,
+-				   CS42L43_HS_BIAS_SENSE_AND_CLAMP_AUTOCONTROL,
+-				   CS42L43_AUTO_HSBIAS_CLAMP_EN_MASK, 0);
+-		regmap_update_bits(cs42l43->regmap,
+-				   CS42L43_HS_BIAS_SENSE_AND_CLAMP_AUTOCONTROL,
+-				   CS42L43_AUTO_HSBIAS_CLAMP_EN_MASK,
+-				   CS42L43_AUTO_HSBIAS_CLAMP_EN_MASK);
++			regmap_update_bits(cs42l43->regmap,
++					   CS42L43_HS_BIAS_SENSE_AND_CLAMP_AUTOCONTROL,
++					   CS42L43_AUTO_HSBIAS_CLAMP_EN_MASK, 0);
++			regmap_update_bits(cs42l43->regmap,
++					   CS42L43_HS_BIAS_SENSE_AND_CLAMP_AUTOCONTROL,
++					   CS42L43_AUTO_HSBIAS_CLAMP_EN_MASK,
++					   CS42L43_AUTO_HSBIAS_CLAMP_EN_MASK);
++		}
+ 	}
+ 
+-	mutex_unlock(&priv->jack_lock);
+-
+ 	pm_runtime_put_autosuspend(priv->dev);
+ }
+ 
+@@ -895,9 +891,8 @@ int cs42l43_jack_get(struct snd_kcontrol *kcontrol, struct snd_ctl_elem_value *u
+ 	struct snd_soc_component *component = snd_kcontrol_chip(kcontrol);
+ 	struct cs42l43_codec *priv = snd_soc_component_get_drvdata(component);
+ 
+-	mutex_lock(&priv->jack_lock);
++	guard(mutex)(&priv->jack_lock);
+ 	ucontrol->value.integer.value[0] = priv->jack_override;
+-	mutex_unlock(&priv->jack_lock);
  
  	return 0;
  }
-@@ -1667,117 +1666,118 @@ irqreturn_t cs42l42_irq_thread(int irq, void *data)
- 	unsigned int current_plug_status;
- 	unsigned int current_button_status;
- 	unsigned int i;
-+	irqreturn_t ret = IRQ_HANDLED;
+@@ -913,17 +908,13 @@ int cs42l43_jack_put(struct snd_kcontrol *kcontrol, struct snd_ctl_elem_value *u
+ 	if (override >= e->items)
+ 		return -EINVAL;
  
- 	pm_runtime_get_sync(cs42l42->dev);
--	mutex_lock(&cs42l42->irq_lock);
--	if (cs42l42->suspended || !cs42l42->init_done) {
--		mutex_unlock(&cs42l42->irq_lock);
--		pm_runtime_put_autosuspend(cs42l42->dev);
--		return IRQ_NONE;
--	}
-+	scoped_guard(mutex, &cs42l42->irq_lock) {
-+		if (cs42l42->suspended || !cs42l42->init_done) {
-+			ret = IRQ_NONE;
-+			break;
-+		}
+-	mutex_lock(&priv->jack_lock);
++	guard(mutex)(&priv->jack_lock);
  
--	/* Read sticky registers to clear interurpt */
--	for (i = 0; i < ARRAY_SIZE(stickies); i++) {
--		regmap_read(cs42l42->regmap, irq_params_table[i].status_addr,
--				&(stickies[i]));
--		regmap_read(cs42l42->regmap, irq_params_table[i].mask_addr,
--				&(masks[i]));
--		stickies[i] = stickies[i] & (~masks[i]) &
--				irq_params_table[i].mask;
--	}
-+		/* Read sticky registers to clear interrupt */
-+		for (i = 0; i < ARRAY_SIZE(stickies); i++) {
-+			regmap_read(cs42l42->regmap, irq_params_table[i].status_addr,
-+					&(stickies[i]));
-+			regmap_read(cs42l42->regmap, irq_params_table[i].mask_addr,
-+					&(masks[i]));
-+			stickies[i] = stickies[i] & (~masks[i]) &
-+					irq_params_table[i].mask;
-+		}
- 
--	/* Read tip sense status before handling type detect */
--	current_plug_status = (stickies[11] &
--		(CS42L42_TS_PLUG_MASK | CS42L42_TS_UNPLUG_MASK)) >>
--		CS42L42_TS_PLUG_SHIFT;
-+		/* Read tip sense status before handling type detect */
-+		current_plug_status = (stickies[11] &
-+			(CS42L42_TS_PLUG_MASK | CS42L42_TS_UNPLUG_MASK)) >>
-+			CS42L42_TS_PLUG_SHIFT;
- 
--	/* Read button sense status */
--	current_button_status = stickies[7] &
--		(CS42L42_M_DETECT_TF_MASK |
--		CS42L42_M_DETECT_FT_MASK |
--		CS42L42_M_HSBIAS_HIZ_MASK);
-+		/* Read button sense status */
-+		current_button_status = stickies[7] &
-+			(CS42L42_M_DETECT_TF_MASK |
-+			CS42L42_M_DETECT_FT_MASK |
-+			CS42L42_M_HSBIAS_HIZ_MASK);
- 
--	/*
--	 * Check auto-detect status. Don't assume a previous unplug event has
--	 * cleared the flags. If the jack is unplugged and plugged during
--	 * system suspend there won't have been an unplug event.
--	 */
--	if ((~masks[5]) & irq_params_table[5].mask) {
--		if (stickies[5] & CS42L42_HSDET_AUTO_DONE_MASK) {
--			cs42l42_process_hs_type_detect(cs42l42);
--			switch (cs42l42->hs_type) {
--			case CS42L42_PLUG_CTIA:
--			case CS42L42_PLUG_OMTP:
--				snd_soc_jack_report(cs42l42->jack, SND_JACK_HEADSET,
--						    SND_JACK_HEADSET |
--						    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
--						    SND_JACK_BTN_2 | SND_JACK_BTN_3);
--				break;
--			case CS42L42_PLUG_HEADPHONE:
--				snd_soc_jack_report(cs42l42->jack, SND_JACK_HEADPHONE,
--						    SND_JACK_HEADSET |
--						    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
--						    SND_JACK_BTN_2 | SND_JACK_BTN_3);
--				break;
--			default:
--				break;
-+		/*
-+		 * Check auto-detect status. Don't assume a previous unplug event has
-+		 * cleared the flags. If the jack is unplugged and plugged during
-+		 * system suspend there won't have been an unplug event.
-+		 */
-+		if ((~masks[5]) & irq_params_table[5].mask) {
-+			if (stickies[5] & CS42L42_HSDET_AUTO_DONE_MASK) {
-+				cs42l42_process_hs_type_detect(cs42l42);
-+				switch (cs42l42->hs_type) {
-+				case CS42L42_PLUG_CTIA:
-+				case CS42L42_PLUG_OMTP:
-+					snd_soc_jack_report(cs42l42->jack, SND_JACK_HEADSET,
-+							    SND_JACK_HEADSET |
-+							    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
-+							    SND_JACK_BTN_2 | SND_JACK_BTN_3);
-+					break;
-+				case CS42L42_PLUG_HEADPHONE:
-+					snd_soc_jack_report(cs42l42->jack, SND_JACK_HEADPHONE,
-+							    SND_JACK_HEADSET |
-+							    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
-+							    SND_JACK_BTN_2 | SND_JACK_BTN_3);
-+					break;
-+				default:
-+					break;
-+				}
-+				dev_dbg(cs42l42->dev, "Auto detect done (%d)\n", cs42l42->hs_type);
- 			}
--			dev_dbg(cs42l42->dev, "Auto detect done (%d)\n", cs42l42->hs_type);
- 		}
+-	if (!cs42l43_jack_present(priv)) {
+-		mutex_unlock(&priv->jack_lock);
++	if (!cs42l43_jack_present(priv))
+ 		return -EBUSY;
 -	}
  
--	/* Check tip sense status */
--	if ((~masks[11]) & irq_params_table[11].mask) {
--		switch (current_plug_status) {
--		case CS42L42_TS_PLUG:
--			if (cs42l42->plug_state != CS42L42_TS_PLUG) {
--				cs42l42->plug_state = CS42L42_TS_PLUG;
--				cs42l42_init_hs_type_detect(cs42l42);
--			}
--			break;
-+		/* Check tip sense status */
-+		if ((~masks[11]) & irq_params_table[11].mask) {
-+			switch (current_plug_status) {
-+			case CS42L42_TS_PLUG:
-+				if (cs42l42->plug_state != CS42L42_TS_PLUG) {
-+					cs42l42->plug_state = CS42L42_TS_PLUG;
-+					cs42l42_init_hs_type_detect(cs42l42);
-+				}
-+				break;
- 
--		case CS42L42_TS_UNPLUG:
--			if (cs42l42->plug_state != CS42L42_TS_UNPLUG) {
--				cs42l42->plug_state = CS42L42_TS_UNPLUG;
--				cs42l42_cancel_hs_type_detect(cs42l42);
-+			case CS42L42_TS_UNPLUG:
-+				if (cs42l42->plug_state != CS42L42_TS_UNPLUG) {
-+					cs42l42->plug_state = CS42L42_TS_UNPLUG;
-+					cs42l42_cancel_hs_type_detect(cs42l42);
- 
--				snd_soc_jack_report(cs42l42->jack, 0,
--						    SND_JACK_HEADSET |
--						    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
--						    SND_JACK_BTN_2 | SND_JACK_BTN_3);
-+					snd_soc_jack_report(cs42l42->jack, 0,
-+							    SND_JACK_HEADSET |
-+							    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
-+							    SND_JACK_BTN_2 | SND_JACK_BTN_3);
- 
--				dev_dbg(cs42l42->dev, "Unplug event\n");
--			}
--			break;
-+					dev_dbg(cs42l42->dev, "Unplug event\n");
-+				}
-+				break;
- 
--		default:
--			cs42l42->plug_state = CS42L42_TS_TRANS;
-+			default:
-+				cs42l42->plug_state = CS42L42_TS_TRANS;
-+			}
- 		}
+-	if (override == priv->jack_override) {
+-		mutex_unlock(&priv->jack_lock);
++	if (override == priv->jack_override)
+ 		return 0;
 -	}
  
--	/* Check button detect status */
--	if (cs42l42->plug_state == CS42L42_TS_PLUG && ((~masks[7]) & irq_params_table[7].mask)) {
--		if (!(current_button_status &
--			CS42L42_M_HSBIAS_HIZ_MASK)) {
--
--			if (current_button_status & CS42L42_M_DETECT_TF_MASK) {
--				dev_dbg(cs42l42->dev, "Button released\n");
--				snd_soc_jack_report(cs42l42->jack, 0,
--						    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
--						    SND_JACK_BTN_2 | SND_JACK_BTN_3);
--			} else if (current_button_status & CS42L42_M_DETECT_FT_MASK) {
--				snd_soc_jack_report(cs42l42->jack,
--						    cs42l42_handle_button_press(cs42l42),
--						    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
--						    SND_JACK_BTN_2 | SND_JACK_BTN_3);
-+		/* Check button detect status */
-+		if (cs42l42->plug_state == CS42L42_TS_PLUG &&
-+			((~masks[7]) & irq_params_table[7].mask)) {
-+			if (!(current_button_status &
-+				CS42L42_M_HSBIAS_HIZ_MASK)) {
-+
-+				if (current_button_status & CS42L42_M_DETECT_TF_MASK) {
-+					dev_dbg(cs42l42->dev, "Button released\n");
-+					snd_soc_jack_report(cs42l42->jack, 0,
-+							    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
-+							    SND_JACK_BTN_2 | SND_JACK_BTN_3);
-+				} else if (current_button_status & CS42L42_M_DETECT_FT_MASK) {
-+					snd_soc_jack_report(cs42l42->jack,
-+							    cs42l42_handle_button_press(cs42l42),
-+							    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
-+							    SND_JACK_BTN_2 | SND_JACK_BTN_3);
-+				}
- 			}
- 		}
+ 	priv->jack_override = override;
+ 
+@@ -983,7 +974,5 @@ int cs42l43_jack_put(struct snd_kcontrol *kcontrol, struct snd_ctl_elem_value *u
+ 				    cs42l43_jack_override_modes[override].report);
  	}
  
--	mutex_unlock(&cs42l42->irq_lock);
- 	pm_runtime_put_autosuspend(cs42l42->dev);
- 
--	return IRQ_HANDLED;
-+	return ret;
+-	mutex_unlock(&priv->jack_lock);
+-
+ 	return 1;
  }
- EXPORT_SYMBOL_NS_GPL(cs42l42_irq_thread, "SND_SOC_CS42L42_CORE");
+diff --git a/sound/soc/codecs/cs42l43.c b/sound/soc/codecs/cs42l43.c
+index f0d6ff0b2976..72c5c0340c48 100644
+--- a/sound/soc/codecs/cs42l43.c
++++ b/sound/soc/codecs/cs42l43.c
+@@ -1208,14 +1208,12 @@ static void cs42l43_spk_vu_sync(struct cs42l43_codec *priv)
+ {
+ 	struct cs42l43 *cs42l43 = priv->core;
  
-@@ -2163,22 +2163,22 @@ int cs42l42_suspend(struct device *dev)
- 	 * future interrupts. This ensures a safe disable if the interrupt
- 	 * is shared.
- 	 */
--	mutex_lock(&cs42l42->irq_lock);
--	cs42l42->suspended = true;
-+	scoped_guard(mutex, &cs42l42->irq_lock) {
-+		cs42l42->suspended = true;
+-	mutex_lock(&priv->spk_vu_lock);
++	guard(mutex)(&priv->spk_vu_lock);
  
--	/* Save register values that will be overwritten by shutdown sequence */
--	for (i = 0; i < ARRAY_SIZE(cs42l42_shutdown_seq); ++i) {
--		regmap_read(cs42l42->regmap, cs42l42_shutdown_seq[i].reg, &reg);
--		save_regs[i] = (u8)reg;
--	}
-+		/* Save register values that will be overwritten by shutdown sequence */
-+		for (i = 0; i < ARRAY_SIZE(cs42l42_shutdown_seq); ++i) {
-+			regmap_read(cs42l42->regmap, cs42l42_shutdown_seq[i].reg, &reg);
-+			save_regs[i] = (u8)reg;
-+		}
- 
--	/* Shutdown codec */
--	regmap_multi_reg_write(cs42l42->regmap,
--			       cs42l42_shutdown_seq,
--			       ARRAY_SIZE(cs42l42_shutdown_seq));
-+		/* Shutdown codec */
-+		regmap_multi_reg_write(cs42l42->regmap,
-+				       cs42l42_shutdown_seq,
-+				       ARRAY_SIZE(cs42l42_shutdown_seq));
- 
--	/* All interrupt sources are now disabled */
--	mutex_unlock(&cs42l42->irq_lock);
-+		/* All interrupt sources are now disabled */
-+	}
- 
- 	/* Wait for power-down complete */
- 	msleep(CS42L42_PDN_DONE_TIME_MS);
-@@ -2250,13 +2250,13 @@ void cs42l42_resume_restore(struct device *dev)
- 	regcache_cache_only(cs42l42->regmap, false);
- 	regcache_mark_dirty(cs42l42->regmap);
- 
--	mutex_lock(&cs42l42->irq_lock);
--	/* Sync LATCH_TO_VP first so the VP domain registers sync correctly */
--	regcache_sync_region(cs42l42->regmap, CS42L42_MIC_DET_CTL1, CS42L42_MIC_DET_CTL1);
--	regcache_sync(cs42l42->regmap);
-+	scoped_guard(mutex, &cs42l42->irq_lock) {
-+		/* Sync LATCH_TO_VP first so the VP domain registers sync correctly */
-+		regcache_sync_region(cs42l42->regmap, CS42L42_MIC_DET_CTL1, CS42L42_MIC_DET_CTL1);
-+		regcache_sync(cs42l42->regmap);
- 
--	cs42l42->suspended = false;
--	mutex_unlock(&cs42l42->irq_lock);
-+		cs42l42->suspended = false;
-+	}
- 
- 	dev_dbg(dev, "System resumed\n");
+ 	regmap_update_bits(cs42l43->regmap, CS42L43_INTP_VOLUME_CTRL1,
+ 			   CS42L43_AMP1_2_VU_MASK, CS42L43_AMP1_2_VU_MASK);
+ 	regmap_update_bits(cs42l43->regmap, CS42L43_INTP_VOLUME_CTRL1,
+ 			   CS42L43_AMP1_2_VU_MASK, 0);
+-
+-	mutex_unlock(&priv->spk_vu_lock);
  }
+ 
+ static int cs42l43_shutter_get(struct cs42l43_codec *priv, unsigned int shift)
+@@ -1602,7 +1600,7 @@ static int cs42l43_pll_ev(struct snd_soc_dapm_widget *w,
+ 	struct cs42l43 *cs42l43 = priv->core;
+ 	int ret;
+ 
+-	mutex_lock(&cs42l43->pll_lock);
++	guard(mutex)(&cs42l43->pll_lock);
+ 
+ 	switch (event) {
+ 	case SND_SOC_DAPM_PRE_PMU:
+@@ -1627,8 +1625,6 @@ static int cs42l43_pll_ev(struct snd_soc_dapm_widget *w,
+ 		break;
+ 	}
+ 
+-	mutex_unlock(&cs42l43->pll_lock);
+-
+ 	return ret;
+ }
+ 
+@@ -2566,13 +2562,9 @@ static int cs42l43_set_sysclk(struct snd_soc_component *component, int clk_id,
+ {
+ 	struct cs42l43_codec *priv = snd_soc_component_get_drvdata(component);
+ 	struct cs42l43 *cs42l43 = priv->core;
+-	int ret;
+ 
+-	mutex_lock(&cs42l43->pll_lock);
+-	ret = cs42l43_set_pll(priv, src, freq);
+-	mutex_unlock(&cs42l43->pll_lock);
+-
+-	return ret;
++	guard(mutex)(&cs42l43->pll_lock);
++	return cs42l43_set_pll(priv, src, freq);
+ }
+ 
+ static int cs42l43_component_probe(struct snd_soc_component *component)
 -- 
 2.43.0
 
