@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2879CD98E4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 10:36:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B633CD98E2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 10:36:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VnmSujrFqWboTKWLL+/g0m67QqjzB6NJpQ6VirC6qJo=; b=JfBlgU0pPIrqBlHiigLvUzu4AG
-	PkDb0Hc2pa/mE2Eu6ctK7aScKmDLE5Frc9hU2ByBECnUm6A77Crr2D+bTRLwUyzt/D4PD1br/RMwU
-	byqYdeNRXjDXOMA6E5etGNzOMlcWPYpoXIS4EFOVNIqyqjuAJxCl+BUMQFj78uVWWXRtL1bRTv+HS
-	gX64Y0Nv5/ceQgYFHBvtL876z1be2qIzBhXBeASg/xhPpHchiU1PQLqLXtJ584dRBB0mS2EXBKHEd
-	f2Mw23xtUV9SS0XgqveNWoFZN2xUyt6lwv1Kblz4mP564pKPmkjXYDGldCzYroC+kjkok6D+jznbz
-	+Mb8jPUA==;
+	bh=AqD+7rEB0Ri7/GcRAxYA7oAZ3k6z3EUUZL2RMFxj1Uw=; b=QyKBgzQoJmYgcvM4TSTUruhP6i
+	I5Zl3chdw+bN08KjMsaXh2+9b1qClmRE3XwRknByxIRykzDDyEkQJSaLCFeJfoQNwFY0KLmlOPZwG
+	NMwjt2vZTP4e+y6eFFsqJlcM1cgmtqDFkKqCKZZwLz2eEGFLwIopvlMtfV2WoMLe+kk2paxR5YzyD
+	aZ0RHHdwJZokJ/C/bDk8qMvITBpwuiFrkf5TQc7snTs3+Yx6wGLusi5CeO7CjLVy7H0bUUAMjAUkj
+	wp++YhK8nyfwjwPgEhqGPzdJmRpZaOwJDsL4t9nGEKV5hmtgKdi+J1z/Ovvd91kCP45DTsUuFGwUk
+	xREQvhRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZnd3-0000000H5yv-0BLD;
-	Wed, 17 Jun 2026 10:36:17 +0000
-Received: from mail-dy1-x1329.google.com ([2607:f8b0:4864:20::1329])
+	id 1wZndG-0000000H6B1-1OfP;
+	Wed, 17 Jun 2026 10:36:30 +0000
+Received: from mail-dl1-x1233.google.com ([2607:f8b0:4864:20::1233])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZnd1-0000000H5xB-0JcY
+	id 1wZndA-0000000H65b-0XsN
 	for linux-mediatek@lists.infradead.org;
-	Wed, 17 Jun 2026 10:36:16 +0000
-Received: by mail-dy1-x1329.google.com with SMTP id 5a478bee46e88-304d8362a58so601781eec.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 17 Jun 2026 03:36:15 -0700 (PDT)
+	Wed, 17 Jun 2026 10:36:28 +0000
+Received: by mail-dl1-x1233.google.com with SMTP id a92af1059eb24-13986d61b4eso4247227c88.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 17 Jun 2026 03:36:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781692574; x=1782297374; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1781692583; x=1782297383; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=VnmSujrFqWboTKWLL+/g0m67QqjzB6NJpQ6VirC6qJo=;
-        b=KW+jrDOC3ojuQ8/ufFzCVy04DS2hvJo78jYVA281usb41KRFN7aukaKzWwM0r0GNQF
-         tAiw//TxwKsdulqMnK9szJZTC3QWFFs8FvtyEwZXfPh+NUSzailhpYUIWXYVCnhdWG8r
-         f5kJR2Vlt5nhegdUAjtM9D2Kb6CWAYSl7chFOXm2KrAVATTJh3F5MJ8wreLytZSzrZBL
-         blseVP2uJJpELzkT4Jbgo+k6uYLlBOQixaKG6MONUMO88P6RqeSG3D0JH5TRvGSG4Jbu
-         tDXXkQdiqDPKPD+Nkxdjh3icfCaZQPU+jy9tMazJFdX7/85PGgzbDz81nZhH0i8fMYDN
-         klqQ==
+        bh=AqD+7rEB0Ri7/GcRAxYA7oAZ3k6z3EUUZL2RMFxj1Uw=;
+        b=ssOFwRJ/bTNViA5lbsVCsRgknaKn1sqc+YvpcNgnta8PrH80QEstXMTa21A/GIY/8h
+         CxJvLRU7FBOp3DaVLufPtqCLjYZTiNuIYP3PAo8pllK3/HQW1df1v2sn3uaF/wqAsnRp
+         +w8X/vVQj1FNbtfOQf02yaDj57NalUHUu3Eo9fwq4YawyiWIWPX8KaEIKU5jIl8Jl0ej
+         BLQekR7X6g2TzXYz29oU5wQyUP2oxuu2DClvOc2i4jYekiexTkt9sBlWdU6DavVa+mQ7
+         f3feaCDk3k6YCjyM+MvfLdm5LgQX6N7fxy5yY2r7G8oIaB9cevAr0gcjNHYI4HsQrde6
+         XMOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781692574; x=1782297374;
+        d=1e100.net; s=20251104; t=1781692583; x=1782297383;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=VnmSujrFqWboTKWLL+/g0m67QqjzB6NJpQ6VirC6qJo=;
-        b=ICHhwM/wPrenANWL/wPBv0e+cp3nZ4a7F0cDxgCB1DwDMog6p6rUkkgSJERCvF52qJ
-         WZpXQOd3kW00iZM1QbTm6yui0oTBKxp5VnJzCCUFiiTaYteMEXoe9zNsy1TdyrM4DLjA
-         b7tZGYCg+NlgvxjI0wFL+jihghvw+KScz3V1zH1Dcj/t6wYadIdp4xkRfwhXZR5MFN1+
-         YN4ViQOKRm6wN0Zc2Avq6sQI8dmO3EPBfyN6X7nvtvtLn8C5eywaIHV0TVuYzorr87bU
-         7o0Ttu6dwzIWeI5tdIqsXte5Rejt2DknxBMUU98gQ8mgYLrWb5L+CkmGgwUeWmWvqZxz
-         SfxA==
-X-Forwarded-Encrypted: i=1; AFNElJ/cDCYJRn6g76tgcDh8eqYwyGTXVRn+IBiLZKMgyrw6ikdqeoqVV9X75GhmlpkYgtJm49e/whj/bZDRijO2vg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyGK2VYIzsDb/yvlQo6ZPRvCCeIjaFEJLFvCVGteCuwCRWfisN6
-	8XV0nQwlxMPeBSabfVHKrL3yBH23MO+wDEqlTnXrRjl7FdZ46RnId2t2
-X-Gm-Gg: AfdE7ck8lzwzzxdxmai3H+VhU2FDw/C5KDym1zh5iWNk3AIHvlWnaRa0gUdK0LlY/2n
-	mYw1WjD791OnGKuCB1Z6UfW1RRwKOp9CuWV/VPQn0rzDgGVt61iYiHAprSX3wbUwiMc+J281kMZ
-	qNGqHILNxQ/cd0cVZ8Pu1LyIGgQzGqq8k6BGY7IJ40lOWyJwEvf4/BIgtXJQlnljWfeeqfZsRfd
-	nxzbC5yW4Mce7bJAa1fJvAVh/JBFxXJW3AH/KmPwGNCCqvdbuYNUhGdf2RMfhi3l4ct9tFjSMIF
-	kvqP6L6ZbGpP21djm3y5t67ZTUapEo9Y0NXPpMQWnoPmMdeue7TcOlMTvImfJFYyosTyWVlwMFT
-	OaTBqwmYjZ27yCkY5G4K/NhlvSluhAi3J0n9cjuURQ0qE6UQdMm1pJvzvCOq4hg73wEdT52cif9
-	sp9Qnsgdg6h3O4A+Qs6IC+OkJc3QSGWJ1BHHSg5oyb4sWuZ54=
-X-Received: by 2002:a05:7301:7308:b0:30b:e524:77aa with SMTP id 5a478bee46e88-30be5247ae7mr89541eec.14.1781692574470;
-        Wed, 17 Jun 2026 03:36:14 -0700 (PDT)
+        bh=AqD+7rEB0Ri7/GcRAxYA7oAZ3k6z3EUUZL2RMFxj1Uw=;
+        b=Qv/nCZaU5BwlWtt8kpMSbpV26L/BipGaXgIwYZH2fpy5oIBWUoa1Do41NrwvmNY3om
+         UPlkJ4mFDOkDSfP82TKN5H98QWsYWzUql+ZCiKz+gaLazTau0SHokHMN8WJtYsXT67Aa
+         Z+czMyPbBHd6dzXzAVE8m/kBUJXlc1/j1bzWolVD2DJCmH+ODwfbw/oB7FmMiNchA14g
+         8EUnFTwWB8DLJkUTEqWMHwk0h+1eTe84ybcHdKle5cvrA3P7BYlEiXo/vkT9rnTjRhud
+         3tSStkN+b8ZiFM2ou86tdw30Y/gqrCHPJjXbAVsF/ZoZSchT9lK4vCm1fg2ueHzVXVHq
+         hSXw==
+X-Forwarded-Encrypted: i=1; AFNElJ9Y19JC34IotUh+TA6JClVr5XH/2+WM6euyw2ZuG4I5Z0861EbQASmRS8Gn5vkCTxOy9AAVeiSz1KAAbKu6hg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywvs+Iawbdi0Qvh8iv57QTCbpDbiw8vA+IRKmMSypx9Q4ykA8HJ
+	RRKUoyS/1/qLsOqfm1cPEQ4vhs6DHTyldBB+jFsJnvnJYbsKmu/hQxxz
+X-Gm-Gg: AfdE7cn/+iP/UMGbuKpQhKYITKeXFH1AcuwIxrHjiFf7V9TRRDGTh6x/PNNzjV6KWbJ
+	AdOc1yDme7AnyUZWU3b/nQc7lO2rJnM6lNKh7tcs7j1jDZUYR+Tf5wGSykjPrZQXsZd6b6Qa6RU
+	JyZyfyGNqK5StbGtr9AK33JdTOzpAsgfFephzcSHcON8E8ZiEpMK/GqgnU8K729KTbrkH7XDWyR
+	FdI2tRDvruo2kaLrX3nZYRQTFKOwUBJhq+6tKi4Prtw0R3M8RT4uvJYumIzlNvtY/xzeRFNrmXT
+	g1tI2IHuga5Q3L5EDNCx5fSuXDaeJH9umhmrLiu0pdA5irvhF95we65Rw8KzINDY23HWtl/SxgP
+	58y0xcLrpQuD9OpgpLYnzY9vlgDELKXSgWiqGl3zyQcKT9lJ1CGn5xZ6B8YP3OWeYpd+rVIPrvJ
+	jYhaiwC3PbpNlJlehORvKqyGUzBsj++CpchBAJq0etP6RC1ZY=
+X-Received: by 2002:a05:7300:430e:b0:304:188d:d0b0 with SMTP id 5a478bee46e88-30bca0b8c3bmr1984423eec.20.1781692583469;
+        Wed, 17 Jun 2026 03:36:23 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3081e5d0828sm24616275eec.10.2026.06.17.03.36.06
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3081e5d0828sm24616275eec.10.2026.06.17.03.36.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 17 Jun 2026 03:36:14 -0700 (PDT)
+        Wed, 17 Jun 2026 03:36:23 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Mark Brown <broonie@kernel.org>
 Cc: Liam Girdwood <lgirdwood@gmail.com>,
@@ -105,17 +105,17 @@ Cc: Liam Girdwood <lgirdwood@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH 21/78] ASoC: codecs: cs47l90: Use guard() for mutex locks
-Date: Wed, 17 Jun 2026 17:31:38 +0700
-Message-ID: <20260617103235.449609-22-phucduc.bui@gmail.com>
+Subject: [PATCH 22/78] ASoC: codecs: cs47l92: Use guard() for mutex locks
+Date: Wed, 17 Jun 2026 17:31:39 +0700
+Message-ID: <20260617103235.449609-23-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260617103235.449609-1-phucduc.bui@gmail.com>
 References: <20260617103235.449609-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260617_033615_115617_0C7986D3 
-X-CRM114-Status: GOOD (  10.74  )
+X-CRM114-CacheID: sfid-20260617_033624_172306_033420E5 
+X-CRM114-Status: GOOD (  10.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,14 +137,14 @@ Merely code refactoring, and no behavior change.
 
 Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
- sound/soc/codecs/cs47l90.c | 10 ++++------
+ sound/soc/codecs/cs47l92.c | 10 ++++------
  1 file changed, 4 insertions(+), 6 deletions(-)
 
-diff --git a/sound/soc/codecs/cs47l90.c b/sound/soc/codecs/cs47l90.c
-index 77e8aabb241a..978149245079 100644
---- a/sound/soc/codecs/cs47l90.c
-+++ b/sound/soc/codecs/cs47l90.c
-@@ -2423,9 +2423,8 @@ static int cs47l90_component_probe(struct snd_soc_component *component)
+diff --git a/sound/soc/codecs/cs47l92.c b/sound/soc/codecs/cs47l92.c
+index 868237bd6d91..4abc896caab3 100644
+--- a/sound/soc/codecs/cs47l92.c
++++ b/sound/soc/codecs/cs47l92.c
+@@ -1892,9 +1892,8 @@ static int cs47l92_component_probe(struct snd_soc_component *component)
  
  	snd_soc_component_init_regmap(component, madera->regmap);
  
@@ -156,9 +156,9 @@ index 77e8aabb241a..978149245079 100644
  
  	ret = madera_init_inputs(component);
  	if (ret)
-@@ -2456,9 +2455,8 @@ static void cs47l90_component_remove(struct snd_soc_component *component)
- 	struct madera *madera = cs47l90->core.madera;
- 	int i;
+@@ -1922,9 +1921,8 @@ static void cs47l92_component_remove(struct snd_soc_component *component)
+ 	struct cs47l92 *cs47l92 = snd_soc_component_get_drvdata(component);
+ 	struct madera *madera = cs47l92->core.madera;
  
 -	mutex_lock(&madera->dapm_ptr_lock);
 -	madera->dapm = NULL;
@@ -166,8 +166,8 @@ index 77e8aabb241a..978149245079 100644
 +	scoped_guard(mutex, &madera->dapm_ptr_lock)
 +		madera->dapm = NULL;
  
- 	for (i = 0; i < CS47L90_NUM_ADSP; i++)
- 		wm_adsp2_component_remove(&cs47l90->core.adsp[i], component);
+ 	wm_adsp2_component_remove(&cs47l92->core.adsp[0], component);
+ }
 -- 
 2.43.0
 
