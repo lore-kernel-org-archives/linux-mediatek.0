@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D786CD98E2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 10:35:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77895CD98E4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 10:35:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U1QeGLnTyUL0/QJF0HVH9R665IeUBRSb9Jie1YUIXrk=; b=raG7csdkzwCEYaPUuU20jqap+D
-	ZjWuTDHpZGtU34RXQmC+1Sr+F8FvdX6Ht/tbrbOCflFitjtLhmgmgHAa1Poh4bkb/9hZhaJLRS2tJ
-	vJxt/GkDkVBwQw0FEqjW88bsNQphDDXpx8VchzyAm0EI+mWWrf+lu7uVGj2AnZw8cJyotekBrO8iY
-	ZPdNeu1ROoqBiw5IyFmyZ/xaBy8DzK/KtYM2Rew28qHJGmhkJ/HOtSJJogzRXnKkZpclxakY3Eatd
-	S+NG7IwDUPIxnHcWxscCO+wdneXuf/9Be8XC0Lvo/05CcaiTciEO5kb20XjphTAgyk8zdYizZAraW
-	c2ygxkng==;
+	bh=RdzEN4bZnmzSBjv8BhXg4StffmGXntUcdqfeQDcKmZ0=; b=EA/hDxoCu9YGdCRlnpe+QgbIfA
+	jTk6A2x3AmEdErLcb5BtZZ15DhkQIZ9DqLJA0S6iCZqW3t4fXze+ysFXx/HtuumA/4zWVJ8nS9dO4
+	eGyM6IiDsr+GQ6KINSrTDKrxV1w83xmzwutrhBS3w5xCGd+Q4akwcVH0GTPhmKHbekTDz3URM6/7Q
+	thFpJyFAteiuT0z455Pls2Tfo5d7z4J1yqbjazgRCg8ByztUavovT0LGkoj21ALGElTY1cwFyiN74
+	kfBg8qRKUOpgyoPu7L7ksY0Se8kHhu6FdSk3tsh/mkuJcgoyd06R63XBXvYZheS2+V4zSyTxekw1a
+	YMmrUVwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZnbr-0000000H4y9-1Ekg;
-	Wed, 17 Jun 2026 10:35:03 +0000
-Received: from mail-dy1-x1332.google.com ([2607:f8b0:4864:20::1332])
+	id 1wZnc1-0000000H56B-2vfg;
+	Wed, 17 Jun 2026 10:35:13 +0000
+Received: from mail-dy1-x1333.google.com ([2607:f8b0:4864:20::1333])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZnbo-0000000H4va-2S7H
+	id 1wZnbz-0000000H54U-1MD9
 	for linux-mediatek@lists.infradead.org;
-	Wed, 17 Jun 2026 10:35:01 +0000
-Received: by mail-dy1-x1332.google.com with SMTP id 5a478bee46e88-30bd47b9f0fso480756eec.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 17 Jun 2026 03:35:00 -0700 (PDT)
+	Wed, 17 Jun 2026 10:35:12 +0000
+Received: by mail-dy1-x1333.google.com with SMTP id 5a478bee46e88-30b9e755555so4893376eec.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 17 Jun 2026 03:35:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781692500; x=1782297300; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1781692511; x=1782297311; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=U1QeGLnTyUL0/QJF0HVH9R665IeUBRSb9Jie1YUIXrk=;
-        b=Fz0MhC001KZTxfsa4BLPJxcAnyZJ8Q5S83ls+rWpf6KLtWYCq5H20Kw4tBBD5h0P/b
-         6A+OcC+hC7YSRGgiROwhIjTiDSyQIdVNR/KZmeSu0+geE5M2YTvAN2ROi9fMyReb8hjW
-         0LC0d1mrL9Kkohe0uc8R47kwD2SR3G+20+JXqyG8rTduYMDCY+wNH1dBNcrV8/4TxrQP
-         PNs5YB8rWKqxiyOOMHeiy8MoE78UMR0inU8UMagMcOtTY6gupIqMMLQALYnpTWBAzQ0B
-         FuT1jmBkg+gc4KYoY7wDbjTOF+MlbDvBsbRZVHiHQhZyOUfJt/8pHp8Ko1CuuskQnS4G
-         tFbQ==
+        bh=RdzEN4bZnmzSBjv8BhXg4StffmGXntUcdqfeQDcKmZ0=;
+        b=rLecio2MTX9cCNVszobyh6Fy9A4QcmTlJo4GssZDwnt0FF5Xf+MYtg8WQn689+IRW3
+         OSIYZGQmr37/SID/9EVb4dISTfQAcYaMLyI/bz7MKNocwTla93CHoSQwG2hxOiMn/Lbv
+         CnVcqf3pyN0720rytjZyOtG6V/+yQvNbq95YXAVKMwJKErh/Rzp/8hU8rQ/bNg2KBKac
+         yaLH+29nMQotfeNVbZ+rKnADb7LE4iuKDFkm46whD649MQVNLLH6zX4NRrvQTODsLxt0
+         H7hJRW2CqrYO2z5l1+lz+uFH1M1VZ65ijgtq/7mpos/iP2BVmOGmjMJJGo+s1oRxyd8u
+         NUsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781692500; x=1782297300;
+        d=1e100.net; s=20251104; t=1781692511; x=1782297311;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=U1QeGLnTyUL0/QJF0HVH9R665IeUBRSb9Jie1YUIXrk=;
-        b=dQDu/hYlFhlIUnT1X0fEtNIyQJHkQDncgD1953Mjw0XZV/j4iPbe3dMaMd+a/lirlS
-         tujGtqvZ3yzyHb4jX6YgVL2eZK1cvJqjxVpyTpNRujrHdYENyuP203uLSIqWW8ISQXxw
-         iG3O7YNWyPo4MeVyLJDah9tx70AQM9nlYOtVD9tnZE3NsSNWVDGzQj4JfUk6RpKbD5kT
-         hJuEKIxvYlMZRz/V+einT9uffiyAK5SbFOn6c7S2Z1PpOwrOTBuk/orDlCcRB+NZR6/T
-         7G9lFrfLRI0VXlocvv4E9G7uc5WL7objuQudsSk3E9AQJiqqYFs7aqIMI0hje778DcJO
-         +nVA==
-X-Forwarded-Encrypted: i=1; AFNElJ9VseOUdFyVCnXycE1vKu0rFzzTyTOUHqRdIkHdCRA9fv1/yMYrVRlnyJDt1KOQdGpFReeN3kwuWFnl34NAvw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyDTuDWk9lKoNmOmUYepQ4ncK4CT2xrfTY79uJc+gwR4hPDQ0pP
-	NT2LqFjqlJiTFpdGMWzfMHCAB+ZAJx5G9Us0/s9wrrPwQ33uuSmQinUh
-X-Gm-Gg: AfdE7clME2aTZ1damBDotObe+wUZoLZGRjsV9m28NmZQU/+gAOiMSNHlKCt7oJcoJ1g
-	DKISVBqwUe4YZ1vbq4VrvUNBZKQbg+HcWhdyn/ziWw4RS0EGVInl2wzEOplyVR0Jr0NE2/sBUlr
-	nGnJMBK6yHEZ+a9mrizMfSpQS6nN/bOiKOt2nTTSy8VJ4MU5YS68wZ7TdnQh6abna1mHestsaYo
-	r+3NAqZrG7MRfyEzHNzAkRv81ZWGMr3XSdSrczWdWQBMRHQjLoeZmIox9bU9VPzalWUIb0DcNzX
-	F6K1xg4PfdXys25ib6svKx5doFard5AXq5aNFDCkVh4Ion1+jpWkWwywgecTcTf2mWiJPRbWj+D
-	JXDBqnfxo3dDPlMIfcchPI8CDO5ezq8yMybbb+kTC3PiAhx/Z05OTs91oTf4PdKtFAP67hQF+j3
-	P32gBbmSZWO7LlBll4TPoojUKIBjoYGFlbIRU1vNlRn413Woc=
-X-Received: by 2002:a05:7301:7c0e:b0:303:f295:4db2 with SMTP id 5a478bee46e88-30bc91d96d0mr1569188eec.0.1781692499885;
-        Wed, 17 Jun 2026 03:34:59 -0700 (PDT)
+        bh=RdzEN4bZnmzSBjv8BhXg4StffmGXntUcdqfeQDcKmZ0=;
+        b=B0+U1KuMEgI88P8a4bDFKOFh24RrqROsaoWnBjYZeVe+b+JOKcyjvbTQpa7q3xwhit
+         XQj+uFmW8IygjdM0YLqOO403CpYnqDWPRG2Yehse6DXEjRH7dwg3tYPfOcM7D2j6/+NA
+         /tPdcp7uGIyyiZts0Epc5NOff9VnXaJgXB/dJ9MP/DAXumYBWpMLQFtbMsXJH5iqRwP8
+         WWtEI0VNJvjmWzudcCydfWpMM9i8TLAsMj4Lo5htwhIb0OiJyQ4w/rjFOJLR6jT/ywru
+         /IwDnu691ouYuSqRGp8FaH2MqjD+Af1xrOLzxEnvmQw1TPQ6qkG+RxTEJ4Qq98Jk4/V9
+         v+VQ==
+X-Forwarded-Encrypted: i=1; AFNElJ/sMq85Pyrzfxbq+g/Rx/8AeCk/D4XLh/Ch9SEuOlLoGWMNxgWYn3lD8U43+rZwbiAyosgxjhVFxJQXsnEUTg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw6X+QhTpCskilwdXSJtGTv1YwzOy5LmG1LA0hrFFQQXivHPJH+
+	yUMacOjG04YWlbtqNWmlrkSqtO5bFIseXfgGKaiXsORGSsDAFThhy07o
+X-Gm-Gg: AfdE7cmtP0fLX6bnpMl3F88YQb3f1fL3zECKN8x2fZACTx8tn0o1KFrjKVv8r9QxlRQ
+	ghVv1693yHgmZoTcgJP6Nzu7jKxN/gDGG3sW7HorXx0pyal+mDbInk/VLptJ4RC+rAn18XazMtq
+	ma3Qjcixce4auiivtdJsKjcjB16yQQ0Ap2kK94f7j8LY6sEl2Z395u362DWEWzOaYVGxFFVHY34
+	bMBm9jlIdUr4rCv9mwNjITqJlNLMd2vr0zCEkSkHr6RUTyyUJe8w2jM9wDZQYhFtWsVSCnxHauu
+	kU2ngh1mOJBqZIfte5PpG4rEN9Z9AIHCNG9OJHphV2LAn14XSkDBpxBVfnuBk7Z137fb3M7zgij
+	pj7djbYuEZEN9zh7CQcyGVQgwxWwkpXsejFE6oxcs3xJeUYB2J4dV9dDKKipmGWv7DVya6ZCrh/
+	zwVpeCAqHkrcDIFZcgq9g0rG9XSMPOROnA2yYXd1SCe5mjctM=
+X-Received: by 2002:a05:7300:80d2:b0:2f1:496c:94bf with SMTP id 5a478bee46e88-30bca066cccmr1800405eec.16.1781692510527;
+        Wed, 17 Jun 2026 03:35:10 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3081e5d0828sm24616275eec.10.2026.06.17.03.34.51
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3081e5d0828sm24616275eec.10.2026.06.17.03.35.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 17 Jun 2026 03:34:59 -0700 (PDT)
+        Wed, 17 Jun 2026 03:35:10 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Mark Brown <broonie@kernel.org>
 Cc: Liam Girdwood <lgirdwood@gmail.com>,
@@ -105,17 +105,17 @@ Cc: Liam Girdwood <lgirdwood@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH 13/78] ASoC: codecs: cs35l56: Use guard() for mutex locks
-Date: Wed, 17 Jun 2026 17:31:30 +0700
-Message-ID: <20260617103235.449609-14-phucduc.bui@gmail.com>
+Subject: [PATCH 14/78] ASoC: codecs: cs42l42: Use guard() for mutex locks
+Date: Wed, 17 Jun 2026 17:31:31 +0700
+Message-ID: <20260617103235.449609-15-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260617103235.449609-1-phucduc.bui@gmail.com>
 References: <20260617103235.449609-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260617_033500_650830_3C21ED12 
-X-CRM114-Status: GOOD (  16.27  )
+X-CRM114-CacheID: sfid-20260617_033511_440399_D633BB73 
+X-CRM114-Status: GOOD (  19.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,111 +137,294 @@ Merely code refactoring, and no behavior change.
 
 Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
- sound/soc/codecs/cs35l56-shared.c |  6 ++--
- sound/soc/codecs/cs35l56.c        | 56 +++++++++++++++----------------
- 2 files changed, 29 insertions(+), 33 deletions(-)
+ sound/soc/codecs/cs42l42.c | 222 ++++++++++++++++++-------------------
+ 1 file changed, 111 insertions(+), 111 deletions(-)
 
-diff --git a/sound/soc/codecs/cs35l56-shared.c b/sound/soc/codecs/cs35l56-shared.c
-index f14e2eaaa4ee..6cb835a5aaac 100644
---- a/sound/soc/codecs/cs35l56-shared.c
-+++ b/sound/soc/codecs/cs35l56-shared.c
-@@ -645,12 +645,12 @@ irqreturn_t cs35l56_irq(int irq, void *data)
- 	if (!cs35l56_base->init_done)
- 		return IRQ_NONE;
+diff --git a/sound/soc/codecs/cs42l42.c b/sound/soc/codecs/cs42l42.c
+index 2652a639a79a..f9e02cc4e9f1 100644
+--- a/sound/soc/codecs/cs42l42.c
++++ b/sound/soc/codecs/cs42l42.c
+@@ -565,7 +565,7 @@ static int cs42l42_set_jack(struct snd_soc_component *component, struct snd_soc_
+ 	struct cs42l42_private *cs42l42 = snd_soc_component_get_drvdata(component);
  
--	mutex_lock(&cs35l56_base->irq_lock);
-+	guard(mutex)(&cs35l56_base->irq_lock);
+ 	/* Prevent race with interrupt handler */
+-	mutex_lock(&cs42l42->irq_lock);
++	guard(mutex)(&cs42l42->irq_lock);
+ 	cs42l42->jack = jk;
  
- 	rv = pm_runtime_resume_and_get(cs35l56_base->dev);
- 	if (rv < 0) {
- 		dev_err(cs35l56_base->dev, "irq: failed to get pm_runtime: %d\n", rv);
--		goto err_unlock;
-+		return ret;
- 	}
- 
- 	regmap_read(cs35l56_base->regmap, CS35L56_IRQ1_STATUS, &val);
-@@ -692,8 +692,6 @@ irqreturn_t cs35l56_irq(int irq, void *data)
- 
- err:
- 	pm_runtime_put(cs35l56_base->dev);
--err_unlock:
--	mutex_unlock(&cs35l56_base->irq_lock);
- 
- 	return ret;
- }
-diff --git a/sound/soc/codecs/cs35l56.c b/sound/soc/codecs/cs35l56.c
-index 570a68829ccd..98ebf38c9bb7 100644
---- a/sound/soc/codecs/cs35l56.c
-+++ b/sound/soc/codecs/cs35l56.c
-@@ -848,42 +848,40 @@ static void cs35l56_patch(struct cs35l56_private *cs35l56, bool firmware_missing
- 	if (ret)
- 		goto err;
- 
--	mutex_lock(&cs35l56->base.irq_lock);
-+	scoped_guard(mutex, &cs35l56->base.irq_lock) {
-+		reinit_completion(&cs35l56->init_completion);
- 
--	reinit_completion(&cs35l56->init_completion);
--
--	cs35l56->soft_resetting = true;
--	cs35l56_system_reset(&cs35l56->base, !!cs35l56->sdw_peripheral);
-+		cs35l56->soft_resetting = true;
-+		cs35l56_system_reset(&cs35l56->base, !!cs35l56->sdw_peripheral);
- 
--	if (cs35l56->sdw_peripheral) {
--		/*
--		 * The system-reset causes the CS35L56 to detach from the bus.
--		 * Wait for the manager to re-enumerate the CS35L56 and
--		 * cs35l56_init() to run again.
--		 */
--		if (!wait_for_completion_timeout(&cs35l56->init_completion,
--						 msecs_to_jiffies(5000))) {
--			dev_err(cs35l56->base.dev, "%s: init_completion timed out (SDW)\n",
--				__func__);
--			goto err_unlock;
-+		if (cs35l56->sdw_peripheral) {
-+			/*
-+			 * The system-reset causes the CS35L56 to detach from the bus.
-+			 * Wait for the manager to re-enumerate the CS35L56 and
-+			 * cs35l56_init() to run again.
-+			 */
-+			if (!wait_for_completion_timeout(&cs35l56->init_completion,
-+							 msecs_to_jiffies(5000))) {
-+				dev_err(cs35l56->base.dev, "%s: init_completion timed out (SDW)\n",
-+					__func__);
-+				goto err;
-+			}
-+		} else if (cs35l56_init(cs35l56)) {
-+			goto err;
+ 	if (jk) {
+@@ -581,7 +581,6 @@ static int cs42l42_set_jack(struct snd_soc_component *component, struct snd_soc_
+ 			break;
  		}
--	} else if (cs35l56_init(cs35l56)) {
--		goto err_unlock;
+ 	}
+-	mutex_unlock(&cs42l42->irq_lock);
+ 
+ 	return 0;
+ }
+@@ -1667,117 +1666,118 @@ irqreturn_t cs42l42_irq_thread(int irq, void *data)
+ 	unsigned int current_plug_status;
+ 	unsigned int current_button_status;
+ 	unsigned int i;
++	irqreturn_t ret = IRQ_HANDLED;
+ 
+ 	pm_runtime_get_sync(cs42l42->dev);
+-	mutex_lock(&cs42l42->irq_lock);
+-	if (cs42l42->suspended || !cs42l42->init_done) {
+-		mutex_unlock(&cs42l42->irq_lock);
+-		pm_runtime_put_autosuspend(cs42l42->dev);
+-		return IRQ_NONE;
+-	}
++	scoped_guard(mutex, &cs42l42->irq_lock) {
++		if (cs42l42->suspended || !cs42l42->init_done) {
++			ret = IRQ_NONE;
++			break;
++		}
+ 
+-	/* Read sticky registers to clear interurpt */
+-	for (i = 0; i < ARRAY_SIZE(stickies); i++) {
+-		regmap_read(cs42l42->regmap, irq_params_table[i].status_addr,
+-				&(stickies[i]));
+-		regmap_read(cs42l42->regmap, irq_params_table[i].mask_addr,
+-				&(masks[i]));
+-		stickies[i] = stickies[i] & (~masks[i]) &
+-				irq_params_table[i].mask;
+-	}
++		/* Read sticky registers to clear interrupt */
++		for (i = 0; i < ARRAY_SIZE(stickies); i++) {
++			regmap_read(cs42l42->regmap, irq_params_table[i].status_addr,
++					&(stickies[i]));
++			regmap_read(cs42l42->regmap, irq_params_table[i].mask_addr,
++					&(masks[i]));
++			stickies[i] = stickies[i] & (~masks[i]) &
++					irq_params_table[i].mask;
++		}
+ 
+-	/* Read tip sense status before handling type detect */
+-	current_plug_status = (stickies[11] &
+-		(CS42L42_TS_PLUG_MASK | CS42L42_TS_UNPLUG_MASK)) >>
+-		CS42L42_TS_PLUG_SHIFT;
++		/* Read tip sense status before handling type detect */
++		current_plug_status = (stickies[11] &
++			(CS42L42_TS_PLUG_MASK | CS42L42_TS_UNPLUG_MASK)) >>
++			CS42L42_TS_PLUG_SHIFT;
+ 
+-	/* Read button sense status */
+-	current_button_status = stickies[7] &
+-		(CS42L42_M_DETECT_TF_MASK |
+-		CS42L42_M_DETECT_FT_MASK |
+-		CS42L42_M_HSBIAS_HIZ_MASK);
++		/* Read button sense status */
++		current_button_status = stickies[7] &
++			(CS42L42_M_DETECT_TF_MASK |
++			CS42L42_M_DETECT_FT_MASK |
++			CS42L42_M_HSBIAS_HIZ_MASK);
+ 
+-	/*
+-	 * Check auto-detect status. Don't assume a previous unplug event has
+-	 * cleared the flags. If the jack is unplugged and plugged during
+-	 * system suspend there won't have been an unplug event.
+-	 */
+-	if ((~masks[5]) & irq_params_table[5].mask) {
+-		if (stickies[5] & CS42L42_HSDET_AUTO_DONE_MASK) {
+-			cs42l42_process_hs_type_detect(cs42l42);
+-			switch (cs42l42->hs_type) {
+-			case CS42L42_PLUG_CTIA:
+-			case CS42L42_PLUG_OMTP:
+-				snd_soc_jack_report(cs42l42->jack, SND_JACK_HEADSET,
+-						    SND_JACK_HEADSET |
+-						    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
+-						    SND_JACK_BTN_2 | SND_JACK_BTN_3);
+-				break;
+-			case CS42L42_PLUG_HEADPHONE:
+-				snd_soc_jack_report(cs42l42->jack, SND_JACK_HEADPHONE,
+-						    SND_JACK_HEADSET |
+-						    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
+-						    SND_JACK_BTN_2 | SND_JACK_BTN_3);
+-				break;
+-			default:
+-				break;
++		/*
++		 * Check auto-detect status. Don't assume a previous unplug event has
++		 * cleared the flags. If the jack is unplugged and plugged during
++		 * system suspend there won't have been an unplug event.
++		 */
++		if ((~masks[5]) & irq_params_table[5].mask) {
++			if (stickies[5] & CS42L42_HSDET_AUTO_DONE_MASK) {
++				cs42l42_process_hs_type_detect(cs42l42);
++				switch (cs42l42->hs_type) {
++				case CS42L42_PLUG_CTIA:
++				case CS42L42_PLUG_OMTP:
++					snd_soc_jack_report(cs42l42->jack, SND_JACK_HEADSET,
++							    SND_JACK_HEADSET |
++							    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
++							    SND_JACK_BTN_2 | SND_JACK_BTN_3);
++					break;
++				case CS42L42_PLUG_HEADPHONE:
++					snd_soc_jack_report(cs42l42->jack, SND_JACK_HEADPHONE,
++							    SND_JACK_HEADSET |
++							    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
++							    SND_JACK_BTN_2 | SND_JACK_BTN_3);
++					break;
++				default:
++					break;
++				}
++				dev_dbg(cs42l42->dev, "Auto detect done (%d)\n", cs42l42->hs_type);
+ 			}
+-			dev_dbg(cs42l42->dev, "Auto detect done (%d)\n", cs42l42->hs_type);
+ 		}
 -	}
  
--	/* Check if the firmware is still reported missing */
--	cs35l56_warn_if_firmware_missing(&cs35l56->base);
-+		/* Check if the firmware is still reported missing */
-+		cs35l56_warn_if_firmware_missing(&cs35l56->base);
+-	/* Check tip sense status */
+-	if ((~masks[11]) & irq_params_table[11].mask) {
+-		switch (current_plug_status) {
+-		case CS42L42_TS_PLUG:
+-			if (cs42l42->plug_state != CS42L42_TS_PLUG) {
+-				cs42l42->plug_state = CS42L42_TS_PLUG;
+-				cs42l42_init_hs_type_detect(cs42l42);
+-			}
+-			break;
++		/* Check tip sense status */
++		if ((~masks[11]) & irq_params_table[11].mask) {
++			switch (current_plug_status) {
++			case CS42L42_TS_PLUG:
++				if (cs42l42->plug_state != CS42L42_TS_PLUG) {
++					cs42l42->plug_state = CS42L42_TS_PLUG;
++					cs42l42_init_hs_type_detect(cs42l42);
++				}
++				break;
  
--	regmap_clear_bits(cs35l56->base.regmap,
--			  cs35l56->base.fw_reg->prot_sts,
--			  CS35L56_FIRMWARE_MISSING);
--	cs35l56->base.fw_patched = true;
-+		regmap_clear_bits(cs35l56->base.regmap,
-+				  cs35l56->base.fw_reg->prot_sts,
-+				  CS35L56_FIRMWARE_MISSING);
-+		cs35l56->base.fw_patched = true;
+-		case CS42L42_TS_UNPLUG:
+-			if (cs42l42->plug_state != CS42L42_TS_UNPLUG) {
+-				cs42l42->plug_state = CS42L42_TS_UNPLUG;
+-				cs42l42_cancel_hs_type_detect(cs42l42);
++			case CS42L42_TS_UNPLUG:
++				if (cs42l42->plug_state != CS42L42_TS_UNPLUG) {
++					cs42l42->plug_state = CS42L42_TS_UNPLUG;
++					cs42l42_cancel_hs_type_detect(cs42l42);
  
--	if (cs35l56_write_cal(cs35l56) == 0)
--		cs35l56_mbox_send(&cs35l56->base, CS35L56_MBOX_CMD_AUDIO_REINIT);
-+		if (cs35l56_write_cal(cs35l56) == 0)
-+			cs35l56_mbox_send(&cs35l56->base, CS35L56_MBOX_CMD_AUDIO_REINIT);
+-				snd_soc_jack_report(cs42l42->jack, 0,
+-						    SND_JACK_HEADSET |
+-						    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
+-						    SND_JACK_BTN_2 | SND_JACK_BTN_3);
++					snd_soc_jack_report(cs42l42->jack, 0,
++							    SND_JACK_HEADSET |
++							    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
++							    SND_JACK_BTN_2 | SND_JACK_BTN_3);
+ 
+-				dev_dbg(cs42l42->dev, "Unplug event\n");
+-			}
+-			break;
++					dev_dbg(cs42l42->dev, "Unplug event\n");
++				}
++				break;
+ 
+-		default:
+-			cs42l42->plug_state = CS42L42_TS_TRANS;
++			default:
++				cs42l42->plug_state = CS42L42_TS_TRANS;
++			}
+ 		}
+-	}
+ 
+-	/* Check button detect status */
+-	if (cs42l42->plug_state == CS42L42_TS_PLUG && ((~masks[7]) & irq_params_table[7].mask)) {
+-		if (!(current_button_status &
+-			CS42L42_M_HSBIAS_HIZ_MASK)) {
+-
+-			if (current_button_status & CS42L42_M_DETECT_TF_MASK) {
+-				dev_dbg(cs42l42->dev, "Button released\n");
+-				snd_soc_jack_report(cs42l42->jack, 0,
+-						    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
+-						    SND_JACK_BTN_2 | SND_JACK_BTN_3);
+-			} else if (current_button_status & CS42L42_M_DETECT_FT_MASK) {
+-				snd_soc_jack_report(cs42l42->jack,
+-						    cs42l42_handle_button_press(cs42l42),
+-						    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
+-						    SND_JACK_BTN_2 | SND_JACK_BTN_3);
++		/* Check button detect status */
++		if (cs42l42->plug_state == CS42L42_TS_PLUG &&
++			((~masks[7]) & irq_params_table[7].mask)) {
++			if (!(current_button_status &
++				CS42L42_M_HSBIAS_HIZ_MASK)) {
++
++				if (current_button_status & CS42L42_M_DETECT_TF_MASK) {
++					dev_dbg(cs42l42->dev, "Button released\n");
++					snd_soc_jack_report(cs42l42->jack, 0,
++							    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
++							    SND_JACK_BTN_2 | SND_JACK_BTN_3);
++				} else if (current_button_status & CS42L42_M_DETECT_FT_MASK) {
++					snd_soc_jack_report(cs42l42->jack,
++							    cs42l42_handle_button_press(cs42l42),
++							    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
++							    SND_JACK_BTN_2 | SND_JACK_BTN_3);
++				}
+ 			}
+ 		}
+ 	}
+ 
+-	mutex_unlock(&cs42l42->irq_lock);
+ 	pm_runtime_put_autosuspend(cs42l42->dev);
+ 
+-	return IRQ_HANDLED;
++	return ret;
+ }
+ EXPORT_SYMBOL_NS_GPL(cs42l42_irq_thread, "SND_SOC_CS42L42_CORE");
+ 
+@@ -2163,22 +2163,22 @@ int cs42l42_suspend(struct device *dev)
+ 	 * future interrupts. This ensures a safe disable if the interrupt
+ 	 * is shared.
+ 	 */
+-	mutex_lock(&cs42l42->irq_lock);
+-	cs42l42->suspended = true;
++	scoped_guard(mutex, &cs42l42->irq_lock) {
++		cs42l42->suspended = true;
+ 
+-	/* Save register values that will be overwritten by shutdown sequence */
+-	for (i = 0; i < ARRAY_SIZE(cs42l42_shutdown_seq); ++i) {
+-		regmap_read(cs42l42->regmap, cs42l42_shutdown_seq[i].reg, &reg);
+-		save_regs[i] = (u8)reg;
+-	}
++		/* Save register values that will be overwritten by shutdown sequence */
++		for (i = 0; i < ARRAY_SIZE(cs42l42_shutdown_seq); ++i) {
++			regmap_read(cs42l42->regmap, cs42l42_shutdown_seq[i].reg, &reg);
++			save_regs[i] = (u8)reg;
++		}
+ 
+-	/* Shutdown codec */
+-	regmap_multi_reg_write(cs42l42->regmap,
+-			       cs42l42_shutdown_seq,
+-			       ARRAY_SIZE(cs42l42_shutdown_seq));
++		/* Shutdown codec */
++		regmap_multi_reg_write(cs42l42->regmap,
++				       cs42l42_shutdown_seq,
++				       ARRAY_SIZE(cs42l42_shutdown_seq));
+ 
+-	/* All interrupt sources are now disabled */
+-	mutex_unlock(&cs42l42->irq_lock);
++		/* All interrupt sources are now disabled */
 +	}
  
--err_unlock:
--	mutex_unlock(&cs35l56->base.irq_lock);
- err:
- 	cs35l56_enable_sdw_interrupts(cs35l56);
+ 	/* Wait for power-down complete */
+ 	msleep(CS42L42_PDN_DONE_TIME_MS);
+@@ -2250,13 +2250,13 @@ void cs42l42_resume_restore(struct device *dev)
+ 	regcache_cache_only(cs42l42->regmap, false);
+ 	regcache_mark_dirty(cs42l42->regmap);
+ 
+-	mutex_lock(&cs42l42->irq_lock);
+-	/* Sync LATCH_TO_VP first so the VP domain registers sync correctly */
+-	regcache_sync_region(cs42l42->regmap, CS42L42_MIC_DET_CTL1, CS42L42_MIC_DET_CTL1);
+-	regcache_sync(cs42l42->regmap);
++	scoped_guard(mutex, &cs42l42->irq_lock) {
++		/* Sync LATCH_TO_VP first so the VP domain registers sync correctly */
++		regcache_sync_region(cs42l42->regmap, CS42L42_MIC_DET_CTL1, CS42L42_MIC_DET_CTL1);
++		regcache_sync(cs42l42->regmap);
+ 
+-	cs42l42->suspended = false;
+-	mutex_unlock(&cs42l42->irq_lock);
++		cs42l42->suspended = false;
++	}
+ 
+ 	dev_dbg(dev, "System resumed\n");
  }
 -- 
 2.43.0
