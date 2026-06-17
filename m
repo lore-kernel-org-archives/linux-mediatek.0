@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EA31CD98F9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 02:19:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9865CD98F4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 02:19:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J8O/pXXJ//moyFh/7MLx1Wt0Gv3Nz0eHoldtSppYnyw=; b=eOJB1bGFm78iy29A/3WxtCgxqx
-	1lthj9qvRWYwW+6DcFXkmh/1aNAHUAqF557Jx4Uujy3hbee5YjazhEJHocX2KlgEHrSSP/vwV6v0i
-	h/aSRmf8aiRSJ6Qsu3QsNs6DVheSOe1MKxa7BlIy31nBI9iB9APgOvxGaYcA+jwHRkDRG6Cj1AftR
-	ABtX7KtamTshhyGC/j6BzjwLp1GWedTtsoelH7rPvPx21KE+btiF4nGCtcJzXQYrWfEws5lWCv1hO
-	G8crJtI8Qz57U1pX9jq5ujpxX3s9rmYyrywAsmY2UWenIh9BN0My2yy4Sgy9frobYrWZMUcHvqDFn
-	0B1F3DIw==;
+	bh=zAFF71eki3qKxbhz4XlFm/p6BTZ2JlYFibYSDXzDbeQ=; b=I/sTNBNQ2x0QGZITMMU2MlnNSo
+	7xSnBVhWij6+JEzlXSGLIpQo7P+Tu9ifdNJ677JLljpZBHtf31Whxm+y0LswXj6crPj3JV4kn5C/8
+	6LmlAJK1rvRqZbGVEVpBAGDwZZgELpjNI3tImsJadxSXOr3GDDbZthnzMi6vwvN/C+8iQe9TpIdv8
+	WubRXYyj0HcjuAi7tR4IH/MUVPV1qjV7sbFQmxJn4kYf9r3XwJ+LejDae2BBS9pMyGLGzFwZBkHnx
+	IEb1I+tPktXEIUCdrNVaGjteE51wraE7TS1qypLrmRyv2lTste/Uy7TE3KLwGl76LAePTBoVfJo9l
+	+YAq8/aw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZfsV-0000000GURE-2s4i;
+	id 1wZfsV-0000000GUQl-2Cay;
 	Wed, 17 Jun 2026 02:19:43 +0000
-Received: from mail-qk1-x733.google.com ([2607:f8b0:4864:20::733])
+Received: from mail-qv1-xf32.google.com ([2607:f8b0:4864:20::f32])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZfsS-0000000GUKK-3yVC
+	id 1wZfsR-0000000GUHs-2VUi
 	for linux-mediatek@lists.infradead.org;
-	Wed, 17 Jun 2026 02:19:42 +0000
-Received: by mail-qk1-x733.google.com with SMTP id af79cd13be357-9159f631656so66007185a.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 16 Jun 2026 19:19:40 -0700 (PDT)
+	Wed, 17 Jun 2026 02:19:41 +0000
+Received: by mail-qv1-xf32.google.com with SMTP id 6a1803df08f44-8ccf887de87so58897476d6.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 16 Jun 2026 19:19:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781662780; x=1782267580; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1781662778; x=1782267578; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=J8O/pXXJ//moyFh/7MLx1Wt0Gv3Nz0eHoldtSppYnyw=;
-        b=eTvf4u1/bU01at0Sb6OzZe14KUREGInUYxf8QmfWrB1c6JjYOnLgjvNcs11Ueeva/C
-         093WN439ysHEcMfDoqcodxmErpencsyYpIpOk89MJUTLVZnETRkU21rRsGQor3nVBSin
-         /WtGRnzcNkVdwnuCK2FIDrf55AG855pdqozoajdbyl28mV9PP7B8eRPhJrGhqR5jSBu6
-         D6NciELSpvVzrL+V0a/PbSvXi4HqWxYktq65UgNVZauFgfVYhpprtGjZEbl68UH/QecM
-         MZgHov5eXlrPUzCqfKuyFeEVWY5rvkJxM8l7w4x4Ig5cV7LfAF6eEtaPXtGGLmockvZF
-         A6iw==
+        bh=zAFF71eki3qKxbhz4XlFm/p6BTZ2JlYFibYSDXzDbeQ=;
+        b=TS7LpnLKJAdZPMHAYsFQPA7JKQvkhOwi2nffWfA+k5KV/tqSon7c+yUme95TiiOEiX
+         UZGw+Q6k7OVjPKCEvKD1MIICfdxYrQ9ilaWNB+87u//ptXQ6fA5j+TuywxHS8FgwDgqz
+         uADJjDvud5LYsGedrv9dPcHLv4v/oumnlLba2VTJwQNj/2FB1rwb+BMzxnYjgtF0nl0u
+         CfBXeUsHDBvbslxBxOkLraVIrA6FkSRXZhOKYRaWFHCD2BHUvNUUqbMjvGHPrMfirabd
+         F9ZPkM5fmVOXE9ghal9LwZvPOirhZAVGUE9czGiA8tWQv7avO/mIqLa6E2cqiujQFpfB
+         08/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781662780; x=1782267580;
+        d=1e100.net; s=20251104; t=1781662778; x=1782267578;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=J8O/pXXJ//moyFh/7MLx1Wt0Gv3Nz0eHoldtSppYnyw=;
-        b=IxPY3KHx/qWSvHfJFyk8waQzvuKoQKr+s7HHybsS6rRgvVVcuCgjdtsv6pEe3NhqCY
-         CEhc606ismeP1OAUUQP5sqDAB8tO2umruQAnnd0+qmsU2sbpkVALOFjIIlXHNcq0R40a
-         iPliFh3uqA5BnF7i5hwxjwfFl7Os7fmLC91BonXDVe1A8DpldjMewlvbAmQWYSu8kEe8
-         osE3MrM/+eVvXNfSP4swfSnPLgfFuJqf29swmyGZth1i4Iz3a1KHOofglJJ5PLOqskf9
-         8/40Ob7nXV/fNPdv6ybFwHJWSEdzdmcMWMqsMAoBS+ENalY+yM4BInS2bM9jV/HxTjgK
-         FlYA==
-X-Forwarded-Encrypted: i=1; AFNElJ+9kVleanApnwQdvKZVwyommctwgkun4Ii51Yq82stmCwHtTC6BZ77W6PQagSF2x1shps2A9ujqwaX6xfLkRQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywbd/iRSCrGbab5mUysjiHrGzuJFy0Lm917jbQNAQ5OJo+Qc1QI
-	GUg66RNygLfTdRZQnu7ou6HR1m+uol8ntOC9IjT6YF7dblQTcKD4Ey34
-X-Gm-Gg: Acq92OH7axr/JjVosLUlFQz1Ij9cH6bzlF2JhthySM1EIvwnLRRZOxgD10SAra7QIvv
-	E4iFXLkIIlXSXEL/YspTT1aoOrVScb+okj6M8B8zIkEQjY4nhCA+TvfbPSlBQ1KwyCnSteZ6GD8
-	QLb6fvoLk+wApt2F27QIsggtr2lNkTpR59NtKcqchQLV6kJ8GaEdgfRiGpTrectt9M9VZqsZrup
-	9lOzuHe2mynm2yLZagxlQbzK9EPRxtKQQu47WpsG1kg/HRNKiySdbUzZR7kgbjBhDCONDtmiQgT
-	wL1F8f/ZUtYHi+49U1bHJ/bF3268cl86KWWEvWlCwyB3dvJSBxCjibRUGWgZkhfsEKC3OwurcF2
-	CqAfRgMyXiOGYvhdYEd4F5B5CWdDYoSrfhGQAAEDqKkS/HX24PfapiqpMfEAC5etfDaT8C+Vegh
-	KIs5BbwW3hG7Cz30SJBS9FogUYsNo6KSt71GQby7VKWipm/tXrykTVxR8EHD/06EHxMP3/J4LE8
-	7NeoPjs7jfd38bSXljHH4tdAlCv1E1p
-X-Received: by 2002:a05:620a:2948:b0:8cd:d688:7aef with SMTP id af79cd13be357-91dcd160370mr170783785a.19.1781662779948;
-        Tue, 16 Jun 2026 19:19:39 -0700 (PDT)
+        bh=zAFF71eki3qKxbhz4XlFm/p6BTZ2JlYFibYSDXzDbeQ=;
+        b=X/lswNAJ6wXU8kP5kOtpejJeOjQWWFhHpJW751tuYkX1geClMT1uVJm/bGVsE6dAr+
+         pUSRLnmS1s+T6qXnlN0FHoVhaJDEJyKvRYTxZnOsnVZ5GPQ01YqozVtUmk5aNPY9VrsW
+         CrDOZFRQBwkksvSPZbcJgP7KGG+aqXXg/bedY6byuezvml3c5Vo/aR65guqpwp3PDtjp
+         3MibEx2GCmkeqe6lSvXOmAhLtbxnDqjyHK/d1OaFiu7FH+1Ou1EdWypebAiD/0ber8zY
+         og0yUrvdA+3OQJJLwim3CIRvbKMTtHfCnbbbzF7vUBM/N5I1oEuLA592I93KhEgCaRgC
+         a+xQ==
+X-Forwarded-Encrypted: i=1; AFNElJ/oWOqNE/cPeGqTKN+O3MC7tIDjzQn1YVlibYVLNlHUadAwy587jqvHK9OJBrs3G4D0j/X6U+sHD8jwLA8tOQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxc6PCeDfvPjIDJxSw2UCrSSKK/+f8NcbazWOToXsyPc7lFMPud
+	DkKO8P/1z8Kfz4owqYQZuS9Sd9RuozTBvkkPttymO3WnpfZkJwNCIpoL
+X-Gm-Gg: Acq92OEr+1VB7kzW9PpoNGYBg5ynYRLsEEtQIChhY59FkxBgP5Z7OezamTMLdcr0RB4
+	5dWDWJRHC/lfPthGu7NUfH7QXeBvfAl04Rm4OyAqKiyV4MTZhwFDzS4e3ZGTOL7E9kErhMy2hPO
+	Gdz8lb+9FEPqSsRxOCmZ9tNA8+nIvSxjfTH9PiKwr288eRDqDEpFlEjzyb9YLBED0hS84btlXXS
+	51vtcX8onJ5vEUeL2r6ELP+0p9GHm6gaYE9Cd4KGnPpqNIcMCe0tw/fenS69lI1G4bKcLqwFhKb
+	U2WAN1XEse2yMs8A8W3nRkrBcFPiUhGkq0Ea+T8QFf6H1wF4e/YLlR8xUfdY7vqSzQVIcmSxs0c
+	UbcCFOLT7coAn/IyfRbMhIkxzLSKwlKJDWhijaja3au/OvnBRzuIAHJlYHY9U/uJDqyjyPbMSoU
+	/xnMTTk4gzyaoEw/EmF/jRFwh3UBn7iTK9b72UIY99snNiohBB9Y9jmzK2fKqetKl0vKTTWnyh2
+	afmd5BjoaaU87qFOZbGMhH4YZJpxesz
+X-Received: by 2002:a05:620a:f0c:b0:915:aad5:e941 with SMTP id af79cd13be357-91dba766e8cmr259685285a.17.1781662778188;
+        Tue, 16 Jun 2026 19:19:38 -0700 (PDT)
 Received: from server0.tail6e7dd.ts.net (c-68-48-65-54.hsd1.mi.comcast.net. [68.48.65.54])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-9161a006e35sm1657646285a.28.2026.06.16.19.19.38
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-9161a006e35sm1657646285a.28.2026.06.16.19.19.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Jun 2026 19:19:39 -0700 (PDT)
+        Tue, 16 Jun 2026 19:19:37 -0700 (PDT)
 From: Michael Bommarito <michael.bommarito@gmail.com>
 To: Hans Verkuil <hverkuil@kernel.org>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -87,17 +87,17 @@ Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 8/9] media: mediatek: vcodec: bound AV1 tile-start copy to the array capacity
-Date: Tue, 16 Jun 2026 22:19:05 -0400
-Message-ID: <20260617021906.2746743-9-michael.bommarito@gmail.com>
+Subject: [PATCH v3 7/9] media: verisilicon: rockchip: reject AV1 frames exceeding the tile capacity
+Date: Tue, 16 Jun 2026 22:19:04 -0400
+Message-ID: <20260617021906.2746743-8-michael.bommarito@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260617021906.2746743-1-michael.bommarito@gmail.com>
 References: <20260617021906.2746743-1-michael.bommarito@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260616_191941_008252_AA0A56B1 
-X-CRM114-Status: GOOD (  11.67  )
+X-CRM114-CacheID: sfid-20260616_191939_651952_BFFB5565 
+X-CRM114-Status: GOOD (  15.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,36 +112,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-vdec_av1_slice_setup_tile() copies tile_cols + 1 / tile_rows + 1 entries
-into mi_col_starts[] / mi_row_starts[] from the bitstream tile_info. Bound
-the copy to the array capacity.
+rockchip_vpu981_av1_dec_set_tile_info() indexes the tile group entry
+array by tile1 * tile_cols + tile0, reading up to tile_cols * tile_rows
+entries, lays out one descriptor per tile in the AV1_MAX_TILES tile_info
+buffer, and programs the real tile_cols / tile_rows into the hardware.
 
-Fixes: 0934d3759615 ("media: mediatek: vcodec: separate decoder and encoder")
+The tile group entry control is a dynamic array sized to the number of
+entries userspace submitted, independent of tile_cols / tile_rows, so a
+frame that claims more tiles than entries reads past the array. A frame
+that claims more than AV1_MAX_TILES tiles also leaves the hardware
+programmed for more tiles than the descriptor buffer holds.
+
+Reject both in prepare_run(): tile_cols * tile_rows must not exceed the
+submitted entry count or AV1_MAX_TILES. The entry count is read via
+v4l2_ctrl_find() (ctrl->elems). This mirrors the bound the mediatek AV1
+decoder already enforces.
+
+Fixes: 727a400686a2 ("media: verisilicon: Add Rockchip AV1 decoder")
 Assisted-by: Claude:claude-opus-4-8
 Signed-off-by: Michael Bommarito <michael.bommarito@gmail.com>
 ---
- .../mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c       | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ .../verisilicon/rockchip_vpu981_hw_av1_dec.c  | 25 ++++++++++++++++---
+ 1 file changed, 22 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
-index 2d622e85f8271..49d9b4a72387e 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
-@@ -1299,11 +1299,12 @@ static void vdec_av1_slice_setup_tile(struct vdec_av1_slice_frame *frame,
- 	tile->uniform_tile_spacing_flag =
- 		BIT_FLAG(ctrl_tile, V4L2_AV1_TILE_INFO_FLAG_UNIFORM_TILE_SPACING);
+diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+index fd00dbd79fe46..00aa566a4ccdb 100644
+--- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
++++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+@@ -431,20 +431,39 @@ static int rockchip_vpu981_av1_dec_prepare_run(struct hantro_ctx *ctx)
+ {
+ 	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
+ 	struct hantro_av1_dec_ctrls *ctrls = &av1_dec->ctrls;
++	const struct v4l2_av1_tile_info *tile_info;
++	struct v4l2_ctrl *tge;
++	u32 num_tiles;
  
--	for (i = 0; i < tile->tile_cols + 1; i++)
-+	/* Bound the copy to the mi_col_starts[]/mi_row_starts[] capacity. */
-+	for (i = 0; i < tile->tile_cols + 1 && i < V4L2_AV1_MAX_TILE_COLS + 1; i++)
- 		tile->mi_col_starts[i] =
- 			ALIGN(ctrl_tile->mi_col_starts[i], BIT(mib_size_log2)) >> mib_size_log2;
+ 	ctrls->sequence = hantro_get_ctrl(ctx, V4L2_CID_STATELESS_AV1_SEQUENCE);
+ 	if (WARN_ON(!ctrls->sequence))
+ 		return -EINVAL;
  
--	for (i = 0; i < tile->tile_rows + 1; i++)
-+	for (i = 0; i < tile->tile_rows + 1 && i < V4L2_AV1_MAX_TILE_ROWS + 1; i++)
- 		tile->mi_row_starts[i] =
- 			ALIGN(ctrl_tile->mi_row_starts[i], BIT(mib_size_log2)) >> mib_size_log2;
- }
+-	ctrls->tile_group_entry =
+-	    hantro_get_ctrl(ctx, V4L2_CID_STATELESS_AV1_TILE_GROUP_ENTRY);
+-	if (WARN_ON(!ctrls->tile_group_entry))
++	tge = v4l2_ctrl_find(&ctx->ctrl_handler,
++			     V4L2_CID_STATELESS_AV1_TILE_GROUP_ENTRY);
++	if (WARN_ON(!tge))
+ 		return -EINVAL;
++	ctrls->tile_group_entry = tge->p_cur.p;
+ 
+ 	ctrls->frame = hantro_get_ctrl(ctx, V4L2_CID_STATELESS_AV1_FRAME);
+ 	if (WARN_ON(!ctrls->frame))
+ 		return -EINVAL;
+ 
++	/*
++	 * rockchip_vpu981_av1_dec_set_tile_info() indexes the tile group
++	 * entry array by tile1 * tile_cols + tile0, so it reads up to
++	 * tile_cols * tile_rows entries, and lays out one descriptor per tile
++	 * in the AV1_MAX_TILES tile_info buffer while programming the real
++	 * tile geometry into the hardware. Reject a frame that claims more
++	 * tiles than userspace submitted, or more than the hardware tile
++	 * buffer holds, so the read stays in bounds and the programmed
++	 * geometry matches the descriptors written.
++	 */
++	tile_info = &ctrls->frame->tile_info;
++	num_tiles = (u32)tile_info->tile_cols * tile_info->tile_rows;
++	if (num_tiles > tge->elems || num_tiles > AV1_MAX_TILES)
++		return -EINVAL;
++
+ 	ctrls->film_grain =
+ 	    hantro_get_ctrl(ctx, V4L2_CID_STATELESS_AV1_FILM_GRAIN);
+ 
 -- 
 2.53.0
 
