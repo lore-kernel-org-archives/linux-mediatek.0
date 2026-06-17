@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD7A5CD98F1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 02:19:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 268F8CD98F2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 02:19:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Sml+UeKb9+6PbEr3ie8aYF51m/8hlVenyLRv+O5D8SY=; b=IxlPimRswvu/3VlxvBcUlaPuDa
-	d+TTGQ7IKi6jE3pnnzONEPl+Iix6z/vE9SYbv3JPI91bu0RfwaysxlcLH290M5sfle7sIRauBNxEb
-	Cpy1g6xeL/Tl2akcc2ApIiDnnWxBmP90/5pUABn99OHdYkCOcfhYo9m7pdiWpCSvSmCspQIIkfVlu
-	XI7tN13PPR3Mr63e6Sl7o+EwU6WVe49+wyg6E8Qp9kOxe2G5s8pBQdQnYQ64UGOAnMeXclvQpJ2BY
-	MniPlChhtoRxONSU98PtvA7P/OTnX3zq3bHF8056qK8dYM9C3x+cNVGcwTzPUCazivMHqQLdaeHgG
-	LV/qu0cA==;
+	bh=d5adCbZjNc85uY/9brOf3vfwrOByakFrcAqPyeusAfU=; b=MI9o4Euvu0/Bz1P7wqZWIeNtER
+	tBNyq7GAVTHSkFb/CCWROPbbmY96LOu9TRzlrOfmgYojEMPotZt5mH1MbfnwJaiEiEZVc2CJxxCCx
+	i8jdkYwY881MdYlvb/qkAJ52EiWMowgbfQeFyk3xvC3peXziPcM8fSvYO3gD+ByUiifaCRGg5RkFl
+	4n6GHxNRbYiYxFEOAGE69jt8WbgQEWfMyaZD2PwNtnC9vxTgZhCujcn4Z1jazR0WoXWUqnqdDWNjy
+	cAhbOk1F+8dJnEZtMShyn8qVV8U7tL0r0pPHwqFYRQ/3zHzbbEhAK0TZdbxyYiel6FLWXH5u21opg
+	+M4ubOpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZfsM-0000000GUBb-25YN;
-	Wed, 17 Jun 2026 02:19:34 +0000
-Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d])
+	id 1wZfsN-0000000GUCx-2kQ4;
+	Wed, 17 Jun 2026 02:19:35 +0000
+Received: from mail-qk1-x732.google.com ([2607:f8b0:4864:20::732])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZfsJ-0000000GU84-076C
+	id 1wZfsK-0000000GU94-2xAi
 	for linux-mediatek@lists.infradead.org;
-	Wed, 17 Jun 2026 02:19:32 +0000
-Received: by mail-qk1-x72d.google.com with SMTP id af79cd13be357-9185503e6a5so70822685a.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 16 Jun 2026 19:19:30 -0700 (PDT)
+	Wed, 17 Jun 2026 02:19:34 +0000
+Received: by mail-qk1-x732.google.com with SMTP id af79cd13be357-915aa0a9293so50393285a.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 16 Jun 2026 19:19:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781662770; x=1782267570; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1781662771; x=1782267571; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Sml+UeKb9+6PbEr3ie8aYF51m/8hlVenyLRv+O5D8SY=;
-        b=Ln2ZxH7IJUN+EgmKzoewKf4GY8mTUGAHZD3im5as9k2SSSQ0EwruFwdpnnxoip9N98
-         kqMN4Lbu82d/sibinYgYXDR6J3hKGCGNBxLN3ll2i2S9TAUBqg33fOmOI5CIh+Q2ibT5
-         3LaMkwCpnkxpW7sk+rg9r3uOjapxPXjPElSlPC5P1Xb/zdMjl1f/SAJRzCSKAEqtULz/
-         YogCjh93+2mTNuDUWm9smc1rhyGhl5C14u3lqz8dUttY63aNEjd+25lNy8bR2cMmLkXG
-         JIDt4LjkNqeRcLOmxFrQAlEGqNI4xAnYdvOv4dzqeJXcd6HUX4z6wuO5WijZOQ3XAFz9
-         1Qqg==
+        bh=d5adCbZjNc85uY/9brOf3vfwrOByakFrcAqPyeusAfU=;
+        b=nl4f9WpMH9fsvi2fpd7tW2EubitNm6MQNCfqjeWTtYCHaJdEl9mN+OmnjP1opM/u32
+         HSnVHCsKeBJjdQd3PdR10JcCabzRQSQ/Kve52QTbI4KAs3jD6sLcFfXX/PEQH+wVjD4X
+         3bI/3mUgdOh37CghOJ5uFf2eYHbYHh73deQAw/TBWTmZsZHhEXGexCrlvcMl145rgJcW
+         X1JPGTJday7S+i0dsfvNEDoWt7WFu4fwGHv6SGx1SIw8imCxRC3gtl85HzaGUbBgxb4d
+         QrhknbNjmWrgkCOyxozeZ34tpdjZ4reERnX/jTSCF+SFUFXxAfHc9GUbYikYjGYIdtQ/
+         /OFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781662770; x=1782267570;
+        d=1e100.net; s=20251104; t=1781662771; x=1782267571;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=Sml+UeKb9+6PbEr3ie8aYF51m/8hlVenyLRv+O5D8SY=;
-        b=kvSAILbUrXfTZjDB2yw6I9fnVzrEcsC9sqXmqMoMKvGAMkv9migfV5bf7qZMiF0Vt9
-         GvzsaXqxwlaLcDAFPr1xIoutQjghKhF849tI3tvBZ60qLw0oracwHv/dsHz2HmbYQ3kN
-         m/0oZp3g1bPRhiRnkIj+/RX7KPL+8Bbd3fMVn0ZiCY0w3cCN3rQSEhbpBfy/5F4UId4J
-         s3uEuv3BlVTgCpbxtQFeB+p69PFpvVxap6ANq+q5kx/de5//cF+yTIutx8JAM4k/smhB
-         BxW9bH+mX9DpYSb70VCkrqTp1lneZES8KZiYzevG59NVS5nCqUjoVykQ1I22ehzOnX++
-         K1yQ==
-X-Forwarded-Encrypted: i=1; AFNElJ8ZJSKdkRU8r0t5rueavT1IRo5CxRt5mv6cmwz5ndDPwftfYwyprRuLTocROcInLfKkj56BI5csdmFMnBJU/w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxmMM5YnVDR3hrMLfNWclnuwMebDKeDKR9vE98HJfxKlg/wQzbz
-	SaX1SEQBq+SmF/nrTCBbkLAbRI5WDQEX5BpmWUZTGhi+MmQ8BK9Qa9u/
-X-Gm-Gg: Acq92OEh18cKsgPYUUCQVta7rF8UIkSD4HNzuEQhvifEHhpohO17sljHc7Uhyk9RMX4
-	Dk4LUV46qP0tmbeDFx8ZTsUr+sTscqbn+/YxmL5/OZmdSCooV68ajF+7BR5geDmyIaE6LdVJI+P
-	o2Y8YMe2/BejwNShSrBPsQtYVMSQtdaG+QJUK2qVGILABv+NdK3O/7ZnOGbCTAaxqyU2QpdYnEO
-	5CxKRGK5p94BG8HRhwsBD5hhr7ECMn38dwF72uDliSzd+JxGQZh5q36Whe/VjYVocWB3VuWW9w5
-	oRb+lXNkJydvOC+3VFTVNYGF63dDHTyhkDNOWHFyV8at/h3XqwUULBJSVqwKaLZOY30X/8DDywe
-	5uCTw0/AmaC3wJUr7+KuaQj/vz0uw39aY6nAiUlMVLRDp16DqOJlm1CztqecI5NEm7KTxs7Onj2
-	dMt64EwmwSvZqqbYgh257tghN7D9CK9NlrDcEl+OuS4uSzWvg2rhIV9y5b7XSTDvR/oAAHm8Ptv
-	H427t9DQEsVWZCyTaRyF1mHZKWzywhz
-X-Received: by 2002:a05:620a:25cc:b0:915:351b:3ad5 with SMTP id af79cd13be357-91dcdd72cbfmr167100085a.29.1781662769637;
-        Tue, 16 Jun 2026 19:19:29 -0700 (PDT)
+        bh=d5adCbZjNc85uY/9brOf3vfwrOByakFrcAqPyeusAfU=;
+        b=WegGZbL3Z1i22Ore4ean/iKj248kI5Oau8qZQC0RSjsphyDY2DjKd9HmeGK/9x77Ic
+         FJJ623iJYzheslOAFn67Tm+f0s0F2TCgAr5+NzWsaDUoixdtYY3/A3lCchRaHWvSXPCs
+         amaKIvgIkEgWnAgyeG4dvGqZQpJA82esmC01pKcZrLvZs+Ch4aQiINspa2dRDFzx+4bq
+         neQATWIf48adVR+YrVmQRHurWme5QHrEyzV5wmTsd8QCtY2j5oxiU27Y9BJRcpBIE+az
+         l8u9EDaZoF3CCiGFGQNCgPAg/jUxD8bJTFxU6Kjb6JReQucfCgC9gjiYml62YLzk5ijM
+         VS5g==
+X-Forwarded-Encrypted: i=1; AFNElJ+Vly1Jld7onCTOabMj62J6ig3czv73dJyBGhTiQkfRe2HS/WsSwgHtRdMFs3KRIYjuRa3sAzzk67ixQJ/NuA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyBSmcnuR0/X6b9WvDp2NHrrhXc5C7tTXxPMHZxRGjr4uZ/tXRL
+	WSd4rjdxzJe1b83W9nPrNGDlmo0tWrTfnpvdIUvc1yiGZkyNAscwU+Mc
+X-Gm-Gg: Acq92OF924s+qnaI2pEaYtIy11qlJAqYpehIK3caSuISd8XF/+fclop4mxaf4BtTR4N
+	S17htHkHN6Ycr7FeKBCJ62lUQRZfRcRuc7DdNF6GmDos9mW2FVTylPmJ9yPHNqcjY0v1OohugUG
+	G24UXdhNo5A4BwUbAlQPgxoXM/D82/NC7aqnxf9I8SW3uTIKlv/Qd0+Mx3SdL9h/pkK28ILgido
+	rs5Pb0imETUzurMZeHz7/PUcXp/lDkS5r9I6DCmj3m0XecIyY1oSI9LCClVgybVKHhV3jHygIjK
+	ymP2RmVRbRZIPjT3qAPEcWEhGd/FOUQJnxyB+3PpNeiEHO31YRX8LtV3P/AEOQ57k74r7GCA9gC
+	q5azy/aRoaYLuuD7ye7esMe9fusph28gEQDvHWQ/JEOgP+aJ+7C1fOupQYFvq6MA0Y44yBWFgcy
+	e0aYU8RY1kDSmWvAq/szq1hRiGkipJFtGmaGHrXrBuAY1n0zHIT5bgVnT6BKgUiHteYJAbfsBAK
+	/pkf7aOzpZbyswgxzgVKOR+xKsgJS4v
+X-Received: by 2002:a05:620a:1a0e:b0:916:5f5:de22 with SMTP id af79cd13be357-91dcabb0438mr183153085a.12.1781662771344;
+        Tue, 16 Jun 2026 19:19:31 -0700 (PDT)
 Received: from server0.tail6e7dd.ts.net (c-68-48-65-54.hsd1.mi.comcast.net. [68.48.65.54])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-9161a006e35sm1657646285a.28.2026.06.16.19.19.27
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-9161a006e35sm1657646285a.28.2026.06.16.19.19.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Jun 2026 19:19:28 -0700 (PDT)
+        Tue, 16 Jun 2026 19:19:30 -0700 (PDT)
 From: Michael Bommarito <michael.bommarito@gmail.com>
 To: Hans Verkuil <hverkuil@kernel.org>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -87,17 +87,17 @@ Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 2/9] media: v4l2-ctrls: validate AV1 tile counts
-Date: Tue, 16 Jun 2026 22:18:59 -0400
-Message-ID: <20260617021906.2746743-3-michael.bommarito@gmail.com>
+Subject: [PATCH v3 3/9] media: hevc: add bounded tile-count helpers
+Date: Tue, 16 Jun 2026 22:19:00 -0400
+Message-ID: <20260617021906.2746743-4-michael.bommarito@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260617021906.2746743-1-michael.bommarito@gmail.com>
 References: <20260617021906.2746743-1-michael.bommarito@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260616_191931_208784_6E7F079B 
-X-CRM114-Status: GOOD (  12.47  )
+X-CRM114-CacheID: sfid-20260616_191932_819960_D8BC4862 
+X-CRM114-Status: GOOD (  13.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,58 +112,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The stateless AV1 decoders use tile_info.tile_cols and tile_rows as loop
-bounds and as indices into the mi_*_starts[] and *_in_sbs_minus_1[]
-arrays, as the divisor for context_update_tile_id, and their product
-bounds the per-tile descriptor buffers, but std_validate_compound() does
-not bound these u8 fields. Reject a V4L2_CTRL_TYPE_AV1_FRAME whose
-tile_cols or tile_rows exceeds V4L2_AV1_MAX_TILE_COLS / _ROWS, or whose
-product exceeds V4L2_AV1_MAX_TILE_COUNT. A zero tile count is left to the
-consuming driver so the zero-initialised control that existing userspace
-submits is still accepted.
+The stateless HEVC decoders compute the number of tile columns and rows
+from num_tile_columns_minus1 / num_tile_rows_minus1 and clamp it to the
+column_width_minus1[] / row_height_minus1[] capacity before using it as a
+loop bound. Add shared helpers in a new <media/v4l2-hevc.h> so the rkvdec
+and hantro drivers do not each open-code the min_t() clamp.
 
-Fixes: 9de30f579980 ("media: Add AV1 uAPI")
 Assisted-by: Claude:claude-opus-4-8
 Signed-off-by: Michael Bommarito <michael.bommarito@gmail.com>
 ---
- drivers/media/v4l2-core/v4l2-ctrls-core.c | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+ include/media/v4l2-hevc.h | 41 +++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 41 insertions(+)
+ create mode 100644 include/media/v4l2-hevc.h
 
-diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4l2-core/v4l2-ctrls-core.c
-index 6d478e1a5ef22..fb20ad13dfec7 100644
---- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
-+++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
-@@ -790,10 +790,30 @@ static int validate_av1_film_grain(struct v4l2_ctrl_av1_film_grain *fg)
- 	return 0;
- }
- 
-+static int validate_av1_tile_info(struct v4l2_av1_tile_info *t)
+diff --git a/include/media/v4l2-hevc.h b/include/media/v4l2-hevc.h
+new file mode 100644
+index 0000000000000..973c96be16be4
+--- /dev/null
++++ b/include/media/v4l2-hevc.h
+@@ -0,0 +1,41 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++/*
++ * Helper functions for HEVC stateless codecs.
++ */
++
++#ifndef _MEDIA_V4L2_HEVC_H
++#define _MEDIA_V4L2_HEVC_H
++
++#include <linux/minmax.h>
++#include <media/v4l2-ctrls.h>
++
++/**
++ * v4l2_hevc_pps_num_tile_columns - number of HEVC tile columns, bounded
++ * @pps: the V4L2 HEVC PPS control
++ *
++ * Return the number of tile columns (num_tile_columns_minus1 + 1) clamped to
++ * the capacity of column_width_minus1[]. The control validation already
++ * rejects out-of-range counts; this keeps the consuming drivers bounded too.
++ */
++static inline unsigned int
++v4l2_hevc_pps_num_tile_columns(const struct v4l2_ctrl_hevc_pps *pps)
 +{
-+	/*
-+	 * tile_cols and tile_rows index the per-tile descriptor arrays and
-+	 * bound the tile loops in the stateless AV1 drivers; the product
-+	 * bounds the total tile descriptor count.
-+	 */
-+	if (t->tile_cols > V4L2_AV1_MAX_TILE_COLS ||
-+	    t->tile_rows > V4L2_AV1_MAX_TILE_ROWS)
-+		return -EINVAL;
-+
-+	if ((u32)t->tile_cols * t->tile_rows > V4L2_AV1_MAX_TILE_COUNT)
-+		return -EINVAL;
-+
-+	return 0;
++	return min_t(unsigned int, pps->num_tile_columns_minus1 + 1,
++		     ARRAY_SIZE(pps->column_width_minus1));
 +}
 +
- static int validate_av1_frame(struct v4l2_ctrl_av1_frame *f)
- {
- 	int ret = 0;
- 
-+	ret = validate_av1_tile_info(&f->tile_info);
-+	if (ret)
-+		return ret;
- 	ret = validate_av1_quantization(&f->quantization);
- 	if (ret)
- 		return ret;
++/**
++ * v4l2_hevc_pps_num_tile_rows - number of HEVC tile rows, bounded
++ * @pps: the V4L2 HEVC PPS control
++ *
++ * Return the number of tile rows (num_tile_rows_minus1 + 1) clamped to the
++ * capacity of row_height_minus1[].
++ */
++static inline unsigned int
++v4l2_hevc_pps_num_tile_rows(const struct v4l2_ctrl_hevc_pps *pps)
++{
++	return min_t(unsigned int, pps->num_tile_rows_minus1 + 1,
++		     ARRAY_SIZE(pps->row_height_minus1));
++}
++
++#endif /* _MEDIA_V4L2_HEVC_H */
 -- 
 2.53.0
 
