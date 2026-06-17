@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4B79CD98F1
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD6F2CD98F3
 	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 02:21:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
@@ -12,45 +12,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e0TGR1WogFTAuvl3b2JxHVLD9uWuc1cSp63ywOzxVjw=; b=DjYxDtrtiFMg9svjKELU3js5XP
-	aiwumslozowt39a9/uVgijLAZ6hn51nSVxUqjEKSiraDyOg0MpGXgODcuyCFNlsIaVFpd5To9Cx0z
-	8LYrq21Ci2lcwkLpbyqBBKzt39ZI1Wjv24XqEaETy8vfAH558MTm5BV1TJE+jRtSnoqbw3fsJR0JG
-	8b2oJVC1uBN6sqkt4UOzGR2uWGRRRl/RdVnRaD+5Y42wAPXIB3rSeBzVug3j0SSQIloYttf3pwaJ0
-	DRZVIqWEynmX3tP2o6izDp306AnbDadKXZlrCD59nPRkKFbEPPiQAYgJ5wXTvvrLVJN9iofIQohF6
-	oAOa0i6A==;
+	bh=KSeCi3HjnZu5qImVkcM0BZPx+2guCpJROAr8BzZP2vY=; b=zGKrCBqhXdCstIkpiCZoPvf7K8
+	YuyiAJN82Z64jui4XjOIdGSYljSTXVKiQinr7m+gfmiqdTczSqRw4rN/tPIuXxtn2+3c0UIDEe7Fj
+	IFKusDYg7On85oGQ7JbeImK6uUQK2NMmjK+6w2EybCxPGFRTDP8/hV/EqeVoiCRjBIBoGXSh14Sft
+	TPh8cGS1PmYADSM2gKJRCdmQdPj75BZXFrHQ9Og5AwB3geaeXhB85i3CAB8i57/iZWcTNsyjDWYX5
+	Abg3yRpk6PU2dBdCCoTSGw48OrU07qyVed4zNk4SLYaShGw38ixDTn6tzjwLwe3sf9BltB1OJlkPl
+	oOggJc7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZftz-0000000GUsp-3meO;
+	id 1wZftz-0000000GUsZ-37UM;
 	Wed, 17 Jun 2026 02:21:15 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZftx-0000000GUq1-12Wp;
+	id 1wZftx-0000000GUq2-1CaI;
 	Wed, 17 Jun 2026 02:21:13 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 594A760120;
+	by sea.source.kernel.org (Postfix) with ESMTP id 6D219444CE;
 	Wed, 17 Jun 2026 02:21:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 07961C4AF0D;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 3C4BDC4AF0F;
 	Wed, 17 Jun 2026 02:21:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1781662872;
-	bh=Y0cWCT4yjqLtXogLm+JZvDjfNTCrMoqhAiZrJULbINw=;
+	bh=TYv4I/0EdUguA4dQzRGYgV0SyQbG+2UcMGEinY6mWVQ=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=rH+WQ72BFm05jT0b8f2f/AZ2CkF722FWJeCCL6PKEQj/sJ/mB++Gug89RylcC+944
-	 nR8RLAQ6ky1g6PIcEyKWUErzPUri7KgwemEySi/qqiFgcPXty976lg2nktPe9BYyfh
-	 EsNVh4DxR9cgdnDtHv52qIMgNQ/C+8HtwIX3hFc0NPhCPJ7l1AEqc9vwQ0D8PZ1oPr
-	 MJlL6V6BLTZ+Vp5yXRBhBC4zjLNZF1ZLUahv3lN+DD3refEDToSR4eGiPhiOZcJKwZ
-	 0Vn3F8dQhmRTk2kzlWNn1dPfmI7lCiF/SzuYT5ihlyGo0IQ3SDciF2685SJtsatkhQ
-	 kustmxdAmBzEQ==
+	b=qRVKpiK6lvimqkwXV9x0qS6ZtuPoRJJNqQUGVRHDzVCLby+dNpKoJavoZPbNqF4lH
+	 wYLfX2mJbbUsc++wZXZfgLgCsc/F+Beee6TESc4XvlT/YsSXYSt3S9/5mwFDZLIBEJ
+	 k8d3KeeNt0YyFHQX0qORlYVjVx0446EuVGI6uac1i1B31ChsmU4zB4njHlO6kzx4Od
+	 P9Ery8RLqNXT3Wk89ePhjUJqoCBpx9BVskEAijVzo/tNF4fI/ha7220yocehjoM2fJ
+	 Rb3Lkv2MbHPJKJqN8y8vBtnGAAp1U2o6JnFGxR+opTjrWi7diS+6IAlNlWrJ62R4oF
+	 Xy2w1CHEXsRJQ==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E5CA2CD98EE;
-	Wed, 17 Jun 2026 02:21:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 34E92CD98F0;
+	Wed, 17 Jun 2026 02:21:12 +0000 (UTC)
 From: Zakariya Hadrami via B4 Relay <devnull+zkh1.proton.me@kernel.org>
-Date: Wed, 17 Jun 2026 11:20:10 +0900
-Subject: [PATCH 1/5] ARM: dts: mediatek: mt8127: Fix indentation error
+Date: Wed, 17 Jun 2026 11:20:14 +0900
+Subject: [PATCH 5/5] dt-bindings: watchdog: mediatek: Add MT8127
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260617-mt8127-amazon-ford-basic-v1-1-d02ad15ac359@proton.me>
+Message-Id: <20260617-mt8127-amazon-ford-basic-v1-5-d02ad15ac359@proton.me>
 References: <20260617-mt8127-amazon-ford-basic-v1-0-d02ad15ac359@proton.me>
 In-Reply-To: <20260617-mt8127-amazon-ford-basic-v1-0-d02ad15ac359@proton.me>
 To: Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -63,11 +63,11 @@ Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
  linux-watchdog@vger.kernel.org, Zakariya Hadrami <zkh1@proton.me>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1781662870; l=646;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1781662870; l=885;
  i=zkh1@proton.me; s=20260616; h=from:subject:message-id;
- bh=0uKY942SYdvjWSBpaLmMsTG1mV/4mbR327xAEav7Pe4=;
- b=xHx5Gn9Gq0Z0wUNlXF28Rbsz7c/kBJukg66Jk3CoI0EZFFvXDvRQeYwk4bHd3VItDoHk/9Nqz
- sx0ekvvZU4EBUsy1ACxn43jcD/VpRvGrJwkl6QRW6xOMLnMQr6xF603
+ bh=EYpC4LZ5dsncfmZVo1Qa3+LOjpZlxDCulVGvphKLKMQ=;
+ b=a/R2TapQVdN1Ryp32CARs1QbBbPlH+I0Wa0q7pOdQP5E4LNloIpf6D7WIqIg15p4aptuMMK16
+ IRnMJYOAxcABQiTxiWVbnGl4mqyviY2Thqw6BjpmAtWwzy+IvTLLFTt
 X-Developer-Key: i=zkh1@proton.me; a=ed25519;
  pk=9DiJwhINAERP95fbFofXSP77GEnvfO/rMIRRRFDhaoc=
 X-Endpoint-Received: by B4 Relay for zkh1@proton.me/20260616 with
@@ -90,26 +90,26 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Zakariya Hadrami <zkh1@proton.me>
 
-Fix an indentation error caused by a space at the start of a line.
+Add entry for MT8127 SoC's watchdog which is compatible with MT6589's
+one.
 
 Signed-off-by: Zakariya Hadrami <zkh1@proton.me>
 ---
- arch/arm/boot/dts/mediatek/mt8127.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm/boot/dts/mediatek/mt8127.dtsi b/arch/arm/boot/dts/mediatek/mt8127.dtsi
-index aced173c2a52..bd61ec7e70c0 100644
---- a/arch/arm/boot/dts/mediatek/mt8127.dtsi
-+++ b/arch/arm/boot/dts/mediatek/mt8127.dtsi
-@@ -75,7 +75,7 @@ uart_clk: dummy26m {
- 			compatible = "fixed-clock";
- 			clock-frequency = <26000000>;
- 			#clock-cells = <0>;
--                };
-+		};
- 	};
- 
- 	timer {
+diff --git a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+index 953629cb9558..e6e4546da0aa 100644
+--- a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
++++ b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+@@ -40,6 +40,7 @@ properties:
+               - mediatek,mt7622-wdt
+               - mediatek,mt7623-wdt
+               - mediatek,mt7629-wdt
++              - mediatek,mt8127-wdt
+               - mediatek,mt8173-wdt
+               - mediatek,mt8188-wdt
+               - mediatek,mt8189-wdt
 
 -- 
 2.54.0
