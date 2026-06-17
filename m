@@ -4,76 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46EE6CD98F9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 13:37:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 489F5CD98E4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 15:26:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
-	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LIeXyvBK3Nj+TzbXnUNoyLcSI2KPHCuGL3SRdXj47vo=; b=3VTVBIYmKlKP3U9BXjfgEt1Y68
-	gQ8CO0w+qYMNyAR1jsVG88YNFBuVy/mfPr0OdM4ihjB82NS7OrR1oDvYTBArYWrlG0py3bcvzog5B
-	r1whZ0MHRE6BbIz4EGuCp1/dDhr9hVQ1nZ+zAFpjM2ZmTFemljVFo3GzhzTw65geeEHNUG9iyW/7U
-	n5x9jm+a7DphlXZ3RxD/a4GOm02gReVLxKSrvisHr91rlAjn5EzSgn+qYc3t6v+fKOh/SeijwBfKW
-	n07N8IyN2xIfuh4eco8UlsTCuG7YeToPRErgotzZVg5gkF+DX2KFC1nzRwDHt4oQImg3mt3FTaCcy
-	M6tdVGeg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=I9V3ZxzZvxmKgc8hMN0KNAw5jx1AF9PyZSuoGpdw3cc=; b=Q3mE/Ih77ylUbl138OK06LP8s4
+	JM6XIwVDa8NTBsmP3DqSd58Wtu+Wvclg/vz6+eM2byb3YfalzOFA6lmxIFMBplnCoQAiLrxnfxupv
+	bU7I+X6taCpGjEcudCfR3RiUBVkkJE8XP6wEIm1KLfLZKYGxvHoTdoPeEKvXPz+vDTJrVkxCfMJ3b
+	fQ1HpCJUcze+G7vTsy8kLeNozEpsjdp5ZI6GDnVsk+PQbxYzrl2seLQl5YvbdtrVCfLoQYjmicd5/
+	woPHnqw1INr9SnR1EGt1oouq8rj9osQQUgFjO309vCDYTLp416RL4Hy/hhLrzgU3LHxZW+jWxzjfQ
+	I3611YiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZqSI-0000000HQOd-1IOk;
-	Wed, 17 Jun 2026 13:37:22 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wZs9m-0000000HYxM-2URS;
+	Wed, 17 Jun 2026 15:26:22 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZqSG-0000000HQLF-3QZX;
-	Wed, 17 Jun 2026 13:37:20 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id CFBFF600AB;
-	Wed, 17 Jun 2026 13:37:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 7C846C2BCB8;
-	Wed, 17 Jun 2026 13:37:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1781703439;
-	bh=oDALUj//HPljI6BidS2OPjD+hQfSM7usFOv2D9/WMF4=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=k/VMKbDXmH6Tylzq01TtdO5kO7xpnSu8NRbPJVI7EDg7UhvKwNfCH3QHhe8mTozaf
-	 axM3pk28E+Ex4E8eYoE6jWmRK9l9SqFlkbJxmwozvH1pLpA6gSyWXfBDCmKczKgLyx
-	 mOlsCQL7RtfqDyUi4QAU/ScptRNWfXS8qIatFlK1FPFu1fRiVzlxWLfhylB0lefW7I
-	 wTKSohIAd8mEvr9uhzDxIxszGUzZ7VRQGi5X+i6knRizmuR8d9pfeXZyOjbdJRRcdB
-	 O6tzgmZDDRGDwHCY0CE5jz4uAPDtLak99dlbBRipViJnOc4SO0yg4liyjn4gf8Le5o
-	 mnOpzokdKxJAw==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 64427CD98E2;
-	Wed, 17 Jun 2026 13:37:19 +0000 (UTC)
-From: Zakariya Hadrami via B4 Relay <devnull+zkh1.proton.me@kernel.org>
-Date: Wed, 17 Jun 2026 22:36:59 +0900
-Subject: [PATCH v2 1/5] dt-bindings: watchdog: mediatek: Add MT8127
+	id 1wZs9k-0000000HYx0-3w5V;
+	Wed, 17 Jun 2026 15:26:20 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 5293443E1A;
+	Wed, 17 Jun 2026 15:26:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B30611F000E9;
+	Wed, 17 Jun 2026 15:26:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1781709980;
+	bh=I9V3ZxzZvxmKgc8hMN0KNAw5jx1AF9PyZSuoGpdw3cc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=GGc3w/taoFG0RXND5OIr62RcuvZJ96WfVxFE1dJAvXJEQZssuQAmifrc/UsW01jLo
+	 u+lEqurxi/Gs/rns8svl88//8lReobfOutFJgGWb5ncKDSNyHY4nZW17EarTHgI2kf
+	 tH+HokNplG+ToJw0BrvqvD2B/CUK2ARKVtYliWU5TRC/AuAaZIC/nxc423UyXxgynb
+	 GFVvvquwV+XNbXFHM8Tp/Wg2yJsl0GkGL0AtOYBie2dWl/rMletg4M63tom2xVqs64
+	 ssn1uABWOEqdnCj7IchQjQ2Dm2qmHiFPLGVLgNk5w6kSqMXOwVsVk7PCOMG1Wj91oD
+	 LCfIEaZ4jsX0g==
+Date: Wed, 17 Jun 2026 16:26:15 +0100
+From: Lee Jones <lee@kernel.org>
+To: Yuho Choi <dbgh9129@gmail.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v1] mfd: mt6397-irq: Fix PM notifier use-after-free
+Message-ID: <20260617152615.GO10056@google.com>
+References: <20260608021048.2577577-1-dbgh9129@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260617-mt8127-amazon-ford-basic-v2-1-6859e29e72a8@proton.me>
-References: <20260617-mt8127-amazon-ford-basic-v2-0-6859e29e72a8@proton.me>
-In-Reply-To: <20260617-mt8127-amazon-ford-basic-v2-0-6859e29e72a8@proton.me>
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, 
- Wim Van Sebroeck <wim@linux-watchdog.org>, 
- Guenter Roeck <linux@roeck-us.net>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
- linux-watchdog@vger.kernel.org, Zakariya Hadrami <zkh1@proton.me>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1781703437; l=955;
- i=zkh1@proton.me; s=20260616; h=from:subject:message-id;
- bh=biWOiqmry9LgaiOTwUC1SAvyWdKvAgZ0Pq6ZY68s2fM=;
- b=Wu9XaZItWvuv0sYoM0oaHGAcXv1MIFgt+LwbNE4sArjeTWwzng7Z+5bXygQ/KBpPuRzOYDXRI
- TxqAKg0i4FyAlBYdJC3VY+5q22B6OZszpXuoZX5nVJmmWXA/jbE4rsq
-X-Developer-Key: i=zkh1@proton.me; a=ed25519;
- pk=9DiJwhINAERP95fbFofXSP77GEnvfO/rMIRRRFDhaoc=
-X-Endpoint-Received: by B4 Relay for zkh1@proton.me/20260616 with
- auth_id=824
-X-Original-From: Zakariya Hadrami <zkh1@proton.me>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260608021048.2577577-1-dbgh9129@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,36 +66,127 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: zkh1@proton.me
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Zakariya Hadrami <zkh1@proton.me>
+/* Sashiko Automation: Issues Found (3 Findings) */
 
-Add entry for MT8127 SoC's watchdog which is compatible with MT6589's
-one.
+Worth considering.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Signed-off-by: Zakariya Hadrami <zkh1@proton.me>
----
- Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml | 1 +
- 1 file changed, 1 insertion(+)
+On Sun, 07 Jun 2026, Yuho Choi wrote:
 
-diff --git a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
-index 953629cb9558..e6e4546da0aa 100644
---- a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
-+++ b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
-@@ -40,6 +40,7 @@ properties:
-               - mediatek,mt7622-wdt
-               - mediatek,mt7623-wdt
-               - mediatek,mt7629-wdt
-+              - mediatek,mt8127-wdt
-               - mediatek,mt8173-wdt
-               - mediatek,mt8188-wdt
-               - mediatek,mt8189-wdt
+> mt6397_irq_init() registers chip->pm_nb with the global PM notifier
+> chain. The notifier callback uses container_of() to recover struct
+> mt6397_chip and then dereferences chip fields.
+> 
+> The chip structure is allocated with devm_kzalloc() in mt6397_probe().
+> If probe fails after mt6397_irq_init() succeeds, for example when
+> devm_mfd_add_devices() fails, devres can release the chip while the PM
+> notifier remains registered. The same lifetime mismatch exists when the
+> driver is unbound.
+> 
+> Check the register_pm_notifier() return value and add a devm cleanup
+> action to unregister the notifier before the devm-managed chip is freed.
+> If adding the cleanup action fails, devm_add_action_or_reset()
+> unregisters the notifier immediately; then remove the IRQ domain in the
+> remaining error path.
+> 
+> Fixes: 4e2e7cfec13a ("mfd: mt6397: Modify suspend/resume behavior")
+> Signed-off-by: Yuho Choi <dbgh9129@gmail.com>
+> ---
+>  drivers/mfd/mt6397-irq.c | 22 ++++++++++++++++++++--
+>  1 file changed, 20 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/mfd/mt6397-irq.c b/drivers/mfd/mt6397-irq.c
+> index 5d2e5459f744..8947f7e732fa 100644
+> --- a/drivers/mfd/mt6397-irq.c
+> +++ b/drivers/mfd/mt6397-irq.c
+> @@ -169,6 +169,13 @@ static int mt6397_irq_pm_notifier(struct notifier_block *notifier,
+>  	return NOTIFY_DONE;
+>  }
+
+[Severity: High]
+This is a pre-existing issue, but does this PM notifier safely access the
+hardware registers and software state?
+
+In mt6397_irq_pm_notifier(), the hardware registers and chip->irq_masks_cur
+are read and written without holding chip->irqlock. Since PM notifiers like
+PM_SUSPEND_PREPARE run while tasks are still active, if another driver
+requests or frees an IRQ concurrently, mt6397_irq_sync_unlock() will acquire
+irqlock and write dynamically updated irq_masks_cur to the hardware registers.
+
+Can this data race allow the PM notifier to silently overwrite the dynamically
+updated hardware masks with stale data, or corrupt the suspend wake_mask?
+
+
+
+>  
+> +static void mt6397_irq_pm_notifier_unregister(void *data)
+> +{
+> +	struct mt6397_chip *chip = data;
+> +
+> +	unregister_pm_notifier(&chip->pm_nb);
+> +}
+> +
+>  int mt6397_irq_init(struct mt6397_chip *chip)
+>  {
+>  	int ret;
+> @@ -233,6 +240,17 @@ int mt6397_irq_init(struct mt6397_chip *chip)
+>  		return ret;
+>  	}
+>  
+> -	register_pm_notifier(&chip->pm_nb);
+> -	return 0;
+> +	ret = register_pm_notifier(&chip->pm_nb);
+> +	if (ret) {
+> +		dev_err(chip->dev, "failed to register PM notifier: %d\n", ret);
+> +		irq_domain_remove(chip->irq_domain);
+
+[Severity: High]
+Is it safe to explicitly remove the IRQ domain here while the devm-managed
+parent threaded IRQ remains active?
+
+The parent IRQ was requested earlier via devm_request_threaded_irq(). Because
+devres cleanup does not run until the probe function completely fails and
+returns, the parent IRQ remains active and enabled during this window.
+
+If an interrupt triggers during this error path, the active IRQ handler
+mt6397_irq_thread() will execute and call mt6397_irq_handle_reg(). This in
+turn calls irq_find_mapping(), which will dereference the freed irq_domain,
+resulting in a use-after-free.
+
+
+
+[Severity: High]
+This is a pre-existing issue, but does the IRQ domain properly unregister
+during driver unbind?
+
+The irq_domain is created using irq_domain_create_linear() earlier in
+mt6397_irq_init(), which is not managed by devm. The MT6397 driver lacks a
+.remove callback and relies entirely on devres for cleanup.
+
+When the device is unbound, devres frees the chip structure. However, the
+irq_domain is never removed and remains in the global IRQ domain list, leaking
+memory. Furthermore, its host_data points to the now-freed chip.
+
+If the device is rebound, mt6397_irq_domain_map() will dereference the freed
+chip pointer, causing a use-after-free.
+
+
+> +		return ret;
+> +	}
+> +
+> +	ret = devm_add_action_or_reset(chip->dev,
+> +				       mt6397_irq_pm_notifier_unregister, chip);
+> +	if (ret)
+> +		irq_domain_remove(chip->irq_domain);
+> +
+> +	return ret;
+>  }
+> -- 
+> 2.43.0
+> 
 
 -- 
-2.54.0
-
-
+Lee Jones
 
