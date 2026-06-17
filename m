@@ -4,59 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA609CD98E2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 09:17:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11542CD98E4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 09:46:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZnXuxdsvCZXi+yhcRRlP0nnKlUJzsEw2xOj6/CVvJuY=; b=igC7LieXvdLNsj300q/kzNRLgA
-	idk2c4aQNldAG7o9imgIJIAyV0MasxYupWf27IWJkYcJDeBrISarSpEdklW5avg1XQmFqPyetnLAf
-	Db0ynH7hh2Nk7FCcD27orJ8brbUIEyzIq15MyEC2k3r1ilmE+i9aaGOuwsJoLCv+k81UG5TWqMUEQ
-	YVOyp0Mp4H6oinyZdGJ/bJdGfxz98X3q/iBtRahUV5wd234rVKxSDBpOngTB+nQ895any7PddNCIN
-	WfZIGXL4xyvdXIvBUhYRpv9426ZOlB1/6Gnu7ErNIjFwA5QAaFthzJNpHSf1y+sVO03WPSkDJuUVp
-	nOMAAbcA==;
+	bh=9hBGbkhV/3vuK/Tjp/LOl9erXla1+SWHZPqLvmd3tfc=; b=HHOyCf9qWKGDEhjFoHIiOSLfqp
+	rmeNSj3RlEYY7z8MCk7GGceTJLxYslNm6AK+sQPJsFsxS9fUXy8UQ39QmIcSTdSSpa+8gXh0kZa6P
+	Yqjgj0n6pB4ppC/3p3eAtxQRePKqz5W/l2UlxTQ90fAGhZDJ4efRT/hP584329GDLVgtSr16dmbxG
+	tcbNLGX+bwUP90GOwr/vDXxbwypJT2xxafpSmkpH8u+isvzoxFktZrkwJpVt9hAHzoj+AdZNRbYJY
+	so7C90lguEAjcgua8Hs9rrB0hPop6K7ZN1n0D2DTDv9bZ+dealMZTVPQC1fQt5laEO2x9ZVfWvAhW
+	R6lj+jfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZmOi-0000000Gwbd-2L2t;
-	Wed, 17 Jun 2026 09:17:24 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wZmqR-0000000GxpS-2cWX;
+	Wed, 17 Jun 2026 09:46:03 +0000
+Received: from mgamail.intel.com ([192.198.163.14])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZmOh-0000000GwbM-2DB8;
-	Wed, 17 Jun 2026 09:17:23 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 89D27600AA;
-	Wed, 17 Jun 2026 09:17:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B3B671F000E9;
-	Wed, 17 Jun 2026 09:17:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781687842;
-	bh=ZnXuxdsvCZXi+yhcRRlP0nnKlUJzsEw2xOj6/CVvJuY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Tc2o8afQpKiwso4i+pUMbegXm9w4FdsldOJEIycWlQuBKzvzKP/80uB25ERY7H9to
-	 rlTBV9HS2My1rfz+o5ejfrZv7pxmZVA/3VLl0xw+1VpT9WdMAaKAWs2fQlF642MRWp
-	 R0fZrndsiKF6U6XD4tFD/tYT8DBjO/HryBTGwlRuKeptvYqTlfyqRpuLmqBTa3OAwh
-	 9j9K164Ij7Ja+gPqjqgK4f0zErjFpRDU0dtYxFsvmZ3zYO7nwHGO0sOdRGvdsT3kqX
-	 /nGioXXdZFVhPWbAzswPyQ096Fsff7VYQk1V1GJ3Rz20/AAqQwlk9iPVEJZVPjwkyo
-	 zcJ2kCDF+XuZQ==
-Date: Wed, 17 Jun 2026 11:17:20 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Wayen Yan <win847@gmail.com>
-Cc: netdev@vger.kernel.org, nbd@nbd.name,
+	id 1wZmqP-0000000Gxia-0xJF;
+	Wed, 17 Jun 2026 09:46:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1781689561; x=1813225561;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=PJRUrD9zZfvxEp95vYDkf9Io499+vXWD3N/tqWUsuhs=;
+  b=edluMAKcnaLRx1CHZZxcNZ9x8DZMY0XRb4x3Mz6gwEu51a/LVUNOPxmW
+   OkfuxUilVQm4bwcI3apaWKuqsGlKbdbRCdtNGVQBAjHpBEroz6ckcnKMU
+   zV+3SiUPHDO4QdDcILvlZ+YhzZV+fFFbO1P6H4b0RkMHtBB5SOH6D/8Ba
+   gVzMfpFM+fe7s1qTD+xUfDBLHI3IU9koYZxmRaVsZQrAWV5sGSX2SYedw
+   9VX+SnDjjUgaX71jVTpUBd74rtVzoHDr7J+m3VV3fL2+PJqqm4A/o6HsF
+   YonFkE9SkhlcLsc/f6YdLnKbtInd3eIuT9kxfX1YjL0tR9aHpp3nV869Z
+   w==;
+X-CSE-ConnectionGUID: O5QuLaWdQXKyIh6EK8JS2g==
+X-CSE-MsgGUID: nx89t2vRSUW/zv2es+tXvw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11819"; a="82534245"
+X-IronPort-AV: E=Sophos;i="6.24,209,1774335600"; 
+   d="scan'208";a="82534245"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Jun 2026 02:43:56 -0700
+X-CSE-ConnectionGUID: KqEF+XwPTGGdSxcdFhXqFA==
+X-CSE-MsgGUID: zVMyIUsrS06+OMMQYl0JoA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.24,209,1774335600"; 
+   d="scan'208";a="246888272"
+Received: from fpallare-mobl4.ger.corp.intel.com (HELO localhost) ([10.245.245.69])
+  by orviesa006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Jun 2026 02:43:52 -0700
+Date: Wed, 17 Jun 2026 12:43:49 +0300
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
+To: rva333@protonmail.com
+Cc: Jonathan Cameron <jic23@kernel.org>,
+	David Lechner <dlechner@baylibre.com>,
+	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
+	Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Lee Jones <lee@kernel.org>, linux-iio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net] net: airoha: Fix TX scheduler queue mask loop upper
- bound
-Message-ID: <ajJmIIpju9P3oyne@lore-desk>
-References: <178166704952.2212140.11002626760717132754@gmail.com>
- <178168650178.2224380.3950331731013129336@gmail.com>
+	linux-mediatek@lists.infradead.org,
+	Ben Grisdale <bengris32@protonmail.ch>
+Subject: Re: [PATCH v3 2/4] iio: adc: mt6323-auxadc: add mt6323 PMIC AUXADC
+ driver
+Message-ID: <ajJsVdQPdkpfIyLG@ashevche-desk.local>
+References: <20260616-mt6323-adc-v3-0-1c27c588185d@protonmail.com>
+ <20260616-mt6323-adc-v3-2-1c27c588185d@protonmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="VyUTMvxzWiaGc/iq"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <178168650178.2224380.3950331731013129336@gmail.com>
+In-Reply-To: <20260616-mt6323-adc-v3-2-1c27c588185d@protonmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260617_024601_301230_CBB9F706 
+X-CRM114-Status: GOOD (  14.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,95 +97,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Jun 16, 2026 at 05:15:40PM +0300, Roman Vivchar via B4 Relay wrote:
 
---VyUTMvxzWiaGc/iq
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> The mt6323 AUXADC is a 15-bit ADC used for system monitoring. This driver
+> provides support for reading various channels including battery and
+> charger voltages, battery and chip temperature, current sensing and
+> accessory detection.
+> 
+> Add a driver for the AUXADC found in the MediaTek mt6323 PMIC.
 
-> On Tue, Jun 17, 2026, Lorenzo Bianconi wrote:
-> > Even if the current codebase supports just AIROHA_NUM_QOS_CHANNEL (4), =
-the hw
-> > exposes 32 hw QoS channels (AIROHA_NUM_TX_RING). Here we are just clear=
-ing the
-> > configuration, so I guess the current implementation is correct.
->=20
-> Hi Lorenzo,
->=20
-> You are right that there is no functional impact, and I agree this
-> should not go to net. Let me explain the register layout I was worried
-> about, and you can decide whether it is worth a net-next cleanup or
-> should just be dropped.
->=20
-> The two macros are:
->=20
-> 	REG_QUEUE_CLOSE_CFG(_n)             =3D 0x00a0 + ((_n) & 0xfc)
-> 	TXQ_DISABLE_CHAN_QUEUE_MASK(_n, _m) =3D BIT((_m) + (((_n) & 0x3) << 3))
->=20
-> REG_QUEUE_CLOSE_CFG() masks the channel with 0xfc, and the bit macro
-> folds the channel with & 0x3 (mod 4) shifted by 3. So one 32-bit
-> register holds 4 channels x 8 queues, 8 queue bits per channel:
->=20
-> 	channel 0 -> reg 0x00a0, bits  0..7
-> 	channel 1 -> reg 0x00a0, bits  8..15
-> 	channel 2 -> reg 0x00a0, bits 16..23
-> 	channel 3 -> reg 0x00a0, bits 24..31
-> 	channel 4 -> reg 0x00a4, bits  0..7
-> 	...
->=20
-> In airoha_qdma_set_chan_tx_sched() the loop variable 'i' is passed as
-> the *queue* argument _m, not as a channel:
->=20
-> 	for (i =3D 0; i < AIROHA_NUM_TX_RING; i++)   // i =3D 0..31
-> 		airoha_qdma_clear(qdma, REG_QUEUE_CLOSE_CFG(channel),
-> 				  TXQ_DISABLE_CHAN_QUEUE_MASK(channel, i));
->=20
-> Since each channel only has AIROHA_NUM_QOS_QUEUES (8) queues, the correct
-> logic is to clear the 8 queue bits belonging to 'channel'. With i running
-> up to 31 the BIT() shift instead walks past those 8 bits and into the bit
-> ranges of the other channels folded into the same register. For channel 0
-> the accumulated mask becomes 0xffffffff, i.e. it touches channels 1..3 as
-> well.
->=20
-> This is harmless today only because REG_QUEUE_CLOSE_CFG is written
-> exclusively here, via airoha_qdma_clear() (RMW clear), and the register
-> resets to 0 and is never set anywhere -- so clearing extra bits is a
-> no-op. Functionally the current code is fine, as you say.
->=20
-> The point is just the loop-bound semantics: 'i' is a per-channel queue
-> index, so the bound should be AIROHA_NUM_QOS_QUEUES (8), not
-> AIROHA_NUM_TX_RING (32). The two happen to be related (32 =3D=3D 4 channe=
-ls *
-> 8 queues) but mean different things.
->=20
-> Since there is no functional change, feel free to drop this if you would
-> rather not carry a cosmetic patch. If you think the clarity is worth it I
-> can resend against net-next without the Fixes tag.
->=20
-> Thanks,
-> Wayen
->=20
+...
 
-Sorry you are right, I misread the code, your patch is correct. Since as you
-pointed out REG_QUEUE_CLOSE_CFG() is actually never set at the moment and t=
-he
-default register value is 0, I would repost this patch for net-next as soon=
- as
-it is opened (this will avoid merge conflicts).
+> +static int mt6323_auxadc_prepare_channel(struct mt6323_auxadc *auxadc)
+> +{
+> +	struct regmap *map = auxadc->regmap;
+> +	u32 val;
+> +	int ret;
+> +
+> +	ret = regmap_read(map, MT6323_AUXADC_CON19, &val);
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* The ADC is idle. */
+> +	if (!(val & AUXADC_CON19_DECI_GDLY_MASK))
+> +		return 0;
 
-Regards,
-Lorenzo
+> +	ret = regmap_read_poll_timeout(map, MT6323_AUXADC_ADC19, val,
+> +				       !(val & AUXADC_ADC19_BUSY_MASK),
+> +				       10, 500);
 
---VyUTMvxzWiaGc/iq
-Content-Type: application/pgp-signature; name=signature.asc
+Still can be amended.
 
------BEGIN PGP SIGNATURE-----
+	ret = regmap_read_poll_timeout(map, MT6323_AUXADC_ADC19,
+				       val, !(val & AUXADC_ADC19_BUSY_MASK),
+				       10, 500);
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCajJmHwAKCRA6cBh0uS2t
-rFNyAP9PkgQvfxp6CioRi0IbaYkDxw09bkje9eUMjIyNtTw65AEAnUSecAOlA8Ng
-x0S8I6Vr7K3l5fdREJxsd22doNsKKwY=
-=kBNZ
------END PGP SIGNATURE-----
+(no need to resend just for this).
 
---VyUTMvxzWiaGc/iq--
+> +	if (ret)
+> +		return ret;
+> +
+> +	return regmap_clear_bits(map, MT6323_AUXADC_CON19,
+> +				 AUXADC_CON19_DECI_GDLY_MASK);
+> +}
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
+
 
