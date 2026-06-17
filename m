@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F30F6CD98E4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 10:34:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D786CD98E2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 10:35:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XVnNXvHB/XG4bW8ZUQAyPa266uqezYexJnyTVAcxD/4=; b=CpYW8sjcmn6fKveRKEbZgTWTcZ
-	ZQ5hyKKbdLy3srYTW42utXa6nvHJTPoN6AngwOK+Hhx2v9HFAeEe1v2ZP95ZFgxTLe+2fe7RsulzP
-	Vcfy3+ExUHNvOJyLEnrMMRlVEJ36eMatlIWfc9MwLZmGIQzxxzmH5YrgnzgNwnyBR1bG8cGSH6yxn
-	zrrILoY7jG5LEcVy+A/nOgopyrpcOj6UHGe8kqp6+2pYds19UU5xcbbOR4QRSXj6ZV72GpNC33DxV
-	szVExMN6s9a8P2+2SGcZLX0AZyvOpLh/tUCe/QrJO8aHM7hLHscHHuwfQYKNburFjx+0ds3cfxcCx
-	N/tu0+Ig==;
+	bh=U1QeGLnTyUL0/QJF0HVH9R665IeUBRSb9Jie1YUIXrk=; b=raG7csdkzwCEYaPUuU20jqap+D
+	ZjWuTDHpZGtU34RXQmC+1Sr+F8FvdX6Ht/tbrbOCflFitjtLhmgmgHAa1Poh4bkb/9hZhaJLRS2tJ
+	vJxt/GkDkVBwQw0FEqjW88bsNQphDDXpx8VchzyAm0EI+mWWrf+lu7uVGj2AnZw8cJyotekBrO8iY
+	ZPdNeu1ROoqBiw5IyFmyZ/xaBy8DzK/KtYM2Rew28qHJGmhkJ/HOtSJJogzRXnKkZpclxakY3Eatd
+	S+NG7IwDUPIxnHcWxscCO+wdneXuf/9Be8XC0Lvo/05CcaiTciEO5kb20XjphTAgyk8zdYizZAraW
+	c2ygxkng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZnbi-0000000H4qE-0w2K;
-	Wed, 17 Jun 2026 10:34:54 +0000
-Received: from mail-dy1-x132e.google.com ([2607:f8b0:4864:20::132e])
+	id 1wZnbr-0000000H4y9-1Ekg;
+	Wed, 17 Jun 2026 10:35:03 +0000
+Received: from mail-dy1-x1332.google.com ([2607:f8b0:4864:20::1332])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZnbf-0000000H4nV-1YIR
+	id 1wZnbo-0000000H4va-2S7H
 	for linux-mediatek@lists.infradead.org;
-	Wed, 17 Jun 2026 10:34:52 +0000
-Received: by mail-dy1-x132e.google.com with SMTP id 5a478bee46e88-30bcc877b4cso1622996eec.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 17 Jun 2026 03:34:51 -0700 (PDT)
+	Wed, 17 Jun 2026 10:35:01 +0000
+Received: by mail-dy1-x1332.google.com with SMTP id 5a478bee46e88-30bd47b9f0fso480756eec.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 17 Jun 2026 03:35:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781692491; x=1782297291; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1781692500; x=1782297300; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=XVnNXvHB/XG4bW8ZUQAyPa266uqezYexJnyTVAcxD/4=;
-        b=k3L4SzvCE9fv/ZLZ5ZRh6nEdkBtQEFg/bxbvyM7pEb716R2Saos2Kdvxnr7hpVRD9r
-         6zgGUSMDktdmHrumOQg23hAKLwPvPFwWTw4KIiVFjNv32sr8qYNcbZp4hhSGuBNuULiq
-         RR155uuKty+IKkhWZzzDZCVUrT0gpOwQ7lTV9+rhbhxhcbn7na6TkZIuweY2zqtLZupw
-         lpIjU4VNs42A3/NtfAq6WCrpGiLd/FHegbgQ4amCxS33rnGF35ZFZS3NFyXAdckYrJA2
-         jWIsgoAUE0hcknNTESVjM8E7UIH+kjYEv8TaM/KZqMtyPIV45ALpKXP7AoSWeMSDUukE
-         QZrw==
+        bh=U1QeGLnTyUL0/QJF0HVH9R665IeUBRSb9Jie1YUIXrk=;
+        b=Fz0MhC001KZTxfsa4BLPJxcAnyZJ8Q5S83ls+rWpf6KLtWYCq5H20Kw4tBBD5h0P/b
+         6A+OcC+hC7YSRGgiROwhIjTiDSyQIdVNR/KZmeSu0+geE5M2YTvAN2ROi9fMyReb8hjW
+         0LC0d1mrL9Kkohe0uc8R47kwD2SR3G+20+JXqyG8rTduYMDCY+wNH1dBNcrV8/4TxrQP
+         PNs5YB8rWKqxiyOOMHeiy8MoE78UMR0inU8UMagMcOtTY6gupIqMMLQALYnpTWBAzQ0B
+         FuT1jmBkg+gc4KYoY7wDbjTOF+MlbDvBsbRZVHiHQhZyOUfJt/8pHp8Ko1CuuskQnS4G
+         tFbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781692491; x=1782297291;
+        d=1e100.net; s=20251104; t=1781692500; x=1782297300;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=XVnNXvHB/XG4bW8ZUQAyPa266uqezYexJnyTVAcxD/4=;
-        b=E2dIiWlQPHYbFW88qdA/40u4thigIZGu+4wo267+Q43hQOHzBNsk8kgTMO84wcSELs
-         /RN7+Hui9Dr5IrhGBSnbgqSXJ9/MQeqTNoFIQit6YuOgpOgqk+A3hQ02W/UsUsgtpFlS
-         bZdGSraG59OT6yJIOEbAHXS6qCIlUVK5nphjVCvlJo6AJQYN3MoKfAdoFxG9f9Hdi2Lg
-         mOxsgMpf00LfrfMju7wmvLXaiu4+bavc8Cz9kUjRTF57P33U0ec6cLbUCp8HAeP1xOfc
-         b8n00JkJFJZC7NI6ELVAKw+CpPsoU9D/hETNb4SF3cx4sAeUX7yZ3kGQmWsvYLZLdVRy
-         Y27w==
-X-Forwarded-Encrypted: i=1; AFNElJ9Je+UaW0ghHlT673VPybbxcEAZaAyicYKMq2QVYnV8HZHGOfT9cXgg3SCNRGCSMFmXSZDBZ6a3S3V+AJq3XA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz+EYVming7rFRW6mKPOLQpwiDltMdXL53Xvn3pXl+UO4ic8H1M
-	3kaJHDPfXhamkW2/LiNo3dz0pznLGHUjBQimm6X/To88+gXnTEcM/qyP
-X-Gm-Gg: AfdE7cnwInpU8exEdOx3/1lCdXJP4bOa8en/NVV4NpdLgONKh03dfeogOF+y28JwBnJ
-	aIrc0jNkXwSd0a0olRXRCe0ZpfEh+YIP1iiZBglgD6Gd82tb0hz6BWI4Iv69eMJN5DLZjnF0ZX5
-	o0zybWdjlMn1Xo9son5IpI+TXTuJGqLK6vnKyGY8UmiaUfqsozuKYet34NMO/OJpt7dFkAhkBpr
-	gJyX+9DW+gnxPgBdM393StI/iH9qzfeUvxdVUlKp9vt3A3RWCmG4vgpJvEkG7io6DxbSjrNLKn/
-	sQ1Kj3t+NOopBsdj7GkG44UvwyE2Li6bFSrxM7i5I7mG3eUvs84EwyLBj00kJSK+cGj37Zc0fb4
-	bMk44jIPgOwrbHQmLJhfY7pMWoupp6R7r1Yqkx5HgLQ2rvHJXP23sD9NwZsIaMZkA6bv6tET+UT
-	p1dyJN7EdKxSLqhm7B2qIHZeEsg/aIY67CHwk1KNDBIEULtBs=
-X-Received: by 2002:a05:7300:230a:b0:2ed:e15:c926 with SMTP id 5a478bee46e88-30bca0e33bfmr2065004eec.34.1781692490637;
-        Wed, 17 Jun 2026 03:34:50 -0700 (PDT)
+        bh=U1QeGLnTyUL0/QJF0HVH9R665IeUBRSb9Jie1YUIXrk=;
+        b=dQDu/hYlFhlIUnT1X0fEtNIyQJHkQDncgD1953Mjw0XZV/j4iPbe3dMaMd+a/lirlS
+         tujGtqvZ3yzyHb4jX6YgVL2eZK1cvJqjxVpyTpNRujrHdYENyuP203uLSIqWW8ISQXxw
+         iG3O7YNWyPo4MeVyLJDah9tx70AQM9nlYOtVD9tnZE3NsSNWVDGzQj4JfUk6RpKbD5kT
+         hJuEKIxvYlMZRz/V+einT9uffiyAK5SbFOn6c7S2Z1PpOwrOTBuk/orDlCcRB+NZR6/T
+         7G9lFrfLRI0VXlocvv4E9G7uc5WL7objuQudsSk3E9AQJiqqYFs7aqIMI0hje778DcJO
+         +nVA==
+X-Forwarded-Encrypted: i=1; AFNElJ9VseOUdFyVCnXycE1vKu0rFzzTyTOUHqRdIkHdCRA9fv1/yMYrVRlnyJDt1KOQdGpFReeN3kwuWFnl34NAvw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyDTuDWk9lKoNmOmUYepQ4ncK4CT2xrfTY79uJc+gwR4hPDQ0pP
+	NT2LqFjqlJiTFpdGMWzfMHCAB+ZAJx5G9Us0/s9wrrPwQ33uuSmQinUh
+X-Gm-Gg: AfdE7clME2aTZ1damBDotObe+wUZoLZGRjsV9m28NmZQU/+gAOiMSNHlKCt7oJcoJ1g
+	DKISVBqwUe4YZ1vbq4VrvUNBZKQbg+HcWhdyn/ziWw4RS0EGVInl2wzEOplyVR0Jr0NE2/sBUlr
+	nGnJMBK6yHEZ+a9mrizMfSpQS6nN/bOiKOt2nTTSy8VJ4MU5YS68wZ7TdnQh6abna1mHestsaYo
+	r+3NAqZrG7MRfyEzHNzAkRv81ZWGMr3XSdSrczWdWQBMRHQjLoeZmIox9bU9VPzalWUIb0DcNzX
+	F6K1xg4PfdXys25ib6svKx5doFard5AXq5aNFDCkVh4Ion1+jpWkWwywgecTcTf2mWiJPRbWj+D
+	JXDBqnfxo3dDPlMIfcchPI8CDO5ezq8yMybbb+kTC3PiAhx/Z05OTs91oTf4PdKtFAP67hQF+j3
+	P32gBbmSZWO7LlBll4TPoojUKIBjoYGFlbIRU1vNlRn413Woc=
+X-Received: by 2002:a05:7301:7c0e:b0:303:f295:4db2 with SMTP id 5a478bee46e88-30bc91d96d0mr1569188eec.0.1781692499885;
+        Wed, 17 Jun 2026 03:34:59 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3081e5d0828sm24616275eec.10.2026.06.17.03.34.42
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3081e5d0828sm24616275eec.10.2026.06.17.03.34.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 17 Jun 2026 03:34:50 -0700 (PDT)
+        Wed, 17 Jun 2026 03:34:59 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Mark Brown <broonie@kernel.org>
 Cc: Liam Girdwood <lgirdwood@gmail.com>,
@@ -105,17 +105,17 @@ Cc: Liam Girdwood <lgirdwood@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH 12/78] ASoC: codecs: cs-amp-lib: Use guard() for mutex locks
-Date: Wed, 17 Jun 2026 17:31:29 +0700
-Message-ID: <20260617103235.449609-13-phucduc.bui@gmail.com>
+Subject: [PATCH 13/78] ASoC: codecs: cs35l56: Use guard() for mutex locks
+Date: Wed, 17 Jun 2026 17:31:30 +0700
+Message-ID: <20260617103235.449609-14-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260617103235.449609-1-phucduc.bui@gmail.com>
 References: <20260617103235.449609-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260617_033451_415298_0BBA9446 
-X-CRM114-Status: GOOD (  10.00  )
+X-CRM114-CacheID: sfid-20260617_033500_650830_3C21ED12 
+X-CRM114-Status: GOOD (  16.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,30 +137,112 @@ Merely code refactoring, and no behavior change.
 
 Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
- sound/soc/codecs/cs-amp-lib.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+ sound/soc/codecs/cs35l56-shared.c |  6 ++--
+ sound/soc/codecs/cs35l56.c        | 56 +++++++++++++++----------------
+ 2 files changed, 29 insertions(+), 33 deletions(-)
 
-diff --git a/sound/soc/codecs/cs-amp-lib.c b/sound/soc/codecs/cs-amp-lib.c
-index 371e99205b58..36da474f4370 100644
---- a/sound/soc/codecs/cs-amp-lib.c
-+++ b/sound/soc/codecs/cs-amp-lib.c
-@@ -83,10 +83,12 @@ static int cs_amp_write_cal_coeff(struct cs_dsp *dsp,
- 	KUNIT_STATIC_STUB_REDIRECT(cs_amp_write_cal_coeff, dsp, controls, ctl_name, val);
+diff --git a/sound/soc/codecs/cs35l56-shared.c b/sound/soc/codecs/cs35l56-shared.c
+index f14e2eaaa4ee..6cb835a5aaac 100644
+--- a/sound/soc/codecs/cs35l56-shared.c
++++ b/sound/soc/codecs/cs35l56-shared.c
+@@ -645,12 +645,12 @@ irqreturn_t cs35l56_irq(int irq, void *data)
+ 	if (!cs35l56_base->init_done)
+ 		return IRQ_NONE;
  
- 	if (IS_REACHABLE(CONFIG_FW_CS_DSP)) {
--		mutex_lock(&dsp->pwr_lock);
--		cs_ctl = cs_dsp_get_ctl(dsp, ctl_name, controls->mem_region, controls->alg_id);
--		ret = cs_dsp_coeff_write_ctrl(cs_ctl, 0, &beval, sizeof(beval));
--		mutex_unlock(&dsp->pwr_lock);
-+		scoped_guard(mutex, &dsp->pwr_lock) {
-+			cs_ctl = cs_dsp_get_ctl(dsp, ctl_name,
-+						controls->mem_region,
-+						controls->alg_id);
-+			ret = cs_dsp_coeff_write_ctrl(cs_ctl, 0, &beval, sizeof(beval));
-+		}
+-	mutex_lock(&cs35l56_base->irq_lock);
++	guard(mutex)(&cs35l56_base->irq_lock);
  
- 		if (ret < 0) {
- 			dev_err(dsp->dev, "Failed to write to '%s': %d\n", ctl_name, ret);
+ 	rv = pm_runtime_resume_and_get(cs35l56_base->dev);
+ 	if (rv < 0) {
+ 		dev_err(cs35l56_base->dev, "irq: failed to get pm_runtime: %d\n", rv);
+-		goto err_unlock;
++		return ret;
+ 	}
+ 
+ 	regmap_read(cs35l56_base->regmap, CS35L56_IRQ1_STATUS, &val);
+@@ -692,8 +692,6 @@ irqreturn_t cs35l56_irq(int irq, void *data)
+ 
+ err:
+ 	pm_runtime_put(cs35l56_base->dev);
+-err_unlock:
+-	mutex_unlock(&cs35l56_base->irq_lock);
+ 
+ 	return ret;
+ }
+diff --git a/sound/soc/codecs/cs35l56.c b/sound/soc/codecs/cs35l56.c
+index 570a68829ccd..98ebf38c9bb7 100644
+--- a/sound/soc/codecs/cs35l56.c
++++ b/sound/soc/codecs/cs35l56.c
+@@ -848,42 +848,40 @@ static void cs35l56_patch(struct cs35l56_private *cs35l56, bool firmware_missing
+ 	if (ret)
+ 		goto err;
+ 
+-	mutex_lock(&cs35l56->base.irq_lock);
++	scoped_guard(mutex, &cs35l56->base.irq_lock) {
++		reinit_completion(&cs35l56->init_completion);
+ 
+-	reinit_completion(&cs35l56->init_completion);
+-
+-	cs35l56->soft_resetting = true;
+-	cs35l56_system_reset(&cs35l56->base, !!cs35l56->sdw_peripheral);
++		cs35l56->soft_resetting = true;
++		cs35l56_system_reset(&cs35l56->base, !!cs35l56->sdw_peripheral);
+ 
+-	if (cs35l56->sdw_peripheral) {
+-		/*
+-		 * The system-reset causes the CS35L56 to detach from the bus.
+-		 * Wait for the manager to re-enumerate the CS35L56 and
+-		 * cs35l56_init() to run again.
+-		 */
+-		if (!wait_for_completion_timeout(&cs35l56->init_completion,
+-						 msecs_to_jiffies(5000))) {
+-			dev_err(cs35l56->base.dev, "%s: init_completion timed out (SDW)\n",
+-				__func__);
+-			goto err_unlock;
++		if (cs35l56->sdw_peripheral) {
++			/*
++			 * The system-reset causes the CS35L56 to detach from the bus.
++			 * Wait for the manager to re-enumerate the CS35L56 and
++			 * cs35l56_init() to run again.
++			 */
++			if (!wait_for_completion_timeout(&cs35l56->init_completion,
++							 msecs_to_jiffies(5000))) {
++				dev_err(cs35l56->base.dev, "%s: init_completion timed out (SDW)\n",
++					__func__);
++				goto err;
++			}
++		} else if (cs35l56_init(cs35l56)) {
++			goto err;
+ 		}
+-	} else if (cs35l56_init(cs35l56)) {
+-		goto err_unlock;
+-	}
+ 
+-	/* Check if the firmware is still reported missing */
+-	cs35l56_warn_if_firmware_missing(&cs35l56->base);
++		/* Check if the firmware is still reported missing */
++		cs35l56_warn_if_firmware_missing(&cs35l56->base);
+ 
+-	regmap_clear_bits(cs35l56->base.regmap,
+-			  cs35l56->base.fw_reg->prot_sts,
+-			  CS35L56_FIRMWARE_MISSING);
+-	cs35l56->base.fw_patched = true;
++		regmap_clear_bits(cs35l56->base.regmap,
++				  cs35l56->base.fw_reg->prot_sts,
++				  CS35L56_FIRMWARE_MISSING);
++		cs35l56->base.fw_patched = true;
+ 
+-	if (cs35l56_write_cal(cs35l56) == 0)
+-		cs35l56_mbox_send(&cs35l56->base, CS35L56_MBOX_CMD_AUDIO_REINIT);
++		if (cs35l56_write_cal(cs35l56) == 0)
++			cs35l56_mbox_send(&cs35l56->base, CS35L56_MBOX_CMD_AUDIO_REINIT);
++	}
+ 
+-err_unlock:
+-	mutex_unlock(&cs35l56->base.irq_lock);
+ err:
+ 	cs35l56_enable_sdw_interrupts(cs35l56);
+ }
 -- 
 2.43.0
 
