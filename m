@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A796CD98F7
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AE85CD98F8
 	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 09:48:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
@@ -12,46 +12,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hqX2C5wfhzexgQUg/cq3E9vWCHTFhjwN3Mz3gTbuKkw=; b=hkU3jUdtfGsK0zHVAIDSOIal1V
-	U56jMiZ2byLVriKjecCVtJ/DcB+pUaFVHkUVkdc3axSxuJ4R+fD2DwSXUj45mNIjY2b3pmXTmgfp9
-	jiD0q9llh+k5smZkkmHAOnqx6bOrYlWomG8zsEnW/p33oulqY3qND/Z+RNtGDCJ5SY+aWRCtWlEZU
-	Kpq7KxJG/QEmWiI0MUblV2unfUMMsiWMBFxscRny8ButZE0QoeEdM95iXKwA7m28bv0hCtdyZwAsh
-	a8PYsBwITqyp/Fp6LCO5YHbDCnLgIICc+3cGXBKhmXN+MnZS8sK8zp/3JICD5dU6z5Hp3CnPCOtAT
-	GrQoEPmw==;
+	bh=qj+A1L4ghz8M9xtQx7N/iIUl+JSGwHDfpQ+NQQtVxeA=; b=b2tGoQtjv0cVhX0t62Tiv4Hrxx
+	yq/AeVjZgoRU2geZrUKB7mW0c54WbOlEaF3cuJKN1N80XmgO1vnzwSKEyU+4cM3U/CQa2OvdUA8PP
+	Wdn1ryN/Q3roLTDgrB1VG99+F2rqc1/XbBZRtor1ekXez9ae/lPgwpZe6QFSHyqwuVqGRf3cFCy7N
+	kw7Lo9CE0SiKtpy/EKnfuCPrGRV3qSkY+OJFJoi2xeDqBbNsmg4TEx3GDctXiUmiaO5dPeoOs8ww8
+	Bd5RqIFVmdgTfUKVMmSCkfMkzwAXe2jjg4Y5aiRz7K2oNs42l9JagxqNhIesrPIAC0gL71giyhse6
+	3z+26epA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZmtD-0000000GyHH-0Nbd;
+	id 1wZmtD-0000000GyH7-07V5;
 	Wed, 17 Jun 2026 09:48:55 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZmt5-0000000Gy98-1uFG;
+	id 1wZmt5-0000000Gy9B-1tml;
 	Wed, 17 Jun 2026 09:48:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 92D84600BB;
+	by tor.source.kernel.org (Postfix) with ESMTP id B1FDA60145;
 	Wed, 17 Jun 2026 09:48:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 3C4DBC4AF0E;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 53ACEC4AF16;
 	Wed, 17 Jun 2026 09:48:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1781689726;
-	bh=zFvl4Bm+w43Fh1hqZePVVwkkd5clpVJO6s5c2cfPsoo=;
+	bh=sBS5uf4qSGQnXJ31n1W2qIx8sitdGbZZdDoMUF3vkIA=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=n6nu/QTrFbDixJ6t4BSetHEqy7JOgnXWeldUhMDYGBdpQVPTylfgas13vQ8ZVRUGi
-	 j3LujmNE5xJD4FTWDCSSl0Odp1Qk5mWch3EWsCS71UlRlFZxBuvNu7c9KSZsbYus4t
-	 MFJVYJ6obaBIjsnDqZJQadsFXkpZlORTdvQvJggCFAEaVOTt6Tv5lrhpmbk4p2g/pi
-	 vojxIyc/Ep6bG1bseX8PZQia4BCtoWbIi1bs3kYuElD+uKKS1+UwBPbgPF//KQ9t6O
-	 x3t1B1OL0HUMKT+7TQ5pFoQlKSE1t0cBeXn4t2rW3zP6wcWHTF+ZIOtVBDg/wbQwD9
-	 jM2NHXdkDbzbg==
+	b=m+w/yZdMBAWG/7J4tJZIjAeeGWBFsjAVmvCNoru8wkXdqeZuOE6GWy6jm6GAsc2tw
+	 Dg760Gb41R0fwAdRf/kxRv9a0azHQn2YMKP/1iaNmznulGjY3+yvCvNqJiFqgwX7aj
+	 vhc/Tak+vTc17JUDZ+f8R2XgMZqYw/nnNOXso+/QtfsWKIG3N/yolsqp0EpAnTSmr0
+	 RmqOFdl1n4Qr3uMbcPpR2NCw4Q2lBISACowXjqnGqa4Uw9yDg+lx5fTiNJZJ866OWw
+	 Rbv1t9f3qQwwx3JmDnnyVQYR/sHbQjkZXVZYRm1uSfLEV8thhof9AlOk2EJ/vjcpCl
+	 +5B579Y7sH9tA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 24F22CD98F1;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4A172CD98E2;
 	Wed, 17 Jun 2026 09:48:46 +0000 (UTC)
 From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Wed, 17 Jun 2026 12:48:44 +0300
-Subject: [PATCH v2 1/4] dt-bindings: mfd: mediatek: mt6397: add mt6323 PMIC
- EFUSE
+Date: Wed, 17 Jun 2026 12:48:46 +0300
+Subject: [PATCH v2 3/4] mfd: mt6397-core: add mt6323 EFUSE support
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260617-mt6323-nvmem-v2-1-4f30e36aa0f4@protonmail.com>
+Message-Id: <20260617-mt6323-nvmem-v2-3-4f30e36aa0f4@protonmail.com>
 References: <20260617-mt6323-nvmem-v2-0-4f30e36aa0f4@protonmail.com>
 In-Reply-To: <20260617-mt6323-nvmem-v2-0-4f30e36aa0f4@protonmail.com>
 To: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
@@ -65,14 +64,13 @@ To: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
 Cc: Andy Shevchenko <andy@kernel.org>, linux-pm@vger.kernel.org, 
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Ben Grisdale <bengris32@protonmail.ch>, 
- Conor Dooley <conor.dooley@microchip.com>
+ Ben Grisdale <bengris32@protonmail.ch>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1781689724; l=1581;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1781689724; l=899;
  i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=Y+qEH2u8RG69hEOj/2KlmQR+9sv6DjCcWKs/dnalb3U=;
- b=ovxSxVODW40H2iPH+WfzrBUbjzVxRv3qqbqJzqsMFcxS6Ib0+q1bJsCXPjI6nBJBU4GbThIso
- rJyeQWkbEY9Ag5DMC7jnoNC4q4V16jxMlTzQs0cGI2jO4Mt/u6lJG07
+ bh=gfiZtK59vnYwxkS8UM5M3InSXISmr33hxTTt1Z71XQo=;
+ b=JVHzwLJY3dMb4OV0aX5JeTRQE2rdzWpdrk+1T0wA0AQirihI0r5YJL/ThxatlVv+V4OrE3Duk
+ svXFK7GLyvFCVmxqlWbzT2ntZz/M6ToJwln1H/knGGohQzGcYB+3lnP
 X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
  pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
 X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
@@ -95,57 +93,30 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Roman Vivchar <rva333@protonmail.com>
 
-The MediaTek mt6323 PMIC includes an EFUSE used for storing calibration
-data.
+The mt6323 PMIC includes an EFUSE. Register the EFUSE in the mt6323
+devices array to allow the corresponding driver to probe using compatible
+string.
 
-Add the devicetree binding documentation for the MediaTek mt6323 EFUSE.
-
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
 Signed-off-by: Roman Vivchar <rva333@protonmail.com>
 ---
- .../devicetree/bindings/mfd/mediatek,mt6397.yaml    | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
+ drivers/mfd/mt6397-core.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-index 05c121b0cb3d..beaa67bf0df2 100644
---- a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-+++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-@@ -145,6 +145,23 @@ properties:
-     required:
-       - compatible
+diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
+index 3e58d0764c7e..362737a1c4a9 100644
+--- a/drivers/mfd/mt6397-core.c
++++ b/drivers/mfd/mt6397-core.c
+@@ -125,6 +125,9 @@ static const struct resource mt6323_pwrc_resources[] = {
  
-+  efuse:
-+    type: object
-+    unevaluatedProperties: false
-+    description:
-+      The efuse is responsible for storing calibration data, such as thermal
-+      sensor calibration.
-+
-+    properties:
-+      compatible:
-+        const: mediatek,mt6323-efuse
-+
-+      nvmem-layout:
-+        $ref: /schemas/nvmem/layouts/nvmem-layout.yaml#
-+
-+    required:
-+      - compatible
-+
-   leds:
-     type: object
-     additionalProperties: false
-@@ -243,6 +260,10 @@ examples:
-         interrupt-controller;
-         #interrupt-cells = <2>;
- 
-+        efuse {
-+          compatible = "mediatek,mt6323-efuse";
-+        };
-+
-         leds {
-             compatible = "mediatek,mt6323-led";
-             #address-cells = <1>;
+ static const struct mfd_cell mt6323_devs[] = {
+ 	{
++		.name = "mt6323-efuse",
++		.of_compatible = "mediatek,mt6323-efuse",
++	}, {
+ 		.name = "mt6323-rtc",
+ 		.num_resources = ARRAY_SIZE(mt6323_rtc_resources),
+ 		.resources = mt6323_rtc_resources,
 
 -- 
 2.54.0
