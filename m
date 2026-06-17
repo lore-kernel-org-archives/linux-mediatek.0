@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B62D6CD98E4
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF79ECD98E2
 	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 13:37:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
@@ -12,45 +12,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xdQPDneGdKTMoT9f4apTFLTqjjNKA6+8L680sHXZdWM=; b=P0Saus8N4I9/Vl6J/K6f3eix3H
-	LePAYTyBz8GG7UdTKogGAZJ48w5zlOLGFjisUSR+GEB8DX3vsZXfrIQJac5CiOIOSiDxUbW94tad0
-	XD/0KTRDkucXFwGM1tDpWMKtP31nOwKh2nqflQtPf/KuTvGQyPafcBQjvP4zBX/Dh5hO9bZJQIqx5
-	5ehurQkyd/CtFdIIcb8JoNdou/FKZAZwmYjxY/v1DvFJzZqs/v8PsAvTCFZi6gDgNi6QH0vMWzeqp
-	TtNH3MXtyIQSmOol1WjzSpHqM6c9H2x3QFiE1RkX9xY8zjCT4k8vOE2CmSIBSkKTAtIMD1TmYyWuN
-	C4po0/Iw==;
+	bh=e0TGR1WogFTAuvl3b2JxHVLD9uWuc1cSp63ywOzxVjw=; b=eSSZ8RvsCX9QEaHVwb9+v8Fwzz
+	bxl9AcT/fMuy+UjvGJImYP1Vm7UFyMKH4Vm7W1I74fC8MxMQvML+tXDk2sc427sluNsKBw9i7j8f3
+	nquI9WorqppBg6DXaQSssgQZw6WRdg5EStKo5dg/XNePeFvWOWJ7drtkxe+OhksIwgPSGg7QdeiIK
+	ShUOTbb7KtjyZ9oEmcSAB5iCrrsp0GuKNi2SEvyobYEX/QWez7Cv41wdhAtzjnNRv9C4mXXfD0B7a
+	NBVUD+zkCb87+ygDGNpWvH+ahbN5Nun3VbI93WkAokty/1YR+rsEj+TTAQLBWvSoGxvncpolNNBif
+	5LKYIXzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZqSH-0000000HQMO-2z0G;
+	id 1wZqSH-0000000HQMW-3Lm4;
 	Wed, 17 Jun 2026 13:37:21 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZqSG-0000000HQLA-1DfU;
+	id 1wZqSG-0000000HQLD-1NJB;
 	Wed, 17 Jun 2026 13:37:20 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B1A6D43C39;
+	by sea.source.kernel.org (Postfix) with ESMTP id C0499445A4;
 	Wed, 17 Jun 2026 13:37:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 8EB6FC4AF12;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id A028EC4AF15;
 	Wed, 17 Jun 2026 13:37:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1781703439;
-	bh=umvI+70hpxIMaicZcD/7zdWxlqyDkpayKxVnDbtpxNg=;
+	bh=Y0cWCT4yjqLtXogLm+JZvDjfNTCrMoqhAiZrJULbINw=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=Q16UO7GHQJAWkOoc/eq9PrRoZZK331hARqnE828vbXiGM5WbJIfZRBgahHjGcOcVJ
-	 mvxdV+t6CO6jYChs2CXYdRBRuretH6XJ+4L4pUdS1yCr6e1uZJyDdUlAFyUEANV/UJ
-	 aNK1uOnlcRQUB/mr+i2vwhoUBSgPRAHohy4IbvIJ4RtDq+batDZ15tzinYfhaady1f
-	 EHHNBCdoYdXWzj8UPX/mw1nfCnW3x+ftvnYu7fs07Q/ctx+NIulUbv+NVDKpCTkB7B
-	 nTUbxdoRYz5+fmG0qwknvHJPrRT1WZuPCRzX1dIYk3kZPzggXw6/fNgKjVBwl4MlmN
-	 BrPePiXNIRHyA==
+	b=QNQOboHv9ApLrlQupKPM6W4k0uezyUeEnvWzkg4tZANPaDkiCvTz1CATtwSBdu3ik
+	 kuGyLKU9TDsWsYxE/3NeEYkTtBEko4Li82D4aixkl0H9+32PktiMIc3aK3W+SMm5U3
+	 +oZFlgY28oQJKpmYniOXd7NlUN4v5/PBAb3xHmUVdDcsTn7WJm2AlNJSmxyqhauazo
+	 M0aVg+3M36TkcXSjFrmDJMjTaOicblfPB9yoFBAF3Jp1OQPZGpd46nXduKCImBavZt
+	 dMxlf8IM3Jz3WbxJGEtF8d0tE1W54DcHUhV+Lw/hkiy+tCAs/Re8abnXiha70BP4nQ
+	 4HQhELiXReDXQ==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8582BCD98F5;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 946AECD98F2;
 	Wed, 17 Jun 2026 13:37:19 +0000 (UTC)
 From: Zakariya Hadrami via B4 Relay <devnull+zkh1.proton.me@kernel.org>
-Date: Wed, 17 Jun 2026 22:37:00 +0900
-Subject: [PATCH v2 2/5] dt-bindings: arm: mediatek: Add MT8127 Amazon ford
+Date: Wed, 17 Jun 2026 22:37:01 +0900
+Subject: [PATCH v2 3/5] ARM: dts: mediatek: mt8127: Fix indentation error
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260617-mt8127-amazon-ford-basic-v2-2-6859e29e72a8@proton.me>
+Message-Id: <20260617-mt8127-amazon-ford-basic-v2-3-6859e29e72a8@proton.me>
 References: <20260617-mt8127-amazon-ford-basic-v2-0-6859e29e72a8@proton.me>
 In-Reply-To: <20260617-mt8127-amazon-ford-basic-v2-0-6859e29e72a8@proton.me>
 To: Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -63,11 +63,11 @@ Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
  linux-watchdog@vger.kernel.org, Zakariya Hadrami <zkh1@proton.me>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1781703437; l=730;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1781703437; l=646;
  i=zkh1@proton.me; s=20260616; h=from:subject:message-id;
- bh=F0En+aj1DoicBnO2Y2v3/IgUJjasWlhR82V0YCbt4Z8=;
- b=7y+V8Ng8ConVZgG/28DWOLAGcNbwj+zlE3ubciYltugfPenaVzAQb94HKvrSzA5HMH/YeQmCB
- 5RaPhlKg5JyBBFpJHVQT3YGK43xQX7um1Oh5XrNKiysWyL7jvmeGDdF
+ bh=0uKY942SYdvjWSBpaLmMsTG1mV/4mbR327xAEav7Pe4=;
+ b=hczPIBOrOps8IUGtgnPWx/iCDDqqPQE+srrW4PmFCIEjvSIKKlO+EckSCAY/VlThZEkTihr0m
+ CWLwSLKo7CsA7neVAu7Wm13hiIgYiE1YGXp5onOoN/xIpMFKZhKSbjm
 X-Developer-Key: i=zkh1@proton.me; a=ed25519;
  pk=9DiJwhINAERP95fbFofXSP77GEnvfO/rMIRRRFDhaoc=
 X-Endpoint-Received: by B4 Relay for zkh1@proton.me/20260616 with
@@ -90,25 +90,26 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Zakariya Hadrami <zkh1@proton.me>
 
-Add entry for the MT8127 based Amazon ford tablet.
+Fix an indentation error caused by a space at the start of a line.
 
 Signed-off-by: Zakariya Hadrami <zkh1@proton.me>
 ---
- Documentation/devicetree/bindings/arm/mediatek.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm/boot/dts/mediatek/mt8127.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-index 382d0eb4d0af..853f5e8cd158 100644
---- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-@@ -122,6 +122,7 @@ properties:
-           - const: mediatek,mt7988a
-       - items:
-           - enum:
-+              - amazon,ford
-               - mediatek,mt8127-moose
-           - const: mediatek,mt8127
-       - items:
+diff --git a/arch/arm/boot/dts/mediatek/mt8127.dtsi b/arch/arm/boot/dts/mediatek/mt8127.dtsi
+index aced173c2a52..bd61ec7e70c0 100644
+--- a/arch/arm/boot/dts/mediatek/mt8127.dtsi
++++ b/arch/arm/boot/dts/mediatek/mt8127.dtsi
+@@ -75,7 +75,7 @@ uart_clk: dummy26m {
+ 			compatible = "fixed-clock";
+ 			clock-frequency = <26000000>;
+ 			#clock-cells = <0>;
+-                };
++		};
+ 	};
+ 
+ 	timer {
 
 -- 
 2.54.0
