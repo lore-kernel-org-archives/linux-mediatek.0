@@ -4,74 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB69BCD98E4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 10:16:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4123DCD98E2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 10:33:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OePkATTgFfdiavKlzrrIFI0972DzwQxlO0AHh6bZkDk=; b=BRTlt14Ysi/j83El36j7tZJKUv
-	LYHtYn3IxSAci21PMCvNzUPHbYKVkYqU1LV7LxCIQfG5OH8cQ7Yt/R0Ci2UJgZY080TWZOQ/D1BqV
-	F0s2faV8aUBi5a1eLzIexN8bHz0qkUpW6wt15k2Qhib5YkPa7ITJPiDs1hTb62dpn7V+TSOh0rsgh
-	q+qdhBH3lznOvDWthwCzTCcWgo7gBmcHd81TOc1CC0FMIcTUiOXlH/lkDSHP2EwnN4sS2dZbfvkNn
-	Uj00iyLpYUNLwdcZ4fFHZmWzBJSoZWu3fIRpNM4di+FOqvnRenBnZDLZnz2PNe/jX6ZxJ+h1kVQwv
-	lie45PrA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=9wU4tKY2KGJdHyXYk6dnV63C3KexEicox33mI2r9NjI=; b=unqBg5SYMQEMfhOe5sIO2jAFnD
+	9cuctIA/DQnBscFixKDWL1uEgPrJNaiftLGdix2tUxz/H0F5OKW6+Eak6vmcyouJId2Tg6qX4H0St
+	I4tl4GgPpOUnyEzGPBjPM0yj3eeAcoaT3JmiWzNwAMM76PMc6L+zX7qQgSabFRympEHZqhmXQmwwC
+	AadE5eax50qVrVcF9qgHV+rMvdijvYn3W7np7rPNtWHh/ce7RWwt2oiNU+4sQ3kJVb7Yqio4mJJnZ
+	ujoo7H7vBP1QmAUmBbG4HLfZ6Zh1JqC6vGC6Ap3Wu5aX/53Vyib0r65A/n0oUcyvWx2rVI3i85Smc
+	wN+gDcZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZnJW-0000000H2EC-3lsR;
-	Wed, 17 Jun 2026 10:16:06 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wZnZu-0000000H3Z8-0w6V;
+	Wed, 17 Jun 2026 10:33:02 +0000
+Received: from mail-dy1-x132a.google.com ([2607:f8b0:4864:20::132a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZnJV-0000000H2Dj-2FnO;
-	Wed, 17 Jun 2026 10:16:05 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 028EF60128;
-	Wed, 17 Jun 2026 10:16:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3BCD01F00A3A;
-	Wed, 17 Jun 2026 10:16:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781691364;
-	bh=OePkATTgFfdiavKlzrrIFI0972DzwQxlO0AHh6bZkDk=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=nujJAwAEG47Wa7/1vWZKhyqKhP+wKE6wRovSL6crs2RpfRKXwzpUjjPXWXypCKZC2
-	 CLb8ELRmBuiA/h8WUvbNeTnJZ6MsN36KaHpQ4aa8CYkWhxTBb2mCnkKEz/IEsVMDd0
-	 /x5ZC9SiCtFqy8kWoCr1c+97DIuNeAP/8RBccOLyzaaHjoOdN3VJKvvjQ7nbOIdOfw
-	 t2vDFsrXQ5skleoa+ttEg8ONzqpO0nk4O5YFdTIciUaqkP4d4FN5eVXQ8Y+SYPUan3
-	 D0v6UYTZkwe67CULgi04h3KrTCXxsq4gT7NNkrMORPx13HdNkoBBY+W4Vcd7C4nyQx
-	 1bvNAyCAlgUlA==
-From: Maxime Ripard <mripard@kernel.org>
-Date: Wed, 17 Jun 2026 12:14:53 +0200
-Subject: [PATCH 28/37] drm/mediatek: dpi: Switch to atomic bridge callbacks
+	id 1wZnZr-0000000H3YP-2nWi
+	for linux-mediatek@lists.infradead.org;
+	Wed, 17 Jun 2026 10:33:00 +0000
+Received: by mail-dy1-x132a.google.com with SMTP id 5a478bee46e88-3042a388168so428886eec.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 17 Jun 2026 03:32:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1781692379; x=1782297179; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=9wU4tKY2KGJdHyXYk6dnV63C3KexEicox33mI2r9NjI=;
+        b=NJe9juntbiclt7OcpvF9UiVS2tY2JQDluL1m3aSqgN33A3zmZewiZrXIYOEJMCNPgu
+         5ESHocZcREjfvWFVCxL7S+HJsRklBxvmyPOjRPfYupiULA/Htc1s3Kr4u6AGIKFPX6/B
+         xKlUe03CnYYurROrrFTZ5wm7duUIF0EI933yTin5HpC/25IhlC+orqBbURPCF0MyLnn9
+         aT+bdy28azQiYgRw/cm5pLW9OzMgF0HXGVyrx5RFslCMPt+FmSuDIi8QhPeu6pDvcd/J
+         RbOrPXUlhh64x4WuRm/pWzBtx9HuTSPzZw6c3TsH35o/d+SrKdKVNeyDxR1PN4ihPg6g
+         MYRQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1781692379; x=1782297179;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=9wU4tKY2KGJdHyXYk6dnV63C3KexEicox33mI2r9NjI=;
+        b=IjXU61t2mZjrCozgKHmx+gCKYv4EjBn5uhJjLq4TofoUpdpWvpBrgaJJrpkHzNArxp
+         NrFzIhp0KDlV0ljH7wLVR60u1MC+A+Rz0EnrgRdXta30UBHz3NtG6ztS/08nYrN65G45
+         mGIxWpSFwuTTmLVJ+lq0cc/PFTplH/ZRfpUeRNwC3jL61le8A3YJ9ZslNSyE/5wKSjwQ
+         5dJeEqicTvwsle6bnOQpW6wfJvwxArW0Z/7dGsbpXX4AwASQqw/HPmYyc50TDaNSYwco
+         y0r5sc7n2xOkqK+EnMO8iuTECO+L1cqDNPb3fY0K91LkovPx0VcWv1haEuJd/aaUlHut
+         ScQg==
+X-Forwarded-Encrypted: i=1; AFNElJ8wIBq3Zumj+ZctdS0AFFAgfKKcagDiZs3ljd+Stpv5E4b2klm0Tv0b1IZtNw78NkaDWv0G3uNXjFvZ23ujlA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxyjpQhfZBtN8/ddR4griXHv1lghEN10zZp0QMTf8AQ59Ys1325
+	g6iNaFHPt8QMf3pe5g68gOaTzeL+4X6/PjJibScBrjE1FdNdUlJvT7SM
+X-Gm-Gg: AfdE7cngpD0vqVHNeC/Eu4lMRvgoehC2vB/IHXyM+E5WyvpWZ9E6wcyOHevvh4nH6rN
+	BDdJL/Lp6FulPn+Qb9znQBsRaG9VK3fzNeXKjJnaQiszDLE/9hKO4wmo/au4WIiivS7X4v26veh
+	BrGF+BFVMfoehNB3Wjq63Ack//Lv3dgW1TeqjG3A75PyhhysW6qRRLHvtYLGMWCNsjVLyUjI5t9
+	Pfc4B8R76RyyYi97yhsmOrBw+ShK6ZN4hxcU2qhVTJrSi6tmiQX6M5aEWxMz9hUBSkeaCPOS9zi
+	Dm66r9G/KVJzlD6dSWpU/skw3ixi1uFL+MBykc+//Qykdnx7bXqTE3hHPbDwHnhuqBNi8Evw35p
+	DpbtQ6GbOz0x/hwLbXGJ8kXeJwfv1HwHuKztJHiPYrsso/ghfjT4TZVt8r1a4WcPcyNvMt29LIQ
+	E+JtuP/65+XcW1Cd4K1bxxUmweaCZJQQcfVyhs/7V6JeP01lA=
+X-Received: by 2002:a05:7301:6402:b0:30b:d209:dc18 with SMTP id 5a478bee46e88-30bd209ff68mr687132eec.10.1781692378517;
+        Wed, 17 Jun 2026 03:32:58 -0700 (PDT)
+Received: from phuc-desktop.. ([183.91.15.56])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3081e5d0828sm24616275eec.10.2026.06.17.03.32.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 17 Jun 2026 03:32:58 -0700 (PDT)
+From: phucduc.bui@gmail.com
+To: Mark Brown <broonie@kernel.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Cheng-Yi Chiang <cychiang@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>,
+	Guenter Roeck <groeck@chromium.org>,
+	Benson Leung <bleung@chromium.org>,
+	David Rhodes <david.rhodes@cirrus.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	povik+lin@cutebit.org,
+	Charles Keepax <ckeepax@opensource.cirrus.com>,
+	Support Opensource <support.opensource@diasemi.com>,
+	Nick Li <nick.li@foursemi.com>,
+	Herve Codina <herve.codina@bootlin.com>,
+	Srinivas Kandagatla <srini@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Shenghao Ding <shenghao-ding@ti.com>,
+	Kevin Lu <kevin-lu@ti.com>,
+	Baojun Xu <baojun.xu@ti.com>,
+	Sen Wang <sen@ti.com>,
+	Oder Chiou <oder_chiou@realtek.com>,
+	Lars-Peter Clausen <lars@metafoo.de>,
+	nuno.sa@analog.com,
+	Steven Eckhoff <steven.eckhoff.opensource@gmail.com>,
+	patches@opensource.cirrus.com,
+	chrome-platform@lists.linux.dev,
+	asahi@lists.linux.dev,
+	linux-arm-msm@vger.kernel.org,
+	linux-sound@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	bui duc phuc <phucduc.bui@gmail.com>
+Subject: [PATCH 00/78] ASoC: codecs: Use guard() for mutex & spin locks
+Date: Wed, 17 Jun 2026 17:31:17 +0700
+Message-ID: <20260617103235.449609-1-phucduc.bui@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260617-drm-all-atomic-bridges-v1-28-b63e6316166b@kernel.org>
-References: <20260617-drm-all-atomic-bridges-v1-0-b63e6316166b@kernel.org>
-In-Reply-To: <20260617-drm-all-atomic-bridges-v1-0-b63e6316166b@kernel.org>
-To: Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>
-Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>, dri-devel@lists.freedesktop.org, 
- Maxime Ripard <mripard@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4874; i=mripard@kernel.org;
- h=from:subject:message-id; bh=50nNV2gOk3Dn5TP3UVQWya6pySg8qWx6qlSUclanS5Y=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDFlGxZM+cOlytdS2nGy/HGOSKXmnru5q68HLly5c/Mv+s
- U/c0mZtx1QWBmFOBlkxRZYnMmGnl7cvrnKwX/kDZg4rE8gQBi5OAZjIdD3G+qDlByuiJFZ3r/Nb
- r+h6sDzlP2ev74JN//fca1iaeVbL5nmey49pJ9ZczT2Zyfds8vWqp4wN8w9ObLrVN/3wTKXaFDY
- /bcnYZ4/zK05cq1sY37/uNtf6gma3nk3N8g5Su/pOlPk2R18DAA==
-X-Developer-Key: i=mripard@kernel.org; a=openpgp;
- fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260617_033259_736822_77ACE916 
+X-CRM114-Status: GOOD (  10.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,195 +127,196 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mediatek mtk_dpi bridge still uses the deprecated non-atomic bridge
-callbacks.
+From: bui duc phuc <phucduc.bui@gmail.com>
 
-Switch to their atomic counterparts.
+Hi all,
 
-Generated by the following Coccinelle script:
+This series converts mutex and spinlock handling in the ASoC codec
+drivers to use guard() and scoped_guard() helpers.
+The changes are purely refactoring and should have no functional
+impact.
 
-@ is_bridge @
-identifier funcs;
-@@
+Compile tested only.
 
- struct drm_bridge_funcs funcs = {
-	...,
- };
+Best regards,
+Phuc
 
-@ has_create_state depends on is_bridge @
-identifier funcs, f;
-@@
+bui duc phuc (78):
+  ASoC: codecs: ab8500: Use guard() for mutex locks
+  ASoC: codecs: ak4613: Use guard() for mutex locks
+  ASoC: codecs: arizona-jack: Use guard() for mutex locks
+  ASoC: codecs: arizona: Use guard() for mutex locks
+  ASoC: codecs: aw87390: Use guard() for mutex locks
+  ASoC: codecs: aw88081: Use guard() for mutex locks
+  ASoC: codecs: aw88166: Use guard() for mutex locks
+  ASoC: codecs: aw88261: Use guard() for mutex locks
+  ASoC: codecs: aw88395: Use guard() for mutex locks
+  ASoC: codecs: aw88399: Use guard() for mutex locks
+  ASoC: codecs: cros_ec_codec: Use guard() for mutex locks
+  ASoC: codecs: cs-amp-lib: Use guard() for mutex locks
+  ASoC: codecs: cs35l56: Use guard() for mutex locks
+  ASoC: codecs: cs42l42: Use guard() for mutex locks
+  ASoC: codecs: cs42l43: Use guard() for mutex locks
+  ASoC: codecs: cs42l84: Use guard() for mutex locks
+  ASoC: codecs: cs43130: Use guard() for mutex locks
+  ASoC: codecs: cs47l15: Use guard() for mutex locks
+  ASoC: codecs: cs47l35: Use guard() for mutex locks
+  ASoC: codecs: cs47l85: Use guard() for mutex locks
+  ASoC: codecs: cs47l90: Use guard() for mutex locks
+  ASoC: codecs: cs47l92: Use guard() for mutex locks
+  ASoC: codecs: cs48l32: Use guard() for mutex locks
+  ASoC: codecs: cs2072x: Use guard() for mutex locks
+  ASoC: codecs: da7213: Use guard() for mutex locks
+  ASoC: codecs: da7219: Use guard() for mutex locks
+  ASoC: codecs: es8316: Use guard() for mutex locks
+  ASoC: codecs: es8326: Use guard() for mutex locks
+  ASoC: codecs: es9356: Use guard() for mutex locks
+  ASoC: codecs: fs210x: Use guard() for mutex locks
+  ASoC: codecs: hdac_hdmi: Use guard() for mutex locks
+  ASoC: codecs: hdmi-codec: Use guard() for mutex locks
+  ASoC: codecs: idt821034: Use guard() for mutex locks
+  ASoC: codecs: lpass-macro: Use guard() for mutex locks
+  ASoC: codecs: madera: Use guard() for mutex locks
+  ASoC: codecs: max98095: Use guard() for mutex locks
+  ASoC: codecs: mt6359-accdet: Use guard() for mutex locks
+  ASoC: codecs: pcm512x: Use guard() for mutex locks
+  ASoC: codecs: pcm6240: Use guard() for mutex locks
+  ASoC: codecs: peb2466: Use guard() for mutex locks
+  ASoC: codecs: rt5514-spi: Use guard() for mutex locks
+  ASoC: codecs: rt5645: Use guard() for mutex locks
+  ASoC: codecs: rt5665: Use guard() for mutex locks
+  ASoC: codecs: rt5668: Use guard() for mutex locks
+  ASoC: codecs: rt5677: Use guard() for mutex locks
+  ASoC: codecs: rt5682: Use guard() for mutex locks
+  ASoC: codecs: rt700: Use guard() for mutex locks
+  ASoC: codecs: rt711: Use guard() for mutex locks
+  ASoC: codecs: rt712: Use guard() for mutex locks
+  ASoC: codecs: rt721: Use guard() for mutex locks
+  ASoC: codecs: rt722: Use guard() for mutex locks
+  ASoC: codecs: sigmadsp: Use guard() for mutex locks
+  ASoC: codecs: sta350: Use guard() for mutex locks
+  ASoC: codecs: sta32x: Use guard() for mutex locks
+  ASoC: codecs: tas2781: Use guard() for mutex locks
+  ASoC: codecs: tas2783: Use guard() for mutex locks
+  ASoC: codecs: tas5805m: Use guard() for mutex locks
+  ASoC: codecs: tas675x: Use guard() for mutex locks
+  ASoC: codecs: tlv320dac33: Use guard() for mutex & spin locks
+  ASoC: codecs: tscs42xx: Use guard() for mutex locks
+  ASoC: codecs: tscs454: Use guard() for mutex locks
+  ASoC: codecs: twl6040: Use guard() for mutex locks
+  ASoC: codecs: wcd-mbhc: Use guard() for mutex locks
+  ASoC: codecs: wcd934x: Use guard() for mutex locks
+  ASoC: codecs: wcd937x: Use guard() for mutex locks
+  ASoC: codecs: wcd938x: Use guard() for mutex locks
+  ASoC: codecs: wcd939x: Use guard() for mutex locks
+  ASoC: codecs: wm0010: Use guard() for mutex & spin locks
+  ASoC: codecs: wm2000: Use guard() for mutex locks
+  ASoC: codecs: wm5102: Use guard() for mutex locks
+  ASoC: codecs: wm8731: Use guard() for mutex locks
+  ASoC: codecs: wm8903: Use guard() for mutex locks
+  ASoC: codecs: wm8958: Use guard() for mutex locks
+  ASoC: codecs: wm8962: Use guard() for mutex locks
+  ASoC: codecs: wm8994: Use guard() for mutex locks
+  ASoC: codecs: wm971x: Use guard() for mutex locks
+  ASoC: codecs: wm_adsp: Use guard() for mutex locks
+  ASoC: codecs: wsa88xx: Use guard() for mutex locks
 
-struct drm_bridge_funcs funcs = {
-  ...,
-  .atomic_create_state = f,
-  ...,
-};
-
-@ update_struct depends on (is_bridge && !has_create_state) @
-identifier is_bridge.funcs;
-identifier f;
-@@
-
- struct drm_bridge_funcs funcs = {
-+	.atomic_create_state = drm_atomic_helper_bridge_create_state,
-+	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
-+	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
- 	...,
- };
-
-@ update_pre_enable_struct depends on is_bridge @
-identifier is_bridge.funcs;
-identifier f;
-@@
-
- struct drm_bridge_funcs funcs = {
- 	...,
--	.pre_enable = f,
-+	.atomic_pre_enable = f,
- 	...,
- };
-
-@ update_pre_enable_impl depends on update_pre_enable_struct @
-identifier update_pre_enable_struct.f;
-identifier b;
-@@
-
--void f(struct drm_bridge *b)
-+void f(struct drm_bridge *b, struct drm_atomic_commit *commit)
- {
-	...
- }
-
-@ update_enable_struct depends on is_bridge @
-identifier is_bridge.funcs;
-identifier f;
-@@
-
- struct drm_bridge_funcs funcs = {
- 	...,
--	.enable = f,
-+	.atomic_enable = f,
- 	...,
- };
-
-@ update_enable_impl depends on update_enable_struct @
-identifier update_enable_struct.f;
-identifier b;
-@@
-
--void f(struct drm_bridge *b)
-+void f(struct drm_bridge *b, struct drm_atomic_commit *commit)
- {
-	...
- }
-
-@ update_disable_struct depends on is_bridge @
-identifier is_bridge.funcs;
-identifier f;
-@@
-
- struct drm_bridge_funcs funcs = {
- 	...,
--	.disable = f,
-+	.atomic_disable = f,
- 	...,
- };
-
-@ update_disable_impl depends on update_disable_struct @
-identifier update_disable_struct.f;
-identifier b;
-@@
-
--void f(struct drm_bridge *b)
-+void f(struct drm_bridge *b, struct drm_atomic_commit *commit)
- {
-	...
- }
-
-@ update_post_disable_struct depends on is_bridge @
-identifier is_bridge.funcs;
-identifier f;
-@@
-
- struct drm_bridge_funcs funcs = {
- 	...,
--	.post_disable = f,
-+	.atomic_post_disable = f,
- 	...,
- };
-
-@ update_post_disable_impl depends on update_post_disable_struct @
-identifier update_post_disable_struct.f;
-identifier b;
-@@
-
--void f(struct drm_bridge *b)
-+void f(struct drm_bridge *b, struct drm_atomic_commit *commit)
- {
-	...
- }
-
-Signed-off-by: Maxime Ripard <mripard@kernel.org>
-
----
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: Philipp Zabel <p.zabel@pengutronix.de>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-mediatek@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org
----
- drivers/gpu/drm/mediatek/mtk_dpi.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 959c994eef24..0e4f430de983 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -848,21 +848,23 @@ static void mtk_dpi_bridge_mode_set(struct drm_bridge *bridge,
- 	struct mtk_dpi *dpi = bridge_to_dpi(bridge);
- 
- 	drm_mode_copy(&dpi->mode, adjusted_mode);
- }
- 
--static void mtk_dpi_bridge_disable(struct drm_bridge *bridge)
-+static void mtk_dpi_bridge_disable(struct drm_bridge *bridge,
-+				   struct drm_atomic_commit *commit)
- {
- 	struct mtk_dpi *dpi = bridge_to_dpi(bridge);
- 
- 	mtk_dpi_power_off(dpi);
- 
- 	if (dpi->pinctrl && dpi->pins_gpio)
- 		pinctrl_select_state(dpi->pinctrl, dpi->pins_gpio);
- }
- 
--static void mtk_dpi_bridge_enable(struct drm_bridge *bridge)
-+static void mtk_dpi_bridge_enable(struct drm_bridge *bridge,
-+				  struct drm_atomic_commit *commit)
- {
- 	struct mtk_dpi *dpi = bridge_to_dpi(bridge);
- 
- 	if (dpi->pinctrl && dpi->pins_dpi)
- 		pinctrl_select_state(dpi->pinctrl, dpi->pins_dpi);
-@@ -980,12 +982,12 @@ static void mtk_dpi_debugfs_init(struct drm_bridge *bridge, struct dentry *root)
- 
- static const struct drm_bridge_funcs mtk_dpi_bridge_funcs = {
- 	.attach = mtk_dpi_bridge_attach,
- 	.mode_set = mtk_dpi_bridge_mode_set,
- 	.mode_valid = mtk_dpi_bridge_mode_valid,
--	.disable = mtk_dpi_bridge_disable,
--	.enable = mtk_dpi_bridge_enable,
-+	.atomic_disable = mtk_dpi_bridge_disable,
-+	.atomic_enable = mtk_dpi_bridge_enable,
- 	.atomic_check = mtk_dpi_bridge_atomic_check,
- 	.atomic_get_output_bus_fmts = mtk_dpi_bridge_atomic_get_output_bus_fmts,
- 	.atomic_get_input_bus_fmts = mtk_dpi_bridge_atomic_get_input_bus_fmts,
- 	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
- 	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
+ sound/soc/codecs/ab8500-codec.c           |  11 +-
+ sound/soc/codecs/ak4613.c                 |  72 ++++---
+ sound/soc/codecs/arizona-jack.c           | 194 +++++++++----------
+ sound/soc/codecs/arizona.c                |  25 +--
+ sound/soc/codecs/aw87390.c                |   9 +-
+ sound/soc/codecs/aw88081.c                |  17 +-
+ sound/soc/codecs/aw88166.c                |  23 +--
+ sound/soc/codecs/aw88261.c                |  20 +-
+ sound/soc/codecs/aw88395/aw88395.c        |  23 +--
+ sound/soc/codecs/aw88395/aw88395_device.c |  39 ++--
+ sound/soc/codecs/aw88399.c                |  14 +-
+ sound/soc/codecs/cros_ec_codec.c          |  17 +-
+ sound/soc/codecs/cs-amp-lib.c             |  10 +-
+ sound/soc/codecs/cs35l56-shared.c         |   6 +-
+ sound/soc/codecs/cs35l56.c                |  56 +++---
+ sound/soc/codecs/cs42l42.c                | 222 +++++++++++-----------
+ sound/soc/codecs/cs42l43-jack.c           |  57 +++---
+ sound/soc/codecs/cs42l43.c                |  16 +-
+ sound/soc/codecs/cs42l84.c                |   9 +-
+ sound/soc/codecs/cs43130.c                |  96 +++++-----
+ sound/soc/codecs/cs47l15.c                |  10 +-
+ sound/soc/codecs/cs47l35.c                |  10 +-
+ sound/soc/codecs/cs47l85.c                |  10 +-
+ sound/soc/codecs/cs47l90.c                |  10 +-
+ sound/soc/codecs/cs47l92.c                |  10 +-
+ sound/soc/codecs/cs48l32.c                |  28 ++-
+ sound/soc/codecs/cx2072x.c                |   4 +-
+ sound/soc/codecs/da7213.c                 |  36 ++--
+ sound/soc/codecs/da7219.c                 |  59 ++----
+ sound/soc/codecs/es8316.c                 |  30 ++-
+ sound/soc/codecs/es8326.c                 |  29 ++-
+ sound/soc/codecs/es9356.c                 |  29 ++-
+ sound/soc/codecs/fs210x.c                 |  86 +++------
+ sound/soc/codecs/hdac_hdmi.c              | 116 ++++++-----
+ sound/soc/codecs/hdmi-codec.c             |  16 +-
+ sound/soc/codecs/idt821034.c              | 120 +++++-------
+ sound/soc/codecs/lpass-macro-common.c     |  11 +-
+ sound/soc/codecs/madera.c                 |  31 +--
+ sound/soc/codecs/max98095.c               |  34 ++--
+ sound/soc/codecs/mt6359-accdet.c          |  12 +-
+ sound/soc/codecs/pcm512x.c                |  17 +-
+ sound/soc/codecs/pcm6240.c                |  27 ++-
+ sound/soc/codecs/peb2466.c                |  15 +-
+ sound/soc/codecs/rt5514-spi.c             |  20 +-
+ sound/soc/codecs/rt5645.c                 | 161 ++++++++--------
+ sound/soc/codecs/rt5665.c                 |   7 +-
+ sound/soc/codecs/rt5668.c                 |   9 +-
+ sound/soc/codecs/rt5677-spi.c             |  35 ++--
+ sound/soc/codecs/rt5677.c                 |  77 ++++----
+ sound/soc/codecs/rt5682-sdw.c             |  23 ++-
+ sound/soc/codecs/rt5682.c                 |   4 +-
+ sound/soc/codecs/rt5682s.c                |  16 +-
+ sound/soc/codecs/rt700-sdw.c              |  13 +-
+ sound/soc/codecs/rt711-sdca-sdw.c         |  33 ++--
+ sound/soc/codecs/rt711-sdca.c             |   7 +-
+ sound/soc/codecs/rt711-sdw.c              |  23 ++-
+ sound/soc/codecs/rt711.c                  |  19 +-
+ sound/soc/codecs/rt712-sdca-sdw.c         |  34 ++--
+ sound/soc/codecs/rt712-sdca.c             |   7 +-
+ sound/soc/codecs/rt721-sdca-sdw.c         |  33 ++--
+ sound/soc/codecs/rt721-sdca.c             |   3 +-
+ sound/soc/codecs/rt722-sdca-sdw.c         |  33 ++--
+ sound/soc/codecs/rt722-sdca.c             |   3 +-
+ sound/soc/codecs/sigmadsp.c               |  16 +-
+ sound/soc/codecs/sta32x.c                 |  12 +-
+ sound/soc/codecs/sta350.c                 |  12 +-
+ sound/soc/codecs/tas2781-comlib-i2c.c     |   4 +-
+ sound/soc/codecs/tas2781-i2c.c            |  20 +-
+ sound/soc/codecs/tas2783-sdw.c            |  89 +++++----
+ sound/soc/codecs/tas5805m.c               |  15 +-
+ sound/soc/codecs/tas675x.c                |   6 +-
+ sound/soc/codecs/tlv320dac33.c            |  77 +++-----
+ sound/soc/codecs/tscs42xx.c               |  44 ++---
+ sound/soc/codecs/tscs454.c                | 106 ++++-------
+ sound/soc/codecs/twl6040.c                |   4 +-
+ sound/soc/codecs/wcd-mbhc-v2.c            | 142 +++++++-------
+ sound/soc/codecs/wcd934x.c                |  46 ++---
+ sound/soc/codecs/wcd937x.c                |  24 +--
+ sound/soc/codecs/wcd938x.c                |  21 +-
+ sound/soc/codecs/wcd939x.c                |  19 +-
+ sound/soc/codecs/wm0010.c                 |  63 +++---
+ sound/soc/codecs/wm2000.c                 |  27 +--
+ sound/soc/codecs/wm5102.c                 |  12 +-
+ sound/soc/codecs/wm8731.c                 |   3 +-
+ sound/soc/codecs/wm8903.c                 |   3 +-
+ sound/soc/codecs/wm8958-dsp2.c            |   9 +-
+ sound/soc/codecs/wm8962.c                 |   7 +-
+ sound/soc/codecs/wm8994.c                 |  51 ++---
+ sound/soc/codecs/wm9712.c                 |   4 +-
+ sound/soc/codecs/wm9713.c                 |   4 +-
+ sound/soc/codecs/wm_adsp.c                |  87 +++------
+ sound/soc/codecs/wsa883x.c                |  10 +-
+ sound/soc/codecs/wsa884x.c                |  10 +-
+ 93 files changed, 1330 insertions(+), 1863 deletions(-)
 
 -- 
-2.54.0
+2.43.0
 
 
