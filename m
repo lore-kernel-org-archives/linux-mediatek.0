@@ -4,62 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79D32CD98EC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jun 2026 22:11:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42289CD98EC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jun 2026 00:40:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CQD2Rea8tT9Evki9cBF/txLTFbUp+ukuW+gnffNHODw=; b=hrFI8iGM+lMndX1lVzh5RwM2FE
-	5nKji8E29WAIxwE4NpYrqfTvF/3Y3xxu05mN67pqEuK3tCEmkHyDVRuNz6bNS4NsEB4SptHH6VNfz
-	9Fq1VZKcPhIjBnQ6V0Zb0DvWlsi5nMGL+CubbwSSswZ9ub8dqYHvTB5JiJPBZVDNxNmzUSLhH7Mdb
-	V3qe7nn5USXbIGI7cv9odhnSJFsrcObxNhXLYq8AL3Pj70vzXfgi99yJ6uBHFGTpC9b5a9jVmhPd0
-	GNpzcbGFo53UtLz31Q2O6nQKjiWLcIaGehUL3YrLmf6wPZQkkcg/NaFi4mPkmEGFBes5+uks7WJpQ
-	LFpaRGNw==;
+	bh=nsPimvOxFtNpOsrcCdC4WZqlfbRzu95KX1Bfdk2/Wx0=; b=o8LaFLhE9VB/3U2VaptBbac/0a
+	GE17kTC4Dn2V8K9UhnCO4361i8OEV40XTW2K5zg1yWC6IcONhiY28XBduh0tASzzyoAfV1Mc/pr4c
+	qy+jMwxqznmh9N9/kGk6lJ2Iv8mlnoyOYImdLIGZqsa3p1SDpco9HKhsCjSUYSdUIUV5g56nM2T9X
+	XOMSACrsmTFaAxsiUvA5k9IxQ42yLVnavcJOlDJlVWFesnpE/7Ju8a4wtzxCfcjcO7bv88rpqjsFQ
+	mOwLNWb3Q3vhBYC++089hG9yNbzXROa5Ifbsq9qXD1EpXBjN77+xc7xPgk5xzoVNcC5+drywqrUnJ
+	4RHPsrIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZc0Y-0000000GN6W-0euO;
-	Tue, 16 Jun 2026 22:11:46 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wZeKJ-0000000GRK7-21sW;
+	Wed, 17 Jun 2026 00:40:19 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZc0T-0000000GN4l-2tqJ;
-	Tue, 16 Jun 2026 22:11:41 +0000
+	id 1wZeKH-0000000GRJr-1vjw
+	for linux-mediatek@lists.infradead.org;
+	Wed, 17 Jun 2026 00:40:17 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 0B99340357;
-	Tue, 16 Jun 2026 22:11:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E0ED41F00A3A;
-	Tue, 16 Jun 2026 22:11:40 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 804CC600AA
+	for <linux-mediatek@lists.infradead.org>; Wed, 17 Jun 2026 00:40:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 369C61F000E9
+	for <linux-mediatek@lists.infradead.org>; Wed, 17 Jun 2026 00:40:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781647900;
-	bh=CQD2Rea8tT9Evki9cBF/txLTFbUp+ukuW+gnffNHODw=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=jKbwD3o2tt0FtNHDpOTzRUzaNm7iND58wdAcyq2/wDBecABCppjOk+AP5zWhoT9aE
-	 RV3k8vVvAe7bz0DyGUraz7LSLLvBKbQ8F1LyVmL+mnQB/Gl0fXBimKpdX8JO9ZgbAY
-	 Vv1BawSJWEfYBTR4544VerFG7Av+DSFEvT2aPGzyDeiKUzr1fqytuq2b4x/eI1J4EL
-	 SbW26dbJv0EnNQx8EgOeskhqro30dm3avZICvfRxZQrBt1NRABe2wy59sNSty+Lbpr
-	 ts208rSiN33hkJmT37/qJ4aiFUCRqGm70mKf4jPaQUrbZb7pzJM01B7HJHvYsVaQ82
-	 1tLPRuYjDNwMw==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 938533930C2B;
-	Tue, 16 Jun 2026 22:11:36 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	s=k20260515; t=1781656816;
+	bh=nsPimvOxFtNpOsrcCdC4WZqlfbRzu95KX1Bfdk2/Wx0=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc;
+	b=fjmCrLO3zbAroMhw9rZ3qKRetjFLhR5TLTnehcYYd1ttflKewxORMDBP18zJy1vLE
+	 kGlrB/DYFYMJoTbLhIRFle9oZrJw9ryG00rbfgEU9rBYBD5uGA6O8eVhNc9IG/GlGR
+	 BpR0N6tyICgTUdoVHJgpf9KxETMgMNYr+nTKb2ZZRVhhgvmcayvFh/QQWY17M0WUQu
+	 W8Solnx3sSpaecaZJpyRMN5ijnxCVlXzGW8PuPqIcKfeXRnYfbX4MtJf8pdQdby+nM
+	 zRJ9LJLMhk7VAmt+cH7qf7fTAXLfsDyqJT6prcWIR28JyiWl8K3Ov3ct2hJnWCRcLB
+	 bznjnPwl5B7GQ==
+Received: by mail-lj1-f171.google.com with SMTP id 38308e7fff4ca-399389dae7fso4287501fa.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 16 Jun 2026 17:40:16 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AFNElJ/ZSThNrPeQXdc4jHiTAtFbTPPJ6+p6mC+ynm8aRTi8GzpfC9YFD/cB0Cd0KlqqPqHHFZ4p/MymC78+uSF6zA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyCSj/dVO+vco7iJQFwUjX/mtWCyPmWsJvGLvlfHKzdx5uKVCS+
+	d5mWkIKfrP+o/LBucSWJRGdb5PPBX/8lekEI0vdcwZMZaF7L0JFMU25NBYNx7lDR8Jr2PwcuNiI
+	k0Uckl7foaJCnBRQfySSN11KhWlP2i0U=
+X-Received: by 2002:a2e:be08:0:b0:38b:dd55:b71 with SMTP id
+ 38308e7fff4ca-3996a322bd5mr2098101fa.20.1781656814764; Tue, 16 Jun 2026
+ 17:40:14 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v2] [net] net: airoha: Fix QoS counter configuration for
- Tx-fwd channels
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <178164789527.1259509.13170564105480598534.git-patchwork-notify@kernel.org>
-Date: Tue, 16 Jun 2026 22:11:35 +0000
-References: <178161132384.2164449.18407700117859190327@gmail.com>
-In-Reply-To: <178161132384.2164449.18407700117859190327@gmail.com>
-To: Wayen Yan <win847@gmail.com>
-Cc: netdev@vger.kernel.org, lorenzo@kernel.org, horms@kernel.org,
- pabeni@redhat.com, kuba@kernel.org, edumazet@google.com,
- andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com,
- matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+References: <20260616111224.152140-1-senozhatsky@chromium.org> <20260616111224.152140-2-senozhatsky@chromium.org>
+In-Reply-To: <20260616111224.152140-2-senozhatsky@chromium.org>
+From: Sean Wang <sean.wang@kernel.org>
+Date: Tue, 16 Jun 2026 19:40:01 -0500
+X-Gmail-Original-Message-ID: <CAGp9LzpCMGr2hyVJRMehs_BD4Rk6mS2jAifWuCgBaANdqgtvqA@mail.gmail.com>
+X-Gm-Features: AVVi8CePh02iDBIiYBUKoKLWcbC8GIPcYK15HYAKhoj7Eq4e84wo6CwYl-6iRWo
+Message-ID: <CAGp9LzpCMGr2hyVJRMehs_BD4Rk6mS2jAifWuCgBaANdqgtvqA@mail.gmail.com>
+Subject: Re: [PATCH v2 1/3] Bluetooth: btmtksdio: correct btmtksdio_txrx_work()
+ loop timeout check
+To: Sergey Senozhatsky <senozhatsky@chromium.org>
+Cc: Marcel Holtmann <marcel@holtmann.org>, Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
+	Mark-yw Chen <mark-yw.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+	Tomasz Figa <tfiga@chromium.org>, linux-bluetooth@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, stable@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,30 +83,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Hi,
 
-This patch was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+On Tue, Jun 16, 2026 at 6:15=E2=80=AFAM Sergey Senozhatsky
+<senozhatsky@chromium.org> wrote:
+>
+> The btmtksdio_txrx_work() loop is expected to be terminated if running
+> for longer than 5*HZ.  However the timeout check is reversed:
+> time_is_before_jiffies(old_jiffies + 5*HZ) evaluates to true when
+> old_jiffies + 5*HZ is in the past i.e. when a timeout has occurred.
+> Using OR with time_is_before_jiffies(txrx_timeout) means that:
+> - before the 5-second timeout: the condition is `int_status || false`,
+>   so it loops as long as there are pending interrupts.
+> - after the 5-second timeout: the condition becomes `int_status || true`,
+>   which is always true.
+>
+> Fix loop termination condition to actually enforce a 5*HZ timeout.
+>
+> Fixes: 26270bc189ea4 ("Bluetooth: btmtksdio: move interrupt service to wo=
+rk")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Sergey Senozhatsky <senozhatsky@chromium.org>
+> ---
+>  drivers/bluetooth/btmtksdio.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.=
+c
+> index 5b0fab7b89b5..c6f80c419e90 100644
+> --- a/drivers/bluetooth/btmtksdio.c
+> +++ b/drivers/bluetooth/btmtksdio.c
+> @@ -620,7 +620,7 @@ static void btmtksdio_txrx_work(struct work_struct *w=
+ork)
+>                         if (btmtksdio_rx_packet(bdev, rx_size) < 0)
+>                                 bdev->hdev->stat.err_rx++;
+>                 }
+> -       } while (int_status || time_is_before_jiffies(txrx_timeout));
+> +       } while (int_status && time_is_after_jiffies(txrx_timeout));
+>
 
-On Tue, 16 Jun 2026 18:50:29 +0800 you wrote:
-> In airoha_qdma_init_qos_stats(), the Tx-fwd counter was incorrectly
-> using register index (i << 1) instead of ((i << 1) + 1). This caused
-> the Tx-fwd configuration to overwrite the Tx-cpu configuration for
-> each QoS channel, resulting in incorrect QoS statistics.
-> 
-> Fix by using the correct register index ((i << 1) + 1) for Tx-fwd
-> counter configuration.
-> 
-> [...]
+This patch has already been merged, so I think the series should be
+respun based on the latest code.
 
-Here is the summary with links:
-  - [v2,net] net: airoha: Fix QoS counter configuration for Tx-fwd channels
-    https://git.kernel.org/netdev/net-next/c/1402ecccf563
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+>         /* Enable interrupt */
+>         if (bdev->func->irq_handler)
+> --
+> 2.54.0.1136.gdb2ca164c4-goog
+>
+>
 
