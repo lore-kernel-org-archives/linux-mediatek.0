@@ -4,84 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D86BCD98F3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2026 11:03:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16FB4CD98ED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2026 11:08:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	MIME-Version:Content-Type:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ih1hA9pkwP8L/MCNP4uRdj5lWZxa52mA9WZkZEjpN1I=; b=PdHuuMgujsFAC5lloUjCx8tLNA
-	5ZNQnqrRUAPsbAvBZzBkwqv4jnfPWI7kbw+lEuCD9gX+m00+hvDG21rRPyT1VoHloTBwTAr6RCeal
-	N726Uy4nnezpxrDrT1MtKa+0RAxR3Rh9OC+Iq1bFN7iOimDWU9m31TAEd7RRfE5dWXMKT+6IWoLnI
-	R2rTBiALdBObSS+WtemzZfnmehyUlyxZnuJZ0kkmhlE1AUhjHQoegrwdDkF2k+v7IBrrRcVOAA28D
-	O0rXodaMySkstYydmp6z/F1GEqIUyphOxANxa8lE82GMrWGVHGnII+XCTk/VAnHqt614TdREFtzfZ
-	kjrt3pmA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eeDyrRSgLV/yx9S+U/FOT1rxO1cOlIi+l6TEpJj57t4=; b=MxRzwalfcyW62LN8y18kPttalf
+	4w7Gs5+AeuIjFREf1ogmVrucWCLO1PjO/y4vbYpZNAUDYGzyVapXD+71HlPqLwZUfrJdgr+re/uw2
+	nrR08uZ3h9Q7toDTmnhE6vpiKeSbcZcCunYBkpR4+pvIo1NnR81qdnJGbLi6+ifW32ksFa7x1UscB
+	pxWPYQY4L7VxZBKtbkHJbBLLBTXS5JGKL4upUhCh/lXJxzfbEaAHWoHE0yHboX+JT1go8yLgX4MlS
+	D6e79ExWeBqXVB5PiXSdAHUdZ6UbzPMMiO7AOD/G1WzCUJOMHWq9sXmAoHarGCTRFlRQBQR8ixbha
+	3nk4R63Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waAX0-000000018ge-14N6;
-	Thu, 18 Jun 2026 11:03:34 +0000
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+	id 1waAcC-000000018vi-3kkS;
+	Thu, 18 Jun 2026 11:08:56 +0000
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waAWx-000000018ff-3T49
+	id 1waAc9-000000018uj-0kdz
 	for linux-mediatek@lists.infradead.org;
-	Thu, 18 Jun 2026 11:03:32 +0000
-Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-2c6b3f71648so10513575ad.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 18 Jun 2026 04:03:30 -0700 (PDT)
+	Thu, 18 Jun 2026 11:08:55 +0000
+Received: by mail-pl1-x631.google.com with SMTP id d9443c01a7336-2c0b9328c4aso5608555ad.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 18 Jun 2026 04:08:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781780610; x=1782385410; darn=lists.infradead.org;
-        h=references:in-reply-to:mime-version:message-id:date:subject:cc:to
-         :from:from:to:cc:subject:date:message-id:reply-to;
-        bh=ih1hA9pkwP8L/MCNP4uRdj5lWZxa52mA9WZkZEjpN1I=;
-        b=I8uDJ7BQwFbvM/UQx2IoOdeUlmdXG2XKKuMW4VUsCoLeyHOzjOzzwmGPdv48q2KtGW
-         7T1aO9VPduQv1bp3VDiQDmAdt4FVvFZG+YDJgnYBrWDgA0hEWzdpDGFcMPEoTCmXyZKI
-         XJ3A7GSepuLxtfFlrB8y+zhPl7NFn2iRYVv+vOlr69a1SKwyAgBWASeKrM4ZjuO3qiZl
-         0APj1UnDwZQol3/pDFcki2n4YchNArDMPkdbNAljv+y+ffIMEjt0QMZkejoZBf5brJDp
-         6kAv9/7kCRB+srBvS/Mdds1hU88r4Kwpo2o8UeGIHUX0TM5CADKgvXdbAsuVYJGDmTmC
-         HpUw==
+        d=gmail.com; s=20251104; t=1781780932; x=1782385732; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=eeDyrRSgLV/yx9S+U/FOT1rxO1cOlIi+l6TEpJj57t4=;
+        b=or90lKnubYwUHSeA6ZM7Ir2Vofukt4wydffQQxdZlFeN1b/MyigD3qDhWGZzaLeoYb
+         tfzZSB7WFY0OU9UWVBt3BfHbb87fgk5BE+7N7vcCt3mSOtgGZzwnM2kXlk1up5O5x35E
+         38l8jGa9UBFFZZRdjRZizg77iM2r4qAKsMgriqD6jwx97tzy3vhxE+oWRNLpJXnbNp+x
+         zgyOWgwmgeRv7ZMtLylqPcU0C5LEd+Uhl1wGPFhQj5xYm1uxb0DV3ECQSIbEyZOdw+Nk
+         REJw9o/lgZeIOLXriOXqqa1XcKIOKeUef1hD9GVMZgiIMOdO6IhjNzyKMCOYEXPBrD6F
+         d/Ng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781780610; x=1782385410;
-        h=references:in-reply-to:mime-version:message-id:date:subject:cc:to
-         :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ih1hA9pkwP8L/MCNP4uRdj5lWZxa52mA9WZkZEjpN1I=;
-        b=C6RMlJXJ6rQJ+Cg+fwcHqzs/xMEVw6oFpoxg+dc4e8OLAK3MVdzAMw9gp6reoNXujG
-         zx6PuUAhxDvoqq7KHE8AWNsFdSSkzoOJ8qw0EoMIdCvylbanDZbwcfaqJ+f0Mqf+2pli
-         iaLoSOjZ0FTGOVMEckkdW6S5eTqxlycvYBqJeKgdq8osy2A4YIdHnJlcIByM6TjJWgLA
-         uiijvh0Mm+Pfq/G/Gtw7uJqOqz9QRtlnXXm35xNVlI4ORLSXvRNWeqWnaYnjkFFVCYyW
-         tiUB1UIpt952wzboNrOZuM8YK/2L+9Mvc77HKnqVDyJNDweWp08vSsKWtPTMtwJUlbJ9
-         6OUQ==
-X-Forwarded-Encrypted: i=1; AFNElJ+6NmtqcP1+8Rkfa8LkxODUwmWa3pzqKoqPxVJoMw2cApXD6guZJEHQwQoy1G4rhgppJsyPLdAKfAvYv4IeDQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzf2IZLIHvVI8/NLsLd+0U8BFz2T0kI86IBdb9VarWzS+Ip8SSw
-	WbNzPQTg12sz5bbJCaS5+kM4FUH5UFPHbqct/dsvJZZnO1xIqs1lRYku
-X-Gm-Gg: AfdE7cmXaR3xaCxC/Q4MQ8XU0llr/7G9dHjZB/R3v88N+X1o8RI8mduV2SYXBF3Xfv5
-	DT2BuH7US2JvqQfpOo2A1uuj+wGfQcz3Z+qAn+lNnm43JpHnpsN5QafUnlp+YdV8Ba0Zss+z5ss
-	qAu4xgycv/fNP15A8MZpLYtSULN78KwfNVP1TwXP7qhu6BbEBhqag1QbS7cerzKksUT65aoUfkA
-	8uk7Y+RGfD9shaZS8SgmYfWqwpH0wV35UblfKW4RqfTHt41I1s6sSEvp+T3GroXByimCL15HKX2
-	8CpEkGPD8cgVZm+iyDkZhmleSC5e9KNTDYL/l5FL/v5wy2eDjK69KUPhUYELS0TJRUD12ROHilL
-	nxF3Z4RexUvVU38Im1M33cr7NxqG+UQraxoQIlJhCxBddlqKM4Q3MpVG3zzyUfF1rE3bjyC0KXd
-	4+cBrNTw==
-X-Received: by 2002:a17:903:2a8b:b0:2c0:c940:dc32 with SMTP id d9443c01a7336-2c6bc0cc732mr87305065ad.16.1781780610103;
-        Thu, 18 Jun 2026 04:03:30 -0700 (PDT)
-Received: from [127.0.1.1] ([47.253.114.73])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2c432c8c1f9sm199005805ad.59.2026.06.18.04.03.25
+        d=1e100.net; s=20251104; t=1781780932; x=1782385732;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=eeDyrRSgLV/yx9S+U/FOT1rxO1cOlIi+l6TEpJj57t4=;
+        b=GJyWPwQMclU6YODCn+zOAbFlNLoR/T9FwwfOfIokTaylqbAtZFd51KBDw5TK5uxHFa
+         zoLb3FEaUlhYKxRNz1znVaBWTsKP3uZ0gCelKVoahEj3X2q4oOGnhxyd/I001bTV1TOT
+         ndwstQGlXCdnbxVLyESAh/loekR+duBibj7sKBSEQeKBDTuzxRdXnTlMACJbNk00RkdQ
+         dkAzxtyWsrhiCsQMiF9x5cuSNfDFwhvJIsxa3en9SsmysObC9dib68p+D4EyCWqX4yLU
+         VJTkd7LoBxSN3VKnR6SZgvWcw4cWl8jmqKSIqWnxNkwmOgrymJ+KnTTwiNgy6v4lnSLq
+         eehA==
+X-Forwarded-Encrypted: i=1; AFNElJ9TA+nqIYpt99NTXwUPVUhVMG39K6/f9e7S5AFJWFY29SnkvrttGybJVSLQndcxN5EZLyOf4ixiZp/1/ZTGXw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwTgdTIWz2+QuUfzUqQ/0h1SOd4X/zawyUjncpjsnGB3SMOZScM
+	ZN6gP38y029dSi29x8/Uo8fgSQ+OMs6ZjTme5jiW/VWECb0cydgQcuoU
+X-Gm-Gg: AfdE7cmS/vj+ilBeqSX/7NDI8n2NCdut5tv+QTPzqv+8VZvCTZ8P7hH88lL6uShggKo
+	Jj3y3lGQzv+OJJWWb+vtuTQQ1R+UNEoaf++hRyNvEWXvlfejiikEh5EchK0pNnGYB54UH7rtr0l
+	Z+y+ZjDYVNarFx9DFKQlsEON2ydD/BbA3EkC0swsWHe6ctZ6VKfBy034JSjQU5c7Wm7wfr3Ql8p
+	kGhyhQ/SsFyfE3mIEGgixZz0gI12qFyyP3dkunu3p85V36wqBarqv8veZ3QbwpR6lJ+anP4XS1R
+	DF5ooAqmnbynDj1Lcx9A/Ugg5sNhiWnKY6CtcMbEwsn8Zdz16o62ElXWEd0q+WmTDdfPfDgJ7y0
+	fR1lZo/ianSSzWKySXB3zVs6CjBkJMIdx5YAp9PmQqB42nxk0zZHwHsDJuxI9rm41PHnDqu9AtH
+	99+wAB+DiIIhFuWx4BKBOCFnKKQIHD+QwOF0xRHmpKtQHCOWxoAAMLTVlh2A==
+X-Received: by 2002:a17:903:2447:b0:2c0:b5c1:8e22 with SMTP id d9443c01a7336-2c6f34218aamr24583345ad.12.1781780932102;
+        Thu, 18 Jun 2026 04:08:52 -0700 (PDT)
+Received: from phuc-desktop.. ([183.91.15.56])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2c42f1f0f19sm196384565ad.10.2026.06.18.04.08.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Jun 2026 04:03:29 -0700 (PDT)
-From: Wayen Yan <win847@gmail.com>
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, netdev@vger.kernel.org, horms@kernel.org, pabeni@redhat.com, edumazet@google.com, andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net v3] net: airoha: Fix skb->priority underflow in airoha_dev_select_queue()
-Date: Thu, 18 Jun 2026 22:10:00 +0800
-Message-ID: <178178060540.2320032.8413754929321784354@gmail.com>
-Content-Type: text/plain; charset=utf-8
+        Thu, 18 Jun 2026 04:08:51 -0700 (PDT)
+From: phucduc.bui@gmail.com
+To: Mark Brown <broonie@kernel.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Cheng-Yi Chiang <cychiang@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>,
+	Guenter Roeck <groeck@chromium.org>,
+	Benson Leung <bleung@chromium.org>,
+	David Rhodes <david.rhodes@cirrus.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	povik+lin@cutebit.org,
+	Charles Keepax <ckeepax@opensource.cirrus.com>,
+	Support Opensource <support.opensource@diasemi.com>,
+	Nick Li <nick.li@foursemi.com>,
+	Herve Codina <herve.codina@bootlin.com>,
+	Srinivas Kandagatla <srini@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Shenghao Ding <shenghao-ding@ti.com>,
+	Kevin Lu <kevin-lu@ti.com>,
+	Baojun Xu <baojun.xu@ti.com>,
+	Sen Wang <sen@ti.com>,
+	Oder Chiou <oder_chiou@realtek.com>,
+	Lars-Peter Clausen <lars@metafoo.de>,
+	nuno.sa@analog.com,
+	Steven Eckhoff <steven.eckhoff.opensource@gmail.com>,
+	patches@opensource.cirrus.com,
+	chrome-platform@lists.linux.dev,
+	asahi@lists.linux.dev,
+	linux-arm-msm@vger.kernel.org,
+	linux-sound@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	bui duc phuc <phucduc.bui@gmail.com>
+Subject: [PATCH 57/78] ASoC: codecs: tas5805m: Use guard() for mutex locks
+Date: Thu, 18 Jun 2026 18:08:06 +0700
+Message-ID: <20260618110827.232983-1-phucduc.bui@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260617103235.449609-1-phucduc.bui@gmail.com>
+References: <20260617103235.449609-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20260617161951.52abe413@kernel.org>
-References: <178161373805.2167512.2544164327472822616@gmail.com> <20260617161951.52abe413@kernel.org>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260618_040331_865719_C184BC57 
-X-CRM114-Status: UNSURE (   9.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260618_040853_340194_B91E3E45 
+X-CRM114-Status: GOOD (  11.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,23 +130,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 18, 2026 at 08:19:51AM +0200, Jakub Kicinski wrote:
-> Hi Lorenzo, is there a reason we're subtracting 1 here in the first
-> place? Could be just me, but may be worth adding a comment here.
->
-> Please respin with some sort of an explanation..
+From: bui duc phuc <phucduc.bui@gmail.com>
 
-Hi Jakub,
+Clean up the code using guard() for mutex locks.
+Merely code refactoring, and no behavior change.
 
-The (priority - 1) mapping predates my involvement — I only addressed
-the underflow bug when skb->priority is 0, where the unsigned
-subtraction wraps and routes best-effort packets to the highest-priority
-queue.
+Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
+---
+ sound/soc/codecs/tas5805m.c | 15 +++++----------
+ 1 file changed, 5 insertions(+), 10 deletions(-)
 
-Lorenzo, could you clarify the intended priority-to-queue mapping so
-I can add a proper comment in the respin?
-
-Regards,
-Wayen
+diff --git a/sound/soc/codecs/tas5805m.c b/sound/soc/codecs/tas5805m.c
+index bcc8cab8d667..f21670dab0f4 100644
+--- a/sound/soc/codecs/tas5805m.c
++++ b/sound/soc/codecs/tas5805m.c
+@@ -230,10 +230,9 @@ static int tas5805m_vol_get(struct snd_kcontrol *kcontrol,
+ 	struct tas5805m_priv *tas5805m =
+ 		snd_soc_component_get_drvdata(component);
+ 
+-	mutex_lock(&tas5805m->lock);
++	guard(mutex)(&tas5805m->lock);
+ 	ucontrol->value.integer.value[0] = tas5805m->vol[0];
+ 	ucontrol->value.integer.value[1] = tas5805m->vol[1];
+-	mutex_unlock(&tas5805m->lock);
+ 
+ 	return 0;
+ }
+@@ -255,7 +254,7 @@ static int tas5805m_vol_put(struct snd_kcontrol *kcontrol,
+ 	      volume_is_valid(ucontrol->value.integer.value[1])))
+ 		return -EINVAL;
+ 
+-	mutex_lock(&tas5805m->lock);
++	guard(mutex)(&tas5805m->lock);
+ 	if (tas5805m->vol[0] != ucontrol->value.integer.value[0] ||
+ 	    tas5805m->vol[1] != ucontrol->value.integer.value[1]) {
+ 		tas5805m->vol[0] = ucontrol->value.integer.value[0];
+@@ -267,7 +266,6 @@ static int tas5805m_vol_put(struct snd_kcontrol *kcontrol,
+ 			tas5805m_refresh(tas5805m);
+ 		ret = 1;
+ 	}
+-	mutex_unlock(&tas5805m->lock);
+ 
+ 	return ret;
+ }
+@@ -332,7 +330,7 @@ static void do_work(struct work_struct *work)
+ 
+ 	dev_dbg(&tas5805m->i2c->dev, "DSP startup\n");
+ 
+-	mutex_lock(&tas5805m->lock);
++	guard(mutex)(&tas5805m->lock);
+ 	/* We mustn't issue any I2C transactions until the I2S
+ 	 * clock is stable. Furthermore, we must allow a 5ms
+ 	 * delay after the first set of register writes to
+@@ -345,7 +343,6 @@ static void do_work(struct work_struct *work)
+ 
+ 	tas5805m->is_powered = true;
+ 	tas5805m_refresh(tas5805m);
+-	mutex_unlock(&tas5805m->lock);
+ }
+ 
+ static int tas5805m_dac_event(struct snd_soc_dapm_widget *w,
+@@ -362,7 +359,7 @@ static int tas5805m_dac_event(struct snd_soc_dapm_widget *w,
+ 		dev_dbg(component->dev, "DSP shutdown\n");
+ 		cancel_work_sync(&tas5805m->work);
+ 
+-		mutex_lock(&tas5805m->lock);
++		guard(mutex)(&tas5805m->lock);
+ 		if (tas5805m->is_powered) {
+ 			tas5805m->is_powered = false;
+ 
+@@ -379,7 +376,6 @@ static int tas5805m_dac_event(struct snd_soc_dapm_widget *w,
+ 
+ 			regmap_write(rm, REG_DEVICE_CTRL_2, DCTRL2_MODE_HIZ);
+ 		}
+-		mutex_unlock(&tas5805m->lock);
+ 	}
+ 
+ 	return 0;
+@@ -414,14 +410,13 @@ static int tas5805m_mute(struct snd_soc_dai *dai, int mute, int direction)
+ 	struct tas5805m_priv *tas5805m =
+ 		snd_soc_component_get_drvdata(component);
+ 
+-	mutex_lock(&tas5805m->lock);
++	guard(mutex)(&tas5805m->lock);
+ 	dev_dbg(component->dev, "set mute=%d (is_powered=%d)\n",
+ 		mute, tas5805m->is_powered);
+ 
+ 	tas5805m->is_muted = mute;
+ 	if (tas5805m->is_powered)
+ 		tas5805m_refresh(tas5805m);
+-	mutex_unlock(&tas5805m->lock);
+ 
+ 	return 0;
+ }
+-- 
+2.43.0
 
 
