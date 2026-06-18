@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA94FCD98ED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2026 11:10:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09F5DCD98F3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2026 11:10:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4OY5fb/Dq+8t+PbF847YNuNR+1WYPM7PZhbf7meKQVc=; b=U0JJ3QxEA9qTzdrFBI1DEGwqA2
-	g+a0pu2AxJr+IDCIx5YAnKMlq2bEyRgqjYcfyIZnW+1FYix6mP3UeO7dyycK6HScQSRpHNoWqLvMU
-	LVEBSDnqV6qDsqOm61iPD/S/RqeqhAmEGdP8UCvkgZ6m8BWp4tYAvBIicqBbC0iywz2hf78IDKfY4
-	DwFRGASpaWS8IXj6Hwe/E9Uu5PRkNjLWSUqBTMbNzo/nvzS7lOddhD+MJRppF7Y4IdJtRU6P1Zc2S
-	sid737igBTDXslUWhxKMaqOf3bT3/FbG64GzPkOyR+ECemVId8pFQoRqFnh/C2Bqxtm25T+NQF3PP
-	hZQHStZw==;
+	bh=RUydxf/ZwzEU3byhG6kKewQSumkNnr4b0Y4idMeiddo=; b=IJRHYQvsaH6tUcX7QF0Dd49Qly
+	9xXoxX60irLewUt7jyqC8xe8PRzNW+8mHCrhixzzB6+YG7c9+rKwb+4Gzh3ea9bWS/MmXORF9YMTg
+	APi+RfJ5mIk3PM7srBZ/8bCNPvLYeE78FvurSxwo7ZGKMhcNTlBMsUNW9wSFpSCd0+xvUQPKlO7LK
+	E5R0t9tmmoWaeHT7ILLU6euM+WmEMXVZMLDscE9KYeaLChT6uPLB9ujqJkpG0jtlOZXd9Ht+0OA6C
+	gYE7mp9Q8/PWvflABIWvC6BUKlJe3uM3n9TuypCMi0Hc7/gm2ouhYbhDJa1+uBBS7McS4uZHmDZOP
+	cHhQ88Ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waAdb-000000019uj-2hif;
-	Thu, 18 Jun 2026 11:10:23 +0000
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+	id 1waAdk-00000001A0w-0pmC;
+	Thu, 18 Jun 2026 11:10:32 +0000
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waAdZ-000000019sR-1KnY
+	id 1waAdh-000000019zI-47sQ
 	for linux-mediatek@lists.infradead.org;
-	Thu, 18 Jun 2026 11:10:22 +0000
-Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-2c68190ade4so14539205ad.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 18 Jun 2026 04:10:21 -0700 (PDT)
+	Thu, 18 Jun 2026 11:10:31 +0000
+Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-2c132ac5ec2so8954745ad.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 18 Jun 2026 04:10:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781781021; x=1782385821; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1781781029; x=1782385829; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=4OY5fb/Dq+8t+PbF847YNuNR+1WYPM7PZhbf7meKQVc=;
-        b=os1lWWhBlLsM7MaSVK2jaPwbfeW4fKk2yZ3CakNLcNuQNc8Zw9yUHo6BFFFgB4PmzV
-         N3WvjhIyxeoufx5mHLLmv261OLNhNQbiw7Q0eR9cPMDZw9aC068GJfUOHSnAbwpI3Pas
-         wS8jLCevYAuFoDhZg+A2dL/RAkoJE0hSLOM0dQFR6rbjUHJaK5sWbU0pgZPXjkIWRUqY
-         D12TK27x1WuGX77HgkEHtTvkTbprT1wGdKkyk0jJwnfkSJFxHqSERbWYGe5nt1FDG+o9
-         7VP7DNhQgbx1nMyDveuTjDd9aPb2pbcfeuoILFipMtLYVW7kSQqSRb5EVEh1v3R/47tx
-         8JUQ==
+        bh=RUydxf/ZwzEU3byhG6kKewQSumkNnr4b0Y4idMeiddo=;
+        b=piSxBFV3KTyBBRIOJ596SD+cwxMNdWCtuApxg7JgLP1XQDrH+T0LhqcikLBSHHqXbn
+         Dv8+fJj+Memm27f/fhNAdAarXTen8JwL6sEaOQLdSjD/G6jpZAW1XN4K2J4skXSmEINz
+         dM++luc2Mv+NAUaoc0vMVn7jcNCAIq9vQHRowefzCG97aFkP7e2DyL3ExVAGO8aV45VI
+         IoXU7mntTqgct39+IoqLBMRhVLiiC/mP10TK1woLNkwH2Q3K1LXSg81V3JCsWeZCBC4c
+         s/q+B230ZuhT+4/mFUi2xjkhVEFaALIYzeJQOD3DAD0GdlMUp/9MLJqJiWvz4u0Rj6tW
+         Izvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781781021; x=1782385821;
+        d=1e100.net; s=20251104; t=1781781029; x=1782385829;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=4OY5fb/Dq+8t+PbF847YNuNR+1WYPM7PZhbf7meKQVc=;
-        b=cHUNeRU6RPsXSetxXey3AIGw0pb+tnAlT504+C60/VFZJLqtr/B3uw7Y8idWgxQivf
-         FZuhD+8L0SihitEuxphq++tgCsTUwOJMuGh9bHxGDhp6zmh1rLPpPGesUKXapj5YFqkE
-         By3XCzrlMjUtKAKORWlmX6VsYyjA9M2G/IL0XCZi6bvg7DpwnjWfeJHFLIQKtUL81dTY
-         PngSQ8f7vwZouC5AL1cwe7rTHgipfp1Hyco0JS1zYctinihOVkdds0K3x5TuDtGMddBp
-         d5uK3AehuepRiXCmwBh4VIQSCYn06DaQ7bWyh0wfpWbyixgLZUpInLNyrhHZ+RrV0EOc
-         Qytw==
-X-Forwarded-Encrypted: i=1; AFNElJ8mKEodSQiJ0wAh6qPf+Xxg7TbcOFGa2JBxacm4DqrVbairpcU+AZnChiMf0VVsmkWYoKdTGK7kx16Xi0j+Qw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx1/GrG6QCsda+Yl2cqDVp7qBiU4LgYP+CU3mq8evuvXI6kWtqC
-	FWscn9ne3CeeiOvhB8EKhjF+yDsQk6wglHx9dALrKLSQ/8QbQgNFIvHA
-X-Gm-Gg: AfdE7cmP/bUv89ybiJieuOTHU1dtk15KJmRbbBXkx4QdtUN9Yc/aCa9iSIQN7ADwYLC
-	KnVU6pI/O6ADGza+fCXZORjSrqVmyNe460H0znIpoSBIf/IAJ8KaPw0aS8DLq4ZoJ5t0RWoVJzi
-	SKJEztNvgIYIc2HKgAichCMYM7OGPbz5KwXEp5dZLB/TCsZfkVhy3BVIQAIkrnl+cq8IoaHu+aH
-	FC4zbmktdQIOxsETRiiwuTiNbsziFM+LB1DJw39VkcnN12vABkPrvQjLVztd1Io6hHRY1hjnDp1
-	mm5JOoooRehNZgX6IeHcW9ecpSqBj8V3Mj2kfUhLHZ/D2YR1Km+VGBgKpvNSySmMFb2Vx4Aky09
-	pqM/ArRCMvW1q9jPBVTPASBK5Y+VT3kQcPEd91YFCiYHREW+YGQ6N7ecx3zeUPZumbaDgSN7ON1
-	RaxJ3x3JDAbmqoxOF8nV09mFMzS0jG2wEWJ4DOyHrPJ6cl/Kc=
-X-Received: by 2002:a17:903:19ee:b0:2c6:c9e0:2c17 with SMTP id d9443c01a7336-2c6de3f353emr31079685ad.8.1781781020504;
-        Thu, 18 Jun 2026 04:10:20 -0700 (PDT)
+        bh=RUydxf/ZwzEU3byhG6kKewQSumkNnr4b0Y4idMeiddo=;
+        b=Q/Wm5ER++gdUJ3az6OOlKdQr8TSKUmqqwoEWPeGgrRLA3XZjKh9vySSOZeKxCPez9F
+         gcy35vMCspW4JCxVj1yxc2ZdxZbaA8Kty//O/vDKgafgf/FK9s+feKIflD0Lkx1ZWdxz
+         65mn/cpRDK9aTEKb7/EYbPMPX7i1Iyldjz6tH30en3I8Os2mEUU1MyEuG1TO8YYv/Wjl
+         6ghdY9E2F7d2fs5dM28+CK/ByMmi9VjT17PG+JcfvpLwxkhTU430/yglh3HlL16+F0h7
+         CAXOwtmZWANA7/A4LlQiv/vrfwcnKrnkdZlccQPIoWcVuYOVeYTgT282IHbc3v5+Cwm9
+         +Yzg==
+X-Forwarded-Encrypted: i=1; AFNElJ9vaV6G1sASa4C12rH8STO7XeSpEubwADLegn/f3UR7sDFFLRs5h+n7iSDIfUebYXnl+6hRxdFVf1nNY9dBoQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyl8HA9+nMeJO1eZG3ccq6NcKY+MSrjtgDbhuincOhS3Fo/jskl
+	6bk0NfHMImNTxfCp8LnPZ3fj4UcRKFPITFnyJr5d8X425P5NT4JfFA3h
+X-Gm-Gg: AfdE7cm9SuztqNTWAPz7lG2eFi5ZguYpfW6DN+BTfm7xKoRRdyHT/ttIKhYZl2dKpAJ
+	CkArp/scy0j1MZuqm4hu77dAauPmRfP8T6sXfPUVaYmOZiXoJqSwLIIgjR/5UCRVz8SoopzOi1a
+	zE+/4GbraIc7mZKiiakmd8TXXxGPxgCZtXSWdcVQcMZa9kD6t9l0qA/Y6DPTk1568IS6VlCGmWx
+	L8jXmG2kpITo1jShvh/IltlZubF0/+dN2CbiizgeLfcl6gSbDwN17bUvmq8RG0DPKXBnZXtkZ2S
+	kI1KO6RVMA274B8itWnKnzDVjVqkJTeWqvqAH0jrL/gwIdoVdaKu+sYIWHmtgkDQrXcNGlxcCs1
+	YaD5xRSdGSitLHAw4m5X/bIyLjzp524DzvVeea9zCjTKMy8Wmy0zoLauYZce7ZQeSLc0nCA8tVl
+	3Gzgn9VqeKgXm5Wfq7T0jHFEjtVF1U/B29aDrp1+VJfii9b3hrFWL758DAPQ==
+X-Received: by 2002:a17:902:c945:b0:2ba:3e2f:6883 with SMTP id d9443c01a7336-2c6e5155763mr34980605ad.19.1781781029264;
+        Thu, 18 Jun 2026 04:10:29 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2c42f1f0f19sm196384565ad.10.2026.06.18.04.10.12
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2c42f1f0f19sm196384565ad.10.2026.06.18.04.10.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Jun 2026 04:10:20 -0700 (PDT)
+        Thu, 18 Jun 2026 04:10:28 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Mark Brown <broonie@kernel.org>
 Cc: Liam Girdwood <lgirdwood@gmail.com>,
@@ -105,9 +105,9 @@ Cc: Liam Girdwood <lgirdwood@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH 67/78] ASoC: codecs: wcd939x: Use guard() for mutex locks
-Date: Thu, 18 Jun 2026 18:08:16 +0700
-Message-ID: <20260618110827.232983-11-phucduc.bui@gmail.com>
+Subject: [PATCH 68/78] ASoC: codecs: wm0010: Use guard() for mutex & spin locks
+Date: Thu, 18 Jun 2026 18:08:17 +0700
+Message-ID: <20260618110827.232983-12-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260618110827.232983-1-phucduc.bui@gmail.com>
 References: <20260617103235.449609-1-phucduc.bui@gmail.com>
@@ -115,8 +115,8 @@ References: <20260617103235.449609-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260618_041021_404169_D6F174AE 
-X-CRM114-Status: GOOD (  12.24  )
+X-CRM114-CacheID: sfid-20260618_041030_034665_DD5C53AF 
+X-CRM114-Status: GOOD (  15.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,66 +133,184 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: bui duc phuc <phucduc.bui@gmail.com>
 
-Clean up the code using guard() for mutex locks.
+Clean up the code using guard() for mutex & spin locks.
 Merely code refactoring, and no behavior change.
 
 Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
- sound/soc/codecs/wcd939x.c | 19 ++++++-------------
- 1 file changed, 6 insertions(+), 13 deletions(-)
+ sound/soc/codecs/wm0010.c | 63 ++++++++++++++-------------------------
+ 1 file changed, 23 insertions(+), 40 deletions(-)
 
-diff --git a/sound/soc/codecs/wcd939x.c b/sound/soc/codecs/wcd939x.c
-index 010d12466722..922b6a0423a6 100644
---- a/sound/soc/codecs/wcd939x.c
-+++ b/sound/soc/codecs/wcd939x.c
-@@ -1923,7 +1923,6 @@ static int wcd939x_mbhc_micb_adjust_voltage(struct snd_soc_component *component,
- 	struct wcd939x_priv *wcd939x = snd_soc_component_get_drvdata(component);
- 	unsigned int micb_reg, cur_vout_ctl, micb_en;
- 	int req_vout_ctl;
--	int ret = 0;
+diff --git a/sound/soc/codecs/wm0010.c b/sound/soc/codecs/wm0010.c
+index 2a8c61a72c17..aeca42e4caba 100644
+--- a/sound/soc/codecs/wm0010.c
++++ b/sound/soc/codecs/wm0010.c
+@@ -148,13 +148,11 @@ static const char *wm0010_state_to_str(enum wm0010_state state)
+ static void wm0010_halt(struct snd_soc_component *component)
+ {
+ 	struct wm0010_priv *wm0010 = snd_soc_component_get_drvdata(component);
+-	unsigned long flags;
+ 	enum wm0010_state state;
  
- 	switch (micb_num) {
- 	case MIC_BIAS_1:
-@@ -1941,7 +1940,7 @@ static int wcd939x_mbhc_micb_adjust_voltage(struct snd_soc_component *component,
- 	default:
- 		return -EINVAL;
- 	}
--	mutex_lock(&wcd939x->micb_lock);
-+	guard(mutex)(&wcd939x->micb_lock);
+ 	/* Fetch the wm0010 state */
+-	spin_lock_irqsave(&wm0010->irq_lock, flags);
+-	state = wm0010->state;
+-	spin_unlock_irqrestore(&wm0010->irq_lock, flags);
++	scoped_guard(spinlock_irqsave, &wm0010->irq_lock)
++		state = wm0010->state;
  
- 	/*
- 	 * If requested micbias voltage is same as current micbias
-@@ -1957,15 +1956,11 @@ static int wcd939x_mbhc_micb_adjust_voltage(struct snd_soc_component *component,
- 						    WCD939X_MICB_VOUT_CTL);
- 
- 	req_vout_ctl = wcd_get_micb_vout_ctl_val(component->dev, req_volt);
--	if (req_vout_ctl < 0) {
--		ret = req_vout_ctl;
--		goto exit;
--	}
-+	if (req_vout_ctl < 0)
-+		return req_vout_ctl;
- 
--	if (cur_vout_ctl == req_vout_ctl) {
--		ret = 0;
--		goto exit;
--	}
-+	if (cur_vout_ctl == req_vout_ctl)
-+		return 0;
- 
- 	dev_dbg(component->dev, "%s: micb_num: %d, cur_mv: %d, req_mv: %d, micb_en: %d\n",
- 		__func__, micb_num, WCD_VOUT_CTL_TO_MICB(cur_vout_ctl),
-@@ -1990,9 +1985,7 @@ static int wcd939x_mbhc_micb_adjust_voltage(struct snd_soc_component *component,
- 		usleep_range(2000, 2100);
+ 	switch (state) {
+ 	case WM0010_POWER_OFF:
+@@ -173,9 +171,8 @@ static void wm0010_halt(struct snd_soc_component *component)
+ 		break;
  	}
  
--exit:
--	mutex_unlock(&wcd939x->micb_lock);
--	return ret;
-+	return 0;
+-	spin_lock_irqsave(&wm0010->irq_lock, flags);
+-	wm0010->state = WM0010_POWER_OFF;
+-	spin_unlock_irqrestore(&wm0010->irq_lock, flags);
++	scoped_guard(spinlock_irqsave, &wm0010->irq_lock)
++		wm0010->state = WM0010_POWER_OFF;
  }
  
- static int wcd939x_mbhc_micb_ctrl_threshold_mic(struct snd_soc_component *component,
+ struct wm0010_boot_xfer {
+@@ -190,11 +187,9 @@ struct wm0010_boot_xfer {
+ static void wm0010_mark_boot_failure(struct wm0010_priv *wm0010)
+ {
+ 	enum wm0010_state state;
+-	unsigned long flags;
+ 
+-	spin_lock_irqsave(&wm0010->irq_lock, flags);
+-	state = wm0010->state;
+-	spin_unlock_irqrestore(&wm0010->irq_lock, flags);
++	scoped_guard(spinlock_irqsave, &wm0010->irq_lock)
++		state = wm0010->state;
+ 
+ 	dev_err(wm0010->dev, "Failed to transition from `%s' state to `%s' state\n",
+ 		wm0010_state_to_str(state), wm0010_state_to_str(state + 1));
+@@ -558,7 +553,6 @@ static int wm0010_boot(struct snd_soc_component *component)
+ {
+ 	struct spi_device *spi = to_spi_device(component->dev);
+ 	struct wm0010_priv *wm0010 = snd_soc_component_get_drvdata(component);
+-	unsigned long flags;
+ 	int ret;
+ 	struct spi_message m;
+ 	struct spi_transfer t;
+@@ -568,10 +562,10 @@ static int wm0010_boot(struct snd_soc_component *component)
+ 	u8 *out;
+ 	int i;
+ 
+-	spin_lock_irqsave(&wm0010->irq_lock, flags);
+-	if (wm0010->state != WM0010_POWER_OFF)
+-		dev_warn(wm0010->dev, "DSP already powered up!\n");
+-	spin_unlock_irqrestore(&wm0010->irq_lock, flags);
++	scoped_guard(spinlock_irqsave, &wm0010->irq_lock) {
++		if (wm0010->state != WM0010_POWER_OFF)
++			dev_warn(wm0010->dev, "DSP already powered up!\n");
++	}
+ 
+ 	if (wm0010->sysclk > 26000000) {
+ 		dev_err(component->dev, "Max DSP clock frequency is 26MHz\n");
+@@ -579,7 +573,7 @@ static int wm0010_boot(struct snd_soc_component *component)
+ 		goto err;
+ 	}
+ 
+-	mutex_lock(&wm0010->lock);
++	guard(mutex)(&wm0010->lock);
+ 	wm0010->pll_running = false;
+ 
+ 	dev_dbg(component->dev, "max_spi_freq: %d\n", wm0010->max_spi_freq);
+@@ -589,7 +583,6 @@ static int wm0010_boot(struct snd_soc_component *component)
+ 	if (ret != 0) {
+ 		dev_err(&spi->dev, "Failed to enable core supplies: %d\n",
+ 			ret);
+-		mutex_unlock(&wm0010->lock);
+ 		goto err;
+ 	}
+ 
+@@ -601,17 +594,15 @@ static int wm0010_boot(struct snd_soc_component *component)
+ 
+ 	/* Release reset */
+ 	gpiod_set_value_cansleep(wm0010->reset, 0);
+-	spin_lock_irqsave(&wm0010->irq_lock, flags);
+-	wm0010->state = WM0010_OUT_OF_RESET;
+-	spin_unlock_irqrestore(&wm0010->irq_lock, flags);
++	scoped_guard(spinlock_irqsave, &wm0010->irq_lock)
++		wm0010->state = WM0010_OUT_OF_RESET;
+ 
+ 	if (!wait_for_completion_timeout(&wm0010->boot_completion,
+ 					 msecs_to_jiffies(20)))
+ 		dev_err(component->dev, "Failed to get interrupt from DSP\n");
+ 
+-	spin_lock_irqsave(&wm0010->irq_lock, flags);
+-	wm0010->state = WM0010_BOOTROM;
+-	spin_unlock_irqrestore(&wm0010->irq_lock, flags);
++	scoped_guard(spinlock_irqsave, &wm0010->irq_lock)
++		wm0010->state = WM0010_BOOTROM;
+ 
+ 	ret = wm0010_stage2_load(component);
+ 	if (ret)
+@@ -621,9 +612,8 @@ static int wm0010_boot(struct snd_soc_component *component)
+ 					 msecs_to_jiffies(20)))
+ 		dev_err(component->dev, "Failed to get interrupt from DSP loader.\n");
+ 
+-	spin_lock_irqsave(&wm0010->irq_lock, flags);
+-	wm0010->state = WM0010_STAGE2;
+-	spin_unlock_irqrestore(&wm0010->irq_lock, flags);
++	scoped_guard(spinlock_irqsave, &wm0010->irq_lock)
++		wm0010->state = WM0010_STAGE2;
+ 
+ 	/* Only initialise PLL if max_spi_freq initialised */
+ 	if (wm0010->max_spi_freq) {
+@@ -693,11 +683,8 @@ static int wm0010_boot(struct snd_soc_component *component)
+ 	if (ret != 0)
+ 		goto abort;
+ 
+-	spin_lock_irqsave(&wm0010->irq_lock, flags);
+-	wm0010->state = WM0010_FIRMWARE;
+-	spin_unlock_irqrestore(&wm0010->irq_lock, flags);
+-
+-	mutex_unlock(&wm0010->lock);
++	scoped_guard(spinlock_irqsave, &wm0010->irq_lock)
++		wm0010->state = WM0010_FIRMWARE;
+ 
+ 	return 0;
+ 
+@@ -708,11 +695,9 @@ static int wm0010_boot(struct snd_soc_component *component)
+ abort:
+ 	/* Put the chip back into reset */
+ 	wm0010_halt(component);
+-	mutex_unlock(&wm0010->lock);
+ 	return ret;
+ 
+ err_core:
+-	mutex_unlock(&wm0010->lock);
+ 	regulator_bulk_disable(ARRAY_SIZE(wm0010->core_supplies),
+ 			       wm0010->core_supplies);
+ err:
+@@ -734,9 +719,8 @@ static int wm0010_set_bias_level(struct snd_soc_component *component,
+ 		break;
+ 	case SND_SOC_BIAS_STANDBY:
+ 		if (snd_soc_dapm_get_bias_level(dapm) == SND_SOC_BIAS_PREPARE) {
+-			mutex_lock(&wm0010->lock);
+-			wm0010_halt(component);
+-			mutex_unlock(&wm0010->lock);
++			scoped_guard(mutex, &wm0010->lock)
++				wm0010_halt(component);
+ 		}
+ 		break;
+ 	case SND_SOC_BIAS_OFF:
+@@ -832,9 +816,8 @@ static irqreturn_t wm0010_irq(int irq, void *data)
+ 	case WM0010_OUT_OF_RESET:
+ 	case WM0010_BOOTROM:
+ 	case WM0010_STAGE2:
+-		spin_lock(&wm0010->irq_lock);
+-		complete(&wm0010->boot_completion);
+-		spin_unlock(&wm0010->irq_lock);
++		scoped_guard(spinlock, &wm0010->irq_lock)
++			complete(&wm0010->boot_completion);
+ 		return IRQ_HANDLED;
+ 	default:
+ 		return IRQ_NONE;
 -- 
 2.43.0
 
