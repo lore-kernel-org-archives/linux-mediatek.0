@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FAE6CD98ED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2026 11:10:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27DFFCD98F2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2026 11:11:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MCcNg450A5ExAdoklD+/H48BhvI0tIIxQXlFkv59V9c=; b=BUEyoJyxVPzQut1iKIAV/nhmtK
-	48vA4jAzJIj2t9vxl2Na1OvPrt5RQgk0l8buu9qAHYCxwhtMTpU7VAkqsf9J47rIgMUO/x6rUOZ1d
-	JX8Jo86o4x34W4jp2ViDIBShE5bMAA6e56GP0vAbWxjvIUsysdeLkNj9nQydSsQT0p8RiJMDYLccV
-	ES2oYB3uenUC5EbIolSEVRsogPfZL3V9YhWEDkSOwDI9tRL3LsHCTGHtlSA+O46WSCE6PjMIDNoKc
-	zRhqDcTX3qD2EqYBU2W4vEG8BwVP070AvFfM+q38R/0b/42DoRG820AEyZDi639VLZFIisSif0Q1R
-	V5HipLww==;
+	bh=uALf/9dfvj+6HILGtD9NwFTW55kuICuicnzgKi1Z2S8=; b=o83JlZRTJusRvaZ/v/UmqtOfBK
+	jW9d2aBOcewBtG5AcuBiWUuDmkjwbncHvNaonyBk0UGLPoRIpsdfXlKZe7FDbZlFLo1nuQPm8WxRA
+	hFQxZLZbVNejRKKsIHaQZvmrAlkxhRFYsg+RBZDYftPvXRw5QIOoLpZUDKrh8PNmICI5i0wHHf6Wr
+	cP3vaKzutrxXOqkvVMpfjJ51ZwvxTWVBP9dW3qLNS2qZ7EMwi+oObXbZInDQd1UoWlCX5pFjeZJ0j
+	9hLffBPwhv/FreepfuJ+1vU43GiAsP+zo9q4FFZmIh6hewdE+aQChCZsPG/EA7tOGMXNSl2lc4NY1
+	O4mCPU2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waAe9-00000001AN7-3XZY;
-	Thu, 18 Jun 2026 11:10:57 +0000
+	id 1waAeJ-00000001ATA-1FKB;
+	Thu, 18 Jun 2026 11:11:07 +0000
 Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waAe7-00000001ALK-1dVT
+	id 1waAeF-00000001AQN-32h5
 	for linux-mediatek@lists.infradead.org;
-	Thu, 18 Jun 2026 11:10:56 +0000
-Received: by mail-pl1-x62d.google.com with SMTP id d9443c01a7336-2c6bb8a5980so5702265ad.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 18 Jun 2026 04:10:55 -0700 (PDT)
+	Thu, 18 Jun 2026 11:11:05 +0000
+Received: by mail-pl1-x62d.google.com with SMTP id d9443c01a7336-2c40397e746so5409165ad.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 18 Jun 2026 04:11:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781781055; x=1782385855; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1781781063; x=1782385863; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=MCcNg450A5ExAdoklD+/H48BhvI0tIIxQXlFkv59V9c=;
-        b=HeSS04VHuJYiOp1brpIgtr5uNPGJqXovGzUY4qdbo/G4trxVq/FR8bPKGe515ZBkHX
-         vD7Rd0CfeupLBx0vNVGlpXZE7Rv3LI049DVkaQ9Vfunf5GYw/duO1DNWd2IxbRlwK2Q3
-         jzO6QFcOgIm8eSb6CSwkh4mXZgAyGSLO4pyLHctNNH1ifxqPF5gEH/+6cet/K6FXgFeZ
-         EgkcYCS6z6+Ba/elzIiCIVB8FapaBtfWhl0Uq+DZ0XHzh0//3Et6bx1IrK2cWJs2Khy/
-         TNan32y9w//waASRGZz7LscRrOgHzMnZGx0pmGqojG51z2IOGOaOQSxBhkuJJDjOQj2K
-         ZPiA==
+        bh=uALf/9dfvj+6HILGtD9NwFTW55kuICuicnzgKi1Z2S8=;
+        b=VumaDQfMMfmQbJ8niiK2iGik2ZopdtI1FQAa8Y/+WZNhAVJNpIVFtMEo9TtkQrc/41
+         haIsGcmEF/9S54YfYiyxHgTBpLpLNS2E4aQb+F4y0LqBev6TRWYiAvrEIlhdJ7xsmIsi
+         t1kzd4zm32tPqSjt9LGCGiCdqBXBgopAlD/jGgdBK4emIuXkQe15kqTsYiju16M6HEyU
+         w2DSmDbTN6gXsNZA2BLVS+e4igIrVimySUxS1old+YpO5kBYOzoNVGzasa2HICjq5hY+
+         YIJhSQ/A2kk9jhoGvPN/p57qHR9FIww8F3tHD6G+TSERdNbhHVKmifJTMMqgJboiq3Bj
+         IMNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781781055; x=1782385855;
+        d=1e100.net; s=20251104; t=1781781063; x=1782385863;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=MCcNg450A5ExAdoklD+/H48BhvI0tIIxQXlFkv59V9c=;
-        b=pOR+sY7xpX+NPd1G/oA15q26ZFoBjdDheFCD8FASHp6U1GLam0x13EWzRFS7Cl6Xod
-         F/AKslUU7FhpMeQxl9ANd+3tYKTfXrxgnYdZ229Gsk4UoUhtXMijjxa8FmHK8upVP5Bz
-         Oa6t/3WsW28A92z6FLjrP38wQKsE21prDrhyu/LSnQ++BgwPmJqwbWsKsnzxbi/gjo54
-         dG31Y1HHJEz6asnqPH1gOR6w7zXlopQuBVVMXHXWfvpuF3auKEbJ3rWtoNiuOSbMfdJm
-         TyjvNobELyLhBarRW5RuaNMSMSonl9DQnR6BiituOUIsKVr4KQ5bfQ2m5qH9jlnAvvfy
-         tPVg==
-X-Forwarded-Encrypted: i=1; AFNElJ+0iaJrFJdTtkOvGmIASRZbIcJ3Fq/Q2BRa9TXO0yOiU0ZiUA1AFzYDoaXrNaN+8Ci4zvZAb/QfIy6hh6YK1g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YznJ95Lxi1FUjhd9ADwE10NyNBPvIPWHUQ7nNeUPX92ootvFG0z
-	+cTPqf2jE4rzOCSeKCuROigNb04VV2wbJsCFNdl5DC/fzs0knlZqcpvd
-X-Gm-Gg: AfdE7cnFHzSrSHMTnJViZx5DzL2vLg7/SahAJRwPTbfxpLbc6FS6v+qvCvv43sWd4YB
-	VmQMFilsPJIGAaVxEvsL4TkvFD/nXS66isQxBWd9ahZb/S16u1dRZfHSY9gRVB6isWze5eWLlTN
-	vYdolXHktQH7lHIZluxQbvaGSCDTVk1rIaRfIFeUDd3HfAyGWNFLmNvMA5wc3291t9SlCN6TR/U
-	v4wRDnEcuetIRr+Py9cxaRgiTfsIntI8JLMo/+Xd0CGQXu0I8QCZZIJCYlHwQH+bufbZI0BkGym
-	LkeiXyzbFu5l9J6dARwFbRQXef70UE3gexLOfwAY+uF/iOLtow/nEBNaIsIl/eXMKCAGygIFaH+
-	Tbeixspg21Qs0rL6e49hnWiXmlArIK5BybGVQPNDSCHCKZqbCvg72rDIQuHYu8+ELP+1wBCS+l9
-	RiHl574S9jNNpN5w7eoD0XA1At9y1OQJh3ZGpPCgSnlrTCBFA=
-X-Received: by 2002:a17:903:178b:b0:2c6:a487:f431 with SMTP id d9443c01a7336-2c6e5276170mr34746725ad.23.1781781054643;
-        Thu, 18 Jun 2026 04:10:54 -0700 (PDT)
+        bh=uALf/9dfvj+6HILGtD9NwFTW55kuICuicnzgKi1Z2S8=;
+        b=DM0RJBQgiTbubWH3RllDkEivtKXpE2sc18pi3P/caFhvAq6gNwBM5DEENL8uFXvBES
+         Tu/lo+csnt488nbUhpvIhGB2ylQK4GYzxK6TjIsG63pQzj6cQKVlv6pMWjsXn7+EqWUk
+         r30uMKxyPo1Sd4BfIv3aLE5EvwqDUXmbAtHbTVwtK/QZmqRBkYzxhQWeiC3+nSbIBtN7
+         DOeHCUAzSru+orGTLGaccG0f65Gix9OVTKwR5vIOaZwxkJ0AFkYWFtOvXOaxajH3qPcQ
+         XQrAPaVhuenz68PIYJUsSeI5osY8U6+wVOAngIzClHIrpd6IEc+PavSP/61TM5Bfq/s1
+         pLRw==
+X-Forwarded-Encrypted: i=1; AFNElJ++F6uwy0CTDLABiOsJ16qef5M9RjwKA17qmW5YBkJs/hc8Z6ONABMlQ8eS41Q8iaLrie1GsV5K8U0F8//shA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzK4EsTJ8y3hT6ZBdRg9pSGRSZkwOBZ33xkUtJ3FSTRT/7qRfdo
+	3vWg4WU4q+1KA1dygH18MU5SYTrjY/DDCDXCI4uzFrHvrr5Qf0/Kd4VC
+X-Gm-Gg: AfdE7cko1w3X5+uxKqdQSrpYJLyPH53j3FpfEXLr13OBXSplOvV0wnoEFOeD5MHZLW+
+	zR/sNAZFp6MsyIvO3/CVYz+3EBblTiijHNadQbY/KvxIjC/iH54YM4q6SQA2XS5fj2rDB5vScG0
+	kPR8FSNxsxysvbJE6iFQJ1fhqS8G0ZUJLL+/y37JTmLoZaY2AMaI25da4dP5BAHQ5o75oGiNHS5
+	Mn4VfSISTsjUhE4oTo/0QPxY1+wqn2sY/WBTGsg+qQRJ9ecgY5NcBbS/k+WrVYt51Pyqu0AtPLp
+	iqB2W7dJcZEEtGe9jbAov2CciT+SObG4ZtFNGG4YWkaJuLPhxilBJgYAwAMNAiGXg/T5pI5eR0g
+	AX9F8VgWTvu3nGbT81QOE5GKbGEuEpY+vnoiGzBo++h2FgZmmS6dlfCHflSE8QDterWhzIbRPKG
+	r40kYietbd6NuFI0Zk8YOxXk96U4HaTE+UTrmXnNZk88dPY7E=
+X-Received: by 2002:a17:902:ec87:b0:2bf:1cda:29ce with SMTP id d9443c01a7336-2c6f340c89fmr22802915ad.6.1781781062990;
+        Thu, 18 Jun 2026 04:11:02 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2c42f1f0f19sm196384565ad.10.2026.06.18.04.10.47
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2c42f1f0f19sm196384565ad.10.2026.06.18.04.10.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Jun 2026 04:10:54 -0700 (PDT)
+        Thu, 18 Jun 2026 04:11:02 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Mark Brown <broonie@kernel.org>
 Cc: Liam Girdwood <lgirdwood@gmail.com>,
@@ -105,9 +105,9 @@ Cc: Liam Girdwood <lgirdwood@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH 71/78] ASoC: codecs: wm8731: Use guard() for mutex locks
-Date: Thu, 18 Jun 2026 18:08:20 +0700
-Message-ID: <20260618110827.232983-15-phucduc.bui@gmail.com>
+Subject: [PATCH 72/78] ASoC: codecs: wm8903: Use guard() for mutex locks
+Date: Thu, 18 Jun 2026 18:08:21 +0700
+Message-ID: <20260618110827.232983-16-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260618110827.232983-1-phucduc.bui@gmail.com>
 References: <20260617103235.449609-1-phucduc.bui@gmail.com>
@@ -115,8 +115,8 @@ References: <20260617103235.449609-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260618_041055_458730_581F4BF1 
-X-CRM114-Status: GOOD (  10.63  )
+X-CRM114-CacheID: sfid-20260618_041103_863213_730B6FA6 
+X-CRM114-Status: GOOD (  10.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,27 +138,27 @@ Merely code refactoring, and no behavior change.
 
 Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
- sound/soc/codecs/wm8731.c | 3 +--
+ sound/soc/codecs/wm8903.c | 3 +--
  1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/sound/soc/codecs/wm8731.c b/sound/soc/codecs/wm8731.c
-index a2f0e2f5c407..ff004c9e01fb 100644
---- a/sound/soc/codecs/wm8731.c
-+++ b/sound/soc/codecs/wm8731.c
-@@ -115,7 +115,7 @@ static int wm8731_put_deemph(struct snd_kcontrol *kcontrol,
+diff --git a/sound/soc/codecs/wm8903.c b/sound/soc/codecs/wm8903.c
+index 320d7737699d..7c87e927836b 100644
+--- a/sound/soc/codecs/wm8903.c
++++ b/sound/soc/codecs/wm8903.c
+@@ -463,7 +463,7 @@ static int wm8903_put_deemph(struct snd_kcontrol *kcontrol,
  	if (deemph > 1)
  		return -EINVAL;
  
--	mutex_lock(&wm8731->lock);
-+	guard(mutex)(&wm8731->lock);
- 	if (wm8731->deemph != deemph) {
- 		wm8731->deemph = deemph;
+-	mutex_lock(&wm8903->lock);
++	guard(mutex)(&wm8903->lock);
+ 	if (wm8903->deemph != deemph) {
+ 		wm8903->deemph = deemph;
  
-@@ -123,7 +123,6 @@ static int wm8731_put_deemph(struct snd_kcontrol *kcontrol,
+@@ -471,7 +471,6 @@ static int wm8903_put_deemph(struct snd_kcontrol *kcontrol,
  
  		ret = 1;
  	}
--	mutex_unlock(&wm8731->lock);
+-	mutex_unlock(&wm8903->lock);
  
  	return ret;
  }
