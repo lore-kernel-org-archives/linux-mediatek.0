@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DA43CD98ED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2026 11:10:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91D39CD98F7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2026 11:10:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ml8Dfg8DiRS+hvlcBV4USOy9unLoDNhfJzJGobm3XwQ=; b=zAn+J1L5eZL/S5bCy4/c/YgVOq
-	S8ZeI9yMyG9b0Ez+F8S8UEb/Hc/Cqj7I/53VF1aoR6l3PJH2S3VRL134mJ1tAn8FCPnRnn7Fh2wqQ
-	txhxUY3OpmJn2d9JoMHREG1rfXlfzMUu/V9+YruVcfJFlMCD62L0c5SZn5cg5UCBxLX/+sc8KS3Sg
-	42L8+CqsQ0omChUqRRQlZGMcuBaYZQ1pL947VdvqbJFk8ZNzRiJUlqH/AYpeR0XMWZToGmyc2MZOo
-	r2ZfglFUC9+LqkGYxQPFUqupJFV0TigwrzIuynJIGjiAkCWdlE9v2gNSX7Iv7gnvz+Fri3fK9E0ZS
-	yRBUcQTg==;
+	bh=9U2r5uO0a4sNNWl3fg9q20Rk8WeevWmhUpMadyTlIYY=; b=TkNk1Ke8KoNh0E383pgs8bOrvC
+	Ikvx4cJyp2m0eyIdUHpnfQHPCxVCXYRs8AlBSplBEw0qsyfOK1QMUy8kKBx5oECUS84kfOqptaOFg
+	Qgsb0aujBbQsJMFWFj9K2glG2c6TUoEim00R1y2dTFSKRnxQp9D8njQNymlsVDQaf3M67XkFfdw1V
+	8BPcTlyHQde1lsh6w4ekL+AJIpISoB5HM0D1yY3Wz4OF9tkzylbKX1idgL/KASC7g1lFlF/WkJojn
+	Pho8hP7WBL8nSxKj9qtZDGpbR3owjJhaH8rk66KZ1qIF1XOtgbtlDiP8Gvesk+cP/m/Bhe/VBJ/XG
+	JNDZA+ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waAdL-000000019gB-0PHV;
-	Thu, 18 Jun 2026 11:10:07 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1waAdU-000000019pT-2R1D;
+	Thu, 18 Jun 2026 11:10:16 +0000
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waAdH-000000019dh-3Ics
+	id 1waAdS-000000019mJ-1nvN
 	for linux-mediatek@lists.infradead.org;
-	Thu, 18 Jun 2026 11:10:06 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-2c0b9328c4aso5614995ad.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 18 Jun 2026 04:10:03 -0700 (PDT)
+	Thu, 18 Jun 2026 11:10:15 +0000
+Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-2c0c379e8ffso6926285ad.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 18 Jun 2026 04:10:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781781003; x=1782385803; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1781781012; x=1782385812; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Ml8Dfg8DiRS+hvlcBV4USOy9unLoDNhfJzJGobm3XwQ=;
-        b=tNnmmymnQwCH1vkfkPcVYSAfZLWsS98V7r0I+4gHksLlrckgZ3JmVKBzjkjSYeMaln
-         hnmaqIj1kaRrjUiAHsexo6glXSP0DRPqcp5o00zBG6jJe92vgQiRuhrfyEhLeEfzmHDo
-         aR38KcUBssngcAr9Lsgr7OShHe71fqIoBtILhJKuv8R6gH7Z1VXwuiUfBXMMvy5bae/0
-         P+QYptUwS25HKIyZ0fq1DE05hbMO6G0Gcqe3znCeETmchJr1tEpxXlFzZjk7hpqP45KA
-         /3GEfD1+WPdZ+TzYnz6mv9o/OQVPOj8lzRsa30B0KMkgiBUElpr95b8kgRMhDT50tulY
-         IrsA==
+        bh=9U2r5uO0a4sNNWl3fg9q20Rk8WeevWmhUpMadyTlIYY=;
+        b=S4bGZgEL9UtjS5lT/1Ii5W1aIPrGb4HFBWstsBTGWdYdgsytHNRDI9J84MQWOeSnHb
+         GBDdoqu+ukHQynUJFlWcIt4zRgNesgg/TGx2KJ2yHxbA9ak4QaoN1qCeLUWKZTwawvuW
+         FBhElrktWU87nPtBLzut57nmvIKbzZpCQw3Y0SUt7OOGnVPFRvNsgHYdndzDW2EDL2P9
+         HbmOn3KalVRNXhvKZQ/D550NOOMsI0aAge/ttvEiSed2VTRjJdZ6TE6abqoKGoQvX51a
+         FDC0q/wUvn4vC7O7J4H8yVtHcQduwT28op+9ycrE+koevSyrSKm9c6gjjzuVekhqyTi+
+         iCtg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781781003; x=1782385803;
+        d=1e100.net; s=20251104; t=1781781012; x=1782385812;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=Ml8Dfg8DiRS+hvlcBV4USOy9unLoDNhfJzJGobm3XwQ=;
-        b=KQRQv/xI9hc1msmhfleRdqS0JKSeK1kP8xihFfXt+54e2POZ+0oKr9B2qihROlAa7N
-         EUXkDIwDbL7ntYpBJ20J2/cGQbxxOaI0oGEJAgWUW1i3HVINE9Zbzca6yY4PB7pzT6qD
-         EYHFiVXVKnUubBao8bnbtJ4Ltt+WeKlYU/ISlVTcX1Wrd1PabTkyvSrhrD5onHroZt/V
-         r2HPjC+wWH23cQ7yLpipI0Z8YoluzrirzABKeTaZZmgZ5pDoiW0h8eXZTSTAJZRZUlGA
-         /lJ/ljS4FTSyLHQ9pMgqrRX0MzuMQht8RgQ8ObjbGAJrje9pA03CkOIesyEiPtO+AkY+
-         PgbA==
-X-Forwarded-Encrypted: i=1; AFNElJ8EE4VrZ/DoXhseYlRFcXre7m4fDiiFHidoHm42MwUbKHY1epvAiBczxSV/r1rWrVh0fvMpbXm93F1jW4DV3Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz0pQyT28mbMvjyQ+Y31Ez/A7Y9oJEFWIphbqoi8b/DEGd3N5XJ
-	lfyTSRTwCVQCe1jzfQE1R+PQoU1TSNdXENJukQqbTqYh68RXuuxp97in
-X-Gm-Gg: AfdE7cnZBH7UW7kpUnu5KJkr/OV7ufl2xMd2ke7KdtKPLRIpUEc+lqOdznshBtgxTi8
-	YUeYbBb1xDn5Ev5vjASTmEc3tF+tFRd2LyZZ3Esw2fVeBZYR+CqMqV7VkB7p0IohxfF3N64Uz6g
-	orEru5RU/cyWquqIwShPYzEY/5xONKZGhKg/JDHnmSEhugw5bYUHwuoLxxvsdPPcw9/QBIS5xZY
-	jz9tWMeryXw4KyVFSr1KvGTS86S+0A9q0RR10+2Maa7BxcK5ffIE+CwuhCJ/MQxXGr/wK32wJSH
-	3eqvTm3ZLMFXcorCSKLR6uW77CLw7dmUm9iTIrPpZ5Gc9x4ZKzn9YQP9UFacpzsDde24ACYCyDd
-	gDD1LXEk61UMD/YYOx+KSTiVYCejFhoraR+LYT89ZMTrTdw0/jk6n69wLjsoJ0rLLKcL+asM7p6
-	CVm4yhjve3sSC/xzZBOPKpV9ZLVK8B5ZDPbkD+bZlNr64ZxI0=
-X-Received: by 2002:a17:903:249:b0:2b2:ec46:dfed with SMTP id d9443c01a7336-2c6f347409fmr21914825ad.31.1781781003000;
-        Thu, 18 Jun 2026 04:10:03 -0700 (PDT)
+        bh=9U2r5uO0a4sNNWl3fg9q20Rk8WeevWmhUpMadyTlIYY=;
+        b=qADrOG1xYF7V2dJ4AcyjdGdfvvQ9cls74WpxGOCOv9vL6mHTpYUNGrWXHOXyEXin6o
+         BgEKLS9DvFzIT57W0HZy4XG7PEEkKd6js7dzv5+Oy9uy4pBEjJA3XNKTuaQkVj196U8X
+         PMbNwkXRLBo+z3iDv6JyTSMU3e6qXVW/L0HvtearWXaniFshXS752oe2HFdowUO6YiKl
+         Dz0JZVkOevNWP/ub5bJUL0ZGRXgLsXFWzCa/VLCXq4IIdfrjYWp0j0XY+94jnaAu05we
+         dklqGwrqoNM/4ZSuVzXe+7NxUUUjZGw3pX5XM0RQ2r4GpDgFAxFXxZTzWgsPckM8tzUQ
+         C2cg==
+X-Forwarded-Encrypted: i=1; AFNElJ8Jbs/z4SvJkJXvR4Y72HrHfQbhTUdpjhWUcdtGMDjZHrF47P7WiX1G9tLL+PCbtUwD9gBvVwkow3U4Jf6nWw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwGd+vmGvEmJK0rOECfl7OT3S9B3qO30+wHbtNJUoDINhKQmmrR
+	ZrsAPP8KUE6GdjTK0LabDbd60slLThA0JwqCw2lJcvlvZdktXe40oAZY
+X-Gm-Gg: AfdE7cnYF4wjgJWolwdRQ/CHCOL+bo/zgQT1rCRqEsV48ANprGqYZDOL2TP1VuxATN4
+	YUI08NpDX7KjgUcLEgeytGPoq6zxyvnDpen9pIg7SJGENTshgfStz6/xOglpSpip346kZqnQ3bo
+	+2K/K2bWm3/pNOzET952uagWyqCYrVkh4jA0Ar2p4B4DXpVcRI+vqgC3DoCEW5fYWH7pINyxmmP
+	vPDQ27sBPCfhBiGvysh6eLE5EfYvs8FgJDDNw0gyntYz9TAX1xKC8VbHEofbx345CwKFR/uLxNv
+	0FKeXXqnw8vWmrGZ6aD7ik6PMlqHzrr1OfJjke3S4UuatlYbysG1Fyw6uu+bPAk8bY3C/KMf8MB
+	rgpg1RwPawlTisR1t8F/k7HcCOq3JTWyHgCPwuKmUeGekjV5nw88EixAllINWKl586VJEidI6sS
+	9HCAuV7ZNEVMjfCKT+Y55marhYgo+CDdumJZrmFuX24fkkMSg=
+X-Received: by 2002:a17:902:ec82:b0:2c0:b5c1:8e3e with SMTP id d9443c01a7336-2c6e472d580mr33156445ad.8.1781781011500;
+        Thu, 18 Jun 2026 04:10:11 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2c42f1f0f19sm196384565ad.10.2026.06.18.04.09.55
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2c42f1f0f19sm196384565ad.10.2026.06.18.04.10.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Jun 2026 04:10:02 -0700 (PDT)
+        Thu, 18 Jun 2026 04:10:11 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Mark Brown <broonie@kernel.org>
 Cc: Liam Girdwood <lgirdwood@gmail.com>,
@@ -105,9 +105,9 @@ Cc: Liam Girdwood <lgirdwood@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH 65/78] ASoC: codecs: wcd937x: Use guard() for mutex locks
-Date: Thu, 18 Jun 2026 18:08:14 +0700
-Message-ID: <20260618110827.232983-9-phucduc.bui@gmail.com>
+Subject: [PATCH 66/78] ASoC: codecs: wcd938x: Use guard() for mutex locks
+Date: Thu, 18 Jun 2026 18:08:15 +0700
+Message-ID: <20260618110827.232983-10-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260618110827.232983-1-phucduc.bui@gmail.com>
 References: <20260617103235.449609-1-phucduc.bui@gmail.com>
@@ -115,8 +115,8 @@ References: <20260617103235.449609-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260618_041003_828652_C0C30078 
-X-CRM114-Status: GOOD (  13.03  )
+X-CRM114-CacheID: sfid-20260618_041014_566850_59522978 
+X-CRM114-Status: GOOD (  12.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,50 +138,33 @@ Merely code refactoring, and no behavior change.
 
 Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
- sound/soc/codecs/wcd937x.c | 24 +++++++++---------------
- 1 file changed, 9 insertions(+), 15 deletions(-)
+ sound/soc/codecs/wcd938x.c | 21 ++++++++-------------
+ 1 file changed, 8 insertions(+), 13 deletions(-)
 
-diff --git a/sound/soc/codecs/wcd937x.c b/sound/soc/codecs/wcd937x.c
-index e0169e783ee9..8336316866ea 100644
---- a/sound/soc/codecs/wcd937x.c
-+++ b/sound/soc/codecs/wcd937x.c
-@@ -1056,7 +1056,7 @@ static int wcd937x_micbias_control(struct snd_soc_component *component,
- 		return -EINVAL;
- 	}
- 
--	mutex_lock(&wcd937x->micb_lock);
-+	guard(mutex)(&wcd937x->micb_lock);
- 	switch (req) {
- 	case MICB_PULLUP_ENABLE:
- 		wcd937x->pullup_ref[micb_index]++;
-@@ -1136,7 +1136,6 @@ static int wcd937x_micbias_control(struct snd_soc_component *component,
- 		}
- 		break;
- 	}
--	mutex_unlock(&wcd937x->micb_lock);
- 
- 	return 0;
- }
-@@ -1460,7 +1459,7 @@ static int wcd937x_mbhc_micb_adjust_voltage(struct snd_soc_component *component,
+diff --git a/sound/soc/codecs/wcd938x.c b/sound/soc/codecs/wcd938x.c
+index c69e18667a85..9eef1ecec352 100644
+--- a/sound/soc/codecs/wcd938x.c
++++ b/sound/soc/codecs/wcd938x.c
+@@ -1976,7 +1976,7 @@ static int wcd938x_mbhc_micb_adjust_voltage(struct snd_soc_component *component,
  					    int req_volt, int micb_num)
  {
- 	struct wcd937x_priv *wcd937x = snd_soc_component_get_drvdata(component);
+ 	struct wcd938x_priv *wcd938x =  snd_soc_component_get_drvdata(component);
 -	int cur_vout_ctl, req_vout_ctl, micb_reg, micb_en, ret = 0;
 +	int cur_vout_ctl, req_vout_ctl, micb_reg, micb_en;
  
  	switch (micb_num) {
  	case MIC_BIAS_1:
-@@ -1475,7 +1474,7 @@ static int wcd937x_mbhc_micb_adjust_voltage(struct snd_soc_component *component,
+@@ -1994,7 +1994,7 @@ static int wcd938x_mbhc_micb_adjust_voltage(struct snd_soc_component *component,
  	default:
  		return -EINVAL;
  	}
--	mutex_lock(&wcd937x->micb_lock);
-+	guard(mutex)(&wcd937x->micb_lock);
+-	mutex_lock(&wcd938x->micb_lock);
++	guard(mutex)(&wcd938x->micb_lock);
  	/*
  	 * If requested micbias voltage is same as current micbias
  	 * voltage, then just return. Otherwise, adjust voltage as
-@@ -1490,15 +1489,11 @@ static int wcd937x_mbhc_micb_adjust_voltage(struct snd_soc_component *component,
- 						    WCD937X_MICB_VOUT_MASK);
+@@ -2009,15 +2009,11 @@ static int wcd938x_mbhc_micb_adjust_voltage(struct snd_soc_component *component,
+ 						    WCD938X_MICB_VOUT_MASK);
  
  	req_vout_ctl = wcd_get_micb_vout_ctl_val(component->dev, req_volt);
 -	if (req_vout_ctl < 0) {
@@ -198,20 +181,20 @@ index e0169e783ee9..8336316866ea 100644
 +	if (cur_vout_ctl == req_vout_ctl)
 +		return 0;
  
- 	if (micb_en == WCD937X_MICB_ENABLE)
+ 	if (micb_en == WCD938X_MICB_ENABLE)
  		snd_soc_component_write_field(component, micb_reg,
-@@ -1519,9 +1514,8 @@ static int wcd937x_mbhc_micb_adjust_voltage(struct snd_soc_component *component,
+@@ -2038,9 +2034,8 @@ static int wcd938x_mbhc_micb_adjust_voltage(struct snd_soc_component *component,
  		 */
  		usleep_range(2000, 2100);
  	}
 -exit:
--	mutex_unlock(&wcd937x->micb_lock);
+-	mutex_unlock(&wcd938x->micb_lock);
 -	return ret;
 +
 +	return 0;
  }
  
- static int wcd937x_mbhc_micb_ctrl_threshold_mic(struct snd_soc_component *component,
+ static int wcd938x_mbhc_micb_ctrl_threshold_mic(struct snd_soc_component *component,
 -- 
 2.43.0
 
