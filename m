@@ -4,60 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1FFCCD98F6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2026 06:01:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A534FCD98DE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2026 06:01:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xYe/R+B0EIyzp+VSVmzKrxMqtVM346VU1YDtZ/Nm964=; b=B5/tSlMFtdPnXmURVfqDXU/tMs
-	NpdmlK8Dsx9sBmcUg2HEJQL16NSwwmuCMEJCJghAJE3xwT6ZDPuFRDbLvPJgbhRETumOgZQzh7s/x
-	z8O6/C2oCZ5fk/gEpoa3LdcabF8I7cFbMqb7TeM8HAD8UoU4q17T2AwDE+AarnPKxWveOAuFw4efv
-	5i7mlLtrVzdfYicpZTxhcuNPaqX4I4wfxof6WajvPGMi8f7o9ysY8Wm2OBQ2cj7UOPv4XyYxv8LvD
-	vaZMWLpXnBijnP9Ikjc0daoKt7hBXege+u4pHvpcVDh0P2/S2dZhbTP1fbPtQmZGN70D2ut/ufTIr
-	2tEsf+mA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xGANCvU1OXQCfStbhWDRouDGSX9cfoHeD7CBHD4PWeY=; b=4OaK+6Ar8/WPQTht51uzdydpT3
+	I5ZWvtXMpIyNWU9GvKSQBKIS9fZeIHjf43zZTllOlWj/R73Olo1OQShW78ujtq2f5JSeDILZhhW7O
+	XYGqVtOb92s03YiUyDaaLA5HDG2I33WzOL3uhBS7R6jpkEOCcEPyj1ZRyc9bbyYW9cEI0SkZetTzV
+	PXaVQyDSvADA21bJvLsKDAuA+rR/XGkhPKsbMemwSUuCD3T1+L+lFH1jzFFxjFUWT6BiZnIAIkZaM
+	7j8WbFA8QhpyPSxbY+llFuEWyGSKEPm/58g1FgRvHuTAHfk4LkajBYBFZJroXOjzwakrd4H3GbzLA
+	dPTE4fuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wa5oG-00000000fxq-0KmJ;
-	Thu, 18 Jun 2026 06:01:04 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wa5oU-00000000g2l-1l2d;
+	Thu, 18 Jun 2026 06:01:18 +0000
+Received: from mgamail.intel.com ([192.198.163.19])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wa5oB-00000000fum-1m97;
-	Thu, 18 Jun 2026 06:00:59 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id C0B124172F;
-	Thu, 18 Jun 2026 06:00:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 263CE1F000E9;
-	Thu, 18 Jun 2026 06:00:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781762458;
-	bh=xYe/R+B0EIyzp+VSVmzKrxMqtVM346VU1YDtZ/Nm964=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=cFFDo3xdDE7f9X36tOCU65NXDqgnoAHLQ/UzCTnXJ2WidFPO0zIUOiWlITv/ucbTA
-	 9NQUJQEHYf0ySE7FWYGKJ0ZdAMXN+r/K1GBaF3/OqVAOt03Y9tLgSV37wKrUiSdtJR
-	 Axh9i8owHcYZw7dw9N1pPOMx5e9kIZJ3UQ1rZntnxLisNmpgQGAR/7S6lW04wFv3ud
-	 BZNuCefgBmnlpowgKw/Gb0xpD0BCWywYqnNoP7y++mfW/2dvcCvbRT1RZKYEkfj2jl
-	 zxZpm7C0zeuzT0rjy+qya1u0BwoZo8iUL9gdS5kCBoJ0gz77mV5t27NbEtlYgFZhLw
-	 66vUiVJYh95xA==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Thu, 18 Jun 2026 08:00:30 +0200
-Subject: [PATCH net 2/2] net: airoha: fix netif_set_real_num_tx_queues for
- sparse QoS channels
+	id 1wa5oQ-00000000g1d-3Liq
+	for linux-mediatek@lists.infradead.org;
+	Thu, 18 Jun 2026 06:01:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1781762475; x=1813298475;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=RAsd8khCYqSW4I+iICC+jiMD6xMyMVzESx49f2X+uMo=;
+  b=CBBg+IZTAwauLkWc09ji+FG4ydjpmKtxJxX29wvBoFHZgIrqTXAvdHEq
+   eEQwcMyy7zx16YB1k7ZD9pIqzxQivOwY+At1VU6og1czr+1B2UDvbrzRd
+   oxHURQ5BKQyXueyK6RXozstfl7OMDF8CJyKhyFQSMo8oPxlxrYxY4YDYv
+   Gp6CeGAdKDAIUR/oH4kHpKNAQmmybn+gMEZqk3J8kkeMTzg+AG2eIDQoy
+   PwCe9yOPTxzwyp7yu70WD8amaOKL5a9UZDF/83uw3d+RoF2echoedis/z
+   JyD6HOBgWsSv4PDH6T2uP2DUYGNLiP6EIrCt7ObdmCbRCAi7hbwd43Di6
+   A==;
+X-CSE-ConnectionGUID: qTGSarlWSMOAFhidGbKqiw==
+X-CSE-MsgGUID: TMClat8YQPW5kF6uTNfRsA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11820"; a="81572389"
+X-IronPort-AV: E=Sophos;i="6.24,210,1774335600"; 
+   d="scan'208";a="81572389"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+  by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Jun 2026 23:01:13 -0700
+X-CSE-ConnectionGUID: 9U34h6lwQU2aVS/IHyvd2w==
+X-CSE-MsgGUID: MuWYTk+9TF+BTPX/TDMaIw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.24,210,1774335600"; 
+   d="scan'208";a="286389922"
+Received: from lkp-server01.sh.intel.com (HELO f0d55cb201f0) ([10.239.97.150])
+  by orviesa001.jf.intel.com with ESMTP; 17 Jun 2026 23:01:11 -0700
+Received: from kbuild by f0d55cb201f0 with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1wa5oK-00000000VHa-3FLU;
+	Thu, 18 Jun 2026 06:01:08 +0000
+Date: Thu, 18 Jun 2026 14:00:46 +0800
+From: kernel test robot <lkp@intel.com>
+To: Sean Wang <sean.wang@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: oe-kbuild-all@lists.linux.dev, linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Sean Wang <sean.wang@mediatek.com>,
+	Stella Liu <yu-ching.liu@mediatek.com>
+Subject: Re: [PATCH] wifi: mt76: mt7925: support new WoW pattern TLV
+Message-ID: <202606181323.heBYmqMQ-lkp@intel.com>
+References: <20260615212137.477893-1-sean.wang@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260618-airoha-qos-fixes-v1-2-37192652157f@kernel.org>
-References: <20260618-airoha-qos-fixes-v1-0-37192652157f@kernel.org>
-In-Reply-To: <20260618-airoha-qos-fixes-v1-0-37192652157f@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: Wayen Yan <win847@gmail.com>, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.3
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260615212137.477893-1-sean.wang@kernel.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260617_230114_878996_B95FDD3C 
+X-CRM114-Status: GOOD (  10.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,79 +90,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-airoha_tc_htb_alloc_leaf_queue() assigns queue IDs based on the channel
-index (opt->qid = AIROHA_NUM_TX_RING + channel), but updates
-real_num_tx_queues with a simple increment (num_tx_queues + 1). When QoS
-channels are allocated sparsely (e.g., channels 0 and 3 without 1 and
-2), the returned qid can exceed real_num_tx_queues, causing out-of-bounds
-accesses in the networking stack.
-For example, allocating channel 0 then channel 3 results in
-real_num_tx_queues = 34 but qid = 35, which is out of range [0, 34).
-Fix this by computing real_num_tx_queues based on the highest active
-channel index rather than using a simple counter, in both the allocation
-and deletion paths.
+Hi Sean,
 
-Fixes: ef1ca9271313b ("net: airoha: Add sched HTB offload support")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c | 15 ++++++++++++---
- 1 file changed, 12 insertions(+), 3 deletions(-)
+kernel test robot noticed the following build warnings:
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index aa98d1823ab6..e2652cff67c0 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -2789,7 +2789,7 @@ static int airoha_tc_htb_alloc_leaf_queue(struct net_device *netdev,
- 					  struct tc_htb_qopt_offload *opt)
- {
- 	u32 channel = TC_H_MIN(opt->classid) % AIROHA_NUM_QOS_CHANNELS;
--	int err, num_tx_queues = netdev->real_num_tx_queues;
-+	int err, num_tx_queues = AIROHA_NUM_TX_RING + channel + 1;
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
- 	struct airoha_qdma *qdma = dev->qdma;
- 
-@@ -2806,7 +2806,10 @@ static int airoha_tc_htb_alloc_leaf_queue(struct net_device *netdev,
- 	if (err)
- 		goto error;
- 
--	err = netif_set_real_num_tx_queues(netdev, num_tx_queues + 1);
-+	if (num_tx_queues <= netdev->real_num_tx_queues)
-+		goto set_qos_sq_bmap;
-+
-+	err = netif_set_real_num_tx_queues(netdev, num_tx_queues);
- 	if (err) {
- 		airoha_qdma_set_tx_rate_limit(netdev, channel, 0,
- 					      opt->quantum);
-@@ -2815,6 +2818,7 @@ static int airoha_tc_htb_alloc_leaf_queue(struct net_device *netdev,
- 		goto error;
- 	}
- 
-+set_qos_sq_bmap:
- 	set_bit(channel, dev->qos_sq_bmap);
- 	opt->qid = AIROHA_NUM_TX_RING + channel;
- 
-@@ -3003,13 +3007,18 @@ static int airoha_dev_setup_tc_block(struct net_device *dev,
- static void airoha_tc_remove_htb_queue(struct net_device *netdev, int queue)
- {
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
-+	int num_tx_queues = AIROHA_NUM_TX_RING;
- 	struct airoha_qdma *qdma = dev->qdma;
- 
--	netif_set_real_num_tx_queues(netdev, netdev->real_num_tx_queues - 1);
- 	airoha_qdma_set_tx_rate_limit(netdev, queue, 0, 0);
- 
- 	clear_bit(queue, qdma->qos_channel_map);
- 	clear_bit(queue, dev->qos_sq_bmap);
-+
-+	if (!bitmap_empty(dev->qos_sq_bmap, AIROHA_NUM_QOS_CHANNELS))
-+		num_tx_queues += find_last_bit(dev->qos_sq_bmap,
-+					       AIROHA_NUM_QOS_CHANNELS) + 1;
-+	netif_set_real_num_tx_queues(netdev, num_tx_queues);
- }
- 
- static int airoha_tc_htb_delete_leaf_queue(struct net_device *netdev,
+[auto build test WARNING on wireless-next/main]
+[also build test WARNING on wireless/main linus/master v7.1 next-20260616]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
--- 
-2.54.0
+url:    https://github.com/intel-lab-lkp/linux/commits/Sean-Wang/wifi-mt76-mt7925-support-new-WoW-pattern-TLV/20260616-052424
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git main
+patch link:    https://lore.kernel.org/r/20260615212137.477893-1-sean.wang%40kernel.org
+patch subject: [PATCH] wifi: mt76: mt7925: support new WoW pattern TLV
+config: nios2-allmodconfig (https://download.01.org/0day-ci/archive/20260618/202606181323.heBYmqMQ-lkp@intel.com/config)
+compiler: nios2-linux-gcc (GCC) 11.5.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260618/202606181323.heBYmqMQ-lkp@intel.com/reproduce)
 
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202606181323.heBYmqMQ-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+>> drivers/net/wireless/mediatek/mt76/mt7925/mcu.c:15:13: warning: 'mt7925_mcu_wow_pattern_old_tlv' defined but not used [-Wunused-function]
+      15 | static bool mt7925_mcu_wow_pattern_old_tlv(struct mt76_dev *dev)
+         |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+vim +/mt7925_mcu_wow_pattern_old_tlv +15 drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+
+    14	
+  > 15	static bool mt7925_mcu_wow_pattern_old_tlv(struct mt76_dev *dev)
+    16	{
+    17		const char *fw_version = dev->hw->wiphy->fw_version;
+    18		const char *build_date = strrchr(fw_version, '-');
+    19	
+    20		if (!is_mt7925(dev))
+    21			return false;
+    22	
+    23		if (!build_date)
+    24			return false;
+    25	
+    26		build_date++;
+    27	
+    28		return strncmp(build_date, MT7925_WOW_PATTERN_NEW_FW_DATE,
+    29			       strlen(MT7925_WOW_PATTERN_NEW_FW_DATE)) < 0;
+    30	}
+    31	
+
+--
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
