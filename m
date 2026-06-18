@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B4BBCD98F7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2026 12:58:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2782DCD98ED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2026 12:58:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
 	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z7ibR1uk6j3yRvHUeSG7+Ts5vUBpNZwTn1NirzFE3FA=; b=WRm0mYmO+30/T9RUL2Kuln1f0O
-	KuK1mOJfiklrL28cP7KWBdzzvpBFL0Y1ZUdHeyRNng4V7fzW0x3mxdjje1zGPRKrXqoOuCfBcmAV7
-	qXSq8JEZirsbZge1AMGMf6KmbX3BUGtHcllGpMwI+7lr4EBArPZMgd7VZiM3QZjuBn31EyoXcwjvC
-	AxQ4bbixmNjqF64VR0inYa2/LakeXs2qtVwxy2ZLcbBqlGCQybbzwy1K9ubW2wQ+mqIOc2Wy33nYi
-	IhXOgBeY0IZAqD2Jesb731WzoP6gGT8fWJpSiaJD84QzTY6DUHLAtApa2+vNcrf9TP+gi5Iy6WxYd
-	0D3aK3AA==;
+	bh=YBpoQAlaT8nFCgwnSUFeme66HFsPGdI0rDUBeKbrcl8=; b=Gz2pUFk3K6LZ1l5wdvUexpaAE+
+	AJYsFgOiT3LETvPEXVsZpgMykgVw0GPnC+w/rKUhWt06taBnOgStoSSPp6T8YEMzkw+IQ8llyTQ++
+	lOq+3/1zb4gDOh2EqkLUV8p36YcZVR43VS+9u2X1lbInNsCKKmq8oFDW2PThu2kwubujtCMPRzNCP
+	OJw3tdK4/JJ1c2HqBw/yhrCpahKSNF3PYVajsxmBX7MQAGNa9qZQf8KhzIX+LetMFxHabsCpweIBr
+	Joafc07Iu6HgwiejQGIrn1f491XiirwXvq7p9qLqvxaRx0co7ssR+DbwFa6eRfyzQUJjMOPR0Fqb9
+	VMmtHaMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waCKQ-00000001Iju-04GJ;
-	Thu, 18 Jun 2026 12:58:42 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1waCKS-00000001In6-1ZDu;
+	Thu, 18 Jun 2026 12:58:44 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waCKB-00000001INl-27iL
+	id 1waCKF-00000001IVH-0bDN
 	for linux-mediatek@lists.infradead.org;
-	Thu, 18 Jun 2026 12:58:28 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-490c0c92cffso6072025e9.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 18 Jun 2026 05:58:26 -0700 (PDT)
+	Thu, 18 Jun 2026 12:58:32 +0000
+Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-49222b6e871so7993095e9.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 18 Jun 2026 05:58:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781787505; x=1782392305; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1781787509; x=1782392309; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=Z7ibR1uk6j3yRvHUeSG7+Ts5vUBpNZwTn1NirzFE3FA=;
-        b=VSSHJPVwohiYn0aXt5yzURk4JY9kKPQW3kuWEjqAyl4Fo8gpDe20HE1bVsaT09FUta
-         aNte+D9FzqtGhAZL1C4tvbfih427QRb8Er36LSdMceX7k+tMh5tN39FSXtQ7U/vVUvnY
-         0VlnGYPrc+olIrr6fF5mVuzqxop7PB89XldxEfwyM/cp09eVcJOzkySdXNdPJI9ka77G
-         LPaQB1T4H6uo5MY+rx6cW/CUaVrggf0trLzzUHNsFl/PO8A+Wyqj8XKVlsXr8lDeiv7b
-         IPZ2DcTTC98ITKJsLT8v+fcbTCuWpPZ67mfZOc0yPnco5Rg5vyKOnZqu3JE4QhGH01LE
-         XhpQ==
+        bh=YBpoQAlaT8nFCgwnSUFeme66HFsPGdI0rDUBeKbrcl8=;
+        b=gukV8D3DU05CnC2Xee9rTk6exPBvRfH6LYuNnVSW3PnIqkBPmFVIF1tsu/OUJRk1J5
+         DNEql8GPWfZA0euZfMfTkBiahG0fovTJxoMsNk+4lVi2Y1/NqTkvtWcWPfzNOPAHf7r+
+         DMl8caYJE6s1mrISc85uQOULE6VnDXhsSMov1JGUOGy5hlMSuQQ43jC8xaTklGPEiV8m
+         og4e/G1XcY3W6yOU369ATAnmhlnjAyAV3wXfWJZ6tmNLxlnPMSZXUs2Fk5aTEM3l/sag
+         oGfN3srAbSzlh46TaN3vvBxKMsSOOwZKeg5g4al+ulTtGWRoHP4dCsLOsTQwm+SYwSYV
+         Jn9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781787505; x=1782392305;
+        d=1e100.net; s=20251104; t=1781787509; x=1782392309;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=Z7ibR1uk6j3yRvHUeSG7+Ts5vUBpNZwTn1NirzFE3FA=;
-        b=ZdUhPL4x+rpYnwcy8IAoaBO0lwC5B+5qw3f4dkbJnFDgj8lSQ6nGIJB8LCpdMYiU4j
-         sa63AtMD9N9ZyoEOhvItBnWK1fr6tUF17Jm9Kvn4oPJoOtyJqdFx0x83WR2O398hCFEi
-         w7QeCRWrA53D1cTG67iYaKWtMGWh1OphkY6pr2Da9BgP47MmylmAGVqnofHTozMtKyBJ
-         amhFW5+OshbIWCGRZnkxCXBEiN1F8z/X2/Kwn6MQ1lIpkSSNU+7s6R9QG+D3YfIUi8MV
-         7UvKymF2jn2XSvFq7ywcKJ7GlAN9+Jy7WQQ+aGfFEeH0upnJSk7OfZXJELYvS+SSaysf
-         iw0Q==
-X-Forwarded-Encrypted: i=1; AFNElJ8EN9WxWxNn+GZMJLIOzRuQ29wXHz+HNU7llFr1QM9Y3mFvf18uLiHLa00YWpCiHQN7AgYUD82cQudHYoKdTg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzuwg6zJj3OsIWVN9F1knAFuzhwFzHgbgWbNx5ID443F40WcR2M
-	TCLy9cyH7ZIiiRa4CoMkCYiNpDbbRZ4aOvQfXcSoOv2zZsuo2xbEAoU8
-X-Gm-Gg: AfdE7ckPxz+jvMV+6G4rbVwl0fjbVGduQHbrF2yOmTRupF9S0bEggEyZA/u4oVk5S05
-	lff0AxnXL1Y2WsSy4oF/D5y80Lcxtz6yU1p1HCKIznHivWkdYnR8preV837af9/3qQbgLdJTGmY
-	1Gw+cxDediM/3UO0cqZEGJucdHgRXYAxlywYSKvNNY3XjPVac1DBB9Lsi0OtAk53v/Zj+5tXhm3
-	GxD3jG6zY68XeS6/Lh8WdiWPaWJBtSggTuAhr6LYj43XG1I2kduXcH27LEYJJ3RzejZv4VaGR/X
-	J7B22SLH48Z8VdyoDUYH8sinsoeu3ZCEWC7Ow9eqUuPZC5PHZff8jh7Dh5OEUjT52jldY9Jrw6H
-	4hNb6pEesH+ZS8TYAgLeHSHxvQoiQxd+R+a1drLF5ppOulVZtIEAbkOl8EpbYjEL+Bp5qW6xBwt
-	ZpY5J+YZp6krwKmc3QV6dphnkuv+GS8BsQywNT/103FNqjs3UO4fxGI22UJ/8kfQ==
-X-Received: by 2002:a05:600c:2947:b0:490:6237:5200 with SMTP id 5b1f17b1804b1-492333f5dbamr93229425e9.10.1781787505189;
-        Thu, 18 Jun 2026 05:58:25 -0700 (PDT)
+        bh=YBpoQAlaT8nFCgwnSUFeme66HFsPGdI0rDUBeKbrcl8=;
+        b=EsVW6kwFA0Yh01Wm0jjQrHZyaxA9hprlUAg/IrB8WE4gNyZV6TQBkq9n9op9A3HqFW
+         RBP+8Ww6oHEOSjYgbbwGtpfIdQn0csCPetZgSTEMX706U3Y/sPOK/+malZbVX1nUFBrc
+         C0n2ooJ4l+IgZaTltbfxWG3LmDr9Y9WggjINrPF/L5WUDko3eDTsFdRQeSNjiWNR0Q01
+         5sI8sw6Y8DPmBS8Ny0wy/Wy/vfjeFJeWRXyC2Or2U+vgU1ISz65YcJMclu3HB7Pte+4U
+         ovpAUulHRIcFMWzSxNITFWxDheoYoiIG90lOHHmRbK0ectl9keI52YAP8nmwR+aYKNVR
+         4yBw==
+X-Forwarded-Encrypted: i=1; AFNElJ/EfdEZScbILXpfcW8tbc+ul2QE5VPtknFMgmv4XYFynfWvviRg0knhVU1OOiFRoWapfUm5jYwoB/ZMF13Z+A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwdWFbmLAad9BCKIJjA/GSXpwR2U6IRCfloqqmkSbAJgLqVlrss
+	t5zGA2hycPIQgeUym32ct3W4gW/MM+m5ywFwSCTwYu1W+yxpdOu9sk7n
+X-Gm-Gg: AfdE7cmTXNa453oztQsAt6fq9xPE5yvT6EHQzEKvzxHUSanDJZuyQiaRy5IcvLfjQ/e
+	saYnLJZ1Cm4o1uz13DF3CbUCn6AgdtTov5o9flG/A3DsbW15KxtCXtEhAvovb8kXinBSoMFDtC4
+	qB/qwgys/NzF7bpRLr9R/UPUSyMByfrZdxYij2IQmGnt1g/fRNvzwPTQmeLtCVVoWvkfDeyqAHj
+	dW4RHJf4ryyNdTWfd8KSy1XfDqGlk64jKT9/3y3q19gMBUvFv/znXvA7ony89pvNFrLUFucjMiD
+	GyrnumRiiCqUdIGEkf4SxH9irD5JGKJIgI4L/5sbVAZSISawfGYgcasv2Q+x+YCAZXm9dHgyGSl
+	ucYEqtfUjgWLem0amBKjaorPqNCoTl/DBLha2bhEYt2IcgyHBLHeBlWDBV1TWKrrCKNhZm8TBNz
+	NHM+Q+na38hatmU09sHsT54fbDmSAF/9GXsoyMtYRIckOENJguxdAm19Z8wCJfEg==
+X-Received: by 2002:a05:600c:3148:b0:490:b5d0:598e with SMTP id 5b1f17b1804b1-4923412f0e7mr127508315e9.21.1781787509280;
+        Thu, 18 Jun 2026 05:58:29 -0700 (PDT)
 Received: from Ansuel-XPS24.localdomain (93-34-88-103.ip49.fastwebnet.it. [93.34.88.103])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-49230a458f2sm241451585e9.3.2026.06.18.05.58.23
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-49230a458f2sm241451585e9.3.2026.06.18.05.58.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Jun 2026 05:58:24 -0700 (PDT)
+        Thu, 18 Jun 2026 05:58:28 -0700 (PDT)
 From: Christian Marangi <ansuelsmth@gmail.com>
 To: Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
@@ -99,18 +99,17 @@ To: Andrew Lunn <andrew+netdev@lunn.ch>,
 	linux-mediatek@lists.infradead.org,
 	llvm@lists.linux.dev,
 	Maxime Chevallier <maxime.chevallier@bootlin.com>
-Subject: [RFC PATCH net-next v8 07/12] MAINTAINERS: add myself as PCS subsystem maintainer
-Date: Thu, 18 Jun 2026 14:57:15 +0200
-Message-ID: <20260618125752.1223-8-ansuelsmth@gmail.com>
+Subject: [RFC PATCH net-next v8 09/12] net: phylink: add .pcs_link_down PCS OP
+Date: Thu, 18 Jun 2026 14:57:17 +0200
+Message-ID: <20260618125752.1223-10-ansuelsmth@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260618125752.1223-1-ansuelsmth@gmail.com>
 References: <20260618125752.1223-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260618_055827_701610_0F6517E6 
-X-CRM114-Status: UNSURE (   9.17  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260618_055831_209605_30804792 
+X-CRM114-Status: GOOD (  14.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,34 +124,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-List all the files of the Ethernet PCS subsystem and add myself as
-maintainer.
+Permit for PCS driver to define specific operation to tear down the link
+between the MAC and the PCS.
+
+This might be needed for some PCS that reset counter or require special
+reset to correctly work if the link needs to be restored later.
+
+On phylink_link_down() call, the additional phylink_pcs_link_down() will
+be called after .mac_link_down to tear down the link.
+
+PCS driver will need to define .pcs_link_down to make use of this.
 
 Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 ---
- MAINTAINERS | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ drivers/net/phy/phylink.c |  9 +++++++++
+ include/linux/phylink.h   | 12 ++++++++++++
+ 2 files changed, 21 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index cc1dde0c9067..ef3ef5096d08 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -9593,6 +9593,15 @@ F:	include/uapi/linux/if_bridge.h
- F:	include/linux/netfilter_bridge/
- F:	net/bridge/
+diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
+index b9a212bd1206..b2b1d57dacd2 100644
+--- a/drivers/net/phy/phylink.c
++++ b/drivers/net/phy/phylink.c
+@@ -1038,6 +1038,12 @@ static void phylink_pcs_link_up(struct phylink_pcs *pcs, unsigned int neg_mode,
+ 		pcs->ops->pcs_link_up(pcs, neg_mode, interface, speed, duplex);
+ }
  
-+ETHERNET PCS SUBSYSTEM
-+M:	Christian Marangi <ansuelsmth@gmail.com>
-+L:	netdev@vger.kernel.org
-+S:	Maintained
-+F:	Documentation/networking/pcs.rst
-+F:	drivers/net/pcs/pcs.c
-+F:	include/linux/pcs/pcs-provider.h
-+F:	include/linux/pcs/pcs.h
++static void phylink_pcs_link_down(struct phylink_pcs *pcs)
++{
++	if (pcs && pcs->ops->pcs_link_down)
++		pcs->ops->pcs_link_down(pcs);
++}
 +
- ETHERNET PHY LIBRARY
- M:	Andrew Lunn <andrew@lunn.ch>
- M:	Heiner Kallweit <hkallweit1@gmail.com>
+ static void phylink_pcs_disable_eee(struct phylink_pcs *pcs)
+ {
+ 	if (pcs && pcs->ops->pcs_disable_eee)
+@@ -1739,6 +1745,9 @@ static void phylink_link_down(struct phylink *pl)
+ 
+ 	pl->mac_ops->mac_link_down(pl->config, pl->act_link_an_mode,
+ 				   pl->cur_interface);
++
++	phylink_pcs_link_down(pl->pcs);
++
+ 	phylink_info(pl, "Link is Down\n");
+ }
+ 
+diff --git a/include/linux/phylink.h b/include/linux/phylink.h
+index 15e6b1a39dfe..ecf4c384fd31 100644
+--- a/include/linux/phylink.h
++++ b/include/linux/phylink.h
+@@ -528,6 +528,7 @@ struct phylink_pcs {
+  * @pcs_an_restart: restart 802.3z BaseX autonegotiation.
+  * @pcs_link_up: program the PCS for the resolved link configuration
+  *               (where necessary).
++ * @pcs_link_down: tear down link between MAC and PCS.
+  * @pcs_disable_eee: optional notification to PCS that EEE has been disabled
+  *		     at the MAC.
+  * @pcs_enable_eee: optional notification to PCS that EEE will be enabled at
+@@ -555,6 +556,7 @@ struct phylink_pcs_ops {
+ 	void (*pcs_an_restart)(struct phylink_pcs *pcs);
+ 	void (*pcs_link_up)(struct phylink_pcs *pcs, unsigned int neg_mode,
+ 			    phy_interface_t interface, int speed, int duplex);
++	void (*pcs_link_down)(struct phylink_pcs *pcs);
+ 	void (*pcs_disable_eee)(struct phylink_pcs *pcs);
+ 	void (*pcs_enable_eee)(struct phylink_pcs *pcs);
+ 	int (*pcs_pre_init)(struct phylink_pcs *pcs);
+@@ -690,6 +692,16 @@ void pcs_an_restart(struct phylink_pcs *pcs);
+ void pcs_link_up(struct phylink_pcs *pcs, unsigned int neg_mode,
+ 		 phy_interface_t interface, int speed, int duplex);
+ 
++/**
++ * pcs_link_up() - tear down link between MAC and PCS
++ * @pcs: a pointer to a &struct phylink_pcs.
++ *
++ * This call will be made just after mac_link_down() to inform the PCS the
++ * link has gone down. PCS should be configured to stop processing packets
++ * for transmission and reception.
++ */
++void pcs_link_down(struct phylink_pcs *pcs);
++
+ /**
+  * pcs_disable_eee() - Disable EEE at the PCS
+  * @pcs: a pointer to a &struct phylink_pcs
 -- 
 2.53.0
 
