@@ -4,60 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C5C0CD98F2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2026 15:42:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCAD2CD98ED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2026 21:06:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VjfhLXxCEIVy/ezaAy4yB7hmEeEswoa6WnM2lC5QNec=; b=T5teqVmrVMPYAOIRJ48hxTR18d
-	jm61y3qquOJtF+hX5mJqQFYfLCnlsO04rovHtDi0z5p799oI3+uziJUF3OZdLO8RNg2m+aMFfEHpf
-	q+7PlYBQNkz3Wi3XB06PWXzEsnNrIcLlHcnlN42aPDUXjnWP4guXmCjXNFjl78R83/wGM5oinutTI
-	y9XOISXmUXsHqu8hZBLBvcaLWP/rKhMC07bpvuQ2YbrlN4PSkPE8SDPkfqewiXSmHuYNVdJyUcYCh
-	HhbII2achI7EBd6Mm1OkvYqCUiNfDcjZz++X09oUuptwUl3YtaGI/j4CskYu0+OE88XQLzd2QTzis
-	C9LtcMKg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wBQkNjECV6xY2iyUaF8p4ty+DWlCLVOGQLFUXgO2Ou4=; b=jq6DfIppgouGaW2zNhhEWib1wV
+	eXwJXW8HcypzuYstTdNs81Ocllcmdu25mRzKLZi5okphy86EpoYBZwmDWQcIbpACk+lQT5soUN2UE
+	9/DyETQvRUwSkDDXNViNB9eVXsLLmLNDMtTK8vn4ACnL62VYKsZZtH1sn69sA/9AewMMSEpl//R6i
+	XOPZ3I2ahQSiJRy6fo88TMykDSl2sywadHouHlb5EtMoBJ1FYKcLN6dW10E3AY5i6oV8Uadm9aU0Y
+	CquKpW0SaQMQaFY9UNIazB2t+T0zCEZ/IMKbl39XJMuhOGC6F9b9v6PiOHtqjMkEtqAhddUHQFTy6
+	cwNprNaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waEt2-00000001VGu-1MmA;
-	Thu, 18 Jun 2026 15:42:36 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1waJwl-00000001ngK-1knG;
+	Thu, 18 Jun 2026 21:06:47 +0000
+Received: from mout-p-101.mailbox.org ([80.241.56.151])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waEt1-00000001VGh-0jTC;
-	Thu, 18 Jun 2026 15:42:35 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 476FF60018;
-	Thu, 18 Jun 2026 15:42:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 72D8D1F000E9;
-	Thu, 18 Jun 2026 15:42:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781797354;
-	bh=VjfhLXxCEIVy/ezaAy4yB7hmEeEswoa6WnM2lC5QNec=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=DzbhgxUxeAAYXTM+y0XcRW+5iZqzWl5duVZ+s/g3tJbbbmbl1xhUB3ebZDAjCW92Z
-	 P9pI9QDUChwsNy3UYAtGN5tUw+brEAw0j6GfjGvGobzW5ietV1tlOg+k7KO9ywrt3p
-	 0spdSwh4RwZqD0bzRzj6s5R9/CpcgERhifh8yuINFvaCue+fEfrw32jwju/jlrpDCc
-	 8FrsbMQpqbyPwMOeczena4A2bCrm0FpffxYr4z0RRuMiumw3pWO56C40ndEzIcqtXE
-	 kQAF3WRj5MsiKd0JYrW18EKNwWGUVS2p6SxkNtrW8CO74KTaqKaQ7XGzbvGtSVmylH
-	 7rZ18tEXGFcIQ==
-Date: Thu, 18 Jun 2026 17:42:31 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: Wayen Yan <win847@gmail.com>, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net] net: airoha: fix BQL underflow and UAF in shared
- QDMA TX ring
-Message-ID: <ajQR533ZUKyS5KYP@lore-desk>
-References: <20260618-airoha-bql-fixes-v1-1-ffd2c2089518@kernel.org>
+	id 1waJwg-00000001nfU-1bvS;
+	Thu, 18 Jun 2026 21:06:45 +0000
+Received: from smtp1.mailbox.org (smtp1.mailbox.org [10.196.197.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mout-p-101.mailbox.org (Postfix) with ESMTPS id 4ghCvZ32Jhz9tjF;
+	Thu, 18 Jun 2026 23:06:34 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=adamthiede.com;
+	s=MBO0001; t=1781816794;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=wBQkNjECV6xY2iyUaF8p4ty+DWlCLVOGQLFUXgO2Ou4=;
+	b=1o2eMq7CpiT82lLfa/EJ2bHxFGd9w1DrgDAhipxOxOToKoH5b6R6Exfos4jx3OiiFM7szl
+	O3pXAeC2FF7dMTnguh/ngM8RXbAnRCu3X+fjoAP977qNzCafGtvBJvs8YcTt118kkTHnMB
+	uUilaRaKfr5LQ/fIxRUh5mqtsig91nSnsvQa0rNx43GWR3HVa7vVmScKZYZ/3qljYRhSU9
+	4tY78sF1ojmAjfASV+j0xcVW8E9vB/XcYWckCHHPON9vK4V+t40RvtxZskPNO2l4DdoI+7
+	hNpS0611k6APoQGAALNp0qSH/OILLRjqJlanB1Wlr7d/i3lb64ZCDWC4VIbhhA==
+Message-ID: <42607fa4-485d-4142-b31c-7bfac71118d2@adamthiede.com>
+Date: Thu, 18 Jun 2026 16:06:28 -0500
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="uRgNDmciIoh0RGbX"
-Content-Disposition: inline
-In-Reply-To: <20260618-airoha-bql-fixes-v1-1-ffd2c2089518@kernel.org>
+Subject: Re: [PATCH] drm/mediatek: mtk_dsi: enable hs clock during pre-enable
+To: Gary Bisson <bisson.gary@gmail.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+References: <20260120-mtkdsi-v1-1-b0f4094f3ac3@gmail.com>
+Content-Language: en-US
+From: Adam Thiede <me@adamthiede.com>
+Autocrypt: addr=me@adamthiede.com; keydata=
+ xsBNBF+n+90BCAC2ZRLVcvdXDgfY7EppN05eNor3U7/eeiNCCEIWZkYLhikUEP1ReLGBkXpK
+ Pc70hfnKAKkCoth3IwhDty9WXMNU+iLNei4ieb2luW+UqluR6xIUIA+txahMU9YcjVaQTKf/
+ yZWO4yl6pfBPCxC2UdPZKBAdGoi5NnE0ABFNbhBETQhhBic533lZn33ByupfI3acECnQdjgQ
+ llCUpDbw4I+S/N1iFiEHcbMXH7ZB00e3IYNorZ1E9v7p++5rDY1fQ9gXpieg1vFKwSq1NJWo
+ 9xx336YjaTUbX0EwrdKd9l8AktA3yRjckaK5TAcwSQaDtHvhpbl4ebvPhtwHh699MroXABEB
+ AAHNH0FkYW0gVGhpZWRlIDxtZUBhZGFtdGhpZWRlLmNvbT7CwI4EEwEIADgCGwMFCwkIBwIG
+ FQoJCAsCBBYCAwECHgECF4AWIQQtG9pGQ7sz3tf8M/kC7fV9o/vRzgUCZL1HxQAKCRAC7fV9
+ o/vRzgyRB/wLqRCvvWhQCMgvzeKvru9wcXquhb77K8H/ByLbfiT8YBuP3lZFVh0IQhgO9Ylk
+ fIoOJE4V+jjxyOnO2d9xjGbvAmmR6yT0gfLzSVWqrC4k+V9MWLv43nrNzxt41dvo5j824FAl
+ X+zaiRZCdO8Jtxg5Elpiop2SKLi1utX1Z8i6YZh+ccJZlchUBAGUTk+D4UjK7vUcjLWT96ya
+ CtdtTfXyw36CvGOPEWfc6++Kkl/5sgej1i7biPYzu/r0vssaQYTXKSrv6Cfa3Maa89ASiTtv
+ q4qmhLnJeCrPxWlRAf6LEizeBEkOasYni2u8sp4wBezEq45Ozu45sfPkqLpPolG7zsBNBF+n
+ +90BCADBRt+vrToRBEG580n77S99qSEkbKD+oJtCVyovnjMNkg0K9UG68LIeCX/ezngiV1M8
+ JISvw5iFOuUFqGX/1hLl9wgt/YpuIrgWOp8XxkotavTCloLDvQmufJPO1L8bnnA+WgP2YgVZ
+ 5MJTj/t4DI+yQgysEjsH8aurHO2uuqgJE+xK+2dy6Cl/wskuGxObksSPmmFH5PH0Joziwrtl
+ 61ouLE2XwKbkMgIGEKkbFgbfwz3/QuLZGBni+OOtLzXeZ9wNTW/AHUPy6S9U4F+5z6/09fVT
+ tTH0cvrgAGjbASlYx2VqGONXAsxCfjulq6ryJBFlPLp949c/JTTgOojukCSbABEBAAHCwHYE
+ GAEIACACGwwWIQQtG9pGQ7sz3tf8M/kC7fV9o/vRzgUCZL1H0gAKCRAC7fV9o/vRzlamCACs
+ vHw+0heTm+BfC3S8DUST6889gidIIwdqBep1ByzetCph7Bq8Y8BlT5YTX0u/bSKkxCzFgeTm
+ vC341Q09ST2XjLAl1ZTdzGhH9gcgYyOw34pr5fPQRJLB392mPzD8YReRzciNbhWzj+DLgeVe
+ ouyfGajd6jDjkf4FEq+trQLGZhpfsKn3JnDbzBUs945D50l/vz9q/QN3qZO+H4F6g8ZeMnqo
+ FOEFN26xVtdEDr+0DNFsbgKmEzs675kdAY78ZZdbEetX/FSknxJ+FK1ZW3J7Yswwulj34AXP
+ LB49Mk8Ot7fo6mdt0DkV11JS9LmKxKvpY+KTlrKG+i7pVCSZvVUx
+In-Reply-To: <20260120-mtkdsi-v1-1-b0f4094f3ac3@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260618_140642_629492_1DDE73C2 
+X-CRM114-Status: GOOD (  25.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,274 +102,119 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---uRgNDmciIoh0RGbX
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> When multiple netdevs share a QDMA TX ring and one device is stopped,
-> netdev_tx_reset_subqueue() zeroes that device's BQL counters while its
-> pending skbs remain in the shared HW TX ring. When NAPI later completes
-> those skbs via netdev_tx_completed_queue(), the already-zeroed
-> dql->num_queued counter underflows.
-> Moreover, in the airoha_remove() path, netdevs are unregistered
-> sequentially while skbs from previously unregistered netdevs may still
-> reference freed net_device memory via skb->dev, causing a use-after-free
-> during BQL accounting.
-> Fix both issues:
-> - Remove netdev_tx_reset_subqueue() from airoha_dev_stop() so pending
->   skbs are completed naturally by NAPI with proper BQL accounting.
-> - Add netdev_tx_completed_queue() in airoha_qdma_cleanup_tx_queue()
->   to properly account for skbs freed during queue teardown.
-> - Introduce airoha_qdma_tx_disable() to stop TX on all registered
->   netdevs for a given QDMA instance under RTNL lock.
-> - Move DMA engine start/stop into probe/remove and
->   airoha_qdma_cleanup(), ensuring TX queues are cleaned up while all
->   netdevs are still registered and skb->dev is valid.
->=20
-> Fixes: 6df0488dc9dd ("net: airoha: fix BQL accounting in airoha_qdma_clea=
-nup_tx_queue()")
-
-This Fixes tag is wrong, the proper one is the one below:
-Fixes: a9c2ca61fec7 ("net: airoha: Support multiple net_devices for a singl=
-e FE GDM port")
-
-Regards,
-Lorenzo
-
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+On 1/20/26 05:36, Gary Bisson wrote:
+> Some bridges, such as the TI SN65DSI83, require the HS clock to be
+> running in order to lock its PLL during its own pre-enable function.
+> 
+> Without this change, the bridge gives the following error:
+> sn65dsi83 14-002c: failed to lock PLL, ret=-110
+> sn65dsi83 14-002c: Unexpected link status 0x01
+> sn65dsi83 14-002c: reset the pipe
+> 
+> Move the necessary functions from enable to pre-enable.
+> 
+> Signed-off-by: Gary Bisson <bisson.gary@gmail.com>
 > ---
->  drivers/net/ethernet/airoha/airoha_eth.c | 95 ++++++++++++++++++++++++--=
-------
->  1 file changed, 72 insertions(+), 23 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
-net/airoha/airoha_eth.c
-> index 64dde6464f3f..4d6a061cd779 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -1004,6 +1004,7 @@ static int airoha_qdma_tx_napi_poll(struct napi_str=
-uct *napi, int budget)
-> =20
->  		e =3D &q->entry[index];
->  		skb =3D e->skb;
-> +		e->skb =3D NULL;
-> =20
->  		dma_unmap_single(eth->dev, e->dma_addr, e->dma_len,
->  				 DMA_TO_DEVICE);
-> @@ -1147,6 +1148,42 @@ static int airoha_qdma_init_tx(struct airoha_qdma =
-*qdma)
->  	return 0;
->  }
-> =20
-> +static void airoha_qdma_tx_disable(struct airoha_qdma *qdma)
+> Tested on Tungsten510 module with sn65dsi83 + tm070jdhg30 panel.
+> 
+> Left mtk_dsi_set_mode() as part of the enable function to mimic what is
+> done in the Samsung DSIM driver which is known to be working the TI
+> bridge.
+> ---
+>   drivers/gpu/drm/mediatek/mtk_dsi.c | 35 +++++++++++++++++------------------
+>   1 file changed, 17 insertions(+), 18 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> index 0e2bcd5f67b7..b560245d1be9 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -672,6 +672,21 @@ static s32 mtk_dsi_switch_to_cmd_mode(struct mtk_dsi *dsi, u8 irq_flag, u32 t)
+>   	}
+>   }
+>   
+> +static void mtk_dsi_lane_ready(struct mtk_dsi *dsi)
 > +{
-> +	struct airoha_eth *eth =3D qdma->eth;
-> +	int i;
-> +
-> +	/* Protect netdev->reg_state and netif_tx_disable() calls. */
-> +	rtnl_lock();
-> +
-> +	for (i =3D 0; i < ARRAY_SIZE(eth->ports); i++) {
-> +		struct airoha_gdm_port *port =3D eth->ports[i];
-> +		int j;
-> +
-> +		if (!port)
-> +			continue;
-> +
-> +		for (j =3D 0; j < ARRAY_SIZE(port->devs); j++) {
-> +			struct airoha_gdm_dev *dev =3D port->devs[j];
-> +			struct net_device *netdev;
-> +
-> +			if (!dev)
-> +				continue;
-> +
-> +			if (dev->qdma !=3D qdma)
-> +				continue;
-> +
-> +			netdev =3D netdev_from_priv(dev);
-> +			if (netdev->reg_state !=3D NETREG_REGISTERED)
-> +				continue;
-> +
-> +			netif_tx_disable(netdev);
-> +		}
+> +	if (!dsi->lanes_ready) {
+> +		dsi->lanes_ready = true;
+> +		mtk_dsi_rxtx_control(dsi);
+> +		usleep_range(30, 100);
+> +		mtk_dsi_reset_dphy(dsi);
+> +		mtk_dsi_clk_ulp_mode_leave(dsi);
+> +		mtk_dsi_lane0_ulp_mode_leave(dsi);
+> +		mtk_dsi_clk_hs_mode(dsi, 0);
+> +		usleep_range(1000, 3000);
+> +		/* The reaction time after pulling up the mipi signal for dsi_rx */
 > +	}
-> +
-> +	rtnl_unlock();
 > +}
 > +
->  static void airoha_qdma_cleanup_tx_queue(struct airoha_queue *q)
->  {
->  	struct airoha_qdma *qdma =3D q->qdma;
-> @@ -1158,13 +1195,20 @@ static void airoha_qdma_cleanup_tx_queue(struct a=
-iroha_queue *q)
->  	for (i =3D 0; i < q->ndesc; i++) {
->  		struct airoha_queue_entry *e =3D &q->entry[i];
->  		struct airoha_qdma_desc *desc =3D &q->desc[i];
-> +		struct sk_buff *skb =3D e->skb;
-> =20
->  		if (!e->dma_addr)
->  			continue;
-> =20
->  		dma_unmap_single(eth->dev, e->dma_addr, e->dma_len,
->  				 DMA_TO_DEVICE);
-> -		dev_kfree_skb_any(e->skb);
-> +		if (skb) {
-> +			struct netdev_queue *txq;
-> +
-> +			txq =3D skb_get_tx_queue(skb->dev, skb);
-> +			netdev_tx_completed_queue(txq, 1, skb->len);
-> +			dev_kfree_skb_any(skb);
-> +		}
->  		e->dma_addr =3D 0;
->  		e->skb =3D NULL;
->  		list_add_tail(&e->list, &q->tx_list);
-> @@ -1527,6 +1571,23 @@ static void airoha_qdma_cleanup(struct airoha_qdma=
- *qdma)
->  {
->  	int i;
-> =20
-> +	if (test_bit(DEV_STATE_INITIALIZED, &qdma->eth->state)) {
-> +		u32 status;
-> +
-> +		airoha_qdma_tx_disable(qdma);
-> +
-> +		airoha_qdma_clear(qdma, REG_QDMA_GLOBAL_CFG,
-> +				  GLOBAL_CFG_TX_DMA_EN_MASK |
-> +				  GLOBAL_CFG_RX_DMA_EN_MASK);
-> +		if (read_poll_timeout(airoha_qdma_rr, status,
-> +				      !(status & (GLOBAL_CFG_TX_DMA_BUSY_MASK |
-> +						  GLOBAL_CFG_RX_DMA_BUSY_MASK)),
-> +				      USEC_PER_MSEC, 50 * USEC_PER_MSEC, true,
-> +				      qdma, REG_QDMA_GLOBAL_CFG))
-> +			dev_warn(qdma->eth->dev,
-> +				 "QDMA DMA engine busy timeout\n");
-> +	}
-> +
->  	for (i =3D 0; i < ARRAY_SIZE(qdma->q_rx); i++) {
->  		if (!qdma->q_rx[i].ndesc)
->  			continue;
-> @@ -1837,9 +1898,6 @@ static int airoha_dev_open(struct net_device *netde=
-v)
->  	}
->  	port->users++;
-> =20
-> -	airoha_qdma_set(qdma, REG_QDMA_GLOBAL_CFG,
-> -			GLOBAL_CFG_TX_DMA_EN_MASK |
-> -			GLOBAL_CFG_RX_DMA_EN_MASK);
->  	qdma->users++;
-> =20
->  	if (!airoha_is_lan_gdm_dev(dev) &&
-> @@ -1880,12 +1938,9 @@ static int airoha_dev_stop(struct net_device *netd=
-ev)
->  	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
->  	struct airoha_gdm_port *port =3D dev->port;
->  	struct airoha_qdma *qdma =3D dev->qdma;
-> -	int i;
-> =20
->  	netif_tx_disable(netdev);
->  	airoha_set_vip_for_gdm_port(dev, false);
-> -	for (i =3D 0; i < netdev->num_tx_queues; i++)
-> -		netdev_tx_reset_subqueue(netdev, i);
-> =20
->  	if (--port->users)
->  		airoha_set_port_mtu(dev->eth, port);
-> @@ -1893,19 +1948,7 @@ static int airoha_dev_stop(struct net_device *netd=
-ev)
->  		airoha_set_gdm_port_fwd_cfg(qdma->eth,
->  					    REG_GDM_FWD_CFG(port->id),
->  					    FE_PSE_PORT_DROP);
-> -
-> -	if (!--qdma->users) {
-> -		airoha_qdma_clear(qdma, REG_QDMA_GLOBAL_CFG,
-> -				  GLOBAL_CFG_TX_DMA_EN_MASK |
-> -				  GLOBAL_CFG_RX_DMA_EN_MASK);
-> -
-> -		for (i =3D 0; i < ARRAY_SIZE(qdma->q_tx); i++) {
-> -			if (!qdma->q_tx[i].ndesc)
-> -				continue;
-> -
-> -			airoha_qdma_cleanup_tx_queue(&qdma->q_tx[i]);
-> -		}
+>   static int mtk_dsi_poweron(struct mtk_dsi *dsi)
+>   {
+>   	struct device *dev = dsi->host.dev;
+> @@ -724,6 +739,8 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
+>   	mtk_dsi_set_vm_cmd(dsi);
+>   	mtk_dsi_config_vdo_timing(dsi);
+>   	mtk_dsi_set_interrupt_enable(dsi);
+> +	mtk_dsi_lane_ready(dsi);
+> +	mtk_dsi_clk_hs_mode(dsi, 1);
+>   
+>   	return 0;
+>   err_disable_engine_clk:
+> @@ -769,30 +786,12 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
+>   	dsi->lanes_ready = false;
+>   }
+>   
+> -static void mtk_dsi_lane_ready(struct mtk_dsi *dsi)
+> -{
+> -	if (!dsi->lanes_ready) {
+> -		dsi->lanes_ready = true;
+> -		mtk_dsi_rxtx_control(dsi);
+> -		usleep_range(30, 100);
+> -		mtk_dsi_reset_dphy(dsi);
+> -		mtk_dsi_clk_ulp_mode_leave(dsi);
+> -		mtk_dsi_lane0_ulp_mode_leave(dsi);
+> -		mtk_dsi_clk_hs_mode(dsi, 0);
+> -		usleep_range(1000, 3000);
+> -		/* The reaction time after pulling up the mipi signal for dsi_rx */
 > -	}
-> +	qdma->users--;
-> =20
->  	return 0;
->  }
-> @@ -3413,8 +3456,12 @@ static int airoha_probe(struct platform_device *pd=
-ev)
->  	if (err)
->  		goto error_netdev_free;
-> =20
-> -	for (i =3D 0; i < ARRAY_SIZE(eth->qdma); i++)
-> +	for (i =3D 0; i < ARRAY_SIZE(eth->qdma); i++) {
->  		airoha_qdma_start_napi(&eth->qdma[i]);
-> +		airoha_qdma_set(&eth->qdma[i], REG_QDMA_GLOBAL_CFG,
-> +				GLOBAL_CFG_TX_DMA_EN_MASK |
-> +				GLOBAL_CFG_RX_DMA_EN_MASK);
-> +	}
-> =20
->  	for_each_child_of_node(pdev->dev.of_node, np) {
->  		if (!of_device_is_compatible(np, "airoha,eth-mac"))
-> @@ -3440,6 +3487,8 @@ static int airoha_probe(struct platform_device *pde=
-v)
->  	for (i =3D 0; i < ARRAY_SIZE(eth->qdma); i++)
->  		airoha_qdma_stop_napi(&eth->qdma[i]);
-> =20
-> +	airoha_hw_cleanup(eth);
-> +
->  	for (i =3D 0; i < ARRAY_SIZE(eth->ports); i++) {
->  		struct airoha_gdm_port *port =3D eth->ports[i];
->  		int j;
-> @@ -3461,7 +3510,6 @@ static int airoha_probe(struct platform_device *pde=
-v)
->  		}
->  		airoha_metadata_dst_free(port);
->  	}
-> -	airoha_hw_cleanup(eth);
->  error_netdev_free:
->  	free_netdev(eth->napi_dev);
->  	platform_set_drvdata(pdev, NULL);
-> @@ -3477,6 +3525,8 @@ static void airoha_remove(struct platform_device *p=
-dev)
->  	for (i =3D 0; i < ARRAY_SIZE(eth->qdma); i++)
->  		airoha_qdma_stop_napi(&eth->qdma[i]);
-> =20
-> +	airoha_hw_cleanup(eth);
-> +
->  	for (i =3D 0; i < ARRAY_SIZE(eth->ports); i++) {
->  		struct airoha_gdm_port *port =3D eth->ports[i];
->  		int j;
-> @@ -3497,7 +3547,6 @@ static void airoha_remove(struct platform_device *p=
-dev)
->  		}
->  		airoha_metadata_dst_free(port);
->  	}
-> -	airoha_hw_cleanup(eth);
-> =20
->  	free_netdev(eth->napi_dev);
->  	platform_set_drvdata(pdev, NULL);
->=20
+> -}
+> -
+>   static void mtk_output_dsi_enable(struct mtk_dsi *dsi)
+>   {
+>   	if (dsi->enabled)
+>   		return;
+>   
+> -	mtk_dsi_lane_ready(dsi);
+>   	mtk_dsi_set_mode(dsi);
+> -	mtk_dsi_clk_hs_mode(dsi, 1);
+> -
+>   	mtk_dsi_start(dsi);
+>   
+>   	dsi->enabled = true;
+> 
 > ---
-> base-commit: 7d8297e26b4e20b5d1c3c3fe51fe81a1c7fbc823
-> change-id: 20260618-airoha-bql-fixes-f57b2d108573
->=20
+> base-commit: 8f0b4cce4481fb22653697cced8d0d04027cb1e8
+> change-id: 20260120-mtkdsi-29e4c84e7b38
+> 
 > Best regards,
-> --=20
-> Lorenzo Bianconi <lorenzo@kernel.org>
->=20
 
---uRgNDmciIoh0RGbX
-Content-Type: application/pgp-signature; name=signature.asc
+Hello,
+This commit was part of 7.1 and caused a problem for me.
+I'm running postmarketOS (basically Alpine Linux) on a Lenovo C330 
+chromebook with a Mediatek MT8173 processor.
+The problem: when the display on my laptop powers off (via suspend or 
+idle, like xset dpms off) the picture does not come back when the 
+display powers back on (from resume). The display backlight comes on and 
+brightness is adjustable but there is no picture. The only fix is to reboot.
 
------BEGIN PGP SIGNATURE-----
+Reverting this commit and applying it as a patch on top of 7.1 addresses 
+the issue for me.
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCajQR5wAKCRA6cBh0uS2t
-rAvbAQCjz8fl5z8pg/Dww3cSzoKYeJW7gQgKt5YXJAh8QPDitQD/QuOMcXn0aPf9
-Hnwl+7hYGryC7gxzeLCRhRe0E16isgw=
-=qhPo
------END PGP SIGNATURE-----
+You can view the config I'm using here: 
+https://gitlab.postmarketos.org/postmarketOS/pmaports/-/merge_requests/8819
 
---uRgNDmciIoh0RGbX--
+Is there any sort of testing or other debugging info I can provide to 
+help address this issue?
+
+Thanks,
+- Adam Thiede
 
