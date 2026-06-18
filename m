@@ -4,78 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A534FCD98DE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2026 06:01:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 067DDCD98F2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2026 06:13:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xGANCvU1OXQCfStbhWDRouDGSX9cfoHeD7CBHD4PWeY=; b=4OaK+6Ar8/WPQTht51uzdydpT3
-	I5ZWvtXMpIyNWU9GvKSQBKIS9fZeIHjf43zZTllOlWj/R73Olo1OQShW78ujtq2f5JSeDILZhhW7O
-	XYGqVtOb92s03YiUyDaaLA5HDG2I33WzOL3uhBS7R6jpkEOCcEPyj1ZRyc9bbyYW9cEI0SkZetTzV
-	PXaVQyDSvADA21bJvLsKDAuA+rR/XGkhPKsbMemwSUuCD3T1+L+lFH1jzFFxjFUWT6BiZnIAIkZaM
-	7j8WbFA8QhpyPSxbY+llFuEWyGSKEPm/58g1FgRvHuTAHfk4LkajBYBFZJroXOjzwakrd4H3GbzLA
-	dPTE4fuQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=HkPc/71jgImUZdgRfROJckyG+AOsxAcO+4dgMgHoUDM=; b=1AIAnS4Wzlv7ucT7EwgMBzBsCZ
+	tXefX0izICaaT9gVZHsf2xK2G12+qbWBH2XRlwJW78SbJkocghRp/JtDh2ECDweAmCz+hOXi+1I/k
+	7LifOUppXZtAkV4XUDp5ySjzoIvCS+iYCSEPYocS+DyVhjMhCTFG0VSSkMiCBtqEEdpll/0jv9A7A
+	Wpr7D3aTYyHyB31ldrOIrd7q/TzDQyvhyJ7+wVgN1vScZLkWaqH3oHCoRJNecKvjeD/Va2ymya3C4
+	t+5IJVySDaigzUvT1qDmIvAjAR/7n3VnnZfrG9nAP9RM88A63Wt2tcU9KmgscWZjEHvNZIeE6YEph
+	FiSLbNQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wa5oU-00000000g2l-1l2d;
-	Thu, 18 Jun 2026 06:01:18 +0000
-Received: from mgamail.intel.com ([192.198.163.19])
+	id 1wa60K-00000000gqn-2ZJr;
+	Thu, 18 Jun 2026 06:13:32 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wa5oQ-00000000g1d-3Liq
-	for linux-mediatek@lists.infradead.org;
-	Thu, 18 Jun 2026 06:01:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1781762475; x=1813298475;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=RAsd8khCYqSW4I+iICC+jiMD6xMyMVzESx49f2X+uMo=;
-  b=CBBg+IZTAwauLkWc09ji+FG4ydjpmKtxJxX29wvBoFHZgIrqTXAvdHEq
-   eEQwcMyy7zx16YB1k7ZD9pIqzxQivOwY+At1VU6og1czr+1B2UDvbrzRd
-   oxHURQ5BKQyXueyK6RXozstfl7OMDF8CJyKhyFQSMo8oPxlxrYxY4YDYv
-   Gp6CeGAdKDAIUR/oH4kHpKNAQmmybn+gMEZqk3J8kkeMTzg+AG2eIDQoy
-   PwCe9yOPTxzwyp7yu70WD8amaOKL5a9UZDF/83uw3d+RoF2echoedis/z
-   JyD6HOBgWsSv4PDH6T2uP2DUYGNLiP6EIrCt7ObdmCbRCAi7hbwd43Di6
-   A==;
-X-CSE-ConnectionGUID: qTGSarlWSMOAFhidGbKqiw==
-X-CSE-MsgGUID: TMClat8YQPW5kF6uTNfRsA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11820"; a="81572389"
-X-IronPort-AV: E=Sophos;i="6.24,210,1774335600"; 
-   d="scan'208";a="81572389"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
-  by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Jun 2026 23:01:13 -0700
-X-CSE-ConnectionGUID: 9U34h6lwQU2aVS/IHyvd2w==
-X-CSE-MsgGUID: MuWYTk+9TF+BTPX/TDMaIw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.24,210,1774335600"; 
-   d="scan'208";a="286389922"
-Received: from lkp-server01.sh.intel.com (HELO f0d55cb201f0) ([10.239.97.150])
-  by orviesa001.jf.intel.com with ESMTP; 17 Jun 2026 23:01:11 -0700
-Received: from kbuild by f0d55cb201f0 with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1wa5oK-00000000VHa-3FLU;
-	Thu, 18 Jun 2026 06:01:08 +0000
-Date: Thu, 18 Jun 2026 14:00:46 +0800
-From: kernel test robot <lkp@intel.com>
-To: Sean Wang <sean.wang@kernel.org>, Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: oe-kbuild-all@lists.linux.dev, linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Sean Wang <sean.wang@mediatek.com>,
-	Stella Liu <yu-ching.liu@mediatek.com>
-Subject: Re: [PATCH] wifi: mt76: mt7925: support new WoW pattern TLV
-Message-ID: <202606181323.heBYmqMQ-lkp@intel.com>
-References: <20260615212137.477893-1-sean.wang@kernel.org>
+	id 1wa60J-00000000gqQ-2AJY;
+	Thu, 18 Jun 2026 06:13:31 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 6398460008;
+	Thu, 18 Jun 2026 06:13:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 919D11F000E9;
+	Thu, 18 Jun 2026 06:13:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1781763210;
+	bh=HkPc/71jgImUZdgRfROJckyG+AOsxAcO+4dgMgHoUDM=;
+	h=From:Date:Subject:To:Cc;
+	b=jyN63kAHB8NJnjZ2eD77LPsaMR8mKg9QspW3LgscVl8jFFbea/xk7/uKdfdhVd1SQ
+	 Obd2IHOMis2D03NHVDxE2qhTVreyYW9pie1LJA4MJmTo7axBqS8uWFSX5267yi1slT
+	 EfRVyr8oIf/uwxTMVIahphHrPBFbq8HOowI59CnCIAj7/gOnQsL32xqTWoxzxp5YlG
+	 k0aP63YpCHbbHTnv2GwTfmm0fm9D9DrkUeeUSVz1n0OCK/bfGwOp9mGpmMcVIjCVoy
+	 B4ixUEAVeaZDFBP5CcgA3Ncym03lBS6GdwrHcYoPCuxDHYKa74qbqDprF8mq6I17Nw
+	 /ix7jlMq4KmSw==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Thu, 18 Jun 2026 08:13:16 +0200
+Subject: [PATCH net] net: airoha: fix BQL underflow and UAF in shared QDMA
+ TX ring
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260615212137.477893-1-sean.wang@kernel.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260617_230114_878996_B95FDD3C 
-X-CRM114-Status: GOOD (  10.30  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260618-airoha-bql-fixes-v1-1-ffd2c2089518@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3LTQqAIBBA4avErBtQox+6SrTQmmogrDQiEO/e0
+ PLj8RJECkwR+iJBoIcjH16gywKmzfqVkGcxGGUa1egOLYdjs+iuHRd+KeJSt87MWnV1W4FsZ6A
+ /yDWApxvGnD8aCKhbZwAAAA==
+X-Change-ID: 20260618-airoha-bql-fixes-f57b2d108573
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Cc: Wayen Yan <win847@gmail.com>, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.3
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,58 +74,232 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Sean,
+When multiple netdevs share a QDMA TX ring and one device is stopped,
+netdev_tx_reset_subqueue() zeroes that device's BQL counters while its
+pending skbs remain in the shared HW TX ring. When NAPI later completes
+those skbs via netdev_tx_completed_queue(), the already-zeroed
+dql->num_queued counter underflows.
+Moreover, in the airoha_remove() path, netdevs are unregistered
+sequentially while skbs from previously unregistered netdevs may still
+reference freed net_device memory via skb->dev, causing a use-after-free
+during BQL accounting.
+Fix both issues:
+- Remove netdev_tx_reset_subqueue() from airoha_dev_stop() so pending
+  skbs are completed naturally by NAPI with proper BQL accounting.
+- Add netdev_tx_completed_queue() in airoha_qdma_cleanup_tx_queue()
+  to properly account for skbs freed during queue teardown.
+- Introduce airoha_qdma_tx_disable() to stop TX on all registered
+  netdevs for a given QDMA instance under RTNL lock.
+- Move DMA engine start/stop into probe/remove and
+  airoha_qdma_cleanup(), ensuring TX queues are cleaned up while all
+  netdevs are still registered and skb->dev is valid.
 
-kernel test robot noticed the following build warnings:
+Fixes: 6df0488dc9dd ("net: airoha: fix BQL accounting in airoha_qdma_cleanup_tx_queue()")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/ethernet/airoha/airoha_eth.c | 95 ++++++++++++++++++++++++--------
+ 1 file changed, 72 insertions(+), 23 deletions(-)
 
-[auto build test WARNING on wireless-next/main]
-[also build test WARNING on wireless/main linus/master v7.1 next-20260616]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 64dde6464f3f..4d6a061cd779 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -1004,6 +1004,7 @@ static int airoha_qdma_tx_napi_poll(struct napi_struct *napi, int budget)
+ 
+ 		e = &q->entry[index];
+ 		skb = e->skb;
++		e->skb = NULL;
+ 
+ 		dma_unmap_single(eth->dev, e->dma_addr, e->dma_len,
+ 				 DMA_TO_DEVICE);
+@@ -1147,6 +1148,42 @@ static int airoha_qdma_init_tx(struct airoha_qdma *qdma)
+ 	return 0;
+ }
+ 
++static void airoha_qdma_tx_disable(struct airoha_qdma *qdma)
++{
++	struct airoha_eth *eth = qdma->eth;
++	int i;
++
++	/* Protect netdev->reg_state and netif_tx_disable() calls. */
++	rtnl_lock();
++
++	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
++		struct airoha_gdm_port *port = eth->ports[i];
++		int j;
++
++		if (!port)
++			continue;
++
++		for (j = 0; j < ARRAY_SIZE(port->devs); j++) {
++			struct airoha_gdm_dev *dev = port->devs[j];
++			struct net_device *netdev;
++
++			if (!dev)
++				continue;
++
++			if (dev->qdma != qdma)
++				continue;
++
++			netdev = netdev_from_priv(dev);
++			if (netdev->reg_state != NETREG_REGISTERED)
++				continue;
++
++			netif_tx_disable(netdev);
++		}
++	}
++
++	rtnl_unlock();
++}
++
+ static void airoha_qdma_cleanup_tx_queue(struct airoha_queue *q)
+ {
+ 	struct airoha_qdma *qdma = q->qdma;
+@@ -1158,13 +1195,20 @@ static void airoha_qdma_cleanup_tx_queue(struct airoha_queue *q)
+ 	for (i = 0; i < q->ndesc; i++) {
+ 		struct airoha_queue_entry *e = &q->entry[i];
+ 		struct airoha_qdma_desc *desc = &q->desc[i];
++		struct sk_buff *skb = e->skb;
+ 
+ 		if (!e->dma_addr)
+ 			continue;
+ 
+ 		dma_unmap_single(eth->dev, e->dma_addr, e->dma_len,
+ 				 DMA_TO_DEVICE);
+-		dev_kfree_skb_any(e->skb);
++		if (skb) {
++			struct netdev_queue *txq;
++
++			txq = skb_get_tx_queue(skb->dev, skb);
++			netdev_tx_completed_queue(txq, 1, skb->len);
++			dev_kfree_skb_any(skb);
++		}
+ 		e->dma_addr = 0;
+ 		e->skb = NULL;
+ 		list_add_tail(&e->list, &q->tx_list);
+@@ -1527,6 +1571,23 @@ static void airoha_qdma_cleanup(struct airoha_qdma *qdma)
+ {
+ 	int i;
+ 
++	if (test_bit(DEV_STATE_INITIALIZED, &qdma->eth->state)) {
++		u32 status;
++
++		airoha_qdma_tx_disable(qdma);
++
++		airoha_qdma_clear(qdma, REG_QDMA_GLOBAL_CFG,
++				  GLOBAL_CFG_TX_DMA_EN_MASK |
++				  GLOBAL_CFG_RX_DMA_EN_MASK);
++		if (read_poll_timeout(airoha_qdma_rr, status,
++				      !(status & (GLOBAL_CFG_TX_DMA_BUSY_MASK |
++						  GLOBAL_CFG_RX_DMA_BUSY_MASK)),
++				      USEC_PER_MSEC, 50 * USEC_PER_MSEC, true,
++				      qdma, REG_QDMA_GLOBAL_CFG))
++			dev_warn(qdma->eth->dev,
++				 "QDMA DMA engine busy timeout\n");
++	}
++
+ 	for (i = 0; i < ARRAY_SIZE(qdma->q_rx); i++) {
+ 		if (!qdma->q_rx[i].ndesc)
+ 			continue;
+@@ -1837,9 +1898,6 @@ static int airoha_dev_open(struct net_device *netdev)
+ 	}
+ 	port->users++;
+ 
+-	airoha_qdma_set(qdma, REG_QDMA_GLOBAL_CFG,
+-			GLOBAL_CFG_TX_DMA_EN_MASK |
+-			GLOBAL_CFG_RX_DMA_EN_MASK);
+ 	qdma->users++;
+ 
+ 	if (!airoha_is_lan_gdm_dev(dev) &&
+@@ -1880,12 +1938,9 @@ static int airoha_dev_stop(struct net_device *netdev)
+ 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
+ 	struct airoha_gdm_port *port = dev->port;
+ 	struct airoha_qdma *qdma = dev->qdma;
+-	int i;
+ 
+ 	netif_tx_disable(netdev);
+ 	airoha_set_vip_for_gdm_port(dev, false);
+-	for (i = 0; i < netdev->num_tx_queues; i++)
+-		netdev_tx_reset_subqueue(netdev, i);
+ 
+ 	if (--port->users)
+ 		airoha_set_port_mtu(dev->eth, port);
+@@ -1893,19 +1948,7 @@ static int airoha_dev_stop(struct net_device *netdev)
+ 		airoha_set_gdm_port_fwd_cfg(qdma->eth,
+ 					    REG_GDM_FWD_CFG(port->id),
+ 					    FE_PSE_PORT_DROP);
+-
+-	if (!--qdma->users) {
+-		airoha_qdma_clear(qdma, REG_QDMA_GLOBAL_CFG,
+-				  GLOBAL_CFG_TX_DMA_EN_MASK |
+-				  GLOBAL_CFG_RX_DMA_EN_MASK);
+-
+-		for (i = 0; i < ARRAY_SIZE(qdma->q_tx); i++) {
+-			if (!qdma->q_tx[i].ndesc)
+-				continue;
+-
+-			airoha_qdma_cleanup_tx_queue(&qdma->q_tx[i]);
+-		}
+-	}
++	qdma->users--;
+ 
+ 	return 0;
+ }
+@@ -3413,8 +3456,12 @@ static int airoha_probe(struct platform_device *pdev)
+ 	if (err)
+ 		goto error_netdev_free;
+ 
+-	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
++	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++) {
+ 		airoha_qdma_start_napi(&eth->qdma[i]);
++		airoha_qdma_set(&eth->qdma[i], REG_QDMA_GLOBAL_CFG,
++				GLOBAL_CFG_TX_DMA_EN_MASK |
++				GLOBAL_CFG_RX_DMA_EN_MASK);
++	}
+ 
+ 	for_each_child_of_node(pdev->dev.of_node, np) {
+ 		if (!of_device_is_compatible(np, "airoha,eth-mac"))
+@@ -3440,6 +3487,8 @@ static int airoha_probe(struct platform_device *pdev)
+ 	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
+ 		airoha_qdma_stop_napi(&eth->qdma[i]);
+ 
++	airoha_hw_cleanup(eth);
++
+ 	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
+ 		struct airoha_gdm_port *port = eth->ports[i];
+ 		int j;
+@@ -3461,7 +3510,6 @@ static int airoha_probe(struct platform_device *pdev)
+ 		}
+ 		airoha_metadata_dst_free(port);
+ 	}
+-	airoha_hw_cleanup(eth);
+ error_netdev_free:
+ 	free_netdev(eth->napi_dev);
+ 	platform_set_drvdata(pdev, NULL);
+@@ -3477,6 +3525,8 @@ static void airoha_remove(struct platform_device *pdev)
+ 	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
+ 		airoha_qdma_stop_napi(&eth->qdma[i]);
+ 
++	airoha_hw_cleanup(eth);
++
+ 	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
+ 		struct airoha_gdm_port *port = eth->ports[i];
+ 		int j;
+@@ -3497,7 +3547,6 @@ static void airoha_remove(struct platform_device *pdev)
+ 		}
+ 		airoha_metadata_dst_free(port);
+ 	}
+-	airoha_hw_cleanup(eth);
+ 
+ 	free_netdev(eth->napi_dev);
+ 	platform_set_drvdata(pdev, NULL);
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Sean-Wang/wifi-mt76-mt7925-support-new-WoW-pattern-TLV/20260616-052424
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git main
-patch link:    https://lore.kernel.org/r/20260615212137.477893-1-sean.wang%40kernel.org
-patch subject: [PATCH] wifi: mt76: mt7925: support new WoW pattern TLV
-config: nios2-allmodconfig (https://download.01.org/0day-ci/archive/20260618/202606181323.heBYmqMQ-lkp@intel.com/config)
-compiler: nios2-linux-gcc (GCC) 11.5.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260618/202606181323.heBYmqMQ-lkp@intel.com/reproduce)
+---
+base-commit: 7d8297e26b4e20b5d1c3c3fe51fe81a1c7fbc823
+change-id: 20260618-airoha-bql-fixes-f57b2d108573
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202606181323.heBYmqMQ-lkp@intel.com/
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
-All warnings (new ones prefixed by >>):
-
->> drivers/net/wireless/mediatek/mt76/mt7925/mcu.c:15:13: warning: 'mt7925_mcu_wow_pattern_old_tlv' defined but not used [-Wunused-function]
-      15 | static bool mt7925_mcu_wow_pattern_old_tlv(struct mt76_dev *dev)
-         |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-vim +/mt7925_mcu_wow_pattern_old_tlv +15 drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-
-    14	
-  > 15	static bool mt7925_mcu_wow_pattern_old_tlv(struct mt76_dev *dev)
-    16	{
-    17		const char *fw_version = dev->hw->wiphy->fw_version;
-    18		const char *build_date = strrchr(fw_version, '-');
-    19	
-    20		if (!is_mt7925(dev))
-    21			return false;
-    22	
-    23		if (!build_date)
-    24			return false;
-    25	
-    26		build_date++;
-    27	
-    28		return strncmp(build_date, MT7925_WOW_PATTERN_NEW_FW_DATE,
-    29			       strlen(MT7925_WOW_PATTERN_NEW_FW_DATE)) < 0;
-    30	}
-    31	
-
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 
