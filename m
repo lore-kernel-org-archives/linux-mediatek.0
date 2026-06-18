@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94D8BCD98ED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2026 07:33:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA34ACD98F0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2026 07:42:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hjMxI0rZYwVnV9vNeuTO15pUJpl61GpEQMcW7U9iWKs=; b=MQNfs5WplOuEKpI0gD0Hgufr0F
-	MZl7OSJzBgQ3LEVMV6dpKvBZW4NLNXtAToMO+k8fyYg/rySBH45HcBTikWsPhokE61cgzWP7U9KzK
-	lY1m5rwgxj1tpHH/75k5XiI7zzokDAHCbzgwuFrSVdH5t3m9UKgCDW3PglWUeXy2rJqZh3qzu/8Ec
-	Y5Zb+iCYOG3JIg3tbrz4n+HUkp7+485mxLxYD2TwLsTF6tC74MsXLsRI0QGvPCfzOZIKAdj8kdzvW
-	4U7wtVAOGN5qYscaWaRm0FbS/OwHaauAh5hzap6sttHoeOAInUgkHrlV/bxsrke0J0RpO3QNdUL/U
-	WQWOfbuw==;
+	bh=t5CVllVNQ9Kpe6VIQJvaemTaWq1GKJ+TKsP+tPxBgLk=; b=V4raxiaVBzsEOVjrgBcDeeBi4d
+	NudHnLv8EJS0GzfvCu0EJmPHPt3qMvuNQIYlMv5i7ggXLkH8BKjC8Wi5QgeNwvor8EGAd9wLSIk09
+	opAFFn1ssBkk8hmO0KRt92zVOWvpjqmFdruSX2CmaP72tBdT1M1MZ8wdYtCN2ZRH53+khmedWEzUg
+	FuBQhg0MwBcEsOJjov3bH+gJ9W23oke31Vn/gBi4sHhG9JQz+SNU2PTKQTqTPU5hjuavSa6X0EPMT
+	Tk0v8ThKK9Xq+KER6vCE458cV+yhWCNpwDn1/effHERueAJgxNh/lIHiyp/PZyutQiiI/cUK80adC
+	PY1kjKgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wa7G8-00000000lgQ-0xGH;
-	Thu, 18 Jun 2026 07:33:56 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wa7OW-00000000nE0-3xmM;
+	Thu, 18 Jun 2026 07:42:36 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wa7G6-00000000lfs-2ZnN;
-	Thu, 18 Jun 2026 07:33:54 +0000
+	id 1wa7OV-00000000nDm-2MLM;
+	Thu, 18 Jun 2026 07:42:35 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 066CF44146;
-	Thu, 18 Jun 2026 07:33:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 621E51F000E9;
-	Thu, 18 Jun 2026 07:33:53 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 8FB8260098;
+	Thu, 18 Jun 2026 07:42:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BC3081F000E9;
+	Thu, 18 Jun 2026 07:42:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781768033;
-	bh=hjMxI0rZYwVnV9vNeuTO15pUJpl61GpEQMcW7U9iWKs=;
+	s=k20260515; t=1781768554;
+	bh=t5CVllVNQ9Kpe6VIQJvaemTaWq1GKJ+TKsP+tPxBgLk=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=oIkqaZEnuai5ih9lPd40PVg0x1+o9AkBx60gJR878OY28inJhTYspcBvK8qstse9m
-	 jm7JLACnLUvBFQxzf7xbahErqMuuGi3IwdjzVVERkfjXafu/B9pC7ohnSX8Gdamxb6
-	 7aXS+FU3x+M7PnI2sRMU1gG/fE64v5x2M7LyostDTO4dLHNMfLh9RxlBOJPSconIRX
-	 cPwkB0e9yYGjJwprwLfbSDckRUJLVfT+KPp3uebi1n5g4QHEavPrf5tJlUPkRsG0G3
-	 P2Zeuiy5wX6U2Q3684S8nQcIQ2TgZQv6TWL76CG2Hz/1a6Em529ZTeVYQ8wbPCLXLN
-	 CYGPtKSDSwTiA==
-Date: Thu, 18 Jun 2026 09:33:51 +0200
+	b=MKqsGEQKUK5K7dsHa/8kzs97kdGQK+WjgGGTlr42bFFbNpyT4qTN4AHkvyGZjltUO
+	 IXFCVh9NDPcsHDVfn1j8xKj5zU0x3L8s2PeLiIaq95fM/CXPupzcP8OieHp4r2NhRl
+	 SprnQpXTabYWW0SZMBpaP9IUKP3qLDglqgCyHz4jbL8E0ORkgr5W5woPPpzAlQjClh
+	 hS7YTg6DnW9Y5JI/5mDGCYQUSTXMSMMnLnZJHt3ExSjzZWhanwZtWEv8y9awaw9x+B
+	 hSS2TxTFwenOl3BdgI1fU9+RlDJFveJvxUlBMJONrgt5gNSfQgELMlqeWy5arHiOse
+	 tC7j5Lw+jxNqw==
+Date: Thu, 18 Jun 2026 09:42:31 +0200
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: Wayen Yan <win847@gmail.com>, netdev@vger.kernel.org, horms@kernel.org,
-	pabeni@redhat.com, edumazet@google.com, andrew+netdev@lunn.ch,
+To: Wayen Yan <win847@gmail.com>
+Cc: netdev@vger.kernel.org, horms@kernel.org, pabeni@redhat.com,
+	kuba@kernel.org, edumazet@google.com, andrew+netdev@lunn.ch,
 	angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] net: airoha: Stop TX queues on error path in
- airoha_dev_open
-Message-ID: <ajOfX7RFoSrzopNN@lore-desk>
-References: <178160729880.2156257.7978513589649053826@gmail.com>
- <20260617164448.31e189bc@kernel.org>
+Subject: Re: [PATCH net] net: airoha: Fix TX scheduler queue mask loop upper
+ bound
+Message-ID: <ajOhZ_P4c_mLcoaS@lore-desk>
+References: <178166704952.2212140.11002626760717132754@gmail.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="hz9vSoCD4yGittIQ"
+	protocol="application/pgp-signature"; boundary="1OLx6VVIlAxSBQ6/"
 Content-Disposition: inline
-In-Reply-To: <20260617164448.31e189bc@kernel.org>
+In-Reply-To: <178166704952.2212140.11002626760717132754@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,36 +73,69 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---hz9vSoCD4yGittIQ
+--1OLx6VVIlAxSBQ6/
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> On Tue, 16 Jun 2026 18:50:39 +0800 Wayen Yan wrote:
-> > In airoha_dev_open(), if airoha_set_vip_for_gdm_port() fails after
-> > netif_tx_start_all_queues() has been called, the TX queues remain
-> > started while the device configuration is incomplete. This leaves
-> > the device in an inconsistent state where packets could be
-> > transmitted before the VIP/IFC port configuration is complete.
+> In airoha_qdma_set_chan_tx_sched(), the loop clearing queue mask was
+> using AIROHA_NUM_TX_RING (32) instead of AIROHA_NUM_QOS_QUEUES (8).
 >=20
-> Not sure if this was superseded by another posting but FWIW
-> this posting did not apply.
+> Each channel has 8 queues, and TXQ_DISABLE_CHAN_QUEUE_MASK(channel, i)
+> computes BIT(i + (channel * 8)). With i ranging 0..31, this causes:
+> - channel 0: clears bit 0..31 (all 4 channels) instead of 0..7
+> - channel 1: clears bit 8..31 (channels 1-3) instead of 8..15
+> - channel 2: clears bit 16..31 (channels 2-3) instead of 16..23
+> - channel 3: clears bit 24..31 (channel 3 only) - correct by accident
+>=20
+> While BIT(32+) on arm64 produces 64-bit values truncated to 0 in u32
+> mask parameter, the loop still incorrectly clears queues within the
+> same channel beyond queue 7.
+>=20
+> Fix by using AIROHA_NUM_QOS_QUEUES (8) as the loop upper bound.
 
-I think we do not need this patch.
+I guess it is ok now if you respin this patch on top of net branch.
+If so, please add my Acked-by.
 
-Regards,
-Lorenzo
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
---hz9vSoCD4yGittIQ
+>=20
+> Fixes: ef1ca9271313 ("net: airoha: Add sched HTB offload support")
+> Signed-off-by: Wayen Yan <win847@gmail.com>
+> ---
+>  drivers/net/ethernet/airoha/airoha_eth.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
+net/airoha/airoha_eth.c
+> index 31cdb11cd7..a1eda13400 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+> @@ -2217,7 +2217,7 @@ static int airoha_qdma_set_chan_tx_sched(struct net=
+_device *dev,
+>  	struct airoha_gdm_port *port =3D netdev_priv(dev);
+>  	int i;
+> =20
+> -	for (i =3D 0; i < AIROHA_NUM_TX_RING; i++)
+> +	for (i =3D 0; i < AIROHA_NUM_QOS_QUEUES; i++)
+>  		airoha_qdma_clear(port->qdma, REG_QUEUE_CLOSE_CFG(channel),
+>  				  TXQ_DISABLE_CHAN_QUEUE_MASK(channel, i));
+> =20
+> --=20
+> 2.51.0
+>=20
+>=20
+
+--1OLx6VVIlAxSBQ6/
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCajOfXwAKCRA6cBh0uS2t
-rHn/AQCS/e+lABQrjqQaBlZzOEnOM4iJBB83aLuUkcW2RcDJXwEAqw9wyBTx3Mqx
-NCJ9SEynSiNrX7kK38yFjOOyveylwwQ=
-=FtFY
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCajOhZwAKCRA6cBh0uS2t
+rKNXAQDq70GBO1/bcUwI+mKYqgc4/CHuyCeneYknDmgabdAhQwEA5jjxhGCW0z3u
+aAHDMX3I1sawxuvQToD49B8x1TgELgE=
+=a8ge
 -----END PGP SIGNATURE-----
 
---hz9vSoCD4yGittIQ--
+--1OLx6VVIlAxSBQ6/--
 
