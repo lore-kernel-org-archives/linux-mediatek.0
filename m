@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D642BCD98FA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B4BBCD98F7
 	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2026 12:58:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,63 +12,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
 	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3neVONgdAVcEZX3f1l1KWGoYXB46SXm/tOXseRIlMNM=; b=OUZyD9OCkiZrq/pySOe+zJ4+u4
-	tttvKraNWekppVsyynSlatdFTQ3oGIZRnyirN57Y/W0XI9a6LjSon5UlhXtNN/P9PnqYJ5suGk1hR
-	8I+ZVfyO+XXy+T/5tQ1sXG3s7PoMtsmzQ6C5HlQME/ywnFYrf38AutxiWHdOgJsB9c9ap8824O9HV
-	QQ40iBklPppT9QPw7ROvTi0f8ljcAb4lwjxQnPLrp6ZaqTiRaIW3hnigQUvG03Fu7GDat9oUAqFrT
-	QfDFxEAApKvXmcQCMbMDddVBz3y7D/mPljbbquOaDgQzbZW4t7qct42HrugOQEl7FJFuimzohovMx
-	Afji/nyw==;
+	bh=Z7ibR1uk6j3yRvHUeSG7+Ts5vUBpNZwTn1NirzFE3FA=; b=WRm0mYmO+30/T9RUL2Kuln1f0O
+	KuK1mOJfiklrL28cP7KWBdzzvpBFL0Y1ZUdHeyRNng4V7fzW0x3mxdjje1zGPRKrXqoOuCfBcmAV7
+	qXSq8JEZirsbZge1AMGMf6KmbX3BUGtHcllGpMwI+7lr4EBArPZMgd7VZiM3QZjuBn31EyoXcwjvC
+	AxQ4bbixmNjqF64VR0inYa2/LakeXs2qtVwxy2ZLcbBqlGCQybbzwy1K9ubW2wQ+mqIOc2Wy33nYi
+	IhXOgBeY0IZAqD2Jesb731WzoP6gGT8fWJpSiaJD84QzTY6DUHLAtApa2+vNcrf9TP+gi5Iy6WxYd
+	0D3aK3AA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waCKR-00000001Ilc-2FYP;
-	Thu, 18 Jun 2026 12:58:43 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1waCKQ-00000001Iju-04GJ;
+	Thu, 18 Jun 2026 12:58:42 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waCKC-00000001IPC-2wy4
+	id 1waCKB-00000001INl-27iL
 	for linux-mediatek@lists.infradead.org;
-	Thu, 18 Jun 2026 12:58:30 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-490c1915793so7202895e9.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 18 Jun 2026 05:58:28 -0700 (PDT)
+	Thu, 18 Jun 2026 12:58:28 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-490c0c92cffso6072025e9.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 18 Jun 2026 05:58:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781787507; x=1782392307; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1781787505; x=1782392305; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=3neVONgdAVcEZX3f1l1KWGoYXB46SXm/tOXseRIlMNM=;
-        b=KlMYPea57XKPFq8xkAbBjWxl1VOnPcVL8/Z6kAvWVuAxfUSXnk7MLjKIhlg8XsGHNS
-         Id6RYjReYhQauDqFMimYUUo0cWQFxU7avC+NlP2dNHy3pk5YOf2K+uK7oo46OCTiEP6E
-         I3T9s5dOq4F5DrmYuY2FxAGTjbLG/TllD0pMFFQNVV0+X13FufTxyTvUviaCau8u+oj2
-         C2KRHtxtIZwUKH4dGDS38foX9BE67+L/EJ8X+Kg97HWk923akW10FQQAu+Ah2bOUyv4z
-         kn9rw1ZLu6BJ0iFZw9voM5r2cNPeUQUXV3i50Iy/TLB59vJXnC5w/rjILAtjGWlAvgaD
-         6qEg==
+        bh=Z7ibR1uk6j3yRvHUeSG7+Ts5vUBpNZwTn1NirzFE3FA=;
+        b=VSSHJPVwohiYn0aXt5yzURk4JY9kKPQW3kuWEjqAyl4Fo8gpDe20HE1bVsaT09FUta
+         aNte+D9FzqtGhAZL1C4tvbfih427QRb8Er36LSdMceX7k+tMh5tN39FSXtQ7U/vVUvnY
+         0VlnGYPrc+olIrr6fF5mVuzqxop7PB89XldxEfwyM/cp09eVcJOzkySdXNdPJI9ka77G
+         LPaQB1T4H6uo5MY+rx6cW/CUaVrggf0trLzzUHNsFl/PO8A+Wyqj8XKVlsXr8lDeiv7b
+         IPZ2DcTTC98ITKJsLT8v+fcbTCuWpPZ67mfZOc0yPnco5Rg5vyKOnZqu3JE4QhGH01LE
+         XhpQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781787507; x=1782392307;
+        d=1e100.net; s=20251104; t=1781787505; x=1782392305;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=3neVONgdAVcEZX3f1l1KWGoYXB46SXm/tOXseRIlMNM=;
-        b=s4HrNSc0fqozIdWmodzYLZPC93y/YLVR6yb+mPAYrcM39lkAhCsgq45fphvr9qxxg0
-         QRNhoOGCAXlkLMLucLi5rmnHXFuFeajndho2u/7OxUgYy+meS8Bjv5AayA8Epx2v88fT
-         q9xL/LXmGcfbnFzTl8sjFLgjLlu1y7TUXfRR1vJbWn1baeIZV79yHdtuOJsAYofh+xw2
-         SbUFnWN7ZBdk1Gw4kjnl3gqRjrOxQaEyayP855Z/Grbf+6XDwy2KZRoNDeafYEN1BWZf
-         Ym13SDmZB6ZkFN8SDBlKJVub8On9DWgdhc4HCSiQkMXkEyWOTUYhrWU4iFUK+SUVLl6w
-         nCXg==
-X-Forwarded-Encrypted: i=1; AFNElJ/eEhxEyY9uoZajIRtmalZfOTFzvBxS7DJX57MIqRZwAbbjLj5dysAAY24J3zzstW0ShNlN89BRjtmSsTYJuQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxKLjvJ98MSLlNrr2HvIFPpnkUcKdXZUhYzNvEAzqUJjvt7h/MP
-	MJhlLaNzEJbU9SDsV1xEGIVlixjl1zuPC+YRft+cw+I8QigiNCPBdtsV
-X-Gm-Gg: AfdE7cmMsFIS8dHtKhbISbJ0xNe9iTF6JxCbEYD/aHjtCZ2IO0RDtzjSQJ+0Y32Pyja
-	BCjWOpgKEk/DkHAk8nMUQW1xZBnqK74wmfvVEoml753euVxGvZr07pEUOpyArEvraZoGYnohgmI
-	f6A3syxk9cGYhxaAjw22RK4u3ERZiApHTYE/CsvXSowLtxFClJNj1z38z8PMY6xAntbMnAqDMlS
-	tjATiKHpQcnzDVlTozytFbCYdY4sbOeXr8syahNzho0SVVaIjeWqhoIO5QoUD9SI0GhPitcIPgn
-	AFRztj0TjNhTw4+k9Mf0YFaoL5T/xZqxLzud1/3lQHYPlkuJei2BxDiNSyp9N1vmWLhCMdZ/7b7
-	aA6+Juc6LE/OB97b5pfwzCip3N2KcDOUlYarQIjZ4RtNoPrg+H56c8YKUEFX+HgktVFfXNmlYK4
-	YVinXrdm9KlBrQWPJvQ3wJaGEVmIldy/YLtmjJY0GXGMWAjze5SkP51tcEkoeLxl6clQ/OtMZF
-X-Received: by 2002:a05:600c:8889:10b0:490:44eb:c1d9 with SMTP id 5b1f17b1804b1-49234139bdfmr97586515e9.28.1781787506895;
-        Thu, 18 Jun 2026 05:58:26 -0700 (PDT)
+        bh=Z7ibR1uk6j3yRvHUeSG7+Ts5vUBpNZwTn1NirzFE3FA=;
+        b=ZdUhPL4x+rpYnwcy8IAoaBO0lwC5B+5qw3f4dkbJnFDgj8lSQ6nGIJB8LCpdMYiU4j
+         sa63AtMD9N9ZyoEOhvItBnWK1fr6tUF17Jm9Kvn4oPJoOtyJqdFx0x83WR2O398hCFEi
+         w7QeCRWrA53D1cTG67iYaKWtMGWh1OphkY6pr2Da9BgP47MmylmAGVqnofHTozMtKyBJ
+         amhFW5+OshbIWCGRZnkxCXBEiN1F8z/X2/Kwn6MQ1lIpkSSNU+7s6R9QG+D3YfIUi8MV
+         7UvKymF2jn2XSvFq7ywcKJ7GlAN9+Jy7WQQ+aGfFEeH0upnJSk7OfZXJELYvS+SSaysf
+         iw0Q==
+X-Forwarded-Encrypted: i=1; AFNElJ8EN9WxWxNn+GZMJLIOzRuQ29wXHz+HNU7llFr1QM9Y3mFvf18uLiHLa00YWpCiHQN7AgYUD82cQudHYoKdTg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzuwg6zJj3OsIWVN9F1knAFuzhwFzHgbgWbNx5ID443F40WcR2M
+	TCLy9cyH7ZIiiRa4CoMkCYiNpDbbRZ4aOvQfXcSoOv2zZsuo2xbEAoU8
+X-Gm-Gg: AfdE7ckPxz+jvMV+6G4rbVwl0fjbVGduQHbrF2yOmTRupF9S0bEggEyZA/u4oVk5S05
+	lff0AxnXL1Y2WsSy4oF/D5y80Lcxtz6yU1p1HCKIznHivWkdYnR8preV837af9/3qQbgLdJTGmY
+	1Gw+cxDediM/3UO0cqZEGJucdHgRXYAxlywYSKvNNY3XjPVac1DBB9Lsi0OtAk53v/Zj+5tXhm3
+	GxD3jG6zY68XeS6/Lh8WdiWPaWJBtSggTuAhr6LYj43XG1I2kduXcH27LEYJJ3RzejZv4VaGR/X
+	J7B22SLH48Z8VdyoDUYH8sinsoeu3ZCEWC7Ow9eqUuPZC5PHZff8jh7Dh5OEUjT52jldY9Jrw6H
+	4hNb6pEesH+ZS8TYAgLeHSHxvQoiQxd+R+a1drLF5ppOulVZtIEAbkOl8EpbYjEL+Bp5qW6xBwt
+	ZpY5J+YZp6krwKmc3QV6dphnkuv+GS8BsQywNT/103FNqjs3UO4fxGI22UJ/8kfQ==
+X-Received: by 2002:a05:600c:2947:b0:490:6237:5200 with SMTP id 5b1f17b1804b1-492333f5dbamr93229425e9.10.1781787505189;
+        Thu, 18 Jun 2026 05:58:25 -0700 (PDT)
 Received: from Ansuel-XPS24.localdomain (93-34-88-103.ip49.fastwebnet.it. [93.34.88.103])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-49230a458f2sm241451585e9.3.2026.06.18.05.58.25
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-49230a458f2sm241451585e9.3.2026.06.18.05.58.23
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Jun 2026 05:58:26 -0700 (PDT)
+        Thu, 18 Jun 2026 05:58:24 -0700 (PDT)
 From: Christian Marangi <ansuelsmth@gmail.com>
 To: Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
@@ -99,17 +99,18 @@ To: Andrew Lunn <andrew+netdev@lunn.ch>,
 	linux-mediatek@lists.infradead.org,
 	llvm@lists.linux.dev,
 	Maxime Chevallier <maxime.chevallier@bootlin.com>
-Subject: [RFC PATCH net-next v8 08/12] of: property: fw_devlink: Add support for "pcs-handle"
-Date: Thu, 18 Jun 2026 14:57:16 +0200
-Message-ID: <20260618125752.1223-9-ansuelsmth@gmail.com>
+Subject: [RFC PATCH net-next v8 07/12] MAINTAINERS: add myself as PCS subsystem maintainer
+Date: Thu, 18 Jun 2026 14:57:15 +0200
+Message-ID: <20260618125752.1223-8-ansuelsmth@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260618125752.1223-1-ansuelsmth@gmail.com>
 References: <20260618125752.1223-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260618_055828_882917_14B114F1 
-X-CRM114-Status: GOOD (  11.07  )
+X-CRM114-CacheID: sfid-20260618_055827_701610_0F6517E6 
+X-CRM114-Status: UNSURE (   9.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,34 +125,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for parsing PCS binding so that fw_devlink can
-enforce the dependency with Ethernet port.
+List all the files of the Ethernet PCS subsystem and add myself as
+maintainer.
 
 Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 ---
- drivers/of/property.c | 2 ++
- 1 file changed, 2 insertions(+)
+ MAINTAINERS | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/drivers/of/property.c b/drivers/of/property.c
-index 136946f8b746..e6584a2f705d 100644
---- a/drivers/of/property.c
-+++ b/drivers/of/property.c
-@@ -1392,6 +1392,7 @@ DEFINE_SIMPLE_PROP(access_controllers, "access-controllers", "#access-controller
- DEFINE_SIMPLE_PROP(pses, "pses", "#pse-cells")
- DEFINE_SIMPLE_PROP(power_supplies, "power-supplies", NULL)
- DEFINE_SIMPLE_PROP(mmc_pwrseq, "mmc-pwrseq", NULL)
-+DEFINE_SIMPLE_PROP(pcs_handle, "pcs-handle", "#pcs-cells")
- DEFINE_SUFFIX_PROP(regulators, "-supply", NULL)
- DEFINE_SUFFIX_PROP(gpio, "-gpio", "#gpio-cells")
+diff --git a/MAINTAINERS b/MAINTAINERS
+index cc1dde0c9067..ef3ef5096d08 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -9593,6 +9593,15 @@ F:	include/uapi/linux/if_bridge.h
+ F:	include/linux/netfilter_bridge/
+ F:	net/bridge/
  
-@@ -1548,6 +1549,7 @@ static const struct supplier_bindings of_supplier_bindings[] = {
- 	{ .parse_prop = parse_interrupts, },
- 	{ .parse_prop = parse_interrupt_map, },
- 	{ .parse_prop = parse_access_controllers, },
-+	{ .parse_prop = parse_pcs_handle, },
- 	{ .parse_prop = parse_regulators, },
- 	{ .parse_prop = parse_gpio, },
- 	{ .parse_prop = parse_gpios, },
++ETHERNET PCS SUBSYSTEM
++M:	Christian Marangi <ansuelsmth@gmail.com>
++L:	netdev@vger.kernel.org
++S:	Maintained
++F:	Documentation/networking/pcs.rst
++F:	drivers/net/pcs/pcs.c
++F:	include/linux/pcs/pcs-provider.h
++F:	include/linux/pcs/pcs.h
++
+ ETHERNET PHY LIBRARY
+ M:	Andrew Lunn <andrew@lunn.ch>
+ M:	Heiner Kallweit <hkallweit1@gmail.com>
 -- 
 2.53.0
 
