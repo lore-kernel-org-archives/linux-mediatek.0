@@ -4,61 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E2C7CD98F2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2026 10:03:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36F44CD98ED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2026 10:19:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Iom3D6FWo9fllJWbYMA89UYN58mi46iOwnkKnoRIuIM=; b=yVWNDVPs4iAAVbtA90kQU4IujV
-	oNzEPXLcf9x3nN+Vc8IsMDJfN8yRJgDm832wvvsu1xGMWkQmSXulKKYs+GKYPLrvpPLjHOCHHgsv9
-	Mgd0OGYGJs9wEi2BCgn2h6w6Bm48kZYPvNqG5Hz8dSIuTW3IoykLsbULQdBUba863bD6Ya0U6zSaF
-	YkhioQL+JSDUEANuVWxDo65t0CnoiRHDGDrypFxHBbzyUkKl6zdo2zaB5RXpc8do9FmUd/nhfP0YK
-	xZz83c+ph3hbJ59jzck2RtWzpmKP+G8gYuhk3WMX4khSweoZ2DX6bt7DlsgmeavEmSyqDiSMjLBiz
-	tEYFNUnw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
+	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8Mcydhro1EQOrm5osOZpAWTi5DUtUM3BYZKMBUyg4Pk=; b=vF7ycTAtwuq+gYSc0cqdwm3Ipk
+	eniTEyePo7Hcf0FM4fXrjymgTzLTb1Ol1qwS6cM1HhtUJ6aNa1beto+WbZ/3dnNzQjZzPBLHFj3jx
+	uNiXVwYGLoqIQLNbN0vWEq8j06xOaljqQyyvh85ub9VoBGE+d3BYy7sBTMNmAdYafpR0K0sH50IoY
+	G6M2ghnQtYCjz4CHPtEsAFzhApY7U746e52UxQc7jmnzhqhXxU8uncn2xh1mbcISe/6e6fa32j21t
+	ZsVLrjTyBiV4vGY2D0j4CURevVsgYRib5ZMVMTtqlmzgCSFFrNlALGMh7HpVTRc+FfpijUo+HmlKS
+	kG2ObPDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wa9bA-000000012gM-2vYG;
-	Thu, 18 Jun 2026 10:03:48 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wa9qL-000000015Jk-0W6C;
+	Thu, 18 Jun 2026 10:19:29 +0000
+Received: from mail-4316.protonmail.ch ([185.70.43.16])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wa9b9-000000012fN-28Yh;
-	Thu, 18 Jun 2026 10:03:47 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id CB872601E0;
-	Thu, 18 Jun 2026 10:03:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 01D581F000E9;
-	Thu, 18 Jun 2026 10:03:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781777026;
-	bh=Iom3D6FWo9fllJWbYMA89UYN58mi46iOwnkKnoRIuIM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=PcHZq7Xu9Xos5Y3JaTW2tn+d3FghRtNMdMfvmEfcLw8GZUqArX/N8qgIINhrHwH1K
-	 41cxCdFC4XeJs6V8D1RiXf00+K1KtH1X327h+wwu8t8TzHRi2uUJ8hvoRAghdpvA+l
-	 xMff8g0GJVhjEYOexJO3+AX3ceM3GlrlzITsVneMFECtu+mn1pEG/loVMxOZHCPj5A
-	 ibMwbjroxJbNccIjlA/KYICTDI0h+fc4UbdUESm9t14QWbLUgoGGJjYdZgriu5Ulfv
-	 qF2MA++Gdpv917gr9nBmsipqQrar0TB7IrOLhC4iTk5RkqPY88QKnXPDvqTMqG8c+Z
-	 U0mSLnUtZhYyg==
-Date: Thu, 18 Jun 2026 12:03:44 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: Wayen Yan <win847@gmail.com>, netdev@vger.kernel.org, horms@kernel.org,
-	pabeni@redhat.com, edumazet@google.com, andrew+netdev@lunn.ch,
-	angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net v3] net: airoha: Fix skb->priority underflow in
- airoha_dev_select_queue()
-Message-ID: <ajPCgH7E_ke6Fdur@lore-desk>
-References: <178161373805.2167512.2544164327472822616@gmail.com>
- <20260617161951.52abe413@kernel.org>
+	id 1wa9qD-000000015Fv-1kvq;
+	Thu, 18 Jun 2026 10:19:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
+	s=protonmail; t=1781777956; x=1782037156;
+	bh=8Mcydhro1EQOrm5osOZpAWTi5DUtUM3BYZKMBUyg4Pk=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector;
+	b=nK7bb7ZRz/raM9vKiEuw2B8SB72kmXNIWSGb1I9kKZSg3V7AhryINDsgV9HdiqsF8
+	 qkPFddqGClntpGCOx1/zZUPfa/Y97PArNKbUadPeQ6xRFZBqUcT3TX871YfQ7/1nzg
+	 I4FS+iqDiTf5n3QB20JA2iIQEWNd3S/UW9nNwJhBnpnQoYfOxHCXwnvaJwhHqMQNFd
+	 bMrMvJFtKSj+WCI4fQP3eHb2/1sc7LQE15VSmd8wkXT1pKnexeWl4xVE73RugBu5RO
+	 dKt96ljAPrGuSpLmoQM7Wg/4cYFJ8CgKmMUUUwAjqKMDJ7+xXGqVMjI+HZwkp3vEam
+	 buBKd6G/48d7A==
+Date: Thu, 18 Jun 2026 10:19:10 +0000
+To: majordomo@vger.kernel.org
+From: Clint <t1m3band1t@proton.me>
+Cc: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Cheng-Yi Chiang <cychiang@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, Guenter Roeck <groeck@chromium.org>, Benson Leung <bleung@chromium.org>, David Rhodes <david.rhodes@cirrus.com>, Richard Fitzgerald <rf@opensource.cirrus.com>, povik+lin@cutebit.org, Charles Keepax <ckeepax@opensource.cirrus.com>, Support Opensource <support.opensource@diasemi.com>, Nick Li <nick.li@foursemi.com>, Herve Codina <herve.codina@bootlin.com>, Srinivas Kandagatla <srini@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>, Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>, Oder Chiou <oder_chiou@realtek.com>, Lars-Peter Clausen <lars@metafoo.de>, nuno.sa@analog.com, Steven Eckhoff <steven.eckhoff.opensource@gmail.com>,
+	patches@opensource.cirrus.com, chrome-platform@lists.linux.dev, asahi@lists.linux.dev, linux-arm-msm@vger.kernel.org, linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, bui duc phuc <phucduc.bui@gmail.com>
+Subject: Re: [PATCH 05/78] ASoC: codecs: aw87390: Use guard() for mutex locks
+Message-ID: <5TNHQg1ajwrqUAIsNxt-sPNM5rRRTZgaIB6ssPE1Wymu_gKMW58Xm1iE3BkLh8pyvSGSBb-sxBK-2r_Hveh59vOyQofKZ_C630-gdnT4uMw=@proton.me>
+In-Reply-To: <20260617103235.449609-6-phucduc.bui@gmail.com>
+References: <20260617103235.449609-1-phucduc.bui@gmail.com> <20260617103235.449609-6-phucduc.bui@gmail.com>
+Feedback-ID: 162116597:user:proton
+X-Pm-Message-ID: 621a7e4fd1b7e784c26703ddbd3c88a4c50a0740
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="y49npv9b6mmAWoJY"
-Content-Disposition: inline
-In-Reply-To: <20260617161951.52abe413@kernel.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260618_031922_247773_3569B319 
+X-CRM114-Status: UNSURE (   7.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,88 +70,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+unsubscribe linux-kernel
+unsubscribe linux-sound
+unsubscribe linux-arm-kernel
 
---y49npv9b6mmAWoJY
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-> On Sun, 14 Jun 2026 07:30:54 +0800 Wayen Yan wrote:
-> > In airoha_dev_select_queue(), the expression:
-> >=20
-> >   queue =3D (skb->priority - 1) % AIROHA_NUM_QOS_QUEUES;
-> >=20
-> > implicitly converts to unsigned arithmetic: when skb->priority is 0
-> > (the default for unclassified traffic), (0u - 1u) wraps to UINT_MAX,
-> > and UINT_MAX % 8 =3D 7, routing default best-effort packets to the
-> > highest-priority QoS queue. This causes QoS inversion where the
-> > majority of traffic on a PON gateway starves actual high-priority
-> > flows (VoIP, gaming, etc.).
-> >=20
-> > Fix by guarding the subtraction: when priority is 0, map to queue 0
-> > (lowest priority), otherwise apply the original (priority - 1) % 8
-> > mapping.
-> >=20
-> > Fixes: 2b288b81560b ("net: airoha: Introduce ndo_select_queue callback")
-> > Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > Reviewed-by: Joe Damato <joe@dama.to>
-> > Signed-off-by: Wayen Yan <win847@gmail.com>
-> > ---
-> >  drivers/net/ethernet/airoha/airoha_eth.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >=20
-> > diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/eth=
-ernet/airoha/airoha_eth.c
-> > index 31cdb11cd7..d476ef83c3 100644
-> > --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> > +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> > @@ -1933,7 +1933,7 @@ static u16 airoha_dev_select_queue(struct net_dev=
-ice *dev, struct sk_buff *skb,
-> >  	 */
-> >  	channel =3D netdev_uses_dsa(dev) ? skb_get_queue_mapping(skb) : port-=
->id;
-> >  	channel =3D channel % AIROHA_NUM_QOS_CHANNELS;
-> > -	queue =3D (skb->priority - 1) % AIROHA_NUM_QOS_QUEUES; /* QoS queue */
-> > +	queue =3D skb->priority ? (skb->priority - 1) % AIROHA_NUM_QOS_QUEUES=
- : 0;
->=20
-> Hi Lorenzo, is there a reason we're subtracting 1 here in the first
-> place? Could be just me, but may be worth adding a comment here.
->=20
-> Intuitively if we are "narrowing" 16 prios to 8 queues it'd make most
-> sense to group the adjacent ones -- divide by two.
->=20
-> Please respin with some sort of an explanation..
+Clint
 
-IIRC this is a leftover of the ETS offload support.
-I agree it is righ to just do:
+-------- Original Message --------
+On Wednesday, 06/17/26 at 20:34 phucduc.bui@gmail.com wrote:
+From: bui duc phuc <phucduc.bui@gmail.com>
 
-	queue =3D skb->priority % AIROHA_NUM_QOS_QUEUES; /* QoS queue */
+Clean up the code using guard() for mutex locks.
+Merely code refactoring, and no behavior change.
 
-@Wayen: can you please respin fixing the issue? Please add even my Acked-by:
+Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
+---
+ sound/soc/codecs/aw87390.c | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
 
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+diff --git a/sound/soc/codecs/aw87390.c b/sound/soc/codecs/aw87390.c
+index 020213e0ca4b..88110e720f85 100644
+--- a/sound/soc/codecs/aw87390.c
++++ b/sound/soc/codecs/aw87390.c
+@@ -225,11 +225,10 @@ static int aw87390_profile_set(struct snd_kcontrol *k=
+control,
+ =09struct aw87390 *aw87390 =3D snd_soc_component_get_drvdata(codec);
+ =09int ret;
 
-Regards,
-Lorenzo
+-=09mutex_lock(&aw87390->lock);
++=09guard(mutex)(&aw87390->lock);
+ =09ret =3D aw87390_dev_set_profile_index(aw87390->aw_pa, ucontrol->value.i=
+nteger.value[0]);
+ =09if (ret) {
+ =09=09dev_dbg(codec->dev, "profile index does not change\n");
+-=09=09mutex_unlock(&aw87390->lock);
+ =09=09return 0;
+ =09}
 
->=20
-> >  	queue =3D channel * AIROHA_NUM_QOS_QUEUES + queue;
-> > =20
-> >  	return queue < dev->num_tx_queues ? queue : 0;
-> --=20
-> pw-bot: cr
+@@ -238,8 +237,6 @@ static int aw87390_profile_set(struct snd_kcontrol *kco=
+ntrol,
+ =09=09aw87390_power_on(aw87390->aw_pa);
+ =09}
 
---y49npv9b6mmAWoJY
-Content-Type: application/pgp-signature; name=signature.asc
+-=09mutex_unlock(&aw87390->lock);
+-
+ =09return 1;
+ }
 
------BEGIN PGP SIGNATURE-----
+@@ -280,14 +277,12 @@ static int aw87390_request_firmware_file(struct aw873=
+90 *aw87390)
+ =09=09return ret;
+ =09}
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCajPCgAAKCRA6cBh0uS2t
-rEPCAQCqDCrcwKyucjgOFBgvz0L4RGD7O8nbPLHaiOpvjvOwjAD9GhOOU9yIs2ZA
-nE8h3U0jkTu24u7OOiE+sJeJpIjNIg8=
-=8RTw
------END PGP SIGNATURE-----
+-=09mutex_lock(&aw87390->lock);
++=09guard(mutex)(&aw87390->lock);
 
---y49npv9b6mmAWoJY--
+ =09ret =3D aw88395_dev_cfg_load(aw87390->aw_pa, aw87390->aw_cfg);
+ =09if (ret)
+ =09=09dev_err(aw87390->aw_pa->dev, "aw_dev acf parse failed\n");
+
+-=09mutex_unlock(&aw87390->lock);
+-
+ =09return ret;
+ }
+
+--
+2.43.0
+
+
+
 
