@@ -4,64 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A084ECD98ED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2026 00:21:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C1D0CD98E4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jun 2026 01:53:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4fVcwov0xUbbsvxiR509uVDetK1RWIqoecjtKQCv7YQ=; b=2DfaQvZe2Zi29XXNr5EKrooK9d
-	lnuIDnfXQg96LRhg046xYEj4RfqDBcY7vjik98BQT/IiRkCSA1I1xAO9mtZQ9kkh9+a6aEnfcPrZm
-	BtGtvEjT9NjROO86Sa765vwMWZ71Y3+ewQKX8lyfSe5xPGVif9CusraZlFqZ0WVBTNe+/zi2JyymS
-	at+vvblbVNsRt+s8hu4Eg723fehjmx/gyr3tIx358fGTa4Ffyl0okTeRmR0qZJhhN2nnh+ABlfpx1
-	hKU+2J/YT9/AVaafeeUWw5u0cCT6KFi0UknBXJ76HrayrtnBRzbddkJENQs79eAK6R0fp0eGZWG+Y
-	3UispSUw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=82lqWZt5WGmEK1KMEqJe8T2qeTr6htkdS62+9nO0IT8=; b=dYEPkKy0oEO24mlANhpj0ss+Qu
+	o83Qz8laVe/a4HEk/NreUcMdAGY68jXyQzAaug78PicsmAakYBV9x2fFJ6fIXx/za6TMhkOQOi91h
+	bpvnlyHQGCRZEra5Z9MMvHrrVyOJlmi9hN/7IodhcXiSHjrp7PDIEoI2B2FtNm1I1pmQ9jn6f+iU6
+	QpFWwp1/W4RCmr+ne9MRIzk/H0mim5n0jPADY+obLtWjiJy3ekZDELn9sQR+nt1Pv6cGtLpJAf4q/
+	GFrknNixg98l5pbA+G/PBNhpLQNoElIGINuFVyTAjU5LObrYBF/nfqm9f3ITDiBfyX3xVQwzyafQu
+	Dx8L40+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wa0V8-00000000Rqh-1PiZ;
-	Thu, 18 Jun 2026 00:20:58 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wa1wb-00000000VA8-1lKq;
+	Thu, 18 Jun 2026 01:53:25 +0000
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wa0V6-00000000RqS-1T4l;
-	Thu, 18 Jun 2026 00:20:56 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9E0B543B75;
-	Thu, 18 Jun 2026 00:20:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7E7E51F000E9;
-	Thu, 18 Jun 2026 00:20:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781742055;
-	bh=4fVcwov0xUbbsvxiR509uVDetK1RWIqoecjtKQCv7YQ=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=fboahXFexfnQG2mmEymI4v7jf3N6BQJODVoQswWVNXRmEI/DQvPH1yBnoWNfsd+q7
-	 oAtIV/06GLHxrjBADEAO4nizn5DIgvYqYvqcLPAUm1SKE+ua8srU99ekdeBvxTk3+s
-	 38GUM+deRGe5Rkf7Rl69YO9BteCmVrgvQ2nu65TtFH5nsqUdkAHtnsHy9LJI9Dw4qJ
-	 Dh9/1VqdH45QNqoYpPp27XYn+NMCR9qVLrEUQim9rMM61jkOXY5x3AhMaBP/dYWHj/
-	 JQX3sZPo7SEMPbP4MjUZVSnT/q0QRiT2P0GTjjLvIncSuNZFYgQKInwBAy6r/yfuKo
-	 KDVSr22ZV6UjA==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 93A4E393102B;
-	Thu, 18 Jun 2026 00:20:50 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1wa1wZ-00000000V9P-121y
+	for linux-mediatek@lists.infradead.org;
+	Thu, 18 Jun 2026 01:53:24 +0000
+Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-beeba001887so43698266b.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 17 Jun 2026 18:53:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1781747600; cv=none;
+        d=google.com; s=arc-20240605;
+        b=ACPwDH5q3PuhVkuDkJgOvDFAgfqJZaQl5dB0TaRRRfv8K1FRGGnDcG0FhD7n2MxVu6
+         V5UclKLeqdVAO/+akbeWLFMCXFCAYM3QkwQuAt3uGScnuLFAq+rqcXbd1VVpMcf5tNVh
+         TtdZQOjz0cjLpnOTolcA8Vsvkq/p0R8sYmtjYsl87amfcL8ByQUFFaDKvIn/eU1GHV2w
+         8MMx13O9lvPTRkyf8hnGE3sevaKLMRs5mViNqVn5Ghkk9hCCwrjEp/oT/H82JvqIOaUr
+         FlL0IQASoJtX2EZj0QuWdmv9b/Hhdjo9dFJmNVtFzua0ywS5L63DyfRWDBphRi/sNBcm
+         Z7sQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=82lqWZt5WGmEK1KMEqJe8T2qeTr6htkdS62+9nO0IT8=;
+        fh=dckWqCpfPX/8lCgzsAvFv3+YhS4HQzDyroL9sfQIT70=;
+        b=eu969N3d62w4Ta0fWfNhKHXgI8GXMEmGXC2ZxEykVIUXyJxO6wPWI6ZjW6jX/kTo1p
+         SI5brN6FfZPoQQlDuYxrFjuE1HxocIgtiqrVa0gdrOVUpv1YkjyccPifjVrrUXPgkMt7
+         9D+Lr4MRY9P6TKDGVOh7tvvWmnKdYs02QA41b2xmtJMXcRfSV78pGaTGeJEuKtKHtYqw
+         her2D1OTRqVNhcL+IR2T5D/84GPccqUxJFVWbPNyMqe8TDNK0rWtTeWe2lfA3weIW4T1
+         2oi73Tv9pMvADTh6PIc8x1GzxpwepnSIVsOtT4lt8KxldPri4a/cbWub9SYquNR9amU6
+         0pvw==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1781747600; x=1782352400; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=82lqWZt5WGmEK1KMEqJe8T2qeTr6htkdS62+9nO0IT8=;
+        b=rXNbOv1velHaskNlgiWDUH2uhOg1onVRs+PS6H7TsOuwsAd2QO7GZaTkmASVz3pNFU
+         fQfW+wop3TPXllxuye5MIPJCazSzANJ206f67ddk69Tw27njmiJUiF3I4drPpTtzM3Kj
+         ZMt+NrsYwe5mu+oUiloanXXa7M+nrUs1KgQ+W1kYcslGgYSqnbgSrwe7LZjwGLcxiPwz
+         DetmpuEgoTaKGXhMZTDExUI8mP/VFZR+DOKxw3cdUYcXdYIfMgNVG/UA6Cyvb33kGFvB
+         VewnO6EfDEZjmLX8AtW1I6vVvuXgXu4M9d/93FsDaLIfCpMMEWM4qWZks/+urnduTvwz
+         Jggg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1781747600; x=1782352400;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=82lqWZt5WGmEK1KMEqJe8T2qeTr6htkdS62+9nO0IT8=;
+        b=kMrX+KUuM20FTZq0FBqfsPD/r1Xh2H26aL1q/azZ8ZHxBs7A3M5kaPBdQAUtrTaMUV
+         sBVwSgVUciajVkvO3iT084/1/QY9zAgJiOzCGnq+OAI/hBkw8JOfPKWVbJXynupuz7sg
+         FW98rSs6UT5DhOD5fkEUJtjCYy/QEB+oZeLkFBPVoMuxrf5dZb0gG4kGFfYbU0HeKGtE
+         9fWzVRAAu81ITYssFnEJ3amX1YtppGJVCHq+0ADRywzCkaBgQIs//oP8ib2dR5JSysKw
+         Fc5cFZe3OTxc9rZLBWSagxr4JSaScECb0r963w3qVA45Ant+wA8+HiceuAiTdE6/UBoe
+         1YTA==
+X-Forwarded-Encrypted: i=1; AFNElJ+hIUJW78R9ZgIqu6p5pkCyA4mgfpEnkySKAcJT+ntWHXZRw1w4x7R52nfsjHHC+pjSrtWuFjS/w0hWb7oOaA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxZXBqy9EIKsW4cczyXor4uWEwBCePaFdb/dJZvH/+mju62Q9Xu
+	bdmwEmlI5pKldT2soz+tbN3jm+XHRYbNcm+NRAAir9PeWEKH7xRdT8qG8NF3Eu+0oF60ucMz00M
+	YFzdag+jPuKmbRxzXM7uKy+hs6FZDmIg=
+X-Gm-Gg: AfdE7clOAqUewaw2N/6X7gW5NyAe/l9afMfocqMlt9Xi14pMAaVJseW+LrF0V40G6ri
+	cmETl+4mlMGM+XsFG9PkFyVOf0HlBWul89I238h8ssc4QzStk2BA1J9FwcNKXHFXje7XdCXmKVT
+	Vz7qUpn3mgUbs77ib3rTSUSEY35+UO8psV9iZpgfjgY4+PqrqLaYdFApxs05cfJU9RK9XR+ciQg
+	Gf2rv+7E9tOv2QVP1DNvDvZsNmuD33ldjmDmkYx8VffwGTfxB4t9s38KMUfgPMH9AGPBnw=
+X-Received: by 2002:a17:907:c50e:b0:bef:d3a1:5065 with SMTP id
+ a640c23a62f3a-c0749f7991bmr72270866b.18.1781747600035; Wed, 17 Jun 2026
+ 18:53:20 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net] net: ethernet: mtk_eth_soc: fix supported_interface
- set
- after phylink_create
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <178174204913.1875263.9684568124296836411.git-patchwork-notify@kernel.org>
-Date: Thu, 18 Jun 2026 00:20:49 +0000
-References: <20260615151106.15438-1-ansuelsmth@gmail.com>
-In-Reply-To: <20260615151106.15438-1-ansuelsmth@gmail.com>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: nbd@nbd.name, lorenzo@kernel.org, andrew+netdev@lunn.ch,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- linux@armlinux.org.uk, daniel@makrotopia.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+References: <20260608021048.2577577-1-dbgh9129@gmail.com> <20260617152615.GO10056@google.com>
+In-Reply-To: <20260617152615.GO10056@google.com>
+From: =?UTF-8?B?7LWc7Jyg7Zi4?= <dbgh9129@gmail.com>
+Date: Wed, 17 Jun 2026 21:53:08 -0400
+X-Gm-Features: AVVi8Cdlr_Qe6ahvFQ5QtKi7fzQZ_9bCMLj4ZxCwFjjGj2iWMUbd3Sm13KClPNs
+Message-ID: <CACrCO_V24P9LqGu7M2M9b_1Y34rMh7t4=2-LjyR7ZVJcP7gn0Q@mail.gmail.com>
+Subject: Re: [PATCH v1] mfd: mt6397-irq: Fix PM notifier use-after-free
+To: Lee Jones <lee@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260617_185323_292952_CDD8751D 
+X-CRM114-Status: GOOD (  11.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,33 +114,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+On Wed, 17 Jun 2026 at 11:26, Lee Jones <lee@kernel.org> wrote:
 
-This patch was applied to netdev/net.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+> [Severity: High]
+> Is it safe to explicitly remove the IRQ domain here while the devm-managed
+> parent threaded IRQ remains active?
+>
+> The parent IRQ was requested earlier via devm_request_threaded_irq(). Because
+> devres cleanup does not run until the probe function completely fails and
+> returns, the parent IRQ remains active and enabled during this window.
+>
+> If an interrupt triggers during this error path, the active IRQ handler
+> mt6397_irq_thread() will execute and call mt6397_irq_handle_reg(). This in
+> turn calls irq_find_mapping(), which will dereference the freed irq_domain,
+> resulting in a use-after-free.
 
-On Mon, 15 Jun 2026 17:11:00 +0200 you wrote:
-> Everything configured in phylink_config it's assumed to be set before
-> calling phylink_create() to permit correct parsing of all the different
-> modes and capabilities.
-> 
-> Commit 51cf06ddafc9 ("net: ethernet: mtk_eth_soc: add support for MT7988
-> internal 2.5G PHY") while introducing support for 2.5G phy for MT7988,
-> probably due to an auto-rebase, placed the configuration of the INTERNAL
-> interface mode for the supported_interfaces for phylink_config right after
-> phylink_create() introducing a possible problem with supported interfaces
-> parsing.
-> 
-> [...]
+Thanks for pointing this out. Findings 1 and 3 look like pre-existing
+issues. Finding 2, however, appears to be related to the error-path cleanup
+I added.
 
-Here is the summary with links:
-  - [net] net: ethernet: mtk_eth_soc: fix supported_interface set after phylink_create
-    https://git.kernel.org/netdev/net/c/e4b4d8410c7c
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+I will rework the patch so the notifier and irq_domain cleanup ordering is
+handled consistently.
 
