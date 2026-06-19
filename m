@@ -4,55 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 227D0CD98F6
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2026 11:37:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81D8DCD98F6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2026 11:37:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=mG0vyVDluQRxAy4jusCEO+px4MVfNltVsG+sO1nmh/4=; b=3TjkB6Xse2JV8I
-	RgszYLmuf+slc3wHReKOF2V0neFeZ8PLu1wfi1fvKhNUu37F7I5g8jSQbeby1WaWiEY6mDo6bbo1Z
-	u6SjTtljobXf5WKdNt7es0a4QNF8+7nI8izSuu4DJPwBURfglB+Wm+RmF/YTJ6NJ8C3v3CJ5nbvS+
-	VgCVUOSckedcWulBZfPSCbkYLgJdXZMIKxd+1aMnZw8Cb0wBBICeVNP20d0Pj19cXLUO+SY/xMXNv
-	lHnCy0jvSUwUkY/lOGjM7I2wck0znkzNT2sLNQ9DStXpeHp3GsM9/OqcmPBx+MbYdv4g77zqULsPi
-	LOR1Nrs6JcFLKdG75XEQ==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5YSFkwBdwIZvGA3XLMEJv/9BLBx9P14qbmrv7iQoAww=; b=YogKQucu8YnmhQTlKU//CKzBUY
+	Z4BeZmfk/On8o1ZKXD6xpUsc/ea7tTwdtMwOsmR2moVV4BqmBulPQRoBvDQGBlrGygeltxrrkyZEV
+	ASWpqlDwPZ8+oKWd3S5+ysWSQOn+QJ1DUa3ID/QGWeQsMsrr9wEL1cfBVfzWjhnkbSkVdMZgfMGvq
+	oQN+mZDK8OROm4cSiWHup20GY0z8HCkKXG7WKb9G8aSkSJo9+dO4t8bUXFzo9tYd4oz6pgFRzZ11O
+	wJI7CLmCTDlc+9BtDphsUgwLA9wF+4ufw1n+i0cAuESmu4UNHi+0SKEmhNOZ0DUONDRT7hyREl0aW
+	Osz9Gd+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waXXY-00000002LOj-0nTT;
-	Fri, 19 Jun 2026 11:37:40 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1waXXc-00000002LRB-2LGo;
+	Fri, 19 Jun 2026 11:37:44 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waXXX-00000002LOK-2Mx6;
-	Fri, 19 Jun 2026 11:37:39 +0000
+	id 1waXXa-00000002LPQ-1Mas;
+	Fri, 19 Jun 2026 11:37:42 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id DA7BD40BFC;
-	Fri, 19 Jun 2026 11:37:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 412291F000E9;
-	Fri, 19 Jun 2026 11:37:38 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 7DD58601EE;
+	Fri, 19 Jun 2026 11:37:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AB0261F00A3D;
+	Fri, 19 Jun 2026 11:37:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781869058;
-	bh=mG0vyVDluQRxAy4jusCEO+px4MVfNltVsG+sO1nmh/4=;
-	h=From:Subject:Date:To:Cc;
-	b=XdF8De6o26MHRFAXcvYne+qrgyDnGUcBJN4ThPYhMrGAyZ1gP2Z7LH2yGkDKsl53B
-	 oJ5SVC7UToQRWLQ/Gwh6RRRQjnkQFtvFs6RqNtpeQEer89JpzVTU2Xn/r53NIupYB3
-	 i/I8RwIO0FQLWHmyGTX/KyU3MZsqcZ+gKSJ2qjujbiEG9r/2AWegY9Cv9qaBQOt8vX
-	 SPogv2jkRQsHKzgk74FjuTjHpgjWWBCwhbav1dzFFNjiK/KOOlMPWPshODYIShMarT
-	 j21mjgal4TsZruwiEZAJW865vnnGt4Ztg0/exeD3uBm47YtnPzh+bGk8KWU2sAfHa0
-	 nCxGDjsEt5maw==
+	s=k20260515; t=1781869061;
+	bh=5YSFkwBdwIZvGA3XLMEJv/9BLBx9P14qbmrv7iQoAww=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc;
+	b=b7bGjU+U38EIWEfujwNOg+vifivWQzXRPCkAvvF+6b+SHVBYhnFkc16N7UucBuwzW
+	 Fe0ijn4s/ibPDBOAZdRvnjG/t/LJ2wSnPTybsR/OElf8k9TpqHUj8MB6q3/gqOybPA
+	 HRJgOhxhGWkiRHFKw9ts6k3h3RDBJ7hJCsk4qvRYEnj8DqlkRzFmBMSSeoZmvKBDfG
+	 qFJwGTSZ6T/BzSAbLBY/vFHP4+0m4sMVeHYHqK5G7p9QroKW6rMzgwcnd2d0cjKzwI
+	 MLLe8p1YGJE40jqcGNn3DlTb/eOIIaiA/YWYH1mTGHPk8eekZdWXhqJgfEg+QPiMQ2
+	 zEcBp6goQaFaA==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Subject: [PATCH net v2 0/2] airoha: fixes for sched HTB offload support
-Date: Fri, 19 Jun 2026 13:37:12 +0200
-Message-Id: <20260619-airoha-qos-fixes-v2-0-5c43485038f9@kernel.org>
+Date: Fri, 19 Jun 2026 13:37:13 +0200
+Subject: [PATCH net v2 1/2] net: airoha: Fix off-by-one in
+ airoha_tc_remove_htb_queue()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3WNwQ7CIBBEf6XZs2sAhVZP/ofpodVt2WhAl4ZoG
- v5d0rvHmZc3s0IiYUpwblYQypw4hhrMroGbH8JMyPeawSjjlNMdDizRD/iOCSf+UMLRHZ0aVWd
- dp6BqL6ENVOsKgRboa+k5LVG+203WG/q/mDUqPLT6ZJw12rbT5UES6LmPMkNfSvkBWx8rMrYAA
- AA=
-X-Change-ID: 20260618-airoha-qos-fixes-b6460b085680
+Message-Id: <20260619-airoha-qos-fixes-v2-1-5c43485038f9@kernel.org>
+References: <20260619-airoha-qos-fixes-v2-0-5c43485038f9@kernel.org>
+In-Reply-To: <20260619-airoha-qos-fixes-v2-0-5c43485038f9@kernel.org>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
  "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
@@ -75,25 +73,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+airoha_tc_htb_alloc_leaf_queue() computes the HTB QoS channel index
+as opt->classid % AIROHA_NUM_QOS_CHANNELS and stores it in qos_sq_bmap.
+However, airoha_tc_remove_htb_queue() clears the HTB configuration
+using queue + 1 as the channel index, causing an off-by-one error.
+Use queue directly as the QoS channel index to match the allocation
+logic.
 
+Fixes: ef1ca9271313b ("net: airoha: Add sched HTB offload support")
+Reviewed-by: Simon Horman <horms@kernel.org>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
-Changes in v2:
-- cosmetics
-- Link to v1: https://lore.kernel.org/r/20260618-airoha-qos-fixes-v1-0-37192652157f@kernel.org
+ drivers/net/ethernet/airoha/airoha_eth.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
----
-Lorenzo Bianconi (2):
-      net: airoha: Fix off-by-one in airoha_tc_remove_htb_queue()
-      net: airoha: fix netif_set_real_num_tx_queues for sparse QoS channels
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 64dde6464f3f..aa98d1823ab6 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -3006,7 +3006,7 @@ static void airoha_tc_remove_htb_queue(struct net_device *netdev, int queue)
+ 	struct airoha_qdma *qdma = dev->qdma;
+ 
+ 	netif_set_real_num_tx_queues(netdev, netdev->real_num_tx_queues - 1);
+-	airoha_qdma_set_tx_rate_limit(netdev, queue + 1, 0, 0);
++	airoha_qdma_set_tx_rate_limit(netdev, queue, 0, 0);
+ 
+ 	clear_bit(queue, qdma->qos_channel_map);
+ 	clear_bit(queue, dev->qos_sq_bmap);
 
- drivers/net/ethernet/airoha/airoha_eth.c | 27 +++++++++++++++++----------
- 1 file changed, 17 insertions(+), 10 deletions(-)
----
-base-commit: 96e7f9122aae0ed000ee321f324b812a447906d9
-change-id: 20260618-airoha-qos-fixes-b6460b085680
-
-Best regards,
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.54.0
 
 
