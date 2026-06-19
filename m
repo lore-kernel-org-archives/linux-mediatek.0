@@ -4,159 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47D45CD4F26
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2026 11:14:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95B74CD98F6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2026 11:34:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Subject:Cc:To:From:Message-ID:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vA7XD4tzqECot2FsGyw2UfmWr3fnKsx8iWlkrI2RB3A=; b=YCpMTdvuH2P4pe/n9IMblM7BD/
-	Q8c5D088oMa3NmvTbba4xj1PQJ2KHyMMqkCejPkDXUkixwYV3mUgYzn5qJ0MZ8+wKyPCSwiB/sBNS
-	D+UTZdyGX93MCoQsd7PewR4v7WJge8GtIBz1AVXCeNx/CHLJw4FKBnGt1hSrZyzC20HOjhznj73AO
-	nTbLcBGgfLOI9J19q1ucxEpDiumqh48Qc28eELM/fPsYk/zTx5Fi5N9wfvP4T+1n1UK8hmsys/kym
-	tkzQxvPh7GYBtZrrNTOdHg1/gVxP/dL6lyxAIXE1qlQRXVJz6VyqsT5jZrRLQzoucoqAwHvPIc9/U
-	3UBBzxeg==;
+	bh=nOSR1Ik3D6P2bkhobWobgeY4+bPAjmYFtOx6isRqK/w=; b=Yh5Hh8nXEgLoQ94lYjvlboorbQ
+	WZ9IhqYJ59vuDT2XbaHLQ+CuNj+7/+eyxRLZGaZlBwvTaCgQAQN5TiBzZBA/sf5SznE88tlrsNzjQ
+	/9fuGsMhG5V3nfJ6RiPFFObOQCvGSl60yhRRXDbIuqXXtI/SK2Y4KTZXzAYCJdKFXOazqHbtqdbrT
+	Kjt4sagiY1HlpnijiZOByAkE8W2ZZpeehr51q8aSEj+V3PJW/gRQfXF71bDJU7/nZApP9RHJkdJfb
+	EwCG+qUXlKJUm7teSLW6uxN6zI1KqT85oAxapt6jPdTzdxyt+xiVPRWlJCcygtEx9YFZ6BqNkWDUk
+	xsNkxuRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waXBY-00000002KeM-0LIm;
-	Fri, 19 Jun 2026 11:14:56 +0000
-Received: from smtp-out2.suse.de ([2a07:de40:b251:101:10:150:64:2])
+	id 1waXUb-00000002LDx-3AtE;
+	Fri, 19 Jun 2026 11:34:37 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waXBV-00000002Kdg-16LP
-	for linux-mediatek@lists.infradead.org;
-	Fri, 19 Jun 2026 11:14:54 +0000
-Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id BE63675F42;
-	Fri, 19 Jun 2026 11:14:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1781867689; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=vA7XD4tzqECot2FsGyw2UfmWr3fnKsx8iWlkrI2RB3A=;
-	b=NdgT9um1MgonkyxrgX+0f7d+CyCvpxEmUhqmJKbQW9+jFKtud5k2Rb8jTDdo4uC75+O6MO
-	pkXMlhuHQiwfPe4FcHod1i8KGjyuwPRgROIN7fFbhjMYsk6JfyqP1Mcbj7DzUvl0+n4RJj
-	4gSmQEhJlLmViXN9IZBt7t7zquN9v+I=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1781867689;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=vA7XD4tzqECot2FsGyw2UfmWr3fnKsx8iWlkrI2RB3A=;
-	b=g7Yl/P5Lz1lvm6VHoMQF1QsbJXVPzTeuORP/mZ0Ej0TGUhh/byZGeItazEsRqhWtqfYfrY
-	KuovKhphpK/l3ZCw==
-Authentication-Results: smtp-out2.suse.de;
-	none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1781867689; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=vA7XD4tzqECot2FsGyw2UfmWr3fnKsx8iWlkrI2RB3A=;
-	b=NdgT9um1MgonkyxrgX+0f7d+CyCvpxEmUhqmJKbQW9+jFKtud5k2Rb8jTDdo4uC75+O6MO
-	pkXMlhuHQiwfPe4FcHod1i8KGjyuwPRgROIN7fFbhjMYsk6JfyqP1Mcbj7DzUvl0+n4RJj
-	4gSmQEhJlLmViXN9IZBt7t7zquN9v+I=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1781867689;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=vA7XD4tzqECot2FsGyw2UfmWr3fnKsx8iWlkrI2RB3A=;
-	b=g7Yl/P5Lz1lvm6VHoMQF1QsbJXVPzTeuORP/mZ0Ej0TGUhh/byZGeItazEsRqhWtqfYfrY
-	KuovKhphpK/l3ZCw==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id D8791779A8;
-	Fri, 19 Jun 2026 11:14:48 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id kz6MM6gkNWoGWwAAD6G6ig
-	(envelope-from <tiwai@suse.de>); Fri, 19 Jun 2026 11:14:48 +0000
-Date: Fri, 19 Jun 2026 13:14:48 +0200
-Message-ID: <871pe2kcif.wl-tiwai@suse.de>
-From: Takashi Iwai <tiwai@suse.de>
-To: Bui Duc Phuc <phucduc.bui@gmail.com>
-Cc: Charles Keepax <ckeepax@opensource.cirrus.com>,
-	David Laight <david.laight.linux@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Cheng-Yi Chiang <cychiang@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>,
-	Guenter Roeck <groeck@chromium.org>,
-	Benson Leung <bleung@chromium.org>,
-	David Rhodes <david.rhodes@cirrus.com>,
-	Richard Fitzgerald <rf@opensource.cirrus.com>,
-	povik+lin@cutebit.org,
-	Support Opensource <support.opensource@diasemi.com>,
-	Nick Li <nick.li@foursemi.com>,
-	Herve Codina <herve.codina@bootlin.com>,
-	Srinivas Kandagatla <srini@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Shenghao Ding <shenghao-ding@ti.com>,
-	Kevin Lu <kevin-lu@ti.com>,
-	Baojun Xu <baojun.xu@ti.com>,
-	Sen Wang <sen@ti.com>,
-	Oder Chiou <oder_chiou@realtek.com>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	nuno.sa@analog.com,
-	Steven Eckhoff <steven.eckhoff.opensource@gmail.com>,
-	patches@opensource.cirrus.com,
-	chrome-platform@lists.linux.dev,
-	asahi@lists.linux.dev,
-	linux-arm-msm@vger.kernel.org,
-	linux-sound@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 15/78] ASoC: codecs: cs42l43: Use guard() for mutex locks
-In-Reply-To: <CAABR9nGRCZ1zv0cyBGc3yuM8MeFNqBB1MkGUL7bTbtC_LcKKzA@mail.gmail.com>
-References: <20260617103235.449609-1-phucduc.bui@gmail.com>
-	<20260617103235.449609-16-phucduc.bui@gmail.com>
-	<ajJ9rbHTspXHo6Ou@opensource.cirrus.com>
-	<20260617140209.3f89706c@pumpkin>
-	<CAABR9nG+6gOj4KnWmTyykgGN93xy6jKQh+-_f8Xxn=Jkv28vBA@mail.gmail.com>
-	<20260619101346.2ec49087@pumpkin>
-	<ajUcTfG3vSGz3n3d@opensource.cirrus.com>
-	<CAABR9nGRCZ1zv0cyBGc3yuM8MeFNqBB1MkGUL7bTbtC_LcKKzA@mail.gmail.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) Emacs/30.2 Mule/6.0
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-Content-Type: text/plain; charset=US-ASCII
-X-Spamd-Result: default: False [-1.80 / 50.00];
-	BAYES_HAM(-3.00)[100.00%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	MID_CONTAINS_FROM(1.00)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	NEURAL_HAM_SHORT(-0.20)[-1.000];
-	MIME_GOOD(-0.10)[text/plain];
-	ARC_NA(0.00)[];
-	RCVD_TLS_ALL(0.00)[];
-	FREEMAIL_ENVRCPT(0.00)[gmail.com];
-	MIME_TRACE(0.00)[0:+];
-	RCPT_COUNT_TWELVE(0.00)[36];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	TO_DN_SOME(0.00)[];
-	FUZZY_RATELIMITED(0.00)[rspamd.com];
-	FREEMAIL_TO(0.00)[gmail.com];
-	R_RATELIMIT(0.00)[to_ip_from(RLtz4y7943h1dm9t59x9i47taa)];
-	FROM_HAS_DN(0.00)[];
-	FREEMAIL_CC(0.00)[opensource.cirrus.com,gmail.com,kernel.org,perex.cz,suse.com,chromium.org,cirrus.com,cutebit.org,diasemi.com,foursemi.com,bootlin.com,collabora.com,ti.com,realtek.com,metafoo.de,analog.com,lists.linux.dev,vger.kernel.org,lists.infradead.org];
-	TAGGED_RCPT(0.00)[lin];
-	FROM_EQ_ENVFROM(0.00)[];
-	RCVD_COUNT_TWO(0.00)[2];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:mid,imap1.dmz-prg2.suse.org:helo]
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260619_041453_615668_4298D6EE 
-X-CRM114-Status: GOOD (  39.09  )
+	id 1waXUa-00000002LDi-0Bik;
+	Fri, 19 Jun 2026 11:34:36 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 568B343F75;
+	Fri, 19 Jun 2026 11:34:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AFA781F000E9;
+	Fri, 19 Jun 2026 11:34:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1781868875;
+	bh=nOSR1Ik3D6P2bkhobWobgeY4+bPAjmYFtOx6isRqK/w=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=DIag6T5uaRuCnwdZTmpKL3RpiC/CG9l+2NXknzghO5+SJ9FvUsDcWXLZptY/nBN5S
+	 KJP6nsn8HWpsE+PmK5pMSWmMj68+TRf19oSVCsIIVItaRc7zrdA/lp+ivp6X02N5zn
+	 o92jR3h8DzbZmhW+PD/P7hbKOz8grvlg+KURW8HmqeU8WMsXs7c99mLo8goObXf/Iv
+	 ebtnKRJRJR9EhZNGI7pCzHbAvqiGBF1tcjPaLkIn0w6vCKsBq/2OlJCFPKB5smf/Pe
+	 rIyA5Dfhi1hSY271rG+X6A4DI/a+qYp49myPD0m7UCSpHeYBFjzdlzzNxJt8CDoxtn
+	 ryF8Zp5ezf6dg==
+Date: Fri, 19 Jun 2026 13:34:32 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Simon Horman <horms@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Wayen Yan <win847@gmail.com>, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net 2/2] net: airoha: fix netif_set_real_num_tx_queues
+ for sparse QoS channels
+Message-ID: <ajUpSLFJm8UN3o_k@lore-desk>
+References: <20260618-airoha-qos-fixes-v1-0-37192652157f@kernel.org>
+ <20260618-airoha-qos-fixes-v1-2-37192652157f@kernel.org>
+ <20260619093529.GV827683@horms.kernel.org>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="zML9pTpDuCjiRldO"
+Content-Disposition: inline
+In-Reply-To: <20260619093529.GV827683@horms.kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -171,93 +75,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 19 Jun 2026 12:57:57 +0200,
-Bui Duc Phuc wrote:
-> 
-> Hi Charles, David,
-> 
-> 
-> 
-> > > > > > I believe you have to use scoped_guard here, as there is a return
-> > > > > > from the function above, if memory serves it attempts to release
-> > > > > > the mutex on that path despite it being above the guard.
-> > > > >
-> > > > > Indeed.
-> > > > > I believe clang will complain.
-> > > > > That makes these mechanical conversions of existing code dangerous churn.
-> > > > >
-> > > > > While using guard() (etc) can make it easier to ensure the lock is released
-> > > > > when functions have multiple error exits, I'm not convinced it makes the
-> > > > > code any easier to read (other people may disagree).
-> > > >
-> > > > I built the code with both GCC and Clang and didn't see any warnings.
-> > > >
-> > > > My understanding was that the early return exits the function before
-> > > > the guard is instantiated, so it should not affect the guard's cleanup
-> > > > handling.
-> > >
-> > > When a variable is defined (and initialised) part way down a block the
-> > > compiler moves the definition to the top of the block but doesn't initialise
-> > > it at all, the first assignment happens where the code contains the
-> > > definition.
-> > >
-> > > However the destructor is always called at the end of the block.
-> > > So if you return from a function before the definition the destructor
-> > > is called with an uninitialised argument.
-> >
-> > My understanding was exactly as your David, but it seems that isn't
-> > the whole story and indeed I had to fix a bug in our SDCA code
-> > that hit this.  However testing this out, results in some things I
-> > find very hard to explain.
-> >
-> > It seems as far as I have managed to test, the code below works
-> > fine as Phuc suggests. It does not appear to run the mutex_unlock
-> > on the error path.
-> >
-> > int function()
-> > {
-> >         if (error)
-> >                 return;
-> >
-> >         guard(mutex)(&mutex);
-> >
-> >         stuff();
-> >
-> >         return;
-> > }
-> >
-> 
-> Thanks both for the clarification.
-> 
-> > The situation I hit this in before that doesn't work was actually
-> > this:
-> >
-> > int function()
-> > {
-> >         if (error)
-> >                 goto error_label;
-> >
-> >         guard(mutex)(&mutex);
-> >
-> >         stuff();
-> >
-> > error_label;
-> >         return;
-> > }
-> >
-> > Which in this case it does run the mutex_unlock and NULL pointer.
-> > Will try to find sometime to look at the generated assembly, but
-> > this basically totally blows my mind. Very unclear as to if this
-> > is supposed to work this way or just does by pure luck.
-> >
-> 
-> As stated in cleanup.h, mixing goto-based cleanup and scope-based
-> cleanup helpers in the same function is not expected, so I think
-> we should keep a consistent approach here.
 
-Right, and IIRC, clang would complain the mixed goto case at least
-with W=1.
+--zML9pTpDuCjiRldO
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+> On Thu, Jun 18, 2026 at 08:00:30AM +0200, Lorenzo Bianconi wrote:
+> > airoha_tc_htb_alloc_leaf_queue() assigns queue IDs based on the channel
+> > index (opt->qid =3D AIROHA_NUM_TX_RING + channel), but updates
+> > real_num_tx_queues with a simple increment (num_tx_queues + 1). When QoS
+> > channels are allocated sparsely (e.g., channels 0 and 3 without 1 and
+> > 2), the returned qid can exceed real_num_tx_queues, causing out-of-boun=
+ds
+> > accesses in the networking stack.
+> > For example, allocating channel 0 then channel 3 results in
+> > real_num_tx_queues =3D 34 but qid =3D 35, which is out of range [0, 34).
+> > Fix this by computing real_num_tx_queues based on the highest active
+> > channel index rather than using a simple counter, in both the allocation
+> > and deletion paths.
+> >=20
+> > Fixes: ef1ca9271313b ("net: airoha: Add sched HTB offload support")
+> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > ---
+> >  drivers/net/ethernet/airoha/airoha_eth.c | 15 ++++++++++++---
+> >  1 file changed, 12 insertions(+), 3 deletions(-)
+> >=20
+> > diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/eth=
+ernet/airoha/airoha_eth.c
+>=20
+> ...
+>=20
+> > @@ -2806,7 +2806,10 @@ static int airoha_tc_htb_alloc_leaf_queue(struct=
+ net_device *netdev,
+> >  	if (err)
+> >  		goto error;
+> > =20
+> > -	err =3D netif_set_real_num_tx_queues(netdev, num_tx_queues + 1);
+> > +	if (num_tx_queues <=3D netdev->real_num_tx_queues)
+> > +		goto set_qos_sq_bmap;
+> > +
+> > +	err =3D netif_set_real_num_tx_queues(netdev, num_tx_queues);
+> >  	if (err) {
+> >  		airoha_qdma_set_tx_rate_limit(netdev, channel, 0,
+> >  					      opt->quantum);
+> > @@ -2815,6 +2818,7 @@ static int airoha_tc_htb_alloc_leaf_queue(struct =
+net_device *netdev,
+> >  		goto error;
+> >  	}
+> > =20
+> > +set_qos_sq_bmap:
+>=20
+> I would prefer if this could be achieved without a goto.
 
-Takashi
+ack, I will fix it in v2.
+
+Regards,
+Lorenzo
+
+>=20
+> >  	set_bit(channel, dev->qos_sq_bmap);
+> >  	opt->qid =3D AIROHA_NUM_TX_RING + channel;
+> > =20
+>=20
+> ...
+
+--zML9pTpDuCjiRldO
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCajUpSAAKCRA6cBh0uS2t
+rJSyAQDrWl90MDX0+6B/dDR9iyapEy258QJbEC7SVmt+23YzxgD/SkPzjvIbpGbs
+eWvMbW/KPt95ofPcqRWP0KQyzkhQVgg=
+=KMNX
+-----END PGP SIGNATURE-----
+
+--zML9pTpDuCjiRldO--
 
