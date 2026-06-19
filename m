@@ -4,98 +4,143 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C383CD98F2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2026 14:20:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90771CD4F26
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2026 14:36:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fbcGH9ITMmOI3YSas2gsikCqBTKnvtgdWwDyBNbyusg=; b=tEuw8lZOgNrAx6Xqm552NL6i1v
-	iUj1HpsS0+l0rrRptZ+dzbleGGmY1RJkQaguwhSCP9oXH0asYDy20wXjgxabvpv5bkdfGgP6Axh60
-	lzoevij9SC8vvoQL3Y/AISspLsRdMs/7lnm4TlMa+4LJVBBLOeDNudRMIBx7KufYI/KHNiOB1mJz8
-	mvpc2NUmeIZCgZBfI8y4fVGnTD2z9p2DUOdrHoBrfF+qg7dWSc6OtzYfG76Po8WkvVVscAFPyuh+s
-	Mz5LbCew4lg4K4E5yET8qtltn6pPmgdqZe/vuKMrV7N3oLRFlprt5FXFUj1edvve+xJFtKUbjNz0b
-	MyXOfFkg==;
+	Content-Type:MIME-Version:References:In-Reply-To:Subject:Cc:To:From:
+	Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qruWLc1VrcWUcas3tXlIKr/hpjz262pfZoarsKMxK9k=; b=yKgUzK/ATkjT83TkDnUsj1ptUL
+	SyD2OdOlPJpmBeQy9P0U3b2bUJwb5Co0TvF9AYZbTkc2zwJ3+NG+swJVPSAqvBYZ5+N1dOUKz4DVy
+	M50j7K2/PNLamvFgk7gAzE5i1vnhyMCo8Sj1Myn0otRdpne1X3XkcdvwWUxFwpOlS6bWWKoD7mmBw
+	2bBmCH+c75YbgEcnH6yOVf9tqHb+U6AMiAaE+vWa0pM0kKvJ/2W0Yd81KB5ow2CTx1ma60boh/wOV
+	ikCcnpWfYzpCFCqYwiykSS20FSe5KsmZzRQnkPtgCDbgoihw8lxKmGNcPXFlTpjP/RyvpExaBrXIF
+	x51xzmgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waa5L-00000002ZMe-26Sp;
-	Fri, 19 Jun 2026 14:20:43 +0000
-Received: from mail-qv1-xf35.google.com ([2607:f8b0:4864:20::f35])
+	id 1waaKA-00000002aGU-1tL0;
+	Fri, 19 Jun 2026 14:36:02 +0000
+Received: from smtp-out1.suse.de ([195.135.223.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waa5J-00000002ZLx-0zAY
+	id 1waaK8-00000002aFf-2d9e
 	for linux-mediatek@lists.infradead.org;
-	Fri, 19 Jun 2026 14:20:42 +0000
-Received: by mail-qv1-xf35.google.com with SMTP id 6a1803df08f44-8dd21386a9aso17371516d6.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 19 Jun 2026 07:20:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1781878840; x=1782483640; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=fbcGH9ITMmOI3YSas2gsikCqBTKnvtgdWwDyBNbyusg=;
-        b=F9TQyuJOLI01hE1MVO3wbBsIdCx6fkXi0TplQKymOqIdHRblfr9lSViRXLckQoP6Hv
-         rFbv8y5mxBi/agAHapds4Osl5oIapjNSQ2RMglKXLpQBBFh0qH2RMPYiUeAE9lh0p3SI
-         cxjGO/RB+GwMMB4fFk72BJfrpeGRGUB5OUGNI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781878840; x=1782483640;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=fbcGH9ITMmOI3YSas2gsikCqBTKnvtgdWwDyBNbyusg=;
-        b=scG58yAw0CKwiK/Na8LYeTmgsgw12WRSGMZGp1CHQVw3GCj53eDurHTVaZm2n2h0R+
-         v5p9lgCI1P934iWhVUFrAYoTYrR/sNLY+ukKA1e3fxE4n3suLqdbB0/74fMSAjX4FRSj
-         oCsIk0MVhp7tjIpJbp4zwJAg2VbPfVqUtnSm7B/TCN14EZZ1lAycuryWWXop4bH1W8bT
-         noPIT+whJBGdV8SW+qhJWWxPPqNhekR/7nNQJ3N9cpjcMGnp/CoJ4mhp65l8/LuJPRAB
-         veavWdybKyupCFtJAz0ohwqFmW/lRRoImBfsdp9AWoDJAxfhKUNHcbR33abmpwGAssfG
-         uA5A==
-X-Forwarded-Encrypted: i=1; AFNElJ85TeW14xxRMpAN+zj60ngbIb9VtILF2e9corCyVSNgOUbVEnr0O+iT6kKyN43LzKaHnyr3P24wxE0OdHVC4Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzseCViVbVe4+0WRoZUJwXFaiTALxFjRiM1HbSN7ncBF+r2IjbL
-	N6SZC5R2rsK4NPaSZZW7xPvDMDe5r/qn+nPWTkJwwC6sDpIvFKM/3ZAsAmJme01jj6IvUPBuQYH
-	LpJsbwQ==
-X-Gm-Gg: AfdE7cn5pHlTdvpg4e+QUXiT4q/c1wusrVOB/Szmc6/W00CWqTApnTv3HNQV+3Yammz
-	M0tY4TyRc87HWaWkMZJ3w7FrhSBds/rl6OOeCIwwM/ANoCP+DTapu8/kfh6VPeddFS2pLb30vSX
-	W6HGzhDA3JBosYGwaI0HAr3gebe5zUrx+mXG6HrJdaYvPiLyNsjqjBWqElFJ7PhY5ednPTXbkUw
-	O9g0G/9lTnUdm9XQ2wV1KzC1/pMGs7jtOK5jPkl/VRFFFlsS090DrpLSTBjVTOFiNgs2CgLy1u4
-	grOrp+QC9sfxiaFkGtGl1oS8BcwuI/HUOGm70eJSYrSpQrKQRsTETjSNJrkvKdocAwekYbltM3A
-	qtrJM5CFNI6MvdBgk9dM38RpGjlWJgpYn2wk0OUh9XHdzabby0bn8oufsGAri+/kJHzq7pteoyS
-	zHkypqXXFZvcna/0EKunrwdvk2yGorpa5ElovF/Zk2W//5UNVJN24=
-X-Received: by 2002:a05:6214:1bc6:b0:8cc:ed49:bdc9 with SMTP id 6a1803df08f44-8de3b43e008mr64823316d6.5.1781878839998;
-        Fri, 19 Jun 2026 07:20:39 -0700 (PDT)
-Received: from mail-qt1-f181.google.com (mail-qt1-f181.google.com. [209.85.160.181])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-8de62900982sm23562716d6.41.2026.06.19.07.20.38
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 19 Jun 2026 07:20:39 -0700 (PDT)
-Received: by mail-qt1-f181.google.com with SMTP id d75a77b69052e-519ed52bcc6so186211cf.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 19 Jun 2026 07:20:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AFNElJ+lf/JrOHuFjyQphVTyIXZZhrt4keJFWCczLJmW0TtdimGHkDet9EJoC7C+7nBFdmTkq3cyHqZ7x+b5aOoyBw==@lists.infradead.org
-X-Received: by 2002:ac8:7d8e:0:b0:516:4f62:85ec with SMTP id
- d75a77b69052e-519e8d1f14dmr7406931cf.17.1781878838041; Fri, 19 Jun 2026
- 07:20:38 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260609121329.1262170-1-senozhatsky@chromium.org>
- <CAGp9LzpBUReZtrTEKgUr-+yvB+3tcs5hw7ziC4WaMRFNa2AYpg@mail.gmail.com> <87tsqyirsn.wl-tiwai@suse.de>
-In-Reply-To: <87tsqyirsn.wl-tiwai@suse.de>
-From: Tomasz Figa <tfiga@chromium.org>
-Date: Fri, 19 Jun 2026 23:20:20 +0900
-X-Gmail-Original-Message-ID: <CAAFQd5BtO7vL_A2i84CoF1Dk7Bmp_DZQJgoNAB-HyGA89=XDUQ@mail.gmail.com>
-X-Gm-Features: AVVi8Cfvj7Tldb-rRHpdw6zA1vefldpMM6jJzOD0R18t-VmMpCoygqlJxAYuFRA
-Message-ID: <CAAFQd5BtO7vL_A2i84CoF1Dk7Bmp_DZQJgoNAB-HyGA89=XDUQ@mail.gmail.com>
-Subject: Re: [PATCH] Bluetooth: btmtksdio: fix infinite loop in btmtksdio_txrx_work()
-To: Takashi Iwai <tiwai@suse.de>
-Cc: Sean Wang <sean.wang@kernel.org>, Sergey Senozhatsky <senozhatsky@chromium.org>, 
-	Marcel Holtmann <marcel@holtmann.org>, Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
-	Mark-yw Chen <mark-yw.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
-	linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Fri, 19 Jun 2026 14:36:01 +0000
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 7F91D6DBA3;
+	Fri, 19 Jun 2026 14:35:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1781879758; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=qruWLc1VrcWUcas3tXlIKr/hpjz262pfZoarsKMxK9k=;
+	b=tLnW9fynOO+N5fiDidU3T9yhwGmyZlcqWNLkGUFJbSix2evpC70DYBuXwNaxOXCVFXw3Ea
+	XJ2wNCxqd9LdI0N0bdEaFDPGVjW1N+Doo2Y4ZMu5D4/g70SRY7ut3vUGb5z+bAjcxasX34
+	N6U8N++DBkq/Gq1FccbtL/uCdbYhhoA=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1781879758;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=qruWLc1VrcWUcas3tXlIKr/hpjz262pfZoarsKMxK9k=;
+	b=Vl6HYejYPwel/QQoSGv02onV0eBKxF7H4jwja5tUkCJe+WBZqBCBNzcf7iytItWieounUm
+	nlokLYUjznwsyiCQ==
+Authentication-Results: smtp-out1.suse.de;
+	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=tLnW9fyn;
+	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=Vl6HYejY
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1781879758; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=qruWLc1VrcWUcas3tXlIKr/hpjz262pfZoarsKMxK9k=;
+	b=tLnW9fynOO+N5fiDidU3T9yhwGmyZlcqWNLkGUFJbSix2evpC70DYBuXwNaxOXCVFXw3Ea
+	XJ2wNCxqd9LdI0N0bdEaFDPGVjW1N+Doo2Y4ZMu5D4/g70SRY7ut3vUGb5z+bAjcxasX34
+	N6U8N++DBkq/Gq1FccbtL/uCdbYhhoA=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1781879758;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=qruWLc1VrcWUcas3tXlIKr/hpjz262pfZoarsKMxK9k=;
+	b=Vl6HYejYPwel/QQoSGv02onV0eBKxF7H4jwja5tUkCJe+WBZqBCBNzcf7iytItWieounUm
+	nlokLYUjznwsyiCQ==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 2FED4779A8;
+	Fri, 19 Jun 2026 14:35:58 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id 6OyMCs5TNWrIJAAAD6G6ig
+	(envelope-from <tiwai@suse.de>); Fri, 19 Jun 2026 14:35:58 +0000
+Date: Fri, 19 Jun 2026 16:35:57 +0200
+Message-ID: <87jyruiomq.wl-tiwai@suse.de>
+From: Takashi Iwai <tiwai@suse.de>
+To: Tomasz Figa <tfiga@chromium.org>
+Cc: Takashi Iwai <tiwai@suse.de>,
+	Sean Wang <sean.wang@kernel.org>,
+	Sergey Senozhatsky <senozhatsky@chromium.org>,
+	Marcel Holtmann <marcel@holtmann.org>,
+	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+	Mark-yw Chen <mark-yw.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	linux-bluetooth@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
 	stable@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH] Bluetooth: btmtksdio: fix infinite loop in btmtksdio_txrx_work()
+In-Reply-To: <CAAFQd5DyDQo9vBH80YYQBW7Bgf64F1m9q44-jhf1cc75XYpftA@mail.gmail.com>
+References: <20260609121329.1262170-1-senozhatsky@chromium.org>
+	<CAGp9LzpBUReZtrTEKgUr-+yvB+3tcs5hw7ziC4WaMRFNa2AYpg@mail.gmail.com>
+	<87tsqyirsn.wl-tiwai@suse.de>
+	<CAAFQd5DyDQo9vBH80YYQBW7Bgf64F1m9q44-jhf1cc75XYpftA@mail.gmail.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) Emacs/30.2 Mule/6.0
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Rspamd-Action: no action
+X-Spamd-Result: default: False [-2.01 / 50.00];
+	BAYES_HAM(-3.00)[100.00%];
+	SUSPICIOUS_RECIPS(1.50)[];
+	MID_CONTAINS_FROM(1.00)[];
+	NEURAL_HAM_LONG(-1.00)[-1.000];
+	R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	NEURAL_HAM_SHORT(-0.20)[-1.000];
+	MIME_GOOD(-0.10)[text/plain];
+	MX_GOOD(-0.01)[];
+	TO_MATCH_ENVRCPT_ALL(0.00)[];
+	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	ARC_NA(0.00)[];
+	FUZZY_RATELIMITED(0.00)[rspamd.com];
+	RCPT_COUNT_TWELVE(0.00)[13];
+	MIME_TRACE(0.00)[0:+];
+	FREEMAIL_ENVRCPT(0.00)[gmail.com];
+	FREEMAIL_CC(0.00)[suse.de,kernel.org,chromium.org,holtmann.org,gmail.com,mediatek.com,vger.kernel.org,lists.infradead.org];
+	RCVD_TLS_ALL(0.00)[];
+	RCVD_COUNT_TWO(0.00)[2];
+	FROM_EQ_ENVFROM(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	TO_DN_SOME(0.00)[];
+	DNSWL_BLOCKED(0.00)[2a07:de40:b281:104:10:150:64:97:from,2a07:de40:b281:106:10:150:64:167:received];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	TAGGED_RCPT(0.00)[];
+	DKIM_TRACE(0.00)[suse.de:+];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[chromium.org:email,imap1.dmz-prg2.suse.org:helo,imap1.dmz-prg2.suse.org:rdns,suse.de:email,suse.de:dkim,suse.de:mid]
+X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
+X-Rspamd-Queue-Id: 7F91D6DBA3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260619_072041_284603_DA12028C 
-X-CRM114-Status: GOOD (  32.14  )
+X-CRM114-CacheID: sfid-20260619_073600_854072_631562E4 
+X-CRM114-Status: GOOD (  35.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,97 +155,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-[Resending without HTML... Damn Gmail]
-
-On Fri, Jun 19, 2026 at 10:27=E2=80=AFPM Takashi Iwai <tiwai@suse.de> wrote=
-:
->
-> On Wed, 10 Jun 2026 08:52:31 +0200,
-> Sean Wang wrote:
+On Fri, 19 Jun 2026 16:17:31 +0200,
+Tomasz Figa wrote:
+> 
+> 
+> On Fri, Jun 19, 2026 at 10:27 PM Takashi Iwai <tiwai@suse.de> wrote:
 > >
-> > Hi,
+> > On Wed, 10 Jun 2026 08:52:31 +0200,
+> > Sean Wang wrote:
+> > >
+> > > Hi,
+> > >
+> > > On Tue, Jun 9, 2026 at 7:19 AM Sergey Senozhatsky
+> > > <senozhatsky@chromium.org> wrote:
+> > > >
+> > > > Every once in a while we see a hung btmtksdio_flush() task:
+> > > >
+> > > >  INFO: task kworker/u17:0:189 blocked for more than 122 seconds.
+> > > >  __cancel_work_timer+0x3f4/0x460
+> > > >  cancel_work_sync+0x1c/0x2c
+> > > >  btmtksdio_flush+0x2c/0x40
+> > > >  hci_dev_open_sync+0x10c4/0x2190
+> > > >  [..]
+> > > >
+> > > > It all boils down to incorrect time_is_before_jiffies() usage in
+> > > > btmtksdio_txrx_work().  The btmtksdio_txrx_work() loop is expected
+> > > > to be terminated if running for longer than 5*HZ.  However the
+> > > > timeout check is twisted:  time_is_before_jiffies(old_jiffies + 5*HZ)
+> > > > evaluates to true when old_jiffies + 5*HZ is in the past i.e. when a
+> > > > timeout has occurred.  Using OR with time_is_before_jiffies
+> (txrx_timeout)
+> > > > means that:
+> > > > - before the 5-second timeout: the condition is `int_status || false`,
+> > > >   so it loops as long as there are pending interrupts.
+> > > > - after the 5-second timeout: the condition becomes `int_status || true
+> `,
+> > > >   which is always true.
+> > > >
+> > > > When the loop becomes infinite btmtksdio_txrx_work() loop never
+> > > > terminates and never releases the SDIO host.
+> > > >
+> > > > Fix loop termination condition to actually enforce a 5*HZ timeout.
+> > > >
+> > > > Fixes: 26270bc189ea4 ("Bluetooth: btmtksdio: move interrupt service to
+> work")
+> > > > Cc: stable@vger.kernel.org
+> > > > Signed-off-by: Sergey Senozhatsky <senozhatsky@chromium.org>
+> > > > ---
+> > > >  drivers/bluetooth/btmtksdio.c | 2 +-
+> > > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > > >
+> > > > diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/
+> btmtksdio.c
+> > > > index 5b0fab7b89b5..c6f80c419e90 100644
+> > > > --- a/drivers/bluetooth/btmtksdio.c
+> > > > +++ b/drivers/bluetooth/btmtksdio.c
+> > > > @@ -620,7 +620,7 @@ static void btmtksdio_txrx_work(struct work_struct
+> *work)
+> > > >                         if (btmtksdio_rx_packet(bdev, rx_size) < 0)
+> > > >                                 bdev->hdev->stat.err_rx++;
+> > > >                 }
+> > > > -       } while (int_status || time_is_before_jiffies(txrx_timeout));
+> > > > +       } while (int_status && time_is_after_jiffies(txrx_timeout));
+> > >
+> > > yes, loop continues only while there is interrupt work and the timeout
+> > > deadline is still in the future
 > >
-> > On Tue, Jun 9, 2026 at 7:19=E2=80=AFAM Sergey Senozhatsky
-> > <senozhatsky@chromium.org> wrote:
-> > >
-> > > Every once in a while we see a hung btmtksdio_flush() task:
-> > >
-> > >  INFO: task kworker/u17:0:189 blocked for more than 122 seconds.
-> > >  __cancel_work_timer+0x3f4/0x460
-> > >  cancel_work_sync+0x1c/0x2c
-> > >  btmtksdio_flush+0x2c/0x40
-> > >  hci_dev_open_sync+0x10c4/0x2190
-> > >  [..]
-> > >
-> > > It all boils down to incorrect time_is_before_jiffies() usage in
-> > > btmtksdio_txrx_work().  The btmtksdio_txrx_work() loop is expected
-> > > to be terminated if running for longer than 5*HZ.  However the
-> > > timeout check is twisted:  time_is_before_jiffies(old_jiffies + 5*HZ)
-> > > evaluates to true when old_jiffies + 5*HZ is in the past i.e. when a
-> > > timeout has occurred.  Using OR with time_is_before_jiffies(txrx_time=
-out)
-> > > means that:
-> > > - before the 5-second timeout: the condition is `int_status || false`=
-,
-> > >   so it loops as long as there are pending interrupts.
-> > > - after the 5-second timeout: the condition becomes `int_status || tr=
-ue`,
-> > >   which is always true.
-> > >
-> > > When the loop becomes infinite btmtksdio_txrx_work() loop never
-> > > terminates and never releases the SDIO host.
-> > >
-> > > Fix loop termination condition to actually enforce a 5*HZ timeout.
-> > >
-> > > Fixes: 26270bc189ea4 ("Bluetooth: btmtksdio: move interrupt service t=
-o work")
-> > > Cc: stable@vger.kernel.org
-> > > Signed-off-by: Sergey Senozhatsky <senozhatsky@chromium.org>
-> > > ---
-> > >  drivers/bluetooth/btmtksdio.c | 2 +-
-> > >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > >
-> > > diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtks=
-dio.c
-> > > index 5b0fab7b89b5..c6f80c419e90 100644
-> > > --- a/drivers/bluetooth/btmtksdio.c
-> > > +++ b/drivers/bluetooth/btmtksdio.c
-> > > @@ -620,7 +620,7 @@ static void btmtksdio_txrx_work(struct work_struc=
-t *work)
-> > >                         if (btmtksdio_rx_packet(bdev, rx_size) < 0)
-> > >                                 bdev->hdev->stat.err_rx++;
-> > >                 }
-> > > -       } while (int_status || time_is_before_jiffies(txrx_timeout));
-> > > +       } while (int_status && time_is_after_jiffies(txrx_timeout));
+> > I stumbled on this while backporting to distro kernels, and I wonder
+> > whether this change is correct.
 > >
-> > yes, loop continues only while there is interrupt work and the timeout
-> > deadline is still in the future
->
-> I stumbled on this while backporting to distro kernels, and I wonder
-> whether this change is correct.
->
-> IIUC, this essentially makes the loop exiting right after the first
-> cycle; the patch changed from time_is_before_jiffies() to *_after_*(),
-> not only the logical OR to AND, and *_after_*() returns false, so the
-> whole condition becomes false, too.
+> > IIUC, this essentially makes the loop exiting right after the first
+> > cycle; the patch changed from time_is_before_jiffies() to *_after_*(),
+> > not only the logical OR to AND, and *_after_*() returns false, so the
+> > whole condition becomes false, too.
+> 
+> The intention is for the loop to keep running as long as there is still an
+> interrupt left to handle (int_status != 0) and the timeout has not elapsed
+> (jiffies < txrx_timeout).
+> 
+> Note that time_is_after_jiffies(x) returns true if x > jiffies (or jiffies <
+> x):
+> 
+>     /**
+>      * time_is_after_jiffies - return true if a is after jiffies
+>      * @a: time (unsigned long) to compare to jiffies
+>      *
+>      * Return: %true is time a is after jiffies, otherwise %false.
+>      */
+>     #define time_is_after_jiffies(a) time_before(jiffies, a)
+> 
+> Or am I missing something?
 
-The intention is for the loop to keep running as long as there is
-still an interrupt left to handle (int_status !=3D 0) and the timeout
-has not elapsed (jiffies < txrx_timeout).
+Doh, scratch my comment.  It's enough confusing about time_after() vs
+time_is_after_jiffies().  Too hot here to review something today :-<
 
-Note that time_is_after_jiffies(x) returns true if x > jiffies (or jiffies =
-< x):
+Sorry for the noise!
 
-/**
- * time_is_after_jiffies - return true if a is after jiffies
- * @a: time (unsigned long) to compare to jiffies
- *
- * Return: %true is time a is after jiffies, otherwise %false.
- */
-#define time_is_after_jiffies(a) time_before(jiffies, a)
 
-Or am I missing something?
-
-Best,
-Tomasz
+Takashi
 
