@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 399A7CD98F6
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EEA7CD4F26
 	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2026 12:27:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,42 +12,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=arv2T62AxgfG4gijW1tFgEnP4hrETgGm85LuZpWWv64=; b=UhBFefEBlNNOZFF2twhf8ime4t
-	6Mr4fYQx1wZzLXhZlm0SASV86gzuFjH/TY9V/Uaj6hrI1GdQf/PMLwQDYVv4X600VaVwzvfz+M+UH
-	cPdgFOpsfy8uGB/CF1ZCLGS/3nzinr88aYI7Xa/saS0X0G59hDk2ofSUPxzMZxymg+3mj1VWbaw0O
-	tu81tu0eMpOCTSTDEOmT85qAIMgAQvEEBVaFlmyhVAn+msJ+RMBAAEaKbdZ7fTQA279v1uoOtyONA
-	TEbt4JIV4/qxQN6Iydien33NmmStXAScUnUEjJl4s1RdOG3moSPkEC4UDMtzf3rHTJZpG2GawB+l3
-	OFfbluUg==;
+	bh=UYqDsmIdVLvoRCAw+MQ1HCNricx4lrMJNZ1BVwF5Mjg=; b=2A6LIrVqQKAD2YnlIb/l+ZN/UQ
+	NEbHJIek4ZqpCdWqwK3hJ143LB/ceeb3Ad+3pEsx5mlhVBz74OQ0IgMvxUZ6tj0gE4DtjoOv2DBau
+	BcLjRsdOCyo+VYv2r8zvOBGb1QXveBslhU1NmOlnElTVEVhzQjeJ/sHvTBgkV9KIxrNPUebh5/ymw
+	7Yfrs8YCYhiqGLsk31Z5+2ZKLNETiiYtnkLH6CZhfwVFd0FdBPoY70ZG0DwQ9rw4H84bqC9REE0ms
+	FSqmnzmhnuNskVxxq8RHwVZURqV1zDVwHvjczLp+dZuX2dho+L20c8JITJJkoDPEzSW7bWjI19sg7
+	HriUCR4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waYJR-00000002OXl-1o6a;
+	id 1waYJR-00000002OYG-2TKm;
 	Fri, 19 Jun 2026 12:27:09 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waYJN-00000002OUN-0eT3;
-	Fri, 19 Jun 2026 12:27:05 +0000
+	id 1waYJQ-00000002OWg-0HWj;
+	Fri, 19 Jun 2026 12:27:08 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id A5E4043AD5;
-	Fri, 19 Jun 2026 12:27:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1779B1F000E9;
-	Fri, 19 Jun 2026 12:27:03 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 818C1601F4;
+	Fri, 19 Jun 2026 12:27:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B88321F000E9;
+	Fri, 19 Jun 2026 12:27:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781872024;
-	bh=arv2T62AxgfG4gijW1tFgEnP4hrETgGm85LuZpWWv64=;
+	s=k20260515; t=1781872027;
+	bh=UYqDsmIdVLvoRCAw+MQ1HCNricx4lrMJNZ1BVwF5Mjg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=FgezfHbwQ0X9IrQeY0l6xV4hfkwBIJLUU0sj6/0DrmIvMYcDnx3OQTh+XtFFVLKxb
-	 dQtJSYRK/f6mS+wwSxSI+v1z8OfgJg75ad/BiqZL06curOjvKWge2kS7rV7mzbyST5
-	 9iqwQPoT+vH+N/swZCl8zkvR/uUhoyoEQTe4XR8IIWQ+fFt3D1K06cuMFqTZJQeaFd
-	 KY25Aap9wZYG4EHxSmY8Jrd5yVI/PPsaFM9bdHbONaVaGEKWOlAaX3xp4DXunSmCJi
-	 JhosP7JeXMUORS0qLCnUjz0ND7explbV0+G7eUfNk1+Wd1Jy4TBWxsOMBYWO7OS2FQ
-	 CT0gm98/SCuGg==
+	b=oiPAkuTPGHS7rb6SKX25szPcachjtdvpfiXTY1AzWh2eCGid8PL4jmgFAIl2EaE3w
+	 xlU9jcDAYlOVvKLikqTuMnrpszjbwGT7u4nFuAiytDxpSwWAkYYmA4SdQL9XDZblb9
+	 s4BuFdaKgHeVJ13hqWBjV8VkoxiYlm235mi6F9HqTTlX2a4h1WGfVwUapk5zLCUcuX
+	 n/MVq9N+OhEoJEynKeU+gAM7H7ZSPEmVaU1hvie1uu7FhYnUqVNnG3/kW4f23x1iCL
+	 KHZG+MkXh6dTnZ+s15X37k0zVAC1vtVQrUjR+4jgl/aJ4Tq5g/FJGYw2ONlTEDGF7y
+	 Obwgby0LJfDeQ==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Fri, 19 Jun 2026 14:24:56 +0200
-Subject: [PATCH v3 51/78] drm/mediatek: dsi: Switch to atomic_create_state
+Date: Fri, 19 Jun 2026 14:24:57 +0200
+Subject: [PATCH v3 52/78] drm/mediatek: hdmi: Switch to atomic_create_state
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260619-drm-no-more-bridge-reset-v3-51-ff399263111b@kernel.org>
+Message-Id: <20260619-drm-no-more-bridge-reset-v3-52-ff399263111b@kernel.org>
 References: <20260619-drm-no-more-bridge-reset-v3-0-ff399263111b@kernel.org>
 In-Reply-To: <20260619-drm-no-more-bridge-reset-v3-0-ff399263111b@kernel.org>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -67,12 +67,12 @@ Cc: Dmitry Baryshkov <lumag@kernel.org>, dri-devel@lists.freedesktop.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1731; i=mripard@kernel.org;
- h=from:subject:message-id; bh=A/V4r1jC1I3Xmm9CQE/hrJNouiy2Aa/X/crDFujeVdU=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDFmmpgz6+6Nm74rZZx9z4/NJ9vsxH9Z0LPqe7/Cr8f3T7
- KgL+3o8OqayMAhzMsiKKbI8kQk7vbx9cZWD/cofMHNYmUCGMHBxCsBEKlIZGw58zTnx2nTdiZUs
- k7fXBnZrmJyrU85Yllq9q94k/eVSu1erGzezHTE/tVJ/bbXvTrNLkxkbFsk4CaZq/270aPHcPDN
- 0aeGtA2YHViaePPPlhFbECz6xz2/0lI4Gh67s5HtqtrPl5OFsAA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1805; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=X3YmX9YPN+MlLE1XC8WayfqLiWsnWAqBlADVy6f2NbM=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDFmmpgzTebdw+i8M2OYrMlP5TelvJ0bPGdu3XU6+IbM5X
+ qOnOvd5x1QWBmFOBlkxRZYnMmGnl7cvrnKwX/kDZg4rE8gQBi5OAZiI21PGhrUBXEK3S+TS91gr
+ LVXKK003zTWY7DMzd7P1fdON+2YUaVWt61aJv1nlUeCeGBPKJb+OsVaAW0nn+xEZde64P8fMi9y
+ yQuU4dnuv3Gh2pPXVxIP9cxkt2t/aMs06wt3plRRm+idmKgA=
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -108,26 +108,26 @@ Cc: linux-mediatek@lists.infradead.org
 Cc: linux-kernel@vger.kernel.org
 Cc: linux-arm-kernel@lists.infradead.org
 ---
- drivers/gpu/drm/mediatek/mtk_dsi.c | 2 +-
+ drivers/gpu/drm/mediatek/mtk_hdmi.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index eb325e68aa59..3f3f56eed3f9 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -892,11 +892,11 @@ static const struct drm_bridge_funcs mtk_dsi_bridge_funcs = {
- 	.atomic_disable = mtk_dsi_bridge_atomic_disable,
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+index 38a7c7953874..738090a47176 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+@@ -1070,11 +1070,11 @@ static void mtk_hdmi_bridge_atomic_enable(struct drm_bridge *bridge,
+ 
+ static const struct drm_bridge_funcs mtk_hdmi_bridge_funcs = {
+ 	.mode_valid = mtk_hdmi_bridge_mode_valid,
  	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
- 	.atomic_enable = mtk_dsi_bridge_atomic_enable,
- 	.atomic_pre_enable = mtk_dsi_bridge_atomic_pre_enable,
- 	.atomic_post_disable = mtk_dsi_bridge_atomic_post_disable,
+ 	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
 -	.atomic_reset = drm_atomic_helper_bridge_reset,
 +	.atomic_create_state = drm_atomic_helper_bridge_create_state,
- 	.mode_valid = mtk_dsi_bridge_mode_valid,
- 	.mode_set = mtk_dsi_bridge_mode_set,
- };
- 
- void mtk_dsi_ddp_start(struct device *dev)
+ 	.attach = mtk_hdmi_bridge_attach,
+ 	.mode_fixup = mtk_hdmi_bridge_mode_fixup,
+ 	.atomic_disable = mtk_hdmi_bridge_atomic_disable,
+ 	.atomic_post_disable = mtk_hdmi_bridge_atomic_post_disable,
+ 	.mode_set = mtk_hdmi_bridge_mode_set,
 
 -- 
 2.54.0
