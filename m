@@ -4,53 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E391CDB466
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2026 14:09:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94965CDB470
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2026 14:09:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TO+8vf61kNju4PwtuIv9SwXy8zceN+AIryuGq2GsET8=; b=fUY0L2NOl/GC02nMfRVbV7jZkk
-	EgplI2CuIUWVeyBN5L4lsTQ1JtGPewVL188cfS3Zc7WLl2XgU63VIESDTmz1v3YAUx15poOxOOhTN
-	VjO7F9EnwB/SAfdZ6TsFjKi6t31LDmAzyWikAw4qAfo4SFo8EETnEtICWACLMbyZ29omA96GayPxr
-	FB/RQe2E+L1qN0ryK4KjABpuMmnS8X3zUx8J7QO08hqaOrb4tPSTeHrEh9FsxaJ3iFY0Gtry2EeEW
-	g8wttLag7avR6heC5zQ8bAcH3LmmOxNcqpdJ27ebuGBPeU5d1VsDUKD9GBDnIHaBQQt0XjVe+ZSuC
-	Kbtss/0g==;
+	bh=8zhw41Wj4vCH2abThiXQujr4lQRlosy+XBXOYfxLors=; b=lMvTfuFdiW5JXZQHWmDi9e74U7
+	w1vkf4XilywrHf4BX+wpkifbaSzw62TKoauc2zPfzXKDiss8Wt+IpKMCDZJ3eIwhg8aaY0Jk3R+MK
+	C/Gvu8RTnw1L7HN5+boEamQmSgWQyPUgTn83sl+R1uJNVF/5Kl9RZISYLEwJeGd305MzCABQTxD+z
+	EcJj0BVirHC4/YBwsUwM+lqsBSSkd+Qkmi8mx/bQ7O2swcWOSgOLosgrM2wsbs5cEi5sGezVmDAOl
+	MjlMN25so1SPVYDDwVJItEAJUb8CAblV/UT5mPjoiN1M2GIH0SpFdAOn+oLp51d61CEMXDab+RiTk
+	yRVhE2Yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waZu8-00000002XHx-3WB0;
-	Fri, 19 Jun 2026 14:09:08 +0000
+	id 1waZuA-00000002XL6-3tCx;
+	Fri, 19 Jun 2026 14:09:10 +0000
 Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waZu5-00000002XEr-2sH2;
-	Fri, 19 Jun 2026 14:09:06 +0000
+	id 1waZu9-00000002XGN-0OMU
+	for linux-mediatek@lists.infradead.org;
+	Fri, 19 Jun 2026 14:09:10 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id 15E6C1A3A20;
-	Fri, 19 Jun 2026 14:09:04 +0000 (UTC)
+	by smtpout-02.galae.net (Postfix) with ESMTPS id A36D41A39A0;
+	Fri, 19 Jun 2026 14:09:07 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id DD1DA601AD;
-	Fri, 19 Jun 2026 14:09:03 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 51781106C8234;
-	Fri, 19 Jun 2026 16:08:59 +0200 (CEST)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 6EBE8601AD;
+	Fri, 19 Jun 2026 14:09:07 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 9A510106C88A8;
+	Fri, 19 Jun 2026 16:09:02 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1781878142; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1781878145; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=TO+8vf61kNju4PwtuIv9SwXy8zceN+AIryuGq2GsET8=;
-	b=ZncerNAwoGtviiVsHNj7vZKGV3N7lfq5zDOhto3C1/blrMQ53z2GWeVHoX7vP7+4dIPbC/
-	+Jeyo+IJzxumTF1XTcTSfOrZ6f1DBrPQJBDPdepkjWx8QF5FfT8sHPIZaOCo0AFL0Oa+nB
-	yqft7kAqpDUipMtTE7sOx5MMRPMhHrV5RRhHB3leE485rWqbyZxMMh5XLn6ohPAnKBZC2A
-	/w7Sh5kA5TrE37Xqkwgeai/pWQz3QKwgQYY/MN12t4Ihw2bLsKtMvp2XDsnE6ddMCD5Yxd
-	M/+xKmasavxYoc75xlouIbBOGat6wmKDUaJrQdxs3n/5ZmDvAn52p8Sj+WzMaw==
+	bh=8zhw41Wj4vCH2abThiXQujr4lQRlosy+XBXOYfxLors=;
+	b=kiZ2AHRxwemniL/axdXQpGWkQMO6tJUJDELCW+DFK9ZKkXXaQdxEqkFNGLXDrm2ox3/Cxu
+	9mHtWNKn+nOv/H/8SvKQdP2m/0J7WgRYfuLktXZCWylmWZ94LHnDRjf6a2sDHelmMKcyzM
+	pnxZprH1bJKxX7zlAx1THNyAD9dVwpwZzEa8iLXjTSn1Qu0zcEBaHTpiMbWeEUCoAAJIks
+	CMuE8ArmR6M3bq+VLJpPsRQ9QMuUl7U0pXwz9KXle582cGhXXsXzSwotkaU697KUVLjnU3
+	f/35RBhBdw4uhl45nMlhCCeEE8Eraq/+1zFAJHEGSPLNjobb8OAhDvlvnoenSg==
 From: Kory Maincent <kory.maincent@bootlin.com>
-Date: Fri, 19 Jun 2026 16:08:45 +0200
-Subject: [PATCH RFC v2 3/4] drm/bridge: Wire drmm_connector_dp_init() via
- new DRM_BRIDGE_OP_DP flag
+Date: Fri, 19 Jun 2026 16:08:46 +0200
+Subject: [PATCH RFC v2 4/4] drm/mediatek: Use dp_connector helpers to
+ report link training state
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260619-feat_link_cap-v2-3-a3dec4c02ad9@bootlin.com>
+Message-Id: <20260619-feat_link_cap-v2-4-a3dec4c02ad9@bootlin.com>
 References: <20260619-feat_link_cap-v2-0-a3dec4c02ad9@bootlin.com>
 In-Reply-To: <20260619-feat_link_cap-v2-0-a3dec4c02ad9@bootlin.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -83,8 +84,8 @@ Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
 X-Mailer: b4 0.15.0
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260619_070905_877109_FB1B026C 
-X-CRM114-Status: GOOD (  14.69  )
+X-CRM114-CacheID: sfid-20260619_070909_280762_F1A726FE 
+X-CRM114-Status: GOOD (  14.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,109 +100,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce DRM_BRIDGE_OP_DP, a new bridge operation flag for bridges
-that provide DisplayPort connector operations with link training support.
-Bridges advertising this flag must fill the dp_link_caps field in
-struct drm_bridge with their link capabilities.
+Set DRM_BRIDGE_OP_DP and populate dp_link_train_caps with the supported
+link rates, lane counts, voltage swing and pre-emphasis levels so the
+bridge connector uses drmm_connector_dp_init() and exposes the link
+training state properties to userspace.
 
-In drm_bridge_connector_init(), when a bridge sets DRM_BRIDGE_OP_DP,
-use drmm_connector_dp_init() instead of the generic drmm_connector_init()
-so the connector exposes link training state properties to userspace.
-This mirrors the existing pattern used for HDMI bridges.
+Store per-lane voltage swing and pre-emphasis values in
+mtk_dp_train_info and report the negotiated link parameters via
+drm_connector_dp_set_link_train_properties() on training completion.
+Clear them via drm_connector_dp_reset_link_train_properties() when a
+disconnect is detected in the HPD event thread.
 
 Signed-off-by: Kory Maincent <kory.maincent@bootlin.com>
 ---
- drivers/gpu/drm/display/drm_bridge_connector.c | 24 ++++++++++++++++++++++++
- include/drm/drm_bridge.h                       | 13 +++++++++++++
- 2 files changed, 37 insertions(+)
 
-diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
-index cafa498c38482..6ea4d45e3146b 100644
---- a/drivers/gpu/drm/display/drm_bridge_connector.c
-+++ b/drivers/gpu/drm/display/drm_bridge_connector.c
-@@ -108,6 +108,13 @@ struct drm_bridge_connector {
- 	 * HDMI Audio infrastructure, if any (see &DRM_BRIDGE_OP_HDMI_AUDIO).
- 	 */
- 	struct drm_bridge *bridge_hdmi_audio;
-+	/**
-+	 * @bridge_dp:
-+	 *
-+	 * The bridge in the chain that implements necessary support for the
-+	 * DisplayPort connector infrastructure, if any (see &DRM_BRIDGE_OP_DP).
-+	 */
-+	struct drm_bridge *bridge_dp;
- 	/**
- 	 * @bridge_dp_audio:
- 	 *
-@@ -773,6 +780,7 @@ static void drm_bridge_connector_put_bridges(struct drm_device *dev, void *data)
- 	drm_bridge_put(bridge_connector->bridge_hdmi_audio);
- 	drm_bridge_put(bridge_connector->bridge_dp_audio);
- 	drm_bridge_put(bridge_connector->bridge_hdmi_cec);
-+	drm_bridge_put(bridge_connector->bridge_dp);
+This patch has still not been tested. I am in the process of finding the
+hardware for that.
+
+Changes in v2:
+- Remove voltage swing and pre emphasis properties.
+---
+ drivers/gpu/drm/mediatek/mtk_dp.c | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+index eefbc7e0f9c8d..c1e7086104116 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dp.c
++++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+@@ -1789,6 +1789,8 @@ static int mtk_dp_parse_capabilities(struct mtk_dp *mtk_dp)
+ 		}
+ 	}
+ 
++	drm_dp_sink_set_link_caps(mtk_dp->conn, &mtk_dp->aux);
++
+ 	return 0;
  }
  
- /**
-@@ -908,6 +916,15 @@ struct drm_connector *drm_bridge_connector_init(struct drm_device *drm,
- 			bridge_connector->bridge_hdmi_audio = drm_bridge_get(bridge);
- 		}
+@@ -1812,6 +1814,17 @@ static void mtk_dp_train_change_mode(struct mtk_dp *mtk_dp)
+ 	mtk_dp_reset_swing_pre_emphasis(mtk_dp);
+ }
  
-+		if (bridge->ops & DRM_BRIDGE_OP_DP) {
-+			if (bridge_connector->bridge_dp)
-+				return ERR_PTR(-EBUSY);
-+			if (!bridge->dp_link_caps)
-+				return ERR_PTR(-EINVAL);
++static void mtk_dp_report_link_train(struct mtk_dp *mtk_dp)
++{
++	u32 rate, nlanes;
 +
-+			bridge_connector->bridge_dp = drm_bridge_get(bridge);
-+		}
++	rate = drm_dp_bw_code_to_link_rate(mtk_dp->train_info.link_rate);
++	nlanes = mtk_dp->train_info.lane_count;
 +
- 		if (bridge->ops & DRM_BRIDGE_OP_DP_AUDIO) {
- 			if (bridge_connector->bridge_dp_audio)
- 				return ERR_PTR(-EBUSY);
-@@ -996,6 +1013,13 @@ struct drm_connector *drm_bridge_connector_init(struct drm_device *drm,
- 					       max_bpc);
- 		if (ret)
- 			return ERR_PTR(ret);
-+	} else if (bridge_connector->bridge_dp) {
-+		ret = drmm_connector_dp_init(drm, connector,
-+					     &drm_bridge_connector_funcs,
-+					     bridge_connector->bridge_dp->dp_link_caps,
-+					     connector_type, ddc);
-+		if (ret)
-+			return ERR_PTR(ret);
- 	} else {
- 		ret = drmm_connector_init(drm, connector,
- 					  &drm_bridge_connector_funcs,
-diff --git a/include/drm/drm_bridge.h b/include/drm/drm_bridge.h
-index 4ba3a5deef9a6..02411e0b71c35 100644
---- a/include/drm/drm_bridge.h
-+++ b/include/drm/drm_bridge.h
-@@ -1092,6 +1092,14 @@ enum drm_bridge_ops {
- 	 * &drm_bridge_funcs->hdmi_clear_spd_infoframe callbacks.
- 	 */
- 	DRM_BRIDGE_OP_HDMI_SPD_INFOFRAME = BIT(10),
-+	/**
-+	 * @DRM_BRIDGE_OP_DP: The bridge provides DisplayPort connector
-+	 * operations, including link training support. Bridges that set
-+	 * this flag must provide DisplayPort-related information and
-+	 * fill the &drm_bridge->dp_link_train_caps link training
-+	 * capabilities.
-+	 */
-+	DRM_BRIDGE_OP_DP = BIT(11),
- };
++	drm_dp_set_cur_link_params(mtk_dp->conn, rate, nlanes, false);
++	drm_dp_set_max_link_params(mtk_dp->conn, rate, nlanes);
++}
++
+ static int mtk_dp_training(struct mtk_dp *mtk_dp)
+ {
+ 	int ret;
+@@ -1892,6 +1905,7 @@ static int mtk_dp_training(struct mtk_dp *mtk_dp)
+ 	mtk_dp_training_set_scramble(mtk_dp, true);
+ 	mtk_dp_set_enhanced_frame_mode(mtk_dp);
  
- /**
-@@ -1267,6 +1275,11 @@ struct drm_bridge {
- 	 */
- 	void *hpd_data;
++	mtk_dp_report_link_train(mtk_dp);
+ 	return 0;
+ }
  
-+	/**
-+	 * @dp_link_caps: DisplayPort link capabilities
-+	 */
-+	const struct drm_connector_dp_link_caps *dp_link_caps;
-+
- 	/**
- 	 * @next_bridge: Pointer to the following bridge, automatically put
- 	 * when this bridge is freed (i.e. at destroy time). This is for
+@@ -2004,6 +2018,7 @@ static irqreturn_t mtk_dp_hpd_event_thread(int hpd, void *dev)
+ 			mtk_dp->need_debounce = false;
+ 			mod_timer(&mtk_dp->debounce_timer,
+ 				  jiffies + msecs_to_jiffies(100) - 1);
++			drm_dp_sink_reset_link_caps(mtk_dp->conn);
+ 		} else {
+ 			mtk_dp_aux_panel_poweron(mtk_dp, true);
+ 
+@@ -2742,6 +2757,12 @@ static int mtk_dp_edp_link_panel(struct drm_dp_aux *mtk_aux)
+ 
+ static int mtk_dp_probe(struct platform_device *pdev)
+ {
++	static const u32 dp_rates[] = {162000, 270000, 540000, 810000};
++	static const struct drm_connector_dp_link_caps dp_link_caps = {
++		.nlanes = 4,
++		.nlink_rates = ARRAY_SIZE(dp_rates),
++		.link_rates = dp_rates,
++	};
+ 	struct mtk_dp *mtk_dp;
+ 	struct device *dev = &pdev->dev;
+ 	int ret;
+@@ -2809,6 +2830,8 @@ static int mtk_dp_probe(struct platform_device *pdev)
+ 
+ 	mtk_dp->bridge.of_node = dev->of_node;
+ 	mtk_dp->bridge.type = mtk_dp->data->bridge_type;
++	mtk_dp->bridge.dp_link_caps = &dp_link_caps;
++	mtk_dp->bridge.ops = DRM_BRIDGE_OP_DP;
+ 
+ 	if (mtk_dp->bridge.type == DRM_MODE_CONNECTOR_eDP) {
+ 		/*
 
 -- 
 2.43.0
