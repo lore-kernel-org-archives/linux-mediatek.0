@@ -4,132 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF404CD98F2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2026 13:27:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1B17CD98F2
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2026 13:43:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Subject:Cc:To:From:
-	Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DRyLfeX9sXJHktJSeQPbzw+etVyvD+njKQjlfKOE5So=; b=GeSAWOEFc5WTwuXYkY+RcGGNsb
-	F1hrtYlV8sUGhfLm+zIZ7QxONxgfMyHPLl5/vQpytdKJGyP3aVwm1F7XKcpeRBJcr0EWf027r8ZtT
-	aNt6GDRKAHsG508f2kC9spfvLr45cQ3xUv4WF6AEhXcTgELYp3RIHht+tc9b5mM3/JQ6L5c5q5Rio
-	ZWFC7TpkavHi7mVRFGr3eFN3AkHn78ATP5Byqtxv3/hNrajDFxqH1Ew1qt/gXcKQ2VdY2dvGMsnlH
-	FheGIdhLf20viAb7qoeY3SL2vV4GWsaV+Q0JHC9spnWAgedSDRxnUH+U+zG4NRsAalhGoHX72iNmH
-	XaB5phhQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:
+	To:Cc:Subject:Message-Id:Date:Content-Type:Content-Transfer-Encoding:
+	Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=17i6oa0M6UmVrMWmDG7cWGhbnxl14z0/BIWH4Fd9A3Y=; b=PKVr3Hd26NCicaYPz+lGFGdh/B
+	htGmAbxfrXTukRb3toCgAB+odhpaS/vMQfrtxDMLCrycYzYNnSKlcwB3o7aySilOuS7bpYc7YR2gD
+	9+X8dP/cdcnfyWtv4UsSq5CnR2/gsFcbp8bHNR4FTLT7gcjIv3DLclPPj37ZtbxdInUyykMfOF906
+	ZbsnGCk7t+jTVf7lq5HdVlZvA1lL5gKL+85vhlfCN3Iyi8t8m36vrCEOFSFGpAJOQpOS2NCdcc2Qj
+	+W94zdB6Bt3hEjvFQWVo7zTQrfkZf5LNFUoa3eZsAYOC3zUmg2oRFo6qtUaeJzXhEezM9kFnI1Uhv
+	GIM2rzlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waZG4-00000002U0R-2SBb;
-	Fri, 19 Jun 2026 13:27:44 +0000
-Received: from smtp-out2.suse.de ([2a07:de40:b251:101:10:150:64:2])
+	id 1waZUv-00000002Uv0-1ZXt;
+	Fri, 19 Jun 2026 13:43:05 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waZFz-00000002Tya-0Cq1
-	for linux-mediatek@lists.infradead.org;
-	Fri, 19 Jun 2026 13:27:43 +0000
-Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 1054875D51;
-	Fri, 19 Jun 2026 13:27:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1781875657; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=DRyLfeX9sXJHktJSeQPbzw+etVyvD+njKQjlfKOE5So=;
-	b=hsbCKW8Dk24fM6G321A2c4/+2Lu02enbkrUyCq5SegvdhYa9kZ3tEPBm/6bbfa8ypBjTwo
-	LCkAbJsFGVZL8K4gmip0Jq6EfcuMbZnFXhLw4kA0lZorf1I0SATpP+uLmRzMmR5oEGX9oy
-	mDRp/GE9cyzB342djhrh+V8tn4AxW9s=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1781875657;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=DRyLfeX9sXJHktJSeQPbzw+etVyvD+njKQjlfKOE5So=;
-	b=jcAsV996fZUR6Ggf9VHOmJtSP3SDX5IC4w32xyYm1uuhRTHMzfRp/Y3RNSPW61OCwrV/O1
-	xxD9zohT3xr402Dg==
-Authentication-Results: smtp-out2.suse.de;
-	none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1781875657; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=DRyLfeX9sXJHktJSeQPbzw+etVyvD+njKQjlfKOE5So=;
-	b=hsbCKW8Dk24fM6G321A2c4/+2Lu02enbkrUyCq5SegvdhYa9kZ3tEPBm/6bbfa8ypBjTwo
-	LCkAbJsFGVZL8K4gmip0Jq6EfcuMbZnFXhLw4kA0lZorf1I0SATpP+uLmRzMmR5oEGX9oy
-	mDRp/GE9cyzB342djhrh+V8tn4AxW9s=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1781875657;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=DRyLfeX9sXJHktJSeQPbzw+etVyvD+njKQjlfKOE5So=;
-	b=jcAsV996fZUR6Ggf9VHOmJtSP3SDX5IC4w32xyYm1uuhRTHMzfRp/Y3RNSPW61OCwrV/O1
-	xxD9zohT3xr402Dg==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id B4C53779A8;
-	Fri, 19 Jun 2026 13:27:36 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id EF3QKshDNWpYXwAAD6G6ig
-	(envelope-from <tiwai@suse.de>); Fri, 19 Jun 2026 13:27:36 +0000
-Date: Fri, 19 Jun 2026 15:27:36 +0200
-Message-ID: <87tsqyirsn.wl-tiwai@suse.de>
-From: Takashi Iwai <tiwai@suse.de>
-To: Sean Wang <sean.wang@kernel.org>
-Cc: Sergey Senozhatsky <senozhatsky@chromium.org>,
-	Marcel Holtmann <marcel@holtmann.org>,
-	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
-	Mark-yw Chen <mark-yw.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Tomasz Figa <tfiga@chromium.org>,
-	linux-bluetooth@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	stable@vger.kernel.org
-Subject: Re: [PATCH] Bluetooth: btmtksdio: fix infinite loop in btmtksdio_txrx_work()
-In-Reply-To: <CAGp9LzpBUReZtrTEKgUr-+yvB+3tcs5hw7ziC4WaMRFNa2AYpg@mail.gmail.com>
-References: <20260609121329.1262170-1-senozhatsky@chromium.org>
-	<CAGp9LzpBUReZtrTEKgUr-+yvB+3tcs5hw7ziC4WaMRFNa2AYpg@mail.gmail.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) Emacs/30.2 Mule/6.0
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+	id 1waZUq-00000002Utc-0auh;
+	Fri, 19 Jun 2026 13:43:03 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-02.galae.net (Postfix) with ESMTPS id ED6D71A3A28;
+	Fri, 19 Jun 2026 13:42:54 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id ADBF5601AE;
+	Fri, 19 Jun 2026 13:42:54 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id E9861106C88A8;
+	Fri, 19 Jun 2026 15:42:31 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1781876571; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=17i6oa0M6UmVrMWmDG7cWGhbnxl14z0/BIWH4Fd9A3Y=;
+	b=2OHXR1QwtCE+m9KORcKStlkcA6ag+ntrhh38YC8FuWi4Ivanof2kMKZSiDIi8KDy/rJyOy
+	d9n5jfH4IyN51n8RfW5VcLV8ajZhRXvgOa5R+0d6jYOJlGpRQ8Ei+7ncYisPtX154p/itA
+	+FVS4408GK6t2mbJW4PGkgW8pjPtp0vASGX+Kfy16/0IwPEQZfEFJaECutzX09avkZUJFd
+	QP6TokojrSOrCy+kB+ysimzb7jkt7bgeZJOi91eLy/pgdjhtdRh6ocFi/X0UOYZD7EK78Z
+	Hch7VJW8YQWSdBwSR/Bp3d6ZAidfHERZnrYDFVzmEH+M4z5scGH6fREi9mAoVw==
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Spamd-Result: default: False [-1.80 / 50.00];
-	BAYES_HAM(-3.00)[100.00%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	MID_CONTAINS_FROM(1.00)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	NEURAL_HAM_SHORT(-0.20)[-1.000];
-	MIME_GOOD(-0.10)[text/plain];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	FUZZY_RATELIMITED(0.00)[rspamd.com];
-	MIME_TRACE(0.00)[0:+];
-	ARC_NA(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[12];
-	FREEMAIL_ENVRCPT(0.00)[gmail.com];
-	FREEMAIL_CC(0.00)[chromium.org,holtmann.org,gmail.com,mediatek.com,vger.kernel.org,lists.infradead.org];
-	RCVD_TLS_ALL(0.00)[];
-	FROM_EQ_ENVFROM(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	TO_DN_SOME(0.00)[];
-	RCVD_COUNT_TWO(0.00)[2];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	TAGGED_RCPT(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:mid,chromium.org:email,imap1.dmz-prg2.suse.org:helo]
+Date: Fri, 19 Jun 2026 15:42:30 +0200
+Message-Id: <DJD2IQSFENH4.337VSFOU7OJ29@bootlin.com>
+Subject: Re: [PATCH v3 00/78] drm/bridge: Convert all reset users to
+ create_state
+Cc: "Dmitry Baryshkov" <lumag@kernel.org>,
+ <dri-devel@lists.freedesktop.org>, "Laurent Pinchart"
+ <laurent.pinchart+renesas@ideasonboard.com>, "Jagan Teki"
+ <jagan@amarulasolutions.com>, "Liu Ying" <victor.liu@nxp.com>, "Frank Li"
+ <Frank.Li@nxp.com>, "Sascha Hauer" <s.hauer@pengutronix.de>, "Pengutronix
+ Kernel Team" <kernel@pengutronix.de>, "Fabio Estevam" <festevam@gmail.com>,
+ <imx@lists.linux.dev>, <linux-arm-kernel@lists.infradead.org>, "Andy Yan"
+ <andy.yan@rock-chips.com>, "Phong LE" <ple@baylibre.com>, "Douglas
+ Anderson" <dianders@chromium.org>, "Inki Dae" <inki.dae@samsung.com>,
+ "Marek Szyprowski" <m.szyprowski@samsung.com>, "Philipp Zabel"
+ <p.zabel@pengutronix.de>, "Paul Cercueil" <paul@crapouillou.net>,
+ <linux-mips@vger.kernel.org>, "AngeloGioacchino Del Regno"
+ <angelogioacchino.delregno@collabora.com>, "Chun-Kuang Hu"
+ <chunkuang.hu@kernel.org>, "Matthias Brugger" <matthias.bgg@gmail.com>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ "Kevin Hilman" <khilman@baylibre.com>, "Jerome Brunet"
+ <jbrunet@baylibre.com>, "Martin Blumenstingl"
+ <martin.blumenstingl@googlemail.com>, <linux-amlogic@lists.infradead.org>,
+ "Tomi Valkeinen" <tomi.valkeinen+renesas@ideasonboard.com>, "Geert
+ Uytterhoeven" <geert+renesas@glider.be>, "Magnus Damm"
+ <magnus.damm@gmail.com>, "Kieran Bingham"
+ <kieran.bingham+renesas@ideasonboard.com>,
+ <linux-renesas-soc@vger.kernel.org>, "Biju Das"
+ <biju.das.jz@bp.renesas.com>, "Heiko Stuebner" <heiko@sntech.de>, "Sandy
+ Huang" <hjc@rock-chips.com>, <linux-rockchip@lists.infradead.org>, "Yannick
+ Fertre" <yannick.fertre@foss.st.com>, "Raphael Gallais-Pou"
+ <raphael.gallais-pou@foss.st.com>, "Philippe Cornu"
+ <philippe.cornu@foss.st.com>, "Maxime Coquelin"
+ <mcoquelin.stm32@gmail.com>, "Alexandre Torgue"
+ <alexandre.torgue@foss.st.com>, <linux-stm32@st-md-mailman.stormreply.com>,
+ "Jyri Sarha" <jyri.sarha@iki.fi>, "Tomi Valkeinen"
+ <tomi.valkeinen@ideasonboard.com>, "Dave Stevenson"
+ <dave.stevenson@raspberrypi.com>, =?utf-8?q?Ma=C3=ADra_Canal?=
+ <mcanal@igalia.com>, "Raspberry Pi Kernel Maintenance"
+ <kernel-list@raspberrypi.com>, "Icenowy Zheng" <zhengxingda@iscas.ac.cn>,
+ "Laurent Pinchart" <laurent.pinchart@ideasonboard.com>, "Michal Simek"
+ <michal.simek@amd.com>
+To: "Maxime Ripard" <mripard@kernel.org>, "Andrzej Hajda"
+ <andrzej.hajda@intel.com>, "Neil Armstrong" <neil.armstrong@linaro.org>,
+ "Robert Foss" <rfoss@kernel.org>, "Laurent Pinchart"
+ <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman" <jonas@kwiboo.se>,
+ "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Luca Ceresoli"
+ <luca.ceresoli@bootlin.com>, "Maarten Lankhorst"
+ <maarten.lankhorst@linux.intel.com>, "Thomas Zimmermann"
+ <tzimmermann@suse.de>, "David Airlie" <airlied@gmail.com>, "Simona Vetter"
+ <simona@ffwll.ch>
+From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
+X-Mailer: aerc 0.21.0
+References: <20260619-drm-no-more-bridge-reset-v3-0-ff399263111b@kernel.org>
+In-Reply-To: <20260619-drm-no-more-bridge-reset-v3-0-ff399263111b@kernel.org>
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260619_062739_244020_214901A5 
-X-CRM114-Status: GOOD (  26.58  )
+X-CRM114-CacheID: sfid-20260619_064300_310489_624AB249 
+X-CRM114-Status: UNSURE (   8.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -144,71 +119,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 10 Jun 2026 08:52:31 +0200,
-Sean Wang wrote:
-> 
+On Fri Jun 19, 2026 at 2:24 PM CEST, Maxime Ripard wrote:
 > Hi,
-> 
-> On Tue, Jun 9, 2026 at 7:19 AM Sergey Senozhatsky
-> <senozhatsky@chromium.org> wrote:
-> >
-> > Every once in a while we see a hung btmtksdio_flush() task:
-> >
-> >  INFO: task kworker/u17:0:189 blocked for more than 122 seconds.
-> >  __cancel_work_timer+0x3f4/0x460
-> >  cancel_work_sync+0x1c/0x2c
-> >  btmtksdio_flush+0x2c/0x40
-> >  hci_dev_open_sync+0x10c4/0x2190
-> >  [..]
-> >
-> > It all boils down to incorrect time_is_before_jiffies() usage in
-> > btmtksdio_txrx_work().  The btmtksdio_txrx_work() loop is expected
-> > to be terminated if running for longer than 5*HZ.  However the
-> > timeout check is twisted:  time_is_before_jiffies(old_jiffies + 5*HZ)
-> > evaluates to true when old_jiffies + 5*HZ is in the past i.e. when a
-> > timeout has occurred.  Using OR with time_is_before_jiffies(txrx_timeout)
-> > means that:
-> > - before the 5-second timeout: the condition is `int_status || false`,
-> >   so it loops as long as there are pending interrupts.
-> > - after the 5-second timeout: the condition becomes `int_status || true`,
-> >   which is always true.
-> >
-> > When the loop becomes infinite btmtksdio_txrx_work() loop never
-> > terminates and never releases the SDIO host.
-> >
-> > Fix loop termination condition to actually enforce a 5*HZ timeout.
-> >
-> > Fixes: 26270bc189ea4 ("Bluetooth: btmtksdio: move interrupt service to work")
-> > Cc: stable@vger.kernel.org
-> > Signed-off-by: Sergey Senozhatsky <senozhatsky@chromium.org>
-> > ---
-> >  drivers/bluetooth/btmtksdio.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-> > index 5b0fab7b89b5..c6f80c419e90 100644
-> > --- a/drivers/bluetooth/btmtksdio.c
-> > +++ b/drivers/bluetooth/btmtksdio.c
-> > @@ -620,7 +620,7 @@ static void btmtksdio_txrx_work(struct work_struct *work)
-> >                         if (btmtksdio_rx_packet(bdev, rx_size) < 0)
-> >                                 bdev->hdev->stat.err_rx++;
-> >                 }
-> > -       } while (int_status || time_is_before_jiffies(txrx_timeout));
-> > +       } while (int_status && time_is_after_jiffies(txrx_timeout));
-> 
-> yes, loop continues only while there is interrupt work and the timeout
-> deadline is still in the future
+>
+> All the bridges use reset to create a blank state only and don't use it
+> to reset the hardware at all. This is what the new atomic_create_state
+> is exactly supposed to be doing, so we can convert all existing bridge
+> users to it, and remove the reset hook and helpers.
+>
+> Let me know what you think,
+> Maxime
+>
+> Signed-off-by: Maxime Ripard <mripard@kernel.org>
 
-I stumbled on this while backporting to distro kernels, and I wonder
-whether this change is correct.
+Whole series:
+Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 
-IIUC, this essentially makes the loop exiting right after the first
-cycle; the patch changed from time_is_before_jiffies() to *_after_*(),
-not only the logical OR to AND, and *_after_*() returns false, so the
-whole condition becomes false, too.
-
-
-thanks,
-
-Takashi
+--
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
