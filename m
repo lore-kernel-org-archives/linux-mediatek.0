@@ -4,107 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1B17CD98F2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2026 13:43:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E391CDB466
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2026 14:09:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:
-	To:Cc:Subject:Message-Id:Date:Content-Type:Content-Transfer-Encoding:
-	Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=17i6oa0M6UmVrMWmDG7cWGhbnxl14z0/BIWH4Fd9A3Y=; b=PKVr3Hd26NCicaYPz+lGFGdh/B
-	htGmAbxfrXTukRb3toCgAB+odhpaS/vMQfrtxDMLCrycYzYNnSKlcwB3o7aySilOuS7bpYc7YR2gD
-	9+X8dP/cdcnfyWtv4UsSq5CnR2/gsFcbp8bHNR4FTLT7gcjIv3DLclPPj37ZtbxdInUyykMfOF906
-	ZbsnGCk7t+jTVf7lq5HdVlZvA1lL5gKL+85vhlfCN3Iyi8t8m36vrCEOFSFGpAJOQpOS2NCdcc2Qj
-	+W94zdB6Bt3hEjvFQWVo7zTQrfkZf5LNFUoa3eZsAYOC3zUmg2oRFo6qtUaeJzXhEezM9kFnI1Uhv
-	GIM2rzlg==;
+	bh=TO+8vf61kNju4PwtuIv9SwXy8zceN+AIryuGq2GsET8=; b=fUY0L2NOl/GC02nMfRVbV7jZkk
+	EgplI2CuIUWVeyBN5L4lsTQ1JtGPewVL188cfS3Zc7WLl2XgU63VIESDTmz1v3YAUx15poOxOOhTN
+	VjO7F9EnwB/SAfdZ6TsFjKi6t31LDmAzyWikAw4qAfo4SFo8EETnEtICWACLMbyZ29omA96GayPxr
+	FB/RQe2E+L1qN0ryK4KjABpuMmnS8X3zUx8J7QO08hqaOrb4tPSTeHrEh9FsxaJ3iFY0Gtry2EeEW
+	g8wttLag7avR6heC5zQ8bAcH3LmmOxNcqpdJ27ebuGBPeU5d1VsDUKD9GBDnIHaBQQt0XjVe+ZSuC
+	Kbtss/0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waZUv-00000002Uv0-1ZXt;
-	Fri, 19 Jun 2026 13:43:05 +0000
+	id 1waZu8-00000002XHx-3WB0;
+	Fri, 19 Jun 2026 14:09:08 +0000
 Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waZUq-00000002Utc-0auh;
-	Fri, 19 Jun 2026 13:43:03 +0000
+	id 1waZu5-00000002XEr-2sH2;
+	Fri, 19 Jun 2026 14:09:06 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id ED6D71A3A28;
-	Fri, 19 Jun 2026 13:42:54 +0000 (UTC)
+	by smtpout-02.galae.net (Postfix) with ESMTPS id 15E6C1A3A20;
+	Fri, 19 Jun 2026 14:09:04 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id ADBF5601AE;
-	Fri, 19 Jun 2026 13:42:54 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id E9861106C88A8;
-	Fri, 19 Jun 2026 15:42:31 +0200 (CEST)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id DD1DA601AD;
+	Fri, 19 Jun 2026 14:09:03 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 51781106C8234;
+	Fri, 19 Jun 2026 16:08:59 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1781876571; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1781878142; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=17i6oa0M6UmVrMWmDG7cWGhbnxl14z0/BIWH4Fd9A3Y=;
-	b=2OHXR1QwtCE+m9KORcKStlkcA6ag+ntrhh38YC8FuWi4Ivanof2kMKZSiDIi8KDy/rJyOy
-	d9n5jfH4IyN51n8RfW5VcLV8ajZhRXvgOa5R+0d6jYOJlGpRQ8Ei+7ncYisPtX154p/itA
-	+FVS4408GK6t2mbJW4PGkgW8pjPtp0vASGX+Kfy16/0IwPEQZfEFJaECutzX09avkZUJFd
-	QP6TokojrSOrCy+kB+ysimzb7jkt7bgeZJOi91eLy/pgdjhtdRh6ocFi/X0UOYZD7EK78Z
-	Hch7VJW8YQWSdBwSR/Bp3d6ZAidfHERZnrYDFVzmEH+M4z5scGH6fREi9mAoVw==
-Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-Date: Fri, 19 Jun 2026 15:42:30 +0200
-Message-Id: <DJD2IQSFENH4.337VSFOU7OJ29@bootlin.com>
-Subject: Re: [PATCH v3 00/78] drm/bridge: Convert all reset users to
- create_state
-Cc: "Dmitry Baryshkov" <lumag@kernel.org>,
- <dri-devel@lists.freedesktop.org>, "Laurent Pinchart"
- <laurent.pinchart+renesas@ideasonboard.com>, "Jagan Teki"
- <jagan@amarulasolutions.com>, "Liu Ying" <victor.liu@nxp.com>, "Frank Li"
- <Frank.Li@nxp.com>, "Sascha Hauer" <s.hauer@pengutronix.de>, "Pengutronix
- Kernel Team" <kernel@pengutronix.de>, "Fabio Estevam" <festevam@gmail.com>,
- <imx@lists.linux.dev>, <linux-arm-kernel@lists.infradead.org>, "Andy Yan"
- <andy.yan@rock-chips.com>, "Phong LE" <ple@baylibre.com>, "Douglas
- Anderson" <dianders@chromium.org>, "Inki Dae" <inki.dae@samsung.com>,
- "Marek Szyprowski" <m.szyprowski@samsung.com>, "Philipp Zabel"
- <p.zabel@pengutronix.de>, "Paul Cercueil" <paul@crapouillou.net>,
- <linux-mips@vger.kernel.org>, "AngeloGioacchino Del Regno"
- <angelogioacchino.delregno@collabora.com>, "Chun-Kuang Hu"
- <chunkuang.hu@kernel.org>, "Matthias Brugger" <matthias.bgg@gmail.com>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- "Kevin Hilman" <khilman@baylibre.com>, "Jerome Brunet"
- <jbrunet@baylibre.com>, "Martin Blumenstingl"
- <martin.blumenstingl@googlemail.com>, <linux-amlogic@lists.infradead.org>,
- "Tomi Valkeinen" <tomi.valkeinen+renesas@ideasonboard.com>, "Geert
- Uytterhoeven" <geert+renesas@glider.be>, "Magnus Damm"
- <magnus.damm@gmail.com>, "Kieran Bingham"
- <kieran.bingham+renesas@ideasonboard.com>,
- <linux-renesas-soc@vger.kernel.org>, "Biju Das"
- <biju.das.jz@bp.renesas.com>, "Heiko Stuebner" <heiko@sntech.de>, "Sandy
- Huang" <hjc@rock-chips.com>, <linux-rockchip@lists.infradead.org>, "Yannick
- Fertre" <yannick.fertre@foss.st.com>, "Raphael Gallais-Pou"
- <raphael.gallais-pou@foss.st.com>, "Philippe Cornu"
- <philippe.cornu@foss.st.com>, "Maxime Coquelin"
- <mcoquelin.stm32@gmail.com>, "Alexandre Torgue"
- <alexandre.torgue@foss.st.com>, <linux-stm32@st-md-mailman.stormreply.com>,
- "Jyri Sarha" <jyri.sarha@iki.fi>, "Tomi Valkeinen"
- <tomi.valkeinen@ideasonboard.com>, "Dave Stevenson"
- <dave.stevenson@raspberrypi.com>, =?utf-8?q?Ma=C3=ADra_Canal?=
- <mcanal@igalia.com>, "Raspberry Pi Kernel Maintenance"
- <kernel-list@raspberrypi.com>, "Icenowy Zheng" <zhengxingda@iscas.ac.cn>,
- "Laurent Pinchart" <laurent.pinchart@ideasonboard.com>, "Michal Simek"
- <michal.simek@amd.com>
-To: "Maxime Ripard" <mripard@kernel.org>, "Andrzej Hajda"
- <andrzej.hajda@intel.com>, "Neil Armstrong" <neil.armstrong@linaro.org>,
- "Robert Foss" <rfoss@kernel.org>, "Laurent Pinchart"
- <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman" <jonas@kwiboo.se>,
- "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Luca Ceresoli"
- <luca.ceresoli@bootlin.com>, "Maarten Lankhorst"
- <maarten.lankhorst@linux.intel.com>, "Thomas Zimmermann"
- <tzimmermann@suse.de>, "David Airlie" <airlied@gmail.com>, "Simona Vetter"
- <simona@ffwll.ch>
-From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
-X-Mailer: aerc 0.21.0
-References: <20260619-drm-no-more-bridge-reset-v3-0-ff399263111b@kernel.org>
-In-Reply-To: <20260619-drm-no-more-bridge-reset-v3-0-ff399263111b@kernel.org>
+	bh=TO+8vf61kNju4PwtuIv9SwXy8zceN+AIryuGq2GsET8=;
+	b=ZncerNAwoGtviiVsHNj7vZKGV3N7lfq5zDOhto3C1/blrMQ53z2GWeVHoX7vP7+4dIPbC/
+	+Jeyo+IJzxumTF1XTcTSfOrZ6f1DBrPQJBDPdepkjWx8QF5FfT8sHPIZaOCo0AFL0Oa+nB
+	yqft7kAqpDUipMtTE7sOx5MMRPMhHrV5RRhHB3leE485rWqbyZxMMh5XLn6ohPAnKBZC2A
+	/w7Sh5kA5TrE37Xqkwgeai/pWQz3QKwgQYY/MN12t4Ihw2bLsKtMvp2XDsnE6ddMCD5Yxd
+	M/+xKmasavxYoc75xlouIbBOGat6wmKDUaJrQdxs3n/5ZmDvAn52p8Sj+WzMaw==
+From: Kory Maincent <kory.maincent@bootlin.com>
+Date: Fri, 19 Jun 2026 16:08:45 +0200
+Subject: [PATCH RFC v2 3/4] drm/bridge: Wire drmm_connector_dp_init() via
+ new DRM_BRIDGE_OP_DP flag
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260619-feat_link_cap-v2-3-a3dec4c02ad9@bootlin.com>
+References: <20260619-feat_link_cap-v2-0-a3dec4c02ad9@bootlin.com>
+In-Reply-To: <20260619-feat_link_cap-v2-0-a3dec4c02ad9@bootlin.com>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Jani Nikula <jani.nikula@linux.intel.com>, 
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, 
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
+ Tvrtko Ursulin <tursulin@ursulin.net>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Dmitry Baryshkov <lumag@kernel.org>, Daniel Stone <daniels@collabora.com>
+Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ Mark Yacoub <markyacoub@google.com>, Sean Paul <seanpaul@google.com>, 
+ Manasi Navare <navaremanasi@google.com>, 
+ Drew Davenport <ddavenport@google.com>, 
+ Louis Chauvet <louis.chauvet@bootlin.com>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, dri-devel@lists.freedesktop.org, 
+ linux-kernel@vger.kernel.org, intel-gfx@lists.freedesktop.org, 
+ intel-xe@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ Kory Maincent <kory.maincent@bootlin.com>
+X-Mailer: b4 0.15.0
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260619_064300_310489_624AB249 
-X-CRM114-Status: UNSURE (   8.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260619_070905_877109_FB1B026C 
+X-CRM114-Status: GOOD (  14.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,24 +99,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri Jun 19, 2026 at 2:24 PM CEST, Maxime Ripard wrote:
-> Hi,
->
-> All the bridges use reset to create a blank state only and don't use it
-> to reset the hardware at all. This is what the new atomic_create_state
-> is exactly supposed to be doing, so we can convert all existing bridge
-> users to it, and remove the reset hook and helpers.
->
-> Let me know what you think,
-> Maxime
->
-> Signed-off-by: Maxime Ripard <mripard@kernel.org>
+Introduce DRM_BRIDGE_OP_DP, a new bridge operation flag for bridges
+that provide DisplayPort connector operations with link training support.
+Bridges advertising this flag must fill the dp_link_caps field in
+struct drm_bridge with their link capabilities.
 
-Whole series:
-Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+In drm_bridge_connector_init(), when a bridge sets DRM_BRIDGE_OP_DP,
+use drmm_connector_dp_init() instead of the generic drmm_connector_init()
+so the connector exposes link training state properties to userspace.
+This mirrors the existing pattern used for HDMI bridges.
 
---
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+Signed-off-by: Kory Maincent <kory.maincent@bootlin.com>
+---
+ drivers/gpu/drm/display/drm_bridge_connector.c | 24 ++++++++++++++++++++++++
+ include/drm/drm_bridge.h                       | 13 +++++++++++++
+ 2 files changed, 37 insertions(+)
+
+diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
+index cafa498c38482..6ea4d45e3146b 100644
+--- a/drivers/gpu/drm/display/drm_bridge_connector.c
++++ b/drivers/gpu/drm/display/drm_bridge_connector.c
+@@ -108,6 +108,13 @@ struct drm_bridge_connector {
+ 	 * HDMI Audio infrastructure, if any (see &DRM_BRIDGE_OP_HDMI_AUDIO).
+ 	 */
+ 	struct drm_bridge *bridge_hdmi_audio;
++	/**
++	 * @bridge_dp:
++	 *
++	 * The bridge in the chain that implements necessary support for the
++	 * DisplayPort connector infrastructure, if any (see &DRM_BRIDGE_OP_DP).
++	 */
++	struct drm_bridge *bridge_dp;
+ 	/**
+ 	 * @bridge_dp_audio:
+ 	 *
+@@ -773,6 +780,7 @@ static void drm_bridge_connector_put_bridges(struct drm_device *dev, void *data)
+ 	drm_bridge_put(bridge_connector->bridge_hdmi_audio);
+ 	drm_bridge_put(bridge_connector->bridge_dp_audio);
+ 	drm_bridge_put(bridge_connector->bridge_hdmi_cec);
++	drm_bridge_put(bridge_connector->bridge_dp);
+ }
+ 
+ /**
+@@ -908,6 +916,15 @@ struct drm_connector *drm_bridge_connector_init(struct drm_device *drm,
+ 			bridge_connector->bridge_hdmi_audio = drm_bridge_get(bridge);
+ 		}
+ 
++		if (bridge->ops & DRM_BRIDGE_OP_DP) {
++			if (bridge_connector->bridge_dp)
++				return ERR_PTR(-EBUSY);
++			if (!bridge->dp_link_caps)
++				return ERR_PTR(-EINVAL);
++
++			bridge_connector->bridge_dp = drm_bridge_get(bridge);
++		}
++
+ 		if (bridge->ops & DRM_BRIDGE_OP_DP_AUDIO) {
+ 			if (bridge_connector->bridge_dp_audio)
+ 				return ERR_PTR(-EBUSY);
+@@ -996,6 +1013,13 @@ struct drm_connector *drm_bridge_connector_init(struct drm_device *drm,
+ 					       max_bpc);
+ 		if (ret)
+ 			return ERR_PTR(ret);
++	} else if (bridge_connector->bridge_dp) {
++		ret = drmm_connector_dp_init(drm, connector,
++					     &drm_bridge_connector_funcs,
++					     bridge_connector->bridge_dp->dp_link_caps,
++					     connector_type, ddc);
++		if (ret)
++			return ERR_PTR(ret);
+ 	} else {
+ 		ret = drmm_connector_init(drm, connector,
+ 					  &drm_bridge_connector_funcs,
+diff --git a/include/drm/drm_bridge.h b/include/drm/drm_bridge.h
+index 4ba3a5deef9a6..02411e0b71c35 100644
+--- a/include/drm/drm_bridge.h
++++ b/include/drm/drm_bridge.h
+@@ -1092,6 +1092,14 @@ enum drm_bridge_ops {
+ 	 * &drm_bridge_funcs->hdmi_clear_spd_infoframe callbacks.
+ 	 */
+ 	DRM_BRIDGE_OP_HDMI_SPD_INFOFRAME = BIT(10),
++	/**
++	 * @DRM_BRIDGE_OP_DP: The bridge provides DisplayPort connector
++	 * operations, including link training support. Bridges that set
++	 * this flag must provide DisplayPort-related information and
++	 * fill the &drm_bridge->dp_link_train_caps link training
++	 * capabilities.
++	 */
++	DRM_BRIDGE_OP_DP = BIT(11),
+ };
+ 
+ /**
+@@ -1267,6 +1275,11 @@ struct drm_bridge {
+ 	 */
+ 	void *hpd_data;
+ 
++	/**
++	 * @dp_link_caps: DisplayPort link capabilities
++	 */
++	const struct drm_connector_dp_link_caps *dp_link_caps;
++
+ 	/**
+ 	 * @next_bridge: Pointer to the following bridge, automatically put
+ 	 * when this bridge is freed (i.e. at destroy time). This is for
+
+-- 
+2.43.0
+
 
