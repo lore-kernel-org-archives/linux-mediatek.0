@@ -4,63 +4,170 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 949D4CD4F26
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2026 10:30:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2628CD98F6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2026 10:39:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=axhmsIVyXAx+zeh0tLgf+IueV3XZEbuWwxiEovhFxwY=; b=4U83xv5p8pdn1at5q+QZQQSbkH
-	udqt49ERFel6SYwJ/HfyA6ycshPi/tdik69FS4nEEj6qXDpB1/SIfLiQFLr7MVxvL9whtBgiKhZo0
-	ZD8H2Bke6g3cLlNzWz7DTiR4Q9WmlakYuDorKBT+6LOKPuGNiDD5rcMXDvB0gQiPsJfy4tdIDP/Yg
-	ZKGS3cuKA/AIfRUgqAD1hqnYYigjkAf9+tzNwMlt4tPQuzJqXNEZxv9E1UdBJG4ZLDnzKhXBfZGS6
-	RYEwjWWubLNCY//6xkDImi5ESi8Tbc1QowKQk/1Z3hbQQq8ArSHRXqFp+yxBKSsq5HhzImVKbsS1M
-	UgGUWhiw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eqCrcOKyOn8XAyC+h2Or/oWbNlkET9lDTBjL/V4AWE4=; b=zH3huKbnn6s0YMLdxt3/Ip/LDy
+	k3p9aFdKk5H12apTd2+NARQz3zULF2Icf0cNMfbcSWFpSQOuZ2ocDWdBGSUokC5Szc5UFhpaUGiV4
+	SgyMtargJAhpIChs1QfrOPQ6avyf7cueBDc1klz/D65wxrcJtJclk7opYa9T2fC3z3lTMPHCM5FQ3
+	/Z7RoDuv7wuzqPLE65QNmF3xLYZ58YclUcw0VhpIcBK6cXOmPlJOLNXiFbECuWCFiebGPlk1tmVI4
+	atIptpRSoZEJLvMG3AKtDyzf5N75ZSADrx+T++TP5biR9iQwwV+Wf4Y2s35PEL4AEqhT0xw2U0YH/
+	WoDAeEng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waWUr-00000002HjP-1fgQ;
-	Fri, 19 Jun 2026 10:30:49 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1waWdV-00000002IHc-2vkX;
+	Fri, 19 Jun 2026 10:39:45 +0000
+Received: from mx0a-001ae601.pphosted.com ([67.231.149.25] helo=mx0b-001ae601.pphosted.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waWUp-00000002Hj4-1tw8;
-	Fri, 19 Jun 2026 10:30:47 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id C252E44229;
-	Fri, 19 Jun 2026 10:30:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 280201F000E9;
-	Fri, 19 Jun 2026 10:30:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781865046;
-	bh=axhmsIVyXAx+zeh0tLgf+IueV3XZEbuWwxiEovhFxwY=;
-	h=From:Date:Subject:To:Cc;
-	b=XtoHjbLM8nlm4XVWJekkRKxmgvyiNXeyen0PHsoLIoRPBX9lYJ21ZlT2oWM8QDp5n
-	 mbshunc/Siir8Dh4KzKhnzF/Q8HQIiFC+SW0KrBSKXCDEOL/o03i53+bQw7hESayyZ
-	 ahF5t8tzCIThCbQAj0RjzwvmXPJFfgouNJkjE34Nb5i6lMmzxTweEXGRTKHHG9kgHD
-	 HuC2OiOFZ9MB2S7CbFU/HxrQ+VdYUlSgKk5OSgG1bAUMMlN7l4HAeLkBHE8be+PJNC
-	 TawDd8SZGTlIk8rTqdsMOeq/N6DsAk51tsW9ZyXpB37bUX2H18zLx+26a/MRYNPLNU
-	 8wsPjoCCkKUWQ==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 19 Jun 2026 12:30:28 +0200
-Subject: [PATCH net v2] net: airoha: fix BQL underflow and UAF in shared
- QDMA TX ring
+	id 1waWdS-00000002IGb-42pk;
+	Fri, 19 Jun 2026 10:39:44 +0000
+Received: from pps.filterd (m0077473.ppops.net [127.0.0.1])
+	by mx0a-001ae601.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 65J7c9222848864;
+	Fri, 19 Jun 2026 05:39:17 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com; h=cc
+	:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to; s=PODMain02222019; bh=eqCrcOKyOn8XAyC+h2
+	Or/oWbNlkET9lDTBjL/V4AWE4=; b=qO5ATb2Yb2Lw6e7TUg2n4qMsDzd5iBiUeb
+	WX55I9z8K2ZZ9TK01yH6rmCEk3QH5n8Vmj0feR7lzRm8+OjA2Mmv/ygR1+DuMzkB
+	cQH+0R0Fqgy4ANoWNw+s9Q5glSeBmaVbe1Isu2qfPZR3zNTOhdgh921PvFgygneX
+	ohLTqWlcmqftKbKz9icS3wVkHB7iGT6VX3QoWNO9Cq4yZ74ARM+YLZE6EKneNgLc
+	j8YaWpvE79NeTj8iNgwY7jWV6T1lZGv1YOETRcO1mrlkJkGBKKhqLKSMIUV7R+EL
+	+y/5b5irszy4bPsxLJ6IIByKS8Yczw18Q+FdhoYGkKBWRzc0n9Qg==
+Received: from ph7pr06cu001.outbound.protection.outlook.com (mail-westus3azon11020093.outbound.protection.outlook.com [52.101.201.93])
+	by mx0a-001ae601.pphosted.com (PPS) with ESMTPS id 4eueefva0q-1
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+	Fri, 19 Jun 2026 05:39:17 -0500 (CDT)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=cWJR3abiyMEg2YykeS3/vc6WKP/yRiaswp03UxOA6yKFQ/NXdSb0cSFJxP8OsmqfcdTKp/oc8MiQot1Ul3CqJVg+jZ2SRKoeV7XNW1LDSyC8kkFUfucr2IyIwCatywkO1jqD0bD4F/PdXF3C8qqm7Znj5fpfVQAZEpybE7yLCoeMQAn6dBZcQWrLJhWn97L5pwhDkQib7EtWdtktS1Le3YUiiLPouwYfY0IUQaSnlW531ZB5pKc7pG6/M2ma7N0guxeGm9SHdlM9wIQISJRKgtOhFaapBNOmic5dbASR3AXVlD8f59OMvO+i1rhcJDaio6cpINlWJjmtJXHAa0/hfQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=eqCrcOKyOn8XAyC+h2Or/oWbNlkET9lDTBjL/V4AWE4=;
+ b=I9vL6estGN7WLqiLJGsXn3Fca0/H8BhnShC9VBn6W5rOCjl2WlEVAZ5OIobNsfiLXLirsfxubF/D0jIsQJG2vRH0nzMFQrrdhCk542UazPjNXjGDh+HRbXI2a65EOadN5AINbiaPaZ9ZaZujh3Jomf/IpSiynCbIslyWO05vKiVmtoi/GYAHWRt8Uyb6Rp+6ZdixXKAf2LoU4lokS2ZXsHNMJNehOMa4KrYZl5OVLcV6UeHcwC/KUcKAc/rYMmUVyfPB/Y64vdkRwZ6gEUdh+gZfRk2M9RD2JTzCav7qCIOB3x6s+fCBQfVA4yvHetAkVSuyMy6gF/klL/DIkj1s/A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=softfail (sender ip
+ is 84.19.233.75) smtp.rcpttodomain=analog.com
+ smtp.mailfrom=opensource.cirrus.com; dmarc=fail (p=reject sp=reject pct=100)
+ action=oreject header.from=opensource.cirrus.com; dkim=none (message not
+ signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=cirrus4.onmicrosoft.com; s=selector2-cirrus4-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=eqCrcOKyOn8XAyC+h2Or/oWbNlkET9lDTBjL/V4AWE4=;
+ b=rZPBQawq13dFq70+SBjocqAsWCaorH/Ej4p7KCyyzc54B0po4SGWXzxNJ0Y852WsayRmcDXSHcuEZzTIzxWLIjHvQUY4Zvy6Z478bOJGVZruX9IAzmfNYRKb2F62Cl2eHDazkPgbrIs+hC2r61nmXam00bcwK6oNjYqTqEgc8zI=
+Received: from DS1P221CA0021.NAMP221.PROD.OUTLOOK.COM (2603:10b6:8:242::12) by
+ LV0PR19MB9543.namprd19.prod.outlook.com (2603:10b6:408:326::16) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.139.11; Fri, 19 Jun
+ 2026 10:39:13 +0000
+Received: from DS1PEPF0001709A.namprd05.prod.outlook.com
+ (2603:10b6:8:242:cafe::1) by DS1P221CA0021.outlook.office365.com
+ (2603:10b6:8:242::12) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.139.16 via Frontend Transport; Fri,
+ 19 Jun 2026 10:39:12 +0000
+X-MS-Exchange-Authentication-Results: spf=softfail (sender IP is 84.19.233.75)
+ smtp.mailfrom=opensource.cirrus.com; dkim=none (message not signed)
+ header.d=none;dmarc=fail action=oreject header.from=opensource.cirrus.com;
+Received-SPF: SoftFail (protection.outlook.com: domain of transitioning
+ opensource.cirrus.com discourages use of 84.19.233.75 as permitted sender)
+Received: from edirelay1.ad.cirrus.com (84.19.233.75) by
+ DS1PEPF0001709A.mail.protection.outlook.com (10.167.18.104) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.21.139.8
+ via Frontend Transport; Fri, 19 Jun 2026 10:39:12 +0000
+Received: from ediswmail9.ad.cirrus.com (ediswmail9.ad.cirrus.com [198.61.86.93])
+	by edirelay1.ad.cirrus.com (Postfix) with ESMTPS id 3AA2E406544;
+	Fri, 19 Jun 2026 10:39:11 +0000 (UTC)
+Received: from opensource.cirrus.com (ediswmail9.ad.cirrus.com [198.61.86.93])
+	by ediswmail9.ad.cirrus.com (Postfix) with ESMTPSA id 1EDDE82025A;
+	Fri, 19 Jun 2026 10:39:11 +0000 (UTC)
+Date: Fri, 19 Jun 2026 11:39:09 +0100
+From: Charles Keepax <ckeepax@opensource.cirrus.com>
+To: David Laight <david.laight.linux@gmail.com>
+Cc: Bui Duc Phuc <phucduc.bui@gmail.com>, Mark Brown <broonie@kernel.org>,
+        Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
+        Takashi Iwai <tiwai@suse.com>, Cheng-Yi Chiang <cychiang@chromium.org>,
+        Tzung-Bi Shih <tzungbi@kernel.org>,
+        Guenter Roeck <groeck@chromium.org>,
+        Benson Leung <bleung@chromium.org>,
+        David Rhodes <david.rhodes@cirrus.com>,
+        Richard Fitzgerald <rf@opensource.cirrus.com>, povik+lin@cutebit.org,
+        Support Opensource <support.opensource@diasemi.com>,
+        Nick Li <nick.li@foursemi.com>,
+        Herve Codina <herve.codina@bootlin.com>,
+        Srinivas Kandagatla <srini@kernel.org>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
+        Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>,
+        Oder Chiou <oder_chiou@realtek.com>,
+        Lars-Peter Clausen <lars@metafoo.de>, nuno.sa@analog.com,
+        Steven Eckhoff <steven.eckhoff.opensource@gmail.com>,
+        patches@opensource.cirrus.com, chrome-platform@lists.linux.dev,
+        asahi@lists.linux.dev, linux-arm-msm@vger.kernel.org,
+        linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 15/78] ASoC: codecs: cs42l43: Use guard() for mutex locks
+Message-ID: <ajUcTfG3vSGz3n3d@opensource.cirrus.com>
+References: <20260617103235.449609-1-phucduc.bui@gmail.com>
+ <20260617103235.449609-16-phucduc.bui@gmail.com>
+ <ajJ9rbHTspXHo6Ou@opensource.cirrus.com>
+ <20260617140209.3f89706c@pumpkin>
+ <CAABR9nG+6gOj4KnWmTyykgGN93xy6jKQh+-_f8Xxn=Jkv28vBA@mail.gmail.com>
+ <20260619101346.2ec49087@pumpkin>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260619-airoha-bql-fixes-v2-1-4351d6a24484@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3WNzQrCMBCEX6Xs2ZUk0jZ68j2kh/5smsWS6KYUp
- fTdDbl7nPn4ZnZIJEwJbtUOQhsnjiEHc6pg9H2YCXnKGYwyjWq0xZ4l+h6H94KOP5TQ1e1gJq1
- s3V4gay+hArL1gEArdLn0nNYo33Kz6YL+L24aNTo3mdEoe621vT9JAi3nKDN0x3H8ABbFUnG2A
- AAA
-X-Change-ID: 20260618-airoha-bql-fixes-f57b2d108573
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Wayen Yan <win847@gmail.com>, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-X-Mailer: b4 0.14.3
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260619101346.2ec49087@pumpkin>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS1PEPF0001709A:EE_|LV0PR19MB9543:EE_
+X-MS-Office365-Filtering-Correlation-Id: 23131880-1b44-4383-602b-08decdef00b3
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|30052699003|36860700016|23010399003|61400799027|82310400026|16102099003|18002099003|22082099003|4143699003|5023799004|56012099006|11063799006|6133799003;
+X-Microsoft-Antispam-Message-Info: cMmjtLtI3FcFerFobXhR5FNHvDGJdhWrPbbtakaUumA0QwU8qQ/fjxqmBRZn1wNtLr/pNbUo4vYzTnYDnZwWkWje2KLi0IYXYjgpID9y+0sQD15CCifgTsqKKu2GPzXEEJwPSwClU68PdZq0lPoPoqMxcoZbsINnyniBIFWB1Cfmv0e/zfY5JRtyMNC34rESvcRK4B7yqkXoDVOmueMJMoPYqJ290ucbC8164ZqeQskqhYTocMcbQ/2AGzg76UkNgBZ63S8e4OFlZ8Vd/8kt+/+EN0xXjrL7H6uti5lMCCLBkBvGe56Z2ZrQoW5pPhEIHTfSjl0pJfsRdzum6nCOs73JDYYvyDfHOVAl5WaQza7msdrFuyBpUQQ7GvY17mJ3NgtelW0qn/z1a/fwATo/fPSNcm36UxowP/INbcitJaEjHlkwKQXX+4wP2JW+UHEBQ/JCfutHm9lAVOuSg9PelDE+I6PjXKqtxUSgpKE/6Qy2F/a90ZsQqbzhw7BDboxMUfjd0Q6h0u4XLcyApv69zqxoD760C9U8HeffCHdmLv7uy/s09UQC0grj0wO6mmd5NM/jnDTND6DZaH0tKMgx43gbsHOo+R3Oy6TLRXH4qtUQ9i98RvSTdN72ZXwGqhFm+fy2Ze5rweqWHz9T+ZrLtbla9qIIDBcwN+8ljLWszLJ8uZvsCq5Vzh4/gG7PqgUO+aWYWxqd82mBNBnQuffuxA==
+X-Forefront-Antispam-Report: CIP:84.19.233.75;CTRY:GB;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:edirelay1.ad.cirrus.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(7416014)(376014)(30052699003)(36860700016)(23010399003)(61400799027)(82310400026)(16102099003)(18002099003)(22082099003)(4143699003)(5023799004)(56012099006)(11063799006)(6133799003);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: wSxmKo5nUeic5dduWSuouRqTebHlhpOqVNuORVkjhqUeYccjn4bWBuZt+oavcZLIsyUU7XLxbCLb66cQZ7zQ4z46kr3JPZxCdcV1SwMA6bqoWjrURlIs+yO8DlWn17+ZI2HPSCkJYiO0fIKBbAwZrXva9inEsmlG+nL8sPMbtwOQiH7V+hquRmkPOdJvi8ppNRzq/IKmzEZIbyFrOUyM5T6TX7Fjzt7pMsIgsDI45grWSx0+dUUBmxW8EoS6TluX/D3teSGHU/3PiRr3as1Q7KcTay2YHm8qi2NI7zZbxWP5ely+1T2VyX7jOP95AuhlAn3qe3VZ84V0ayATPG2ngRwsqcAN9ztRCq1gjjZP8FpCFhohVT+/lDM7Ap4BeZtsaFG47qLChXQNBcP9eF1BI+LQGZ1hR9l6RcRYQTjX4lZ2b0MPmPxX1ThhiioifAwJ
+X-Exchange-RoutingPolicyChecked: c2tK64T7g1SQnVoooYChftxJMvUxSp9TQ9hovbQh+ulCCyRq9OUl7xWXkCP2NzFl/KLP6dBsRpmZab3MlbQL87thPUnNHy8ftGJChxRDilNDMOpPgL/7N9npDgWVWHmYQz81ZfO6iSbvYxJtrIiDV2XrKUR66Rg3x3BHBRGLRjiAEzBZ9YngWk1qcLTrYwisHFf+ooL1TVZcr/wp5u4RKWyYkh2Xxlo+wEB5M3mTXV4riK7frdJ/xWg2QF+T/VahT/0P92MTsLFFwPs2K4/cEw+TVe+suoOUeg4RxEBM9FLu34Lk107YOMxtrU00OPLStrw4L4JbFUsN+s0f2DOV4Q==
+X-OriginatorOrg: opensource.cirrus.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Jun 2026 10:39:12.3315
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 23131880-1b44-4383-602b-08decdef00b3
+X-MS-Exchange-CrossTenant-Id: bec09025-e5bc-40d1-a355-8e955c307de8
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=bec09025-e5bc-40d1-a355-8e955c307de8;Ip=[84.19.233.75];Helo=[edirelay1.ad.cirrus.com]
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TreatMessagesAsInternal-DS1PEPF0001709A.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV0PR19MB9543
+X-Proofpoint-GUID: fY95iPaaVKiVsEex4aTZwoiIFk5z0WD7
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjE5MDA5OSBTYWx0ZWRfX0Lby/p6xWiXW
+ N46rwI1mjCOQA8vl2slgQn9G9utU/d5sHclbSzGqSa3neBCsDSunEK5m+82rAbVHyvndRqtGoKB
+ gpJrUqMQfmg1gthLk58Qs+ZtkwNaQWmKuMC1D5xvsjoCmxDj14AP2gV0baSMzsrLXHnBzYM+fzl
+ XZhLDONoTQQ6isQ+eenrIlhiK3qnT5FDGTOCoNWbvUHybGzl0GBIYJTipwzQ4ZbkAlYM8GJSoD7
+ RCfog5WbzZQAkBDAFyfzFVBW3qqN6OLyt6/eTX3EhCuTZfPvwPiu1EVt3AA4bpzw8XZdmoSdRIp
+ Gtdd1ztICLzcjwV++u/VYJwxNb42tSFLFR7v5XnYg3+/zrLxK+ltEQ9CzgKo0IuKWEorD4UCk1e
+ y/fuI7aSemWk7pim+FUJojF5nYEAHWREOjap+i6iAyYLV3QTke7TtKhk5Sfrm0H2RRkcA3d2lkO
+ bESZVSZzX4DIdXX4oZA==
+X-Proofpoint-ORIG-GUID: fY95iPaaVKiVsEex4aTZwoiIFk5z0WD7
+X-Authority-Analysis: v=2.4 cv=Wukb99fv c=1 sm=1 tr=0 ts=6a351c55 cx=c_pps
+ a=bYRzraljH1LAKK9Y2O2T7Q==:117 a=h1hSm8JtM9GN1ddwPAif2w==:17
+ a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19 a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19
+ a=kj9zAlcOel0A:10 a=FelO9ux0wxsA:10 a=s63m1ICgrNkA:10 a=RWc_ulEos4gA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=iX4cTi3TZMoOKdANLEfx:22 a=Dj2-6B8FqX4mGL0U3gbX:22
+ a=pGLkceISAAAA:8 a=e8pHenwNzZXRAC_djyEA:9 a=CjuIK1q_8ugA:10 a=O8hF6Hzn-FEA:10
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNjE5MDA5OSBTYWx0ZWRfX1WgC6qFuPfBK
+ imufkA/VSNPLuAkrJXYaT48f5sbRM2BWqmFzEOsWOLn5/ejnWNJT68RMj/u0Tm+2f+9+BAR9O43
+ gZ1luTYPD3B5VDDyoY77ACJ57ut8yN0=
+X-Proofpoint-Spam-Reason: safe
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260619_033943_029242_BCE8B1B9 
+X-CRM114-Status: GOOD (  30.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,243 +182,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When multiple netdevs share a QDMA TX ring and one device is stopped,
-netdev_tx_reset_subqueue() zeroes that device's BQL counters while its
-pending skbs remain in the shared HW TX ring. When NAPI later completes
-those skbs via netdev_tx_completed_queue(), the already-zeroed
-dql->num_queued counter underflows.
-Moreover, in the airoha_remove() path, netdevs are unregistered
-sequentially while skbs from previously unregistered netdevs may still
-reference freed net_device memory via skb->dev, causing a use-after-free
-during BQL accounting.
-Fix both issues:
-- Remove netdev_tx_reset_subqueue() from airoha_dev_stop() so pending
-  skbs are completed naturally by NAPI with proper BQL accounting.
-- Introduce airoha_qdma_tx_flush() to stop NAPI and flush BQL counters
-  for all pending skbs while skb->dev references are still valid.
-- Guard airoha_dev_xmit() with DEV_STATE_FLUSH to drop packets during
-  teardown.
-- Move DMA engine start into probe and stop into airoha_qdma_cleanup().
+On Fri, Jun 19, 2026 at 10:13:46AM +0100, David Laight wrote:
+> On Fri, 19 Jun 2026 15:20:37 +0700
+> Bui Duc Phuc <phucduc.bui@gmail.com> wrote:
+> > > > I believe you have to use scoped_guard here, as there is a return
+> > > > from the function above, if memory serves it attempts to release
+> > > > the mutex on that path despite it being above the guard.  
+> > >
+> > > Indeed.
+> > > I believe clang will complain.
+> > > That makes these mechanical conversions of existing code dangerous churn.
+> > >
+> > > While using guard() (etc) can make it easier to ensure the lock is released
+> > > when functions have multiple error exits, I'm not convinced it makes the
+> > > code any easier to read (other people may disagree).
+> > 
+> > I built the code with both GCC and Clang and didn't see any warnings.
+> > 
+> > My understanding was that the early return exits the function before
+> > the guard is instantiated, so it should not affect the guard's cleanup
+> > handling.
+> 
+> When a variable is defined (and initialised) part way down a block the
+> compiler moves the definition to the top of the block but doesn't initialise
+> it at all, the first assignment happens where the code contains the
+> definition.
+> 
+> However the destructor is always called at the end of the block.
+> So if you return from a function before the definition the destructor
+> is called with an uninitialised argument.
 
-Fixes: a9c2ca61fec7 ("net: airoha: Support multiple net_devices for a single FE GDM port")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
-Changes in v2:
-- Introduce airoha_qdma_tx_flush() to account BQL in airoha_remove() or
-  airoha_probe() error path.
-- Fix possible NULL pointer dereference in airoha_qdma_cleanup().
-- Introduce DEV_STATE_FLUSH().
-- Move back airoha_hw_cleanup().
-- Set proper Fixes tag.
-- Link to v1: https://lore.kernel.org/r/20260618-airoha-bql-fixes-v1-1-ffd2c2089518@kernel.org
----
- drivers/net/ethernet/airoha/airoha_eth.c | 87 +++++++++++++++++++++++---------
- drivers/net/ethernet/airoha/airoha_eth.h |  1 +
- 2 files changed, 63 insertions(+), 25 deletions(-)
+My understanding was exactly as your David, but it seems that isn't
+the whole story and indeed I had to fix a bug in our SDCA code
+that hit this.  However testing this out, results in some things I
+find very hard to explain.
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 64dde6464f3f..e81cd806b57b 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -1004,6 +1004,7 @@ static int airoha_qdma_tx_napi_poll(struct napi_struct *napi, int budget)
- 
- 		e = &q->entry[index];
- 		skb = e->skb;
-+		e->skb = NULL;
- 
- 		dma_unmap_single(eth->dev, e->dma_addr, e->dma_len,
- 				 DMA_TO_DEVICE);
-@@ -1523,10 +1524,26 @@ static int airoha_qdma_init(struct platform_device *pdev,
- 	return airoha_qdma_hw_init(qdma);
- }
- 
--static void airoha_qdma_cleanup(struct airoha_qdma *qdma)
-+static void airoha_qdma_cleanup(struct airoha_eth *eth,
-+				struct airoha_qdma *qdma)
- {
- 	int i;
- 
-+	if (test_bit(DEV_STATE_INITIALIZED, &eth->state)) {
-+		u32 status;
-+
-+		airoha_qdma_clear(qdma, REG_QDMA_GLOBAL_CFG,
-+				  GLOBAL_CFG_TX_DMA_EN_MASK |
-+				  GLOBAL_CFG_RX_DMA_EN_MASK);
-+		if (read_poll_timeout(airoha_qdma_rr, status,
-+				      !(status & (GLOBAL_CFG_TX_DMA_BUSY_MASK |
-+						  GLOBAL_CFG_RX_DMA_BUSY_MASK)),
-+				      USEC_PER_MSEC, 50 * USEC_PER_MSEC, true,
-+				      qdma, REG_QDMA_GLOBAL_CFG))
-+			dev_warn(eth->dev,
-+				 "QDMA DMA engine busy timeout\n");
-+	}
-+
- 	for (i = 0; i < ARRAY_SIZE(qdma->q_rx); i++) {
- 		if (!qdma->q_rx[i].ndesc)
- 			continue;
-@@ -1593,7 +1610,7 @@ static int airoha_hw_init(struct platform_device *pdev,
- 	return 0;
- error:
- 	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
--		airoha_qdma_cleanup(&eth->qdma[i]);
-+		airoha_qdma_cleanup(eth, &eth->qdma[i]);
- 
- 	return err;
- }
-@@ -1603,7 +1620,7 @@ static void airoha_hw_cleanup(struct airoha_eth *eth)
- 	int i;
- 
- 	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
--		airoha_qdma_cleanup(&eth->qdma[i]);
-+		airoha_qdma_cleanup(eth, &eth->qdma[i]);
- 	airoha_ppe_deinit(eth);
- }
- 
-@@ -1637,6 +1654,35 @@ static void airoha_qdma_stop_napi(struct airoha_qdma *qdma)
- 	}
- }
- 
-+static void airoha_qdma_tx_flush(struct airoha_qdma *qdma)
-+{
-+	int i;
-+
-+	airoha_qdma_stop_napi(qdma);
-+
-+	for (i = 0; i < ARRAY_SIZE(qdma->q_tx); i++) {
-+		struct airoha_queue *q = &qdma->q_tx[i];
-+		int j;
-+
-+		if (!q->ndesc)
-+			continue;
-+
-+		spin_lock_bh(&q->lock);
-+		for (j = 0; j < q->ndesc; j++) {
-+			struct airoha_queue_entry *e = &q->entry[j];
-+			struct sk_buff *skb = e->skb;
-+			struct netdev_queue *txq;
-+
-+			if (!skb)
-+				continue;
-+
-+			txq = skb_get_tx_queue(skb->dev, skb);
-+			netdev_tx_completed_queue(txq, 1, skb->len);
-+		}
-+		spin_unlock_bh(&q->lock);
-+	}
-+}
-+
- static void airoha_dev_get_hw_stats(struct airoha_gdm_dev *dev)
- {
- 	struct airoha_gdm_port *port = dev->port;
-@@ -1837,9 +1883,6 @@ static int airoha_dev_open(struct net_device *netdev)
- 	}
- 	port->users++;
- 
--	airoha_qdma_set(qdma, REG_QDMA_GLOBAL_CFG,
--			GLOBAL_CFG_TX_DMA_EN_MASK |
--			GLOBAL_CFG_RX_DMA_EN_MASK);
- 	qdma->users++;
- 
- 	if (!airoha_is_lan_gdm_dev(dev) &&
-@@ -1880,12 +1923,9 @@ static int airoha_dev_stop(struct net_device *netdev)
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
- 	struct airoha_gdm_port *port = dev->port;
- 	struct airoha_qdma *qdma = dev->qdma;
--	int i;
- 
- 	netif_tx_disable(netdev);
- 	airoha_set_vip_for_gdm_port(dev, false);
--	for (i = 0; i < netdev->num_tx_queues; i++)
--		netdev_tx_reset_subqueue(netdev, i);
- 
- 	if (--port->users)
- 		airoha_set_port_mtu(dev->eth, port);
-@@ -1893,19 +1933,7 @@ static int airoha_dev_stop(struct net_device *netdev)
- 		airoha_set_gdm_port_fwd_cfg(qdma->eth,
- 					    REG_GDM_FWD_CFG(port->id),
- 					    FE_PSE_PORT_DROP);
--
--	if (!--qdma->users) {
--		airoha_qdma_clear(qdma, REG_QDMA_GLOBAL_CFG,
--				  GLOBAL_CFG_TX_DMA_EN_MASK |
--				  GLOBAL_CFG_RX_DMA_EN_MASK);
--
--		for (i = 0; i < ARRAY_SIZE(qdma->q_tx); i++) {
--			if (!qdma->q_tx[i].ndesc)
--				continue;
--
--			airoha_qdma_cleanup_tx_queue(&qdma->q_tx[i]);
--		}
--	}
-+	qdma->users--;
- 
- 	return 0;
- }
-@@ -2191,6 +2219,9 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
- 	u16 index;
- 	u8 fport;
- 
-+	if (test_bit(DEV_STATE_FLUSH, &dev->eth->state))
-+		goto error;
-+
- 	qid = airoha_qdma_get_txq(qdma, skb_get_queue_mapping(skb));
- 	tag = airoha_get_dsa_tag(skb, netdev);
- 
-@@ -3413,8 +3444,12 @@ static int airoha_probe(struct platform_device *pdev)
- 	if (err)
- 		goto error_netdev_free;
- 
--	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
-+	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++) {
- 		airoha_qdma_start_napi(&eth->qdma[i]);
-+		airoha_qdma_set(&eth->qdma[i], REG_QDMA_GLOBAL_CFG,
-+				GLOBAL_CFG_TX_DMA_EN_MASK |
-+				GLOBAL_CFG_RX_DMA_EN_MASK);
-+	}
- 
- 	for_each_child_of_node(pdev->dev.of_node, np) {
- 		if (!of_device_is_compatible(np, "airoha,eth-mac"))
-@@ -3437,8 +3472,9 @@ static int airoha_probe(struct platform_device *pdev)
- 	return 0;
- 
- error_napi_stop:
-+	set_bit(DEV_STATE_FLUSH, &eth->state);
- 	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
--		airoha_qdma_stop_napi(&eth->qdma[i]);
-+		airoha_qdma_tx_flush(&eth->qdma[i]);
- 
- 	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
- 		struct airoha_gdm_port *port = eth->ports[i];
-@@ -3474,8 +3510,9 @@ static void airoha_remove(struct platform_device *pdev)
- 	struct airoha_eth *eth = platform_get_drvdata(pdev);
- 	int i;
- 
-+	set_bit(DEV_STATE_FLUSH, &eth->state);
- 	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
--		airoha_qdma_stop_napi(&eth->qdma[i]);
-+		airoha_qdma_tx_flush(&eth->qdma[i]);
- 
- 	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
- 		struct airoha_gdm_port *port = eth->ports[i];
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index 41d2e7a1f9fb..f6dce5e74e02 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -92,6 +92,7 @@ enum {
- enum {
- 	DEV_STATE_INITIALIZED,
- 	DEV_STATE_REGISTERED,
-+	DEV_STATE_FLUSH,
- };
- 
- enum {
+It seems as far as I have managed to test, the code below works
+fine as Phuc suggests. It does not appear to run the mutex_unlock
+on the error path.
 
----
-base-commit: a887f2c7da66a805a55fd8706d45faec85f646db
-change-id: 20260618-airoha-bql-fixes-f57b2d108573
+int function()
+{
+	if (error)
+		return;
 
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+	guard(mutex)(&mutex);
 
+	stuff();
+
+	return;
+}
+
+The situation I hit this in before that doesn't work was actually
+this:
+
+int function()
+{
+	if (error)
+		goto error_label;
+
+	guard(mutex)(&mutex);
+
+	stuff();
+
+error_label;
+	return;
+}
+
+Which in this case it does run the mutex_unlock and NULL pointer.
+Will try to find sometime to look at the generated assembly, but
+this basically totally blows my mind. Very unclear as to if this
+is supposed to work this way or just does by pure luck.
+
+Thanks,
+Charles
 
