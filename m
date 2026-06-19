@@ -4,80 +4,132 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E602CD98F2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2026 13:13:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF404CD98F2
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2026 13:27:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=yHv7U02AjGCdC10QhmFKNYOGrXRPq55x+46nkeHZEeg=; b=P67TNSDNQaOKXwkZZL8nyTLVCJ
-	GZe5kTNlBoI+EIhWWGCtSCvcoBpgvjHRFuvxBVrR3R7Z5/Wd5b13UoWSNMdYa8WQsgNjRTHso85n6
-	LOMBCoowdb6yCREMLrgYcnyb7w5/8zqSLxRZfegZem0tmNAcRG6stInOrID7Nj7IGCL34fcxFF00T
-	c98QwtPk0WS0gmUTa0pPW7nzWQG0RS5sPHg7oAqMR0YOKJJpymbapCkpPhDip3cKT4Iuu1LAZ+P66
-	ep8TfdRSIgLnC3ZyOf//y7+3C/7sE5LW6D0+ysPTqTCGxMedv23rUXuofKBarde/9VdZKaSb/Y9RC
-	P7uPWnAA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Subject:Cc:To:From:
+	Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DRyLfeX9sXJHktJSeQPbzw+etVyvD+njKQjlfKOE5So=; b=GeSAWOEFc5WTwuXYkY+RcGGNsb
+	F1hrtYlV8sUGhfLm+zIZ7QxONxgfMyHPLl5/vQpytdKJGyP3aVwm1F7XKcpeRBJcr0EWf027r8ZtT
+	aNt6GDRKAHsG508f2kC9spfvLr45cQ3xUv4WF6AEhXcTgELYp3RIHht+tc9b5mM3/JQ6L5c5q5Rio
+	ZWFC7TpkavHi7mVRFGr3eFN3AkHn78ATP5Byqtxv3/hNrajDFxqH1Ew1qt/gXcKQ2VdY2dvGMsnlH
+	FheGIdhLf20viAb7qoeY3SL2vV4GWsaV+Q0JHC9spnWAgedSDRxnUH+U+zG4NRsAalhGoHX72iNmH
+	XaB5phhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waZ2B-00000002SrF-3pQ5;
-	Fri, 19 Jun 2026 13:13:23 +0000
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+	id 1waZG4-00000002U0R-2SBb;
+	Fri, 19 Jun 2026 13:27:44 +0000
+Received: from smtp-out2.suse.de ([2a07:de40:b251:101:10:150:64:2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waZ28-00000002Sox-255L
+	id 1waZFz-00000002Tya-0Cq1
 	for linux-mediatek@lists.infradead.org;
-	Fri, 19 Jun 2026 13:13:22 +0000
-Received: by mail-pf1-x42e.google.com with SMTP id d2e1a72fcca58-8453a67659fso1244097b3a.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 19 Jun 2026 06:13:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781874799; x=1782479599; darn=lists.infradead.org;
-        h=mime-version:message-id:date:subject:cc:to:from:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=yHv7U02AjGCdC10QhmFKNYOGrXRPq55x+46nkeHZEeg=;
-        b=aZ9hAGQse10fVqd4+k2tiOnu8roIKxy9EBXGvMh+0wiaBcP0KeMyZp61RqGxrR17oj
-         yuKqFImACE/agPoxuW1t2jbr/ggmDkGsLr7K2t5agmoMOAxGsZ+TCGxdTTjLlYjjXlR5
-         tFwO07juMgVLeGCqY53HdHtXqcLuFWcjR6YPu5JZRoRPNOkx1UbGgSZVWHK9JUnDx6Yg
-         k9AkMrMn00x7iRZZorkDv3yF96dGi9RXqHAXqAe1Ome51S0IvZPI6BslVgMUr/MpuGKJ
-         qTKyR3+w8PA4MizIJjKr2TEHbssflIXFLEaBDgzd+r2zr3p3BEVsI8DO3ZJeoZV2Vcfk
-         jgpQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781874799; x=1782479599;
-        h=mime-version:message-id:date:subject:cc:to:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=yHv7U02AjGCdC10QhmFKNYOGrXRPq55x+46nkeHZEeg=;
-        b=GuZq0qqSog/7At0/2USSJsTZf14AD9xW7ud1cDHZRiT4lUtW6iEe7mjEIcIbNIgScu
-         Xa844MDWwVhrYgMrcywSG1hOYFlteSQv362SsdkggBBBaG5kDEbyTm5tjjyLqy1abfca
-         u91meTTw5Rbo5yjZSCW2o4HrKDRVuEl1t0ROqAsfB8lOAYcDLbnCIYJlrOGyKRH2Eag+
-         3I0sz85sAmwT0axpDNIUCelpYHrj0oCLo1jbfu0yQyS7gOnCxEs4tzGcEp2A6+640QU4
-         jOcOKicgRR7s8ads9KbgfrD5KrhmLOX+/kXHDfz7ytofn3yU7odFsupaBVwr3DUbmQWI
-         CByw==
-X-Forwarded-Encrypted: i=1; AFNElJ/EnZ7nbF6xqIH/CoC2HxpRjou9Cs+8o7PXB/ZvFTg3+/TNjfsoU3Pf8e9QQcFreYz0XZ4HBF9AgnY7ODPJnA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz5REcw4GJvAmk7T3tVlTPTEFIXDbuYScPcjfwmWFnwfahXcMk9
-	wJmlGlCMnFMiIAC+cNGHyPbOMFjHa3KoT4UPDjN5Sf8Z/RUnpXix+jCz
-X-Gm-Gg: AfdE7clVvrF1L17pcAz+lr/72OvicPsZotv7FHoNpAdSKJjEttjkev6jk/MfYzVGjSx
-	FcxBJPcDh3o4skOollEuC0NGQJWFBgtfHPXx/oVimXaEvPZ+3kjGus43QYv7SmJWwCzIvNOPcN2
-	xZjJNk6e7nIW+zW3aj2N2k/HvzkHAK+NidddiFUnXDgPFQ/f6nejnmSLMfBWY8Zm+NRrjLJOsXI
-	Zbdn3Ygobd9gCSIvQ7/VJpve1muwh5M8MMfUMjBdlrUulp7FIqtatAwfdQI2ve+hoWFDCP3VyoM
-	0tbDlnkEDDXxTBr3QgW/LIs7vE+cVyRhPZbSIGao32leqdI2SxePowSpphKOaKGCLKB+2ipUGee
-	gFleMPKOvPPxqX6Vy4FffWz2KVech3oog1NvVEHVbfaY7Twzo8kR3riw7yj27G00/tFO43WbQeP
-	jTF9uoOA==
-X-Received: by 2002:a05:6a00:124f:b0:83f:2568:d45f with SMTP id d2e1a72fcca58-84550870aacmr4566062b3a.23.1781874799141;
-        Fri, 19 Jun 2026 06:13:19 -0700 (PDT)
-Received: from [127.0.1.1] ([47.253.114.73])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-8455364b25asm2490504b3a.7.2026.06.19.06.13.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 19 Jun 2026 06:13:18 -0700 (PDT)
-From: Wayen Yan <win847@gmail.com>
-To: netdev@vger.kernel.org
-Cc: lorenzo@kernel.org, horms@kernel.org, pabeni@redhat.com, kuba@kernel.org, edumazet@google.com, andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 net] net: airoha: Fix TX scheduler queue mask loop upper bound
-Date: Fri, 19 Jun 2026 21:12:06 +0800
-Message-ID: <178187479434.2400840.1312143943526335838@gmail.com>
-Content-Type: text/plain; charset=utf-8
-MIME-Version: 1.0
+	Fri, 19 Jun 2026 13:27:43 +0000
+Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 1054875D51;
+	Fri, 19 Jun 2026 13:27:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1781875657; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=DRyLfeX9sXJHktJSeQPbzw+etVyvD+njKQjlfKOE5So=;
+	b=hsbCKW8Dk24fM6G321A2c4/+2Lu02enbkrUyCq5SegvdhYa9kZ3tEPBm/6bbfa8ypBjTwo
+	LCkAbJsFGVZL8K4gmip0Jq6EfcuMbZnFXhLw4kA0lZorf1I0SATpP+uLmRzMmR5oEGX9oy
+	mDRp/GE9cyzB342djhrh+V8tn4AxW9s=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1781875657;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=DRyLfeX9sXJHktJSeQPbzw+etVyvD+njKQjlfKOE5So=;
+	b=jcAsV996fZUR6Ggf9VHOmJtSP3SDX5IC4w32xyYm1uuhRTHMzfRp/Y3RNSPW61OCwrV/O1
+	xxD9zohT3xr402Dg==
+Authentication-Results: smtp-out2.suse.de;
+	none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1781875657; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=DRyLfeX9sXJHktJSeQPbzw+etVyvD+njKQjlfKOE5So=;
+	b=hsbCKW8Dk24fM6G321A2c4/+2Lu02enbkrUyCq5SegvdhYa9kZ3tEPBm/6bbfa8ypBjTwo
+	LCkAbJsFGVZL8K4gmip0Jq6EfcuMbZnFXhLw4kA0lZorf1I0SATpP+uLmRzMmR5oEGX9oy
+	mDRp/GE9cyzB342djhrh+V8tn4AxW9s=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1781875657;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=DRyLfeX9sXJHktJSeQPbzw+etVyvD+njKQjlfKOE5So=;
+	b=jcAsV996fZUR6Ggf9VHOmJtSP3SDX5IC4w32xyYm1uuhRTHMzfRp/Y3RNSPW61OCwrV/O1
+	xxD9zohT3xr402Dg==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id B4C53779A8;
+	Fri, 19 Jun 2026 13:27:36 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id EF3QKshDNWpYXwAAD6G6ig
+	(envelope-from <tiwai@suse.de>); Fri, 19 Jun 2026 13:27:36 +0000
+Date: Fri, 19 Jun 2026 15:27:36 +0200
+Message-ID: <87tsqyirsn.wl-tiwai@suse.de>
+From: Takashi Iwai <tiwai@suse.de>
+To: Sean Wang <sean.wang@kernel.org>
+Cc: Sergey Senozhatsky <senozhatsky@chromium.org>,
+	Marcel Holtmann <marcel@holtmann.org>,
+	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+	Mark-yw Chen <mark-yw.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Tomasz Figa <tfiga@chromium.org>,
+	linux-bluetooth@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	stable@vger.kernel.org
+Subject: Re: [PATCH] Bluetooth: btmtksdio: fix infinite loop in btmtksdio_txrx_work()
+In-Reply-To: <CAGp9LzpBUReZtrTEKgUr-+yvB+3tcs5hw7ziC4WaMRFNa2AYpg@mail.gmail.com>
+References: <20260609121329.1262170-1-senozhatsky@chromium.org>
+	<CAGp9LzpBUReZtrTEKgUr-+yvB+3tcs5hw7ziC4WaMRFNa2AYpg@mail.gmail.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) Emacs/30.2 Mule/6.0
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Spamd-Result: default: False [-1.80 / 50.00];
+	BAYES_HAM(-3.00)[100.00%];
+	SUSPICIOUS_RECIPS(1.50)[];
+	MID_CONTAINS_FROM(1.00)[];
+	NEURAL_HAM_LONG(-1.00)[-1.000];
+	NEURAL_HAM_SHORT(-0.20)[-1.000];
+	MIME_GOOD(-0.10)[text/plain];
+	TO_MATCH_ENVRCPT_ALL(0.00)[];
+	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	FUZZY_RATELIMITED(0.00)[rspamd.com];
+	MIME_TRACE(0.00)[0:+];
+	ARC_NA(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[12];
+	FREEMAIL_ENVRCPT(0.00)[gmail.com];
+	FREEMAIL_CC(0.00)[chromium.org,holtmann.org,gmail.com,mediatek.com,vger.kernel.org,lists.infradead.org];
+	RCVD_TLS_ALL(0.00)[];
+	FROM_EQ_ENVFROM(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	TO_DN_SOME(0.00)[];
+	RCVD_COUNT_TWO(0.00)[2];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	TAGGED_RCPT(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:mid,chromium.org:email,imap1.dmz-prg2.suse.org:helo]
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260619_061320_566848_65F3377D 
-X-CRM114-Status: GOOD (  12.25  )
+X-CRM114-CacheID: sfid-20260619_062739_244020_214901A5 
+X-CRM114-Status: GOOD (  26.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,54 +144,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In airoha_qdma_set_chan_tx_sched(), the loop clearing queue mask was
-using AIROHA_NUM_TX_RING (32) instead of AIROHA_NUM_QOS_QUEUES (8).
+On Wed, 10 Jun 2026 08:52:31 +0200,
+Sean Wang wrote:
+> 
+> Hi,
+> 
+> On Tue, Jun 9, 2026 at 7:19 AM Sergey Senozhatsky
+> <senozhatsky@chromium.org> wrote:
+> >
+> > Every once in a while we see a hung btmtksdio_flush() task:
+> >
+> >  INFO: task kworker/u17:0:189 blocked for more than 122 seconds.
+> >  __cancel_work_timer+0x3f4/0x460
+> >  cancel_work_sync+0x1c/0x2c
+> >  btmtksdio_flush+0x2c/0x40
+> >  hci_dev_open_sync+0x10c4/0x2190
+> >  [..]
+> >
+> > It all boils down to incorrect time_is_before_jiffies() usage in
+> > btmtksdio_txrx_work().  The btmtksdio_txrx_work() loop is expected
+> > to be terminated if running for longer than 5*HZ.  However the
+> > timeout check is twisted:  time_is_before_jiffies(old_jiffies + 5*HZ)
+> > evaluates to true when old_jiffies + 5*HZ is in the past i.e. when a
+> > timeout has occurred.  Using OR with time_is_before_jiffies(txrx_timeout)
+> > means that:
+> > - before the 5-second timeout: the condition is `int_status || false`,
+> >   so it loops as long as there are pending interrupts.
+> > - after the 5-second timeout: the condition becomes `int_status || true`,
+> >   which is always true.
+> >
+> > When the loop becomes infinite btmtksdio_txrx_work() loop never
+> > terminates and never releases the SDIO host.
+> >
+> > Fix loop termination condition to actually enforce a 5*HZ timeout.
+> >
+> > Fixes: 26270bc189ea4 ("Bluetooth: btmtksdio: move interrupt service to work")
+> > Cc: stable@vger.kernel.org
+> > Signed-off-by: Sergey Senozhatsky <senozhatsky@chromium.org>
+> > ---
+> >  drivers/bluetooth/btmtksdio.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
+> > index 5b0fab7b89b5..c6f80c419e90 100644
+> > --- a/drivers/bluetooth/btmtksdio.c
+> > +++ b/drivers/bluetooth/btmtksdio.c
+> > @@ -620,7 +620,7 @@ static void btmtksdio_txrx_work(struct work_struct *work)
+> >                         if (btmtksdio_rx_packet(bdev, rx_size) < 0)
+> >                                 bdev->hdev->stat.err_rx++;
+> >                 }
+> > -       } while (int_status || time_is_before_jiffies(txrx_timeout));
+> > +       } while (int_status && time_is_after_jiffies(txrx_timeout));
+> 
+> yes, loop continues only while there is interrupt work and the timeout
+> deadline is still in the future
 
-Each channel has 8 queues, and TXQ_DISABLE_CHAN_QUEUE_MASK(channel, i)
-computes BIT(i + (channel * 8)). With i ranging 0..31, this causes:
-- channel 0: clears bit 0..31 (all 4 channels) instead of 0..7
-- channel 1: clears bit 8..31 (channels 1-3) instead of 8..15
-- channel 2: clears bit 16..31 (channels 2-3) instead of 16..23
-- channel 3: clears bit 24..31 (channel 3 only) - correct by accident
+I stumbled on this while backporting to distro kernels, and I wonder
+whether this change is correct.
 
-While BIT(32+) on arm64 produces 64-bit values truncated to 0 in u32
-mask parameter, the loop still incorrectly clears queues within the
-same channel beyond queue 7.
-
-Even though this is functionally harmless (the register resets to 0
-and is only ever cleared, never set — so clearing extra bits is a
-no-op), the loop bound is semantically wrong and should be fixed for
-correctness and clarity.
-
-Fix by using AIROHA_NUM_QOS_QUEUES (8) as the loop upper bound.
-
-Fixes: ef1ca9271313 ("net: airoha: Add sched HTB offload support")
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Wayen Yan <win847@gmail.com>
----
-Changes in v3:
-- Rebase on top of current net tree (Lorenzo pointed out v2 was
-  not based on latest net HEAD).
-- No code changes from v2.
-
- drivers/net/ethernet/airoha/airoha_eth.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 64dde6464f..47fb32517a 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -2395,7 +2395,7 @@ static int airoha_qdma_set_chan_tx_sched(struct net_device *netdev,
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
- 	int i;
- 
--	for (i = 0; i < AIROHA_NUM_TX_RING; i++)
-+	for (i = 0; i < AIROHA_NUM_QOS_QUEUES; i++)
- 		airoha_qdma_clear(dev->qdma, REG_QUEUE_CLOSE_CFG(channel),
- 				  TXQ_DISABLE_CHAN_QUEUE_MASK(channel, i));
- 
--- 
-2.51.0
+IIUC, this essentially makes the loop exiting right after the first
+cycle; the patch changed from time_is_before_jiffies() to *_after_*(),
+not only the logical OR to AND, and *_after_*() returns false, so the
+whole condition becomes false, too.
 
 
+thanks,
+
+Takashi
 
