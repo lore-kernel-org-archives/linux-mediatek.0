@@ -4,108 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1336CD98F2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2026 17:09:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B16BECD4F26
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jun 2026 17:17:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:
-	Subject:From:To:Message-Id:Date:Content-Type:Content-Transfer-Encoding:
-	Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mRl+p8NKZ4Uqi2DbJxfA0N/bImQMn69IfQP2gWfdIn0=; b=cbWeFNpHV3i+/I3if2WZXGbDRu
-	1yjTIXc2pQLuYLVvhtwDTknF/4m1w8iDpyRbyGYdzHJ5EPWRUZj/b8eJJ4jN+Q9YetJ7D/r+wrYXt
-	7x/fx2TpemIf63YMzcK5i4Dsc9CRd3coC9B3Trz2SwbiEK14xImd9ukFuaRfcHE4Z+KdyzpIbMp5W
-	DgQ53OoBmHeaa+hIr+lVZqTjO0xOBhR9csXw1buQ9yd+PkleJbV65px/3osh3tlsvI+8QnEV1IAXc
-	ry0g7ykL24neSF+vOULjt/2dM1gh6UoIsIdHjovA8Z12pdJGff4pIvTttOuoeU5Sj8+zQpYc07lnp
-	+ritKLnQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=VnBSc8UYlXwx9BnTwj6cOSisJHoWSOkPM10OKpYNjmo=; b=l6qECLeC/x/IYy9+/Nh54sxwDZ
+	xwc91CpAZ6mrWD5GvQoaN6yHi2RapaJAOGfvLPgGDm4NWCeLLZrNLcpuJgrkf0cqNQLoWp356G4xX
+	VU7IfvvUncXLIQ6EusnwxK6iuvt4z5q0QASstjilm2hZ+1KxRxpNF96j0kuHtg77cZay1/Rgph+Hn
+	+d66tC6tY/i2JQ831+DhZDjNtkDkOjIOEI+WqRhR7eXQEefiaUHoMzvUW+RTOrEeXdFYknhipdWs6
+	Vd1ECa5Dtc3dv/VuVrIegUa6J8WuLLe99iDEjjnKoYpARLQd6g0+vVHjGO5xGKfq4nOinZLpcTMFw
+	YauGc1TA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waciF-00000002oFy-02yp;
-	Fri, 19 Jun 2026 17:09:03 +0000
-Received: from smtpout-04.galae.net ([185.171.202.116])
+	id 1wacqJ-00000002oic-0DAU;
+	Fri, 19 Jun 2026 17:17:23 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waciB-00000002oF4-0XFY
+	id 1wacqG-00000002ohe-1Bvr
 	for linux-mediatek@lists.infradead.org;
-	Fri, 19 Jun 2026 17:09:01 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id BD524C2BB20;
-	Fri, 19 Jun 2026 17:09:01 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id AB24A601B7;
-	Fri, 19 Jun 2026 17:08:55 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id ABDCB106C81BC;
-	Fri, 19 Jun 2026 19:08:35 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1781888933; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=mRl+p8NKZ4Uqi2DbJxfA0N/bImQMn69IfQP2gWfdIn0=;
-	b=GtrXlAr82THdxC+x0ULzqK2LukzejYV/HHoWOhy0rnLT9OCpYYx7DI0Ca2otXI9MC6rt/O
-	PsvsTGMeYR1QQyMhXODXb0bsnVpo8b1AJ5+BgWuRE1TXpWDRyaaCCbnZP5H1KaZxDHKOq8
-	LO9lu7HAld9YGGFAMtt1mZ3JVL+4nqR9ev+P20IAsV/TdprJ6Y3Ojqy3AdzA+jesc0ToOp
-	juIU32H7fFGeN2OVgc7cbk8rehCcARkdf3oE9Mh7qI0ISz6SprChxJjgB103aMMhEs3RCn
-	air8p6ZpJxAcff89Au6uOVPjVLW7KZvMw6SPD2Zm3W+p1HNv5XsA8iGWnatxuQ==
-Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
+	Fri, 19 Jun 2026 17:17:21 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-464192ab2e1so1428340f8f.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 19 Jun 2026 10:17:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre.com; s=google; t=1781889438; x=1782494238; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=VnBSc8UYlXwx9BnTwj6cOSisJHoWSOkPM10OKpYNjmo=;
+        b=OVQFFTeRUrL7cAdnU4vC4JhneDtky7BDWc/ROTh+EZmWcUgKki/TnhXeVb1Xf2mnIE
+         UzVaz5rxm6T/uaMQB/C5aIQOiXxuoSrymfpkjw+pjAe/QdEkGSXnALBfnylh2P3TQ+lh
+         wZqJn9xUtGuyuStrKQydKatijo5Mk+8kct0Psso3KjCJxUsQn6bykKvimj+RI/4zSE5X
+         6XZBJH1USyk7WgfGETtWJ+T4LgmowyJSdURu7VrUoPXQcZWTqJlWZ2i/25XmWT9nVYYb
+         3qwYq7iVQmOnnCpzey6sw+1chTHSIt94JY17zUQklOx2g3UFAVVMDUOMtlLFz4cqTg4o
+         +7Og==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1781889438; x=1782494238;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=VnBSc8UYlXwx9BnTwj6cOSisJHoWSOkPM10OKpYNjmo=;
+        b=rW0hxqg/gnC9BdC4gKCOHHhNUUDz3q4b4cf/7eIHB9Dut8m6xjcPUeeWzOSOGKaIMZ
+         n32DjeDNhmANaQWba3CXpudcL6/wgDxRUtV37Bi489ZyU9l8seEB8qVuDxMltBlfA97c
+         kLWOIm4UkAtFVROtCVJnLaz7INyDLrkEfaw25q//drUvs4V1pwxVMDCaCbhsN50zMrJA
+         Uy/xHqw/V3YehJrbdmQW/0WgMfzy/QhwZ5NCf9ftTqdRfS9b25cUkpMZXfneBHkYWkU6
+         AJOJZXNXfKfJagvtrU0kM4AKRQ5txfEAOEMzQ4Lj9OVOhtORjC9CeXQQ9NEF8JHh9FP9
+         YusA==
+X-Forwarded-Encrypted: i=1; AFNElJ/TWqzpbcPASRk7eXcicL5+aZ4tw4Ms9rZuMjtzvoXvpVEDM6prS4EL/c7LQXn+BOyOz5sn/OGbGV4lBYQeTA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwVgEtVTdD0bsC+id/ivN9kkJ22r6pWacWN1qw9HHe2Dshyq82H
+	zEy1DTbLj8NdaxlzOL37BZadMNRWv4VBV1KrG1xflGScGTIQ3S9Xw18gStHDxJR86zc=
+X-Gm-Gg: AfdE7clEJQ1E9x7l5OWXsIpv5TTdTKoh5ZfaPHe3QOnIMBK/QPCGlCMx+2n9TzvyKfQ
+	OQdL12WtC7G107kvbvPgnsq+MAWySOgO0nwrtIgqKitK9+IarFHasFpD4mRHPpJR9ZnJ7pRHrW1
+	Iwi4JoSj/Xbjo0Ta7eK76TJBBeX+9pzbymgAqn7KNhYvskr6Yc8V3oNxWIyxGQTEAGhdo7GOqxU
+	s30BN5xP9jgjAXr130ah9yY7erQ6832iMYKZVDs6aVy2k7mDUdflvcsGMroPbwXJViqIJkyCr61
+	ype//9bDRjGDg/SElArFQz+R0q+nl6Yms+ci0bVFnzddJHEUussjDqIkf9JEXt0CKZuVHI9sd9x
+	rrY1eNIOcFnJxA1VYW1dBdhRqjwYjxGXWJmRnxN+yQfHxVfve6xqoIPaDy975JBk26zrn1SPsXl
+	abwaeoE/mR0PLTGhvzW0ZzUukJ0UV8SaC6XCIkYjMczpiQ1Fqd17PMSzMPcIdoYmiHOopdmdR2c
+	N2TZat2K8lPEA==
+X-Received: by 2002:a05:6000:41ea:b0:464:5df5:332a with SMTP id ffacd0b85a97d-465026e230fmr8366571f8f.34.1781889438448;
+        Fri, 19 Jun 2026 10:17:18 -0700 (PDT)
+Received: from localhost (p200300f65f47db04359fc0e70763236f.dip0.t-ipconnect.de. [2003:f6:5f47:db04:359f:c0e7:763:236f])
+        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-466643f563dsm518522f8f.3.2026.06.19.10.17.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 19 Jun 2026 10:17:17 -0700 (PDT)
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig=20=28The=20Capable=20Hub=29?= <u.kleine-koenig@baylibre.com>
+To: Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Woodrow Douglass <wdouglass@carnegierobotics.com>,
+	linux-kernel@vger.kernel.org,
+	Michael Hennerich <michael.hennerich@analog.com>,
+	Support Opensource <support.opensource@diasemi.com>,
+	Ivaylo Ivanov <ivo.ivanov.ivanov1@gmail.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Saravanan Sekar <sravanhome@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jagan Teki <jagan@amarulasolutions.com>,
+	Icenowy Zheng <icenowy@aosc.io>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v3 0/2] regulator: Rework i2c_device_id initialisation
+Date: Fri, 19 Jun 2026 19:17:07 +0200
+Message-ID: <cover.1781888370.git.u.kleine-koenig@baylibre.com>
+X-Mailer: git-send-email 2.47.3
+MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Date: Fri, 19 Jun 2026 19:08:35 +0200
-Message-Id: <DJD6WITJWQHS.1XR1LK4S8N5H5@bootlin.com>
-To: "Luca Ceresoli" <luca.ceresoli@bootlin.com>, "Maxime Ripard"
- <mripard@kernel.org>, "Andrzej Hajda" <andrzej.hajda@intel.com>, "Neil
- Armstrong" <neil.armstrong@linaro.org>, "Robert Foss" <rfoss@kernel.org>,
- "Laurent Pinchart" <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman"
- <jonas@kwiboo.se>, "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Maarten
- Lankhorst" <maarten.lankhorst@linux.intel.com>, "Thomas Zimmermann"
- <tzimmermann@suse.de>, "David Airlie" <airlied@gmail.com>, "Simona Vetter"
- <simona@ffwll.ch>
-From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
-Subject: Re: [PATCH v3 00/78] drm/bridge: Convert all reset users to
- create_state
-Cc: "Dmitry Baryshkov" <lumag@kernel.org>,
- <dri-devel@lists.freedesktop.org>, "Laurent Pinchart"
- <laurent.pinchart+renesas@ideasonboard.com>, "Jagan Teki"
- <jagan@amarulasolutions.com>, "Liu Ying" <victor.liu@nxp.com>, "Frank Li"
- <Frank.Li@nxp.com>, "Sascha Hauer" <s.hauer@pengutronix.de>, "Pengutronix
- Kernel Team" <kernel@pengutronix.de>, "Fabio Estevam" <festevam@gmail.com>,
- <imx@lists.linux.dev>, <linux-arm-kernel@lists.infradead.org>, "Andy Yan"
- <andy.yan@rock-chips.com>, "Phong LE" <ple@baylibre.com>, "Douglas
- Anderson" <dianders@chromium.org>, "Inki Dae" <inki.dae@samsung.com>,
- "Marek Szyprowski" <m.szyprowski@samsung.com>, "Philipp Zabel"
- <p.zabel@pengutronix.de>, "Paul Cercueil" <paul@crapouillou.net>,
- <linux-mips@vger.kernel.org>, "AngeloGioacchino Del Regno"
- <angelogioacchino.delregno@collabora.com>, "Chun-Kuang Hu"
- <chunkuang.hu@kernel.org>, "Matthias Brugger" <matthias.bgg@gmail.com>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- "Kevin Hilman" <khilman@baylibre.com>, "Jerome Brunet"
- <jbrunet@baylibre.com>, "Martin Blumenstingl"
- <martin.blumenstingl@googlemail.com>, <linux-amlogic@lists.infradead.org>,
- "Tomi Valkeinen" <tomi.valkeinen+renesas@ideasonboard.com>, "Geert
- Uytterhoeven" <geert+renesas@glider.be>, "Magnus Damm"
- <magnus.damm@gmail.com>, "Kieran Bingham"
- <kieran.bingham+renesas@ideasonboard.com>,
- <linux-renesas-soc@vger.kernel.org>, "Biju Das"
- <biju.das.jz@bp.renesas.com>, "Heiko Stuebner" <heiko@sntech.de>, "Sandy
- Huang" <hjc@rock-chips.com>, <linux-rockchip@lists.infradead.org>, "Yannick
- Fertre" <yannick.fertre@foss.st.com>, "Raphael Gallais-Pou"
- <raphael.gallais-pou@foss.st.com>, "Philippe Cornu"
- <philippe.cornu@foss.st.com>, "Maxime Coquelin"
- <mcoquelin.stm32@gmail.com>, "Alexandre Torgue"
- <alexandre.torgue@foss.st.com>, <linux-stm32@st-md-mailman.stormreply.com>,
- "Jyri Sarha" <jyri.sarha@iki.fi>, "Tomi Valkeinen"
- <tomi.valkeinen@ideasonboard.com>, "Dave Stevenson"
- <dave.stevenson@raspberrypi.com>, =?utf-8?q?Ma=C3=ADra_Canal?=
- <mcanal@igalia.com>, "Raspberry Pi Kernel Maintenance"
- <kernel-list@raspberrypi.com>, "Icenowy Zheng" <zhengxingda@iscas.ac.cn>,
- "Laurent Pinchart" <laurent.pinchart@ideasonboard.com>, "Michal Simek"
- <michal.simek@amd.com>
-X-Mailer: aerc 0.21.0
-References: <20260619-drm-no-more-bridge-reset-v3-0-ff399263111b@kernel.org>
- <DJD2IQSFENH4.337VSFOU7OJ29@bootlin.com>
-In-Reply-To: <DJD2IQSFENH4.337VSFOU7OJ29@bootlin.com>
-X-Last-TLS-Session-Version: TLSv1.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2725; i=u.kleine-koenig@baylibre.com; h=from:subject:message-id; bh=9Hxww+IYRkWzBq6UrtXK6wGC7HxfepSCgDoSx52js3g=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBqNXmTefNhPuD/6XHRpNixylKSBFFFhgvNycV1p WE8x7Ep/KeJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCajV5kwAKCRCPgPtYfRL+ TuY7CACa1dxhd74TZtB/tZZHX6K2Lrx4mDNhsE4A0FooXFTdJt6q4pgQLbhwwQJhPo6OCebFBVO b3XlS8KMLn1rN2ZHBQtEdTK20n/jUOMfnozbwaRhcUMxKP3FIBDbNhuM0feMAltDwlkxrrkrTIV O8sNtfMkYR61W+t1XV7w1CH8A2losLj9lNWsCTt/AJuVcegfjOGUC+LuO8IzdOd37fCqSpjjZ8D /+2UAhNJ4pLGIQ3Rel/RAXLGmOa5NSsL8QFDxzXwW45NhHvUyVzP0z6nEmxPmWikKNAJllHLRGp 1FeDu+7sWxtbiO41mp2kEJAYM/PS1MUfuUt2M4FfSVDCPWnA
+X-Developer-Key: i=u.kleine-koenig@baylibre.com; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260619_100859_358276_4B4555A3 
-X-CRM114-Status: UNSURE (   6.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260619_101720_352502_525D5761 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,29 +112,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri Jun 19, 2026 at 3:42 PM CEST, Luca Ceresoli wrote:
-> On Fri Jun 19, 2026 at 2:24 PM CEST, Maxime Ripard wrote:
->> Hi,
->>
->> All the bridges use reset to create a blank state only and don't use it
->> to reset the hardware at all. This is what the new atomic_create_state
->> is exactly supposed to be doing, so we can convert all existing bridge
->> users to it, and remove the reset hook and helpers.
->>
->> Let me know what you think,
->> Maxime
->>
->> Signed-off-by: Maxime Ripard <mripard@kernel.org>
->
-> Whole series:
-> Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Hello,
 
-And now also:
-Tested-by: Luca Ceresoli <luca.ceresoli@bootlin.com> # imx8mp + sn65dsi84 +=
- bridge hotplug
+v2 is available at https://lore.kernel.org/lkml/cover.1779184320.git.u.kleine-koenig@baylibre.com .
 
---
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+The only change is that I rebased to next-20260619 and dropped the
+adaptions to the of_regulator_match arrays that Laurent pointed out to
+not belong into this patch set.
+
+Best regards
+Uwe
+
+Uwe Kleine-König (The Capable Hub) (2):
+  regulator: Drop unused i2c driver data
+  regulator: Use named initializers for arrays of i2c_device_data
+
+ drivers/regulator/88pg86x.c            |  4 ++--
+ drivers/regulator/ad5398.c             |  4 ++--
+ drivers/regulator/da9121-regulator.c   | 20 ++++++++++----------
+ drivers/regulator/da9210-regulator.c   |  4 ++--
+ drivers/regulator/da9211-regulator.c   | 18 +++++++++---------
+ drivers/regulator/fan53880.c           |  4 ++--
+ drivers/regulator/isl9305.c            |  4 ++--
+ drivers/regulator/lp3971.c             |  2 +-
+ drivers/regulator/lp3972.c             |  2 +-
+ drivers/regulator/lp872x.c             |  4 ++--
+ drivers/regulator/lp8755.c             |  4 ++--
+ drivers/regulator/ltc3589.c            |  6 +++---
+ drivers/regulator/ltc3676.c            |  2 +-
+ drivers/regulator/max1586.c            |  2 +-
+ drivers/regulator/max20086-regulator.c |  8 ++++----
+ drivers/regulator/max20411-regulator.c |  2 +-
+ drivers/regulator/max77503-regulator.c |  2 +-
+ drivers/regulator/max77675-regulator.c |  2 +-
+ drivers/regulator/max77826-regulator.c |  2 +-
+ drivers/regulator/max77838-regulator.c |  2 +-
+ drivers/regulator/max77857-regulator.c |  8 ++++----
+ drivers/regulator/max8649.c            |  2 +-
+ drivers/regulator/max8893.c            |  2 +-
+ drivers/regulator/max8952.c            |  2 +-
+ drivers/regulator/mcp16502.c           |  2 +-
+ drivers/regulator/mp5416.c             |  6 +++---
+ drivers/regulator/mp8859.c             |  4 ++--
+ drivers/regulator/mp886x.c             |  6 +++---
+ drivers/regulator/mpq7920.c            |  4 ++--
+ drivers/regulator/mt6311-regulator.c   |  4 ++--
+ drivers/regulator/pf530x-regulator.c   |  8 ++++----
+ drivers/regulator/pf8x00-regulator.c   |  8 ++++----
+ drivers/regulator/pv88060-regulator.c  |  4 ++--
+ drivers/regulator/pv88080-regulator.c  |  8 ++++----
+ drivers/regulator/pv88090-regulator.c  |  4 ++--
+ drivers/regulator/slg51000-regulator.c |  4 ++--
+ drivers/regulator/sy8106a-regulator.c  |  2 +-
+ drivers/regulator/sy8824x.c            |  8 ++++----
+ drivers/regulator/sy8827n.c            |  4 ++--
+ drivers/regulator/tps6286x-regulator.c | 10 +++++-----
+ drivers/regulator/tps6287x-regulator.c | 10 +++++-----
+ 41 files changed, 104 insertions(+), 104 deletions(-)
+
+
+base-commit: 3ce97bd3c4f18608335e709c24d6a40e7036cab8
+-- 
+2.47.3
+
 
