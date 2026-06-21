@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FFF0CD98F2
-	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Jun 2026 13:25:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAD14CD98F0
+	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Jun 2026 13:25:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QJYJxNZ3l7dAEjRU1s4OBPkLV9TjpFhDdBuOa9bTN04=; b=SvkA+c2pjceCPZ+a6CXu9l+g1J
-	ADeKefs9i49NDK6EdHqrjCGmcm8EvepIV2HJqNMsF6aKFPqMICrYzHGxca1oCQMZzuF7dyIHGEhhC
-	MQMefKtWN+/091ZyjTPFOZAkPtUXxj5SGGlBSYLWPEVw+9v6sq6xLfDq/Rq2zgrURVzZzS9xd0cUQ
-	coOndSyx3AdfVChrR4VZojf2x8vwsWrplOyNPWsLOAXcpPlJ38pbAHDDVH6iRFRvwECOuYsUVsfPK
-	cZGc3XDi43cWz4h63mJ5gBGGMXbGvb7plchlzezY3Ki/R/92cD9PjcQEy/EM2K+AUYD3YpvPLm0wC
-	YTJIdyCA==;
+	bh=cx5Q7/ku7gsTZmZ3GOU0+vMbh5Q6hh5pyKlmVU1DXCA=; b=yr5FHeyBnrHCxEeqf2vYYnoIXj
+	LDG+jYhLTmuKVWjX6heH+s0qQ+ezFwri4SRK71pKknduSxRPfJb9J6vw5AI3RrjeqEoVLSzZlSzJZ
+	ToueQLvwUa4IfYYQ6XVVvusOH/e6mVUzY0B1eWF9+tDo20rsd+BlzrVApvdUhbzp3anvmyHILnWZd
+	uukCBhZ2PGm6oUbj+0bbimqceQfVIiSmRvquXDzkrVvIAnubEZE/t1/MwbfMBRvgi5cGl1hW7FOet
+	w4aaFgM07mOd+epdVBcwLzxesrxHodRK9rg9LKxZDGwCMyYh+G3dclLa6oKZoKvRwUFRJrgGvr3z8
+	U7tGj64Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbIBD-00000003xSD-0wYC;
-	Sun, 21 Jun 2026 13:25:43 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wbIBC-00000003xRk-44rU;
+	Sun, 21 Jun 2026 13:25:42 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbIBB-00000003xR0-1yZY;
-	Sun, 21 Jun 2026 13:25:41 +0000
+	id 1wbIB9-00000003xPw-3WnJ;
+	Sun, 21 Jun 2026 13:25:39 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id E50A5601E1;
-	Sun, 21 Jun 2026 13:25:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 272791F00A3D;
-	Sun, 21 Jun 2026 13:25:39 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 70C3E600AF;
+	Sun, 21 Jun 2026 13:25:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A3ABC1F000E9;
+	Sun, 21 Jun 2026 13:25:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782048340;
-	bh=QJYJxNZ3l7dAEjRU1s4OBPkLV9TjpFhDdBuOa9bTN04=;
+	s=k20260515; t=1782048338;
+	bh=cx5Q7/ku7gsTZmZ3GOU0+vMbh5Q6hh5pyKlmVU1DXCA=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=ZMXaQN2dbi27JvvLcAfjDv8uZqzMMt8+KieoLxoK53NNLJRFbk2YBk3/hfqp2LIkP
-	 1qQ182aLy2t6KzkfkBob1QAJcMFg67DcM0TqT8n8nwuTzGtaOsiCRasr9PG+1dN8EN
-	 RuHrefLWQ2A88wY/+Q0nhU6CMwgoB2mlzxQUlbk3pdONyJLka68sh/Mp9x3kE75N4/
-	 FDtu95pKd3LPSp9iBPcw/NxX92cqSIDTljW/0KJs3dd39ZKvknfdkrFSW04OPoaSMB
-	 ksL8oNqUlP1DEeADAmVlp/rysSieJ6aZLLhSp6ijHvIu7WiPBIp4rCag6Vv85Pxg7c
-	 1Cj6GUw/XDd9g==
+	b=iV27+AFpnrbRDKwmWYRHIACsbx313RQtEzN3+GYnhHFTRUnrjyLMlphtVPKBT1PqJ
+	 Kv+nBHIYnOynAWJyAKnibDTmHz6TXUu6Sr8ZoeYOpaLsj1pzkf1GT0Aihfp696HT5h
+	 CGuRb6H0osvNTZ7wHd9UPt3xw+kaqqhtBD7gHg/Ye0WmY2XgdDNqDT6auVXsnag/xp
+	 pE2MTpW5d0vJqAXFqXKttdQ9vaRa1r+3nVV+O7wmOlUsH8HRaf+IzUZ1CyULXrMqV0
+	 GYcyKdkmP+mlQSeAu/co14fkOoFX0JLu29xnebG4/2xXq0olKQ2+coeBEnQ5CeUx+F
+	 RY12yvpjC8EUQ==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Sun, 21 Jun 2026 15:25:00 +0200
-Subject: [PATCH 2/4] wifi: mt76: mt7925: fix possible NULL-pointer deref in
- mt7925_mcu_bss_he_tlv()
+Date: Sun, 21 Jun 2026 15:24:59 +0200
+Subject: [PATCH 1/4] wifi: mt76: connac: fix possible NULL-pointer deref in
+ mt76_connac_mcu_uni_bss_he_tlv()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260621-mt76_connac_get_he_phy_cap-fix-v1-2-ed4ccf7a0363@kernel.org>
+Message-Id: <20260621-mt76_connac_get_he_phy_cap-fix-v1-1-ed4ccf7a0363@kernel.org>
 References: <20260621-mt76_connac_get_he_phy_cap-fix-v1-0-ed4ccf7a0363@kernel.org>
 In-Reply-To: <20260621-mt76_connac_get_he_phy_cap-fix-v1-0-ed4ccf7a0363@kernel.org>
 To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
@@ -84,25 +84,25 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 mt76_connac_get_he_phy_cap routine can theoretically return NULL so
 check cap pointer before dereferencing it.
 
-Fixes: c948b5da6bbec ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for mt7925 chips")
+Fixes: d0e274af2f2e4 ("mt76: mt76_connac: create mcu library")
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 2 ++
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 2 ++
  1 file changed, 2 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index e94fa544ff20..cb265a6fc7ad 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -2773,6 +2773,8 @@ mt7925_mcu_bss_he_tlv(struct sk_buff *skb, struct ieee80211_bss_conf *link_conf,
- 	struct tlv *tlv;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index 6596c9e198f4..58b0b15e4fd6 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -1458,6 +1458,8 @@ mt76_connac_mcu_uni_bss_he_tlv(struct mt76_phy *phy, struct ieee80211_vif *vif,
+ 	struct bss_info_uni_he *he;
  
- 	cap = mt76_connac_get_he_phy_cap(phy->mt76, link_conf->vif);
+ 	cap = mt76_connac_get_he_phy_cap(phy, vif);
 +	if (!cap)
 +		return;
  
- 	tlv = mt76_connac_mcu_add_tlv(skb, UNI_BSS_INFO_HE_BASIC, sizeof(*he));
- 
+ 	he = (struct bss_info_uni_he *)tlv;
+ 	he->he_pe_duration = vif->bss_conf.htc_trig_based_pkt_ext;
 
 -- 
 2.54.0
