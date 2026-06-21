@@ -4,109 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3A24CD98F0
-	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Jun 2026 08:19:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64169CD98F2
+	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Jun 2026 13:25:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iVyCXR0GBeSupYN2T5Gv0/aCNSD3o/MI5RFA+1IIzVE=; b=vE2mX1hLiebJCGUXSGgoj+ZOzl
-	piode0IqsDK4DyPmMrc9ECPpUZQhk44Cb8eIX6UIfE/QTMkUom8wWc+Zi4yBiDz5y9P40w5133NQd
-	J7NUa3CwXRYq9PsBXV1DGZqrC/TfNkQ4a6sBl+GCApwJfHK8G2jibnf8qiUG3sW9FJYRzkNFDRFyJ
-	+pmXXoyoL1f6XgZt37wyFi03TLaLy3OEH/guWs4J9kaZQXR+1HwXU5JSrknDyRu6VyFmYnlNkX64D
-	7vqrBQJRNimtLHlTAKhl11pupuMFNAqGscJ2Gk+Nu0b7rViZ+ktBuKTzBM6wgAr2RRpBP1mhaeD+L
-	aht5/VTg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=FA1iBggbrT8LtjvILqVYWNQjXH5A8BjeFWRRbEVadXk=; b=rCLVFA5zO2NRxZ
+	B50Jq3vs43WmB1B5fQIZrh96oTv/Aa5MoVlIt4w2uM3bLIHkTtnbP/2nqbghvKItu+kIjpIL5fhhq
+	WXQXtJZdHw7OxhM8n6hbjbnNkmncrdCqWsQKWpSMxmtadyNSrhZQPwBG8llgtvV/kmzO9X/aWTBWj
+	TdP+pdQZrQhUY1M01wJC91m2ge/aY4gB6o9yB208B+9ZFmbODzlfpUa5CNRowAFyMwHP/knTx/nPK
+	/3PY2TBa5I+x7tcIbMPO85yj+D5a2aaX4/m9aRJdsIcU861XH08+o7GGMeW5GrT5xSPrYKkW7CV9r
+	0gdUsIwKPAXDHuSzmpTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbDOS-00000003qUy-3R2G;
-	Sun, 21 Jun 2026 08:19:04 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1wbIB7-00000003xPq-3O1D;
+	Sun, 21 Jun 2026 13:25:37 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbDOP-00000003qRS-2wHA
-	for linux-mediatek@lists.infradead.org;
-	Sun, 21 Jun 2026 08:19:03 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-490ac357c55so36385465e9.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 21 Jun 2026 01:19:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1782029940; x=1782634740; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=iVyCXR0GBeSupYN2T5Gv0/aCNSD3o/MI5RFA+1IIzVE=;
-        b=RTySa0LrjwDwszBuDIw2Z8+C5gH8vAPUdYQX3AjefJVQ1aAsvul9hc8HE+Hj6ntxW5
-         F1v8YhTW5H0qeeUfIgyXuG140JMJWNgA7vYXADm2r7v7s0zcFD3enjlWqZfd2HKzhdm3
-         ZTqTzNWggr5pyQCqvHH4hFLSVy6/RAH+JuhMXtnDvj7u2GF74BL0tAXyq/4O2FHkkZUB
-         uqZpEjPM64TcnVYkUulvw4rk23p1yG3nXCDkqne/Ezjvq/+Kp8T3d5KiM83N9sS1v8SE
-         CIFN+zEeUnTKTYjEvXxv7ZUmJ23WBbFe2iJeyU/g0y+PkWr8HrRC2HfTesZxeQ3zclEE
-         vTzg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1782029940; x=1782634740;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=iVyCXR0GBeSupYN2T5Gv0/aCNSD3o/MI5RFA+1IIzVE=;
-        b=YfuZnVopRfSjPPShEVymP/bAOO7x69BuDmRYEqrqHVIIqquLkDe/rj1ptsUlM6y8th
-         YPJlTp/bWp2cGTAemeNQmhu18otUXmBwNg57jpV8mAtI6exz34HWd//Hx4wc9W+T6/96
-         z75586boeiY76BZB8eWk9HQDYEWeHn/Y4SYg3A7z7W0kucFWf4pQL4XGYFlKNXhLAhOU
-         KX+kfczfwsaHCm46+hWKYyG0Bvo9qFkr7a6GVeFXl7ktyXygbVXdipfz69BooSvszGh6
-         Jqv00fE3fwGQSUnPbjGSq5HPg/JmrQVSrkM8K6x3wW/oaJlZ1+2CmuGTn3s61OAtVoC5
-         62OQ==
-X-Gm-Message-State: AOJu0YyFCS9qOks/stuGPQL6/tsZJK0bv2Q8huLCfqBEwUUFdRCUwhIj
-	r1boKElpVwkJthnraKXAC3T9uyu0NoZQF1kYMDCmeifjRDmOeqdXN+ooh4uD0vOE
-X-Gm-Gg: AfdE7ckBKXrCPT5q6WURScDkwddTPJ3odjJvyW4jqYMCSV8m8q57ED96mgmJzx85eqA
-	d6ttjEWVzJvd8M1mgzNEqgnr2NVPJJKQ2GPG3kdEfwCuZkKmigDvT/VyY1hhCENgK5UZSOlfSNP
-	Kaoti/shn8TZ0mVnZOb+bj+C9RJw8DLUvfq9FsK8Q3jnOHq4TGXVdQw2fekdmVS+S6ZDKvYKxEO
-	Y5gHaUL3V/HGQi/vbHhYQel/AqUMjCxDWVUEPA6zPpwVZ/ZxmjO1YxzjQXag6115nl8zAnhDIBx
-	cn4iCZQTF0Gx5snUrLamhrkavFaiTPqCaaWK2LYHJ4P1tC3MUVA7dxgU6JzKOoZs4kKAYbdsNOU
-	FhAEYsaqj/EOSz0SjmwywbUJ3NX9jppldmTUP17FWVfrKrsWmMhrvTp5v/Wd250KLjPofc22qrB
-	gmIxPGjNJSOYq+zsFr
-X-Received: by 2002:a05:600c:6990:b0:492:490b:a604 with SMTP id 5b1f17b1804b1-492490ba610mr85395625e9.37.1782029939962;
-        Sun, 21 Jun 2026 01:18:59 -0700 (PDT)
-Received: from luca-vm.. ([81.56.18.151])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4923fe7b9e5sm194100445e9.10.2026.06.21.01.18.57
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 21 Jun 2026 01:18:59 -0700 (PDT)
-From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-To: linux-mediatek@lists.infradead.org
-Cc: Val Packett <val@packett.cool>,
-	Luca Leonardo Scorcia <l.scorcia@gmail.com>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Sen Chu <sen.chu@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>,
-	Lee Jones <lee@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Linus Walleij <linusw@kernel.org>,
-	Julien Massot <julien.massot@collabora.com>,
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
-	Fabien Parent <parent.f@gmail.com>,
-	Akari Tsuyukusa <akkun11.open@gmail.com>,
-	Chen Zhong <chen.zhong@mediatek.com>,
-	linux-input@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-gpio@vger.kernel.org
-Subject: [PATCH v9 9/9] arm64: dts: mediatek: Add MediaTek MT6392 PMIC dtsi
-Date: Sun, 21 Jun 2026 10:13:34 +0200
-Message-ID: <20260621081634.467858-10-l.scorcia@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260621081634.467858-1-l.scorcia@gmail.com>
-References: <20260621081634.467858-1-l.scorcia@gmail.com>
+	id 1wbIB7-00000003xPc-0Nlc;
+	Sun, 21 Jun 2026 13:25:37 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 297EA60051;
+	Sun, 21 Jun 2026 13:25:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 291C81F000E9;
+	Sun, 21 Jun 2026 13:25:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1782048335;
+	bh=FA1iBggbrT8LtjvILqVYWNQjXH5A8BjeFWRRbEVadXk=;
+	h=From:Subject:Date:To:Cc;
+	b=nhldWQSLZHRj8Isy56hp+wAMAG6/5QOFTcB6NEfCjvYz7Ib0pniMgIVNtVxj9utHd
+	 kfPxkP0v4ArYPQmPtAW0kjp1a8JKGMYZMulESaSbUBQl723oQEFxHHa4ZxL7Di4snd
+	 nVwBqNfdPrhsD2+J59gCqtgNJtdtGtFEBzTquP6E04Q8jDE9lvVSJg3tfJGtZJlzXr
+	 CwHrBI/mDjpqE9dFknfdHf83ga+B6sqiYduMWnimt8kIOa+kLPstr+gCkwhmasDzQ9
+	 q/uRagMV5xOi2s0wuCGRRMxycyOM45epArv5iASGFIqDgwvH4p+Szwi4jhkicOXm32
+	 DY8ggP7r+2a/w==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH 0/4] wifi: mt76: fix some possible NULL-pointer
+ dereferences
+Date: Sun, 21 Jun 2026 15:24:58 +0200
+Message-Id: <20260621-mt76_connac_get_he_phy_cap-fix-v1-0-ed4ccf7a0363@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260621_011901_779704_E82B2144 
-X-CRM114-Status: GOOD (  16.51  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2NwQqEIBQAfyXeOcHcsOhXIh6mb/MdMlGJlujfk
+ z3OHGZuyJSYMkzNDYlOznyECl3bgPUmbCTYVQYllZZadWIvg0Z7hGAsblTQE0b/Q2ui+PIl1Pq
+ RenS9k0MPNRITVf0fzMvzvBe5kT1wAAAA
+X-Change-ID: 20260621-mt76_connac_get_he_phy_cap-fix-2b3068d4d074
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Leon Yen <leon.yen@mediatek.com>, Hao Zhang <hao.zhang@mediatek.com>, 
+ Nelson Yu <nelson.yu@mediatek.com>, Rong Yan <rong.yan@mediatek.com>, 
+ Money Wang <Money.Wang@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, 
+ StanleyYP Wang <StanleyYP.Wang@mediatek.com>, 
+ Howard Hsu <howard-yh.hsu@mediatek.com>, 
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>, 
+ Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Quan Zhou <quan.zhou@mediatek.com>, 
+ Deren Wu <deren.wu@mediatek.com>, MeiChia Chiu <meichia.chiu@mediatek.com>
+X-Mailer: b4 0.14.3
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,198 +83,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Val Packett <val@packett.cool>
 
-Add the dtsi to be included by all boards using the MT6392 PMIC,
-providing support for regulator, keys, pinctrl and RTC.
-
-Import the new file in the shared device tree for the Pumpkin boards.
-
-Signed-off-by: Val Packett <val@packett.cool>
-Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
 ---
- arch/arm64/boot/dts/mediatek/mt6392.dtsi      | 145 ++++++++++++++++++
- .../boot/dts/mediatek/pumpkin-common.dtsi     |   7 +
- 2 files changed, 152 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt6392.dtsi
+Lorenzo Bianconi (4):
+      wifi: mt76: connac: fix possible NULL-pointer deref in mt76_connac_mcu_uni_bss_he_tlv()
+      wifi: mt76: mt7925: fix possible NULL-pointer deref in mt7925_mcu_bss_he_tlv()
+      wifi: mt76: mt7996: check pointer returned by mt76_connac_get_he_phy_cap()
+      wifi: mt76: mt7996: fix possible NULL-pointer deref in mt7996_mcu_sta_bfer_eht()
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6392.dtsi b/arch/arm64/boot/dts/mediatek/mt6392.dtsi
-new file mode 100644
-index 000000000000..69d63c153d9e
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt6392.dtsi
-@@ -0,0 +1,145 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (c) 2019 MediaTek Inc.
-+ * Copyright (c) 2024 Val Packett <val@packett.cool>
-+ * Copyright (c) 2026 Luca Leonardo Scorcia <l.scorcia@gmail.com>
-+ */
-+
-+#include <dt-bindings/input/input.h>
-+#include <dt-bindings/regulator/mediatek,mt6392-regulator.h>
-+
-+&pwrap {
-+	pmic: pmic {
-+		compatible = "mediatek,mt6392", "mediatek,mt6323";
-+		interrupt-controller;
-+		#interrupt-cells = <2>;
-+
-+		mt6392keys: keys {
-+			compatible = "mediatek,mt6392-keys";
-+
-+			key-power {
-+				linux,keycodes = <KEY_POWER>;
-+				wakeup-source;
-+			};
-+
-+			key-home {
-+				linux,keycodes = <KEY_HOME>;
-+				wakeup-source;
-+			};
-+		};
-+
-+		mt6392pio: pinctrl {
-+			compatible = "mediatek,mt6392-pinctrl";
-+
-+			gpio-controller;
-+			#gpio-cells = <2>;
-+		};
-+
-+		mt6392regulators: regulators {
-+			compatible = "mediatek,mt6392-regulator";
-+
-+			/* Fixed supply defined in the data sheet */
-+			avddldo-supply = <&mt6392_vsys_reg>;
-+
-+			mt6392_vcore_reg: vcore {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_BUCK_MODE_FORCE_PWM>;
-+			};
-+			mt6392_vproc_reg: vproc {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_BUCK_MODE_FORCE_PWM>;
-+			};
-+			mt6392_vsys_reg: vsys {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_BUCK_MODE_FORCE_PWM>;
-+			};
-+			mt6392_vaud28_reg: vaud28 {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vxo22_reg: vxo22 {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vaud22_reg: vaud22 {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vadc18_reg: vadc18 {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vcama_reg: vcama { };
-+			mt6392_vcn35_reg: vcn35 {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vio28_reg: vio28 {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vusb_reg: vusb {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vmc_reg: vmc {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vmch_reg: vmch {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vemc3v3_reg: vemc3v3 {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vcamaf_reg: vcamaf {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vgp1_reg: vgp1 {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vgp2_reg: vgp2 {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vefuse_reg: vefuse {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vm25_reg: vm25 {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vdig18_reg: vdig18 { };
-+			mt6392_vm_reg: vm {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vio18_reg: vio18 {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vcn18_reg: vcn18 {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vcamd_reg: vcamd {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vcamio_reg: vcamio {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vrtc_reg: vrtc { };
-+		};
-+
-+		mt6392rtc: rtc {
-+			compatible = "mediatek,mt6392-rtc", "mediatek,mt6323-rtc";
-+		};
-+	};
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
-index 805fb82138a8..b19d5792bd89 100644
---- a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
-@@ -6,6 +6,8 @@
- 
- #include <dt-bindings/gpio/gpio.h>
- 
-+#include "mt6392.dtsi"
-+
- / {
- 	aliases {
- 		serial0 = &uart0;
-@@ -160,6 +162,11 @@ &i2c2 {
- 	status = "okay";
- };
- 
-+&pmic {
-+	interrupt-parent = <&pio>;
-+	interrupts = <28 IRQ_TYPE_LEVEL_HIGH>;
-+};
-+
- &uart0 {
- 	status = "okay";
- };
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c |  2 ++
+ drivers/net/wireless/mediatek/mt76/mt7925/mcu.c      |  2 ++
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c      | 18 +++++++++++++-----
+ 3 files changed, 17 insertions(+), 5 deletions(-)
+---
+base-commit: 50a7f9f9d48eb50c0e95bef53358acb5af5cb3c6
+change-id: 20260621-mt76_connac_get_he_phy_cap-fix-2b3068d4d074
+
+Best regards,
 -- 
-2.43.0
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
