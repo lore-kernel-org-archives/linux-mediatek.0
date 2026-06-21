@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7B5ECD98F2
-	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Jun 2026 21:40:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EC83CD98F0
+	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Jun 2026 22:20:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
 	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dlhG6VVL7e735uRZLwmq98hxfSpDNi0y5BfFxqio2bA=; b=2K5qm7cHpKd/k1xwrPF8gxjOjB
-	nzEBod7XZG7h1XeanCxVSjtseCKo5NCl7lZOQcRE35H1iS6ViRC7e34t0r1yjPtolBMvJzelmX6xJ
-	ryKu574vU/25HQfelChZF6NK7oF7M8HnGnHsGU6Xv7xoY7sI9+CA1Vqh6NjZomqua67ZVit9g1gNI
-	G3z01RrFnB+MeTKvggC5IS6R4SP6VsbiTEbIAlX/45+aOWIFlS1RhCefxvQB8kF9/GxYmC5i44PlR
-	zy4VN0l99xVjXp82zPpCI4aId7e07Tezk63BD3ob16a+Dxk1MUiZRhYfCJJGvn00jOC/NVFPr38Hs
-	BOme0XkQ==;
+	bh=iGhCX7nVBCzpVYU7WOdwE6u1flM0yS+pk70INf4ABPY=; b=A2i0rthJa+iGXwSXjB+ytc0FAN
+	EoZJX+wuFOIrZIXoUYFJoE2ee6ptTlmc66luiU4F+fUdGM+POw+VCLmm9OqAoAiFNztPlgfIVAAJX
+	hyE/5cyzOY6XmylyTVXqCoA/vQlFfSdgjTVbxwpVsX/YK21O25jZORW973yByV7DPbdqpt5ENyfaD
+	NfbD52Uoupi79lOI6H9Unee8Kt9em5v9p3/F4UHBwkMAn3yHZfsvv1sKL45aP655Sme65H2bPaI9z
+	CyDcUxlg0q73h6Y9lsPzl1kVCikElvlgsf3DUY4HI9D+vFQjJxRxOx3LG4qSxCymzUm1kc4huSem0
+	I4SjQC0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbPtv-00000004AjN-1dpD;
-	Sun, 21 Jun 2026 21:40:23 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wbQWl-00000004Cs7-19o1;
+	Sun, 21 Jun 2026 22:20:31 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbPtt-00000004Aj8-0kXf;
-	Sun, 21 Jun 2026 21:40:21 +0000
+	id 1wbQWj-00000004CrW-3lF5;
+	Sun, 21 Jun 2026 22:20:29 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1E8D460051;
-	Sun, 21 Jun 2026 21:40:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C95721F000E9;
-	Sun, 21 Jun 2026 21:40:19 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id EE27E431CE;
+	Sun, 21 Jun 2026 22:20:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CF4F01F00A3A;
+	Sun, 21 Jun 2026 22:20:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782078019;
-	bh=dlhG6VVL7e735uRZLwmq98hxfSpDNi0y5BfFxqio2bA=;
+	s=k20260515; t=1782080428;
+	bh=iGhCX7nVBCzpVYU7WOdwE6u1flM0yS+pk70INf4ABPY=;
 	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=g5tLnUSLVvAqXwiw9rKtczs152mWsRC3zISrtZI+zsHJyilqlS6HlaS9OuCtaDbH8
-	 RzzxRvfmDyjxbHSDM6Uln4KVBknpegvqPB7BpEfDCo2BFRIxQvCsPDdZCDac0xSwsL
-	 SXyRp7be76av0rQzm7ZPUMBvcSEb5mzS4Z7MIVHpv5LqOAHOeiIZbuO2gQeCv63pVL
-	 x6MCRC9fqLOJROd+48Lr9Ip0st0DgfWtQhm+jcCFELB7l6xPwujM+84CkvQp71IpXw
-	 Cq/0XICyEcquqgenXhjbeJC8j+SqPULoO0M0BYvexqoKGykFcaXouncGy5zkpf7815
-	 W2vOm5Br/sw7w==
+	b=fz7Jki9Wn4ZAVH2R9XkCLkF3gckwdHmzKWQVNXaHSn5qyAPQZKkX311tXXKU+SGE+
+	 JPq5yKUsAbGSfLgP6tuk3AOgIwDOcJ0YW26RE3Gen6bS1lsqoVV+F8yAk0oV7Lh7Df
+	 ACumfI67MmJveagpf2erbcBsuaJqw34jgMXdHi1S3WpZ/FnPzGOO9LEgvgbctFj7pq
+	 UgAQBXkYsxtoUf5BWpJ9SjPg5nnmILQZzsOyQeq7g+71YAOeoKIAPJyPN37dku/sg5
+	 xH5OSWwlk7UDVhdaDBbAk6C6ToO8p8ngWkTltrxsX/dKfGocqioWTkNev8X/Rdoxar
+	 5G/wBmA3/LRwA==
 Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 568D93AAA6E4;
-	Sun, 21 Jun 2026 21:40:12 +0000 (UTC)
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 568B93AAA6EA;
+	Sun, 21 Jun 2026 22:20:21 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net] net: ethernet: mtk_ppe: Fix rhashtable leak in
- mtk_ppe_init error paths
+Subject: Re: [PATCH net v5] net: airoha: Fix skb->priority underflow in
+ airoha_dev_select_queue()
 From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <178207801105.510072.2195645518730276699.git-patchwork-notify@kernel.org>
-Date: Sun, 21 Jun 2026 21:40:11 +0000
-References: <178167550101.2217645.14579307712717502425@gmail.com>
-In-Reply-To: <178167550101.2217645.14579307712717502425@gmail.com>
+Message-Id: <178208042004.521994.1468591358072405119.git-patchwork-notify@kernel.org>
+Date: Sun, 21 Jun 2026 22:20:20 +0000
+References: <178194366700.2485734.5368768965976693502@gmail.com>
+In-Reply-To: <178194366700.2485734.5368768965976693502@gmail.com>
 To: Wayen Yan <win847@gmail.com>
 Cc: netdev@vger.kernel.org, lorenzo@kernel.org, horms@kernel.org,
  pabeni@redhat.com, kuba@kernel.org, edumazet@google.com,
  andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com,
  matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+ linux-mediatek@lists.infradead.org, joe@dama.to
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,21 +79,23 @@ Hello:
 This patch was applied to netdev/net.git (main)
 by Jakub Kicinski <kuba@kernel.org>:
 
-On Wed, 17 Jun 2026 13:48:13 +0800 you wrote:
-> In mtk_ppe_init(), when accounting is enabled, the error paths for
-> dmam_alloc_coherent(mib) and devm_kzalloc(acct) failures return NULL
-> directly, bypassing the err_free_l2_flows label that destroys the
-> rhashtable initialized earlier.
+On Sat, 20 Jun 2026 16:17:44 +0800 you wrote:
+> In airoha_dev_select_queue(), the expression:
 > 
-> While this leak only occurs during probe (not runtime) and the leaked
-> memory is minimal (an empty rhash table), fixing it ensures proper
-> error path cleanup consistency.
+>   queue = (skb->priority - 1) % AIROHA_NUM_QOS_QUEUES;
+> 
+> implicitly converts to unsigned arithmetic: when skb->priority is 0
+> (the default for unclassified traffic), (0u - 1u) wraps to UINT_MAX,
+> and UINT_MAX % 8 = 7, routing default best-effort packets to the
+> highest-priority QoS queue. This causes QoS inversion where the
+> majority of traffic on a PON gateway starves actual high-priority
+> flows (VoIP, gaming, etc.).
 > 
 > [...]
 
 Here is the summary with links:
-  - [net] net: ethernet: mtk_ppe: Fix rhashtable leak in mtk_ppe_init error paths
-    https://git.kernel.org/netdev/net/c/41782770be56
+  - [net,v5] net: airoha: Fix skb->priority underflow in airoha_dev_select_queue()
+    https://git.kernel.org/netdev/net/c/86e51aa24686
 
 You are awesome, thank you!
 -- 
