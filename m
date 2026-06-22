@@ -4,93 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B59F5CDB477
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jun 2026 07:28:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57615CDB46F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jun 2026 09:32:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oP3EC6sgK7zJ7xWtXJcDnj3pgjRmu/060XGMI0EwiSE=; b=057LoF1jZq5Y6vMw3Uhxn5X8Yq
-	vrWnWryICJprVV7+oNsjFrgmhOgAt+BG3JPxpuAvZSYxYsZBCyHTjkw2doDFLl1NLoOFSFGlxCW3A
-	txrlQrSSk5cYZ8ucpAnTxLf3W7lgngvNUTsdEnhg7uM6ckYB/dZXiK0zndwR9b/E0RBQMaSq4vn8d
-	VjWIpKNhBqSAVBYoSsXbpnfvbbEsVjOTLrLUYrMXxz6oNCRxrGBeVAx+tZSZn9yhIhMLbPs9KWwCp
-	53e/gnesdzj71K8teECYNal06fMMCcwv4E5TfDXH8nWW5Oqh/YRQMU+ZgFRwS/kZKOEIJdVY09w24
-	DxFf8eVg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OjnQqx9lVjDZn9U2JChR5sHB41aObP/M6xjkucf75vg=; b=4DFS6yZVKvb6pBcfXfO+3EZxre
+	92tXHJc9SUnz1XSzPPQgcXY5gRlvW3WBXQe5GMBlJu6/M+wFhFz8k74wNBiVUPhQX5FYcQjfuyBLO
+	/YVdkafETPE5ZuRZT3ST2E3i30/9O6tlLubIU2A3leHuxNLuX8AiqKCk8YykEPfHLVJPAeenTOrYU
+	G8Y5zsjDKbTP0z2W4wIEsGDA850BdUzH5JTJ3nwDai+M01PsRuzdvD++swJd2m3BWAf70bNUrBds7
+	Ng2zCUQVMCCmSUmVWbpV+9znpmQecruZUZD48uu/Y74piD3StCsA0j8AxdxHQzvE9/daTW2s6MsQT
+	SBgt4yCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbZ5D-00000004XWk-0X1j;
-	Mon, 22 Jun 2026 07:28:39 +0000
-Received: from mgamail.intel.com ([192.198.163.12])
+	id 1wbb0t-00000004l6K-0zcO;
+	Mon, 22 Jun 2026 09:32:19 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbZ59-00000004XWM-3GDa;
-	Mon, 22 Jun 2026 07:28:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1782113316; x=1813649316;
-  h=from:to:cc:subject:in-reply-to:references:date:
-   message-id:mime-version;
-  bh=oYpjZdXEXlbswEz5tTfmaOPHrTKzTbw/rXrTF2N68Cg=;
-  b=Xqr53oWiyJ+8OaNGM3KdEqX6VTIYBWknae6QVC82h/EPGW8ZXj7CKtDT
-   1lgHVVRp5weS6inkTdk++QG807V0SAotyAjySLLrPucrPVhi6puRzz09e
-   6eJveL1DgODXQo7B80Kbk6FgoF/pyMn8Y369qZ7AtUEJJSTsVeEZJgeoB
-   fXJqafjOKLjHBUgPLMYsLJA605Xjgp0iL9TL0dJpGgP48n9rljXAhu8vu
-   5SCleDHAk0nEUDRcoieOsPY3VQmqWzi4e50FAdjNZO98lsoXtpsQf78VG
-   dt7TeCCg1ElCDfQqp82S9rXTqkveHmHm/NU72qOOPbil7qlexiKBgzNC3
-   Q==;
-X-CSE-ConnectionGUID: 29uADRrzTG2UgvklxfRDnQ==
-X-CSE-MsgGUID: PVvkTO2eR32+ngiGKbQKUw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11824"; a="86680477"
-X-IronPort-AV: E=Sophos;i="6.24,218,1774335600"; 
-   d="scan'208";a="86680477"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
-  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Jun 2026 00:28:35 -0700
-X-CSE-ConnectionGUID: hM89HPSTQcyrm42Ee4Purw==
-X-CSE-MsgGUID: XAqf2eLXTHaUZkYmxE5gcg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.24,218,1774335600"; 
-   d="scan'208";a="254150821"
-Received: from abityuts-desk.ger.corp.intel.com (HELO localhost) ([10.245.245.82])
-  by orviesa005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Jun 2026 00:28:23 -0700
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Kory Maincent <kory.maincent@bootlin.com>, Maarten Lankhorst
- <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Tvrtko Ursulin
- <tursulin@ursulin.net>, Andrzej Hajda <andrzej.hajda@intel.com>, Neil
- Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
- <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Luca
- Ceresoli <luca.ceresoli@bootlin.com>, Chun-Kuang Hu
- <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Dmitry Baryshkov
- <lumag@kernel.org>, Daniel Stone <daniels@collabora.com>
-Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Mark Yacoub
- <markyacoub@google.com>, Sean Paul <seanpaul@google.com>, Manasi Navare
- <navaremanasi@google.com>, Drew Davenport <ddavenport@google.com>, Louis
- Chauvet <louis.chauvet@bootlin.com>, Luca Ceresoli
- <luca.ceresoli@bootlin.com>, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- intel-xe@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, Kory Maincent
- <kory.maincent@bootlin.com>
-Subject: Re: [PATCH RFC v2 2/4] drm/i915/display/dp: Adopt dp_connector
- helpers to expose link training state
-In-Reply-To: <20260619-feat_link_cap-v2-2-a3dec4c02ad9@bootlin.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park,
- 6 krs Bertel Jungin Aukio 5, 02600 Espoo, Finland
-References: <20260619-feat_link_cap-v2-0-a3dec4c02ad9@bootlin.com>
- <20260619-feat_link_cap-v2-2-a3dec4c02ad9@bootlin.com>
-Date: Mon, 22 Jun 2026 10:28:19 +0300
-Message-ID: <97cb159654547b937a882c67bc9986dfd77eb620@intel.com>
+	id 1wbb0q-00000004l5p-3Oqp;
+	Mon, 22 Jun 2026 09:32:16 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id DB91060051;
+	Mon, 22 Jun 2026 09:32:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F03291F000E9;
+	Mon, 22 Jun 2026 09:32:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1782120735;
+	bh=OjnQqx9lVjDZn9U2JChR5sHB41aObP/M6xjkucf75vg=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=ApxzB7CQjt2Xqf3nCQt/J3NxrquiCG6Zue6KX9PMhWvInDLEgf9HrutmfGV+I4OZ7
+	 zqtwEmdv+d7ZUnSxgXUf7wQ/yfKPlsiluNm8NN8XRoE2IOvsi5/jT41VryYw1ihtZF
+	 kPBG2lzTF/KcN2ULGQgfha3q+Z9+hEBV2Vq3mjFX2altZoyUvtbkUgSLq6h4e9Ji/r
+	 l9gSXRTlctoiIyMG62c8568RoGjele/qh6tU4+nZa3nZbYEvkeMelJsv1anaF/VS6+
+	 tIwmmOBQrWGzho4Puta2c9AWjZVwme1jxFKiWokjuwuxfO9ve5v1qPEqaFd0Mxue7d
+	 27zhi66H4STrA==
+From: Maxime Ripard <mripard@kernel.org>
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Maxime Ripard <mripard@kernel.org>
+Cc: Dmitry Baryshkov <lumag@kernel.org>,
+	dri-devel@lists.freedesktop.org,
+	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+	Jagan Teki <jagan@amarulasolutions.com>,
+	Liu Ying <victor.liu@nxp.com>,
+	Frank Li <Frank.Li@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Phong LE <ple@baylibre.com>,
+	Douglas Anderson <dianders@chromium.org>,
+	Inki Dae <inki.dae@samsung.com>,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Paul Cercueil <paul@crapouillou.net>,
+	linux-mips@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	linux-amlogic@lists.infradead.org,
+	Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+	linux-renesas-soc@vger.kernel.org,
+	Biju Das <biju.das.jz@bp.renesas.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Sandy Huang <hjc@rock-chips.com>,
+	linux-rockchip@lists.infradead.org,
+	Yannick Fertre <yannick.fertre@foss.st.com>,
+	Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>,
+	Philippe Cornu <philippe.cornu@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	linux-stm32@st-md-mailman.stormreply.com,
+	Jyri Sarha <jyri.sarha@iki.fi>,
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+	Dave Stevenson <dave.stevenson@raspberrypi.com>,
+	=?UTF-8?q?Ma=C3=ADra=20Canal?= <mcanal@igalia.com>,
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+	Icenowy Zheng <zhengxingda@iscas.ac.cn>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Michal Simek <michal.simek@amd.com>
+Subject: Re: [PATCH v3 00/78] drm/bridge: Convert all reset users to create_state
+Date: Mon, 22 Jun 2026 11:32:11 +0200
+Message-ID: <178212072827.575553.11508273640952121243.b4-ty@kernel.org>
+X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20260619-drm-no-more-bridge-reset-v3-0-ff399263111b@kernel.org>
+References: <20260619-drm-no-more-bridge-reset-v3-0-ff399263111b@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260622_002835_886886_A2C300C9 
-X-CRM114-Status: GOOD (  24.61  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,171 +128,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 19 Jun 2026, Kory Maincent <kory.maincent@bootlin.com> wrote:
-> Switch the i915 DP connector initialization from
-> drm_connector_init_with_ddc() to drm_connector_dp_init_with_ddc(),
-> providing the source link capabilities (supported lane counts, link rates
-> and DSC support).
->
-> Add intel_dp_report_link_train() to collect the negotiated link
-> parameters (rate, lane count and DSC enable) and report them via
-> drm_dp_set_max_link_params() and drm_dp_set_cur_link_params() once
-> link training completes successfully.
->
-> Reset the link properties via drm_dp_reset_link_params()
-> when the connector is reported as disconnected or when the display device
-> is disabled, so the exposed state always reflects the current link status.
->
-> Signed-off-by: Kory Maincent <kory.maincent@bootlin.com>
-> ---
->
-> Changes in v2:
-> - Remove voltage swing and pre emphasis properties.
-> ---
->  drivers/gpu/drm/i915/display/intel_dp.c            | 26 ++++++++++++++++++----
->  .../gpu/drm/i915/display/intel_dp_link_training.c  | 17 ++++++++++++++
->  2 files changed, 39 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/gpu/drm/i915/display/intel_dp.c b/drivers/gpu/drm/i915/display/intel_dp.c
-> index f01a6eed38395..46c06c76952e0 100644
-> --- a/drivers/gpu/drm/i915/display/intel_dp.c
-> +++ b/drivers/gpu/drm/i915/display/intel_dp.c
-> @@ -6414,8 +6414,10 @@ intel_dp_detect(struct drm_connector *_connector,
->  	drm_WARN_ON(display->drm,
->  		    !drm_modeset_is_locked(&display->drm->mode_config.connection_mutex));
->  
-> -	if (!intel_display_device_enabled(display))
-> +	if (!intel_display_device_enabled(display)) {
-> +		drm_dp_sink_reset_link_caps(_connector);
+On Fri, 19 Jun 2026 14:24:05 +0200, Maxime Ripard wrote:
+> All the bridges use reset to create a blank state only and don't use it
+> to reset the hardware at all. This is what the new atomic_create_state
+> is exactly supposed to be doing, so we can convert all existing bridge
+> users to it, and remove the reset hook and helpers.
+> 
+> Let me know what you think,
+> Maxime
+> 
+> [...]
 
-Gut feeling is that the sprinkling of these around is error prone.
+Applied to misc/kernel.git (drm-misc-next).
 
->  		return connector_status_disconnected;
-> +	}
->  
->  	if (!intel_display_driver_check_access(display))
->  		return connector->base.status;
-> @@ -6465,6 +6467,8 @@ intel_dp_detect(struct drm_connector *_connector,
->  
->  		intel_dp_tunnel_disconnect(intel_dp);
->  
-> +		drm_dp_sink_reset_link_caps(_connector);
-> +
->  		goto out_unset_edid;
->  	}
->  
-> @@ -7240,10 +7244,12 @@ intel_dp_init_connector(struct intel_digital_port *dig_port,
->  			struct intel_connector *connector)
->  {
->  	struct intel_display *display = to_intel_display(dig_port);
-> +	struct drm_connector_dp_link_caps link_caps;
->  	struct intel_dp *intel_dp = &dig_port->dp;
->  	struct intel_encoder *encoder = &dig_port->base;
->  	struct drm_device *dev = encoder->base.dev;
->  	enum port port = encoder->port;
-> +	u32 *rates;
->  	int type;
->  
->  	if (drm_WARN(dev, dig_port->max_lanes < 1,
-> @@ -7291,8 +7297,21 @@ intel_dp_init_connector(struct intel_digital_port *dig_port,
->  		    type == DRM_MODE_CONNECTOR_eDP ? "eDP" : "DP",
->  		    encoder->base.base.id, encoder->base.name);
->  
-> -	drm_connector_init_with_ddc(dev, &connector->base, &intel_dp_connector_funcs,
-> -				    type, &intel_dp->aux.ddc);
-> +	intel_dp_set_source_rates(intel_dp);
-> +	link_caps.nlanes = 4;
-> +	link_caps.nlink_rates = intel_dp->num_source_rates;
-> +	rates = kmemdup_array(intel_dp->source_rates, intel_dp->num_source_rates,
-> +			      sizeof(*rates), GFP_KERNEL);
-> +	if (!rates)
-> +		goto fail;
-> +
-> +	link_caps.link_rates = rates;
-> +	link_caps.dsc = HAS_DSC(display);
-> +
-> +	drm_connector_dp_init_with_ddc(dev, &connector->base, &intel_dp_connector_funcs,
-> +				       &link_caps, type, &intel_dp->aux.ddc);
-> +	kfree(rates);
-> +
-
-All of the above feels a bit clumsy in the middle of an already too long
-function.
-
->  	drm_connector_helper_add(&connector->base, &intel_dp_connector_helper_funcs);
->  
->  	if (!HAS_GMCH(display) && DISPLAY_VER(display) < 12)
-> @@ -7315,7 +7334,6 @@ intel_dp_init_connector(struct intel_digital_port *dig_port,
->  		goto fail;
->  	}
->  
-> -	intel_dp_set_source_rates(intel_dp);
->  	intel_dp_set_common_rates(intel_dp);
->  	intel_dp_reset_link_params(intel_dp);
->  
-> diff --git a/drivers/gpu/drm/i915/display/intel_dp_link_training.c b/drivers/gpu/drm/i915/display/intel_dp_link_training.c
-> index a26094223f780..25e0e957fe36d 100644
-> --- a/drivers/gpu/drm/i915/display/intel_dp_link_training.c
-> +++ b/drivers/gpu/drm/i915/display/intel_dp_link_training.c
-> @@ -1231,6 +1231,18 @@ intel_dp_128b132b_intra_hop(struct intel_dp *intel_dp,
->  	return sink_status & DP_INTRA_HOP_AUX_REPLY_INDICATION ? 1 : 0;
->  }
->  
-> +static void intel_dp_report_link_train(struct intel_dp *intel_dp)
-> +{
-> +	struct intel_connector *connector = intel_dp->attached_connector;
-> +
-> +	drm_dp_set_max_link_params(&connector->base, intel_dp->link_rate,
-> +				   intel_dp->lane_count);
-> +
-> +	drm_dp_set_cur_link_params(&connector->base, intel_dp->link_rate,
-> +				   intel_dp->lane_count,
-> +				   connector->dp.dsc_decompression_enabled);
-> +}
-> +
->  /**
->   * intel_dp_stop_link_train - stop link training
->   * @intel_dp: DP struct
-> @@ -1259,6 +1271,9 @@ void intel_dp_stop_link_train(struct intel_dp *intel_dp,
->  	intel_dp_program_link_training_pattern(intel_dp, crtc_state, DP_PHY_DPRX,
->  					       DP_TRAINING_PATTERN_DISABLE);
->  
-> +	if (!intel_dp->is_mst)
-> +		intel_dp_report_link_train(intel_dp);
-> +
->  	if (intel_dp_is_uhbr(crtc_state)) {
->  		ret = poll_timeout_us(ret = intel_dp_128b132b_intra_hop(intel_dp, crtc_state),
->  				      ret == 0,
-> @@ -1772,6 +1787,8 @@ void intel_dp_start_link_train(struct intel_atomic_state *state,
->  	 */
->  	int lttpr_count;
->  
-> +	drm_dp_sink_set_link_caps(&intel_dp->attached_connector->base, &intel_dp->aux);
-
-This is not okay.
-
-We've already figured out all the information needed, and this call goes
-ahead and reads the same information out again.
-
-Moreover, some sinks are fragile when it comes to reading the info and
-starting link training. The CTS might complain about redundant reads as
-well.
-
-drm_dp_sink_set_link_caps() as a name implies something about link,
-i.e. the thing between the source and the sink. But this only sets sink
-capabilities. Which also means it should not happen at link training
-time at all. We figure the information out at detect, which means it's
-available *before* modeset.
-
-The more I think about the function, the more I question it. Like, if
-the source doesn't support UHBR at all, or not on this connector, what's
-the point of reading the sink UHBR rates?
-
-> +
->  	intel_hpd_block(encoder);
->  
->  	lttpr_count = intel_dp_init_lttpr_and_dprx_caps(intel_dp);
-
--- 
-Jani Nikula, Intel
+Thanks!
+Maxime
 
