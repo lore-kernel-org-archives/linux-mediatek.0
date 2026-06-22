@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 447D5CD98F2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jun 2026 16:17:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FAE7CDB46F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jun 2026 16:39:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C/c/ZnFn816x3dYN0EttbOgIrQ9C3fDEkTn38/FB7uY=; b=cz0mxp4Urehtuw/BsVcbHh6wqc
-	tBFSdQQovjmd9Z6sA0LGDcmnv+3QPUKXzSYih4tUT/izVrw2ST3fgBPMe3HZiKnXixiERAiBO3zeQ
-	N9Jfo0lIaTgEIYadKZp/t/bDk5mLYsF32G8aWR91Egn8qsLjFo1Fa2s9ndiUfF2AHa1Xf3xrJdWBd
-	/dXldJalQpIWKS/+tzhYNF+8oAwmPbeTuE5yD+A2REEvPK5SRtJieR/f2bNtG7Wr0ABX6OykUiz/F
-	N8bNhgIB87EksIMy51NNrer88Re2fwdO54jxDDM+xgaKCQAWuttub6GyYt7A5o450H5XM2bluzpYg
-	pQtG872A==;
+	bh=QUZD+emMQ2xlB4a05ZZK2Z1/2LYgrrwvQo0kKAM+qPg=; b=fs0ralSulOjzVYSLR4s6bbvn1U
+	iiMX3GAKsFuZIh+M5Sh/mng45tMU271vSCjw0CeLYMrS5W8mEdC9B4FPUJjd3NpMSoNywKfIUEeKx
+	5O8fcTqQ6LWQkQtidekDLtNJP/rUE5xX7zQ940/YAi+b4T4mioATCfs/+ag9zKHT1Ikghlty/nt/O
+	RG9g7SzJSKFykhVGwDx9sxWaL4Sd7vboTVnPU7vIloWvqPRwTRidrNcJ4Vc2xmhSDJ6A46arFxa19
+	/vr2Po7GC6q8K5gyngqbDW2V3rousHSY0oxH8nISZCwLPDE9AYReISOs2au0cbYWIqpaFpnnbnS6/
+	0P/SB7uQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbhKR-00000005Am0-3G6j;
-	Mon, 22 Jun 2026 16:16:55 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wbhgV-00000005C6x-1Gq3;
+	Mon, 22 Jun 2026 16:39:43 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbhKP-00000005AlT-2DG7;
-	Mon, 22 Jun 2026 16:16:53 +0000
+	id 1wbhgU-00000005C6f-0Eu9;
+	Mon, 22 Jun 2026 16:39:42 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id A2951601F6;
-	Mon, 22 Jun 2026 16:16:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 63A4A1F000E9;
-	Mon, 22 Jun 2026 16:16:50 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6C5D8402A2;
+	Mon, 22 Jun 2026 16:39:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5B5871F000E9;
+	Mon, 22 Jun 2026 16:39:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782145012;
-	bh=C/c/ZnFn816x3dYN0EttbOgIrQ9C3fDEkTn38/FB7uY=;
+	s=k20260515; t=1782146381;
+	bh=QUZD+emMQ2xlB4a05ZZK2Z1/2LYgrrwvQo0kKAM+qPg=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=KDHBLkTGnpBq0tBH98rMEFx3nPcKMjBPMCY/Psi7PkEq/zhVqyD4DfYCO6gYN8Ggw
-	 eK/e2HlZazzAdAoaJquWQhvvwlqU4TdnsDHcydZEiFilhVi6cjxPX7+9CsuRdc9Epc
-	 GXKJhumyMWqRTYrw9qdDIRJs6f1AW60WW3Ej4HrpRP6xw4zsP/tx7rfn0rBSjLJnSB
-	 JcZjAC/+5TWOdcItI3sFOoiWPd3VKXoe8h7xUsJR3jl/X1wa6XChtGWbZ4hqqy4QcX
-	 nk/6rXM42ia6NkZFnL+L3dPMPCyAlb4/Pe2N9QU5UWr/BIVeQN0V3jBmoyCc4bKzBU
-	 +5hb0CUOfvNfg==
-Date: Mon, 22 Jun 2026 17:16:48 +0100
+	b=A7u0TWl4NdgWXkAMlDQhZA9OVkFj9CDXRLeJ0IQJ1e6symrrmYwzLrCZ9FCEQ1/0e
+	 pTA9PwpEaO53WqkDwx1TwQCkOhWhjypPk7KItRuXW4LG/nQpwuXE3zY1WjjdtkNmte
+	 vk2U6VFIx+0aF9JPW1LZNTfzxGNPaSSa2MLJM1jEr/5SaWO7bdszv48UNu4h1WKBTg
+	 lm/JubDjaM+vFcSBV5BWvoVkKxTUDNEQOWgERHxVasD8jFOzzSqLytg8y39E3d0IQU
+	 zxeEh7xUCvsNa92YKvqBSUCtnuS3OWhsBWxRuQ++Cvt8sZLR9XZtAQJZWXGMbtwpeM
+	 ZVftYS3FjcX2Q==
+Date: Mon, 22 Jun 2026 17:39:37 +0100
 From: Simon Horman <horms@kernel.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
@@ -50,17 +50,14 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Wayen Yan <win847@gmail.com>, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net v2 2/2] net: airoha: fix netif_set_real_num_tx_queues
- for sparse QoS channels
-Message-ID: <20260622161648.GG827683@horms.kernel.org>
-References: <20260619-airoha-qos-fixes-v2-0-5c43485038f9@kernel.org>
- <20260619-airoha-qos-fixes-v2-2-5c43485038f9@kernel.org>
- <20260622123136.GC827683@horms.kernel.org>
- <ajk0kS76nahtop8g@lore-desk>
+Subject: Re: [PATCH net v3] net: airoha: fix BQL underflow in shared QDMA TX
+ ring
+Message-ID: <20260622163937.GH827683@horms.kernel.org>
+References: <20260620-airoha-bql-fixes-v3-1-76b95374e63e@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ajk0kS76nahtop8g@lore-desk>
+In-Reply-To: <20260620-airoha-bql-fixes-v3-1-76b95374e63e@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,44 +72,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 22, 2026 at 03:11:45PM +0200, Lorenzo Bianconi wrote:
-> > On Fri, Jun 19, 2026 at 01:37:14PM +0200, Lorenzo Bianconi wrote:
-> > > airoha_tc_htb_alloc_leaf_queue() assigns queue IDs based on the channel
-> > > index (opt->qid = AIROHA_NUM_TX_RING + channel), but updates
-> > > real_num_tx_queues with a simple increment (num_tx_queues + 1). When QoS
-> > > channels are allocated sparsely (e.g., channels 0 and 3 without 1 and
-> > > 2), the returned qid can exceed real_num_tx_queues, causing out-of-bounds
-> > > accesses in the networking stack.
-> > > For example, allocating channel 0 then channel 3 results in
-> > > real_num_tx_queues = 34 but qid = 35, which is out of range [0, 34).
-> > > Fix this by computing real_num_tx_queues based on the highest active
-> > > channel index rather than using a simple counter, in both the allocation
-> > > and deletion paths.
-> > > 
-> > > Fixes: ef1ca9271313b ("net: airoha: Add sched HTB offload support")
-> > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > 
-> > Thanks for the update since v1.
-> > 
-> > Reviewed-by: Simon Horman <horms@kernel.org>
+On Sat, Jun 20, 2026 at 05:04:51PM +0200, Lorenzo Bianconi wrote:
+> When multiple netdevs share a QDMA TX ring and one device is stopped,
+> netdev_tx_reset_subqueue() zeroes that device's BQL counters while its
+> pending skbs remain in the shared HW TX ring. When NAPI later completes
+> those skbs via netdev_tx_completed_queue(), the already-zeroed
+> dql->num_queued counter underflows.
 > 
-> Hi Simon,
+> Fix the issue:
+> - Remove netdev_tx_reset_subqueue() from airoha_dev_stop() so pending
+>   skbs are completed naturally by NAPI with proper BQL accounting.
+> - Rework airoha_qdma_tx_cleanup() to disable TX DMA, flush BQL
+>   counters, DMA-unmap and free all pending skbs while skb->dev
+>   references are still valid. Use a per-queue flushing flag checked
+>   under q->lock in airoha_dev_xmit() to prevent races between teardown
+>   and transmit. Call airoha_qdma_stop_napi() before
+>   airoha_qdma_tx_cleanup() at the call sites.
+> - Move DMA engine start into probe. Split DMA teardown so TX DMA is
+>   disabled in airoha_qdma_tx_cleanup() and RX DMA in
+>   airoha_qdma_cleanup().
+> - Remove qdma->users counter since DMA lifetime is now tied to
+>   probe/cleanup rather than per-netdev open/stop.
 > 
-> thx for the review.
+> Fixes: a9c2ca61fec7 ("net: airoha: Support multiple net_devices for a single FE GDM port")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+> Changes in v3:
+> - Remove airoha_qdma users counter.
+> - Drop DEV_STATE_FLUSH bit and add per-queue flushing bool to avoid any
+>   race between airoha_qdma_tx_flush() and airoha_dev_xmit().
+> - Refactor airoha_qdma_cleanup_tx_queue().
+> - Rename airoha_qdma_cleanup_tx_queue() in airoha_qdma_tx_cleanup().
+> - Link to v2: https://lore.kernel.org/r/20260619-airoha-bql-fixes-v2-1-4351d6a24484@kernel.org
 > 
-> > 
-> > FTR, there is an AI-generated review of this patch on sashiko.dev.
-> > I do not think that should impede the progress of this patch but
-> > you may want to consider it in the context of follow-up.
-> 
-> Even if it is not introduced by this patch, I do not think what is reported
-> by Sashiko is a real issue since airoha_eth driver implements
-> ndo_select_queue() callback and the selected queue is always in the range
-> [0, AIROHA_NUM_TX_RING[. HTB queues (in the range
-> [AIROHA_NUM_TX_RING, AIROHA_NUM_TX_RING + AIROHA_NUM_QOS_CHANNELS[) are just 
-> 'offloaded' and never used in the TC sw path. Agree?
 
-Thanks Lorenzo,
+Thanks for the updates.
 
-I've looked over this more closely with the above in mind and I agree.
+Reviewed-by: Simon Horman <horms@kernel.org>
+
 
