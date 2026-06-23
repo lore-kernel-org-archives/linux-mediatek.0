@@ -4,63 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14A09CDB470
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2026 20:40:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F18F4CDB471
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2026 21:40:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AMcpquJMVliWCyVZpJVdP+uhF1fM/B/VVl+0HBiNrFY=; b=AGZT9/eYfvYYFueaNvEjEZ1erH
-	1o05o84AIBm0UGTpPFj1cfibbRStKzZlVg2dAj/JgyX0h7zxEOLnJau1HW9I1BtYO3vbFa9RsLr0S
-	ttlL0kKE7obzJxsmOhYV4lTv2gd1JcOFCLcaRh1mQZYTWfwau9U8T4bFMP7eWXR3oudkOWPwpMZnf
-	wjuSymOU/aWzV8djKkytvQusOGKiflXnbTlwOxfuEJgMkCBvV3m7kxQPNG/yPGafCqX0bVH7qxK9t
-	Y16pKJSxa8Wk2sERIx1Vfye+PflfDlWmMwjinpoY3ciUfdgqHd8ndKWgXcBrIZNi5P+yHGuJ1zVng
-	8K1VnqAQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=N+YGotLM1BtFTWXvgF/J3FUJ54i0TghGIKlvykmHBcc=; b=mLEiCbo2BxWgB6jlyn6mFprulE
+	UtghHAqlTvZ6v1tBeFHI0YPVYuQp8E+sjws7qxas16wLpwYoqHV6uTkE7LrOVoUzbS2XIoBqcsBQF
+	A+GRvn7v05UM9js/cUGO3XikeeqgkcSCatSqDluY8ko+RIl3w0395swXWyNXvV7aT7PzNad3ONey3
+	4TkWVps0jfHdO2HeTzO846lyTA4kIKhXr/vyWZvUShLSJ2U/4YkrV9wTUBnhLQJItVYd+ql7CMaZX
+	y/SqCFoFGPcUTquJfpMTlI9jMLfQ2bKQGH10UfkFogObgXULX3f8WUUofSGKz5XLfYRLlwEb8SNxn
+	GZAa3JkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wc7uz-00000006rJT-2PMZ;
-	Tue, 23 Jun 2026 20:40:25 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wc8qv-00000006v7W-3CQV;
+	Tue, 23 Jun 2026 21:40:17 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wc7uw-00000006rIw-3aOZ;
-	Tue, 23 Jun 2026 20:40:22 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id EE362601D6;
-	Tue, 23 Jun 2026 20:40:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A2E041F000E9;
-	Tue, 23 Jun 2026 20:40:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782247221;
-	bh=AMcpquJMVliWCyVZpJVdP+uhF1fM/B/VVl+0HBiNrFY=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=BkKCGoEO1hf3YhviPT1C0bP64ZqgQsZrhgVcMF4kWb6E1AiTeKELbfYTqw60uH921
-	 2tWluMaDcn8Af9ijoAvovMewR+9AM8EucJ71jDxPr35ogKyycGLxbxyjBpLXnJdqYZ
-	 FOhXCamRTtkP4CvMp4E+nwN+iZe4x3c1D++WkCs8P1N/iPf0j67dYYNNzTWdvY1ZKR
-	 E+nP+5HzW6Xu+5KCX4Nhj24RyLKYp4vtO+0M+UTXoe78kryuGbsK0LbEDubAVr+LUW
-	 MO/dzhnjTL4rdGenFKQeT59s30Z/uK1Hae8uYi3KLvpTGK7zpP3y4/y8aaoXtFM/TU
-	 pEL1k50X6lkWQ==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 568D43931005;
-	Tue, 23 Jun 2026 20:40:12 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1wc8qu-00000006v7G-2Q0J;
+	Tue, 23 Jun 2026 21:40:16 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 55E3B60008;
+	Tue, 23 Jun 2026 21:40:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 026D5C2BCB8;
+	Tue, 23 Jun 2026 21:40:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1782250815;
+	bh=JI38z1jaLCsFKYh18Ni5/rwQP2sXh0iFI1mRBa14wxs=;
+	h=From:Date:Subject:To:Cc:Reply-To:From;
+	b=cGbVvCP3pMcadM9zoMn7NyrmKKSP6GInXyGoHbfW/jMrb5154+VimaxpH2CmZ2GMa
+	 D6Zwe3t/DwOqg0M9R/hMOvxV2vfLvFae+IDWt7ecFUIBxLqN1UtDpW/YuLLH3C7N4p
+	 kwmSUkF3b2q8jqxUIex3fDO1Su1U57PbVyMQSrRqXV2/wlg/3tomenj8+PmwHG2IS2
+	 YeJRNsZCtOpgHQGOWz1x65CyN+jgxHdBSbGpYgXJQ23GxIwkSdF0rFmmwtnZpJYZ+k
+	 01zFwaC2xk2a4jOpF7jfQp+on8WiaRSe3tDZ0qv/03+A8O4u0/OuUN/Y6ihfmBe91M
+	 tSBOh8kQksQ3g==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DA58DCDB47C;
+	Tue, 23 Jun 2026 21:40:14 +0000 (UTC)
+From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
+Date: Wed, 24 Jun 2026 00:40:13 +0300
+Subject: [PATCH] i2c: mediatek: fix WRRD for SoCs without auto_restart
+ option
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v3 net] net: airoha: Fix TX scheduler queue mask loop
- upper
- bound
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <178224721075.2409533.1841899511926101005.git-patchwork-notify@kernel.org>
-Date: Tue, 23 Jun 2026 20:40:10 +0000
-References: <178187479434.2400840.1312143943526335838@gmail.com>
-In-Reply-To: <178187479434.2400840.1312143943526335838@gmail.com>
-To: Wayen Yan <win847@gmail.com>
-Cc: netdev@vger.kernel.org, lorenzo@kernel.org, horms@kernel.org,
- pabeni@redhat.com, kuba@kernel.org, edumazet@google.com,
- andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com,
- matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260624-6572-6595-i2c-v1-1-9155cebaae20@protonmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIzMDMyNjXTNTcyMgYWmqm2mUrGuWmmyZbJJqlgiESkA9BUWpaZkVYPOiYyH
+ 84tKkrNTkEpAhSrW1AIYrn0FxAAAA
+X-Change-ID: 20260623-6572-6595-i2c-6ec9c4e6a6a6
+To: Qii Wang <qii.wang@mediatek.com>, Andi Shyti <andi.shyti@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Roman Vivchar <rva333@protonmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1782250813; l=1767;
+ i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
+ bh=TG2emG/PCj4Coy27v6ImKi08qxfg+rKakjADtWBifso=;
+ b=MuDkLvPkgVRxiqfkdn6qowJfHL5BjKXog1KYCzBl6lSkA60ha518SEnL4W5DoJjBD4Idz6x8Z
+ SUQMLDg76jfBE+L8FJc9UxV+vq91u4HSMSUjKXmtKe7KS9p2cwApUpi
+X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
+ pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
+X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
+ auth_id=777
+X-Original-From: Roman Vivchar <rva333@protonmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,35 +84,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+From: Roman Vivchar <rva333@protonmail.com>
 
-This patch was applied to netdev/net.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+MediaTek mt65xx family SoCs have no auto restart, however, they still
+support the WRRD mode in the hardware. Because auto_restart is set to 0,
+the WRRD mode will be never enabled, leading to read errors.
 
-On Fri, 19 Jun 2026 21:12:06 +0800 you wrote:
-> In airoha_qdma_set_chan_tx_sched(), the loop clearing queue mask was
-> using AIROHA_NUM_TX_RING (32) instead of AIROHA_NUM_QOS_QUEUES (8).
-> 
-> Each channel has 8 queues, and TXQ_DISABLE_CHAN_QUEUE_MASK(channel, i)
-> computes BIT(i + (channel * 8)). With i ranging 0..31, this causes:
-> - channel 0: clears bit 0..31 (all 4 channels) instead of 0..7
-> - channel 1: clears bit 8..31 (channels 1-3) instead of 8..15
-> - channel 2: clears bit 16..31 (channels 2-3) instead of 16..23
-> - channel 3: clears bit 24..31 (channel 3 only) - correct by accident
-> 
-> [...]
+Fix this by removing auto_restart check from the WRRD enable path.
 
-Here is the summary with links:
-  - [v3,net] net: airoha: Fix TX scheduler queue mask loop upper bound
-    https://git.kernel.org/netdev/net/c/245043dfc210
+Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+---
+This is a preparation for the mt6572/6595 upstreaming.
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+mt65xx family SoCs don't have auto restart, but vendor kernels keep using
+WRRD mode. Lack of the WRRD mode makes i2c reads impossible from both
+userspace and kernel drivers.
+
+Without patch (mt6595, da9210 buck at 0x68):
+~ # i2cget -y 1 0x68 0x00
+Error: Read failed
+~ # i2cget -y 1 0x68 0x01
+Error: Read failed
+
+With patch:
+~ # i2cget -y 1 0x68 0x00
+0x80
+~ # i2cget -y 1 0x68 0x01
+0x00
+
+Same behavior observed on mt6572 devices.
+
+This change doesn't affect SoCs with auto restart option.
+---
+ drivers/i2c/busses/i2c-mt65xx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+index 126040ca05f1..307925fb78e3 100644
+--- a/drivers/i2c/busses/i2c-mt65xx.c
++++ b/drivers/i2c/busses/i2c-mt65xx.c
+@@ -1258,7 +1258,7 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+ 	i2c->auto_restart = i2c->dev_comp->auto_restart;
+ 
+ 	/* checking if we can skip restart and optimize using WRRD mode */
+-	if (i2c->auto_restart && num == 2) {
++	if (num == 2) {
+ 		if (!(msgs[0].flags & I2C_M_RD) && (msgs[1].flags & I2C_M_RD) &&
+ 		    msgs[0].addr == msgs[1].addr) {
+ 			i2c->auto_restart = 0;
+
+---
+base-commit: 8cd9520d35a6c38db6567e97dd93b1f11f185dc6
+change-id: 20260623-6572-6595-i2c-6ec9c4e6a6a6
+
+Best regards,
+--  
+Roman Vivchar <rva333@protonmail.com>
 
 
 
