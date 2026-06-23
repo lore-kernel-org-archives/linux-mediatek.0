@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0747CDB46F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2026 10:55:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA86CCD98F2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2026 13:39:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lAKwacoVI7uad9g+jIiH9ookXbWgdh+4rlS83ehVIsw=; b=RmFzkoGQ/q7dn5IIQUy3Jz8ZRA
-	kGOMPwkmOvde5Fm7tz34nBtN78YqLKFxgJKLOHAA8HL06kBbKQDdsTwTU49Xq4w5N+TFdwH2EcmDv
-	dsVN/2QOL+YsHiDzateH77VoIYI2p7d5H0VhW3+mPUe8rAemMiQ9b8NOdG34kzJBik0J1iyzoEIKl
-	T6ZL0q9Q7Awx1jmAcLwvpViTqlfgx5taOUYJPvgspZmwVge+lkM9VMAM27/5dpc3uDsnG7f3lzHOM
-	yGhDjEMsXQvBh+x0/5tlCTZKE8FKlNb5v0SI4bbxicKrIBCX532XBmNo1kqXDscZQRkFsAPPIJgQv
-	3CUUbJJw==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=lhYDY/oGh1x20M8STDeHhSgFj7e0F2TfJzpcUG3q/j8=; b=AwW/o6sVHApMBtCtJshHvtHFs5
+	2mt1ykcoiGgTHfbo3O5OyDLiPqCpn9OcNWpNd9b65kbXxG4pKxdupszw56AXr20TYt84rz33mNkIE
+	h1OrcHdhKVKXgD51T/gm3gRfgE8bpCCw7dw+1YalEY9I16BZBzvbeK5no1JuOx98xdcUM6hFwkkeB
+	5sxBriagkPqt8KwqyZfIoxIQV7ChSVVkgtCWvfHacx2ULIS4NuhuGytE7q+1qXgx0jlebjCaudYub
+	O2bcktA9rkDrjoyAtkldh3QSvgO/5H4D1PInxIwVMhMexFKbwSg2qzPZgRCTvPVkG2Rt+sE15JSQM
+	N7VqM0BQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbyn0-000000067So-0U5z;
-	Tue, 23 Jun 2026 10:55:34 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wc1LU-00000006LnS-1Xvh;
+	Tue, 23 Jun 2026 13:39:20 +0000
+Received: from m16.mail.163.com ([220.197.31.2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbymy-000000067SL-0alp;
-	Tue, 23 Jun 2026 10:55:32 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8745C405A9;
-	Tue, 23 Jun 2026 10:55:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45DA01F000E9;
-	Tue, 23 Jun 2026 10:55:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782212131;
-	bh=lAKwacoVI7uad9g+jIiH9ookXbWgdh+4rlS83ehVIsw=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=Nd6H/AKBBiphRBm1G0fYBB/P+tJDY3EthHSrSuOOIqxHa6P2zbJvBNW94bt7wq4BM
-	 rcllD8dhyskNiOvyEehpiUPLIwJ3tjjuuVyc+NmGA1tuO2mAYiL0zclDwVkartqoWh
-	 JBUmRhr6KcBb2z1TaCUVlUkV4kaoAjkb+4ajB48qoXaU1vF/SGzxVybKk7d/xjSX9X
-	 DbKFzsyU/r7eKd4RVUehBiutUMpt+UdwJ70k1ZZzm3JxfNyBXGe9cFNk6BLz+1/D8O
-	 W/0IqzZAHxFalUAivpxEFo1eso1fU+u/AZ6PfMIUYMwr6PI3gHIfXWrRcC3NHBcGG7
-	 dQmTtiXdafUwA==
-From: Simon Horman <horms@kernel.org>
-To: lorenzo@kernel.org
-Cc: Simon Horman <horms@kernel.org>,
-	andrew+netdev@lunn.ch,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	leto.liu@airoha.com,
+	id 1wc1LR-00000006Ln1-3iS8;
+	Tue, 23 Jun 2026 13:39:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=lh
+	YDY/oGh1x20M8STDeHhSgFj7e0F2TfJzpcUG3q/j8=; b=cA2ZtEN36qzmUHUBYS
+	rgGGDT+6icfpsvztBXkCTVfmpSQPsTFZkLcHNWgFfqPM56nn6I4cUhxRq7kPgjVE
+	f34ZiBu9nd7LVRi/izIGo/qh+Po0iqdl3VJfXJHCg2D1gZkTutVnYVmvqFCzlkz/
+	bZUuNyduUDJBgXIaQIU/JnMmM=
+Received: from localhost.localdomain (unknown [])
+	by gzga-smtp-mtada-g0-4 (Coremail) with SMTP id _____wD3H5FkjDpqLOjlFQ--.48199S2;
+	Tue, 23 Jun 2026 21:38:46 +0800 (CST)
+From: Haoxiang Li <haoxiang_li2024@163.com>
+To: andersson@kernel.org,
+	mathieu.poirier@linaro.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	olivia.wen@mediatek.com
+Cc: linux-remoteproc@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	netdev@vger.kernel.org,
-	brown.huang@airoha.com
-Subject: Re: [PATCH net v2] net: airoha: Add retry mechanism to airoha_qdma_set_trtcm_param()
-Date: Tue, 23 Jun 2026 11:53:42 +0100
-Message-ID: <20260623105341.1076863-3-horms@kernel.org>
-X-Mailer: git-send-email 2.54.0
-In-Reply-To: <20260622-airoha_qdma_set_trtcm_param-retry-fix-v2-1-95a83ac99dbd@kernel.org>
-References: <20260622-airoha_qdma_set_trtcm_param-retry-fix-v2-1-95a83ac99dbd@kernel.org>
+	Haoxiang Li <haoxiang_li2024@163.com>
+Subject: [PATCH] remoteproc: mediatek: Unregister init IPI on share buffer failure
+Date: Tue, 23 Jun 2026 21:38:44 +0800
+Message-Id: <20260623133844.2255072-1-haoxiang_li2024@163.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: _____wD3H5FkjDpqLOjlFQ--.48199S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7Zr4rCryUCryUXF1xtFW5ZFb_yoW8XF13pa
+	43Kay3Kr48KFsrXrsrC3W8Z3W3ua18G3y29w4fJwnFvw1UJr92qas5tFyjvFWDCFWxXFW3
+	ZFWaqrWruFWUCaUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0piMGQDUUUUU=
+X-Originating-IP: [240e:604:311:e68d:298a:1bbc:177b:53c8]
+X-CM-SenderInfo: xkdr5xpdqjszblsqjki6rwjhhfrp/xtbC7gZl02o6jGbYUgAA3u
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260623_063918_332998_04655EB1 
+X-CRM114-Status: UNSURE (   9.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,142 +77,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is an AI-generated review of your patch. The human sending this
-email has considered the AI review valid, or at least plausible.
-Full review at: https://sashiko.dev
+scp_rproc_init() registers the SCP init IPI before allocating the IPI
+share buffer. If the share buffer allocation fails, the error path jumps
+directly to release_dev_mem and leaves the init IPI registered.
 
-Simon says: I'd appreciate it if you could look over the first two issues
-            flagged below in the context of this patch. While the third
-	    and final issue looks like it is in possible separate follow-up
-	    territory.
+Route that error path through the IPI unregister label so the registered
+handler is cleared before unwinding the remaining resources.
 
+Fixes: c08a82494500 ("remoteproc: mediatek: Support setting DRAM and IPI shared buffer sizes")
+Signed-off-by: Haoxiang Li <haoxiang_li2024@163.com>
 ---
-net: airoha: Add retry mechanism to airoha_qdma_set_trtcm_param()
-    
-This patch introduces a retry loop to airoha_qdma_set_trtcm_param() to mitigate
-bus timeouts when configuring QDMA parameters. It attempts to verify that the
-configuration is correctly applied to the hardware.
+ drivers/remoteproc/mtk_scp.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-> index 3370c3df7c107..bb5c0599a4eed 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -2673,14 +2673,30 @@ static int airoha_qdma_set_trtcm_param(struct airoha_qdma *qdma, int channel,
->  		     FIELD_PREP(TRTCM_METER_GROUP_MASK, group) |
->  		     FIELD_PREP(TRTCM_PARAM_INDEX_MASK, idx) |
->  		     FIELD_PREP(TRTCM_PARAM_RATE_TYPE_MASK, mode);
-> +	int i;
->  
-> -	airoha_qdma_wr(qdma, REG_TRTCM_DATA_LOW(addr), val);
-> -	airoha_qdma_wr(qdma, REG_TRTCM_CFG_PARAM(addr), config);
-> +	for (i = 0; i < 100; i++) {
-> +		u32 data;
->  
-> -	return read_poll_timeout(airoha_qdma_rr, val,
-> -				 val & TRTCM_PARAM_RW_DONE_MASK,
-> -				 USEC_PER_MSEC, 10 * USEC_PER_MSEC, true,
-> -				 qdma, REG_TRTCM_CFG_PARAM(addr));
-> +		airoha_qdma_wr(qdma, REG_TRTCM_DATA_LOW(addr), val);
-> +		wmb();
-> +		airoha_qdma_wr(qdma, REG_TRTCM_CFG_PARAM(addr), config);
-> +
-> +		if (read_poll_timeout(airoha_qdma_rr, data,
-> +				      data & TRTCM_PARAM_RW_DONE_MASK,
-> +				      USEC_PER_MSEC, 10 * USEC_PER_MSEC,
-> +				      true, qdma, REG_TRTCM_CFG_PARAM(addr)))
-> +			return -ETIMEDOUT;
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index 85a74c9ec521..648b69f96624 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -1227,7 +1227,7 @@ static struct mtk_scp *scp_rproc_init(struct platform_device *pdev,
+ 	if (!scp->share_buf) {
+ 		dev_err(dev, "Failed to allocate IPI share buffer\n");
+ 		ret = -ENOMEM;
+-		goto release_dev_mem;
++		goto unregister_ipi;
+ 	}
+ 
+ 	init_waitqueue_head(&scp->run.wq);
+@@ -1248,9 +1248,10 @@ static struct mtk_scp *scp_rproc_init(struct platform_device *pdev,
+ 
+ remove_subdev:
+ 	scp_remove_rpmsg_subdev(scp);
+-	scp_ipi_unregister(scp, SCP_IPI_INIT);
+ 	kfree(scp->share_buf);
+ 	scp->share_buf = NULL;
++unregister_ipi:
++	scp_ipi_unregister(scp, SCP_IPI_INIT);
+ release_dev_mem:
+ 	scp_unmap_memory_region(scp);
+ 	for (i = 0; i < SCP_IPI_MAX; i++)
+-- 
+2.25.1
 
-[Severity: High]
-If a bus timeout causes the write phase's read_poll_timeout() in
-airoha_qdma_set_trtcm_param() to fail, this immediately returns -ETIMEDOUT,
-aborting the 100-iteration retry loop.
-
-Doesn't this defeat the mitigation?
-
-> +
-> +		if (airoha_qdma_get_trtcm_param(qdma, channel, addr, param,
-> +						mode, &data, NULL))
-> +			continue;
-
-[Severity: High]
-If airoha_qdma_get_trtcm_param() times out during the verification phase, it
-indicates the hardware hasn't finished the read command (DONE bit is still 0).
-
-The continue statement then immediately starts the next iteration, writing new
-commands to DATA_LOW and CFG_PARAM.
-
-Can writing to command registers while the hardware state machine is actively
-busy violate hardware protocols and lead to unrecoverable lockups?
-
-> +
-> +		if (data == val)
-> +			return 0;
-
-[Severity: High]
-This isn't a bug introduced by this patch, but if the bus drops the command
-write to REG_TRTCM_CFG_PARAM, the hardware never executes the command and the
-TRTCM_PARAM_RW_DONE_MASK bit remains set from the previous operation.
-
-Consequently, read_poll_timeout() returns an immediate false success.
-
-If both the set and get command writes are dropped by the bus, the get
-operation will read back the newly written DATA_LOW register value.
-
-Will the data == val check evaluate to true and falsely report success without
-the hardware ever processing the configuration?
-
-> +	}
-> +
-> +	return -EBUSY;
->  }
->  
-
-[ ... ]
-
->  static int airoha_qdma_set_trtcm_config(struct airoha_qdma *qdma, int channel,
->  					u32 addr, enum trtcm_mode_type mode,
->  					bool enable, u32 enable_mask)
->  {
->  	u32 val;
->  
->  	if (airoha_qdma_get_trtcm_param(qdma, channel, addr, TRTCM_MISC_MODE,
->  					mode, &val, NULL))
->  		return -EINVAL;
-
-[Severity: High]
-Standalone calls to airoha_qdma_get_trtcm_param(), like this one in
-airoha_qdma_set_trtcm_config(), lack a retry loop entirely.
-
-Does this leave read-modify-write cycles fully vulnerable to the same bus
-timeouts the patch attempts to mitigate?
-
-[Severity: High]
-This isn't a bug introduced by this patch, but the patch mitigates bus
-timeouts in airoha_qdma_set_trtcm_param() while entirely missing
-airoha_qdma_set_rl_param().
-
-The latter performs the exact same write-and-poll sequence on identical QDMA
-configuration registers:
-
-drivers/net/ethernet/airoha/airoha_eth.c:airoha_qdma_set_rl_param() {
-    ...
-    return read_poll_timeout(..., val & RATE_LIMIT_PARAM_RW_DONE_MASK, ...);
-}
-
-If bus timeouts affect QDMA access broadly as stated in the commit message, are
-the rate-limiting configuration paths randomly vulnerable to the same failures?
-
-[Severity: High]
-This isn't a bug introduced by this patch, but in airoha_tc_remove_htb_queue(),
-hardware teardown incorrectly uses queue + 1 instead of queue:
-
-drivers/net/ethernet/airoha/airoha_eth.c:airoha_tc_remove_htb_queue() {
-    ...
-    airoha_qdma_set_tx_rate_limit(netdev, queue + 1, 0, 0);
-    ...
-}
-
-Does this leave the removed queue's hardware limits permanently active
-(resource leak) and inadvertently disable the rate limits for queue + 1,
-corrupting the QoS state of another active channel?
 
