@@ -4,65 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94A4ACD4F26
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2026 08:07:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C75FCDB47F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2026 08:17:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
+	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S7X4nosi8hgJdn6rn+Z4ZHcOUo1kxZv8E9Yj83tJZkM=; b=lWlfHcp+THfkAc+dLki+KFDwew
-	FYvMmpl0ENieKTs3RcS7k9EMoXZqU8YcUDQgK8vklhbk/VNfmwHVobuFjmTwnD7NocPW+Sagqf5vt
-	QucCDV3PQAeILvsTzJt6ycWEDC8DpLaKtiSoM33v1L5mqIY+G09YqHifwnhhw8TddMLCPqNJDbpKB
-	ockzwjB+uD3CMipBlqoypXQbGnqlXTN7h6tQwIQn80GBxNK0/DKBBaqyhpk5e5tSZXFSha1gC+gi3
-	w+oXIXR/HSkH8eeQacsYU58IvmA3gMGY+bN/QYayw+Gq+3JmzevntK3ppdSPTkqrOIH/dglXyolC8
-	rKww9/VQ==;
+	bh=5EMDnAmzJXMhptfde38v32KWV6AtxnMi0N9/i1Gt4W0=; b=EsuJiEsmNVrF21DnHmC/ULp1FZ
+	enPMHOoBXgQhu7jRBhhx6FqPwN6WNoSkBkxAxpNrGORHoopd/lh/iMzjpWJom5uuMvdmRArrriQV8
+	4ElPdpWUHN/v2/wYw6xzVqcmpKTDbOBX6sJT7F5u7MLpbPa40zT+dGwvJdkN56fZ0nD7BUSi7T5c3
+	ZcTR/te4qsBWQVNS/DMwM1ddPs9HtYfFNQhnW/dy9B7mReIH/uBRF/bVZXCi0trb/kULp2ef4D9sS
+	BzxOX70IEs59PvV0HznAXkVbmvCD02bj7wYhpeZORYRU4NeK0DMv7DSPx11ZudHPc8LhNj3FRwGN4
+	O7rf0XaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbwAI-00000005soq-2bJ4;
-	Tue, 23 Jun 2026 08:07:26 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wbwKK-00000005tdy-1MaW;
+	Tue, 23 Jun 2026 08:17:48 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbw9b-00000005sZr-2cVm;
-	Tue, 23 Jun 2026 08:06:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1782202001;
-	bh=05sDxDxhH+7UoIrgdabJtlXr867z5VKROPNR6f1UT4I=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=owfJ3Ygz4Dlx/2o5TREY+3za/AJzA8mphrSFgVyPQoi9HTGiZZrHV2+/ej3XnEFZh
-	 +CTa6YjU6GHZzR4dtdFA1ZoPuNObDNh8ZH7kFeGjvHwsW4vGaG5sFY/a1caDLRQ5Z4
-	 og32giKwkqQ7CGZ3AxAgTzH3TCaZHGyCMWCc0FHZIJFpOog4tLPexsrCY7Oz3R1NQr
-	 e98SP4UH8O55uMFya5lLafWNDUqpmF2Jkv3T+33QmFXN0fDKAdFTn8ocZ0Wfrw2eH9
-	 Cy0hSS++zxNj8eVk8OHFsJzuWlpTEO0iB58eEfYeID8Yc6YWP/MfDFrPuRQhHlHJvo
-	 cM3ElXnOyX75Q==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 324C117E10FC;
-	Tue, 23 Jun 2026 10:06:41 +0200 (CEST)
-Message-ID: <24670280-508d-4794-b5f4-1dda825d9289@collabora.com>
-Date: Tue, 23 Jun 2026 10:06:41 +0200
+	id 1wbwKI-00000005tbd-2qyG;
+	Tue, 23 Jun 2026 08:17:46 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 12A17445DF;
+	Tue, 23 Jun 2026 08:17:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id CF296C2BCC7;
+	Tue, 23 Jun 2026 08:17:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1782202666;
+	bh=D3ikDb5iz89iLJ6uZVHjbY5rTXXDcPWKbnxCOlfwCxY=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=sB7yP9RNObQqWhaVLpDCvY7cvc+6AxcZR4sQjKMgQyI4swkz+YbKCzfI0ga5Cb0Tn
+	 DZJtH1vHWwPM57mOCc+1HgNs6rGd64N1DhQQWVNo2CyWnNZhluq9qengr8uOuaN3+H
+	 82ESZTEMh4bswhDZJDY9n5ELMT8Uqwcwrmx3hSmCqMfToRnXOSSM0nH0xFAU4T0Doh
+	 TBZxc2j8Xxgo4ehtMyWaIlAX2aFq1+ML9pnZWhpJlKoWsfRILuQxCXW1HFsKCllrtF
+	 pSVZag6PlbvFs8ag+0u7CTUfcGFZHwWdvtqXakWV4g9gr071HI3P/xmqtJjZ7DkvGX
+	 2gq+MxarE+6ow==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BD1B1CD4F26;
+	Tue, 23 Jun 2026 08:17:45 +0000 (UTC)
+From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
+Date: Tue, 23 Jun 2026 11:16:15 +0300
+Subject: [PATCH v4 3/4] mfd: mt6397-core: add mt6323 AUXADC support
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] pinctrl: mediatek: Restore PINCTRL_MT8189 to tristate
-To: Justin Yeh <justin.yeh@mediatek.com>, Sean Wang <sean.wang@kernel.org>,
- Linus Walleij <linusw@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-References: <20260529100308.51271-1-justin.yeh@mediatek.com>
- <20260529100308.51271-2-justin.yeh@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20260529100308.51271-2-justin.yeh@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260623_010643_839764_7F2617C9 
-X-CRM114-Status: GOOD (  16.52  )
+Message-Id: <20260623-mt6323-adc-v4-3-299680ad3194@protonmail.com>
+References: <20260623-mt6323-adc-v4-0-299680ad3194@protonmail.com>
+In-Reply-To: <20260623-mt6323-adc-v4-0-299680ad3194@protonmail.com>
+To: Jonathan Cameron <jic23@kernel.org>, 
+ David Lechner <dlechner@baylibre.com>, 
+ =?utf-8?q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, 
+ Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Lee Jones <lee@kernel.org>
+Cc: linux-iio@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Ben Grisdale <bengris32@protonmail.ch>, 
+ Roman Vivchar <rva333@protonmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1782202663; l=903;
+ i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
+ bh=AtpQuSBNMLgpeH1t4ADFZid08i2lKNvKchWt3/88KCc=;
+ b=pvE97SUJY2yfambUQ9dGunJxx+QgKQiIqH/xCmgUn891WogzJnyhchFptKLzkyJu/Kjlz0vwH
+ 2SsdrONzV+ZA+mTS36eaCHY6dahR+9HeLLop8Fw5v2XaooNYVRnP5P1
+X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
+ pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
+X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
+ auth_id=777
+X-Original-From: Roman Vivchar <rva333@protonmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,50 +88,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/29/26 12:02, Justin Yeh wrote:
-> Under the GKI + vendor_dlkm model, vendor-specific pinctrl cannot be
-> built into the GKI vmlinux. Upstream's recent switch of PINCTRL_MT8189
-> to bool prevents building as a loadable module, which breaks DDK module
-> usage. Restore tristate so MT8189 pinctrl can be packaged as a kernel
-> module in vendor_dlkm.
-> 
-> Signed-off-by: Justin Yeh <justin.yeh@mediatek.com>
+From: Roman Vivchar <rva333@protonmail.com>
 
-The MODULE_LICENSE change shall come before this one.
+The mt6323 PMIC includes an AUXADC. Register the AUXADC in the mt6323
+devices array to allow the corresponding driver to probe using compatible
+string.
 
-Besides - since there's no problem in having the pinctrl drivers as module for
-MT8189, I imagine that this is analogously true for all (or most of) the others.
+Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
+Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+---
+ drivers/mfd/mt6397-core.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Looks like getting those to build as modules is trivial, too - so, can you at
-this point please do the same for all of the MediaTek pinctrl drivers that are
-trivial to enable as tristate?
+diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
+index 3e58d0764c7e..013b0857fb54 100644
+--- a/drivers/mfd/mt6397-core.c
++++ b/drivers/mfd/mt6397-core.c
+@@ -125,6 +125,9 @@ static const struct resource mt6323_pwrc_resources[] = {
+ 
+ static const struct mfd_cell mt6323_devs[] = {
+ 	{
++		.name = "mt6323-auxadc",
++		.of_compatible = "mediatek,mt6323-auxadc",
++	}, {
+ 		.name = "mt6323-rtc",
+ 		.num_resources = ARRAY_SIZE(mt6323_rtc_resources),
+ 		.resources = mt6323_rtc_resources,
 
-P.S.: After reordering the commits, this one is
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-Thanks,
-Angelo
-
-> ---
->   drivers/pinctrl/mediatek/Kconfig | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
-> index 4819617d9368..a75434e7e989 100644
-> --- a/drivers/pinctrl/mediatek/Kconfig
-> +++ b/drivers/pinctrl/mediatek/Kconfig
-> @@ -270,7 +270,7 @@ config PINCTRL_MT8188
->   	  map specific eint which doesn't have real gpio pin.
->   
->   config PINCTRL_MT8189
-> -        bool "MediaTek MT8189 pin control"
-> +        tristate "MediaTek MT8189 pin control"
->           depends on OF
->           depends on ARM64 || COMPILE_TEST
->           default ARM64 && ARCH_MEDIATEK
+-- 
+2.54.0
 
 
 
