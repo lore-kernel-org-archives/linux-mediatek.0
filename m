@@ -4,58 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20B9BCDB470
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2026 08:05:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A62ACDB470
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2026 08:06:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xYLzBlBjZFRkUIbdK+xq8C2X2JxyFRKBiz+YWv1njwg=; b=Ly8Jf1B6YP83P+IVZXwN/sTdy9
-	75i3OlvLH9B8pjIri17eTk4HWYIT10zrHCp7mvSZ8+xUQITRABxZQHkRUAV70f1ojXJbJ+yq+O/rU
-	9SFtUSbaWdUt3hcgOFTBNpAUyjXOggIPSfORQov2vMV5jM2BEvSgqnkN17Ovwo7IETtzfP8BsL/EP
-	l9eY7dSaKe5rXbaEglSanc4tKWLW14auBaASjd6VVEJyRfSQvInhMEyRAJ9zWijQTrVkcoOhLE72E
-	O4/xattmIz9VZcDjGKArdvlUO6SptyAl4JKRBJ9O+X14VEgZkKEb7RC26LIJhimXVS3K64IrTchzP
-	OYb8quaA==;
+	bh=qb/0L+XWevZKmJgu62aG/pLlK7I7Cy/I4R4hq95xPRg=; b=eJAGZG8ZTyLUz0Kqj03WQ5OTBJ
+	cdm1eDkDPkNB8+72wM08+AKCPAl8PPEgZ9ojhb57eDsd4QGAf2sjet4YOnm04xFSw3uHsIZfApyCZ
+	Wrce70Gndwl31CQFqbEQb6Ec0q9HBkmcVBSRTxeiE917H0/7e8rgXz0VDKQ3Z/5DRY92iqjcMaJeM
+	eehEdb1nwpWUAuMPUZSdqhEG9+rF/Is5HE7loyOaaxPDoEKYwV8wlWNjXFbeHx+a8iQFG39fUrE1M
+	Lj/AZZD/S3I8IOsuz6IZxjqp5hNlnnIRtRRVo24Bd3azad05b3BlhcdhMyQ1bxNByf72S7wPVgqr4
+	ryuBOfMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbw8b-00000005sSv-0Xh0;
-	Tue, 23 Jun 2026 08:05:41 +0000
-Received: from mx3.molgen.mpg.de ([141.14.17.11])
+	id 1wbw9b-00000005saT-2LJf;
+	Tue, 23 Jun 2026 08:06:43 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbw8X-00000005sSK-3N8p
-	for linux-mediatek@lists.infradead.org;
-	Tue, 23 Jun 2026 08:05:40 +0000
-Received: from [141.14.13.172] (g427.RadioFreeInternet.molgen.mpg.de [141.14.13.172])
+	id 1wbw9Y-00000005sZ4-2KHd;
+	Tue, 23 Jun 2026 08:06:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1782201997;
+	bh=CFLoo+JElQcgGHIJ+5atyHGSTdHrRYHY0TXbGVskXGE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ATvV7J3PTiZSoi1eS2Z0yf2PLjDqV+7SoTJH2wfImUJxkhPq9Mt6uh5KaKTYMpil8
+	 EX2II1oU//x4nZgLUJot2ljtla8+/IJDMG0jypRnQDgN7cqk6g6e4nRMw+ulk2V67/
+	 i42quZxP9GleHrukZo+loXRmxHOmE2MtnkhWWY2dJ5X9bGIMoLm033l10nxS/qwkoG
+	 1vJfRl4HvceYfi5bGNEUGqmw1AJSbSNVo4et+8w/Mh13hA3jDcpGPIZMfv8H2NWO7g
+	 4Ids1AOXreutLps+CXnaDBAv1ScEPR+K9oRBuNkxRzoRt3Abvf9yNOpfGdnSavP48x
+	 KBlwfOwPgANsw==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
-	(Authenticated sender: pmenzel)
-	by mx.molgen.mpg.de (Postfix) with ESMTPSA id 843C84C28871A6;
-	Tue, 23 Jun 2026 10:05:29 +0200 (CEST)
-Message-ID: <6e44158f-7bc7-4568-ab03-2bc215c2c679@molgen.mpg.de>
-Date: Tue, 23 Jun 2026 10:05:27 +0200
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B91AE17E023C;
+	Tue, 23 Jun 2026 10:06:36 +0200 (CEST)
+Message-ID: <74f3eec2-278a-417e-b2af-42cb4c38fa94@collabora.com>
+Date: Tue, 23 Jun 2026 10:06:36 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/2] Bluetooth: btmtk: Add MT7928 support
-To: Chris Lu <chris.lu@mediatek.com>
-Cc: Marcel Holtmann <marcel@holtmann.org>,
- Johan Hedberg <johan.hedberg@gmail.com>,
- Luiz Von Dentz <luiz.dentz@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
- Will Lee <will-cy.Lee@mediatek.com>, SS Wu <ss.wu@mediatek.com>,
- Steve Lee <steve.lee@mediatek.com>, linux-bluetooth@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20260623034121.691031-1-chris.lu@mediatek.com>
- <20260623034121.691031-3-chris.lu@mediatek.com>
+Subject: Re: [PATCH 0/2] pmdomain: mediatek: Enable module support for
+ mtk-scpsys
+To: Justin Yeh <justin.yeh@mediatek.com>, Ulf Hansson <ulfh@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20260603051200.1163226-1-justin.yeh@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20260623034121.691031-3-chris.lu@mediatek.com>
+In-Reply-To: <20260603051200.1163226-1-justin.yeh@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260623_010538_316519_B8D5AF6B 
-X-CRM114-Status: GOOD (  32.36  )
+X-CRM114-CacheID: sfid-20260623_010640_792283_AA72544B 
+X-CRM114-Status: GOOD (  21.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,498 +77,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dear Chris,
-
-
-Thank you for your patch.
-
-Am 23.06.26 um 05:41 schrieb Chris Lu:
-> Add support for MT7928 (internal device ID is MT7935) which requires
-> additional firmware (CBMCU firmware) loading before Bluetooth firmware.
+On 6/3/26 07:11, Justin Yeh wrote:
+> This series enables the MTK_SCPSYS driver to be built as a loadable
+> module for GKI (Generic Kernel Image) compliance.
 > 
-> CBMCU is a new component on MT7928 to handle common part shared across
-> the combo chip (Wi-Fi/Bluetooth's subsystem), providing a better user
-> experience through improved coordination between subsystems.
+> This series depends on the following patches currently under review:
+>    - soc: mediatek: Allow MTK_INFRACFG to be built as module
+>    - soc: mediatek: mtk-infracfg: Export symbols for DDK modules
 > 
-> Implement two-phase CBMCU firmware download: Phase 1 loads section with
-> type 0x5 containing global descriptor, section maps and signature data;
-> Phase 2 loads remaining firmware sections. Add retry mechanism for
-> concurrent download protection.
+> The MTK_SCPSYS driver depends on MTK_INFRACFG being available as a
+> module, which is enabled by these prerequisite patches.
 > 
-> After CBMCU firmware loads successfully, the driver continues to load
-> corresponding BT firmware based on device ID through fallthrough to
-> case 0x7922/0x7925.
+> Patch 1 converts the Kconfig option from bool to tristate, allowing
+> the driver to be built as either built-in or as a module.
 > 
-> The firmware(CBMCU_CODE_MT7935_1_1.bin/BT_RAM_CODE_MT7935_1_1_hdr.bin)
-> required for MT7928 will be scheduled for upload to linux-firmware at
-> a later stage.
+> Patch 2 adds MODULE_DESCRIPTION() and converts to module_platform_driver()
+> to complete the modularization and silence modpost warnings.
 > 
-> MT7928 bringup kernel log:
-
-bring-up
-
-> [  475.742336] usb 1-3: New USB device found, idVendor=0e8d, idProduct=7935, bcdDevice= 1.00
-> [  475.742399] usb 1-3: New USB device strings: Mfr=5, Product=6, SerialNumber=7
-> [  475.742436] usb 1-3: Product: Wireless_Device
-> [  475.742466] usb 1-3: Manufacturer: MediaTek Inc.
-> [  475.742495] usb 1-3: SerialNumber: 000000000
-> [  475.766697] Bluetooth: hci1: CBMCU Version: 0x00000000, Build Time: 20260601T161751+0800
-> [  476.144693] Bluetooth: hci1: CBMCU firmware download completed
-> [  476.190083] Bluetooth: hci1: HW/SW Version: 0x00000000, Build Time: 20260527000816
-
-Can we improve these logs to include the device name and to have one 
-line (or two lines) less?
-
-     Bluetooth: MT7928: CBMCU firmware <name> (version: 0x<short>, build 
-time: 20260601T161751+0800) update complete
-     Bluetooth: MT7928: device firmware updated to <name>
-
-The second line is unrelated to this change.
-
-> [  479.073470] Bluetooth: hci1: Device setup in 3238661 usecs
-> [  479.073489] Bluetooth: hci1: HCI Enhanced Setup Synchronous Connection command is advertised, but not supported.
-> [  479.177477] Bluetooth: hci1: AOSP extensions version v2.00
-> [  479.177506] Bluetooth: hci1: AOSP quality report is supported
-> [  479.178814] Bluetooth: MGMT ver 1.23
+> Together these changes allow the MediaTek SCPSYS power domain driver
+> to support modern Android GKI/vendor_dlkm module loading requirements
+> while maintaining backward compatibility with the traditional built-in
+> configuration.
 > 
-> Signed-off-by: Chris Lu <chris.lu@mediatek.com>
-> ---
->   drivers/bluetooth/btmtk.c | 352 +++++++++++++++++++++++++++++++++++++-
->   drivers/bluetooth/btmtk.h |   3 +
->   2 files changed, 354 insertions(+), 1 deletion(-)
+
+The mtk-scpsys driver should disappear, really.
+This is something that was rewritten entirely and is called mtk-pm-domains now.
+
+This driver still contains support for some very old SoCs that were not migrated
+to the new mtk-pm-domains driver, but seriously, the strategy here should be to
+migrate those and let the mtk-scpsys driver be there just as a legacy one to not
+break the ABI for older devicetrees.
+
+Converting this as a module is probably a bad idea, because this one didn't get
+any real update for years now, and I'm not sure what is going to break by doing
+so - neither I have any way of testing it.
+
+I can say Reviewed-by if you can test booting MT2701, MT2712, MT7622, MT7623A
+(all of them, really) on a build that has this driver as module and check that
+all functionality is ok... but I guess you may also have difficulties in doing
+that (do you even have access to old devices with those SoCs?).
+
+Cheers,
+Angelo
+
+> Justin Yeh (2):
+>    pmdomain: mediatek: Convert MTK_SCPSYS to tristate
+>    pmdomain: mediatek: Add MODULE_DESCRIPTION to mtk-scpsys
 > 
-> diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-> index 21c08ee1cdbf..dcbd431cc364 100644
-> --- a/drivers/bluetooth/btmtk.c
-> +++ b/drivers/bluetooth/btmtk.c
-> @@ -21,6 +21,12 @@
->   #define MTK_FW_ROM_PATCH_SEC_MAP_SIZE	64
->   #define MTK_SEC_MAP_COMMON_SIZE	12
->   #define MTK_SEC_MAP_NEED_SEND_SIZE	52
-> +#define MTK_SEC_MAP_LENGTH_SIZE	4
-> +#define MTK_SEC_CBMCU_DESC	0x5
-> +
-> +/* CBMCU WMT command flags */
-> +#define BTMTK_CBMCU_FLAG_QUERY_STATUS	0xF0
-> +#define BTMTK_CBMCU_FLAG_ENABLE_PATCH	0xF1
->   
->   /* It is for mt79xx iso data transmission setting */
->   #define MTK_ISO_THRESHOLD	264
-> @@ -120,6 +126,11 @@ void btmtk_fw_get_filename(char *buf, size_t size, u32 dev_id, u32 fw_ver,
->   		snprintf(buf, size,
->   			 "mediatek/mt%04x/BT_RAM_CODE_MT%04x_1_%x_hdr.bin",
->   			 dev_id & 0xffff, dev_id & 0xffff, (fw_ver & 0xff) + 1);
-> +	/* MT7928 */
-> +	else if (dev_id == 0x7935)
-> +		snprintf(buf, size,
-> +			 "mediatek/mt7928/BT_RAM_CODE_MT%04x_1_1_hdr.bin",
-> +			 dev_id & 0xffff);
->   	else if (dev_id == 0x7961 && fw_flavor)
->   		snprintf(buf, size,
->   			 "mediatek/BT_RAM_CODE_MT%04x_1a_%x_hdr.bin",
-> @@ -734,6 +745,7 @@ static int btmtk_usb_hci_wmt_sync(struct hci_dev *hdev,
->   			status = BTMTK_WMT_ON_UNDONE;
->   		break;
->   	case BTMTK_WMT_PATCH_DWNLD:
-> +	case BTMTK_WMT_CBMCU_DWNLD:
->   		if (wmt_evt->whdr.flag == 2)
->   			status = BTMTK_WMT_PATCH_DONE;
->   		else if (wmt_evt->whdr.flag == 1)
-> @@ -870,6 +882,333 @@ static u32 btmtk_usb_reset_done(struct hci_dev *hdev)
->   	return val & MTK_BT_RST_DONE;
->   }
->   
-> +static int btmtk_cbmcu_patch_status(struct hci_dev *hdev,
-> +				    wmt_cmd_sync_func_t wmt_cmd_sync,
-> +				    u8 *patch_status)
-> +{
-> +	struct btmtk_hci_wmt_params wmt_params;
-> +	int status, err, retry = 20;
-> +
-> +	do {
-> +		wmt_params.op = BTMTK_WMT_CBMCU_DWNLD;
-> +		wmt_params.flag = BTMTK_CBMCU_FLAG_QUERY_STATUS;
-> +		wmt_params.dlen = 0;
-> +		wmt_params.data = NULL;
-> +		wmt_params.status = &status;
-> +
-> +		err = wmt_cmd_sync(hdev, &wmt_params);
-> +		if (err < 0) {
-> +			bt_dev_err(hdev, "Failed to query CBMCU patch status (%d)", err);
-> +			return err;
-> +		}
-> +
-> +		*patch_status = (u8)status;
-> +
-> +		if (*patch_status == BTMTK_WMT_PATCH_PROGRESS) {
-> +			msleep(100);
-> +			retry--;
-> +		} else {
-> +			break;
-> +		}
-> +	} while (retry > 0);
-> +
-> +	return 0;
-> +}
-> +
-> +static int btmtk_query_cbmcu_section(struct hci_dev *hdev,
-> +				     wmt_cmd_sync_func_t wmt_cmd_sync,
-> +				     u8 cbmcu_type,
-> +				     const u8 *section_map,
-> +				     u32 cert_len)
-> +{
-> +	struct btmtk_hci_wmt_params wmt_params;
-> +	u8 cmd[64];
-> +	int status, err;
-> +
-> +	cmd[0] = 0;
-> +	cmd[1] = cbmcu_type;
-> +
-> +	if (cbmcu_type == 0)
-> +		put_unaligned_le32(cert_len, &cmd[2]);
-> +	else
-> +		memcpy(&cmd[2], section_map, MTK_SEC_MAP_NEED_SEND_SIZE);
-> +
-> +	wmt_params.op = BTMTK_WMT_CBMCU_DWNLD;
-> +	wmt_params.flag = 0;
-> +	wmt_params.dlen = cbmcu_type ?
-> +		MTK_SEC_MAP_NEED_SEND_SIZE + 2 :
-> +		MTK_SEC_MAP_LENGTH_SIZE + 2;
-> +	wmt_params.data = cmd;
-> +	wmt_params.status = &status;
-> +
-> +	err = wmt_cmd_sync(hdev, &wmt_params);
-> +	if (err < 0) {
-> +		bt_dev_err(hdev, "Failed to query CBMCU section (%d)", err);
-> +		return err;
-> +	}
-> +
-> +	/* Query should return UNDONE status for successful section query */
-> +	if (status != BTMTK_WMT_PATCH_UNDONE) {
-> +		bt_dev_err(hdev, "CBMCU section query status error (%d)", status);
-> +		return -EIO;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int btmtk_download_cbmcu_section(struct hci_dev *hdev,
-> +					wmt_cmd_sync_func_t wmt_cmd_sync,
-> +					const u8 *fw_data,
-> +					u32 dl_size)
-> +{
-> +	struct btmtk_hci_wmt_params wmt_params;
-> +	u32 sent_len, total_size = dl_size;
-> +	int err;
-> +
-> +	wmt_params.op = BTMTK_WMT_CBMCU_DWNLD;
-> +	wmt_params.status = NULL;
-> +
-> +	while (dl_size > 0) {
-> +		sent_len = min_t(u32, 250, dl_size);
-> +
-> +		if (dl_size == total_size)
-> +			wmt_params.flag = BTMTK_WMT_PKT_START;
-> +		else if (dl_size == sent_len)
-> +			wmt_params.flag = BTMTK_WMT_PKT_END;
-> +		else
-> +			wmt_params.flag = BTMTK_WMT_PKT_CONTINUE;
-> +
-> +		wmt_params.dlen = sent_len;
-> +		wmt_params.data = fw_data;
-> +
-> +		err = wmt_cmd_sync(hdev, &wmt_params);
-> +		if (err < 0) {
-> +			bt_dev_err(hdev, "Failed to send CBMCU section data (%d)", err);
-> +			return err;
-> +		}
-> +
-> +		dl_size -= sent_len;
-> +		fw_data += sent_len;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int btmtk_enable_cbmcu_patch(struct hci_dev *hdev,
-> +				    wmt_cmd_sync_func_t wmt_cmd_sync)
-> +{
-> +	struct btmtk_hci_wmt_params wmt_params;
-> +	int err;
-> +
-> +	wmt_params.op = BTMTK_WMT_CBMCU_DWNLD;
-> +	wmt_params.flag = BTMTK_CBMCU_FLAG_ENABLE_PATCH;
-> +	wmt_params.dlen = 0;
-> +	wmt_params.data = NULL;
-> +	wmt_params.status = NULL;
-> +
-> +	err = wmt_cmd_sync(hdev, &wmt_params);
-> +	if (err < 0) {
-> +		bt_dev_err(hdev, "Failed to enable CBMCU patch (%d)", err);
-> +		return err;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int btmtk_load_cbmcu_firmware(struct hci_dev *hdev,
-> +				     const char *fwname,
-> +				     wmt_cmd_sync_func_t wmt_cmd_sync)
-> +{
-> +	struct btmtk_patch_header *hdr;
-> +	struct btmtk_global_desc *globaldesc;
-> +	struct btmtk_section_map *sectionmap;
-> +	const struct firmware *fw;
-> +	const u8 *fw_ptr;
-> +	u8 *cert_buf = NULL;
-> +	u32 section_num, section_offset, dl_size, cert_len;
-> +	int i, err;
-> +
-> +	err = request_firmware(&fw, fwname, &hdev->dev);
-> +	if (err < 0) {
-> +		bt_dev_err(hdev, "Failed to load CBMCU firmware file %s (%d)",
-> +			   fwname, err);
-> +		return err;
-> +	}
-> +
-> +	if (fw->size < MTK_FW_ROM_PATCH_HEADER_SIZE + MTK_FW_ROM_PATCH_GD_SIZE) {
-> +		bt_dev_err(hdev, "CBMCU firmware too small: size=%zu, min=%u",
-> +			   fw->size,
-> +			   MTK_FW_ROM_PATCH_HEADER_SIZE + MTK_FW_ROM_PATCH_GD_SIZE);
-> +		err = -EINVAL;
-> +		goto err_release_fw;
-> +	}
-> +
-> +	fw_ptr = fw->data;
-> +	hdr = (struct btmtk_patch_header *)fw_ptr;
-> +	globaldesc = (struct btmtk_global_desc *)(fw_ptr + MTK_FW_ROM_PATCH_HEADER_SIZE);
-> +	section_num = le32_to_cpu(globaldesc->section_num);
-> +
-> +	if (fw->size < MTK_FW_ROM_PATCH_HEADER_SIZE + MTK_FW_ROM_PATCH_GD_SIZE +
-> +		       (size_t)MTK_FW_ROM_PATCH_SEC_MAP_SIZE * section_num) {
-> +		bt_dev_err(hdev, "CBMCU firmware truncated: size=%zu, expected=%zu (section_num=%u)",
-> +			   fw->size,
-> +			   MTK_FW_ROM_PATCH_HEADER_SIZE + MTK_FW_ROM_PATCH_GD_SIZE +
-> +			   (size_t)MTK_FW_ROM_PATCH_SEC_MAP_SIZE * section_num,
-> +			   section_num);
-> +		err = -EINVAL;
-> +		goto err_release_fw;
-> +	}
-> +
-> +	bt_dev_info(hdev, "CBMCU Version: 0x%04x%04x, Build Time: %s",
-> +		    le16_to_cpu(hdr->hwver), le16_to_cpu(hdr->swver), hdr->datetime);
-> +
-> +	/* Phase 1: Download section type MTK_SEC_CBMCU_DESC */
-> +	for (i = 0; i < section_num; i++) {
-> +		sectionmap = (struct btmtk_section_map *)
-> +			(fw_ptr + MTK_FW_ROM_PATCH_HEADER_SIZE +
-> +			 MTK_FW_ROM_PATCH_GD_SIZE +
-> +			 MTK_FW_ROM_PATCH_SEC_MAP_SIZE * i);
-> +
-> +		/* Only process MTK_SEC_CBMCU_DESC section in Phase 1 */
-> +		if ((le32_to_cpu(sectionmap->sectype) & 0xFFFF) != MTK_SEC_CBMCU_DESC)
-> +			continue;
-> +
-> +		section_offset = le32_to_cpu(sectionmap->secoffset);
-> +		dl_size = le32_to_cpu(sectionmap->secsize);
-> +
-> +		if (dl_size == 0)
-> +			continue;
-> +
-> +		if (section_offset > fw->size ||
-> +		    dl_size > fw->size - section_offset) {
-> +			bt_dev_err(hdev, "CBMCU Phase 1 section out of bounds");
-> +			err = -EINVAL;
-> +			goto err_release_fw;
-> +		}
-> +
-> +		cert_len = MTK_FW_ROM_PATCH_GD_SIZE +
-> +			   MTK_FW_ROM_PATCH_SEC_MAP_SIZE * section_num +
-> +			   dl_size;
-> +
-> +		/* Query cbmcu section */
-> +		err = btmtk_query_cbmcu_section(hdev, wmt_cmd_sync, 0, NULL,
-> +						cert_len);
-> +		if (err < 0)
-> +			goto err_release_fw;
-> +
-> +		cert_buf = kmalloc(cert_len, GFP_KERNEL);
-> +		if (!cert_buf) {
-> +			err = -ENOMEM;
-> +			goto err_release_fw;
-> +		}
-> +
-> +		/* Copy Global Descriptor + All Section Maps */
-> +		memcpy(cert_buf,
-> +		       fw_ptr + MTK_FW_ROM_PATCH_HEADER_SIZE,
-> +		       MTK_FW_ROM_PATCH_GD_SIZE + MTK_FW_ROM_PATCH_SEC_MAP_SIZE * section_num);
-> +
-> +		/* Copy Phase 1 section data */
-> +		memcpy(cert_buf + MTK_FW_ROM_PATCH_GD_SIZE +
-> +		       MTK_FW_ROM_PATCH_SEC_MAP_SIZE * section_num,
-> +		       fw_ptr + section_offset,
-> +		       dl_size);
-> +
-> +		/* Download Phase 1 section */
-> +		err = btmtk_download_cbmcu_section(hdev, wmt_cmd_sync,
-> +						   cert_buf, cert_len);
-> +		kfree(cert_buf);
-> +		cert_buf = NULL;
-> +
-> +		if (err < 0) {
-> +			bt_dev_err(hdev, "Failed to download CBMCU Phase 1 section (%d)", err);
-> +			goto err_release_fw;
-> +		}
-> +
-> +		break;
-> +	}
-> +
-> +	/* Phase 2: Download other sections (type != MTK_SEC_CBMCU_DESC) */
-> +	for (i = 0; i < section_num; i++) {
-> +		sectionmap = (struct btmtk_section_map *)
-> +			(fw_ptr + MTK_FW_ROM_PATCH_HEADER_SIZE +
-> +			 MTK_FW_ROM_PATCH_GD_SIZE +
-> +			 MTK_FW_ROM_PATCH_SEC_MAP_SIZE * i);
-> +
-> +		/* Skip MTK_SEC_CBMCU_DESC section in Phase 2 */
-> +		if ((le32_to_cpu(sectionmap->sectype) & 0xFFFF) == MTK_SEC_CBMCU_DESC)
-> +			continue;
-> +
-> +		section_offset = le32_to_cpu(sectionmap->secoffset);
-> +		dl_size = le32_to_cpu(sectionmap->bin_info_spec.dlsize);
-> +
-> +		if (dl_size == 0)
-> +			continue;
-> +
-> +		if (section_offset > fw->size ||
-> +		    dl_size > fw->size - section_offset) {
-> +			bt_dev_err(hdev, "CBMCU Phase 2 section %d out of bounds", i);
-> +			err = -EINVAL;
-> +			goto err_release_fw;
-> +		}
-> +
-> +		/* Query cbmcu section */
-> +		err = btmtk_query_cbmcu_section(hdev, wmt_cmd_sync, 1,
-> +						(u8 *)&sectionmap->bin_info_spec,
-> +						0);
-> +		if (err < 0)
-> +			goto err_release_fw;
-> +
-> +		/* Download section data */
-> +		err = btmtk_download_cbmcu_section(hdev, wmt_cmd_sync,
-> +						   fw_ptr + section_offset,
-> +						   dl_size);
-> +		if (err < 0) {
-> +			bt_dev_err(hdev, "Failed to download CBMCU section %d (%d)", i, err);
-> +			goto err_release_fw;
-> +		}
-> +	}
-> +
-> +	bt_dev_info(hdev, "CBMCU firmware download completed");
-> +
-> +err_release_fw:
-> +	release_firmware(fw);
-> +	return err;
-> +}
-> +
-> +static int btmtk_setup_cbmcu_firmware(struct hci_dev *hdev,
-> +				      wmt_cmd_sync_func_t wmt_cmd_sync,
-> +				      u32 dev_id)
-> +{
-> +	char cbmcu_fwname[64];
-> +	u8 patch_status;
-> +	int err;
-> +
-> +	err = btmtk_cbmcu_patch_status(hdev, wmt_cmd_sync, &patch_status);
-> +	if (err < 0)
-> +		return err;
-> +
-> +	bt_dev_dbg(hdev, "CBMCU patch status: 0x%02x", patch_status);
-> +
-> +	if (patch_status != BTMTK_WMT_PATCH_UNDONE)
-> +		return 0;
-> +
-> +	snprintf(cbmcu_fwname, sizeof(cbmcu_fwname),
-> +		 "mediatek/mt7928/CBMCU_CODE_MT%04x_1_1.bin",
-> +		 dev_id & 0xffff);
-> +
-> +	err = btmtk_load_cbmcu_firmware(hdev, cbmcu_fwname, wmt_cmd_sync);
-> +	if (err < 0) {
-> +		bt_dev_err(hdev, "Failed to download CBMCU firmware (%d)", err);
-> +		return err;
-> +	}
-> +
-> +	err = btmtk_enable_cbmcu_patch(hdev, wmt_cmd_sync);
-> +	if (err < 0)
-> +		return err;
-> +
-> +	return 0;
-> +}
-> +
->   int btmtk_usb_subsys_reset(struct hci_dev *hdev, u32 dev_id)
->   {
->   	u32 val;
-> @@ -894,7 +1233,7 @@ int btmtk_usb_subsys_reset(struct hci_dev *hdev, u32 dev_id)
->   		if (err < 0)
->   			return err;
->   		msleep(100);
-> -	} else if (dev_id == 0x7925 || dev_id == 0x6639) {
-> +	} else if (dev_id == 0x7925 || dev_id == 0x6639 || dev_id == 0x7935) {
->   		err = btmtk_usb_uhw_reg_read(hdev, MTK_BT_RESET_REG_CONNV3, &val);
->   		if (err < 0)
->   			return err;
-> @@ -1379,6 +1718,15 @@ int btmtk_usb_setup(struct hci_dev *hdev)
->   	case 0x7668:
->   		fwname = FIRMWARE_MT7668;
->   		break;
-> +	case 0x7935:
-> +		/* Requires CBMCU firmware before BT firmware */
-> +		err = btmtk_setup_cbmcu_firmware(hdev, btmtk_usb_hci_wmt_sync,
-> +						 dev_id);
-> +		if (err < 0) {
-> +			bt_dev_err(hdev, "Failed to set up CBMCU firmware (%d)", err);
-> +			return err;
-> +		}
-> +		fallthrough;
->   	case 0x7922:
->   	case 0x7925:
->   		/*
-> @@ -1596,3 +1944,5 @@ MODULE_FIRMWARE(FIRMWARE_MT7922);
->   MODULE_FIRMWARE(FIRMWARE_MT7961);
->   MODULE_FIRMWARE(FIRMWARE_MT7925);
->   MODULE_FIRMWARE(FIRMWARE_MT7927);
-> +MODULE_FIRMWARE(FIRMWARE_MT7928);
-> +MODULE_FIRMWARE(FIRMWARE_MT7928_CBMCU);
-> diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
-> index 51c18dde0a80..5fe4964b031b 100644
-> --- a/drivers/bluetooth/btmtk.h
-> +++ b/drivers/bluetooth/btmtk.h
-> @@ -9,6 +9,8 @@
->   #define FIRMWARE_MT7961		"mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin"
->   #define FIRMWARE_MT7925		"mediatek/mt7925/BT_RAM_CODE_MT7925_1_1_hdr.bin"
->   #define FIRMWARE_MT7927		"mediatek/mt7927/BT_RAM_CODE_MT6639_2_1_hdr.bin"
-> +#define FIRMWARE_MT7928		"mediatek/mt7928/BT_RAM_CODE_MT7935_1_1_hdr.bin"
-> +#define FIRMWARE_MT7928_CBMCU	"mediatek/mt7928/CBMCU_CODE_MT7935_1_1.bin"
->   
->   #define HCI_EV_WMT 0xe4
->   #define HCI_WMT_MAX_EVENT_SIZE		64
-> @@ -54,6 +56,7 @@ enum {
->   	BTMTK_WMT_RST = 0x7,
->   	BTMTK_WMT_REGISTER = 0x8,
->   	BTMTK_WMT_SEMAPHORE = 0x17,
-> +	BTMTK_WMT_CBMCU_DWNLD = 0x58,
->   };
->   
->   enum {
+>   drivers/pmdomain/mediatek/Kconfig      | 2 +-
+>   drivers/pmdomain/mediatek/mtk-scpsys.c | 5 ++++-
+>   2 files changed, 5 insertions(+), 2 deletions(-)
+> 
 
-gemini/gemini-3.1-pro-preview commented on three things [1].
-
-
-Kind regards,
-
-Paul
-
-
-[1]: 
-https://sashiko.dev/#/message/20260623034121.691031-3-chris.lu%40mediatek.com
 
