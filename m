@@ -4,92 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7617CD4F26
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2026 09:41:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0747CDB46F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2026 10:55:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=LEY4mxBInTV31P334VeLm1dxOKL0Pc0LaCfP0/xhKcY=; b=W9Zsl3Ni3fg8NSETAq8X3Gi6NZ
-	ajmJI8VB7NW6COIB6omQutJi7RZ3DSA4q/Z92++0M0Wb7HtjEZ+saTmXBUmJjyt8TNhNXqv9Iutln
-	wIPdJCQ2rA2KgsTemMMNIfGssvU3CDbdaPUBaZEgxAatxU8cZtDJyy74xxcZwbDe641OSY5PTimVc
-	lhLQQrIbOg6SlKMBgPEjRuhhSmntGy7YEVtr7U6MmNUY+LaetSs4mWI3OSaAsT2KYCAD5lfD5CCdh
-	SfsJIzOZCHiESj8HBknqkBojH4CMCJDqB2mpcZ46s51gGyJ8TV2Rhdrx9gfKPA+soknIK4ZqamTQ0
-	wjxZU6Sw==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lAKwacoVI7uad9g+jIiH9ookXbWgdh+4rlS83ehVIsw=; b=RmFzkoGQ/q7dn5IIQUy3Jz8ZRA
+	kGOMPwkmOvde5Fm7tz34nBtN78YqLKFxgJKLOHAA8HL06kBbKQDdsTwTU49Xq4w5N+TFdwH2EcmDv
+	dsVN/2QOL+YsHiDzateH77VoIYI2p7d5H0VhW3+mPUe8rAemMiQ9b8NOdG34kzJBik0J1iyzoEIKl
+	T6ZL0q9Q7Awx1jmAcLwvpViTqlfgx5taOUYJPvgspZmwVge+lkM9VMAM27/5dpc3uDsnG7f3lzHOM
+	yGhDjEMsXQvBh+x0/5tlCTZKE8FKlNb5v0SI4bbxicKrIBCX532XBmNo1kqXDscZQRkFsAPPIJgQv
+	3CUUbJJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbxdP-000000061kW-48tZ;
-	Tue, 23 Jun 2026 09:41:36 +0000
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+	id 1wbyn0-000000067So-0U5z;
+	Tue, 23 Jun 2026 10:55:34 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbxdN-000000061jD-1i3L
-	for linux-mediatek@lists.infradead.org;
-	Tue, 23 Jun 2026 09:41:35 +0000
-Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-84592b55832so388182b3a.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 23 Jun 2026 02:41:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1782207692; x=1782812492; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=LEY4mxBInTV31P334VeLm1dxOKL0Pc0LaCfP0/xhKcY=;
-        b=AvCA0ISIaoR8TH0IcEXmjq9oYlLe2X2Rt2+dkYiFG0XN+QWvlE7OYXBGAKsZuk5RLl
-         Cs+SISPrL2RLllNIiNjxdHhCgKH3xMnKbQ7WVs5wqgVWZnY0l05MpVHpiEpGL+FYQeW5
-         g/7z7f+aMX5cT3RxLYoqacoZRjSgDFAvtL7VWfveTpK6xsOoYsWfKncQPDECPK1TVr+4
-         tEbYn58pc2+Cicf5nZIqaeJNLp+jpCsej/n5GacsW/aHGYRm/EpfsOuOpdF1v9O//Tj6
-         z1282zDsHc3TzVVIxj/HmYxFLcbrH6H5nsq/60CSN8XWEs6tfPFnVY96eEnOzhh+GiyJ
-         k/mw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1782207692; x=1782812492;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=LEY4mxBInTV31P334VeLm1dxOKL0Pc0LaCfP0/xhKcY=;
-        b=TpwC3v3hzbhXXJGRt4vM2xq37WTRVW9Qb31uHhUiFGlLtUBwbBxvWSY5wBEljrzN3X
-         a6Xv1ATHf/RT72LYXVW44uIsO/GQcQY2U3Br0R7mBPTaoF71AeD1ZGnLZiSM3oyYCkwM
-         zHe3kO+7gQj/CR68J3ql8Q2NLSxD2dntIUiBZr3+PMokYwlTNJKLmIHpeKhWyWTqMlAo
-         zUI6Dd7JroO6jfurWVDJm02koBFwR+V/LhDfTM7kHbDVGS7JAImmpc0lNMIPtszAsxxc
-         fwMIBS1KY/uORZ9IH4SY1FAb14qTGfVcDcuw9vOB0xHJDB4MTWafzJwqWeh/V/E/OR/k
-         fqjg==
-X-Forwarded-Encrypted: i=1; AFNElJ/NeZp4D6nlEBAy1ZGWTUDSeZOUKSABtFrtMLdjtcAtcEnKFCQ7ENiwuzcSKZTG8D3mIYMLxhgm+SUHEDweYQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwYkGalHk1oZr1jneeSu6h60I1kSSpLrr+8y6rACo/yg/ROvcEJ
-	59rUL8YKHld7bQWI9myh5Tx5+td1Es+WhBC5mwMv/DtVTF2Vp3frVDw=
-X-Gm-Gg: AfdE7clP9tsT4Hg19QwO6JeIIg4IcSq9m9zsqmEY1bJiKfwzWczI7XBCPuP/Cmcj5nt
-	iZfhWGkriEtL/F1xrrsZuJr0v5H4ahiAhi3DY91HsWDYRe3nt2AuUwXe+3ScGuVYdHwoNN4aE6R
-	ZR7TQ+czQx16mbXXYpS1f1OXylLMiiueGUY5KTkavITKfLjGCmx/EHXBBavYlZSEHPZ37LRXloI
-	+TeRim1ed6Y4O56MT6Rxwhp5qh8s2IPUaqKvo+61YgWWjF03ZHLj1HV7fGVnlboWTDKzIa+2D2C
-	MaYOzDpsEmILhg9T5bdce3u1V66Lel8ROIHoKD0mFFBROaS4e2Q2sdNcCLWEMJmj5PjXr43X4fO
-	6TDfiJ3VLkgFunqcxmTGP3kPqmfEFOSDbcgFQocFqauiyxMtc6Zc1O8cG7ht4YHL8dygcVHTkh9
-	PGw4njgtLnmoqHhcaaLOl67TDd6RnEKL8OlINyHAojU3BEBzdYYpx0xbjj3daQ+ZHn/PSUYQ9iu
-	5k=
-X-Received: by 2002:a05:6a00:2196:b0:842:4387:34c0 with SMTP id d2e1a72fcca58-8459524d475mr2570456b3a.5.1782207692530;
-        Tue, 23 Jun 2026 02:41:32 -0700 (PDT)
-Received: from localhost.localdomain ([14.5.152.27])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84564d6bf73sm10180079b3a.5.2026.06.23.02.41.28
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 23 Jun 2026 02:41:31 -0700 (PDT)
-From: Myeonghun Pak <mhun512@gmail.com>
-To: Yassine Oudjana <y.oudjana@protonmail.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-clk@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
+	id 1wbymy-000000067SL-0alp;
+	Tue, 23 Jun 2026 10:55:32 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 8745C405A9;
+	Tue, 23 Jun 2026 10:55:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45DA01F000E9;
+	Tue, 23 Jun 2026 10:55:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1782212131;
+	bh=lAKwacoVI7uad9g+jIiH9ookXbWgdh+4rlS83ehVIsw=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=Nd6H/AKBBiphRBm1G0fYBB/P+tJDY3EthHSrSuOOIqxHa6P2zbJvBNW94bt7wq4BM
+	 rcllD8dhyskNiOvyEehpiUPLIwJ3tjjuuVyc+NmGA1tuO2mAYiL0zclDwVkartqoWh
+	 JBUmRhr6KcBb2z1TaCUVlUkV4kaoAjkb+4ajB48qoXaU1vF/SGzxVybKk7d/xjSX9X
+	 DbKFzsyU/r7eKd4RVUehBiutUMpt+UdwJ70k1ZZzm3JxfNyBXGe9cFNk6BLz+1/D8O
+	 W/0IqzZAHxFalUAivpxEFo1eso1fU+u/AZ6PfMIUYMwr6PI3gHIfXWrRcC3NHBcGG7
+	 dQmTtiXdafUwA==
+From: Simon Horman <horms@kernel.org>
+To: lorenzo@kernel.org
+Cc: Simon Horman <horms@kernel.org>,
+	andrew+netdev@lunn.ch,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	leto.liu@airoha.com,
 	linux-arm-kernel@lists.infradead.org,
-	Myeonghun Pak <mhun512@gmail.com>,
-	Ijae Kim <ae878000@gmail.com>
-Subject: [PATCH] clk: mediatek: mt6735: Unregister PLLs on probe failure
-Date: Tue, 23 Jun 2026 18:41:11 +0900
-Message-ID: <20260623094125.95791-1-mhun512@gmail.com>
-X-Mailer: git-send-email 2.47.1
+	linux-mediatek@lists.infradead.org,
+	netdev@vger.kernel.org,
+	brown.huang@airoha.com
+Subject: Re: [PATCH net v2] net: airoha: Add retry mechanism to airoha_qdma_set_trtcm_param()
+Date: Tue, 23 Jun 2026 11:53:42 +0100
+Message-ID: <20260623105341.1076863-3-horms@kernel.org>
+X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20260622-airoha_qdma_set_trtcm_param-retry-fix-v2-1-95a83ac99dbd@kernel.org>
+References: <20260622-airoha_qdma_set_trtcm_param-retry-fix-v2-1-95a83ac99dbd@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260623_024133_441409_8E4D352F 
-X-CRM114-Status: GOOD (  12.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,48 +76,142 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mtk_clk_register_plls() registers the apmixedsys PLL clocks manually, while
-clk_mt6735_apmixed_remove() unregisters them on driver removal.
+This is an AI-generated review of your patch. The human sending this
+email has considered the AI review valid, or at least plausible.
+Full review at: https://sashiko.dev
 
-If devm_of_clk_add_hw_provider() fails after the PLL registration succeeds,
-probe returns the error directly and the remove callback is not run. This
-leaves the registered PLL clocks behind on the probe failure path.
-
-Add an unregister_plls error path so provider registration failures unwind the
-PLLs before returning the error.
-
-Fixes: 43c04ed79189 ("clk: mediatek: Add drivers for MediaTek MT6735 main clock and reset drivers")
-Co-developed-by: Ijae Kim <ae878000@gmail.com>
-Signed-off-by: Ijae Kim <ae878000@gmail.com>
-Signed-off-by: Myeonghun Pak <mhun512@gmail.com>
+Simon says: I'd appreciate it if you could look over the first two issues
+            flagged below in the context of this patch. While the third
+	    and final issue looks like it is in possible separate follow-up
+	    territory.
 
 ---
- drivers/clk/mediatek/clk-mt6735-apmixedsys.c | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+net: airoha: Add retry mechanism to airoha_qdma_set_trtcm_param()
+    
+This patch introduces a retry loop to airoha_qdma_set_trtcm_param() to mitigate
+bus timeouts when configuring QDMA parameters. It attempts to verify that the
+configuration is correctly applied to the hardware.
 
-diff --git a/drivers/clk/mediatek/clk-mt6735-apmixedsys.c b/drivers/clk/mediatek/clk-mt6735-apmixedsys.c
-index 9e30c089a2..04cf9665ec 100644
---- a/drivers/clk/mediatek/clk-mt6735-apmixedsys.c
-+++ b/drivers/clk/mediatek/clk-mt6735-apmixedsys.c
-@@ -102,10 +102,17 @@ static int clk_mt6735_apmixed_probe(struct platform_device *pdev)
- 
- 	ret = devm_of_clk_add_hw_provider(&pdev->dev, of_clk_hw_onecell_get,
- 					  clk_data);
--	if (ret)
-+	if (ret) {
- 		dev_err(&pdev->dev,
- 			"Failed to register clock provider: %d\n", ret);
-+		goto unregister_plls;
-+	}
-+
-+	return 0;
- 
-+unregister_plls:
-+	mtk_clk_unregister_plls(apmixedsys_plls, ARRAY_SIZE(apmixedsys_plls),
-+				clk_data);
- 	return ret;
- }
- 
--- 
-2.47.1
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+> index 3370c3df7c107..bb5c0599a4eed 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+> @@ -2673,14 +2673,30 @@ static int airoha_qdma_set_trtcm_param(struct airoha_qdma *qdma, int channel,
+>  		     FIELD_PREP(TRTCM_METER_GROUP_MASK, group) |
+>  		     FIELD_PREP(TRTCM_PARAM_INDEX_MASK, idx) |
+>  		     FIELD_PREP(TRTCM_PARAM_RATE_TYPE_MASK, mode);
+> +	int i;
+>  
+> -	airoha_qdma_wr(qdma, REG_TRTCM_DATA_LOW(addr), val);
+> -	airoha_qdma_wr(qdma, REG_TRTCM_CFG_PARAM(addr), config);
+> +	for (i = 0; i < 100; i++) {
+> +		u32 data;
+>  
+> -	return read_poll_timeout(airoha_qdma_rr, val,
+> -				 val & TRTCM_PARAM_RW_DONE_MASK,
+> -				 USEC_PER_MSEC, 10 * USEC_PER_MSEC, true,
+> -				 qdma, REG_TRTCM_CFG_PARAM(addr));
+> +		airoha_qdma_wr(qdma, REG_TRTCM_DATA_LOW(addr), val);
+> +		wmb();
+> +		airoha_qdma_wr(qdma, REG_TRTCM_CFG_PARAM(addr), config);
+> +
+> +		if (read_poll_timeout(airoha_qdma_rr, data,
+> +				      data & TRTCM_PARAM_RW_DONE_MASK,
+> +				      USEC_PER_MSEC, 10 * USEC_PER_MSEC,
+> +				      true, qdma, REG_TRTCM_CFG_PARAM(addr)))
+> +			return -ETIMEDOUT;
+
+[Severity: High]
+If a bus timeout causes the write phase's read_poll_timeout() in
+airoha_qdma_set_trtcm_param() to fail, this immediately returns -ETIMEDOUT,
+aborting the 100-iteration retry loop.
+
+Doesn't this defeat the mitigation?
+
+> +
+> +		if (airoha_qdma_get_trtcm_param(qdma, channel, addr, param,
+> +						mode, &data, NULL))
+> +			continue;
+
+[Severity: High]
+If airoha_qdma_get_trtcm_param() times out during the verification phase, it
+indicates the hardware hasn't finished the read command (DONE bit is still 0).
+
+The continue statement then immediately starts the next iteration, writing new
+commands to DATA_LOW and CFG_PARAM.
+
+Can writing to command registers while the hardware state machine is actively
+busy violate hardware protocols and lead to unrecoverable lockups?
+
+> +
+> +		if (data == val)
+> +			return 0;
+
+[Severity: High]
+This isn't a bug introduced by this patch, but if the bus drops the command
+write to REG_TRTCM_CFG_PARAM, the hardware never executes the command and the
+TRTCM_PARAM_RW_DONE_MASK bit remains set from the previous operation.
+
+Consequently, read_poll_timeout() returns an immediate false success.
+
+If both the set and get command writes are dropped by the bus, the get
+operation will read back the newly written DATA_LOW register value.
+
+Will the data == val check evaluate to true and falsely report success without
+the hardware ever processing the configuration?
+
+> +	}
+> +
+> +	return -EBUSY;
+>  }
+>  
+
+[ ... ]
+
+>  static int airoha_qdma_set_trtcm_config(struct airoha_qdma *qdma, int channel,
+>  					u32 addr, enum trtcm_mode_type mode,
+>  					bool enable, u32 enable_mask)
+>  {
+>  	u32 val;
+>  
+>  	if (airoha_qdma_get_trtcm_param(qdma, channel, addr, TRTCM_MISC_MODE,
+>  					mode, &val, NULL))
+>  		return -EINVAL;
+
+[Severity: High]
+Standalone calls to airoha_qdma_get_trtcm_param(), like this one in
+airoha_qdma_set_trtcm_config(), lack a retry loop entirely.
+
+Does this leave read-modify-write cycles fully vulnerable to the same bus
+timeouts the patch attempts to mitigate?
+
+[Severity: High]
+This isn't a bug introduced by this patch, but the patch mitigates bus
+timeouts in airoha_qdma_set_trtcm_param() while entirely missing
+airoha_qdma_set_rl_param().
+
+The latter performs the exact same write-and-poll sequence on identical QDMA
+configuration registers:
+
+drivers/net/ethernet/airoha/airoha_eth.c:airoha_qdma_set_rl_param() {
+    ...
+    return read_poll_timeout(..., val & RATE_LIMIT_PARAM_RW_DONE_MASK, ...);
+}
+
+If bus timeouts affect QDMA access broadly as stated in the commit message, are
+the rate-limiting configuration paths randomly vulnerable to the same failures?
+
+[Severity: High]
+This isn't a bug introduced by this patch, but in airoha_tc_remove_htb_queue(),
+hardware teardown incorrectly uses queue + 1 instead of queue:
+
+drivers/net/ethernet/airoha/airoha_eth.c:airoha_tc_remove_htb_queue() {
+    ...
+    airoha_qdma_set_tx_rate_limit(netdev, queue + 1, 0, 0);
+    ...
+}
+
+Does this leave the removed queue's hardware limits permanently active
+(resource leak) and inadvertently disable the rate limits for queue + 1,
+corrupting the QoS state of another active channel?
 
