@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5B58CDB471
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2026 08:06:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07A73CDB47D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2026 08:07:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dw5fW7mPp1mZa6nLnYAvn5e0kvkO1A/ra0LkKGeobuU=; b=z4Tm4W94qCZXoF4xHavJWbKcOU
-	isc+5VMeATFFVncq2X1/W8uHicCEMXGXk3sFxBtQ/jsIdirL0R0+idZaWdglKq3UOk42Ym10dYLfh
-	v96jaq9gAf+XiiEfnm5N+AMSJLXirU/NKWpFAbfmPUgUV5ssuE6gys8NvbBYLnazc8R0s8vj1nhvs
-	qtRN6UPRoPhssTl9M872Tn7JOdko1ws+OgFrfTUPIOKgvqmm4i3JT21/+yZnLuasBalX0AUjJBe6K
-	nRHTVl0X+zxSkw0ZBfiWjIhLT3SgsN20EkwDuU8Yco+TCjEfsn44hKssSM5Piak8whZ9UUC5Xw51D
-	zmFd3WJg==;
+	bh=NkUCuOZEAxriNK+bsTZOkniDVJJwCJGQarQcQoUFjYs=; b=h3kry0AH+qew6YdMOqVK5o/DOB
+	hMlzV64DRVqVRDCmnZczCIyHgWZcOXsj5Zu5rRY08WuF63hBABsLwpsBkD86cNsz7UA/QSyxdI78u
+	bo8TZh7MC+o6ne0IymROhjLVFIOZcUvRYqnXI05DShp5crRz4tM30dBJzlqyZXK7fAJd/vYmd0GOF
+	d5tGf9YtFliJziagzM2Hnk/D8GbBKeXq0MhLPiJ8XfJAtiRSusxeE4QJ3yllH19tUt9UiyYESxWFb
+	TfdBKN8MyozlUDRbCMzhCK5g2OGD0YLIXZZAULA8QQwwb0zKOQJqkIXDUakDGwbMT3Jed0po7Dq2b
+	o7qFXQ4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbw9b-00000005sbH-3gj9;
-	Tue, 23 Jun 2026 08:06:43 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wbwAD-00000005smO-0Q8k;
+	Tue, 23 Jun 2026 08:07:21 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbw9Z-00000005sZ6-1EZ2;
-	Tue, 23 Jun 2026 08:06:42 +0000
+	id 1wbw9a-00000005sZG-3Ck3;
+	Tue, 23 Jun 2026 08:06:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1782201998;
-	bh=2ModYSRenKENVNmwQIj/emlMitTe1H/N34OtBHiupCw=;
+	s=mail; t=1782202000;
+	bh=q2relrEzTIVCRZtAr/bd91kPwtipMyKMmyPaD3/aess=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=DMNcKRebgTvdvGNXIb4BUldrfwuq9bfEaX3+xBZ/8/IIdOXYhMgdriWi/BPF0EBym
-	 s/iFQsUsyLwkwPgjMSJPdcUYMNx/E+J/CNcPQopJvfqcn80J8fDBShN9U2xvvo33tK
-	 ACE3yMrIyZCopEKVkAEbjqAZ18EuKM45KLOZu7hxm+8B1o+GWDO/Ks57CM4TdopDdP
-	 tj24t/J6WdHg4Axc8i7b3HBjHEVZzTo7fqtHlzpS2m9qjDTc3ECR1LhQLGut3n/d11
-	 Bn05pJt5IWODSUrNVQnh39TJV78cWXHUiIqCdE790xUoamf6z5ph0FJi4vydC1Sqsp
-	 iL9Oe1JTagVzQ==
+	b=dEzAGm846cDEOxZceS9ZX5Z+brcAg8I4pPI7P/ZT8nF6Te6xx1AXVFa2hR4ZqrEEH
+	 5iKbTeifvIgC4YgmO7AIgK193fPilrE9LcpinTVJDcMn+ohNVHExfNZ2ik+RTlqw6d
+	 8f0oMwVKCF7GKFnF+nNRw6lKhHVrop4Tiuru+OSqofejwRpuDmZDH7HqoV10qG8sBV
+	 7GPQzl+tppV/e9zepAF7DldXHr9zzHRSRvleN7ouyLelTnOsDgVY0yPJZTxqJTM+4D
+	 ujtCnirqiR3Pwu4BGGB6DHLme9QxlbSR9iGpQEWbdXDu6WrmEgQxtxNUeEA6MLm89s
+	 IUDV2bh2buMYA==
 Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8A3D317E0E64;
-	Tue, 23 Jun 2026 10:06:38 +0200 (CEST)
-Message-ID: <719d4716-8123-43cd-a646-118684565c6e@collabora.com>
-Date: Tue, 23 Jun 2026 10:06:38 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9608017E1025;
+	Tue, 23 Jun 2026 10:06:39 +0200 (CEST)
+Message-ID: <36d9b5b3-4db3-4684-960b-651fb453ce1f@collabora.com>
+Date: Tue, 23 Jun 2026 10:06:39 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] soc: mediatek: mtk-infracfg: Export symbols for DDK
- modules
-To: Justin Yeh <justin.yeh@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 2/2] pinctrl: mediatek: mt8189: Add MODULE_LICENSE
+ declaration
+To: Justin Yeh <justin.yeh@mediatek.com>, Sean Wang <sean.wang@kernel.org>,
+ Linus Walleij <linusw@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
 Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20260529101613.55697-1-justin.yeh@mediatek.com>
- <20260529101613.55697-3-justin.yeh@mediatek.com>
+ linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+References: <20260529100308.51271-1-justin.yeh@mediatek.com>
+ <20260529100308.51271-3-justin.yeh@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20260529101613.55697-3-justin.yeh@mediatek.com>
+In-Reply-To: <20260529100308.51271-3-justin.yeh@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260623_010641_489397_EF9CDFC4 
-X-CRM114-Status: GOOD (  19.90  )
+X-CRM114-CacheID: sfid-20260623_010642_971795_C2F21FF6 
+X-CRM114-Status: UNSURE (   6.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,89 +79,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/29/26 12:16, Justin Yeh wrote:
-> Export mtk_infracfg functions to allow other DDK modules (like
-> mtk-scpsys) to use bus protection APIs.
+On 5/29/26 12:02, Justin Yeh wrote:
+> Add missing MODULE_LICENSE("GPL v2") macro to fix modpost error during
+> kernel module build. The license identifier matches the SPDX header
+> (GPL-2.0) at the top of the file.
 > 
-> Changes:
-> - Add EXPORT_SYMBOL_GPL for set/clear bus_protection and init functions
-> - Remove static and __init qualifiers from mtk_infracfg_init
-> - Add mtk_infracfg_init() declaration to header
-> - Remove postcore_initcall, let dependent modules call init explicitly
-> - Add #include <linux/module.h> for export macros
-> - Add MODULE_LICENSE("GPL") metadata
-> 
-> This allows mtk-infracfg to be built as a DDK module (.ko) and its
-> functions to be used by other modules like mtk-scpsys for power domain
-> management.
+> This fixes the following build error:
+>    ERROR: modpost: missing MODULE_LICENSE() in pinctrl-mt8189.o
 > 
 > Signed-off-by: Justin Yeh <justin.yeh@mediatek.com>
-> ---
->   drivers/soc/mediatek/mtk-infracfg.c   | 9 +++++++--
->   include/linux/soc/mediatek/infracfg.h | 1 +
->   2 files changed, 8 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-infracfg.c b/drivers/soc/mediatek/mtk-infracfg.c
-> index 2acf19676af2..8a88805468cc 100644
-> --- a/drivers/soc/mediatek/mtk-infracfg.c
-> +++ b/drivers/soc/mediatek/mtk-infracfg.c
-> @@ -7,6 +7,7 @@
->   #include <linux/jiffies.h>
->   #include <linux/regmap.h>
->   #include <linux/mfd/syscon.h>
-> +#include <linux/module.h>
->   #include <linux/soc/mediatek/infracfg.h>
->   #include <asm/processor.h>
->   
-> @@ -43,6 +44,7 @@ int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask,
->   
->   	return ret;
->   }
-> +EXPORT_SYMBOL_GPL(mtk_infracfg_set_bus_protection);
->   
->   /**
->    * mtk_infracfg_clear_bus_protection - disable bus protection
-> @@ -73,8 +75,9 @@ int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask,
->   
->   	return ret;
->   }
-> +EXPORT_SYMBOL_GPL(mtk_infracfg_clear_bus_protection);
 
-Those two are ok, but I'd prefer to use namespaces (EXPORT_SYMBOL_NS_GPL) and to
-import the namespace in the relevant drivers.
+Please, do this for all MediaTek pinctrl drivers.
 
->   
-> -static int __init mtk_infracfg_init(void)
-> +int mtk_infracfg_init(void)
->   {
->   	struct regmap *infracfg;
->   
-> @@ -90,4 +93,6 @@ static int __init mtk_infracfg_init(void)
->   				MT8192_INFRA_CTRL_DISABLE_MFG2ACP);
->   	return 0;
->   }
-> -postcore_initcall(mtk_infracfg_init);
-> +EXPORT_SYMBOL_GPL(mtk_infracfg_init);
-
-Sorry, but that makes little sense.
-
-Check the mtk_infracfg_init() function: if you avoid the postcore_initcall() there,
-what's going to happen with MT8192?! :-)
-
-Cheers,
-Angelo
-
-> +
-> +MODULE_LICENSE("GPL");
-> diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
-> index 9956e18c5ffa..847431a7b967 100644
-> --- a/include/linux/soc/mediatek/infracfg.h
-> +++ b/include/linux/soc/mediatek/infracfg.h
-> @@ -454,4 +454,5 @@ int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask,
->   		bool reg_update);
->   int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask,
->   		bool reg_update);
-> +int mtk_infracfg_init(void);
->   #endif /* __SOC_MEDIATEK_INFRACFG_H */
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
