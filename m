@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A090CDB479
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jun 2026 16:01:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19605CDB479
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jun 2026 16:15:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kOrKWDaB0ZFkgmsKOd1YksUh3/RLEW4Ywg0Vwyt3LTQ=; b=nxn79UKkRLhaUKH+xncHKIur7I
-	mGyuWKBWyKhbHAknUr52WEEgyV5Bxj/aJipguOzfFx7CqO6zftZZAQ5nFMvBQMCIcGiuNA2Q80V8U
-	zh0By1dD9Gts2F/te/F2tINBKAGaOxBd+fDQfFT60NaJsJp8icC41LFH/JXbZPYdBLooLoDZcXnko
-	TFrkS/rE7qcKe/z6DthRnQ0jRTrBpfvggk2q1v2zngy9iu15j11/0kXtU0e6tX58uLqIFAzcosU33
-	ayZOeRFRjxEPhDvgjU3UHJs0FLfzeALZZ3QBOfwoqIaZGOwEvwzswGgZ8FJ9I9Qqhy3AW8Bg9eIh4
-	uAHBbxdA==;
+	bh=C/KIgQ42qvKpfhlsSKyF2HuauF1ECg4OdEJw3N/MxDE=; b=wOrMaforl2twgLvjspnpkldce5
+	64VUJS1Zy0cxqAtdqkThmm/1gtphST+ESNlafDvNwT7RN7HRNrswKyU0k+PkiVBdMO3r1wA/TKzTR
+	VIfxXUiDHZrPC+3ErlKkH3HNeYkpulHkPxH6rpa/pVW87eF8xmUrQwfdyJzRNIS/Ej2LXNqK7DqUl
+	UY7vUvDi/kHY5cGsJv8jrkwjMlWFr5gAvzIobiC2HHoRFshwDjuM77qq+inzqU3krkIst3EPdtEVR
+	T80YDLEo09Ua+7fHJvySxOFuBgjAwWDwlgJtthm4xG3FD5ERqnvg3ghEzF3nHUa/QxPpQRdPK35LM
+	s8UMWSFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcQ2D-000000084W6-3dAp;
-	Wed, 24 Jun 2026 16:01:05 +0000
+	id 1wcQGb-000000085gB-468t;
+	Wed, 24 Jun 2026 16:15:57 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcQ2B-000000084V0-3sPn;
-	Wed, 24 Jun 2026 16:01:05 +0000
+	id 1wcQGZ-000000085fb-1L7W;
+	Wed, 24 Jun 2026 16:15:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=kOrKWDaB0ZFkgmsKOd1YksUh3/RLEW4Ywg0Vwyt3LTQ=; b=ZUc4z5ZXtx1jvccJBmBq3UZOb1
-	WbhuofMPjZd5cEDAwo7pqeCRVSZwhzokghQXuizOfCMoyADHgEcluAdE4rZS0RTFXtMrs5vFOXDFE
-	/W1i798WxkuTbfSktXxznpIynENGmvaNs0eIIwnl8QBBhL8bw1ujfJqo1dcDdHEu0Rjc=;
+	bh=C/KIgQ42qvKpfhlsSKyF2HuauF1ECg4OdEJw3N/MxDE=; b=zbFrCbjAVWSr9s/Viyahf2Olbs
+	oTCo4yIjsXdPR24Ttlmx4kTxQXI8ylSJ9k1iCBYbolL65pl78MI2bF9pydBeML/noASJ4tMOyHWpC
+	6aBGrmDevD7vE41CyvPDSgLfC5gUPFIl+HZwR/zpqp+4/fLNW977+zmJbh7JowiPQJlI=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1wcQ1r-00974o-MQ; Wed, 24 Jun 2026 18:00:43 +0200
-Date: Wed, 24 Jun 2026 18:00:43 +0200
+	id 1wcQGH-00978o-CO; Wed, 24 Jun 2026 18:15:37 +0200
+Date: Wed, 24 Jun 2026 18:15:37 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: jackbb_wu@compal.com
 Cc: Loic Poulain <loic.poulain@oss.qualcomm.com>,
@@ -57,18 +57,17 @@ Cc: Loic Poulain <loic.poulain@oss.qualcomm.com>,
 	linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, linux-doc@vger.kernel.org
-Subject: Re: [PATCH v3 2/7] net: wwan: t9xx: Add control plane transaction
- layer
-Message-ID: <2a90ae6b-2b6d-4340-b557-915252cc3488@lunn.ch>
+Subject: Re: [PATCH v3 3/7] net: wwan: t9xx: Add control DMA interface
+Message-ID: <dc007021-9013-47b2-b06a-fe4a50d26722@lunn.ch>
 References: <20260624-t9xx_driver_v1-v3-0-73ff03f60c48@compal.com>
- <20260624-t9xx_driver_v1-v3-2-73ff03f60c48@compal.com>
+ <20260624-t9xx_driver_v1-v3-3-73ff03f60c48@compal.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260624-t9xx_driver_v1-v3-2-73ff03f60c48@compal.com>
+In-Reply-To: <20260624-t9xx_driver_v1-v3-3-73ff03f60c48@compal.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260624_090103_963373_3444642C 
-X-CRM114-Status: GOOD (  12.64  )
+X-CRM114-CacheID: sfid-20260624_091555_362717_7E92C511 
+X-CRM114-Status: GOOD (  17.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,52 +82,137 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> +static int __init mtk_common_drv_init(void)
+> diff --git a/drivers/net/wwan/t9xx/pcie/mtk_cldma.c b/drivers/net/wwan/t9xx/pcie/mtk_cldma.c
+
+> +static inline void mtk_cldma_clr_bd_dsc(struct cldma_drv_info *drv_info,
+> +					struct bd_dsc *bd_dsc_pool, int nr_bds)
+
+No inline functions in C files. Please let the compiler decide.
+
+> +static int mtk_cldma_reload_rx_skb(struct mtk_md_dev *mdev, struct rxq *rxq,
+> +				   struct rx_req *req)
 > +{
+> +	struct sk_buff *tail = NULL;
+> +	struct bd_dsc *bd_dsc;
+> +	int nr_bds;
+> +	int i, ret;
+> +
+> +	nr_bds = rxq->nr_bds;
+> +
+> +	for (i = 0; i < nr_bds; i++) {
+> +		bd_dsc = req->bd_dsc_pool + i;
+> +		bd_dsc->skb = __dev_alloc_skb(req->frag_size, GFP_KERNEL);
+> +		if (!bd_dsc->skb) {
+> +			dev_warn((mdev)->dev, "Failed to alloc SKB\n");
+
+You might want to rate limit this, and the other similar messages in
+the data path, otherwise it could be a DOS.
+
+> +u32 mtk_cldma_stop_queue(struct cldma_drv_info *drv_info, enum mtk_tx_rx dir, u32 qno)
+> +{
+> +	u32 val = (qno == ALLQ) ? qno : BIT(qno);
+> +	struct cldma_hw_regs *hw_regs;
+> +	unsigned int active;
+> +	int cnt = 0;
+> +	int base;
+> +	u32 addr;
+> +
+> +	hw_regs = drv_info->hw_regs;
+> +	base = drv_info->base_addr;
+> +
+> +	if (dir == DIR_TX)
+> +		addr = base + hw_regs->reg_cldma_ul_stop_cmd;
+> +	else
+> +		addr = base + hw_regs->reg_cldma_so_stop_cmd;
+> +
+> +	mtk_pci_write32(drv_info->mdev, addr, val);
+> +
+> +	do {
+> +		active = drv_info->drv_ops->cldma_queue_status(drv_info, dir, qno);
+> +		if (active == LINK_ERROR_VAL || !active)
+> +			break;
+> +		usleep_range(WAIT_QUEUE_STOP, 2 * WAIT_QUEUE_STOP);
+> +	} while (++cnt < 10);
+
+Please use one of the helpers from iopoll.h. Any loops waiting for an
+event to happen should use those macros, since the open code
+implementation is often wrong.
+
+> +static int mtk_ctrl_trb_srv_init(struct mtk_ctrl_trans *trans)
+> +{
+> +	struct srv_que *srv_que;
+> +	struct trb_srv *srv;
+> +	int i, j;
+> +	int ret;
+> +
+> +	for (i = 0; i < trans->trb_srv_num; i++) {
+> +		srv = devm_kzalloc(trans->mdev->dev, sizeof(*srv), GFP_KERNEL);
+> +		if (!srv) {
+> +			ret = -ENOMEM;
+> +			goto err_free_srv;
+> +		}
+> +
+> +		srv->trans = trans;
+> +		srv->srv_id = i;
+> +		trans->trb_srv[i] = srv;
+> +
+> +		init_waitqueue_head(&srv->trb_waitq);
+> +		for (j = 0; j < NR_CLDMA; j++)
+> +			INIT_LIST_HEAD(&srv->srv_q_list[j]);
+> +	}
+> +
+> +	for (i = 0; i < NR_CLDMA; i++)
+> +		for (j = 0; j < HW_QUE_NUM; j++) {
+> +			if (trans->srv_cfg[i][j] < 0 ||
+> +			    trans->srv_cfg[i][j] >= trans->trb_srv_num)
+> +				trans->srv_cfg[i][j] = 0;
+> +			srv_que = devm_kzalloc(trans->mdev->dev, sizeof(*srv_que), GFP_KERNEL);
+> +			if (!srv_que) {
+> +				ret = -ENOMEM;
+> +				goto err_free_srv_que;
+> +			}
+> +			srv_que->hif_id = i;
+> +			srv_que->qno = j;
+> +			list_add_tail(&srv_que->list,
+> +				      &trans->trb_srv[trans->srv_cfg[i][j]]->srv_q_list[i]);
+> +		}
+> +
+> +	for (i = 0; i < trans->trb_srv_num; i++) {
+> +		trans->trb_srv[i]->trb_thread = kthread_run(mtk_ctrl_trb_thread, trans->trb_srv[i],
+> +							    "mtk_trb_srv%d_%s", i,
+> +							    trans->mdev->dev_str);
+> +		if (IS_ERR(trans->trb_srv[i]->trb_thread)) {
+> +			ret = PTR_ERR(trans->trb_srv[i]->trb_thread);
+> +			trans->trb_srv[i]->trb_thread = NULL;
+> +			goto err_stop_kthread;
+> +		}
+> +	}
+> +
 > +	return 0;
-> +}
-> +module_init(mtk_common_drv_init);
+> +err_stop_kthread:
+> +	while (--i >= 0)
+> +		kthread_stop(trans->trb_srv[i]->trb_thread);
+> +err_free_srv_que:
+> +	for (i = 0; i < trans->trb_srv_num; i++) {
+> +		for (j = 0; j < NR_CLDMA; j++) {
+> +			struct srv_que *next_srv_que;
 > +
-> +static void __exit mtk_common_drv_exit(void)
-> +{
-> +}
-> +module_exit(mtk_common_drv_exit);
+> +			list_for_each_entry_safe(srv_que, next_srv_que,
+> +						 &trans->trb_srv[i]->srv_q_list[j], list) {
+> +				list_del(&srv_que->list);
+> +				devm_kfree(trans->mdev->dev, srv_que);
 
-Since these don't do anything, they should not be needed.
+It is unusual to see devm_kfree(). Why is it needed?
 
-> @@ -467,6 +468,7 @@ static u32 mtk_pci_ext_h2d_evt_hw_bits(u32 chs)
->  
->  	SET_HW_BITS(hw_bits, chs, MHCCIF_RC2EP_EVT_DEVICE_RESET,
->  		    DEV_EVT_H2D_DEVICE_RESET);
-> +
->  	return LE32_TO_U32(cpu_to_le32(hw_bits));
+> +static unsigned int ctrl_port_chl_mtu;
 
-Please don't add white space like this. I assume a previous patch
-added this code, so move this to that patch.
+Is this a global variable? Why is it not part of priv?
 
-> @@ -908,13 +910,11 @@ static int mtk_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
->  	struct mtk_md_dev *mdev;
->  	int ret;
->  
-> -	mdev = devm_kzalloc(dev, sizeof(*mdev), GFP_KERNEL);
-> +	mdev = mtk_dev_alloc(dev, &pci_hw_ops);
->  	if (!mdev) {
->  		ret = -ENOMEM;
->  		goto log_err;
->  	}
-> -	mdev->dev_ops = &pci_hw_ops;
-> -	mdev->dev = dev;
->  
->  	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
->  	if (!priv) {
-> @@ -991,7 +991,7 @@ static int mtk_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
->  free_priv_data:
->  	devm_kfree(dev, priv);
->  free_cntx_data:
-> -	devm_kfree(dev, mdev);
-> +	mtk_dev_free(mdev);
+> +module_param(ctrl_port_chl_mtu, uint, 0644);
+> +MODULE_PARM_DESC(ctrl_port_chl_mtu, "This is used to config the ctrl port mtu!\n");
 
-Why are you removing devm_ calls?
+Ah. No modules parameters please. If this is an MTU, why not use the
+normal networking interfaces to set the MTU?
 
 	Andrew
 
