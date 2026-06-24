@@ -4,85 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86744CDE000
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jun 2026 10:04:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1D1ECDE003
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jun 2026 11:42:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ndRykSSJoRGrOe5/I4OXUoB6S+4/M9Ada4KuUeuqPuU=; b=dtcUJtwiw9udj0DWZYAfLm3/eA
-	vFQV61Wwx9FnaWoqSml7TKztZI91+AInM0cemH/KwfbvKc7nqvHxTZ3txohr76Y5ZJVlWifphDqQS
-	Qd0z3JDnUO4XdOWC3zmcDtEtw4bkgmlp1Z12raHyTlKaTwBbq/WT5ZZlCoG5g4mxNv0psHTAqF9w9
-	0mGHUIG26mknvTOZqIiLTeaplaj2md9FGI0dcY8hMSsxGRbSC+yRKiVNu7BA6TiUqv1oYFPbwhwdw
-	B/omJgY9XO4oeL+P1zEnbvpWreLBpBaGy5ZMtZBG7PCTFLWEYni55AQ9EP9038PJp+PkQskPPscJJ
-	P7s0+oTQ==;
+	bh=QoK/3UddXbmX1NE+eBlNwxX446SsnQUqEu7wWRxnQVw=; b=d4Ep2/658EI3fPsu6UBjRGYr1Q
+	cS9fYlVkcmqQWcfihWdVbseDh2loi74vuRIA7verErdjyqiNGNUb1Hn1J9MTrTvAwoUXhoSfhPt1V
+	Ws0A8xe76Hz+zpZRgACeGR6cuZqxUBjeaRCdURVFBFPayQv0ThHV7LvRizkozso7QNhUdcQlr1HTL
+	KWI5xZ9MC1wskZpayL6tgNXsfRE3eoT4d+6bCyA2sJQ75P4LEpqcP1gsZHcmsnhWi26oh29l+6jBM
+	t9ziTG4oPz9sXy8OpyRteODapAUGyK7WapZPVRRw32MQNqZiq6RfIPZutcRuo9oIInnnxVyFidLpj
+	Wqpen14g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcKTP-00000007ZGb-1GSW;
-	Wed, 24 Jun 2026 10:04:47 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wcLzi-00000007hHm-31OA;
+	Wed, 24 Jun 2026 11:42:14 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcKSx-00000007YsF-0fva;
-	Wed, 24 Jun 2026 10:04:19 +0000
+	id 1wcLza-00000007hG4-2a3l;
+	Wed, 24 Jun 2026 11:42:06 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id D798B60018;
-	Wed, 24 Jun 2026 10:04:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 7FFCBC2BCB7;
-	Wed, 24 Jun 2026 10:04:17 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 0DC9B43650;
+	Wed, 24 Jun 2026 11:42:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id D6A46C2BCB4;
+	Wed, 24 Jun 2026 11:42:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1782295457;
-	bh=wkVjtgalCZbQSoIpv9CwBCZjvSYX3+Cp4uEVA8TMu7k=;
-	h=From:Subject:Date:To:Cc:Reply-To:From;
-	b=Kd+6zp42TLJ9Vj1RhBmssJDOPbMoFPKBiScH2VRXdBiajdClbuYazdwKGLnJRaBA7
-	 FFNiP1pdHZOxjXgKngRaXscYsLHfijukC08IoMG0hVJoIVKM7Bf39xp7epVURT+i+C
-	 xePUsd26Z3vTk0AfMI1rcpmamKAONrc5qIE4NaACXZuoDy/yVqyzX04Ho03ttroUqA
-	 XrtfJmOsLi2KR++k/cKxlnTFV1UBOjzikAbffzEHp0M6ReSfwx6Vvdc5ZEX0OHsXU8
-	 4GoXcV63CuFlHe/bb3my9/2oArclzrb099mlRQv39Zbcx5L7FYHu4g/6svH4Rlq3vR
-	 RAFYvEJhACCrg==
+	s=k20201202; t=1782301325;
+	bh=LZ1C8rPlZ/X7S4iWJUKXT8UYdYECXgo5EWnaKAYpFo4=;
+	h=From:Date:Subject:To:Cc:Reply-To:From;
+	b=Cv+QZx9ic8CcDcyku8WSiFp6l1+02Wo432iHHq0rPl3wGrYcAKCE8bP9mI3rQ+fqk
+	 dcJ9LNaPNpHuQ5pXKAYHFhcV7rE/hkUaBKOuq2JbDf5dyXJEeMCMU6MvLXmktAlXQj
+	 OFu2fjqkVTtYJoMwZ++OZAgfbre3m0qevy8/et5DhrVomataDyRtSww5/nE3IXBj8a
+	 DLBdb58Dtsckrswp+KDmGglSEtRX9JB6bvXydGHmMBRH0/A8l1qnqy/tRVEBfikDbf
+	 Ppw8/WLugAzmdARbgh0ITNNpUPOk+8ze7o3WJO9rbQx9eb1FYgP9QKapYRSLZxxcn4
+	 6lNEYAK4rv75g==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5A71BCDE000;
-	Wed, 24 Jun 2026 10:04:17 +0000 (UTC)
-From: Jack Wu via B4 Relay <devnull+jackbb_wu.compal.com@kernel.org>
-Subject: [PATCH v3 0/7] net: wwan: t9xx: Add MediaTek T9XX WWAN driver
-Date: Wed, 24 Jun 2026 18:04:06 +0800
-Message-Id: <20260624-t9xx_driver_v1-v3-0-73ff03f60c48@compal.com>
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CB8C5CDB47F;
+	Wed, 24 Jun 2026 11:42:05 +0000 (UTC)
+From: Ricardo Pardini via B4 Relay <devnull+ricardo.pardini.net@kernel.org>
+Date: Wed, 24 Jun 2026 13:41:50 +0200
+Subject: [PATCH] arm64: dts: mediatek: mt8395-radxa-nio-12l: Enable I2C3 on
+ 40-pin header
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAJarO2oC/3WNWwrCMBREtyL5NpJH21i/3IdIyePGRrQtSQ2V0
- r2b1A8RES4MA3POnVEA7yCgw2ZGHqILru9S4dsN0q3sLoCdSR0xwipSshqP9TQ1xrsIvokUU1E
- Udi+tELxGCRo8WDetwtP53cNDXUGP2ZIXrQtj75/rx0jz7q88HcHKKAtMEwqlOOr+PsjbLgXK9
- sg+fEXJD88Sr6tSGmMZV9x+8cuyvACNvY/m/wAAAA==
-X-Change-ID: 20260529-t9xx_driver_v1-1744f8af7739
-To: Loic Poulain <loic.poulain@oss.qualcomm.com>, 
- Sergey Ryazanov <ryazanov.s.a@gmail.com>, 
- Johannes Berg <johannes@sipsolutions.net>, 
- Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Jack Wu <jackbb_wu@compal.com>, Wen-Zhi Huang <wen-zhi.huang@mediatek.com>, 
- Shi-Wei Yeh <shi-wei.yeh@mediatek.com>, 
- Minano Tseng <Minano.tseng@mediatek.com>, 
+Message-Id: <20260624-nio-12l-add-i2c-40-pin-v1-1-f6c11ed2184c@pardini.net>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMQQqDMBBA0avIrDuQjFHUq5QuNBl1SomSVBHEu
+ xt1+Rb/7xA5CEdosh0CrxJl8gn6lYEdWz8wiksGUlSqkgx6mVDTD1vnUMiiUTiLR12zMhX1rso
+ LSPEcuJftHr8/j+PSfdn+rxscxwkHLTmbegAAAA==
+X-Change-ID: 20260624-nio-12l-add-i2c-40-pin-19e0482fd835
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Simon Horman <horms@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
- Shuah Khan <skhan@linuxfoundation.org>
-Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-doc@vger.kernel.org
+ Ricardo Pardini <ricardo@pardini.net>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1782295454; l=13177;
- i=jackbb_wu@compal.com; s=20260526; h=from:subject:message-id;
- bh=wkVjtgalCZbQSoIpv9CwBCZjvSYX3+Cp4uEVA8TMu7k=;
- b=jPZka2HnEi+K+CbV2Jywm3Mrp5Qd3gOkA5PmGzVD32JJuUfAPPdLYsawrAo9Hw8HHi2bSqKlz
- ssBbVetjNJQCqRBRstFy4adm0Ra8tfI7w9HHrdsaeH5TUTYXiEeiPjV
-X-Developer-Key: i=jackbb_wu@compal.com; a=ed25519;
- pk=VH1prTWixNl8OEUPPSfII3p46MzJpQN8J3+ecE1tZXg=
-X-Endpoint-Received: by B4 Relay for jackbb_wu@compal.com/20260526 with
- auth_id=793
-X-Original-From: Jack Wu <jackbb_wu@compal.com>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1939;
+ i=ricardo@pardini.net; h=from:subject:message-id;
+ bh=bk5ea6cLdsnJpmBdpwgO3E/mbMZWo2izXGkJpWcYnGg=;
+ b=owEBiQF2/pANAwAIATteP+Oex+3pAcsmYgBqO8KM5gmzPvJ/rOmLT+qPMGepPIDKiCk8X5DBu
+ 5jAJoBZRaSJAU8EAAEIADkWIQSsGCMM9q/qytxIiJM7Xj/jnsft6QUCajvCjBsUgAAAAAAEAA5t
+ YW51MiwyLjUrMS4xMiwwLDMACgkQO14/457H7eliKwf/RkZ83zDF2MFSMVYiVJmHI8+ZuRR4XYD
+ nmdBGdJ1vpt7+H9f1xXNJr8MafhwauM1waRUw2x8cK2BgbUbNVvz7O+03KxR1dwP5xzYTP8N9Pa
+ eG3rxMC81LILXsxmleoMnJ8TSbsvlxLJYTiZ/ZMmjncU0Sm4Dzx8Km8puNAYXGr/tDsgf0JPH/q
+ 0mOXv5YVPVwWJzWeH+JVtUgY4lnxUh0m61v6SXzQAfCnipWskgWmCnjNiskyTOtuMew3eJNzlX9
+ Y1lA74GukTKRTFwLK+GI9SaNl3XFoKDvT1/l8i/YsztE6DWpmGaHDAg0EYvdurkCtLdGJQ4Jihm
+ mm1jmx1rbYg==
+X-Developer-Key: i=ricardo@pardini.net; a=openpgp;
+ fpr=AC18230CF6AFEACADC4888933B5E3FE39EC7EDE9
+X-Endpoint-Received: by B4 Relay for ricardo@pardini.net/default with
+ auth_id=588
+X-Original-From: Ricardo Pardini <ricardo@pardini.net>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,227 +91,75 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: jackbb_wu@compal.com
+Reply-To: ricardo@pardini.net
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T9XX is the PCIe host device driver for MediaTek's
-t900 modem. The driver uses the WWAN framework
-infrastructure to create the following control ports
-and network interfaces for data transactions.
-* /dev/wwan0at0 - Interface that supports AT commands.
-* /dev/wwan0mbim0 - Interface conforming to the MBIM
-  protocol.
-* wwan0-X - Primary network interface for IP traffic.
+From: Ricardo Pardini <ricardo@pardini.net>
 
-The main blocks in the T9XX driver are:
-* HW layer - Abstracts the hardware bus operations for
-   the device, and provides generic interfaces for the
-   transaction layer to get the device's information and
-   control the device's behavior. It includes:
+I2C3 (SDA3/SCL3 on GPIO14/GPIO15) is routed to the 40-pin GPIO header,
+exposed on the blue-colored pins 27 (SCL3) and 28 (SDA3). Enable the
+controller, add the corresponding pin configuration in the pinctrl node
+so users can use external I2C devices.
 
-   * PCIe - Implements probe, removal and interrupt
-     handling.
-   * MHCCIF (Modem Host Cross-Core Interface) - Provides
-     interrupt channels for bidirectional event
-     notification such as handshake and port enumeration.
+Signed-off-by: Ricardo Pardini <ricardo@pardini.net>
+---
+The Radxa NIO 12L exposes I2C3 (SDA3/SCL3, GPIO14/GPIO15) on its 40-pin
+GPIO header, on the blue-coloured pins 27 (SCL3) and 28 (SDA3).
 
-* Transaction layer - Implements data transactions for
-   the control plane and the data plane. It includes:
+Enable the I2C3 controller, add the matching pinctrl configuration and run
+the bus at 400 kHz, matching the other I2C buses already enabled on this
+board.
 
-   * DPMAIF (Data Plane Modem AP Interface) - Controls
-     the hardware that provides uplink and downlink
-     queues for the data path. The data exchange takes
-     place using circular buffers to share data buffer
-     addresses and metadata to describe the packets.
-   * CLDMA (Cross Layer DMA) - Manages the hardware
-     used by the port layer to send control messages to
-     the device using MediaTek's CCCI (Cross-Core
-     Communication Interface) protocol.
-   * TX Services - Dispatch packets from the port layer
-     to the device.
-   * RX Services - Dispatch packets to the port layer
-     when receiving packets from the device.
+Tested using a SD1306 I2C OLED display.
+---
+ arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
-* Port layer - Provides control plane and data plane
-   interfaces to userspace. It includes:
-
-   * Control Plane - Provides device node interfaces
-     for controlling data transactions.
-   * Data Plane - Provides network link interfaces
-     wwanX (0, 1, 2...) for IP data transactions.
-
-* Core logic - Contains the core logic to keep the
-   device working. It includes:
-
-   * FSM (Finite State Machine) - Monitors the state
-     of the device, and notifies each module when the
-     state changes.
-
-The compilation of the T9XX driver is enabled by the
-CONFIG_MTK_T9XX and CONFIG_MTK_T9XX_PCI config option
-which depends on CONFIG_WWAN.
-
-This v2 submission covers the control plane only
-(patches 1-6). The data plane will follow in a
-separate series once the control plane is accepted.
+diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+index bf91305e8e4a5..03a2f2e746475 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+@@ -371,6 +371,14 @@ it5205_sbu_mux: endpoint {
+ 	};
+ };
+ 
++/* Exposed on 40-pin header (blue-colored pins 27:SCL3 28:SDA3) */
++&i2c3 {
++	clock-frequency = <400000>;
++	pinctrl-0 = <&i2c3_pins>;
++	pinctrl-names = "default";
++	status = "okay";
++};
++
+ &i2c4 {
+ 	clock-frequency = <400000>;
+ 	pinctrl-0 = <&i2c4_pins>;
+@@ -789,6 +797,16 @@ pins-bus {
+ 		};
+ 	};
+ 
++	i2c3_pins: i2c3-pins {
++		pins-bus {
++			pinmux = <PINMUX_GPIO14__FUNC_SDA3>,
++				 <PINMUX_GPIO15__FUNC_SCL3>;
++			bias-pull-up = <1000>;
++			drive-strength = <6>;
++			drive-strength-microamp = <1000>;
++		};
++	};
++
+ 	i2c4_pins: i2c4-pins {
+ 		pins-bus {
+ 			pinmux = <PINMUX_GPIO16__FUNC_SDA4>,
 
 ---
-Changes in v3:
-- Address sashiko AI code review comments and fix sparse warnings
-- Patch 1 (Add PCIe core):
-  - Move extern declaration of mtk_dev_cfg_0900 from mtk_pci.c to mtk_pci.h to fix sparse warning
-  - Remove mtk_pci_bar_exit(): pcim_iounmap_region() was called with bitmask instead of BAR index, and pcim_iomap_regions() is devres-managed so manual unmap is redundant [sashiko]
-  - Remove pci_disable_device() from probe error path and remove path: pcim_enable_device() registers devres cleanup, manual disable causes enable_cnt underflow [sashiko]
-- Patch 3 (Add control DMA interface):
-  - Add #include "mtk_cldma.h" in mtk_cldma_drv_m9xx.c to fix sparse undeclared symbol warnings for mtk_cldma_regs_m9xx and cldma_drv_ops_m9xx
-  - Move extern declaration of mtk_ctrl_info_m9xx from mtk_trans_ctrl.c to mtk_trans_ctrl.h to fix sparse undeclared symbol warning
-  - Replace kcalloc + radix_tree_gang_lookup with radix_tree_for_each_slot() in mtk_ctrl_remove_radix_tree() to eliminate allocation in teardown path [sashiko]
-  - Add missing mtk_pci_dev_exit() call in mtk_pci_remove() to properly clean up FSM and trans_ctrl resources before device removal [sashiko]
-- Patch 4 (Add control port):
-  - Replace kcalloc + radix_tree_gang_lookup with radix_tree_for_each_slot() and single-entry gang_lookup in mtk_port_tbl_destroy() to eliminate allocation failure in teardown path [sashiko]
-  - Add port = NULL after mtk_port_put_locked() in mtk_port_internal_open() error path to prevent returning un-refcounted pointer [sashiko]
-  - Restore skb_unlink + trb_complete for non-EAGAIN errors in mtk_ctrl_trb_handler() TX path to prevent infinite retry loop [sashiko]
-- Patch 5 (Add FSM thread):
-  - Check mtk_pci_register_irq() return value in mtk_cldma_dev_init() and add err_destroy_wq error label to fix unreachable dead code [sashiko]
-  - Propagate specific error codes (ENOMEM/EIO/EINVAL) from mtk_cldma_dev_init() error paths instead of generic -EIO [sashiko]
-  - Free head SKB after detaching frag_list in mtk_cldma_rxq_free() scatter-gather mode to fix memory leak [sashiko]
-- Patch 6 (Add AT & MBIM WWAN ports):
-  - Remove unused write_lock mutex from struct mtk_port and its mutex_init call [sashiko]
-- Link to v2: https://patch.msgid.link/20260610-t9xx_driver_v1-v2-0-c65addf23b3f@compal.com
-
-Changes in v2:
-- Split series into control plane (this v2) and data plane (follow-up)
-- Patch 1 (Add PCIe core):
-  - Rename BAR_NUM to MTK_PCI_BAR_NUM for driver prefix consistency
-  - Replace magic numbers in mtk_pci_setup_atr() with named defines
-  - Remove redundant ATR register comments, use blank line separators
-  - Add kernel-doc comments to all non-static functions
-  - Convert 4 MMIO wrapper functions to static inline in header [sashiko]
-  - Remove unnecessary unlikely() from IRQ validation paths
-  - Add irq_cnt == 0 and irq_id < 0 guards in mtk_pci_get_virq_id() [sashiko]
-  - Initialize hw_bits at declaration for consistency
-  - Merge same-type variable declarations into single lines
-  - Add #else/#endif comments for CONFIG_ACPI blocks
-  - Add newlines in mtk_pci_pldr() for readability
-  - Move return into default case in mtk_pci_dev_reset()
-  - Simplify mtk_mhccif_init() error path to use direct returns
-  - Change -EFAULT to -ENOLINK for PCIe link check failure
-  - Rename goto label "out" to "log_err" in mtk_pci_probe()
-  - Wrap long lines to stay within 80 columns
-  - Fix IRQ vector leak: add pci_free_irq_vectors() on error path [sashiko]
-  - Fix mtk_pci_remove() ordering: free IRQ before cancel_work_sync [sashiko]
-  - Fix mtk_pci_pldr() ACPI buffer leak: free first result before second call [sashiko]
-  - Replace msleep(500) with MTK_PLDR_POWER_OFF_DELAY_MS define
-  - Remove unused EXT_EVT_H2D_DRM_DISABLE_AP and related register define [sashiko]
-  - Increase MTK_IRQ_NAME_LEN from 20 to 32 to fix W=1 format-truncation warning [sashiko]
-- Patch 2 (Add control plane transaction layer):
-  - Add kernel-doc comments to mtk_ctrl_init() and mtk_ctrl_exit()
-  - Change mtk_ctrl_exit() return type from int to void
-  - Set mdev->ctrl_blk to NULL after freeing in mtk_ctrl_exit() [sashiko]
-  - Change ctrl_blk from void* to typed struct mtk_ctrl_blk* [sashiko]
-  - Remove redundant "depends on MTK_T9XX" from MTK_T9XX_PCI Kconfig [sashiko]
-  - Use mtk_dev_free() instead of devm_kfree() in mtk_pci_probe() error path [sashiko]
-- Patch 3 (Add control DMA interface):
-  - Add @ops kernel-doc parameter for mtk_ctrl_init()
-  - Rename 'err' to 'ret' consistently throughout the patch
-  - Reorder variable declarations to follow reverse Christmas tree style
-  - Change mtk_cldma_txq_free() return type from int to void
-  - Change mtk_cldma_rxq_free() return type from int to void
-  - Change mtk_cldma_exit() return type from int to void
-  - Remove unnecessary zero-initialization of ret in mtk_cldma_start_xfer()
-  - Remove unnecessary zero-initialization of ret in mtk_cldma_tx()
-  - Use direct return instead of goto out in mtk_cldma_submit_tx() error paths
-  - Move software state before HWO flag in mtk_cldma_submit_tx()
-  - Squash variable declarations in mtk_cldma_check_intr_status()
-  - Remove unlikely() from validation paths in mtk_cldma_check_ch_cfg()
-  - Clamp data_recv_len with min_t to prevent skb_over_panic in mtk_cldma_rx_skb_adjust() [sashiko]
-  - Use READ_ONCE() for HWO flag polling in mtk_cldma_check_rx_req() [sashiko]
-  - Fix mtk_cldma_rx_done_work() to always unmask interrupt on error path [sashiko]
-  - Add DMA address guard in mtk_cldma_txq_free() teardown loop [sashiko]
-  - Add IS_ERR() check for kthread_run() in mtk_ctrl_trb_srv_init() [sashiko]
-  - Fix queue_info memory leak on validation failure in mtk_pcie_hif_init() [sashiko]
-  - Handle non-EAGAIN errors in mtk_ctrl_trb_handler() TX path [sashiko]
-  - Fix 'err' typo to 'ret' in mtk_cldma_txbuf_set() error message
-  - Remove unused variable mdev in mtk_cldma_rx_check_again() [sashiko]
-  - Remove unused variables trans and ctrl_blk in mtk_cldma_txq_free() and mtk_cldma_rxq_free() [sashiko]
-- Patch 4 (Add control port):
-  - Add @cfg kernel-doc parameter for mtk_ctrl_init()
-  - Update mtk_ctrl_init() return description to cover additional error codes
-  - Fix double list_del in mtk_port_stale_list_grp_cleanup() [sashiko]
-  - Fix direct mtk_port_trb_free() call to use kref_put() in mtk_port_ch_enable() error path [sashiko]
-  - Fix direct mtk_port_trb_free() call to use kref_put() in mtk_port_ch_disable() error path [sashiko]
-  - Add mtk_port_tbl_destroy() in mtk_port_mngr_init() error path to prevent port memory leak [sashiko]
-  - Change port_ops exit/reset/enable/disable callbacks from int to void
-  - Move -EIO dispatch comment to where the code was introduced
-- Patch 5 (Add FSM thread):
-  - Add bounds check for rtft_entry in mtk_fsm_parse_hs2_msg() [sashiko]
-  - Add skb length validation before accessing ctrl_msg_header in mtk_fsm_sap_ctrl_msg_handler() [sashiko]
-  - Fix skb leak on CTRL_MSG_HS2 mismatch return in mtk_fsm_sap_ctrl_msg_handler() [sashiko]
-  - Add skb length validation before accessing ctrl_msg_header in mtk_fsm_md_ctrl_msg_handler() [sashiko]
-  - Replace devm_kzalloc/devm_kfree with kzalloc/kfree for FSM events [sashiko]
-  - Fix mtk_fsm_evt_submit() to return -ETIMEDOUT on blocking event timeout [sashiko]
-  - Change FSM kthread from TASK_INTERRUPTIBLE to TASK_UNINTERRUPTIBLE [sashiko]
-  - Remove unused variable hw_id in mtk_cldma_dev_exit() [sashiko]
-- Patch 6 (Add AT & MBIM WWAN ports):
-  - Use imperative mode in commit message
-  - Remove unnecessary zero-initialization of ret in mtk_port_copy_data_from()
-  - Change copy_from_user() error code from -EFAULT to -EINVAL in mtk_port_copy_data_from()
-  - Return -EINVAL for zero-length write in mtk_port_common_write()
-  - Change mtk_port_wwan_exit/enable/disable() return type from int to void
-  - Fix packet_size to account for CCCI header reservation in mtk_port_common_write() [sashiko]
-  - Fix WWAN tx callbacks to consume skb and return 0 per wwan_port_ops contract [sashiko]
-  - Fix wwan_create_port() error path: clear ERR_PTR to NULL and call mtk_port_ch_disable() [sashiko]
-- Patch 7 (Add maintainers entry): new patch
-- Link to v1: https://patch.msgid.link/20260529-t9xx_driver_v1-v1-0-bdbfe2c01e57@compal.com
-
----
-Jack Wu (7):
-      net: wwan: t9xx: Add PCIe core
-      net: wwan: t9xx: Add control plane transaction layer
-      net: wwan: t9xx: Add control DMA interface
-      net: wwan: t9xx: Add control port
-      net: wwan: t9xx: Add FSM thread
-      net: wwan: t9xx: Add AT & MBIM WWAN ports
-      net: wwan: t9xx: Add maintainers entry
-
- MAINTAINERS                                     |    9 +
- drivers/net/wwan/Kconfig                        |   17 +
- drivers/net/wwan/Makefile                       |    1 +
- drivers/net/wwan/t9xx/Makefile                  |   14 +
- drivers/net/wwan/t9xx/mtk_ctrl_plane.c          |  111 ++
- drivers/net/wwan/t9xx/mtk_ctrl_plane.h          |   88 ++
- drivers/net/wwan/t9xx/mtk_dev.c                 |   55 +
- drivers/net/wwan/t9xx/mtk_dev.h                 |  114 ++
- drivers/net/wwan/t9xx/mtk_fsm.c                 |  948 +++++++++++++++
- drivers/net/wwan/t9xx/mtk_fsm.h                 |  140 +++
- drivers/net/wwan/t9xx/mtk_port.c                |  968 +++++++++++++++
- drivers/net/wwan/t9xx/mtk_port.h                |  174 +++
- drivers/net/wwan/t9xx/mtk_port_io.c             |  573 +++++++++
- drivers/net/wwan/t9xx/mtk_port_io.h             |   41 +
- drivers/net/wwan/t9xx/mtk_utility.h             |   33 +
- drivers/net/wwan/t9xx/pcie/Makefile             |   15 +
- drivers/net/wwan/t9xx/pcie/mtk_cldma.c          | 1420 +++++++++++++++++++++++
- drivers/net/wwan/t9xx/pcie/mtk_cldma.h          |  173 +++
- drivers/net/wwan/t9xx/pcie/mtk_cldma_drv.c      |  371 ++++++
- drivers/net/wwan/t9xx/pcie/mtk_cldma_drv.h      |  174 +++
- drivers/net/wwan/t9xx/pcie/mtk_cldma_drv_m9xx.c |  178 +++
- drivers/net/wwan/t9xx/pcie/mtk_cldma_drv_m9xx.h |  101 ++
- drivers/net/wwan/t9xx/pcie/mtk_ctrl_cfg_m9xx.c  |   55 +
- drivers/net/wwan/t9xx/pcie/mtk_pci.c            | 1102 ++++++++++++++++++
- drivers/net/wwan/t9xx/pcie/mtk_pci.h            |  234 ++++
- drivers/net/wwan/t9xx/pcie/mtk_pci_drv_m9xx.c   |   69 ++
- drivers/net/wwan/t9xx/pcie/mtk_pci_reg.h        |   71 ++
- drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.c     |  603 ++++++++++
- drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.h     |  107 ++
- 29 files changed, 7959 insertions(+)
----
-base-commit: eb3f4b7426cfd2b79d65b7d37155480b32259a11
-change-id: 20260529-t9xx_driver_v1-1744f8af7739
+base-commit: 8cd9520d35a6c38db6567e97dd93b1f11f185dc6
+change-id: 20260624-nio-12l-add-i2c-40-pin-19e0482fd835
 
 Best regards,
 --  
-Jack Wu <jackbb_wu@compal.com>
+Ricardo Pardini <ricardo@pardini.net>
 
 
 
