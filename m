@@ -4,74 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 432D6CD4F26
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jun 2026 03:05:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76CC2CDB479
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jun 2026 03:31:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=2eZ75O7x3e8enqehiGd6zaRF5hMlFKzbSAUTfVWZPS0=; b=wAYy1z5NsPGwzuLG/giZvRKKz3
-	ZVTyYNvOrVGrODe0Rhu89vOyLPLrXPZLXJ48h43OkVTYj0rhqL6YaklcG6f7EMtHGEBf8bOAq83Ns
-	Deuyja3GI98QjpLQgQ93YDHDTC17iQBTxZP6EJZnWfgQ3tp8CMgjST+j4b7YAb36dH0smKzMdJID2
-	QE+1DnwNU0TT9nAtdBQo72+YSr2yi8TWNaztj8Pm3USKh5IcBU0usAr4JhXQUKNFjbInRBh70yO+3
-	u8ZRIuMhcJUrCtJv3Sjcpp3DjpDnmlBmRLIcDaHe7+sFqf3il65b6KoqKa+989sWBRGQb5AuxtRgi
-	GVZ780oQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JpOS3+PhzRpY+cjPpPjbMHL1H+dnvUhY5o3zciKGtgA=; b=3WpI7o7sqwfmtEyZO49fV7kC+X
+	DLmhlp50VcYkjLAuRczc09PmYgzZtzW4dPTdiX9+KEuYkHqqbEgilQskpWzKTfgjSun0n+QsOy3Ul
+	K0UQtHWOHm7V+SvhvCZdz8BsxT2rHmzHe/G5fytOgNUe5+8aCjpWUBZgV9q+v84r3F1gZo//1HcM8
+	C5y5QU32hlqMgXc1KMLIWGTVCgz43+bog1zJPoBiPg7CaSk410AB+1j/zOa1OvQNOvMQp/OO8D/hW
+	Djne5OGF5vjQZve8O1QwFdXIWQmZ8Ak0SDj/Wv1aI8i5+8ps6qLvFWtRorWz7t3XHYdENJL1BXp9n
+	OXvhr1NA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcDw2-000000074jY-2Mam;
-	Wed, 24 Jun 2026 03:05:54 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1wcELE-000000075hm-0gaJ;
+	Wed, 24 Jun 2026 03:31:56 +0000
+Received: from out-179.mta1.migadu.com ([95.215.58.179])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcDvz-000000074j1-41bf
+	id 1wcELA-000000075hL-44Ek
 	for linux-mediatek@lists.infradead.org;
-	Wed, 24 Jun 2026 03:05:53 +0000
-X-UUID: 972e2c5a6f7911f1acbe4559397dec65-20260623
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=2eZ75O7x3e8enqehiGd6zaRF5hMlFKzbSAUTfVWZPS0=;
-	b=RMq5bKH73vlxy+mxM475ghj3XMcz1DuouaDwnWSmilw3Uq7OqChFA4d/t2//xxZxzuH0STAW/pJVhj7CEoYRV4CqTIje4/roJ2nF/4S5sC89Fzp3RSn/pCq3r1FbzrmcwtmLHwsYLBjA8r6VvkiR7tKknx7BgwD1DUukru2enhg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.17,REQID:db479c83-9e4e-4e87-a06f-6b6de3e51195,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:d497b38,CLOUDID:19afc6fc-4e5b-4880-a751-e09c9abb260d,B
-	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50,EDM:
-	-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,AV:
-	0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 972e2c5a6f7911f1acbe4559397dec65-20260623
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <eason.lai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1143916935; Tue, 23 Jun 2026 20:05:44 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 24 Jun 2026 11:05:42 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 24 Jun 2026 11:05:42 +0800
-From: Eason Lai <eason.lai@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<Yf.Luo@mediatek.com>, <kun.wu@mediatek.com>, <deren.wu@mediatek.com>,
-	<sean.wang@mediatek.com>, <quan.zhou@mediatek.com>, <ryder.lee@mediatek.com>,
-	<leon.yen@mediatek.com>, <litien.chang@mediatek.com>, <jb.tsai@mediatek.com>,
-	<eason.lai@mediatek.com>, Eason Lai <Eason.Lai@mediatek.com>
-Subject: [PATCH v4 1/1] wifi: mt76: mt792x: fix use-after-free in mt76_rx_poll_complete
-Date: Wed, 24 Jun 2026 11:05:11 +0800
-Message-ID: <20260624030511.1197942-1-eason.lai@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	Wed, 24 Jun 2026 03:31:55 +0000
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=justthetip.ca;
+	s=key1; t=1782271906;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=JpOS3+PhzRpY+cjPpPjbMHL1H+dnvUhY5o3zciKGtgA=;
+	b=O5FSVNP5b4dlvDdDqUfisGctV6dkiQR39yNAnqkoEKVXM+dqW7wMwyMg+KTNkyJ6tGxIf2
+	s7Ng6mQTC7mZlA7MDYd+leFlJ8mk2/N3BE6KWWJ733DT/Qpiqtn/IKAxnX1myGML2/ay8D
+	mTSqjzdrVjPYu7mFPvW2RZqf88Yr+OiyjaeEtUMrcjT5KncXIQWmHp1fFoiBoxEFC8aSNE
+	QY2YZ0OA2/8PgOJg6uBtISl/74J2c7LVSnLDHgfKhTnkbG9mBidQ/CmKojkYDfGXDQGXUS
+	xRfLyPMnJH+HHkA6tJtvDBxuSUJqs8+VO2kzl8To3R5jQUZVd+YYoJAsXbfWKg==
+From: Devin Wittmayer <lucid_duck@justthetip.ca>
+To: Sean Wang <sean.wang@kernel.org>,
+	Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Sean Wang <sean.wang@mediatek.com>,
+	Devin Wittmayer <lucid_duck@justthetip.ca>
+Subject: Re: [PATCH 1/2] wifi: mt76: mt7927: set band index for sniffer mode
+Date: Tue, 23 Jun 2026 20:31:35 -0700
+Message-ID: <20260624033135.121054-1-lucid_duck@justthetip.ca>
+In-Reply-To: <20260613225144.2414283-1-sean.wang@kernel.org>
+References: <20260613225144.2414283-1-sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260623_200552_047171_431F6D0F 
-X-CRM114-Status: GOOD (  14.49  )
+X-CRM114-CacheID: sfid-20260623_203153_426744_A8E42ED5 
+X-CRM114-Status: UNSURE (   4.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,103 +74,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Eason Lai <Eason.Lai@mediatek.com>
+Tested on a real MT7927 (Filogic 380, PCIe). Two monitors on different
+bands capture at the same time with the series, and drop back onto one
+band without it.
 
-A use-after-free issue occurs in mt76_rx_poll_complete due to a race
-condition. The STA has already been removed, but the rx_status still
-had a pointer to the wcid in the STA.
+I tried each patch on its own too. [1/2] by itself still collapses both
+monitors onto one channel. With [2/2] they stay apart, but then one of
+them stops capturing, so it looks like both are needed.
 
-Set the links' wcid pointers to be NULL for a MLD in
-mt7925_sta_pre_rcu_remove()
+Single-band monitor and a normal station connection were both fine.
 
-BUG: KASAN: invalid-access in mt76_rx_poll_complete+0x280/0x470
-Call trace:
-dump_backtrace+0xec/0x128
-show_stack+0x18/0x28
-dump_stack_lvl+0x40/0xc8
-print_report+0x1b8/0x710
-kasan_report+0xe0/0x144
-do_bad_area+0x120/0x260
-do_tag_check_fault+0x20/0x34
-do_mem_abort+0x54/0xa8
-el1_abort+0x3c/0x5c
-el1h_64_sync_handler+0x40/0xcc
-el1h_64_sync+0x7c/0x80
-mt76_rx_poll_complete+0x280/0x470
-mt76_dma_rx_poll+0x114/0x51c
-mt792x_poll_rx+0x60/0xf8
-napi_threaded_poll_loop+0xe0/0x450
-napi_threaded_poll+0x80/0x9c
-kthread+0x11c/0x158
-ret_from_fork+0x10/0x20
-
-Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for
-mt7925 chips")
-
-Signed-off-by: Eason Lai <Eason.Lai@mediatek.com>
----
-v2: fix mt76x02 build errors
-v3: fix mt76x02 build error due to variable set but not used
-v4: fix use-after-free in MLO
----
- .../net/wireless/mediatek/mt76/mt7925/main.c  | 36 ++++++++++++++++++-
- 1 file changed, 35 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index 73d3722739d0..e3fb6392eda2 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -2410,6 +2410,40 @@ static void mt7925_channel_switch_rx_beacon(struct ieee80211_hw *hw,
- 	}
- }
- 
-+static void mt7925_sta_pre_rcu_remove(struct ieee80211_hw *hw,
-+				      struct ieee80211_vif *vif,
-+				      struct ieee80211_sta *sta)
-+{
-+	struct mt76_phy *phy = hw->priv;
-+	struct mt76_dev *dev = phy->dev;
-+	struct mt76_wcid *wcid = (struct mt76_wcid *)sta->drv_priv;
-+
-+	mutex_lock(&dev->mutex);
-+	spin_lock_bh(&dev->status_lock);
-+
-+	if (ieee80211_vif_is_mld(vif)) {
-+		struct mt792x_sta *msta = (struct mt792x_sta *)sta->drv_priv;
-+		struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
-+		unsigned long valid = mvif->valid_links;
-+		struct mt792x_link_sta *mlink;
-+		unsigned int link_id;
-+
-+		for_each_set_bit(link_id, &valid, IEEE80211_MLD_MAX_NUM_LINKS) {
-+			mlink = mt792x_sta_to_link(msta, link_id);
-+			if (!mlink || !mlink->wcid.sta)
-+				continue;
-+			if (mlink->wcid.idx < ARRAY_SIZE(dev->wcid))
-+				rcu_assign_pointer(dev->wcid[mlink->wcid.idx],
-+						   NULL);
-+		}
-+	} else {
-+		rcu_assign_pointer(dev->wcid[wcid->idx], NULL);
-+	}
-+
-+	spin_unlock_bh(&dev->status_lock);
-+	mutex_unlock(&dev->mutex);
-+}
-+
- const struct ieee80211_ops mt7925_ops = {
- 	.tx = mt792x_tx,
- 	.start = mt7925_start,
-@@ -2422,7 +2456,7 @@ const struct ieee80211_ops mt7925_ops = {
- 	.start_ap = mt7925_start_ap,
- 	.stop_ap = mt7925_stop_ap,
- 	.sta_state = mt76_sta_state,
--	.sta_pre_rcu_remove = mt76_sta_pre_rcu_remove,
-+	.sta_pre_rcu_remove = mt7925_sta_pre_rcu_remove,
- 	.set_key = mt7925_set_key,
- 	.sta_set_decap_offload = mt7925_sta_set_decap_offload,
- #if IS_ENABLED(CONFIG_IPV6)
--- 
-2.45.2
-
+Tested-by: Devin Wittmayer <lucid_duck@justthetip.ca>
 
