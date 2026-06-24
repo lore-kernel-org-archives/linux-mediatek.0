@@ -4,89 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9393ACDB479
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jun 2026 04:14:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD032CDB470
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jun 2026 05:19:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vKtWlzZGcSqpr4oYtvBHGz8mTHnWwBOUsRR1pMRsq7A=; b=aiuWxLsiR+6ByKJcoIlg7oiqlV
-	9A+x2mtd6pUQTlxSAr+HddXviT6N6GKlHQUZErHMldmHCxqZO/AIDVMo4xrIGR8KtUxWjKjXRd6Xa
-	Qn8kzoeFO+/hJE+D2xl62kvWkUuKXxIMQ0uv/8J/N06NQWqlklul0FyfRa7W15JEfGp1pyKpQsK0b
-	eTZk3jSxvYsGzC4IFpZL+/KN0dYaqwqj/A05CCNpqk2Bxeoqs6SNNGFoqInsyRXOiUXrBFC8DpLOn
-	sqSGnWOBgduUht7WcdbhFUa+DkeSZjOKPk1O5Lt4Eq86ILEB2vLCs2iaOqO/imrMdx3cNpb20d6dg
-	zonv1iQg==;
+	bh=wwH4JKRwdgPVqXhvs8JvCENushgrOY1a28q/t+owUbc=; b=KmevTrFWQ6Fta9sy/9UCqcqcth
+	9kkr/SkOZ4pNXt8og6kSxFdQMuAYfGRWO2flgypKv5ZpLHlDiA8ru91qSAGtlHodOGHqBoa2YIU0O
+	lI/QqJAcfy89Kwvco/H2k5LqNitN2J6KK7qXeCYgyWKYPZWSBCWK2U7k/1B3rDNJLE/hLhuQh6Fbq
+	m2E/lXSyWe4lfZEfXty23EZB1MK8hi/pNOvcFHhNYuM3khk7cBcfYfOaDz3U8u/rJ3voWvh26TGQT
+	UWakiiKTAEqbjss/bpg5962BkXrG+R53TAgyhx39q4EhGqdYK4ETMF5acBNnvJtMcSdbwfWMC4VeL
+	RAyNDlxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcF0a-000000077HU-0VjM;
-	Wed, 24 Jun 2026 04:14:40 +0000
-Received: from mail-dl1-x1230.google.com ([2607:f8b0:4864:20::1230])
+	id 1wcG10-000000079sH-2947;
+	Wed, 24 Jun 2026 05:19:10 +0000
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcF0X-000000077Gj-0Wcy
+	id 1wcG0w-000000079rN-3UrU
 	for linux-mediatek@lists.infradead.org;
-	Wed, 24 Jun 2026 04:14:38 +0000
-Received: by mail-dl1-x1230.google.com with SMTP id a92af1059eb24-139b914bab6so676034c88.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 23 Jun 2026 21:14:36 -0700 (PDT)
+	Wed, 24 Jun 2026 05:19:08 +0000
+Received: by mail-pf1-x42c.google.com with SMTP id d2e1a72fcca58-8422f395a4aso469940b3a.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 23 Jun 2026 22:19:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1782274476; x=1782879276; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1782278345; x=1782883145; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=vKtWlzZGcSqpr4oYtvBHGz8mTHnWwBOUsRR1pMRsq7A=;
-        b=QD+wXeX2AQmbdjvDbU1MmIoH/1JVYUGzXK/h/nrzFi63kw5EIhgh2lq3HDBAogM5j8
-         mBpTriNdPsWExfyn9NMa6rVAAlocVrjE91EYE/3EPi5jR0iIVatYSg7fke/AeSVdHd0m
-         ZRlk1rU4U3iDGuaFWQ803/Jx/yd/gb7w6CPTqkv+uZS9DqgkZsy6H16GcEJFugukx0v4
-         5GvcrhLlMu9wFyge+4/qtw6LEMN+r2JraxoVyAKRPVAQQ1i14ehMtpAVGC9OQiJ6NYzs
-         psKy6MFzQaowWjFB2pSoLE8BzBEcziGQ1rcOSvOyPFZmL+5E3dmdt3qOwhoNtrDDo4UW
-         L55w==
+        bh=wwH4JKRwdgPVqXhvs8JvCENushgrOY1a28q/t+owUbc=;
+        b=PWGh2cD7qeI6DXQBEBBoPqsAn6+UIDCbL2F7QOpPDoax6Ure6W6sc9tgPE6r9JKWIz
+         77pzhrhwGAj/bLTT1FND+yInwZWjPQvTbbxapaDBhU5OvN2RBpD2QUChzjpLj44RO8Xn
+         ZSMle1p2F2b/5+TsAtgcnq7W5eKDMj1tA1Bmk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1782274476; x=1782879276;
+        d=1e100.net; s=20251104; t=1782278345; x=1782883145;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=vKtWlzZGcSqpr4oYtvBHGz8mTHnWwBOUsRR1pMRsq7A=;
-        b=XKMF9p2tLODT/npGlZsF8QFUq0mus5rME10NAa+zhTtqdkGBeEiyXtYKNcqIqY5LaY
-         ChHZ9/xRuP+9WJNtCs9DBjFiL+SXQiv85FKESfExClIQ1ti/u1EDCbgi7+3Foe4U4gXs
-         jlcX1iqwIlOjhGDsNtDFhiV5HkN6vqbgBH7xVR1qBDvLGomyN9FcewyY7HWX8uKmhX3U
-         9E59UGZNNNXeITkM23x/nCLwwrrxbagJYXvCx805wKnOTiQ3Yta2Kvm4fk8MlQKjrqJP
-         43Xy9KkE1g27H4v5VPTxEaHtu8SvI6vdZeVoiqhjl5Dsy/QLf02yn8TFuIvbRjOZ78w4
-         Jq3w==
-X-Forwarded-Encrypted: i=1; AFNElJ8IehQMJrXRS9/5g1dlo2Gx8Wvx3UqrrPR/112A5y59CxLKdMgMAIWs1ggReLIVTCS6xqbcUcdyHGlnMqpYjw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzWrsq15il5P8ogN43xsd1tVgb6tSkPyfG2XV8pUE5pMzRKiRfo
-	RP0nYdnJRiIc9NkrASN+EmFRaQghSqe7lkVUXMXiwSsH9IgSbaVnue8I
-X-Gm-Gg: AfdE7cnyS7f9CAdP7PZXlc4cN4NO08xkV0ITiIkpVN6VLjIaDOTxOnzLXB5xJQ4B5TI
-	KBp0IvuYv6rnsnwnepL/kTnB4Q2RpGGL02huhi2wRZ5X6HlwM4cmFKPkzWpqmetmZPFiUkEDLvR
-	q8Q4+7GShjmc7vWEVMiN9RGTmvAyeF7u0OrS8zKur0e6dOSxWtPmkbQ815eTktwKBmaXFggATWO
-	Wqd1LARkfwsb3+z6r233HOQO0NbQSFbdmQrHi5WxBHibl+XaU2jsDnMsC45m+RhJWvCwt/+lmy3
-	BDxd+pppmXHQbSBCR4McFtzd0SVzVvqfyS/bAq8TneJ8gRr4TZLt/P3LmGPNFbGJe4TOKi84wZs
-	p1qP7Fdln9FlLehSpd0TE5M4Qw8xhOPz8gsgbLs6tR86mwVrwns76cNmGn2hTynWXfV7PzsEKNS
-	DWOo5cAaMSQyEz+r5ExwIk6ApLdcTNzeE6gZyFu4Ks9+ofwxRSmRA56g==
-X-Received: by 2002:a05:7022:128f:b0:138:5049:cb7c with SMTP id a92af1059eb24-139d0cd9467mr1322277c88.36.1782274475590;
-        Tue, 23 Jun 2026 21:14:35 -0700 (PDT)
-Received: from google.com ([2a00:79e0:2ebe:8:6026:1e6d:4a80:9bd0])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-30c1bd8d6edsm20547205eec.14.2026.06.23.21.14.34
+        bh=wwH4JKRwdgPVqXhvs8JvCENushgrOY1a28q/t+owUbc=;
+        b=Y0M5crRuzcG5reT2Isl7I7O8fExhKcU6RaZNCvWTLsovCa+JpHkY8utoPIfQNEtQW5
+         mAN/R1K5YNJ5qyokOwbq59aegWqg0Qo8VeRLgnmBVQ9XSbZCRPBurhMsjun9tt1+vwuI
+         5CJSePiiU4Pz/dnb33+Y/KnmHm8NHlyH39Qng43BNLLz2CdxdzwWZ3Qs/cUz0Emthl2o
+         iW4pSzVA1CI80rqnHtjjOJcinCLwgz7pwbAbhiKoKY5nvTHU4gavSg4ThV4Qa1AYMLKW
+         rrQ4v8oeHBU0ioZ5TZtkT5y0WNveMP+3yqLP5FhJiCTx31aqHMI2evYopdSZwTF7VF6j
+         +xlA==
+X-Forwarded-Encrypted: i=1; AFNElJ/o0aXvrRjCFaE/C0I2WXwHloOdxzsARfErPVvFL+6UfseqanrV/VSmi4jQyGk6+yRodelNinLsz5Rb4G3Z+Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz2tIdXTuUaxMGEVQCxeKb3tuGyTgd3+Qe1pqYKTozgnuzfWL3c
+	o81qreoBfz2plRxFdyu87bvIIxS+jX29TnOrU8gAL4DkZxoQABCycBl+QTSzZhUeeg==
+X-Gm-Gg: AfdE7cmhn4eeAy0lzmslXAlc+AxVpi2aDDQ12tcRRGZ8GNcuyEbZz4H3FjWcLhFgE5J
+	xDE3RbMCmGTvTlf9t8vPrHvEOkoQIbg1do7yEQChqpoW8/Ks83Qw3atWAjB9wWTY+fse1lu1Lfn
+	YvctEwyyGCrhezutr1xqHwa5fMewfl7Qv6tgThDVXQ1dU6ls3Oa/Z03upQ2llAAhDMJeIINf1X5
+	TGTPYENtwP6BQ4CySMAS+wCKNTkeBqI1oSzN8bNZNBRzld95mApnUYWLcz3LRZLmzJPbkC2e3R3
+	5bwPQiBlT5vl84uHIjcGBETxtc242vyqxfSllcKUUcPXXPQTSN7ojaFPFW2MgE1AwX2OQahbJ6Z
+	kN3x8XlVnlCocdAHy/PDR9fxF34kq+0Rml4gnRQeyT1DfWwknQ9xkK8JOeTxGk9FIXwn/SZS1z5
+	HROoxNcREr5B4Pm4dybCIj5wjlubLt/wPAvNiFcWMmlBVz1dTtx8nT
+X-Received: by 2002:a05:6a00:859d:b0:842:dd4:d9e2 with SMTP id d2e1a72fcca58-84591a1946amr5158854b3a.0.1782278345062;
+        Tue, 23 Jun 2026 22:19:05 -0700 (PDT)
+Received: from google.com ([2a00:79e0:2031:6:1287:5d13:b2d6:c6ab])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-845a4127bd0sm894643b3a.53.2026.06.23.22.19.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 23 Jun 2026 21:14:34 -0700 (PDT)
-Date: Tue, 23 Jun 2026 21:14:31 -0700
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Rosen Penev <rosenp@gmail.com>
-Cc: linux-input@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH] Input: mtk-pmic-keys: Count available keys during probe
- instead of pre-counting
-Message-ID: <ajtX-cVWFmmkVO7M@google.com>
-References: <20260528235600.312045-1-rosenp@gmail.com>
+        Tue, 23 Jun 2026 22:19:04 -0700 (PDT)
+Date: Wed, 24 Jun 2026 14:19:00 +0900
+From: Sergey Senozhatsky <senozhatsky@chromium.org>
+To: Marcel Holtmann <marcel@holtmann.org>, 
+	Luiz Augusto von Dentz <luiz.dentz@gmail.com>, Sean Wang <sean.wang@mediatek.com>
+Cc: Tomasz Figa <tfiga@chromium.org>, linux-bluetooth@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, Sergey Senozhatsky <senozhatsky@chromium.org>
+Subject: Re: [PATCH v4 0/2] Bluetooth: btmtksdio: teardown fixes
+Message-ID: <ajtoXTaBEMSyGADX@google.com>
+References: <20260618031338.1011410-1-senozhatsky@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260528235600.312045-1-rosenp@gmail.com>
+In-Reply-To: <20260618031338.1011410-1-senozhatsky@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260623_211437_201043_2660AD23 
-X-CRM114-Status: GOOD (  26.18  )
+X-CRM114-CacheID: sfid-20260623_221906_905122_4283E414 
+X-CRM114-Status: UNSURE (   8.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,119 +97,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rosen,
-
-On Thu, May 28, 2026 at 04:56:00PM -0700, Rosen Penev wrote:
-> Replace the separate of_get_available_child_count() pre-count and
-> validation step with a single pass through for_each_child_of_node_scoped().
-> Skip unavailable child nodes and bail out if more than
-> MTK_PMIC_MAX_KEY_COUNT available keys are found. Set nkeys after the
-> loop so suspend/resume iterate only over initialized entries.
+On (26/06/18 12:13), Sergey Senozhatsky wrote:
+> This fixes several teardown issues:
 > 
-> Also use a key variable in the loop for clarity.
+>      INFO: task kworker/u17:0:189 blocked for more than 122 seconds.
+>      __cancel_work_timer+0x3f4/0x460
+>      cancel_work_sync+0x1c/0x2c
+>      btmtksdio_flush+0x2c/0x40
+>      hci_dev_open_sync+0x10c4/0x2190
+>      [..]
 > 
-> Use of_device_get_match_data() to fetch the PMIC key register data directly
-> instead of open-coding an of_match_device() lookup.
-
-Please split this out into a separate patch.
-
+> close/flush can deadlock when run concurrently with btmtksdio_txrx_work().
+> In addition btmtksdio_txrx_work() re-enables interrupts regardless of
+> close/flush being executed on another CPU.
 > 
-> This also lets the driver drop the of_device.h include.
+> v3 -> v4:
+> - fix commit message linter warnings/errors (tabs, subject line over 80
+>   chars).
 > 
-> Assisted-by: OpenCode:BigPickle
-> Signed-off-by: Rosen Penev <rosenp@gmail.com>
-> ---
->  drivers/input/keyboard/mtk-pmic-keys.c | 53 ++++++++++++--------------
->  1 file changed, 24 insertions(+), 29 deletions(-)
-> 
-> diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
-> index c78d9f6d97c4..e34856693ee2 100644
-> --- a/drivers/input/keyboard/mtk-pmic-keys.c
-> +++ b/drivers/input/keyboard/mtk-pmic-keys.c
-> @@ -16,7 +16,6 @@
->  #include <linux/mfd/mt6397/core.h>
->  #include <linux/mfd/mt6397/registers.h>
->  #include <linux/module.h>
-> -#include <linux/of_device.h>
->  #include <linux/of.h>
->  #include <linux/platform_device.h>
->  #include <linux/regmap.h>
-> @@ -147,6 +146,7 @@ struct mtk_pmic_keys {
->  	struct input_dev *input_dev;
->  	struct device *dev;
->  	struct regmap *regmap;
-> +	unsigned int nkeys;
->  	struct mtk_pmic_keys_info keys[MTK_PMIC_MAX_KEY_COUNT];
->  };
->  
-> @@ -267,7 +267,7 @@ static int mtk_pmic_keys_suspend(struct device *dev)
->  	struct mtk_pmic_keys *keys = dev_get_drvdata(dev);
->  	int index;
->  
-> -	for (index = 0; index < MTK_PMIC_MAX_KEY_COUNT; index++) {
-> +	for (index = 0; index < keys->nkeys; index++) {
->  		if (keys->keys[index].wakeup) {
->  			enable_irq_wake(keys->keys[index].irq);
->  			if (keys->keys[index].irq_r > 0)
-> @@ -283,7 +283,7 @@ static int mtk_pmic_keys_resume(struct device *dev)
->  	struct mtk_pmic_keys *keys = dev_get_drvdata(dev);
->  	int index;
->  
-> -	for (index = 0; index < MTK_PMIC_MAX_KEY_COUNT; index++) {
-> +	for (index = 0; index < keys->nkeys; index++) {
->  		if (keys->keys[index].wakeup) {
->  			disable_irq_wake(keys->keys[index].irq);
->  			if (keys->keys[index].irq_r > 0)
-> @@ -325,24 +325,23 @@ MODULE_DEVICE_TABLE(of, of_mtk_pmic_keys_match_tbl);
->  static int mtk_pmic_keys_probe(struct platform_device *pdev)
->  {
->  	int error, index = 0;
-> -	unsigned int keycount;
->  	struct mt6397_chip *pmic_chip = dev_get_drvdata(pdev->dev.parent);
->  	struct device_node *node = pdev->dev.of_node;
->  	static const char *const irqnames[] = { "powerkey", "homekey" };
->  	static const char *const irqnames_r[] = { "powerkey_r", "homekey_r" };
->  	struct mtk_pmic_keys *keys;
->  	const struct mtk_pmic_regs *mtk_pmic_regs;
-> +	struct mtk_pmic_keys_info *key;
->  	struct input_dev *input_dev;
-> -	const struct of_device_id *of_id =
-> -		of_match_device(of_mtk_pmic_keys_match_tbl, &pdev->dev);
->  
->  	keys = devm_kzalloc(&pdev->dev, sizeof(*keys), GFP_KERNEL);
->  	if (!keys)
->  		return -ENOMEM;
-> -
->  	keys->dev = &pdev->dev;
->  	keys->regmap = pmic_chip->regmap;
-> -	mtk_pmic_regs = of_id->data;
-> +	mtk_pmic_regs = of_device_get_match_data(&pdev->dev);
-> +	if (!mtk_pmic_regs)
-> +		return -EINVAL;
->  
->  	keys->input_dev = input_dev = devm_input_allocate_device(keys->dev);
->  	if (!input_dev) {
-> @@ -356,31 +355,26 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
->  	input_dev->id.product = 0x0001;
->  	input_dev->id.version = 0x0001;
->  
-> -	keycount = of_get_available_child_count(node);
-> -	if (keycount > MTK_PMIC_MAX_KEY_COUNT ||
-> -	    keycount > ARRAY_SIZE(irqnames)) {
-> -		dev_err(keys->dev, "too many keys defined (%d)\n", keycount);
-> -		return -EINVAL;
-> -	}
-> +	for_each_available_child_of_node_scoped(node, child) {
+> Sergey Senozhatsky (2):
+>   Bluetooth: btmtksdio: test for BUS IO errors in btmtksdio_txrx_work()
+>   Bluetooth: btmtksdio: call cancel_work_sync() out of host lock scope
 
-Let's keep using for_each_child_of_node_scoped() and check
-of_device_is_available() inside the loop. This will allow marking a key
-as disabled without shifting it's meaning (power key vs home key).
-
-In the rest of the driver we should be able to determine if key is set
-up checking for key->irq > 0.
-
-Thanks.
-
--- 
-Dmitry
+Do the patches look good enough to pick up?
 
