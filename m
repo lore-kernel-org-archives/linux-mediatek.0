@@ -4,82 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1D1ECDE003
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jun 2026 11:42:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD359CDB481
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jun 2026 12:19:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=QoK/3UddXbmX1NE+eBlNwxX446SsnQUqEu7wWRxnQVw=; b=d4Ep2/658EI3fPsu6UBjRGYr1Q
-	cS9fYlVkcmqQWcfihWdVbseDh2loi74vuRIA7verErdjyqiNGNUb1Hn1J9MTrTvAwoUXhoSfhPt1V
-	Ws0A8xe76Hz+zpZRgACeGR6cuZqxUBjeaRCdURVFBFPayQv0ThHV7LvRizkozso7QNhUdcQlr1HTL
-	KWI5xZ9MC1wskZpayL6tgNXsfRE3eoT4d+6bCyA2sJQ75P4LEpqcP1gsZHcmsnhWi26oh29l+6jBM
-	t9ziTG4oPz9sXy8OpyRteODapAUGyK7WapZPVRRw32MQNqZiq6RfIPZutcRuo9oIInnnxVyFidLpj
-	Wqpen14g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:
+	To:Cc:Subject:Message-Id:Date:Content-Type:Content-Transfer-Encoding:
+	Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xQoETzVYL7/fMAukFP1/FEY+oMvDH3rg5mFsB8017XU=; b=axhiu1MWOmbwEikYWJRuUw8jHu
+	x/FVBCx7CK8XEnBlOkMVCwuRBR1etxeQJvKPYNFz0ugxb2uFa2piaQBZv/AURIer+EISyDExAvrU+
+	teGuhTXWE50OOowLtoynUi1rveyBWt2i42+C7/e3CdcbUoGZKk027VG3tb+RcvdydDMxFazpxJojO
+	VbhecESQT25Rvhuyk8A+xb0Q11phtslULlO6AXIFxQVB2xLi3AvkKO/CqKIaTeKjEEq9jiseFuAd+
+	zMx5IMm0LeRuTZhEWcYQI38dlUT0flLiypj+2hAE5+HVyFxcfZm+o/sgEfke9H8ecKtAlfcP/eHZe
+	4xn6F2uQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcLzi-00000007hHm-31OA;
-	Wed, 24 Jun 2026 11:42:14 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wcMZY-00000007k5N-2hlR;
+	Wed, 24 Jun 2026 12:19:16 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcLza-00000007hG4-2a3l;
-	Wed, 24 Jun 2026 11:42:06 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 0DC9B43650;
-	Wed, 24 Jun 2026 11:42:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id D6A46C2BCB4;
-	Wed, 24 Jun 2026 11:42:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1782301325;
-	bh=LZ1C8rPlZ/X7S4iWJUKXT8UYdYECXgo5EWnaKAYpFo4=;
-	h=From:Date:Subject:To:Cc:Reply-To:From;
-	b=Cv+QZx9ic8CcDcyku8WSiFp6l1+02Wo432iHHq0rPl3wGrYcAKCE8bP9mI3rQ+fqk
-	 dcJ9LNaPNpHuQ5pXKAYHFhcV7rE/hkUaBKOuq2JbDf5dyXJEeMCMU6MvLXmktAlXQj
-	 OFu2fjqkVTtYJoMwZ++OZAgfbre3m0qevy8/et5DhrVomataDyRtSww5/nE3IXBj8a
-	 DLBdb58Dtsckrswp+KDmGglSEtRX9JB6bvXydGHmMBRH0/A8l1qnqy/tRVEBfikDbf
-	 Ppw8/WLugAzmdARbgh0ITNNpUPOk+8ze7o3WJO9rbQx9eb1FYgP9QKapYRSLZxxcn4
-	 6lNEYAK4rv75g==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CB8C5CDB47F;
-	Wed, 24 Jun 2026 11:42:05 +0000 (UTC)
-From: Ricardo Pardini via B4 Relay <devnull+ricardo.pardini.net@kernel.org>
-Date: Wed, 24 Jun 2026 13:41:50 +0200
-Subject: [PATCH] arm64: dts: mediatek: mt8395-radxa-nio-12l: Enable I2C3 on
- 40-pin header
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260624-nio-12l-add-i2c-40-pin-v1-1-f6c11ed2184c@pardini.net>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMQQqDMBBA0avIrDuQjFHUq5QuNBl1SomSVBHEu
- xt1+Rb/7xA5CEdosh0CrxJl8gn6lYEdWz8wiksGUlSqkgx6mVDTD1vnUMiiUTiLR12zMhX1rso
- LSPEcuJftHr8/j+PSfdn+rxscxwkHLTmbegAAAA==
-X-Change-ID: 20260624-nio-12l-add-i2c-40-pin-19e0482fd835
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Ricardo Pardini <ricardo@pardini.net>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1939;
- i=ricardo@pardini.net; h=from:subject:message-id;
- bh=bk5ea6cLdsnJpmBdpwgO3E/mbMZWo2izXGkJpWcYnGg=;
- b=owEBiQF2/pANAwAIATteP+Oex+3pAcsmYgBqO8KM5gmzPvJ/rOmLT+qPMGepPIDKiCk8X5DBu
- 5jAJoBZRaSJAU8EAAEIADkWIQSsGCMM9q/qytxIiJM7Xj/jnsft6QUCajvCjBsUgAAAAAAEAA5t
- YW51MiwyLjUrMS4xMiwwLDMACgkQO14/457H7eliKwf/RkZ83zDF2MFSMVYiVJmHI8+ZuRR4XYD
- nmdBGdJ1vpt7+H9f1xXNJr8MafhwauM1waRUw2x8cK2BgbUbNVvz7O+03KxR1dwP5xzYTP8N9Pa
- eG3rxMC81LILXsxmleoMnJ8TSbsvlxLJYTiZ/ZMmjncU0Sm4Dzx8Km8puNAYXGr/tDsgf0JPH/q
- 0mOXv5YVPVwWJzWeH+JVtUgY4lnxUh0m61v6SXzQAfCnipWskgWmCnjNiskyTOtuMew3eJNzlX9
- Y1lA74GukTKRTFwLK+GI9SaNl3XFoKDvT1/l8i/YsztE6DWpmGaHDAg0EYvdurkCtLdGJQ4Jihm
- mm1jmx1rbYg==
-X-Developer-Key: i=ricardo@pardini.net; a=openpgp;
- fpr=AC18230CF6AFEACADC4888933B5E3FE39EC7EDE9
-X-Endpoint-Received: by B4 Relay for ricardo@pardini.net/default with
- auth_id=588
-X-Original-From: Ricardo Pardini <ricardo@pardini.net>
+	id 1wcMZV-00000007k4e-22gI
+	for linux-mediatek@lists.infradead.org;
+	Wed, 24 Jun 2026 12:19:15 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-02.galae.net (Postfix) with ESMTPS id 0F38C1A090E;
+	Wed, 24 Jun 2026 12:19:08 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id CBC89601C5;
+	Wed, 24 Jun 2026 12:19:07 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id BEFE4106C83D2;
+	Wed, 24 Jun 2026 14:18:49 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1782303545; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=xQoETzVYL7/fMAukFP1/FEY+oMvDH3rg5mFsB8017XU=;
+	b=KEv1cfu/jYGfDwre6OwZ+P4Da5g/P5DLOoi4ufNgHjjSXbNTPwIbnYk/UOh9ec76Xi6r/G
+	DFd6/DHGMh414txRBF40PoSxV+VlfEMI0dV693nAwprxYHVOsiF4l+Nu7k56WcpLJ+plKt
+	M19npB/jcwdfaojICtMPjr+ioXw/rsjoqIyL5YLlhgzfWwm7gkFRNvDV3r+5fmxgiNLiGR
+	Fpg//myj41KpNJxvcsa7CgwV2XAA3Pq1OFhNBG6SiZNr209BBBOm7pZ+5lA6O75NrZhmgM
+	/YrgBuSybieaZhN5mTMsjq+GstetuZsbblHI6ibs2ayVSjRRAtJDYNmvgfkWLg==
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Date: Wed, 24 Jun 2026 14:18:48 +0200
+Message-Id: <DJH9VDITIVKV.1UZLU2S53MLO9@bootlin.com>
+Subject: Re: [PATCH 00/37] drm/bridge: Convert all bridges to atomic
+Cc: "Laurent Pinchart" <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman"
+ <jonas@kwiboo.se>, "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Luca
+ Ceresoli" <luca.ceresoli@bootlin.com>, <dri-devel@lists.freedesktop.org>,
+ "Sasha Finkelstein" <k@chaosmail.tech>, "Janne Grunau" <j@jannau.net>,
+ <asahi@lists.linux.dev>, "Benson Leung" <bleung@chromium.org>, "Guenter
+ Roeck" <groeck@chromium.org>, <chrome-platform@lists.linux.dev>, "Francesco
+ Dolcini" <francesco@dolcini.it>, "Peter Senna Tschudin"
+ <peter.senna@gmail.com>, "Ian Ray" <ian.ray@ge.com>, "Martyn Welch"
+ <martyn.welch@collabora.co.uk>, "Manikandan Muralidharan"
+ <manikandan.m@microchip.com>, "Dharma Balasubiramani"
+ <dharma.b@microchip.com>, "Russell King" <linux@armlinux.org.uk>, "Inki
+ Dae" <inki.dae@samsung.com>, "Seung-Woo Kim" <sw0312.kim@samsung.com>,
+ "Kyungmin Park" <kyungmin.park@samsung.com>, "Krzysztof Kozlowski"
+ <krzk@kernel.org>, "Alim Akhtar" <alim.akhtar@samsung.com>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-samsung-soc@vger.kernel.org>, "Linus Walleij" <linusw@kernel.org>,
+ "Chun-Kuang Hu" <chunkuang.hu@kernel.org>, "Philipp Zabel"
+ <p.zabel@pengutronix.de>, "Matthias Brugger" <matthias.bgg@gmail.com>,
+ "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+ <linux-mediatek@lists.infradead.org>, "Rob Clark"
+ <robin.clark@oss.qualcomm.com>, "Dmitry Baryshkov" <lumag@kernel.org>,
+ "Abhinav Kumar" <abhinav.kumar@linux.dev>, "Jessica Zhang"
+ <jesszhan0024@gmail.com>, "Sean Paul" <sean@poorly.run>, "Marijn Suijten"
+ <marijn.suijten@somainline.org>, <freedreno@lists.freedesktop.org>, "Tomi
+ Valkeinen" <tomi.valkeinen@ideasonboard.com>, "Alain Volmat"
+ <alain.volmat@foss.st.com>, "Raphael Gallais-Pou" <rgallaispou@gmail.com>
+To: "Maxime Ripard" <mripard@kernel.org>, "Andrzej Hajda"
+ <andrzej.hajda@intel.com>, "Neil Armstrong" <neil.armstrong@linaro.org>,
+ "Robert Foss" <rfoss@kernel.org>, "Maarten Lankhorst"
+ <maarten.lankhorst@linux.intel.com>, "Thomas Zimmermann"
+ <tzimmermann@suse.de>, "David Airlie" <airlied@gmail.com>, "Simona Vetter"
+ <simona@ffwll.ch>
+From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
+X-Mailer: aerc 0.21.0
+References: <20260617-drm-all-atomic-bridges-v1-0-b63e6316166b@kernel.org>
+In-Reply-To: <20260617-drm-all-atomic-bridges-v1-0-b63e6316166b@kernel.org>
+X-Last-TLS-Session-Version: TLSv1.3
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260624_051913_653571_52F87EA4 
+X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,75 +102,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: ricardo@pardini.net
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ricardo Pardini <ricardo@pardini.net>
+On Wed Jun 17, 2026 at 12:14 PM CEST, Maxime Ripard wrote:
+> Hi,
+>
+> Over the years, most of the bridges have been converted to atomic
+> modesetting and hooks, but not all of them. This forces us to maintain
+> two different code path in quite a few places, which is pretty
+> bothersome. The switch to atomic modesetting for legacy bridges though
+> is pretty trivial, and we don't have a lot of drivers still using the
+> legacy path.
+>
+> This series converts all bridges to atomic modesetting and drops the
+> legacy codepaths where relevant.
+>
+> Let me know what you think,
+> Maxime
+>
+> Signed-off-by: Maxime Ripard <mripard@kernel.org>
 
-I2C3 (SDA3/SCL3 on GPIO14/GPIO15) is routed to the 40-pin GPIO header,
-exposed on the blue-colored pins 27 (SCL3) and 28 (SDA3). Enable the
-controller, add the corresponding pin configuration in the pinctrl node
-so users can use external I2C devices.
+Lovely cleanup!
 
-Signed-off-by: Ricardo Pardini <ricardo@pardini.net>
----
-The Radxa NIO 12L exposes I2C3 (SDA3/SCL3, GPIO14/GPIO15) on its 40-pin
-GPIO header, on the blue-coloured pins 27 (SCL3) and 28 (SDA3).
+Apart from what Laurent pointed out, it all LGTM. Instead of spamming with
+an R-by on all patches except 37, I'll just wait for v2 to send a
+full-series R-by in reply to the cover letter.
 
-Enable the I2C3 controller, add the matching pinctrl configuration and run
-the bus at 400 kHz, matching the other I2C buses already enabled on this
-board.
+Luca
 
-Tested using a SD1306 I2C OLED display.
----
- arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-index bf91305e8e4a5..03a2f2e746475 100644
---- a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-@@ -371,6 +371,14 @@ it5205_sbu_mux: endpoint {
- 	};
- };
- 
-+/* Exposed on 40-pin header (blue-colored pins 27:SCL3 28:SDA3) */
-+&i2c3 {
-+	clock-frequency = <400000>;
-+	pinctrl-0 = <&i2c3_pins>;
-+	pinctrl-names = "default";
-+	status = "okay";
-+};
-+
- &i2c4 {
- 	clock-frequency = <400000>;
- 	pinctrl-0 = <&i2c4_pins>;
-@@ -789,6 +797,16 @@ pins-bus {
- 		};
- 	};
- 
-+	i2c3_pins: i2c3-pins {
-+		pins-bus {
-+			pinmux = <PINMUX_GPIO14__FUNC_SDA3>,
-+				 <PINMUX_GPIO15__FUNC_SCL3>;
-+			bias-pull-up = <1000>;
-+			drive-strength = <6>;
-+			drive-strength-microamp = <1000>;
-+		};
-+	};
-+
- 	i2c4_pins: i2c4-pins {
- 		pins-bus {
- 			pinmux = <PINMUX_GPIO16__FUNC_SDA4>,
-
----
-base-commit: 8cd9520d35a6c38db6567e97dd93b1f11f185dc6
-change-id: 20260624-nio-12l-add-i2c-40-pin-19e0482fd835
-
-Best regards,
---  
-Ricardo Pardini <ricardo@pardini.net>
-
-
+--
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
