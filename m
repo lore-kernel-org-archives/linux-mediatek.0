@@ -4,75 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F18F4CDB471
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jun 2026 21:40:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB268CD4F26
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jun 2026 02:20:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=N+YGotLM1BtFTWXvgF/J3FUJ54i0TghGIKlvykmHBcc=; b=mLEiCbo2BxWgB6jlyn6mFprulE
-	UtghHAqlTvZ6v1tBeFHI0YPVYuQp8E+sjws7qxas16wLpwYoqHV6uTkE7LrOVoUzbS2XIoBqcsBQF
-	A+GRvn7v05UM9js/cUGO3XikeeqgkcSCatSqDluY8ko+RIl3w0395swXWyNXvV7aT7PzNad3ONey3
-	4TkWVps0jfHdO2HeTzO846lyTA4kIKhXr/vyWZvUShLSJ2U/4YkrV9wTUBnhLQJItVYd+ql7CMaZX
-	y/SqCFoFGPcUTquJfpMTlI9jMLfQ2bKQGH10UfkFogObgXULX3f8WUUofSGKz5XLfYRLlwEb8SNxn
-	GZAa3JkA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:List-Owner;
+	bh=JqPyZ0aaQVBBC6joV6zD0RbPShi6Y/+SNaCXbd0DQHo=; b=zGdSP167Pboh8dKwq+UHC/wAjF
+	yKzguOp9O+thE6e1feed/k3zfbvokCNihTgqYTG3KkDD38/1ZQ1rrUq8NngCHrSpEvENCl2o6hkTl
+	+y37n7mj8ipR6RAvdnbaRicYaKoEFPp3OO90o2fo3zRqh7o2Hj8+Ke0YteBUZSvRiLhDxkZhW954p
+	FPQXj6VB2NCQjbOgmpdUBp8kpM2ySgqKkDc1brVGg/Ae/mNYQSwMJRX1OoFN8BmsdKqJCxNfON+65
+	cv2Q22bxguDijOGQHCA/po4UpD8Ou/NWYOpeggGgi+qXxLSkcLawnTIKJHQd3mIdy2p8SmwLMM8E1
+	bEudDPWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wc8qv-00000006v7W-3CQV;
-	Tue, 23 Jun 2026 21:40:17 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wcDDk-000000073BU-33n0;
+	Wed, 24 Jun 2026 02:20:08 +0000
+Received: from mailout1.samsung.com ([203.254.224.24])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wc8qu-00000006v7G-2Q0J;
-	Tue, 23 Jun 2026 21:40:16 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 55E3B60008;
-	Tue, 23 Jun 2026 21:40:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 026D5C2BCB8;
-	Tue, 23 Jun 2026 21:40:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1782250815;
-	bh=JI38z1jaLCsFKYh18Ni5/rwQP2sXh0iFI1mRBa14wxs=;
-	h=From:Date:Subject:To:Cc:Reply-To:From;
-	b=cGbVvCP3pMcadM9zoMn7NyrmKKSP6GInXyGoHbfW/jMrb5154+VimaxpH2CmZ2GMa
-	 D6Zwe3t/DwOqg0M9R/hMOvxV2vfLvFae+IDWt7ecFUIBxLqN1UtDpW/YuLLH3C7N4p
-	 kwmSUkF3b2q8jqxUIex3fDO1Su1U57PbVyMQSrRqXV2/wlg/3tomenj8+PmwHG2IS2
-	 YeJRNsZCtOpgHQGOWz1x65CyN+jgxHdBSbGpYgXJQ23GxIwkSdF0rFmmwtnZpJYZ+k
-	 01zFwaC2xk2a4jOpF7jfQp+on8WiaRSe3tDZ0qv/03+A8O4u0/OuUN/Y6ihfmBe91M
-	 tSBOh8kQksQ3g==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DA58DCDB47C;
-	Tue, 23 Jun 2026 21:40:14 +0000 (UTC)
-From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Wed, 24 Jun 2026 00:40:13 +0300
-Subject: [PATCH] i2c: mediatek: fix WRRD for SoCs without auto_restart
- option
+	id 1wcDDh-000000073AW-1ZVv
+	for linux-mediatek@lists.infradead.org;
+	Wed, 24 Jun 2026 02:20:07 +0000
+Received: from epcas1p1.samsung.com (unknown [182.195.41.45])
+	by mailout1.samsung.com (KnoxPortal) with ESMTP id 20260624021957epoutp011523417e76033f471ee9cea6278c1144~74u-HRjMK1621716217epoutp01B
+	for <linux-mediatek@lists.infradead.org>; Wed, 24 Jun 2026 02:19:57 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.samsung.com 20260624021957epoutp011523417e76033f471ee9cea6278c1144~74u-HRjMK1621716217epoutp01B
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1782267597;
+	bh=JqPyZ0aaQVBBC6joV6zD0RbPShi6Y/+SNaCXbd0DQHo=;
+	h=From:To:Cc:Subject:Date:References:From;
+	b=pW7LR+mEt9uxjtqQhQhCIqCiZDGMgDljh09xK735xGJ/r1/ipAoOYmCgYIWVOO7ar
+	 PEVRtYbCmokc7nncENNeUZSrUDcvSo2+V/8AvTdFO3LHZuOrLjiVWc2xA33Oco9/zS
+	 /YfL32lVoqXy1DtESSA5ll54PFja2PrDKhGrK+mY=
+Received: from epsnrtp04.localdomain (unknown [182.195.42.156]) by
+	epcas1p1.samsung.com (KnoxPortal) with ESMTPS id
+	20260624021956epcas1p1620b680e9321a3aba8069cada28ee742~74u_kGyTe1547115471epcas1p1J;
+	Wed, 24 Jun 2026 02:19:56 +0000 (GMT)
+Received: from epcas1p3.samsung.com (unknown [182.195.38.118]) by
+	epsnrtp04.localdomain (Postfix) with ESMTP id 4glQcr1Sxvz6B9mB; Wed, 24 Jun
+	2026 02:19:56 +0000 (GMT)
+Received: from epsmtip1.samsung.com (unknown [182.195.34.30]) by
+	epcas1p2.samsung.com (KnoxPortal) with ESMTPA id
+	20260624021955epcas1p2ba2fa4eb8bd0aafaf7b46bde2cf524be~74u9oMuYh0842908429epcas1p2p;
+	Wed, 24 Jun 2026 02:19:55 +0000 (GMT)
+Received: from cw9316lee.. (unknown [10.253.101.98]) by epsmtip1.samsung.com
+	(KnoxPortal) with ESMTPA id
+	20260624021955epsmtip1ed35129491f5eb1c90636349381c9e79~74u9g6r832095320953epsmtip12;
+	Wed, 24 Jun 2026 02:19:55 +0000 (GMT)
+From: Chanwoo Lee <cw9316.lee@samsung.com>
+To: Adrian Hunter <adrian.hunter@intel.com>, Asutosh Das
+	<quic_asutoshd@quicinc.com>, Ritesh Harjani <ritesh.list@gmail.com>, Ulf
+	Hansson <ulfh@kernel.org>, Chaotian Jing <chaotian.jing@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Kamal Dasu
+	<kamal.dasu@broadcom.com>, Al Cooper <alcooperx@gmail.com>, Broadcom
+	internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Florian
+	Fainelli <florian.fainelli@broadcom.com>, Haibo Chen <haibo.chen@nxp.com>,
+	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam
+	<festevam@gmail.com>, Michal Simek <michal.simek@amd.com>, Thierry Reding
+	<thierry.reding@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+	linux-mmc@vger.kernel.org (open list:EMMC CMDQ HOST CONTROLLER INTERFACE
+	(CQHCI) DRIVER), linux-kernel@vger.kernel.org (open list),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC
+	support), linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek
+	SoC support), linux-arm-msm@vger.kernel.org (open list:ARM/QUALCOMM MAILING
+	LIST), linux-tegra@vger.kernel.org (open list:TEGRA ARCHITECTURE SUPPORT)
+Cc: Chanwoo Lee <cw9316.lee@samsung.com>
+Subject: [PATCH] mmc: cqhci: Remove unused intmask parameter from
+ cqhci_irq()
+Date: Wed, 24 Jun 2026 11:19:03 +0900
+Message-ID: <20260624021912.632627-1-cw9316.lee@samsung.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-CMS-MailID: 20260624021955epcas1p2ba2fa4eb8bd0aafaf7b46bde2cf524be
+X-Msg-Generator: CA
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260624-6572-6595-i2c-v1-1-9155cebaae20@protonmail.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIzMDMyNjXTNTcyMgYWmqm2mUrGuWmmyZbJJqlgiESkA9BUWpaZkVYPOiYyH
- 84tKkrNTkEpAhSrW1AIYrn0FxAAAA
-X-Change-ID: 20260623-6572-6595-i2c-6ec9c4e6a6a6
-To: Qii Wang <qii.wang@mediatek.com>, Andi Shyti <andi.shyti@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Roman Vivchar <rva333@protonmail.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1782250813; l=1767;
- i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=TG2emG/PCj4Coy27v6ImKi08qxfg+rKakjADtWBifso=;
- b=MuDkLvPkgVRxiqfkdn6qowJfHL5BjKXog1KYCzBl6lSkA60ha518SEnL4W5DoJjBD4Idz6x8Z
- SUQMLDg76jfBE+L8FJc9UxV+vq91u4HSMSUjKXmtKe7KS9p2cwApUpi
-X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
- pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
-X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
- auth_id=777
-X-Original-From: Roman Vivchar <rva333@protonmail.com>
+CMS-TYPE: 101P
+cpgsPolicy: CPGSC10-711,Y
+X-CFilter-Loop: Reflected
+X-CMS-RootMailID: 20260624021955epcas1p2ba2fa4eb8bd0aafaf7b46bde2cf524be
+References: <CGME20260624021955epcas1p2ba2fa4eb8bd0aafaf7b46bde2cf524be@epcas1p2.samsung.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260623_192006_072722_5F443F87 
+X-CRM114-Status: GOOD (  15.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,66 +102,189 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Roman Vivchar <rva333@protonmail.com>
+The intmask parameter of cqhci_irq() is never used within the function
+body. The function reads the CQHCI interrupt status directly via
+cqhci_readl() and processes interrupts independently of the SDHCI
+intmask value passed by callers.
 
-MediaTek mt65xx family SoCs have no auto restart, however, they still
-support the WRRD mode in the hardware. Because auto_restart is set to 0,
-the WRRD mode will be never enabled, leading to read errors.
-
-Fix this by removing auto_restart check from the WRRD enable path.
-
-Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+Signed-off-by: Chanwoo Lee <cw9316.lee@samsung.com>
 ---
-This is a preparation for the mt6572/6595 upstreaming.
+ drivers/mmc/host/cqhci-core.c       | 3 +--
+ drivers/mmc/host/cqhci.h            | 3 +--
+ drivers/mmc/host/mtk-sd.c           | 2 +-
+ drivers/mmc/host/sdhci-brcmstb.c    | 2 +-
+ drivers/mmc/host/sdhci-esdhc-imx.c  | 2 +-
+ drivers/mmc/host/sdhci-msm.c        | 2 +-
+ drivers/mmc/host/sdhci-of-arasan.c  | 2 +-
+ drivers/mmc/host/sdhci-of-dwcmshc.c | 2 +-
+ drivers/mmc/host/sdhci-pci-core.c   | 2 +-
+ drivers/mmc/host/sdhci-pci-gli.c    | 2 +-
+ drivers/mmc/host/sdhci-tegra.c      | 2 +-
+ drivers/mmc/host/sdhci_am654.c      | 2 +-
+ 12 files changed, 12 insertions(+), 14 deletions(-)
 
-mt65xx family SoCs don't have auto restart, but vendor kernels keep using
-WRRD mode. Lack of the WRRD mode makes i2c reads impossible from both
-userspace and kernel drivers.
-
-Without patch (mt6595, da9210 buck at 0x68):
-~ # i2cget -y 1 0x68 0x00
-Error: Read failed
-~ # i2cget -y 1 0x68 0x01
-Error: Read failed
-
-With patch:
-~ # i2cget -y 1 0x68 0x00
-0x80
-~ # i2cget -y 1 0x68 0x01
-0x00
-
-Same behavior observed on mt6572 devices.
-
-This change doesn't affect SoCs with auto restart option.
----
- drivers/i2c/busses/i2c-mt65xx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index 126040ca05f1..307925fb78e3 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -1258,7 +1258,7 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
- 	i2c->auto_restart = i2c->dev_comp->auto_restart;
+diff --git a/drivers/mmc/host/cqhci-core.c b/drivers/mmc/host/cqhci-core.c
+index 178277d90c31..98ceb0b9a6d1 100644
+--- a/drivers/mmc/host/cqhci-core.c
++++ b/drivers/mmc/host/cqhci-core.c
+@@ -819,8 +819,7 @@ static void cqhci_finish_mrq(struct mmc_host *mmc, unsigned int tag)
+ 	mmc_cqe_request_done(mmc, mrq);
+ }
  
- 	/* checking if we can skip restart and optimize using WRRD mode */
--	if (i2c->auto_restart && num == 2) {
-+	if (num == 2) {
- 		if (!(msgs[0].flags & I2C_M_RD) && (msgs[1].flags & I2C_M_RD) &&
- 		    msgs[0].addr == msgs[1].addr) {
- 			i2c->auto_restart = 0;
-
----
-base-commit: 8cd9520d35a6c38db6567e97dd93b1f11f185dc6
-change-id: 20260623-6572-6595-i2c-6ec9c4e6a6a6
-
-Best regards,
---  
-Roman Vivchar <rva333@protonmail.com>
-
+-irqreturn_t cqhci_irq(struct mmc_host *mmc, u32 intmask, int cmd_error,
+-		      int data_error)
++irqreturn_t cqhci_irq(struct mmc_host *mmc, int cmd_error, int data_error)
+ {
+ 	u32 status;
+ 	unsigned long tag = 0, comp_status;
+diff --git a/drivers/mmc/host/cqhci.h b/drivers/mmc/host/cqhci.h
+index 3668856531c1..8fbbc48c3f85 100644
+--- a/drivers/mmc/host/cqhci.h
++++ b/drivers/mmc/host/cqhci.h
+@@ -315,8 +315,7 @@ static inline u32 cqhci_readl(struct cqhci_host *host, int reg)
+ 
+ struct platform_device;
+ 
+-irqreturn_t cqhci_irq(struct mmc_host *mmc, u32 intmask, int cmd_error,
+-		      int data_error);
++irqreturn_t cqhci_irq(struct mmc_host *mmc, int cmd_error, int data_error);
+ int cqhci_init(struct cqhci_host *cq_host, struct mmc_host *mmc, bool dma64);
+ struct cqhci_host *cqhci_pltfm_init(struct platform_device *pdev);
+ int cqhci_deactivate(struct mmc_host *mmc);
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index b2680cc054bd..01ea3adbdf3b 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -1805,7 +1805,7 @@ static irqreturn_t msdc_cmdq_irq(struct msdc_host *host, u32 intsts)
+ 			cmd_err, dat_err, intsts);
+ 	}
+ 
+-	return cqhci_irq(mmc, 0, cmd_err, dat_err);
++	return cqhci_irq(mmc, cmd_err, dat_err);
+ }
+ 
+ static irqreturn_t msdc_irq(int irq, void *dev_id)
+diff --git a/drivers/mmc/host/sdhci-brcmstb.c b/drivers/mmc/host/sdhci-brcmstb.c
+index 57e45951644e..1de2f05fd958 100644
+--- a/drivers/mmc/host/sdhci-brcmstb.c
++++ b/drivers/mmc/host/sdhci-brcmstb.c
+@@ -430,7 +430,7 @@ static u32 sdhci_brcmstb_cqhci_irq(struct sdhci_host *host, u32 intmask)
+ 	if (!sdhci_cqe_irq(host, intmask, &cmd_error, &data_error))
+ 		return intmask;
+ 
+-	cqhci_irq(host->mmc, intmask, cmd_error, data_error);
++	cqhci_irq(host->mmc, cmd_error, data_error);
+ 
+ 	return 0;
+ }
+diff --git a/drivers/mmc/host/sdhci-esdhc-imx.c b/drivers/mmc/host/sdhci-esdhc-imx.c
+index 18ecddd6df6f..d0fa83f67a80 100644
+--- a/drivers/mmc/host/sdhci-esdhc-imx.c
++++ b/drivers/mmc/host/sdhci-esdhc-imx.c
+@@ -1503,7 +1503,7 @@ static u32 esdhc_cqhci_irq(struct sdhci_host *host, u32 intmask)
+ 	if (!sdhci_cqe_irq(host, intmask, &cmd_error, &data_error))
+ 		return intmask;
+ 
+-	cqhci_irq(host->mmc, intmask, cmd_error, data_error);
++	cqhci_irq(host->mmc, cmd_error, data_error);
+ 
+ 	return 0;
+ }
+diff --git a/drivers/mmc/host/sdhci-msm.c b/drivers/mmc/host/sdhci-msm.c
+index 0882ce74e0c9..ceed47ccfda8 100644
+--- a/drivers/mmc/host/sdhci-msm.c
++++ b/drivers/mmc/host/sdhci-msm.c
+@@ -2165,7 +2165,7 @@ static u32 sdhci_msm_cqe_irq(struct sdhci_host *host, u32 intmask)
+ 	if (!sdhci_cqe_irq(host, intmask, &cmd_error, &data_error))
+ 		return intmask;
+ 
+-	cqhci_irq(host->mmc, intmask, cmd_error, data_error);
++	cqhci_irq(host->mmc, cmd_error, data_error);
+ 	return 0;
+ }
+ 
+diff --git a/drivers/mmc/host/sdhci-of-arasan.c b/drivers/mmc/host/sdhci-of-arasan.c
+index 785d3acb18c5..4ca73e7d799e 100644
+--- a/drivers/mmc/host/sdhci-of-arasan.c
++++ b/drivers/mmc/host/sdhci-of-arasan.c
+@@ -555,7 +555,7 @@ static u32 sdhci_arasan_cqhci_irq(struct sdhci_host *host, u32 intmask)
+ 	if (!sdhci_cqe_irq(host, intmask, &cmd_error, &data_error))
+ 		return intmask;
+ 
+-	cqhci_irq(host->mmc, intmask, cmd_error, data_error);
++	cqhci_irq(host->mmc, cmd_error, data_error);
+ 
+ 	return 0;
+ }
+diff --git a/drivers/mmc/host/sdhci-of-dwcmshc.c b/drivers/mmc/host/sdhci-of-dwcmshc.c
+index eef53455b8ee..4c5fa6a6931d 100644
+--- a/drivers/mmc/host/sdhci-of-dwcmshc.c
++++ b/drivers/mmc/host/sdhci-of-dwcmshc.c
+@@ -624,7 +624,7 @@ static u32 dwcmshc_cqe_irq_handler(struct sdhci_host *host, u32 intmask)
+ 	if (!sdhci_cqe_irq(host, intmask, &cmd_error, &data_error))
+ 		return intmask;
+ 
+-	cqhci_irq(host->mmc, intmask, cmd_error, data_error);
++	cqhci_irq(host->mmc, cmd_error, data_error);
+ 
+ 	return 0;
+ }
+diff --git a/drivers/mmc/host/sdhci-pci-core.c b/drivers/mmc/host/sdhci-pci-core.c
+index c347fac24515..b121d896a804 100644
+--- a/drivers/mmc/host/sdhci-pci-core.c
++++ b/drivers/mmc/host/sdhci-pci-core.c
+@@ -215,7 +215,7 @@ static u32 sdhci_cqhci_irq(struct sdhci_host *host, u32 intmask)
+ 	if (!sdhci_cqe_irq(host, intmask, &cmd_error, &data_error))
+ 		return intmask;
+ 
+-	cqhci_irq(host->mmc, intmask, cmd_error, data_error);
++	cqhci_irq(host->mmc, cmd_error, data_error);
+ 
+ 	return 0;
+ }
+diff --git a/drivers/mmc/host/sdhci-pci-gli.c b/drivers/mmc/host/sdhci-pci-gli.c
+index 6e4084407662..b55618566d65 100644
+--- a/drivers/mmc/host/sdhci-pci-gli.c
++++ b/drivers/mmc/host/sdhci-pci-gli.c
+@@ -1760,7 +1760,7 @@ static u32 sdhci_gl9763e_cqhci_irq(struct sdhci_host *host, u32 intmask)
+ 	if (!sdhci_cqe_irq(host, intmask, &cmd_error, &data_error))
+ 		return intmask;
+ 
+-	cqhci_irq(host->mmc, intmask, cmd_error, data_error);
++	cqhci_irq(host->mmc, cmd_error, data_error);
+ 
+ 	return 0;
+ }
+diff --git a/drivers/mmc/host/sdhci-tegra.c b/drivers/mmc/host/sdhci-tegra.c
+index 820ce4dae58b..221e48b59f48 100644
+--- a/drivers/mmc/host/sdhci-tegra.c
++++ b/drivers/mmc/host/sdhci-tegra.c
+@@ -1280,7 +1280,7 @@ static u32 sdhci_tegra_cqhci_irq(struct sdhci_host *host, u32 intmask)
+ 	if (!sdhci_cqe_irq(host, intmask, &cmd_error, &data_error))
+ 		return intmask;
+ 
+-	cqhci_irq(host->mmc, intmask, cmd_error, data_error);
++	cqhci_irq(host->mmc, cmd_error, data_error);
+ 
+ 	return 0;
+ }
+diff --git a/drivers/mmc/host/sdhci_am654.c b/drivers/mmc/host/sdhci_am654.c
+index d235b0aecfdb..2a27db2f558b 100644
+--- a/drivers/mmc/host/sdhci_am654.c
++++ b/drivers/mmc/host/sdhci_am654.c
+@@ -462,7 +462,7 @@ static u32 sdhci_am654_cqhci_irq(struct sdhci_host *host, u32 intmask)
+ 	if (!sdhci_cqe_irq(host, intmask, &cmd_error, &data_error))
+ 		return intmask;
+ 
+-	cqhci_irq(host->mmc, intmask, cmd_error, data_error);
++	cqhci_irq(host->mmc, cmd_error, data_error);
+ 
+ 	return 0;
+ }
+-- 
+2.43.0
 
 
