@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92ED1CDB479
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jun 2026 00:20:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB922CDB479
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jun 2026 00:20:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sVfDZKme2Ls4NvcZIFifaI+/XMY/L4bFWt9qeHwZTb4=; b=iHUKVgtDWYlusJSFwZv2cj0tVj
-	3EdgTVHKnw/giChfVhuutIXK9KTBflNMlTohwgtODBUj6r2sdYTXpWTGOAIN73fVdKWT6vSnU76Lh
-	bqGLCaMJPJIUKjrCQQIuU5YTz4tVerSis9ETD6yvGyQ8IVXptzoy5cWlBlFbdjcu/TyFZYDvqCMDc
-	7EvYY2E4r7aORbtMyEhqjw+sdsggDEENFYrOsTOk5EP0mopYIQS3wf13NWoP9PvnoP/qs1QxnsXM9
-	sg3cq7gOx8LOGUCesX9/f3X+eS/JRRGUmN0s7hm2jg7872cakXgBVjqy2IAup3l7z+834nLaYcgY8
-	EqH2NQ0g==;
+	bh=hxGQdM0c2TatqyA1QygknbGg8MMT1//ZBGDzhZkibBo=; b=zqJ0r0JbTb38B9rxW1VniTNGfW
+	lTaKV3Yp1ApVZIh45gtmPC5yfWN9rZbRmAi1AQv2k8+oISATrfkIDsn4Wkspbc7A9zfsIHNZLVoym
+	7lAgNmQ5NcXwBh/StHinen0fnvQ04N6GUXhQDqr32VQsGqblc1SyhubPtqr8YOe2PwyTXbfM2HNT4
+	2x1iu63pagNQ+JYbv2mg3/yEi/ArAw9sDZHvWEkxb0GekQSXSvOagf+CjsNmgPFkSeSVEb/uRZyNi
+	9cYLv2MAWHJ+oPnH6XVgKgFpJgPuT7RoA7eOK5RjZZTEVLd5T5arBjvUyIYzuk0tL49u4Ml2nwi2c
+	omDru86w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcXp1-00000008Skz-2Z54;
-	Thu, 25 Jun 2026 00:19:59 +0000
-Received: from mail-pg1-f172.google.com ([209.85.215.172])
+	id 1wcXpC-00000008Snr-2lEU;
+	Thu, 25 Jun 2026 00:20:10 +0000
+Received: from mail-pg1-f180.google.com ([209.85.215.180])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcXoz-00000008SjY-3gOz
+	id 1wcXpA-00000008SnX-16C6
 	for linux-mediatek@lists.infradead.org;
-	Thu, 25 Jun 2026 00:19:59 +0000
-Received: by mail-pg1-f172.google.com with SMTP id 41be03b00d2f7-c8ff15af279so1004014a12.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 24 Jun 2026 17:19:57 -0700 (PDT)
+	Thu, 25 Jun 2026 00:20:09 +0000
+Received: by mail-pg1-f180.google.com with SMTP id 41be03b00d2f7-c88b8fe9059so580079a12.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 24 Jun 2026 17:20:08 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1782346797; x=1782951597;
+        d=1e100.net; s=20251104; t=1782346807; x=1782951607;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=sVfDZKme2Ls4NvcZIFifaI+/XMY/L4bFWt9qeHwZTb4=;
-        b=Ke8oZ89l0eawL+wOz9XZcNPG7nCAvHv1izwt/8oFA9f2QWHILqCFmnkVOADSibJpBI
-         BLfRh/2Ww3xpy00+9MDBiu8xf9kECfAVbcInq863fqMoq9ebXF1/s8ZUO3cV0pxcG72S
-         YdUGzWjJ4l+NHp1aE57m9me/WC0dibILmKhHE985rT9ywNHE8XFFWEqSAGpcnTn5PA3b
-         mQlRhY0l13p6kRRBIPQW7SSIivbFw/HfJdQ5adu+7TsuHsOUvePyT4LWkBD9Zcu8q157
-         WFvFqaDyuNI6TppdDybFOnmtoOtAQJhnT8LsRM6fjFl1q1s/t210Q6f2xq6NMwGBMNAw
-         2o+g==
-X-Forwarded-Encrypted: i=1; AFNElJ/WLRU9sMmn3i50F3tUAT4msyUj3QS7R3VWVW9QormqFN5XThVRq67fAkGUOmHkwaIEzdoO0a8Uq/1Z/VM0MQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyijTL7gYS30eIAHHfczXLHLv/L/oJE7hUwMbpUfq/1b/TEQX0y
-	YHd4WtWqPXsMVjVtJUktemUz1NR/daYOCDjRLB02AFQphwPQJ2ZlYfmX
-X-Gm-Gg: AfdE7cmgEkNR8ZXt+tIsBFyIXboNVmAhRjGyFOVt3YLAKauB6LU9gL7EzXUmhl4HnlH
-	wmTYGX1MvctZeLjMMBofTVFi4b3goe6nyvxyqxbrboMjiJ6XWJOqoHVgZEeBUjR+vWDYiapGfUS
-	I3LhBex8fyuJeLSGg0rNzN61GoPU+dH55Bgy8+MKruW1nZIemkceOmQZaGggUhY5qmRlAskxem0
-	7MzgO3w2FUDFS1aws8EHptp9IuAVyjkmkxmz71KUd35qgvTb6PlUR1zmbJAJx56uJ+yQiGkoSkz
-	nPKv0c4VdVls8IA/oRWCNb51JclTJnAjIWTuzNRvSND1Mk62NrQy0S2MjEdAYhsJ5VHDC2sxVV1
-	3GEsAmuwWVT7/wW1Prt0SjXP1u7QYaRXmI9bYoybS0NBEQSFH/txmhhpuOZq4i9vTWIylFkCVhN
-	7qu37to1gH9s0equ1e89rg1+LAMsid92cmUV682N0wQlmedQWEo9EOslnxSZjdRVIh63wmb6VvE
-	jjdmqk0ikVIr4f0ZetL0UWdTufRs357qdWV//LY
-X-Received: by 2002:a05:6a20:6a1b:b0:3b4:b30e:1b4d with SMTP id adf61e73a8af0-3bd4afb8cdamr262712637.40.1782346796989;
-        Wed, 24 Jun 2026 17:19:56 -0700 (PDT)
+        bh=hxGQdM0c2TatqyA1QygknbGg8MMT1//ZBGDzhZkibBo=;
+        b=peTRboMk/JDM+RAJu+kU65twAqoyvO5W+QB3GdE/eJZpS5TbkEWr/47ld4lIw6WXwW
+         dQXeQFIg/hYnkHjRGlyhnrP1dopcG80MApasurwvDa/vIgQO2BwH6GpAQ2VEE0n8mTi9
+         WzGOYPq1SIq7fTGdxuVfbzhlWBounioYkd2db6yg0pHtbhkFpfNG3Z8ecTRtKkFV0voV
+         odomo0BuST8Aq8XcPHpABh39pnvbHnXVXxbr1rHsc/b0br2CaII4TP6j5sBdxLcFAqrI
+         UsWEgFmMv7vuXMnj7ZQk/z5fr4TD3j/2cGiePw1YTiOU0L3h5OgX321gro5gvVVR6sJu
+         gG3A==
+X-Forwarded-Encrypted: i=1; AFNElJ9Irfr59rerdYn6W6D3h/5R54Qe/9jgnHojKDlFBfGSRFKuKB8zJbbGW9wI3aohHcX/tnu3EOyakcE/f3Jl0Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwnqogSEhNEzDmlk7RjC5jiwozmbF0nUAAgPaJYChChaxqoNPOH
+	/7rq9+8osH5SqU4oD+kSbWz5JCJVDJSYkw3nn1BLmZozt6Mdr+trSoO+
+X-Gm-Gg: AfdE7clBKVvGbnygLPyL/z7S++9f/sy/iASCiCVA+ibrRE51iS5iScwCmptGEmkn7VQ
+	vClAsdFlwVANRTSP8hCmhPu01HQrwBC70szFCKRM9CpfZhHaMO/IOQFa9Nh3rMiSdBMMbIZ5xKi
+	hbpmR1zb1ojV4FNgNi6+4o6QRF4xNOjq70ppvWUWu7tbZgcvil1kIHNcnGXZ1AekUiffeJvUxC1
+	epsi81+Xd0+JtP1OgWDWeZCqBzf0plFTQrBf9fl1Zf0DxFVbOLe0zwgJc8OoTmpPhrbqD9K+ujM
+	HhQKxAUuZlJqc+BL+bYLedXd7NxqExIQVAPq/85u3Cw09NO0yLYS/CrWKYvlFd+LZNB2qjNGh08
+	B9ESdKtvv3M7Drc9PDMc0AXAb3kab2x9KEwReEiKRf2qVPrY9oGa2v9Lamxd7egPhZ02D7pZw4M
+	gfDkrS38QiCl67PZQ0l7M3hrURtxZ6pOpjHGJhN7vDqDnf+T5Zd5z1yahXvBUjCAtWihcpPr1Tz
+	gJjxmWqLeoqmuBmXdfUXclAw2O4bw==
+X-Received: by 2002:a05:6a21:9982:b0:3ba:e5e2:73bf with SMTP id adf61e73a8af0-3bd4afd8113mr325777637.43.1782346807421;
+        Wed, 24 Jun 2026 17:20:07 -0700 (PDT)
 Received: from sean-HP-EliteBook-830-G6.. (114-34-228-194.hinet-ip.hinet.net. [114.34.228.194])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-c92bc1e0d10sm586839a12.21.2026.06.24.17.19.54
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-c92bc1e0d10sm586839a12.21.2026.06.24.17.20.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 24 Jun 2026 17:19:56 -0700 (PDT)
+        Wed, 24 Jun 2026 17:20:06 -0700 (PDT)
 From: Sean Wang <sean.wang@kernel.org>
 To: Felix Fietkau <nbd@nbd.name>,
 	Lorenzo Bianconi <lorenzo@kernel.org>
@@ -68,17 +68,17 @@ Cc: chengwei.yu@mediatek.com,
 	linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH v2 8/9] wifi: mt76: mt792x: build iface combinations dynamically
-Date: Wed, 24 Jun 2026 19:18:33 -0500
-Message-ID: <20260625001834.475094-9-sean.wang@kernel.org>
+Subject: [PATCH v2 9/9] wifi: mt76: mt792x: advertise NAN data support
+Date: Wed, 24 Jun 2026 19:18:34 -0500
+Message-ID: <20260625001834.475094-10-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260625001834.475094-1-sean.wang@kernel.org>
 References: <20260625001834.475094-1-sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260624_171957_923191_0477BEAC 
-X-CRM114-Status: GOOD (  14.87  )
+X-CRM114-CacheID: sfid-20260624_172008_327287_8FCBABD9 
+X-CRM114-Status: GOOD (  15.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,12 +95,15 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Move mt792x interface combination selection into a helper and store the
-selected table in mt792x device state.
+Advertise NAN and NAN data support when firmware exposes NAN
+capability.
 
-This keeps the existing non-CNM and CNM combinations unchanged while
-making later firmware-gated extensions add combinations without touching
-the common wiphy setup path.
+Add NAN interface combinations on top of the dynamic combination
+framework, advertise 2.4 GHz and 5 GHz NAN bands, and enable secure
+NAN.
+
+Keep the base interface combinations unchanged when NAN is unavailable
+so existing STA/AP/P2P modes keep the same limits.
 
 Co-developed-by: Stella Liu <yu-ching.liu@mediatek.com>
 Signed-off-by: Stella Liu <yu-ching.liu@mediatek.com>
@@ -108,96 +111,149 @@ Co-developed-by: Jeremy Yu <chengwei.yu@mediatek.com>
 Signed-off-by: Jeremy Yu <chengwei.yu@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt792x.h   |  2 ++
- .../net/wireless/mediatek/mt76/mt792x_core.c  | 36 ++++++++++++++-----
- 2 files changed, 30 insertions(+), 8 deletions(-)
+ .../net/wireless/mediatek/mt76/mt792x_core.c  | 96 ++++++++++++++++++-
+ 1 file changed, 92 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
-index 9d5a2adc81f6..73f2333c2970 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
-@@ -324,6 +324,8 @@ struct mt792x_dev {
- 	struct ieee80211_chanctx_conf *new_ctx;
- 
- 	struct ieee80211_vif *nan_vif;
-+	const struct ieee80211_iface_combination *iface_combinations;
-+	int n_iface_combinations;
- };
- 
- static inline struct mt792x_bss_conf *
 diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-index a0db815c27bc..ffe0bcdf1df6 100644
+index ffe0bcdf1df6..411c04640add 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-@@ -60,7 +60,7 @@ static const struct ieee80211_iface_limit if_limits_chanctx_scc[] = {
+@@ -3,6 +3,7 @@
+ 
+ #include <linux/module.h>
+ #include <linux/firmware.h>
++#include <linux/slab.h>
+ 
+ #include "mt792x.h"
+ #include "dma.h"
+@@ -60,6 +61,40 @@ static const struct ieee80211_iface_limit if_limits_chanctx_scc[] = {
  	}
  };
  
--static const struct ieee80211_iface_combination if_comb_chanctx[] = {
-+static const struct ieee80211_iface_combination if_comb_chanctx_base[] = {
++static const struct ieee80211_iface_limit if_limits_nan_mcc[] = {
++	{
++		.max = 2,
++		.types = BIT(NL80211_IFTYPE_STATION),
++	},
++	{
++		.max = 1,
++		.types = BIT(NL80211_IFTYPE_NAN),
++	},
++	{
++		.max = 2,
++		.types = BIT(NL80211_IFTYPE_NAN_DATA),
++	},
++};
++
++static const struct ieee80211_iface_limit if_limits_nan_scc[] = {
++	{
++		.max = 2,
++		.types = BIT(NL80211_IFTYPE_STATION),
++	},
++	{
++		.max = 1,
++		.types = BIT(NL80211_IFTYPE_NAN),
++	},
++	{
++		.max = 2,
++		.types = BIT(NL80211_IFTYPE_NAN_DATA),
++	},
++	{
++		.max = 1,
++		.types = BIT(NL80211_IFTYPE_AP),
++	},
++};
++
+ static const struct ieee80211_iface_combination if_comb_chanctx_base[] = {
  	{
  		.limits = if_limits_chanctx_mcc,
- 		.n_limits = ARRAY_SIZE(if_limits_chanctx_mcc),
-@@ -77,6 +77,22 @@ static const struct ieee80211_iface_combination if_comb_chanctx[] = {
+@@ -77,9 +112,31 @@ static const struct ieee80211_iface_combination if_comb_chanctx_base[] = {
  	}
  };
  
-+static int mt792x_setup_iface_combinations(struct mt792x_dev *dev)
-+{
-+	const bool cnm = !!(dev->fw_features & MT792x_FW_CAP_CNM);
+-static int mt792x_setup_iface_combinations(struct mt792x_dev *dev)
++static const struct ieee80211_iface_combination if_comb_chanctx_nan[] = {
++	{
++		.limits = if_limits_nan_mcc,
++		.n_limits = ARRAY_SIZE(if_limits_nan_mcc),
++		.max_interfaces = MT792x_MAX_INTERFACES,
++		.num_different_channels = 2,
++		.beacon_int_infra_match = false,
++	},
++	{
++		.limits = if_limits_nan_scc,
++		.n_limits = ARRAY_SIZE(if_limits_nan_scc),
++		.max_interfaces = MT792x_MAX_INTERFACES,
++		.num_different_channels = 1,
++		.beacon_int_infra_match = false,
++	},
++};
 +
-+	if (!cnm) {
-+		dev->iface_combinations = if_comb;
-+		dev->n_iface_combinations = ARRAY_SIZE(if_comb);
++static int mt792x_setup_iface_combinations(struct mt792x_dev *dev,
++					   struct wiphy *wiphy)
+ {
+ 	const bool cnm = !!(dev->fw_features & MT792x_FW_CAP_CNM);
++	const bool nan = !!(dev->fw_features & MT792x_FW_CAP_NAN);
++	const int n_base = ARRAY_SIZE(if_comb_chanctx_base);
++	const int n_nan = ARRAY_SIZE(if_comb_chanctx_nan);
++	struct ieee80211_iface_combination *comb;
+ 
+ 	if (!cnm) {
+ 		dev->iface_combinations = if_comb;
+@@ -87,8 +144,24 @@ static int mt792x_setup_iface_combinations(struct mt792x_dev *dev)
+ 		return 0;
+ 	}
+ 
+-	dev->iface_combinations = if_comb_chanctx_base;
+-	dev->n_iface_combinations = ARRAY_SIZE(if_comb_chanctx_base);
++	/* CNM enabled, NAN optional */
++	if (!nan) {
++		dev->iface_combinations = if_comb_chanctx_base;
++		dev->n_iface_combinations = ARRAY_SIZE(if_comb_chanctx_base);
 +		return 0;
 +	}
 +
-+	dev->iface_combinations = if_comb_chanctx_base;
-+	dev->n_iface_combinations = ARRAY_SIZE(if_comb_chanctx_base);
++	/* CNM + NAN: dynamically build base + nan list */
++	comb = devm_kcalloc(&wiphy->dev, n_base + n_nan, sizeof(*comb),
++			    GFP_KERNEL);
++	if (!comb)
++		return -ENOMEM;
 +
-+	return 0;
-+}
++	memcpy(comb, if_comb_chanctx_base, sizeof(if_comb_chanctx_base));
++	memcpy(comb + n_base, if_comb_chanctx_nan, sizeof(if_comb_chanctx_nan));
 +
- void mt792x_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
- 	       struct sk_buff *skb)
- {
-@@ -663,6 +679,7 @@ int mt792x_init_wiphy(struct ieee80211_hw *hw)
- 	struct mt792x_phy *phy = mt792x_hw_phy(hw);
- 	struct mt792x_dev *dev = phy->dev;
- 	struct wiphy *wiphy = hw->wiphy;
-+	int err;
++	dev->iface_combinations = comb;
++	dev->n_iface_combinations = n_base + n_nan;
  
- 	hw->queues = 4;
- 	if (dev->has_eht) {
-@@ -683,15 +700,17 @@ int mt792x_init_wiphy(struct ieee80211_hw *hw)
- 	hw->vif_data_size = sizeof(struct mt792x_vif);
- 	hw->chanctx_data_size = sizeof(struct mt792x_chanctx);
- 
--	if (dev->fw_features & MT792x_FW_CAP_CNM) {
-+	if (dev->fw_features & MT792x_FW_CAP_CNM)
- 		wiphy->flags |= WIPHY_FLAG_HAS_REMAIN_ON_CHANNEL;
--		wiphy->iface_combinations = if_comb_chanctx;
--		wiphy->n_iface_combinations = ARRAY_SIZE(if_comb_chanctx);
--	} else {
-+	else
+ 	return 0;
+ }
+@@ -705,7 +778,7 @@ int mt792x_init_wiphy(struct ieee80211_hw *hw)
+ 	else
  		wiphy->flags &= ~WIPHY_FLAG_HAS_REMAIN_ON_CHANNEL;
--		wiphy->iface_combinations = if_comb;
--		wiphy->n_iface_combinations = ARRAY_SIZE(if_comb);
--	}
-+
-+	err = mt792x_setup_iface_combinations(dev);
-+	if (err)
-+		return err;
-+
-+	wiphy->iface_combinations = dev->iface_combinations;
-+	wiphy->n_iface_combinations = dev->n_iface_combinations;
- 	wiphy->flags &= ~(WIPHY_FLAG_IBSS_RSN | WIPHY_FLAG_4ADDR_AP |
- 			  WIPHY_FLAG_4ADDR_STATION);
- 	wiphy->interface_modes = BIT(NL80211_IFTYPE_STATION) |
-@@ -699,6 +718,7 @@ int mt792x_init_wiphy(struct ieee80211_hw *hw)
- 				 BIT(NL80211_IFTYPE_P2P_CLIENT) |
+ 
+-	err = mt792x_setup_iface_combinations(dev);
++	err = mt792x_setup_iface_combinations(dev, wiphy);
+ 	if (err)
+ 		return err;
+ 
+@@ -719,6 +792,21 @@ int mt792x_init_wiphy(struct ieee80211_hw *hw)
  				 BIT(NL80211_IFTYPE_P2P_GO) |
  				 BIT(NL80211_IFTYPE_P2P_DEVICE);
+ 
++	if ((dev->fw_features & MT792x_FW_CAP_CNM) &&
++	    (dev->fw_features & MT792x_FW_CAP_NAN)) {
++		wiphy->interface_modes |= BIT(NL80211_IFTYPE_NAN) |
++					  BIT(NL80211_IFTYPE_NAN_DATA);
++		wiphy->nan_supported_bands = BIT(NL80211_BAND_2GHZ) |
++					      BIT(NL80211_BAND_5GHZ);
++		wiphy->nan_capa.flags = WIPHY_NAN_FLAGS_CONFIGURABLE_SYNC |
++					WIPHY_NAN_FLAGS_USERSPACE_DE;
++		wiphy->nan_capa.op_mode = NAN_OP_MODE_PHY_MODE_MASK;
++		wiphy->nan_capa.n_antennas = 0x22;
++		wiphy->nan_capa.max_channel_switch_time = 12;
++		wiphy->nan_capa.dev_capabilities = NAN_DEV_CAPA_EXT_KEY_ID_SUPPORTED;
++		wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_SECURE_NAN);
++	}
 +
  	wiphy->max_scan_ie_len = MT76_CONNAC_SCAN_IE_LEN;
  	wiphy->max_scan_ssids = 4;
