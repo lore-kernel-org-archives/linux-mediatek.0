@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E1FECDB47C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jun 2026 00:31:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 774F0CDB47C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jun 2026 00:35:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=19axsYR4NXTcy4l1/sY99iQQwlSHhKID7lFmM5cMVjQ=; b=dCg7GEjUYXNTULIBXAysvpypXe
-	P4cT3saEI0hFm5FsKVhvl0h9MOCj53UkLpyIE0MbkmKek/Aw8vwhSDJIWLavIj96NxybHopXQOuGO
-	p3EyYmKbaoSXCBSenqsxpKq6N7y4QG05FIDEgYuI91KmTEDymfsfGevPrAYQdYrgDybHKzyqnYcHb
-	Cv2aDs7mq7xQzdl/90/ZGMLzvkH2QI4ey90fDoG8QlGXJKQL7QAK36Qv1akI0Sp+ue9Ti8a/53d8i
-	H3b8UhBjwvwOtr+6ruWCOmkYf59/DMwWskad3RRn+pZKKxFcR5RAifBt0f9YguLaKNFsFTmgNLVdd
-	5uquVaXQ==;
+	bh=PUobQcvyhZOtyQtOikdb+eklZinioR0h77XeVrRsVtw=; b=CsDb3jICUICDG9j2l+VKd5L5lF
+	jvLGzDQVK4NVtEiXv0VoRhVOEeHuZhb9VFrQ26hY35+dSEpCZA4JfPD0PzOxCD1HlAzS2JC0G90Cu
+	mCZ+UB+omfdBGzGllHLeDjBOuCXguki4FToc4CQz/oKbEW+isrvrxDh/mrwJr5V0uTIvOn2QH6Fpg
+	UgfoKYk+SM5iKUja47azpFdm2huN3b76eCHnbK0LbPizMKq84dEl55SMx3n373PXV9pZdsBX6UaGN
+	YlPuU/xLwhZWeBfX590iIrVdptkXYQ1LZvabxiVDwJ5MYXvtBKg87gkWI8+HppMKTlO/9KtMoaqg/
+	9BJ6bMEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcY0W-00000008T6D-2ofP;
-	Thu, 25 Jun 2026 00:31:52 +0000
+	id 1wcY46-00000008TVo-24Su;
+	Thu, 25 Jun 2026 00:35:34 +0000
 Received: from smtp81.cstnet.cn ([159.226.251.81] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcY0S-00000008T5d-3tmp;
-	Thu, 25 Jun 2026 00:31:51 +0000
+	id 1wcY42-00000008TUm-3KGN;
+	Thu, 25 Jun 2026 00:35:32 +0000
 Received: from localhost.localdomain (unknown [111.196.245.140])
-	by APP-03 (Coremail) with SMTP id rQCowAD3FNzwdjxq38vCFQ--.4340S2;
-	Thu, 25 Jun 2026 08:31:44 +0800 (CST)
+	by APP-03 (Coremail) with SMTP id rQCowACnkKfOdzxqF93CFQ--.4393S2;
+	Thu, 25 Jun 2026 08:35:26 +0800 (CST)
 From: Pengpeng Hou <pengpeng@iscas.ac.cn>
-To: Bin Liu <bin.liu@mediatek.com>
+To: Chaotian Jing <chaotian.jing@mediatek.com>
 Cc: pengpeng@iscas.ac.cn,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Ulf Hansson <ulfh@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-media@vger.kernel.org,
+	linux-mmc@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH] media: mediatek: jpeg: retry HW selection after successful wait
-Date: Thu, 25 Jun 2026 08:31:42 +0800
-Message-ID: <20260625003142.99598-1-pengpeng@iscas.ac.cn>
+Subject: [PATCH] mmc: mtk-sd: report DMA stop timeouts as data errors
+Date: Thu, 25 Jun 2026 08:35:25 +0800
+Message-ID: <20260625003525.22594-1-pengpeng@iscas.ac.cn>
 X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: rQCowAD3FNzwdjxq38vCFQ--.4340S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7Aw45KF43tr48tFykGrWxWFg_yoW8XrW8pr
-	ZxK3sFyrW8Krs0gr48A3W7ZFy5Aw1rCF4xWr13uw10yw1aqF47GryYka4SvFWxAr42ka43
-	JF4Fv3yxArWjyFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUUkK14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+X-CM-TRANSID: rQCowACnkKfOdzxqF93CFQ--.4393S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7CrWrKr13Ww1UKFy8tF4rAFb_yoW5Jr1kpa
+	y5W3Z8KrWkXwn7W3yrCF1UXwn8Xa9aq398G348Gw1fZw1Fgr1DXa1DKa4FvFyayrWfJ3ZF
+	9a18t3y5CrZ5JFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUUvj14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
 	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
-	1l84ACjcxK6xIIjxv20xvE14v26r4j6ryUM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
-	6F4UM28EF7xvwVC2z280aVAFwI0_Gr1j6F4UJwA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_Gr
-	1j6F4UJwAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv
-	7VC0I7IYx2IY67AKxVWUJVWUGwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r
-	1j6r4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwCY1x0262kKe7AK
-	xVWUtVW8ZwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7xkEbVWUJVW8JwC20s026c02F4
-	0E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E67AF67kF1VAFwI0_Jw0_GFyl
-	IxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCwCI42IY6xIIjxv20xvEc7CjxV
-	AFwI0_Jr0_Gr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1xMIIF0xvEx4A2jsIE14v26r1j
-	6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Jr0_GrUvcSsGvfC2KfnxnUUI43ZEXa7VUbGQ6J
-	UUUUU==
+	1l84ACjcxK6xIIjxv20xvE14v26r4j6ryUM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26F4j
+	6r4UJwA2z4x0Y4vEx4A2jsIE14v26r4UJVWxJr1l84ACjcxK6I8E87Iv6xkF7I0E14v26r
+	4UJVWxJr1le2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2Wl
+	Yx0E2Ix0cI8IcVAFwI0_JF0_Jw1lYx0Ex4A2jsIE14v26r1j6r4UMcvjeVCFs4IE7xkEbV
+	WUJVW8JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I648v4I1lc7CjxVAaw2AF
+	wI0_Jw0_GFyl42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4
+	xG67AKxVWUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r1q6r43
+	MIIYrxkI7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF4lIxAIcVC0I7IYx2IY6xkF7I
+	0E14v26r4j6F4UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI42IY6I8E87Iv67AKxVWU
+	JVW8JwCI42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJbIYCTnIWIevJa73UjIFyTuYvjfUoq
+	2MUUUUU
 X-Originating-IP: [111.196.245.140]
 X-CM-SenderInfo: pshqw1xhqjqxpvfd2hldfou0/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260624_173149_346429_67261063 
-X-CRM114-Status: GOOD (  10.90  )
+X-CRM114-CacheID: sfid-20260624_173531_201310_A863074E 
+X-CRM114-Status: GOOD (  11.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,35 +81,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-wait_event_interruptible_timeout() returns a positive value when the
-condition becomes true before the timeout expires.
+msdc_data_xfer_done() stops the DMA engine before completing a data
+request, but it only logs failures from the DMA stop and DMA-inactive
+polls.
 
-mtk_jpegdec_worker() treats every non-zero return value as a failure and
-finishes the mem2mem job with an error.  A normal wakeup that indicates
-that a decode engine is ready can therefore be handled as if all hardware
-remained busy.
+When the interrupt status also carries MSDC_INT_XFER_COMPL, the function
+can still report the full data length as transferred even though the DMA
+engine did not confirm that it stopped or became inactive.
 
-Only fail immediately on interrupted waits.  Keep the existing retry limit
-for real timeouts, and retry hardware selection after a successful wait.
+Treat DMA stop/inactive timeouts as data errors.  This reuses the existing
+reset/error path and prevents a timed out DMA stop from being reported as a
+successful full-length transfer.
 
 Signed-off-by: Pengpeng Hou <pengpeng@iscas.ac.cn>
 ---
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/mmc/host/mtk-sd.c | 17 ++++++++++++-----
+ 1 file changed, 12 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index d147ec483..391db77a6 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -1697,7 +1697,7 @@ static void mtk_jpegdec_worker(struct work_struct *work)
- 		ret = wait_event_interruptible_timeout(jpeg->hw_wq,
- 						       atomic_read(&jpeg->hw_rdy) > 0,
- 						       MTK_JPEG_HW_TIMEOUT_MSEC);
--		if (ret != 0 || (i++ > MTK_JPEG_MAX_RETRY_TIME)) {
-+		if (ret < 0 || (!ret && i++ > MTK_JPEG_MAX_RETRY_TIME)) {
- 			dev_err(jpeg->dev, "%s : %d, all HW are busy\n",
- 				__func__, __LINE__);
- 			v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index b2680cc05..e3caa9c32 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -1583,7 +1583,7 @@ static void msdc_data_xfer_done(struct msdc_host *host, u32 events,
+ 	     | MSDC_INT_DMA_BDCSERR | MSDC_INT_DMA_GPDCSERR
+ 	     | MSDC_INT_DMA_PROTECT);
+ 	u32 val;
+-	int ret;
++	int dma_err = 0, ret;
+ 
+ 	spin_lock_irqsave(&host->lock, flags);
+ 	done = !host->data;
+@@ -1603,18 +1603,23 @@ static void msdc_data_xfer_done(struct msdc_host *host, u32 events,
+ 
+ 		ret = readl_poll_timeout_atomic(host->base + MSDC_DMA_CTRL, val,
+ 						!(val & MSDC_DMA_CTRL_STOP), 1, 20000);
+-		if (ret)
++		if (ret) {
+ 			dev_dbg(host->dev, "DMA stop timed out\n");
++			dma_err = ret;
++		}
+ 
+ 		ret = readl_poll_timeout_atomic(host->base + MSDC_DMA_CFG, val,
+ 						!(val & MSDC_DMA_CFG_STS), 1, 20000);
+-		if (ret)
++		if (ret) {
+ 			dev_dbg(host->dev, "DMA inactive timed out\n");
++			dma_err = ret;
++		}
+ 
+ 		sdr_clr_bits(host->base + MSDC_INTEN, data_ints_mask);
+ 		dev_dbg(host->dev, "DMA stop\n");
+ 
+-		if ((events & MSDC_INT_XFER_COMPL) && (!stop || !stop->error)) {
++		if (!dma_err && (events & MSDC_INT_XFER_COMPL) &&
++		    (!stop || !stop->error)) {
+ 			data->bytes_xfered = data->blocks * data->blksz;
+ 		} else {
+ 			dev_dbg(host->dev, "interrupt events: %x\n", events);
+@@ -1622,7 +1627,9 @@ static void msdc_data_xfer_done(struct msdc_host *host, u32 events,
+ 			host->error |= REQ_DAT_ERR;
+ 			data->bytes_xfered = 0;
+ 
+-			if (events & MSDC_INT_DATTMO)
++			if (dma_err)
++				data->error = -ETIMEDOUT;
++			else if (events & MSDC_INT_DATTMO)
+ 				data->error = -ETIMEDOUT;
+ 			else if (events & MSDC_INT_DATCRCERR)
+ 				data->error = -EILSEQ;
 -- 
 2.50.1 (Apple Git-155)
 
