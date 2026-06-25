@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09112CDE000
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jun 2026 12:10:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEC98CDB479
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jun 2026 12:10:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
-	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=awllAxmt9GN9pmpw1m8uWwiGZYriStEgUiAf2wOOfjM=; b=NW6tHNe5b3ItRnO9LuRnuRkhhv
-	bdodTDOAKhLGxR+7otLC6lvGz4z7xbX+/OaJ7ExGyClkTWveXjJvHCp1gniLjwhgnDE72IaIIRUvJ
-	bsmCAetBIkBGixrvycrhPob8fAZvjw2UuG/7GprZ9OOAICqQYswIEibHSJB9KVLkIxhbuJiLYUTzV
-	O1goif/gOdaqh5Cco9Xh5ANe7Fwea/X0Z6t8wiorGjbUDq4pnEhmb0y8GDbS/hEJbN3QmlNgkCD3C
-	sYUXe33gBCC4okgaSl2iPGGnI0V47iGK/+i7HjV03tbMoPPFeD9+EQ/S5djgFxkp4Xbuz1MZSBrAG
-	RI8ItK4A==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=cF3+jafvYSrDPDBtgYwVywOYLEr7NhgJgh0vNIVDrWY=; b=ZZOJSLMWTyZpVW5+T3ftnJeJ9N
+	aOPbOe7OJPo0ltbGGT385sfek7jwAu1pFbylfbua7bg9a3hS0S4WPY97sFZ132aHnBTFz+pM98ZkA
+	ziLhbzJszkbtKbEdXpmNl8fWF9mAKmTIsZStOntylWDQzh1erpfOedDRKbr48sCnEaYsgMLjQZkMo
+	Ip1G3gxkkS3a+EO8TQv9rP+YE87+SpTzd8UcyM5TMyEIdHsJ3S7oXYCyaO9x2CyZizAZVih7VFO43
+	dNb0USKuX0wmyE1qpkOE9C0XBPODbDukaMDWlNAtX97qBfhbDKS47k8pRKsaY8FdtsqKIrhOyaGLz
+	SN57F6zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wciua-00000009A4L-3T7R;
+	id 1wciua-00000009A4X-3hXH;
 	Thu, 25 Jun 2026 12:10:28 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wciuZ-00000009A3s-41xv
+	id 1wciua-00000009A3t-0Z8b
 	for linux-mediatek@lists.infradead.org;
 	Thu, 25 Jun 2026 12:10:28 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5AFAE4188F;
+	by tor.source.kernel.org (Postfix) with ESMTP id 616C6600C3;
 	Thu, 25 Jun 2026 12:10:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 4070FC2BCF4;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 150BCC2BCB4;
 	Thu, 25 Jun 2026 12:10:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1782389427;
-	bh=ba/68qyLW4RJgqhb23CSgIV/K9uiVqn6kZrVBreVKm4=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=IcbDSo0759wPfaItgWUYu6iNa0PiJe8/f0a2fRkgIkghvRn4Ywa1cHiegqcS8TpMc
-	 ky6ARcjXOFGnGPLNXBVNQWK3Fo2OdUZpAvy+M5qu2AObGIrm32q9TZylhKsROnTQuZ
-	 lJrjCjM7qdFz3RSzbNNKIVavB1PyILN2en91Huyd/5C6OrNuBsBK2HPqU0pdHypCwr
-	 /8L4OAEjHOynA989XxMjJ6GWpVc2nB5cd/HRY6bnppfJE2ZTKQ6OQioPzQJ4ZrkCGo
-	 DEnvAT6tgW1Tf2+UV65ccsLYb/vfVapYUBR1Jo78X4T/dYATgpfD2KJINXpzaHwjqs
-	 lg7clX9MHMA6g==
+	bh=aEqGl/t2oeE3z5GCNLJYJ3vk5L2f28hG2tdsN4d5BLI=;
+	h=From:Subject:Date:To:Cc:Reply-To:From;
+	b=qS4jsolariue/Qa5Yhu/dzHltsP3icGVPnQ4OcO2wQdkYLCDeC0SrPcTo/OawaO3u
+	 qFC5xGZVAsARGHikM+dk528euNhbeLaMwgoO4bOWLVN4VBzWp6KCI6faaFRSPtP7ML
+	 3zfN1q2i1E5RIZiRsvVOqd9CW5JK4syGKlMnuO92FuKDy/6P23cwF0xGoMPwjKw3BK
+	 8+mo+Z9vui1DDdbGuoa8P84GOWrva4CECt8pJo8VS06Uurkmf/gNY3i2YoBv7r/EOm
+	 5TrEZjd01D23FkSr9PfEhoXXPTpdRgBrq5UsUZMA+ajYSrm/fpBDslVnFWIbZmyG8O
+	 qNgaUp7O13KSw==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 344BCCDE001;
-	Thu, 25 Jun 2026 12:10:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BED9BCDB479;
+	Thu, 25 Jun 2026 12:10:26 +0000 (UTC)
 From: Bryam Vargas via B4 Relay <devnull+hexlabsecurity.proton.me@kernel.org>
-Date: Thu, 25 Jun 2026 07:10:27 -0500
-Subject: [PATCH 2/2] wifi: mt76: mt7996: bound the device EEPROM address
- before the EFUSE copy
+Subject: [PATCH 0/2] wifi: mt76: bound the device-reported EEPROM address
+Date: Thu, 25 Jun 2026 07:10:25 -0500
+Message-Id: <20260625-b4-disp-16f99062-v1-0-aee52ecf61b9@proton.me>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260625-b4-disp-16f99062-v1-2-aee52ecf61b9@proton.me>
-References: <20260625-b4-disp-16f99062-v1-0-aee52ecf61b9@proton.me>
-In-Reply-To: <20260625-b4-disp-16f99062-v1-0-aee52ecf61b9@proton.me>
+X-B4-Tracking: v=1; b=H4sIALEaPWoC/x2MQQqAMAzAviI9W9iGVuZXxIOzVXuZsoEIsr87P
+ CaQvJAlqWQYmxeS3Jr1jBVs28B6LHEXVK4Mzjgy5HoMHbLmCy1t3leDhpkseQ5+CFCzK8mmz7+
+ c5lI+pfRdiGIAAAA=
 To: Lorenzo Bianconi <lorenzo@kernel.org>, 
  Ryder Lee <ryder.lee@mediatek.com>, Felix Fietkau <nbd@nbd.name>
 Cc: Sean Wang <sean.wang@mediatek.com>, linux-mediatek@lists.infradead.org, 
  Shayne Chen <shayne.chen@mediatek.com>, linux-wireless@vger.kernel.org, 
  linux-kernel@vger.kernel.org
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1782389425; l=1841;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1782389425; l=1450;
  i=hexlabsecurity@proton.me; s=proton; h=from:subject:message-id;
- bh=5P3fKrvZnuhhzy5SyS2bn1gs3Kjjy/aad3X2rpiBcW8=;
- b=TzCsJWAssrI7MlgIxRUv7fUA8WIpBL8zgXK9SEJ+kpD7XCKVFah0X2W0VMmAPNTcyBz8sGKgd
- EwFEZjQZrSUA/ZEhUDno/MD/fCtQkyxLt0J5Z8GlzaSOiITTVCGO6/4
+ bh=aEqGl/t2oeE3z5GCNLJYJ3vk5L2f28hG2tdsN4d5BLI=;
+ b=WbuVeuUOSSAzABLV05jlMQnSZpj/raKBFDPyhwD8be073heZMHbwiVoYI6fAQpTaqNsazavWJ
+ 23UyCJqyU2hAq4LnYOQK+5yYicaiaORXEMLHfn0uQiomcyovRq4UWmY
 X-Developer-Key: i=hexlabsecurity@proton.me; a=ed25519;
  pk=dmppBMZNLLoPzxHi9l8tZDzEZUunPbgsYqIZYXeUrL0=
 X-Endpoint-Received: by B4 Relay for hexlabsecurity@proton.me/proton with
@@ -86,54 +86,36 @@ Reply-To: hexlabsecurity@proton.me
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bryam Vargas <hexlabsecurity@proton.me>
+Both mt76 get_eeprom handlers copy a device-reported EFUSE block into
+dev->mt76.eeprom.data at an offset taken from the MCU response (res->addr /
+event->addr, a device-controlled __le32). They clamp the copy length but
+never the destination offset, so an adapter that reports an out-of-range
+address drives an out-of-bounds write past eeprom.data -- 16 bytes on mt7915,
+up to 1024 on mt7996. Both patches reject such an address before deriving the
+pointer; a device that echoes the requested in-bounds offset is unaffected.
 
-mt7996_mcu_get_eeprom() derives the destination of the EFUSE/EXT block
-copy from the address reported by the MCU response (event->addr, a
-device-controlled __le32) and clamps only the copy length, never the
-destination offset into dev->mt76.eeprom.data. A malicious or
-malfunctioning device can report an arbitrary address and drive an
-out-of-bounds write of up to MT7996_EXT_EEPROM_BLOCK_SIZE bytes past
-eeprom.data.
+It is adapter-side only -- there is no unprivileged user path -- so this
+hardens against a malicious or compromised device, not a remote attacker.
 
-Reject a response whose address would place the copy outside eeprom.data
-before deriving the destination pointer. Devices that echo the requested
-in-bounds offset are unaffected.
+An out-of-tree KASAN module that reproduces each handler's destination
+arithmetic faults the unpatched path (slab-out-of-bounds write past
+eeprom.data) and runs clean both with the bound and on an in-range control.
 
-Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
-Cc: stable@vger.kernel.org
-Signed-off-by: Bryam Vargas <hexlabsecurity@proton.me>
 ---
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+Bryam Vargas (2):
+      wifi: mt76: mt7915: bound the device EEPROM address before the EFUSE copy
+      wifi: mt76: mt7996: bound the device EEPROM address before the EFUSE copy
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index f119f023bcd5..01c9adbca68b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -4345,11 +4345,18 @@ int mt7996_mcu_get_eeprom(struct mt7996_dev *dev, u32 offset, u8 *buf, u32 buf_l
- 	event = (struct mt7996_mcu_eeprom_access_event *)skb->data;
- 	if (event->valid) {
- 		u32 ret_len = le32_to_cpu(event->eeprom.ext_eeprom.data_len);
-+		u32 block = mode == EEPROM_MODE_EXT ? MT7996_EXT_EEPROM_BLOCK_SIZE :
-+						      MT7996_EEPROM_BLOCK_SIZE;
- 
- 		addr = le32_to_cpu(event->addr);
- 
--		if (!buf)
-+		if (!buf) {
-+			if (addr > dev->mt76.eeprom.size - block) {
-+				dev_kfree_skb(skb);
-+				return -EINVAL;
-+			}
- 			buf = (u8 *)dev->mt76.eeprom.data + addr;
-+		}
- 
- 		switch (mode) {
- 		case EEPROM_MODE_EFUSE:
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 11 +++++++++--
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c |  9 ++++++++-
+ 2 files changed, 17 insertions(+), 3 deletions(-)
+---
+base-commit: 502d801f0ab03e4f32f9a33d203154ce84887921
+change-id: 20260625-b4-disp-16f99062-0dd6169db97b
 
+Best regards,
 -- 
-2.43.0
+Bryam Vargas <hexlabsecurity@proton.me>
 
 
 
