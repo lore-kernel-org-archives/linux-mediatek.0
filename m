@@ -4,62 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 774F0CDB47F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jun 2026 09:43:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30E4BCDB479
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jun 2026 10:48:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=kfIRsSw5cLdsaIa2/VNlwqA6JtFDV9at3sJRCJsJesA=; b=IkX24GCKBjULESQSMj9s2Zt9vM
-	SDQ35HCJ2FGPoJiTfTWJGfN2mbtpENHCjHsi/V2F26dq9YRKZWO2oHYzSxzs1YZ2DLOgGSToSadHL
-	pZIYLoaECZ8dkXBLD2MwnXwqf2oa1S6PhjPkzhoc+Zqi5qlqt3wv4TTICblQWwArUqldcqJB6grik
-	j/roHM9fFu9/LU6ACGlqVzytiizAc+TqO/RZt4wiyzDQxgYAykuYlCyNGwyXNNFZ/4o6+1R9PhV9b
-	qFIw9ddBJBCZhIzHV8GL002kjb/FyA80ehi9scGBISE2jcKdF/Lfe9WS5Df1ukhFjACbgAdb1+0iG
-	wNbBX2TQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=vd1pAolJ32WGUV5hqmP6vxrovN7AtVmD6Ko3jeyWjvE=; b=nrhNsWsCeZVSS3mL26gOTYI23T
+	Udllp0CGdfxPwlpiGY3d6+R4/a2REesMndui3dbHWMMWtSmRBjCFvrmHoVzk7oWWErLwpSH/ubGu1
+	KjVTXStwhXmLmFLzQHPSrQhInwYzSjx4dXll8sJXXxiSJzSZ6Tvxrz/G2ekUJjbe2YND15W46CBhE
+	OQ4dxDAblCyhk42F7yEmlEGJzhYEW6jcguO00xBKPGLINvaKd6NfvHOU4YqzZlqyjrTJiq5d5Y8/e
+	ZAoA1Um0QjJ6mF8dbkkW+wdDyvxkESWTv80N1BOWyx7kewjnKF72oBUi4R2N8oz/YC+pkLJcAs3Lo
+	XeMhOIng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcgc0-00000008vXF-1kf3;
-	Thu, 25 Jun 2026 09:43:08 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wchcq-000000091pi-1vTc;
+	Thu, 25 Jun 2026 10:48:04 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcgbz-00000008vWd-0ywy;
-	Thu, 25 Jun 2026 09:43:07 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7FE076014C;
-	Thu, 25 Jun 2026 09:43:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AD8C41F000E9;
-	Thu, 25 Jun 2026 09:43:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782380585;
-	bh=kfIRsSw5cLdsaIa2/VNlwqA6JtFDV9at3sJRCJsJesA=;
-	h=From:Date:Subject:To:Cc;
-	b=V9JTsFGAe6nvw4b4Biz+gtY+fFyZwxOLVcw7gz/RYFPY/5bs28bD6P5erH2wgTMsS
-	 1QrF/d/EgD8FMIi2c5Hb7DXwM6uMHIERp+oJ5qW7+LoGvwSMvSy87nYOW2mQtdq+lp
-	 /HFTmdnIUi6jd8KydLkLkRDO/sS3dFIBxa7d79uJIUNbMsikfEt0XSFaRX8m4Mx+AN
-	 jUzqBB6UFfFmxRV/j9VxixF3nlZAmgr5X+xej3BVKa7MFlXMI3kutW5MV3pSqiqFb6
-	 vHnsCSjZWvzbkCGjIj+MV0jzN4gzHKLMtSLK0DQie8HV6LEpO3QORZugt9leo1kfNF
-	 IDz/RL9Uqtuuw==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Thu, 25 Jun 2026 11:42:46 +0200
-Subject: [PATCH net] net: airoha: dma map xmit frags with
- skb_frag_dma_map()
+	id 1wchco-000000091oX-1Ef5
+	for linux-mediatek@lists.infradead.org;
+	Thu, 25 Jun 2026 10:48:03 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-490ac357c55so18117095e9.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 25 Jun 2026 03:48:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1782384480; x=1782989280; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=vd1pAolJ32WGUV5hqmP6vxrovN7AtVmD6Ko3jeyWjvE=;
+        b=msgXD4rng4ftz8XElZ8Gf8/b5MkVpfXyjI7rSLY1KKOhZAI0YbqQoeVCngHmuvMPcz
+         jB7NkJzrLsCEEwTmssX2oWbvmlY9oIrfRxCCJQmuC7l3Hz+JXykz73LSBJpCvYSn09KA
+         As6UYzPpOuZ0ia04ZUG+JZuoUVQW7K4GgRG5xeHGsTOMHPUZxv10ldHyZKulMh22EHVR
+         8LjNcy2lXu0ErQ0ctBFPPfE3jeciia7FlyMPBc813FxYS5S/3pDsk3m+yzP//zSMHFx9
+         GCspvuNUl1ReggUhiHzjrOSY9x+iEqKcB6Gr6LNZ4ycVtmyS1aRAbrhSQSSONzlX/IVs
+         hNsw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1782384480; x=1782989280;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=vd1pAolJ32WGUV5hqmP6vxrovN7AtVmD6Ko3jeyWjvE=;
+        b=ml8GQInynWRJ40eQXUDnnfS4OtGTN5FQuAe+30vRYUDv4uRKsXt6kgj8jqhsIwDBhd
+         qfJWVMX2ILNh9hPtd8uczJ5LRc8eSLvzx+6pfcI5Bt9p/G2JaPRlStKHIVY0TP4oSBv/
+         WqCaHkHbMbkXd93X2UWnHZohbDAcqdVueu6Sgo2XhQ0AzMd2jcQNx0xyl1Zh44V5C/Ei
+         ad7xnIpHawBMdkhbzaib8WCMBHnev9JcuF+na0MKmEHB2IZXIilOx9ss09sKYeyihPUQ
+         4D7JO8bhLUMHCj2weDMGcm3mAlip2NhaevkSIu9BDJ0WpFj7ifSoJo3yvd/cGZI7WcTz
+         V4LA==
+X-Gm-Message-State: AOJu0YxH7A3ifeup/qTp+6sAwCRGQxbSe0W/H0gcA5vHBz8kgBLSrGD/
+	L6dHQKMiVR+3omQtjmScjxnYChO60VBksBCSIMaGYBQI3SDX3y6Cbr5AZfnPiMNU
+X-Gm-Gg: AfdE7ckleKweAkXKWwSuuiENsCJdPQ4FYXX/U5C4A5kg3LdYX+GIK/EYDuKWBCjRrxw
+	NuVBemV4zJtnCiX1izkeX3R29ySz7OCMozRdHisbRr6iMlkaz4eUF/csfZKTw7a2IldMlZFmQE2
+	Y0Bbie0cI4haQENcvd9C+53M7FpmPrAuvvA6fQN521GccS092WDokFVwKozjRJ1txfilL+0kGqM
+	ei0YCwnhbjUGmUZrhD5iJXmArzyNWzTYiV8TlE9HL7uUyzbfEYgmO7GmXU7QE4QcG7hP9pB0R76
+	WILVu0H8Qfbkv4azLeSRq6e16l6m9yxliL0JkzcrLasgGC7T3j9UsskXUvM+uVU2ukhA5/2RkZy
+	/uZabhGcZ+jQx+QTRcww8l/f46BBVs0K/Nm1H05Nzrj9bKpwBuRaPdiP/4j+50mvXSRIIuiLx/i
+	X5FpIjJw==
+X-Received: by 2002:a05:600c:b96:b0:492:6447:7a7f with SMTP id 5b1f17b1804b1-4926686b3f3mr25232275e9.6.1782384480165;
+        Thu, 25 Jun 2026 03:48:00 -0700 (PDT)
+Received: from luca-vm.. ([81.56.18.151])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-46c1ee01c6csm15254989f8f.14.2026.06.25.03.47.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 25 Jun 2026 03:47:59 -0700 (PDT)
+From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+To: linux-mediatek@lists.infradead.org
+Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+	Sean Wang <sean.wang@kernel.org>,
+	Linus Walleij <linusw@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [RFC PATCH 0/3] pinctrl: mediatek: mt8516-mt8167: Convert to Paris driver
+Date: Thu, 25 Jun 2026 12:46:29 +0200
+Message-ID: <20260625104742.113803-1-l.scorcia@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260625-airoha-eth-skb_frag_dma_map-v1-1-31d9e460aae6@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MQQqEMAwAwK9Izga0rD34lUVK2kYbFqukIoL49
- y0e5zI3FFbhAmNzg/IpRbZc0bcNhER5YZRYDaYztrNmQBLdEiEfCcvPu1lpcXElt9KOPoQQh2j
- 543uow648y/XuX8h8wPQ8fxqovC9yAAAA
-X-Change-ID: 20260625-airoha-eth-skb_frag_dma_map-bcccd5d6e4b1
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.3
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260625_034802_348588_678A7ABF 
+X-CRM114-Status: GOOD (  16.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,183 +104,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Map xmit skb fragments using skb_frag_dma_map() instead of
-dma_map_single(skb_frag_address()). skb_frag_address() relies on
-page_address() to obtain a kernel virtual address, which is not
-guaranteed to work for all page types (e.g. highmem pages or
-user-pinned pages from MSG_ZEROCOPY).
-skb_frag_dma_map() maps the fragment directly via its struct page and
-offset through dma_map_page(), avoiding the need for a kernel virtual
-address entirely.
-Introduce an enum airoha_dma_map_type to track how each queue entry was
-mapped (single vs page), so that the matching unmap function is called
-on completion and in error paths.
+The pinctrl registers of the mt8516 and mt8167 SoCs follow the layout of
+the Paris platform, but their pinctrl driver is currently modeled on
+the mt65xx legacy driver. As suggested in [1], it is possible to migrate
+them to the Paris driver.
 
-Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 SoC")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c | 61 ++++++++++++++++++++------------
- drivers/net/ethernet/airoha/airoha_eth.h |  7 ++++
- 2 files changed, 45 insertions(+), 23 deletions(-)
+In the process it is also possible to completely drop one of the two
+drivers as their register layout is identical, they only differ in some
+pin functions (mt8167 is basically mt8516 with added display blocks).
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 932b3a3df2e5..1caf6766f2c0 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -944,6 +944,25 @@ static void airoha_qdma_wake_netdev_txqs(struct airoha_queue *q)
- 	q->txq_stopped = false;
- }
- 
-+static void airoha_unmap_xmit_buf(struct airoha_eth *eth,
-+				  struct airoha_queue_entry *e)
-+{
-+	switch (e->dma_type) {
-+	case AIROHA_DMA_MAP_PAGE:
-+		dma_unmap_page(eth->dev, e->dma_addr, e->dma_len,
-+			       DMA_TO_DEVICE);
-+		break;
-+	case AIROHA_DMA_MAP_SINGLE:
-+		dma_unmap_single(eth->dev, e->dma_addr, e->dma_len,
-+				 DMA_TO_DEVICE);
-+		break;
-+	case AIROHA_DMA_UNMAPPED:
-+	default:
-+		break;
-+	}
-+	e->dma_type = AIROHA_DMA_UNMAPPED;
-+}
-+
- static int airoha_qdma_tx_napi_poll(struct napi_struct *napi, int budget)
- {
- 	struct airoha_tx_irq_queue *irq_q;
-@@ -1006,9 +1025,7 @@ static int airoha_qdma_tx_napi_poll(struct napi_struct *napi, int budget)
- 		skb = e->skb;
- 		e->skb = NULL;
- 
--		dma_unmap_single(eth->dev, e->dma_addr, e->dma_len,
--				 DMA_TO_DEVICE);
--		e->dma_addr = 0;
-+		airoha_unmap_xmit_buf(eth, e);
- 		list_add_tail(&e->list, &q->tx_list);
- 
- 		WRITE_ONCE(desc->msg0, 0);
-@@ -1177,12 +1194,10 @@ static void airoha_qdma_tx_cleanup(struct airoha_qdma *qdma)
- 			struct airoha_qdma_desc *desc = &q->desc[j];
- 			struct sk_buff *skb = e->skb;
- 
--			if (!e->dma_addr)
-+			if (e->dma_type == AIROHA_DMA_UNMAPPED)
- 				continue;
- 
--			dma_unmap_single(qdma->eth->dev, e->dma_addr,
--					 e->dma_len, DMA_TO_DEVICE);
--			e->dma_addr = 0;
-+			airoha_unmap_xmit_buf(qdma->eth, e);
- 			list_add_tail(&e->list, &q->tx_list);
- 
- 			WRITE_ONCE(desc->ctrl, 0);
-@@ -2193,8 +2208,8 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
- 	struct netdev_queue *txq;
- 	struct airoha_queue *q;
- 	LIST_HEAD(tx_list);
-+	dma_addr_t addr;
- 	int i = 0, qid;
--	void *data;
- 	u16 index;
- 	u8 fport;
- 
-@@ -2250,24 +2265,22 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
- 		return NETDEV_TX_BUSY;
- 	}
- 
--	len = skb_headlen(skb);
--	data = skb->data;
--
- 	e = list_first_entry(&q->tx_list, struct airoha_queue_entry,
- 			     list);
-+	len = skb_headlen(skb);
-+	addr = dma_map_single(netdev->dev.parent, skb->data, len,
-+			      DMA_TO_DEVICE);
-+	if (unlikely(dma_mapping_error(netdev->dev.parent, addr)))
-+		goto error_unlock;
-+
-+	e->dma_type = AIROHA_DMA_MAP_SINGLE;
- 	index = e - q->entry;
- 
- 	while (true) {
- 		struct airoha_qdma_desc *desc = &q->desc[index];
- 		skb_frag_t *frag = &skb_shinfo(skb)->frags[i];
--		dma_addr_t addr;
- 		u32 val;
- 
--		addr = dma_map_single(netdev->dev.parent, data, len,
--				      DMA_TO_DEVICE);
--		if (unlikely(dma_mapping_error(netdev->dev.parent, addr)))
--			goto error_unmap;
--
- 		list_move_tail(&e->list, &tx_list);
- 		e->skb = i == nr_frags - 1 ? skb : NULL;
- 		e->dma_addr = addr;
-@@ -2291,8 +2304,13 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
- 		if (++i == nr_frags)
- 			break;
- 
--		data = skb_frag_address(frag);
- 		len = skb_frag_size(frag);
-+		addr = skb_frag_dma_map(netdev->dev.parent, frag, 0, len,
-+					DMA_TO_DEVICE);
-+		if (unlikely(dma_mapping_error(netdev->dev.parent, addr)))
-+			goto error_unmap;
-+
-+		e->dma_type = AIROHA_DMA_MAP_PAGE;
- 	}
- 	q->queued += i;
- 
-@@ -2313,11 +2331,8 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
- 	return NETDEV_TX_OK;
- 
- error_unmap:
--	list_for_each_entry(e, &tx_list, list) {
--		dma_unmap_single(netdev->dev.parent, e->dma_addr, e->dma_len,
--				 DMA_TO_DEVICE);
--		e->dma_addr = 0;
--	}
-+	list_for_each_entry(e, &tx_list, list)
-+		airoha_unmap_xmit_buf(dev->eth, e);
- 	list_splice(&tx_list, &q->tx_list);
- error_unlock:
- 	spin_unlock_bh(&q->lock);
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index d7ff8c5200e2..2765244d937c 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -170,12 +170,19 @@ enum trtcm_param {
- #define TRTCM_TOKEN_RATE_MASK			GENMASK(23, 6)
- #define TRTCM_TOKEN_RATE_FRACTION_MASK		GENMASK(5, 0)
- 
-+enum airoha_dma_map_type {
-+	AIROHA_DMA_UNMAPPED,
-+	AIROHA_DMA_MAP_SINGLE,
-+	AIROHA_DMA_MAP_PAGE,
-+};
-+
- struct airoha_queue_entry {
- 	union {
- 		void *buf;
- 		struct {
- 			struct list_head list;
- 			struct sk_buff *skb;
-+			enum airoha_dma_map_type dma_type;
- 		};
- 	};
- 	dma_addr_t dma_addr;
+The Paris driver allows specifying two base registers, gpio and eint;
+this way it's no longer necessary to have a syscfg node in the device
+tree, referenced as a phandle in the pinctrl node. This also fixes the
+following long standing dtbs_check errors:
 
----
-base-commit: 232c4ca2343d1181cbfc061f9856d9591e397579
-change-id: 20260625-airoha-eth-skb_frag_dma_map-bcccd5d6e4b1
+mt8167-pumpkin.dtb: syscfg-pctl@10005000 (syscon): compatible: ['syscon']
+  is too short
+mt8516-pumpkin.dtb: syscfg-pctl@10005000 (syscon): compatible: ['syscon']
+  is too short
 
-Best regards,
+The new driver has been checked against the SoC data sheet and adds the
+capability to control pin driving strength and R1R0 pullup-pulldown
+resistors.
+
+This series is sent as a RFC since the changes could theoretically impact
+existing devices. I am pretty sure that no device ever used upstream
+drivers though, not even the Pumpkin board that's present in Linux
+sources since this board lacks the associated mt6392 PMIC driver that
+is required for regulator management. If for compatibility reasons it is
+deemed better to keep both drivers in the kernel I would welcome any
+suggestion on how to name the new driver, and how to adjust the two
+bindings for coexistence.
+
+These changes have been tested on the Xiaomi Mi Smart Clock X04G and on
+the Lenovo Smart Clock 2 CD-24502F.
+
+[1] https://lore.kernel.org/linux-mediatek/296b000c-5970-4668-bd42-b99ca78d598f@collabora.com/
+
+Luca Leonardo Scorcia (3):
+  dt-bindings: pinctrl: mt8516/mt8167: Move compatibles from mt66xx to
+    mt6795
+  pinctrl: mediatek: mt8516/mt8167: Migrate driver to pinctrl-paris
+    platform
+  arm64: dts: mt8516/mt8167: Update pinctrl nodes for the new paris
+    driver
+
+ .../pinctrl/mediatek,mt65xx-pinctrl.yaml      |   2 -
+ .../pinctrl/mediatek,mt6795-pinctrl.yaml      |   5 +-
+ arch/arm64/boot/dts/mediatek/mt8167.dtsi      |  15 +-
+ arch/arm64/boot/dts/mediatek/mt8516.dtsi      |  12 +-
+ drivers/pinctrl/mediatek/Kconfig              |  11 +-
+ drivers/pinctrl/mediatek/Makefile             |   1 -
+ drivers/pinctrl/mediatek/pinctrl-mt8167.c     | 345 --------
+ drivers/pinctrl/mediatek/pinctrl-mt8516.c     | 770 +++++++++++-------
+ drivers/pinctrl/mediatek/pinctrl-mtk-mt8167.h | 562 +++++++------
+ drivers/pinctrl/mediatek/pinctrl-mtk-mt8516.h | 512 ++++++------
+ 10 files changed, 1018 insertions(+), 1217 deletions(-)
+ delete mode 100644 drivers/pinctrl/mediatek/pinctrl-mt8167.c
+
+
+base-commit: 4e5dfb7c84012007c3c7061126491bbc92d71bf1
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.43.0
 
 
