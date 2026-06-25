@@ -4,61 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1FCCCDB47C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jun 2026 02:00:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D5CCCDB479
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jun 2026 02:45:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AFRvaNN957BKinEjtYyb+MFHmqdiS2LpJw69b6EOj+s=; b=zPs81iCJxo/Pi2h3hLIlyzlZJO
-	0wbiQnMA+8ZesqFNmJL1XkrrUGlQ1MOU78x2YJbNAPaHzAc2D3X9nPZ5oWHWcfXF6Sgw//s2lSXrK
-	8Cn+wkxWyGspALSNb4Ke7wEkxhHVhx9u5x/gHUPuK/+svPzp5NseD96zsBu3gt8cHNJe+UtKxVPho
-	2tZ3/kiTrM4FO2BSwyOIMjI99pDv+tFYGsvdJOWtTSbW6dXR3JHiQ5aJhlAnCzoErdqjcyo+AjcZ9
-	kH1A4xaVEvkU5VYioFdv7pcKkg98MAVYxP8fyqWFnKvhHdKq01fSmptTB3eV3nkVAu77+XP0ubO/h
-	hP+sWPBA==;
+	bh=+I3E4Gc+UcSMgz+gbL7FQhQ6yoN65t58RV4TjtaKbLc=; b=GAJDs7ptJLM8ZQxBeG1Yrwcxsm
+	nyWvHWgU+YAgZGQklBpqjGqKB1x6Yivc3i/f4WPDhf8y32wuMdx1WUJhZEx3aFgqdGf9POA/n5fYv
+	bFH2isjvn8yLv3FyRtyt60W+vFBwzRFjFf8I0gV7AINVpUnJ9SUjsjSJHNn/bpQB3UpR7Qfxp/a2n
+	50QMlux+4CwZ3FQQ4ssA4+TVxdF0TNZr165WfuEZeweODY754Uz9TKwOBbvq3R5p7Ahju9pW/cO+B
+	TPDnbs8HCw6rB8Y3ciV7CNZwiALuplWkTuIFbHbKKnoaJ1OcEZIhAh6neW8nJk7JmDwLxWrSgZWi1
+	vF/omAkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcZOL-00000008Y9v-1xZl;
-	Thu, 25 Jun 2026 02:00:33 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wca68-00000008aWT-3y03;
+	Thu, 25 Jun 2026 02:45:48 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcZOK-00000008Y9V-0NaI;
-	Thu, 25 Jun 2026 02:00:32 +0000
+	id 1wca67-00000008aWC-0GSj;
+	Thu, 25 Jun 2026 02:45:47 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 73E48600FC;
-	Thu, 25 Jun 2026 02:00:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 21F0F1F00A3A;
-	Thu, 25 Jun 2026 02:00:31 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 0F179443C7;
+	Thu, 25 Jun 2026 02:45:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 230441F00AC4;
+	Thu, 25 Jun 2026 02:45:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782352831;
-	bh=AFRvaNN957BKinEjtYyb+MFHmqdiS2LpJw69b6EOj+s=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=Q/wJ/J7+zgvVnhDluJT0DRc+fakfEO32e9R/YJkUAQPTTzlNdLD6TVdtjNODjldUh
-	 IqPtZYyiUKCa8woU4VcURtexFIHW3b60HhPWg87ivNzcZvD00gEYut8XpnGnK6/BYL
-	 A0DmHwY9WQEbhsS0StEBlTWrZLFRy1HNlwc8VmexilUpjkMdlICATD7TO8+vi186ZM
-	 +vfE/207Cz3m9NxcAcjechrmrcGo/sM1kBH8JgRpBCYKogW/+t7hZY2KaFtCH17Z3+
-	 LF55wQ8tis90/2qKxCCkpvgdKNzK4O9ANSpFpdGXMJAfBLDBeTTt7GdA0LYiPJ3L70
-	 wXyclq4cJrjWw==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 93B523AAA6D4;
-	Thu, 25 Jun 2026 02:00:20 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	s=k20260515; t=1782355545;
+	bh=+I3E4Gc+UcSMgz+gbL7FQhQ6yoN65t58RV4TjtaKbLc=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=WkY3uKIDrW1rloi6INImOYI/O0oBxuPoDh0qWO/SddOs1Nwa8H6WwBBzz7yeUv53k
+	 JE8BvInUy5w3zB30xrBG4bd7FFr2A85cefeljVMccUQHGtpluFz4XRtln7NPeQHGXq
+	 R4mkKITaphUsUKd5LA6CYCgOX1jsnRLG84Vggwcw/kav7pYXkpsD1Qr7jVXeEjM9f6
+	 Eu/o+DTcg2hJO30Inns4XCe3J8GVsQCWkiuZxQ0uNgaqdYMHsuF7gpRh0YhmVMvu+0
+	 oEjRTuEv1ao+cfkwtxEVFtgwNea1NgXAbB3DFs54AN7Df4Nc8csr/Tiz0Zec4wyJ45
+	 j+e5cHk+WhsnA==
+Date: Wed, 24 Jun 2026 19:45:44 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: "Wu. JackBB (GSM)" <JackBB_Wu@compal.com>
+Cc: Loic Poulain <loic.poulain@oss.qualcomm.com>, Sergey Ryazanov
+ <ryazanov.s.a@gmail.com>, Johannes Berg <johannes@sipsolutions.net>,
+ "Andrew Lunn" <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, "Eric Dumazet" <edumazet@google.com>, Paolo Abeni
+ <pabeni@redhat.com>, Wen-Zhi Huang <wen-zhi.huang@mediatek.com>, Shi-Wei
+ Yeh <shi-wei.yeh@mediatek.com>, "Minano Tseng" <Minano.tseng@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, "Simon Horman"
+ <horms@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Shuah Khan
+ <skhan@linuxfoundation.org>, "linux-kernel@vger.kernel.org"
+ <linux-kernel@vger.kernel.org>, "netdev@vger.kernel.org"
+ <netdev@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>
+Subject: Re: [External Mail] Re: [PATCH v3 0/7] net: wwan: t9xx: Add
+ MediaTek T9XX WWAN driver
+Message-ID: <20260624194544.2b4ef01b@kernel.org>
+In-Reply-To: <cec5736466864641967b99adcfaf324a@compal.com>
+References: <20260624-t9xx_driver_v1-v3-0-73ff03f60c48@compal.com>
+	<20260624170917.09967c74@kernel.org>
+	<cec5736466864641967b99adcfaf324a@compal.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net v3] net: airoha: fix BQL underflow in shared QDMA TX
- ring
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <178235281922.3078979.12001514996584548357.git-patchwork-notify@kernel.org>
-Date: Thu, 25 Jun 2026 02:00:19 +0000
-References: <20260620-airoha-bql-fixes-v3-1-76b95374e63e@kernel.org>
-In-Reply-To: <20260620-airoha-bql-fixes-v3-1-76b95374e63e@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, win847@gmail.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,43 +83,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This patch was applied to netdev/net.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
-
-On Sat, 20 Jun 2026 17:04:51 +0200 you wrote:
-> When multiple netdevs share a QDMA TX ring and one device is stopped,
-> netdev_tx_reset_subqueue() zeroes that device's BQL counters while its
-> pending skbs remain in the shared HW TX ring. When NAPI later completes
-> those skbs via netdev_tx_completed_queue(), the already-zeroed
-> dql->num_queued counter underflows.
+On Thu, 25 Jun 2026 01:55:49 +0000 Wu. JackBB (GSM) wrote:
+>   I have a question about the preferred workflow: the cover
+>   letter changelog would get quite long if I include detailed
+>   explanations for each sashiko comment we chose not to fix.
 > 
-> Fix the issue:
-> - Remove netdev_tx_reset_subqueue() from airoha_dev_stop() so pending
->   skbs are completed naturally by NAPI with proper BQL accounting.
-> - Rework airoha_qdma_tx_cleanup() to disable TX DMA, flush BQL
->   counters, DMA-unmap and free all pending skbs while skb->dev
->   references are still valid. Use a per-queue flushing flag checked
->   under q->lock in airoha_dev_xmit() to prevent races between teardown
->   and transmit. Call airoha_qdma_stop_napi() before
->   airoha_qdma_tx_cleanup() at the call sites.
-> - Move DMA engine start into probe. Split DMA teardown so TX DMA is
->   disabled in airoha_qdma_tx_cleanup() and RX DMA in
->   airoha_qdma_cleanup().
-> - Remove qdma->users counter since DMA lifetime is now tied to
->   probe/cleanup rather than per-netdev open/stop.
-> 
-> [...]
+>   Was the concern more about timing? Should we have replied
+>   to the sashiko review promptly when it came in, rather than
+>   waiting until the full v3 was ready?
 
-Here is the summary with links:
-  - [net,v3] net: airoha: fix BQL underflow in shared QDMA TX ring
-    https://git.kernel.org/netdev/net/c/611709830945
+Either way works. Either give reviewers 24h to dispute the comments or
+add the comments to the repost. You don't have to keep a full detailed
+log in the changelog.
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+> ================================================================================================================================================================
+> This message may contain information which is private, privileged or confidential of Compal Electronics, Inc. If you are not the intended recipient of this message, please notify the sender and destroy/delete the message. Any review, retransmission, dissemination or other use of, or taking of any action in reliance upon this information, by persons or entities other than the intended recipient is prohibited.
+> ================================================================================================================================================================
 
-
+Again, please fix this.
 
