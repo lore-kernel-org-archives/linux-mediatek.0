@@ -4,80 +4,128 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 816E0CDE001
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jun 2026 14:13:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8820CDE000
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jun 2026 16:03:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k3XImR5LuwT8/GVFa0sNRFYkN/CDPKz36sZeNivR0Ps=; b=y4XqhuDMlSbCv0C5Wk94um2ds7
-	6aI54nYyciKR2R8d2SS3c7cCyCOHhtJp3rnMO0POsxbLBXZVW+rnSz5BkbuUMYdYtQ48sak0iUaqy
-	PUdnbsocHVQNkFZ+wIR3Kq/lOR+8GO2AINN9Xu0zume0pjypIdmvo76I10a/2U7hvl9vZJtCIXIrj
-	zbOxp+F32KSirbfRaoH1k/LV80Bk2MvX7oGJg39nkwKZcGKvrUNBbFfnUcptDw/0M0QGfjMvu1GWr
-	nGr58EGm6nQXpgxae74kayiYJZuPK7xPUySq/GAY819BMxeAoQXtEqlGWQk+1EAWym1Tx1qhsM4NT
-	cH0J0Y1A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sqZ2wO48UYLxlaNbThccYzBuNYAooHb+dh5RphM+d8Y=; b=uQNfQtCKA3kiBliaJO7Vuzp9qD
+	GATHmD9oYRxTafl/9LvXfzO8D6T/dAhAQOjA+ud0OsyYVAZJuPFumxlZmF/FDkpUaRiLPwOTKMzeL
+	W561gUROvXR3s9ICYQNA0inaB5VV9w8QgslZi/7Qkmdzxs/CfCahrd8a5xHOjdbQOH0DUD3661Ywl
+	LnjT0lui03h2gAYic4D+lvCOeALDUegosOKijT4hg0oLE7nKs7eYQFTjIzkTotCiGi15jGdYX3cw1
+	I2KpC1Ugh4ikrakYXsLFx/NGuRZFvVsy485iOZNCg7sywTDapHj6x+27PCiVwmyZ3PFhxcLddINBQ
+	uxDjDYRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wckpm-00000009J8q-059U;
-	Thu, 25 Jun 2026 14:13:38 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+	id 1wcmYE-00000009RnY-1AXc;
+	Thu, 25 Jun 2026 16:03:38 +0000
+Received: from mail-francecentralazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c20a::7] helo=PA4PR04CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wckph-00000009J7o-3Xo4
-	for linux-mediatek@lists.infradead.org;
-	Thu, 25 Jun 2026 14:13:37 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id 5FA651A09B2;
-	Thu, 25 Jun 2026 14:13:30 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 2E7535FF03;
-	Thu, 25 Jun 2026 14:13:30 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 2B3FC104C9776;
-	Thu, 25 Jun 2026 16:13:15 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1782396808; h=from:subject:date:message-id:to:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=k3XImR5LuwT8/GVFa0sNRFYkN/CDPKz36sZeNivR0Ps=;
-	b=wHXbjJXutSwFzKdyBO+JadrL7vzZXU2Ju+iay6NC3mqD2OVKNOmpQcK+SqpaVzmb/kfhUw
-	b9eJsyPs0swywCYolXBHA9sqiLCYmtT6uu9qlEbPcUoYONRWs4Qz3g9ycv/87AB2lXiaCY
-	dVXvQeAZhwn9vqI4DnCISuk++CUKb6I/A1KPjM1BARbiKqito2vCTmjxITZn6c+TsasA/Y
-	hgDUl7mLW9wPZQ94naWK5t7dGuiPvzFXNe/mc9zgn4DI6COoTOIcigvIHeeJPFhcpbK2qu
-	LZ4JptlGAm20dUa3h0Eg3n2MoWAJ+oZYl9WKk/LHhvhj9PpkpYcIf2WUrIh4ow==
-Message-ID: <a271385e-302d-45c7-a1df-aebd380b427b@bootlin.com>
-Date: Thu, 25 Jun 2026 16:13:14 +0200
+	id 1wcmYB-00000009Rmi-2P9P;
+	Thu, 25 Jun 2026 16:03:36 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=H+TfrD9p2VEjgq/XHHE2lKQq9ozFcWKYTmLV/Z20H3nzCdqlTk+ikXcPCI9EA9s7qjEA5LZEJ8+4ofSskqhOb7zgp35CalYrEkHLhiluX0M4xBz5BSsRU1QNfiR0udVBSfcZoygKsSp3ZJMCJRQ/dF2vC6hRue0IuU1eB63B+hV2cfcYN+EubM/wyZu4qqKYBpq6d8QOwgnvTY6R4gGiO4y+pSAT+H5DcA2vkJhAdtupG7oeGgP8fhOsQnmoHRXGV6dOupL1t2FjU1ncltl55qFLGfQEr3y6JPpduhlA5AlguaoweFj/KUs3CZw1xbA8QB714hr+bbUBdVmnkyFtbg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=sqZ2wO48UYLxlaNbThccYzBuNYAooHb+dh5RphM+d8Y=;
+ b=rQMbW7iGxcs18cM/boTRkXoDs3LVcBcfsCY2boeUvrhbzdoDMitpcv0i2Oe2mjhmAG9pjfxN/Bo85y514oVi06EuaQKD7gP8BDdW28P7rAw4cDmlQaEQCirAUA+Cwagsjob7zosKLRaAQyFZrw1aiJLkCeswDBZqL7SnUoMYm2MZ9C5GsjcmNpU9q7oSIwfVd9/64rhb3uNxFaERQlCHJzH6KxXKBvqTo5LqNYAP9fXxhSzWUodk3SRcQH5wJgvpQ+ro7wWDEptdaLZfaApBwDd49/qpOJWwVHKoXxRa/H/bicdMzkRRRhWs9CTZ4wCfVvZuX1gdaG4Y1MHqs8ZN1A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
+ dkim=pass header.d=oss.nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
+ s=selector1-NXP1-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=sqZ2wO48UYLxlaNbThccYzBuNYAooHb+dh5RphM+d8Y=;
+ b=aM6m2Oy+YfUquqo+pMN9TKH5dv9v601kk3a9Ir3CwR8ql0SCt537jhdI5eycPpbIvnIv0TKH3P3/6Dr3vmWzraFVxG68mP+XE6hwa5/ukj2o9XyF3zRWvfZi1yPgs8Exql7KbyHZp0GiDxjx4swo+Np2pa5WvETKZtMH+iFHA61NSrl/XBoqXwmbmFRU8g/qZfDuuuUH3E/CroXbblUbQKHXYR6Wqdc+KEQanW9juFpJdtxCYgyYXFN1Lif4/6ANv2ng1v+uBgZ3PXXdj22MNA9gt3jdZmH9hp286Nk+hBr5BBg8vaiBTrdYlOicWmdq97MR9uqPi7QMhZ4kmf8C0g==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=oss.nxp.com;
+Received: from GV2PR04MB11799.eurprd04.prod.outlook.com (2603:10a6:150:2cf::9)
+ by DB9PR04MB9992.eurprd04.prod.outlook.com (2603:10a6:10:4c1::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.113.15; Thu, 25 Jun
+ 2026 16:03:30 +0000
+Received: from GV2PR04MB11799.eurprd04.prod.outlook.com
+ ([fe80::2146:83a2:5329:b7c]) by GV2PR04MB11799.eurprd04.prod.outlook.com
+ ([fe80::2146:83a2:5329:b7c%6]) with mapi id 15.21.0159.007; Thu, 25 Jun 2026
+ 16:03:30 +0000
+Date: Thu, 25 Jun 2026 12:03:22 -0400
+From: Frank Li <Frank.li@oss.nxp.com>
+To: Myeonghun Pak <mhun512@gmail.com>
+Cc: Sean Wang <sean.wang@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+	Frank Li <Frank.Li@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Ijae Kim <ae878000@gmail.com>
+Subject: Re: [PATCH] dmaengine: mediatek: hsdma: fix runtime PM leak on init
+ failure
+Message-ID: <aj1RSj5ZXvc-9yu7@lizhi-Precision-Tower-5810>
+References: <20260624081701.19358-1-mhun512@gmail.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260624081701.19358-1-mhun512@gmail.com>
+X-ClientProxiedBy: PH3PEPF000040B0.namprd05.prod.outlook.com
+ (2603:10b6:518:1::5c) To GV2PR04MB11799.eurprd04.prod.outlook.com
+ (2603:10a6:150:2cf::9)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH net-next v8 03/12] net: phylink: add
- phylink_release_pcs() to externally release a PCS
-To: Christian Marangi <ansuelsmth@gmail.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Simon Horman <horms@kernel.org>,
- Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Heiner Kallweit
- <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>,
- Saravana Kannan <saravanak@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, Nathan Chancellor
- <nathan@kernel.org>, Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
- Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- llvm@lists.linux.dev
-References: <20260618125752.1223-1-ansuelsmth@gmail.com>
- <20260618125752.1223-4-ansuelsmth@gmail.com>
-Content-Language: en-US
-From: Maxime Chevallier <maxime.chevallier@bootlin.com>
-In-Reply-To: <20260618125752.1223-4-ansuelsmth@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Last-TLS-Session-Version: TLSv1.3
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: GV2PR04MB11799:EE_|DB9PR04MB9992:EE_
+X-MS-Office365-Filtering-Correlation-Id: 01e24da5-ce7a-44b7-eb96-08ded2d34c9f
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|366016|19092799006|1800799024|23010399003|56012099006|11063799006|18002099003|22082099003;
+X-Microsoft-Antispam-Message-Info: thkr5k3GyRThMpNt+9y9i2RaE93mW4ErqoTYDAVFh2B+Ye/NXpVAScxjs7yN/Ts3mRGt1M0JDdm+lKmmc8qD5ffGy6qu/MU8jEpKTE5zEeUo00uviZafHcLGu+cO8J3oE8MbZVrRGziKu8cG59CEfhJO4DMJ17nkzRMZk2jkXZtLmr6uEXYE1eTnX8MAfi5s915td9e1gd9Qmeer5ygrkvYzXM91e9AkgX4rtpWJxNC0Dqx7WQ5v9HVARPYDKiY+d5gE6tKsL27mqd1EuBAOSKFMkELYMi6YlhIRHUyfeGRyzkwckrvmYoiZW/aDHWK1bkR2sY2J6YIj+gSylel0QRywHXVGSK01OeI/VoghwyNtL6ZtcCUc1tUiMKdaOrkKNvrJwfZswyOUUKK2Z4H36eGMGntJlWnQNCIuoRH35zBQ9+x5aFQL+bqBK4wzvOZCwCQ2Ps7I5NIDBSMSWzGyCvDYGlI+TSfZOfEAOzUCzpjQT3i84vhEoG5O0juUUQAlXVvnQyokONtmyEHC8nXKNrpx9Axzv549y5yiRjFh5iOvR3CQNpb8j3fk2G9c5FDsUfdje8NUdXd15sMnBI1U7usoNaGr1u17kXQOKgqi8mqwdeq0rE5r5hPY9Djo0Yn4Bk0l4KygNz+1HXTmsa8tPEp/0IVUzyWcOBGoBCIsMYE=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR04MB11799.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(366016)(19092799006)(1800799024)(23010399003)(56012099006)(11063799006)(18002099003)(22082099003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?q2RmVqq4+pgTvL9VXgWrdPo7PGa6IQhREBx66SL2PZxP/fVhmexz9bvNbFQ2?=
+ =?us-ascii?Q?DwEz9Zpk56r4DbPbziNHdw//lj4WdNfyA01IsbPKR2LXLGQE5ohlMlIUFZIV?=
+ =?us-ascii?Q?Bui2Rn9zxKKQkKAl3pi7yjQdRJcT+M17nlXdwtOmoTpvvY/o9Ezh8cjTM9j4?=
+ =?us-ascii?Q?XkRciO+PHr+iT7uvttqv6/a0x4uxZMB7DqZekvmVTZXRU/pALklDRJBzEmuI?=
+ =?us-ascii?Q?ijuf6ZsC+qI3MZVY7wRrWRwdx5jt97g9hnIyfR9vqBrCyEWI3Ujya1TdLWAD?=
+ =?us-ascii?Q?tzbzz7wuLjWIYPrxUbAYMn7J/wo2LWMSjMX3BSa/rxdPq7fbrgZr//C71kw7?=
+ =?us-ascii?Q?YkTn2Pg3fGTmcRNGOxBdIYOu70J6zxqM1Ty9IrSc1XX78HCcmhAc6yqF1ltF?=
+ =?us-ascii?Q?GQRqC/Lm0RKGLH2LTt8WrAWYpDZ8KMRj7Wu2KpCcEXCnOmHqaAl9z/P5jms+?=
+ =?us-ascii?Q?50Am94JfjkiPj2XThiYdUTRHNm2Kuv5ZdW+z4c7OSy6YbjL+om4bG2DJ6VWV?=
+ =?us-ascii?Q?OPDJR6SXkFdfla8km7BS30VUdxSvtstxBs/8b10OFtE8kGKueRzQK119YJiG?=
+ =?us-ascii?Q?Ze4P6wBw55mg1ebYO+qmeH9rvzt9fv2th84DOeWsU7ZGOZ91P3iYhhGTaPUy?=
+ =?us-ascii?Q?x49IG2Sq4Ic/sqhqskxEE5trikmPummQCTmDUC4AHudIJ7n4MjIlYc6HT7gv?=
+ =?us-ascii?Q?pD0AS8EN5YqZTs7+yZJK44f43Ite0TkovacCnHywIzohcL7TnaoUHi0akZSp?=
+ =?us-ascii?Q?199crC6VZrBz8XJdIONPG68W9LuSbzkIsmoz5pjdTHrohi16G7zzCxpk3e+S?=
+ =?us-ascii?Q?/Jrl2WiFYq/o58O0mn6sagM0mZIKtt2kqB61PV/9eHBuxjJ9vMIIIANVhnbI?=
+ =?us-ascii?Q?scvljEbHIq7MZ0DT6+CSoSFKszrCRl3/4HdniqePhtBKN8g9aEHE7CjTXApI?=
+ =?us-ascii?Q?mxdo9Hg6+sLC7BjZz312agfqztCU7yezk/JUVoSBfoR6Yan0douTboab51HH?=
+ =?us-ascii?Q?/Awt5OG8QLhgmFW7J7Zz6QIAvcNwcpUCAAxJDquZKVQ+FkCdEObijZ+AEX0C?=
+ =?us-ascii?Q?Jjhl8MfROEvzb/0wB1jx1QNK9P1sYazocXARfbuOMtjVw0AMM4M4wf9u0Wh7?=
+ =?us-ascii?Q?5dJ+nbnFEGkmtSM7o7UeweWoZ6/WLj+oqf4suiPm8MEYpI3XqPwgSft0bBee?=
+ =?us-ascii?Q?5QknFiyB50HJ0/rRYlQ0aB83X+xt7onDDWjcfIhoaJ14K1ACxYD0pDn5dsv+?=
+ =?us-ascii?Q?5LKmMTHh9vbgb3uUb2LTKmwewrer2TP/VPceYuz/zKScAeys7G08+2nVPQny?=
+ =?us-ascii?Q?tpm+k7RI3LiEXA2Olbgx5WC3jrSJC+BNqfY9cBfe/dDvU3zcAgJ91Y6mXctz?=
+ =?us-ascii?Q?TXKWYQ5aiIyImRKP5gqYoQ7msQRjdGEPbHX1MMZCay7oioKlx0ewCOlGOVQL?=
+ =?us-ascii?Q?3xaPBT0wVu/zU2ds87wKBv9fRSHNUSm/pG9AbCuLqxKXLbpxuOAp6Pg0DdWv?=
+ =?us-ascii?Q?8fePbHgSl4eZk/vWwC7XIQlTutegU0WU8RQ0ag0ZTAYy4kY2q0hCmx5nyu+i?=
+ =?us-ascii?Q?4/YgIfdMMOwP5yM/D+6gAucdaqEpIDxMwEzTpqXnGvfAokmVblCpCOVse/ha?=
+ =?us-ascii?Q?dxZjVpLtGSieI15WcEa0N5miOLb6NiKW4JqcqlWbnUAb/nbGM3ug2F+LAeXw?=
+ =?us-ascii?Q?h/ziPhXvg9Z4DEoZHuuBWkhUajNq0Zlcaj8Z2GC4kctnmk1x0VDduqlMmjfY?=
+ =?us-ascii?Q?1B8Nn64VpEQmey1ihT2VnRoTJcgGsDuv7EoKd/qpomN2vQ/VvlKP?=
+X-OriginatorOrg: oss.nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 01e24da5-ce7a-44b7-eb96-08ded2d34c9f
+X-MS-Exchange-CrossTenant-AuthSource: GV2PR04MB11799.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Jun 2026 16:03:30.0520
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: k7YJLh4OvMkPzLmacvu4eD2FgPzjBcuF2VauVa9IH4gu2N0zrTigenRHZL+GdpKEPOEBWBct7tQUKjkuLRt20hbWubpYZ94IMlayniHp3oox6FgNa9gSPW1KTNRA23VF
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB9PR04MB9992
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260625_071334_019050_6D6B2E10 
-X-CRM114-Status: GOOD (  33.66  )
+X-CRM114-CacheID: sfid-20260625_090335_846856_F21E41A9 
+X-CRM114-Status: GOOD (  21.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,122 +140,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Christian,
-
-On 6/18/26 14:57, Christian Marangi wrote:
-> Add phylink_release_pcs() to externally release a PCS from a phylink
-> instance. This can be used to handle case when a single PCS needs to be
-> removed and the phylink instance needs to be refreshed.
-> 
-> On calling phylink_release_pcs(), the PCS will be removed from the
-> phylink internal PCS list and the phylink supported_interfaces value is
-> reparsed with the remaining PCS interfaces.
-> 
-> Also a phylink resolve is triggered to handle the PCS removal.
-> 
-> The flag force_major_config is set to make phylink resolve reconfigure
-> the interface (even if it didn't change).
-> This is needed to handle the special case when the current PCS used
-> by phylink is removed and a major_config is needed to propagae the
-> configuration change. With this option enabled we also force mac_config
-> even if the PHY link is not up for the in-band case.
-> 
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+On Wed, Jun 24, 2026 at 05:16:38PM +0900, Myeonghun Pak wrote:
+> mtk_hsdma_hw_init() enables runtime PM and gets a runtime PM reference
+> before enabling the HSDMA clock. It currently ignores failures from
+> pm_runtime_get_sync(); if runtime resume fails, the usage count remains
+> held. If clk_prepare_enable() then fails, runtime PM is left enabled with
+> the usage count held.
+>
+> Use pm_runtime_resume_and_get() so resume failures do not leak the usage
+> count, and unwind runtime PM when clk_prepare_enable() fails.
+>
+> The probe path also ignores the return value from mtk_hsdma_hw_init(), so a
+> failed hardware init can continue as a successful probe. Propagate
+> mtk_hsdma_hw_init() failures from probe, while keeping a separate unwind
+> label so mtk_hsdma_hw_deinit() is only called after hardware init succeeds.
+>
+> Fixes: 548c4597e984 ("dmaengine: mediatek: Add MediaTek High-Speed DMA controller for MT7622 and MT7623 SoC")
+> Co-developed-by: Ijae Kim <ae878000@gmail.com>
+> Signed-off-by: Ijae Kim <ae878000@gmail.com>
+> Signed-off-by: Myeonghun Pak <mhun512@gmail.com>
+>
 > ---
->  drivers/net/phy/phylink.c | 56 +++++++++++++++++++++++++++++++++++++++
->  include/linux/phylink.h   |  2 ++
->  2 files changed, 58 insertions(+)
-> 
-> diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
-> index c38bcd43b8c8..064d6f5a06da 100644
-> --- a/drivers/net/phy/phylink.c
-> +++ b/drivers/net/phy/phylink.c
-> @@ -158,6 +158,8 @@ static const phy_interface_t phylink_sfp_interface_preference[] = {
->  static DECLARE_PHY_INTERFACE_MASK(phylink_sfp_interfaces);
->  
->  static void phylink_run_resolve(struct phylink *pl);
-> +static void phylink_link_down(struct phylink *pl);
-> +static void phylink_pcs_disable(struct phylink_pcs *pcs);
->  
->  /**
->   * phylink_set_port_modes() - set the port type modes in the ethtool mask
-> @@ -918,6 +920,60 @@ static void phylink_resolve_an_pause(struct phylink_link_state *state)
->  	}
+>  drivers/dma/mediatek/mtk-hsdma.c | 22 +++++++++++++++++-----
+>  1 file changed, 17 insertions(+), 5 deletions(-)
+>
+> diff --git a/drivers/dma/mediatek/mtk-hsdma.c b/drivers/dma/mediatek/mtk-hsdma.c
+> index a43412ff5e..987e5274fc 100644
+> --- a/drivers/dma/mediatek/mtk-hsdma.c
+> +++ b/drivers/dma/mediatek/mtk-hsdma.c
+> @@ -849,16 +849,25 @@ static int mtk_hsdma_hw_init(struct mtk_hsdma_device *hsdma)
+>  	int err;
+>
+>  	pm_runtime_enable(hsdma2dev(hsdma));
+
+use devm_pm_runtime_enable()
+
+> -	pm_runtime_get_sync(hsdma2dev(hsdma));
+> +	err = pm_runtime_resume_and_get(hsdma2dev(hsdma));
+
+It enable runtime pm and resume_get here. and suspend at driver remove,
+so whole life cycle, pm is enable, why need enable runtime pm management?
+
+Frank
+
+> +	if (err < 0)
+> +		goto err_disable_pm;
+>
+>  	err = clk_prepare_enable(hsdma->clk);
+>  	if (err)
+> -		return err;
+> +		goto err_put_pm;
+>
+>  	mtk_dma_write(hsdma, MTK_HSDMA_INT_ENABLE, 0);
+>  	mtk_dma_write(hsdma, MTK_HSDMA_GLO, MTK_HSDMA_GLO_DEFAULT);
+>
+>  	return 0;
+> +
+> +err_put_pm:
+> +	pm_runtime_put_sync(hsdma2dev(hsdma));
+> +err_disable_pm:
+> +	pm_runtime_disable(hsdma2dev(hsdma));
+> +
+> +	return err;
 >  }
->  
-> +/**
-> + * phylink_release_pcs - Removes a PCS from the phylink PCS available list
-> + * @pcs: a pointer to the phylink_pcs struct to be released
-> + *
-> + * This function release a PCS from the phylink PCS available list if
-> + * actually in use. It also refreshes the supported interfaces of the
-> + * phylink instance by copying the supported interfaces from the phylink
-> + * conf and merging the supported interfaces of the remaining available PCS
-> + * in the list and trigger a resolve.
-> + */
-> +void phylink_release_pcs(struct phylink_pcs *pcs)
-> +{
-> +	struct phylink *pl;
-> +
-> +	ASSERT_RTNL();
-> +
-> +	pl = pcs->phylink;
-> +	if (!pl)
-> +		return;
-> +
-> +	mutex_lock(&pl->state_mutex);
-> +
-> +	list_del(&pcs->list);
-> +	pcs->phylink = NULL;
-> +
-> +	/*
-> +	 * Check if we are removing the PCS currently
-> +	 * in use by phylink. If this is the case, tear down
-> +	 * the link, force phylink resolve to reconfigure the
-> +	 * interface mode, disable the current PCS and set the
-> +	 * phylink PCS to NULL.
-> +	 */
-> +	if (pl->pcs == pcs) {
-> +		phylink_link_down(pl);
-> +		phylink_pcs_disable(pl->pcs);
-> +
-> +		pl->force_major_config = true;
-> +		pl->pcs = NULL;
-> +	}
-> +
-> +	mutex_unlock(&pl->state_mutex);
-> +
-> +	/* Refresh supported interfaces */
-> +	phy_interface_copy(pl->supported_interfaces,
-> +			   pl->config->supported_interfaces);
-> +	list_for_each_entry(pcs, &pl->pcs_list, list)
-> +		phy_interface_or(pl->supported_interfaces,
-> +				 pl->supported_interfaces,
-> +				 pcs->supported_interfaces);
-
-I've given more thought to that 'supported_interfaces' thing. This
-patchset redefines the meaning of
-
-  pl->config->supported_interfaces
-
-Currently, it's filled by the MAC driver and means "Every interface
-we can support, including the ones provided by PCSs that we can use
-with this MAC".
-
-It now becomes "Every interface we support without needing a PCS", at
-least the way I understand that.
-
-It's not an error in your code, but I think this is worth documenting
-somewhere as this changes one the things that's already fairly
-error-prone in new drivers.
-
-I don't know to what extent people use that, be we have a porting guide
-that explains how to use phylink in a MAC driver, maybe an update in there
-would be nice as well :
-
-https://docs.kernel.org/networking/sfp-phylink.html#rough-guide-to-converting-a-network-driver-to-sfp-phylink
-
-Maxime
-
-
+>
+>  static int mtk_hsdma_hw_deinit(struct mtk_hsdma_device *hsdma)
+> @@ -983,7 +992,9 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
+>  		goto err_unregister;
+>  	}
+>
+> -	mtk_hsdma_hw_init(hsdma);
+> +	err = mtk_hsdma_hw_init(hsdma);
+> +	if (err)
+> +		goto err_free;
+>
+>  	err = devm_request_irq(&pdev->dev, hsdma->irq,
+>  			       mtk_hsdma_irq, 0,
+> @@ -991,7 +1002,7 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
+>  	if (err) {
+>  		dev_err(&pdev->dev,
+>  			"request_irq failed with err %d\n", err);
+> -		goto err_free;
+> +		goto err_deinit;
+>  	}
+>
+>  	platform_set_drvdata(pdev, hsdma);
+> @@ -1000,8 +1011,9 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
+>
+>  	return 0;
+>
+> -err_free:
+> +err_deinit:
+>  	mtk_hsdma_hw_deinit(hsdma);
+> +err_free:
+>  	of_dma_controller_free(pdev->dev.of_node);
+>  err_unregister:
+>  	dma_async_device_unregister(dd);
+> --
+> 2.47.1
 
