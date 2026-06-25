@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B934CDB47C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jun 2026 00:19:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E2E4CDB47C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jun 2026 00:19:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=hlR8b0vC5oVW3TqsUHgYLtphTYj6J1CxyewvuGXJDbc=; b=BosxTDxZhTlDwleN67roJOJ1eV
-	r6fwM0/7b+fX6n+5Mu2rrG/UcRDN9c/GD7WO/6fuFU5uvOEJ+UTRjS2Bh1tbdsQjtDJt5ntOlmRBZ
-	qr78vepMfrwrVheTlfCpeIkejNS09MQNZRGaOGfnliZOQNa5XYpb8+bSsrcoz4eEB3kMB1XSkA7aD
-	hMNV6jXTQVDLWW8Tkz6/Y/syIxaSrD8ELuykAD0NWtUkeXmlQqSGxLNlDFrRb8rsvV4cDzieY29kS
-	oeq7Z2uOLup3tU4Pejfw869rYGUTh6kfs/pPzcxxNJtODwMdlpVFUETRoGt0BVQywWpF1xhLBc0hr
-	AsFMF57g==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PfTLVu81fDyPQcXHERPJcN3IrtYpcc9/vrGzAGCrhXc=; b=biHzPXtJDYtCIz6T+giUPY5FVi
+	OzEYBNQ8stUPSNfp6dugfA/x/q8OdZnio4hd3DEA1je+SG0Eho6UUphNWXU0b5SHqwEdGIGFUvUEg
+	oVgk42kGQlAaT5OHw26Q45nziY1DCXSNNgdZluEPe1WsIwTDqC9DwGdWQC3X6qD1mrkF+JVoS72Px
+	f5O6X0lSd6HswHWqAh+RknDznU399kFL2lLv6sfK/hzyhlB6ZW7OroWPnwVjjqyFzSaDWEveiWjlE
+	DSifTyIdilWuX0nYCYCU5+Ttg+N4EjOAj0C0DoSOyl0qB1ixcOcZ2fU3O1InZFuT1VQKL2NOx+vh6
+	fMGBlHtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcXo3-00000008SWZ-3f5S;
-	Thu, 25 Jun 2026 00:18:59 +0000
-Received: from mail-pj1-f43.google.com ([209.85.216.43])
+	id 1wcXoB-00000008SY5-3qtX;
+	Thu, 25 Jun 2026 00:19:07 +0000
+Received: from mail-pg1-f179.google.com ([209.85.215.179])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcXo1-00000008SWE-3q6y
+	id 1wcXo9-00000008SXX-0Jlx
 	for linux-mediatek@lists.infradead.org;
-	Thu, 25 Jun 2026 00:18:59 +0000
-Received: by mail-pj1-f43.google.com with SMTP id 98e67ed59e1d1-37dedd9401eso436776a91.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 24 Jun 2026 17:18:55 -0700 (PDT)
+	Thu, 25 Jun 2026 00:19:06 +0000
+Received: by mail-pg1-f179.google.com with SMTP id 41be03b00d2f7-c89370405aaso651545a12.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 24 Jun 2026 17:19:04 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1782346734; x=1782951534;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=hlR8b0vC5oVW3TqsUHgYLtphTYj6J1CxyewvuGXJDbc=;
-        b=a+FFzj+PQQKi3xPaezjkN1d8Ca2PD9ptpn9rryCa/etCXLLkRoO5T+tapZoeSSqPXv
-         O7yQAaYo961Mr49Wt7mBBWyln4YawHa0pXPFMv4YQIWgwd8DqG3kG/jTs22tJ7NLY7Pk
-         LJAG0K8iTSf9r97afULB77y63Eldh8b1HMzg8KuH6KEQC4dxPh3p0zOAeDZxBlv2Ltd7
-         1KbcfQTp1TzJ3CjMt7VS4l+Dj8C1ganPHfSAwNYNnQLVAx/FFwUtL+pXzVnn+UUtMCbs
-         PRceaG0CTK5bupjJcmx+UEeEeV5+xo47zWAQ7S0REQlHspBRLYrwllkg0Y49TlE3PkDj
-         Y5Bg==
-X-Forwarded-Encrypted: i=1; AHgh+RrXWB8oNmZRg4winLfSYKAjl9wpmqPLkXtBr6ZmkUsT3EugM6GoKlHrFK4kjjT5CsjbI3TkglcMGtLs4UbQ4g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxS1QtiQF8bW2jXsNujXL2J5N1ZGLtRKIyve42mfCXpyxr/0eAZ
-	GeOFiDaSnn/q/fwZ5qPCm5IifWvdT+wVvGp5qIAnprRUFTunn9zcVhqr
-X-Gm-Gg: AfdE7ckT6KscruOzElEZDOe0UuO4nLsm22HStVSK+eynfqdKNzqUpQVixvg2pJdOJIH
-	v/MeBMnef+Y0yYewxmSRiDmKEuc3wqCnJ0w9KXHEUKv9ZjzkJbx4yOt6lR+unWzDtruNmCGzJ6K
-	ezanHLMmIXnIeueldvSCXRCCoeX7fwqsmQkcPSi7p1r/Anconu26WMJjQda5ox/hnbkorqxBGri
-	mKzmkSGJZWbMKAChI036F8pREyWvVR6+lBL0wSQeDlNlumDkWjNOAXGHxVF0x/QhZ9zDv37peX+
-	WIRri0z1JSxC3AWwoBpI8CkyBCYO1aaj11PBASxwNhfnt1V6Z6ka2w0g0Tn85/6ZdOsRaKxwnJA
-	vqua/0UTOmRc5NKojdT2oGOIvsgF3Q8D0SNCu1D/OhjoDKSRzMAXFgfl014EdpFsu44NshovEs1
-	BtLjwhSgL2yDFO0nic28RJV5blYKZ3tMWqJoMP4QtdGGXSTfxEX/DH9U4Xp6Ie5dYA4IKCkYJp+
-	4xsmZvfOPIF3kawNtZGHAhFo9mqZg==
-X-Received: by 2002:a17:90b:534f:b0:366:3517:1a95 with SMTP id 98e67ed59e1d1-37df9d41bb8mr159654a91.0.1782346734311;
-        Wed, 24 Jun 2026 17:18:54 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1782346744; x=1782951544;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=PfTLVu81fDyPQcXHERPJcN3IrtYpcc9/vrGzAGCrhXc=;
+        b=f6X8B3yGB+C01d5/nvfAcSK9Ntqe7jJXiE1WM6lYDpyWhVIIG5ZFS6R1Afa++g3qnP
+         3MqoMiX9Z+28mGr/oA2b8Hsz1z0KdDGWLkSHLvbDoLgqDwhjWlyyi4sAYMGPRUgUjMSY
+         ZYSRUHjiw1peZGk+/L9gBR1Y9vTdljmqYzV7rEN16Pck5DheXRRGs4mIJFhO/r9nZbeM
+         MN9kL+7aW/ixctxATYn1GhhcL32KJ5TctwA4KXje9lZ1Pd6djuiZHoXDNbgH0gw1om6i
+         3XZcRdpwIky52woRvyaBMgQS8kUXD8M+uz1Oy7sr1BiL8CWbTmfesa5QDKHkp+ot+CdR
+         It6Q==
+X-Forwarded-Encrypted: i=1; AFNElJ8zwU2luVvf3+aytLMSDDTbUoboCA0Ni1OedZxw+Lzk4ID1jouu55iw2/5IdCiTyHAaty4ib/XN7Ol95fVYnw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyMXS/nO8GooB5xfAWEWW3FWnSXoHrVA2a0G7Tv67tdi6z3a0h6
+	5AUe0B8jzFY6DbOQl77Xg6hFKCmtwea/o2JDmdtPiJxziSmO7Q1rn79yymCyw9vK
+X-Gm-Gg: AfdE7cnhnvULXTReXk7+6Akdi8sfCRsQG8YohFVc72HCiJLl5kSP3Z3QvEEuGaFTvXg
+	IcPKd2TUijF15xYBaY0upsIZvyD+H6v+ghNmhn2q2idiumL+OHKhOmucZbE7p0RuClcyf3rzZLp
+	bZXOq0ppstmKP381b4042Dt85WkDNYuGqNcUACNzoyqCatJE53t7GNSdTnr2H7NidQhbbGQHA07
+	xVMbeIFvgyiF8fOZUhxF9PptyR9BXV+QsB0+NhLoOS+7vDw7dMWThUICPCUuQuYKji7yjMXcBD2
+	Vdll8+eu/aRQuxGmU9pbelH7dF7UXNPL+TzlxejK9LKKPWFCxKuCi90VmraduOiz4rtGDPEPxa5
+	KriKNNphQiyLATnct1M+V+/OyePzvegNxrLnHM/+wfNuEwMdy6xAZ6BJEyGODXXEPwEtaomRIFE
+	I10YTUN97O/zDaQt5DBal5eW1GAhRWAuksgf8FurMHsEayq2zGDpPl2nbRZT4jlfk6OHuDGS/Io
+	MlUQhp7aMQL37d99UCcGHJ+HR5VUw==
+X-Received: by 2002:a05:6a21:1644:b0:3bd:3536:928c with SMTP id adf61e73a8af0-3bd4aec597bmr295275637.25.1782346744094;
+        Wed, 24 Jun 2026 17:19:04 -0700 (PDT)
 Received: from sean-HP-EliteBook-830-G6.. (114-34-228-194.hinet-ip.hinet.net. [114.34.228.194])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-c92bc1e0d10sm586839a12.21.2026.06.24.17.18.51
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-c92bc1e0d10sm586839a12.21.2026.06.24.17.19.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 24 Jun 2026 17:18:53 -0700 (PDT)
+        Wed, 24 Jun 2026 17:19:03 -0700 (PDT)
 From: Sean Wang <sean.wang@kernel.org>
 To: Felix Fietkau <nbd@nbd.name>,
 	Lorenzo Bianconi <lorenzo@kernel.org>
@@ -67,16 +67,18 @@ Cc: chengwei.yu@mediatek.com,
 	posh.sun@mediatek.com,
 	linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	Sean Wang <sean.wang@kernel.org>
-Subject: [PATCH v2 0/9] wifi: mt76: add mt7925 NAN support
-Date: Wed, 24 Jun 2026 19:18:25 -0500
-Message-ID: <20260625001834.475094-1-sean.wang@kernel.org>
+	Sean Wang <sean.wang@mediatek.com>
+Subject: [PATCH v2 1/9] wifi: mt76: mt792x: advertise mgmt frame registration
+Date: Wed, 24 Jun 2026 19:18:26 -0500
+Message-ID: <20260625001834.475094-2-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260625001834.475094-1-sean.wang@kernel.org>
+References: <20260625001834.475094-1-sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260624_171857_957045_CD3CC5C5 
-X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-CacheID: sfid-20260624_171905_118555_F451074C 
+X-CRM114-Status: UNSURE (   7.34  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,66 +94,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add NAN support for mt7925.  The series first advertises userspace
-management-frame registration and hardens BSS capability lookups used by
-partially configured BSS state.
+From: Sean Wang <sean.wang@mediatek.com>
 
-The rest of the series adds the connac NAN connection type, mt7925 NAN 
-MCU helpers and event handling, a generic init_wiphy callback, mac80211
-NAN operations, firmware-gated interface combinations and NAN data
-advertisement.
+Advertise multicast management frame registration support so userspace
+can subscribe to multicast management and action frames.
 
-Changes since v1
-  - Rebased and reworked the 7-patch v1 series into 9 focused patches.
-  - v1 patch 2 and 3 are folded into one BSS capability guard patch.
-  - v1 patch 7 is split into a framework-only interface combination
-    patch and a final NAN/NAN_DATA advertisement patch.
-  - v1 patch 5 is split into NAN MCU helpers and mt7925 MCU response,
-    event and NAN-specific BSS/STA TLV handling.
-  - v1 patch 6 is split so NAN PHY capability setup uses a generic
-    init_wiphy callback before mac80211 NAN ops are wired.
-  - Order init_wiphy before the mt7925 NAN ops patch so each patch
-    builds independently.
-  - Define MT792x_FW_CAP_NAN in the patch that first uses it. 
-  - Move common NAN MCU command/event IDs to the connac patch and handle
-    NAN_DATA as a NAN connection type.
-  - Add NAN_DATA interface support, 2.4/5 GHz NAN bands and secure NAN 
-    advertisement.
-  - Add NMI address programming, DW notifications, local availability
-    updates, peer schedule updates and NDI STA mapping.
-  - Add cleanup and rollback for NAN peer indexes, NDP contexts and MCU 
-    failures.
-  - Drop temporary NAN channel debug logging and fix checkpatch issues.
+This capability is required for NAN discovery and related operations.
 
-Sean Wang (9):
-  wifi: mt76: mt792x: advertise mgmt frame registration
-  wifi: mt76: mt7925: guard BSS capability lookups
-  wifi: mt76: connac: add NAN connection type
-  wifi: mt76: mt7925: add NAN MCU helpers
-  wifi: mt76: mt7925: add NAN MCU handling
-  wifi: mt76: add init_wiphy callback
-  wifi: mt76: mt7925: wire up NAN operations
-  wifi: mt76: mt792x: build iface combinations dynamically
-  wifi: mt76: mt792x: advertise NAN data support
+Co-developed-by: Stella Liu <yu-ching.liu@mediatek.com>
+Signed-off-by: Stella Liu <yu-ching.liu@mediatek.com>
+Co-developed-by: Jeremy Yu <chengwei.yu@mediatek.com>
+Signed-off-by: Jeremy Yu <chengwei.yu@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt792x_core.c | 1 +
+ 1 file changed, 1 insertion(+)
 
- drivers/net/wireless/mediatek/mt76/mac80211.c |    7 +
- drivers/net/wireless/mediatek/mt76/mt76.h     |    3 +
- .../wireless/mediatek/mt76/mt76_connac_mcu.c  |   14 +
- .../wireless/mediatek/mt76/mt76_connac_mcu.h  |    4 +
- .../wireless/mediatek/mt76/mt7925/Makefile    |    2 +-
- .../net/wireless/mediatek/mt76/mt7925/init.c  |   29 +
- .../net/wireless/mediatek/mt76/mt7925/main.c  |  201 ++-
- .../net/wireless/mediatek/mt76/mt7925/mcu.c   |  125 +-
- .../net/wireless/mediatek/mt76/mt7925/nan.c   | 1091 +++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7925/nan.h   |  440 +++++++
- .../net/wireless/mediatek/mt76/mt7925/regd.c  |   30 +
- .../net/wireless/mediatek/mt76/mt7925/regd.h  |    3 +
- drivers/net/wireless/mediatek/mt76/mt792x.h   |   43 +
- .../net/wireless/mediatek/mt76/mt792x_core.c  |  125 +-
- 14 files changed, 2077 insertions(+), 40 deletions(-)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7925/nan.c
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7925/nan.h
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+index b50825eccdaf..a0db815c27bc 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+@@ -719,6 +719,7 @@ int mt792x_init_wiphy(struct ieee80211_hw *hw)
+ 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_BEACON_RATE_HE);
+ 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_ACK_SIGNAL_SUPPORT);
+ 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_CAN_REPLACE_PTK0);
++	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_MULTICAST_REGISTRATIONS);
+ 
+ 	ieee80211_hw_set(hw, SINGLE_SCAN_ON_ALL_BANDS);
+ 	ieee80211_hw_set(hw, HAS_RATE_CONTROL);
 -- 
 2.43.0
 
