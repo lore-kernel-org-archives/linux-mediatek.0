@@ -4,65 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08BEECDE008
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2026 10:58:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89C26CDE008
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2026 11:19:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RiRGYMelPViVpJAFJ/+wpKu/uY7s9Tmxp1lwWzuPoWo=; b=v7bgRmTEVv9zfzoIUdYC7rl031
-	+WXVWFJPzrMtkLcREe+OLtDxPgwyh2p3bMgf3svAF1gOEkGceKByzTU3Db/YTUTSx1m+67A64HuEv
-	JZ1Fm5o6QtTls2aaq7FGMFFVau/GUDPOnWv1Wd2bOXOoRnh72B2YfUFqYCarljFNCGQBLP9zBdOwc
-	8kD6KivuLdMSk8JB188m6aDpHS64AIBh+WWmYd07XwCTe0bvoN6kFMyJsU8lLWjtCBr/YSTxsDXH+
-	UXJrUnna9GuJgiZ01NZjdhm73QlPQYZ/wOvIQ922Td26DBwzHhdKAMGxmvaP4oWACUhi5U/JlBVgQ
-	qT6J+k9A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:References:In-Reply-To:Subject:CC:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Xuly9O0tAMSVu+2hyLKWHwTaD+lUumrMQlikUH/DvvM=; b=r9ubrDJgaVDf2lBXGM1Tyd55bI
+	cJMogAiqkvaWB4Gl5cGgrwRGR5QhpRfTHbo0gPQVfMJPCh/W1TDdmPcbqoFiDItrad+th/jt5aJmB
+	8UoGvtK85plW+arjEh8JmkczcN2Z0Gmz8+g0A6SxTn4TD49+rp0vcwWLoG3Qh2gk6l9FmRdbIB8yz
+	/3Dh9ucraNHYx8nemb1TaAElxam6+0D48NVWIOu1C4zztcfn4npQC8VVOFEInxV9Io6T431sSuYYI
+	/cX+hrvyWhu4LYDMudshUcU/FveQt3qwle+SOSgrtMD8Kgaa16c7KwJZC/Ga5+s48y7p6c4S79Lax
+	VyxdTMqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wd4Ga-0000000B9iM-1QsM;
-	Fri, 26 Jun 2026 10:58:36 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wd4al-0000000BCjk-1LY0;
+	Fri, 26 Jun 2026 11:19:27 +0000
+Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wd4GZ-0000000B9hc-0MCy;
-	Fri, 26 Jun 2026 10:58:35 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5C01F60132;
-	Fri, 26 Jun 2026 10:58:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 164181F00A3A;
-	Fri, 26 Jun 2026 10:58:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782471514;
-	bh=RiRGYMelPViVpJAFJ/+wpKu/uY7s9Tmxp1lwWzuPoWo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=YTtqDhZWX4gDsM3ZhC+RSSrkB6J3+JXyXalf7KZmvI6BZPpAJGkTDga9CWGHqDQGn
-	 LJHpssTXYqG+amR6YdlEILOJENU/76GWqwO9J07I/gVIQuOKuKPxG1P0gZoo7iKOir
-	 n5q9Ss+JnmDQJ4iDyJS+T3T595NfO5VNqkOq5RpDhd1nZ+VRhXaL8O6OcAC2ODGb1/
-	 tdmbvqX/GoyXHKrGw5iLfPbV32OPxdhF9Lyd+Ie/CiDTl34hXH2yilooJMnQY1yYAv
-	 vLIL5WimkP1EXPSZvqgSGY2TsG+++V4xUtmjlcTAFyS9QmoSyjCMwWDOin+YSd+MoR
-	 tO4VZbNwqH69g==
-Date: Fri, 26 Jun 2026 12:58:30 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Ryder Lee <ryder.lee@mediatek.com>, Michael Turquette <mturquette@baylibre.com>, 
-	Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney@redhat.com>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jianjun Wang <jianjun.wang@mediatek.com>, 
-	linux-pci@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 1/4] dt-bindings: clock: airoha: Add additional reset for
- PCIe PERSTOUT
-Message-ID: <20260626-talkative-cerulean-hedgehog-93ccdc@quoll>
-References: <20260625215741.3253212-1-ansuelsmth@gmail.com>
- <20260625215741.3253212-2-ansuelsmth@gmail.com>
+	id 1wd4aj-0000000BCj0-1P24;
+	Fri, 26 Jun 2026 11:19:26 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1782472758; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=g8AUlxrBF5LH1GVl4lbltQSlbHrBtU+213LJQo5t+QW0EbW/YPv83nBSa8PkdbpQmX+vlVt7yl+FiQZlTVbx8T6scTC0OYIlUcfCKP+GYuphXNqVVr9NxVwVCxrT725U1BJUQefRwkeOGpPfm4CC8vE4jzQ7icbfL64n/bDlN0s=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1782472758; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Xuly9O0tAMSVu+2hyLKWHwTaD+lUumrMQlikUH/DvvM=; 
+	b=kk47VyBMA9hd2okHqdwPc5hvmRv4AlSYFHEW7VIEeEt7ZljEZD5AWvn7AREOtXU2Ex9lNuuC1HLEPlHhCJJWgUJSLnHuI6Cey8ceBhQijiGfBH76tfJj732BrEtqLs3Xr28S7+rgnnxiehDWHqHjwYkuaxjStBO25ZAItT9B2pY=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=rong.moe;
+	spf=pass  smtp.mailfrom=i@rong.moe;
+	dmarc=pass header.from=<i@rong.moe>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1782472757;
+	s=zmail2048; d=rong.moe; i=i@rong.moe;
+	h=Date:Date:From:From:To:To:CC:Subject:Subject:In-Reply-To:References:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To:Cc;
+	bh=Xuly9O0tAMSVu+2hyLKWHwTaD+lUumrMQlikUH/DvvM=;
+	b=UOYFlsAJ4DQ/kmhSh5cHu2StIi3xJxPNds8AsvqRmV4iXu0AruvmZo29XeTfjfHZ
+	q+8NskdgpCDSCeO9GEZA0GGj32fR2GLNmCmqcP84YJI6utuaLSRIdEESGIqR/7uq+Y4
+	eAhkEeCEWyV3MU2H05CcB/JI/mQWP6So2P4gFm1d+tZXLpgGyeJPsfOLfmWizm8vkUx
+	+UCJJcOjFhzNEbzHz0ikg+EBiF0jyJSx+wPt7uWahPs85JlGkEE2HUgTv+MULTrID7t
+	wCLKzMRimxNy9cFdMksGnQmhSbjb40zsBdhf4CZZNKId92yoIxmsHuooUM+TKOY+kzN
+	by9nK4CC5w==
+Received: by mx.zohomail.com with SMTPS id 1782472755335165.29894146156312;
+	Fri, 26 Jun 2026 04:19:15 -0700 (PDT)
+Date: Fri, 26 Jun 2026 19:19:06 +0800
+From: Rong Zhang <i@rong.moe>
+To: =?UTF-8?B?Q2hyaXMgTHUgKOmZuOeomuazkyk=?= <Chris.Lu@mediatek.com>,
+ "patchwork-bot+bluetooth@kernel.org" <patchwork-bot+bluetooth@kernel.org>,
+ "luiz.dentz@gmail.com" <luiz.dentz@gmail.com>
+CC: "marcel@holtmann.org" <marcel@holtmann.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ =?UTF-8?B?U1MgV3UgKOW3q+aGsuasoyk=?= <ss.wu@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "linux-bluetooth@vger.kernel.org" <linux-bluetooth@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
+Subject: Re: [PATCH] Bluetooth: btmtk: Disable remote wakeup for MT7922/MT7925
+User-Agent: Thunderbird for Android
+In-Reply-To: <3f9c376a5dbfc9d737e2a7f83c5db8e591fb8793.camel@mediatek.com>
+References: <20260603-btmtk-remote-wakeup-v1-1-5c1006442f36@rong.moe> <178050901239.1520440.2026593395539384648.git-patchwork-notify@kernel.org> <3f9c376a5dbfc9d737e2a7f83c5db8e591fb8793.camel@mediatek.com>
+Message-ID: <17FE08E9-2229-4C97-846F-6FA099E22C90@rong.moe>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20260625215741.3253212-2-ansuelsmth@gmail.com>
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-ZohoMailClient: External
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260626_041925_403556_3F0B3D79 
+X-CRM114-Status: GOOD (  18.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,18 +89,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 25, 2026 at 11:57:34PM +0200, Christian Marangi wrote:
-> Add additional reset to control PCIe PERSTOUT reset line for each of the 3
-> PCIe lines.
-> 
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
->  include/dt-bindings/reset/airoha,en7581-reset.h | 4 ++++
->  1 file changed, 4 insertions(+)
+Hi Chris,
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+=E4=BA=8E 2026=E5=B9=B46=E6=9C=8826=E6=97=A5 GMT+08:00 10:40:54=EF=BC=8C"C=
+hris Lu (=E9=99=B8=E7=A8=9A=E6=B3=93)" <Chris=2ELu@mediatek=2Ecom> =E5=86=
+=99=E9=81=93=EF=BC=9A
+>Hi Luiz,
+>
+>Could we revert this change?
 
-Best regards,
-Krzysztof
+Please don't=2E The fundamental goal of the patch is to make MT7922/MT7925=
+ *usable* on affected platforms=2E
 
+Moreover, almost all recent AMD platforms ship with MT7922/MT7925, reverti=
+ng this patch affects quite a lot of users=2E Almost every AMD platform I'v=
+e met suffers from the issue, and there are plenty of bug reports=2E
+
+Intel platforms never ship with MTK WLAN NICs, so I can't tell if the issu=
+e is reproducible on them=2E
+
+>
+>Sorry, MediaTek wasn't aware someone submitted this change and it had
+>already been merged=2E
+>
+>MTK believes this issue is strongly related to the platform's USB hub
+>behavior,=20
+
+Still, I believe that there are some interoperability issues in MT7922/MT7=
+925's hardware or firmware, as reinitializing the XHCI root hub (by logical=
+ly removing it from the PCI bus and probing it again) doesn't make it recov=
+er at all=2E
+
+> The product lines MTK directly support haven't reported such
+>issue=2E
+
+=2E=2E=2Eor did you mean none of the existing AMD platforms are supported =
+by MTK?
+
+>
+>Disable wake capability would severely impact wake on Bluetooth on
+>MTK's official product lines=2E
+
+Could you kindly explain "MTK's official product lines"?
+
+> Furthermore, this patch looks like a
+>workaround=2E There should be a better way to handle this issue=2E We hop=
+e
+>this change can be reverted=2E
+
+The issue is severe on affected platforms by making the Bluetooth interfac=
+e completely gone=2E IMHO, we must figure out the "better way" before rever=
+ting it, or else it's more like burying your head into sand by shouting "wo=
+rks fine on our platforms" (TM)=2E
+
+That being said, I think we can narrow the range of the quirk down to AMD =
+platforms only=2E Does it make sense to you? If so, I will submit a patch f=
+or this=2E
+
+Thanks,
+Rong
+
+>
+>
+>On Wed, 2026-06-03 at 17:50 +0000, patchwork-bot+bluetooth@kernel=2Eorg
+>wrote:
+>> Hello:
+>>=20
+>> This patch was applied to bluetooth/bluetooth-next=2Egit (master)
+>> by Luiz Augusto von Dentz <luiz=2Evon=2Edentz@intel=2Ecom>:
+>>=20
+>> On Wed, 03 Jun 2026 02:38:10 +0800 you wrote:
+>> > These NICs are often reported to lose their Bluetooth interfaces,
+>> > i=2Ee,
+>> > their USB interfaces suddenly become completely unresponsive,
+>> > causing
+>> > the USB core to reset them, only to find that they are no longer
+>> > accessible=2E A power cycle is required to make the Bluetooth
+>> > interfaces
+>> > recover=2E
+>> >=20
+>> > After some investigations, I found that their USB autosuspend
+>> > remote
+>> > wakeup capabilities are so broken that they are precisely the
+>> > culprit
+>> > behind the issue:
+>> >=20
+>> > [=2E=2E=2E]
+>>=20
+>> Here is the summary with links:
+>> =C2=A0 - Bluetooth: btmtk: Disable remote wakeup for MT7922/MT7925
+>> =C2=A0=C2=A0=C2=A0 https://git=2Ekernel=2Eorg/bluetooth/bluetooth-next/=
+c/247570151789
+>>=20
+>> You are awesome, thank you!
+>
+>
+>Best Regards,
+>Chris Lu
 
